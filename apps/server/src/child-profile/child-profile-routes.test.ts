@@ -136,7 +136,7 @@ describe('IDOR: one family can never reach another family\'s profiles', () => {
     await anon.patch(`/api/children/${id}`).send({ displayName: 'Mèo Mây' }).expect(401);
     await anon.delete(`/api/children/${id}`).expect(401);
     await anon.post(`/api/children/${id}/select`).expect(401);
-    await anon.post('/api/consents').send({ policyVersion: 'draft-1' }).expect(401);
+    await anon.post('/api/consents').send({ policyVersion: app.content.consent.version }).expect(401);
     await anon.post('/api/parent-gate/unlock').send({ pin: '1234' }).expect(401);
   });
 });

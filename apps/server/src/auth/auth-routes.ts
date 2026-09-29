@@ -1,8 +1,8 @@
 import { randomUUID } from 'node:crypto';
-import { and, eq, lt, sql } from 'drizzle-orm';
-import { Router, type Request } from 'express';
+import { and, eq, isNull, lt, sql } from 'drizzle-orm';
+import { Router, type Request, type RequestHandler } from 'express';
 import { ipKeyGenerator, rateLimit } from 'express-rate-limit';
-import { ConsentRequest, LoginRequest, ParentGateUnlockRequest, RegisterRequest } from '@miu/schema/account';
+import { ConsentRequest, LoginRequest, ParentGateUnlockRequest, RegisterRequest, SetPinRequest } from '@miu/schema/account';
 import type { ServerConfig } from '../config';
 import type { ContentCatalog } from '../content/content-catalog';
 import type { Db } from '../db/client';
@@ -13,6 +13,7 @@ import { PIN_MAX_FAILS, auth, optionalAuth, requireParent, requireParentGate, ty
 import { decoyHash, hashSecret, verifySecret } from './secret-hashing';
 import { clearSessionCookie, setSessionCookie } from './session-cookie';
 import { PARENT_GATE_MS, createSession, deleteSession } from './session-store';
+import { createSignIn } from './sign-in';
 
 export interface AuthRouteDeps {
   db: Db;
@@ -65,12 +66,15 @@ export function authRoutes({ db, config, content, clock }: AuthRouteDeps): Route
     if (current) await deleteSession(db, current.session.id);
   }
 
-  /** Opportunistic cleanup so expired sessions of this parent do not pile up. */
-  async function pruneExpired(parentId: string): Promise<void> {
-    await db.delete(sessions).where(and(eq(sessions.parentId, parentId), lt(sessions.expiresAt, clock())));
-  }
+  const signIn = createSignIn({ db, config, clock });
 
-  router.post('/auth/register', registerLimit, async (req, res) => {
+  /** Email+password is dev/test tooling only (Google is the sign-in); in production the routes do not exist. */
+  const passwordRoutes: RequestHandler = (_req, _res, next) => {
+    if (!config.passwordLogin) throw new HttpError(404, 'not-found');
+    next();
+  };
+
+  router.post('/auth/register', passwordRoutes, registerLimit, async (req, res) => {
     const input = parseInput(RegisterRequest, req.body);
     const [existing] = await db.select({ id: parents.id }).from(parents).where(eq(parents.email, input.email));
     if (existing) throw new HttpError(409, 'email-taken');
@@ -94,10 +98,11 @@ export function authRoutes({ db, config, content, clock }: AuthRouteDeps): Route
     res.status(201).json(await summary({ session, parent }));
   });
 
-  router.post('/auth/login', loginIpLimit, loginLimit, async (req, res) => {
+  router.post('/auth/login', passwordRoutes, loginIpLimit, loginLimit, async (req, res) => {
     const input = parseInput(LoginRequest, req.body);
     const [parent] = await db.select().from(parents).where(eq(parents.email, input.email));
-    if (!parent) {
+    if (!parent?.passwordHash) {
+      // Unknown email, or a Google account (no password): same answer and same cost as a wrong password.
       decoy ??= decoyHash(config.scrypt).catch((err: unknown) => {
         decoy = undefined; // never cache a failure: retry on the next unknown-email login
         throw err;
@@ -106,13 +111,8 @@ export function authRoutes({ db, config, content, clock }: AuthRouteDeps): Route
       throw new HttpError(401, 'invalid-credentials');
     }
     if (!(await verifySecret(input.password, parent.passwordHash))) throw new HttpError(401, 'invalid-credentials');
-    await rotateOut(res);
-    await pruneExpired(parent.id);
-    // A password login proves the parent, so it also clears a PIN lock-out.
-    const [fresh] = await db.update(parents).set({ pinFailedCount: 0 }).where(eq(parents.id, parent.id)).returning();
-    const { token, session } = await createSession(db, parent.id, clock(), { openParentGate: true });
-    setSessionCookie(res, config, token);
-    res.json(await summary({ session, parent: fresh ?? parent }));
+    // Proving the account also clears a PIN lock-out.
+    res.json(await summary(await signIn(res, parent.id)));
   });
 
   router.post('/auth/logout', async (_req, res) => {
@@ -137,9 +137,26 @@ export function authRoutes({ db, config, content, clock }: AuthRouteDeps): Route
     res.status(201).json(await summary(ctx));
   });
 
+  /** First Google sign-in: the parent sets the PIN before anything else (the gate is open from sign-in). */
+  router.post('/auth/pin', requireParent, pinLimit, async (req, res) => {
+    const { pin } = parseInput(SetPinRequest, req.body);
+    const ctx = auth(res);
+    const pinHash = await hashSecret(pin, config.scrypt);
+    // Only when no PIN exists: changing a PIN is a parent-area action for later, never a silent reset.
+    const [parent] = await db
+      .update(parents)
+      .set({ pinHash, pinFailedCount: 0 })
+      .where(and(eq(parents.id, ctx.parent.id), isNull(parents.pinHash)))
+      .returning();
+    if (!parent) throw new HttpError(409, 'pin-already-set');
+    res.json(await summary({ parent, session: ctx.session }));
+  });
+
   router.post('/parent-gate/unlock', requireParent, pinLimit, async (req, res) => {
     const { pin } = parseInput(ParentGateUnlockRequest, req.body);
     const ctx = auth(res);
+    if (!ctx.parent.pinHash) throw new HttpError(409, 'pin-not-set');
+    const pinHash = ctx.parent.pinHash;
     // Reserve the attempt atomically before verifying, so parallel guesses cannot exceed the limit.
     const [reserved] = await db
       .update(parents)
@@ -147,7 +164,7 @@ export function authRoutes({ db, config, content, clock }: AuthRouteDeps): Route
       .where(and(eq(parents.id, ctx.parent.id), lt(parents.pinFailedCount, PIN_MAX_FAILS)))
       .returning({ fails: parents.pinFailedCount });
     if (!reserved) throw new HttpError(423, 'pin-locked');
-    if (!(await verifySecret(pin, ctx.parent.pinHash))) {
+    if (!(await verifySecret(pin, pinHash))) {
       if (reserved.fails >= PIN_MAX_FAILS) throw new HttpError(423, 'pin-locked');
       throw new HttpError(401, 'invalid-pin');
     }

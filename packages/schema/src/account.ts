@@ -25,6 +25,9 @@ export type LoginRequest = z.infer<typeof LoginRequest>;
 
 export const ParentGateUnlockRequest = z.object({ pin: ParentPin });
 
+/** First PIN after the first Google sign-in. */
+export const SetPinRequest = z.object({ pin: ParentPin });
+
 /** Public view of a parent. Parsing a DB row through it strips hashes (Zod drops unknown keys). */
 export const ParentDto = z.object({ id: Id, email: z.string() });
 export type ParentDto = z.infer<typeof ParentDto>;
@@ -43,5 +46,7 @@ export const MeResponse = z.object({
   activeChildId: Id.nullable(),
   parentGateOpen: z.boolean(),
   pinLocked: z.boolean(),
+  /** False right after the first Google sign-in, until the parent sets the PIN. */
+  pinSet: z.boolean(),
 });
 export type MeResponse = z.infer<typeof MeResponse>;

@@ -171,8 +171,8 @@ describe('parent gate (PIN)', () => {
   it('records one consent row per policy version', async () => {
     const agent = t.agent();
     const res = await agent.post('/api/auth/register').send(fakeParent()).expect(201);
-    await agent.post('/api/consents').send({ policyVersion: 'draft-1' }).expect(201);
-    await agent.post('/api/consents').send({ policyVersion: 'draft-1' }).expect(201);
+    await agent.post('/api/consents').send({ policyVersion: t.content.consent.version }).expect(201);
+    await agent.post('/api/consents').send({ policyVersion: t.content.consent.version }).expect(201);
     const rows = await t.db.select().from(consents).where(eq(consents.parentId, res.body.parent.id as string));
     expect(rows).toHaveLength(1);
   });
@@ -182,15 +182,26 @@ describe('parent gate (PIN)', () => {
     await agent.post('/api/auth/register').send(fakeParent()).expect(201);
     await agent.post('/api/consents').send({ policyVersion: 'draft-0' }).expect(400, { error: 'policy-version-mismatch' });
     await agent.post('/api/parent-gate/lock').expect(200);
-    await agent.post('/api/consents').send({ policyVersion: 'draft-1' }).expect(403);
+    await agent.post('/api/consents').send({ policyVersion: t.content.consent.version }).expect(403);
     const policy = await agent.get('/api/consents/policy').expect(200);
-    expect(policy.body).toMatchObject({ version: 'draft-1', requiresLegalReview: true });
+    expect(policy.body).toMatchObject({ version: t.content.consent.version, requiresLegalReview: true });
   });
 });
 
 describe('production cookie', () => {
   it('always uses __Host- with Secure in production', async () => {
-    const prod = await createTestApp({ NODE_ENV: 'production', ALLOWED_ORIGINS: ORIGIN, DATABASE_URL: 'postgres://db.invalid/unused' });
+    const prod = await createTestApp(
+      {
+        NODE_ENV: 'production',
+        ALLOWED_ORIGINS: ORIGIN,
+        DATABASE_URL: 'postgres://db.invalid/unused',
+        GOOGLE_CLIENT_ID: 'test-client-id',
+        GOOGLE_CLIENT_SECRET: 'test-secret-google',
+        GOOGLE_REDIRECT_URI: 'https://miu.example/api/auth/google/callback',
+      },
+      // Test-only override: the cookie flags are shared by every sign-in; password is the easy way in here.
+      { passwordLogin: true },
+    );
     try {
       const res = await prod.agent().post('/api/auth/register').send(fakeParent()).expect(201);
       const cookie = ([] as string[]).concat(res.headers['set-cookie'] ?? []).join('\n');

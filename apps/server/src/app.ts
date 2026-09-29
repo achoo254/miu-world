@@ -3,6 +3,7 @@ import helmet from 'helmet';
 import type { HealthResponse } from '@miu/schema/health';
 import { loadSession } from './auth/auth-context';
 import { authRoutes } from './auth/auth-routes';
+import { googleAuthRoutes } from './auth/google-auth-routes';
 import { requireAllowedOrigin } from './auth/origin-check';
 import { HashQueueFullError } from './auth/secret-hashing';
 import { characterRoutes } from './character/character-routes';
@@ -20,6 +21,8 @@ export interface AppDeps {
   content?: ContentCatalog;
   /** Injectable for tests (session expiry, parent-gate window). */
   clock?: () => Date;
+  /** Google token endpoint call; tests inject a fake so Google is never contacted. */
+  fetchImpl?: typeof fetch;
 }
 
 /** Body-parser errors carry an HTTP status and a `type`; everything else is an internal error. */
@@ -47,7 +50,7 @@ const errorHandler: ErrorRequestHandler = (err: unknown, _req, res, _next) => {
 };
 
 /** Builds the Express app without listening, so tests can drive it through supertest. */
-export function createApp({ config, db, content = loadContentCatalog(), clock = () => new Date() }: AppDeps): express.Express {
+export function createApp({ config, db, content = loadContentCatalog(), clock = () => new Date(), fetchImpl }: AppDeps): express.Express {
   const app = express();
   app.disable('x-powered-by');
   // The API listens on loopback only and is reached through the web dev/preview proxy (or a reverse
@@ -64,6 +67,7 @@ export function createApp({ config, db, content = loadContentCatalog(), clock = 
     res.json(body);
   });
   api.use(authRoutes({ db, config, content, clock }));
+  api.use(googleAuthRoutes({ db, config, clock, fetchImpl }));
   api.use(childProfileRoutes({ db, content, clock }));
   api.use(characterRoutes({ db, content }));
   api.use(questRoutes({ db, content, clock }));

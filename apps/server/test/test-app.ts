@@ -20,6 +20,7 @@ export interface TestApp {
   db: Db;
   handle: DbHandle;
   config: ServerConfig;
+  content: typeof FIXTURE_CONTENT;
   /** Moves the injected clock forward. */
   advance(ms: number): void;
   /** A cookie-keeping client whose state-changing requests carry an allowed Origin. */
@@ -29,17 +30,19 @@ export interface TestApp {
 export async function createTestApp(
   env: Record<string, string> = { NODE_ENV: 'test' },
   overrides: Partial<ServerConfig> = {},
+  fetchImpl?: typeof fetch,
 ): Promise<TestApp> {
   const handle = await createTestDb();
   // Every test agent shares one loopback IP, so the per-IP register cap is lifted; its own test lowers it.
-  const config = { ...loadConfig(env), scrypt: FAST_SCRYPT, registerLimitPerHour: 10_000, ...overrides };
+  const config = { ...loadConfig(env), scrypt: FAST_SCRYPT, registerLimitPerHour: 10_000, googleLimitPer15Min: 10_000, ...overrides };
   let offset = 0;
-  const app = createApp({ config, db: handle.db, content: FIXTURE_CONTENT, clock: () => new Date(Date.now() + offset) });
+  const app = createApp({ config, db: handle.db, content: FIXTURE_CONTENT, clock: () => new Date(Date.now() + offset), fetchImpl });
   return {
     app,
     db: handle.db,
     handle,
     config,
+    content: FIXTURE_CONTENT,
     advance(ms) {
       offset += ms;
     },
@@ -63,7 +66,7 @@ export async function parentWithChild(t: TestApp, withChild = true): Promise<{ a
   const agent = t.agent();
   const parent = fakeParent();
   await agent.post('/api/auth/register').send(parent).expect(201);
-  await agent.post('/api/consents').send({ policyVersion: 'draft-1' }).expect(201);
+  await agent.post('/api/consents').send({ policyVersion: FIXTURE_CONTENT.consent.version }).expect(201);
   if (!withChild) return { agent, parent, childId: '' };
   const res = await agent.post('/api/children').send({ displayName: 'Mèo Mây' }).expect(201);
   return { agent, parent, childId: (res.body as { id: string }).id };

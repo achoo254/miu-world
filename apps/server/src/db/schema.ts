@@ -11,8 +11,12 @@ export const parents = pgTable('parents', {
   id: uuid('id').primaryKey(),
   /** Always stored lower-case (normalised by the request schema). */
   email: text('email').notNull().unique(),
-  passwordHash: text('password_hash').notNull(),
-  pinHash: text('pin_hash').notNull(),
+  /** Google account id (`sub`); the normal sign-in. Null only for dev/test password accounts. */
+  googleSub: text('google_sub').unique(),
+  /** Dev/test sign-in only (disabled in production); Google accounts have none. */
+  passwordHash: text('password_hash'),
+  /** Parent-gate PIN; null until the parent sets it right after the first Google sign-in. */
+  pinHash: text('pin_hash'),
   /** Consecutive wrong PINs; at the limit the PIN is locked until the next password login. */
   pinFailedCount: integer('pin_failed_count').notNull().default(0),
   createdAt: createdAt(),

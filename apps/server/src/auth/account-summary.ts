@@ -11,5 +11,6 @@ export async function accountSummary(db: Db, ctx: AuthContext, now: Date, policy
     activeChildId: ctx.session.activeChildId,
     parentGateOpen: isParentGateOpen(ctx, now),
     pinLocked: ctx.parent.pinFailedCount >= PIN_MAX_FAILS,
+    pinSet: ctx.parent.pinHash !== null,
   });
 }

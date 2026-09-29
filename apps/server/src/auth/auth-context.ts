@@ -46,6 +46,7 @@ export function auth(res: Response): AuthContext {
 
 export function isParentGateOpen(ctx: AuthContext, now: Date): boolean {
   return (
+    ctx.parent.pinHash !== null &&
     ctx.parent.pinFailedCount < PIN_MAX_FAILS &&
     ctx.session.parentGateUntil !== null &&
     ctx.session.parentGateUntil.getTime() > now.getTime()

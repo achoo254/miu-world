@@ -43,6 +43,6 @@ describe('shipped account content', () => {
   it('marks the draft consent as needing legal review', () => {
     const doc = ConsentDocument.parse(load('legal/consent-vi.json'));
     expect(doc.requiresLegalReview).toBe(true);
-    expect(doc.version).toBe('draft-1');
+    expect(doc.version).toBe('draft-2');
   });
 });
