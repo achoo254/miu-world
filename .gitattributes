@@ -1,0 +1,2 @@
+# Asset bytes are hashed into assets/manifest.json: never convert line endings (CRLF on Windows would break the gate).
+assets/** -text
