@@ -47,7 +47,7 @@ Mã chỉ dùng trong plan và roadmap, không dùng trong code, tên test, comm
 
 - **Gate POC (Đã qua - 2026-09-29):** Đã duyệt với kết quả: giữ kiến trúc kitbash/generator/mesher, chuyển sang tinh chỉnh visual (nhân vật chibi, palette phụ kiện & block); dời chốt số liệu hiệu năng sang đo máy thật trước nghiệm thu MVP (máy chuẩn: iPad Gen 10, chốt 2026-09-29).
 - **Gate Foundation (Đã qua - 2026-09-29):** monorepo, tài khoản phụ huynh (Google) + hồ sơ trẻ, API nhân vật-tiến độ-thưởng, Miu chibi A + palette, runtime trong `apps/web`; CI xanh. Report: `plans/dattqh/reports/foundation-review-260929.md`.
-- **Gate kế tiếp (Vertical slice):** SLICE-01..11 (Creator, Home + HUD, map rừng, NPC, quest runtime, thử thách Toán, hỗ trợ học, thưởng/Level Up, ba lô) — cần plan mới.
+- **Gate kế tiếp (Vertical slice MVP):** plan `plans/dattqh/260929-2141-vertical-slice-mvp/` (SLICE-00..11: token/UI kit, quest bằng dữ liệu, API chấm thử thách, Creator, Home + HUD, khu rừng ch1, NPC, 3 thử thách Toán + hỗ trợ học, thưởng/Level Up, ba lô, bảo mật + E2E trọn vòng).
 
 ## Nợ đã biết (trước nghiệm thu MVP)
 
