@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="data:," />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Miu World · Duyệt đợt Foundation</title>
+  </head>
+  <body>
+    <main id="review" data-id="review">
+      <header class="hero" data-id="review-hero">
+        <h1>Duyệt đợt Foundation · Miu World</h1>
+        <p>Một lần duyệt cho cả đợt: tài khoản phụ huynh và hồ sơ trẻ, game chạy trong app web, Miu chibi (chọn 1 trong 3 biến thể), bảng màu block mới, báo cáo bảo mật, dependency mới, hiệu năng và bảng license.</p>
+        <ol class="steps" data-id="review-steps">
+          <li>Mở <a href="./register" data-id="review-register">Tạo tài khoản</a> (dùng email giả, ví dụ <code>thu@example.vn</code>; dữ liệu chỉ nằm trên máy chạy thử), đồng ý, tạo một hồ sơ, chọn hồ sơ đó.</li>
+          <li>Bấm một nút <b>Chơi thử</b> bên dưới. Trên iPad Gen 10 dùng mức <b>Vừa</b>, đi dạo 2–3 phút rồi ghi FPS (góc trái trên) vào mục Quyết định.</li>
+          <li>Chọn biến thể Miu, cho ý kiến từng mục, bấm <b>Sao chép kết quả duyệt</b> và gửi lại.</li>
+        </ol>
+        <nav class="play" data-id="review-play">
+          <a data-id="review-play-low" href="./play?quality=low">Chơi thử · Thấp</a>
+          <a data-id="review-play-mid" href="./play?quality=mid">Chơi thử · Vừa</a>
+          <a data-id="review-play-high" href="./play?quality=high">Chơi thử · Cao</a>
+        </nav>
+        <p class="hint">Trên máy tính bảng: joystick trái để đi, nút <b>Chạy</b>/<b>Nhảy</b> bên phải, vuốt màn hình để xoay camera, chạm nhãn Vẹt khi đứng gần. Góc trái trên hiện FPS, draw call, tam giác.</p>
+      </header>
+
+      <section data-id="review-decision">
+        <h2>Quyết định</h2>
+        <div id="decisions" class="decisions"></div>
+        <label class="note">FPS trên iPad Gen 10 (mức Vừa, sau 2–3 phút) <input id="ipad-fps" data-id="review-ipad-fps" inputmode="decimal" placeholder="VD: 42" /></label>
+        <label class="note">Ghi chú thêm <textarea id="decision-note" rows="3" placeholder="VD: mũ cần to hơn, FPS trên máy X là ..."></textarea></label>
+        <button id="copy-decision" data-id="review-decision-copy" type="button">Sao chép kết quả duyệt</button>
+        <output id="copy-status"></output>
+      </section>
+
+      <section data-id="review-account">
+        <h2>Luồng tài khoản phụ huynh → hồ sơ trẻ → chơi</h2>
+        <p class="sub">Ảnh chụp tự động từ E2E trên khung iPad Gen 10 (820×1180), dữ liệu giả. Màn hình mới (NEW SCREEN), chưa có mock: bám luồng Master Plan §6, §9.</p>
+        <div id="account-flow" class="grid grid-4"></div>
+      </section>
+
+      <section data-id="review-variants">
+        <h2>Chọn biến thể Miu (chibi)</h2>
+        <p class="sub">Ba biến thể cùng rig, cùng 31 hoạt ảnh, mỗi con 1 draw call. Mặt thêm mắt, má, mũi bằng khối gộp vào mesh. Mũ và balo dùng chung file, co theo tỷ lệ từng biến thể. Chọn một ở mục Quyết định.</p>
+        <div id="variants" class="variants"></div>
+      </section>
+
+      <section data-id="review-palette">
+        <h2>Bảng màu block: trước / sau</h2>
+        <p class="sub">Palette pastel ấm cho cỏ, đất, đá, gỗ, lá, nước, lối đi; texture Kenney được tint mạnh hơn để đồng nhất. Ảnh bản đồ bên dưới là bản sau.</p>
+        <div class="table-wrap"><table id="palette"></table></div>
+      </section>
+
+      <section data-id="review-character">
+        <h2>Nhân vật Miu (bản POC, để so sánh)</h2>
+        <p class="sub">Rig + 27 hoạt ảnh Kenney Blocky Characters, đầu mèo Kenney Cube Pets, màu thân sinh từ JSON. 4 hoạt ảnh xem thử (vẫy tay, nhảy, ngáp, vui mừng) dựng keyframe bằng code.</p>
+        <div id="character-turn" class="grid grid-4"></div>
+        <h3>Hoạt ảnh xem thử M1.3</h3>
+        <div id="character-extra" class="grid grid-4"></div>
+        <details><summary>27 hoạt ảnh gốc</summary><div id="character-base" class="grid grid-6"></div></details>
+      </section>
+
+      <section data-id="review-accessories">
+        <h2>Phụ kiện (sinh từ JSON)</h2>
+        <p class="sub">Mũ phù thủy hồng và balo nâu, gắn vào node đầu/thân nên đi theo mọi hoạt ảnh; đổi bảng màu tạo biến thể không cần sửa code.</p>
+        <div id="accessories" class="grid grid-4"></div>
+      </section>
+
+      <section data-id="review-map">
+        <h2>Bản đồ Khu rừng bí mật</h2>
+        <p class="sub">96×32×96 block sinh theo seed cố định: suối, cầu gỗ, lối đá, cây, cây cổ thụ, chỗ đứng của Vẹt và rương.</p>
+        <div id="map" class="grid grid-2"></div>
+      </section>
+
+      <section data-id="review-perf">
+        <h2>Hiệu năng (giả lập)</h2>
+        <p id="perf-env" class="sub"></p>
+        <div class="table-wrap"><table id="perf"></table></div>
+      </section>
+
+      <section data-id="review-security">
+        <h2>Báo cáo bảo mật</h2>
+        <p class="sub">Chi tiết: <code>plans/dattqh/reports/code-reviewer-260929-auth-review.md</code> (review độc lập, mọi phát hiện High/Medium đã sửa kèm test) và báo cáo review cả đợt.</p>
+        <div class="security">
+          <article><h3>Tài khoản và phiên</h3><p>Phụ huynh là chủ tài khoản; trẻ là hồ sơ con, chỉ có tên hiển thị chọn từ danh sách, không đăng nhập riêng. Session phía server: token ngẫu nhiên 32 byte, cơ sở dữ liệu chỉ lưu sha256; hết hạn tuyệt đối 30 ngày, nhàn rỗi 7 ngày; đổi token mỗi lần đăng nhập. Cookie httpOnly, SameSite=Lax; production dùng <code>__Host-</code> + Secure (có test).</p></article>
+          <article><h3>Chống CSRF, rate limit</h3><p>Mọi request đổi trạng thái phải có <code>Origin</code> trong danh sách cho phép (thiếu cũng bị chặn). Rate limit đăng ký theo IP, đăng nhập theo IP + email và theo IP; PIN theo phiên. Hàng đợi băm mật khẩu có trần (quá tải trả 503).</p></article>
+          <article><h3>Phân quyền (IDOR)</h3><p>Mọi truy vấn lọc theo phụ huynh và hồ sơ đang chọn; tài nguyên nhà khác trả 404 như không tồn tại. Có test IDOR cho mọi endpoint hồ sơ, nhân vật, tiến độ, túi đồ, hoàn thành bước quest.</p></article>
+          <article><h3>Cổng phụ huynh</h3><p>Tạo, đổi tên, xóa hồ sơ và đồng ý cần PIN 4–6 số (scrypt), mở 15 phút; chọn hồ sơ cho trẻ chơi thì khóa lại. Sai 5 lần thì khóa PIN (chống đoán song song), mở lại bằng mật khẩu.</p></article>
+          <article><h3>Chống gian lận</h3><p>Server tính mọi thưởng từ dữ liệu quest; giá trị client gửi bị bỏ qua. Hoàn thành bước là idempotent, sai thứ tự hoặc quest chưa mở trả 409, gọi đồng thời chỉ ghi một dòng sổ thưởng; test chuỗi thao tác ngẫu nhiên có seed đối chiếu tổng. Không có Kim cương.</p></article>
+          <article><h3>Dữ liệu trẻ</h3><p>Không thu tên thật, tuổi, lớp, trường, email của trẻ. Xóa hồ sơ là xóa hẳn mọi dữ liệu (có test đếm từng bảng). Log chỉ id; lỗi trả client chỉ mã lỗi.</p></article>
+          <article><h3>Quét tự động</h3><p id="security-scans">Chạy ngày 29/09/2026 trên máy dev: <code>pnpm audit --prod --audit-level=high</code> không có lỗ hổng; Semgrep CE (<code>p/typescript</code> + <code>p/nodejs</code>, 74 luật, 96 file TypeScript trong <code>apps/</code>, <code>packages/</code>) 0 phát hiện. CI chạy lại cả hai trên mỗi push.</p></article>
+        </div>
+        <h3>Nợ trước khi có người dùng thật</h3>
+        <ul class="debts">
+          <li>Văn bản đồng ý là <b>bản nháp</b> (<code>requiresLegalReview: true</code>): cần pháp chế duyệt theo NĐ 13/2023.</li>
+          <li>Chưa xác minh email phụ huynh (cần nhà cung cấp email, DNS); đăng ký báo "email đã có" nên dò được email tồn tại.</li>
+          <li>Triển khai: đặt <code>trust proxy</code> theo reverse proxy thật; rate limit đang lưu trong bộ nhớ (một instance); server đang chạy bằng <code>tsx</code>, chưa có bước đóng gói production.</li>
+          <li>Test trên PostgreSQL thật và Semgrep chạy ở CI; chưa có lần push nào nên chưa có kết quả CI.</li>
+        </ul>
+      </section>
+
+      <section data-id="review-deps">
+        <h2>Dependency mới của đợt</h2>
+        <p class="sub">Khóa phiên bản trong <code>pnpm-lock.yaml</code>; <code>pnpm audit --prod</code> chạy trong CI.</p>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Gói</th><th>Dùng ở</th><th>Để làm gì</th><th>License</th></tr></thead>
+          <tbody>
+            <tr><td>react, react-dom 19</td><td>web</td><td>Giao diện</td><td>MIT</td></tr>
+            <tr><td>react-router 8</td><td>web</td><td>Điều hướng trang</td><td>MIT</td></tr>
+            <tr><td>express 5, helmet</td><td>server</td><td>API, header bảo mật</td><td>MIT</td></tr>
+            <tr><td>express-rate-limit</td><td>server</td><td>Giới hạn đăng ký, đăng nhập, PIN</td><td>MIT</td></tr>
+            <tr><td>drizzle-orm</td><td>server</td><td>Truy vấn PostgreSQL</td><td>Apache-2.0</td></tr>
+            <tr><td>@electric-sql/pglite</td><td>server</td><td>PostgreSQL nhúng cho dev và test</td><td>Apache-2.0</td></tr>
+            <tr><td>pg</td><td>server</td><td>Kết nối PostgreSQL thật</td><td>MIT</td></tr>
+            <tr><td>zod (thêm vào web, server)</td><td>web, server</td><td>Kiểm dữ liệu vào/ra</td><td>MIT</td></tr>
+            <tr><td>drizzle-kit (dev)</td><td>server</td><td>Sinh migration SQL</td><td>MIT</td></tr>
+            <tr><td>supertest, jsdom, @testing-library/react (dev)</td><td>test</td><td>Test API và giao diện</td><td>MIT</td></tr>
+            <tr><td>@vitejs/plugin-react, eslint-plugin-react-hooks (dev)</td><td>web</td><td>Build React, lint hooks</td><td>MIT</td></tr>
+            <tr><td>@types/react, @types/react-dom, @types/express, @types/pg, @types/supertest (dev)</td><td>—</td><td>Kiểu TypeScript</td><td>MIT</td></tr>
+          </tbody>
+        </table></div>
+      </section>
+
+      <section data-id="review-licenses">
+        <h2>License asset</h2>
+        <p id="license-summary" class="sub"></p>
+        <div class="table-wrap"><table id="licenses"></table></div>
+      </section>
+    </main>
+    <script type="module" src="/src/review/review-main.ts"></script>
+  </body>
+</html>

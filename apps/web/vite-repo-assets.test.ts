@@ -1,0 +1,41 @@
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { describe, expect, it } from 'vitest';
+import { createManifestReader, glbDependencies, runtimeAssetPaths } from './vite-repo-assets';
+
+const ASSETS_DIR = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../assets');
+
+describe('runtime asset selection for the web build', async () => {
+  const manifest = await createManifestReader(ASSETS_DIR)();
+  const shipped = await runtimeAssetPaths(ASSETS_DIR, manifest);
+
+  it('ships what the game loads: manifest, world, atlas, characters, fonts and placed models', () => {
+    for (const p of [
+      'manifest.json',
+      'generated/world/forest-ch1/chunks.bin',
+      'generated/world/forest-ch1/entities.json',
+      'generated/atlas/atlas.png',
+      'generated/characters/miu-cat.glb',
+      'packs/kenney-cube-pets/2.0/animal-parrot.glb',
+      'packs/font-baloo-2/5.3.0/baloo-2-vietnamese-700.woff2',
+    ]) {
+      expect(shipped).toContain(p);
+    }
+  });
+
+  it('includes textures that placed models reference', async () => {
+    const deps = (await Promise.all(shipped.filter((p) => p.endsWith('.glb') && p.startsWith('packs/')).map((p) => glbDependencies(ASSETS_DIR, p)))).flat();
+    for (const dep of deps) expect(shipped).toContain(dep);
+  });
+
+  it('leaves the rest of the licensed packs out of dist', () => {
+    expect(shipped.length).toBeLessThan(manifest.length / 4);
+    expect(shipped).not.toContain('packs/kenney-cube-pets/2.0/animal-bunny.glb');
+    expect(shipped.every((p) => manifest.includes(p))).toBe(true);
+  });
+
+  it('refuses a runtime asset missing from the manifest', async () => {
+    const withoutParrot = manifest.filter((p) => !p.endsWith('animal-parrot.glb'));
+    await expect(runtimeAssetPaths(ASSETS_DIR, withoutParrot)).rejects.toThrow(/missing from manifest/);
+  });
+});

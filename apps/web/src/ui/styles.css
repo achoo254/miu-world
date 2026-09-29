@@ -1,0 +1,142 @@
+/* Design tokens: same temporary set as the POC runtime (pink primary, Master Plan §2). */
+:root {
+  --ink: #2b2140;
+  --ink-soft: #6b5f82;
+  --panel: rgba(255, 255, 255, 0.82);
+  --surface: #dff2ff;
+  --accent: #f07fb0;
+  --accent-ink: #ffffff;
+  --danger: #c2334d;
+  --field: #ffffff;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --radius: 999px;
+  --radius-card: 1rem;
+}
+
+html, body {
+  margin: 0;
+  min-height: 100%;
+  background: var(--surface);
+  font-family: 'Nunito', system-ui, sans-serif;
+  color: var(--ink);
+}
+
+h1, h2, button { font-family: 'Baloo 2', system-ui, sans-serif; }
+
+a { color: var(--ink); font-weight: 700; }
+
+.shell {
+  max-width: 28rem;
+  margin: 0 auto;
+  padding: var(--space-lg) var(--space-md);
+}
+
+
+h1 { font-size: 1.75rem; margin: 0 0 var(--space-md); }
+h2 { font-size: 1.25rem; margin: 0 0 var(--space-sm); }
+
+.card {
+  background: var(--panel);
+  border-radius: var(--radius-card);
+  padding: var(--space-md);
+  margin-bottom: var(--space-md);
+}
+
+.form { display: flex; flex-direction: column; gap: var(--space-sm); }
+.form label { display: flex; flex-direction: column; gap: 0.25rem; font-weight: 600; }
+
+input, select {
+  font: inherit;
+  padding: var(--space-sm);
+  border: 2px solid var(--accent);
+  border-radius: 0.75rem;
+  background: var(--field);
+  color: var(--ink);
+}
+
+button {
+  font-size: 1rem;
+  padding: var(--space-sm) var(--space-md);
+  border: 0;
+  border-radius: var(--radius);
+  background: var(--accent);
+  color: var(--accent-ink);
+  cursor: pointer;
+}
+button:disabled { opacity: 0.5; cursor: default; }
+button.danger { background: var(--danger); }
+button.secondary { background: var(--panel); color: var(--ink); }
+.button-link {
+  display: inline-block;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius);
+  background: var(--panel);
+  color: var(--ink);
+  font-family: 'Baloo 2', system-ui, sans-serif;
+  text-decoration: none;
+}
+
+.error { color: var(--danger); font-weight: 600; }
+.hint { color: var(--ink-soft); }
+.badge {
+  display: inline-block;
+  padding: 0.25rem var(--space-sm);
+  border-radius: var(--radius);
+  background: var(--danger);
+  color: var(--accent-ink);
+  font-weight: 700;
+}
+
+.stack { list-style: none; padding: 0; margin: 0; }
+.row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-sm); }
+
+.profile-grid {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
+  gap: var(--space-md);
+}
+.profile-card {
+  width: 100%;
+  min-height: 6rem;
+  border-radius: var(--radius-card);
+  font-size: 1.25rem;
+}
+
+/* Interaction label (React, NEW SCREEN M3.2 HUD): content from game-bridge, position written by the game. */
+.npc-label {
+  z-index: 4;
+  pointer-events: auto;
+  font-family: 'Baloo 2', system-ui, sans-serif;
+  border: 0;
+  color: var(--ink);
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius);
+  background: var(--panel);
+  box-shadow: 0 4px 12px rgba(43, 33, 64, 0.2);
+  font-size: 15px;
+  white-space: nowrap;
+}
+
+.play-exit {
+  position: fixed;
+  top: var(--space-sm);
+  right: var(--space-sm);
+  z-index: 4;
+}
+.play-message {
+  position: fixed;
+  inset: 0;
+  z-index: 6;
+  display: grid;
+  place-items: center;
+  background: var(--surface);
+  padding: var(--space-md);
+  text-align: center;
+}
