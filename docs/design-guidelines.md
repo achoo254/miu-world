@@ -22,11 +22,11 @@ Nguồn: Master Plan v3 §2 (art direction, quy tắc bám mock), §10 (phong c�
 
 - Tạm lấy **hồng** làm màu chính (plan cũ có hai bộ: hồng–xanh và tím–indigo). Token chính thức chốt khi có mock voxel (Master Plan task #4).
 - Giao diện tách lớp khỏi logic, dùng design token và component chung để đổi diện mạo không phải viết lại chức năng.
-- Token tạm hiện có: biến CSS ở đầu `apps/poc-voxel/src/styles.css`. Dùng lại chúng thay vì hardcode giá trị mới.
+- Token tạm hiện có: biến CSS ở đầu `apps/web/src/ui/styles.css`, dùng chung cho React UI và HUD của game (`apps/web/src/game/game.css`). Dùng lại chúng thay vì hardcode giá trị mới.
 
 ## Font, icon, âm thanh
 
-- Font tự host (OFL, có tiếng Việt): **Baloo 2** cho tiêu đề/HUD, **Nunito** cho nội dung. Khai báo dùng chung ở `apps/poc-voxel/src/fonts.css`.
+- Font tự host (OFL, có tiếng Việt): **Baloo 2** cho tiêu đề/HUD, **Nunito** cho nội dung. Khai báo dùng chung ở `apps/web/src/ui/fonts.css`.
 - Icon vật phẩm, tiền tệ, HUD, huy hiệu: Microsoft Fluent Emoji 3D (MIT); bỏ emoji dính thương hiệu.
 - Khung, nút, banner: CSS + token, không dùng ảnh vẽ tay. Ảnh đại diện, thumbnail render từ model 3D bằng script.
 - Số và chữ trên vật thể (viên đá số, thẻ chữ) vẽ lúc chạy bằng canvas texture.

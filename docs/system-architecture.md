@@ -4,14 +4,14 @@ Kiến trúc đích: Master Plan v3 §7 (ứng dụng), §8 (multiplayer), §9 (
 
 ## Ranh giới hiện tại
 
-Repo đang ở giai đoạn POC: có pipeline asset và runtime voxel; chưa có app Next.js, backend, cơ sở dữ liệu (đó là Master Plan task #3 trở đi).
+Repo đang ở giai đoạn Foundation (`plans/dattqh/260929-1911-foundation-after-poc-gate/`): pipeline asset, thư viện voxel, app web (React + runtime Three.js), server API và cơ sở dữ liệu. Bảng dưới chỉ ghi phần đã có trong repo.
 
 ```
 tools/assets/sources.json ─fetch─▶ assets/packs/<pack>/<ver>/ ─┐
 content/*.json + seed ─generators─▶ assets/generated/ ─────────┼─manifest─▶ assets/manifest.json + LICENSES.md
                                                                │                 │
                                             pnpm assets:check ◀┘                 ▼
-                                            (CI chặn)             apps/poc-voxel (chỉ tải file có trong manifest)
+                                            (CI chặn)             apps/web (chỉ tải file có trong manifest)
                                                                         ▲
                                               packages/voxel (TS thuần: chunk, mesher, va chạm, phụ kiện)
 ```
@@ -22,12 +22,20 @@ content/*.json + seed ─generators─▶ assets/generated/ ──────�
 | Dữ liệu nội dung | `content/` | JSON validate bằng Zod; đổi dữ liệu để tạo biến thể, không sửa code |
 | Sinh thế giới | `tools/world/` | Xác định theo seed; output chunk RLE + `entities.json` |
 | Thư viện voxel | `packages/voxel/` | Không phụ thuộc `three` hay DOM; test được bằng Vitest thuần |
-| Runtime POC | `apps/poc-voxel/` | Loader và server dev/preview từ chối file ngoài manifest; build chỉ copy file trong manifest; CSP không `unsafe-eval` |
+| Server API | `apps/server/` | Nghe loopback, sau proxy; mọi POST kiểm Origin; mọi route game lấy hồ sơ từ session và kiểm lại thuộc phụ huynh; thưởng chỉ lấy từ catalog quest, ghi ledger append-only (unique theo nguồn) + bảng tổng hợp trong một transaction |
+| Logic quest | `packages/quest/` | TS thuần; cùng hàm `completeStep` cho client dự đoán và server ghi |
+| Runtime game | `apps/web/src/game/` | Loader và server dev/preview từ chối file ngoài manifest; build chỉ copy file runtime dùng; CSP không `unsafe-eval`; không import React |
+| Bridge game → React | `apps/web/src/game-bridge/` | Chỉ event rời rạc; dữ liệu theo khung hình game ghi thẳng vào DOM neo |
 
-## Kiến trúc đích (ý định, chưa hiện thực)
+## Kiến trúc đích (đã chốt, đang hiện thực)
 
-- Client: Next.js (App Router) + React cho giao diện, Three.js (WebGL2 chính, WebGPU tùy chọn) cho cảnh. Cách nối React–Three.js (R3F hay bridge tự viết) chưa chốt.
-- Server: Node.js + Express + TypeScript, API theo miền; là nguồn sự thật cho tiến độ, thưởng, mở khóa. Cơ sở dữ liệu quan hệ (đề xuất PostgreSQL), Redis, object storage.
+Nguồn: Master Plan v3 §7, §15 #16–#18.
+
+- Client `apps/web`: Vite + React SPA (React Router) cho giao diện; runtime Three.js (WebGL2 chính, WebGPU tùy chọn) ở `apps/web/src/game`; `src/game-bridge` là store nối game → React (`useSyncExternalStore`). Game phát event rời rạc; React không điều khiển game loop và không nhận dữ liệu theo khung hình.
+- Server `apps/server`: Node.js + Express 5 + TypeScript, API theo miền (auth, hồ sơ trẻ, nhân vật, quest, thưởng); là nguồn sự thật cho tiến độ, thưởng, mở khóa. Drizzle ORM trên PostgreSQL; PGlite cho dev và test; migration SQL sinh bằng drizzle-kit.
+- `packages/quest`: TS thuần, tiến trình bước quest + tính thưởng + level; web dùng để dự đoán hiển thị, server dùng để tính lại và ghi.
+- `packages/schema`: Zod cho DTO API và schema nội dung, dùng chung web + server.
+- Luồng: game phát event → `packages/quest` dự đoán ở client → API server tính lại, ghi DB, trả kết quả chuẩn → store → React.
 - Realtime (chỉ giai đoạn MP): Colyseus hoặc `ws`, WebSocket qua server, mỗi khu vực một room; tách khỏi API nghiệp vụ.
 - Triển khai: client qua static hosting + CDN; server tự host gần người dùng Việt Nam. Asset qua CDN với signed URL, CSP chặt, SRI.
 - Quest/nội dung mô tả bằng dữ liệu có schema, không phụ thuộc cảnh Three.js.
@@ -46,7 +54,12 @@ content/*.json + seed ─generators─▶ assets/generated/ ──────�
 | Nhân vật gộp 1 skinned mesh | Cùng node/anim, rẻ hơn ngân sách ≤ 3 draw call | Tách nhiều mesh |
 | Phụ kiện là lưới khối từ JSON, 1 draw call mỗi món | Đổi trang phục không cần artist; biến thể = đổi palette | Pack phụ kiện (không có cho thú khối) |
 | Texture block: Kenney Voxel Pack tint theo palette, 1 atlas, padding 4 px extrude | Một material; không lem tile tới mip 3 | Texture sinh bằng noise (giữ làm fallback); padding 2 px |
-| POC là app Vite độc lập + package `@miu/voxel` | Không chờ monorepo Next.js (task #3) | Dựng POC trong app thật |
+| POC là app Vite độc lập + package `@miu/voxel` | Không chờ monorepo (task #3) | Dựng POC trong app thật |
+| App web: Vite + React SPA, React Router | Game chạy hoàn toàn ở client; static hosting + CDN; CSP chặt không cần nonce; dùng lại hạ tầng POC (worker, E2E) | Next.js App Router, Next.js static export (SSR/SEO không cần cho phần game) |
+| Nối React–Three.js bằng bridge tự viết (event → store → `useSyncExternalStore`) | Runtime không phụ thuộc React; React không render theo khung hình | React Three Fiber |
+| Drizzle + PostgreSQL; PGlite cho dev/test, PostgreSQL thật trong CI | Máy dev không có Docker/psql; CI bắt khác biệt PGlite/Postgres | Prisma; SQLite cho dev |
+| Logic quest/thưởng trong `packages/quest` (TS thuần) | Server tính lại bằng cùng logic client dùng để dự đoán; quest không phụ thuộc Three.js | Logic quest trong runtime game |
+| Session phía server, cookie httpOnly; mật khẩu và PIN băm bằng `node:crypto` scrypt | Không thêm dependency băm; thu hồi session được | JWT không trạng thái; bcrypt/argon2 (thêm native dependency) |
 | POC chỉ dùng pack Kenney; KayKit sau POC | KayKit cần tải tay từ itch.io | Đưa KayKit vào POC |
 | Va chạm AABB theo lưới tự viết | Không cần WASM, CSP không phải mở `wasm-unsafe-eval` | Rapier (chỉ khi có vật thể động) |
 | Greedy meshing trong Web Worker, fallback main thread lúc tải | Voxel sinh nhiều bề mặt — rủi ro hiệu năng số một | Mesh trên main thread trong vòng lặp |

@@ -10,12 +10,14 @@ Cách làm: single-player vertical slice trước (Home Base + Khu rừng bí m�
 
 ## Không làm (hiện tại)
 
-- Không sinh thế giới ngẫu nhiên vô hạn; mỗi khu vực là bản đồ thiết kế sẵn.
+- Không sinh thế giới ngẫu nhiên vô hạn; mỗi khu vực là bản đồ thiết kế sẵn, generator theo seed chỉ là công cụ dựng map (§15 #4).
 - Không khớp từng pixel với mock hiện tại (mock là ảnh render AI mượt; chỉ bám luồng và chức năng).
-- Không đặt/phá block ở thế giới chính và khu chung (đề xuất mặc định, còn chờ chốt — §15 #3).
+- Không đặt/phá block ở thế giới chính và khu chung (§15 #3).
+- Không dùng Kim cương ở MVP; ô Kim cương ẩn trên HUD (§15 #6).
 - Không chat tự do; không P2P/WebRTC giữa người chơi.
 - Không dùng tên, texture, asset của Minecraft.
-- MVP chỉ có loài Mèo; Thỏ, Cáo, Gấu để V1.
+- MVP chỉ có loài Mèo; Thỏ, Cáo, Gấu để V1 (§15 #7).
+- Multiplayer sau MVP, mở từ Bậc 1 (thấy nhau) (§15 #8).
 
 ## Ràng buộc không suy ra được từ code
 
@@ -34,7 +36,7 @@ Cách làm: single-player vertical slice trước (Home Base + Khu rừng bí m�
 | NEW SCREEN | Màn hình cần có nhưng chưa có mock (Master Plan §6) |
 | Vertical slice | Một vòng lặp chơi trọn vẹn trong một khu vực nhỏ |
 | MVP / V1 / Live World / MP | Các giai đoạn phát hành (xem `project-roadmap.md`) |
-| Subject / Skill | Môn (Toán, Tiếng Việt, English) / kỹ năng cụ thể (Đọc hiểu, Phép cộng…); level Subject tổng hợp từ Skill — đề xuất, chờ chốt §15 #5 |
+| Subject / Skill | Môn (Toán, Tiếng Việt, English) / kỹ năng cụ thể (Đọc hiểu, Phép cộng…); level Subject tổng hợp từ Skill; Skill XP là phần thưởng MVP (§15 #5) |
 | Quest 8 pha | Hook, Explore, Learn, Challenge, Decision, Finale, Reward, Unlock; quest phải trả lời đủ 7 câu (đóng vai ai, ở đâu, mục tiêu, chơi gì, kiến thức nào, nhận gì, mở khóa gì) |
 | Ba lớp hỗ trợ | Hướng dẫn, Gợi ý, Đáp án kèm giải thích; xem đáp án không khóa tiến trình |
 | NPC Vẹt, Hải ly | Thay Cú mèo và Sóc trong mock (Cube Pets không có hai loài đó) |
@@ -42,6 +44,10 @@ Cách làm: single-player vertical slice trước (Home Base + Khu rừng bí m�
 | Trang review | Trang duyệt cuối của mỗi đợt giao hàng; con người duyệt ở đây, không duyệt từng PR |
 | CC | Claude Code (trong bảng phân vai của Master Plan) |
 
+## Luồng tài khoản (§9, §11)
+
+Phụ huynh đăng ký và là chủ tài khoản → đồng ý chính sách dữ liệu trước khi tạo hồ sơ → tạo tối đa 3 hồ sơ trẻ (chỉ tên hiển thị chọn từ danh sách; không tên thật, email, trường, tuổi, lớp) → chọn hồ sơ để chơi → mỗi hồ sơ có một nhân vật; mọi dữ liệu game (tiến độ quest, thưởng, túi đồ, kỹ năng) gắn với hồ sơ, không gắn với phụ huynh. Khu phụ huynh (tạo, sửa, xóa hồ sơ) mở bằng PIN phụ huynh. Xóa hồ sơ là xóa hẳn mọi dữ liệu của hồ sơ đó.
+
 ## Quyết định còn mở
 
-Danh sách và đề xuất: Master Plan v3 §15 "Còn cần bạn chốt". Không tự chốt các mục đó; gom lại hỏi người sở hữu.
+Master Plan v3 §15 hiện không còn mục mở. Quyết định mới về sản phẩm, dữ liệu trẻ, chi phí, pháp lý: gom lại hỏi người sở hữu một lần.

@@ -17,12 +17,17 @@ Plan v3 chốt: game 3D chạy trên web bằng Three.js, phong cách voxel ki�
 | Bảo mật, an toàn trẻ em | Chưa có | Zero Trust và child safety xuyên suốt |
 | Hệ kỹ năng | Lẫn Math, Reading, Vietnamese, Logic | Chuẩn hóa Subject → Skill (mục 5) |
 
-**Đã chốt và còn mở** (chi tiết ở mục 15):
+**Đã chốt** (chi tiết ở mục 15):
 
-1. Đã chốt: phong cách voxel 3D kiểu Minecraft; mock hiện tại chỉ là tham chiếu luồng, mock voxel cập nhật sau.
-2. Đã chốt: asset lấy từ pack CC0 (Kenney, KayKit), icon Fluent Emoji (MIT), font OFL, phần còn lại sinh bằng code (mục 10).
-3. Còn mở: người chơi có được đặt và phá block không (đề xuất: không ở thế giới chính).
-4. Còn mở: chuẩn hóa Subject và Skill (mock đang trộn hai tầng).
+1. Phong cách voxel 3D kiểu Minecraft; mock hiện tại chỉ là tham chiếu luồng, mock voxel cập nhật sau.
+2. Asset lấy từ pack CC0 (Kenney, KayKit), icon Fluent Emoji (MIT), font OFL, phần còn lại sinh bằng code (mục 10).
+3. Không đặt, phá block ở thế giới chính và khu chung.
+4. Bản đồ thiết kế sẵn theo khu vực; generator theo seed chỉ là công cụ dựng map.
+5. Tách Subject và Skill; Skill XP là phần thưởng MVP.
+6. Không dùng Kim cương ở MVP.
+7. MVP chỉ có loài Mèo.
+8. Multiplayer mở từ Bậc 1 (thấy nhau), sau MVP.
+9. Stack web: Vite + React SPA, bridge tự viết nối Three.js với React, Express + Drizzle + PostgreSQL (mục 7).
 
 ## 2. Nguồn chuẩn và art direction
 
@@ -112,14 +117,14 @@ Toàn bộ hệ thống xoay quanh một vòng lặp: quest tạo tình huống,
 
 ### Kỹ năng: chuẩn hóa Subject → Skill
 
-Mock đang trộn hai tầng (hồ sơ dùng Toán, Tiếng Việt, English; boss và skill check dùng Đọc hiểu, Toán, Logic). Đề xuất tách rõ:
+Mock đang trộn hai tầng (hồ sơ dùng Toán, Tiếng Việt, English; boss và skill check dùng Đọc hiểu, Toán, Logic). Đã chốt tách rõ (mục 15 #5):
 
 | Tầng | Ví dụ | Dùng ở đâu |
 | --- | --- | --- |
 | Subject (môn) | Toán, Tiếng Việt, English | Khu vực trên bản đồ, hồ sơ |
 | Skill (kỹ năng) | Đọc hiểu, Phép cộng, So sánh số, Ghép câu, Logic | Skill Check, boss, tiến bộ nhân vật |
 
-Level của Subject là tổng hợp từ các Skill bên dưới. Đây là quyết định cần bạn xác nhận (mục 15).
+Level của Subject là tổng hợp từ các Skill bên dưới. Skill XP là một loại phần thưởng của MVP (danh mục trong `content/learning/skills.json`).
 
 ### Quest
 
@@ -149,16 +154,16 @@ Mọi thử thách dùng chung ba lớp hỗ trợ (M2.8): **Hướng dẫn** (C
 | --- | --- | --- |
 | XP | Hoàn thành quest (+100 XP) | Level nhân vật |
 | Xu | Hoàn thành quest (+20 Xu) | Mua đồ, trang trí (chưa có cửa hàng trong mock, xem NEW SCREEN) |
-| Kim cương | Hiển thị ở thanh trên (12) | Chưa rõ nguồn và công dụng, cần bạn định nghĩa |
+| Kim cương | Hiển thị ở thanh trên (12) | Không dùng ở MVP (mục 15 #6): ẩn ô Kim cương trên HUD, không có trong API |
 | Skill XP | "Kỹ năng đọc +1" | Mở Skill Check, đánh boss |
 | Vật phẩm | Lá thần, Chìa khóa, Pha lê, Hạt giống kỳ diệu | Dùng ở quest sau |
 | Huy hiệu, sinh vật, địa điểm | Bộ sưu tập (M1.7) | Thu thập, mở khóa đồ đặc biệt |
 
 Lưu ý: **mọi giá trị thưởng do server tính**, client chỉ hiển thị (xem mục 9).
 
-### Xây dựng (chưa chốt)
+### Xây dựng
 
-Phong cách voxel khiến người chơi mong đợi đặt và phá block. Plan mặc định là **không** cho phá hay đặt block ở thế giới chính và khu chung; nếu có thì chỉ ở Home Base cá nhân với bộ block cố định, làm sau MVP (quyết định ở mục 15).
+Phong cách voxel khiến người chơi mong đợi đặt và phá block. Đã chốt (mục 15 #3): **không** cho phá hay đặt block ở thế giới chính và khu chung; nếu có thì chỉ ở Home Base cá nhân với bộ block cố định, làm sau MVP.
 
 ## 6. Screen map đối chiếu với mock
 
@@ -221,15 +226,28 @@ Client chỉ hiển thị và gửi hành động; API tính thưởng, tiến b
 
 | Lớp | Lựa chọn | Ghi chú |
 | --- | --- | --- |
-| Ứng dụng | Next.js (App Router), React, TypeScript | SSR/SSG và SEO cho trang public; HUD và giao diện game chạy phía client |
+| Ứng dụng | Vite + React SPA, TypeScript, React Router (đã chốt, mục 15 #16) | Bỏ Next.js: game chạy hoàn toàn ở client, phát bằng static hosting + CDN, CSP chặt không cần nonce; nếu cần SEO cho trang public thì làm site tĩnh riêng |
 | Runtime 3D | Three.js, WebGL2 là đường chính, WebGPU tùy chọn | Three.js không phải game engine đầy đủ; các hệ thống game là module riêng |
-| Thế giới voxel | Chunk, greedy meshing chạy trong Web Worker, một texture atlas, culling theo chunk | Đề xuất, kiểm chứng ở POC; module riêng, không phụ thuộc quest (mục 10, 11) |
+| Thế giới voxel | Chunk, greedy meshing chạy trong Web Worker, một texture atlas, culling theo chunk | Đã kiểm chứng ở POC; `packages/voxel` là TS thuần, không phụ thuộc quest và Three.js (mục 10, 11) |
 | Va chạm | Kiểm tra theo lưới block (AABB, tự viết); Rapier chỉ khi cần vật thể động | Nếu dùng Rapier (WASM) thì CSP cần `wasm-unsafe-eval` |
-| Tích hợp React và Three.js | React Three Fiber hoặc tự viết bridge | Chọn ở POC |
+| Tích hợp React và Three.js | Bridge tự viết (đã chốt, mục 15 #18): game phát event → store → React | React không điều khiển game loop, không nhận dữ liệu theo khung hình; không dùng React Three Fiber |
 | Backend | Node.js, Express, TypeScript | API theo miền, dữ liệu do quest quyết định |
 | Realtime | Colyseus hoặc `ws` | Giai đoạn multiplayer |
-| Dữ liệu | Cơ sở dữ liệu quan hệ (đề xuất PostgreSQL), Redis, object storage | Plan cũ chưa chốt loại cơ sở dữ liệu |
+| Dữ liệu | PostgreSQL qua Drizzle ORM (đã chốt, mục 15 #17); PGlite cho dev và test; Redis, object storage khi cần | Migration SQL sinh bằng drizzle-kit, commit và review như code; CI chạy test trên PostgreSQL thật |
 | Triển khai | Client qua static hosting và CDN; server tự host gần người dùng Việt Nam |  |
+
+**Cấu trúc repo:**
+
+```
+apps/web/          Vite + React: src/game (runtime Three.js), src/game-bridge (store), src/ui (React)
+apps/server/       Express + Drizzle: auth, hồ sơ trẻ, nhân vật, quest, thưởng
+packages/voxel/    TS thuần: chunk, mesher, va chạm, phụ kiện (không import three)
+packages/quest/    TS thuần: tiến trình quest, tính thưởng, level; dùng chung web và server
+packages/schema/   Zod: DTO API và schema nội dung
+content/ assets/ tools/
+```
+
+Luồng dữ liệu: game phát event → `packages/quest` dự đoán ở client để hiển thị → API server tính lại, ghi cơ sở dữ liệu, trả kết quả chuẩn → store → React.
 
 ## 8. Multiplayer online
 
@@ -334,7 +352,7 @@ Quest và nội dung được mô tả bằng dữ liệu, kiểm tra bằng sch
 | Nhân vật | Nhân vật → Kỹ năng, Trang bị, Túi đồ, Bộ sưu tập | Loài (Mèo, Thỏ, Cáo, Gấu) là thuộc tính |
 | Quest | Quest → Step → Interaction → Challenge | Mỗi Step có trigger và điều kiện |
 | Học tập | Subject → Skill → Learning Activity → Skill XP | Tách Subject và Skill như mục 5 |
-| Thưởng | XP, Xu, Kim cương, Vật phẩm, Huy hiệu, Mở khóa | Server tính và ghi |
+| Thưởng | XP, Xu, Skill XP, Vật phẩm, Huy hiệu, Mở khóa (Kim cương không dùng ở MVP) | Server tính và ghi |
 | Live | Event → Quest → Challenge → Reward | Có lịch bắt đầu, kết thúc |
 
 **Ví dụ một Step (rút gọn):**
@@ -398,11 +416,11 @@ Phase sau chỉ bắt đầu khi gate của phase trước đạt; chưa có ng�
 
 ## 14. Backlog P0: 24 việc đầu tiên
 
-Thứ tự dưới đây đặt POC 3D và bảo mật trước gameplay; mỗi việc có kiểm thử tự động. **CC** là Claude Code làm chính, **Người** là việc con người phải làm hoặc duyệt ở lần duyệt cuối (mục 17).
+Thứ tự dưới đây đặt POC 3D và bảo mật trước gameplay; mỗi việc có kiểm thử tự động. **CC** là Claude Code làm chính, **Người** là việc con người phải làm hoặc duyệt ở lần duyệt cuối (mục 17). Plan và roadmap dùng mã ổn định (FOUNDATION-xx, ENGINE-01, VISUAL-xx, SLICE-xx, DEVICE-01); bảng đối chiếu mã ↔ số task ở `docs/project-roadmap.md`.
 
 1. Ghi nhận quyết định đã chốt (voxel, mock cập nhật sau) và chốt các quyết định còn mở ở mục 15. **Người**
 2. Sửa plan, viết `CLAUDE.md`, dựng cấu trúc repo. **CC + Người**
-3. Monorepo: Next.js, Express TypeScript, package schema dùng chung, CI (lint, test, `npm audit`, SAST). **CC**
+3. Monorepo: Vite + React, Express TypeScript, package schema dùng chung, CI (lint, test, `pnpm audit`, SAST). **CC**
 4. Design tokens tạm theo mock hiện tại, tách lớp giao diện để đổi khi có mock voxel. **CC, designer duyệt**
 5. Tìm nguồn asset: tải pack CC0 (Kenney, KayKit), Fluent Emoji, font; manifest, `assets/LICENSES.md`, kiểm tra license trong CI. **CC, Người duyệt license**
 6. POC voxel: một bản đồ nhỏ, chunk meshing trong Web Worker, nhân vật ghép (rig Blocky Characters và đầu mèo Cube Pets), third-person, camera, va chạm theo lưới block, đo tự động bằng giả lập CPU chậm và một máy Android thật lúc duyệt. **CC, Người duyệt một lần cuối**
@@ -427,7 +445,7 @@ Thứ tự dưới đây đặt POC 3D và bảo mật trước gameplay; mỗi 
 
 ## 15. Rủi ro và quyết định cần chốt
 
-Phong cách voxel và việc cập nhật mock sau đã chốt; còn 6 quyết định cần bạn chốt, nên xong trước task #6 (POC).
+Mọi quyết định của đợt POC và Foundation đã chốt (2026-09-29).
 
 ### Đã chốt
 
@@ -435,6 +453,12 @@ Phong cách voxel và việc cập nhật mock sau đã chốt; còn 6 quyết �
 | --- | --- | --- | --- |
 | 1 | Phong cách hình ảnh | Voxel 3D kiểu Minecraft | Mock hiện tại (3D mượt) chỉ còn tham chiếu luồng; asset dễ làm hơn nhưng cần chunk meshing và tối ưu bề mặt |
 | 2 | Mock | Cập nhật trong quá trình làm | UI tách lớp, dùng design tokens; mock mới ghi đè mock cũ của từng màn hình |
+| 3 | Đặt và phá block | Không ở thế giới chính và khu chung; nếu có thì chỉ ở Home Base cá nhân, sau MVP | Không cần đồng bộ block hay kiểm duyệt nội dung xây dựng ở MVP |
+| 4 | Cách tạo bản đồ | Thiết kế sẵn theo khu vực | Generator theo seed chỉ là công cụ dựng map, không sinh map lúc chơi |
+| 5 | Subject và Skill | Tách hai tầng (mục 5) | Phần thưởng MVP phải có Skill XP; danh mục Subject → Skill là dữ liệu có schema |
+| 6 | Kim cương | Không dùng ở MVP | Ẩn ô Kim cương trên HUD, không có trong API; muốn dùng lại phải hỏi pháp chế nếu liên quan tiền thật |
+| 7 | Số loài ở MVP | Chỉ Mèo | Thỏ, Cáo, Gấu làm ở V1 |
+| 8 | Bậc multiplayer đầu tiên | Bậc 1 (thấy nhau), sau MVP | Bậc 1 theo mục 8: emote, câu có sẵn, báo cáo và chặn, phụ huynh bật |
 | 9 | Nguồn asset | CC0 (Kenney, KayKit), MIT (Fluent Emoji), OFL (font) và asset sinh bằng code; không tự vẽ, không AI trả phí | Không cần voxel artist; hình ảnh kém chi tiết hơn mock (mock là ảnh render AI) |
 | 10 | Nhân vật người chơi | Ghép rig và hoạt ảnh Blocky Characters với đầu mèo Cube Pets | POC không đạt thì dựng khối bằng code |
 | 11 | NPC | Vẹt thay Cú mèo, Hải ly thay Sóc | Sửa lời thoại và câu chuyện quest theo loài mới |
@@ -442,17 +466,13 @@ Phong cách voxel và việc cập nhật mock sau đã chốt; còn 6 quyết �
 | 13 | Phụ kiện nhân vật (sau POC) | Chỉnh tỷ lệ và palette | Giữ cơ chế sinh bằng JSON (gắn node head/torso), chỉnh bảng màu và kích thước cân đối với chibi |
 | 14 | Bản đồ & Texture block (sau POC) | Chỉnh palette và texture block đồng nhất visual Miu World | Giữ nguyên kiến trúc chunk / greedy meshing Web Worker / generator theo seed |
 | 15 | Đánh giá hiệu năng mobile (sau POC; cập nhật 2026-09-29) | Chưa kết luận từ giả lập; máy chuẩn là iPad Gen 10, đo ở Low/Mid/High | Chốt Gate hiệu năng khi có dữ liệu iPad Gen 10 (FPS, nhiệt độ, pin); máy yếu hơn dùng mức `low`, không chặn gate |
+| 16 | Framework web | Vite + React SPA, React Router (thay Next.js) | Game client-only, static hosting + CDN, CSP chặt không cần nonce; SEO trang public làm site tĩnh riêng nếu cần |
+| 17 | ORM và cơ sở dữ liệu | Drizzle + PostgreSQL; PGlite cho dev và test | Máy dev không cần Docker; CI chạy test trên PostgreSQL thật để bắt khác biệt |
+| 18 | Nối React và Three.js | Bridge tự viết (event → store → `useSyncExternalStore`), không dùng React Three Fiber | Runtime không phụ thuộc React; React không nhận dữ liệu theo khung hình |
 
 ### Còn cần bạn chốt
 
-| # | Quyết định | Đề xuất | Hệ quả nếu chọn khác |
-| --- | --- | --- | --- |
-| 3 | Đặt và phá block | Không ở thế giới chính và khu chung; nếu có thì chỉ ở Home Base cá nhân, sau MVP | Cho xây tự do kéo theo đồng bộ block, kiểm duyệt nội dung, chi phí lưu trữ và rủi ro an toàn |
-| 4 | Cách tạo bản đồ | Thiết kế sẵn theo khu vực | Sinh ngẫu nhiên khó gắn quest và khó kiểm soát nội dung |
-| 5 | Tách Subject và Skill (mục 5) | Tách hai tầng | Giữ như mock thì boss và skill check không có nền dữ liệu nhất quán |
-| 6 | Kim cương: nguồn và công dụng | Chưa dùng ở MVP | Nếu mua bằng tiền thật thì có rủi ro pháp lý và đạo đức với trẻ em, cần pháp chế xem trước |
-| 7 | Số loài nhân vật ở MVP | Chỉ Mèo | Thêm loài là thêm mô hình và trang phục cho từng loài |
-| 8 | Bậc multiplayer đầu tiên | Bậc 1 (thấy nhau), sau khi có kiểm duyệt | Mở co-op sớm khi chưa có kiểm duyệt là rủi ro cao |
+Không còn.
 
 ### Rủi ro dự án
 

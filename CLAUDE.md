@@ -2,13 +2,18 @@
 
 Quy tắc hành vi cho agent trong repo này. Lý do và bối cảnh nằm ở `docs/` (bản đồ: `docs/README.md`); nguồn quyết định sản phẩm là Master Plan v3 ở gốc repo.
 
+Giai đoạn hiện tại: Foundation (sau gate POC) — `apps/web` (Vite + React, runtime Three.js ở `src/game`), `apps/server` (Express + Drizzle), `packages/{voxel,quest,schema}`. Plan: `plans/dattqh/260929-1911-foundation-after-poc-gate/`.
+
 ## Lệnh
 
 - Chỉ dùng `pnpm` (workspace, `packageManager` khóa trong `package.json`), Node ≥ 22. Không dùng `npm`/`yarn`.
-- Gate trước khi báo xong — chạy đủ 4 lệnh, đúng thứ tự CI (`.github/workflows/assets.yml`):
+- Gate trước khi báo xong — chạy đủ 4 lệnh, đúng thứ tự CI (`.github/workflows/ci.yml`):
   `pnpm assets:check` → `pnpm test` → `pnpm typecheck` → `pnpm lint`
+  (CI còn chạy `pnpm audit --prod --audit-level=high` và Semgrep CE; máy dev không có Docker nên Semgrep kiểm trên CI.)
+- Sửa `apps/web/**` thì chạy thêm `pnpm --filter @miu/web build` (CI chạy bước này; typecheck/test không bắt lỗi build).
 - Một file test: `pnpm vitest run <đường-dẫn-file>`.
-- Sửa runtime POC (`apps/poc-voxel/**`) thì chạy thêm E2E: `pnpm --filter @miu/poc-voxel e2e --project poc` (tự build rồi chạy preview ở cổng 4173).
+- Sửa `apps/web/**` hoặc `apps/server/**` thì chạy thêm E2E: `pnpm --filter @miu/web e2e --project setup --project account --project play` (tự chạy server với PGlite trong RAM ở 8787, build web rồi preview ở 4173).
+- Chạy dev: `pnpm --filter @miu/server dev` (API cổng 8787, chỉ loopback, PGlite ở `.data/pglite`) và `pnpm --filter @miu/web dev` (cổng 5173, proxy `/api` → 8787). Trang game `/play` cần đăng nhập phụ huynh và chọn hồ sơ; trang duyệt `/review.html`, trang render công cụ `/preview.html`.
 - KHÔNG chạy project `perf` trừ khi được yêu cầu đo hiệu năng: mất tới ~30 phút và ghi đè `assets/generated/review/perf.json`.
 
 ## Không được làm
@@ -30,13 +35,14 @@ Gom lại, hỏi một lần: thay đổi cách thu thập/chia sẻ dữ liệu
 
 - Trên Windows chưa bật Developer Mode, test symlink trong `tools/assets/check-assets.test.ts` tự skip (không tạo được symlink); CI (Ubuntu) vẫn chạy. Skip này không có nghĩa là gate symlink đã được kiểm trên máy local.
 - `render-preview.ts` và perf test tự sinh lại manifest khi chạy xong; nếu tự sửa file trong `assets/generated/` bằng cách khác thì phải chạy `pnpm assets:manifest`.
-- Cổng cố định: dev 5173, preview/E2E 4173 (`--strictPort`). Báo cổng bận thì tìm và tắt server cũ, không đổi cổng.
+- Cổng cố định: web dev 5173, preview/E2E 4173 (Vite `--strictPort`); server 8787 (cổng cố định trong config, lỗi nếu bận); render-preview 5199. Báo cổng bận thì tìm và tắt server cũ, không đổi cổng.
+- Server từ chối POST không có `Origin` trong danh sách cho phép (chống CSRF). Mặc định chỉ có localhost/127.0.0.1 ở 5173/4173 (và 5174/4174 cũ); duyệt qua LAN thì chạy server với `ALLOWED_ORIGINS=http://<ip-LAN>:<cổng>` (danh sách phân tách bằng dấu phẩy) và mở web với `--host`.
 - `jev-decide.py` cần `TYPESAFE_API_KEY` hoặc `TYPESAFE_TOKEN_FILE`; thiếu thì dừng, đừng tự tìm key.
 
 ## Quy trình
 
 - Plan và report: `plans/dattqh/` (plan theo `{yymmdd-hhmm}-{slug}/`, report trong `plans/dattqh/reports/`).
-- Mỗi đợt giao hàng kết thúc bằng một trang review cho người duyệt cuối (ảnh, bản chơi thử, số liệu hiệu năng, báo cáo bảo mật, dependency mới, bảng license) — mẫu hiện có: `apps/poc-voxel/review.html`.
+- Mỗi đợt giao hàng kết thúc bằng một trang review cho người duyệt cuối (ảnh, bản chơi thử, số liệu hiệu năng, báo cáo bảo mật, dependency mới, bảng license) — trang hiện có: `apps/web/review.html`.
 - Commit: conventional commits tiếng Anh (`feat(assets):`, `feat(poc):`, `docs(plans):`, `build:`); không nhắc AI; không ghi mã plan/phase trong code, tên test, commit.
 - Thêm dependency mới: ghi vào trang review của đợt đó để người duyệt thấy.
 - Tiến độ backlog và việc đã xong: `docs/project-roadmap.md` — cập nhật khi một task Master Plan đổi trạng thái.
