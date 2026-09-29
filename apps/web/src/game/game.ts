@@ -164,7 +164,8 @@ export class Game {
 
     const scene = new Scene();
     this.scene = scene;
-    scene.fog = new Fog(SKY_HORIZON, quality.viewDistance * 0.55, quality.viewDistance);
+    // Fog starts late so distant trees keep their colour instead of washing out to white.
+    scene.fog = new Fog(SKY_HORIZON, quality.viewDistance * 0.75, quality.viewDistance);
     const camera = new PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, quality.viewDistance + 40);
     const sky = createSky(quality.viewDistance + 20);
     scene.add(sky);
@@ -244,8 +245,9 @@ export class Game {
 
     renderer.setAnimationLoop(() => {
       timer.update();
-      // Review screenshots step a fixed 1/60 s so water and NPC animation land on the same frame every run.
-      const dt = reviewShot ? 1 / 60 : Math.min(timer.getDelta(), 0.1);
+      // Review screenshots step a fixed 1/60 s, then freeze once ready: the capture lands a variable number of
+      // frames later, and water / NPC animation must not move in between.
+      const dt = reviewShot ? (reviewShot.settled ? 0 : 1 / 60) : Math.min(timer.getDelta(), 0.1);
       let intent: MoveIntent;
       let interact = interactRequested;
       interactRequested = false;

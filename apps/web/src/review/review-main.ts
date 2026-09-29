@@ -53,14 +53,6 @@ const UI_STEPS: Record<string, string> = {
 };
 const STORAGE_KEY = 'miu-review-decisions';
 
-/** Chibi variants under review (content/characters.json); the chosen one becomes `miu-cat`. */
-const VARIANTS = [
-  { id: 'miu-cat-chibi-a', label: 'Biến thể A · đầu 1.0×, thân và chân ngắn nhẹ' },
-  { id: 'miu-cat-chibi-b', label: 'Biến thể B · đầu 1.15×, thân và chân ngắn vừa' },
-  { id: 'miu-cat-chibi-c', label: 'Biến thể C · đầu 1.3×, thân và chân ngắn nhiều' },
-];
-const VARIANT_CHOICE = 'miu-variant';
-
 /** Block palette shipped with the POC (before the warm pastel pass), for the before/after table. */
 const POC_PALETTE: Record<string, string> = {"grass": "#7cc453", "leaf": "#4fa94a", "autumn": "#f09a3e", "dirt": "#a8703f", "stone": "#9aa3ad", "sand": "#f1d49a", "wood": "#a56d3b", "bark": "#7a5230", "birch": "#ece6d8", "path": "#bfb6a5", "water": "#4aa8e8", "moss": "#6f9a58"};
 
@@ -92,25 +84,14 @@ function renderGallery(generated: string[]): void {
   const angle = (p: string): number => Number(name(p).split('-').pop());
   const turns = reviewPaths.filter((x) => x.includes('/character/miu-cat-turn-')).sort((a, b) => angle(a) - angle(b));
   for (const p of turns) byId('character-turn').append(figure(p, `Góc ${angle(p)}°`));
+  const camera = reviewPaths.find((x) => x.endsWith('/miu-cat-gameplay-camera.png'));
+  if (camera) byId('character-turn').append(figure(camera, 'Góc camera khi chơi'));
   for (const clip of EXTRA_CLIPS) {
     const p = reviewPaths.find((x) => x.endsWith(`/miu-cat-anim-${clip}.png`));
     if (p) byId('character-extra').append(figure(p, CLIP_LABEL[clip] ?? clip));
   }
   for (const p of reviewPaths.filter((x) => x.includes('/miu-cat-anim-') && !EXTRA_CLIPS.some((c) => x.endsWith(`-${c}.png`)))) {
     byId('character-base').append(figure(p, name(p).replace('miu-cat-anim-', '')));
-  }
-  for (const v of VARIANTS) {
-    const grid = el('div', { className: 'grid grid-4' });
-    const variantTurns = reviewPaths.filter((x) => x.includes(`/character/${v.id}-turn-`)).sort((a, b) => angle(a) - angle(b));
-    for (const p of variantTurns) grid.append(figure(p, `Góc ${angle(p)}°`));
-    const camera = reviewPaths.find((x) => x.endsWith(`/${v.id}-gameplay-camera.png`));
-    if (camera) grid.append(figure(camera, 'Góc camera khi chơi'));
-    for (const clip of EXTRA_CLIPS) {
-      const p = reviewPaths.find((x) => x.endsWith(`/${v.id}-anim-${clip}.png`));
-      if (p) grid.append(figure(p, CLIP_LABEL[clip] ?? clip));
-    }
-    for (const p of reviewPaths.filter((x) => x.includes(`/accessories/${v.id}-outfit-`))) grid.append(figure(p, `Mũ + balo · góc ${angle(p)}°`));
-    byId('variants').append(el('article', { className: 'variant' }, [el('h3', { textContent: v.label }), grid]));
   }
   for (const p of reviewPaths.filter((x) => x.includes('/review/ui/')).sort()) byId('account-flow').append(figure(p, UI_STEPS[name(p)] ?? name(p)));
   const accessoryCaption = (key: string): string => {
@@ -119,7 +100,7 @@ function renderGallery(generated: string[]): void {
     const clip = key.replace('miu-outfit-', '');
     return `Trọn bộ · ${CLIP_LABEL[clip] ?? clip}`;
   };
-  for (const p of reviewPaths.filter((x) => x.includes('/accessories/') && !x.includes('-chibi-'))) byId('accessories').append(figure(p, accessoryCaption(name(p))));
+  for (const p of reviewPaths.filter((x) => x.includes('/accessories/'))) byId('accessories').append(figure(p, accessoryCaption(name(p))));
   const mapCaption: Record<string, string> = { top: 'Nhìn từ trên', iso: 'Toàn cảnh', bridge: 'Cầu gỗ qua suối', tree: 'Cây cổ thụ', npc: 'Vẹt và lối đá' };
   for (const p of reviewPaths.filter((x) => x.includes('/map/'))) {
     const key = name(p).replace('forest-ch1-', '');
@@ -231,24 +212,8 @@ function renderDecisions(): void {
     }
     container.append(el('div', { className: 'decision' }, [fieldset]));
   }
-  const variantSet = el('fieldset', {}, [el('legend', { textContent: 'Chọn biến thể Miu (một lần)' })]);
-  for (const [value, text] of [...VARIANTS.map((v) => [v.id, v.label]), ['adjust', 'Chỉnh thêm (ghi rõ ở ghi chú)']]) {
-    const input = el('input', { type: 'radio', name: VARIANT_CHOICE, value: value ?? '', checked: saved[VARIANT_CHOICE] === value });
-    input.dataset.id = `review-decision-variant-${value ?? ''}`;
-    input.addEventListener('change', () => {
-      try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify({ ...readSaved(), [VARIANT_CHOICE]: value ?? '' }));
-      } catch {
-        // Private mode: the choice still lives in the form until the page closes.
-      }
-    });
-    variantSet.append(el('label', {}, [input, text ?? '']));
-  }
-  container.prepend(el('div', { className: 'decision' }, [variantSet]));
   byId('copy-decision').addEventListener('click', () => {
-    const variant = document.querySelector<HTMLInputElement>(`input[name="${VARIANT_CHOICE}"]:checked`);
     const lines = [
-      `- Biến thể Miu: ${variant?.parentElement?.textContent ?? 'chưa chọn'}`,
       ...DECISIONS.map((d) => {
         const picked = document.querySelector<HTMLInputElement>(`input[name="${d.id}"]:checked`);
         return `- ${d.label}: ${picked?.parentElement?.textContent ?? 'chưa chọn'}`;

@@ -6,6 +6,8 @@ import type { WorldEntities } from '@miu/voxel/world-entities';
 export interface ReviewShot {
   apply(camera: PerspectiveCamera): void;
   frameDone(): void;
+  /** True once the shot is ready: time must stop so the screenshot (taken a frame or two later) is stable. */
+  readonly settled: boolean;
 }
 
 const SETTLE_FRAMES = 20;
@@ -45,6 +47,9 @@ export function createReviewShot(name: string | null, entities: WorldEntities, s
     frameDone() {
       frames++;
       if (frames === SETTLE_FRAMES) document.body.dataset.ready = '1';
+    },
+    get settled() {
+      return frames >= SETTLE_FRAMES;
     },
   };
 }
