@@ -18,6 +18,7 @@ const fake = {
   claims: {} as Record<string, unknown>,
   status: 200,
   lastBody: null as URLSearchParams | null,
+  lastChallenge: null as string | null,
 };
 
 const b64 = (value: unknown): string => Buffer.from(JSON.stringify(value)).toString('base64url');
@@ -38,18 +39,25 @@ afterAll(async () => {
 let seq = 0;
 function googleUser(over: Record<string, unknown> = {}): Record<string, unknown> {
   seq += 1;
-  return { sub: `google-sub-${seq}`, email: `g${seq}@example.vn`, email_verified: true, aud: GOOGLE.clientId, iss: 'https://accounts.google.com', exp: Math.floor(Date.now() / 1000) + 600, ...over };
+  return { sub: `google-sub-${seq}`, email: `g${seq}@example.vn`, email_verified: true, aud: GOOGLE.clientId, iss: 'https://accounts.google.com', exp: Math.floor(Date.now() / 1000) + 86_400, ...over }; // generous: other tests move the injected clock
 }
 
 /** Runs /start and returns the authorize URL; the agent keeps the state cookie. */
 async function start(agent: Agent, intent?: string): Promise<URL> {
   const res = await agent.get(`/api/auth/google/start${intent ? `?intent=${intent}` : ''}`).expect(303);
-  return new URL(res.headers.location ?? '');
+  const url = new URL(res.headers.location ?? '');
+  fake.lastChallenge = url.searchParams.get('code_challenge');
+  return url;
 }
 
 /** Full round trip as Google would do it: /start, then /callback with the same state and nonce. */
-async function signInWithGoogle(agent: Agent, claims: Record<string, unknown>, tamper: (q: URLSearchParams, nonce: string) => void = () => undefined) {
-  const authorize = await start(agent);
+async function signInWithGoogle(
+  agent: Agent,
+  claims: Record<string, unknown>,
+  tamper: (q: URLSearchParams, nonce: string) => void = () => undefined,
+  intent?: string,
+) {
+  const authorize = await start(agent, intent);
   const state = authorize.searchParams.get('state') ?? '';
   const nonce = authorize.searchParams.get('nonce') ?? '';
   fake.claims = { nonce, ...claims };
@@ -88,7 +96,7 @@ describe('Google sign-in', () => {
     // The token request proved possession of the PKCE verifier and used the server-side secret.
     const body = fake.lastBody;
     const challenge = createHash('sha256').update(body?.get('code_verifier') ?? '').digest('base64url');
-    expect(challenge).toHaveLength(43);
+    expect(challenge).toBe(fake.lastChallenge);
     expect(body?.get('client_secret')).toBe(GOOGLE.clientSecret);
     expect(body?.get('grant_type')).toBe('authorization_code');
 
@@ -113,16 +121,21 @@ describe('Google sign-in', () => {
     expect(rows).toHaveLength(1);
   });
 
-  it('links a verified email to an existing dev password account instead of duplicating it', async () => {
+  it('links a verified email to an existing dev password account, dropping its password, PIN and sessions', async () => {
     const parent = fakeParent();
-    await app.agent().post('/api/auth/register').send(parent).expect(201);
+    const squatter = app.agent();
+    await squatter.post('/api/auth/register').send(parent).expect(201);
     await signInWithGoogle(app.agent(), googleUser({ email: parent.email }));
     const rows = await app.db.select().from(t.parents).where(eq(t.parents.email, parent.email));
     expect(rows).toHaveLength(1);
+    expect(rows[0]).toMatchObject({ passwordHash: null, pinHash: null });
     expect(rows[0]?.googleSub).toBeTruthy();
+    // Whoever pre-registered that email is signed out and can no longer log in with the password.
+    await squatter.get('/api/auth/me').expect(401);
+    await app.agent().post('/api/auth/login').send(parent).expect(401);
   });
 
-  it('reopens a locked PIN when the parent signs in with Google again', async () => {
+  async function lockedParent(): Promise<{ agent: Agent; user: Record<string, unknown> }> {
     const agent = app.agent();
     const user = googleUser();
     await signInWithGoogle(agent, user);
@@ -130,8 +143,34 @@ describe('Google sign-in', () => {
     await agent.post('/api/parent-gate/lock').expect(200);
     for (let i = 0; i < 4; i += 1) await agent.post('/api/parent-gate/unlock').send({ pin: '0000' }).expect(401);
     await agent.post('/api/parent-gate/unlock').send({ pin: '0000' }).expect(423);
-    await signInWithGoogle(agent, user);
+    return { agent, user };
+  }
+  const nowS = (): number => Math.floor(Date.now() / 1000);
+
+  it('does not let a plain Google sign-in skip an existing PIN (remembered Gmail on a family device)', async () => {
+    const { agent, user } = await lockedParent();
+    await signInWithGoogle(agent, { ...user, auth_time: nowS() - 3600 });
+    expect((await agent.get('/api/auth/me').expect(200)).body).toMatchObject({ pinSet: true, pinLocked: true, parentGateOpen: false });
+    await agent.post('/api/children').send({ displayName: 'Mèo Mây' }).expect(403);
+  });
+
+  it('reopens a locked PIN only after a fresh Google re-authentication', async () => {
+    const { agent, user } = await lockedParent();
+    const url = await start(agent, 'reauth');
+    expect(url.searchParams.get('prompt')).toBe('login');
+    expect(url.searchParams.get('max_age')).toBe('0');
+    const stale = await signInWithGoogle(agent, { ...user, auth_time: nowS() - 3600 }, undefined, 'reauth');
+    expect(stale.headers.location).toBe('/login?error=google-reauth');
+    const fresh = await signInWithGoogle(agent, { ...user, auth_time: nowS() - 5 }, undefined, 'reauth');
+    expect(fresh.headers.location).toBe('/');
     expect((await agent.get('/api/auth/me').expect(200)).body).toMatchObject({ pinLocked: false, parentGateOpen: true });
+  });
+
+  it('lets the first PIN be set only within 15 minutes of signing in', async () => {
+    const agent = app.agent();
+    await signInWithGoogle(agent, googleUser());
+    app.advance(16 * 60 * 1000);
+    await agent.post('/api/auth/pin').send({ pin: TEST_PIN }).expect(403, { error: 'parent-gate-closed' });
   });
 
   it.each([
@@ -160,18 +199,26 @@ describe('Google sign-in', () => {
     await agent.get('/api/auth/me').expect(401);
   });
 
-  it('refuses a replayed state and a failed token exchange', async () => {
+  it('refuses a failed token exchange, a used-up state cookie and a tampered one', async () => {
     const agent = app.agent();
     const authorize = await start(agent);
     const state = authorize.searchParams.get('state') ?? '';
-    const cookie = `miu_oauth_state=${state}`;
     fake.claims = { ...googleUser(), nonce: authorize.searchParams.get('nonce') };
     fake.status = 400;
-    const failed = await app.agent().get(`/api/auth/google/callback?code=c&state=${state}`).set('Cookie', cookie);
+    const failed = await agent.get(`/api/auth/google/callback?code=c&state=${state}`);
     expect(failed.headers.location).toBe('/login?error=google');
     fake.status = 200;
-    const replay = await app.agent().get(`/api/auth/google/callback?code=c&state=${state}`).set('Cookie', cookie);
+    // The callback cleared the cookie: the same state cannot be replayed from this browser.
+    const replay = await agent.get(`/api/auth/google/callback?code=c&state=${state}`);
     expect(replay.headers.location).toBe('/login?error=google');
+    const forged = await app.agent().get(`/api/auth/google/callback?code=c&state=${state}`).set('Cookie', 'miu_oauth=not-base64-json');
+    expect(forged.headers.location).toBe('/login?error=google');
+  });
+
+  it('keeps no per-login state on the server (many abandoned logins cannot lock others out)', async () => {
+    for (let i = 0; i < 50; i += 1) await start(app.agent());
+    const res = await signInWithGoogle(app.agent(), googleUser());
+    expect(res.headers.location).toBe('/');
   });
 
   it('reports Google as unavailable when it is not configured', async () => {
@@ -186,6 +233,18 @@ describe('Google sign-in', () => {
 });
 
 describe('dev/test password sign-in', () => {
+  it('is off unless explicitly enabled', () => {
+    expect(loadConfig({ NODE_ENV: 'development' }).passwordLogin).toBe(false);
+    expect(loadConfig({ NODE_ENV: 'development', PASSWORD_LOGIN: '1' }).passwordLogin).toBe(true);
+  });
+
+  it('only lets the Google endpoints point at loopback outside production, and never with TLS checks off', () => {
+    const google = { GOOGLE_CLIENT_ID: GOOGLE.clientId, GOOGLE_CLIENT_SECRET: GOOGLE.clientSecret, GOOGLE_REDIRECT_URI: GOOGLE.redirectUri };
+    expect(loadConfig({ ...google, GOOGLE_TOKEN_URL: 'http://127.0.0.1:8788/token' }).google?.tokenUrl).toBe('http://127.0.0.1:8788/token');
+    expect(() => loadConfig({ ...google, GOOGLE_TOKEN_URL: 'https://evil.example/token' })).toThrow(/loopback/);
+    expect(() => loadConfig({ ...google, NODE_TLS_REJECT_UNAUTHORIZED: '0' })).toThrow(/NODE_TLS_REJECT_UNAUTHORIZED/);
+  });
+
   it('does not exist when switched off', async () => {
     const off = await createTestApp({ NODE_ENV: 'test' }, { passwordLogin: false });
     try {

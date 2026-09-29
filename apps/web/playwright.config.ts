@@ -33,6 +33,8 @@ export default defineConfig({
         NODE_ENV: 'test',
         PORT: String(API_PORT),
         PGLITE_DIR: 'memory',
+        // The setup project creates its fake parent through the dev/test password route.
+        PASSWORD_LOGIN: '1',
         ALLOWED_ORIGINS: BASE_URL,
         GOOGLE_CLIENT_ID: 'e2e-client-id',
         GOOGLE_CLIENT_SECRET: 'test-secret-e2e',

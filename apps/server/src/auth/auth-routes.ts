@@ -112,7 +112,7 @@ export function authRoutes({ db, config, content, clock }: AuthRouteDeps): Route
     }
     if (!(await verifySecret(input.password, parent.passwordHash))) throw new HttpError(401, 'invalid-credentials');
     // Proving the account also clears a PIN lock-out.
-    res.json(await summary(await signIn(res, parent.id)));
+    res.json(await summary(await signIn(res, parent.id, { openParentGate: true, clearPinLock: true })));
   });
 
   router.post('/auth/logout', async (_req, res) => {
@@ -141,6 +141,10 @@ export function authRoutes({ db, config, content, clock }: AuthRouteDeps): Route
   router.post('/auth/pin', requireParent, pinLimit, async (req, res) => {
     const { pin } = parseInput(SetPinRequest, req.body);
     const ctx = auth(res);
+    // Only within the window opened by the sign-in itself: a tab left open later cannot be used by a
+    // child to set their own PIN (signing in with Google again reopens the window).
+    const window = ctx.session.parentGateUntil;
+    if (!window || window.getTime() <= clock().getTime()) throw new HttpError(403, 'parent-gate-closed');
     const pinHash = await hashSecret(pin, config.scrypt);
     // Only when no PIN exists: changing a PIN is a parent-area action for later, never a silent reset.
     const [parent] = await db

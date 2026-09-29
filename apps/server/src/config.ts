@@ -25,7 +25,7 @@ const Env = z.object({
   /** Test-only endpoint overrides (E2E fake Google); refused in production. */
   GOOGLE_AUTH_URL: z.url().optional(),
   GOOGLE_TOKEN_URL: z.url().optional(),
-  /** `1` enables email+password sign-in (dev/test tooling only; never in production). */
+  /** `1` enables email+password sign-in: explicit opt-in for dev/test tooling; refused in production. */
   PASSWORD_LOGIN: z.enum(['0', '1']).optional(),
 });
 
@@ -78,6 +78,16 @@ export function loadConfig(env: Record<string, string | undefined> = process.env
     if (e.GOOGLE_AUTH_URL || e.GOOGLE_TOKEN_URL) throw new Error('Invalid server env: Google endpoint overrides are test-only');
     if (e.PASSWORD_LOGIN === '1') throw new Error('Invalid server env: PASSWORD_LOGIN is dev/test only');
   }
+  // Outside production the endpoints may point at a local fake Google, never at another host.
+  for (const [key, value] of [['GOOGLE_AUTH_URL', e.GOOGLE_AUTH_URL], ['GOOGLE_TOKEN_URL', e.GOOGLE_TOKEN_URL]] as const) {
+    if (value && !['127.0.0.1', 'localhost', '[::1]'].includes(new URL(value).hostname)) {
+      throw new Error(`Invalid server env: ${key} may only point at loopback`);
+    }
+  }
+  // The ID token is trusted because it comes straight from Google over verified TLS.
+  if (e.GOOGLE_CLIENT_ID && env.NODE_TLS_REJECT_UNAUTHORIZED === '0') {
+    throw new Error('Invalid server env: NODE_TLS_REJECT_UNAUTHORIZED=0 is not allowed with Google sign-in');
+  }
   const googleParts = [e.GOOGLE_CLIENT_ID, e.GOOGLE_CLIENT_SECRET, e.GOOGLE_REDIRECT_URI];
   if (googleParts.some(Boolean) && !googleParts.every(Boolean)) {
     throw new Error('Invalid server env: GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET and GOOGLE_REDIRECT_URI go together');
@@ -101,7 +111,7 @@ export function loadConfig(env: Record<string, string | undefined> = process.env
             tokenUrl: e.GOOGLE_TOKEN_URL ?? GOOGLE_TOKEN_URL,
           }
         : null,
-    // Default on outside production so existing dev/test tooling (E2E setup, review scripts) keeps working.
-    passwordLogin: !production && e.PASSWORD_LOGIN !== '0',
+    // Off unless asked for: a public review build must not let anyone pre-register a parent's email.
+    passwordLogin: !production && e.PASSWORD_LOGIN === '1',
   };
 }

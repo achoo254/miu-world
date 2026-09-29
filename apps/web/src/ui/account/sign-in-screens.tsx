@@ -14,6 +14,7 @@ const CALLBACK_ERRORS: Record<string, string> = {
   'google-unavailable': 'Đăng nhập Google chưa được cấu hình trên máy chủ này.',
   'google-conflict': 'Email này đang gắn với một tài khoản Google khác.',
   'rate-limited': 'Thử quá nhiều lần. Đợi một lúc rồi thử lại nhé.',
+  'google-reauth': 'Cần nhập lại mật khẩu Google để mở khóa PIN. Thử lại nhé.',
 };
 
 function GoogleSignIn({ title, hint, dataId }: { title: string; hint: string; dataId: string }) {
@@ -92,6 +93,12 @@ export function SetPinScreen() {
         <button data-id="set-pin-submit" type="submit" disabled={form.busy}>
           Lưu mã PIN
         </button>
+        <p className="hint">
+          Mã PIN chỉ đặt được trong 15 phút sau khi đăng nhập. Quá thời gian?{' '}
+          <a href={GOOGLE_SIGN_IN} data-id="set-pin-relogin">
+            Đăng nhập lại bằng Google
+          </a>
+        </p>
       </form>
     </main>
   );
