@@ -32,7 +32,7 @@ Dựng khung chạy được cho `apps/web`, `apps/server`, `packages/schema`, `
 ## Success Criteria
 - [x] `pnpm --filter @miu/server dev` trả `/api/health`; `pnpm --filter @miu/web dev` hiển thị shell ở 5174 và gọi được `/api/health` qua proxy
 - [x] 4 gate xanh; test mới pass
-- [ ] CI xanh với `pnpm audit` và Semgrep
+- [x] CI xanh với `pnpm audit` và Semgrep
 - [x] POC vẫn chạy (`pnpm --filter @miu/poc-voxel e2e --project poc` xanh)
 
 ## Risk Assessment

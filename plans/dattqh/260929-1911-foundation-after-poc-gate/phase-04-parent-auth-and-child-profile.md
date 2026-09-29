@@ -44,7 +44,7 @@ Phụ huynh là chủ tài khoản; trẻ là hồ sơ con, không đăng nhập
 4. Báo cáo bảo mật ngắn cho trang review: mô hình session, CSRF, danh sách test.
 
 ## Success Criteria
-- [ ] Mọi endpoint có test IDOR; toàn bộ test pass trên PGlite và Postgres CI
+- [x] Mọi endpoint có test IDOR; toàn bộ test pass trên PGlite và Postgres CI
 - [x] Luồng UI đăng ký → đồng ý → tạo hồ sơ → chọn hồ sơ chạy được ở dev
 - [x] `code-reviewer` review phần auth; phát hiện đã xử lý hoặc ghi lý do
 

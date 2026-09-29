@@ -31,7 +31,7 @@ Server là nguồn sự thật cho nhân vật, tiến độ quest và thưởng
 4. Cập nhật `system-architecture.md` (ranh giới server/quest) nếu khác phase 1.
 
 ## Success Criteria
-- [ ] Toàn bộ test chống gian lận + IDOR pass trên PGlite và Postgres CI
+- [x] Toàn bộ test chống gian lận + IDOR pass trên PGlite và Postgres CI
 - [x] Tổng trong bảng tổng hợp luôn bằng tổng ledger (test kiểm sau chuỗi thao tác ngẫu nhiên có seed)
 - [x] `packages/quest` không import `three`/DOM (lint rule `no-restricted-imports`)
 

@@ -1,7 +1,7 @@
 ---
 phase: 8
 title: "Trang review + gate"
-status: pending
+status: completed
 priority: P1
 effort: "S"
 dependencies: [7]
@@ -28,9 +28,9 @@ Kết thúc đợt bằng một lần duyệt cuối (CLAUDE.md, Master Plan §1
 4. Nhận kết quả, áp dụng, cập nhật docs, tắt server.
 
 ## Success Criteria
-- [ ] Trang review đủ 6 nhóm (ảnh, bản chơi thử, hiệu năng, bảo mật, dependency mới, license)
-- [ ] Người duyệt đã chọn biến thể; `content/` chỉ còn một Miu
-- [ ] Roadmap + Master Plan cập nhật; mọi gate xanh; không còn tiến trình dev/preview chạy
+- [x] Trang review đủ 6 nhóm (ảnh, bản chơi thử, hiệu năng, bảo mật, dependency mới, license)
+- [x] Người duyệt đã chọn biến thể; `content/` chỉ còn một Miu
+- [x] Roadmap + Master Plan cập nhật; mọi gate xanh; không còn tiến trình dev/preview chạy
 
 ## Risk Assessment
 - Người duyệt chọn "Chỉnh thêm". Xử lý: một vòng chỉnh ở phase 6 rồi duyệt lại chỉ phần visual.

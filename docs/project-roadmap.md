@@ -19,8 +19,11 @@ Chỉ ghi task đã bắt đầu; các task còn lại đang ở trạng thái c
 | Task | Nội dung | Trạng thái | Bằng chứng |
 | --- | --- | --- | --- |
 | #1 | Chốt quyết định còn mở (§15) | Hoàn thành (2026-09-29) | Master Plan §15 #3–#8, #16–#18 |
-| #2 | Sửa plan, `CLAUDE.md`, cấu trúc repo | Đang làm — docs/rules đồng bộ Master Plan; cấu trúc `apps/web`, `apps/server` đang dựng | `plans/dattqh/260929-1911-foundation-after-poc-gate/` |
-| #3, #7, #8, #9, #12 | Monorepo, tài khoản phụ huynh, API nhân vật, Miu chibi, palette | Đang làm | như trên |
+| #2 | Sửa plan, `CLAUDE.md`, cấu trúc repo | Hoàn thành (2026-09-29) | `plans/dattqh/260929-1911-foundation-after-poc-gate/` |
+| #3 | Monorepo Vite + React / Express / Drizzle, CI (audit, Semgrep, Postgres 17, E2E) | Hoàn thành (2026-09-29, CI xanh) | như trên |
+| #7 | Tài khoản phụ huynh (Google OAuth), hồ sơ trẻ, cổng PIN, đồng ý (bản nháp draft-2) | Hoàn thành phần kỹ thuật; văn bản đồng ý chờ pháp chế | `plans/dattqh/reports/foundation-review-260929.md` |
+| #8 | Data model + API nhân vật, tiến độ, thưởng tối thiểu | Hoàn thành (2026-09-29) | như trên |
+| #9, #12 | Miu chibi (biến thể A), phụ kiện co theo nhân vật, palette pastel ấm | Hoàn thành (duyệt bằng Jev theo ủy quyền, 2026-09-29) | `plans/dattqh/reports/jev-260929-foundation-review-decisions.md` |
 | #5 | Tìm nguồn asset + license gate | Hoàn thành (Đã qua gate review) | `plans/dattqh/260929-0842-asset-sourcing-and-voxel-poc/` |
 | #6 | POC voxel | Hoàn thành (Đã qua gate review, chốt chỉnh visual) | `plans/dattqh/reports/poc-review-260929.md` |
 
@@ -43,7 +46,8 @@ Mã chỉ dùng trong plan và roadmap, không dùng trong code, tên test, comm
 ## Gate kế tiếp
 
 - **Gate POC (Đã qua - 2026-09-29):** Đã duyệt với kết quả: giữ kiến trúc kitbash/generator/mesher, chuyển sang tinh chỉnh visual (nhân vật chibi, palette phụ kiện & block); dời chốt số liệu hiệu năng sang đo máy thật trước nghiệm thu MVP (máy chuẩn: iPad Gen 10, chốt 2026-09-29).
-- **Gate kế tiếp (Foundation):** plan `plans/dattqh/260929-1911-foundation-after-poc-gate/` — monorepo Vite + React / Express / Drizzle, tài khoản phụ huynh + hồ sơ trẻ, API nhân vật-tiến độ-thưởng, Miu chibi + palette, runtime vào `apps/web`; kết thúc bằng một trang review.
+- **Gate Foundation (Đã qua - 2026-09-29):** monorepo, tài khoản phụ huynh (Google) + hồ sơ trẻ, API nhân vật-tiến độ-thưởng, Miu chibi A + palette, runtime trong `apps/web`; CI xanh. Report: `plans/dattqh/reports/foundation-review-260929.md`.
+- **Gate kế tiếp (Vertical slice):** SLICE-01..11 (Creator, Home + HUD, map rừng, NPC, quest runtime, thử thách Toán, hỗ trợ học, thưởng/Level Up, ba lô) — cần plan mới.
 
 ## Nợ đã biết (trước nghiệm thu MVP)
 

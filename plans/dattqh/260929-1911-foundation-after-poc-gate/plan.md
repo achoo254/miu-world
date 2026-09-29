@@ -1,7 +1,7 @@
 ---
 title: "Foundation sau POC Gate (Master Plan v3 task #2, #3, #7, #8, #9, #12)"
 description: "Đồng bộ docs/rules theo Master Plan, dựng monorepo Vite+React / Express / Drizzle, auth phụ huynh + hồ sơ trẻ, API nhân vật-tiến độ-thưởng tối thiểu, chỉnh visual chibi, chuyển runtime POC vào app web, duyệt cuối một lần."
-status: in-progress
+status: completed
 priority: P1
 effort: "3-4w"
 branch: main
@@ -34,13 +34,13 @@ Không thuộc plan này: SLICE-xx (Creator, HUD, map, quest runtime đầy đ�
 | # | Phase | ID | Tier | Depends | Status |
 |---|-------|----|------|---------|--------|
 | 1 | [Đồng bộ Master Plan + docs/rules](./phase-01-align-master-plan-docs-rules.md) | DOCS-01 | M | — | Xong |
-| 2 | [Monorepo foundation](./phase-02-monorepo-foundation.md) | FOUNDATION-01 | M | 1 | Xong (chờ CI: audit, Semgrep) |
-| 3 | [Schema + database](./phase-03-schema-and-database.md) | FOUNDATION-03 | M | 2 | Xong (chờ CI Postgres 17) |
-| 4 | [Auth phụ huynh + hồ sơ trẻ](./phase-04-parent-auth-and-child-profile.md) | FOUNDATION-02 | L | 3 | Xong (chờ CI Postgres 17) |
-| 5 | [API nhân vật, tiến độ, thưởng](./phase-05-character-progress-reward-api.md) | FOUNDATION-04 | M | 4 | Xong (chờ CI Postgres 17) |
-| 6 | [Visual chibi + palette](./phase-06-visual-chibi-palette.md) | VISUAL-01..03 | M | 1 | Xong (chờ người duyệt chọn biến thể) |
+| 2 | [Monorepo foundation](./phase-02-monorepo-foundation.md) | FOUNDATION-01 | M | 1 | Xong |
+| 3 | [Schema + database](./phase-03-schema-and-database.md) | FOUNDATION-03 | M | 2 | Xong |
+| 4 | [Auth phụ huynh + hồ sơ trẻ](./phase-04-parent-auth-and-child-profile.md) | FOUNDATION-02 | L | 3 | Xong |
+| 5 | [API nhân vật, tiến độ, thưởng](./phase-05-character-progress-reward-api.md) | FOUNDATION-04 | M | 4 | Xong |
+| 6 | [Visual chibi + palette](./phase-06-visual-chibi-palette.md) | VISUAL-01..03 | M | 1 | Xong |
 | 7 | [Runtime vào app web](./phase-07-engine-into-web-app.md) | ENGINE-01 | L | 5, 6 | Xong |
-| 8 | [Trang review + gate](./phase-08-delivery-review-gate.md) | — | S | 7 | Đang làm (chờ người duyệt) |
+| 8 | [Trang review + gate](./phase-08-delivery-review-gate.md) | — | S | 7 | Xong |
 
 Phase 6 chạy song song với 2–5: phase 6 chỉ chạm `content/`, `tools/assets/`, `assets/generated/`, `apps/poc-voxel/src/review/`; phase 2–5 không chạm các đường dẫn đó.
 
@@ -56,12 +56,12 @@ content/ assets/ tools/
 Luồng: game phát event → `packages/quest` dự đoán ở client → API server tính lại, ghi DB, trả kết quả chuẩn → store → React.
 
 ## Success Criteria
-- [ ] Master Plan §7, §15 và docs/rules khớp nhau; không còn mục "chờ chốt" cho Q3–Q8
-- [ ] `pnpm assets:check`, `pnpm test`, `pnpm typecheck`, `pnpm lint` xanh; CI thêm `pnpm audit` + Semgrep xanh; integration test chạy trên Postgres thật trong CI
-- [ ] Test IDOR và chống gian lận cho mọi endpoint phase 4–5
-- [ ] E2E `apps/web`: đăng ký → đồng ý → tạo hồ sơ → vào game → đi lại, gặp NPC (nhãn tương tác hiển thị qua React)
-- [ ] Ngân sách §12 giữ nguyên sau khi chuyển runtime (perf chạy lại một lần ở phase 8)
-- [ ] Trang review cuối đợt: biến thể chibi, báo cáo bảo mật, dependency mới, bảng license, hiệu năng
+- [x] Master Plan §7, §15 và docs/rules khớp nhau; không còn mục "chờ chốt" cho Q3–Q8
+- [x] `pnpm assets:check`, `pnpm test`, `pnpm typecheck`, `pnpm lint` xanh; CI thêm `pnpm audit` + Semgrep xanh; integration test chạy trên Postgres thật trong CI
+- [x] Test IDOR và chống gian lận cho mọi endpoint phase 4–5
+- [x] E2E `apps/web`: đăng ký → đồng ý → tạo hồ sơ → vào game → đi lại, gặp NPC (nhãn tương tác hiển thị qua React)
+- [x] Ngân sách §12 giữ nguyên sau khi chuyển runtime (perf chạy lại một lần ở phase 8)
+- [x] Trang review cuối đợt: biến thể chibi, báo cáo bảo mật, dependency mới, bảng license, hiệu năng
 
 ## Rủi ro chính
 | Rủi ro | Giảm thiểu |

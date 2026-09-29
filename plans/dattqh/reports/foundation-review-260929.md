@@ -1,6 +1,6 @@
 # Foundation review — Master Plan v3 task #2, #3, #7, #8, #9, #12
 
-Date: 2026-09-29 · Plan: `plans/dattqh/260929-1911-foundation-after-poc-gate/` · Status: **Chờ người duyệt**
+Date: 2026-09-29 · Plan: `plans/dattqh/260929-1911-foundation-after-poc-gate/` · Status: **Đã duyệt** (người sở hữu chơi thử + đăng nhập Google thành công; các mục duyệt do Jev quyết theo ủy quyền)
 
 ## Cách duyệt
 1. Trên máy dev chạy server và bản preview, mở cho LAN (thay `<ip-LAN>` bằng IP máy dev):
@@ -71,7 +71,19 @@ Chromium headless, GPU **NVIDIA RTX 5070 Ti** (desktop), CPU throttle qua CDP, 6
 3. Nếu "Chỉnh thêm": một vòng chỉnh ở phase 6 rồi duyệt lại phần visual.
 4. Push để CI chạy `integration` (Postgres 17) và `sast`; đỏ thì sửa code, không nới test.
 
+## Quyết định duyệt (2026-09-29)
+Người sở hữu đăng nhập Google vào game thành công và giao Jev quyết phần duyệt (`jev-260929-foundation-review-decisions.md`).
+
+| Mục | Kết quả | Đã áp dụng |
+| --- | --- | --- |
+| Biến thể Miu | A (0.74 / conf 0.66, dưới ngưỡng) | A thành `miu-cat`; B, C xóa khỏi `content/` và manifest |
+| Bảng màu block | Chỉnh một vòng | Cỏ, lá, rêu dịu hơn (`content/palette.json`, tint mạnh hơn); atlas, map, ảnh sinh lại |
+| Phụ kiện co theo nhân vật | Giữ | Hệ số của A (đầu 1, thân 0.9) |
+| Luồng tài khoản | Giữ | — |
+| Chơi trong app web | Sửa nhỏ | Sương mù bắt đầu xa hơn (0.75 tầm nhìn) để cây xa không bạc màu |
+| FPS iPad Gen 10 | Chưa đo | Chuyển DEVICE-01 (trước nghiệm thu MVP) |
+
+Thêm trong đợt (yêu cầu người sở hữu): đăng nhập phụ huynh bằng Google OAuth, duyệt qua tunnel `https://miu.tunnel.inetdev.io.vn`; review bảo mật `code-reviewer-260929-google-oauth-review.md` (2 High, 3 Medium đã sửa). CI xanh ở mọi lần push.
+
 ## Câu hỏi mở
-- Chọn biến thể Miu nào (A/B/C hay chỉnh thêm)?
-- FPS trên iPad Gen 10 ở mức Vừa?
-- Có cho phép commit và push đợt này để CI chạy không?
+- Không có. Việc tiếp theo: plan vertical slice (SLICE-01..11) và đo DEVICE-01 trên iPad Gen 10.

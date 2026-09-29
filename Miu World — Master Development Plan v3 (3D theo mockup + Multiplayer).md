@@ -468,6 +468,7 @@ Mọi quyết định của đợt POC và Foundation đã chốt (2026-09-29).
 | 15 | Đánh giá hiệu năng mobile (sau POC; cập nhật 2026-09-29) | Chưa kết luận từ giả lập; máy chuẩn là iPad Gen 10, đo ở Low/Mid/High | Chốt Gate hiệu năng khi có dữ liệu iPad Gen 10 (FPS, nhiệt độ, pin); máy yếu hơn dùng mức `low`, không chặn gate |
 | 16 | Framework web | Vite + React SPA, React Router (thay Next.js) | Game client-only, static hosting + CDN, CSP chặt không cần nonce; SEO trang public làm site tĩnh riêng nếu cần |
 | 17 | ORM và cơ sở dữ liệu | Drizzle + PostgreSQL; PGlite cho dev và test | Máy dev không cần Docker; CI chạy test trên PostgreSQL thật để bắt khác biệt |
+| 20 | Duyệt đợt Foundation (2026-09-29, Jev quyết theo ủy quyền của người sở hữu) | Miu chibi chọn biến thể A (đầu 1.0×, thân 0.85×, tay chân 0.8×, mặt bằng khối); bảng màu block pastel ấm, chỉnh một vòng làm dịu xanh cỏ và lá; giữ cơ chế co phụ kiện theo nhân vật; giữ luồng tài khoản; chơi trong app web sửa sương mù xa | Chọn A dưới ngưỡng tự quyết (người sở hữu có thể đảo); FPS iPad Gen 10 chưa đo, chuyển DEVICE-01 trước nghiệm thu MVP |
 | 19 | Đăng nhập phụ huynh | Google OAuth (Gmail), chỉ nhận email đã xác minh + mã tài khoản; PIN phụ huynh đặt ở lần đăng nhập đầu | Không lưu mật khẩu; văn bản đồng ý cập nhật (bản nháp draft-2, chờ pháp chế); ứng dụng Google cần xác minh trước khi mở người dùng thật |
 | 18 | Nối React và Three.js | Bridge tự viết (event → store → `useSyncExternalStore`), không dùng React Three Fiber | Runtime không phụ thuộc React; React không nhận dữ liệu theo khung hình |
 
