@@ -1,7 +1,7 @@
 ---
 phase: 3
 title: "Schema + database"
-status: pending
+status: completed
 priority: P1
 effort: "M"
 dependencies: [2]
@@ -37,8 +37,8 @@ Data model Master Plan §11 ở mức Foundation cần: tài khoản, hồ sơ t
 
 ## Success Criteria
 - [ ] Test DB pass trên PGlite (local) và Postgres 17 (CI) với cùng file test
-- [ ] Migration SQL có trong repo, `drizzle-kit check` sạch
-- [ ] `.data/` bị ignore; không có dữ liệu thật trong fixture
+- [x] Migration SQL có trong repo, `drizzle-kit check` sạch
+- [x] `.data/` bị ignore; không có dữ liệu thật trong fixture
 
 ## Risk Assessment
 - Khác biệt PGlite/Postgres (extension, `gen_random_uuid`). Xử lý: sinh uuid ở ứng dụng (`crypto.randomUUID`), không dùng extension.

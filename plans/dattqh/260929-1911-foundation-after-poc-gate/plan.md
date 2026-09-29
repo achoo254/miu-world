@@ -1,7 +1,7 @@
 ---
 title: "Foundation sau POC Gate (Master Plan v3 task #2, #3, #7, #8, #9, #12)"
 description: "Đồng bộ docs/rules theo Master Plan, dựng monorepo Vite+React / Express / Drizzle, auth phụ huynh + hồ sơ trẻ, API nhân vật-tiến độ-thưởng tối thiểu, chỉnh visual chibi, chuyển runtime POC vào app web, duyệt cuối một lần."
-status: pending
+status: in-progress
 priority: P1
 effort: "3-4w"
 branch: main
@@ -33,14 +33,14 @@ Không thuộc plan này: SLICE-xx (Creator, HUD, map, quest runtime đầy đ�
 
 | # | Phase | ID | Tier | Depends | Status |
 |---|-------|----|------|---------|--------|
-| 1 | [Đồng bộ Master Plan + docs/rules](./phase-01-align-master-plan-docs-rules.md) | DOCS-01 | M | — | Pending |
-| 2 | [Monorepo foundation](./phase-02-monorepo-foundation.md) | FOUNDATION-01 | M | 1 | Pending |
-| 3 | [Schema + database](./phase-03-schema-and-database.md) | FOUNDATION-03 | M | 2 | Pending |
-| 4 | [Auth phụ huynh + hồ sơ trẻ](./phase-04-parent-auth-and-child-profile.md) | FOUNDATION-02 | L | 3 | Pending |
-| 5 | [API nhân vật, tiến độ, thưởng](./phase-05-character-progress-reward-api.md) | FOUNDATION-04 | M | 4 | Pending |
-| 6 | [Visual chibi + palette](./phase-06-visual-chibi-palette.md) | VISUAL-01..03 | M | 1 | Pending |
-| 7 | [Runtime vào app web](./phase-07-engine-into-web-app.md) | ENGINE-01 | L | 5, 6 | Pending |
-| 8 | [Trang review + gate](./phase-08-delivery-review-gate.md) | — | S | 7 | Pending |
+| 1 | [Đồng bộ Master Plan + docs/rules](./phase-01-align-master-plan-docs-rules.md) | DOCS-01 | M | — | Xong |
+| 2 | [Monorepo foundation](./phase-02-monorepo-foundation.md) | FOUNDATION-01 | M | 1 | Xong (chờ CI: audit, Semgrep) |
+| 3 | [Schema + database](./phase-03-schema-and-database.md) | FOUNDATION-03 | M | 2 | Xong (chờ CI Postgres 17) |
+| 4 | [Auth phụ huynh + hồ sơ trẻ](./phase-04-parent-auth-and-child-profile.md) | FOUNDATION-02 | L | 3 | Xong (chờ CI Postgres 17) |
+| 5 | [API nhân vật, tiến độ, thưởng](./phase-05-character-progress-reward-api.md) | FOUNDATION-04 | M | 4 | Xong (chờ CI Postgres 17) |
+| 6 | [Visual chibi + palette](./phase-06-visual-chibi-palette.md) | VISUAL-01..03 | M | 1 | Xong (chờ người duyệt chọn biến thể) |
+| 7 | [Runtime vào app web](./phase-07-engine-into-web-app.md) | ENGINE-01 | L | 5, 6 | Xong |
+| 8 | [Trang review + gate](./phase-08-delivery-review-gate.md) | — | S | 7 | Đang làm (chờ người duyệt) |
 
 Phase 6 chạy song song với 2–5: phase 6 chỉ chạm `content/`, `tools/assets/`, `assets/generated/`, `apps/poc-voxel/src/review/`; phase 2–5 không chạm các đường dẫn đó.
 

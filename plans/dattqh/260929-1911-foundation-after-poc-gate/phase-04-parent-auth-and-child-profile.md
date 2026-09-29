@@ -1,7 +1,7 @@
 ---
 phase: 4
 title: "Auth phụ huynh + hồ sơ trẻ"
-status: pending
+status: completed
 priority: P1
 effort: "L"
 dependencies: [3]
@@ -45,8 +45,8 @@ Phụ huynh là chủ tài khoản; trẻ là hồ sơ con, không đăng nhập
 
 ## Success Criteria
 - [ ] Mọi endpoint có test IDOR; toàn bộ test pass trên PGlite và Postgres CI
-- [ ] Luồng UI đăng ký → đồng ý → tạo hồ sơ → chọn hồ sơ chạy được ở dev
-- [ ] `code-reviewer` review phần auth; phát hiện đã xử lý hoặc ghi lý do
+- [x] Luồng UI đăng ký → đồng ý → tạo hồ sơ → chọn hồ sơ chạy được ở dev
+- [x] `code-reviewer` review phần auth; phát hiện đã xử lý hoặc ghi lý do
 
 ## Risk Assessment
 - Scrypt N=2^17 tốn ~128 MB/lần băm → rủi ro DoS. Xử lý: rate limit + giới hạn băm đồng thời (hàng đợi đơn giản); tham số để trong config.

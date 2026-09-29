@@ -1,7 +1,7 @@
 ---
 phase: 5
 title: "API nhân vật, tiến độ, thưởng"
-status: pending
+status: completed
 priority: P1
 effort: "M"
 dependencies: [4]
@@ -32,8 +32,8 @@ Server là nguồn sự thật cho nhân vật, tiến độ quest và thưởng
 
 ## Success Criteria
 - [ ] Toàn bộ test chống gian lận + IDOR pass trên PGlite và Postgres CI
-- [ ] Tổng trong bảng tổng hợp luôn bằng tổng ledger (test kiểm sau chuỗi thao tác ngẫu nhiên có seed)
-- [ ] `packages/quest` không import `three`/DOM (lint rule `no-restricted-imports`)
+- [x] Tổng trong bảng tổng hợp luôn bằng tổng ledger (test kiểm sau chuỗi thao tác ngẫu nhiên có seed)
+- [x] `packages/quest` không import `three`/DOM (lint rule `no-restricted-imports`)
 
 ## Risk Assessment
 - Race khi 2 tab cùng hoàn thành bước. Xử lý: unique (child_id, source) + `ON CONFLICT DO NOTHING` trong transaction.

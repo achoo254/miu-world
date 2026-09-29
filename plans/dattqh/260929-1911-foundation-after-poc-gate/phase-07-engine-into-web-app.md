@@ -1,7 +1,7 @@
 ---
 phase: 7
 title: "Runtime vào app web"
-status: pending
+status: completed
 priority: P1
 effort: "L"
 dependencies: [5, 6]
@@ -31,10 +31,10 @@ Chuyển runtime Three.js của POC vào `apps/web/src/game`, nối React qua `g
 5. Xóa `apps/poc-voxel`, cập nhật root `typecheck`, docs/rules.
 
 ## Success Criteria
-- [ ] E2E `play`: đăng nhập sẵn → `/play` → đi tới Vẹt → nhãn React hiển thị; không request ngoài origin; không lỗi console; draw call ≤ 150, tam giác ≤ 150k
-- [ ] `grep -r "poc-voxel"` trong code/docs/rules chỉ còn ở plan/report lịch sử
-- [ ] Build `apps/web` không copy file ngoài danh sách runtime dùng; tải vùng đầu ≤ 8 MB nén (ghi số)
-- [ ] 4 gate xanh
+- [x] E2E `play`: đăng nhập sẵn → `/play` → đi tới Vẹt → nhãn React hiển thị; không request ngoài origin; không lỗi console; draw call ≤ 150, tam giác ≤ 150k
+- [x] `grep -r "poc-voxel"` trong code/docs/rules chỉ còn ở plan/report lịch sử
+- [x] Build `apps/web` không copy file ngoài danh sách runtime dùng; tải vùng đầu ≤ 8 MB nén (ghi số: 2.14 MB thô / 0.54 MB gzip, `assets/generated/review/perf.json`)
+- [x] 4 gate xanh
 
 ## Risk Assessment
 - React StrictMode mount 2 lần tạo 2 renderer. Xử lý: `Game` idempotent start/dispose; test E2E đếm canvas = 1.

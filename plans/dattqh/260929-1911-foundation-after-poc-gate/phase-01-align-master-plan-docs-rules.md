@@ -1,7 +1,7 @@
 ---
 phase: 1
 title: "Đồng bộ Master Plan + docs/rules"
-status: pending
+status: completed
 priority: P1
 effort: "M"
 dependencies: []
@@ -42,10 +42,10 @@ Master Plan v3 là nguồn chuẩn. Ghi các quyết định đã chốt vào Ma
 5. Kiểm link tương đối trong `docs/`, `CLAUDE.md`, README trỏ đúng file tồn tại.
 
 ## Success Criteria
-- [ ] `grep -n "Next.js" docs CLAUDE.md README.md .claude` chỉ còn trong sổ quyết định (phương án bị loại)
-- [ ] Master Plan §15 không còn Q3–Q8 trong "Còn cần bạn chốt"
-- [ ] 4 rule trong `.claude/rules/` có front matter `paths:` hợp lệ
-- [ ] Link tương đối không gãy; 4 gate vẫn xanh (không đổi code)
+- [x] `grep -n "Next.js" docs CLAUDE.md README.md .claude` chỉ còn trong sổ quyết định (phương án bị loại)
+- [x] Master Plan §15 không còn Q3–Q8 trong "Còn cần bạn chốt"
+- [x] 4 rule trong `.claude/rules/` có front matter `paths:` hợp lệ
+- [x] Link tương đối không gãy; 4 gate vẫn xanh (không đổi code)
 
 ## Risk Assessment
 - Docs khẳng định hành vi chưa có. Xử lý: tách rõ "hiện có" và "đích" như `system-architecture.md` đang làm.

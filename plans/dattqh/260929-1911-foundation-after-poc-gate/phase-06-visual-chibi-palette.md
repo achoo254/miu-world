@@ -1,7 +1,7 @@
 ---
 phase: 6
 title: "Visual chibi + palette"
-status: pending
+status: completed
 priority: P1
 effort: "M"
 dependencies: [1]
@@ -13,7 +13,7 @@ dependencies: [1]
 Thực hiện quyết định §15 #12–#14: chỉnh Miu theo chibi voxel (đầu/mặt/tỷ lệ/silhouette), phụ kiện theo tỷ lệ mới, palette + texture block đồng nhất. Chưa có mock voxel làm đích nên sinh **3 biến thể** để người duyệt chọn một lần ở phase 8. Giữ kiến trúc: kitbash 1 skinned draw call, phụ kiện từ JSON, atlas tint theo palette. Chạy song song với phase 2–5.
 
 ## Requirements
-- Chỉ chạm: `content/`, `tools/assets/`, `assets/generated/` (qua script), `apps/poc-voxel/src/review/`, `apps/poc-voxel/review.html`.
+- Chỉ chạm: `content/`, `tools/assets/`, `assets/generated/` (qua script), `apps/poc-voxel/src/review/`, `apps/poc-voxel/review.html`. Thực tế thêm tham số `scale` ở `character-accessories.ts` và query `accScale` ở `preview-main.ts` để phụ kiện co theo biến thể (mặc định 1, không đổi hành vi cũ).
 - Nhân vật (`tools/assets/kitbash-character.ts`, `content/characters.json`):
   - Thêm tham số tỷ lệ vào spec Zod: `headScale` (đã có), `torsoScale`, `limbScale` (dài chân/tay), `headOffset`; mặc định giữ nguyên hình hiện tại để test cũ không đổi.
   - 3 biến thể `miu-cat-chibi-a|b|c` (đầu ≈ 1.0 / 1.15 / 1.3 so với thân, thân + chân ngắn dần); mặt rõ hơn bằng khối mắt/má/mũi mô tả trong JSON (`content/faces/*.json`, tách khỏi `content/accessories/` để API nhân vật không cho "mặc" mặt) gắn node `head`, dùng lại cơ chế phụ kiện voxel; không vẽ hay sinh texture mặt mới. Để giữ 1 draw call/nhân vật, khối mặt được gộp vào mesh nhân vật lúc kitbash (không phải phụ kiện rời).
@@ -31,9 +31,9 @@ Thực hiện quyết định §15 #12–#14: chỉnh Miu theo chibi voxel (đ�
 4. Cập nhật review gallery.
 
 ## Success Criteria
-- [ ] 3 biến thể qua validator; `pnpm assets:check` xanh; build xác định (chạy lại → cùng hash)
-- [ ] Review gallery hiển thị biến thể + palette trước/sau
-- [ ] Không file nào ngoài danh sách "Chỉ chạm" bị sửa
+- [x] 3 biến thể qua validator; `pnpm assets:check` xanh; build xác định (chạy lại → cùng hash)
+- [x] Review gallery hiển thị biến thể + palette trước/sau
+- [x] Không file nào ngoài danh sách "Chỉ chạm" bị sửa
 
 ## Risk Assessment
 - Không có đích visual → chọn vẫn chưa đạt. Xử lý: form review cho phép "Chỉnh thêm" kèm ghi chú; lặp tối đa một vòng trước khi chốt.

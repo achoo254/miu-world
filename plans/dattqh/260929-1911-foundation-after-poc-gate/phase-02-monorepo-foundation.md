@@ -1,7 +1,7 @@
 ---
 phase: 2
 title: "Monorepo foundation"
-status: pending
+status: completed
 priority: P1
 effort: "M"
 dependencies: [1]
@@ -30,10 +30,10 @@ Dựng khung chạy được cho `apps/web`, `apps/server`, `packages/schema`, `
 6. Cập nhật `CLAUDE.md` mục Lệnh (lệnh dev server/web, cổng 8787/5174/4174 tạm).
 
 ## Success Criteria
-- [ ] `pnpm --filter @miu/server dev` trả `/api/health`; `pnpm --filter @miu/web dev` hiển thị shell ở 5174 và gọi được `/api/health` qua proxy
-- [ ] 4 gate xanh; test mới pass
+- [x] `pnpm --filter @miu/server dev` trả `/api/health`; `pnpm --filter @miu/web dev` hiển thị shell ở 5174 và gọi được `/api/health` qua proxy
+- [x] 4 gate xanh; test mới pass
 - [ ] CI xanh với `pnpm audit` và Semgrep
-- [ ] POC vẫn chạy (`pnpm --filter @miu/poc-voxel e2e --project poc` xanh)
+- [x] POC vẫn chạy (`pnpm --filter @miu/poc-voxel e2e --project poc` xanh)
 
 ## Risk Assessment
 - ESLint/TS config chung vỡ khi thêm JSX. Xử lý: override theo glob `apps/web/**`.
