@@ -1,7 +1,7 @@
 ---
 phase: 6
 title: "Final Review + Go/No-Go Gate"
-status: pending
+status: in-progress
 priority: P1
 effort: "S"
 dependencies: [5]
@@ -31,7 +31,7 @@ dependencies: [5]
 4. Ghi việc còn nợ: đo đủ 2 Android + 1 iPhone (FPS, nhiệt, pin 15 phút) trước nghiệm thu MVP (Master Plan §12, §16).
 
 ## Success Criteria
-- [ ] Report có số liệu giả lập 2 mức throttle × 3 mức chất lượng + 1 máy thật
+- [ ] Report có số liệu giả lập 2 mức throttle × 3 mức chất lượng (✅ xong) + 1 máy thật (chờ người duyệt)
 - [ ] Quyết định gate ghi trong Master Plan v3 §15
 - [ ] Process dev server đã tắt
 

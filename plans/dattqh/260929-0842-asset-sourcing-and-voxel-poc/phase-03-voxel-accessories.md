@@ -1,7 +1,7 @@
 ---
 phase: 3
 title: "Voxel Accessories from JSON"
-status: pending
+status: completed
 priority: P2
 effort: "S"
 dependencies: [2]
@@ -33,9 +33,9 @@ Sinh phụ kiện trang phục (mũ phù thủy hồng, balo) dạng khối từ
 <!-- Updated: Validation Session 1 - duyệt gộp một lần cuối -->
 
 ## Success Criteria
-- [ ] Test pass; 2 phụ kiện gắn đúng khi chạy anim walk
-- [ ] Đổi palette tạo biến thể không cần sửa code
-- [ ] Preview có trong gallery duyệt cuối
+- [x] Test pass; 2 phụ kiện gắn đúng khi chạy anim walk
+- [x] Đổi palette tạo biến thể không cần sửa code
+- [x] Preview có trong gallery duyệt cuối
 
 ## Risk Assessment
 - Mũ nhìn thô. Xử lý: tăng độ phân giải lưới (khối 1/8), thêm chi tiết sao bằng khối vàng; vẫn thô → ghi nhận, dùng mũ đơn giản cho MVP.

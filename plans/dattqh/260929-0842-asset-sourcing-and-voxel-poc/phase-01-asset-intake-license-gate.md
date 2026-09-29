@@ -1,7 +1,7 @@
 ---
 phase: 1
 title: "Asset Intake + License Gate"
-status: pending
+status: completed
 priority: P1
 effort: "M"
 dependencies: []
@@ -51,11 +51,11 @@ Pack MVP/POC (allowlist đã chốt):
 6. CI workflow chạy `pnpm assets:check` + test.
 
 ## Success Criteria
-- [ ] `pnpm assets:fetch && pnpm assets:check` exit 0 trên máy sạch
-- [ ] Test check-assets: 5 case fail + 1 case pass
-- [ ] `assets/LICENSES.md` liệt kê đủ pack, license, URL
-- [ ] CI đỏ khi thêm file lạ vào `assets/`
-- [ ] Danh sách license nằm trong gallery duyệt cuối (dựng ở phase 5, duyệt ở phase 6)
+- [x] `pnpm assets:fetch && pnpm assets:check` exit 0 trên máy sạch
+- [x] Test check-assets: 5 case fail + 1 case pass
+- [x] `assets/LICENSES.md` liệt kê đủ pack, license, URL
+- [x] CI đỏ khi thêm file lạ vào `assets/`
+- [x] Danh sách license nằm trong gallery duyệt cuối (dựng ở phase 5, duyệt ở phase 6)
 
 ## Risk Assessment
 - URL Kenney có hash động trong đường dẫn → đổi khi pack cập nhật. Tín hiệu: fetch 404/hash lệch. Xử lý: cập nhật `sources.json` có duyệt, không tự nâng phiên bản.

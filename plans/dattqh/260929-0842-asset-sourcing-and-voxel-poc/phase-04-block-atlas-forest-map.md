@@ -1,7 +1,7 @@
 ---
 phase: 4
 title: "Block Atlas + Forest Map Data"
-status: pending
+status: completed
 priority: P1
 effort: "M"
 dependencies: [1]
@@ -37,10 +37,10 @@ seed ────────┴▶ generate-forest-map ─▶ chunks.bin (RLE) 
 4. Render ảnh top-down/isometric bằng script vào gallery duyệt cuối.
 
 ## Success Criteria
-- [ ] Test chunk format pass
-- [ ] Atlas không bleeding ở mip thấp (kiểm ảnh)
-- [ ] Map có suối, cầu, cây, lối đi, vị trí NPC/rương/cây cổ thụ theo `entities.json`
-- [ ] `chunks.bin` ≤ 1 MB
+- [x] Test chunk format pass
+- [x] Atlas không bleeding ở mip thấp (kiểm ảnh)
+- [x] Map có suối, cầu, cây, lối đi, vị trí NPC/rương/cây cổ thụ theo `entities.json`
+- [x] `chunks.bin` ≤ 1 MB
 
 ## Risk Assessment
 - Texture Voxel Pack (2015) trông cũ/lệch palette. Tín hiệu: bị chê ở duyệt cuối. Xử lý: tint theo palette bằng script; nếu vẫn lệch → texture block sinh bằng code (noise + palette), vẫn không vẽ tay.

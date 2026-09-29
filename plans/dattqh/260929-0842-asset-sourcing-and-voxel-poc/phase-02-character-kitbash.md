@@ -1,7 +1,7 @@
 ---
 phase: 2
 title: "Character Kitbash (Miu)"
-status: pending
+status: completed
 priority: P1
 effort: "M"
 dependencies: [1]
@@ -44,10 +44,10 @@ Fallback C (nếu kết quả ghép bị từ chối ở duyệt cuối): `box-c
 4. Người duyệt xem gallery một lần ở cuối (phase 6); bị từ chối → fallback C.
 
 ## Success Criteria
-- [ ] `miu-cat.glb` chạy đủ anim trong three.js viewer, không vỡ mesh
-- [ ] Test validate pass (node, anim, tris, material)
-- [ ] Ảnh preview có trong gallery duyệt cuối
-- [ ] 4 clip wave/jump/yawn/cheer chạy được trong viewer
+- [x] `miu-cat.glb` chạy đủ anim trong three.js viewer, không vỡ mesh
+- [x] Test validate pass (node, anim, tris, material)
+- [x] Ảnh preview có trong gallery duyệt cuối
+- [x] 4 clip wave/jump/yawn/cheer chạy được trong viewer
 
 ## Risk Assessment
 - Tỉ lệ đầu thú vuông trên thân người lệch. Xử lý: tham số JSON cho chiều rộng đầu = 1.2–1.6× đầu người gốc (scale khối mèo ~0.65–0.9), thân rút ngắn (chibi).

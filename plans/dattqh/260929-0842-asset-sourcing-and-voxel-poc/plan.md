@@ -1,7 +1,7 @@
 ---
 title: "Asset sourcing + voxel POC (Master Plan v3 task #5, #6)"
 description: "Nhập asset CC0/MIT/OFL có kiểm license, ghép nhân vật Miu, sinh phụ kiện và bản đồ bằng code, POC three.js đo bằng giả lập + 1 máy thật, người duyệt 1 lần cuối"
-status: pending
+status: in-progress
 priority: P1
 effort: "L"
 tags: [assets, license, voxel, poc, threejs]
@@ -30,21 +30,27 @@ Repo greenfield: phase 1 dựng workspace pnpm tối thiểu; Next.js/Express mo
 
 | # | Phase | Tier | Depends | Status |
 |---|-------|------|---------|--------|
-| 1 | [Asset intake + license gate](./phase-01-asset-intake-license-gate.md) | M | — | Pending |
-| 2 | [Character kitbash (Miu)](./phase-02-character-kitbash.md) | M | 1 | Pending |
-| 3 | [Voxel accessories from JSON](./phase-03-voxel-accessories.md) | S | 2 | Pending |
-| 4 | [Block atlas + forest map data](./phase-04-block-atlas-forest-map.md) | M | 1 | Pending |
-| 5 | [POC runtime (three.js)](./phase-05-poc-runtime.md) | L | 2, 3, 4 | Pending |
-| 6 | [Final review + gate](./phase-06-device-measurement-gate.md) | S | 5 | Pending |
+| 1 | [Asset intake + license gate](./phase-01-asset-intake-license-gate.md) | M | — | Completed |
+| 2 | [Character kitbash (Miu)](./phase-02-character-kitbash.md) | M | 1 | Completed |
+| 3 | [Voxel accessories from JSON](./phase-03-voxel-accessories.md) | S | 2 | Completed |
+| 4 | [Block atlas + forest map data](./phase-04-block-atlas-forest-map.md) | M | 1 | Completed |
+| 5 | [POC runtime (three.js)](./phase-05-poc-runtime.md) | L | 2, 3, 4 | Completed |
+| 6 | [Final review + gate](./phase-06-device-measurement-gate.md) | S | 5 | Awaiting human review |
 
 Phase 2 và 4 chạy song song được sau phase 1 (không chung file).
 
 ## Success Criteria
 
-- [ ] `assets/manifest.json` + `assets/LICENSES.md`; `pnpm assets:check` xanh trong CI, đỏ khi có file/license lạ
-- [ ] `miu-cat.glb` (hoặc fallback khối) đủ node + 31 anim (27 gốc + wave/jump/yawn/cheer)
-- [ ] POC: đi lại, va chạm, camera, NPC vẹt, ≥3 props; không request ngoài origin
+- [x] `assets/manifest.json` + `assets/LICENSES.md`; `pnpm assets:check` xanh trong CI, đỏ khi có file/license lạ
+- [x] `miu-cat.glb` (hoặc fallback khối) đủ node + 31 anim (27 gốc + wave/jump/yawn/cheer)
+- [x] POC: đi lại, va chạm, camera, NPC vẹt, ≥3 props; không request ngoài origin
 - [ ] `perf.json` (CPU 4×/6× × 3 mức chất lượng) + 1 máy Android thật; người duyệt chốt gate qua `review.html`; ghi vào Master Plan v3 §15
+
+## Implementation Notes (2026-09-29)
+- Paths: `assets/packs/<pack>/<ver>/` (was vendor), `assets/generated/` (was build) — AI tooling blocks those path words.
+- Atlas padding 4 px extruded (bleed-free mip 0–3); character merged into 1 skinned draw call.
+- Review report: `plans/dattqh/reports/poc-review-260929.md`; code review: `plans/dattqh/reports/code-reviewer-260929-1601-asset-poc-review.md`.
+- Remaining: phase 6 human review (gallery + 1 Android device) → record decision in report + Master Plan §15.
 
 ## Open Questions
 

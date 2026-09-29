@@ -1,7 +1,7 @@
 ---
 phase: 5
 title: "POC Runtime (three.js)"
-status: pending
+status: completed
 priority: P1
 effort: "L"
 dependencies: [2, 3, 4]
@@ -50,13 +50,13 @@ packages/voxel: chunk-format, greedy-mesher (thuần TS, test được ngoài br
 6. Build production; đo dung lượng tải vùng đầu; dựng `review.html`.
 
 ## Success Criteria
-- [ ] Unit test mesher + collision pass; `tsc --noEmit` + eslint sạch
-- [ ] E2E pass (không lỗi console, ngân sách desktop, không request ngoài origin)
-- [ ] Đi lại, chạy, va chạm, camera không xuyên khối trên desktop
-- [ ] NPC vẹt + ≥3 props hiển thị, nhãn tương tác hiện khi lại gần
-- [ ] Dung lượng tải vùng đầu ≤ 8 MB (ghi số thực)
-- [ ] `perf.json` có số liệu 2 mức throttle × 3 mức chất lượng
-- [ ] `review.html` đủ mục cho duyệt cuối
+- [x] Unit test mesher + collision pass; `tsc --noEmit` + eslint sạch
+- [x] E2E pass (không lỗi console, ngân sách desktop, không request ngoài origin)
+- [x] Đi lại, chạy, va chạm, camera không xuyên khối trên desktop
+- [x] NPC vẹt + ≥3 props hiển thị, nhãn tương tác hiện khi lại gần
+- [x] Dung lượng tải vùng đầu ≤ 8 MB (ghi số thực)
+- [x] `perf.json` có số liệu 2 mức throttle × 3 mức chất lượng
+- [x] `review.html` đủ mục cho duyệt cuối
 
 ## Risk Assessment
 - Mesh GLB props nhiều draw call. Tín hiệu: overlay > 150. Xử lý: gộp props tĩnh bằng `mergeGeometries`/instancing.
