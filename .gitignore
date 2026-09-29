@@ -6,3 +6,7 @@ dist/
 assets/_inbox/
 __pycache__/
 *.pyc
+.cache/
+test-results/
+playwright-report/
+.idea/

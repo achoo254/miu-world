@@ -1,0 +1,41 @@
+{
+  "name": "miu-world",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.9.0",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "assets:fetch": "tsx tools/assets/fetch-assets.ts",
+    "assets:manifest": "tsx tools/assets/build-manifest.ts",
+    "assets:check": "tsx tools/assets/check-assets.ts",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit -p tsconfig.json && tsc --noEmit -p apps/poc-voxel/tsconfig.json",
+    "lint": "eslint . --max-warnings=0",
+    "assets:character": "tsx tools/assets/kitbash-character.ts",
+    "assets:preview": "tsx tools/assets/render-preview.ts",
+    "assets:atlas": "tsx tools/assets/build-atlas.ts",
+    "world:forest": "tsx tools/world/generate-forest-map.ts"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@gltf-transform/core": "^4.5.0",
+    "@gltf-transform/extensions": "^4.5.0",
+    "@playwright/test": "^1.63.0",
+    "@types/node": "^26.6.3",
+    "@types/picomatch": "^4.0.3",
+    "@types/pngjs": "^6.0.5",
+    "eslint": "^10.11.0",
+    "fflate": "^0.8.3",
+    "gl-matrix": "^3.4.4",
+    "picomatch": "^4.0.7",
+    "pngjs": "^7.0.0",
+    "tsx": "^4.23.15",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.70.1",
+    "vite": "^8.3.1",
+    "vitest": "^5.0.2",
+    "zod": "^4.6.5"
+  }
+}
