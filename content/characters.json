@@ -3,29 +3,10 @@
     "output": "generated/characters/miu-cat.glb",
     "rig": "packs/kenney-blocky-characters/2.0/character-a.glb",
     "headSource": "packs/kenney-cube-pets/2.0/animal-cat.glb",
-    "headNodes": ["body", "Group"],
-    "tailNode": "tail",
-    "headScale": 0.8,
-    "tailHeight": 0.35,
-    "palette": {
-      "fur": "#7c8096",
-      "shirt": "#f39ac0",
-      "pants": "#6c8ed8"
-    },
-    "partColors": {
-      "torso": "shirt",
-      "arm-left": "fur",
-      "arm-right": "fur",
-      "leg-left": "pants",
-      "leg-right": "pants"
-    },
-    "extraAnimations": ["wave", "jump", "yawn", "cheer"]
-  },
-  "miu-cat-chibi-a": {
-    "output": "generated/characters/miu-cat-chibi-a.glb",
-    "rig": "packs/kenney-blocky-characters/2.0/character-a.glb",
-    "headSource": "packs/kenney-cube-pets/2.0/animal-cat.glb",
-    "headNodes": ["body", "Group"],
+    "headNodes": [
+      "body",
+      "Group"
+    ],
     "tailNode": "tail",
     "headScale": 0.8,
     "tailHeight": 0.3,
@@ -33,7 +14,10 @@
     "limbScale": 0.8,
     "headOffset": 0,
     "face": "miu-cat-face",
-    "accessoryScale": { "head": 1, "torso": 0.9 },
+    "accessoryScale": {
+      "head": 1,
+      "torso": 0.9
+    },
     "palette": {
       "fur": "#8a8ea6",
       "shirt": "#f7a6c8",
@@ -46,60 +30,11 @@
       "leg-left": "pants",
       "leg-right": "pants"
     },
-    "extraAnimations": ["wave", "jump", "yawn", "cheer"]
-  },
-  "miu-cat-chibi-b": {
-    "output": "generated/characters/miu-cat-chibi-b.glb",
-    "rig": "packs/kenney-blocky-characters/2.0/character-a.glb",
-    "headSource": "packs/kenney-cube-pets/2.0/animal-cat.glb",
-    "headNodes": ["body", "Group"],
-    "tailNode": "tail",
-    "headScale": 0.92,
-    "tailHeight": 0.26,
-    "torsoScale": 0.78,
-    "limbScale": 0.7,
-    "headOffset": 0,
-    "face": "miu-cat-face",
-    "accessoryScale": { "head": 1.15, "torso": 0.85 },
-    "palette": {
-      "fur": "#8a8ea6",
-      "shirt": "#f7a6c8",
-      "pants": "#7d9fe3"
-    },
-    "partColors": {
-      "torso": "shirt",
-      "arm-left": "fur",
-      "arm-right": "fur",
-      "leg-left": "pants",
-      "leg-right": "pants"
-    },
-    "extraAnimations": ["wave", "jump", "yawn", "cheer"]
-  },
-  "miu-cat-chibi-c": {
-    "output": "generated/characters/miu-cat-chibi-c.glb",
-    "rig": "packs/kenney-blocky-characters/2.0/character-a.glb",
-    "headSource": "packs/kenney-cube-pets/2.0/animal-cat.glb",
-    "headNodes": ["body", "Group"],
-    "tailNode": "tail",
-    "headScale": 1.04,
-    "tailHeight": 0.22,
-    "torsoScale": 0.7,
-    "limbScale": 0.6,
-    "headOffset": 0,
-    "face": "miu-cat-face",
-    "accessoryScale": { "head": 1.3, "torso": 0.8 },
-    "palette": {
-      "fur": "#8a8ea6",
-      "shirt": "#f7a6c8",
-      "pants": "#7d9fe3"
-    },
-    "partColors": {
-      "torso": "shirt",
-      "arm-left": "fur",
-      "arm-right": "fur",
-      "leg-left": "pants",
-      "leg-right": "pants"
-    },
-    "extraAnimations": ["wave", "jump", "yawn", "cheer"]
+    "extraAnimations": [
+      "wave",
+      "jump",
+      "yawn",
+      "cheer"
+    ]
   }
 }

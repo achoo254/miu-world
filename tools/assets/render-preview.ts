@@ -37,14 +37,8 @@ async function characterShots(): Promise<Shot[]> {
     for (const yaw of [0, 90, 180, 315]) {
       shots.push({ file: `character/${id}-turn-${yaw}.png`, query: { model: spec.output, anim: 'idle', t: 0, yaw } });
     }
-    // Chibi variants under review: turnaround, the 4 preview clips, and the third-person gameplay angle.
-    if (spec.face) {
-      shots.push({ file: `character/${id}-gameplay-camera.png`, query: { model: spec.output, anim: 'walk', t: 0.17, yaw: 180, pitch: 28 } });
-      for (const anim of spec.extraAnimations) {
-        shots.push({ file: `character/${id}-anim-${anim}.png`, query: { model: spec.output, anim, t: SHOW_TIME[anim] ?? 0.3, yaw: 25, size: 256 } });
-      }
-      continue;
-    }
+    // Third-person gameplay angle: checks the head does not hide the character from the camera.
+    shots.push({ file: `character/${id}-gameplay-camera.png`, query: { model: spec.output, anim: 'walk', t: 0.17, yaw: 180, pitch: 28 } });
     for (const anim of [...(await rigAnimationNames(spec)), ...spec.extraAnimations]) {
       shots.push({
         file: `character/${id}-anim-${anim}.png`,
@@ -56,32 +50,23 @@ async function characterShots(): Promise<Shot[]> {
 }
 
 async function accessoryShots(): Promise<Shot[]> {
-  const specs = await readCharacterSpecs();
-  const model = specs['miu-cat']?.output;
-  if (!model) throw new Error('miu-cat spec missing');
+  const miu = (await readCharacterSpecs())['miu-cat'];
+  if (!miu) throw new Error('miu-cat spec missing');
+  // Accessories are sized by the character's accessoryScale, exactly as the game attaches them.
+  const base = { model: miu.output, accScale: accessoryScaleParam(miu.accessoryScale) };
   const outfit = 'hat-witch-pink,backpack-brown';
   const shots: Shot[] = [0, 150, 210, 300].map((yaw) => ({
     file: `accessories/miu-outfit-turn-${yaw}.png`,
-    query: { model, anim: 'idle', t: 0, yaw, acc: outfit },
+    query: { ...base, anim: 'idle', t: 0, yaw, acc: outfit },
   }));
   for (const [anim, t] of [['walk', 0.17], ['sprint', 0.2], ['cheer', 0.3], ['jump', 0.45]] as const) {
-    shots.push({ file: `accessories/miu-outfit-${anim}.png`, query: { model, anim, t, yaw: 35, acc: outfit, size: 256 } });
+    shots.push({ file: `accessories/miu-outfit-${anim}.png`, query: { ...base, anim, t, yaw: 35, acc: outfit, size: 256 } });
   }
   for (const [hat, pack] of [['night', 'red'], ['mint', 'green']] as const) {
     shots.push({
       file: `accessories/miu-variant-${hat}-${pack}.png`,
-      query: { model, anim: 'idle', t: 0, yaw: 35, acc: `hat-witch-pink:${hat},backpack-brown:${pack}`, size: 256 },
+      query: { ...base, anim: 'idle', t: 0, yaw: 35, acc: `hat-witch-pink:${hat},backpack-brown:${pack}`, size: 256 },
     });
-  }
-  // The same accessory files on each chibi variant, resized by the variant's accessoryScale.
-  for (const [id, spec] of Object.entries(specs)) {
-    if (!spec.face) continue;
-    for (const yaw of [35, 210]) {
-      shots.push({
-        file: `accessories/${id}-outfit-${yaw}.png`,
-        query: { model: spec.output, anim: 'idle', t: 0, yaw, acc: outfit, accScale: accessoryScaleParam(spec.accessoryScale), size: 256 },
-      });
-    }
   }
   return shots;
 }
