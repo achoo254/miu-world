@@ -1,6 +1,6 @@
 # POC review — asset sourcing + voxel POC (Master Plan v3 task #5, #6)
 
-Date: 2026-09-29 · Plan: `plans/dattqh/260929-0842-asset-sourcing-and-voxel-poc/` · Status: **chờ người duyệt (1 lần)**
+Date: 2026-09-29 · Plan: `plans/dattqh/260929-0842-asset-sourcing-and-voxel-poc/` · Status: **Đã duyệt (kết quả: Chỉnh visual)**
 
 ## Cách duyệt
 1. Mở `http://<LAN-IP>:4173/review.html` trên máy tính: xem gallery nhân vật, phụ kiện, bản đồ, bảng license, bảng hiệu năng.
@@ -36,13 +36,13 @@ Môi trường: Chromium headless mới, GPU **Apple M4** (Metal), viewport 412�
 - Dữ liệu GPU mobile thật: **0 điểm** tới khi người duyệt đo 1 máy Android (bước 2 ở trên).
 - `perf.json` đo trước đợt sửa sau review code; các sửa đó không đổi khối lượng GPU (shader refactor ra GLSL giống hệt).
 
-## Quyết định (điền sau khi duyệt)
+## Quyết định (sau khi duyệt - 2026-09-29)
 | Mục | Giữ / Chỉnh / Dự phòng | Ghi chú |
 | --- | --- | --- |
-| Nhân vật Miu | _chờ_ | |
-| Phụ kiện | _chờ_ | |
-| Bản đồ + texture block | _chờ_ | |
-| Hiệu năng máy Android thật (tên máy, FPS) | _chờ_ | |
+| Nhân vật Miu | Chỉnh | Cần chỉnh visual theo hướng chibi voxel dễ thương, ưu tiên đầu/mặt/tỷ lệ cơ thể và silhouette; giữ kiến trúc kitbash hiện tại. |
+| Phụ kiện | Chỉnh | Giữ cơ chế sinh bằng JSON nhưng chỉnh tỷ lệ và palette. |
+| Bản đồ + texture block | Chỉnh | Giữ chunk/meshing/generator, chỉnh palette và texture block để đồng nhất visual Miu World. |
+| Hiệu năng máy Android thật | Chỉnh | Chưa kết luận cho mobile; đo 2 Android tầm trung + 1 iPhone đời cũ ở Low/Mid/High rồi mới chốt Gate. |
 
 ## Việc còn nợ (không thuộc plan này)
 - Đo đủ 2 Android tầm trung + 1 iPhone đời cũ (FPS, nhiệt, pin 15 phút) trước nghiệm thu MVP (Master Plan §12, §16).

@@ -296,10 +296,10 @@ Toàn bộ asset lấy từ nguồn miễn phí có license rõ ràng hoặc sin
 
 | Nhóm | Asset | Nguồn | Ai làm |
 | --- | --- | --- | --- |
-| Nhân vật | Miu (Mèo): khung xương và hoạt ảnh (đứng yên, đi, chạy, nhặt, tương tác, emote) lấy từ Kenney Blocky Characters, gắn đầu mèo tách từ Kenney Cube Pets; thân tô màu bằng code. 4 hoạt ảnh xem thử (vẫy tay, nhảy, ngáp, vui mừng) dùng lại hoặc tổ hợp từ 27 hoạt ảnh có sẵn | CC0; kiểm chứng ở POC, không đạt thì dựng khối bằng code | CC |
-| Trang phục | Mũ, áo, giày, balo, cánh: phụ kiện khối mô tả bằng JSON (khối và màu), gắn vào node `head`, `torso`; mẫu mới bằng cách đổi màu | Sinh bằng code | CC |
+| Nhân vật | Miu (Mèo): khung xương và hoạt ảnh (đứng yên, đi, chạy, nhặt, tương tác, emote) lấy từ Kenney Blocky Characters, gắn đầu mèo tách từ Kenney Cube Pets; thân tô màu bằng code. 4 hoạt ảnh xem thử (vẫy tay, nhảy, ngáp, vui mừng) dùng lại hoặc tổ hợp từ 27 hoạt ảnh có sẵn | CC0; đã kiểm chứng ở POC (1 draw call, 568 tris, 31 anim). Kết quả duyệt POC: giữ kiến trúc kitbash, chỉnh visual chibi dễ thương (tỷ lệ đầu/mặt/thân, silhouette) | CC |
+| Trang phục | Mũ, áo, giày, balo, cánh: phụ kiện khối mô tả bằng JSON (khối và màu), gắn vào node `head`, `torso`; mẫu mới bằng cách đổi màu | Sinh bằng code; đã kiểm chứng ở POC. Kết quả duyệt POC: giữ cơ chế JSON, chỉnh tỷ lệ và palette | CC |
 | NPC | Vẹt (`animal-parrot`, thay Cú mèo), Hải ly (`animal-beaver`, thay Sóc) | Kenney Cube Pets, CC0 | CC |
-| Môi trường | Block (cỏ, đất, đá, gỗ, lá, cát) từ Kenney Voxel Pack gộp atlas; cây, nhà dựng bằng block trong dữ liệu bản đồ; đạo cụ (rương, đèn, hàng rào, cầu, nấm, táo) từ KayKit Block Bits, Forest Nature và các kit của Kenney; nước, thác, bầu trời bằng shader | CC0 và code | CC |
+| Môi trường | Block (cỏ, đất, đá, gỗ, lá, cát) từ Kenney Voxel Pack gộp atlas; cây, nhà dựng bằng block trong dữ liệu bản đồ; đạo cụ (rương, đèn, hàng rào, cầu, nấm, táo) từ KayKit Block Bits, Forest Nature và các kit của Kenney; nước, thác, bầu trời bằng shader | CC0 và code; đã kiểm chứng ở POC (greedy meshing trong Web Worker, 1 atlas). Kết quả duyệt POC: giữ chunk/meshing, chỉnh palette và texture block đồng nhất visual Miu World | CC |
 | Cổng, viên đá số, thẻ chữ | Cổng từ Kenney Castle Kit cộng shader; số và chữ vẽ lúc chạy bằng canvas texture | CC0 và code | CC |
 | Boss | Quái vật rừng: Quaternius Cute Animated Monsters hoặc ghép block, chốt ở V1 | CC0 | CC |
 | Icon | Vật phẩm, tiền tệ, HUD, huy hiệu | Microsoft Fluent Emoji 3D, MIT | CC |
@@ -356,9 +356,9 @@ Quest và nội dung được mô tả bằng dữ liệu, kiểm tra bằng sch
 
 ## 12. Hiệu năng mobile
 
-Với voxel, số bề mặt sinh ra từ block là rủi ro hiệu năng số một, nên phải đo ngay ở POC trước khi làm tiếp: POC đo tự động bằng giả lập CPU chậm cộng một máy Android thật lúc duyệt; đo đủ các máy thật ở cuối mục này là điều kiện nghiệm thu MVP.
+Với voxel, số bề mặt sinh ra từ block là rủi ro hiệu năng số một, nên phải đo ngay ở POC trước khi làm tiếp: POC đo tự động bằng giả lập CPU chậm cộng các máy thật lúc duyệt; đo đủ các máy thật ở cuối mục này là điều kiện nghiệm thu MVP.
 
-Các con số dưới đây là **giả định khởi điểm** để POC kiểm chứng, không phải kết quả đo.
+Các con số dưới đây là **giả định khởi điểm** để POC kiểm chứng:
 
 | Chỉ số | Mục tiêu khởi điểm | Cách kiểm soát |
 | --- | --- | --- |
@@ -366,6 +366,10 @@ Các con số dưới đây là **giả định khởi điểm** để POC kiể
 | Draw call | Không quá khoảng 150 mỗi cảnh | Một atlas và một vật liệu, gộp block thành mesh theo chunk |
 | Tam giác | Không quá khoảng 150.000 mỗi cảnh | Greedy meshing, bỏ mặt bị che, giới hạn tầm nhìn |
 | Dung lượng tải khu vực đầu | Không quá khoảng 8 MB đã nén | Dữ liệu chunk nén, texture KTX2 |
+
+**Ghi nhận sau đợt duyệt POC (2026-09-29):**
+- Kết quả giả lập (CPU throttle 4× và 6×): đạt 60 FPS mượt mà, tối đa 91 draw calls (ngân sách ≤150), tối đa 25.1k tam giác (ngân sách ≤150k), tải khu vực đầu 1.82 MB thô / 0.43 MB gzip (ngân sách ≤8 MB).
+- **Quyết định duyệt:** Giả lập CPU chưa phản ánh đúng GPU, nhiệt độ và hao pin trên thiết bị di động thật. Nhóm quyết định chưa kết luận hiệu năng mobile ở bước giả lập; yêu cầu đo đủ trên 2 máy Android tầm trung + 1 iPhone đời cũ ở cả 3 mức chất lượng (Low/Mid/High, theo dõi FPS, nhiệt độ và pin 15 phút) trước khi chốt Gate hiệu năng cho các phase tiếp theo.
 
 **Chiến lược:**
 
@@ -433,6 +437,10 @@ Phong cách voxel và việc cập nhật mock sau đã chốt; còn 6 quyết �
 | 9 | Nguồn asset | CC0 (Kenney, KayKit), MIT (Fluent Emoji), OFL (font) và asset sinh bằng code; không tự vẽ, không AI trả phí | Không cần voxel artist; hình ảnh kém chi tiết hơn mock (mock là ảnh render AI) |
 | 10 | Nhân vật người chơi | Ghép rig và hoạt ảnh Blocky Characters với đầu mèo Cube Pets | POC không đạt thì dựng khối bằng code |
 | 11 | NPC | Vẹt thay Cú mèo, Hải ly thay Sóc | Sửa lời thoại và câu chuyện quest theo loài mới |
+| 12 | Visual nhân vật Miu (sau POC) | Chỉnh visual theo hướng chibi voxel dễ thương, ưu tiên đầu/mặt/tỷ lệ cơ thể và silhouette | Giữ kiến trúc kitbash hiện tại (1 draw call, skinned mesh), tinh chỉnh tỷ lệ và model ở task tiếp theo |
+| 13 | Phụ kiện nhân vật (sau POC) | Chỉnh tỷ lệ và palette | Giữ cơ chế sinh bằng JSON (gắn node head/torso), chỉnh bảng màu và kích thước cân đối với chibi |
+| 14 | Bản đồ & Texture block (sau POC) | Chỉnh palette và texture block đồng nhất visual Miu World | Giữ nguyên kiến trúc chunk / greedy meshing Web Worker / generator theo seed |
+| 15 | Đánh giá hiệu năng mobile (sau POC) | Chưa kết luận từ giả lập; đo 2 Android tầm trung + 1 iPhone cũ ở Low/Mid/High | Chốt Gate hiệu năng sau khi có đủ dữ liệu máy thật (FPS, nhiệt độ, pin) |
 
 ### Còn cần bạn chốt
 

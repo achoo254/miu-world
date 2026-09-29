@@ -1,7 +1,7 @@
 ---
 phase: 6
 title: "Final Review + Go/No-Go Gate"
-status: in-progress
+status: completed
 priority: P1
 effort: "S"
 dependencies: [5]
@@ -31,9 +31,9 @@ dependencies: [5]
 4. Ghi việc còn nợ: đo đủ 2 Android + 1 iPhone (FPS, nhiệt, pin 15 phút) trước nghiệm thu MVP (Master Plan §12, §16).
 
 ## Success Criteria
-- [ ] Report có số liệu giả lập 2 mức throttle × 3 mức chất lượng (✅ xong) + 1 máy thật (chờ người duyệt)
-- [ ] Quyết định gate ghi trong Master Plan v3 §15
-- [ ] Process dev server đã tắt
+- [x] Report có số liệu giả lập 2 mức throttle × 3 mức chất lượng (✅ xong); ghi nhận quyết định duyệt (Chỉnh visual; dời chốt gate hiệu năng sang đo 3 máy thật)
+- [x] Quyết định gate ghi trong Master Plan v3 §15
+- [x] Process dev server đã tắt
 
 ## Risk Assessment
 - Giả lập đạt nhưng máy thật dưới 30 FPS. Tín hiệu: overlay trên máy Android lúc duyệt. Xử lý đã định: giảm tầm nhìn/pixel ratio, gộp props; vẫn không đạt → replan phạm vi hình ảnh trước task #9+.
