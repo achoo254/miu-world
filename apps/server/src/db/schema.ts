@@ -1,0 +1,129 @@
+import { sql } from 'drizzle-orm';
+import { index, integer, jsonb, pgTable, primaryKey, text, timestamp, unique, uuid } from 'drizzle-orm/pg-core';
+
+// Ids are generated in the app (crypto.randomUUID) so the schema needs no Postgres extension and
+// behaves the same on PGlite and Postgres.
+
+const createdAt = () => timestamp('created_at', { withTimezone: true }).notNull().defaultNow();
+
+/** Account owner. Children never log in; they are profiles under a parent (Master Plan §9). */
+export const parents = pgTable('parents', {
+  id: uuid('id').primaryKey(),
+  /** Always stored lower-case (normalised by the request schema). */
+  email: text('email').notNull().unique(),
+  passwordHash: text('password_hash').notNull(),
+  pinHash: text('pin_hash').notNull(),
+  /** Consecutive wrong PINs; at the limit the PIN is locked until the next password login. */
+  pinFailedCount: integer('pin_failed_count').notNull().default(0),
+  createdAt: createdAt(),
+});
+
+/** Only the display name, picked from a fixed list: no real name, age, grade or school. */
+export const childProfiles = pgTable(
+  'child_profiles',
+  {
+    id: uuid('id').primaryKey(),
+    parentId: uuid('parent_id')
+      .notNull()
+      .references(() => parents.id, { onDelete: 'cascade' }),
+    displayName: text('display_name').notNull(),
+    createdAt: createdAt(),
+  },
+  (t) => [index('child_profiles_parent_idx').on(t.parentId)],
+);
+
+export const sessions = pgTable(
+  'sessions',
+  {
+  /** sha256 of the cookie token; the raw token is never stored. */
+  id: text('id').primaryKey(),
+  parentId: uuid('parent_id')
+    .notNull()
+    .references(() => parents.id, { onDelete: 'cascade' }),
+  activeChildId: uuid('active_child_id').references(() => childProfiles.id, { onDelete: 'set null' }),
+  /** Parent area stays open until this instant after a correct PIN. */
+  parentGateUntil: timestamp('parent_gate_until', { withTimezone: true }),
+  createdAt: createdAt(),
+  lastSeenAt: timestamp('last_seen_at', { withTimezone: true }).notNull().defaultNow(),
+  expiresAt: timestamp('expires_at', { withTimezone: true }).notNull(),
+  },
+  (t) => [index('sessions_parent_idx').on(t.parentId), index('sessions_active_child_idx').on(t.activeChildId)],
+);
+
+/** One row per parent and accepted policy version. */
+export const consents = pgTable(
+  'consents',
+  {
+    id: uuid('id').primaryKey(),
+    parentId: uuid('parent_id')
+      .notNull()
+      .references(() => parents.id, { onDelete: 'cascade' }),
+    policyVersion: text('policy_version').notNull(),
+    acceptedAt: timestamp('accepted_at', { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [unique('consents_parent_version').on(t.parentId, t.policyVersion)],
+);
+
+const childRef = () =>
+  uuid('child_id')
+    .notNull()
+    .references(() => childProfiles.id, { onDelete: 'cascade' });
+
+export const characters = pgTable('characters', {
+  childId: childRef().primaryKey(),
+  species: text('species').notNull().default('cat'),
+  name: text('name').notNull(),
+  equipped: jsonb('equipped').$type<string[]>().notNull().default(sql`'[]'::jsonb`),
+});
+
+export const questProgress = pgTable(
+  'quest_progress',
+  {
+    childId: childRef(),
+    questId: text('quest_id').notNull(),
+    completedSteps: text('completed_steps').array().notNull().default(sql`'{}'::text[]`),
+    completedAt: timestamp('completed_at', { withTimezone: true }),
+  },
+  (t) => [primaryKey({ columns: [t.childId, t.questId] })],
+);
+
+/**
+ * Append-only source of truth for rewards. `source` identifies what paid out
+ * (`quest:<questId>`, one reward per quest); the unique key makes a repeated or concurrent claim a no-op.
+ */
+export const rewardLedger = pgTable(
+  'reward_ledger',
+  {
+    id: uuid('id').primaryKey(),
+    childId: childRef(),
+    source: text('source').notNull(),
+    xp: integer('xp').notNull().default(0),
+    coins: integer('coins').notNull().default(0),
+    skillXp: jsonb('skill_xp').$type<Record<string, number>>().notNull().default(sql`'{}'::jsonb`),
+    items: jsonb('items').$type<Record<string, number>>().notNull().default(sql`'{}'::jsonb`),
+    createdAt: createdAt(),
+  },
+  (t) => [unique('reward_ledger_child_source').on(t.childId, t.source)],
+);
+
+/** Aggregate of ledger items, updated in the same transaction as the ledger insert. */
+export const inventoryItems = pgTable(
+  'inventory_items',
+  {
+    childId: childRef(),
+    itemId: text('item_id').notNull(),
+    qty: integer('qty').notNull(),
+  },
+  (t) => [primaryKey({ columns: [t.childId, t.itemId] })],
+);
+
+/** Aggregate of ledger skill XP, updated in the same transaction as the ledger insert. */
+export const skillProgress = pgTable(
+  'skill_progress',
+  {
+    childId: childRef(),
+    skillId: text('skill_id').notNull(),
+    xp: integer('xp').notNull(),
+  },
+  (t) => [primaryKey({ columns: [t.childId, t.skillId] })],
+);

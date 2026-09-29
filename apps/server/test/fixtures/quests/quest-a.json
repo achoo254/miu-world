@@ -1,0 +1,7 @@
+{
+  "id": "quest-a",
+  "region": "khu-rung-bi-mat",
+  "steps": [{ "id": "meet-vet" }, { "id": "find-letter" }],
+  "reward": { "xp": 60, "coin": 10, "skillXp": { "doc-hieu": 1 }, "items": { "la-than": 1 } },
+  "unlock": ["quest-b"]
+}

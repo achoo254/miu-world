@@ -1,0 +1,6 @@
+{
+  "id": "quest-b",
+  "region": "khu-rung-bi-mat",
+  "steps": [{ "id": "open-gate" }, { "id": "count-apples" }, { "id": "solve-tree" }],
+  "reward": { "xp": 100, "coin": 20, "skillXp": { "phep-cong": 2, "doc-hieu": 1 }, "items": { "chia-khoa": 1, "la-than": 2 } }
+}
