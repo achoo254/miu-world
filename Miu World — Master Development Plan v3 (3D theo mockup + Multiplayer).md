@@ -276,7 +276,7 @@ Về pháp lý: cần nhờ pháp chế xác nhận yêu cầu hiện hành theo
 | Tên nhân vật | Lọc từ ngữ, chọn từ danh sách hoặc tự sinh, không hiển thị tên thật | MVP |
 | Kho asset và CDN | Signed URL, CSP chặt (Rapier WASM cần `wasm-unsafe-eval`), không nhúng script hay analytics bên thứ ba, dùng SRI | MVP |
 | Asset 3D từ bên ngoài | Chỉ nhận license CC0, MIT, OFL; manifest ghi nguồn, URL, license, hash; CI chặn file thiếu license; quét file, không chạy script đi kèm; lưu bản tải trong repo, không hotlink | MVP |
-| Chuỗi cung ứng mã nguồn | Khóa phiên bản, `npm audit` và SAST trong CI, con người duyệt mọi dependency mới do AI thêm | MVP |
+| Chuỗi cung ứng mã nguồn | Khóa phiên bản, `npm audit` và SAST trong CI, AI tự review dependency mới, liệt kê trong trang review để con người duyệt cuối | MVP |
 | Tiếp xúc người lạ | Không chat tự do; chỉ emote và câu có sẵn; kết bạn bằng mã, phụ huynh phê duyệt | MP |
 | Bắt nạt, quấy rối | Chặn và báo cáo trong game, hàng đợi kiểm duyệt, nhật ký hành vi, phụ huynh tắt được multiplayer | MP |
 | Kết nối giả mạo, tấn công | Token ngắn hạn theo phiên và hồ sơ, kiểm tra quyền ở mỗi message, rate limit, giới hạn kích thước message, WAF, tách server game khỏi API nghiệp vụ | MP |
@@ -284,7 +284,7 @@ Về pháp lý: cần nhờ pháp chế xác nhận yêu cầu hiện hành theo
 
 **Nếu sau này cho đặt và phá block:** server kiểm tra và ghi mọi thay đổi block, giới hạn số block và tốc độ đặt, kiểm duyệt nội dung xây dựng ở khu chung (hình vẽ, chữ, ký hiệu), phụ huynh tắt được tính năng; chưa có kiểm duyệt thì không cho xây ở khu vực có người chơi khác.
 
-**Quy trình khi dùng Claude Code:** không đưa secret hoặc dữ liệu thật vào prompt; chạy trong sandbox; con người duyệt mọi thay đổi về đăng nhập, phân quyền, thưởng và dữ liệu trẻ em.
+**Quy trình khi dùng Claude Code:** không đưa secret hoặc dữ liệu thật vào prompt; chạy trong sandbox; AI tự review và chạy test bảo mật cho mọi thay đổi về đăng nhập, phân quyền, thưởng và dữ liệu trẻ em, rồi đưa báo cáo vào trang review để con người duyệt cuối; thay đổi làm đổi cách thu thập hay chia sẻ dữ liệu trẻ em là quyết định quan trọng, luôn hỏi con người trước.
 
 ## 10. Asset pipeline voxel
 
@@ -310,7 +310,7 @@ Chọn Mèo cho MVP; Thỏ (`animal-bunny`), Cáo (`animal-fox`), Gấu (`animal
 
 ### Quy trình
 
-1. Nguồn: tải pack về (GLB, PNG), lưu bản gốc trong thư viện asset (Git LFS), không hotlink.
+1. Nguồn: tải pack về (GLB, PNG), lưu bản gốc trong repo bằng git thường với ngân sách dung lượng (thư mục asset gốc ≤ 150 MB, mỗi file ≤ 20 MB; vượt thì chuyển Git LFS), không hotlink.
 2. Ghi manifest cho từng file: pack, URL, phiên bản, license, hash; cập nhật `assets/LICENSES.md` và màn Credits.
 3. Chuyển đổi bằng script: tách hoặc ghép mesh (đầu Cube Pets vào rig Blocky Characters), đổi về bảng màu chung, dữ liệu chunk cho bản đồ.
 4. Gộp texture vào một atlas; nén texture (KTX2).
@@ -356,7 +356,7 @@ Quest và nội dung được mô tả bằng dữ liệu, kiểm tra bằng sch
 
 ## 12. Hiệu năng mobile
 
-Với voxel, số bề mặt sinh ra từ block là rủi ro hiệu năng số một, nên phải đo trên máy thật ngay ở POC trước khi làm tiếp.
+Với voxel, số bề mặt sinh ra từ block là rủi ro hiệu năng số một, nên phải đo ngay ở POC trước khi làm tiếp: POC đo tự động bằng giả lập CPU chậm cộng một máy Android thật lúc duyệt; đo đủ các máy thật ở cuối mục này là điều kiện nghiệm thu MVP.
 
 Các con số dưới đây là **giả định khởi điểm** để POC kiểm chứng, không phải kết quả đo.
 
@@ -393,14 +393,14 @@ Phase sau chỉ bắt đầu khi gate của phase trước đạt; chưa có ng�
 
 ## 14. Backlog P0: 24 việc đầu tiên
 
-Thứ tự dưới đây đặt POC 3D và bảo mật trước gameplay; mỗi việc là một nhánh riêng có kiểm thử. **CC** là Claude Code làm chính, **Người** là việc con người phải làm hoặc duyệt.
+Thứ tự dưới đây đặt POC 3D và bảo mật trước gameplay; mỗi việc có kiểm thử tự động. **CC** là Claude Code làm chính, **Người** là việc con người phải làm hoặc duyệt ở lần duyệt cuối (mục 17).
 
 1. Ghi nhận quyết định đã chốt (voxel, mock cập nhật sau) và chốt các quyết định còn mở ở mục 15. **Người**
 2. Sửa plan, viết `CLAUDE.md`, dựng cấu trúc repo. **CC + Người**
 3. Monorepo: Next.js, Express TypeScript, package schema dùng chung, CI (lint, test, `npm audit`, SAST). **CC**
 4. Design tokens tạm theo mock hiện tại, tách lớp giao diện để đổi khi có mock voxel. **CC, designer duyệt**
 5. Tìm nguồn asset: tải pack CC0 (Kenney, KayKit), Fluent Emoji, font; manifest, `assets/LICENSES.md`, kiểm tra license trong CI. **CC, Người duyệt license**
-6. POC voxel: một bản đồ nhỏ, chunk meshing trong Web Worker, nhân vật ghép (rig Blocky Characters và đầu mèo Cube Pets), third-person, camera, va chạm theo lưới block, đo trên máy thật. **CC + Người đo**
+6. POC voxel: một bản đồ nhỏ, chunk meshing trong Web Worker, nhân vật ghép (rig Blocky Characters và đầu mèo Cube Pets), third-person, camera, va chạm theo lưới block, đo tự động bằng giả lập CPU chậm và một máy Android thật lúc duyệt. **CC, Người duyệt một lần cuối**
 7. Tài khoản phụ huynh, hồ sơ trẻ, cổng phụ huynh, đồng ý của phụ huynh. **CC, duyệt bảo mật**
 8. Data model và API nhân vật. **CC**
 9. Nhân vật Miu ghép từ pack CC0 cùng hoạt ảnh; trang phục MVP là phụ kiện khối sinh bằng code. **CC, Người duyệt cảm quan**
@@ -450,7 +450,7 @@ Phong cách voxel và việc cập nhật mock sau đã chốt; còn 6 quyết �
 | Rủi ro | Mức | Giảm thiểu |
 | --- | --- | --- |
 | Phạm vi quá lớn (open world, 3D, multiplayer) | Cao | Vertical slice một khu vực; multiplayer sau MVP |
-| Hiệu năng trên điện thoại phổ thông (nhiều bề mặt voxel) | Cao | POC đo trên máy thật, greedy meshing trong worker, ba mức chất lượng |
+| Hiệu năng trên điện thoại phổ thông (nhiều bề mặt voxel) | Cao | POC đo bằng giả lập và một máy thật, đo đủ máy thật trước nghiệm thu MVP; greedy meshing trong worker, ba mức chất lượng |
 | Asset nhiều nguồn lệch phong cách, kém chi tiết so với mock | Trung bình | Bảng màu chung, flat shading, UI thống nhất bằng tokens; stakeholder xác nhận chất lượng ở POC |
 | Ghép nhân vật từ hai pack không đạt | Trung bình | Kiểm chứng ở task #6; dựng khối bằng code |
 | Pack nguồn đổi phiên bản hoặc URL | Thấp | Lưu bản tải và hash trong repo, không hotlink |
@@ -459,7 +459,7 @@ Phong cách voxel và việc cập nhật mock sau đã chốt; còn 6 quyết �
 | Game biến thành bài kiểm tra | Trung bình | Mỗi quest phải qua 7 câu hỏi và có cơ chế ngoài trắc nghiệm |
 | Hard-code nội dung | Trung bình | Quest bằng dữ liệu, có schema và validator |
 | Rủi ro an toàn trẻ em | Cao | Mục 9, duyệt bảo mật, chưa mở tương tác nếu chưa có kiểm duyệt |
-| Claude Code đi lệch kiến trúc qua nhiều phiên | Trung bình | `CLAUDE.md`, task nhỏ, acceptance test, con người duyệt PR |
+| Claude Code đi lệch kiến trúc qua nhiều phiên | Trung bình | `CLAUDE.md`, task nhỏ, acceptance test, AI tự review, con người duyệt cuối trên trang review |
 
 ## 16. Tiêu chí nghiệm thu MVP
 
@@ -481,24 +481,26 @@ MVP đạt khi một bé chơi trọn một quest trong Khu rừng bí mật và
 
 ## 17. Phân vai Claude Code và quy trình
 
-Claude Code làm được phần lớn khối lượng bản voxel, gồm cả tích hợp asset vì asset lấy từ pack CC0 hoặc sinh bằng code; cảm giác chơi, nội dung học, kiểm duyệt và đo thiết bị thật cần con người. Đây là ước lượng thô, không phải số đo.
+Dự án vận hành theo mô hình AI làm 100%: Claude Code tự lên plan, code, test, review và tích hợp; con người chỉ **duyệt cuối** trên giao diện (trang review và bản chơi thử) và chốt các quyết định quan trọng. Chỉ những việc máy không làm thay được (nội dung giáo dục, chơi thử với trẻ, kiểm duyệt cộng đồng, đo máy thật trước nghiệm thu MVP) mới cần người.
 
-| Việc | Claude Code | Con người |
+| Việc | Claude Code | Con người (duyệt cuối) |
 | --- | --- | --- |
-| Backend, API, schema, CI | Làm chính | Duyệt phần đăng nhập, phân quyền, thưởng |
-| React UI theo mock | Làm chính | Designer duyệt độ khớp mock |
-| Runtime Three.js, chunk voxel, camera, va chạm, tương tác | Làm chính | Chỉnh cảm giác điều khiển trên máy thật |
-| Quest runtime, thưởng, mở khóa | Làm chính | Duyệt logic chống gian lận |
-| Script asset pipeline | Làm chính | Chốt ngân sách |
-| Nhân vật, trang phục, môi trường, boss | Làm chính (tải pack CC0, ghép, sinh phụ kiện bằng code, kiểm license) | Duyệt cảm quan và license |
-| Nội dung học, câu hỏi | Soạn nháp | Giáo viên duyệt |
-| Đo hiệu năng | Viết công cụ đo | Đo trên máy thật |
+| Backend, API, schema, CI | Làm và tự review (agent review, test bảo mật tự động) | Xem báo cáo bảo mật phần đăng nhập, phân quyền, thưởng ở lần duyệt cuối |
+| React UI theo mock | Làm, so với mock bằng ảnh chụp tự động | Duyệt trên giao diện |
+| Runtime Three.js, chunk voxel, camera, va chạm, tương tác | Làm, đo bằng test tự động | Chơi thử bản review, nhận xét cảm giác điều khiển |
+| Quest runtime, thưởng, mở khóa | Làm, test chống gian lận tự động | Xem báo cáo ở lần duyệt cuối |
+| Script asset pipeline | Làm, tự đặt ngân sách theo mục 12 | Chốt ngân sách chính thức ở gate POC |
+| Nhân vật, trang phục, môi trường, boss | Làm chính (tải pack CC0, ghép, sinh phụ kiện bằng code, kiểm license) | Duyệt cảm quan và bảng license trên trang review |
+| Nội dung học, câu hỏi | Soạn nháp | Giáo viên duyệt (việc chỉ người làm được) |
+| Đo hiệu năng | Đo tự động bằng giả lập | Mở trên máy thật lúc duyệt; đo đủ máy thật trước nghiệm thu MVP |
 | Kiểm duyệt, xử lý báo cáo | Không | Đội vận hành |
 | Chơi thử với trẻ | Không | Bắt buộc |
 
 **Quy tắc làm việc:**
 
-- Mỗi task một nhánh, có acceptance test viết trước, con người duyệt PR.
+- Mỗi task có acceptance test viết trước; AI tự review (agent review, lint, typecheck, test, quét bảo mật) và chỉ báo xong khi mọi kiểm tra đều xanh.
+- Quyết định thường ngày do AI tự quyết (có thể nhờ TypeSafe Jev theo ngưỡng rủi ro); quyết định quan trọng (chi phí, an toàn trẻ em, phạm vi sản phẩm, pháp lý, việc tốn công con người) gom lại hỏi một lần.
+- Mỗi đợt giao hàng kết thúc bằng một trang review: ảnh, bản chơi thử, số liệu hiệu năng, báo cáo bảo mật, dependency mới, bảng license. Con người duyệt tại đây, không duyệt từng PR.
 - `CLAUDE.md` ghi kiến trúc, quy ước, quy tắc reuse asset, danh sách việc đã xong.
 - Quest và nội dung không phụ thuộc trực tiếp vào cảnh Three.js.
 - Không đưa secret hay dữ liệu thật vào prompt; chạy trong sandbox.

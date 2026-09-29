@@ -29,12 +29,13 @@ Sinh phụ kiện trang phục (mũ phù thủy hồng, balo) dạng khối từ
 1. Test: JSON hợp lệ → số mặt đúng (khối 2×1×1 → 10 mặt); JSON sai → Zod lỗi.
 2. Viết schema + builder.
 3. Soạn 2 phụ kiện bằng khối (mũ nón xếp tầng + vành, balo hộp + nắp).
-4. Render preview cùng Miu (dùng `render-preview.ts` phase 2).
+4. Render preview cùng Miu (dùng `render-preview.ts` phase 2) vào gallery duyệt cuối.
+<!-- Updated: Validation Session 1 - duyệt gộp một lần cuối -->
 
 ## Success Criteria
 - [ ] Test pass; 2 phụ kiện gắn đúng khi chạy anim walk
 - [ ] Đổi palette tạo biến thể không cần sửa code
-- [ ] Người duyệt cảm quan preview
+- [ ] Preview có trong gallery duyệt cuối
 
 ## Risk Assessment
 - Mũ nhìn thô. Xử lý: tăng độ phân giải lưới (khối 1/8), thêm chi tiết sao bằng khối vàng; vẫn thô → ghi nhận, dùng mũ đơn giản cho MVP.

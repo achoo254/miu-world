@@ -31,9 +31,10 @@ seed ────────┴▶ generate-forest-map ─▶ chunks.bin (RLE) 
 
 ## Implementation Steps
 1. Test chunk format: encode/decode RLE khứ hồi bằng nhau; index (x,y,z) đúng biên chunk.
-2. Chọn tile Voxel Pack (cỏ, đất, đá, gỗ, lá, cát, ván, nước); build atlas.
+2. Chọn tile Voxel Pack (cỏ, đất, đá, gỗ, lá, cát, ván, nước); tint về bảng màu chung bằng script (`content/palette.json`); build atlas.
+<!-- Updated: Validation Session 1 - Voxel Pack tint theo palette trước, texture code chỉ là fallback -->
 3. Viết generator + structures; seed cố định.
-4. Render ảnh top-down/isometric bằng script để người duyệt bố cục.
+4. Render ảnh top-down/isometric bằng script vào gallery duyệt cuối.
 
 ## Success Criteria
 - [ ] Test chunk format pass
@@ -42,4 +43,4 @@ seed ────────┴▶ generate-forest-map ─▶ chunks.bin (RLE) 
 - [ ] `chunks.bin` ≤ 1 MB
 
 ## Risk Assessment
-- Texture Voxel Pack (2015) trông cũ/lệch palette. Tín hiệu: người duyệt chê trong preview. Xử lý: tint theo palette bằng script; nếu vẫn lệch → texture block sinh bằng code (noise + palette), vẫn không vẽ tay.
+- Texture Voxel Pack (2015) trông cũ/lệch palette. Tín hiệu: bị chê ở duyệt cuối. Xử lý: tint theo palette bằng script; nếu vẫn lệch → texture block sinh bằng code (noise + palette), vẫn không vẽ tay.

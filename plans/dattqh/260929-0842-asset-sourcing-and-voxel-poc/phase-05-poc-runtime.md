@@ -19,10 +19,12 @@ App POC độc lập (Vite + TypeScript + three.js, WebGL2) render Khu rừng ch
   - Va chạm AABB theo lưới block (tự viết), trọng lực, bước lên 1 block.
   - Load `miu-cat.glb` + phụ kiện; anim idle/walk/sprint theo vận tốc.
   - NPC vẹt (`animal-parrot`) có anim idle; vùng tương tác hiện nhãn khi lại gần.
-  - Props từ KayKit/Kenney (rương, đèn lồng, hàng rào) theo `entities.json`.
+  - Props chỉ từ Kenney (Nature/Survival/Castle/Food Kit: rương, đèn lồng, hàng rào, cầu, nấm, táo) theo `entities.json`.
+<!-- Updated: Validation Session 1 - POC chỉ Kenney, gallery duyệt cuối, đo bằng giả lập -->
   - Nước: shader đơn giản (sóng UV); bầu trời: three.js `Sky` hoặc gradient.
   - Overlay: `renderer.info` (calls, triangles), FPS trung bình 1s và p5; tham số `?quality=low|mid|high` (tầm nhìn, pixel ratio, bóng).
   - Runtime loader từ chối URL asset không có trong `manifest.json`.
+  - Trang `review.html`: gallery duyệt cuối (preview nhân vật, phụ kiện, bản đồ, 4 anim, bảng license, số liệu hiệu năng) + link vào POC chơi thử.
 - Non-functional: mục tiêu khởi điểm §12 Master Plan: ≤150 draw call, ≤150k tris, tải vùng đầu ≤ 8 MB nén; CSP không cần `unsafe-eval` (không dùng Rapier).
 
 ## Architecture
@@ -37,14 +39,15 @@ packages/voxel: chunk-format, greedy-mesher (thuần TS, test được ngoài br
 ```
 
 ## Related Code Files
-- Create: `apps/poc-voxel/**`, `packages/voxel/src/greedy-mesher.ts`, `packages/voxel/src/greedy-mesher.test.ts`, `packages/voxel/src/grid-collision.ts`, `packages/voxel/src/grid-collision.test.ts`, `apps/poc-voxel/src/asset-loader.ts`, `apps/poc-voxel/e2e/poc.spec.ts` (Playwright)
+- Create: `apps/poc-voxel/**` (gồm `review.html`, `e2e/perf.spec.ts`), `packages/voxel/src/greedy-mesher.ts`, `packages/voxel/src/greedy-mesher.test.ts`, `packages/voxel/src/grid-collision.ts`, `packages/voxel/src/grid-collision.test.ts`, `apps/poc-voxel/src/asset-loader.ts`, `apps/poc-voxel/e2e/poc.spec.ts` (Playwright)
 
 ## Implementation Steps
 1. Test trước cho mesher (khối 2×2×2 đặc → 6 quad; mặt kề nhau bị bỏ) và grid collision (đâm tường dừng, bước lên 1 block, không xuyên trần).
 2. Viết mesher + collision trong `packages/voxel`.
 3. Dựng app: loader có kiểm manifest, worker mesher, scene, player, camera, NPC, props, nước, sky, overlay.
-4. E2E Playwright: trang tải không lỗi console; overlay báo calls ≤150, tris ≤150k trên desktop; request mạng chỉ tới origin (không hotlink).
-5. Build production; đo dung lượng tải vùng đầu.
+4. E2E Playwright: trang tải không lỗi console; overlay báo calls ≤150, tris ≤150k; request mạng chỉ tới origin (không hotlink).
+5. Perf test tự động: Chromium + CDP `Emulation.setCPUThrottlingRate` (4× và 6×), viewport mobile, `?quality=low|mid|high`; chạy 60s theo đường đi cố định, ghi FPS trung bình/p5, calls, tris, thời gian tải vào `assets/build/review/perf.json`.
+6. Build production; đo dung lượng tải vùng đầu; dựng `review.html`.
 
 ## Success Criteria
 - [ ] Unit test mesher + collision pass; `tsc --noEmit` + eslint sạch
@@ -52,6 +55,8 @@ packages/voxel: chunk-format, greedy-mesher (thuần TS, test được ngoài br
 - [ ] Đi lại, chạy, va chạm, camera không xuyên khối trên desktop
 - [ ] NPC vẹt + ≥3 props hiển thị, nhãn tương tác hiện khi lại gần
 - [ ] Dung lượng tải vùng đầu ≤ 8 MB (ghi số thực)
+- [ ] `perf.json` có số liệu 2 mức throttle × 3 mức chất lượng
+- [ ] `review.html` đủ mục cho duyệt cuối
 
 ## Risk Assessment
 - Mesh GLB props nhiều draw call. Tín hiệu: overlay > 150. Xử lý: gộp props tĩnh bằng `mergeGeometries`/instancing.
