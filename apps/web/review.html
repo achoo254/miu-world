@@ -88,7 +88,7 @@
           <article><h3>Cổng phụ huynh</h3><p>Tạo, đổi tên, xóa hồ sơ và đồng ý cần PIN 4–6 số (scrypt), mở 15 phút; chọn hồ sơ cho trẻ chơi thì khóa lại. Sai 5 lần thì khóa PIN (chống đoán song song), mở lại bằng mật khẩu.</p></article>
           <article><h3>Chống gian lận</h3><p>Server tính mọi thưởng từ dữ liệu quest; giá trị client gửi bị bỏ qua. Hoàn thành bước là idempotent, sai thứ tự hoặc quest chưa mở trả 409, gọi đồng thời chỉ ghi một dòng sổ thưởng; test chuỗi thao tác ngẫu nhiên có seed đối chiếu tổng. Không có Kim cương.</p></article>
           <article><h3>Dữ liệu trẻ</h3><p>Không thu tên thật, tuổi, lớp, trường, email của trẻ. Xóa hồ sơ là xóa hẳn mọi dữ liệu (có test đếm từng bảng). Log chỉ id; lỗi trả client chỉ mã lỗi.</p></article>
-          <article><h3>Quét tự động</h3><p id="security-scans">Chạy ngày 29/09/2026 trên máy dev: <code>pnpm audit --prod --audit-level=high</code> không có lỗ hổng; Semgrep CE (<code>p/typescript</code> + <code>p/nodejs</code>, 74 luật, 96 file TypeScript trong <code>apps/</code>, <code>packages/</code>) 0 phát hiện. CI chạy lại cả hai trên mỗi push.</p></article>
+          <article><h3>Quét tự động</h3><p id="security-scans">Chạy ngày 29/09/2026 trên máy dev: <code>pnpm audit --prod --audit-level=high</code> không có lỗ hổng; Semgrep CE 1.178.0 (<code>p/typescript</code> + <code>p/nodejs</code>, 98 file trong <code>apps/</code>, <code>packages/</code>) 0 phát hiện — bằng chứng: <code>plans/dattqh/reports/semgrep-260929-local-scan.md</code>. CI chạy lại cả hai trên mỗi push.</p></article>
         </div>
         <h3>Nợ trước khi có người dùng thật</h3>
         <ul class="debts">

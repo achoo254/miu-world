@@ -27,7 +27,7 @@ Date: 2026-09-29 · Plan: `plans/dattqh/260929-1911-foundation-after-poc-gate/` 
 ## Kiểm tra
 - `pnpm assets:check`, `pnpm test` (171 pass, 1 skip symlink trên Windows), `pnpm typecheck`, `pnpm lint`, `pnpm --filter @miu/web build`: xanh.
 - E2E `setup + account + play`: 8/8 pass (không request ngoài origin, không lỗi console, 1 canvas, rời `/play` giải phóng hết, bản build chỉ phục vụ asset runtime). CI có job E2E riêng.
-- `pnpm audit --prod --audit-level=high`: không có lỗ hổng. Semgrep CE (`p/typescript`, `p/nodejs`) chạy cục bộ: 0 phát hiện trên 96 file.
+- `pnpm audit --prod --audit-level=high`: không có lỗ hổng. Semgrep CE 1.178.0 (`p/typescript`, `p/nodejs`) chạy cục bộ: 0 phát hiện, 0 lỗi quét, 98 file (`semgrep-260929-local-scan.md`).
 - Review độc lập: `code-reviewer-260929-auth-review.md` (4 High + 4 Medium đã sửa kèm test), review cả đợt `code-reviewer-260929-foundation-batch-review.md` (0 Critical/High; 4 Medium đã sửa kèm test). Reviewer thường trực theo Master Plan: `master-plan-review-260929-*.md` (phase 1–7 PASS).
 - Ảnh bản đồ và nhân vật sinh lại cho cùng hash (review shot dùng bước thời gian cố định).
 
