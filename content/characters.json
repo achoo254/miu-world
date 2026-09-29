@@ -1,0 +1,24 @@
+{
+  "miu-cat": {
+    "output": "generated/characters/miu-cat.glb",
+    "rig": "packs/kenney-blocky-characters/2.0/character-a.glb",
+    "headSource": "packs/kenney-cube-pets/2.0/animal-cat.glb",
+    "headNodes": ["body", "Group"],
+    "tailNode": "tail",
+    "headScale": 0.8,
+    "tailHeight": 0.35,
+    "palette": {
+      "fur": "#7c8096",
+      "shirt": "#f39ac0",
+      "pants": "#6c8ed8"
+    },
+    "partColors": {
+      "torso": "shirt",
+      "arm-left": "fur",
+      "arm-right": "fur",
+      "leg-left": "pants",
+      "leg-right": "pants"
+    },
+    "extraAnimations": ["wave", "jump", "yawn", "cheer"]
+  }
+}

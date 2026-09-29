@@ -1,0 +1,667 @@
+{
+  "version": 1,
+  "id": "forest-ch1",
+  "seed": 3318344799,
+  "size": [
+    96,
+    32,
+    96
+  ],
+  "waterLevel": 9,
+  "spawn": {
+    "position": [
+      16.5,
+      13,
+      16.5
+    ],
+    "yaw": 45
+  },
+  "npcs": [
+    {
+      "id": "parrot-guide",
+      "name": "Vẹt",
+      "model": "packs/kenney-cube-pets/2.0/animal-parrot.glb",
+      "animation": "idle",
+      "position": [
+        51.5,
+        13,
+        61.5
+      ],
+      "yaw": 200,
+      "scale": 0.6543,
+      "interactRadius": 3,
+      "label": "Nói chuyện với Vẹt"
+    }
+  ],
+  "props": [
+    {
+      "model": "packs/kenney-survival-kit/2.0/signpost.glb",
+      "position": [
+        19.5,
+        13,
+        19.5
+      ],
+      "yaw": 225,
+      "scale": 3.4777
+    },
+    {
+      "model": "packs/kenney-survival-kit/2.0/campfire-pit.glb",
+      "position": [
+        13.5,
+        13,
+        17.5
+      ],
+      "yaw": 0,
+      "scale": 4.5844
+    },
+    {
+      "model": "packs/kenney-survival-kit/2.0/barrel.glb",
+      "position": [
+        11.5,
+        13,
+        13.5
+      ],
+      "yaw": 20,
+      "scale": 2.907
+    },
+    {
+      "model": "packs/kenney-survival-kit/2.0/box-large.glb",
+      "position": [
+        12.5,
+        13,
+        12.5
+      ],
+      "yaw": 40,
+      "scale": 3.6
+    },
+    {
+      "model": "packs/kenney-survival-kit/2.0/fence.glb",
+      "position": [
+        10.5,
+        13,
+        10.5
+      ],
+      "yaw": 0,
+      "scale": 1.9325
+    },
+    {
+      "model": "packs/kenney-survival-kit/2.0/fence.glb",
+      "position": [
+        11.5,
+        13,
+        10.5
+      ],
+      "yaw": 0,
+      "scale": 1.9325
+    },
+    {
+      "model": "packs/kenney-survival-kit/2.0/fence.glb",
+      "position": [
+        12.5,
+        13,
+        10.5
+      ],
+      "yaw": 0,
+      "scale": 1.9325
+    },
+    {
+      "model": "packs/kenney-survival-kit/2.0/fence.glb",
+      "position": [
+        13.5,
+        13,
+        10.5
+      ],
+      "yaw": 0,
+      "scale": 1.9325
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/log_stack.glb",
+      "position": [
+        41.5,
+        12,
+        45.5
+      ],
+      "yaw": 90,
+      "scale": 2.5981
+    },
+    {
+      "model": "packs/kenney-food-kit/2.0/apple.glb",
+      "position": [
+        52.5,
+        13,
+        63.5
+      ],
+      "yaw": 0,
+      "scale": 1.8348
+    },
+    {
+      "model": "packs/kenney-food-kit/2.0/apple.glb",
+      "position": [
+        53.5,
+        13,
+        63.5
+      ],
+      "yaw": 40,
+      "scale": 1.8348
+    },
+    {
+      "model": "packs/kenney-food-kit/2.0/apple.glb",
+      "position": [
+        54.5,
+        13,
+        63.5
+      ],
+      "yaw": 80,
+      "scale": 1.8348
+    },
+    {
+      "model": "packs/kenney-survival-kit/2.0/chest.glb",
+      "position": [
+        69.5,
+        13,
+        75.5
+      ],
+      "yaw": 45,
+      "scale": 3.1105
+    },
+    {
+      "model": "packs/kenney-castle-kit/2.0/gate.glb",
+      "position": [
+        78.5,
+        14,
+        91.5
+      ],
+      "yaw": 0,
+      "scale": 5.4925
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
+      "position": [
+        18.5,
+        13,
+        10.5
+      ],
+      "yaw": 326,
+      "scale": 1.7094
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_yellowB.glb",
+      "position": [
+        55.5,
+        13,
+        61.5
+      ],
+      "yaw": 358,
+      "scale": 3.1546
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_purpleA.glb",
+      "position": [
+        78.5,
+        13,
+        76.5
+      ],
+      "yaw": 114,
+      "scale": 2.0619
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
+      "position": [
+        17.5,
+        13,
+        20.5
+      ],
+      "yaw": 303,
+      "scale": 1.7094
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_yellowB.glb",
+      "position": [
+        52.5,
+        13,
+        57.5
+      ],
+      "yaw": 176,
+      "scale": 3.1546
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_purpleA.glb",
+      "position": [
+        64.5,
+        13,
+        78.5
+      ],
+      "yaw": 185,
+      "scale": 2.0619
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
+      "position": [
+        21.5,
+        13,
+        12.5
+      ],
+      "yaw": 173,
+      "scale": 1.7094
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_yellowB.glb",
+      "position": [
+        53.5,
+        13,
+        59.5
+      ],
+      "yaw": 43,
+      "scale": 3.1546
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_purpleA.glb",
+      "position": [
+        73.5,
+        13,
+        88.5
+      ],
+      "yaw": 34,
+      "scale": 2.0619
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
+      "position": [
+        13.5,
+        13,
+        10.5
+      ],
+      "yaw": 209,
+      "scale": 1.7094
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_yellowB.glb",
+      "position": [
+        50.5,
+        13,
+        65.5
+      ],
+      "yaw": 139,
+      "scale": 3.1546
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_purpleA.glb",
+      "position": [
+        77.5,
+        13,
+        90.5
+      ],
+      "yaw": 237,
+      "scale": 2.0619
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
+      "position": [
+        14.5,
+        13,
+        21.5
+      ],
+      "yaw": 59,
+      "scale": 1.7094
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_yellowB.glb",
+      "position": [
+        49.5,
+        13,
+        64.5
+      ],
+      "yaw": 338,
+      "scale": 3.1546
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_purpleA.glb",
+      "position": [
+        67.5,
+        13,
+        80.5
+      ],
+      "yaw": 109,
+      "scale": 2.0619
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
+      "position": [
+        10.5,
+        13,
+        14.5
+      ],
+      "yaw": 336,
+      "scale": 1.7094
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_yellowB.glb",
+      "position": [
+        49.5,
+        13,
+        65.5
+      ],
+      "yaw": 303,
+      "scale": 3.1546
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_purpleA.glb",
+      "position": [
+        70.5,
+        13,
+        85.5
+      ],
+      "yaw": 23,
+      "scale": 2.0619
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/mushroom_redGroup.glb",
+      "position": [
+        5.5,
+        16,
+        17.5
+      ],
+      "yaw": 16,
+      "scale": 2.3953
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/mushroom_redGroup.glb",
+      "position": [
+        4.5,
+        19,
+        84.5
+      ],
+      "yaw": 79,
+      "scale": 2.3953
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/mushroom_redGroup.glb",
+      "position": [
+        14.5,
+        12,
+        42.5
+      ],
+      "yaw": 144,
+      "scale": 2.3953
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/mushroom_redGroup.glb",
+      "position": [
+        18.5,
+        11,
+        33.5
+      ],
+      "yaw": 183,
+      "scale": 2.3953
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/mushroom_redGroup.glb",
+      "position": [
+        21.5,
+        13,
+        66.5
+      ],
+      "yaw": 134,
+      "scale": 2.3953
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/mushroom_redGroup.glb",
+      "position": [
+        25.5,
+        12,
+        13.5
+      ],
+      "yaw": 181,
+      "scale": 2.3953
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/mushroom_redGroup.glb",
+      "position": [
+        25.5,
+        15,
+        74.5
+      ],
+      "yaw": 310,
+      "scale": 2.3953
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/mushroom_redGroup.glb",
+      "position": [
+        33.5,
+        13,
+        21.5
+      ],
+      "yaw": 91,
+      "scale": 2.3953
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/mushroom_redGroup.glb",
+      "position": [
+        33.5,
+        13,
+        70.5
+      ],
+      "yaw": 297,
+      "scale": 2.3953
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/mushroom_redGroup.glb",
+      "position": [
+        38.5,
+        13,
+        13.5
+      ],
+      "yaw": 130,
+      "scale": 2.3953
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/mushroom_redGroup.glb",
+      "position": [
+        39.5,
+        13,
+        74.5
+      ],
+      "yaw": 117,
+      "scale": 2.3953
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/mushroom_redGroup.glb",
+      "position": [
+        49.5,
+        13,
+        35.5
+      ],
+      "yaw": 80,
+      "scale": 2.3953
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/mushroom_redGroup.glb",
+      "position": [
+        49.5,
+        13,
+        80.5
+      ],
+      "yaw": 310,
+      "scale": 2.3953
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/mushroom_redGroup.glb",
+      "position": [
+        54.5,
+        14,
+        34.5
+      ],
+      "yaw": 218,
+      "scale": 2.3953
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/mushroom_redGroup.glb",
+      "position": [
+        55.5,
+        13,
+        84.5
+      ],
+      "yaw": 87,
+      "scale": 2.3953
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/mushroom_redGroup.glb",
+      "position": [
+        63.5,
+        13,
+        25.5
+      ],
+      "yaw": 106,
+      "scale": 2.3953
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/mushroom_redGroup.glb",
+      "position": [
+        60.5,
+        14,
+        75.5
+      ],
+      "yaw": 290,
+      "scale": 2.3953
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/mushroom_redGroup.glb",
+      "position": [
+        70.5,
+        12,
+        13.5
+      ],
+      "yaw": 114,
+      "scale": 2.3953
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/mushroom_redGroup.glb",
+      "position": [
+        70.5,
+        14,
+        91.5
+      ],
+      "yaw": 324,
+      "scale": 2.3953
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/mushroom_redGroup.glb",
+      "position": [
+        74.5,
+        13,
+        31.5
+      ],
+      "yaw": 156,
+      "scale": 2.3953
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/mushroom_redGroup.glb",
+      "position": [
+        83.5,
+        17,
+        4.5
+      ],
+      "yaw": 99,
+      "scale": 2.3953
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/mushroom_redGroup.glb",
+      "position": [
+        83.5,
+        13,
+        38.5
+      ],
+      "yaw": 314,
+      "scale": 2.3953
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/mushroom_redGroup.glb",
+      "position": [
+        87.5,
+        13,
+        46.5
+      ],
+      "yaw": 113,
+      "scale": 2.3953
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/mushroom_redGroup.glb",
+      "position": [
+        90.5,
+        18,
+        91.5
+      ],
+      "yaw": 72,
+      "scale": 2.3953
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/lily_large.glb",
+      "position": [
+        20.5,
+        10.02,
+        54.5
+      ],
+      "yaw": 0,
+      "scale": 1.0204
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/lily_large.glb",
+      "position": [
+        37.5,
+        10.02,
+        55.5
+      ],
+      "yaw": 70,
+      "scale": 1.0204
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/lily_large.glb",
+      "position": [
+        54.5,
+        10.02,
+        45.5
+      ],
+      "yaw": 140,
+      "scale": 1.0204
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/lily_large.glb",
+      "position": [
+        71.5,
+        10.02,
+        44.5
+      ],
+      "yaw": 210,
+      "scale": 1.0204
+    }
+  ],
+  "landmarks": [
+    {
+      "id": "ancient-tree",
+      "name": "Cây cổ thụ",
+      "position": [
+        74.5,
+        13,
+        80.5
+      ]
+    },
+    {
+      "id": "bridge",
+      "name": "Cầu gỗ",
+      "position": [
+        45.5,
+        12,
+        52
+      ]
+    },
+    {
+      "id": "chest",
+      "name": "Rương",
+      "position": [
+        69.5,
+        13,
+        75.5
+      ]
+    }
+  ]
+}

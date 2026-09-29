@@ -1,0 +1,107 @@
+{
+  "generatedAt": "2026-09-29T09:47:36.333Z",
+  "environment": {
+    "gpu": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)",
+    "note": "CPU throttling emulates a slower phone CPU only; GPU, thermals and battery are not emulated.",
+    "viewport": "412x915 @2.625 (mobile, touch)",
+    "route": "autopilot: spawn → bridge → parrot → ancient tree → back, alternating walk/run every 8 s"
+  },
+  "budget": {
+    "minFps": 30,
+    "maxDrawCalls": 150,
+    "maxTriangles": 150000,
+    "maxFirstAreaBytes": 8388608
+  },
+  "runs": [
+    {
+      "cpuThrottle": 4,
+      "quality": "low",
+      "seconds": 60,
+      "loadMs": 1125,
+      "fpsAvg": 59.9,
+      "fpsMin1s": 51.4,
+      "fpsP5Median": 57.5,
+      "fpsP5Worst": 55.9,
+      "drawCallsMax": 50,
+      "trianglesMax": 14225,
+      "meshMs": 174,
+      "firstAreaRawBytes": 1909126,
+      "firstAreaGzipBytes": 454293
+    },
+    {
+      "cpuThrottle": 4,
+      "quality": "mid",
+      "seconds": 60,
+      "loadMs": 653,
+      "fpsAvg": 59.9,
+      "fpsMin1s": 55.9,
+      "fpsP5Median": 57.1,
+      "fpsP5Worst": 55.9,
+      "drawCallsMax": 63,
+      "trianglesMax": 17007,
+      "meshMs": 150,
+      "firstAreaRawBytes": 1909126,
+      "firstAreaGzipBytes": 454293
+    },
+    {
+      "cpuThrottle": 4,
+      "quality": "high",
+      "seconds": 60,
+      "loadMs": 640,
+      "fpsAvg": 59.9,
+      "fpsMin1s": 58,
+      "fpsP5Median": 57.1,
+      "fpsP5Worst": 46.1,
+      "drawCallsMax": 91,
+      "trianglesMax": 25139,
+      "meshMs": 143,
+      "firstAreaRawBytes": 1909126,
+      "firstAreaGzipBytes": 454293
+    },
+    {
+      "cpuThrottle": 6,
+      "quality": "low",
+      "seconds": 60,
+      "loadMs": 740,
+      "fpsAvg": 60,
+      "fpsMin1s": 59.9,
+      "fpsP5Median": 56.5,
+      "fpsP5Worst": 54.9,
+      "drawCallsMax": 51,
+      "trianglesMax": 14269,
+      "meshMs": 148,
+      "firstAreaRawBytes": 1909126,
+      "firstAreaGzipBytes": 454293
+    },
+    {
+      "cpuThrottle": 6,
+      "quality": "mid",
+      "seconds": 60,
+      "loadMs": 766,
+      "fpsAvg": 60,
+      "fpsMin1s": 59.9,
+      "fpsP5Median": 56.8,
+      "fpsP5Worst": 55.6,
+      "drawCallsMax": 63,
+      "trianglesMax": 16825,
+      "meshMs": 145,
+      "firstAreaRawBytes": 1909126,
+      "firstAreaGzipBytes": 454293
+    },
+    {
+      "cpuThrottle": 6,
+      "quality": "high",
+      "seconds": 60,
+      "loadMs": 789,
+      "fpsAvg": 60,
+      "fpsMin1s": 59.8,
+      "fpsP5Median": 56.2,
+      "fpsP5Worst": 55.2,
+      "drawCallsMax": 91,
+      "trianglesMax": 25139,
+      "meshMs": 143,
+      "firstAreaRawBytes": 1909126,
+      "firstAreaGzipBytes": 454293
+    }
+  ]
+}

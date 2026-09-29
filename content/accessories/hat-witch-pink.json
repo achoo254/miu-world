@@ -1,0 +1,32 @@
+{
+  "id": "hat-witch-pink",
+  "slot": "hat",
+  "attachNode": "head",
+  "voxelSize": 0.0625,
+  "offset": [0, 0.84, 0],
+  "rotation": [0, 0, -8],
+  "palette": {
+    "hat": "#f07fb0",
+    "brim": "#d9609a",
+    "band": "#7d4bb3",
+    "star": "#ffd23f"
+  },
+  "variants": {
+    "night": { "hat": "#4b4f9e", "brim": "#383c80", "band": "#ffd23f", "star": "#fff1a8" },
+    "mint": { "hat": "#7fd8be", "brim": "#4fb89c", "band": "#f07fb0" }
+  },
+  "boxes": [
+    { "x": -10, "y": 0, "z": -10, "w": 20, "h": 1, "d": 20, "color": "brim" },
+    { "x": -9, "y": 1, "z": -9, "w": 18, "h": 1, "d": 18, "color": "brim" },
+    { "x": -6, "y": 1, "z": -6, "w": 12, "h": 2, "d": 12, "color": "band" },
+    { "x": -6, "y": 3, "z": -6, "w": 12, "h": 2, "d": 12, "color": "hat" },
+    { "x": -5, "y": 5, "z": -5, "w": 10, "h": 3, "d": 10, "color": "hat" },
+    { "x": -4, "y": 8, "z": -4, "w": 8, "h": 3, "d": 8, "color": "hat" },
+    { "x": -3, "y": 11, "z": -4, "w": 6, "h": 3, "d": 6, "color": "hat" },
+    { "x": -2, "y": 14, "z": -5, "w": 4, "h": 2, "d": 4, "color": "hat" },
+    { "x": -1, "y": 16, "z": -6, "w": 2, "h": 2, "d": 3, "color": "hat" },
+    { "x": -1, "y": 17, "z": -8, "w": 2, "h": 1, "d": 2, "color": "star" },
+    { "x": -1, "y": 5, "z": 5, "w": 2, "h": 3, "d": 1, "color": "star" },
+    { "x": -2, "y": 6, "z": 5, "w": 4, "h": 1, "d": 1, "color": "star" }
+  ]
+}

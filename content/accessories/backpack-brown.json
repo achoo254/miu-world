@@ -1,0 +1,30 @@
+{
+  "id": "backpack-brown",
+  "slot": "back",
+  "attachNode": "torso",
+  "voxelSize": 0.0625,
+  "offset": [0, 0.55, -0.3],
+  "rotation": [0, 0, 0],
+  "palette": {
+    "bag": "#9a6a3f",
+    "flap": "#7a4f2b",
+    "pocket": "#b8834f",
+    "strap": "#5c3b20",
+    "buckle": "#ffd23f"
+  },
+  "variants": {
+    "red": { "bag": "#c9463d", "flap": "#9e3029", "pocket": "#e0665d" },
+    "green": { "bag": "#5f9e4f", "flap": "#467a39", "pocket": "#7dbb6a" }
+  },
+  "boxes": [
+    { "x": -5, "y": 0, "z": -4, "w": 10, "h": 10, "d": 4, "color": "bag" },
+    { "x": -3, "y": 1, "z": -5, "w": 6, "h": 4, "d": 1, "color": "pocket" },
+    { "x": -5, "y": 7, "z": -5, "w": 10, "h": 3, "d": 1, "color": "flap" },
+    { "x": -5, "y": 10, "z": -4, "w": 10, "h": 1, "d": 4, "color": "flap" },
+    { "x": -1, "y": 6, "z": -6, "w": 2, "h": 2, "d": 1, "color": "buckle" },
+    { "x": -4, "y": 9, "z": 0, "w": 2, "h": 1, "d": 11, "color": "strap" },
+    { "x": 2, "y": 9, "z": 0, "w": 2, "h": 1, "d": 11, "color": "strap" },
+    { "x": -4, "y": 3, "z": 10, "w": 2, "h": 6, "d": 1, "color": "strap" },
+    { "x": 2, "y": 3, "z": 10, "w": 2, "h": 6, "d": 1, "color": "strap" }
+  ]
+}

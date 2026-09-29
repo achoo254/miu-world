@@ -1,0 +1,431 @@
+{
+  "size": 512,
+  "tileSize": 64,
+  "padding": 4,
+  "safeMipLevel": 3,
+  "tiles": {
+    "birch-side": [
+      4,
+      4,
+      64,
+      64
+    ],
+    "birch-top": [
+      76,
+      4,
+      64,
+      64
+    ],
+    "dirt": [
+      148,
+      4,
+      64,
+      64
+    ],
+    "grass-side": [
+      220,
+      4,
+      64,
+      64
+    ],
+    "grass-top": [
+      292,
+      4,
+      64,
+      64
+    ],
+    "leaves": [
+      364,
+      4,
+      64,
+      64
+    ],
+    "leaves-autumn": [
+      436,
+      4,
+      64,
+      64
+    ],
+    "log-side": [
+      4,
+      76,
+      64,
+      64
+    ],
+    "log-top": [
+      76,
+      76,
+      64,
+      64
+    ],
+    "path": [
+      148,
+      76,
+      64,
+      64
+    ],
+    "planks": [
+      220,
+      76,
+      64,
+      64
+    ],
+    "riverbed": [
+      292,
+      76,
+      64,
+      64
+    ],
+    "rock-moss": [
+      364,
+      76,
+      64,
+      64
+    ],
+    "sand": [
+      436,
+      76,
+      64,
+      64
+    ],
+    "stone": [
+      4,
+      148,
+      64,
+      64
+    ],
+    "water": [
+      76,
+      148,
+      64,
+      64
+    ]
+  },
+  "blocks": [
+    {
+      "id": 1,
+      "name": "grass",
+      "top": [
+        292,
+        4,
+        64,
+        64
+      ],
+      "side": [
+        220,
+        4,
+        64,
+        64
+      ],
+      "bottom": [
+        148,
+        4,
+        64,
+        64
+      ],
+      "solid": true,
+      "transparent": false,
+      "liquid": false
+    },
+    {
+      "id": 2,
+      "name": "dirt",
+      "top": [
+        148,
+        4,
+        64,
+        64
+      ],
+      "side": [
+        148,
+        4,
+        64,
+        64
+      ],
+      "bottom": [
+        148,
+        4,
+        64,
+        64
+      ],
+      "solid": true,
+      "transparent": false,
+      "liquid": false
+    },
+    {
+      "id": 3,
+      "name": "stone",
+      "top": [
+        4,
+        148,
+        64,
+        64
+      ],
+      "side": [
+        4,
+        148,
+        64,
+        64
+      ],
+      "bottom": [
+        4,
+        148,
+        64,
+        64
+      ],
+      "solid": true,
+      "transparent": false,
+      "liquid": false
+    },
+    {
+      "id": 4,
+      "name": "sand",
+      "top": [
+        436,
+        76,
+        64,
+        64
+      ],
+      "side": [
+        436,
+        76,
+        64,
+        64
+      ],
+      "bottom": [
+        436,
+        76,
+        64,
+        64
+      ],
+      "solid": true,
+      "transparent": false,
+      "liquid": false
+    },
+    {
+      "id": 5,
+      "name": "log",
+      "top": [
+        76,
+        76,
+        64,
+        64
+      ],
+      "side": [
+        4,
+        76,
+        64,
+        64
+      ],
+      "bottom": [
+        76,
+        76,
+        64,
+        64
+      ],
+      "solid": true,
+      "transparent": false,
+      "liquid": false
+    },
+    {
+      "id": 6,
+      "name": "leaves",
+      "top": [
+        364,
+        4,
+        64,
+        64
+      ],
+      "side": [
+        364,
+        4,
+        64,
+        64
+      ],
+      "bottom": [
+        364,
+        4,
+        64,
+        64
+      ],
+      "solid": true,
+      "transparent": false,
+      "liquid": false
+    },
+    {
+      "id": 7,
+      "name": "planks",
+      "top": [
+        220,
+        76,
+        64,
+        64
+      ],
+      "side": [
+        220,
+        76,
+        64,
+        64
+      ],
+      "bottom": [
+        220,
+        76,
+        64,
+        64
+      ],
+      "solid": true,
+      "transparent": false,
+      "liquid": false
+    },
+    {
+      "id": 8,
+      "name": "path",
+      "top": [
+        148,
+        76,
+        64,
+        64
+      ],
+      "side": [
+        148,
+        4,
+        64,
+        64
+      ],
+      "bottom": [
+        148,
+        4,
+        64,
+        64
+      ],
+      "solid": true,
+      "transparent": false,
+      "liquid": false
+    },
+    {
+      "id": 9,
+      "name": "water",
+      "top": [
+        76,
+        148,
+        64,
+        64
+      ],
+      "side": [
+        76,
+        148,
+        64,
+        64
+      ],
+      "bottom": [
+        76,
+        148,
+        64,
+        64
+      ],
+      "solid": false,
+      "transparent": true,
+      "liquid": true
+    },
+    {
+      "id": 10,
+      "name": "rock-moss",
+      "top": [
+        364,
+        76,
+        64,
+        64
+      ],
+      "side": [
+        364,
+        76,
+        64,
+        64
+      ],
+      "bottom": [
+        364,
+        76,
+        64,
+        64
+      ],
+      "solid": true,
+      "transparent": false,
+      "liquid": false
+    },
+    {
+      "id": 11,
+      "name": "birch-log",
+      "top": [
+        76,
+        4,
+        64,
+        64
+      ],
+      "side": [
+        4,
+        4,
+        64,
+        64
+      ],
+      "bottom": [
+        76,
+        4,
+        64,
+        64
+      ],
+      "solid": true,
+      "transparent": false,
+      "liquid": false
+    },
+    {
+      "id": 12,
+      "name": "leaves-autumn",
+      "top": [
+        436,
+        4,
+        64,
+        64
+      ],
+      "side": [
+        436,
+        4,
+        64,
+        64
+      ],
+      "bottom": [
+        436,
+        4,
+        64,
+        64
+      ],
+      "solid": true,
+      "transparent": false,
+      "liquid": false
+    },
+    {
+      "id": 13,
+      "name": "riverbed",
+      "top": [
+        292,
+        76,
+        64,
+        64
+      ],
+      "side": [
+        292,
+        76,
+        64,
+        64
+      ],
+      "bottom": [
+        292,
+        76,
+        64,
+        64
+      ],
+      "solid": true,
+      "transparent": false,
+      "liquid": false
+    }
+  ]
+}
