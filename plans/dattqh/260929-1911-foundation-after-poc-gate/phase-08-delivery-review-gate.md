@@ -14,7 +14,9 @@ Kết thúc đợt bằng một lần duyệt cuối (CLAUDE.md, Master Plan §1
 
 ## Requirements
 - `apps/web/review.html` thêm mục: biến thể Miu (từ phase 6) + form chọn; báo cáo bảo mật (session, CSRF, IDOR, chống gian lận, Semgrep, `pnpm audit`); bảng dependency mới của đợt; bảng license (có sẵn); hiệu năng.
-- Chạy lại perf một lần (project `perf`, được phép trong phase này vì runtime đã chuyển chỗ) → `assets/generated/review/perf.json`, so với số POC.
+- Chạy lại perf một lần (project `perf`, được phép trong phase này vì runtime đã chuyển chỗ) → `assets/generated/review/perf.json`, so với số POC; thêm viewport iPad Gen 10 (820×1180 @2x, cảm ứng) vào ma trận.
+- Máy chuẩn iPad Gen 10 (quyết định người sở hữu 2026-09-29): người duyệt mở `/play` qua LAN trên iPad ở `?quality=mid`, đi dạo 2–3 phút, ghi FPS vào form duyệt; số này là điểm dữ liệu mobile thật đầu tiên. Đo đủ Low/Mid/High + nhiệt + pin 15 phút vẫn là DEVICE-01 trước MVP.
+<!-- Updated: 2026-09-29 - máy chuẩn iPad Gen 10 -->
 - `code-reviewer` review toàn đợt; report ở `plans/dattqh/reports/`.
 - Report duyệt `plans/dattqh/reports/foundation-review-{yymmdd}.md` (mẫu: `poc-review-260929.md`): cách duyệt, đã giao, số liệu, giới hạn, quyết định.
 - Sau khi người duyệt trả kết quả: áp biến thể được chọn (đổi tên thành `miu-cat`, xóa 2 biến thể còn lại, `pnpm assets:manifest`); ghi quyết định vào Master Plan §15; cập nhật `docs/project-roadmap.md` (task #2, #3, #7, #8, #9, #12 đổi trạng thái); tắt server review.

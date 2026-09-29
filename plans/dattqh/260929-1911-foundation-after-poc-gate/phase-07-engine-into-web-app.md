@@ -39,4 +39,5 @@ Chuyển runtime Three.js của POC vào `apps/web/src/game`, nối React qua `g
 ## Risk Assessment
 - React StrictMode mount 2 lần tạo 2 renderer. Xử lý: `Game` idempotent start/dispose; test E2E đếm canvas = 1.
 - Worker path đổi khi chuyển thư mục. Xử lý: `new Worker(new URL(..., import.meta.url))` như POC; E2E bắt lỗi.
+- Safari trên iPadOS (máy chuẩn) báo user-agent giống Mac. Xử lý: giữ cách của `quality.ts` hiện có — chỉ đọc `?quality`, mặc định `mid`, không suy loại máy từ user-agent.
 - CSP web khác POC (thêm API). Xử lý: API cùng origin, `connect-src 'self'` đủ.

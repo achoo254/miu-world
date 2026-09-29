@@ -16,7 +16,7 @@ created: 2026-09-29
 ## Overview
 Biến POC thành nền sản phẩm. Nguồn quyết định: `plans/dattqh/reports/brainstorm-260929-1905-next-steps-after-poc-gate.md` (contract, cấu trúc, stable ID, quyết định Jev + người sở hữu) và Master Plan v3. Thứ tự "backend trước" theo quyết định người sở hữu; Visual chạy song song vì không chung file.
 
-Không thuộc plan này: SLICE-xx (Creator, HUD, map, quest runtime đầy đủ, thử thách, ba lô — task #10–#20), DEVICE-01 (đo 3 máy thật), multiplayer.
+Không thuộc plan này: SLICE-xx (Creator, HUD, map, quest runtime đầy đủ, thử thách, ba lô — task #10–#20), DEVICE-01 (đo đủ trên máy chuẩn iPad Gen 10 trước MVP), multiplayer.
 
 ## Goals
 
@@ -66,7 +66,7 @@ Luồng: game phát event → `packages/quest` dự đoán ở client → API se
 ## Rủi ro chính
 | Rủi ro | Giảm thiểu |
 | --- | --- |
-| GPU mobile chưa có dữ liệu thật, gameplay xây trên engine chưa kiểm | Chấp nhận theo quyết định người sở hữu; DEVICE-01 trước MVP |
+| GPU mobile chưa có dữ liệu thật, gameplay xây trên engine chưa kiểm | Phase 8 mở `/play` trên iPad Gen 10 (máy chuẩn) và ghi FPS; đo đủ ở DEVICE-01 trước MVP |
 | PGlite lệch Postgres thật | CI chạy integration test trên Postgres service container |
 | Dữ liệu trẻ em / pháp lý (NĐ 13/2023) | Chỉ thu tối thiểu; văn bản đồng ý đánh dấu bản nháp, chờ pháp chế trước khi có người dùng thật |
 | Di chuyển runtime làm hỏng hành vi POC | Chuyển E2E `poc.spec.ts` sang `apps/web` trước khi xóa `apps/poc-voxel` |

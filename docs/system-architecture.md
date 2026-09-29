@@ -50,7 +50,7 @@ content/*.json + seed ─generators─▶ assets/generated/ ──────�
 | POC chỉ dùng pack Kenney; KayKit sau POC | KayKit cần tải tay từ itch.io | Đưa KayKit vào POC |
 | Va chạm AABB theo lưới tự viết | Không cần WASM, CSP không phải mở `wasm-unsafe-eval` | Rapier (chỉ khi có vật thể động) |
 | Greedy meshing trong Web Worker, fallback main thread lúc tải | Voxel sinh nhiều bề mặt — rủi ro hiệu năng số một | Mesh trên main thread trong vòng lặp |
-| Đo hiệu năng POC: giả lập CPU 4×/6× + 1 máy Android lúc duyệt; đủ 2 Android + 1 iPhone trước nghiệm thu MVP | Người sở hữu chốt; giả lập không đo GPU mobile, nhiệt, pin | Đo đủ 3 máy ngay ở POC |
+| Đo hiệu năng: giả lập CPU 4×/6× khi phát triển; máy chuẩn iPad Gen 10 (Low/Mid/High) để chốt gate trước nghiệm thu MVP | Người sở hữu chốt (2026-09-29); giả lập không đo GPU mobile, nhiệt, pin; số đo PC không đại diện mobile | Bộ 2 Android tầm trung + 1 iPhone đời cũ (thay bằng máy chuẩn); đo đủ máy ngay ở POC |
 
 Bằng chứng và số đo: `plans/dattqh/reports/poc-review-260929.md`, `plans/dattqh/reports/code-reviewer-260929-1601-asset-poc-review.md`.
 

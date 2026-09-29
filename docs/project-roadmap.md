@@ -25,12 +25,12 @@ Chỉ ghi task đã bắt đầu; các task còn lại đang ở trạng thái c
 
 ## Gate kế tiếp
 
-- **Gate POC (Đã qua - 2026-09-29):** Đã duyệt với kết quả: giữ kiến trúc kitbash/generator/mesher, chuyển sang tinh chỉnh visual (nhân vật chibi, palette phụ kiện & block); dời chốt số liệu hiệu năng sang đo 3 máy thật trước nghiệm thu MVP.
+- **Gate POC (Đã qua - 2026-09-29):** Đã duyệt với kết quả: giữ kiến trúc kitbash/generator/mesher, chuyển sang tinh chỉnh visual (nhân vật chibi, palette phụ kiện & block); dời chốt số liệu hiệu năng sang đo máy thật trước nghiệm thu MVP (máy chuẩn: iPad Gen 10, chốt 2026-09-29).
 - **Gate kế tiếp (Platform & Core Foundation):** Thiết lập Monorepo (Next.js + Express + shared schemas), hệ thống Child Safety/Auth tài khoản phụ huynh (Zero Trust), và tích hợp package voxel.
 
 ## Nợ đã biết (trước nghiệm thu MVP)
 
-- Đo đủ 2 Android tầm trung + 1 iPhone đời cũ (FPS, nhiệt, pin sau 15 phút).
+- Đo trên máy chuẩn iPad Gen 10 ở Low/Mid/High (FPS, nhiệt, pin sau 15 phút).
 - Nén atlas KTX2 (task #21).
 - Build app thật chỉ copy file runtime thực dùng (POC đang copy toàn bộ manifest vào `dist/`) — task #3.
 - Đưa KayKit vào (chế độ tải tay đã hỗ trợ).

@@ -77,7 +77,7 @@ Better approaches: đã nêu ở "Sửa so với đề xuất" (tách engine, bi
 | ENGINE-01 | Chuyển runtime POC vào `apps/web/src/game`, game-bridge sang React, chuyển review.html, xóa `apps/poc-voxel` | #11, #13 (phần nền) |
 | VISUAL-01..03 | Miu chibi, phụ kiện, palette block | #9, #12 |
 | SLICE-01..11 | Creator, Home+HUD, map rừng, di chuyển, NPC, quest runtime, khám phá, 3 thử thách Toán, hỗ trợ học, thưởng/Level Up, ba lô | #10–#20 |
-| DEVICE-01 | Đo 2 Android + 1 iPhone × Low/Mid/High (thay cho "POC-06 Device Gate" — chưa làm, đã dời) | §12, §16 |
+| DEVICE-01 | Đo trên máy chuẩn iPad Gen 10 × Low/Mid/High (chốt 2026-09-29, thay bộ 2 Android + 1 iPhone; thay cho "POC-06 Device Gate" — chưa làm, đã dời) | §12, §16 |
 
 ## Đồng bộ docs/rules theo Master Plan (việc đầu tiên)
 Người sở hữu xác nhận: `docs/`, `.claude/rules/`, `CLAUDE.md`, `README.md` phải bám Master Plan v3; bản hiện tại lấy phạm vi từ plan POC nên đang lệch. Đã rà:
@@ -99,6 +99,6 @@ Thứ tự: sửa Master Plan trước (vì là nguồn chuẩn), rồi mới c�
 - Cập nhật Master Plan §7 (Vite thay Next.js, Drizzle), §15 (chuyển Q3–Q8 sang "Đã chốt"), `docs/system-architecture.md`, `docs/project-roadmap.md`.
 
 ## Câu hỏi chưa giải quyết
-1. Số liệu trong đề xuất (164.8 FPS, 128 draw call, 33.4k tam giác, 1.48 MB) không có trong repo; `perf.json` ghi 60 FPS (trần vsync), 91 draw call, 25.1k tam giác, 1.82 MB. Nếu là số đo trên thiết bị thật thì cần tên máy và mức chất lượng để ghi làm điểm dữ liệu mobile đầu tiên.
+1. Đã giải: số 164.8 FPS / 128 draw call / 33.4k tam giác / 1.48 MB đo trên PC của người sở hữu, không đại diện mobile. Máy chuẩn từ nay là iPad Gen 10.
 2. Đã giải: Vite + React được người sở hữu xác nhận.
 3. Có commit các thay đổi đang dở trước đợt mới không.

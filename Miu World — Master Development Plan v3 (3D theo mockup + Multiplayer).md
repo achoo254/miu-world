@@ -362,7 +362,7 @@ Các con số dưới đây là **giả định khởi điểm** để POC kiể
 
 | Chỉ số | Mục tiêu khởi điểm | Cách kiểm soát |
 | --- | --- | --- |
-| Khung hình | Từ 30 FPS ổn định trên Android tầm trung | Ba mức chất lượng tự chọn theo thiết bị |
+| Khung hình | Từ 30 FPS ổn định trên máy chuẩn iPad Gen 10 | Ba mức chất lượng tự chọn theo thiết bị |
 | Draw call | Không quá khoảng 150 mỗi cảnh | Một atlas và một vật liệu, gộp block thành mesh theo chunk |
 | Tam giác | Không quá khoảng 150.000 mỗi cảnh | Greedy meshing, bỏ mặt bị che, giới hạn tầm nhìn |
 | Dung lượng tải khu vực đầu | Không quá khoảng 8 MB đã nén | Dữ liệu chunk nén, texture KTX2 |
@@ -370,6 +370,7 @@ Các con số dưới đây là **giả định khởi điểm** để POC kiể
 **Ghi nhận sau đợt duyệt POC (2026-09-29):**
 - Kết quả giả lập (CPU throttle 4× và 6×): đạt 60 FPS mượt mà, tối đa 91 draw calls (ngân sách ≤150), tối đa 25.1k tam giác (ngân sách ≤150k), tải khu vực đầu 1.82 MB thô / 0.43 MB gzip (ngân sách ≤8 MB).
 - **Quyết định duyệt:** Giả lập CPU chưa phản ánh đúng GPU, nhiệt độ và hao pin trên thiết bị di động thật. Nhóm quyết định chưa kết luận hiệu năng mobile ở bước giả lập; yêu cầu đo đủ trên 2 máy Android tầm trung + 1 iPhone đời cũ ở cả 3 mức chất lượng (Low/Mid/High, theo dõi FPS, nhiệt độ và pin 15 phút) trước khi chốt Gate hiệu năng cho các phase tiếp theo.
+- **Cập nhật 2026-09-29 (người sở hữu):** máy chuẩn đo hiệu năng từ nay là **iPad Gen 10**, thay cho bộ 2 Android tầm trung + 1 iPhone đời cũ. Số đo trên PC (164.8 FPS, 128 draw call, 33.4k tam giác, 1.48 MB) chỉ phản ánh desktop, không dùng để kết luận mobile. Máy yếu hơn iPad Gen 10 được hỗ trợ bằng mức chất lượng `low`, không phải điều kiện gate.
 
 **Chiến lược:**
 
@@ -381,7 +382,7 @@ Các con số dưới đây là **giả định khởi điểm** để POC kiể
 - Tạm dừng render khi mở giao diện toàn màn hình như Ba lô, Hồ sơ.
 - Có màn hình tải khu vực và chế độ dự phòng khi mạng chậm hoặc mất mạng.
 - Giải phóng bộ nhớ GPU khi rời khu vực, tránh treo máy sau vài lần chuyển cảnh.
-- Kiểm tra trên ít nhất 2 máy Android tầm trung và 1 iPhone đời cũ; đo FPS, nhiệt độ, tốc độ hao pin sau 15 phút chơi.
+- Kiểm tra trên máy chuẩn iPad Gen 10 ở 3 mức Low/Mid/High; đo FPS, nhiệt độ, tốc độ hao pin sau 15 phút chơi.
 
 ## 13. MVP vertical slice và lộ trình
 
@@ -440,7 +441,7 @@ Phong cách voxel và việc cập nhật mock sau đã chốt; còn 6 quyết �
 | 12 | Visual nhân vật Miu (sau POC) | Chỉnh visual theo hướng chibi voxel dễ thương, ưu tiên đầu/mặt/tỷ lệ cơ thể và silhouette | Giữ kiến trúc kitbash hiện tại (1 draw call, skinned mesh), tinh chỉnh tỷ lệ và model ở task tiếp theo |
 | 13 | Phụ kiện nhân vật (sau POC) | Chỉnh tỷ lệ và palette | Giữ cơ chế sinh bằng JSON (gắn node head/torso), chỉnh bảng màu và kích thước cân đối với chibi |
 | 14 | Bản đồ & Texture block (sau POC) | Chỉnh palette và texture block đồng nhất visual Miu World | Giữ nguyên kiến trúc chunk / greedy meshing Web Worker / generator theo seed |
-| 15 | Đánh giá hiệu năng mobile (sau POC) | Chưa kết luận từ giả lập; đo 2 Android tầm trung + 1 iPhone cũ ở Low/Mid/High | Chốt Gate hiệu năng sau khi có đủ dữ liệu máy thật (FPS, nhiệt độ, pin) |
+| 15 | Đánh giá hiệu năng mobile (sau POC; cập nhật 2026-09-29) | Chưa kết luận từ giả lập; máy chuẩn là iPad Gen 10, đo ở Low/Mid/High | Chốt Gate hiệu năng khi có dữ liệu iPad Gen 10 (FPS, nhiệt độ, pin); máy yếu hơn dùng mức `low`, không chặn gate |
 
 ### Còn cần bạn chốt
 
@@ -458,7 +459,7 @@ Phong cách voxel và việc cập nhật mock sau đã chốt; còn 6 quyết �
 | Rủi ro | Mức | Giảm thiểu |
 | --- | --- | --- |
 | Phạm vi quá lớn (open world, 3D, multiplayer) | Cao | Vertical slice một khu vực; multiplayer sau MVP |
-| Hiệu năng trên điện thoại phổ thông (nhiều bề mặt voxel) | Cao | POC đo bằng giả lập và một máy thật, đo đủ máy thật trước nghiệm thu MVP; greedy meshing trong worker, ba mức chất lượng |
+| Hiệu năng trên thiết bị di động (nhiều bề mặt voxel) | Cao | POC đo bằng giả lập; đo trên máy chuẩn iPad Gen 10 trước nghiệm thu MVP; máy yếu hơn dùng mức `low`; greedy meshing trong worker, ba mức chất lượng |
 | Asset nhiều nguồn lệch phong cách, kém chi tiết so với mock | Trung bình | Bảng màu chung, flat shading, UI thống nhất bằng tokens; stakeholder xác nhận chất lượng ở POC |
 | Ghép nhân vật từ hai pack không đạt | Trung bình | Kiểm chứng ở task #6; dựng khối bằng code |
 | Pack nguồn đổi phiên bản hoặc URL | Thấp | Lưu bản tải và hash trong repo, không hotlink |
@@ -482,7 +483,7 @@ MVP đạt khi một bé chơi trọn một quest trong Khu rừng bí mật và
 - [ ] XP, xu, skill, mở khóa do server tính; sửa dữ liệu ở client không đổi được kết quả
 - [ ] Hoàn thành quest mở khóa chương hoặc khu vực tiếp theo
 - [ ] Test IDOR và CSP đạt; không có script hay analytics bên thứ ba
-- [ ] Đạt mục tiêu khung hình đã chốt sau POC trên máy thật
+- [ ] Đạt mục tiêu khung hình đã chốt sau POC trên máy chuẩn iPad Gen 10
 - [ ] Giao diện đúng luồng và chức năng theo mock voxel mới nhất của các màn hình MVP
 - [ ] Một bé chơi thử hoàn thành một quest (có phụ huynh đồng ý)
 - [ ] Thêm quest mới chỉ bằng dữ liệu, không sửa code
@@ -500,7 +501,7 @@ Dự án vận hành theo mô hình AI làm 100%: Claude Code tự lên plan, co
 | Script asset pipeline | Làm, tự đặt ngân sách theo mục 12 | Chốt ngân sách chính thức ở gate POC |
 | Nhân vật, trang phục, môi trường, boss | Làm chính (tải pack CC0, ghép, sinh phụ kiện bằng code, kiểm license) | Duyệt cảm quan và bảng license trên trang review |
 | Nội dung học, câu hỏi | Soạn nháp | Giáo viên duyệt (việc chỉ người làm được) |
-| Đo hiệu năng | Đo tự động bằng giả lập | Mở trên máy thật lúc duyệt; đo đủ máy thật trước nghiệm thu MVP |
+| Đo hiệu năng | Đo tự động bằng giả lập | Mở trên iPad Gen 10 lúc duyệt; đo đủ 3 mức chất lượng trên iPad Gen 10 trước nghiệm thu MVP |
 | Kiểm duyệt, xử lý báo cáo | Không | Đội vận hành |
 | Chơi thử với trẻ | Không | Bắt buộc |
 
