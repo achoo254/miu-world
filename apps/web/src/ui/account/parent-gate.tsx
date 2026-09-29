@@ -5,37 +5,21 @@ import { z } from 'zod';
 import { MeResponse } from '@miu/schema/account';
 import { api } from '../api-client';
 import { useAccount } from './account-context';
+import { GOOGLE_SIGN_IN } from './sign-in-screens';
 import { useSubmit } from './use-submit';
 
-/** Re-entering the account password clears a PIN lock-out (server resets the counter on login). */
-function PinLockedRelogin({ email }: { email: string }) {
-  const { setMe } = useAccount();
-  const [password, setPassword] = useState('');
-  const form = useSubmit(async () => {
-    setMe(await api('POST', '/auth/login', MeResponse, { email, password }));
-    setPassword('');
-  });
+/** A PIN lock-out is cleared by signing in with Google again (the server resets the counter). */
+function PinLockedRelogin() {
   return (
-    <form className="card form" data-id="parent-gate-locked" onSubmit={(e) => void form.onSubmit(e)}>
+    <section className="card form" data-id="parent-gate-locked">
       <h2>Khu phụ huynh</h2>
       <p role="alert" className="error">
-        Mã PIN bị khóa do nhập sai nhiều lần. Nhập mật khẩu tài khoản để mở lại.
+        Mã PIN bị khóa do nhập sai nhiều lần. Đăng nhập lại bằng Google để mở lại.
       </p>
-      <label>
-        Mật khẩu
-        <input
-          data-id="parent-gate-relogin-password"
-          type="password"
-          autoComplete="current-password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </label>
-      {form.error ? <p role="alert" className="error">{form.error}</p> : null}
-      <button data-id="parent-gate-relogin-submit" type="submit" disabled={form.busy}>
-        Mở lại
-      </button>
-    </form>
+      <a className="button-link google" href={`${GOOGLE_SIGN_IN}?intent=reauth`} data-id="parent-gate-relogin-google">
+        Đăng nhập lại bằng Google
+      </a>
+    </section>
   );
 }
 
@@ -48,7 +32,7 @@ export function ParentGate() {
     setPin('');
   });
 
-  if (state.status === 'signed-in' && state.me.pinLocked) return <PinLockedRelogin email={state.me.parent.email} />;
+  if (state.status === 'signed-in' && state.me.pinLocked) return <PinLockedRelogin />;
   return (
     <form className="card form" data-id="parent-gate" onSubmit={(e) => void form.onSubmit(e)}>
       <h2>Khu phụ huynh</h2>

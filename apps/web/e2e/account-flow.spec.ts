@@ -1,4 +1,4 @@
-// Whole parent → child journey through the real UI: register, consent, create a profile, hand the
+// Whole parent → child journey through the real UI: Google sign-in (local fake), PIN, consent, create a profile, hand the
 // device to the child, play, meet the parrot. Fake data only (in-memory database).
 import { execFileSync } from 'node:child_process';
 import path from 'node:path';
@@ -22,21 +22,22 @@ test.afterAll(() => {
   if (REVIEW_SHOTS) execFileSync('pnpm', ['-s', 'assets:manifest'], { cwd: REPO_ROOT, stdio: 'inherit', shell: true });
 });
 
-test('register → consent → create profile → pick profile → play → meet the parrot', async ({ page }) => {
+test('Google sign-in → set PIN → consent → create profile → pick profile → play → meet the parrot', async ({ page }) => {
   const consoleErrors: string[] = [];
   page.on('pageerror', (err) => consoleErrors.push(err.message));
 
   await page.goto('/');
   await expect(page.getByRole('heading', { name: 'Đăng nhập phụ huynh' })).toBeVisible();
+  await expect(page.locator('input[type="password"]')).toHaveCount(0); // no password sign-in in the UI
   await shot(page, '01-login');
-  await page.getByRole('link', { name: 'Tạo tài khoản' }).click();
+  await page.getByRole('link', { name: 'Đăng nhập bằng Google' }).click();
 
-  await page.locator('[data-id="register-email"]').fill(`ui-${Date.now()}@example.vn`);
-  await page.locator('[data-id="register-password"]').fill('test-password-ui');
-  await page.locator('[data-id="register-pin"]').fill('2468');
-  await page.locator('[data-id="register-pin-again"]').fill('2468');
-  await shot(page, '02-register');
-  await page.getByRole('button', { name: 'Tạo tài khoản' }).click();
+  // Fake Google signs in a new account and redirects back; the first sign-in asks for the PIN.
+  await expect(page.getByRole('heading', { name: 'Đặt mã PIN phụ huynh' })).toBeVisible();
+  await page.locator('[data-id="set-pin-pin"]').fill('2468');
+  await page.locator('[data-id="set-pin-again"]').fill('2468');
+  await shot(page, '02-set-pin');
+  await page.getByRole('button', { name: 'Lưu mã PIN' }).click();
 
   await expect(page.locator('[data-id="consent-draft"]')).toBeVisible();
   await shot(page, '03-consent');

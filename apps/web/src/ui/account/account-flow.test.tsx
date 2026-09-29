@@ -30,6 +30,7 @@ const me = (over: Record<string, unknown> = {}) => ({
   activeChildId: null,
   parentGateOpen: false,
   pinLocked: false,
+  pinSet: true,
   ...over,
 });
 
@@ -72,18 +73,32 @@ describe('account flow', () => {
     expect(await screen.findByRole('heading', { name: 'Đăng nhập phụ huynh' })).toBeTruthy();
   });
 
-  it('validates the register form before calling the server', async () => {
+  it('offers only Google sign-in, through a same-origin server redirect', async () => {
     const calls = stubApi({ 'GET /api/auth/me': () => ({ status: 401, body: { error: 'unauthenticated' } }) });
-    renderAt('/register');
-    await screen.findByRole('heading', { name: 'Tạo tài khoản phụ huynh' });
-    const field = (id: string) => document.querySelector(`[data-id="${id}"]`) as HTMLInputElement;
-    fireEvent.change(field('register-email'), { target: { value: 'p@example.vn' } });
-    fireEvent.change(field('register-password'), { target: { value: 'short' } });
-    fireEvent.change(field('register-pin'), { target: { value: '1234' } });
-    fireEvent.change(field('register-pin-again'), { target: { value: '1234' } });
-    fireEvent.click(screen.getByRole('button', { name: 'Tạo tài khoản' }));
-    expect((await screen.findByRole('alert')).textContent).toContain('10 đến 128');
-    expect(calls.some((c) => c.key === 'POST /api/auth/register')).toBe(false);
+    renderAt('/register?error=google');
+    const link = await screen.findByRole('link', { name: 'Đăng nhập bằng Google' });
+    expect(link.getAttribute('href')).toBe('/api/auth/google/start');
+    expect((await screen.findByRole('alert')).textContent).toContain('chưa thành công');
+    expect(document.querySelector('input[type="password"]')).toBeNull();
+    expect(calls.map((c) => c.key)).toEqual(['GET /api/auth/me']);
+  });
+
+  it('makes a parent fresh from Google set the PIN before anything else', async () => {
+    const calls = stubApi({
+      'GET /api/auth/me': () => ({ status: 200, body: me({ pinSet: false, consentAccepted: false, parentGateOpen: false }) }),
+      'POST /api/auth/pin': () => ({ status: 200, body: me({ consentAccepted: false, parentGateOpen: true }) }),
+      'GET /api/consents/policy': () => ({ status: 200, body: { version: 'draft-2', requiresLegalReview: true, title: 'Đồng ý', paragraphs: ['x'] } }),
+    });
+    renderAt('/profiles');
+    const pin = (await screen.findByLabelText('Mã PIN (4–6 số)')) as HTMLInputElement;
+    fireEvent.change(pin, { target: { value: '2468' } });
+    fireEvent.change(screen.getByLabelText('Nhập lại mã PIN'), { target: { value: '1357' } });
+    fireEvent.click(screen.getByRole('button', { name: 'Lưu mã PIN' }));
+    expect((await screen.findByRole('alert')).textContent).toContain('chưa khớp');
+    fireEvent.change(screen.getByLabelText('Nhập lại mã PIN'), { target: { value: '2468' } });
+    fireEvent.click(screen.getByRole('button', { name: 'Lưu mã PIN' }));
+    expect(await screen.findByRole('button', { name: 'Tôi là phụ huynh và đồng ý' })).toBeTruthy();
+    expect(calls.find((c) => c.key === 'POST /api/auth/pin')?.body).toEqual({ pin: '2468' });
   });
 
   it('shows the draft consent and moves on to the parent area after accepting', async () => {
@@ -117,18 +132,14 @@ describe('account flow', () => {
     expect((await screen.findByRole('alert')).textContent).toBe('Mã PIN chưa đúng.');
   });
 
-  it('offers a password re-login when the PIN is locked', async () => {
-    const calls = stubApi({
+  it('sends a parent with a locked PIN back through Google to unlock it', async () => {
+    stubApi({
       'GET /api/auth/me': () => ({ status: 200, body: me({ pinLocked: true }) }),
       'GET /api/children': () => ({ status: 200, body: [] }),
-      'POST /api/auth/login': () => ({ status: 200, body: me({ parentGateOpen: true }) }),
     });
     renderAt('/parent');
-    const field = (await screen.findByLabelText('Mật khẩu')) as HTMLInputElement;
-    fireEvent.change(field, { target: { value: 'test-password-1' } });
-    fireEvent.click(screen.getByRole('button', { name: 'Mở lại' }));
-    expect(await screen.findByRole('heading', { name: 'Tạo hồ sơ cho bé' })).toBeTruthy();
-    expect(calls.find((c) => c.key === 'POST /api/auth/login')?.body).toMatchObject({ email: PARENT.email });
+    const link = await screen.findByRole('link', { name: 'Đăng nhập lại bằng Google' });
+    expect(link.getAttribute('href')).toBe('/api/auth/google/start?intent=reauth');
   });
 
   it('shows the PIN prompt again when the server says the gate has closed', async () => {

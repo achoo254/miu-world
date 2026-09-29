@@ -43,8 +43,8 @@ const DECISIONS = [
   { id: 'play', label: 'Chơi thử trong app web (điều khiển, nhãn Vẹt)', fallback: 'Ghi vấn đề ở ghi chú' },
 ];
 const UI_STEPS: Record<string, string> = {
-  '01-login': 'Đăng nhập phụ huynh',
-  '02-register': 'Tạo tài khoản (email, mật khẩu, PIN)',
+  '01-login': 'Đăng nhập phụ huynh: chỉ nút Google',
+  '02-set-pin': 'Sau khi đăng nhập Google lần đầu: đặt PIN phụ huynh',
   '03-consent': 'Đồng ý của phụ huynh (bản nháp)',
   '04-parent-area': 'Khu phụ huynh: tạo hồ sơ từ danh sách tên',
   '05-profiles': 'Bé chọn hồ sơ',

@@ -31,12 +31,20 @@ function contentSecurityPolicy(): Plugin {
 
 // xfwd: the server trusts X-Forwarded-For from loopback so rate limits see the real client IP.
 const apiProxy = { '/api': { target: API_TARGET, changeOrigin: false, xfwd: true } };
+/**
+ * Extra Host names the dev/preview server accepts (e.g. a review tunnel), comma-separated in
+ * MIU_PUBLIC_HOSTS. Vite rejects unknown hosts by default (DNS-rebinding protection); keep that.
+ */
+const publicHosts = (process.env.MIU_PUBLIC_HOSTS ?? '')
+  .split(',')
+  .map((h) => h.trim())
+  .filter(Boolean);
 
 export default defineConfig({
   plugins: [react(), contentSecurityPolicy(), repoAssets(ASSETS_DIR, APP_DIR)],
   publicDir: false,
-  server: { proxy: apiProxy },
-  preview: { proxy: apiProxy },
+  server: { proxy: apiProxy, allowedHosts: publicHosts },
+  preview: { proxy: apiProxy, allowedHosts: publicHosts },
   worker: { format: 'es' },
   build: {
     target: 'es2022',

@@ -12,7 +12,7 @@
         <h1>Duyệt đợt Foundation · Miu World</h1>
         <p>Một lần duyệt cho cả đợt: tài khoản phụ huynh và hồ sơ trẻ, game chạy trong app web, Miu chibi (chọn 1 trong 3 biến thể), bảng màu block mới, báo cáo bảo mật, dependency mới, hiệu năng và bảng license.</p>
         <ol class="steps" data-id="review-steps">
-          <li>Mở <a href="./register" data-id="review-register">Tạo tài khoản</a> (dùng email giả, ví dụ <code>thu@example.vn</code>; dữ liệu chỉ nằm trên máy chạy thử), đồng ý, tạo một hồ sơ, chọn hồ sơ đó.</li>
+          <li>Mở <a href="./login" data-id="review-login">Đăng nhập bằng Google</a> (tài khoản Gmail của phụ huynh; máy chủ chỉ nhận email đã xác minh và mã tài khoản Google), đặt mã PIN, đồng ý, tạo một hồ sơ, chọn hồ sơ đó.</li>
           <li>Bấm một nút <b>Chơi thử</b> bên dưới. Trên iPad Gen 10 dùng mức <b>Vừa</b>, đi dạo 2–3 phút rồi ghi FPS (góc trái trên) vào mục Quyết định.</li>
           <li>Chọn biến thể Miu, cho ý kiến từng mục, bấm <b>Sao chép kết quả duyệt</b> và gửi lại.</li>
         </ol>
@@ -82,7 +82,7 @@
         <h2>Báo cáo bảo mật</h2>
         <p class="sub">Chi tiết: <code>plans/dattqh/reports/code-reviewer-260929-auth-review.md</code> (review độc lập, mọi phát hiện High/Medium đã sửa kèm test) và báo cáo review cả đợt.</p>
         <div class="security">
-          <article><h3>Tài khoản và phiên</h3><p>Phụ huynh là chủ tài khoản; trẻ là hồ sơ con, chỉ có tên hiển thị chọn từ danh sách, không đăng nhập riêng. Session phía server: token ngẫu nhiên 32 byte, cơ sở dữ liệu chỉ lưu sha256; hết hạn tuyệt đối 30 ngày, nhàn rỗi 7 ngày; đổi token mỗi lần đăng nhập. Cookie httpOnly, SameSite=Lax; production dùng <code>__Host-</code> + Secure (có test).</p></article>
+          <article><h3>Tài khoản và phiên</h3><p>Phụ huynh đăng nhập bằng Google (OAuth code + PKCE + state + nonce phía server, không tải script Google; chỉ scope <code>openid email</code>). Đăng nhập mật khẩu chỉ còn cho dev/test, tắt ở production. Phụ huynh là chủ tài khoản; trẻ là hồ sơ con, chỉ có tên hiển thị chọn từ danh sách, không đăng nhập riêng. Session phía server: token ngẫu nhiên 32 byte, cơ sở dữ liệu chỉ lưu sha256; hết hạn tuyệt đối 30 ngày, nhàn rỗi 7 ngày; đổi token mỗi lần đăng nhập. Cookie httpOnly, SameSite=Lax; production dùng <code>__Host-</code> + Secure (có test).</p></article>
           <article><h3>Chống CSRF, rate limit</h3><p>Mọi request đổi trạng thái phải có <code>Origin</code> trong danh sách cho phép (thiếu cũng bị chặn). Rate limit đăng ký theo IP, đăng nhập theo IP + email và theo IP; PIN theo phiên. Hàng đợi băm mật khẩu có trần (quá tải trả 503).</p></article>
           <article><h3>Phân quyền (IDOR)</h3><p>Mọi truy vấn lọc theo phụ huynh và hồ sơ đang chọn; tài nguyên nhà khác trả 404 như không tồn tại. Có test IDOR cho mọi endpoint hồ sơ, nhân vật, tiến độ, túi đồ, hoàn thành bước quest.</p></article>
           <article><h3>Cổng phụ huynh</h3><p>Tạo, đổi tên, xóa hồ sơ và đồng ý cần PIN 4–6 số (scrypt), mở 15 phút; chọn hồ sơ cho trẻ chơi thì khóa lại. Sai 5 lần thì khóa PIN (chống đoán song song), mở lại bằng mật khẩu.</p></article>
@@ -93,7 +93,7 @@
         <h3>Nợ trước khi có người dùng thật</h3>
         <ul class="debts">
           <li>Văn bản đồng ý là <b>bản nháp</b> (<code>requiresLegalReview: true</code>): cần pháp chế duyệt theo NĐ 13/2023.</li>
-          <li>Chưa xác minh email phụ huynh (cần nhà cung cấp email, DNS); đăng ký báo "email đã có" nên dò được email tồn tại.</li>
+          <li>Google OAuth client đang ở chế độ thử nghiệm: cần xác minh ứng dụng với Google trước khi mở cho người dùng thật.</li>
           <li>Triển khai: đặt <code>trust proxy</code> theo reverse proxy thật; rate limit đang lưu trong bộ nhớ (một instance); server đang chạy bằng <code>tsx</code>, chưa có bước đóng gói production.</li>
           <li>Test trên PostgreSQL thật và Semgrep chạy ở CI; chưa có lần push nào nên chưa có kết quả CI.</li>
         </ul>

@@ -40,12 +40,14 @@ const MESSAGES: Record<string, string> = {
   'email-taken': 'Email này đã có tài khoản. Hãy đăng nhập.',
   'rate-limited': 'Thử quá nhiều lần. Đợi một lúc rồi thử lại nhé.',
   'invalid-pin': 'Mã PIN chưa đúng.',
-  'pin-locked': 'Mã PIN bị khóa do nhập sai nhiều lần. Đăng nhập lại bằng mật khẩu để mở.',
+  'pin-locked': 'Mã PIN bị khóa do nhập sai nhiều lần. Đăng nhập lại bằng Google để mở.',
   'parent-gate-closed': 'Cần nhập mã PIN phụ huynh.',
   'consent-required': 'Phụ huynh cần đồng ý trước khi tạo hồ sơ.',
   'profile-limit': 'Mỗi tài khoản có tối đa 3 hồ sơ.',
   'invalid-display-name': 'Hãy chọn tên trong danh sách.',
   'not-found': 'Không tìm thấy hồ sơ.',
+  'pin-already-set': 'Mã PIN đã được đặt trước đó.',
+  'pin-not-set': 'Cần đặt mã PIN phụ huynh trước.',
 };
 
 export function errorMessage(err: unknown): string {
