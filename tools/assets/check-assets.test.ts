@@ -89,10 +89,16 @@ describe('checkAssets', () => {
     ]);
   });
 
-  it('rejects symlinks even when the target hash matches the manifest', async () => {
+  it('rejects symlinks even when the target hash matches the manifest', async (ctx) => {
     const target = await put('elsewhere/secret.png', 'unlicensed');
     await mkdir(path.join(dir, 'packs/test-pack/1.0'), { recursive: true });
-    await symlink(path.join(dir, target.path), path.join(dir, 'packs/test-pack/1.0/linked.png'));
+    try {
+      await symlink(path.join(dir, target.path), path.join(dir, 'packs/test-pack/1.0/linked.png'));
+    } catch (error) {
+      // Windows without Developer Mode cannot create symlinks; CI (Linux) still runs this case.
+      if ((error as NodeJS.ErrnoException).code === 'EPERM') ctx.skip();
+      throw error;
+    }
     const errors = await run(manifestWith([target, { ...target, path: 'packs/test-pack/1.0/linked.png' }]));
     expect(errors).toEqual(
       expect.arrayContaining([expect.stringContaining('not a regular file (symlink or special): packs/test-pack/1.0/linked.png')]),
