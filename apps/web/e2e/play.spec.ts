@@ -37,17 +37,19 @@ test('walks, runs and stays on the ground; the rim keeps the player inside the m
   await waitReady(page);
   const start = (await readStats(page)).player;
 
+  const moved = async (): Promise<number> => {
+    const now = (await readStats(page)).player;
+    return Math.hypot(now[0] - start[0], now[2] - start[2]);
+  };
+  // Wait on distance, not wall time: software-GL CI runners render few frames and each step is capped.
   await page.keyboard.down('KeyW');
   await page.waitForTimeout(1500);
   await page.keyboard.down('ShiftLeft');
-  await page.waitForTimeout(1500);
+  await expect.poll(moved, { timeout: 20_000 }).toBeGreaterThan(4);
   await page.keyboard.up('ShiftLeft');
   await page.keyboard.up('KeyW');
   await page.waitForTimeout(500);
   const after = await readStats(page);
-
-  const moved = Math.hypot(after.player[0] - start[0], after.player[2] - start[2]);
-  expect(moved).toBeGreaterThan(4);
   expect(after.onGround).toBe(true);
   expect(after.player[1]).toBeGreaterThan(5);
 
