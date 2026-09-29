@@ -23,6 +23,20 @@
     "license": "CC0-1.0"
   },
   {
+    "glob": "generated/review/ui/*.png",
+    "generator": "apps/web/e2e/account-flow.spec.ts",
+    "derivedFrom": [
+      "kenney-blocky-characters",
+      "kenney-cube-pets",
+      "kenney-voxel-pack",
+      "kenney-nature-kit",
+      "kenney-survival-kit",
+      "kenney-food-kit",
+      "kenney-castle-kit"
+    ],
+    "license": "CC0-1.0"
+  },
+  {
     "glob": "generated/review/**/*.png",
     "generator": "tools/assets/render-preview.ts",
     "derivedFrom": [
@@ -38,7 +52,7 @@
   },
   {
     "glob": "generated/review/*.json",
-    "generator": "apps/poc-voxel/e2e/perf.spec.ts",
+    "generator": "apps/web/e2e/perf.spec.ts",
     "derivedFrom": [],
     "license": "CC0-1.0"
   }

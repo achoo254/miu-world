@@ -8152,8 +8152,8 @@
       "derivedFrom": [
         "kenney-voxel-pack"
       ],
-      "sha256": "caaac85156a8346184995eb653e3d775b0939831bb7937d4f78335f754bab07c",
-      "bytes": 5991
+      "sha256": "0f443c4658ee546aba6414d7a8c41061b1e1014008c14a67e5f8ffc301f79a95",
+      "bytes": 5560
     },
     {
       "path": "generated/atlas/atlas.png",
@@ -8162,8 +8162,41 @@
       "derivedFrom": [
         "kenney-voxel-pack"
       ],
-      "sha256": "dbc403eb0d8cdc5d76d77025005c83b523e5001363d1cb3f93467427048d3412",
-      "bytes": 37257
+      "sha256": "7482debe92417adc1031cc0511200bcd618c044853a36e73353a4496f39bfb09",
+      "bytes": 37619
+    },
+    {
+      "path": "generated/characters/miu-cat-chibi-a.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/kitbash-character.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets"
+      ],
+      "sha256": "659507d07cd388e4155ea4e9625957d8b6ce9eaa238ab556f7a9549280cd0fdf",
+      "bytes": 195404
+    },
+    {
+      "path": "generated/characters/miu-cat-chibi-b.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/kitbash-character.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets"
+      ],
+      "sha256": "0a91d9cf8dec217a3e796fbce5b7e24ec78d44c0c3ec5239b756a64c2e5d9638",
+      "bytes": 195448
+    },
+    {
+      "path": "generated/characters/miu-cat-chibi-c.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/kitbash-character.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets"
+      ],
+      "sha256": "6e1bd38ae8f0af724ca9bdf8b01ae0b169fac4d75c712267833863754472b7f1",
+      "bytes": 195400
     },
     {
       "path": "generated/characters/miu-cat.glb",
@@ -8175,6 +8208,102 @@
       ],
       "sha256": "523d172ce716b68982d432bf85f012a53a8e0b69567101c3be0f3998a093bd1c",
       "bytes": 186056
+    },
+    {
+      "path": "generated/review/accessories/miu-cat-chibi-a-outfit-210.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "226b8c3089c4914272fdd61569dd9e80ffe5a690714aff6f55939aa0d9d8573c",
+      "bytes": 8580
+    },
+    {
+      "path": "generated/review/accessories/miu-cat-chibi-a-outfit-35.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "886d6905c93957ab34dfd673d821eb06bde57d57f789439316fa4f11a244be18",
+      "bytes": 10352
+    },
+    {
+      "path": "generated/review/accessories/miu-cat-chibi-b-outfit-210.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "5e4475310f2c59912c11398f966d218693a99294e850dedca60f41ccee83122c",
+      "bytes": 9014
+    },
+    {
+      "path": "generated/review/accessories/miu-cat-chibi-b-outfit-35.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "eb7a0c2213d4d1c9ba50a138f10e976047398964e2ef3e7886c6ca5f92b10845",
+      "bytes": 10486
+    },
+    {
+      "path": "generated/review/accessories/miu-cat-chibi-c-outfit-210.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "2626be00d3edca75351e027fe332f50ab3b48541aba02b7e1f72931634e9348d",
+      "bytes": 9064
+    },
+    {
+      "path": "generated/review/accessories/miu-cat-chibi-c-outfit-35.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "ef57fd6e9825baeff365e62739d1cb54f2896c9f9c37c2aa28740fb8b625ea2e",
+      "bytes": 10687
     },
     {
       "path": "generated/review/accessories/miu-outfit-cheer.png",
@@ -8833,6 +8962,438 @@
       "bytes": 10525
     },
     {
+      "path": "generated/review/character/miu-cat-chibi-a-anim-cheer.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "040c776a69def654b4efe565fe90b678efb79c2bd0696f542fdaae27ed39e3d6",
+      "bytes": 10273
+    },
+    {
+      "path": "generated/review/character/miu-cat-chibi-a-anim-jump.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "5e4aded83a9667c5e0f9376fc635fa5b9bdf45d6aa471b59e0a120dcadb52943",
+      "bytes": 10697
+    },
+    {
+      "path": "generated/review/character/miu-cat-chibi-a-anim-wave.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "996bc5b5f408828101c478db3d52e59a74f57cd37b1749ea65e739f0ce7d47de",
+      "bytes": 11197
+    },
+    {
+      "path": "generated/review/character/miu-cat-chibi-a-anim-yawn.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "4ea84420d852dfe160f2f48d16b207f8a230c10364e07053a849aee8d73c4959",
+      "bytes": 11643
+    },
+    {
+      "path": "generated/review/character/miu-cat-chibi-a-gameplay-camera.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "17cb65c212ffb3ca40f1b41f5dba80c570cde5d57c59e239aec3fa17a03f0bd9",
+      "bytes": 21058
+    },
+    {
+      "path": "generated/review/character/miu-cat-chibi-a-turn-0.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "29a210800e13e2be11f3070da821fab1bd93308f5376373e140551156f53c8b5",
+      "bytes": 20246
+    },
+    {
+      "path": "generated/review/character/miu-cat-chibi-a-turn-180.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "9b424368e06e483c37be1587a8c483576eb58e205b0c842463edcf9479740fdb",
+      "bytes": 16978
+    },
+    {
+      "path": "generated/review/character/miu-cat-chibi-a-turn-315.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "4033dec5c13a6fb4ff7ce1ebff4bb847400771a6cd1bef6ca3b7e6d0c037f8a8",
+      "bytes": 27328
+    },
+    {
+      "path": "generated/review/character/miu-cat-chibi-a-turn-90.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "76f2a06afd511b7eeae7f2453b26009b573a5a711bb653b3de667128e363536c",
+      "bytes": 19849
+    },
+    {
+      "path": "generated/review/character/miu-cat-chibi-b-anim-cheer.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "3b143d08077889ba1211916df402241b761c319120c01894a9a3a9c81bbbc3d5",
+      "bytes": 10746
+    },
+    {
+      "path": "generated/review/character/miu-cat-chibi-b-anim-jump.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "8922baf93c35c41bb341e3709ad0bd335f70c9209ae20b485759fe90dbb16550",
+      "bytes": 11317
+    },
+    {
+      "path": "generated/review/character/miu-cat-chibi-b-anim-wave.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "60a6c5e17647a97b13d69a81ac6f50ca022653cb25a8cd4bac4aaf7d54b23b14",
+      "bytes": 11669
+    },
+    {
+      "path": "generated/review/character/miu-cat-chibi-b-anim-yawn.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "e0f6c8efeb17c547b1522d1b1c0e038017cc6ad3ad5766030b5153212aad999b",
+      "bytes": 12356
+    },
+    {
+      "path": "generated/review/character/miu-cat-chibi-b-gameplay-camera.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "e06e5e3b9d25dd1ad2bf480502c5fba3089c68f1bc95e8312e529499403a0942",
+      "bytes": 23058
+    },
+    {
+      "path": "generated/review/character/miu-cat-chibi-b-turn-0.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "74fe7ffbcc216ac9327f4ec752dc8b413d6f9a253cd38939e0dd20f0aa4eba12",
+      "bytes": 21482
+    },
+    {
+      "path": "generated/review/character/miu-cat-chibi-b-turn-180.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "71182e7ef7b6d6dd21244e2e3889567fde4a95c0ec3c554c6b374c7ef136bfd4",
+      "bytes": 18033
+    },
+    {
+      "path": "generated/review/character/miu-cat-chibi-b-turn-315.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "5265d4b4f1798671310f32298fcd0e9553219098d39d3241f8ca855066717d90",
+      "bytes": 29433
+    },
+    {
+      "path": "generated/review/character/miu-cat-chibi-b-turn-90.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "7117d51090d59a82e3b7d8c72ee798ffead5f6abc521852cfc152c06973bcdbc",
+      "bytes": 22018
+    },
+    {
+      "path": "generated/review/character/miu-cat-chibi-c-anim-cheer.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "8d9738e37538b9bdd6279d08c3efafe1a95274944f74e65c79bfdb34ae32a195",
+      "bytes": 11155
+    },
+    {
+      "path": "generated/review/character/miu-cat-chibi-c-anim-jump.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "4454d4a2959e34be0d7c7c6171e6143c6ee5abe3e1f0d36c55c8c07c4d4d5033",
+      "bytes": 11803
+    },
+    {
+      "path": "generated/review/character/miu-cat-chibi-c-anim-wave.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "a654f1b1a6a3728d09d6961e0f364c1f538c215fdd4fa4833035fc03743a0a95",
+      "bytes": 12404
+    },
+    {
+      "path": "generated/review/character/miu-cat-chibi-c-anim-yawn.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "3c5aa8a7a9addd5d04c551ebeb3339aeb5da16e25374f9e3417d4b5b523cceca",
+      "bytes": 13287
+    },
+    {
+      "path": "generated/review/character/miu-cat-chibi-c-gameplay-camera.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "6cfadc58e2faa8f67532f9ab308aa63f540e72e462f47829120421ef275ebd51",
+      "bytes": 24099
+    },
+    {
+      "path": "generated/review/character/miu-cat-chibi-c-turn-0.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "d38ba8f6c61f4fdbef42804045b6e10e7fbbe55568c8a790157002f697eaca25",
+      "bytes": 23204
+    },
+    {
+      "path": "generated/review/character/miu-cat-chibi-c-turn-180.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "0b71cb2c47a7528969b2aa940c729bc8870db1153d186690b5efd959c417e0c1",
+      "bytes": 18969
+    },
+    {
+      "path": "generated/review/character/miu-cat-chibi-c-turn-315.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "d3c127c072a5c2497c4ab405bb1a323d08a2ee0eeea91b7551a247ddc8fafac9",
+      "bytes": 30987
+    },
+    {
+      "path": "generated/review/character/miu-cat-chibi-c-turn-90.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "b18f9d20603e87200b90baaa29b0c7b75163f559a0c253a3fb11e65c4c9e9643",
+      "bytes": 23892
+    },
+    {
       "path": "generated/review/character/miu-cat-turn-0.png",
       "license": "CC0-1.0",
       "generator": "tools/assets/render-preview.ts",
@@ -8909,8 +9470,8 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "622d72bb57480f310cf15945f2a7a791494ee383fdf23d1174d3fe4e6e70a69c",
-      "bytes": 883562
+      "sha256": "e521bbabb606f129b74c8a4cb19ff1818427fb9331b2c877052ef9d9b1af9ee1",
+      "bytes": 887056
     },
     {
       "path": "generated/review/map/forest-ch1-iso.png",
@@ -8925,8 +9486,8 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "ca605d7c0fe97b33a6feb1d8c0b7f01211eb7f84f04be89072b1efc645e2b549",
-      "bytes": 659110
+      "sha256": "14445d7d2acc39807c2908ea4e73477249a763903f4ff7e587384d40c4a2b542",
+      "bytes": 674562
     },
     {
       "path": "generated/review/map/forest-ch1-npc.png",
@@ -8941,8 +9502,8 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "6bf9d43e739e6ec5401934101de19926a46c0e4fa8b5fe165a23b19b40a28872",
-      "bytes": 530348
+      "sha256": "4c32592f435bea2e42b6ffffa6879f9d2aad3bae017f3c7da025df961bfae657",
+      "bytes": 528763
     },
     {
       "path": "generated/review/map/forest-ch1-top.png",
@@ -8957,8 +9518,8 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "ed2cd70f7565d265472b363f3a53ec36c2872f210a883c4f1814d932c5ae15dd",
-      "bytes": 959796
+      "sha256": "6d7e2e01e165be37fb2509e92d0f5146bac4a179fdca75d1c8dd8b3dbb23283c",
+      "bytes": 973148
     },
     {
       "path": "generated/review/map/forest-ch1-tree.png",
@@ -8973,16 +9534,128 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "9ba45b2966a7568b41aafcb1b7df800fa746cd12da1dc37dcbf97c9bb7e3ee3c",
-      "bytes": 559848
+      "sha256": "5958e595e2e7df039278ed4da6c640d2221994775ba96e28a07e4f03097e70ac",
+      "bytes": 565632
     },
     {
       "path": "generated/review/perf.json",
       "license": "CC0-1.0",
-      "generator": "apps/poc-voxel/e2e/perf.spec.ts",
+      "generator": "apps/web/e2e/perf.spec.ts",
       "derivedFrom": [],
-      "sha256": "22fc8340f0a73b60a2c6682f593379b4423f751f1cfd36faa0f6cabd0e7382e2",
-      "bytes": 2758
+      "sha256": "7fcbfd05a77f16cc20bdba31556c0d9a2ba5a3c671e3b94ba8f1d9b84007dea3",
+      "bytes": 5191
+    },
+    {
+      "path": "generated/review/ui/01-login.png",
+      "license": "CC0-1.0",
+      "generator": "apps/web/e2e/account-flow.spec.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "69202b3a17cc66d2295a982d5294e47c7e36f6c019843f44733e24bfe3bfa440",
+      "bytes": 22143
+    },
+    {
+      "path": "generated/review/ui/02-register.png",
+      "license": "CC0-1.0",
+      "generator": "apps/web/e2e/account-flow.spec.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "5a376d54ecb38d413823b447fd699da39c7390eb2a1a1a4c2b2dab48eb727b50",
+      "bytes": 44482
+    },
+    {
+      "path": "generated/review/ui/03-consent.png",
+      "license": "CC0-1.0",
+      "generator": "apps/web/e2e/account-flow.spec.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "e9041d15a3a7a74bd95fb4597af057fb85c5c69d8e4f7cfa272f088900b02889",
+      "bytes": 66580
+    },
+    {
+      "path": "generated/review/ui/04-parent-area.png",
+      "license": "CC0-1.0",
+      "generator": "apps/web/e2e/account-flow.spec.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "f5546e35a72f5ea3e25248474f8b6ca5cc37a73474be05041185e07bbeff9271",
+      "bytes": 35398
+    },
+    {
+      "path": "generated/review/ui/05-profiles.png",
+      "license": "CC0-1.0",
+      "generator": "apps/web/e2e/account-flow.spec.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "282228459be3dba77f570804747c5e1dd3f992eb075711ebbd96879de57bbdcf",
+      "bytes": 16103
+    },
+    {
+      "path": "generated/review/ui/06-play-parrot.png",
+      "license": "CC0-1.0",
+      "generator": "apps/web/e2e/account-flow.spec.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "e7ed505cd8c23adee5fd9cd9fa46b6be9073dd89a0a4c4bb352a15affb24b222",
+      "bytes": 422000
+    },
+    {
+      "path": "generated/review/ui/07-parent-gate.png",
+      "license": "CC0-1.0",
+      "generator": "apps/web/e2e/account-flow.spec.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "407e2e1efd09a55689042fd62dbe455c2aaf2457443b6a6b8c8fa1fb8a25c256",
+      "bytes": 19244
     },
     {
       "path": "generated/world/forest-ch1/chunks.bin",
@@ -8997,8 +9670,8 @@
       "license": "CC0-1.0",
       "generator": "tools/world/generate-forest-map.ts",
       "derivedFrom": [],
-      "sha256": "64c523449c6a2e9abbfa9afd915cac5c7eb4b4a8541c3837c0f951964b479138",
-      "bytes": 12734
+      "sha256": "2df2a72451b4160f0d56984c75fbe7b62317cbff5bcd2bf256608d11b8614f89",
+      "bytes": 12067
     }
   ]
 }

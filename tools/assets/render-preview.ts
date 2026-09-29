@@ -1,6 +1,6 @@
 /// <reference lib="dom" />
 // Renders review PNGs (character turnaround + one frame per clip, accessories, map) by driving the
-// POC app's preview.html in headless Chromium. Output: assets/generated/review/<group>/*.png
+// web app's preview.html in headless Chromium. Output: assets/generated/review/<group>/*.png
 import { mkdir, rm } from 'node:fs/promises';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
@@ -10,7 +10,7 @@ import { ASSETS_DIR, REPO_ROOT } from './asset-lib';
 import { writeManifest } from './build-manifest';
 import { readCharacterSpecs, rigAnimationNames } from './kitbash-character';
 
-const APP_DIR = path.join(REPO_ROOT, 'apps/poc-voxel');
+const APP_DIR = path.join(REPO_ROOT, 'apps/web');
 const PORT = 5199; // fixed so a stale server is easy to find (lsof -i :5199)
 const REVIEW_DIR = path.join(ASSETS_DIR, 'generated/review');
 
@@ -18,19 +18,32 @@ export interface Shot {
   /** Output path relative to the review dir. */
   file: string;
   query: Record<string, string | number>;
-  /** Defaults to preview.html (single model); index.html renders the playable POC. */
-  page?: 'preview.html' | 'index.html';
   viewport?: { width: number; height: number };
 }
 
 /** Time inside each authored clip where the pose reads clearly. */
 const SHOW_TIME: Record<string, number> = { wave: 0.8, jump: 0.45, yawn: 1.2, cheer: 0.3 };
 
+/** `head:1.3,torso:0.8` — accessory fit of a character variant, for preview.html. */
+export function accessoryScaleParam(scale: Record<string, number>): string {
+  return Object.entries(scale)
+    .map(([node, value]) => `${node}:${value}`)
+    .join(',');
+}
+
 async function characterShots(): Promise<Shot[]> {
   const shots: Shot[] = [];
   for (const [id, spec] of Object.entries(await readCharacterSpecs())) {
     for (const yaw of [0, 90, 180, 315]) {
       shots.push({ file: `character/${id}-turn-${yaw}.png`, query: { model: spec.output, anim: 'idle', t: 0, yaw } });
+    }
+    // Chibi variants under review: turnaround, the 4 preview clips, and the third-person gameplay angle.
+    if (spec.face) {
+      shots.push({ file: `character/${id}-gameplay-camera.png`, query: { model: spec.output, anim: 'walk', t: 0.17, yaw: 180, pitch: 28 } });
+      for (const anim of spec.extraAnimations) {
+        shots.push({ file: `character/${id}-anim-${anim}.png`, query: { model: spec.output, anim, t: SHOW_TIME[anim] ?? 0.3, yaw: 25, size: 256 } });
+      }
+      continue;
     }
     for (const anim of [...(await rigAnimationNames(spec)), ...spec.extraAnimations]) {
       shots.push({
@@ -43,7 +56,8 @@ async function characterShots(): Promise<Shot[]> {
 }
 
 async function accessoryShots(): Promise<Shot[]> {
-  const model = (await readCharacterSpecs())['miu-cat']?.output;
+  const specs = await readCharacterSpecs();
+  const model = specs['miu-cat']?.output;
   if (!model) throw new Error('miu-cat spec missing');
   const outfit = 'hat-witch-pink,backpack-brown';
   const shots: Shot[] = [0, 150, 210, 300].map((yaw) => ({
@@ -59,6 +73,16 @@ async function accessoryShots(): Promise<Shot[]> {
       query: { model, anim: 'idle', t: 0, yaw: 35, acc: `hat-witch-pink:${hat},backpack-brown:${pack}`, size: 256 },
     });
   }
+  // The same accessory files on each chibi variant, resized by the variant's accessoryScale.
+  for (const [id, spec] of Object.entries(specs)) {
+    if (!spec.face) continue;
+    for (const yaw of [35, 210]) {
+      shots.push({
+        file: `accessories/${id}-outfit-${yaw}.png`,
+        query: { model: spec.output, anim: 'idle', t: 0, yaw, acc: outfit, accScale: accessoryScaleParam(spec.accessoryScale), size: 256 },
+      });
+    }
+  }
   return shots;
 }
 
@@ -66,7 +90,6 @@ async function mapShots(): Promise<Shot[]> {
   const wide = { width: 1280, height: 800 };
   const shots: Shot[] = ['top', 'iso', 'bridge', 'tree', 'npc'].map((shot) => ({
     file: `map/forest-ch1-${shot}.png`,
-    page: 'index.html',
     query: { shot, quality: 'high' },
     viewport: shot === 'top' ? { width: 1000, height: 1000 } : wide,
   }));
@@ -86,7 +109,7 @@ async function capture(browser: Browser, shots: Shot[]): Promise<void> {
   for (const shot of shots) {
     const query = new URLSearchParams(Object.entries(shot.query).map(([k, v]) => [k, String(v)]));
     await page.setViewportSize(shot.viewport ?? { width: 1024, height: 1024 });
-    await page.goto(`http://127.0.0.1:${PORT}/${shot.page ?? 'preview.html'}?${query.toString()}`);
+    await page.goto(`http://127.0.0.1:${PORT}/preview.html?${query.toString()}`);
     await page.waitForFunction(() => document.body.dataset.ready === '1' || document.body.dataset.error !== undefined, null, {
       timeout: 60_000,
     });

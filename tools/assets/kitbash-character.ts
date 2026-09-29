@@ -35,8 +35,43 @@ export const characterSpecSchema = z.object({
   palette: z.record(z.string(), hexColor),
   partColors: z.record(z.string(), z.string()),
   extraAnimations: z.array(z.string()),
+  /** Chibi proportions (1 = rig as authored). Torso height, relative to its pivot. */
+  torsoScale: z.number().positive().max(2).default(1),
+  /** Arm and leg length, relative to shoulder/hip pivots; the whole body drops so feet stay on the ground. */
+  limbScale: z.number().positive().max(2).default(1),
+  /** Extra vertical shift of the head joint, in model units (negative sinks the head into the shoulders). */
+  headOffset: z.number().default(0),
+  /** Face blocks (`content/faces/<id>.json`) merged into the head, so the character stays one draw call. */
+  face: z.string().regex(/^[a-z0-9-]+$/).optional(),
+  /** Runtime multiplier for accessory size/offset per attach node, so one accessory file fits every variant. */
+  accessoryScale: z.record(z.string(), z.number().positive()).default({}),
 });
 export type CharacterSpec = z.infer<typeof characterSpecSchema>;
+
+/**
+ * Face blocks in "head units": voxel boxes placed relative to the head pivot for a head of scale 1,
+ * multiplied by `headScale` when merged so one face file fits every head size.
+ */
+export const faceSchema = z.object({
+  id: z.string().regex(/^[a-z0-9-]+$/),
+  voxelSize: z.number().positive(),
+  offset: z.tuple([z.number(), z.number(), z.number()]),
+  palette: z.record(z.string(), hexColor),
+  boxes: z
+    .array(
+      z.object({
+        x: z.number().int(),
+        y: z.number().int(),
+        z: z.number().int(),
+        w: z.number().int().positive(),
+        h: z.number().int().positive(),
+        d: z.number().int().positive(),
+        color: z.string().min(1),
+      }),
+    )
+    .min(1),
+});
+export type FaceDef = z.infer<typeof faceSchema>;
 export const charactersFileSchema = z.record(z.string(), characterSpecSchema);
 
 interface MergedGeometry {
@@ -106,6 +141,51 @@ function appendPart(
   }
 }
 
+/** Unit-cube faces: outward normal and 4 corners (counter-clockwise seen from outside). */
+const CUBE_FACES: Array<{ n: Vec3; c: Vec3[] }> = [
+  { n: [1, 0, 0], c: [[1, 0, 1], [1, 0, 0], [1, 1, 0], [1, 1, 1]] },
+  { n: [-1, 0, 0], c: [[0, 0, 0], [0, 0, 1], [0, 1, 1], [0, 1, 0]] },
+  { n: [0, 1, 0], c: [[0, 1, 1], [1, 1, 1], [1, 1, 0], [0, 1, 0]] },
+  { n: [0, -1, 0], c: [[0, 0, 0], [1, 0, 0], [1, 0, 1], [0, 0, 1]] },
+  { n: [0, 0, 1], c: [[0, 0, 1], [1, 0, 1], [1, 1, 1], [0, 1, 1]] },
+  { n: [0, 0, -1], c: [[1, 0, 0], [0, 0, 0], [0, 1, 0], [1, 1, 0]] },
+];
+
+/**
+ * Appends face boxes (eyes, cheeks, nose) as flat-colored cubes bound to the head joint.
+ * Positions: pivot + headScale * (offset + voxel * voxelSize).
+ */
+function appendFace(
+  merged: MergedGeometry,
+  face: FaceDef,
+  pivot: Vec3,
+  headScale: number,
+  joint: number,
+  cellOf: (color: string) => number | undefined,
+): void {
+  const unit = face.voxelSize * headScale;
+  for (const box of face.boxes) {
+    const cell = cellOf(box.color);
+    if (cell === undefined) throw new Error(`face ${face.id}: color "${box.color}" is not in its palette`);
+    const uv = paletteUv(cell);
+    const origin: Vec3 = [
+      pivot[0] + headScale * face.offset[0] + box.x * unit,
+      pivot[1] + headScale * face.offset[1] + box.y * unit,
+      pivot[2] + headScale * face.offset[2] + box.z * unit,
+    ];
+    for (const { n, c } of CUBE_FACES) {
+      const base = merged.positions.length / 3;
+      for (const [cx, cy, cz] of c) {
+        merged.positions.push(origin[0] + cx * box.w * unit, origin[1] + cy * box.h * unit, origin[2] + cz * box.d * unit);
+        merged.normals.push(...n);
+        merged.uvs.push(...uv);
+        merged.joints.push(joint, 0, 0, 0);
+      }
+      merged.indices.push(base, base + 1, base + 2, base, base + 2, base + 3);
+    }
+  }
+}
+
 /** Model-space bounds of a node's mesh after `transform`. */
 function transformedBounds(node: GltfNode, transform: mat4): { min: Vec3; max: Vec3 } {
   const min: Vec3 = [Infinity, Infinity, Infinity];
@@ -155,7 +235,17 @@ function cloneTree(src: GltfNode, out: Document, byName: Map<string, GltfNode>):
   return node;
 }
 
-function copyAnimations(rig: Document, out: Document, byName: Map<string, GltfNode>, buffer: ReturnType<Document['createBuffer']>): void {
+/**
+ * `translationDeltas`: joints moved by the chibi reshape; their translation keyframes shift by the
+ * same amount so every clip keeps the new proportions.
+ */
+function copyAnimations(
+  rig: Document,
+  out: Document,
+  byName: Map<string, GltfNode>,
+  buffer: ReturnType<Document['createBuffer']>,
+  translationDeltas: ReadonlyMap<string, Vec3>,
+): void {
   const copied = new Map<Accessor, Accessor>();
   const copy = (src: Accessor): Accessor => {
     const hit = copied.get(src);
@@ -177,7 +267,19 @@ function copyAnimations(rig: Document, out: Document, byName: Map<string, GltfNo
       if (!sampler || !target || !input || !output || !targetPath) continue;
       const node = byName.get(target.getName());
       if (!node) throw new Error(`animation ${anim.getName()} targets unknown node ${target.getName()}`);
-      const s = out.createAnimationSampler().setInput(copy(input)).setOutput(copy(output)).setInterpolation(sampler.getInterpolation());
+      const delta = targetPath === 'translation' ? translationDeltas.get(target.getName()) : undefined;
+      const inAccessor = copy(input); // input before output: keeps accessor order (and bytes) stable
+      let outAccessor: Accessor;
+      if (delta) {
+        const values = output.getArray();
+        if (!values) throw new Error('animation accessor without data');
+        const shifted = new Float32Array(values.length);
+        for (let i = 0; i < values.length; i++) shifted[i] = (values[i] ?? 0) + (delta[i % 3] ?? 0);
+        outAccessor = out.createAccessor().setType(output.getType()).setArray(shifted).setBuffer(buffer);
+      } else {
+        outAccessor = copy(output);
+      }
+      const s = out.createAnimationSampler().setInput(inAccessor).setOutput(outAccessor).setInterpolation(sampler.getInterpolation());
       next.addSampler(s).addChannel(out.createAnimationChannel().setTargetNode(node).setTargetPath(targetPath).setSampler(s));
     }
   }
@@ -249,9 +351,42 @@ export async function buildCharacter(id: string, spec: CharacterSpec): Promise<U
   };
   collect(rigRoot);
 
-  // Palette: one flat cell per named color, referenced by rig part.
+  // 0. Chibi reshape: move joints (shorter torso lowers shoulders/neck; shorter legs drop the whole
+  // body) and remember each move so animation keyframes follow. Skipped entirely at scale 1.
+  const reshaped = spec.torsoScale !== 1 || spec.limbScale !== 1 || spec.headOffset !== 0;
+  const translationDeltas = new Map<string, Vec3>();
+  const partScaleY = new Map<string, number>();
+  if (reshaped) {
+    const leg = requireNode(rig, 'leg-left');
+    const legBounds = transformedBounds(leg, worldMatrix(leg));
+    const hipY = (leg.getWorldTranslation() as Vec3)[1];
+    translationDeltas.set('root', [0, -(1 - spec.limbScale) * (hipY - legBounds.min[1]), 0]);
+    for (const name of ['arm-left', 'arm-right', 'head']) {
+      const localY = (outNode(name).getTranslation() as Vec3)[1];
+      translationDeltas.set(name, [0, localY * (spec.torsoScale - 1) + (name === 'head' ? spec.headOffset : 0), 0]);
+    }
+    for (const [name, delta] of translationDeltas) {
+      const t = outNode(name).getTranslation() as Vec3;
+      outNode(name).setTranslation([t[0] + delta[0], t[1] + delta[1], t[2] + delta[2]]);
+    }
+    partScaleY.set('torso', spec.torsoScale);
+    for (const name of ['arm-left', 'arm-right', 'leg-left', 'leg-right']) partScaleY.set(name, spec.limbScale);
+  }
+  /** Model-space transform for a rig part: its (possibly moved) joint, squashed along its own y axis. */
+  const partMatrix = (rigNode: GltfNode): mat4 => {
+    if (!reshaped) return worldMatrix(rigNode);
+    const m = worldMatrix(outNode(rigNode.getName()));
+    const sy = partScaleY.get(rigNode.getName()) ?? 1;
+    return sy === 1 ? m : mat4.scale(mat4.create(), m, [1, sy, 1]);
+  };
+
+  const face = spec.face ? await readJson(path.join(CONTENT_DIR, 'faces', `${spec.face}.json`), faceSchema) : undefined;
+
+  // Palette: one flat cell per named color, referenced by rig part (face colors appended after).
   const colorNames = Object.keys(spec.palette).sort();
-  const colorIndex = new Map(colorNames.map((name, i) => [name, i]));
+  const faceColorNames = face ? Object.keys(face.palette).sort().map((n) => `face:${n}`) : [];
+  const allColors = [...colorNames, ...faceColorNames];
+  const colorIndex = new Map(allColors.map((name, i) => [name, i]));
 
   const merged: MergedGeometry = { positions: [], normals: [], uvs: [], joints: [], indices: [] };
   const joints: GltfNode[] = rigJointNames.map(outNode);
@@ -268,7 +403,7 @@ export async function buildCharacter(id: string, spec: CharacterSpec): Promise<U
     const cell = colorName === undefined ? undefined : colorIndex.get(colorName);
     if (cell === undefined) throw new Error(`no palette color for rig part "${node.getName()}"`);
     const uv = paletteUv(cell);
-    appendPart(merged, node, worldMatrix(node), jointIndex(node.getName()), () => uv);
+    appendPart(merged, node, partMatrix(node), jointIndex(node.getName()), () => uv);
   }
 
   // 2. Animal head: whole cube body scaled and seated on the rig's head pivot.
@@ -294,7 +429,7 @@ export async function buildCharacter(id: string, spec: CharacterSpec): Promise<U
 
   // 3. Tail moves from the animal body to the back of the rig torso, on its own joint.
   const torsoRig = requireNode(rig, 'torso');
-  const torsoBounds = transformedBounds(torsoRig, worldMatrix(torsoRig));
+  const torsoBounds = transformedBounds(torsoRig, partMatrix(torsoRig));
   const tailSrc = requireNode(animal, spec.tailNode);
   const tailPivot = vec3.transformMat4(vec3.create(), tailSrc.getWorldTranslation() as Vec3, align);
   const tailTarget: Vec3 = [0, torsoBounds.min[1] + spec.tailHeight, torsoBounds.min[2]];
@@ -307,13 +442,20 @@ export async function buildCharacter(id: string, spec: CharacterSpec): Promise<U
   const tailTransform = mat4.multiply(mat4.create(), tailShift, mat4.multiply(mat4.create(), align, worldMatrix(tailSrc)));
   appendPart(merged, tailSrc, tailTransform, joints.length - 1, headUv);
 
+  // 3b. Face blocks, in head units scaled with the head, bound to the head joint.
+  if (face) appendFace(merged, face, headPivot, s, jointIndex('head'), (color) => colorIndex.get(`face:${color}`));
+
   // 4. Material + atlas (head colormap on top, palette cells below).
   const colormap = animal.getRoot().listTextures()[0]?.getImage();
   if (!colormap) throw new Error('animal model has no colormap texture');
+  const paletteHex = [
+    ...colorNames.map((n) => spec.palette[n] ?? '#ff00ff'),
+    ...faceColorNames.map((n) => face?.palette[n.slice('face:'.length)] ?? '#ff00ff'),
+  ];
   const atlas = out
     .createTexture('miu-atlas')
     .setMimeType('image/png')
-    .setImage(buildAtlas(colormap, colorNames.map((n) => spec.palette[n] ?? '#ff00ff')));
+    .setImage(buildAtlas(colormap, paletteHex));
   const material = out.createMaterial(`${id}-material`).setBaseColorTexture(atlas).setMetallicFactor(0).setRoughnessFactor(1);
   material.getBaseColorTextureInfo()?.setMagFilter(GL_NEAREST).setMinFilter(GL_NEAREST);
 
@@ -343,7 +485,7 @@ export async function buildCharacter(id: string, spec: CharacterSpec): Promise<U
   top.addChild(out.createNode(`${id}-mesh`).setMesh(out.createMesh(`${id}-mesh`).addPrimitive(prim)).setSkin(skin));
 
   // 6. Animations: every rig clip, then the authored extras.
-  copyAnimations(rig, out, byName, buffer);
+  copyAnimations(rig, out, byName, buffer, translationDeltas);
   for (const name of spec.extraAnimations) await addExtraClip(out, name, joints, buffer);
 
   out.getRoot().getAsset().generator = 'miu-world kitbash-character';

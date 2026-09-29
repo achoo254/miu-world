@@ -1,0 +1,27 @@
+{
+  "subjects": [
+    {
+      "id": "toan",
+      "name": "Toán",
+      "skills": [
+        { "id": "phep-cong", "name": "Phép cộng" },
+        { "id": "phep-tru", "name": "Phép trừ" },
+        { "id": "so-sanh-so", "name": "So sánh số" },
+        { "id": "logic", "name": "Logic" }
+      ]
+    },
+    {
+      "id": "tieng-viet",
+      "name": "Tiếng Việt",
+      "skills": [
+        { "id": "doc-hieu", "name": "Đọc hiểu" },
+        { "id": "ghep-cau", "name": "Ghép câu" }
+      ]
+    },
+    {
+      "id": "english",
+      "name": "English",
+      "skills": [{ "id": "tu-vung", "name": "Từ vựng" }]
+    }
+  ]
+}
