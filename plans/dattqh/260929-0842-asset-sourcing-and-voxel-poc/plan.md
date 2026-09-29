@@ -77,6 +77,6 @@ Cách quyết: 8 câu gửi TypeSafe Jev (`jev-1.13.0`, Choice) qua `tools/decis
 - Tìm từ cũ trên plan + Master Plan v3: `LFS`, `người duyệt`, `KayKit`, `máy thật`, `cảm quan`, tỉ lệ scale đầu.
 - Đã sửa: mô tả plan; phase 1 (TOFU hash, số phase gallery); phase 2 (overview, tỉ lệ scale nhất quán với ~0.65); Master Plan §10 bước 1 (git thường + ngân sách), §12 đoạn mở, backlog task #6, rủi ro hiệu năng.
 - Còn lại có chủ đích: LFS chỉ là phương án khi vượt ngân sách; KayKit giữ trong Master Plan (sau POC); "máy thật" ở Master Plan §12/§16/§17 là điều kiện MVP.
-- Mâu thuẫn chưa giải: 0 trong plan này. Ghi nhận ngoài phạm vi: Master Plan §17 còn "con người duyệt PR" mỗi task — lệch với operating model "người chỉ duyệt cuối"; để người quyết.
+- Mâu thuẫn chưa giải: 0. Master Plan §17 (và các dòng liên quan ở §9, §14, bảng rủi ro) đã chuyển sang mô hình "AI tự review, người duyệt cuối" theo quyết định của người sở hữu.
 
 <!-- slug: asset-sourcing-and-voxel-poc -->
