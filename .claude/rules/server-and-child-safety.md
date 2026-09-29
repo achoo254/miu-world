@@ -11,6 +11,7 @@ Lý do: Master Plan v3 §8, §9, §11; chuẩn test ở `docs/code-standards.md`
 - Server là nguồn sự thật: mọi XP, Xu, Skill XP, vật phẩm, kết quả thử thách, mở khóa do server tính bằng `packages/quest`. Bỏ qua mọi giá trị thưởng client gửi lên.
 - Mọi endpoint kiểm quyền theo phụ huynh và hồ sơ đang chọn; mỗi endpoint có test IDOR (tài nguyên của người khác trả 404, không 403).
 - Endpoint ghi thưởng/tiến độ phải idempotent và có test chống gian lận (lặp, nhảy bước, gọi đồng thời).
+- Phụ huynh đăng nhập bằng Google OAuth (code + PKCE + state + nonce phía server, scope chỉ `openid email`, lưu `sub` + email đã xác minh); không nhúng SDK Google phía trình duyệt; client secret chỉ ở env server. Đăng nhập mật khẩu chỉ dev/test, không bao giờ bật ở production.
 - Không thu tên thật, email, trường, tuổi, lớp của trẻ; hồ sơ trẻ chỉ có tên hiển thị chọn từ danh sách. Thêm hay đổi trường dữ liệu trẻ, cách thu hoặc chia sẻ dữ liệu trẻ là quyết định phải hỏi người trước.
 - Không log email, tên hồ sơ, token, mật khẩu, PIN; log chỉ id. Lỗi trả client không có stack.
 - Không bao giờ trả `password_hash`, `pin_hash`, token trong response; DTO lấy từ `packages/schema`.

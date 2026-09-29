@@ -59,6 +59,7 @@ Nguồn: Master Plan v3 §7, §15 #16–#18.
 | Nối React–Three.js bằng bridge tự viết (event → store → `useSyncExternalStore`) | Runtime không phụ thuộc React; React không render theo khung hình | React Three Fiber |
 | Drizzle + PostgreSQL; PGlite cho dev/test, PostgreSQL thật trong CI | Máy dev không có Docker/psql; CI bắt khác biệt PGlite/Postgres | Prisma; SQLite cho dev |
 | Logic quest/thưởng trong `packages/quest` (TS thuần) | Server tính lại bằng cùng logic client dùng để dự đoán; quest không phụ thuộc Three.js | Logic quest trong runtime game |
+| Phụ huynh đăng nhập bằng Google OAuth (code + PKCE phía server, scope `openid email`); lần đầu đặt PIN; PIN khóa thì mở bằng đăng nhập Google lại | Không phải lưu mật khẩu, email đã xác minh; không script bên thứ ba (người sở hữu yêu cầu, chi tiết do Jev quyết 2026-09-29: `plans/dattqh/reports/jev-260929-google-oauth-decisions.md`) | Email + mật khẩu (giữ cho dev/test); Google Identity Services JS (script bên thứ ba) |
 | Session phía server, cookie httpOnly; mật khẩu và PIN băm bằng `node:crypto` scrypt | Không thêm dependency băm; thu hồi session được | JWT không trạng thái; bcrypt/argon2 (thêm native dependency) |
 | POC chỉ dùng pack Kenney; KayKit sau POC | KayKit cần tải tay từ itch.io | Đưa KayKit vào POC |
 | Va chạm AABB theo lưới tự viết | Không cần WASM, CSP không phải mở `wasm-unsafe-eval` | Rapier (chỉ khi có vật thể động) |

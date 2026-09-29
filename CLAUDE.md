@@ -37,6 +37,7 @@ Gom lại, hỏi một lần: thay đổi cách thu thập/chia sẻ dữ liệu
 - `render-preview.ts` và perf test tự sinh lại manifest khi chạy xong; nếu tự sửa file trong `assets/generated/` bằng cách khác thì phải chạy `pnpm assets:manifest`.
 - Cổng cố định: web dev 5173, preview/E2E 4173 (Vite `--strictPort`); server 8787 (cổng cố định trong config, lỗi nếu bận); render-preview 5199. Báo cổng bận thì tìm và tắt server cũ, không đổi cổng.
 - Server từ chối POST không có `Origin` trong danh sách cho phép (chống CSRF). Mặc định chỉ có localhost/127.0.0.1 ở 5173/4173 (và 5174/4174 cũ); duyệt qua LAN thì chạy server với `ALLOWED_ORIGINS=http://<ip-LAN>:<cổng>` (danh sách phân tách bằng dấu phẩy) và mở web với `--host`.
+- Đăng nhập phụ huynh là Google OAuth: server cần `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`, `GOOGLE_REDIRECT_URI` (khớp đúng URI đăng ký trên Google; Google chỉ nhận https hoặc `http://localhost`). Đặt trong file env ngoài repo và chạy `pnpm --filter @miu/server exec tsx --env-file=<file> src/server.ts`; không in giá trị. Đăng nhập mật khẩu chỉ cho dev/test (E2E setup), tự tắt ở production. Duyệt qua tunnel: `tunelo http 4173:miu` → `https://miu.tunnel.inetdev.io.vn`, chạy preview với `MIU_PUBLIC_HOSTS=miu.tunnel.inetdev.io.vn` và server với `ALLOWED_ORIGINS` gồm origin đó.
 - `jev-decide.py` cần `TYPESAFE_API_KEY` hoặc `TYPESAFE_TOKEN_FILE`; thiếu thì dừng, đừng tự tìm key.
 
 ## Quy trình

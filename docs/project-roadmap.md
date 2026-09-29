@@ -50,8 +50,7 @@ Mã chỉ dùng trong plan và roadmap, không dùng trong code, tên test, comm
 - Đo trên máy chuẩn iPad Gen 10 ở Low/Mid/High (FPS, nhiệt, pin sau 15 phút).
 - Nén atlas KTX2 (task #21).
 - Triển khai server: bước bundle production (hiện `start` chạy bằng `tsx`); cấu hình `trust proxy` đúng với reverse proxy thật, nếu không rate limit gộp mọi người vào một khóa IP.
-- Đăng ký trả `email-taken` nên lộ email đã có tài khoản; cân nhắc lại khi có xác minh email.
 - Khi phụ kiện trở thành phần thưởng: `PUT /api/character` phải kiểm sở hữu qua túi đồ (hiện chỉ kiểm catalog).
 - Tách trang review/preview và ảnh review khỏi bản build phát hành (hiện build gồm cả ~5 MB ảnh review).
-- Xác minh email phụ huynh (cần nhà cung cấp email, DNS) và pháp chế duyệt văn bản đồng ý — trước khi có người dùng thật.
+- Xác minh ứng dụng Google OAuth (màn đồng ý, chính sách quyền riêng tư) và pháp chế duyệt văn bản đồng ý draft-2 — trước khi có người dùng thật.
 - Đưa KayKit vào (chế độ tải tay đã hỗ trợ).
