@@ -1,0 +1,45 @@
+[
+  {
+    "glob": "generated/characters/*.glb",
+    "generator": "tools/assets/kitbash-character.ts",
+    "derivedFrom": [
+      "kenney-blocky-characters",
+      "kenney-cube-pets"
+    ],
+    "license": "CC0-1.0"
+  },
+  {
+    "glob": "generated/atlas/*",
+    "generator": "tools/assets/build-atlas.ts",
+    "derivedFrom": [
+      "kenney-voxel-pack"
+    ],
+    "license": "CC0-1.0"
+  },
+  {
+    "glob": "generated/world/**",
+    "generator": "tools/world/generate-forest-map.ts",
+    "derivedFrom": [],
+    "license": "CC0-1.0"
+  },
+  {
+    "glob": "generated/review/**/*.png",
+    "generator": "tools/assets/render-preview.ts",
+    "derivedFrom": [
+      "kenney-blocky-characters",
+      "kenney-cube-pets",
+      "kenney-voxel-pack",
+      "kenney-nature-kit",
+      "kenney-survival-kit",
+      "kenney-food-kit",
+      "kenney-castle-kit"
+    ],
+    "license": "CC0-1.0"
+  },
+  {
+    "glob": "generated/review/*.json",
+    "generator": "apps/poc-voxel/e2e/perf.spec.ts",
+    "derivedFrom": [],
+    "license": "CC0-1.0"
+  }
+]

@@ -1,0 +1,417 @@
+{
+  "licenseAllowlist": [
+    "CC0-1.0",
+    "MIT",
+    "OFL-1.1"
+  ],
+  "budget": {
+    "packsMaxBytes": 157286400,
+    "fileMaxBytes": 20971520
+  },
+  "packs": [
+    {
+      "id": "kenney-cube-pets",
+      "name": "Cube Pets",
+      "author": "Kenney",
+      "version": "2.0",
+      "license": "CC0-1.0",
+      "homepage": "https://kenney.nl/assets/cube-pets",
+      "licenseFile": "License.txt",
+      "mode": "zip",
+      "url": "https://kenney.nl/media/pages/assets/cube-pets/44e58e945f-1774520254/kenney_cube-pets_1.0.zip",
+      "sha256": "b3bdc99a2ec92c687b875718c5d01e9231d2711ed0e2845f295b474bb42a1283",
+      "keep": [
+        {
+          "glob": "License.txt",
+          "strip": ""
+        },
+        {
+          "glob": "Models/GLB format/**/*.{glb,png}",
+          "strip": "Models/GLB format/"
+        }
+      ]
+    },
+    {
+      "id": "kenney-blocky-characters",
+      "name": "Blocky Characters",
+      "author": "Kenney",
+      "version": "2.0",
+      "license": "CC0-1.0",
+      "homepage": "https://kenney.nl/assets/blocky-characters",
+      "licenseFile": "License.txt",
+      "mode": "zip",
+      "url": "https://kenney.nl/media/pages/assets/blocky-characters/8369c0cf30-1749547469/kenney_blocky-characters_20.zip",
+      "sha256": "5e123859aa0c1598342b600c6db197024a1d63eb9ec531398b310725f589887e",
+      "keep": [
+        {
+          "glob": "License.txt",
+          "strip": ""
+        },
+        {
+          "glob": "Models/GLB format/**/*.{glb,png}",
+          "strip": "Models/GLB format/"
+        }
+      ]
+    },
+    {
+      "id": "kenney-voxel-pack",
+      "name": "Voxel Pack",
+      "author": "Kenney",
+      "version": "1.0",
+      "license": "CC0-1.0",
+      "homepage": "https://kenney.nl/assets/voxel-pack",
+      "licenseFile": "License.txt",
+      "mode": "zip",
+      "url": "https://kenney.nl/media/pages/assets/voxel-pack/a3a73d0ff7-1677662501/kenney_voxel-pack.zip",
+      "sha256": "667c05e3f6d95718aaef888c7fc06f7137ba5dede95f4574deb17d4436257958",
+      "keep": [
+        {
+          "glob": "License.txt",
+          "strip": ""
+        },
+        {
+          "glob": "PNG/Tiles/*.png",
+          "strip": "PNG/"
+        }
+      ]
+    },
+    {
+      "id": "kenney-nature-kit",
+      "name": "Nature Kit",
+      "author": "Kenney",
+      "version": "2.1",
+      "license": "CC0-1.0",
+      "homepage": "https://kenney.nl/assets/nature-kit",
+      "licenseFile": "License.txt",
+      "mode": "zip",
+      "url": "https://kenney.nl/media/pages/assets/nature-kit/37ac38a37b-1677698939/kenney_nature-kit.zip",
+      "sha256": "fa7974a0d342bfe63c38664ba9f8ec1a4aab8ea25f099bdc56870e33588c4d9d",
+      "keep": [
+        {
+          "glob": "License.txt",
+          "strip": ""
+        },
+        {
+          "glob": "Models/GLTF format/*.glb",
+          "strip": "Models/GLTF format/"
+        }
+      ]
+    },
+    {
+      "id": "kenney-survival-kit",
+      "name": "Survival Kit",
+      "author": "Kenney",
+      "version": "2.0",
+      "license": "CC0-1.0",
+      "homepage": "https://kenney.nl/assets/survival-kit",
+      "licenseFile": "License.txt",
+      "mode": "zip",
+      "url": "https://kenney.nl/media/pages/assets/survival-kit/4065a8185b-1712149243/kenney_survival-kit.zip",
+      "sha256": "c3586341b5932c87eb43d75d915434f47daed168b17ed36a03e8ca9977c7443e",
+      "keep": [
+        {
+          "glob": "License.txt",
+          "strip": ""
+        },
+        {
+          "glob": "Models/GLB format/**/*.{glb,png}",
+          "strip": "Models/GLB format/"
+        }
+      ]
+    },
+    {
+      "id": "kenney-food-kit",
+      "name": "Food Kit",
+      "author": "Kenney",
+      "version": "2.0",
+      "license": "CC0-1.0",
+      "homepage": "https://kenney.nl/assets/food-kit",
+      "licenseFile": "License.txt",
+      "mode": "zip",
+      "url": "https://kenney.nl/media/pages/assets/food-kit/83086fa91c-1719418518/kenney_food-kit.zip",
+      "sha256": "cdad90853682499b94c9fda2f87678b24bfd8f3264e0ed323f6b6a27fd7c6f6f",
+      "keep": [
+        {
+          "glob": "License.txt",
+          "strip": ""
+        },
+        {
+          "glob": "Models/GLB format/**/*.{glb,png}",
+          "strip": "Models/GLB format/"
+        }
+      ]
+    },
+    {
+      "id": "kenney-castle-kit",
+      "name": "Castle Kit",
+      "author": "Kenney",
+      "version": "2.0",
+      "license": "CC0-1.0",
+      "homepage": "https://kenney.nl/assets/castle-kit",
+      "licenseFile": "License.txt",
+      "mode": "zip",
+      "url": "https://kenney.nl/media/pages/assets/castle-kit/a395102d20-1711543616/kenney_castle-kit.zip",
+      "sha256": "921f3f73927bb23106cae34bc21d5ab4b033a9fc120475e96f714a406e3169df",
+      "keep": [
+        {
+          "glob": "License.txt",
+          "strip": ""
+        },
+        {
+          "glob": "Models/GLB format/**/*.{glb,png}",
+          "strip": "Models/GLB format/"
+        }
+      ]
+    },
+    {
+      "id": "kenney-particle-pack",
+      "name": "Particle Pack",
+      "author": "Kenney",
+      "version": "1.1",
+      "license": "CC0-1.0",
+      "homepage": "https://kenney.nl/assets/particle-pack",
+      "licenseFile": "License.txt",
+      "mode": "zip",
+      "url": "https://kenney.nl/media/pages/assets/particle-pack/f8fe0f8cb8-1677578741/kenney_particle-pack.zip",
+      "sha256": "b631d4b07f7002549fdcf155f01141ad482f79f3440e4e301eed49ce5f1d8958",
+      "keep": [
+        {
+          "glob": "License.txt",
+          "strip": ""
+        },
+        {
+          "glob": "PNG \\(Transparent\\)/{star,spark,magic,twirl,light}_*.png",
+          "strip": "PNG (Transparent)/"
+        }
+      ]
+    },
+    {
+      "id": "kenney-interface-sounds",
+      "name": "Interface Sounds",
+      "author": "Kenney",
+      "version": "1.0",
+      "license": "CC0-1.0",
+      "homepage": "https://kenney.nl/assets/interface-sounds",
+      "licenseFile": "License.txt",
+      "mode": "zip",
+      "url": "https://kenney.nl/media/pages/assets/interface-sounds/fa43c1dd4d-1677589452/kenney_interface-sounds.zip",
+      "sha256": "f2193d072726d6758a5f7871b2dcc54dcce0d5c35c6f0a62f92549b327c81232",
+      "keep": [
+        {
+          "glob": "License.txt",
+          "strip": ""
+        },
+        {
+          "glob": "Audio/*.ogg",
+          "strip": ""
+        }
+      ]
+    },
+    {
+      "id": "fluent-emoji",
+      "name": "Fluent Emoji (3D subset)",
+      "author": "Microsoft",
+      "version": "1ffb34c752ec",
+      "license": "MIT",
+      "homepage": "https://github.com/microsoft/fluentui-emoji",
+      "licenseFile": "LICENSE",
+      "mode": "files",
+      "files": [
+        {
+          "url": "https://raw.githubusercontent.com/microsoft/fluentui-emoji/1ffb34c752ecf5d402f04cfb4b392c77f57c54bc/LICENSE",
+          "to": "LICENSE",
+          "sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/microsoft/fluentui-emoji/1ffb34c752ecf5d402f04cfb4b392c77f57c54bc/assets/Leaf%20fluttering%20in%20wind/3D/leaf_fluttering_in_wind_3d.png",
+          "to": "icons/leaf.png",
+          "sha256": "5a7dfcacc94c57166dc2d7b0e7517981a35fcc6ed231eafa6719aee642c1d166"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/microsoft/fluentui-emoji/1ffb34c752ecf5d402f04cfb4b392c77f57c54bc/assets/Key/3D/key_3d.png",
+          "to": "icons/key.png",
+          "sha256": "ae59ce2b8dcfaa1afcdfe91bde7cc88cf06a8493686a6676706d1c891bb349eb"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/microsoft/fluentui-emoji/1ffb34c752ecf5d402f04cfb4b392c77f57c54bc/assets/Gem%20stone/3D/gem_stone_3d.png",
+          "to": "icons/gem.png",
+          "sha256": "50dd4109b524203fc9e208e24498f6f468c54f104b4eb41e914dec203e841820"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/microsoft/fluentui-emoji/1ffb34c752ecf5d402f04cfb4b392c77f57c54bc/assets/Star/3D/star_3d.png",
+          "to": "icons/star.png",
+          "sha256": "b935cdf502b69054bc2b08e7ba4e4eaba6499564a2041dd77d6291e21bf8cfe8"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/microsoft/fluentui-emoji/1ffb34c752ecf5d402f04cfb4b392c77f57c54bc/assets/Glowing%20star/3D/glowing_star_3d.png",
+          "to": "icons/glowing-star.png",
+          "sha256": "a8041e122bfebbc72ff85c294568561ae77dc97ae322f747292c082901a3bef7"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/microsoft/fluentui-emoji/1ffb34c752ecf5d402f04cfb4b392c77f57c54bc/assets/Coin/3D/coin_3d.png",
+          "to": "icons/coin.png",
+          "sha256": "17e2a0c226342fe2cdd2612c56f5dd188870d1435076f47600313c04876f843b"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/microsoft/fluentui-emoji/1ffb34c752ecf5d402f04cfb4b392c77f57c54bc/assets/Fire/3D/fire_3d.png",
+          "to": "icons/fire.png",
+          "sha256": "d56355132d73df1741edcf37cb4e21ad54f1c46eeb76fa17224607abf4128c3f"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/microsoft/fluentui-emoji/1ffb34c752ecf5d402f04cfb4b392c77f57c54bc/assets/Trophy/3D/trophy_3d.png",
+          "to": "icons/trophy.png",
+          "sha256": "7c4a9805f354eb2aec35063a95a4043306efc726324c0d128883f24497857bbc"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/microsoft/fluentui-emoji/1ffb34c752ecf5d402f04cfb4b392c77f57c54bc/assets/Wrapped%20gift/3D/wrapped_gift_3d.png",
+          "to": "icons/gift.png",
+          "sha256": "fc9c446401c9fb347f4e9f47e6023247208126047d9ec32059d5e14e127fb562"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/microsoft/fluentui-emoji/1ffb34c752ecf5d402f04cfb4b392c77f57c54bc/assets/Mushroom/3D/mushroom_3d.png",
+          "to": "icons/mushroom.png",
+          "sha256": "cd3d240093294db7a66b3aa9570b558405d0d31dc31604fe1be46c9b4e0f836a"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/microsoft/fluentui-emoji/1ffb34c752ecf5d402f04cfb4b392c77f57c54bc/assets/Red%20apple/3D/red_apple_3d.png",
+          "to": "icons/red-apple.png",
+          "sha256": "7e37f4ad4d227d283f9afad0605fcddf67406bf8c6c4964419efbd23de7ad60c"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/microsoft/fluentui-emoji/1ffb34c752ecf5d402f04cfb4b392c77f57c54bc/assets/World%20map/3D/world_map_3d.png",
+          "to": "icons/map.png",
+          "sha256": "f170580a2a2f70662e1de8c76d8263c33202f66f4002e57ad89c997a1b3dc488"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/microsoft/fluentui-emoji/1ffb34c752ecf5d402f04cfb4b392c77f57c54bc/assets/Envelope/3D/envelope_3d.png",
+          "to": "icons/envelope.png",
+          "sha256": "9671859aa64b65b6977b7ab6adc2e64220e75edf531a8e67c4b76e01ace04230"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/microsoft/fluentui-emoji/1ffb34c752ecf5d402f04cfb4b392c77f57c54bc/assets/Red%20heart/3D/red_heart_3d.png",
+          "to": "icons/heart.png",
+          "sha256": "7218cb9f08ed1ef38fcd83fe699a1125d07f50725f4c87a68cb7c9f4efb3c32b"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/microsoft/fluentui-emoji/1ffb34c752ecf5d402f04cfb4b392c77f57c54bc/assets/Sparkles/3D/sparkles_3d.png",
+          "to": "icons/sparkles.png",
+          "sha256": "e4490c9ff74a3fd73a8f99c760d65b6ed51b8a3e4ad28da137fec050b77e1058"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/microsoft/fluentui-emoji/1ffb34c752ecf5d402f04cfb4b392c77f57c54bc/assets/Four%20leaf%20clover/3D/four_leaf_clover_3d.png",
+          "to": "icons/clover.png",
+          "sha256": "37b310abbb0914050cb033ffcb99fe25b09c4e47d1d0ef93988f60f6fd849d07"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/microsoft/fluentui-emoji/1ffb34c752ecf5d402f04cfb4b392c77f57c54bc/assets/Books/3D/books_3d.png",
+          "to": "icons/books.png",
+          "sha256": "36f75eaa1e1a849fc950f43962b447c206d96244858468240a6a81beaa97f7be"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/microsoft/fluentui-emoji/1ffb34c752ecf5d402f04cfb4b392c77f57c54bc/assets/Crown/3D/crown_3d.png",
+          "to": "icons/crown.png",
+          "sha256": "817095bb1423468afa155317ba04ca333957d51757a8d3326856ee8707c0edd6"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/microsoft/fluentui-emoji/1ffb34c752ecf5d402f04cfb4b392c77f57c54bc/assets/Package/3D/package_3d.png",
+          "to": "icons/package.png",
+          "sha256": "9c7c74bb551e7f0a3a088791ac715c4ece8c45b2d1910915bc34159f148dee0e"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/microsoft/fluentui-emoji/1ffb34c752ecf5d402f04cfb4b392c77f57c54bc/assets/Locked/3D/locked_3d.png",
+          "to": "icons/locked.png",
+          "sha256": "8c8e9209b8420ac7caf8c94fde6586044d9b91e85728aaaf4b98c2482761ea16"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/microsoft/fluentui-emoji/1ffb34c752ecf5d402f04cfb4b392c77f57c54bc/assets/Bell/3D/bell_3d.png",
+          "to": "icons/bell.png",
+          "sha256": "e1c9efed838326cb746462b824456ef382742237017871f4d0fe54c407a9d5bf"
+        }
+      ]
+    },
+    {
+      "id": "font-baloo-2",
+      "name": "Baloo 2",
+      "author": "Google Fonts / Fontsource",
+      "version": "5.3.0",
+      "license": "OFL-1.1",
+      "homepage": "https://fontsource.org/fonts/baloo-2",
+      "licenseFile": "LICENSE",
+      "mode": "files",
+      "files": [
+        {
+          "url": "https://cdn.jsdelivr.net/npm/@fontsource/baloo-2@5.3.0/LICENSE",
+          "to": "LICENSE",
+          "sha256": "273d4bb4d30d7f7011adfa11ee858b1d70a6b1f94cae89e6fa261ed8f1b8839a"
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/npm/@fontsource/baloo-2@5.3.0/files/baloo-2-latin-700-normal.woff2",
+          "to": "baloo-2-latin-700.woff2",
+          "sha256": "8e7ffc9b993aa8caa89bcab81e103c9eb2da4e3e042f37b7a5115d0ddbff12c0"
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/npm/@fontsource/baloo-2@5.3.0/files/baloo-2-vietnamese-700-normal.woff2",
+          "to": "baloo-2-vietnamese-700.woff2",
+          "sha256": "57e2a479c5c3bdb0de042e7729cdeb87351a02e0869867f4ea64ca39786afc8c"
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/npm/@fontsource/baloo-2@5.3.0/files/baloo-2-latin-800-normal.woff2",
+          "to": "baloo-2-latin-800.woff2",
+          "sha256": "3e36c57e37bda5b5f28cf10636d6d3aed4de5250df923f1b203b64ad857c79a7"
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/npm/@fontsource/baloo-2@5.3.0/files/baloo-2-vietnamese-800-normal.woff2",
+          "to": "baloo-2-vietnamese-800.woff2",
+          "sha256": "0f2643dd6a34fcdcf98cc339757dd3e8c801129aef82da7d7513d59fbf35cf40"
+        }
+      ]
+    },
+    {
+      "id": "font-nunito",
+      "name": "Nunito",
+      "author": "Google Fonts / Fontsource",
+      "version": "5.3.0",
+      "license": "OFL-1.1",
+      "homepage": "https://fontsource.org/fonts/nunito",
+      "licenseFile": "LICENSE",
+      "mode": "files",
+      "files": [
+        {
+          "url": "https://cdn.jsdelivr.net/npm/@fontsource/nunito@5.3.0/LICENSE",
+          "to": "LICENSE",
+          "sha256": "40991bfa02ac620aae16dc527f3c47765a25e43f270d4c301ee6ab663a8d9015"
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/npm/@fontsource/nunito@5.3.0/files/nunito-latin-400-normal.woff2",
+          "to": "nunito-latin-400.woff2",
+          "sha256": "a5906e15ceb68f73d3b2c2076b4057c3f6ed401186d56283b45ce12944ca0735"
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/npm/@fontsource/nunito@5.3.0/files/nunito-vietnamese-400-normal.woff2",
+          "to": "nunito-vietnamese-400.woff2",
+          "sha256": "2a755616268a9285541121f14f690f92bea32e19227ab20c9db3aebc630a57af"
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/npm/@fontsource/nunito@5.3.0/files/nunito-latin-600-normal.woff2",
+          "to": "nunito-latin-600.woff2",
+          "sha256": "45f437de32ff5973eb5616b43c1308bf9fe897442f3d78a603c4cd0a06d66573"
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/npm/@fontsource/nunito@5.3.0/files/nunito-vietnamese-600-normal.woff2",
+          "to": "nunito-vietnamese-600.woff2",
+          "sha256": "cf95b95d712b0185f0e61550a6fac0ecc2d2f4b16390daeca165398911c60e11"
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/npm/@fontsource/nunito@5.3.0/files/nunito-latin-700-normal.woff2",
+          "to": "nunito-latin-700.woff2",
+          "sha256": "fa89300b9bbb3bd0f60d6991aa055965d98e2ccca27bf8688fe0c39cdc796846"
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/npm/@fontsource/nunito@5.3.0/files/nunito-vietnamese-700-normal.woff2",
+          "to": "nunito-vietnamese-700.woff2",
+          "sha256": "0e29c28c9a442387fe5e98ca62a66dfe2bfb7b1c873ee9d081b42f0565af8858"
+        }
+      ]
+    }
+  ]
+}
