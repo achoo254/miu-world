@@ -1,0 +1,1 @@
+- [Worktree review is a moving target](project-review-worktree-moving-target.md) — author edits/runs E2E during review; snapshot mtimes, use review shots, tsx scratch checks
