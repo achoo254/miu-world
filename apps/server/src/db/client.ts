@@ -1,5 +1,5 @@
 import { randomUUID } from 'node:crypto';
-import { mkdir } from 'node:fs/promises';
+import { mkdir, readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { drizzle as drizzleNodePg } from 'drizzle-orm/node-postgres';
@@ -43,13 +43,40 @@ export async function openPglite(dir?: string): Promise<DbHandle> {
 }
 
 /**
+ * A freshly migrated in-memory PGlite, dumped: the test run migrates once (vitest global setup) and
+ * every test file starts from this copy instead of booting Postgres and migrating again.
+ */
+export async function migratedPgliteDump(): Promise<Blob> {
+  const [{ PGlite }, { drizzle }, { migrate }] = await Promise.all([
+    import('@electric-sql/pglite'),
+    import('drizzle-orm/pglite'),
+    import('drizzle-orm/pglite/migrator'),
+  ]);
+  const client = new PGlite();
+  await migrate(drizzle(client, { schema }), { migrationsFolder: MIGRATIONS });
+  const dump = await client.dumpDataDir('none');
+  await client.close();
+  return dump;
+}
+
+async function openPgliteDump(file: string): Promise<DbHandle> {
+  const [{ PGlite }, { drizzle }] = await Promise.all([import('@electric-sql/pglite'), import('drizzle-orm/pglite')]);
+  const client = new PGlite({ loadDataDir: new Blob([await readFile(file)]) });
+  return { db: drizzle(client, { schema }), close: () => client.close() };
+}
+
+/**
  * Isolated database for one test file. With `DATABASE_URL` (CI Postgres service) it creates a
  * throw-away database on that server so parallel test files never share rows; otherwise PGlite
- * in-memory. Same test code runs against both.
+ * in-memory, from the run's migrated template when there is one. Same test code runs against both.
  */
 export async function createTestDb(): Promise<DbHandle> {
   const url = process.env.DATABASE_URL;
-  if (!url) return openPglite();
+  if (!url) {
+    // Set by the test run's global setup: start from the migrated copy (see `migratedPgliteDump`).
+    const template = process.env.MIU_PGLITE_TEMPLATE;
+    return template ? openPgliteDump(template) : openPglite();
+  }
   const name = `miu_test_${randomUUID().replaceAll('-', '')}`;
   const admin = new pg.Client({ connectionString: url });
   await admin.connect();
