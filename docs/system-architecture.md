@@ -4,7 +4,7 @@ Kiến trúc đích: Master Plan v3 §7 (ứng dụng), §8 (multiplayer), §9 (
 
 ## Ranh giới hiện tại
 
-Repo đang ở giai đoạn Foundation (`plans/dattqh/260929-1911-foundation-after-poc-gate/`): pipeline asset, thư viện voxel, app web (React + runtime Three.js), server API và cơ sở dữ liệu. Bảng dưới chỉ ghi phần đã có trong repo.
+Repo đã qua vertical slice MVP (`plans/dattqh/260929-2141-vertical-slice-mvp/`): một vòng chơi trọn vẹn ở Khu rừng bí mật chương 1, trên nền Foundation (pipeline asset, thư viện voxel, app web React + runtime Three.js, server API, cơ sở dữ liệu). Bảng dưới chỉ ghi phần đã có trong repo.
 
 ```
 tools/assets/sources.json ─fetch─▶ assets/packs/<pack>/<ver>/ ─┐
@@ -25,7 +25,10 @@ content/*.json + seed ─generators─▶ assets/generated/ ──────�
 | Server API | `apps/server/` | Nghe loopback, sau proxy; mọi POST kiểm Origin; mọi route game lấy hồ sơ từ session và kiểm lại thuộc phụ huynh; thưởng chỉ lấy từ catalog quest, ghi ledger append-only (unique theo nguồn) + bảng tổng hợp trong một transaction. Server chấm đáp án; sai không ghi tiến độ, chỉ tăng bộ đếm theo bước (`step_attempts`: số lần sai, xem Hướng dẫn/Gợi ý/Đáp án; không nội dung trả lời, không dấu thời gian từng lần). Ba lớp hỗ trợ chỉ trả qua `POST …/support` để đếm. Sao và XP thực nhận (giảm 10% nếu đã xem Đáp án) tính một lần khi xong quest và lưu ở `quest_progress`. Rate limit theo hồ sơ + bước |
 | Logic quest | `packages/quest/` | TS thuần; `completeStep`/`checkAnswer` chạy ở server (cần định nghĩa đủ, có đáp án); client chỉ dùng `nextStep`/level trên `QuestView` đã bỏ đáp án. Đáp án chỉ nằm trong `content/quests` phía server (ESLint cấm web import) |
 | Runtime game | `apps/web/src/game/` | Loader và server dev/preview từ chối file ngoài manifest; build chỉ copy file runtime dùng; CSP không `unsafe-eval`; không import React |
-| Bridge game → React | `apps/web/src/game-bridge/` | Chỉ event rời rạc; dữ liệu theo khung hình game ghi thẳng vào DOM neo |
+| Bridge game → React | `apps/web/src/game-bridge/` | Chỉ event rời rạc; dữ liệu theo khung hình game ghi thẳng vào DOM neo. Mọi kiểu event/lệnh khai báo một chỗ (`game-store.ts`): `interaction-prompt`/`interaction` theo target, `loading-progress`, `error` (`context-lost`); lệnh `set-outfit`, `set-world-state`, `set-target-hint` |
+| Controller quest phía web | `apps/web/src/ui/quest/` | Không trong runtime game: nhận `interaction {targetId}`, tìm bước hiện tại (`quest-flow.ts`, hàm thuần), mở màn (hội thoại, thử thách) hoặc gửi thẳng lên server; bước `auto` tự chạy; đẩy trạng thái thế giới và mũi tên chỉ hướng về game từ response server. Mất mạng: chặn + thử lại đúng lệnh đang chờ, không xếp hàng |
+| Gate nội dung | `tools/content/check-content.ts` | Ngoài schema: target của quest `active` có trên map (`entities.json` v2), chữ quest/khu vực/vật phẩm gọi người chơi bằng `{name}` (không cứng "Miu"), quest active nằm trong khu vực mở (`content/world/regions.json`), vật phẩm được thưởng có mô tả (`content/items/`) |
+| Chống lộ đáp án | `tools/security/scan-dist.ts` (`pnpm security:dist`, CI sau build) | Bundle web không chứa văn bản lớp Đáp án của quest; E2E `mvp-loop` kiểm mọi response API trừ `…/support` |
 
 ## Kiến trúc đích (đã chốt, đang hiện thực)
 

@@ -13,7 +13,9 @@ Lệnh cụ thể và danh sách cấm cho agent: `CLAUDE.md`. File này giải 
 
 - Mỗi task có acceptance test viết trước khi code.
 - Vitest cho logic thuần (`tools/`, `packages/`, `apps/*/src`): phạm vi quét ở `vitest.config.ts`. Logic cần kiểm được ngoài trình duyệt thì đặt trong `packages/`.
-- Playwright ở `apps/web/e2e/`: project `setup` tạo phụ huynh giả + hồ sơ qua API, `account` đi luồng UI đăng ký → đồng ý → tạo hồ sơ → chơi, `play` kiểm runtime; `perf` là đo hiệu năng dài, không chạy thường xuyên. Server E2E dùng PGlite trong RAM, không có dữ liệu thật.
+- Playwright ở `apps/web/e2e/`: project `setup` tạo phụ huynh giả + hồ sơ qua API; mỗi file `<tên>.spec.ts` là một project (`account`, `play`, `creator`, `home`, `quest-flow`, `challenges`, `mvp-loop`); `pnpm --filter @miu/web e2e:ci` chạy mọi project trừ `perf` (CI dùng lệnh này, thêm spec mới là tự vào CI). `perf` là đo hiệu năng dài, không chạy thường xuyên. Spec cần tiến độ quest riêng tự tạo phụ huynh mới (`freshChild` trong `quest-api.ts`), không đổi phiên dùng chung. Server E2E dùng PGlite trong RAM, không có dữ liệu thật. Chờ theo trạng thái (DOM, `window.__miuStats`), không chờ theo thời gian.
+- Chữ trong game gọi người chơi bằng tên nhân vật: nội dung viết `{name}`, UI điền bằng `fillPlayerName`; mọi câu lặp lại (phản hồi, lời NPC, lời mời thử lại) chọn từ pool bằng `freshPicker`, không lặp ngay. `content:check` chặn chữ quest cứng "Miu".
+- Đáp án quest chỉ ở server: web không import `content/quests`; `pnpm security:dist` (CI, sau build web) quét bundle.
 - Generator phải xác định (cùng input → cùng byte output); kiểm bằng chạy lại và so hash.
 - Không làm yếu test để qua gate. Test không chạy được vì giới hạn môi trường thì skip có điều kiện ngay trong test (bắt đúng mã lỗi, như test symlink trên Windows), không xóa, và CI phải còn chạy nó.
 - Thay đổi về đăng nhập, phân quyền, thưởng, dữ liệu trẻ em: kèm test bảo mật tự động (IDOR, chống gian lận, CSP).
