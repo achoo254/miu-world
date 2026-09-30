@@ -172,6 +172,9 @@ Người sở hữu giao TypeSafe Jev quyết (`jev-1.13.0`, Choice, `tools/deci
 
 Tương tác giữa các quyết định: XP 100 nhân 0.9 = 90 nên xem đáp án làm quest ch1 không lên Level 2 (ngưỡng 100 XP); E2E vòng chính không xem đáp án (phase 9, 10).
 
+### Chỉ thị người sở hữu — 2026-09-30
+- "Miu" chỉ là tên dự án và tên game. Mọi chữ trong game (lời NPC, tiêu đề/tóm tắt/đề bài quest, thông báo thưởng) gọi người chơi bằng tên nhân vật bé đã đặt. Nội dung dùng placeholder `{name}`, UI điền bằng `fillPlayerName` (`packages/quest/src/player-name.ts`) với tên từ `GET /api/character`; `content:check` báo lỗi khi chữ quest còn "Miu" (commit `e709331`). Áp cho phase 7–9 (hội thoại, thử thách, màn thưởng) và nội dung SGK.
+
 ### Câu hỏi mở
 Không còn câu chặn. Việc của người (ngoài plan): giáo viên duyệt nội dung học, cấp Google OAuth cho hostname https cố định nếu muốn thử Google trên iPad, pháp chế duyệt consent draft-3, đo iPad Gen 10 (DEVICE-01), designer duyệt UI/mock voxel, chơi thử với trẻ.
 

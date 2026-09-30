@@ -27,6 +27,8 @@ Gặp NPC → hội thoại (M3.3) → nhận quest (M2.2) → tracker chỉ bư
 - Bước `read`, `riddle`: controller chỉ định tuyến tới màn của phase 8 (handler `read`/`riddle` có sẵn khung rỗng ném "chưa hỗ trợ" trong phase này và được phase 8 hiện thực).
 - Mất mạng giữa chừng: giữ UI, hiện banner (phase 1), khóa nút gửi và tự thử lại khi có mạng; không tính cục bộ, không xếp hàng hành động.
 
+- Mọi chữ lấy từ quest (lời thoại, tiêu đề, tracker) đi qua `fillPlayerName(text, character.name)`; không hiển thị `{name}` thô và không cứng "Miu" (chỉ thị người sở hữu 2026-09-30, xem plan.md).
+
 ## Files
 - Create: `apps/web/src/ui/dialogue/*.tsx`, `apps/web/src/ui/quest/*.ts(x)` (+ test), `apps/web/e2e/quest-flow.spec.ts`
 - Modify: `apps/web/src/ui/play/play-screen.tsx`, `apps/web/src/game/game.ts` (xử lý lệnh `set-target-hint` đã khai báo kiểu ở phase 1; mũi tên chỉ hướng)
