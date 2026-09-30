@@ -106,7 +106,7 @@ describe('worksheets in the parent area', () => {
     expect(screen.getByText('Anh em thuận hoà.')).toBeTruthy();
     expect(byId('block-dictation')?.querySelector('.sheet-passage')?.textContent).toBe('Câu thứ nhất.\nCâu thứ hai.');
     expect(screen.getByText('Gợi ý hai')).toBeTruthy();
-    expect(byId('block-paragraph')?.querySelectorAll('.ruled-row')).toHaveLength(5);
+    expect(byId('block-paragraph')?.querySelector('.oli')?.getAttribute('data-rows')).toBe('5');
     fireEvent.click(byId('worksheet-print') as Element);
     expect(print).toHaveBeenCalledTimes(1);
   });
@@ -145,6 +145,6 @@ describe('activities on a sheet', () => {
       'Hình trang 60 SGK: hình a',
       'Hình trang 60 SGK: hình b',
     ]);
-    expect(single?.querySelectorAll('.ruled-row')).toHaveLength(3);
+    expect(single?.querySelector('.oli')?.getAttribute('data-rows')).toBe('3');
   });
 });

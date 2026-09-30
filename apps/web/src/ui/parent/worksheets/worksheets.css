@@ -24,22 +24,30 @@
 .sheet-block h3 { margin: 0; font-size: 13pt; white-space: pre-line; }
 .sheet-note { margin: 0; color: var(--color-ink-soft); font-style: italic; }
 .sheet-hints { margin: 0; padding-left: 6mm; }
-.sheet-parts { margin: 0; padding-left: 6mm; display: grid; gap: 3mm; }
+.sheet-parts { margin: 0; padding: 0; list-style: none; display: grid; gap: 3mm; }
 .sheet-parts li { display: grid; gap: 1mm; }
 .sheet-read-aloud { padding: 3mm 4mm; border: 1px dashed var(--color-field-edge); border-radius: 2mm; }
 .sheet-passage { margin: 0; white-space: pre-line; line-height: 1.6; }
 
-/* Handwriting rows: four horizontal lines per row (ô li) and, for letters, the vertical grid too. */
-.ruled { display: grid; gap: 2mm; }
-.ruled-row {
-  height: 12mm;
-  border-bottom: 1px solid var(--color-ink-soft);
-  background-image: repeating-linear-gradient(to bottom, transparent 0 calc(3mm - 1px), var(--color-field-edge) calc(3mm - 1px) 3mm);
-}
-.ruled--grid .ruled-row {
+/* Vở ô li, as in a grade 1–2 exercise book: 8 mm squares, each split by three thin lines into four
+   2 mm ô li, with the margin line one square in from the left. A "dòng" is one square high. */
+.oli {
+  --oli-rows: 3;
+  position: relative;
+  width: 176mm; max-width: 100%;
+  height: calc(var(--oli-rows) * 8mm + 0.3mm);
   background-image:
-    repeating-linear-gradient(to bottom, transparent 0 calc(3mm - 1px), var(--color-field-edge) calc(3mm - 1px) 3mm),
-    repeating-linear-gradient(to right, transparent 0 calc(6mm - 1px), var(--color-field-line) calc(6mm - 1px) 6mm);
+    linear-gradient(to right, var(--color-oli-square) 0.3mm, transparent 0.3mm),
+    linear-gradient(to bottom, var(--color-oli-square) 0.3mm, transparent 0.3mm),
+    linear-gradient(to bottom, var(--color-oli-line) 0.2mm, transparent 0.2mm);
+  background-size: 8mm 8mm, 8mm 8mm, 8mm 2mm;
+  border-right: 0.3mm solid var(--color-oli-square);
+  box-sizing: border-box;
+  print-color-adjust: exact; -webkit-print-color-adjust: exact;
+}
+.oli::before {
+  content: ''; position: absolute; inset: 0 auto 0 8mm; width: 0.4mm;
+  background: var(--color-oli-margin);
 }
 
 @media print {
@@ -48,5 +56,4 @@
   html:has(.worksheet-page), body:has(.worksheet-page) { background: var(--color-surface); }
   .worksheet-page { padding: 0; background: var(--color-surface); }
   .worksheet-sheet { box-shadow: none; width: 100%; min-height: 0; }
-  .ruled-row { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
 }

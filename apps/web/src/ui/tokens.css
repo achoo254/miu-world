@@ -26,6 +26,10 @@
   --color-field: #f4f7ff;
   --color-field-line: #d5e2ff;
   --color-field-edge: #c3d4f7;
+  /* Vở ô li (printed writing sheets): thin 2 mm lines, the 8 mm squares, and the margin line. */
+  --color-oli-line: #ddd3f2;
+  --color-oli-square: #a995d8;
+  --color-oli-margin: #e8849b;
   --color-badge: #ffe3ef;
   --color-badge-ink: #7a1f48;
 
