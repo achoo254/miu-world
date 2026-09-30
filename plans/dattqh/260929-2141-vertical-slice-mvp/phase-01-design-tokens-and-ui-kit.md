@@ -1,7 +1,7 @@
 ---
 phase: 1
 title: "Design token + component UI + màn hệ thống"
-status: pending
+status: in-progress
 priority: P1
 effort: "M"
 dependencies: []
@@ -42,6 +42,13 @@ Một bộ token và component dùng chung theo visual language của 3 mock (h�
 - `pnpm vitest run --project web`; `pnpm --filter @miu/web build`; E2E `play` xanh (pause → khung hình dừng, resume chạy lại)
 - `grep -rn "#[0-9a-fA-F]\{3,8\}" apps/web/src/ui --include=*.tsx --include=*.css | grep -v tokens.css` = 0 (màu chỉ ở tokens.css; `apps/web/src/game/**` dùng màu Three.js riêng nên không tính)
 - `pnpm assets:check` xanh sau khi thêm icon; `pnpm --filter @miu/web e2e:ci` chạy được (project chưa có spec thì bỏ qua)
+
+## Tiến độ (2026-09-30)
+Chia việc giữa hai phiên trên `main` (thống nhất qua tin nhắn giữa phiên):
+- Phiên restyle màn trước game (hướng "Đảo mây kẹo hồng", người sở hữu chọn): `tokens.css`, `styles.css`, `ui/kit/**`, `ui/account/**`, `app-shell.tsx`, `main.tsx`, `vite-repo-assets.ts`, `vite.config.ts`, `docs/design-guidelines.md`.
+- Phiên cook plan: phần không phải UI — đã xong, commit `1034869` (18 icon Fluent mới), `749cf65` (kiểu bridge khai báo trước, `Game.stop/resume`, `loading-progress`, `webglcontextlost` + E2E), `896fe45` (`e2e:ci` = mọi project trừ `perf`, project Playwright khai báo trước, retry/trace, CI upload trace).
+- Lệch so với Requirements: danh sách icon UI nằm ở `apps/web/src/ui/kit/ui-art.ts` (`UI_ICONS`, được `vite-repo-assets` ship và build lỗi nếu file rời manifest) thay cho `content/ui/icons.json` + `content:check`.
+- Còn lại (sau commit kit): màn `ui/system/{pause,loading,offline}`, nối vào `/play`, E2E pause → khung hình dừng/chạy lại, cài đặt âm lượng.
 
 ## Risk
 - Mock là ảnh render AI: token là xấp xỉ; ghi rõ "tạm, chờ mock voxel" trong design-guidelines.
