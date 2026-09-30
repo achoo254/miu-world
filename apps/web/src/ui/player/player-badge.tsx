@@ -9,7 +9,7 @@ export function PlayerBadge({ character, progress }: { character: CharacterDto; 
   const next = progress.xpForNextLevel;
   return (
     <div className="player-badge" data-id="player-badge">
-      <MiuPortrait pose="idle" size="4rem" />
+      <MiuPortrait pose="idle" size="4rem" species={character.species} />
       <div className="player-badge-text">
         <p className="player-badge-name" data-id="player-name">
           {character.name}

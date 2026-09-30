@@ -1,10 +1,11 @@
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { ConsentDocument, LevelCurve, NameList, QuestDefinition, SkillCatalog, type PlayableQuest } from '@miu/schema/content';
+import { ConsentDocument, ContentId, LevelCurve, NameList, QuestDefinition, SkillCatalog, type PlayableQuest } from '@miu/schema/content';
 import { questCatalogReport } from '@miu/quest/quest-catalog';
 import { buildAccessoryCatalog, type AccessoryItem } from '@miu/voxel/accessory-schema';
-import type { z } from 'zod';
+import { speciesSchema } from '@miu/voxel/character-recipe';
+import { z } from 'zod';
 
 /** Repo `content/` directory; validated once at startup so bad content fails the boot, not a request. */
 export const CONTENT_DIR = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../../../content');
@@ -12,6 +13,8 @@ export const CONTENT_DIR = path.resolve(path.dirname(fileURLToPath(import.meta.u
 export interface ContentCatalog {
   childDisplayNames: ReadonlySet<string>;
   characterNames: ReadonlySet<string>;
+  /** Species a character may be (`content/species.json`). */
+  species: ReadonlySet<string>;
   consent: ConsentDocument;
   /** Wearable items (accessories and their colour variants); the character wears these, one per slot. */
   accessories: ReadonlyMap<string, AccessoryItem>;
@@ -82,6 +85,7 @@ export function loadContentCatalog({ dir = CONTENT_DIR, questDir, extraQuestDir 
   return {
     childDisplayNames: new Set(readContentJson(NameList, path.join(dir, 'names/child-display-names.json')).names),
     characterNames: new Set(readContentJson(NameList, path.join(dir, 'names/character-names.json')).names),
+    species: new Set(Object.keys(readContentJson(z.record(ContentId, speciesSchema), path.join(dir, 'species.json')))),
     consent: readContentJson(ConsentDocument, path.join(dir, 'legal/consent-vi.json')),
     accessories,
     levelCurve: readContentJson(LevelCurve, path.join(dir, 'progression/level-curve.json')),

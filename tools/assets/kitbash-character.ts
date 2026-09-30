@@ -1,6 +1,7 @@
 // Builds a playable character GLB without hand-made art: the Blocky Characters rig + 27 clips, and
-// either a Cube Pets animal as the head on the rig's own body (flat body colors), or a whole body of
-// voxel boxes from content/bodies/*.json; plus extra keyframe clips from content/animations/*.json.
+// either a Cube Pets animal as the head on the rig's own body (flat body colors), or a voxel body
+// composed from the character library (packages/voxel/src/character-recipe.ts: species parts, outfit,
+// palettes); plus extra keyframe clips from content/animations/*.json.
 // All parts are merged into ONE skinned primitive (each part rigidly bound to its rig node) so the
 // character costs a single draw call while the original node animations still drive it.
 import { mkdir, writeFile } from 'node:fs/promises';
@@ -11,7 +12,9 @@ import { ALL_EXTENSIONS } from '@gltf-transform/extensions';
 import { mat3, mat4, quat, vec3 } from 'gl-matrix';
 import { PNG } from 'pngjs';
 import { z } from 'zod';
+import { characterRecipeSchema, composeCharacter, type CharacterLibrary, type OutfitRule, type VoxelBox } from '../../packages/voxel/src/character-recipe';
 import { ASSETS_DIR, REPO_ROOT, readJson } from './asset-lib';
+import { readCharacterLibrary, readOutfitRules } from './character-library';
 import { clipSchema, sampleClip } from './procedural-clip';
 import { validateCharacter } from './validate-character';
 
@@ -19,22 +22,23 @@ const CONTENT_DIR = path.join(REPO_ROOT, 'content');
 const HEAD_ATLAS = 512; // head colormap occupies the top 512x512 of a 512x1024 atlas
 const PALETTE_GRID = 8; // bottom half: 8x8 flat color cells
 const GL_NEAREST = 9728;
+/** Model units per voxel of the character library (a head 26 voxels wide is 1.3 units). */
+const VOXEL_SIZE = 0.05;
 
 const hexColor = z.string().regex(/^#[0-9a-fA-F]{6}$/);
 
-const voxelBoxSchema = z.object({
-  x: z.number().int(),
-  y: z.number().int(),
-  z: z.number().int(),
-  w: z.number().int().positive(),
-  h: z.number().int().positive(),
-  d: z.number().int().positive(),
-  color: z.string().min(1),
-  /** Also emit the box mirrored across x = 0 (left/right symmetric features). */
-  sym: z.boolean().optional(),
-});
-type VoxelBox = z.infer<typeof voxelBoxSchema>;
-const voxelBoxesSchema = z.array(voxelBoxSchema).min(1);
+const voxelBoxesSchema = z.array(
+  z.object({
+    x: z.number().int(),
+    y: z.number().int(),
+    z: z.number().int(),
+    w: z.number().int().positive(),
+    h: z.number().int().positive(),
+    d: z.number().int().positive(),
+    color: z.string().min(1),
+    sym: z.boolean().optional(),
+  }),
+).min(1);
 
 const nodeName = z.string().regex(/^[a-z0-9-]+$/);
 
@@ -42,8 +46,8 @@ export const characterSpecSchema = z
   .object({
     output: z.string().regex(/^generated\/characters\/[a-z0-9-]+\.glb$/),
     rig: z.string().min(1),
-    /** Voxel body (`content/bodies/<id>.json`): replaces the rig meshes and the Cube Pets head and tail. */
-    body: nodeName.optional(),
+    /** Voxel body composed from the character library; replaces the rig meshes and the Cube Pets head and tail. */
+    recipe: characterRecipeSchema.optional(),
     headSource: z.string().min(1).optional(),
     /** Nodes of the animal model that become the head (the whole cube body, not a cut mesh). */
     headNodes: z.array(z.string()).min(1).optional(),
@@ -65,8 +69,8 @@ export const characterSpecSchema = z
     /** Runtime multiplier for accessory size/offset per attach node, so one accessory file fits every variant. */
     accessoryScale: z.record(z.string(), z.number().positive()).default({}),
   })
-  .refine((spec) => spec.body !== undefined || (spec.headSource !== undefined && spec.headNodes !== undefined && spec.tailNode !== undefined), {
-    message: 'a character needs either a voxel body or a Cube Pets head (headSource, headNodes, tailNode)',
+  .refine((spec) => spec.recipe !== undefined || (spec.headSource !== undefined && spec.headNodes !== undefined && spec.tailNode !== undefined), {
+    message: 'a character needs either a recipe or a Cube Pets head (headSource, headNodes, tailNode)',
   });
 export type CharacterSpec = z.infer<typeof characterSpecSchema>;
 
@@ -82,22 +86,6 @@ export const faceSchema = z.object({
   boxes: voxelBoxesSchema,
 });
 export type FaceDef = z.infer<typeof faceSchema>;
-
-/**
- * A whole character in voxel boxes. Each part's boxes sit relative to its rig joint pivot (after the
- * chibi reshape), in voxels of `voxelSize` model units; `mirror` copies a part to the other side
- * (x negated), so one arm and one leg describe both. The tail gets its own joint on the torso at
- * `tailPivot` (voxels from the torso pivot).
- */
-export const bodySchema = z.object({
-  id: nodeName,
-  voxelSize: z.number().positive(),
-  palette: z.record(z.string(), hexColor),
-  parts: z.record(nodeName, voxelBoxesSchema).refine((parts) => 'head' in parts && 'torso' in parts, 'a body needs head and torso parts'),
-  mirror: z.record(nodeName, nodeName).default({}),
-  tailPivot: z.tuple([z.number(), z.number(), z.number()]).optional(),
-});
-export type BodyDef = z.infer<typeof bodySchema>;
 
 export const charactersFileSchema = z.record(z.string(), characterSpecSchema);
 
@@ -225,18 +213,6 @@ function appendFace(
 ): void {
   const origin: Vec3 = [pivot[0] + headScale * face.offset[0], pivot[1] + headScale * face.offset[1], pivot[2] + headScale * face.offset[2]];
   appendBoxes(merged, expandSymmetric(face.boxes), origin, face.voxelSize * headScale, joint, cellOf, `face ${face.id}`);
-}
-
-/** The boxes of every part, with mirrored parts filled in (x negated). */
-function bodyParts(body: BodyDef): Map<string, VoxelBox[]> {
-  const parts = new Map(Object.entries(body.parts).map(([name, boxes]) => [name, expandSymmetric(boxes)]));
-  for (const [target, source] of Object.entries(body.mirror)) {
-    const boxes = parts.get(source);
-    if (!boxes) throw new Error(`body ${body.id}: mirror source "${source}" has no boxes`);
-    if (parts.has(target)) throw new Error(`body ${body.id}: "${target}" is both a part and a mirror`);
-    parts.set(target, boxes.map((box) => ({ ...box, x: -(box.x + box.w) })));
-  }
-  return parts;
 }
 
 /** Model-space bounds of a node's mesh after `transform`. */
@@ -377,7 +353,13 @@ async function addExtraClip(
   return anim;
 }
 
-export async function buildCharacter(id: string, spec: CharacterSpec): Promise<Uint8Array> {
+/** `library` and `rules` default to content/; tests pass their own. */
+export async function buildCharacter(
+  id: string,
+  spec: CharacterSpec,
+  library?: CharacterLibrary,
+  rules?: readonly OutfitRule[],
+): Promise<Uint8Array> {
   const io = createIO();
   const rig = await io.read(path.join(ASSETS_DIR, spec.rig));
   const rigRoot = requireNode(rig, 'root');
@@ -454,29 +436,28 @@ export async function buildCharacter(id: string, spec: CharacterSpec): Promise<U
 
   let colormap: Uint8Array | undefined;
   let paletteHex: string[];
-  if (spec.body) {
-    // 1-3. Voxel body: every part's boxes around its (reshaped) joint pivot, one palette.
-    const body = await readJson(path.join(CONTENT_DIR, 'bodies', `${spec.body}.json`), bodySchema);
-    const colorNames = Object.keys(body.palette).sort();
+  if (spec.recipe) {
+    // 1-3. Voxel body: every composed part's boxes around its (reshaped) joint pivot, one palette.
+    const composed = composeCharacter(spec.recipe, library ?? (await readCharacterLibrary()), rules ?? (await readOutfitRules()));
+    const colorNames = Object.keys(composed.palette).sort();
     const colorIndex = new Map(colorNames.map((name, i) => [name, i]));
-    paletteHex = colorNames.map((n) => body.palette[n] ?? '#ff00ff');
-    const parts = bodyParts(body);
-    const unit = body.voxelSize;
-    for (const [name, boxes] of parts) {
+    paletteHex = colorNames.map((n) => composed.palette[n] ?? '#ff00ff');
+    const unit = VOXEL_SIZE;
+    const label = `${id} (${spec.recipe.species} in ${composed.outfit})`;
+    for (const [name, boxes] of composed.parts) {
       if (name === 'tail') continue;
       const pivot = outNode(name).getWorldTranslation() as Vec3;
-      appendBoxes(merged, boxes, pivot, unit, jointIndex(name), (c) => colorIndex.get(c), `body ${body.id} ${name}`);
+      appendBoxes(merged, boxes, pivot, unit, jointIndex(name), (c) => colorIndex.get(c), label);
     }
-    const tailBoxes = parts.get('tail');
+    const tailBoxes: readonly VoxelBox[] | undefined = composed.parts.get('tail');
     if (tailBoxes) {
-      if (!body.tailPivot) throw new Error(`body ${body.id}: a tail needs tailPivot`);
       const torsoPivot = outNode('torso').getWorldTranslation() as Vec3;
       const at: Vec3 = [
-        torsoPivot[0] + body.tailPivot[0] * unit,
-        torsoPivot[1] + body.tailPivot[1] * unit,
-        torsoPivot[2] + body.tailPivot[2] * unit,
+        torsoPivot[0] + composed.tailPivot[0] * unit,
+        torsoPivot[1] + composed.tailPivot[1] * unit,
+        torsoPivot[2] + composed.tailPivot[2] * unit,
       ];
-      appendBoxes(merged, tailBoxes, at, unit, addTorsoJoint('tail', at), (c) => colorIndex.get(c), `body ${body.id} tail`);
+      appendBoxes(merged, tailBoxes, at, unit, addTorsoJoint('tail', at), (c) => colorIndex.get(c), label);
     }
   } else {
     const { headSource, headNodes, tailNode } = spec;

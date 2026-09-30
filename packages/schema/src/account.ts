@@ -34,7 +34,8 @@ export type ParentDto = z.infer<typeof ParentDto>;
 
 export const ConsentRequest = z.object({ policyVersion: z.string().min(1).max(32) });
 
-export const ChildProfileDto = z.object({ id: Id, displayName: z.string() });
+/** `species`: the child's character, so the picker shows the right animal. */
+export const ChildProfileDto = z.object({ id: Id, displayName: z.string(), species: z.string() });
 export type ChildProfileDto = z.infer<typeof ChildProfileDto>;
 
 // NFC so a decomposed "Mèo" (some mobile keyboards) matches the list entry.

@@ -73,13 +73,27 @@ function GameStatus() {
   );
 }
 
-function GameView({ store, outfit, chapter, region, paused }: { store: GameStore; outfit: string[]; chapter: number; region: string; paused: boolean }) {
+function GameView({
+  store,
+  species,
+  outfit,
+  chapter,
+  region,
+  paused,
+}: {
+  store: GameStore;
+  species: string;
+  outfit: string[];
+  chapter: number;
+  region: string;
+  paused: boolean;
+}) {
   const host = useRef<HTMLDivElement>(null);
   const game = useRef<Game | null>(null);
   const outfitKey = outfit.join(',');
   useEffect(() => {
     if (!host.current) return;
-    const instance = new Game(host.current, { store, search: window.location.search, outfit: outfitKey ? outfitKey.split(',') : [], chapter, region });
+    const instance = new Game(host.current, { store, search: window.location.search, species, outfit: outfitKey ? outfitKey.split(',') : [], chapter, region });
     game.current = instance;
     void instance.start();
     // StrictMode mounts twice in dev: the first game is fully disposed before the second starts.
@@ -87,7 +101,7 @@ function GameView({ store, outfit, chapter, region, paused }: { store: GameStore
       instance.dispose();
       if (game.current === instance) game.current = null;
     };
-  }, [store, outfitKey, chapter, region]);
+  }, [store, species, outfitKey, chapter, region]);
   // Full-screen screens stop rendering (Master Plan §12); React only calls stop/resume.
   useEffect(() => {
     if (paused) game.current?.stop();
@@ -181,7 +195,7 @@ export function PlayScreen() {
   return (
     <GameStoreContext.Provider value={store}>
       <main data-id="play">
-        {data ? <GameView store={store} outfit={data.character.equipped} chapter={quest?.quest.chapter ?? 1} region={quest?.quest.region ?? 'khu-rung-bi-mat'} paused={covered} /> : null}
+        {data ? <GameView store={store} species={data.character.species} outfit={data.character.equipped} chapter={quest?.quest.chapter ?? 1} region={quest?.quest.region ?? 'khu-rung-bi-mat'} paused={covered} /> : null}
         {loadError ? (
           <div className="play-message" role="alert">
             <p>

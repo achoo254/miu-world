@@ -4,7 +4,8 @@ import { ContentId, QuestStepPublic, RewardSpec, WEEKDAYS } from './content';
 // Game DTOs for the active child profile. Diamonds are intentionally absent (not used in the MVP).
 
 export const CharacterDto = z.object({
-  species: z.literal('cat'),
+  /** Species id from `content/species.json` (cat, rabbit, fox, bear...). */
+  species: ContentId,
   name: z.string(),
   /** Accessory ids from `content/accessories/`, at most one per slot. */
   equipped: z.array(ContentId),
@@ -18,6 +19,8 @@ export const CharacterUpdate = z.object({
     .max(40)
     .transform((s) => s.normalize('NFC')),
   equipped: z.array(ContentId).max(8),
+  /** Left out: the species stays as it is. */
+  species: ContentId.optional(),
 });
 export type CharacterUpdate = z.infer<typeof CharacterUpdate>;
 

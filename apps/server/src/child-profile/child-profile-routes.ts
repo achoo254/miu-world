@@ -12,6 +12,8 @@ import { HttpError, parseInput } from '../http-error';
 
 export const MAX_CHILD_PROFILES = 3;
 export const DEFAULT_CHARACTER_NAME = 'Miu';
+/** Same as the `characters.species` column default. */
+const DEFAULT_SPECIES = 'cat';
 
 export interface ChildProfileRouteDeps {
   db: Db;
@@ -26,7 +28,7 @@ function profileId(raw: unknown): string {
   return parsed.data;
 }
 
-const toDto = (row: typeof childProfiles.$inferSelect) => ChildProfileDto.parse(row);
+const toDto = (row: typeof childProfiles.$inferSelect, species: string) => ChildProfileDto.parse({ ...row, species });
 
 export function childProfileRoutes({ db, content, clock }: ChildProfileRouteDeps): Router {
   const router = Router();
@@ -48,13 +50,20 @@ export function childProfileRoutes({ db, content, clock }: ChildProfileRouteDeps
     return row;
   }
 
+  /** Every profile has a character (created with it); the fallback only covers a row being deleted. */
+  async function speciesOf(childId: string): Promise<string> {
+    const [row] = await db.select({ species: characters.species }).from(characters).where(eq(characters.childId, childId));
+    return row?.species ?? DEFAULT_SPECIES;
+  }
+
   router.get('/children', requireParent, async (_req, res) => {
     const rows = await db
-      .select()
+      .select({ profile: childProfiles, species: characters.species })
       .from(childProfiles)
+      .leftJoin(characters, eq(characters.childId, childProfiles.id))
       .where(eq(childProfiles.parentId, auth(res).parent.id))
       .orderBy(asc(childProfiles.createdAt), asc(childProfiles.id));
-    res.json(z.array(ChildProfileDto).parse(rows.map(toDto)));
+    res.json(z.array(ChildProfileDto).parse(rows.map((r) => toDto(r.profile, r.species ?? DEFAULT_SPECIES))));
   });
 
   router.post('/children', requireParent, gate, async (req, res) => {
@@ -71,11 +80,11 @@ export function childProfileRoutes({ db, content, clock }: ChildProfileRouteDeps
         .values({ id: randomUUID(), parentId: parent.id, displayName: name, createdAt: clock() })
         .returning();
       if (!row) throw new Error('profile insert returned no row');
-      await tx.insert(characters).values({ childId: row.id, name: DEFAULT_CHARACTER_NAME });
-      return row;
+      const [character] = await tx.insert(characters).values({ childId: row.id, name: DEFAULT_CHARACTER_NAME }).returning({ species: characters.species });
+      return { row, species: character?.species ?? DEFAULT_SPECIES };
     });
-    console.info('child profile created', created.id);
-    res.status(201).json(toDto(created));
+    console.info('child profile created', created.row.id);
+    res.status(201).json(toDto(created.row, created.species));
   });
 
   router.patch('/children/:id', requireParent, gate, async (req, res) => {
@@ -88,7 +97,7 @@ export function childProfileRoutes({ db, content, clock }: ChildProfileRouteDeps
       .where(and(eq(childProfiles.id, id), eq(childProfiles.parentId, parent.id)))
       .returning();
     if (!row) throw new HttpError(404, 'not-found');
-    res.json(toDto(row));
+    res.json(toDto(row, await speciesOf(row.id)));
   });
 
   /** Hard delete: foreign keys cascade to character, progress, ledger, inventory and skills. */

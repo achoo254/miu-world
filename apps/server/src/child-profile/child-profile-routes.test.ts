@@ -81,7 +81,7 @@ describe('child profiles', () => {
 
   it('renames within the list', async () => {
     const { agent, childId } = await parentWithChild(app);
-    await agent.patch(`/api/children/${childId}`).send({ displayName: 'Sao Nhỏ' }).expect(200, { id: childId, displayName: 'Sao Nhỏ' });
+    await agent.patch(`/api/children/${childId}`).send({ displayName: 'Sao Nhỏ' }).expect(200, { id: childId, displayName: 'Sao Nhỏ', species: 'cat' });
     await agent.patch(`/api/children/${childId}`).send({ displayName: 'Bé Na' }).expect(400);
   });
 

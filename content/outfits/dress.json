@@ -1,0 +1,27 @@
+{
+  "name": "Váy nơ",
+  "palette": { "main": "#f27aae", "shade": "#d95c94", "light": "#f9b8d3", "trim": "#fffafc", "accent": "#ffcf3a" },
+  "variants": {
+    "blue": { "main": "#7fb2f0", "shade": "#5a8fd6", "light": "#c3dcfa" },
+    "mint": { "main": "#7fd8be", "shade": "#4fb89c", "light": "#c2efe0" }
+  },
+  "parts": {
+    "torso": [
+      { "x": -9, "y": 2, "z": -7, "w": 18, "h": 2, "d": 14, "color": "light" },
+      { "x": -8, "y": 4, "z": -6, "w": 16, "h": 8, "d": 12, "color": "main" },
+      { "x": -4, "y": 4, "z": 6, "w": 1, "h": 7, "d": 1, "color": "shade", "sym": true },
+      { "x": -7, "y": 12, "z": -5, "w": 14, "h": 6, "d": 10, "color": "main" },
+      { "x": -7, "y": 18, "z": -5, "w": 14, "h": 2, "d": 10, "color": "trim" },
+      { "x": 1, "y": 16, "z": 5, "w": 3, "h": 2, "d": 1, "color": "trim", "sym": true },
+      { "x": -1, "y": 15, "z": 5, "w": 2, "h": 2, "d": 2, "color": "trim" },
+      { "x": 1, "y": 14, "z": 5, "w": 3, "h": 2, "d": 1, "color": "trim", "sym": true },
+      { "x": -2, "y": 11, "z": 6, "w": 4, "h": 2, "d": 1, "color": "accent" }
+    ],
+    "arm-left": [
+      { "x": -1, "y": -5, "z": -3, "w": 6, "h": 6, "d": 7, "color": "main" }
+    ],
+    "leg-left": [
+      { "x": -3, "y": -5, "z": -3, "w": 6, "h": 5, "d": 6, "color": "fur" }
+    ]
+  }
+}

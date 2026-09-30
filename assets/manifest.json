@@ -8342,14 +8342,44 @@
       "bytes": 37791
     },
     {
+      "path": "generated/characters/bear.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/kitbash-character.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters"
+      ],
+      "sha256": "13c7120d3534b9b15b6e47f2b9de8f256218b88b7c88238fca5cdf9a4c00399b",
+      "bytes": 176212
+    },
+    {
+      "path": "generated/characters/fox.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/kitbash-character.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters"
+      ],
+      "sha256": "369a080f6244207c9910771fe03874406a1c36f7c79cf6e1c0997c566f1c16ef",
+      "bytes": 185472
+    },
+    {
       "path": "generated/characters/miu-cat.glb",
       "license": "CC0-1.0",
       "generator": "tools/assets/kitbash-character.ts",
       "derivedFrom": [
         "kenney-blocky-characters"
       ],
-      "sha256": "072c227c5fd94f1785a36bf9053e44d266225af848c0c235c32797ef95c757f0",
-      "bytes": 206456
+      "sha256": "d88ad68a7f8c97fd5c2123cab39cf8782ac448fa7d137268ab6e47ae69160cc2",
+      "bytes": 209232
+    },
+    {
+      "path": "generated/characters/rabbit.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/kitbash-character.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters"
+      ],
+      "sha256": "e688d3d05d04f478f86ce28c506b491aa4d596f657a522e9a303c5d5a1417202",
+      "bytes": 184172
     },
     {
       "path": "generated/home/island.png",
@@ -8444,8 +8474,8 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "6c70afb5f2be841c0b51d723574ffc4392b306050e016229e8aa92c6f0ad7223",
-      "bytes": 6215
+      "sha256": "c798b80832b0d3a6816e874870270de8887f94bd8071fb54bee4af04139d5b7f",
+      "bytes": 6224
     },
     {
       "path": "generated/review/accessories/item-hat-cap-yellow.png",
@@ -8460,8 +8490,8 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "338cabcb48e5322fbd43cc2f05c41be4b50bca891ca67b57af9842fead291b1d",
-      "bytes": 6192
+      "sha256": "482116e0814342d9c88f65f10f6c45d2d25c98f7b13a54fcb197bbfa986998bb",
+      "bytes": 6203
     },
     {
       "path": "generated/review/accessories/item-hat-flower-crown.png",
@@ -8476,8 +8506,8 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "ece1f80e7c9c26c608a80f0c13a897a91354e7342eb22066e14711ff570679e1",
-      "bytes": 6647
+      "sha256": "e295a9df70930a2227201a2ccca615a61a6f9404befd00554c272224d4cf5a42",
+      "bytes": 6653
     },
     {
       "path": "generated/review/accessories/item-hat-witch-mint.png",
@@ -8492,8 +8522,8 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "52d238f33eeaa458155640659956c99c08b3706ba0dbea95d6e893c1240a71f5",
-      "bytes": 7570
+      "sha256": "7e17a4d7717fc417d731b9aeea1e4e2855b9d2106d4fb51a5199a6eb25266c9e",
+      "bytes": 7566
     },
     {
       "path": "generated/review/accessories/item-hat-witch-night.png",
@@ -8508,8 +8538,8 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "0f32552c7bd75971129491f1554cac4bba14515f06ed916e0566ebb48e592c73",
-      "bytes": 7696
+      "sha256": "0ba3742421cd467505e8f5b5db45ebe5d5f8d08d5ebd741795bb40dd1e9b6720",
+      "bytes": 7693
     },
     {
       "path": "generated/review/accessories/item-hat-witch-pink.png",
@@ -8524,8 +8554,8 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "31cad82f727186564db08561ef52e0b4de024cfa754277d8a278d07542cdd70d",
-      "bytes": 7632
+      "sha256": "8129cc3fa703064065f3283a19feef8708e2cc8e283c04f77bfe5aeefc16c2ce",
+      "bytes": 7628
     },
     {
       "path": "generated/review/accessories/miu-outfit-cheer.png",
@@ -8540,8 +8570,8 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "037c999efc5d2dce8de22701b9c86250c1877baaee7249ffc1d342e4dc61c8ba",
-      "bytes": 7879
+      "sha256": "e74a2a6e3c35b26f1d758eaef962a132929bf8f27847ed8378f719d279d8d3df",
+      "bytes": 7873
     },
     {
       "path": "generated/review/accessories/miu-outfit-jump.png",
@@ -8572,8 +8602,8 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "a4868182ad462da0b442203116cfa3cb8af6dc02df409af70994c7958b65113b",
-      "bytes": 8671
+      "sha256": "e074cfe4f1aeb8c05ee3b3b6a1ea102d8dd78ca5e0ecff7d5a620cfc17192001",
+      "bytes": 8669
     },
     {
       "path": "generated/review/accessories/miu-outfit-turn-0.png",
@@ -8604,8 +8634,8 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "1827f3c427ed870bef1fa43dfc5571092b8571282c1306fb7d4c341c59cfe524",
-      "bytes": 11184
+      "sha256": "c7db4145f473443d1671bdef7de28cf443755a233b8e95369c994222b2f7a97c",
+      "bytes": 11196
     },
     {
       "path": "generated/review/accessories/miu-outfit-turn-210.png",
@@ -8620,8 +8650,8 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "27148b31053df3d96fd3e52d9ac422c266b36ed089bbd99e853b03be317dc996",
-      "bytes": 9857
+      "sha256": "f1297496d4e0fb274ba52b1d38a78e4d5e3a47c177d4633801bffc0b72cbacee",
+      "bytes": 9856
     },
     {
       "path": "generated/review/accessories/miu-outfit-turn-300.png",
@@ -8636,8 +8666,8 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "6d0c59bfabf00a79beb976bc0256eae58e229a3af9d11ced89c52ac605e3e5b1",
-      "bytes": 11609
+      "sha256": "3f8669a04969753ccc2c0b62f80a50373cae01819e7e3c78994cf08c3a068bc8",
+      "bytes": 11618
     },
     {
       "path": "generated/review/accessories/miu-outfit-walk.png",
@@ -8652,8 +8682,8 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "d69a6736552ee2f685d91bfac66e5e0852a0da087f6fd820b41d595a81daa26d",
-      "bytes": 7823
+      "sha256": "3cb6a15b42638f3127aa9dbdb3934d8b625b73eb556a3944b67b2c6c723b2fea",
+      "bytes": 7800
     },
     {
       "path": "generated/review/accessories/miu-variant-mint-green.png",
@@ -8668,8 +8698,8 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "0262aab34412eae40426a8080b89bd2bd7fa777cd2c7b9bd8352e2d14f753060",
-      "bytes": 7641
+      "sha256": "86edb70e55a764d28505d41733a1f521f9a86d77194f0c186770f2d48a847e3d",
+      "bytes": 7637
     },
     {
       "path": "generated/review/accessories/miu-variant-night-red.png",
@@ -8684,8 +8714,264 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "6baf559cdb438fd5aa9347d1239a92156f49bc84047f50af512a1b75da56d792",
-      "bytes": 7759
+      "sha256": "9a13cbdb5329739ca68a63f25536d9ffb5184c3c2adb67e623ba2351b4d259f3",
+      "bytes": 7757
+    },
+    {
+      "path": "generated/review/character/bear-anim-cheer.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "345e68f88aca4f8b9df1d2656879b701503ac61a8a1ec121639a362d73b2a030",
+      "bytes": 4738
+    },
+    {
+      "path": "generated/review/character/bear-anim-idle.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "a50c387bc22956f5369084a3b0f011f7c2e961d7ca3fa6e01df74e8f7ffbdb83",
+      "bytes": 4913
+    },
+    {
+      "path": "generated/review/character/bear-anim-wave.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "cdb68821eddc7546c48d978f843f9dfb37b308be302b83bee6cd090e76ceebae",
+      "bytes": 5728
+    },
+    {
+      "path": "generated/review/character/bear-gameplay-camera.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "d522e6e42e637eb282a0596e032dec8dadacc6f871846e3435aa291b4506d51b",
+      "bytes": 6229
+    },
+    {
+      "path": "generated/review/character/bear-turn-0.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "40ab53e31c8d4d0bcccafae97ccfe3f540f91847708f9773395954464a35426e",
+      "bytes": 4540
+    },
+    {
+      "path": "generated/review/character/bear-turn-180.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "b44f81f81f712b8b5e2bef565d39e5a9647787fee92822dc54be4e75d1705c52",
+      "bytes": 3594
+    },
+    {
+      "path": "generated/review/character/bear-turn-315.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "861b839447d7d300280dd062e489a33ec362da6a86e9156bd806d52b312513e6",
+      "bytes": 8991
+    },
+    {
+      "path": "generated/review/character/bear-turn-90.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "0f59bad07893312731d0c64dbd06ac8838ea191195e96e67e25f4cfa77b9518a",
+      "bytes": 3932
+    },
+    {
+      "path": "generated/review/character/fox-anim-cheer.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "5be55ed4c05746ceb3fede6165f13a6385e9a3795a1d797f5e14444720ec7743",
+      "bytes": 5203
+    },
+    {
+      "path": "generated/review/character/fox-anim-idle.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "e0eb376b0d64d9aac9328896736c3b20d449bc2379170f8e08f04c0574df5982",
+      "bytes": 5353
+    },
+    {
+      "path": "generated/review/character/fox-anim-wave.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "4f54dffa747a15ea1b06f9c715c2b3a766d3632845bf2ea29aae1fd3ca9962d4",
+      "bytes": 6022
+    },
+    {
+      "path": "generated/review/character/fox-gameplay-camera.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "760722e9b3d17f72103322c641479df432463f1e7b81598ff5662bb68670dbaf",
+      "bytes": 6907
+    },
+    {
+      "path": "generated/review/character/fox-turn-0.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "49c4ccc0dc9da636fa3dcb305fdf9103ea3333d22e6c46126101817b51101c11",
+      "bytes": 4651
+    },
+    {
+      "path": "generated/review/character/fox-turn-180.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "4633b71bf2f03b89cc22039be8fc4fb2a06e47e0e9f52e8af3f03bf895d76314",
+      "bytes": 4023
+    },
+    {
+      "path": "generated/review/character/fox-turn-315.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "ac55acdd7b028c629be745bd8bf559032b3365e0d2ca41f4cb384e414d111f33",
+      "bytes": 9496
+    },
+    {
+      "path": "generated/review/character/fox-turn-90.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "b5e2d09228a238c2823047ca6ba801734fe38fcb589df6650dd194a9089fcd54",
+      "bytes": 4322
     },
     {
       "path": "generated/review/character/miu-cat-anim-attack-kick-left.png",
@@ -8700,8 +8986,8 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "bd89198e8bdb07b11108cb73af0197e483b8dd0a43c512f3512bf990f17f7cd0",
-      "bytes": 6811
+      "sha256": "6b5098cfa5fbf4c5200f601e5283f0daa9a5cbe3d913b1b94f0c7efc49aafe34",
+      "bytes": 6860
     },
     {
       "path": "generated/review/character/miu-cat-anim-attack-kick-right.png",
@@ -8716,8 +9002,8 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "4c26b4d61d349b47994c9688c1d8b77353f6ad5414a79f067fb9c355223f548c",
-      "bytes": 6639
+      "sha256": "e9a7e1bc10964c04fd49a75bcae395b498f32bc8ea1bc66613b0ebe1f4c163a1",
+      "bytes": 6681
     },
     {
       "path": "generated/review/character/miu-cat-anim-attack-melee-left.png",
@@ -8732,8 +9018,8 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "f52036910878937ee51b86ed09b28594a40270d0c7bfb19fb7bb3b0c6e13ea2a",
-      "bytes": 6943
+      "sha256": "fa82e439f806b62e4e4bdc6107a8434d3fa1cd5997547cece1e78cac6e03fc0a",
+      "bytes": 6945
     },
     {
       "path": "generated/review/character/miu-cat-anim-attack-melee-right.png",
@@ -8748,8 +9034,8 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "f53a36c54f3ca655e1d0455819662426df63bc7d38c8dd4ebc83eefff2e8f0a5",
-      "bytes": 7015
+      "sha256": "6c9b3a3614f23f292983ef1f3010b5edf19cb6719a9353f4ebf9ce66db3ff490",
+      "bytes": 7024
     },
     {
       "path": "generated/review/character/miu-cat-anim-cheer.png",
@@ -8780,8 +9066,8 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "1318bd0860205fa7caf36d0a3f66a7187dc493555a48d1078fa603cde2062cc3",
-      "bytes": 4789
+      "sha256": "cd23ff4a4b1c5691149e053b817fb2a6d98c41d26e6a4fa7f0891bffcd5b9531",
+      "bytes": 4829
     },
     {
       "path": "generated/review/character/miu-cat-anim-drive.png",
@@ -8796,8 +9082,8 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "acf5b6b8793a421c230804cb33f56c73a2ba51b1a5e2afde42b6782172389f13",
-      "bytes": 6718
+      "sha256": "8a43d3d88908eab9a23e96e0808cbffcaf52a5b179782e65592c71c3a8f66241",
+      "bytes": 6721
     },
     {
       "path": "generated/review/character/miu-cat-anim-emote-no.png",
@@ -8812,8 +9098,8 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "8db9e45e8febdcf0c467fabc9315d56c8f62ee4b554ef5ac500780a79000ed29",
-      "bytes": 5696
+      "sha256": "9cac93abcf210ad3c32cfb901485aceff2cdd0ca7063bd70d90afca5ff94f0d4",
+      "bytes": 5700
     },
     {
       "path": "generated/review/character/miu-cat-anim-emote-yes.png",
@@ -8828,8 +9114,8 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "584e03926519211ece570bec38b7722173408b17dfef03202fd2b4a834961c0d",
-      "bytes": 5934
+      "sha256": "32aedeea93b0a1bf3cf1da4d72bbef8b4fd24afc228782f4fd999e560cd259ae",
+      "bytes": 5930
     },
     {
       "path": "generated/review/character/miu-cat-anim-holding-both-shoot.png",
@@ -8844,8 +9130,8 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "c36ca3b263135808a59c38f4319169b7e6afe0323926fccdb46058bfc40160eb",
-      "bytes": 6318
+      "sha256": "407f8529996722f7d260b26e48e1fd9d7683769db63d62f24b556dccaac0b76d",
+      "bytes": 6375
     },
     {
       "path": "generated/review/character/miu-cat-anim-holding-both.png",
@@ -8876,8 +9162,8 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "1d99fa8ef3362867d09ba64fc78319ddf79471e1bafeea97fb7244c131a096c4",
-      "bytes": 6171
+      "sha256": "ef2c2852e1eab7150a965e874cc3dc041becd4312c0dce254efa1c4b1ba8199e",
+      "bytes": 6224
     },
     {
       "path": "generated/review/character/miu-cat-anim-holding-left.png",
@@ -8908,8 +9194,8 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "53d9cb4792a8c3e274acbb6fe9a4d9058c8aeb30f5d6fc42aca4b687724b4c93",
-      "bytes": 6191
+      "sha256": "b06b3f1b54190f946f689edbdef085aeed2da941e9d35a2aaad6aed36a75a108",
+      "bytes": 6249
     },
     {
       "path": "generated/review/character/miu-cat-anim-holding-right.png",
@@ -8924,8 +9210,8 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "8e70c120c06b481125adf736b5d4fc4d862f747640ad9f10c19d5af8d2ce4ea6",
-      "bytes": 5953
+      "sha256": "54501eece58b7cae9d96741239d21b6afc534cec5138705419239b49daa836fe",
+      "bytes": 5947
     },
     {
       "path": "generated/review/character/miu-cat-anim-idle.png",
@@ -8940,8 +9226,8 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "14b63f757f1b71a292650db00c9c9659d9599bfa5ddb56afd1b40383c1a1b715",
-      "bytes": 5774
+      "sha256": "aab1414e22b65e99e4f4673d51657c2dd71f7552de352c2dd394194aaf3f4e93",
+      "bytes": 5775
     },
     {
       "path": "generated/review/character/miu-cat-anim-interact-left.png",
@@ -8972,8 +9258,8 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "0315199313d38666b423f862004c851496cc63989c087696782d64a4471a2531",
-      "bytes": 6826
+      "sha256": "1ce86bf3de5c35aea0e13a343d838b16eaf475ca5afb19657bc278590f4b94e8",
+      "bytes": 6822
     },
     {
       "path": "generated/review/character/miu-cat-anim-jump.png",
@@ -8988,7 +9274,7 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "c3ecfa1ef71b1aa305676a8672769aecf8cbaf8282d7d2eeac0a30d5cc1b5c7f",
+      "sha256": "ef4349b40ed447bcba2b8b70dc0cd9ee2974c613f7e8e8466bd6175faceca267",
       "bytes": 6341
     },
     {
@@ -9004,7 +9290,7 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "f0852abdeb8d22271d89199595be0441510d52048c5ca9f9e344eebc1287fe33",
+      "sha256": "5e9985ca247530a22702da387966cba60cb00ca1de3f7f14f869b08f8d7dba9e",
       "bytes": 8439
     },
     {
@@ -9020,8 +9306,8 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "5f510d5b1d567c9104bf907e22b588fc7a98e6168dbb79641e74b86faba59e5c",
-      "bytes": 6376
+      "sha256": "3054b0f0a37c39cc8efbb7a4c2348617312a80dd580370fdc23144fee33d1c47",
+      "bytes": 6378
     },
     {
       "path": "generated/review/character/miu-cat-anim-sprint.png",
@@ -9036,8 +9322,8 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "837d09c29b4b7917d60222d1ccfb30edcc29970bc8039236c38706c9d877b06a",
-      "bytes": 6779
+      "sha256": "645308a841d596216f27b077397e1b56492482f67da15fafa35753a0a9f3addd",
+      "bytes": 6784
     },
     {
       "path": "generated/review/character/miu-cat-anim-static.png",
@@ -9052,8 +9338,8 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "0282ce2c56572e90ae8e1ab07f3af2de7e96ad24ea5e1e4d55ba263d09a8567e",
-      "bytes": 5944
+      "sha256": "7281d813c8ab957e75fdc2a312a0aa4b4d4e9513fd0e719a44ce26d86775c6f5",
+      "bytes": 5938
     },
     {
       "path": "generated/review/character/miu-cat-anim-walk.png",
@@ -9068,8 +9354,8 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "1b1431583e2f97e5cef25dfce8cd2b8fe1ffa4a3d253e4126c0dcf6b570bf152",
-      "bytes": 6396
+      "sha256": "660bc4687cc2aad8ee953c09445804c38eee973496930a8d32c640081f06e2fa",
+      "bytes": 6391
     },
     {
       "path": "generated/review/character/miu-cat-anim-wave.png",
@@ -9084,8 +9370,8 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "4d5e026180d3b1bb85bb61c0769fafdf16264b710103f1d44933a6ff529313e2",
-      "bytes": 6729
+      "sha256": "b872d3f5082a5defa0479ec7148e7726f7b9860ff37c66b8218c8a05d871d35e",
+      "bytes": 6738
     },
     {
       "path": "generated/review/character/miu-cat-anim-wheelchair-move-back.png",
@@ -9100,8 +9386,8 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "aa18bdc8f36327457f7fd38e51252f214af37fec6355f82823447195a61d2b4a",
-      "bytes": 7007
+      "sha256": "5058819098e48a20f4635ef60972f377a5d8cfcd390fc8cb1f6fe9abd19c15e5",
+      "bytes": 7047
     },
     {
       "path": "generated/review/character/miu-cat-anim-wheelchair-move-forward.png",
@@ -9132,8 +9418,8 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "4d006f2988f14b29e294f1d334d26fbacd967895388521af4a83aea620dfa64e",
-      "bytes": 5307
+      "sha256": "7d1dc48d6b87d81cce0373cd8f36ef18f2feb26aa111b0fdb5fb1195fa0ac4fd",
+      "bytes": 5321
     },
     {
       "path": "generated/review/character/miu-cat-anim-wheelchair-move-right.png",
@@ -9148,8 +9434,8 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "4f4fe22af0df4646be082bd56faa8cc92ffcffb958e0244d1a27f626863aee14",
-      "bytes": 6841
+      "sha256": "8080a27b3f93346e2e1cff5e6781ee44cca5e0ba6c97869d09f51bbce89d2f94",
+      "bytes": 6842
     },
     {
       "path": "generated/review/character/miu-cat-anim-wheelchair-sit.png",
@@ -9164,8 +9450,8 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "36ce75d5347101d495a9148447d8f3e902cc233a6b87e06217e5467b65b60eb3",
-      "bytes": 6932
+      "sha256": "c04c2e19731bb71d6891d78ead3f7f08645aab90c335682718610cf127a7cb62",
+      "bytes": 6928
     },
     {
       "path": "generated/review/character/miu-cat-anim-yawn.png",
@@ -9180,8 +9466,8 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "4062a96125d0c82586dc1dccba0cab618c42ff5ecd9907a92e01371f2697d539",
-      "bytes": 7869
+      "sha256": "596ad7bccf55cbc266f461f683a9f0a2e295d50584a3570bacb496cd28a5b8fc",
+      "bytes": 7888
     },
     {
       "path": "generated/review/character/miu-cat-gameplay-camera.png",
@@ -9196,8 +9482,8 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "baf2acbd02fb40953e35fea3463a3830410dd1327f4f1e81deb84c967ad16c9e",
-      "bytes": 7204
+      "sha256": "a27ec118b0d9a0402b72f0dae659f312ae4d8dc19eef95501e3a51ce622c6b0e",
+      "bytes": 7209
     },
     {
       "path": "generated/review/character/miu-cat-turn-0.png",
@@ -9212,7 +9498,7 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "2ad26794babb8c424d96d33252b3794ca34bc5bbdc6806fbbfdb59e7403854ae",
+      "sha256": "1a0b3caeac1c3f53339908614fc6a1c5a36ea3f7889cb98139c71210cba4f1f2",
       "bytes": 5454
     },
     {
@@ -9244,8 +9530,8 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "fe56440756409a9652ef02c0377303cfe581eb117725cd31567af6976c53e120",
-      "bytes": 10585
+      "sha256": "6ef9b25e0e8eaddb792127e6a460be8499173cab4ee9a0b48d0e28271137c58e",
+      "bytes": 10586
     },
     {
       "path": "generated/review/character/miu-cat-turn-90.png",
@@ -9262,6 +9548,134 @@
       ],
       "sha256": "2783bfac651465ae82148a2a680c15acade3c8c422ccc1cb21a24a089b880ab4",
       "bytes": 4587
+    },
+    {
+      "path": "generated/review/character/rabbit-anim-cheer.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "bfc08ccb64cc8378ebf41ab46918000a41c7587c309cf9a695dde66ef898790e",
+      "bytes": 4956
+    },
+    {
+      "path": "generated/review/character/rabbit-anim-idle.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "2e351dfb72aef3fecc7bf3d4d48448d36dc75358311cae612239b03cbf0bb5e1",
+      "bytes": 5135
+    },
+    {
+      "path": "generated/review/character/rabbit-anim-wave.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "e9fe060e386a2d352396a49b5faae8c29c18ffb70ea0b2e112bea3684e14ebb7",
+      "bytes": 5809
+    },
+    {
+      "path": "generated/review/character/rabbit-gameplay-camera.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "fda3b3a687c2a38ab360a1b50586bdaf3a0d05b4be25a71a458aac4d4d64d751",
+      "bytes": 6427
+    },
+    {
+      "path": "generated/review/character/rabbit-turn-0.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "d2eee55bc2265e41192e72768d3519c2b48dd8eca1e1cc4a4a8b24efac6b877f",
+      "bytes": 4610
+    },
+    {
+      "path": "generated/review/character/rabbit-turn-180.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "ed387622cb657be45025b64b3cadf33f99b78eee8b23985540baa0c922decac5",
+      "bytes": 3610
+    },
+    {
+      "path": "generated/review/character/rabbit-turn-315.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "4d7a7cc6b02d5e1612d8e241cc5f418aab1341cdb4b5c7cfc05853b0a0b946ac",
+      "bytes": 9353
+    },
+    {
+      "path": "generated/review/character/rabbit-turn-90.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "8d23a7ec751071027d3d1971cc3aa584a531bb98977ed6211331d77aea9334aa",
+      "bytes": 3943
     },
     {
       "path": "generated/review/map/forest-ch1-bridge.png",

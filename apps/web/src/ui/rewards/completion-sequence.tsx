@@ -81,7 +81,7 @@ export function CompletionSequence({
         </div>
       ) : screen === 'level' ? (
         <div className="reward-body" data-id="level-up">
-          <MiuPortrait pose="cheer" size="9rem" />
+          <MiuPortrait pose="cheer" size="9rem" species={data.character.species} />
           <p className="reward-level">
             Lv.{completion.levelBefore} → Lv.{completion.levelAfter}
           </p>

@@ -2,7 +2,66 @@
   "miu-cat": {
     "output": "generated/characters/miu-cat.glb",
     "rig": "packs/kenney-blocky-characters/2.0/character-a.glb",
-    "body": "miu-cat-body",
+    "recipe": {
+      "species": "cat"
+    },
+    "torsoScale": 0.8333,
+    "limbScale": 0.5,
+    "accessoryScale": {
+      "head": 1.3,
+      "torso": 0.8
+    },
+    "extraAnimations": [
+      "wave",
+      "jump",
+      "yawn",
+      "cheer"
+    ]
+  },
+  "rabbit": {
+    "output": "generated/characters/rabbit.glb",
+    "rig": "packs/kenney-blocky-characters/2.0/character-a.glb",
+    "recipe": {
+      "species": "rabbit"
+    },
+    "torsoScale": 0.8333,
+    "limbScale": 0.5,
+    "accessoryScale": {
+      "head": 1.3,
+      "torso": 0.8
+    },
+    "extraAnimations": [
+      "wave",
+      "jump",
+      "yawn",
+      "cheer"
+    ]
+  },
+  "fox": {
+    "output": "generated/characters/fox.glb",
+    "rig": "packs/kenney-blocky-characters/2.0/character-a.glb",
+    "recipe": {
+      "species": "fox"
+    },
+    "torsoScale": 0.8333,
+    "limbScale": 0.5,
+    "accessoryScale": {
+      "head": 1.3,
+      "torso": 0.8
+    },
+    "extraAnimations": [
+      "wave",
+      "jump",
+      "yawn",
+      "cheer"
+    ]
+  },
+  "bear": {
+    "output": "generated/characters/bear.glb",
+    "rig": "packs/kenney-blocky-characters/2.0/character-a.glb",
+    "recipe": {
+      "species": "bear"
+    },
     "torsoScale": 0.8333,
     "limbScale": 0.5,
     "accessoryScale": {

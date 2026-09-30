@@ -20,7 +20,8 @@ import {
 import type { GameStore } from '../../game-bridge/game-store';
 import { AssetRegistry, GuardedGltfLoader } from '../asset-loader';
 import { dressCharacter, undressCharacter, type WornOutfit } from '../character/character-accessories';
-import { CHARACTER_MODEL, accessoryScaleFor } from '../entities/player-character';
+import { characterForSpecies } from '../content/characters';
+import { accessoryScaler } from '../entities/player-character';
 import { disposeSceneGraph } from '../scene/dispose-scene';
 
 export const EMOTES = ['wave', 'jump', 'yawn', 'cheer'] as const;
@@ -45,6 +46,8 @@ const START_YAW = 0.5;
 
 export interface CharacterPreviewOptions {
   store: GameStore;
+  /** Species whose model is shown. */
+  species: string;
   /** Items worn when the preview opens. */
   outfit: readonly string[];
 }
@@ -126,7 +129,8 @@ export class CharacterPreview {
     scene.add(sun);
 
     const registry = await AssetRegistry.load();
-    const gltf = await new GuardedGltfLoader(registry).load(CHARACTER_MODEL);
+    const character = characterForSpecies(this.options.species);
+    const gltf = await new GuardedGltfLoader(registry).load(character.output);
     if (this.disposed) return;
     const model: Object3D = gltf.scene;
     model.traverse((o) => (o.frustumCulled = false)); // skinned bounds lag the animated pose
@@ -186,7 +190,7 @@ export class CharacterPreview {
       for (const mesh of skinned) mesh.skeleton.pose();
       model.updateMatrixWorld(true);
       if (worn) undressCharacter(worn);
-      worn = dressCharacter(model, entries, accessoryScaleFor, false);
+      worn = dressCharacter(model, entries, accessoryScaler(character), false);
       for (const { entry, error } of worn.skipped) console.warn(`skipping outfit entry "${entry}"`, error);
       this.stats.outfit = [...worn.entries];
       model.rotation.y = yaw;

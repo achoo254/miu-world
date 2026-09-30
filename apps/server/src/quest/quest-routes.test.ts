@@ -511,13 +511,20 @@ describe('character', () => {
     expect(updated.body).toEqual({ species: 'cat', name: 'Mochi', equipped: ['hat-witch-pink', 'backpack-brown'] });
   });
 
-  it('rejects free-text names, unknown or doubled-up equipment, and ignores species', async () => {
+  it('rejects free-text names, unknown or doubled-up equipment, and species outside content', async () => {
     const { agent } = await playingChild();
     await agent.put('/api/character').send({ name: 'Tên Thật', equipped: [] }).expect(400, { error: 'invalid-character-name' });
     await agent.put('/api/character').send({ name: 'Miu', equipped: ['golden-crown'] }).expect(400, { error: 'invalid-equipment' });
     await agent.put('/api/character').send({ name: 'Miu', equipped: ['hat-witch-pink', 'hat-witch-pink'] }).expect(400);
-    const res = await agent.put('/api/character').send({ name: 'Miu', equipped: [], species: 'dragon' }).expect(200);
-    expect(res.body.species).toBe('cat');
+    await agent.put('/api/character').send({ name: 'Miu', equipped: [], species: 'dragon' }).expect(400, { error: 'invalid-species' });
+    expect((await agent.get('/api/character').expect(200)).body.species).toBe('cat');
+  });
+
+  it('changes species only when one is sent, and shows it on the profile list', async () => {
+    const { agent } = await playingChild();
+    expect((await agent.put('/api/character').send({ name: 'Bo', equipped: [], species: 'fox' }).expect(200)).body.species).toBe('fox');
+    expect((await agent.put('/api/character').send({ name: 'Bo', equipped: [] }).expect(200)).body.species).toBe('fox');
+    expect((await agent.get('/api/children').expect(200)).body.map((p: { species: string }) => p.species)).toEqual(['fox']);
   });
 });
 

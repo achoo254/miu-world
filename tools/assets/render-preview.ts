@@ -34,6 +34,11 @@ export function accessoryScaleParam(scale: Record<string, number>): string {
     .join(',');
 }
 
+/** The character the review page shows clip by clip; the others get turns and the clips the UI uses. */
+const REVIEW_CHARACTER = 'miu-cat';
+/** Portraits the React UI shows for every species (see ui-art.ts). */
+const UI_CLIPS = ['idle', 'wave', 'cheer'];
+
 async function characterShots(): Promise<Shot[]> {
   const shots: Shot[] = [];
   for (const [id, spec] of Object.entries(await readCharacterSpecs())) {
@@ -42,7 +47,8 @@ async function characterShots(): Promise<Shot[]> {
     }
     // Third-person gameplay angle: checks the head does not hide the character from the camera.
     shots.push({ file: `${id}-gameplay-camera.png`, query: { model: spec.output, anim: 'walk', t: 0.17, yaw: 180, pitch: 28 } });
-    for (const anim of [...(await rigAnimationNames(spec)), ...spec.extraAnimations]) {
+    const clips = id === REVIEW_CHARACTER ? [...(await rigAnimationNames(spec)), ...spec.extraAnimations] : UI_CLIPS;
+    for (const anim of clips) {
       shots.push({
         file: `${id}-anim-${anim}.png`,
         query: { model: spec.output, anim, t: SHOW_TIME[anim] ?? 0.3, yaw: 25, size: 256 },

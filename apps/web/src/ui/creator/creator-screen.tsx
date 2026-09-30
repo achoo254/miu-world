@@ -1,6 +1,6 @@
-// M1.2 (chọn loài) + M1.3 (trang phục, tên, tính cách, xem trước): the Character Creator. Only the
-// cat is open in the MVP; the other species and the Áo/Giày/Cánh slots show "Sắp có". The 3D
-// preview is its own light renderer; outfit changes reach it as the bridge command `set-outfit`.
+// M1.2 (chọn loài) + M1.3 (trang phục, tên, tính cách, xem trước): the Character Creator. Every
+// species in content/species.json is open; the Áo/Giày/Cánh slots show "Sắp có". The 3D preview is
+// its own light renderer; outfit changes reach it as the bridge command `set-outfit`.
 import { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { fillPlayerName } from '@miu/quest/player-name';
@@ -10,8 +10,9 @@ import { createGameStore, type GameStore } from '../../game-bridge/game-store';
 import { GameStoreContext, useGameState } from '../../game-bridge/use-game-state';
 import { CharacterPreview, EMOTES, type Emote } from '../../game/preview/character-preview';
 import { ACCESSORIES } from '../../game/content/accessories';
+import { SPECIES } from '../../game/content/characters';
 import { api, errorMessage } from '../api-client';
-import { Icon } from '../kit/art';
+import { Icon, MiuArt } from '../kit/art';
 import { buttonClass } from '../kit/button';
 import { SkyScene } from '../kit/sky-scene';
 import { isFreshCharacter } from './fresh-character';
@@ -19,13 +20,6 @@ import { COMING_SLOTS, OPEN_SLOTS, equip, isOpen, itemsForSlot, lockText, swatch
 import './creator.css';
 
 const NAMES: readonly string[] = (characterNames as { names: string[] }).names;
-
-const SPECIES = [
-  { id: 'cat', name: 'Mèo', trait: 'Tò mò, tốt bụng', open: true },
-  { id: 'rabbit', name: 'Thỏ', trait: 'Nhanh nhẹn', open: false },
-  { id: 'fox', name: 'Cáo', trait: 'Thông minh', open: false },
-  { id: 'bear', name: 'Gấu', trait: 'Mạnh mẽ', open: false },
-] as const;
 
 const EMOTE_LABELS: Record<Emote, string> = { wave: 'Vẫy tay', jump: 'Nhảy', yawn: 'Ngáp', cheer: 'Vui mừng' };
 
@@ -53,26 +47,21 @@ async function loadCreator(): Promise<CreatorData> {
   };
 }
 
-function SpeciesStep({ onPick }: { onPick: () => void }) {
+/** `current`: the species the child's character already is, marked on its card. */
+function SpeciesStep({ current, onPick }: { current: string; onPick: (species: string) => void }) {
   return (
     <section className="panel creator-species" data-id="creator-species" aria-labelledby="creator-species-title">
       <h1 id="creator-species-title">Chọn nhân vật của bé</h1>
       <ul className="species-grid">
         {SPECIES.map((s) => (
           <li key={s.id}>
-            {s.open ? (
-              <button type="button" className="species-card" data-id={`creator-species-${s.id}`} onClick={onPick}>
-                <Icon name="catFace" size={72} />
-                <strong>{s.name}</strong>
-                <span className="hint">{s.trait}</span>
-              </button>
-            ) : (
-              <div className="species-card species-card--locked" data-id={`creator-species-${s.id}`} aria-disabled="true">
-                <Icon name="locked" size={56} label="Khóa" />
-                <strong>{s.name}</strong>
-                <span className="badge">Sắp có</span>
-              </div>
-            )}
+            <button type="button" className="species-card" aria-pressed={s.id === current} data-id={`creator-species-${s.id}`} onClick={() => onPick(s.id)}>
+              <span className="species-card-art">
+                <MiuArt pose="idle" species={s.id} />
+              </span>
+              <strong>{s.name}</strong>
+              <span className="hint">{s.trait}</span>
+            </button>
           </li>
         ))}
       </ul>
@@ -81,14 +70,14 @@ function SpeciesStep({ onPick }: { onPick: () => void }) {
 }
 
 /** The 3D stage: mounts one CharacterPreview for the screen's lifetime and exposes its emotes. */
-function PreviewStage({ store, initialOutfit }: { store: GameStore; initialOutfit: readonly string[] }) {
+function PreviewStage({ store, species, initialOutfit }: { store: GameStore; species: string; initialOutfit: readonly string[] }) {
   const host = useRef<HTMLDivElement>(null);
   const preview = useRef<CharacterPreview | null>(null);
   const firstOutfit = useRef(initialOutfit);
   const status = useGameState((s) => s.status);
   useEffect(() => {
     if (!host.current) return;
-    const instance = new CharacterPreview(host.current, { store, outfit: firstOutfit.current });
+    const instance = new CharacterPreview(host.current, { store, species, outfit: firstOutfit.current });
     preview.current = instance;
     void instance.start();
     // StrictMode mounts twice in dev: the first preview is fully disposed before the second starts.
@@ -96,7 +85,7 @@ function PreviewStage({ store, initialOutfit }: { store: GameStore; initialOutfi
       instance.dispose();
       if (preview.current === instance) preview.current = null;
     };
-  }, [store]);
+  }, [store, species]);
   return (
     <div className="creator-stage">
       <div className="creator-stage-view" ref={host} data-id="creator-preview" aria-label="Nhân vật xem trước, kéo để xoay" />
@@ -123,11 +112,31 @@ function PreviewStage({ store, initialOutfit }: { store: GameStore; initialOutfi
   );
 }
 
-function OutfitStep({ data, store }: { data: CreatorData; store: GameStore }) {
+/** Name and outfit picked so far: kept when the child goes back to pick another animal. */
+interface Draft {
+  name: string;
+  equipped: string[];
+}
+
+function OutfitStep({
+  data,
+  store,
+  species,
+  draft,
+  onDraft,
+  onChangeSpecies,
+}: {
+  data: CreatorData;
+  store: GameStore;
+  species: string;
+  draft: Draft;
+  onDraft: (next: Draft) => void;
+  onChangeSpecies: () => void;
+}) {
   const navigate = useNavigate();
-  const [equipped, setEquipped] = useState<string[]>(data.character.equipped);
-  // "Miu" is the game's name: a fresh character starts without a name and the child picks one.
-  const [name, setName] = useState(isFreshCharacter(data.character) ? '' : data.character.name);
+  const { name, equipped } = draft;
+  const setName = (next: string): void => onDraft({ ...draft, name: next });
+  const setEquipped = (next: string[]): void => onDraft({ ...draft, equipped: next });
   const [slot, setSlot] = useState<OpenSlot>('hat');
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -144,7 +153,7 @@ function OutfitStep({ data, store }: { data: CreatorData; store: GameStore }) {
     setSaving(true);
     setError(null);
     try {
-      await api('PUT', '/character', CharacterDto, CharacterUpdate.parse({ name, equipped }));
+      await api('PUT', '/character', CharacterDto, CharacterUpdate.parse({ name, equipped, species }));
       navigate('/home');
     } catch (err) {
       setError(errorMessage(err));
@@ -208,10 +217,13 @@ function OutfitStep({ data, store }: { data: CreatorData; store: GameStore }) {
         </ul>
       </section>
 
-      <PreviewStage store={store} initialOutfit={data.character.equipped} />
+      <PreviewStage store={store} species={species} initialOutfit={equipped} />
 
       <section className="panel creator-info" aria-labelledby="creator-info-title">
         <h2 id="creator-info-title">Thông tin</h2>
+        <button type="button" className={`${buttonClass('ghost', { small: true })} creator-species-back`} data-id="creator-change-species" onClick={onChangeSpecies}>
+          Đổi nhân vật
+        </button>
         <label className="field-label">
           Tên nhân vật
           <select data-id="creator-name" value={name} onChange={(e) => setName(e.target.value)}>
@@ -249,12 +261,19 @@ export function CreatorScreen() {
   const [store] = useState(createGameStore);
   const [data, setData] = useState<CreatorData | null>(null);
   const [loadError, setLoadError] = useState<string | null>(null);
-  const [step, setStep] = useState<'species' | 'outfit'>('species');
+  // Null until the child picks an animal on the first step.
+  const [species, setSpecies] = useState<string | null>(null);
+  const [draft, setDraft] = useState<Draft | null>(null);
 
   useEffect(() => {
     let live = true;
     loadCreator().then(
-      (next) => live && setData(next),
+      (next) => {
+        if (!live) return;
+        setData(next);
+        // "Miu" is the game's name: a fresh character starts without a name and the child picks one.
+        setDraft({ name: isFreshCharacter(next.character) ? '' : next.character.name, equipped: next.character.equipped });
+      },
       (err: unknown) => live && setLoadError(errorMessage(err)),
     );
     return () => {
@@ -272,8 +291,10 @@ export function CreatorScreen() {
             </p>
           ) : null}
           {!data && !loadError ? <p role="status">Đang tải…</p> : null}
-          {data && step === 'species' ? <SpeciesStep onPick={() => setStep('outfit')} /> : null}
-          {data && step === 'outfit' ? <OutfitStep data={data} store={store} /> : null}
+          {data && species === null ? <SpeciesStep current={data.character.species} onPick={setSpecies} /> : null}
+          {data && draft && species !== null ? (
+            <OutfitStep data={data} store={store} species={species} draft={draft} onDraft={setDraft} onChangeSpecies={() => setSpecies(null)} />
+          ) : null}
         </main>
       </SkyScene>
     </GameStoreContext.Provider>

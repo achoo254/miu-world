@@ -27,8 +27,9 @@ test('a new profile creates its character first, sees outfit changes live, then 
   await page.getByRole('button', { name: 'Thỏ Bông' }).click();
   await expect(page).toHaveURL(/\/create$/);
 
-  await expect(page.locator('[data-id="creator-species-fox"]')).toHaveAttribute('aria-disabled', 'true');
-  await page.getByRole('button', { name: /Mèo/ }).click();
+  // Every species is open; this child picks the fox, so the whole path runs with a species other than Miu's.
+  await expect(page.locator('[data-id="creator-species-cat"]')).toHaveAttribute('aria-pressed', 'true');
+  await page.getByRole('button', { name: /Cáo/ }).click();
   await page.waitForFunction(() => window.__miuPreview?.ready === true, null, { timeout: 60_000 });
   await expect(page.locator('canvas')).toHaveCount(1);
   expect(await previewOutfit(page)).toEqual([]);
@@ -62,6 +63,8 @@ test('a new profile creates its character first, sees outfit changes live, then 
   await page.getByRole('button', { name: /Vào thế giới/ }).click();
   await expect(page).toHaveURL(/\/home$/);
   await expect(page.locator('[data-id="player-name"]')).toHaveText('Mochi');
+  // The server kept the species: the HUD shows the fox.
+  await expect(page.locator('[data-id="player-badge"] .miu-art').first()).toHaveAttribute('src', /\/fox-anim-idle\.png$/);
   await page.locator('[data-id="home-today-play"]').click();
   await expect(page).toHaveURL(/\/play\?/);
   await waitReady(page);
@@ -70,8 +73,9 @@ test('a new profile creates its character first, sees outfit changes live, then 
   await expect(page.locator('canvas')).toHaveCount(1);
   expect(await page.evaluate(() => window.__miuPreview)).toBeUndefined();
 
-  // Back on the picker, the profile now goes straight Home.
+  // Back on the picker, the profile shows its fox and now goes straight Home.
   await page.goto('/profiles');
+  await expect(page.getByRole('button', { name: 'Thỏ Bông' }).locator('.miu-art')).toHaveAttribute('src', /\/fox-anim-idle\.png$/);
   await page.getByRole('button', { name: 'Thỏ Bông' }).click();
   await expect(page).toHaveURL(/\/home$/);
 });

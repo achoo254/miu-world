@@ -6,17 +6,18 @@ import type { GameCommand, GameStore } from '../../game-bridge/game-store';
 import { CreatorScreen } from './creator-screen';
 
 // jsdom has no WebGL: the preview is replaced by a stand-in that records its life and commands.
-const previews = vi.hoisted(() => ({ live: 0, commands: [] as GameCommand[], emotes: [] as string[] }));
+const previews = vi.hoisted(() => ({ live: 0, commands: [] as GameCommand[], emotes: [] as string[], species: [] as string[] }));
 vi.mock('../../game/preview/character-preview', () => ({
   EMOTES: ['wave', 'jump', 'yawn', 'cheer'],
   CharacterPreview: class {
     private off: (() => void) | null = null;
     constructor(
       _host: HTMLElement,
-      private readonly options: { store: GameStore },
+      private readonly options: { store: GameStore; species: string },
     ) {}
     async start() {
       previews.live += 1;
+      previews.species.push(this.options.species);
       this.off = this.options.store.onCommand((c) => previews.commands.push(c));
       this.options.store.emit({ type: 'ready' });
     }
@@ -73,18 +74,42 @@ afterEach(() => {
   vi.unstubAllGlobals();
   previews.commands.length = 0;
   previews.emotes.length = 0;
+  previews.species.length = 0;
   puts.length = 0;
 });
 
 describe('Character Creator', () => {
-  it('opens only the cat; the other species say "Sắp có"', async () => {
+  it('offers every species from content, marking the one the character already is', async () => {
     stubApi();
     renderCreator();
     expect(await screen.findByRole('button', { name: /Mèo/ })).toBeTruthy();
-    for (const locked of ['rabbit', 'fox', 'bear']) {
-      expect(document.querySelector(`[data-id="creator-species-${locked}"]`)?.getAttribute('aria-disabled')).toBe('true');
+    for (const [name, trait] of [['Mèo', 'Dễ thương'], ['Thỏ', 'Nhanh nhẹn'], ['Cáo', 'Thông minh'], ['Gấu', 'Hiền lành']] as const) {
+      const card = screen.getByRole('button', { name: new RegExp(name) });
+      expect((card as HTMLButtonElement).disabled).toBe(false);
+      expect(card.textContent).toContain(trait);
     }
-    expect(screen.getAllByText('Sắp có')).toHaveLength(3);
+    expect(screen.getByRole('button', { name: /Mèo/ }).getAttribute('aria-pressed')).toBe('true');
+    expect(screen.getByRole('button', { name: /Cáo/ }).getAttribute('aria-pressed')).toBe('false');
+    expect(screen.queryByText('Sắp có')).toBeNull();
+  });
+
+  it('previews the picked animal, keeps name and outfit when going back to pick another, and saves the species', async () => {
+    stubApi();
+    renderCreator();
+    fireEvent.click(await screen.findByRole('button', { name: /Thỏ/ }));
+    await vi.waitFor(() => expect(previews.species.at(-1)).toBe('rabbit'));
+    fireEvent.click(screen.getByRole('button', { name: /Mũ lưỡi trai vàng/ }));
+    fireEvent.change(screen.getByLabelText('Tên nhân vật'), { target: { value: 'Bo' } });
+
+    fireEvent.click(screen.getByRole('button', { name: 'Đổi nhân vật' }));
+    fireEvent.click(await screen.findByRole('button', { name: /Gấu/ }));
+    await vi.waitFor(() => expect(previews.species.at(-1)).toBe('bear'));
+    expect((screen.getByLabelText('Tên nhân vật') as HTMLSelectElement).value).toBe('Bo');
+    expect(screen.getByRole('button', { name: /Mũ lưỡi trai vàng/ }).getAttribute('aria-pressed')).toBe('true');
+
+    fireEvent.click(screen.getByRole('button', { name: /Vào thế giới/ }));
+    expect(await screen.findByText('Trang chủ')).toBeTruthy();
+    expect(puts).toEqual([{ name: 'Bo', equipped: ['hat-cap-yellow'], species: 'bear' }]);
   });
 
   it('sends every outfit change to the one live preview, locks what is not earned, and saves name and outfit', async () => {
@@ -118,7 +143,7 @@ describe('Character Creator', () => {
     fireEvent.change(screen.getByLabelText('Tên nhân vật'), { target: { value: 'Mochi' } });
     fireEvent.click(screen.getByRole('button', { name: /Vào thế giới/ }));
     expect(await screen.findByText('Trang chủ')).toBeTruthy();
-    expect(puts).toEqual([{ name: 'Mochi', equipped: ['hat-witch-pink', 'backpack-green'] }]);
+    expect(puts).toEqual([{ name: 'Mochi', equipped: ['hat-witch-pink', 'backpack-green'], species: 'cat' }]);
     view.unmount();
     expect(previews.live).toBe(0);
   });

@@ -51,6 +51,7 @@ const MESSAGES: Record<string, string> = {
   'equipment-locked': 'Món đồ này chưa mở khóa.',
   'invalid-equipment': 'Món đồ này không mặc được.',
   'invalid-character-name': 'Hãy chọn tên trong danh sách.',
+  'invalid-species': 'Hãy chọn một nhân vật trong danh sách.',
 };
 
 export function errorMessage(err: unknown): string {

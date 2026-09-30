@@ -1,0 +1,19 @@
+{
+  "cat": { "joint": "tail", "boxes": [
+    { "x": -2, "y": 0, "z": -3, "w": 4, "h": 3, "d": 3, "color": "fur" },
+    { "x": -2, "y": 1, "z": -6, "w": 4, "h": 8, "d": 3, "color": "fur" },
+    { "x": -2, "y": 8, "z": -5, "w": 4, "h": 3, "d": 2, "color": "fur" }
+  ] },
+  "puff": { "joint": "tail", "boxes": [
+    { "x": -2, "y": 0, "z": -4, "w": 4, "h": 4, "d": 4, "color": "fur" },
+    { "x": -1, "y": 1, "z": -5, "w": 2, "h": 2, "d": 1, "color": "fur-shade" }
+  ] },
+  "brush": { "joint": "tail", "boxes": [
+    { "x": -2, "y": 0, "z": -3, "w": 4, "h": 3, "d": 3, "color": "fur" },
+    { "x": -3, "y": 2, "z": -8, "w": 6, "h": 7, "d": 5, "color": "fur" },
+    { "x": -3, "y": 9, "z": -8, "w": 6, "h": 3, "d": 4, "color": "chest" }
+  ] },
+  "stub": { "joint": "tail", "boxes": [
+    { "x": -1, "y": 0, "z": -2, "w": 2, "h": 2, "d": 2, "color": "fur" }
+  ] }
+}

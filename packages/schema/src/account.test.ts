@@ -28,7 +28,7 @@ describe('account schema', () => {
       pinHash: 'hash-b',
     };
     expect(ParentDto.parse(row)).toEqual({ id: row.id, email: row.email });
-    const child = ChildProfileDto.parse({ id: row.id, displayName: 'Mèo Mây', parentId: 'x' });
-    expect(child).toEqual({ id: row.id, displayName: 'Mèo Mây' });
+    const child = ChildProfileDto.parse({ id: row.id, displayName: 'Mèo Mây', species: 'cat', parentId: 'x' });
+    expect(child).toEqual({ id: row.id, displayName: 'Mèo Mây', species: 'cat' });
   });
 });

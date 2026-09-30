@@ -41,7 +41,7 @@ beforeAll(async () => {
   poc = validateCharacter(await new NodeIO().readBinary(await buildCharacter('miu-cat', pocSpec(spec))), { expectedAnimations: [] });
 });
 
-describe('miu-cat voxel body (chibi)', () => {
+describe('miu-cat composed from the character library (chibi)', () => {
   it('passes structural validation', () => {
     expect(report.errors).toEqual([]);
   });
@@ -119,10 +119,10 @@ describe('miu-cat voxel body (chibi)', () => {
     expect(head.min[0]).toBeCloseTo(-head.max[0], 5);
   });
 
-  it('needs either a voxel body or a Cube Pets head', () => {
-    const { body: _body, ...headless } = spec;
+  it('needs either a recipe or a Cube Pets head', () => {
+    const { recipe: _recipe, ...headless } = spec;
     expect(characterSpecSchema.safeParse(headless).success).toBe(false);
-    expect(characterSpecSchema.safeParse({ ...headless, body: 'Bad Body' }).success).toBe(false);
+    expect(characterSpecSchema.safeParse({ ...headless, recipe: { species: 'Bad Species' } }).success).toBe(false);
   });
 
   it('rejects out-of-range proportions', () => {

@@ -1,0 +1,24 @@
+{
+  "name": "Áo khoác",
+  "palette": { "main": "#4a78c9", "shade": "#375fa8", "pants": "#8a5a3a", "belt": "#5b3a2a", "buckle": "#ffcf3a" },
+  "variants": {
+    "red": { "main": "#d9534a", "shade": "#b53d35" },
+    "green": { "main": "#4f9a5a", "shade": "#3b7a45" }
+  },
+  "parts": {
+    "torso": [
+      { "x": -8, "y": 4, "z": -6, "w": 16, "h": 7, "d": 12, "color": "pants" },
+      { "x": -8, "y": 11, "z": -6, "w": 16, "h": 1, "d": 12, "color": "belt" },
+      { "x": -1, "y": 10, "z": 6, "w": 2, "h": 2, "d": 1, "color": "buckle" },
+      { "x": -7, "y": 12, "z": -5, "w": 14, "h": 6, "d": 10, "color": "main" },
+      { "x": -7, "y": 18, "z": -5, "w": 14, "h": 2, "d": 10, "color": "shade" },
+      { "x": -3, "y": 12, "z": 5, "w": 6, "h": 7, "d": 1, "color": "chest" }
+    ],
+    "arm-left": [
+      { "x": -1, "y": -5, "z": -3, "w": 6, "h": 6, "d": 7, "color": "main" }
+    ],
+    "leg-left": [
+      { "x": -3, "y": -5, "z": -3, "w": 6, "h": 5, "d": 6, "color": "pants" }
+    ]
+  }
+}

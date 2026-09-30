@@ -1,0 +1,29 @@
+{
+  "cat": { "joint": "head", "boxes": [
+    { "x": 6, "y": 22, "z": -2, "w": 6, "h": 2, "d": 4, "color": "fur", "sym": true },
+    { "x": 5, "y": 22, "z": -2, "w": 1, "h": 2, "d": 4, "color": "fur-shade", "sym": true },
+    { "x": 6, "y": 24, "z": -2, "w": 6, "h": 2, "d": 4, "color": "fur", "sym": true },
+    { "x": 8, "y": 26, "z": -2, "w": 4, "h": 2, "d": 4, "color": "fur", "sym": true },
+    { "x": 10, "y": 28, "z": -1, "w": 2, "h": 1, "d": 2, "color": "fur", "sym": true },
+    { "x": 7, "y": 22, "z": 2, "w": 3, "h": 3, "d": 1, "color": "ear-inner", "sym": true },
+    { "x": 9, "y": 25, "z": 2, "w": 2, "h": 2, "d": 1, "color": "ear-inner", "sym": true }
+  ] },
+  "rabbit": { "joint": "head", "boxes": [
+    { "x": 6, "y": 22, "z": -2, "w": 5, "h": 12, "d": 4, "color": "fur", "sym": true },
+    { "x": 7, "y": 34, "z": -2, "w": 3, "h": 1, "d": 4, "color": "fur", "sym": true },
+    { "x": 5, "y": 22, "z": -2, "w": 1, "h": 2, "d": 4, "color": "fur-shade", "sym": true },
+    { "x": 7, "y": 23, "z": 2, "w": 3, "h": 10, "d": 1, "color": "ear-inner", "sym": true }
+  ] },
+  "fox": { "joint": "head", "boxes": [
+    { "x": 6, "y": 22, "z": -2, "w": 6, "h": 2, "d": 4, "color": "fur", "sym": true },
+    { "x": 7, "y": 24, "z": -2, "w": 5, "h": 2, "d": 4, "color": "fur", "sym": true },
+    { "x": 8, "y": 26, "z": -2, "w": 4, "h": 2, "d": 4, "color": "fur", "sym": true },
+    { "x": 10, "y": 28, "z": -1, "w": 2, "h": 2, "d": 2, "color": "ear-tip", "sym": true },
+    { "x": 8, "y": 22, "z": 2, "w": 3, "h": 4, "d": 1, "color": "ear-inner", "sym": true }
+  ] },
+  "bear": { "joint": "head", "boxes": [
+    { "x": 7, "y": 22, "z": -2, "w": 5, "h": 4, "d": 4, "color": "fur", "sym": true },
+    { "x": 8, "y": 26, "z": -2, "w": 3, "h": 1, "d": 4, "color": "fur", "sym": true },
+    { "x": 8, "y": 22, "z": 2, "w": 3, "h": 3, "d": 1, "color": "ear-inner", "sym": true }
+  ] }
+}

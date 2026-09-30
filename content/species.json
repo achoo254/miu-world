@@ -1,0 +1,34 @@
+{
+  "cat": {
+    "name": "Mèo",
+    "trait": "Dễ thương, tinh nghịch",
+    "base": "chibi",
+    "outfit": "dress",
+    "parts": { "ears": "cat", "eyes": "big", "mouth": "open-smile", "cheeks": "blush", "whiskers": "cat", "tail": "cat" },
+    "palette": { "fur": "#fdf8f5", "fur-shade": "#eadfe3", "chest": "#fdf8f5", "paw": "#fdf8f5", "foot": "#fdf8f5", "muzzle": "#fdf8f5", "ear-inner": "#f6a5c0", "ear-tip": "#fdf8f5", "eye": "#3b2432", "shine": "#ffffff", "nose": "#ef7fa0", "mouth": "#b8324f", "tongue": "#f47a98", "tooth": "#ffffff", "cheek": "#ffb8cb", "whisker": "#c0909f" }
+  },
+  "rabbit": {
+    "name": "Thỏ",
+    "trait": "Nhanh nhẹn, vui vẻ",
+    "base": "chibi",
+    "outfit": "overalls",
+    "parts": { "ears": "rabbit", "eyes": { "id": "big", "offset": [0, 1, 0] }, "mouth": "buck-teeth", "cheeks": "blush", "tail": "puff" },
+    "palette": { "fur": "#fdf8f5", "fur-shade": "#eadfe3", "chest": "#fdf8f5", "paw": "#fdf8f5", "foot": "#fdf8f5", "muzzle": "#fdf8f5", "ear-inner": "#f6a5c0", "ear-tip": "#fdf8f5", "eye": "#3b2432", "shine": "#ffffff", "nose": "#ef7fa0", "mouth": "#8a4a5e", "tongue": "#f47a98", "tooth": "#ffffff", "cheek": "#ffb8cb", "whisker": "#c0909f" }
+  },
+  "fox": {
+    "name": "Cáo",
+    "trait": "Thông minh, dũng cảm",
+    "base": "chibi",
+    "outfit": "jacket",
+    "parts": { "ears": "fox", "eyes": { "id": "big", "offset": [0, 2, 0] }, "muzzle": "fox", "mouth": "snout-smile", "tail": "brush" },
+    "palette": { "fur": "#f28a3c", "fur-shade": "#d9722a", "chest": "#fff1de", "paw": "#5b3a2a", "foot": "#5b3a2a", "muzzle": "#fff1de", "ear-inner": "#fff1de", "ear-tip": "#5b3a2a", "eye": "#2f2130", "shine": "#ffffff", "nose": "#2f2130", "mouth": "#7a3b2e", "tongue": "#f47a98", "tooth": "#ffffff", "cheek": "#ffb09a", "whisker": "#5b3a2a" }
+  },
+  "bear": {
+    "name": "Gấu",
+    "trait": "Hiền lành, mạnh mẽ",
+    "base": "chibi",
+    "outfit": "vest-shorts",
+    "parts": { "ears": "bear", "eyes": { "id": "big", "offset": [0, 2, 0] }, "muzzle": "round", "mouth": "big-nose", "cheeks": { "id": "blush", "offset": [-1, 0, 0] }, "tail": "stub" },
+    "palette": { "fur": "#a8693a", "fur-shade": "#8c552c", "chest": "#ecc79c", "paw": "#a8693a", "foot": "#a8693a", "muzzle": "#ecc79c", "ear-inner": "#e3b686", "ear-tip": "#a8693a", "eye": "#2f2130", "shine": "#ffffff", "nose": "#3b2432", "mouth": "#6b3a2a", "tongue": "#f47a98", "tooth": "#ffffff", "cheek": "#f3a0a0", "whisker": "#6b3a2a" }
+  }
+}

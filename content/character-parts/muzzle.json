@@ -1,0 +1,9 @@
+{
+  "fox": { "joint": "head", "boxes": [
+    { "x": -6, "y": 1, "z": 10, "w": 12, "h": 7, "d": 1, "color": "muzzle" },
+    { "x": 8, "y": 1, "z": 10, "w": 4, "h": 5, "d": 1, "color": "muzzle", "sym": true }
+  ] },
+  "round": { "joint": "head", "boxes": [
+    { "x": -5, "y": 1, "z": 10, "w": 10, "h": 7, "d": 1, "color": "muzzle" }
+  ] }
+}

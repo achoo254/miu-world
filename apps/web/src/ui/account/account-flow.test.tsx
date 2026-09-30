@@ -213,7 +213,7 @@ describe('account flow', () => {
     let active: string | null = null;
     const calls = stubApi({
       'GET /api/auth/me': () => ({ status: 200, body: me({ activeChildId: active }) }),
-      'GET /api/children': () => ({ status: 200, body: [{ id: CHILD, displayName: 'Mèo Mây' }] }),
+      'GET /api/children': () => ({ status: 200, body: [{ id: CHILD, displayName: 'Mèo Mây', species: 'cat' }] }),
       [`POST /api/children/${CHILD}/select`]: () => {
         active = CHILD;
         return { status: 200, body: { activeChildId: CHILD } };

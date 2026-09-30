@@ -1,0 +1,25 @@
+{
+  "open-smile": { "joint": "head", "boxes": [
+    { "x": -1, "y": 7, "z": 10, "w": 2, "h": 1, "d": 1, "color": "nose" },
+    { "x": -3, "y": 5, "z": 10, "w": 6, "h": 1, "d": 1, "color": "mouth" },
+    { "x": -3, "y": 4, "z": 10, "w": 2, "h": 1, "d": 1, "color": "mouth", "sym": true },
+    { "x": -1, "y": 3, "z": 10, "w": 2, "h": 2, "d": 1, "color": "tongue" },
+    { "x": -2, "y": 3, "z": 10, "w": 1, "h": 1, "d": 1, "color": "mouth", "sym": true },
+    { "x": -1, "y": 2, "z": 10, "w": 2, "h": 1, "d": 1, "color": "mouth" }
+  ] },
+  "buck-teeth": { "joint": "head", "boxes": [
+    { "x": -1, "y": 7, "z": 10, "w": 2, "h": 1, "d": 1, "color": "nose" },
+    { "x": -2, "y": 5, "z": 10, "w": 4, "h": 1, "d": 1, "color": "mouth" },
+    { "x": -1, "y": 3, "z": 10, "w": 2, "h": 2, "d": 1, "color": "tooth" }
+  ] },
+  "snout-smile": { "joint": "head", "boxes": [
+    { "x": -1, "y": 6, "z": 11, "w": 2, "h": 2, "d": 1, "color": "nose" },
+    { "x": -2, "y": 3, "z": 11, "w": 4, "h": 1, "d": 1, "color": "mouth" },
+    { "x": -1, "y": 4, "z": 11, "w": 2, "h": 1, "d": 1, "color": "mouth" }
+  ] },
+  "big-nose": { "joint": "head", "boxes": [
+    { "x": -2, "y": 6, "z": 11, "w": 4, "h": 2, "d": 1, "color": "nose" },
+    { "x": -2, "y": 3, "z": 11, "w": 4, "h": 1, "d": 1, "color": "mouth" },
+    { "x": -1, "y": 4, "z": 11, "w": 2, "h": 1, "d": 1, "color": "mouth" }
+  ] }
+}

@@ -83,7 +83,7 @@ export function ProfilePickerScreen() {
             <li key={p.id}>
               <button type="button" className="profile-card" data-id={`profiles-pick-${p.id}`} onClick={() => void choose(p.id)}>
                 <span className={tileClass(i)}>
-                  <MiuArt pose="idle" />
+                  <MiuArt pose="idle" species={p.species} />
                 </span>
                 {p.displayName}
               </button>
@@ -139,7 +139,7 @@ function ProfileRow({ profile, index, onChanged }: { profile: ChildProfileDto; i
   return (
     <li className="profile-row" data-id={`parent-profile-${profile.id}`}>
       <span className={tileClass(index)}>
-        <MiuArt pose="idle" />
+        <MiuArt pose="idle" species={profile.species} />
       </span>
       <div className="profile-row-body">
         <NamePicker id={`parent-profile-name-${profile.id}`} value={name} onChange={setName} />

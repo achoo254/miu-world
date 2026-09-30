@@ -23,6 +23,7 @@ import { createReviewShot } from './debug/review-shots';
 import { StatsOverlay } from './debug/stats-overlay';
 import { loadInteractables, pickNearest, type InteractableObject } from './entities/interactables';
 import { createTargetArrow } from './entities/target-arrow';
+import { DEFAULT_SPECIES } from './content/characters';
 import { loadPlayerCharacter } from './entities/player-character';
 import { loadProps } from './entities/props';
 import { Autopilot } from './player/autopilot';
@@ -48,6 +49,8 @@ export interface GameOptions {
   search: string;
   /** Equipped accessory ids (`id` or `id:variant`), normally from `GET /api/character`. */
   outfit: string[];
+  /** Species of the child's character (`content/species.json`); the default cat when absent. */
+  species?: string;
   /** Chapter of the quest being played: the map's entities tagged with another chapter are left out. */
   chapter?: number;
   /** Region of the quest being played, which picks the map. */
@@ -242,7 +245,7 @@ export class Game {
     const outfitParam = params.get('outfit');
     const outfit = outfitParam === 'none' ? [] : outfitParam ? outfitParam.split(',') : this.options.outfit;
     const [character, targets, props] = await Promise.all([
-      loadPlayerCharacter(loader, outfit),
+      loadPlayerCharacter(loader, this.options.species ?? DEFAULT_SPECIES, outfit),
       loadInteractables(loader, entities, quality.shadows),
       loadProps(loader, entities, quality.shadows),
     ]);
