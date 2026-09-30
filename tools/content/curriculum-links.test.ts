@@ -182,10 +182,19 @@ describe('curriculum links', () => {
 });
 
 describe('printedPhrases', () => {
-  it('splits only the layout readers flattened, never the printed phrases', () => {
+  it('cuts only at sentence ends and the layout readers flattened, never inside a phrase', () => {
     expect(printedPhrases('Từ nào nói về các em lớp 1? a. ngạc nhiên; b. háo hức; c. rụt rè')).toEqual(['Từ nào nói về các em lớp 1?', 'a. ngạc nhiên', 'b. háo hức', 'c. rụt rè']);
     expect(printedPhrases('Thực hiện các yêu cầu sau: a. Nói lời chào mẹ.')).toEqual(['Thực hiện các yêu cầu sau:', 'a. Nói lời chào mẹ.']);
     expect(printedPhrases('Kể về kì nghỉ hè. G: – Em đi đâu? – Em nhớ gì?')).toEqual(['Kể về kì nghỉ hè.', 'Em đi đâu?', 'Em nhớ gì?']);
+    expect(printedPhrases('Ghép từ ngữ ở cột A với cột B. A: Gương mặt các bạn; Lời cô B: nhộn nhịp.; ngọt ngào. Lời cô')).toEqual([
+      'Ghép từ ngữ ở cột A với cột B.',
+      'Gương mặt các bạn',
+      'Lời cô',
+      'nhộn nhịp.',
+      'ngọt ngào.',
+      'Lời cô',
+    ]);
+    expect(printedPhrases('1. TÔI LÀ HỌC SINH LỚP 2 a. Kể về niềm vui của bạn nhỏ.')).toEqual(['1. TÔI LÀ HỌC SINH LỚP 2', 'a. Kể về niềm vui của bạn nhỏ.']);
   });
 
   it('matches choices shown as buttons and hints shown under a speaking step', () => {

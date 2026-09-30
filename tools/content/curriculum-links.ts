@@ -109,14 +109,16 @@ function visibleWording(step: QuestStep): string[] {
 
 /**
  * The printed phrases of an inventory prompt. Readers flatten a page's layout into one line (choices
- * printed in columns joined by "; ", a/b/c requirements, table cells split by " | ", "G:" hint lines),
- * and a quest shows those parts as separate buttons, labels and hints, so each phrase is matched on its
- * own. The phrases themselves are never loosened.
+ * printed in columns joined by "; ", a/b/c requirements, table cells split by " | ", A/B columns, "G:"
+ * hint lines, the asked row after a list), and a quest shows those parts as separate buttons, labels,
+ * cards and hints. So the prompt is cut at sentence ends and layout marks, and each sentence or list
+ * entry must still appear exactly; nothing inside a phrase is ever loosened.
  */
 export function printedPhrases(prompt: string): string[] {
   return normaliseWording(prompt)
-    .split(/\s*;\s+(?=[a-zđ]\.\s)|(?<=[:?.!])\s+(?=[a-zđ]\.\s)|\s+\|\s+|\s+(?=G:)|\s+–\s+/)
-    .map((p) => p.replace(/^(?:G|M):\s*/, '').trim())
+    // A sentence ends at . ? ! or :, but not at a choice or row label such as "a." or "2.".
+    .split(/;\s+|(?<=[.?!:])(?<!(?:^|\s)[a-zđ0-9]\.)\s+|\s+\|\s+|\s+(?=(?:G|M|A|B):\s)|\s+–\s+|\s+(?=[a-zđ]\.\s)/)
+    .map((p) => p.replace(/^(?:(?:G|M|A|B):\s*)?(?:–\s*)?/, '').trim())
     .filter((p) => p.length > 0);
 }
 
