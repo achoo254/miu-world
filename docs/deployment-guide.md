@@ -112,7 +112,7 @@ tools/deploy/staging/deploy.sh release   # mỗi lần deploy
 
 - `curl -s https://miu-staging.hoandat.com/api/health` trả `{"status":"ok"}`.
 - Revision đang chạy nằm ở `/opt/miu/current/apps/server/dist/server/REVISION` trên 176.
-- File dưới `/game-assets/` không có hash trong tên, và Cloudflare giữ chúng tới 4 giờ (`cache-control: max-age=14400`). Release có đổi asset ở đường dẫn cũ (nhân vật, ảnh review) thì xoá cache đúng các URL đó theo §3 (tối đa 30 URL một lần gọi), rồi so sha256 của bản trên staging với file local. Danh sách file đổi: `git show --name-only --format= <commit> | grep '^assets/'`.
+- File dưới `/game-assets/` không có hash trong tên, và Cloudflare giữ chúng tới 4 giờ (`cache-control: max-age=14400`). Release có đổi asset ở đường dẫn cũ (nhân vật, ảnh review) thì xoá cache đúng các URL đó theo §4 (tối đa 30 URL một lần gọi), rồi so sha256 của bản trên staging với file local. Danh sách file đổi: `git show --name-only --format= <commit> | grep '^assets/'`.
 
 **Log:**
 
