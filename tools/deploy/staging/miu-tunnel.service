@@ -1,0 +1,22 @@
+[Unit]
+Description=Miu World staging tunnel (lab nginx :8090 -> tunelo edge on .65)
+After=network-online.target nginx.service
+Wants=network-online.target
+
+[Service]
+User=miu
+Group=miu
+# TUNELO_KEY only (written by deploy.sh setup). The key must come from the environment: tunelo
+# under a service manager does not read ~/.tunelo/config.json and would report "online" with no tunnel.
+EnvironmentFile=/etc/miu/tunnel.env
+Environment=TUNELO_SERVER=wss://tunnel.inetdev.io.vn
+# tunelo writes run records under $HOME/.tunelo; the miu home (/opt/miu) is root-owned.
+StateDirectory=miu-tunnel
+Environment=HOME=/var/lib/miu-tunnel
+ExecStart=/usr/bin/tunelo http 8090:miu-staging --no-inspect --no-portal --quiet
+Restart=always
+RestartSec=5
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target
