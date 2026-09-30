@@ -14,6 +14,8 @@
     "content:gaps": "tsx tools/content/content-gaps.ts",
     "sgk:review": "tsx tools/sgk/review-quests.ts",
     "sgk:acceptance": "tsx tools/sgk/acceptance-page.ts",
+    "private:sync": "tsx tools/private/sync-private.ts",
+    "private:check": "tsx tools/private/sync-private.ts --check",
     "test": "vitest run",
     "typecheck": "tsc --noEmit -p tsconfig.json && pnpm -r --if-present typecheck",
     "lint": "eslint . --max-warnings=0",

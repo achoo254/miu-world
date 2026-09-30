@@ -7,6 +7,7 @@ Giai đoạn hiện tại: Vertical slice MVP đã xong 10 phase, chờ người
 ## Lệnh
 
 - Chỉ dùng `pnpm` (workspace, `packageManager` khóa trong `package.json`), Node ≥ 22. Không dùng `npm`/`yarn`.
+- Dữ liệu ngoài git (font HP001 của phiếu viết, PDF SGK gốc) nằm trong iCloud Drive của người phụ trách, danh sách kèm sha256 ở `tools/private/private-files.json`. Máy mới hoặc khi hook đầu phiên báo thiếu: chạy `pnpm private:sync` (macOS và Windows; iCloud ở chỗ khác thì đặt `MIU_ICLOUD_DIR`). Không commit các file đó.
 - Gate trước khi báo xong — chạy đủ 5 lệnh, đúng thứ tự CI (`.github/workflows/ci.yml`):
   `pnpm assets:check` → `pnpm content:check` → `pnpm test` → `pnpm typecheck` → `pnpm lint`
   (CI còn chạy `pnpm audit --prod --audit-level=high` và Semgrep CE; máy dev không có Docker nên Semgrep kiểm trên CI.)

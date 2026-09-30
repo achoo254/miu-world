@@ -1,63 +1,33 @@
-"""Copy the two scanned textbooks out of iCloud and split them into one-page PDFs for reading.
+"""Split the two scanned textbooks into one-page PDFs for reading.
 
 Run with the skills venv (it has pypdf): ~/.claude/skills/.venv/bin/python3 tools/sgk/split-pages.py
 
-Output lives in .data/sgk/ (gitignored): src/<book>.pdf + SHA256SUMS, pages/<prefix>-NNN.pdf where NNN is the
-PDF page number (printed page number + 1). A later run checks the recorded hash before reusing a copy.
+The books come from the owner's iCloud Drive through `pnpm private:sync`, which puts them in .data/sgk/src/<book>.pdf
+(gitignored) after checking their hash (tools/private/private-files.json). Output: pages/<prefix>-NNN.pdf where NNN is the
+PDF page number (printed page number + 1).
 """
 
-import hashlib
-import shutil
 import sys
 from pathlib import Path
 
 from pypdf import PdfReader, PdfWriter
 
-ICLOUD = Path.home() / "Library/Mobile Documents/com~apple~CloudDocs"
 BOOKS = {
-    "toan2-t1": ("toan", "Sách giáo khoa Toán lớp 2 (tập 1) - bộ sách Kết nối tri thức với cuộc sống.pdf", 141),
-    "tv2-t1": ("tv", "Sách giáo khoa Tiếng Việt lớp 2 (tập 1) - bộ sách Kết nối tri thức với cuộc sống.pdf", 145),
+    "toan2-t1": ("toan", 141),
+    "tv2-t1": ("tv", 145),
 }
 ROOT = Path(__file__).resolve().parents[2] / ".data" / "sgk"
 SRC = ROOT / "src"
 PAGES = ROOT / "pages"
-SUMS = SRC / "SHA256SUMS"
 # The file reader refuses files over 2 MB; heavier pages get their scans re-encoded as JPEG.
 MAX_PAGE_BYTES = 1_900_000
 
 
-def sha256(path: Path) -> str:
-    digest = hashlib.sha256()
-    with path.open("rb") as f:
-        for chunk in iter(lambda: f.read(1 << 20), b""):
-            digest.update(chunk)
-    return digest.hexdigest()
-
-
-def recorded_sums() -> dict[str, str]:
-    if not SUMS.exists():
-        return {}
-    sums = {}
-    for line in SUMS.read_text().splitlines():
-        digest, name = line.split(maxsplit=1)
-        sums[name] = digest
-    return sums
-
-
-def copy_book(book_id: str, filename: str, sums: dict[str, str]) -> Path:
-    target = SRC / f"{book_id}.pdf"
-    name = target.name
-    if target.exists() and sums.get(name) == sha256(target):
-        return target
-    source = ICLOUD / filename
-    if not source.exists() or source.stat().st_size == 0:
-        sys.exit(
-            f"{source} is missing or not downloaded from iCloud yet.\n"
-            "Open it once in Finder (or choose 'Download Now') and run this script again."
-        )
-    shutil.copyfile(source, target)
-    sums[name] = sha256(target)
-    return target
+def book_file(book_id: str) -> Path:
+    book = SRC / f"{book_id}.pdf"
+    if not book.exists():
+        sys.exit(f"{book} is missing. Run `pnpm private:sync` to copy the textbooks from iCloud Drive.")
+    return book
 
 
 def split(book: Path, prefix: str, expected_pages: int) -> int:
@@ -92,14 +62,10 @@ def write_page(page, out: Path) -> None:
 
 
 def main() -> None:
-    SRC.mkdir(parents=True, exist_ok=True)
     PAGES.mkdir(parents=True, exist_ok=True)
-    sums = recorded_sums()
-    for book_id, (prefix, filename, expected) in BOOKS.items():
-        book = copy_book(book_id, filename, sums)
-        SUMS.write_text("".join(f"{digest}  {name}\n" for name, digest in sorted(sums.items())))
-        count = split(book, prefix, expected)
-        print(f"{book_id}: {count} pages -> {PAGES}/{prefix}-NNN.pdf (sha256 {sums[book.name][:12]}…)")
+    for book_id, (prefix, expected) in BOOKS.items():
+        count = split(book_file(book_id), prefix, expected)
+        print(f"{book_id}: {count} pages -> {PAGES}/{prefix}-NNN.pdf")
 
 
 if __name__ == "__main__":

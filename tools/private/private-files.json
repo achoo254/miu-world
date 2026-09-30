@@ -1,0 +1,34 @@
+{
+  "$comment": "Files the project needs but keeps out of git (no open license, or too large). They live in the owner's iCloud Drive under `folder`; `pnpm private:sync` copies them to `to` and checks the hash. Names and hashes only: nothing here is secret.",
+  "folder": "cong-viec/Cong viec/ENV production/miu-world",
+  "files": [
+    {
+      "from": "fonts/chu-mau-tieu-hoc.woff2",
+      "to": ".data/fonts/chu-mau-tieu-hoc.woff2",
+      "bytes": 44452,
+      "sha256": "64973bccd33e74be3bb49fdfd08cf93d72b574de123568860b6a8bf5ab0f599b",
+      "why": "Primary-school model hand (HP001, regular) for the printed writing sheets; no open license."
+    },
+    {
+      "from": "fonts/chu-mau-tieu-hoc-dam.woff2",
+      "to": ".data/fonts/chu-mau-tieu-hoc-dam.woff2",
+      "bytes": 45508,
+      "sha256": "0fb26db35f7fdefc6141643598a77ea2431eb36924dadc93f1ad9f6a9427999c",
+      "why": "Primary-school model hand (HP001, bold) for the printed writing sheets; no open license."
+    },
+    {
+      "from": "sgk/toan2-t1.pdf",
+      "to": ".data/sgk/src/toan2-t1.pdf",
+      "bytes": 131244677,
+      "sha256": "f32e83068c223596a09d5b22ea7560d46b1c76d84968855f171b8a0c3633ff0d",
+      "why": "Scanned Toán 2 tập 1 textbook; tools/sgk/split-pages.py splits it into pages for reading."
+    },
+    {
+      "from": "sgk/tv2-t1.pdf",
+      "to": ".data/sgk/src/tv2-t1.pdf",
+      "bytes": 156422865,
+      "sha256": "5359f4b0bb03aa2d7f3b4a81ab37bbf6b631f524ae93174ab1de7b911d94f772",
+      "why": "Scanned Tiếng Việt 2 tập 1 textbook; tools/sgk/split-pages.py splits it into pages for reading."
+    }
+  ]
+}
