@@ -252,6 +252,16 @@ export function ParentAreaScreen() {
               <p className="hint">Đã đủ {MAX_PROFILES} hồ sơ.</p>
             </section>
           )}
+          <section className="panel" aria-labelledby="parent-worksheets-title">
+            <div className="panel-title">
+              <Icon name="scroll" size={40} />
+              <h2 id="parent-worksheets-title">Phiếu viết theo SGK</h2>
+            </div>
+            <p className="hint">Phiếu in cho phần viết tay và việc làm cùng bố mẹ ở nhà của từng bài Tiếng Việt 2 và Toán 2.</p>
+            <Link to="/parent/worksheets" className={buttonClass('secondary', { block: true })} data-id="parent-worksheets">
+              Xem phiếu viết
+            </Link>
+          </section>
         </div>
         <AccountDataPanel />
       </main>

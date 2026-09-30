@@ -15,6 +15,8 @@ const RegionMapScreen = lazy(() => import('./region/region-screens').then((m) =>
 const RegionScreen = lazy(() => import('./region/region-screens').then((m) => ({ default: m.RegionScreen })));
 const BackpackScreen = lazy(() => import('./profile/profile-screens').then((m) => ({ default: m.BackpackScreen })));
 const ProfileScreen = lazy(() => import('./profile/profile-screens').then((m) => ({ default: m.ProfileScreen })));
+const WorksheetListScreen = lazy(() => import('./parent/worksheets/worksheets-screen').then((m) => ({ default: m.WorksheetListScreen })));
+const WorksheetSheetScreen = lazy(() => import('./parent/worksheets/worksheets-screen').then((m) => ({ default: m.WorksheetSheetScreen })));
 
 /** A child's screen: needs the parent session and a selected profile; loaded on demand. */
 function ChildScreen({ children }: { children: ReactNode }) {
@@ -94,6 +96,8 @@ export function AppRoutes() {
       <Route path="/consent" element={<RequireParent needsConsent={false}><ConsentScreen /></RequireParent>} />
       <Route path="/profiles" element={<RequireParent><ProfilePickerScreen /></RequireParent>} />
       <Route path="/parent" element={<RequireParent><ParentAreaScreen /></RequireParent>} />
+      <Route path="/parent/worksheets" element={<RequireParent><Suspense fallback={<Loading />}><WorksheetListScreen /></Suspense></RequireParent>} />
+      <Route path="/parent/worksheets/:lessonId" element={<RequireParent><Suspense fallback={<Loading />}><WorksheetSheetScreen /></Suspense></RequireParent>} />
       <Route path="/create" element={<ChildScreen><CreatorScreen /></ChildScreen>} />
       <Route path="/home" element={<ChildScreen><HomeScreen /></ChildScreen>} />
       <Route path="/map" element={<ChildScreen><RegionMapScreen /></ChildScreen>} />

@@ -55,6 +55,11 @@ export default defineConfig({
         preview: path.join(APP_DIR, 'preview.html'),
         review: path.join(APP_DIR, 'review.html'),
       },
+      output: {
+        // Zod and its jitless setting share one chunk, so the setting is applied before any other chunk
+        // runs a schema; otherwise Zod probes for eval and the CSP reports it.
+        manualChunks: (id) => (id.includes('/node_modules/zod/') || id.endsWith('/src/zod-config.ts') ? 'zod' : undefined),
+      },
     },
   },
 });
