@@ -9,7 +9,7 @@ Chỉ để định hướng: bắt đầu đọc từ đâu, ai làm chủ vi�
 | Manifest | `tools/assets/build-manifest.ts`, `tools/assets/generated.json` | Sinh `assets/manifest.json` và `assets/LICENSES.md`; khai báo asset sinh bằng code |
 | Nhân vật Miu | `tools/assets/kitbash-character.ts`, `tools/assets/validate-character.ts`, `content/bodies/` | Rig Blocky + thân khối từ JSON (hoặc đầu Cube Pets ở bản POC), thêm clip keyframe; kiểm node/anim/tam giác |
 | Atlas block | `tools/assets/build-atlas.ts`, `content/blocks.json` | Chọn tile, tint theo palette, padding chống lem |
-| Bản đồ | `tools/world/generate-forest-map.ts`, `tools/world/structures/` | Sinh Khu rừng chương 1 theo seed |
+| Bản đồ | `tools/world/generate-forest-map.ts`, `tools/world/generate-school-map.ts`, `tools/world/structures/` | Sinh Khu rừng (`pnpm world:forest`) và Trường học với 7 khu theo chủ đề Toán (`pnpm world:school`) theo seed; game chọn map theo region (`mapForRegion` trong `packages/voxel/src/world-entities.ts`) |
 | Ảnh duyệt | `tools/assets/render-preview.ts` | Ảnh nhân vật, phụ kiện, bản đồ cho trang review |
 | Dữ liệu nội dung | `content/` | Palette, block, nhân vật, phụ kiện, anim keyframe |
 | Thư viện voxel | `packages/voxel/src/` | Định dạng chunk RLE, greedy mesher, va chạm lưới, phụ kiện voxel, entity bản đồ |

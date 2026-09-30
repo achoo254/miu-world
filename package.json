@@ -24,7 +24,8 @@
     "assets:home": "tsx tools/assets/render-home-island.ts",
     "security:dist": "tsx tools/security/scan-dist.ts",
     "assets:atlas": "tsx tools/assets/build-atlas.ts",
-    "world:forest": "tsx tools/world/generate-forest-map.ts"
+    "world:forest": "tsx tools/world/generate-forest-map.ts",
+    "world:school": "tsx tools/world/generate-school-map.ts"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

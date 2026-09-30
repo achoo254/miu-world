@@ -1,0 +1,32 @@
+{
+  "id": "e2e-school-walk",
+  "region": "truong-hoc",
+  "chapter": 1,
+  "title": "Thử bản đồ trường",
+  "status": "active",
+  "summary": "Quest chỉ dùng trong E2E: đi từ cổng trường tới cột cờ gặp Sư Tử Vàng.",
+  "review": "teacher-pending",
+  "sevenQuestions": { "who": "Sư Tử Vàng", "where": "Cột cờ, sân bóng", "goal": "Tới đúng nơi", "play": "Đi, nói chuyện, phân loại", "learn": "Toán", "reward": "XP", "unlock": "Không" },
+  "phases": { "hook": "meet", "explore": "coach", "learn": "sort", "challenge": "sort", "decision": "sort", "finale": "find", "reward": "find", "unlock": "find" },
+  "places": { "su-tu-vang": "cột cờ", "khi-lanh": "sân bóng", "find": "cột cờ" },
+  "steps": [
+    { "id": "meet", "title": "Gặp Sư Tử Vàng", "goTo": "Đến cột cờ gặp Sư Tử Vàng", "kind": "dialogue", "target": "su-tu-vang", "lines": [{ "speaker": "Sư Tử Vàng", "text": "Chào mừng tới trường!" }] },
+    { "id": "coach", "title": "Gặp Khỉ Lanh", "goTo": "Ra sân bóng gặp Khỉ Lanh", "kind": "dialogue", "target": "khi-lanh", "lines": [{ "speaker": "Khỉ Lanh", "text": "Xếp hàng nào!" }] },
+    {
+      "id": "sort",
+      "title": "Phân loại số",
+      "kind": "challenge",
+      "skill": "phep-cong",
+      "mechanic": "classify",
+      "prompt": "Xếp số vào nhóm",
+      "groups": [{ "id": "chan", "label": "Số chẵn" }, { "id": "le", "label": "Số lẻ" }],
+      "items": [{ "id": "hai", "label": "2" }, { "id": "ba", "label": "3" }],
+      "answer": { "assignment": { "hai": "chan", "ba": "le" } },
+      "support": { "guide": ["Đọc kĩ yêu cầu."], "hint": "Số chẵn chia hết cho 2.", "answer": { "text": "2: chẵn; 3: lẻ", "explanation": "Đáp án thử." } },
+      "trigger": "auto"
+    },
+    { "id": "find", "title": "Tìm Sư Tử Vàng", "goTo": "Quay về cột cờ", "kind": "search", "targets": ["su-tu-vang"] }
+  ],
+  "reward": { "xp": 10 },
+  "unlock": []
+}

@@ -1,0 +1,370 @@
+{
+  "version": 2,
+  "id": "truong-hoc",
+  "seed": 3471503019,
+  "size": [
+    96,
+    32,
+    96
+  ],
+  "waterLevel": 0,
+  "spawn": {
+    "position": [
+      48.5,
+      13,
+      14.5
+    ],
+    "yaw": 0
+  },
+  "interactables": [
+    {
+      "id": "su-tu-vang",
+      "kind": "npc",
+      "name": "Sư Tử Vàng",
+      "label": "Nói chuyện",
+      "position": [
+        50.5,
+        13,
+        44.5
+      ],
+      "yaw": 200,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-lion.glb",
+      "scale": 0.7446,
+      "animation": "idle",
+      "chapter": 1
+    },
+    {
+      "id": "khi-lanh",
+      "kind": "npc",
+      "name": "Khỉ Lanh",
+      "label": "Nói chuyện",
+      "position": [
+        40.5,
+        13,
+        43.5
+      ],
+      "yaw": 90,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-monkey.glb",
+      "scale": 0.6832,
+      "animation": "idle",
+      "chapter": 1
+    }
+  ],
+  "props": [
+    {
+      "model": "packs/kenney-survival-kit/2.0/signpost.glb",
+      "position": [
+        36.5,
+        13,
+        34.5
+      ],
+      "yaw": 45,
+      "scale": 3.4777
+    },
+    {
+      "model": "packs/kenney-survival-kit/2.0/signpost.glb",
+      "position": [
+        13.5,
+        13,
+        17.5
+      ],
+      "yaw": 45,
+      "scale": 3.4777
+    },
+    {
+      "model": "packs/kenney-survival-kit/2.0/signpost.glb",
+      "position": [
+        70.5,
+        13,
+        18.5
+      ],
+      "yaw": 45,
+      "scale": 3.4777
+    },
+    {
+      "model": "packs/kenney-survival-kit/2.0/signpost.glb",
+      "position": [
+        74.5,
+        13,
+        46.5
+      ],
+      "yaw": 45,
+      "scale": 3.4777
+    },
+    {
+      "model": "packs/kenney-survival-kit/2.0/signpost.glb",
+      "position": [
+        68.5,
+        13,
+        72.5
+      ],
+      "yaw": 45,
+      "scale": 3.4777
+    },
+    {
+      "model": "packs/kenney-survival-kit/2.0/signpost.glb",
+      "position": [
+        14.5,
+        13,
+        66.5
+      ],
+      "yaw": 45,
+      "scale": 3.4777
+    },
+    {
+      "model": "packs/kenney-survival-kit/2.0/signpost.glb",
+      "position": [
+        39.5,
+        13,
+        75.5
+      ],
+      "yaw": 45,
+      "scale": 3.4777
+    },
+    {
+      "model": "packs/kenney-survival-kit/2.0/workbench.glb",
+      "position": [
+        73.5,
+        13,
+        26.5
+      ],
+      "yaw": 0,
+      "scale": 3.1404
+    },
+    {
+      "model": "packs/kenney-survival-kit/2.0/workbench.glb",
+      "position": [
+        76.5,
+        13,
+        26.5
+      ],
+      "yaw": 0,
+      "scale": 3.1404
+    },
+    {
+      "model": "packs/kenney-survival-kit/2.0/workbench.glb",
+      "position": [
+        79.5,
+        13,
+        26.5
+      ],
+      "yaw": 0,
+      "scale": 3.1404
+    },
+    {
+      "model": "packs/kenney-survival-kit/2.0/box-large.glb",
+      "position": [
+        78.5,
+        13,
+        54.5
+      ],
+      "yaw": 20,
+      "scale": 3.6
+    },
+    {
+      "model": "packs/kenney-survival-kit/2.0/box.glb",
+      "position": [
+        82.5,
+        13,
+        55.5
+      ],
+      "yaw": 40,
+      "scale": 2.4
+    },
+    {
+      "model": "packs/kenney-survival-kit/2.0/barrel.glb",
+      "position": [
+        83.5,
+        13,
+        50.5
+      ],
+      "yaw": 0,
+      "scale": 2.907
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
+      "position": [
+        17.5,
+        13,
+        21.5
+      ],
+      "yaw": 0,
+      "scale": 1.7094
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_yellowB.glb",
+      "position": [
+        20.5,
+        13,
+        21.5
+      ],
+      "yaw": 40,
+      "scale": 3.1546
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_purpleA.glb",
+      "position": [
+        23.5,
+        13,
+        21.5
+      ],
+      "yaw": 80,
+      "scale": 2.0619
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
+      "position": [
+        17.5,
+        13,
+        24.5
+      ],
+      "yaw": 120,
+      "scale": 1.7094
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_yellowB.glb",
+      "position": [
+        20.5,
+        13,
+        24.5
+      ],
+      "yaw": 160,
+      "scale": 3.1546
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_purpleA.glb",
+      "position": [
+        23.5,
+        13,
+        24.5
+      ],
+      "yaw": 200,
+      "scale": 2.0619
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
+      "position": [
+        17.5,
+        13,
+        27.5
+      ],
+      "yaw": 240,
+      "scale": 1.7094
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_yellowB.glb",
+      "position": [
+        20.5,
+        13,
+        27.5
+      ],
+      "yaw": 280,
+      "scale": 3.1546
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_purpleA.glb",
+      "position": [
+        23.5,
+        13,
+        27.5
+      ],
+      "yaw": 320,
+      "scale": 2.0619
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/plant_bush.glb",
+      "position": [
+        24.5,
+        13,
+        24.5
+      ],
+      "yaw": 0,
+      "scale": 4.0909
+    }
+  ],
+  "landmarks": [
+    {
+      "id": "san-truong",
+      "name": "Sân trường",
+      "position": [
+        48.5,
+        13,
+        46.5
+      ]
+    },
+    {
+      "id": "vuon-truong",
+      "name": "Vườn trường",
+      "position": [
+        20.5,
+        13,
+        24.5
+      ]
+    },
+    {
+      "id": "cang-tin",
+      "name": "Căng tin",
+      "position": [
+        76.5,
+        13,
+        24.5
+      ]
+    },
+    {
+      "id": "xuong-do-choi",
+      "name": "Xưởng đồ chơi",
+      "position": [
+        80.5,
+        13,
+        52.5
+      ]
+    },
+    {
+      "id": "phong-mi-thuat",
+      "name": "Phòng mĩ thuật",
+      "position": [
+        74.5,
+        13,
+        78.5
+      ]
+    },
+    {
+      "id": "thap-dong-ho",
+      "name": "Tháp đồng hồ",
+      "position": [
+        20.5,
+        13,
+        72.5
+      ]
+    },
+    {
+      "id": "hoi-truong",
+      "name": "Hội trường",
+      "position": [
+        46.5,
+        13,
+        82.5
+      ]
+    },
+    {
+      "id": "cot-co",
+      "name": "Cột cờ",
+      "position": [
+        48.5,
+        13,
+        46.5
+      ]
+    },
+    {
+      "id": "san-bong",
+      "name": "Sân bóng",
+      "position": [
+        40.5,
+        13,
+        46.5
+      ]
+    }
+  ]
+}

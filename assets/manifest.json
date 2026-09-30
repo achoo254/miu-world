@@ -9670,6 +9670,22 @@
       "derivedFrom": [],
       "sha256": "d3229a9ab9100d5e2ecbdad5266af2018f4265a291a22c6f310b4be2eb408e65",
       "bytes": 18805
+    },
+    {
+      "path": "generated/world/truong-hoc/chunks.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-school-map.ts",
+      "derivedFrom": [],
+      "sha256": "67d3b2a5758f63161ab56398fb00c6cf9ed3395d8694f4ba73858cef9e90c12f",
+      "bytes": 21217
+    },
+    {
+      "path": "generated/world/truong-hoc/entities.json",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-school-map.ts",
+      "derivedFrom": [],
+      "sha256": "e6c34fa90199863ca4c997bdb6c40f52e3f25c408ecd39a0b8bc299d5c99da73",
+      "bytes": 6416
     }
   ]
 }

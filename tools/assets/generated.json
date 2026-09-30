@@ -16,8 +16,14 @@
     "license": "CC0-1.0"
   },
   {
-    "glob": "generated/world/**",
+    "glob": "generated/world/forest-ch1/**",
     "generator": "tools/world/generate-forest-map.ts",
+    "derivedFrom": [],
+    "license": "CC0-1.0"
+  },
+  {
+    "glob": "generated/world/truong-hoc/**",
+    "generator": "tools/world/generate-school-map.ts",
     "derivedFrom": [],
     "license": "CC0-1.0"
   },

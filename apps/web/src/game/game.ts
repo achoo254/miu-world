@@ -15,7 +15,7 @@ import {
 } from 'three';
 import { blockLookup } from '@miu/voxel/block-table';
 import type { SolidAt } from '@miu/voxel/grid-collision';
-import { entitiesForChapter } from '@miu/voxel/world-entities';
+import { entitiesForChapter, mapForRegion } from '@miu/voxel/world-entities';
 import { UI_ICONS, assetUrl } from '../ui/kit/ui-art';
 import type { GameStore } from '../game-bridge/game-store';
 import { AssetRegistry, GuardedGltfLoader } from './asset-loader';
@@ -37,7 +37,7 @@ import { loadWorldData } from './world/world-data';
 import { createWorldRenderer } from './world/world-renderer';
 import './game.css';
 
-const MAP_ID = 'forest-ch1';
+
 
 /** Boot steps reported as `loading-progress`: renderer, asset registry, map data, world mesh, models. */
 const LOADING_STEPS = 5;
@@ -50,6 +50,8 @@ export interface GameOptions {
   outfit: string[];
   /** Chapter of the quest being played: the map's entities tagged with another chapter are left out. */
   chapter?: number;
+  /** Region of the quest being played, which picks the map. */
+  region?: string;
 }
 
 /** Bytes downloaded so far (compressed transfer size, falling back to body size for cache hits). */
@@ -219,7 +221,7 @@ export class Game {
     const registry = await AssetRegistry.load();
     stepLoaded();
     const loader = new GuardedGltfLoader(registry);
-    const data = await loadWorldData(registry, MAP_ID);
+    const data = await loadWorldData(registry, mapForRegion(this.options.region ?? ''));
     if (this.disposed) return;
     stepLoaded();
     const world = await createWorldRenderer(data);

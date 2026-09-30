@@ -6,12 +6,11 @@
 import { mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
-import { NodeIO, getBounds } from '@gltf-transform/core';
-import { ALL_EXTENSIONS } from '@gltf-transform/extensions';
 import { blockTableSchema } from '../../packages/voxel/src/block-table';
 import { VoxelWorld, encodeWorld } from '../../packages/voxel/src/chunk-format';
 import type { WorldEntities } from '../../packages/voxel/src/world-entities';
-import { ASSETS_DIR, MANIFEST_NAME, REPO_ROOT, manifestSchema, readJson } from '../assets/asset-lib';
+import { ASSETS_DIR, REPO_ROOT, readJson } from '../assets/asset-lib';
+import { modelScales } from './model-scales';
 import { createRng, fbm, hashSeed } from './noise';
 import { placeBridge } from './structures/bridge';
 import { distanceToPath, pathColumns, type Point } from './structures/path';
@@ -89,23 +88,6 @@ const smoothstep = (e0: number, e1: number, v: number): number => {
   return t * t * (3 - 2 * t);
 };
 
-async function modelScales(listed: Set<string>): Promise<Map<string, number>> {
-  const io = new NodeIO().registerExtensions(ALL_EXTENSIONS);
-  const scales = new Map<string, number>();
-  for (const [model, height] of Object.entries(MODEL_HEIGHT)) {
-    if (!listed.has(model)) throw new Error(`model ${model} is not in the asset manifest`);
-    const doc = await io.read(path.join(ASSETS_DIR, model));
-    const scene = doc.getRoot().getDefaultScene() ?? doc.getRoot().listScenes()[0];
-    if (!scene) throw new Error(`${model} has no scene`);
-    const clip = MODEL_ANIMATION[model];
-    if (clip && !doc.getRoot().listAnimations().some((a) => a.getName() === clip)) throw new Error(`${model} has no ${clip} clip`);
-    const bounds = getBounds(scene);
-    const modelHeight = bounds.max[1] - bounds.min[1];
-    scales.set(model, +(height / Math.max(modelHeight, 1e-3)).toFixed(4));
-  }
-  return scales;
-}
-
 export async function generateForest(): Promise<{ world: VoxelWorld; entities: WorldEntities }> {
   const table = await readJson(path.join(REPO_ROOT, 'content/blocks.json'), blockTableSchema);
   const id = (name: string): number => {
@@ -118,8 +100,7 @@ export async function generateForest(): Promise<{ world: VoxelWorld; entities: W
     planks: id('planks'), path: id('path'), water: id('water'), rock: id('rock-moss'), birch: id('birch-log'),
     autumn: id('leaves-autumn'), bed: id('riverbed'),
   };
-  const manifest = await readJson(path.join(ASSETS_DIR, MANIFEST_NAME), manifestSchema);
-  const scales = await modelScales(new Set(manifest.files.map((f) => f.path)));
+  const scales = await modelScales(MODEL_HEIGHT, MODEL_ANIMATION);
   const scaleOf = (model: string): number => scales.get(model) ?? 1;
 
   const seed = hashSeed(SEED_TEXT);

@@ -69,3 +69,11 @@ export function entitiesForChapter(entities: WorldEntities, chapter: number): Wo
   const shown = (e: { chapter?: number }): boolean => e.chapter === undefined || e.chapter === chapter;
   return { ...entities, interactables: entities.interactables.filter(shown), props: entities.props.filter(shown) };
 }
+
+/** Generated map of each region (assets/generated/world/<map>); a region without its own map plays in the forest. */
+const MAP_BY_REGION: Readonly<Record<string, string>> = { 'khu-rung-bi-mat': 'forest-ch1', 'truong-hoc': 'truong-hoc' };
+export const DEFAULT_MAP = 'forest-ch1';
+
+export function mapForRegion(region: string): string {
+  return MAP_BY_REGION[region] ?? DEFAULT_MAP;
+}
