@@ -43,7 +43,7 @@ Không thuộc plan này: loài Thỏ/Cáo/Gấu, Kim cương, chuỗi ngày (st
 | 3 | [API gameplay: chấm thử thách, hỗ trợ học, level, mở khóa](./phase-03-gameplay-api-server.md) | SLICE-10 (server) | M | 2 | Completed |
 | 4 | [Character Creator + trang phục voxel](./phase-04-character-creator.md) | SLICE-01 | L | 1 | Pending |
 | 5 | [Home Base, chọn khu vực, danh sách quest, HUD](./phase-05-home-region-hud.md) | SLICE-02 | M | 1, 3 | Pending |
-| 6 | [Khu rừng ch1: vật thể tương tác, di chuyển, camera](./phase-06-forest-interactables.md) | SLICE-03, 04, 07 | L | 2, 5 | Pending |
+| 6 | [Khu rừng ch1: vật thể tương tác, di chuyển, camera](./phase-06-forest-interactables.md) | SLICE-03, 04, 07 | L | 2, 5 | In progress |
 | 7 | [NPC hội thoại + mở đầu quest + tracker](./phase-07-npc-dialogue-quest-flow.md) | SLICE-05 | M | 3, 5, 6 | Pending |
 | 8 | [3 thử thách Toán + hỗ trợ học + bước đọc/đố](./phase-08-math-challenges-learning-support.md) | SLICE-08, 09 | L | 1, 3, 7 | Pending |
 | 9 | [Hoàn thành, Level Up, mở khóa; Ba lô + Bộ sưu tập](./phase-09-rewards-backpack-collection.md) | SLICE-10, 11 | M | 3, 8 | Pending |

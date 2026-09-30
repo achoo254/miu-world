@@ -1,7 +1,7 @@
 ---
 phase: 6
 title: "Khu rừng ch1: vật thể tương tác, di chuyển, camera"
-status: pending
+status: in-progress
 priority: P1
 effort: "L"
 dependencies: [2, 5]
@@ -37,6 +37,12 @@ Bản đồ Khu rừng chương 1 có đủ entity mà quest ch1 tham chiếu, t
 
 ## Verification
 - `pnpm world:forest` 2 lần cùng hash; `pnpm assets:check`; E2E `play` (≥ 3 vật thể + 2 NPC có prompt)
+
+## Tiến độ (2026-09-30)
+Làm trước phase 5 (chỉ còn một phiên cook plan nên không còn đụng `game.ts`/`game-store.ts` với phiên khác; phase 5 sẽ dựa trên runtime này).
+- Xong (`3f101d0`, `chore(assets)` sau đó): `worldEntitiesSchema` version 2 (`interactables[]`, id kebab-case duy nhất, model/scale đi cùng nhau, `shape: letter`, `board`), generator đặt 9 target của quest ch1 theo đúng mạch truyện (Vẹt + 3 manh mối gần điểm xuất phát; Hải ly bên bờ suối; 4 đá kê qua suối; cây cổ thụ có bảng "8 + 5 = ?"; rương; cổng đá chương 2), sinh xác định (test so với file đã commit). Runtime `game/entities/interactables.ts` thay `npc.ts`: prompt theo target gần nhất, `set-world-state` (ẩn, rương mở bằng clip `open`, cổng hạ xuống), manh mối nhún nhẹ tới khi tìm thấy; `riddle-board.ts` một draw call. `content:check` kiểm target của quest `active` có trên map. E2E `play`: prompt + tương tác cho cả 9 target, camera sát cây cổ thụ không vào trong khối.
+- Ngân sách draw call (desktop `high`): thêm entity làm tăng lên 157 > 150; đã giảm còn 146 bằng cách manh mối nhỏ không đổ bóng và model nhiều phần chỉ phần lớn nhất đổ bóng.
+- Còn lại: nút Tương tác trên HUD (phase 5); hiệu ứng lấp lánh khi tìm thấy (hiện chỉ dừng nhún).
 
 ## Risk
 - Model vật thể thiếu trong pack đã tải: ưu tiên pack đã có (Survival/Nature/Food/Castle), sau đó ghép block; không thêm pack ngoài allowlist.
