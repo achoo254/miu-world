@@ -2,7 +2,7 @@
 
 Điểm vào duy nhất để tìm credential, chọn máy và deploy Miu World. Hướng triển khai đích (static + CDN cho client, server tự host) nằm ở [`system-architecture.md`](system-architecture.md).
 
-**Trạng thái:** staging đang chạy tại `https://miu-staging.hoandat.com` (§5). Production (`miu.hoandat.com`) mới có DNS; phần còn thiếu liệt kê ở §7.
+**Trạng thái:** staging đang chạy tại `https://miu-staging.hoandat.com` (§5). Production chạy tại `https://miu.hoandat.com` trên .65 từ 30/09/2026 (§7); đăng nhập Google ở production cần thêm redirect URI trên Google (§7, việc còn lại).
 
 | Môi trường | Chạy ở đâu | Domain |
 | --- | --- | --- |
@@ -68,8 +68,10 @@ Thêm một entry mới thì làm theo `_meta.entry_schema`. Trước khi sửa,
 | | Staging | Production |
 | --- | --- | --- |
 | Máy | Lab **176** (entry `dattqh_ubuntu_192.168.122.176_MONGO`) | **.65** (entry `SSH_SERVER_STAGING`, group `SERVER STAGING .65`) |
+| Server | systemd `miu-server`, cổng loopback 8787 | systemd `miu-server`, cổng loopback **8797** (8787 của dự án khác), Node 22 ở `/opt/node22` (tách nvm của pm2) |
+| Database | Postgres 16 trên 176 | Postgres 16 trên .65, chỉ loopback; backup hằng ngày 03:15 (`miu-backup.timer`, giữ 14 bản `daily-*.dump`) + trước mỗi release |
 | Hệ điều hành | Ubuntu 24.04 | CentOS Stream 9 |
-| Đường vào | Cloudflare → nginx trên .65 → tunelo → nginx trên 176 → server | Cloudflare → nginx trên .65 → server ở loopback của .65 |
+| Đường vào | Cloudflare → nginx trên .65 → tunelo → nginx trên 176 → server | Cloudflare → nginx trên .65 (`conf.d/miu.conf`, phục vụ web tĩnh, proxy `/api/`) → server ở loopback của .65 |
 | Dùng chung với | MongoDB và các agent của OneDash staging | Nhiều dự án khác; xem bằng `pm2 jlist` và `ls /etc/nginx/conf.d` |
 
 **Vì sao staging đặt ở 176** (đo ngày 30/09/2026):
@@ -166,10 +168,24 @@ tools/deploy/staging/deploy.sh release   # mỗi lần deploy
 - **Nginx trên .65 (CentOS) đọc cấu hình từ `/etc/nginx/conf.d/`**, không có `sites-enabled`. `setup` chỉ ghi tệp `miu-staging.conf` và gỡ nó ra nếu `nginx -t` báo lỗi.
 - **Server chỉ nghe trên `127.0.0.1`** và chỉ tin `X-Forwarded-For` từ loopback (`app.set('trust proxy', …)` trong `apps/server/src/app.ts`). Reverse proxy ngay trước server vì vậy phải chạy trên cùng máy với server.
 
-## 7. Production: việc còn thiếu
+## 7. Production
 
-1. Dựng Postgres trên .65, kèm backup.
-2. Chọn cổng loopback cho server (không dùng 8787).
-3. Thêm server block `miu.hoandat.com` trong `conf.d` của .65: phục vụ web tĩnh và proxy `/api/` thẳng tới server, không qua tunnel.
-4. Viết script deploy production theo mẫu `deploy.sh`. .65 là CentOS và các dự án khác trên đó dùng pm2.
-5. Thêm secret production vào `access-tokens.json`, và đăng ký redirect URI `https://miu.hoandat.com/api/auth/google/callback`.
+Chạy tại `https://miu.hoandat.com` trên .65 (dựng ngày 30/09/2026). Cấu hình từng phần nằm trong `tools/deploy/production/`, lý do ghi ngay trong file: `setup-prod-host.sh` (Postgres 16 từ AppStream, chỉ loopback, `pg_hba` cho role `miu` bằng scram; Node 22 ở `/opt`; user `miu`; unit và timer backup; server block nginx chỉ bật khi `nginx -t` sạch), `miu-server.service`, `miu-backup.{service,timer}`, `nginx-prod.conf`.
+
+**Mỗi lần deploy, migration hay restart ở production: hỏi người trước (§1).**
+
+```sh
+tools/deploy/production/deploy.sh setup     # máy mới, đổi unit/nginx/secret. Chạy lại được an toàn.
+tools/deploy/production/deploy.sh release   # build, security:dist, backup DB, upload, switch, health, tự rollback
+```
+
+- Secret: entry `service == "postgresql"`, `used_by` bắt đầu bằng `miu-world production` trong `access-tokens.json` (mật khẩu role `miu`); Google client dùng chung entry của staging. `setup` ghi `/etc/miu/production.env` (640 `root:miu`).
+- Working tree phải sạch; nếu chỉ còn file chưa track không thuộc bản build thì đặt `MIU_RELEASE_REV=$(git rev-parse --short HEAD)` sau khi kiểm `git diff --quiet HEAD`.
+- Nghiệm thu: `curl -s https://miu.hoandat.com/api/health` trả `{"status":"ok"}`; revision đang chạy ở `/opt/miu/current/apps/server/dist/server/REVISION` trên .65.
+- Log: `journalctl -u miu-server` (.65); request ở `/var/log/nginx/miu.hoandat.com.{access,error}.log`.
+- Rollback: như staging (§5) nhưng trên .65; backup ở `/var/backups/miu/` (`before-<id>.dump`, `daily-<ngày>.dump`).
+
+**Việc còn lại (của người):**
+
+1. Thêm redirect URI `https://miu.hoandat.com/api/auth/google/callback` vào OAuth client `miu-world` trên Google Cloud Console; consent screen đang ở chế độ Testing nên chỉ test user đăng nhập được. Chưa có URI thì trang mở được nhưng đăng nhập Google lỗi (production không có đăng nhập mật khẩu).
+2. Trước khi có trẻ thật: pháp chế duyệt văn bản đồng ý, xác minh ứng dụng với Google, quyết định giữ hay bỏ công tắc dev (`?spawnAt`, `?outfit`, `?stats`).
