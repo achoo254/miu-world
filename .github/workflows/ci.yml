@@ -66,7 +66,8 @@ jobs:
         run: pnpm vitest run --project node apps/server
 
   e2e:
-    # Parent → child → play journey and the runtime, against the production build + in-memory PGlite.
+    # Every journey except perf, against the production build + in-memory PGlite. A new spec with its
+    # own project in playwright.config.ts joins this job without a workflow change.
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -78,8 +79,15 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - name: Install Chromium
         run: pnpm --filter @miu/web exec playwright install --with-deps chromium
-      - name: E2E (setup, account, play)
-        run: pnpm --filter @miu/web e2e --project setup --project account --project play
+      - name: E2E (all projects except perf)
+        run: pnpm --filter @miu/web e2e:ci
+      - name: Keep Playwright traces of failed runs
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-traces
+          path: apps/web/test-results/
+          retention-days: 7
 
   sast:
     runs-on: ubuntu-latest

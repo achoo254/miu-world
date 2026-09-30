@@ -7,13 +7,19 @@ const BASE_URL = `http://127.0.0.1:${WEB_PORT}`;
 const FAKE_GOOGLE = 'http://127.0.0.1:8788';
 export const PARENT_STATE = 'playwright/.auth/parent.json';
 
+/** Signed-in journeys: one project per `e2e/<name>.spec.ts`, all starting from the parent session. */
+const SIGNED_IN = ['play', 'creator', 'home', 'quest-flow', 'challenges', 'mvp-loop'] as const;
+
 export default defineConfig({
   testDir: 'e2e',
   timeout: 120_000,
   workers: 1,
+  // Long journeys on software-GL CI runners: one retry, and a trace only for the runs that failed.
+  retries: process.env.CI ? 1 : 0,
   reporter: [['list']],
   use: {
     baseURL: BASE_URL,
+    trace: 'retain-on-failure',
     // New headless mode uses the machine GPU (old headless shell falls back to SwiftShader).
     channel: 'chromium',
   },
@@ -55,7 +61,7 @@ export default defineConfig({
   projects: [
     { name: 'setup', testMatch: 'parent-session.setup.ts' },
     { name: 'account', testMatch: 'account-flow.spec.ts' },
-    { name: 'play', testMatch: 'play.spec.ts', dependencies: ['setup'], use: { storageState: PARENT_STATE } },
+    ...SIGNED_IN.map((name) => ({ name, testMatch: `${name}.spec.ts`, dependencies: ['setup'], use: { storageState: PARENT_STATE } })),
     { name: 'perf', testMatch: 'perf.spec.ts', dependencies: ['setup'], use: { storageState: PARENT_STATE }, timeout: 30 * 60_000 },
   ],
 });
