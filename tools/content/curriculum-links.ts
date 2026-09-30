@@ -214,7 +214,8 @@ function textIssues(id: string, text: QuestText, sections: ReadonlyMap<string, C
   if (text.section === undefined) return [`text ${id} must name the inventory section it comes from`];
   const printed = sections.get(text.section)?.text;
   if (!printed) return [`text ${id} names ${text.section}, which has no printed text in the inventory`];
-  const diff = (['title', 'author', 'body'] as const).filter((k) => (text[k] ?? '').normalize('NFC') !== (printed[k] ?? '').normalize('NFC'));
+  const diff: string[] = (['title', 'author', 'body'] as const).filter((k) => (text[k] ?? '').normalize('NFC') !== (printed[k] ?? '').normalize('NFC'));
+  if (JSON.stringify(text.glossary ?? []).normalize('NFC') !== JSON.stringify(printed.glossary ?? []).normalize('NFC')) diff.push('glossary');
   return diff.length > 0 ? [`text ${id} differs from the book in ${diff.join(', ')} (it must be copied exactly)`] : [];
 }
 

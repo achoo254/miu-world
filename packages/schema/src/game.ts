@@ -137,7 +137,15 @@ export const QuestView = z.discriminatedUnion('status', [
     status: z.literal('active'),
     summary: z.string(),
     /** Passages the read steps point at (`textRef`). */
-    texts: z.record(ContentId, z.object({ title: z.string(), author: z.string().optional(), body: z.string() })),
+    texts: z.record(
+      ContentId,
+      z.object({
+        title: z.string(),
+        author: z.string().optional(),
+        body: z.string(),
+        glossary: z.array(z.object({ term: z.string(), meaning: z.string() })).optional(),
+      }),
+    ),
     steps: z.array(QuestStepPublic),
     reward: RewardSpec,
     unlock: z.array(ContentId),

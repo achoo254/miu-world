@@ -85,10 +85,10 @@ describe('checkAnswer', () => {
 
   it('grades calendars by day or weekday, whichever the question asks', () => {
     const base = { kind: 'challenge', mechanic: 'calendar', prompt: 'Lịch', month: 11, year: 2026, question: '?' };
-    const byDay = answerable({ ...base, answer: { day: 20 } });
+    const byDay = answerable({ ...base, ask: 'day', answer: { day: 20 } });
     expect(checkAnswer(byDay, { day: 20 })).toBe(true);
     expect(checkAnswer(byDay, { weekday: 'thu-sau' })).toBe(false);
-    const byWeekday = answerable({ ...base, answer: { weekday: 'thu-sau' } });
+    const byWeekday = answerable({ ...base, ask: 'weekday', answer: { weekday: 'thu-sau' } });
     expect(checkAnswer(byWeekday, { weekday: 'thu-sau' })).toBe(true);
     expect(checkAnswer(byWeekday, { day: 20 })).toBe(false);
   });

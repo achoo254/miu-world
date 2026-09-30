@@ -134,13 +134,14 @@ const clockShape = {
 
 export const WEEKDAYS = ['thu-hai', 'thu-ba', 'thu-tu', 'thu-nam', 'thu-sau', 'thu-bay', 'chu-nhat'] as const;
 const Weekday = z.enum(WEEKDAYS);
-/** A month page of the calendar; the question asks for a day of the month or a weekday. */
+/** A month page of the calendar; the question asks for a day of the month or a weekday (`ask`). */
 const calendarShape = {
   ...challengeBase,
   mechanic: z.literal('calendar'),
   month: z.number().int().min(1).max(12),
   year: z.number().int().min(2000).max(2100),
   question: Text,
+  ask: z.enum(['day', 'weekday']),
 };
 
 /** Join points with segments (draw a segment, a polyline, a shape). */
@@ -335,6 +336,7 @@ function challengeIssues(step: ChallengeStep): string[] {
       if (step.mode === 'read' && step.time && !sameClockTime(step.time, step.answer, step.display)) issues.push('answer is not the time the clock shows');
       break;
     case 'calendar':
+      if (('day' in step.answer ? 'day' : 'weekday') !== step.ask) issues.push(`answer must be a ${step.ask}, as the step asks`);
       if ('day' in step.answer && step.answer.day > daysInMonth(step.month, step.year)) issues.push('answer day is not in that month');
       break;
     case 'connect': {
@@ -374,7 +376,14 @@ const StubQuest = z.strictObject({
 });
 
 /** Long passage shared by several steps (a textbook reading); `section` names its inventory section. */
-export const QuestText = z.strictObject({ title: Text, author: Text.optional(), body: Text, section: ContentId.optional() });
+export const QuestText = z.strictObject({
+  title: Text,
+  author: Text.optional(),
+  body: Text,
+  /** The "Từ ngữ" box printed under a textbook passage. */
+  glossary: z.array(z.strictObject({ term: Text, meaning: Text })).optional(),
+  section: ContentId.optional(),
+});
 export type QuestText = z.infer<typeof QuestText>;
 
 const questFields = {

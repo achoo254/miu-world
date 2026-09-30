@@ -221,10 +221,11 @@ describe('textbook mechanics', () => {
   });
 
   it('a calendar answer is a day of that month or a weekday', () => {
-    const cal = { ...challenge, mechanic: 'calendar', month: 11, year: 2026, question: 'Ngày 20 tháng 11 là thứ mấy?' };
+    const cal = { ...challenge, mechanic: 'calendar', month: 11, year: 2026, question: 'Ngày 20 tháng 11 là thứ mấy?', ask: 'weekday' };
     expect(withStep({ ...cal, answer: { weekday: 'thu-sau' } })).toEqual([]);
-    expect(withStep({ ...cal, answer: { day: 30 } })).toEqual([]);
-    expect(withStep({ ...cal, answer: { day: 31 } })).toEqual(['step c: answer day is not in that month']);
+    expect(withStep({ ...cal, ask: 'day', answer: { day: 30 } })).toEqual([]);
+    expect(withStep({ ...cal, ask: 'day', answer: { day: 31 } })).toEqual(['step c: answer day is not in that month']);
+    expect(withStep({ ...cal, answer: { day: 20 } })).toEqual(['step c: answer must be a weekday, as the step asks']);
     expect(valid({ ...cal, answer: { weekday: 'thu-tam' } })).toBe(false);
   });
 
