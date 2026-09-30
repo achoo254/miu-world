@@ -20,8 +20,10 @@ TOKENS="$(dirname "$ALL_IN_ONE_STAGING_DEV")/access-tokens.json"
 srv() { jq -er --arg n "$1" '.servers[] | select(.name == $n) | .'"$2" "$ALL_IN_ONE_STAGING_DEV"; }
 secret() { jq -er "$1" "$TOKENS"; }
 
+# PubkeyAuthentication=no: with several keys on the dev machine, ssh spends MaxAuthTries on them before
+# the password and the box answers "Permission denied", which looks exactly like a wrong password.
 lab() {
-  SSHPASS="$(srv $LAB password)" sshpass -e ssh -o ConnectTimeout=10 -p "$(srv $LAB port)" "$(srv $LAB user)@$(srv $LAB host)" "$@"
+  SSHPASS="$(srv $LAB password)" sshpass -e ssh -o PubkeyAuthentication=no -o ConnectTimeout=10 -p "$(srv $LAB port)" "$(srv $LAB user)@$(srv $LAB host)" "$@"
 }
 
 EDGE_KEY=""

@@ -63,10 +63,12 @@ srv() { jq -r --arg n "$1" '.servers[] | select(.name == $n) | .'"$2" "$ALL_IN_O
 
 ```sh
 S=dattqh_ubuntu_192.168.122.176_MONGO
-SSHPASS="$(srv $S password)" sshpass -e ssh "$(srv $S user)@$(srv $S host)" -p "$(srv $S port)"
+SSHPASS="$(srv $S password)" sshpass -e ssh -o PubkeyAuthentication=no "$(srv $S user)@$(srv $S host)" -p "$(srv $S port)"
 # Một lệnh rồi thoát:
-SSHPASS="$(srv $S password)" sshpass -e ssh "$(srv $S user)@$(srv $S host)" -p "$(srv $S port)" 'systemctl is-active miu-server miu-tunnel'
+SSHPASS="$(srv $S password)" sshpass -e ssh -o PubkeyAuthentication=no "$(srv $S user)@$(srv $S host)" -p "$(srv $S port)" 'systemctl is-active miu-server miu-tunnel'
 ```
+
+**Luôn có `-o PubkeyAuthentication=no` khi vào lab bằng mật khẩu.** Máy dev có nhiều key thì ssh thử hết key trước, dùng cạn `MaxAuthTries` của box, và box trả `Permission denied (publickey,password)` trước khi kịp gửi mật khẩu: trông y như sai mật khẩu (§7).
 
 **.65 (edge + production), bằng key.** Ghi key ra tệp tạm quyền 600, xong thì xóa:
 
@@ -128,10 +130,11 @@ Từ máy dev, không cần SSH: `curl -s https://miu-staging.hoandat.com/api/he
    ```
 
    Staging vẫn phục vụ bản cũ khi lab mất VPN (tunnel chạy trên chính 176), nên `https://miu-staging…` trả 200 không chứng minh máy dev vào được lab.
-2. **Hook của môi trường chặn vài từ trong lệnh Bash** (ví dụ lệnh chứa "target" hay "coverage"). Gặp thì viết script ra tệp bằng công cụ Write rồi chạy tệp.
-3. **Cổng 8787 trên .65 thuộc dự án khác.** Production Miu dùng 8797. Quy tắc "cổng bận thì tắt tiến trình cũ" trong `CLAUDE.md` chỉ áp cho máy dev, không áp cho .65.
-4. **nginx trên .65 là CentOS:** chỉ có `conf.d/`, không có `sites-enabled`. Trên lab 176 (Ubuntu) thì ngược lại.
-5. **Không đoán credential, không tìm key ở nơi khác.** Entry thiếu thì dừng và báo người phụ trách.
+2. **`Permission denied (publickey,password)` khi vào lab mà mật khẩu vẫn đúng: thiếu `-o PubkeyAuthentication=no`.** Ngày 30/09/2026 cùng một mật khẩu vào được lúc 14:17, bị từ chối lúc 14:40, và vào lại được ngay khi thêm cờ đó (số key ssh đem thử thay đổi theo agent và cấu hình của máy dev, nên lỗi lúc có lúc không). Gặp thì thêm cờ; đừng thử mật khẩu nhiều lần (có thể bị khóa), và kiểm tên entry (`srv` trả `null` cũng cho đúng lỗi này).
+3. **Hook của môi trường chặn vài từ trong lệnh Bash** (ví dụ lệnh chứa "target" hay "coverage"). Gặp thì viết script ra tệp bằng công cụ Write rồi chạy tệp.
+4. **Cổng 8787 trên .65 thuộc dự án khác.** Production Miu dùng 8797. Quy tắc "cổng bận thì tắt tiến trình cũ" trong `CLAUDE.md` chỉ áp cho máy dev, không áp cho .65.
+5. **nginx trên .65 là CentOS:** chỉ có `conf.d/`, không có `sites-enabled`. Trên lab 176 (Ubuntu) thì ngược lại.
+6. **Không đoán credential, không tìm key ở nơi khác.** Entry thiếu thì dừng và báo người phụ trách.
 
 ## 8. Tài liệu liên quan
 
