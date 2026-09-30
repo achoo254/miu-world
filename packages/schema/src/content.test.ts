@@ -102,7 +102,7 @@ describe('quest definition', () => {
       { ...quiz, id: 'find', title: 'Câu 2', choices, answer: { choice: 'b' } },
       { ...quiz, id: 'riddle', title: 'Câu 3', choices, answer: { choice: 'b' } },
     ];
-    expect(issues(quest)).toEqual(['needs at least two mechanics other than multiple choice (search, riddle, drag-drop, sort)']);
+    expect(issues(quest)).toEqual(['needs at least two mechanics other than multiple choice (search, riddle or an interactive challenge)']);
   });
 
   it('needs a target unless the step triggers on its own', () => {
@@ -155,12 +155,117 @@ describe('quest definition', () => {
     expect(QuestDefinition.safeParse(search).success).toBe(false);
   });
 
+  it('accepts a draft with the same rules as an active quest', () => {
+    expect(QuestDefinition.parse({ ...validQuest(), status: 'draft' }).status).toBe('draft');
+    const broken = { ...validQuest(), status: 'draft' };
+    broken.steps.push({ ...broken.steps[0] });
+    expect(issues(broken)).toContain('duplicate step id');
+  });
+
   it('accepts a stub with only its identity and skips the content rules', () => {
     const stub = QuestDefinition.parse({ id: 'forest-ch2', region: 'khu-rung-bi-mat', chapter: 2, title: 'Chương 2', status: 'stub' });
     expect(stub).toEqual({ id: 'forest-ch2', region: 'khu-rung-bi-mat', chapter: 2, title: 'Chương 2', status: 'stub', unlock: [] });
     expect(QuestDefinition.safeParse({ id: 'x', region: 'r', chapter: 2, status: 'stub' }).success).toBe(false);
     // A stub can never be finished, so it must not be the only way into another quest.
     expect(QuestDefinition.safeParse({ id: 'x', region: 'r', chapter: 2, title: 't', status: 'stub', unlock: ['y'] }).success).toBe(false);
+  });
+});
+
+const challenge = { id: 'c', title: 'Thử thách', kind: 'challenge', target: 'x', prompt: 'p', skill: 'phep-cong', support };
+/** Issues of the valid quest with one extra step. */
+const withStep = (step: Record<string, unknown>, quest = validQuest()): string[] => {
+  quest.steps.push(step);
+  return issues(quest);
+};
+const valid = (step: Record<string, unknown>) => QuestDefinition.safeParse({ ...validQuest(), steps: [...validQuest().steps, step] }).success;
+
+describe('textbook mechanics', () => {
+  const choices = [{ id: 'a', text: 'a' }, { id: 'b', text: 'b' }];
+
+  it('classifies every item into a known group', () => {
+    const groups = [{ id: 'su-vat', label: 'Chỉ sự vật' }, { id: 'hoat-dong', label: 'Chỉ hoạt động' }];
+    const items = [{ id: 'sach', label: 'sách' }, { id: 'doc', label: 'đọc' }];
+    const step = { ...challenge, mechanic: 'classify', groups, items };
+    expect(withStep({ ...step, answer: { assignment: { sach: 'su-vat', doc: 'hoat-dong' } } })).toEqual([]);
+    expect(withStep({ ...step, answer: { assignment: { sach: 'su-vat' } } })).toEqual(['step c: answer must assign every item exactly once']);
+    expect(withStep({ ...step, answer: { assignment: { sach: 'su-vat', doc: 'dac-diem' } } })).toEqual(['step c: answer assigns an item to an unknown group']);
+  });
+
+  it('fills each blank of the template exactly once with one of its options', () => {
+    const blanks = [{ id: 'b1', options: [{ id: 'c', text: 'c' }, { id: 'k', text: 'k' }] }];
+    const step = { ...challenge, mechanic: 'fill-blank', blanks, answer: { fills: { b1: 'c' } } };
+    expect(withStep({ ...step, template: '{{b1}}á vàng' })).toEqual([]);
+    expect(withStep({ ...step, template: 'cá vàng' })).toEqual(['step c: template must hold each blank exactly once']);
+    expect(withStep({ ...step, template: '{{b1}}á {{b1}}' })).toEqual(['step c: template must hold each blank exactly once']);
+    expect(withStep({ ...step, template: '{{b1}}á', answer: { fills: { b1: 'g' } } })).toEqual(['step c: answer for blank b1 is not one of its options']);
+  });
+
+  it('multi-select answers are known, distinct choices', () => {
+    const step = { ...challenge, mechanic: 'multi-select', choices };
+    expect(withStep({ ...step, answer: { choices: ['a', 'b'] } })).toEqual([]);
+    expect(withStep({ ...step, answer: { choices: ['a', 'a'] } })).toEqual(['step c: answer lists a choice twice']);
+    expect(withStep({ ...step, answer: { choices: ['z'] } })).toEqual(['step c: answer is not one of the choices']);
+  });
+
+  it('a clock to read shows its answer, a clock to set does not', () => {
+    const clock = { ...challenge, mechanic: 'clock', display: 'analog' };
+    expect(withStep({ ...clock, mode: 'read', time: { hour: 3, minute: 0 }, answer: { hour: 15, minute: 0 } })).toEqual([]);
+    expect(withStep({ ...clock, mode: 'read', answer: { hour: 15, minute: 0 } })).toEqual(['step c: a clock to read needs the time it shows']);
+    expect(withStep({ ...clock, mode: 'read', time: { hour: 4, minute: 0 }, answer: { hour: 15, minute: 0 } })).toEqual([
+      'step c: answer is not the time the clock shows',
+    ]);
+    expect(withStep({ ...clock, mode: 'set', time: { hour: 3, minute: 0 }, answer: { hour: 3, minute: 0 } })).toEqual([
+      'step c: a clock to set must not show the answer',
+    ]);
+    expect(valid({ ...clock, mode: 'set', answer: { hour: 24, minute: 0 } })).toBe(false);
+  });
+
+  it('a calendar answer is a day of that month or a weekday', () => {
+    const cal = { ...challenge, mechanic: 'calendar', month: 11, year: 2026, question: 'Ngày 20 tháng 11 là thứ mấy?' };
+    expect(withStep({ ...cal, answer: { weekday: 'thu-sau' } })).toEqual([]);
+    expect(withStep({ ...cal, answer: { day: 30 } })).toEqual([]);
+    expect(withStep({ ...cal, answer: { day: 31 } })).toEqual(['step c: answer day is not in that month']);
+    expect(valid({ ...cal, answer: { weekday: 'thu-tam' } })).toBe(false);
+  });
+
+  it('connect joins known points, each segment once', () => {
+    const points = [{ id: 'a', x: 0, y: 0, label: 'A' }, { id: 'b', x: 4, y: 0, label: 'B' }, { id: 'c', x: 4, y: 3, label: 'C' }];
+    const step = { ...challenge, mechanic: 'connect', points };
+    expect(withStep({ ...step, answer: { edges: [['a', 'b'], ['b', 'c']] } })).toEqual([]);
+    expect(withStep({ ...step, answer: { edges: [['a', 'b'], ['b', 'a']] } })).toEqual(['step c: answer lists a segment twice']);
+    expect(withStep({ ...step, answer: { edges: [['a', 'a']] } })).toEqual(['step c: answer joins unknown points or a point to itself']);
+  });
+
+  it('speak and worksheet steps need no answer; sort items may carry pictures', () => {
+    expect(withStep({ id: 's', title: 'Nói', kind: 'speak', trigger: 'auto', prompt: 'Kể về ngày hè của em', hints: ['Em đi đâu?'] })).toEqual([]);
+    expect(withStep({ id: 'w', title: 'Viết', kind: 'worksheet', trigger: 'auto', lessonId: 'tv2-t1-b01', text: 'Viết chữ hoa A' })).toEqual([]);
+    const items = [{ id: 't2', label: 'Tranh 2', image: { kind: 'diagram', type: 'picture-card', params: { n: 2 } } }, { id: 't1', label: 'Tranh 1', image: { kind: 'icon', id: 'school' } }];
+    expect(withStep({ ...challenge, mechanic: 'sort', items, answer: { order: ['t1', 't2'] } })).toEqual([]);
+  });
+
+  it('allows curriculum references on learning steps only', () => {
+    expect(valid({ ...challenge, mechanic: 'multi-select', choices, answer: { choices: ['a'] }, curriculumRef: ['tv2-t1-b01-doc-1'] })).toBe(true);
+    expect(valid({ id: 'd', title: 'Nói', kind: 'dialogue', target: 'x', lines: [{ speaker: 'Vẹt', text: 'Chào' }], curriculumRef: ['tv2-t1-b01-doc-1'] })).toBe(false);
+    expect(valid({ id: 'r', title: 'Thưởng', kind: 'reward', target: 'x', text: 'Giỏi', curriculumRef: ['x'] })).toBe(false);
+  });
+
+  it('a read step has its passage inline or by reference, not both', () => {
+    const read = { id: 'r', title: 'Đọc', kind: 'read', target: 'x', question: 'Ai?', choices, answer: { choice: 'a' }, skill: 'doc-hieu', support };
+    const texts = { 'bai-doc': { title: 'Tôi là học sinh lớp 2', author: 'Văn Giá', body: 'Ngày khai trường đã đến.', section: 'tv2-t1-b01-doc' } };
+    expect(withStep({ ...read, textRef: 'bai-doc', audio: true }, { ...validQuest(), texts })).toEqual([]);
+    expect(withStep({ ...read, text: 'x', textRef: 'bai-doc' }, { ...validQuest(), texts })).toEqual(['step r: needs exactly one of text and textRef']);
+    expect(withStep({ ...read })).toEqual(['step r: needs exactly one of text and textRef']);
+    expect(withStep({ ...read, textRef: 'ghost' })).toEqual(['step r: textRef ghost is not in the quest texts']);
+  });
+
+  it('a textbook quest needs two different interactive challenges, not search or riddles', () => {
+    const quest = { ...validQuest(), id: 'toan2-cd1-b01', status: 'draft' };
+    expect(issues(quest)).toEqual([
+      'a textbook quest needs at least two different interactive challenges (classify, fill-blank, multi-select, clock, calendar, connect, sort, drag-drop)',
+    ]);
+    quest.steps.push({ ...challenge, id: 'm', mechanic: 'multi-select', choices, answer: { choices: ['a'] } });
+    quest.steps.push({ ...challenge, id: 'k', mechanic: 'clock', mode: 'set', display: 'analog', answer: { hour: 8, minute: 0 } });
+    expect(issues(quest)).toEqual([]);
   });
 });
 

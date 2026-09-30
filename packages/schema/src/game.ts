@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { ContentId, QuestStepPublic, RewardSpec } from './content';
+import { ContentId, QuestStepPublic, RewardSpec, WEEKDAYS } from './content';
 
 // Game DTOs for the active child profile. Diamonds are intentionally absent (not used in the MVP).
 
@@ -98,12 +98,22 @@ export const InventoryResponse = z.object({
 });
 export type InventoryResponse = z.infer<typeof InventoryResponse>;
 
+/** Id → id map from the child (item → group, blank → option), bounded like the lists. */
+const IdMap = z.record(ContentId, ContentId).refine((m) => Object.keys(m).length <= 50, { message: 'too many entries' });
+
 /** What the child submits for a learning step; the shape depends on the step kind. */
 export const StepAnswer = z.union([
   z.strictObject({ choice: ContentId }),
   z.strictObject({ value: z.number().int() }),
   z.strictObject({ placed: z.array(ContentId).max(100) }),
   z.strictObject({ order: z.array(ContentId).max(100) }),
+  z.strictObject({ assignment: IdMap }),
+  z.strictObject({ fills: IdMap }),
+  z.strictObject({ choices: z.array(ContentId).max(50) }),
+  z.strictObject({ hour: z.number().int().min(0).max(23), minute: z.number().int().min(0).max(59) }),
+  z.strictObject({ day: z.number().int().min(1).max(31) }),
+  z.strictObject({ weekday: z.enum(WEEKDAYS) }),
+  z.strictObject({ edges: z.array(z.tuple([ContentId, ContentId])).max(50) }),
 ]);
 export type StepAnswer = z.infer<typeof StepAnswer>;
 
@@ -113,7 +123,8 @@ export type StepCompleteRequest = z.infer<typeof StepCompleteRequest>;
 
 /**
  * A quest as the client sees it. Parsing a definition through this schema drops every key it does not
- * list, so answers, support layers and authoring notes never leave the server.
+ * list, so answers, support layers and authoring notes never leave the server. Draft quests are never
+ * loaded, so they have no view.
  */
 export const QuestView = z.discriminatedUnion('status', [
   z.object({
@@ -123,6 +134,8 @@ export const QuestView = z.discriminatedUnion('status', [
     title: z.string(),
     status: z.literal('active'),
     summary: z.string(),
+    /** Passages the read steps point at (`textRef`). */
+    texts: z.record(ContentId, z.object({ title: z.string(), author: z.string().optional(), body: z.string() })),
     steps: z.array(QuestStepPublic),
     reward: RewardSpec,
     unlock: z.array(ContentId),

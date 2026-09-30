@@ -43,6 +43,15 @@ describe('content catalogue', () => {
     expect(() => loadQuests(questDir([{ ...base, id: 'a', sevenQuestions: {} }]), skills)).toThrow(/invalid content file q0.json/);
   });
 
+  it('validates drafts but never loads them', () => {
+    const sgk = JSON.parse(readFileSync(new URL('../../test/fixtures/quests/quest-sgk.json', import.meta.url), 'utf8')) as Record<string, unknown>;
+    const draft = { ...sgk, id: 'tv2-t01-b01', status: 'draft', unlock: ['tv2-t01-b02'] };
+    const loaded = loadQuests(questDir([{ ...base, id: 'a' }, draft]), new Set([...skills, 'phep-cong']));
+    expect([...loaded.quests.keys()]).toEqual(['a']);
+    expect(loaded.warnings).toEqual(['draft quest tv2-t01-b01 unlocks tv2-t01-b02, not written yet']);
+    expect(() => loadQuests(questDir([{ ...draft, phases: {} }]), skills)).toThrow(/invalid content file/);
+  });
+
   it('records which quests unlock which', () => {
     const dir = questDir([{ ...base, id: 'a', unlock: ['b'] }, { ...base, id: 'b' }]);
     const catalog = loadContentCatalog({ questDir: dir });

@@ -38,6 +38,23 @@ export const LearningSupport = z.strictObject({
 });
 export type LearningSupport = z.infer<typeof LearningSupport>;
 
+/** Picture for a card or item: an emoji icon, or a diagram the client draws (clock, number line, scale…). */
+export const IllustrationRef = z.discriminatedUnion('kind', [
+  z.strictObject({ kind: z.literal('icon'), id: ContentId }),
+  z.strictObject({
+    kind: z.literal('diagram'),
+    type: z.enum(['clock', 'number-line', 'ruler', 'scale', 'jug', 'shapes', 'polyline', 'picture-card']),
+    params: z.record(z.string(), z.union([z.number(), z.string(), z.boolean(), z.array(z.number())])).default({}),
+  }),
+]);
+export type IllustrationRef = z.infer<typeof IllustrationRef>;
+
+/**
+ * Textbook inventory items (content/curriculum) the step covers. Authoring only: the content gate
+ * checks that the step carries the book's wording and answer unchanged.
+ */
+const curriculumRef = { curriculumRef: z.array(ContentId).min(1).optional() };
+
 // Each step kind is a shape. Learning steps have a public shape (safe to send before the child answers)
 // and an authoring shape that adds the answer and the support layers.
 
@@ -55,7 +72,11 @@ const searchShape = { id: ContentId, title: Text, kind: z.literal('search'), tar
 const readShape = {
   ...stepBase,
   kind: z.literal('read'),
-  text: Text,
+  /** The passage itself, or `textRef` to a passage in the quest's `texts` (exactly one of the two). */
+  text: Text.optional(),
+  textRef: ContentId.optional(),
+  /** Offer to read the passage aloud with the device's speech voice. */
+  audio: z.boolean().optional(),
   question: Text,
   choices: z.array(Choice).min(2),
   skill: ContentId,
@@ -77,13 +98,74 @@ const dragDropShape = {
 const sortShape = {
   ...challengeBase,
   mechanic: z.literal('sort'),
-  items: z.array(z.strictObject({ id: ContentId, label: Text })).min(2),
+  items: z.array(z.strictObject({ id: ContentId, label: Text, image: IllustrationRef.optional() })).min(2),
 };
 
 const quizShape = { ...challengeBase, mechanic: z.literal('quiz'), choices: z.array(Choice).min(2) };
 
+/** Put every item into its group (words that name things / actions / qualities, kinds of sentence). */
+const classifyShape = {
+  ...challengeBase,
+  mechanic: z.literal('classify'),
+  groups: z.array(z.strictObject({ id: ContentId, label: Text })).min(2),
+  items: z.array(z.strictObject({ id: ContentId, label: Text, image: IllustrationRef.optional() })).min(2),
+};
+
+/** Fill each `{{blank}}` of the template with one of its options (c/k, ch/tr, >, <, =, a number…). */
+const fillBlankShape = {
+  ...challengeBase,
+  mechanic: z.literal('fill-blank'),
+  template: Text,
+  blanks: z.array(z.strictObject({ id: ContentId, options: z.array(Choice).min(2) })).min(1),
+};
+
+/** Pick every right choice and none of the others. */
+const multiSelectShape = { ...challengeBase, mechanic: z.literal('multi-select'), choices: z.array(Choice).min(2) };
+
+const ClockTime = z.strictObject({ hour: z.number().int().min(0).max(23), minute: z.number().int().min(0).max(59) });
+/** Read the time shown (`read`, `time` required) or set the hands to the time asked (`set`). */
+const clockShape = {
+  ...challengeBase,
+  mechanic: z.literal('clock'),
+  mode: z.enum(['read', 'set']),
+  display: z.enum(['analog', 'digital']),
+  time: ClockTime.optional(),
+};
+
+export const WEEKDAYS = ['thu-hai', 'thu-ba', 'thu-tu', 'thu-nam', 'thu-sau', 'thu-bay', 'chu-nhat'] as const;
+const Weekday = z.enum(WEEKDAYS);
+/** A month page of the calendar; the question asks for a day of the month or a weekday. */
+const calendarShape = {
+  ...challengeBase,
+  mechanic: z.literal('calendar'),
+  month: z.number().int().min(1).max(12),
+  year: z.number().int().min(2000).max(2100),
+  question: Text,
+};
+
+/** Join points with segments (draw a segment, a polyline, a shape). */
+const connectShape = {
+  ...challengeBase,
+  mechanic: z.literal('connect'),
+  points: z.array(z.strictObject({ id: ContentId, x: z.number(), y: z.number(), label: Text })).min(2),
+  showLengths: z.boolean().optional(),
+};
+
 const rewardShape = { ...stepBase, kind: z.literal('reward'), text: Text };
 const unlockShape = { ...stepBase, kind: z.literal('unlock'), text: Text };
+
+/** Talk about something (recorded on the device only, never sent); done once the child moves on. */
+const speakShape = {
+  ...stepBase,
+  kind: z.literal('speak'),
+  prompt: Text,
+  /** The book's "G:" prompt lines, in order. */
+  hints: z.array(Text).default([]),
+  pictureRefs: z.array(IllustrationRef).optional(),
+};
+
+/** Writing happens on a printed worksheet outside the game; the step only points at it. */
+const worksheetShape = { ...stepBase, kind: z.literal('worksheet'), lessonId: ContentId, text: Text };
 
 const secret = <A extends z.ZodType>(answer: A) => ({ answer, support: LearningSupport });
 
@@ -93,24 +175,52 @@ export const QuestStepPublic = z.discriminatedUnion('kind', [
   z.object(searchShape),
   z.object(readShape),
   z.object(riddleShape),
-  z.discriminatedUnion('mechanic', [z.object(dragDropShape), z.object(sortShape), z.object(quizShape)]),
+  z.discriminatedUnion('mechanic', [
+    z.object(dragDropShape),
+    z.object(sortShape),
+    z.object(quizShape),
+    z.object(classifyShape),
+    z.object(fillBlankShape),
+    z.object(multiSelectShape),
+    z.object(clockShape),
+    z.object(calendarShape),
+    z.object(connectShape),
+  ]),
   z.object(rewardShape),
   z.object(unlockShape),
+  z.object(speakShape),
+  z.object(worksheetShape),
 ]);
 export type QuestStepPublic = z.infer<typeof QuestStepPublic>;
 
 export const QuestStep = z.discriminatedUnion('kind', [
   z.strictObject(dialogueShape),
   z.strictObject(searchShape),
-  z.strictObject({ ...readShape, ...secret(ChoiceAnswer) }),
-  z.strictObject({ ...riddleShape, ...secret(z.strictObject({ value: z.number().int() })) }),
+  z.strictObject({ ...readShape, ...curriculumRef, ...secret(ChoiceAnswer) }),
+  z.strictObject({ ...riddleShape, ...curriculumRef, ...secret(z.strictObject({ value: z.number().int() })) }),
   z.discriminatedUnion('mechanic', [
-    z.strictObject({ ...dragDropShape, ...secret(z.strictObject({ total: z.number().int().min(1) })) }),
-    z.strictObject({ ...sortShape, ...secret(z.strictObject({ order: z.array(ContentId).min(2) })) }),
-    z.strictObject({ ...quizShape, ...secret(ChoiceAnswer) }),
+    z.strictObject({ ...dragDropShape, ...curriculumRef, ...secret(z.strictObject({ total: z.number().int().min(1) })) }),
+    z.strictObject({ ...sortShape, ...curriculumRef, ...secret(z.strictObject({ order: z.array(ContentId).min(2) })) }),
+    z.strictObject({ ...quizShape, ...curriculumRef, ...secret(ChoiceAnswer) }),
+    z.strictObject({ ...classifyShape, ...curriculumRef, ...secret(z.strictObject({ assignment: z.record(ContentId, ContentId) })) }),
+    z.strictObject({ ...fillBlankShape, ...curriculumRef, ...secret(z.strictObject({ fills: z.record(ContentId, ContentId) })) }),
+    z.strictObject({ ...multiSelectShape, ...curriculumRef, ...secret(z.strictObject({ choices: z.array(ContentId).min(1) })) }),
+    z.strictObject({ ...clockShape, ...curriculumRef, ...secret(ClockTime) }),
+    z.strictObject({
+      ...calendarShape,
+      ...curriculumRef,
+      ...secret(z.union([z.strictObject({ day: z.number().int().min(1).max(31) }), z.strictObject({ weekday: Weekday })])),
+    }),
+    z.strictObject({
+      ...connectShape,
+      ...curriculumRef,
+      ...secret(z.strictObject({ edges: z.array(z.tuple([ContentId, ContentId])).min(1).max(50) })),
+    }),
   ]),
   z.strictObject(rewardShape),
   z.strictObject(unlockShape),
+  z.strictObject({ ...speakShape, ...curriculumRef }),
+  z.strictObject({ ...worksheetShape, ...curriculumRef }),
 ]);
 export type QuestStep = z.infer<typeof QuestStep>;
 /** Steps the child answers; each carries an answer and the three support layers. */
@@ -122,6 +232,13 @@ export function stepTargets(step: QuestStep | QuestStepPublic): string[] {
   if (step.kind === 'search') return [...step.targets];
   return step.target ? [step.target] : [];
 }
+
+/** Textbook quests (Toán 2 `toan2-cd<topic>-b<lesson>`, Tiếng Việt 2 `tv2-t<week>-…`) follow stricter rules. */
+export const TEXTBOOK_QUEST_ID = /^(?:toan2-cd\d-b\d{2}|tv2-t\d{2}-(?:b\d{2}|on-giua-ki|on-cuoi-ki))$/;
+const isTextbookQuest = (id: string) => id.startsWith('toan2-') || id.startsWith('tv2-');
+
+/** Challenges where the child manipulates something (Master Plan §16), as opposed to picking one answer. */
+const INTERACTIVE_MECHANICS = new Set(['drag-drop', 'sort', 'classify', 'fill-blank', 'multi-select', 'clock', 'calendar', 'connect']);
 
 /** Gameplay mechanics other than multiple choice (Master Plan §16: at least two per quest). */
 function mechanicOf(step: QuestStep): string | null {
@@ -141,28 +258,100 @@ function uniqueIds(ids: readonly string[]): boolean {
   return new Set(ids).size === ids.length;
 }
 
-function stepIssues(step: QuestStep): string[] {
+function sameIdSet(a: readonly string[], b: readonly string[]): boolean {
+  return uniqueIds(a) && a.length === b.length && a.every((id) => b.includes(id));
+}
+
+export function daysInMonth(month: number, year: number): number {
+  return new Date(Date.UTC(year, month, 0)).getUTCDate();
+}
+
+/** `{{blank}}` markers in a fill-blank template, in order. */
+export function templateBlanks(template: string): string[] {
+  return [...template.matchAll(/\{\{([a-z0-9]+(?:-[a-z0-9]+)*)\}\}/g)].map((m) => m[1] ?? '');
+}
+
+/** Clock times compared as the child sees them: an analog face cannot tell morning from afternoon. */
+export function sameClockTime(a: { hour: number; minute: number }, b: { hour: number; minute: number }, display: 'analog' | 'digital'): boolean {
+  const hour = (h: number) => (display === 'analog' ? h % 12 : h);
+  return hour(a.hour) === hour(b.hour) && a.minute === b.minute;
+}
+
+const edgeKey = ([a, b]: readonly [string, string]) => [a, b].sort().join('|');
+
+function challengeIssues(step: ChallengeStep): string[] {
+  const issues: string[] = [];
+  switch (step.mechanic) {
+    case 'quiz':
+    case 'multi-select': {
+      if (!uniqueIds(step.choices.map((c) => c.id))) issues.push('duplicate choice id');
+      const picked = step.mechanic === 'quiz' ? [step.answer.choice] : step.answer.choices;
+      if (!uniqueIds(picked)) issues.push('answer lists a choice twice');
+      if (!picked.every((id) => step.choices.some((c) => c.id === id))) issues.push('answer is not one of the choices');
+      break;
+    }
+    case 'drag-drop':
+      if (!uniqueIds(step.pieces.map((p) => p.id))) issues.push('duplicate piece id');
+      if (!reachableTotal(step.pieces.map((p) => p.value), step.answer.total)) issues.push('no set of pieces adds up to the total');
+      break;
+    case 'sort': {
+      const ids = step.items.map((i) => i.id);
+      const order = step.answer.order;
+      if (!uniqueIds(ids)) issues.push('duplicate item id');
+      if (!sameIdSet(order, ids)) issues.push('answer order must list every item once');
+      else if (order.every((id, i) => ids[i] === id)) issues.push('items are already displayed in the answer order');
+      break;
+    }
+    case 'classify': {
+      const groups = step.groups.map((g) => g.id);
+      const items = step.items.map((i) => i.id);
+      if (!uniqueIds(groups)) issues.push('duplicate group id');
+      if (!uniqueIds(items)) issues.push('duplicate item id');
+      if (!sameIdSet(Object.keys(step.answer.assignment), items)) issues.push('answer must assign every item exactly once');
+      if (!Object.values(step.answer.assignment).every((g) => groups.includes(g))) issues.push('answer assigns an item to an unknown group');
+      break;
+    }
+    case 'fill-blank': {
+      const blanks = step.blanks.map((b) => b.id);
+      if (!sameIdSet(templateBlanks(step.template), blanks)) issues.push('template must hold each blank exactly once');
+      if (!sameIdSet(Object.keys(step.answer.fills), blanks)) issues.push('answer must fill every blank');
+      for (const blank of step.blanks) {
+        if (!uniqueIds(blank.options.map((o) => o.id))) issues.push(`blank ${blank.id} has a duplicate option id`);
+        const fill = step.answer.fills[blank.id];
+        if (fill !== undefined && !blank.options.some((o) => o.id === fill)) issues.push(`answer for blank ${blank.id} is not one of its options`);
+      }
+      break;
+    }
+    case 'clock':
+      if (step.mode === 'read' && !step.time) issues.push('a clock to read needs the time it shows');
+      if (step.mode === 'set' && step.time) issues.push('a clock to set must not show the answer');
+      if (step.mode === 'read' && step.time && !sameClockTime(step.time, step.answer, step.display)) issues.push('answer is not the time the clock shows');
+      break;
+    case 'calendar':
+      if ('day' in step.answer && step.answer.day > daysInMonth(step.month, step.year)) issues.push('answer day is not in that month');
+      break;
+    case 'connect': {
+      const points = step.points.map((p) => p.id);
+      if (!uniqueIds(points)) issues.push('duplicate point id');
+      if (!step.answer.edges.every(([a, b]) => a !== b && points.includes(a) && points.includes(b))) issues.push('answer joins unknown points or a point to itself');
+      if (!uniqueIds(step.answer.edges.map(edgeKey))) issues.push('answer lists a segment twice');
+      break;
+    }
+  }
+  return issues;
+}
+
+function stepIssues(step: QuestStep, texts: Readonly<Record<string, unknown>>): string[] {
   const issues: string[] = [];
   if (step.kind !== 'search' && step.trigger !== 'auto' && !step.target) issues.push('needs a target unless its trigger is auto');
   if (step.kind === 'search' && !uniqueIds(step.targets)) issues.push('duplicate search target');
-  if (step.kind === 'read' || (step.kind === 'challenge' && step.mechanic === 'quiz')) {
+  if (step.kind === 'read') {
+    if ((step.text === undefined) === (step.textRef === undefined)) issues.push('needs exactly one of text and textRef');
+    if (step.textRef !== undefined && !(step.textRef in texts)) issues.push(`textRef ${step.textRef} is not in the quest texts`);
     if (!uniqueIds(step.choices.map((c) => c.id))) issues.push('duplicate choice id');
     if (!step.choices.some((c) => c.id === step.answer.choice)) issues.push('answer is not one of the choices');
   }
-  if (step.kind === 'challenge' && step.mechanic === 'drag-drop') {
-    if (!uniqueIds(step.pieces.map((p) => p.id))) issues.push('duplicate piece id');
-    if (!reachableTotal(step.pieces.map((p) => p.value), step.answer.total)) issues.push('no set of pieces adds up to the total');
-  }
-  if (step.kind === 'challenge' && step.mechanic === 'sort') {
-    const ids = step.items.map((i) => i.id);
-    const order = step.answer.order;
-    if (!uniqueIds(ids)) issues.push('duplicate item id');
-    if (order.length !== ids.length || !uniqueIds(order) || !order.every((id) => ids.includes(id))) {
-      issues.push('answer order must list every item once');
-    } else if (order.every((id, i) => ids[i] === id)) {
-      issues.push('items are already displayed in the answer order');
-    }
-  }
+  if (step.kind === 'challenge') issues.push(...challengeIssues(step));
   return issues;
 }
 
@@ -177,66 +366,91 @@ const StubQuest = z.strictObject({
   unlock: z.array(ContentId).max(0, 'a stub quest cannot unlock other quests').default([]),
 });
 
-const ActiveQuest = z
-  .strictObject({
-    id: ContentId,
-    region: ContentId,
-    chapter: z.number().int().min(1),
-    title: Text,
-    status: z.literal('active'),
-    summary: Text,
-    /** Learning content is drafted by AI and must be approved by a teacher before it reaches children. */
-    review: z.enum(['teacher-pending', 'teacher-approved']),
-    /** The seven design questions every quest must answer (Master Plan §11). */
-    sevenQuestions: z.strictObject({
-      who: Text,
-      where: Text,
-      goal: Text,
-      play: Text,
-      learn: Text,
-      reward: Text,
-      unlock: Text,
-    }),
-    /** Step id where each phase begins; phases appear in story order (a step may open several). */
-    phases: z.strictObject({
-      hook: ContentId,
-      explore: ContentId,
-      learn: ContentId,
-      challenge: ContentId,
-      decision: ContentId,
-      finale: ContentId,
-      reward: ContentId,
-      unlock: ContentId,
-    }),
-    steps: z.array(QuestStep).min(1),
-    reward: RewardSpec,
-    /**
-     * Quest ids this quest unlocks once finished. A quest opens when ANY quest listing it is finished;
-     * a quest no one lists is open from the start.
-     */
-    unlock: z.array(ContentId).default([]),
-  })
-  .superRefine((q, ctx) => {
-    const issue = (message: string) => ctx.addIssue({ code: 'custom', message });
-    const ids = q.steps.map((s) => s.id);
-    if (!uniqueIds(ids)) issue('duplicate step id');
-    let previous = 0;
-    for (const phase of QUEST_PHASES) {
-      const index = ids.indexOf(q.phases[phase]);
-      if (index < 0) issue(`phase ${phase} points at unknown step ${q.phases[phase]}`);
-      else if (index < previous) issue(`phase ${phase} starts before the phase that precedes it`);
-      else previous = index;
+/** Long passage shared by several steps (a textbook reading); `section` names its inventory section. */
+export const QuestText = z.strictObject({ title: Text, author: Text.optional(), body: Text, section: ContentId.optional() });
+export type QuestText = z.infer<typeof QuestText>;
+
+const questFields = {
+  id: ContentId,
+  region: ContentId,
+  chapter: z.number().int().min(1),
+  title: Text,
+  summary: Text,
+  /** Learning content is drafted by AI and must be approved by a teacher before it reaches children. */
+  review: z.enum(['teacher-pending', 'teacher-approved']),
+  /** The seven design questions every quest must answer (Master Plan §11). */
+  sevenQuestions: z.strictObject({
+    who: Text,
+    where: Text,
+    goal: Text,
+    play: Text,
+    learn: Text,
+    reward: Text,
+    unlock: Text,
+  }),
+  /** Step id where each phase begins; phases appear in story order (a step may open several). */
+  phases: z.strictObject({
+    hook: ContentId,
+    explore: ContentId,
+    learn: ContentId,
+    challenge: ContentId,
+    decision: ContentId,
+    finale: ContentId,
+    reward: ContentId,
+    unlock: ContentId,
+  }),
+  texts: z.record(ContentId, QuestText).default({}),
+  steps: z.array(QuestStep).min(1),
+  reward: RewardSpec,
+  /**
+   * Quest ids this quest unlocks once finished. A quest opens when ANY quest listing it is finished;
+   * a quest no one lists is open from the start.
+   */
+  unlock: z.array(ContentId).default([]),
+};
+
+function questIssues(q: { id: string; phases: Record<(typeof QUEST_PHASES)[number], string>; steps: QuestStep[]; texts: Record<string, QuestText> }): string[] {
+  const issues: string[] = [];
+  const ids = q.steps.map((s) => s.id);
+  if (!uniqueIds(ids)) issues.push('duplicate step id');
+  let previous = 0;
+  for (const phase of QUEST_PHASES) {
+    const index = ids.indexOf(q.phases[phase]);
+    if (index < 0) issues.push(`phase ${phase} points at unknown step ${q.phases[phase]}`);
+    else if (index < previous) issues.push(`phase ${phase} starts before the phase that precedes it`);
+    else previous = index;
+  }
+  for (const step of q.steps) for (const message of stepIssues(step, q.texts)) issues.push(`step ${step.id}: ${message}`);
+  if (isTextbookQuest(q.id)) {
+    const interactive = new Set(q.steps.map(mechanicOf).filter((m) => m !== null && INTERACTIVE_MECHANICS.has(m)));
+    if (interactive.size < 2) {
+      issues.push('a textbook quest needs at least two different interactive challenges (classify, fill-blank, multi-select, clock, calendar, connect, sort, drag-drop)');
     }
-    for (const step of q.steps) for (const message of stepIssues(step)) issue(`step ${step.id}: ${message}`);
-    const mechanics = new Set(q.steps.map(mechanicOf).filter((m) => m !== null));
-    if (mechanics.size < 2) issue('needs at least two mechanics other than multiple choice (search, riddle, drag-drop, sort)');
-  });
+  } else if (new Set(q.steps.map(mechanicOf).filter((m) => m !== null)).size < 2) {
+    issues.push('needs at least two mechanics other than multiple choice (search, riddle or an interactive challenge)');
+  }
+  return issues;
+}
+
+const questRules = (q: Parameters<typeof questIssues>[0], ctx: z.RefinementCtx) => {
+  for (const message of questIssues(q)) ctx.addIssue({ code: 'custom', message });
+};
+
+const ActiveQuest = z.strictObject({ ...questFields, status: z.literal('active') }).superRefine(questRules);
+/**
+ * Being written: same shape and rules as an active quest, but never loaded into the game. It may unlock
+ * textbook quests that do not exist yet (checked when the book's quests are switched on).
+ */
+const DraftQuest = z.strictObject({ ...questFields, status: z.literal('draft') }).superRefine(questRules);
 
 /** Quest data model (Master Plan §11): Quest → Step → Interaction → Challenge, with learning support. */
-export const QuestDefinition = z.discriminatedUnion('status', [ActiveQuest, StubQuest]);
+export const QuestDefinition = z.discriminatedUnion('status', [ActiveQuest, DraftQuest, StubQuest]);
 export type QuestDefinition = z.infer<typeof QuestDefinition>;
 export type ActiveQuest = z.infer<typeof ActiveQuest>;
+export type DraftQuest = z.infer<typeof DraftQuest>;
 export type StubQuest = z.infer<typeof StubQuest>;
+/** Quests the game can load (drafts never are). */
+export type PlayableQuest = ActiveQuest | StubQuest;
 
 /** Subject → Skill catalogue (Master Plan §5). Skill ids are unique across subjects. */
 export const SkillCatalog = z

@@ -1,8 +1,8 @@
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { ConsentDocument, LevelCurve, NameList, QuestDefinition, SkillCatalog } from '@miu/schema/content';
-import { questCatalogIssues } from '@miu/quest/quest-catalog';
+import { ConsentDocument, LevelCurve, NameList, QuestDefinition, SkillCatalog, type PlayableQuest } from '@miu/schema/content';
+import { questCatalogReport } from '@miu/quest/quest-catalog';
 import { buildAccessoryCatalog, type AccessoryItem } from '@miu/voxel/accessory-schema';
 import type { z } from 'zod';
 
@@ -21,7 +21,10 @@ export interface ContentCatalog {
   /** Subject → skill tree (Master Plan §5), in catalogue order. */
   subjects: SkillCatalog['subjects'];
   skillIds: ReadonlySet<string>;
-  quests: ReadonlyMap<string, QuestDefinition>;
+  /** Active quests and coming-soon stubs; drafts are validated but never loaded. */
+  quests: ReadonlyMap<string, PlayableQuest>;
+  /** Gaps allowed while textbook quests are drafts (links to quests not written yet). */
+  questWarnings: readonly string[];
   /** Quest id → quests whose completion unlocks it. A quest nobody unlocks is open from the start. */
   unlockedBy: ReadonlyMap<string, readonly string[]>;
 }
@@ -47,17 +50,23 @@ function jsonFiles(dir: string): string[] {
     .map((f) => path.join(dir, f));
 }
 
-export function loadQuests(questDir: string, skillIds: ReadonlySet<string>): Map<string, QuestDefinition> {
+export interface LoadedQuests {
+  quests: Map<string, PlayableQuest>;
+  warnings: string[];
+}
+
+export function loadQuests(questDir: string, skillIds: ReadonlySet<string>): LoadedQuests {
   const list = jsonFiles(questDir).map((file) => readContentJson(QuestDefinition, file));
-  const issues = questCatalogIssues(list, skillIds);
+  const { issues, warnings } = questCatalogReport(list, skillIds);
   if (issues.length > 0) throw new Error(`invalid quest catalogue: ${issues.join('; ')}`);
-  return new Map(list.map((q) => [q.id, q]));
+  const playable = list.filter((q): q is PlayableQuest => q.status !== 'draft');
+  return { quests: new Map(playable.map((q) => [q.id, q])), warnings };
 }
 
 export function loadContentCatalog({ dir = CONTENT_DIR, questDir }: ContentOptions = {}): ContentCatalog {
   const catalog = readContentJson(SkillCatalog, path.join(dir, 'learning/skills.json'));
   const skillIds = new Set(catalog.subjects.flatMap((s) => s.skills.map((k) => k.id)));
-  const quests = loadQuests(questDir ?? path.join(dir, 'quests'), skillIds);
+  const { quests, warnings: questWarnings } = loadQuests(questDir ?? path.join(dir, 'quests'), skillIds);
   const unlockedBy = new Map<string, string[]>();
   for (const quest of quests.values()) {
     for (const target of quest.unlock) unlockedBy.set(target, [...(unlockedBy.get(target) ?? []), quest.id]);
@@ -73,6 +82,7 @@ export function loadContentCatalog({ dir = CONTENT_DIR, questDir }: ContentOptio
     subjects: catalog.subjects,
     skillIds,
     quests,
+    questWarnings,
     unlockedBy,
   };
 }

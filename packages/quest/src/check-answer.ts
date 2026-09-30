@@ -1,12 +1,25 @@
-import type { AnswerableStep } from '@miu/schema/content';
+import { sameClockTime, type AnswerableStep } from '@miu/schema/content';
 import type { StepAnswer } from '@miu/schema/game';
+
+type Mechanic<M extends string> = Extract<AnswerableStep, { mechanic: M }>;
 
 function sameList(a: readonly string[], b: readonly string[]): boolean {
   return a.length === b.length && a.every((id, i) => b[i] === id);
 }
 
+/** Same members, any order, no repeats. */
+function sameSet(a: readonly string[], b: readonly string[]): boolean {
+  return new Set(a).size === a.length && a.length === b.length && a.every((id) => b.includes(id));
+}
+
+/** Same keys and the same value for each key. */
+function sameRecord(a: Readonly<Record<string, string>>, b: Readonly<Record<string, string>>): boolean {
+  const keys = Object.keys(b);
+  return sameSet(Object.keys(a), keys) && keys.every((k) => a[k] === b[k]);
+}
+
 /** Drag-drop: each piece at most once, only known pieces, values adding up to the total. */
-function checkPlaced(step: Extract<AnswerableStep, { mechanic: 'drag-drop' }>, placed: readonly string[]): boolean {
+function checkPlaced(step: Mechanic<'drag-drop'>, placed: readonly string[]): boolean {
   if (new Set(placed).size !== placed.length) return false;
   let sum = 0;
   for (const id of placed) {
@@ -15,6 +28,17 @@ function checkPlaced(step: Extract<AnswerableStep, { mechanic: 'drag-drop' }>, p
     sum += piece.value;
   }
   return sum === step.answer.total;
+}
+
+/** Connect: the same segments, in any order and either direction. */
+function checkEdges(step: Mechanic<'connect'>, edges: readonly (readonly [string, string])[]): boolean {
+  const key = ([a, b]: readonly [string, string]) => [a, b].sort().join('|');
+  return sameSet(edges.map(key), step.answer.edges.map(key));
+}
+
+function checkCalendar(step: Mechanic<'calendar'>, answer: StepAnswer): boolean {
+  if ('day' in step.answer) return 'day' in answer && answer.day === step.answer.day;
+  return 'weekday' in answer && answer.weekday === step.answer.weekday;
 }
 
 /**
@@ -31,5 +55,17 @@ export function checkAnswer(step: AnswerableStep, answer: StepAnswer): boolean {
       return 'order' in answer && sameList(answer.order, step.answer.order);
     case 'drag-drop':
       return 'placed' in answer && checkPlaced(step, answer.placed);
+    case 'classify':
+      return 'assignment' in answer && sameRecord(answer.assignment, step.answer.assignment);
+    case 'fill-blank':
+      return 'fills' in answer && sameRecord(answer.fills, step.answer.fills);
+    case 'multi-select':
+      return 'choices' in answer && sameSet(answer.choices, step.answer.choices);
+    case 'clock':
+      return 'hour' in answer && sameClockTime(answer, step.answer, step.display);
+    case 'calendar':
+      return checkCalendar(step, answer);
+    case 'connect':
+      return 'edges' in answer && checkEdges(step, answer.edges);
   }
 }

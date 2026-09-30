@@ -50,6 +50,58 @@ describe('checkAnswer', () => {
     expect(checkAnswer(drag, { placed: [...ten.slice(0, 9), 'pear'] })).toBe(false);
   });
 
+  it('grades classify and fill-blank by the whole map', () => {
+    const groups = [{ id: 'g1', label: 'Sự vật' }, { id: 'g2', label: 'Hoạt động' }];
+    const items = [{ id: 'sach', label: 'sách' }, { id: 'doc', label: 'đọc' }];
+    const classify = answerable({ kind: 'challenge', mechanic: 'classify', prompt: 'Xếp', groups, items, answer: { assignment: { sach: 'g1', doc: 'g2' } } });
+    expect(checkAnswer(classify, { assignment: { doc: 'g2', sach: 'g1' } })).toBe(true);
+    expect(checkAnswer(classify, { assignment: { sach: 'g1' } })).toBe(false);
+    expect(checkAnswer(classify, { assignment: { sach: 'g1', doc: 'g2', but: 'g1' } })).toBe(false);
+    expect(checkAnswer(classify, { assignment: { sach: 'g2', doc: 'g2' } })).toBe(false);
+    const blanks = [{ id: 'b1', options: [{ id: 'c', text: 'c' }, { id: 'k', text: 'k' }] }, { id: 'b2', options: [{ id: 'c', text: 'c' }, { id: 'k', text: 'k' }] }];
+    const fill = answerable({ kind: 'challenge', mechanic: 'fill-blank', prompt: 'Điền', template: '{{b1}}á {{b2}}ẹo', blanks, answer: { fills: { b1: 'c', b2: 'k' } } });
+    expect(checkAnswer(fill, { fills: { b1: 'c', b2: 'k' } })).toBe(true);
+    expect(checkAnswer(fill, { fills: { b1: 'c' } })).toBe(false);
+    expect(checkAnswer(fill, { fills: { b1: 'k', b2: 'c' } })).toBe(false);
+  });
+
+  it('grades multi-select as a set: any order, nothing missing, nothing extra', () => {
+    const multi = answerable({ kind: 'challenge', mechanic: 'multi-select', prompt: 'Chọn', choices, answer: { choices: ['a', 'c'] } });
+    expect(checkAnswer(multi, { choices: ['c', 'a'] })).toBe(true);
+    expect(checkAnswer(multi, { choices: ['a'] })).toBe(false);
+    expect(checkAnswer(multi, { choices: ['a', 'b', 'c'] })).toBe(false);
+    expect(checkAnswer(multi, { choices: ['a', 'a'] })).toBe(false);
+  });
+
+  it('grades clocks: analog faces ignore morning/afternoon, digital ones do not', () => {
+    const clock = (display: string) =>
+      answerable({ kind: 'challenge', mechanic: 'clock', prompt: 'Quay kim', mode: 'set', display, answer: { hour: 15, minute: 30 } });
+    expect(checkAnswer(clock('analog'), { hour: 3, minute: 30 })).toBe(true);
+    expect(checkAnswer(clock('analog'), { hour: 15, minute: 30 })).toBe(true);
+    expect(checkAnswer(clock('analog'), { hour: 3, minute: 0 })).toBe(false);
+    expect(checkAnswer(clock('digital'), { hour: 3, minute: 30 })).toBe(false);
+    expect(checkAnswer(clock('digital'), { hour: 15, minute: 30 })).toBe(true);
+  });
+
+  it('grades calendars by day or weekday, whichever the question asks', () => {
+    const base = { kind: 'challenge', mechanic: 'calendar', prompt: 'Lịch', month: 11, year: 2026, question: '?' };
+    const byDay = answerable({ ...base, answer: { day: 20 } });
+    expect(checkAnswer(byDay, { day: 20 })).toBe(true);
+    expect(checkAnswer(byDay, { weekday: 'thu-sau' })).toBe(false);
+    const byWeekday = answerable({ ...base, answer: { weekday: 'thu-sau' } });
+    expect(checkAnswer(byWeekday, { weekday: 'thu-sau' })).toBe(true);
+    expect(checkAnswer(byWeekday, { day: 20 })).toBe(false);
+  });
+
+  it('grades connect by the set of segments, in either direction', () => {
+    const points = ['a', 'b', 'c'].map((id, i) => ({ id, x: i, y: 0, label: id.toUpperCase() }));
+    const connect = answerable({ kind: 'challenge', mechanic: 'connect', prompt: 'Nối', points, answer: { edges: [['a', 'b'], ['b', 'c']] } });
+    expect(checkAnswer(connect, { edges: [['c', 'b'], ['b', 'a']] })).toBe(true);
+    expect(checkAnswer(connect, { edges: [['a', 'b']] })).toBe(false);
+    expect(checkAnswer(connect, { edges: [['a', 'b'], ['b', 'c'], ['c', 'b']] })).toBe(false);
+    expect(checkAnswer(connect, { edges: [['a', 'b'], ['a', 'c']] })).toBe(false);
+  });
+
   it('treats an answer of the wrong shape as wrong', () => {
     const riddle = answerable({ kind: 'riddle', question: '8 + 5 = ?', answer: { value: 13 } });
     expect(checkAnswer(riddle, { choice: 'a' })).toBe(false);
