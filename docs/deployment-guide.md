@@ -196,6 +196,5 @@ tools/deploy/production/deploy.sh release   # build, security:dist, backup DB, u
 **Việc còn lại (của người):**
 
 1. Redirect URI `https://miu.hoandat.com/api/auth/google/callback` đã thêm (30/09/2026). Consent screen còn ở chế độ Testing nên chỉ test user đăng nhập được. Để mở cho mọi người: điền homepage `https://miu.hoandat.com` và privacy policy `https://miu.hoandat.com/privacy`, xác minh `hoandat.com` trong Google Search Console, rồi chuyển Publishing status sang "In production" (scope chỉ `openid email` nên không cần duyệt scope nhạy cảm).
-2. Email liên hệ cho `/privacy`: đặt `contactEmail` trong `content/legal/privacy-vi.json` rồi release.
-3. Lời đồng ý `v1` và `/privacy` do dự án tự soạn, chưa qua luật sư (trang ghi rõ). Nghị định 13/2023 Điều 20 yêu cầu có cả đồng ý của trẻ từ 7 tuổi: hiện lời đồng ý nhắc phụ huynh hỏi bé, chưa có bước bé tự xác nhận.
-4. Quyết định giữ hay bỏ công tắc dev (`?spawnAt`, `?outfit`, `?stats`).
+2. Lời đồng ý `v1` và `/privacy` do dự án tự soạn, chưa qua luật sư (trang ghi rõ). Nghị định 13/2023 Điều 20 yêu cầu có cả đồng ý của trẻ từ 7 tuổi: hiện lời đồng ý nhắc phụ huynh hỏi bé, chưa có bước bé tự xác nhận.
+3. Quyết định giữ hay bỏ công tắc dev (`?spawnAt`, `?outfit`, `?stats`).

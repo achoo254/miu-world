@@ -24,3 +24,12 @@ Trang duyệt cuối: chạy server, rồi `pnpm --filter @miu/web build` và `p
 ## License asset
 
 Chỉ nhận CC0, MIT, OFL. Nguồn, phiên bản và hash từng file: [`assets/LICENSES.md`](assets/LICENSES.md) và `assets/manifest.json` (sinh tự động, không sửa tay).
+
+## Giấy phép
+
+Mã nguồn theo giấy phép MIT ([`LICENSE`](LICENSE)). Không thuộc phạm vi MIT:
+
+- Asset trong `assets/`: giữ giấy phép gốc của từng pack (CC0, MIT, OFL), xem [`assets/LICENSES.md`](assets/LICENSES.md).
+- Văn bản sách giáo khoa trích nguyên văn trong `content/curriculum/` và các quest SGK: bản quyền thuộc tác giả và nhà xuất bản của sách; repo chỉ dùng cho mục đích học tập, phi thương mại.
+
+Quyền riêng tư của người chơi: trang `/privacy` (nội dung ở [`content/legal/privacy-vi.json`](content/legal/privacy-vi.json)). Báo lỗi bảo mật hoặc yêu cầu về dữ liệu: quocdat254@gmail.com.

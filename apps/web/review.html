@@ -120,7 +120,6 @@
         <h3>Nợ trước khi có người dùng thật</h3>
         <ul class="debts">
           <li>Lời đồng ý <code>v1</code> và trang <code>/privacy</code> do dự án tự soạn, chưa qua luật sư (dự án miễn phí, không có pháp chế); trang ghi rõ điều đó. NĐ 13/2023 Điều 20 còn yêu cầu hỏi ý trẻ từ 7 tuổi: hiện lời đồng ý nhắc phụ huynh hỏi bé, chưa có bước bé tự xác nhận.</li>
-          <li>Trang <code>/privacy</code> chưa có email liên hệ (<code>contactEmail: null</code>); tải và xóa dữ liệu đã tự làm được trong khu phụ huynh.</li>
           <li>Google OAuth client đang ở chế độ thử nghiệm: cần xác minh ứng dụng với Google trước khi mở cho người dùng thật.</li>
           <li>Triển khai: đặt <code>trust proxy</code> theo reverse proxy thật; rate limit đang lưu trong bộ nhớ (một instance); server đang chạy bằng <code>tsx</code>, chưa có bước đóng gói production.</li>
           <li>Test trên PostgreSQL thật và Semgrep chạy ở CI; chưa có lần push nào nên chưa có kết quả CI.</li>
