@@ -47,6 +47,7 @@
   --color-tile-3: #e8ddff;
   /* Dims the paused game behind a modal. */
   --color-backdrop: rgba(43, 33, 64, 0.55);
+  --color-backdrop-light: rgba(43, 33, 64, 0.18);
 
   --font-display: 'Baloo 2', system-ui, sans-serif;
   --font-body: 'Nunito', system-ui, sans-serif;

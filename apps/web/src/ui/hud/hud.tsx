@@ -8,12 +8,14 @@ import { Icon } from '../kit/art';
 import { buttonClass } from '../kit/button';
 import { PlayerBadge } from '../player/player-badge';
 import { nextStep, say, stepProgress, type PlayerData } from '../player/player-data';
+import { searchCount } from '../quest/quest-flow';
 import './hud.css';
 
 export function QuestTracker({ quest, data }: { quest: QuestSummary | null; data: PlayerData }) {
   if (!quest) return null;
   const step = nextStep(quest);
   const { done, total } = stepProgress(quest);
+  const clues = step ? searchCount(step, quest.progress) : null;
   return (
     <section className="hud-tracker" aria-label="Nhiệm vụ hiện tại" data-id="hud-tracker">
       <p className="hud-tracker-kicker">
@@ -25,6 +27,12 @@ export function QuestTracker({ quest, data }: { quest: QuestSummary | null; data
       </p>
       <p className="hud-tracker-step" data-id="hud-tracker-step">
         {step ? say(step.title, data.character) : 'Đã hoàn thành'}
+        {clues ? (
+          <span className="hud-tracker-count" data-id="hud-tracker-count">
+            {' '}
+            {clues.found}/{clues.total}
+          </span>
+        ) : null}
       </p>
       <p className="hint" data-id="hud-tracker-progress">
         {done}/{total}

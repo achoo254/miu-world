@@ -8,7 +8,9 @@ const FLUENT = 'packs/fluent-emoji/1ffb34c752ec/icons';
 export const UI_ICONS = {
   antennaBars: `${FLUENT}/antenna-bars.png`,
   backpack: `${FLUENT}/backpack.png`,
+  beaver: `${FLUENT}/beaver.png`,
   catFace: `${FLUENT}/cat-face.png`,
+  checkMark: `${FLUENT}/check-mark.png`,
   coin: `${FLUENT}/coin.png`,
   gear: `${FLUENT}/gear.png`,
   gift: `${FLUENT}/gift.png`,
@@ -19,11 +21,13 @@ export const UI_ICONS = {
   locked: `${FLUENT}/locked.png`,
   map: `${FLUENT}/map.png`,
   parrot: `${FLUENT}/parrot.png`,
+  package: `${FLUENT}/package.png`,
   pause: `${FLUENT}/pause.png`,
   scroll: `${FLUENT}/scroll.png`,
   sparkles: `${FLUENT}/sparkles.png`,
   speaker: `${FLUENT}/speaker.png`,
   speakerMuted: `${FLUENT}/speaker-muted.png`,
+  tree: `${FLUENT}/tree.png`,
 } as const;
 
 /**

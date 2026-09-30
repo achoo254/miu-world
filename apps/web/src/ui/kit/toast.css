@@ -1,0 +1,19 @@
+/* Toast: values from tokens.css only. */
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 9rem;
+  transform: translateX(-50%);
+  z-index: var(--z-hud);
+  max-width: min(90vw, 32rem);
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--radius-pill);
+  background: var(--color-surface);
+  color: var(--color-ink);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--text-lg);
+  text-align: center;
+  box-shadow: var(--shadow-label);
+  pointer-events: none;
+}

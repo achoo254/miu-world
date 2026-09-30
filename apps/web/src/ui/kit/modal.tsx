@@ -5,7 +5,20 @@ import './modal.css';
 
 const FOCUSABLE = 'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
-export function Modal({ title, onClose, children, dataId }: { title: string; onClose?: () => void; children: ReactNode; dataId?: string }) {
+export function Modal({
+  title,
+  onClose,
+  children,
+  dataId,
+  placement = 'center',
+}: {
+  title: string;
+  onClose?: () => void;
+  children: ReactNode;
+  dataId?: string;
+  /** `bottom` docks the panel at the bottom edge (NPC dialogue over the game). */
+  placement?: 'center' | 'bottom';
+}) {
   const dialog = useRef<HTMLDivElement>(null);
   const titleId = useId();
   // Latest onClose without re-running the focus effect on every render.
@@ -48,7 +61,7 @@ export function Modal({ title, onClose, children, dataId }: { title: string; onC
   }, []);
 
   return (
-    <div className="modal-backdrop" data-id={dataId ? `${dataId}-backdrop` : undefined}>
+    <div className={`modal-backdrop modal-backdrop--${placement}`} data-id={dataId ? `${dataId}-backdrop` : undefined}>
       <div ref={dialog} className="panel modal" role="dialog" aria-modal="true" aria-labelledby={titleId} tabIndex={-1} data-id={dataId}>
         <h2 id={titleId} className="modal-title">
           {title}

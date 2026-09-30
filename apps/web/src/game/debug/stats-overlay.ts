@@ -20,6 +20,8 @@ export interface MiuStats {
   nearTarget: string | null;
   /** Id of the last target the player interacted with. */
   lastInteraction: string | null;
+  /** Target the direction arrow points at while it shows. */
+  hintTarget: string | null;
   /** True when the camera sits inside a solid block (must never happen). */
   cameraInsideBlock: boolean;
   cameraYaw: number;
@@ -41,7 +43,7 @@ export class StatsOverlay {
   readonly stats: MiuStats;
 
   constructor(private readonly el: HTMLElement, quality: string) {
-    this.stats = { quality, fpsAvg: 0, fpsP5: 0, calls: 0, triangles: 0, frames: 0, loadMs: 0, meshMs: 0, worker: true, firstAreaBytes: 0, ready: false, player: [0, 0, 0], onGround: false, nearTarget: null, lastInteraction: null, cameraInsideBlock: false, cameraYaw: 0, outfit: [] };
+    this.stats = { quality, fpsAvg: 0, fpsP5: 0, calls: 0, triangles: 0, frames: 0, loadMs: 0, meshMs: 0, worker: true, firstAreaBytes: 0, ready: false, player: [0, 0, 0], onGround: false, nearTarget: null, lastInteraction: null, hintTarget: null, cameraInsideBlock: false, cameraYaw: 0, outfit: [] };
     window.__miuStats = this.stats;
   }
 

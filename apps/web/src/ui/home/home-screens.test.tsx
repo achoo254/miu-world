@@ -115,7 +115,7 @@ describe('HUD', () => {
         </GameStoreContext.Provider>
       </MemoryRouter>,
     );
-    expect(document.querySelector('[data-id="hud-tracker-step"]')?.textContent).toBe('Tìm manh mối');
+    expect(document.querySelector('[data-id="hud-tracker-step"]')?.textContent).toBe('Tìm manh mối 0/1');
     expect(screen.queryByRole('button', { name: /Tương tác/ })).toBeNull();
     const before = trackerRenders;
     // Loading steps and repeated identical prompts (what moving around produces) cause no HUD work.

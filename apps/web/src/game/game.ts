@@ -20,6 +20,7 @@ import { AssetRegistry, GuardedGltfLoader } from './asset-loader';
 import { createReviewShot } from './debug/review-shots';
 import { StatsOverlay } from './debug/stats-overlay';
 import { loadInteractables, pickNearest, type InteractableObject } from './entities/interactables';
+import { createTargetArrow } from './entities/target-arrow';
 import { loadPlayerCharacter } from './entities/player-character';
 import { loadProps } from './entities/props';
 import { Autopilot } from './player/autopilot';
@@ -271,9 +272,13 @@ export class Game {
     let promptTarget: InteractableObject | null = null;
     let interactRequested = false;
     const byId = new Map(targets.map((t) => [t.def.id, t]));
+    const arrow = createTargetArrow();
+    scene.add(arrow.mesh);
+    let hint: InteractableObject | null = null;
     this.cleanups.push(
       store.onCommand((command) => {
         if (command.type === 'interact') interactRequested = true;
+        if (command.type === 'set-target-hint') hint = command.targetId ? (byId.get(command.targetId) ?? null) : null;
         // Server-backed target states; a target missing from the map returns to its initial look.
         if (command.type === 'set-world-state') for (const [id, target] of byId) target.setState(command.state[id]);
       }),
@@ -324,6 +329,8 @@ export class Game {
       world.update(camera);
 
       for (const target of targets) target.update(dt);
+      arrow.update(dt, controller.position, hint?.available ? hint.def : null);
+      overlay.stats.hintTarget = arrow.mesh.visible ? (hint?.def.id ?? null) : null;
       const nearest = pickNearest(targets, controller.position);
       if (nearest !== promptTarget) {
         promptTarget = nearest;

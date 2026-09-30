@@ -9,7 +9,9 @@ import { Game } from '../../game/game';
 import { ApiError, errorMessage } from '../api-client';
 import { useAccount } from '../account/account-context';
 import { Hud } from '../hud/hud';
+import type { StepCompleteResponse } from '@miu/schema/game';
 import { currentQuest, loadPlayer, type PlayerData } from '../player/player-data';
+import { QuestLayer } from '../quest/quest-layer';
 import { findRegion } from '../region/regions';
 import { LoadingOverlay } from '../system/loading-overlay';
 import { OfflineBanner } from '../system/offline-banner';
@@ -100,6 +102,7 @@ export function PlayScreen() {
   const [loadError, setLoadError] = useState<string | null>(null);
   const [offline, setOffline] = useState(false);
   const [paused, setPaused] = useState(false);
+  const [questOpen, setQuestOpen] = useState(false);
   const status = useSyncStatus(store);
 
   const onLoadError = useCallback(
@@ -143,6 +146,20 @@ export function PlayScreen() {
     return () => window.removeEventListener('keydown', onKey);
   }, [status, paused]);
 
+  // Server numbers after each step: progress, this quest's state; a finished quest can open others.
+  const onResponse = useCallback((response: StepCompleteResponse): void => {
+    setData((prev) =>
+      prev && {
+        ...prev,
+        progress: response.progress,
+        quests: prev.quests.map((q) =>
+          q.quest.id === response.quest.questId ? { ...q, progress: response.quest, state: response.quest.completed ? 'completed' : 'in-progress' } : q,
+        ),
+      },
+    );
+    if (response.completion) void loadPlayer().then(setData, () => undefined);
+  }, []);
+
   // The quest named in the URL (from Home or the region screen), else the one the child is on.
   const questId = params.get('quest');
   const quest = data ? (data.quests.find((q) => q.quest.id === questId) ?? currentQuest(data.quests)) : null;
@@ -151,7 +168,7 @@ export function PlayScreen() {
   return (
     <GameStoreContext.Provider value={store}>
       <main data-id="play">
-        {data ? <GameView store={store} outfit={data.character.equipped} paused={paused} /> : null}
+        {data ? <GameView store={store} outfit={data.character.equipped} paused={paused || questOpen} /> : null}
         {loadError ? (
           <div className="play-message" role="alert">
             <p>
@@ -164,6 +181,7 @@ export function PlayScreen() {
         <InteractionLabel />
         <GameStatus />
         {data && status !== 'error' ? <Hud data={data} quest={quest} onMenu={() => setPaused(true)} /> : null}
+        {data ? <QuestLayer store={store} data={data} questId={quest?.quest.id ?? null} onResponse={onResponse} onOverlayChange={setQuestOpen} /> : null}
         {paused ? <PauseScreen onResume={() => setPaused(false)} homePath={HOME_PATH} /> : null}
       </main>
     </GameStoreContext.Provider>

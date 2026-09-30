@@ -1,0 +1,59 @@
+// Everything the quest puts over the forest: NPC dialogue, learning-step screens, short toasts and the
+// offline retry for a pending step. Rendered by /play once the player data is loaded.
+import type { StepCompleteResponse } from '@miu/schema/game';
+import type { GameStore } from '../../game-bridge/game-store';
+import { DialogueScreen } from '../dialogue/dialogue-screen';
+import { buttonClass } from '../kit/button';
+import { Modal } from '../kit/modal';
+import { Toast } from '../kit/toast';
+import { say, type PlayerData } from '../player/player-data';
+import { OfflineBanner } from '../system/offline-banner';
+import { useQuestController } from './use-quest-controller';
+
+export function QuestLayer({
+  store,
+  data,
+  questId,
+  onResponse,
+  onOverlayChange,
+}: {
+  store: GameStore;
+  data: PlayerData;
+  questId: string | null;
+  onResponse: (response: StepCompleteResponse) => void;
+  /** True while a screen covers the game (it stops rendering meanwhile). */
+  onOverlayChange: (open: boolean) => void;
+}) {
+  const quest = useQuestController({ store, data, questId, onResponse, onOverlayChange });
+  const summary = data.quests.find((q) => q.quest.id === questId);
+  const step = quest.overlay?.step ?? null;
+  return (
+    <>
+      {step?.kind === 'dialogue' ? (
+        <DialogueScreen
+          step={step}
+          character={data.character}
+          questSummary={summary?.quest.status === 'active' ? say(summary.quest.summary, data.character) : ''}
+          busy={quest.busy}
+          onDone={() => void quest.submit(step)}
+          onClose={quest.close}
+        />
+      ) : step ? (
+        // Learning steps (read, riddle, challenges) get their own screens with the support panel.
+        <Modal title={say(step.title, data.character)} onClose={quest.close} dataId="quest-step">
+          <p>Thử thách này sắp có.</p>
+          <button type="button" className={buttonClass('primary', { block: true })} onClick={quest.close}>
+            Đóng
+          </button>
+        </Modal>
+      ) : null}
+      {quest.error ? (
+        <p role="alert" className="error quest-error" data-id="quest-error">
+          {quest.error}
+        </p>
+      ) : null}
+      {quest.retry ? <OfflineBanner onRetry={quest.retry} /> : null}
+      {quest.toast ? <Toast message={quest.toast} onDone={quest.clearToast} /> : null}
+    </>
+  );
+}
