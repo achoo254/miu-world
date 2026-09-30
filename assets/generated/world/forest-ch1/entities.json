@@ -964,6 +964,216 @@
       "yaw": 180,
       "scale": 3.1404,
       "chapter": 2
+    },
+    {
+      "model": "packs/kenney-survival-kit/2.0/campfire-stand.glb",
+      "position": [
+        13.5,
+        13,
+        17.5
+      ],
+      "yaw": 90,
+      "scale": 3.9146
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/stump_round.glb",
+      "position": [
+        9.5,
+        13,
+        20.5
+      ],
+      "yaw": 0,
+      "scale": 2.4213
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/log_stack.glb",
+      "position": [
+        9.5,
+        13,
+        22.5
+      ],
+      "yaw": 90,
+      "scale": 2.5981
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/stump_round.glb",
+      "position": [
+        16.5,
+        11,
+        36.5
+      ],
+      "yaw": 0,
+      "scale": 2.4213
+    },
+    {
+      "model": "packs/kenney-survival-kit/2.0/tree-log.glb",
+      "position": [
+        13.5,
+        12,
+        37.5
+      ],
+      "yaw": 90,
+      "scale": 1.8042
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crops_dirtRow.glb",
+      "position": [
+        28.5,
+        12,
+        13.5
+      ],
+      "yaw": 0,
+      "scale": 5
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crop_carrot.glb",
+      "position": [
+        28.5,
+        12,
+        13.5
+      ],
+      "yaw": 0,
+      "scale": 0.7265
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crops_dirtRow.glb",
+      "position": [
+        29.5,
+        12,
+        13.5
+      ],
+      "yaw": 0,
+      "scale": 5
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crop_carrot.glb",
+      "position": [
+        29.5,
+        12,
+        13.5
+      ],
+      "yaw": 60,
+      "scale": 0.7265
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crops_dirtRow.glb",
+      "position": [
+        30.5,
+        12,
+        13.5
+      ],
+      "yaw": 0,
+      "scale": 5
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crop_carrot.glb",
+      "position": [
+        30.5,
+        12,
+        13.5
+      ],
+      "yaw": 120,
+      "scale": 0.7265
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_yellowA.glb",
+      "position": [
+        25.5,
+        12,
+        12.5
+      ],
+      "yaw": 0,
+      "scale": 2.5974
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_purpleB.glb",
+      "position": [
+        33.5,
+        13,
+        11.5
+      ],
+      "yaw": 50,
+      "scale": 2.3981
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_yellowA.glb",
+      "position": [
+        29.5,
+        12,
+        10.5
+      ],
+      "yaw": 100,
+      "scale": 2.5974
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_yellowA.glb",
+      "position": [
+        76.5,
+        12,
+        20.5
+      ],
+      "yaw": 0,
+      "scale": 2.5974
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_yellowA.glb",
+      "position": [
+        82.5,
+        12,
+        18.5
+      ],
+      "yaw": 70,
+      "scale": 2.5974
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_purpleB.glb",
+      "position": [
+        78.5,
+        13,
+        28.5
+      ],
+      "yaw": 140,
+      "scale": 2.3981
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/mushroom_redGroup.glb",
+      "position": [
+        42.5,
+        14,
+        75.5
+      ],
+      "yaw": 20,
+      "scale": 2.3953
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/mushroom_tanGroup.glb",
+      "position": [
+        35.5,
+        14,
+        77.5
+      ],
+      "yaw": 70,
+      "scale": 2.3953
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/plant_bush.glb",
+      "position": [
+        18.5,
+        12,
+        41.5
+      ],
+      "yaw": 40,
+      "scale": 4.0909
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/plant_bush.glb",
+      "position": [
+        13.5,
+        12,
+        38.5
+      ],
+      "yaw": 10,
+      "scale": 4.0909
     }
   ],
   "landmarks": [
@@ -1002,6 +1212,515 @@
         13,
         83.5
       ]
+    }
+  ],
+  "ambients": [
+    {
+      "id": "bac-nau-an",
+      "routine": "cook",
+      "name": "Bà Bếp",
+      "model": "packs/kenney-blocky-characters/2.0/character-i.glb",
+      "scale": 0.6111,
+      "position": [
+        12.5,
+        13,
+        19.5
+      ],
+      "yaw": 90,
+      "spots": {
+        "fire": [
+          13.5,
+          13,
+          19.5
+        ],
+        "pot": [
+          13.5,
+          13,
+          17.5
+        ],
+        "table": [
+          10.5,
+          13,
+          14.5
+        ],
+        "seat": [
+          10.5,
+          13,
+          20.5
+        ]
+      },
+      "held": [
+        "packs/kenney-food-kit/2.0/cooking-spoon.glb"
+      ]
+    },
+    {
+      "id": "be-ganh-cui",
+      "routine": "firewood-carrier",
+      "name": "Bé Tí",
+      "model": "packs/kenney-blocky-characters/2.0/character-f.glb",
+      "scale": 0.4815,
+      "position": [
+        11.5,
+        13,
+        21.5
+      ],
+      "yaw": 45,
+      "spots": {
+        "pile": [
+          10.5,
+          13,
+          22.5
+        ],
+        "stack": [
+          9.5,
+          13,
+          22.5
+        ],
+        "fire": [
+          12.5,
+          13,
+          14.5
+        ]
+      },
+      "held": [
+        "packs/kenney-survival-kit/2.0/resource-wood.glb"
+      ]
+    },
+    {
+      "id": "bac-tieu-phu",
+      "routine": "woodcutter",
+      "name": "Bác Tiều phu",
+      "model": "packs/kenney-blocky-characters/2.0/character-a.glb",
+      "scale": 0.6667,
+      "position": [
+        14.5,
+        11,
+        33.5
+      ],
+      "yaw": 270,
+      "spots": {
+        "tree": [
+          12.5,
+          11,
+          32.5
+        ],
+        "trunk": [
+          12.5,
+          11.5,
+          33.5
+        ],
+        "logs": [
+          11.5,
+          13,
+          23.5
+        ],
+        "stump": [
+          16.5,
+          11,
+          35.5
+        ]
+      },
+      "held": [
+        "packs/kenney-survival-kit/2.0/tool-axe.glb",
+        "packs/kenney-survival-kit/2.0/resource-wood.glb"
+      ]
+    },
+    {
+      "id": "sau-bo-go",
+      "routine": "caterpillar",
+      "name": "Sâu con",
+      "model": "packs/kenney-cube-pets/2.0/animal-caterpillar.glb",
+      "scale": 0.3435,
+      "position": [
+        12.5,
+        12,
+        36.5
+      ],
+      "yaw": 90,
+      "spots": {
+        "log-end": [
+          14.5,
+          12,
+          36.5
+        ]
+      }
+    },
+    {
+      "id": "co-lam-vuon",
+      "routine": "gardener",
+      "name": "Cô Làm vườn",
+      "model": "packs/kenney-blocky-characters/2.0/character-e.glb",
+      "scale": 0.6481,
+      "position": [
+        25.5,
+        12,
+        14.5
+      ],
+      "yaw": 180,
+      "spots": {
+        "row-a": [
+          28.5,
+          12,
+          14.5
+        ],
+        "row-b": [
+          29.5,
+          12,
+          14.5
+        ],
+        "row-c": [
+          30.5,
+          12,
+          14.5
+        ],
+        "bed": [
+          29.5,
+          12,
+          13.5
+        ]
+      },
+      "held": [
+        "packs/kenney-survival-kit/2.0/tool-hoe.glb",
+        "packs/kenney-survival-kit/2.0/bucket.glb",
+        "packs/kenney-food-kit/2.0/carrot.glb"
+      ]
+    },
+    {
+      "id": "ga-con-1",
+      "routine": "chick",
+      "name": "Gà con",
+      "model": "packs/kenney-cube-pets/2.0/animal-chick.glb",
+      "scale": 0.3136,
+      "position": [
+        32.5,
+        12,
+        14.5
+      ],
+      "yaw": 0,
+      "spots": {}
+    },
+    {
+      "id": "ga-con-2",
+      "routine": "chick",
+      "name": "Gà con",
+      "model": "packs/kenney-cube-pets/2.0/animal-chick.glb",
+      "scale": 0.3136,
+      "position": [
+        32.5,
+        12,
+        16.5
+      ],
+      "yaw": 140,
+      "spots": {}
+    },
+    {
+      "id": "ong-vuon",
+      "routine": "bee",
+      "name": "Ong mật",
+      "model": "packs/kenney-cube-pets/2.0/animal-bee.glb",
+      "scale": 0.1601,
+      "position": [
+        25.5,
+        12.7,
+        12.5
+      ],
+      "yaw": 0,
+      "spots": {
+        "flower-a": [
+          25.5,
+          12.7,
+          12.5
+        ],
+        "flower-b": [
+          33.5,
+          13.7,
+          11.5
+        ],
+        "flower-c": [
+          29.5,
+          12.7,
+          10.5
+        ]
+      }
+    },
+    {
+      "id": "chu-cau-ca",
+      "routine": "fisher",
+      "name": "Chú Câu cá",
+      "model": "packs/kenney-blocky-characters/2.0/character-m.glb",
+      "scale": 0.6481,
+      "position": [
+        24.5,
+        12,
+        48.5
+      ],
+      "yaw": 0,
+      "spots": {
+        "bank": [
+          26.5,
+          11,
+          50.5
+        ],
+        "water": [
+          26.5,
+          10,
+          54.5
+        ]
+      },
+      "held": [
+        "built:fishing-rod",
+        "packs/kenney-survival-kit/2.0/fish.glb"
+      ]
+    },
+    {
+      "id": "ca-suoi",
+      "routine": "fish",
+      "name": "Cá suối",
+      "model": "packs/kenney-cube-pets/2.0/animal-fish.glb",
+      "scale": 0.43,
+      "position": [
+        30.5,
+        10,
+        54.5
+      ],
+      "yaw": 90,
+      "spots": {
+        "leap-a": [
+          30.5,
+          10,
+          54.5
+        ],
+        "leap-b": [
+          36.5,
+          10,
+          55.5
+        ]
+      }
+    },
+    {
+      "id": "cua-cat",
+      "routine": "crab",
+      "name": "Cua",
+      "model": "packs/kenney-cube-pets/2.0/animal-crab.glb",
+      "scale": 0.3144,
+      "position": [
+        33.5,
+        11,
+        52.5
+      ],
+      "yaw": 0,
+      "spots": {
+        "sand-a": [
+          33.5,
+          11,
+          52.5
+        ],
+        "sand-b": [
+          36.5,
+          11,
+          52.5
+        ]
+      }
+    },
+    {
+      "id": "nai-me",
+      "routine": "deer",
+      "name": "Nai mẹ",
+      "model": "packs/kenney-cube-pets/2.0/animal-deer.glb",
+      "scale": 0.7527,
+      "position": [
+        80.5,
+        12,
+        24.5
+      ],
+      "yaw": 200,
+      "spots": {
+        "graze-b": [
+          83.5,
+          13,
+          30.5
+        ]
+      }
+    },
+    {
+      "id": "nai-con",
+      "routine": "deer",
+      "name": "Nai con",
+      "model": "packs/kenney-cube-pets/2.0/animal-deer.glb",
+      "scale": 0.4667,
+      "position": [
+        82.5,
+        12,
+        25.5
+      ],
+      "yaw": 160,
+      "spots": {
+        "graze-b": [
+          83.5,
+          13,
+          31.5
+        ]
+      }
+    },
+    {
+      "id": "ong-dong-co",
+      "routine": "bee",
+      "name": "Ong mật",
+      "model": "packs/kenney-cube-pets/2.0/animal-bee.glb",
+      "scale": 0.1601,
+      "position": [
+        82.5,
+        12.7,
+        18.5
+      ],
+      "yaw": 0,
+      "spots": {
+        "flower-a": [
+          76.5,
+          12.7,
+          20.5
+        ],
+        "flower-b": [
+          82.5,
+          12.7,
+          18.5
+        ],
+        "flower-c": [
+          78.5,
+          13.7,
+          28.5
+        ]
+      }
+    },
+    {
+      "id": "cao-ngu-ngay",
+      "routine": "fox",
+      "name": "Cáo",
+      "model": "packs/kenney-cube-pets/2.0/animal-fox.glb",
+      "scale": 0.5337,
+      "position": [
+        84.5,
+        13,
+        40.5
+      ],
+      "yaw": 240,
+      "spots": {
+        "den": [
+          84.5,
+          13,
+          40.5
+        ],
+        "lookout": [
+          78.5,
+          13,
+          38.5
+        ]
+      }
+    },
+    {
+      "id": "heo-rung",
+      "routine": "hog",
+      "name": "Heo rừng",
+      "model": "packs/kenney-cube-pets/2.0/animal-hog.glb",
+      "scale": 0.5937,
+      "position": [
+        38.5,
+        13,
+        74.5
+      ],
+      "yaw": 90,
+      "spots": {
+        "mush-a": [
+          41.5,
+          14,
+          75.5
+        ],
+        "mush-b": [
+          35.5,
+          14,
+          76.5
+        ]
+      }
+    },
+    {
+      "id": "tho-trang",
+      "routine": "bunny",
+      "name": "Thỏ",
+      "model": "packs/kenney-cube-pets/2.0/animal-bunny.glb",
+      "scale": 0.398,
+      "position": [
+        14.5,
+        12,
+        38.5
+      ],
+      "yaw": 120,
+      "spots": {
+        "bush-b": [
+          17.5,
+          12,
+          41.5
+        ]
+      }
+    },
+    {
+      "id": "vet-trai",
+      "routine": "parrot",
+      "name": "Vẹt rừng",
+      "model": "packs/kenney-cube-pets/2.0/animal-parrot.glb",
+      "scale": 0.6543,
+      "position": [
+        17.5,
+        18,
+        32.5
+      ],
+      "yaw": 0,
+      "spots": {
+        "perch-a": [
+          17.5,
+          18,
+          32.5
+        ],
+        "perch-b": [
+          31.5,
+          20,
+          12.5
+        ],
+        "sky": [
+          20.5,
+          23,
+          34.5
+        ]
+      }
+    },
+    {
+      "id": "vet-xanh",
+      "routine": "parrot",
+      "name": "Vẹt rừng",
+      "model": "packs/kenney-cube-pets/2.0/animal-parrot.glb",
+      "scale": 0.6543,
+      "position": [
+        67.5,
+        18,
+        27.5
+      ],
+      "yaw": 0,
+      "spots": {
+        "perch-a": [
+          67.5,
+          18,
+          27.5
+        ],
+        "perch-b": [
+          62.5,
+          21,
+          17.5
+        ],
+        "sky": [
+          70.5,
+          23,
+          30.5
+        ]
+      }
     }
   ]
 }

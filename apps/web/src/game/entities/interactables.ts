@@ -22,7 +22,9 @@ import type { Interactable, WorldEntities } from '@miu/voxel/world-entities';
 import type { TargetState } from '../../game-bridge/game-store';
 import type { GuardedGltfLoader } from '../asset-loader';
 import { NpcBehavior, type NpcClip } from './npc-behavior';
+import { mergeParts } from '../ambient/merge-parts';
 import { createRiddleBoard } from './riddle-board';
+import { seededRandom } from './seeded-random';
 
 export interface InteractableObject {
   readonly def: Interactable;
@@ -44,19 +46,6 @@ const GATE_OPEN_SECONDS = 1.2;
 /** NPC clips blend into each other over this many seconds instead of snapping. */
 const NPC_FADE_SECONDS = 0.3;
 const NPC_CLIPS: readonly NpcClip[] = ['idle', 'walk', 'eat', 'dance', 'gesture-positive'];
-
-/** Same seed, same sequence (mulberry32): an NPC behaves the same in every run and review shot. */
-function seededRandom(key: string): () => number {
-  let a = 0;
-  for (let i = 0; i < key.length; i++) a = (Math.imul(a, 31) + key.charCodeAt(i)) >>> 0;
-  return () => {
-    a = (a + 0x6d2b79f5) >>> 0;
-    let t = a;
-    t = Math.imul(t ^ (t >>> 15), t | 1);
-    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
-    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
-  };
-}
 
 /**
  * Plays the behaviour's clip on the model: each clip change cross-fades, and the idle loop starts at
@@ -160,7 +149,9 @@ async function buildVisual(
       mesh.geometry.computeBoundingSphere();
       return mesh.geometry.boundingSphere?.radius ?? 0;
     };
-    const largest = parts.reduce<Mesh | null>((best, mesh) => (!best || radius(mesh) > radius(best) ? mesh : best), null);
+    // A multi-part model becomes one skinned mesh (one draw call, one shadow); a single mesh stays as is.
+    const merged = mergeParts(root, shadows && def.kind !== 'object');
+    const largest = merged.length > 0 ? null : parts.reduce<Mesh | null>((best, mesh) => (!best || radius(mesh) > radius(best) ? mesh : best), null);
     if (largest) largest.castShadow = shadows && def.kind !== 'object';
     if (gltf.animations.length === 0) return { root, mixer: null, clips: [], open: null };
     const mixer = new AnimationMixer(root);

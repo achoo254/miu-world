@@ -72,8 +72,10 @@ export async function runtimeAssetPaths(assetsDir: string, manifestPaths: readon
     for (const list of Object.values(entities)) {
       if (!Array.isArray(list)) continue;
       for (const item of list) {
-        const model = (item as { model?: unknown }).model;
+        const { model, held } = item as { model?: unknown; held?: unknown };
         if (typeof model === 'string') models.add(model);
+        // What ambient villagers hold (axe, hoe…); `built:` items are made in code, not loaded.
+        if (Array.isArray(held)) for (const h of held) if (typeof h === 'string' && !h.startsWith('built:')) models.add(h);
       }
     }
   }

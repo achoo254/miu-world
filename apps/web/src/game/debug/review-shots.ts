@@ -1,5 +1,6 @@
-// Fixed cameras for review screenshots (?shot=top|iso|island|bridge|tree|npc): overrides the follow
-// camera, lifts view-distance limits, and flags document.body.dataset.ready after a few frames.
+// Fixed cameras for review screenshots (?shot=top|iso|island|bridge|tree|npc|life:<ambient id>):
+// overrides the follow camera, lifts view-distance limits, and flags document.body.dataset.ready after
+// a few frames. A `life:` shot frames one villager or animal and keeps time running (for videos).
 import { Vector3, type PerspectiveCamera, type Scene } from 'three';
 import type { WorldEntities } from '@miu/voxel/world-entities';
 
@@ -10,11 +11,21 @@ export interface ReviewShot {
   readonly settled: boolean;
   /** Background-only shots (the Home island): no sky and no player, on a transparent canvas. */
   readonly backdrop: boolean;
+  /** Time keeps running (ambient life at work) and the player is hidden. */
+  readonly live: boolean;
 }
 
 const SETTLE_FRAMES = 20;
 
-export function createReviewShot(name: string | null, entities: WorldEntities, scene: Scene): ReviewShot | null {
+/** Eye positions tried around a `life:` subject, first clear line of sight wins. */
+const LIFE_ANGLES = [225, 180, 270, 135, 315, 90, 0, 45];
+
+export function createReviewShot(
+  name: string | null,
+  entities: WorldEntities,
+  scene: Scene,
+  solidAt: (x: number, y: number, z: number) => boolean = () => false,
+): ReviewShot | null {
   if (!name) return null;
   const [sx, , sz] = entities.size;
   const center = new Vector3(sx / 2, 10, sz / 2);
@@ -36,6 +47,23 @@ export function createReviewShot(name: string | null, entities: WorldEntities, s
       fov: 50,
     },
   };
+  const ambient = name.startsWith('life:') ? entities.ambients?.find((a) => a.id === name.slice(5)) : undefined;
+  if (ambient) {
+    const target = new Vector3(...ambient.position).add(new Vector3(0, 0.9, 0));
+    const clear = (eye: Vector3): boolean => {
+      for (let t = 0; t <= 0.92; t += 0.04) {
+        const p = eye.clone().lerp(target, t);
+        if (solidAt(Math.floor(p.x), Math.floor(p.y), Math.floor(p.z))) return false;
+      }
+      return true;
+    };
+    const around = (deg: number): Vector3 => {
+      const a = (deg * Math.PI) / 180;
+      return target.clone().add(new Vector3(Math.sin(a) * 6.2, 2.6, Math.cos(a) * 6.2));
+    };
+    const eye = LIFE_ANGLES.map(around).find(clear) ?? around(LIFE_ANGLES[0] ?? 225);
+    views[name] = { eye, target, fov: 50 };
+  }
   const view = views[name];
   if (!view) throw new Error(`unknown review shot ${name}`);
   scene.fog = null;
@@ -53,6 +81,7 @@ export function createReviewShot(name: string | null, entities: WorldEntities, s
       if (frames === SETTLE_FRAMES) document.body.dataset.ready = '1';
     },
     backdrop: name === 'island',
+    live: ambient !== undefined,
     get settled() {
       return frames >= SETTLE_FRAMES;
     },

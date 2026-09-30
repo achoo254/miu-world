@@ -27,6 +27,10 @@ export interface MiuStats {
   cameraYaw: number;
   /** Accessories attached to the player character. */
   outfit: string[];
+  /** Ambient villagers and animals drawn now, taps on them so far, and the last line one said. */
+  ambientVisible: number;
+  ambientReactions: number;
+  ambientLine: string | null;
 }
 
 declare global {
@@ -43,7 +47,7 @@ export class StatsOverlay {
   readonly stats: MiuStats;
 
   constructor(private readonly el: HTMLElement, quality: string) {
-    this.stats = { quality, fpsAvg: 0, fpsP5: 0, calls: 0, triangles: 0, frames: 0, loadMs: 0, meshMs: 0, worker: true, firstAreaBytes: 0, ready: false, player: [0, 0, 0], onGround: false, nearTarget: null, lastInteraction: null, hintTarget: null, cameraInsideBlock: false, cameraYaw: 0, outfit: [] };
+    this.stats = { quality, fpsAvg: 0, fpsP5: 0, calls: 0, triangles: 0, frames: 0, loadMs: 0, meshMs: 0, worker: true, firstAreaBytes: 0, ready: false, player: [0, 0, 0], onGround: false, nearTarget: null, lastInteraction: null, hintTarget: null, cameraInsideBlock: false, cameraYaw: 0, outfit: [], ambientVisible: 0, ambientReactions: 0, ambientLine: null };
     window.__miuStats = this.stats;
   }
 

@@ -10,6 +10,7 @@ import { blockTableSchema } from '../../packages/voxel/src/block-table';
 import { VoxelWorld, encodeWorld } from '../../packages/voxel/src/chunk-format';
 import type { WorldEntities } from '../../packages/voxel/src/world-entities';
 import { ASSETS_DIR, REPO_ROOT, readJson } from '../assets/asset-lib';
+import { LIFE_MODEL_ANIMATION, LIFE_MODEL_HEIGHT, placeForestLife } from './forest-life';
 import { modelScales } from './model-scales';
 import { createRng, fbm, hashSeed } from './noise';
 import { placeBridge } from './structures/bridge';
@@ -100,7 +101,7 @@ export async function generateForest(): Promise<{ world: VoxelWorld; entities: W
     planks: id('planks'), path: id('path'), water: id('water'), rock: id('rock-moss'), birch: id('birch-log'),
     autumn: id('leaves-autumn'), bed: id('riverbed'),
   };
-  const scales = await modelScales(MODEL_HEIGHT, MODEL_ANIMATION);
+  const scales = await modelScales({ ...MODEL_HEIGHT, ...LIFE_MODEL_HEIGHT }, { ...MODEL_ANIMATION, ...LIFE_MODEL_ANIMATION });
   const scaleOf = (model: string): number => scales.get(model) ?? 1;
 
   const seed = hashSeed(SEED_TEXT);
@@ -322,6 +323,23 @@ export async function generateForest(): Promise<{ world: VoxelWorld; entities: W
 
   interactables.push(...chapter2Preview());
 
+  // Villagers and animals going about their day, clear of every chapter's quest targets.
+  const ambients = placeForestLife({
+    world,
+    surface,
+    standY,
+    pathCells,
+    blocks: { grass: B.grass, sand: B.sand },
+    questSpots: interactables.map((t) => [t.position[0] ?? 0, t.position[2] ?? 0] as const),
+    trees: occupied,
+    spawn,
+    waterLevel: WATER_LEVEL,
+    riverCenter,
+    riverHalfWidth,
+    addProp: (model, x, z, yaw) => addProp(model, x, z, yaw),
+    scaleOf,
+  });
+
   /**
    * Temporary: the places of the two Tiếng Việt week 1 quests (Bài 1 at the forest gate, Bài 2 around
    * the calendar-leaf oak north of the stream), so their review copies are walked to, not jumped to,
@@ -406,6 +424,7 @@ export async function generateForest(): Promise<{ world: VoxelWorld; entities: W
       { id: 'stepping-stones', name: 'Đá qua suối', position: [stonesX + 0.5, WATER_LEVEL + 2, (stonesZ0 + stonesZ1) / 2 + 0.5] },
       { id: 'chest', name: 'Rương', position: place(ancient.x - 5, ancient.z + 3) },
     ],
+    ambients,
   };
   return { world, entities };
 }
@@ -419,7 +438,7 @@ async function main(): Promise<void> {
   const solid = world.data.reduce((n, id) => n + (id === 0 ? 0 : 1), 0);
   console.log(
     `${MAP_ID}: ${world.size.join('x')} blocks, ${solid} non-air, chunks.bin ${bin.byteLength} bytes, ` +
-      `${entities.props.length} props, ${entities.interactables.length} interactables`,
+      `${entities.props.length} props, ${entities.interactables.length} interactables, ${entities.ambients?.length ?? 0} ambients`,
   );
 }
 

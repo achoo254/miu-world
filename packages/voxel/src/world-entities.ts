@@ -38,6 +38,48 @@ const interactableSchema = z
   .refine((t) => t.animation === undefined || t.model !== undefined, { message: 'animation needs a model' });
 export type Interactable = z.infer<typeof interactableSchema>;
 
+/**
+ * Life around the map that no quest points at: villagers doing chores and animals going about their
+ * day. Each `routine` names a behaviour script in the runtime (apps/web/src/game/ambient/); the
+ * generator only says who, where they live and the places their chores take them.
+ */
+export const AMBIENT_ROUTINES = [
+  'woodcutter',
+  'fisher',
+  'gardener',
+  'cook',
+  'firewood-carrier',
+  'parrot',
+  'bee',
+  'bunny',
+  'deer',
+  'fox',
+  'hog',
+  'chick',
+  'crab',
+  'fish',
+  'caterpillar',
+] as const;
+export type AmbientRoutine = (typeof AMBIENT_ROUTINES)[number];
+
+const ambientSchema = z.object({
+  id: z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/),
+  routine: z.enum(AMBIENT_ROUTINES),
+  /** Shown on the interaction prompt ("Bác Tiều phu"). */
+  name: z.string().min(1),
+  model: z.string(),
+  scale: z.number().positive(),
+  /** Manifest GLBs the character can hold in its right hand, the everyday tool first (axe, hoe…). */
+  held: z.array(z.string()).optional(),
+  /** Where the character starts and returns to rest. */
+  position: vec3,
+  yaw: z.number(),
+  /** Named places its chores use (the tree it chops, the bank it fishes from, flowers a bee visits…). */
+  spots: z.record(z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/), vec3),
+  chapter: z.number().int().min(1).optional(),
+});
+export type Ambient = z.infer<typeof ambientSchema>;
+
 export const worldEntitiesSchema = z
   .object({
     version: z.literal(2),
@@ -51,12 +93,19 @@ export const worldEntitiesSchema = z
       z.object({ model: z.string(), position: vec3, yaw: z.number(), scale: z.number().positive(), chapter: z.number().int().min(1).optional() }),
     ),
     landmarks: z.array(z.object({ id: z.string(), name: z.string(), position: vec3 })),
+    /** Absent on maps without ambient life yet. */
+    ambients: z.array(ambientSchema).optional(),
   })
   .superRefine((entities, ctx) => {
     const seen = new Set<string>();
     for (const [i, target] of entities.interactables.entries()) {
       if (seen.has(target.id)) ctx.addIssue({ code: 'custom', path: ['interactables', i, 'id'], message: `duplicate id ${target.id}` });
       seen.add(target.id);
+    }
+    // Ambient ids share the prompt with quest targets, so they must not collide either.
+    for (const [i, ambient] of (entities.ambients ?? []).entries()) {
+      if (seen.has(ambient.id)) ctx.addIssue({ code: 'custom', path: ['ambients', i, 'id'], message: `duplicate id ${ambient.id}` });
+      seen.add(ambient.id);
     }
   });
 export type WorldEntities = z.infer<typeof worldEntitiesSchema>;
@@ -67,7 +116,7 @@ export type WorldEntities = z.infer<typeof worldEntitiesSchema>;
  */
 export function entitiesForChapter(entities: WorldEntities, chapter: number): WorldEntities {
   const shown = (e: { chapter?: number }): boolean => e.chapter === undefined || e.chapter === chapter;
-  return { ...entities, interactables: entities.interactables.filter(shown), props: entities.props.filter(shown) };
+  return { ...entities, interactables: entities.interactables.filter(shown), props: entities.props.filter(shown), ...(entities.ambients ? { ambients: entities.ambients.filter(shown) } : {}) };
 }
 
 /** Generated map of each region (assets/generated/world/<map>); a region without its own map plays in the forest. */

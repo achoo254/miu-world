@@ -75,6 +75,7 @@ function GameStatus() {
 
 function GameView({
   store,
+  playerName,
   species,
   outfit,
   chapter,
@@ -82,6 +83,7 @@ function GameView({
   paused,
 }: {
   store: GameStore;
+  playerName: string;
   species: string;
   outfit: string[];
   chapter: number;
@@ -93,7 +95,7 @@ function GameView({
   const outfitKey = outfit.join(',');
   useEffect(() => {
     if (!host.current) return;
-    const instance = new Game(host.current, { store, search: window.location.search, species, outfit: outfitKey ? outfitKey.split(',') : [], chapter, region });
+    const instance = new Game(host.current, { store, search: window.location.search, playerName, species, outfit: outfitKey ? outfitKey.split(',') : [], chapter, region });
     game.current = instance;
     void instance.start();
     // StrictMode mounts twice in dev: the first game is fully disposed before the second starts.
@@ -101,7 +103,7 @@ function GameView({
       instance.dispose();
       if (game.current === instance) game.current = null;
     };
-  }, [store, species, outfitKey, chapter, region]);
+  }, [store, playerName, species, outfitKey, chapter, region]);
   // Full-screen screens stop rendering (Master Plan §12); React only calls stop/resume.
   useEffect(() => {
     if (paused) game.current?.stop();
@@ -195,7 +197,7 @@ export function PlayScreen() {
   return (
     <GameStoreContext.Provider value={store}>
       <main data-id="play">
-        {data ? <GameView store={store} species={data.character.species} outfit={data.character.equipped} chapter={quest?.quest.chapter ?? 1} region={quest?.quest.region ?? 'khu-rung-bi-mat'} paused={covered} /> : null}
+        {data ? <GameView store={store} playerName={data.character.name} species={data.character.species} outfit={data.character.equipped} chapter={quest?.quest.chapter ?? 1} region={quest?.quest.region ?? 'khu-rung-bi-mat'} paused={covered} /> : null}
         {loadError ? (
           <div className="play-message" role="alert">
             <p>

@@ -18,6 +18,7 @@ import type { SolidAt } from '@miu/voxel/grid-collision';
 import { entitiesForChapter, mapForRegion } from '@miu/voxel/world-entities';
 import { UI_ICONS, assetUrl } from '../ui/kit/ui-art';
 import type { GameStore } from '../game-bridge/game-store';
+import { loadAmbientLife, type AmbientTarget } from './ambient/ambient-life';
 import { AssetRegistry, GuardedGltfLoader } from './asset-loader';
 import { createReviewShot } from './debug/review-shots';
 import { StatsOverlay } from './debug/stats-overlay';
@@ -45,7 +46,7 @@ const LOADING_STEPS = 5;
 
 export interface GameOptions {
   store: GameStore;
-  /** Query string with dev/review switches: quality, stats, autopilot, spawnAt (`npc`, a target id or `x,y,z`), shot, outfit. */
+  /** Query string with dev/review switches: quality, stats, autopilot, spawnAt (`npc`, a target id or `x,y,z`), shot, outfit, life (`0`: no villagers or animals). */
   search: string;
   /** Equipped accessory ids (`id` or `id:variant`), normally from `GET /api/character`. */
   outfit: string[];
@@ -55,6 +56,8 @@ export interface GameOptions {
   chapter?: number;
   /** Region of the quest being played, which picks the map. */
   region?: string;
+  /** The child's character name, which villagers use when they greet her. */
+  playerName?: string;
 }
 
 /** Bytes downloaded so far (compressed transfer size, falling back to body size for cache hits). */
@@ -244,14 +247,31 @@ export class Game {
     const entities = entitiesForChapter(data.entities, this.options.chapter ?? 1);
     const outfitParam = params.get('outfit');
     const outfit = outfitParam === 'none' ? [] : outfitParam ? outfitParam.split(',') : this.options.outfit;
-    const [character, targets, props] = await Promise.all([
+    /** Where a walker stands over a column: the first open cell with ground under it, searched near its height. */
+    const ground = (x: number, z: number, nearY: number): number => {
+      const bx = Math.floor(x);
+      const bz = Math.floor(z);
+      for (let y = Math.floor(nearY) + 2; y >= Math.floor(nearY) - 4; y--) {
+        if (solid(bx, y - 1, bz) && !solid(bx, y, bz) && !solid(bx, y + 1, bz)) return y;
+      }
+      return nearY;
+    };
+    const [character, targets, props, life] = await Promise.all([
       loadPlayerCharacter(loader, this.options.species ?? DEFAULT_SPECIES, outfit),
       loadInteractables(loader, entities, quality.shadows),
       loadProps(loader, entities, quality.shadows),
+      // `?life=0` (dev/perf switch): the map without its villagers and animals.
+      loadAmbientLife(loader, params.get('life') === '0' ? [] : (entities.ambients ?? []), {
+        quality: quality.level,
+        shadows: quality.shadows,
+        reduced: window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false,
+        playerName: this.options.playerName ?? 'bạn',
+        ground,
+      }),
     ]);
     if (this.disposed) return;
     stepLoaded();
-    scene.add(character.root, props, ...targets.map((t) => t.root));
+    scene.add(character.root, props, life.group, ...targets.map((t) => t.root));
     overlay.stats.outfit = character.outfit;
 
     const liquid = (x: number, y: number, z: number): boolean => blocks(data.world.get(x, y, z))?.liquid ?? false;
@@ -282,7 +302,7 @@ export class Game {
     window.addEventListener('resize', onResize);
     this.cleanups.push(() => window.removeEventListener('resize', onResize));
 
-    const reviewShot = createReviewShot(params.get('shot'), entities, scene);
+    const reviewShot = createReviewShot(params.get('shot'), entities, scene, solid);
     if (reviewShot) {
       world.setViewDistance(Infinity);
       sky.scale.setScalar(3);
@@ -297,6 +317,8 @@ export class Game {
     // Interaction prompt: React renders the label; the game reports which target is near (discrete)
     // and moves the anchor React registered (per frame, no React render).
     let promptTarget: InteractableObject | null = null;
+    /** A villager or animal in reach when no quest target is: the child may chat with it or pet it. */
+    let promptAmbient: AmbientTarget | null = null;
     let interactRequested = false;
     let rescueRequested = false;
     const byId = new Map(targets.map((t) => [t.def.id, t]));
@@ -335,7 +357,7 @@ export class Game {
       timer.update();
       // Review screenshots step a fixed 1/60 s, then freeze once ready: the capture lands a variable number of
       // frames later, and water / NPC animation must not move in between.
-      const dt = reviewShot ? (reviewShot.settled ? 0 : 1 / 60) : Math.min(timer.getDelta(), 0.1);
+      const dt = reviewShot && !reviewShot.live ? (reviewShot.settled ? 0 : 1 / 60) : Math.min(timer.getDelta(), 0.1);
       let intent: MoveIntent;
       let interact = interactRequested;
       interactRequested = false;
@@ -372,7 +394,7 @@ export class Game {
       character.update(dt, controller.speed, controller.onGround);
       rig.update(dt, controller.position);
       // With the camera inside Miu (nowhere left to back off to), hide her rather than show her insides.
-      if (!reviewShot?.backdrop) character.root.visible = rig.viewDistance > 0.9;
+      if (!reviewShot?.backdrop) character.root.visible = rig.viewDistance > 0.9 && !reviewShot?.live;
       reviewShot?.apply(camera);
       sky.position.copy(camera.position);
       sun.position.set(controller.position.x + 18, controller.position.y + 30, controller.position.z + 12);
@@ -384,23 +406,41 @@ export class Game {
       arrow.update(dt, controller.position, hint?.available ? hint.def : null);
       overlay.stats.hintTarget = arrow.showing ? (hint?.def.id ?? null) : null;
       const nearest = pickNearest(targets, controller.position);
-      if (nearest !== promptTarget) {
+      // Quest targets always win the prompt; ambient life goes quiet next to them.
+      const nearAmbient = nearest ? null : life.nearest(controller.position);
+      life.update(dt, controller.position, nearest !== null, renderer.info.render.calls);
+      if (nearest !== promptTarget || nearAmbient !== promptAmbient) {
         promptTarget = nearest;
+        promptAmbient = nearAmbient;
         const def = nearest?.def;
-        store.emit({ type: 'interaction-prompt', prompt: def ? { targetId: def.id, kind: def.kind, name: def.name, label: def.label } : null });
+        const prompt = def
+          ? { targetId: def.id, kind: def.kind, name: def.name, label: def.label }
+          : nearAmbient
+            ? { targetId: nearAmbient.id, kind: 'ambient' as const, name: nearAmbient.name, label: nearAmbient.label }
+            : null;
+        store.emit({ type: 'interaction-prompt', prompt });
       }
-      if (promptTarget) {
+      const anchorAt = promptTarget
+        ? promptTarget.screenAnchor(camera, { width: window.innerWidth, height: window.innerHeight })
+        : promptAmbient
+          ? life.screenAnchor(promptAmbient, camera, { width: window.innerWidth, height: window.innerHeight })
+          : null;
+      if (anchorAt) {
         const anchor = store.getPromptAnchor();
         if (anchor) {
-          const { x, y } = promptTarget.screenAnchor(camera, { width: window.innerWidth, height: window.innerHeight });
-          anchor.style.transform = `translate(-50%, -100%) translate(${x}px, ${y}px)`;
+          anchor.style.transform = `translate(-50%, -100%) translate(${anchorAt.x}px, ${anchorAt.y}px)`;
           anchor.style.visibility = 'visible'; // hidden until first positioned: no flash at 0,0
         }
-        if (interact) {
-          store.emit({ type: 'interaction', targetId: promptTarget.def.id });
-          overlay.stats.lastInteraction = promptTarget.def.id;
-        }
       }
+      if (interact && promptTarget) {
+        store.emit({ type: 'interaction', targetId: promptTarget.def.id });
+        overlay.stats.lastInteraction = promptTarget.def.id;
+      } else if (interact && promptAmbient) {
+        life.react(promptAmbient.id);
+      }
+      overlay.stats.ambientVisible = life.stats.visible;
+      overlay.stats.ambientReactions = life.stats.reactions;
+      overlay.stats.ambientLine = life.stats.lastLine;
       overlay.stats.player = [controller.position.x, controller.position.y, controller.position.z];
       overlay.stats.onGround = controller.onGround;
       overlay.stats.nearTarget = promptTarget?.def.id ?? null;

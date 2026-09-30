@@ -217,7 +217,7 @@ export function useQuestController({ store, data, questId, onResponse, onOverlay
       if (last && last.count !== seen) {
         seen = last.count;
         const prompt = snapshot.prompt;
-        onInteraction(last.targetId, prompt?.targetId === last.targetId ? prompt.name : '', prompt?.kind ?? 'object');
+        onInteraction(last.targetId, prompt?.targetId === last.targetId ? prompt.name : '', prompt && prompt.kind !== 'ambient' ? prompt.kind : 'object');
       }
     });
   }, [store, activeQuest, syncWorld, startStep, onInteraction]);

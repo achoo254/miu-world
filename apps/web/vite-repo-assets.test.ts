@@ -18,6 +18,10 @@ describe('runtime asset selection for the web build', async () => {
       'generated/atlas/atlas.png',
       'generated/characters/miu-cat.glb',
       'packs/kenney-cube-pets/2.0/animal-parrot.glb',
+      // Forest life: a villager, an animal, and the axe the woodcutter holds.
+      'packs/kenney-blocky-characters/2.0/character-a.glb',
+      'packs/kenney-cube-pets/2.0/animal-bunny.glb',
+      'packs/kenney-survival-kit/2.0/tool-axe.glb',
       'packs/font-baloo-2/5.3.0/baloo-2-vietnamese-700.woff2',
     ]) {
       expect(shipped).toContain(p);
@@ -37,7 +41,7 @@ describe('runtime asset selection for the web build', async () => {
 
   it('leaves the rest of the licensed packs out of dist', () => {
     expect(shipped.length).toBeLessThan(manifest.length / 4);
-    expect(shipped).not.toContain('packs/kenney-cube-pets/2.0/animal-bunny.glb');
+    expect(shipped).not.toContain('packs/kenney-cube-pets/2.0/animal-penguin.glb');
     expect(shipped.every((p) => manifest.includes(p))).toBe(true);
   });
 
