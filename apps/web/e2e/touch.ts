@@ -2,12 +2,13 @@
 // CDP (page.touchscreen can only tap), so pointer capture and touch-action behave as on a device.
 import type { Page } from '@playwright/test';
 
-export async function tap(page: Page, selector: string): Promise<void> {
+/** Taps the element, at its centre or at a point given as fractions of its size (to miss its children). */
+export async function tap(page: Page, selector: string, at: { x: number; y: number } = { x: 0.5, y: 0.5 }): Promise<void> {
   const target = page.locator(selector).first();
   await target.scrollIntoViewIfNeeded(); // a tap lands on screen coordinates: bring it into view first
   const box = await target.boundingBox();
   if (!box) throw new Error(`${selector} not visible`);
-  await page.touchscreen.tap(box.x + box.width / 2, box.y + box.height / 2);
+  await page.touchscreen.tap(box.x + box.width * at.x, box.y + box.height * at.y);
 }
 
 export async function touchDrag(page: Page, from: string, to: string): Promise<void> {

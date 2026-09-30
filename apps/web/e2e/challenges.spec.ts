@@ -19,10 +19,17 @@ test('drag ten apples by touch, a wrong candy answer then the right one, and the
   for (let i = 1; i <= 10; i += 1) await touchDrag(page, `[data-id="piece-apple-${i}"]`, '[data-id="drag-container"]');
   await expect(page.locator('[data-id="drag-count"]')).toHaveText('10');
   expect(await page.evaluate(() => window.scrollY)).toBe(scrollBefore); // dragging never scrolls the page
-  // One too many, then back out by touch.
-  await touchDrag(page, '[data-id="piece-apple-11"]', '[data-id="drag-container"]');
+  // One too many by tap-to-select (tap the apple, then the basket), then back out the same way.
+  await tap(page, '[data-id="piece-apple-11"]');
+  await tap(page, '[data-id="drag-container"] .drag-container-label');
   await expect(page.locator('[data-id="drag-count"]')).toHaveText('11');
-  await touchDrag(page, '[data-id="drag-container"] [data-id="piece-apple-11"]', '[data-id="drag-source"]');
+  await tap(page, '[data-id="drag-container"] [data-id="piece-apple-11"]');
+  await tap(page, '[data-id="drag-source"]', { x: 0.9, y: 0.9 }); // an empty corner, not another apple
+  await expect(page.locator('[data-id="drag-count"]')).toHaveText('10');
+  // And once more by touch drag, out and back.
+  await touchDrag(page, '[data-id="drag-container"] [data-id="piece-apple-10"]', '[data-id="drag-source"]');
+  await expect(page.locator('[data-id="drag-count"]')).toHaveText('9');
+  await touchDrag(page, '[data-id="piece-apple-10"]', '[data-id="drag-container"]');
   await expect(page.locator('[data-id="drag-count"]')).toHaveText('10');
   await tap(page, '[data-id="challenge-check"]');
   await expect(page.getByRole('dialog', { name: 'Hái 10 quả táo' })).toHaveCount(0);

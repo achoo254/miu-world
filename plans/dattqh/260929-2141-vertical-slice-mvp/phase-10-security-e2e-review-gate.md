@@ -1,7 +1,7 @@
 ---
 phase: 10
 title: "Bảo mật, E2E trọn vòng, hiệu năng, trang review"
-status: pending
+status: completed
 priority: P1
 effort: "M"
 dependencies: [4, 5, 6, 7, 8, 9]
@@ -41,6 +41,9 @@ Chứng minh tiêu chí Master Plan §16 bằng test tự động, chạy lại 
 
 ## Verification
 - 4 gate + `pnpm content:check` + `pnpm --filter @miu/web build` + `pnpm --filter @miu/web e2e:ci` (setup/account/play/creator/home/quest-flow/challenges/mvp-loop) xanh local và CI; job CI `integration` (Postgres 17) xanh với migration `0002`
+
+## Kết quả (2026-09-30)
+Report cuối đợt: `plans/dattqh/reports/mvp-slice-review-260930.md` (tiêu chí §16, hiệu năng, review và cách xử lý, việc của người). Test bảo mật `apps/server/src/security/`, `tools/security/scan-dist.ts` (CI), E2E `mvp-loop`, perf một lần (12/12 trong ngân sách), review code (0 critical, 1 high + 3 medium đã sửa), trang review, Master Plan §15 #21–#30, docs. Mở server + preview trên LAN cho người duyệt là bước của người (hướng dẫn trong report).
 
 ## Risk
 - E2E dài dễ flaky trên CI (GL phần mềm): chờ theo trạng thái (poll stats/DOM), không chờ theo thời gian.
