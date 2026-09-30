@@ -2,7 +2,7 @@
 
 Quy tắc hành vi cho agent trong repo này. Lý do và bối cảnh nằm ở `docs/` (bản đồ: `docs/README.md`); nguồn quyết định sản phẩm là Master Plan v3 ở gốc repo.
 
-Giai đoạn hiện tại: Vertical slice MVP (sau Foundation) — `apps/web` (Vite + React, runtime Three.js ở `src/game`), `apps/server` (Express + Drizzle), `packages/{voxel,quest,schema}`. Plan: `plans/dattqh/260929-2141-vertical-slice-mvp/` (trên `main`). Song song: nội dung SGK lớp 2 — `plans/dattqh/260930-0846-sgk-lop2-game-content/`, chạy trong worktree `../miu-world-sgk` (branch `dattqh/feat/sgk-lop2-content`); tôn trọng bảng file dùng chung trong `plan.md` của plan đó.
+Giai đoạn hiện tại: Vertical slice MVP đã xong 10 phase, chờ người duyệt (report `plans/dattqh/reports/mvp-slice-review-260930.md`, trang `apps/web/review.html`; việc của người: DEVICE-01, giáo viên, designer) — `apps/web` (Vite + React, runtime Three.js ở `src/game`, UI ở `src/ui`), `apps/server` (Express + Drizzle), `packages/{voxel,quest,schema}`. Plan: `plans/dattqh/260929-2141-vertical-slice-mvp/` (trên `main`). Song song: nội dung SGK lớp 2 — `plans/dattqh/260930-0846-sgk-lop2-game-content/`, chạy trong worktree `../miu-world-sgk` (branch `dattqh/feat/sgk-lop2-content`); tôn trọng bảng file dùng chung trong `plan.md` của plan đó.
 
 ## Lệnh
 
