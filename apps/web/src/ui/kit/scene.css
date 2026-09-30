@@ -239,8 +239,11 @@
 @media (prefers-reduced-motion: no-preference) {
   .scene-modal { animation: scene-in 180ms ease-out; }
 }
-@keyframes scene-in { from { transform: translateY(0.75rem); opacity: 0.6; } to { transform: none; opacity: 1; } }
+/* Only a small slide: the screen is fully opaque from the first frame, so the game never shows through. */
+@keyframes scene-in { from { transform: translateY(0.75rem); } to { transform: none; } }
 
-/* Bodies of the reward screens and the speaking/worksheet steps sit on parchment. */
+/* Bodies of the reward screens and the speaking/worksheet steps sit on a full parchment panel. */
+.scene-panel { display: grid; gap: var(--space-md); padding: var(--space-lg); border: 3px solid var(--color-parchment-edge); border-radius: var(--radius-panel); background: linear-gradient(180deg, var(--color-parchment), var(--color-parchment-deep)); color: var(--color-parchment-ink); box-shadow: var(--shadow-material); }
+.scene-panel .hint { color: var(--color-parchment-ink); }
 .scene-modal .reward-body { padding: var(--space-md); border: 3px solid var(--color-parchment-edge); border-radius: var(--radius-panel); background: linear-gradient(180deg, var(--color-parchment), var(--color-parchment-deep)); color: var(--color-parchment-ink); box-shadow: var(--shadow-material); }
 .scene-modal .speak-hints { padding: var(--space-sm) var(--space-md) var(--space-sm) var(--space-xl); }

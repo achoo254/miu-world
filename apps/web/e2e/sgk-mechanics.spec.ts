@@ -13,7 +13,8 @@ test.use({ storageState: { cookies: [], origins: [] }, viewport: { width: 820, h
 
 const SHOTS = fileURLToPath(new URL('../../../.data/sgk/review-shots/', import.meta.url));
 mkdirSync(SHOTS, { recursive: true });
-const shot = (page: Page, name: string) => page.screenshot({ path: `${SHOTS}${name}.png` });
+// Animations off: the shot shows the screen as it rests, never mid-transition.
+const shot = (page: Page, name: string) => page.screenshot({ path: `${SHOTS}${name}.png`, animations: 'disabled' });
 const dialog = (page: Page, name: string) => page.getByRole('dialog', { name });
 const check = (page: Page) => tap(page, '[data-id="challenge-check"]');
 

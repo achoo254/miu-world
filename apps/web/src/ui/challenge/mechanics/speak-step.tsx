@@ -28,34 +28,36 @@ export function SpeakStepScreen({
   const prompt = fill(step.prompt);
   return (
     <Modal title={fill(step.title)} onClose={onClose} dataId="speak-step" size="wide" variant="scene">
-      <p className="parchment npc-bubble challenge-prompt" data-id="speak-prompt">
-        {prompt}
-      </p>
-      {step.pictureRefs?.length ? (
-        <div className="speak-pictures">
-          {step.pictureRefs.map((picture, i) => (
-            <Illustration key={i} picture={picture} />
-          ))}
-        </div>
-      ) : null}
-      {step.hints.length > 0 ? (
-        <ul className="parchment speak-hints" data-id="speak-hints" aria-label="Gợi ý">
-          {step.hints.map((hint, i) => (
-            <li key={i}>{fill(hint)}</li>
-          ))}
-        </ul>
-      ) : null}
-      <div className="challenge-actions">
-        {voice ? (
-          <button type="button" className={buttonClass('ghost')} data-id="speak-listen" onClick={() => speak(prompt, voice)}>
-            <Icon name="speaker" size={24} />
-            Nghe câu hỏi
-          </button>
+      <div className="scene-panel">
+        <p className="challenge-prompt" data-id="speak-prompt">
+          {prompt}
+        </p>
+        {step.pictureRefs?.length ? (
+          <div className="speak-pictures">
+            {step.pictureRefs.map((picture, i) => (
+              <Illustration key={i} picture={picture} />
+            ))}
+          </div>
         ) : null}
-        <button type="button" className={buttonClass('primary')} data-id="speak-done" disabled={busy} onClick={onDone}>
-          <Icon name="checkMark" size={28} />
-          Mình nói xong rồi
-        </button>
+        {step.hints.length > 0 ? (
+          <ul className="speak-hints" data-id="speak-hints" aria-label="Gợi ý">
+            {step.hints.map((hint, i) => (
+              <li key={i}>{fill(hint)}</li>
+            ))}
+          </ul>
+        ) : null}
+        <div className="challenge-actions">
+          {voice ? (
+            <button type="button" className={buttonClass('ghost')} data-id="speak-listen" onClick={() => speak(prompt, voice)}>
+              <Icon name="speaker" size={24} />
+              Nghe câu hỏi
+            </button>
+          ) : null}
+          <button type="button" className={buttonClass('primary')} data-id="speak-done" disabled={busy} onClick={onDone}>
+            <Icon name="checkMark" size={28} />
+            Mình nói xong rồi
+          </button>
+        </div>
       </div>
     </Modal>
   );

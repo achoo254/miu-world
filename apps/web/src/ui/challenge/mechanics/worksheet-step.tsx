@@ -23,14 +23,16 @@ export function WorksheetStepScreen({
 }) {
   return (
     <Modal title={fill(step.title)} onClose={onClose} dataId="worksheet-step" variant="scene">
-      <p className="parchment npc-bubble worksheet-note" data-id="worksheet-text">
-        <Icon name="scroll" size={40} />
-        {fill(step.text)}
-      </p>
-      <p className="hint">Phiếu nằm ở khu phụ huynh, mục Phiếu viết.</p>
-      <button type="button" className={buttonClass('primary', { block: true })} data-id="worksheet-done" disabled={busy} onClick={onDone}>
-        Đã hiểu
-      </button>
+      <div className="scene-panel">
+        <p className="worksheet-note" data-id="worksheet-text">
+          <Icon name="scroll" size={56} />
+          {fill(step.text)}
+        </p>
+        <p className="hint">Phiếu nằm ở khu phụ huynh, mục Phiếu viết.</p>
+        <button type="button" className={buttonClass('primary', { block: true })} data-id="worksheet-done" disabled={busy} onClick={onDone}>
+          Đã hiểu
+        </button>
+      </div>
     </Modal>
   );
 }
