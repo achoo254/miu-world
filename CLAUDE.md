@@ -14,7 +14,7 @@ Giai đoạn hiện tại: Vertical slice MVP đã xong 10 phase, chờ người
 - Sửa `apps/web/**` thì chạy thêm `pnpm --filter @miu/web build` (CI chạy bước này; typecheck/test không bắt lỗi build).
 - Một file test: `pnpm vitest run <đường-dẫn-file>`.
 - Sửa `apps/web/**` hoặc `apps/server/**` thì chạy thêm E2E: `pnpm --filter @miu/web e2e:ci` (mọi project trừ `perf`, như CI; tự chạy server với PGlite trong RAM ở 8787, build web rồi preview ở 4173). Một project: `pnpm --filter @miu/web e2e --project setup --project <tên>`. Sau build web, `pnpm security:dist` kiểm không có đáp án quest trong bundle.
-- Chạy dev: `pnpm --filter @miu/server dev` (API cổng 8787, chỉ loopback, PGlite ở `.data/pglite`) và `pnpm --filter @miu/web dev` (cổng 5173, proxy `/api` → 8787). Trang game `/play` cần đăng nhập phụ huynh và chọn hồ sơ; trang duyệt `/review.html`, trang render công cụ `/preview.html`.
+- Chạy dev: `pnpm dev` chạy cả hai và tự nạp Google OAuth client từ `access-tokens.json` trong iCloud (không in, không ghi file); từng phần: `pnpm --filter @miu/server dev` (API cổng 8787, chỉ loopback, PGlite ở `.data/pglite`) và `pnpm --filter @miu/web dev` (cổng 5173, proxy `/api` → 8787). Trang game `/play` cần đăng nhập phụ huynh và chọn hồ sơ; trang duyệt `/review.html`, trang render công cụ `/preview.html`.
 - KHÔNG chạy project `perf` trừ khi được yêu cầu đo hiệu năng: mất tới ~30 phút và ghi đè `assets/generated/review/perf.json`.
 
 ## Không được làm

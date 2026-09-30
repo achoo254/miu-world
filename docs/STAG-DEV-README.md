@@ -16,7 +16,7 @@
 
 | Môi trường | Máy | Entry trong tệp credential | Đăng nhập | Miu chạy gì ở đó |
 | --- | --- | --- | --- | --- |
-| Dev | Máy dev | — | — | `pnpm --filter @miu/server dev` (8787) + `pnpm --filter @miu/web dev` (5173); cách chạy ở `CLAUDE.md` |
+| Dev | Máy dev | — | — | `pnpm dev` (API 8787 + web 5173); cách chạy ở `CLAUDE.md` |
 | Staging | Lab **176** (`192.168.122.176`, Ubuntu 24.04) | `dattqh_ubuntu_192.168.122.176_MONGO` | mật khẩu | `miu-server` (:8787 loopback), `miu-tunnel`, nginx `127.0.0.1:8090`, Postgres 16 |
 | Edge staging + production | **.65** (CentOS Stream 9) | `SSH_SERVER_STAGING` (group `SERVER STAGING .65`) | key, mật khẩu dự phòng | nginx `conf.d/miu-staging.conf` (edge của staging), production `miu-server` (:8797 loopback), Postgres 16 |
 

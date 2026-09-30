@@ -7,6 +7,7 @@
     "node": ">=22"
   },
   "scripts": {
+    "dev": "tsx tools/dev/start-dev-servers.ts",
     "assets:fetch": "tsx tools/assets/fetch-assets.ts",
     "assets:manifest": "tsx tools/assets/build-manifest.ts",
     "assets:check": "tsx tools/assets/check-assets.ts",

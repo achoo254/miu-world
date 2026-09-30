@@ -15,9 +15,10 @@ pnpm install
 pnpm assets:check                                  # license + integrity gate
 pnpm content:check                                 # schema + tham chiếu chéo của content/
 pnpm test && pnpm typecheck && pnpm lint
-pnpm --filter @miu/server dev                      # API tại 127.0.0.1:8787 (PGlite trong .data/)
-pnpm --filter @miu/web dev                         # web tại http://localhost:5173 (proxy /api)
+pnpm dev                                           # API 127.0.0.1:8787 (PGlite trong .data/) + web http://localhost:5173 (proxy /api)
 ```
+
+`pnpm dev` lấy Google OAuth client cho đăng nhập phụ huynh từ `access-tokens.json` trong iCloud Drive của người phụ trách (đặt `MIU_TOKEN_FILE` hoặc `MIU_ICLOUD_DIR` nếu nằm chỗ khác). Không có file đó thì game vẫn mở nhưng không đăng nhập được. Chạy riêng từng phần: `pnpm --filter @miu/server dev` và `pnpm --filter @miu/web dev`.
 
 Trang duyệt cuối: chạy server, rồi `pnpm --filter @miu/web build` và `pnpm --filter @miu/web preview`, mở `/review.html` ở cổng 4173. E2E: `pnpm --filter @miu/web e2e --project setup --project account --project play`.
 
