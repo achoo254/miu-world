@@ -25,6 +25,9 @@ id miu >/dev/null 2>&1 || useradd --system --home /opt/miu --shell /usr/sbin/nol
 install -d -m 755 /opt/miu /opt/miu/releases
 install -d -m 750 -o root -g miu /etc/miu
 install -d -m 700 -o postgres -g postgres /var/backups/miu
+# Worksheet handwriting font (no open license, kept out of git): uploaded by `deploy.sh fonts`, outside
+# /opt/miu/current so a release does not replace it.
+install -d -m 750 -o root -g miu /opt/miu/fonts
 
 rm -f /etc/nginx/sites-enabled/default
 install -m 644 "$HERE/nginx-lab.conf" /etc/nginx/sites-available/miu-staging

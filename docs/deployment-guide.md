@@ -94,6 +94,7 @@ Lệnh chạy từ gốc repo trên máy dev. Script đọc credential theo §2 
 
 ```sh
 tools/deploy/staging/deploy.sh setup     # máy mới, đổi unit/nginx, đổi secret. Chạy lại được an toàn.
+tools/deploy/staging/deploy.sh fonts     # font chữ mẫu của phiếu viết (ngoài git) lên /opt/miu/fonts của 176
 tools/deploy/staging/deploy.sh release   # mỗi lần deploy
 ```
 

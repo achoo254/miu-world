@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Staging deploy for Miu World, run from a dev machine at the repo root.
 #   tools/deploy/staging/deploy.sh setup     one-time/idempotent: lab host, secrets, DB role, edge nginx
+#   tools/deploy/staging/deploy.sh fonts     upload the worksheet handwriting font (kept out of git)
 #   tools/deploy/staging/deploy.sh release   build, back up the DB, upload, switch, health-check
 # Credentials come from $ALL_IN_ONE_STAGING_DEV and the access-tokens.json beside it (see
 # docs/deployment-guide.md). No value is printed; secrets travel over ssh stdin only.
@@ -54,6 +55,7 @@ setup() {
     echo "GOOGLE_CLIENT_ID=$(secret "$google.client_id")"
     echo "GOOGLE_CLIENT_SECRET=$(secret "$google.client_secret")"
     echo "GOOGLE_REDIRECT_URI=https://$DOMAIN/api/auth/google/callback"
+    echo "HANDWRITING_FONT_DIR=/opt/miu/fonts"
   } | lab 'install -m 640 -o root -g miu /dev/stdin /etc/miu/staging.env'
   echo "TUNELO_KEY=$(secret '.tokens[] | select(.account == "miu-staging-176") | .token')" \
     | lab 'install -m 640 -o root -g miu /dev/stdin /etc/miu/tunnel.env'
@@ -62,6 +64,15 @@ setup() {
   echo "== edge nginx (.65)"
   edge 'cat > /etc/nginx/conf.d/miu-staging.conf.new' < "$HERE/nginx-edge.conf"
   edge 'cd /etc/nginx/conf.d && mv miu-staging.conf.new miu-staging.conf && if nginx -t -q; then systemctl reload nginx && echo "edge reloaded"; else rm -f miu-staging.conf; nginx -t; exit 1; fi'
+}
+
+# Worksheet handwriting font (no open license: kept out of git). Uploads the .woff2 files from
+# $MIU_FONT_DIR (default .data/fonts of this checkout, filled by `pnpm private:sync`) to /opt/miu/fonts.
+fonts() {
+  local dir="${MIU_FONT_DIR:-.data/fonts}"
+  ls "$dir"/*.woff2 >/dev/null 2>&1 || { echo "no .woff2 in $dir: set MIU_FONT_DIR" >&2; exit 1; }
+  tar --no-xattrs -C "$dir" -cf - $(cd "$dir" && ls *.woff2) \
+    | lab 'tar --no-same-owner -xf - -C /opt/miu/fonts && chown root:miu /opt/miu/fonts/*.woff2 && chmod 640 /opt/miu/fonts/*.woff2 && ls /opt/miu/fonts | wc -l | xargs echo fonts on host:'
 }
 
 release() {
@@ -105,6 +116,7 @@ release() {
 
 case "${1:-}" in
   setup) setup ;;
+  fonts) fonts ;;
   release) release ;;
-  *) echo "usage: $0 setup|release" >&2; exit 2 ;;
+  *) echo "usage: $0 setup|fonts|release" >&2; exit 2 ;;
 esac
