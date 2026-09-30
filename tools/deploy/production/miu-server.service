@@ -1,0 +1,22 @@
+[Unit]
+Description=Miu World API (production)
+After=network-online.target postgresql.service
+Wants=network-online.target postgresql.service
+
+[Service]
+User=miu
+Group=miu
+# NODE_ENV, PORT (8797: 8787 is taken on .65), DATABASE_URL, ALLOWED_ORIGINS, GOOGLE_*: written by
+# deploy.sh setup, never in the repo.
+EnvironmentFile=/etc/miu/production.env
+WorkingDirectory=/opt/miu/current
+ExecStart=/opt/node22/bin/node --enable-source-maps /opt/miu/current/apps/server/dist/server/index.mjs
+Restart=on-failure
+RestartSec=3
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
