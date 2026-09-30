@@ -1,0 +1,25 @@
+{
+  "id": "hat-cap-yellow",
+  "slot": "hat",
+  "attachNode": "head",
+  "voxelSize": 0.0625,
+  "offset": [0, 0.84, 0],
+  "rotation": [0, 0, 0],
+  "palette": {
+    "cap": "#ffd23f",
+    "visor": "#f0a82a",
+    "button": "#f07fb0",
+    "patch": "#ffffff"
+  },
+  "variants": {
+    "blue": { "cap": "#5fa8e8", "visor": "#3f82c4", "button": "#ffd23f" }
+  },
+  "boxes": [
+    { "x": -7, "y": 0, "z": -7, "w": 14, "h": 3, "d": 14, "color": "cap" },
+    { "x": -6, "y": 3, "z": -6, "w": 12, "h": 2, "d": 12, "color": "cap" },
+    { "x": -4, "y": 5, "z": -4, "w": 8, "h": 1, "d": 8, "color": "cap" },
+    { "x": -1, "y": 6, "z": -1, "w": 2, "h": 1, "d": 2, "color": "button" },
+    { "x": -6, "y": 0, "z": 7, "w": 12, "h": 1, "d": 5, "color": "visor" },
+    { "x": -2, "y": 1, "z": 7, "w": 4, "h": 2, "d": 1, "color": "patch" }
+  ]
+}

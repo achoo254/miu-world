@@ -1,7 +1,7 @@
 import { readFileSync, readdirSync } from 'node:fs';
 import path from 'node:path';
 import { describe, expect, it } from 'vitest';
-import { parseAccessory } from './accessory-schema';
+import { buildAccessoryCatalog, parseAccessory } from './accessory-schema';
 import { MAX_ACCESSORY_TRIANGLES, buildAccessoryMesh } from './voxel-accessory';
 
 const CONTENT = path.resolve(import.meta.dirname, '../../../content/accessories');
@@ -58,12 +58,41 @@ describe('buildAccessoryMesh', () => {
     expect(Array.from(blue.geometry.extra.color?.slice(0, 3) ?? [])).toEqual([0, 0, 1]);
   });
 
-  for (const file of readdirSync(CONTENT).filter((f) => f.endsWith('.json'))) {
-    it(`${file} parses, stays within budget, and every variant builds`, () => {
-      const def = parseAccessory(JSON.parse(readFileSync(path.join(CONTENT, file), 'utf8')));
-      const mesh = buildAccessoryMesh(def);
+  const files = readdirSync(CONTENT).filter((f) => f.endsWith('.json'));
+  const catalog = buildAccessoryCatalog(files.map((f) => JSON.parse(readFileSync(path.join(CONTENT, f), 'utf8')) as unknown));
+
+  it('every content file is one catalogue item', () => {
+    expect([...catalog.keys()].sort()).toEqual(files.map((f) => f.replace(/\.json$/, '')).sort());
+  });
+
+  for (const item of catalog.values()) {
+    it(`${item.id} builds within budget, and every colour of its shape too`, () => {
+      const mesh = buildAccessoryMesh(item.def, item.variant);
       expect(mesh.triangles).toBeLessThanOrEqual(MAX_ACCESSORY_TRIANGLES);
-      for (const variant of Object.keys(def.variants)) expect(buildAccessoryMesh(def, variant).triangles).toBe(mesh.triangles);
+      for (const variant of Object.keys(item.def.variants)) expect(buildAccessoryMesh(item.def, variant).triangles).toBe(mesh.triangles);
     });
   }
+});
+
+describe('accessory catalogue', () => {
+  const hat = base({ id: 'hat-a', variants: { blue: { a: '#0000ff' } } });
+
+  it('turns a variant file into an item with the base shape, slot and its own unlock', () => {
+    const items = buildAccessoryCatalog([hat, { id: 'hat-a-blue', variantOf: 'hat-a', variant: 'blue', unlock: { level: 3 } }]);
+    const blue = items.get('hat-a-blue');
+    expect(blue?.def.id).toBe('hat-a');
+    expect(blue?.variant).toBe('blue');
+    expect(blue?.slot).toBe(items.get('hat-a')?.slot);
+    expect(blue?.unlock).toEqual({ level: 3 });
+  });
+
+  it.each([
+    ['a duplicate id', [hat, hat], /duplicate/],
+    ['a variant of an unknown accessory', [{ id: 'x', variantOf: 'ghost', variant: 'blue' }], /not a full accessory/],
+    ['an unknown colour', [hat, { id: 'x', variantOf: 'hat-a', variant: 'green' }], /no variant "green"/],
+    ['a variant of a variant', [hat, { id: 'x', variantOf: 'hat-a', variant: 'blue' }, { id: 'y', variantOf: 'x', variant: 'blue' }], /not a full accessory/],
+    ['an empty unlock', [base({ unlock: {} })], /level or a quest/],
+  ])('refuses %s', (_, files, message) => {
+    expect(() => buildAccessoryCatalog(files)).toThrow(message);
+  });
 });

@@ -3,7 +3,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { ConsentDocument, LevelCurve, NameList, QuestDefinition, SkillCatalog } from '@miu/schema/content';
 import { questCatalogIssues } from '@miu/quest/quest-catalog';
-import { parseAccessory } from '@miu/voxel/accessory-schema';
+import { buildAccessoryCatalog, type AccessoryItem } from '@miu/voxel/accessory-schema';
 import type { z } from 'zod';
 
 /** Repo `content/` directory; validated once at startup so bad content fails the boot, not a request. */
@@ -13,8 +13,8 @@ export interface ContentCatalog {
   childDisplayNames: ReadonlySet<string>;
   characterNames: ReadonlySet<string>;
   consent: ConsentDocument;
-  /** Accessory id → slot; the character can wear only these, one per slot. */
-  accessories: ReadonlyMap<string, string>;
+  /** Wearable items (accessories and their colour variants); the character wears these, one per slot. */
+  accessories: ReadonlyMap<string, AccessoryItem>;
   levelCurve: LevelCurve;
   /** Skill XP → skill level; subjects use the same curve on their summed skill XP. */
   skillCurve: LevelCurve;
@@ -62,11 +62,7 @@ export function loadContentCatalog({ dir = CONTENT_DIR, questDir }: ContentOptio
   for (const quest of quests.values()) {
     for (const target of quest.unlock) unlockedBy.set(target, [...(unlockedBy.get(target) ?? []), quest.id]);
   }
-  const accessories = new Map<string, string>();
-  for (const file of jsonFiles(path.join(dir, 'accessories'))) {
-    const def = parseAccessory(JSON.parse(readFileSync(file, 'utf8')));
-    accessories.set(def.id, def.slot);
-  }
+  const accessories = buildAccessoryCatalog(jsonFiles(path.join(dir, 'accessories')).map((file) => JSON.parse(readFileSync(file, 'utf8')) as unknown));
   return {
     childDisplayNames: new Set(readContentJson(NameList, path.join(dir, 'names/child-display-names.json')).names),
     characterNames: new Set(readContentJson(NameList, path.join(dir, 'names/character-names.json')).names),

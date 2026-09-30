@@ -20,6 +20,17 @@ describe('content:check', () => {
     expect(report.notes.join(' ')).toMatch(/reward item ids/);
   });
 
+  it('flags quest text that calls the player "Miu" instead of the character name', () => {
+    const ch1 = path.join(dir, 'quests/forest-ch1.json');
+    writeFileSync(ch1, readFileSync(ch1, 'utf8').replace('Chào {name}! Cây cổ thụ', 'Chào Miu! Cây cổ thụ'));
+    expect(checkContent(dir).issues).toEqual(['quest forest-ch1 steps[0].lines[0].text says "Miu" instead of {name}']);
+  });
+
+  it('flags an accessory that unlocks with an unknown quest', () => {
+    writeFileSync(path.join(dir, 'accessories/hat-ghost.json'), JSON.stringify({ id: 'hat-ghost', variantOf: 'hat-witch-pink', variant: 'mint', unlock: { quest: 'forest-ch9' } }));
+    expect(checkContent(dir).issues).toEqual(['accessory hat-ghost unlocks with unknown quest forest-ch9']);
+  });
+
   describe('quest map targets', () => {
     const quests = () => loadContentCatalog().quests;
     const forest = path.join(ASSETS_DIR, 'generated/world/forest-ch1/entities.json');

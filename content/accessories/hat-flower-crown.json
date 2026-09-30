@@ -1,0 +1,30 @@
+{
+  "id": "hat-flower-crown",
+  "slot": "hat",
+  "attachNode": "head",
+  "voxelSize": 0.0625,
+  "offset": [0, 0.84, 0],
+  "rotation": [0, 0, 0],
+  "unlock": { "quest": "forest-ch1" },
+  "palette": {
+    "leaf": "#5f9e4f",
+    "pink": "#f07fb0",
+    "white": "#fff6f0",
+    "sun": "#ffd23f"
+  },
+  "variants": {},
+  "boxes": [
+    { "x": -8, "y": 0, "z": -8, "w": 16, "h": 1, "d": 2, "color": "leaf" },
+    { "x": -8, "y": 0, "z": 6, "w": 16, "h": 1, "d": 2, "color": "leaf" },
+    { "x": -8, "y": 0, "z": -6, "w": 2, "h": 1, "d": 12, "color": "leaf" },
+    { "x": 6, "y": 0, "z": -6, "w": 2, "h": 1, "d": 12, "color": "leaf" },
+    { "x": -2, "y": 1, "z": 6, "w": 4, "h": 2, "d": 2, "color": "pink" },
+    { "x": -1, "y": 2, "z": 8, "w": 2, "h": 1, "d": 1, "color": "sun" },
+    { "x": -8, "y": 1, "z": 2, "w": 2, "h": 2, "d": 3, "color": "white" },
+    { "x": 6, "y": 1, "z": 2, "w": 2, "h": 2, "d": 3, "color": "white" },
+    { "x": -8, "y": 1, "z": -5, "w": 2, "h": 2, "d": 3, "color": "pink" },
+    { "x": 6, "y": 1, "z": -5, "w": 2, "h": 2, "d": 3, "color": "pink" },
+    { "x": -2, "y": 1, "z": -8, "w": 4, "h": 2, "d": 2, "color": "white" },
+    { "x": -1, "y": 3, "z": 7, "w": 2, "h": 1, "d": 1, "color": "sun" }
+  ]
+}

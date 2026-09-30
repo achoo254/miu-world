@@ -1,0 +1,29 @@
+{
+  "id": "backpack-leaf",
+  "slot": "back",
+  "attachNode": "torso",
+  "voxelSize": 0.0625,
+  "offset": [0, 0.55, -0.3],
+  "rotation": [0, 0, 0],
+  "unlock": { "level": 2 },
+  "palette": {
+    "leaf": "#6fbf5a",
+    "vein": "#4a8f3c",
+    "stem": "#7a4f2b",
+    "strap": "#3f6e33"
+  },
+  "variants": {},
+  "boxes": [
+    { "x": -5, "y": 0, "z": -4, "w": 10, "h": 9, "d": 4, "color": "leaf" },
+    { "x": -4, "y": 9, "z": -4, "w": 8, "h": 2, "d": 4, "color": "leaf" },
+    { "x": -2, "y": 11, "z": -4, "w": 4, "h": 2, "d": 4, "color": "leaf" },
+    { "x": -1, "y": 13, "z": -3, "w": 2, "h": 2, "d": 2, "color": "stem" },
+    { "x": -1, "y": 1, "z": -5, "w": 2, "h": 11, "d": 1, "color": "vein" },
+    { "x": -4, "y": 4, "z": -5, "w": 3, "h": 1, "d": 1, "color": "vein" },
+    { "x": 1, "y": 7, "z": -5, "w": 3, "h": 1, "d": 1, "color": "vein" },
+    { "x": -4, "y": 9, "z": 0, "w": 2, "h": 1, "d": 11, "color": "strap" },
+    { "x": 2, "y": 9, "z": 0, "w": 2, "h": 1, "d": 11, "color": "strap" },
+    { "x": -4, "y": 3, "z": 10, "w": 2, "h": 6, "d": 1, "color": "strap" },
+    { "x": 2, "y": 3, "z": 10, "w": 2, "h": 6, "d": 1, "color": "strap" }
+  ]
+}

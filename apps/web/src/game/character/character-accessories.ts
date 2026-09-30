@@ -14,6 +14,7 @@ import {
 } from 'three';
 import type { AccessoryDef } from '@miu/voxel/accessory-schema';
 import { buildAccessoryMesh } from '@miu/voxel/voxel-accessory';
+import { resolveOutfitEntry } from '../content/accessories';
 
 const DEG = Math.PI / 180;
 const sharedMaterial = new MeshLambertMaterial({ vertexColors: true });
@@ -57,4 +58,43 @@ export function attachAccessory(character: Object3D, def: AccessoryDef, mesh: Me
   );
   new Matrix4().copy(toModel).invert().multiply(desired).decompose(mesh.position, mesh.quaternion, mesh.scale);
   node.add(mesh);
+}
+
+export interface WornOutfit {
+  /** Entries actually attached, in order. */
+  entries: string[];
+  /** Entries that could not be attached (unknown id or colour, missing node), with the reason. */
+  skipped: Array<{ entry: string; error: unknown }>;
+  meshes: Mesh[];
+}
+
+/**
+ * Builds and attaches every outfit entry (see `resolveOutfitEntry`). The character must be in its
+ * bind pose (see `attachAccessory`); `scaleFor` gives the accessory size per attach node.
+ */
+export function dressCharacter(character: Object3D, entries: readonly string[], scaleFor: (node: string) => number, castShadow: boolean): WornOutfit {
+  const worn: WornOutfit = { entries: [], skipped: [], meshes: [] };
+  for (const entry of entries) {
+    try {
+      const { def, variant } = resolveOutfitEntry(entry);
+      const mesh = createAccessoryMesh(def, variant);
+      mesh.castShadow = castShadow;
+      attachAccessory(character, def, mesh, scaleFor(def.attachNode));
+      worn.entries.push(entry);
+      worn.meshes.push(mesh);
+    } catch (error) {
+      worn.skipped.push({ entry, error });
+    }
+  }
+  return worn;
+}
+
+/** Detaches and frees what `dressCharacter` attached (the material is shared and stays). */
+export function undressCharacter(worn: WornOutfit): void {
+  for (const mesh of worn.meshes) {
+    mesh.removeFromParent();
+    mesh.geometry.dispose();
+  }
+  worn.meshes.length = 0;
+  worn.entries.length = 0;
 }

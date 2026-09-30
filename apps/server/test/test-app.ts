@@ -31,18 +31,19 @@ export async function createTestApp(
   env: Record<string, string> = { NODE_ENV: 'test' },
   overrides: Partial<ServerConfig> = {},
   fetchImpl?: typeof fetch,
+  content: typeof FIXTURE_CONTENT = FIXTURE_CONTENT,
 ): Promise<TestApp> {
   const handle = await createTestDb();
   // Every test agent shares one loopback IP, so the per-IP register cap is lifted; its own test lowers it.
   const config = { ...loadConfig(env), scrypt: FAST_SCRYPT, registerLimitPerHour: 10_000, googleLimitPer15Min: 10_000, passwordLogin: true, ...overrides };
   let offset = 0;
-  const app = createApp({ config, db: handle.db, content: FIXTURE_CONTENT, clock: () => new Date(Date.now() + offset), fetchImpl });
+  const app = createApp({ config, db: handle.db, content, clock: () => new Date(Date.now() + offset), fetchImpl });
   return {
     app,
     db: handle.db,
     handle,
     config,
-    content: FIXTURE_CONTENT,
+    content,
     advance(ms) {
       offset += ms;
     },

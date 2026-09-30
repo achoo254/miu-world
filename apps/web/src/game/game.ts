@@ -6,15 +6,12 @@ import {
   DirectionalLight,
   Fog,
   HemisphereLight,
-  Mesh,
   PCFShadowMap,
   PerspectiveCamera,
   Scene,
   SRGBColorSpace,
-  Texture,
   Timer,
   WebGLRenderer,
-  type Material,
 } from 'three';
 import { blockLookup } from '@miu/voxel/block-table';
 import type { SolidAt } from '@miu/voxel/grid-collision';
@@ -30,6 +27,7 @@ import { CameraRig } from './player/camera-rig';
 import { PlayerInput } from './player/input';
 import { PlayerController, type MoveIntent } from './player/player-controller';
 import { readQuality } from './quality';
+import { disposeSceneGraph } from './scene/dispose-scene';
 import { SKY_HORIZON, createSky } from './scene/sky';
 import { loadWorldData } from './world/world-data';
 import { createWorldRenderer } from './world/world-renderer';
@@ -83,11 +81,9 @@ function buildDom(host: HTMLElement) {
   const run = button('btn-run', 'Chạy');
   const jump = button('btn-jump', 'Nhảy');
   actions.append(run, jump);
-  const loading = div('loading', 'loading');
-  loading.textContent = 'Đang tải Khu rừng bí mật…';
-  root.append(stats, joystick, actions, loading);
+  root.append(stats, joystick, actions);
   host.append(root);
-  return { root, stats, joystick, run, jump, loading };
+  return { root, stats, joystick, run, jump };
 }
 
 export class Game {
@@ -145,17 +141,7 @@ export class Game {
     this.disposed = true;
     this.renderer?.setAnimationLoop(null);
     for (const cleanup of this.cleanups.splice(0).reverse()) cleanup();
-    const textures = new Set<Texture>();
-    this.scene?.traverse((node) => {
-      if (!(node instanceof Mesh)) return;
-      node.geometry.dispose();
-      const materials: Material[] = Array.isArray(node.material) ? node.material : [node.material];
-      for (const material of materials) {
-        for (const value of Object.values(material)) if (value instanceof Texture) textures.add(value);
-        material.dispose();
-      }
-    });
-    for (const texture of textures) texture.dispose();
+    if (this.scene) disposeSceneGraph(this.scene);
     this.scene = null;
     if (this.renderer) {
       this.renderer.dispose();
@@ -362,7 +348,6 @@ export class Game {
         overlay.stats.loadMs = Math.round(performance.now());
         overlay.stats.firstAreaBytes = downloadedBytes();
         overlay.stats.ready = true;
-        dom.loading.hidden = true;
         store.emit({ type: 'ready' });
       }
     };

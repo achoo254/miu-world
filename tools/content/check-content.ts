@@ -5,6 +5,7 @@ import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { CONTENT_DIR, loadContentCatalog } from '../../apps/server/src/content/content-catalog';
+import { playerTextIssues } from '../../packages/quest/src/player-name';
 import { stepTargets, type QuestDefinition } from '../../packages/schema/src/content';
 import { worldEntitiesSchema } from '../../packages/voxel/src/world-entities';
 import { ASSETS_DIR } from '../assets/asset-lib';
@@ -63,6 +64,20 @@ export function checkQuestTargets(
   return { issues, notes };
 }
 
+/** Every string in a quest (titles, lines, prompts, support) must address the player as `{name}`. */
+export function checkPlayerText(quests: Iterable<QuestDefinition>): string[] {
+  const issues: string[] = [];
+  for (const quest of quests) {
+    const visit = (value: unknown, where: string): void => {
+      if (typeof value === 'string') for (const issue of playerTextIssues(value)) issues.push(`quest ${quest.id} ${where} ${issue}`);
+      else if (Array.isArray(value)) value.forEach((v, i) => visit(v, `${where}[${i}]`));
+      else if (typeof value === 'object' && value !== null) for (const [k, v] of Object.entries(value)) visit(v, where ? `${where}.${k}` : k);
+    };
+    visit(quest, '');
+  }
+  return issues;
+}
+
 export interface ContentReport {
   issues: string[];
   /** Checks deliberately not run yet, printed so a green run does not overstate what was verified. */
@@ -95,6 +110,11 @@ export function checkContent(dir: string = CONTENT_DIR): ContentReport {
     const catalog = loadContentCatalog({ dir });
     const targets = checkQuestTargets(catalog.quests.values());
     issues.push(...targets.issues);
+    issues.push(...checkPlayerText(catalog.quests.values()));
+    for (const item of catalog.accessories.values()) {
+      const quest = item.unlock?.quest;
+      if (quest && !catalog.quests.has(quest)) issues.push(`accessory ${item.id} unlocks with unknown quest ${quest}`);
+    }
     notes.push(...targets.notes);
   } catch (error) {
     issues.push(error instanceof Error ? error.message : String(error));

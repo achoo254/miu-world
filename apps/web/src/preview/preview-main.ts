@@ -18,8 +18,7 @@ import {
 } from 'three';
 import { createGameStore } from '../game-bridge/game-store';
 import { AssetRegistry, GuardedGltfLoader } from '../game/asset-loader';
-import { attachAccessory, createAccessoryMesh } from '../game/character/character-accessories';
-import { getAccessory } from '../game/content/accessories';
+import { dressCharacter } from '../game/character/character-accessories';
 import { Game } from '../game/game';
 import '../ui/styles.css';
 
@@ -56,11 +55,9 @@ async function render(): Promise<void> {
         return [node, Number(value)] as const;
       }),
   );
-  for (const entry of (params.get('acc') ?? '').split(',').filter(Boolean)) {
-    const [id = '', variant] = entry.split(':');
-    const def = getAccessory(id);
-    attachAccessory(model, def, createAccessoryMesh(def, variant), accScale.get(def.attachNode) ?? 1);
-  }
+  const worn = dressCharacter(model, (params.get('acc') ?? '').split(',').filter(Boolean), (node) => accScale.get(node) ?? 1, false);
+  const [failed] = worn.skipped;
+  if (failed) throw failed.error instanceof Error ? failed.error : new Error(`accessory ${failed.entry}`);
 
   const clipName = params.get('anim');
   if (clipName) {

@@ -1,8 +1,7 @@
 // Miu: the kitbashed character GLB + accessories, blending idle/walk/sprint by speed.
 import { AnimationMixer, type AnimationAction, type Object3D } from 'three';
 import type { GuardedGltfLoader } from '../asset-loader';
-import { attachAccessory, createAccessoryMesh } from '../character/character-accessories';
-import { getAccessory } from '../content/accessories';
+import { dressCharacter } from '../character/character-accessories';
 import { RUN_SPEED, WALK_SPEED } from '../player/player-controller';
 import characters from '../../../../../content/characters.json';
 
@@ -12,6 +11,7 @@ if (!spec) throw new Error(`content/characters.json has no ${CHARACTER_ID}`);
 export const CHARACTER_MODEL = spec.output;
 /** Accessory size per attach node for the shipped body proportions (content/characters.json). */
 const ACCESSORY_SCALE = spec.accessoryScale ?? {};
+export const accessoryScaleFor = (node: string): number => ACCESSORY_SCALE[node] ?? 1;
 const LOCOMOTION = ['idle', 'walk', 'sprint'] as const;
 type Locomotion = (typeof LOCOMOTION)[number];
 
@@ -29,19 +29,9 @@ export async function loadPlayerCharacter(loader: GuardedGltfLoader, outfit: str
     o.castShadow = true;
     o.frustumCulled = false; // skinned bounds lag the animated pose
   });
-  const attached: string[] = [];
-  for (const entry of outfit) {
-    const [id = '', variant] = entry.split(':');
-    try {
-      const def = getAccessory(id);
-      const mesh = createAccessoryMesh(def, variant);
-      mesh.castShadow = true;
-      attachAccessory(root, def, mesh, ACCESSORY_SCALE[def.attachNode] ?? 1);
-      attached.push(entry);
-    } catch (err) {
-      console.warn(`skipping outfit entry "${entry}"`, err); // a bad ?outfit= must not block the game
-    }
-  }
+  const worn = dressCharacter(root, outfit, accessoryScaleFor, true);
+  // A bad ?outfit= must not block the game.
+  for (const { entry, error } of worn.skipped) console.warn(`skipping outfit entry "${entry}"`, error);
   const mixer = new AnimationMixer(root);
   const actions = new Map<Locomotion, AnimationAction>();
   for (const name of LOCOMOTION) {
@@ -54,7 +44,7 @@ export async function loadPlayerCharacter(loader: GuardedGltfLoader, outfit: str
 
   return {
     root,
-    outfit: attached,
+    outfit: worn.entries,
     update(dt, speed, onGround) {
       const next: Locomotion = !onGround ? current : speed > (WALK_SPEED + RUN_SPEED) / 2 ? 'sprint' : speed > 0.4 ? 'walk' : 'idle';
       if (next !== current) {

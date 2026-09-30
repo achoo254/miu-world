@@ -23,8 +23,10 @@ describe('content catalogue', () => {
     expect(catalog.quests.get('forest-ch1')?.status).toBe('active');
     expect(catalog.quests.get('forest-ch2')?.status).toBe('stub');
     expect(catalog.unlockedBy.get('forest-ch2')).toEqual(['forest-ch1']);
-    expect(catalog.accessories.get('hat-witch-pink')).toBe('hat');
-    expect(catalog.accessories.get('backpack-brown')).toBe('back');
+    expect(catalog.accessories.get('hat-witch-pink')?.slot).toBe('hat');
+    expect(catalog.accessories.get('backpack-brown')?.slot).toBe('back');
+    expect(catalog.accessories.get('hat-witch-night')).toMatchObject({ slot: 'hat', variant: 'night', unlock: { level: 2 } });
+    expect(catalog.accessories.get('hat-flower-crown')?.unlock).toEqual({ quest: 'forest-ch1' });
     expect(catalog.skillIds.has('doc-hieu')).toBe(true);
     expect(catalog.characterNames.has('Miu')).toBe(true);
   });
