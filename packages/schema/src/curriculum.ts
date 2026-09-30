@@ -143,6 +143,8 @@ export const CurriculumSection = z.strictObject({
   pages: PageRange,
   /** Reading passage, poem or story as printed (line breaks kept); required for `doc`. */
   text: PrintedText.optional(),
+  /** Attribution printed for a story told from pictures, as printed ("(Theo Truyện kể cho bé Mầm non)"). */
+  source: Text.optional(),
   items: z.array(CurriculumItem),
 });
 export type CurriculumSection = z.infer<typeof CurriculumSection>;
