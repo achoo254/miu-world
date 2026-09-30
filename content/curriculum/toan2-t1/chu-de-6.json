@@ -1,0 +1,1314 @@
+{
+  "book": "toan2-t1",
+  "id": "toan2-t1-chu-de-6",
+  "number": 6,
+  "title": "Ngày – giờ, giờ – phút, ngày – tháng",
+  "lessons": [
+    {
+      "id": "toan2-t1-b29",
+      "number": 29,
+      "title": "Bài 29. Ngày – giờ, giờ – phút",
+      "pages": [
+        112,
+        115
+      ],
+      "sections": [
+        {
+          "id": "toan2-t1-b29-kham-pha",
+          "kind": "kham-pha",
+          "pages": [
+            112,
+            112
+          ],
+          "items": []
+        },
+        {
+          "id": "toan2-t1-b29-hoat-dong",
+          "kind": "hoat-dong",
+          "pages": [
+            113,
+            113
+          ],
+          "items": [
+            {
+              "id": "toan2-t1-b29-hoat-dong-1-a",
+              "page": 113,
+              "prompt": "Số ? Nam làm gì lúc mấy giờ? Nam và bố đi câu cá lúc ? giờ chiều.",
+              "exerciseType": "xem-dong-ho",
+              "media": [
+                "tranh: Nam và bố câu cá bên hồ",
+                "đồng hồ kim giờ chỉ 4, kim phút chỉ 12"
+              ],
+              "answer": {
+                "time": {
+                  "hour": 16,
+                  "minute": 0
+                }
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b29-hoat-dong-1-b",
+              "page": 113,
+              "prompt": "Số ? Nam làm gì lúc mấy giờ? Nam và bố đọc sách lúc ? giờ tối.",
+              "exerciseType": "xem-dong-ho",
+              "media": [
+                "tranh: Nam và bố ngồi ghế đọc sách, ngoài cửa sổ trời tối",
+                "đồng hồ kim giờ chỉ 8, kim phút chỉ 12"
+              ],
+              "answer": {
+                "time": {
+                  "hour": 20,
+                  "minute": 0
+                }
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b29-hoat-dong-1-c",
+              "page": 113,
+              "prompt": "Số ? Nam làm gì lúc mấy giờ? Lúc ? giờ đêm, Nam đang ngủ.",
+              "exerciseType": "xem-dong-ho",
+              "media": [
+                "tranh: Nam ngủ trên giường",
+                "đồng hồ kim giờ chỉ 10, kim phút chỉ 12"
+              ],
+              "answer": {
+                "time": {
+                  "hour": 22,
+                  "minute": 0
+                }
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b29-hoat-dong-2-a",
+              "page": 113,
+              "prompt": "Tìm đồng hồ chỉ thời gian thích hợp với mỗi bức tranh. Nam đi học lúc 7 giờ sáng.",
+              "exerciseType": "noi",
+              "media": [
+                "tranh: Nam đeo cặp đi học",
+                "đồng hồ điện tử 19:00, 14:00, 07:00"
+              ],
+              "answer": {
+                "time": {
+                  "hour": 7,
+                  "minute": 0
+                }
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b29-hoat-dong-2-b",
+              "page": 113,
+              "prompt": "Tìm đồng hồ chỉ thời gian thích hợp với mỗi bức tranh. Việt xem bóng đá lúc 7 giờ tối.",
+              "exerciseType": "noi",
+              "media": [
+                "tranh: Việt xem bóng đá trên ti vi",
+                "đồng hồ điện tử 19:00, 14:00, 07:00"
+              ],
+              "answer": {
+                "time": {
+                  "hour": 19,
+                  "minute": 0
+                }
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b29-hoat-dong-2-c",
+              "page": 113,
+              "prompt": "Tìm đồng hồ chỉ thời gian thích hợp với mỗi bức tranh. Rô-bốt vẽ tranh lúc 2 giờ chiều.",
+              "exerciseType": "noi",
+              "media": [
+                "tranh: Rô-bốt vẽ tranh bên giá vẽ",
+                "đồng hồ điện tử 19:00, 14:00, 07:00"
+              ],
+              "answer": {
+                "time": {
+                  "hour": 14,
+                  "minute": 0
+                }
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b29-hoat-dong-3-a",
+              "page": 113,
+              "prompt": "Chọn đồng hồ chỉ thời gian thích hợp với mỗi bức tranh. a) A 11:00 B 23:00",
+              "exerciseType": "xem-dong-ho",
+              "media": [
+                "tranh: bạn gái ngủ trên giường, ngoài cửa sổ trời tối có sao",
+                "đồng hồ kim giờ chỉ 11, kim phút chỉ 12",
+                "đồng hồ điện tử A 11:00, B 23:00"
+              ],
+              "answer": {
+                "time": {
+                  "hour": 23,
+                  "minute": 0
+                }
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b29-hoat-dong-3-b",
+              "page": 113,
+              "prompt": "Chọn đồng hồ chỉ thời gian thích hợp với mỗi bức tranh. b) A 03:00 B 15:00",
+              "exerciseType": "xem-dong-ho",
+              "media": [
+                "tranh: hai bạn và Rô-bốt đá bóng trên bãi cỏ ban ngày",
+                "đồng hồ kim giờ chỉ 3, kim phút chỉ 12",
+                "đồng hồ điện tử A 03:00, B 15:00"
+              ],
+              "answer": {
+                "time": {
+                  "hour": 15,
+                  "minute": 0
+                }
+              },
+              "readConfidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "toan2-t1-b29-kham-pha-2",
+          "kind": "kham-pha",
+          "pages": [
+            114,
+            114
+          ],
+          "items": []
+        },
+        {
+          "id": "toan2-t1-b29-hoat-dong-2",
+          "kind": "hoat-dong",
+          "pages": [
+            114,
+            115
+          ],
+          "items": [
+            {
+              "id": "toan2-t1-b29-hoat-dong-2-1-a",
+              "page": 114,
+              "prompt": "Số ? Mỗi bạn làm gì lúc mấy giờ? Việt học bài lúc ? giờ ? phút sáng.",
+              "exerciseType": "xem-dong-ho",
+              "media": [
+                "tranh: Việt ngồi viết bài",
+                "đồng hồ kim giờ chỉ quá số 8, kim phút chỉ 3"
+              ],
+              "answer": {
+                "time": {
+                  "hour": 8,
+                  "minute": 15
+                }
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b29-hoat-dong-2-1-b",
+              "page": 114,
+              "prompt": "Số ? Mỗi bạn làm gì lúc mấy giờ? Nam làm bài tập lúc ? giờ ? phút chiều.",
+              "exerciseType": "xem-dong-ho",
+              "media": [
+                "tranh: Nam ngồi làm bài tập",
+                "đồng hồ kim giờ chỉ giữa số 2 và số 3, kim phút chỉ 6"
+              ],
+              "answer": {
+                "time": {
+                  "hour": 14,
+                  "minute": 30
+                }
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b29-hoat-dong-2-1-c",
+              "page": 114,
+              "prompt": "Số ? Mỗi bạn làm gì lúc mấy giờ? Mi ăn tối lúc ? giờ ? phút.",
+              "exerciseType": "xem-dong-ho",
+              "media": [
+                "tranh: Mi ăn cơm",
+                "đồng hồ kim giờ chỉ quá số 6, kim phút chỉ 3"
+              ],
+              "answer": {
+                "time": {
+                  "hour": 18,
+                  "minute": 15
+                }
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b29-hoat-dong-2-1-d",
+              "page": 114,
+              "prompt": "Số ? Mỗi bạn làm gì lúc mấy giờ? Lúc ? giờ ? phút đêm, Rô-bốt đang ngủ.",
+              "exerciseType": "xem-dong-ho",
+              "media": [
+                "tranh: Rô-bốt ngủ trên giường",
+                "đồng hồ kim giờ chỉ giữa số 10 và số 11, kim phút chỉ 6"
+              ],
+              "answer": {
+                "time": {
+                  "hour": 22,
+                  "minute": 30
+                }
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b29-hoat-dong-2-2-a",
+              "page": 115,
+              "prompt": "Tìm hai đồng hồ chỉ cùng thời gian vào buổi chiều, tối hoặc đêm.",
+              "exerciseType": "noi",
+              "media": [
+                "mẫu vẽ sẵn: đồng hồ kim chỉ 10 giờ 30 phút nối với đồng hồ điện tử 22:30",
+                "đồng hồ kim giờ chỉ quá số 6, kim phút chỉ 3",
+                "đồng hồ điện tử 18:15, 22:30, 19:00, 14:30"
+              ],
+              "answer": {
+                "time": {
+                  "hour": 18,
+                  "minute": 15
+                }
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b29-hoat-dong-2-2-b",
+              "page": 115,
+              "prompt": "Tìm hai đồng hồ chỉ cùng thời gian vào buổi chiều, tối hoặc đêm.",
+              "exerciseType": "noi",
+              "media": [
+                "đồng hồ kim giờ chỉ giữa số 2 và số 3, kim phút chỉ 6",
+                "đồng hồ điện tử 18:15, 22:30, 19:00, 14:30"
+              ],
+              "answer": {
+                "time": {
+                  "hour": 14,
+                  "minute": 30
+                }
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b29-hoat-dong-2-2-c",
+              "page": 115,
+              "prompt": "Tìm hai đồng hồ chỉ cùng thời gian vào buổi chiều, tối hoặc đêm.",
+              "exerciseType": "noi",
+              "media": [
+                "đồng hồ kim giờ chỉ 7, kim phút chỉ 12",
+                "đồng hồ điện tử 18:15, 22:30, 19:00, 14:30"
+              ],
+              "answer": {
+                "time": {
+                  "hour": 19,
+                  "minute": 0
+                }
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b29-hoat-dong-2-3-a",
+              "page": 115,
+              "prompt": "Số ? Nam làm gì lúc mấy giờ? Nam học bài lúc ? giờ ? phút sáng.",
+              "exerciseType": "xem-dong-ho",
+              "media": [
+                "tranh: Nam ngồi học bài",
+                "đồng hồ điện tử 09:30"
+              ],
+              "answer": {
+                "time": {
+                  "hour": 9,
+                  "minute": 30
+                }
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b29-hoat-dong-2-3-b",
+              "page": 115,
+              "prompt": "Số ? Nam làm gì lúc mấy giờ? Nam ở thư viện lúc ? giờ ? phút chiều.",
+              "exerciseType": "xem-dong-ho",
+              "media": [
+                "tranh: Nam đọc sách ở thư viện",
+                "đồng hồ điện tử 15:15"
+              ],
+              "answer": {
+                "time": {
+                  "hour": 15,
+                  "minute": 15
+                }
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b29-hoat-dong-2-3-c",
+              "page": 115,
+              "prompt": "Số ? Nam làm gì lúc mấy giờ? Nam tan học lúc ? giờ chiều.",
+              "exerciseType": "xem-dong-ho",
+              "media": [
+                "tranh: Nam chạy ra cổng Trường Tiểu học",
+                "đồng hồ điện tử 16:00"
+              ],
+              "answer": {
+                "time": {
+                  "hour": 16,
+                  "minute": 0
+                }
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b29-hoat-dong-2-3-d",
+              "page": 115,
+              "prompt": "Số ? Nam làm gì lúc mấy giờ? Nam rửa bát lúc ? giờ ? phút tối.",
+              "exerciseType": "xem-dong-ho",
+              "media": [
+                "tranh: Nam rửa bát",
+                "đồng hồ điện tử 19:15"
+              ],
+              "answer": {
+                "time": {
+                  "hour": 19,
+                  "minute": 15
+                }
+              },
+              "readConfidence": "high"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "toan2-t1-b30",
+      "number": 30,
+      "title": "Bài 30. Ngày – tháng",
+      "pages": [
+        116,
+        118
+      ],
+      "sections": [
+        {
+          "id": "toan2-t1-b30-kham-pha",
+          "kind": "kham-pha",
+          "pages": [
+            116,
+            116
+          ],
+          "items": []
+        },
+        {
+          "id": "toan2-t1-b30-hoat-dong",
+          "kind": "hoat-dong",
+          "pages": [
+            116,
+            117
+          ],
+          "items": [
+            {
+              "id": "toan2-t1-b30-hoat-dong-1-a",
+              "page": 116,
+              "prompt": "Tìm hai con vật có cùng ngày sinh. Ngày tám tháng Ba",
+              "exerciseType": "noi",
+              "media": [
+                "mèo cầm thẻ Ngày tám tháng Ba",
+                "tấm thẻ của chó (Ngày mười tháng Một) nối mẫu với tấm thẻ của bò (Ngày 10 tháng 1); thẻ khác: thỏ Ngày 1 tháng 6, chim Ngày 14 tháng 8, trâu Ngày 8 tháng 3"
+              ],
+              "answer": {
+                "date": {
+                  "day": 8,
+                  "month": 3
+                }
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b30-hoat-dong-1-b",
+              "page": 116,
+              "prompt": "Tìm hai con vật có cùng ngày sinh. Ngày một tháng Sáu",
+              "exerciseType": "noi",
+              "media": [
+                "dê cầm thẻ Ngày một tháng Sáu",
+                "tấm thẻ của chó (Ngày mười tháng Một) nối mẫu với tấm thẻ của bò (Ngày 10 tháng 1); thẻ khác: thỏ Ngày 1 tháng 6, chim Ngày 14 tháng 8, trâu Ngày 8 tháng 3"
+              ],
+              "answer": {
+                "date": {
+                  "day": 1,
+                  "month": 6
+                }
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b30-hoat-dong-1-c",
+              "page": 116,
+              "prompt": "Tìm hai con vật có cùng ngày sinh. Ngày mười bốn tháng Tám",
+              "exerciseType": "noi",
+              "media": [
+                "lợn cầm thẻ Ngày mười bốn tháng Tám",
+                "tấm thẻ của chó (Ngày mười tháng Một) nối mẫu với tấm thẻ của bò (Ngày 10 tháng 1); thẻ khác: thỏ Ngày 1 tháng 6, chim Ngày 14 tháng 8, trâu Ngày 8 tháng 3"
+              ],
+              "answer": {
+                "date": {
+                  "day": 14,
+                  "month": 8
+                }
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b30-hoat-dong-2-a",
+              "page": 117,
+              "prompt": "a) Nêu các ngày còn thiếu trong tờ lịch tháng 12 dưới đây.",
+              "exerciseType": "xem-lich",
+              "media": [
+                "tờ lịch tháng 12, ngày 1 là thứ Tư, ngày 31 là thứ Sáu, một số ô ngày để trống"
+              ],
+              "answer": {
+                "values": [
+                  10,
+                  14,
+                  16,
+                  20,
+                  22,
+                  26,
+                  28
+                ]
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b30-hoat-dong-2-b1",
+              "page": 117,
+              "prompt": "b) Xem tờ lịch tháng 12 rồi trả lời câu hỏi. – Tháng 12 có bao nhiêu ngày?",
+              "exerciseType": "xem-lich",
+              "media": [
+                "tờ lịch tháng 12, ngày 1 là thứ Tư, ngày 31 là thứ Sáu, một số ô ngày để trống"
+              ],
+              "answer": {
+                "number": 31
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b30-hoat-dong-2-b2",
+              "page": 117,
+              "prompt": "b) Xem tờ lịch tháng 12 rồi trả lời câu hỏi. – Ngày đầu tiên của tháng 12 là thứ mấy?",
+              "exerciseType": "xem-lich",
+              "media": [
+                "tờ lịch tháng 12, ngày 1 là thứ Tư, ngày 31 là thứ Sáu, một số ô ngày để trống"
+              ],
+              "answer": {
+                "text": "thứ Tư"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b30-hoat-dong-2-b3",
+              "page": 117,
+              "prompt": "b) Xem tờ lịch tháng 12 rồi trả lời câu hỏi. – Ngày cuối cùng của tháng 12 là thứ mấy?",
+              "exerciseType": "xem-lich",
+              "media": [
+                "tờ lịch tháng 12, ngày 1 là thứ Tư, ngày 31 là thứ Sáu, một số ô ngày để trống"
+              ],
+              "answer": {
+                "text": "thứ Sáu"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b30-hoat-dong-3-a",
+              "page": 117,
+              "prompt": "Xem tờ lịch tháng 1 dưới đây rồi trả lời câu hỏi. – Tháng 1 có bao nhiêu ngày?",
+              "exerciseType": "xem-lich",
+              "media": [
+                "tờ lịch tháng 1, ngày 1 là thứ Bảy, ngày 31 là thứ Hai"
+              ],
+              "answer": {
+                "number": 31
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b30-hoat-dong-3-b",
+              "page": 117,
+              "prompt": "Xem tờ lịch tháng 1 dưới đây rồi trả lời câu hỏi. – Ngày tết Dương lịch 1 tháng 1 là thứ mấy?",
+              "exerciseType": "xem-lich",
+              "media": [
+                "tờ lịch tháng 1, ngày 1 là thứ Bảy, ngày 31 là thứ Hai"
+              ],
+              "answer": {
+                "text": "thứ Bảy"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b30-hoat-dong-3-c",
+              "page": 117,
+              "prompt": "Xem tờ lịch tháng 1 dưới đây rồi trả lời câu hỏi. – Ngày 1 tháng 2 cùng năm là thứ mấy?",
+              "exerciseType": "xem-lich",
+              "media": [
+                "tờ lịch tháng 1, ngày 1 là thứ Bảy, ngày 31 là thứ Hai"
+              ],
+              "answer": {
+                "text": "thứ Ba"
+              },
+              "readConfidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "toan2-t1-b30-luyen-tap",
+          "kind": "luyen-tap",
+          "pages": [
+            117,
+            118
+          ],
+          "items": [
+            {
+              "id": "toan2-t1-b30-luyen-tap-1-a",
+              "page": 117,
+              "prompt": "Mỗi hình dưới đây ứng với ô chữ nào? Ngày Nhà giáo Việt Nam 20 tháng 11",
+              "exerciseType": "noi",
+              "media": [
+                "tranh Ngày Nhà giáo Việt Nam 20 tháng 11",
+                "ô chữ: Ngày hai mươi tháng Mười một, Ngày một tháng Một, Ngày một tháng Sáu, Ngày hai tháng Chín (mẫu: tranh Ngày Quốc tế Thiếu nhi 1 tháng 6 nối với Ngày một tháng Sáu)"
+              ],
+              "answer": {
+                "choice": "Ngày hai mươi tháng Mười một"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b30-luyen-tap-1-b",
+              "page": 117,
+              "prompt": "Mỗi hình dưới đây ứng với ô chữ nào? Ngày Quốc khánh 2 tháng 9",
+              "exerciseType": "noi",
+              "media": [
+                "tranh Ngày Quốc khánh 2 tháng 9",
+                "ô chữ: Ngày hai mươi tháng Mười một, Ngày một tháng Một, Ngày một tháng Sáu, Ngày hai tháng Chín (mẫu: tranh Ngày Quốc tế Thiếu nhi 1 tháng 6 nối với Ngày một tháng Sáu)"
+              ],
+              "answer": {
+                "choice": "Ngày hai tháng Chín"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b30-luyen-tap-1-c",
+              "page": 117,
+              "prompt": "Mỗi hình dưới đây ứng với ô chữ nào? Ngày tết Dương lịch 1 tháng 1",
+              "exerciseType": "noi",
+              "media": [
+                "tranh Ngày tết Dương lịch 1 tháng 1",
+                "ô chữ: Ngày hai mươi tháng Mười một, Ngày một tháng Một, Ngày một tháng Sáu, Ngày hai tháng Chín (mẫu: tranh Ngày Quốc tế Thiếu nhi 1 tháng 6 nối với Ngày một tháng Sáu)"
+              ],
+              "answer": {
+                "choice": "Ngày một tháng Một"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b30-luyen-tap-2-a",
+              "page": 118,
+              "prompt": "a) Nêu các ngày còn thiếu trong tờ lịch tháng 2 dưới đây.",
+              "exerciseType": "xem-lich",
+              "media": [
+                "tờ lịch tháng 2, ngày 1 là thứ Ba, ngày 28 là thứ Hai, một số ô ngày để trống"
+              ],
+              "answer": {
+                "values": [
+                  19,
+                  23,
+                  24
+                ]
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b30-luyen-tap-2-b1",
+              "page": 118,
+              "prompt": "b) Xem tờ lịch bên rồi trả lời câu hỏi. – Tháng 2 có bao nhiêu ngày?",
+              "exerciseType": "xem-lich",
+              "media": [
+                "tờ lịch tháng 2, ngày 1 là thứ Ba, ngày 28 là thứ Hai, một số ô ngày để trống"
+              ],
+              "answer": {
+                "number": 28
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b30-luyen-tap-2-b2",
+              "page": 118,
+              "prompt": "b) Xem tờ lịch bên rồi trả lời câu hỏi. – Ngày Thầy thuốc Việt Nam 27 tháng 2 là thứ mấy?",
+              "exerciseType": "xem-lich",
+              "media": [
+                "tờ lịch tháng 2, ngày 1 là thứ Ba, ngày 28 là thứ Hai, một số ô ngày để trống"
+              ],
+              "answer": {
+                "text": "Chủ nhật"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b30-luyen-tap-3-a",
+              "page": 118,
+              "prompt": "Xem tờ lịch tháng 3 dưới đây rồi trả lời câu hỏi. – Tháng 3 có bao nhiêu ngày?",
+              "exerciseType": "xem-lich",
+              "media": [
+                "tờ lịch tháng 3, ngày 1 là thứ Ba, ngày 31 là thứ Năm"
+              ],
+              "answer": {
+                "number": 31
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b30-luyen-tap-3-b",
+              "page": 118,
+              "prompt": "Xem tờ lịch tháng 3 dưới đây rồi trả lời câu hỏi. – Ngày thứ Hai đầu tiên của tháng 3 là ngày nào?",
+              "exerciseType": "xem-lich",
+              "media": [
+                "tờ lịch tháng 3, ngày 1 là thứ Ba, ngày 31 là thứ Năm"
+              ],
+              "answer": {
+                "date": {
+                  "day": 7,
+                  "month": 3
+                }
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b30-luyen-tap-3-c",
+              "page": 118,
+              "prompt": "Xem tờ lịch tháng 3 dưới đây rồi trả lời câu hỏi. – Ngày Quốc tế Phụ nữ 8 tháng 3 là thứ mấy?",
+              "exerciseType": "xem-lich",
+              "media": [
+                "tờ lịch tháng 3, ngày 1 là thứ Ba, ngày 31 là thứ Năm"
+              ],
+              "answer": {
+                "text": "thứ Ba"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b30-luyen-tap-4-a",
+              "page": 118,
+              "prompt": "Xem tờ lịch tháng 4 dưới đây rồi trả lời câu hỏi. – Tháng 4 có bao nhiêu ngày?",
+              "exerciseType": "xem-lich",
+              "media": [
+                "tờ lịch tháng 4, ngày 1 là thứ Sáu, ngày 30 là thứ Bảy"
+              ],
+              "answer": {
+                "number": 30
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b30-luyen-tap-4-b",
+              "page": 118,
+              "prompt": "Xem tờ lịch tháng 4 dưới đây rồi trả lời câu hỏi. – Nếu thứ Bảy tuần này là ngày Giải phóng miền Nam 30 tháng 4 thì thứ Bảy tuần trước là ngày nào?",
+              "exerciseType": "xem-lich",
+              "media": [
+                "tờ lịch tháng 4, ngày 1 là thứ Sáu, ngày 30 là thứ Bảy"
+              ],
+              "answer": {
+                "date": {
+                  "day": 23,
+                  "month": 4
+                }
+              },
+              "readConfidence": "high"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "toan2-t1-b31",
+      "number": 31,
+      "title": "Bài 31. Thực hành và trải nghiệm xem đồng hồ, xem lịch",
+      "pages": [
+        119,
+        121
+      ],
+      "sections": [
+        {
+          "id": "toan2-t1-b31-hoat-dong",
+          "kind": "hoat-dong",
+          "pages": [
+            119,
+            120
+          ],
+          "items": [
+            {
+              "id": "toan2-t1-b31-hoat-dong-1-a",
+              "page": 119,
+              "prompt": "Quay kim đồng hồ để đồng hồ chỉ: a) 2 giờ.",
+              "exerciseType": "xem-dong-ho",
+              "media": [
+                "Rô-bốt cầm mô hình đồng hồ"
+              ],
+              "answer": {
+                "time": {
+                  "hour": 2,
+                  "minute": 0
+                }
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b31-hoat-dong-1-b",
+              "page": 119,
+              "prompt": "Quay kim đồng hồ để đồng hồ chỉ: b) 9 giờ 30 phút.",
+              "exerciseType": "xem-dong-ho",
+              "media": [
+                "Rô-bốt cầm mô hình đồng hồ"
+              ],
+              "answer": {
+                "time": {
+                  "hour": 9,
+                  "minute": 30
+                }
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b31-hoat-dong-1-c",
+              "page": 119,
+              "prompt": "Quay kim đồng hồ để đồng hồ chỉ: c) 7 giờ 15 phút.",
+              "exerciseType": "xem-dong-ho",
+              "media": [
+                "Rô-bốt cầm mô hình đồng hồ"
+              ],
+              "answer": {
+                "time": {
+                  "hour": 7,
+                  "minute": 15
+                }
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b31-hoat-dong-2-a",
+              "page": 119,
+              "prompt": "Xem thời khoá biểu hôm nay của em rồi trả lời câu hỏi. a) Lúc 9 giờ 15 phút, em học môn gì?",
+              "exerciseType": "xem-dong-ho",
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b31-hoat-dong-2-b",
+              "page": 119,
+              "prompt": "Xem thời khoá biểu hôm nay của em rồi trả lời câu hỏi. b) Em học môn gì vào lúc 15 giờ 15 phút?",
+              "exerciseType": "xem-dong-ho",
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b31-hoat-dong-3-a",
+              "page": 119,
+              "prompt": "Đồng hồ chỉ mấy giờ? A",
+              "exerciseType": "xem-dong-ho",
+              "media": [
+                "đồng hồ A kim giờ chỉ quá số 2, kim phút chỉ 3"
+              ],
+              "answer": {
+                "time": {
+                  "hour": 2,
+                  "minute": 15
+                }
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b31-hoat-dong-3-b",
+              "page": 119,
+              "prompt": "Đồng hồ chỉ mấy giờ? B",
+              "exerciseType": "xem-dong-ho",
+              "media": [
+                "đồng hồ B kim giờ chỉ quá số 6, kim phút chỉ 3"
+              ],
+              "answer": {
+                "time": {
+                  "hour": 6,
+                  "minute": 15
+                }
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b31-hoat-dong-3-c",
+              "page": 119,
+              "prompt": "Đồng hồ chỉ mấy giờ? C",
+              "exerciseType": "xem-dong-ho",
+              "media": [
+                "đồng hồ C kim giờ chỉ quá số 11, kim phút chỉ 3"
+              ],
+              "answer": {
+                "time": {
+                  "hour": 11,
+                  "minute": 15
+                }
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b31-hoat-dong-3-d",
+              "page": 119,
+              "prompt": "Đồng hồ chỉ mấy giờ? D",
+              "exerciseType": "xem-dong-ho",
+              "media": [
+                "đồng hồ D kim giờ chỉ quá số 12, kim phút chỉ 3"
+              ],
+              "answer": {
+                "time": {
+                  "hour": 12,
+                  "minute": 15
+                }
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b31-hoat-dong-4-a1",
+              "page": 120,
+              "prompt": "a) Vào ngày nghỉ cuối tuần, Nam làm gì lúc mấy giờ?",
+              "exerciseType": "xem-dong-ho",
+              "media": [
+                "tranh: Nam xếp hình khối",
+                "đồng hồ kim giờ chỉ giữa số 10 và số 11, kim phút chỉ 6",
+                "ô giữa tranh ghi: Nam làm gì lúc mấy giờ?"
+              ],
+              "answer": {
+                "time": {
+                  "hour": 10,
+                  "minute": 30
+                }
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b31-hoat-dong-4-a2",
+              "page": 120,
+              "prompt": "a) Vào ngày nghỉ cuối tuần, Nam làm gì lúc mấy giờ?",
+              "exerciseType": "xem-dong-ho",
+              "media": [
+                "tranh: Nam ăn cơm",
+                "đồng hồ kim giờ chỉ giữa số 11 và số 12, kim phút chỉ 6",
+                "ô giữa tranh ghi: Nam làm gì lúc mấy giờ?"
+              ],
+              "answer": {
+                "time": {
+                  "hour": 11,
+                  "minute": 30
+                }
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b31-hoat-dong-4-a3",
+              "page": 120,
+              "prompt": "a) Vào ngày nghỉ cuối tuần, Nam làm gì lúc mấy giờ?",
+              "exerciseType": "xem-dong-ho",
+              "media": [
+                "tranh: Nam đạp xe",
+                "đồng hồ kim giờ chỉ giữa số 4 và số 5, kim phút chỉ 6",
+                "ô giữa tranh ghi: Nam làm gì lúc mấy giờ?"
+              ],
+              "answer": {
+                "time": {
+                  "hour": 16,
+                  "minute": 30
+                }
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b31-hoat-dong-4-a4",
+              "page": 120,
+              "prompt": "a) Vào ngày nghỉ cuối tuần, Nam làm gì lúc mấy giờ?",
+              "exerciseType": "xem-dong-ho",
+              "media": [
+                "tranh: Nam nhặt rau",
+                "đồng hồ kim giờ chỉ giữa số 5 và số 6, kim phút chỉ 6",
+                "ô giữa tranh ghi: Nam làm gì lúc mấy giờ?"
+              ],
+              "answer": {
+                "time": {
+                  "hour": 17,
+                  "minute": 30
+                }
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b31-hoat-dong-4-a5",
+              "page": 120,
+              "prompt": "a) Vào ngày nghỉ cuối tuần, Nam làm gì lúc mấy giờ?",
+              "exerciseType": "xem-dong-ho",
+              "media": [
+                "tranh: Nam ngồi đọc sách",
+                "đồng hồ kim giờ chỉ giữa số 7 và số 8, kim phút chỉ 6",
+                "ô giữa tranh ghi: Nam làm gì lúc mấy giờ?"
+              ],
+              "answer": {
+                "time": {
+                  "hour": 19,
+                  "minute": 30
+                }
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b31-hoat-dong-4-a6",
+              "page": 120,
+              "prompt": "a) Vào ngày nghỉ cuối tuần, Nam làm gì lúc mấy giờ?",
+              "exerciseType": "xem-dong-ho",
+              "media": [
+                "tranh: Nam ngủ trên giường",
+                "đồng hồ kim giờ chỉ giữa số 9 và số 10, kim phút chỉ 6",
+                "ô giữa tranh ghi: Nam làm gì lúc mấy giờ?"
+              ],
+              "answer": {
+                "time": {
+                  "hour": 21,
+                  "minute": 30
+                }
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b31-hoat-dong-4-b",
+              "page": 120,
+              "prompt": "b) Hằng ngày em thực hiện những hoạt động nào trong các hoạt động trên và em thực hiện mỗi hoạt động đó vào lúc mấy giờ?",
+              "exerciseType": "xem-dong-ho",
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b31-hoat-dong-5",
+              "page": 120,
+              "prompt": "Đồng hồ trong hình vẽ cho biết thời gian đến lớp học của mỗi bạn. Biết lớp học bắt đầu lúc 2 giờ chiều. Hỏi bạn nào đi học muộn?",
+              "exerciseType": "xem-dong-ho",
+              "media": [
+                "tranh 1: hai bạn đã ngồi viết bài trong lớp, đồng hồ điện tử 14:00",
+                "tranh 2: bạn gái đeo cặp đứng ở cửa lớp 2A, đồng hồ điện tử 14:15",
+                "tranh 3: bạn trai đeo cặp đi vào cổng trường, đồng hồ điện tử 13:30"
+              ],
+              "answer": {
+                "text": "Bạn gái đến cửa lớp 2A lúc 14:15"
+              },
+              "readConfidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "toan2-t1-b31-hoat-dong-2",
+          "kind": "hoat-dong",
+          "pages": [
+            121,
+            121
+          ],
+          "items": [
+            {
+              "id": "toan2-t1-b31-hoat-dong-2-1-a",
+              "page": 121,
+              "prompt": "Em xem tờ lịch tháng này rồi trả lời câu hỏi. a) Hôm nay là thứ mấy, ngày mấy, tháng mấy?",
+              "exerciseType": "xem-lich",
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b31-hoat-dong-2-1-b",
+              "page": 121,
+              "prompt": "Em xem tờ lịch tháng này rồi trả lời câu hỏi. b) Hôm qua là thứ mấy, ngày mấy, tháng mấy?",
+              "exerciseType": "xem-lich",
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b31-hoat-dong-2-1-c",
+              "page": 121,
+              "prompt": "Em xem tờ lịch tháng này rồi trả lời câu hỏi. c) Ngày mai là thứ mấy, ngày mấy, tháng mấy?",
+              "exerciseType": "xem-lich",
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b31-hoat-dong-2-2-a",
+              "page": 121,
+              "prompt": "Xem tờ lịch tháng 5 dưới đây rồi trả lời câu hỏi. – Tháng 5 có bao nhiêu ngày?",
+              "exerciseType": "xem-lich",
+              "media": [
+                "tờ lịch tháng 5, ngày 1 là Chủ nhật, ngày 31 là thứ Ba"
+              ],
+              "answer": {
+                "number": 31
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b31-hoat-dong-2-2-b",
+              "page": 121,
+              "prompt": "Xem tờ lịch tháng 5 dưới đây rồi trả lời câu hỏi. – Tháng 5 có bao nhiêu ngày thứ Ba, đó là những ngày nào?",
+              "exerciseType": "xem-lich",
+              "media": [
+                "tờ lịch tháng 5, ngày 1 là Chủ nhật, ngày 31 là thứ Ba"
+              ],
+              "answer": {
+                "values": [
+                  5,
+                  3,
+                  10,
+                  17,
+                  24,
+                  31
+                ]
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b31-hoat-dong-2-2-c",
+              "page": 121,
+              "prompt": "Xem tờ lịch tháng 5 dưới đây rồi trả lời câu hỏi. – Ngày 19 tháng 5 là sinh nhật Bác Hồ. Ngày đó là thứ mấy?",
+              "exerciseType": "xem-lich",
+              "media": [
+                "tờ lịch tháng 5, ngày 1 là Chủ nhật, ngày 31 là thứ Ba"
+              ],
+              "answer": {
+                "text": "thứ Năm"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b31-hoat-dong-2-3-a",
+              "page": 121,
+              "prompt": "a) Nêu các ngày còn thiếu trong tờ lịch tháng 6 ở bên.",
+              "exerciseType": "xem-lich",
+              "media": [
+                "tờ lịch tháng 6, ngày 1 là thứ Tư, ngày 30 là thứ Năm, một số ô ngày để trống"
+              ],
+              "answer": {
+                "values": [
+                  1,
+                  6,
+                  7,
+                  8,
+                  18,
+                  26
+                ]
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b31-hoat-dong-2-3-b1",
+              "page": 121,
+              "prompt": "b) Xem tờ lịch bên rồi trả lời câu hỏi. – Ngày Quốc tế Thiếu nhi 1 tháng 6 là thứ mấy?",
+              "exerciseType": "xem-lich",
+              "media": [
+                "tờ lịch tháng 6, ngày 1 là thứ Tư, ngày 30 là thứ Năm, một số ô ngày để trống"
+              ],
+              "answer": {
+                "text": "thứ Tư"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b31-hoat-dong-2-3-b2",
+              "page": 121,
+              "prompt": "b) Xem tờ lịch bên rồi trả lời câu hỏi. – Nếu hôm nay là thứ Năm ngày 16 tháng 6 thì thứ Năm tuần trước là ngày nào, thứ Năm tuần sau là ngày nào?",
+              "exerciseType": "xem-lich",
+              "media": [
+                "tờ lịch tháng 6, ngày 1 là thứ Tư, ngày 30 là thứ Năm, một số ô ngày để trống"
+              ],
+              "answer": {
+                "values": [
+                  "9 tháng 6",
+                  "23 tháng 6"
+                ]
+              },
+              "readConfidence": "high"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "toan2-t1-b32",
+      "number": 32,
+      "title": "Bài 32. Luyện tập chung",
+      "pages": [
+        122,
+        123
+      ],
+      "sections": [
+        {
+          "id": "toan2-t1-b32-luyen-tap",
+          "kind": "luyen-tap",
+          "pages": [
+            122,
+            123
+          ],
+          "items": [
+            {
+              "id": "toan2-t1-b32-luyen-tap-1",
+              "page": 122,
+              "prompt": "Xem hình vẽ rồi chọn câu trả lời đúng. Trong đồng hồ bên, khi kim dài chạy qua số 4, số 5, đến số 6 thì lúc này đồng hồ chỉ: A. 3 giờ 30 phút. B. 4 giờ 15 phút. C. 4 giờ 30 phút.",
+              "exerciseType": "chon-dap-an",
+              "media": [
+                "đồng hồ kim giờ chỉ quá số 3, kim phút chỉ 3, mũi tên chỉ kim dài chạy đến số 6"
+              ],
+              "answer": {
+                "choice": "A. 3 giờ 30 phút."
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b32-luyen-tap-2-a",
+              "page": 122,
+              "prompt": "Xem tờ lịch và các ảnh chụp của Rô-bốt rồi trả lời câu hỏi (theo mẫu). Mẫu: Rô-bốt ghé thăm Tây Nguyên vào ngày 2 tháng 8. – Rô-bốt ghé thăm Mù Cang Chải vào ngày nào?",
+              "exerciseType": "xem-lich",
+              "media": [
+                "tờ lịch tháng 8, ngày 1 là thứ Hai; khoanh các ngày 2, 13, 21, 30 ứng với ảnh Tây Nguyên, Huế, chợ nổi Năm Căn, Mù Cang Chải"
+              ],
+              "answer": {
+                "date": {
+                  "day": 30,
+                  "month": 8
+                }
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b32-luyen-tap-2-b",
+              "page": 122,
+              "prompt": "Xem tờ lịch và các ảnh chụp của Rô-bốt rồi trả lời câu hỏi (theo mẫu). – Rô-bốt ghé thăm chợ nổi Năm Căn vào ngày nào?",
+              "exerciseType": "xem-lich",
+              "media": [
+                "tờ lịch tháng 8, ngày 1 là thứ Hai; khoanh các ngày 2, 13, 21, 30 ứng với ảnh Tây Nguyên, Huế, chợ nổi Năm Căn, Mù Cang Chải"
+              ],
+              "answer": {
+                "date": {
+                  "day": 21,
+                  "month": 8
+                }
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b32-luyen-tap-2-c",
+              "page": 122,
+              "prompt": "Xem tờ lịch và các ảnh chụp của Rô-bốt rồi trả lời câu hỏi (theo mẫu). – Rô-bốt ghé thăm Huế vào ngày nào?",
+              "exerciseType": "xem-lich",
+              "media": [
+                "tờ lịch tháng 8, ngày 1 là thứ Hai; khoanh các ngày 2, 13, 21, 30 ứng với ảnh Tây Nguyên, Huế, chợ nổi Năm Căn, Mù Cang Chải"
+              ],
+              "answer": {
+                "date": {
+                  "day": 13,
+                  "month": 8
+                }
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b32-luyen-tap-3",
+              "page": 123,
+              "prompt": "Cho biết thời gian đến thăm Bảo tàng Lịch sử Quân sự Việt Nam của mỗi bạn như sau: Biết bảo tàng mở cửa từ 8 giờ đến 16 giờ 30 phút. Hỏi những bạn nào được vào thăm bảo tàng?",
+              "exerciseType": "xem-dong-ho",
+              "media": [
+                "tranh 1: hai bạn gái dắt xe đạp ở cổng, đồng hồ kim giờ chỉ quá số 10, kim phút chỉ 3",
+                "tranh 2: Rô-bốt ở cổng BẢO TÀNG LỊCH SỬ QUÂN SỰ VIỆT NAM, đồng hồ kim giờ chỉ giữa số 5 và số 6, kim phút chỉ 6",
+                "tranh 3: bạn trai trước cột cờ, đồng hồ kim giờ chỉ giữa số 11 và số 12, kim phút chỉ 6",
+                "tranh 4: bạn trai chỉ tay vào máy bay trực thăng, đồng hồ kim giờ chỉ quá số 4, kim phút chỉ 3"
+              ],
+              "answer": {
+                "text": "Hai bạn gái (10 giờ 15 phút), bạn trai ở cột cờ (11 giờ 30 phút), bạn trai xem trực thăng (16 giờ 15 phút)"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b32-luyen-tap-4",
+              "page": 123,
+              "prompt": "Cho biết giờ học các môn năng khiếu vào sáng ngày thứ Bảy của Rô-bốt như sau: Rô-bốt học bóng rổ. Rô-bốt học vẽ. Rô-bốt học hát. Rô-bốt học võ. Trước giờ học bóng rổ, Rô-bốt đã học những môn nào?",
+              "exerciseType": "xem-dong-ho",
+              "media": [
+                "Rô-bốt học bóng rổ: đồng hồ kim giờ chỉ quá số 9, kim phút chỉ 3",
+                "Rô-bốt học vẽ: đồng hồ kim giờ chỉ giữa số 8 và số 9, kim phút chỉ 6",
+                "Rô-bốt học hát: đồng hồ kim giờ chỉ quá số 7, kim phút chỉ 3",
+                "Rô-bốt học võ: đồng hồ kim giờ chỉ giữa số 10 và số 11, kim phút chỉ 6"
+              ],
+              "answer": {
+                "text": "hát, vẽ"
+              },
+              "readConfidence": "high"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pageItems": [
+    {
+      "page": 112,
+      "itemCount": 0
+    },
+    {
+      "page": 113,
+      "itemCount": 8
+    },
+    {
+      "page": 114,
+      "itemCount": 4
+    },
+    {
+      "page": 115,
+      "itemCount": 7
+    },
+    {
+      "page": 116,
+      "itemCount": 3
+    },
+    {
+      "page": 117,
+      "itemCount": 10
+    },
+    {
+      "page": 118,
+      "itemCount": 8
+    },
+    {
+      "page": 119,
+      "itemCount": 9
+    },
+    {
+      "page": 120,
+      "itemCount": 8
+    },
+    {
+      "page": 121,
+      "itemCount": 9
+    },
+    {
+      "page": 122,
+      "itemCount": 4
+    },
+    {
+      "page": 123,
+      "itemCount": 2
+    }
+  ]
+}

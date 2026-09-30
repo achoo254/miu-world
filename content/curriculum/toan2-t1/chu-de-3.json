@@ -1,0 +1,1402 @@
+{
+  "book": "toan2-t1",
+  "id": "toan2-t1-chu-de-3",
+  "number": 3,
+  "title": "Làm quen với khối lượng, dung tích",
+  "lessons": [
+    {
+      "id": "toan2-t1-b15",
+      "number": 15,
+      "title": "Bài 15. Ki-lô-gam",
+      "pages": [
+        57,
+        61
+      ],
+      "sections": [
+        {
+          "id": "toan2-t1-b15-kham-pha",
+          "kind": "kham-pha",
+          "title": "Nặng hơn, nhẹ hơn",
+          "pages": [
+            57,
+            57
+          ],
+          "items": []
+        },
+        {
+          "id": "toan2-t1-b15-hoat-dong",
+          "kind": "hoat-dong",
+          "pages": [
+            58,
+            58
+          ],
+          "items": [
+            {
+              "id": "toan2-t1-b15-hoat-dong-1",
+              "page": 58,
+              "prompt": "Quan sát tranh rồi chọn câu đúng. A. Con gấu nặng hơn 3 con chó. B. Con gấu nhẹ hơn 3 con chó. C. Con gấu nặng bằng 3 con chó.",
+              "exerciseType": "chon-dap-an",
+              "media": [
+                "cân đĩa: bên trái 3 con chó (đĩa cao hơn), bên phải con gấu (đĩa thấp hơn)"
+              ],
+              "answer": {
+                "choice": "A. Con gấu nặng hơn 3 con chó."
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b15-hoat-dong-2-a",
+              "page": 58,
+              "prompt": "Quan sát tranh rồi trả lời câu hỏi. a) Mèo và chó, con nào nặng hơn?",
+              "exerciseType": "so-sanh",
+              "media": [
+                "cân 1: mèo (đĩa thấp hơn) và thỏ (đĩa cao hơn)",
+                "cân 2: mèo (đĩa cao hơn) và chó (đĩa thấp hơn)"
+              ],
+              "answer": {
+                "text": "chó"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b15-hoat-dong-2-b",
+              "page": 58,
+              "prompt": "Quan sát tranh rồi trả lời câu hỏi. b) Mèo và thỏ, con nào nặng hơn?",
+              "exerciseType": "so-sanh",
+              "media": [
+                "cân 1: mèo (đĩa thấp hơn) và thỏ (đĩa cao hơn)"
+              ],
+              "answer": {
+                "text": "mèo"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b15-hoat-dong-2-c",
+              "page": 58,
+              "prompt": "Quan sát tranh rồi trả lời câu hỏi. c) Mèo, chó và thỏ, con nào nặng nhất, con nào nhẹ nhất?",
+              "exerciseType": "so-sanh",
+              "media": [
+                "cân 1: mèo nặng hơn thỏ",
+                "cân 2: chó nặng hơn mèo"
+              ],
+              "answer": {
+                "values": [
+                  "chó",
+                  "thỏ"
+                ]
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b15-hoat-dong-3-a",
+              "page": 58,
+              "prompt": "Quan sát tranh rồi trả lời câu hỏi. a) Quả cam nặng bằng mấy quả chanh?",
+              "exerciseType": "dem",
+              "media": [
+                "cân thăng bằng: 1 quả cam và 4 quả chanh"
+              ],
+              "answer": {
+                "number": 4
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b15-hoat-dong-3-b",
+              "page": 58,
+              "prompt": "Quan sát tranh rồi trả lời câu hỏi. b) Quả táo nặng bằng mấy quả chanh?",
+              "exerciseType": "dem",
+              "media": [
+                "cân thăng bằng: 1 quả táo và 3 quả chanh"
+              ],
+              "answer": {
+                "number": 3
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b15-hoat-dong-3-c",
+              "page": 58,
+              "prompt": "Quan sát tranh rồi trả lời câu hỏi. c) Quả bưởi nặng bằng mấy quả chanh?",
+              "exerciseType": "dien-so",
+              "media": [
+                "cân thăng bằng: 1 quả bưởi và 1 quả cam cùng 1 quả táo",
+                "cam nặng bằng 4 quả chanh, táo nặng bằng 3 quả chanh"
+              ],
+              "expression": "4 + 3",
+              "answer": {
+                "number": 7
+              },
+              "readConfidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "toan2-t1-b15-kham-pha-2",
+          "kind": "kham-pha",
+          "title": "Ki-lô-gam",
+          "pages": [
+            59,
+            59
+          ],
+          "items": []
+        },
+        {
+          "id": "toan2-t1-b15-hoat-dong-2",
+          "kind": "hoat-dong",
+          "pages": [
+            60,
+            60
+          ],
+          "items": [
+            {
+              "id": "toan2-t1-b15-hoat-dong-2-1-a",
+              "page": 60,
+              "prompt": "Đ, S ? a) Quả bóng nhẹ hơn 1 kg.",
+              "exerciseType": "chon-dap-an",
+              "media": [
+                "cân: quả cân 1 kg (đĩa thấp hơn) và quả bóng đá (đĩa cao hơn)"
+              ],
+              "answer": {
+                "text": "Đ"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b15-hoat-dong-2-1-b",
+              "page": 60,
+              "prompt": "Đ, S ? b) Nải chuối nặng hơn 1 kg.",
+              "exerciseType": "chon-dap-an",
+              "media": [
+                "cân: quả cân 1 kg (đĩa cao hơn) và nải chuối (đĩa thấp hơn)"
+              ],
+              "answer": {
+                "text": "Đ"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b15-hoat-dong-2-1-c",
+              "page": 60,
+              "prompt": "Đ, S ? c) Quả bưởi cân nặng 1 kg.",
+              "exerciseType": "chon-dap-an",
+              "media": [
+                "cân thăng bằng: quả cân 1 kg và quả bưởi"
+              ],
+              "answer": {
+                "text": "Đ"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b15-hoat-dong-2-1-d",
+              "page": 60,
+              "prompt": "Đ, S ? d) Quả bóng nặng bằng quả bưởi.",
+              "exerciseType": "chon-dap-an",
+              "media": [
+                "ba cân như trên: bóng nhẹ hơn 1 kg, chuối nặng hơn 1 kg, bưởi nặng 1 kg"
+              ],
+              "answer": {
+                "text": "S"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b15-hoat-dong-2-1-e",
+              "page": 60,
+              "prompt": "Đ, S ? e) Nải chuối nặng hơn quả bưởi.",
+              "exerciseType": "chon-dap-an",
+              "media": [
+                "ba cân như trên: bóng nhẹ hơn 1 kg, chuối nặng hơn 1 kg, bưởi nặng 1 kg"
+              ],
+              "answer": {
+                "text": "Đ"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b15-hoat-dong-2-2-a",
+              "page": 60,
+              "prompt": "Đọc cân nặng của mỗi quả hoặc đồ vật dưới đây.",
+              "exerciseType": "do-luong-thuc-hanh",
+              "media": [
+                "quả bí ngô ghi 2 kg"
+              ],
+              "answer": {
+                "number": 2
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b15-hoat-dong-2-2-b",
+              "page": 60,
+              "prompt": "Đọc cân nặng của mỗi quả hoặc đồ vật dưới đây.",
+              "exerciseType": "do-luong-thuc-hanh",
+              "media": [
+                "lọ đường ghi 1 kg"
+              ],
+              "answer": {
+                "number": 1
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b15-hoat-dong-2-2-c",
+              "page": 60,
+              "prompt": "Đọc cân nặng của mỗi quả hoặc đồ vật dưới đây.",
+              "exerciseType": "do-luong-thuc-hanh",
+              "media": [
+                "quả mít ghi 3 kg"
+              ],
+              "answer": {
+                "number": 3
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b15-hoat-dong-2-2-d",
+              "page": 60,
+              "prompt": "Đọc cân nặng của mỗi quả hoặc đồ vật dưới đây.",
+              "exerciseType": "do-luong-thuc-hanh",
+              "media": [
+                "bao gạo ghi 10 kg"
+              ],
+              "answer": {
+                "number": 10
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b15-hoat-dong-2-2-e",
+              "page": 60,
+              "prompt": "Đọc cân nặng của mỗi quả hoặc đồ vật dưới đây.",
+              "exerciseType": "do-luong-thuc-hanh",
+              "media": [
+                "túi bột mì ghi 5 kg"
+              ],
+              "answer": {
+                "number": 5
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b15-hoat-dong-2-3-a",
+              "page": 60,
+              "prompt": "Quan sát tranh rồi trả lời. a) Số ? Hộp A cân nặng ? kg. Hộp B cân nặng ? kg. Hộp C cân nặng ? kg.",
+              "exerciseType": "dien-so",
+              "media": [
+                "cân thăng bằng: hộp A và quả cân 1 kg, 2 kg",
+                "cân thăng bằng: hộp B và hai quả cân 2 kg",
+                "cân thăng bằng: hộp C và quả cân 5 kg"
+              ],
+              "answer": {
+                "values": [
+                  3,
+                  4,
+                  5
+                ]
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b15-hoat-dong-2-3-b",
+              "page": 60,
+              "prompt": "Quan sát tranh rồi trả lời. b) Hộp nào nặng nhất? Hộp nào nhẹ nhất?",
+              "exerciseType": "so-sanh",
+              "media": [
+                "hộp A 3 kg, hộp B 4 kg, hộp C 5 kg"
+              ],
+              "answer": {
+                "values": [
+                  "Hộp C",
+                  "Hộp A"
+                ]
+              },
+              "readConfidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "toan2-t1-b15-luyen-tap",
+          "kind": "luyen-tap",
+          "pages": [
+            61,
+            61
+          ],
+          "items": [
+            {
+              "id": "toan2-t1-b15-luyen-tap-1-a1",
+              "page": 61,
+              "prompt": "Tính (theo mẫu). Mẫu: 5 kg + 4 kg = 9 kg; 10 kg – 3 kg = 7 kg a) 12 kg + 23 kg",
+              "exerciseType": "tinh",
+              "expression": "12 + 23",
+              "answer": {
+                "number": 35
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b15-luyen-tap-1-a2",
+              "page": 61,
+              "prompt": "Tính (theo mẫu). a) 45 kg + 20 kg",
+              "exerciseType": "tinh",
+              "expression": "45 + 20",
+              "answer": {
+                "number": 65
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b15-luyen-tap-1-a3",
+              "page": 61,
+              "prompt": "Tính (theo mẫu). a) 9 kg + 7 kg",
+              "exerciseType": "tinh",
+              "expression": "9 + 7",
+              "answer": {
+                "number": 16
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b15-luyen-tap-1-b1",
+              "page": 61,
+              "prompt": "Tính (theo mẫu). b) 42 kg – 30 kg",
+              "exerciseType": "tinh",
+              "expression": "42 - 30",
+              "answer": {
+                "number": 12
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b15-luyen-tap-1-b2",
+              "page": 61,
+              "prompt": "Tính (theo mẫu). b) 13 kg – 9 kg",
+              "exerciseType": "tinh",
+              "expression": "13 - 9",
+              "answer": {
+                "number": 4
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b15-luyen-tap-1-b3",
+              "page": 61,
+              "prompt": "Tính (theo mẫu). b) 60 kg – 40 kg",
+              "exerciseType": "tinh",
+              "expression": "60 - 40",
+              "answer": {
+                "number": 20
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b15-luyen-tap-2-a",
+              "page": 61,
+              "prompt": "Số ? a) Con ngỗng cân nặng ? kg.",
+              "exerciseType": "dien-so",
+              "media": [
+                "cân thăng bằng: con ngỗng và quả cân 5 kg, 2 kg"
+              ],
+              "expression": "5 + 2",
+              "answer": {
+                "number": 7
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b15-luyen-tap-2-b",
+              "page": 61,
+              "prompt": "Số ? b) Con gà cân nặng ? kg.",
+              "exerciseType": "dien-so",
+              "media": [
+                "cân thăng bằng: con gà và quả cân 2 kg, 1 kg"
+              ],
+              "expression": "2 + 1",
+              "answer": {
+                "number": 3
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b15-luyen-tap-3",
+              "page": 61,
+              "prompt": "Tìm tổng số ki-lô-gam thóc của hai bao thóc.",
+              "exerciseType": "bai-toan-loi-van",
+              "media": [
+                "bao thóc 30 kg",
+                "bao thóc 50 kg",
+                "bác nông dân phơi thóc"
+              ],
+              "expression": "30 + 50",
+              "answer": {
+                "number": 80
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b15-luyen-tap-4-a",
+              "page": 61,
+              "prompt": "Ba chú rô-bốt rủ nhau đi cân. Rô-bốt A cân nặng 32 kg, rô-bốt B nặng hơn rô-bốt A là 2 kg, rô-bốt C nhẹ hơn rô-bốt A là 2 kg. Hỏi: a) Rô-bốt B cân nặng bao nhiêu ki-lô-gam?",
+              "exerciseType": "bai-toan-loi-van",
+              "media": [
+                "ba rô-bốt A, B, C; rô-bốt A đứng trên cân bàn"
+              ],
+              "expression": "32 + 2",
+              "answer": {
+                "number": 34
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b15-luyen-tap-4-b",
+              "page": 61,
+              "prompt": "Ba chú rô-bốt rủ nhau đi cân. Rô-bốt A cân nặng 32 kg, rô-bốt B nặng hơn rô-bốt A là 2 kg, rô-bốt C nhẹ hơn rô-bốt A là 2 kg. Hỏi: b) Rô-bốt C cân nặng bao nhiêu ki-lô-gam?",
+              "exerciseType": "bai-toan-loi-van",
+              "media": [
+                "ba rô-bốt A, B, C; rô-bốt A đứng trên cân bàn"
+              ],
+              "expression": "32 - 2",
+              "answer": {
+                "number": 30
+              },
+              "readConfidence": "high"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "toan2-t1-b16",
+      "number": 16,
+      "title": "Bài 16. Lít",
+      "pages": [
+        62,
+        65
+      ],
+      "sections": [
+        {
+          "id": "toan2-t1-b16-kham-pha",
+          "kind": "kham-pha",
+          "pages": [
+            62,
+            62
+          ],
+          "items": []
+        },
+        {
+          "id": "toan2-t1-b16-hoat-dong",
+          "kind": "hoat-dong",
+          "pages": [
+            63,
+            63
+          ],
+          "items": [
+            {
+              "id": "toan2-t1-b16-hoat-dong-1",
+              "page": 63,
+              "prompt": "Quan sát tranh rồi chọn câu đúng. Đổ hết nước từ ca 1 l được đầy một chai và một cốc (như hình vẽ). A. Chai đựng 1 l nước. B. Chai đựng ít hơn 1 l nước. C. Chai đựng nhiều hơn 1 l nước.",
+              "exerciseType": "chon-dap-an",
+              "media": [
+                "ca 1 l rót nước vào một cốc, bên cạnh là một chai"
+              ],
+              "answer": {
+                "choice": "B. Chai đựng ít hơn 1 l nước."
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b16-hoat-dong-2-a",
+              "page": 63,
+              "prompt": "Số ? Ba lít ? l",
+              "exerciseType": "dien-so",
+              "media": [
+                "mẫu vẽ sẵn: can ghi Mười lít, ô dưới ghi 10 l",
+                "bình nước ghi Ba lít"
+              ],
+              "answer": {
+                "number": 3
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b16-hoat-dong-2-b",
+              "page": 63,
+              "prompt": "Số ? Hai lít ? l",
+              "exerciseType": "dien-so",
+              "media": [
+                "ca ghi Hai lít"
+              ],
+              "answer": {
+                "number": 2
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b16-hoat-dong-2-c",
+              "page": 63,
+              "prompt": "Số ? Năm lít ? l",
+              "exerciseType": "dien-so",
+              "media": [
+                "xô ghi Năm lít"
+              ],
+              "answer": {
+                "number": 5
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b16-hoat-dong-2-d",
+              "page": 63,
+              "prompt": "Số ? Hai mươi lít ? l",
+              "exerciseType": "dien-so",
+              "media": [
+                "thùng ghi Hai mươi lít"
+              ],
+              "answer": {
+                "number": 20
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b16-hoat-dong-3-a",
+              "page": 63,
+              "prompt": "Số ? Rót hết nước từ bình A và bình B được các cốc nước (như hình vẽ). a) Lượng nước ở bình A là ? cốc. Lượng nước ở bình B là ? cốc.",
+              "exerciseType": "dem",
+              "media": [
+                "bình A rót được 4 cốc nước",
+                "bình B rót được 6 cốc nước"
+              ],
+              "answer": {
+                "values": [
+                  4,
+                  6
+                ]
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b16-hoat-dong-3-b",
+              "page": 63,
+              "prompt": "Số ? Rót hết nước từ bình A và bình B được các cốc nước (như hình vẽ). b) Lượng nước ở bình B nhiều hơn lượng nước ở bình A là ? cốc.",
+              "exerciseType": "dien-so",
+              "media": [
+                "bình A rót được 4 cốc nước",
+                "bình B rót được 6 cốc nước"
+              ],
+              "expression": "6 - 4",
+              "answer": {
+                "number": 2
+              },
+              "readConfidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "toan2-t1-b16-luyen-tap",
+          "kind": "luyen-tap",
+          "pages": [
+            64,
+            65
+          ],
+          "items": [
+            {
+              "id": "toan2-t1-b16-luyen-tap-1-a1",
+              "page": 64,
+              "prompt": "Tính (theo mẫu). Mẫu: 8 l + 6 l = 14 l ; 12 l – 7 l = 5 l a) 5 l + 4 l",
+              "exerciseType": "tinh",
+              "expression": "5 + 4",
+              "answer": {
+                "number": 9
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b16-luyen-tap-1-a2",
+              "page": 64,
+              "prompt": "Tính (theo mẫu). a) 12 l + 20 l",
+              "exerciseType": "tinh",
+              "expression": "12 + 20",
+              "answer": {
+                "number": 32
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b16-luyen-tap-1-a3",
+              "page": 64,
+              "prompt": "Tính (theo mẫu). a) 7 l + 6 l",
+              "exerciseType": "tinh",
+              "expression": "7 + 6",
+              "answer": {
+                "number": 13
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b16-luyen-tap-1-b1",
+              "page": 64,
+              "prompt": "Tính (theo mẫu). b) 9 l – 3 l",
+              "exerciseType": "tinh",
+              "expression": "9 - 3",
+              "answer": {
+                "number": 6
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b16-luyen-tap-1-b2",
+              "page": 64,
+              "prompt": "Tính (theo mẫu). b) 19 l – 10 l",
+              "exerciseType": "tinh",
+              "expression": "19 - 10",
+              "answer": {
+                "number": 9
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b16-luyen-tap-1-b3",
+              "page": 64,
+              "prompt": "Tính (theo mẫu). b) 11 l – 2 l",
+              "exerciseType": "tinh",
+              "expression": "11 - 2",
+              "answer": {
+                "number": 9
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b16-luyen-tap-2-a1",
+              "page": 64,
+              "prompt": "Số ? a) ? l",
+              "exerciseType": "dien-so",
+              "media": [
+                "mẫu vẽ sẵn: ca 1 l và ca 2 l, ô dưới ghi 3 l",
+                "can 3 l và can 5 l"
+              ],
+              "expression": "3 + 5",
+              "answer": {
+                "number": 8
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b16-luyen-tap-2-a2",
+              "page": 64,
+              "prompt": "Số ? a) ? l",
+              "exerciseType": "dien-so",
+              "media": [
+                "xô 5 l và xô 8 l"
+              ],
+              "expression": "5 + 8",
+              "answer": {
+                "number": 13
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b16-luyen-tap-2-b",
+              "page": 64,
+              "prompt": "Số ? b) ? l",
+              "exerciseType": "dien-so",
+              "media": [
+                "ca 1 l, ca 2 l và ca 5 l"
+              ],
+              "expression": "1 + 2 + 5",
+              "answer": {
+                "number": 8
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b16-luyen-tap-3-a",
+              "page": 64,
+              "prompt": "Số ? Trong can còn lại bao nhiêu lít nước? ? l",
+              "exerciseType": "dien-so",
+              "media": [
+                "mẫu vẽ sẵn: can 5 l rót nước ra ca 2 l, ô dưới ghi 3 l",
+                "can 10 l rót nước ra ca 4 l"
+              ],
+              "expression": "10 - 4",
+              "answer": {
+                "number": 6
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b16-luyen-tap-3-b",
+              "page": 64,
+              "prompt": "Số ? Trong can còn lại bao nhiêu lít nước? ? l",
+              "exerciseType": "dien-so",
+              "media": [
+                "can 15 l rót nước ra xô 5 l"
+              ],
+              "expression": "15 - 5",
+              "answer": {
+                "number": 10
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b16-luyen-tap-4-a1",
+              "page": 65,
+              "prompt": "Mỗi đồ vật đựng số lít nước bằng tổng số lít nước ở các ca bên cạnh (như hình vẽ). a) Số ? Đồ vật | Bình | Ấm; Số lít nước | 2 | ?",
+              "exerciseType": "dien-so",
+              "media": [
+                "bình và hai ca 1 l",
+                "ấm và ba ca 1 l"
+              ],
+              "expression": "1 + 1 + 1",
+              "answer": {
+                "number": 3
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b16-luyen-tap-4-a2",
+              "page": 65,
+              "prompt": "Mỗi đồ vật đựng số lít nước bằng tổng số lít nước ở các ca bên cạnh (như hình vẽ). a) Số ? Đồ vật | Xô; Số lít nước | ?",
+              "exerciseType": "dien-so",
+              "media": [
+                "xô và các ca 2 l, 2 l, 1 l"
+              ],
+              "expression": "2 + 2 + 1",
+              "answer": {
+                "number": 5
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b16-luyen-tap-4-a3",
+              "page": 65,
+              "prompt": "Mỗi đồ vật đựng số lít nước bằng tổng số lít nước ở các ca bên cạnh (như hình vẽ). a) Số ? Đồ vật | Can; Số lít nước | ?",
+              "exerciseType": "dien-so",
+              "media": [
+                "can và các ca 3 l, 2 l, 2 l"
+              ],
+              "expression": "3 + 2 + 2",
+              "answer": {
+                "number": 7
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b16-luyen-tap-4-b",
+              "page": 65,
+              "prompt": "Mỗi đồ vật đựng số lít nước bằng tổng số lít nước ở các ca bên cạnh (như hình vẽ). b) Đồ vật nào đựng nhiều nước nhất? Đồ vật nào đựng ít nước nhất?",
+              "exerciseType": "so-sanh",
+              "media": [
+                "bình 2 l, ấm 3 l, xô 5 l, can 7 l"
+              ],
+              "answer": {
+                "values": [
+                  "Can",
+                  "Bình"
+                ]
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b16-luyen-tap-5",
+              "page": 65,
+              "prompt": "Trong can có 15 l nước mắm. Mẹ đã rót 7 l nước mắm vào các chai. Hỏi trong can còn lại bao nhiêu lít nước mắm?",
+              "exerciseType": "bai-toan-loi-van",
+              "media": [
+                "mẹ rót nước mắm từ can vào chai; trên bàn 5 chai 1 l và 1 chai 2 l"
+              ],
+              "expression": "15 - 7",
+              "answer": {
+                "number": 8
+              },
+              "readConfidence": "high"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "toan2-t1-b17",
+      "number": 17,
+      "title": "Bài 17. Thực hành và trải nghiệm với các đơn vị ki-lô-gam, lít",
+      "pages": [
+        66,
+        69
+      ],
+      "sections": [
+        {
+          "id": "toan2-t1-b17-kham-pha",
+          "kind": "kham-pha",
+          "pages": [
+            66,
+            66
+          ],
+          "items": [
+            {
+              "id": "toan2-t1-b17-kham-pha-b",
+              "page": 66,
+              "prompt": "b) Em thực hành đo lượng nước bằng các ca 1 l, chai 1 l hoặc các cốc nhỏ.",
+              "exerciseType": "do-luong-thuc-hanh",
+              "media": [
+                "ca 1 l, chai 1 l, cốc nhỏ",
+                "hai bạn rót nước vào chai và ghi chép"
+              ],
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "toan2-t1-b17-hoat-dong",
+          "kind": "hoat-dong",
+          "pages": [
+            67,
+            67
+          ],
+          "items": [
+            {
+              "id": "toan2-t1-b17-hoat-dong-1-a",
+              "page": 67,
+              "prompt": "Em đoán xem đồ vật nào nặng hơn, đồ vật nào nhẹ hơn. a) Quyển vở; Cái bút chì",
+              "exerciseType": "so-sanh",
+              "media": [
+                "quyển vở",
+                "cái bút chì"
+              ],
+              "answer": {
+                "text": "Quyển vở nặng hơn, cái bút chì nhẹ hơn"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b17-hoat-dong-1-b",
+              "page": 67,
+              "prompt": "Em đoán xem đồ vật nào nặng hơn, đồ vật nào nhẹ hơn. b) Quả bóng bay; Quả bóng đá",
+              "exerciseType": "so-sanh",
+              "media": [
+                "quả bóng bay",
+                "quả bóng đá"
+              ],
+              "answer": {
+                "text": "Quả bóng đá nặng hơn, quả bóng bay nhẹ hơn"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b17-hoat-dong-2-a",
+              "page": 67,
+              "prompt": "Quan sát tranh rồi trả lời. a) Em đoán xem quả bưởi và quả cam, quả nào nặng hơn.",
+              "exerciseType": "so-sanh",
+              "media": [
+                "quả bưởi và quả cam",
+                "cân đĩa thăng bằng: quả cân 1 kg và quả bưởi"
+              ],
+              "answer": {
+                "text": "quả bưởi"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b17-hoat-dong-2-b",
+              "page": 67,
+              "prompt": "Quan sát tranh rồi trả lời. b) Quả bưởi cân nặng mấy ki-lô-gam?",
+              "exerciseType": "do-luong-thuc-hanh",
+              "media": [
+                "cân đĩa thăng bằng: quả cân 1 kg và quả bưởi"
+              ],
+              "answer": {
+                "number": 1
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b17-hoat-dong-2-c",
+              "page": 67,
+              "prompt": "Quan sát tranh rồi trả lời. c) Quả cam nặng hơn hay nhẹ hơn 1 kg?",
+              "exerciseType": "so-sanh",
+              "media": [
+                "quả cam nhỏ hơn quả bưởi 1 kg"
+              ],
+              "answer": {
+                "text": "nhẹ hơn"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b17-hoat-dong-3-a",
+              "page": 67,
+              "prompt": "Quan sát tranh rồi trả lời câu hỏi. a) Mỗi túi cân nặng bao nhiêu ki-lô-gam?",
+              "exerciseType": "do-luong-thuc-hanh",
+              "media": [
+                "cân đồng hồ: túi muối, kim chỉ 2",
+                "cân đồng hồ: túi gạo, kim chỉ 5"
+              ],
+              "answer": {
+                "values": [
+                  2,
+                  5
+                ]
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b17-hoat-dong-3-b",
+              "page": 67,
+              "prompt": "Quan sát tranh rồi trả lời câu hỏi. b) Túi gạo nặng hơn túi muối mấy ki-lô-gam?",
+              "exerciseType": "bai-toan-loi-van",
+              "media": [
+                "túi muối 2 kg, túi gạo 5 kg"
+              ],
+              "expression": "5 - 2",
+              "answer": {
+                "number": 3
+              },
+              "readConfidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "toan2-t1-b17-hoat-dong-2",
+          "kind": "hoat-dong",
+          "pages": [
+            68,
+            69
+          ],
+          "items": [
+            {
+              "id": "toan2-t1-b17-hoat-dong-2-1-a1",
+              "page": 68,
+              "prompt": "Bốn bạn Mai, Nam, Việt và Rô-bốt cân kiểm tra sức khoẻ được kết quả như sau: a) Số ? Tên | Việt | Rô-bốt; Cân nặng | 24 kg | ? kg",
+              "exerciseType": "do-luong-thuc-hanh",
+              "media": [
+                "Mai trên cân 23 kg",
+                "Nam trên cân 25 kg",
+                "Việt trên cân 24 kg",
+                "Rô-bốt trên cân 20 kg"
+              ],
+              "answer": {
+                "number": 20
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b17-hoat-dong-2-1-a2",
+              "page": 68,
+              "prompt": "Bốn bạn Mai, Nam, Việt và Rô-bốt cân kiểm tra sức khoẻ được kết quả như sau: a) Số ? Tên | Nam; Cân nặng | ? kg",
+              "exerciseType": "do-luong-thuc-hanh",
+              "media": [
+                "Nam trên cân 25 kg"
+              ],
+              "answer": {
+                "number": 25
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b17-hoat-dong-2-1-a3",
+              "page": 68,
+              "prompt": "Bốn bạn Mai, Nam, Việt và Rô-bốt cân kiểm tra sức khoẻ được kết quả như sau: a) Số ? Tên | Mai; Cân nặng | ? kg",
+              "exerciseType": "do-luong-thuc-hanh",
+              "media": [
+                "Mai trên cân 23 kg"
+              ],
+              "answer": {
+                "number": 23
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b17-hoat-dong-2-1-b",
+              "page": 68,
+              "prompt": "Bốn bạn Mai, Nam, Việt và Rô-bốt cân kiểm tra sức khoẻ được kết quả như sau: b) Bạn nào cân nặng nhất? Bạn nào cân nhẹ nhất?",
+              "exerciseType": "so-sanh",
+              "media": [
+                "Mai 23 kg, Nam 25 kg, Việt 24 kg, Rô-bốt 20 kg"
+              ],
+              "answer": {
+                "values": [
+                  "Nam",
+                  "Rô-bốt"
+                ]
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b17-hoat-dong-2-2",
+              "page": 68,
+              "prompt": "Bằng cái cân đĩa, cân đồng hồ, cân bàn đồng hồ, hãy tập cân một số đồ vật xung quanh em.",
+              "exerciseType": "do-luong-thuc-hanh",
+              "media": [
+                "bạn nhỏ cân xe cẩu đồ chơi trên cân đồng hồ; xung quanh có xe ủi, đồng hồ báo thức, cặp sách, vở"
+              ],
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b17-hoat-dong-2-3",
+              "page": 69,
+              "prompt": "Rót hết nước từ bình của Việt và Mai được các cốc nước (như hình vẽ). Bình nước của bạn nào chứa được nhiều nước hơn và nhiều hơn mấy cốc?",
+              "exerciseType": "so-sanh",
+              "media": [
+                "Việt rót bình được 8 cốc nước",
+                "Mai rót bình được 7 cốc nước"
+              ],
+              "expression": "8 - 7",
+              "answer": {
+                "values": [
+                  "Việt",
+                  1
+                ]
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b17-hoat-dong-2-4-a",
+              "page": 69,
+              "prompt": "Lượng nước ở bình A bằng 9 cốc. Lượng nước ở bình B bằng 7 cốc. a) Lượng nước ở cả hai bình bằng bao nhiêu cốc?",
+              "exerciseType": "bai-toan-loi-van",
+              "media": [
+                "bình A và 9 cốc nước",
+                "bình B và 7 cốc nước"
+              ],
+              "expression": "9 + 7",
+              "answer": {
+                "number": 16
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b17-hoat-dong-2-4-b",
+              "page": 69,
+              "prompt": "Lượng nước ở bình A bằng 9 cốc. Lượng nước ở bình B bằng 7 cốc. b) Lượng nước ở bình nào ít hơn và ít hơn bao nhiêu cốc?",
+              "exerciseType": "bai-toan-loi-van",
+              "media": [
+                "bình A và 9 cốc nước",
+                "bình B và 7 cốc nước"
+              ],
+              "expression": "9 - 7",
+              "answer": {
+                "values": [
+                  "B",
+                  2
+                ]
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b17-hoat-dong-2-5",
+              "page": 69,
+              "prompt": "Dùng ca 1 l, múc nước ở trong thùng đổ 3 ca đầy vào xô màu vàng và 5 ca đầy vào xô màu đỏ. Hỏi cả hai xô có bao nhiêu lít nước?",
+              "exerciseType": "bai-toan-loi-van",
+              "media": [
+                "thùng nước, ca 1 l đổ nước vào xô vàng, xô đỏ"
+              ],
+              "expression": "3 + 5",
+              "answer": {
+                "number": 8
+              },
+              "readConfidence": "high"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "toan2-t1-b18",
+      "number": 18,
+      "title": "Bài 18. Luyện tập chung",
+      "pages": [
+        70,
+        71
+      ],
+      "sections": [
+        {
+          "id": "toan2-t1-b18-luyen-tap",
+          "kind": "luyen-tap",
+          "pages": [
+            70,
+            71
+          ],
+          "items": [
+            {
+              "id": "toan2-t1-b18-luyen-tap-1-a1",
+              "page": 70,
+              "prompt": "Tính. a) 40 kg + 20 kg",
+              "exerciseType": "tinh",
+              "expression": "40 + 20",
+              "answer": {
+                "number": 60
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b18-luyen-tap-1-a2",
+              "page": 70,
+              "prompt": "Tính. a) 8 kg + 5 kg",
+              "exerciseType": "tinh",
+              "expression": "8 + 5",
+              "answer": {
+                "number": 13
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b18-luyen-tap-1-a3",
+              "page": 70,
+              "prompt": "Tính. a) 25 kg + 31 kg",
+              "exerciseType": "tinh",
+              "expression": "25 + 31",
+              "answer": {
+                "number": 56
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b18-luyen-tap-1-a4",
+              "page": 70,
+              "prompt": "Tính. a) 60 kg – 40 kg",
+              "exerciseType": "tinh",
+              "expression": "60 - 40",
+              "answer": {
+                "number": 20
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b18-luyen-tap-1-a5",
+              "page": 70,
+              "prompt": "Tính. a) 13 kg – 8 kg",
+              "exerciseType": "tinh",
+              "expression": "13 - 8",
+              "answer": {
+                "number": 5
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b18-luyen-tap-1-a6",
+              "page": 70,
+              "prompt": "Tính. a) 56 kg – 31 kg",
+              "exerciseType": "tinh",
+              "expression": "56 - 31",
+              "answer": {
+                "number": 25
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b18-luyen-tap-1-b1",
+              "page": 70,
+              "prompt": "Tính. b) 30 l + 10 l",
+              "exerciseType": "tinh",
+              "expression": "30 + 10",
+              "answer": {
+                "number": 40
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b18-luyen-tap-1-b2",
+              "page": 70,
+              "prompt": "Tính. b) 7 l + 6 l",
+              "exerciseType": "tinh",
+              "expression": "7 + 6",
+              "answer": {
+                "number": 13
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b18-luyen-tap-1-b3",
+              "page": 70,
+              "prompt": "Tính. b) 45 l + 23 l",
+              "exerciseType": "tinh",
+              "expression": "45 + 23",
+              "answer": {
+                "number": 68
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b18-luyen-tap-1-b4",
+              "page": 70,
+              "prompt": "Tính. b) 40 l – 10 l",
+              "exerciseType": "tinh",
+              "expression": "40 - 10",
+              "answer": {
+                "number": 30
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b18-luyen-tap-1-b5",
+              "page": 70,
+              "prompt": "Tính. b) 13 l – 7 l",
+              "exerciseType": "tinh",
+              "expression": "13 - 7",
+              "answer": {
+                "number": 6
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b18-luyen-tap-1-b6",
+              "page": 70,
+              "prompt": "Tính. b) 68 l – 23 l",
+              "exerciseType": "tinh",
+              "expression": "68 - 23",
+              "answer": {
+                "number": 45
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b18-luyen-tap-2-a",
+              "page": 70,
+              "prompt": "Số ? Thỏ, gà, chó chơi cầu thăng bằng. Biết cả hai trường hợp dưới đây cầu đều thăng bằng. a) Con thỏ nặng bằng ? con gà.",
+              "exerciseType": "dien-so",
+              "media": [
+                "cầu thăng bằng: 1 con thỏ và 2 con gà",
+                "cầu thăng bằng: 1 con chó và 2 con thỏ"
+              ],
+              "answer": {
+                "number": 2
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b18-luyen-tap-2-b",
+              "page": 70,
+              "prompt": "Số ? Thỏ, gà, chó chơi cầu thăng bằng. Biết cả hai trường hợp dưới đây cầu đều thăng bằng. b) Con chó nặng bằng ? con gà.",
+              "exerciseType": "dien-so",
+              "media": [
+                "cầu thăng bằng: 1 con thỏ và 2 con gà",
+                "cầu thăng bằng: 1 con chó và 2 con thỏ"
+              ],
+              "expression": "2 + 2",
+              "answer": {
+                "number": 4
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b18-luyen-tap-3",
+              "page": 71,
+              "prompt": "Tại cửa hàng xăng dầu, một người đi ô tô vào mua 25 l xăng, một người đi xe máy vào mua 3 l xăng. Hỏi cả hai người mua bao nhiêu lít xăng?",
+              "exerciseType": "bai-toan-loi-van",
+              "media": [
+                "cửa hàng xăng dầu số 1, ô tô và xe máy đang đổ xăng"
+              ],
+              "expression": "25 + 3",
+              "answer": {
+                "number": 28
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b18-luyen-tap-4-a",
+              "page": 71,
+              "prompt": "Có năm túi gạo sau: a) Muốn lấy hai túi để được 13 kg gạo thì phải lấy ra hai túi gạo nào?",
+              "exerciseType": "chon-dap-an",
+              "media": [
+                "năm túi gạo: 2 kg, 4 kg, 6 kg, 3 kg, 7 kg"
+              ],
+              "expression": "6 + 7",
+              "answer": {
+                "values": [
+                  "6 kg",
+                  "7 kg"
+                ]
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b18-luyen-tap-4-b",
+              "page": 71,
+              "prompt": "Có năm túi gạo sau: b) Muốn lấy ba túi để được 9 kg gạo thì phải lấy ra ba túi gạo nào?",
+              "exerciseType": "chon-dap-an",
+              "media": [
+                "năm túi gạo: 2 kg, 4 kg, 6 kg, 3 kg, 7 kg"
+              ],
+              "expression": "2 + 3 + 4",
+              "answer": {
+                "values": [
+                  "2 kg",
+                  "3 kg",
+                  "4 kg"
+                ]
+              },
+              "readConfidence": "high"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pageItems": [
+    {
+      "page": 57,
+      "itemCount": 0
+    },
+    {
+      "page": 58,
+      "itemCount": 7
+    },
+    {
+      "page": 59,
+      "itemCount": 0
+    },
+    {
+      "page": 60,
+      "itemCount": 12
+    },
+    {
+      "page": 61,
+      "itemCount": 11
+    },
+    {
+      "page": 62,
+      "itemCount": 0
+    },
+    {
+      "page": 63,
+      "itemCount": 7
+    },
+    {
+      "page": 64,
+      "itemCount": 11
+    },
+    {
+      "page": 65,
+      "itemCount": 5
+    },
+    {
+      "page": 66,
+      "itemCount": 1
+    },
+    {
+      "page": 67,
+      "itemCount": 7
+    },
+    {
+      "page": 68,
+      "itemCount": 5
+    },
+    {
+      "page": 69,
+      "itemCount": 4
+    },
+    {
+      "page": 70,
+      "itemCount": 14
+    },
+    {
+      "page": 71,
+      "itemCount": 3
+    }
+  ]
+}

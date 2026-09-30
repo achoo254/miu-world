@@ -1,0 +1,2934 @@
+{
+  "book": "toan2-t1",
+  "id": "toan2-t1-chu-de-4",
+  "number": 4,
+  "title": "Phép cộng, phép trừ (có nhớ) trong phạm vi 100",
+  "lessons": [
+    {
+      "id": "toan2-t1-b19",
+      "number": 19,
+      "title": "Bài 19. Phép cộng (có nhớ) số có hai chữ số với số có một chữ số",
+      "pages": [
+        72,
+        75
+      ],
+      "sections": [
+        {
+          "id": "toan2-t1-b19-kham-pha",
+          "kind": "kham-pha",
+          "pages": [
+            72,
+            72
+          ],
+          "items": []
+        },
+        {
+          "id": "toan2-t1-b19-hoat-dong",
+          "kind": "hoat-dong",
+          "pages": [
+            72,
+            73
+          ],
+          "items": [
+            {
+              "id": "toan2-t1-b19-hoat-dong-1-a",
+              "page": 72,
+              "prompt": "Tính. 28 + 3",
+              "exerciseType": "tinh",
+              "expression": "28 + 3",
+              "answer": {
+                "number": 31
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b19-hoat-dong-1-b",
+              "page": 72,
+              "prompt": "Tính. 78 + 9",
+              "exerciseType": "tinh",
+              "expression": "78 + 9",
+              "answer": {
+                "number": 87
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b19-hoat-dong-1-c",
+              "page": 72,
+              "prompt": "Tính. 57 + 7",
+              "exerciseType": "tinh",
+              "expression": "57 + 7",
+              "answer": {
+                "number": 64
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b19-hoat-dong-1-d",
+              "page": 72,
+              "prompt": "Tính. 13 + 7",
+              "exerciseType": "tinh",
+              "expression": "13 + 7",
+              "answer": {
+                "number": 20
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b19-hoat-dong-2-a",
+              "page": 72,
+              "prompt": "Đặt tính rồi tính. 35 + 6",
+              "exerciseType": "tinh",
+              "expression": "35 + 6",
+              "answer": {
+                "number": 41
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b19-hoat-dong-2-b",
+              "page": 72,
+              "prompt": "Đặt tính rồi tính. 47 + 8",
+              "exerciseType": "tinh",
+              "expression": "47 + 8",
+              "answer": {
+                "number": 55
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b19-hoat-dong-2-c",
+              "page": 72,
+              "prompt": "Đặt tính rồi tính. 89 + 2",
+              "exerciseType": "tinh",
+              "expression": "89 + 2",
+              "answer": {
+                "number": 91
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b19-hoat-dong-2-d",
+              "page": 72,
+              "prompt": "Đặt tính rồi tính. 63 + 9",
+              "exerciseType": "tinh",
+              "expression": "63 + 9",
+              "answer": {
+                "number": 72
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b19-hoat-dong-3",
+              "page": 73,
+              "prompt": "Mỗi chum đựng số lít nước là kết quả của phép tính ghi trên chum. Hỏi chum nào đựng nhiều nước nhất?",
+              "exerciseType": "so-sanh",
+              "media": [
+                "chum A ghi 59 l + 9 l",
+                "chum B ghi 61 l + 9 l",
+                "chum C ghi 57 l + 4 l"
+              ],
+              "answer": {
+                "choice": "B"
+              },
+              "readConfidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "toan2-t1-b19-luyen-tap",
+          "kind": "luyen-tap",
+          "pages": [
+            73,
+            74
+          ],
+          "items": [
+            {
+              "id": "toan2-t1-b19-luyen-tap-1-a-a",
+              "page": 73,
+              "prompt": "a) Số ? 12 + 8 = ?",
+              "exerciseType": "dien-so",
+              "media": [
+                "đoàn tàu, mỗi toa ghi một phép tính"
+              ],
+              "expression": "12 + 8",
+              "answer": {
+                "number": 20
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b19-luyen-tap-1-a-b",
+              "page": 73,
+              "prompt": "a) Số ? 33 + 7 = ?",
+              "exerciseType": "dien-so",
+              "media": [
+                "đoàn tàu, mỗi toa ghi một phép tính"
+              ],
+              "expression": "33 + 7",
+              "answer": {
+                "number": 40
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b19-luyen-tap-1-a-c",
+              "page": 73,
+              "prompt": "a) Số ? 65 + 5 = ?",
+              "exerciseType": "dien-so",
+              "media": [
+                "đoàn tàu, mỗi toa ghi một phép tính"
+              ],
+              "expression": "65 + 5",
+              "answer": {
+                "number": 70
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b19-luyen-tap-1-a-d",
+              "page": 73,
+              "prompt": "a) Số ? 84 + 6 = ?",
+              "exerciseType": "dien-so",
+              "media": [
+                "đoàn tàu, mỗi toa ghi một phép tính"
+              ],
+              "expression": "84 + 6",
+              "answer": {
+                "number": 90
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b19-luyen-tap-1-b-a",
+              "page": 73,
+              "prompt": "b) Đặt tính rồi tính. 35 + 5",
+              "exerciseType": "tinh",
+              "expression": "35 + 5",
+              "answer": {
+                "number": 40
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b19-luyen-tap-1-b-b",
+              "page": 73,
+              "prompt": "b) Đặt tính rồi tính. 69 + 4",
+              "exerciseType": "tinh",
+              "expression": "69 + 4",
+              "answer": {
+                "number": 73
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b19-luyen-tap-1-b-c",
+              "page": 73,
+              "prompt": "b) Đặt tính rồi tính. 19 + 3",
+              "exerciseType": "tinh",
+              "expression": "19 + 3",
+              "answer": {
+                "number": 22
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b19-luyen-tap-1-b-d",
+              "page": 73,
+              "prompt": "b) Đặt tính rồi tính. 29 + 6",
+              "exerciseType": "tinh",
+              "expression": "29 + 6",
+              "answer": {
+                "number": 35
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b19-luyen-tap-2-a",
+              "page": 73,
+              "prompt": "Tính rồi tìm lá của mỗi loại quả. 19 + 7",
+              "exerciseType": "noi",
+              "media": [
+                "mẫu vẽ sẵn: quả me ghi 49 + 8 nối với lá ghi 57",
+                "quả dưa hấu ghi 19 + 7",
+                "các lá ghi 26, 70, 57, 92"
+              ],
+              "expression": "19 + 7",
+              "answer": {
+                "number": 26
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b19-luyen-tap-2-b",
+              "page": 73,
+              "prompt": "Tính rồi tìm lá của mỗi loại quả. 89 + 3",
+              "exerciseType": "noi",
+              "media": [
+                "quả lựu ghi 89 + 3",
+                "các lá ghi 26, 70, 57, 92"
+              ],
+              "expression": "89 + 3",
+              "answer": {
+                "number": 92
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b19-luyen-tap-2-c",
+              "page": 73,
+              "prompt": "Tính rồi tìm lá của mỗi loại quả. 69 + 1",
+              "exerciseType": "noi",
+              "media": [
+                "quả chuối ghi 69 + 1",
+                "các lá ghi 26, 70, 57, 92"
+              ],
+              "expression": "69 + 1",
+              "answer": {
+                "number": 70
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b19-luyen-tap-3",
+              "page": 74,
+              "prompt": "Trên bàn có 18 vỏ ốc màu trắng và 5 vỏ ốc màu xanh. Hỏi trên bàn có tất cả bao nhiêu vỏ ốc?",
+              "exerciseType": "bai-toan-loi-van",
+              "media": [
+                "bàn có bảng ô xếp 18 vỏ ốc trắng và 5 vỏ ốc xanh"
+              ],
+              "expression": "18 + 5",
+              "answer": {
+                "number": 23
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b19-luyen-tap-4-a",
+              "page": 74,
+              "prompt": "Số ?",
+              "exerciseType": "dien-so",
+              "media": [
+                "tháp đá cạnh ngọn hải đăng: mỗi viên đá bằng tổng hai viên ngay dưới; hàng dưới 4, 5, 7, 2; hàng giữa 9, 12, ?; hàng trên ?, ?",
+                "ô cần điền: ô thứ nhất hàng trên (hàng giữa đủ là 9, 12, 9)"
+              ],
+              "expression": "9 + 12",
+              "answer": {
+                "number": 21
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b19-luyen-tap-4-b",
+              "page": 74,
+              "prompt": "Số ?",
+              "exerciseType": "dien-so",
+              "media": [
+                "tháp đá: hàng giữa 9, 12, 9",
+                "ô cần điền: ô thứ hai hàng trên"
+              ],
+              "expression": "12 + 9",
+              "answer": {
+                "number": 21
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b19-luyen-tap-4-c",
+              "page": 74,
+              "prompt": "Số ?",
+              "exerciseType": "dien-so",
+              "media": [
+                "tháp đá: hàng dưới 4, 5, 7, 2; hàng giữa 9, 12, ?",
+                "ô cần điền: ô thứ ba hàng giữa"
+              ],
+              "expression": "7 + 2",
+              "answer": {
+                "number": 9
+              },
+              "readConfidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "toan2-t1-b19-luyen-tap-2",
+          "kind": "luyen-tap",
+          "pages": [
+            74,
+            75
+          ],
+          "items": [
+            {
+              "id": "toan2-t1-b19-luyen-tap-2-1-a",
+              "page": 74,
+              "prompt": "Đặt tính rồi tính. 83 + 9",
+              "exerciseType": "tinh",
+              "expression": "83 + 9",
+              "answer": {
+                "number": 92
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b19-luyen-tap-2-1-b",
+              "page": 74,
+              "prompt": "Đặt tính rồi tính. 57 + 4",
+              "exerciseType": "tinh",
+              "expression": "57 + 4",
+              "answer": {
+                "number": 61
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b19-luyen-tap-2-1-c",
+              "page": 74,
+              "prompt": "Đặt tính rồi tính. 62 + 8",
+              "exerciseType": "tinh",
+              "expression": "62 + 8",
+              "answer": {
+                "number": 70
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b19-luyen-tap-2-1-d",
+              "page": 74,
+              "prompt": "Đặt tính rồi tính. 39 + 5",
+              "exerciseType": "tinh",
+              "expression": "39 + 5",
+              "answer": {
+                "number": 44
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b19-luyen-tap-2-2",
+              "page": 74,
+              "prompt": "Buổi sáng, bác Mạnh thu hoạch được 87 bao thóc. Buổi chiều, bác Mạnh thu hoạch được nhiều hơn buổi sáng 6 bao thóc. Hỏi buổi chiều bác Mạnh thu hoạch được bao nhiêu bao thóc?",
+              "exerciseType": "bai-toan-loi-van",
+              "media": [
+                "máy gặt đang gặt lúa trên cánh đồng"
+              ],
+              "expression": "87 + 6",
+              "answer": {
+                "number": 93
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b19-luyen-tap-2-3-a",
+              "page": 75,
+              "prompt": "Chú gà bới đất làm mất kết quả của các phép tính mà Việt vừa viết. Hãy tìm lại kết quả giúp bạn Việt nhé! 47 + 8 =",
+              "exerciseType": "dien-so",
+              "media": [
+                "chú gà bới đất, bạn Việt cầm que viết phép tính trên đất"
+              ],
+              "expression": "47 + 8",
+              "answer": {
+                "number": 55
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b19-luyen-tap-2-3-b",
+              "page": 75,
+              "prompt": "Chú gà bới đất làm mất kết quả của các phép tính mà Việt vừa viết. Hãy tìm lại kết quả giúp bạn Việt nhé! 84 + 9 =",
+              "exerciseType": "dien-so",
+              "media": [
+                "chú gà bới đất, bạn Việt cầm que viết phép tính trên đất"
+              ],
+              "expression": "84 + 9",
+              "answer": {
+                "number": 93
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b19-luyen-tap-2-3-c",
+              "page": 75,
+              "prompt": "Chú gà bới đất làm mất kết quả của các phép tính mà Việt vừa viết. Hãy tìm lại kết quả giúp bạn Việt nhé! 23 + 7 =",
+              "exerciseType": "dien-so",
+              "media": [
+                "chú gà bới đất, bạn Việt cầm que viết phép tính trên đất"
+              ],
+              "expression": "23 + 7",
+              "answer": {
+                "number": 30
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b19-luyen-tap-2-3-d",
+              "page": 75,
+              "prompt": "Chú gà bới đất làm mất kết quả của các phép tính mà Việt vừa viết. Hãy tìm lại kết quả giúp bạn Việt nhé! 15 + 5 =",
+              "exerciseType": "dien-so",
+              "media": [
+                "chú gà bới đất, bạn Việt cầm que viết phép tính trên đất"
+              ],
+              "expression": "15 + 5",
+              "answer": {
+                "number": 20
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b19-luyen-tap-2-4-a",
+              "page": 75,
+              "prompt": "Chọn kết quả đúng. a) 28 + 9 + 2 = ? A. 37 B. 39 C. 30",
+              "exerciseType": "chon-dap-an",
+              "expression": "28 + 9 + 2",
+              "answer": {
+                "choice": "B. 39"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b19-luyen-tap-2-4-b",
+              "page": 75,
+              "prompt": "Chọn kết quả đúng. b) 45 + 5 + 8 = ? A. 58 B. 48 C. 68",
+              "exerciseType": "chon-dap-an",
+              "expression": "45 + 5 + 8",
+              "answer": {
+                "choice": "A. 58"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b19-luyen-tap-2-5",
+              "page": 75,
+              "prompt": "Tính tổng các số trên những hạt dẻ mà chú sóc nhặt được trên đường về nhà.",
+              "exerciseType": "tro-choi",
+              "media": [
+                "mê cung: sóc ở cửa vào dưới bên trái, nhà trên cây ở cửa ra trên bên phải",
+                "hạt dẻ ghi 1, 0, 5, 4, 9, 38, 6, 7, 2",
+                "đường đi đúng qua hạt dẻ 38, 9, 5"
+              ],
+              "expression": "38 + 9 + 5",
+              "answer": {
+                "number": 52
+              },
+              "readConfidence": "high"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "toan2-t1-b20",
+      "number": 20,
+      "title": "Bài 20. Phép cộng (có nhớ) số có hai chữ số với số có hai chữ số",
+      "pages": [
+        76,
+        79
+      ],
+      "sections": [
+        {
+          "id": "toan2-t1-b20-kham-pha",
+          "kind": "kham-pha",
+          "pages": [
+            76,
+            76
+          ],
+          "items": []
+        },
+        {
+          "id": "toan2-t1-b20-hoat-dong",
+          "kind": "hoat-dong",
+          "pages": [
+            76,
+            76
+          ],
+          "items": [
+            {
+              "id": "toan2-t1-b20-hoat-dong-1-a",
+              "page": 76,
+              "prompt": "Tính. 17 + 24",
+              "exerciseType": "tinh",
+              "expression": "17 + 24",
+              "answer": {
+                "number": 41
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b20-hoat-dong-1-b",
+              "page": 76,
+              "prompt": "Tính. 37 + 36",
+              "exerciseType": "tinh",
+              "expression": "37 + 36",
+              "answer": {
+                "number": 73
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b20-hoat-dong-1-c",
+              "page": 76,
+              "prompt": "Tính. 42 + 48",
+              "exerciseType": "tinh",
+              "expression": "42 + 48",
+              "answer": {
+                "number": 90
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b20-hoat-dong-1-d",
+              "page": 76,
+              "prompt": "Tính. 59 + 25",
+              "exerciseType": "tinh",
+              "expression": "59 + 25",
+              "answer": {
+                "number": 84
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b20-hoat-dong-2-a",
+              "page": 76,
+              "prompt": "Đặt tính rồi tính. 23 + 67",
+              "exerciseType": "tinh",
+              "expression": "23 + 67",
+              "answer": {
+                "number": 90
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b20-hoat-dong-2-b",
+              "page": 76,
+              "prompt": "Đặt tính rồi tính. 46 + 18",
+              "exerciseType": "tinh",
+              "expression": "46 + 18",
+              "answer": {
+                "number": 64
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b20-hoat-dong-2-c",
+              "page": 76,
+              "prompt": "Đặt tính rồi tính. 59 + 21",
+              "exerciseType": "tinh",
+              "expression": "59 + 21",
+              "answer": {
+                "number": 80
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b20-hoat-dong-2-d",
+              "page": 76,
+              "prompt": "Đặt tính rồi tính. 64 + 19",
+              "exerciseType": "tinh",
+              "expression": "64 + 19",
+              "answer": {
+                "number": 83
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b20-hoat-dong-3-a",
+              "page": 76,
+              "prompt": "Mỗi hình có 1 que tính đặt sai vị trí. Em hãy đặt lại cho đúng. Biết rằng: a) Que tính ở kết quả đặt sai. 36 + 45 = 97",
+              "exerciseType": "tro-choi",
+              "media": [
+                "phép tính xếp bằng que tính: 36 + 45 = 97"
+              ],
+              "expression": "36 + 45",
+              "answer": {
+                "number": 81
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b20-hoat-dong-3-b",
+              "page": 76,
+              "prompt": "Mỗi hình có 1 que tính đặt sai vị trí. Em hãy đặt lại cho đúng. Biết rằng: b) Que tính ở số hạng thứ hai đặt sai. 74 + 16 = 84",
+              "exerciseType": "tro-choi",
+              "media": [
+                "phép tính xếp bằng que tính: 74 + 16 = 84"
+              ],
+              "expression": "74 + ? = 84",
+              "answer": {
+                "number": 10
+              },
+              "readConfidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "toan2-t1-b20-luyen-tap",
+          "kind": "luyen-tap",
+          "pages": [
+            77,
+            78
+          ],
+          "items": [
+            {
+              "id": "toan2-t1-b20-luyen-tap-1-a",
+              "page": 77,
+              "prompt": "Đặt tính rồi tính. 36 + 36",
+              "exerciseType": "tinh",
+              "expression": "36 + 36",
+              "answer": {
+                "number": 72
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b20-luyen-tap-1-b",
+              "page": 77,
+              "prompt": "Đặt tính rồi tính. 73 + 17",
+              "exerciseType": "tinh",
+              "expression": "73 + 17",
+              "answer": {
+                "number": 90
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b20-luyen-tap-1-c",
+              "page": 77,
+              "prompt": "Đặt tính rồi tính. 28 + 53",
+              "exerciseType": "tinh",
+              "expression": "28 + 53",
+              "answer": {
+                "number": 81
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b20-luyen-tap-1-d",
+              "page": 77,
+              "prompt": "Đặt tính rồi tính. 25 + 35",
+              "exerciseType": "tinh",
+              "expression": "25 + 35",
+              "answer": {
+                "number": 60
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b20-luyen-tap-2-a",
+              "page": 77,
+              "prompt": "Con tàu nào ghi phép tính đúng?",
+              "exerciseType": "chon-dap-an",
+              "media": [
+                "tàu hồng ghi 65 + 5 = 71",
+                "tàu xanh lá ghi 23 + 18 = 41",
+                "tàu vàng ghi 5 + 41 = 47"
+              ],
+              "answer": {
+                "choice": "23 + 18 = 41"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b20-luyen-tap-3-a",
+              "page": 77,
+              "prompt": "Tính rồi tìm thùng hoặc bao hàng thích hợp. 76 kg + 17 kg",
+              "exerciseType": "noi",
+              "media": [
+                "mẫu vẽ sẵn: máy bay không người lái ghi 15 kg + 35 kg nối với thùng 50 kg",
+                "máy bay không người lái ghi 76 kg + 17 kg",
+                "thùng 60 kg, bao 56 kg, thùng 50 kg, bao 93 kg"
+              ],
+              "expression": "76 + 17",
+              "answer": {
+                "number": 93
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b20-luyen-tap-3-b",
+              "page": 77,
+              "prompt": "Tính rồi tìm thùng hoặc bao hàng thích hợp. 21 kg + 39 kg",
+              "exerciseType": "noi",
+              "media": [
+                "máy bay không người lái ghi 21 kg + 39 kg",
+                "thùng 60 kg, bao 56 kg, thùng 50 kg, bao 93 kg"
+              ],
+              "expression": "21 + 39",
+              "answer": {
+                "number": 60
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b20-luyen-tap-3-c",
+              "page": 77,
+              "prompt": "Tính rồi tìm thùng hoặc bao hàng thích hợp. 28 kg + 28 kg",
+              "exerciseType": "noi",
+              "media": [
+                "máy bay không người lái ghi 28 kg + 28 kg",
+                "thùng 60 kg, bao 56 kg, thùng 50 kg, bao 93 kg"
+              ],
+              "expression": "28 + 28",
+              "answer": {
+                "number": 56
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b20-luyen-tap-4",
+              "page": 77,
+              "prompt": "Ngày thứ nhất, Mai làm được 29 tấm bưu thiếp. Ngày thứ hai, Mai làm được 31 tấm bưu thiếp. Hỏi cả hai ngày Mai làm được bao nhiêu tấm bưu thiếp?",
+              "exerciseType": "bai-toan-loi-van",
+              "media": [
+                "tấm bưu thiếp có cành hoa đào"
+              ],
+              "expression": "29 + 31",
+              "answer": {
+                "number": 60
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b20-luyen-tap-5",
+              "page": 78,
+              "prompt": "Số ? Kiến đỏ phải bò qua bụi cỏ để đến cái kẹo. Kiến đỏ phải bò ? cm.",
+              "exerciseType": "dien-so",
+              "media": [
+                "con đường của kiến đỏ gồm đoạn 37 cm và đoạn 54 cm, cuối đường là cái kẹo"
+              ],
+              "expression": "37 + 54",
+              "answer": {
+                "number": 91
+              },
+              "readConfidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "toan2-t1-b20-luyen-tap-2",
+          "kind": "luyen-tap",
+          "pages": [
+            78,
+            78
+          ],
+          "items": [
+            {
+              "id": "toan2-t1-b20-luyen-tap-2-1-a",
+              "page": 78,
+              "prompt": "Đặt tính rồi tính. 47 + 43",
+              "exerciseType": "tinh",
+              "expression": "47 + 43",
+              "answer": {
+                "number": 90
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b20-luyen-tap-2-1-b",
+              "page": 78,
+              "prompt": "Đặt tính rồi tính. 43 + 47",
+              "exerciseType": "tinh",
+              "expression": "43 + 47",
+              "answer": {
+                "number": 90
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b20-luyen-tap-2-1-c",
+              "page": 78,
+              "prompt": "Đặt tính rồi tính. 65 + 28",
+              "exerciseType": "tinh",
+              "expression": "65 + 28",
+              "answer": {
+                "number": 93
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b20-luyen-tap-2-1-d",
+              "page": 78,
+              "prompt": "Đặt tính rồi tính. 28 + 65",
+              "exerciseType": "tinh",
+              "expression": "28 + 65",
+              "answer": {
+                "number": 93
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b20-luyen-tap-2-2",
+              "page": 78,
+              "prompt": "Nêu tên các tàu ngầm theo thứ tự kết quả của phép tính từ bé đến lớn.",
+              "exerciseType": "sap-xep",
+              "media": [
+                "tàu ngầm A ghi 15 + 82",
+                "tàu ngầm B ghi 40 + 50",
+                "tàu ngầm C ghi 6 + 90",
+                "tàu ngầm D ghi 34 + 57"
+              ],
+              "answer": {
+                "values": [
+                  "B",
+                  "D",
+                  "C",
+                  "A"
+                ]
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b20-luyen-tap-2-3",
+              "page": 78,
+              "prompt": "Chọn câu trả lời đúng. Con đường nào ngắn nhất để kiến vàng bò đến hạt gạo? A. Đường màu đỏ B. Đường màu xanh C. Đường màu đen",
+              "exerciseType": "chon-dap-an",
+              "media": [
+                "đường màu đỏ gồm 48 cm và 32 cm",
+                "đường màu xanh gồm 34 cm và 34 cm",
+                "đường màu đen gồm 32 cm và 48 cm"
+              ],
+              "answer": {
+                "choice": "B. Đường màu xanh"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b20-luyen-tap-2-4-a",
+              "page": 78,
+              "prompt": "Tính. 23 + 27 + 1",
+              "exerciseType": "tinh",
+              "expression": "23 + 27 + 1",
+              "answer": {
+                "number": 51
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b20-luyen-tap-2-4-b",
+              "page": 78,
+              "prompt": "Tính. 45 + 45 + 2",
+              "exerciseType": "tinh",
+              "expression": "45 + 45 + 2",
+              "answer": {
+                "number": 92
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b20-luyen-tap-2-4-c",
+              "page": 78,
+              "prompt": "Tính. 58 + 12 + 3",
+              "exerciseType": "tinh",
+              "expression": "58 + 12 + 3",
+              "answer": {
+                "number": 73
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b20-luyen-tap-2-4-d",
+              "page": 78,
+              "prompt": "Tính. 69 + 11 + 4",
+              "exerciseType": "tinh",
+              "expression": "69 + 11 + 4",
+              "answer": {
+                "number": 84
+              },
+              "readConfidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "toan2-t1-b20-luyen-tap-3",
+          "kind": "luyen-tap",
+          "pages": [
+            79,
+            79
+          ],
+          "items": [
+            {
+              "id": "toan2-t1-b20-luyen-tap-3-1-a",
+              "page": 79,
+              "prompt": "Đặt tính rồi tính. 38 + 52",
+              "exerciseType": "tinh",
+              "expression": "38 + 52",
+              "answer": {
+                "number": 90
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b20-luyen-tap-3-1-b",
+              "page": 79,
+              "prompt": "Đặt tính rồi tính. 15 + 15",
+              "exerciseType": "tinh",
+              "expression": "15 + 15",
+              "answer": {
+                "number": 30
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b20-luyen-tap-3-1-c",
+              "page": 79,
+              "prompt": "Đặt tính rồi tính. 67 + 17",
+              "exerciseType": "tinh",
+              "expression": "67 + 17",
+              "answer": {
+                "number": 84
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b20-luyen-tap-3-1-d",
+              "page": 79,
+              "prompt": "Đặt tính rồi tính. 72 + 19",
+              "exerciseType": "tinh",
+              "expression": "72 + 19",
+              "answer": {
+                "number": 91
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b20-luyen-tap-3-2-a",
+              "page": 79,
+              "prompt": "Đ, S ?",
+              "exerciseType": "chon-dap-an",
+              "media": [
+                "tia số 64, 67, 70, …, 100 (cách nhau 3)",
+                "mẫu vẽ sẵn: khinh khí cầu 60 + 10 nối với số 70, ô ghi Đ",
+                "khinh khí cầu 58 + 19 nối với số 76"
+              ],
+              "answer": {
+                "text": "S"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b20-luyen-tap-3-2-b",
+              "page": 79,
+              "prompt": "Đ, S ?",
+              "exerciseType": "chon-dap-an",
+              "media": [
+                "khinh khí cầu 67 + 14 nối với số 85"
+              ],
+              "answer": {
+                "text": "S"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b20-luyen-tap-3-2-c",
+              "page": 79,
+              "prompt": "Đ, S ?",
+              "exerciseType": "chon-dap-an",
+              "media": [
+                "khinh khí cầu 49 + 48 nối với số 97"
+              ],
+              "answer": {
+                "text": "Đ"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b20-luyen-tap-3-3-a",
+              "page": 79,
+              "prompt": "Số ? a)",
+              "exerciseType": "dien-so",
+              "media": [
+                "đàn cừu: 45, + 27, ?, + 19, ?"
+              ],
+              "answer": {
+                "values": [
+                  72,
+                  91
+                ]
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b20-luyen-tap-3-3-b",
+              "page": 79,
+              "prompt": "Số ? b)",
+              "exerciseType": "dien-so",
+              "media": [
+                "đàn cừu: 45, + 19, ?, + 27, ?"
+              ],
+              "answer": {
+                "values": [
+                  64,
+                  91
+                ]
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b20-luyen-tap-3-4",
+              "page": 79,
+              "prompt": "Nam có 57 viên bi. Mai cho Nam thêm 15 viên bi. Hỏi lúc này Nam có bao nhiêu viên bi?",
+              "exerciseType": "bai-toan-loi-van",
+              "media": [
+                "Nam, Mai và Rô-bốt chơi bi"
+              ],
+              "expression": "57 + 15",
+              "answer": {
+                "number": 72
+              },
+              "readConfidence": "high"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "toan2-t1-b21",
+      "number": 21,
+      "title": "Bài 21. Luyện tập chung",
+      "pages": [
+        80,
+        82
+      ],
+      "sections": [
+        {
+          "id": "toan2-t1-b21-luyen-tap",
+          "kind": "luyen-tap",
+          "pages": [
+            80,
+            81
+          ],
+          "items": [
+            {
+              "id": "toan2-t1-b21-luyen-tap-1-a",
+              "page": 80,
+              "prompt": "Đặt tính rồi tính. 45 + 6",
+              "exerciseType": "tinh",
+              "expression": "45 + 6",
+              "answer": {
+                "number": 51
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b21-luyen-tap-1-b",
+              "page": 80,
+              "prompt": "Đặt tính rồi tính. 81 + 9",
+              "exerciseType": "tinh",
+              "expression": "81 + 9",
+              "answer": {
+                "number": 90
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b21-luyen-tap-1-c",
+              "page": 80,
+              "prompt": "Đặt tính rồi tính. 26 + 66",
+              "exerciseType": "tinh",
+              "expression": "26 + 66",
+              "answer": {
+                "number": 92
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b21-luyen-tap-2-a",
+              "page": 80,
+              "prompt": "Con bê cân nặng 47 kg. Con nghé nặng hơn con bê 18 kg. Hỏi con nghé cân nặng bao nhiêu ki-lô-gam?",
+              "exerciseType": "bai-toan-loi-van",
+              "media": [
+                "bò mẹ và con bê, trâu mẹ và con nghé trên đồng cỏ"
+              ],
+              "expression": "47 + 18",
+              "answer": {
+                "number": 65
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b21-luyen-tap-3",
+              "page": 80,
+              "prompt": "Con lợn cân nặng bao nhiêu ki-lô-gam?",
+              "exerciseType": "bai-toan-loi-van",
+              "media": [
+                "cân đĩa thăng bằng: một bên con lợn ghi ? kg, bên kia con ngỗng 5 kg và con dê 28 kg"
+              ],
+              "expression": "5 + 28",
+              "answer": {
+                "number": 33
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b21-luyen-tap-4-a",
+              "page": 80,
+              "prompt": "Số ? Mỗi bạn xách bao nhiêu lít nước? ? l",
+              "exerciseType": "dien-so",
+              "media": [
+                "mẫu vẽ sẵn: bạn đỏ xách hai xô 26 l và 26 l, ô dưới ghi 52 l",
+                "gấu xách hai xô 28 l và 28 l"
+              ],
+              "expression": "28 + 28",
+              "answer": {
+                "number": 56
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b21-luyen-tap-4-b",
+              "page": 80,
+              "prompt": "Số ? Mỗi bạn xách bao nhiêu lít nước? ? l",
+              "exerciseType": "dien-so",
+              "media": [
+                "chàng cao bồi xách hai thùng 27 l và 27 l"
+              ],
+              "expression": "27 + 27",
+              "answer": {
+                "number": 54
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b21-luyen-tap-5-a",
+              "page": 81,
+              "prompt": "Số ? Chuột túi tham gia một cuộc thi nhảy xa. Lần thứ nhất, từ tảng đá màu đỏ, chuột túi nhảy qua 4 tảng đá và được 25 điểm (như hình vẽ). Lần thứ hai, từ tảng đá màu đỏ, chuột túi nhảy qua 6 tảng đá. a) Lần thứ hai, chuột túi được ? điểm.",
+              "exerciseType": "dien-so",
+              "media": [
+                "chuột túi đứng trên tảng đá đỏ; các tảng đá ghi 5, 10, 15, 20, 25, 30, 35, 40, 45, 50; mũi tên nhảy tới tảng 25"
+              ],
+              "answer": {
+                "number": 35
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b21-luyen-tap-5-b",
+              "page": 81,
+              "prompt": "Số ? Chuột túi tham gia một cuộc thi nhảy xa. Lần thứ nhất, từ tảng đá màu đỏ, chuột túi nhảy qua 4 tảng đá và được 25 điểm (như hình vẽ). Lần thứ hai, từ tảng đá màu đỏ, chuột túi nhảy qua 6 tảng đá. b) Cả hai lần nhảy, chuột túi được ? điểm.",
+              "exerciseType": "dien-so",
+              "media": [
+                "lần thứ nhất 25 điểm, lần thứ hai 35 điểm"
+              ],
+              "expression": "25 + 35",
+              "answer": {
+                "number": 60
+              },
+              "readConfidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "toan2-t1-b21-luyen-tap-2",
+          "kind": "luyen-tap",
+          "pages": [
+            81,
+            82
+          ],
+          "items": [
+            {
+              "id": "toan2-t1-b21-luyen-tap-2-1-a",
+              "page": 81,
+              "prompt": "Tính. 41 + 19",
+              "exerciseType": "tinh",
+              "expression": "41 + 19",
+              "answer": {
+                "number": 60
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b21-luyen-tap-2-1-b",
+              "page": 81,
+              "prompt": "Tính. 67 + 3",
+              "exerciseType": "tinh",
+              "expression": "67 + 3",
+              "answer": {
+                "number": 70
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b21-luyen-tap-2-1-c",
+              "page": 81,
+              "prompt": "Tính. 76 + 14",
+              "exerciseType": "tinh",
+              "expression": "76 + 14",
+              "answer": {
+                "number": 90
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b21-luyen-tap-2-2",
+              "page": 81,
+              "prompt": "Đường bay của bạn nào dài nhất?",
+              "exerciseType": "so-sanh",
+              "media": [
+                "ong bay 23 cm đến bông hoa đỏ rồi 38 cm đến bông hoa vàng",
+                "chuồn chuồn bay 39 cm đến hàng rào rồi 24 cm đến ao",
+                "châu chấu bay 51 cm đến khóm lúa"
+              ],
+              "answer": {
+                "text": "chuồn chuồn"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b21-luyen-tap-2-3",
+              "page": 82,
+              "prompt": "Nam có 38 viên bi. Rô-bốt có 34 viên bi. Hỏi Nam và Rô-bốt có tất cả bao nhiêu viên bi?",
+              "exerciseType": "bai-toan-loi-van",
+              "media": [
+                "bạn gái, Rô-bốt và Nam chơi bi"
+              ],
+              "expression": "38 + 34",
+              "answer": {
+                "number": 72
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b21-luyen-tap-2-4-a",
+              "page": 82,
+              "prompt": "Ba bể cá A, B, C có mực nước khác nhau như hình vẽ dưới đây: a) Mực nước ở bể B cao hơn mực nước ở bể A bao nhiêu xăng-ti-mét?",
+              "exerciseType": "do-luong-thuc-hanh",
+              "media": [
+                "bể A mực nước thấp nhất",
+                "bể B mực nước cao hơn bể A 6 cm",
+                "bể C mực nước cao hơn bể A 15 cm"
+              ],
+              "answer": {
+                "number": 6
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b21-luyen-tap-2-4-b",
+              "page": 82,
+              "prompt": "Ba bể cá A, B, C có mực nước khác nhau như hình vẽ dưới đây: b) Mực nước ở bể C cao hơn mực nước ở bể A bao nhiêu xăng-ti-mét?",
+              "exerciseType": "do-luong-thuc-hanh",
+              "media": [
+                "bể C mực nước cao hơn bể A 15 cm"
+              ],
+              "answer": {
+                "number": 15
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b21-luyen-tap-2-4-c",
+              "page": 82,
+              "prompt": "Ba bể cá A, B, C có mực nước khác nhau như hình vẽ dưới đây: c) Sau khi bạn Nam bỏ thêm một số hòn đá cảnh vào bể B thì mực nước ở bể B tăng thêm 5 cm. Hỏi lúc này mực nước ở bể B cao hơn mực nước ở bể A bao nhiêu xăng-ti-mét?",
+              "exerciseType": "bai-toan-loi-van",
+              "media": [
+                "bể B mực nước cao hơn bể A 6 cm"
+              ],
+              "expression": "6 + 5",
+              "answer": {
+                "number": 11
+              },
+              "readConfidence": "high"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "toan2-t1-b22",
+      "number": 22,
+      "title": "Bài 22. Phép trừ (có nhớ) số có hai chữ số cho số có một chữ số",
+      "pages": [
+        83,
+        88
+      ],
+      "sections": [
+        {
+          "id": "toan2-t1-b22-kham-pha",
+          "kind": "kham-pha",
+          "pages": [
+            83,
+            83
+          ],
+          "items": []
+        },
+        {
+          "id": "toan2-t1-b22-hoat-dong",
+          "kind": "hoat-dong",
+          "pages": [
+            84,
+            84
+          ],
+          "items": [
+            {
+              "id": "toan2-t1-b22-hoat-dong-1-a",
+              "page": 84,
+              "prompt": "Tính. 42 – 8",
+              "exerciseType": "tinh",
+              "expression": "42 - 8",
+              "answer": {
+                "number": 34
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b22-hoat-dong-1-b",
+              "page": 84,
+              "prompt": "Tính. 56 – 9",
+              "exerciseType": "tinh",
+              "expression": "56 - 9",
+              "answer": {
+                "number": 47
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b22-hoat-dong-1-c",
+              "page": 84,
+              "prompt": "Tính. 60 – 5",
+              "exerciseType": "tinh",
+              "expression": "60 - 5",
+              "answer": {
+                "number": 55
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b22-hoat-dong-1-d",
+              "page": 84,
+              "prompt": "Tính. 75 – 6",
+              "exerciseType": "tinh",
+              "expression": "75 - 6",
+              "answer": {
+                "number": 69
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b22-hoat-dong-2-a",
+              "page": 84,
+              "prompt": "Đặt tính rồi tính. 64 – 8",
+              "exerciseType": "tinh",
+              "expression": "64 - 8",
+              "answer": {
+                "number": 56
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b22-hoat-dong-2-b",
+              "page": 84,
+              "prompt": "Đặt tính rồi tính. 70 – 7",
+              "exerciseType": "tinh",
+              "expression": "70 - 7",
+              "answer": {
+                "number": 63
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b22-hoat-dong-2-c",
+              "page": 84,
+              "prompt": "Đặt tính rồi tính. 83 – 4",
+              "exerciseType": "tinh",
+              "expression": "83 - 4",
+              "answer": {
+                "number": 79
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b22-hoat-dong-2-d",
+              "page": 84,
+              "prompt": "Đặt tính rồi tính. 41 – 5",
+              "exerciseType": "tinh",
+              "expression": "41 - 5",
+              "answer": {
+                "number": 36
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b22-hoat-dong-3",
+              "page": 84,
+              "prompt": "Ngày thứ nhất, Mai An Tiêm thả 34 quả dưa hấu xuống biển. Ngày thứ hai, Mai An Tiêm thả ít hơn ngày thứ nhất 7 quả. Hỏi ngày thứ hai Mai An Tiêm thả bao nhiêu quả dưa hấu xuống biển?",
+              "exerciseType": "bai-toan-loi-van",
+              "media": [
+                "Mai An Tiêm và con thả dưa hấu xuống biển"
+              ],
+              "expression": "34 - 7",
+              "answer": {
+                "number": 27
+              },
+              "readConfidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "toan2-t1-b22-luyen-tap",
+          "kind": "luyen-tap",
+          "pages": [
+            84,
+            85
+          ],
+          "items": [
+            {
+              "id": "toan2-t1-b22-luyen-tap-1-a",
+              "page": 84,
+              "prompt": "Đặt tính rồi tính. 42 – 5",
+              "exerciseType": "tinh",
+              "expression": "42 - 5",
+              "answer": {
+                "number": 37
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b22-luyen-tap-1-b",
+              "page": 84,
+              "prompt": "Đặt tính rồi tính. 51 – 9",
+              "exerciseType": "tinh",
+              "expression": "51 - 9",
+              "answer": {
+                "number": 42
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b22-luyen-tap-1-c",
+              "page": 84,
+              "prompt": "Đặt tính rồi tính. 63 – 7",
+              "exerciseType": "tinh",
+              "expression": "63 - 7",
+              "answer": {
+                "number": 56
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b22-luyen-tap-1-d",
+              "page": 84,
+              "prompt": "Đặt tính rồi tính. 86 – 8",
+              "exerciseType": "tinh",
+              "expression": "86 - 8",
+              "answer": {
+                "number": 78
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b22-luyen-tap-2-a",
+              "page": 84,
+              "prompt": "Cắm hoa vào lọ thích hợp. 46 – 7",
+              "exerciseType": "noi",
+              "media": [
+                "lọ xanh lá ghi 46 – 7",
+                "bạn nhỏ cầm ba bông hoa ghi 56, 39, 48"
+              ],
+              "expression": "46 - 7",
+              "answer": {
+                "number": 39
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b22-luyen-tap-2-b",
+              "page": 84,
+              "prompt": "Cắm hoa vào lọ thích hợp. 50 – 2",
+              "exerciseType": "noi",
+              "media": [
+                "lọ vàng ghi 50 – 2",
+                "bạn nhỏ cầm ba bông hoa ghi 56, 39, 48"
+              ],
+              "expression": "50 - 2",
+              "answer": {
+                "number": 48
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b22-luyen-tap-2-c",
+              "page": 84,
+              "prompt": "Cắm hoa vào lọ thích hợp. 64 – 8",
+              "exerciseType": "noi",
+              "media": [
+                "lọ xanh da trời ghi 64 – 8",
+                "bạn nhỏ cầm ba bông hoa ghi 56, 39, 48"
+              ],
+              "expression": "64 - 8",
+              "answer": {
+                "number": 56
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b22-luyen-tap-3-a",
+              "page": 85,
+              "prompt": "Đường về nhà sóc đi qua ba phép tính có kết quả bằng nhau. Tìm nhà cho sóc.",
+              "exerciseType": "tro-choi",
+              "media": [
+                "sóc ở đầu đường 54 – 8; đường rẽ lên 22 + 24 và rẽ xuống 30 + 16",
+                "sau 22 + 24: đường 60 – 9 tới nhà mái đỏ, đường 50 – 4 tới nhà mái xanh",
+                "sau 30 + 16: đường 73 – 7 tới nhà mái tím, đường 65 – 8 tới nhà mái cam"
+              ],
+              "answer": {
+                "text": "nhà mái xanh (54 – 8, 22 + 24, 50 – 4)"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b22-luyen-tap-4",
+              "page": 85,
+              "prompt": "Trong vườn có 30 cây hoa hồng và hoa cúc. Mi đếm được có 9 cây hoa cúc. Hỏi trong vườn có bao nhiêu cây hoa hồng?",
+              "exerciseType": "bai-toan-loi-van",
+              "media": [
+                "Mi và Rô-bốt trong vườn hoa hồng và hoa cúc"
+              ],
+              "expression": "30 - 9",
+              "answer": {
+                "number": 21
+              },
+              "readConfidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "toan2-t1-b22-luyen-tap-2",
+          "kind": "luyen-tap",
+          "pages": [
+            86,
+            86
+          ],
+          "items": [
+            {
+              "id": "toan2-t1-b22-luyen-tap-2-1-a",
+              "page": 86,
+              "prompt": "Đặt tính rồi tính. 63 – 8",
+              "exerciseType": "tinh",
+              "expression": "63 - 8",
+              "answer": {
+                "number": 55
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b22-luyen-tap-2-1-b",
+              "page": 86,
+              "prompt": "Đặt tính rồi tính. 38 – 9",
+              "exerciseType": "tinh",
+              "expression": "38 - 9",
+              "answer": {
+                "number": 29
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b22-luyen-tap-2-1-c",
+              "page": 86,
+              "prompt": "Đặt tính rồi tính. 40 – 2",
+              "exerciseType": "tinh",
+              "expression": "40 - 2",
+              "answer": {
+                "number": 38
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b22-luyen-tap-2-1-d",
+              "page": 86,
+              "prompt": "Đặt tính rồi tính. 92 – 4",
+              "exerciseType": "tinh",
+              "expression": "92 - 4",
+              "answer": {
+                "number": 88
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b22-luyen-tap-2-2-a",
+              "page": 86,
+              "prompt": "Số ? a)",
+              "exerciseType": "dien-so",
+              "media": [
+                "56 → + 4 → ? → – 5 → ?"
+              ],
+              "answer": {
+                "values": [
+                  60,
+                  55
+                ]
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b22-luyen-tap-2-2-b",
+              "page": 86,
+              "prompt": "Số ? b)",
+              "exerciseType": "dien-so",
+              "media": [
+                "35 → – 8 → ? → + 38 → ?"
+              ],
+              "answer": {
+                "values": [
+                  27,
+                  65
+                ]
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b22-luyen-tap-2-3",
+              "page": 86,
+              "prompt": "Con mèo nấp sau cánh cửa ghi phép tính có kết quả lớn nhất. Hỏi con mèo nấp sau cánh cửa nào?",
+              "exerciseType": "so-sanh",
+              "media": [
+                "cửa A ghi 40 – 7",
+                "cửa B ghi 53 – 9",
+                "cửa C ghi 50 – 4",
+                "dấu chân mèo"
+              ],
+              "answer": {
+                "choice": "C"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b22-luyen-tap-2-4-a",
+              "page": 86,
+              "prompt": "Ba ô tô đang che ba số là 10, 20 và 40. Hỏi mỗi ô tô đang che số nào?",
+              "exerciseType": "dien-so",
+              "media": [
+                "60 – ô tô đỏ = 50"
+              ],
+              "expression": "60 - ? = 50",
+              "answer": {
+                "number": 10
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b22-luyen-tap-2-4-b",
+              "page": 86,
+              "prompt": "Ba ô tô đang che ba số là 10, 20 và 40. Hỏi mỗi ô tô đang che số nào?",
+              "exerciseType": "dien-so",
+              "media": [
+                "ô tô vàng – ô tô tím = 20"
+              ],
+              "answer": {
+                "values": [
+                  40,
+                  20
+                ]
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b22-luyen-tap-2-5",
+              "page": 86,
+              "prompt": "Mai cân nặng 23 kg. Mi nhẹ hơn Mai 5 kg. Hỏi Mi cân nặng bao nhiêu ki-lô-gam?",
+              "exerciseType": "bai-toan-loi-van",
+              "media": [
+                "Mai đứng trên cân, Mi ghi chép"
+              ],
+              "expression": "23 - 5",
+              "answer": {
+                "number": 18
+              },
+              "readConfidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "toan2-t1-b22-luyen-tap-3",
+          "kind": "luyen-tap",
+          "pages": [
+            87,
+            88
+          ],
+          "items": [
+            {
+              "id": "toan2-t1-b22-luyen-tap-3-1-a",
+              "page": 87,
+              "prompt": "Số ? Số bị trừ | 57 | 70; Số trừ | 8 | 7; Hiệu | 49 | ?",
+              "exerciseType": "dien-so",
+              "media": [
+                "bảng Số bị trừ, Số trừ, Hiệu"
+              ],
+              "expression": "70 - 7",
+              "answer": {
+                "number": 63
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b22-luyen-tap-3-1-b",
+              "page": 87,
+              "prompt": "Số ? Số bị trừ | 25; Số trừ | 9; Hiệu | ?",
+              "exerciseType": "dien-so",
+              "expression": "25 - 9",
+              "answer": {
+                "number": 16
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b22-luyen-tap-3-1-c",
+              "page": 87,
+              "prompt": "Số ? Số bị trừ | 53; Số trừ | 4; Hiệu | ?",
+              "exerciseType": "dien-so",
+              "expression": "53 - 4",
+              "answer": {
+                "number": 49
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b22-luyen-tap-3-1-d",
+              "page": 87,
+              "prompt": "Số ? Số bị trừ | 60; Số trừ | 30; Hiệu | ?",
+              "exerciseType": "dien-so",
+              "expression": "60 - 30",
+              "answer": {
+                "number": 30
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b22-luyen-tap-3-2-a",
+              "page": 87,
+              "prompt": "Mỗi chú lùn sẽ ngồi lên chiếc ghế ghi phép tính có kết quả là số trên áo của mình. Tìm ghế cho các chú lùn. 47",
+              "exerciseType": "noi",
+              "media": [
+                "ghế ghi 31 – 8, 50 – 3, 82 – 7",
+                "chú lùn áo đỏ số 47"
+              ],
+              "answer": {
+                "text": "50 – 3"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b22-luyen-tap-3-2-b",
+              "page": 87,
+              "prompt": "Mỗi chú lùn sẽ ngồi lên chiếc ghế ghi phép tính có kết quả là số trên áo của mình. Tìm ghế cho các chú lùn. 23",
+              "exerciseType": "noi",
+              "media": [
+                "ghế ghi 31 – 8, 50 – 3, 82 – 7",
+                "chú lùn áo xanh lá số 23"
+              ],
+              "answer": {
+                "text": "31 – 8"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b22-luyen-tap-3-2-c",
+              "page": 87,
+              "prompt": "Mỗi chú lùn sẽ ngồi lên chiếc ghế ghi phép tính có kết quả là số trên áo của mình. Tìm ghế cho các chú lùn. 75",
+              "exerciseType": "noi",
+              "media": [
+                "ghế ghi 31 – 8, 50 – 3, 82 – 7",
+                "chú lùn áo vàng số 75"
+              ],
+              "answer": {
+                "text": "82 – 7"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b22-luyen-tap-3-3-a",
+              "page": 87,
+              "prompt": "Chọn kết quả đúng. a) 40 + 20 – 6 = ? A. 60 B. 54 C. 64",
+              "exerciseType": "chon-dap-an",
+              "expression": "40 + 20 - 6",
+              "answer": {
+                "choice": "B. 54"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b22-luyen-tap-3-3-b",
+              "page": 87,
+              "prompt": "Chọn kết quả đúng. b) 43 – 8 + 17 = ? A. 35 B. 62 C. 52",
+              "exerciseType": "chon-dap-an",
+              "expression": "43 - 8 + 17",
+              "answer": {
+                "choice": "C. 52"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b22-luyen-tap-3-4",
+              "page": 88,
+              "prompt": "Việt vẽ một bức tranh có 35 bông hoa. Mèo làm đổ mực vào bức tranh nên chỉ còn nhìn thấy 9 bông hoa. Hỏi có bao nhiêu bông hoa bị mực che khuất?",
+              "exerciseType": "bai-toan-loi-van",
+              "media": [
+                "bức tranh hoa bị mực tím đổ lên, còn thấy 9 bông hoa; mèo và bạn Việt"
+              ],
+              "expression": "35 - 9",
+              "answer": {
+                "number": 26
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b22-luyen-tap-3-5",
+              "page": 88,
+              "prompt": "Rô-bốt đi theo thứ tự các số là kết quả của các phép tính dưới đây. Rô-bốt sẽ đến được tàu hoả, ô tô hay máy bay?",
+              "exerciseType": "tro-choi",
+              "media": [
+                "dãy phép tính: 25 – 8 → 30 – 2 → 20 – 3 → 30 – 7 → 33 – 5",
+                "lưới số 3 hàng: hàng 1: 17, 28, 28, 34, 28 → tàu hoả; hàng 2: 23, 34, 17, 23, 34 → ô tô; hàng 3: 34, 17, 17, 23, 28 → máy bay",
+                "đường đúng: 17 (hàng 1) → 28 (hàng 1) → 17 (hàng 2) → 23 (hàng 3) → 28 (hàng 3) → máy bay"
+              ],
+              "answer": {
+                "text": "máy bay"
+              },
+              "readConfidence": "high"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "toan2-t1-b23",
+      "number": 23,
+      "title": "Bài 23. Phép trừ (có nhớ) số có hai chữ số cho số có hai chữ số",
+      "pages": [
+        89,
+        94
+      ],
+      "sections": [
+        {
+          "id": "toan2-t1-b23-kham-pha",
+          "kind": "kham-pha",
+          "pages": [
+            89,
+            89
+          ],
+          "items": []
+        },
+        {
+          "id": "toan2-t1-b23-hoat-dong",
+          "kind": "hoat-dong",
+          "pages": [
+            90,
+            90
+          ],
+          "items": [
+            {
+              "id": "toan2-t1-b23-hoat-dong-1-a",
+              "page": 90,
+              "prompt": "Tính. 72 – 19",
+              "exerciseType": "tinh",
+              "expression": "72 - 19",
+              "answer": {
+                "number": 53
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b23-hoat-dong-1-b",
+              "page": 90,
+              "prompt": "Tính. 60 – 28",
+              "exerciseType": "tinh",
+              "expression": "60 - 28",
+              "answer": {
+                "number": 32
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b23-hoat-dong-1-c",
+              "page": 90,
+              "prompt": "Tính. 93 – 46",
+              "exerciseType": "tinh",
+              "expression": "93 - 46",
+              "answer": {
+                "number": 47
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b23-hoat-dong-1-d",
+              "page": 90,
+              "prompt": "Tính. 41 – 32",
+              "exerciseType": "tinh",
+              "expression": "41 - 32",
+              "answer": {
+                "number": 9
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b23-hoat-dong-2-a",
+              "page": 90,
+              "prompt": "Đặt tính rồi tính. 63 – 36",
+              "exerciseType": "tinh",
+              "expression": "63 - 36",
+              "answer": {
+                "number": 27
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b23-hoat-dong-2-b",
+              "page": 90,
+              "prompt": "Đặt tính rồi tính. 72 – 27",
+              "exerciseType": "tinh",
+              "expression": "72 - 27",
+              "answer": {
+                "number": 45
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b23-hoat-dong-2-c",
+              "page": 90,
+              "prompt": "Đặt tính rồi tính. 54 – 16",
+              "exerciseType": "tinh",
+              "expression": "54 - 16",
+              "answer": {
+                "number": 38
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b23-hoat-dong-2-d",
+              "page": 90,
+              "prompt": "Đặt tính rồi tính. 80 – 43",
+              "exerciseType": "tinh",
+              "expression": "80 - 43",
+              "answer": {
+                "number": 37
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b23-hoat-dong-3",
+              "page": 90,
+              "prompt": "Trên cây khế có 90 quả. Chim thần đã ăn mất 24 quả. Hỏi trên cây còn lại bao nhiêu quả khế?",
+              "exerciseType": "bai-toan-loi-van",
+              "media": [
+                "chim thần đậu trên cây khế, người mang đôi quang gánh đứng dưới gốc"
+              ],
+              "expression": "90 - 24",
+              "answer": {
+                "number": 66
+              },
+              "readConfidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "toan2-t1-b23-luyen-tap",
+          "kind": "luyen-tap",
+          "pages": [
+            90,
+            91
+          ],
+          "items": [
+            {
+              "id": "toan2-t1-b23-luyen-tap-1-a",
+              "page": 90,
+              "prompt": "Đặt tính rồi tính. 35 – 28",
+              "exerciseType": "tinh",
+              "expression": "35 - 28",
+              "answer": {
+                "number": 7
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b23-luyen-tap-1-b",
+              "page": 90,
+              "prompt": "Đặt tính rồi tính. 53 – 34",
+              "exerciseType": "tinh",
+              "expression": "53 - 34",
+              "answer": {
+                "number": 19
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b23-luyen-tap-1-c",
+              "page": 90,
+              "prompt": "Đặt tính rồi tính. 80 – 27",
+              "exerciseType": "tinh",
+              "expression": "80 - 27",
+              "answer": {
+                "number": 53
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b23-luyen-tap-1-d",
+              "page": 90,
+              "prompt": "Đặt tính rồi tính. 90 – 52",
+              "exerciseType": "tinh",
+              "expression": "90 - 52",
+              "answer": {
+                "number": 38
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b23-luyen-tap-2-a",
+              "page": 90,
+              "prompt": "Bạn rô-bốt nào cầm bảng ghi phép tính đúng?",
+              "exerciseType": "chon-dap-an",
+              "media": [
+                "rô-bốt A cầm bảng 40 – 4 = 36",
+                "rô-bốt B cầm bảng 51 – 8 = 33",
+                "rô-bốt D cầm bảng 60 – 22 = 48",
+                "rô-bốt C cầm bảng 71 – 17 = 54"
+              ],
+              "answer": {
+                "choices": [
+                  "A",
+                  "C"
+                ]
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b23-luyen-tap-3-a",
+              "page": 91,
+              "prompt": "Rô-bốt A cân nặng 33 kg. Rô-bốt D nhẹ hơn rô-bốt A 16 kg. Hỏi rô-bốt D cân nặng bao nhiêu ki-lô-gam?",
+              "exerciseType": "bai-toan-loi-van",
+              "media": [
+                "rô-bốt A đứng trên cân chỉ 33 kg, rô-bốt D cầm bảng ghi"
+              ],
+              "expression": "33 - 16",
+              "answer": {
+                "number": 17
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b23-luyen-tap-4-a1",
+              "page": 91,
+              "prompt": ">; <; = ? a) 42 – 13 ? 30",
+              "exerciseType": "so-sanh",
+              "expression": "42 - 13 ? 30",
+              "answer": {
+                "text": "<"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b23-luyen-tap-4-a2",
+              "page": 91,
+              "prompt": ">; <; = ? a) 70 – 25 ? 45",
+              "exerciseType": "so-sanh",
+              "expression": "70 - 25 ? 45",
+              "answer": {
+                "text": "="
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b23-luyen-tap-4-b1",
+              "page": 91,
+              "prompt": ">; <; = ? b) 52 – 15 ? 60 – 15",
+              "exerciseType": "so-sanh",
+              "expression": "52 - 15 ? 60 - 15",
+              "answer": {
+                "text": "<"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b23-luyen-tap-4-b2",
+              "page": 91,
+              "prompt": ">; <; = ? b) 54 – 17 ? 45 – 17",
+              "exerciseType": "so-sanh",
+              "expression": "54 - 17 ? 45 - 17",
+              "answer": {
+                "text": ">"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b23-luyen-tap-5",
+              "page": 91,
+              "prompt": "Tại mỗi ngã rẽ, bạn nhím sẽ đi theo con đường ghi phép tính có kết quả lớn hơn. Bạn nhím sẽ đến chỗ món ăn nào?",
+              "exerciseType": "tro-choi",
+              "media": [
+                "nhím ở ngã rẽ đầu: đường trên 30 – 5, đường dưới 30 – 9",
+                "sau 30 – 5: đường 41 – 17 tới củ khoai lang, đường 35 – 17 tới bắp cải",
+                "sau 30 – 9: đường 50 – 35 tới cà rốt, đường 52 – 35 tới khoai tây"
+              ],
+              "answer": {
+                "text": "khoai lang"
+              },
+              "readConfidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "toan2-t1-b23-luyen-tap-2",
+          "kind": "luyen-tap",
+          "pages": [
+            91,
+            92
+          ],
+          "items": [
+            {
+              "id": "toan2-t1-b23-luyen-tap-2-1-a",
+              "page": 91,
+              "prompt": "Tính nhẩm. 100 – 40",
+              "exerciseType": "tinh",
+              "expression": "100 - 40",
+              "answer": {
+                "number": 60
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b23-luyen-tap-2-1-b",
+              "page": 91,
+              "prompt": "Tính nhẩm. 100 – 70",
+              "exerciseType": "tinh",
+              "expression": "100 - 70",
+              "answer": {
+                "number": 30
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b23-luyen-tap-2-1-c",
+              "page": 91,
+              "prompt": "Tính nhẩm. 100 – 90",
+              "exerciseType": "tinh",
+              "expression": "100 - 90",
+              "answer": {
+                "number": 10
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b23-luyen-tap-2-2",
+              "page": 91,
+              "prompt": "Bình xăng của một ô tô có 42 l xăng. Ô tô đã đi một quãng đường hết 15 l xăng. Hỏi bình xăng của ô tô còn lại bao nhiêu lít xăng?",
+              "exerciseType": "bai-toan-loi-van",
+              "expression": "42 - 15",
+              "answer": {
+                "number": 27
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b23-luyen-tap-2-3-a",
+              "page": 92,
+              "prompt": "a) Rô-bốt có thân dạng khối lập phương ghi phép tính có kết quả bằng bao nhiêu?",
+              "exerciseType": "tinh",
+              "media": [
+                "rô-bốt xanh thân khối lập phương ghi 46 – 28",
+                "rô-bốt vàng thân tròn ghi 50 – 14",
+                "rô-bốt cam thân khối hộp chữ nhật ghi 52 – 15"
+              ],
+              "expression": "46 - 28",
+              "answer": {
+                "number": 18
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b23-luyen-tap-2-3-b",
+              "page": 92,
+              "prompt": "b) Rô-bốt nào ghi phép tính có kết quả lớn nhất?",
+              "exerciseType": "so-sanh",
+              "media": [
+                "rô-bốt xanh ghi 46 – 28",
+                "rô-bốt vàng ghi 50 – 14",
+                "rô-bốt cam ghi 52 – 15"
+              ],
+              "answer": {
+                "text": "Rô-bốt ghi 52 – 15"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b23-luyen-tap-2-4-a",
+              "page": 92,
+              "prompt": "Tìm quần phù hợp với áo. 40 – 27",
+              "exerciseType": "noi",
+              "media": [
+                "mẫu vẽ sẵn: áo đỏ ghi 51 – 36 nối với quần đỏ ghi 15",
+                "áo vàng ghi 40 – 27",
+                "quần ghi 13, 14, 15"
+              ],
+              "expression": "40 - 27",
+              "answer": {
+                "number": 13
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b23-luyen-tap-2-4-b",
+              "page": 92,
+              "prompt": "Tìm quần phù hợp với áo. 32 – 18",
+              "exerciseType": "noi",
+              "media": [
+                "áo trắng ghi 32 – 18",
+                "quần ghi 13, 14, 15"
+              ],
+              "expression": "32 - 18",
+              "answer": {
+                "number": 14
+              },
+              "readConfidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "toan2-t1-b23-luyen-tap-3",
+          "kind": "luyen-tap",
+          "pages": [
+            92,
+            93
+          ],
+          "items": [
+            {
+              "id": "toan2-t1-b23-luyen-tap-3-1-a",
+              "page": 92,
+              "prompt": "Đặt tính rồi tính. 54 – 27",
+              "exerciseType": "tinh",
+              "expression": "54 - 27",
+              "answer": {
+                "number": 27
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b23-luyen-tap-3-1-b",
+              "page": 92,
+              "prompt": "Đặt tính rồi tính. 72 – 36",
+              "exerciseType": "tinh",
+              "expression": "72 - 36",
+              "answer": {
+                "number": 36
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b23-luyen-tap-3-1-c",
+              "page": 92,
+              "prompt": "Đặt tính rồi tính. 50 – 25",
+              "exerciseType": "tinh",
+              "expression": "50 - 25",
+              "answer": {
+                "number": 25
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b23-luyen-tap-3-1-d",
+              "page": 92,
+              "prompt": "Đặt tính rồi tính. 95 – 48",
+              "exerciseType": "tinh",
+              "expression": "95 - 48",
+              "answer": {
+                "number": 47
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b23-luyen-tap-3-2-a",
+              "page": 93,
+              "prompt": "Tìm chữ số thích hợp. 4? – 17 = 24",
+              "exerciseType": "dien-so",
+              "media": [
+                "phép trừ đặt tính: 4? – 17 = 24"
+              ],
+              "answer": {
+                "number": 1
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b23-luyen-tap-3-2-b",
+              "page": 93,
+              "prompt": "Tìm chữ số thích hợp. 83 – ?9 = 2?",
+              "exerciseType": "dien-so",
+              "media": [
+                "phép trừ đặt tính: 83 – ?9 = 2?"
+              ],
+              "answer": {
+                "values": [
+                  5,
+                  4
+                ]
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b23-luyen-tap-3-2-c",
+              "page": 93,
+              "prompt": "Tìm chữ số thích hợp. ?1 – 25 = 4?",
+              "exerciseType": "dien-so",
+              "media": [
+                "phép trừ đặt tính: ?1 – 25 = 4?"
+              ],
+              "answer": {
+                "values": [
+                  7,
+                  6
+                ]
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b23-luyen-tap-3-3",
+              "page": 93,
+              "prompt": "Toà nhà có 60 căn phòng. Có 35 căn phòng đã bật đèn. Hỏi còn bao nhiêu căn phòng chưa bật đèn?",
+              "exerciseType": "bai-toan-loi-van",
+              "expression": "60 - 35",
+              "answer": {
+                "number": 25
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b23-luyen-tap-3-4-a",
+              "page": 93,
+              "prompt": "Chọn kết quả đúng. a) 32 + 48 – 16 = ? A. 54 B. 64 C. 74",
+              "exerciseType": "chon-dap-an",
+              "expression": "32 + 48 - 16",
+              "answer": {
+                "choice": "B. 64"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b23-luyen-tap-3-4-b",
+              "page": 93,
+              "prompt": "Chọn kết quả đúng. b) 33 – 16 + 53 = ? A. 70 B. 60 C. 50",
+              "exerciseType": "chon-dap-an",
+              "expression": "33 - 16 + 53",
+              "answer": {
+                "choice": "A. 70"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b23-luyen-tap-3-5-a",
+              "page": 93,
+              "prompt": "Mỗi con mèo sẽ câu con cá ghi phép tính có kết quả là số ghi trên xô. Tìm cá cho mỗi con mèo. 45",
+              "exerciseType": "noi",
+              "media": [
+                "mèo thứ nhất, xô ghi 45",
+                "cá ghi 72 – 27, 81 – 16, 90 – 35"
+              ],
+              "answer": {
+                "text": "72 – 27"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b23-luyen-tap-3-5-b",
+              "page": 93,
+              "prompt": "Mỗi con mèo sẽ câu con cá ghi phép tính có kết quả là số ghi trên xô. Tìm cá cho mỗi con mèo. 55",
+              "exerciseType": "noi",
+              "media": [
+                "mèo thứ hai, xô ghi 55",
+                "cá ghi 72 – 27, 81 – 16, 90 – 35"
+              ],
+              "answer": {
+                "text": "90 – 35"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b23-luyen-tap-3-5-c",
+              "page": 93,
+              "prompt": "Mỗi con mèo sẽ câu con cá ghi phép tính có kết quả là số ghi trên xô. Tìm cá cho mỗi con mèo. 65",
+              "exerciseType": "noi",
+              "media": [
+                "mèo thứ ba, xô ghi 65",
+                "cá ghi 72 – 27, 81 – 16, 90 – 35"
+              ],
+              "answer": {
+                "text": "81 – 16"
+              },
+              "readConfidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "toan2-t1-b23-luyen-tap-4",
+          "kind": "luyen-tap",
+          "pages": [
+            93,
+            94
+          ],
+          "items": [
+            {
+              "id": "toan2-t1-b23-luyen-tap-4-1-a",
+              "page": 93,
+              "prompt": "Số ? Số bị trừ | 83 | 70; Số trừ | 38 | 25; Hiệu | 45 | ?",
+              "exerciseType": "dien-so",
+              "media": [
+                "bảng Số bị trừ, Số trừ, Hiệu"
+              ],
+              "expression": "70 - 25",
+              "answer": {
+                "number": 45
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b23-luyen-tap-4-1-b",
+              "page": 93,
+              "prompt": "Số ? Số bị trừ | 47; Số trừ | 28; Hiệu | ?",
+              "exerciseType": "dien-so",
+              "expression": "47 - 28",
+              "answer": {
+                "number": 19
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b23-luyen-tap-4-1-c",
+              "page": 93,
+              "prompt": "Số ? Số bị trừ | 80; Số trừ | 52; Hiệu | ?",
+              "exerciseType": "dien-so",
+              "expression": "80 - 52",
+              "answer": {
+                "number": 28
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b23-luyen-tap-4-1-d",
+              "page": 93,
+              "prompt": "Số ? Số bị trừ | 50; Số trừ | 30; Hiệu | ?",
+              "exerciseType": "dien-so",
+              "expression": "50 - 30",
+              "answer": {
+                "number": 20
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b23-luyen-tap-4-2",
+              "page": 94,
+              "prompt": "Biết: – Hộp quà đựng vở là hộp quà ghi phép tính có kết quả lớn nhất. – Hộp quà đựng bút là hộp quà ghi phép tính có kết quả bé nhất. Hỏi hộp quà nào đựng vở, hộp quà nào đựng bút?",
+              "exerciseType": "so-sanh",
+              "media": [
+                "hộp A ghi 30 – 14",
+                "hộp B ghi 40 – 20",
+                "hộp C ghi 52 – 31",
+                "hộp D ghi 34 – 16"
+              ],
+              "answer": {
+                "values": [
+                  "C",
+                  "A"
+                ]
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b23-luyen-tap-4-3",
+              "page": 94,
+              "prompt": "Chìa khoá mở được chiếc hòm ghi phép tính đúng nhưng không mở được chiếc hòm màu xanh. Chìa khoá mở được chiếc hòm nào?",
+              "exerciseType": "chon-dap-an",
+              "media": [
+                "hòm vàng A ghi 31 – 16 = 5",
+                "hòm đỏ B ghi 43 – 24 = 19",
+                "hòm xanh C ghi 55 – 39 = 16",
+                "chìa khoá"
+              ],
+              "answer": {
+                "choice": "B"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b23-luyen-tap-4-4",
+              "page": 94,
+              "prompt": "Một đàn gà có 32 con gồm gà trống và gà mái, trong đó có 26 con gà mái. Hỏi đàn gà có bao nhiêu con gà trống?",
+              "exerciseType": "bai-toan-loi-van",
+              "expression": "32 - 26",
+              "answer": {
+                "number": 6
+              },
+              "readConfidence": "high"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "toan2-t1-b24",
+      "number": 24,
+      "title": "Bài 24. Luyện tập chung",
+      "pages": [
+        95,
+        97
+      ],
+      "sections": [
+        {
+          "id": "toan2-t1-b24-luyen-tap",
+          "kind": "luyen-tap",
+          "pages": [
+            95,
+            96
+          ],
+          "items": [
+            {
+              "id": "toan2-t1-b24-luyen-tap-1-a",
+              "page": 95,
+              "prompt": "Đặt tính rồi tính. 34 – 7",
+              "exerciseType": "tinh",
+              "expression": "34 - 7",
+              "answer": {
+                "number": 27
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b24-luyen-tap-1-b",
+              "page": 95,
+              "prompt": "Đặt tính rồi tính. 45 – 8",
+              "exerciseType": "tinh",
+              "expression": "45 - 8",
+              "answer": {
+                "number": 37
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b24-luyen-tap-1-c",
+              "page": 95,
+              "prompt": "Đặt tính rồi tính. 60 – 12",
+              "exerciseType": "tinh",
+              "expression": "60 - 12",
+              "answer": {
+                "number": 48
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b24-luyen-tap-1-d",
+              "page": 95,
+              "prompt": "Đặt tính rồi tính. 51 – 19",
+              "exerciseType": "tinh",
+              "expression": "51 - 19",
+              "answer": {
+                "number": 32
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b24-luyen-tap-2-a",
+              "page": 95,
+              "prompt": "Số ?",
+              "exerciseType": "dien-so",
+              "media": [
+                "88 → + 4 → ? → – 7 → ? → – 26 → ?",
+                "ô cần điền: ô thứ nhất (sau + 4)"
+              ],
+              "answer": {
+                "number": 92
+              },
+              "readConfidence": "high",
+              "expression": "88 + 4"
+            },
+            {
+              "id": "toan2-t1-b24-luyen-tap-2-b",
+              "page": 95,
+              "prompt": "Số ?",
+              "exerciseType": "dien-so",
+              "media": [
+                "88 → + 4 → ? → – 7 → ? → – 26 → ?",
+                "ô cần điền: ô thứ hai (sau – 7)"
+              ],
+              "expression": "88 + 4 - 7",
+              "answer": {
+                "number": 85
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b24-luyen-tap-2-c",
+              "page": 95,
+              "prompt": "Số ?",
+              "exerciseType": "dien-so",
+              "media": [
+                "88 → + 4 → ? → – 7 → ? → – 26 → ?",
+                "ô cần điền: ô thứ ba (sau – 26)"
+              ],
+              "expression": "88 + 4 - 7 - 26",
+              "answer": {
+                "number": 59
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b24-luyen-tap-3",
+              "page": 95,
+              "prompt": "Cầu thang lên nhà sóc có tất cả 32 bậc thang. Sóc đã leo được 9 bậc thang. Hỏi sóc cần leo thêm bao nhiêu bậc thang nữa để vào nhà?",
+              "exerciseType": "bai-toan-loi-van",
+              "media": [
+                "thang dây lên nhà sóc trên cây, sóc đang leo"
+              ],
+              "expression": "32 - 9",
+              "answer": {
+                "number": 23
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b24-luyen-tap-4",
+              "page": 95,
+              "prompt": "Chọn câu trả lời đúng. Tớ có 20 cái nhãn vở. Tớ có 15 cái nhãn vở. Số nhãn vở của tớ nhiều hơn của Nam nhưng ít hơn của Mai. Kết quả của phép tính nào sau đây là số nhãn vở của Rô-bốt? A. 32 – 17 B. 62 – 42 C. 51 – 33",
+              "exerciseType": "chon-dap-an",
+              "media": [
+                "Mai nói: Tớ có 20 cái nhãn vở.",
+                "Nam nói: Tớ có 15 cái nhãn vở.",
+                "Rô-bốt nói: Số nhãn vở của tớ nhiều hơn của Nam nhưng ít hơn của Mai.",
+                "ba bạn ngồi quanh bàn cầm nhãn vở"
+              ],
+              "answer": {
+                "choice": "C. 51 – 33"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b24-luyen-tap-5",
+              "page": 96,
+              "prompt": "Ghép hai trong ba thẻ số bên được các số có hai chữ số. Số bé nhất trong các số đó là số nào? Số lớn nhất trong các số đó là số nào?",
+              "exerciseType": "dien-so",
+              "media": [
+                "ba thẻ số 3, 3, 8"
+              ],
+              "answer": {
+                "values": [
+                  33,
+                  83
+                ]
+              },
+              "readConfidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "toan2-t1-b24-luyen-tap-2",
+          "kind": "luyen-tap",
+          "pages": [
+            96,
+            97
+          ],
+          "items": [
+            {
+              "id": "toan2-t1-b24-luyen-tap-2-1-a",
+              "page": 96,
+              "prompt": "Tính. 25 + 65 – 30",
+              "exerciseType": "tinh",
+              "expression": "25 + 65 - 30",
+              "answer": {
+                "number": 60
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b24-luyen-tap-2-1-b",
+              "page": 96,
+              "prompt": "Tính. 90 – 40 – 26",
+              "exerciseType": "tinh",
+              "expression": "90 - 40 - 26",
+              "answer": {
+                "number": 24
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b24-luyen-tap-2-2",
+              "page": 96,
+              "prompt": "Chú ong bay về tổ theo đường hình sợi dây dưới đây, xuất phát từ mũi tên. Tính tổng các số trên ba bông hoa mà chú ong đã gặp.",
+              "exerciseType": "tinh",
+              "media": [
+                "đường bay của ong qua ba bông hoa ghi 5, 61, 8 rồi tới tổ"
+              ],
+              "expression": "5 + 61 + 8",
+              "answer": {
+                "number": 74
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b24-luyen-tap-2-3",
+              "page": 96,
+              "prompt": "Anh Khoai đốn được hai cây tre. Cây thứ nhất có 43 đốt, cây thứ hai có 50 đốt. Hỏi hai cây tre có tất cả bao nhiêu đốt tre?",
+              "exerciseType": "bai-toan-loi-van",
+              "media": [
+                "ông Bụt và anh Khoai bên hai cây tre trong rừng tre"
+              ],
+              "expression": "43 + 50",
+              "answer": {
+                "number": 93
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b24-luyen-tap-2-4-a",
+              "page": 97,
+              "prompt": "Tìm chữ số thích hợp. a) 60 – 9 > 5?",
+              "exerciseType": "dien-so",
+              "answer": {
+                "number": 0
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b24-luyen-tap-2-4-b",
+              "page": 97,
+              "prompt": "Tìm chữ số thích hợp. b) 42 – 4 < 3?",
+              "exerciseType": "dien-so",
+              "answer": {
+                "number": 9
+              },
+              "readConfidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "toan2-t1-b24-tro-choi",
+          "kind": "tro-choi",
+          "title": "CẶP TẤM THẺ ANH EM",
+          "pages": [
+            97,
+            97
+          ],
+          "items": [
+            {
+              "id": "toan2-t1-b24-tro-choi-1",
+              "page": 97,
+              "prompt": "Cách chơi: • Chơi theo nhóm. • Úp các tấm thẻ có các phép trừ dưới đây thành một nhóm theo thứ tự bất kì. • Úp các tấm thẻ có các số dưới đây thành một nhóm theo thứ tự bất kì. • Khi đến lượt, người chơi lấy ở mỗi nhóm một tấm thẻ. Nếu là cặp tấm thẻ anh em (cặp tấm thẻ ghi phép tính và kết quả của phép tính đó) thì người chơi được giữ lấy, nếu không thì xếp trả lại. • Trò chơi kết thúc khi có người lấy được 2 cặp tấm thẻ anh em.",
+              "exerciseType": "tro-choi",
+              "media": [
+                "nhóm thẻ phép trừ: 30 – 5, 100 – 20, 35 – 8, 40 – 12, 52 – 15",
+                "nhóm thẻ số: 25, 37, 27, 28, 80"
+              ],
+              "answer": {
+                "values": [
+                  "30 – 5 = 25",
+                  "100 – 20 = 80",
+                  "35 – 8 = 27",
+                  "40 – 12 = 28",
+                  "52 – 15 = 37"
+                ]
+              },
+              "readConfidence": "high"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pageItems": [
+    {
+      "page": 72,
+      "itemCount": 8
+    },
+    {
+      "page": 73,
+      "itemCount": 12
+    },
+    {
+      "page": 74,
+      "itemCount": 9
+    },
+    {
+      "page": 75,
+      "itemCount": 7
+    },
+    {
+      "page": 76,
+      "itemCount": 10
+    },
+    {
+      "page": 77,
+      "itemCount": 9
+    },
+    {
+      "page": 78,
+      "itemCount": 11
+    },
+    {
+      "page": 79,
+      "itemCount": 10
+    },
+    {
+      "page": 80,
+      "itemCount": 7
+    },
+    {
+      "page": 81,
+      "itemCount": 6
+    },
+    {
+      "page": 82,
+      "itemCount": 4
+    },
+    {
+      "page": 83,
+      "itemCount": 0
+    },
+    {
+      "page": 84,
+      "itemCount": 16
+    },
+    {
+      "page": 85,
+      "itemCount": 2
+    },
+    {
+      "page": 86,
+      "itemCount": 10
+    },
+    {
+      "page": 87,
+      "itemCount": 9
+    },
+    {
+      "page": 88,
+      "itemCount": 2
+    },
+    {
+      "page": 89,
+      "itemCount": 0
+    },
+    {
+      "page": 90,
+      "itemCount": 14
+    },
+    {
+      "page": 91,
+      "itemCount": 10
+    },
+    {
+      "page": 92,
+      "itemCount": 8
+    },
+    {
+      "page": 93,
+      "itemCount": 13
+    },
+    {
+      "page": 94,
+      "itemCount": 3
+    },
+    {
+      "page": 95,
+      "itemCount": 9
+    },
+    {
+      "page": 96,
+      "itemCount": 5
+    },
+    {
+      "page": 97,
+      "itemCount": 3
+    }
+  ]
+}

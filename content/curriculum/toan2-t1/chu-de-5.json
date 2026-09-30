@@ -1,0 +1,958 @@
+{
+  "book": "toan2-t1",
+  "id": "toan2-t1-chu-de-5",
+  "number": 5,
+  "title": "Làm quen với hình phẳng",
+  "lessons": [
+    {
+      "id": "toan2-t1-b25",
+      "number": 25,
+      "title": "Bài 25. Điểm, đoạn thẳng, đường thẳng, đường cong, ba điểm thẳng hàng",
+      "pages": [
+        98,
+        101
+      ],
+      "sections": [
+        {
+          "id": "toan2-t1-b25-kham-pha",
+          "kind": "kham-pha",
+          "title": "Điểm, đoạn thẳng",
+          "pages": [
+            98,
+            98
+          ],
+          "items": []
+        },
+        {
+          "id": "toan2-t1-b25-hoat-dong",
+          "kind": "hoat-dong",
+          "pages": [
+            98,
+            99
+          ],
+          "items": [
+            {
+              "id": "toan2-t1-b25-hoat-dong-1-a",
+              "page": 98,
+              "prompt": "a) Kể tên các điểm trong hình vẽ.",
+              "exerciseType": "nhan-dien-hinh",
+              "media": [
+                "đoạn thẳng AB, đoạn thẳng CD, điểm G, điểm H"
+              ],
+              "answer": {
+                "text": "A, B, C, D, G, H"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b25-hoat-dong-1-b",
+              "page": 98,
+              "prompt": "b) Kể tên các đoạn thẳng trong hình vẽ.",
+              "exerciseType": "nhan-dien-hinh",
+              "media": [
+                "đoạn thẳng AB, đoạn thẳng CD, điểm G, điểm H"
+              ],
+              "answer": {
+                "text": "AB, CD"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b25-hoat-dong-2-a",
+              "page": 99,
+              "prompt": "Kể tên các đoạn thẳng trong mỗi hình vẽ sau: a)",
+              "exerciseType": "nhan-dien-hinh",
+              "media": [
+                "hình tam giác có ba đỉnh M, N, P"
+              ],
+              "answer": {
+                "text": "MN, NP, MP"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b25-hoat-dong-2-b",
+              "page": 99,
+              "prompt": "Kể tên các đoạn thẳng trong mỗi hình vẽ sau: b)",
+              "exerciseType": "nhan-dien-hinh",
+              "media": [
+                "đường gấp khúc qua các điểm A, B, C, D"
+              ],
+              "answer": {
+                "text": "AB, BC, CD"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b25-hoat-dong-3-b1",
+              "page": 99,
+              "prompt": "Số ? Dùng thước đo độ dài đoạn thẳng (theo mẫu). a) Mẫu: Đoạn thẳng AB dài 5 cm. b) Đoạn thẳng MN dài ? cm.",
+              "exerciseType": "do-luong-thuc-hanh",
+              "media": [
+                "thước kẻ đặt dưới đoạn thẳng MN, vạch 0 trùng điểm M"
+              ],
+              "answer": {
+                "number": 7
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b25-hoat-dong-3-b2",
+              "page": 99,
+              "prompt": "Số ? Dùng thước đo độ dài đoạn thẳng (theo mẫu). b) Đoạn thẳng PQ dài ? cm.",
+              "exerciseType": "do-luong-thuc-hanh",
+              "media": [
+                "thước kẻ đặt dưới đoạn thẳng PQ, vạch 0 trùng điểm P"
+              ],
+              "answer": {
+                "number": 9
+              },
+              "readConfidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "toan2-t1-b25-kham-pha-2",
+          "kind": "kham-pha",
+          "title": "Đường thẳng, đường cong, ba điểm thẳng hàng",
+          "pages": [
+            100,
+            100
+          ],
+          "items": []
+        },
+        {
+          "id": "toan2-t1-b25-hoat-dong-2",
+          "kind": "hoat-dong",
+          "pages": [
+            100,
+            101
+          ],
+          "items": [
+            {
+              "id": "toan2-t1-b25-hoat-dong-2-1-a",
+              "page": 100,
+              "prompt": "a) Kể tên các đường thẳng trong hình vẽ.",
+              "exerciseType": "nhan-dien-hinh",
+              "media": [
+                "đường thẳng BC, đường thẳng DE, hai đường cong ghi x và y"
+              ],
+              "answer": {
+                "text": "BC, DE"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b25-hoat-dong-2-1-b",
+              "page": 100,
+              "prompt": "b) Kể tên các đường cong trong hình vẽ.",
+              "exerciseType": "nhan-dien-hinh",
+              "media": [
+                "đường thẳng BC, đường thẳng DE, hai đường cong ghi x và y"
+              ],
+              "answer": {
+                "text": "x, y"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b25-hoat-dong-2-2-a",
+              "page": 101,
+              "prompt": "Đ, S ? Trong hình vẽ trên: a) Ba điểm A, B, C thẳng hàng. ?",
+              "exerciseType": "chon-dap-an",
+              "media": [
+                "thước kẻ thứ nhất, ba điểm A, B, C nằm trên một đường thẳng dọc mép thước",
+                "thước kẻ thứ hai, hai điểm E, G nằm trên đường thẳng dọc mép thước, điểm D nằm ngoài",
+                "kiến cầm bút chì"
+              ],
+              "answer": {
+                "text": "Đ"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b25-hoat-dong-2-2-b",
+              "page": 101,
+              "prompt": "Đ, S ? Trong hình vẽ trên: b) Ba điểm D, E, G thẳng hàng. ?",
+              "exerciseType": "chon-dap-an",
+              "media": [
+                "thước kẻ thứ nhất, ba điểm A, B, C nằm trên một đường thẳng dọc mép thước",
+                "thước kẻ thứ hai, hai điểm E, G nằm trên đường thẳng dọc mép thước, điểm D nằm ngoài",
+                "kiến cầm bút chì"
+              ],
+              "answer": {
+                "text": "S"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b25-hoat-dong-2-3",
+              "page": 101,
+              "prompt": "Kể tên ba điểm thẳng hàng có trong hình vẽ.",
+              "exerciseType": "nhan-dien-hinh",
+              "media": [
+                "hình tam giác ABC, điểm M nằm trên cạnh BC, đoạn thẳng AM, điểm H nằm trên đoạn AM"
+              ],
+              "answer": {
+                "text": "A, H, M; B, M, C"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b25-hoat-dong-2-4",
+              "page": 101,
+              "prompt": "Tìm một đường thẳng, một đường cong và ba cây thẳng hàng có trong hình dưới đây.",
+              "exerciseType": "nhan-dien-hinh",
+              "media": [
+                "sân trường lát gạch, dãy nhà có cửa sổ",
+                "ba bạn nhỏ chơi nhảy dây, sợi dây cong",
+                "ba cây trồng thẳng hàng phía sau sân và ba cây phía trước bên trái"
+              ],
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "toan2-t1-b26",
+      "number": 26,
+      "title": "Bài 26. Đường gấp khúc. Hình tứ giác",
+      "pages": [
+        102,
+        105
+      ],
+      "sections": [
+        {
+          "id": "toan2-t1-b26-kham-pha",
+          "kind": "kham-pha",
+          "pages": [
+            102,
+            102
+          ],
+          "items": []
+        },
+        {
+          "id": "toan2-t1-b26-hoat-dong",
+          "kind": "hoat-dong",
+          "pages": [
+            103,
+            103
+          ],
+          "items": [
+            {
+              "id": "toan2-t1-b26-hoat-dong-1-a",
+              "page": 103,
+              "prompt": "Kể tên các đường gấp khúc trong mỗi hình vẽ sau: a)",
+              "exerciseType": "nhan-dien-hinh",
+              "media": [
+                "đường gấp khúc gồm hai đoạn thẳng AB, BC"
+              ],
+              "answer": {
+                "text": "ABC"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b26-hoat-dong-1-b",
+              "page": 103,
+              "prompt": "Kể tên các đường gấp khúc trong mỗi hình vẽ sau: b)",
+              "exerciseType": "nhan-dien-hinh",
+              "media": [
+                "đường gấp khúc gồm ba đoạn thẳng DE, EG, GH (DE nằm ngang, EG thẳng đứng, GH nằm ngang)"
+              ],
+              "answer": {
+                "text": "DEGH"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b26-hoat-dong-2",
+              "page": 103,
+              "prompt": "Có mấy hình tứ giác?",
+              "exerciseType": "dem",
+              "media": [
+                "hàng trên: hình tam giác, hình thoi, hình bình hành",
+                "hàng dưới: hình tứ giác có một cạnh xiên, hình tròn, hình thang (đều màu vàng)"
+              ],
+              "answer": {
+                "number": 4
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b26-hoat-dong-3",
+              "page": 103,
+              "prompt": "Tính độ dài đường gấp khúc ABCD. Bài giải Độ dài đường gấp khúc ABCD là: ? + ? + ? = ? (cm) Đáp số: ? cm.",
+              "exerciseType": "tinh",
+              "media": [
+                "đường gấp khúc ABCD: AB 5 cm, BC 4 cm, CD 4 cm"
+              ],
+              "expression": "5 + 4 + 4",
+              "answer": {
+                "number": 13
+              },
+              "readConfidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "toan2-t1-b26-luyen-tap",
+          "kind": "luyen-tap",
+          "pages": [
+            104,
+            105
+          ],
+          "items": [
+            {
+              "id": "toan2-t1-b26-luyen-tap-1-a",
+              "page": 104,
+              "prompt": "a) Tìm hai đồ vật có dạng đường gấp khúc.",
+              "exerciseType": "nhan-dien-hinh",
+              "media": [
+                "phòng học: bức tranh treo hình thoi, đồng hồ treo tường, hai giá sách treo tường hình gấp khúc (một giá đặt chậu hoa, một giá đặt sách), cửa sổ có rèm, bàn học, ghế xoay, hai tủ ngăn kéo"
+              ],
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b26-luyen-tap-1-b",
+              "page": 104,
+              "prompt": "b) Tìm hai đồ vật có dạng hình tứ giác.",
+              "exerciseType": "nhan-dien-hinh",
+              "media": [
+                "phòng học: bức tranh treo hình thoi, đồng hồ treo tường, hai giá sách treo tường hình gấp khúc (một giá đặt chậu hoa, một giá đặt sách), cửa sổ có rèm, bàn học, ghế xoay, hai tủ ngăn kéo"
+              ],
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b26-luyen-tap-2-a",
+              "page": 104,
+              "prompt": "Trong mỗi hình dưới đây có mấy hình tứ giác? a)",
+              "exerciseType": "dem",
+              "media": [
+                "thuyền buồm ghép từ hai hình tam giác (cánh buồm) và một hình thang (thân thuyền)"
+              ],
+              "answer": {
+                "number": 1
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b26-luyen-tap-2-b",
+              "page": 104,
+              "prompt": "Trong mỗi hình dưới đây có mấy hình tứ giác? b)",
+              "exerciseType": "dem",
+              "media": [
+                "xe tải ghép từ ba hình tứ giác (thùng trước, cabin, thùng sau) và bốn hình tròn (bánh xe)"
+              ],
+              "answer": {
+                "number": 3
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b26-luyen-tap-2-c",
+              "page": 104,
+              "prompt": "Trong mỗi hình dưới đây có mấy hình tứ giác? c)",
+              "exerciseType": "dem",
+              "media": [
+                "cái cây ghép từ một hình tam giác trên cùng, hai hình thang xếp chồng và hai hình tam giác ở gốc"
+              ],
+              "answer": {
+                "number": 2
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b26-luyen-tap-3-a",
+              "page": 105,
+              "prompt": "Rô-bốt, Việt và Mai chạy qua một bãi cỏ theo ba đường như hình vẽ. a) Đọc tên đường chạy của mỗi bạn.",
+              "exerciseType": "nhan-dien-hinh",
+              "media": [
+                "bãi cỏ giữa hai vạch đứt: Rô-bốt ở A chạy thẳng lên B; Việt ở C chạy theo C-D-E-G; Mai ở H chạy theo H-I-K"
+              ],
+              "answer": {
+                "text": "Rô-bốt: AB; Việt: CDEG; Mai: HIK"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b26-luyen-tap-3-b",
+              "page": 105,
+              "prompt": "Rô-bốt, Việt và Mai chạy qua một bãi cỏ theo ba đường như hình vẽ. b) Bạn nào chạy qua bãi cỏ theo đường gấp khúc?",
+              "exerciseType": "nhan-dien-hinh",
+              "media": [
+                "bãi cỏ giữa hai vạch đứt: Rô-bốt ở A chạy thẳng lên B; Việt ở C chạy theo C-D-E-G; Mai ở H chạy theo H-I-K"
+              ],
+              "answer": {
+                "text": "Việt, Mai"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b26-luyen-tap-3-c1",
+              "page": 105,
+              "prompt": "Rô-bốt, Việt và Mai chạy qua một bãi cỏ theo ba đường như hình vẽ. c) Đường chạy của bạn nào gồm hai đoạn thẳng?",
+              "exerciseType": "nhan-dien-hinh",
+              "media": [
+                "bãi cỏ giữa hai vạch đứt: Rô-bốt ở A chạy thẳng lên B; Việt ở C chạy theo C-D-E-G; Mai ở H chạy theo H-I-K"
+              ],
+              "answer": {
+                "text": "Mai"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b26-luyen-tap-3-c2",
+              "page": 105,
+              "prompt": "Rô-bốt, Việt và Mai chạy qua một bãi cỏ theo ba đường như hình vẽ. c) Đường chạy của bạn nào gồm ba đoạn thẳng?",
+              "exerciseType": "nhan-dien-hinh",
+              "media": [
+                "bãi cỏ giữa hai vạch đứt: Rô-bốt ở A chạy thẳng lên B; Việt ở C chạy theo C-D-E-G; Mai ở H chạy theo H-I-K"
+              ],
+              "answer": {
+                "text": "Việt"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b26-luyen-tap-4-a",
+              "page": 105,
+              "prompt": "Tính độ dài đường gấp khúc ABC và MNPQ. a)",
+              "exerciseType": "tinh",
+              "media": [
+                "đường gấp khúc ABC: AB 3 cm (thẳng đứng), BC 6 cm (nằm ngang)"
+              ],
+              "expression": "3 + 6",
+              "answer": {
+                "number": 9
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b26-luyen-tap-4-b",
+              "page": 105,
+              "prompt": "Tính độ dài đường gấp khúc ABC và MNPQ. b)",
+              "exerciseType": "tinh",
+              "media": [
+                "đường gấp khúc MNPQ: MN 4 cm, NP 4 cm, PQ 4 cm"
+              ],
+              "expression": "4 + 4 + 4",
+              "answer": {
+                "number": 12
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b26-luyen-tap-5",
+              "page": 105,
+              "prompt": "Đường gấp khúc nào dài hơn?",
+              "exerciseType": "so-sanh",
+              "media": [
+                "lưới ô vuông: đường gấp khúc màu hồng dài 1 + 2 + 3 = 6 cạnh ô",
+                "đường gấp khúc màu xanh dương dài 2 + 2 + 1 + 1 + 1 = 7 cạnh ô"
+              ],
+              "answer": {
+                "text": "Đường gấp khúc màu xanh"
+              },
+              "readConfidence": "high"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "toan2-t1-b27",
+      "number": 27,
+      "title": "Bài 27. Thực hành gấp, cắt, ghép, xếp hình. Vẽ đoạn thẳng",
+      "pages": [
+        106,
+        109
+      ],
+      "sections": [
+        {
+          "id": "toan2-t1-b27-hoat-dong",
+          "kind": "hoat-dong",
+          "title": "Thực hành gấp, cắt, ghép, xếp hình",
+          "pages": [
+            106,
+            107
+          ],
+          "items": [
+            {
+              "id": "toan2-t1-b27-hoat-dong-1",
+              "page": 106,
+              "prompt": "Dùng một tờ giấy hình chữ nhật, gấp rồi cắt thành một hình vuông và một hình chữ nhật (theo mẫu).",
+              "exerciseType": "ve-hinh",
+              "media": [
+                "mẫu: tờ giấy hình chữ nhật gấp chéo một góc thành hình tam giác, cắt phần thừa, được một hình vuông và một hình chữ nhật nhỏ"
+              ],
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b27-hoat-dong-2-a",
+              "page": 106,
+              "prompt": "Gấp rồi cắt một hình vuông thành bốn hình tam giác. Dùng bốn hình tam giác vừa cắt được để xếp thành mỗi hình sau: a)",
+              "exerciseType": "sap-xep",
+              "media": [
+                "hình xếp từ bốn tam giác: hình chữ nhật có hai tam giác nhô lên ở hai bên"
+              ],
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b27-hoat-dong-2-b",
+              "page": 106,
+              "prompt": "Gấp rồi cắt một hình vuông thành bốn hình tam giác. Dùng bốn hình tam giác vừa cắt được để xếp thành mỗi hình sau: b)",
+              "exerciseType": "sap-xep",
+              "media": [
+                "hình xếp từ bốn tam giác: đáy nằm ngang, bên trái có một mũi nhọn chĩa lên, bên phải có một khe hình tam giác"
+              ],
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b27-hoat-dong-2-c",
+              "page": 106,
+              "prompt": "Gấp rồi cắt một hình vuông thành bốn hình tam giác. Dùng bốn hình tam giác vừa cắt được để xếp thành mỗi hình sau: c)",
+              "exerciseType": "sap-xep",
+              "media": [
+                "hình xếp từ bốn tam giác: hình chiếc thuyền có mũi nhọn ở giữa"
+              ],
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b27-hoat-dong-2-d",
+              "page": 106,
+              "prompt": "Gấp rồi cắt một hình vuông thành bốn hình tam giác. Dùng bốn hình tam giác vừa cắt được để xếp thành mỗi hình sau: d)",
+              "exerciseType": "sap-xep",
+              "media": [
+                "hình xếp từ bốn tam giác: hình thuyền dẹt có mũi nhỏ ở giữa"
+              ],
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b27-hoat-dong-3-a",
+              "page": 107,
+              "prompt": "Cắt hình đã cho thành hai phần để ghép lại được một hình vuông (theo mẫu). a)",
+              "exerciseType": "ve-hinh",
+              "media": [
+                "mẫu: hình chữ nhật 1 × 4 ô cắt ở giữa, ghép thành hình vuông 2 × 2 ô",
+                "hình a) trên lưới ô vuông: hàng dưới 6 ô, trên đó 2 cột ô ở giữa cao thêm 2 ô"
+              ],
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b27-hoat-dong-3-b",
+              "page": 107,
+              "prompt": "Cắt hình đã cho thành hai phần để ghép lại được một hình vuông (theo mẫu). b)",
+              "exerciseType": "ve-hinh",
+              "media": [
+                "hình b) trên lưới ô vuông: hình có cạnh xiên bên trái phía trên và cạnh xiên bên phải phía dưới"
+              ],
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b27-hoat-dong-4-a",
+              "page": 107,
+              "prompt": "Hai hình nào ở cột bên trái ghép được hình ở cột bên phải? a)",
+              "exerciseType": "nhan-dien-hinh",
+              "media": [
+                "cột trái trên lưới ô: hình 1 tam giác nhỏ đáy 2 ô cao 2 ô; hình 2 tam giác hẹp đáy 1 ô cao 3 ô; hình 3 hình thang đáy dưới 6 ô, đáy trên 2 ô, cao 4 ô",
+                "cột phải: hình tam giác đáy 6 ô cao 6 ô"
+              ],
+              "answer": {
+                "text": "Hình 1 và hình 3"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b27-hoat-dong-4-b",
+              "page": 107,
+              "prompt": "Hai hình nào ở cột bên trái ghép được hình ở cột bên phải? b)",
+              "exerciseType": "nhan-dien-hinh",
+              "media": [
+                "cột trái trên lưới ô: hình 1 hình thang vuông cạnh trên 3 ô, cạnh dưới 6 ô, cao 6 ô; hình 2 tam giác vuông cạnh 2 ô và 6 ô; hình 3 tam giác vuông cạnh 6 ô và 3 ô",
+                "cột phải: hình vuông 6 × 6 ô"
+              ],
+              "answer": {
+                "text": "Hình 1 và hình 3"
+              },
+              "readConfidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "toan2-t1-b27-kham-pha",
+          "kind": "kham-pha",
+          "title": "Vẽ đoạn thẳng",
+          "pages": [
+            108,
+            108
+          ],
+          "items": []
+        },
+        {
+          "id": "toan2-t1-b27-hoat-dong-2",
+          "kind": "hoat-dong",
+          "pages": [
+            108,
+            109
+          ],
+          "items": [
+            {
+              "id": "toan2-t1-b27-hoat-dong-2-1-a",
+              "page": 108,
+              "prompt": "Vẽ đoạn thẳng: a) AB có độ dài 9 cm.",
+              "exerciseType": "ve-hinh",
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b27-hoat-dong-2-1-b",
+              "page": 108,
+              "prompt": "Vẽ đoạn thẳng: b) CD có độ dài 12 cm.",
+              "exerciseType": "ve-hinh",
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b27-hoat-dong-2-2-a",
+              "page": 109,
+              "prompt": "Đo độ dài mỗi đoạn thẳng dưới đây. AB",
+              "exerciseType": "do-luong-thuc-hanh",
+              "media": [
+                "đoạn thẳng AB gần nằm ngang"
+              ],
+              "answer": {
+                "number": 7
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b27-hoat-dong-2-2-b",
+              "page": 109,
+              "prompt": "Đo độ dài mỗi đoạn thẳng dưới đây. CD",
+              "exerciseType": "do-luong-thuc-hanh",
+              "media": [
+                "đoạn thẳng CD dài, gần nằm ngang"
+              ],
+              "answer": {
+                "number": 12
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b27-hoat-dong-2-2-c",
+              "page": 109,
+              "prompt": "Đo độ dài mỗi đoạn thẳng dưới đây. MN",
+              "exerciseType": "do-luong-thuc-hanh",
+              "media": [
+                "đoạn thẳng MN gần thẳng đứng"
+              ],
+              "answer": {
+                "number": 4
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b27-hoat-dong-2-3-a",
+              "page": 109,
+              "prompt": "Đo độ dài các đoạn thẳng: AB, CD, GH, MN, NP. Vẽ các đoạn thẳng có độ dài như vậy vào vở. AB",
+              "exerciseType": "do-luong-thuc-hanh",
+              "media": [
+                "hình ngôi nhà: tường trái AB, cửa ra vào cạnh CD, cửa sổ trên có cạnh GH, mái MN, tường phải NP, chân tường B-D-P"
+              ],
+              "answer": {
+                "number": 12
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b27-hoat-dong-2-3-b",
+              "page": 109,
+              "prompt": "Đo độ dài các đoạn thẳng: AB, CD, GH, MN, NP. Vẽ các đoạn thẳng có độ dài như vậy vào vở. CD",
+              "exerciseType": "do-luong-thuc-hanh",
+              "media": [
+                "hình ngôi nhà: tường trái AB, cửa ra vào cạnh CD, cửa sổ trên có cạnh GH, mái MN, tường phải NP, chân tường B-D-P"
+              ],
+              "answer": {
+                "number": 8
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b27-hoat-dong-2-3-c",
+              "page": 109,
+              "prompt": "Đo độ dài các đoạn thẳng: AB, CD, GH, MN, NP. Vẽ các đoạn thẳng có độ dài như vậy vào vở. GH",
+              "exerciseType": "do-luong-thuc-hanh",
+              "media": [
+                "hình ngôi nhà: tường trái AB, cửa ra vào cạnh CD, cửa sổ trên có cạnh GH, mái MN, tường phải NP, chân tường B-D-P"
+              ],
+              "answer": {
+                "number": 3
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b27-hoat-dong-2-3-d",
+              "page": 109,
+              "prompt": "Đo độ dài các đoạn thẳng: AB, CD, GH, MN, NP. Vẽ các đoạn thẳng có độ dài như vậy vào vở. MN",
+              "exerciseType": "do-luong-thuc-hanh",
+              "media": [
+                "hình ngôi nhà: tường trái AB, cửa ra vào cạnh CD, cửa sổ trên có cạnh GH, mái MN, tường phải NP, chân tường B-D-P"
+              ],
+              "answer": {
+                "number": 7
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b27-hoat-dong-2-3-e",
+              "page": 109,
+              "prompt": "Đo độ dài các đoạn thẳng: AB, CD, GH, MN, NP. Vẽ các đoạn thẳng có độ dài như vậy vào vở. NP",
+              "exerciseType": "do-luong-thuc-hanh",
+              "media": [
+                "hình ngôi nhà: tường trái AB, cửa ra vào cạnh CD, cửa sổ trên có cạnh GH, mái MN, tường phải NP, chân tường B-D-P"
+              ],
+              "answer": {
+                "number": 10
+              },
+              "readConfidence": "high"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "toan2-t1-b28",
+      "number": 28,
+      "title": "Bài 28. Luyện tập chung",
+      "pages": [
+        110,
+        111
+      ],
+      "sections": [
+        {
+          "id": "toan2-t1-b28-luyen-tap",
+          "kind": "luyen-tap",
+          "pages": [
+            110,
+            111
+          ],
+          "items": [
+            {
+              "id": "toan2-t1-b28-luyen-tap-1-a",
+              "page": 110,
+              "prompt": "Đ, S ? Trong hình vẽ trên có: a) Đoạn thẳng BC. ?",
+              "exerciseType": "chon-dap-an",
+              "media": [
+                "đoạn thẳng BC, điểm A, đường thẳng qua D và E, đường cong x, đường thẳng qua N và M, điểm P nằm ngoài đường thẳng MN"
+              ],
+              "answer": {
+                "text": "Đ"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b28-luyen-tap-1-b",
+              "page": 110,
+              "prompt": "Đ, S ? Trong hình vẽ trên có: b) Đường thẳng DE và đường thẳng MN. ?",
+              "exerciseType": "chon-dap-an",
+              "media": [
+                "đoạn thẳng BC, điểm A, đường thẳng qua D và E, đường cong x, đường thẳng qua N và M, điểm P nằm ngoài đường thẳng MN"
+              ],
+              "answer": {
+                "text": "Đ"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b28-luyen-tap-1-c",
+              "page": 110,
+              "prompt": "Đ, S ? Trong hình vẽ trên có: c) Ba điểm M, N, P thẳng hàng. ?",
+              "exerciseType": "chon-dap-an",
+              "media": [
+                "đoạn thẳng BC, điểm A, đường thẳng qua D và E, đường cong x, đường thẳng qua N và M, điểm P nằm ngoài đường thẳng MN"
+              ],
+              "answer": {
+                "text": "S"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b28-luyen-tap-1-d",
+              "page": 110,
+              "prompt": "Đ, S ? Trong hình vẽ trên có: d) Đường cong x. ?",
+              "exerciseType": "chon-dap-an",
+              "media": [
+                "đoạn thẳng BC, điểm A, đường thẳng qua D và E, đường cong x, đường thẳng qua N và M, điểm P nằm ngoài đường thẳng MN"
+              ],
+              "answer": {
+                "text": "Đ"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b28-luyen-tap-2",
+              "page": 110,
+              "prompt": "Cho ba điểm M, N, P thẳng hàng. Kể tên các đoạn thẳng trong hình vẽ sau.",
+              "exerciseType": "nhan-dien-hinh",
+              "media": [
+                "đoạn thẳng nằm ngang, điểm M ở đầu trái, N ở giữa, P ở đầu phải"
+              ],
+              "answer": {
+                "text": "MN, NP, MP"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b28-luyen-tap-3-a",
+              "page": 111,
+              "prompt": "Số ? a) Có ? hình tứ giác.",
+              "exerciseType": "dem",
+              "media": [
+                "hình năm cạnh chia bởi hai đoạn thẳng đi ra từ đỉnh dưới bên trái thành một tam giác ở giữa và hai hình tứ giác"
+              ],
+              "answer": {
+                "number": 2
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b28-luyen-tap-3-b",
+              "page": 111,
+              "prompt": "Số ? b) Có ? hình tứ giác.",
+              "exerciseType": "dem",
+              "media": [
+                "hình chữ nhật chia bởi một đoạn thẳng xiên từ cạnh trên xuống cạnh dưới thành hai hình tứ giác"
+              ],
+              "answer": {
+                "number": 3
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b28-luyen-tap-4",
+              "page": 111,
+              "prompt": "Kể tên các nhóm ba bạn đứng thẳng hàng trong hình vẽ dưới đây.",
+              "exerciseType": "nhan-dien-hinh",
+              "media": [
+                "sân lưới ô xiên: Nam, Việt đứng trên một đường dọc với Mi; Rô-bốt, Mi, Mai đứng trên một hàng ngang"
+              ],
+              "answer": {
+                "text": "Nam, Việt, Mi; Rô-bốt, Mi, Mai"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "toan2-t1-b28-luyen-tap-5",
+              "page": 111,
+              "prompt": "Hôm nay, chú ốc sên bò từ trường học đến sân bóng, rồi ghé qua thư viện và trở về nhà. Tính độ dài quãng đường mà ốc sên đã bò.",
+              "exerciseType": "bai-toan-loi-van",
+              "media": [
+                "đường gấp khúc: TRƯỜNG HỌC – SÂN BÓNG 10 cm, SÂN BÓNG – THƯ VIỆN 30 cm, THƯ VIỆN – NHÀ 20 cm",
+                "ốc sên ở gần trường học"
+              ],
+              "expression": "10 + 30 + 20",
+              "answer": {
+                "number": 60
+              },
+              "readConfidence": "high"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pageItems": [
+    {
+      "page": 98,
+      "itemCount": 2
+    },
+    {
+      "page": 99,
+      "itemCount": 4
+    },
+    {
+      "page": 100,
+      "itemCount": 2
+    },
+    {
+      "page": 101,
+      "itemCount": 4
+    },
+    {
+      "page": 102,
+      "itemCount": 0
+    },
+    {
+      "page": 103,
+      "itemCount": 4
+    },
+    {
+      "page": 104,
+      "itemCount": 5
+    },
+    {
+      "page": 105,
+      "itemCount": 7
+    },
+    {
+      "page": 106,
+      "itemCount": 5
+    },
+    {
+      "page": 107,
+      "itemCount": 4
+    },
+    {
+      "page": 108,
+      "itemCount": 2
+    },
+    {
+      "page": 109,
+      "itemCount": 8
+    },
+    {
+      "page": 110,
+      "itemCount": 5
+    },
+    {
+      "page": 111,
+      "itemCount": 4
+    }
+  ]
+}
