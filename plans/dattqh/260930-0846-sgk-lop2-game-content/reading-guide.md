@@ -30,10 +30,10 @@ Lượt 1 để `pageItems: []`; lượt 2 điền.
 - Section có thể không có item (Khám phá chỉ là tranh + phép tính mẫu): `items: []` nhưng vẫn phải có để trang được tính là đã đọc.
 
 ## Item (đơn vị đo phủ)
-- Mỗi bài tập / câu hỏi / yêu cầu in trong sách là một item. Bài có ý a, b, c → mỗi ý một item. Bài có nhiều phép tính/ô trống trả lời riêng (không có chữ a, b) → mỗi phép tính/ô một item, gắn hậu tố `-a`, `-b`… theo thứ tự đọc (trái→phải, trên→dưới). **Bỏ dòng mẫu** (dòng "theo mẫu" đã có sẵn đáp án) nhưng ghi mẫu vào `prompt` của item đầu tiên.
+- Mỗi bài tập / câu hỏi / yêu cầu in trong sách là một item. Bài có ý a, b, c → mỗi ý một item. Bài có nhiều phép tính/ô trống trả lời riêng (không có chữ a, b) → mỗi phép tính/ô một item, gắn hậu tố `-a`, `-b`… theo thứ tự đọc (trái→phải, trên→dưới). **Bỏ dòng mẫu** (dòng "theo mẫu" đã có sẵn đáp án); mẫu chỉ là hình/đường nối vẽ sẵn thì mô tả trong `media` của item đầu tiên. Dòng mẫu IN BẰNG CHỮ (chữ, số in trên trang) thì chép nguyên văn vào `prompt`.
 - `id` = `<section id>-<số bài>[-<ý>]`. Trong `doc` TV: câu khởi động `-kd` (nhiều câu thì `-kd1`, `-kd2`), câu hỏi đọc hiểu `-1`, `-2`… (khung dấu ?), luyện tập theo văn bản (khung kính lúp) `-lt1`, `-lt2`…; ý a/b thì thêm `-a`, `-b` (vd `tv2-t1-b01-doc-lt2-a`).
 - `page`: trang in có item đó.
-- `prompt`: **nguyên văn** câu lệnh; nếu là ý con thì ghép câu lệnh chung + ý (vd `"Thực hiện các yêu cầu sau: a. Nói lời chào tạm biệt mẹ trước khi đến trường."`). Lựa chọn trắc nghiệm ghi vào prompt đúng như in (`"… a. vùng dậy; b. muốn đến sớm nhất lớp; c. chuẩn bị rất nhanh; d. thấy mình lớn bổng lên"`).
+- `prompt`: **chỉ chữ in trên trang**, nguyên văn — không thêm lời giải thích, ngoặc chú thích, "(Mẫu: …)" tự viết, hậu tố làm rõ. Mọi mô tả của người đọc (mẫu vẽ, ai nói câu nào, ô chơi là hình gì, câu hỏi này ứng với ý nào) đặt trong `media`. Game hiện `prompt` như chữ sách, nên chữ tự thêm sẽ thành "chữ sách" giả; nếu là ý con thì ghép câu lệnh chung + ý (vd `"Thực hiện các yêu cầu sau: a. Nói lời chào tạm biệt mẹ trước khi đến trường."`). Lựa chọn trắc nghiệm ghi vào prompt đúng như in (`"… a. vùng dậy; b. muốn đến sớm nhất lớp; c. chuẩn bị rất nhanh; d. thấy mình lớn bổng lên"`).
 - `exerciseType` (một trong): Toán `tinh`, `dien-so`, `so-sanh`, `dem`, `bai-toan-loi-van`, `do-luong-thuc-hanh`, `ve-hinh`, `nhan-dien-hinh`, `xem-dong-ho`, `xem-lich`; TV `khoi-dong`, `doc-thanh-tieng`, `doc-hieu`, `tim-tu`, `dien-chu`, `xep-tu`, `dat-cau`, `dau-cau`, `ke-chuyen-tranh`, `noi-ve-ban-than`, `viet-chu`, `nghe-viet`, `viet-doan`; chung `chon-dap-an`, `noi`, `sap-xep`, `tro-choi`. Không vừa loại nào → chọn loại gần nhất và ghi rõ trong báo cáo cuối.
 - `media`: mô tả hình cần cho bài, theo thứ tự đọc, mỗi hình một chuỗi ngắn, cụ thể về số lượng/giá trị (vd `"3 bó que tính chục và 4 que rời"`, `"đồng hồ kim chỉ 3 giờ"`, `"tranh 1: bạn nhỏ chào mẹ ở cổng trường"`). Tranh kể chuyện: mỗi tranh một chuỗi, đúng thứ tự số tranh.
 - `expression` (chỉ khi có phép tính rõ ràng, số nguyên, chỉ `+` `-`):
@@ -47,10 +47,10 @@ Lượt 1 để `pageItems: []`; lượt 2 điền.
 ## Ví dụ (trang in 6, Toán Bài 1)
 ```json
 { "id": "toan2-t1-b01-luyen-tap", "kind": "luyen-tap", "pages": [6, 7], "items": [
-  { "id": "toan2-t1-b01-luyen-tap-1-a", "page": 6, "prompt": "Hoàn thành bảng sau (theo mẫu). Mẫu: 3 chục, 4 đơn vị, viết số 34, đọc số Ba mươi tư. Dòng: ? chục, ? đơn vị, viết số ?, đọc số Năm mươi mốt.",
-    "exerciseType": "dien-so", "media": ["5 bó que tính chục và 1 que rời"], "answer": { "values": [5, 1, 51] }, "readConfidence": "high" },
-  { "id": "toan2-t1-b01-luyen-tap-2-a", "page": 6, "prompt": "Tìm cà rốt cho thỏ. (Mẫu: 5 chục và 4 đơn vị nối với 54.) 7 chục và 0 đơn vị", "exerciseType": "noi",
-    "media": ["thỏ mang bảng 7 chục và 0 đơn vị", "cà rốt 54, 48, 66, 70"], "answer": { "number": 70 }, "readConfidence": "high" }
+  { "id": "toan2-t1-b01-luyen-tap-1-a", "page": 6, "prompt": "Hoàn thành bảng sau (theo mẫu). Chục | Đơn vị | Viết số | Đọc số: 3 | 4 | 34 | Ba mươi tư; ? | ? | ? | Năm mươi mốt",
+    "exerciseType": "dien-so", "media": ["dòng mẫu: 3 bó que tính chục và 4 que rời", "dòng hỏi: 5 bó que tính chục và 1 que rời"], "answer": { "values": [5, 1, 51] }, "readConfidence": "high" },
+  { "id": "toan2-t1-b01-luyen-tap-2-a", "page": 6, "prompt": "Tìm cà rốt cho thỏ. 7 chục và 0 đơn vị", "exerciseType": "noi",
+    "media": ["mẫu vẽ sẵn: thỏ 5 chục và 4 đơn vị nối với cà rốt 54", "thỏ mang bảng 7 chục và 0 đơn vị", "cà rốt 54, 48, 66, 70"], "answer": { "number": 70 }, "readConfidence": "high" }
 ]}
 ```
 (Chỉ minh hoạ định dạng, chưa đủ item của trang.)
