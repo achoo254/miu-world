@@ -37,3 +37,8 @@ VS phase 5 (regions.json, màn khu vực/chương theo D6), VS phase 6 (entities
 
 ## Risk
 - Map rừng nặng khi thêm 18 chương: chỉ hiện entity chương đang chơi; đo draw call.
+
+## Đã làm trước (nghiệm thu dẫn đường, 2026-09-30)
+- `chapter?: number` cho interactable và prop trong `packages/voxel/src/world-entities.ts`, hàm `entitiesForChapter`; `game.ts` chỉ dựng entity không gắn chương hoặc thuộc chương của quest đang chơi (chương lấy từ `play-screen.tsx`). Còn lại cho phase này: lọc tương tác ở `game-store.ts` nếu cần, map Trường học, chương rừng 3–19.
+- Tạm đặt target của `tv2-t01-b01` (Sâu Xanh, bảng gỗ lớp Hai ở cổng rừng) và `tv2-t01-b02` (Voi Bảo, cây lịch lá, ba tờ lịch, bảng chữ cái, hốc cây ở phía bắc suối) lên map rừng, gắn `chapter: 2`, chỉ ở chỗ đất trống nên `chunks.bin` không đổi (`chapter2Preview` trong `tools/world/generate-forest-map.ts`). Khi dựng chương rừng thật thì dời vào `tools/world/chapters/`.
+
