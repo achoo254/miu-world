@@ -1,7 +1,7 @@
 ---
 phase: 8
 title: "UI cơ chế mới"
-status: pending
+status: completed
 priority: P1
 effort: "L"
 dependencies: [2]

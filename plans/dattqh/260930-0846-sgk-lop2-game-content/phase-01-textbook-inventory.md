@@ -1,7 +1,7 @@
 ---
 phase: 1
 title: "Kiểm kê SGK thành dữ liệu"
-status: in-progress
+status: completed
 priority: P1
 effort: "L"
 dependencies: []

@@ -1,7 +1,7 @@
 ---
 phase: 5
 title: "Kịch bản Toán — 7 chủ đề"
-status: pending
+status: in-progress
 priority: P1
 effort: "XL"
 dependencies: [3]
