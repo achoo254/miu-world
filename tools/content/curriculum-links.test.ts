@@ -7,6 +7,8 @@ import { percentCovered, sumGaps } from './content-gaps';
 import { checkCurriculumLinks, normaliseWording } from './curriculum-links';
 
 const support = { guide: ['Đọc kĩ.'], hint: 'Thử lại.', answer: { text: 'x', explanation: 'y' } };
+/** Distinct feedback lines per step (textbook quests need them and never reuse a line). */
+const feedback = (step: string) => ({ right: [1, 2, 3].map((n) => `${step} đúng ${n}`), wrong: [1, 2, 3].map((n) => `${step} sai ${n}`) });
 
 /** One Tiếng Việt lesson: a reading passage with one question, a compare-numbers item and a handwriting item. */
 function books(): LoadedBook[] {
@@ -59,6 +61,7 @@ const read = {
   skill: 'doc-hieu',
   answer: { choice: 'me' },
   support,
+  feedback: feedback('read'),
   curriculumRef: ['tv2-t1-b01-doc-1'],
 };
 const fill = {
@@ -73,6 +76,7 @@ const fill = {
   skill: 'so-sanh-so',
   answer: { fills: { b1: 'lon' } },
   support,
+  feedback: feedback('fill'),
   curriculumRef: ['tv2-t1-b01-doc-2'],
 };
 const sort = {
@@ -86,6 +90,7 @@ const sort = {
   skill: 'so-sanh-so',
   answer: { order: ['a', 'b'] },
   support,
+  feedback: feedback('sort'),
 };
 const worksheet = { id: 'write', title: 'Viết', kind: 'worksheet', trigger: 'auto', lessonId: 'tv2-t1-b01', text: 'Viết vào phiếu.', curriculumRef: ['tv2-t1-b01-viet-chu-hoa-1'] };
 
@@ -100,6 +105,7 @@ const pick = {
   skill: 'so-sanh-so',
   answer: { choices: ['c'] },
   support,
+  feedback: feedback('pick'),
 };
 const bookText = { 'bai-doc': { title: 'Tôi là học sinh lớp 2', author: 'Văn Giá', body: 'Ngày khai trường đã đến.\n\nTôi chào mẹ.', section: 'tv2-t1-b01-doc' } };
 
@@ -136,7 +142,7 @@ describe('curriculum links', () => {
   });
 
   it('does not count a step whose mechanic does not fit the exercise', () => {
-    const wrong = { ...sort, id: 'cmp', curriculumRef: ['tv2-t1-b01-doc-2'], prompt: 'Điền dấu: 47 ? 38 + 5' };
+    const wrong = { ...sort, id: 'cmp', curriculumRef: ['tv2-t1-b01-doc-2'], prompt: 'Điền dấu: 47 ? 38 + 5', feedback: feedback('cmp') };
     expect(checkCurriculumLinks(books(), [quest([read, wrong])]).lessons[0]?.missing).toContain('tv2-t1-b01-doc-2');
   });
 
@@ -179,6 +185,7 @@ describe('normaliseWording', () => {
   it('only evens out spacing and blank marks', () => {
     expect(normaliseWording('47 {{b1}}  38\n+ 5')).toBe('47 ? 38 + 5');
     expect(normaliseWording('Điền c … k')).toBe('Điền c ? k');
+    expect(normaliseWording('■ụ ◻ □')).toBe('?ụ ? ?');
     expect(normaliseWording('Tôi chào mẹ.')).not.toBe(normaliseWording('Toi chao me.'));
   });
 });

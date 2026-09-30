@@ -12,15 +12,26 @@ export interface StepKey {
   stepId: string;
 }
 
-/** Adds one to a per-step counter (an atomic upsert, safe under concurrent calls). */
-export async function countAttempt(db: Db | Tx, key: StepKey, counter: AttemptCounter): Promise<void> {
-  await db
+/** Adds one to a per-step counter (an atomic upsert, safe under concurrent calls); returns the new value. */
+export async function countAttempt(db: Db | Tx, key: StepKey, counter: AttemptCounter): Promise<number> {
+  const [row] = await db
     .insert(stepAttempts)
     .values({ ...key, [counter]: 1 })
     .onConflictDoUpdate({
       target: [stepAttempts.childId, stepAttempts.questId, stepAttempts.stepId],
       set: { [counter]: sql`${stepAttempts[counter]} + 1` },
-    });
+    })
+    .returning({ value: stepAttempts[counter] });
+  return row?.value ?? 1;
+}
+
+/** Wrong answers given so far on one step. */
+export async function wrongAnswers(db: Db | Tx, key: StepKey): Promise<number> {
+  const [row] = await db
+    .select({ wrongCount: stepAttempts.wrongCount })
+    .from(stepAttempts)
+    .where(and(eq(stepAttempts.childId, key.childId), eq(stepAttempts.questId, key.questId), eq(stepAttempts.stepId, key.stepId)));
+  return row?.wrongCount ?? 0;
 }
 
 /** Drops a quest's counters once its score is stored: they have no use after that. */

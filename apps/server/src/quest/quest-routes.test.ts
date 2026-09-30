@@ -389,6 +389,21 @@ describe('textbook mechanics over the API', () => {
     }
   });
 
+  it('answers with a new feedback line on every try, never the previous one', async () => {
+    const { agent } = await playingChild();
+    const moves = solution(sgk);
+    const upTo = moves.findIndex(([id]) => id === 'fill');
+    for (const [stepId, body] of moves.slice(0, upTo)) await step(agent, 'quest-sgk', stepId, body).expect(200);
+    const lines: string[] = [];
+    for (let i = 0; i < 4; i += 1) lines.push((await step(agent, 'quest-sgk', 'fill', { answer: { fills: { b1: 'be' } } }).expect(200)).body.feedback);
+    expect(lines).toEqual(['Nhìn lại hai số nhé.', 'Số nào nhiều chục hơn?', 'Gần đúng rồi, thử dấu khác xem.', 'Nhìn lại hai số nhé.']);
+    lines.forEach((line, i) => expect(line).not.toBe(lines[i - 1]));
+    const right = await step(agent, 'quest-sgk', 'fill', { answer: { fills: { b1: 'lon' } } }).expect(200);
+    expect(right.body).toMatchObject({ correct: true, feedback: 'Tuyệt, đúng dấu rồi!' });
+    const noLines = await step(agent, 'quest-sgk', 'pick-even', { answer: { choices: ['p1', 'p3'] } }).expect(200);
+    expect(noLines.body.feedback).toBeNull();
+  });
+
   it('rejects oversized or malformed answers before grading', async () => {
     const { agent } = await playingChild();
     await step(agent, 'quest-sgk', 'hello').expect(200);
@@ -402,7 +417,7 @@ describe('textbook mechanics over the API', () => {
     const { agent } = await playingChild();
     const res = await agent.get('/api/quests/quest-sgk').expect(200);
     expect(res.body.quest.texts).toEqual({ 'bai-doc': { title: 'Bài đọc thử', author: 'Tác giả thử', body: 'Ngày khai trường đã đến.\n\nTôi chào mẹ.' } });
-    expect(res.text).not.toMatch(/"(answer|support|assignment|fills|edges|curriculumRef)"/);
+    expect(res.text).not.toMatch(/"(answer|support|assignment|fills|edges|curriculumRef|feedback)"/);
   });
 });
 

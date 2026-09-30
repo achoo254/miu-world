@@ -82,6 +82,8 @@ export type QuestCompletion = z.infer<typeof QuestCompletion>;
 export const StepCompleteResponse = z.object({
   /** False when a learning step got a wrong answer: nothing advanced, try again as often as needed. */
   correct: z.boolean(),
+  /** A character's line for this answer, never the same as the previous try (null when the step has none). */
+  feedback: z.string().nullable(),
   quest: QuestProgressDto,
   /** Reward paid by this step (only the last step pays); on a repeat, the reward recorded the first time. */
   reward: GrantedReward.nullable(),

@@ -45,7 +45,11 @@ describe('content catalogue', () => {
 
   it('validates drafts but never loads them', () => {
     const sgk = JSON.parse(readFileSync(new URL('../../test/fixtures/quests/quest-sgk.json', import.meta.url), 'utf8')) as Record<string, unknown>;
-    const draft = { ...sgk, id: 'tv2-t01-b01', status: 'draft', unlock: ['tv2-t01-b02'] };
+    // Textbook quests need feedback lines on every learning step, none reused.
+    const steps = (sgk.steps as Array<Record<string, unknown>>).map((s) =>
+      'support' in s ? { ...s, feedback: { right: [1, 2, 3].map((n) => `${String(s.id)} ${n}`), wrong: [4, 5, 6].map((n) => `${String(s.id)} ${n}`) } } : s,
+    );
+    const draft = { ...sgk, id: 'tv2-t01-b01', status: 'draft', unlock: ['tv2-t01-b02'], steps };
     const loaded = loadQuests(questDir([{ ...base, id: 'a' }, draft]), new Set([...skills, 'phep-cong']));
     expect([...loaded.quests.keys()]).toEqual(['a']);
     expect(loaded.warnings).toEqual(['draft quest tv2-t01-b01 unlocks tv2-t01-b02, not written yet']);

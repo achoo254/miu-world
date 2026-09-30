@@ -167,7 +167,14 @@ const speakShape = {
 /** Writing happens on a printed worksheet outside the game; the step only points at it. */
 const worksheetShape = { ...stepBase, kind: z.literal('worksheet'), lessonId: ContentId, text: Text };
 
-const secret = <A extends z.ZodType>(answer: A) => ({ answer, support: LearningSupport });
+/**
+ * What a character says after an answer. The server rotates through the lines by attempt, so a child
+ * retrying never hears the same line twice in a row (content must never feel repeated).
+ */
+export const StepFeedback = z.strictObject({ right: z.array(Text).min(3), wrong: z.array(Text).min(3) });
+export type StepFeedback = z.infer<typeof StepFeedback>;
+
+const secret = <A extends z.ZodType>(answer: A) => ({ answer, support: LearningSupport, feedback: StepFeedback.optional() });
 
 /** Step as the client sees it: parsing drops the answer and the support layers. */
 export const QuestStepPublic = z.discriminatedUnion('kind', [
@@ -421,7 +428,14 @@ function questIssues(q: { id: string; phases: Record<(typeof QUEST_PHASES)[numbe
     else previous = index;
   }
   for (const step of q.steps) for (const message of stepIssues(step, q.texts)) issues.push(`step ${step.id}: ${message}`);
+  const feedbackLines = q.steps.flatMap((s) => ('feedback' in s && s.feedback ? [...s.feedback.right, ...s.feedback.wrong] : []));
+  const seen = new Set<string>();
+  for (const line of feedbackLines) {
+    if (seen.has(line)) issues.push(`feedback line "${line}" is used twice in the quest`);
+    seen.add(line);
+  }
   if (isTextbookQuest(q.id)) {
+    for (const step of q.steps) if ('support' in step && !step.feedback) issues.push(`step ${step.id}: a textbook quest step needs feedback lines`);
     const interactive = new Set(q.steps.map(mechanicOf).filter((m) => m !== null && INTERACTIVE_MECHANICS.has(m)));
     if (interactive.size < 2) {
       issues.push('a textbook quest needs at least two different interactive challenges (classify, fill-blank, multi-select, clock, calendar, connect, sort, drag-drop)');

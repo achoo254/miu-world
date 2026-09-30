@@ -1,6 +1,6 @@
 import { and, asc, eq, gt } from 'drizzle-orm';
 import { Router, type Request } from 'express';
-import { ContentId, type LearningSupport } from '@miu/schema/content';
+import { ContentId, type LearningSupport, type QuestStep } from '@miu/schema/content';
 import {
   InventoryResponse,
   QuestListResponse,
@@ -22,7 +22,7 @@ import { ipKey, limiter } from '../rate-limit';
 import { progressSummary, questSource, recordedReward } from '../reward/reward-ledger';
 import { completedQuestIds, isUnlocked, playableQuest, progressDto, questState } from './quest-access';
 import { finishQuest } from './quest-completion';
-import { countAttempt } from './step-attempts';
+import { countAttempt, wrongAnswers } from './step-attempts';
 
 export interface QuestRouteDeps {
   db: Db;
@@ -54,6 +54,15 @@ function supportPayload(support: LearningSupport, layer: SupportLayer): SupportR
     case 'answer':
       return { layer, text: support.answer.text, explanation: support.answer.explanation };
   }
+}
+
+/**
+ * The step's line for this attempt: the n-th wrong answer hears the n-th wrong line, a right answer after
+ * n mistakes hears the n-th right line, cycling, so two tries in a row never get the same line.
+ */
+function feedbackLine(step: QuestStep | undefined, kind: 'right' | 'wrong', attempt: number): string | null {
+  const lines = step && isAnswerable(step) ? step.feedback?.[kind] : undefined;
+  return lines?.[attempt % lines.length] ?? null;
 }
 
 const MINUTE = 60 * 1000;
@@ -128,6 +137,7 @@ export function questRoutes({ db, content, clock }: QuestRouteDeps): Router {
     const input = StepCompleteRequest.safeParse(req.body ?? {});
     if (!input.success) throw new HttpError(400, 'invalid-step-input');
     const quest = await playableQuest(db, content, childId, questId);
+    const stepDef = quest.steps.find((s) => s.id === stepId);
 
     const now = clock();
     const thisProgressRow = and(eq(questProgress.childId, childId), eq(questProgress.questId, questId));
@@ -138,6 +148,7 @@ export function questRoutes({ db, content, clock }: QuestRouteDeps): Router {
       const current = { completedSteps: row?.completedSteps ?? [], completed: row?.completedAt != null, found: row?.found ?? {} };
       const repeated = async () => ({
         correct: true,
+        feedback: null,
         row,
         reward: await recordedReward(tx, childId, questSource(questId)),
         repeated: true,
@@ -150,8 +161,8 @@ export function questRoutes({ db, content, clock }: QuestRouteDeps): Router {
         if (result.error === 'already-completed') return repeated();
         if (result.error === 'wrong-answer') {
           // Try again as often as needed; only the count is kept, never the answer.
-          await countAttempt(tx, { childId, questId, stepId }, 'wrongCount');
-          return { correct: false, row, reward: null, repeated: false, completion: null };
+          const wrong = await countAttempt(tx, { childId, questId, stepId }, 'wrongCount');
+          return { correct: false, feedback: feedbackLine(stepDef, 'wrong', wrong - 1), row, reward: null, repeated: false, completion: null };
         }
         const [status, code] = STEP_ERRORS[result.error];
         throw new HttpError(status, code);
@@ -161,15 +172,18 @@ export function questRoutes({ db, content, clock }: QuestRouteDeps): Router {
         .set({ completedSteps: result.progress.completedSteps, found: result.progress.found, completedAt: result.progress.completed ? now : null })
         .where(thisProgressRow)
         .returning();
-      if (!result.reward) return { correct: true, row: updated, reward: null, repeated: false, completion: null };
+      // Read before finishing: scoring the quest clears its counters.
+      const feedback = feedbackLine(stepDef, 'right', await wrongAnswers(tx, { childId, questId, stepId }));
+      if (!result.reward) return { correct: true, feedback, row: updated, reward: null, repeated: false, completion: null };
       const finished = await finishQuest(tx, content, childId, quest, now);
       const [scored] = await tx.select().from(questProgress).where(thisProgressRow);
-      return { correct: true, row: scored, reward: finished.reward, repeated: false, completion: finished.completion };
+      return { correct: true, feedback, row: scored, reward: finished.reward, repeated: false, completion: finished.completion };
     });
 
     res.json(
       StepCompleteResponse.parse({
         correct: outcome.correct,
+        feedback: outcome.feedback,
         quest: progressDto(questId, outcome.row),
         reward: outcome.reward,
         repeated: outcome.repeated,

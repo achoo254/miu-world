@@ -258,14 +258,25 @@ describe('textbook mechanics', () => {
     expect(withStep({ ...read, textRef: 'ghost' })).toEqual(['step r: textRef ghost is not in the quest texts']);
   });
 
+  it('feedback pools have three lines each, never reused within the quest, and are required in textbook quests', () => {
+    const feedback = { right: ['Đúng rồi!', 'Hay quá!', 'Chuẩn luôn!'], wrong: ['Thử lại nhé.', 'Gần đúng rồi.', 'Nhìn kĩ hơn nào.'] };
+    const pick = { ...challenge, id: 'm', mechanic: 'multi-select', choices, answer: { choices: ['a'] } };
+    expect(withStep({ ...pick, feedback })).toEqual([]);
+    expect(valid({ ...pick, feedback: { right: ['Đúng'], wrong: feedback.wrong } })).toBe(false);
+    expect(withStep({ ...pick, feedback: { ...feedback, wrong: ['Đúng rồi!', 'x', 'y'] } })).toEqual(['feedback line "Đúng rồi!" is used twice in the quest']);
+    const textbook = { ...validQuest(), id: 'toan2-cd1-b01', status: 'draft' };
+    textbook.steps.push({ ...pick, feedback }, { ...challenge, id: 'k', mechanic: 'clock', mode: 'set', display: 'analog', answer: { hour: 8, minute: 0 } });
+    expect(issues(textbook)).toEqual(['step riddle: a textbook quest step needs feedback lines', 'step k: a textbook quest step needs feedback lines']);
+  });
+
   it('a textbook quest needs two different interactive challenges, not search or riddles', () => {
     const quest = { ...validQuest(), id: 'toan2-cd1-b01', status: 'draft' };
-    expect(issues(quest)).toEqual([
+    expect(issues(quest).filter((m) => !m.includes('feedback'))).toEqual([
       'a textbook quest needs at least two different interactive challenges (classify, fill-blank, multi-select, clock, calendar, connect, sort, drag-drop)',
     ]);
     quest.steps.push({ ...challenge, id: 'm', mechanic: 'multi-select', choices, answer: { choices: ['a'] } });
     quest.steps.push({ ...challenge, id: 'k', mechanic: 'clock', mode: 'set', display: 'analog', answer: { hour: 8, minute: 0 } });
-    expect(issues(quest)).toEqual([]);
+    expect(issues(quest).filter((m) => !m.includes('feedback'))).toEqual([]);
   });
 });
 
