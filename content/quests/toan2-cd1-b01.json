@@ -1,0 +1,1530 @@
+{
+  "id": "toan2-cd1-b01",
+  "region": "truong-hoc",
+  "chapter": 1,
+  "title": "Bảng số bay trong gió",
+  "status": "draft",
+  "summary": "Ngày khai trường, gió thổi bay bảng số của lớp; {name} cùng thầy Sư Tử Vàng đếm que tính, tìm cà rốt, xếp áo đội bóng để ghép lại các số đến 100.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "Thầy hiệu trưởng Sư Tử Vàng, Gà Con Chíp, thầy thể dục Khỉ Lanh",
+    "where": "Sân trường, quanh cột cờ",
+    "goal": "Ghép lại bảng số của lớp trước giờ vào học",
+    "play": "Điền bảng, phân loại, xếp thứ tự, chọn nhiều số, ước lượng rồi đếm",
+    "learn": "Toán 2 Bài 1: ôn tập các số đến 100 (chục, đơn vị, đọc viết số, so sánh, cấu tạo số)",
+    "reward": "80 XP, 15 xu, Số đến 100 +2, So sánh số +1",
+    "unlock": "Bài 2 \"Tia số. Số liền trước, số liền sau\""
+  },
+  "phases": {
+    "hook": "bang-so-bay-mat",
+    "explore": "bang-que-tinh",
+    "learn": "so-gom-chuc-don-vi",
+    "challenge": "tach-so",
+    "decision": "doi-bong-xep-hang",
+    "finale": "mieng-bia-bang-so",
+    "reward": "huy-hieu-bang-so",
+    "unlock": "mo-tia-so"
+  },
+  "texts": {},
+  "steps": [
+    {
+      "id": "bang-so-bay-mat",
+      "title": "Bảng số bị gió thổi",
+      "kind": "dialogue",
+      "target": "su-tu-vang",
+      "lines": [
+        {
+          "speaker": "Sư Tử Vàng",
+          "text": "Chào {name}! Sáng nay gió lớn quá, các con số trên bảng số của lớp bay lả tả khắp sân trường."
+        },
+        {
+          "speaker": "Gà Con Chíp",
+          "text": "Cháu nhặt được mấy que tính với cà rốt ở gốc cột cờ, nhưng không biết xếp lại thế nào ạ."
+        },
+        {
+          "speaker": "Sư Tử Vàng",
+          "text": "Hôm nay là ngày khai trường, bảng số phải đủ trước khi trống vào học. {name} giúp thầy nhé?"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu giúp ngay ạ!",
+          "reply": "Tốt lắm! Mình bắt đầu từ những bó que tính nhé."
+        }
+      ]
+    },
+    {
+      "id": "bang-que-tinh",
+      "title": "Đếm bó que tính",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "target": "su-tu-vang",
+      "prompt": "Hoàn thành bảng sau (theo mẫu).",
+      "template": "Chục | Đơn vị | Viết số | Đọc số:\n3 | 4 | 34 | Ba mươi tư\n{{a1}} | {{a2}} | {{a3}} | Năm mươi mốt\n{{b1}} | {{b2}} | 46 | {{b3}}\n{{c1}} | {{c2}} | {{c3}} | {{c4}}",
+      "blanks": [
+        {
+          "id": "a1",
+          "options": [
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o5",
+              "text": "5"
+            },
+            {
+              "id": "o6",
+              "text": "6"
+            }
+          ]
+        },
+        {
+          "id": "a2",
+          "options": [
+            {
+              "id": "o0",
+              "text": "0"
+            },
+            {
+              "id": "o1",
+              "text": "1"
+            },
+            {
+              "id": "o5",
+              "text": "5"
+            }
+          ]
+        },
+        {
+          "id": "a3",
+          "options": [
+            {
+              "id": "o15",
+              "text": "15"
+            },
+            {
+              "id": "o50",
+              "text": "50"
+            },
+            {
+              "id": "o51",
+              "text": "51"
+            }
+          ]
+        },
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o6",
+              "text": "6"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o6",
+              "text": "6"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "obonmuoisau",
+              "text": "Bốn mươi sáu"
+            },
+            {
+              "id": "osaumuoitu",
+              "text": "Sáu mươi tư"
+            }
+          ]
+        },
+        {
+          "id": "c1",
+          "options": [
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o5",
+              "text": "5"
+            },
+            {
+              "id": "o6",
+              "text": "6"
+            }
+          ]
+        },
+        {
+          "id": "c2",
+          "options": [
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o5",
+              "text": "5"
+            },
+            {
+              "id": "o6",
+              "text": "6"
+            }
+          ]
+        },
+        {
+          "id": "c3",
+          "options": [
+            {
+              "id": "o45",
+              "text": "45"
+            },
+            {
+              "id": "o55",
+              "text": "55"
+            },
+            {
+              "id": "o65",
+              "text": "65"
+            }
+          ]
+        },
+        {
+          "id": "c4",
+          "options": [
+            {
+              "id": "onammuoinam",
+              "text": "Năm mươi năm"
+            },
+            {
+              "id": "onammuoilam",
+              "text": "Năm mươi lăm"
+            },
+            {
+              "id": "olammuoilam",
+              "text": "Lăm mươi lăm"
+            }
+          ]
+        }
+      ],
+      "skill": "so-den-100",
+      "answer": {
+        "fills": {
+          "a1": "o5",
+          "a2": "o1",
+          "a3": "o51",
+          "b1": "o4",
+          "b2": "o6",
+          "b3": "obonmuoisau",
+          "c1": "o5",
+          "c2": "o5",
+          "c3": "o55",
+          "c4": "onammuoilam"
+        }
+      },
+      "curriculumRef": [
+        "toan2-t1-b01-luyen-tap-1-a",
+        "toan2-t1-b01-luyen-tap-1-b",
+        "toan2-t1-b01-luyen-tap-1-c"
+      ],
+      "support": {
+        "guide": [
+          "Mỗi bó que tính là 1 chục, mỗi que rời là 1 đơn vị.",
+          "Viết số chục trước, số đơn vị sau."
+        ],
+        "hint": "Dòng mẫu: 3 bó và 4 que rời là 34, đọc là Ba mươi tư.",
+        "answer": {
+          "text": "5 | 1 | 51; 4 | 6 | Bốn mươi sáu; 5 | 5 | 55 | Năm mươi lăm",
+          "explanation": "Đếm bó được số chục, đếm que rời được số đơn vị; số 55 đọc là \"Năm mươi lăm\"."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bảng que tính đã đầy đủ, thầy Sư Tử gật gù!",
+          "Chuẩn rồi, chục trước đơn vị sau!",
+          "{name} đếm bó que nhanh như chớp!"
+        ],
+        "wrong": [
+          "Đếm lại số bó que tính ở từng dòng nhé.",
+          "Số 5 ở hàng đơn vị đọc là \"lăm\" đấy.",
+          "Một ô đang lệch, xem lại dòng mẫu 34 nào."
+        ]
+      }
+    },
+    {
+      "id": "ca-rot-cho-tho",
+      "title": "Tìm cà rốt cho thỏ",
+      "kind": "challenge",
+      "mechanic": "classify",
+      "target": "su-tu-vang",
+      "prompt": "Tìm cà rốt cho thỏ.",
+      "groups": [
+        {
+          "id": "ca-rot-54",
+          "label": "54"
+        },
+        {
+          "id": "ca-rot-48",
+          "label": "48"
+        },
+        {
+          "id": "ca-rot-66",
+          "label": "66"
+        },
+        {
+          "id": "ca-rot-70",
+          "label": "70"
+        }
+      ],
+      "items": [
+        {
+          "id": "tho-70",
+          "label": "7 chục và 0 đơn vị"
+        },
+        {
+          "id": "tho-66",
+          "label": "6 chục và 6 đơn vị"
+        },
+        {
+          "id": "tho-48",
+          "label": "4 chục và 8 đơn vị"
+        }
+      ],
+      "skill": "so-den-100",
+      "answer": {
+        "assignment": {
+          "tho-70": "ca-rot-70",
+          "tho-66": "ca-rot-66",
+          "tho-48": "ca-rot-48"
+        }
+      },
+      "curriculumRef": [
+        "toan2-t1-b01-luyen-tap-2-a",
+        "toan2-t1-b01-luyen-tap-2-b",
+        "toan2-t1-b01-luyen-tap-2-c"
+      ],
+      "support": {
+        "guide": [
+          "Chục là chữ số bên trái, đơn vị là chữ số bên phải.",
+          "Cà rốt 54 đã có bạn thỏ mẫu rồi."
+        ],
+        "hint": "7 chục và 0 đơn vị viết là 70.",
+        "answer": {
+          "text": "70, 66, 48",
+          "explanation": "Ghép số chục với số đơn vị: 7 và 0 thành 70, 6 và 6 thành 66, 4 và 8 thành 48."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ba bạn thỏ đã ôm được cà rốt của mình!",
+          "Thỏ nào cũng đúng củ, giỏi quá!",
+          "Gà Con Chíp vỗ cánh: cà rốt về đủ rồi!"
+        ],
+        "wrong": [
+          "Có bạn thỏ đang cầm nhầm củ cà rốt.",
+          "Chữ số chục đứng bên trái nhé.",
+          "Không chục là số 0 ở hàng đơn vị đó."
+        ]
+      }
+    },
+    {
+      "id": "so-gom-chuc-don-vi",
+      "title": "Số gồm mấy chục",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "target": "su-tu-vang",
+      "prompt": "Hoàn thành bảng sau (theo mẫu).",
+      "template": "Số gồm | Viết số | Đọc số:\n5 chục và 7 đơn vị | 57 | Năm mươi bảy\n7 chục và 5 đơn vị | {{a}} | Bảy mươi lăm\n6 chục và 4 đơn vị | {{b1}} | {{b2}}\n{{c1}} chục và {{c2}} đơn vị | 91 | {{c3}}",
+      "blanks": [
+        {
+          "id": "a",
+          "options": [
+            {
+              "id": "o57",
+              "text": "57"
+            },
+            {
+              "id": "o75",
+              "text": "75"
+            },
+            {
+              "id": "o70",
+              "text": "70"
+            }
+          ]
+        },
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o46",
+              "text": "46"
+            },
+            {
+              "id": "o64",
+              "text": "64"
+            },
+            {
+              "id": "o60",
+              "text": "60"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "osaumuoibon",
+              "text": "Sáu mươi bốn"
+            },
+            {
+              "id": "osaumuoitu",
+              "text": "Sáu mươi tư"
+            },
+            {
+              "id": "obonmuoisau",
+              "text": "Bốn mươi sáu"
+            }
+          ]
+        },
+        {
+          "id": "c1",
+          "options": [
+            {
+              "id": "o1",
+              "text": "1"
+            },
+            {
+              "id": "o9",
+              "text": "9"
+            }
+          ]
+        },
+        {
+          "id": "c2",
+          "options": [
+            {
+              "id": "o1",
+              "text": "1"
+            },
+            {
+              "id": "o9",
+              "text": "9"
+            }
+          ]
+        },
+        {
+          "id": "c3",
+          "options": [
+            {
+              "id": "chin-muoi-mot",
+              "text": "Chín mươi mốt"
+            },
+            {
+              "id": "chin-muoi-mot-sai",
+              "text": "Chín mươi một"
+            },
+            {
+              "id": "muoi-chin",
+              "text": "Mười chín"
+            }
+          ]
+        }
+      ],
+      "skill": "so-den-100",
+      "answer": {
+        "fills": {
+          "a": "o75",
+          "b1": "o64",
+          "b2": "osaumuoitu",
+          "c1": "o9",
+          "c2": "o1",
+          "c3": "chin-muoi-mot"
+        }
+      },
+      "curriculumRef": [
+        "toan2-t1-b01-luyen-tap-3-a",
+        "toan2-t1-b01-luyen-tap-3-b",
+        "toan2-t1-b01-luyen-tap-3-c"
+      ],
+      "support": {
+        "guide": [
+          "Số chục viết trước, số đơn vị viết sau.",
+          "Số có đơn vị là 4 thì đọc \"tư\", là 1 thì đọc \"mốt\"."
+        ],
+        "hint": "Số 91 gồm 9 chục và 1 đơn vị.",
+        "answer": {
+          "text": "75; 64 – Sáu mươi tư; 9 chục và 1 đơn vị – Chín mươi mốt",
+          "explanation": "Sách đọc 64 là \"Sáu mươi tư\" và 91 là \"Chín mươi mốt\"."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đọc số chuẩn như cô giáo luôn!",
+          "Hàng chục, hàng đơn vị đều đúng chỗ.",
+          "Bảng thứ hai của thầy Sư Tử xong rồi!"
+        ],
+        "wrong": [
+          "Nhớ: số 4 ở cuối đọc là \"tư\" nhé.",
+          "Số 1 ở cuối đọc là \"mốt\" đấy.",
+          "Kiểm tra lại số chục của số 91 nào."
+        ]
+      }
+    },
+    {
+      "id": "binh-hoa-huong-duong",
+      "title": "Bình hoa hướng dương",
+      "kind": "challenge",
+      "mechanic": "classify",
+      "target": "su-tu-vang",
+      "prompt": "Gió làm rơi bình hoa ở cửa lớp. a) Tìm những bông hoa ghi số lớn hơn 60. b) Tìm những bông hoa ghi số bé hơn 50. c) Tìm những bông hoa ghi số vừa lớn hơn 50 vừa bé hơn 60.",
+      "groups": [
+        {
+          "id": "lon-hon-60",
+          "label": "Lớn hơn 60"
+        },
+        {
+          "id": "be-hon-50",
+          "label": "Bé hơn 50"
+        },
+        {
+          "id": "tu-50-den-60",
+          "label": "Vừa lớn hơn 50 vừa bé hơn 60"
+        },
+        {
+          "id": "con-lai",
+          "label": "Không thuộc nhóm nào"
+        }
+      ],
+      "items": [
+        {
+          "id": "hoa-58",
+          "label": "58"
+        },
+        {
+          "id": "hoa-51",
+          "label": "51"
+        },
+        {
+          "id": "hoa-49",
+          "label": "49"
+        },
+        {
+          "id": "hoa-50",
+          "label": "50"
+        },
+        {
+          "id": "hoa-69",
+          "label": "69"
+        },
+        {
+          "id": "hoa-29",
+          "label": "29"
+        },
+        {
+          "id": "hoa-89",
+          "label": "89"
+        }
+      ],
+      "skill": "so-sanh-so",
+      "answer": {
+        "assignment": {
+          "hoa-58": "tu-50-den-60",
+          "hoa-51": "tu-50-den-60",
+          "hoa-49": "be-hon-50",
+          "hoa-50": "con-lai",
+          "hoa-69": "lon-hon-60",
+          "hoa-29": "be-hon-50",
+          "hoa-89": "lon-hon-60"
+        }
+      },
+      "curriculumRef": [
+        "toan2-t1-b01-luyen-tap-4-a",
+        "toan2-t1-b01-luyen-tap-4-b",
+        "toan2-t1-b01-luyen-tap-4-c"
+      ],
+      "support": {
+        "guide": [
+          "So sánh chữ số hàng chục trước.",
+          "Số 50 không lớn hơn 50 cũng không bé hơn 50."
+        ],
+        "hint": "Hai bông có chữ số chục là 5 và lớn hơn 50: 58 và 51.",
+        "answer": {
+          "text": "Lớn hơn 60: 69, 89; bé hơn 50: 49, 29; vừa lớn hơn 50 vừa bé hơn 60: 58, 51",
+          "explanation": "Bông 50 bằng 50 nên không vào nhóm nào."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bình hoa lại rực rỡ ở cửa lớp!",
+          "Bông 50 đứng riêng là đúng rồi đó.",
+          "{name} so sánh số tài thật!"
+        ],
+        "wrong": [
+          "Nhìn chữ số hàng chục trước nhé.",
+          "Số 50 có lớn hơn 50 không nhỉ?",
+          "Còn một bông đang nằm nhầm nhóm."
+        ]
+      }
+    },
+    {
+      "id": "tach-so",
+      "title": "Tách số thành chục và đơn vị",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "target": "su-tu-vang",
+      "prompt": "Số ? 35 = 30 + 5 | 67 = 60 + ?",
+      "template": "35 = 30 + 5\n67 = 60 + {{a}}\n59 = {{b}} + 9\n55 = {{c1}} + {{c2}}",
+      "blanks": [
+        {
+          "id": "a",
+          "options": [
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o7",
+              "text": "7"
+            },
+            {
+              "id": "o60",
+              "text": "60"
+            }
+          ]
+        },
+        {
+          "id": "b",
+          "options": [
+            {
+              "id": "o5",
+              "text": "5"
+            },
+            {
+              "id": "o9",
+              "text": "9"
+            },
+            {
+              "id": "o50",
+              "text": "50"
+            }
+          ]
+        },
+        {
+          "id": "c1",
+          "options": [
+            {
+              "id": "o5",
+              "text": "5"
+            },
+            {
+              "id": "o50",
+              "text": "50"
+            }
+          ]
+        },
+        {
+          "id": "c2",
+          "options": [
+            {
+              "id": "o5",
+              "text": "5"
+            },
+            {
+              "id": "o50",
+              "text": "50"
+            }
+          ]
+        }
+      ],
+      "skill": "so-den-100",
+      "answer": {
+        "fills": {
+          "a": "o7",
+          "b": "o50",
+          "c1": "o50",
+          "c2": "o5"
+        }
+      },
+      "curriculumRef": [
+        "toan2-t1-b01-luyen-tap-2-1-a",
+        "toan2-t1-b01-luyen-tap-2-1-b",
+        "toan2-t1-b01-luyen-tap-2-1-c"
+      ],
+      "support": {
+        "guide": [
+          "Tách số thành số tròn chục cộng với số đơn vị.",
+          "Xem mẫu: 35 = 30 + 5."
+        ],
+        "hint": "59 có 5 chục, tức là 50.",
+        "answer": {
+          "text": "67 = 60 + 7; 59 = 50 + 9; 55 = 50 + 5",
+          "explanation": "Mỗi số bằng số tròn chục của nó cộng số đơn vị."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Tách số gọn gàng như bẻ đôi chiếc bánh!",
+          "Đúng rồi, 5 chục chính là 50.",
+          "Các phép tách đều cân bằng rồi."
+        ],
+        "wrong": [
+          "Số tròn chục có chữ số 0 ở cuối nhé.",
+          "Thử cộng lại xem có ra đúng số đầu không.",
+          "Nhớ mẫu 35 = 30 + 5 nhé."
+        ]
+      }
+    },
+    {
+      "id": "doi-bong-xep-hang",
+      "title": "Đội bóng xếp hàng",
+      "kind": "dialogue",
+      "target": "khi-lanh",
+      "lines": [
+        {
+          "speaker": "Khỉ Lanh",
+          "text": "Đội bóng lớp Hai sắp chào cờ mà bốn bạn cứ đứng lộn xộn, áo số nào cũng chen lên trước!"
+        },
+        {
+          "speaker": "Khỉ Lanh",
+          "text": "{name} xếp giúp thầy hai lượt nhé: lượt đầu theo một chiều, lượt sau đổi chiều ngược lại."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Để cháu xếp!",
+          "reply": "Nhìn kĩ số trên áo nhé."
+        }
+      ]
+    },
+    {
+      "id": "ao-be-den-lon",
+      "title": "Xếp áo từ bé đến lớn",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "khi-lanh",
+      "prompt": "Sắp xếp các số ghi trên các áo theo thứ tự: a) Từ bé đến lớn.",
+      "items": [
+        {
+          "id": "ao-15",
+          "label": "15"
+        },
+        {
+          "id": "ao-22",
+          "label": "22"
+        },
+        {
+          "id": "ao-14",
+          "label": "14"
+        },
+        {
+          "id": "ao-19",
+          "label": "19"
+        }
+      ],
+      "skill": "so-sanh-so",
+      "answer": {
+        "order": [
+          "ao-14",
+          "ao-15",
+          "ao-19",
+          "ao-22"
+        ]
+      },
+      "curriculumRef": [
+        "toan2-t1-b01-luyen-tap-2-2-a"
+      ],
+      "support": {
+        "guide": [
+          "Tìm số bé nhất đứng đầu hàng.",
+          "Các số có cùng 1 chục thì so hàng đơn vị."
+        ],
+        "hint": "14 bé nhất, 22 lớn nhất.",
+        "answer": {
+          "text": "14, 15, 19, 22",
+          "explanation": "Ba số có 1 chục xếp theo đơn vị 4, 5, 9; số 22 có 2 chục nên đứng cuối."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Hàng thẳng tắp, bé trước lớn sau!",
+          "Khỉ Lanh thổi còi: xếp chuẩn!",
+          "Bốn chiếc áo đã vào đúng chỗ."
+        ],
+        "wrong": [
+          "Số bé nhất phải đứng đầu hàng.",
+          "Hai số 15 và 19, số nào bé hơn?",
+          "Số 22 có mấy chục? Nó đứng đâu nhỉ?"
+        ]
+      }
+    },
+    {
+      "id": "ao-lon-den-be",
+      "title": "Xếp áo từ lớn đến bé",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "khi-lanh",
+      "prompt": "Sắp xếp các số ghi trên các áo theo thứ tự: b) Từ lớn đến bé.",
+      "items": [
+        {
+          "id": "ao-19",
+          "label": "19"
+        },
+        {
+          "id": "ao-14",
+          "label": "14"
+        },
+        {
+          "id": "ao-22",
+          "label": "22"
+        },
+        {
+          "id": "ao-15",
+          "label": "15"
+        }
+      ],
+      "skill": "so-sanh-so",
+      "answer": {
+        "order": [
+          "ao-22",
+          "ao-19",
+          "ao-15",
+          "ao-14"
+        ]
+      },
+      "curriculumRef": [
+        "toan2-t1-b01-luyen-tap-2-2-b"
+      ],
+      "support": {
+        "guide": [
+          "Lần này số lớn nhất đứng đầu.",
+          "Đảo ngược thứ tự lượt trước là được."
+        ],
+        "hint": "Bắt đầu bằng áo số 22.",
+        "answer": {
+          "text": "22, 19, 15, 14",
+          "explanation": "Từ lớn đến bé là thứ tự ngược của 14, 15, 19, 22."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đổi chiều mà vẫn không nhầm, tuyệt!",
+          "Áo 22 dẫn đầu, đội bóng sẵn sàng!",
+          "{name} xếp hàng nhanh hơn cả Khỉ Lanh."
+        ],
+        "wrong": [
+          "Lượt này số lớn đứng trước cơ.",
+          "Thử đảo ngược hàng lúc nãy xem.",
+          "Số 14 bé nhất nên đứng cuối nhé."
+        ]
+      }
+    },
+    {
+      "id": "so-chuc-don-vi",
+      "title": "Số chục, số đơn vị",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "target": "su-tu-vang",
+      "prompt": "Số ?",
+      "template": "Số | Số chục | Số đơn vị:\n35 | 3 | 5\n53 | {{a1}} | {{a2}}\n47 | {{b1}} | {{b2}}\n80 | {{c1}} | {{c2}}\n66 | {{d1}} | {{d2}}",
+      "blanks": [
+        {
+          "id": "a1",
+          "options": [
+            {
+              "id": "o3",
+              "text": "3"
+            },
+            {
+              "id": "o5",
+              "text": "5"
+            }
+          ]
+        },
+        {
+          "id": "a2",
+          "options": [
+            {
+              "id": "o3",
+              "text": "3"
+            },
+            {
+              "id": "o5",
+              "text": "5"
+            }
+          ]
+        },
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o7",
+              "text": "7"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o7",
+              "text": "7"
+            }
+          ]
+        },
+        {
+          "id": "c1",
+          "options": [
+            {
+              "id": "o0",
+              "text": "0"
+            },
+            {
+              "id": "o8",
+              "text": "8"
+            }
+          ]
+        },
+        {
+          "id": "c2",
+          "options": [
+            {
+              "id": "o0",
+              "text": "0"
+            },
+            {
+              "id": "o8",
+              "text": "8"
+            }
+          ]
+        },
+        {
+          "id": "d1",
+          "options": [
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o60",
+              "text": "60"
+            }
+          ]
+        },
+        {
+          "id": "d2",
+          "options": [
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o0",
+              "text": "0"
+            }
+          ]
+        }
+      ],
+      "skill": "so-den-100",
+      "answer": {
+        "fills": {
+          "a1": "o5",
+          "a2": "o3",
+          "b1": "o4",
+          "b2": "o7",
+          "c1": "o8",
+          "c2": "o0",
+          "d1": "o6",
+          "d2": "o6"
+        }
+      },
+      "curriculumRef": [
+        "toan2-t1-b01-luyen-tap-2-3-a",
+        "toan2-t1-b01-luyen-tap-2-3-b",
+        "toan2-t1-b01-luyen-tap-2-3-c",
+        "toan2-t1-b01-luyen-tap-2-3-d"
+      ],
+      "support": {
+        "guide": [
+          "Chữ số bên trái là số chục.",
+          "Chữ số bên phải là số đơn vị."
+        ],
+        "hint": "53 khác 35: đổi chỗ hai chữ số thì số chục và số đơn vị cũng đổi.",
+        "answer": {
+          "text": "53: 5, 3; 47: 4, 7; 80: 8, 0; 66: 6, 6",
+          "explanation": "Số 80 có 8 chục và 0 đơn vị."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Tách chục, đơn vị không sai ô nào!",
+          "Số 80 có 0 đơn vị, {name} nhớ đúng rồi.",
+          "Bảng số chục đã xong gọn."
+        ],
+        "wrong": [
+          "53 và 35 khác nhau đấy, nhìn kĩ nhé.",
+          "Chữ số bên trái mới là số chục.",
+          "Số 80 có mấy đơn vị nhỉ?"
+        ]
+      }
+    },
+    {
+      "id": "the-so-lap-so",
+      "title": "Lập số từ ba thẻ",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "target": "su-tu-vang",
+      "prompt": "Từ ba thẻ số dưới đây, em hãy lập các số có hai chữ số.",
+      "choices": [
+        {
+          "id": "so-37",
+          "text": "37"
+        },
+        {
+          "id": "so-35",
+          "text": "35"
+        },
+        {
+          "id": "so-73",
+          "text": "73"
+        },
+        {
+          "id": "so-75",
+          "text": "75"
+        },
+        {
+          "id": "so-53",
+          "text": "53"
+        },
+        {
+          "id": "so-57",
+          "text": "57"
+        },
+        {
+          "id": "so-33",
+          "text": "33"
+        },
+        {
+          "id": "so-77",
+          "text": "77"
+        },
+        {
+          "id": "so-375",
+          "text": "375"
+        }
+      ],
+      "skill": "so-den-100",
+      "answer": {
+        "choices": [
+          "so-37",
+          "so-35",
+          "so-73",
+          "so-75",
+          "so-53",
+          "so-57"
+        ]
+      },
+      "curriculumRef": [
+        "toan2-t1-b01-luyen-tap-2-4"
+      ],
+      "support": {
+        "guide": [
+          "Có ba thẻ 3, 7, 5; mỗi số dùng hai thẻ khác nhau.",
+          "Số có hai chữ số nên không dùng cả ba thẻ."
+        ],
+        "hint": "Mỗi thẻ đứng hàng chục được hai lần.",
+        "answer": {
+          "text": "37, 35, 73, 75, 53, 57",
+          "explanation": "Lấy mỗi thẻ làm hàng chục rồi ghép với một trong hai thẻ còn lại."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đủ sáu số, không thừa số nào!",
+          "Thẻ số nào cũng được dùng đúng cách.",
+          "Gà Con Chíp đếm lại: đúng sáu số!"
+        ],
+        "wrong": [
+          "Mỗi thẻ chỉ có một chiếc thôi, không dùng hai lần.",
+          "Số có ba chữ số thì không phải rồi.",
+          "Còn thiếu một số, thử đặt thẻ 5 lên trước xem."
+        ]
+      }
+    },
+    {
+      "id": "uoc-luong-dem",
+      "title": "Ước lượng rồi đếm",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "target": "su-tu-vang",
+      "prompt": "Trong góc sân có một hũ bi và một rổ cà chua của bếp trường.",
+      "template": "Em ước lượng xem trong hình có khoảng mấy chục viên bi rồi đếm số viên bi trong hình đó (theo mẫu). a) Mẫu: – Em ước lượng: Khoảng 3 chục viên bi. – Em đếm được: 32 viên bi.\nb) – Em ước lượng: Khoảng {{bi1}} chục viên bi. – Em đếm được: {{bi2}} viên bi.\nEm ước lượng xem trong hình có khoảng mấy chục quả cà chua rồi đếm số cà chua trong hình đó.\n– Em ước lượng: Khoảng {{ca1}} chục quả cà chua. – Em đếm được: {{ca2}} quả cà chua.",
+      "blanks": [
+        {
+          "id": "bi1",
+          "options": [
+            {
+              "id": "o3",
+              "text": "3"
+            },
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o5",
+              "text": "5"
+            }
+          ]
+        },
+        {
+          "id": "bi2",
+          "options": [
+            {
+              "id": "o28",
+              "text": "28"
+            },
+            {
+              "id": "o38",
+              "text": "38"
+            },
+            {
+              "id": "o48",
+              "text": "48"
+            }
+          ]
+        },
+        {
+          "id": "ca1",
+          "options": [
+            {
+              "id": "o3",
+              "text": "3"
+            },
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o5",
+              "text": "5"
+            }
+          ]
+        },
+        {
+          "id": "ca2",
+          "options": [
+            {
+              "id": "o32",
+              "text": "32"
+            },
+            {
+              "id": "o42",
+              "text": "42"
+            },
+            {
+              "id": "o24",
+              "text": "24"
+            }
+          ]
+        }
+      ],
+      "skill": "so-den-100",
+      "answer": {
+        "fills": {
+          "bi1": "o4",
+          "bi2": "o38",
+          "ca1": "o4",
+          "ca2": "o42"
+        }
+      },
+      "curriculumRef": [
+        "toan2-t1-b01-luyen-tap-3-1-b",
+        "toan2-t1-b01-luyen-tap-3-2"
+      ],
+      "support": {
+        "guide": [
+          "Nhìn nhanh xem có khoảng mấy nhóm mười.",
+          "Sau đó đếm từng nhóm mười rồi đếm phần lẻ."
+        ],
+        "hint": "Hai nhóm đã khoanh 10, phần còn lại đếm tiếp.",
+        "answer": {
+          "text": "Bi: khoảng 4 chục, đếm được 38. Cà chua: khoảng 4 chục, đếm được 42.",
+          "explanation": "Hai nhóm mười là 20; 18 viên bi rời thành 38, 22 quả cà chua rời thành 42."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ước lượng khéo, đếm lại càng chuẩn!",
+          "Bếp trường có đủ cà chua nấu canh rồi.",
+          "Hũ bi được đếm không sót viên nào."
+        ],
+        "wrong": [
+          "Đếm từng nhóm mười trước nhé.",
+          "Ước lượng chỉ cần gần đúng số chục thôi.",
+          "Phần rời đếm lại chậm một chút xem."
+        ]
+      }
+    },
+    {
+      "id": "viet-thanh-tong",
+      "title": "Viết số thành tổng",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "target": "su-tu-vang",
+      "prompt": "Số ?",
+      "template": "a) Số 87 gồm 8 chục và 7 đơn vị, viết là: 87 = 80 + 7. \nb) Số 45 gồm {{b1}} chục và {{b2}} đơn vị, viết là: 45 = {{b3}} + {{b4}}.\nc) Số 63 gồm {{c1}} chục và {{c2}} đơn vị, viết là: {{c3}} = {{c4}} + {{c5}}.",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o5",
+              "text": "5"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o5",
+              "text": "5"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o40",
+              "text": "40"
+            },
+            {
+              "id": "o45",
+              "text": "45"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "o5",
+              "text": "5"
+            },
+            {
+              "id": "o50",
+              "text": "50"
+            }
+          ]
+        },
+        {
+          "id": "c1",
+          "options": [
+            {
+              "id": "o3",
+              "text": "3"
+            },
+            {
+              "id": "o6",
+              "text": "6"
+            }
+          ]
+        },
+        {
+          "id": "c2",
+          "options": [
+            {
+              "id": "o3",
+              "text": "3"
+            },
+            {
+              "id": "o6",
+              "text": "6"
+            }
+          ]
+        },
+        {
+          "id": "c3",
+          "options": [
+            {
+              "id": "o36",
+              "text": "36"
+            },
+            {
+              "id": "o63",
+              "text": "63"
+            }
+          ]
+        },
+        {
+          "id": "c4",
+          "options": [
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o60",
+              "text": "60"
+            }
+          ]
+        },
+        {
+          "id": "c5",
+          "options": [
+            {
+              "id": "o3",
+              "text": "3"
+            },
+            {
+              "id": "o30",
+              "text": "30"
+            }
+          ]
+        }
+      ],
+      "skill": "so-den-100",
+      "answer": {
+        "fills": {
+          "b1": "o4",
+          "b2": "o5",
+          "b3": "o40",
+          "b4": "o5",
+          "c1": "o6",
+          "c2": "o3",
+          "c3": "o63",
+          "c4": "o60",
+          "c5": "o3"
+        }
+      },
+      "curriculumRef": [
+        "toan2-t1-b01-luyen-tap-3-3-b",
+        "toan2-t1-b01-luyen-tap-3-3-c"
+      ],
+      "support": {
+        "guide": [
+          "Làm như câu a: số chục viết thành số tròn chục.",
+          "Cộng lại phải ra đúng số ban đầu."
+        ],
+        "hint": "4 chục là 40, 6 chục là 60.",
+        "answer": {
+          "text": "45 = 40 + 5; 63 = 60 + 3",
+          "explanation": "Số 45 gồm 4 chục và 5 đơn vị; số 63 gồm 6 chục và 3 đơn vị."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Viết thành tổng chính xác từng chữ số!",
+          "Câu b, câu c đều giống mẫu câu a rồi.",
+          "{name} hiểu cấu tạo số thật chắc."
+        ],
+        "wrong": [
+          "Xem lại mẫu câu a: 87 = 80 + 7.",
+          "4 chục viết là 40, không phải 4.",
+          "Tổng phải bằng đúng số ban đầu nhé."
+        ]
+      }
+    },
+    {
+      "id": "mieng-bia-bang-so",
+      "title": "Lắp miếng bìa vào bảng số",
+      "kind": "challenge",
+      "mechanic": "classify",
+      "target": "su-tu-vang",
+      "prompt": "Bảng số của lớp vẫn còn bốn ô trống. a) Em lắp bốn miếng bìa A, B, C, D vào vị trí thích hợp trong bảng.",
+      "groups": [
+        {
+          "id": "o-xanh",
+          "label": "Ô xanh"
+        },
+        {
+          "id": "o-vang",
+          "label": "Ô vàng"
+        },
+        {
+          "id": "o-do",
+          "label": "Ô đỏ"
+        },
+        {
+          "id": "o-tim",
+          "label": "Ô tím"
+        }
+      ],
+      "items": [
+        {
+          "id": "bia-a",
+          "label": "A: 65, 66, 75, 76"
+        },
+        {
+          "id": "bia-b",
+          "label": "B: 47, 48, 57, 58"
+        },
+        {
+          "id": "bia-c",
+          "label": "C: 25, 26, 35, 36"
+        },
+        {
+          "id": "bia-d",
+          "label": "D: 43, 44, 53, 54"
+        }
+      ],
+      "skill": "so-den-100",
+      "answer": {
+        "assignment": {
+          "bia-a": "o-tim",
+          "bia-b": "o-do",
+          "bia-c": "o-xanh",
+          "bia-d": "o-vang"
+        }
+      },
+      "curriculumRef": [
+        "toan2-t1-b01-luyen-tap-3-4-a"
+      ],
+      "support": {
+        "guide": [
+          "Ô xanh ở hàng 21–40, ô vàng và ô đỏ ở hàng 41–60, ô tím ở hàng 61–80.",
+          "Xem số hàng đơn vị để biết cột."
+        ],
+        "hint": "Miếng C có các số 25, 26, 35, 36: nằm ở hàng hai mươi, ba mươi.",
+        "answer": {
+          "text": "A – ô tím, B – ô đỏ, C – ô xanh, D – ô vàng",
+          "explanation": "Mỗi miếng bìa khớp với ô có cùng hàng chục và cùng cột đơn vị."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bảng số đã kín, không còn ô trống!",
+          "Bốn miếng bìa khớp như xếp hình.",
+          "Thầy Sư Tử treo bảng số lên rồi!"
+        ],
+        "wrong": [
+          "Nhìn hàng chục của số trên miếng bìa nhé.",
+          "Ô vàng và ô đỏ cùng hàng, khác cột.",
+          "Một miếng bìa đang lạc hàng rồi."
+        ]
+      }
+    },
+    {
+      "id": "so-lon-nhat-moi-mieng",
+      "title": "Số lớn nhất mỗi miếng bìa",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "su-tu-vang",
+      "prompt": "b) Tìm số lớn nhất ở mỗi miếng bìa A, B, C, D rồi viết các số đó theo thứ tự từ bé đến lớn.",
+      "items": [
+        {
+          "id": "lon-nhat-76",
+          "label": "76"
+        },
+        {
+          "id": "lon-nhat-58",
+          "label": "58"
+        },
+        {
+          "id": "lon-nhat-36",
+          "label": "36"
+        },
+        {
+          "id": "lon-nhat-54",
+          "label": "54"
+        }
+      ],
+      "skill": "so-sanh-so",
+      "answer": {
+        "order": [
+          "lon-nhat-36",
+          "lon-nhat-54",
+          "lon-nhat-58",
+          "lon-nhat-76"
+        ]
+      },
+      "curriculumRef": [
+        "toan2-t1-b01-luyen-tap-3-4-b"
+      ],
+      "support": {
+        "guide": [
+          "Số lớn nhất mỗi miếng là số ở góc dưới bên phải.",
+          "Rồi xếp bốn số đó từ bé đến lớn."
+        ],
+        "hint": "Bốn số lớn nhất là 76, 58, 36, 54.",
+        "answer": {
+          "text": "36, 54, 58, 76",
+          "explanation": "So hàng chục: 3 < 5 < 7; hai số 54 và 58 cùng 5 chục thì so đơn vị."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Xếp xong, trống trường vừa điểm!",
+          "Bốn số lớn nhất đã vào hàng ngay ngắn.",
+          "Số 54 đứng trước 58, chuẩn luôn."
+        ],
+        "wrong": [
+          "54 và 58 cùng 5 chục, so tiếp đơn vị nhé.",
+          "Số bé nhất trong bốn số là số nào?",
+          "Nhớ lấy số lớn nhất của từng miếng bìa."
+        ]
+      }
+    },
+    {
+      "id": "huy-hieu-bang-so",
+      "title": "Huy hiệu bảng số",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Thầy Sư Tử Vàng cài lên áo {name} huy hiệu \"Người giữ bảng số\" đầu tiên của Trường học."
+    },
+    {
+      "id": "mo-tia-so",
+      "title": "Vạch kẻ trên sân",
+      "kind": "unlock",
+      "trigger": "auto",
+      "text": "Gà Con Chíp gọi to từ sân nhảy lò cò: các vạch kẻ vừa hiện số, nhưng Chíp cứ nhảy nhầm ô!"
+    }
+  ],
+  "reward": {
+    "xp": 80,
+    "coin": 15,
+    "skillXp": {
+      "so-den-100": 2,
+      "so-sanh-so": 1
+    }
+  },
+  "unlock": [
+    "toan2-cd1-b02"
+  ]
+}

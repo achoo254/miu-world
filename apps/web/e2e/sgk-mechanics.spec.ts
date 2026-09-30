@@ -92,7 +92,10 @@ test('plays classify, fill-blank, multi-select, clock, calendar, connect, pictur
   await expect(dialog(page, 'Phiếu viết')).toBeVisible();
   await shot(page, 'worksheet');
   await tap(page, '[data-id="worksheet-done"]');
-  await expect(page.getByRole('dialog')).toHaveCount(0, { timeout: 15_000 });
+  // The quest is done: the completion screen shows the reward the server paid.
+  await expect(dialog(page, 'Hoàn thành nhiệm vụ!')).toBeVisible({ timeout: 15_000 });
+  await expect(dialog(page, 'Hoàn thành nhiệm vụ!')).toContainText('+20 XP');
+  await shot(page, 'completion');
 
   const progress = await (await page.context().request.get('/api/progress')).json();
   expect(progress.quests.find((q: { questId: string }) => q.questId === 'e2e-sgk-mechanics')).toMatchObject({ completed: true });

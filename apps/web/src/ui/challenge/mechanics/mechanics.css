@@ -1,7 +1,9 @@
 /* Textbook challenge screens: big touch targets (≥ 44px), theme tokens only. */
 .mechanic-tick { display: inline-block; min-width: 1.2em; font-weight: 800; color: var(--color-primary-edge); }
 
-.fill-sentence { font-size: var(--text-xl); font-weight: 700; line-height: 2.2; display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-xs); }
+/* Block with line breaks kept, so a table row per line reads as printed. */
+.fill-sentence { font-size: var(--text-xl); font-weight: 700; line-height: 2.4; white-space: pre-line; margin: 0; }
+.fill-sentence .fill-blank { display: inline-block; margin: 0 var(--space-xs); vertical-align: middle; }
 .fill-blank {
   min-width: 3.2rem; min-height: 2.8rem; padding: 0 var(--space-sm);
   border: 3px dashed var(--color-field-edge); border-radius: var(--radius-key);

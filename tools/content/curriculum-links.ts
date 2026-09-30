@@ -23,8 +23,10 @@ export const MECHANIC_RULES: Record<ExerciseType, readonly (readonly string[])[]
   'sap-xep': [['sort']],
   'tro-choi': INTERACTIVE,
   tinh: [['riddle'], ['fill-blank']],
-  'dien-so': [['riddle'], ['fill-blank'], ['drag-drop']],
-  'so-sanh': [['fill-blank']],
+  // Also "lập các số…": pick every number the cards can make.
+  'dien-so': [['riddle'], ['fill-blank'], ['drag-drop'], ['multi-select']],
+  // Signs between numbers, or "find the flowers greater than 60" (pick or sort into groups).
+  'so-sanh': [['fill-blank'], ['multi-select'], ['classify']],
   dem: [['riddle'], ['fill-blank'], ['drag-drop']],
   'bai-toan-loi-van': [['riddle'], ['fill-blank']],
   'do-luong-thuc-hanh': [['worksheet']],
