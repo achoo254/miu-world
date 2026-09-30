@@ -1,6 +1,6 @@
-// Builds a playable character GLB from two CC0 packs without hand-made art:
-// Blocky Characters rig + 27 clips, a Cube Pets animal as the head, code-generated flat body colors,
-// and extra keyframe clips from content/animations/*.json.
+// Builds a playable character GLB without hand-made art: the Blocky Characters rig + 27 clips, and
+// either a Cube Pets animal as the head on the rig's own body (flat body colors), or a whole body of
+// voxel boxes from content/bodies/*.json; plus extra keyframe clips from content/animations/*.json.
 // All parts are merged into ONE skinned primitive (each part rigidly bound to its rig node) so the
 // character costs a single draw call while the original node animations still drive it.
 import { mkdir, writeFile } from 'node:fs/promises';
@@ -22,30 +22,52 @@ const GL_NEAREST = 9728;
 
 const hexColor = z.string().regex(/^#[0-9a-fA-F]{6}$/);
 
-export const characterSpecSchema = z.object({
-  output: z.string().regex(/^generated\/characters\/[a-z0-9-]+\.glb$/),
-  rig: z.string().min(1),
-  headSource: z.string().min(1),
-  /** Nodes of the animal model that become the head (the whole cube body, not a cut mesh). */
-  headNodes: z.array(z.string()).min(1),
-  tailNode: z.string().min(1),
-  headScale: z.number().positive(),
-  /** Tail pivot height above the bottom of the torso, in rig units. */
-  tailHeight: z.number(),
-  palette: z.record(z.string(), hexColor),
-  partColors: z.record(z.string(), z.string()),
-  extraAnimations: z.array(z.string()),
-  /** Chibi proportions (1 = rig as authored). Torso height, relative to its pivot. */
-  torsoScale: z.number().positive().max(2).default(1),
-  /** Arm and leg length, relative to shoulder/hip pivots; the whole body drops so feet stay on the ground. */
-  limbScale: z.number().positive().max(2).default(1),
-  /** Extra vertical shift of the head joint, in model units (negative sinks the head into the shoulders). */
-  headOffset: z.number().default(0),
-  /** Face blocks (`content/faces/<id>.json`) merged into the head, so the character stays one draw call. */
-  face: z.string().regex(/^[a-z0-9-]+$/).optional(),
-  /** Runtime multiplier for accessory size/offset per attach node, so one accessory file fits every variant. */
-  accessoryScale: z.record(z.string(), z.number().positive()).default({}),
+const voxelBoxSchema = z.object({
+  x: z.number().int(),
+  y: z.number().int(),
+  z: z.number().int(),
+  w: z.number().int().positive(),
+  h: z.number().int().positive(),
+  d: z.number().int().positive(),
+  color: z.string().min(1),
+  /** Also emit the box mirrored across x = 0 (left/right symmetric features). */
+  sym: z.boolean().optional(),
 });
+type VoxelBox = z.infer<typeof voxelBoxSchema>;
+const voxelBoxesSchema = z.array(voxelBoxSchema).min(1);
+
+const nodeName = z.string().regex(/^[a-z0-9-]+$/);
+
+export const characterSpecSchema = z
+  .object({
+    output: z.string().regex(/^generated\/characters\/[a-z0-9-]+\.glb$/),
+    rig: z.string().min(1),
+    /** Voxel body (`content/bodies/<id>.json`): replaces the rig meshes and the Cube Pets head and tail. */
+    body: nodeName.optional(),
+    headSource: z.string().min(1).optional(),
+    /** Nodes of the animal model that become the head (the whole cube body, not a cut mesh). */
+    headNodes: z.array(z.string()).min(1).optional(),
+    tailNode: z.string().min(1).optional(),
+    headScale: z.number().positive().default(1),
+    /** Tail pivot height above the bottom of the torso, in rig units. */
+    tailHeight: z.number().default(0),
+    palette: z.record(z.string(), hexColor).default({}),
+    partColors: z.record(z.string(), z.string()).default({}),
+    extraAnimations: z.array(z.string()),
+    /** Chibi proportions (1 = rig as authored). Torso height, relative to its pivot. */
+    torsoScale: z.number().positive().max(2).default(1),
+    /** Arm and leg length, relative to shoulder/hip pivots; the whole body drops so feet stay on the ground. */
+    limbScale: z.number().positive().max(2).default(1),
+    /** Extra vertical shift of the head joint, in model units (negative sinks the head into the shoulders). */
+    headOffset: z.number().default(0),
+    /** Face blocks (`content/faces/<id>.json`) merged into the head, so the character stays one draw call. */
+    face: nodeName.optional(),
+    /** Runtime multiplier for accessory size/offset per attach node, so one accessory file fits every variant. */
+    accessoryScale: z.record(z.string(), z.number().positive()).default({}),
+  })
+  .refine((spec) => spec.body !== undefined || (spec.headSource !== undefined && spec.headNodes !== undefined && spec.tailNode !== undefined), {
+    message: 'a character needs either a voxel body or a Cube Pets head (headSource, headNodes, tailNode)',
+  });
 export type CharacterSpec = z.infer<typeof characterSpecSchema>;
 
 /**
@@ -53,25 +75,30 @@ export type CharacterSpec = z.infer<typeof characterSpecSchema>;
  * multiplied by `headScale` when merged so one face file fits every head size.
  */
 export const faceSchema = z.object({
-  id: z.string().regex(/^[a-z0-9-]+$/),
+  id: nodeName,
   voxelSize: z.number().positive(),
   offset: z.tuple([z.number(), z.number(), z.number()]),
   palette: z.record(z.string(), hexColor),
-  boxes: z
-    .array(
-      z.object({
-        x: z.number().int(),
-        y: z.number().int(),
-        z: z.number().int(),
-        w: z.number().int().positive(),
-        h: z.number().int().positive(),
-        d: z.number().int().positive(),
-        color: z.string().min(1),
-      }),
-    )
-    .min(1),
+  boxes: voxelBoxesSchema,
 });
 export type FaceDef = z.infer<typeof faceSchema>;
+
+/**
+ * A whole character in voxel boxes. Each part's boxes sit relative to its rig joint pivot (after the
+ * chibi reshape), in voxels of `voxelSize` model units; `mirror` copies a part to the other side
+ * (x negated), so one arm and one leg describe both. The tail gets its own joint on the torso at
+ * `tailPivot` (voxels from the torso pivot).
+ */
+export const bodySchema = z.object({
+  id: nodeName,
+  voxelSize: z.number().positive(),
+  palette: z.record(z.string(), hexColor),
+  parts: z.record(nodeName, voxelBoxesSchema).refine((parts) => 'head' in parts && 'torso' in parts, 'a body needs head and torso parts'),
+  mirror: z.record(nodeName, nodeName).default({}),
+  tailPivot: z.tuple([z.number(), z.number(), z.number()]).optional(),
+});
+export type BodyDef = z.infer<typeof bodySchema>;
+
 export const charactersFileSchema = z.record(z.string(), characterSpecSchema);
 
 interface MergedGeometry {
@@ -151,10 +178,43 @@ const CUBE_FACES: Array<{ n: Vec3; c: Vec3[] }> = [
   { n: [0, 0, -1], c: [[1, 0, 0], [0, 0, 0], [0, 1, 0], [1, 1, 0]] },
 ];
 
+/** A box and, when `sym` is set, its mirror image across x = 0. */
+function expandSymmetric(boxes: readonly VoxelBox[]): VoxelBox[] {
+  return boxes.flatMap((box) => (box.sym ? [box, { ...box, x: -(box.x + box.w) }] : [box]));
+}
+
 /**
- * Appends face boxes (eyes, cheeks, nose) as flat-colored cubes bound to the head joint.
- * Positions: pivot + headScale * (offset + voxel * voxelSize).
+ * Appends voxel boxes as flat-colored cubes bound to `joint`: each box spans
+ * origin + (x, y, z) * unit to origin + (x + w, y + h, z + d) * unit.
  */
+function appendBoxes(
+  merged: MergedGeometry,
+  boxes: readonly VoxelBox[],
+  origin: Vec3,
+  unit: number,
+  joint: number,
+  cellOf: (color: string) => number | undefined,
+  label: string,
+): void {
+  for (const box of boxes) {
+    const cell = cellOf(box.color);
+    if (cell === undefined) throw new Error(`${label}: color "${box.color}" is not in its palette`);
+    const uv = paletteUv(cell);
+    const corner: Vec3 = [origin[0] + box.x * unit, origin[1] + box.y * unit, origin[2] + box.z * unit];
+    for (const { n, c } of CUBE_FACES) {
+      const base = merged.positions.length / 3;
+      for (const [cx, cy, cz] of c) {
+        merged.positions.push(corner[0] + cx * box.w * unit, corner[1] + cy * box.h * unit, corner[2] + cz * box.d * unit);
+        merged.normals.push(...n);
+        merged.uvs.push(...uv);
+        merged.joints.push(joint, 0, 0, 0);
+      }
+      merged.indices.push(base, base + 1, base + 2, base, base + 2, base + 3);
+    }
+  }
+}
+
+/** Face blocks (eyes, cheeks, nose) in head units: pivot + headScale * (offset + voxel * voxelSize). */
 function appendFace(
   merged: MergedGeometry,
   face: FaceDef,
@@ -163,27 +223,20 @@ function appendFace(
   joint: number,
   cellOf: (color: string) => number | undefined,
 ): void {
-  const unit = face.voxelSize * headScale;
-  for (const box of face.boxes) {
-    const cell = cellOf(box.color);
-    if (cell === undefined) throw new Error(`face ${face.id}: color "${box.color}" is not in its palette`);
-    const uv = paletteUv(cell);
-    const origin: Vec3 = [
-      pivot[0] + headScale * face.offset[0] + box.x * unit,
-      pivot[1] + headScale * face.offset[1] + box.y * unit,
-      pivot[2] + headScale * face.offset[2] + box.z * unit,
-    ];
-    for (const { n, c } of CUBE_FACES) {
-      const base = merged.positions.length / 3;
-      for (const [cx, cy, cz] of c) {
-        merged.positions.push(origin[0] + cx * box.w * unit, origin[1] + cy * box.h * unit, origin[2] + cz * box.d * unit);
-        merged.normals.push(...n);
-        merged.uvs.push(...uv);
-        merged.joints.push(joint, 0, 0, 0);
-      }
-      merged.indices.push(base, base + 1, base + 2, base, base + 2, base + 3);
-    }
+  const origin: Vec3 = [pivot[0] + headScale * face.offset[0], pivot[1] + headScale * face.offset[1], pivot[2] + headScale * face.offset[2]];
+  appendBoxes(merged, expandSymmetric(face.boxes), origin, face.voxelSize * headScale, joint, cellOf, `face ${face.id}`);
+}
+
+/** The boxes of every part, with mirrored parts filled in (x negated). */
+function bodyParts(body: BodyDef): Map<string, VoxelBox[]> {
+  const parts = new Map(Object.entries(body.parts).map(([name, boxes]) => [name, expandSymmetric(boxes)]));
+  for (const [target, source] of Object.entries(body.mirror)) {
+    const boxes = parts.get(source);
+    if (!boxes) throw new Error(`body ${body.id}: mirror source "${source}" has no boxes`);
+    if (parts.has(target)) throw new Error(`body ${body.id}: "${target}" is both a part and a mirror`);
+    parts.set(target, boxes.map((box) => ({ ...box, x: -(box.x + box.w) })));
   }
+  return parts;
 }
 
 /** Model-space bounds of a node's mesh after `transform`. */
@@ -204,12 +257,15 @@ function transformedBounds(node: GltfNode, transform: mat4): { min: Vec3; max: V
   return { min, max };
 }
 
-function buildAtlas(headColormap: Uint8Array, colors: string[]): Uint8Array {
-  const head = PNG.sync.read(Buffer.from(headColormap));
-  if (head.width !== HEAD_ATLAS || head.height !== HEAD_ATLAS) throw new Error(`head colormap must be ${HEAD_ATLAS}px`);
+/** A voxel body has no head colormap: the top half of the atlas then stays empty. */
+function buildAtlas(headColormap: Uint8Array | undefined, colors: string[]): Uint8Array {
   if (colors.length > PALETTE_GRID * PALETTE_GRID) throw new Error('too many palette colors');
   const atlas = new PNG({ width: HEAD_ATLAS, height: HEAD_ATLAS * 2 });
-  atlas.data.set(head.data, 0); // same width, so the head image is the first HEAD_ATLAS rows
+  if (headColormap) {
+    const head = PNG.sync.read(Buffer.from(headColormap));
+    if (head.width !== HEAD_ATLAS || head.height !== HEAD_ATLAS) throw new Error(`head colormap must be ${HEAD_ATLAS}px`);
+    atlas.data.set(head.data, 0); // same width, so the head image is the first HEAD_ATLAS rows
+  }
   const cell = HEAD_ATLAS / PALETTE_GRID;
   colors.forEach((hex, i) => {
     const rgb = [1, 3, 5].map((o) => parseInt(hex.slice(o, o + 2), 16));
@@ -324,7 +380,6 @@ async function addExtraClip(
 export async function buildCharacter(id: string, spec: CharacterSpec): Promise<Uint8Array> {
   const io = createIO();
   const rig = await io.read(path.join(ASSETS_DIR, spec.rig));
-  const animal = await io.read(path.join(ASSETS_DIR, spec.headSource));
   const rigRoot = requireNode(rig, 'root');
   const rigTop = rigRoot.getParentNode();
   if (!rigTop) throw new Error('rig root must have a parent character node');
@@ -380,14 +435,6 @@ export async function buildCharacter(id: string, spec: CharacterSpec): Promise<U
     return sy === 1 ? m : mat4.scale(mat4.create(), m, [1, sy, 1]);
   };
 
-  const face = spec.face ? await readJson(path.join(CONTENT_DIR, 'faces', `${spec.face}.json`), faceSchema) : undefined;
-
-  // Palette: one flat cell per named color, referenced by rig part (face colors appended after).
-  const colorNames = Object.keys(spec.palette).sort();
-  const faceColorNames = face ? Object.keys(face.palette).sort().map((n) => `face:${n}`) : [];
-  const allColors = [...colorNames, ...faceColorNames];
-  const colorIndex = new Map(allColors.map((name, i) => [name, i]));
-
   const merged: MergedGeometry = { positions: [], normals: [], uvs: [], joints: [], indices: [] };
   const joints: GltfNode[] = rigJointNames.map(outNode);
   const jointIndex = (name: string): number => {
@@ -395,63 +442,107 @@ export async function buildCharacter(id: string, spec: CharacterSpec): Promise<U
     if (index < 0) throw new Error(`mesh node "${name}" is not under the rig root`);
     return index;
   };
-
-  // 1. Rig body parts (everything with a mesh except the human head), flat palette colors.
-  for (const node of rig.getRoot().listNodes()) {
-    if (!node.getMesh() || node.getName() === 'head') continue;
-    const colorName = spec.partColors[node.getName()];
-    const cell = colorName === undefined ? undefined : colorIndex.get(colorName);
-    if (cell === undefined) throw new Error(`no palette color for rig part "${node.getName()}"`);
-    const uv = paletteUv(cell);
-    appendPart(merged, node, partMatrix(node), jointIndex(node.getName()), () => uv);
-  }
-
-  // 2. Animal head: whole cube body scaled and seated on the rig's head pivot.
-  const headPivot = outNode('head').getWorldTranslation() as Vec3;
-  const bodyNode = requireNode(animal, spec.headNodes[0] ?? '');
-  const bodyBounds = transformedBounds(bodyNode, worldMatrix(bodyNode));
-  const s = spec.headScale;
-  const align = mat4.create();
-  mat4.translate(align, align, [
-    headPivot[0] - s * (bodyBounds.min[0] + bodyBounds.max[0]) / 2,
-    headPivot[1] - s * bodyBounds.min[1],
-    headPivot[2] - s * (bodyBounds.min[2] + bodyBounds.max[2]) / 2,
-  ]);
-  mat4.scale(align, align, [s, s, s]);
-  const headUv = (u: number, v: number): [number, number] => {
-    if (u < 0 || u > 1 || v < 0 || v > 1) throw new Error('head UV outside [0,1] cannot share the atlas');
-    return [u, v * 0.5];
+  /** A new joint on the torso at a model-space point (the tail). */
+  const addTorsoJoint = (name: string, at: Vec3): number => {
+    const torso = outNode('torso');
+    const local = vec3.transformMat4(vec3.create(), at, invert(worldMatrix(torso)));
+    const joint = out.createNode(name).setTranslation([local[0], local[1], local[2]]);
+    torso.addChild(joint);
+    joints.push(joint);
+    return joints.length - 1;
   };
-  for (const name of spec.headNodes) {
-    const node = requireNode(animal, name);
-    appendPart(merged, node, mat4.multiply(mat4.create(), align, worldMatrix(node)), jointIndex('head'), headUv);
+
+  let colormap: Uint8Array | undefined;
+  let paletteHex: string[];
+  if (spec.body) {
+    // 1-3. Voxel body: every part's boxes around its (reshaped) joint pivot, one palette.
+    const body = await readJson(path.join(CONTENT_DIR, 'bodies', `${spec.body}.json`), bodySchema);
+    const colorNames = Object.keys(body.palette).sort();
+    const colorIndex = new Map(colorNames.map((name, i) => [name, i]));
+    paletteHex = colorNames.map((n) => body.palette[n] ?? '#ff00ff');
+    const parts = bodyParts(body);
+    const unit = body.voxelSize;
+    for (const [name, boxes] of parts) {
+      if (name === 'tail') continue;
+      const pivot = outNode(name).getWorldTranslation() as Vec3;
+      appendBoxes(merged, boxes, pivot, unit, jointIndex(name), (c) => colorIndex.get(c), `body ${body.id} ${name}`);
+    }
+    const tailBoxes = parts.get('tail');
+    if (tailBoxes) {
+      if (!body.tailPivot) throw new Error(`body ${body.id}: a tail needs tailPivot`);
+      const torsoPivot = outNode('torso').getWorldTranslation() as Vec3;
+      const at: Vec3 = [
+        torsoPivot[0] + body.tailPivot[0] * unit,
+        torsoPivot[1] + body.tailPivot[1] * unit,
+        torsoPivot[2] + body.tailPivot[2] * unit,
+      ];
+      appendBoxes(merged, tailBoxes, at, unit, addTorsoJoint('tail', at), (c) => colorIndex.get(c), `body ${body.id} tail`);
+    }
+  } else {
+    const { headSource, headNodes, tailNode } = spec;
+    if (!headSource || !headNodes || !tailNode) throw new Error(`${id}: needs headSource, headNodes and tailNode`);
+    const animal = await io.read(path.join(ASSETS_DIR, headSource));
+    const face = spec.face ? await readJson(path.join(CONTENT_DIR, 'faces', `${spec.face}.json`), faceSchema) : undefined;
+
+    // Palette: one flat cell per named color, referenced by rig part (face colors appended after).
+    const colorNames = Object.keys(spec.palette).sort();
+    const faceColorNames = face ? Object.keys(face.palette).sort().map((n) => `face:${n}`) : [];
+    const colorIndex = new Map([...colorNames, ...faceColorNames].map((name, i) => [name, i]));
+
+    // 1. Rig body parts (everything with a mesh except the human head), flat palette colors.
+    for (const node of rig.getRoot().listNodes()) {
+      if (!node.getMesh() || node.getName() === 'head') continue;
+      const colorName = spec.partColors[node.getName()];
+      const cell = colorName === undefined ? undefined : colorIndex.get(colorName);
+      if (cell === undefined) throw new Error(`no palette color for rig part "${node.getName()}"`);
+      const uv = paletteUv(cell);
+      appendPart(merged, node, partMatrix(node), jointIndex(node.getName()), () => uv);
+    }
+
+    // 2. Animal head: whole cube body scaled and seated on the rig's head pivot.
+    const headPivot = outNode('head').getWorldTranslation() as Vec3;
+    const bodyNode = requireNode(animal, headNodes[0] ?? '');
+    const bodyBounds = transformedBounds(bodyNode, worldMatrix(bodyNode));
+    const s = spec.headScale;
+    const align = mat4.create();
+    mat4.translate(align, align, [
+      headPivot[0] - s * (bodyBounds.min[0] + bodyBounds.max[0]) / 2,
+      headPivot[1] - s * bodyBounds.min[1],
+      headPivot[2] - s * (bodyBounds.min[2] + bodyBounds.max[2]) / 2,
+    ]);
+    mat4.scale(align, align, [s, s, s]);
+    const headUv = (u: number, v: number): [number, number] => {
+      if (u < 0 || u > 1 || v < 0 || v > 1) throw new Error('head UV outside [0,1] cannot share the atlas');
+      return [u, v * 0.5];
+    };
+    for (const name of headNodes) {
+      const node = requireNode(animal, name);
+      appendPart(merged, node, mat4.multiply(mat4.create(), align, worldMatrix(node)), jointIndex('head'), headUv);
+    }
+
+    // 3. Tail moves from the animal body to the back of the rig torso, on its own joint.
+    const torsoRig = requireNode(rig, 'torso');
+    const torsoBounds = transformedBounds(torsoRig, partMatrix(torsoRig));
+    const tailSrc = requireNode(animal, tailNode);
+    const tailPivot = vec3.transformMat4(vec3.create(), tailSrc.getWorldTranslation() as Vec3, align);
+    const tailTarget: Vec3 = [0, torsoBounds.min[1] + spec.tailHeight, torsoBounds.min[2]];
+    const tailShift = mat4.fromTranslation(mat4.create(), vec3.subtract(vec3.create(), tailTarget, tailPivot));
+    const tailJoint = addTorsoJoint('tail', tailTarget);
+    const tailTransform = mat4.multiply(mat4.create(), tailShift, mat4.multiply(mat4.create(), align, worldMatrix(tailSrc)));
+    appendPart(merged, tailSrc, tailTransform, tailJoint, headUv);
+
+    // 3b. Face blocks, in head units scaled with the head, bound to the head joint.
+    if (face) appendFace(merged, face, headPivot, s, jointIndex('head'), (color) => colorIndex.get(`face:${color}`));
+
+    colormap = animal.getRoot().listTextures()[0]?.getImage() ?? undefined;
+    if (!colormap) throw new Error('animal model has no colormap texture');
+    paletteHex = [
+      ...colorNames.map((n) => spec.palette[n] ?? '#ff00ff'),
+      ...faceColorNames.map((n) => face?.palette[n.slice('face:'.length)] ?? '#ff00ff'),
+    ];
   }
 
-  // 3. Tail moves from the animal body to the back of the rig torso, on its own joint.
-  const torsoRig = requireNode(rig, 'torso');
-  const torsoBounds = transformedBounds(torsoRig, partMatrix(torsoRig));
-  const tailSrc = requireNode(animal, spec.tailNode);
-  const tailPivot = vec3.transformMat4(vec3.create(), tailSrc.getWorldTranslation() as Vec3, align);
-  const tailTarget: Vec3 = [0, torsoBounds.min[1] + spec.tailHeight, torsoBounds.min[2]];
-  const tailShift = mat4.fromTranslation(mat4.create(), vec3.subtract(vec3.create(), tailTarget, tailPivot));
-  const torso = outNode('torso');
-  const tailLocal = vec3.transformMat4(vec3.create(), tailTarget, invert(worldMatrix(torso)));
-  const tail = out.createNode('tail').setTranslation([tailLocal[0], tailLocal[1], tailLocal[2]]);
-  torso.addChild(tail);
-  joints.push(tail);
-  const tailTransform = mat4.multiply(mat4.create(), tailShift, mat4.multiply(mat4.create(), align, worldMatrix(tailSrc)));
-  appendPart(merged, tailSrc, tailTransform, joints.length - 1, headUv);
-
-  // 3b. Face blocks, in head units scaled with the head, bound to the head joint.
-  if (face) appendFace(merged, face, headPivot, s, jointIndex('head'), (color) => colorIndex.get(`face:${color}`));
-
-  // 4. Material + atlas (head colormap on top, palette cells below).
-  const colormap = animal.getRoot().listTextures()[0]?.getImage();
-  if (!colormap) throw new Error('animal model has no colormap texture');
-  const paletteHex = [
-    ...colorNames.map((n) => spec.palette[n] ?? '#ff00ff'),
-    ...faceColorNames.map((n) => face?.palette[n.slice('face:'.length)] ?? '#ff00ff'),
-  ];
+  // 4. Material + atlas (head colormap, if any, on top; palette cells below).
   const atlas = out
     .createTexture('miu-atlas')
     .setMimeType('image/png')

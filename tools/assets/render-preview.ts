@@ -38,13 +38,13 @@ async function characterShots(): Promise<Shot[]> {
   const shots: Shot[] = [];
   for (const [id, spec] of Object.entries(await readCharacterSpecs())) {
     for (const yaw of [0, 90, 180, 315]) {
-      shots.push({ file: `character/${id}-turn-${yaw}.png`, query: { model: spec.output, anim: 'idle', t: 0, yaw } });
+      shots.push({ file: `${id}-turn-${yaw}.png`, query: { model: spec.output, anim: 'idle', t: 0, yaw } });
     }
     // Third-person gameplay angle: checks the head does not hide the character from the camera.
-    shots.push({ file: `character/${id}-gameplay-camera.png`, query: { model: spec.output, anim: 'walk', t: 0.17, yaw: 180, pitch: 28 } });
+    shots.push({ file: `${id}-gameplay-camera.png`, query: { model: spec.output, anim: 'walk', t: 0.17, yaw: 180, pitch: 28 } });
     for (const anim of [...(await rigAnimationNames(spec)), ...spec.extraAnimations]) {
       shots.push({
-        file: `character/${id}-anim-${anim}.png`,
+        file: `${id}-anim-${anim}.png`,
         query: { model: spec.output, anim, t: SHOW_TIME[anim] ?? 0.3, yaw: 25, size: 256 },
       });
     }
@@ -59,22 +59,22 @@ async function accessoryShots(): Promise<Shot[]> {
   const base = { model: miu.output, accScale: accessoryScaleParam(miu.accessoryScale) };
   const outfit = 'hat-witch-pink,backpack-brown';
   const shots: Shot[] = [0, 150, 210, 300].map((yaw) => ({
-    file: `accessories/miu-outfit-turn-${yaw}.png`,
+    file: `miu-outfit-turn-${yaw}.png`,
     query: { ...base, anim: 'idle', t: 0, yaw, acc: outfit },
   }));
   for (const [anim, t] of [['walk', 0.17], ['sprint', 0.2], ['cheer', 0.3], ['jump', 0.45]] as const) {
-    shots.push({ file: `accessories/miu-outfit-${anim}.png`, query: { ...base, anim, t, yaw: 35, acc: outfit, size: 256 } });
+    shots.push({ file: `miu-outfit-${anim}.png`, query: { ...base, anim, t, yaw: 35, acc: outfit, size: 256 } });
   }
   // One shot per wearable item (colour variants included), from the side that shows it best.
   const dir = path.join(REPO_ROOT, 'content/accessories');
   const files = (await readdir(dir)).filter((f) => f.endsWith('.json')).sort();
   const catalog = buildAccessoryCatalog(await Promise.all(files.map(async (f) => JSON.parse(await readFile(path.join(dir, f), 'utf8')) as unknown)));
   for (const item of catalog.values()) {
-    shots.push({ file: `accessories/item-${item.id}.png`, query: { ...base, anim: 'idle', t: 0, yaw: item.slot === 'back' ? 200 : 35, acc: item.id, size: 256 } });
+    shots.push({ file: `item-${item.id}.png`, query: { ...base, anim: 'idle', t: 0, yaw: item.slot === 'back' ? 200 : 35, acc: item.id, size: 256 } });
   }
   for (const [hat, pack] of [['night', 'red'], ['mint', 'green']] as const) {
     shots.push({
-      file: `accessories/miu-variant-${hat}-${pack}.png`,
+      file: `miu-variant-${hat}-${pack}.png`,
       query: { ...base, anim: 'idle', t: 0, yaw: 35, acc: `hat-witch-pink:${hat},backpack-brown:${pack}`, size: 256 },
     });
   }
@@ -84,7 +84,7 @@ async function accessoryShots(): Promise<Shot[]> {
 async function mapShots(): Promise<Shot[]> {
   const wide = { width: 1280, height: 800 };
   const shots: Shot[] = ['top', 'iso', 'bridge', 'tree', 'npc'].map((shot) => ({
-    file: `map/forest-ch1-${shot}.png`,
+    file: `forest-ch1-${shot}.png`,
     query: { shot, quality: 'high' },
     viewport: shot === 'top' ? { width: 1000, height: 1000 } : wide,
   }));

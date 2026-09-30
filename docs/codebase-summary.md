@@ -7,7 +7,7 @@ Chỉ để định hướng: bắt đầu đọc từ đâu, ai làm chủ vi�
 | Nhập asset | `tools/assets/sources.json`, `tools/assets/asset-lib.ts` | Khai báo pack, allowlist license, ngân sách, allowlist loại file, schema manifest |
 | License gate | `tools/assets/check-assets.ts` (+ `.test.ts`) | Luật chặn file lạ/hash lệch/license lạ/vượt ngân sách |
 | Manifest | `tools/assets/build-manifest.ts`, `tools/assets/generated.json` | Sinh `assets/manifest.json` và `assets/LICENSES.md`; khai báo asset sinh bằng code |
-| Nhân vật Miu | `tools/assets/kitbash-character.ts`, `tools/assets/validate-character.ts` | Ghép rig Blocky + đầu Cube Pets, thêm clip keyframe; kiểm node/anim/tam giác |
+| Nhân vật Miu | `tools/assets/kitbash-character.ts`, `tools/assets/validate-character.ts`, `content/bodies/` | Rig Blocky + thân khối từ JSON (hoặc đầu Cube Pets ở bản POC), thêm clip keyframe; kiểm node/anim/tam giác |
 | Atlas block | `tools/assets/build-atlas.ts`, `content/blocks.json` | Chọn tile, tint theo palette, padding chống lem |
 | Bản đồ | `tools/world/generate-forest-map.ts`, `tools/world/structures/` | Sinh Khu rừng chương 1 theo seed |
 | Ảnh duyệt | `tools/assets/render-preview.ts` | Ảnh nhân vật, phụ kiện, bản đồ cho trang review |

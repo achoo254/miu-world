@@ -29,7 +29,7 @@ const CATALOGUE_FILES = [
   'quests/',
 ];
 /** Content files the asset tools validate when they build characters, atlases and maps (any file in a folder). */
-const ASSET_TOOL_FILES = ['blocks.json', 'characters.json', 'palette.json', 'faces/', 'animations/'];
+const ASSET_TOOL_FILES = ['blocks.json', 'characters.json', 'palette.json', 'bodies/', 'faces/', 'animations/'];
 /** Content only the web app reads; validated here. */
 const REGIONS_FILE = 'world/regions.json';
 const PRIVACY_FILE = 'legal/privacy-vi.json';

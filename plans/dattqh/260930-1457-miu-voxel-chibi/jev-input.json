@@ -1,0 +1,60 @@
+{
+  "state": {
+    "product": "Miu World: a voxel 3D learning game for Vietnamese grade-2 children (7-8 years old), played on iPad Gen 10.",
+    "task": "Adjust the player character Miu so it looks closer to the owner's voxel mock of the character-creator screen.",
+    "mock": "A white chibi voxel cat: very large near-square head (about half of total height, roughly 1.6x the body width), wide triangular ears with pink inside that poke out beside the hat, big tall dark eyes (rounded rectangles) with white highlights, a wide open smiling mouth with pink tongue, short whiskers, pink blush. Pink witch hat with a white/blue star; the crown is bent/floppy to one side and relatively short. Pink knee-length dress with a white bow at the chest, white collar, gold belt buckle, the skirt covers most of the short legs. Brown backpack with straps at the shoulders. Soft rendered lighting.",
+    "current": "Built from voxel boxes on a skinned rig (27 clips + 4 keyframe clips, 1 draw call, 672 triangles of a 5000 budget). Head 24 voxels wide x 20 tall (1.5x body width), ears wide triangles with pink inside, eyes 4 voxels wide x 6 tall with 2x2 highlight, D-shaped open mouth 4 voxels wide with tongue, whiskers, blush. Dress: skirt ends above the knees, legs clearly visible below the hem. Fur is one flat white colour with no shading. The pink witch hat is a shared accessory (the night and mint witch hats are colour variants of the same shape): straight, stepped, tall crown (about as tall as the head).",
+    "constraints": "Only code/JSON voxel boxes, no hand-drawn or AI-generated textures. Real-time flat shading on iPad, so the mock's soft lighting cannot be matched. Every change must stay readable for small children at the third-person gameplay camera distance. Changes are cheap and reversible (data files)."
+  },
+  "questions": {
+    "hat": {
+      "stakes": "low",
+      "instructions": "The mock's witch hat crown is shorter and bent to one side; ours is straight and tall. The hat shape is shared by three witch hat variants. Which change should be made to the witch hat shape?",
+      "criteria": {
+        "keep": "Keep the current straight, tall crown.",
+        "bend_and_shorten": "Shorten the crown by about a quarter and bend its top segments to one side like the mock (applies to all three witch hat variants).",
+        "shorten_only": "Only shorten the crown by about a quarter, keep it straight."
+      }
+    },
+    "head_size": {
+      "stakes": "low",
+      "instructions": "The mock head is roughly 1.6x the body width; ours is 1.5x. Should the head be enlarged?",
+      "criteria": {
+        "keep": "Keep the head at 24 voxels wide (1.5x body width).",
+        "enlarge": "Widen the head to 26 voxels and raise it to 22 (about 1.6x body width), resizing the hat and ears to match."
+      }
+    },
+    "eyes": {
+      "stakes": "low",
+      "instructions": "The mock eyes are bigger and taller than ours (4 wide x 6 tall voxels). Should the eyes be enlarged?",
+      "criteria": {
+        "keep": "Keep the eyes at 4 x 6 voxels.",
+        "enlarge": "Enlarge the eyes to 5 x 7 voxels with the highlight kept at the top outer corner."
+      }
+    },
+    "mouth": {
+      "stakes": "low",
+      "instructions": "The mock mouth is a wide open smile; ours is a D shape 4 voxels wide. Should the mouth be widened?",
+      "criteria": {
+        "keep": "Keep the 4-voxel D-shaped mouth.",
+        "widen": "Widen the mouth to 6 voxels at the top with the tongue in the middle."
+      }
+    },
+    "fur_shading": {
+      "stakes": "low",
+      "instructions": "The mock fur has soft shading; ours is one flat white. Should a slightly darker fur tone be added to give depth?",
+      "criteria": {
+        "keep": "Keep one flat white fur colour.",
+        "shade_band": "Add a slightly darker warm-grey/pink fur tone on the lowest row of the head (under the chin) and the inner side of the ears' base."
+      }
+    },
+    "dress_length": {
+      "stakes": "low",
+      "instructions": "The mock dress is longer and covers most of the short legs; our skirt ends above the knees with the legs clearly visible. Should the skirt be lengthened?",
+      "criteria": {
+        "keep": "Keep the current skirt length.",
+        "lengthen": "Lengthen the skirt by 2 voxels so it covers more of the legs, keeping the feet visible for walking animations."
+      }
+    }
+  }
+}

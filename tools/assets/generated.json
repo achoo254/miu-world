@@ -3,8 +3,7 @@
     "glob": "generated/characters/*.glb",
     "generator": "tools/assets/kitbash-character.ts",
     "derivedFrom": [
-      "kenney-blocky-characters",
-      "kenney-cube-pets"
+      "kenney-blocky-characters"
     ],
     "license": "CC0-1.0"
   },

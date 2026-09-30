@@ -14,16 +14,18 @@ let report: CharacterReport;
 let rigClips: string[];
 let poc: CharacterReport;
 
-/** The POC Miu: same rig and head, chibi parameters at their defaults, POC body colours. */
+/** The POC Miu: same rig, the Cube Pets cat head on the rig's own body, POC body colours. */
 function pocSpec(from: CharacterSpec): CharacterSpec {
   return characterSpecSchema.parse({
-    ...from,
+    output: from.output,
+    rig: from.rig,
+    extraAnimations: from.extraAnimations,
+    headSource: 'packs/kenney-cube-pets/2.0/animal-cat.glb',
+    headNodes: ['body', 'Group'],
+    tailNode: 'tail',
+    headScale: 0.8,
     tailHeight: 0.35,
-    torsoScale: undefined,
-    limbScale: undefined,
-    headOffset: undefined,
-    face: undefined,
-    accessoryScale: undefined,
+    partColors: { torso: 'shirt', 'arm-left': 'fur', 'arm-right': 'fur', 'leg-left': 'pants', 'leg-right': 'pants' },
     palette: { fur: '#7c8096', shirt: '#f39ac0', pants: '#6c8ed8' },
   });
 }
@@ -39,7 +41,7 @@ beforeAll(async () => {
   poc = validateCharacter(await new NodeIO().readBinary(await buildCharacter('miu-cat', pocSpec(spec))), { expectedAnimations: [] });
 });
 
-describe('kitbash miu-cat (chibi)', () => {
+describe('miu-cat voxel body (chibi)', () => {
   it('passes structural validation', () => {
     expect(report.errors).toEqual([]);
   });
@@ -56,14 +58,14 @@ describe('kitbash miu-cat (chibi)', () => {
     expect(report.triangles).toBeLessThanOrEqual(5000);
   });
 
-  it('seats the head on the shoulders at a chibi 1.2-1.6x head width', () => {
+  it('seats the head on the shoulders at a chibi 1.5-1.9x the rig head width', () => {
     const head = report.jointBounds.get('head');
     const torso = report.jointBounds.get('torso');
     if (!head || !torso) throw new Error('missing joint bounds');
     expect(head.min[1]).toBeGreaterThanOrEqual(torso.max[1] - 1e-3);
     const ratio = (head.max[0] - head.min[0]) / RIG_HEAD_WIDTH;
-    expect(ratio).toBeGreaterThanOrEqual(1.2);
-    expect(ratio).toBeLessThanOrEqual(1.6);
+    expect(ratio).toBeGreaterThanOrEqual(1.5);
+    expect(ratio).toBeLessThanOrEqual(1.9);
   });
 
   it('keeps the feet on the ground and the tail behind the torso', () => {
@@ -98,6 +100,29 @@ describe('kitbash miu-cat (chibi)', () => {
   it('rebuilds the POC Miu byte for byte when the chibi parameters are left at their defaults', async () => {
     const bytes = await buildCharacter('miu-cat', pocSpec(spec));
     expect(createHash('sha256').update(bytes).digest('hex')).toBe(POC_GLB_SHA256);
+  });
+
+  it('mirrors the left arm and leg onto the right side', () => {
+    for (const [left, right] of [['arm-left', 'arm-right'], ['leg-left', 'leg-right']] as const) {
+      const l = report.jointBounds.get(left);
+      const r = report.jointBounds.get(right);
+      if (!l || !r) throw new Error(`missing ${left}/${right} bounds`);
+      expect(r.min[0]).toBeCloseTo(-l.max[0], 5);
+      expect(r.max[0]).toBeCloseTo(-l.min[0], 5);
+      expect([r.min[1], r.max[1], r.min[2], r.max[2]]).toEqual([l.min[1], l.max[1], l.min[2], l.max[2]]);
+    }
+  });
+
+  it('is symmetric left to right, so the face and ears are centred', () => {
+    const head = report.jointBounds.get('head');
+    if (!head) throw new Error('missing head bounds');
+    expect(head.min[0]).toBeCloseTo(-head.max[0], 5);
+  });
+
+  it('needs either a voxel body or a Cube Pets head', () => {
+    const { body: _body, ...headless } = spec;
+    expect(characterSpecSchema.safeParse(headless).success).toBe(false);
+    expect(characterSpecSchema.safeParse({ ...headless, body: 'Bad Body' }).success).toBe(false);
   });
 
   it('rejects out-of-range proportions', () => {

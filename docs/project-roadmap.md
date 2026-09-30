@@ -23,7 +23,7 @@ Chỉ ghi task đã bắt đầu; các task còn lại đang ở trạng thái c
 | #3 | Monorepo Vite + React / Express / Drizzle, CI (audit, Semgrep, Postgres 17, E2E) | Hoàn thành (2026-09-29, CI xanh) | như trên |
 | #7 | Tài khoản phụ huynh (Google OAuth), hồ sơ trẻ, cổng PIN, đồng ý (bản nháp draft-3: thêm đếm hỗ trợ/số lần sai) | Hoàn thành phần kỹ thuật; văn bản đồng ý chờ pháp chế | `plans/dattqh/reports/foundation-review-260929.md` |
 | #8 | Data model + API nhân vật, tiến độ, thưởng tối thiểu | Hoàn thành (2026-09-29) | như trên |
-| #9, #12 | Miu chibi (biến thể A), phụ kiện co theo nhân vật, palette pastel ấm | Hoàn thành (duyệt bằng Jev theo ủy quyền, 2026-09-29) | `plans/dattqh/reports/jev-260929-foundation-review-decisions.md` |
+| #9, #12 | Miu chibi (biến thể A), phụ kiện co theo nhân vật, palette pastel ấm | Hoàn thành (duyệt bằng Jev theo ủy quyền, 2026-09-29); dựng lại bằng thân khối theo mock voxel `designs/character.png` (2026-09-30), chờ người sở hữu duyệt tạo hình | `plans/dattqh/reports/jev-260929-foundation-review-decisions.md`, `plans/dattqh/260930-1457-miu-voxel-chibi/plan.md` |
 | #5 | Tìm nguồn asset + license gate | Hoàn thành (Đã qua gate review) | `plans/dattqh/260929-0842-asset-sourcing-and-voxel-poc/` |
 | #6 | POC voxel | Hoàn thành (Đã qua gate review, chốt chỉnh visual) | `plans/dattqh/reports/poc-review-260929.md` |
 | #4 | Design token + bộ component UI (hướng A "Đảo mây kẹo hồng"), màn Tạm dừng, Đang tải, Mất mạng | Hoàn thành (2026-09-30); token tạm, chờ mock voxel (#23) | `plans/dattqh/260929-2141-vertical-slice-mvp/phase-01-design-tokens-and-ui-kit.md` |

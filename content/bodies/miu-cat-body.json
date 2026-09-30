@@ -1,0 +1,74 @@
+{
+  "id": "miu-cat-body",
+  "voxelSize": 0.05,
+  "palette": {
+    "fur": "#fdf8f5",
+    "fur-shade": "#eadfe3",
+    "ear": "#f6a5c0",
+    "eye": "#3b2432",
+    "shine": "#ffffff",
+    "nose": "#ef7fa0",
+    "mouth": "#b8324f",
+    "tongue": "#f47a98",
+    "cheek": "#ffb8cb",
+    "whisker": "#c0909f",
+    "dress": "#f27aae",
+    "dress-shade": "#d95c94",
+    "dress-light": "#f9b8d3",
+    "collar": "#fffafc",
+    "buckle": "#ffcf3a"
+  },
+  "parts": {
+    "head": [
+      { "x": -13, "y": 1, "z": -9, "w": 26, "h": 20, "d": 18, "color": "fur" },
+      { "x": -12, "y": 1, "z": -9, "w": 24, "h": 21, "d": 18, "color": "fur" },
+      { "x": -12, "y": 0, "z": -9, "w": 24, "h": 1, "d": 18, "color": "fur-shade" },
+      { "x": -12, "y": 1, "z": -10, "w": 24, "h": 20, "d": 20, "color": "fur" },
+      { "x": 6, "y": 22, "z": -2, "w": 6, "h": 2, "d": 4, "color": "fur", "sym": true },
+      { "x": 5, "y": 22, "z": -2, "w": 1, "h": 2, "d": 4, "color": "fur-shade", "sym": true },
+      { "x": 6, "y": 24, "z": -2, "w": 6, "h": 2, "d": 4, "color": "fur", "sym": true },
+      { "x": 8, "y": 26, "z": -2, "w": 4, "h": 2, "d": 4, "color": "fur", "sym": true },
+      { "x": 10, "y": 28, "z": -1, "w": 2, "h": 1, "d": 2, "color": "fur", "sym": true },
+      { "x": 7, "y": 22, "z": 2, "w": 3, "h": 3, "d": 1, "color": "ear", "sym": true },
+      { "x": 9, "y": 25, "z": 2, "w": 2, "h": 2, "d": 1, "color": "ear", "sym": true },
+      { "x": 4, "y": 7, "z": 10, "w": 5, "h": 5, "d": 1, "color": "eye", "sym": true },
+      { "x": 4, "y": 12, "z": 10, "w": 3, "h": 2, "d": 1, "color": "eye", "sym": true },
+      { "x": 7, "y": 12, "z": 10, "w": 2, "h": 2, "d": 1, "color": "shine", "sym": true },
+      { "x": -1, "y": 7, "z": 10, "w": 2, "h": 1, "d": 1, "color": "nose" },
+      { "x": -3, "y": 5, "z": 10, "w": 6, "h": 1, "d": 1, "color": "mouth" },
+      { "x": -3, "y": 4, "z": 10, "w": 2, "h": 1, "d": 1, "color": "mouth", "sym": true },
+      { "x": -1, "y": 3, "z": 10, "w": 2, "h": 2, "d": 1, "color": "tongue" },
+      { "x": -2, "y": 3, "z": 10, "w": 1, "h": 1, "d": 1, "color": "mouth", "sym": true },
+      { "x": -1, "y": 2, "z": 10, "w": 2, "h": 1, "d": 1, "color": "mouth" },
+      { "x": 9, "y": 5, "z": 10, "w": 3, "h": 2, "d": 1, "color": "cheek", "sym": true },
+      { "x": 12, "y": 8, "z": 9, "w": 3, "h": 1, "d": 1, "color": "whisker", "sym": true },
+      { "x": 12, "y": 6, "z": 9, "w": 3, "h": 1, "d": 1, "color": "whisker", "sym": true }
+    ],
+    "torso": [
+      { "x": -9, "y": 2, "z": -7, "w": 18, "h": 2, "d": 14, "color": "dress-light" },
+      { "x": -8, "y": 4, "z": -6, "w": 16, "h": 8, "d": 12, "color": "dress" },
+      { "x": -4, "y": 4, "z": 6, "w": 1, "h": 7, "d": 1, "color": "dress-shade", "sym": true },
+      { "x": -7, "y": 12, "z": -5, "w": 14, "h": 6, "d": 10, "color": "dress" },
+      { "x": -7, "y": 18, "z": -5, "w": 14, "h": 2, "d": 10, "color": "collar" },
+      { "x": 1, "y": 16, "z": 5, "w": 3, "h": 2, "d": 1, "color": "collar", "sym": true },
+      { "x": -1, "y": 15, "z": 5, "w": 2, "h": 2, "d": 2, "color": "collar" },
+      { "x": 1, "y": 14, "z": 5, "w": 3, "h": 2, "d": 1, "color": "collar", "sym": true },
+      { "x": -2, "y": 11, "z": 6, "w": 4, "h": 2, "d": 1, "color": "buckle" }
+    ],
+    "arm-left": [
+      { "x": -1, "y": -5, "z": -3, "w": 6, "h": 6, "d": 7, "color": "dress" },
+      { "x": 0, "y": -11, "z": -2, "w": 5, "h": 6, "d": 5, "color": "fur" }
+    ],
+    "leg-left": [
+      { "x": -3, "y": -10, "z": -3, "w": 6, "h": 10, "d": 6, "color": "fur" },
+      { "x": -3, "y": -10, "z": 3, "w": 6, "h": 2, "d": 1, "color": "fur" }
+    ],
+    "tail": [
+      { "x": -2, "y": 0, "z": -3, "w": 4, "h": 3, "d": 3, "color": "fur" },
+      { "x": -2, "y": 1, "z": -6, "w": 4, "h": 8, "d": 3, "color": "fur" },
+      { "x": -2, "y": 8, "z": -5, "w": 4, "h": 3, "d": 2, "color": "fur" }
+    ]
+  },
+  "mirror": { "arm-right": "arm-left", "leg-right": "leg-left" },
+  "tailPivot": [0, 8, -6]
+}

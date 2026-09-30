@@ -1,0 +1,70 @@
+{
+  "model": "jev-1.13.0",
+  "usage": {
+    "input_tokens": 1381,
+    "output_tokens": 203
+  },
+  "results": {
+    "hat": {
+      "stakes": "low",
+      "choice": "bend_and_shorten",
+      "confidence": 0.98,
+      "probabilities": {
+        "bend_and_shorten": 0.99,
+        "shorten_only": 0.0,
+        "keep": 0.01
+      },
+      "decision": "auto"
+    },
+    "head_size": {
+      "stakes": "low",
+      "choice": "enlarge",
+      "confidence": 0.79,
+      "probabilities": {
+        "enlarge": 0.89,
+        "keep": 0.11
+      },
+      "decision": "auto"
+    },
+    "eyes": {
+      "stakes": "low",
+      "choice": "enlarge",
+      "confidence": 0.79,
+      "probabilities": {
+        "enlarge": 0.89,
+        "keep": 0.11
+      },
+      "decision": "auto"
+    },
+    "mouth": {
+      "stakes": "low",
+      "choice": "widen",
+      "confidence": 0.86,
+      "probabilities": {
+        "widen": 0.93,
+        "keep": 0.07
+      },
+      "decision": "auto"
+    },
+    "fur_shading": {
+      "stakes": "low",
+      "choice": "shade_band",
+      "confidence": 0.48,
+      "probabilities": {
+        "shade_band": 0.74,
+        "keep": 0.26
+      },
+      "decision": "escalate"
+    },
+    "dress_length": {
+      "stakes": "low",
+      "choice": "lengthen",
+      "confidence": 0.97,
+      "probabilities": {
+        "keep": 0.01,
+        "lengthen": 0.99
+      },
+      "decision": "auto"
+    }
+  }
+}

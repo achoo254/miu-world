@@ -53,7 +53,7 @@ Nguồn: Master Plan v3 §7, §15 #16–#18.
 | Hash pack theo trust-on-first-use | Pack không công bố hash; hash + license hiện trên trang review để người duyệt | Tin URL tải (hash động, đổi khi pack cập nhật) |
 | Thư mục `assets/packs/`, `assets/generated/` | Hook của môi trường AI chặn đường dẫn chứa `vendor`/`build` | `assets/vendor/`, `assets/build/` |
 | Allowlist loại file dưới `assets/` | Chặn mọi nội dung chủ động mà không phải liệt kê từng đuôi | Blocklist đuôi thực thi |
-| Nhân vật ghép: rig + 27 anim Blocky Characters, đầu mèo nguyên khối Cube Pets, 4 anim xem thử keyframe bằng code | Không pack CC0 nào có mèo đứng 2 chân; Cube Pets không có mesh đầu riêng | Cube Pets nguyên bản (thú 4 chân, không vẫy tay được); nhân vật khối bằng code (giữ làm fallback) |
+| Nhân vật: rig + 27 anim Blocky Characters, thân dựng toàn bộ bằng khối từ `content/bodies/*.json` (mỗi phần gắn một xương), 4 anim keyframe bằng code | Theo mock voxel `designs/character.png` (người sở hữu chốt 2026-09-30): đầu, mặt, trang phục chibi mà pack không có; giữ được rig, anim và 1 draw call; loài mới chỉ là thêm file dữ liệu | Đầu mèo Cube Pets trên thân Blocky (bản POC, generator vẫn dựng được khi spec không có `body`); chỉ chỉnh màu và tỷ lệ bản ghép (không đạt tạo hình của mock) |
 | Nhân vật gộp 1 skinned mesh | Cùng node/anim, rẻ hơn ngân sách ≤ 3 draw call | Tách nhiều mesh |
 | Phụ kiện là lưới khối từ JSON, 1 draw call mỗi món | Đổi trang phục không cần artist; biến thể = đổi palette | Pack phụ kiện (không có cho thú khối) |
 | Texture block: Kenney Voxel Pack tint theo palette, 1 atlas, padding 4 px extrude | Một material; không lem tile tới mip 3 | Texture sinh bằng noise (giữ làm fallback); padding 2 px |

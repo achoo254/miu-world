@@ -25,6 +25,7 @@ Nguồn: Master Plan v3 §2 (art direction, quy tắc bám mock), §10 (phong c�
 - Token nằm ở `apps/web/src/ui/tokens.css`, là nơi duy nhất chứa giá trị màu. Muốn dùng giá trị mới thì thêm token trước. Cuối file có vài tên cũ (`--ink`, `--accent`, `--surface`…) giữ cho HUD của game (`apps/web/src/game/game.css`).
 - Component dùng chung nằm ở `apps/web/src/ui/kit/`: kiểu nút (`buttonClass`), icon, ảnh Miu, cảnh bầu trời (`SkyScene`), bàn phím PIN, thanh tiến độ, hộp thoại `Modal` (giữ focus bên trong, Esc để đóng, trả focus về chỗ cũ). Màn hệ thống (Tạm dừng, Mất mạng, Đang tải) ở `apps/web/src/ui/system/`. Class dùng chung nằm ở `apps/web/src/ui/styles.css`. Dựng màn mới từ đây trước khi viết style riêng.
 - Icon và ảnh mà giao diện React hiển thị phải khai báo trong `apps/web/src/ui/kit/ui-art.ts`. Bản build chỉ chép các file có trong danh sách đó, và báo lỗi nếu file không có trong manifest.
+- Tạo hình nhân vật theo mock voxel `designs/character.png` (người sở hữu chốt 2026-09-30; với nhân vật, mock này là chuẩn cả hình dạng lẫn màu): mèo trắng chibi đầu to, tai hồng, mắt to có đốm sáng, miệng cười, ria, má hồng, váy hồng nơ trắng. Thân dựng bằng khối trong `content/bodies/`; loài khác (Thỏ, Cáo, Gấu) là thêm file body, chưa làm ở MVP.
 - Ảnh Miu hiện lấy từ bộ render của trang review (`assets/generated/review/character/`), nền màu phẳng, không trong suốt. Vì vậy giao diện luôn đặt ảnh vào khung cùng màu nền, hoặc hòa màu bằng `multiply` lên nền tint. Khi có ảnh nhân vật riêng cho giao diện, đổi đường dẫn trong `ui-art.ts`.
 
 ## Font, icon, âm thanh
