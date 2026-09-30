@@ -26,7 +26,8 @@ Chỉ ghi task đã bắt đầu; các task còn lại đang ở trạng thái c
 | #9, #12 | Miu chibi (biến thể A), phụ kiện co theo nhân vật, palette pastel ấm | Hoàn thành (duyệt bằng Jev theo ủy quyền, 2026-09-29) | `plans/dattqh/reports/jev-260929-foundation-review-decisions.md` |
 | #5 | Tìm nguồn asset + license gate | Hoàn thành (Đã qua gate review) | `plans/dattqh/260929-0842-asset-sourcing-and-voxel-poc/` |
 | #6 | POC voxel | Hoàn thành (Đã qua gate review, chốt chỉnh visual) | `plans/dattqh/reports/poc-review-260929.md` |
-| #15 | Quest bằng dữ liệu: schema v2, runtime chấm đáp án, `pnpm content:check` trong CI, nội dung Khu rừng ch1 + stub ch2 | Hoàn thành phần dữ liệu và runtime (2026-09-30); nội dung học chờ giáo viên duyệt; kiểm target trên map bật khi khu rừng có vật thể tương tác | `plans/dattqh/260929-2141-vertical-slice-mvp/phase-02-quest-schema-runtime-content.md` |
+| #10 | Character Creator: chọn loài (Mèo mở), trang phục Mũ/Balo + biến thể màu mở theo level/quest (server kiểm), preview voxel 3D + 4 hoạt ảnh, chọn tên | Hoàn thành (2026-09-30); Áo/Giày/Cánh và loài khác là V1; chờ designer duyệt UI | `plans/dattqh/260929-2141-vertical-slice-mvp/phase-04-character-creator.md` |
+| #15 | Quest bằng dữ liệu: schema v2, runtime chấm đáp án, `pnpm content:check` trong CI, nội dung Khu rừng ch1 + stub ch2 | Hoàn thành phần dữ liệu và runtime (2026-09-30); nội dung học chờ giáo viên duyệt; `content:check` kiểm target trên map và chữ quest dùng `{name}` (tên nhân vật), không cứng "Miu" | `plans/dattqh/260929-2141-vertical-slice-mvp/phase-02-quest-schema-runtime-content.md` |
 
 ## Mã ổn định ↔ task Master Plan
 
