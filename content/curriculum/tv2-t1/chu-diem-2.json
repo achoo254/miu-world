@@ -1,0 +1,3376 @@
+{
+  "book": "tv2-t1",
+  "id": "tv2-t1-chu-diem-2",
+  "number": 2,
+  "title": "Đi học vui sao",
+  "lessons": [
+    {
+      "id": "tv2-t1-b09",
+      "number": 9,
+      "title": "Bài 9. Cô giáo lớp em",
+      "week": 5,
+      "pages": [
+        40,
+        42
+      ],
+      "sections": [
+        {
+          "id": "tv2-t1-b09-doc",
+          "kind": "doc",
+          "pages": [
+            40,
+            41
+          ],
+          "text": {
+            "title": "Cô giáo lớp em",
+            "author": "Nguyễn Xuân Sanh",
+            "body": "Sáng nào em đến lớp\nCũng thấy cô đến rồi.\nĐáp lời \"Chào cô ạ!\"\nCô mỉm cười thật tươi.\n\nCô dạy em tập viết\nGió đưa thoảng hương nhài\nNắng ghé vào cửa lớp\nXem chúng em học bài.\n\nNhững lời cô giáo giảng\nẤm trang vở thơm tho\nYêu thương em ngắm mãi\nNhững điểm mười cô cho."
+          },
+          "items": [
+            {
+              "id": "tv2-t1-b09-doc-kd",
+              "page": 40,
+              "prompt": "Đọc một bài thơ hoặc hát một bài hát về thầy cô.",
+              "exerciseType": "khoi-dong",
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b09-doc-1",
+              "page": 41,
+              "prompt": "Cô giáo đáp lại lời chào của các bạn nhỏ như thế nào?",
+              "exerciseType": "doc-hieu",
+              "answer": {
+                "text": "Cô mỉm cười thật tươi."
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b09-doc-2",
+              "page": 41,
+              "prompt": "Tìm những câu thơ tả cảnh vật khi cô dạy em học bài.",
+              "exerciseType": "doc-hieu",
+              "answer": {
+                "values": [
+                  "Gió đưa thoảng hương nhài",
+                  "Nắng ghé vào cửa lớp",
+                  "Xem chúng em học bài."
+                ]
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b09-doc-3",
+              "page": 41,
+              "prompt": "Bạn nhỏ đã kể những gì về cô giáo của mình?",
+              "exerciseType": "doc-hieu",
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b09-doc-4",
+              "page": 41,
+              "prompt": "Qua bài thơ, em thấy tình cảm bạn nhỏ dành cho cô giáo thế nào?",
+              "exerciseType": "doc-hieu",
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b09-doc-htl",
+              "page": 41,
+              "prompt": "Học thuộc lòng 2 khổ thơ em thích.",
+              "exerciseType": "doc-thanh-tieng",
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b09-doc-lt1-a",
+              "page": 41,
+              "prompt": "Nói câu thể hiện sự ngạc nhiên của em khi: a. Lần đầu được nghe một bạn hát rất hay",
+              "exerciseType": "dat-cau",
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b09-doc-lt1-b",
+              "page": 41,
+              "prompt": "Nói câu thể hiện sự ngạc nhiên của em khi: b. Được bố mẹ tặng một món quà bất ngờ",
+              "exerciseType": "dat-cau",
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b09-doc-lt2",
+              "page": 41,
+              "prompt": "Nói câu thể hiện tình cảm của em đối với thầy cô giáo của mình.",
+              "exerciseType": "dat-cau",
+              "media": [
+                "cô giáo cầm sách đứng giảng bài trước bảng lớp, học sinh ngồi nghe"
+              ],
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "tv2-t1-b09-viet-chu-hoa",
+          "kind": "viet-chu-hoa",
+          "pages": [
+            41,
+            41
+          ],
+          "items": [
+            {
+              "id": "tv2-t1-b09-viet-chu-hoa-1",
+              "page": 41,
+              "prompt": "Viết chữ hoa:",
+              "exerciseType": "viet-chu",
+              "media": [
+                "mẫu chữ hoa D cỡ vừa (có chấm đặt bút, đánh số nét) và cỡ nhỏ trên ô li"
+              ],
+              "readConfidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "tv2-t1-b09-viet-ung-dung",
+          "kind": "viet-ung-dung",
+          "pages": [
+            41,
+            41
+          ],
+          "items": [
+            {
+              "id": "tv2-t1-b09-viet-ung-dung-2",
+              "page": 41,
+              "prompt": "Viết ứng dụng: Dung dăng dung dẻ\nDắt trẻ đi chơi.",
+              "exerciseType": "viet-chu",
+              "readConfidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "tv2-t1-b09-ke-chuyen",
+          "kind": "ke-chuyen",
+          "title": "Cậu bé ham học",
+          "pages": [
+            42,
+            42
+          ],
+          "source": "(Theo Kể chuyện thần đồng Việt Nam)",
+          "items": [
+            {
+              "id": "tv2-t1-b09-ke-chuyen-1",
+              "page": 42,
+              "prompt": "Nghe kể chuyện.\nVì sao cậu bé Vũ Duệ không được đi học?\nBuổi sáng, Vũ Duệ thường cõng em đi đâu?\nVì sao Vũ Duệ được thầy khen?\nVì sao Vũ Duệ được đi học?",
+              "exerciseType": "ke-chuyen-tranh",
+              "media": [
+                "tranh 1: cậu bé Vũ Duệ cõng em đứng ở cổng rào, phía xa bố mẹ làm ruộng",
+                "tranh 2: Vũ Duệ cõng em đứng nép ngoài cửa lớp nhìn vào, thầy đồ đang giảng cho học trò",
+                "tranh 3: thầy đồ đặt tay lên vai Vũ Duệ đang cõng em",
+                "tranh 4: Vũ Duệ ngồi học cùng các bạn trong lớp, thầy đồ ngồi giảng"
+              ],
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b09-ke-chuyen-2",
+              "page": 42,
+              "prompt": "Chọn kể 1 – 2 đoạn của câu chuyện theo tranh.",
+              "exerciseType": "ke-chuyen-tranh",
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "tv2-t1-b09-van-dung",
+          "kind": "van-dung",
+          "pages": [
+            42,
+            42
+          ],
+          "items": [
+            {
+              "id": "tv2-t1-b09-van-dung-1",
+              "page": 42,
+              "prompt": "Kể cho người thân về cậu bé Vũ Duệ trong câu chuyện Cậu bé ham học.",
+              "exerciseType": "ke-chuyen-tranh",
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tv2-t1-b10",
+      "number": 10,
+      "title": "Bài 10. Thời khoá biểu",
+      "week": 5,
+      "pages": [
+        43,
+        47
+      ],
+      "sections": [
+        {
+          "id": "tv2-t1-b10-doc",
+          "kind": "doc",
+          "pages": [
+            43,
+            45
+          ],
+          "text": {
+            "title": "Thời khoá biểu",
+            "body": "Thời khoá biểu cho biết thời gian học các môn của từng ngày trong tuần. Thời khoá biểu gồm nhiều cột dọc và nhiều hàng ngang. Các bạn học sinh thường đọc thời khoá biểu theo trình tự thứ – buổi – tiết – môn.\n\nTHỜI KHOÁ BIỂU LỚP 2A\n\nTiết | Thứ Hai | Thứ Ba | Thứ Tư | Thứ Năm | Thứ Sáu\nBUỔI SÁNG\n1 | Hoạt động trải nghiệm | Tiếng Việt | Toán | Tiếng Việt | Tiếng Việt\n2 | Toán | Tiếng Việt | Mĩ thuật | Tiếng Việt | Tiếng Việt\n3 | Tiếng Việt | Toán | Tiếng Việt | Giáo dục thể chất | Toán\n4 | Tiếng Việt | Giáo dục thể chất | Tiếng Việt | Toán | Tiếng Anh\nBUỔI CHIỀU\n1 | Tiếng Anh | Đạo đức | Hoạt động trải nghiệm | Tự nhiên và Xã hội | Âm nhạc\n2 | Tự học có hướng dẫn | Tự học có hướng dẫn | Tự học có hướng dẫn | Tự học có hướng dẫn | Tự học có hướng dẫn\n3 |  | Tự nhiên và Xã hội |  |  | Hoạt động trải nghiệm"
+          },
+          "items": [
+            {
+              "id": "tv2-t1-b10-doc-kd",
+              "page": 43,
+              "prompt": "Em làm thế nào để biết được các môn học trong ngày, trong tuần?",
+              "exerciseType": "khoi-dong",
+              "media": [
+                "bạn gái đứng trước bàn học soạn sách vở, trên tường dán tờ THỜI KHOÁ BIỂU; ngoài cửa sổ là trăng"
+              ],
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b10-doc-1",
+              "page": 44,
+              "prompt": "Đọc thời khoá biểu của ngày thứ Hai.",
+              "exerciseType": "doc-thanh-tieng",
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b10-doc-2",
+              "page": 44,
+              "prompt": "Sáng thứ Hai có mấy tiết?",
+              "exerciseType": "doc-hieu",
+              "answer": {
+                "number": 4
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b10-doc-3",
+              "page": 44,
+              "prompt": "Thứ Năm có những môn học nào?",
+              "exerciseType": "doc-hieu",
+              "answer": {
+                "values": [
+                  "Tiếng Việt",
+                  "Giáo dục thể chất",
+                  "Toán",
+                  "Tự nhiên và Xã hội",
+                  "Tự học có hướng dẫn"
+                ]
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b10-doc-4",
+              "page": 44,
+              "prompt": "Nếu không có thời khoá biểu, em sẽ gặp khó khăn gì?",
+              "exerciseType": "doc-hieu",
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b10-doc-lt1",
+              "page": 44,
+              "prompt": "Dựa vào thời khoá biểu trên đây, hỏi – đáp theo mẫu:\nLớp mình có tiết Âm nhạc vào thứ mấy?\nLớp mình có tiết Âm nhạc vào thứ Sáu.",
+              "exerciseType": "dat-cau",
+              "media": [
+                "bạn trai hỏi (bóng nói câu hỏi mẫu), bạn gái giang tay trả lời (bóng nói câu trả lời mẫu)"
+              ],
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b10-doc-lt2",
+              "page": 45,
+              "prompt": "Nói một câu giới thiệu môn học hoặc hoạt động ở trường mà em thích.\nM: Tiếng Việt là môn học tôi yêu thích nhất.",
+              "exerciseType": "dat-cau",
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "tv2-t1-b10-nghe-viet",
+          "kind": "nghe-viet",
+          "pages": [
+            45,
+            45
+          ],
+          "items": [
+            {
+              "id": "tv2-t1-b10-nghe-viet-1",
+              "page": 45,
+              "prompt": "Nghe – viết: Thời khoá biểu (từ đầu đến buổi – tiết – môn).",
+              "exerciseType": "nghe-viet",
+              "readConfidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "tv2-t1-b10-chinh-ta",
+          "kind": "chinh-ta",
+          "pages": [
+            45,
+            45
+          ],
+          "items": [
+            {
+              "id": "tv2-t1-b10-chinh-ta-2-a",
+              "page": 45,
+              "prompt": "Dựa vào tranh, viết tên đồ vật có tiếng chứa c hoặc k.",
+              "exerciseType": "dien-chu",
+              "media": [
+                "cây thước kẻ màu xanh lá"
+              ],
+              "answer": {
+                "text": "thước kẻ"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b10-chinh-ta-2-b",
+              "page": 45,
+              "prompt": "Dựa vào tranh, viết tên đồ vật có tiếng chứa c hoặc k.",
+              "exerciseType": "dien-chu",
+              "media": [
+                "cái kéo cán hồng"
+              ],
+              "answer": {
+                "text": "cái kéo"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b10-chinh-ta-2-c",
+              "page": 45,
+              "prompt": "Dựa vào tranh, viết tên đồ vật có tiếng chứa c hoặc k.",
+              "exerciseType": "dien-chu",
+              "media": [
+                "chiếc cặp sách màu xanh dương"
+              ],
+              "answer": {
+                "text": "cặp sách"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b10-chinh-ta-3-a",
+              "page": 45,
+              "prompt": "Chọn a hoặc b.\na. Chọn ch hoặc tr thay cho ô vuông.\nMặt ◻ời mọc rồi lặn\n◻ên đôi ◻ân lon ton\nHai ◻ân ◻ời của con\nLà mẹ và cô giáo.\n(Theo Trần Quốc Toàn)",
+              "exerciseType": "dien-chu",
+              "answer": {
+                "values": [
+                  "tr",
+                  "Tr",
+                  "ch",
+                  "ch",
+                  "tr"
+                ]
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b10-chinh-ta-3-b",
+              "page": 45,
+              "prompt": "Chọn a hoặc b.\nb. Chọn v hoặc d thay cho ô vuông.\nCó con chim ◻ành khuyên nhỏ\n◻áng trông thật ngoan ngoãn quá\nGọi ◻ạ, bảo ◻âng lễ phép ngoan nhất nhà.\n(Theo Hoàng Vân)",
+              "exerciseType": "dien-chu",
+              "answer": {
+                "values": [
+                  "v",
+                  "D",
+                  "d",
+                  "v"
+                ]
+              },
+              "readConfidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "tv2-t1-b10-tu-ngu-cau",
+          "kind": "tu-ngu-cau",
+          "pages": [
+            46,
+            46
+          ],
+          "items": [
+            {
+              "id": "tv2-t1-b10-tu-ngu-cau-1-a",
+              "page": 46,
+              "prompt": "Dựa vào tranh, tìm từ ngữ:\n– Chỉ sự vật",
+              "exerciseType": "tim-tu",
+              "media": [
+                "tranh 1: trong lớp, bạn gái viết bài, bạn trai đọc sách",
+                "tranh 2: ba bạn ngồi quanh bàn làm đồ thủ công, trước bảng lớp",
+                "tranh 3: thầy giáo chơi đàn organ, các bạn vỗ tay hát",
+                "tranh 4: bốn bạn tập thể dục dưới gốc cây",
+                "tranh 5: sân trường: hai bạn ngồi ghế đá đọc sách, một bạn đứng cạnh; nhóm bạn chơi đuổi bắt; bạn gái nhảy dây; hai bạn đá cầu"
+              ],
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b10-tu-ngu-cau-1-b",
+              "page": 46,
+              "prompt": "Dựa vào tranh, tìm từ ngữ:\n– Chỉ hoạt động",
+              "exerciseType": "tim-tu",
+              "media": [
+                "tranh 1: trong lớp, bạn gái viết bài, bạn trai đọc sách",
+                "tranh 2: ba bạn ngồi quanh bàn làm đồ thủ công, trước bảng lớp",
+                "tranh 3: thầy giáo chơi đàn organ, các bạn vỗ tay hát",
+                "tranh 4: bốn bạn tập thể dục dưới gốc cây",
+                "tranh 5: sân trường: hai bạn ngồi ghế đá đọc sách, một bạn đứng cạnh; nhóm bạn chơi đuổi bắt; bạn gái nhảy dây; hai bạn đá cầu"
+              ],
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b10-tu-ngu-cau-2",
+              "page": 46,
+              "prompt": "Đặt một câu nêu hoạt động với từ ngữ vừa tìm được.",
+              "exerciseType": "dat-cau",
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "tv2-t1-b10-viet-doan",
+          "kind": "viet-doan",
+          "pages": [
+            47,
+            47
+          ],
+          "items": [
+            {
+              "id": "tv2-t1-b10-viet-doan-1",
+              "page": 47,
+              "prompt": "Quan sát tranh, kể lại các hoạt động của bạn Nam.\nM: 7 giờ 30 phút, bạn Nam đi học.",
+              "exerciseType": "ke-chuyen-tranh",
+              "media": [
+                "tranh 1 (7:00): bạn Nam đeo cặp đi vào cổng trường",
+                "tranh 2 (8:00): cô giáo giảng bài trước bảng, các bạn ngồi học",
+                "tranh 3 (9:30): các bạn chạy ra sân chơi dưới hành lang",
+                "tranh 4 (11:30): bạn Nam bưng khay cơm ở nhà ăn, cô cấp dưỡng chia cơm"
+              ],
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b10-viet-doan-2",
+              "page": 47,
+              "prompt": "Viết thời gian biểu của em từ 5 giờ chiều (17:00) đến lúc đi ngủ.\nM: Thời gian biểu\nThời gian | Hoạt động\n17:00 | Đi học về\n... | ...",
+              "exerciseType": "viet-doan",
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "tv2-t1-b10-doc-mo-rong",
+          "kind": "doc-mo-rong",
+          "pages": [
+            47,
+            47
+          ],
+          "items": [
+            {
+              "id": "tv2-t1-b10-doc-mo-rong-1",
+              "page": 47,
+              "prompt": "Đọc bảng tin của nhà trường.",
+              "exerciseType": "doc-thanh-tieng",
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b10-doc-mo-rong-2",
+              "page": 47,
+              "prompt": "Chia sẻ với bạn những thông tin mà em quan tâm.",
+              "exerciseType": "noi-ve-ban-than",
+              "media": [
+                "hai bạn ngồi ghế đá trò chuyện; bóng nói: \"Thứ Năm tuần này, khối 2 được đi tham quan đấy.\""
+              ],
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tv2-t1-b11",
+      "number": 11,
+      "title": "Bài 11. Cái trống trường em",
+      "week": 6,
+      "pages": [
+        48,
+        50
+      ],
+      "sections": [
+        {
+          "id": "tv2-t1-b11-doc",
+          "kind": "doc",
+          "pages": [
+            48,
+            49
+          ],
+          "text": {
+            "title": "Cái trống trường em",
+            "author": "Thanh Hào",
+            "body": "Cái trống trường em\nMùa hè cũng nghỉ\nSuốt ba tháng liền\nTrống nằm ngẫm nghĩ.\n\nBuồn không hả trống\nTrong những ngày hè\nBọn mình đi vắng\nChỉ còn tiếng ve?\n\nCái trống lặng im\nNghiêng đầu trên giá\nChắc thấy chúng em\nNó mừng vui quá!\n\nKìa trống đang gọi:\nTùng! Tùng! Tùng! Tùng!\nVào năm học mới\nGiọng vang tưng bừng.",
+            "glossary": [
+              {
+                "term": "Ngẫm nghĩ",
+                "meaning": "nghĩ đi nghĩ lại kĩ càng."
+              }
+            ]
+          },
+          "items": [
+            {
+              "id": "tv2-t1-b11-doc-kd",
+              "page": 48,
+              "prompt": "Tiếng trống trường báo cho em biết điều gì?",
+              "exerciseType": "khoi-dong",
+              "media": [
+                "bác bảo vệ đeo băng đỏ cầm dùi đánh trống, học sinh ngồi trong lớp",
+                "trống đánh, học sinh chạy ra sân chơi, đá cầu"
+              ],
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b11-doc-1",
+              "page": 49,
+              "prompt": "Bạn học sinh kể gì về trống trường trong những ngày hè?",
+              "exerciseType": "doc-hieu",
+              "answer": {
+                "values": [
+                  "Mùa hè cũng nghỉ",
+                  "Suốt ba tháng liền",
+                  "Trống nằm ngẫm nghĩ."
+                ]
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b11-doc-2",
+              "page": 49,
+              "prompt": "Tiếng trống trường trong khổ thơ cuối báo hiệu điều gì?",
+              "exerciseType": "doc-hieu",
+              "answer": {
+                "text": "Vào năm học mới"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b11-doc-3",
+              "page": 49,
+              "prompt": "Khổ thơ nào cho thấy bạn học sinh trò chuyện với trống trường như với một người bạn?",
+              "exerciseType": "doc-hieu",
+              "answer": {
+                "values": [
+                  "Buồn không hả trống",
+                  "Trong những ngày hè",
+                  "Bọn mình đi vắng",
+                  "Chỉ còn tiếng ve?"
+                ]
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b11-doc-4",
+              "page": 49,
+              "prompt": "Em thấy tình cảm của bạn học sinh với trống trường như thế nào?",
+              "exerciseType": "doc-hieu",
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b11-doc-lt1",
+              "page": 49,
+              "prompt": "Những từ ngữ nào dưới đây nói về trống trường như nói về con người? ngẫm nghĩ; mừng vui; buồn; đi vắng",
+              "exerciseType": "tim-tu",
+              "media": [
+                "4 đám mây ghi: ngẫm nghĩ, mừng vui, buồn, đi vắng"
+              ],
+              "answer": {
+                "choices": [
+                  "ngẫm nghĩ",
+                  "mừng vui",
+                  "buồn"
+                ]
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b11-doc-lt2-a",
+              "page": 49,
+              "prompt": "Nói và đáp: a. Lời tạm biệt của bạn học sinh với trống trường",
+              "exerciseType": "dat-cau",
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b11-doc-lt2-b",
+              "page": 49,
+              "prompt": "Nói và đáp: b. Lời tạm biệt bạn bè khi bắt đầu nghỉ hè",
+              "exerciseType": "dat-cau",
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "tv2-t1-b11-viet-chu-hoa",
+          "kind": "viet-chu-hoa",
+          "pages": [
+            50,
+            50
+          ],
+          "items": [
+            {
+              "id": "tv2-t1-b11-viet-chu-hoa-1",
+              "page": 50,
+              "prompt": "Viết chữ hoa:",
+              "exerciseType": "viet-chu",
+              "media": [
+                "mẫu chữ hoa Đ cỡ vừa (có chấm đặt bút, đánh số nét) và cỡ nhỏ trên ô li"
+              ],
+              "readConfidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "tv2-t1-b11-viet-ung-dung",
+          "kind": "viet-ung-dung",
+          "pages": [
+            50,
+            50
+          ],
+          "items": [
+            {
+              "id": "tv2-t1-b11-viet-ung-dung-2",
+              "page": 50,
+              "prompt": "Viết ứng dụng: Đi một ngày đàng, học một sàng khôn.",
+              "exerciseType": "viet-chu",
+              "readConfidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "tv2-t1-b11-noi-nghe",
+          "kind": "noi-nghe",
+          "title": "Ngôi trường của em",
+          "pages": [
+            50,
+            50
+          ],
+          "items": [
+            {
+              "id": "tv2-t1-b11-noi-nghe-1",
+              "page": 50,
+              "prompt": "Nói những điều em thích về trường của em.\nG:\n– Trường em tên là gì? Ở đâu?\n– Điều gì khiến em cảm thấy yêu thích, muốn đến trường hằng ngày?",
+              "exerciseType": "noi-ve-ban-than",
+              "media": [
+                "cổng Trường Tiểu học Quang Trung, hai bạn chạy vui; bóng nói: \"Tớ thích sân trường mình vì có nhiều cây.\" và \"Tớ thích bữa ăn trưa ở trường.\""
+              ],
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b11-noi-nghe-2",
+              "page": 50,
+              "prompt": "Em muốn trường mình có những thay đổi gì?",
+              "exerciseType": "noi-ve-ban-than",
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "tv2-t1-b11-van-dung",
+          "kind": "van-dung",
+          "pages": [
+            50,
+            50
+          ],
+          "items": [
+            {
+              "id": "tv2-t1-b11-van-dung-1",
+              "page": 50,
+              "prompt": "Nói với người thân những điều em muốn trường mình thay đổi.",
+              "exerciseType": "noi-ve-ban-than",
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tv2-t1-b12",
+      "number": 12,
+      "title": "Bài 12. Danh sách học sinh",
+      "week": 6,
+      "pages": [
+        51,
+        54
+      ],
+      "sections": [
+        {
+          "id": "tv2-t1-b12-doc",
+          "kind": "doc",
+          "pages": [
+            51,
+            52
+          ],
+          "text": {
+            "title": "Danh sách học sinh",
+            "body": "Hôm nay, chúng tôi được đọc truyện tại lớp. Cô giáo cho chúng tôi đăng kí đọc truyện theo sở thích. Dưới đây là danh sách đăng kí của tổ tôi.\n\nDanh sách học sinh tổ 2 lớp 2C đăng kí đọc truyện\nSố thứ tự | Họ và tên | Truyện\n1 | Trần Trường An | Ngày khai trường\n2 | Nguyễn Hà Anh | Ếch xanh đi học\n3 | Nguyễn Ngọc Bảo | Ếch xanh đi học\n4 | Đỗ Duy Bắc | Ngày khai trường\n5 | Vũ Tiến Bình | Vì sao gà chẳng giỏi bơi?\n6 | Lê Thị Cúc | Ngày khai trường\n7 | Lê Gia Hân | Vì sao gà chẳng giỏi bơi?\n8 | Phùng Minh Khánh | Ếch xanh đi học\n\nDựa vào danh sách đăng kí, cô chia lớp thành ba nhóm, mỗi nhóm đọc một truyện. Chúng tôi đọc cho nhau nghe, rồi cùng nhau trao đổi về các nhân vật trong truyện mà nhóm đã chọn."
+          },
+          "items": [
+            {
+              "id": "tv2-t1-b12-doc-kd1",
+              "page": 51,
+              "prompt": "Em đã được đọc bản danh sách học sinh nào dưới đây?\n– Danh sách học sinh đi tham quan\n– Danh sách học sinh dự thi vẽ tranh\n– Danh sách Sao Nhi đồng",
+              "exerciseType": "khoi-dong",
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b12-doc-kd2",
+              "page": 51,
+              "prompt": "Em biết được thông tin gì khi đọc bản danh sách đó?",
+              "exerciseType": "khoi-dong",
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b12-doc-1",
+              "page": 52,
+              "prompt": "Trong bản danh sách, tổ 2 lớp 2C có bao nhiêu bạn?",
+              "exerciseType": "doc-hieu",
+              "answer": {
+                "number": 8
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b12-doc-2",
+              "page": 52,
+              "prompt": "Bạn đứng ở vị trí số 6 đăng kí đọc truyện gì?",
+              "exerciseType": "doc-hieu",
+              "answer": {
+                "text": "Ngày khai trường"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b12-doc-3",
+              "page": 52,
+              "prompt": "Những bạn nào đăng kí đọc cùng truyện với bạn ở vị trí số 6?",
+              "exerciseType": "doc-hieu",
+              "answer": {
+                "choices": [
+                  "Trần Trường An",
+                  "Đỗ Duy Bắc"
+                ]
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b12-doc-4",
+              "page": 52,
+              "prompt": "Bản danh sách có tác dụng gì?",
+              "exerciseType": "doc-hieu",
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b12-doc-lt1",
+              "page": 52,
+              "prompt": "Tên học sinh trong bản danh sách được sắp xếp thế nào?",
+              "exerciseType": "doc-hieu",
+              "answer": {
+                "text": "theo thứ tự bảng chữ cái"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b12-doc-lt2",
+              "page": 52,
+              "prompt": "Học thuộc bảng chữ cái tiếng Việt.",
+              "exerciseType": "doc-thanh-tieng",
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "tv2-t1-b12-nghe-viet",
+          "kind": "nghe-viet",
+          "pages": [
+            52,
+            52
+          ],
+          "items": [
+            {
+              "id": "tv2-t1-b12-nghe-viet-1",
+              "page": 52,
+              "prompt": "Nghe – viết: Cái trống trường em (từ Buồn không hả trống đến Tùng! Tùng! Tùng! Tùng!).",
+              "exerciseType": "nghe-viet",
+              "readConfidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "tv2-t1-b12-chinh-ta",
+          "kind": "chinh-ta",
+          "pages": [
+            52,
+            53
+          ],
+          "items": [
+            {
+              "id": "tv2-t1-b12-chinh-ta-2-a",
+              "page": 52,
+              "prompt": "Dựa vào tranh, viết từ ngữ có tiếng bắt đầu bằng g hoặc gh.",
+              "exerciseType": "dien-chu",
+              "media": [
+                "bộ bàn và hai cái ghế gỗ"
+              ],
+              "answer": {
+                "text": "cái ghế"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b12-chinh-ta-2-b",
+              "page": 52,
+              "prompt": "Dựa vào tranh, viết từ ngữ có tiếng bắt đầu bằng g hoặc gh.",
+              "exerciseType": "dien-chu",
+              "media": [
+                "mấy cái kẹp ghim giấy nhiều màu"
+              ],
+              "answer": {
+                "text": "cái ghim"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b12-chinh-ta-2-c",
+              "page": 52,
+              "prompt": "Dựa vào tranh, viết từ ngữ có tiếng bắt đầu bằng g hoặc gh.",
+              "exerciseType": "dien-chu",
+              "media": [
+                "gà mẹ và hai chú gà con"
+              ],
+              "answer": {
+                "text": "gà mẹ, gà con"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b12-chinh-ta-3-a-1",
+              "page": 52,
+              "prompt": "Chọn a hoặc b.\na. Chọn s hoặc x thay cho ô vuông rồi giải câu đố.\n– Giữa đám lá mượt ◻anh\nTreo từng chùm chuông nhỏ\nTrắng ◻anh và hồng đỏ\nBừng ◻áng cả vườn quê.\n(Là quả gì?)",
+              "exerciseType": "dien-chu",
+              "media": [
+                "chùm quả roi (mận) đỏ hồng trên cành"
+              ],
+              "answer": {
+                "values": [
+                  "x",
+                  "x",
+                  "s",
+                  "quả roi"
+                ]
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b12-chinh-ta-3-a-2",
+              "page": 52,
+              "prompt": "Chọn a hoặc b.\na. Chọn s hoặc x thay cho ô vuông rồi giải câu đố.\n– Cầu gì không bắc ngang ◻ông\nKhông trèo qua ◻uối mà chồng lên mây?\n(Là gì?)",
+              "exerciseType": "dien-chu",
+              "media": [
+                "cầu vồng trên bầu trời xanh, dưới là bãi cỏ"
+              ],
+              "answer": {
+                "values": [
+                  "s",
+                  "s",
+                  "cầu vồng"
+                ]
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b12-chinh-ta-3-b",
+              "page": 53,
+              "prompt": "Chọn a hoặc b.\nb. Chọn dấu hỏi hoặc dấu ngã cho chữ in đậm.\nMắt cua ngôi nhà\nLà nhưng ô cưa\nHai cánh khép mơ\nNhư hai hàng mi\n\nMôi khi người đi\nMắt buồn ngủ miết\nNgười về mắt vui\nThức không biết mệt.\n(Theo Đặng Vương Hưng)",
+              "exerciseType": "dien-chu",
+              "media": [
+                "các chữ in đậm theo thứ tự: cua, nhưng, cưa, mơ, Môi"
+              ],
+              "answer": {
+                "values": [
+                  "cửa",
+                  "những",
+                  "cửa",
+                  "mở",
+                  "Mỗi"
+                ]
+              },
+              "readConfidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "tv2-t1-b12-tu-ngu-cau",
+          "kind": "tu-ngu-cau",
+          "pages": [
+            53,
+            53
+          ],
+          "items": [
+            {
+              "id": "tv2-t1-b12-tu-ngu-cau-1-a",
+              "page": 53,
+              "prompt": "Giải câu đố để tìm từ ngữ chỉ sự vật.\na. Cái gì tích tắc ngày đêm,\nNhắc em đi ngủ, nhắc em học bài\nMột anh chậm bước khoan thai,\nMột anh chạy những bước dài thật nhanh?\n(Là cái gì?)",
+              "exerciseType": "tim-tu",
+              "answer": {
+                "text": "đồng hồ"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b12-tu-ngu-cau-1-b",
+              "page": 53,
+              "prompt": "Giải câu đố để tìm từ ngữ chỉ sự vật.\nb. Ruột dài từ mũi đến chân\nMũi mòn ruột cũng dần dần mòn theo.\n(Là cái gì?)",
+              "exerciseType": "tim-tu",
+              "answer": {
+                "text": "bút chì"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b12-tu-ngu-cau-1-c",
+              "page": 53,
+              "prompt": "Giải câu đố để tìm từ ngữ chỉ sự vật.\nc. Nhỏ như cái kẹo\nDẻo như bánh giầy\nHọc trò lâu nay\nVẫn dùng đến nó.\n(Là cái gì?)",
+              "exerciseType": "tim-tu",
+              "answer": {
+                "text": "cục tẩy"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b12-tu-ngu-cau-2",
+              "page": 53,
+              "prompt": "Tìm từ ngữ chỉ đặc điểm trong các câu đố trên.\nM: chậm",
+              "exerciseType": "tim-tu",
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b12-tu-ngu-cau-3",
+              "page": 53,
+              "prompt": "Đặt một câu nêu đặc điểm của đồ vật ở trường, lớp.\nM: Thân trống nâu bóng.",
+              "exerciseType": "dat-cau",
+              "media": [
+                "bác bảo vệ cầm dùi đánh trống treo trên giá, sau là dãy lớp học, học sinh chạy trong sân"
+              ],
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "tv2-t1-b12-viet-doan",
+          "kind": "viet-doan",
+          "pages": [
+            54,
+            54
+          ],
+          "items": [
+            {
+              "id": "tv2-t1-b12-viet-doan-1-a",
+              "page": 54,
+              "prompt": "Đọc danh sách dưới đây và trả lời câu hỏi.\nDanh sách học sinh tổ 1 lớp 2A đăng kí đi tham quan\nSố thứ tự | Họ và tên | Địa điểm tham quan\n1 | Nguyễn Hải Anh | Bảo tàng Dân tộc học\n2 | Đỗ Thị Thanh Bình | Lăng Bác\n3 | Nguyễn Văn Cường | Bảo tàng Dân tộc học\n4 | Trần Minh Đức | Bảo tàng Dân tộc học\n5 | Lê Hương Giang | Bảo tàng Dân tộc học\n6 | Nguyễn Thị Thanh Hương | Lăng Bác\n7 | Trịnh Cao Khải | Lăng Bác\n8 | Trần Hải Phong | Lăng Bác\na. Tổ 1 lớp 2A có bao nhiêu học sinh?",
+              "exerciseType": "doc-hieu",
+              "answer": {
+                "number": 8
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b12-viet-doan-1-b",
+              "page": 54,
+              "prompt": "Đọc danh sách dưới đây và trả lời câu hỏi.\nDanh sách học sinh tổ 1 lớp 2A đăng kí đi tham quan\nSố thứ tự | Họ và tên | Địa điểm tham quan\n1 | Nguyễn Hải Anh | Bảo tàng Dân tộc học\n2 | Đỗ Thị Thanh Bình | Lăng Bác\n3 | Nguyễn Văn Cường | Bảo tàng Dân tộc học\n4 | Trần Minh Đức | Bảo tàng Dân tộc học\n5 | Lê Hương Giang | Bảo tàng Dân tộc học\n6 | Nguyễn Thị Thanh Hương | Lăng Bác\n7 | Trịnh Cao Khải | Lăng Bác\n8 | Trần Hải Phong | Lăng Bác\nb. Có mấy bạn đăng kí đi tham quan Lăng Bác?",
+              "exerciseType": "doc-hieu",
+              "answer": {
+                "number": 4
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b12-viet-doan-1-c",
+              "page": 54,
+              "prompt": "Đọc danh sách dưới đây và trả lời câu hỏi.\nDanh sách học sinh tổ 1 lớp 2A đăng kí đi tham quan\nSố thứ tự | Họ và tên | Địa điểm tham quan\n1 | Nguyễn Hải Anh | Bảo tàng Dân tộc học\n2 | Đỗ Thị Thanh Bình | Lăng Bác\n3 | Nguyễn Văn Cường | Bảo tàng Dân tộc học\n4 | Trần Minh Đức | Bảo tàng Dân tộc học\n5 | Lê Hương Giang | Bảo tàng Dân tộc học\n6 | Nguyễn Thị Thanh Hương | Lăng Bác\n7 | Trịnh Cao Khải | Lăng Bác\n8 | Trần Hải Phong | Lăng Bác\nc. Có mấy bạn đăng kí đi tham quan Bảo tàng Dân tộc học?",
+              "exerciseType": "doc-hieu",
+              "answer": {
+                "number": 4
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b12-viet-doan-2",
+              "page": 54,
+              "prompt": "Lập danh sách tổ em đăng kí tham gia các câu lạc bộ của trường như: câu lạc bộ cờ vua, võ thuật, bơi lội,...",
+              "exerciseType": "viet-doan",
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "tv2-t1-b12-doc-mo-rong",
+          "kind": "doc-mo-rong",
+          "pages": [
+            54,
+            54
+          ],
+          "items": [
+            {
+              "id": "tv2-t1-b12-doc-mo-rong-1",
+              "page": 54,
+              "prompt": "Tìm đọc bài thơ, câu chuyện, bài báo viết về thầy cô.",
+              "exerciseType": "doc-thanh-tieng",
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b12-doc-mo-rong-2",
+              "page": 54,
+              "prompt": "Chép lại những câu thơ, câu văn em thích.",
+              "exerciseType": "viet-chu",
+              "media": [
+                "tờ giấy cuộn mẫu chép thơ: \"Ngày 20 tháng 10 năm 2021 / Bàn tay cô giáo / (Trích) / Bàn tay cô giáo / Tết tóc cho em / Về nhà mẹ khen / Tay cô đến khéo. / (Định Hải)\""
+              ],
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tv2-t1-b13",
+      "number": 13,
+      "title": "Bài 13. Yêu lắm trường ơi!",
+      "week": 7,
+      "pages": [
+        55,
+        57
+      ],
+      "sections": [
+        {
+          "id": "tv2-t1-b13-doc",
+          "kind": "doc",
+          "pages": [
+            55,
+            56
+          ],
+          "text": {
+            "title": "Yêu lắm trường ơi!",
+            "author": "Nguyễn Trọng Hoàn",
+            "body": "Em yêu mái trường\nCó hàng cây mát\nXôn xao khúc nhạc\nTiếng chim xanh trời.\n\nMỗi giờ ra chơi\nSân trường nhộn nhịp\nHồng hào gương mặt\nBạn nào cũng xinh.\n\nYêu lớp học em\nCó khung cửa sổ\nCó bàn tay lá\nQuạt gió mát vào.\n\nLời cô ngọt ngào\nThấm từng trang sách\nNgày không đến lớp\nThấy nhớ nhớ ghê!\n\nCó đêm trong mơ\nBỗng cười khúc khích\nNgỡ đang ở lớp\nCùng bạn đùa vui."
+          },
+          "items": [
+            {
+              "id": "tv2-t1-b13-doc-kd1",
+              "page": 55,
+              "prompt": "Hát bài Em yêu trường em của nhạc sĩ Hoàng Vân.",
+              "exerciseType": "khoi-dong",
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b13-doc-kd2",
+              "page": 55,
+              "prompt": "Bạn nhỏ trong bài hát có tình cảm như thế nào với ngôi trường của mình?",
+              "exerciseType": "khoi-dong",
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b13-doc-1-a",
+              "page": 56,
+              "prompt": "Đọc khổ thơ tương ứng với từng bức tranh dưới đây:",
+              "exerciseType": "noi",
+              "media": [
+                "tranh 1: sân trường có hàng cây, các bạn nhảy dây, chơi đùa trong giờ ra chơi"
+              ],
+              "answer": {
+                "values": [
+                  "Mỗi giờ ra chơi",
+                  "Sân trường nhộn nhịp",
+                  "Hồng hào gương mặt",
+                  "Bạn nào cũng xinh."
+                ]
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b13-doc-1-b",
+              "page": 56,
+              "prompt": "Đọc khổ thơ tương ứng với từng bức tranh dưới đây:",
+              "exerciseType": "noi",
+              "media": [
+                "tranh 2: bạn gái ngồi bên khung cửa sổ, cành lá xanh vươn vào"
+              ],
+              "answer": {
+                "values": [
+                  "Yêu lớp học em",
+                  "Có khung cửa sổ",
+                  "Có bàn tay lá",
+                  "Quạt gió mát vào."
+                ]
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b13-doc-1-c",
+              "page": 56,
+              "prompt": "Đọc khổ thơ tương ứng với từng bức tranh dưới đây:",
+              "exerciseType": "noi",
+              "media": [
+                "tranh 3: bạn gái nằm ngủ mỉm cười trên giường"
+              ],
+              "answer": {
+                "values": [
+                  "Có đêm trong mơ",
+                  "Bỗng cười khúc khích",
+                  "Ngỡ đang ở lớp",
+                  "Cùng bạn đùa vui."
+                ]
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b13-doc-2",
+              "page": 56,
+              "prompt": "Tìm những câu thơ tả các bạn học sinh trong giờ ra chơi.",
+              "exerciseType": "doc-hieu",
+              "answer": {
+                "values": [
+                  "Hồng hào gương mặt",
+                  "Bạn nào cũng xinh."
+                ]
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b13-doc-3",
+              "page": 56,
+              "prompt": "Bạn nhỏ yêu những gì ở trường, lớp của mình?",
+              "exerciseType": "doc-hieu",
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b13-doc-4",
+              "page": 56,
+              "prompt": "Bạn nhỏ nhớ gì về cô giáo khi không đến lớp?",
+              "exerciseType": "doc-hieu",
+              "answer": {
+                "text": "Lời cô ngọt ngào"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b13-doc-lt1",
+              "page": 56,
+              "prompt": "Từ nào trong bài thơ thể hiện rõ nhất tình cảm của bạn nhỏ dành cho trường lớp?",
+              "exerciseType": "tim-tu",
+              "answer": {
+                "text": "yêu"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b13-doc-lt2-a",
+              "page": 56,
+              "prompt": "Kết hợp từ ngữ ở cột A với từ ngữ ở cột B để tạo câu nêu đặc điểm.\nA: Gương mặt các bạn; Lời cô; Sân trường\nB: nhộn nhịp.; ngọt ngào.; xinh xắn.\nGương mặt các bạn",
+              "exerciseType": "noi",
+              "answer": {
+                "text": "xinh xắn."
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b13-doc-lt2-b",
+              "page": 56,
+              "prompt": "Kết hợp từ ngữ ở cột A với từ ngữ ở cột B để tạo câu nêu đặc điểm.\nA: Gương mặt các bạn; Lời cô; Sân trường\nB: nhộn nhịp.; ngọt ngào.; xinh xắn.\nLời cô",
+              "exerciseType": "noi",
+              "answer": {
+                "text": "ngọt ngào."
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b13-doc-lt2-c",
+              "page": 56,
+              "prompt": "Kết hợp từ ngữ ở cột A với từ ngữ ở cột B để tạo câu nêu đặc điểm.\nA: Gương mặt các bạn; Lời cô; Sân trường\nB: nhộn nhịp.; ngọt ngào.; xinh xắn.\nSân trường",
+              "exerciseType": "noi",
+              "answer": {
+                "text": "nhộn nhịp."
+              },
+              "readConfidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "tv2-t1-b13-viet-chu-hoa",
+          "kind": "viet-chu-hoa",
+          "pages": [
+            56,
+            56
+          ],
+          "items": [
+            {
+              "id": "tv2-t1-b13-viet-chu-hoa-1",
+              "page": 56,
+              "prompt": "Viết chữ hoa:",
+              "exerciseType": "viet-chu",
+              "media": [
+                "mẫu chữ hoa E cỡ vừa (đánh số nét) và cỡ nhỏ trên ô li",
+                "mẫu chữ hoa Ê cỡ vừa (đánh số nét) và cỡ nhỏ trên ô li"
+              ],
+              "readConfidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "tv2-t1-b13-viet-ung-dung",
+          "kind": "viet-ung-dung",
+          "pages": [
+            56,
+            56
+          ],
+          "items": [
+            {
+              "id": "tv2-t1-b13-viet-ung-dung-2",
+              "page": 56,
+              "prompt": "Viết ứng dụng: Em yêu mái trường\nCó hàng cây mát.",
+              "exerciseType": "viet-chu",
+              "readConfidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "tv2-t1-b13-ke-chuyen",
+          "kind": "ke-chuyen",
+          "title": "Bữa ăn trưa",
+          "pages": [
+            57,
+            57
+          ],
+          "source": "(Theo Tốt-tô-chan, cô bé bên cửa sổ)",
+          "items": [
+            {
+              "id": "tv2-t1-b13-ke-chuyen-1",
+              "page": 57,
+              "prompt": "Nghe kể chuyện.",
+              "exerciseType": "ke-chuyen-tranh",
+              "media": [
+                "tranh 1: thầy hiệu trưởng đứng hỏi các bạn ngồi ăn trưa; bóng nói: \"Các em có đem theo món ăn của biển và của đồi núi không?\"",
+                "tranh 2: cô cấp dưỡng gắp thêm thức ăn vào hộp cơm của một bạn trai, thầy đứng cạnh",
+                "tranh 3: thầy chỉ vào khay cơm của bạn gái; bóng nói: \"Món này là của biển hay của đồi núi?\"",
+                "tranh 4: các bạn ngồi bên hộp cơm, vui vẻ chắp tay trước bữa ăn"
+              ],
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b13-ke-chuyen-2",
+              "page": 57,
+              "prompt": "Chọn kể 1 – 2 đoạn của câu chuyện theo tranh.",
+              "exerciseType": "ke-chuyen-tranh",
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "tv2-t1-b13-van-dung",
+          "kind": "van-dung",
+          "pages": [
+            57,
+            57
+          ],
+          "items": [
+            {
+              "id": "tv2-t1-b13-van-dung-a",
+              "page": 57,
+              "prompt": "Chọn a hoặc b.\na. Kể cho người thân về giờ ăn trưa ở lớp em.",
+              "exerciseType": "noi-ve-ban-than",
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b13-van-dung-b",
+              "page": 57,
+              "prompt": "Chọn a hoặc b.\nb. Kể cho bạn về bữa ăn trưa của em.",
+              "exerciseType": "noi-ve-ban-than",
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tv2-t1-b14",
+      "number": 14,
+      "title": "Bài 14. Em học vẽ",
+      "week": 7,
+      "pages": [
+        58,
+        62
+      ],
+      "sections": [
+        {
+          "id": "tv2-t1-b14-doc",
+          "kind": "doc",
+          "pages": [
+            58,
+            59
+          ],
+          "text": {
+            "title": "Em học vẽ",
+            "author": "Phan Thị Diên",
+            "body": "Hôm nay trong lớp học\nVới giấy trắng, bút màu\nNắn nót em ngồi vẽ\nLung linh bầu trời sao.\n\nVẽ ông trăng trên cao\nRải ánh vàng đầy ngõ\nVẽ cánh diều no gió\nVi vu giữa trời xanh.\n\nVẽ biển cả trong lành\nCó một con thuyền trắng\nGiương cánh buồm đỏ thắm\nĐang rẽ sóng ra khơi.\n\nVẽ cả ông mặt trời\nVà những chùm phượng đỏ\nTrên sân trường lộng gió\nGọi ve về râm ran."
+          },
+          "items": [
+            {
+              "id": "tv2-t1-b14-doc-kd",
+              "page": 58,
+              "prompt": "Giới thiệu với bạn một bức tranh mà em thích.",
+              "exerciseType": "khoi-dong",
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b14-doc-1",
+              "page": 59,
+              "prompt": "Bạn nhỏ vẽ những gì trong bức tranh bầu trời đêm?",
+              "exerciseType": "doc-hieu",
+              "answer": {
+                "values": [
+                  "bầu trời sao",
+                  "ông trăng",
+                  "cánh diều"
+                ]
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b14-doc-2",
+              "page": 59,
+              "prompt": "Bức tranh cảnh biển của bạn nhỏ có gì đẹp?",
+              "exerciseType": "doc-hieu",
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b14-doc-3",
+              "page": 59,
+              "prompt": "Đọc khổ thơ tương ứng với bức tranh dưới đây:",
+              "exerciseType": "doc-hieu",
+              "media": [
+                "sân trường với ba cây phượng nở hoa đỏ, ông mặt trời chiếu sáng, phía sau là dãy lớp học"
+              ],
+              "answer": {
+                "values": [
+                  "Vẽ cả ông mặt trời",
+                  "Và những chùm phượng đỏ",
+                  "Trên sân trường lộng gió",
+                  "Gọi ve về râm ran."
+                ]
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b14-doc-4",
+              "page": 59,
+              "prompt": "Tìm tiếng cùng vần ở cuối các dòng thơ.",
+              "exerciseType": "tim-tu",
+              "answer": {
+                "values": [
+                  "sao – cao",
+                  "ngõ – gió",
+                  "xanh – lành",
+                  "khơi – trời",
+                  "đỏ – gió"
+                ]
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b14-doc-htl",
+              "page": 59,
+              "prompt": "Học thuộc lòng 2 khổ thơ em thích.",
+              "exerciseType": "doc-thanh-tieng",
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b14-doc-lt1",
+              "page": 59,
+              "prompt": "Tìm trong bài thơ những từ ngữ chỉ sự vật.",
+              "exerciseType": "tim-tu",
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b14-doc-lt2",
+              "page": 59,
+              "prompt": "Đặt câu nêu đặc điểm với 1 trong 3 từ lung linh, vi vu, râm ran.\nM: Bầu trời sao lung linh.",
+              "exerciseType": "dat-cau",
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "tv2-t1-b14-nghe-viet",
+          "kind": "nghe-viet",
+          "pages": [
+            60,
+            60
+          ],
+          "items": [
+            {
+              "id": "tv2-t1-b14-nghe-viet-1",
+              "page": 60,
+              "prompt": "Nghe – viết: Em học vẽ (2 khổ thơ đầu).",
+              "exerciseType": "nghe-viet",
+              "readConfidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "tv2-t1-b14-chinh-ta",
+          "kind": "chinh-ta",
+          "pages": [
+            60,
+            60
+          ],
+          "items": [
+            {
+              "id": "tv2-t1-b14-chinh-ta-2-a",
+              "page": 60,
+              "prompt": "Chọn ng hoặc ngh thay cho ô vuông.\na. Công cha, ◻ĩa mẹ, ơn thầy.",
+              "exerciseType": "dien-chu",
+              "answer": {
+                "text": "ngh"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b14-chinh-ta-2-b",
+              "page": 60,
+              "prompt": "Chọn ng hoặc ngh thay cho ô vuông.\nb. Có công mài sắt, có ◻ày nên kim.",
+              "exerciseType": "dien-chu",
+              "answer": {
+                "text": "ng"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b14-chinh-ta-3-a-1",
+              "page": 60,
+              "prompt": "Chọn a hoặc b.\na. Tìm từ ngữ có tiếng bắt đầu bằng r, d hoặc gi thay cho hình.\n– Chậm như .",
+              "exerciseType": "dien-chu",
+              "media": [
+                "hình con rùa in ngay trong câu, thay cho từ cần tìm"
+              ],
+              "answer": {
+                "text": "rùa"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b14-chinh-ta-3-a-2",
+              "page": 60,
+              "prompt": "Chọn a hoặc b.\na. Tìm từ ngữ có tiếng bắt đầu bằng r, d hoặc gi thay cho hình.\n– Nhanh như .",
+              "exerciseType": "dien-chu",
+              "media": [
+                "hình gió thổi cuốn lá bay in ngay trong câu, thay cho từ cần tìm"
+              ],
+              "answer": {
+                "text": "gió"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b14-chinh-ta-3-a-3",
+              "page": 60,
+              "prompt": "Chọn a hoặc b.\na. Tìm từ ngữ có tiếng bắt đầu bằng r, d hoặc gi thay cho hình.\n– Nắng tốt , mưa tốt lúa.",
+              "exerciseType": "dien-chu",
+              "media": [
+                "hình quả dưa hấu in ngay trong câu, thay cho từ cần tìm"
+              ],
+              "answer": {
+                "text": "dưa"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b14-chinh-ta-3-b-1",
+              "page": 60,
+              "prompt": "Chọn a hoặc b.\nb. Tìm từ ngữ có tiếng chứa an hoặc ang gọi tên sự vật trong mỗi hình.",
+              "exerciseType": "dien-chu",
+              "media": [
+                "cái bàn gỗ"
+              ],
+              "answer": {
+                "text": "cái bàn"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b14-chinh-ta-3-b-2",
+              "page": 60,
+              "prompt": "Chọn a hoặc b.\nb. Tìm từ ngữ có tiếng chứa an hoặc ang gọi tên sự vật trong mỗi hình.",
+              "exerciseType": "dien-chu",
+              "media": [
+                "tấm bảng đen viền nâu"
+              ],
+              "answer": {
+                "text": "cái bảng"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b14-chinh-ta-3-b-3",
+              "page": 60,
+              "prompt": "Chọn a hoặc b.\nb. Tìm từ ngữ có tiếng chứa an hoặc ang gọi tên sự vật trong mỗi hình.",
+              "exerciseType": "dien-chu",
+              "media": [
+                "cây đàn ghi-ta màu cam"
+              ],
+              "answer": {
+                "text": "cây đàn"
+              },
+              "readConfidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "tv2-t1-b14-tu-ngu-cau",
+          "kind": "tu-ngu-cau",
+          "pages": [
+            60,
+            61
+          ],
+          "items": [
+            {
+              "id": "tv2-t1-b14-tu-ngu-cau-1",
+              "page": 60,
+              "prompt": "Nói tên các đồ dùng có ở góc học tập.",
+              "exerciseType": "tim-tu",
+              "media": [
+                "góc học tập: bàn học xanh có đèn bàn hồng, ống bút chì màu, chồng sách; ngăn kéo mở có hộp màu; cặp sách vàng dưới gầm bàn; giá sách trên có bình, lọ và sách; ghế xanh; bức tranh treo tường; cửa sổ"
+              ],
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b14-tu-ngu-cau-2",
+              "page": 61,
+              "prompt": "Đặt một câu nêu công dụng của một đồ dùng học tập.\nM:\nSố thứ tự | Từ | Câu\n1 | bút màu | Bút màu dùng để vẽ tranh.\n2 | ... | ...",
+              "exerciseType": "dat-cau",
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b14-tu-ngu-cau-3-a",
+              "page": 61,
+              "prompt": "Chọn dấu chấm hoặc dấu chấm hỏi thay cho ô vuông.\nBút chì: – Tẩy ơi, cậu giúp tớ một chút được không◻",
+              "exerciseType": "dau-cau",
+              "media": [
+                "bút chì và cục tẩy có mắt mũi đứng trò chuyện trên bàn, cạnh ống bút, đồng hồ báo thức, lọ mực, tranh vẽ"
+              ],
+              "answer": {
+                "text": "?"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b14-tu-ngu-cau-3-b",
+              "page": 61,
+              "prompt": "Chọn dấu chấm hoặc dấu chấm hỏi thay cho ô vuông.\nTẩy: – Cậu muốn tớ giúp gì nào◻",
+              "exerciseType": "dau-cau",
+              "answer": {
+                "text": "?"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b14-tu-ngu-cau-3-c",
+              "page": 61,
+              "prompt": "Chọn dấu chấm hoặc dấu chấm hỏi thay cho ô vuông.\nBút chì: – Tớ muốn xoá hình vẽ này◻",
+              "exerciseType": "dau-cau",
+              "answer": {
+                "text": "."
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b14-tu-ngu-cau-3-d",
+              "page": 61,
+              "prompt": "Chọn dấu chấm hoặc dấu chấm hỏi thay cho ô vuông.\nTẩy: – Tớ sẽ giúp cậu◻",
+              "exerciseType": "dau-cau",
+              "answer": {
+                "text": "."
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b14-tu-ngu-cau-3-e",
+              "page": 61,
+              "prompt": "Chọn dấu chấm hoặc dấu chấm hỏi thay cho ô vuông.\nBút chì: – Cảm ơn cậu◻",
+              "exerciseType": "dau-cau",
+              "answer": {
+                "text": "."
+              },
+              "readConfidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "tv2-t1-b14-viet-doan",
+          "kind": "viet-doan",
+          "pages": [
+            61,
+            62
+          ],
+          "items": [
+            {
+              "id": "tv2-t1-b14-viet-doan-1",
+              "page": 61,
+              "prompt": "Nhìn tranh, nói tên đồ vật và nêu công dụng của chúng.",
+              "exerciseType": "noi-ve-ban-than",
+              "media": [
+                "bạn trai ngồi bàn vẽ tranh (bánh sinh nhật, hai bạn, bóng bay, mặt trời) trên tập giấy vẽ; trên bàn có bút chì, bút sáp màu, cục tẩy, thước kẻ, hộp bút sáp màu"
+              ],
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b14-viet-doan-2",
+              "page": 62,
+              "prompt": "Viết 3 – 4 câu giới thiệu về một đồ vật được dùng để vẽ.\nG:\nGiới thiệu một đồ vật dùng để vẽ\n(1) Em muốn giới thiệu đồ vật nào?\n(2) Đồ vật đó có đặc điểm gì?\n(3) Em dùng đồ vật đó như thế nào?\n(4) Nó giúp ích gì cho em trong việc vẽ tranh?",
+              "exerciseType": "viet-doan",
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "tv2-t1-b14-doc-mo-rong",
+          "kind": "doc-mo-rong",
+          "pages": [
+            62,
+            62
+          ],
+          "items": [
+            {
+              "id": "tv2-t1-b14-doc-mo-rong-1",
+              "page": 62,
+              "prompt": "Tìm đọc một câu chuyện về trường học. Chia sẻ thông tin về câu chuyện dựa trên gợi ý sau:\n– Tên câu chuyện là gì?\n– Câu chuyện mở đầu như thế nào?\n– Điều gì diễn ra tiếp theo?\n– Câu chuyện kết thúc ra sao?",
+              "exerciseType": "doc-thanh-tieng",
+              "media": [
+                "chú chim cánh cụt với bóng nói chứa 4 câu gợi ý"
+              ],
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b14-doc-mo-rong-2",
+              "page": 62,
+              "prompt": "Nói về một nhân vật em thích trong câu chuyện.",
+              "exerciseType": "noi-ve-ban-than",
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tv2-t1-b15",
+      "number": 15,
+      "title": "Bài 15. Cuốn sách của em",
+      "week": 8,
+      "pages": [
+        63,
+        65
+      ],
+      "sections": [
+        {
+          "id": "tv2-t1-b15-doc",
+          "kind": "doc",
+          "pages": [
+            63,
+            64
+          ],
+          "text": {
+            "title": "Cuốn sách của em",
+            "author": "Nhật Huy",
+            "body": "Mỗi cuốn sách có một tên gọi. Tên sách là hàng chữ lớn ở khoảng giữa bìa sách, thường chứa đựng rất nhiều ý nghĩa. Qua tên sách, em có thể biết được sách viết về điều gì.\n\nNgười viết cuốn sách được gọi là tác giả. Tên tác giả thường được ghi vào phía trên của bìa sách.\n\nNơi các cuốn sách ra đời được gọi là nhà xuất bản. Tên nhà xuất bản thường được ghi ở phía dưới bìa sách.\n\nPhần lớn các cuốn sách đều có mục lục thể hiện các mục chính và vị trí của chúng trong cuốn sách. Mục lục thường được đặt ở ngay sau trang bìa, cũng có khi được đặt ở cuối sách.\n\nMỗi lần đọc một cuốn sách mới, đừng quên những điều này em nhé."
+          },
+          "items": [
+            {
+              "id": "tv2-t1-b15-doc-kd",
+              "page": 63,
+              "prompt": "Quan sát bìa sách sau và cho biết các thông tin có trên bìa sách.",
+              "exerciseType": "khoi-dong",
+              "media": [
+                "bìa sách: phía trên ghi TÔ HOÀI, giữa là tên sách Dế Mèn phiêu lưu kí trên chiếc lá, hình chú dế mèn đứng chống nạnh trên mô đất; phía dưới ghi NHÀ XUẤT BẢN GIÁO DỤC VIỆT NAM"
+              ],
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b15-doc-1-a",
+              "page": 64,
+              "prompt": "Chọn từ ngữ ở cột A với nội dung thích hợp ở cột B.\nA: tên sách; tác giả; nhà xuất bản; mục lục\nB: nơi cuốn sách ra đời; thường chứa đựng nhiều ý nghĩa; người viết sách, báo; thể hiện các mục chính và vị trí của chúng\ntên sách",
+              "exerciseType": "noi",
+              "answer": {
+                "text": "thường chứa đựng nhiều ý nghĩa"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b15-doc-1-b",
+              "page": 64,
+              "prompt": "Chọn từ ngữ ở cột A với nội dung thích hợp ở cột B.\nA: tên sách; tác giả; nhà xuất bản; mục lục\nB: nơi cuốn sách ra đời; thường chứa đựng nhiều ý nghĩa; người viết sách, báo; thể hiện các mục chính và vị trí của chúng\ntác giả",
+              "exerciseType": "noi",
+              "answer": {
+                "text": "người viết sách, báo"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b15-doc-1-c",
+              "page": 64,
+              "prompt": "Chọn từ ngữ ở cột A với nội dung thích hợp ở cột B.\nA: tên sách; tác giả; nhà xuất bản; mục lục\nB: nơi cuốn sách ra đời; thường chứa đựng nhiều ý nghĩa; người viết sách, báo; thể hiện các mục chính và vị trí của chúng\nnhà xuất bản",
+              "exerciseType": "noi",
+              "answer": {
+                "text": "nơi cuốn sách ra đời"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b15-doc-1-d",
+              "page": 64,
+              "prompt": "Chọn từ ngữ ở cột A với nội dung thích hợp ở cột B.\nA: tên sách; tác giả; nhà xuất bản; mục lục\nB: nơi cuốn sách ra đời; thường chứa đựng nhiều ý nghĩa; người viết sách, báo; thể hiện các mục chính và vị trí của chúng\nmục lục",
+              "exerciseType": "noi",
+              "answer": {
+                "text": "thể hiện các mục chính và vị trí của chúng"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b15-doc-2",
+              "page": 64,
+              "prompt": "Qua tên sách, em có thể biết được điều gì?",
+              "exerciseType": "doc-hieu",
+              "answer": {
+                "text": "sách viết về điều gì"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b15-doc-3",
+              "page": 64,
+              "prompt": "Sắp xếp các thông tin theo đúng trình tự trong bài đọc.\na. Tác giả\tc. Tên sách\nb. Mục lục\td. Nhà xuất bản",
+              "exerciseType": "sap-xep",
+              "answer": {
+                "values": [
+                  "c. Tên sách",
+                  "a. Tác giả",
+                  "d. Nhà xuất bản",
+                  "b. Mục lục"
+                ]
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b15-doc-4-a",
+              "page": 64,
+              "prompt": "Đọc mục lục bên và cho biết:\na. Phần 2 có những mục nào?",
+              "exerciseType": "doc-hieu",
+              "media": [
+                "trang MỤC LỤC: Phần 1. THẾ GIỚI ĐỘNG VẬT: Khủng long 5, Khỉ 8, Voi 14, Cá heo 18, Gấu 22; Phần 2. THẾ GIỚI THỰC VẬT: Xương rồng 25, Thông 29, Đước 33"
+              ],
+              "answer": {
+                "values": [
+                  "Xương rồng",
+                  "Thông",
+                  "Đước"
+                ]
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b15-doc-4-b",
+              "page": 64,
+              "prompt": "Đọc mục lục bên và cho biết:\nb. Để tìm hiểu về cây xương rồng, em đọc trang nào?",
+              "exerciseType": "doc-hieu",
+              "media": [
+                "trang MỤC LỤC: Phần 1. THẾ GIỚI ĐỘNG VẬT: Khủng long 5, Khỉ 8, Voi 14, Cá heo 18, Gấu 22; Phần 2. THẾ GIỚI THỰC VẬT: Xương rồng 25, Thông 29, Đước 33"
+              ],
+              "answer": {
+                "number": 25
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b15-doc-lt1-a",
+              "page": 64,
+              "prompt": "Xếp các từ ngữ sau vào nhóm thích hợp.\ntác giả; cuốn sách; bìa sách; đọc sách; ghi\nTừ ngữ chỉ người, chỉ vật",
+              "exerciseType": "xep-tu",
+              "answer": {
+                "choices": [
+                  "tác giả",
+                  "cuốn sách",
+                  "bìa sách"
+                ]
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b15-doc-lt1-b",
+              "page": 64,
+              "prompt": "Xếp các từ ngữ sau vào nhóm thích hợp.\ntác giả; cuốn sách; bìa sách; đọc sách; ghi\nTừ ngữ chỉ hoạt động",
+              "exerciseType": "xep-tu",
+              "answer": {
+                "choices": [
+                  "đọc sách",
+                  "ghi"
+                ]
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b15-doc-lt2-a",
+              "page": 64,
+              "prompt": "Nói tiếp để hoàn thành câu.\na. Tên sách được đặt ở (…).",
+              "exerciseType": "dat-cau",
+              "answer": {
+                "text": "khoảng giữa bìa sách"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b15-doc-lt2-b",
+              "page": 64,
+              "prompt": "Nói tiếp để hoàn thành câu.\nb. Tên tác giả được đặt ở (…).",
+              "exerciseType": "dat-cau",
+              "answer": {
+                "text": "phía trên của bìa sách"
+              },
+              "readConfidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "tv2-t1-b15-viet-chu-hoa",
+          "kind": "viet-chu-hoa",
+          "pages": [
+            65,
+            65
+          ],
+          "items": [
+            {
+              "id": "tv2-t1-b15-viet-chu-hoa-1",
+              "page": 65,
+              "prompt": "Viết chữ hoa:",
+              "exerciseType": "viet-chu",
+              "media": [
+                "mẫu chữ hoa G cỡ vừa (đánh số nét) và cỡ nhỏ trên ô li"
+              ],
+              "readConfidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "tv2-t1-b15-viet-ung-dung",
+          "kind": "viet-ung-dung",
+          "pages": [
+            65,
+            65
+          ],
+          "items": [
+            {
+              "id": "tv2-t1-b15-viet-ung-dung-2",
+              "page": 65,
+              "prompt": "Viết ứng dụng: Gần mực thì đen, gần đèn thì sáng.",
+              "exerciseType": "viet-chu",
+              "readConfidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "tv2-t1-b15-ke-chuyen",
+          "kind": "ke-chuyen",
+          "title": "Hoạ mi, vẹt và quạ",
+          "pages": [
+            65,
+            65
+          ],
+          "source": "(Theo 100 truyện ngụ ngôn về đạo đức)",
+          "items": [
+            {
+              "id": "tv2-t1-b15-ke-chuyen-1",
+              "page": 65,
+              "prompt": "Nghe kể chuyện.\nHoạ mi, vẹt và quạ nói chuyện gì với nhau?\nHoạ mi, vẹt và quạ đến gặp chim hoàng oanh vì chuyện gì?\nVì sao quạ bỏ các bạn bay đi?\nCâu chuyện kết thúc thế nào?",
+              "exerciseType": "ke-chuyen-tranh",
+              "media": [
+                "tranh 1: hoạ mi (xanh lá), vẹt và quạ đậu trên cành cây trong rừng trò chuyện",
+                "tranh 2: vẹt, hoạ mi, quạ bay đến gặp chim hoàng oanh (vàng) đang dang cánh trên cành cây cạnh hốc cây",
+                "tranh 3: quạ quay đầu bay đi, vẹt, hoạ mi, hoàng oanh ở phía sau",
+                "tranh 4: hoàng oanh, vẹt, hoạ mi vui vẻ trên cành; quạ đậu một mình nấp sau tán lá, cúi đầu"
+              ],
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b15-ke-chuyen-2",
+              "page": 65,
+              "prompt": "Chọn kể 1 – 2 đoạn của câu chuyện theo tranh.",
+              "exerciseType": "ke-chuyen-tranh",
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "tv2-t1-b15-van-dung",
+          "kind": "van-dung",
+          "pages": [
+            65,
+            65
+          ],
+          "items": [
+            {
+              "id": "tv2-t1-b15-van-dung-1",
+              "page": 65,
+              "prompt": "Kể cho người thân nghe câu chuyện Hoạ mi, vẹt và quạ.",
+              "exerciseType": "ke-chuyen-tranh",
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tv2-t1-b16",
+      "number": 16,
+      "title": "Bài 16. Khi trang sách mở ra",
+      "week": 8,
+      "pages": [
+        66,
+        70
+      ],
+      "sections": [
+        {
+          "id": "tv2-t1-b16-doc",
+          "kind": "doc",
+          "pages": [
+            66,
+            67
+          ],
+          "text": {
+            "title": "Khi trang sách mở ra",
+            "author": "Nguyễn Nhật Ánh",
+            "body": "Khi trang sách mở ra\nKhoảng trời xa xích lại\nBắt đầu là cỏ dại\nThứ đến là cánh chim\nSau nữa là trẻ con\nCuối cùng là người lớn.\n\nTrong trang sách có biển\nEm thấy những cánh buồm\nTrong trang sách có rừng\nVới bao nhiêu là gió.\n\nTrang sách còn có lửa\nMà giấy chẳng cháy đâu\nTrang sách có ao sâu\nMà giấy không hề ướt.\n\nTrang sách không nói được\nSao em nghe điều gì\nDạt dào như sóng vỗ\nMột chân trời đang đi.",
+            "glossary": [
+              {
+                "term": "Cỏ dại",
+                "meaning": "cỏ mọc tự nhiên."
+              },
+              {
+                "term": "Thứ đến",
+                "meaning": "sau đó."
+              }
+            ]
+          },
+          "items": [
+            {
+              "id": "tv2-t1-b16-doc-kd",
+              "page": 66,
+              "prompt": "Nói tên những cuốn sách mà em đã đọc. Giới thiệu về một cuốn sách em thích nhất.",
+              "exerciseType": "khoi-dong",
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b16-doc-1",
+              "page": 67,
+              "prompt": "Sắp xếp các sự vật sau theo thứ tự được nhắc đến trong khổ thơ đầu.\na. cánh chim\tb. cỏ dại\tc. người lớn\td. trẻ con",
+              "exerciseType": "sap-xep",
+              "answer": {
+                "values": [
+                  "b. cỏ dại",
+                  "a. cánh chim",
+                  "d. trẻ con",
+                  "c. người lớn"
+                ]
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b16-doc-2",
+              "page": 67,
+              "prompt": "Ở khổ thơ thứ hai và thứ ba, bạn nhỏ thấy những gì trong trang sách?",
+              "exerciseType": "doc-hieu",
+              "media": [
+                "tranh 1: biển xanh có con thuyền buồm đỏ vàng, mặt trời",
+                "tranh 2: khu rừng cây xanh có lối đi",
+                "tranh 3: đống lửa đang cháy"
+              ],
+              "answer": {
+                "values": [
+                  "biển",
+                  "cánh buồm",
+                  "rừng",
+                  "gió",
+                  "lửa",
+                  "ao sâu"
+                ]
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b16-doc-3",
+              "page": 67,
+              "prompt": "Theo em, khổ thơ cuối ý nói gì?\na. Trong trang sách có tiếng sóng vỗ.\nb. Trong trang sách có mây trời đang bay.\nc. Trong trang sách có nhiều điều thú vị về cuộc sống.",
+              "exerciseType": "chon-dap-an",
+              "answer": {
+                "choice": "c. Trong trang sách có nhiều điều thú vị về cuộc sống."
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b16-doc-4",
+              "page": 67,
+              "prompt": "Tìm những tiếng có vần giống nhau ở cuối các dòng thơ.",
+              "exerciseType": "tim-tu",
+              "answer": {
+                "values": [
+                  "lại – dại",
+                  "đâu – sâu",
+                  "gì – đi"
+                ]
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b16-doc-lt1",
+              "page": 67,
+              "prompt": "Tìm các từ ngữ chỉ sự vật trong khổ thơ thứ hai hoặc thứ ba.",
+              "exerciseType": "tim-tu",
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b16-doc-lt2",
+              "page": 67,
+              "prompt": "Đặt một câu về một cuốn truyện.\nM: Truyện Tích Chu nói về tình cảm bà cháu.",
+              "exerciseType": "dat-cau",
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "tv2-t1-b16-nghe-viet",
+          "kind": "nghe-viet",
+          "pages": [
+            67,
+            67
+          ],
+          "items": [
+            {
+              "id": "tv2-t1-b16-nghe-viet-1",
+              "page": 67,
+              "prompt": "Nghe – viết: Khi trang sách mở ra (2 khổ thơ cuối).",
+              "exerciseType": "nghe-viet",
+              "readConfidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "tv2-t1-b16-chinh-ta",
+          "kind": "chinh-ta",
+          "pages": [
+            67,
+            68
+          ],
+          "items": [
+            {
+              "id": "tv2-t1-b16-chinh-ta-2",
+              "page": 67,
+              "prompt": "Viết tên 2 tác giả của những cuốn sách em đã đọc.",
+              "exerciseType": "viet-chu",
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b16-chinh-ta-3-a-1",
+              "page": 68,
+              "prompt": "Chọn a hoặc b.\na. Chọn l hoặc n thay cho ô vuông.\n– Dao có mài mới sắc, người có học mới ◻ên.",
+              "exerciseType": "dien-chu",
+              "answer": {
+                "text": "n"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b16-chinh-ta-3-a-2",
+              "page": 68,
+              "prompt": "Chọn a hoặc b.\na. Chọn l hoặc n thay cho ô vuông.\n– Hay học thì sang, hay ◻àm thì có.",
+              "exerciseType": "dien-chu",
+              "answer": {
+                "text": "l"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b16-chinh-ta-3-a-3",
+              "page": 68,
+              "prompt": "Chọn a hoặc b.\na. Chọn l hoặc n thay cho ô vuông.\n– ◻ật từng trang từng trang\nGiấy trắng sờ mát rượi\nThơm tho mùi giấy mới\n◻ắn ◻ót bàn tay xinh.\n(Theo Nguyễn Quang Huy)",
+              "exerciseType": "dien-chu",
+              "answer": {
+                "values": [
+                  "L",
+                  "N",
+                  "n"
+                ]
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b16-chinh-ta-3-b-1",
+              "page": 68,
+              "prompt": "Chọn a hoặc b.\nb. Chọn tiếng trong ngoặc thay cho ô vuông.\n– (gắn/ gắng): ◻ bó, cố ◻, ◻ sức",
+              "exerciseType": "dien-chu",
+              "answer": {
+                "values": [
+                  "gắn",
+                  "gắng",
+                  "gắng"
+                ]
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b16-chinh-ta-3-b-2",
+              "page": 68,
+              "prompt": "Chọn a hoặc b.\nb. Chọn tiếng trong ngoặc thay cho ô vuông.\n– (nắn/ nắng): ánh ◻ , uốn ◻, ◻ nót",
+              "exerciseType": "dien-chu",
+              "answer": {
+                "values": [
+                  "nắng",
+                  "nắn",
+                  "nắn"
+                ]
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b16-chinh-ta-3-b-3",
+              "page": 68,
+              "prompt": "Chọn a hoặc b.\nb. Chọn tiếng trong ngoặc thay cho ô vuông.\n– (vần/ vầng): ◻ thơ, ◻ trăng, ◻ trán",
+              "exerciseType": "dien-chu",
+              "answer": {
+                "values": [
+                  "vần",
+                  "vầng",
+                  "vầng"
+                ]
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b16-chinh-ta-3-b-4",
+              "page": 68,
+              "prompt": "Chọn a hoặc b.\nb. Chọn tiếng trong ngoặc thay cho ô vuông.\n– (vân/ vâng): ◻ gỗ, ◻ lời, ◻ tay",
+              "exerciseType": "dien-chu",
+              "answer": {
+                "values": [
+                  "vân",
+                  "vâng",
+                  "vân"
+                ]
+              },
+              "readConfidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "tv2-t1-b16-tu-ngu-cau",
+          "kind": "tu-ngu-cau",
+          "pages": [
+            68,
+            69
+          ],
+          "items": [
+            {
+              "id": "tv2-t1-b16-tu-ngu-cau-1-a",
+              "page": 68,
+              "prompt": "Chọn từ chỉ đặc điểm của mỗi đồ dùng học tập trong hình.\n(thẳng tắp, trắng tinh, nhọn hoắt, tím ngắt)",
+              "exerciseType": "noi",
+              "media": [
+                "cái thước kẻ màu hồng"
+              ],
+              "answer": {
+                "text": "thẳng tắp"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b16-tu-ngu-cau-1-b",
+              "page": 68,
+              "prompt": "Chọn từ chỉ đặc điểm của mỗi đồ dùng học tập trong hình.\n(thẳng tắp, trắng tinh, nhọn hoắt, tím ngắt)",
+              "exerciseType": "noi",
+              "media": [
+                "cuốn vở mở ra, trang giấy trắng"
+              ],
+              "answer": {
+                "text": "trắng tinh"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b16-tu-ngu-cau-1-c",
+              "page": 68,
+              "prompt": "Chọn từ chỉ đặc điểm của mỗi đồ dùng học tập trong hình.\n(thẳng tắp, trắng tinh, nhọn hoắt, tím ngắt)",
+              "exerciseType": "noi",
+              "media": [
+                "hai cây bút chì vót nhọn"
+              ],
+              "answer": {
+                "text": "nhọn hoắt"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b16-tu-ngu-cau-1-d",
+              "page": 68,
+              "prompt": "Chọn từ chỉ đặc điểm của mỗi đồ dùng học tập trong hình.\n(thẳng tắp, trắng tinh, nhọn hoắt, tím ngắt)",
+              "exerciseType": "noi",
+              "media": [
+                "lọ mực màu tím"
+              ],
+              "answer": {
+                "text": "tím ngắt"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b16-tu-ngu-cau-2-a",
+              "page": 68,
+              "prompt": "Kết hợp từ ngữ ở cột A với từ ngữ ở cột B để tạo câu nêu đặc điểm.\nA: Bàn học của Bống; Cuốn vở; Cục tẩy\nB: thơm phức mùi giấy mới.; ngăn nắp, gọn gàng.; nhỏ xíu như một viên kẹo.\nBàn học của Bống",
+              "exerciseType": "noi",
+              "answer": {
+                "text": "ngăn nắp, gọn gàng."
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b16-tu-ngu-cau-2-b",
+              "page": 68,
+              "prompt": "Kết hợp từ ngữ ở cột A với từ ngữ ở cột B để tạo câu nêu đặc điểm.\nA: Bàn học của Bống; Cuốn vở; Cục tẩy\nB: thơm phức mùi giấy mới.; ngăn nắp, gọn gàng.; nhỏ xíu như một viên kẹo.\nCuốn vở",
+              "exerciseType": "noi",
+              "answer": {
+                "text": "thơm phức mùi giấy mới."
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b16-tu-ngu-cau-2-c",
+              "page": 68,
+              "prompt": "Kết hợp từ ngữ ở cột A với từ ngữ ở cột B để tạo câu nêu đặc điểm.\nA: Bàn học của Bống; Cuốn vở; Cục tẩy\nB: thơm phức mùi giấy mới.; ngăn nắp, gọn gàng.; nhỏ xíu như một viên kẹo.\nCục tẩy",
+              "exerciseType": "noi",
+              "answer": {
+                "text": "nhỏ xíu như một viên kẹo."
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b16-tu-ngu-cau-3-a",
+              "page": 69,
+              "prompt": "Chọn dấu chấm hoặc dấu chấm hỏi thay cho ô vuông.\nSách ơi thức dậy\nVở ơi học bài\nÔ kìa thước kẻ\nSao cứ nằm dài◻",
+              "exerciseType": "dau-cau",
+              "media": [
+                "cuốn vở mở có kẹp hoa và bút chì; mấy cây bút sáp màu; cây thước kẻ"
+              ],
+              "answer": {
+                "text": "?"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b16-tu-ngu-cau-3-b",
+              "page": 69,
+              "prompt": "Chọn dấu chấm hoặc dấu chấm hỏi thay cho ô vuông.\nLại còn anh bút\nTrốn tít nơi đâu◻",
+              "exerciseType": "dau-cau",
+              "answer": {
+                "text": "?"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b16-tu-ngu-cau-3-c",
+              "page": 69,
+              "prompt": "Chọn dấu chấm hoặc dấu chấm hỏi thay cho ô vuông.\nNhanh dậy đi mau\nCùng em đến lớp◻\n(Theo Ngọc Minh)",
+              "exerciseType": "dau-cau",
+              "answer": {
+                "text": "."
+              },
+              "readConfidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "tv2-t1-b16-viet-doan",
+          "kind": "viet-doan",
+          "pages": [
+            69,
+            69
+          ],
+          "items": [
+            {
+              "id": "tv2-t1-b16-viet-doan-1",
+              "page": 69,
+              "prompt": "Kể tên các đồ dùng học tập của em.",
+              "exerciseType": "noi-ve-ban-than",
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b16-viet-doan-2",
+              "page": 69,
+              "prompt": "Viết 3 – 4 câu tả một đồ dùng học tập của em.\nTả đồ dùng học tập\n(1) Em chọn tả đồ dùng học tập nào?\n(2) Nó có đặc điểm gì (về hình dáng, màu sắc,…)?\n(3) Nó giúp ích gì cho em trong học tập?\n(4) Em có nhận xét hay suy nghĩ gì về đồ dùng học tập đó?",
+              "exerciseType": "viet-doan",
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "tv2-t1-b16-doc-mo-rong",
+          "kind": "doc-mo-rong",
+          "pages": [
+            70,
+            70
+          ],
+          "items": [
+            {
+              "id": "tv2-t1-b16-doc-mo-rong-1",
+              "page": 70,
+              "prompt": "Cho biết phiếu đọc sách dưới đây của bạn Nam có những nội dung gì.\nPHIẾU ĐỌC SÁCH\nNgày: 19/10/2021\nTên sách: Cái Tết của mèo con\nTên tác giả: Nguyễn Đình Thi\nĐiều em thích nhất: Mèo con rất dũng cảm.",
+              "exerciseType": "doc-hieu",
+              "answer": {
+                "values": [
+                  "Ngày",
+                  "Tên sách",
+                  "Tên tác giả",
+                  "Điều em thích nhất"
+                ]
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b16-doc-mo-rong-2",
+              "page": 70,
+              "prompt": "Ghi chép các thông tin về cuốn sách mà em đã đọc vào phiếu đọc sách theo mẫu (làm vào vở).\nPHIẾU ĐỌC SÁCH\nNgày: (...)\nTên sách: (...)\nTên tác giả: (...)\nĐiều em thích nhất: (...)",
+              "exerciseType": "viet-doan",
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-b16-doc-mo-rong-3",
+              "page": 70,
+              "prompt": "Nói về điều em thích nhất trong cuốn sách em đã đọc.",
+              "exerciseType": "noi-ve-ban-than",
+              "media": [
+                "bạn gái đứng giữa các cuốn sách có mắt mũi (Góc sân và khoảng trời, Nàng tiên cá, Hòn đá xanh); bóng nói: \"Cuốn Dế Mèn phiêu lưu kí rất hay. Tớ thích nhất là nhân vật Dế Trũi.\""
+              ],
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tv2-t1-on-giua-ki",
+      "title": "Ôn tập giữa học kì 1",
+      "week": 9,
+      "pages": [
+        71,
+        77
+      ],
+      "sections": [
+        {
+          "id": "tv2-t1-on-giua-ki-danh-gia",
+          "kind": "danh-gia",
+          "title": "Tiết 1 – 2",
+          "pages": [
+            71,
+            72
+          ],
+          "items": [
+            {
+              "id": "tv2-t1-on-giua-ki-danh-gia-1-a",
+              "page": 71,
+              "prompt": "Tìm tên bài đọc tương ứng với nội dung của bài.\n1. TÔI LÀ HỌC SINH LỚP 2\na. Kể về niềm vui của hai anh em.\nb. Giới thiệu về sách.\nc. Kể về ngày khai trường của một bạn học sinh lớp 2.\nd. Nói về một đồ vật thân thuộc ở trường học.\ne. Kể về cậu bé Quang tự tin nói trước lớp.",
+              "exerciseType": "noi",
+              "media": [
+                "bông hoa: 5 cánh vàng ở giữa ghi tên bài 1–5, 5 cánh hồng bên ngoài ghi nội dung a–e"
+              ],
+              "answer": {
+                "choice": "c. Kể về ngày khai trường của một bạn học sinh lớp 2."
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-on-giua-ki-danh-gia-1-b",
+              "page": 71,
+              "prompt": "Tìm tên bài đọc tương ứng với nội dung của bài.\n2. NIỀM VUI CỦA BI VÀ BỐNG\na. Kể về niềm vui của hai anh em.\nb. Giới thiệu về sách.\nc. Kể về ngày khai trường của một bạn học sinh lớp 2.\nd. Nói về một đồ vật thân thuộc ở trường học.\ne. Kể về cậu bé Quang tự tin nói trước lớp.",
+              "exerciseType": "noi",
+              "answer": {
+                "choice": "a. Kể về niềm vui của hai anh em."
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-on-giua-ki-danh-gia-1-c",
+              "page": 71,
+              "prompt": "Tìm tên bài đọc tương ứng với nội dung của bài.\n3. MỘT GIỜ HỌC\na. Kể về niềm vui của hai anh em.\nb. Giới thiệu về sách.\nc. Kể về ngày khai trường của một bạn học sinh lớp 2.\nd. Nói về một đồ vật thân thuộc ở trường học.\ne. Kể về cậu bé Quang tự tin nói trước lớp.",
+              "exerciseType": "noi",
+              "answer": {
+                "choice": "e. Kể về cậu bé Quang tự tin nói trước lớp."
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-on-giua-ki-danh-gia-1-d",
+              "page": 71,
+              "prompt": "Tìm tên bài đọc tương ứng với nội dung của bài.\n4. CÁI TRỐNG TRƯỜNG EM\na. Kể về niềm vui của hai anh em.\nb. Giới thiệu về sách.\nc. Kể về ngày khai trường của một bạn học sinh lớp 2.\nd. Nói về một đồ vật thân thuộc ở trường học.\ne. Kể về cậu bé Quang tự tin nói trước lớp.",
+              "exerciseType": "noi",
+              "answer": {
+                "choice": "d. Nói về một đồ vật thân thuộc ở trường học."
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-on-giua-ki-danh-gia-1-e",
+              "page": 71,
+              "prompt": "Tìm tên bài đọc tương ứng với nội dung của bài.\n5. CUỐN SÁCH CỦA EM\na. Kể về niềm vui của hai anh em.\nb. Giới thiệu về sách.\nc. Kể về ngày khai trường của một bạn học sinh lớp 2.\nd. Nói về một đồ vật thân thuộc ở trường học.\ne. Kể về cậu bé Quang tự tin nói trước lớp.",
+              "exerciseType": "noi",
+              "answer": {
+                "choice": "b. Giới thiệu về sách."
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-on-giua-ki-danh-gia-2-a",
+              "page": 72,
+              "prompt": "Chọn đọc một bài và trả lời câu hỏi.\nTÔI LÀ HỌC SINH LỚP 2\nTheo em, vì sao vào ngày khai trường, các bạn thường muốn đến trường sớm?",
+              "exerciseType": "doc-hieu",
+              "media": [
+                "6 tấm thẻ màu ghi tên bài và câu hỏi; một bạn trai đeo kính và một bạn gái cầm thẻ"
+              ],
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-on-giua-ki-danh-gia-2-b",
+              "page": 72,
+              "prompt": "Chọn đọc một bài và trả lời câu hỏi.\nEM CÓ XINH KHÔNG?\nCuối cùng, voi em nhận thấy mình xinh nhất khi nào?",
+              "exerciseType": "doc-hieu",
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-on-giua-ki-danh-gia-2-c",
+              "page": 72,
+              "prompt": "Chọn đọc một bài và trả lời câu hỏi.\nNIỀM VUI CỦA BI VÀ BỐNG\nTheo em, vì sao Bi và Bống không vẽ tranh cho mình mà lại vẽ cho nhau?",
+              "exerciseType": "doc-hieu",
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-on-giua-ki-danh-gia-2-d",
+              "page": 72,
+              "prompt": "Chọn đọc một bài và trả lời câu hỏi.\nCẦU THỦ DỰ BỊ\nTheo gấu, cầu thủ dự bị là như thế nào?",
+              "exerciseType": "doc-hieu",
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-on-giua-ki-danh-gia-2-e",
+              "page": 72,
+              "prompt": "Chọn đọc một bài và trả lời câu hỏi.\nCÔ GIÁO LỚP EM\nEm thích khổ thơ nào nhất? Vì sao?",
+              "exerciseType": "doc-hieu",
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-on-giua-ki-danh-gia-2-f",
+              "page": 72,
+              "prompt": "Chọn đọc một bài và trả lời câu hỏi.\nCÁI TRỐNG TRƯỜNG EM\nVì sao trong những ngày hè trống trường lại buồn?",
+              "exerciseType": "doc-hieu",
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "tv2-t1-on-giua-ki-nghe-viet",
+          "kind": "nghe-viet",
+          "title": "Tiết 3 – 4",
+          "pages": [
+            73,
+            73
+          ],
+          "items": [
+            {
+              "id": "tv2-t1-on-giua-ki-nghe-viet-3",
+              "page": 73,
+              "prompt": "Nghe – viết: Cô giáo lớp em (2 khổ thơ đầu).",
+              "exerciseType": "nghe-viet",
+              "readConfidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "tv2-t1-on-giua-ki-danh-gia-2",
+          "kind": "danh-gia",
+          "title": "Tiết 3 – 4",
+          "pages": [
+            73,
+            74
+          ],
+          "items": [
+            {
+              "id": "tv2-t1-on-giua-ki-danh-gia-2-4-a",
+              "page": 73,
+              "prompt": "Trò chơi: Đoán từ\na. Bắt đầu bằng tr; Đồ vật ở trường; Dùng để báo giờ học",
+              "exerciseType": "tro-choi",
+              "answer": {
+                "text": "trống"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-on-giua-ki-danh-gia-2-4-b",
+              "page": 73,
+              "prompt": "Trò chơi: Đoán từ\nb. Bắt đầu bằng ch; Đồ vật trong nhà; Dùng để quét nhà",
+              "exerciseType": "tro-choi",
+              "answer": {
+                "text": "chổi"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-on-giua-ki-danh-gia-2-4-c",
+              "page": 73,
+              "prompt": "Trò chơi: Đoán từ\nc. Chứa vần ang; Đồ vật trong lớp; Dùng để viết",
+              "exerciseType": "tro-choi",
+              "answer": {
+                "text": "bảng"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-on-giua-ki-danh-gia-2-4-d",
+              "page": 73,
+              "prompt": "Trò chơi: Đoán từ\nd. Chứa vần an; Đồ vật ở góc học tập; Dùng để bày sách vở",
+              "exerciseType": "tro-choi",
+              "answer": {
+                "text": "bàn"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-on-giua-ki-danh-gia-2-5-a",
+              "page": 73,
+              "prompt": "Viết tên đồ vật trong mỗi hình.",
+              "exerciseType": "dien-chu",
+              "media": [
+                "cái kéo cán xanh"
+              ],
+              "answer": {
+                "text": "kéo"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-on-giua-ki-danh-gia-2-5-b",
+              "page": 73,
+              "prompt": "Viết tên đồ vật trong mỗi hình.",
+              "exerciseType": "dien-chu",
+              "media": [
+                "chiếc khăn mặt hồng vắt trên giá treo"
+              ],
+              "answer": {
+                "text": "khăn mặt"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-on-giua-ki-danh-gia-2-5-c",
+              "page": 73,
+              "prompt": "Viết tên đồ vật trong mỗi hình.",
+              "exerciseType": "dien-chu",
+              "media": [
+                "đồng hồ treo tường viền đỏ"
+              ],
+              "answer": {
+                "text": "đồng hồ"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-on-giua-ki-danh-gia-2-5-d",
+              "page": 73,
+              "prompt": "Viết tên đồ vật trong mỗi hình.",
+              "exerciseType": "dien-chu",
+              "media": [
+                "cái thìa nhựa xanh lá"
+              ],
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-on-giua-ki-danh-gia-2-5-e",
+              "page": 73,
+              "prompt": "Viết tên đồ vật trong mỗi hình.",
+              "exerciseType": "dien-chu",
+              "media": [
+                "hộp bút chì màu"
+              ],
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-on-giua-ki-danh-gia-2-5-f",
+              "page": 73,
+              "prompt": "Viết tên đồ vật trong mỗi hình.",
+              "exerciseType": "dien-chu",
+              "media": [
+                "cái đĩa viền xanh"
+              ],
+              "answer": {
+                "text": "đĩa"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-on-giua-ki-danh-gia-2-6",
+              "page": 73,
+              "prompt": "Hỏi – đáp về công dụng của từng đồ vật ở bài tập 5.\nM:\n– Kéo dùng để làm gì?\n– Kéo dùng để cắt giấy, cắt vải.",
+              "exerciseType": "dat-cau",
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-on-giua-ki-danh-gia-2-7",
+              "page": 74,
+              "prompt": "Ghép các từ ngữ để tạo 4 câu nêu đặc điểm.\nđôi mắt của bé; những vì sao; cầu vồng; tóc bà; lấp lánh trong đêm; to tròn, đen láy; đã bạc; rực rỡ sau cơn mưa",
+              "exerciseType": "xep-tu",
+              "media": [
+                "8 đám mây: hàng trên ghi đôi mắt của bé, những vì sao, cầu vồng, tóc bà; hàng dưới ghi lấp lánh trong đêm, to tròn, đen láy, đã bạc, rực rỡ sau cơn mưa"
+              ],
+              "answer": {
+                "values": [
+                  "Đôi mắt của bé to tròn, đen láy.",
+                  "Những vì sao lấp lánh trong đêm.",
+                  "Cầu vồng rực rỡ sau cơn mưa.",
+                  "Tóc bà đã bạc."
+                ]
+              },
+              "readConfidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "tv2-t1-on-giua-ki-danh-gia-3",
+          "kind": "danh-gia",
+          "title": "Tiết 5 – 6",
+          "pages": [
+            74,
+            75
+          ],
+          "text": {
+            "title": "Vịt bơi được mà",
+            "author": "Trung Nguyên sưu tầm",
+            "body": "Người đàn ông nọ muốn lội qua sông. Gặp cậu bé chăn vịt, bác ta liền hỏi:\n\n– Sông này có sâu không cháu◻\n\nCậu bé trả lời:\n\n– Nông lắm bác ạ◻\n\nBác ta liền lội sang sông, mới lội một đoạn đã gần ngập đầu◻ Quay lại, bác ta hỏi cậu bé:\n\n– Sao cháu bảo sông này nông lắm◻\n\n– Cháu thấy con vịt chân ngắn thế mà nó cũng lội sang được ạ◻"
+          },
+          "items": [
+            {
+              "id": "tv2-t1-on-giua-ki-danh-gia-3-8-a",
+              "page": 74,
+              "prompt": "Đóng vai, nói và đáp lời trong các tình huống sau:\na. Nhờ bạn nhặt giúp cái bút bị rơi.",
+              "exerciseType": "dat-cau",
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-on-giua-ki-danh-gia-3-8-b",
+              "page": 74,
+              "prompt": "Đóng vai, nói và đáp lời trong các tình huống sau:\nb. Khen bạn viết chữ đẹp.",
+              "exerciseType": "dat-cau",
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-on-giua-ki-danh-gia-3-8-c",
+              "page": 74,
+              "prompt": "Đóng vai, nói và đáp lời trong các tình huống sau:\nc. An ủi bạn khi bạn bị ốm nên phải nghỉ học.",
+              "exerciseType": "dat-cau",
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-on-giua-ki-danh-gia-3-8-d",
+              "page": 74,
+              "prompt": "Đóng vai, nói và đáp lời trong các tình huống sau:\nd. Chúc mừng sinh nhật bạn.",
+              "exerciseType": "dat-cau",
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-on-giua-ki-danh-gia-3-9-a",
+              "page": 74,
+              "prompt": "Mỗi câu ở cột A thuộc kiểu câu nào ở cột B?\nA: Bác An là nông dân.; Bác đang gặt lúa.; Bác rất chăm chỉ và cẩn thận.\nB: Câu giới thiệu; Câu nêu hoạt động; Câu nêu đặc điểm\nBác An là nông dân.",
+              "exerciseType": "noi",
+              "answer": {
+                "text": "Câu giới thiệu"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-on-giua-ki-danh-gia-3-9-b",
+              "page": 74,
+              "prompt": "Mỗi câu ở cột A thuộc kiểu câu nào ở cột B?\nA: Bác An là nông dân.; Bác đang gặt lúa.; Bác rất chăm chỉ và cẩn thận.\nB: Câu giới thiệu; Câu nêu hoạt động; Câu nêu đặc điểm\nBác đang gặt lúa.",
+              "exerciseType": "noi",
+              "answer": {
+                "text": "Câu nêu hoạt động"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-on-giua-ki-danh-gia-3-9-c",
+              "page": 74,
+              "prompt": "Mỗi câu ở cột A thuộc kiểu câu nào ở cột B?\nA: Bác An là nông dân.; Bác đang gặt lúa.; Bác rất chăm chỉ và cẩn thận.\nB: Câu giới thiệu; Câu nêu hoạt động; Câu nêu đặc điểm\nBác rất chăm chỉ và cẩn thận.",
+              "exerciseType": "noi",
+              "answer": {
+                "text": "Câu nêu đặc điểm"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-on-giua-ki-danh-gia-3-10-a",
+              "page": 74,
+              "prompt": "Chọn dấu chấm hoặc dấu chấm hỏi thay cho ô vuông.\nVịt bơi được mà\n– Sông này có sâu không cháu◻",
+              "exerciseType": "dau-cau",
+              "answer": {
+                "text": "?"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-on-giua-ki-danh-gia-3-10-b",
+              "page": 74,
+              "prompt": "Chọn dấu chấm hoặc dấu chấm hỏi thay cho ô vuông.\nVịt bơi được mà\n– Nông lắm bác ạ◻",
+              "exerciseType": "dau-cau",
+              "answer": {
+                "text": "."
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-on-giua-ki-danh-gia-3-10-c",
+              "page": 75,
+              "prompt": "Chọn dấu chấm hoặc dấu chấm hỏi thay cho ô vuông.\nVịt bơi được mà\nBác ta liền lội sang sông, mới lội một đoạn đã gần ngập đầu◻ Quay lại, bác ta hỏi cậu bé:",
+              "exerciseType": "dau-cau",
+              "answer": {
+                "text": "."
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-on-giua-ki-danh-gia-3-10-d",
+              "page": 75,
+              "prompt": "Chọn dấu chấm hoặc dấu chấm hỏi thay cho ô vuông.\nVịt bơi được mà\n– Sao cháu bảo sông này nông lắm◻",
+              "exerciseType": "dau-cau",
+              "answer": {
+                "text": "?"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-on-giua-ki-danh-gia-3-10-e",
+              "page": 75,
+              "prompt": "Chọn dấu chấm hoặc dấu chấm hỏi thay cho ô vuông.\nVịt bơi được mà\n– Cháu thấy con vịt chân ngắn thế mà nó cũng lội sang được ạ◻\n(Trung Nguyên sưu tầm)",
+              "exerciseType": "dau-cau",
+              "answer": {
+                "text": "."
+              },
+              "readConfidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "tv2-t1-on-giua-ki-ke-chuyen",
+          "kind": "ke-chuyen",
+          "title": "Tiết 7 – 8",
+          "pages": [
+            75,
+            75
+          ],
+          "items": [
+            {
+              "id": "tv2-t1-on-giua-ki-ke-chuyen-11",
+              "page": 75,
+              "prompt": "Nhìn tranh và nói tên câu chuyện. Chọn kể một câu chuyện em thích.",
+              "exerciseType": "ke-chuyen-tranh",
+              "media": [
+                "tranh 1: mầm cây non nhú lên từ hạt trên nền đất, ông mặt trời cười chiếu nắng",
+                "tranh 2: cậu bé cõng em đứng nép ngoài cửa lớp nhìn vào, thầy đồ đang giảng cho học trò",
+                "tranh 3: người cha dắt con gái đi, bóng nghĩ vẽ ô tô, búp bê và quần áo; phía xa có cầu vồng",
+                "tranh 4: chú voi con và con dê đứng trên đường trong rừng"
+              ],
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-on-giua-ki-ke-chuyen-12",
+              "page": 75,
+              "prompt": "Cùng bạn hỏi – đáp về những câu chuyện em vừa kể.\nM: – Câu chuyện có mấy nhân vật?\n– Bạn thích nhân vật nào?",
+              "exerciseType": "dat-cau",
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "tv2-t1-on-giua-ki-doc",
+          "kind": "doc",
+          "title": "Tiết 9 – 10",
+          "pages": [
+            76,
+            77
+          ],
+          "text": {
+            "title": "Câu chuyện bó đũa",
+            "author": "Theo Ngụ ngôn Việt Nam",
+            "body": "Ngày xưa, ở một gia đình kia, có hai anh em. Lúc nhỏ, anh em rất hoà thuận. Khi lớn lên, anh có vợ, em có chồng. Tuy mỗi người một nhà nhưng vẫn hay va chạm.\n\nThấy các con không yêu thương nhau, người cha rất buồn phiền. Một hôm, ông đặt một bó đũa và một túi tiền lên mặt bàn rồi gọi các con lại và bảo:\n\n– Ai bẻ gãy được bó đũa này thì cha thưởng cho túi tiền.\n\nBốn người con lần lượt bẻ bó đũa. Ai cũng cố hết sức mà không sao bẻ gãy được.\n\nNgười cha bèn cởi bó đũa ra, rồi thong thả bẻ gãy từng chiếc một cách dễ dàng. Thấy vậy, bốn người con cùng nói:\n\n– Thưa cha, lấy từng chiếc mà bẻ thì có khó gì!\n\nNgười cha liền bảo:\n\n– Đúng. Như thế là các con đều thấy rằng chia lẻ ra thì yếu, hợp lại thì mạnh. Vậy các con phải biết yêu thương, đùm bọc lẫn nhau. Có đoàn kết thì mới có sức mạnh."
+          },
+          "items": [
+            {
+              "id": "tv2-t1-on-giua-ki-doc-13",
+              "page": 76,
+              "prompt": "Đọc câu chuyện sau:",
+              "exerciseType": "doc-thanh-tieng",
+              "media": [
+                "tranh 1: người cha già ngồi bên bàn có bó đũa và túi tiền, bốn người con đứng trước mặt",
+                "tranh 2: một người con trai gồng sức bẻ bó đũa, những người khác đứng nhìn",
+                "tranh 3: người cha thong thả bẻ gãy từng chiếc đũa, túi tiền trên bàn",
+                "tranh 4: bốn người con đứng quây quần trước người cha"
+              ],
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-on-giua-ki-doc-13-a",
+              "page": 77,
+              "prompt": "Trả lời câu hỏi và thực hiện yêu cầu.\na. Khi lớn lên, tình cảm giữa anh và em như thế nào?\n◻ hoà thuận\t◻ không thay đổi\t◻ không hoà thuận",
+              "exerciseType": "chon-dap-an",
+              "answer": {
+                "choice": "không hoà thuận"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-on-giua-ki-doc-13-b",
+              "page": 77,
+              "prompt": "Trả lời câu hỏi và thực hiện yêu cầu.\nb. Người cha nghĩ ra cách gì để khuyên bảo con?",
+              "exerciseType": "doc-hieu",
+              "answer": {
+                "text": "Một hôm, ông đặt một bó đũa và một túi tiền lên mặt bàn rồi gọi các con lại và bảo:\n– Ai bẻ gãy được bó đũa này thì cha thưởng cho túi tiền."
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-on-giua-ki-doc-13-c",
+              "page": 77,
+              "prompt": "Trả lời câu hỏi và thực hiện yêu cầu.\nc. Vì sao bốn người con không bẻ gãy được bó đũa?",
+              "exerciseType": "doc-hieu",
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-on-giua-ki-doc-13-d",
+              "page": 77,
+              "prompt": "Trả lời câu hỏi và thực hiện yêu cầu.\nd. Người cha bẻ gãy bó đũa bằng cách nào?",
+              "exerciseType": "doc-hieu",
+              "answer": {
+                "text": "Người cha bèn cởi bó đũa ra, rồi thong thả bẻ gãy từng chiếc một cách dễ dàng."
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-on-giua-ki-doc-13-e",
+              "page": 77,
+              "prompt": "Trả lời câu hỏi và thực hiện yêu cầu.\ne. Người cha muốn khuyên các con điều gì?",
+              "exerciseType": "doc-hieu",
+              "answer": {
+                "text": "Vậy các con phải biết yêu thương, đùm bọc lẫn nhau. Có đoàn kết thì mới có sức mạnh."
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-on-giua-ki-doc-13-g-1",
+              "page": 77,
+              "prompt": "Trả lời câu hỏi và thực hiện yêu cầu.\ng. Tìm từ ngữ ở cột A phù hợp với nghĩa ở cột B.\nA: hoà thuận; yêu thương; buồn phiền\nB: buồn và lo nghĩ, không yên lòng; êm ấm, không có xích mích, mâu thuẫn; có tình cảm gắn bó tha thiết, quan tâm, chăm sóc hết lòng\nhoà thuận",
+              "exerciseType": "noi",
+              "answer": {
+                "text": "êm ấm, không có xích mích, mâu thuẫn"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-on-giua-ki-doc-13-g-2",
+              "page": 77,
+              "prompt": "Trả lời câu hỏi và thực hiện yêu cầu.\ng. Tìm từ ngữ ở cột A phù hợp với nghĩa ở cột B.\nA: hoà thuận; yêu thương; buồn phiền\nB: buồn và lo nghĩ, không yên lòng; êm ấm, không có xích mích, mâu thuẫn; có tình cảm gắn bó tha thiết, quan tâm, chăm sóc hết lòng\nyêu thương",
+              "exerciseType": "noi",
+              "answer": {
+                "text": "có tình cảm gắn bó tha thiết, quan tâm, chăm sóc hết lòng"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-on-giua-ki-doc-13-g-3",
+              "page": 77,
+              "prompt": "Trả lời câu hỏi và thực hiện yêu cầu.\ng. Tìm từ ngữ ở cột A phù hợp với nghĩa ở cột B.\nA: hoà thuận; yêu thương; buồn phiền\nB: buồn và lo nghĩ, không yên lòng; êm ấm, không có xích mích, mâu thuẫn; có tình cảm gắn bó tha thiết, quan tâm, chăm sóc hết lòng\nbuồn phiền",
+              "exerciseType": "noi",
+              "answer": {
+                "text": "buồn và lo nghĩ, không yên lòng"
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-on-giua-ki-doc-13-h-1",
+              "page": 77,
+              "prompt": "Trả lời câu hỏi và thực hiện yêu cầu.\nh. Xếp các từ ngữ dưới đây vào nhóm thích hợp.\ngọi; nhà; đặt; bẻ; bó đũa; nói; túi\nTừ chỉ sự vật",
+              "exerciseType": "xep-tu",
+              "media": [
+                "7 viên kẹo ghi: gọi, nhà, đặt, bẻ, bó đũa, nói, túi; 2 túi xách ghi Từ chỉ sự vật và Từ chỉ hoạt động"
+              ],
+              "answer": {
+                "choices": [
+                  "nhà",
+                  "bó đũa",
+                  "túi"
+                ]
+              },
+              "readConfidence": "high"
+            },
+            {
+              "id": "tv2-t1-on-giua-ki-doc-13-h-2",
+              "page": 77,
+              "prompt": "Trả lời câu hỏi và thực hiện yêu cầu.\nh. Xếp các từ ngữ dưới đây vào nhóm thích hợp.\ngọi; nhà; đặt; bẻ; bó đũa; nói; túi\nTừ chỉ hoạt động",
+              "exerciseType": "xep-tu",
+              "answer": {
+                "choices": [
+                  "gọi",
+                  "đặt",
+                  "bẻ",
+                  "nói"
+                ]
+              },
+              "readConfidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "tv2-t1-on-giua-ki-viet-doan",
+          "kind": "viet-doan",
+          "title": "Tiết 9 – 10",
+          "pages": [
+            77,
+            77
+          ],
+          "items": [
+            {
+              "id": "tv2-t1-on-giua-ki-viet-doan-14",
+              "page": 77,
+              "prompt": "Viết 3 – 4 câu giới thiệu một đồ chơi hoặc một đồ dùng gia đình.\nG:\n– Đồ vật em muốn giới thiệu là gì?\n– Đồ vật đó từ đâu mà có?\n– Em có suy nghĩ gì về ích lợi của đồ vật đó?",
+              "exerciseType": "viet-doan",
+              "answer": {
+                "open": true
+              },
+              "readConfidence": "high"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pageItems": [
+    {
+      "page": 40,
+      "itemCount": 1
+    },
+    {
+      "page": 41,
+      "itemCount": 10
+    },
+    {
+      "page": 42,
+      "itemCount": 3
+    },
+    {
+      "page": 43,
+      "itemCount": 1
+    },
+    {
+      "page": 44,
+      "itemCount": 5
+    },
+    {
+      "page": 45,
+      "itemCount": 7
+    },
+    {
+      "page": 46,
+      "itemCount": 3
+    },
+    {
+      "page": 47,
+      "itemCount": 4
+    },
+    {
+      "page": 48,
+      "itemCount": 1
+    },
+    {
+      "page": 49,
+      "itemCount": 7
+    },
+    {
+      "page": 50,
+      "itemCount": 5
+    },
+    {
+      "page": 51,
+      "itemCount": 2
+    },
+    {
+      "page": 52,
+      "itemCount": 12
+    },
+    {
+      "page": 53,
+      "itemCount": 6
+    },
+    {
+      "page": 54,
+      "itemCount": 6
+    },
+    {
+      "page": 55,
+      "itemCount": 2
+    },
+    {
+      "page": 56,
+      "itemCount": 12
+    },
+    {
+      "page": 57,
+      "itemCount": 4
+    },
+    {
+      "page": 58,
+      "itemCount": 1
+    },
+    {
+      "page": 59,
+      "itemCount": 7
+    },
+    {
+      "page": 60,
+      "itemCount": 10
+    },
+    {
+      "page": 61,
+      "itemCount": 7
+    },
+    {
+      "page": 62,
+      "itemCount": 3
+    },
+    {
+      "page": 63,
+      "itemCount": 1
+    },
+    {
+      "page": 64,
+      "itemCount": 12
+    },
+    {
+      "page": 65,
+      "itemCount": 5
+    },
+    {
+      "page": 66,
+      "itemCount": 1
+    },
+    {
+      "page": 67,
+      "itemCount": 8
+    },
+    {
+      "page": 68,
+      "itemCount": 14
+    },
+    {
+      "page": 69,
+      "itemCount": 5
+    },
+    {
+      "page": 70,
+      "itemCount": 3
+    },
+    {
+      "page": 71,
+      "itemCount": 5
+    },
+    {
+      "page": 72,
+      "itemCount": 6
+    },
+    {
+      "page": 73,
+      "itemCount": 12
+    },
+    {
+      "page": 74,
+      "itemCount": 10
+    },
+    {
+      "page": 75,
+      "itemCount": 5
+    },
+    {
+      "page": 76,
+      "itemCount": 1
+    },
+    {
+      "page": 77,
+      "itemCount": 11
+    }
+  ]
+}
