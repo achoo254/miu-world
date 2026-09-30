@@ -55,6 +55,13 @@ Lượt 1 để `pageItems: []`; lượt 2 điền.
 ```
 (Chỉ minh hoạ định dạng, chưa đủ item của trang.)
 
+## Quy ước bổ sung (chốt sau lượt 1)
+- "Học thuộc lòng …" (dòng có dấu sao, không số): item `-doc-htl`, `exerciseType: "doc-thanh-tieng"`.
+- Ô trống trong câu lệnh: chép dấu sách in (`?`, `…`, `◻`, `■`); checker coi mọi dấu này là ô trống khi so chữ.
+- Bảng: mỗi hàng cách nhau `|`; ghép cột A–B: dòng `A: …; …` và `B: …; …`, hàng đang hỏi đặt cuối.
+- Sách in có vẻ sai (chữ trong câu lệnh khác bài đọc, số tranh lệch): GIỮ nguyên như in, ghi vào nhật ký lượt 2.
+- Đáp án do người đọc tự giải (gọi tên đồ vật trong tranh, đoán chữ…): khi có nhiều cách nói đúng thì dùng `{ "open": true }`.
+
 ## Lượt 2 (đối chiếu độc lập)
 1. **Trước khi mở file lượt 1**, đọc lại từng trang của gói, ghi ra `.data/sgk/pass2/<gói>.json`: với mỗi trang `{ page, itemCount, items: [{ id?, prompt ngắn, expression?, answer? }] }` theo đúng quy tắc tách item ở trên.
 2. Sau đó mở file lượt 1 và so từng trang: số item, `prompt`, `text`, `expression`, `answer`, số trang.
