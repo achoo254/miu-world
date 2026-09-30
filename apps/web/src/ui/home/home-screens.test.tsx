@@ -44,6 +44,13 @@ afterEach(() => {
 });
 
 describe('Home', () => {
+  it("names the textbook lesson and its printed pages in today's quests", async () => {
+    stubServer(0, questListWithLesson);
+    renderAt('/home');
+    const pages = await screen.findByText('Trang 10–12');
+    expect(pages.closest('[data-id="home-today-textbook-tv2-t01-b01"]')?.textContent).toBe('Tiếng Việt 2, tập một · Bài 1. Tôi là học sinh lớp 2Trang 10–12');
+  });
+
   it('shows the server numbers, today\'s quest in the child\'s name, and which regions are open', async () => {
     stubServer(1);
     renderAt('/home');
