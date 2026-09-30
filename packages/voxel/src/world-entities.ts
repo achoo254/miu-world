@@ -30,6 +30,8 @@ const interactableSchema = z
     shape: z.enum(BUILT_SHAPES).optional(),
     /** Text painted on a board beside the target at runtime (the ancient tree's riddle). */
     board: z.string().min(1).optional(),
+    /** Shown only while that chapter is played (see `entitiesForChapter`); absent for the map's own chapter. */
+    chapter: z.number().int().min(1).optional(),
   })
   .refine((t) => (t.model === undefined) === (t.scale === undefined), { message: 'model and scale go together' })
   .refine((t) => !(t.model && t.shape), { message: 'a target has a model or a built shape, not both' })
@@ -45,7 +47,9 @@ export const worldEntitiesSchema = z
     waterLevel: z.number().int(),
     spawn: z.object({ position: vec3, yaw: z.number() }),
     interactables: z.array(interactableSchema),
-    props: z.array(z.object({ model: z.string(), position: vec3, yaw: z.number(), scale: z.number().positive() })),
+    props: z.array(
+      z.object({ model: z.string(), position: vec3, yaw: z.number(), scale: z.number().positive(), chapter: z.number().int().min(1).optional() }),
+    ),
     landmarks: z.array(z.object({ id: z.string(), name: z.string(), position: vec3 })),
   })
   .superRefine((entities, ctx) => {
@@ -56,3 +60,12 @@ export const worldEntitiesSchema = z
     }
   });
 export type WorldEntities = z.infer<typeof worldEntitiesSchema>;
+
+/**
+ * What the runtime builds while `chapter` is played: everything untagged (the map's own chapter) plus
+ * what is tagged with that chapter. Another chapter's characters and props are neither drawn nor met.
+ */
+export function entitiesForChapter(entities: WorldEntities, chapter: number): WorldEntities {
+  const shown = (e: { chapter?: number }): boolean => e.chapter === undefined || e.chapter === chapter;
+  return { ...entities, interactables: entities.interactables.filter(shown), props: entities.props.filter(shown) };
+}

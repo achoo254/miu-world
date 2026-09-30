@@ -1,6 +1,7 @@
 // Generates chapter 1 "Khu rừng bí mật" from a fixed seed: rolling terrain with rim hills, a stream,
 // a wooden bridge, stepping stones, a stone path, scattered trees, the ancient tree, plus the quest's
-// interactables (ids match the `target`s in content/quests/forest-ch1.json) and decorative props.
+// interactables (ids match the `target`s in content/quests/forest-ch1.json) and decorative props, and
+// for now the places of the first two Tiếng Việt quests (`chapter2Preview`).
 // Output: assets/generated/world/forest-ch1/{chunks.bin, entities.json}
 import { mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
@@ -52,11 +53,21 @@ const MODEL_HEIGHT: Record<string, number> = {
   [`${PACK.castle}/gate.glb`]: 5,
   [`${PACK.pets}/animal-parrot.glb`]: 1.1,
   [`${PACK.pets}/animal-beaver.glb`]: 1.0,
+  // Chapter 2 stand-ins (see `chapter2Preview`).
+  [`${PACK.pets}/animal-caterpillar.glb`]: 1.0,
+  [`${PACK.pets}/animal-elephant.glb`]: 1.6,
+  [`${PACK.nature}/tree_oak.glb`]: 5,
+  [`${PACK.nature}/plant_bushLarge.glb`]: 1.2,
+  [`${PACK.nature}/crops_wheatStageB.glb`]: 0.8,
+  [`${PACK.nature}/stump_oldTall.glb`]: 1.4,
+  [`${PACK.survival}/workbench.glb`]: 0.9,
 };
 /** Clips the animated models must contain. */
 const MODEL_ANIMATION: Record<string, string> = {
   [`${PACK.pets}/animal-parrot.glb`]: 'idle',
   [`${PACK.pets}/animal-beaver.glb`]: 'idle',
+  [`${PACK.pets}/animal-caterpillar.glb`]: 'idle',
+  [`${PACK.pets}/animal-elephant.glb`]: 'idle',
 };
 
 export function riverCenter(x: number): number {
@@ -252,8 +263,8 @@ export async function generateForest(): Promise<{ world: VoxelWorld; entities: W
     return y;
   };
   const props: WorldEntities['props'] = [];
-  const addProp = (model: string, x: number, z: number, yaw = 0): void => {
-    props.push({ model, position: [x + 0.5, standY(x, z), z + 0.5], yaw, scale: scaleOf(model) });
+  const addProp = (model: string, x: number, z: number, yaw = 0, chapter?: number): void => {
+    props.push({ model, position: [x + 0.5, standY(x, z), z + 0.5], yaw, scale: scaleOf(model), ...(chapter ? { chapter } : {}) });
   };
   addProp(`${PACK.survival}/signpost.glb`, spawn.x + 3, spawn.z + 3, 225);
   addProp(`${PACK.survival}/campfire-pit.glb`, spawn.x - 3, spawn.z + 1);
@@ -327,6 +338,77 @@ export async function generateForest(): Promise<{ world: VoxelWorld; entities: W
       position: place(ancient.x + 4, ancient.z + 11), yaw: 0, radius: 4, ...modelled(`${PACK.castle}/gate.glb`),
     },
   ];
+
+  interactables.push(...chapter2Preview());
+
+  /**
+   * Temporary: the places of the two Tiếng Việt week 1 quests (Bài 1 at the forest gate, Bài 2 around
+   * the calendar-leaf oak north of the stream), so their review copies are walked to, not jumped to,
+   * before the chapter maps exist. They move to their own chapter map when it is built. Each spot is
+   * the nearest open grass to its anchor, found after the terrain and trees are laid, so the rest of
+   * the map (and chunks.bin) stays exactly as it was. Everything here is tagged chapter 2, so playing
+   * chapter 1 neither draws nor meets it.
+   */
+  function chapter2Preview(): WorldEntities['interactables'] {
+    const CHAPTER = 2;
+    const prop = (model: string, x: number, z: number, yaw = 0): void => addProp(model, x, z, yaw, CHAPTER);
+    const taken: Array<[number, number]> = interactables.map((t) => [t.position[0] ?? 0, t.position[2] ?? 0]);
+    const open = (x: number, z: number): boolean => {
+      if (x < 10 || z < 10 || x >= sx - 10 || z >= sz - 10 || pathCells.has(`${x},${z}`)) return false;
+      if (world.get(x, surface(x, z), z) !== B.grass) return false;
+      for (const [dx, dz] of [[0, 0], [1, 0], [-1, 0], [0, 1], [0, -1]] as const) {
+        for (let y = surface(x + dx, z + dz) + 1; y <= surface(x + dx, z + dz) + 5; y++) if (world.get(x + dx, y, z + dz) !== 0) return false;
+      }
+      return taken.every(([tx, tz]) => Math.hypot(tx - (x + 0.5), tz - (z + 0.5)) >= 3);
+    };
+    const spot = (x: number, z: number): { x: number; z: number } => {
+      for (let r = 0; r <= 6; r++) {
+        for (let dx = -r; dx <= r; dx++) {
+          for (let dz = -r; dz <= r; dz++) {
+            if (Math.max(Math.abs(dx), Math.abs(dz)) !== r || !open(x + dx, z + dz)) continue;
+            taken.push([x + dx + 0.5, z + dz + 0.5]);
+            return { x: x + dx, z: z + dz };
+          }
+        }
+      }
+      throw new Error(`no open ground near ${x},${z} for a chapter 2 stand-in`);
+    };
+    const npc = (id: string, name: string, model: string, at: { x: number; z: number }, yaw: number) => ({
+      id, kind: 'npc' as const, name, label: 'Nói chuyện', position: place(at.x, at.z), yaw, radius: 3, ...animated(model), chapter: CHAPTER,
+    });
+    const thing = (id: string, name: string, label: string, at: { x: number; z: number }, look: { model: string } | { shape: 'letter' }) => ({
+      id, kind: 'object' as const, name, label, position: place(at.x, at.z), yaw: 0, radius: 2, chapter: CHAPTER,
+      ...('model' in look ? modelled(look.model) : look),
+    });
+
+    // Bài 1 — cổng rừng: Sâu Xanh by the stone gate, the class board a few steps away.
+    const sauXanh = spot(ancient.x + 10, ancient.z + 6);
+    const bangGo = spot(ancient.x + 12, ancient.z);
+    // Bài 2 — the oak hung with calendar leaves, Voi Bảo beside it, the three places the leaves blew to.
+    const oak = spot(50, 20);
+    prop(`${PACK.nature}/tree_oak.glb`, oak.x, oak.z, 30);
+    const gocCay = spot(oak.x + 2, oak.z + 1);
+    const voiBao = spot(oak.x + 3, oak.z + 4);
+    const bush = spot(42, 25);
+    prop(`${PACK.nature}/plant_bushLarge.glb`, bush.x, bush.z, 10);
+    for (const [dx, dz] of [[1, 0], [0, 1]] as const) prop(`${PACK.nature}/flower_redA.glb`, bush.x + dx, bush.z + dz, dx * 90);
+    const field = spot(57, 14);
+    for (let i = 0; i < 6; i++) prop(`${PACK.nature}/crops_wheatStageB.glb`, field.x + (i % 3), field.z - 2 + Math.floor(i / 3), 0);
+    const desk = spot(56, 25);
+    prop(`${PACK.survival}/workbench.glb`, desk.x, desk.z, 180);
+    const stump = spot(desk.x + 3, desk.z + 2);
+    return [
+      npc('sau-xanh', 'Sâu Xanh', `${PACK.pets}/animal-caterpillar.glb`, sauXanh, 200),
+      thing('bang-go-lop-hai', 'Bảng gỗ lớp Hai', 'Đọc bảng', bangGo, { model: `${PACK.survival}/signpost.glb` }),
+      thing('goc-cay-lich-la', 'Gốc cây lịch lá', 'Xem tờ lịch', gocCay, { shape: 'letter' }),
+      npc('voi-bao', 'Voi Bảo', `${PACK.pets}/animal-elephant.glb`, voiBao, 220),
+      thing('tv2-t01-to-lich-bui-hong', 'Tờ lịch ở bụi hồng', 'Nhặt tờ lịch', spot(bush.x, bush.z + 2), { shape: 'letter' }),
+      thing('tv2-t01-to-lich-ruong-lua', 'Tờ lịch ở ruộng lúa', 'Nhặt tờ lịch', spot(field.x + 1, field.z + 1), { shape: 'letter' }),
+      thing('tv2-t01-to-lich-ban-hoc', 'Tờ lịch trên bàn học', 'Nhặt tờ lịch', spot(desk.x, desk.z + 1), { shape: 'letter' }),
+      thing('tv2-t01-bang-chu-cai', 'Bảng chữ cái', 'Xem bảng', spot(field.x + 4, field.z), { model: `${PACK.survival}/signpost.glb` }),
+      thing('tv2-t01-hoc-cay', 'Hốc cây', 'Nhìn vào hốc cây', stump, { model: `${PACK.nature}/stump_oldTall.glb` }),
+    ];
+  }
 
   const entities: WorldEntities = {
     version: 2,

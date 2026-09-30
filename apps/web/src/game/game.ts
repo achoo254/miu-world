@@ -15,6 +15,7 @@ import {
 } from 'three';
 import { blockLookup } from '@miu/voxel/block-table';
 import type { SolidAt } from '@miu/voxel/grid-collision';
+import { entitiesForChapter } from '@miu/voxel/world-entities';
 import type { GameStore } from '../game-bridge/game-store';
 import { AssetRegistry, GuardedGltfLoader } from './asset-loader';
 import { createReviewShot } from './debug/review-shots';
@@ -45,6 +46,8 @@ export interface GameOptions {
   search: string;
   /** Equipped accessory ids (`id` or `id:variant`), normally from `GET /api/character`. */
   outfit: string[];
+  /** Chapter of the quest being played: the map's entities tagged with another chapter are left out. */
+  chapter?: number;
 }
 
 /** Bytes downloaded so far (compressed transfer size, falling back to body size for cache hits). */
@@ -224,22 +227,23 @@ export class Game {
       return blocks(data.world.get(x, y, z))?.solid ?? false;
     };
 
+    const entities = entitiesForChapter(data.entities, this.options.chapter ?? 1);
     const outfitParam = params.get('outfit');
     const outfit = outfitParam === 'none' ? [] : outfitParam ? outfitParam.split(',') : this.options.outfit;
     const [character, targets, props] = await Promise.all([
       loadPlayerCharacter(loader, outfit),
-      loadInteractables(loader, data.entities, quality.shadows),
-      loadProps(loader, data.entities, quality.shadows),
+      loadInteractables(loader, entities, quality.shadows),
+      loadProps(loader, entities, quality.shadows),
     ]);
     if (this.disposed) return;
     stepLoaded();
     scene.add(character.root, props, ...targets.map((t) => t.root));
     overlay.stats.outfit = character.outfit;
 
-    const controller = new PlayerController(solid, data.entities.spawn.position, data.entities.spawn.yaw);
+    const controller = new PlayerController(solid, entities.spawn.position, entities.spawn.yaw);
     // Dev/E2E switch: start next to a target (`npc` = the first NPC) instead of the spawn point.
     const spawnAt = params.get('spawnAt');
-    const spawnTarget = data.entities.interactables.find((t) => (spawnAt === 'npc' ? t.kind === 'npc' : t.id === spawnAt));
+    const spawnTarget = entities.interactables.find((t) => (spawnAt === 'npc' ? t.kind === 'npc' : t.id === spawnAt));
     if (spawnTarget) {
       const [x, y, z] = spawnTarget.position;
       const offset = Math.min(1.5, spawnTarget.radius * 0.5);
@@ -249,7 +253,7 @@ export class Game {
     const input = new PlayerInput(dom.root, dom.joystick, dom.run, dom.jump);
     this.input = input;
     this.cleanups.push(() => input.dispose());
-    const autopilot = params.get('autopilot') === '1' ? new Autopilot(data.entities) : null;
+    const autopilot = params.get('autopilot') === '1' ? new Autopilot(entities) : null;
 
     const onResize = (): void => {
       camera.aspect = window.innerWidth / window.innerHeight;
@@ -259,7 +263,7 @@ export class Game {
     window.addEventListener('resize', onResize);
     this.cleanups.push(() => window.removeEventListener('resize', onResize));
 
-    const reviewShot = createReviewShot(params.get('shot'), data.entities, scene);
+    const reviewShot = createReviewShot(params.get('shot'), entities, scene);
     if (reviewShot) {
       world.setViewDistance(Infinity);
       sky.scale.setScalar(3);

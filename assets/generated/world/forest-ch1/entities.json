@@ -149,6 +149,148 @@
       "radius": 4,
       "model": "packs/kenney-castle-kit/2.0/gate.glb",
       "scale": 5.4925
+    },
+    {
+      "id": "sau-xanh",
+      "kind": "npc",
+      "name": "Sâu Xanh",
+      "label": "Nói chuyện",
+      "position": [
+        83.5,
+        13,
+        85.5
+      ],
+      "yaw": 200,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-caterpillar.glb",
+      "scale": 0.5725,
+      "animation": "idle",
+      "chapter": 2
+    },
+    {
+      "id": "bang-go-lop-hai",
+      "kind": "object",
+      "name": "Bảng gỗ lớp Hai",
+      "label": "Đọc bảng",
+      "position": [
+        83.5,
+        13,
+        77.5
+      ],
+      "yaw": 0,
+      "radius": 2,
+      "chapter": 2,
+      "model": "packs/kenney-survival-kit/2.0/signpost.glb",
+      "scale": 3.4777
+    },
+    {
+      "id": "goc-cay-lich-la",
+      "kind": "object",
+      "name": "Gốc cây lịch lá",
+      "label": "Xem tờ lịch",
+      "position": [
+        53.5,
+        14,
+        20.5
+      ],
+      "yaw": 0,
+      "radius": 2,
+      "chapter": 2,
+      "shape": "letter"
+    },
+    {
+      "id": "voi-bao",
+      "kind": "npc",
+      "name": "Voi Bảo",
+      "label": "Nói chuyện",
+      "position": [
+        53.5,
+        14,
+        24.5
+      ],
+      "yaw": 220,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-elephant.glb",
+      "scale": 1.1179,
+      "animation": "idle",
+      "chapter": 2
+    },
+    {
+      "id": "tv2-t01-to-lich-bui-hong",
+      "kind": "object",
+      "name": "Tờ lịch ở bụi hồng",
+      "label": "Nhặt tờ lịch",
+      "position": [
+        42.5,
+        13,
+        29.5
+      ],
+      "yaw": 0,
+      "radius": 2,
+      "chapter": 2,
+      "shape": "letter"
+    },
+    {
+      "id": "tv2-t01-to-lich-ruong-lua",
+      "kind": "object",
+      "name": "Tờ lịch ở ruộng lúa",
+      "label": "Nhặt tờ lịch",
+      "position": [
+        56.5,
+        13,
+        19.5
+      ],
+      "yaw": 0,
+      "radius": 2,
+      "chapter": 2,
+      "shape": "letter"
+    },
+    {
+      "id": "tv2-t01-to-lich-ban-hoc",
+      "kind": "object",
+      "name": "Tờ lịch trên bàn học",
+      "label": "Nhặt tờ lịch",
+      "position": [
+        55.5,
+        14,
+        28.5
+      ],
+      "yaw": 0,
+      "radius": 2,
+      "chapter": 2,
+      "shape": "letter"
+    },
+    {
+      "id": "tv2-t01-bang-chu-cai",
+      "kind": "object",
+      "name": "Bảng chữ cái",
+      "label": "Xem bảng",
+      "position": [
+        59.5,
+        13,
+        13.5
+      ],
+      "yaw": 0,
+      "radius": 2,
+      "chapter": 2,
+      "model": "packs/kenney-survival-kit/2.0/signpost.glb",
+      "scale": 3.4777
+    },
+    {
+      "id": "tv2-t01-hoc-cay",
+      "kind": "object",
+      "name": "Hốc cây",
+      "label": "Nhìn vào hốc cây",
+      "position": [
+        59.5,
+        13,
+        27.5
+      ],
+      "yaw": 0,
+      "radius": 2,
+      "chapter": 2,
+      "model": "packs/kenney-nature-kit/2.1/stump_oldTall.glb",
+      "scale": 2.1005
     }
   ],
   "props": [
@@ -701,6 +843,127 @@
       ],
       "yaw": 210,
       "scale": 1.0204
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/tree_oak.glb",
+      "position": [
+        50.5,
+        14,
+        20.5
+      ],
+      "yaw": 30,
+      "scale": 4.0775,
+      "chapter": 2
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/plant_bushLarge.glb",
+      "position": [
+        43.5,
+        14,
+        26.5
+      ],
+      "yaw": 10,
+      "scale": 4.9396,
+      "chapter": 2
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
+      "position": [
+        44.5,
+        14,
+        26.5
+      ],
+      "yaw": 90,
+      "scale": 1.7094,
+      "chapter": 2
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
+      "position": [
+        43.5,
+        14,
+        27.5
+      ],
+      "yaw": 0,
+      "scale": 1.7094,
+      "chapter": 2
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crops_wheatStageB.glb",
+      "position": [
+        57.5,
+        16,
+        14.5
+      ],
+      "yaw": 0,
+      "scale": 1.4955,
+      "chapter": 2
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crops_wheatStageB.glb",
+      "position": [
+        58.5,
+        15,
+        14.5
+      ],
+      "yaw": 0,
+      "scale": 1.4955,
+      "chapter": 2
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crops_wheatStageB.glb",
+      "position": [
+        59.5,
+        13,
+        14.5
+      ],
+      "yaw": 0,
+      "scale": 1.4955,
+      "chapter": 2
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crops_wheatStageB.glb",
+      "position": [
+        57.5,
+        14,
+        15.5
+      ],
+      "yaw": 0,
+      "scale": 1.4955,
+      "chapter": 2
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crops_wheatStageB.glb",
+      "position": [
+        58.5,
+        13,
+        15.5
+      ],
+      "yaw": 0,
+      "scale": 1.4955,
+      "chapter": 2
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crops_wheatStageB.glb",
+      "position": [
+        59.5,
+        13,
+        15.5
+      ],
+      "yaw": 0,
+      "scale": 1.4955,
+      "chapter": 2
+    },
+    {
+      "model": "packs/kenney-survival-kit/2.0/workbench.glb",
+      "position": [
+        56.5,
+        14,
+        25.5
+      ],
+      "yaw": 180,
+      "scale": 3.1404,
+      "chapter": 2
     }
   ],
   "landmarks": [

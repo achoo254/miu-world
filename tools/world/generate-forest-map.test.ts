@@ -24,8 +24,16 @@ describe('forest chapter 1 generator', () => {
     const { world, entities } = await generateForest();
     const parsed = worldEntitiesSchema.parse(entities);
     expect(parsed.interactables.map((t) => t.id).sort()).toEqual(
-      ['ancient-tree', 'animal-beaver', 'chest', 'clue-box', 'clue-letter', 'clue-mushroom', 'gate-ch2', 'parrot-guide', 'stream-stones'].sort(),
+      [
+        'ancient-tree', 'animal-beaver', 'chest', 'clue-box', 'clue-letter', 'clue-mushroom', 'gate-ch2', 'parrot-guide', 'stream-stones',
+        // Stand-ins for the first two Tiếng Việt quests until their chapter map exists.
+        'sau-xanh', 'bang-go-lop-hai', 'goc-cay-lich-la', 'voi-bao', 'tv2-t01-to-lich-bui-hong', 'tv2-t01-to-lich-ruong-lua',
+        'tv2-t01-to-lich-ban-hoc', 'tv2-t01-bang-chu-cai', 'tv2-t01-hoc-cay',
+      ].sort(),
     );
+    // The stand-ins belong to chapter 2 only; chapter 1's own targets carry no chapter.
+    const ch1 = new Set(['ancient-tree', 'animal-beaver', 'chest', 'clue-box', 'clue-letter', 'clue-mushroom', 'gate-ch2', 'parrot-guide', 'stream-stones']);
+    for (const t of parsed.interactables) expect(t.chapter, t.id).toBe(ch1.has(t.id) ? undefined : 2);
     // Targets stand on the surface: never inside a solid block.
     for (const t of parsed.interactables) {
       const [x, y, z] = t.position.map(Math.floor) as [number, number, number];
