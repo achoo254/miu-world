@@ -1,0 +1,98 @@
+/* Learning steps (M2.4–M2.8, M3.4): values from tokens.css only. Touch targets ≥ 48px. */
+.challenge-meta { display: flex; justify-content: space-between; flex-wrap: wrap; gap: var(--space-sm); color: var(--color-ink-soft); font-weight: 700; }
+.challenge-meta span { display: inline-flex; align-items: center; gap: var(--space-xs); }
+.challenge-prompt { font-size: var(--text-lg); font-weight: 700; }
+.challenge-area { display: flex; flex-direction: column; gap: var(--space-md); }
+.challenge-actions { display: flex; justify-content: flex-end; gap: var(--space-sm); flex-wrap: wrap; }
+/* A friendly nudge, not an error: warm yellow instead of red. */
+.challenge-try-again {
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-field);
+  background: var(--color-warning-soft);
+  color: var(--color-warning-ink);
+  font-weight: 700;
+}
+
+/* Drag pieces: no page scroll, zoom, text selection or iOS callout while dragging. */
+.drag-piece,
+.sort-stone {
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  position: relative;
+}
+.drag-board { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md); }
+@media (max-width: 40rem) {
+  .drag-board { grid-template-columns: 1fr; }
+}
+.drag-source,
+.drag-container {
+  min-height: 12rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: var(--space-xs);
+  padding: var(--space-md);
+  border-radius: var(--radius-tile);
+  background: var(--color-field);
+}
+.drag-container { flex-direction: column; background: var(--color-tile-1); border: 4px dashed var(--color-primary-top); cursor: pointer; }
+.drag-container:focus-visible { box-shadow: var(--focus-ring); outline: none; }
+.drag-container-label { display: flex; align-items: center; gap: var(--space-xs); font-weight: 800; }
+.drag-container-items { display: flex; flex-wrap: wrap; gap: var(--space-xs); }
+.drag-count { font-family: var(--font-display); font-weight: 800; font-size: var(--text-xl); align-self: flex-end; }
+.drag-piece {
+  width: 3.5rem;
+  height: 3.5rem;
+  display: grid;
+  place-items: center;
+  border: 3px solid transparent;
+  border-radius: var(--radius-field);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-tile);
+  cursor: grab;
+}
+.drag-piece--selected,
+.sort-stone--selected { border-color: var(--color-secondary); }
+
+.sort-stones { display: flex; flex-wrap: wrap; gap: var(--space-sm); min-height: 4.5rem; }
+.sort-stone,
+.sort-slot {
+  min-width: 4.5rem;
+  min-height: 4.5rem;
+  display: grid;
+  place-items: center;
+  border: 3px solid transparent;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--text-xl);
+  cursor: pointer;
+}
+.sort-stone { background: var(--color-field-edge); color: var(--color-ink); box-shadow: var(--shadow-tile); }
+.sort-slots { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--space-sm); }
+.sort-slot { background: var(--color-surface); border: 3px dashed var(--color-field-edge); color: var(--color-ink-soft); }
+.sort-slot--filled { border-style: solid; border-color: var(--color-secondary); color: var(--color-ink); }
+.sort-slot:focus-visible,
+.sort-stone:focus-visible { box-shadow: var(--focus-ring); outline: none; }
+
+.choice-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr)); gap: var(--space-sm); }
+.choice {
+  min-height: 4rem;
+  padding: var(--space-sm) var(--space-md);
+  border: 3px solid var(--color-field-line);
+  border-radius: var(--radius-field);
+  background: var(--color-field);
+  color: var(--color-ink);
+  font: inherit;
+  font-size: var(--text-lg);
+  font-weight: 700;
+  cursor: pointer;
+}
+.choice--selected { border-color: var(--color-primary); background: var(--color-badge); }
+.choice:focus-visible { box-shadow: var(--focus-ring); outline: none; }
+
+.read-passage { padding: var(--space-md); border-radius: var(--radius-field); background: var(--color-surface-glass); box-shadow: var(--shadow-tile); line-height: 1.5; }
+.riddle-value { align-self: center; min-width: 6rem; text-align: center; font-family: var(--font-display); font-weight: 800; font-size: var(--text-hero); }
+.support-guide { margin: 0; padding-left: var(--space-lg); }

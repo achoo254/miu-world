@@ -11,6 +11,7 @@ export function Modal({
   children,
   dataId,
   placement = 'center',
+  size = 'normal',
 }: {
   title: string;
   onClose?: () => void;
@@ -18,6 +19,8 @@ export function Modal({
   dataId?: string;
   /** `bottom` docks the panel at the bottom edge (NPC dialogue over the game). */
   placement?: 'center' | 'bottom';
+  /** `wide` fits a challenge close-up. */
+  size?: 'normal' | 'wide';
 }) {
   const dialog = useRef<HTMLDivElement>(null);
   const titleId = useId();
@@ -62,7 +65,7 @@ export function Modal({
 
   return (
     <div className={`modal-backdrop modal-backdrop--${placement}`} data-id={dataId ? `${dataId}-backdrop` : undefined}>
-      <div ref={dialog} className="panel modal" role="dialog" aria-modal="true" aria-labelledby={titleId} tabIndex={-1} data-id={dataId}>
+      <div ref={dialog} className={`panel modal modal--${size}`} role="dialog" aria-modal="true" aria-labelledby={titleId} tabIndex={-1} data-id={dataId}>
         <h2 id={titleId} className="modal-title">
           {title}
         </h2>

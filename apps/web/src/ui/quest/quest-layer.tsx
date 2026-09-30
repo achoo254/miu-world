@@ -2,6 +2,7 @@
 // offline retry for a pending step. Rendered by /play once the player data is loaded.
 import type { StepCompleteResponse } from '@miu/schema/game';
 import type { GameStore } from '../../game-bridge/game-store';
+import { LearningStep, hasLearningScreen } from '../challenge/learning-step';
 import { DialogueScreen } from '../dialogue/dialogue-screen';
 import { buttonClass } from '../kit/button';
 import { Modal } from '../kit/modal';
@@ -38,8 +39,10 @@ export function QuestLayer({
           onDone={() => void quest.submit(step)}
           onClose={quest.close}
         />
+      ) : step && summary?.quest.status === 'active' && hasLearningScreen(step) ? (
+        <LearningStep key={step.id} step={step} quest={summary.quest} data={data} busy={quest.busy} submit={quest.submit} onClose={quest.close} />
       ) : step ? (
-        // Learning steps (read, riddle, challenges) get their own screens with the support panel.
+        // Mechanics that have no screen yet (textbook ones arrive with their own plan).
         <Modal title={say(step.title, data.character)} onClose={quest.close} dataId="quest-step">
           <p>Thử thách này sắp có.</p>
           <button type="button" className={buttonClass('primary', { block: true })} onClick={quest.close}>

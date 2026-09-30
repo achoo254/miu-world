@@ -94,7 +94,8 @@ export function useQuestController({ store, data, questId, onResponse, onOverlay
         setRetry(null);
         latest.current.onResponse(response);
         syncWorld(active.quest, response.quest);
-        if (response.feedback) setToast(say(response.feedback, latest.current.data.character));
+        // A wrong answer's line shows inside the step screen; only a right one becomes a toast.
+        if (response.feedback && response.correct) setToast(say(response.feedback, latest.current.data.character));
         if (response.correct) {
           if (latest.current.overlay?.step.id === step.id) setOverlay(null);
           // The next step may start by itself (read the letter, open the gate after the chest).

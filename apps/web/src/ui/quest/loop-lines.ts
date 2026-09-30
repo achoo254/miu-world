@@ -46,3 +46,12 @@ export const FOUND_LINES: readonly string[] = [
 export function fillLine(line: string, who: string, name: string): string {
   return line.replaceAll('{who}', who).replaceAll('{name}', name);
 }
+
+/** A wrong answer on a step whose content has no feedback pool of its own. */
+export const TRY_AGAIN_LINES: readonly string[] = [
+  'Gần đúng rồi, {name} thử lại nhé!',
+  'Chưa khớp đâu. Mở Gợi ý nếu cần nha.',
+  'Không sao, sai là để học mà. Thử lần nữa nào!',
+  '{name} bình tĩnh đếm lại xem sao.',
+  'Hmm, chưa phải. Mình cùng thử cách khác nhé.',
+];

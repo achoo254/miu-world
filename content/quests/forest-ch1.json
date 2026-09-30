@@ -103,6 +103,18 @@
           "text": "Bạn Hải ly",
           "explanation": "Lá thư viết: \"Hải ly sẽ chỉ đường cho bạn.\" Bác Cú già là người viết thư."
         }
+      },
+      "feedback": {
+        "right": [
+          "Đúng rồi! Bạn Hải ly bên suối sẽ dẫn đường cho {name}.",
+          "{name} đọc kỹ thật, tìm ra ngay người chỉ đường!",
+          "Chính xác! Giờ mình đi tìm bạn Hải ly thôi."
+        ],
+        "wrong": [
+          "Đọc lại câu có chữ \"chỉ đường\" nhé {name}.",
+          "Người viết thư chưa chắc là người chỉ đường đâu.",
+          "Thử dò từng dòng của lá thư thêm lần nữa xem."
+        ]
       }
     },
     {
@@ -215,6 +227,18 @@
           "text": "10 quả táo",
           "explanation": "Đếm 1, 2, 3, 4, 5, 6, 7, 8, 9, 10: đủ 10 quả thì dừng. 3 quả còn lại để trên cây."
         }
+      },
+      "feedback": {
+        "right": [
+          "Đủ mười quả rồi! Hải ly cảm ơn {name} nhiều lắm.",
+          "Giỏ táo đầy vừa khít, {name} đếm siêu chuẩn!",
+          "Mười quả táo đỏ au, cả nhà Hải ly có bánh rồi!"
+        ],
+        "wrong": [
+          "Giỏ chưa đúng mười quả, {name} đếm lại từng quả nhé.",
+          "Thử đếm to từ một nhé, lỡ thừa thì kéo bớt ra.",
+          "Hải ly cần vừa đúng mười quả, không hơn không kém."
+        ]
       }
     },
     {
@@ -257,6 +281,18 @@
           "text": "5 viên kẹo",
           "explanation": "8 − 3 = 5. Tặng đi 3 viên thì Hải ly còn 5 viên."
         }
+      },
+      "feedback": {
+        "right": [
+          "Chuẩn luôn! Tám bớt ba còn năm viên kẹo.",
+          "{name} trừ nhẩm nhanh ghê, Hải ly phục lăn!",
+          "Đúng rồi, Hải ly còn lại năm viên ngọt lịm."
+        ],
+        "wrong": [
+          "Tặng đi thì kẹo ít đi, {name} thử phép trừ xem.",
+          "Đếm lùi ba bước từ số tám thử nào.",
+          "Hải ly vẫn giữ lại vài viên, mình tính lại nhé."
+        ]
       }
     },
     {
@@ -304,6 +340,18 @@
           "text": "9, 15, 27, 34",
           "explanation": "9 < 15 < 27 < 34. So hàng chục: 1 chục < 2 chục < 3 chục, còn 9 chưa đủ 1 chục."
         }
+      },
+      "feedback": {
+        "right": [
+          "Bước đá vững vàng, {name} qua suối an toàn rồi!",
+          "Từ bé đến lớn, xếp chuẩn không cần chỉnh!",
+          "Tõm tõm tõm, bốn bước đá đưa {name} sang bờ."
+        ],
+        "wrong": [
+          "Hòn đá bé nhất phải đi trước, {name} nhìn kỹ nhé.",
+          "So chữ số hàng chục trước để biết số nào lớn hơn.",
+          "Nước suối vỗ nhẹ: xếp lại thứ tự từ bé đến lớn nào."
+        ]
       }
     },
     {
@@ -353,6 +401,18 @@
           "text": "13",
           "explanation": "8 + 5 = 13. Có thể tính 8 + 2 = 10, rồi 10 + 3 = 13."
         }
+      },
+      "feedback": {
+        "right": [
+          "Mười ba chiếc lá! Cây cổ thụ mỉm cười với {name}.",
+          "Câu đố đã giải, gốc cây khẽ rung vui vẻ.",
+          "Tám cộng năm là mười ba, {name} làm đúng rồi!"
+        ],
+        "wrong": [
+          "Cây cổ thụ lắc cành: đếm thêm từ số tám nhé.",
+          "Tách năm thành hai và ba để tính cho dễ nè.",
+          "Chưa phải rồi, {name} thử gộp cho tròn mười trước."
+        ]
       }
     },
     {

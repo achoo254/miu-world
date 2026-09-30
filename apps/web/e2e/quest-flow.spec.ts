@@ -1,32 +1,19 @@
 // Chapter 1 against the real server and content: meet the parrot (M3.3) → take the quest → the arrow
 // points at a clue → find the three clues in reverse order → tracker 3/3 from the server → the letter
-// opens by itself. Reading the letter and the riddle tree are learning steps (their own E2E).
-import { expect, test, type Page } from '@playwright/test';
+// opens by itself → read it and answer → on to the beaver. The Math challenges: challenges.spec.ts.
+import { expect, test } from '@playwright/test';
+import { freshChild, playAt } from './quest-api';
 import { readStats, waitReady } from './stats';
 
 // Its own parent and child: quest progress must start empty and never leak into other projects.
 test.use({ storageState: { cookies: [], origins: [] } });
 
-async function newChild(page: Page, baseURL: string): Promise<void> {
-  const headers = { Origin: new URL(baseURL).origin };
-  const request = page.context().request;
-  expect((await request.post('/api/auth/register', { headers, data: { email: `quest-${Date.now()}@example.vn`, ['password']: 'test-password-e2e', pin: '2468' } })).status()).toBe(201);
-  const { version } = (await (await request.get('/api/consents/policy')).json()) as { version: string };
-  expect((await request.post('/api/consents', { headers, data: { policyVersion: version } })).status()).toBe(201);
-  const child = await request.post('/api/children', { headers, data: { displayName: 'Cáo Nhỏ' } });
-  const { id } = (await child.json()) as { id: string };
-  expect((await request.post(`/api/children/${id}/select`, { headers })).status()).toBe(200);
-  expect((await request.put('/api/character', { headers, data: { name: 'Mochi', equipped: [] } })).status()).toBe(200);
-}
-
-const at = (target: string) => `/play?quality=low&region=khu-rung-bi-mat&quest=forest-ch1&spawnAt=${target}`;
-
 test('meet the parrot, follow the arrow, find the three clues, and the letter opens by itself', async ({ page, baseURL }) => {
   const pageErrors: string[] = [];
   page.on('pageerror', (err) => pageErrors.push(err.message));
-  await newChild(page, baseURL ?? '');
+  await freshChild(page, baseURL ?? '');
 
-  await page.goto(at('parrot-guide'));
+  await page.goto(playAt('parrot-guide'));
   await waitReady(page);
   await page.keyboard.press('KeyE');
   const dialogue = page.getByRole('dialog', { name: 'Vẹt' });
@@ -45,25 +32,35 @@ test('meet the parrot, follow the arrow, find the three clues, and the letter op
 
   let found = 0;
   for (const clue of ['clue-mushroom', 'clue-letter', 'clue-box']) {
-    await page.goto(at(clue));
+    await page.goto(playAt(clue));
     await waitReady(page);
     await page.locator('[data-id="hud-interact"]').click();
     found += 1;
     if (found < 3) await expect(page.locator('[data-id="hud-tracker-count"]')).toHaveText(new RegExp(`${found}/3`));
   }
   // All three found: the letter step starts without another touch.
-  await expect(page.getByRole('dialog', { name: 'Đọc lá thư' })).toBeVisible();
+  const letter = page.getByRole('dialog', { name: 'Đọc lá thư' });
+  await expect(letter).toBeVisible();
 
-  // Touching a clue again after it was found changes nothing.
-  await page.goto(at('clue-box'));
+  // Touching a clue again after it was found changes nothing: the letter is still the step on.
+  await page.goto(playAt('clue-box'));
   await waitReady(page);
-  await expect(page.getByRole('dialog', { name: 'Đọc lá thư' })).toBeVisible(); // still the step on
+  await expect(letter).toBeVisible();
+
+  // Read it and answer (reading comprehension, skill doc-hieu): the next step is the beaver.
+  await expect(page.locator('[data-id="read-passage"]')).toContainText('Hải ly sẽ chỉ đường');
+  await expect(page.locator('[data-id="challenge-prompt"]')).toContainText('Mochi');
+  await page.locator('[data-id="choice-b"]').click();
+  await page.locator('[data-id="challenge-check"]').click();
+  await expect(letter).toHaveCount(0);
+  await expect(page.locator('[data-id="hud-tracker-step"]')).toContainText('Hải ly');
+  await expect.poll(async () => (await readStats(page)).hintTarget).toBe('animal-beaver');
   expect(pageErrors).toEqual([]);
 });
 
 test('an NPC whose turn has not come says so, and never the same line twice in a row', async ({ page, baseURL }) => {
-  await newChild(page, baseURL ?? '');
-  await page.goto(at('animal-beaver'));
+  await freshChild(page, baseURL ?? '');
+  await page.goto(playAt('animal-beaver'));
   await waitReady(page);
   const said: string[] = [];
   const toast = page.locator('[data-id="toast"]');

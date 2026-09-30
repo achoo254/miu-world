@@ -4,7 +4,8 @@
   left: 50%;
   bottom: 9rem;
   transform: translateX(-50%);
-  z-index: var(--z-hud);
+  /* Above a dialogue's dimmed backdrop, so a line said while it is open stays readable. */
+  z-index: calc(var(--z-overlay) + 1);
   max-width: min(90vw, 32rem);
   padding: var(--space-sm) var(--space-lg);
   border-radius: var(--radius-pill);
