@@ -14,7 +14,7 @@ const API_TARGET = 'http://127.0.0.1:8787';
  * `connect-src 'self'` covers it; blob:/data: are for the mesher worker and embedded glTF buffers.
  */
 export const CONTENT_SECURITY_POLICY =
-  "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self' blob: data:; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'";
+  "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self' blob: data:; worker-src 'self' blob:; media-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'";
 
 /**
  * Injects the CSP meta into built pages only. The dev server's React Fast Refresh preamble is an

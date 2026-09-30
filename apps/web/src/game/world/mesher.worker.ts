@@ -1,4 +1,5 @@
 // Web Worker: meshes every chunk off the main thread and streams geometry back (transferable).
+import '../../zod-config';
 import type { AtlasBlock } from '@miu/voxel/block-table';
 import { VoxelWorld, type ChunkCounts } from '@miu/voxel/chunk-format';
 import { createChunkMesher, type ChunkGeometry } from './chunk-mesher';

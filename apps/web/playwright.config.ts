@@ -65,6 +65,13 @@ export default defineConfig({
     { name: 'setup', testMatch: 'parent-session.setup.ts' },
     { name: 'account', testMatch: 'account-flow.spec.ts' },
     ...SIGNED_IN.map((name) => ({ name, testMatch: `${name}.spec.ts`, dependencies: ['setup'], use: { storageState: PARENT_STATE } })),
+    // Speaking step with Chromium's fake microphone (and no permission prompt).
+    {
+      name: 'speak',
+      testMatch: 'speak.spec.ts',
+      dependencies: ['setup'],
+      use: { launchOptions: { args: ['--use-fake-device-for-media-stream', '--use-fake-ui-for-media-stream'] } },
+    },
     { name: 'perf', testMatch: 'perf.spec.ts', dependencies: ['setup'], use: { storageState: PARENT_STATE }, timeout: 30 * 60_000 },
   ],
 });

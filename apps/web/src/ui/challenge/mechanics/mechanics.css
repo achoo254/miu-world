@@ -71,3 +71,6 @@ button.calendar-cell, .calendar-weekday { cursor: pointer; }
 .read-glossary { margin: var(--space-sm) 0 0; padding: var(--space-sm); border-radius: var(--radius-key); background: var(--color-surface-faint); }
 .read-glossary dt { font-weight: 800; font-style: italic; }
 .read-glossary dd { margin: 0 0 var(--space-xs); }
+
+.speak-recorder { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-sm); }
+.speak-recorder .hint { flex-basis: 100%; margin: 0; }

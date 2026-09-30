@@ -15,6 +15,10 @@ describe('web content security policy', () => {
     expect(directives.get('connect-src')?.every((v) => ["'self'", 'blob:', 'data:'].includes(v))).toBe(true);
   });
 
+  it('plays back a recording made on the device (blob:), from no other host', () => {
+    expect(directives.get('media-src')).toEqual(["'self'", 'blob:']);
+  });
+
   it('blocks plugins and base/form hijacking', () => {
     expect(directives.get('object-src')).toEqual(["'none'"]);
     expect(directives.get('base-uri')).toEqual(["'self'"]);
