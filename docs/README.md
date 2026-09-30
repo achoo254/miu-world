@@ -10,9 +10,8 @@ Bản đồ tài liệu. Nguồn quyết định sản phẩm là [Master Plan v
 | [codebase-summary.md](codebase-summary.md) | Bắt đầu đọc từ đâu, module nào làm chủ việc gì |
 | [design-guidelines.md](design-guidelines.md) | Art direction voxel, màu, font, icon, quy tắc bám mock |
 | [project-roadmap.md](project-roadmap.md) | Giai đoạn, gate, trạng thái backlog (ý định, không phải hành vi đã giao) |
+| [deployment-guide.md](deployment-guide.md) | Đọc credential SSH ở đâu, staging và production chạy trên máy nào, deploy thế nào |
 
 Quy tắc hành vi cho agent: [`CLAUDE.md`](../CLAUDE.md) và [`.claude/rules/`](../.claude/rules/).
 
 Hồ sơ theo thời điểm (không phải nguồn chuẩn lâu dài): plan và report ở [`plans/dattqh/`](../plans/dattqh/).
-
-Chưa có `deployment-guide.md`: repo chưa có môi trường triển khai; hướng triển khai đích ghi ở `system-architecture.md`. Tạo file này khi có môi trường thật.

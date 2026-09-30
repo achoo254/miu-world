@@ -35,7 +35,7 @@ Gom lại, hỏi một lần: thay đổi cách thu thập/chia sẻ dữ liệu
 
 - Trên Windows chưa bật Developer Mode, test symlink trong `tools/assets/check-assets.test.ts` tự skip (không tạo được symlink); CI (Ubuntu) vẫn chạy. Skip này không có nghĩa là gate symlink đã được kiểm trên máy local.
 - `render-preview.ts` và perf test tự sinh lại manifest khi chạy xong; nếu tự sửa file trong `assets/generated/` bằng cách khác thì phải chạy `pnpm assets:manifest`.
-- Cổng cố định: web dev 5173, preview/E2E 4173 (Vite `--strictPort`); server 8787 (cổng cố định trong config, lỗi nếu bận); render-preview 5199. Báo cổng bận thì tìm và tắt server cũ, không đổi cổng.
+- Cổng cố định: web dev 5173, preview/E2E 4173 (Vite `--strictPort`); server 8787 (cổng cố định trong config, lỗi nếu bận); render-preview 5199. Báo cổng bận thì tìm và tắt server cũ, không đổi cổng. Quy tắc này chỉ áp cho máy dev: trên máy chủ dùng chung, tiến trình giữ cổng có thể thuộc dự án khác, nên không được tắt (xem `docs/deployment-guide.md`).
 - Server từ chối POST không có `Origin` trong danh sách cho phép (chống CSRF). Mặc định chỉ có localhost/127.0.0.1 ở 5173/4173 (và 5174/4174 cũ); duyệt qua LAN thì chạy server với `ALLOWED_ORIGINS=http://<ip-LAN>:<cổng>` (danh sách phân tách bằng dấu phẩy) và mở web với `--host`.
 - Đăng nhập phụ huynh là Google OAuth: server cần `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`, `GOOGLE_REDIRECT_URI` (khớp đúng URI đăng ký trên Google; Google chỉ nhận https hoặc `http://localhost`). Đặt trong file env ngoài repo và chạy `pnpm --filter @miu/server exec tsx --env-file=<file> src/server.ts`; không in giá trị. Đăng nhập mật khẩu chỉ bật khi đặt `PASSWORD_LOGIN=1` (E2E đặt; bản review không đặt), bị từ chối ở production. Duyệt qua tunnel: `tunelo http 4173:miu` → `https://miu.tunnel.inetdev.io.vn`, chạy preview với `MIU_PUBLIC_HOSTS=miu.tunnel.inetdev.io.vn` và server với `ALLOWED_ORIGINS` gồm origin đó.
 - `jev-decide.py` cần `TYPESAFE_API_KEY` hoặc `TYPESAFE_TOKEN_FILE`; thiếu thì dừng, đừng tự tìm key.
@@ -47,3 +47,4 @@ Gom lại, hỏi một lần: thay đổi cách thu thập/chia sẻ dữ liệu
 - Commit: conventional commits tiếng Anh (`feat(assets):`, `feat(poc):`, `docs(plans):`, `build:`); không nhắc AI; không ghi mã plan/phase trong code, tên test, commit.
 - Thêm dependency mới: ghi vào trang review của đợt đó để người duyệt thấy.
 - Tiến độ backlog và việc đã xong: `docs/project-roadmap.md` — cập nhật khi một task Master Plan đổi trạng thái.
+- Credential SSH, máy staging/production và cách deploy: [`docs/deployment-guide.md`](docs/deployment-guide.md). Deploy, migration, restart ở production phải hỏi người trước mỗi lần.

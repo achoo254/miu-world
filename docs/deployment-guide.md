@@ -1,0 +1,175 @@
+# Triển khai — credential, máy chủ, staging và production
+
+Điểm vào duy nhất để tìm credential, chọn máy và deploy Miu World. Hướng triển khai đích (static + CDN cho client, server tự host) nằm ở [`system-architecture.md`](system-architecture.md).
+
+**Trạng thái:** staging đang chạy tại `https://miu-staging.hoandat.com` (§5). Production (`miu.hoandat.com`) mới có DNS; phần còn thiếu liệt kê ở §7.
+
+| Môi trường | Chạy ở đâu | Domain |
+| --- | --- | --- |
+| Dev | Máy dev, mở ra ngoài bằng `tunelo http <cổng>:miu` (cách chạy trong `CLAUDE.md`, mục duyệt qua tunnel) | `miu.tunnel.inetdev.io.vn` |
+| Staging | Lab 176, qua edge .65 | `miu-staging.hoandat.com` |
+| Production | .65 | `miu.hoandat.com` |
+
+## 1. Quyền hạn
+
+- **Staging:** agent được tự deploy, restart và đọc log, nhưng chỉ trong thư mục và tiến trình của Miu. Không sửa, dừng hay nâng cấp dịch vụ của dự án khác chạy trên cùng máy.
+- **Production:** hỏi người trước **mỗi** lần deploy, migration hay restart. Lý do: đây là nơi có dữ liệu thật của trẻ em, và máy này dùng chung với nhiều dự án khác.
+- **Không bao giờ** commit file credential, file env thật hay private key; không in giá trị secret ra hội thoại, log, report hay commit.
+
+## 2. Credential
+
+Mọi credential nằm **ngoài repo**, trong iCloud của người phụ trách, và được trỏ tới bằng biến môi trường đặt một lần trong shell profile:
+
+| Biến | Tệp | Miu dùng cho |
+| --- | --- | --- |
+| `ALL_IN_ONE_STAGING_DEV` | `$HOME/Library/Mobile Documents/com~apple~CloudDocs/cong-viec/Cong viec/ENV production/all-in-one-staging-dev.json` | SSH vào **cả staging lẫn production** (xem lưu ý dưới) |
+| (cùng thư mục) | `access-tokens.json` | Secret ứng dụng và token dịch vụ (§2.2) |
+| `ALL_IN_ONE_PROD` | `all-in-one-production.json`, cùng thư mục | Không dùng: tệp này là của hệ khác |
+
+⚠️ **Máy production của Miu nằm trong tệp *staging-dev*.** Máy đó mang tên "SERVER STAGING .65" vì nó là máy staging của các dự án khác. Tìm nó trong `ALL_IN_ONE_PROD` sẽ không thấy.
+
+Ý nghĩa từng trường của hai tệp nằm ở `_meta.entry_schema` trong chính tệp đó. Khi cần xem cấu trúc thì đọc schema, đừng mở cả tệp. Không `cat`, không `source`, không chép bất kỳ phần nào vào repo.
+
+### 2.1 SSH
+
+**Lấy từng trường qua biến, không in ra màn hình.** Host và cổng lấy từ `.host` và `.port` của entry, đừng chép vào tài liệu hay script:
+
+```sh
+jq -r '.servers[] | [.group, .name, .host, .port, .auth] | @tsv' "$ALL_IN_ONE_STAGING_DEV"   # không có cột secret
+srv() { jq -r --arg n "$1" '.servers[] | select(.name == $n) | .'"$2" "$ALL_IN_ONE_STAGING_DEV"; }
+
+# Staging (lab, đăng nhập bằng mật khẩu). `sshpass -e` đọc SSHPASS nên mật khẩu không lộ trong `ps`.
+S=dattqh_ubuntu_192.168.122.176_MONGO
+SSHPASS="$(srv $S password)" sshpass -e ssh "$(srv $S user)@$(srv $S host)" -p "$(srv $S port)"
+
+# Production (.65, ưu tiên key; mật khẩu chỉ là dự phòng). Ghi key ra tệp tạm, xong việc thì xóa.
+P=SSH_SERVER_STAGING
+K="$(mktemp)"; chmod 600 "$K"; srv $P private_key > "$K"
+ssh -i "$K" -o IdentitiesOnly=yes -p "$(srv $P port)" "$(srv $P user)@$(srv $P host)"; rm -f "$K"
+```
+
+Mạng lab `192.168.122.0/24` là mạng riêng. SSH bị timeout thì kiểm VPN lab trước khi nghi credential sai.
+
+### 2.2 Secret ứng dụng (`access-tokens.json`)
+
+`access-tokens.json` là **bản gốc** của secret. Trên máy chủ chỉ có bản sao do `deploy.sh setup` ghi ra (§5). Muốn đổi secret thì sửa trong tệp này, rồi chạy lại `setup`.
+
+| Entry (chọn bằng) | Dùng cho | Trên máy chủ |
+| --- | --- | --- |
+| `service == "accounts.google.com"`, `used_by == "miu-world"` | Google OAuth client của Miu (cả dev lẫn staging) | `GOOGLE_*` trong `/etc/miu/staging.env` (176) |
+| `service == "postgresql"`, `used_by` bắt đầu bằng `miu-world staging` | Role và database `miu` trên Postgres của 176 | `DATABASE_URL` trong `/etc/miu/staging.env` |
+| `account == "miu-staging-176"` (tunelo) | Token cho tunnel `miu-staging` | `TUNELO_KEY` trong `/etc/miu/tunnel.env` |
+| `service == "api.cloudflare.com"` | DNS zone `hoandat.com` (§4). Đây là token toàn quyền của cả account, nên chỉ dùng cho zone này | Không lưu trên máy chủ |
+
+Thêm một entry mới thì làm theo `_meta.entry_schema`. Trước khi sửa, sao lưu tệp thành `access-tokens.backup-<yyyymmdd>.json` cùng thư mục. Token tunelo được cấp bằng `create-access-token.mjs` trong `/var/www/tunelo` trên .65; token chỉ hiện một lần, nên lưu thẳng vào tệp này.
+
+## 3. Máy chủ
+
+| | Staging | Production |
+| --- | --- | --- |
+| Máy | Lab **176** (entry `dattqh_ubuntu_192.168.122.176_MONGO`) | **.65** (entry `SSH_SERVER_STAGING`, group `SERVER STAGING .65`) |
+| Hệ điều hành | Ubuntu 24.04 | CentOS Stream 9 |
+| Đường vào | Cloudflare → nginx trên .65 → tunelo → nginx trên 176 → server | Cloudflare → nginx trên .65 → server ở loopback của .65 |
+| Dùng chung với | MongoDB và các agent của OneDash staging | Nhiều dự án khác; xem bằng `pm2 jlist` và `ls /etc/nginx/conf.d` |
+
+**Vì sao staging đặt ở 176** (đo ngày 30/09/2026):
+
+- 182, 183, 184, 185 dành cho việc học, không được dùng.
+- 171–173 chạy cụm Ceph; 172 và 173 còn ít đĩa.
+- 174 và 175 chạy app OneDash staging trên Node 20.
+- 177 và 178 chạy stack Victoria. 179 đã dùng gần hết đĩa. 186 là OpenStack all-in-one, rất nặng. 180 và 181 chạy Windows.
+- 176 chỉ chạy MongoDB, còn nhiều RAM và đĩa trống nhất, và không có app Node nào.
+
+Muốn đổi máy staging thì dựa trên số đo mới (`free -m`, `df -h /`, `ss -ltn`), sửa biến `LAB` trong `tools/deploy/staging/deploy.sh`, rồi chạy `setup` trên máy mới.
+
+## 4. DNS và đường vào từ internet
+
+Mô hình giống OneDash staging (`cloudpanel-dev.inet.vn` → .65 → tunnel → lab 174).
+
+**DNS** nằm ở zone `hoandat.com` trên Cloudflare. Hai domain `miu` và `miu-staging` là bản ghi `A` **proxied**, trỏ về host của entry `SSH_SERVER_STAGING`; zone đặt SSL mode `full`. Máy dev không có CLI DNS riêng (`wrangler` không quản lý bản ghi DNS), nên gọi thẳng Cloudflare API. Token đi qua stdin, không nằm trong đối số của lệnh:
+
+```sh
+TOK="$(jq -r '.tokens[] | select(.service == "api.cloudflare.com") | .token.api_token' "$(dirname "$ALL_IN_ONE_STAGING_DEV")/access-tokens.json")"
+cf() { printf 'Authorization: Bearer %s\nContent-Type: application/json\n' "$TOK" | curl -sS -H @- "$@"; }
+API=https://api.cloudflare.com/client/v4
+ZID="$(cf "$API/zones?name=hoandat.com" | jq -r '.result[0].id')"
+cf "$API/zones/$ZID/dns_records?per_page=100" | jq -r '.result[] | [.type, .name, .content, .proxied] | @tsv'   # xem
+# Tạo: gửi body JSON qua `--data` ở một đối số riêng (zsh không tách `${x:+--data "$x"}` thành hai từ).
+cf -X POST --data "$(jq -nc --arg n miu-x.hoandat.com --arg ip "<host .65>" '{type:"A", name:$n, content:$ip, proxied:true, ttl:1}')" "$API/zones/$ZID/dns_records"
+# Xoá cache một URL
+cf -X POST --data '{"files":["https://miu-staging.hoandat.com/<đường-dẫn>"]}' "$API/zones/$ZID/purge_cache"
+```
+
+Kiểm tra: `dig +short A <domain> @1.1.1.1` phải trả IP của Cloudflare. Domain chưa có server block trên .65 thì nginx mặc định trả `403`.
+
+**Cấu hình từng chặng** nằm trong `tools/deploy/staging/`; lý do của từng dòng ghi ngay trong file:
+
+- `nginx-edge.conf` → `/etc/nginx/conf.d/miu-staging.conf` trên .65. Tệp này chép theo server block `cloudpanel-dev.inet.vn` trong `server-tools.conf`: chứng chỉ gốc sẵn có, và `proxy_pass` tới tunelo server ở `:3001` với `Host: miu-staging.tunnel.inetdev.io.vn`. Vì vậy staging cũng mở được ở `https://miu-staging.tunnel.inetdev.io.vn`.
+- `miu-tunnel.service` trên 176: tunelo client chạy `8090:miu-staging`.
+- `nginx-lab.conf` trên 176: nghe `127.0.0.1:8090`, phục vụ `apps/web/dist` và proxy `/api/` tới server ở `127.0.0.1:8787`.
+- `miu-server.service` trên 176: chạy bundle server bằng Node 22 ở `/opt/node22`, tách khỏi Node 20 của hệ thống.
+
+**IP thật của khách** đi qua cả chuỗi. .65 khôi phục IP từ Cloudflare cho mọi site (`set_real_ip_from` trong `hoc-cloud.conf`, ở http context) và gửi đi bằng `X-Real-IP`. nginx trên 176 chỉ tin header đó khi nó đến từ loopback, rồi đưa đúng một địa chỉ đó cho server. Đã kiểm: log nginx trên 176 ghi IP public của máy gọi, không phải `127.0.0.1`.
+
+**Giới hạn đi kèm:**
+
+- Cloudflare cắt request tới origin sau 100 giây.
+- Tunelo giới hạn body 50 MB và timeout request 30 giây (chỉ áp cho staging).
+
+## 5. Deploy staging
+
+Lệnh chạy từ gốc repo trên máy dev. Script đọc credential theo §2 và không in giá trị nào.
+
+```sh
+tools/deploy/staging/deploy.sh setup     # máy mới, đổi unit/nginx, đổi secret. Chạy lại được an toàn.
+tools/deploy/staging/deploy.sh release   # mỗi lần deploy
+```
+
+**Trước khi `release`:** chạy đủ gate trong `CLAUDE.md`. Script từ chối chạy khi working tree còn thay đổi chưa commit, vì mã release lấy từ commit. Khi cần deploy một cây đã export (`git archive`) thay vì checkout, đặt `MIU_RELEASE_REV=<nhãn>` và chạy từ gốc cây đó.
+
+**`release` làm gì** (chi tiết ở `deploy.sh`):
+
+1. Build web và bundle server (`pnpm --filter @miu/server bundle`, cấu hình ở `apps/server/bundle.ts`).
+2. Backup database ra `/var/backups/miu/before-<id>.dump`.
+3. Tải lên `/opt/miu/releases/<id>/` và chuyển symlink `/opt/miu/current`.
+4. Restart `miu-server` và đợi `/api/health`. Không lên thì tự quay về release trước và in log.
+5. Giữ 5 release mới nhất, rồi gọi `https://miu-staging.hoandat.com/api/health` từ ngoài vào.
+
+**Nghiệm thu:**
+
+- `curl -s https://miu-staging.hoandat.com/api/health` trả `{"status":"ok"}`.
+- Revision đang chạy nằm ở `/opt/miu/current/apps/server/dist/server/REVISION` trên 176.
+
+**Log:**
+
+| Cần xem | Ở đâu |
+| --- | --- |
+| Server | `journalctl -u miu-server` (176) |
+| Tunnel | `journalctl -u miu-tunnel` (176) |
+| Request vào web/API | `/var/log/nginx/access.log` và `error.log` (176) |
+| Request ở edge | `/var/log/nginx/miu-staging.hoandat.com.{access,error}.log` (.65) |
+
+**Rollback** (trên 176):
+
+- **Chỉ quay code:** `ln -sfn /opt/miu/releases/<id-trước> /opt/miu/current && systemctl restart miu-server`.
+- **Migration làm hỏng dữ liệu:** dừng `miu-server`, rồi chạy `sudo -u postgres dropdb miu && sudo -u postgres createdb -O miu miu && sudo -u postgres pg_restore --no-owner --role=miu -d miu /var/backups/miu/before-<id>.dump`. Sau đó quay code như trên. Lệnh `pg_restore` này đã chạy thử vào một database tạm.
+
+## 6. Điều đã đo được và dễ vấp
+
+- **Không có `NODE_ENV=staging`.** Staging chạy `production`: có Postgres thật, Google OAuth thật và đăng nhập bằng mật khẩu bị tắt. Biến bắt buộc nằm ở `loadConfig` trong `apps/server/src/config.ts`; thiếu biến nào thì server dừng ngay lúc khởi động.
+- **Migration tự chạy khi server mở Postgres** (`openPostgres` trong `apps/server/src/db/client.ts`). Vì vậy `release` luôn backup trước khi restart.
+- **Bundle server phải nằm đúng độ sâu.** Đường dẫn tới migration và `content/` tính từ vị trí file. Lý do nằm trong comment của `apps/server/bundle.ts`; đừng đổi `outfile` mà không đổi hai điểm neo đó.
+- **Google OAuth:** `GOOGLE_REDIRECT_URI` phải khớp đúng một URI đã đăng ký trên Google client, dạng `https://<domain>/api/auth/google/callback`. Consent screen đang ở chế độ Testing, nên chỉ test user mới đăng nhập được.
+- **tunelo dưới systemd:** phải truyền `TUNELO_KEY` qua env, vì tunelo không đọc `~/.tunelo/config.json` khi chạy như dịch vụ. Nó cũng cần `$HOME` ghi được để lưu run record. Cả hai đã cấu hình trong `miu-tunnel.service`.
+- **Cloudflare cache tệp tĩnh ở edge khoảng 4 giờ**, kể cả phản hồi sai. Tệp `.js` không tồn tại mà từng trả 200 sẽ bị giữ lại cho tới khi purge (§4). HTML không bị cache, nên sau deploy `index.html` mới trỏ tới chunk mới.
+- **Cổng 8787 trên .65 đã có dịch vụ khác giữ** (loopback). Production phải đặt `PORT` khác; kiểm bằng `ss -ltnp`. Quy tắc "cổng cố định 8787" trong `CLAUDE.md` chỉ áp cho máy dev.
+- **Nginx trên .65 (CentOS) đọc cấu hình từ `/etc/nginx/conf.d/`**, không có `sites-enabled`. `setup` chỉ ghi tệp `miu-staging.conf` và gỡ nó ra nếu `nginx -t` báo lỗi.
+- **Server chỉ nghe trên `127.0.0.1`** và chỉ tin `X-Forwarded-For` từ loopback (`app.set('trust proxy', …)` trong `apps/server/src/app.ts`). Reverse proxy ngay trước server vì vậy phải chạy trên cùng máy với server.
+
+## 7. Production: việc còn thiếu
+
+1. Dựng Postgres trên .65, kèm backup.
+2. Chọn cổng loopback cho server (không dùng 8787).
+3. Thêm server block `miu.hoandat.com` trong `conf.d` của .65: phục vụ web tĩnh và proxy `/api/` thẳng tới server, không qua tunnel.
+4. Viết script deploy production theo mẫu `deploy.sh`. .65 là CentOS và các dự án khác trên đó dùng pm2.
+5. Thêm secret production vào `access-tokens.json`, và đăng ký redirect URI `https://miu.hoandat.com/api/auth/google/callback`.

@@ -22,6 +22,7 @@ Chỉ để định hướng: bắt đầu đọc từ đâu, ai làm chủ vi�
 | Trang render công cụ | `apps/web/preview.html`, `apps/web/src/preview/` | Ảnh nhân vật/phụ kiện/bản đồ cho `render-preview.ts` |
 | E2E, đo hiệu năng | `apps/web/e2e/` | Phiên phụ huynh (`parent-session.setup.ts`), luồng UI (`account-flow.spec.ts`), runtime (`play.spec.ts`), ma trận CPU × chất lượng (`perf.spec.ts`) |
 | Hỗ trợ quyết định | `tools/decisions/jev-decide.py` | Gọi TypeSafe Jev, áp ngưỡng tự quyết/chuyển người |
+| Deploy staging | `tools/deploy/staging/`, `apps/server/bundle.ts` | Script setup/release, unit systemd, cấu hình nginx lab và edge; bundle server một file (xem `docs/deployment-guide.md`) |
 | CI | `.github/workflows/ci.yml` | Bốn gate + `pnpm audit` + Semgrep trên push `main` và PR |
 | App web | `apps/web/src/main.tsx`, `apps/web/src/ui/app-shell.tsx`, `apps/web/vite.config.ts` | Shell React, router, CSP khi build, proxy `/api` |
 | Server | `apps/server/src/app.ts`, `apps/server/src/config.ts` | Express app (tách khỏi `listen` để test), config env validate bằng Zod |
