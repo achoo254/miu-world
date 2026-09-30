@@ -1,7 +1,7 @@
 ---
 phase: 6
 title: "Phiếu viết ngoài game"
-status: in-progress
+status: done
 priority: P2
 effort: "M"
 dependencies: [1]
@@ -39,3 +39,7 @@ Phần Viết của Tiếng Việt và phần thực hành/vận dụng ở nhà
 
 ## Risk
 - Mẫu chữ hoa bằng font thường không giống chữ viết tay trường học: phiếu dẫn trang SGK/vở Tập viết phụ huynh đã có.
+
+## Kết quả
+- UI: `apps/web/src/ui/parent/worksheets/` — `/parent/worksheets` (theo sách, Tiếng Việt kèm tuần) và `/parent/worksheets/:lessonId` (phiếu A4, `@media print`, nút "In phiếu"); sau mã PIN phụ huynh. Hoạt động cùng một đề của nhiều hình in đề một lần, mỗi hình một dòng.
+- PDF mẫu: `.data/sgk/review-shots/worksheet-tv2-t1-b01.pdf`, `worksheet-toan2-t1-b15.pdf` (mỗi phiếu 1 trang A4).

@@ -1,7 +1,7 @@
 ---
 phase: 7
 title: "Thu âm trên máy"
-status: pending
+status: done
 priority: P2
 effort: "M"
 dependencies: [2]
@@ -36,3 +36,7 @@ VS phase 1 (UI kit, `playwright.config.ts` + `e2e:ci`), VS phase 8 (khung thử 
 
 ## Risk
 - Safari iPad: MediaRecorder từ iOS 14.3, định dạng mp4/aac — chọn `mimeType` theo khả năng trình duyệt; đo trên iPad khi có máy (DEVICE-01 của VS).
+
+## Kết quả
+- Làm ở `apps/web/src/ui/challenge/mechanics/` (`speak-step.tsx`, `use-voice-recorder.ts`) cạnh các cơ chế khác thay vì thư mục `speak/` riêng; `learning-step.tsx` định tuyến bước `speak`.
+- Zod chạy `jitless` (module `src/zod-config.ts`, cùng chunk với Zod) để CSP không báo probe `eval`.
