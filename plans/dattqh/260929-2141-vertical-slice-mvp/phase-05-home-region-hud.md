@@ -20,6 +20,9 @@ Trang chủ và điều hướng vào khu vực, cùng HUD gameplay theo cấu t
 - HUD `/play` (M3.2): avatar + Lv + XP, tracker "Nhiệm vụ hiện tại" (từ bridge + server), nút Nhiệm vụ/Bản đồ/Ba lô/Menu (Menu → Pause), joystick + nút Tương tác + Chạy (Tương tác mới: game phát `interaction` khi bấm; ẩn khi không có mục tiêu gần). Nút Nhảy giữ.
 - HUD cập nhật số chỉ từ response server (không tính ở client).
 
+<!-- Updated: plan SGK lớp 2 (plans/dattqh/260930-0846-sgk-lop2-game-content, D6, Jev chapter_grouping) - một chương có thể gom nhiều quest (Tiếng Việt 2 quest/tuần, Toán 4–7 quest/chủ đề) -->
+- Hợp đồng chương (cho nội dung SGK sau này): màn khu vực liệt kê chương; mỗi chương mở ra danh sách quest của chương theo thứ tự mở khóa (lấy từ `GET /api/quests?region=`: nhóm theo `chapter`); không giả định một quest mỗi chương. `forest-ch1`/`forest-ch2` hiện tại là trường hợp một quest/chương.
+
 ## Files
 - Create: `apps/web/src/ui/home/*.tsx`, `apps/web/src/ui/region/*.tsx`, `apps/web/src/ui/hud/*.tsx` (+ test), `content/world/regions.json`, `apps/web/e2e/home.spec.ts`
 - Modify: `apps/web/src/ui/app-shell.tsx`, `apps/web/src/ui/play/play-screen.tsx`, `apps/web/src/game/game.ts` (nút Tương tác → event; phase 6 phụ thuộc phase 5 nên không sửa `game.ts`/`play-screen.tsx` đồng thời), `packages/schema/src/content.ts` (RegionCatalog), `tools/assets/generated.json`, `package.json` (script `assets:home`), `apps/web/vite-repo-assets.ts` (ship ảnh đảo); Create: `tools/assets/render-home-island.ts` (+ test hash xác định)
