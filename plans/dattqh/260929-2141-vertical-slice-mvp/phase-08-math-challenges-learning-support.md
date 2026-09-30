@@ -1,7 +1,7 @@
 ---
 phase: 8
 title: "3 thử thách Toán + hỗ trợ học"
-status: pending
+status: completed
 priority: P1
 effort: "L"
 dependencies: [1, 3, 7]
@@ -37,6 +37,12 @@ Kéo thả (M2.4), sắp xếp (M2.5/M3.6), trắc nghiệm có hỗ trợ (M2.6
 
 ## Verification
 - `pnpm vitest run --project web`; E2E `challenges` xanh trên viewport iPad
+
+## Kết quả (2026-09-30)
+- `ui/challenge/`: khung chung (Bước x/N, XP của quest, Làm lại · Kiểm tra, lời nhắc khi sai nền vàng dịu), panel hỗ trợ 3 tab (`kit/tabs.tsx`, mỗi lớp gọi `…/support` một lần), kéo thả (Pointer Events + `setPointerCapture`, `touch-action: none`, `pointercancel` trả về, chạm-chọn thay thế), sắp xếp (kéo hoặc chạm đá rồi chạm ô), trắc nghiệm, đọc thư (có "Nghe lại" giọng cục bộ, hỗ trợ `textRef`), câu đố bàn phím số.
+- Sai: hiển thị `feedback` của server (pool trong nội dung), không có thì pool xoay vòng `TRY_AGAIN_LINES`; đúng: đóng màn, toast lời khen từ server. `forest-ch1` có pool đúng/sai (≥3) cho 5 bước học, không câu nào lặp.
+- E2E `challenges` (viewport iPad 820×1180, touch thật qua CDP): kéo 10 táo, trang không cuộn, kéo thừa rồi kéo ra; trắc nghiệm sai rồi đúng; xếp đá bằng chạm-chọn; câu đố mở Đáp án vẫn xong chương, server trả 90 XP. `quest-flow` thêm đọc thư qua UI.
+- Không có ảnh minh họa cho trắc nghiệm (nội dung chưa có trường ảnh; không dùng icon cứng). Âm thanh Kenney chưa thêm (tùy chọn). Safari iPad thật: DEVICE-01.
 
 ## Risk
 - Pointer capture khác nhau giữa Safari iPad và Chromium: E2E chạy Chromium với touch; ghi rủi ro Safari vào DEVICE-01 checklist (người thử trên iPad).
