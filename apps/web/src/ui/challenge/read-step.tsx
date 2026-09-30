@@ -8,6 +8,7 @@ import { Icon } from '../kit/art';
 import { buttonClass } from '../kit/button';
 import { ChallengeFrame, type ChallengeContext } from './challenge-frame';
 import { ChoiceList } from './choice-list';
+import './mechanics/mechanics.css';
 
 type ReadStep = Extract<QuestStepPublic, { kind: 'read' }>;
 
@@ -20,7 +21,7 @@ export function ReadStepScreen({
   step: ReadStep;
   context: ChallengeContext;
   /** The quest's passages, for `textRef`. */
-  texts: Readonly<Record<string, { title: string; body: string; author?: string }>>;
+  texts: Readonly<Record<string, { title: string; body: string; author?: string; glossary?: ReadonlyArray<{ term: string; meaning: string }> }>>;
   onAnswer: (answer: StepAnswer) => void;
 }) {
   const [choice, setChoice] = useState<string | null>(null);
@@ -35,6 +36,16 @@ export function ReadStepScreen({
           <p key={i}>{line}</p>
         ))}
         {ref?.author ? <p className="hint">{ref.author}</p> : null}
+        {ref?.glossary?.length ? (
+          <dl className="read-glossary" data-id="read-glossary" aria-label="Từ ngữ">
+            {ref.glossary.map((g) => (
+              <div key={g.term}>
+                <dt>{g.term}</dt>
+                <dd>{g.meaning}</dd>
+              </div>
+            ))}
+          </dl>
+        ) : null}
         {voice ? (
           <button type="button" className={buttonClass('ghost', { small: true })} data-id="read-listen" onClick={() => speak(passage, voice)}>
             <Icon name="speaker" size={24} />

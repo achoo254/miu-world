@@ -1,6 +1,6 @@
-// Picks the screen for a learning step (read, riddle, the three Math challenges) and sends the answer.
-// A wrong answer keeps the screen open with a kind line (the server's feedback, else a rotating pool);
-// a right one closes it (the controller moves on). Mechanics without a screen yet return null.
+// Picks the screen for a learning step (read, riddle, every challenge mechanic) or a textbook task
+// without grading (speak, worksheet) and sends the answer. A wrong answer keeps the screen open with a
+// kind line (the server's feedback, else a rotating pool); a right one closes it (the controller moves on).
 import { useRef, useState, type ReactElement } from 'react';
 import { freshPicker } from '@miu/quest/pick-fresh';
 import type { QuestStepPublic } from '@miu/schema/content';
@@ -14,10 +14,17 @@ import { QuizChallenge } from './quiz-challenge';
 import { ReadStepScreen } from './read-step';
 import { RiddleStepScreen } from './riddle-step';
 import { SortChallenge } from './sort-challenge';
+import { CalendarChallenge } from './mechanics/calendar-challenge';
+import { ClassifyChallenge } from './mechanics/classify-challenge';
+import { ClockChallenge } from './mechanics/clock-challenge';
+import { ConnectChallenge } from './mechanics/connect-challenge';
+import { FillBlankChallenge } from './mechanics/fill-blank-challenge';
+import { MultiSelectChallenge } from './mechanics/multi-select-challenge';
+import { SpeakStepScreen } from './mechanics/speak-step';
+import { WorksheetStepScreen } from './mechanics/worksheet-step';
 
 export function hasLearningScreen(step: QuestStepPublic): boolean {
-  if (step.kind === 'read' || step.kind === 'riddle') return true;
-  return step.kind === 'challenge' && (step.mechanic === 'drag-drop' || step.mechanic === 'sort' || step.mechanic === 'quiz');
+  return step.kind === 'read' || step.kind === 'riddle' || step.kind === 'challenge' || step.kind === 'speak' || step.kind === 'worksheet';
 }
 
 export function LearningStep({
@@ -55,11 +62,30 @@ export function LearningStep({
     tryAgain,
     onClose,
   };
-  if (step.kind === 'read') return <ReadStepScreen step={step} context={context} texts={quest.texts} onAnswer={(a) => void onAnswer(a)} />;
-  if (step.kind === 'riddle') return <RiddleStepScreen step={step} context={context} onAnswer={(a) => void onAnswer(a)} />;
+  if (step.kind === 'speak') return <SpeakStepScreen step={step} fill={fill} busy={busy} onDone={() => void submit(step, {})} onClose={onClose} />;
+  if (step.kind === 'worksheet') return <WorksheetStepScreen step={step} fill={fill} busy={busy} onDone={() => void submit(step, {})} onClose={onClose} />;
+  const answer = (a: StepAnswer) => void onAnswer(a);
+  if (step.kind === 'read') return <ReadStepScreen step={step} context={context} texts={quest.texts} onAnswer={answer} />;
+  if (step.kind === 'riddle') return <RiddleStepScreen step={step} context={context} onAnswer={answer} />;
   if (step.kind !== 'challenge') return null;
-  if (step.mechanic === 'drag-drop') return <DragDropChallenge step={step} context={context} onAnswer={(a) => void onAnswer(a)} />;
-  if (step.mechanic === 'sort') return <SortChallenge step={step} context={context} onAnswer={(a) => void onAnswer(a)} />;
-  if (step.mechanic === 'quiz') return <QuizChallenge step={step} context={context} onAnswer={(a) => void onAnswer(a)} />;
-  return null;
+  switch (step.mechanic) {
+    case 'drag-drop':
+      return <DragDropChallenge step={step} context={context} onAnswer={answer} />;
+    case 'sort':
+      return <SortChallenge step={step} context={context} onAnswer={answer} />;
+    case 'quiz':
+      return <QuizChallenge step={step} context={context} onAnswer={answer} />;
+    case 'classify':
+      return <ClassifyChallenge step={step} context={context} onAnswer={answer} />;
+    case 'fill-blank':
+      return <FillBlankChallenge step={step} context={context} onAnswer={answer} />;
+    case 'multi-select':
+      return <MultiSelectChallenge step={step} context={context} onAnswer={answer} />;
+    case 'clock':
+      return <ClockChallenge step={step} context={context} onAnswer={answer} />;
+    case 'calendar':
+      return <CalendarChallenge step={step} context={context} onAnswer={answer} />;
+    case 'connect':
+      return <ConnectChallenge step={step} context={context} onAnswer={answer} />;
+  }
 }

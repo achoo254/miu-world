@@ -5,6 +5,7 @@ import { useCallback, useState } from 'react';
 import type { QuestStepPublic } from '@miu/schema/content';
 import type { StepAnswer } from '@miu/schema/game';
 import { ChallengeFrame, type ChallengeContext } from './challenge-frame';
+import { Illustration } from './illustrations/illustration';
 import { DROP_ZONE_ATTR, usePointerDrag } from './use-pointer-drag';
 
 type SortStep = Extract<QuestStepPublic, { kind: 'challenge'; mechanic: 'sort' }>;
@@ -48,6 +49,7 @@ export function SortChallenge({ step, context, onAnswer }: { step: SortStep; con
             data-id={`stone-${item.id}`}
             {...dragProps(item.id)}
           >
+            {item.image ? <Illustration picture={item.image} /> : null}
             {context.fill(item.label)}
           </button>
         ))}
