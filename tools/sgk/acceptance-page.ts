@@ -1,7 +1,8 @@
 // `pnpm sgk:acceptance`: the owner's acceptance page for the sample textbook quests, built straight
 // from the quest files and the inventory (what the page shows is what the game shows). Book wording is
 // marked with the same phrase cutting the content gate uses. Screenshots come from the textbook E2E
-// (.data/sgk/review-shots; run `pnpm --filter @miu/web e2e --project setup --project sgk-mechanics`)
+// (.data/sgk/review-shots; run `pnpm --filter @miu/web e2e --project setup --project sgk-mechanics
+// --project worksheets --project wayfinding --project hud-layout --project rescue`)
 // and the vertical slice review shots, scaled down with macOS `sips` into `shots/` next to the page.
 import { execFileSync } from 'node:child_process';
 import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
@@ -88,6 +89,7 @@ function stepCard(step: QuestStep, index: number, quest: Extract<QuestDefinition
     for (const c of step.choices) parts.push(`<p class="reply">Bé chọn: “${withName(esc(c.text))}”${c.reply ? ` → ${withName(esc(c.reply))}` : ''}</p>`);
   }
   if (step.kind === 'search') parts.push(`<p class="muted">Tìm trên bản đồ: ${step.targets.map(esc).join(', ')}</p>`);
+  if (step.goTo) parts.push(`<p class="goto">Dẫn đường: “${withName(esc(step.goTo))}”</p>`);
   if ('prompt' in step) parts.push(`<p class="prompt">${m(step.prompt)}</p>`);
   if ('question' in step) parts.push(`<p class="prompt">${m(step.question)}</p>`);
   if (step.kind === 'read' && step.textRef) {
@@ -134,6 +136,7 @@ function questSection(quest: QuestDefinition): string {
       <div><dt>Nhân vật</dt><dd>${esc(quest.sevenQuestions.who)}</dd></div>
       <div><dt>Bài tập SGK</dt><dd>${gaps ? `${gaps.items} mục · ${gaps.inGame} trong game · ${gaps.onWorksheet} qua phiếu · thiếu ${gaps.missing.length}` : '—'}</dd></div>
       <div><dt>Thưởng</dt><dd>${quest.reward.xp} XP · ${quest.reward.coin} xu</dd></div>
+      <div><dt>Các nơi</dt><dd>${[...new Set(Object.values(quest.places))].map(esc).join(' · ') || '—'}</dd></div>
     </dl>
     <p class="sequence">${sequence.map((s) => `<span>${esc(s)}</span>`).join('<i>›</i>')}</p>
     ${notes.length ? `<div class="notes"><h5>Cần người duyệt xem</h5><ul>${notes.map((n) => `<li>${esc(n)}</li>`).join('')}</ul></div>` : ''}
@@ -158,18 +161,51 @@ const SHOT_CAPTIONS: Array<[string, string]> = [
   ['worksheet', 'Phiếu viết: nhắc bố mẹ in phiếu'],
   ['completion', 'Hoàn thành nhiệm vụ: phần thưởng do server tính'],
 ];
+/** The play screen: HUD at each size, the way hint, and getting unstuck (E2E `hud-layout`, `wayfinding`, `rescue`). */
+const PLAY_CAPTIONS: Array<[string, string]> = [
+  ['hud-ipad-landscape', 'iPad ngang: một hàng nút có chữ'],
+  ['hud-ipad-portrait', 'iPad dọc: icon trên, chữ nhỏ dưới'],
+  ['hud-phone', 'Điện thoại: nút icon 2 × 2, thẻ nhân vật và ô nhiệm vụ gọn'],
+  ['hint-arrow', 'Mũi tên vàng dưới chân Miu chỉ đường khi mục tiêu còn xa'],
+  ['hint-gem', 'Viên đá quý xoay trên mục tiêu khi đã tới gần'],
+  ['wayfinding-sau-xanh', 'Bài 1 trên bản đồ: ô nhiệm vụ nói nơi cần đến, Sâu Xanh ở cổng rừng'],
+  ['rescue-button', 'Kẹt dưới suối: camera nhìn từ trên xuống, nút "Quay lại" hiện ra'],
+];
+/** The two sample worksheets, as images of the printed A4 page (E2E `worksheets`). */
+const SHEET_CAPTIONS: Array<[string, string]> = [
+  ['worksheet-tv2-t1-b01', 'Phiếu viết Tiếng Việt Bài 1: chữ hoa và câu ứng dụng viết mẫu trên vở ô li'],
+  ['worksheet-toan2-t1-b15', 'Phiếu Toán Bài 15: đề in một lần, mỗi hình một ô ghi kết quả'],
+];
 /** Where each screenshot comes from: the textbook E2E, or (prefix `mvp-`) the vertical slice review shots. */
 const shotSource = (file: string): string =>
   file.startsWith('mvp-') ? path.join(ROOT, 'assets/generated/review/mvp', `${file.slice(4)}.png`) : path.join(ROOT, '.data/sgk/review-shots', `${file}.png`);
 rmSync(path.join(OUT_DIR, 'shots'), { recursive: true, force: true });
 mkdirSync(path.join(OUT_DIR, 'shots'), { recursive: true });
-const shots = SHOT_CAPTIONS.map(([file, caption]) => {
-  const source = shotSource(file);
-  if (!existsSync(source)) throw new Error(`missing screenshot ${source}: run the textbook E2E first`);
-  const out = path.join(OUT_DIR, 'shots', `${file}.jpg`);
-  execFileSync('sips', ['-s', 'format', 'jpeg', '-s', 'formatOptions', '72', '--resampleWidth', '560', source, '--out', out], { stdio: 'ignore' });
-  return `<figure><img src="shots/${file}.jpg" alt="${esc(caption)}" loading="lazy" width="560"><figcaption>${esc(caption)}</figcaption></figure>`;
-}).join('');
+function figures(captions: Array<[string, string]>, width: number): string {
+  return captions
+    .map(([file, caption]) => {
+      const source = shotSource(file);
+      if (!existsSync(source)) throw new Error(`missing screenshot ${source}: run the textbook E2E first`);
+      const out = path.join(OUT_DIR, 'shots', `${file}.jpg`);
+      execFileSync('sips', ['-s', 'format', 'jpeg', '-s', 'formatOptions', '72', '--resampleWidth', String(width), source, '--out', out], { stdio: 'ignore' });
+      return `<figure><img src="shots/${file}.jpg" alt="${esc(caption)}" loading="lazy" width="${width}"><figcaption>${esc(caption)}</figcaption></figure>`;
+    })
+    .join('');
+}
+const shots = figures(SHOT_CAPTIONS, 560);
+const playShots = figures(PLAY_CAPTIONS, 560);
+// The sheets print in the model hand, whose font is not in git: an image of the page, never the PDF
+// (a PDF would carry the font).
+for (const [file] of SHEET_CAPTIONS) {
+  const pdf = path.join(ROOT, '.data/sgk/review-shots', `${file}.pdf`);
+  if (!existsSync(pdf)) throw new Error(`missing worksheet ${pdf}: run the worksheets E2E first`);
+  execFileSync('qlmanage', ['-t', '-s', '1400', '-o', path.join(ROOT, '.data/sgk/review-shots'), pdf], { stdio: 'ignore' });
+  execFileSync('mv', [`${pdf}.png`, path.join(ROOT, '.data/sgk/review-shots', `${file}-page.png`)]);
+}
+const sheetShots = figures(
+  SHEET_CAPTIONS.map(([file, caption]) => [`${file}-page`, caption]),
+  560,
+);
 
 /** The samples are drafts: written in full, not yet switched on in the game. */
 type DraftQuest = Extract<QuestDefinition, { status: 'draft' }>;
@@ -182,8 +218,10 @@ const html = template
   .replace('{{TOC}}', quests.map((q) => `<li><a href="#${q.id}">${withName(esc(q.title))}</a> <span class="muted">${q.id.startsWith('toan2') ? 'Toán' : 'Tiếng Việt'} · ${q.steps.length} bước</span></li>`).join(''))
   .replace('{{QUESTS}}', quests.map(questSection).join('\n'))
   .replace('{{SHOTS}}', shots)
+  .replace('{{PLAY_SHOTS}}', playShots)
+  .replace('{{SHEET_SHOTS}}', sheetShots)
   .replace('{{TV_ITEMS}}', String(itemCount(totals.tv)))
   .replace('{{TOAN_ITEMS}}', String(itemCount(totals.toan)))
   .replace('{{SAMPLE_COUNT}}', String(quests.length));
 writeFileSync(path.join(OUT_DIR, 'index.html'), html);
-console.log(`${path.relative(ROOT, path.join(OUT_DIR, 'index.html'))}: ${quests.length} quests, ${SHOT_CAPTIONS.length} screenshots`);
+console.log(`${path.relative(ROOT, path.join(OUT_DIR, 'index.html'))}: ${quests.length} quests, ${SHOT_CAPTIONS.length + PLAY_CAPTIONS.length + SHEET_CAPTIONS.length} screenshots`);

@@ -116,6 +116,7 @@ mark.book { background: var(--book); color: var(--book-ink); border-radius: 3px;
 .play-how pre { margin: 0; background: var(--bg); border-radius: 8px; padding: 0.6rem 0.8rem; overflow-x: auto; font-size: 0.85rem; }
 @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
 @media (max-width: 30rem) { .script div { grid-template-columns: 1fr; gap: 0; } }
+  .goto { margin: 0.25rem 0; padding: 0.35rem 0.6rem; border-left: 4px solid var(--secondary); background: color-mix(in srgb, var(--secondary) 10%, transparent); font-weight: 600; }
 </style>
 </head>
 <body>
@@ -142,8 +143,10 @@ mark.book { background: var(--book); color: var(--book-ink); border-radius: 3px;
         <li>Độ dài quest (15–21 bước cho một bài) có ổn, hay nên tách một bài thành hai quest?</li>
         <li>Giao diện mới (ảnh bên dưới, đã làm lại theo mock) đã đúng hướng chưa? Chỗ nào còn khác mock mà anh/chị muốn sửa tiếp?</li>
         <li>Các chỗ ghi "Cần người duyệt xem" trong từng quest: giữ, sửa hay bỏ.</li>
+        <li>Dẫn đường: dòng "Dẫn đường" ở mỗi bước đổi chỗ, mũi tên và viên đá quý có đủ rõ cho bé tự đi không?</li>
+        <li>Phiếu viết: vở ô li, chữ mẫu HP001 để tô, số dòng trống có vừa không?</li>
       </ol>
-      <p class="muted">Chưa có trong đợt này: bản đồ riêng từng chương (nhân vật đứng trên map, đi tới nói chuyện). Bản chơi thử chạy các bước nối tiếp trên bản đồ rừng chương 1.</p>
+      <p class="muted">Bài 1 và Bài 2 đã đặt tạm nhân vật và đồ vật trên bản đồ rừng: bé đi bộ tới theo mũi tên. Các mẫu khác chưa có bản đồ riêng nên các bước tự nối tiếp nhau.</p>
     </div>
     <nav class="toc" aria-label="Các quest mẫu"><h2>Quest mẫu</h2><ol>{{TOC}}</ol></nav>
   </section>
@@ -154,6 +157,18 @@ mark.book { background: var(--book); color: var(--book-ink); border-radius: 3px;
     <div class="shots">{{SHOTS}}</div>
   </section>
 
+  <section>
+    <h2>Màn chơi, dẫn đường và khi bị kẹt</h2>
+    <p class="muted" style="margin-bottom: 1rem">Ưu tiên iPad, vẫn dùng được trên điện thoại. Ở dưới nước, giữ nút Nhảy để bơi lên bờ; kẹt quá vài giây thì nút "Quay lại" đưa Miu về chỗ khô ráo gần nhất (Menu cũng có "Về chỗ an toàn"). Máy kiểm: ở cả ba cỡ màn hình không nút nào che nhau hay tràn ra ngoài.</p>
+    <div class="shots">{{PLAY_SHOTS}}</div>
+  </section>
+
+  <section>
+    <h2>Phiếu viết in A4</h2>
+    <p class="muted" style="margin-bottom: 1rem">Phụ huynh in từ khu phụ huynh (sau mã PIN). Chữ mẫu dùng font chữ mẫu tiểu học HP001: đậm để xem, mờ để tô. Font không nằm trong repo công khai; máy chủ phục vụ riêng.</p>
+    <div class="shots">{{SHEET_SHOTS}}</div>
+  </section>
+
   {{QUESTS}}
 
   <section class="play-how">
@@ -162,7 +177,7 @@ mark.book { background: var(--book); color: var(--book-ink); border-radius: 3px;
     <pre>pnpm sgk:review
 EXTRA_QUEST_DIR=.data/sgk/review-quests pnpm --filter @miu/server dev
 pnpm --filter @miu/web dev</pre>
-    <p>Mở <code>/play?region=khu-rung-bi-mat&amp;quest=nghiem-thu-tv2-t01-b01</code> (đổi mã quest cho mẫu khác). Bản chơi thử tự chạy từng bước; bước tìm đồ dùng tạm ba vật có sẵn trong rừng chương 1.</p>
+    <p>Mở <code>/play?region=khu-rung-bi-mat&amp;quest=nghiem-thu-tv2-t01-b01</code> (đổi mã quest cho mẫu khác; mẫu Toán dùng <code>region=truong-hoc</code>). Bài 1 và Bài 2 đi bộ tới từng nơi theo dòng dẫn đường và mũi tên; các mẫu khác tự chạy từng bước, bước tìm đồ dùng tạm ba vật có sẵn trong rừng chương 1. Duyệt từ xa: chạy qua tunnel dev theo <code>CLAUDE.md</code> (mục duyệt qua tunnel).</p>
   </section>
 </main>
 </body>
