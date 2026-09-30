@@ -1,0 +1,1031 @@
+{
+  "id": "tv2-t05-b10",
+  "region": "khu-rung-bi-mat",
+  "chapter": 6,
+  "title": "Thỏ Tí mang nhầm sách vở",
+  "status": "draft",
+  "summary": "Sáng thứ Năm, Thỏ Tí đánh rơi đồ dọc đường và chẳng biết hôm nay học môn gì. {name} cùng Voi Bảo đọc thời khoá biểu trên tấm bảng gỗ ở gốc sồi, dán nhãn đồ dùng và giúp Thỏ Tí soạn cặp thật ngăn nắp.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "Thỏ Tí (nhanh nhảu, hay quên), Voi Bảo giữ lịch và đồng hồ của trường",
+    "where": "Tấm bảng gỗ ở gốc sồi, nơi dán thời khoá biểu của lớp Hai trong rừng",
+    "goal": "Giúp Thỏ Tí biết hôm nay học môn gì để không mang nhầm sách vở nữa",
+    "play": "Nhặt đồ, đọc thời khoá biểu, xếp môn học vào giỏ, chọn nhiều đáp án, chọn thứ trên lịch, điền chữ, xếp thẻ từ thành câu, xem đồng hồ, nói và kể, phiếu viết",
+    "learn": "Tiếng Việt 2 Bài 10: đọc thời khoá biểu, hỏi – đáp về môn học, chính tả c/k, ch/tr, v/d, từ chỉ sự vật và hoạt động, câu nêu hoạt động, kể hoạt động theo giờ, thời gian biểu",
+    "reward": "90 XP, 15 xu, Đọc hiểu +2, Chính tả +2, Từ ngữ +1, Câu +1",
+    "unlock": "Bài 11 \"Cái trống trường em\""
+  },
+  "phases": {
+    "hook": "tho-ti-hot-hoang",
+    "explore": "nhat-do-roi",
+    "learn": "doc-thoi-khoa-bieu",
+    "challenge": "dan-nhan-do-dung",
+    "decision": "hua-voi-voi-bao",
+    "finale": "dong-ho-gio-ra-choi",
+    "reward": "phieu-viet-bai-10",
+    "unlock": "mo-bai-11"
+  },
+  "texts": {
+    "thoi-khoa-bieu": {
+      "title": "Thời khoá biểu",
+      "body": "Thời khoá biểu cho biết thời gian học các môn của từng ngày trong tuần. Thời khoá biểu gồm nhiều cột dọc và nhiều hàng ngang. Các bạn học sinh thường đọc thời khoá biểu theo trình tự thứ – buổi – tiết – môn.\n\nTHỜI KHOÁ BIỂU LỚP 2A\n\nTiết | Thứ Hai | Thứ Ba | Thứ Tư | Thứ Năm | Thứ Sáu\nBUỔI SÁNG\n1 | Hoạt động trải nghiệm | Tiếng Việt | Toán | Tiếng Việt | Tiếng Việt\n2 | Toán | Tiếng Việt | Mĩ thuật | Tiếng Việt | Tiếng Việt\n3 | Tiếng Việt | Toán | Tiếng Việt | Giáo dục thể chất | Toán\n4 | Tiếng Việt | Giáo dục thể chất | Tiếng Việt | Toán | Tiếng Anh\nBUỔI CHIỀU\n1 | Tiếng Anh | Đạo đức | Hoạt động trải nghiệm | Tự nhiên và Xã hội | Âm nhạc\n2 | Tự học có hướng dẫn | Tự học có hướng dẫn | Tự học có hướng dẫn | Tự học có hướng dẫn | Tự học có hướng dẫn\n3 |  | Tự nhiên và Xã hội |  |  | Hoạt động trải nghiệm",
+      "section": "tv2-t1-b10-doc"
+    }
+  },
+  "steps": [
+    {
+      "id": "tho-ti-hot-hoang",
+      "title": "Thỏ Tí cuống quýt ở gốc sồi",
+      "kind": "dialogue",
+      "target": "tho-ti",
+      "lines": [
+        {
+          "speaker": "Thỏ Tí",
+          "text": "{name} ơi, cứu tớ với! Tớ chạy vội quá nên cặp sách tuột quai, thước kẻ với cái kéo cũng văng đâu mất rồi."
+        },
+        {
+          "speaker": "Voi Bảo",
+          "text": "Lại vội nữa rồi. Hôm qua cậu còn quên hộp bút màu đúng hôm lớp có tiết vẽ đấy, Thỏ Tí."
+        },
+        {
+          "speaker": "Thỏ Tí",
+          "text": "Tại tớ toàn soạn cặp theo trí nhớ. Hôm nay là thứ Năm, tớ chẳng biết phải mang sách gì nữa."
+        },
+        {
+          "speaker": "Voi Bảo",
+          "text": "Tấm bảng gỗ ở gốc sồi có dán thời khoá biểu của lớp mình. Nhưng trước hết, mình tìm đồ cho cậu đã."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Mình giúp cậu tìm đồ ngay!",
+          "reply": "Tớ nhớ đồ rơi quanh mấy bụi dương xỉ cạnh gốc sồi."
+        }
+      ]
+    },
+    {
+      "id": "nhat-do-roi",
+      "title": "Nhặt đồ Thỏ Tí đánh rơi",
+      "kind": "search",
+      "targets": [
+        "tv2-t05-thuoc-ke",
+        "tv2-t05-cai-keo",
+        "tv2-t05-cap-sach"
+      ]
+    },
+    {
+      "id": "cach-biet-mon-hoc",
+      "title": "Làm sao biết môn học?",
+      "kind": "speak",
+      "target": "voi-bao",
+      "prompt": "Voi Bảo phủi lá khô bám trên chiếc cặp rồi hỏi {name}: Em làm thế nào để biết được các môn học trong ngày, trong tuần?",
+      "hints": [
+        "Ở nhà, trước khi soạn sách vở, em thường xem gì?",
+        "Bạn gái trong tranh dán tờ giấy gì trên tường cạnh bàn học?"
+      ],
+      "curriculumRef": [
+        "tv2-t1-b10-doc-kd"
+      ]
+    },
+    {
+      "id": "doc-thoi-khoa-bieu",
+      "title": "Đọc thời khoá biểu trên bảng gỗ",
+      "kind": "read",
+      "target": "bang-go-goc-soi",
+      "textRef": "thoi-khoa-bieu",
+      "audio": true,
+      "question": "Đọc thời khoá biểu của ngày thứ Hai.\nSáng thứ Hai có mấy tiết?",
+      "choices": [
+        {
+          "id": "3-tiet",
+          "text": "3 tiết"
+        },
+        {
+          "id": "4-tiet",
+          "text": "4 tiết"
+        },
+        {
+          "id": "5-tiet",
+          "text": "5 tiết"
+        }
+      ],
+      "skill": "doc-hieu",
+      "answer": {
+        "choice": "4-tiet"
+      },
+      "curriculumRef": [
+        "tv2-t1-b10-doc-1",
+        "tv2-t1-b10-doc-2"
+      ],
+      "support": {
+        "guide": [
+          "Tìm cột Thứ Hai, rồi nhìn phần BUỔI SÁNG.",
+          "Đếm những hàng tiết có môn học ở cột Thứ Hai."
+        ],
+        "hint": "Các tiết buổi sáng được đánh số từ 1 trở đi.",
+        "answer": {
+          "text": "4 tiết",
+          "explanation": "Sáng thứ Hai có Hoạt động trải nghiệm, Toán, Tiếng Việt, Tiếng Việt: đủ 4 tiết."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đúng, sáng thứ Hai có 4 tiết!",
+          "Voi Bảo gật gù: cậu đếm từng hàng rất cẩn thận.",
+          "Chuẩn rồi, từ tiết 1 đến tiết 4."
+        ],
+        "wrong": [
+          "Đếm lại các hàng trong phần BUỔI SÁNG nhé.",
+          "Buổi chiều chưa tính đâu, chỉ xem buổi sáng thôi.",
+          "Dò ngón tay dọc cột Thứ Hai từ trên xuống xem."
+        ]
+      }
+    },
+    {
+      "id": "mon-hoc-thu-nam",
+      "title": "Hôm nay thứ Năm học gì?",
+      "kind": "challenge",
+      "mechanic": "classify",
+      "target": "bang-go-goc-soi",
+      "prompt": "Thỏ Tí rối rít: “Hôm nay là thứ Năm, tớ phải mang sách gì đây?”\nThứ Năm có những môn học nào?\nKéo mỗi môn vào đúng giỏ.",
+      "groups": [
+        {
+          "id": "co-thu-nam",
+          "label": "Có vào thứ Năm"
+        },
+        {
+          "id": "khong-co-thu-nam",
+          "label": "Không có vào thứ Năm"
+        }
+      ],
+      "items": [
+        {
+          "id": "mon-1",
+          "label": "Mĩ thuật"
+        },
+        {
+          "id": "mon-2",
+          "label": "Tiếng Việt"
+        },
+        {
+          "id": "mon-3",
+          "label": "Tiếng Anh"
+        },
+        {
+          "id": "mon-4",
+          "label": "Tự nhiên và Xã hội"
+        },
+        {
+          "id": "mon-5",
+          "label": "Hoạt động trải nghiệm"
+        },
+        {
+          "id": "mon-6",
+          "label": "Giáo dục thể chất"
+        },
+        {
+          "id": "mon-7",
+          "label": "Âm nhạc"
+        },
+        {
+          "id": "mon-8",
+          "label": "Tự học có hướng dẫn"
+        },
+        {
+          "id": "mon-9",
+          "label": "Đạo đức"
+        },
+        {
+          "id": "mon-10",
+          "label": "Toán"
+        }
+      ],
+      "skill": "doc-hieu",
+      "answer": {
+        "assignment": {
+          "mon-1": "khong-co-thu-nam",
+          "mon-2": "co-thu-nam",
+          "mon-3": "khong-co-thu-nam",
+          "mon-4": "co-thu-nam",
+          "mon-5": "khong-co-thu-nam",
+          "mon-6": "co-thu-nam",
+          "mon-7": "khong-co-thu-nam",
+          "mon-8": "co-thu-nam",
+          "mon-9": "khong-co-thu-nam",
+          "mon-10": "co-thu-nam"
+        }
+      },
+      "curriculumRef": [
+        "tv2-t1-b10-doc-3"
+      ],
+      "support": {
+        "guide": [
+          "Tìm cột Thứ Năm trên thời khoá biểu.",
+          "Đọc từng tiết của cả buổi sáng lẫn buổi chiều trong cột đó."
+        ],
+        "hint": "Thứ Năm có 5 môn khác nhau; Mĩ thuật thì học vào thứ Tư.",
+        "answer": {
+          "text": "Có vào thứ Năm: Tiếng Việt, Giáo dục thể chất, Toán, Tự nhiên và Xã hội, Tự học có hướng dẫn.",
+          "explanation": "Cột Thứ Năm ghi Tiếng Việt, Tiếng Việt, Giáo dục thể chất, Toán ở buổi sáng; Tự nhiên và Xã hội, Tự học có hướng dẫn ở buổi chiều."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Thỏ Tí reo lên: vậy là tớ cần vở Tiếng Việt và sách Toán!",
+          "Đủ cả năm môn của thứ Năm rồi.",
+          "Giỏi quá, không sót môn nào của buổi chiều."
+        ],
+        "wrong": [
+          "Có một môn đang nằm nhầm giỏ đấy.",
+          "Mĩ thuật học vào ngày nào nhỉ? Xem lại cột Thứ Tư.",
+          "Đừng quên các tiết buổi chiều của thứ Năm nhé."
+        ]
+      }
+    },
+    {
+      "id": "kho-khan-khi-thieu-tkb",
+      "title": "Thiếu thời khoá biểu thì sao?",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "target": "tho-ti",
+      "prompt": "Nếu không có thời khoá biểu, em sẽ gặp khó khăn gì?\nThỏ Tí gãi tai: sáng nay tớ gặp đúng mấy chuyện ấy. Chọn tất cả những khó khăn có thể xảy ra.",
+      "choices": [
+        {
+          "id": "khong-biet-hom-nay-hoc-nhung-mon-gi",
+          "text": "Không biết hôm nay học những môn gì"
+        },
+        {
+          "id": "khong-biet-duong-den-truong",
+          "text": "Không biết đường đến trường"
+        },
+        {
+          "id": "mang-nham-sach-vo",
+          "text": "Mang nhầm sách vở"
+        },
+        {
+          "id": "khong-co-ban-cung-choi",
+          "text": "Không có bạn cùng chơi"
+        },
+        {
+          "id": "quen-do-dung-cho-mon-hoc",
+          "text": "Quên đồ dùng cho môn học"
+        }
+      ],
+      "skill": "doc-hieu",
+      "answer": {
+        "choices": [
+          "khong-biet-hom-nay-hoc-nhung-mon-gi",
+          "mang-nham-sach-vo",
+          "quen-do-dung-cho-mon-hoc"
+        ]
+      },
+      "curriculumRef": [
+        "tv2-t1-b10-doc-4"
+      ],
+      "support": {
+        "guide": [
+          "Nghĩ xem thời khoá biểu cho em biết điều gì.",
+          "Nhớ lại chuyện Thỏ Tí quên hộp bút màu hôm qua."
+        ],
+        "hint": "Có ba khó khăn gắn với môn học và sách vở.",
+        "answer": {
+          "text": "Không biết hôm nay học những môn gì; Mang nhầm sách vở; Quên đồ dùng cho môn học",
+          "explanation": "Thời khoá biểu cho biết môn học của từng ngày, nên thiếu nó em dễ quên môn, mang nhầm sách vở và đồ dùng. Đường đến trường hay bạn cùng chơi thì thời khoá biểu không giúp được."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đúng cả ba, y như buổi sáng lộn xộn của Thỏ Tí.",
+          "Thỏ Tí lè lưỡi: tớ gặp đủ ba chuyện đó luôn!",
+          "Chọn rất chuẩn, không thừa lựa chọn nào."
+        ],
+        "wrong": [
+          "Thời khoá biểu có chỉ đường đến trường không nhỉ?",
+          "Còn sót một khó khăn về đồ dùng học tập đấy.",
+          "Xem lại: lựa chọn nào chẳng dính gì đến môn học?"
+        ]
+      }
+    },
+    {
+      "id": "hoi-dap-tiet-mi-thuat",
+      "title": "Tiết Mĩ thuật vào thứ mấy?",
+      "kind": "challenge",
+      "mechanic": "calendar",
+      "target": "voi-bao",
+      "prompt": "Voi Bảo mở tờ lịch tháng Mười của trường và bày trò hỏi – đáp.\nDựa vào thời khoá biểu trên đây, hỏi – đáp theo mẫu:\nLớp mình có tiết Âm nhạc vào thứ mấy?\nLớp mình có tiết Âm nhạc vào thứ Sáu.",
+      "month": 10,
+      "year": 2021,
+      "question": "Đến lượt {name}: Lớp mình có tiết Mĩ thuật vào thứ mấy? Chạm vào đúng thứ trên tờ lịch.",
+      "ask": "weekday",
+      "skill": "doc-hieu",
+      "answer": {
+        "weekday": "thu-tu"
+      },
+      "curriculumRef": [
+        "tv2-t1-b10-doc-lt1"
+      ],
+      "support": {
+        "guide": [
+          "Tìm ô có chữ Mĩ thuật trên thời khoá biểu.",
+          "Nhìn lên đầu cột chứa ô đó để biết là thứ mấy."
+        ],
+        "hint": "Mĩ thuật là tiết 2 của một buổi sáng giữa tuần.",
+        "answer": {
+          "text": "Lớp mình có tiết Mĩ thuật vào thứ Tư.",
+          "explanation": "Ô Mĩ thuật nằm ở tiết 2 buổi sáng, trong cột Thứ Tư."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Thứ Tư, chính xác! Hèn gì hôm qua Thỏ Tí cần bút màu.",
+          "Voi Bảo đánh dấu thứ Tư bằng một chiếc lá đỏ.",
+          "Hỏi – đáp đúng như mẫu rồi đấy."
+        ],
+        "wrong": [
+          "Hôm nay thứ Năm đâu có tiết Mĩ thuật.",
+          "Dò lại hàng tiết 2 của buổi sáng xem.",
+          "Tìm chữ Mĩ thuật trước, rồi mới nhìn tên cột."
+        ]
+      }
+    },
+    {
+      "id": "hoi-dap-cung-tho-ti",
+      "title": "Hỏi – đáp cùng Thỏ Tí",
+      "kind": "speak",
+      "target": "tho-ti",
+      "prompt": "Dựa vào thời khoá biểu trên đây, hỏi – đáp theo mẫu:\nLớp mình có tiết Âm nhạc vào thứ mấy?\nLớp mình có tiết Âm nhạc vào thứ Sáu.\nBây giờ {name} hỏi, Thỏ Tí đáp, rồi hai bạn đổi vai cho nhau.",
+      "hints": [
+        "Lớp mình có tiết Đạo đức vào thứ mấy?",
+        "Lớp mình có tiết Tiếng Anh vào thứ mấy?",
+        "Trả lời đủ câu, bắt đầu bằng: Lớp mình có tiết…"
+      ],
+      "curriculumRef": [
+        "tv2-t1-b10-doc-lt1"
+      ]
+    },
+    {
+      "id": "mon-hoc-em-thich",
+      "title": "Môn học em yêu thích",
+      "kind": "speak",
+      "target": "tho-ti",
+      "prompt": "Thỏ Tí khoe: tớ mê nhất giờ Giáo dục thể chất vì được chạy nhảy thoả thích. Còn {name} thì sao?\nNói một câu giới thiệu môn học hoặc hoạt động ở trường mà em thích.\nM: Tiếng Việt là môn học tôi yêu thích nhất.",
+      "hints": [
+        "Ở trường, em thích môn học hay hoạt động nào nhất?",
+        "Vì sao em thích môn học hay hoạt động đó?"
+      ],
+      "curriculumRef": [
+        "tv2-t1-b10-doc-lt2"
+      ]
+    },
+    {
+      "id": "dan-nhan-do-dung",
+      "title": "Dán nhãn cho đồ vừa nhặt",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "target": "tho-ti",
+      "prompt": "Ba món đồ {name} nhặt được vẫn còn dính lá khô. Thỏ Tí muốn dán nhãn tên lên từng món để khỏi lạc nữa.\nDựa vào tranh, viết tên đồ vật có tiếng chứa c hoặc k.",
+      "template": "Tranh 1: {{b1}}\nTranh 2: {{b2}}\nTranh 3: {{b3}}",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "thuoc-ke",
+              "text": "thước kẻ"
+            },
+            {
+              "id": "thuoc-ce",
+              "text": "thước cẻ"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "cai-ceo",
+              "text": "cái céo"
+            },
+            {
+              "id": "kai-keo",
+              "text": "kái kéo"
+            },
+            {
+              "id": "cai-keo",
+              "text": "cái kéo"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "cap-sach",
+              "text": "cặp sách"
+            },
+            {
+              "id": "kap-sach",
+              "text": "kặp sách"
+            }
+          ]
+        }
+      ],
+      "skill": "chinh-ta",
+      "answer": {
+        "fills": {
+          "b1": "thuoc-ke",
+          "b2": "cai-keo",
+          "b3": "cap-sach"
+        }
+      },
+      "curriculumRef": [
+        "tv2-t1-b10-chinh-ta-2-a",
+        "tv2-t1-b10-chinh-ta-2-b",
+        "tv2-t1-b10-chinh-ta-2-c"
+      ],
+      "support": {
+        "guide": [
+          "Đọc to tên từng đồ vật trong tranh.",
+          "Nhớ luật: âm cờ đứng trước e, ê, i thì viết k."
+        ],
+        "hint": "Trước e viết k như trong kẻ, kéo; trước ă viết c như trong cặp.",
+        "answer": {
+          "text": "thước kẻ; cái kéo; cặp sách",
+          "explanation": "Âm cờ đứng trước e, ê, i viết là k (kẻ, kéo); đứng trước a, ă, â, o, ô, ơ, u, ư viết là c (cái, cặp)."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Nhãn nào cũng đúng chính tả, Thỏ Tí dán ngay!",
+          "Tuyệt, {name} nhớ luật c và k rất chắc.",
+          "Ba cái nhãn thẳng hàng, đẹp như chữ cô viết."
+        ],
+        "wrong": [
+          "Chữ k đi với e, ê, i đấy, thử lại nhé.",
+          "Có một nhãn viết nhầm c với k rồi.",
+          "Đọc chậm từng tiếng xem âm đầu đứng trước vần gì."
+        ]
+      }
+    },
+    {
+      "id": "hai-chan-troi",
+      "title": "Đoạn thơ bị nhoè chữ",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "target": "voi-bao",
+      "prompt": "Voi Bảo đọc cho cả lớp một đoạn thơ về mặt trời, nhưng mưa đêm qua làm nhoè mấy chữ. Hôm nay mình làm cả phần a lẫn phần b.\nChọn a hoặc b.\na. Chọn ch hoặc tr thay cho ô vuông.",
+      "template": "Mặt {{b1}}ời mọc rồi lặn\n{{b2}}ên đôi {{b3}}ân lon ton\nHai {{b4}}ân {{b5}}ời của con\nLà mẹ và cô giáo.\n(Theo Trần Quốc Toàn)",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "ch",
+              "text": "ch"
+            },
+            {
+              "id": "tr",
+              "text": "tr"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "tr",
+              "text": "Tr"
+            },
+            {
+              "id": "ch",
+              "text": "Ch"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "ch",
+              "text": "ch"
+            },
+            {
+              "id": "tr",
+              "text": "tr"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "tr",
+              "text": "tr"
+            },
+            {
+              "id": "ch",
+              "text": "ch"
+            }
+          ]
+        },
+        {
+          "id": "b5",
+          "options": [
+            {
+              "id": "ch",
+              "text": "ch"
+            },
+            {
+              "id": "tr",
+              "text": "tr"
+            }
+          ]
+        }
+      ],
+      "skill": "chinh-ta",
+      "answer": {
+        "fills": {
+          "b1": "tr",
+          "b2": "tr",
+          "b3": "ch",
+          "b4": "ch",
+          "b5": "tr"
+        }
+      },
+      "curriculumRef": [
+        "tv2-t1-b10-chinh-ta-3-a"
+      ],
+      "support": {
+        "guide": [
+          "Đọc to từng tiếng có ô vuông.",
+          "Mặt trời và đôi chân là những tiếng em gặp hằng ngày."
+        ],
+        "hint": "Chữ đầu dòng phải viết hoa: Tr hoặc Ch.",
+        "answer": {
+          "text": "Mặt trời mọc rồi lặn / Trên đôi chân lon ton / Hai chân trời của con / Là mẹ và cô giáo.",
+          "explanation": "Các tiếng cần điền lần lượt là trời, Trên, chân, chân, trời."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đoạn thơ sáng rõ trở lại rồi!",
+          "Voi Bảo vẫy vòi: trời, trên, chân, đúng hết!",
+          "Tai {name} nghe ch và tr rất tinh."
+        ],
+        "wrong": [
+          "Mặt trời viết bằng tr, còn đôi chân thì sao?",
+          "Ô vuông đầu dòng cần chữ viết hoa đấy.",
+          "Một tiếng đang lẫn giữa ch và tr, đọc lại nhé."
+        ]
+      }
+    },
+    {
+      "id": "tim-tu-trong-tranh",
+      "title": "Tìm từ trong năm bức tranh",
+      "kind": "challenge",
+      "mechanic": "classify",
+      "target": "bang-go-goc-soi",
+      "prompt": "Voi Bảo treo lên bảng gỗ năm bức tranh về một ngày ở trường của các bạn nhỏ: viết bài, làm thủ công, hát theo đàn, tập thể dục và chơi dưới sân.\nDựa vào tranh, tìm từ ngữ:\n– Chỉ sự vật\n– Chỉ hoạt động",
+      "groups": [
+        {
+          "id": "su-vat",
+          "label": "Chỉ sự vật"
+        },
+        {
+          "id": "hoat-dong",
+          "label": "Chỉ hoạt động"
+        }
+      ],
+      "items": [
+        {
+          "id": "cay-dan",
+          "label": "cây đàn"
+        },
+        {
+          "id": "viet-bai",
+          "label": "viết bài"
+        },
+        {
+          "id": "nhay-day",
+          "label": "nhảy dây"
+        },
+        {
+          "id": "sach",
+          "label": "sách"
+        },
+        {
+          "id": "ghe-da",
+          "label": "ghế đá"
+        },
+        {
+          "id": "lam-thu-cong",
+          "label": "làm thủ công"
+        },
+        {
+          "id": "da-cau",
+          "label": "đá cầu"
+        },
+        {
+          "id": "bang-lop",
+          "label": "bảng lớp"
+        },
+        {
+          "id": "tap-the-duc",
+          "label": "tập thể dục"
+        },
+        {
+          "id": "hat",
+          "label": "hát"
+        },
+        {
+          "id": "qua-cau",
+          "label": "quả cầu"
+        }
+      ],
+      "skill": "tu-ngu",
+      "answer": {
+        "assignment": {
+          "sach": "su-vat",
+          "viet-bai": "hoat-dong",
+          "bang-lop": "su-vat",
+          "lam-thu-cong": "hoat-dong",
+          "cay-dan": "su-vat",
+          "hat": "hoat-dong",
+          "ghe-da": "su-vat",
+          "tap-the-duc": "hoat-dong",
+          "qua-cau": "su-vat",
+          "nhay-day": "hoat-dong",
+          "da-cau": "hoat-dong"
+        }
+      },
+      "curriculumRef": [
+        "tv2-t1-b10-tu-ngu-cau-1-a",
+        "tv2-t1-b10-tu-ngu-cau-1-b"
+      ],
+      "support": {
+        "guide": [
+          "Từ chỉ sự vật gọi tên người, đồ vật, cây cối, con vật.",
+          "Từ chỉ hoạt động nói về việc các bạn đang làm."
+        ],
+        "hint": "Thử đặt “đang” trước từ: nghe hợp thì đó là từ chỉ hoạt động.",
+        "answer": {
+          "text": "Chỉ sự vật: sách, bảng lớp, cây đàn, ghế đá, quả cầu. Chỉ hoạt động: viết bài, làm thủ công, hát, tập thể dục, nhảy dây, đá cầu.",
+          "explanation": "Sách, bảng lớp, cây đàn, ghế đá, quả cầu là tên đồ vật; viết bài, hát, nhảy dây… là việc các bạn làm trong tranh."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Hai nhóm từ gọn gàng như ngăn cặp mới!",
+          "Đúng rồi, quả cầu là sự vật còn đá cầu là hoạt động.",
+          "Voi Bảo khen {name} nhìn tranh rất kĩ."
+        ],
+        "wrong": [
+          "Có thẻ gọi tên đồ vật đang lạc sang nhóm hoạt động.",
+          "Thử nói “các bạn đang…” trước từ đó xem có hợp không.",
+          "Quả cầu và đá cầu giống chữ nhưng khác nhóm đấy."
+        ]
+      }
+    },
+    {
+      "id": "dat-cau-hoat-dong",
+      "title": "Ghép câu nêu hoạt động",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "tho-ti",
+      "prompt": "Đặt một câu nêu hoạt động với từ ngữ vừa tìm được.\nThỏ Tí chọn từ nhảy dây, nhưng các thẻ chữ bị gió thổi lộn xộn. Xếp lại thành câu giúp bạn ấy nhé.",
+      "items": [
+        {
+          "id": "nhay-day",
+          "label": "nhảy dây"
+        },
+        {
+          "id": "o-san-truong",
+          "label": "ở sân trường."
+        },
+        {
+          "id": "gio-ra-choi",
+          "label": "Giờ ra chơi,"
+        },
+        {
+          "id": "ban-gai",
+          "label": "bạn gái"
+        }
+      ],
+      "skill": "cau",
+      "answer": {
+        "order": [
+          "gio-ra-choi",
+          "ban-gai",
+          "nhay-day",
+          "o-san-truong"
+        ]
+      },
+      "curriculumRef": [
+        "tv2-t1-b10-tu-ngu-cau-2"
+      ],
+      "support": {
+        "guide": [
+          "Thẻ có chữ viết hoa đứng đầu câu.",
+          "Thẻ có dấu chấm đứng cuối câu."
+        ],
+        "hint": "Câu kể: khi nào, ai, làm gì, ở đâu.",
+        "answer": {
+          "text": "Giờ ra chơi, bạn gái nhảy dây ở sân trường.",
+          "explanation": "Câu có từ chỉ hoạt động “nhảy dây”, nói rõ ai làm, làm lúc nào và ở đâu."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Câu tròn trịa, Thỏ Tí đọc to cho cả lớp nghe!",
+          "Xếp chuẩn: khi nào, ai, làm gì, ở đâu.",
+          "Hay quá, câu nêu hoạt động đã hoàn thành."
+        ],
+        "wrong": [
+          "Thẻ nào có chữ viết hoa nhỉ? Nó phải đứng đầu.",
+          "Dấu chấm đang không nằm ở cuối câu rồi.",
+          "Đọc thử câu vừa xếp xem có xuôi tai không."
+        ]
+      }
+    },
+    {
+      "id": "chim-vanh-khuyen",
+      "title": "Bài thơ chú chim nhỏ",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "target": "tho-ti",
+      "prompt": "Trên cành sồi, một chú chim nhỏ hót chào {name}. Thỏ Tí thuộc một bài thơ về chú chim này nhưng quên mất vài chữ.\nChọn a hoặc b.\nb. Chọn v hoặc d thay cho ô vuông.",
+      "template": "Có con chim {{b1}}ành khuyên nhỏ\n{{b2}}áng trông thật ngoan ngoãn quá\nGọi {{b3}}ạ, bảo {{b4}}âng lễ phép ngoan nhất nhà.\n(Theo Hoàng Vân)",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "v",
+              "text": "v"
+            },
+            {
+              "id": "d",
+              "text": "d"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "d",
+              "text": "D"
+            },
+            {
+              "id": "v",
+              "text": "V"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "v",
+              "text": "v"
+            },
+            {
+              "id": "d",
+              "text": "d"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "d",
+              "text": "d"
+            },
+            {
+              "id": "v",
+              "text": "v"
+            }
+          ]
+        }
+      ],
+      "skill": "chinh-ta",
+      "answer": {
+        "fills": {
+          "b1": "v",
+          "b2": "d",
+          "b3": "d",
+          "b4": "v"
+        }
+      },
+      "curriculumRef": [
+        "tv2-t1-b10-chinh-ta-3-b"
+      ],
+      "support": {
+        "guide": [
+          "Đọc cả dòng thơ rồi mới chọn chữ.",
+          "Nghĩ xem tiếng đó có nghĩa gì: tên chim, dáng vẻ, lời đáp lễ phép."
+        ],
+        "hint": "Lời đáp lễ phép là “dạ” và “vâng”.",
+        "answer": {
+          "text": "Có con chim vành khuyên nhỏ / Dáng trông thật ngoan ngoãn quá / Gọi dạ, bảo vâng lễ phép ngoan nhất nhà.",
+          "explanation": "Các tiếng cần điền lần lượt là vành, Dáng, dạ, vâng."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Chú chim vành khuyên hót vang như cảm ơn {name}!",
+          "Gọi dạ, bảo vâng: {name} điền đúng hết.",
+          "Thỏ Tí đọc lại trơn tru cả bài thơ rồi."
+        ],
+        "wrong": [
+          "Dạ và vâng không viết cùng một chữ đầu đâu.",
+          "Ô đầu dòng thứ hai cần chữ viết hoa.",
+          "Tên chú chim là vành khuyên, thử lại ô đầu tiên nhé."
+        ]
+      }
+    },
+    {
+      "id": "hua-voi-voi-bao",
+      "title": "Lời hứa của Thỏ Tí",
+      "kind": "dialogue",
+      "target": "voi-bao",
+      "lines": [
+        {
+          "speaker": "Voi Bảo",
+          "text": "Thỏ Tí này, từ mai cậu định làm gì để không mang nhầm sách vở nữa?"
+        },
+        {
+          "speaker": "Thỏ Tí",
+          "text": "{name} gợi ý cho tớ một cách thật dễ nhớ đi, tớ hứa sẽ làm theo!"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Chép thời khoá biểu dán cạnh bàn học",
+          "reply": "Ý hay! Ngẩng lên nhìn tường là tớ biết mai học môn gì."
+        },
+        {
+          "text": "Tối nào cũng soạn cặp theo thời khoá biểu",
+          "reply": "Tớ sẽ soạn xong mới đi ngủ, không để sáng ra mới cuống lên."
+        }
+      ]
+    },
+    {
+      "id": "dong-ho-gio-ra-choi",
+      "title": "Đồng hồ giờ ra chơi",
+      "kind": "challenge",
+      "mechanic": "clock",
+      "target": "voi-bao",
+      "prompt": "Voi Bảo kể về một ngày ở trường của bạn Nam, bức tranh nào cũng có một chiếc đồng hồ.\nQuan sát tranh, kể lại các hoạt động của bạn Nam.\nM: 7 giờ 30 phút, bạn Nam đi học.\nỞ tranh 3, các bạn đang chạy ra sân chơi. Đồng hồ trong tranh chỉ mấy giờ?",
+      "mode": "read",
+      "display": "analog",
+      "time": {
+        "hour": 9,
+        "minute": 30
+      },
+      "skill": "xem-dong-ho",
+      "answer": {
+        "hour": 9,
+        "minute": 30
+      },
+      "curriculumRef": [
+        "tv2-t1-b10-viet-doan-1"
+      ],
+      "support": {
+        "guide": [
+          "Kim ngắn chỉ giờ, kim dài chỉ phút.",
+          "Kim dài chỉ vào số 6 nghĩa là 30 phút."
+        ],
+        "hint": "Kim ngắn đang nằm giữa số 9 và số 10.",
+        "answer": {
+          "text": "9 giờ 30 phút",
+          "explanation": "Kim ngắn đã qua số 9, kim dài chỉ số 6: đồng hồ chỉ 9 giờ 30 phút, giờ ra chơi của bạn Nam."
+        }
+      },
+      "feedback": {
+        "right": [
+          "9 giờ 30 phút, đúng giờ ra chơi rồi!",
+          "Voi Bảo lắc chuông: {name} xem đồng hồ giỏi thật.",
+          "Chuẩn, kim dài chỉ số 6 là 30 phút."
+        ],
+        "wrong": [
+          "Kim ngắn đã qua số 9 chưa nhỉ?",
+          "Nhìn lại kim dài đang chỉ vào số mấy.",
+          "Kim ngắn là giờ, kim dài là phút, đừng đổi chỗ nhé."
+        ]
+      }
+    },
+    {
+      "id": "ke-mot-ngay-cua-nam",
+      "title": "Kể một ngày của bạn Nam",
+      "kind": "speak",
+      "target": "tho-ti",
+      "prompt": "Quan sát tranh, kể lại các hoạt động của bạn Nam.\nM: 7 giờ 30 phút, bạn Nam đi học.\n{name} kể lần lượt bốn tranh cho Thỏ Tí nghe, nói giờ trước rồi mới nói việc bạn Nam làm.",
+      "hints": [
+        "Tranh 1: bạn Nam đeo cặp đi vào cổng trường.",
+        "Tranh 2 (8 giờ): cô giáo giảng bài, các bạn ngồi học.",
+        "Tranh 3 (9 giờ 30 phút): các bạn chạy ra sân chơi.",
+        "Tranh 4 (11 giờ 30 phút): bạn Nam bưng khay cơm ở nhà ăn."
+      ],
+      "pictureRefs": [
+        {
+          "kind": "diagram",
+          "type": "picture-card",
+          "params": {
+            "scene": "tranh 1 (7:00): bạn Nam đeo cặp đi vào cổng trường"
+          }
+        },
+        {
+          "kind": "diagram",
+          "type": "picture-card",
+          "params": {
+            "scene": "tranh 2 (8:00): cô giáo giảng bài trước bảng, các bạn ngồi học"
+          }
+        },
+        {
+          "kind": "diagram",
+          "type": "picture-card",
+          "params": {
+            "scene": "tranh 3 (9:30): các bạn chạy ra sân chơi dưới hành lang"
+          }
+        },
+        {
+          "kind": "diagram",
+          "type": "picture-card",
+          "params": {
+            "scene": "tranh 4 (11:30): bạn Nam bưng khay cơm ở nhà ăn, cô cấp dưỡng chia cơm"
+          }
+        }
+      ],
+      "curriculumRef": [
+        "tv2-t1-b10-viet-doan-1"
+      ]
+    },
+    {
+      "id": "bang-tin-goc-soi",
+      "title": "Bảng tin của trường em",
+      "kind": "speak",
+      "target": "bang-go-goc-soi",
+      "prompt": "Góc dưới tấm bảng gỗ có dán tờ tin: tối thứ Bảy, cả rừng họp mặt đọc truyện dưới trăng. Thỏ Tí tò mò muốn biết trường của {name} có tin gì.\nĐọc bảng tin của nhà trường.\nChia sẻ với bạn những thông tin mà em quan tâm.",
+      "hints": [
+        "Bảng tin ở trường em đặt ở đâu?",
+        "Tuần này bảng tin có thông báo gì mới?",
+        "Tin nào khiến em thấy thích thú nhất? Vì sao?"
+      ],
+      "pictureRefs": [
+        {
+          "kind": "diagram",
+          "type": "picture-card",
+          "params": {
+            "scene": "hai bạn ngồi ghế đá trò chuyện; bóng nói: \"Thứ Năm tuần này, khối 2 được đi tham quan đấy.\""
+          }
+        }
+      ],
+      "curriculumRef": [
+        "tv2-t1-b10-doc-mo-rong-1",
+        "tv2-t1-b10-doc-mo-rong-2"
+      ]
+    },
+    {
+      "id": "phieu-viet-bai-10",
+      "title": "Phiếu viết bài 10",
+      "kind": "worksheet",
+      "trigger": "auto",
+      "lessonId": "tv2-t1-b10",
+      "text": "Nhờ bố mẹ in phiếu Bài 10 ở khu phụ huynh: nghe – viết đoạn đầu bài Thời khoá biểu, kể các hoạt động của bạn Nam và lập thời gian biểu buổi tối của em.",
+      "curriculumRef": [
+        "tv2-t1-b10-nghe-viet-1",
+        "tv2-t1-b10-viet-doan-1",
+        "tv2-t1-b10-viet-doan-2"
+      ]
+    },
+    {
+      "id": "qua-cua-tho-ti",
+      "title": "Kẹp lá sồi của Thỏ Tí",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Thỏ Tí tặng {name} một chiếc kẹp lá sồi để kẹp thời khoá biểu vào góc học tập, còn Voi Bảo đóng lên đó con dấu hình chiếc vòi."
+    },
+    {
+      "id": "mo-bai-11",
+      "title": "Tiếng trống bên suối",
+      "kind": "unlock",
+      "trigger": "auto",
+      "text": "Từ chòi trống bên suối vọng lại tiếng Chó Mực gọi í ới. Chiếc trống trường nằm im suốt mùa hè, liệu hôm nay có chịu cất tiếng không?"
+    }
+  ],
+  "reward": {
+    "xp": 90,
+    "coin": 15,
+    "skillXp": {
+      "doc-hieu": 2,
+      "chinh-ta": 2,
+      "tu-ngu": 1,
+      "cau": 1
+    }
+  },
+  "unlock": [
+    "tv2-t06-b11"
+  ]
+}
