@@ -1,0 +1,25 @@
+/* Player badge (Home, HUD): values from tokens.css only. */
+.player-badge {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-xs) var(--space-md) var(--space-xs) var(--space-xs);
+  border-radius: var(--radius-pill);
+  background: var(--color-surface-glass);
+  box-shadow: var(--shadow-tile);
+}
+.player-badge-text { display: flex; flex-direction: column; min-width: 9rem; }
+.player-badge-name { font-family: var(--font-display); font-weight: 800; font-size: var(--text-lg); line-height: 1.1; }
+.player-badge-level { display: flex; align-items: center; gap: var(--space-xs); font-weight: 700; }
+.player-badge-xp { display: flex; flex-direction: column; flex: 1; min-width: 6rem; font-size: var(--text-sm); }
+.player-coins {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  margin-left: var(--space-sm);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--text-lg);
+}
+.player-badge .miu-portrait { margin-bottom: 0; border-width: 3px; flex-shrink: 0; }
+.player-badge .progress { height: 0.9rem; border-width: 2px; }

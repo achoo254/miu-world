@@ -59,7 +59,9 @@ test('Google sign-in → set PIN → consent → create profile → pick profile
   await page.getByLabel('Tên nhân vật').selectOption('Bông');
   await shot(page, '05b-creator');
   await page.getByRole('button', { name: /Vào thế giới/ }).click();
-  await expect(page).toHaveURL(/\/play$/);
+  await expect(page).toHaveURL(/\/home$/);
+  await page.locator('[data-id="home-today-play"]').click();
+  await expect(page).toHaveURL(/\/play\?/);
   await waitReady(page);
   await expect(page.locator('canvas')).toHaveCount(1);
 

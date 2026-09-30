@@ -143,8 +143,9 @@ test('the camera never ends up inside a block, pressed against the ancient tree'
 test('leaving /play disposes the game: no canvas, no stats handle', async ({ page }) => {
   await page.goto('/play?quality=low');
   await waitReady(page);
-  await page.getByRole('link', { name: 'Thoát' }).click();
-  await expect(page.getByRole('heading', { name: 'Ai đang chơi?' })).toBeVisible();
+  await page.getByRole('button', { name: /Menu/ }).click();
+  await page.getByRole('link', { name: /Về trang chủ/ }).click();
+  await expect(page.locator('[data-id="home"]')).toBeVisible();
   await expect(page.locator('canvas')).toHaveCount(0);
   expect(await page.evaluate(() => window.__miuStats)).toBeUndefined();
 });
@@ -152,7 +153,7 @@ test('leaving /play disposes the game: no canvas, no stats handle', async ({ pag
 test('Pause stops rendering (no new frames) and Resume starts it again; Esc opens it', async ({ page }) => {
   await page.goto('/play?quality=low');
   await waitReady(page);
-  await page.getByRole('button', { name: /Tạm dừng/ }).click();
+  await page.getByRole('button', { name: /Menu/ }).click();
   await expect(page.getByRole('dialog', { name: 'Tạm dừng' })).toBeVisible();
   await page.waitForTimeout(200); // the frame already queued may still land
   const frozen = (await readStats(page)).frames;

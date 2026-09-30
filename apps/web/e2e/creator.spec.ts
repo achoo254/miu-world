@@ -60,15 +60,18 @@ test('a new profile creates its character first, sees outfit changes live, then 
 
   await page.getByLabel('Tên nhân vật').selectOption('Mochi');
   await page.getByRole('button', { name: /Vào thế giới/ }).click();
-  await expect(page).toHaveURL(/\/play$/);
+  await expect(page).toHaveURL(/\/home$/);
+  await expect(page.locator('[data-id="player-name"]')).toHaveText('Mochi');
+  await page.locator('[data-id="home-today-play"]').click();
+  await expect(page).toHaveURL(/\/play\?/);
   await waitReady(page);
   expect((await readStats(page)).outfit).toEqual(['hat-cap-yellow', 'backpack-red']);
   // The preview was disposed on leaving /create: only the game's canvas remains.
   await expect(page.locator('canvas')).toHaveCount(1);
   expect(await page.evaluate(() => window.__miuPreview)).toBeUndefined();
 
-  // Back on the picker, the profile now goes straight to play.
+  // Back on the picker, the profile now goes straight Home.
   await page.goto('/profiles');
   await page.getByRole('button', { name: 'Thỏ Bông' }).click();
-  await expect(page).toHaveURL(/\/play$/);
+  await expect(page).toHaveURL(/\/home$/);
 });

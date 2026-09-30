@@ -61,7 +61,7 @@ function renderCreator() {
       <MemoryRouter initialEntries={['/create']}>
         <Routes>
           <Route path="/create" element={<CreatorScreen />} />
-          <Route path="/play" element={<p>Trong game</p>} />
+          <Route path="/home" element={<p>Trang chủ</p>} />
         </Routes>
       </MemoryRouter>
     </StrictMode>,
@@ -117,7 +117,7 @@ describe('Character Creator', () => {
     expect((screen.getByRole('button', { name: /Vào thế giới/ }) as HTMLButtonElement).disabled).toBe(true);
     fireEvent.change(screen.getByLabelText('Tên nhân vật'), { target: { value: 'Mochi' } });
     fireEvent.click(screen.getByRole('button', { name: /Vào thế giới/ }));
-    expect(await screen.findByText('Trong game')).toBeTruthy();
+    expect(await screen.findByText('Trang chủ')).toBeTruthy();
     expect(puts).toEqual([{ name: 'Mochi', equipped: ['hat-witch-pink', 'backpack-green'] }]);
     view.unmount();
     expect(previews.live).toBe(0);

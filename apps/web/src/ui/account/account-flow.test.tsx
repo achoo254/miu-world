@@ -3,6 +3,7 @@ import { MemoryRouter } from 'react-router';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { AccountProvider } from './account-context';
 import { AppRoutes } from '../app-shell';
+import { PROGRESS, questList } from '../player/test-fixtures';
 
 // jsdom has no WebGL: the runtime is covered by Playwright; here only its lifecycle is observed.
 const gameLifecycle = vi.hoisted(() => ({ started: 0, disposed: 0, outfit: [] as string[] }));
@@ -159,7 +160,7 @@ describe('account flow', () => {
     expect(await screen.findByLabelText('Nhập mã PIN phụ huynh')).toBeTruthy();
   });
 
-  it('lets the child pick a profile and enter play', async () => {
+  it('lets the child pick a profile, land on Home and enter play from today\'s quest', async () => {
     let active: string | null = null;
     const calls = stubApi({
       'GET /api/auth/me': () => ({ status: 200, body: me({ activeChildId: active }) }),
@@ -169,10 +170,13 @@ describe('account flow', () => {
         return { status: 200, body: { activeChildId: CHILD } };
       },
       'GET /api/character': () => ({ status: 200, body: { species: 'cat', name: 'Miu', equipped: ['hat-witch-pink'] } }),
+      'GET /api/progress': () => ({ status: 200, body: PROGRESS }),
+      'GET /api/quests': () => ({ status: 200, body: questList() }),
     });
     renderAt('/profiles');
     fireEvent.click(await screen.findByRole('button', { name: 'Mèo Mây' }));
-    expect(await screen.findByRole('link', { name: 'Thoát' })).toBeTruthy();
+    fireEvent.click(await screen.findByRole('link', { name: 'Bắt đầu' }));
+    expect(await screen.findByRole('button', { name: /Menu/ })).toBeTruthy();
     await vi.waitFor(() => expect(gameLifecycle.started).toBeGreaterThan(0));
     expect(gameLifecycle.outfit).toEqual(['hat-witch-pink']);
     expect(calls.map((c) => c.key)).toContain(`POST /api/children/${CHILD}/select`);

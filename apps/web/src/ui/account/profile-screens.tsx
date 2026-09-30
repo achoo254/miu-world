@@ -61,7 +61,7 @@ export function ProfilePickerScreen() {
       await api('POST', `/children/${id}/select`, z.object({ activeChildId: z.uuid() }));
       const character = await api('GET', '/character', CharacterDto);
       await refresh();
-      navigate(isFreshCharacter(character) ? '/create' : '/play');
+      navigate(isFreshCharacter(character) ? '/create' : '/home');
     } catch (err) {
       setSelectError(errorMessage(err));
     }

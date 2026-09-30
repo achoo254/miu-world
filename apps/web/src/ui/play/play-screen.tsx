@@ -1,22 +1,21 @@
 // M3.2 (gameplay 3D): Khu rừng bí mật. The game owns canvas, loop, joystick and Run/Jump; React
-// owns the interaction label (content + visibility from game-bridge), Pause (game stops rendering
-// while it is open), the offline retry and the exit button.
+// owns the HUD (badge, quest tracker, menu buttons, Interact), the interaction label (content and
+// visibility from game-bridge), Pause (the game stops rendering while it is open) and the offline retry.
 import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from 'react';
-import { Link } from 'react-router';
-import { CharacterDto } from '@miu/schema/game';
+import { Link, useSearchParams } from 'react-router';
 import { createGameStore, type GameSnapshot, type GameStore } from '../../game-bridge/game-store';
 import { GameStoreContext, useGameState, useGameStore } from '../../game-bridge/use-game-state';
 import { Game } from '../../game/game';
-import { ApiError, api, errorMessage } from '../api-client';
+import { ApiError, errorMessage } from '../api-client';
 import { useAccount } from '../account/account-context';
-import { buttonClass } from '../kit/button';
-import { Icon } from '../kit/art';
+import { Hud } from '../hud/hud';
+import { currentQuest, loadPlayer, type PlayerData } from '../player/player-data';
+import { findRegion } from '../region/regions';
 import { LoadingOverlay } from '../system/loading-overlay';
 import { OfflineBanner } from '../system/offline-banner';
 import { PauseScreen } from '../system/pause-screen';
 
-/** Where Pause and Exit lead until the Home screen exists. */
-const HOME_PATH = '/profiles';
+const HOME_PATH = '/home';
 
 function InteractionLabel() {
   const store = useGameStore();
@@ -55,7 +54,7 @@ function GameStatus() {
       <div className="play-message" role="alert" data-id="play-context-lost">
         <p>Mất kết nối đồ họa.</p>
         {/* A full page load rebuilds the WebGL context; progress already saved on the server is kept. */}
-        <button type="button" data-id="play-context-lost-reload" onClick={() => window.location.assign('/play')}>
+        <button type="button" data-id="play-context-lost-reload" onClick={() => window.location.reload()}>
           Tải lại
         </button>
       </div>
@@ -64,7 +63,7 @@ function GameStatus() {
   return (
     <div className="play-message" role="alert" data-id="play-error">
       <p>
-        Không tải được Khu rừng bí mật. <Link to="/profiles">Quay lại</Link>
+        Không tải được Khu rừng bí mật. <Link to="/home">Quay lại</Link>
       </p>
     </div>
   );
@@ -96,7 +95,8 @@ function GameView({ store, outfit, paused }: { store: GameStore; outfit: string[
 export function PlayScreen() {
   const { refresh } = useAccount();
   const [store] = useState(createGameStore);
-  const [character, setCharacter] = useState<CharacterDto | null>(null);
+  const [params] = useSearchParams();
+  const [data, setData] = useState<PlayerData | null>(null);
   const [loadError, setLoadError] = useState<string | null>(null);
   const [offline, setOffline] = useState(false);
   const [paused, setPaused] = useState(false);
@@ -115,8 +115,8 @@ export function PlayScreen() {
 
   useEffect(() => {
     let live = true;
-    api('GET', '/character', CharacterDto).then(
-      (c) => live && setCharacter(c),
+    loadPlayer().then(
+      (next) => live && setData(next),
       (err: unknown) => live && onLoadError(err),
     );
     return () => {
@@ -126,7 +126,7 @@ export function PlayScreen() {
 
   async function retryOffline(): Promise<void> {
     try {
-      setCharacter(await api('GET', '/character', CharacterDto));
+      setData(await loadPlayer());
       setOffline(false);
     } catch (err) {
       onLoadError(err);
@@ -143,32 +143,27 @@ export function PlayScreen() {
     return () => window.removeEventListener('keydown', onKey);
   }, [status, paused]);
 
+  // The quest named in the URL (from Home or the region screen), else the one the child is on.
+  const questId = params.get('quest');
+  const quest = data ? (data.quests.find((q) => q.quest.id === questId) ?? currentQuest(data.quests)) : null;
+  const regionName = findRegion(quest?.quest.region ?? '')?.name ?? 'Khu rừng bí mật';
+
   return (
     <GameStoreContext.Provider value={store}>
       <main data-id="play">
-        {character ? <GameView store={store} outfit={character.equipped} paused={paused} /> : null}
+        {data ? <GameView store={store} outfit={data.character.equipped} paused={paused} /> : null}
         {loadError ? (
           <div className="play-message" role="alert">
             <p>
-              {loadError} <Link to="/profiles">Quay lại</Link>
+              {loadError} <Link to="/home">Quay lại</Link>
             </p>
           </div>
         ) : null}
-        {loadError || offline ? null : <LoadingOverlay region="Khu rừng bí mật" />}
+        {loadError || offline ? null : <LoadingOverlay region={regionName} />}
         {offline ? <OfflineBanner onRetry={retryOffline} /> : null}
         <InteractionLabel />
         <GameStatus />
-        <div className="play-exit">
-          {status === 'ready' ? (
-            <button type="button" className={buttonClass('secondary', { small: true })} data-id="play-pause" onClick={() => setPaused(true)}>
-              <Icon name="pause" size={28} />
-              Tạm dừng
-            </button>
-          ) : null}
-          <Link className="button-link" to={HOME_PATH} data-id="play-exit">
-            Thoát
-          </Link>
-        </div>
+        {data && status !== 'error' ? <Hud data={data} quest={quest} onMenu={() => setPaused(true)} /> : null}
         {paused ? <PauseScreen onResume={() => setPaused(false)} homePath={HOME_PATH} /> : null}
       </main>
     </GameStoreContext.Provider>

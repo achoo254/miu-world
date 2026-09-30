@@ -3,7 +3,19 @@ import { cleanup, fireEvent, render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { AccountProvider } from '../account/account-context';
+import { PROGRESS, questList } from '../player/test-fixtures';
 import { PlayScreen } from './play-screen';
+
+/** The three reads /play makes, answered like the server; `character` may fail to simulate the network. */
+function playApi(character: () => Response = () => json({ species: 'cat', name: 'Mochi', equipped: [] })) {
+  return vi.fn(async (url: string) => {
+    if (url === '/api/character') return character();
+    if (url === '/api/progress') return json(PROGRESS);
+    if (url === '/api/quests') return json(questList(1));
+    return json({ error: 'unauthenticated' }, 401);
+  });
+}
+const json = (body: unknown, status = 200) => new Response(JSON.stringify(body), { status });
 
 // jsdom has no WebGL; the runtime itself is covered by Playwright. Here: lifecycle under StrictMode.
 const games = vi.hoisted(() => ({ live: 0, started: 0, stops: 0, resumes: 0 }));
@@ -39,14 +51,7 @@ afterEach(() => {
 
 describe('PlayScreen under React StrictMode', () => {
   it('ends with exactly one live game and none after unmount', async () => {
-    vi.stubGlobal(
-      'fetch',
-      vi.fn(async (url: string) =>
-        url === '/api/character'
-          ? new Response(JSON.stringify({ species: 'cat', name: 'Miu', equipped: [] }), { status: 200 })
-          : new Response(JSON.stringify({ error: 'unauthenticated' }), { status: 401 }),
-      ),
-    );
+    vi.stubGlobal('fetch', playApi());
     const view = render(
       <StrictMode>
         <MemoryRouter>
@@ -56,7 +61,7 @@ describe('PlayScreen under React StrictMode', () => {
         </MemoryRouter>
       </StrictMode>,
     );
-    expect(await screen.findByRole('link', { name: 'Thoát' })).toBeTruthy();
+    expect(await screen.findByRole('button', { name: /Menu/ })).toBeTruthy();
     await vi.waitFor(() => expect(games.started).toBeGreaterThanOrEqual(2)); // StrictMode mounted twice
     expect(games.live).toBe(1);
     view.unmount();
@@ -64,7 +69,7 @@ describe('PlayScreen under React StrictMode', () => {
   });
 
   it('stops the game while Pause is open and resumes it after', async () => {
-    vi.stubGlobal('fetch', vi.fn(async () => new Response(JSON.stringify({ species: 'cat', name: 'Mochi', equipped: [] }), { status: 200 })));
+    vi.stubGlobal('fetch', playApi());
     render(
       <MemoryRouter>
         <AccountProvider>
@@ -72,7 +77,7 @@ describe('PlayScreen under React StrictMode', () => {
         </AccountProvider>
       </MemoryRouter>,
     );
-    fireEvent.click(await screen.findByRole('button', { name: /Tạm dừng/ }));
+    fireEvent.click(await screen.findByRole('button', { name: /Menu/ }));
     expect(screen.getByRole('dialog', { name: 'Tạm dừng' })).toBeTruthy();
     const stops = games.stops;
     expect(stops).toBeGreaterThan(0);
@@ -88,11 +93,9 @@ describe('PlayScreen under React StrictMode', () => {
     let online = false;
     vi.stubGlobal(
       'fetch',
-      vi.fn(async (url: string) => {
-        if (!online && url === '/api/character') throw new TypeError('Failed to fetch');
-        return url === '/api/character'
-          ? new Response(JSON.stringify({ species: 'cat', name: 'Mochi', equipped: [] }), { status: 200 })
-          : new Response(JSON.stringify({ error: 'unauthenticated' }), { status: 401 });
+      playApi(() => {
+        if (!online) throw new TypeError('Failed to fetch');
+        return json({ species: 'cat', name: 'Mochi', equipped: [] });
       }),
     );
     const started = games.started;

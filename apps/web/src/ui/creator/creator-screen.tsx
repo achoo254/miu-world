@@ -145,7 +145,7 @@ function OutfitStep({ data, store }: { data: CreatorData; store: GameStore }) {
     setError(null);
     try {
       await api('PUT', '/character', CharacterDto, CharacterUpdate.parse({ name, equipped }));
-      navigate('/play');
+      navigate('/home');
     } catch (err) {
       setError(errorMessage(err));
       setSaving(false);

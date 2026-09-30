@@ -1,0 +1,58 @@
+/* HUD over the game (M3.2): values from tokens.css only. */
+.hud-top-left {
+  position: fixed;
+  top: var(--space-sm);
+  left: var(--space-sm);
+  z-index: var(--z-hud);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  pointer-events: none;
+}
+.hud-top-left > * { pointer-events: auto; }
+.hud-tracker {
+  max-width: 16rem;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-field);
+  background: var(--color-surface-glass);
+  box-shadow: var(--shadow-tile);
+}
+.hud-tracker-kicker { display: flex; align-items: center; gap: var(--space-xs); font-size: var(--text-sm); font-weight: 700; color: var(--color-ink-soft); }
+.hud-tracker-quest { font-family: var(--font-display); font-weight: 800; }
+.hud-tracker-step { font-weight: 700; }
+.hud-top-right {
+  position: fixed;
+  top: var(--space-sm);
+  right: var(--space-sm);
+  z-index: var(--z-hud);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: var(--space-xs);
+  max-width: 60vw;
+}
+/* Above the game's Run / Jump buttons (bottom right, game.css). */
+.hud-interact {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 8.5rem;
+  z-index: var(--z-hud);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  min-height: 4rem;
+  padding: var(--space-sm) var(--space-lg);
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  font: inherit;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--text-lg);
+  box-shadow: var(--shadow-primary);
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.hud-interact:focus-visible { box-shadow: var(--focus-ring); outline: none; }

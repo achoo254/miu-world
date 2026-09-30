@@ -40,7 +40,7 @@ const LOADING_STEPS = 5;
 
 export interface GameOptions {
   store: GameStore;
-  /** Query string with dev/review switches: quality, autopilot, spawnAt (`npc` or a target id), shot, outfit. */
+  /** Query string with dev/review switches: quality, stats, autopilot, spawnAt (`npc` or a target id), shot, outfit. */
   search: string;
   /** Equipped accessory ids (`id` or `id:variant`), normally from `GET /api/character`. */
   outfit: string[];
@@ -160,6 +160,8 @@ export class Game {
     const dom = buildDom(this.host);
     this.cleanups.push(() => dom.root.remove());
     const overlay = new StatsOverlay(dom.stats, quality.level);
+    // The FPS / draw-call panel is for developers; children see the HUD in its place.
+    dom.stats.hidden = !params.has('stats');
     this.cleanups.push(() => overlay.detach());
 
     // Only the Home island shot needs an alpha canvas (see review-shots.ts `backdrop`).
