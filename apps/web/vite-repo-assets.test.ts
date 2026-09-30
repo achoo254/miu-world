@@ -1,6 +1,7 @@
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
+import { UI_ART_PATHS } from './src/ui/kit/ui-art';
 import { createManifestReader, glbDependencies, runtimeAssetPaths } from './vite-repo-assets';
 
 const ASSETS_DIR = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../assets');
@@ -32,6 +33,12 @@ describe('runtime asset selection for the web build', async () => {
     expect(shipped.length).toBeLessThan(manifest.length / 4);
     expect(shipped).not.toContain('packs/kenney-cube-pets/2.0/animal-bunny.glb');
     expect(shipped.every((p) => manifest.includes(p))).toBe(true);
+  });
+
+  it('ships every icon and render the UI shows, and refuses one missing from the manifest', async () => {
+    const withUi = await runtimeAssetPaths(ASSETS_DIR, manifest, UI_ART_PATHS);
+    for (const p of UI_ART_PATHS) expect(withUi).toContain(p);
+    await expect(runtimeAssetPaths(ASSETS_DIR, manifest, ['packs/fluent-emoji/unknown.png'])).rejects.toThrow(/missing from manifest/);
   });
 
   it('refuses a runtime asset missing from the manifest', async () => {

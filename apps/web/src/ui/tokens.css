@@ -1,0 +1,90 @@
+/*
+ * Design tokens: direction A "Đảo mây kẹo hồng" (sky and floating islands, pink primary, blue
+ * secondary), picked from the pre-game mock canvas. Values approximate mocks M1–M3 (AI renders);
+ * temporary until the voxel mock (Master Plan task #4). Colours live only in this file.
+ */
+:root {
+  --color-ink: #2b2140;
+  --color-ink-soft: #5e5378;
+  --color-on-primary: #ffffff;
+
+  --color-primary: #e0397a;
+  --color-primary-top: #f2609a;
+  --color-primary-edge: #a8235a;
+  --color-secondary: #2f7cf6;
+  --color-secondary-top: #4c93ff;
+  --color-secondary-edge: #1a55b8;
+  --color-danger: #b3163f;
+  --color-danger-soft: #fff0f3;
+  --color-danger-line: #f7b8c8;
+  --color-warning-soft: #fff4d6;
+  --color-warning-ink: #7a4b00;
+
+  --color-surface: #ffffff;
+  --color-surface-glass: rgba(255, 255, 255, 0.8);
+  --color-surface-faint: rgba(255, 255, 255, 0.55);
+  --color-field: #f4f7ff;
+  --color-field-line: #d5e2ff;
+  --color-field-edge: #c3d4f7;
+  --color-badge: #ffe3ef;
+  --color-badge-ink: #7a1f48;
+
+  --color-sky-top: #8fd0ff;
+  --color-sky-mid: #cdebff;
+  --color-sky-bottom: #ffe1ef;
+  --color-cloud: #ffffff;
+  --color-block-light: rgba(255, 255, 255, 0.25);
+  --color-block-shade: rgba(0, 0, 0, 0.12);
+  --color-logo-shade: rgba(43, 33, 64, 0.12);
+  --color-grass: #7ed36b;
+  --color-dirt: #c68a55;
+  --color-dirt-deep: #a86f40;
+  --color-dirt-deepest: #8c5a33;
+  /* The flat background baked into the Miu review renders; tiles behind them use it or a tint. */
+  --color-render-bg: #eaf3ff;
+  --color-tile-1: #ffd6e7;
+  --color-tile-2: #d6ecff;
+  --color-tile-3: #e8ddff;
+
+  --font-display: 'Baloo 2', system-ui, sans-serif;
+  --font-body: 'Nunito', system-ui, sans-serif;
+  --text-sm: 0.9375rem;
+  --text-body: 1.125rem;
+  --text-lg: 1.375rem;
+  --text-xl: 1.75rem;
+  --text-title: clamp(2rem, 4vw, 2.5rem);
+  --text-hero: clamp(3rem, 7vw, 4.75rem);
+
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+
+  --radius-pill: 999px;
+  --radius-panel: 2rem;
+  --radius-tile: 1.75rem;
+  --radius-field: 1.125rem;
+  --radius-key: 1.5rem;
+
+  --shadow-panel: 0 10px 0 rgba(43, 33, 64, 0.08), 0 24px 48px rgba(47, 96, 170, 0.22);
+  --shadow-tile: 0 8px 0 rgba(43, 33, 64, 0.08);
+  --shadow-primary: 0 6px 0 var(--color-primary-edge), 0 12px 20px rgba(168, 35, 90, 0.28);
+  --shadow-secondary: 0 5px 0 var(--color-secondary-edge);
+  --shadow-key: 0 5px 0 var(--color-field-edge);
+  --shadow-island: drop-shadow(0 18px 18px rgba(47, 96, 170, 0.25));
+  --shadow-label: 0 4px 12px rgba(43, 33, 64, 0.2);
+  --focus-ring: 0 0 0 4px var(--color-surface), 0 0 0 8px var(--color-secondary);
+
+  --z-hud: 4;
+  --z-overlay: 6;
+
+  --duration-press: 150ms;
+
+  /* Older names still read by the game HUD (src/game/game.css). */
+  --ink: var(--color-ink);
+  --accent: var(--color-primary);
+  --accent-ink: var(--color-on-primary);
+  --surface: var(--color-sky-mid);
+}

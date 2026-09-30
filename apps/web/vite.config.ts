@@ -2,6 +2,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import react from '@vitejs/plugin-react';
 import { defineConfig, type Plugin } from 'vite';
+import { UI_ART_PATHS } from './src/ui/kit/ui-art.ts';
 import { repoAssets } from './vite-repo-assets.ts';
 
 const APP_DIR = path.dirname(fileURLToPath(import.meta.url));
@@ -41,7 +42,7 @@ const publicHosts = (process.env.MIU_PUBLIC_HOSTS ?? '')
   .filter(Boolean);
 
 export default defineConfig({
-  plugins: [react(), contentSecurityPolicy(), repoAssets(ASSETS_DIR, APP_DIR)],
+  plugins: [react(), contentSecurityPolicy(), repoAssets(ASSETS_DIR, APP_DIR, UI_ART_PATHS)],
   publicDir: false,
   server: { proxy: apiProxy, allowedHosts: publicHosts },
   preview: { proxy: apiProxy, allowedHosts: publicHosts },

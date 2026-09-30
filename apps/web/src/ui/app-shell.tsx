@@ -5,25 +5,34 @@ import { AccountProvider, useAccount } from './account/account-context';
 import { ConsentScreen } from './account/consent-screen';
 import { ParentAreaScreen, ProfilePickerScreen } from './account/profile-screens';
 import { LoginScreen, RegisterScreen, SetPinScreen } from './account/sign-in-screens';
+import { Logo, MiuOnIsland, SkyScene } from './kit/sky-scene';
 // three.js is only needed on /play: keep it out of the sign-in and profile bundle.
 const PlayScreen = lazy(() => import('./play/play-screen').then((m) => ({ default: m.PlayScreen })));
 
 function Loading() {
   return (
-    <main className="shell" data-id="shell-loading">
-      <p role="status">Đang tải…</p>
-    </main>
+    <SkyScene>
+      <main className="scene-content" data-id="shell-loading">
+        <MiuOnIsland pose="idle" size="10rem" />
+        <p role="status" className="tagline">
+          Đang tải…
+        </p>
+      </main>
+    </SkyScene>
   );
 }
 
 function ServerDown() {
   return (
-    <main className="shell" data-id="shell-server-down">
-      <h1>Miu World</h1>
-      <p role="alert" className="error">
-        Không kết nối được máy chủ. Thử tải lại trang nhé.
-      </p>
-    </main>
+    <SkyScene>
+      <main className="scene-content" data-id="shell-server-down">
+        <h1 className="visually-hidden">Miu World</h1>
+        <Logo />
+        <p role="alert" className="error">
+          Không kết nối được máy chủ. Thử tải lại trang nhé.
+        </p>
+      </main>
+    </SkyScene>
   );
 }
 

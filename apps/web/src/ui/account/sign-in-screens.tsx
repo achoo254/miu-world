@@ -1,8 +1,12 @@
-// NEW SCREEN (Master Plan §6, Tài khoản): đăng nhập / tạo tài khoản phụ huynh bằng Google, đặt PIN lần đầu. Chưa có mock.
+// NEW SCREEN (Master Plan §6, Tài khoản): đăng nhập / tạo tài khoản phụ huynh bằng Google, đặt PIN lần đầu.
+// Chưa có mock riêng; theo visual language M1–M3, hướng A (đảo mây kẹo hồng).
 import { useState } from 'react';
-import { useNavigate, useSearchParams } from 'react-router';
+import { Link, useNavigate, useSearchParams } from 'react-router';
 import { MeResponse, ParentPin } from '@miu/schema/account';
 import { api } from '../api-client';
+import { Icon } from '../kit/art';
+import { buttonClass } from '../kit/button';
+import { SkyScene } from '../kit/sky-scene';
 import { useAccount } from './account-context';
 import { useSubmit } from './use-submit';
 
@@ -17,30 +21,43 @@ const CALLBACK_ERRORS: Record<string, string> = {
   'google-reauth': 'Cần nhập lại mật khẩu Google để mở khóa PIN. Thử lại nhé.',
 };
 
-function GoogleSignIn({ title, hint, dataId }: { title: string; hint: string; dataId: string }) {
+function GoogleSignIn({ title, hint, dataId, switchTo }: { title: string; hint: string; dataId: string; switchTo: { text: string; label: string; to: string } }) {
   const [params] = useSearchParams();
   const error = params.get('error');
   return (
-    <main className="shell" data-id={dataId}>
-      <h1>{title}</h1>
-      <p className="hint">{hint}</p>
-      <section className="card form">
+    <SkyScene hero>
+      <main className="panel" data-id={dataId}>
+        <h1>{title}</h1>
+        <p className="hint">{hint}</p>
         {error ? (
           <p role="alert" className="error">
             {CALLBACK_ERRORS[error] ?? CALLBACK_ERRORS.google}
           </p>
         ) : null}
-        <a className="button-link google" href={GOOGLE_SIGN_IN} data-id={`${dataId}-google`}>
+        <a className={buttonClass('primary', { block: true })} href={GOOGLE_SIGN_IN} data-id={`${dataId}-google`}>
           Đăng nhập bằng Google
         </a>
-        <p className="hint">Chúng tôi chỉ nhận email đã xác minh của tài khoản Google, không nhận tên, ảnh hay danh bạ.</p>
-      </section>
-    </main>
+        <p className="note">
+          <Icon name="heart" size={28} />
+          Chúng tôi chỉ nhận email đã xác minh của tài khoản Google, không nhận tên, ảnh hay danh bạ.
+        </p>
+        <p className="hint">
+          {switchTo.text} <Link to={switchTo.to}>{switchTo.label}</Link>
+        </p>
+      </main>
+    </SkyScene>
   );
 }
 
 export function LoginScreen() {
-  return <GoogleSignIn dataId="login" title="Đăng nhập phụ huynh" hint="Phụ huynh là chủ tài khoản; bé chơi bằng hồ sơ do phụ huynh tạo." />;
+  return (
+    <GoogleSignIn
+      dataId="login"
+      title="Đăng nhập phụ huynh"
+      hint="Phụ huynh là chủ tài khoản; bé chơi bằng hồ sơ do phụ huynh tạo."
+      switchTo={{ text: 'Lần đầu dùng Miu World?', label: 'Tạo tài khoản phụ huynh', to: '/register' }}
+    />
+  );
 }
 
 export function RegisterScreen() {
@@ -49,6 +66,7 @@ export function RegisterScreen() {
       dataId="register"
       title="Tạo tài khoản phụ huynh"
       hint="Dùng tài khoản Google của phụ huynh. Lần đầu đăng nhập, bạn đặt mã PIN để khóa khu phụ huynh."
+      switchTo={{ text: 'Đã có tài khoản?', label: 'Đăng nhập', to: '/login' }}
     />
   );
 }
@@ -66,40 +84,45 @@ export function SetPinScreen() {
   });
   const clientError = !ParentPin.safeParse(pin).success ? 'Mã PIN gồm 4 đến 6 chữ số.' : pin !== pinAgain ? 'Hai lần nhập mã PIN chưa khớp.' : null;
   return (
-    <main className="shell" data-id="set-pin">
-      <h1>Đặt mã PIN phụ huynh</h1>
-      <p className="hint">Mã PIN khóa khu phụ huynh (tạo, đổi tên, xóa hồ sơ của bé). Bé chơi không cần mã này.</p>
-      <form
-        className="card form"
-        onSubmit={(e) => {
-          setTouched(true);
-          if (clientError) {
-            e.preventDefault();
-            return;
-          }
-          void form.onSubmit(e);
-        }}
-      >
-        <label>
-          Mã PIN (4–6 số)
-          <input data-id="set-pin-pin" type="password" inputMode="numeric" autoComplete="off" value={pin} onChange={(e) => setPin(e.target.value)} />
-        </label>
-        <label>
-          Nhập lại mã PIN
-          <input data-id="set-pin-again" type="password" inputMode="numeric" autoComplete="off" value={pinAgain} onChange={(e) => setPinAgain(e.target.value)} />
-        </label>
-        {touched && clientError ? <p role="alert" className="error">{clientError}</p> : null}
-        {form.error ? <p role="alert" className="error">{form.error}</p> : null}
-        <button data-id="set-pin-submit" type="submit" disabled={form.busy}>
-          Lưu mã PIN
-        </button>
-        <p className="hint">
-          Mã PIN chỉ đặt được trong 15 phút sau khi đăng nhập. Quá thời gian?{' '}
-          <a href={GOOGLE_SIGN_IN} data-id="set-pin-relogin">
-            Đăng nhập lại bằng Google
-          </a>
-        </p>
-      </form>
-    </main>
+    <SkyScene hero>
+      <main className="panel" data-id="set-pin">
+        <div className="panel-title">
+          <Icon name="key" size={44} />
+          <h1>Đặt mã PIN phụ huynh</h1>
+        </div>
+        <p className="hint">Mã PIN khóa khu phụ huynh (tạo, đổi tên, xóa hồ sơ của bé). Bé chơi không cần mã này.</p>
+        <form
+          className="form"
+          onSubmit={(e) => {
+            setTouched(true);
+            if (clientError) {
+              e.preventDefault();
+              return;
+            }
+            void form.onSubmit(e);
+          }}
+        >
+          <label className="field-label">
+            Mã PIN (4–6 số)
+            <input className="pin-input" data-id="set-pin-pin" type="password" inputMode="numeric" autoComplete="off" value={pin} onChange={(e) => setPin(e.target.value)} />
+          </label>
+          <label className="field-label">
+            Nhập lại mã PIN
+            <input className="pin-input" data-id="set-pin-again" type="password" inputMode="numeric" autoComplete="off" value={pinAgain} onChange={(e) => setPinAgain(e.target.value)} />
+          </label>
+          {touched && clientError ? <p role="alert" className="error">{clientError}</p> : null}
+          {form.error ? <p role="alert" className="error">{form.error}</p> : null}
+          <button className={buttonClass('primary', { block: true })} data-id="set-pin-submit" type="submit" disabled={form.busy}>
+            Lưu mã PIN
+          </button>
+          <p className="hint">
+            Mã PIN chỉ đặt được trong 15 phút sau khi đăng nhập. Quá thời gian?{' '}
+            <a href={GOOGLE_SIGN_IN} data-id="set-pin-relogin">
+              Đăng nhập lại bằng Google
+            </a>
+          </p>
+        </form>
+      </main>
+    </SkyScene>
   );
 }

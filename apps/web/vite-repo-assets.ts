@@ -51,12 +51,13 @@ export async function glbDependencies(assetsDir: string, rel: string): Promise<s
 }
 
 /**
- * The runtime set: manifest, generated groups, self-hosted fonts, and every model the maps place
- * (plus the textures those models reference). Everything else in the manifest stays out of `dist/`.
+ * The runtime set: manifest, generated groups, self-hosted fonts, the files the React UI shows
+ * (`uiPaths`), and every model the maps place (plus the textures those models reference).
+ * Everything else in the manifest stays out of `dist/`.
  */
-export async function runtimeAssetPaths(assetsDir: string, manifestPaths: readonly string[]): Promise<string[]> {
+export async function runtimeAssetPaths(assetsDir: string, manifestPaths: readonly string[], uiPaths: readonly string[] = []): Promise<string[]> {
   const allowed = new Set(manifestPaths);
-  const wanted = new Set<string>(['manifest.json']);
+  const wanted = new Set<string>(['manifest.json', ...uiPaths]);
   for (const p of manifestPaths) {
     if (SHIPPED_PREFIXES.some((prefix) => p.startsWith(prefix))) wanted.add(p);
     if (p.startsWith('packs/font-') && p.endsWith('.woff2')) wanted.add(p);
@@ -81,7 +82,7 @@ export async function runtimeAssetPaths(assetsDir: string, manifestPaths: readon
   return [...wanted].sort();
 }
 
-export function repoAssets(assetsDir: string, appDir: string): Plugin {
+export function repoAssets(assetsDir: string, appDir: string, uiPaths: readonly string[] = []): Plugin {
   const manifestPaths = createManifestReader(assetsDir);
   const serve = async (url: string | undefined, res: ServerResponse, next: () => void): Promise<void> => {
     if (!url?.startsWith(ASSET_PREFIX)) return next();
@@ -152,7 +153,7 @@ export function repoAssets(assetsDir: string, appDir: string): Plugin {
     },
     async writeBundle(options) {
       const outDir = options.dir ?? path.join(appDir, 'dist');
-      const shipped = await runtimeAssetPaths(assetsDir, await manifestPaths());
+      const shipped = await runtimeAssetPaths(assetsDir, await manifestPaths(), uiPaths);
       let bytes = 0;
       for (const rel of shipped) {
         const target = path.join(outDir, ASSET_PREFIX, rel);
