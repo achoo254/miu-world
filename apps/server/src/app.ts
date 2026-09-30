@@ -1,6 +1,7 @@
 import express, { type ErrorRequestHandler } from 'express';
 import helmet from 'helmet';
 import type { HealthResponse } from '@miu/schema/health';
+import type { Worksheet } from '@miu/schema/worksheet';
 import { loadSession } from './auth/auth-context';
 import { authRoutes } from './auth/auth-routes';
 import { googleAuthRoutes } from './auth/google-auth-routes';
@@ -13,12 +14,16 @@ import { loadContentCatalog, type ContentCatalog } from './content/content-catal
 import type { Db } from './db/client';
 import { HttpError } from './http-error';
 import { questRoutes } from './quest/quest-routes';
+import { loadWorksheets } from './worksheet/worksheet-builder';
+import { worksheetRoutes } from './worksheet/worksheet-routes';
 
 export interface AppDeps {
   config: ServerConfig;
   db: Db;
   /** Defaults to the repo `content/` directory. */
   content?: ContentCatalog;
+  /** Printable worksheets by lesson id; defaults to the ones built from `content/curriculum`. */
+  worksheets?: ReadonlyMap<string, Worksheet>;
   /** Injectable for tests (session expiry, parent-gate window). */
   clock?: () => Date;
   /** Google token endpoint call; tests inject a fake so Google is never contacted. */
@@ -50,7 +55,7 @@ const errorHandler: ErrorRequestHandler = (err: unknown, _req, res, _next) => {
 };
 
 /** Builds the Express app without listening, so tests can drive it through supertest. */
-export function createApp({ config, db, content = loadContentCatalog(), clock = () => new Date(), fetchImpl }: AppDeps): express.Express {
+export function createApp({ config, db, content = loadContentCatalog(), worksheets = loadWorksheets(), clock = () => new Date(), fetchImpl }: AppDeps): express.Express {
   const app = express();
   app.disable('x-powered-by');
   // The API listens on loopback only and is reached through the web dev/preview proxy (or a reverse
@@ -71,6 +76,7 @@ export function createApp({ config, db, content = loadContentCatalog(), clock = 
   api.use(childProfileRoutes({ db, content, clock }));
   api.use(characterRoutes({ db, content }));
   api.use(questRoutes({ db, content, clock }));
+  api.use(worksheetRoutes({ worksheets, clock }));
   app.use('/api', api);
 
   app.use((_req, res) => {

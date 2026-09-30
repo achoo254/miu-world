@@ -6,12 +6,15 @@ import { createApp } from '../src/app';
 import { loadContentCatalog } from '../src/content/content-catalog';
 import { loadConfig, type ServerConfig } from '../src/config';
 import { createTestDb, type Db, type DbHandle } from '../src/db/client';
+import { loadWorksheets } from '../src/worksheet/worksheet-builder';
 
 export const ORIGIN = 'http://localhost:5173';
 /** Low scrypt cost keeps the suite fast; production cost has its own test in secret-hashing.test.ts. */
 const FAST_SCRYPT = { logN: 10, r: 8, p: 1 };
 /** Real content with fixture quests in place of the shipped ones, so tests do not change when content does. */
 export const FIXTURE_CONTENT = loadContentCatalog({ questDir: fileURLToPath(new URL('./fixtures/quests', import.meta.url)) });
+/** Worksheets from a small fixture inventory, for the same reason. */
+export const FIXTURE_WORKSHEETS = loadWorksheets(fileURLToPath(new URL('./fixtures/curriculum', import.meta.url)));
 
 export type Agent = ReturnType<typeof request.agent>;
 
@@ -37,7 +40,7 @@ export async function createTestApp(
   // Every test agent shares one loopback IP, so the per-IP register cap is lifted; its own test lowers it.
   const config = { ...loadConfig(env), scrypt: FAST_SCRYPT, registerLimitPerHour: 10_000, googleLimitPer15Min: 10_000, passwordLogin: true, ...overrides };
   let offset = 0;
-  const app = createApp({ config, db: handle.db, content, clock: () => new Date(Date.now() + offset), fetchImpl });
+  const app = createApp({ config, db: handle.db, content, worksheets: FIXTURE_WORKSHEETS, clock: () => new Date(Date.now() + offset), fetchImpl });
   return {
     app,
     db: handle.db,

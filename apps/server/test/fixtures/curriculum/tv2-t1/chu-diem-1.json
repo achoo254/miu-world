@@ -1,0 +1,133 @@
+{
+  "book": "tv2-t1",
+  "id": "tv2-t1-chu-diem-1",
+  "number": 1,
+  "title": "Em lớn lên từng ngày",
+  "pageItems": [],
+  "lessons": [
+    {
+      "id": "tv2-t1-b02",
+      "number": 2,
+      "week": 1,
+      "title": "Bài 2. Ngày hôm qua đâu rồi?",
+      "pages": [
+        13,
+        16
+      ],
+      "sections": [
+        {
+          "id": "tv2-t1-b02-doc",
+          "kind": "doc",
+          "pages": [
+            13,
+            14
+          ],
+          "text": {
+            "title": "Ngày hôm qua đâu rồi?",
+            "author": "Bế Kiến Quốc",
+            "body": "Em cầm tờ lịch cũ:\n– Ngày hôm qua đâu rồi?"
+          },
+          "items": [
+            {
+              "id": "tv2-t1-b02-doc-1",
+              "page": 14,
+              "prompt": "Bạn nhỏ hỏi bố điều gì?",
+              "exerciseType": "doc-hieu",
+              "readConfidence": "high",
+              "answer": {
+                "open": true
+              }
+            }
+          ]
+        },
+        {
+          "id": "tv2-t1-b02-nghe-viet",
+          "kind": "nghe-viet",
+          "pages": [
+            14,
+            14
+          ],
+          "text": {
+            "title": "Ngày hôm qua đâu rồi?",
+            "body": "Em cầm tờ lịch cũ"
+          },
+          "items": [
+            {
+              "id": "tv2-t1-b02-nghe-viet-1",
+              "page": 14,
+              "prompt": "Nghe – viết: Ngày hôm qua đâu rồi? (2 khổ thơ đầu)",
+              "exerciseType": "nghe-viet",
+              "readConfidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "tv2-t1-b02-viet-doan",
+          "kind": "viet-doan",
+          "pages": [
+            16,
+            16
+          ],
+          "items": [
+            {
+              "id": "tv2-t1-b02-viet-doan-1",
+              "page": 16,
+              "prompt": "Viết 2 – 3 câu giới thiệu bản thân.\nG: Em tên là gì?\nG: Em học lớp mấy?",
+              "exerciseType": "viet-doan",
+              "readConfidence": "high",
+              "answer": {
+                "open": true
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tv2-t1-b03",
+      "number": 3,
+      "week": 2,
+      "title": "Bài 3. Niềm vui của Bi và Bống",
+      "pages": [
+        17,
+        19
+      ],
+      "sections": [
+        {
+          "id": "tv2-t1-b03-viet-chu-hoa",
+          "kind": "viet-chu-hoa",
+          "pages": [
+            19,
+            19
+          ],
+          "items": [
+            {
+              "id": "tv2-t1-b03-viet-chu-hoa-1",
+              "page": 19,
+              "prompt": "Viết chữ hoa Ă, Â.",
+              "exerciseType": "viet-chu",
+              "readConfidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "tv2-t1-b03-viet-ung-dung",
+          "kind": "viet-ung-dung",
+          "pages": [
+            19,
+            19
+          ],
+          "items": [
+            {
+              "id": "tv2-t1-b03-viet-ung-dung-1",
+              "page": 19,
+              "prompt": "Ăn chậm nhai kĩ.",
+              "exerciseType": "viet-chu",
+              "readConfidence": "high"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

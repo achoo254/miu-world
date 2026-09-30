@@ -1,0 +1,84 @@
+{
+  "book": "toan2-t1",
+  "id": "toan2-t1-chu-de-3",
+  "number": 3,
+  "title": "Làm quen với khối lượng, dung tích",
+  "pageItems": [],
+  "lessons": [
+    {
+      "id": "toan2-t1-b17",
+      "number": 17,
+      "title": "Bài 17. Thực hành và trải nghiệm với các đơn vị ki-lô-gam, lít",
+      "pages": [
+        66,
+        69
+      ],
+      "sections": [
+        {
+          "id": "toan2-t1-b17-hoat-dong",
+          "kind": "hoat-dong",
+          "pages": [
+            66,
+            67
+          ],
+          "items": [
+            {
+              "id": "toan2-t1-b17-hoat-dong-1",
+              "page": 66,
+              "prompt": "Cân một số đồ vật trong nhà.",
+              "exerciseType": "do-luong-thuc-hanh",
+              "readConfidence": "high",
+              "media": [
+                "cân đồng hồ",
+                "túi gạo"
+              ]
+            },
+            {
+              "id": "toan2-t1-b17-hoat-dong-2",
+              "page": 67,
+              "prompt": "5 kg + 3 kg = ? kg",
+              "exerciseType": "tinh",
+              "readConfidence": "high",
+              "expression": "5 + 3",
+              "answer": {
+                "number": 8
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "toan2-t1-b18",
+      "number": 18,
+      "title": "Bài 18. Luyện tập chung",
+      "pages": [
+        70,
+        71
+      ],
+      "sections": [
+        {
+          "id": "toan2-t1-b18-luyen-tap",
+          "kind": "luyen-tap",
+          "pages": [
+            70,
+            71
+          ],
+          "items": [
+            {
+              "id": "toan2-t1-b18-luyen-tap-1",
+              "page": 70,
+              "prompt": "12 kg - 5 kg = ? kg",
+              "exerciseType": "tinh",
+              "readConfidence": "high",
+              "expression": "12 - 5",
+              "answer": {
+                "number": 7
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,41 +1,19 @@
 // Textbook inventory checks (content/curriculum/<book>/). Each file is validated on its own by the schema;
 // this adds what needs the whole book: the table of contents, page coverage and reading confidence.
 // While a book is `draft` the completeness checks only warn, so the inventory can land one topic at a time.
-import { existsSync, readFileSync, readdirSync } from 'node:fs';
-import path from 'node:path';
 import { pathToFileURL } from 'node:url';
-import { BOOK_IDS, CurriculumBook, CurriculumUnit, type BookId, type CurriculumItem, type CurriculumLesson } from '../../packages/schema/src/curriculum';
-import type { z } from 'zod';
-import { CONTENT_DIR } from '../../apps/server/src/content/content-catalog';
+import { BOOK_IDS, type BookId, type CurriculumItem, type CurriculumLesson, type CurriculumUnit } from '../../packages/schema/src/curriculum';
+import { CURRICULUM_DIR, readCurriculum, type LoadedBook } from '../../apps/server/src/worksheet/curriculum-books';
 
-export const CURRICULUM_DIR = path.join(CONTENT_DIR, 'curriculum');
+export { CURRICULUM_DIR, type LoadedBook };
 /** Folders `content:check` hands to this checker (each holds the `.json` files directly inside it). */
 export const CURRICULUM_FOLDERS = BOOK_IDS.map((id) => `curriculum/${id}/`);
-
-export interface LoadedBook {
-  book: CurriculumBook;
-  units: CurriculumUnit[];
-}
 
 export interface CurriculumReport {
   issues: string[];
   /** Completeness gaps of a book still marked `draft`; they become issues once it is `complete`. */
   warnings: string[];
   books: LoadedBook[];
-}
-
-function parseFile<S extends z.ZodType>(schema: S, file: string, issues: string[]): z.infer<S> | null {
-  let raw: unknown;
-  try {
-    raw = JSON.parse(readFileSync(file, 'utf8'));
-  } catch (error) {
-    issues.push(`${file}: ${error instanceof Error ? error.message : String(error)}`);
-    return null;
-  }
-  const parsed = schema.safeParse(raw);
-  if (parsed.success) return parsed.data;
-  issues.push(...parsed.error.issues.map((i) => `${file}: ${i.path.length > 0 ? `${i.path.join('.')}: ` : ''}${i.message}`));
-  return null;
 }
 
 const lessonsOf = (units: readonly CurriculumUnit[]): CurriculumLesson[] => units.flatMap((u) => u.lessons);
@@ -124,31 +102,12 @@ function completenessGaps({ book, units }: LoadedBook): string[] {
   return gaps;
 }
 
-function jsonFiles(dir: string): string[] {
-  return readdirSync(dir)
-    .filter((f) => f.endsWith('.json'))
-    .sort()
-    .map((f) => path.join(dir, f));
-}
-
 export function checkCurriculum(dir: string = CURRICULUM_DIR): CurriculumReport {
-  const report: CurriculumReport = { issues: [], warnings: [], books: [] };
-  for (const id of BOOK_IDS) {
-    const folder = path.join(dir, id);
-    if (!existsSync(folder)) continue;
-    const book = parseFile(CurriculumBook, path.join(folder, 'book.json'), report.issues);
-    if (!book) continue;
-    if (book.id !== id) report.issues.push(`${folder}/book.json: id ${book.id} does not match its folder`);
-    const units: CurriculumUnit[] = [];
-    for (const file of jsonFiles(folder).filter((f) => path.basename(f) !== 'book.json')) {
-      const unit = parseFile(CurriculumUnit, file, report.issues);
-      if (unit && unit.book !== id) report.issues.push(`${file}: belongs to ${unit.book}, not ${id}`);
-      else if (unit) units.push(unit);
-    }
-    const loaded = { book, units };
-    report.books.push(loaded);
+  const { books, issues } = readCurriculum(dir);
+  const report: CurriculumReport = { issues: [...issues], warnings: [], books };
+  for (const loaded of books) {
     report.issues.push(...consistencyIssues(loaded));
-    (book.status === 'complete' ? report.issues : report.warnings).push(...completenessGaps(loaded));
+    (loaded.book.status === 'complete' ? report.issues : report.warnings).push(...completenessGaps(loaded));
   }
   return report;
 }
