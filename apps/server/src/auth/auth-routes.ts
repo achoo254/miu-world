@@ -1,13 +1,13 @@
 import { randomUUID } from 'node:crypto';
 import { and, eq, isNull, lt, sql } from 'drizzle-orm';
 import { Router, type Request, type RequestHandler } from 'express';
-import { ipKeyGenerator, rateLimit } from 'express-rate-limit';
 import { ConsentRequest, LoginRequest, ParentGateUnlockRequest, RegisterRequest, SetPinRequest } from '@miu/schema/account';
 import type { ServerConfig } from '../config';
 import type { ContentCatalog } from '../content/content-catalog';
 import type { Db } from '../db/client';
 import { consents, parents, sessions } from '../db/schema';
 import { HttpError, parseInput } from '../http-error';
+import { ipKey, limiter } from '../rate-limit';
 import { accountSummary } from './account-summary';
 import { PIN_MAX_FAILS, auth, optionalAuth, requireParent, requireParentGate, type AuthContext } from './auth-context';
 import { decoyHash, hashSecret, verifySecret } from './secret-hashing';
@@ -23,21 +23,6 @@ export interface AuthRouteDeps {
 }
 
 const FIFTEEN_MIN = 15 * 60 * 1000;
-
-function limiter(windowMs: number, limit: number, key: (req: Request) => string) {
-  return rateLimit({
-    windowMs,
-    limit,
-    standardHeaders: 'draft-8',
-    legacyHeaders: false,
-    keyGenerator: key,
-    handler: (_req, res) => {
-      res.status(429).json({ error: 'rate-limited' });
-    },
-  });
-}
-
-const ipKey = (req: Request): string => ipKeyGenerator(req.ip ?? 'unknown');
 
 function bodyEmail(req: Request): string {
   const body: unknown = req.body;

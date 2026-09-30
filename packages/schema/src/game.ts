@@ -27,8 +27,24 @@ export const QuestProgressDto = z.object({
   questId: ContentId,
   completedSteps: z.array(ContentId),
   completed: z.boolean(),
+  /** Targets found so far, per search step. */
+  found: z.record(ContentId, z.array(ContentId)),
+  /** 1–3, fixed when the quest was finished; null before that. */
+  stars: z.number().int().min(1).max(3).nullable(),
 });
 export type QuestProgressDto = z.infer<typeof QuestProgressDto>;
+
+const SkillLevel = z.object({ skillId: ContentId, name: z.string(), xp: z.number().int().min(0), level: z.number().int().min(1) });
+
+/** Subject level aggregates its skills (Master Plan §5): the summed skill XP on the skill curve. */
+export const SubjectProgress = z.object({
+  subjectId: ContentId,
+  name: z.string(),
+  xp: z.number().int().min(0),
+  level: z.number().int().min(1),
+  skills: z.array(SkillLevel),
+});
+export type SubjectProgress = z.infer<typeof SubjectProgress>;
 
 export const ProgressResponse = z.object({
   quests: z.array(QuestProgressDto),
@@ -39,6 +55,7 @@ export const ProgressResponse = z.object({
   coins: z.number().int().min(0),
   skillXp: Counts,
   items: Counts,
+  subjects: z.array(SubjectProgress),
 });
 export type ProgressResponse = z.infer<typeof ProgressResponse>;
 
@@ -49,12 +66,29 @@ export const GrantedReward = z.object({
   items: Counts,
 });
 
+/** What finishing a quest changed; the client shows it as is (stars, Level Up, Skill Up, unlocks). */
+export const QuestCompletion = z.object({
+  stars: z.number().int().min(1).max(3),
+  xpAwarded: z.number().int().min(0),
+  levelBefore: z.number().int().min(1),
+  levelAfter: z.number().int().min(1),
+  /** Quests that became playable (or visible as coming soon) because this one finished. */
+  unlocked: z.array(ContentId),
+  /** Skills this quest rewarded, with their level before and after. */
+  skillLevels: z.array(z.object({ skillId: ContentId, levelBefore: z.number().int().min(1), levelAfter: z.number().int().min(1) })),
+});
+export type QuestCompletion = z.infer<typeof QuestCompletion>;
+
 export const StepCompleteResponse = z.object({
+  /** False when a learning step got a wrong answer: nothing advanced, try again as often as needed. */
+  correct: z.boolean(),
   quest: QuestProgressDto,
   /** Reward paid by this step (only the last step pays); on a repeat, the reward recorded the first time. */
   reward: GrantedReward.nullable(),
   /** True when the step had already been recorded: nothing new was granted. */
   repeated: z.boolean(),
+  /** Set only by the call that finished the quest. */
+  completion: QuestCompletion.nullable(),
   progress: ProgressResponse,
 });
 export type StepCompleteResponse = z.infer<typeof StepCompleteResponse>;
@@ -96,3 +130,24 @@ export const QuestView = z.discriminatedUnion('status', [
   z.object({ id: ContentId, region: ContentId, chapter: z.number().int().min(1), title: z.string(), status: z.literal('stub') }),
 ]);
 export type QuestView = z.infer<typeof QuestView>;
+
+export const QuestState = z.enum(['locked', 'open', 'in-progress', 'completed']);
+export type QuestState = z.infer<typeof QuestState>;
+
+export const QuestSummary = z.object({ quest: QuestView, state: QuestState, progress: QuestProgressDto });
+export type QuestSummary = z.infer<typeof QuestSummary>;
+
+export const QuestListResponse = z.object({ quests: z.array(QuestSummary) });
+export type QuestListResponse = z.infer<typeof QuestListResponse>;
+
+export const SupportLayer = z.enum(['guide', 'hint', 'answer']);
+export type SupportLayer = z.infer<typeof SupportLayer>;
+export const SupportRequest = z.object({ layer: SupportLayer });
+
+/** One support layer, handed out only on request so the server can count it. */
+export const SupportResponse = z.discriminatedUnion('layer', [
+  z.object({ layer: z.literal('guide'), steps: z.array(z.string()) }),
+  z.object({ layer: z.literal('hint'), text: z.string() }),
+  z.object({ layer: z.literal('answer'), text: z.string(), explanation: z.string() }),
+]);
+export type SupportResponse = z.infer<typeof SupportResponse>;

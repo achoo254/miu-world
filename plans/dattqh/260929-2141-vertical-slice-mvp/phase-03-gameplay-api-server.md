@@ -1,7 +1,7 @@
 ---
 phase: 3
 title: "API gameplay: chấm thử thách, hỗ trợ học, level, mở khóa"
-status: pending
+status: completed
 priority: P1
 effort: "M"
 dependencies: [2]
@@ -38,6 +38,17 @@ Server là nguồn sự thật cho mọi kết quả thử thách, thưởng, le
 
 ## Verification
 - `pnpm vitest run apps/server`; `pnpm --filter @miu/server exec drizzle-kit check`; CI integration Postgres xanh
+
+## Kết quả (2026-09-30)
+Xong. Gate: `assets:check`, `content:check`, `test` (232 test), `typecheck`, `lint`, `drizzle-kit check`, E2E setup/account/play (8/8) xanh; web build xanh. Simplifier đã gọn 4 file; reviewer độc lập: không có đường gian lận, IDOR, lộ đáp án hay lỗi transaction.
+
+Lệch so với spec, có chủ ý (Jev `vs_phase3_step_counters` = minimal, 0.62/0.43, escalate — dùng lựa chọn Jev theo ủy quyền; `plans/dattqh/reports/jev-260930-sgk-plan-decisions.md`):
+- `step_attempts` chỉ còn `wrong_count`, `answer_views` (bỏ `guide_views`, `hint_views` vì không dùng tính sao/XP); xóa bộ đếm của quest ngay khi chấm xong; sau khi xong không đếm nữa.
+- Xem Đáp án chỉ bị tính khi bước đang làm chưa giải (xem lại đáp án bước đã giải không trừ sao/XP); đếm trong cùng khóa dòng `quest_progress` với route hoàn thành.
+- Văn bản đồng ý draft-3 nói đúng: chỉ đếm sai và xem Đáp án, giảm một sao và 10% XP, xóa khi xong.
+- Thêm: `GET /api/quests` (lọc `?region=`), `GET /api/quests/:id`; `progress.subjects` (level Subject = tổng Skill XP trên `skill-curve.json`); test IDOR con trỏ giả cho endpoint mới.
+
+Test chập chờn khi máy tải nặng (có từ trước, không do phase này): `auth-routes.test.ts` (khóa PIN/rate limit) và thỉnh thoảng 503 `server-busy` từ hàng đợi hash trong test server.
 
 ## Risk
 - Brute force đáp án trắc nghiệm 4 lựa chọn là tầm thường: chấp nhận (không phải bí mật), rate limit chỉ để chống spam; thưởng vẫn một lần.

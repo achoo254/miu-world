@@ -175,6 +175,7 @@ describe('shipped account content', () => {
   it('marks the draft consent as needing legal review', () => {
     const doc = ConsentDocument.parse(load('legal/consent-vi.json'));
     expect(doc.requiresLegalReview).toBe(true);
-    expect(doc.version).toBe('draft-2');
+    expect(doc.version).toBe('draft-3');
+    expect(doc.paragraphs.join(' ')).toMatch(/không lưu nội dung câu trả lời/);
   });
 });

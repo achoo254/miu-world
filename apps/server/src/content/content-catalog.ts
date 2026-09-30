@@ -16,6 +16,10 @@ export interface ContentCatalog {
   /** Accessory id → slot; the character can wear only these, one per slot. */
   accessories: ReadonlyMap<string, string>;
   levelCurve: LevelCurve;
+  /** Skill XP → skill level; subjects use the same curve on their summed skill XP. */
+  skillCurve: LevelCurve;
+  /** Subject → skill tree (Master Plan §5), in catalogue order. */
+  subjects: SkillCatalog['subjects'];
   skillIds: ReadonlySet<string>;
   quests: ReadonlyMap<string, QuestDefinition>;
   /** Quest id → quests whose completion unlocks it. A quest nobody unlocks is open from the start. */
@@ -69,6 +73,8 @@ export function loadContentCatalog({ dir = CONTENT_DIR, questDir }: ContentOptio
     consent: readContentJson(ConsentDocument, path.join(dir, 'legal/consent-vi.json')),
     accessories,
     levelCurve: readContentJson(LevelCurve, path.join(dir, 'progression/level-curve.json')),
+    skillCurve: readContentJson(LevelCurve, path.join(dir, 'progression/skill-curve.json')),
+    subjects: catalog.subjects,
     skillIds,
     quests,
     unlockedBy,

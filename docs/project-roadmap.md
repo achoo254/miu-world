@@ -21,7 +21,7 @@ Chỉ ghi task đã bắt đầu; các task còn lại đang ở trạng thái c
 | #1 | Chốt quyết định còn mở (§15) | Hoàn thành (2026-09-29) | Master Plan §15 #3–#8, #16–#18 |
 | #2 | Sửa plan, `CLAUDE.md`, cấu trúc repo | Hoàn thành (2026-09-29) | `plans/dattqh/260929-1911-foundation-after-poc-gate/` |
 | #3 | Monorepo Vite + React / Express / Drizzle, CI (audit, Semgrep, Postgres 17, E2E) | Hoàn thành (2026-09-29, CI xanh) | như trên |
-| #7 | Tài khoản phụ huynh (Google OAuth), hồ sơ trẻ, cổng PIN, đồng ý (bản nháp draft-2) | Hoàn thành phần kỹ thuật; văn bản đồng ý chờ pháp chế | `plans/dattqh/reports/foundation-review-260929.md` |
+| #7 | Tài khoản phụ huynh (Google OAuth), hồ sơ trẻ, cổng PIN, đồng ý (bản nháp draft-3: thêm đếm hỗ trợ/số lần sai) | Hoàn thành phần kỹ thuật; văn bản đồng ý chờ pháp chế | `plans/dattqh/reports/foundation-review-260929.md` |
 | #8 | Data model + API nhân vật, tiến độ, thưởng tối thiểu | Hoàn thành (2026-09-29) | như trên |
 | #9, #12 | Miu chibi (biến thể A), phụ kiện co theo nhân vật, palette pastel ấm | Hoàn thành (duyệt bằng Jev theo ủy quyền, 2026-09-29) | `plans/dattqh/reports/jev-260929-foundation-review-decisions.md` |
 | #5 | Tìm nguồn asset + license gate | Hoàn thành (Đã qua gate review) | `plans/dattqh/260929-0842-asset-sourcing-and-voxel-poc/` |
@@ -57,5 +57,5 @@ Mã chỉ dùng trong plan và roadmap, không dùng trong code, tên test, comm
 - Triển khai server: staging đã chạy tại `miu-staging.hoandat.com` bằng bundle production (`pnpm --filter @miu/server bundle`), IP thật của khách đi đúng qua chuỗi proxy. Production (`miu.hoandat.com` trên .65) chưa dựng. Xem `docs/deployment-guide.md`.
 - Khi phụ kiện trở thành phần thưởng: `PUT /api/character` phải kiểm sở hữu qua túi đồ (hiện chỉ kiểm catalog).
 - Tách trang review/preview và ảnh review khỏi bản build phát hành (hiện build gồm cả ~5 MB ảnh review).
-- Xác minh ứng dụng Google OAuth (màn đồng ý, chính sách quyền riêng tư) và pháp chế duyệt văn bản đồng ý draft-2 — trước khi có người dùng thật.
+- Xác minh ứng dụng Google OAuth (màn đồng ý, chính sách quyền riêng tư) và pháp chế duyệt văn bản đồng ý draft-3 — trước khi có người dùng thật.
 - Đưa KayKit vào (chế độ tải tay đã hỗ trợ).

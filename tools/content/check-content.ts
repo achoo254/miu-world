@@ -13,6 +13,7 @@ const CATALOGUE_FILES = [
   'names/character-names.json',
   'legal/consent-vi.json',
   'progression/level-curve.json',
+  'progression/skill-curve.json',
   'accessories/',
   'quests/',
 ];

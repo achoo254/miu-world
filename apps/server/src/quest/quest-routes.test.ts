@@ -4,7 +4,7 @@ import path from 'node:path';
 import { eq, sql } from 'drizzle-orm';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import request from 'supertest';
-import { QuestStep } from '@miu/schema/content';
+import { QuestStep, type ActiveQuest } from '@miu/schema/content';
 import { createApp } from '../app';
 import { loadContentCatalog } from '../content/content-catalog';
 import { FIXTURE_CONTENT, ORIGIN, createTestApp, parentWithChild, type Agent, type TestApp } from '../../test/test-app';
@@ -31,8 +31,13 @@ const step = (agent: Agent, quest: string, stepId: string, body: unknown = {}) =
 const PLAY: Record<string, Array<[string, object]>> = {
   'quest-a': [['meet-vet', {}], ['find-letter', { target: 'clue-letter' }], ['solve-tree', { answer: { value: 5 } }]],
   'quest-b': [['open-gate', { target: 'gate-ch2' }], ['count-apples', { answer: { placed: ['apple-1', 'apple-3'] } }], ['solve-tree', { answer: { value: 8 } }]],
-  'quest-c': [['say-hello', {}], ['pick-flower', { target: 'flower' }], ['add-flowers', { answer: { value: 2 } }]],
+  'quest-c': [['say-hello', {}], ['pick-flower', { target: 'mushroom' }], ['pick-flower', { target: 'flower' }], ['add-flowers', { answer: { value: 2 } }]],
 };
+
+/** Plays the first `count` moves of a fixture quest. */
+async function playFirst(agent: Agent, quest: string, count: number): Promise<void> {
+  for (const [stepId, body] of (PLAY[quest] ?? []).slice(0, count)) await step(agent, quest, stepId, body).expect(200);
+}
 
 async function finish(agent: Agent, quest: string, extra: object = {}): Promise<request.Response> {
   let last: request.Response | undefined;
@@ -50,7 +55,15 @@ describe('quest progress and rewards (server is the source of truth)', () => {
     expect(last.body.reward).toEqual({ xp: 60, coin: 10, skillXp: { 'doc-hieu': 1 }, items: { 'la-than': 1 } });
     expect(last.body.progress).toMatchObject({ xp: 60, coins: 10, level: 1, skillXp: { 'doc-hieu': 1 }, items: { 'la-than': 1 } });
     const progress = await agent.get('/api/progress').expect(200);
-    expect(progress.body.quests).toEqual([{ questId: 'quest-a', completedSteps: ['meet-vet', 'find-letter', 'solve-tree'], completed: true }]);
+    expect(progress.body.quests).toEqual([
+      {
+        questId: 'quest-a',
+        completedSteps: ['meet-vet', 'find-letter', 'solve-tree'],
+        completed: true,
+        found: { 'find-letter': ['clue-letter'] },
+        stars: 3,
+      },
+    ]);
     expect((await agent.get('/api/inventory').expect(200)).body).toEqual({ items: [{ itemId: 'la-than', qty: 1 }] });
   });
 
@@ -61,20 +74,33 @@ describe('quest progress and rewards (server is the source of truth)', () => {
     expect(res.body.progress).toMatchObject({ xp: 5, coins: 0, items: {} });
   });
 
-  it('grades answers on the server: a wrong answer records nothing, the right one advances', async () => {
-    const { agent } = await playingChild();
-    await step(agent, 'quest-c', 'say-hello').expect(200);
-    await step(agent, 'quest-c', 'pick-flower', { target: 'flower' }).expect(200);
+  it('grades answers on the server: a wrong answer records only a count, the right one advances', async () => {
+    const { agent, childId } = await playingChild();
+    await playFirst(agent, 'quest-c', 3);
     await step(agent, 'quest-c', 'add-flowers').expect(400, { error: 'answer-required' });
-    await step(agent, 'quest-c', 'add-flowers', { answer: { value: 3 } }).expect(422, { error: 'wrong-answer' });
-    await step(agent, 'quest-c', 'add-flowers', { answer: { choice: 'a' } }).expect(422, { error: 'wrong-answer' });
+    const wrong = await step(agent, 'quest-c', 'add-flowers', { answer: { value: 3 } }).expect(200);
+    expect(wrong.body).toMatchObject({ correct: false, reward: null, completion: null, quest: { completed: false } });
+    await step(agent, 'quest-c', 'add-flowers', { answer: { choice: 'a' } }).expect(200, /"correct":false/);
     await step(agent, 'quest-c', 'add-flowers', { answer: { value: 'two' } }).expect(400, { error: 'invalid-step-input' });
     expect((await agent.get('/api/progress').expect(200)).body).toMatchObject({
       xp: 0,
       quests: [{ questId: 'quest-c', completedSteps: ['say-hello', 'pick-flower'], completed: false }],
     });
+    const [counts] = await app.db.select().from(t.stepAttempts).where(eq(t.stepAttempts.childId, childId));
+    expect(counts).toEqual({ childId, questId: 'quest-c', stepId: 'add-flowers', wrongCount: 2, answerViews: 0 });
     const res = await step(agent, 'quest-c', 'add-flowers', { answer: { value: 2 } }).expect(200);
-    expect(res.body).toMatchObject({ repeated: false, reward: { xp: 5 }, quest: { completed: true } });
+    expect(res.body).toMatchObject({ correct: true, repeated: false, reward: { xp: 5 }, quest: { completed: true } });
+  });
+
+  it('keeps search progress between calls: any order, finding one again changes nothing', async () => {
+    const { agent } = await playingChild();
+    await step(agent, 'quest-c', 'say-hello').expect(200);
+    const first = await step(agent, 'quest-c', 'pick-flower', { target: 'mushroom' }).expect(200);
+    expect(first.body.quest).toMatchObject({ completedSteps: ['say-hello'], found: { 'pick-flower': ['mushroom'] } });
+    const again = await step(agent, 'quest-c', 'pick-flower', { target: 'mushroom' }).expect(200);
+    expect(again.body.quest).toMatchObject({ completedSteps: ['say-hello'], found: { 'pick-flower': ['mushroom'] } });
+    const done = await step(agent, 'quest-c', 'pick-flower', { target: 'flower' }).expect(200);
+    expect(done.body.quest).toMatchObject({ completedSteps: ['say-hello', 'pick-flower'], found: { 'pick-flower': ['mushroom', 'flower'] } });
   });
 
   it('needs a known target for search steps', async () => {
@@ -83,6 +109,8 @@ describe('quest progress and rewards (server is the source of truth)', () => {
     await step(agent, 'quest-c', 'pick-flower').expect(400, { error: 'target-required' });
     await step(agent, 'quest-c', 'pick-flower', { target: 'dragon' }).expect(400, { error: 'unknown-target' });
     await step(agent, 'quest-c', 'pick-flower', { target: 'flower' }).expect(200);
+    await step(agent, 'quest-c', 'pick-flower', { target: 'mushroom' }).expect(200);
+    await step(agent, 'quest-c', 'add-flowers', { answer: { value: 2 } }).expect(200);
   });
 
   it('is idempotent: repeating a step returns the old result and grants nothing more', async () => {
@@ -125,8 +153,7 @@ describe('quest progress and rewards (server is the source of truth)', () => {
 
   it('writes a single ledger row when the same step is completed concurrently', async () => {
     const { agent, childId } = await playingChild();
-    await step(agent, 'quest-c', 'say-hello').expect(200);
-    await step(agent, 'quest-c', 'pick-flower', { target: 'flower' }).expect(200);
+    await playFirst(agent, 'quest-c', 3);
     const results = await Promise.all(Array.from({ length: 5 }, () => step(agent, 'quest-c', 'add-flowers', { answer: { value: 2 } })));
     expect(results.every((r) => r.status === 200)).toBe(true);
     expect(results.filter((r) => r.body.repeated === false)).toHaveLength(1);
@@ -150,7 +177,7 @@ describe('quest progress and rewards (server is the source of truth)', () => {
     for (let i = 0; i < 80; i += 1) {
       const [quest, stepId, body] = moves[Math.floor(random() * moves.length)] ?? ['quest-c', 'say-hello', {}];
       const res = await step(agent, quest, stepId, { xp: 1000, ...body });
-      expect([200, 404, 409, 422]).toContain(res.status);
+      expect([200, 404, 409]).toContain(res.status);
     }
     const ledger = await app.db.select().from(t.rewardLedger).where(eq(t.rewardLedger.childId, childId));
     const expectedItems: Record<string, number> = {};
@@ -215,6 +242,208 @@ describe('quest progress and rewards (server is the source of truth)', () => {
   });
 });
 
+describe('scoring a finished quest', () => {
+  const support = (agent: Agent, quest: string, stepId: string, layer: string) =>
+    agent.post(`/api/quests/${quest}/steps/${stepId}/support`).send({ layer });
+
+  it('pays full XP with 3 stars, reports Level Up, Skill Up and what opened', async () => {
+    const { agent } = await playingChild();
+    const a = await finish(agent, 'quest-a');
+    expect(a.body.completion).toEqual({ stars: 3, xpAwarded: 60, levelBefore: 1, levelAfter: 1, unlocked: ['quest-b'], skillLevels: [{ skillId: 'doc-hieu', levelBefore: 1, levelAfter: 1 }] });
+    const b = await finish(agent, 'quest-b');
+    expect(b.body.completion).toEqual({
+      stars: 3,
+      xpAwarded: 100,
+      levelBefore: 1,
+      levelAfter: 2,
+      unlocked: [],
+      skillLevels: [
+        { skillId: 'doc-hieu', levelBefore: 1, levelAfter: 2 },
+        { skillId: 'phep-cong', levelBefore: 1, levelAfter: 2 },
+      ],
+    });
+    const math = b.body.progress.subjects.find((s: { subjectId: string }) => s.subjectId === 'toan');
+    expect(math).toMatchObject({ xp: 2, level: 2, skills: expect.arrayContaining([{ skillId: 'phep-cong', name: 'Phép cộng', xp: 2, level: 2 }]) });
+  });
+
+  it('keeps 90% of the quest XP and one star less after the answer layer, but full coins, skills and items', async () => {
+    const { agent } = await playingChild();
+    await finish(agent, 'quest-a');
+    await playFirst(agent, 'quest-b', 2);
+    const answer = await support(agent, 'quest-b', 'solve-tree', 'answer').expect(200);
+    expect(answer.body).toEqual({ layer: 'answer', text: '8', explanation: '4 + 4 = ?' });
+    const last = await step(agent, 'quest-b', 'solve-tree', { answer: { value: 8 } }).expect(200);
+    expect(last.body.reward).toEqual({ xp: 90, coin: 20, skillXp: { 'phep-cong': 2, 'doc-hieu': 1 }, items: { 'chia-khoa': 1, 'la-than': 2 } });
+    expect(last.body.completion).toMatchObject({ stars: 2, xpAwarded: 90, levelBefore: 1, levelAfter: 2 });
+    expect(last.body.progress.xp).toBe(150);
+  });
+
+  it('takes a star at five mistakes, never below one, and fixes the result once stored', async () => {
+    const { agent, childId } = await playingChild();
+    await playFirst(agent, 'quest-c', 3);
+    for (let i = 0; i < 5; i += 1) await step(agent, 'quest-c', 'add-flowers', { answer: { value: 9 } }).expect(200);
+    await support(agent, 'quest-c', 'add-flowers', 'answer').expect(200);
+    const last = await step(agent, 'quest-c', 'add-flowers', { answer: { value: 2 } }).expect(200);
+    expect(last.body.completion).toMatchObject({ stars: 1, xpAwarded: 4 });
+    // Later counter changes (more wrong tries, more views) never rewrite the stored result.
+    await support(agent, 'quest-c', 'add-flowers', 'hint').expect(200);
+    const again = await step(agent, 'quest-c', 'add-flowers', { answer: { value: 2 } }).expect(200);
+    expect(again.body).toMatchObject({ repeated: true, completion: null, reward: { xp: 4 }, quest: { stars: 1 } });
+    const [row] = await app.db.select().from(t.questProgress).where(eq(t.questProgress.childId, childId));
+    expect(row).toMatchObject({ stars: 1, xpAwarded: 4 });
+  });
+});
+
+describe('learning support', () => {
+  const support = (agent: Agent, quest: string, stepId: string, body: object) => agent.post(`/api/quests/${quest}/steps/${stepId}/support`).send(body);
+
+  it('hands out each layer on request and counts only the answer on the unsolved step', async () => {
+    const { agent, childId } = await playingChild();
+    await playFirst(agent, 'quest-c', 3);
+    expect((await support(agent, 'quest-c', 'add-flowers', { layer: 'guide' }).expect(200)).body).toEqual({ layer: 'guide', steps: ['Đếm từng bước.'] });
+    expect((await support(agent, 'quest-c', 'add-flowers', { layer: 'hint' }).expect(200)).body).toEqual({ layer: 'hint', text: 'Đếm chậm lại.' });
+    expect(await app.db.select().from(t.stepAttempts).where(eq(t.stepAttempts.childId, childId))).toEqual([]);
+    await support(agent, 'quest-c', 'add-flowers', { layer: 'answer' }).expect(200);
+    const [counts] = await app.db.select().from(t.stepAttempts).where(eq(t.stepAttempts.childId, childId));
+    expect(counts).toMatchObject({ answerViews: 1, wrongCount: 0 });
+  });
+
+  it('lets a child review the answer of a solved step for free, and forgets the counters once scored', async () => {
+    const { agent, childId } = await playingChild();
+    await finish(agent, 'quest-a');
+    await playFirst(agent, 'quest-b', 2);
+    // count-apples is already solved: reading its answer now costs nothing.
+    await support(agent, 'quest-b', 'count-apples', { layer: 'answer' }).expect(200);
+    const last = await step(agent, 'quest-b', 'solve-tree', { answer: { value: 8 } }).expect(200);
+    expect(last.body.completion).toMatchObject({ stars: 3, xpAwarded: 100 });
+    expect(await app.db.select().from(t.stepAttempts).where(eq(t.stepAttempts.childId, childId))).toEqual([]);
+    // After the quest is scored, support views are not counted any more.
+    await support(agent, 'quest-b', 'solve-tree', { layer: 'answer' }).expect(200);
+    expect(await app.db.select().from(t.stepAttempts).where(eq(t.stepAttempts.childId, childId))).toEqual([]);
+  });
+
+  it('refuses unknown layers, steps without support, steps ahead and locked quests', async () => {
+    const { agent } = await playingChild();
+    await support(agent, 'quest-c', 'add-flowers', { layer: 'everything' }).expect(400, { error: 'invalid-support-layer' });
+    await support(agent, 'quest-c', 'say-hello', { layer: 'hint' }).expect(404, { error: 'support-not-found' });
+    await support(agent, 'quest-c', 'add-flowers', { layer: 'answer' }).expect(409, { error: 'out-of-order' });
+    await support(agent, 'quest-b', 'solve-tree', { layer: 'answer' }).expect(409, { error: 'quest-locked' });
+    await support(agent, 'quest-c', 'fly-away', { layer: 'hint' }).expect(404, { error: 'step-not-found' });
+  });
+
+  it('never sends answers or support text anywhere except the support endpoint', async () => {
+    const { agent } = await playingChild();
+    const bodies = [
+      (await agent.get('/api/quests').expect(200)).text,
+      (await agent.get('/api/quests/quest-b').expect(200)).text,
+      (await finish(agent, 'quest-c')).text,
+      (await agent.get('/api/progress').expect(200)).text,
+    ];
+    for (const text of bodies) {
+      expect(text).not.toMatch(/"(answer|support|guide|hint|explanation)"/);
+      expect(text).not.toContain('Đếm chậm lại.');
+    }
+  });
+});
+
+describe('quest list and detail', () => {
+  it('lists every quest with its state and answer-free content', async () => {
+    const { agent } = await playingChild();
+    const states = async () =>
+      Object.fromEntries(((await agent.get('/api/quests').expect(200)).body.quests as Array<{ quest: { id: string }; state: string }>).map((q) => [q.quest.id, q.state]));
+    expect(await states()).toEqual({ 'quest-a': 'open', 'quest-b': 'locked', 'quest-c': 'open', 'quest-soon': 'locked' });
+    await step(agent, 'quest-c', 'say-hello').expect(200);
+    await finish(agent, 'quest-a');
+    expect(await states()).toEqual({ 'quest-a': 'completed', 'quest-b': 'open', 'quest-c': 'in-progress', 'quest-soon': 'locked' });
+    const detail = (await agent.get('/api/quests/quest-a').expect(200)).body;
+    expect(detail).toMatchObject({ state: 'completed', progress: { stars: 3, completed: true }, quest: { id: 'quest-a', status: 'active' } });
+    expect(detail.quest.steps.map((s: { id: string }) => s.id)).toEqual(['meet-vet', 'find-letter', 'solve-tree']);
+  });
+
+  it('shows a stub as coming soon, filters by region and rejects bad ids', async () => {
+    const { agent } = await playingChild();
+    await finish(agent, 'quest-c');
+    expect((await agent.get('/api/quests/quest-soon').expect(200)).body).toMatchObject({
+      state: 'open',
+      quest: { id: 'quest-soon', status: 'stub', title: 'Sắp có' },
+    });
+    expect((await agent.get('/api/quests?region=khu-rung-bi-mat').expect(200)).body.quests).toHaveLength(4);
+    expect((await agent.get('/api/quests?region=dao-bien').expect(200)).body.quests).toEqual([]);
+    await agent.get('/api/quests?region=Đảo').expect(400, { error: 'invalid-region' });
+    await agent.get('/api/quests/quest-zzz').expect(404, { error: 'quest-not-found' });
+  });
+});
+
+describe('rate limits per child and step', () => {
+  it('answers 429 after 30 completions of one step in a minute, other steps unaffected', async () => {
+    const { agent } = await playingChild();
+    await playFirst(agent, 'quest-c', 3);
+    for (let i = 0; i < 30; i += 1) await step(agent, 'quest-c', 'add-flowers', { answer: { value: 9 } }).expect(200);
+    await step(agent, 'quest-c', 'add-flowers', { answer: { value: 2 } }).expect(429, { error: 'rate-limited' });
+    await step(agent, 'quest-a', 'meet-vet').expect(200);
+    const other = await playingChild();
+    await step(other.agent, 'quest-c', 'say-hello').expect(200);
+  });
+
+  it('answers 429 after 20 support requests for one step in a minute', async () => {
+    const { agent } = await playingChild();
+    await playFirst(agent, 'quest-c', 3);
+    for (let i = 0; i < 20; i += 1) await agent.post('/api/quests/quest-c/steps/add-flowers/support').send({ layer: 'hint' }).expect(200);
+    await agent.post('/api/quests/quest-c/steps/add-flowers/support').send({ layer: 'hint' }).expect(429);
+  });
+});
+
+describe('the shipped forest chapter 1', () => {
+  const real = loadContentCatalog();
+
+  /** The right input for each step, taken from the definition (the server test may read answers). */
+  function solution(quest: ActiveQuest): Array<[string, object]> {
+    return quest.steps.flatMap((s): Array<[string, object]> => {
+      if (s.kind === 'search') return s.targets.map((target) => [s.id, { target }]);
+      if (s.kind === 'read' || (s.kind === 'challenge' && s.mechanic === 'quiz')) return [[s.id, { answer: { choice: s.answer.choice } }]];
+      if (s.kind === 'riddle') return [[s.id, { answer: { value: s.answer.value } }]];
+      if (s.kind === 'challenge' && s.mechanic === 'sort') return [[s.id, { answer: { order: s.answer.order } }]];
+      if (s.kind === 'challenge' && s.mechanic === 'drag-drop') {
+        let left = s.answer.total;
+        const placed = s.pieces.filter((p) => (p.value <= left ? ((left -= p.value), true) : false)).map((p) => p.id);
+        return [[s.id, { answer: { placed } }]];
+      }
+      return [[s.id, {}]];
+    });
+  }
+
+  async function realChild(): Promise<Agent> {
+    const { parent, childId } = await parentWithChild(app);
+    const agent = request.agent(createApp({ config: app.config, db: app.db, content: real })).set('Origin', ORIGIN);
+    await agent.post('/api/auth/login').send(parent).expect(200);
+    await agent.post(`/api/children/${childId}/select`).expect(200);
+    return agent;
+  }
+
+  const ch1 = real.quests.get('forest-ch1');
+  if (ch1?.status !== 'active') throw new Error('forest-ch1 must be an active quest');
+
+  it('finishing without the answer layer levels up to 2 and opens chapter 2 as coming soon', async () => {
+    const agent = await realChild();
+    let last: request.Response | undefined;
+    for (const [stepId, body] of solution(ch1)) last = await step(agent, 'forest-ch1', stepId, body).expect(200);
+    expect(last?.body.completion).toMatchObject({ stars: 3, xpAwarded: 100, levelBefore: 1, levelAfter: 2, unlocked: ['forest-ch2'] });
+    expect(last?.body.reward).toMatchObject({ xp: 100, coin: 20, items: { 'la-than': 1 } });
+    expect((await agent.get('/api/quests/forest-ch2').expect(200)).body).toMatchObject({ state: 'open', quest: { status: 'stub' } });
+    await step(agent, 'forest-ch2', 'anything').expect(409, { error: 'quest-coming-soon' });
+  });
+
+  it('viewing an answer keeps 90 XP, so the same run stays at level 1', async () => {
+    const agent = await realChild();
+    let last: request.Response | undefined;
+    for (const [stepId, body] of solution(ch1)) {
+      if (stepId === 'tree-riddle') await agent.post('/api/quests/forest-ch1/steps/tree-riddle/support').send({ layer: 'answer' }).expect(200);
+      last = await step(agent, 'forest-ch1', stepId, body).expect(200);
+    }
+    expect(last?.body.completion).toMatchObject({ stars: 2, xpAwarded: 90, levelBefore: 1, levelAfter: 1 });
+  });
+});
+
 describe('character', () => {
   it('reads and updates name and equipment within the catalogue', async () => {
     const { agent } = await playingChild();
@@ -242,6 +471,9 @@ describe('IDOR and session rules for game routes', () => {
       await agent.get('/api/progress'),
       await agent.get('/api/inventory'),
       await step(agent, 'quest-c', 'say-hello'),
+      await agent.get('/api/quests'),
+      await agent.get('/api/quests/quest-c'),
+      await agent.post('/api/quests/quest-c/steps/add-flowers/support').send({ layer: 'hint' }),
     ]) {
       expect(res.status).toBe(401);
       expect(res.body).toEqual({ error: 'no-active-child' });
@@ -265,6 +497,11 @@ describe('IDOR and session rules for game routes', () => {
     await b.agent.get('/api/character').expect(401, { error: 'no-active-child' });
     await b.agent.get('/api/progress').expect(401);
     await step(b.agent, 'quest-c', 'say-hello').expect(401);
+    await b.agent.get('/api/quests').expect(401, { error: 'no-active-child' });
+    await b.agent.get('/api/quests/quest-c').expect(401, { error: 'no-active-child' });
+    await b.agent.post('/api/quests/quest-c/steps/add-flowers/support').send({ layer: 'answer' }).expect(401, { error: 'no-active-child' });
+    const aCounts = await app.db.select().from(t.stepAttempts).where(eq(t.stepAttempts.childId, a.childId));
+    expect(aCounts).toEqual([]);
 
     const [aCharacter] = await app.db.select().from(t.characters).where(eq(t.characters.childId, a.childId));
     expect(aCharacter?.name).toBe('Mochi');

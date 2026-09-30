@@ -1,5 +1,5 @@
 import { sql } from 'drizzle-orm';
-import { index, integer, jsonb, pgTable, primaryKey, text, timestamp, unique, uuid } from 'drizzle-orm/pg-core';
+import { index, integer, jsonb, pgTable, primaryKey, smallint, text, timestamp, unique, uuid } from 'drizzle-orm/pg-core';
 
 // Ids are generated in the app (crypto.randomUUID) so the schema needs no Postgres extension and
 // behaves the same on PGlite and Postgres.
@@ -86,9 +86,32 @@ export const questProgress = pgTable(
     childId: childRef(),
     questId: text('quest_id').notNull(),
     completedSteps: text('completed_steps').array().notNull().default(sql`'{}'::text[]`),
+    /** Targets found so far, per search step (step id → target ids). */
+    found: jsonb('found').$type<Record<string, string[]>>().notNull().default(sql`'{}'::jsonb`),
     completedAt: timestamp('completed_at', { withTimezone: true }),
+    /** Fixed when the quest is finished, so later counter changes never rewrite the result. */
+    stars: smallint('stars'),
+    xpAwarded: integer('xp_awarded'),
   },
   (t) => [primaryKey({ columns: [t.childId, t.questId] })],
+);
+
+/**
+ * Per-step counters used to score a quest (stars, answer penalty). Counts only: no answer content and
+ * no per-event timestamps, so it is not a log of the child's behaviour (Master Plan §9). The rows are
+ * deleted once the quest is scored.
+ */
+export const stepAttempts = pgTable(
+  'step_attempts',
+  {
+    childId: childRef(),
+    questId: text('quest_id').notNull(),
+    stepId: text('step_id').notNull(),
+    wrongCount: integer('wrong_count').notNull().default(0),
+    /** Answer-layer views while the step was still unsolved (reviewing a solved step is free). */
+    answerViews: integer('answer_views').notNull().default(0),
+  },
+  (t) => [primaryKey({ columns: [t.childId, t.questId, t.stepId] })],
 );
 
 /**
