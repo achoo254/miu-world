@@ -1,4 +1,5 @@
-// Follow camera orbiting the player; a grid raycast pulls it in front of any block in the way.
+// Follow camera orbiting the player; a grid raycast pulls it in front of any block in the way. Against a
+// bank, a trunk or a wall the camera rises and looks down over it rather than squeezing into Miu's head.
 import { MathUtils, Vector3, type PerspectiveCamera } from 'three';
 import { raycastGrid, type SolidAt } from '@miu/voxel/grid-collision';
 
@@ -7,6 +8,15 @@ const TARGET_HEIGHT = 1.9;
 const WALL_MARGIN = 0.3;
 const MIN_PITCH = -0.15;
 const MAX_PITCH = 1.1;
+/**
+ * Closer than this, the camera tilts up (in these steps) to find a clearer view, as far as looking
+ * almost straight down when a bank is right at Miu's back; the child's own drag stops at MAX_PITCH.
+ */
+const CLEAR_DISTANCE = 3;
+const MAX_LIFTED_PITCH = 1.45;
+const LIFT_STEP = 0.1;
+/** How fast the extra tilt eases in and out (per second), so walking along a wall does not jitter. */
+const LIFT_EASE = 6;
 
 export class CameraRig {
   yaw: number;
@@ -15,6 +25,10 @@ export class CameraRig {
   private readonly target = new Vector3();
   private readonly smoothed = new Vector3();
   private initialised = false;
+  /** Tilt added on top of `pitch` while something blocks the view from behind. */
+  private lift = 0;
+  /** Camera-to-aim distance after the last update: under ~1 block the camera is inside Miu. */
+  viewDistance = this.distance;
 
   constructor(private readonly camera: PerspectiveCamera, private readonly solid: SolidAt, yaw: number) {
     this.yaw = yaw;
@@ -47,14 +61,26 @@ export class CameraRig {
       this.initialised = true;
     }
     this.smoothed.lerp(this.target, Math.min(1, dt * 10));
-    const dir = new Vector3(
-      Math.sin(this.yaw) * Math.cos(this.pitch),
-      Math.sin(this.pitch),
-      Math.cos(this.yaw) * Math.cos(this.pitch),
-    );
-    const hit = raycastGrid([this.smoothed.x, this.smoothed.y, this.smoothed.z], [dir.x, dir.y, dir.z], this.distance, this.solid);
-    const distance = hit === null ? this.distance : Math.max(0, hit - WALL_MARGIN);
+    // The least extra tilt that gives a clear view (or the most there is), eased toward.
+    let wanted = 0;
+    while (this.clearance(this.pitch + wanted) < CLEAR_DISTANCE && this.pitch + wanted + LIFT_STEP <= MAX_LIFTED_PITCH) wanted += LIFT_STEP;
+    this.lift += (wanted - this.lift) * Math.min(1, dt * LIFT_EASE);
+    const pitch = this.pitch + this.lift;
+    const dir = this.direction(pitch);
+    const distance = this.clearance(pitch);
+    this.viewDistance = distance;
     this.camera.position.copy(this.smoothed).addScaledVector(dir, distance);
     this.camera.lookAt(this.smoothed);
+  }
+
+  private direction(pitch: number): Vector3 {
+    return new Vector3(Math.sin(this.yaw) * Math.cos(pitch), Math.sin(pitch), Math.cos(this.yaw) * Math.cos(pitch));
+  }
+
+  /** How far the camera can sit back at this pitch before a block gets in the way. */
+  private clearance(pitch: number): number {
+    const dir = this.direction(pitch);
+    const hit = raycastGrid([this.smoothed.x, this.smoothed.y, this.smoothed.z], [dir.x, dir.y, dir.z], this.distance, this.solid);
+    return hit === null ? this.distance : Math.max(0, hit - WALL_MARGIN);
   }
 }
