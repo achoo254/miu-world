@@ -15,5 +15,6 @@ describe('player name in quest text', () => {
 
   it('flags placeholders other than {name}', () => {
     expect(playerTextIssues('Chào {ten}!')).toEqual(['unknown placeholder {ten}']);
+    expect(playerTextIssues('47 {{b1}} 38 + 5 — {name} điền dấu')).toEqual([]);
   });
 });

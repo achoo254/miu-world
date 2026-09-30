@@ -10,7 +10,8 @@ export function fillPlayerName(text: string, name: string): string {
 
 /** "Miu" as a word, except in the game title "Miu World". */
 const GAME_NAME = /\bMiu\b(?! World)/;
-const PLACEHOLDER = /\{[^}]*\}/g;
+/** Single-brace tokens only: `{{blank}}` marks fill-in-the-blank gaps and is not a placeholder. */
+const PLACEHOLDER = /(?<!\{)\{[^{}]*\}(?!\})/g;
 
 /** Problems in one piece of player-facing text: the game name used for the player, or an unknown placeholder. */
 export function playerTextIssues(text: string): string[] {
