@@ -1,3 +1,4 @@
+import { fileURLToPath } from 'node:url';
 import { defineConfig } from '@playwright/test';
 
 // Fixed ports: a stale server shows up with `netstat -ano | findstr :4173` (web) or `:8787` (API).
@@ -8,7 +9,7 @@ const FAKE_GOOGLE = 'http://127.0.0.1:8788';
 export const PARENT_STATE = 'playwright/.auth/parent.json';
 
 /** Signed-in journeys: one project per `e2e/<name>.spec.ts`, all starting from the parent session. */
-const SIGNED_IN = ['play', 'creator', 'home', 'quest-flow', 'challenges', 'mvp-loop'] as const;
+const SIGNED_IN = ['play', 'creator', 'home', 'quest-flow', 'challenges', 'mvp-loop', 'sgk-mechanics'] as const;
 
 export default defineConfig({
   testDir: 'e2e',
@@ -47,6 +48,8 @@ export default defineConfig({
         GOOGLE_REDIRECT_URI: `${BASE_URL}/api/auth/google/callback`,
         GOOGLE_AUTH_URL: `${FAKE_GOOGLE}/authorize`,
         GOOGLE_TOKEN_URL: `${FAKE_GOOGLE}/token`,
+        // Test-only quests (every textbook mechanic), loaded after the shipped ones.
+        EXTRA_QUEST_DIR: fileURLToPath(new URL('./e2e/fixtures/quests', import.meta.url)),
       },
       reuseExistingServer: false,
       timeout: 120_000,
