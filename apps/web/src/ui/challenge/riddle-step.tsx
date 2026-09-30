@@ -1,4 +1,5 @@
-// M3.4 Câu đố cây cổ thụ: the riddle and a big number pad (the PIN pad of the kit), then "Kiểm tra".
+// M3.4 Câu đố cây cổ thụ: the answer carved on a wooden plaque as the child types it on a big number
+// pad (the PIN pad of the kit), then "Kiểm tra".
 import { useState } from 'react';
 import type { QuestStepPublic } from '@miu/schema/content';
 import type { StepAnswer } from '@miu/schema/game';
@@ -17,7 +18,7 @@ export function RiddleStepScreen({ step, context, onAnswer }: { step: RiddleStep
       canCheck={digits.length > 0}
       onReset={() => setDigits('')}
     >
-      <output className="riddle-value" aria-live="polite" data-id="riddle-value">
+      <output className="riddle-value riddle-plaque" aria-live="polite" data-id="riddle-value">
         {digits || '?'}
       </output>
       <PinPad value={digits} onChange={setDigits} maxLength={3} />

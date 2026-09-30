@@ -27,8 +27,8 @@ export function SpeakStepScreen({
   const voice = useLocalVoice();
   const prompt = fill(step.prompt);
   return (
-    <Modal title={fill(step.title)} onClose={onClose} dataId="speak-step" size="wide">
-      <p className="challenge-prompt" data-id="speak-prompt">
+    <Modal title={fill(step.title)} onClose={onClose} dataId="speak-step" size="wide" variant="scene">
+      <p className="parchment npc-bubble challenge-prompt" data-id="speak-prompt">
         {prompt}
       </p>
       {step.pictureRefs?.length ? (
@@ -39,7 +39,7 @@ export function SpeakStepScreen({
         </div>
       ) : null}
       {step.hints.length > 0 ? (
-        <ul className="speak-hints" data-id="speak-hints" aria-label="Gợi ý">
+        <ul className="parchment speak-hints" data-id="speak-hints" aria-label="Gợi ý">
           {step.hints.map((hint, i) => (
             <li key={i}>{fill(hint)}</li>
           ))}

@@ -43,7 +43,7 @@ export function CompletionSequence({
   const title = screen === 'reward' ? 'Hoàn thành nhiệm vụ!' : screen === 'level' ? 'Lên cấp!' : 'Mở khóa!';
 
   return (
-    <Modal title={title} onClose={last ? onExplore : () => setIndex(index + 1)} dataId={`completion-${screen}`}>
+    <Modal title={title} onClose={last ? onExplore : () => setIndex(index + 1)} dataId={`completion-${screen}`} variant="scene">
       {screen === 'reward' ? (
         <div className="reward-body">
           <p className="hint">{fill(quest.title)}</p>
@@ -111,7 +111,7 @@ export function CompletionSequence({
               Về bản đồ
             </button>
             <button type="button" className={buttonClass('secondary', { block: true })} data-id="completion-explore" onClick={onExplore}>
-              Tiếp tục khám phá
+              Tiếp tục khám phá →
             </button>
           </>
         ) : (

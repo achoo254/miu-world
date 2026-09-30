@@ -1,7 +1,10 @@
 // Modal dialog: dimmed backdrop over the game, focus moved in and kept inside (Tab cycles), Esc
-// closes, focus returns to what was focused before. Screens: Pause, Offline, later Backpack.
+// closes, focus returns to what was focused before. Screens: Pause, Offline, Backpack. The `scene`
+// variant is for quest screens: no white panel, the paused game stays visible behind a light scrim,
+// and the title sits on a banner (mock "quest screens").
 import { useEffect, useId, useRef, type ReactNode } from 'react';
 import './modal.css';
+import './scene.css';
 
 const FOCUSABLE = 'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
@@ -12,6 +15,8 @@ export function Modal({
   dataId,
   placement = 'center',
   size = 'normal',
+  variant = 'panel',
+  titleClass,
 }: {
   title: string;
   onClose?: () => void;
@@ -21,6 +26,10 @@ export function Modal({
   placement?: 'center' | 'bottom';
   /** `wide` fits a challenge close-up. */
   size?: 'normal' | 'wide';
+  /** `scene`: themed materials over the paused game instead of a white panel. */
+  variant?: 'panel' | 'scene';
+  /** Class of the title element (`ribbon` banner by default in the scene variant). */
+  titleClass?: string;
 }) {
   const dialog = useRef<HTMLDivElement>(null);
   const titleId = useId();
@@ -64,9 +73,17 @@ export function Modal({
   }, []);
 
   return (
-    <div className={`modal-backdrop modal-backdrop--${placement}`} data-id={dataId ? `${dataId}-backdrop` : undefined}>
-      <div ref={dialog} className={`panel modal modal--${size}`} role="dialog" aria-modal="true" aria-labelledby={titleId} tabIndex={-1} data-id={dataId}>
-        <h2 id={titleId} className="modal-title">
+    <div className={`modal-backdrop modal-backdrop--${placement}${variant === 'scene' ? ' modal-backdrop--scene' : ''}`} data-id={dataId ? `${dataId}-backdrop` : undefined}>
+      <div
+        ref={dialog}
+        className={variant === 'scene' ? `modal scene-modal modal--${size}` : `panel modal modal--${size}`}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby={titleId}
+        tabIndex={-1}
+        data-id={dataId}
+      >
+        <h2 id={titleId} className={titleClass ?? (variant === 'scene' ? 'ribbon' : 'modal-title')}>
           {title}
         </h2>
         {children}

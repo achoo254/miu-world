@@ -1,4 +1,4 @@
-/* NPC dialogue (M3.3): values from tokens.css only. */
-.dialogue-body { display: flex; align-items: center; gap: var(--space-md); }
+/* NPC dialogue (M3.3): layout only; the scene materials come from kit/scene.css. */
 .dialogue-line { font-size: var(--text-lg); line-height: 1.45; }
 .dialogue-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: var(--space-sm); }
+.dialogue-actions:empty { display: none; }

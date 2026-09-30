@@ -1,0 +1,246 @@
+/*
+ * Quest scenes (mock "quest screens"): themed materials over the paused game — a wooden banner for the
+ * title, parchment for words, river stones for numbers, word cards, wooden crates for groups, the NPC
+ * speaking in a bubble. Values from tokens.css only; touch targets ≥ 48px.
+ */
+
+.modal-backdrop--scene {
+  background: radial-gradient(ellipse at 50% 45%, transparent 0%, var(--color-scene-scrim) 70%);
+  align-items: center;
+}
+.modal-backdrop--scene.modal-backdrop--bottom { place-items: end center; }
+
+.scene-modal {
+  position: relative;
+  width: min(100%, 52rem);
+  max-height: 100%;
+  overflow-y: auto;
+  outline: none;
+  display: grid;
+  gap: var(--space-md);
+  padding-block: var(--space-sm);
+  color: var(--color-ink);
+}
+
+/* Title banner: a wooden sign with its name carved in. */
+.ribbon {
+  justify-self: center;
+  margin: 0;
+  max-width: 100%;
+  padding: var(--space-xs) var(--space-xl);
+  border-radius: var(--radius-key);
+  border: 3px solid var(--color-wood-edge);
+  background: linear-gradient(180deg, var(--color-wood-top), var(--color-wood));
+  box-shadow: var(--shadow-material);
+  color: var(--color-wood-ink);
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 800;
+  line-height: 1.2;
+  text-align: center;
+  text-wrap: balance;
+  text-shadow: 0 2px 0 var(--color-wood-edge);
+}
+
+.parchment {
+  border: 3px solid var(--color-parchment-edge);
+  border-radius: var(--radius-field);
+  background: linear-gradient(180deg, var(--color-parchment), var(--color-parchment-deep));
+  box-shadow: var(--shadow-material);
+  color: var(--color-parchment-ink);
+}
+
+/* Small counters in the corners (step of the quest, XP it pays). */
+.scene-chips { display: flex; justify-content: space-between; flex-wrap: wrap; gap: var(--space-sm); }
+.scene-chip {
+  display: inline-flex; align-items: center; gap: var(--space-xs);
+  padding: 0 var(--space-md); min-height: 2.25rem;
+  border-radius: var(--radius-pill); background: var(--color-surface-glass);
+  font-weight: 800; font-size: var(--text-sm); color: var(--color-ink);
+}
+
+/* The NPC who asks: portrait and a speech bubble with the instruction. */
+.npc-say { display: flex; align-items: flex-end; gap: var(--space-sm); }
+.npc-portrait {
+  flex-shrink: 0;
+  display: grid; place-items: center;
+  width: 4.5rem; height: 4.5rem; border-radius: 50%;
+  border: 3px solid var(--color-wood-edge);
+  background: var(--color-parchment);
+  box-shadow: var(--shadow-material);
+  font-family: var(--font-display); font-weight: 800; font-size: var(--text-xl); color: var(--color-parchment-ink);
+}
+.npc-bubble { position: relative; flex: 1; min-width: 0; padding: var(--space-sm) var(--space-md); }
+.npc-bubble::before {
+  content: '';
+  position: absolute; left: -0.7rem; bottom: 1rem;
+  border-width: 0.6rem 0.8rem 0.6rem 0; border-style: solid;
+  border-color: transparent var(--color-parchment-edge) transparent transparent;
+}
+.npc-name { display: block; font-family: var(--font-display); font-weight: 800; color: var(--color-wood-edge); }
+
+/* The play area sits on the scene itself; each mechanic brings its own materials. */
+/* The play area: opaque enough that the game's own labels do not show through. */
+.scene-modal .challenge-area { padding: var(--space-md); border-radius: var(--radius-panel); background: var(--color-surface-glass); }
+/* No grey tap flash on iPad: pressed states come from the materials themselves. */
+.scene-modal, .scene-modal * { -webkit-tap-highlight-color: transparent; }
+.scene-modal .challenge-prompt { font-size: var(--text-lg); font-weight: 800; }
+
+/* Bottom bar: help on the left, "Làm lại · Kiểm tra" on the right. */
+.scene-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-sm); padding: var(--space-sm) var(--space-md); }
+.scene-bar .challenge-actions { margin-left: auto; }
+.scene-close {
+  position: absolute; top: var(--space-sm); right: var(--space-sm);
+  width: 3rem; height: 3rem; border-radius: 50%;
+  border: 3px solid var(--color-wood-edge); background: var(--color-parchment);
+  color: var(--color-parchment-ink); font-weight: 800; font-size: var(--text-lg); cursor: pointer;
+  box-shadow: var(--shadow-material);
+}
+.scene-close:focus-visible { box-shadow: var(--focus-ring); outline: none; }
+
+/* Materials the mechanics share. */
+.scene-modal .choice {
+  border: 3px solid var(--color-parchment-edge);
+  background: linear-gradient(180deg, var(--color-parchment), var(--color-parchment-deep));
+  color: var(--color-parchment-ink);
+  box-shadow: var(--shadow-material);
+}
+.scene-modal .choice--selected { border-color: var(--color-primary); background: var(--color-badge); color: var(--color-ink); }
+
+/* River stones: numbers to put in order. */
+.scene-modal .sort-stone,
+.scene-modal .drag-piece {
+  border: 0;
+  border-radius: 42% 46% 40% 44% / 46% 40% 48% 42%;
+  background: radial-gradient(ellipse at 40% 30%, var(--color-stone-top), var(--color-stone) 70%);
+  box-shadow: var(--shadow-stone);
+  color: var(--color-stone-ink);
+  font-family: var(--font-display);
+  font-size: var(--text-title);
+  font-weight: 800;
+  min-width: 6rem;
+  min-height: 5rem;
+}
+.scene-modal .sort-stone--selected,
+.scene-modal .drag-piece--selected { outline: 4px solid var(--color-secondary); outline-offset: 2px; }
+/* The slots lie across a stream, as stepping stones (mock "Giúp Miu qua cây cầu"). */
+.scene-modal .sort-slots {
+  justify-content: center;
+  padding: var(--space-md);
+  border-radius: var(--radius-panel);
+  background: linear-gradient(180deg, var(--color-sky-top), var(--color-secondary-top));
+  box-shadow: inset 0 6px 0 var(--color-block-shade);
+}
+.scene-modal .sort-stones { justify-content: center; }
+.scene-modal .sort-slots li { display: flex; align-items: center; gap: var(--space-sm); }
+.scene-modal .sort-slots li + li::before { content: '→'; font-weight: 800; font-size: var(--text-xl); color: var(--color-surface); text-shadow: 0 2px 0 var(--color-stone-edge); }
+.scene-modal .sort-slot {
+  min-width: 6rem; min-height: 5rem;
+  border: 3px dashed var(--color-stone-edge);
+  border-radius: 40% 44% 38% 42% / 44% 38% 46% 40%;
+  background: var(--color-surface-faint);
+  font-family: var(--font-display); font-size: var(--text-title); font-weight: 800;
+}
+.scene-modal .sort-slot--filled {
+  border-style: solid; border-color: var(--color-stone-edge);
+  background: radial-gradient(ellipse at 40% 30%, var(--color-stone-top), var(--color-stone) 70%);
+  color: var(--color-stone-ink);
+}
+
+/* Word cards and wooden crates (classify, pictures to sort). */
+.scene-modal .classify-card {
+  border: 2px solid var(--color-parchment-edge);
+  background: var(--color-parchment);
+  color: var(--color-parchment-ink);
+  box-shadow: 0 5px 0 var(--color-parchment-edge);
+  font-size: var(--text-lg);
+}
+.scene-modal .classify-card--selected { border-color: var(--color-secondary); box-shadow: 0 5px 0 var(--color-secondary-edge); }
+.scene-modal .classify-group,
+.scene-modal .drag-container {
+  border: 4px solid var(--color-wood-edge);
+  background: linear-gradient(180deg, var(--color-wood-top), var(--color-wood));
+  box-shadow: var(--shadow-material);
+}
+.scene-modal .classify-group--ready { border-style: dashed; }
+.scene-modal .classify-group-title,
+.scene-modal .drag-container-label { color: var(--color-wood-ink); text-shadow: 0 2px 0 var(--color-wood-edge); font-family: var(--font-display); font-size: var(--text-lg); }
+.scene-modal .classify-group-cards { min-height: 3.5rem; padding: var(--space-xs); border-radius: var(--radius-key); background: var(--color-parchment-deep); }
+.scene-modal .classify-pool { background: transparent; }
+
+/* A sentence with blanks on a parchment strip; blanks are stone sockets. */
+.scene-modal .fill-sentence { padding: var(--space-md); border: 3px solid var(--color-parchment-edge); border-radius: var(--radius-field); background: var(--color-parchment); color: var(--color-parchment-ink); }
+.scene-modal .fill-blank { border-color: var(--color-stone-edge); background: var(--color-stone-top); color: var(--color-stone-ink); font-family: var(--font-display); }
+.scene-modal .fill-blank--filled { background: var(--color-surface); border-color: var(--color-leaf); }
+
+/* Reading: an open page of the book. */
+.scene-modal .read-passage { border: 3px solid var(--color-parchment-edge); background: var(--color-parchment); color: var(--color-parchment-ink); box-shadow: var(--shadow-material); }
+.scene-modal .read-glossary { background: var(--color-parchment-deep); }
+
+/* Riddle: the question carved on a wooden plaque. */
+.riddle-plaque {
+  justify-self: center;
+  padding: var(--space-md) var(--space-xl);
+  border: 4px solid var(--color-wood-edge);
+  border-radius: var(--radius-field);
+  background: linear-gradient(180deg, var(--color-wood-top), var(--color-wood));
+  box-shadow: var(--shadow-material);
+  color: var(--color-wood-ink);
+  font-family: var(--font-display);
+  font-size: var(--text-hero);
+  font-weight: 800;
+  line-height: 1.1;
+  text-align: center;
+  text-shadow: 0 3px 0 var(--color-wood-edge);
+}
+.scene-modal .riddle-value { color: var(--color-surface); text-shadow: 0 3px 0 var(--color-wood-edge); }
+
+/* Clock, calendar, connect board. */
+.scene-modal .illustration-clock circle.ill-fill { fill: var(--color-parchment); stroke: var(--color-wood-edge); stroke-width: 4; }
+.scene-modal .clock-stepper { background: var(--color-parchment); border: 2px solid var(--color-parchment-edge); }
+.scene-modal .calendar { padding: var(--space-sm); border-radius: var(--radius-field); background: var(--color-surface); box-shadow: var(--shadow-material); }
+.scene-modal .calendar caption { font-family: var(--font-display); font-size: var(--text-lg); color: var(--color-primary-edge); }
+.scene-modal .connect-wrap { border: 3px solid var(--color-parchment-edge); border-radius: var(--radius-field); background: var(--color-parchment); }
+
+/* Name tag of the NPC above the bubble. */
+.ribbon--small { justify-self: start; font-size: var(--text-lg); padding: 0 var(--space-lg); }
+
+/* NPC dialogue: portrait, bubble with the name, big choice cards. */
+.dialogue-scene { display: grid; gap: var(--space-md); }
+.dialogue-scene .npc-portrait { width: 7rem; height: 7rem; }
+.dialogue-scene .npc-bubble { font-size: var(--text-lg); line-height: 1.45; }
+.dialogue-choices { display: grid; gap: var(--space-sm); }
+.dialogue-choice {
+  display: flex; align-items: center; gap: var(--space-sm);
+  min-height: 3.5rem; padding: var(--space-sm) var(--space-md);
+  border: 3px solid var(--color-parchment-edge); border-radius: var(--radius-field);
+  background: var(--color-surface); color: var(--color-ink);
+  font: inherit; font-weight: 800; font-size: var(--text-body); text-align: left; cursor: pointer;
+  box-shadow: 0 5px 0 var(--color-parchment-edge);
+}
+.dialogue-choice--main { border-color: var(--color-secondary); box-shadow: 0 5px 0 var(--color-secondary-edge); background: var(--color-tile-2); }
+.dialogue-choice:focus-visible { box-shadow: var(--focus-ring); outline: none; }
+.dialogue-choice:disabled { opacity: 0.55; cursor: default; }
+/* Three or more choices read as a decision: big cards in a row (mock "Lựa chọn hành động"). */
+.dialogue-choices--decision { grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr)); }
+.dialogue-choices--decision .dialogue-choice { flex-direction: column; justify-content: center; text-align: center; min-height: 7rem; background: var(--color-parchment); }
+
+/* Quest complete: big stars on the banner, reward tiles. */
+.scene-modal .reward-stars .reward-star .icon { width: 5rem; height: 5rem; filter: drop-shadow(0 4px 0 var(--color-parchment-edge)); }
+.scene-modal .reward-list { width: 100%; display: grid; grid-template-columns: repeat(auto-fit, minmax(7rem, 1fr)); gap: var(--space-sm); padding: 0; list-style: none; }
+.scene-modal .reward-list li {
+  display: grid; justify-items: center; gap: var(--space-xs); padding: var(--space-sm);
+  border: 3px solid var(--color-parchment-edge); border-radius: var(--radius-field);
+  background: var(--color-parchment); color: var(--color-parchment-ink); font-weight: 800; text-align: center;
+}
+.scene-modal .modal-actions { flex-direction: row; flex-wrap: wrap; }
+.scene-modal .modal-actions .btn { flex: 1 1 12rem; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .scene-modal { animation: scene-in 180ms ease-out; }
+}
+@keyframes scene-in { from { transform: translateY(0.75rem); opacity: 0.6; } to { transform: none; opacity: 1; } }
+
+/* Bodies of the reward screens and the speaking/worksheet steps sit on parchment. */
+.scene-modal .reward-body { padding: var(--space-md); border: 3px solid var(--color-parchment-edge); border-radius: var(--radius-panel); background: linear-gradient(180deg, var(--color-parchment), var(--color-parchment-deep)); color: var(--color-parchment-ink); box-shadow: var(--shadow-material); }
+.scene-modal .speak-hints { padding: var(--space-sm) var(--space-md) var(--space-sm) var(--space-xl); }

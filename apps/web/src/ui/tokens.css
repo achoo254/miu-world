@@ -45,6 +45,27 @@
   --color-tile-1: #ffd6e7;
   --color-tile-2: #d6ecff;
   --color-tile-3: #e8ddff;
+  /*
+   * Scene materials for quest screens (mock "quest screens": wooden signs, parchment, river stones,
+   * banners), drawn over the paused game instead of a white panel.
+   */
+  --color-wood: #b97a44;
+  --color-wood-top: #d49a5e;
+  --color-wood-edge: #7b4a22;
+  --color-wood-ink: #fff4e3;
+  --color-parchment: #fdf1d6;
+  --color-parchment-deep: #f4dfb2;
+  --color-parchment-edge: #c99a58;
+  --color-parchment-ink: #4a3218;
+  --color-stone: #b9b3a8;
+  --color-stone-top: #d8d3c9;
+  --color-stone-edge: #7d776c;
+  --color-stone-ink: #3b352c;
+  --color-leaf: #4e9b3c;
+  --color-star: #ffc629;
+  --color-scene-scrim: rgba(24, 18, 40, 0.28);
+  --shadow-material: 0 6px 0 rgba(43, 33, 64, 0.22), 0 14px 22px rgba(43, 33, 64, 0.25);
+  --shadow-stone: 0 6px 0 var(--color-stone-edge), 0 12px 16px rgba(43, 33, 64, 0.28);
   /* Dims the paused game behind a modal. */
   --color-backdrop: rgba(43, 33, 64, 0.55);
   --color-backdrop-light: rgba(43, 33, 64, 0.18);

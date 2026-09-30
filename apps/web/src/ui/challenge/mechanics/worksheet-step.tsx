@@ -22,8 +22,8 @@ export function WorksheetStepScreen({
   onClose: () => void;
 }) {
   return (
-    <Modal title={fill(step.title)} onClose={onClose} dataId="worksheet-step">
-      <p className="worksheet-note" data-id="worksheet-text">
+    <Modal title={fill(step.title)} onClose={onClose} dataId="worksheet-step" variant="scene">
+      <p className="parchment npc-bubble worksheet-note" data-id="worksheet-text">
         <Icon name="scroll" size={40} />
         {fill(step.text)}
       </p>

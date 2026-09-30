@@ -8,6 +8,7 @@ import type { StepAnswer, StepCompleteRequest, StepCompleteResponse } from '@miu
 import { say, type PlayerData } from '../player/player-data';
 import { TRY_AGAIN_LINES } from '../quest/loop-lines';
 import type { ActiveQuestView } from '../quest/quest-flow';
+import { presenterOf } from '../dialogue/npc-portrait';
 import type { ChallengeContext } from './challenge-frame';
 import { DragDropChallenge } from './drag-drop-challenge';
 import { QuizChallenge } from './quiz-challenge';
@@ -60,6 +61,7 @@ export function LearningStep({
     fill,
     busy,
     tryAgain,
+    presenter: presenterOf(quest.steps, step.id),
     onClose,
   };
   if (step.kind === 'speak') return <SpeakStepScreen step={step} fill={fill} busy={busy} onDone={() => void submit(step, {})} onClose={onClose} />;
