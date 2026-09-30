@@ -1,6 +1,6 @@
 # Triển khai — credential, máy chủ, staging và production
 
-Điểm vào duy nhất để tìm credential, chọn máy và deploy Miu World. Hướng triển khai đích (static + CDN cho client, server tự host) nằm ở [`system-architecture.md`](system-architecture.md).
+Điểm vào để deploy Miu World; SSH vào máy và credential SSH ở [`STAG-DEV-README.md`](STAG-DEV-README.md). Hướng triển khai đích (static + CDN cho client, server tự host) nằm ở [`system-architecture.md`](system-architecture.md).
 
 **Trạng thái:** staging đang chạy tại `https://miu-staging.hoandat.com` (§5). Production chạy tại `https://miu.hoandat.com` trên .65 từ 30/09/2026 (§7); đăng nhập Google chạy được với test user, chưa xác minh ứng dụng (§7, việc còn lại).
 
@@ -18,37 +18,7 @@
 
 ## 2. Credential
 
-Mọi credential nằm **ngoài repo**, trong iCloud của người phụ trách, và được trỏ tới bằng biến môi trường đặt một lần trong shell profile:
-
-| Biến | Tệp | Miu dùng cho |
-| --- | --- | --- |
-| `ALL_IN_ONE_STAGING_DEV` | `$HOME/Library/Mobile Documents/com~apple~CloudDocs/cong-viec/Cong viec/ENV production/all-in-one-staging-dev.json` | SSH vào **cả staging lẫn production** (xem lưu ý dưới) |
-| (cùng thư mục) | `access-tokens.json` | Secret ứng dụng và token dịch vụ (§2.2) |
-| `ALL_IN_ONE_PROD` | `all-in-one-production.json`, cùng thư mục | Không dùng: tệp này là của hệ khác |
-
-⚠️ **Máy production của Miu nằm trong tệp *staging-dev*.** Máy đó mang tên "SERVER STAGING .65" vì nó là máy staging của các dự án khác. Tìm nó trong `ALL_IN_ONE_PROD` sẽ không thấy.
-
-Ý nghĩa từng trường của hai tệp nằm ở `_meta.entry_schema` trong chính tệp đó. Khi cần xem cấu trúc thì đọc schema, đừng mở cả tệp. Không `cat`, không `source`, không chép bất kỳ phần nào vào repo.
-
-### 2.1 SSH
-
-**Lấy từng trường qua biến, không in ra màn hình.** Host và cổng lấy từ `.host` và `.port` của entry, đừng chép vào tài liệu hay script:
-
-```sh
-jq -r '.servers[] | [.group, .name, .host, .port, .auth] | @tsv' "$ALL_IN_ONE_STAGING_DEV"   # không có cột secret
-srv() { jq -r --arg n "$1" '.servers[] | select(.name == $n) | .'"$2" "$ALL_IN_ONE_STAGING_DEV"; }
-
-# Staging (lab, đăng nhập bằng mật khẩu). `sshpass -e` đọc SSHPASS nên mật khẩu không lộ trong `ps`.
-S=dattqh_ubuntu_192.168.122.176_MONGO
-SSHPASS="$(srv $S password)" sshpass -e ssh "$(srv $S user)@$(srv $S host)" -p "$(srv $S port)"
-
-# Production (.65, ưu tiên key; mật khẩu chỉ là dự phòng). Ghi key ra tệp tạm, xong việc thì xóa.
-P=SSH_SERVER_STAGING
-K="$(mktemp)"; chmod 600 "$K"; srv $P private_key > "$K"
-ssh -i "$K" -o IdentitiesOnly=yes -p "$(srv $P port)" "$(srv $P user)@$(srv $P host)"; rm -f "$K"
-```
-
-Mạng lab `192.168.122.0/24` là mạng riêng. SSH bị timeout thì kiểm VPN lab trước khi nghi credential sai.
+Mọi credential nằm **ngoài repo**, trong iCloud của người phụ trách. Tệp nào, biến nào, cách SSH vào lab 176 và .65 mà không in secret: **[`STAG-DEV-README.md`](STAG-DEV-README.md)** (§3, §4). Không `cat`, không `source`, không chép bất kỳ phần nào vào repo.
 
 ### 2.2 Secret ứng dụng (`access-tokens.json`)
 
