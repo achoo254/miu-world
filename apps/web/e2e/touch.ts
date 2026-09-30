@@ -11,6 +11,14 @@ export async function tap(page: Page, selector: string, at: { x: number; y: numb
   await page.touchscreen.tap(box.x + box.width * at.x, box.y + box.height * at.y);
 }
 
+/**
+ * How long the finger rests on the target before lifting. Chromium treats a touch that ends at least
+ * 80 ms after its last move as stopped (VelocityTracker kAssumePointerUpStoppedTimeMs). Lifting while
+ * still moving is a fling, and on Linux (Aura) the next touch that stops a fling has its tap
+ * suppressed (no click) for 400 ms. A child sets the apple down; a flick would eat the following tap.
+ */
+const HOLD_BEFORE_LIFT_MS = 120;
+
 export async function touchDrag(page: Page, from: string, to: string): Promise<void> {
   await page.locator(from).first().scrollIntoViewIfNeeded();
   const a = await page.locator(from).first().boundingBox();
@@ -23,6 +31,7 @@ export async function touchDrag(page: Page, from: string, to: string): Promise<v
   for (let i = 1; i <= 6; i += 1) {
     await cdp.send('Input.dispatchTouchEvent', { type: 'touchMove', touchPoints: [{ x: start.x + ((end.x - start.x) * i) / 6, y: start.y + ((end.y - start.y) * i) / 6 }] });
   }
+  await page.waitForTimeout(HOLD_BEFORE_LIFT_MS); // the finger stops on the target, then lifts
   await cdp.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
   await cdp.detach();
 }

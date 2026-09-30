@@ -42,6 +42,8 @@ export default defineConfig({
         PGLITE_DIR: 'memory',
         // The setup project creates its fake parent through the dev/test password route.
         PASSWORD_LOGIN: '1',
+        // Each spec signs up its own fake parent from one IP, and retries sign up again: 10 an hour is too few.
+        REGISTER_LIMIT_PER_HOUR: '1000',
         ALLOWED_ORIGINS: BASE_URL,
         GOOGLE_CLIENT_ID: 'e2e-client-id',
         GOOGLE_CLIENT_SECRET: 'test-secret-e2e',

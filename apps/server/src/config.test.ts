@@ -24,6 +24,13 @@ describe('loadConfig', () => {
     expect(() => loadConfig({ ...production, EXTRA_QUEST_DIR: '/tmp/quests' })).toThrow(/EXTRA_QUEST_DIR is test-only/);
   });
 
+  it('raises the sign-up cap only outside production', () => {
+    expect(loadConfig({ NODE_ENV: 'test' }).registerLimitPerHour).toBe(10);
+    expect(loadConfig({ NODE_ENV: 'test', REGISTER_LIMIT_PER_HOUR: '1000' }).registerLimitPerHour).toBe(1000);
+    const production = { NODE_ENV: 'production', ALLOWED_ORIGINS: 'https://miu.example', DATABASE_URL: 'postgres://db.local/miu', GOOGLE_CLIENT_ID: 'id', GOOGLE_CLIENT_SECRET: 'test-secret', GOOGLE_REDIRECT_URI: 'https://miu.example/api/auth/google/callback' };
+    expect(() => loadConfig({ ...production, REGISTER_LIMIT_PER_HOUR: '1000' })).toThrow(/REGISTER_LIMIT_PER_HOUR is test-only/);
+  });
+
   it('requires a real database in production', () => {
     expect(() => loadConfig({ NODE_ENV: 'production', ALLOWED_ORIGINS: 'https://miu.example' })).toThrow(/DATABASE_URL/);
   });

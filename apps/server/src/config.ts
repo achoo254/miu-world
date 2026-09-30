@@ -29,6 +29,8 @@ const Env = z.object({
   PASSWORD_LOGIN: z.enum(['0', '1']).optional(),
   /** Test-only folder of extra quest files (E2E plays fixture quests); refused in production. */
   EXTRA_QUEST_DIR: z.string().min(1).optional(),
+  /** Test-only cap on password sign-ups per IP per hour (E2E creates a parent per spec); refused in production. */
+  REGISTER_LIMIT_PER_HOUR: z.coerce.number().int().min(1).optional(),
 });
 
 export interface GoogleConfig {
@@ -82,6 +84,7 @@ export function loadConfig(env: Record<string, string | undefined> = process.env
     if (e.GOOGLE_AUTH_URL || e.GOOGLE_TOKEN_URL) throw new Error('Invalid server env: Google endpoint overrides are test-only');
     if (e.PASSWORD_LOGIN === '1') throw new Error('Invalid server env: PASSWORD_LOGIN is dev/test only');
     if (e.EXTRA_QUEST_DIR) throw new Error('Invalid server env: EXTRA_QUEST_DIR is test-only');
+    if (e.REGISTER_LIMIT_PER_HOUR) throw new Error('Invalid server env: REGISTER_LIMIT_PER_HOUR is test-only');
   }
   // Outside production the endpoints may point at a local fake Google, never at another host.
   for (const [key, value] of [['GOOGLE_AUTH_URL', e.GOOGLE_AUTH_URL], ['GOOGLE_TOKEN_URL', e.GOOGLE_TOKEN_URL]] as const) {
@@ -104,7 +107,7 @@ export function loadConfig(env: Record<string, string | undefined> = process.env
     databaseUrl: e.DATABASE_URL,
     pgliteDir: e.PGLITE_DIR === 'memory' ? null : e.PGLITE_DIR,
     scrypt: DEFAULT_SCRYPT,
-    registerLimitPerHour: 10,
+    registerLimitPerHour: e.REGISTER_LIMIT_PER_HOUR ?? 10,
     googleLimitPer15Min: 30,
     google:
       e.GOOGLE_CLIENT_ID && e.GOOGLE_CLIENT_SECRET && e.GOOGLE_REDIRECT_URI
