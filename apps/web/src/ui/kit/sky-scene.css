@@ -1,0 +1,158 @@
+/*
+ * Sky scene motion: clouds drift, treasures and loose blocks float at the edges, a parrot crosses now
+ * and then, the island bobs with Miu hopping on it, the logo letters hop in, the panel pops up.
+ * Only transform and opacity move (cheap on iPad). Everything stands still under prefers-reduced-motion;
+ * the decorations then stay as a still picture. Static layout of the scene is in styles.css.
+ */
+
+.cloud.cloud--far { opacity: 0.5; }
+
+.sky-decor { position: absolute; inset: 0; pointer-events: none; }
+.sky-floater { position: absolute; display: block; }
+.sky-floater .icon { display: block; filter: drop-shadow(0 6px 6px var(--color-island-shadow)); }
+
+/* A grass block: green top, dirt below, the same shading as the island. */
+.sky-block {
+  position: absolute;
+  width: var(--size);
+  height: var(--size);
+  background: linear-gradient(180deg, var(--color-grass) 0 32%, var(--color-dirt) 32% 100%);
+  box-shadow: inset 0 3px 0 var(--color-block-light), inset 0 -3px 0 var(--color-block-shade);
+  filter: var(--shadow-island);
+}
+
+.sky-parrot { display: none; position: absolute; left: 0; top: 18%; }
+.sky-parrot-bob { display: block; }
+
+.island-float { display: flex; flex-direction: column; align-items: center; position: relative; }
+.island-shadow {
+  width: 12rem;
+  height: 1.25rem;
+  margin-top: var(--space-md);
+  border-radius: 50%;
+  background: var(--color-island-shadow);
+}
+.island-twinkle { position: absolute; z-index: 1; }
+.island-twinkle--1 { top: 4%; right: -1.5rem; }
+.island-twinkle--2 { top: 40%; left: -2rem; }
+
+.miu-alt { position: absolute; inset: 0; opacity: 0; }
+
+.logo-letters { display: inline-flex; }
+.logo-letter { display: inline-block; }
+.logo-space { display: inline-block; width: 0.3em; }
+.logo-sparkle { display: inline-flex; }
+
+/* Narrow screens: fewer things in the sky, and none on phones, so the form stays the focus. */
+@media (max-width: 860px) {
+  .sky-floater--wide { display: none; }
+}
+@media (max-width: 600px) {
+  .sky-floater, .sky-block { display: none; }
+}
+/* Tall narrow screens (iPad portrait) have room for a smaller Miu under the tagline. */
+@media (max-width: 860px) and (min-height: 1000px) {
+  .scene .brand .island-stage { display: flex; }
+  .brand .miu-portrait { --size: 10rem; }
+  .brand .island-row span { width: 1.75rem; height: 1.75rem; }
+  .brand .island-shadow { width: 8rem; }
+}
+
+@media print {
+  .clouds, .sky-decor { display: none; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .cloud { animation: sky-drift var(--t) ease-in-out var(--delay) infinite alternate; }
+  .sky-floater { animation: sky-float var(--t) ease-in-out var(--delay) infinite alternate; }
+  .sky-block { animation: sky-block var(--t) ease-in-out var(--delay) infinite alternate; }
+
+  .sky-parrot { display: block; animation: sky-parrot var(--duration-parrot) linear 2s infinite both; }
+  .sky-parrot-bob { animation: sky-parrot-bob calc(var(--duration-float) / 3) ease-in-out infinite alternate; }
+
+  .island-float { animation: island-float var(--duration-float) ease-in-out infinite alternate; }
+  .island-shadow { animation: island-shadow var(--duration-float) ease-in-out infinite alternate; }
+  .island-twinkle { animation: twinkle var(--duration-twinkle) ease-in-out infinite; }
+  .island-twinkle--2 { animation-delay: calc(var(--duration-twinkle) / -2); }
+
+  /* Miu hops twice per cycle and lands in the other pose. */
+  .island-stage .miu-portrait { transform-origin: 50% 100%; animation: miu-hop var(--duration-miu-cycle) ease-in-out infinite; }
+  .miu-alt { animation: miu-alt var(--duration-miu-cycle) ease-in-out infinite; }
+
+  .logo-letter { animation: logo-letter var(--duration-enter) var(--ease-pop) calc(var(--i) * 60ms) both; }
+  .logo-sparkle { animation: logo-sparkle calc(var(--duration-twinkle) * 1.2) ease-in-out infinite alternate; }
+
+  .brand { animation: enter-side var(--duration-enter) ease-out both; }
+  .scene-content > .panel, .profile-grid > li { animation: enter-pop var(--duration-enter) var(--ease-pop) both; }
+  .scene-content--hero > .panel { animation-delay: 120ms; }
+  .profile-grid > li:nth-child(2) { animation-delay: 90ms; }
+  .profile-grid > li:nth-child(3) { animation-delay: 180ms; }
+  .profile-grid > li:nth-child(4) { animation-delay: 270ms; }
+
+  /* A light sweeps over the main button of the sign-in screens now and then. */
+  .scene-content--hero .btn--primary { position: relative; overflow: hidden; }
+  .scene-content--hero .btn--primary::after {
+    content: '';
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 40%;
+    background: linear-gradient(100deg, transparent, var(--color-shine), transparent);
+    transform: translateX(-120%) skewX(-20deg);
+    animation: btn-shine var(--duration-shine) ease-in-out 1.2s infinite;
+    pointer-events: none;
+  }
+}
+
+@keyframes sky-drift { from { transform: translateX(-3vw); } to { transform: translateX(3vw); } }
+@keyframes sky-float {
+  from { transform: translateY(0) rotate(-6deg); }
+  to { transform: translateY(-14px) rotate(6deg); }
+}
+@keyframes sky-block {
+  from { transform: translateY(0) rotate(-8deg); }
+  to { transform: translateY(-20px) rotate(10deg); }
+}
+/* Crosses the screen in the first half of the cycle, then waits off-screen. */
+@keyframes sky-parrot {
+  0% { transform: translateX(calc(100vw + 2rem)); }
+  45%, 100% { transform: translateX(-6rem); }
+}
+@keyframes sky-parrot-bob {
+  from { transform: translateY(0) rotate(4deg); }
+  to { transform: translateY(-18px) rotate(-4deg); }
+}
+
+@keyframes island-float { from { transform: translateY(0); } to { transform: translateY(-12px); } }
+@keyframes island-shadow { from { transform: scaleX(1); opacity: 1; } to { transform: scaleX(0.82); opacity: 0.6; } }
+@keyframes twinkle {
+  0%, 100% { transform: scale(0.4) rotate(0deg); opacity: 0; }
+  50% { transform: scale(1) rotate(20deg); opacity: 1; }
+}
+
+@keyframes miu-hop {
+  0%, 36%, 50%, 86%, 100% { transform: none; }
+  42%, 92% { transform: translateY(-1.25rem); }
+  46%, 96% { transform: scale(1.06, 0.94); }
+}
+@keyframes miu-alt {
+  0%, 42% { opacity: 0; }
+  46%, 92% { opacity: 1; }
+  96%, 100% { opacity: 0; }
+}
+
+@keyframes logo-letter {
+  from { transform: translateY(-0.6em) scale(0.6); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}
+@keyframes logo-sparkle {
+  from { transform: rotate(-12deg) scale(0.92); }
+  to { transform: rotate(12deg) scale(1.08); }
+}
+
+@keyframes enter-side { from { transform: translateX(-1.5rem); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes enter-pop { from { transform: translateY(1.5rem) scale(0.96); opacity: 0; } to { transform: none; opacity: 1; } }
+
+@keyframes btn-shine {
+  0% { transform: translateX(-120%) skewX(-20deg); }
+  40%, 100% { transform: translateX(320%) skewX(-20deg); }
+}

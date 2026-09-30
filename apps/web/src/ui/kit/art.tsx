@@ -12,11 +12,17 @@ export function MiuArt({ pose }: { pose: MiuPose }) {
   return <img className="miu-art" src={assetUrl(MIU_ART[pose])} alt="" draggable={false} />;
 }
 
-export function MiuPortrait({ pose, size }: { pose: MiuPose; size?: string }) {
+/** With `altPose`, the second render is stacked on top for sky-scene.css to cross-fade (no reload flash). */
+export function MiuPortrait({ pose, altPose, size }: { pose: MiuPose; altPose?: MiuPose; size?: string }) {
   const style = size ? ({ '--size': size } as CSSProperties) : undefined;
   return (
     <div className="miu-portrait" style={style}>
       <MiuArt pose={pose} />
+      {altPose ? (
+        <span className="miu-alt">
+          <MiuArt pose={altPose} />
+        </span>
+      ) : null}
     </div>
   );
 }

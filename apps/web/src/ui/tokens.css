@@ -103,6 +103,9 @@
   --shadow-secondary: 0 5px 0 var(--color-secondary-edge);
   --shadow-key: 0 5px 0 var(--color-field-edge);
   --shadow-island: drop-shadow(0 18px 18px rgba(47, 96, 170, 0.25));
+  /* Soft shadow on the sky under the floating island, and the light sweeping over the main button. */
+  --color-island-shadow: rgba(47, 96, 170, 0.22);
+  --color-shine: rgba(255, 255, 255, 0.45);
   --shadow-label: 0 4px 12px rgba(43, 33, 64, 0.2);
   --focus-ring: 0 0 0 4px var(--color-surface), 0 0 0 8px var(--color-secondary);
 
@@ -110,6 +113,14 @@
   --z-overlay: 6;
 
   --duration-press: 150ms;
+  /* Sky scene motion (kit/sky-scene.css): entrances, and the loops of the island, Miu, sparkles, parrot. */
+  --duration-enter: 480ms;
+  --duration-float: 3.2s;
+  --duration-miu-cycle: 8s;
+  --duration-twinkle: 2.4s;
+  --duration-parrot: 26s;
+  --duration-shine: 4.5s;
+  --ease-pop: cubic-bezier(0.34, 1.56, 0.64, 1);
 
   /* Older names still read by the game HUD (src/game/game.css). */
   --ink: var(--color-ink);

@@ -10,8 +10,10 @@ export const UI_ICONS = {
   backpack: `${FLUENT}/backpack.png`,
   beaver: `${FLUENT}/beaver.png`,
   books: `${FLUENT}/books.png`,
+  candy: `${FLUENT}/candy.png`,
   catFace: `${FLUENT}/cat-face.png`,
   checkMark: `${FLUENT}/check-mark.png`,
+  clover: `${FLUENT}/clover.png`,
   coin: `${FLUENT}/coin.png`,
   gear: `${FLUENT}/gear.png`,
   gift: `${FLUENT}/gift.png`,
@@ -32,6 +34,7 @@ export const UI_ICONS = {
   sparkles: `${FLUENT}/sparkles.png`,
   speaker: `${FLUENT}/speaker.png`,
   speakerMuted: `${FLUENT}/speaker-muted.png`,
+  star: `${FLUENT}/star.png`,
   tree: `${FLUENT}/tree.png`,
   unlocked: `${FLUENT}/unlocked.png`,
 } as const;
