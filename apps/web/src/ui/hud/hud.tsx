@@ -54,7 +54,20 @@ function InteractButton() {
   );
 }
 
-export function Hud({ data, quest, onMenu, onBackpack }: { data: PlayerData; quest: QuestSummary | null; onMenu: () => void; onBackpack: () => void }) {
+export function Hud({
+  data,
+  quest,
+  covered = false,
+  onMenu,
+  onBackpack,
+}: {
+  data: PlayerData;
+  quest: QuestSummary | null;
+  /** A screen covers the paused game: Interact would only show through its backdrop. */
+  covered?: boolean;
+  onMenu: () => void;
+  onBackpack: () => void;
+}) {
   return (
     <>
       <div className="hud-top-left">
@@ -79,7 +92,7 @@ export function Hud({ data, quest, onMenu, onBackpack }: { data: PlayerData; que
           Menu
         </button>
       </nav>
-      <InteractButton />
+      {covered ? null : <InteractButton />}
     </>
   );
 }

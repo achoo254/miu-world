@@ -174,13 +174,14 @@ export function PlayScreen() {
   }, []);
 
   const quest = data?.quests.find((q) => q.quest.id === questId) ?? null;
+  const covered = paused || questOpen || backpackOpen;
   const regionTitle = findRegion(quest?.quest.region ?? '')?.name ?? 'Khu rừng bí mật';
   const regionName = data ? say(regionTitle, data.character) : regionTitle;
 
   return (
     <GameStoreContext.Provider value={store}>
       <main data-id="play">
-        {data ? <GameView store={store} outfit={data.character.equipped} paused={paused || questOpen || backpackOpen} /> : null}
+        {data ? <GameView store={store} outfit={data.character.equipped} paused={covered} /> : null}
         {loadError ? (
           <div className="play-message" role="alert">
             <p>
@@ -190,9 +191,10 @@ export function PlayScreen() {
         ) : null}
         {loadError || offline ? null : <LoadingOverlay region={regionName} />}
         {offline ? <OfflineBanner onRetry={retryOffline} /> : null}
-        <InteractionLabel />
+        {/* The in-world label and Interact would show through a screen's backdrop: only while playing. */}
+        {covered ? null : <InteractionLabel />}
         <GameStatus />
-        {data && status !== 'error' ? <Hud data={data} quest={quest} onMenu={() => setPaused(true)} onBackpack={() => setBackpackOpen(true)} /> : null}
+        {data && status !== 'error' ? <Hud data={data} quest={quest} covered={covered} onMenu={() => setPaused(true)} onBackpack={() => setBackpackOpen(true)} /> : null}
         {data && backpackOpen ? (
           <Modal title="Ba lô" onClose={() => setBackpackOpen(false)} dataId="play-backpack" size="wide">
             <BackpackPanel data={data} />
