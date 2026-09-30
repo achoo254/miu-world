@@ -17,8 +17,9 @@ function InteractionLabel() {
     <button
       type="button"
       className="npc-label"
-      data-npc={prompt.npcId}
-      data-id={`play-prompt-${prompt.npcId}`}
+      data-target={prompt.targetId}
+      data-kind={prompt.kind}
+      data-id={`play-prompt-${prompt.targetId}`}
       // The game writes this element's transform (and reveals it) every frame; React only mounts/unmounts it.
       style={{ visibility: 'hidden' }}
       ref={(el) => {
@@ -35,6 +36,17 @@ function InteractionLabel() {
 function GameStatus() {
   const error = useGameState((s) => s.error);
   if (!error) return null;
+  if (error.code === 'context-lost') {
+    return (
+      <div className="play-message" role="alert" data-id="play-context-lost">
+        <p>Mất kết nối đồ họa.</p>
+        {/* A full page load rebuilds the WebGL context; progress already saved on the server is kept. */}
+        <button type="button" data-id="play-context-lost-reload" onClick={() => window.location.assign('/play')}>
+          Tải lại
+        </button>
+      </div>
+    );
+  }
   return (
     <div className="play-message" role="alert" data-id="play-error">
       <p>

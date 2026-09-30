@@ -36,6 +36,9 @@ import './game.css';
 
 const MAP_ID = 'forest-ch1';
 
+/** Boot steps reported as `loading-progress`: renderer, asset registry, map data, world mesh, models. */
+const LOADING_STEPS = 5;
+
 export interface GameOptions {
   store: GameStore;
   /** Query string with dev/review switches: quality, autopilot, spawnAt, shot, outfit. */
@@ -89,9 +92,14 @@ function buildDom(host: HTMLElement) {
 export class Game {
   private disposed = false;
   private started = false;
+  /** Set by `stop()`; the loop only runs while this is false (also when boot finishes mid-pause). */
+  private paused = false;
+  private contextLost = false;
   private readonly cleanups: Array<() => void> = [];
   private renderer: WebGLRenderer | null = null;
   private scene: Scene | null = null;
+  private loop: (() => void) | null = null;
+  private timer: Timer | null = null;
 
   constructor(
     private readonly host: HTMLElement,
@@ -107,16 +115,27 @@ export class Game {
     } catch (err) {
       if (this.disposed) return; // torn down mid-load: not an error
       console.error(err);
-      this.options.store.emit({ type: 'error', message: err instanceof Error ? err.message : String(err) });
+      this.options.store.emit({ type: 'error', code: 'load-failed', message: err instanceof Error ? err.message : String(err) });
     }
   }
 
-  /**
-   * Pauses rendering (e.g. while a full-screen menu is open, Master Plan §12). Resuming is not wired
-   * yet: the first full-screen menu (SLICE) adds `resume()` next to this.
-   */
+  /** Pauses rendering while a full-screen screen (Pause, Backpack, challenge) covers the game (Master Plan §12). */
   stop(): void {
+    this.paused = true;
     this.renderer?.setAnimationLoop(null);
+  }
+
+  /** Restarts rendering after `stop()`. No-op before the first frame is ready, after dispose, or once the context is lost. */
+  resume(): void {
+    this.paused = false;
+    this.runLoop();
+  }
+
+  private runLoop(): void {
+    if (this.paused || this.disposed || this.contextLost || !this.renderer || !this.loop) return;
+    // The paused time must not reach the next frame as one long step.
+    this.timer?.reset();
+    this.renderer.setAnimationLoop(this.loop);
   }
 
   /** Frees GPU memory (geometry, materials, textures, context), listeners and DOM. Safe to call twice. */
@@ -146,6 +165,9 @@ export class Game {
 
   private async boot(): Promise<void> {
     const { store, search } = this.options;
+    let loadingDone = 0;
+    const stepLoaded = (): void => store.emit({ type: 'loading-progress', done: ++loadingDone, total: LOADING_STEPS });
+    store.emit({ type: 'loading-progress', done: 0, total: LOADING_STEPS });
     const params = new URLSearchParams(search);
     const quality = readQuality(search);
     const dom = buildDom(this.host);
@@ -161,6 +183,18 @@ export class Game {
     renderer.shadowMap.enabled = quality.shadows;
     renderer.shadowMap.type = PCFShadowMap;
     dom.root.prepend(renderer.domElement);
+    // iPad Safari drops the context under memory pressure. The scene cannot be rebuilt in place, so the
+    // game stops and React offers a reload. dispose() forces a context loss too: that one is not an error.
+    const onContextLost = (event: Event): void => {
+      if (this.disposed) return;
+      event.preventDefault();
+      this.contextLost = true;
+      renderer.setAnimationLoop(null);
+      store.emit({ type: 'error', code: 'context-lost', message: 'WebGL context lost' });
+    };
+    renderer.domElement.addEventListener('webglcontextlost', onContextLost);
+    this.cleanups.push(() => renderer.domElement.removeEventListener('webglcontextlost', onContextLost));
+    stepLoaded();
 
     const scene = new Scene();
     this.scene = scene;
@@ -177,11 +211,14 @@ export class Game {
     scene.add(sun, sun.target);
 
     const registry = await AssetRegistry.load();
+    stepLoaded();
     const loader = new GuardedGltfLoader(registry);
     const data = await loadWorldData(registry, MAP_ID);
     if (this.disposed) return;
+    stepLoaded();
     const world = await createWorldRenderer(data);
     if (this.disposed) return;
+    stepLoaded();
     world.setViewDistance(quality.viewDistance);
     world.group.traverse((o) => (o.receiveShadow = quality.shadows));
     scene.add(world.group);
@@ -201,6 +238,7 @@ export class Game {
       loadProps(loader, data.entities, quality.shadows),
     ]);
     if (this.disposed) return;
+    stepLoaded();
     scene.add(character.root, props, ...npcs.map((n) => n.root));
     overlay.stats.outfit = character.outfit;
 
@@ -240,10 +278,11 @@ export class Game {
     overlay.stats.worker = world.usedWorker;
     const timer = new Timer();
     timer.connect(document);
+    this.timer = timer;
     this.cleanups.push(() => timer.dispose());
     let firstFrame = true;
 
-    renderer.setAnimationLoop(() => {
+    this.loop = () => {
       timer.update();
       // Review screenshots step a fixed 1/60 s, then freeze once ready: the capture lands a variable number of
       // frames later, and water / NPC animation must not move in between.
@@ -290,7 +329,10 @@ export class Game {
       }
       if (nearest !== promptNpc) {
         promptNpc = nearest;
-        store.emit({ type: 'interaction-prompt', prompt: nearest ? { npcId: nearest.id, name: nearest.name, label: nearest.label } : null });
+        store.emit({
+          type: 'interaction-prompt',
+          prompt: nearest ? { targetId: nearest.id, kind: 'npc', name: nearest.name, label: nearest.label } : null,
+        });
       }
       if (promptNpc) {
         const anchor = store.getPromptAnchor();
@@ -299,7 +341,7 @@ export class Game {
           anchor.style.transform = `translate(-50%, -100%) translate(${x}px, ${y}px)`;
           anchor.style.visibility = 'visible'; // hidden until first positioned: no flash at 0,0
         }
-        if (interact) store.emit({ type: 'interaction', npcId: promptNpc.id });
+        if (interact) store.emit({ type: 'interaction', targetId: promptNpc.id });
       }
       overlay.stats.player = [controller.position.x, controller.position.y, controller.position.z];
       overlay.stats.onGround = controller.onGround;
@@ -317,6 +359,7 @@ export class Game {
         dom.loading.hidden = true;
         store.emit({ type: 'ready' });
       }
-    });
+    };
+    this.runLoop();
   }
 }

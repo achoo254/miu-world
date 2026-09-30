@@ -95,7 +95,7 @@ function renderMapShot(): void {
   const store = createGameStore();
   store.subscribe(() => {
     const error = store.getSnapshot().error;
-    if (error) document.body.dataset.error = error;
+    if (error) document.body.dataset.error = error.message;
   });
   void new Game(document.body, { store, search: window.location.search, outfit: ['hat-witch-pink', 'backpack-brown'] }).start();
 }

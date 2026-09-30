@@ -60,7 +60,7 @@ test('Google sign-in → set PIN → consent → create profile → pick profile
   // Same session, spawn next to the parrot: the React label appears.
   await page.goto('/play?quality=low&spawnAt=npc');
   await waitReady(page);
-  await expect(page.locator('.npc-label[data-npc="parrot-guide"]')).toBeVisible();
+  await expect(page.locator('.npc-label[data-target="parrot-guide"]')).toBeVisible();
   await shot(page, '06-play-parrot');
 
   // The child cannot reach the parent area without the PIN.

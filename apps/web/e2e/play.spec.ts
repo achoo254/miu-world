@@ -82,7 +82,7 @@ test('dragging on the scene orbits the camera (mouse and touch share the pointer
 test('shows the parrot interaction label (React) when the player is close, and hides it when leaving', async ({ page }) => {
   await page.goto('/play?quality=low&spawnAt=npc');
   await waitReady(page);
-  const label = page.locator('.npc-label[data-npc="parrot-guide"]');
+  const label = page.locator('.npc-label[data-target="parrot-guide"]');
   await expect(label).toBeVisible();
   await expect(label).toContainText('Vẹt');
   // The game positions the React label every frame through the registered anchor.
@@ -102,6 +102,29 @@ test('leaving /play disposes the game: no canvas, no stats handle', async ({ pag
   await expect(page.getByRole('heading', { name: 'Ai đang chơi?' })).toBeVisible();
   await expect(page.locator('canvas')).toHaveCount(0);
   expect(await page.evaluate(() => window.__miuStats)).toBeUndefined();
+});
+
+test('a lost WebGL context stops the game and offers a reload instead of breaking', async ({ page }) => {
+  const pageErrors: string[] = [];
+  page.on('pageerror', (err) => pageErrors.push(err.message));
+  await page.goto('/play?quality=low');
+  await waitReady(page);
+  // What iPad Safari does under memory pressure, triggered through the standard debug extension.
+  await page.evaluate(() => {
+    const canvas = document.querySelector('canvas');
+    const gl = canvas?.getContext('webgl2') ?? canvas?.getContext('webgl');
+    gl?.getExtension('WEBGL_lose_context')?.loseContext();
+  });
+  await expect(page.locator('[data-id="play-context-lost"]')).toBeVisible();
+  const frames = (await readStats(page)).frames;
+  await page.waitForTimeout(500);
+  expect((await readStats(page)).frames).toBe(frames);
+
+  await page.locator('[data-id="play-context-lost-reload"]').click();
+  await waitReady(page);
+  await expect(page.locator('canvas')).toHaveCount(1);
+  await expect(page.locator('[data-id="play-context-lost"]')).toHaveCount(0);
+  expect(pageErrors).toEqual([]);
 });
 
 test('the build serves only runtime assets and nothing outside the manifest', async ({ request }) => {

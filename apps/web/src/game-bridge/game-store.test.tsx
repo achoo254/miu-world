@@ -1,11 +1,11 @@
 import { act, cleanup, render, screen } from '@testing-library/react';
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { createGameStore } from './game-store';
+import { INITIAL_SNAPSHOT, createGameStore, reduce, type GameCommand } from './game-store';
 import { GameStoreContext, useGameState } from './use-game-state';
 
 afterEach(cleanup);
 
-const parrot = { npcId: 'parrot-guide', name: 'Vẹt', label: 'Nói chuyện' };
+const parrot = { targetId: 'parrot-guide', kind: 'npc', name: 'Vẹt', label: 'Nói chuyện' } as const;
 
 describe('game store', () => {
   it('notifies subscribers on change and stops after unsubscribe', () => {
@@ -15,7 +15,7 @@ describe('game store', () => {
     store.emit({ type: 'ready' });
     expect(listener).toHaveBeenCalledTimes(1);
     unsubscribe();
-    store.emit({ type: 'error', message: 'x' });
+    store.emit({ type: 'error', code: 'load-failed', message: 'x' });
     expect(listener).toHaveBeenCalledTimes(1);
   });
 
@@ -32,21 +32,61 @@ describe('game store', () => {
     expect(store.getSnapshot().prompt).toBe(first.prompt);
   });
 
-  it('counts interactions', () => {
+  it('counts interactions across targets', () => {
     const store = createGameStore();
-    store.emit({ type: 'interaction', npcId: 'parrot-guide' });
-    store.emit({ type: 'interaction', npcId: 'parrot-guide' });
-    expect(store.getSnapshot().lastInteraction).toEqual({ npcId: 'parrot-guide', count: 2 });
+    store.emit({ type: 'interaction', targetId: 'parrot-guide' });
+    store.emit({ type: 'interaction', targetId: 'parrot-guide' });
+    expect(store.getSnapshot().lastInteraction).toEqual({ targetId: 'parrot-guide', count: 2 });
+    store.emit({ type: 'interaction', targetId: 'chest-1' });
+    expect(store.getSnapshot().lastInteraction).toEqual({ targetId: 'chest-1', count: 3 });
   });
 
-  it('routes React commands to the game', () => {
+  it('tracks loading progress, clamped to the total and unchanged on repeats', () => {
+    const one = reduce(INITIAL_SNAPSHOT, { type: 'loading-progress', done: 1, total: 5 });
+    expect(one.loading).toEqual({ done: 1, total: 5 });
+    expect(reduce(one, { type: 'loading-progress', done: 1, total: 5 })).toBe(one);
+    expect(reduce(one, { type: 'loading-progress', done: 9, total: 5 }).loading).toEqual({ done: 5, total: 5 });
+  });
+
+  it('keeps the error code (context lost vs load failure) and drops the prompt', () => {
+    const near = reduce(reduce(INITIAL_SNAPSHOT, { type: 'ready' }), { type: 'interaction-prompt', prompt: parrot });
+    const lost = reduce(near, { type: 'error', code: 'context-lost', message: 'WebGL context lost' });
+    expect(lost.status).toBe('error');
+    expect(lost.error).toEqual({ code: 'context-lost', message: 'WebGL context lost' });
+    expect(lost.prompt).toBeNull();
+  });
+
+  it('treats a changed kind or label as a new prompt', () => {
+    const near = reduce(INITIAL_SNAPSHOT, { type: 'interaction-prompt', prompt: parrot });
+    expect(reduce(near, { type: 'interaction-prompt', prompt: { ...parrot, label: 'Hỏi đường' } })).not.toBe(near);
+    expect(reduce(near, { type: 'interaction-prompt', prompt: { ...parrot, kind: 'object' } })).not.toBe(near);
+  });
+
+  it('routes every React command to the game, and stops after unsubscribe', () => {
     const store = createGameStore();
     const handler = vi.fn();
     const off = store.onCommand(handler);
-    store.send({ type: 'interact' });
+    const commands: GameCommand[] = [
+      { type: 'interact' },
+      { type: 'set-outfit', equipped: ['hat-witch-pink', 'backpack-brown:blue'] },
+      { type: 'set-world-state', state: { 'clue-1': 'found', 'chest-1': 'open', 'letter-1': 'hidden' } },
+      { type: 'set-target-hint', targetId: 'parrot-guide' },
+      { type: 'set-target-hint', targetId: null },
+    ];
+    for (const command of commands) store.send(command);
+    expect(handler.mock.calls.map(([command]) => command)).toEqual(commands);
     off();
     store.send({ type: 'interact' });
-    expect(handler).toHaveBeenCalledTimes(1);
+    expect(handler).toHaveBeenCalledTimes(commands.length);
+  });
+
+  it('commands do not touch the snapshot', () => {
+    const store = createGameStore();
+    const listener = vi.fn();
+    store.subscribe(listener);
+    store.send({ type: 'set-target-hint', targetId: 'parrot-guide' });
+    expect(listener).not.toHaveBeenCalled();
+    expect(store.getSnapshot()).toBe(INITIAL_SNAPSHOT);
   });
 });
 
