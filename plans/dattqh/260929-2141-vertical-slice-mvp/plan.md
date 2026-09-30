@@ -46,7 +46,7 @@ Không thuộc plan này: loài Thỏ/Cáo/Gấu, Kim cương, chuỗi ngày (st
 | 6 | [Khu rừng ch1: vật thể tương tác, di chuyển, camera](./phase-06-forest-interactables.md) | SLICE-03, 04, 07 | L | 2, 5 | In progress |
 | 7 | [NPC hội thoại + mở đầu quest + tracker](./phase-07-npc-dialogue-quest-flow.md) | SLICE-05 | M | 3, 5, 6 | Completed |
 | 8 | [3 thử thách Toán + hỗ trợ học + bước đọc/đố](./phase-08-math-challenges-learning-support.md) | SLICE-08, 09 | L | 1, 3, 7 | Completed |
-| 9 | [Hoàn thành, Level Up, mở khóa; Ba lô + Bộ sưu tập](./phase-09-rewards-backpack-collection.md) | SLICE-10, 11 | M | 3, 8 | Pending |
+| 9 | [Hoàn thành, Level Up, mở khóa; Ba lô + Bộ sưu tập](./phase-09-rewards-backpack-collection.md) | SLICE-10, 11 | M | 3, 8 | Completed |
 | 10 | [Bảo mật, E2E trọn vòng, hiệu năng, trang review](./phase-10-security-e2e-review-gate.md) | #22 | M | 4–9 | Pending |
 
 Song song (đã rà file, xem Red Team): phase 1 và 2 độc lập; 3 song song với 1; 4 song song với 3, 5 và 6 (phase 6 sau phase 5).

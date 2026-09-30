@@ -1,7 +1,7 @@
 ---
 phase: 9
 title: "Hoàn thành, Level Up, mở khóa; Ba lô + Bộ sưu tập"
-status: pending
+status: completed
 priority: P1
 effort: "M"
 dependencies: [3, 8]
@@ -33,6 +33,12 @@ Khoảnh khắc thưởng (M2.9/M3.11), Level Up và Mở khóa (NEW SCREEN MVP)
 
 ## Verification
 - `pnpm vitest run`; E2E `quest-flow` trọn vòng xanh
+
+## Kết quả (2026-09-30)
+- `ui/rewards/completion-sequence.tsx`: tối đa 3 màn (Thưởng → Lên cấp nếu `levelAfter > levelBefore` → Mở khóa nếu `unlocked` có), một chạm/Esc để qua; sao, `xpAwarded`, Xu, vật phẩm, Skill XP (kèm "Kỹ năng lên cấp" khi `skillLevels` tăng) đều từ response; 90 XP có lời khích lệ, không chữ "phạt"; chỉ hiện với call trả `completion` (không khi `repeated`).
+- Catalog vật phẩm `content/items/*.json` + `packages/schema/src/item.ts` (không chung `content.ts` với plan SGK); `content:check` kiểm schema, tên file = id, icon có trong UI, mọi item quest thưởng đều có mô tả (bỏ ghi chú "chưa kiểm item").
+- Ba lô: `/backpack` (từ Home) và hộp thoại trên `/play` (HUD, game dừng render); tab Tất cả/Vật phẩm/Nhiệm vụ từ `GET /api/inventory`. Hồ sơ `/profile` (bấm badge ở Home): kỹ năng theo môn, bộ sưu tập (ô khóa cho món chưa có), Hành trình/Thành tích "Sắp có".
+- E2E `quest-flow`: hoàn thành ch1 không xem đáp án → 3 sao, +100 XP, Lá thần → Lv.1→2 → mở ch2 (sắp có) → Về bản đồ (ch1 xong, Lv.2) → Ba lô và Bộ sưu tập có Lá thần. `challenges`: có xem đáp án → 90 XP.
 
 ## Risk
 - Chuỗi màn chúc mừng dài làm trẻ sốt ruột: cho bỏ qua bằng một chạm, tổng ≤ 3 màn.
