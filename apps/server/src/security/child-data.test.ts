@@ -6,7 +6,7 @@ import { getTableConfig, type PgTable } from 'drizzle-orm/pg-core';
 import { describe, expect, it } from 'vitest';
 import * as schema from '../db/schema';
 
-const tables = Object.values(schema).filter((v): v is PgTable => typeof v === 'object' && v !== null && Symbol.for('drizzle:IsDrizzleTable') in v);
+const tables = Object.values(schema as Record<string, unknown>).filter((v): v is PgTable => typeof v === 'object' && v !== null && Symbol.for('drizzle:IsDrizzleTable') in v);
 const configs = tables.map((table) => getTableConfig(table));
 const childTables = configs.filter((c) => c.columns.some((col) => col.name === 'child_id'));
 
