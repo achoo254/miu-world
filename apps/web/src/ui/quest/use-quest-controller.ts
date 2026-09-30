@@ -4,7 +4,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { freshPicker, type FreshPicker } from '@miu/quest/pick-fresh';
 import type { QuestStepPublic } from '@miu/schema/content';
-import { StepCompleteResponse, type StepCompleteRequest } from '@miu/schema/game';
+import { StepCompleteResponse, type QuestCompletion, type StepCompleteRequest } from '@miu/schema/game';
 import type { GameStore, InteractableKind } from '../../game-bridge/game-store';
 import { ApiError, api, errorMessage } from '../api-client';
 import { say, type PlayerData } from '../player/player-data';
@@ -14,8 +14,16 @@ import { autoStep, hintTarget, stepForTarget, worldState, type ActiveQuestView }
 /** What covers the game right now: a dialogue, or a learning step screen (read, riddle, challenge). */
 export type QuestOverlay = { step: QuestStepPublic } | null;
 
+/** The quest just finished: what the server paid, for the reward screens. */
+export interface FinishedQuest {
+  completion: QuestCompletion;
+  reward: NonNullable<StepCompleteResponse['reward']>;
+}
+
 export interface QuestController {
   overlay: QuestOverlay;
+  finished: FinishedQuest | null;
+  closeFinished: () => void;
   busy: boolean;
   toast: string | null;
   clearToast: () => void;
@@ -39,6 +47,7 @@ interface Options {
 
 export function useQuestController({ store, data, questId, onResponse, onOverlayChange }: Options): QuestController {
   const [overlay, setOverlayState] = useState<QuestOverlay>(null);
+  const [finished, setFinished] = useState<FinishedQuest | null>(null);
   const [busy, setBusy] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
   const [retry, setRetry] = useState<(() => Promise<void>) | null>(null);
@@ -94,6 +103,11 @@ export function useQuestController({ store, data, questId, onResponse, onOverlay
         setRetry(null);
         latest.current.onResponse(response);
         syncWorld(active.quest, response.quest);
+        // Only the call that finished the quest carries a completion; a repeat grants nothing new.
+        if (response.completion && response.reward && !response.repeated) {
+          setFinished({ completion: response.completion, reward: response.reward });
+          latest.current.onOverlayChange?.(true);
+        }
         // A wrong answer's line shows inside the step screen; only a right one becomes a toast.
         if (response.feedback && response.correct) setToast(say(response.feedback, latest.current.data.character));
         if (response.correct) {
@@ -189,6 +203,11 @@ export function useQuestController({ store, data, questId, onResponse, onOverlay
 
   return {
     overlay,
+    finished,
+    closeFinished: useCallback(() => {
+      setFinished(null);
+      latest.current.onOverlayChange?.(latest.current.overlay !== null);
+    }, []),
     busy,
     toast,
     clearToast: useCallback(() => setToast(null), []),

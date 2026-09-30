@@ -41,3 +41,5 @@
 .home-hotspot--locked { background: var(--color-surface-glass); color: var(--color-ink-soft); cursor: default; }
 .home-today-quest { font-family: var(--font-display); font-weight: 800; font-size: var(--text-lg); }
 .home-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-sm); }
+.home-profile-link { color: inherit; text-decoration: none; border-radius: var(--radius-pill); }
+.home-profile-link:focus-visible { box-shadow: var(--focus-ring); outline: none; }

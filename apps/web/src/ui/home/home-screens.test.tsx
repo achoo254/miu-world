@@ -110,7 +110,7 @@ describe('HUD', () => {
       <MemoryRouter>
         <GameStoreContext.Provider value={store}>
           <Profiler id="hud" onRender={() => (trackerRenders += 1)}>
-            <Hud data={data} quest={data.quests[0] ?? null} onMenu={() => undefined} />
+            <Hud data={data} quest={data.quests[0] ?? null} onMenu={() => undefined} onBackpack={() => undefined} />
           </Profiler>
         </GameStoreContext.Provider>
       </MemoryRouter>,

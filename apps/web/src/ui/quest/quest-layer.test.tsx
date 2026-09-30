@@ -1,5 +1,6 @@
 import { act } from 'react';
 import { cleanup, fireEvent, render, screen } from '@testing-library/react';
+import { MemoryRouter } from 'react-router';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { QuestStepPublic } from '@miu/schema/content';
 import type { CharacterDto, StepCompleteResponse } from '@miu/schema/game';
@@ -79,10 +80,15 @@ describe('quest controller', () => {
     let data: PlayerData = { character: CHARACTER, progress: PROGRESS, quests: questList(0).quests };
     const onResponse = (r: StepCompleteResponse) => {
       data = { ...data, quests: data.quests.map((q) => (q.quest.id === r.quest.questId ? { ...q, progress: r.quest, state: 'in-progress' } : q)) };
-      view.rerender(<QuestLayer store={store} data={data} questId="forest-ch1" onResponse={onResponse} onOverlayChange={overlay} />);
+      view.rerender(layer());
     };
     const overlay = vi.fn();
-    const view = render(<QuestLayer store={store} data={data} questId="forest-ch1" onResponse={onResponse} onOverlayChange={overlay} />);
+    const layer = () => (
+      <MemoryRouter>
+        <QuestLayer store={store} data={data} questId="forest-ch1" onResponse={onResponse} onOverlayChange={overlay} />
+      </MemoryRouter>
+    );
+    const view = render(layer());
     const touch = (targetId: string, name: string, kind: 'npc' | 'object') =>
       act(() => {
         store.emit({ type: 'interaction-prompt', prompt: { targetId, kind, name, label: 'x' } });

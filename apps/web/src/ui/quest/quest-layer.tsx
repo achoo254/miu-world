@@ -9,6 +9,8 @@ import { Modal } from '../kit/modal';
 import { Toast } from '../kit/toast';
 import { say, type PlayerData } from '../player/player-data';
 import { OfflineBanner } from '../system/offline-banner';
+import { useNavigate } from 'react-router';
+import { CompletionSequence } from '../rewards/completion-sequence';
 import { useQuestController } from './use-quest-controller';
 
 export function QuestLayer({
@@ -26,6 +28,7 @@ export function QuestLayer({
   onOverlayChange: (open: boolean) => void;
 }) {
   const quest = useQuestController({ store, data, questId, onResponse, onOverlayChange });
+  const navigate = useNavigate();
   const summary = data.quests.find((q) => q.quest.id === questId);
   const step = quest.overlay?.step ?? null;
   return (
@@ -49,6 +52,16 @@ export function QuestLayer({
             Đóng
           </button>
         </Modal>
+      ) : null}
+      {quest.finished && summary?.quest.status === 'active' ? (
+        <CompletionSequence
+          completion={quest.finished.completion}
+          reward={quest.finished.reward}
+          quest={summary.quest}
+          data={data}
+          onMap={() => navigate(`/region/${summary.quest.region}`)}
+          onExplore={quest.closeFinished}
+        />
       ) : null}
       {quest.error ? (
         <p role="alert" className="error quest-error" data-id="quest-error">

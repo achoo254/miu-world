@@ -12,6 +12,8 @@ import { Hud } from '../hud/hud';
 import type { StepCompleteResponse } from '@miu/schema/game';
 import { currentQuest, loadPlayer, type PlayerData } from '../player/player-data';
 import { QuestLayer } from '../quest/quest-layer';
+import { BackpackPanel } from '../backpack/backpack-panel';
+import { Modal } from '../kit/modal';
 import { findRegion } from '../region/regions';
 import { LoadingOverlay } from '../system/loading-overlay';
 import { OfflineBanner } from '../system/offline-banner';
@@ -103,6 +105,7 @@ export function PlayScreen() {
   const [offline, setOffline] = useState(false);
   const [paused, setPaused] = useState(false);
   const [questOpen, setQuestOpen] = useState(false);
+  const [backpackOpen, setBackpackOpen] = useState(false);
   const status = useSyncStatus(store);
 
   const onLoadError = useCallback(
@@ -168,7 +171,7 @@ export function PlayScreen() {
   return (
     <GameStoreContext.Provider value={store}>
       <main data-id="play">
-        {data ? <GameView store={store} outfit={data.character.equipped} paused={paused || questOpen} /> : null}
+        {data ? <GameView store={store} outfit={data.character.equipped} paused={paused || questOpen || backpackOpen} /> : null}
         {loadError ? (
           <div className="play-message" role="alert">
             <p>
@@ -180,7 +183,12 @@ export function PlayScreen() {
         {offline ? <OfflineBanner onRetry={retryOffline} /> : null}
         <InteractionLabel />
         <GameStatus />
-        {data && status !== 'error' ? <Hud data={data} quest={quest} onMenu={() => setPaused(true)} /> : null}
+        {data && status !== 'error' ? <Hud data={data} quest={quest} onMenu={() => setPaused(true)} onBackpack={() => setBackpackOpen(true)} /> : null}
+        {data && backpackOpen ? (
+          <Modal title="Ba lô" onClose={() => setBackpackOpen(false)} dataId="play-backpack" size="wide">
+            <BackpackPanel data={data} />
+          </Modal>
+        ) : null}
         {data ? <QuestLayer store={store} data={data} questId={quest?.quest.id ?? null} onResponse={onResponse} onOverlayChange={setQuestOpen} /> : null}
         {paused ? <PauseScreen onResume={() => setPaused(false)} homePath={HOME_PATH} /> : null}
       </main>

@@ -7,7 +7,9 @@ import { pathToFileURL } from 'node:url';
 import { CONTENT_DIR, loadContentCatalog, readQuestDefinitions } from '../../apps/server/src/content/content-catalog';
 import { playerTextIssues } from '../../packages/quest/src/player-name';
 import { stepTargets, type QuestDefinition } from '../../packages/schema/src/content';
+import { Item } from '../../packages/schema/src/item';
 import { RegionCatalog } from '../../packages/schema/src/region';
+import { UI_ICONS } from '../../apps/web/src/ui/kit/ui-art';
 import { worldEntitiesSchema } from '../../packages/voxel/src/world-entities';
 import { ASSETS_DIR } from '../assets/asset-lib';
 import { CURRICULUM_FOLDERS, checkCurriculum } from './check-curriculum';
@@ -30,6 +32,7 @@ const CATALOGUE_FILES = [
 const ASSET_TOOL_FILES = ['blocks.json', 'characters.json', 'palette.json', 'faces/', 'animations/'];
 /** Content only the web app reads; validated here. */
 const REGIONS_FILE = 'world/regions.json';
+const ITEMS_FOLDER = 'items/';
 
 /**
  * Map id prefix of each region; chapter N plays on `<prefix>-ch<N>`. Moves into the region catalogue
@@ -106,7 +109,30 @@ const readByCatalogue = (rel: string) =>
   CATALOGUE_FILES.some((o) => (o.endsWith('/') ? inFolder(rel, o) && rel.endsWith('.json') : rel === o));
 const readByAssetTools = (rel: string) => ASSET_TOOL_FILES.some((o) => (o.endsWith('/') ? inFolder(rel, o) : rel === o));
 const readByCurriculum = (rel: string) => CURRICULUM_FOLDERS.some((o) => inFolder(rel, o) && rel.endsWith('.json'));
-const readByWeb = (rel: string) => rel === REGIONS_FILE;
+const readByWeb = (rel: string) => rel === REGIONS_FILE || (inFolder(rel, ITEMS_FOLDER) && rel.endsWith('.json'));
+
+/** Items parse, use a shipped UI icon, file name = id, and every item a quest rewards exists. */
+export function checkItems(dir: string, files: readonly string[], quests: Iterable<QuestDefinition>): string[] {
+  const issues: string[] = [];
+  const ids = new Set<string>();
+  for (const rel of files.filter((f) => inFolder(f, ITEMS_FOLDER) && f.endsWith('.json'))) {
+    const parsed = Item.safeParse(JSON.parse(readFileSync(path.join(dir, rel), 'utf8')));
+    if (!parsed.success) {
+      issues.push(`content/${rel}: ${parsed.error.message}`);
+      continue;
+    }
+    const item = parsed.data;
+    if (`${ITEMS_FOLDER}${item.id}.json` !== rel) issues.push(`content/${rel}: file name must be ${item.id}.json`);
+    if (!(item.icon in UI_ICONS)) issues.push(`item ${item.id} uses icon "${item.icon}", which the UI does not ship`);
+    for (const text of [item.name, item.description, item.usedIn]) for (const issue of playerTextIssues(text)) issues.push(`item ${item.id} ${issue}`);
+    ids.add(item.id);
+  }
+  for (const quest of quests) {
+    if (quest.status !== 'active') continue;
+    for (const id of Object.keys(quest.reward.items)) if (!ids.has(id)) issues.push(`quest ${quest.id} rewards item ${id}, which content/items does not describe`);
+  }
+  return issues;
+}
 
 /** Regions parse; their text addresses the player as `{name}`; active quests live in open regions, and every open region has one. */
 export function checkRegions(raw: unknown, quests: Iterable<QuestDefinition>): string[] {
@@ -135,7 +161,7 @@ export function checkContent(dir: string = CONTENT_DIR): ContentReport {
       issues.push(`content/${rel} has no validator: add it to the server catalogue or an asset tool`);
     }
   }
-  const notes = ['reward item ids are not checked yet: there is no item catalogue'];
+  const notes: string[] = [];
   const warnings: string[] = [];
   try {
     const catalog = loadContentCatalog({ dir });
@@ -144,6 +170,7 @@ export function checkContent(dir: string = CONTENT_DIR): ContentReport {
     issues.push(...targets.issues);
     // Drafts become game text too, so the player's name rule covers every quest file.
     issues.push(...checkPlayerText(readQuestDefinitions(path.join(dir, 'quests'))));
+    issues.push(...checkItems(dir, files, catalog.quests.values()));
     issues.push(...checkRegions(JSON.parse(readFileSync(path.join(dir, REGIONS_FILE), 'utf8')), catalog.quests.values()));
     for (const item of catalog.accessories.values()) {
       const quest = item.unlock?.quest;

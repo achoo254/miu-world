@@ -1,0 +1,33 @@
+/* Completion, Level Up, Unlock, Backpack, Profile: values from tokens.css only. */
+.reward-body { display: flex; flex-direction: column; align-items: center; gap: var(--space-sm); text-align: center; }
+.reward-stars { display: flex; gap: var(--space-xs); }
+.reward-star--off { filter: grayscale(1); opacity: 0.35; }
+.reward-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-xs); align-items: flex-start; font-weight: 700; font-size: var(--text-lg); }
+.reward-list li { display: flex; align-items: center; gap: var(--space-xs); flex-wrap: wrap; }
+.reward-level { font-family: var(--font-display); font-weight: 800; font-size: var(--text-hero); }
+
+.item-grid-backpack { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(6.5rem, 1fr)); gap: var(--space-sm); }
+.bag-tile {
+  width: 100%;
+  min-height: 7rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  padding: var(--space-sm);
+  border: 3px solid var(--color-field-line);
+  border-radius: var(--radius-field);
+  background: var(--color-field);
+  color: var(--color-ink);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+.bag-tile[aria-pressed='true'] { border-color: var(--color-primary); background: var(--color-badge); }
+.bag-tile:focus-visible { box-shadow: var(--focus-ring); outline: none; }
+.bag-tile--locked { cursor: default; color: var(--color-ink-soft); filter: grayscale(1); opacity: 0.6; }
+.bag-qty { font-family: var(--font-display); font-weight: 800; }
+.bag-detail { display: flex; flex-direction: column; gap: var(--space-xs); }
+.skill-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-sm); }
+.skill-list li { display: flex; justify-content: space-between; gap: var(--space-md); }

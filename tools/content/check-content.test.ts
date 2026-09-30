@@ -14,10 +14,19 @@ beforeEach(() => {
 afterEach(() => rmSync(dir, { recursive: true, force: true }));
 
 describe('content:check', () => {
-  it('passes the shipped content and says which checks are not run yet', () => {
-    const report = checkContent();
-    expect(report.issues).toEqual([]);
-    expect(report.notes.join(' ')).toMatch(/reward item ids/);
+  it('passes the shipped content', () => {
+    expect(checkContent().issues).toEqual([]);
+  });
+
+  it('flags a rewarded item with no description, a bad icon, and a misnamed item file', () => {
+    rmSync(path.join(dir, 'items/la-than.json'));
+    expect(checkContent(dir).issues).toEqual(['quest forest-ch1 rewards item la-than, which content/items does not describe']);
+    const item = { id: 'la-than', name: 'Lá thần', description: 'Lá sáng.', usedIn: 'Chương sau.', kind: 'quest', icon: 'dragon' };
+    writeFileSync(path.join(dir, 'items/leaf.json'), JSON.stringify(item));
+    expect(checkContent(dir).issues).toEqual([
+      'content/items/leaf.json: file name must be la-than.json',
+      'item la-than uses icon "dragon", which the UI does not ship',
+    ]);
   });
 
   it('flags quest text that calls the player "Miu" instead of the character name', () => {

@@ -54,7 +54,7 @@ function InteractButton() {
   );
 }
 
-export function Hud({ data, quest, onMenu }: { data: PlayerData; quest: QuestSummary | null; onMenu: () => void }) {
+export function Hud({ data, quest, onMenu, onBackpack }: { data: PlayerData; quest: QuestSummary | null; onMenu: () => void; onBackpack: () => void }) {
   return (
     <>
       <div className="hud-top-left">
@@ -70,7 +70,7 @@ export function Hud({ data, quest, onMenu }: { data: PlayerData; quest: QuestSum
           <Icon name="map" size={28} />
           Bản đồ
         </Link>
-        <button type="button" className={buttonClass('secondary', { small: true })} disabled data-id="hud-backpack">
+        <button type="button" className={buttonClass('secondary', { small: true })} data-id="hud-backpack" onClick={onBackpack}>
           <Icon name="backpack" size={28} />
           Ba lô
         </button>

@@ -2,7 +2,7 @@
 // points at a clue → find the three clues in reverse order → tracker 3/3 from the server → the letter
 // opens by itself → read it and answer → on to the beaver. The Math challenges: challenges.spec.ts.
 import { expect, test } from '@playwright/test';
-import { freshChild, playAt } from './quest-api';
+import { freshChild, playAt, playUntil } from './quest-api';
 import { readStats, waitReady } from './stats';
 
 // Its own parent and child: quest progress must start empty and never leak into other projects.
@@ -74,4 +74,36 @@ test('an NPC whose turn has not come says so, and never the same line twice in a
   }
   for (let i = 1; i < said.length; i += 1) expect(said[i]).not.toBe(said[i - 1]);
   await expect(page.getByRole('dialog')).toHaveCount(0);
+});
+
+test('finishing chapter 1 without seeing an answer: 100 XP, Level Up to 2, chapter 2 unlocked, the Lá thần in the backpack', async ({ page, baseURL }) => {
+  await freshChild(page, baseURL ?? '');
+  await playUntil(page, baseURL ?? '', 'open-chest');
+  await page.goto(playAt('chest'));
+  await waitReady(page);
+  await page.locator('[data-id="hud-interact"]').click();
+
+  // The gate opens by itself after the chest; the server pays and the reward screens follow.
+  const reward = page.getByRole('dialog', { name: 'Hoàn thành nhiệm vụ!' });
+  await expect(reward).toBeVisible();
+  await expect(page.locator('[data-id="reward-stars"]')).toHaveAttribute('data-stars', '3');
+  await expect(page.locator('[data-id="reward-xp"]')).toHaveText(/\+100 XP/);
+  await expect(page.locator('[data-id="reward-item-la-than"]')).toContainText('Lá thần');
+  await page.locator('[data-id="completion-next"]').click();
+  await expect(page.getByRole('dialog', { name: 'Lên cấp!' })).toContainText('Lv.1 → Lv.2');
+  await page.locator('[data-id="completion-next"]').click();
+  await expect(page.locator('[data-id="unlock-forest-ch2"]')).toBeVisible();
+  await expect(page.locator('body')).not.toContainText('Kim cương');
+  await page.locator('[data-id="completion-map"]').click();
+
+  await expect(page).toHaveURL(/\/region\/khu-rung-bi-mat$/);
+  await expect(page.locator('[data-id="region-quest-forest-ch1"]')).toHaveAttribute('data-state', 'completed');
+  await expect(page.locator('[data-id="region-quest-forest-ch2"]')).toContainText('Sắp có');
+  await expect(page.locator('[data-id="player-level"]')).toHaveText('Lv.2');
+
+  await page.goto('/backpack');
+  await page.locator('[data-id="backpack-item-la-than"]').click();
+  await expect(page.locator('[data-id="backpack-detail"]')).toContainText('phát sáng');
+  await page.goto('/profile');
+  await expect(page.locator('[data-id="collection-la-than"]')).toHaveAttribute('data-owned', 'true');
 });

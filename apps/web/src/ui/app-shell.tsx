@@ -12,6 +12,8 @@ const CreatorScreen = lazy(() => import('./creator/creator-screen').then((m) => 
 const HomeScreen = lazy(() => import('./home/home-screen').then((m) => ({ default: m.HomeScreen })));
 const RegionMapScreen = lazy(() => import('./region/region-screens').then((m) => ({ default: m.RegionMapScreen })));
 const RegionScreen = lazy(() => import('./region/region-screens').then((m) => ({ default: m.RegionScreen })));
+const BackpackScreen = lazy(() => import('./profile/profile-screens').then((m) => ({ default: m.BackpackScreen })));
+const ProfileScreen = lazy(() => import('./profile/profile-screens').then((m) => ({ default: m.ProfileScreen })));
 
 /** A child's screen: needs the parent session and a selected profile; loaded on demand. */
 function ChildScreen({ children }: { children: ReactNode }) {
@@ -94,6 +96,8 @@ export function AppRoutes() {
       <Route path="/home" element={<ChildScreen><HomeScreen /></ChildScreen>} />
       <Route path="/map" element={<ChildScreen><RegionMapScreen /></ChildScreen>} />
       <Route path="/region/:regionId" element={<ChildScreen><RegionScreen /></ChildScreen>} />
+      <Route path="/backpack" element={<ChildScreen><BackpackScreen /></ChildScreen>} />
+      <Route path="/profile" element={<ChildScreen><ProfileScreen /></ChildScreen>} />
       <Route path="/play" element={<ChildScreen><PlayScreen /></ChildScreen>} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>

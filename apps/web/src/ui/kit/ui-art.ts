@@ -9,6 +9,7 @@ export const UI_ICONS = {
   antennaBars: `${FLUENT}/antenna-bars.png`,
   backpack: `${FLUENT}/backpack.png`,
   beaver: `${FLUENT}/beaver.png`,
+  books: `${FLUENT}/books.png`,
   catFace: `${FLUENT}/cat-face.png`,
   checkMark: `${FLUENT}/check-mark.png`,
   coin: `${FLUENT}/coin.png`,
@@ -18,6 +19,7 @@ export const UI_ICONS = {
   heart: `${FLUENT}/heart.png`,
   house: `${FLUENT}/house.png`,
   key: `${FLUENT}/key.png`,
+  leaf: `${FLUENT}/leaf.png`,
   locked: `${FLUENT}/locked.png`,
   map: `${FLUENT}/map.png`,
   parrot: `${FLUENT}/parrot.png`,
@@ -31,6 +33,7 @@ export const UI_ICONS = {
   speaker: `${FLUENT}/speaker.png`,
   speakerMuted: `${FLUENT}/speaker-muted.png`,
   tree: `${FLUENT}/tree.png`,
+  unlocked: `${FLUENT}/unlocked.png`,
 } as const;
 
 /**

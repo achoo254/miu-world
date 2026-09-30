@@ -121,7 +121,9 @@ export function HomeScreen() {
         {data ? (
           <>
             <header className="home-top">
-              <PlayerBadge character={data.character} progress={data.progress} />
+              <Link to="/profile" className="home-profile-link" data-id="home-profile" aria-label={`Hồ sơ của ${data.character.name}`}>
+                <PlayerBadge character={data.character} progress={data.progress} />
+              </Link>
             </header>
             <h1 className="visually-hidden">Trang chủ</h1>
             <div className="home-body">
@@ -141,10 +143,10 @@ export function HomeScreen() {
                 <Icon name="map" size={32} />
                 Bản đồ
               </Link>
-              <button type="button" className={buttonClass('secondary')} disabled data-id="home-nav-backpack">
+              <Link to="/backpack" className={buttonClass('secondary')} data-id="home-nav-backpack">
                 <Icon name="backpack" size={32} />
-                Ba lô <span className="badge">Sắp có</span>
-              </button>
+                Ba lô
+              </Link>
               <button type="button" className={buttonClass('secondary')} data-id="home-nav-settings" onClick={() => setSettings(true)}>
                 <Icon name="gear" size={32} />
                 Cài đặt
