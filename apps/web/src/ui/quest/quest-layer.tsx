@@ -2,6 +2,7 @@
 // offline retry for a pending step. Rendered by /play once the player data is loaded.
 import type { StepCompleteResponse } from '@miu/schema/game';
 import type { GameStore } from '../../game-bridge/game-store';
+import { AnswerBurst } from '../challenge/answer-burst';
 import { LearningStep, hasLearningScreen } from '../challenge/learning-step';
 import { DialogueScreen } from '../dialogue/dialogue-screen';
 import { buttonClass } from '../kit/button';
@@ -9,6 +10,7 @@ import { Modal } from '../kit/modal';
 import { Toast } from '../kit/toast';
 import { say, type PlayerData } from '../player/player-data';
 import { OfflineBanner } from '../system/offline-banner';
+import { useCallback, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { CompletionSequence } from '../rewards/completion-sequence';
 import { useQuestController } from './use-quest-controller';
@@ -31,6 +33,9 @@ export function QuestLayer({
   const navigate = useNavigate();
   const summary = data.quests.find((q) => q.quest.id === questId);
   const step = quest.overlay?.step ?? null;
+  // The burst of the last right answer, until it has played.
+  const [burstShown, setBurstShown] = useState(0);
+  const endBurst = useCallback(() => setBurstShown(quest.cheers), [quest.cheers]);
   return (
     <>
       {step?.kind === 'dialogue' ? (
@@ -70,6 +75,7 @@ export function QuestLayer({
       ) : null}
       {quest.retry ? <OfflineBanner onRetry={quest.retry} /> : null}
       {quest.toast ? <Toast message={quest.toast} onDone={quest.clearToast} /> : null}
+      {quest.cheers > burstShown ? <AnswerBurst key={quest.cheers} onDone={endBurst} /> : null}
     </>
   );
 }

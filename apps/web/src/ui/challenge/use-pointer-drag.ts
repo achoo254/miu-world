@@ -3,6 +3,7 @@
 // moves through its own style (no React render per move); `pointercancel` puts it back. A tap (or
 // Enter/Space) arrives as the tile's own click, which never bubbles to the zone behind it.
 import { useCallback, useRef, type MouseEvent as ReactMouseEvent, type PointerEvent as ReactPointerEvent } from 'react';
+import { playCue } from '../sound/sfx';
 
 /** Mark an element as a drop zone with `data-drop-zone="<zone id>"`. */
 export const DROP_ZONE_ATTR = 'data-drop-zone';
@@ -52,6 +53,7 @@ export function usePointerDrag(onDrop: (itemId: string, zone: string | null) => 
         reset(e.currentTarget);
         if (!d.moved) return; // a tap: handled by onClick (also covers the keyboard)
         justDragged.current = true;
+        playCue('place');
         onDrop(itemId, zoneAt(e.clientX, e.clientY));
       },
       onClick(e: ReactMouseEvent<HTMLElement>) {

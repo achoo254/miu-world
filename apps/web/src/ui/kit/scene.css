@@ -247,3 +247,72 @@
 .scene-panel .hint { color: var(--color-parchment-ink); }
 .scene-modal .reward-body { padding: var(--space-md); border: 3px solid var(--color-parchment-edge); border-radius: var(--radius-panel); background: linear-gradient(180deg, var(--color-parchment), var(--color-parchment-deep)); color: var(--color-parchment-ink); box-shadow: var(--shadow-material); }
 .scene-modal .speak-hints { padding: var(--space-sm) var(--space-md) var(--space-sm) var(--space-xl); }
+
+/*
+ * Livelier scenes for 7–8 year olds: bigger reading text, chunky "clay" materials (thick rims, a lit
+ * top edge over the drop shadow), tiles at least 64px tall, a trail of leaves for the quest's steps,
+ * and short reactions to answers. Motion only when the child has not asked for less.
+ */
+.scene-modal .read-passage { font-size: var(--text-lg); line-height: 1.6; }
+.scene-modal .challenge-prompt { line-height: 1.4; }
+.scene-modal .choice,
+.scene-modal .classify-card,
+.scene-modal .fill-sentence,
+.scene-modal .dialogue-choice { font-size: var(--text-lg); }
+.scene-modal .choice,
+.scene-modal .classify-card { min-height: 4rem; }
+.scene-modal .parchment,
+.scene-modal .choice,
+.scene-modal .read-passage,
+.scene-panel { border-width: 4px; box-shadow: var(--shadow-material), inset 0 3px 0 var(--color-surface-faint); }
+.scene-modal .choice:active:not(:disabled),
+.scene-modal .classify-card:active { transform: translateY(3px); }
+/* The play area: a soft dotted cloth instead of an empty pane. */
+.scene-modal .challenge-area {
+  background:
+    radial-gradient(circle, var(--color-surface-faint) 1.5px, transparent 1.6px) 0 0 / 1.25rem 1.25rem,
+    var(--color-surface-glass);
+  border: 4px solid var(--color-surface-faint);
+}
+.scene-modal .classify-pool { min-height: 3.5rem; }
+/* Every card placed: the tray folds away instead of leaving an empty band. */
+.scene-modal .classify-pool:empty { min-height: 0; padding: 0; background: none; }
+
+/* Quest progress: one leaf per step, filled once done, the current one glowing. */
+.step-trail { display: flex; flex-wrap: wrap; align-items: center; gap: 0.3rem; margin: 0; padding: var(--space-xs) var(--space-sm); list-style: none; border-radius: var(--radius-pill); background: var(--color-surface-glass); }
+.step-trail li {
+  width: 0.9rem; height: 0.9rem;
+  border-radius: 0 70% 0 70%;
+  border: 2px solid var(--color-leaf);
+  background: transparent;
+}
+.step-trail li.done { background: var(--color-leaf); }
+.step-trail li.current { width: 1.25rem; height: 1.25rem; background: var(--color-star); border-color: var(--color-wood-edge); box-shadow: 0 0 0 3px var(--color-surface-faint); }
+
+/* NPC reactions on the one portrait image: speak (a hop), cheer (a jump), encourage (a lean in). */
+@media (prefers-reduced-motion: no-preference) {
+  .npc-portrait--speak { animation: npc-hop 420ms ease-out; }
+  .npc-portrait--cheer { animation: npc-jump 620ms cubic-bezier(0.3, 1.6, 0.5, 1); }
+  .npc-portrait--encourage { animation: npc-lean 700ms ease-in-out; }
+  .challenge-area--wrong { animation: answer-shake 420ms ease-in-out; }
+}
+@keyframes npc-hop { 0%, 100% { transform: none; } 40% { transform: translateY(-0.4rem) scale(1.04); } }
+@keyframes npc-jump { 0%, 100% { transform: none; } 35% { transform: translateY(-1.1rem) rotate(-6deg); } 70% { transform: translateY(0.1rem) scaleY(0.94); } }
+@keyframes npc-lean { 0%, 100% { transform: none; } 30% { transform: rotate(8deg) translateX(0.3rem); } 65% { transform: rotate(-4deg); } }
+@keyframes answer-shake { 0%, 100% { transform: none; } 20% { transform: translateX(-0.5rem); } 45% { transform: translateX(0.45rem); } 70% { transform: translateX(-0.25rem); } }
+
+/* A right answer: stars and sparkles burst from the middle of the screen and fade. */
+.answer-burst { position: fixed; inset: 0; z-index: var(--z-overlay); pointer-events: none; display: grid; place-items: center; }
+.answer-burst span { position: absolute; }
+@media (prefers-reduced-motion: no-preference) {
+  .answer-burst span { animation: burst-fly 900ms cubic-bezier(0.2, 0.8, 0.3, 1) forwards; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .answer-burst span { opacity: 0; }
+  .answer-burst span:first-child { opacity: 1; transform: none; }
+}
+@keyframes burst-fly {
+  from { transform: translate(0, 0) scale(0.4) rotate(0deg); opacity: 1; }
+  70% { opacity: 1; }
+  to { transform: translate(var(--burst-x), var(--burst-y)) scale(1.1) rotate(var(--burst-turn)); opacity: 0; }
+}

@@ -17,10 +17,26 @@ export function npcIcon(name: string, target?: string): UiIcon | null {
   return byTarget ?? BY_NAME.find(([pattern]) => pattern.test(name))?.[1] ?? null;
 }
 
-export function NpcPortrait({ name, target, size = 64 }: { name: string; target?: string; size?: number }) {
+/** A short reaction on the portrait: a hop as a line starts, a jump for a right answer, a lean in to encourage. */
+export type NpcReaction = 'speak' | 'cheer' | 'encourage';
+
+export function NpcPortrait({
+  name,
+  target,
+  size = 64,
+  reaction,
+  reactionKey,
+}: {
+  name: string;
+  target?: string;
+  size?: number;
+  reaction?: NpcReaction;
+  /** A new key replays the reaction (a new line, another try). */
+  reactionKey?: string | number;
+}) {
   const icon = npcIcon(name, target);
   return (
-    <span className="npc-portrait" aria-hidden="true" data-id="npc-portrait">
+    <span key={reactionKey} className={`npc-portrait${reaction ? ` npc-portrait--${reaction}` : ''}`} aria-hidden="true" data-id="npc-portrait">
       {icon ? <Icon name={icon} size={size} /> : name.trim().charAt(0).toUpperCase()}
     </span>
   );

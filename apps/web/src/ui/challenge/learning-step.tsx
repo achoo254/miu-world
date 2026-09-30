@@ -1,12 +1,14 @@
 // Picks the screen for a learning step (read, riddle, every challenge mechanic) or a textbook task
 // without grading (speak, worksheet) and sends the answer. A wrong answer keeps the screen open with a
-// kind line (the server's feedback, else a rotating pool); a right one closes it (the controller moves on).
+// kind line (the server's feedback, else a rotating pool) and a soft tone; a right one plays a cheerful
+// sound and closes it (the controller moves on and bursts stars over the world).
 import { useRef, useState, type ReactElement } from 'react';
 import { freshPicker } from '@miu/quest/pick-fresh';
 import type { QuestStepPublic } from '@miu/schema/content';
 import type { StepAnswer, StepCompleteRequest, StepCompleteResponse } from '@miu/schema/game';
 import { say, type PlayerData } from '../player/player-data';
 import { TRY_AGAIN_LINES } from '../quest/loop-lines';
+import { playCue } from '../sound/sfx';
 import type { ActiveQuestView } from '../quest/quest-flow';
 import { presenterOf } from '../dialogue/npc-portrait';
 import type { ChallengeContext } from './challenge-frame';
@@ -44,12 +46,19 @@ export function LearningStep({
   onClose: () => void;
 }): ReactElement | null {
   const [tryAgain, setTryAgain] = useState<string | null>(null);
+  /** Wrong answers on this screen: the hint opens after the first, the answer after the second. */
+  const [wrongTries, setWrongTries] = useState(0);
   const fallback = useRef(freshPicker(TRY_AGAIN_LINES));
   const fill = (text: string): string => say(text, data.character);
 
   async function onAnswer(answer: StepAnswer) {
     const response = await submit(step, { answer });
-    if (response && !response.correct) setTryAgain(fill(response.feedback ?? fallback.current.next()));
+    if (!response) return;
+    playCue(response.correct ? 'right' : 'wrong');
+    if (!response.correct) {
+      setTryAgain(fill(response.feedback ?? fallback.current.next()));
+      setWrongTries((n) => n + 1);
+    }
   }
 
   const context: ChallengeContext = {
@@ -61,6 +70,7 @@ export function LearningStep({
     fill,
     busy,
     tryAgain,
+    wrongTries,
     presenter: presenterOf(quest.steps, step.id),
     onClose,
   };

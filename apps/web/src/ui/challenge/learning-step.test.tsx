@@ -1,4 +1,4 @@
-import { cleanup, fireEvent, render, screen } from '@testing-library/react';
+import { act, cleanup, fireEvent, render, screen } from '@testing-library/react';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { QuestStepPublic } from '@miu/schema/content';
 import type { CharacterDto, StepCompleteRequest, StepCompleteResponse } from '@miu/schema/game';
@@ -185,6 +185,22 @@ describe('learning steps send the answer the server checks', () => {
   });
 });
 
+describe('scene feedback', () => {
+  it('shows a leaf per quest step with the current one lit, and shakes the play area once after a wrong try', async () => {
+    renderStep(steps.riddle, vi.fn(async (_s: QuestStepPublic, _b: StepCompleteRequest) => answerResponse(false, null)));
+    const leaves = [...document.querySelectorAll('[data-id="challenge-trail"] li')];
+    expect(leaves).toHaveLength(quest.steps.length);
+    const current = quest.steps.findIndex((st) => st.id === 'riddle');
+    expect(leaves.findIndex((l) => l.classList.contains('current'))).toBe(current);
+    expect(leaves.filter((l) => l.classList.contains('done'))).toHaveLength(current);
+    expect(document.querySelector('.challenge-area--wrong')).toBeNull();
+    fireEvent.click(screen.getByRole('button', { name: '7' }));
+    await act(async () => check());
+    expect(document.querySelector('.challenge-area--wrong')).not.toBeNull();
+    expect(document.querySelector('.npc-portrait--encourage, [data-id="challenge-try-again"]')).not.toBeNull();
+  });
+});
+
 describe('support panel', () => {
   it('asks the server for each layer once, and the answer layer still lets the child finish', async () => {
     const calls: string[] = [];
@@ -202,7 +218,19 @@ describe('support panel', () => {
         return new Response(JSON.stringify(body), { status: 200 });
       }),
     );
-    const submit = renderStep(steps.riddle);
+    // Two wrong tries first: the hint opens after the first, the answer after the second.
+    const submit = renderStep(
+      steps.riddle,
+      vi.fn(async (_s: QuestStepPublic, _b: StepCompleteRequest) => answerResponse(false, null))
+        .mockImplementationOnce(async () => answerResponse(false, null))
+        .mockImplementationOnce(async () => answerResponse(false, null)),
+    );
+    expect(screen.getAllByRole('tab').map((t) => t.textContent)).toEqual(['Hướng dẫn']);
+    fireEvent.click(screen.getByRole('button', { name: '7' }));
+    await act(async () => check());
+    expect(screen.getAllByRole('tab').map((t) => t.textContent)).toEqual(['Hướng dẫn', 'Gợi ý']);
+    await act(async () => check());
+    expect(screen.getAllByRole('tab').map((t) => t.textContent)).toEqual(['Hướng dẫn', 'Gợi ý', 'Đáp án']);
     fireEvent.click(screen.getByRole('tab', { name: 'Hướng dẫn' }));
     expect(await screen.findByText('Đếm thêm 5.')).toBeTruthy();
     fireEvent.click(screen.getByRole('tab', { name: 'Gợi ý' }));
@@ -211,6 +239,7 @@ describe('support panel', () => {
     fireEvent.click(screen.getByRole('tab', { name: 'Đáp án' }));
     expect(await screen.findByText('8 + 5 = 13.')).toBeTruthy();
     expect(calls).toEqual(['guide', 'hint', 'answer']);
+    fireEvent.click(screen.getByRole('button', { name: /Xoá|Làm lại/ }));
     fireEvent.click(screen.getByRole('button', { name: '1' }));
     fireEvent.click(screen.getByRole('button', { name: '3' }));
     check();

@@ -1,5 +1,6 @@
 // M2.8 learning support: Hướng dẫn (step by step) · Gợi ý · Đáp án (with the explanation). Each layer
-// comes from the server only when asked (POST …/support, counted there). Seeing the answer never
+// comes from the server only when asked (POST …/support, counted there). The child tries first: the
+// guide is always there, the hint after one wrong try, the answer after two. Seeing the answer never
 // blocks the step: the child can still finish it, for a little less XP (validation decision
 // `support_answer_penalty`), said kindly.
 import { useState } from 'react';
@@ -13,7 +14,10 @@ const LAYERS: ReadonlyArray<{ key: SupportLayer; label: string }> = [
   { key: 'answer', label: 'Đáp án' },
 ];
 
-export function SupportPanel({ questId, stepId, fill }: { questId: string; stepId: string; fill: (text: string) => string }) {
+/** Wrong tries before each layer is offered. */
+const OPENS_AFTER: Record<SupportLayer, number> = { guide: 0, hint: 1, answer: 2 };
+
+export function SupportPanel({ questId, stepId, fill, wrongTries }: { questId: string; stepId: string; fill: (text: string) => string; wrongTries: number }) {
   const [active, setActive] = useState<SupportLayer | null>(null);
   const [loaded, setLoaded] = useState<Partial<Record<SupportLayer, SupportResponse>>>({});
   const [error, setError] = useState<string | null>(null);
@@ -32,7 +36,7 @@ export function SupportPanel({ questId, stepId, fill }: { questId: string; stepI
 
   const shown = active ? loaded[active] : undefined;
   return (
-    <Tabs label="Hỗ trợ học" items={LAYERS} active={active} onChange={(layer) => void open(layer)} dataId="support">
+    <Tabs label="Hỗ trợ học" items={LAYERS.filter((l) => wrongTries >= OPENS_AFTER[l.key])} active={active} onChange={(layer) => void open(layer)} dataId="support">
       {error ? <p role="alert" className="error">{error}</p> : null}
       {!shown ? (
         !error ? <p role="status">Đang mở…</p> : null

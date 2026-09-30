@@ -66,6 +66,13 @@ test('the riddle with the Answer layer still finishes the chapter, for 90 XP ins
   await waitReady(page);
   await tap(page, '[data-id="hud-interact"]');
   await expect(page.getByRole('dialog', { name: 'Giải câu đố của cây' })).toBeVisible();
+  // The child tries first: the hint opens after one wrong answer, the answer after two.
+  await expect(page.locator('[data-id="support-answer"]')).toHaveCount(0);
+  await page.getByRole('button', { name: '7', exact: true }).tap();
+  for (let i = 0; i < 2; i++) {
+    await tap(page, '[data-id="challenge-check"]');
+    await expect(page.locator('[data-id="challenge-try-again"]')).toBeVisible();
+  }
   for (const layer of ['guide', 'hint', 'answer']) await tap(page, `[data-id="support-${layer}"]`);
   await expect(page.locator('[data-id="support-answer-text"]')).toContainText('13');
   await tap(page, '[data-id="challenge-reset"]');

@@ -1,0 +1,107 @@
+{
+  "state": {
+    "product": "Miu World: a free 3D voxel learning game for Vietnamese grade-2 children (age 7-8). Each quest is one real textbook lesson (Tiếng Việt 2, Toán 2) wrapped in a story; the child walks in a 3D forest/school, meets animal NPCs, and answers textbook exercises on 2D themed scene screens (wood banner, parchment panels, stone tiles) drawn over the paused 3D world.",
+    "devices": "iPad first (touch), phones secondary. Parents set it up; children play alone.",
+    "owner_feedback": "The owner reviewed 6 sample quests and said they are not yet good enough; they asked to make the experience more fitting and richer (phong phú hơn) before 64 more quests are written on the same template.",
+    "current_state": [
+      "Reading passages and prompts render around 16px body text on parchment; choice buttons medium size.",
+      "Right/wrong feedback is a text line from the NPC (rotating pools, never repeated back to back); no visual effect, no sound.",
+      "Completion screen: static card with 3 stars, +XP and +Xu tiles (shows +0 Xu when zero), two buttons.",
+      "Step progress is a small chip 'Bước 3/11'.",
+      "Scene panels leave large translucent empty areas; tiles are chunky but the overall energy is low.",
+      "Support buttons 'Hướng dẫn', 'Gợi ý', 'Đáp án' are small pills always available; the server scores stars lower when the answer layer is used.",
+      "NPC portrait is a static Fluent 3D emoji image beside the speech bubble.",
+      "A CC0 Kenney Interface Sounds pack (clicks, confirmations, errors, glass, drops) is already in the asset manifest but no sound effects are played; a sound on/off toggle exists in the pause menu."
+    ],
+    "constraints": [
+      "Textbook wording must appear verbatim; decoration may surround it but not change it.",
+      "No new paid art, no hand drawing, no AI-generated images; only CC0/MIT/OFL packs already in the repo (Kenney, Fluent Emoji) and code-drawn effects.",
+      "Every line and scene must feel fresh: loops rotate varied content.",
+      "Respect prefers-reduced-motion; keep 44px+ touch targets; iPad performance matters.",
+      "UI/UX guidance for children's educational apps recommends a playful claymorphism style (soft 3D, chunky, thick borders, double shadows), Baloo 2 display font, clear success/error feedback, and avoiding muted colors with low energy."
+    ]
+  },
+  "questions": {
+    "reading_size": {
+      "stakes": "low",
+      "instructions": "How large should textbook reading passages and exercise prompts be on the scene screens for 7-8 year olds on an iPad?",
+      "criteria": {
+        "keep": "Keep the current ~16px body text.",
+        "larger": "Passages ~22px with line-height 1.6 and prompts ~20px; choice and tile labels at least 20px.",
+        "largest_with_follow": "Passages ~26px, and when the child taps 'Nghe' the line being read is highlighted as it plays."
+      }
+    },
+    "right_feedback": {
+      "stakes": "low",
+      "instructions": "What should happen when the child answers correctly?",
+      "criteria": {
+        "text_only": "Keep the NPC's text line only.",
+        "burst": "A short burst of stars/sparkles from the answer, the NPC portrait does a happy bounce, a cheerful confirmation sound, then the NPC's line.",
+        "fullscreen": "A full-screen celebration overlay with confetti every time."
+      }
+    },
+    "wrong_feedback": {
+      "stakes": "low",
+      "instructions": "What should happen when the child answers wrong?",
+      "criteria": {
+        "text_only": "Keep the NPC's text line only.",
+        "gentle": "The wrong tiles/choice give a gentle shake and a soft tone, the correct parts stay in place, the NPC shows an encouraging bubble (no red 'X', no harsh buzzer).",
+        "detailed": "Mark exactly which items are wrong in red with an explanation each time."
+      }
+    },
+    "completion": {
+      "stakes": "low",
+      "instructions": "How should the quest completion screen feel?",
+      "criteria": {
+        "static": "Keep the static card.",
+        "sequence": "Animated sequence: stars pop in one by one with rising tones, XP and coins count up, the main NPC and Miu appear celebrating, zero rewards are hidden.",
+        "sequence_and_world": "The animated sequence plus Miu jumping for joy in the 3D world after the card closes."
+      }
+    },
+    "progress": {
+      "stakes": "low",
+      "instructions": "How should a child see progress through a quest's 11-21 steps?",
+      "criteria": {
+        "chip": "Keep the 'Bước 3/11' chip.",
+        "trail": "A trail of leaves/stones on the banner: done ones filled, current one glowing, remaining ones outlined; the phase names (Gặp gỡ, Khám phá, Học, Thử thách…) are not shown to children.",
+        "none": "No progress indicator; the story carries the child."
+      }
+    },
+    "panel_energy": {
+      "stakes": "low",
+      "instructions": "How to address the large empty translucent areas and low energy of the scene panels?",
+      "criteria": {
+        "keep": "Keep the current layout.",
+        "clay": "Panels size to their content (no empty filler), chunkier claymorphism treatment (thicker borders, double soft shadows, rounded 20px), brighter material colors, bigger tiles (64px+ tall), and a subtle themed backdrop pattern per mechanic.",
+        "fullbleed": "Make every mechanic full-screen with an illustrated background instead of a panel over the world."
+      }
+    },
+    "support_buttons": {
+      "stakes": "medium",
+      "instructions": "How should the three support layers (Hướng dẫn = how to do it, Gợi ý = hint, Đáp án = show answer) be offered? Using the answer lowers the stars; learning value matters.",
+      "criteria": {
+        "keep": "Keep three small pills always available.",
+        "progressive": "Chunky icon+label buttons; Hướng dẫn always, Gợi ý after the first wrong try, Đáp án only after two wrong tries (the NPC offers it), keeping the child trying first.",
+        "hint_only": "Remove the answer button entirely; only guide and hint."
+      }
+    },
+    "npc_presence": {
+      "stakes": "low",
+      "instructions": "How alive should the NPC beside the speech bubble be, given only one Fluent 3D emoji image per animal is available?",
+      "criteria": {
+        "static": "Keep the static portrait.",
+        "reactive": "Code-driven reactions on the same image: a small bounce when speaking, tilt/wiggle when thinking, jump on a right answer, lean in to encourage on a wrong one (reduced-motion: none).",
+        "live_3d": "Render the NPC's 3D Cube Pets model live in the panel instead of the emoji."
+      }
+    },
+    "sound": {
+      "stakes": "low",
+      "instructions": "Should the game play sound effects from the CC0 Kenney Interface Sounds pack already in the repo, honouring the existing sound toggle?",
+      "criteria": {
+        "none": "No sound effects.",
+        "core": "Soft sounds for taps, placing a tile, right answer, gentle tone for wrong, rising chimes on completion; varied variants so they never feel repeated; off by the toggle.",
+        "core_and_music": "The core sounds plus looping background music (none is in the repo yet; would need a new CC0 source)."
+      }
+    }
+  }
+}

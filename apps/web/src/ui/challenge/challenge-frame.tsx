@@ -1,14 +1,19 @@
 // Shared frame of every learning step (M2.4–M2.8, M3.4), laid out as a quest scene over the paused
 // game (mock "quest screens"): the title on a wooden banner, the character who asks and the instruction
-// in a speech bubble, the play area, a friendly line after a wrong answer (never red and harsh), and a
-// parchment bar with the support layers and "Làm lại · Kiểm tra". The game stops meanwhile.
-import type { ReactNode } from 'react';
+// in a speech bubble (who hops as the step opens and leans in after a wrong try), a trail of leaves for
+// the quest's steps, the play area (it shakes once on a wrong answer), a friendly line after a wrong
+// answer (never red and harsh), and a parchment bar with the support layers and "Làm lại · Kiểm tra".
+// The game stops meanwhile.
+import { useEffect, useRef, type MouseEvent, type ReactNode } from 'react';
 import { NpcPortrait } from '../dialogue/npc-portrait';
 import { Icon } from '../kit/art';
 import { buttonClass } from '../kit/button';
 import { Modal } from '../kit/modal';
+import { playCue } from '../sound/sfx';
 import { SupportPanel } from './support-panel';
 import './challenge.css';
+
+const SHAKE = 'challenge-area--wrong';
 
 export interface ChallengeContext {
   questId: string;
@@ -23,6 +28,8 @@ export interface ChallengeContext {
   busy: boolean;
   /** Line after the last wrong answer, if any. */
   tryAgain: string | null;
+  /** Wrong answers on this screen so far (support opens step by step; each one replays the shake). */
+  wrongTries: number;
   /** The character who asks, shown with the instruction. */
   presenter?: { name: string; target?: string } | null;
   onClose: () => void;
@@ -44,31 +51,63 @@ export function ChallengeFrame({
   onReset?: () => void;
 }) {
   const presenter = context.presenter;
+  // A wrong answer shakes the play area once (the child's placements stay where they are): the class is
+  // set on the element itself so a new try replays the animation without a re-render.
+  const area = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const el = area.current;
+    if (context.wrongTries === 0 || !el) return;
+    el.classList.remove(SHAKE);
+    void el.offsetWidth; // restart the animation
+    el.classList.add(SHAKE);
+    const timer = window.setTimeout(() => el.classList.remove(SHAKE), 450);
+    return () => window.clearTimeout(timer);
+  }, [context.wrongTries]);
+  const tapSound = (e: MouseEvent<HTMLDivElement>) => {
+    if (e.target instanceof Element && e.target.closest('button')) playCue('tap');
+  };
+  const { index, total } = context.position;
   return (
     <Modal title={context.title} onClose={context.onClose} dataId="challenge" size="wide" variant="scene">
       <div className="scene-chips">
-        <span className="scene-chip" data-id="challenge-position">
-          Bước {context.position.index}/{context.position.total}
-        </span>
+        <div className="step-trail-wrap">
+          <span className="visually-hidden" data-id="challenge-position">
+            Bước {index}/{total}
+          </span>
+          <ol className="step-trail" aria-hidden="true" data-id="challenge-trail">
+            {Array.from({ length: total }, (_, i) => (
+              <li key={i} className={i + 1 < index ? 'done' : i + 1 === index ? 'current' : undefined} />
+            ))}
+          </ol>
+        </div>
         <span className="scene-chip" data-id="challenge-xp">
           <Icon name="glowingStar" size={24} /> {context.xp} XP khi xong nhiệm vụ
         </span>
       </div>
       <div className="npc-say">
-        {presenter ? <NpcPortrait name={context.fill(presenter.name)} target={presenter.target} /> : null}
+        {presenter ? (
+          <NpcPortrait
+            name={context.fill(presenter.name)}
+            target={presenter.target}
+            reaction={context.wrongTries > 0 ? 'encourage' : 'speak'}
+            reactionKey={context.wrongTries}
+          />
+        ) : null}
         <p className="parchment npc-bubble challenge-prompt" data-id="challenge-prompt">
           {presenter ? <span className="npc-name">{context.fill(presenter.name)}</span> : null}
           {prompt}
         </p>
       </div>
-      <div className="challenge-area">{children}</div>
+      <div ref={area} className="challenge-area" onClickCapture={tapSound}>
+        {children}
+      </div>
       {context.tryAgain ? (
         <p className="challenge-try-again" role="status" data-id="challenge-try-again">
           {context.tryAgain}
         </p>
       ) : null}
       <div className="parchment scene-bar">
-        <SupportPanel questId={context.questId} stepId={context.stepId} fill={context.fill} />
+        <SupportPanel questId={context.questId} stepId={context.stepId} fill={context.fill} wrongTries={context.wrongTries} />
         <div className="challenge-actions">
           {onReset ? (
             <button type="button" className={buttonClass('ghost')} data-id="challenge-reset" onClick={onReset}>

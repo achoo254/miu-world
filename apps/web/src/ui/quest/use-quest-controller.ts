@@ -27,6 +27,8 @@ export interface QuestController {
   busy: boolean;
   toast: string | null;
   clearToast: () => void;
+  /** Right answers to learning steps so far; each new one shows a burst of stars over the world. */
+  cheers: number;
   /** Set while a call failed for lack of network; retrying re-sends exactly that call. */
   retry: (() => Promise<void>) | null;
   error: string | null;
@@ -50,6 +52,8 @@ export function useQuestController({ store, data, questId, onResponse, onOverlay
   const [finished, setFinished] = useState<FinishedQuest | null>(null);
   const [busy, setBusy] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
+  /** Right answers to learning steps so far; each new one shows a burst of stars. */
+  const [cheers, setCheers] = useState(0);
   const [retry, setRetry] = useState<(() => Promise<void>) | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -121,6 +125,8 @@ export function useQuestController({ store, data, questId, onResponse, onOverlay
         }
         // A wrong answer's line shows inside the step screen; only a right one becomes a toast.
         if (response.feedback && response.correct) setToast(say(response.feedback, latest.current.data.character));
+        // A right answer to a learning step gets a burst of stars over the world as its screen closes.
+        if (response.correct && (step.kind === 'read' || step.kind === 'riddle' || step.kind === 'challenge')) setCheers((n) => n + 1);
         if (response.correct) {
           if (latest.current.overlay?.step.id === step.id) setOverlay(null);
           // The next step may start by itself (read the letter, open the gate after the chest).
@@ -225,6 +231,7 @@ export function useQuestController({ store, data, questId, onResponse, onOverlay
     }, [cover]),
     busy,
     toast,
+    cheers,
     clearToast: useCallback(() => setToast(null), []),
     retry,
     error,

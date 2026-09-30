@@ -56,7 +56,7 @@ export function DialogueScreen({
     <Modal title={shown.speaker} onClose={onClose} dataId="dialogue" placement="bottom" variant="scene" titleClass="ribbon ribbon--small">
       <div className="dialogue-scene">
         <div className="npc-say">
-          <NpcPortrait name={shown.speaker} target={step.target} size={96} />
+          <NpcPortrait name={shown.speaker} target={step.target} size={96} reaction="speak" reactionKey={`${index}-${reply ? 'reply' : 'line'}`} />
           <p className="parchment npc-bubble dialogue-line" aria-live="polite" data-id="dialogue-line">
             {shown.text}
           </p>
