@@ -28,6 +28,7 @@ Chỉ ghi task đã bắt đầu; các task còn lại đang ở trạng thái c
 | #6 | POC voxel | Hoàn thành (Đã qua gate review, chốt chỉnh visual) | `plans/dattqh/reports/poc-review-260929.md` |
 | #10 | Character Creator: chọn loài (Mèo mở), trang phục Mũ/Balo + biến thể màu mở theo level/quest (server kiểm), preview voxel 3D + 4 hoạt ảnh, chọn tên | Hoàn thành (2026-09-30); Áo/Giày/Cánh và loài khác là V1; chờ designer duyệt UI | `plans/dattqh/260929-2141-vertical-slice-mvp/phase-04-character-creator.md` |
 | #11 | Home (đảo render sẵn + vùng nhấn khu vực), chọn khu vực, danh sách chương/quest, HUD gameplay | Hoàn thành (2026-09-30); Home là màn React trên ảnh đảo (lệch Master Plan §4 "một cảnh 3D", quyết định `home_scene`, ghi §15 ở phase 10) | `plans/dattqh/260929-2141-vertical-slice-mvp/phase-05-home-region-hud.md` |
+| #14 | Hội thoại NPC, nhận quest, tracker + mũi tên chỉ hướng, tìm manh mối qua server | Hoàn thành (2026-09-30) | `plans/dattqh/260929-2141-vertical-slice-mvp/phase-07-npc-dialogue-quest-flow.md` |
 | #15 | Quest bằng dữ liệu: schema v2, runtime chấm đáp án, `pnpm content:check` trong CI, nội dung Khu rừng ch1 + stub ch2 | Hoàn thành phần dữ liệu và runtime (2026-09-30); nội dung học chờ giáo viên duyệt; `content:check` kiểm target trên map và chữ quest dùng `{name}` (tên nhân vật), không cứng "Miu" | `plans/dattqh/260929-2141-vertical-slice-mvp/phase-02-quest-schema-runtime-content.md` |
 
 ## Mã ổn định ↔ task Master Plan

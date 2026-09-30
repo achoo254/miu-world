@@ -1,7 +1,7 @@
 ---
 phase: 7
 title: "NPC hội thoại + mở đầu quest + tracker"
-status: pending
+status: completed
 priority: P1
 effort: "M"
 dependencies: [3, 5, 6]
@@ -40,6 +40,13 @@ Gặp NPC → hội thoại (M3.3) → nhận quest (M2.2) → tracker chỉ bư
 
 ## Verification
 - `pnpm vitest run --project web`; E2E `quest-flow` xanh (dùng tài khoản setup + server PGlite); `pnpm --filter @miu/web e2e:ci` xanh
+
+## Kết quả (2026-09-30)
+- Hội thoại M3.3 (`ui/dialogue/`): tên + ảnh NPC, từng câu, lựa chọn của nội dung kèm câu đáp, "Xem nhiệm vụ", "Nghe lại" chỉ với giọng `vi` cục bộ (`localService`), không có thì ẩn nút; mọi chữ qua `fillPlayerName`.
+- Controller (`ui/quest/`): hàm thuần `quest-flow.ts` (bước theo target, bước `auto`, mũi tên, trạng thái thế giới, đếm manh mối) + hook `use-quest-controller.ts` nghe event qua store; tìm manh mối gửi `{ target }`, số n/3 lấy từ server; bước `auto` tự chạy (đọc thư, mở cổng); mất mạng chặn + thử lại đúng lệnh đang chờ; game dừng render khi hội thoại/thử thách mở.
+- Không lặp: `freshPicker` (`packages/quest/src/pick-fresh.ts`) cho câu "chưa đến lượt"/"tìm thấy"; hiển thị `feedback` của server khi có.
+- Mũi tên chỉ hướng trong game (`set-target-hint`, 1 draw call). E2E `quest-flow`: Vẹt → nhận quest → mũi tên chỉ `clue-box` → tìm 3 manh mối theo thứ tự đảo → 3/3 → bước đọc thư tự mở; NPC chưa tới lượt không lặp câu.
+- Bước `read`/`riddle`/`challenge` hiện khung "sắp có" tới phase 8.
 
 ## Risk
 - Controller phình to: tách theo loại step, mỗi handler một file.
