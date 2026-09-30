@@ -174,6 +174,7 @@ Tương tác giữa các quyết định: XP 100 nhân 0.9 = 90 nên xem đáp �
 
 ### Chỉ thị người sở hữu — 2026-09-30
 - "Miu" chỉ là tên dự án và tên game. Mọi chữ trong game (lời NPC, tiêu đề/tóm tắt/đề bài quest, thông báo thưởng) gọi người chơi bằng tên nhân vật bé đã đặt. Nội dung dùng placeholder `{name}`, UI điền bằng `fillPlayerName` (`packages/quest/src/player-name.ts`) với tên từ `GET /api/character`; `content:check` báo lỗi khi chữ quest còn "Miu" (commit `e709331`). Áp cho phase 7–9 (hội thoại, thử thách, màn thưởng) và nội dung SGK.
+- Nội dung phong phú, không lặp: không dùng lại nội dung/cảnh giữa các quest; mọi thứ chạy lặp (phản hồi đúng/sai, lời chào và câu nói rảnh của NPC, chúc mừng, lời mời thử lại, hoạt ảnh) xoay vòng từ pool, không lặp ngay. Server trả `feedback` luân phiên trong response hoàn thành bước (plan SGK sở hữu, cộng thêm vào DTO); UI phase 7–9 hiển thị `feedback` khi có và dùng helper chọn không lặp cho các vòng lặp của mình; `content:check` có gate đa dạng (plan SGK).
 
 ### Câu hỏi mở
 Không còn câu chặn. Việc của người (ngoài plan): giáo viên duyệt nội dung học, cấp Google OAuth cho hostname https cố định nếu muốn thử Google trên iPad, pháp chế duyệt consent draft-3, đo iPad Gen 10 (DEVICE-01), designer duyệt UI/mock voxel, chơi thử với trẻ.
