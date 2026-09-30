@@ -26,6 +26,7 @@ Giai đoạn hiện tại: Vertical slice MVP đã xong 10 phase, chờ người
 - Không cho quest/nội dung phụ thuộc Three.js; `packages/voxel` giữ thuần TypeScript (không import `three`).
 - Không tính thưởng, XP, mở khóa ở client — server là nguồn sự thật (áp dụng ngay khi có backend).
 - Không đưa secret hay dữ liệu thật của trẻ vào prompt, code, fixture hoặc commit.
+- **Repo công khai** trên GitHub (`github.com/achoo254/miu-world`, MIT, từ 30/09/2026): mọi commit và push ai cũng đọc được, và lịch sử không rút lại được. Không commit, push hay dán vào issue/PR bất kỳ credential, token, API key, mật khẩu, private key, tệp env thật, bản dump database, dữ liệu cá nhân, cũng như IP public, cổng SSH hay user của máy chủ, **trừ khi người dùng cho phép rõ ràng cho đúng lần đó**. Giá trị cần dùng thì đọc lúc chạy từ tệp credential ngoài repo (`docs/STAG-DEV-README.md` §3). Trước mỗi lần push, quét phần sắp push (`git log -p origin/main..HEAD`) tìm secret; thấy thì dừng và báo người.
 
 ## Hỏi người trước khi làm
 

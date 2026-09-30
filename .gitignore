@@ -12,3 +12,9 @@ playwright-report/
 .idea/
 .data/
 apps/web/playwright/.auth/
+# Credentials and database dumps never enter the public repo (CLAUDE.md, Không được làm)
+*.pem
+*.key
+*.dump
+access-tokens*.json
+all-in-one*.json
