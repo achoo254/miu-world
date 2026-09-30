@@ -100,6 +100,16 @@ export class CharacterPreview {
 
   private async boot(): Promise<void> {
     const { store } = this.options;
+    // Listen before loading: a choice made while the model downloads is worn as soon as it is ready.
+    let latestOutfit: readonly string[] = this.options.outfit;
+    let wearNow: ((entries: readonly string[]) => void) | null = null;
+    this.cleanups.push(
+      store.onCommand((command) => {
+        if (command.type !== 'set-outfit') return;
+        latestOutfit = command.equipped;
+        wearNow?.(command.equipped);
+      }),
+    );
     const renderer = new WebGLRenderer({ antialias: true, alpha: true });
     this.renderer = renderer;
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
@@ -184,12 +194,8 @@ export class CharacterPreview {
       this.stats.emote = null;
       idle.reset().play();
     };
-    wear(this.options.outfit);
-    this.cleanups.push(
-      store.onCommand((command) => {
-        if (command.type === 'set-outfit') wear(command.equipped);
-      }),
-    );
+    wear(latestOutfit);
+    wearNow = wear;
 
     // Drag to turn (mouse and touch share Pointer Events).
     const canvas = renderer.domElement;

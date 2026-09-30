@@ -8,8 +8,8 @@ import { StepCompleteResponse, type QuestCompletion, type StepCompleteRequest } 
 import type { GameStore, InteractableKind } from '../../game-bridge/game-store';
 import { ApiError, api, errorMessage } from '../api-client';
 import { say, type PlayerData } from '../player/player-data';
-import { FOUND_LINES, NOT_NOW_LINES, fillLine } from './loop-lines';
-import { autoStep, hintTarget, stepForTarget, worldState, type ActiveQuestView } from './quest-flow';
+import { DONE_LINES, FOUND_LINES, NOT_NOW_LINES, fillLine } from './loop-lines';
+import { autoStep, currentStep, hintTarget, stepForTarget, worldState, type ActiveQuestView } from './quest-flow';
 
 /** What covers the game right now: a dialogue, or a learning step screen (read, riddle, challenge). */
 export type QuestOverlay = { step: QuestStepPublic } | null;
@@ -58,11 +58,21 @@ export function useQuestController({ store, data, questId, onResponse, onOverlay
   useEffect(() => {
     latest.current = { data, questId, overlay, busy, onResponse, onOverlayChange };
   });
-  const setOverlay = useCallback((next: QuestOverlay): void => {
-    latest.current.overlay = next;
-    setOverlayState(next);
-    latest.current.onOverlayChange?.(next !== null);
+  // What covers the game (it stops rendering meanwhile): a step screen, the offline retry, the rewards.
+  const covers = useRef({ overlay: false, retry: false, finished: false });
+  const cover = useCallback((part: 'overlay' | 'retry' | 'finished', on: boolean): void => {
+    covers.current[part] = on;
+    const c = covers.current;
+    latest.current.onOverlayChange?.(c.overlay || c.retry || c.finished);
   }, []);
+  const setOverlay = useCallback(
+    (next: QuestOverlay): void => {
+      latest.current.overlay = next;
+      setOverlayState(next);
+      cover('overlay', next !== null);
+    },
+    [cover],
+  );
   const pickers = useRef(new Map<string, FreshPicker<string>>());
   // `submit` starts the next auto step, and `startStep` submits: the ref breaks the cycle.
   const startRef = useRef<(step: QuestStepPublic) => void>(() => undefined);
@@ -101,12 +111,13 @@ export function useQuestController({ store, data, questId, onResponse, onOverlay
       try {
         const response = await api('POST', `/quests/${active.quest.id}/steps/${step.id}/complete`, StepCompleteResponse, body);
         setRetry(null);
+        cover('retry', false);
         latest.current.onResponse(response);
         syncWorld(active.quest, response.quest);
         // Only the call that finished the quest carries a completion; a repeat grants nothing new.
         if (response.completion && response.reward && !response.repeated) {
           setFinished({ completion: response.completion, reward: response.reward });
-          latest.current.onOverlayChange?.(true);
+          cover('finished', true);
         }
         // A wrong answer's line shows inside the step screen; only a right one becomes a toast.
         if (response.feedback && response.correct) setToast(say(response.feedback, latest.current.data.character));
@@ -122,6 +133,7 @@ export function useQuestController({ store, data, questId, onResponse, onOverlay
           setRetry(() => async () => {
             await submitRef.current(step, body);
           });
+          cover('retry', true);
         } else {
           setError(errorMessage(err));
         }
@@ -130,7 +142,7 @@ export function useQuestController({ store, data, questId, onResponse, onOverlay
         setBusy(false);
       }
     },
-    [activeQuest, syncWorld, setOverlay],
+    [activeQuest, syncWorld, setOverlay, cover],
   );
 
   /** Opens the screen for a step, or completes it straight away when it has none. */
@@ -155,12 +167,15 @@ export function useQuestController({ store, data, questId, onResponse, onOverlay
   const onInteraction = useCallback(
     (targetId: string, who: string, kind: InteractableKind): void => {
       const { overlay: open, busy: waiting, data: player } = latest.current;
-      if (open || waiting) return;
+      // One call at a time: a pending offline retry is the only thing sent until it goes through.
+      if (open || waiting || covers.current.retry) return;
       const active = activeQuest();
       if (!active) return;
       const step = stepForTarget(active.quest, active.progress, targetId);
       if (!step) {
-        setToast(fillLine(lineFrom(`not-now:${kind}`, NOT_NOW_LINES[kind]), who, player.character.name));
+        const finished = currentStep(active.quest, active.progress) === null;
+        const line = finished ? lineFrom('done', DONE_LINES) : lineFrom(`not-now:${kind}`, NOT_NOW_LINES[kind]);
+        setToast(fillLine(line, who, player.character.name));
         return;
       }
       if (step.kind === 'search') {
@@ -206,8 +221,8 @@ export function useQuestController({ store, data, questId, onResponse, onOverlay
     finished,
     closeFinished: useCallback(() => {
       setFinished(null);
-      latest.current.onOverlayChange?.(latest.current.overlay !== null);
-    }, []),
+      cover('finished', false);
+    }, [cover]),
     busy,
     toast,
     clearToast: useCallback(() => setToast(null), []),

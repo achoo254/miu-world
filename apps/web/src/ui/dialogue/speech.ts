@@ -2,6 +2,7 @@
 // on the device: "remote" voices (localService = false, e.g. some Chrome/Edge voices) send the text
 // to the vendor's servers, which Master Plan §9 rules out. No local Vietnamese voice → no button.
 import { useEffect, useState } from 'react';
+import { readSoundOn } from '../system/sound-setting';
 
 type VoiceLike = Pick<SpeechSynthesisVoice, 'lang' | 'localService' | 'name'>;
 
@@ -14,8 +15,16 @@ function synthesis(): SpeechSynthesis | null {
   return typeof window !== 'undefined' && 'speechSynthesis' in window ? window.speechSynthesis : null;
 }
 
-/** The voice to read with; voices load asynchronously in some browsers, so it follows `voiceschanged`. */
+/**
+ * The voice to read with, or null (no local Vietnamese voice, or sound switched off): callers hide
+ * "Nghe lại" then. Voices load asynchronously in some browsers, so it follows `voiceschanged`.
+ */
 export function useLocalVoice(): SpeechSynthesisVoice | null {
+  const voice = useDeviceVoice();
+  return readSoundOn() ? voice : null;
+}
+
+function useDeviceVoice(): SpeechSynthesisVoice | null {
   const [voice, setVoice] = useState<SpeechSynthesisVoice | null>(() => localVietnameseVoice(synthesis()?.getVoices() ?? []));
   useEffect(() => {
     const speech = synthesis();
@@ -29,7 +38,7 @@ export function useLocalVoice(): SpeechSynthesisVoice | null {
 
 export function speak(text: string, voice: SpeechSynthesisVoice): void {
   const speech = synthesis();
-  if (!speech) return;
+  if (!speech || !readSoundOn()) return;
   speech.cancel();
   const utterance = new SpeechSynthesisUtterance(text);
   utterance.voice = voice;

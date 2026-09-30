@@ -50,7 +50,7 @@ export function SupportPanel({ questId, stepId, fill }: { questId: string; stepI
             <strong>{fill(shown.text)}</strong>
           </p>
           <p>{fill(shown.explanation)}</p>
-          <p className="hint">Hiểu cách làm rồi thì bé làm lại nhé, vẫn hoàn thành được bước này.</p>
+          <p className="hint">{fill('Hiểu cách làm rồi thì {name} làm lại nhé, vẫn hoàn thành được bước này.')}</p>
         </div>
       )}
     </Tabs>

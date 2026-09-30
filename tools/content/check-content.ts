@@ -64,10 +64,15 @@ export function checkQuestTargets(
       issues.push(`map ${mapId}: entities.json is not a valid version 2 world entities file`);
       continue;
     }
-    const onMap = new Set(parsed.data.interactables.map((t) => t.id));
+    const onMap = new Map(parsed.data.interactables.map((t) => [t.id, t]));
     for (const step of quest.steps) {
       for (const target of stepTargets(step)) {
         if (!onMap.has(target)) issues.push(`quest ${quest.id} step ${step.id} targets ${target}, which map ${mapId} does not place`);
+      }
+      // The map paints the riddle on a board: it must say what the step asks.
+      const board = step.kind === 'riddle' && step.target ? onMap.get(step.target)?.board : undefined;
+      if (step.kind === 'riddle' && board && !step.question.includes(board)) {
+        issues.push(`quest ${quest.id} step ${step.id}: the board on ${step.target} reads "${board}", which the question does not contain`);
       }
     }
   }

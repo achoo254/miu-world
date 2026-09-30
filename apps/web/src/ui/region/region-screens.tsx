@@ -57,14 +57,14 @@ export function RegionMapScreen() {
                     <div className="region-card region-card--locked" aria-disabled="true" data-id={`map-region-${region.id}`}>
                       <Icon name="locked" size={40} label="Khóa" />
                       <strong>{name}</strong>
-                      <span className="hint">{region.tagline}</span>
+                      <span className="hint">{say(region.tagline, player.character)}</span>
                       <span className="badge">{lock}</span>
                     </div>
                   ) : (
                     <Link to={`/region/${region.id}`} className="region-card" data-id={`map-region-${region.id}`}>
                       <Icon name="sparkles" size={40} />
                       <strong>{name}</strong>
-                      <span className="hint">{region.tagline}</span>
+                      <span className="hint">{say(region.tagline, player.character)}</span>
                     </Link>
                   )}
                 </li>
@@ -108,7 +108,7 @@ function QuestRow({ summary, data }: { summary: QuestSummary; data: PlayerData }
       </div>
       {playable ? (
         <Link to={playPath(summary)} className={buttonClass('primary', { small: true })} data-id={`region-play-${summary.quest.id}`}>
-          {summary.state === 'completed' ? 'Chơi lại' : 'Khám phá ngay'}
+          {summary.state === 'completed' ? 'Dạo lại khu rừng' : 'Khám phá ngay'}
         </Link>
       ) : (
         <Icon name="locked" size={36} label="Khóa" />
@@ -134,7 +134,7 @@ export function RegionScreen() {
         ) : (
           <section className="panel" aria-labelledby="region-title" data-id={`region-${region.id}`}>
             <h1 id="region-title">{say(region.name, player.character)}</h1>
-            <p className="hint">{region.tagline}</p>
+            <p className="hint">{say(region.tagline, player.character)}</p>
             {chapters(player.quests, region.id).map(({ chapter, quests }) => (
               <section key={chapter} className="chapter" aria-label={`Chương ${chapter}`} data-id={`region-chapter-${chapter}`}>
                 <h2>Chương {chapter}</h2>

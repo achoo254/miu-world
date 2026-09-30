@@ -86,6 +86,12 @@ function renderStep(step: QuestStepPublic, submit = vi.fn(async (_s: QuestStepPu
   render(<LearningStep step={step} quest={quest} data={DATA} busy={false} submit={submit} onClose={() => undefined} />);
   return submit;
 }
+function tapTile(selector: string): void {
+  const el = document.querySelector(selector) as Element;
+  fireEvent.pointerDown(el, { pointerId: 1, clientX: 0, clientY: 0 });
+  fireEvent.pointerUp(el, { pointerId: 1, clientX: 0, clientY: 0 });
+  fireEvent.click(el);
+}
 const check = () => fireEvent.click(screen.getByRole('button', { name: /Kiểm tra/ }));
 const sentAnswer = (submit: ReturnType<typeof vi.fn>) => (submit.mock.calls.at(-1)?.[1] as StepCompleteRequest | undefined)?.answer;
 
@@ -102,9 +108,9 @@ describe('learning steps send the answer the server checks', () => {
     const submit = renderStep(steps.apples);
     expect(screen.getByText(/Bước 1\/5/)).toBeTruthy();
     expect(screen.getByText(/100 XP/)).toBeTruthy();
+    // A tap as the browser sends it: pointerdown, pointerup, then a click on the same tile.
     for (const n of [1, 2]) {
-      fireEvent.pointerDown(document.querySelector(`[data-id="piece-apple-${n}"]`) as Element, { pointerId: 1, clientX: 0, clientY: 0 });
-      fireEvent.pointerUp(document.querySelector(`[data-id="piece-apple-${n}"]`) as Element, { pointerId: 1, clientX: 0, clientY: 0 });
+      tapTile(`[data-id="piece-apple-${n}"]`);
       fireEvent.click(document.querySelector('[data-id="drag-container"]') as Element);
     }
     expect(document.querySelector('[data-id="drag-count"]')?.textContent).toBe('2');
@@ -114,7 +120,14 @@ describe('learning steps send the answer the server checks', () => {
     fireEvent.pointerDown(third, { pointerId: 2, clientX: 10, clientY: 10 });
     fireEvent.pointerMove(third, { pointerId: 2, clientX: 200, clientY: 40 });
     fireEvent.pointerUp(third, { pointerId: 2, clientX: 200, clientY: 40 });
+    fireEvent.click(third); // the click after a drag is not a tap
     expect(document.querySelector('[data-id="drag-count"]')?.textContent).toBe('3');
+    // Tap an apple in the basket, then the tree side: it goes back.
+    tapTile('[data-id="drag-container"] [data-id="piece-apple-3"]');
+    fireEvent.click(document.querySelector('[data-id="drag-source"]') as Element);
+    expect(document.querySelector('[data-id="drag-count"]')?.textContent).toBe('2');
+    tapTile('[data-id="piece-apple-3"]');
+    fireEvent.click(document.querySelector('[data-id="drag-container"]') as Element);
     check();
     expect(sentAnswer(submit)).toEqual({ placed: ['apple-1', 'apple-2', 'apple-3'] });
   });
@@ -122,9 +135,7 @@ describe('learning steps send the answer the server checks', () => {
   it('sort: tap a stone then a slot, reset clears, check sends the order', () => {
     const submit = renderStep(steps.stones);
     const put = (stone: string, slot: number) => {
-      const el = document.querySelector(`[data-id="stone-${stone}"]`) as Element;
-      fireEvent.pointerDown(el, { pointerId: 1, clientX: 0, clientY: 0 });
-      fireEvent.pointerUp(el, { pointerId: 1, clientX: 0, clientY: 0 });
+      tapTile(`[data-id="stone-${stone}"]`);
       fireEvent.click(document.querySelector(`[data-id="slot-${slot}"]`) as Element);
     };
     put('s27', 0);

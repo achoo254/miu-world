@@ -63,7 +63,7 @@ export function CompletionSequence({
             </li>
             {Object.entries(reward.items).map(([id, qty]) => (
               <li key={id} data-id={`reward-item-${id}`}>
-                <Icon name={itemIcon(ITEMS.get(id))} size={32} /> {ITEMS.get(id)?.name ?? id} ×{qty}
+                <Icon name={itemIcon(ITEMS.get(id))} size={32} /> {fill(ITEMS.get(id)?.name ?? id)} ×{qty}
               </li>
             ))}
             {completion.skillLevels.map((s) => (

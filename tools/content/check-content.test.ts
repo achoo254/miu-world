@@ -81,6 +81,16 @@ describe('content:check', () => {
       ]);
     });
 
+    it('flags a riddle whose board on the map no longer matches the question', () => {
+      const worldDir = writeMap((e) => {
+        const tree = (e.interactables as Array<{ id: string; board?: string }>).find((t) => t.id === 'ancient-tree');
+        if (tree) tree.board = '7 + 6 = ?';
+      });
+      expect(checkQuestTargets(quests().values(), worldDir).issues).toEqual([
+        'quest forest-ch1 step tree-riddle: the board on ancient-tree reads "7 + 6 = ?", which the question does not contain',
+      ]);
+    });
+
     it('notes, without failing, an active quest whose map is not generated yet; stubs are skipped', () => {
       const report = checkQuestTargets(quests().values(), path.join(dir, 'no-maps'));
       expect(report.issues).toEqual([]);

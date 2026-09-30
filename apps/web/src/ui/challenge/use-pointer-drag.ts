@@ -1,7 +1,8 @@
 // Dragging for the 2D challenge screens: Pointer Events (mouse, pen and touch alike, no HTML5 drag API,
 // which iPad Safari lacks), pointer capture, and drop zones found under the finger. The dragged tile
-// moves through its own style (no React render per move); `pointercancel` puts it back.
-import { useCallback, useRef, type PointerEvent as ReactPointerEvent } from 'react';
+// moves through its own style (no React render per move); `pointercancel` puts it back. A tap (or
+// Enter/Space) arrives as the tile's own click, which never bubbles to the zone behind it.
+import { useCallback, useRef, type MouseEvent as ReactMouseEvent, type PointerEvent as ReactPointerEvent } from 'react';
 
 /** Mark an element as a drop zone with `data-drop-zone="<zone id>"`. */
 export const DROP_ZONE_ATTR = 'data-drop-zone';
@@ -16,6 +17,8 @@ const TAP_SLOP = 8;
 
 export function usePointerDrag(onDrop: (itemId: string, zone: string | null) => void, onTap: (itemId: string) => void) {
   const drag = useRef<{ id: string; x: number; y: number; moved: boolean } | null>(null);
+  /** The click the browser sends after a drag is not a tap. */
+  const justDragged = useRef(false);
   const reset = (el: HTMLElement): void => {
     el.style.transform = '';
     el.style.pointerEvents = '';
@@ -26,6 +29,9 @@ export function usePointerDrag(onDrop: (itemId: string, zone: string | null) => 
       onPointerDown(e: ReactPointerEvent<HTMLElement>) {
         e.currentTarget.setPointerCapture(e.pointerId);
         drag.current = { id: itemId, x: e.clientX, y: e.clientY, moved: false };
+        // A new press: a dropped tile is re-mounted in its new zone, so the click after the last drag
+        // may never have arrived to clear the flag.
+        justDragged.current = false;
       },
       onPointerMove(e: ReactPointerEvent<HTMLElement>) {
         const d = drag.current;
@@ -44,8 +50,17 @@ export function usePointerDrag(onDrop: (itemId: string, zone: string | null) => 
         drag.current = null;
         if (!d || d.id !== itemId) return;
         reset(e.currentTarget);
-        if (d.moved) onDrop(itemId, zoneAt(e.clientX, e.clientY));
-        else onTap(itemId);
+        if (!d.moved) return; // a tap: handled by onClick (also covers the keyboard)
+        justDragged.current = true;
+        onDrop(itemId, zoneAt(e.clientX, e.clientY));
+      },
+      onClick(e: ReactMouseEvent<HTMLElement>) {
+        e.stopPropagation(); // the zone behind must not treat this as "drop the selected tile here"
+        if (justDragged.current) {
+          justDragged.current = false;
+          return;
+        }
+        onTap(itemId);
       },
       onPointerCancel(e: ReactPointerEvent<HTMLElement>) {
         drag.current = null;

@@ -8,7 +8,11 @@ import { REPO_ROOT } from '../assets/asset-lib';
 
 const QUEST_DIR = path.join(REPO_ROOT, 'content/quests');
 const DIST_DIR = path.join(REPO_ROOT, 'apps/web/dist');
-/** Shorter strings ("13", "Bạn Hải ly") also appear as public choice labels; only distinctive text counts. */
+/**
+ * Shorter strings ("13", "Bạn Hải ly") also appear as public choice labels; only distinctive text counts.
+ * This scan is a tripwire for a stray import of content/quests, not the protection itself: that is
+ * `QuestStepPublic`, which drops answers and support layers before anything leaves the server.
+ */
 const MIN_SECRET_LENGTH = 16;
 const SCANNED = new Set(['.js', '.mjs', '.json', '.html', '.css', '.map']);
 

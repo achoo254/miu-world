@@ -11,7 +11,7 @@ import { SkyScene } from '../kit/sky-scene';
 import { PlayerBadge } from '../player/player-badge';
 import { currentQuest, playPath, say, stepProgress, usePlayer, type PlayerData } from '../player/player-data';
 import { REGIONS, regionLockText } from '../region/regions';
-import { readSoundOn, writeSoundOn } from '../system/sound-setting';
+import { SoundToggle } from '../system/sound-toggle';
 import './home.css';
 
 function Island({ data }: { data: PlayerData }) {
@@ -47,7 +47,7 @@ function TodayQuest({ data }: { data: PlayerData }) {
     return (
       <section className="panel home-today" data-id="home-today" aria-labelledby="home-today-title">
         <h2 id="home-today-title">Nhiệm vụ hôm nay</h2>
-        <p className="hint">Bé đã xong mọi nhiệm vụ đang có. Nhiệm vụ mới sắp tới!</p>
+        <p className="hint">{data.character.name} đã xong mọi nhiệm vụ đang có. Nhiệm vụ mới sắp tới!</p>
       </section>
     );
   }
@@ -73,23 +73,10 @@ function TodayQuest({ data }: { data: PlayerData }) {
 }
 
 function SettingsDialog({ onClose }: { onClose: () => void }) {
-  const [soundOn, setSoundOn] = useState(readSoundOn);
   return (
     <Modal title="Cài đặt" onClose={onClose} dataId="home-settings">
       <div className="modal-actions">
-        <button
-          type="button"
-          className={buttonClass('secondary', { block: true })}
-          aria-pressed={soundOn}
-          data-id="home-settings-sound"
-          onClick={() => {
-            writeSoundOn(!soundOn);
-            setSoundOn(!soundOn);
-          }}
-        >
-          <Icon name={soundOn ? 'speaker' : 'speakerMuted'} size={32} />
-          Âm thanh: {soundOn ? 'Bật' : 'Tắt'}
-        </button>
+        <SoundToggle dataId="home-settings-sound" />
         <Link to="/create" className={buttonClass('secondary', { block: true })} data-id="home-settings-character">
           <Icon name="catFace" size={32} />
           Sửa nhân vật

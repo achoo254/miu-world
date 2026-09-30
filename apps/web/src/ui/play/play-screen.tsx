@@ -10,7 +10,7 @@ import { ApiError, errorMessage } from '../api-client';
 import { useAccount } from '../account/account-context';
 import { Hud } from '../hud/hud';
 import type { StepCompleteResponse } from '@miu/schema/game';
-import { currentQuest, loadPlayer, type PlayerData } from '../player/player-data';
+import { currentQuest, loadPlayer, say, type PlayerData } from '../player/player-data';
 import { QuestLayer } from '../quest/quest-layer';
 import { BackpackPanel } from '../backpack/backpack-panel';
 import { Modal } from '../kit/modal';
@@ -101,6 +101,16 @@ export function PlayScreen() {
   const [store] = useState(createGameStore);
   const [params] = useSearchParams();
   const [data, setData] = useState<PlayerData | null>(null);
+  // The quest of this visit, fixed once: the one named in the URL (Home, region screen), else the one
+  // the child is on. It must not change when that quest finishes, or its reward screens would vanish.
+  const [questId, setQuestId] = useState<string | null>(null);
+  const loaded = useCallback(
+    (next: PlayerData): void => {
+      setData(next);
+      setQuestId((pinned) => pinned ?? params.get('quest') ?? currentQuest(next.quests)?.quest.id ?? null);
+    },
+    [params],
+  );
   const [loadError, setLoadError] = useState<string | null>(null);
   const [offline, setOffline] = useState(false);
   const [paused, setPaused] = useState(false);
@@ -122,17 +132,17 @@ export function PlayScreen() {
   useEffect(() => {
     let live = true;
     loadPlayer().then(
-      (next) => live && setData(next),
+      (next) => live && loaded(next),
       (err: unknown) => live && onLoadError(err),
     );
     return () => {
       live = false;
     };
-  }, [onLoadError]);
+  }, [onLoadError, loaded]);
 
   async function retryOffline(): Promise<void> {
     try {
-      setData(await loadPlayer());
+      loaded(await loadPlayer());
       setOffline(false);
     } catch (err) {
       onLoadError(err);
@@ -163,10 +173,9 @@ export function PlayScreen() {
     if (response.completion) void loadPlayer().then(setData, () => undefined);
   }, []);
 
-  // The quest named in the URL (from Home or the region screen), else the one the child is on.
-  const questId = params.get('quest');
-  const quest = data ? (data.quests.find((q) => q.quest.id === questId) ?? currentQuest(data.quests)) : null;
-  const regionName = findRegion(quest?.quest.region ?? '')?.name ?? 'Khu rừng bí mật';
+  const quest = data?.quests.find((q) => q.quest.id === questId) ?? null;
+  const regionTitle = findRegion(quest?.quest.region ?? '')?.name ?? 'Khu rừng bí mật';
+  const regionName = data ? say(regionTitle, data.character) : regionTitle;
 
   return (
     <GameStoreContext.Provider value={store}>

@@ -20,7 +20,7 @@ export function OfflineBanner({ onRetry }: { onRetry: () => Promise<unknown> }) 
     <Modal title="Mất kết nối mạng" dataId="offline">
       <p className="offline-body">
         <Icon name="antennaBars" size={56} />
-        Miu World cần mạng để lưu tiến độ. Những gì bé đã làm được vẫn an toàn.
+        Miu World cần mạng để lưu tiến độ. Những gì đã làm được vẫn được giữ an toàn.
       </p>
       <button type="button" className={buttonClass('primary', { block: true })} data-id="offline-retry" disabled={retrying} onClick={() => void retry()}>
         {retrying ? 'Đang kết nối lại…' : 'Thử kết nối lại'}

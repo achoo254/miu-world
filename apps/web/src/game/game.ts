@@ -98,6 +98,7 @@ export class Game {
   private scene: Scene | null = null;
   private loop: (() => void) | null = null;
   private timer: Timer | null = null;
+  private input: PlayerInput | null = null;
 
   constructor(
     private readonly host: HTMLElement,
@@ -121,6 +122,7 @@ export class Game {
   stop(): void {
     this.paused = true;
     this.renderer?.setAnimationLoop(null);
+    this.input?.clear();
   }
 
   /** Restarts rendering after `stop()`. No-op before the first frame is ready, after dispose, or once the context is lost. */
@@ -131,8 +133,9 @@ export class Game {
 
   private runLoop(): void {
     if (this.paused || this.disposed || this.contextLost || !this.renderer || !this.loop) return;
-    // The paused time must not reach the next frame as one long step.
+    // The paused time must not reach the next frame as one long step, nor presses made meanwhile.
     this.timer?.reset();
+    this.input?.clear();
     this.renderer.setAnimationLoop(this.loop);
   }
 
@@ -244,6 +247,7 @@ export class Game {
     }
     const rig = new CameraRig(camera, solid, controller.facing + Math.PI);
     const input = new PlayerInput(dom.root, dom.joystick, dom.run, dom.jump);
+    this.input = input;
     this.cleanups.push(() => input.dispose());
     const autopilot = params.get('autopilot') === '1' ? new Autopilot(data.entities) : null;
 

@@ -55,3 +55,12 @@ export const TRY_AGAIN_LINES: readonly string[] = [
   '{name} bình tĩnh đếm lại xem sao.',
   'Hmm, chưa phải. Mình cùng thử cách khác nhé.',
 ];
+
+/** Touching anything once the chapter is done (the child came back to wander). */
+export const DONE_LINES: readonly string[] = [
+  '{who}: Cảm ơn {name} đã giúp mọi người ở đây nhé!',
+  '{who}: Nơi này vui hẳn lên nhờ {name} đấy.',
+  '{who}: Nhiệm vụ mới sắp tới, {name} nhớ quay lại nha!',
+  '{name} ngắm {who} một lát. Mọi thứ đã yên bình.',
+  '{who}: {name} giỏi quá, việc ở đây xong hết rồi!',
+];

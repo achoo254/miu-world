@@ -52,6 +52,17 @@ export class PlayerInput implements InputSource {
     this.bindLook(root);
   }
 
+  /**
+   * Forgets keys and presses gathered while the game was paused (E or Space pressed on a dialog),
+   * so resuming never replays them as an interaction or a jump.
+   */
+  clear(): void {
+    this.keys.clear();
+    this.jumpQueued = false;
+    this.interactQueued = false;
+    this.look = { x: 0, y: 0 };
+  }
+
   private bindHold(el: HTMLElement, onChange: (held: boolean) => void): void {
     el.addEventListener('pointerdown', (e) => {
       e.preventDefault();
