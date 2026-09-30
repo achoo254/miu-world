@@ -55,8 +55,13 @@ export interface LoadedQuests {
   warnings: string[];
 }
 
+/** Every quest file, drafts included, schema-checked but not cross-checked. */
+export function readQuestDefinitions(questDir: string): QuestDefinition[] {
+  return jsonFiles(questDir).map((file) => readContentJson(QuestDefinition, file));
+}
+
 export function loadQuests(questDir: string, skillIds: ReadonlySet<string>): LoadedQuests {
-  const list = jsonFiles(questDir).map((file) => readContentJson(QuestDefinition, file));
+  const list = readQuestDefinitions(questDir);
   const { issues, warnings } = questCatalogReport(list, skillIds);
   if (issues.length > 0) throw new Error(`invalid quest catalogue: ${issues.join('; ')}`);
   const playable = list.filter((q): q is PlayableQuest => q.status !== 'draft');

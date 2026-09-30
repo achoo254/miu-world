@@ -80,6 +80,21 @@ function consistencyIssues({ book, units }: LoadedBook): string[] {
   return issues;
 }
 
+/** "6, 7, 8, 10" → "6–8, 10". */
+export function pageRanges(pages: readonly number[]): string {
+  const ranges: string[] = [];
+  let start = pages[0];
+  for (let i = 0; i < pages.length; i += 1) {
+    const page = pages[i];
+    const next = pages[i + 1];
+    if (start === undefined || page === undefined) break;
+    if (next === page + 1) continue;
+    ranges.push(start === page ? String(page) : `${start}–${page}`);
+    start = next;
+  }
+  return ranges.join(', ');
+}
+
 /** What a finished inventory must have: every lesson, every content page read and counted, nothing left unsure. */
 function completenessGaps({ book, units }: LoadedBook): string[] {
   const gaps: string[] = [];
@@ -102,8 +117,8 @@ function completenessGaps({ book, units }: LoadedBook): string[] {
     if (!sectionPages.has(page)) unread.push(page);
     if (!counted.has(page)) uncounted.push(page);
   }
-  if (unread.length > 0) gaps.push(`${book.id}: content page(s) with no section: ${unread.join(', ')}`);
-  if (uncounted.length > 0) gaps.push(`${book.id}: page(s) without a second-reading item count: ${uncounted.join(', ')}`);
+  if (unread.length > 0) gaps.push(`${book.id}: content page(s) with no section: ${pageRanges(unread)}`);
+  if (uncounted.length > 0) gaps.push(`${book.id}: page(s) without a second-reading item count: ${pageRanges(uncounted)}`);
   const unsure = itemsOf(units).filter((i) => i.readConfidence === 'low');
   if (unsure.length > 0) gaps.push(`${book.id}: ${unsure.length} item(s) still read with low confidence: ${unsure.map((i) => i.id).join(', ')}`);
   return gaps;

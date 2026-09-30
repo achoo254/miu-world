@@ -11,6 +11,7 @@
     "assets:manifest": "tsx tools/assets/build-manifest.ts",
     "assets:check": "tsx tools/assets/check-assets.ts",
     "content:check": "tsx tools/content/check-content.ts",
+    "content:gaps": "tsx tools/content/content-gaps.ts",
     "test": "vitest run",
     "typecheck": "tsc --noEmit -p tsconfig.json && pnpm -r --if-present typecheck",
     "lint": "eslint . --max-warnings=0",

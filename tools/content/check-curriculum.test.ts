@@ -2,7 +2,7 @@ import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
-import { checkCurriculum } from './check-curriculum';
+import { checkCurriculum, pageRanges } from './check-curriculum';
 import { checkContent } from './check-content';
 import { CONTENT_DIR } from '../../apps/server/src/content/content-catalog';
 import { cpSync } from 'node:fs';
@@ -56,6 +56,13 @@ function lesson(n: 1 | 2, confidence = 'high') {
 const unitFile = (lessons: unknown[], pageItems: unknown[]) => ({ book: 'toan2-t1', id: 'toan2-t1-chu-de-1', number: 1, title: 'Ôn tập', lessons, pageItems });
 const fullCount = [6, 7, 8, 9].map((page) => ({ page, itemCount: page === 6 || page === 8 ? 1 : 0 }));
 
+describe('pageRanges', () => {
+  it('joins consecutive pages', () => {
+    expect(pageRanges([6, 7, 8, 10, 12, 13])).toBe('6–8, 10, 12–13');
+    expect(pageRanges([])).toBe('');
+  });
+});
+
 describe('checkCurriculum', () => {
   it('only warns about gaps while the book is a draft', () => {
     write('toan2-t1/book.json', book('draft'));
@@ -64,8 +71,8 @@ describe('checkCurriculum', () => {
     expect(report.issues).toEqual([]);
     expect(report.warnings).toEqual([
       'toan2-t1: 1 lesson(s) not inventoried: toan2-t1-b02',
-      'toan2-t1: content page(s) with no section: 8, 9',
-      'toan2-t1: page(s) without a second-reading item count: 6, 7, 8, 9',
+      'toan2-t1: content page(s) with no section: 8–9',
+      'toan2-t1: page(s) without a second-reading item count: 6–9',
     ]);
   });
 

@@ -4,13 +4,15 @@
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
-import { CONTENT_DIR, loadContentCatalog } from '../../apps/server/src/content/content-catalog';
+import { CONTENT_DIR, loadContentCatalog, readQuestDefinitions } from '../../apps/server/src/content/content-catalog';
 import { playerTextIssues } from '../../packages/quest/src/player-name';
 import { stepTargets, type QuestDefinition } from '../../packages/schema/src/content';
 import { RegionCatalog } from '../../packages/schema/src/region';
 import { worldEntitiesSchema } from '../../packages/voxel/src/world-entities';
 import { ASSETS_DIR } from '../assets/asset-lib';
 import { CURRICULUM_FOLDERS, checkCurriculum } from './check-curriculum';
+import { percentCovered, sumGaps } from './content-gaps';
+import { checkCurriculumLinks } from './curriculum-links';
 
 /** Content files the server catalogue reads (a trailing slash means the `.json` files directly in that folder). */
 const CATALOGUE_FILES = [
@@ -139,7 +141,8 @@ export function checkContent(dir: string = CONTENT_DIR): ContentReport {
     warnings.push(...catalog.questWarnings);
     const targets = checkQuestTargets(catalog.quests.values());
     issues.push(...targets.issues);
-    issues.push(...checkPlayerText(catalog.quests.values()));
+    // Drafts become game text too, so the player's name rule covers every quest file.
+    issues.push(...checkPlayerText(readQuestDefinitions(path.join(dir, 'quests'))));
     issues.push(...checkRegions(JSON.parse(readFileSync(path.join(dir, REGIONS_FILE), 'utf8')), catalog.quests.values()));
     for (const item of catalog.accessories.values()) {
       const quest = item.unlock?.quest;
@@ -151,6 +154,19 @@ export function checkContent(dir: string = CONTENT_DIR): ContentReport {
   }
   const curriculum = checkCurriculum(path.join(dir, 'curriculum'));
   issues.push(...curriculum.issues);
+  // Textbook quests must carry the book's wording and answers unchanged; gaps only warn until the books are switched on.
+  try {
+    const links = checkCurriculumLinks(curriculum.books, readQuestDefinitions(path.join(dir, 'quests')));
+    issues.push(...links.issues);
+    for (const book of curriculum.books) {
+      const totals = sumGaps(links.lessons.filter((l) => l.book === book.book.id));
+      if (totals.missing + totals.missingTexts > 0) {
+        warnings.push(`${book.book.id}: ${percentCovered(totals)}% of ${totals.items} textbook items covered by quests (pnpm content:gaps)`);
+      }
+    }
+  } catch {
+    // A quest file that breaks the schema is already reported by the catalogue load above.
+  }
   return { issues, warnings: [...warnings, ...curriculum.warnings], notes, fileCount: files.length };
 }
 
