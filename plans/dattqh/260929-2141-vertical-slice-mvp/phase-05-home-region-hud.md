@@ -1,7 +1,7 @@
 ---
 phase: 5
 title: "Home Base, chọn khu vực, danh sách quest, HUD"
-status: pending
+status: completed
 priority: P1
 effort: "M"
 dependencies: [1, 3]
@@ -35,6 +35,13 @@ Trang chủ và điều hướng vào khu vực, cùng HUD gameplay theo cấu t
 
 ## Verification
 - `pnpm vitest run --project web`; E2E `play` + `home` xanh; ảnh review UI chụp lại
+
+## Kết quả (2026-09-30, commit `d639f33`, `58bf2a4`)
+- Home (`/home`): badge người chơi (tên nhân vật, Lv, thanh XP, Xu từ `/api/progress`), đảo render sẵn (`pnpm assets:home` → `assets/generated/home/island.png`, nền trong suốt, không có nhân vật, cùng hash giữa hai lần chạy) với vùng nhấn theo `content/world/regions.json`, "Nhiệm vụ hôm nay", nút Nhiệm vụ/Bản đồ/Ba lô (khóa tới phase 9)/Cài đặt (âm thanh, Sửa nhân vật, Đổi hồ sơ). Không Kim cương, không chuỗi ngày.
+- `/map` (danh sách khu vực) và `/region/:id` (chương theo `chapter`, nhiều quest/chương được, "Hoàn thành x/N", "Khám phá ngay" → `/play?region=&quest=`).
+- HUD `/play`: badge, "Nhiệm vụ hiện tại" (bước kế tiếp từ server), Nhiệm vụ/Bản đồ/Ba lô/Menu (→ Tạm dừng), nút Tương tác chỉ hiện khi có mục tiêu gần; overlay FPS của dev chỉ hiện với `?stats=1`. Test đếm render: HUD không render lại theo event tải/prompt trùng.
+- Luồng: chọn hồ sơ → `/create` (hồ sơ mới) hoặc `/home`; lưu nhân vật → `/home`. E2E `home` + `creator` + `account` + `play` xanh.
+- Lệch nhỏ: schema khu vực ở `packages/schema/src/region.ts` (không chung `content.ts` với plan SGK); `content:check` kiểm quest active nằm trong khu vực mở và mọi khu vực mở có quest. Ảnh review UI chụp lại ở phase 10 (`REVIEW_SHOTS=1`).
 
 ## Risk
 - Ảnh đảo có thể trông khác cảnh chơi khi palette đổi: sinh lại bằng `pnpm assets:home` mỗi khi đổi palette/map (kiểm hash xác định).
