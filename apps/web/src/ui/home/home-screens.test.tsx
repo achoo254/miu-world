@@ -101,6 +101,25 @@ describe('Map and region', () => {
 describe('HUD', () => {
   const data: PlayerData = { character: CHARACTER, progress: PROGRESS, quests: questList(1).quests };
 
+  it('offers "Quay lại" only while Miu is stuck, and sends the rescue', () => {
+    const store = createGameStore();
+    const sent: string[] = [];
+    store.onCommand((c) => sent.push(c.type));
+    render(
+      <MemoryRouter>
+        <GameStoreContext.Provider value={store}>
+          <Hud data={data} quest={data.quests[0] ?? null} onMenu={() => undefined} onBackpack={() => undefined} />
+        </GameStoreContext.Provider>
+      </MemoryRouter>,
+    );
+    expect(screen.queryByRole('button', { name: /Quay lại/ })).toBeNull();
+    act(() => store.emit({ type: 'stuck', stuck: true }));
+    fireEvent.click(screen.getByRole('button', { name: /Quay lại/ }));
+    expect(sent).toEqual(['rescue']);
+    act(() => store.emit({ type: 'stuck', stuck: false }));
+    expect(screen.queryByRole('button', { name: /Quay lại/ })).toBeNull();
+  });
+
   it('says where to walk when the next step waits at another place', () => {
     const [first, ...rest] = questList(1).quests;
     if (!first || first.quest.status !== 'active') throw new Error('fixture has an active first quest');

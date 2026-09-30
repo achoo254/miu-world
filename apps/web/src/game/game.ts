@@ -29,6 +29,7 @@ import { Autopilot } from './player/autopilot';
 import { CameraRig } from './player/camera-rig';
 import { PlayerInput } from './player/input';
 import { PlayerController, type MoveIntent } from './player/player-controller';
+import { RescueWatch } from './player/rescue';
 import { readQuality } from './quality';
 import { disposeSceneGraph } from './scene/dispose-scene';
 import { SKY_HORIZON, createSky } from './scene/sky';
@@ -43,7 +44,7 @@ const LOADING_STEPS = 5;
 
 export interface GameOptions {
   store: GameStore;
-  /** Query string with dev/review switches: quality, stats, autopilot, spawnAt (`npc` or a target id), shot, outfit. */
+  /** Query string with dev/review switches: quality, stats, autopilot, spawnAt (`npc`, a target id or `x,y,z`), shot, outfit. */
   search: string;
   /** Equipped accessory ids (`id` or `id:variant`), normally from `GET /api/character`. */
   outfit: string[];
@@ -248,11 +249,16 @@ export class Game {
     scene.add(character.root, props, ...targets.map((t) => t.root));
     overlay.stats.outfit = character.outfit;
 
-    const controller = new PlayerController(solid, entities.spawn.position, entities.spawn.yaw);
-    // Dev/E2E switch: start next to a target (`npc` = the first NPC) instead of the spawn point.
+    const liquid = (x: number, y: number, z: number): boolean => blocks(data.world.get(x, y, z))?.liquid ?? false;
+    const controller = new PlayerController(solid, entities.spawn.position, entities.spawn.yaw, liquid);
+    const rescue = new RescueWatch();
+    // Dev/E2E switch: start next to a target (`npc` = the first NPC), or at `x,y,z`, instead of the spawn point.
     const spawnAt = params.get('spawnAt');
     const spawnTarget = entities.interactables.find((t) => (spawnAt === 'npc' ? t.kind === 'npc' : t.id === spawnAt));
-    if (spawnTarget) {
+    const spawnPoint = spawnAt?.split(',').map(Number) ?? [];
+    if (spawnPoint.length === 3 && spawnPoint.every(Number.isFinite)) {
+      controller.position.set(spawnPoint[0] ?? 0, spawnPoint[1] ?? 0, spawnPoint[2] ?? 0);
+    } else if (spawnTarget) {
       const [x, y, z] = spawnTarget.position;
       const offset = Math.min(1.5, spawnTarget.radius * 0.5);
       controller.position.set(x - offset, y, z - offset);
@@ -287,6 +293,7 @@ export class Game {
     // and moves the anchor React registered (per frame, no React render).
     let promptTarget: InteractableObject | null = null;
     let interactRequested = false;
+    let rescueRequested = false;
     const byId = new Map(targets.map((t) => [t.def.id, t]));
     const arrow = createTargetArrow();
     scene.add(arrow.root);
@@ -294,12 +301,22 @@ export class Game {
     this.cleanups.push(
       store.onCommand((command) => {
         if (command.type === 'interact') interactRequested = true;
+        if (command.type === 'rescue') rescueRequested = true;
         if (command.type === 'set-target-hint') hint = command.targetId ? (byId.get(command.targetId) ?? null) : null;
         // Server-backed target states; a target missing from the map returns to its initial look.
         if (command.type === 'set-world-state') for (const [id, target] of byId) target.setState(command.state[id]);
       }),
     );
     this.cleanups.push(() => store.emit({ type: 'interaction-prompt', prompt: null }));
+    this.cleanups.push(() => store.emit({ type: 'stuck', stuck: false }));
+    /** No dry spot yet: next to the target the arrow points at, else the spawn point. */
+    const rescueFallback = (): [number, number, number] => {
+      const at = hint?.def;
+      if (!at) return [...entities.spawn.position];
+      const [x, y, z] = at.position;
+      const offset = Math.min(1.5, at.radius * 0.5);
+      return [x + offset, y + 0.5, z + offset];
+    };
 
     overlay.stats.meshMs = Math.round(world.meshMs);
     overlay.stats.worker = world.usedWorker;
@@ -333,6 +350,18 @@ export class Game {
         };
       }
       controller.update(dt, intent);
+      if (rescueRequested) {
+        rescueRequested = false;
+        controller.teleport(rescue.spot() ?? rescueFallback());
+        rescue.reset();
+      }
+      const stuck = rescue.update(dt, {
+        position: [controller.position.x, controller.position.y, controller.position.z],
+        safe: controller.onGround && !controller.inWater,
+        inWater: controller.inWater,
+        pushing: Math.hypot(intent.dirX, intent.dirZ) > 0.5,
+      });
+      store.emit({ type: 'stuck', stuck });
       character.root.position.copy(controller.position);
       character.root.rotation.y = controller.facing;
       character.update(dt, controller.speed, controller.onGround);

@@ -55,6 +55,19 @@ function InteractButton() {
   );
 }
 
+/** Only while Miu is stuck (water, or the stick gets her nowhere): puts her back where she last stood safely. */
+function RescueButton() {
+  const store = useGameStore();
+  const stuck = useGameState((s) => s.stuck);
+  if (!stuck) return null;
+  return (
+    <button type="button" className="hud-rescue" data-id="hud-rescue" onClick={() => store.send({ type: 'rescue' })}>
+      <Icon name="ringBuoy" size={36} />
+      Quay lại
+    </button>
+  );
+}
+
 export function Hud({
   data,
   quest,
@@ -94,6 +107,7 @@ export function Hud({
         </button>
       </nav>
       {covered ? null : <InteractButton />}
+      {covered ? null : <RescueButton />}
     </>
   );
 }

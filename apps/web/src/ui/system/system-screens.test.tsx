@@ -41,12 +41,19 @@ describe('Modal', () => {
 });
 
 describe('PauseScreen', () => {
-  const renderPause = (onResume = vi.fn()) =>
+  const renderPause = (onResume = vi.fn(), onRescue = vi.fn()) =>
     render(
       <MemoryRouter>
-        <PauseScreen onResume={onResume} homePath="/profiles" />
+        <PauseScreen onResume={onResume} onRescue={onRescue} homePath="/profiles" />
       </MemoryRouter>,
     );
+
+  it('offers a way back to a safe spot for a stuck Miu', () => {
+    const onRescue = vi.fn();
+    renderPause(vi.fn(), onRescue);
+    fireEvent.click(screen.getByRole('button', { name: /Về chỗ an toàn/ }));
+    expect(onRescue).toHaveBeenCalledTimes(1);
+  });
 
   it('resumes from the button or Esc, and links home', () => {
     const onResume = vi.fn();

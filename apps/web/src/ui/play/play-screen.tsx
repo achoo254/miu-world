@@ -201,7 +201,16 @@ export function PlayScreen() {
           </Modal>
         ) : null}
         {data ? <QuestLayer store={store} data={data} questId={quest?.quest.id ?? null} onResponse={onResponse} onOverlayChange={setQuestOpen} /> : null}
-        {paused ? <PauseScreen onResume={() => setPaused(false)} homePath={HOME_PATH} /> : null}
+        {paused ? (
+          <PauseScreen
+            onResume={() => setPaused(false)}
+            onRescue={() => {
+              store.send({ type: 'rescue' });
+              setPaused(false);
+            }}
+            homePath={HOME_PATH}
+          />
+        ) : null}
       </main>
     </GameStoreContext.Provider>
   );

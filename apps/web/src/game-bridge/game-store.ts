@@ -31,7 +31,9 @@ export type GameEvent =
   /** Boot progress: `done` of `total` loading steps finished. */
   | { type: 'loading-progress'; done: number; total: number }
   | { type: 'interaction-prompt'; prompt: InteractionPrompt | null }
-  | { type: 'interaction'; targetId: string };
+  | { type: 'interaction'; targetId: string }
+  /** Miu cannot get out on her own (stuck in water, or the stick gets her nowhere). */
+  | { type: 'stuck'; stuck: boolean };
 
 export interface GameSnapshot {
   status: 'loading' | 'ready' | 'error';
@@ -40,6 +42,8 @@ export interface GameSnapshot {
   prompt: InteractionPrompt | null;
   /** Last target the player interacted with, and how many interactions happened (for UI reactions). */
   lastInteraction: { targetId: string; count: number } | null;
+  /** The HUD offers "Quay lại" while this is true. */
+  stuck: boolean;
 }
 
 /** Commands from React to the game. The game ignores commands it does not handle yet. */
@@ -50,7 +54,9 @@ export type GameCommand =
   | { type: 'set-outfit'; equipped: readonly string[] }
   | { type: 'set-world-state'; state: WorldState }
   /** Target the quest tracker points at (direction arrow), or none. */
-  | { type: 'set-target-hint'; targetId: string | null };
+  | { type: 'set-target-hint'; targetId: string | null }
+  /** Put Miu back where she last stood safely (the "Quay lại" button, the pause menu). */
+  | { type: 'rescue' };
 
 export interface GameStore {
   subscribe(listener: () => void): () => void;
@@ -69,6 +75,7 @@ export const INITIAL_SNAPSHOT: GameSnapshot = {
   loading: { done: 0, total: 0 },
   prompt: null,
   lastInteraction: null,
+  stuck: false,
 };
 
 function samePrompt(a: InteractionPrompt | null, b: InteractionPrompt | null): boolean {
@@ -96,6 +103,8 @@ export function reduce(state: GameSnapshot, event: GameEvent): GameSnapshot {
         ...state,
         lastInteraction: { targetId: event.targetId, count: (state.lastInteraction?.count ?? 0) + 1 },
       };
+    case 'stuck':
+      return state.stuck === event.stuck ? state : { ...state, stuck: event.stuck };
   }
 }
 

@@ -30,6 +30,7 @@ export const UI_ICONS = {
   pause: `${FLUENT}/pause.png`,
   redApple: `${FLUENT}/red-apple.png`,
   rock: `${FLUENT}/rock.png`,
+  ringBuoy: `${FLUENT}/ring-buoy.png`,
   runningShoe: `${FLUENT}/running-shoe.png`,
   basket: `${FLUENT}/basket.png`,
   scroll: `${FLUENT}/scroll.png`,
