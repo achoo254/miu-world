@@ -18,7 +18,7 @@ const MIME: Record<string, string> = {
 };
 
 /** Always shipped: whole generated groups the runtime/review pages read by path. */
-const SHIPPED_PREFIXES = ['generated/atlas/', 'generated/world/', 'generated/characters/', 'generated/review/'];
+const SHIPPED_PREFIXES = ['generated/atlas/', 'generated/world/', 'generated/characters/', 'generated/review/', 'generated/sounds/'];
 
 interface ManifestJson {
   files: Array<{ path: string }>;

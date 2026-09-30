@@ -22,7 +22,7 @@ export const IGNORED_BASENAMES = new Set(['.DS_Store']);
  * The only file types allowed under assets/ (passive data the game loads). An allowlist, so any
  * active content (.js, .html, .svg, .wasm, ...) is rejected without having to enumerate it.
  */
-export const ALLOWED_EXTENSIONS = new Set(['.glb', '.png', '.json', '.bin', '.ogg', '.woff2', '.txt']);
+export const ALLOWED_EXTENSIONS = new Set(['.glb', '.png', '.json', '.bin', '.ogg', '.m4a', '.woff2', '.txt']);
 /** Extension-less license texts shipped by packs (e.g. Fluent Emoji `LICENSE`). */
 const LICENSE_BASENAME = /^LICEN[CS]E$/;
 

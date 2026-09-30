@@ -88,5 +88,13 @@
     "generator": "apps/web/e2e/perf.spec.ts",
     "derivedFrom": [],
     "license": "CC0-1.0"
+  },
+  {
+    "glob": "generated/sounds/*.m4a",
+    "generator": "tools/assets/build-sounds.ts",
+    "derivedFrom": [
+      "kenney-interface-sounds"
+    ],
+    "license": "CC0-1.0"
   }
 ]
