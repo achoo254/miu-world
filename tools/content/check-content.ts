@@ -1,10 +1,13 @@
 // `pnpm content:check`: validates everything under content/ before it reaches the server or the web
 // app. Game content goes through the server's own catalogue loader (schemas + cross-references), so
 // this gate and the server boot can never disagree.
-import { readdirSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { CONTENT_DIR, loadContentCatalog } from '../../apps/server/src/content/content-catalog';
+import { stepTargets, type QuestDefinition } from '../../packages/schema/src/content';
+import { worldEntitiesSchema } from '../../packages/voxel/src/world-entities';
+import { ASSETS_DIR } from '../assets/asset-lib';
 
 /** Content files the server catalogue reads (a trailing slash means the `.json` files directly in that folder). */
 const CATALOGUE_FILES = [
@@ -19,6 +22,46 @@ const CATALOGUE_FILES = [
 ];
 /** Content files the asset tools validate when they build characters, atlases and maps (any file in a folder). */
 const ASSET_TOOL_FILES = ['blocks.json', 'characters.json', 'palette.json', 'faces/', 'animations/'];
+
+/**
+ * Map id prefix of each region; chapter N plays on `<prefix>-ch<N>`. Moves into the region catalogue
+ * once content/world/regions.json exists.
+ */
+const REGION_MAP_PREFIX: Record<string, string> = { 'khu-rung-bi-mat': 'forest' };
+
+/**
+ * Every map target an active quest names must be an interactable on its chapter map. Stubs and drafts
+ * are skipped; an active quest whose map is not generated yet is reported as a note, not an error.
+ */
+export function checkQuestTargets(
+  quests: Iterable<QuestDefinition>,
+  worldDir: string = path.join(ASSETS_DIR, 'generated/world'),
+): { issues: string[]; notes: string[] } {
+  const issues: string[] = [];
+  const notes: string[] = [];
+  for (const quest of quests) {
+    if (quest.status !== 'active') continue;
+    const prefix = REGION_MAP_PREFIX[quest.region];
+    const mapId = prefix ? `${prefix}-ch${quest.chapter}` : null;
+    const file = mapId ? path.join(worldDir, mapId, 'entities.json') : null;
+    if (!mapId || !file || !existsSync(file)) {
+      notes.push(`quest ${quest.id}: map targets not checked, region ${quest.region} chapter ${quest.chapter} has no generated map`);
+      continue;
+    }
+    const parsed = worldEntitiesSchema.safeParse(JSON.parse(readFileSync(file, 'utf8')));
+    if (!parsed.success) {
+      issues.push(`map ${mapId}: entities.json is not a valid version 2 world entities file`);
+      continue;
+    }
+    const onMap = new Set(parsed.data.interactables.map((t) => t.id));
+    for (const step of quest.steps) {
+      for (const target of stepTargets(step)) {
+        if (!onMap.has(target)) issues.push(`quest ${quest.id} step ${step.id} targets ${target}, which map ${mapId} does not place`);
+      }
+    }
+  }
+  return { issues, notes };
+}
 
 export interface ContentReport {
   issues: string[];
@@ -47,15 +90,15 @@ export function checkContent(dir: string = CONTENT_DIR): ContentReport {
       issues.push(`content/${rel} has no validator: add it to the server catalogue or an asset tool`);
     }
   }
+  const notes = ['reward item ids are not checked yet: there is no item catalogue'];
   try {
-    loadContentCatalog({ dir });
+    const catalog = loadContentCatalog({ dir });
+    const targets = checkQuestTargets(catalog.quests.values());
+    issues.push(...targets.issues);
+    notes.push(...targets.notes);
   } catch (error) {
     issues.push(error instanceof Error ? error.message : String(error));
   }
-  const notes = [
-    'quest map targets are not checked against world entities yet: the forest map does not list interactable ids',
-    'reward item ids are not checked yet: there is no item catalogue',
-  ];
   return { issues, notes, fileCount: files.length };
 }
 

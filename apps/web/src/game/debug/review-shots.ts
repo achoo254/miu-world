@@ -20,7 +20,7 @@ export function createReviewShot(name: string | null, entities: WorldEntities, s
     const lm = entities.landmarks.find((l) => l.id === id);
     return lm ? new Vector3(...lm.position) : center.clone();
   };
-  const npc = entities.npcs[0];
+  const npc = entities.interactables.find((t) => t.kind === 'npc');
   const views: Record<string, { eye: Vector3; target: Vector3; fov: number }> = {
     top: { eye: new Vector3(sx / 2, 150, sz / 2 + 0.01), target: new Vector3(sx / 2, 0, sz / 2), fov: 38 },
     iso: { eye: new Vector3(-38, 78, -38), target: center, fov: 40 },

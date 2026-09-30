@@ -16,7 +16,12 @@ export interface MiuStats {
   ready: boolean;
   player: [number, number, number];
   onGround: boolean;
-  nearNpc: boolean;
+  /** Id of the target whose prompt is showing, if any. */
+  nearTarget: string | null;
+  /** Id of the last target the player interacted with. */
+  lastInteraction: string | null;
+  /** True when the camera sits inside a solid block (must never happen). */
+  cameraInsideBlock: boolean;
   cameraYaw: number;
   /** Accessories attached to the player character. */
   outfit: string[];
@@ -36,7 +41,7 @@ export class StatsOverlay {
   readonly stats: MiuStats;
 
   constructor(private readonly el: HTMLElement, quality: string) {
-    this.stats = { quality, fpsAvg: 0, fpsP5: 0, calls: 0, triangles: 0, frames: 0, loadMs: 0, meshMs: 0, worker: true, firstAreaBytes: 0, ready: false, player: [0, 0, 0], onGround: false, nearNpc: false, cameraYaw: 0, outfit: [] };
+    this.stats = { quality, fpsAvg: 0, fpsP5: 0, calls: 0, triangles: 0, frames: 0, loadMs: 0, meshMs: 0, worker: true, firstAreaBytes: 0, ready: false, player: [0, 0, 0], onGround: false, nearTarget: null, lastInteraction: null, cameraInsideBlock: false, cameraYaw: 0, outfit: [] };
     window.__miuStats = this.stats;
   }
 

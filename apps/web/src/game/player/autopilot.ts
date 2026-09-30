@@ -1,4 +1,4 @@
-// Scripted route for automated perf runs (?autopilot=1): walks/runs spawn → bridge → parrot →
+// Scripted route for automated perf runs (?autopilot=1): walks/runs spawn → parrot → bridge →
 // ancient tree and back, forever, so every run measures the same camera path.
 import type { Vector3 } from 'three';
 import type { WorldEntities } from '@miu/voxel/world-entities';
@@ -19,13 +19,13 @@ export class Autopilot {
     };
     const spawn: [number, number] = [entities.spawn.position[0], entities.spawn.position[2]];
     const bridge = at('bridge');
-    const parrot = entities.npcs[0];
+    const parrot = entities.interactables.find((t) => t.kind === 'npc');
     const tree = at('chest');
     this.waypoints = [
       spawn,
+      parrot ? [parrot.position[0] - 1.5, parrot.position[2] - 1.5] : spawn,
       [bridge[0], bridge[1] - 7],
       [bridge[0], bridge[1] + 7],
-      parrot ? [parrot.position[0] - 1.5, parrot.position[2] - 1.5] : bridge,
       tree,
       [bridge[0], bridge[1] + 7],
       [bridge[0], bridge[1] - 7],

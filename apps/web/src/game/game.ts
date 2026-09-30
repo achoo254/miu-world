@@ -1,4 +1,5 @@
-// Khu rừng bí mật (chapter 1): Miu, the parrot NPC and props — only manifest assets.
+// Khu rừng bí mật (chapter 1): Miu, the quest's interactables (NPCs, clues, riddle tree, chest, gate)
+// and props — only manifest assets.
 // The game owns its canvas, loop and touch controls; it talks to React only through the
 // game-bridge store (discrete events), never through React state.
 import {
@@ -21,7 +22,7 @@ import type { GameStore } from '../game-bridge/game-store';
 import { AssetRegistry, GuardedGltfLoader } from './asset-loader';
 import { createReviewShot } from './debug/review-shots';
 import { StatsOverlay } from './debug/stats-overlay';
-import { loadNpcs, type Npc } from './entities/npc';
+import { loadInteractables, pickNearest, type InteractableObject } from './entities/interactables';
 import { loadPlayerCharacter } from './entities/player-character';
 import { loadProps } from './entities/props';
 import { Autopilot } from './player/autopilot';
@@ -41,7 +42,7 @@ const LOADING_STEPS = 5;
 
 export interface GameOptions {
   store: GameStore;
-  /** Query string with dev/review switches: quality, autopilot, spawnAt, shot, outfit. */
+  /** Query string with dev/review switches: quality, autopilot, spawnAt (`npc` or a target id), shot, outfit. */
   search: string;
   /** Equipped accessory ids (`id` or `id:variant`), normally from `GET /api/character`. */
   outfit: string[];
@@ -232,20 +233,24 @@ export class Game {
 
     const outfitParam = params.get('outfit');
     const outfit = outfitParam === 'none' ? [] : outfitParam ? outfitParam.split(',') : this.options.outfit;
-    const [character, npcs, props] = await Promise.all([
+    const [character, targets, props] = await Promise.all([
       loadPlayerCharacter(loader, outfit),
-      loadNpcs(loader, data.entities),
+      loadInteractables(loader, data.entities, quality.shadows),
       loadProps(loader, data.entities, quality.shadows),
     ]);
     if (this.disposed) return;
     stepLoaded();
-    scene.add(character.root, props, ...npcs.map((n) => n.root));
+    scene.add(character.root, props, ...targets.map((t) => t.root));
     overlay.stats.outfit = character.outfit;
 
     const controller = new PlayerController(solid, data.entities.spawn.position, data.entities.spawn.yaw);
-    const firstNpc = data.entities.npcs[0];
-    if (params.get('spawnAt') === 'npc' && firstNpc) {
-      controller.position.set(firstNpc.position[0] - 1.5, firstNpc.position[1], firstNpc.position[2] - 1.5);
+    // Dev/E2E switch: start next to a target (`npc` = the first NPC) instead of the spawn point.
+    const spawnAt = params.get('spawnAt');
+    const spawnTarget = data.entities.interactables.find((t) => (spawnAt === 'npc' ? t.kind === 'npc' : t.id === spawnAt));
+    if (spawnTarget) {
+      const [x, y, z] = spawnTarget.position;
+      const offset = Math.min(1.5, spawnTarget.radius * 0.5);
+      controller.position.set(x - offset, y, z - offset);
     }
     const rig = new CameraRig(camera, solid, controller.facing + Math.PI);
     const input = new PlayerInput(dom.root, dom.joystick, dom.run, dom.jump);
@@ -267,11 +272,18 @@ export class Game {
       for (const el of [dom.stats, dom.joystick, dom.run.parentElement]) if (el) el.hidden = true;
     }
 
-    // Interaction prompt: React renders the label; the game reports which NPC is near (discrete)
+    // Interaction prompt: React renders the label; the game reports which target is near (discrete)
     // and moves the anchor React registered (per frame, no React render).
-    let promptNpc: Npc | null = null;
+    let promptTarget: InteractableObject | null = null;
     let interactRequested = false;
-    this.cleanups.push(store.onCommand((command) => (interactRequested ||= command.type === 'interact')));
+    const byId = new Map(targets.map((t) => [t.def.id, t]));
+    this.cleanups.push(
+      store.onCommand((command) => {
+        if (command.type === 'interact') interactRequested = true;
+        // Server-backed target states; a target missing from the map returns to its initial look.
+        if (command.type === 'set-world-state') for (const [id, target] of byId) target.setState(command.state[id]);
+      }),
+    );
     this.cleanups.push(() => store.emit({ type: 'interaction-prompt', prompt: null }));
 
     overlay.stats.meshMs = Math.round(world.meshMs);
@@ -317,36 +329,30 @@ export class Game {
       world.water.uTime.value += dt;
       world.update(camera);
 
-      let nearest: Npc | null = null;
-      let nearestDistance = Infinity;
-      for (const npc of npcs) {
-        npc.update(dt, controller.position);
-        const distance = npc.root.position.distanceTo(controller.position);
-        if (npc.playerNearby && distance < nearestDistance) {
-          nearest = npc;
-          nearestDistance = distance;
-        }
+      for (const target of targets) target.update(dt);
+      const nearest = pickNearest(targets, controller.position);
+      if (nearest !== promptTarget) {
+        promptTarget = nearest;
+        const def = nearest?.def;
+        store.emit({ type: 'interaction-prompt', prompt: def ? { targetId: def.id, kind: def.kind, name: def.name, label: def.label } : null });
       }
-      if (nearest !== promptNpc) {
-        promptNpc = nearest;
-        store.emit({
-          type: 'interaction-prompt',
-          prompt: nearest ? { targetId: nearest.id, kind: 'npc', name: nearest.name, label: nearest.label } : null,
-        });
-      }
-      if (promptNpc) {
+      if (promptTarget) {
         const anchor = store.getPromptAnchor();
         if (anchor) {
-          const { x, y } = promptNpc.screenAnchor(camera, { width: window.innerWidth, height: window.innerHeight });
+          const { x, y } = promptTarget.screenAnchor(camera, { width: window.innerWidth, height: window.innerHeight });
           anchor.style.transform = `translate(-50%, -100%) translate(${x}px, ${y}px)`;
           anchor.style.visibility = 'visible'; // hidden until first positioned: no flash at 0,0
         }
-        if (interact) store.emit({ type: 'interaction', targetId: promptNpc.id });
+        if (interact) {
+          store.emit({ type: 'interaction', targetId: promptTarget.def.id });
+          overlay.stats.lastInteraction = promptTarget.def.id;
+        }
       }
       overlay.stats.player = [controller.position.x, controller.position.y, controller.position.z];
       overlay.stats.onGround = controller.onGround;
-      overlay.stats.nearNpc = promptNpc !== null;
+      overlay.stats.nearTarget = promptTarget?.def.id ?? null;
       overlay.stats.cameraYaw = rig.yaw;
+      overlay.stats.cameraInsideBlock = solid(Math.floor(camera.position.x), Math.floor(camera.position.y), Math.floor(camera.position.z));
 
       renderer.render(scene, camera);
       overlay.frame(dt, renderer);

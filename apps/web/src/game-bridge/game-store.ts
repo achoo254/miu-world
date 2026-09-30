@@ -5,8 +5,9 @@
 // Every event and command the vertical slice needs is declared here up front, so screens built in
 // parallel only add handlers and never reshape these unions.
 
-/** What the player can interact with in a region (world entities, version 2). */
-export type InteractableKind = 'object' | 'npc' | 'riddle' | 'chest' | 'gate';
+import type { InteractableKind } from '@miu/voxel/world-entities';
+
+export type { InteractableKind };
 
 export interface InteractionPrompt {
   targetId: string;

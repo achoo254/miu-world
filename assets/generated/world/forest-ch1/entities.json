@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "id": "forest-ch1",
   "seed": 3318344799,
   "size": [
@@ -16,21 +16,139 @@
     ],
     "yaw": 45
   },
-  "npcs": [
+  "interactables": [
     {
       "id": "parrot-guide",
+      "kind": "npc",
       "name": "Vẹt",
-      "model": "packs/kenney-cube-pets/2.0/animal-parrot.glb",
-      "animation": "idle",
+      "label": "Nói chuyện",
       "position": [
-        51.5,
+        30.5,
         13,
-        61.5
+        32.5
       ],
       "yaw": 200,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-parrot.glb",
       "scale": 0.6543,
-      "interactRadius": 3,
-      "label": "Nói chuyện với Vẹt"
+      "animation": "idle"
+    },
+    {
+      "id": "clue-box",
+      "kind": "object",
+      "name": "Chiếc hộp",
+      "label": "Xem hộp",
+      "position": [
+        24.5,
+        13,
+        36.5
+      ],
+      "yaw": 30,
+      "radius": 2,
+      "model": "packs/kenney-survival-kit/2.0/box.glb",
+      "scale": 2.4
+    },
+    {
+      "id": "clue-letter",
+      "kind": "object",
+      "name": "Lá thư",
+      "label": "Đọc thư",
+      "position": [
+        36.5,
+        13,
+        28.5
+      ],
+      "yaw": 15,
+      "radius": 2,
+      "shape": "letter"
+    },
+    {
+      "id": "clue-mushroom",
+      "kind": "object",
+      "name": "Cây nấm đỏ",
+      "label": "Xem nấm",
+      "position": [
+        32.5,
+        13,
+        39.5
+      ],
+      "yaw": 0,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/mushroom_red.glb",
+      "scale": 3.9448
+    },
+    {
+      "id": "animal-beaver",
+      "kind": "npc",
+      "name": "Hải ly",
+      "label": "Nói chuyện",
+      "position": [
+        62.5,
+        13,
+        35.5
+      ],
+      "yaw": 20,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-beaver.glb",
+      "scale": 0.6661,
+      "animation": "idle"
+    },
+    {
+      "id": "stream-stones",
+      "kind": "object",
+      "name": "Đá qua suối",
+      "label": "Qua suối",
+      "position": [
+        64.5,
+        11,
+        38.5
+      ],
+      "yaw": 0,
+      "radius": 2.5
+    },
+    {
+      "id": "ancient-tree",
+      "kind": "riddle",
+      "name": "Cây cổ thụ",
+      "label": "Giải đố",
+      "position": [
+        70.5,
+        13,
+        76.5
+      ],
+      "yaw": 225,
+      "radius": 3,
+      "board": "8 + 5 = ?"
+    },
+    {
+      "id": "chest",
+      "kind": "chest",
+      "name": "Rương",
+      "label": "Mở rương",
+      "position": [
+        69.5,
+        13,
+        83.5
+      ],
+      "yaw": 45,
+      "radius": 2.5,
+      "model": "packs/kenney-survival-kit/2.0/chest.glb",
+      "scale": 3.1105
+    },
+    {
+      "id": "gate-ch2",
+      "kind": "gate",
+      "name": "Cổng đá",
+      "label": "Tới chương 2",
+      "position": [
+        78.5,
+        14,
+        91.5
+      ],
+      "yaw": 0,
+      "radius": 4,
+      "model": "packs/kenney-castle-kit/2.0/gate.glb",
+      "scale": 5.4925
     }
   ],
   "props": [
@@ -127,9 +245,9 @@
     {
       "model": "packs/kenney-food-kit/2.0/apple.glb",
       "position": [
-        52.5,
+        60.5,
         13,
-        63.5
+        33.5
       ],
       "yaw": 0,
       "scale": 1.8348
@@ -137,9 +255,9 @@
     {
       "model": "packs/kenney-food-kit/2.0/apple.glb",
       "position": [
-        53.5,
+        61.5,
         13,
-        63.5
+        33.5
       ],
       "yaw": 40,
       "scale": 1.8348
@@ -147,117 +265,147 @@
     {
       "model": "packs/kenney-food-kit/2.0/apple.glb",
       "position": [
-        54.5,
+        62.5,
         13,
-        63.5
+        33.5
       ],
       "yaw": 80,
       "scale": 1.8348
     },
     {
-      "model": "packs/kenney-survival-kit/2.0/chest.glb",
+      "model": "packs/kenney-nature-kit/2.1/plant_bush.glb",
       "position": [
-        69.5,
+        37.5,
         13,
-        75.5
+        29.5
       ],
-      "yaw": 45,
-      "scale": 3.1105
-    },
-    {
-      "model": "packs/kenney-castle-kit/2.0/gate.glb",
-      "position": [
-        78.5,
-        14,
-        91.5
-      ],
-      "yaw": 0,
-      "scale": 5.4925
-    },
-    {
-      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
-      "position": [
-        18.5,
-        13,
-        10.5
-      ],
-      "yaw": 326,
-      "scale": 1.7094
+      "yaw": 30,
+      "scale": 4.0909
     },
     {
       "model": "packs/kenney-nature-kit/2.1/flower_yellowB.glb",
       "position": [
-        55.5,
+        35.5,
         13,
-        61.5
+        29.5
       ],
-      "yaw": 358,
+      "yaw": 350,
       "scale": 3.1546
     },
     {
       "model": "packs/kenney-nature-kit/2.1/flower_purpleA.glb",
       "position": [
-        78.5,
+        59.5,
         13,
-        76.5
+        31.5
       ],
-      "yaw": 114,
+      "yaw": 92,
       "scale": 2.0619
     },
     {
       "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
       "position": [
-        17.5,
-        13,
-        20.5
+        61.5,
+        12,
+        47.5
       ],
-      "yaw": 303,
+      "yaw": 233,
       "scale": 1.7094
-    },
-    {
-      "model": "packs/kenney-nature-kit/2.1/flower_yellowB.glb",
-      "position": [
-        52.5,
-        13,
-        57.5
-      ],
-      "yaw": 176,
-      "scale": 3.1546
     },
     {
       "model": "packs/kenney-nature-kit/2.1/flower_purpleA.glb",
       "position": [
-        64.5,
-        13,
-        78.5
-      ],
-      "yaw": 185,
-      "scale": 2.0619
-    },
-    {
-      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
-      "position": [
-        21.5,
+        14.5,
         13,
         12.5
       ],
-      "yaw": 173,
+      "yaw": 217,
+      "scale": 2.0619
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
+      "position": [
+        36.5,
+        13,
+        27.5
+      ],
+      "yaw": 122,
       "scale": 1.7094
     },
     {
       "model": "packs/kenney-nature-kit/2.1/flower_yellowB.glb",
       "position": [
-        53.5,
+        59.5,
         13,
-        59.5
+        34.5
       ],
-      "yaw": 43,
+      "yaw": 314,
       "scale": 3.1546
     },
     {
       "model": "packs/kenney-nature-kit/2.1/flower_purpleA.glb",
       "position": [
-        73.5,
+        62.5,
+        11,
+        46.5
+      ],
+      "yaw": 5,
+      "scale": 2.0619
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
+      "position": [
+        77.5,
+        13,
+        87.5
+      ],
+      "yaw": 81,
+      "scale": 1.7094
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_yellowB.glb",
+      "position": [
+        18.5,
+        13,
+        21.5
+      ],
+      "yaw": 98,
+      "scale": 3.1546
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_purpleA.glb",
+      "position": [
+        25.5,
+        13,
+        32.5
+      ],
+      "yaw": 180,
+      "scale": 2.0619
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
+      "position": [
+        62.5,
+        11,
+        38.5
+      ],
+      "yaw": 304,
+      "scale": 1.7094
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_yellowB.glb",
+      "position": [
+        61.5,
+        11,
+        45.5
+      ],
+      "yaw": 281,
+      "scale": 3.1546
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_purpleA.glb",
+      "position": [
+        80.5,
         13,
         88.5
       ],
@@ -267,91 +415,21 @@
     {
       "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
       "position": [
-        13.5,
+        12.5,
         13,
-        10.5
+        22.5
       ],
-      "yaw": 209,
+      "yaw": 40,
       "scale": 1.7094
-    },
-    {
-      "model": "packs/kenney-nature-kit/2.1/flower_yellowB.glb",
-      "position": [
-        50.5,
-        13,
-        65.5
-      ],
-      "yaw": 139,
-      "scale": 3.1546
     },
     {
       "model": "packs/kenney-nature-kit/2.1/flower_purpleA.glb",
       "position": [
-        77.5,
+        63.5,
         13,
-        90.5
+        31.5
       ],
-      "yaw": 237,
-      "scale": 2.0619
-    },
-    {
-      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
-      "position": [
-        14.5,
-        13,
-        21.5
-      ],
-      "yaw": 59,
-      "scale": 1.7094
-    },
-    {
-      "model": "packs/kenney-nature-kit/2.1/flower_yellowB.glb",
-      "position": [
-        49.5,
-        13,
-        64.5
-      ],
-      "yaw": 338,
-      "scale": 3.1546
-    },
-    {
-      "model": "packs/kenney-nature-kit/2.1/flower_purpleA.glb",
-      "position": [
-        67.5,
-        13,
-        80.5
-      ],
-      "yaw": 109,
-      "scale": 2.0619
-    },
-    {
-      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
-      "position": [
-        10.5,
-        13,
-        14.5
-      ],
-      "yaw": 336,
-      "scale": 1.7094
-    },
-    {
-      "model": "packs/kenney-nature-kit/2.1/flower_yellowB.glb",
-      "position": [
-        49.5,
-        13,
-        65.5
-      ],
-      "yaw": 303,
-      "scale": 3.1546
-    },
-    {
-      "model": "packs/kenney-nature-kit/2.1/flower_purpleA.glb",
-      "position": [
-        70.5,
-        13,
-        85.5
-      ],
-      "yaw": 23,
+      "yaw": 326,
       "scale": 2.0619
     },
     {
@@ -361,7 +439,7 @@
         16,
         17.5
       ],
-      "yaw": 16,
+      "yaw": 352,
       "scale": 2.3953
     },
     {
@@ -371,7 +449,7 @@
         19,
         84.5
       ],
-      "yaw": 79,
+      "yaw": 158,
       "scale": 2.3953
     },
     {
@@ -381,17 +459,17 @@
         12,
         42.5
       ],
-      "yaw": 144,
+      "yaw": 358,
       "scale": 2.3953
     },
     {
       "model": "packs/kenney-nature-kit/2.1/mushroom_redGroup.glb",
       "position": [
         18.5,
-        11,
+        12,
         33.5
       ],
-      "yaw": 183,
+      "yaw": 316,
       "scale": 2.3953
     },
     {
@@ -401,133 +479,13 @@
         13,
         66.5
       ],
-      "yaw": 134,
+      "yaw": 8,
       "scale": 2.3953
     },
     {
       "model": "packs/kenney-nature-kit/2.1/mushroom_redGroup.glb",
       "position": [
         25.5,
-        12,
-        13.5
-      ],
-      "yaw": 181,
-      "scale": 2.3953
-    },
-    {
-      "model": "packs/kenney-nature-kit/2.1/mushroom_redGroup.glb",
-      "position": [
-        25.5,
-        15,
-        74.5
-      ],
-      "yaw": 310,
-      "scale": 2.3953
-    },
-    {
-      "model": "packs/kenney-nature-kit/2.1/mushroom_redGroup.glb",
-      "position": [
-        33.5,
-        13,
-        21.5
-      ],
-      "yaw": 91,
-      "scale": 2.3953
-    },
-    {
-      "model": "packs/kenney-nature-kit/2.1/mushroom_redGroup.glb",
-      "position": [
-        33.5,
-        13,
-        70.5
-      ],
-      "yaw": 297,
-      "scale": 2.3953
-    },
-    {
-      "model": "packs/kenney-nature-kit/2.1/mushroom_redGroup.glb",
-      "position": [
-        38.5,
-        13,
-        13.5
-      ],
-      "yaw": 130,
-      "scale": 2.3953
-    },
-    {
-      "model": "packs/kenney-nature-kit/2.1/mushroom_redGroup.glb",
-      "position": [
-        39.5,
-        13,
-        74.5
-      ],
-      "yaw": 117,
-      "scale": 2.3953
-    },
-    {
-      "model": "packs/kenney-nature-kit/2.1/mushroom_redGroup.glb",
-      "position": [
-        49.5,
-        13,
-        35.5
-      ],
-      "yaw": 80,
-      "scale": 2.3953
-    },
-    {
-      "model": "packs/kenney-nature-kit/2.1/mushroom_redGroup.glb",
-      "position": [
-        49.5,
-        13,
-        80.5
-      ],
-      "yaw": 310,
-      "scale": 2.3953
-    },
-    {
-      "model": "packs/kenney-nature-kit/2.1/mushroom_redGroup.glb",
-      "position": [
-        54.5,
-        14,
-        34.5
-      ],
-      "yaw": 218,
-      "scale": 2.3953
-    },
-    {
-      "model": "packs/kenney-nature-kit/2.1/mushroom_redGroup.glb",
-      "position": [
-        55.5,
-        13,
-        84.5
-      ],
-      "yaw": 87,
-      "scale": 2.3953
-    },
-    {
-      "model": "packs/kenney-nature-kit/2.1/mushroom_redGroup.glb",
-      "position": [
-        63.5,
-        13,
-        25.5
-      ],
-      "yaw": 106,
-      "scale": 2.3953
-    },
-    {
-      "model": "packs/kenney-nature-kit/2.1/mushroom_redGroup.glb",
-      "position": [
-        60.5,
-        14,
-        75.5
-      ],
-      "yaw": 290,
-      "scale": 2.3953
-    },
-    {
-      "model": "packs/kenney-nature-kit/2.1/mushroom_redGroup.glb",
-      "position": [
-        70.5,
         12,
         13.5
       ],
@@ -537,61 +495,171 @@
     {
       "model": "packs/kenney-nature-kit/2.1/mushroom_redGroup.glb",
       "position": [
-        70.5,
-        14,
+        25.5,
+        15,
+        74.5
+      ],
+      "yaw": 76,
+      "scale": 2.3953
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/mushroom_redGroup.glb",
+      "position": [
+        33.5,
+        13,
+        21.5
+      ],
+      "yaw": 14,
+      "scale": 2.3953
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/mushroom_redGroup.glb",
+      "position": [
+        31.5,
+        19,
         91.5
       ],
-      "yaw": 324,
+      "yaw": 303,
       "scale": 2.3953
     },
     {
       "model": "packs/kenney-nature-kit/2.1/mushroom_redGroup.glb",
       "position": [
-        74.5,
-        13,
-        31.5
+        41.5,
+        14,
+        24.5
       ],
-      "yaw": 156,
+      "yaw": 290,
       "scale": 2.3953
     },
     {
       "model": "packs/kenney-nature-kit/2.1/mushroom_redGroup.glb",
       "position": [
-        83.5,
+        41.5,
+        18,
+        90.5
+      ],
+      "yaw": 161,
+      "scale": 2.3953
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/mushroom_redGroup.glb",
+      "position": [
+        46.5,
+        13,
+        68.5
+      ],
+      "yaw": 176,
+      "scale": 2.3953
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/mushroom_redGroup.glb",
+      "position": [
+        52.5,
         17,
-        4.5
+        6.5
       ],
-      "yaw": 99,
+      "yaw": 192,
       "scale": 2.3953
     },
     {
       "model": "packs/kenney-nature-kit/2.1/mushroom_redGroup.glb",
       "position": [
-        83.5,
+        52.5,
         13,
-        38.5
+        41.5
       ],
-      "yaw": 314,
+      "yaw": 321,
+      "scale": 2.3953
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/mushroom_redGroup.glb",
+      "position": [
+        53.5,
+        14,
+        77.5
+      ],
+      "yaw": 185,
+      "scale": 2.3953
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/mushroom_redGroup.glb",
+      "position": [
+        59.5,
+        12,
+        54.5
+      ],
+      "yaw": 323,
+      "scale": 2.3953
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/mushroom_redGroup.glb",
+      "position": [
+        67.5,
+        12,
+        18.5
+      ],
+      "yaw": 221,
+      "scale": 2.3953
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/mushroom_redGroup.glb",
+      "position": [
+        68.5,
+        13,
+        68.5
+      ],
+      "yaw": 173,
+      "scale": 2.3953
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/mushroom_redGroup.glb",
+      "position": [
+        73.5,
+        13,
+        27.5
+      ],
+      "yaw": 318,
+      "scale": 2.3953
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/mushroom_redGroup.glb",
+      "position": [
+        80.5,
+        11,
+        11.5
+      ],
+      "yaw": 53,
+      "scale": 2.3953
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/mushroom_redGroup.glb",
+      "position": [
+        81.5,
+        12,
+        67.5
+      ],
+      "yaw": 43,
       "scale": 2.3953
     },
     {
       "model": "packs/kenney-nature-kit/2.1/mushroom_redGroup.glb",
       "position": [
         87.5,
-        13,
-        46.5
+        14,
+        34.5
       ],
-      "yaw": 113,
+      "yaw": 98,
       "scale": 2.3953
     },
     {
       "model": "packs/kenney-nature-kit/2.1/mushroom_redGroup.glb",
       "position": [
-        90.5,
-        18,
-        91.5
+        88.5,
+        15,
+        88.5
       ],
-      "yaw": 72,
+      "yaw": 194,
       "scale": 2.3953
     },
     {
@@ -655,12 +723,21 @@
       ]
     },
     {
+      "id": "stepping-stones",
+      "name": "Đá qua suối",
+      "position": [
+        64.5,
+        11,
+        42
+      ]
+    },
+    {
       "id": "chest",
       "name": "Rương",
       "position": [
         69.5,
         13,
-        75.5
+        83.5
       ]
     }
   ]

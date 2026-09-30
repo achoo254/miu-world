@@ -87,12 +87,57 @@ test('shows the parrot interaction label (React) when the player is close, and h
   await expect(label).toContainText('Vẹt');
   // The game positions the React label every frame through the registered anchor.
   expect(await label.evaluate((el) => el.style.transform)).toContain('translate(');
-  expect((await readStats(page)).nearNpc).toBe(true);
+  expect((await readStats(page)).nearTarget).toBe('parrot-guide');
 
   await page.keyboard.down('KeyS');
   await page.waitForTimeout(2500);
   await page.keyboard.up('KeyS');
   await expect(label).toBeHidden();
+});
+
+// Quest targets placed on the chapter 1 map (world entities v2): two NPCs and at least three objects.
+const TARGETS = [
+  { id: 'parrot-guide', kind: 'npc', text: 'Vẹt' },
+  { id: 'animal-beaver', kind: 'npc', text: 'Hải ly' },
+  { id: 'clue-box', kind: 'object', text: 'Chiếc hộp' },
+  { id: 'clue-letter', kind: 'object', text: 'Lá thư' },
+  { id: 'clue-mushroom', kind: 'object', text: 'Cây nấm đỏ' },
+  { id: 'stream-stones', kind: 'object', text: 'Đá qua suối' },
+  { id: 'ancient-tree', kind: 'riddle', text: 'Cây cổ thụ' },
+  { id: 'chest', kind: 'chest', text: 'Rương' },
+  { id: 'gate-ch2', kind: 'gate', text: 'Cổng đá' },
+] as const;
+
+for (const target of TARGETS) {
+  test(`standing by ${target.id} shows its prompt, and interacting reports that target`, async ({ page }) => {
+    await page.goto(`/play?quality=low&spawnAt=${target.id}`);
+    await waitReady(page);
+    const label = page.locator(`.npc-label[data-target="${target.id}"]`);
+    await expect(label).toBeVisible();
+    await expect(label).toHaveAttribute('data-kind', target.kind);
+    await expect(label).toContainText(target.text);
+    expect((await readStats(page)).nearTarget).toBe(target.id);
+    await page.keyboard.press('KeyE');
+    await expect.poll(async () => (await readStats(page)).lastInteraction).toBe(target.id);
+  });
+}
+
+test('the camera never ends up inside a block, pressed against the ancient tree', async ({ page }) => {
+  await page.goto('/play?quality=low&spawnAt=ancient-tree');
+  await waitReady(page);
+  // Walk into the trunk while orbiting the camera all the way round.
+  await page.keyboard.down('KeyW');
+  const box = await page.locator('canvas').first().boundingBox();
+  if (!box) throw new Error('canvas not visible');
+  for (let i = 0; i < 6; i++) {
+    const y = box.y + box.height * 0.4;
+    await page.mouse.move(box.x + box.width * 0.3, y);
+    await page.mouse.down();
+    await page.mouse.move(box.x + box.width * 0.7, y, { steps: 5 });
+    await page.mouse.up();
+    expect((await readStats(page)).cameraInsideBlock).toBe(false);
+  }
+  await page.keyboard.up('KeyW');
 });
 
 test('leaving /play disposes the game: no canvas, no stats handle', async ({ page }) => {
