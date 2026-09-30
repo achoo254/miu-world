@@ -26,6 +26,23 @@ describe('content:check', () => {
     expect(checkContent(dir).issues).toEqual(['quest forest-ch1 steps[0].lines[0].text says "Miu" instead of {name}']);
   });
 
+  it('flags regions that break the schema, say "Miu", or do not match the quests', () => {
+    const file = path.join(dir, 'world/regions.json');
+    const regions = JSON.parse(readFileSync(file, 'utf8')) as { regions: Array<{ id: string; name: string; status: string }> };
+    const forest = regions.regions.find((r) => r.id === 'khu-rung-bi-mat');
+    const home = regions.regions.find((r) => r.id === 'nha-cua-be');
+    if (!forest || !home) throw new Error('fixture regions missing');
+    forest.status = 'soon';
+    home.name = 'Nhà của Miu';
+    writeFileSync(file, JSON.stringify(regions));
+    expect(checkContent(dir).issues).toEqual([
+      'region nha-cua-be says "Miu" instead of {name}',
+      'quest forest-ch1 is in region khu-rung-bi-mat, which is not an open region',
+    ]);
+    writeFileSync(file, JSON.stringify({ version: 1, regions: [{ ...forest, status: 'level' }] }));
+    expect(checkContent(dir).issues.join('\n')).toMatch(/level goes with status/);
+  });
+
   it('flags an accessory that unlocks with an unknown quest', () => {
     writeFileSync(path.join(dir, 'accessories/hat-ghost.json'), JSON.stringify({ id: 'hat-ghost', name: 'Mũ ma', variantOf: 'hat-witch-pink', variant: 'mint', unlock: { quest: 'forest-ch9' } }));
     expect(checkContent(dir).issues).toEqual(['accessory hat-ghost unlocks with unknown quest forest-ch9']);

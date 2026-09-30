@@ -20,6 +20,8 @@ export interface Shot {
   file: string;
   query: Record<string, string | number>;
   viewport?: { width: number; height: number };
+  /** Keep the canvas alpha (a background layered over the UI). */
+  transparent?: boolean;
 }
 
 /** Time inside each authored clip where the pose reads clearly. */
@@ -95,7 +97,7 @@ export const SHOT_GROUPS: Record<string, () => Promise<Shot[]>> = {
   map: mapShots,
 };
 
-async function capture(browser: Browser, shots: Shot[]): Promise<void> {
+async function capture(browser: Browser, shots: Shot[], outDir: string): Promise<void> {
   const page = await browser.newPage({ viewport: { width: 1024, height: 1024 } });
   const errors: string[] = [];
   page.on('pageerror', (err) => errors.push(err.message));
@@ -108,17 +110,19 @@ async function capture(browser: Browser, shots: Shot[]): Promise<void> {
     });
     const failure = await page.evaluate(() => document.body.dataset.error);
     if (failure) throw new Error(`${shot.file}: ${failure}`);
-    const target = path.join(REVIEW_DIR, shot.file);
+    const target = path.join(outDir, shot.file);
     await mkdir(path.dirname(target), { recursive: true });
-    await page.locator('canvas').first().screenshot({ path: target });
+    await page.locator('canvas').first().screenshot({ path: target, omitBackground: shot.transparent ?? false });
   }
   await page.close();
   if (errors.length > 0) throw new Error(`page errors: ${errors.join('; ')}`);
 }
 
-async function main(): Promise<void> {
-  const requested = process.argv.slice(2);
-  const selected = requested.length > 0 ? requested : Object.keys(SHOT_GROUPS);
+/**
+ * Serves the web app's preview.html on the fixed port and screenshots each batch into its folder
+ * (the folder is emptied first), then re-hashes the manifest. Shared with render-home-island.ts.
+ */
+export async function renderShots(batches: Array<{ outDir: string; label: string; shots: () => Promise<Shot[]> }>): Promise<void> {
   let server: ViteDevServer | undefined;
   let browser: Browser | undefined;
   try {
@@ -130,19 +134,29 @@ async function main(): Promise<void> {
     });
     await server.listen();
     browser = await chromium.launch({ args: ['--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist'] });
-    for (const group of selected) {
-      const buildShots = SHOT_GROUPS[group];
-      if (!buildShots) throw new Error(`unknown shot group ${group}`);
-      await rm(path.join(REVIEW_DIR, group), { recursive: true, force: true });
-      const shots = await buildShots();
-      await capture(browser, shots);
-      console.log(`render-preview ${group}: ${shots.length} images`);
+    for (const batch of batches) {
+      await rm(batch.outDir, { recursive: true, force: true });
+      const shots = await batch.shots();
+      await capture(browser, shots, batch.outDir);
+      console.log(`${batch.label}: ${shots.length} images`);
     }
   } finally {
     await browser?.close();
     await server?.close();
   }
   await writeManifest(); // new screenshots must be re-hashed or the license gate goes red
+}
+
+async function main(): Promise<void> {
+  const requested = process.argv.slice(2);
+  const selected = requested.length > 0 ? requested : Object.keys(SHOT_GROUPS);
+  await renderShots(
+    selected.map((group) => {
+      const shots = SHOT_GROUPS[group];
+      if (!shots) throw new Error(`unknown shot group ${group}`);
+      return { outDir: path.join(REVIEW_DIR, group), label: `render-preview ${group}`, shots };
+    }),
+  );
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {

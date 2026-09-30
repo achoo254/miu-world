@@ -7992,6 +7992,14 @@
       "bytes": 26826
     },
     {
+      "path": "packs/fluent-emoji/1ffb34c752ec/icons/gear.png",
+      "pack": "fluent-emoji",
+      "license": "MIT",
+      "sourceUrl": "https://github.com/microsoft/fluentui-emoji",
+      "sha256": "415296d4fadabc2e0f6593143ea632948fef20a1cd73fbbc3dbda571f0421988",
+      "bytes": 39892
+    },
+    {
       "path": "packs/fluent-emoji/1ffb34c752ec/icons/gem.png",
       "pack": "fluent-emoji",
       "license": "MIT",
@@ -8319,6 +8327,22 @@
       ],
       "sha256": "a1c82a8de607065fd628594fcb5b39b67304f4870f98c63a881667d11b9a1594",
       "bytes": 195364
+    },
+    {
+      "path": "generated/home/island.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-home-island.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "895651cb0fe57100d32ac270a68e388d81e29f3df0f403a030c3d2d500af59f3",
+      "bytes": 930433
     },
     {
       "path": "generated/review/accessories/item-backpack-brown.png",

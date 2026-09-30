@@ -162,7 +162,8 @@ export class Game {
     const overlay = new StatsOverlay(dom.stats, quality.level);
     this.cleanups.push(() => overlay.detach());
 
-    const renderer = new WebGLRenderer({ antialias: quality.antialias, powerPreference: 'high-performance' });
+    // Only the Home island shot needs an alpha canvas (see review-shots.ts `backdrop`).
+    const renderer = new WebGLRenderer({ antialias: quality.antialias, powerPreference: 'high-performance', alpha: params.get('shot') === 'island' });
     this.renderer = renderer;
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, quality.maxPixelRatio));
     renderer.setSize(window.innerWidth, window.innerHeight);
@@ -256,6 +257,11 @@ export class Game {
       world.setViewDistance(Infinity);
       sky.scale.setScalar(3);
       for (const el of [dom.stats, dom.joystick, dom.run.parentElement]) if (el) el.hidden = true;
+      if (reviewShot.backdrop) {
+        sky.visible = false;
+        character.root.visible = false;
+        renderer.setClearColor(0x000000, 0);
+      }
     }
 
     // Interaction prompt: React renders the label; the game reports which target is near (discrete)

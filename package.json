@@ -16,6 +16,7 @@
     "lint": "eslint . --max-warnings=0",
     "assets:character": "tsx tools/assets/kitbash-character.ts",
     "assets:preview": "tsx tools/assets/render-preview.ts",
+    "assets:home": "tsx tools/assets/render-home-island.ts",
     "assets:atlas": "tsx tools/assets/build-atlas.ts",
     "world:forest": "tsx tools/world/generate-forest-map.ts"
   },

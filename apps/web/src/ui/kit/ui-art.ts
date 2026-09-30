@@ -9,14 +9,18 @@ export const UI_ICONS = {
   antennaBars: `${FLUENT}/antenna-bars.png`,
   backpack: `${FLUENT}/backpack.png`,
   catFace: `${FLUENT}/cat-face.png`,
+  coin: `${FLUENT}/coin.png`,
+  gear: `${FLUENT}/gear.png`,
   gift: `${FLUENT}/gift.png`,
   glowingStar: `${FLUENT}/glowing-star.png`,
   heart: `${FLUENT}/heart.png`,
   house: `${FLUENT}/house.png`,
   key: `${FLUENT}/key.png`,
   locked: `${FLUENT}/locked.png`,
+  map: `${FLUENT}/map.png`,
   parrot: `${FLUENT}/parrot.png`,
   pause: `${FLUENT}/pause.png`,
+  scroll: `${FLUENT}/scroll.png`,
   sparkles: `${FLUENT}/sparkles.png`,
   speaker: `${FLUENT}/speaker.png`,
   speakerMuted: `${FLUENT}/speaker-muted.png`,
@@ -32,9 +36,12 @@ export const MIU_ART = {
   idle: 'generated/review/character/miu-cat-anim-idle.png',
 } as const;
 
+/** Home background: the chapter map rendered as a floating island (`pnpm assets:home`). */
+export const HOME_ISLAND = 'generated/home/island.png';
+
 export type UiIcon = keyof typeof UI_ICONS;
 export type MiuPose = keyof typeof MIU_ART;
 
-export const UI_ART_PATHS: readonly string[] = [...Object.values(UI_ICONS), ...Object.values(MIU_ART)];
+export const UI_ART_PATHS: readonly string[] = [...Object.values(UI_ICONS), ...Object.values(MIU_ART), HOME_ISLAND];
 
 export const assetUrl = (manifestPath: string): string => `/game-assets/${manifestPath}`;

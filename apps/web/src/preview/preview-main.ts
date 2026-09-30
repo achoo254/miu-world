@@ -89,6 +89,8 @@ async function render(): Promise<void> {
 
 /** Map review shots run the real game (no React, no account) under a fixed camera. */
 function renderMapShot(): void {
+  // The Home island is layered over the UI sky: nothing behind the canvas may show through.
+  if (params.get('shot') === 'island') for (const el of [document.documentElement, document.body]) el.style.background = 'transparent';
   const store = createGameStore();
   store.subscribe(() => {
     const error = store.getSnapshot().error;

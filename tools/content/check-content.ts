@@ -7,6 +7,7 @@ import { pathToFileURL } from 'node:url';
 import { CONTENT_DIR, loadContentCatalog } from '../../apps/server/src/content/content-catalog';
 import { playerTextIssues } from '../../packages/quest/src/player-name';
 import { stepTargets, type QuestDefinition } from '../../packages/schema/src/content';
+import { RegionCatalog } from '../../packages/schema/src/region';
 import { worldEntitiesSchema } from '../../packages/voxel/src/world-entities';
 import { ASSETS_DIR } from '../assets/asset-lib';
 
@@ -23,6 +24,8 @@ const CATALOGUE_FILES = [
 ];
 /** Content files the asset tools validate when they build characters, atlases and maps (any file in a folder). */
 const ASSET_TOOL_FILES = ['blocks.json', 'characters.json', 'palette.json', 'faces/', 'animations/'];
+/** Content only the web app reads; validated here. */
+const REGIONS_FILE = 'world/regions.json';
 
 /**
  * Map id prefix of each region; chapter N plays on `<prefix>-ch<N>`. Moves into the region catalogue
@@ -96,12 +99,32 @@ const inFolder = (rel: string, folder: string) => rel.startsWith(folder) && !rel
 const readByCatalogue = (rel: string) =>
   CATALOGUE_FILES.some((o) => (o.endsWith('/') ? inFolder(rel, o) && rel.endsWith('.json') : rel === o));
 const readByAssetTools = (rel: string) => ASSET_TOOL_FILES.some((o) => (o.endsWith('/') ? inFolder(rel, o) : rel === o));
+const readByWeb = (rel: string) => rel === REGIONS_FILE;
+
+/** Regions parse; their text addresses the player as `{name}`; active quests live in open regions, and every open region has one. */
+export function checkRegions(raw: unknown, quests: Iterable<QuestDefinition>): string[] {
+  const parsed = RegionCatalog.safeParse(raw);
+  if (!parsed.success) return [`content/${REGIONS_FILE}: ${parsed.error.message}`];
+  const issues: string[] = [];
+  for (const region of parsed.data.regions) {
+    for (const text of [region.name, region.tagline]) for (const issue of playerTextIssues(text)) issues.push(`region ${region.id} ${issue}`);
+  }
+  const open = new Set(parsed.data.regions.filter((r) => r.status === 'open').map((r) => r.id));
+  const played = new Set<string>();
+  for (const quest of quests) {
+    if (quest.status !== 'active') continue;
+    played.add(quest.region);
+    if (!open.has(quest.region)) issues.push(`quest ${quest.id} is in region ${quest.region}, which is not an open region`);
+  }
+  for (const id of open) if (!played.has(id)) issues.push(`open region ${id} has no active quest`);
+  return issues;
+}
 
 export function checkContent(dir: string = CONTENT_DIR): ContentReport {
   const issues: string[] = [];
   const files = listFiles(dir);
   for (const rel of files) {
-    if (!readByCatalogue(rel) && !readByAssetTools(rel)) {
+    if (!readByCatalogue(rel) && !readByAssetTools(rel) && !readByWeb(rel)) {
       issues.push(`content/${rel} has no validator: add it to the server catalogue or an asset tool`);
     }
   }
@@ -111,6 +134,7 @@ export function checkContent(dir: string = CONTENT_DIR): ContentReport {
     const targets = checkQuestTargets(catalog.quests.values());
     issues.push(...targets.issues);
     issues.push(...checkPlayerText(catalog.quests.values()));
+    issues.push(...checkRegions(JSON.parse(readFileSync(path.join(dir, REGIONS_FILE), 'utf8')), catalog.quests.values()));
     for (const item of catalog.accessories.values()) {
       const quest = item.unlock?.quest;
       if (quest && !catalog.quests.has(quest)) issues.push(`accessory ${item.id} unlocks with unknown quest ${quest}`);
