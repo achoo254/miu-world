@@ -4,10 +4,10 @@
   "chapter": 1,
   "title": "Khu rừng bí mật – Chương 1: Lá thần",
   "status": "active",
-  "summary": "Cây cổ thụ của khu rừng đang héo. Miu cùng Vẹt và Hải ly đi tìm Lá thần để chữa cho cây.",
+  "summary": "Cây cổ thụ của khu rừng đang héo. {name} cùng Vẹt và Hải ly đi tìm Lá thần để chữa cho cây.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Miu, chú mèo nhỏ tốt bụng, giúp các bạn trong rừng",
+    "who": "{name}, chú mèo nhỏ tốt bụng, giúp các bạn trong rừng",
     "where": "Khu rừng bí mật, chương 1",
     "goal": "Tìm Lá thần để chữa cho cây cổ thụ đang héo",
     "play": "Tìm manh mối, đọc thư, kéo thả táo, trả lời câu hỏi, xếp đá qua suối, giải câu đố",
@@ -34,7 +34,7 @@
       "lines": [
         {
           "speaker": "Vẹt",
-          "text": "Chào Miu! Cây cổ thụ của khu rừng đang héo úa."
+          "text": "Chào {name}! Cây cổ thụ của khu rừng đang héo úa."
         },
         {
           "speaker": "Vẹt",
@@ -74,7 +74,7 @@
       "trigger": "auto",
       "skill": "doc-hieu",
       "text": "Gửi bạn nhỏ dũng cảm,\nLá thần nằm trong chiếc rương cạnh cây cổ thụ. Muốn tới đó, bạn hãy tìm bạn Hải ly ở bên suối. Hải ly sẽ chỉ đường cho bạn.\nBác Cú già",
-      "question": "Theo lá thư, ai sẽ chỉ đường cho Miu?",
+      "question": "Theo lá thư, ai sẽ chỉ đường cho {name}?",
       "choices": [
         {
           "id": "a",
@@ -113,7 +113,7 @@
       "lines": [
         {
           "speaker": "Hải ly",
-          "text": "Chào Miu! Tớ sẽ chỉ đường tới cây cổ thụ."
+          "text": "Chào {name}! Tớ sẽ chỉ đường tới cây cổ thụ."
         },
         {
           "speaker": "Hải ly",
@@ -224,7 +224,7 @@
       "mechanic": "quiz",
       "target": "animal-beaver",
       "skill": "phep-tru",
-      "prompt": "Hải ly có 8 viên kẹo và tặng Miu 3 viên. Hải ly còn lại mấy viên kẹo?",
+      "prompt": "Hải ly có 8 viên kẹo và tặng {name} 3 viên. Hải ly còn lại mấy viên kẹo?",
       "choices": [
         {
           "id": "a",
