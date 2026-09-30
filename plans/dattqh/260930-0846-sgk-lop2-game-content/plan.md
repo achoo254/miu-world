@@ -31,6 +31,7 @@ Mục tiêu người sở hữu: **mọi mục nội dung trong hai sách có m�
 | D5 | Cách ly với phiên VS | **Worktree + branch riêng**: `../miu-world-sgk`, branch `dattqh/feat/sgk-lop2-content`; merge vào `main` sau mỗi phase (rebase trước) | Jev `parallel_isolation` |
 | D6 | Bài và chương | Một chương **gom nhiều quest**: TV mỗi tuần 2 bài; Toán mỗi chủ đề 4–7 bài; màn khu vực liệt kê chương, mở ra quest theo thứ tự mở khóa | Jev `chapter_grouping` |
 | D7 | Thay `forest-ch2` | Giữ `forest-ch2` và level curve tới khi **VS phase 10 đã commit**; quest SGK ở trạng thái `draft` tới lúc đó; nối lại trong một commit ở phase 10 | Jev `forest_ch2_timing` |
+| D8 | Độ trung thành với sách | Nội dung sách vào game **giống 100%**: câu lệnh, bài đọc, số, lựa chọn, đáp án, dấu câu, xuống dòng — không diễn đạt lại, không đổi số. Quest chỉ được THÊM lời dẫn của nhân vật quanh bài tập. Máy kiểm: bước có `curriculumRef` phải chứa nguyên văn `prompt` của item; `texts` phải trùng nguyên văn `text` của section; đáp án phải trùng đáp án kiểm kê (phase 3, `content:check`). Lý do: chơi game chính là làm bài tập thật của trẻ, lệch chữ thì bé học/đọc ở lớp bị lệch. | Người sở hữu 2026-09-30 |
 
 Chi tiết Jev: `plans/dattqh/reports/jev-260930-sgk-plan-decisions.md`.
 
