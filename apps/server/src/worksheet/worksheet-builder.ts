@@ -12,14 +12,32 @@ function splitHints(prompt: string): { prompt: string; hints: string[] } {
   return { prompt: lines.filter((l) => !/^\s*G:/.test(l)).join('\n').trim() || prompt, hints };
 }
 
+/**
+ * Capitals a "Viết chữ hoa" item models: listed after the colon ("Viết chữ hoa: I, K"), or, where the
+ * book shows them only as a picture, named in its description ("mẫu chữ hoa Đ cỡ vừa …").
+ */
+export function lettersOf(item: CurriculumItem): string[] {
+  const after = /^Viết chữ hoa:?\s*(.*?)\.?$/.exec(item.prompt.trim())?.[1] ?? '';
+  const listed = after.split(',').map((l) => l.trim()).filter(Boolean);
+  if (listed.length > 0) return listed;
+  const pictured = (item.media ?? []).flatMap((m) => [...m.matchAll(/mẫu chữ hoa (\p{Lu})(?!\p{L})/gu)].map((match) => match[1] ?? ''));
+  return [...new Set(pictured.filter(Boolean))];
+}
+
+/** The sentence to copy in a "Viết ứng dụng" section, line by line, without the "Viết ứng dụng:" lead-in. */
+export function modelOf(prompt: string): string[] {
+  const sentence = /^Viết ứng dụng:\s*([\s\S]+)$/.exec(prompt)?.[1] ?? prompt;
+  return sentence.split('\n').map((l) => l.trim()).filter(Boolean);
+}
+
 function blockFor(item: CurriculumItem, section: CurriculumSection): WorksheetBlock | null {
   const base = { page: item.page, curriculumRef: [item.id] };
   const paragraph = () => ({ kind: 'paragraph-prompt' as const, ...splitHints(item.prompt), lines: PARAGRAPH_LINES, ...base });
   switch (section.kind) {
     case 'viet-chu-hoa':
-      return { kind: 'letter', prompt: item.prompt, ...base };
+      return { kind: 'letter', prompt: item.prompt, letters: lettersOf(item), ...base };
     case 'viet-ung-dung':
-      return { kind: 'copy-line', text: item.prompt, ...base };
+      return { kind: 'copy-line', text: item.prompt, model: modelOf(item.prompt), ...base };
     case 'nghe-viet':
       return { kind: 'dictation', prompt: item.prompt, title: section.text?.title, text: section.text?.body, ...base };
     case 'viet-doan':

@@ -2,7 +2,7 @@
 // dictation, paragraphs) and the at-home activities, printed on A4. Built by the server from the
 // textbook inventory, so every line is the book's own wording; nothing written comes back to the game.
 // Behind the parent PIN like the rest of the parent area.
-import { useEffect, useState, type CSSProperties } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router';
 import { Worksheet, WorksheetListResponse, type WorksheetBlock } from '@miu/schema/worksheet';
 import { useAccount } from '../../account/account-context';
@@ -11,6 +11,7 @@ import { api, errorMessage } from '../../api-client';
 import { Icon } from '../../kit/art';
 import { buttonClass } from '../../kit/button';
 import { SkyScene } from '../../kit/sky-scene';
+import { OLi, letterSpace, sentenceSpace, useModelHand } from './oli';
 import './worksheets.css';
 
 const BOOK_NAMES: Record<string, string> = { 'tv2-t1': 'Tiếng Việt 2, tập một', 'toan2-t1': 'Toán 2, tập một' };
@@ -102,26 +103,30 @@ export function WorksheetListScreen() {
   );
 }
 
-/** Writing space in vở ô li, `rows` dòng high (one dòng = one 8 mm square = four ô li). */
-function OLi({ rows }: { rows: number }) {
-  return <div className="oli" data-rows={rows} style={{ '--oli-rows': rows } as CSSProperties} aria-hidden="true" />;
-}
-
-function Block({ block }: { block: WorksheetBlock }) {
+function Block({ block, modelHand }: { block: WorksheetBlock; modelHand: boolean }) {
   switch (block.kind) {
     case 'letter':
       return (
         <section className="sheet-block" data-id="block-letter">
           <h3>{block.prompt}</h3>
-          <p className="sheet-note">Tô theo mẫu chữ hoa trang {block.page} SGK hoặc vở Tập viết, rồi viết tiếp.</p>
-          <OLi rows={4} />
+          {modelHand && block.letters.length > 0 ? (
+            <>
+              <p className="sheet-note">Tô theo chữ mẫu, rồi viết tiếp vào các dòng còn trống.</p>
+              <OLi {...letterSpace(block.letters)} />
+            </>
+          ) : (
+            <>
+              <p className="sheet-note">Tô theo mẫu chữ hoa trang {block.page} SGK hoặc vở Tập viết, rồi viết tiếp.</p>
+              <OLi rows={4} />
+            </>
+          )}
         </section>
       );
     case 'copy-line':
       return (
         <section className="sheet-block" data-id="block-copy-line">
           <h3>{block.text}</h3>
-          <OLi rows={3} />
+          {modelHand && block.model?.length ? <OLi {...sentenceSpace(block.model)} /> : <OLi rows={3} />}
         </section>
       );
     case 'dictation':
@@ -211,6 +216,7 @@ function groupBlocks(blocks: readonly WorksheetBlock[]): Array<WorksheetBlock | 
 
 export function WorksheetSheetScreen() {
   const { lessonId = '' } = useParams();
+  const modelHand = useModelHand();
   const { data: sheet, error, gateOpen } = useParentData(() => api('GET', `/worksheets/${encodeURIComponent(lessonId)}`, Worksheet), lessonId);
   return (
     <GateOrContent gateOpen={gateOpen}>
@@ -240,7 +246,7 @@ export function WorksheetSheetScreen() {
               </p>
             </header>
             {groupBlocks(sheet.blocks).map((block, i) =>
-              block.kind === 'activity-group' ? <ActivityBlock key={i} prompt={block.prompt} page={block.page} parts={block.parts} /> : <Block key={i} block={block} />,
+              block.kind === 'activity-group' ? <ActivityBlock key={i} prompt={block.prompt} page={block.page} parts={block.parts} /> : <Block key={i} block={block} modelHand={modelHand} />,
             )}
           </article>
         ) : null}

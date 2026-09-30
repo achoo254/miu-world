@@ -1,12 +1,22 @@
+import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import path from 'node:path';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { TEST_PIN, createTestApp, parentWithChild, type TestApp } from '../../test/test-app';
 
 let app: TestApp;
+// Only the regular weight is installed, as on a server where the bold file was never copied.
+// Under a dot folder, like the default `.data/fonts`.
+const fontRoot = mkdtempSync(path.join(tmpdir(), 'miu-fonts-'));
+const fontDir = path.join(fontRoot, '.data', 'fonts');
+mkdirSync(fontDir, { recursive: true });
+writeFileSync(path.join(fontDir, 'chu-mau-tieu-hoc.woff2'), 'wOF2 test bytes');
 beforeAll(async () => {
-  app = await createTestApp();
+  app = await createTestApp(undefined, { handwritingFontDir: fontDir });
 });
 afterAll(async () => {
   await app.handle.close();
+  rmSync(fontRoot, { recursive: true, force: true });
 });
 
 describe('worksheet routes', () => {
@@ -38,5 +48,16 @@ describe('worksheet routes', () => {
   it('has no way to write', async () => {
     const { agent } = await parentWithChild(app, false);
     await agent.post('/api/worksheets/tv2-t1-b02').send({ text: 'bài viết' }).expect(404);
+  });
+
+  it('serves the installed handwriting font to a signed-in parent, and only the known font files', async () => {
+    const { agent } = await parentWithChild(app, false);
+    const font = await agent.get('/api/worksheets/fonts/chu-mau-tieu-hoc.woff2').expect(200);
+    expect(font.headers['content-type']).toBe('font/woff2');
+    expect(font.headers['cache-control']).toBe('private, max-age=86400');
+    await agent.get('/api/worksheets/fonts/chu-mau-tieu-hoc-dam.woff2').expect(404, { error: 'font-not-found' });
+    await agent.get('/api/worksheets/fonts/..%2F..%2Fpackage.json').expect(404);
+    await agent.get('/api/worksheets/fonts/other.woff2').expect(404, { error: 'font-not-found' });
+    await app.agent().get('/api/worksheets/fonts/chu-mau-tieu-hoc.woff2').expect(401);
   });
 });

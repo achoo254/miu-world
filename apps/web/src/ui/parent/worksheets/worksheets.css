@@ -50,6 +50,33 @@
   background: var(--color-oli-margin);
 }
 
+/* Model hand (HP001), served by our server from outside git; see oli.tsx. */
+@font-face {
+  font-family: 'Chu Mau Tieu Hoc';
+  font-weight: 400;
+  font-display: block;
+  src: url('/api/worksheets/fonts/chu-mau-tieu-hoc.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Chu Mau Tieu Hoc';
+  font-weight: 700;
+  font-display: block;
+  src: url('/api/worksheets/fonts/chu-mau-tieu-hoc-dam.woff2') format('woff2');
+}
+/* Lowercase is 0.41 of the font size and capitals 2.5 times that; the baseline sits 0.2 of the font size
+   below the middle of the line box (measured for HP001). So an 8 mm line box puts the baseline at
+   4 mm + 0.2 × size from its top, and the box is moved up by that much from the bold line. */
+.oli-model {
+  --oli-size: calc(4mm / 0.41);
+  position: absolute; left: 10mm; margin: 0;
+  top: calc(var(--oli-baseline-row) * 8mm - 4mm - var(--oli-size) * 0.2);
+  font: 700 var(--oli-size) / 8mm 'Chu Mau Tieu Hoc', var(--font-body);
+  color: var(--color-ink); white-space: nowrap;
+  display: flex; gap: 8mm;
+}
+.oli-model--nho { --oli-size: calc(2mm / 0.41); gap: 4mm; }
+.oli-trace { color: var(--color-oli-trace); }
+
 @media print {
   @page { size: A4; margin: 0; }
   .no-print { display: none !important; }

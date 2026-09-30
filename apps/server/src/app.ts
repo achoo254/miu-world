@@ -78,7 +78,7 @@ export function createApp({ config, db, content = loadContentCatalog(), workshee
   api.use(childProfileRoutes({ db, content, clock }));
   api.use(characterRoutes({ db, content }));
   api.use(questRoutes({ db, content, clock }));
-  api.use(worksheetRoutes({ worksheets, clock }));
+  api.use(worksheetRoutes({ worksheets, clock, fontDir: config.handwritingFontDir }));
   app.use('/api', api);
 
   app.use((_req, res) => {

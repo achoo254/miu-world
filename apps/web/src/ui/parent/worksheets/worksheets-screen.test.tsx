@@ -28,8 +28,8 @@ const SHEET: Worksheet = {
   week: 1,
   pages: [10, 13],
   blocks: [
-    { kind: 'letter', prompt: 'Viết chữ hoa A', page: 12, curriculumRef: ['tv2-t01-b01-viet-1'] },
-    { kind: 'copy-line', text: 'Anh em thuận hoà.', page: 12, curriculumRef: ['tv2-t01-b01-viet-2'] },
+    { kind: 'letter', prompt: 'Viết chữ hoa A', letters: ['A'], page: 12, curriculumRef: ['tv2-t01-b01-viet-1'] },
+    { kind: 'copy-line', text: 'Viết ứng dụng: Anh em thuận hoà.', model: ['Anh em thuận hoà.'], page: 12, curriculumRef: ['tv2-t01-b01-viet-2'] },
     { kind: 'dictation', prompt: 'Nghe – viết', title: 'Đoạn mẫu', text: 'Câu thứ nhất.\nCâu thứ hai.', page: 13, curriculumRef: ['tv2-t01-b01-viet-3'] },
     { kind: 'paragraph-prompt', prompt: 'Viết 2 – 3 câu', hints: ['Gợi ý một', 'Gợi ý hai'], lines: 5, page: 13, curriculumRef: ['tv2-t01-b01-viet-4'] },
     { kind: 'activity', prompt: 'Cùng bố mẹ đo', media: [], page: 13, curriculumRef: ['tv2-t01-b01-vd-1'] },
@@ -103,7 +103,9 @@ describe('worksheets in the parent area', () => {
     for (const id of ['block-letter', 'block-copy-line', 'block-dictation', 'block-paragraph', 'block-activity']) expect(byId(id)).toBeTruthy();
     expect(screen.getByText('Viết chữ hoa A')).toBeTruthy();
     expect(screen.getByText(/Tô theo mẫu chữ hoa trang 12/)).toBeTruthy();
-    expect(screen.getByText('Anh em thuận hoà.')).toBeTruthy();
+    expect(screen.getByText('Viết ứng dụng: Anh em thuận hoà.')).toBeTruthy();
+    // No model hand installed: no model letters, the note points to the book instead.
+    expect(document.querySelector('.oli-model')).toBeNull();
     expect(byId('block-dictation')?.querySelector('.sheet-passage')?.textContent).toBe('Câu thứ nhất.\nCâu thứ hai.');
     expect(screen.getByText('Gợi ý hai')).toBeTruthy();
     expect(byId('block-paragraph')?.querySelector('.oli')?.getAttribute('data-rows')).toBe('5');
@@ -146,5 +148,25 @@ describe('activities on a sheet', () => {
       'Hình trang 60 SGK: hình b',
     ]);
     expect(single?.querySelector('.oli')?.getAttribute('data-rows')).toBe('3');
+  });
+});
+
+describe('model hand on a sheet', () => {
+  it('writes the capitals and the sentence in the model hand once the font has loaded', async () => {
+    Object.defineProperty(document, 'fonts', { value: { load: vi.fn(async () => [{}]) }, configurable: true });
+    stubApi({
+      'GET /api/auth/me': () => ({ status: 200, body: me(true) }),
+      'GET /api/worksheets/tv2-t01-b01': () => ({ status: 200, body: SHEET }),
+    });
+    renderAt('/parent/worksheets/tv2-t01-b01');
+    expect(await screen.findByText(/Tô theo chữ mẫu/)).toBeTruthy();
+    const letter = byId('block-letter');
+    expect(letter?.querySelector('.oli')?.getAttribute('data-rows')).toBe('6');
+    const letterLines = [...(letter?.querySelectorAll('.oli-model') ?? [])];
+    expect(letterLines.map((p) => p.className)).toEqual(['oli-model oli-model--vua', 'oli-model oli-model--nho']);
+    expect([...(letterLines[0]?.children ?? [])].map((s) => `${s.textContent}${s.className ? '·trace' : ''}`)).toEqual(['A', 'A·trace', 'A·trace']);
+    const sentence = [...(byId('block-copy-line')?.querySelectorAll('.oli-model') ?? [])].map((p) => p.textContent);
+    expect(sentence).toEqual(['Anh em thuận hoà.', 'Anh em thuận hoà.']);
+    Reflect.deleteProperty(document, 'fonts');
   });
 });

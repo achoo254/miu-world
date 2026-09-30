@@ -9,10 +9,14 @@ import { BookId } from './curriculum';
 const refs = { curriculumRef: z.array(ContentId).min(1) };
 
 export const WorksheetBlock = z.discriminatedUnion('kind', [
-  /** Capital letter practice: the child traces the model in the book or the handwriting notebook. */
-  z.object({ kind: z.literal('letter'), prompt: z.string(), page: z.number().int(), ...refs }),
-  /** Sentence to copy, as printed. */
-  z.object({ kind: z.literal('copy-line'), text: z.string(), page: z.number().int(), ...refs }),
+  /**
+   * Capital letter practice. `letters` are the capitals the book models (from the prompt, or from its
+   * picture of the model when the prompt only says "Viết chữ hoa:"); the sheet writes them in the
+   * primary-school model hand for the child to trace.
+   */
+  z.object({ kind: z.literal('letter'), prompt: z.string(), letters: z.array(z.string().min(1)), page: z.number().int(), ...refs }),
+  /** Sentence to copy, as printed. `model` holds its lines when the book gives one to copy ("Viết ứng dụng: …"). */
+  z.object({ kind: z.literal('copy-line'), text: z.string(), model: z.array(z.string().min(1)).optional(), page: z.number().int(), ...refs }),
   /** Passage a parent reads aloud slowly while the child writes it. */
   z.object({ kind: z.literal('dictation'), prompt: z.string(), title: z.string().optional(), text: z.string().optional(), page: z.number().int(), ...refs }),
   /** Paragraph to write, with the book's hints and blank ruled lines. */

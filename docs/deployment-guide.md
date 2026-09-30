@@ -162,6 +162,7 @@ tools/deploy/production/deploy.sh release   # build, security:dist, backup DB, u
 - Nghiệm thu: `curl -s https://miu.hoandat.com/api/health` trả `{"status":"ok"}`; revision đang chạy ở `/opt/miu/current/apps/server/dist/server/REVISION` trên .65.
 - Log: `journalctl --namespace=miu -u miu-server` (.65; không có `--namespace` thì không thấy); request ở `/var/log/nginx/miu.hoandat.com.{access,error}.log`.
 - Rollback: như staging (§5) nhưng trên .65; backup ở `/var/backups/miu/` (`before-<id>.dump`, `daily-<ngày>.dump`).
+- Font chữ mẫu tiểu học HP001 của phiếu viết (`chu-mau-tieu-hoc.woff2`, `chu-mau-tieu-hoc-dam.woff2`) không có giấy phép mở nên không nằm trong git. Đặt hai tệp vào một thư mục cố định ngoài `/opt/miu/current` (thư mục đó thay mỗi lần release) mà user `miu` đọc được, rồi đặt `HANDWRITING_FONT_DIR=<thư mục>` trong `/etc/miu/production.env`. Thiếu font thì phiếu vẫn in nhưng không có chữ mẫu. Máy dev đặt tệp ở `.data/fonts/`.
 
 **Việc còn lại (của người):**
 

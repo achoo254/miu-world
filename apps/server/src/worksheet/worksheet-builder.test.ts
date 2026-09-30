@@ -1,6 +1,6 @@
 import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
-import { buildWorksheets, loadWorksheets } from './worksheet-builder';
+import { buildWorksheets, lettersOf, loadWorksheets, modelOf } from './worksheet-builder';
 import { readCurriculum } from './curriculum-books';
 
 const FIXTURES = fileURLToPath(new URL('../../test/fixtures/curriculum', import.meta.url));
@@ -40,5 +40,24 @@ describe('worksheet builder', () => {
 
   it('builds from the shipped inventory without errors', () => {
     expect(() => loadWorksheets()).not.toThrow();
+  });
+
+  it('finds the capitals to write in the prompt, or in the picture of the model when the prompt has none', () => {
+    const item = { id: 'x', page: 1, exerciseType: 'viet-chu' as const, readConfidence: 'high' as const };
+    expect(lettersOf({ ...item, prompt: 'Viết chữ hoa: I, K' })).toEqual(['I', 'K']);
+    expect(lettersOf({ ...item, prompt: 'Viết chữ hoa Ă, Â.' })).toEqual(['Ă', 'Â']);
+    const pictured = ['mẫu chữ hoa Ô cỡ vừa trên ô li có đánh số nét 1, 2, 3', 'mẫu chữ hoa Ô cỡ nhỏ', 'mẫu chữ hoa Ơ cỡ vừa'];
+    expect(lettersOf({ ...item, prompt: 'Viết chữ hoa:', media: pictured })).toEqual(['Ô', 'Ơ']);
+    expect(modelOf('Viết ứng dụng: Dung dăng dung dẻ\nDắt trẻ đi chơi.')).toEqual(['Dung dăng dung dẻ', 'Dắt trẻ đi chơi.']);
+    expect(modelOf('Ăn chậm nhai kĩ.')).toEqual(['Ăn chậm nhai kĩ.']);
+    expect(sheets.get('tv2-t1-b03')?.blocks).toMatchObject([{ letters: ['Ă', 'Â'] }, { model: ['Ăn chậm nhai kĩ.'] }]);
+  });
+
+  it('gives every capital-letter block of the shipped book its letters, and copies every model sentence verbatim', () => {
+    const blocks = [...loadWorksheets().values()].flatMap((w) => w.blocks);
+    const letters = blocks.filter((b) => b.kind === 'letter');
+    expect(letters.length).toBeGreaterThan(0);
+    for (const block of letters) expect(block.letters.length, block.curriculumRef.join()).toBeGreaterThan(0);
+    for (const block of blocks) if (block.kind === 'copy-line') for (const line of block.model ?? []) expect(block.text).toContain(line);
   });
 });

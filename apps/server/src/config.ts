@@ -29,6 +29,8 @@ const Env = z.object({
   PASSWORD_LOGIN: z.enum(['0', '1']).optional(),
   /** Test-only folder of extra quest files (E2E plays fixture quests); refused in production. */
   EXTRA_QUEST_DIR: z.string().min(1).optional(),
+  /** Folder holding the primary-school model handwriting font (kept out of git; see the deployment guide). */
+  HANDWRITING_FONT_DIR: z.string().min(1).optional(),
   /** Test-only cap on password sign-ups per IP per hour (E2E creates a parent per spec); refused in production. */
   REGISTER_LIMIT_PER_HOUR: z.coerce.number().int().min(1).optional(),
 });
@@ -62,6 +64,8 @@ export interface ServerConfig {
   passwordLogin: boolean;
   /** Extra quest files loaded next to the shipped ones (tests only). */
   extraQuestDir: string | null;
+  /** Override for where the handwriting font files live; null uses `.data/fonts` in the repo. */
+  handwritingFontDir: string | null;
 }
 
 /** Validates env once at startup; throws with the offending key so the process fails fast. */
@@ -122,5 +126,6 @@ export function loadConfig(env: Record<string, string | undefined> = process.env
     // Off unless asked for: a public review build must not let anyone pre-register a parent's email.
     passwordLogin: !production && e.PASSWORD_LOGIN === '1',
     extraQuestDir: production ? null : (e.EXTRA_QUEST_DIR ?? null),
+    handwritingFontDir: e.HANDWRITING_FONT_DIR ?? null,
   };
 }
