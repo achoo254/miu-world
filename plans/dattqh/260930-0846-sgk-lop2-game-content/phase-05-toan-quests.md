@@ -13,6 +13,7 @@ dependencies: [3]
 Mỗi bài Toán 2 tập 1 là một quest ở Trường học, phủ mọi item kiểm kê (Khám phá, Hoạt động, Luyện tập, Trò chơi, Vận dụng) bằng bước đúng cơ chế, server chấm được.
 
 ## Requirements
+- D8 + D9: chữ SGK nguyên văn; mỗi quest một câu chuyện/bối cảnh/NPC riêng, lời thoại và `feedback` không trùng quest khác, chuỗi cơ chế không trùng quest khác (`content:check` kiểm).
 - 36 quest `toan2-cd1-b01` … `toan2-cd7-b36`, `region: "truong-hoc"`, `chapter` = số chủ đề (4–7 quest/chương, D6), `status: "draft"` (phase 10 đổi `active`), `review: "teacher-pending"`, mở khóa tuyến tính theo sách (bài 1 đã có từ phase 3).
 - Khuôn một bài:
   - Hook + Explore: NPC Trường học đưa tình huống từ phần Khám phá (nguyên văn lời thoại/đề); `search` tìm đồ vật dùng trong bài (target `toan2-cdN-<vật>`, phase 9 đặt).
