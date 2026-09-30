@@ -27,6 +27,8 @@ const Env = z.object({
   GOOGLE_TOKEN_URL: z.url().optional(),
   /** `1` enables email+password sign-in: explicit opt-in for dev/test tooling; refused in production. */
   PASSWORD_LOGIN: z.enum(['0', '1']).optional(),
+  /** Test-only folder of extra quest files (E2E plays fixture quests); refused in production. */
+  EXTRA_QUEST_DIR: z.string().min(1).optional(),
 });
 
 export interface GoogleConfig {
@@ -56,6 +58,8 @@ export interface ServerConfig {
   google: GoogleConfig | null;
   /** Email+password routes; hidden in the UI and always off in production. */
   passwordLogin: boolean;
+  /** Extra quest files loaded next to the shipped ones (tests only). */
+  extraQuestDir: string | null;
 }
 
 /** Validates env once at startup; throws with the offending key so the process fails fast. */
@@ -77,6 +81,7 @@ export function loadConfig(env: Record<string, string | undefined> = process.env
     if (missing.length > 0) throw new Error(`Invalid server env: ${missing.join(', ')} required in production`);
     if (e.GOOGLE_AUTH_URL || e.GOOGLE_TOKEN_URL) throw new Error('Invalid server env: Google endpoint overrides are test-only');
     if (e.PASSWORD_LOGIN === '1') throw new Error('Invalid server env: PASSWORD_LOGIN is dev/test only');
+    if (e.EXTRA_QUEST_DIR) throw new Error('Invalid server env: EXTRA_QUEST_DIR is test-only');
   }
   // Outside production the endpoints may point at a local fake Google, never at another host.
   for (const [key, value] of [['GOOGLE_AUTH_URL', e.GOOGLE_AUTH_URL], ['GOOGLE_TOKEN_URL', e.GOOGLE_TOKEN_URL]] as const) {
@@ -113,5 +118,6 @@ export function loadConfig(env: Record<string, string | undefined> = process.env
         : null,
     // Off unless asked for: a public review build must not let anyone pre-register a parent's email.
     passwordLogin: !production && e.PASSWORD_LOGIN === '1',
+    extraQuestDir: production ? null : (e.EXTRA_QUEST_DIR ?? null),
   };
 }

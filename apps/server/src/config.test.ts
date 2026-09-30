@@ -17,6 +17,13 @@ describe('loadConfig', () => {
     expect(() => loadConfig({ NODE_ENV: 'production', DATABASE_URL: 'postgres://db.local/miu' })).toThrow(/ALLOWED_ORIGINS/);
   });
 
+  it('loads extra quest files only outside production', () => {
+    expect(loadConfig({ NODE_ENV: 'test', EXTRA_QUEST_DIR: '/tmp/quests' }).extraQuestDir).toBe('/tmp/quests');
+    expect(loadConfig({}).extraQuestDir).toBeNull();
+    const production = { NODE_ENV: 'production', ALLOWED_ORIGINS: 'https://miu.example', DATABASE_URL: 'postgres://db.local/miu', GOOGLE_CLIENT_ID: 'id', GOOGLE_CLIENT_SECRET: 'test-secret', GOOGLE_REDIRECT_URI: 'https://miu.example/api/auth/google/callback' };
+    expect(() => loadConfig({ ...production, EXTRA_QUEST_DIR: '/tmp/quests' })).toThrow(/EXTRA_QUEST_DIR is test-only/);
+  });
+
   it('requires a real database in production', () => {
     expect(() => loadConfig({ NODE_ENV: 'production', ALLOWED_ORIGINS: 'https://miu.example' })).toThrow(/DATABASE_URL/);
   });

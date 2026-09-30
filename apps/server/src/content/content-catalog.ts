@@ -33,6 +33,8 @@ export interface ContentOptions {
   dir?: string;
   /** Quest JSON directory; defaults to `<dir>/quests`. */
   questDir?: string;
+  /** Test-only folder whose quests load next to the others (E2E fixtures). */
+  extraQuestDir?: string;
 }
 
 export function readContentJson<S extends z.ZodType>(schema: S, file: string): z.infer<S> {
@@ -60,18 +62,18 @@ export function readQuestDefinitions(questDir: string): QuestDefinition[] {
   return jsonFiles(questDir).map((file) => readContentJson(QuestDefinition, file));
 }
 
-export function loadQuests(questDir: string, skillIds: ReadonlySet<string>): LoadedQuests {
-  const list = readQuestDefinitions(questDir);
+export function loadQuests(questDir: string, skillIds: ReadonlySet<string>, extraQuestDir?: string): LoadedQuests {
+  const list = [...readQuestDefinitions(questDir), ...(extraQuestDir ? readQuestDefinitions(extraQuestDir) : [])];
   const { issues, warnings } = questCatalogReport(list, skillIds);
   if (issues.length > 0) throw new Error(`invalid quest catalogue: ${issues.join('; ')}`);
   const playable = list.filter((q): q is PlayableQuest => q.status !== 'draft');
   return { quests: new Map(playable.map((q) => [q.id, q])), warnings };
 }
 
-export function loadContentCatalog({ dir = CONTENT_DIR, questDir }: ContentOptions = {}): ContentCatalog {
+export function loadContentCatalog({ dir = CONTENT_DIR, questDir, extraQuestDir }: ContentOptions = {}): ContentCatalog {
   const catalog = readContentJson(SkillCatalog, path.join(dir, 'learning/skills.json'));
   const skillIds = new Set(catalog.subjects.flatMap((s) => s.skills.map((k) => k.id)));
-  const { quests, warnings: questWarnings } = loadQuests(questDir ?? path.join(dir, 'quests'), skillIds);
+  const { quests, warnings: questWarnings } = loadQuests(questDir ?? path.join(dir, 'quests'), skillIds, extraQuestDir);
   const unlockedBy = new Map<string, string[]>();
   for (const quest of quests.values()) {
     for (const target of quest.unlock) unlockedBy.set(target, [...(unlockedBy.get(target) ?? []), quest.id]);

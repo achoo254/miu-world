@@ -1,0 +1,409 @@
+{
+  "id": "e2e-sgk-mechanics",
+  "region": "khu-rung-bi-mat",
+  "chapter": 99,
+  "title": "Thử cơ chế sách giáo khoa",
+  "status": "active",
+  "summary": "Quest chỉ dùng trong E2E: chơi hết các cơ chế mới trên màn hình cảm ứng.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "Miu",
+    "where": "Trường học thử",
+    "goal": "Thử mọi cơ chế",
+    "play": "Phân loại, điền, chọn, đồng hồ, lịch, nối, xếp, nói, viết",
+    "learn": "Tiếng Việt, Toán",
+    "reward": "XP",
+    "unlock": "Không"
+  },
+  "phases": {
+    "hook": "hello",
+    "explore": "read-text",
+    "learn": "sort-words",
+    "challenge": "fill",
+    "decision": "pick-even",
+    "finale": "read-clock",
+    "reward": "talk",
+    "unlock": "write"
+  },
+  "texts": {
+    "bai-doc": {
+      "title": "Bài đọc thử",
+      "author": "Tác giả thử",
+      "body": "Ngày khai trường đã đến.\n\nTôi chào mẹ.",
+      "glossary": [
+        {
+          "term": "Khai trường",
+          "meaning": "ngày đầu năm học mới."
+        }
+      ]
+    }
+  },
+  "steps": [
+    {
+      "id": "hello",
+      "title": "Chào",
+      "kind": "dialogue",
+      "trigger": "auto",
+      "lines": [
+        {
+          "speaker": "Vẹt",
+          "text": "Chào bạn!"
+        }
+      ]
+    },
+    {
+      "id": "read-text",
+      "title": "Đọc bài",
+      "kind": "read",
+      "textRef": "bai-doc",
+      "audio": true,
+      "question": "Ai chào mẹ?",
+      "choices": [
+        {
+          "id": "toi",
+          "text": "Tôi"
+        },
+        {
+          "id": "ban",
+          "text": "Bạn"
+        }
+      ],
+      "skill": "doc-hieu",
+      "answer": {
+        "choice": "toi"
+      },
+      "support": {
+        "guide": [
+          "Đọc kĩ yêu cầu."
+        ],
+        "hint": "Làm từng phần một.",
+        "answer": {
+          "text": "Tôi",
+          "explanation": "Đáp án đúng theo sách."
+        }
+      },
+      "trigger": "auto"
+    },
+    {
+      "id": "sort-words",
+      "title": "Phân loại từ",
+      "kind": "challenge",
+      "skill": "phep-cong",
+      "mechanic": "classify",
+      "prompt": "Xếp từ vào nhóm",
+      "groups": [
+        {
+          "id": "su-vat",
+          "label": "Chỉ sự vật"
+        },
+        {
+          "id": "hoat-dong",
+          "label": "Chỉ hoạt động"
+        }
+      ],
+      "items": [
+        {
+          "id": "sach",
+          "label": "sách"
+        },
+        {
+          "id": "doc",
+          "label": "đọc"
+        },
+        {
+          "id": "but",
+          "label": "bút"
+        }
+      ],
+      "answer": {
+        "assignment": {
+          "sach": "su-vat",
+          "doc": "hoat-dong",
+          "but": "su-vat"
+        }
+      },
+      "support": {
+        "guide": [
+          "Đọc kĩ yêu cầu."
+        ],
+        "hint": "Làm từng phần một.",
+        "answer": {
+          "text": "sách, bút: sự vật; đọc: hoạt động",
+          "explanation": "Đáp án đúng theo sách."
+        }
+      },
+      "trigger": "auto"
+    },
+    {
+      "id": "fill",
+      "title": "Điền dấu",
+      "kind": "challenge",
+      "skill": "phep-cong",
+      "mechanic": "fill-blank",
+      "prompt": "Điền dấu >, <, =",
+      "template": "47 {{b1}} 38",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "lon",
+              "text": ">"
+            },
+            {
+              "id": "be",
+              "text": "<"
+            },
+            {
+              "id": "bang",
+              "text": "="
+            }
+          ]
+        }
+      ],
+      "answer": {
+        "fills": {
+          "b1": "lon"
+        }
+      },
+      "support": {
+        "guide": [
+          "Đọc kĩ yêu cầu."
+        ],
+        "hint": "Làm từng phần một.",
+        "answer": {
+          "text": ">",
+          "explanation": "Đáp án đúng theo sách."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Chuẩn luôn!",
+          "Tuyệt, đúng dấu rồi!",
+          "Giỏi quá, lớn hơn là đúng!"
+        ],
+        "wrong": [
+          "Nhìn lại hai số nhé.",
+          "Số nào nhiều chục hơn?",
+          "Gần đúng rồi, thử dấu khác xem."
+        ]
+      },
+      "trigger": "auto"
+    },
+    {
+      "id": "pick-even",
+      "title": "Chọn phép tính đúng",
+      "kind": "challenge",
+      "skill": "phep-cong",
+      "mechanic": "multi-select",
+      "prompt": "Chọn các phép tính có kết quả bằng 10",
+      "choices": [
+        {
+          "id": "p1",
+          "text": "4 + 6"
+        },
+        {
+          "id": "p2",
+          "text": "5 + 4"
+        },
+        {
+          "id": "p3",
+          "text": "8 + 2"
+        }
+      ],
+      "answer": {
+        "choices": [
+          "p1",
+          "p3"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Đọc kĩ yêu cầu."
+        ],
+        "hint": "Làm từng phần một.",
+        "answer": {
+          "text": "4 + 6 và 8 + 2",
+          "explanation": "Đáp án đúng theo sách."
+        }
+      },
+      "trigger": "auto"
+    },
+    {
+      "id": "read-clock",
+      "title": "Xem đồng hồ",
+      "kind": "challenge",
+      "skill": "phep-cong",
+      "mechanic": "clock",
+      "prompt": "Đồng hồ chỉ mấy giờ chiều?",
+      "mode": "read",
+      "display": "analog",
+      "time": {
+        "hour": 3,
+        "minute": 0
+      },
+      "answer": {
+        "hour": 15,
+        "minute": 0
+      },
+      "support": {
+        "guide": [
+          "Đọc kĩ yêu cầu."
+        ],
+        "hint": "Làm từng phần một.",
+        "answer": {
+          "text": "15 giờ",
+          "explanation": "Đáp án đúng theo sách."
+        }
+      },
+      "trigger": "auto"
+    },
+    {
+      "id": "calendar",
+      "title": "Xem lịch",
+      "kind": "challenge",
+      "skill": "phep-cong",
+      "mechanic": "calendar",
+      "prompt": "Xem tờ lịch tháng 11",
+      "month": 11,
+      "year": 2026,
+      "question": "Ngày 20 tháng 11 là thứ mấy?",
+      "answer": {
+        "weekday": "thu-sau"
+      },
+      "support": {
+        "guide": [
+          "Đọc kĩ yêu cầu."
+        ],
+        "hint": "Làm từng phần một.",
+        "answer": {
+          "text": "Thứ Sáu",
+          "explanation": "Đáp án đúng theo sách."
+        }
+      },
+      "ask": "weekday",
+      "trigger": "auto"
+    },
+    {
+      "id": "draw",
+      "title": "Vẽ đường gấp khúc",
+      "kind": "challenge",
+      "skill": "phep-cong",
+      "mechanic": "connect",
+      "prompt": "Nối A với B, B với C",
+      "points": [
+        {
+          "id": "a",
+          "x": 0,
+          "y": 0,
+          "label": "A"
+        },
+        {
+          "id": "b",
+          "x": 4,
+          "y": 0,
+          "label": "B"
+        },
+        {
+          "id": "c",
+          "x": 4,
+          "y": 3,
+          "label": "C"
+        }
+      ],
+      "showLengths": true,
+      "answer": {
+        "edges": [
+          [
+            "a",
+            "b"
+          ],
+          [
+            "b",
+            "c"
+          ]
+        ]
+      },
+      "support": {
+        "guide": [
+          "Đọc kĩ yêu cầu."
+        ],
+        "hint": "Làm từng phần một.",
+        "answer": {
+          "text": "AB, BC",
+          "explanation": "Đáp án đúng theo sách."
+        }
+      },
+      "trigger": "auto"
+    },
+    {
+      "id": "order-pictures",
+      "title": "Xếp tranh",
+      "kind": "challenge",
+      "skill": "phep-cong",
+      "mechanic": "sort",
+      "prompt": "Xếp tranh theo thứ tự câu chuyện",
+      "items": [
+        {
+          "id": "t2",
+          "label": "Tranh 2",
+          "image": {
+            "kind": "diagram",
+            "type": "picture-card",
+            "params": {
+              "n": 2
+            }
+          }
+        },
+        {
+          "id": "t1",
+          "label": "Tranh 1",
+          "image": {
+            "kind": "icon",
+            "id": "school"
+          }
+        }
+      ],
+      "answer": {
+        "order": [
+          "t1",
+          "t2"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Đọc kĩ yêu cầu."
+        ],
+        "hint": "Làm từng phần một.",
+        "answer": {
+          "text": "Tranh 1, tranh 2",
+          "explanation": "Đáp án đúng theo sách."
+        }
+      },
+      "trigger": "auto"
+    },
+    {
+      "id": "talk",
+      "title": "Kể chuyện",
+      "kind": "speak",
+      "trigger": "auto",
+      "prompt": "Kể về ngày hè của em.",
+      "hints": [
+        "Em đi đâu?",
+        "Em làm gì?"
+      ]
+    },
+    {
+      "id": "write",
+      "title": "Phiếu viết",
+      "kind": "worksheet",
+      "trigger": "auto",
+      "lessonId": "tv2-t1-b01",
+      "text": "Viết chữ hoa A vào phiếu."
+    }
+  ],
+  "reward": {
+    "xp": 20
+  },
+  "unlock": []
+}
