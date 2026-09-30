@@ -181,7 +181,6 @@ export function checkContent(dir: string = CONTENT_DIR): ContentReport {
   const warnings: string[] = [];
   try {
     const catalog = loadContentCatalog({ dir });
-    warnings.push(...catalog.questWarnings);
     const targets = checkQuestTargets(catalog.quests.values());
     issues.push(...targets.issues);
     // Drafts become game text too, so the player's name rule covers every quest file.

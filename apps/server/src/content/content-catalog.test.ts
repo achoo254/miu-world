@@ -2,7 +2,7 @@ import { mkdtempSync, readFileSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { describe, expect, it } from 'vitest';
-import { loadContentCatalog, loadQuests } from './content-catalog';
+import { CONTENT_DIR, loadContentCatalog, loadQuests, questTextbooks } from './content-catalog';
 
 function questDir(quests: unknown[]): string {
   const dir = mkdtempSync(path.join(tmpdir(), 'miu-quests-'));
@@ -52,11 +52,20 @@ describe('content catalogue', () => {
     // ...and say where to go: every step here happens at the ancient tree.
     const places = Object.fromEntries(steps.flatMap((s) => (s.kind === 'search' ? [[s.id, 'cây cổ thụ']] : s.target ? [[s.target, 'cây cổ thụ']] : [])));
     const walked = steps.map((s) => ({ ...s, goTo: 'Đến cây cổ thụ' }));
-    const draft = { ...sgk, id: 'tv2-t01-b01', status: 'draft', unlock: ['tv2-t01-b02'], steps: walked, places };
+    const draft = { ...sgk, id: 'tv2-t01-b01', status: 'draft', lesson: 'tv2-t1-b01', steps: walked, places };
     const loaded = loadQuests(questDir([{ ...base, id: 'a' }, draft]), new Set([...skills, 'phep-cong']));
-    expect([...loaded.quests.keys()]).toEqual(['a']);
-    expect(loaded.warnings).toEqual(['draft quest tv2-t01-b01 unlocks tv2-t01-b02, not written yet']);
+    expect([...loaded.keys()]).toEqual(['a']);
+    // Textbook lessons open in any order: nothing may lock one, not even another lesson.
+    expect(() => loadQuests(questDir([{ ...draft, unlock: ['tv2-t01-b02'] }]), skills)).toThrow(/unlocks nothing/);
     expect(() => loadQuests(questDir([{ ...draft, phases: {} }]), skills)).toThrow(/invalid content file/);
+  });
+
+  it('reads the title and printed pages of the lesson a quest plays', () => {
+    const quests = loadQuests(questDir([{ ...base, id: 'a', lesson: 'tv2-t1-b02' }, { ...base, id: 'b' }]), skills);
+    const textbooks = questTextbooks(quests.values(), path.join(CONTENT_DIR, 'curriculum'));
+    expect(Object.fromEntries(textbooks)).toEqual({ a: { book: 'Tiếng Việt 2, tập một', lesson: 'Bài 2. Ngày hôm qua đâu rồi?', pages: [13, 16] } });
+    const ghost = loadQuests(questDir([{ ...base, id: 'a', lesson: 'tv2-t1-b99' }]), skills);
+    expect(() => questTextbooks(ghost.values(), path.join(CONTENT_DIR, 'curriculum'))).toThrow('quest a plays unknown textbook lesson tv2-t1-b99');
   });
 
   it('records which quests unlock which', () => {

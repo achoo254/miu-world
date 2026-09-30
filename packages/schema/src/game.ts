@@ -126,11 +126,23 @@ export type StepAnswer = z.infer<typeof StepAnswer>;
 export const StepCompleteRequest = z.object({ answer: StepAnswer.optional(), target: ContentId.optional() });
 export type StepCompleteRequest = z.infer<typeof StepCompleteRequest>;
 
+/** Textbook lesson a quest plays, as printed: teachers set homework by page or by lesson title. */
+export const QuestTextbook = z.object({
+  /** "Tiếng Việt 2, tập một" */
+  book: z.string(),
+  /** "Bài 1. Tôi là học sinh lớp 2" */
+  lesson: z.string(),
+  /** First and last printed page. */
+  pages: z.tuple([z.number().int(), z.number().int()]),
+});
+export type QuestTextbook = z.infer<typeof QuestTextbook>;
+
 /**
  * A quest as the client sees it. Parsing a definition through this schema drops every key it does not
  * list, so answers, support layers and authoring notes never leave the server. Draft quests are never
  * loaded, so they have no view.
  */
+
 export const QuestView = z.discriminatedUnion('status', [
   z.object({
     id: ContentId,
@@ -152,6 +164,7 @@ export const QuestView = z.discriminatedUnion('status', [
     steps: z.array(QuestStepPublic),
     reward: RewardSpec,
     unlock: z.array(ContentId),
+    textbook: QuestTextbook.optional(),
   }),
   z.object({ id: ContentId, region: ContentId, chapter: z.number().int().min(1), title: z.string(), status: z.literal('stub') }),
 ]);

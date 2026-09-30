@@ -7,6 +7,7 @@ import { buttonClass } from '../kit/button';
 import { SkyScene } from '../kit/sky-scene';
 import { PlayerBadge } from '../player/player-badge';
 import { chapters, playPath, say, stepProgress, usePlayer, type PlayerData } from '../player/player-data';
+import { TextbookRef, textbookOf } from '../player/textbook-ref';
 import { WorldStage } from '../world/world-stage';
 import { findRegion } from './regions';
 import './region.css';
@@ -69,9 +70,11 @@ function QuestRow({ summary, data }: { summary: QuestSummary; data: PlayerData }
   const title = say(summary.quest.title, data.character);
   const stub = summary.quest.status === 'stub';
   const playable = !stub && summary.state !== 'locked';
+  const textbook = textbookOf(summary);
   return (
     <li className={`quest-row${playable ? '' : ' quest-row--locked'}`} data-id={`region-quest-${summary.quest.id}`} data-state={summary.state}>
       <div className="quest-row-text">
+        {textbook ? <TextbookRef textbook={textbook} dataId={`region-quest-textbook-${summary.quest.id}`} /> : null}
         <strong>{title}</strong>
         {summary.quest.status === 'active' ? <span className="hint">{say(summary.quest.summary, data.character)}</span> : null}
         <span>

@@ -46,7 +46,7 @@ function validQuest() {
 
 /** `validQuest` as a textbook draft, with a place for every target and a goTo line at each change. */
 function textbookQuest() {
-  const quest = { ...validQuest(), id: 'toan2-cd1-b01', status: 'draft', places: { parrot: 'cổng rừng', find: 'bãi cỏ', tree: 'gốc cây' } as Record<string, string> };
+  const quest = { ...validQuest(), id: 'toan2-cd1-b01', status: 'draft', lesson: 'toan2-t1-b01', places: { parrot: 'cổng rừng', find: 'bãi cỏ', tree: 'gốc cây' } as Record<string, string> };
   const goTo: Record<string, string> = { hi: 'Ra cổng rừng gặp Vẹt', find: 'Tìm hộp trên bãi cỏ', riddle: 'Đến gốc cây giải đố' };
   quest.steps = quest.steps.map((step) => ({ ...step, goTo: goTo[String(step.id)] }));
   return quest;
@@ -288,6 +288,20 @@ describe('textbook mechanics', () => {
     quest.steps.push({ ...challenge, id: 'k', mechanic: 'clock', mode: 'set', display: 'analog', answer: { hour: 8, minute: 0 } });
     quest.places = { ...quest.places, x: 'gốc cây' };
     expect(issues(quest).filter((m) => !m.includes('feedback'))).toEqual([]);
+  });
+});
+
+describe('textbook lessons', () => {
+  const noMechanicRule = (m: string) => !m.includes('feedback') && !m.includes('interactive challenges');
+
+  it('names the lesson, so the quest list can show its title and pages', () => {
+    const { lesson: _lesson, ...quest } = textbookQuest();
+    expect(issues(quest).filter(noMechanicRule)).toEqual(['a textbook quest names its lesson ("lesson"), shown with its pages in the quest list']);
+  });
+
+  it('never unlocks another lesson: homework comes in any page order', () => {
+    expect(issues({ ...textbookQuest(), unlock: ['toan2-cd1-b02'] }).filter(noMechanicRule)).toEqual(['a textbook quest unlocks nothing: lessons open in any order']);
+    expect(issues({ ...validQuest(), unlock: ['forest-ch2'] })).toEqual([]);
   });
 });
 

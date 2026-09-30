@@ -57,6 +57,7 @@ describe('varietyIssues', () => {
       const [first, second] = steps;
       return quest(id, tag, {
         status: 'draft',
+        lesson: 'toan2-t1-b01',
         steps,
         phases: { hook: first?.id, explore: first?.id, learn: first?.id, challenge: second?.id, decision: second?.id, finale: second?.id, reward: second?.id, unlock: second?.id },
       });

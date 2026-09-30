@@ -2,7 +2,7 @@ import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import path from 'node:path';
 import { BOOK_IDS, CurriculumBook, CurriculumUnit } from '@miu/schema/curriculum';
 import type { z } from 'zod';
-import { CONTENT_DIR } from '../content/content-catalog';
+import { CONTENT_DIR } from '../content/content-dir';
 
 /** Textbook inventory (`content/curriculum/<book>/`): `book.json` plus one file per topic or theme. */
 export const CURRICULUM_DIR = path.join(CONTENT_DIR, 'curriculum');

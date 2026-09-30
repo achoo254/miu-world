@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { QuestDefinition } from '@miu/schema/content';
-import { questCatalogReport, questTargetIssues } from './quest-catalog';
+import { questCatalogIssues, questTargetIssues } from './quest-catalog';
 
 const support = { guide: ['a'], hint: 'b', answer: { text: '2', explanation: '1 + 1 = 2' } };
 
@@ -30,41 +30,46 @@ const TEXTBOOK_STEPS = [
 ];
 /** Where the textbook steps happen: both on the same patch of grass. */
 const TEXTBOOK_PLACES = { box: 'bãi cỏ', tree: 'bãi cỏ' };
+const draft = (id: string, extra: Record<string, unknown> = {}) =>
+  quest(id, { status: 'draft', lesson: 'toan2-t1-b01', steps: TEXTBOOK_STEPS, places: TEXTBOOK_PLACES, ...extra });
 const stub = (id: string) => QuestDefinition.parse({ id, region: 'r', chapter: 2, title: id, status: 'stub' });
 const skills = new Set(['phep-cong']);
 
-describe('questCatalogReport', () => {
+describe('questCatalogIssues', () => {
   it('accepts a sound catalogue with a stub unlocked by an active quest', () => {
-    expect(questCatalogReport([quest('a', { unlock: ['b'] }), stub('b')], skills).issues).toEqual([]);
+    expect(questCatalogIssues([quest('a', { unlock: ['b'] }), stub('b')], skills)).toEqual([]);
   });
 
   it('reports unknown skills, unknown unlocks, duplicates and cycles', () => {
-    expect(questCatalogReport([quest('a', { reward: { skillXp: { bay: 1 } } })], skills).issues).toEqual(['quest a rewards unknown skill bay']);
-    expect(questCatalogReport([quest('a')], new Set()).issues).toEqual([
+    expect(questCatalogIssues([quest('a', { reward: { skillXp: { bay: 1 } } })], skills)).toEqual(['quest a rewards unknown skill bay']);
+    expect(questCatalogIssues([quest('a')], new Set())).toEqual([
       'quest a rewards unknown skill phep-cong',
       'quest a step add teaches unknown skill phep-cong',
     ]);
-    expect(questCatalogReport([quest('a', { unlock: ['ghost'] })], skills).issues).toEqual(['quest a unlocks unknown quest ghost']);
-    expect(questCatalogReport([quest('a'), quest('a')], skills).issues).toEqual(['duplicate quest id a']);
+    expect(questCatalogIssues([quest('a', { unlock: ['ghost'] })], skills)).toEqual(['quest a unlocks unknown quest ghost']);
+    expect(questCatalogIssues([quest('a'), quest('a')], skills)).toEqual(['duplicate quest id a']);
     const cycle = [quest('root'), quest('a', { unlock: ['b'] }), quest('b', { unlock: ['a'] })];
-    expect(questCatalogReport(cycle, skills).issues).toEqual(['quests locked forever (unlock cycle): a, b']);
+    expect(questCatalogIssues(cycle, skills)).toEqual(['quests locked forever (unlock cycle): a, b']);
   });
 
-  it('checks drafts like active quests but only warns about textbook quests not written yet', () => {
-    const draft = (id: string, extra: Record<string, unknown> = {}) => quest(id, { status: 'draft', steps: TEXTBOOK_STEPS, places: TEXTBOOK_PLACES, ...extra });
-    expect(questCatalogReport([draft('tv2-t01-b01', { unlock: ['tv2-t01-b02'] })], skills)).toEqual({
-      issues: [],
-      warnings: ['draft quest tv2-t01-b01 unlocks tv2-t01-b02, not written yet'],
-    });
-    expect(questCatalogReport([draft('tv2-t01-b01', { unlock: ['ghost'] })], skills).issues).toEqual(['quest tv2-t01-b01 unlocks unknown quest ghost']);
-    expect(questCatalogReport([draft('toan2-cd1-b01', { reward: { skillXp: { bay: 1 } } })], skills).issues).toEqual([
-      'quest toan2-cd1-b01 rewards unknown skill bay',
-    ]);
+  it('checks drafts like active quests', () => {
+    expect(questCatalogIssues([draft('tv2-t01-b01'), quest('a', { unlock: ['ghost'] })], skills)).toEqual(['quest a unlocks unknown quest ghost']);
+    expect(questCatalogIssues([draft('toan2-cd1-b01', { reward: { skillXp: { bay: 1 } } })], skills)).toEqual(['quest toan2-cd1-b01 rewards unknown skill bay']);
   });
 
   it('refuses an active quest that depends on a draft the game never loads', () => {
-    const report = questCatalogReport([quest('a', { unlock: ['toan2-cd1-b01'] }), quest('toan2-cd1-b01', { status: 'draft', steps: TEXTBOOK_STEPS, places: TEXTBOOK_PLACES })], skills);
-    expect(report.issues).toEqual(['quest a unlocks draft quest toan2-cd1-b01, which the game never loads']);
+    expect(questCatalogIssues([quest('a', { unlock: ['b'] }), quest('b', { status: 'draft' })], skills)).toEqual([
+      'quest a unlocks draft quest b, which the game never loads',
+    ]);
+  });
+
+  it('keeps every textbook quest open: nothing may lock one, written or not', () => {
+    expect(questCatalogIssues([quest('a', { unlock: ['toan2-cd1-b01'] }), draft('toan2-cd1-b01')], skills)).toEqual([
+      'quest a unlocks textbook quest toan2-cd1-b01: textbook lessons are open from the start',
+    ]);
+    expect(questCatalogIssues([quest('a', { unlock: ['tv2-t01-b02'] })], skills)).toEqual([
+      'quest a unlocks textbook quest tv2-t01-b02: textbook lessons are open from the start',
+    ]);
   });
 });
 

@@ -20,6 +20,9 @@ test('the school map loads and the way leads from the gate to Sư Tử Vàng at 
   await page.goto(QUEST);
   await waitReady(page);
   await expect(page.locator('[data-id="hud-tracker-step"]')).toHaveText('Đến cột cờ gặp Sư Tử Vàng');
+  // Teachers set homework by page: the tracker names the lesson and its printed pages.
+  await expect(page.locator('[data-id="hud-tracker-textbook"]')).toHaveText('Bài 1. Ôn tập các số đến 100Trang 6–9');
+  await page.screenshot({ path: `${SHOTS}hud-tracker-pages-ipad.png` });
   await expect.poll(async () => (await readStats(page)).hintTarget).toBe('su-tu-vang');
   expect((await readStats(page)).calls).toBeLessThanOrEqual(DRAW_CALL_BUDGET);
   await page.screenshot({ path: `${SHOTS}school-gate.png`, animations: 'disabled' });

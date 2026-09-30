@@ -248,8 +248,7 @@ export function stepTargets(step: QuestStep | QuestStepPublic): string[] {
 }
 
 /** Textbook quests (Toán 2 `toan2-cd<topic>-b<lesson>`, Tiếng Việt 2 `tv2-t<week>-…`) follow stricter rules. */
-export const TEXTBOOK_QUEST_ID = /^(?:toan2-cd\d-b\d{2}|tv2-t\d{2}-(?:b\d{2}|on-giua-ki|on-cuoi-ki))$/;
-const isTextbookQuest = (id: string) => id.startsWith('toan2-') || id.startsWith('tv2-');
+export const isTextbookQuest = (id: string) => id.startsWith('toan2-') || id.startsWith('tv2-');
 
 /** Challenges where the child manipulates something (Master Plan §16), as opposed to picking one answer. */
 const INTERACTIVE_MECHANICS = new Set(['drag-drop', 'sort', 'classify', 'fill-blank', 'multi-select', 'clock', 'calendar', 'connect']);
@@ -421,6 +420,11 @@ const questFields = {
     reward: ContentId,
     unlock: ContentId,
   }),
+  /**
+   * Textbook lesson the quest plays (`tv2-t1-b01`): the quest list shows its title and printed pages,
+   * since teachers set homework by page or lesson title. Required on textbook quests.
+   */
+  lesson: ContentId.optional(),
   texts: z.record(ContentId, QuestText).default({}),
   /**
    * Where each target stands, and the area of each search step, as the tracker names it ("cổng rừng").
@@ -431,7 +435,7 @@ const questFields = {
   reward: RewardSpec,
   /**
    * Quest ids this quest unlocks once finished. A quest opens when ANY quest listing it is finished;
-   * a quest no one lists is open from the start.
+   * a quest no one lists is open from the start. Textbook quests never lock: homework comes in any order.
    */
   unlock: z.array(ContentId).default([]),
 };
@@ -464,6 +468,8 @@ function wayfindingIssues(steps: readonly QuestStep[], places: Readonly<Record<s
 
 function questIssues(q: {
   id: string;
+  lesson?: string | undefined;
+  unlock: string[];
   phases: Record<(typeof QUEST_PHASES)[number], string>;
   steps: QuestStep[];
   texts: Record<string, QuestText>;
@@ -487,6 +493,9 @@ function questIssues(q: {
     seen.add(line);
   }
   if (isTextbookQuest(q.id)) {
+    if (!q.lesson) issues.push('a textbook quest names its lesson ("lesson"), shown with its pages in the quest list');
+    // A teacher sets page 25 today and page 12 tomorrow: every lesson is open, none unlocks another.
+    if (q.unlock.length > 0) issues.push('a textbook quest unlocks nothing: lessons open in any order');
     for (const step of q.steps) if ('support' in step && !step.feedback) issues.push(`step ${step.id}: a textbook quest step needs feedback lines`);
     issues.push(...wayfindingIssues(q.steps, q.places));
     const interactive = new Set(q.steps.map(mechanicOf).filter((m) => m !== null && INTERACTIVE_MECHANICS.has(m)));
@@ -504,10 +513,7 @@ const questRules = (q: Parameters<typeof questIssues>[0], ctx: z.RefinementCtx) 
 };
 
 const ActiveQuest = z.strictObject({ ...questFields, status: z.literal('active') }).superRefine(questRules);
-/**
- * Being written: same shape and rules as an active quest, but never loaded into the game. It may unlock
- * textbook quests that do not exist yet (checked when the book's quests are switched on).
- */
+/** Being written: same shape and rules as an active quest, but never loaded into the game. */
 const DraftQuest = z.strictObject({ ...questFields, status: z.literal('draft') }).superRefine(questRules);
 
 /** Quest data model (Master Plan §11): Quest → Step → Interaction → Challenge, with learning support. */

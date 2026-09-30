@@ -36,3 +36,9 @@
   .player-coins .icon { width: 1.4rem; height: 1.4rem; }
 }
 
+/* Book, lesson and printed pages of a textbook quest (region list, today's quest, HUD tracker). */
+.textbook-ref { display: inline-flex; flex-wrap: wrap; align-items: center; gap: var(--space-xs); font-size: var(--text-sm); font-weight: 700; color: var(--color-ink-soft); }
+.textbook-ref-pages { padding: 0 var(--space-sm); border-radius: var(--radius-pill); background: var(--color-tile-2); color: var(--color-ink); white-space: nowrap; }
+/* The tracker is narrow: keep the line inside it, shorten the lesson title, never the pages. */
+.textbook-ref--compact { flex-wrap: nowrap; max-width: 100%; font-size: 0.75rem; }
+.textbook-ref--compact .textbook-ref-lesson { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }

@@ -120,7 +120,7 @@ function stepCard(step: QuestStep, index: number, quest: Extract<QuestDefinition
 
 function questSection(quest: QuestDefinition): string {
   if (quest.status !== 'draft') return '';
-  const lesson = quest.steps.flatMap((s) => ('curriculumRef' in s ? (s.curriculumRef ?? []) : [])).map((r) => inventory.get(r)?.lesson).find(Boolean) ?? '';
+  const lesson = quest.lesson ?? '';
   const gaps = links.lessons.find((l) => l.lesson === lesson);
   const book = quest.id.startsWith('toan2') ? 'Toán 2' : 'Tiếng Việt 2';
   const where = quest.region === 'truong-hoc' ? `Trường học · chủ đề ${quest.chapter}` : `Khu rừng bí mật · chương ${quest.chapter}`;

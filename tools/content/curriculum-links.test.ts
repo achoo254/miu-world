@@ -110,7 +110,7 @@ const pick = {
 const bookText = { 'bai-doc': { title: 'Tôi là học sinh lớp 2', author: 'Văn Giá', body: 'Ngày khai trường đã đến.\n\nTôi chào mẹ.', section: 'tv2-t1-b01-doc' } };
 
 /** A draft textbook quest made of the given steps plus two unlinked interactive challenges (the quest rule). */
-function quest(steps: Record<string, unknown>[], texts: Record<string, unknown> = bookText) {
+function quest(steps: Record<string, unknown>[], texts: Record<string, unknown> = bookText, lesson = 'tv2-t1-b01') {
   const all = [...steps, sort, pick];
   const first = String(all[0]?.id);
   return QuestDefinition.parse({
@@ -119,6 +119,7 @@ function quest(steps: Record<string, unknown>[], texts: Record<string, unknown> 
     chapter: 2,
     title: 'Tôi là học sinh lớp 2',
     status: 'draft',
+    lesson,
     summary: 's',
     review: 'teacher-pending',
     sevenQuestions: { who: 'a', where: 'b', goal: 'c', play: 'd', learn: 'e', reward: 'f', unlock: 'g' },
@@ -130,6 +131,18 @@ function quest(steps: Record<string, unknown>[], texts: Record<string, unknown> 
 }
 
 describe('curriculum links', () => {
+  it('names a lesson the inventory has, and plays only that lesson', () => {
+    expect(checkCurriculumLinks(books(), [quest([read], bookText, 'tv2-t1-b09')]).issues).toEqual(['quest tv2-t01-b01 names unknown lesson tv2-t1-b09']);
+    const two = books();
+    two[0]?.units[0]?.lessons.push({ id: 'tv2-t1-b02', number: 2, week: 1, title: 'Bài 2. Ngày hôm qua đâu rồi?', pages: [13, 16], sections: [] });
+    expect(checkCurriculumLinks(two, [quest([read, worksheet], bookText, 'tv2-t1-b02')]).issues).toEqual([
+      "quest tv2-t01-b01 text bai-doc is tv2-t1-b01-doc from lesson tv2-t1-b01, not the quest's lesson tv2-t1-b02",
+      "quest tv2-t01-b01 step read points at tv2-t1-b01-doc-1 from lesson tv2-t1-b01, not the quest's lesson tv2-t1-b02",
+      "quest tv2-t01-b01 step write points at tv2-t1-b01-viet-chu-hoa-1 from lesson tv2-t1-b01, not the quest's lesson tv2-t1-b02",
+      "quest tv2-t01-b01 step write hands out the sheet of tv2-t1-b01, not of the quest's lesson tv2-t1-b02",
+    ]);
+  });
+
   it('counts items covered in the game and on worksheets separately, and lists the rest', () => {
     const report = checkCurriculumLinks(books(), [quest([read, worksheet])]);
     expect(report.issues).toEqual([]);

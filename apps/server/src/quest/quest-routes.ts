@@ -92,7 +92,7 @@ export function questRoutes({ db, content, clock }: QuestRouteDeps): Router {
       [...content.quests.values()].map((quest) => {
         const row = byQuest.get(quest.id);
         const summary = {
-          quest: QuestView.parse(quest),
+          quest: QuestView.parse({ ...quest, textbook: content.textbooks.get(quest.id) }),
           state: questState(isUnlocked(content, quest.id, completed), row),
           progress: progressDto(quest.id, row),
         };

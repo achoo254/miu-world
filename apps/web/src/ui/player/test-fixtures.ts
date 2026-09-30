@@ -46,3 +46,26 @@ export function questList(done: number = 0): QuestListResponse {
     ],
   };
 }
+
+/** `questList` plus an open textbook lesson in chapter 2 of the forest (no quest unlocks it). */
+export function questListWithLesson(done: number = 0): QuestListResponse {
+  const { quests } = questList(done);
+  const lesson = {
+    quest: {
+      id: 'tv2-t01-b01',
+      region: 'khu-rung-bi-mat',
+      chapter: 2,
+      title: 'Sâu Xanh vào lớp Hai',
+      status: 'active' as const,
+      summary: '{name} đi cùng Sâu Xanh.',
+      texts: {},
+      steps: [hello],
+      reward: { xp: 80, coin: 15, skillXp: {}, items: {} },
+      unlock: [],
+      textbook: { book: 'Tiếng Việt 2, tập một', lesson: 'Bài 1. Tôi là học sinh lớp 2', pages: [10, 12] as [number, number] },
+    },
+    state: 'open' as const,
+    progress: { questId: 'tv2-t01-b01', completedSteps: [], completed: false, found: {}, stars: null },
+  };
+  return { quests: [...quests, lesson] };
+}

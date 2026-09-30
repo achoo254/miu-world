@@ -7,18 +7,18 @@ import { createGameStore } from '../../game-bridge/game-store';
 import { GameStoreContext } from '../../game-bridge/use-game-state';
 import { Hud } from '../hud/hud';
 import type { PlayerData } from '../player/player-data';
-import { PROGRESS, questList } from '../player/test-fixtures';
+import { PROGRESS, questList, questListWithLesson } from '../player/test-fixtures';
 import { RegionMapScreen, RegionScreen } from '../region/region-screens';
 import { HomeScreen } from './home-screen';
 import { todayQuests } from './today-quests';
 
 const CHARACTER: CharacterDto = { species: 'cat', name: 'Mochi', equipped: [] };
 
-function stubServer(done = 1) {
+function stubServer(done = 1, list = questList) {
   vi.stubGlobal(
     'fetch',
     vi.fn(async (url: string) => {
-      const body = url === '/api/character' ? CHARACTER : url === '/api/progress' ? PROGRESS : url === '/api/quests' ? questList(done) : null;
+      const body = url === '/api/character' ? CHARACTER : url === '/api/progress' ? PROGRESS : url === '/api/quests' ? list(done) : null;
       return new Response(JSON.stringify(body ?? { error: 'not-found' }), { status: body ? 200 : 404 });
     }),
   );
@@ -138,6 +138,17 @@ describe('Map and region', () => {
     expect(await screen.findByText('Trong game')).toBeTruthy();
   });
 
+  it('names the book, lesson and printed pages of a textbook quest, open from the start', async () => {
+    stubServer(0, questListWithLesson);
+    renderAt('/region/khu-rung-bi-mat');
+    const ref = await screen.findByText('Trang 10–12');
+    expect(ref.closest('[data-id="region-quest-textbook-tv2-t01-b01"]')?.textContent).toBe('Tiếng Việt 2, tập một · Bài 1. Tôi là học sinh lớp 2Trang 10–12');
+    expect(document.querySelector('[data-id="region-quest-tv2-t01-b01"]')?.getAttribute('data-state')).toBe('open');
+    expect(document.querySelector('[data-id="region-play-tv2-t01-b01"]')?.getAttribute('href')).toBe('/play?region=khu-rung-bi-mat&quest=tv2-t01-b01');
+    // Quests outside the textbook show no page line.
+    expect(document.querySelector('[data-id="region-quest-textbook-forest-ch1"]')).toBeNull();
+  });
+
   it('refuses a region that is not open', async () => {
     stubServer();
     renderAt('/region/lau-dai');
@@ -165,6 +176,18 @@ describe('HUD', () => {
     expect(sent).toEqual(['rescue']);
     act(() => store.emit({ type: 'stuck', stuck: false }));
     expect(screen.queryByRole('button', { name: /Quay lại/ })).toBeNull();
+  });
+
+  it('names the lesson and pages of a textbook quest under its title', () => {
+    const lesson = questListWithLesson().quests.at(-1) ?? null;
+    render(
+      <MemoryRouter>
+        <GameStoreContext.Provider value={createGameStore()}>
+          <Hud data={data} quest={lesson} onMenu={() => undefined} onBackpack={() => undefined} />
+        </GameStoreContext.Provider>
+      </MemoryRouter>,
+    );
+    expect(document.querySelector('[data-id="hud-tracker-textbook"]')?.textContent).toBe('Bài 1. Tôi là học sinh lớp 2Trang 10–12');
   });
 
   it('says where to walk when the next step waits at another place', () => {

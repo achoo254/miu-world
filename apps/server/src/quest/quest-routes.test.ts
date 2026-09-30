@@ -419,6 +419,13 @@ describe('textbook mechanics over the API', () => {
     expect(res.body.quest.texts).toEqual({ 'bai-doc': { title: 'Bài đọc thử', author: 'Tác giả thử', body: 'Ngày khai trường đã đến.\n\nTôi chào mẹ.' } });
     expect(res.text).not.toMatch(/"(answer|support|assignment|fills|edges|curriculumRef|feedback)"/);
   });
+
+  it('names the textbook lesson and its printed pages, for homework set by page or title', async () => {
+    const { agent } = await playingChild();
+    const res = await agent.get('/api/quests?region=truong-hoc').expect(200);
+    const sgkView = (res.body as { quests: { quest: { id: string; textbook?: unknown } }[] }).quests.find((q) => q.quest.id === 'quest-sgk');
+    expect(sgkView?.quest.textbook).toEqual({ book: 'Tiếng Việt 2, tập một', lesson: 'Bài 1. Tôi là học sinh lớp 2', pages: [10, 12] });
+  });
 });
 
 describe('quest list and detail', () => {

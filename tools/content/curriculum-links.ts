@@ -253,11 +253,18 @@ export function checkCurriculumLinks(books: readonly LoadedBook[], quests: reado
   const mechanicsFor = new Map<string, Set<string>>();
   const shownSections = new Set<string>();
 
+  const lessonIds = new Set(books.flatMap(({ units }) => units.flatMap((u) => u.lessons.map((l) => l.id))));
+  const sectionLessons = new Map(books.flatMap(({ units }) => units.flatMap((u) => u.lessons.flatMap((l) => l.sections.map((sec) => [sec.id, l.id] as const)))));
   for (const quest of quests) {
     if (quest.status === 'stub') continue;
     const where = (step: string) => `quest ${quest.id} step ${step}`;
+    // The quest list shows this lesson's title and pages, so the quest must play that lesson and no other.
+    if (quest.lesson !== undefined && !lessonIds.has(quest.lesson)) issues.push(`quest ${quest.id} names unknown lesson ${quest.lesson}`);
+    const foreign = (lesson: string) => quest.lesson !== undefined && lessonIds.has(quest.lesson) && lesson !== quest.lesson;
     for (const [id, text] of Object.entries(quest.texts)) {
       if (text.section !== undefined) shownSections.add(text.section);
+      const textLesson = text.section === undefined ? undefined : sectionLessons.get(text.section);
+      if (textLesson && foreign(textLesson)) issues.push(`quest ${quest.id} text ${id} is ${text.section} from lesson ${textLesson}, not the quest's lesson ${quest.lesson}`);
       if (isTextbookQuest(quest.id)) issues.push(...textIssues(id, text, sections).map((m) => `quest ${quest.id} ${m}`));
     }
     for (const step of quest.steps) {
@@ -269,6 +276,7 @@ export function checkCurriculumLinks(books: readonly LoadedBook[], quests: reado
           issues.push(`${where(step.id)} points at unknown inventory item ${ref}`);
           continue;
         }
+        if (foreign(entry.lesson)) issues.push(`${where(step.id)} points at ${ref} from lesson ${entry.lesson}, not the quest's lesson ${quest.lesson}`);
         linked.push(entry.item);
         const set = mechanicsFor.get(ref) ?? new Set<string>();
         set.add(stepMechanic(step));
@@ -276,6 +284,7 @@ export function checkCurriculumLinks(books: readonly LoadedBook[], quests: reado
         const missing = step.kind === 'worksheet' ? [] : missingPhrases(step, entry.item.prompt);
         if (missing.length > 0) issues.push(`${where(step.id)} does not show the book's wording of ${ref}: "${missing.join('", "')}"`);
       }
+      if (step.kind === 'worksheet' && foreign(step.lessonId)) issues.push(`${where(step.id)} hands out the sheet of ${step.lessonId}, not of the quest's lesson ${quest.lesson}`);
       issues.push(...answerIssues(step, linked).map((m) => `${where(step.id)}: ${m}`));
     }
   }

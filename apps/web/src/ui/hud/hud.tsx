@@ -8,6 +8,7 @@ import { Icon } from '../kit/art';
 import { buttonClass } from '../kit/button';
 import { PlayerBadge } from '../player/player-badge';
 import { nextStep, say, stepProgress, type PlayerData } from '../player/player-data';
+import { TextbookRef, textbookOf } from '../player/textbook-ref';
 import { searchCount } from '../quest/quest-flow';
 import './hud.css';
 
@@ -16,6 +17,7 @@ export function QuestTracker({ quest, data }: { quest: QuestSummary | null; data
   const step = nextStep(quest);
   const { done, total } = stepProgress(quest);
   const clues = step ? searchCount(step, quest.progress) : null;
+  const textbook = textbookOf(quest);
   return (
     <section className="hud-tracker" aria-label="Nhiệm vụ hiện tại" data-id="hud-tracker">
       <p className="hud-tracker-kicker">
@@ -25,6 +27,7 @@ export function QuestTracker({ quest, data }: { quest: QuestSummary | null; data
       <p className="hud-tracker-quest" data-id="hud-tracker-quest">
         {say(quest.quest.title, data.character)}
       </p>
+      {textbook ? <TextbookRef textbook={textbook} dataId="hud-tracker-textbook" compact /> : null}
       <p className="hud-tracker-step" data-id="hud-tracker-step">
         {/* Where to walk while the step waits somewhere else; its title heads the scene once there. */}
         {step ? say(step.goTo ?? step.title, data.character) : 'Đã hoàn thành'}
