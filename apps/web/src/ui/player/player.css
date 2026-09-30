@@ -23,3 +23,16 @@
 }
 .player-badge .miu-portrait { margin-bottom: 0; border-width: 3px; flex-shrink: 0; }
 .player-badge .progress { height: 0.9rem; border-width: 2px; }
+
+/* Phones: a compact badge so the HUD leaves the forest in view. */
+@media (max-width: 600px) {
+  .player-badge { gap: var(--space-xs); padding-right: var(--space-sm); }
+  .player-badge .miu-portrait { width: 2.75rem; height: 2.75rem; }
+  .player-badge-text { min-width: 5.5rem; }
+  .player-badge-name { font-size: var(--text-body); }
+  .player-badge-level { font-size: 0.8rem; }
+  .player-badge-xp { min-width: 3.5rem; font-size: 0.7rem; }
+  .player-coins { margin-left: 0; font-size: var(--text-body); }
+  .player-coins .icon { width: 1.4rem; height: 1.4rem; }
+}
+

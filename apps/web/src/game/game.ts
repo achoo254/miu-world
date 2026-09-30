@@ -16,6 +16,7 @@ import {
 import { blockLookup } from '@miu/voxel/block-table';
 import type { SolidAt } from '@miu/voxel/grid-collision';
 import { entitiesForChapter } from '@miu/voxel/world-entities';
+import { UI_ICONS, assetUrl } from '../ui/kit/ui-art';
 import type { GameStore } from '../game-bridge/game-store';
 import { AssetRegistry, GuardedGltfLoader } from './asset-loader';
 import { createReviewShot } from './debug/review-shots';
@@ -74,16 +75,23 @@ function buildDom(host: HTMLElement) {
   joystick.setAttribute('aria-label', 'Joystick di chuyển');
   joystick.append(div('knob'));
   const actions = div('actions', 'actions');
-  const button = (id: string, text: string): HTMLButtonElement => {
+  const button = (id: string, text: string, icon: string): HTMLButtonElement => {
     const b = document.createElement('button');
     b.type = 'button';
     b.id = id;
-    b.textContent = text;
     b.dataset.id = `game-${id}`;
+    b.setAttribute('aria-label', text);
+    const img = document.createElement('img');
+    img.src = assetUrl(icon);
+    img.alt = '';
+    img.draggable = false;
+    const label = document.createElement('span');
+    label.textContent = text;
+    b.append(img, label);
     return b;
   };
-  const run = button('btn-run', 'Chạy');
-  const jump = button('btn-jump', 'Nhảy');
+  const run = button('btn-run', 'Chạy', UI_ICONS.runningShoe);
+  const jump = button('btn-jump', 'Nhảy', UI_ICONS.kangaroo);
   actions.append(run, jump);
   root.append(stats, joystick, actions);
   host.append(root);
@@ -281,7 +289,7 @@ export class Game {
     let interactRequested = false;
     const byId = new Map(targets.map((t) => [t.def.id, t]));
     const arrow = createTargetArrow();
-    scene.add(arrow.mesh);
+    scene.add(arrow.root);
     let hint: InteractableObject | null = null;
     this.cleanups.push(
       store.onCommand((command) => {
@@ -338,7 +346,7 @@ export class Game {
 
       for (const target of targets) target.update(dt);
       arrow.update(dt, controller.position, hint?.available ? hint.def : null);
-      overlay.stats.hintTarget = arrow.mesh.visible ? (hint?.def.id ?? null) : null;
+      overlay.stats.hintTarget = arrow.showing ? (hint?.def.id ?? null) : null;
       const nearest = pickNearest(targets, controller.position);
       if (nearest !== promptTarget) {
         promptTarget = nearest;

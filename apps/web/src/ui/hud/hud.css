@@ -24,19 +24,20 @@
 .hud-top-right {
   position: fixed;
   top: var(--space-sm);
-  right: var(--space-sm);
+  right: calc(var(--space-sm) + env(safe-area-inset-right, 0px));
   z-index: var(--z-hud);
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   justify-content: flex-end;
   gap: var(--space-xs);
-  max-width: 60vw;
 }
+.hud-top-left { left: calc(var(--space-sm) + env(safe-area-inset-left, 0px)); }
+.hud-tracker-quest, .hud-tracker-step { overflow-wrap: anywhere; }
 /* Above the game's Run / Jump buttons (bottom right, game.css). */
 .hud-interact {
   position: fixed;
-  right: 1.5rem;
-  bottom: 8.5rem;
+  right: calc(1.25rem + env(safe-area-inset-right, 0px));
+  bottom: calc(10.5rem + env(safe-area-inset-bottom, 0px));
   z-index: var(--z-hud);
   display: inline-flex;
   align-items: center;
@@ -56,3 +57,39 @@
   touch-action: manipulation;
 }
 .hud-interact:focus-visible { box-shadow: var(--focus-ring); outline: none; }
+
+/* iPad in portrait and narrower: the menu buttons stack icon over a small label, so the badge and the
+   buttons share one row. */
+@media (max-width: 900px) {
+  .hud-top-right .btn {
+    flex-direction: column;
+    gap: 0;
+    min-width: 4.5rem;
+    min-height: 3.75rem;
+    padding: var(--space-xs) var(--space-sm);
+    font-size: var(--text-sm);
+    line-height: 1.1;
+  }
+  .hud-top-right .btn .icon { width: 1.75rem; height: 1.75rem; }
+}
+
+/* Phones: icon-only buttons in a 2 × 2 block, a smaller tracker, a lower Interact button. */
+@media (max-width: 600px) {
+  .hud-top-right { display: grid; grid-template-columns: repeat(2, auto); gap: var(--space-xs); }
+  .hud-top-right .btn { min-width: 2.9rem; min-height: 2.9rem; padding: var(--space-xs); border-radius: var(--radius-field); }
+  .hud-top-right .btn .icon { width: 1.6rem; height: 1.6rem; }
+  .hud-btn-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  .hud-tracker { max-width: min(14rem, calc(100vw - 8.5rem)); padding: var(--space-xs) var(--space-sm); font-size: var(--text-sm); }
+  .hud-tracker-kicker { font-size: 0.75rem; }
+  .hud-tracker-quest { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .hud-tracker-step { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .hud-interact { min-height: 3.25rem; padding: var(--space-xs) var(--space-md); font-size: var(--text-body); bottom: calc(8.25rem + env(safe-area-inset-bottom, 0px)); right: calc(0.75rem + env(safe-area-inset-right, 0px)); }
+}
+

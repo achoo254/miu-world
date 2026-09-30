@@ -78,19 +78,19 @@ export function Hud({
       <nav className="hud-top-right" aria-label="Menu trò chơi">
         <Link to={quest ? `/region/${quest.quest.region}` : '/map'} className={buttonClass('secondary', { small: true })} data-id="hud-quests">
           <Icon name="scroll" size={28} />
-          Nhiệm vụ
+          <span className="hud-btn-label">Nhiệm vụ</span>
         </Link>
         <Link to="/map" className={buttonClass('secondary', { small: true })} data-id="hud-map">
           <Icon name="map" size={28} />
-          Bản đồ
+          <span className="hud-btn-label">Bản đồ</span>
         </Link>
         <button type="button" className={buttonClass('secondary', { small: true })} data-id="hud-backpack" onClick={onBackpack}>
           <Icon name="backpack" size={28} />
-          Ba lô
+          <span className="hud-btn-label">Ba lô</span>
         </button>
         <button type="button" className={buttonClass('primary', { small: true })} data-id="hud-menu" onClick={onMenu}>
           <Icon name="pause" size={28} />
-          Menu
+          <span className="hud-btn-label">Menu</span>
         </button>
       </nav>
       {covered ? null : <InteractButton />}
