@@ -4,7 +4,8 @@
 // layer) → the ancient tree → 100 XP, Level Up 1 → 2, chapter 2 unlocked → the Lá thần in the Backpack.
 // Along the way: nothing leaves the origin, CSP is on every page, and no API response except the
 // support endpoint carries answer text.
-import { readdirSync, readFileSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
+import { mkdirSync, readdirSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { expect, test, type Page } from '@playwright/test';
@@ -15,6 +16,18 @@ import { tap, touchDrag } from './touch';
 test.use({ storageState: { cookies: [], origins: [] }, viewport: { width: 820, height: 1180 }, hasTouch: true });
 
 const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../..');
+// REVIEW_SHOTS=1 saves one picture per screen for the final review page (then `pnpm assets:manifest`).
+const REVIEW_SHOTS = process.env.REVIEW_SHOTS === '1';
+const SHOT_DIR = path.join(REPO_ROOT, 'assets/generated/review/mvp');
+async function shot(page: Page, name: string): Promise<void> {
+  if (!REVIEW_SHOTS) return;
+  mkdirSync(SHOT_DIR, { recursive: true });
+  await page.screenshot({ path: path.join(SHOT_DIR, `${name}.png`), animations: 'disabled' });
+}
+test.afterAll(() => {
+  // New screenshots must be hashed into the manifest or the license gate goes red.
+  if (REVIEW_SHOTS) execFileSync('pnpm', ['-s', 'assets:manifest'], { cwd: REPO_ROOT, stdio: 'inherit', shell: true });
+});
 
 /** Answer-layer text of every quest: only POST …/support with layer "answer" may carry it. */
 function answerTexts(): string[] {
@@ -93,12 +106,15 @@ test('one child plays the whole MVP loop by touch, from Google sign-in to the L�
   await tap(page, '[data-id="creator-item-hat-cap-yellow"]');
   await expect.poll(() => page.evaluate(() => window.__miuPreview?.outfit ?? null)).toEqual(['hat-cap-yellow']);
   await page.getByLabel('Tên nhân vật').selectOption('Bông');
+  await shot(page, '01-creator');
   await tap(page, '[data-id="creator-save"]');
 
   // Home → the forest → chapter 1.
   await expect(page).toHaveURL(/\/home$/);
   await expect(page.locator('[data-id="player-level"]')).toHaveText('Lv.1');
+  await shot(page, '02-home');
   await tap(page, '[data-id="home-region-khu-rung-bi-mat"]');
+  await shot(page, '03-region');
   await tap(page, '[data-id="region-play-forest-ch1"]');
   await expect(page).toHaveURL(/\/play\?/);
   await waitReady(page);
@@ -109,6 +125,7 @@ test('one child plays the whole MVP loop by touch, from Google sign-in to the L�
   await goTo(page, 'parrot-guide');
   await tap(page, '[data-id="hud-interact"]');
   await expect(page.locator('[data-id="dialogue-line"]')).toContainText('Chào Bông!');
+  await shot(page, '04-dialogue');
   await finishDialogue(page);
   for (const [i, clue] of ['clue-box', 'clue-letter', 'clue-mushroom'].entries()) {
     await goTo(page, clue);
@@ -117,6 +134,7 @@ test('one child plays the whole MVP loop by touch, from Google sign-in to the L�
     if (i < 2) await expect(page.locator('[data-id="hud-tracker-count"]')).toHaveText(new RegExp(`${i + 1}/3`));
   }
   await expect(page.locator('[data-id="read-passage"]')).toBeVisible();
+  await shot(page, '05-letter');
   await tap(page, '[data-id="choice-b"]');
   await tap(page, '[data-id="challenge-check"]');
   await expect(page.locator('[data-id="challenge"]')).toHaveCount(0);
@@ -128,10 +146,12 @@ test('one child plays the whole MVP loop by touch, from Google sign-in to the L�
   await tap(page, '[data-id="hud-interact"]');
   for (let i = 1; i <= 10; i += 1) await touchDrag(page, `[data-id="piece-apple-${i}"]`, '[data-id="drag-container"]');
   await expect(page.locator('[data-id="drag-count"]')).toHaveText('10');
+  await shot(page, '06-drag-drop');
   await tap(page, '[data-id="challenge-check"]');
   await expect(page.locator('[data-id="challenge"]')).toHaveCount(0);
   await tap(page, '[data-id="hud-interact"]');
   await tap(page, '[data-id="choice-b"]');
+  await shot(page, '07-quiz');
   await tap(page, '[data-id="challenge-check"]');
   await expect(page.locator('[data-id="challenge"]')).toHaveCount(0);
 
@@ -142,6 +162,7 @@ test('one child plays the whole MVP loop by touch, from Google sign-in to the L�
     await tap(page, `[data-id="stone-${stone}"]`);
     await tap(page, `[data-id="slot-${i}"]`);
   }
+  await shot(page, '08-sort');
   await tap(page, '[data-id="challenge-check"]');
   await expect(page.locator('[data-id="challenge"]')).toHaveCount(0);
 
@@ -151,6 +172,7 @@ test('one child plays the whole MVP loop by touch, from Google sign-in to the L�
   await finishDialogue(page);
   await tap(page, '[data-id="hud-interact"]');
   for (const digit of ['1', '3']) await page.getByRole('button', { name: digit, exact: true }).tap();
+  await shot(page, '09-riddle');
   await tap(page, '[data-id="challenge-check"]');
   await expect(page.locator('[data-id="challenge"]')).toHaveCount(0);
 
@@ -159,8 +181,10 @@ test('one child plays the whole MVP loop by touch, from Google sign-in to the L�
   await tap(page, '[data-id="hud-interact"]');
   await expect(page.locator('[data-id="reward-stars"]')).toHaveAttribute('data-stars', '3');
   await expect(page.locator('[data-id="reward-xp"]')).toHaveText(/\+100 XP/);
+  await shot(page, '10-reward');
   await tap(page, '[data-id="completion-next"]');
   await expect(page.locator('[data-id="level-up"]')).toContainText('Lv.1 → Lv.2');
+  await shot(page, '11-level-up');
   await tap(page, '[data-id="completion-next"]');
   await expect(page.locator('[data-id="unlock-forest-ch2"]')).toBeVisible();
   await tap(page, '[data-id="completion-map"]');
@@ -172,6 +196,7 @@ test('one child plays the whole MVP loop by touch, from Google sign-in to the L�
   await expect(page.locator('body')).not.toContainText('Kim cương'); // no diamonds in the MVP (§15 #6)
   await tap(page, '[data-id="home-nav-backpack"]');
   await expect(page.locator('[data-id="backpack-item-la-than"]')).toBeVisible();
+  await shot(page, '12-backpack');
 
   // The review page keeps the same rules.
   await page.goto('/review.html');

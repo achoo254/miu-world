@@ -37,11 +37,26 @@ interface PerfReport {
 const EXTRA_CLIPS = ['wave', 'jump', 'yawn', 'cheer'];
 const CLIP_LABEL: Record<string, string> = { wave: 'Vẫy tay', jump: 'Nhảy', yawn: 'Ngáp', cheer: 'Vui mừng', walk: 'Đi', sprint: 'Chạy' };
 const DECISIONS = [
-  { id: 'palette', label: 'Bảng màu block pastel ấm', fallback: 'Quay lại bảng màu POC' },
-  { id: 'accessories', label: 'Mũ, balo co theo biến thể', fallback: 'Giữ cỡ phụ kiện cũ' },
-  { id: 'account', label: 'Luồng tài khoản phụ huynh, hồ sơ trẻ, cổng PIN', fallback: 'Đơn giản hơn (ghi rõ ở ghi chú)' },
-  { id: 'play', label: 'Chơi thử trong app web (điều khiển, nhãn Vẹt)', fallback: 'Ghi vấn đề ở ghi chú' },
+  { id: 'loop', label: 'Vòng chơi chương 1 (câu chuyện, thứ tự bước, độ dài)', fallback: 'Ghi chỗ cần đổi ở ghi chú' },
+  { id: 'creator', label: 'Tạo nhân vật: đồ mới, biến thể màu, đồ mở theo level/quest', fallback: 'Ghi món cần đổi ở ghi chú' },
+  { id: 'home', label: 'Home là màn trên ảnh đảo render sẵn (không phải cảnh 3D)', fallback: 'Cần cảnh đảo 3D sớm hơn' },
+  { id: 'challenges', label: '3 thử thách Toán và ba lớp hỗ trợ trên iPad', fallback: 'Ghi thử thách khó dùng ở ghi chú' },
+  { id: 'rewards', label: 'Màn thưởng, lên cấp, mở khóa; xem Đáp án còn 90 XP', fallback: 'Đổi mức giảm XP (ghi rõ)' },
 ];
+const MVP_STEPS: Record<string, string> = {
+  '01-creator': 'Tạo nhân vật: đổi mũ thấy ngay trên nhân vật voxel, chọn tên (M1.3)',
+  '02-home': 'Home: đảo, khu vực mở/khóa, nhiệm vụ hôm nay, Lv/XP/Xu (M1.1)',
+  '03-region': 'Khu rừng bí mật: chương, tiến độ, Khám phá ngay (M1.4, M2.1)',
+  '04-dialogue': 'Hội thoại với Vẹt, gọi bé bằng tên nhân vật (M3.3)',
+  '05-letter': 'Đọc lá thư: câu hỏi đọc hiểu',
+  '06-drag-drop': 'Kéo 10 quả táo vào giỏ bằng tay (M2.4)',
+  '07-quiz': 'Trắc nghiệm chia kẹo (M2.6)',
+  '08-sort': 'Xếp đá qua suối từ bé đến lớn (M2.5)',
+  '09-riddle': 'Câu đố cây cổ thụ 8 + 5, bàn phím số (M3.4)',
+  '10-reward': 'Hoàn thành: 3 sao, +100 XP, Xu, Lá thần, Skill XP (M2.9)',
+  '11-level-up': 'Lên cấp Lv.1 → Lv.2 (NEW SCREEN)',
+  '12-backpack': 'Ba lô có Lá thần (M3.5)',
+};
 const UI_STEPS: Record<string, string> = {
   '01-login': 'Đăng nhập phụ huynh: chỉ nút Google',
   '02-set-pin': 'Sau khi đăng nhập Google lần đầu: đặt PIN phụ huynh',
@@ -95,6 +110,7 @@ function renderGallery(generated: string[]): void {
     byId('character-base').append(figure(p, name(p).replace('miu-cat-anim-', '')));
   }
   for (const p of reviewPaths.filter((x) => x.includes('/review/ui/')).sort()) byId('account-flow').append(figure(p, UI_STEPS[name(p)] ?? name(p)));
+  for (const p of reviewPaths.filter((x) => x.includes('/review/mvp/')).sort()) byId('mvp-flow').append(figure(p, MVP_STEPS[name(p)] ?? name(p)));
   const accessoryCaption = (key: string): string => {
     if (key.startsWith('miu-outfit-turn-')) return `Trọn bộ · góc ${key.split('-').pop() ?? ''}°`;
     if (key.startsWith('miu-variant-')) return `Biến thể màu: ${key.replace('miu-variant-', '').replace('-', ' + ')}`;

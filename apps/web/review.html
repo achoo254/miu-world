@@ -4,33 +4,64 @@
     <meta charset="UTF-8" />
     <link rel="icon" href="data:," />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Miu World · Duyệt đợt Foundation</title>
+    <title>Miu World · Duyệt vertical slice MVP</title>
   </head>
   <body>
     <main id="review" data-id="review">
       <header class="hero" data-id="review-hero">
-        <h1>Duyệt đợt Foundation · Miu World</h1>
-        <p>Một lần duyệt cho cả đợt: tài khoản phụ huynh và hồ sơ trẻ, game chạy trong app web, Miu chibi (biến thể A đã chọn), bảng màu block mới, báo cáo bảo mật, dependency mới, hiệu năng và bảng license.</p>
+        <h1>Duyệt vertical slice MVP · Miu World</h1>
+        <p>Một vòng chơi trọn vẹn ở Khu rừng bí mật chương 1: tạo nhân vật, Home, khám phá, hội thoại NPC, nhận nhiệm vụ, 3 thử thách Toán có hỗ trợ học, thưởng, lên cấp và mở khóa do server tính, ba lô và bộ sưu tập. Kèm hiệu năng, báo cáo bảo mật, bảng license và các việc cần người.</p>
         <ol class="steps" data-id="review-steps">
-          <li>Mở <a href="./login" data-id="review-login">Đăng nhập bằng Google</a> (tài khoản Gmail của phụ huynh; máy chủ chỉ nhận email đã xác minh và mã tài khoản Google), đặt mã PIN, đồng ý, tạo một hồ sơ, chọn hồ sơ đó.</li>
-          <li>Bấm một nút <b>Chơi thử</b> bên dưới. Trên iPad Gen 10 dùng mức <b>Vừa</b>, đi dạo 2–3 phút rồi ghi FPS (góc trái trên) vào mục Quyết định.</li>
-          <li>Cho ý kiến từng mục, bấm <b>Sao chép kết quả duyệt</b> và gửi lại.</li>
+          <li>Đăng nhập, đặt PIN, đồng ý, tạo một hồ sơ và chọn hồ sơ đó. Trên iPad qua mạng LAN, bản duyệt bật đăng nhập mật khẩu thử (<code>PASSWORD_LOGIN=1</code>, dữ liệu giả) vì Google chỉ nhận https hoặc <code>localhost</code>.</li>
+          <li>Hồ sơ mới vào <b>Tạo nhân vật</b>: đổi mũ, chọn tên, <b>Vào thế giới</b>. Từ <b>Home</b> chạm Khu rừng bí mật → Chương 1 → <b>Khám phá ngay</b>, chơi hết chương (đi theo mũi tên vàng, nút <b>Tương tác</b> khi đứng gần).</li>
+          <li>Trên iPad Gen 10 chơi ở mức <b>Vừa</b> 15 phút rồi điền mục DEVICE-01. Cho ý kiến từng mục, bấm <b>Sao chép kết quả duyệt</b> và gửi lại.</li>
         </ol>
         <nav class="play" data-id="review-play">
+          <a data-id="review-home" href="./home">Vào Home</a>
           <a data-id="review-play-low" href="./play?quality=low">Chơi thử · Thấp</a>
           <a data-id="review-play-mid" href="./play?quality=mid">Chơi thử · Vừa</a>
-          <a data-id="review-play-high" href="./play?quality=high">Chơi thử · Cao</a>
+          <a data-id="review-play-high" href="./play?quality=high&amp;stats=1">Chơi thử · Cao (hiện FPS)</a>
         </nav>
-        <p class="hint">Trên máy tính bảng: joystick trái để đi, nút <b>Chạy</b>/<b>Nhảy</b> bên phải, vuốt màn hình để xoay camera, chạm nhãn Vẹt khi đứng gần. Góc trái trên hiện FPS, draw call, tam giác.</p>
+        <p class="hint">Trên máy tính bảng: joystick trái để đi, <b>Chạy</b>/<b>Nhảy</b>/<b>Tương tác</b> bên phải, vuốt để xoay camera, <b>Menu</b> để tạm dừng. Thêm <code>&amp;stats=1</code> vào địa chỉ <code>/play</code> để hiện FPS, draw call, tam giác.</p>
       </header>
 
       <section data-id="review-decision">
         <h2>Quyết định</h2>
         <div id="decisions" class="decisions"></div>
-        <label class="note">FPS trên iPad Gen 10 (mức Vừa, sau 2–3 phút) <input id="ipad-fps" data-id="review-ipad-fps" inputmode="decimal" placeholder="VD: 42" /></label>
+        <label class="note">FPS trên iPad Gen 10 (mức Vừa, sau 15 phút) <input id="ipad-fps" data-id="review-ipad-fps" inputmode="decimal" placeholder="VD: 42" /></label>
         <label class="note">Ghi chú thêm <textarea id="decision-note" rows="3" placeholder="VD: mũ cần to hơn, FPS trên máy X là ..."></textarea></label>
         <button id="copy-decision" data-id="review-decision-copy" type="button">Sao chép kết quả duyệt</button>
         <output id="copy-status"></output>
+      </section>
+
+      <section data-id="review-mvp">
+        <h2>Vòng MVP: tạo nhân vật → Home → khu rừng → thưởng</h2>
+        <p class="sub">Ảnh chụp tự động từ E2E <code>mvp-loop</code> trên khung iPad Gen 10 (820×1180) có cảm ứng, dữ liệu giả; cả vòng chạy bằng chạm và kéo thật. Bám mock M1.1–M1.4, M2.4–M2.9, M3.2–M3.5; màn Tạm dừng, Đang tải, Mất mạng, Lên cấp, Mở khóa là NEW SCREEN.</p>
+        <div id="mvp-flow" class="grid grid-4"></div>
+      </section>
+
+      <section data-id="review-learning">
+        <h2>Nội dung học chờ giáo viên duyệt</h2>
+        <p class="sub">Soạn bằng AI, đánh dấu <code>review: "teacher-pending"</code> trong <code>content/quests/forest-ch1.json</code>. Giáo viên duyệt câu chữ, đáp án, ba lớp Hướng dẫn · Gợi ý · Đáp án và câu phản hồi đúng/sai trước khi tới trẻ.</p>
+        <ul class="debts">
+          <li>Đọc lá thư (đọc hiểu): ai sẽ chỉ đường cho bé.</li>
+          <li>Hái 10 quả táo (kéo thả, phép cộng): kéo đúng 10 quả vào giỏ.</li>
+          <li>Chia kẹo với Hải ly (trắc nghiệm, phép trừ): 8 − 3.</li>
+          <li>Qua suối (sắp xếp, so sánh số): 9, 15, 27, 34 từ bé đến lớn.</li>
+          <li>Câu đố cây cổ thụ (phép cộng): 8 + 5.</li>
+        </ul>
+      </section>
+
+      <section data-id="review-device">
+        <h2>DEVICE-01: đo trên iPad Gen 10 (việc của người)</h2>
+        <p class="sub">Số trên trang này là giả lập trên máy tính. Trước nghiệm thu MVP cần đo trên máy thật.</p>
+        <ul class="debts">
+          <li>FPS sau 15 phút ở mức Thấp, Vừa, Cao (thêm <code>&amp;stats=1</code>); ngân sách ≥ 30 FPS ở mức Vừa.</li>
+          <li>Nhiệt độ máy và % pin tụt sau 15 phút chơi mức Vừa.</li>
+          <li>Safari: kéo quả táo vào giỏ và kéo đá bằng ngón tay, trang không cuộn/phóng to; chạm-chọn thay thế hoạt động.</li>
+          <li>"Nghe lại": chỉ hiện khi máy có giọng tiếng Việt cục bộ.</li>
+          <li>Tạm dừng làm game đứng yên; mở lại tab sau khi để nền vài phút không vỡ (mất đồ họa thì có nút Tải lại).</li>
+        </ul>
       </section>
 
       <section data-id="review-account">
@@ -82,6 +113,7 @@
           <article><h3>Cổng phụ huynh</h3><p>Tạo, đổi tên, xóa hồ sơ và đồng ý cần PIN 4–6 số (scrypt), mở 15 phút; chọn hồ sơ cho trẻ chơi thì khóa lại. Sai 5 lần thì khóa PIN (chống đoán song song), mở lại bằng mật khẩu.</p></article>
           <article><h3>Chống gian lận</h3><p>Server tính mọi thưởng từ dữ liệu quest; giá trị client gửi bị bỏ qua. Hoàn thành bước là idempotent, sai thứ tự hoặc quest chưa mở trả 409, gọi đồng thời chỉ ghi một dòng sổ thưởng; test chuỗi thao tác ngẫu nhiên có seed đối chiếu tổng. Không có Kim cương.</p></article>
           <article><h3>Dữ liệu trẻ</h3><p>Không thu tên thật, tuổi, lớp, trường, email của trẻ. Xóa hồ sơ là xóa hẳn mọi dữ liệu (có test đếm từng bảng). Log chỉ id; lỗi trả client chỉ mã lỗi.</p></article>
+          <article><h3>Vertical slice</h3><p>Bảng endpoint đọc từ app: mọi route ngoài danh sách công khai (có lý do) trả 401 khi không đăng nhập; route có <code>:id</code> trả 404 cho phụ huynh khác. Đáp án và ba lớp hỗ trợ chỉ ở server; <code>pnpm security:dist</code> (CI) quét bundle web không có văn bản lớp Đáp án; E2E <code>mvp-loop</code> kiểm mọi response API trừ <code>…/support</code>, CSP trên <code>/</code>, <code>/create</code>, <code>/play</code>, <code>/review.html</code> và không request ngoài origin. Đồ khóa theo level/quest do server kiểm (403). Dữ liệu chơi của trẻ chỉ là bộ đếm theo bước (test schema). "Nghe lại" chỉ dùng giọng trên máy, không gửi văn bản ra ngoài.</p></article>
           <article><h3>Quét tự động</h3><p id="security-scans">Chạy ngày 29/09/2026 trên máy dev: <code>pnpm audit --prod --audit-level=high</code> không có lỗ hổng; Semgrep CE 1.178.0 (<code>p/typescript</code> + <code>p/nodejs</code>, 98 file trong <code>apps/</code>, <code>packages/</code>) 0 phát hiện — bằng chứng: <code>plans/dattqh/reports/semgrep-260929-local-scan.md</code>. CI chạy lại cả hai trên mỗi push.</p></article>
         </div>
         <h3>Nợ trước khi có người dùng thật</h3>
@@ -95,7 +127,7 @@
 
       <section data-id="review-deps">
         <h2>Dependency mới của đợt</h2>
-        <p class="sub">Khóa phiên bản trong <code>pnpm-lock.yaml</code>; <code>pnpm audit --prod</code> chạy trong CI.</p>
+        <p class="sub">Đợt vertical slice <b>không thêm dependency</b> (chỉ thêm script <code>assets:home</code>, <code>security:dist</code>, <code>e2e:ci</code>). Bảng dưới là dependency của đợt Foundation. Khóa phiên bản trong <code>pnpm-lock.yaml</code>; <code>pnpm audit --prod</code> chạy trong CI.</p>
         <div class="table-wrap"><table>
           <thead><tr><th>Gói</th><th>Dùng ở</th><th>Để làm gì</th><th>License</th></tr></thead>
           <tbody>
