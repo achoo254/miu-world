@@ -18,10 +18,16 @@ export const QUEST_PHASES = ['hook', 'explore', 'learn', 'challenge', 'decision'
 
 /** Where the step happens on the map: an entity id the player interacts with or walks into. */
 const StepTrigger = z.enum(['interact', 'enter-zone', 'auto']);
+/**
+ * Tracker line while the child walks to the step's place ("Đi tới bảng gỗ lớp Hai…"); the title stays
+ * the heading of the scene once there. Textbook quests need one whenever the place changes.
+ */
+const GoTo = Text.optional();
 const stepBase = {
   id: ContentId,
-  /** Short line for the quest tracker. */
+  /** Short line for the quest tracker, and the heading of the step's scene. */
   title: Text,
+  goTo: GoTo,
   target: ContentId.optional(),
   trigger: StepTrigger.default('interact'),
 };
@@ -67,7 +73,7 @@ const dialogueShape = {
 };
 
 /** Find every target, in any order. */
-const searchShape = { id: ContentId, title: Text, kind: z.literal('search'), targets: z.array(ContentId).min(1) };
+const searchShape = { id: ContentId, title: Text, goTo: GoTo, kind: z.literal('search'), targets: z.array(ContentId).min(1) };
 
 const readShape = {
   ...stepBase,
@@ -416,6 +422,11 @@ const questFields = {
     unlock: ContentId,
   }),
   texts: z.record(ContentId, QuestText).default({}),
+  /**
+   * Where each target stands, and the area of each search step, as the tracker names it ("cổng rừng").
+   * Targets sharing a place share the name. Authoring only: the client gets the `goTo` lines.
+   */
+  places: z.record(ContentId, Text).default({}),
   steps: z.array(QuestStep).min(1),
   reward: RewardSpec,
   /**
@@ -425,7 +436,39 @@ const questFields = {
   unlock: z.array(ContentId).default([]),
 };
 
-function questIssues(q: { id: string; phases: Record<(typeof QUEST_PHASES)[number], string>; steps: QuestStep[]; texts: Record<string, QuestText> }): string[] {
+/**
+ * A textbook quest says where to go: every step the child walks to has a place, and a step whose place
+ * differs from the last one's has a `goTo` line naming it.
+ */
+function wayfindingIssues(steps: readonly QuestStep[], places: Readonly<Record<string, string>>): string[] {
+  const issues: string[] = [];
+  const known = new Set(steps.flatMap((s) => [...stepTargets(s), ...(s.kind === 'search' ? [s.id] : [])]));
+  for (const key of Object.keys(places)) if (!known.has(key)) issues.push(`places names ${key}, which is neither a target nor a search step`);
+  let last: string | null = null;
+  for (const step of steps) {
+    const walked = step.kind === 'search' || (step.trigger !== 'auto' && step.target !== undefined);
+    if (!walked) continue;
+    const key = step.kind === 'search' ? step.id : (step.target ?? '');
+    const place = places[key];
+    if (!place) {
+      issues.push(`step ${step.id}: ${key} has no place in "places"`);
+      continue;
+    }
+    if (place !== last && !step.goTo?.toLocaleLowerCase('vi').includes(place.toLocaleLowerCase('vi'))) {
+      issues.push(`step ${step.id}: the place changes to "${place}", so it needs a goTo line naming it`);
+    }
+    last = place;
+  }
+  return issues;
+}
+
+function questIssues(q: {
+  id: string;
+  phases: Record<(typeof QUEST_PHASES)[number], string>;
+  steps: QuestStep[];
+  texts: Record<string, QuestText>;
+  places: Record<string, string>;
+}): string[] {
   const issues: string[] = [];
   const ids = q.steps.map((s) => s.id);
   if (!uniqueIds(ids)) issues.push('duplicate step id');
@@ -445,6 +488,7 @@ function questIssues(q: { id: string; phases: Record<(typeof QUEST_PHASES)[numbe
   }
   if (isTextbookQuest(q.id)) {
     for (const step of q.steps) if ('support' in step && !step.feedback) issues.push(`step ${step.id}: a textbook quest step needs feedback lines`);
+    issues.push(...wayfindingIssues(q.steps, q.places));
     const interactive = new Set(q.steps.map(mechanicOf).filter((m) => m !== null && INTERACTIVE_MECHANICS.has(m)));
     if (interactive.size < 2) {
       issues.push('a textbook quest needs at least two different interactive challenges (classify, fill-blank, multi-select, clock, calendar, connect, sort, drag-drop)');

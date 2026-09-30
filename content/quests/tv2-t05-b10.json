@@ -32,10 +32,17 @@
       "section": "tv2-t1-b10-doc"
     }
   },
+  "places": {
+    "tho-ti": "gốc sồi",
+    "voi-bao": "gốc sồi",
+    "bang-go-goc-soi": "gốc sồi",
+    "nhat-do-roi": "lối mòn quanh gốc sồi"
+  },
   "steps": [
     {
       "id": "tho-ti-hot-hoang",
       "title": "Thỏ Tí cuống quýt ở gốc sồi",
+      "goTo": "Chạy tới gốc sồi, Thỏ Tí đang cuống quýt",
       "kind": "dialogue",
       "target": "tho-ti",
       "lines": [
@@ -66,6 +73,7 @@
     {
       "id": "nhat-do-roi",
       "title": "Nhặt đồ Thỏ Tí đánh rơi",
+      "goTo": "Nhặt đồ Thỏ Tí rơi dọc lối mòn quanh gốc sồi",
       "kind": "search",
       "targets": [
         "tv2-t05-thuoc-ke",
@@ -76,6 +84,7 @@
     {
       "id": "cach-biet-mon-hoc",
       "title": "Làm sao biết môn học?",
+      "goTo": "Đem đồ về gốc sồi, Voi Bảo đã tới",
       "kind": "speak",
       "target": "voi-bao",
       "prompt": "Voi Bảo phủi lá khô bám trên chiếc cặp rồi hỏi {name}: Em làm thế nào để biết được các môn học trong ngày, trong tuần?",

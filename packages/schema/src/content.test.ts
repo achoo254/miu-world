@@ -44,6 +44,14 @@ function validQuest() {
   } as Record<string, unknown> & { steps: Record<string, unknown>[] };
 }
 
+/** `validQuest` as a textbook draft, with a place for every target and a goTo line at each change. */
+function textbookQuest() {
+  const quest = { ...validQuest(), id: 'toan2-cd1-b01', status: 'draft', places: { parrot: 'cổng rừng', find: 'bãi cỏ', tree: 'gốc cây' } as Record<string, string> };
+  const goTo: Record<string, string> = { hi: 'Ra cổng rừng gặp Vẹt', find: 'Tìm hộp trên bãi cỏ', riddle: 'Đến gốc cây giải đố' };
+  quest.steps = quest.steps.map((step) => ({ ...step, goTo: goTo[String(step.id)] }));
+  return quest;
+}
+
 const issues = (raw: unknown): string[] => {
   const parsed = QuestDefinition.safeParse(raw);
   return parsed.success ? [] : parsed.error.issues.map((i) => i.message);
@@ -265,19 +273,58 @@ describe('textbook mechanics', () => {
     expect(withStep({ ...pick, feedback })).toEqual([]);
     expect(valid({ ...pick, feedback: { right: ['Đúng'], wrong: feedback.wrong } })).toBe(false);
     expect(withStep({ ...pick, feedback: { ...feedback, wrong: ['Đúng rồi!', 'x', 'y'] } })).toEqual(['feedback line "Đúng rồi!" is used twice in the quest']);
-    const textbook = { ...validQuest(), id: 'toan2-cd1-b01', status: 'draft' };
+    const textbook = textbookQuest();
+    textbook.places = { ...textbook.places, x: 'gốc cây' };
     textbook.steps.push({ ...pick, feedback }, { ...challenge, id: 'k', mechanic: 'clock', mode: 'set', display: 'analog', answer: { hour: 8, minute: 0 } });
     expect(issues(textbook)).toEqual(['step riddle: a textbook quest step needs feedback lines', 'step k: a textbook quest step needs feedback lines']);
   });
 
   it('a textbook quest needs two different interactive challenges, not search or riddles', () => {
-    const quest = { ...validQuest(), id: 'toan2-cd1-b01', status: 'draft' };
+    const quest = textbookQuest();
     expect(issues(quest).filter((m) => !m.includes('feedback'))).toEqual([
       'a textbook quest needs at least two different interactive challenges (classify, fill-blank, multi-select, clock, calendar, connect, sort, drag-drop)',
     ]);
     quest.steps.push({ ...challenge, id: 'm', mechanic: 'multi-select', choices, answer: { choices: ['a'] } });
     quest.steps.push({ ...challenge, id: 'k', mechanic: 'clock', mode: 'set', display: 'analog', answer: { hour: 8, minute: 0 } });
+    quest.places = { ...quest.places, x: 'gốc cây' };
     expect(issues(quest).filter((m) => !m.includes('feedback'))).toEqual([]);
+  });
+});
+
+describe('textbook wayfinding', () => {
+  const noMechanicRule = (m: string) => !m.includes('feedback') && !m.includes('interactive challenges');
+
+  it('names where to go each time the place changes, and only then', () => {
+    expect(issues(textbookQuest()).filter(noMechanicRule)).toEqual([]);
+    // The box lies at the gate too: walking on from Vẹt to the box needs no goTo.
+    const same = textbookQuest();
+    same.places = { ...same.places, find: 'cổng rừng' };
+    same.steps = same.steps.map((step) => (step.id === 'find' ? { ...step, goTo: undefined } : step));
+    expect(issues(same).filter(noMechanicRule)).toEqual([]);
+    // Back at a place after going elsewhere, the child is told again.
+    const back = textbookQuest();
+    back.places = { ...back.places, tree: 'cổng rừng' };
+    back.steps = back.steps.map((step) => (step.id === 'riddle' ? { ...step, goTo: 'Đi tiếp nào' } : step));
+    expect(issues(back).filter(noMechanicRule)).toEqual(['step riddle: the place changes to "cổng rừng", so it needs a goTo line naming it']);
+  });
+
+  it('flags a missing place, a goTo that does not name the place, and a place for nothing', () => {
+    const quest = textbookQuest();
+    quest.places = { find: 'bãi cỏ', tree: 'gốc cây', ghost: 'hang đá' };
+    quest.steps = quest.steps.map((step) => (step.id === 'riddle' ? { ...step, goTo: 'Đi tiếp nào' } : step));
+    expect(issues(quest).filter(noMechanicRule)).toEqual([
+      'places names ghost, which is neither a target nor a search step',
+      'step hi: parrot has no place in "places"',
+      'step riddle: the place changes to "gốc cây", so it needs a goTo line naming it',
+    ]);
+  });
+
+  it('asks nothing of quests outside the textbook, and nothing of steps that start by themselves', () => {
+    expect(issues(validQuest())).toEqual([]);
+    const quest = textbookQuest();
+    quest.steps = quest.steps.map((step) => (step.id === 'hi' ? { ...step, target: undefined, trigger: 'auto', goTo: undefined } : step));
+    quest.places = { find: 'bãi cỏ', tree: 'gốc cây' };
+    expect(issues(quest).filter(noMechanicRule)).toEqual([]);
   });
 });
 

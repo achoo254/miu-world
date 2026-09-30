@@ -26,10 +26,15 @@
     "unlock": "mo-tia-so"
   },
   "texts": {},
+  "places": {
+    "su-tu-vang": "cột cờ",
+    "khi-lanh": "sân bóng"
+  },
   "steps": [
     {
       "id": "bang-so-bay-mat",
       "title": "Bảng số bị gió thổi",
+      "goTo": "Đến cột cờ giữa sân trường, Sư Tử Vàng đang chờ",
       "kind": "dialogue",
       "target": "su-tu-vang",
       "lines": [
@@ -692,6 +697,7 @@
     {
       "id": "doi-bong-xep-hang",
       "title": "Đội bóng xếp hàng",
+      "goTo": "Chạy ra sân bóng, Khỉ Lanh gọi cả đội xếp hàng",
       "kind": "dialogue",
       "target": "khi-lanh",
       "lines": [
@@ -836,6 +842,7 @@
     {
       "id": "so-chuc-don-vi",
       "title": "Số chục, số đơn vị",
+      "goTo": "Quay về cột cờ, bảng số vẫn còn chỗ trống",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "target": "su-tu-vang",

@@ -33,10 +33,19 @@
       "section": "tv2-t1-b02-doc"
     }
   },
+  "places": {
+    "voi-bao": "gốc cây lịch lá",
+    "goc-cay-lich-la": "gốc cây lịch lá",
+    "nhat-to-lich": "bụi hồng, ruộng lúa và bàn học",
+    "tv2-t01-to-lich-ban-hoc": "bàn học bên hốc cây",
+    "tv2-t01-bang-chu-cai": "bảng chữ cái cạnh ruộng lúa",
+    "tv2-t01-hoc-cay": "hốc cây"
+  },
   "steps": [
     {
       "id": "gap-voi-bao",
       "title": "Voi Bảo mất xấp lịch",
+      "goTo": "Tìm Voi Bảo ở gốc cây lịch lá",
       "kind": "dialogue",
       "target": "voi-bao",
       "lines": [
@@ -63,6 +72,7 @@
     {
       "id": "nhat-to-lich",
       "title": "Nhặt ba tờ lịch lá",
+      "goTo": "Nhặt tờ lịch bay tới bụi hồng, ruộng lúa và bàn học",
       "kind": "search",
       "targets": [
         "tv2-t01-to-lich-bui-hong",
@@ -73,6 +83,7 @@
     {
       "id": "ke-viec-hom-qua",
       "title": "Kể chuyện hôm qua",
+      "goTo": "Mang tờ lịch về gốc cây lịch lá cho Voi Bảo",
       "kind": "speak",
       "target": "voi-bao",
       "prompt": "Voi Bảo vuốt phẳng tờ lịch vừa nhặt được rồi quay sang hỏi {name}: Kể lại những việc em đã làm ngày hôm qua.",
@@ -205,6 +216,7 @@
     {
       "id": "loi-dan-cua-bo",
       "title": "Lời bố dặn",
+      "goTo": "Ghé bàn học bên hốc cây xem tờ lịch viết gì",
       "kind": "challenge",
       "mechanic": "quiz",
       "target": "tv2-t01-to-lich-ban-hoc",
@@ -257,6 +269,7 @@
     {
       "id": "hoc-thuoc-long",
       "title": "Thuộc lòng hai khổ thơ",
+      "goTo": "Về lại gốc cây lịch lá đọc thơ cùng Voi Bảo",
       "kind": "speak",
       "target": "voi-bao",
       "prompt": "Voi Bảo muốn cất bài thơ vào trí nhớ thật lâu và rủ {name} cùng học. Học thuộc lòng 2 khổ thơ em thích.",
@@ -378,6 +391,7 @@
     {
       "id": "chu-cai-bi-mo",
       "title": "Bảng chữ cái bị mờ",
+      "goTo": "Sang bảng chữ cái cạnh ruộng lúa, chữ đang mờ dần",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "target": "tv2-t01-bang-chu-cai",
@@ -566,6 +580,7 @@
     {
       "id": "tam-buc-tranh",
       "title": "Tám bức tranh trong hốc cây",
+      "goTo": "Chui vào hốc cây xem tám bức tranh",
       "kind": "challenge",
       "mechanic": "classify",
       "target": "tv2-t01-hoc-cay",
@@ -672,6 +687,7 @@
     {
       "id": "the-gioi-thieu-ban-be",
       "title": "Những tấm thẻ giới thiệu",
+      "goTo": "Voi Bảo vẫy {name} về gốc cây lịch lá",
       "kind": "dialogue",
       "target": "voi-bao",
       "lines": [

@@ -39,10 +39,19 @@
       "section": "tv2-t1-b25-doc"
     }
   },
+  "places": {
+    "ong-vang": "bụi hoa tỉ muội",
+    "ong-hong": "bụi hoa tỉ muội",
+    "ong-nu": "bụi hoa tỉ muội",
+    "tv2-t14-bui-hoa-ti-muoi": "bụi hoa tỉ muội",
+    "tim-chum-hoa": "khắp vườn hoa",
+    "tv2-t14-vach-to-ong": "vách tổ ong"
+  },
   "steps": [
     {
       "id": "gap-ong-vang",
       "title": "Hai chị em ong giận nhau",
+      "goTo": "Tới bụi hoa tỉ muội đầu vườn, hai chị em ong đang giận",
       "kind": "dialogue",
       "target": "ong-vang",
       "lines": [
@@ -73,6 +82,7 @@
     {
       "id": "tim-chum-hoa",
       "title": "Tìm chùm hoa vừa nở",
+      "goTo": "Bay khắp vườn hoa tìm chùm hoa vừa nở",
       "kind": "search",
       "targets": [
         "tv2-t14-chum-hoa-lon",
@@ -82,6 +92,7 @@
     {
       "id": "anh-chi-lam-cho-em",
       "title": "Kể việc anh chị làm cho em",
+      "goTo": "Mang hoa về bụi hoa tỉ muội cho Ong Hồng",
       "kind": "speak",
       "target": "ong-hong",
       "prompt": "Ong Hồng vẫn còn phụng phịu, quay sang hỏi {name}: Nói về những việc anh chị thường làm cho em.",
@@ -421,6 +432,7 @@
     {
       "id": "doan-tranh-hai-anh-em",
       "title": "Đoán bốn tấm tranh sáp",
+      "goTo": "Sang vách tổ ong xem bốn tấm tranh sáp",
       "kind": "speak",
       "target": "tv2-t14-vach-to-ong",
       "prompt": "Làm lành xong, Ong Vàng treo bốn tấm tranh sáp lên vách tổ nhưng chưa kể vội. Dựa vào câu hỏi gợi ý, đoán nội dung của từng tranh.",

@@ -101,6 +101,21 @@ describe('Map and region', () => {
 describe('HUD', () => {
   const data: PlayerData = { character: CHARACTER, progress: PROGRESS, quests: questList(1).quests };
 
+  it('says where to walk when the next step waits at another place', () => {
+    const [first, ...rest] = questList(1).quests;
+    if (!first || first.quest.status !== 'active') throw new Error('fixture has an active first quest');
+    const steps = first.quest.steps.map((step, i) => (i === 1 ? { ...step, goTo: 'Ra bãi cỏ tìm manh mối cùng {name}' } : step));
+    const quest = { ...first, quest: { ...first.quest, steps } };
+    render(
+      <MemoryRouter>
+        <GameStoreContext.Provider value={createGameStore()}>
+          <Hud data={{ ...data, quests: [quest, ...rest] }} quest={quest} onMenu={() => undefined} onBackpack={() => undefined} />
+        </GameStoreContext.Provider>
+      </MemoryRouter>,
+    );
+    expect(document.querySelector('[data-id="hud-tracker-step"]')?.textContent).toBe(`Ra bãi cỏ tìm manh mối cùng ${CHARACTER.name} 0/1`);
+  });
+
   it('tracks the current step, shows Interact only near a target, and does not re-render for events it does not use', () => {
     const store = createGameStore();
     const sent: string[] = [];

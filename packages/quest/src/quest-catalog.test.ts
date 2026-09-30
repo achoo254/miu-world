@@ -25,9 +25,11 @@ function quest(id: string, extra: Record<string, unknown> = {}): QuestDefinition
 }
 /** Textbook quests need two different interactive challenges; phases still point at `find` and `add`. */
 const TEXTBOOK_STEPS = [
-  { id: 'find', title: 'Xếp', kind: 'challenge', mechanic: 'sort', target: 'box', prompt: 'Xếp từ bé đến lớn', skill: 'phep-cong', items: [{ id: 'b', label: '9' }, { id: 'a', label: '3' }], answer: { order: ['a', 'b'] }, support, feedback: { right: ['r1', 'r2', 'r3'], wrong: ['w1', 'w2', 'w3'] } },
+  { id: 'find', title: 'Xếp', goTo: 'Ra bãi cỏ xếp số', kind: 'challenge', mechanic: 'sort', target: 'box', prompt: 'Xếp từ bé đến lớn', skill: 'phep-cong', items: [{ id: 'b', label: '9' }, { id: 'a', label: '3' }], answer: { order: ['a', 'b'] }, support, feedback: { right: ['r1', 'r2', 'r3'], wrong: ['w1', 'w2', 'w3'] } },
   { id: 'add', title: 'Chọn', kind: 'challenge', mechanic: 'multi-select', target: 'tree', prompt: 'Chọn số chẵn', skill: 'phep-cong', choices: [{ id: 'c2', text: '2' }, { id: 'c3', text: '3' }], answer: { choices: ['c2'] }, support, feedback: { right: ['r4', 'r5', 'r6'], wrong: ['w4', 'w5', 'w6'] } },
 ];
+/** Where the textbook steps happen: both on the same patch of grass. */
+const TEXTBOOK_PLACES = { box: 'bãi cỏ', tree: 'bãi cỏ' };
 const stub = (id: string) => QuestDefinition.parse({ id, region: 'r', chapter: 2, title: id, status: 'stub' });
 const skills = new Set(['phep-cong']);
 
@@ -49,7 +51,7 @@ describe('questCatalogReport', () => {
   });
 
   it('checks drafts like active quests but only warns about textbook quests not written yet', () => {
-    const draft = (id: string, extra: Record<string, unknown> = {}) => quest(id, { status: 'draft', steps: TEXTBOOK_STEPS, ...extra });
+    const draft = (id: string, extra: Record<string, unknown> = {}) => quest(id, { status: 'draft', steps: TEXTBOOK_STEPS, places: TEXTBOOK_PLACES, ...extra });
     expect(questCatalogReport([draft('tv2-t01-b01', { unlock: ['tv2-t01-b02'] })], skills)).toEqual({
       issues: [],
       warnings: ['draft quest tv2-t01-b01 unlocks tv2-t01-b02, not written yet'],
@@ -61,7 +63,7 @@ describe('questCatalogReport', () => {
   });
 
   it('refuses an active quest that depends on a draft the game never loads', () => {
-    const report = questCatalogReport([quest('a', { unlock: ['toan2-cd1-b01'] }), quest('toan2-cd1-b01', { status: 'draft', steps: TEXTBOOK_STEPS })], skills);
+    const report = questCatalogReport([quest('a', { unlock: ['toan2-cd1-b01'] }), quest('toan2-cd1-b01', { status: 'draft', steps: TEXTBOOK_STEPS, places: TEXTBOOK_PLACES })], skills);
     expect(report.issues).toEqual(['quest a unlocks draft quest toan2-cd1-b01, which the game never loads']);
   });
 });

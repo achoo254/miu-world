@@ -49,7 +49,10 @@ describe('content catalogue', () => {
     const steps = (sgk.steps as Array<Record<string, unknown>>).map((s) =>
       'support' in s ? { ...s, feedback: { right: [1, 2, 3].map((n) => `${String(s.id)} ${n}`), wrong: [4, 5, 6].map((n) => `${String(s.id)} ${n}`) } } : s,
     );
-    const draft = { ...sgk, id: 'tv2-t01-b01', status: 'draft', unlock: ['tv2-t01-b02'], steps };
+    // ...and say where to go: every step here happens at the ancient tree.
+    const places = Object.fromEntries(steps.flatMap((s) => (s.kind === 'search' ? [[s.id, 'cây cổ thụ']] : s.target ? [[s.target, 'cây cổ thụ']] : [])));
+    const walked = steps.map((s) => ({ ...s, goTo: 'Đến cây cổ thụ' }));
+    const draft = { ...sgk, id: 'tv2-t01-b01', status: 'draft', unlock: ['tv2-t01-b02'], steps: walked, places };
     const loaded = loadQuests(questDir([{ ...base, id: 'a' }, draft]), new Set([...skills, 'phep-cong']));
     expect([...loaded.quests.keys()]).toEqual(['a']);
     expect(loaded.warnings).toEqual(['draft quest tv2-t01-b01 unlocks tv2-t01-b02, not written yet']);

@@ -47,10 +47,18 @@
       "section": "tv2-t1-b17-doc"
     }
   },
+  "places": {
+    "bo-sua-mo": "đồng cỏ khô",
+    "tho-ti": "đồng cỏ khô",
+    "lan-theo-dau-chan": "bờ suối cạn",
+    "tv2-t10-bang-go-goi-ban": "bảng gỗ khắc bài thơ",
+    "tv2-t10-vach-da-tranh": "vách đá có tranh"
+  },
   "steps": [
     {
       "id": "gap-bo-sua-mo",
       "title": "Bò Sữa Mơ giữa đồng khô",
+      "goTo": "Ra đồng cỏ khô ở rìa rừng gặp Bò Sữa Mơ",
       "kind": "dialogue",
       "target": "bo-sua-mo",
       "lines": [
@@ -81,6 +89,7 @@
     {
       "id": "lan-theo-dau-chan",
       "title": "Lần theo dấu chân Thỏ Tí",
+      "goTo": "Lần theo dấu chân dọc bờ suối cạn",
       "kind": "search",
       "targets": [
         "tv2-t10-dau-chan-tho",
@@ -91,6 +100,7 @@
     {
       "id": "ke-ve-nguoi-ban",
       "title": "Kể Bò nghe về một người bạn",
+      "goTo": "Quay về đồng cỏ khô kể Bò nghe",
       "kind": "speak",
       "target": "bo-sua-mo",
       "prompt": "Vừa đi, Bò Sữa Mơ vừa kể về Thỏ Tí rồi quay sang hỏi {name}: Nói về một người bạn của em.",
@@ -106,6 +116,7 @@
     {
       "id": "doc-bai-tho",
       "title": "Đọc bài thơ trên bảng gỗ",
+      "goTo": "Đến bảng gỗ khắc bài thơ đọc bài Gọi bạn",
       "kind": "read",
       "target": "tv2-t10-bang-go-goi-ban",
       "textRef": "goi-ban",
@@ -275,6 +286,7 @@
     {
       "id": "tam-trang-de-trang",
       "title": "Tâm trạng của dê trắng",
+      "goTo": "Về đồng cỏ khô, Bò Sữa Mơ muốn hỏi thêm",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "target": "bo-sua-mo",
@@ -335,6 +347,7 @@
     {
       "id": "xep-dong-tho",
       "title": "Xếp lại hai khổ thơ đầu",
+      "goTo": "Trở lại bảng gỗ khắc bài thơ, vài dòng đã rơi",
       "kind": "challenge",
       "mechanic": "sort",
       "target": "tv2-t10-bang-go-goi-ban",
@@ -430,6 +443,7 @@
     {
       "id": "cam-nghi-doi-ban",
       "title": "Cảm nghĩ về bê vàng, dê trắng",
+      "goTo": "Ngồi với Bò Sữa Mơ giữa đồng cỏ khô",
       "kind": "speak",
       "target": "bo-sua-mo",
       "prompt": "Bò Sữa Mơ hỏi nhỏ: cậu nghĩ gì về đôi bạn trong bài thơ? Nêu cảm nghĩ của em về bê vàng và dê trắng.",
@@ -490,6 +504,7 @@
     {
       "id": "xep-tranh-goi-ban",
       "title": "Xếp tranh trên vách đá",
+      "goTo": "Xuống vách đá có tranh bên suối cạn",
       "kind": "challenge",
       "mechanic": "sort",
       "target": "tv2-t10-vach-da-tranh",
@@ -647,6 +662,7 @@
     {
       "id": "tho-ti-tro-ve",
       "title": "Thỏ Tí nghe tiếng gọi",
+      "goTo": "Nghe kìa! Có tiếng gọi từ đồng cỏ khô",
       "kind": "dialogue",
       "target": "tho-ti",
       "lines": [

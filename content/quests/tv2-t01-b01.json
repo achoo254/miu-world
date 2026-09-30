@@ -47,10 +47,15 @@
       "section": "tv2-t1-b01-doc"
     }
   },
+  "places": {
+    "sau-xanh": "cổng rừng",
+    "bang-go-lop-hai": "bảng gỗ lớp Hai"
+  },
   "steps": [
     {
       "id": "gap-sau-xanh",
       "title": "Gặp Sâu Xanh ở cổng rừng",
+      "goTo": "Ra cổng rừng, Sâu Xanh đợi từ sáng sớm",
       "kind": "dialogue",
       "target": "sau-xanh",
       "lines": [
@@ -90,6 +95,7 @@
     {
       "id": "doc-bai",
       "title": "Đọc bài trên bảng gỗ",
+      "goTo": "Đi theo mũi tên tới bảng gỗ lớp Hai để đọc bài",
       "kind": "read",
       "target": "bang-go-lop-hai",
       "textRef": "toi-la-hoc-sinh-lop-2",
@@ -325,6 +331,7 @@
     {
       "id": "tu-chi-lop-mot",
       "title": "Chọn từ tả các em lớp 1",
+      "goTo": "Trở lại cổng rừng, Sâu Xanh có chuyện muốn hỏi",
       "kind": "challenge",
       "mechanic": "quiz",
       "target": "sau-xanh",

@@ -26,7 +26,8 @@ export function QuestTracker({ quest, data }: { quest: QuestSummary | null; data
         {say(quest.quest.title, data.character)}
       </p>
       <p className="hud-tracker-step" data-id="hud-tracker-step">
-        {step ? say(step.title, data.character) : 'Đã hoàn thành'}
+        {/* Where to walk while the step waits somewhere else; its title heads the scene once there. */}
+        {step ? say(step.goTo ?? step.title, data.character) : 'Đã hoàn thành'}
         {clues ? (
           <span className="hud-tracker-count" data-id="hud-tracker-count">
             {' '}
