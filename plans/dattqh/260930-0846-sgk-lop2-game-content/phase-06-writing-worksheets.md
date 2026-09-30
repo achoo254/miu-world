@@ -23,7 +23,7 @@ Phần Viết của Tiếng Việt và phần thực hành/vận dụng ở nhà
 - Server nạp kiểm kê một lần lúc khởi động (loader mới trong `apps/server/src/worksheet/`, đọc cùng thư mục `content/curriculum`). Route sau cổng PIN phụ huynh (`requireParentGate`, khu phụ huynh hiện có); không cần hồ sơ trẻ; không endpoint ghi.
 - Web: `apps/web/src/ui/parent/worksheets/` — danh sách theo sách/tuần/bài, trang in (CSS `@media print`, A4, ẩn nav), nút "In phiếu" (`window.print()`). Dùng token/kit của VS phase 1.
 - Bước quest `worksheet` hiện "Nhờ bố mẹ in phiếu bài …" + nút "Đã hiểu".
-- `content:coverage` tính phủ qua phiếu từ `curriculumRef` của bước `worksheet` trong quest (cột riêng, phase 3) — phiếu tự nó không phủ gì.
+- `content:gaps` tính phủ qua phiếu từ `curriculumRef` của bước `worksheet` trong quest (cột riêng, phase 3) — phiếu tự nó không phủ gì.
 
 ## Files
 - Create: `packages/schema/src/worksheet.ts` (+ test), `apps/server/src/worksheet/{worksheet-routes,worksheet-builder}.ts` (+ test), `apps/web/src/ui/parent/worksheets/*.tsx` (+ test render, print CSS)

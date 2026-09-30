@@ -24,7 +24,7 @@ Mỗi bài Tiếng Việt 2 tập 1 là một quest ở Khu rừng bí mật, ph
   - Reward + Unlock: như ch1; phần Viết (chữ hoa, viết ứng dụng, nghe–viết, viết đoạn, "Vận dụng" ở nhà) là bước `worksheet` trỏ phiếu của bài (phase 6).
 - Đọc mở rộng: `read` + câu hỏi đóng nếu sách có, hoặc `speak`.
 - Ôn tập giữa kì/cuối kì: quest dài hơn, phần "Đánh giá cuối học kì 1" (đọc thành tiếng, đọc hiểu "Cỏ và lúa", nghe–viết, viết 3–4 câu) phủ bằng `read`/`quiz`/`fill-blank`/`speak`/`worksheet`.
-- Mỗi bước tương tác có `curriculumRef`; `pnpm content:coverage --book tv2-t1` = 100% cuối phase (phủ đúng cơ chế theo quy tắc phase 3).
+- Mỗi bước tương tác có `curriculumRef`; `pnpm content:gaps --book tv2-t1` = 100% cuối phase (phủ đúng cơ chế theo quy tắc phase 3).
 - KHÔNG đụng `forest-ch1.json`, `forest-ch2.json` và test VS (D7 — phase 10 làm).
 
 ## Chia việc song song (disjoint file)
@@ -37,12 +37,12 @@ Mỗi bài Tiếng Việt 2 tập 1 là một quest ở Khu rừng bí mật, ph
 Bài cuối mỗi gói `unlock` bài đầu gói sau theo quy ước id (draft chấp nhận id chưa có file, cảnh báo; phase 10 đòi đủ).
 
 ## Steps
-1. Mỗi gói: đọc kiểm kê chủ điểm, viết quest theo khuôn, chạy `pnpm content:check` + `pnpm content:coverage --unit <chủ điểm>` sau mỗi bài.
+1. Mỗi gói: đọc kiểm kê chủ điểm, viết quest theo khuôn, chạy `pnpm content:check` + `pnpm content:gaps --unit <chủ điểm>` sau mỗi bài.
 2. `apps/server/src/quest/tv2-quests.test.ts`: dựng catalog từ `content/quests/tv2-*.json` với draft coi như active (tham số của loader test), chơi hết mọi quest theo chuỗi mở khóa bằng `solution()` (`apps/server/test/quest-solution.ts`).
 3. Report cuối phase: danh sách quest, số bước theo cơ chế, item phủ trong game/qua phiếu.
 
 ## Verification
-- `pnpm content:check`; `pnpm content:coverage --book tv2-t1` = 100%; `pnpm vitest run apps/server/src/quest/tv2-quests.test.ts`
+- `pnpm content:check`; `pnpm content:gaps --book tv2-t1` = 100%; `pnpm vitest run apps/server/src/quest/tv2-quests.test.ts`
 
 ## Risk
 - Chép sai nguyên văn: chỉ lấy `text`/`prompt` từ kiểm kê (không gõ lại từ ảnh).

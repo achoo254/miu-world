@@ -18,7 +18,7 @@ Người sở hữu giao hai sách giáo khoa bộ Kết nối tri thức với 
 - Toán 2 tập 1 (141 trang PDF): 7 chủ đề, 36 bài — số đến 100, tia số, thành phần phép tính, hơn kém, cộng trừ qua 10 trong phạm vi 20, bảng cộng/trừ, bài toán thêm bớt/nhiều hơn ít hơn, ki-lô-gam, lít, cộng trừ có nhớ trong phạm vi 100, điểm/đoạn thẳng/đường thẳng/đường cong/ba điểm thẳng hàng, đường gấp khúc, hình tứ giác, gấp cắt ghép xếp hình, vẽ đoạn thẳng, ngày–giờ, giờ–phút, ngày–tháng, xem đồng hồ và lịch, ôn tập học kì 1.
 - Tiếng Việt 2 tập 1 (145 trang PDF): 4 chủ điểm (Em lớn lên từng ngày; Đi học vui sao; Niềm vui tuổi thơ; Mái ấm gia đình), 18 tuần, 32 bài; mỗi bài có Đọc, Viết (chữ hoa, nghe–viết, bảng chữ cái, phân biệt chính tả), Nói và nghe (kể chuyện), Luyện tập (từ ngữ, câu, dấu câu, viết đoạn), Đọc mở rộng; tuần 9 ôn tập giữa kì, tuần 18 ôn tập và đánh giá cuối kì.
 
-Mục tiêu người sở hữu: **mọi mục nội dung trong hai sách có mặt trong kịch bản game** (quest trong game, hoặc phiếu viết ngoài game cho phần Viết). Đo được: `pnpm content:coverage` báo 100% mục kiểm kê được phủ đúng cơ chế, và `content:check` đỏ nếu thiếu (sau khi kích hoạt ở phase 10).
+Mục tiêu người sở hữu: **mọi mục nội dung trong hai sách có mặt trong kịch bản game** (quest trong game, hoặc phiếu viết ngoài game cho phần Viết). Đo được: `pnpm content:gaps` báo 100% mục kiểm kê được phủ đúng cơ chế, và `content:check` đỏ nếu thiếu (sau khi kích hoạt ở phase 10).
 
 ## Quyết định đã chốt
 
@@ -40,14 +40,14 @@ Chi tiết Jev: `plans/dattqh/reports/jev-260930-sgk-plan-decisions.md`.
 |---|-------|------|-----------|--------|
 | 1 | [Kiểm kê SGK thành dữ liệu](./phase-01-textbook-inventory.md) | L | — | Pending |
 | 2 | [Schema + runtime cho cơ chế mới](./phase-02-quest-schema-new-mechanics.md) | L | — (VS phase 3 đã commit) | Pending |
-| 3 | [Kỹ năng, quy tắc cơ chế, cổng phủ nội dung](./phase-03-skills-mapping-coverage-gate.md) | M | 1, 2 | Pending |
+| 3 | [Kỹ năng, quy tắc cơ chế, cổng phủ nội dung](./phase-03-skills-mapping-completeness-gate.md) | M | 1, 2 | Pending |
 | 4 | [Kịch bản Tiếng Việt — 18 tuần](./phase-04-tieng-viet-quests.md) | XL | 3 | Pending |
 | 5 | [Kịch bản Toán — 7 chủ đề](./phase-05-toan-quests.md) | XL | 3 | Pending |
 | 6 | [Phiếu viết ngoài game](./phase-06-writing-worksheets.md) | M | 1; UI sau VS phase 1 | Pending |
 | 7 | [Thu âm trên máy](./phase-07-on-device-voice.md) | M | 2; sau VS phase 1, 8 | Pending |
 | 8 | [UI cơ chế mới](./phase-08-new-mechanic-ui.md) | L | 2; sau VS phase 8 | Pending |
 | 9 | [Bản đồ Trường học + chương rừng 2–19](./phase-09-school-map-forest-chapters.md) | L | 4, 5; sau VS phase 5, 6, 7 | Pending |
-| 10 | [Kích hoạt, cổng 100%, trang review](./phase-10-coverage-review-gate.md) | M | 1–9; sau VS phase 10 | Pending |
+| 10 | [Kích hoạt, cổng 100%, trang review](./phase-10-completeness-review-gate.md) | M | 1–9; sau VS phase 10 | Pending |
 
 "VS" = plan `plans/dattqh/260929-2141-vertical-slice-mvp/` chạy ở phiên khác trên `main`.
 
@@ -66,7 +66,7 @@ Song song trong plan này: 1 ‖ 2 ngay từ đầu; sau 3: 4 ‖ 5 ‖ 6 (4, 5 
 | --- | --- |
 | 1 | `content/curriculum/{toan2-t1,tv2-t1}/**`, `packages/schema/src/curriculum.ts` (+ test), `tools/sgk/**`, `tools/content/check-curriculum.ts` (+ test, phần kiểm kê) |
 | 2 | `packages/schema/src/content.ts` (CHỈ khối quest step/quest), `packages/schema/src/game.ts` (`StepAnswer`, `QuestView`), `packages/quest/src/{check-answer,quest-progress,quest-catalog}.ts` (+ test), `apps/server/src/content/content-catalog.ts` (bỏ qua draft), `apps/server/test/fixtures/quests/**`, `apps/server/test/quest-solution.ts` |
-| 3 | `content/learning/skills.json`, `tools/content/check-curriculum.ts` (phần phủ + quy tắc cơ chế — sau phase 1), `content/quests/{tv2-t01-b01,toan2-cd1-b01}.json` (mẫu, draft), `package.json` (`content:coverage`) |
+| 3 | `content/learning/skills.json`, `tools/content/check-curriculum.ts` (phần phủ + quy tắc cơ chế — sau phase 1), `content/quests/{tv2-t01-b01,toan2-cd1-b01}.json` (mẫu, draft), `package.json` (`content:gaps`) |
 | 4 | `apps/server/src/quest/tv2-quests.test.ts`, `content/quests/tv2-*.json` (4a `tv2-t0[1-4]*`, 4b `tv2-t0[5-9]*`, 4c `tv2-t1[0-3]*`, 4d `tv2-t1[4-8]*`) |
 | 5 | `apps/server/src/quest/toan2-quests.test.ts`, `content/quests/toan2-*.json` (5a chủ đề 1–2, 5b 3–4, 5c 5–6, 5d 7) |
 | 6 | `packages/schema/src/worksheet.ts` (+ test), `apps/server/src/worksheet/**`, `apps/web/src/ui/parent/worksheets/**` |
@@ -101,12 +101,12 @@ content/curriculum/{toan2-t1,tv2-t1}/*.json   ── CurriculumBook (Zod): item 
 content/quests/{tv2-*,toan2-*}.json            ── QuestDefinition (draft → active) + bước mới (classify, fill-blank, multi-select, clock, calendar, connect, speak, worksheet, read có audio)
 apps/server/src/worksheet                      ── phiếu dựng từ kiểm kê lúc gọi (không bản sao thứ hai)
         │
-pnpm content:coverage ── phủ theo sách/chủ đề/bài (trong game và qua phiếu tách riêng); content:check lỗi khi < 100% (phase 10)
+pnpm content:gaps ── phủ theo sách/chủ đề/bài (trong game và qua phiếu tách riêng); content:check lỗi khi < 100% (phase 10)
 ```
 
 ## Success Criteria
 - [ ] Kiểm kê đủ 100% trang nội dung hai sách (trừ bìa, lời nói đầu, mục lục, trang bản quyền, thuật ngữ): hai lượt đọc độc lập khớp số item từng trang; số bài khớp mục lục (Toán 36; TV 32 + 2 ôn tập)
-- [ ] `pnpm content:coverage` = 100%: mọi item được ≥ 1 bước đúng cơ chế cho loại bài (hoặc phiếu cho phần Viết); `content:check` đỏ nếu thiếu
+- [ ] `pnpm content:gaps` = 100%: mọi item được ≥ 1 bước đúng cơ chế cho loại bài (hoặc phiếu cho phần Viết); `content:check` đỏ nếu thiếu
 - [ ] 36 quest Toán (`truong-hoc`), 34 quest Tiếng Việt (`khu-rung-bi-mat`, ch2–19), mỗi quest đủ 8 pha, 7 câu, ≥ 2 cơ chế tương tác khác nhau (không tính `search`/`riddle`/`quiz`/`read`), `review: "teacher-pending"`
 - [ ] Đáp án số (tính, đồng hồ, lịch) được tính lại bằng code từ biểu thức kiểm kê và khớp quest
 - [ ] Cơ chế mới chơi được trên web (chuột, cảm ứng, bàn phím), có 3 lớp hỗ trợ, server chấm

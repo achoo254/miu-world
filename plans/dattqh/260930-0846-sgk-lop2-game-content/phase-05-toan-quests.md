@@ -33,12 +33,12 @@ Mỗi bài Toán 2 tập 1 là một quest ở Trường học, phủ mọi item
 | 5d | 7 | 33–36 | `toan2-cd7-*.json` |
 
 ## Steps
-1. Mỗi gói: đọc kiểm kê, viết quest, `pnpm content:check` + `pnpm content:coverage --unit <chủ đề>` sau mỗi bài.
+1. Mỗi gói: đọc kiểm kê, viết quest, `pnpm content:check` + `pnpm content:gaps --unit <chủ đề>` sau mỗi bài.
 2. `apps/server/src/quest/toan2-quests.test.ts`: chơi hết mọi quest `toan2-*` (draft coi như active trong test) theo chuỗi mở khóa bằng `solution()`.
 3. Report cuối phase.
 
 ## Verification
-- `pnpm content:check`; `pnpm content:coverage --book toan2-t1` = 100%; `pnpm vitest run apps/server/src/quest/toan2-quests.test.ts`
+- `pnpm content:check`; `pnpm content:gaps --book toan2-t1` = 100%; `pnpm vitest run apps/server/src/quest/toan2-quests.test.ts`
 
 ## Risk
 - Bài thao tác vật lý (gấp, cắt, ghép hình): mô phỏng `sort`/`multi-select` + phiếu hoạt động; report ghi rõ phần nào chỉ có ở phiếu.

@@ -48,6 +48,7 @@ Mã chỉ dùng trong plan và roadmap, không dùng trong code, tên test, comm
 
 - **Gate POC (Đã qua - 2026-09-29):** Đã duyệt với kết quả: giữ kiến trúc kitbash/generator/mesher, chuyển sang tinh chỉnh visual (nhân vật chibi, palette phụ kiện & block); dời chốt số liệu hiệu năng sang đo máy thật trước nghiệm thu MVP (máy chuẩn: iPad Gen 10, chốt 2026-09-29).
 - **Gate Foundation (Đã qua - 2026-09-29):** monorepo, tài khoản phụ huynh (Google) + hồ sơ trẻ, API nhân vật-tiến độ-thưởng, Miu chibi A + palette, runtime trong `apps/web`; CI xanh. Report: `plans/dattqh/reports/foundation-review-260929.md`.
+- **Nội dung SGK lớp 2 tập 1 (song song):** plan `plans/dattqh/260930-0846-sgk-lop2-game-content/` — 100% nội dung Toán 2 và Tiếng Việt 2 (Kết nối tri thức) thành quest; Tiếng Việt ở Khu rừng (ch2–19), Toán ở Trường học; chạy ở worktree riêng, kích hoạt sau VS phase 10.
 - **Gate kế tiếp (Vertical slice MVP):** plan `plans/dattqh/260929-2141-vertical-slice-mvp/` (SLICE-00..11: token/UI kit, quest bằng dữ liệu, API chấm thử thách, Creator, Home + HUD, khu rừng ch1, NPC, 3 thử thách Toán + hỗ trợ học, thưởng/Level Up, ba lô, bảo mật + E2E trọn vòng).
 
 ## Nợ đã biết (trước nghiệm thu MVP)
