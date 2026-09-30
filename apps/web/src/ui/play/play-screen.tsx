@@ -8,6 +8,7 @@ import { GameStoreContext, useGameState, useGameStore } from '../../game-bridge/
 import { Game } from '../../game/game';
 import { ApiError, api, errorMessage } from '../api-client';
 import { useAccount } from '../account/account-context';
+import { LoadingOverlay } from '../system/loading-overlay';
 
 function InteractionLabel() {
   const store = useGameStore();
@@ -103,6 +104,7 @@ export function PlayScreen() {
             </p>
           </div>
         ) : null}
+        {loadError ? null : <LoadingOverlay region="Khu rừng bí mật" />}
         <InteractionLabel />
         <GameStatus />
         <Link className="play-exit button-link" to="/profiles" data-id="play-exit">

@@ -4,6 +4,7 @@ import { afterEach, describe, expect, it } from 'vitest';
 import { Icon } from './art';
 import { buttonClass } from './button';
 import { PinPad } from './pin-pad';
+import { ProgressBar, progressPercent } from './progress-bar';
 import { SkyScene } from './sky-scene';
 import { UI_ICONS } from './ui-art';
 
@@ -41,6 +42,16 @@ describe('PinPad', () => {
     render(<PinHarness />);
     const group = screen.getByRole('group', { name: 'Bàn phím số' });
     expect(group.querySelectorAll('button[type="button"]')).toHaveLength(12);
+  });
+});
+
+describe('ProgressBar', () => {
+  it('reports a clamped whole percent', () => {
+    expect(progressPercent(0, 0)).toBe(0);
+    expect(progressPercent(1, 3)).toBe(33);
+    expect(progressPercent(7, 5)).toBe(100);
+    render(<ProgressBar done={3} total={5} label="Đang tải" />);
+    expect(screen.getByRole('progressbar', { name: 'Đang tải' }).getAttribute('aria-valuenow')).toBe('60');
   });
 });
 

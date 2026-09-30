@@ -11,6 +11,7 @@ export const UI_ICONS = {
   heart: `${FLUENT}/heart.png`,
   key: `${FLUENT}/key.png`,
   locked: `${FLUENT}/locked.png`,
+  parrot: `${FLUENT}/parrot.png`,
   sparkles: `${FLUENT}/sparkles.png`,
 } as const;
 
