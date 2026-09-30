@@ -1,7 +1,7 @@
 // Interactables from entities.json (NPCs, quest clues, the riddle tree, chest, gate): one runtime
 // object each, with an interaction radius and a state pushed by React (`set-world-state`, from the
 // server). The prompt label is a React component; the game only reports which target is nearest and
-// where it sits on screen.
+// where it sits on screen. Animal NPCs follow npc-behavior.ts: varied actions, turning to Miu, greetings.
 import {
   AnimationMixer,
   Box3,
@@ -14,12 +14,14 @@ import {
   SRGBColorSpace,
   Vector3,
   type AnimationAction,
+  type AnimationClip,
   type Camera,
   type Object3D,
 } from 'three';
 import type { Interactable, WorldEntities } from '@miu/voxel/world-entities';
 import type { TargetState } from '../../game-bridge/game-store';
 import type { GuardedGltfLoader } from '../asset-loader';
+import { NpcBehavior, type NpcClip } from './npc-behavior';
 import { createRiddleBoard } from './riddle-board';
 
 export interface InteractableObject {
@@ -27,17 +29,68 @@ export interface InteractableObject {
   readonly root: Object3D;
   /** False while hidden: a hidden target never gets a prompt. */
   readonly available: boolean;
-  update(dt: number): void;
+  /** `player`: Miu's position, which animal NPCs watch. */
+  update(dt: number, player: { readonly x: number; readonly z: number }): void;
   setState(state: TargetState | undefined): void;
   /** Screen position (CSS px) of the point above the target, for the prompt anchor. */
   screenAnchor(camera: Camera, viewport: { width: number; height: number }): { x: number; y: number };
 }
 
-/** Clues bob gently until found so a child notices them; nothing else moves on its own. */
+/** Clues bob gently until found so a child notices them. */
 const BOB_HEIGHT = 0.12;
 const BOB_SPEED = 2.2;
 /** An open gate sinks into the ground over this many seconds. */
 const GATE_OPEN_SECONDS = 1.2;
+/** NPC clips blend into each other over this many seconds instead of snapping. */
+const NPC_FADE_SECONDS = 0.3;
+const NPC_CLIPS: readonly NpcClip[] = ['idle', 'walk', 'eat', 'dance', 'gesture-positive'];
+
+/** Same seed, same sequence (mulberry32): an NPC behaves the same in every run and review shot. */
+function seededRandom(key: string): () => number {
+  let a = 0;
+  for (let i = 0; i < key.length; i++) a = (Math.imul(a, 31) + key.charCodeAt(i)) >>> 0;
+  return () => {
+    a = (a + 0x6d2b79f5) >>> 0;
+    let t = a;
+    t = Math.imul(t ^ (t >>> 15), t | 1);
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+/**
+ * Plays the behaviour's clip on the model: each clip change cross-fades, and the idle loop starts at
+ * a random phase and speed so two animals never move in step.
+ */
+function npcAnimator(mixer: AnimationMixer, clips: readonly AnimationClip[], random: () => number): { seconds: Partial<Record<NpcClip, number>>; play(clip: NpcClip): void } {
+  const actions = new Map<NpcClip, AnimationAction>();
+  const seconds: Partial<Record<NpcClip, number>> = {};
+  for (const name of NPC_CLIPS) {
+    const clip = clips.find((c) => c.name === name);
+    if (!clip) continue;
+    actions.set(name, mixer.clipAction(clip));
+    seconds[name] = clip.duration;
+  }
+  const idle = actions.get('idle');
+  if (idle) {
+    idle.time = random() * (seconds.idle ?? 0);
+    idle.timeScale = 0.9 + random() * 0.2;
+    idle.play();
+  }
+  let current: NpcClip = 'idle';
+  return {
+    seconds,
+    play(clip) {
+      if (clip === current) return;
+      const from = actions.get(current);
+      const to = actions.get(clip);
+      if (!to) return;
+      to.reset().play();
+      if (from) from.crossFadeTo(to, NPC_FADE_SECONDS, false);
+      current = clip;
+    },
+  };
+}
 
 /** Nearest available target whose radius contains the player, or null. Pure: unit-tested. */
 export function pickNearest<T extends { readonly available: boolean; readonly def: { position: readonly number[]; radius: number } }>(
@@ -91,7 +144,7 @@ async function buildVisual(
   loader: GuardedGltfLoader,
   def: Interactable,
   shadows: boolean,
-): Promise<{ root: Object3D; mixer: AnimationMixer | null; open: AnimationAction | null }> {
+): Promise<{ root: Object3D; mixer: AnimationMixer | null; clips: readonly AnimationClip[]; open: AnimationAction | null }> {
   if (def.model) {
     const gltf = await loader.load(def.model);
     const root = gltf.scene;
@@ -109,19 +162,20 @@ async function buildVisual(
     };
     const largest = parts.reduce<Mesh | null>((best, mesh) => (!best || radius(mesh) > radius(best) ? mesh : best), null);
     if (largest) largest.castShadow = shadows && def.kind !== 'object';
-    if (gltf.animations.length === 0) return { root, mixer: null, open: null };
+    if (gltf.animations.length === 0) return { root, mixer: null, clips: [], open: null };
     const mixer = new AnimationMixer(root);
-    const idle = gltf.animations.find((a) => a.name === def.animation);
+    // Animal NPCs get their clips from npc-behavior; everything else loops its one clip.
+    const idle = def.kind === 'npc' ? undefined : gltf.animations.find((a) => a.name === def.animation);
     if (idle) mixer.clipAction(idle).play();
     const openClip = def.kind === 'chest' ? gltf.animations.find((a) => a.name === 'open') : undefined;
     const open = openClip ? mixer.clipAction(openClip).setLoop(LoopOnce, 1) : null;
     if (open) open.clampWhenFinished = true;
-    return { root, mixer, open };
+    return { root, mixer, clips: gltf.animations, open };
   }
   const root = new Group();
   if (def.shape === 'letter') root.add(createLetter());
   if (def.board) root.add(await createRiddleBoard(def.board, shadows));
-  return { root, mixer: null, open: null };
+  return { root, mixer: null, clips: [], open: null };
 }
 
 export async function loadInteractables(
@@ -131,7 +185,7 @@ export async function loadInteractables(
 ): Promise<InteractableObject[]> {
   return Promise.all(
     entities.interactables.map(async (def): Promise<InteractableObject> => {
-      const { root, mixer, open } = await buildVisual(loader, def, shadows);
+      const { root, mixer, clips, open } = await buildVisual(loader, def, shadows);
       const holder = new Group();
       holder.name = `interactable:${def.id}`;
       holder.position.set(...def.position);
@@ -143,6 +197,19 @@ export async function loadInteractables(
       const labelHeight = bounds.isEmpty() ? 1.5 : bounds.max.y - def.position[1] + 0.3;
 
       const bobs = def.kind === 'object' && (def.model !== undefined || def.shape !== undefined);
+      let npc: { behavior: NpcBehavior; play(clip: NpcClip): void } | null = null;
+      if (def.kind === 'npc' && mixer) {
+        const random = seededRandom(def.id);
+        const animator = npcAnimator(mixer, clips, random);
+        const behavior = new NpcBehavior({
+          homeYaw: holder.rotation.y,
+          noticeRadius: def.radius * 2,
+          greetRadius: def.radius,
+          clipSeconds: animator.seconds,
+          random,
+        });
+        npc = { behavior, play: animator.play };
+      }
       let state: TargetState | undefined;
       let time = 0;
       let gateSink = 0;
@@ -153,8 +220,13 @@ export async function loadInteractables(
         get available() {
           return state !== 'hidden';
         },
-        update(dt) {
+        update(dt, player) {
           time += dt;
+          if (npc && holder.visible) {
+            const frame = npc.behavior.step(dt, { dx: player.x - holder.position.x, dz: player.z - holder.position.z });
+            holder.rotation.y = frame.yaw;
+            npc.play(frame.clip);
+          }
           mixer?.update(dt);
           if (bobs) root.position.y = state === undefined ? (Math.sin(time * BOB_SPEED) * 0.5 + 0.5) * BOB_HEIGHT : 0;
           if (def.kind === 'gate' && state === 'open' && gateSink < 1) {

@@ -373,7 +373,7 @@ export class Game {
       world.water.uTime.value += dt;
       world.update(camera);
 
-      for (const target of targets) target.update(dt);
+      for (const target of targets) target.update(dt, controller.position);
       arrow.update(dt, controller.position, hint?.available ? hint.def : null);
       overlay.stats.hintTarget = arrow.showing ? (hint?.def.id ?? null) : null;
       const nearest = pickNearest(targets, controller.position);

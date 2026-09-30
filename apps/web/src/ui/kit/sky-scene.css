@@ -67,8 +67,10 @@
   .sky-floater { animation: sky-float var(--t) ease-in-out var(--delay) infinite alternate; }
   .sky-block { animation: sky-block var(--t) ease-in-out var(--delay) infinite alternate; }
 
+  /* The parrot crosses, turns round off-screen and flies back; it swoops, leans into the swoop and flaps. */
   .sky-parrot { display: block; animation: sky-parrot var(--duration-parrot) linear 2s infinite both; }
-  .sky-parrot-bob { animation: sky-parrot-bob calc(var(--duration-float) / 3) ease-in-out infinite alternate; }
+  .sky-parrot-bob { animation: sky-parrot-swoop var(--duration-float) infinite; }
+  .sky-parrot .icon { transform-origin: 50% 60%; animation: sky-parrot-flap var(--duration-flap) ease-in-out infinite alternate; }
 
   .island-float { animation: island-float var(--duration-float) ease-in-out infinite alternate; }
   .island-shadow { animation: island-shadow var(--duration-float) ease-in-out infinite alternate; }
@@ -112,14 +114,25 @@
   from { transform: translateY(0) rotate(-8deg); }
   to { transform: translateY(-20px) rotate(10deg); }
 }
-/* Crosses the screen in the first half of the cycle, then waits off-screen. */
+/* Right to left, turn round off-screen (the flip is never seen), left to right, turn round again. */
 @keyframes sky-parrot {
-  0% { transform: translateX(calc(100vw + 2rem)); }
-  45%, 100% { transform: translateX(-6rem); }
+  0% { transform: translateX(calc(100vw + 2rem)) scaleX(1); }
+  38% { transform: translateX(-6rem) scaleX(1); }
+  50% { transform: translateX(-6rem) scaleX(-1); }
+  88% { transform: translateX(calc(100vw + 2rem)) scaleX(-1); }
+  100% { transform: translateX(calc(100vw + 2rem)) scaleX(1); }
 }
-@keyframes sky-parrot-bob {
-  from { transform: translateY(0) rotate(4deg); }
-  to { transform: translateY(-18px) rotate(-4deg); }
+/* A sine-like swoop; the body leans nose-up while rising and nose-down while falling. */
+@keyframes sky-parrot-swoop {
+  0%, 100% { transform: translateY(0) rotate(9deg); animation-timing-function: ease-out; }
+  25% { transform: translateY(-1.5rem) rotate(0deg); animation-timing-function: ease-in; }
+  50% { transform: translateY(0) rotate(-9deg); animation-timing-function: ease-out; }
+  75% { transform: translateY(1.5rem) rotate(0deg); animation-timing-function: ease-in; }
+}
+/* Wing beats: the body bobs and squashes a little on every stroke. */
+@keyframes sky-parrot-flap {
+  from { transform: translateY(0) scale(1, 1); }
+  to { transform: translateY(3px) scale(1.05, 0.9); }
 }
 
 @keyframes island-float { from { transform: translateY(0); } to { transform: translateY(-12px); } }
