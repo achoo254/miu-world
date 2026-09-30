@@ -38,7 +38,7 @@ Không thuộc plan này: loài Thỏ/Cáo/Gấu, Kim cương, chuỗi ngày (st
 
 | # | Phase | ID | Tier | Depends | Status |
 |---|-------|----|------|---------|--------|
-| 1 | [Design token + component UI + màn hệ thống](./phase-01-design-tokens-and-ui-kit.md) | SLICE-00 | M | — | In progress |
+| 1 | [Design token + component UI + màn hệ thống](./phase-01-design-tokens-and-ui-kit.md) | SLICE-00 | M | — | Completed |
 | 2 | [Quest schema v2 + runtime + nội dung ch1](./phase-02-quest-schema-runtime-content.md) | SLICE-06 | L | — | Completed |
 | 3 | [API gameplay: chấm thử thách, hỗ trợ học, level, mở khóa](./phase-03-gameplay-api-server.md) | SLICE-10 (server) | M | 2 | Completed |
 | 4 | [Character Creator + trang phục voxel](./phase-04-character-creator.md) | SLICE-01 | L | 1 | Completed |

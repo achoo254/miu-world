@@ -1,7 +1,7 @@
 ---
 phase: 1
 title: "Design token + component UI + màn hệ thống"
-status: in-progress
+status: completed
 priority: P1
 effort: "M"
 dependencies: []
@@ -48,7 +48,9 @@ Chia việc giữa hai phiên trên `main` (thống nhất qua tin nhắn giữa
 - Phiên restyle màn trước game (hướng "Đảo mây kẹo hồng", người sở hữu chọn): `tokens.css`, `styles.css`, `ui/kit/**`, `ui/account/**`, `app-shell.tsx`, `main.tsx`, `vite-repo-assets.ts`, `vite.config.ts`, `docs/design-guidelines.md`.
 - Phiên cook plan: phần không phải UI — đã xong, commit `1034869` (18 icon Fluent mới), `749cf65` (kiểu bridge khai báo trước, `Game.stop/resume`, `loading-progress`, `webglcontextlost` + E2E), `896fe45` (`e2e:ci` = mọi project trừ `perf`, project Playwright khai báo trước, retry/trace, CI upload trace).
 - Lệch so với Requirements: danh sách icon UI nằm ở `apps/web/src/ui/kit/ui-art.ts` (`UI_ICONS`, được `vite-repo-assets` ship và build lỗi nếu file rời manifest) thay cho `content/ui/icons.json` + `content:check`.
-- Còn lại (sau commit kit): màn `ui/system/{pause,loading,offline}`, nối vào `/play`, E2E pause → khung hình dừng/chạy lại, cài đặt âm lượng.
+- Kit + màn trước game: commit `ca57a6c`, `4dcc38d` (phiên restyle); màn Đang tải: `ef5dcec` (phiên restyle).
+- Màn Tạm dừng (Tiếp tục, Âm thanh bật/tắt lưu localStorage có try/catch, Về trang chủ; mở bằng nút hoặc Esc; `Game.stop/resume`), Mất mạng (chặn + thử lại, không chơi offline), `Modal` trong kit: E2E `play` kiểm khung hình dừng khi tạm dừng và chạy lại. Lệnh grep màu hex ngoài `tokens.css` = 0.
+- Dời sang phase dùng đầu tiên (chưa có màn nào cần): `IconButton` HUD (phase 5), `Tabs` và `Toast` (phase 9 Ba lô/thông báo). "Về trang chủ" trỏ `/profiles` tới khi phase 5 có Home.
 
 ## Risk
 - Mock là ảnh render AI: token là xấp xỉ; ghi rõ "tạm, chờ mock voxel" trong design-guidelines.

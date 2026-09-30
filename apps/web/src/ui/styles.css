@@ -439,6 +439,9 @@ input:focus-visible, select:focus-visible { border-color: var(--color-secondary)
   top: var(--space-sm);
   right: var(--space-sm);
   z-index: var(--z-hud);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
 }
 .play-message {
   position: fixed;

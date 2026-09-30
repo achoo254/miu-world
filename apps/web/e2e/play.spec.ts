@@ -149,6 +149,27 @@ test('leaving /play disposes the game: no canvas, no stats handle', async ({ pag
   expect(await page.evaluate(() => window.__miuStats)).toBeUndefined();
 });
 
+test('Pause stops rendering (no new frames) and Resume starts it again; Esc opens it', async ({ page }) => {
+  await page.goto('/play?quality=low');
+  await waitReady(page);
+  await page.getByRole('button', { name: /Tạm dừng/ }).click();
+  await expect(page.getByRole('dialog', { name: 'Tạm dừng' })).toBeVisible();
+  await page.waitForTimeout(200); // the frame already queued may still land
+  const frozen = (await readStats(page)).frames;
+  await page.waitForTimeout(700);
+  expect((await readStats(page)).frames).toBe(frozen);
+
+  await page.getByRole('button', { name: /Tiếp tục chơi/ }).click();
+  await expect(page.getByRole('dialog')).toHaveCount(0);
+  await expect.poll(async () => (await readStats(page)).frames).toBeGreaterThan(frozen + 5);
+
+  await page.keyboard.press('Escape');
+  await expect(page.getByRole('dialog', { name: 'Tạm dừng' })).toBeVisible();
+  await page.keyboard.press('Escape');
+  await expect(page.getByRole('dialog')).toHaveCount(0);
+  await expect(page.locator('canvas')).toHaveCount(1);
+});
+
 test('a lost WebGL context stops the game and offers a reload instead of breaking', async ({ page }) => {
   const pageErrors: string[] = [];
   page.on('pageerror', (err) => pageErrors.push(err.message));

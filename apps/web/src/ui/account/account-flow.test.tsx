@@ -14,6 +14,8 @@ vi.mock('../../game/game', () => ({
     async start() {
       gameLifecycle.started += 1;
     }
+    stop() {}
+    resume() {}
     dispose() {
       gameLifecycle.disposed += 1;
     }

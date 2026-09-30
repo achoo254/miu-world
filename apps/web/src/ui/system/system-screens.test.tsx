@@ -1,0 +1,95 @@
+import { cleanup, fireEvent, render, screen } from '@testing-library/react';
+import { MemoryRouter } from 'react-router';
+import { afterEach, describe, expect, it, vi } from 'vitest';
+import { Modal } from '../kit/modal';
+import { OfflineBanner } from './offline-banner';
+import { PauseScreen } from './pause-screen';
+import { readSoundOn } from './sound-setting';
+
+afterEach(() => {
+  cleanup();
+  vi.restoreAllMocks();
+  window.localStorage.clear();
+});
+
+describe('Modal', () => {
+  it('moves focus in, keeps Tab inside, closes on Esc and gives focus back', () => {
+    const onClose = vi.fn();
+    const opener = document.createElement('button');
+    document.body.append(opener);
+    opener.focus();
+    const view = render(
+      <Modal title="Hộp thoại" onClose={onClose}>
+        <button type="button">Một</button>
+        <button type="button">Hai</button>
+      </Modal>,
+    );
+    const dialog = screen.getByRole('dialog', { name: 'Hộp thoại' });
+    expect(dialog.getAttribute('aria-modal')).toBe('true');
+    expect(document.activeElement?.textContent).toBe('Một');
+    screen.getByRole('button', { name: 'Hai' }).focus();
+    fireEvent.keyDown(dialog, { key: 'Tab' });
+    expect(document.activeElement?.textContent).toBe('Một');
+    fireEvent.keyDown(dialog, { key: 'Tab', shiftKey: true });
+    expect(document.activeElement?.textContent).toBe('Hai');
+    fireEvent.keyDown(dialog, { key: 'Escape' });
+    expect(onClose).toHaveBeenCalledTimes(1);
+    view.unmount();
+    expect(document.activeElement).toBe(opener);
+    opener.remove();
+  });
+});
+
+describe('PauseScreen', () => {
+  const renderPause = (onResume = vi.fn()) =>
+    render(
+      <MemoryRouter>
+        <PauseScreen onResume={onResume} homePath="/profiles" />
+      </MemoryRouter>,
+    );
+
+  it('resumes from the button or Esc, and links home', () => {
+    const onResume = vi.fn();
+    renderPause(onResume);
+    fireEvent.click(screen.getByRole('button', { name: /Tiếp tục chơi/ }));
+    fireEvent.keyDown(screen.getByRole('dialog', { name: 'Tạm dừng' }), { key: 'Escape' });
+    expect(onResume).toHaveBeenCalledTimes(2);
+    expect(screen.getByRole('link', { name: /Về trang chủ/ }).getAttribute('href')).toBe('/profiles');
+  });
+
+  it('remembers sound on/off on this device, on by default', () => {
+    expect(readSoundOn()).toBe(true);
+    renderPause();
+    const sound = screen.getByRole('button', { name: /Âm thanh: Bật/ });
+    fireEvent.click(sound);
+    expect(sound.getAttribute('aria-pressed')).toBe('false');
+    expect(readSoundOn()).toBe(false);
+  });
+
+  it('still works when the browser blocks storage', () => {
+    vi.spyOn(Storage.prototype, 'getItem').mockImplementation(() => {
+      throw new Error('blocked');
+    });
+    vi.spyOn(Storage.prototype, 'setItem').mockImplementation(() => {
+      throw new Error('blocked');
+    });
+    renderPause();
+    fireEvent.click(screen.getByRole('button', { name: /Âm thanh: Bật/ }));
+    expect(screen.getByRole('button', { name: /Âm thanh: Tắt/ })).toBeTruthy();
+  });
+});
+
+describe('OfflineBanner', () => {
+  it('retries once per press and shows that it is reconnecting', async () => {
+    let finish: () => void = () => undefined;
+    const onRetry = vi.fn(() => new Promise<void>((resolve) => (finish = resolve)));
+    render(<OfflineBanner onRetry={onRetry} />);
+    expect(screen.getByRole('dialog', { name: 'Mất kết nối mạng' })).toBeTruthy();
+    fireEvent.click(screen.getByRole('button', { name: 'Thử kết nối lại' }));
+    const busy = screen.getByRole('button', { name: 'Đang kết nối lại…' }) as HTMLButtonElement;
+    expect(busy.disabled).toBe(true);
+    finish();
+    expect(await screen.findByRole('button', { name: 'Thử kết nối lại' })).toBeTruthy();
+    expect(onRetry).toHaveBeenCalledTimes(1);
+  });
+});
