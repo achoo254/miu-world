@@ -1,0 +1,19 @@
+{
+  "model": "jev-1.13.0",
+  "usage": {
+    "input_tokens": 665,
+    "output_tokens": 37
+  },
+  "results": {
+    "deploy_staging": {
+      "stakes": "medium",
+      "choice": "deploy_now",
+      "confidence": 0.55,
+      "probabilities": {
+        "wait_for_owner": 0.23,
+        "deploy_now": 0.77
+      },
+      "decision": "escalate"
+    }
+  }
+}
