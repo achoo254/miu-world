@@ -2,7 +2,7 @@ import { eq } from 'drizzle-orm';
 import { Router } from 'express';
 import { levelFromXp } from '@miu/quest/level';
 import { CharacterDto, CharacterUpdate } from '@miu/schema/game';
-import type { AccessoryUnlock } from '@miu/voxel/accessory-schema';
+import { isAccessoryOpen } from '@miu/voxel/accessory-schema';
 import { activeChildId, requireParent } from '../auth/auth-context';
 import type { ContentCatalog } from '../content/content-catalog';
 import type { Db } from '../db/client';
@@ -10,12 +10,6 @@ import { characters } from '../db/schema';
 import { HttpError, parseInput } from '../http-error';
 import { completedQuestIds } from '../quest/quest-access';
 import { totalXp } from '../reward/reward-ledger';
-
-/** An item opens once the child reaches its level (from ledger XP) and has finished its quest. */
-export function isAccessoryOpen(unlock: AccessoryUnlock | undefined, level: number, completed: ReadonlySet<string>): boolean {
-  if (!unlock) return true;
-  return (unlock.level === undefined || level >= unlock.level) && (unlock.quest === undefined || completed.has(unlock.quest));
-}
 
 export interface CharacterRouteDeps {
   db: Db;

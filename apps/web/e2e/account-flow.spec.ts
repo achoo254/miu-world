@@ -22,7 +22,7 @@ test.afterAll(() => {
   if (REVIEW_SHOTS) execFileSync('pnpm', ['-s', 'assets:manifest'], { cwd: REPO_ROOT, stdio: 'inherit', shell: true });
 });
 
-test('Google sign-in → set PIN → consent → create profile → pick profile → play → meet the parrot', async ({ page }) => {
+test('Google sign-in → set PIN → consent → create profile → pick profile → create character → play → meet the parrot', async ({ page }) => {
   const consoleErrors: string[] = [];
   page.on('pageerror', (err) => consoleErrors.push(err.message));
 
@@ -53,6 +53,12 @@ test('Google sign-in → set PIN → consent → create profile → pick profile
   await expect(page.getByRole('heading', { name: 'Ai đang chơi?' })).toBeVisible();
   await shot(page, '05-profiles');
   await page.getByRole('button', { name: 'Thỏ Bông' }).click();
+  // A new profile creates its character before playing (details in creator.spec.ts).
+  await expect(page).toHaveURL(/\/create$/);
+  await page.getByRole('button', { name: /Mèo/ }).click();
+  await page.getByLabel('Tên nhân vật').selectOption('Bông');
+  await shot(page, '05b-creator');
+  await page.getByRole('button', { name: /Vào thế giới/ }).click();
   await expect(page).toHaveURL(/\/play$/);
   await waitReady(page);
   await expect(page.locator('canvas')).toHaveCount(1);

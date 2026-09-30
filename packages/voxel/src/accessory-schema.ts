@@ -37,6 +37,8 @@ const layersSchema = z.object({
 export const accessorySchema = z
   .object({
     id: itemId,
+    /** Name the child reads in the Character Creator. */
+    name: z.string().min(1),
     slot: z.enum(ACCESSORY_SLOTS),
     unlock: unlockSchema.optional(),
     attachNode: z.string().min(1),
@@ -80,9 +82,16 @@ export function parseAccessory(json: unknown): AccessoryDef {
   return accessorySchema.parse(json);
 }
 
+/** An item opens once the child reaches its level and has finished its quest (server-enforced; the UI mirrors it). */
+export function isAccessoryOpen(unlock: AccessoryUnlock | undefined, level: number, completed: ReadonlySet<string>): boolean {
+  if (!unlock) return true;
+  return (unlock.level === undefined || level >= unlock.level) && (unlock.quest === undefined || completed.has(unlock.quest));
+}
+
 /** A colour variant sold as its own item: the base accessory's shape with one of its palette variants. */
 export const accessoryVariantSchema = z.strictObject({
   id: itemId,
+  name: z.string().min(1),
   variantOf: itemId,
   variant: z.string().min(1),
   unlock: unlockSchema.optional(),
@@ -92,6 +101,7 @@ export type AccessoryVariantDef = z.infer<typeof accessoryVariantSchema>;
 /** One wearable item of the catalogue, as the character, the creator and the server see it. */
 export interface AccessoryItem {
   id: string;
+  name: string;
   slot: AccessoryDef['slot'];
   /** Geometry and palette source (the base accessory for a colour variant). */
   def: AccessoryDef;
@@ -124,12 +134,12 @@ export function buildAccessoryCatalog(files: readonly unknown[]): Map<string, Ac
     }
   }
   const items = new Map<string, AccessoryItem>();
-  for (const def of bases.values()) items.set(def.id, { id: def.id, slot: def.slot, def, unlock: def.unlock });
+  for (const def of bases.values()) items.set(def.id, { id: def.id, name: def.name, slot: def.slot, def, unlock: def.unlock });
   for (const v of variants) {
     const def = bases.get(v.variantOf);
     if (!def) throw new Error(`${v.id}: variantOf ${v.variantOf} is not a full accessory`);
     if (!(v.variant in def.variants)) throw new Error(`${v.id}: ${v.variantOf} has no variant "${v.variant}"`);
-    items.set(v.id, { id: v.id, slot: def.slot, def, variant: v.variant, unlock: v.unlock });
+    items.set(v.id, { id: v.id, name: v.name, slot: def.slot, def, variant: v.variant, unlock: v.unlock });
   }
   return items;
 }

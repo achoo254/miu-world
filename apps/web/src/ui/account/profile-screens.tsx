@@ -4,9 +4,11 @@ import { useCallback, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { z } from 'zod';
 import { ChildProfileDto, MeResponse } from '@miu/schema/account';
+import { CharacterDto } from '@miu/schema/game';
 import { NameList } from '@miu/schema/content';
 import displayNamesJson from '../../../../../content/names/child-display-names.json';
 import { api, errorMessage } from '../api-client';
+import { isFreshCharacter } from '../creator/fresh-character';
 import { Icon, MiuArt } from '../kit/art';
 import { buttonClass } from '../kit/button';
 import { MiuOnIsland, SkyScene } from '../kit/sky-scene';
@@ -57,8 +59,9 @@ export function ProfilePickerScreen() {
   async function choose(id: string) {
     try {
       await api('POST', `/children/${id}/select`, z.object({ activeChildId: z.uuid() }));
+      const character = await api('GET', '/character', CharacterDto);
       await refresh();
-      navigate('/play');
+      navigate(isFreshCharacter(character) ? '/create' : '/play');
     } catch (err) {
       setSelectError(errorMessage(err));
     }

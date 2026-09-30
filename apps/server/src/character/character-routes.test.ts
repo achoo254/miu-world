@@ -1,9 +1,10 @@
 import { eq } from 'drizzle-orm';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
-import { buildAccessoryCatalog } from '@miu/voxel/accessory-schema';
+import { buildAccessoryCatalog, isAccessoryOpen } from '@miu/voxel/accessory-schema';
 import { FIXTURE_CONTENT, createTestApp, parentWithChild, type Agent, type TestApp } from '../../test/test-app';
+import { DEFAULT_CHARACTER_NAME as WEB_DEFAULT_NAME } from '../../../web/src/ui/creator/fresh-character';
+import { DEFAULT_CHARACTER_NAME } from '../child-profile/child-profile-routes';
 import * as t from '../db/schema';
-import { isAccessoryOpen } from './character-routes';
 
 // Real accessories plus two locked test items keyed to the fixture quests (quest-a: 60 XP, then quest-b: 100 XP → Lv.2).
 const content = {
@@ -12,9 +13,9 @@ const content = {
     ...FIXTURE_CONTENT.accessories,
     ...buildAccessoryCatalog([
       ...[...FIXTURE_CONTENT.accessories.values()].filter((item) => !item.variant).map((item) => item.def),
-      { id: 'hat-after-quest-a', variantOf: 'hat-witch-pink', variant: 'mint', unlock: { quest: 'quest-a' } },
-      { id: 'hat-at-level-2', variantOf: 'hat-witch-pink', variant: 'night', unlock: { level: 2 } },
-      { id: 'pack-at-level-9', variantOf: 'backpack-brown', variant: 'red', unlock: { level: 9 } },
+      { id: 'hat-after-quest-a', name: 'Món thử', variantOf: 'hat-witch-pink', variant: 'mint', unlock: { quest: 'quest-a' } },
+      { id: 'hat-at-level-2', name: 'Món thử', variantOf: 'hat-witch-pink', variant: 'night', unlock: { level: 2 } },
+      { id: 'pack-at-level-9', name: 'Món thử', variantOf: 'backpack-brown', variant: 'red', unlock: { level: 9 } },
     ]),
   ]),
 };
@@ -49,6 +50,10 @@ async function finishQuestB(agent: Agent): Promise<void> {
 }
 
 const wear = (agent: Agent, equipped: string[]) => agent.put('/api/character').send({ name: 'Miu', equipped });
+
+it('the web app knows the default character name, to send a fresh profile to the Character Creator', () => {
+  expect(WEB_DEFAULT_NAME).toBe(DEFAULT_CHARACTER_NAME);
+});
 
 describe('isAccessoryOpen', () => {
   it('needs both the level and the quest when both are set', () => {

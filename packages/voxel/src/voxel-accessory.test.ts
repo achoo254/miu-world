@@ -9,6 +9,7 @@ const CONTENT = path.resolve(import.meta.dirname, '../../../content/accessories'
 function base(overrides: Record<string, unknown> = {}): Record<string, unknown> {
   return {
     id: 'test',
+    name: 'Mũ thử',
     slot: 'hat',
     attachNode: 'head',
     voxelSize: 0.5,
@@ -78,7 +79,7 @@ describe('accessory catalogue', () => {
   const hat = base({ id: 'hat-a', variants: { blue: { a: '#0000ff' } } });
 
   it('turns a variant file into an item with the base shape, slot and its own unlock', () => {
-    const items = buildAccessoryCatalog([hat, { id: 'hat-a-blue', variantOf: 'hat-a', variant: 'blue', unlock: { level: 3 } }]);
+    const items = buildAccessoryCatalog([hat, { id: 'hat-a-blue', name: 'Màu thử', variantOf: 'hat-a', variant: 'blue', unlock: { level: 3 } }]);
     const blue = items.get('hat-a-blue');
     expect(blue?.def.id).toBe('hat-a');
     expect(blue?.variant).toBe('blue');
@@ -88,9 +89,9 @@ describe('accessory catalogue', () => {
 
   it.each([
     ['a duplicate id', [hat, hat], /duplicate/],
-    ['a variant of an unknown accessory', [{ id: 'x', variantOf: 'ghost', variant: 'blue' }], /not a full accessory/],
-    ['an unknown colour', [hat, { id: 'x', variantOf: 'hat-a', variant: 'green' }], /no variant "green"/],
-    ['a variant of a variant', [hat, { id: 'x', variantOf: 'hat-a', variant: 'blue' }, { id: 'y', variantOf: 'x', variant: 'blue' }], /not a full accessory/],
+    ['a variant of an unknown accessory', [{ id: 'x', name: 'Màu thử', variantOf: 'ghost', variant: 'blue' }], /not a full accessory/],
+    ['an unknown colour', [hat, { id: 'x', name: 'Màu thử', variantOf: 'hat-a', variant: 'green' }], /no variant "green"/],
+    ['a variant of a variant', [hat, { id: 'x', name: 'Màu thử', variantOf: 'hat-a', variant: 'blue' }, { id: 'y', name: 'Màu thử', variantOf: 'x', variant: 'blue' }], /not a full accessory/],
     ['an empty unlock', [base({ unlock: {} })], /level or a quest/],
   ])('refuses %s', (_, files, message) => {
     expect(() => buildAccessoryCatalog(files)).toThrow(message);

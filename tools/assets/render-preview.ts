@@ -1,11 +1,12 @@
 /// <reference lib="dom" />
 // Renders review PNGs (character turnaround + one frame per clip, accessories, map) by driving the
 // web app's preview.html in headless Chromium. Output: assets/generated/review/<group>/*.png
-import { mkdir, rm } from 'node:fs/promises';
+import { mkdir, readFile, readdir, rm } from 'node:fs/promises';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { chromium, type Browser } from '@playwright/test';
 import { createServer, type ViteDevServer } from 'vite';
+import { buildAccessoryCatalog } from '../../packages/voxel/src/accessory-schema';
 import { ASSETS_DIR, REPO_ROOT } from './asset-lib';
 import { writeManifest } from './build-manifest';
 import { readCharacterSpecs, rigAnimationNames } from './kitbash-character';
@@ -61,6 +62,13 @@ async function accessoryShots(): Promise<Shot[]> {
   }));
   for (const [anim, t] of [['walk', 0.17], ['sprint', 0.2], ['cheer', 0.3], ['jump', 0.45]] as const) {
     shots.push({ file: `accessories/miu-outfit-${anim}.png`, query: { ...base, anim, t, yaw: 35, acc: outfit, size: 256 } });
+  }
+  // One shot per wearable item (colour variants included), from the side that shows it best.
+  const dir = path.join(REPO_ROOT, 'content/accessories');
+  const files = (await readdir(dir)).filter((f) => f.endsWith('.json')).sort();
+  const catalog = buildAccessoryCatalog(await Promise.all(files.map(async (f) => JSON.parse(await readFile(path.join(dir, f), 'utf8')) as unknown)));
+  for (const item of catalog.values()) {
+    shots.push({ file: `accessories/item-${item.id}.png`, query: { ...base, anim: 'idle', t: 0, yaw: item.slot === 'back' ? 200 : 35, acc: item.id, size: 256 } });
   }
   for (const [hat, pack] of [['night', 'red'], ['mint', 'green']] as const) {
     shots.push({

@@ -6,6 +6,8 @@ const FLUENT = 'packs/fluent-emoji/1ffb34c752ec/icons';
 
 /** Fluent Emoji 3D (MIT), the icon set chosen in docs/design-guidelines.md. */
 export const UI_ICONS = {
+  backpack: `${FLUENT}/backpack.png`,
+  catFace: `${FLUENT}/cat-face.png`,
   gift: `${FLUENT}/gift.png`,
   glowingStar: `${FLUENT}/glowing-star.png`,
   heart: `${FLUENT}/heart.png`,

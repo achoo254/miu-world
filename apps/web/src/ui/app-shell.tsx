@@ -8,6 +8,7 @@ import { LoginScreen, RegisterScreen, SetPinScreen } from './account/sign-in-scr
 import { Logo, MiuOnIsland, SkyScene } from './kit/sky-scene';
 // three.js is only needed on /play: keep it out of the sign-in and profile bundle.
 const PlayScreen = lazy(() => import('./play/play-screen').then((m) => ({ default: m.PlayScreen })));
+const CreatorScreen = lazy(() => import('./creator/creator-screen').then((m) => ({ default: m.CreatorScreen })));
 
 function Loading() {
   return (
@@ -75,6 +76,7 @@ export function AppRoutes() {
       <Route path="/consent" element={<RequireParent needsConsent={false}><ConsentScreen /></RequireParent>} />
       <Route path="/profiles" element={<RequireParent><ProfilePickerScreen /></RequireParent>} />
       <Route path="/parent" element={<RequireParent><ParentAreaScreen /></RequireParent>} />
+      <Route path="/create" element={<RequireParent><RequireActiveChild><Suspense fallback={<Loading />}><CreatorScreen /></Suspense></RequireActiveChild></RequireParent>} />
       <Route path="/play" element={<RequireParent><RequireActiveChild><Suspense fallback={<Loading />}><PlayScreen /></Suspense></RequireActiveChild></RequireParent>} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>

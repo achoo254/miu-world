@@ -48,6 +48,9 @@ const MESSAGES: Record<string, string> = {
   'not-found': 'Không tìm thấy hồ sơ.',
   'pin-already-set': 'Mã PIN đã được đặt trước đó.',
   'pin-not-set': 'Cần đặt mã PIN phụ huynh trước.',
+  'equipment-locked': 'Món đồ này chưa mở khóa.',
+  'invalid-equipment': 'Món đồ này không mặc được.',
+  'invalid-character-name': 'Hãy chọn tên trong danh sách.',
 };
 
 export function errorMessage(err: unknown): string {

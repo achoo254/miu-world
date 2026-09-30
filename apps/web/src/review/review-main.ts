@@ -48,6 +48,7 @@ const UI_STEPS: Record<string, string> = {
   '03-consent': 'Đồng ý của phụ huynh (bản nháp)',
   '04-parent-area': 'Khu phụ huynh: tạo hồ sơ từ danh sách tên',
   '05-profiles': 'Bé chọn hồ sơ',
+  '05b-creator': 'Hồ sơ mới: tạo nhân vật, chọn tên trước khi chơi',
   '06-play-parrot': 'Vào game, đứng gần Vẹt: nhãn React',
   '07-parent-gate': 'Bé mở khu phụ huynh: cần PIN',
 };
