@@ -52,6 +52,16 @@ describe('content:check', () => {
     expect(checkContent(dir).issues.join('\n')).toMatch(/level goes with status/);
   });
 
+  it('flags a privacy page that does not match the consent parents accept', () => {
+    const consent = path.join(dir, 'legal/consent-vi.json');
+    writeFileSync(consent, readFileSync(consent, 'utf8').replace('"version": "v1"', '"version": "v2"'));
+    expect(checkContent(dir).issues).toEqual([
+      'content/legal/privacy-vi.json describes consent v1, but parents are asked to accept v2: update the page with the consent',
+    ]);
+    writeFileSync(path.join(dir, 'legal/privacy-vi.json'), JSON.stringify({ title: 'x', updatedOn: 'hôm nay', consentVersion: 'v2', contactEmail: null, sections: [] }));
+    expect(checkContent(dir).issues.join('\n')).toMatch(/privacy-vi\.json: .*updatedOn/s);
+  });
+
   it('flags an accessory that unlocks with an unknown quest', () => {
     writeFileSync(path.join(dir, 'accessories/hat-ghost.json'), JSON.stringify({ id: 'hat-ghost', name: 'Mũ ma', variantOf: 'hat-witch-pink', variant: 'mint', unlock: { quest: 'forest-ch9' } }));
     expect(checkContent(dir).issues).toEqual(['accessory hat-ghost unlocks with unknown quest forest-ch9']);

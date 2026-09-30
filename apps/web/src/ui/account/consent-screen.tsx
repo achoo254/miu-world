@@ -1,7 +1,7 @@
 // NEW SCREEN (Master Plan §6, §9): đồng ý của phụ huynh trước khi tạo hồ sơ trẻ. Chưa có mock riêng;
 // theo visual language M1–M3, hướng A (đảo mây kẹo hồng).
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { MeResponse } from '@miu/schema/account';
 import { ConsentDocument } from '@miu/schema/content';
 import { api, errorMessage } from '../api-client';
@@ -43,6 +43,11 @@ export function ConsentScreen() {
             {policy.paragraphs.map((p) => (
               <p key={p}>{p}</p>
             ))}
+            <p>
+              <Link to="/privacy" data-id="consent-privacy">
+                Đọc trang Quyền riêng tư
+              </Link>
+            </p>
             {state.me.parentGateOpen ? (
               <form className="form" onSubmit={(e) => void form.onSubmit(e)}>
                 {form.error ? <p role="alert" className="error">{form.error}</p> : null}

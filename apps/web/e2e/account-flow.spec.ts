@@ -1,6 +1,7 @@
 // Whole parent → child journey through the real UI: Google sign-in (local fake), PIN, consent, create a profile, hand the
 // device to the child, play, meet the parrot. Fake data only (in-memory database).
 import { execFileSync } from 'node:child_process';
+import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { expect, test, type Page } from '@playwright/test';
@@ -26,6 +27,9 @@ test('Google sign-in → set PIN → consent → create profile → pick profile
   const consoleErrors: string[] = [];
   page.on('pageerror', (err) => consoleErrors.push(err.message));
 
+  // The privacy page is public: a parent can read it before signing in.
+  await page.goto('/privacy');
+  await expect(page.getByRole('heading', { name: 'Quyền riêng tư của Miu World' })).toBeVisible();
   await page.goto('/');
   await expect(page.getByRole('heading', { name: 'Đăng nhập phụ huynh' })).toBeVisible();
   await expect(page.locator('input[type="password"]')).toHaveCount(0); // no password sign-in in the UI
@@ -39,7 +43,9 @@ test('Google sign-in → set PIN → consent → create profile → pick profile
   await shot(page, '02-set-pin');
   await page.getByRole('button', { name: 'Lưu mã PIN' }).click();
 
-  await expect(page.locator('[data-id="consent-draft"]')).toBeVisible();
+  await expect(page.locator('[data-id="consent-text"]')).toBeVisible();
+  await expect(page.locator('[data-id="consent-draft"]')).toHaveCount(0); // the shipped consent is final
+  await expect(page.locator('[data-id="consent-privacy"]')).toBeVisible();
   await shot(page, '03-consent');
   await page.getByRole('button', { name: 'Tôi là phụ huynh và đồng ý' }).click();
 
@@ -76,6 +82,22 @@ test('Google sign-in → set PIN → consent → create profile → pick profile
   await expect(page.getByLabel('Nhập mã PIN phụ huynh')).toBeVisible();
   await shot(page, '07-parent-gate');
   await expect(page.getByRole('heading', { name: 'Tạo hồ sơ cho bé' })).toHaveCount(0);
+
+  // The parent downloads what the server keeps, then deletes the account.
+  await page.getByLabel('Nhập mã PIN phụ huynh').fill('2468');
+  await page.getByRole('button', { name: 'Mở khóa' }).click();
+  const download = page.waitForEvent('download');
+  await page.getByRole('button', { name: 'Tải dữ liệu của tôi' }).click();
+  const file = await download;
+  expect(file.suggestedFilename()).toMatch(/^miu-world-du-lieu-\d{4}-\d{2}-\d{2}\.json$/);
+  const exported = JSON.parse(readFileSync(await file.path(), 'utf8')) as { parent: { signIn: string }; children: Array<{ displayName: string; character: { name: string } }> };
+  expect(exported.parent.signIn).toBe('google');
+  expect(exported.children.map((c) => [c.displayName, c.character.name])).toEqual([['Thỏ Bông', 'Bông']]);
+  await page.getByRole('button', { name: 'Xóa tài khoản' }).click();
+  await shot(page, '08-delete-account');
+  await page.getByRole('button', { name: 'Xóa hẳn tài khoản' }).click();
+  await expect(page.getByRole('heading', { name: 'Đăng nhập phụ huynh' })).toBeVisible();
+  expect((await page.request.get('/api/auth/me')).status()).toBe(401);
 
   expect(consoleErrors).toEqual([]);
 });

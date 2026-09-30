@@ -9,6 +9,8 @@ Group=miu
 # NODE_ENV, PORT (8797: 8787 is taken on .65), DATABASE_URL, ALLOWED_ORIGINS, GOOGLE_*: written by
 # deploy.sh setup, never in the repo.
 EnvironmentFile=/etc/miu/production.env
+# Own journal with a 14-day retention (journald-miu.conf); logs carry ids only, never email or names.
+LogNamespace=miu
 WorkingDirectory=/opt/miu/current
 ExecStart=/opt/node22/bin/node --enable-source-maps /opt/miu/current/apps/server/dist/server/index.mjs
 Restart=on-failure

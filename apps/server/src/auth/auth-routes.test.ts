@@ -184,7 +184,7 @@ describe('parent gate (PIN)', () => {
     await agent.post('/api/parent-gate/lock').expect(200);
     await agent.post('/api/consents').send({ policyVersion: t.content.consent.version }).expect(403);
     const policy = await agent.get('/api/consents/policy').expect(200);
-    expect(policy.body).toMatchObject({ version: t.content.consent.version, requiresLegalReview: true });
+    expect(policy.body).toMatchObject({ version: t.content.consent.version, requiresLegalReview: false });
   });
 });
 

@@ -1,10 +1,12 @@
 [Unit]
-Description=Miu World production database backup (daily dump, 14 kept)
+Description=Miu World production database backup (daily dump, 14 days kept)
 After=postgresql.service
 Requires=postgresql.service
 
 [Service]
 Type=oneshot
 User=postgres
-# Custom-format dump (restore: see docs/deployment-guide.md); keep the 14 newest daily files.
-ExecStart=/bin/sh -c 'pg_dump -Fc miu > /var/backups/miu/daily-$(date +%%Y%%m%%d).dump && ls -1t /var/backups/miu/daily-*.dump | tail -n +15 | xargs -r rm -f'
+# Custom-format dump (restore: see docs/deployment-guide.md). /privacy promises that deleted data is
+# gone from backups within 14 days: keep the 14 newest daily files, and drop any dump (daily or the
+# before-<release> ones) older than that.
+ExecStart=/bin/sh -c 'pg_dump -Fc miu > /var/backups/miu/daily-$(date +%%Y%%m%%d).dump && ls -1t /var/backups/miu/daily-*.dump | tail -n +15 | xargs -r rm -f && find /var/backups/miu -maxdepth 1 -name "*.dump" -mtime +13 -delete'

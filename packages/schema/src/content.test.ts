@@ -1,6 +1,6 @@
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
-import { ConsentDocument, NameList, QuestDefinition, SkillCatalog } from './content';
+import { ConsentDocument, NameList, PrivacyDocument, QuestDefinition, SkillCatalog } from './content';
 
 describe('content schema', () => {
   it('validates the shipped skill catalogue', () => {
@@ -289,10 +289,19 @@ describe('shipped account content', () => {
     expect(NameList.parse(load('names/character-names.json')).names).toContain('Miu');
   });
 
-  it('marks the draft consent as needing legal review', () => {
+  it('ships a final consent that states what is kept and how to delete it', () => {
     const doc = ConsentDocument.parse(load('legal/consent-vi.json'));
-    expect(doc.requiresLegalReview).toBe(true);
-    expect(doc.version).toBe('draft-3');
-    expect(doc.paragraphs.join(' ')).toMatch(/không lưu nội dung câu trả lời/);
+    expect(doc.requiresLegalReview).toBe(false);
+    expect(doc.version).toBe('v1');
+    const text = doc.paragraphs.join(' ');
+    expect(text).toMatch(/không lưu nội dung câu trả lời/);
+    expect(text).toMatch(/xóa hẳn tài khoản/);
+    expect(text).toMatch(/14 ngày/);
+  });
+
+  it('ships a privacy page for the same consent version', () => {
+    const page = PrivacyDocument.parse(load('legal/privacy-vi.json'));
+    expect(page.consentVersion).toBe(ConsentDocument.parse(load('legal/consent-vi.json')).version);
+    expect(page.sections.flatMap((s) => s.paragraphs).join(' ')).toMatch(/tự soạn/);
   });
 });

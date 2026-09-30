@@ -2,6 +2,7 @@ import express, { type ErrorRequestHandler } from 'express';
 import helmet from 'helmet';
 import type { HealthResponse } from '@miu/schema/health';
 import type { Worksheet } from '@miu/schema/worksheet';
+import { accountRoutes } from './auth/account-routes';
 import { loadSession } from './auth/auth-context';
 import { authRoutes } from './auth/auth-routes';
 import { googleAuthRoutes } from './auth/google-auth-routes';
@@ -73,6 +74,7 @@ export function createApp({ config, db, content = loadContentCatalog(), workshee
   });
   api.use(authRoutes({ db, config, content, clock }));
   api.use(googleAuthRoutes({ db, config, clock, fetchImpl }));
+  api.use(accountRoutes({ db, config, clock }));
   api.use(childProfileRoutes({ db, content, clock }));
   api.use(characterRoutes({ db, content }));
   api.use(questRoutes({ db, content, clock }));

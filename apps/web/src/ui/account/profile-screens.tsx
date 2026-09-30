@@ -12,6 +12,7 @@ import { isFreshCharacter } from '../creator/fresh-character';
 import { Icon, MiuArt } from '../kit/art';
 import { buttonClass } from '../kit/button';
 import { MiuOnIsland, SkyScene } from '../kit/sky-scene';
+import { AccountDataPanel } from './account-data-panel';
 import { useAccount } from './account-context';
 import { ParentGate, SignOutButton } from './parent-gate';
 import { useSubmit } from './use-submit';
@@ -252,6 +253,7 @@ export function ParentAreaScreen() {
             </section>
           )}
         </div>
+        <AccountDataPanel />
       </main>
     </SkyScene>
   );

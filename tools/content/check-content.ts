@@ -6,7 +6,7 @@ import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { CONTENT_DIR, loadContentCatalog, readQuestDefinitions } from '../../apps/server/src/content/content-catalog';
 import { playerTextIssues } from '../../packages/quest/src/player-name';
-import { stepTargets, type QuestDefinition } from '../../packages/schema/src/content';
+import { PrivacyDocument, stepTargets, type QuestDefinition } from '../../packages/schema/src/content';
 import { Item } from '../../packages/schema/src/item';
 import { RegionCatalog } from '../../packages/schema/src/region';
 import { UI_ICONS } from '../../apps/web/src/ui/kit/ui-art';
@@ -32,6 +32,7 @@ const CATALOGUE_FILES = [
 const ASSET_TOOL_FILES = ['blocks.json', 'characters.json', 'palette.json', 'faces/', 'animations/'];
 /** Content only the web app reads; validated here. */
 const REGIONS_FILE = 'world/regions.json';
+const PRIVACY_FILE = 'legal/privacy-vi.json';
 const ITEMS_FOLDER = 'items/';
 
 /**
@@ -114,7 +115,7 @@ const readByCatalogue = (rel: string) =>
   CATALOGUE_FILES.some((o) => (o.endsWith('/') ? inFolder(rel, o) && rel.endsWith('.json') : rel === o));
 const readByAssetTools = (rel: string) => ASSET_TOOL_FILES.some((o) => (o.endsWith('/') ? inFolder(rel, o) : rel === o));
 const readByCurriculum = (rel: string) => CURRICULUM_FOLDERS.some((o) => inFolder(rel, o) && rel.endsWith('.json'));
-const readByWeb = (rel: string) => rel === REGIONS_FILE || (inFolder(rel, ITEMS_FOLDER) && rel.endsWith('.json'));
+const readByWeb = (rel: string) => rel === REGIONS_FILE || rel === PRIVACY_FILE || (inFolder(rel, ITEMS_FOLDER) && rel.endsWith('.json'));
 
 /** Items parse, use a shipped UI icon, file name = id, and every item a quest rewards exists. */
 export function checkItems(dir: string, files: readonly string[], quests: Iterable<QuestDefinition>): string[] {
@@ -158,6 +159,16 @@ export function checkRegions(raw: unknown, quests: Iterable<QuestDefinition>): s
   return issues;
 }
 
+/** The public privacy page parses and describes the consent version parents are asked to accept. */
+export function checkPrivacy(raw: unknown, consentVersion: string): string[] {
+  const parsed = PrivacyDocument.safeParse(raw);
+  if (!parsed.success) return [`content/${PRIVACY_FILE}: ${parsed.error.message}`];
+  if (parsed.data.consentVersion !== consentVersion) {
+    return [`content/${PRIVACY_FILE} describes consent ${parsed.data.consentVersion}, but parents are asked to accept ${consentVersion}: update the page with the consent`];
+  }
+  return [];
+}
+
 export function checkContent(dir: string = CONTENT_DIR): ContentReport {
   const issues: string[] = [];
   const files = listFiles(dir);
@@ -177,6 +188,9 @@ export function checkContent(dir: string = CONTENT_DIR): ContentReport {
     issues.push(...checkPlayerText(readQuestDefinitions(path.join(dir, 'quests'))));
     issues.push(...checkItems(dir, files, catalog.quests.values()));
     issues.push(...checkRegions(JSON.parse(readFileSync(path.join(dir, REGIONS_FILE), 'utf8')), catalog.quests.values()));
+    const privacy: unknown = JSON.parse(readFileSync(path.join(dir, PRIVACY_FILE), 'utf8'));
+    issues.push(...checkPrivacy(privacy, catalog.consent.version));
+    if (PrivacyDocument.safeParse(privacy).data?.contactEmail === null) warnings.push(`content/${PRIVACY_FILE} has no contact email yet`);
     for (const item of catalog.accessories.values()) {
       const quest = item.unlock?.quest;
       if (quest && !catalog.quests.has(quest)) issues.push(`accessory ${item.id} unlocks with unknown quest ${quest}`);

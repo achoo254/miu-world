@@ -145,6 +145,55 @@ describe('account flow', () => {
     expect(link.getAttribute('href')).toBe('/api/auth/google/start?intent=reauth');
   });
 
+  it('shows the privacy page to a visitor who is not signed in, linked from the login screen', async () => {
+    stubApi({ 'GET /api/auth/me': () => ({ status: 401, body: { error: 'unauthenticated' } }) });
+    renderAt('/login');
+    fireEvent.click(await screen.findByRole('link', { name: 'Quyền riêng tư' }));
+    expect(await screen.findByRole('heading', { name: 'Quyền riêng tư của Miu World' })).toBeTruthy();
+    expect(screen.getByRole('heading', { name: 'Quyền của bạn' })).toBeTruthy();
+    expect(screen.getByText(/tự soạn/)).toBeTruthy();
+  });
+
+  it('deletes the account only after a second confirmation, then signs out', async () => {
+    const calls = stubApi({
+      'GET /api/auth/me': () => ({ status: 200, body: me({ parentGateOpen: true }) }),
+      'GET /api/children': () => ({ status: 200, body: [] }),
+      'DELETE /api/account': () => ({ status: 204 }),
+    });
+    renderAt('/parent');
+    fireEvent.click(await screen.findByRole('button', { name: 'Xóa tài khoản' }));
+    expect(calls.some((c) => c.key === 'DELETE /api/account')).toBe(false);
+    fireEvent.click(screen.getByRole('button', { name: 'Không' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Xóa tài khoản' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Xóa hẳn tài khoản' }));
+    expect(await screen.findByRole('heading', { name: 'Đăng nhập phụ huynh' })).toBeTruthy();
+    expect(calls.filter((c) => c.key === 'DELETE /api/account')).toHaveLength(1);
+  });
+
+  it('downloads the account data as a JSON file', async () => {
+    const exported = { exportedAt: '2026-09-30T06:00:00.000Z', parent: { email: PARENT.email, signIn: 'google', createdAt: '2026-09-01T00:00:00.000Z' }, consents: [], sessions: [], children: [] };
+    stubApi({
+      'GET /api/auth/me': () => ({ status: 200, body: me({ parentGateOpen: true }) }),
+      'GET /api/children': () => ({ status: 200, body: [] }),
+      'GET /api/account/export': () => ({ status: 200, body: exported }),
+    });
+    // jsdom has no object URLs: record the file the page hands to the browser instead.
+    const blobs: Blob[] = [];
+    URL.createObjectURL = (blob: Blob) => {
+      blobs.push(blob);
+      return 'blob:export';
+    };
+    URL.revokeObjectURL = () => undefined;
+    const click = vi.spyOn(HTMLAnchorElement.prototype, 'click').mockImplementation(function (this: HTMLAnchorElement) {
+      expect(this.download).toBe('miu-world-du-lieu-2026-09-30.json');
+    });
+    renderAt('/parent');
+    fireEvent.click(await screen.findByRole('button', { name: 'Tải dữ liệu của tôi' }));
+    await vi.waitFor(() => expect(click).toHaveBeenCalledTimes(1));
+    expect(JSON.parse(await blobs[0]?.text() ?? '')).toEqual(exported);
+    click.mockRestore();
+  });
+
   it('shows the PIN prompt again when the server says the gate has closed', async () => {
     let gateOpen = true;
     stubApi({

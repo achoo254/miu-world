@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
 # Runs ON .65 as root (deploy.sh setup ships this directory to /tmp/miu-prod-setup). Idempotent.
 # .65 is shared with many other projects: this only adds Miu's own pieces (PostgreSQL 16 on
-# loopback, Node 22 in /opt, user `miu`, /opt/miu, /etc/miu, one systemd unit + backup timer, one
-# nginx server block) and never touches another project's service, port or config.
+# loopback, Node 22 in /opt, user `miu`, /opt/miu, /etc/miu, one systemd unit + backup timer, a
+# journal namespace, one nginx server block) and never touches another project's service, port or
+# config. The nginx access/error logs of the block are rotated by the host's own
+# /etc/logrotate.d/nginx (daily, 10 kept), inside the 14 days /privacy promises; the end of this
+# script checks that rule is still there.
 # Holds no secrets: the env file and the database password are written separately by deploy.sh.
 set -euo pipefail
 HERE="$(cd "$(dirname "$0")" && pwd)"
@@ -46,6 +49,8 @@ install -d -m 750 -o root -g miu /etc/miu
 install -d -m 700 -o postgres -g postgres /var/backups/miu
 
 install -m 644 "$HERE/miu-server.service" "$HERE/miu-backup.service" "$HERE/miu-backup.timer" /etc/systemd/system/
+# The API's own journal namespace (14 days); the host journal config is left alone.
+install -m 644 "$HERE/journald-miu.conf" /etc/systemd/journald@miu.conf
 systemctl daemon-reload
 systemctl enable -q miu-server
 systemctl enable -q --now miu-backup.timer
@@ -60,6 +65,11 @@ else
   rm -f /etc/nginx/conf.d/miu.conf
   nginx -t
   exit 1
+fi
+
+# /privacy promises nginx logs are gone within 14 days; that relies on the host rule above.
+if ! grep -q '^/var/log/nginx/\*.log' /etc/logrotate.d/nginx || ! grep -Eq '^\s*rotate ([1-9]|1[0-3])$' /etc/logrotate.d/nginx; then
+  echo "WARNING: /etc/logrotate.d/nginx no longer rotates /var/log/nginx/*.log daily with fewer than 14 kept; /privacy says 14 days" >&2
 fi
 
 echo "prod host ready: node $(/opt/node22/bin/node -v), $(psql --version | sed 's/ (.*//'), nginx block miu.conf"

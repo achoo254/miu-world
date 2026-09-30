@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Production deploy for Miu World on .65, run from a dev machine at the repo root.
 #   tools/deploy/production/deploy.sh setup     one-time/idempotent: Postgres 16, Node 22, unit, backup timer,
-#                                               nginx block, DB role, env file
+#                                               journal namespace, nginx block, DB role, env file
 #   tools/deploy/production/deploy.sh release   build, back up the DB, upload, switch, health-check
 # Production holds real children's data and .65 is shared: ask the owner before EVERY run
 # (docs/deployment-guide.md §1). Credentials come from $ALL_IN_ONE_STAGING_DEV (the .65 entry
@@ -86,7 +86,7 @@ release() {
     systemctl restart miu-server
     for i in \$(seq 1 30); do curl -fsS http://127.0.0.1:$PORT/api/health >/dev/null 2>&1 && { echo healthy; break; }; sleep 1; done
     if ! curl -fsS http://127.0.0.1:$PORT/api/health >/dev/null 2>&1; then
-      journalctl -u miu-server -n 40 --no-pager
+      journalctl --namespace=miu -u miu-server -n 40 --no-pager
       if [ -n \"\$prev\" ]; then ln -sfn \"\$prev\" /opt/miu/current && systemctl restart miu-server; echo \"rolled back to \$prev\"; fi
       exit 1
     fi

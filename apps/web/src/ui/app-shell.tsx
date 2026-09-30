@@ -5,6 +5,7 @@ import { AccountProvider, useAccount } from './account/account-context';
 import { ConsentScreen } from './account/consent-screen';
 import { ParentAreaScreen, ProfilePickerScreen } from './account/profile-screens';
 import { LoginScreen, RegisterScreen, SetPinScreen } from './account/sign-in-screens';
+import { PrivacyScreen } from './legal/privacy-screen';
 import { Logo, MiuOnIsland, SkyScene } from './kit/sky-scene';
 // three.js is only needed on /play: keep it out of the sign-in and profile bundle.
 const PlayScreen = lazy(() => import('./play/play-screen').then((m) => ({ default: m.PlayScreen })));
@@ -88,6 +89,7 @@ export function AppRoutes() {
       <Route path="/" element={<RequireParent>{<Navigate to="/profiles" replace />}</RequireParent>} />
       <Route path="/login" element={<SignedOutOnly><LoginScreen /></SignedOutOnly>} />
       <Route path="/register" element={<SignedOutOnly><RegisterScreen /></SignedOutOnly>} />
+      <Route path="/privacy" element={<PrivacyScreen />} />
       <Route path="/set-pin" element={<RequireParent needsPin={false} needsConsent={false}><SetPinScreen /></RequireParent>} />
       <Route path="/consent" element={<RequireParent needsConsent={false}><ConsentScreen /></RequireParent>} />
       <Route path="/profiles" element={<RequireParent><ProfilePickerScreen /></RequireParent>} />

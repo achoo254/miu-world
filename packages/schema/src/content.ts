@@ -503,7 +503,10 @@ export const NameList = z
   .refine((l) => new Set(l.names).size === l.names.length, { message: 'duplicate name' });
 export type NameList = z.infer<typeof NameList>;
 
-/** Parent consent text. `requiresLegalReview` stays true until legal counsel approves the wording. */
+/**
+ * Parent consent text. `requiresLegalReview` marks a draft that must not reach real users; a new
+ * `version` asks every parent to consent again.
+ */
 export const ConsentDocument = z.object({
   version: z.string().min(1).max(32),
   requiresLegalReview: z.boolean(),
@@ -511,6 +514,19 @@ export const ConsentDocument = z.object({
   paragraphs: z.array(z.string().min(1)).min(1),
 });
 export type ConsentDocument = z.infer<typeof ConsentDocument>;
+
+/** Public privacy page (`/privacy`), readable before signing in. */
+export const PrivacyDocument = z.object({
+  title: z.string().min(1),
+  /** Date of the last wording change, `YYYY-MM-DD`. */
+  updatedOn: z.iso.date(),
+  /** Consent version this page describes; content:check keeps the two in step. */
+  consentVersion: z.string().min(1).max(32),
+  /** Address for data requests; null until the owner publishes one (the page then points to the self-service tools). */
+  contactEmail: z.email().nullable(),
+  sections: z.array(z.object({ heading: z.string().min(1), paragraphs: z.array(z.string().min(1)).min(1) })).min(1),
+});
+export type PrivacyDocument = z.infer<typeof PrivacyDocument>;
 
 /**
  * Cumulative XP needed to reach each level: `thresholds[0]` is level 1 and must be 0.

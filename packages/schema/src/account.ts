@@ -50,3 +50,47 @@ export const MeResponse = z.object({
   pinSet: z.boolean(),
 });
 export type MeResponse = z.infer<typeof MeResponse>;
+
+const Instant = z.iso.datetime({ offset: true });
+
+/**
+ * "Tải dữ liệu của tôi": everything the server keeps about the account, as the parent downloads it.
+ * Secret hashes (PIN, password) and the session token hashes are left out; they identify nothing.
+ */
+export const AccountExport = z.object({
+  exportedAt: Instant,
+  parent: z.object({ email: z.string(), signIn: z.enum(['google', 'password']), createdAt: Instant }),
+  consents: z.array(z.object({ policyVersion: z.string(), acceptedAt: Instant })),
+  sessions: z.array(z.object({ createdAt: Instant, lastSeenAt: Instant, expiresAt: Instant })),
+  children: z.array(
+    z.object({
+      displayName: z.string(),
+      createdAt: Instant,
+      character: z.object({ species: z.string(), name: z.string(), equipped: z.array(z.string()) }).nullable(),
+      quests: z.array(
+        z.object({
+          questId: z.string(),
+          completedSteps: z.array(z.string()),
+          found: z.record(z.string(), z.array(z.string())),
+          completedAt: Instant.nullable(),
+          stars: z.number().nullable(),
+          xpAwarded: z.number().nullable(),
+        }),
+      ),
+      stepCounters: z.array(z.object({ questId: z.string(), stepId: z.string(), wrongCount: z.number(), answerViews: z.number() })),
+      rewards: z.array(
+        z.object({
+          source: z.string(),
+          xp: z.number(),
+          coins: z.number(),
+          skillXp: z.record(z.string(), z.number()),
+          items: z.record(z.string(), z.number()),
+          createdAt: Instant,
+        }),
+      ),
+      inventory: z.array(z.object({ itemId: z.string(), qty: z.number() })),
+      skills: z.array(z.object({ skillId: z.string(), xp: z.number() })),
+    }),
+  ),
+});
+export type AccountExport = z.infer<typeof AccountExport>;

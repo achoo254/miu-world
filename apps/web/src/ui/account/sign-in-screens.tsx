@@ -39,7 +39,9 @@ function GoogleSignIn({ title, hint, dataId, switchTo }: { title: string; hint: 
         </a>
         <p className="note">
           <Icon name="heart" size={28} />
-          Chúng tôi chỉ nhận email đã xác minh của tài khoản Google, không nhận tên, ảnh hay danh bạ.
+          <span>
+            Chúng tôi chỉ nhận email đã xác minh của tài khoản Google, không nhận tên, ảnh hay danh bạ. <Link to="/privacy">Quyền riêng tư</Link>
+          </span>
         </p>
         <p className="hint">
           {switchTo.text} <Link to={switchTo.to}>{switchTo.label}</Link>
