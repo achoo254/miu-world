@@ -11,10 +11,13 @@ import { CONTENT_DIR, readQuestDefinitions } from '../../apps/server/src/content
 
 export const REVIEW_DIR = path.resolve(CONTENT_DIR, '../.data/sgk/review-quests');
 
+/** Objects already placed on the forest chapter 1 map, standing in for search targets of maps not built yet. */
+const STAND_IN_TARGETS = ['clue-box', 'clue-letter', 'clue-mushroom'];
+
 /** Review copy of a draft: same content, playable on its own, linked to nothing. */
 export function reviewCopy(quest: Extract<QuestDefinition, { status: 'draft' }>, index: number): object {
   const steps = quest.steps.map((step: QuestStep) => {
-    if (step.kind === 'search') return step;
+    if (step.kind === 'search') return { ...step, targets: step.targets.map((_t, i) => STAND_IN_TARGETS[i % STAND_IN_TARGETS.length] ?? 'clue-box').filter((t, i, all) => all.indexOf(t) === i) };
     const { target: _target, ...rest } = step;
     return { ...rest, trigger: 'auto' };
   });

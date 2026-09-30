@@ -1,0 +1,851 @@
+{
+  "id": "tv2-t01-b02",
+  "region": "khu-rung-bi-mat",
+  "chapter": 2,
+  "title": "Voi Bảo tìm ngày hôm qua",
+  "status": "draft",
+  "summary": "Gió sớm thổi tung xấp lịch lá của Voi Bảo: {name} nhặt lại từng tờ, đọc bài thơ về ngày hôm qua và giúp Voi khắc lại bảng chữ cái bị mưa làm mờ.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "Voi Bảo (giữ lịch và đồng hồ của rừng, nhớ rất giỏi), Vẹt Xanh",
+    "where": "Gốc cây treo xấp lịch lá trong Khu rừng bí mật, bụi hồng, ruộng lúa và bàn học bên hốc cây",
+    "goal": "Nhặt lại những tờ lịch lá bị gió thổi bay và giúp Voi Bảo hiểu ngày hôm qua đi đâu",
+    "play": "Tìm đồ, nói, đọc thơ, chọn nhiều đáp án, trắc nghiệm, phân loại từ, điền chữ cái, xếp thứ tự, lựa chọn trong hội thoại, phiếu viết",
+    "learn": "Tiếng Việt 2 Bài 2: đọc hiểu bài thơ \"Ngày hôm qua đâu rồi?\", học thuộc lòng, bảng chữ cái (â, c, d, e), từ chỉ sự vật và hoạt động, câu giới thiệu, nghe – viết, viết đoạn tự giới thiệu, đọc mở rộng",
+    "reward": "85 XP, 15 xu, Đọc hiểu +2, Bảng chữ cái +2, Từ ngữ +1, Câu +1",
+    "unlock": "Bài 3 \"Niềm vui của Bi và Bống\""
+  },
+  "phases": {
+    "hook": "gap-voi-bao",
+    "explore": "nhat-to-lich",
+    "learn": "doc-bai-tho",
+    "challenge": "chu-cai-bi-mo",
+    "decision": "the-gioi-thieu-ban-be",
+    "finale": "dem-tho-quanh-goc-cay",
+    "reward": "phieu-viet-bai-2",
+    "unlock": "mo-bai-3"
+  },
+  "texts": {
+    "ngay-hom-qua-dau-roi": {
+      "title": "Ngày hôm qua đâu rồi?",
+      "author": "Bế Kiến Quốc",
+      "body": "Em cầm tờ lịch cũ:\n– Ngày hôm qua đâu rồi?\nRa ngoài sân hỏi bố\nXoa đầu em, bố cười.\n\n– Ngày hôm qua ở lại\nTrên cành hoa trong vườn\nNụ hồng lớn lên mãi\nĐợi đến ngày toả hương.\n\n– Ngày hôm qua ở lại\nTrong hạt lúa mẹ trồng\nCánh đồng chờ gặt hái\nChín vàng màu ước mong.\n\n– Ngày hôm qua ở lại\nTrong vở hồng của con\nCon học hành chăm chỉ\nLà ngày qua vẫn còn.",
+      "section": "tv2-t1-b02-doc"
+    }
+  },
+  "steps": [
+    {
+      "id": "gap-voi-bao",
+      "title": "Voi Bảo mất xấp lịch",
+      "kind": "dialogue",
+      "target": "voi-bao",
+      "lines": [
+        {
+          "speaker": "Voi Bảo",
+          "text": "{name} ơi, cơn gió sớm nay giật tung cả xấp lịch lá treo trên gốc cây của tớ rồi!"
+        },
+        {
+          "speaker": "Vẹt Xanh",
+          "text": "Ba tờ lịch bay tuốt vào trong rừng, tờ nào cũng ghi một ngày đã qua đấy."
+        },
+        {
+          "speaker": "Voi Bảo",
+          "text": "Tớ vốn nhớ giỏi nhất rừng, vậy mà giờ cứ ngẩn ra: ngày hôm qua đi đâu mất rồi nhỉ?"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Để mình giúp cậu nhặt lại các tờ lịch!",
+          "reply": "Voi Bảo vẫy vòi mừng rỡ: tớ thấy một tờ vướng ở bụi hồng, một tờ rơi xuống ruộng lúa đấy."
+        }
+      ]
+    },
+    {
+      "id": "nhat-to-lich",
+      "title": "Nhặt ba tờ lịch lá",
+      "kind": "search",
+      "targets": [
+        "tv2-t01-to-lich-bui-hong",
+        "tv2-t01-to-lich-ruong-lua",
+        "tv2-t01-to-lich-ban-hoc"
+      ]
+    },
+    {
+      "id": "ke-viec-hom-qua",
+      "title": "Kể chuyện hôm qua",
+      "kind": "speak",
+      "target": "voi-bao",
+      "prompt": "Voi Bảo vuốt phẳng tờ lịch vừa nhặt được rồi quay sang hỏi {name}: Kể lại những việc em đã làm ngày hôm qua.",
+      "hints": [
+        "Buổi sáng hôm qua em thức dậy và làm gì trước tiên?",
+        "Ở trường hôm qua em được học, được chơi những gì?",
+        "Buổi tối em đã giúp bố mẹ việc gì?"
+      ],
+      "curriculumRef": [
+        "tv2-t1-b02-doc-kd"
+      ]
+    },
+    {
+      "id": "doc-bai-tho",
+      "title": "Bài thơ trên tờ lịch",
+      "kind": "read",
+      "target": "goc-cay-lich-la",
+      "textRef": "ngay-hom-qua-dau-roi",
+      "audio": true,
+      "question": "Bạn nhỏ đã hỏi bố điều gì?",
+      "choices": [
+        {
+          "id": "hoi-hom-qua",
+          "text": "Ngày hôm qua đâu rồi?"
+        },
+        {
+          "id": "hoi-to-lich",
+          "text": "Tờ lịch cũ để ở đâu hả bố?"
+        },
+        {
+          "id": "hoi-hoa-hong",
+          "text": "Bao giờ nụ hồng mới nở hả bố?"
+        }
+      ],
+      "skill": "doc-hieu",
+      "answer": {
+        "choice": "hoi-hom-qua"
+      },
+      "curriculumRef": [
+        "tv2-t1-b02-doc-1"
+      ],
+      "support": {
+        "guide": [
+          "Đọc lại khổ thơ thứ nhất.",
+          "Tìm dòng thơ có dấu gạch ngang mà bạn nhỏ nói khi cầm tờ lịch cũ."
+        ],
+        "hint": "Câu bạn nhỏ hỏi bố cũng chính là tên của bài thơ.",
+        "answer": {
+          "text": "Ngày hôm qua đâu rồi?",
+          "explanation": "Bạn nhỏ cầm tờ lịch cũ, ra ngoài sân hỏi bố đúng câu ấy, và bố xoa đầu em rồi cười."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đúng rồi, bạn nhỏ hỏi bố y như Voi Bảo vừa hỏi {name}!",
+          "Chuẩn, câu hỏi ấy cũng là tên bài thơ đấy.",
+          "Voi Bảo vỗ đôi tai to phành phạch: {name} tìm ra ngay!"
+        ],
+        "wrong": [
+          "Câu bạn nhỏ hỏi bố nằm ở khổ thơ đầu, đọc lại nhé.",
+          "Bạn nhỏ chưa hỏi chuyện hoa hồng đâu, thử lại xem.",
+          "Tìm dòng thơ có dấu chấm hỏi ở khổ thứ nhất nào."
+        ]
+      }
+    },
+    {
+      "id": "ngay-hom-qua-o-lai",
+      "title": "Ngày hôm qua ở đâu",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "target": "goc-cay-lich-la",
+      "prompt": "Voi Bảo đặt ba tờ lịch lên phiến đá cạnh nhau. Theo lời bố, ngày hôm qua ở lại những đâu?",
+      "choices": [
+        {
+          "id": "tren-canh-hoa",
+          "text": "Trên cành hoa trong vườn"
+        },
+        {
+          "id": "ngoai-san",
+          "text": "Ngoài sân, chỗ bố đứng cười"
+        },
+        {
+          "id": "trong-hat-lua",
+          "text": "Trong hạt lúa mẹ trồng"
+        },
+        {
+          "id": "trong-to-lich",
+          "text": "Trong tờ lịch cũ em cầm"
+        },
+        {
+          "id": "trong-vo-hong",
+          "text": "Trong vở hồng của con"
+        }
+      ],
+      "skill": "doc-hieu",
+      "answer": {
+        "choices": [
+          "tren-canh-hoa",
+          "trong-hat-lua",
+          "trong-vo-hong"
+        ]
+      },
+      "curriculumRef": [
+        "tv2-t1-b02-doc-2"
+      ],
+      "support": {
+        "guide": [
+          "Từ khổ thơ thứ hai, khổ nào cũng mở đầu bằng \"Ngày hôm qua ở lại\".",
+          "Đọc dòng thơ ngay sau câu ấy để biết ngày hôm qua ở lại nơi nào."
+        ],
+        "hint": "Có ba nơi, ứng với ba khổ thơ bố trả lời bạn nhỏ.",
+        "answer": {
+          "text": "Trên cành hoa trong vườn; trong hạt lúa mẹ trồng; trong vở hồng của con.",
+          "explanation": "Bố nhắc tới ba nơi: cành hoa trong vườn, hạt lúa mẹ trồng và vở hồng của con. Sân nhà và tờ lịch cũ không nằm trong lời bố."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đủ ba nơi rồi, ba tờ lịch khớp với ba khổ thơ!",
+          "Tuyệt, cành hoa, hạt lúa, vở hồng đều có mặt.",
+          "Voi Bảo gật gù: hoá ra ngày hôm qua chẳng mất đi đâu cả."
+        ],
+        "wrong": [
+          "Còn một nơi bố nhắc tới mà {name} chưa chọn đấy.",
+          "Bố không nói ngày hôm qua nằm trong tờ lịch đâu nhé.",
+          "Đếm lại những khổ thơ bắt đầu bằng \"Ngày hôm qua ở lại\" nào."
+        ]
+      }
+    },
+    {
+      "id": "loi-dan-cua-bo",
+      "title": "Lời bố dặn",
+      "kind": "challenge",
+      "mechanic": "quiz",
+      "target": "tv2-t01-to-lich-ban-hoc",
+      "prompt": "Tờ lịch thứ ba rơi đúng lên cuốn vở trên bàn học. Trong khổ thơ cuối, bố đã dặn bạn nhỏ làm gì để \"ngày qua vẫn còn\"?",
+      "choices": [
+        {
+          "id": "giu-to-lich",
+          "text": "Con giữ thật kĩ tờ lịch cũ"
+        },
+        {
+          "id": "hoc-cham-chi",
+          "text": "Con học hành chăm chỉ"
+        },
+        {
+          "id": "tuoi-hoa",
+          "text": "Con ra vườn tưới nụ hồng"
+        }
+      ],
+      "skill": "doc-hieu",
+      "answer": {
+        "choice": "hoc-cham-chi"
+      },
+      "curriculumRef": [
+        "tv2-t1-b02-doc-3"
+      ],
+      "support": {
+        "guide": [
+          "Tìm khổ thơ thứ tư, khổ nói về cuốn vở hồng.",
+          "Đọc dòng thơ đứng ngay trước \"Là ngày qua vẫn còn\"."
+        ],
+        "hint": "Điều bố dặn gắn với cuốn vở hồng của con.",
+        "answer": {
+          "text": "Con học hành chăm chỉ",
+          "explanation": "Khổ thơ cuối viết: con học hành chăm chỉ là ngày qua vẫn còn. Những điều học được hôm qua còn mãi trong vở."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Chính xác, chăm học là giữ được ngày hôm qua!",
+          "Đúng lời bố dặn, {name} đọc kĩ ghê.",
+          "Voi Bảo hứa từ mai cũng chăm học như bạn nhỏ."
+        ],
+        "wrong": [
+          "Khổ thơ cuối nói về cuốn vở hồng, dò lại xem nào.",
+          "Tờ lịch cũ không giữ được ngày qua đâu, thử lần nữa nhé.",
+          "Tưới hoa là chuyện của khổ thơ khác, {name} tìm khổ cuối nhé."
+        ]
+      }
+    },
+    {
+      "id": "hoc-thuoc-long",
+      "title": "Thuộc lòng hai khổ thơ",
+      "kind": "speak",
+      "target": "voi-bao",
+      "prompt": "Voi Bảo muốn cất bài thơ vào trí nhớ thật lâu và rủ {name} cùng học. Học thuộc lòng 2 khổ thơ em thích.",
+      "hints": [
+        "Chọn hai khổ thơ em thấy hay nhất.",
+        "Đọc chậm từng dòng, rồi nhắm mắt đọc lại một lượt.",
+        "Đọc cho Voi Bảo nghe mà không nhìn vào bài."
+      ],
+      "curriculumRef": [
+        "tv2-t1-b02-doc-htl"
+      ]
+    },
+    {
+      "id": "nguoi-va-vat-trong-tranh",
+      "title": "Người và vật trên tờ lịch",
+      "kind": "challenge",
+      "mechanic": "classify",
+      "target": "goc-cay-lich-la",
+      "prompt": "Mặt sau mỗi tờ lịch lá có một bức tranh của bài thơ. Dựa vào tranh minh hoạ bài đọc, tìm từ ngữ chỉ người, chỉ vật. M: – mẹ – cánh đồng",
+      "groups": [
+        {
+          "id": "chi-nguoi",
+          "label": "Từ ngữ chỉ người"
+        },
+        {
+          "id": "chi-vat",
+          "label": "Từ ngữ chỉ vật"
+        }
+      ],
+      "items": [
+        {
+          "id": "canh-dong",
+          "label": "cánh đồng"
+        },
+        {
+          "id": "me",
+          "label": "mẹ"
+        },
+        {
+          "id": "non",
+          "label": "nón"
+        },
+        {
+          "id": "den-ban",
+          "label": "đèn bàn"
+        },
+        {
+          "id": "ban-nho",
+          "label": "bạn nhỏ"
+        },
+        {
+          "id": "to-lich",
+          "label": "tờ lịch"
+        },
+        {
+          "id": "binh-tuoi",
+          "label": "bình tưới"
+        },
+        {
+          "id": "hoa-hong",
+          "label": "hoa hồng"
+        }
+      ],
+      "skill": "tu-ngu",
+      "answer": {
+        "assignment": {
+          "canh-dong": "chi-vat",
+          "me": "chi-nguoi",
+          "non": "chi-vat",
+          "den-ban": "chi-vat",
+          "ban-nho": "chi-nguoi",
+          "to-lich": "chi-vat",
+          "binh-tuoi": "chi-vat",
+          "hoa-hong": "chi-vat"
+        }
+      },
+      "curriculumRef": [
+        "tv2-t1-b02-doc-lt1"
+      ],
+      "support": {
+        "guide": [
+          "Từ chỉ người gọi tên một người: ông, bà, bố, mẹ, bạn…",
+          "Từ chỉ vật gọi tên đồ vật, cây hoa hay nơi chốn có trong tranh."
+        ],
+        "hint": "Trong các bức tranh chỉ có hai người: mẹ và bạn nhỏ.",
+        "answer": {
+          "text": "Chỉ người: mẹ, bạn nhỏ. Chỉ vật: cánh đồng, nón, đèn bàn, tờ lịch, bình tưới, hoa hồng.",
+          "explanation": "Mẹ và bạn nhỏ là người; những thứ còn lại là đồ dùng, cây hoa hay cánh đồng vẽ trong tranh."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Hai nhóm gọn gàng như hai ngăn tủ của Voi Bảo!",
+          "Đúng hết, người về nhóm người, vật về nhóm vật.",
+          "{name} nhìn tranh kĩ, không sót từ nào."
+        ],
+        "wrong": [
+          "Có một từ chỉ người đang lạc sang nhóm vật rồi.",
+          "Hoa hồng và cánh đồng là người hay là vật nhỉ?",
+          "Nhìn lại tranh xem: ai đội nón, ai ngồi học bên đèn?"
+        ]
+      }
+    },
+    {
+      "id": "dat-cau-tu-tranh",
+      "title": "Nói câu với từ vừa tìm",
+      "kind": "speak",
+      "target": "voi-bao",
+      "prompt": "Voi Bảo thích nghe những câu thật tròn trịa. Đặt 2 câu với từ ngữ tìm được ở bài tập 1. M: Cánh đồng rộng mênh mông.",
+      "hints": [
+        "Chọn một từ chỉ người, chẳng hạn: mẹ.",
+        "Chọn một từ chỉ vật, chẳng hạn: hoa hồng.",
+        "Nói mỗi câu cho trọn, cuối câu hạ giọng xuống."
+      ],
+      "curriculumRef": [
+        "tv2-t1-b02-doc-lt2"
+      ]
+    },
+    {
+      "id": "chu-cai-bi-mo",
+      "title": "Bảng chữ cái bị mờ",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "target": "tv2-t01-bang-chu-cai",
+      "prompt": "Sau gốc cây là tấm bảng chữ cái Voi Bảo tự khắc, mưa đêm qua làm mờ mất bốn ô. Tìm những chữ cái còn thiếu trong bảng. Học thuộc tên các chữ cái.",
+      "template": "Số thứ tự 3, chữ cái {{o-3}}, tên chữ cái ớ.\nSố thứ tự 5, chữ cái {{o-5}}, tên chữ cái xê.\nSố thứ tự 6, chữ cái {{o-6}}, tên chữ cái dê.\nSố thứ tự 8, chữ cái {{o-8}}, tên chữ cái e.",
+      "blanks": [
+        {
+          "id": "o-3",
+          "options": [
+            {
+              "id": "a",
+              "text": "a"
+            },
+            {
+              "id": "aw",
+              "text": "ă"
+            },
+            {
+              "id": "aa",
+              "text": "â"
+            }
+          ]
+        },
+        {
+          "id": "o-5",
+          "options": [
+            {
+              "id": "k",
+              "text": "k"
+            },
+            {
+              "id": "c",
+              "text": "c"
+            },
+            {
+              "id": "q",
+              "text": "q"
+            }
+          ]
+        },
+        {
+          "id": "o-6",
+          "options": [
+            {
+              "id": "dd",
+              "text": "đ"
+            },
+            {
+              "id": "b",
+              "text": "b"
+            },
+            {
+              "id": "d",
+              "text": "d"
+            }
+          ]
+        },
+        {
+          "id": "o-8",
+          "options": [
+            {
+              "id": "ee",
+              "text": "ê"
+            },
+            {
+              "id": "e",
+              "text": "e"
+            },
+            {
+              "id": "o",
+              "text": "o"
+            }
+          ]
+        }
+      ],
+      "skill": "bang-chu-cai",
+      "answer": {
+        "fills": {
+          "o-3": "aa",
+          "o-5": "c",
+          "o-6": "d",
+          "o-8": "e"
+        }
+      },
+      "curriculumRef": [
+        "tv2-t1-b02-bang-chu-cai-2-a",
+        "tv2-t1-b02-bang-chu-cai-2-b",
+        "tv2-t1-b02-bang-chu-cai-2-c",
+        "tv2-t1-b02-bang-chu-cai-2-d"
+      ],
+      "support": {
+        "guide": [
+          "Đọc tên chữ cái ở cuối mỗi dòng rồi nghĩ xem chữ nào mang tên ấy.",
+          "Nhẩm lại bảng chữ cái từ đầu: a, ă, …"
+        ],
+        "hint": "Chữ tên \"ớ\" đội một chiếc mũ nhỏ; chữ tên \"dê\" không có gạch ngang.",
+        "answer": {
+          "text": "Số thứ tự 3: â; số thứ tự 5: c; số thứ tự 6: d; số thứ tự 8: e.",
+          "explanation": "Bảng chữ cái đi theo thứ tự a, ă, â, b, c, d, đ, e, ê, nên ô 3 là â, ô 5 là c, ô 6 là d, ô 8 là e."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bốn ô mờ đã sáng rõ trở lại rồi!",
+          "Đúng cả bốn chữ, Voi Bảo khắc lại ngay đây.",
+          "{name} thuộc bảng chữ cái vanh vách luôn."
+        ],
+        "wrong": [
+          "Chữ tên \"ớ\" có đội mũ đấy, nhìn lại nhé.",
+          "Chữ tên \"dê\" và chữ tên \"đê\" khác nhau ở nét gạch ngang.",
+          "Đọc thầm a, ă, â, b, c… rồi dò lại từng ô xem."
+        ]
+      }
+    },
+    {
+      "id": "hoa-chu-cai",
+      "title": "Sáu bông hoa chữ cái",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "tv2-t01-bang-chu-cai",
+      "prompt": "Sáu bông hoa chữ cái rụng lộn xộn quanh gốc cây. Sắp xếp các chữ cái dưới đây theo đúng thứ tự trong bảng chữ cái. đ, c, b, d, a, ê",
+      "items": [
+        {
+          "id": "dd",
+          "label": "đ"
+        },
+        {
+          "id": "c",
+          "label": "c"
+        },
+        {
+          "id": "b",
+          "label": "b"
+        },
+        {
+          "id": "d",
+          "label": "d"
+        },
+        {
+          "id": "a",
+          "label": "a"
+        },
+        {
+          "id": "ee",
+          "label": "ê"
+        }
+      ],
+      "skill": "bang-chu-cai",
+      "answer": {
+        "order": [
+          "a",
+          "b",
+          "c",
+          "d",
+          "dd",
+          "ee"
+        ]
+      },
+      "curriculumRef": [
+        "tv2-t1-b02-bang-chu-cai-3"
+      ],
+      "support": {
+        "guide": [
+          "Tìm chữ đứng đầu bảng chữ cái trước.",
+          "Chữ d đứng trước chữ đ; chữ e rồi mới tới chữ ê."
+        ],
+        "hint": "Bông hoa đầu hàng mang chữ a, bông cuối hàng mang chữ ê.",
+        "answer": {
+          "text": "a, b, c, d, đ, ê",
+          "explanation": "Trong bảng chữ cái, a đứng trước b, rồi c, d, đ; chữ ê đứng sau cùng trong sáu chữ này."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Sáu bông hoa xếp hàng ngay ngắn quá!",
+          "Đúng thứ tự bảng chữ cái rồi, giỏi ghê.",
+          "Voi Bảo cài từng bông lên tai, vui không tả được."
+        ],
+        "wrong": [
+          "Chữ đ và chữ d, chữ nào đứng trước nhỉ?",
+          "Bông hoa chữ a phải đứng đầu hàng đấy.",
+          "Thử đọc to bảng chữ cái rồi xếp lại nhé."
+        ]
+      }
+    },
+    {
+      "id": "tam-buc-tranh",
+      "title": "Tám bức tranh trong hốc cây",
+      "kind": "challenge",
+      "mechanic": "classify",
+      "target": "tv2-t01-hoc-cay",
+      "prompt": "Trong hốc cây, Voi Bảo còn cất tám bức tranh nhỏ vẽ những ai, những gì nó nhớ. Nhìn tranh, tìm từ ngữ: a. Chỉ sự vật: – Chỉ người: học sinh,... – Chỉ vật: cặp sách,... b. Chỉ hoạt động: đi học,...",
+      "groups": [
+        {
+          "id": "chi-nguoi",
+          "label": "Chỉ người"
+        },
+        {
+          "id": "chi-vat",
+          "label": "Chỉ vật"
+        },
+        {
+          "id": "chi-hoat-dong",
+          "label": "Chỉ hoạt động"
+        }
+      ],
+      "items": [
+        {
+          "id": "cap-sach",
+          "label": "cặp sách"
+        },
+        {
+          "id": "di-hoc",
+          "label": "đi học"
+        },
+        {
+          "id": "co-giao",
+          "label": "cô giáo"
+        },
+        {
+          "id": "khan-mat",
+          "label": "khăn mặt"
+        },
+        {
+          "id": "chai-toc",
+          "label": "chải tóc"
+        },
+        {
+          "id": "hoc-sinh",
+          "label": "học sinh"
+        },
+        {
+          "id": "mu-luoi-trai",
+          "label": "mũ lưỡi trai"
+        },
+        {
+          "id": "bac-si",
+          "label": "bác sĩ"
+        },
+        {
+          "id": "ao-so-mi",
+          "label": "áo sơ mi"
+        },
+        {
+          "id": "giang-bai",
+          "label": "giảng bài"
+        }
+      ],
+      "skill": "tu-ngu",
+      "answer": {
+        "assignment": {
+          "cap-sach": "chi-vat",
+          "di-hoc": "chi-hoat-dong",
+          "co-giao": "chi-nguoi",
+          "khan-mat": "chi-vat",
+          "chai-toc": "chi-hoat-dong",
+          "hoc-sinh": "chi-nguoi",
+          "mu-luoi-trai": "chi-vat",
+          "bac-si": "chi-nguoi",
+          "ao-so-mi": "chi-vat",
+          "giang-bai": "chi-hoat-dong"
+        }
+      },
+      "curriculumRef": [
+        "tv2-t1-b02-tu-ngu-cau-1-a",
+        "tv2-t1-b02-tu-ngu-cau-1-b"
+      ],
+      "support": {
+        "guide": [
+          "Từ chỉ người trả lời câu hỏi \"Ai?\".",
+          "Từ chỉ vật gọi tên đồ dùng; từ chỉ hoạt động kể việc ai đó đang làm."
+        ],
+        "hint": "Bạn gái ở tranh 6 đang chải tóc; cô giáo ở tranh 3 đang giảng bài.",
+        "answer": {
+          "text": "Chỉ người: học sinh, cô giáo, bác sĩ. Chỉ vật: cặp sách, khăn mặt, mũ lưỡi trai, áo sơ mi. Chỉ hoạt động: đi học, chải tóc, giảng bài.",
+          "explanation": "Học sinh, cô giáo, bác sĩ là người; cặp, khăn, mũ, áo là đồ vật; đi học, chải tóc, giảng bài là việc làm, tức là hoạt động."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ba nhóm từ đứng ngay hàng thẳng lối!",
+          "Người, vật, hoạt động, không nhầm nhóm nào cả.",
+          "Voi Bảo phải ghi tên {name} vào sổ nhớ mất thôi."
+        ],
+        "wrong": [
+          "Việc ai đó đang làm thì thuộc nhóm hoạt động đấy.",
+          "Bác sĩ là người hay là vật nhỉ? Thử lại nào.",
+          "Còn một món đồ dùng lạc sang nhóm chỉ người kìa."
+        ]
+      }
+    },
+    {
+      "id": "the-gioi-thieu-ban-be",
+      "title": "Những tấm thẻ giới thiệu",
+      "kind": "dialogue",
+      "target": "voi-bao",
+      "lines": [
+        {
+          "speaker": "Vẹt Xanh",
+          "text": "Voi Bảo ơi, cậu vẫn giữ mấy tấm thẻ giới thiệu bạn bè dưới gốc cây chứ?"
+        },
+        {
+          "speaker": "Voi Bảo",
+          "text": "Còn chứ! Có điều gió làm rách đôi từng tấm, nửa đầu một nơi, nửa sau một nẻo."
+        },
+        {
+          "speaker": "Voi Bảo",
+          "text": "{name} muốn nối lại tấm thẻ nào trước tiên?"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tấm thẻ về bạn Hà.",
+          "reply": "Hà là bạn đi học cùng đường với tớ, bạn ấy hay chào tớ lắm."
+        },
+        {
+          "text": "Tấm thẻ về một ngôi trường.",
+          "reply": "Ngôi trường ấy có tên riêng hẳn hoi, tớ nhớ như in."
+        },
+        {
+          "text": "Tấm thẻ về bố của một bạn.",
+          "reply": "Bố bạn ấy từng băng vòi cho tớ khi tớ bị ngã đấy."
+        }
+      ]
+    },
+    {
+      "id": "noi-the-gioi-thieu",
+      "title": "Nối lại thẻ giới thiệu",
+      "kind": "challenge",
+      "mechanic": "classify",
+      "target": "voi-bao",
+      "prompt": "Voi Bảo trải các nửa tấm thẻ ra bãi cỏ. Kết hợp từ ngữ ở cột A với từ ngữ ở cột B để tạo câu giới thiệu.",
+      "groups": [
+        {
+          "id": "la-bac-si",
+          "label": "là bác sĩ."
+        },
+        {
+          "id": "la-truong-le-quy-don",
+          "label": "là Trường Tiểu học Lê Quý Đôn."
+        },
+        {
+          "id": "la-hoc-sinh-2a",
+          "label": "là học sinh lớp 2A."
+        }
+      ],
+      "items": [
+        {
+          "id": "ban-ha",
+          "label": "Bạn Hà"
+        },
+        {
+          "id": "bo-em",
+          "label": "Bố em"
+        },
+        {
+          "id": "truong-em",
+          "label": "Trường em"
+        }
+      ],
+      "skill": "cau",
+      "answer": {
+        "assignment": {
+          "ban-ha": "la-hoc-sinh-2a",
+          "bo-em": "la-bac-si",
+          "truong-em": "la-truong-le-quy-don"
+        }
+      },
+      "curriculumRef": [
+        "tv2-t1-b02-tu-ngu-cau-2-a",
+        "tv2-t1-b02-tu-ngu-cau-2-b",
+        "tv2-t1-b02-tu-ngu-cau-2-c"
+      ],
+      "support": {
+        "guide": [
+          "Đọc từng từ ngữ ở cột A rồi thử ghép với từng từ ngữ ở cột B.",
+          "Câu giới thiệu cho biết ai hoặc cái gì là gì."
+        ],
+        "hint": "Chỉ có một nửa thẻ nói về một ngôi trường có tên riêng.",
+        "answer": {
+          "text": "Bạn Hà là học sinh lớp 2A. Bố em là bác sĩ. Trường em là Trường Tiểu học Lê Quý Đôn.",
+          "explanation": "Ghép xong, câu nào cũng phải hợp nghĩa: bạn Hà đi học nên là học sinh, bố làm nghề chữa bệnh, còn trường em có tên riêng."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ba tấm thẻ liền lại thành ba câu giới thiệu!",
+          "Ghép khớp từng câu, Voi Bảo đọc to lên rồi này.",
+          "Đúng hết, câu nào nghe cũng hợp lí."
+        ],
+        "wrong": [
+          "Bố em làm nghề gì nhỉ? Đọc lại cột B xem.",
+          "Một ngôi trường không thể là học sinh được đâu.",
+          "Thử đọc cả câu lên xem nghe có xuôi tai không nhé."
+        ]
+      }
+    },
+    {
+      "id": "the-cua-minh",
+      "title": "Tấm thẻ của {name}",
+      "kind": "speak",
+      "target": "voi-bao",
+      "prompt": "Voi Bảo đưa cho {name} một tấm thẻ lá còn trắng tinh. Đặt một câu giới thiệu theo mẫu ở bài tập 2.",
+      "hints": [
+        "Bắt đầu bằng một người hoặc một nơi em biết rõ.",
+        "Nói tiếp bằng từ \"là\" và điều em muốn giới thiệu.",
+        "Ví dụ: Mẹ em là cô giáo."
+      ],
+      "curriculumRef": [
+        "tv2-t1-b02-tu-ngu-cau-3"
+      ]
+    },
+    {
+      "id": "dem-tho-quanh-goc-cay",
+      "title": "Đêm thơ quanh gốc cây",
+      "kind": "speak",
+      "target": "goc-cay-lich-la",
+      "prompt": "Trời tối dần, Voi Bảo mời cả rừng ngồi quanh gốc cây lịch nghe đọc thơ. Tìm đọc một bài thơ hoặc câu chuyện viết về thiếu nhi. Nói với các bạn tên bài thơ, câu chuyện và tên tác giả. Đọc một số câu thơ hay cho các bạn nghe.",
+      "hints": [
+        "Em đã đọc bài thơ hay câu chuyện nào về các bạn nhỏ?",
+        "Tên tác giả thường in ngay dưới tên bài.",
+        "Đọc chậm, thật rõ những câu thơ em thích nhất."
+      ],
+      "curriculumRef": [
+        "tv2-t1-b02-doc-mo-rong-1",
+        "tv2-t1-b02-doc-mo-rong-2"
+      ]
+    },
+    {
+      "id": "phieu-viet-bai-2",
+      "title": "Phiếu viết bài 2",
+      "kind": "worksheet",
+      "trigger": "auto",
+      "lessonId": "tv2-t1-b02",
+      "text": "Nhờ bố mẹ in phiếu Bài 2 ở khu phụ huynh: nghe – viết hai khổ thơ cuối, trả lời câu hỏi về tranh hai bạn Bình và Khang, rồi viết vài câu tự giới thiệu về em.",
+      "curriculumRef": [
+        "tv2-t1-b02-nghe-viet-1",
+        "tv2-t1-b02-viet-doan-1-a",
+        "tv2-t1-b02-viet-doan-1-b",
+        "tv2-t1-b02-viet-doan-2"
+      ]
+    },
+    {
+      "id": "qua-cua-voi-bao",
+      "title": "Tờ lịch của hôm nay",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Voi Bảo tặng {name} tờ lịch lá của hôm nay, có dấu vòi làm chữ kí, để nhớ rằng ngày hôm qua vẫn còn ở trong vở."
+    },
+    {
+      "id": "mo-bai-3",
+      "title": "Cầu vồng sau mưa",
+      "kind": "unlock",
+      "trigger": "auto",
+      "text": "Cơn mưa rào vừa tạnh, phía bãi cỏ bỗng hiện lên một chiếc cầu vồng. Nghe nói Thỏ Tí đang đứng đó ước đủ thứ trên đời!"
+    }
+  ],
+  "reward": {
+    "xp": 85,
+    "coin": 15,
+    "skillXp": {
+      "doc-hieu": 2,
+      "bang-chu-cai": 2,
+      "tu-ngu": 1,
+      "cau": 1
+    }
+  },
+  "unlock": [
+    "tv2-t02-b03"
+  ]
+}
