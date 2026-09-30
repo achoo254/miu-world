@@ -20,13 +20,16 @@ Nguồn: Master Plan v3 §2 (art direction, quy tắc bám mock), §10 (phong c�
 
 ## Màu và token giao diện
 
-- Tạm lấy **hồng** làm màu chính (plan cũ có hai bộ: hồng–xanh và tím–indigo). Token chính thức chốt khi có mock voxel (Master Plan task #4).
+- Hướng đã chọn cho các màn trước khi vào game: **A · Đảo mây kẹo hồng** (chọn ngày 30/09/2026 trong ba hướng mock). Nền trời xanh chuyển hồng, mây, đảo khối nổi; panel trắng bo tròn; nút chính hồng, nút phụ xanh dương. Hướng này bám sát visual language của M1–M3. Token vẫn là bản tạm cho tới khi có mock voxel (Master Plan task #4).
 - Giao diện tách lớp khỏi logic, dùng design token và component chung để đổi diện mạo không phải viết lại chức năng.
-- Token tạm hiện có: biến CSS ở đầu `apps/web/src/ui/styles.css`, dùng chung cho React UI và HUD của game (`apps/web/src/game/game.css`). Dùng lại chúng thay vì hardcode giá trị mới.
+- Token nằm ở `apps/web/src/ui/tokens.css`, là nơi duy nhất chứa giá trị màu. Muốn dùng giá trị mới thì thêm token trước. Cuối file có vài tên cũ (`--ink`, `--accent`, `--surface`…) giữ cho HUD của game (`apps/web/src/game/game.css`).
+- Component dùng chung nằm ở `apps/web/src/ui/kit/`: kiểu nút (`buttonClass`), icon, ảnh Miu, cảnh bầu trời (`SkyScene`), bàn phím PIN. Class dùng chung nằm ở `apps/web/src/ui/styles.css`. Dựng màn mới từ đây trước khi viết style riêng.
+- Icon và ảnh mà giao diện React hiển thị phải khai báo trong `apps/web/src/ui/kit/ui-art.ts`. Bản build chỉ chép các file có trong danh sách đó, và báo lỗi nếu file không có trong manifest.
+- Ảnh Miu hiện lấy từ bộ render của trang review (`assets/generated/review/character/`), nền màu phẳng, không trong suốt. Vì vậy giao diện luôn đặt ảnh vào khung cùng màu nền, hoặc hòa màu bằng `multiply` lên nền tint. Khi có ảnh nhân vật riêng cho giao diện, đổi đường dẫn trong `ui-art.ts`.
 
 ## Font, icon, âm thanh
 
-- Font tự host (OFL, có tiếng Việt): **Baloo 2** cho tiêu đề/HUD, **Nunito** cho nội dung. Khai báo dùng chung ở `apps/web/src/ui/fonts.css`.
+- Font tự host (OFL, có tiếng Việt): **Baloo 2** (700, 800) cho tiêu đề/HUD, **Nunito** (400, 700) cho nội dung. Khai báo dùng chung ở `apps/web/src/ui/fonts.css`.
 - Icon vật phẩm, tiền tệ, HUD, huy hiệu: Microsoft Fluent Emoji 3D (MIT); bỏ emoji dính thương hiệu.
 - Khung, nút, banner: CSS + token, không dùng ảnh vẽ tay. Ảnh đại diện, thumbnail render từ model 3D bằng script.
 - Số và chữ trên vật thể (viên đá số, thẻ chữ) vẽ lúc chạy bằng canvas texture.
