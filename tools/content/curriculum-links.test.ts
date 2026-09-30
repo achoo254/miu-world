@@ -4,7 +4,7 @@ import { CurriculumBook, CurriculumUnit } from '../../packages/schema/src/curric
 import { QuestDefinition } from '../../packages/schema/src/content';
 import type { LoadedBook } from './check-curriculum';
 import { percentCovered, sumGaps } from './content-gaps';
-import { checkCurriculumLinks, normaliseWording } from './curriculum-links';
+import { checkCurriculumLinks, normaliseWording, printedPhrases } from './curriculum-links';
 
 const support = { guide: ['Đọc kĩ.'], hint: 'Thử lại.', answer: { text: 'x', explanation: 'y' } };
 /** Distinct feedback lines per step (textbook quests need them and never reuse a line). */
@@ -178,6 +178,28 @@ describe('curriculum links', () => {
     expect(checkCurriculumLinks(books(), [quest([wrongSign])]).issues).toEqual(['quest tv2-t01-b01 step fill: blank b1 is "<", the book\'s answer is ">"']);
     const wrongChoice = { ...read, answer: { choice: 'bo' } };
     expect(checkCurriculumLinks(books(), [quest([wrongChoice])]).issues).toEqual(['quest tv2-t01-b01 step read: answer "bố" differs from the book\'s "b. mẹ"']);
+  });
+});
+
+describe('printedPhrases', () => {
+  it('splits only the layout readers flattened, never the printed phrases', () => {
+    expect(printedPhrases('Từ nào nói về các em lớp 1? a. ngạc nhiên; b. háo hức; c. rụt rè')).toEqual(['Từ nào nói về các em lớp 1?', 'a. ngạc nhiên', 'b. háo hức', 'c. rụt rè']);
+    expect(printedPhrases('Thực hiện các yêu cầu sau: a. Nói lời chào mẹ.')).toEqual(['Thực hiện các yêu cầu sau:', 'a. Nói lời chào mẹ.']);
+    expect(printedPhrases('Kể về kì nghỉ hè. G: – Em đi đâu? – Em nhớ gì?')).toEqual(['Kể về kì nghỉ hè.', 'Em đi đâu?', 'Em nhớ gì?']);
+  });
+
+  it('matches choices shown as buttons and hints shown under a speaking step', () => {
+    const lessonBooks = books();
+    const unit = lessonBooks[0]?.units[0];
+    const section = unit?.lessons[0]?.sections[0];
+    section?.items.push({ id: 'tv2-t1-b01-doc-lt1', page: 11, prompt: 'Từ nào nói về các em lớp 1? a. ngạc nhiên; b. háo hức; c. rụt rè', exerciseType: 'chon-dap-an', answer: { choice: 'c. rụt rè' }, readConfidence: 'high' });
+    const quiz = { ...read, id: 'lt1', textRef: undefined, question: undefined, kind: 'challenge', mechanic: 'quiz', prompt: 'Từ nào nói về các em lớp 1?', choices: [{ id: 'a', text: 'ngạc nhiên' }, { id: 'b', text: 'háo hức' }, { id: 'c', text: 'rụt rè' }], answer: { choice: 'c' }, curriculumRef: ['tv2-t1-b01-doc-lt1'], feedback: feedback('lt1') };
+    const { textRef: _t, question: _q, ...quizStep } = quiz;
+    expect(checkCurriculumLinks(lessonBooks, [quest([read, quizStep])]).issues).toEqual([]);
+    const missingChoice = { ...quizStep, choices: [{ id: 'a', text: 'ngạc nhiên' }, { id: 'c', text: 'rụt rè' }] };
+    expect(checkCurriculumLinks(lessonBooks, [quest([read, missingChoice])]).issues).toEqual([
+      'quest tv2-t01-b01 step lt1 does not show the book\'s wording of tv2-t1-b01-doc-lt1: "b. háo hức"',
+    ]);
   });
 });
 

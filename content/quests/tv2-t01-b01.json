@@ -1,0 +1,435 @@
+{
+  "id": "tv2-t01-b01",
+  "region": "khu-rung-bi-mat",
+  "chapter": 2,
+  "title": "Sâu Xanh vào lớp Hai",
+  "status": "draft",
+  "summary": "Sáng khai giảng của lớp Hai trong rừng: {name} đi cùng Sâu Xanh, đọc chuyện một bạn nhỏ háo hức đến trường và tập nói lời chào.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "Sâu Xanh (lần đầu vào lớp Hai của rừng), Vẹt Xanh dẫn đường",
+    "where": "Cổng Khu rừng bí mật lúc bình minh, bảng gỗ lớp Hai",
+    "goal": "Giúp Sâu Xanh bớt lo trong ngày khai giảng",
+    "play": "Nói, đọc bài, chọn nhiều đáp án, ghép đoạn với tranh, chọn từ, phiếu viết",
+    "learn": "Tiếng Việt 2 Bài 1: đọc hiểu \"Tôi là học sinh lớp 2\", lời chào, kể về kì nghỉ hè, viết chữ hoa A",
+    "reward": "80 XP, 15 xu, Đọc hiểu +2, Từ ngữ +1",
+    "unlock": "Bài 2 \"Ngày hôm qua đâu rồi?\""
+  },
+  "phases": {
+    "hook": "gap-sau-xanh",
+    "explore": "chuan-bi-khai-giang",
+    "learn": "doc-bai",
+    "challenge": "chon-chi-tiet",
+    "decision": "tu-chi-lop-mot",
+    "finale": "tap-noi-loi-chao",
+    "reward": "phieu-viet",
+    "unlock": "mo-bai-2"
+  },
+  "texts": {
+    "toi-la-hoc-sinh-lop-2": {
+      "title": "Tôi là học sinh lớp 2",
+      "author": "Văn Giá",
+      "body": "Ngày khai trường đã đến.\n\nSáng sớm, mẹ mới gọi một câu mà tôi đã vùng dậy, khác hẳn mọi ngày. Loáng một cái, tôi đã chuẩn bị xong mọi thứ. Bố ngạc nhiên nhìn tôi, còn mẹ cười tủm tỉm. Tôi rối rít: “Con muốn đến lớp sớm nhất.”.\n\nTôi háo hức tưởng tượng ra cảnh mình đến đầu tiên, cất tiếng chào thật to những bạn đến sau. Nhưng vừa đến cổng trường, tôi đã thấy mấy bạn cùng lớp đang ríu rít nói cười ở trong sân. Thì ra, không chỉ mình tôi muốn đến sớm nhất. Tôi chào mẹ, chạy ào vào cùng các bạn.\n\nChúng tôi tranh nhau kể về chuyện ngày hè. Ngay cạnh chúng tôi, mấy em lớp 1 đang rụt rè níu chặt tay bố mẹ, thật giống tôi năm ngoái. Trước các em, tôi cảm thấy mình lớn bổng lên. Tôi đã là học sinh lớp 2 rồi cơ mà.",
+      "section": "tv2-t1-b01-doc"
+    }
+  },
+  "steps": [
+    {
+      "id": "gap-sau-xanh",
+      "title": "Gặp Sâu Xanh ở cổng rừng",
+      "kind": "dialogue",
+      "target": "sau-xanh",
+      "lines": [
+        {
+          "speaker": "Sâu Xanh",
+          "text": "Ối, {name}! Hôm nay tớ vào lớp Hai của rừng mà tim cứ đập thình thịch."
+        },
+        {
+          "speaker": "Vẹt Xanh",
+          "text": "Sâu Xanh dậy từ lúc sương còn đọng trên lá đấy, bạn ấy sợ đến muộn nhất lớp."
+        },
+        {
+          "speaker": "Sâu Xanh",
+          "text": "Cậu ở lại với tớ đến lúc trống vào học nhé?"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Được chứ, mình đi cùng cậu!",
+          "reply": "Vậy mình cùng xem cậu đã sẵn sàng chưa nào."
+        }
+      ]
+    },
+    {
+      "id": "chuan-bi-khai-giang",
+      "title": "Kể chuyện chuẩn bị khai giảng",
+      "kind": "speak",
+      "target": "sau-xanh",
+      "prompt": "Sâu Xanh tò mò hỏi: Em đã chuẩn bị những gì để đón ngày khai giảng?",
+      "hints": [
+        "Nhìn tranh các bạn mặc đồng phục chạy đến trường rồi kể về mình."
+      ],
+      "curriculumRef": [
+        "tv2-t1-b01-doc-kd"
+      ]
+    },
+    {
+      "id": "doc-bai",
+      "title": "Đọc bài trên bảng gỗ",
+      "kind": "read",
+      "target": "bang-go-lop-hai",
+      "textRef": "toi-la-hoc-sinh-lop-2",
+      "audio": true,
+      "question": "Bạn ấy có thực hiện được mong muốn đến sớm nhất lớp không? Vì sao?",
+      "choices": [
+        {
+          "id": "khong-den-sau",
+          "text": "Không. Vì vừa đến cổng trường, bạn ấy đã thấy mấy bạn cùng lớp đang ríu rít nói cười ở trong sân."
+        },
+        {
+          "id": "co-den-dau",
+          "text": "Có. Vì bạn ấy là người đến cổng trường đầu tiên."
+        },
+        {
+          "id": "khong-ngu-quen",
+          "text": "Không. Vì bạn ấy ngủ quên nên đến trường muộn."
+        }
+      ],
+      "skill": "doc-hieu",
+      "answer": {
+        "choice": "khong-den-sau"
+      },
+      "curriculumRef": [
+        "tv2-t1-b01-doc-2"
+      ],
+      "support": {
+        "guide": [
+          "Đọc lại đoạn có câu \"vừa đến cổng trường\".",
+          "Xem bạn nhỏ thấy ai đã ở trong sân trước mình."
+        ],
+        "hint": "Bạn nhỏ muốn đến sớm nhất, nhưng trong sân đã có người rồi.",
+        "answer": {
+          "text": "Không. Vì vừa đến cổng trường, bạn ấy đã thấy mấy bạn cùng lớp đang ríu rít nói cười ở trong sân.",
+          "explanation": "Bài đọc kể: vừa đến cổng, bạn ấy đã thấy mấy bạn cùng lớp đang ríu rít nói cười trong sân."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đúng rồi, các bạn cùng lớp đã tới trước!",
+          "Chuẩn! Không chỉ mình bạn ấy muốn đến sớm.",
+          "Giỏi lắm, {name} đọc kĩ thật đấy."
+        ],
+        "wrong": [
+          "Đọc lại câu \"vừa đến cổng trường\" xem sao.",
+          "Sâu Xanh nghĩ khác đấy, mình dò lại đoạn hai nhé.",
+          "Ai đang ríu rít trong sân nhỉ? Thử lần nữa nào."
+        ]
+      }
+    },
+    {
+      "id": "chon-chi-tiet",
+      "title": "Tìm những chi tiết háo hức",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "target": "bang-go-lop-hai",
+      "prompt": "Những chi tiết nào cho thấy bạn nhỏ rất háo hức đến trường vào ngày khai giảng?",
+      "choices": [
+        {
+          "id": "vung-day",
+          "text": "vùng dậy"
+        },
+        {
+          "id": "muon-den-som",
+          "text": "muốn đến sớm nhất lớp"
+        },
+        {
+          "id": "chuan-bi-nhanh",
+          "text": "chuẩn bị rất nhanh"
+        },
+        {
+          "id": "lon-bong",
+          "text": "thấy mình lớn bổng lên"
+        }
+      ],
+      "skill": "doc-hieu",
+      "answer": {
+        "choices": [
+          "vung-day",
+          "muon-den-som",
+          "chuan-bi-nhanh"
+        ]
+      },
+      "curriculumRef": [
+        "tv2-t1-b01-doc-1"
+      ],
+      "support": {
+        "guide": [
+          "Tìm những việc bạn nhỏ làm trước khi đến trường.",
+          "Chi tiết nào nói bạn ấy vội vàng, mong đến lớp?"
+        ],
+        "hint": "Có ba chi tiết đúng; một chi tiết là cảm giác khi thấy các em lớp 1.",
+        "answer": {
+          "text": "vùng dậy; muốn đến sớm nhất lớp; chuẩn bị rất nhanh",
+          "explanation": "\"Lớn bổng lên\" là cảm giác của bạn nhỏ khi đứng trước các em lớp 1, không phải sự háo hức đến trường."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Tuyệt, đủ cả ba chi tiết háo hức!",
+          "Sâu Xanh gật gù: đúng là vội như tớ sáng nay!",
+          "Chọn chuẩn, không thừa không thiếu."
+        ],
+        "wrong": [
+          "Còn thiếu hoặc thừa một chi tiết đấy.",
+          "Chi tiết \"lớn bổng lên\" xảy ra lúc nào nhỉ?",
+          "Đếm lại xem mình đã chọn mấy chi tiết nhé."
+        ]
+      }
+    },
+    {
+      "id": "doan-va-tranh",
+      "title": "Ghép đoạn với tranh",
+      "kind": "challenge",
+      "mechanic": "classify",
+      "target": "bang-go-lop-hai",
+      "prompt": "Tìm tranh thích hợp với mỗi đoạn trong bài đọc.",
+      "groups": [
+        {
+          "id": "tranh-1",
+          "label": "Tranh 1"
+        },
+        {
+          "id": "tranh-2",
+          "label": "Tranh 2"
+        },
+        {
+          "id": "tranh-3",
+          "label": "Tranh 3"
+        }
+      ],
+      "items": [
+        {
+          "id": "doan-1",
+          "label": "Đoạn 1"
+        },
+        {
+          "id": "doan-2",
+          "label": "Đoạn 2"
+        },
+        {
+          "id": "doan-3",
+          "label": "Đoạn 3"
+        }
+      ],
+      "skill": "doc-hieu",
+      "answer": {
+        "assignment": {
+          "doan-1": "tranh-3",
+          "doan-2": "tranh-2",
+          "doan-3": "tranh-1"
+        }
+      },
+      "curriculumRef": [
+        "tv2-t1-b01-doc-4"
+      ],
+      "support": {
+        "guide": [
+          "Đoạn 1 kể chuyện ở nhà, đoạn 2 ở cổng trường, đoạn 3 trong sân trường.",
+          "Tìm tranh có đúng nơi đó."
+        ],
+        "hint": "Tranh bạn nhỏ đứng trước bố mẹ là chuyện ở nhà.",
+        "answer": {
+          "text": "Đoạn 1 – tranh 3; đoạn 2 – tranh 2; đoạn 3 – tranh 1",
+          "explanation": "Mỗi đoạn diễn ra ở một nơi: ở nhà, ở cổng trường, rồi trong sân cùng các bạn và các em lớp 1."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Mỗi đoạn đã về đúng bức tranh của mình!",
+          "Hay quá, câu chuyện hiện ra theo đúng thứ tự.",
+          "{name} nhìn tranh tinh ghê!"
+        ],
+        "wrong": [
+          "Đoạn nào kể chuyện ở nhà nhỉ?",
+          "Một đoạn đang lạc sang tranh khác rồi.",
+          "Thử nhìn xem trong tranh có em lớp 1 nào không."
+        ]
+      }
+    },
+    {
+      "id": "lon-hon-mot-chut",
+      "title": "Bạn nhỏ thay đổi thế nào",
+      "kind": "read",
+      "target": "bang-go-lop-hai",
+      "textRef": "toi-la-hoc-sinh-lop-2",
+      "question": "Bạn ấy nhận ra mình thay đổi như thế nào khi lên lớp 2?",
+      "choices": [
+        {
+          "id": "lon-bong",
+          "text": "Trước các em, tôi cảm thấy mình lớn bổng lên."
+        },
+        {
+          "id": "rut-re",
+          "text": "Bạn ấy thấy mình rụt rè như các em lớp 1."
+        },
+        {
+          "id": "buon-ngu",
+          "text": "Bạn ấy thấy mình vẫn muốn ngủ thêm một lát."
+        }
+      ],
+      "skill": "doc-hieu",
+      "answer": {
+        "choice": "lon-bong"
+      },
+      "curriculumRef": [
+        "tv2-t1-b01-doc-3"
+      ],
+      "support": {
+        "guide": [
+          "Đọc câu cuối của đoạn 3.",
+          "Bạn nhỏ so mình với ai?"
+        ],
+        "hint": "Bạn nhỏ đứng cạnh các em lớp 1 và thấy mình khác trước.",
+        "answer": {
+          "text": "Trước các em, tôi cảm thấy mình lớn bổng lên.",
+          "explanation": "Nhìn các em lớp 1 rụt rè như mình năm ngoái, bạn nhỏ thấy mình đã lớn."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đúng thế, bạn nhỏ thấy mình lớn bổng lên!",
+          "Sâu Xanh cũng muốn lớn bổng như thế đấy.",
+          "Chính xác, câu cuối bài nói rõ điều đó."
+        ],
+        "wrong": [
+          "Người rụt rè trong bài là ai thế?",
+          "Thử đọc lại câu cuối cùng của bài xem.",
+          "Gần được rồi, bạn nhỏ so mình với các em lớp 1 mà."
+        ]
+      }
+    },
+    {
+      "id": "tu-chi-lop-mot",
+      "title": "Chọn từ tả các em lớp 1",
+      "kind": "challenge",
+      "mechanic": "quiz",
+      "target": "sau-xanh",
+      "prompt": "Từ nào dưới đây nói về các em lớp 1 trong ngày khai trường?",
+      "choices": [
+        {
+          "id": "ngac-nhien",
+          "text": "ngạc nhiên"
+        },
+        {
+          "id": "hao-huc",
+          "text": "háo hức"
+        },
+        {
+          "id": "rut-re",
+          "text": "rụt rè"
+        }
+      ],
+      "skill": "tu-ngu",
+      "answer": {
+        "choice": "rut-re"
+      },
+      "curriculumRef": [
+        "tv2-t1-b01-doc-lt1"
+      ],
+      "support": {
+        "guide": [
+          "Tìm câu nói về các em lớp 1 trong bài.",
+          "Các em đang làm gì với tay bố mẹ?"
+        ],
+        "hint": "Các em níu chặt tay bố mẹ vì còn ngại.",
+        "answer": {
+          "text": "c. rụt rè",
+          "explanation": "Bài đọc viết: mấy em lớp 1 đang rụt rè níu chặt tay bố mẹ."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đúng rồi, các em còn rụt rè lắm.",
+          "Sâu Xanh thì thầm: năm ngoái tớ cũng rụt rè y thế.",
+          "Chọn trúng từ trong bài luôn!"
+        ],
+        "wrong": [
+          "Người háo hức là bạn nhỏ lớp 2 cơ.",
+          "Ai là người ngạc nhiên trong bài nhỉ? Không phải các em lớp 1 đâu.",
+          "Tìm lại câu có \"níu chặt tay bố mẹ\" nhé."
+        ]
+      }
+    },
+    {
+      "id": "tap-noi-loi-chao",
+      "title": "Tập nói lời chào",
+      "kind": "speak",
+      "target": "sau-xanh",
+      "prompt": "Trống sắp vào học rồi! Thực hiện các yêu cầu sau: a. Nói lời chào tạm biệt mẹ trước khi đến trường. b. Nói lời chào thầy, cô giáo khi đến lớp. c. Cùng bạn nói và đáp lời chào khi gặp nhau ở trường.",
+      "hints": [
+        "Chào mẹ trước khi vào lớp.",
+        "Chào thầy cô khi bước vào lớp.",
+        "Chào một bạn và nghe bạn chào lại."
+      ],
+      "curriculumRef": [
+        "tv2-t1-b01-doc-lt2-a",
+        "tv2-t1-b01-doc-lt2-b",
+        "tv2-t1-b01-doc-lt2-c"
+      ]
+    },
+    {
+      "id": "ke-he",
+      "title": "Kể về những ngày hè",
+      "kind": "speak",
+      "target": "sau-xanh",
+      "prompt": "Giờ ra chơi, Sâu Xanh rủ {name} kể chuyện: Kể về điều đáng nhớ nhất trong kì nghỉ hè của em. Em cảm thấy thế nào khi trở lại trường sau kì nghỉ hè?",
+      "hints": [
+        "Nghỉ hè, em được đi những đâu?",
+        "Em được tham gia những hoạt động nào?",
+        "Em nhớ nhất điều gì?"
+      ],
+      "curriculumRef": [
+        "tv2-t1-b01-noi-nghe-1",
+        "tv2-t1-b01-noi-nghe-2"
+      ]
+    },
+    {
+      "id": "phieu-viet",
+      "title": "Phiếu viết bài 1",
+      "kind": "worksheet",
+      "trigger": "auto",
+      "lessonId": "tv2-t1-b01",
+      "text": "Nhờ bố mẹ in phiếu Bài 1 ở khu phụ huynh để tập viết chữ hoa A, câu ứng dụng và vài câu về ngày hè của em.",
+      "curriculumRef": [
+        "tv2-t1-b01-viet-chu-hoa-1",
+        "tv2-t1-b01-viet-ung-dung-2",
+        "tv2-t1-b01-van-dung-1"
+      ]
+    },
+    {
+      "id": "phan-thuong",
+      "title": "Quà của Sâu Xanh",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Sâu Xanh tặng {name} một chiếc lá vẽ hình ông mặt trời để kỉ niệm buổi sáng đầu tiên của lớp Hai."
+    },
+    {
+      "id": "mo-bai-2",
+      "title": "Tờ lịch bay đi",
+      "kind": "unlock",
+      "trigger": "auto",
+      "text": "Một cơn gió thổi tờ lịch lá bay về phía gốc cây của Voi Bảo. Chuyện gì xảy ra với ngày hôm qua thế nhỉ?"
+    }
+  ],
+  "reward": {
+    "xp": 80,
+    "coin": 15,
+    "skillXp": {
+      "doc-hieu": 2,
+      "tu-ngu": 1
+    }
+  },
+  "unlock": [
+    "tv2-t01-b02"
+  ]
+}

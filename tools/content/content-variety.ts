@@ -2,6 +2,7 @@
 // feedback, rewards…), and no two textbook quests are built from the same sequence of mechanics.
 // The book's own wording is exempt: two quests may both show the same printed exercise.
 import type { QuestDefinition } from '../../packages/schema/src/content';
+import type { CurriculumItem } from '../../packages/schema/src/curriculum';
 import type { LoadedBook } from './check-curriculum';
 import { normaliseWording, stepMechanic } from './curriculum-links';
 
@@ -30,12 +31,24 @@ function playerLines(quest: QuestDefinition): Array<{ where: string; text: strin
   return lines;
 }
 
-/** Normalised printed wording (prompts, passages) that quests may repeat. */
+/** The book's answer as text, when it is text (an answer may be shown as a choice and again in the answer layer). */
+function answerTexts(answer: CurriculumItem['answer']): string[] {
+  if (!answer) return [];
+  if ('text' in answer) return [answer.text];
+  if ('choice' in answer) return [answer.choice];
+  if ('choices' in answer) return answer.choices;
+  if ('values' in answer) return answer.values.filter((v): v is string => typeof v === 'string');
+  return [];
+}
+
+/** Normalised printed wording (prompts, passages, the book's answers) that quests may repeat. */
 function bookWording(books: readonly LoadedBook[]): string[] {
   return books.flatMap(({ units }) =>
     units.flatMap((u) =>
       u.lessons.flatMap((l) =>
-        l.sections.flatMap((s) => [...(s.text ? [s.text.title, s.text.body] : []), ...s.items.map((i) => i.prompt)].map(normaliseWording)),
+        l.sections.flatMap((s) =>
+          [...(s.text ? [s.text.title, s.text.body] : []), ...s.items.flatMap((i) => [i.prompt, ...answerTexts(i.answer)])].map(normaliseWording),
+        ),
       ),
     ),
   );

@@ -90,16 +90,46 @@ export function normaliseWording(text: string): string {
   return text.normalize('NFC').replace(BLANK, '?').replace(/\s+/g, ' ').trim();
 }
 
-/** Everything of the step the child reads, in display order. */
-function visibleWording(step: QuestStep): string {
+/** Everything of the step the child reads: its wording, and the labels of what it shows to pick or move. */
+function visibleWording(step: QuestStep): string[] {
   const parts: string[] = [];
   if ('prompt' in step) parts.push(step.prompt);
   if ('question' in step) parts.push(step.question);
-  if (step.kind === 'challenge' && step.mechanic === 'fill-blank') parts.push(step.template);
-  return parts.join(' ');
+  // The instruction and the sentence with blanks read as one line on screen.
+  if (step.kind === 'challenge' && step.mechanic === 'fill-blank') parts.push([...parts, step.template].join(' '));
+  if ('choices' in step) for (const c of step.choices) if ('id' in c) parts.push(c.text);
+  if (step.kind === 'speak') parts.push(...step.hints);
+  if (step.kind === 'challenge') {
+    if (step.mechanic === 'fill-blank') parts.push(step.template, ...step.blanks.flatMap((b) => b.options.map((o) => o.text)));
+    if (step.mechanic === 'sort' || step.mechanic === 'classify') parts.push(...step.items.map((i) => i.label));
+    if (step.mechanic === 'classify') parts.push(...step.groups.map((g) => g.label));
+  }
+  return parts.map(normaliseWording);
+}
+
+/**
+ * The printed phrases of an inventory prompt. Readers flatten a page's layout into one line (choices
+ * printed in columns joined by "; ", a/b/c requirements, table cells split by " | ", "G:" hint lines),
+ * and a quest shows those parts as separate buttons, labels and hints, so each phrase is matched on its
+ * own. The phrases themselves are never loosened.
+ */
+export function printedPhrases(prompt: string): string[] {
+  return normaliseWording(prompt)
+    .split(/\s*;\s+(?=[a-zđ]\.\s)|(?<=[:?.!])\s+(?=[a-zđ]\.\s)|\s+\|\s+|\s+(?=G:)|\s+–\s+/)
+    .map((p) => p.replace(/^(?:G|M):\s*/, '').trim())
+    .filter((p) => p.length > 0);
 }
 
 const stripChoiceLetter = (label: string) => label.replace(/^[a-zđ]\.\s*/i, '');
+
+/** A phrase is shown when some visible text contains it; a choice "b. mẹ" may be shown as its button "mẹ". */
+function missingPhrases(step: QuestStep, prompt: string): string[] {
+  const visible = visibleWording(step);
+  const shown = (phrase: string) =>
+    visible.some((v) => v.includes(phrase)) || (/^[a-zđ]\.\s/.test(phrase) && visible.some((v) => v === stripChoiceLetter(phrase)));
+  return printedPhrases(prompt).filter((p) => !shown(p));
+}
+
 const sameChoice = (quest: string, book: string) =>
   normaliseWording(quest) === normaliseWording(book) || normaliseWording(quest) === normaliseWording(stripChoiceLetter(book));
 
@@ -238,9 +268,8 @@ export function checkCurriculumLinks(books: readonly LoadedBook[], quests: reado
         const set = mechanicsFor.get(ref) ?? new Set<string>();
         set.add(stepMechanic(step));
         mechanicsFor.set(ref, set);
-        if (step.kind !== 'worksheet' && !normaliseWording(visibleWording(step)).includes(normaliseWording(entry.item.prompt))) {
-          issues.push(`${where(step.id)} does not show the book's wording of ${ref}: "${entry.item.prompt}"`);
-        }
+        const missing = step.kind === 'worksheet' ? [] : missingPhrases(step, entry.item.prompt);
+        if (missing.length > 0) issues.push(`${where(step.id)} does not show the book's wording of ${ref}: "${missing.join('", "')}"`);
       }
       issues.push(...answerIssues(step, linked).map((m) => `${where(step.id)}: ${m}`));
     }
