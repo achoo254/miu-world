@@ -2,6 +2,7 @@
 # Production deploy for Miu World on .65, run from a dev machine at the repo root.
 #   tools/deploy/production/deploy.sh setup     one-time/idempotent: Postgres 16, Node 22, unit, backup timer,
 #                                               journal namespace, nginx block, DB role, env file
+#   tools/deploy/production/deploy.sh fonts     upload the worksheet handwriting font (kept out of git)
 #   tools/deploy/production/deploy.sh release   build, back up the DB, upload, switch, health-check
 # Production holds real children's data and .65 is shared: ask the owner before EVERY run
 # (docs/deployment-guide.md §1). Credentials come from $ALL_IN_ONE_STAGING_DEV (the .65 entry
@@ -52,8 +53,18 @@ setup() {
     echo "GOOGLE_CLIENT_ID=$(secret "$google.client_id")"
     echo "GOOGLE_CLIENT_SECRET=$(secret "$google.client_secret")"
     echo "GOOGLE_REDIRECT_URI=https://$DOMAIN/api/auth/google/callback"
+    echo "HANDWRITING_FONT_DIR=/opt/miu/fonts"
   } | prod 'install -m 640 -o root -g miu /dev/stdin /etc/miu/production.env'
   echo "setup done"
+}
+
+# Worksheet handwriting font (no open license: kept out of git). Uploads the .woff2 files from
+# $MIU_FONT_DIR (default .data/fonts of this checkout) to /opt/miu/fonts; served only to signed-in parents.
+fonts() {
+  local dir="${MIU_FONT_DIR:-.data/fonts}"
+  ls "$dir"/*.woff2 >/dev/null 2>&1 || { echo "no .woff2 in $dir: set MIU_FONT_DIR" >&2; exit 1; }
+  tar --no-xattrs -C "$dir" -cf - $(cd "$dir" && ls *.woff2) \
+    | prod 'tar --no-same-owner -xf - -C /opt/miu/fonts && chown root:miu /opt/miu/fonts/*.woff2 && chmod 640 /opt/miu/fonts/*.woff2 && ls /opt/miu/fonts | wc -l | xargs echo fonts on host:'
 }
 
 release() {
@@ -98,6 +109,7 @@ release() {
 
 case "${1:-}" in
   setup) setup ;;
+  fonts) fonts ;;
   release) release ;;
-  *) echo "usage: $0 setup|release" >&2; exit 2 ;;
+  *) echo "usage: $0 setup|fonts|release" >&2; exit 2 ;;
 esac
