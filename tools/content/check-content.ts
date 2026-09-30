@@ -12,6 +12,7 @@ import { worldEntitiesSchema } from '../../packages/voxel/src/world-entities';
 import { ASSETS_DIR } from '../assets/asset-lib';
 import { CURRICULUM_FOLDERS, checkCurriculum } from './check-curriculum';
 import { percentCovered, sumGaps } from './content-gaps';
+import { varietyIssues } from './content-variety';
 import { checkCurriculumLinks } from './curriculum-links';
 
 /** Content files the server catalogue reads (a trailing slash means the `.json` files directly in that folder). */
@@ -154,10 +155,13 @@ export function checkContent(dir: string = CONTENT_DIR): ContentReport {
   }
   const curriculum = checkCurriculum(path.join(dir, 'curriculum'));
   issues.push(...curriculum.issues);
-  // Textbook quests must carry the book's wording and answers unchanged; gaps only warn until the books are switched on.
+  // Textbook quests must carry the book's wording and answers unchanged, and no quest may repeat another's
+  // lines; gaps only warn until the books are switched on.
   try {
-    const links = checkCurriculumLinks(curriculum.books, readQuestDefinitions(path.join(dir, 'quests')));
+    const quests = readQuestDefinitions(path.join(dir, 'quests'));
+    const links = checkCurriculumLinks(curriculum.books, quests);
     issues.push(...links.issues);
+    issues.push(...varietyIssues(quests, curriculum.books));
     for (const book of curriculum.books) {
       const totals = sumGaps(links.lessons.filter((l) => l.book === book.book.id));
       if (totals.missing + totals.missingTexts > 0) {

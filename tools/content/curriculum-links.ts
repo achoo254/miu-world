@@ -83,9 +83,9 @@ function sectionIndex(books: readonly LoadedBook[]): Map<string, CurriculumSecti
 }
 
 // Wording is compared after only two layout-level normalisations: runs of spaces/line breaks become one
-// space, and every blank mark (?, …, ..., □, ___ and the template's {{blank}}) becomes "?". Letters,
+// space, and every blank mark (?, …, ..., □, ■, ◻, ___ and the template's {{blank}}) becomes "?". Letters,
 // diacritics, digits and punctuation must match exactly.
-const BLANK = /\{\{[a-z0-9-]+\}\}|…|\.{3,}|□|_{2,}/g;
+const BLANK = /\{\{[a-z0-9-]+\}\}|…|\.{3,}|[□■◻◼]|_{2,}/g;
 export function normaliseWording(text: string): string {
   return text.normalize('NFC').replace(BLANK, '?').replace(/\s+/g, ' ').trim();
 }
