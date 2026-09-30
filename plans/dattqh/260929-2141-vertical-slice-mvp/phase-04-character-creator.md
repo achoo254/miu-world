@@ -1,7 +1,7 @@
 ---
 phase: 4
 title: "Character Creator + trang phục voxel"
-status: pending
+status: completed
 priority: P1
 effort: "L"
 dependencies: [1]
@@ -36,6 +36,11 @@ Bé chọn Mèo, đặt tên, đổi trang phục và thấy ngay trên nhân v�
 
 ## Verification
 - `pnpm vitest run`; `pnpm assets:check`; E2E `creator` project mới xanh
+
+## Kết quả (2026-09-30, commit `7fe21a2`, `2f0480f`)
+- Xong đủ Requirements; E2E `creator` + `account` xanh; server từ chối đồ khóa/lạ/trùng slot (403 `equipment-locked`, 400 `invalid-equipment`).
+- Lệch: không có cờ "đã tạo nhân vật" trong DB (phase này cấm migration) nên hồ sơ còn nhân vật mặc định (tên mặc định, chưa đeo gì) được đưa vào `/create`; nhân vật mới phải chọn tên (không điền sẵn "Miu" — chỉ thị người sở hữu). Biến thể màu là file JSON riêng (`variantOf`) để `equipped` vẫn là id; món đồ có thêm `name`.
+- Link sửa nhân vật từ Home: làm ở phase 5.
 
 ## Risk
 - Mũ/balo mới lệch khi anim: dùng `accessoryScale` theo node và test ảnh ở 4 anim (xem `miu-cat-outfit-*` hiện có).
