@@ -20,6 +20,8 @@ Gặp NPC → hội thoại (M3.3) → nhận quest (M2.2) → tracker chỉ bư
 ## Requirements
 - Dialogue UI (M3.3): bong bóng tên NPC + lời thoại, lựa chọn "Giúp tớ nhé! / Cho tớ hỏi thêm… / Xem nhiệm vụ"; nút "Nghe lại" dùng Web Speech API (`speechSynthesis`, `vi-VN`, bỏ qua nếu không hỗ trợ — không dịch vụ ngoài).
 - Controller quest phía web (`apps/web/src/ui/quest/quest-controller.ts`, không trong runtime game): nhận `interaction {targetId}` → tìm step hiện tại khớp target → mở UI tương ứng (dialogue/read/riddle/challenge) → gọi API → cập nhật store + `set-world-state`.
+<!-- Updated: phase 2 - step `trigger: "auto"` (ch1: `read-letter` mở ngay khi tìm đủ 3 manh mối; `open-gate` ngay sau `open-chest`, là bước trả thưởng) do controller tự gửi/mở ngay khi bước trước xong, không chờ tương tác; thiếu bước này thì trẻ mở rương mà không nhận thưởng. -->
+- Step `trigger: "auto"`: controller mở/gửi ngay khi bước trước xong (ch1: đọc lá thư sau khi tìm đủ manh mối; mở cổng ngay sau rương, bước cuối nên thưởng trả ở đây).
 - Tracker HUD: tiêu đề bước hiện tại + tiến độ tìm (0/3); mũi tên chỉ hướng tới target (game vẽ, nhận target id qua lệnh bridge).
 - Bước `search`: controller gửi `{ target }` cho từng manh mối chạm được (thứ tự tùy ý); tracker "n/3" chỉ lấy từ response server; chạm lại manh mối đã tìm không đổi gì.
 - Bước `read`, `riddle`: controller chỉ định tuyến tới màn của phase 8 (handler `read`/`riddle` có sẵn khung rỗng ném "chưa hỗ trợ" trong phase này và được phase 8 hiện thực).

@@ -1,7 +1,7 @@
 ---
 phase: 2
 title: "Quest schema v2 + runtime + nội dung ch1"
-status: pending
+status: completed
 priority: P1
 effort: "L"
 dependencies: []
@@ -45,6 +45,15 @@ Quest mô tả hoàn toàn bằng dữ liệu (Master Plan §11): Quest → Step
 ## Verification
 - `pnpm vitest run packages tools/content apps/server`; `pnpm content:check`; `pnpm typecheck`
 - Test "quest mới chỉ bằng dữ liệu": thêm quest fixture thứ hai dạng JSON, chạy runtime + API không sửa code
+
+## Kết quả (2026-09-30)
+Xong. Gate: `assets:check`, `content:check`, `test` (214 test), `typecheck`, `lint`, web build, E2E setup/account/play (8/8) xanh. Reviewer độc lập: 4 phát hiện medium đã sửa (mảnh kéo thả giá trị 0 lọt chấm, stub mở khóa quest khác làm khóa vĩnh viễn, key gõ sai bị bỏ im lặng → schema tác giả dùng `strictObject`, tài liệu nói client chấm đáp án); low: glob `content/*` né ESLint (đã chặn), file quest sai đuôi (đã chặn), `total: 0` (đã chặn). Report: `plans/dattqh/reports/phase-02-260930-quest-schema-v2.md`.
+
+Lệch so với spec, có chủ ý:
+- `QuestView` bỏ cả `support` (không chỉ `support.answer`): cả ba lớp hỗ trợ lấy qua endpoint `support` để server đếm lượt xem.
+- Luật "≥ 2 step không phải quiz" hiểu là ≥ 2 cơ chế khác trắc nghiệm trong {search, riddle, drag-drop, sort} (bám §16), dialogue không tính.
+- Phần thưởng ch1 có thêm Skill XP `phep-tru` (thử thách kẹo 8 − 3 dạy phép trừ).
+- Route `complete` đã nhận `{ answer?, target? }` để quest v2 chơi được qua API; đáp án sai tạm trả 422 `wrong-answer`, stub trả 409 `quest-coming-soon`. `found` chưa lưu DB (mỗi lần gọi chỉ thấy target vừa gửi) nên `find-clues` 3 manh mối của ch1 chỉ xong được qua API sau migration ở phase 3.
 
 ## Risk
 - Schema quá cứng cho SLICE sau (Skill Check, Boss, lựa chọn nhánh): giữ `kind` mở rộng được; Decision ở MVP chỉ kể chuyện (ghi rõ).

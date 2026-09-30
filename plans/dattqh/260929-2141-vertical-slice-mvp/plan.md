@@ -1,7 +1,7 @@
 ---
 title: "Vertical slice MVP (Master Plan v3 task #4, #10–#20, #21 phần icon, #22)"
 description: "Một vòng chơi trọn vẹn ở Khu rừng bí mật chương 1: tạo nhân vật, Home + HUD, khám phá, NPC, quest bằng dữ liệu, 3 thử thách Toán có hỗ trợ học, thưởng/Level Up/mở khóa do server tính, ba lô và bộ sưu tập."
-status: pending
+status: in-progress
 priority: P1
 effort: "5-6w"
 branch: main
@@ -39,7 +39,7 @@ Không thuộc plan này: loài Thỏ/Cáo/Gấu, Kim cương, chuỗi ngày (st
 | # | Phase | ID | Tier | Depends | Status |
 |---|-------|----|------|---------|--------|
 | 1 | [Design token + component UI + màn hệ thống](./phase-01-design-tokens-and-ui-kit.md) | SLICE-00 | M | — | Pending |
-| 2 | [Quest schema v2 + runtime + nội dung ch1](./phase-02-quest-schema-runtime-content.md) | SLICE-06 | L | — | Pending |
+| 2 | [Quest schema v2 + runtime + nội dung ch1](./phase-02-quest-schema-runtime-content.md) | SLICE-06 | L | — | Completed |
 | 3 | [API gameplay: chấm thử thách, hỗ trợ học, level, mở khóa](./phase-03-gameplay-api-server.md) | SLICE-10 (server) | M | 2 | Pending |
 | 4 | [Character Creator + trang phục voxel](./phase-04-character-creator.md) | SLICE-01 | L | 1 | Pending |
 | 5 | [Home Base, chọn khu vực, danh sách quest, HUD](./phase-05-home-region-hud.md) | SLICE-02 | M | 1, 3 | Pending |
