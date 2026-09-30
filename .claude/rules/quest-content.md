@@ -15,4 +15,6 @@ Lý do: Master Plan v3 §3, §5, §11.
 - `packages/quest` là TypeScript thuần: không import `three`, React hay DOM; dùng chung web và server.
 - Mở khóa: quest mở khi BẤT KỲ quest nào liệt kê nó trong `unlock` đã xong; quest không ai liệt kê thì mở từ đầu. Catalog từ chối quest chỉ tới được qua vòng `unlock` (server không khởi động).
 - Id nội dung dạng kebab-case, không đổi sau khi đã có tiến độ người chơi tham chiếu.
+- `pnpm content:check` validate mọi file trong `content/` (CI chạy sau `assets:check`); file JSON mới phải có validator (catalog server hoặc tool asset).
+- `content/quests/*.json` chứa đáp án: chỉ server đọc. Web và `packages/quest` không import (ESLint chặn); client nhận `QuestView` (bỏ `answer`, `support`).
 - Nội dung học là bản nháp của AI; giáo viên duyệt trước khi tới trẻ.

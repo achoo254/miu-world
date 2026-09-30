@@ -10,7 +10,7 @@ import { createTestDb, type Db, type DbHandle } from '../src/db/client';
 export const ORIGIN = 'http://localhost:5173';
 /** Low scrypt cost keeps the suite fast; production cost has its own test in secret-hashing.test.ts. */
 const FAST_SCRYPT = { logN: 10, r: 8, p: 1 };
-/** Real content plus fixture quests (no real quest ships yet). */
+/** Real content with fixture quests in place of the shipped ones, so tests do not change when content does. */
 export const FIXTURE_CONTENT = loadContentCatalog({ questDir: fileURLToPath(new URL('./fixtures/quests', import.meta.url)) });
 
 export type Agent = ReturnType<typeof request.agent>;

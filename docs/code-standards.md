@@ -35,7 +35,7 @@ Lệnh cụ thể và danh sách cấm cho agent: `CLAUDE.md`. File này giải 
 
 ## Định nghĩa "xong"
 
-1. Bốn gate CI xanh (`assets:check`, `test`, `typecheck`, `lint`); runtime đổi thì E2E xanh; CI còn chạy `pnpm audit` và Semgrep.
+1. Năm gate CI xanh (`assets:check`, `content:check`, `test`, `typecheck`, `lint`); runtime đổi thì E2E xanh; CI còn chạy `pnpm audit` và Semgrep.
 2. Agent review độc lập (`code-reviewer`) và đã xử lý phát hiện; phát hiện không sửa phải ghi lý do trong report.
 3. Plan/report trong `plans/dattqh/` cập nhật; tài liệu `docs/` cập nhật nếu đổi hành vi người dùng thấy, kiến trúc, lệnh, hay quyết định.
 4. Cuối đợt giao hàng: trang review cho người duyệt cuối.

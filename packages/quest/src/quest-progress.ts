@@ -1,39 +1,82 @@
-import type { QuestDefinition, RewardSpec } from '@miu/schema/content';
+import type { ActiveQuest, AnswerableStep, QuestStep, RewardSpec } from '@miu/schema/content';
+import type { StepAnswer } from '@miu/schema/game';
+import { checkAnswer } from './check-answer';
 
 /** Progress of one child on one quest. Steps are completed strictly in `def.steps` order. */
 export interface QuestProgress {
   completedSteps: string[];
   completed: boolean;
+  /** Targets found so far, per `search` step; inside a search step the order is free. */
+  found: Record<string, string[]>;
 }
 
-export type StepError = 'unknown-step' | 'out-of-order' | 'already-completed';
+/** What the child did: an answer for a learning step, or the target just found for a search step. */
+export interface StepInput {
+  answer?: StepAnswer;
+  target?: string;
+}
+
+export type StepError =
+  | 'unknown-step'
+  | 'out-of-order'
+  | 'already-completed'
+  | 'answer-required'
+  | 'wrong-answer'
+  | 'target-required'
+  | 'unknown-target';
 
 export type StepResult =
   | { ok: true; progress: QuestProgress; reward: RewardSpec | null }
   | { ok: false; error: StepError };
 
 export function emptyProgress(): QuestProgress {
-  return { completedSteps: [], completed: false };
+  return { completedSteps: [], completed: false, found: {} };
+}
+
+export function isAnswerable(step: QuestStep): step is AnswerableStep {
+  return 'support' in step;
+}
+
+/** The step the child should do next, or null once every step is done. Works on `QuestView` too. */
+export function nextStep<S extends { id: string }>(quest: { steps: readonly S[] }, progress: Pick<QuestProgress, 'completedSteps'>): S | null {
+  return quest.steps.find((s) => !progress.completedSteps.includes(s.id)) ?? null;
 }
 
 /**
- * Pure step transition shared by the client (to predict what to show) and the server (the source of
- * truth that records it). The reward comes only from the quest definition and only on the last step.
+ * Pure step transition the server records (it needs the full definition, answers included, so the
+ * client never runs it; the client shows the server's result). A learning step completes only with a correct answer; a search step records
+ * each target found and completes once all are found (finding one again changes nothing). The reward
+ * comes only from the quest definition and only on the last step.
  */
-export function completeStep(def: QuestDefinition, progress: QuestProgress, stepId: string): StepResult {
+export function completeStep(def: ActiveQuest, progress: QuestProgress, stepId: string, input: StepInput = {}): StepResult {
   const index = def.steps.findIndex((s) => s.id === stepId);
-  if (index < 0) return { ok: false, error: 'unknown-step' };
+  const step = def.steps[index];
+  if (!step) return { ok: false, error: 'unknown-step' };
   if (progress.completedSteps.includes(stepId)) return { ok: false, error: 'already-completed' };
   const expectedPrefix = def.steps.slice(0, index).map((s) => s.id);
   const inOrder =
     progress.completedSteps.length === index && expectedPrefix.every((id, i) => progress.completedSteps[i] === id);
   if (!inOrder) return { ok: false, error: 'out-of-order' };
 
+  const found = structuredClone(progress.found);
+  if (step.kind === 'search') {
+    if (input.target === undefined) return { ok: false, error: 'target-required' };
+    if (!step.targets.includes(input.target)) return { ok: false, error: 'unknown-target' };
+    const soFar = found[stepId] ?? [];
+    found[stepId] = soFar.includes(input.target) ? soFar : [...soFar, input.target];
+    if (!step.targets.every((t) => found[stepId]?.includes(t))) {
+      return { ok: true, progress: { completedSteps: [...progress.completedSteps], completed: false, found }, reward: null };
+    }
+  } else if (isAnswerable(step)) {
+    if (input.answer === undefined) return { ok: false, error: 'answer-required' };
+    if (!checkAnswer(step, input.answer)) return { ok: false, error: 'wrong-answer' };
+  }
+
   const completedSteps = [...progress.completedSteps, stepId];
   const completed = completedSteps.length === def.steps.length;
   return {
     ok: true,
-    progress: { completedSteps, completed },
+    progress: { completedSteps, completed, found },
     reward: completed ? structuredClone(def.reward) : null,
   };
 }

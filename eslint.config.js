@@ -2,6 +2,12 @@ import js from '@eslint/js';
 import reactHooks from 'eslint-plugin-react-hooks';
 import tseslint from 'typescript-eslint';
 
+// Quest files hold the answers; only the server may read them (the web app gets answer-free views).
+const noQuestContent = {
+  group: ['**/content/quests', '**/content/quests/**'],
+  message: 'Quest content holds answers: only the server reads it; the client uses QuestView from the API.',
+};
+
 export default tseslint.config(
   {
     ignores: [
@@ -33,8 +39,25 @@ export default tseslint.config(
           patterns: [
             { group: ['three', 'three/*'], message: 'Pure packages must not depend on three.js.' },
             { group: ['react', 'react-dom', 'react-dom/*'], message: 'Pure packages must not depend on React.' },
+            noQuestContent,
           ],
         },
+      ],
+    },
+  },
+  {
+    files: ['apps/web/**/*.{ts,tsx}'],
+    rules: { 'no-restricted-imports': ['error', { patterns: [noQuestContent] }] },
+  },
+  {
+    // import.meta.glob and dynamic import() take plain strings, which no-restricted-imports cannot see.
+    files: ['apps/web/src/**/*.{ts,tsx}'],
+    rules: {
+      'no-restricted-syntax': [
+        'error',
+        // Also a wildcard right under content/ (`content/*/…`, `content/quest*/…`), which could sweep quests in.
+        { selector: 'Literal[value=/content\\/(quests|[^\\/]*[*?{])/]', message: noQuestContent.message },
+        { selector: 'TemplateElement[value.raw=/content\\/(quests|[^\\/]*[*?{])/]', message: noQuestContent.message },
       ],
     },
   },
@@ -44,7 +67,12 @@ export default tseslint.config(
     rules: {
       'no-restricted-imports': [
         'error',
-        { patterns: [{ group: ['react', 'react-dom', 'react-dom/*', 'react-router'], message: 'The game runtime must not depend on React.' }] },
+        {
+          patterns: [
+            { group: ['react', 'react-dom', 'react-dom/*', 'react-router'], message: 'The game runtime must not depend on React.' },
+            noQuestContent,
+          ],
+        },
       ],
     },
   },

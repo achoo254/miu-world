@@ -1,8 +1,8 @@
 import { and, asc, eq, gt, inArray, isNotNull } from 'drizzle-orm';
 import { Router } from 'express';
 import { ContentId } from '@miu/schema/content';
-import { InventoryResponse, StepCompleteResponse } from '@miu/schema/game';
-import { completeStep } from '@miu/quest/quest-progress';
+import { InventoryResponse, StepCompleteRequest, StepCompleteResponse } from '@miu/schema/game';
+import { completeStep, type StepError } from '@miu/quest/quest-progress';
 import { activeChildId, requireParent } from '../auth/auth-context';
 import type { ContentCatalog } from '../content/content-catalog';
 import type { Db } from '../db/client';
@@ -22,15 +22,20 @@ function contentId(raw: unknown, notFound: string): string {
   return parsed.data;
 }
 
-const STEP_ERRORS = {
+const STEP_ERRORS: Record<Exclude<StepError, 'already-completed'>, readonly [number, string]> = {
   'unknown-step': [404, 'step-not-found'],
   'out-of-order': [409, 'out-of-order'],
-} as const;
+  'answer-required': [400, 'answer-required'],
+  'target-required': [400, 'target-required'],
+  'unknown-target': [400, 'unknown-target'],
+  'wrong-answer': [422, 'wrong-answer'],
+};
 
 /**
  * The server is the source of truth for progress and rewards (Master Plan §8, §9): the client only
- * says which step it believes it finished; the request body is ignored, the reward comes from the
- * quest catalogue, and everything is written in one transaction.
+ * says which step it did and, for that step, its answer or the target it found. The server grades the
+ * answer, takes the reward from the quest catalogue (reward fields in the body are dropped), and
+ * writes everything in one transaction.
  */
 export function questRoutes({ db, content, clock }: QuestRouteDeps): Router {
   const router = Router();
@@ -55,6 +60,8 @@ export function questRoutes({ db, content, clock }: QuestRouteDeps): Router {
     const stepId = contentId(req.params.stepId, 'step-not-found');
     const quest = content.quests.get(questId);
     if (!quest) throw new HttpError(404, 'quest-not-found');
+    const input = StepCompleteRequest.safeParse(req.body ?? {});
+    if (!input.success) throw new HttpError(400, 'invalid-step-input');
 
     const prerequisites = content.unlockedBy.get(questId) ?? [];
     if (prerequisites.length > 0) {
@@ -64,6 +71,7 @@ export function questRoutes({ db, content, clock }: QuestRouteDeps): Router {
         .where(and(eq(questProgress.childId, childId), inArray(questProgress.questId, [...prerequisites]), isNotNull(questProgress.completedAt)));
       if (done.length === 0) throw new HttpError(409, 'quest-locked');
     }
+    if (quest.status !== 'active') throw new HttpError(409, 'quest-coming-soon');
 
     const now = clock();
     const source = questSource(questId);
@@ -75,10 +83,11 @@ export function questRoutes({ db, content, clock }: QuestRouteDeps): Router {
         .from(questProgress)
         .where(and(eq(questProgress.childId, childId), eq(questProgress.questId, questId)))
         .for('update');
-      const current = { completedSteps: row?.completedSteps ?? [], completed: row?.completedAt != null };
+      // Found search targets are not stored yet: each call sees only the target it sends.
+      const current = { completedSteps: row?.completedSteps ?? [], completed: row?.completedAt != null, found: {} };
       // A finished quest stays finished: steps added to its content later never pay a second reward.
       if (current.completed) return { quest: current, reward: await recordedReward(tx, childId, source), repeated: true };
-      const result = completeStep(quest, current, stepId);
+      const result = completeStep(quest, current, stepId, input.data);
       if (!result.ok) {
         if (result.error === 'already-completed') {
           return { quest: current, reward: await recordedReward(tx, childId, source), repeated: true };
@@ -91,7 +100,8 @@ export function questRoutes({ db, content, clock }: QuestRouteDeps): Router {
         .set({ completedSteps: result.progress.completedSteps, completedAt: result.progress.completed ? now : null })
         .where(and(eq(questProgress.childId, childId), eq(questProgress.questId, questId)));
       const granted = result.reward ? await grantReward(tx, childId, source, result.reward, now) : false;
-      return { quest: result.progress, reward: granted ? result.reward : null, repeated: false };
+      const { completedSteps, completed } = result.progress;
+      return { quest: { completedSteps, completed }, reward: granted ? result.reward : null, repeated: false };
     });
 
     res.json(

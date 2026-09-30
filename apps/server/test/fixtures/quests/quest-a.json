@@ -1,7 +1,84 @@
 {
   "id": "quest-a",
   "region": "khu-rung-bi-mat",
-  "steps": [{ "id": "meet-vet" }, { "id": "find-letter" }],
-  "reward": { "xp": 60, "coin": 10, "skillXp": { "doc-hieu": 1 }, "items": { "la-than": 1 } },
-  "unlock": ["quest-b"]
+  "chapter": 1,
+  "title": "Quest thử",
+  "status": "active",
+  "summary": "Quest giả dùng trong test server.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "Miu",
+    "where": "Khu rừng thử",
+    "goal": "Giúp các bạn",
+    "play": "Tìm và giải đố",
+    "learn": "Phép cộng",
+    "reward": "XP",
+    "unlock": "Quest tiếp theo"
+  },
+  "phases": {
+    "hook": "meet-vet",
+    "explore": "find-letter",
+    "learn": "find-letter",
+    "challenge": "solve-tree",
+    "decision": "solve-tree",
+    "finale": "solve-tree",
+    "reward": "solve-tree",
+    "unlock": "solve-tree"
+  },
+  "steps": [
+    {
+      "id": "meet-vet",
+      "title": "Gặp Vẹt",
+      "kind": "dialogue",
+      "target": "parrot-guide",
+      "lines": [
+        {
+          "speaker": "Vẹt",
+          "text": "Chào bạn!"
+        }
+      ]
+    },
+    {
+      "id": "find-letter",
+      "title": "Tìm lá thư",
+      "kind": "search",
+      "targets": [
+        "clue-letter"
+      ]
+    },
+    {
+      "id": "solve-tree",
+      "title": "Giải đố",
+      "kind": "riddle",
+      "target": "ancient-tree",
+      "skill": "phep-cong",
+      "question": "2 + 3 = ?",
+      "answer": {
+        "value": 5
+      },
+      "support": {
+        "guide": [
+          "Đếm từng bước."
+        ],
+        "hint": "Đếm chậm lại.",
+        "answer": {
+          "text": "5",
+          "explanation": "2 + 3 = ?"
+        }
+      }
+    }
+  ],
+  "reward": {
+    "xp": 60,
+    "coin": 10,
+    "skillXp": {
+      "doc-hieu": 1
+    },
+    "items": {
+      "la-than": 1
+    }
+  },
+  "unlock": [
+    "quest-b"
+  ]
 }

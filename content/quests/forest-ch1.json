@@ -1,0 +1,390 @@
+{
+  "id": "forest-ch1",
+  "region": "khu-rung-bi-mat",
+  "chapter": 1,
+  "title": "Khu rừng bí mật – Chương 1: Lá thần",
+  "status": "active",
+  "summary": "Cây cổ thụ của khu rừng đang héo. Miu cùng Vẹt và Hải ly đi tìm Lá thần để chữa cho cây.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "Miu, chú mèo nhỏ tốt bụng, giúp các bạn trong rừng",
+    "where": "Khu rừng bí mật, chương 1",
+    "goal": "Tìm Lá thần để chữa cho cây cổ thụ đang héo",
+    "play": "Tìm manh mối, đọc thư, kéo thả táo, trả lời câu hỏi, xếp đá qua suối, giải câu đố",
+    "learn": "Đếm và phép cộng trong phạm vi 20, phép trừ trong phạm vi 10, so sánh số có hai chữ số, đọc hiểu một lá thư ngắn",
+    "reward": "100 XP, 20 Xu, Skill XP và vật phẩm Lá thần",
+    "unlock": "Cổng đá dẫn tới Khu rừng bí mật – Chương 2"
+  },
+  "phases": {
+    "hook": "meet-parrot",
+    "explore": "find-clues",
+    "learn": "meet-beaver",
+    "challenge": "apples-for-beaver",
+    "decision": "tree-decision",
+    "finale": "tree-riddle",
+    "reward": "open-chest",
+    "unlock": "open-gate"
+  },
+  "steps": [
+    {
+      "id": "meet-parrot",
+      "title": "Gặp bạn Vẹt",
+      "kind": "dialogue",
+      "target": "parrot-guide",
+      "lines": [
+        {
+          "speaker": "Vẹt",
+          "text": "Chào Miu! Cây cổ thụ của khu rừng đang héo úa."
+        },
+        {
+          "speaker": "Vẹt",
+          "text": "Chỉ có Lá thần mới chữa được cho cây. Bạn giúp tớ tìm nhé?"
+        },
+        {
+          "speaker": "Vẹt",
+          "text": "Hãy tìm 3 manh mối quanh đây: một chiếc hộp, một lá thư và một cây nấm đỏ."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ sẽ giúp!",
+          "reply": "Tuyệt quá! Mình đi thôi!"
+        },
+        {
+          "text": "Lá thần là gì vậy?",
+          "reply": "Là chiếc lá biết phát sáng, có phép chữa lành. Cùng tìm nhé!"
+        }
+      ]
+    },
+    {
+      "id": "find-clues",
+      "title": "Tìm 3 manh mối",
+      "kind": "search",
+      "targets": [
+        "clue-box",
+        "clue-letter",
+        "clue-mushroom"
+      ]
+    },
+    {
+      "id": "read-letter",
+      "title": "Đọc lá thư",
+      "kind": "read",
+      "target": "clue-letter",
+      "trigger": "auto",
+      "skill": "doc-hieu",
+      "text": "Gửi bạn nhỏ dũng cảm,\nLá thần nằm trong chiếc rương cạnh cây cổ thụ. Muốn tới đó, bạn hãy tìm bạn Hải ly ở bên suối. Hải ly sẽ chỉ đường cho bạn.\nBác Cú già",
+      "question": "Theo lá thư, ai sẽ chỉ đường cho Miu?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Bác Cú già"
+        },
+        {
+          "id": "b",
+          "text": "Bạn Hải ly"
+        },
+        {
+          "id": "c",
+          "text": "Bạn Vẹt"
+        }
+      ],
+      "answer": {
+        "choice": "b"
+      },
+      "support": {
+        "guide": [
+          "Đọc chậm từng câu trong lá thư.",
+          "Tìm câu có hai chữ \"chỉ đường\".",
+          "Xem ai là người làm việc đó."
+        ],
+        "hint": "Tìm câu nói về bạn ở bên suối.",
+        "answer": {
+          "text": "Bạn Hải ly",
+          "explanation": "Lá thư viết: \"Hải ly sẽ chỉ đường cho bạn.\" Bác Cú già là người viết thư."
+        }
+      }
+    },
+    {
+      "id": "meet-beaver",
+      "title": "Gặp bạn Hải ly",
+      "kind": "dialogue",
+      "target": "animal-beaver",
+      "lines": [
+        {
+          "speaker": "Hải ly",
+          "text": "Chào Miu! Tớ sẽ chỉ đường tới cây cổ thụ."
+        },
+        {
+          "speaker": "Hải ly",
+          "text": "Nhưng trước hết, tớ cần đúng 10 quả táo để làm bánh cho cả nhà."
+        },
+        {
+          "speaker": "Hải ly",
+          "text": "Mẹo nhỏ: mỗi lần đặt một quả vào giỏ, bạn đếm tiếp một số."
+        }
+      ]
+    },
+    {
+      "id": "apples-for-beaver",
+      "title": "Hái 10 quả táo",
+      "kind": "challenge",
+      "mechanic": "drag-drop",
+      "target": "animal-beaver",
+      "skill": "phep-cong",
+      "prompt": "Kéo đúng 10 quả táo vào giỏ của Hải ly.",
+      "container": "Giỏ của Hải ly",
+      "pieces": [
+        {
+          "id": "apple-1",
+          "label": "Quả táo",
+          "value": 1
+        },
+        {
+          "id": "apple-2",
+          "label": "Quả táo",
+          "value": 1
+        },
+        {
+          "id": "apple-3",
+          "label": "Quả táo",
+          "value": 1
+        },
+        {
+          "id": "apple-4",
+          "label": "Quả táo",
+          "value": 1
+        },
+        {
+          "id": "apple-5",
+          "label": "Quả táo",
+          "value": 1
+        },
+        {
+          "id": "apple-6",
+          "label": "Quả táo",
+          "value": 1
+        },
+        {
+          "id": "apple-7",
+          "label": "Quả táo",
+          "value": 1
+        },
+        {
+          "id": "apple-8",
+          "label": "Quả táo",
+          "value": 1
+        },
+        {
+          "id": "apple-9",
+          "label": "Quả táo",
+          "value": 1
+        },
+        {
+          "id": "apple-10",
+          "label": "Quả táo",
+          "value": 1
+        },
+        {
+          "id": "apple-11",
+          "label": "Quả táo",
+          "value": 1
+        },
+        {
+          "id": "apple-12",
+          "label": "Quả táo",
+          "value": 1
+        },
+        {
+          "id": "apple-13",
+          "label": "Quả táo",
+          "value": 1
+        }
+      ],
+      "answer": {
+        "total": 10
+      },
+      "support": {
+        "guide": [
+          "Kéo từng quả táo vào giỏ.",
+          "Mỗi lần kéo, đếm to: 1, 2, 3…",
+          "Dừng lại khi đếm tới 10."
+        ],
+        "hint": "Nếu lỡ kéo thừa, hãy kéo bớt ra khỏi giỏ rồi đếm lại.",
+        "answer": {
+          "text": "10 quả táo",
+          "explanation": "Đếm 1, 2, 3, 4, 5, 6, 7, 8, 9, 10: đủ 10 quả thì dừng. 3 quả còn lại để trên cây."
+        }
+      }
+    },
+    {
+      "id": "candy-quiz",
+      "title": "Chia kẹo với Hải ly",
+      "kind": "challenge",
+      "mechanic": "quiz",
+      "target": "animal-beaver",
+      "skill": "phep-tru",
+      "prompt": "Hải ly có 8 viên kẹo và tặng Miu 3 viên. Hải ly còn lại mấy viên kẹo?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "3"
+        },
+        {
+          "id": "b",
+          "text": "5"
+        },
+        {
+          "id": "c",
+          "text": "6"
+        },
+        {
+          "id": "d",
+          "text": "11"
+        }
+      ],
+      "answer": {
+        "choice": "b"
+      },
+      "support": {
+        "guide": [
+          "Hải ly có 8 viên kẹo.",
+          "Tặng đi thì số kẹo ít đi: ta làm phép trừ.",
+          "Tính 8 − 3."
+        ],
+        "hint": "Đếm lùi 3 bước từ 8: 7, 6, 5.",
+        "answer": {
+          "text": "5 viên kẹo",
+          "explanation": "8 − 3 = 5. Tặng đi 3 viên thì Hải ly còn 5 viên."
+        }
+      }
+    },
+    {
+      "id": "cross-stream",
+      "title": "Qua suối",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "stream-stones",
+      "skill": "so-sanh-so",
+      "prompt": "Bước lên các hòn đá theo thứ tự số từ bé đến lớn để qua suối.",
+      "items": [
+        {
+          "id": "stone-27",
+          "label": "27"
+        },
+        {
+          "id": "stone-15",
+          "label": "15"
+        },
+        {
+          "id": "stone-9",
+          "label": "9"
+        },
+        {
+          "id": "stone-34",
+          "label": "34"
+        }
+      ],
+      "answer": {
+        "order": [
+          "stone-9",
+          "stone-15",
+          "stone-27",
+          "stone-34"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Tìm số bé nhất trước.",
+          "So sánh chữ số hàng chục: hàng chục bé hơn thì số bé hơn.",
+          "Xếp tiếp các số còn lại từ bé đến lớn."
+        ],
+        "hint": "Số 9 chỉ có một chữ số nên là số bé nhất.",
+        "answer": {
+          "text": "9, 15, 27, 34",
+          "explanation": "9 < 15 < 27 < 34. So hàng chục: 1 chục < 2 chục < 3 chục, còn 9 chưa đủ 1 chục."
+        }
+      }
+    },
+    {
+      "id": "tree-decision",
+      "title": "Gặp cây cổ thụ",
+      "kind": "dialogue",
+      "target": "ancient-tree",
+      "lines": [
+        {
+          "speaker": "Cây cổ thụ",
+          "text": "Ai đã tìm đến ta thế này?"
+        },
+        {
+          "speaker": "Cây cổ thụ",
+          "text": "Muốn mở rương Lá thần, cháu hãy giải câu đố của ta."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu đến để chữa cho ông!",
+          "reply": "Cháu thật tốt bụng."
+        },
+        {
+          "text": "Cháu và các bạn cùng giúp ông!",
+          "reply": "Cùng nhau thì việc gì cũng xong."
+        }
+      ]
+    },
+    {
+      "id": "tree-riddle",
+      "title": "Giải câu đố của cây",
+      "kind": "riddle",
+      "target": "ancient-tree",
+      "skill": "phep-cong",
+      "question": "Trên cành cây có 8 chiếc lá, mọc thêm 5 chiếc lá nữa. Cành cây có tất cả bao nhiêu chiếc lá? (8 + 5 = ?)",
+      "answer": {
+        "value": 13
+      },
+      "support": {
+        "guide": [
+          "Bắt đầu từ số 8.",
+          "Đếm thêm 5 số: 9, 10, 11, 12, 13.",
+          "Số cuối cùng là đáp án."
+        ],
+        "hint": "Tách 5 thành 2 và 3: 8 + 2 = 10, rồi cộng tiếp 3.",
+        "answer": {
+          "text": "13",
+          "explanation": "8 + 5 = 13. Có thể tính 8 + 2 = 10, rồi 10 + 3 = 13."
+        }
+      }
+    },
+    {
+      "id": "open-chest",
+      "title": "Mở rương Lá thần",
+      "kind": "reward",
+      "target": "chest",
+      "text": "Rương mở ra, Lá thần phát sáng! Cây cổ thụ xanh tươi trở lại."
+    },
+    {
+      "id": "open-gate",
+      "title": "Đường tới chương 2",
+      "kind": "unlock",
+      "target": "gate-ch2",
+      "trigger": "auto",
+      "text": "Cổng đá sau cây cổ thụ mở ra: đường tới Chương 2 đã thông!"
+    }
+  ],
+  "reward": {
+    "xp": 100,
+    "coin": 20,
+    "skillXp": {
+      "phep-cong": 2,
+      "phep-tru": 1,
+      "so-sanh-so": 1,
+      "doc-hieu": 1
+    },
+    "items": {
+      "la-than": 1
+    }
+  },
+  "unlock": [
+    "forest-ch2"
+  ]
+}

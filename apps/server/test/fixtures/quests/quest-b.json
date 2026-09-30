@@ -1,6 +1,111 @@
 {
   "id": "quest-b",
   "region": "khu-rung-bi-mat",
-  "steps": [{ "id": "open-gate" }, { "id": "count-apples" }, { "id": "solve-tree" }],
-  "reward": { "xp": 100, "coin": 20, "skillXp": { "phep-cong": 2, "doc-hieu": 1 }, "items": { "chia-khoa": 1, "la-than": 2 } }
+  "chapter": 1,
+  "title": "Quest thử",
+  "status": "active",
+  "summary": "Quest giả dùng trong test server.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "Miu",
+    "where": "Khu rừng thử",
+    "goal": "Giúp các bạn",
+    "play": "Tìm và giải đố",
+    "learn": "Phép cộng",
+    "reward": "XP",
+    "unlock": "Quest tiếp theo"
+  },
+  "phases": {
+    "hook": "open-gate",
+    "explore": "open-gate",
+    "learn": "count-apples",
+    "challenge": "count-apples",
+    "decision": "count-apples",
+    "finale": "solve-tree",
+    "reward": "solve-tree",
+    "unlock": "solve-tree"
+  },
+  "steps": [
+    {
+      "id": "open-gate",
+      "title": "Tìm cổng",
+      "kind": "search",
+      "targets": [
+        "gate-ch2"
+      ]
+    },
+    {
+      "id": "count-apples",
+      "title": "Đếm táo",
+      "kind": "challenge",
+      "mechanic": "drag-drop",
+      "target": "animal-beaver",
+      "skill": "phep-cong",
+      "prompt": "Kéo 2 quả táo vào giỏ.",
+      "container": "Giỏ",
+      "pieces": [
+        {
+          "id": "apple-1",
+          "label": "Táo",
+          "value": 1
+        },
+        {
+          "id": "apple-2",
+          "label": "Táo",
+          "value": 1
+        },
+        {
+          "id": "apple-3",
+          "label": "Táo",
+          "value": 1
+        }
+      ],
+      "answer": {
+        "total": 2
+      },
+      "support": {
+        "guide": [
+          "Đếm từng bước."
+        ],
+        "hint": "Đếm chậm lại.",
+        "answer": {
+          "text": "2 quả",
+          "explanation": "1 + 1 = 2"
+        }
+      }
+    },
+    {
+      "id": "solve-tree",
+      "title": "Giải đố",
+      "kind": "riddle",
+      "target": "ancient-tree",
+      "skill": "phep-cong",
+      "question": "4 + 4 = ?",
+      "answer": {
+        "value": 8
+      },
+      "support": {
+        "guide": [
+          "Đếm từng bước."
+        ],
+        "hint": "Đếm chậm lại.",
+        "answer": {
+          "text": "8",
+          "explanation": "4 + 4 = ?"
+        }
+      }
+    }
+  ],
+  "reward": {
+    "xp": 100,
+    "coin": 20,
+    "skillXp": {
+      "phep-cong": 2,
+      "doc-hieu": 1
+    },
+    "items": {
+      "chia-khoa": 1,
+      "la-than": 2
+    }
+  }
 }

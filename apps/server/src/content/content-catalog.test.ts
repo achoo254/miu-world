@@ -1,4 +1,4 @@
-import { mkdtempSync, writeFileSync } from 'node:fs';
+import { mkdtempSync, readFileSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { describe, expect, it } from 'vitest';
@@ -10,13 +10,19 @@ function questDir(quests: unknown[]): string {
   return dir;
 }
 
-const skills = new Set(['doc-hieu']);
-const base = { region: 'khu-rung-bi-mat', steps: [{ id: 's' }], reward: {} };
+const skills = new Set(['doc-hieu', 'phep-cong']);
+/** A valid fixture quest without unlocks; each test changes its id and links. */
+const { unlock: _unlock, ...base } = JSON.parse(
+  readFileSync(new URL('../../test/fixtures/quests/quest-c.json', import.meta.url), 'utf8'),
+) as Record<string, unknown>;
 
 describe('content catalogue', () => {
-  it('loads the shipped content (no quests yet, two accessories)', () => {
+  it('loads the shipped content: chapter 1 unlocks the chapter 2 stub', () => {
     const catalog = loadContentCatalog();
-    expect(catalog.quests.size).toBe(0);
+    expect([...catalog.quests.keys()]).toEqual(['forest-ch1', 'forest-ch2']);
+    expect(catalog.quests.get('forest-ch1')?.status).toBe('active');
+    expect(catalog.quests.get('forest-ch2')?.status).toBe('stub');
+    expect(catalog.unlockedBy.get('forest-ch2')).toEqual(['forest-ch1']);
     expect(catalog.accessories.get('hat-witch-pink')).toBe('hat');
     expect(catalog.accessories.get('backpack-brown')).toBe('back');
     expect(catalog.skillIds.has('doc-hieu')).toBe(true);
@@ -29,6 +35,10 @@ describe('content catalogue', () => {
     expect(() => loadQuests(questDir([{ ...base, id: 'a' }, { ...base, id: 'a' }]), skills)).toThrow(/duplicate/);
     const cycle = [{ ...base, id: 'root' }, { ...base, id: 'a', unlock: ['b'] }, { ...base, id: 'b', unlock: ['a'] }];
     expect(() => loadQuests(questDir(cycle), skills)).toThrow(/locked forever.*a, b/);
+  });
+
+  it('refuses a quest file that breaks the schema', () => {
+    expect(() => loadQuests(questDir([{ ...base, id: 'a', sevenQuestions: {} }]), skills)).toThrow(/invalid content file q0.json/);
   });
 
   it('records which quests unlock which', () => {

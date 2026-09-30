@@ -13,6 +13,7 @@ Cần Node ≥ 22 và pnpm (phiên bản khóa trong `package.json`).
 ```sh
 pnpm install
 pnpm assets:check                                  # license + integrity gate
+pnpm content:check                                 # schema + tham chiếu chéo của content/
 pnpm test && pnpm typecheck && pnpm lint
 pnpm --filter @miu/server dev                      # API tại 127.0.0.1:8787 (PGlite trong .data/)
 pnpm --filter @miu/web dev                         # web tại http://localhost:5173 (proxy /api)

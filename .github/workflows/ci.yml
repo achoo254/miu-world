@@ -21,6 +21,8 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - name: License + integrity gate
         run: pnpm assets:check
+      - name: Content gate
+        run: pnpm content:check
       - name: Unit tests
         run: pnpm test
       - name: Typecheck

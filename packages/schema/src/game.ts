@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { ContentId } from './content';
+import { ContentId, QuestStepPublic, RewardSpec } from './content';
 
 // Game DTOs for the active child profile. Diamonds are intentionally absent (not used in the MVP).
 
@@ -63,3 +63,36 @@ export const InventoryResponse = z.object({
   items: z.array(z.object({ itemId: ContentId, qty: z.number().int().min(1) })),
 });
 export type InventoryResponse = z.infer<typeof InventoryResponse>;
+
+/** What the child submits for a learning step; the shape depends on the step kind. */
+export const StepAnswer = z.union([
+  z.strictObject({ choice: ContentId }),
+  z.strictObject({ value: z.number().int() }),
+  z.strictObject({ placed: z.array(ContentId).max(100) }),
+  z.strictObject({ order: z.array(ContentId).max(100) }),
+]);
+export type StepAnswer = z.infer<typeof StepAnswer>;
+
+/** Body of a step completion: an answer for learning steps, the found target for search steps. */
+export const StepCompleteRequest = z.object({ answer: StepAnswer.optional(), target: ContentId.optional() });
+export type StepCompleteRequest = z.infer<typeof StepCompleteRequest>;
+
+/**
+ * A quest as the client sees it. Parsing a definition through this schema drops every key it does not
+ * list, so answers, support layers and authoring notes never leave the server.
+ */
+export const QuestView = z.discriminatedUnion('status', [
+  z.object({
+    id: ContentId,
+    region: ContentId,
+    chapter: z.number().int().min(1),
+    title: z.string(),
+    status: z.literal('active'),
+    summary: z.string(),
+    steps: z.array(QuestStepPublic),
+    reward: RewardSpec,
+    unlock: z.array(ContentId),
+  }),
+  z.object({ id: ContentId, region: ContentId, chapter: z.number().int().min(1), title: z.string(), status: z.literal('stub') }),
+]);
+export type QuestView = z.infer<typeof QuestView>;

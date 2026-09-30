@@ -7,8 +7,8 @@ Giai đoạn hiện tại: Foundation (sau gate POC) — `apps/web` (Vite + Reac
 ## Lệnh
 
 - Chỉ dùng `pnpm` (workspace, `packageManager` khóa trong `package.json`), Node ≥ 22. Không dùng `npm`/`yarn`.
-- Gate trước khi báo xong — chạy đủ 4 lệnh, đúng thứ tự CI (`.github/workflows/ci.yml`):
-  `pnpm assets:check` → `pnpm test` → `pnpm typecheck` → `pnpm lint`
+- Gate trước khi báo xong — chạy đủ 5 lệnh, đúng thứ tự CI (`.github/workflows/ci.yml`):
+  `pnpm assets:check` → `pnpm content:check` → `pnpm test` → `pnpm typecheck` → `pnpm lint`
   (CI còn chạy `pnpm audit --prod --audit-level=high` và Semgrep CE; máy dev không có Docker nên Semgrep kiểm trên CI.)
 - Sửa `apps/web/**` thì chạy thêm `pnpm --filter @miu/web build` (CI chạy bước này; typecheck/test không bắt lỗi build).
 - Một file test: `pnpm vitest run <đường-dẫn-file>`.

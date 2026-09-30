@@ -1,6 +1,77 @@
 {
   "id": "quest-c",
   "region": "khu-rung-bi-mat",
-  "steps": [{ "id": "say-hello" }],
-  "reward": { "xp": 5 }
+  "chapter": 1,
+  "title": "Quest thử",
+  "status": "active",
+  "summary": "Quest giả dùng trong test server.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "Miu",
+    "where": "Khu rừng thử",
+    "goal": "Giúp các bạn",
+    "play": "Tìm và giải đố",
+    "learn": "Phép cộng",
+    "reward": "XP",
+    "unlock": "Quest tiếp theo"
+  },
+  "phases": {
+    "hook": "say-hello",
+    "explore": "pick-flower",
+    "learn": "pick-flower",
+    "challenge": "add-flowers",
+    "decision": "add-flowers",
+    "finale": "add-flowers",
+    "reward": "add-flowers",
+    "unlock": "add-flowers"
+  },
+  "steps": [
+    {
+      "id": "say-hello",
+      "title": "Chào Hải ly",
+      "kind": "dialogue",
+      "target": "animal-beaver",
+      "lines": [
+        {
+          "speaker": "Hải ly",
+          "text": "Xin chào!"
+        }
+      ]
+    },
+    {
+      "id": "pick-flower",
+      "title": "Hái hoa",
+      "kind": "search",
+      "targets": [
+        "flower"
+      ]
+    },
+    {
+      "id": "add-flowers",
+      "title": "Giải đố",
+      "kind": "riddle",
+      "target": "ancient-tree",
+      "skill": "phep-cong",
+      "question": "1 + 1 = ?",
+      "answer": {
+        "value": 2
+      },
+      "support": {
+        "guide": [
+          "Đếm từng bước."
+        ],
+        "hint": "Đếm chậm lại.",
+        "answer": {
+          "text": "2",
+          "explanation": "1 + 1 = ?"
+        }
+      }
+    }
+  ],
+  "reward": {
+    "xp": 5
+  },
+  "unlock": [
+    "quest-soon"
+  ]
 }

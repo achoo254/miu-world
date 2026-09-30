@@ -23,7 +23,7 @@ content/*.json + seed ─generators─▶ assets/generated/ ──────�
 | Sinh thế giới | `tools/world/` | Xác định theo seed; output chunk RLE + `entities.json` |
 | Thư viện voxel | `packages/voxel/` | Không phụ thuộc `three` hay DOM; test được bằng Vitest thuần |
 | Server API | `apps/server/` | Nghe loopback, sau proxy; mọi POST kiểm Origin; mọi route game lấy hồ sơ từ session và kiểm lại thuộc phụ huynh; thưởng chỉ lấy từ catalog quest, ghi ledger append-only (unique theo nguồn) + bảng tổng hợp trong một transaction |
-| Logic quest | `packages/quest/` | TS thuần; cùng hàm `completeStep` cho client dự đoán và server ghi |
+| Logic quest | `packages/quest/` | TS thuần; `completeStep`/`checkAnswer` chạy ở server (cần định nghĩa đủ, có đáp án); client chỉ dùng `nextStep`/level trên `QuestView` đã bỏ đáp án. Đáp án chỉ nằm trong `content/quests` phía server (ESLint cấm web import) |
 | Runtime game | `apps/web/src/game/` | Loader và server dev/preview từ chối file ngoài manifest; build chỉ copy file runtime dùng; CSP không `unsafe-eval`; không import React |
 | Bridge game → React | `apps/web/src/game-bridge/` | Chỉ event rời rạc; dữ liệu theo khung hình game ghi thẳng vào DOM neo |
 
@@ -33,9 +33,9 @@ Nguồn: Master Plan v3 §7, §15 #16–#18.
 
 - Client `apps/web`: Vite + React SPA (React Router) cho giao diện; runtime Three.js (WebGL2 chính, WebGPU tùy chọn) ở `apps/web/src/game`; `src/game-bridge` là store nối game → React (`useSyncExternalStore`). Game phát event rời rạc; React không điều khiển game loop và không nhận dữ liệu theo khung hình.
 - Server `apps/server`: Node.js + Express 5 + TypeScript, API theo miền (auth, hồ sơ trẻ, nhân vật, quest, thưởng); là nguồn sự thật cho tiến độ, thưởng, mở khóa. Drizzle ORM trên PostgreSQL; PGlite cho dev và test; migration SQL sinh bằng drizzle-kit.
-- `packages/quest`: TS thuần, tiến trình bước quest + tính thưởng + level; web dùng để dự đoán hiển thị, server dùng để tính lại và ghi.
+- `packages/quest`: TS thuần, tiến trình bước quest + chấm đáp án + tính thưởng + level; server dùng để chấm và ghi, web chỉ dùng phần không cần đáp án (bước tiếp theo, level) để hiển thị.
 - `packages/schema`: Zod cho DTO API và schema nội dung, dùng chung web + server.
-- Luồng: game phát event → `packages/quest` dự đoán ở client → API server tính lại, ghi DB, trả kết quả chuẩn → store → React.
+- Luồng: game phát event → React gửi hành động (đáp án hoặc target tìm được) → API server chấm, ghi DB, trả kết quả chuẩn → store → React.
 - Realtime (chỉ giai đoạn MP): Colyseus hoặc `ws`, WebSocket qua server, mỗi khu vực một room; tách khỏi API nghiệp vụ.
 - Triển khai: client qua static hosting + CDN; server tự host gần người dùng Việt Nam. Asset qua CDN với signed URL, CSP chặt, SRI.
 - Quest/nội dung mô tả bằng dữ liệu có schema, không phụ thuộc cảnh Three.js.
