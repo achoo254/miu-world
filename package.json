@@ -13,6 +13,7 @@
     "content:check": "tsx tools/content/check-content.ts",
     "content:gaps": "tsx tools/content/content-gaps.ts",
     "sgk:review": "tsx tools/sgk/review-quests.ts",
+    "sgk:acceptance": "tsx tools/sgk/acceptance-page.ts",
     "test": "vitest run",
     "typecheck": "tsc --noEmit -p tsconfig.json && pnpm -r --if-present typecheck",
     "lint": "eslint . --max-warnings=0",

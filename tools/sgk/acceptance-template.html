@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nghiệm thu quest SGK</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@400;600;700;800&display=swap">
+<style>
+/* Layout: one reading column (quest storyboards) with a screenshot strip; the game's own palette and faces. */
+:root {
+  --bg: #f4f7ff;
+  --surface: #ffffff;
+  --ink: #2b2140;
+  --ink-soft: #5e5378;
+  --line: #d5e2ff;
+  --primary: #c42a67;
+  --primary-soft: #ffe3ef;
+  --secondary: #2f6fdb;
+  --book: #fff1a8;
+  --book-ink: #3d2e00;
+  --good: #1f7a3d;
+  --good-soft: #dff5e5;
+  --display: 'Baloo 2', 'Nunito', system-ui, sans-serif;
+  --body: 'Nunito', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --radius: 14px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #17131f; --surface: #221c2e; --ink: #f1ecfa; --ink-soft: #b7abcf; --line: #3a3150;
+    --primary: #ff7fb0; --primary-soft: #3d1f30; --secondary: #86b3ff; --book: #5a4a10; --book-ink: #fff4c2;
+    --good: #7fdc9b; --good-soft: #173524; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #17131f; --surface: #221c2e; --ink: #f1ecfa; --ink-soft: #b7abcf; --line: #3a3150;
+  --primary: #ff7fb0; --primary-soft: #3d1f30; --secondary: #86b3ff; --book: #5a4a10; --book-ink: #fff4c2;
+  --good: #7fdc9b; --good-soft: #173524; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 1rem; line-height: 1.55; }
+.page { max-width: 58rem; margin: 0 auto; padding-inline: 1rem; padding-block: 2rem 4rem; display: grid; gap: 2.5rem; }
+h1, h2, h3, h4, h5 { font-family: var(--display); line-height: 1.15; margin: 0; text-wrap: balance; }
+h1 { font-size: clamp(2rem, 5vw, 2.8rem); font-weight: 800; }
+h2 { font-size: 1.6rem; font-weight: 800; }
+h3 { font-size: 1.45rem; font-weight: 800; }
+h4 { font-size: 1.05rem; font-weight: 600; }
+h5 { font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-soft); margin-bottom: 0.3rem; }
+p { margin: 0; }
+a { color: var(--secondary); }
+a:focus-visible, summary:focus-visible { outline: 3px solid var(--secondary); outline-offset: 2px; border-radius: 4px; }
+.muted { color: var(--ink-soft); font-size: 0.92rem; }
+.eyebrow { font-weight: 800; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--primary); }
+.lede { max-width: 40rem; font-size: 1.08rem; }
+.who { background: var(--primary-soft); color: var(--primary); border-radius: 999px; padding: 0 0.45em; font-weight: 800; font-size: 0.9em; white-space: nowrap; }
+mark.book { background: var(--book); color: var(--book-ink); border-radius: 3px; padding: 0 0.12em; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+
+.intro { display: grid; gap: 1rem; }
+.legend { display: flex; flex-wrap: wrap; gap: 0.5rem 1.25rem; font-size: 0.92rem; }
+.legend span { display: inline-flex; align-items: center; gap: 0.4rem; }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr)); gap: 0.75rem; }
+.stats div { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 0.8rem 1rem; }
+.stats b { display: block; font-family: var(--display); font-size: 1.6rem; font-variant-numeric: tabular-nums; }
+.asks { background: var(--surface); border: 2px solid var(--primary); border-radius: var(--radius); padding: 1rem 1.25rem; display: grid; gap: 0.5rem; }
+.asks ol { margin: 0; padding-left: 1.3rem; display: grid; gap: 0.35rem; }
+.toc ol { margin: 0.5rem 0 0; padding-left: 1.3rem; display: grid; gap: 0.25rem; }
+
+.shots { display: grid; grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr)); gap: 1rem; }
+.shots figure { margin: 0; display: grid; gap: 0.4rem; }
+.shots img { width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--line); }
+.shots figcaption { font-size: 0.85rem; color: var(--ink-soft); }
+
+.quest { display: grid; gap: 1rem; scroll-margin-top: 1rem; }
+.quest-head { display: grid; gap: 0.6rem; padding-bottom: 0.25rem; border-bottom: 2px solid var(--line); }
+.summary { font-size: 1.05rem; max-width: 44rem; }
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); gap: 0.5rem 1rem; margin: 0; }
+.facts dt { font-size: 0.78rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-soft); }
+.facts dd { margin: 0; min-width: 0; }
+.sequence { display: flex; flex-wrap: wrap; align-items: center; gap: 0.3rem; font-size: 0.85rem; }
+.sequence span { background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 0.05rem 0.55rem; }
+.sequence i { color: var(--ink-soft); font-style: normal; }
+.notes { background: var(--primary-soft); border-radius: var(--radius); padding: 0.75rem 1rem; }
+.notes h5 { color: var(--primary); }
+.notes ul { margin: 0; padding-left: 1.2rem; display: grid; gap: 0.3rem; }
+
+.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.75rem; }
+.step { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 0.85rem 1rem; display: grid; gap: 0.5rem; min-width: 0; }
+.step.story { background: transparent; border-style: dashed; }
+.step-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.5rem; }
+.step-head .n { font-family: var(--display); font-weight: 800; color: var(--ink-soft); font-variant-numeric: tabular-nums; min-width: 1.6rem; }
+.kind { font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; color: var(--secondary); border: 1px solid currentColor; border-radius: 999px; padding: 0 0.5rem; }
+.step.play .kind { color: var(--primary); }
+.prompt { font-weight: 700; }
+.template { font-family: var(--body); font-weight: 700; background: var(--bg); border-radius: 8px; padding: 0.5rem 0.75rem; overflow-x: auto; }
+.script { margin: 0; display: grid; gap: 0.3rem; }
+.script div { display: grid; grid-template-columns: 7.5rem 1fr; gap: 0.5rem; }
+.script dt { font-weight: 800; color: var(--primary); }
+.script dd { margin: 0; min-width: 0; }
+.reply { font-size: 0.92rem; color: var(--ink-soft); }
+.chips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.chips li { border: 1px solid var(--line); border-radius: 10px; padding: 0.15rem 0.6rem; font-size: 0.95rem; }
+.chips li.right { border-color: var(--good); background: var(--good-soft); }
+.hints { margin: 0; padding-left: 1.2rem; }
+.passage summary { cursor: pointer; font-weight: 700; }
+.passage-body { margin-top: 0.5rem; padding: 0.75rem; border-radius: 10px; background: var(--bg); line-height: 1.7; }
+.glossary { margin: 0.75rem 0 0; display: grid; gap: 0.2rem; }
+.glossary div { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.glossary dt { font-weight: 800; font-style: italic; }
+.glossary dd { margin: 0; }
+.feedback { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 0.5rem 1rem; font-size: 0.92rem; }
+.feedback ul { margin: 0; padding-left: 1.1rem; }
+.refs { font-size: 0.8rem; color: var(--ink-soft); }
+.refs span { white-space: nowrap; }
+.play-how { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1rem 1.25rem; display: grid; gap: 0.6rem; }
+.play-how pre { margin: 0; background: var(--bg); border-radius: 8px; padding: 0.6rem 0.8rem; overflow-x: auto; font-size: 0.85rem; }
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
+@media (max-width: 30rem) { .script div { grid-template-columns: 1fr; gap: 0; } }
+</style>
+</head>
+<body>
+
+<main class="page">
+  <section class="intro">
+    <p class="eyebrow">Miu World · SGK lớp 2 tập 1 · đợt nghiệm thu mẫu</p>
+    <h1>Nghiệm thu quest SGK</h1>
+    <p class="lede">Đây là {{SAMPLE_COUNT}} quest mẫu và giao diện của mọi cơ chế mới. Mỗi quest là một bài học thật trong sách, được bọc bằng một câu chuyện riêng trong game. Anh/chị duyệt các mẫu này trước; khi đạt, phần còn lại (khoảng 64 quest) sẽ viết theo đúng khuôn này.</p>
+    <div class="legend">
+      <span><mark class="book">Chữ tô vàng</mark> = chữ SGK, giữ nguyên văn (máy kiểm từng câu)</span>
+      <span><span class="who">tên bé</span> = tên nhân vật bé đã chọn</span>
+      <span>Chữ thường = lời dẫn, lời thoại của game</span>
+    </div>
+    <div class="stats">
+      <div><b>{{TV_ITEMS}}</b>mục bài tập Tiếng Việt đã kiểm kê (đọc 2 lượt)</div>
+      <div><b>{{TOAN_ITEMS}}</b>mục bài tập Toán đã kiểm kê (đọc 2 lượt)</div>
+      <div><b>{{SAMPLE_COUNT}}</b>quest mẫu, mỗi quest phủ 100% bài tập của bài</div>
+    </div>
+    <div class="asks">
+      <h2>Cần anh/chị quyết</h2>
+      <ol>
+        <li>Câu chuyện, nhân vật và giọng lời thoại của từng mẫu có phù hợp trẻ lớp 2 không?</li>
+        <li>Độ dài quest (15–21 bước cho một bài) có ổn, hay nên tách một bài thành hai quest?</li>
+        <li>Giao diện mới (ảnh bên dưới, đã làm lại theo mock) đã đúng hướng chưa? Chỗ nào còn khác mock mà anh/chị muốn sửa tiếp?</li>
+        <li>Các chỗ ghi "Cần người duyệt xem" trong từng quest: giữ, sửa hay bỏ.</li>
+      </ol>
+      <p class="muted">Chưa có trong đợt này: bản đồ riêng từng chương (nhân vật đứng trên map, đi tới nói chuyện). Bản chơi thử chạy các bước nối tiếp trên bản đồ rừng chương 1.</p>
+    </div>
+    <nav class="toc" aria-label="Các quest mẫu"><h2>Quest mẫu</h2><ol>{{TOC}}</ol></nav>
+  </section>
+
+  <section>
+    <h2>Giao diện các cơ chế</h2>
+    <p class="muted" style="margin-bottom: 1rem">Đã làm lại theo mock màn nhiệm vụ: bỏ hộp trắng, cảnh game dừng phía sau; tiêu đề trên băng rôn gỗ, nhân vật ra đề trong bong bóng, chữ trên giấy da, số trên viên đá qua suối, nhóm trong thùng gỗ, phần thưởng thành ô dưới ba ngôi sao. Ảnh chụp từ bài kiểm thử tự động trên khung iPad, thao tác bằng chạm; server chấm từng câu.</p>
+    <div class="shots">{{SHOTS}}</div>
+  </section>
+
+  {{QUESTS}}
+
+  <section class="play-how">
+    <h2>Chơi thử trên máy</h2>
+    <p>Các quest mẫu đang ở dạng nháp (chưa vào game thật). Để chơi thử, tạo bản chơi thử rồi chạy server với thư mục đó:</p>
+    <pre>pnpm sgk:review
+EXTRA_QUEST_DIR=.data/sgk/review-quests pnpm --filter @miu/server dev
+pnpm --filter @miu/web dev</pre>
+    <p>Mở <code>/play?region=khu-rung-bi-mat&amp;quest=nghiem-thu-tv2-t01-b01</code> (đổi mã quest cho mẫu khác). Bản chơi thử tự chạy từng bước; bước tìm đồ dùng tạm ba vật có sẵn trong rừng chương 1.</p>
+  </section>
+</main>
+</body>
+</html>
