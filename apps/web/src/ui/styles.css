@@ -331,10 +331,34 @@ input:focus-visible, select:focus-visible { border-color: var(--color-secondary)
 
 .page-header { width: 100%; display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-md); }
 .page-header .spacer { flex-grow: 1; }
+/* The two numbered steps read top to bottom in one column; extras sit side by side below them. */
+.parent-area { max-width: 52rem; align-items: stretch; }
+.parent-intro { margin: 0; font-size: var(--text-lg); }
+.step-num {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--text-lg);
+}
+.step-num--done { background: var(--color-badge); }
+.profile-row-name { margin: 0; font-family: var(--font-display); font-weight: 800; font-size: var(--text-lg); }
+.parent-create { display: flex; flex-direction: column; gap: var(--space-sm); }
+.profile-rows + .parent-create { padding-top: var(--space-md); border-top: 3px dashed var(--color-field-line); }
+.parent-create-label { font-weight: 700; }
+.parent-create .hint { margin: 0; font-size: var(--text-sm); }
+.parent-create .row select, .profile-row-body .row select { flex: 1 1 12rem; width: auto; }
+.parent-more-title { margin: var(--space-md) 0 0; font-family: var(--font-display); font-weight: 800; font-size: var(--text-lg); color: var(--color-ink-soft); }
 .parent-columns {
   width: 100%;
   display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--space-xl);
   align-items: start;
 }

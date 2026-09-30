@@ -117,7 +117,7 @@ describe('account flow', () => {
     renderAt('/profiles');
     expect(await screen.findByText('Bản nháp — chờ pháp chế duyệt')).toBeTruthy();
     fireEvent.click(screen.getByRole('button', { name: 'Tôi là phụ huynh và đồng ý' }));
-    expect(await screen.findByRole('heading', { name: 'Tạo hồ sơ cho bé' })).toBeTruthy();
+    expect(await screen.findByRole('heading', { name: /Tạo hồ sơ cho bé/ })).toBeTruthy();
     expect(calls.find((c) => c.key === 'POST /api/consents')?.body).toEqual({ policyVersion: 'draft-1' });
   });
 
@@ -129,7 +129,7 @@ describe('account flow', () => {
     });
     renderAt('/parent');
     const pin = (await screen.findByLabelText('Nhập mã PIN phụ huynh')) as HTMLInputElement;
-    expect(screen.queryByRole('heading', { name: 'Tạo hồ sơ cho bé' })).toBeNull();
+    expect(screen.queryByRole('heading', { name: /Tạo hồ sơ cho bé/ })).toBeNull();
     fireEvent.change(pin, { target: { value: '0000' } });
     fireEvent.click(screen.getByRole('button', { name: 'Mở khóa' }));
     expect((await screen.findByRole('alert')).textContent).toBe('Mã PIN chưa đúng.');
@@ -192,6 +192,54 @@ describe('account flow', () => {
     await vi.waitFor(() => expect(click).toHaveBeenCalledTimes(1));
     expect(JSON.parse(await blobs[0]?.text() ?? '')).toEqual(exported);
     click.mockRestore();
+  });
+
+  it('walks a new parent through the numbered steps and can lock even before a profile exists', async () => {
+    let children: Array<{ id: string; displayName: string; species: string }> = [];
+    const calls = stubApi({
+      'GET /api/auth/me': () => ({ status: 200, body: me({ parentGateOpen: true }) }),
+      'GET /api/children': () => ({ status: 200, body: children }),
+      'POST /api/children': (body) => {
+        children = [{ id: CHILD, displayName: (body as { displayName: string }).displayName, species: 'cat' }];
+        return { status: 201, body: children[0] };
+      },
+    });
+    renderAt('/parent');
+    // Wait for the list to load (the create form only shows then) before judging step 2.
+    const create = await screen.findByRole('button', { name: 'Tạo hồ sơ' });
+    expect(screen.getByRole('heading', { name: 'Bước 1: Tạo hồ sơ cho bé' })).toBeTruthy();
+    expect(screen.getByText('Tạo ít nhất một hồ sơ ở bước 1 trước nhé.')).toBeTruthy();
+    // Locking never waits on a profile: an open parent area must always be closable.
+    expect((screen.getByRole('button', { name: 'Xong, khóa khu phụ huynh' }) as HTMLButtonElement).disabled).toBe(false);
+    fireEvent.click(create);
+    expect(await screen.findByText('Mèo Mây', { selector: '.profile-row-name' })).toBeTruthy();
+    expect(calls.find((c) => c.key === 'POST /api/children')?.body).toEqual({ displayName: 'Mèo Mây' });
+    expect(screen.getByRole('heading', { name: 'Bước 1, đã xong: Tạo hồ sơ cho bé' })).toBeTruthy();
+    // The next profile defaults to the first name no sibling uses.
+    expect((screen.getByLabelText(/Thêm hồ sơ cho bé khác/) as HTMLSelectElement).value).toBe('Thỏ Bông');
+  });
+
+  it('shows a profile name as text and opens the name list only after "Đổi tên"', async () => {
+    let name = 'Mèo Mây';
+    const calls = stubApi({
+      'GET /api/auth/me': () => ({ status: 200, body: me({ parentGateOpen: true }) }),
+      'GET /api/children': () => ({ status: 200, body: [{ id: CHILD, displayName: name, species: 'cat' }] }),
+      [`PATCH /api/children/${CHILD}`]: (body) => {
+        name = (body as { displayName: string }).displayName;
+        return { status: 200, body: { id: CHILD, displayName: name, species: 'cat' } };
+      },
+    });
+    renderAt('/parent');
+    expect(await screen.findByText('Mèo Mây', { selector: '.profile-row-name' })).toBeTruthy();
+    expect(screen.queryByLabelText('Tên hiển thị')).toBeNull();
+    fireEvent.click(screen.getByRole('button', { name: 'Đổi tên' }));
+    expect(document.activeElement).toBe(screen.getByLabelText('Tên hiển thị'));
+    fireEvent.change(screen.getByLabelText('Tên hiển thị'), { target: { value: 'Thỏ Bông' } });
+    fireEvent.click(screen.getByRole('button', { name: 'Lưu tên' }));
+    expect(await screen.findByText('Thỏ Bông', { selector: '.profile-row-name' })).toBeTruthy();
+    expect(screen.queryByLabelText('Tên hiển thị')).toBeNull();
+    await vi.waitFor(() => expect(document.activeElement).toBe(screen.getByRole('button', { name: 'Đổi tên' })));
+    expect(calls.find((c) => c.key === `PATCH /api/children/${CHILD}`)?.body).toEqual({ displayName: 'Thỏ Bông' });
   });
 
   it('shows the PIN prompt again when the server says the gate has closed', async () => {

@@ -52,7 +52,7 @@ test('Google sign-in → set PIN → consent → create profile → pick profile
   await expect(page.getByRole('heading', { name: 'Tạo hồ sơ cho bé' })).toBeVisible();
   await page.locator('[data-id="parent-create-name"]').selectOption('Thỏ Bông');
   await page.getByRole('button', { name: 'Tạo hồ sơ' }).click();
-  await expect(page.locator('[data-id^="parent-profile-"] select').first()).toHaveValue('Thỏ Bông');
+  await expect(page.locator('[data-id^="parent-profile-"] .profile-row-name')).toHaveText(['Thỏ Bông']);
   await shot(page, '04-parent-area');
   await page.getByRole('button', { name: 'Xong, khóa khu phụ huynh' }).click();
 
