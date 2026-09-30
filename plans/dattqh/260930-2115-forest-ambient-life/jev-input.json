@@ -1,0 +1,97 @@
+{
+  "state": {
+    "product": "Miu World: a free 3D voxel learning game for Vietnamese grade-2 children (age 7-8), iPad first, phones secondary. The child walks a 3D forest (Khu rừng bí mật) as a chibi animal and meets quest NPCs; each quest is a real textbook lesson. Quests move by a yellow arrow and a tracker line saying where to go.",
+    "owner_request": "Make every map feel alive: animals that fit each map, NPCs with different looks who move and do daily-life chores with many animation beats so nothing looks stiff (a bird in the sky must flap its wings; a man holding an axe chops the tree, wipes his sweat and makes small talk), and they can be interacted with. The owner said: if you have better, richer ideas that children will love, send them to Jev to decide, build them in the forest first; if the owner likes it, it becomes the plan for the other maps.",
+    "assets_available": [
+      "Kenney Cube Pets (CC0): 24 animals (parrot, bee, bunny, deer, fox, hog, chick, crab, fish, beaver, caterpillar, dog, cat, cow, pig, monkey, koala, panda, elephant, giraffe, lion, tiger, penguin, polar bear) each with clips idle, walk, run, eat, dance, gesture-positive, gesture-negative, and separate wing/leg/tail parts that code can also move.",
+      "Kenney Blocky Characters (CC0): 18 different-looking people with clips idle, walk, sprint, sit, pick-up, emote-yes, emote-no, holding-right, attack-melee-right (usable as a chop or hoe swing), interact-right, and separate arm and head parts code can move (e.g. an arm raised to the forehead to wipe sweat).",
+      "Props (CC0): axe, hoe, shovel, hammer, pickaxe, bucket, fish, campfire, cooking stand, logs, planks, workbench, crops, fences, canoe and paddle, tents, barrels, food items; Kenney particle pack for small puffs, splashes and sparkles.",
+      "Rule: no self-drawn art, no paid AI images, nothing from Minecraft; everything comes from these packs or is built in code."
+    ],
+    "current_state": [
+      "The forest has 2 quest animal NPCs (parrot, beaver) that already idle, eat, dance, cheer, turn to face the child and greet once; plus chapter-tagged quest NPCs for textbook lessons.",
+      "No ambient life: nothing flies, nobody works, no people at all.",
+      "Rendering budget: at most 150 draw calls and 150k triangles; today about 61 draw calls at peak. Every animal is 5-7 draw calls, every person about 6 plus a held tool. Target devices include an iPad 10th gen and mid-range phones at 30+ fps.",
+      "Talking to a quest NPC opens its dialogue; learning happens in quest steps graded by the server. Rewards, XP and items are only ever granted by the server."
+    ],
+    "constraints": [
+      "Children must still find their quest: ambient life must not hide the arrow, block paths, or pull attention away from the current step.",
+      "Anything that loops must vary: no line or action repeated back to back (existing owner rule).",
+      "Ambient characters must never grant rewards (server-only rule).",
+      "Accessibility: respect prefers-reduced-motion; avoid motion that can cause discomfort."
+    ]
+  },
+  "questions": {
+    "forest_cast": {
+      "stakes": "medium",
+      "instructions": "How many ambient characters, and which, should the forest get in this first version? The owner wants it rich and alive, but it must stay within the draw-call budget on an iPad and not distract from quests.",
+      "criteria": {
+        "lean": "3 villagers (woodcutter with axe, fisher at the stream, gardener with a hoe) and 6 animals (2 parrots flying, bunny, deer, chick family, fish jumping in the stream).",
+        "lively": "5 villagers (woodcutter, fisher, gardener, a cook at the campfire near the spawn, a child carrying firewood who waves) and about 12 animals chosen to fit a forest (2 parrots circling and landing on trees, bees at the flowers, bunnies hopping between bushes, a deer family grazing, a fox napping and stretching, a wild hog rooting under mushrooms, a chick family pecking, crabs on the sandy bank, fish jumping with a splash, a caterpillar crawling on a log), with only the nearest ones drawn so the budget holds.",
+        "crowded": "8 villagers and about 20 animals everywhere, all drawn at once, accepting a heavier frame on older iPads."
+      }
+    },
+    "daily_routine": {
+      "stakes": "low",
+      "instructions": "How should a villager's daily life be driven so it never looks stiff or robotic?",
+      "criteria": {
+        "fixed_loop": "Each villager repeats one fixed sequence (walk to the tree, chop 5 times, wipe sweat, walk back).",
+        "varied_chores": "Each villager has a set of chores with small in-between beats (the woodcutter chops a varying number of times, wipes sweat, stretches his back, stacks a log, drinks from a bucket, sits on a stump; the fisher casts, waits, fidgets, sometimes lands a fish and cheers, sometimes shrugs); the next chore is picked by weight, never the same twice in a row, with natural walks between places and seeded randomness so review shots stay reproducible.",
+        "clock_schedule": "Chores follow an in-game clock (morning work, noon rest, evening campfire) that advances while playing."
+      }
+    },
+    "interaction": {
+      "stakes": "medium",
+      "instructions": "What should happen when the child walks up to or taps an ambient character?",
+      "criteria": {
+        "greet_only": "They turn, wave and show one greeting bubble; nothing to tap.",
+        "talk_and_react": "Near the child they pause their chore, turn and wave with a short bubble; tapping 'Trò chuyện' (people) or 'Vuốt ve' (animals) plays a reaction: people say a small-talk line from a rotating pool using the child's character name, animals do a trick (the bunny hops in a circle, the parrot lands and dances, the deer bows, the hog wiggles); then they go back to their chore. No rewards.",
+        "talk_react_and_nature_facts": "As talk_and_react, and every few taps a villager shares a short true fact about the forest or a simple counting remark tied to what they do (\"Bác chặt được 3 khúc gỗ rồi, thêm 2 khúc nữa là 5!\"), never graded."
+      }
+    },
+    "villager_chatter": {
+      "stakes": "low",
+      "instructions": "Should villagers make small talk with each other (the owner's example: the woodcutter chats), shown as speech bubbles?",
+      "criteria": {
+        "none": "No chatter between villagers.",
+        "pairs": "When two villagers are near each other during a rest beat they exchange a few bubble lines (rotating pools, never repeated back to back), turning to face each other; bubbles are short (under 8 words) and appear only when the child is within sight.",
+        "pairs_and_passersby": "As pairs, and villagers also call out to the child as she passes by even when she does not stop."
+      }
+    },
+    "sky_life": {
+      "stakes": "low",
+      "instructions": "What flies in the forest sky, and how?",
+      "criteria": {
+        "parrots": "Two parrots fly wide loops over the trees with wing flaps timed to rising, glide on the way down, and now and then land on a tree top or on the woodcutter's log pile.",
+        "parrots_and_bees": "As parrots, plus bees that zip between flower patches with a fast wing buzz and hover at each flower.",
+        "flocks": "A flock of 6-8 parrots sweeping across the sky together."
+      }
+    },
+    "quest_focus": {
+      "stakes": "medium",
+      "instructions": "How should ambient life behave around the quest so children still follow their current step?",
+      "criteria": {
+        "free": "Ambient characters go anywhere and ignore quests.",
+        "calm_near_quest": "Ambient characters keep their chores away from quest targets and paths (at least a few blocks), never stand on the arrow's route, pause and go quiet while a quest dialogue or learning step is open, and their bubbles never cover a quest prompt.",
+        "hide_during_quest": "Ambient characters appear only after the chapter's quest is finished."
+      }
+    },
+    "performance_scaling": {
+      "stakes": "medium",
+      "instructions": "How should the ambient cast stay within the draw-call and frame budget?",
+      "criteria": {
+        "all_visible": "Draw every ambient character all the time.",
+        "nearest_by_quality": "Only the nearest ambient characters within a radius are drawn and animated (e.g. 6 on low quality, 9 on mid, 12 on high); the rest are hidden and frozen until the child comes closer; the existing performance test checks the draw-call peak.",
+        "static_far": "Far characters stay drawn but frozen in a pose."
+      }
+    },
+    "reduced_motion": {
+      "stakes": "low",
+      "instructions": "What changes when the device asks for reduced motion?",
+      "criteria": {
+        "calmer": "Flyers stay perched, animals keep to small in-place actions, no sudden hops or jumps; people still do chores slowly; bubbles still show.",
+        "same": "No change."
+      }
+    }
+  }
+}

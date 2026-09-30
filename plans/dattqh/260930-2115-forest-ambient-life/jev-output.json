@@ -1,0 +1,96 @@
+{
+  "model": "jev-1.13.0",
+  "usage": {
+    "input_tokens": 2471,
+    "output_tokens": 355
+  },
+  "results": {
+    "forest_cast": {
+      "stakes": "medium",
+      "choice": "lively",
+      "confidence": 0.69,
+      "probabilities": {
+        "crowded": 0.0,
+        "lean": 0.2,
+        "lively": 0.8
+      },
+      "decision": "escalate"
+    },
+    "daily_routine": {
+      "stakes": "low",
+      "choice": "varied_chores",
+      "confidence": 1.0,
+      "probabilities": {
+        "fixed_loop": 0.0,
+        "varied_chores": 1.0,
+        "clock_schedule": 0.0
+      },
+      "decision": "auto"
+    },
+    "interaction": {
+      "stakes": "medium",
+      "choice": "talk_and_react",
+      "confidence": 0.74,
+      "probabilities": {
+        "talk_react_and_nature_facts": 0.17,
+        "greet_only": 0.01,
+        "talk_and_react": 0.82
+      },
+      "decision": "escalate"
+    },
+    "villager_chatter": {
+      "stakes": "low",
+      "choice": "pairs",
+      "confidence": 0.9,
+      "probabilities": {
+        "none": 0.06,
+        "pairs_and_passersby": 0.01,
+        "pairs": 0.93
+      },
+      "decision": "auto"
+    },
+    "sky_life": {
+      "stakes": "low",
+      "choice": "parrots_and_bees",
+      "confidence": 0.31,
+      "probabilities": {
+        "parrots_and_bees": 0.54,
+        "parrots": 0.45,
+        "flocks": 0.01
+      },
+      "decision": "escalate"
+    },
+    "quest_focus": {
+      "stakes": "medium",
+      "choice": "calm_near_quest",
+      "confidence": 1.0,
+      "probabilities": {
+        "hide_during_quest": 0.0,
+        "free": 0.0,
+        "calm_near_quest": 1.0
+      },
+      "decision": "auto"
+    },
+    "performance_scaling": {
+      "stakes": "medium",
+      "choice": "nearest_by_quality",
+      "confidence": 0.99,
+      "probabilities": {
+        "all_visible": 0.0,
+        "nearest_by_quality": 0.99,
+        "static_far": 0.01
+      },
+      "decision": "auto"
+    },
+    "reduced_motion": {
+      "stakes": "low",
+      "choice": "calmer",
+      "confidence": 1.0,
+      "probabilities": {
+        "same": 0.0,
+        "calmer": 1.0
+      },
+      "decision": "auto"
+    }
+  }
+}
