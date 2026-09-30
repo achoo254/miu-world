@@ -14,7 +14,7 @@ Mỗi bài Toán 2 tập 1 là một quest ở Trường học, phủ mọi item
 
 ## Requirements
 - Nhân vật chính, nơi, tình huống mở đầu theo [story-map.md](./story-map.md). D8 + D9: chữ SGK nguyên văn; mỗi quest một câu chuyện/bối cảnh/NPC riêng, lời thoại và `feedback` không trùng quest khác, chuỗi cơ chế không trùng quest khác (`content:check` kiểm).
-- 36 quest `toan2-cd1-b01` … `toan2-cd7-b36`, `region: "truong-hoc"`, `chapter` = số chủ đề (4–7 quest/chương, D6), `status: "draft"` (phase 10 đổi `active`), `review: "teacher-pending"`, mở khóa tuyến tính theo sách (bài 1 đã có từ phase 3).
+- 36 quest `toan2-cd1-b01` … `toan2-cd7-b36`, `region: "truong-hoc"`, `chapter` = số chủ đề (4–7 quest/chương, D6), `status: "draft"` (phase 10 đổi `active`), `review: "teacher-pending"`, `lesson` = id bài kiểm kê (D13), không `unlock` (D12).
 - Khuôn một bài:
   - Hook + Explore: NPC Trường học đưa tình huống từ phần Khám phá (nguyên văn lời thoại/đề); `search` tìm đồ vật dùng trong bài (target `toan2-cdN-<vật>`, phase 9 đặt).
   - Learn: Khám phá thành `dialogue` + bước tương tác nhỏ (đếm thêm trên tia số…).
@@ -35,7 +35,7 @@ Mỗi bài Toán 2 tập 1 là một quest ở Trường học, phủ mọi item
 
 ## Steps
 1. Mỗi gói: đọc kiểm kê, viết quest, `pnpm content:check` + `pnpm content:gaps --unit <chủ đề>` sau mỗi bài.
-2. `apps/server/src/quest/toan2-quests.test.ts`: chơi hết mọi quest `toan2-*` (draft coi như active trong test) theo chuỗi mở khóa bằng `solution()`.
+2. `apps/server/src/quest/toan2-quests.test.ts`: chơi hết mọi quest `toan2-*` (draft coi như active trong test), thứ tự bất kỳ (D12), bằng `solution()`.
 3. Report cuối phase.
 
 ## Verification

@@ -16,7 +16,7 @@ dependencies: []
 VS phase 3 đã commit (`feat(server)` gameplay API trên `main`); worktree `../miu-world-sgk` đã rebase lên commit đó.
 
 ## Requirements
-- Trạng thái `draft`: `QuestDefinition` thêm nhánh `status: "draft"` cùng shape và cùng luật với `active`. `loadQuests` (server) bỏ qua draft (không vào catalog, `QuestView`, API); `content:check` vẫn validate draft và kiểm `unlock` giữa các draft (id chưa có file thì chỉ chấp nhận nếu đúng quy ước `tv2-tNN-bNN`/`toan2-cdN-bNN`, cảnh báo; phase 10 đòi đủ).
+- Trạng thái `draft`: `QuestDefinition` thêm nhánh `status: "draft"` cùng shape và cùng luật với `active`. `loadQuests` (server) bỏ qua draft (không vào catalog, `QuestView`, API); `content:check` vẫn validate draft (từ D12: quest SGK không có `unlock`, nên không còn cảnh báo liên kết tới draft chưa viết).
 - Quest thêm `texts?: Record<textId, { title, author?, body }>` (bài đọc dài dùng chung nhiều bước); `QuestView` nhánh active thêm `texts` (test `game.test.ts` khẳng định có).
 - Bước thêm `curriculumRef?: string[]` (id item kiểm kê). Không cho phép trên `dialogue`, `reward`, `unlock` (các bước này không "phủ" bài tập).
 - `read`: giữ `text`, thêm `textRef` (loại trừ nhau, đúng một cái), thêm `audio?: boolean` (máy đọc bằng `speechSynthesis`, giọng local theo VS phase 7). `forest-ch1.json` không phải đổi.

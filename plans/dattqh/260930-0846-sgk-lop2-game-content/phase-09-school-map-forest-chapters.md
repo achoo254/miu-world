@@ -19,7 +19,7 @@ VS phase 5 (regions.json, màn khu vực/chương theo D6), VS phase 6 (entities
 - Trường học: `tools/world/generate-school-map.ts` (xác định theo seed như `generate-forest-map.ts`, dùng lại `tools/world/structures/*`): sân trường + 7 khu (lớp học/góc học tập) tương ứng 7 chủ đề, đi lại tự do (không cổng giữa khu — Jev `school_zone_gates`); ghi `assets/generated/world/truong-hoc/` (chunk + `entities.json` v2) rồi `pnpm assets:manifest`. Block/model trong pack đã có (Kenney, Cube Pets); NPC là con vật Cube Pets. Ngân sách Master Plan §12 giữ (draw call ≤ 150, vùng đầu ≤ 8 MB nén).
 - Khu rừng chương 2–19: `tools/world/chapters/forest-chapters.ts` sinh interactable theo chương (manh mối, trang sách, NPC nhân vật bài đọc) trên cùng map rừng ở các vùng khác nhau.
 - Entity theo chương: thêm `chapter?: number` vào interactable của `packages/voxel/src/world-entities.ts` (v2 của VS 6); runtime (`apps/web/src/game/entities/**`, `game-store.ts`) chỉ hiện VÀ chỉ cho tương tác entity không có `chapter` hoặc thuộc chương đang chơi (`set-world-state`).
-- `content/world/regions.json` thêm `truong-hoc`; màn khu vực (VS 5) hiện chương theo D6. Khóa Trường học do server tính qua chuỗi mở khóa (`forest-ch1` → `toan2-cd1-b01`, nối ở phase 10), không thêm điều kiện ở client.
+- `content/world/regions.json` thêm `truong-hoc`; màn khu vực (VS 5) hiện chương theo D6. Trường học mở khi phase 10 đổi `truong-hoc` sang `open` trong `regions.json`; quest Toán không khóa nhau (D12).
 - Game nạp map theo region (thay `const MAP_ID = 'forest-ch1'` ở `apps/web/src/game/game.ts` bằng tham số từ route/region).
 - `content:check` kiểm target mọi quest TV/Toán (kể cả draft ở bước này) có trong entities của region tương ứng: `questTargetIssues` nhận tập entity theo region.
 

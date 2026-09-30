@@ -21,7 +21,7 @@ Chuẩn bị để phase 4, 5 viết quest song song mà không tự quyết l�
 - Quy ước cho phase 4, 5 (ghi trong file này):
   - Id quest: `tv2-t01-b01` … `tv2-t17-b32`, `tv2-t09-on-giua-ki`, `tv2-t18-on-cuoi-ki`; `toan2-cd1-b01` … `toan2-cd7-b36`.
   - Region/chương (D6): TV `khu-rung-bi-mat`, chương = tuần + 1 (ch1 là quest mở đầu hiện có; tuần 1 → ch2 … tuần 18 → ch19), 2 quest/chương; Toán `truong-hoc`, chương = số chủ đề, 4–7 quest/chương.
-  - Mở khóa: tuyến tính theo thứ tự sách trong từng môn. Quest đầu mỗi môn (`tv2-t01-b01`, `toan2-cd1-b01`) do `forest-ch1` mở — nối ở phase 10 (D7), nên tới lúc đó chúng là draft; khóa Trường học vì vậy do server tính qua chuỗi mở khóa, không ở client.
+  - Mở khóa: ~~tuyến tính theo thứ tự sách~~ — thay bởi D12 (2026-09-30): quest SGK không khóa nhau, mọi bài mở từ đầu; mỗi quest khai `lesson` (D13).
   - Thưởng: XP bài mới 60–100, luyện tập chung 80, ôn tập 120; Xu 10–20; Skill XP 1–2 mỗi kỹ năng luyện; vật phẩm tối đa 1 món/chương (danh mục VS phase 9). KHÔNG đổi `level-curve.json`: ~70 quest × ~85 XP ≈ 6.000 XP ≈ cấp 12–13 trên curve hiện có — ghi phép tính vào report.
   - Nhân vật dẫn: Vẹt, Hải ly (rừng); NPC Trường học là con vật Cube Pets (phase 9 đặt lên map). Tên riêng trong sách giữ nguyên.
 - Hai quest mẫu (`status: "draft"`): `tv2-t01-b01`, `toan2-cd1-b01` đủ luật, phủ 100% item của bài 1 mỗi sách — khuôn cho phase 4, 5.

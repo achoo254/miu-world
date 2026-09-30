@@ -29,11 +29,13 @@ Mục tiêu người sở hữu: **mọi mục nội dung trong hai sách có m�
 | D3 | Viết (chữ hoa, viết ứng dụng, nghe–viết, viết đoạn) | **Phiếu viết ngoài game**, in từ khu phụ huynh | Người sở hữu |
 | D4 | Bản đồ | Tiếng Việt ở **Khu rừng bí mật** (mỗi tuần một chương), Toán ở **Trường học** (7 chủ đề = 7 khu, đi lại tự do, không cổng giữa khu) | Người sở hữu + Jev `school_zone_gates` |
 | D5 | Cách ly với phiên VS | **Worktree + branch riêng**: `../miu-world-sgk`, branch `dattqh/feat/sgk-lop2-content`; merge vào `main` sau mỗi phase (rebase trước) | Jev `parallel_isolation` |
-| D6 | Bài và chương | Một chương **gom nhiều quest**: TV mỗi tuần 2 bài; Toán mỗi chủ đề 4–7 bài; màn khu vực liệt kê chương, mở ra quest theo thứ tự mở khóa | Jev `chapter_grouping` |
+| D6 | Bài và chương | Một chương **gom nhiều quest**: TV mỗi tuần 2 bài; Toán mỗi chủ đề 4–7 bài; màn khu vực liệt kê chương và mọi quest của chương (D12: không khóa) | Jev `chapter_grouping` |
 | D7 | Thay `forest-ch2` | Giữ `forest-ch2` và level curve tới khi **VS phase 10 đã commit**; quest SGK ở trạng thái `draft` tới lúc đó; nối lại trong một commit ở phase 10 | Jev `forest_ch2_timing` |
 | D8 | Độ trung thành với sách | Nội dung sách vào game **giống 100%**: câu lệnh, bài đọc, số, lựa chọn, đáp án, dấu câu, xuống dòng — không diễn đạt lại, không đổi số. Quest chỉ được THÊM lời dẫn của nhân vật quanh bài tập. Máy kiểm: bước có `curriculumRef` phải chứa nguyên văn `prompt` của item; `texts` phải trùng nguyên văn `text` của section; đáp án phải trùng đáp án kiểm kê (phase 3, `content:check`). Lý do: chơi game chính là làm bài tập thật của trẻ, lệch chữ thì bé học/đọc ở lớp bị lệch. | Người sở hữu 2026-09-30 |
 | D9 | Phong phú, không lặp | Mỗi quest có câu chuyện, bối cảnh, NPC, lời thoại riêng; không copy khung quest rồi đổi chữ. Mọi vòng lặp (thử lại khi sai, khen khi đúng, lời NPC, hoạt cảnh) ra câu mới, không lặp liền. Máy kiểm: (1) mỗi bước học của quest SGK có kho `feedback` ≥ 3 câu đúng + ≥ 3 câu sai, không trùng trong quest; server trả câu xoay vòng theo bộ đếm lượt, không lặp liền; (2) `content:check` lỗi khi một câu lời dẫn/thoại/phản hồi (không phải chữ SGK) xuất hiện ở hai quest, hoặc hai quest SGK có cùng chuỗi cơ chế các bước. Chữ SGK vẫn nguyên văn (D8) — phong phú nằm ở phần bao quanh. Chấp nhận code thêm. | Người sở hữu 2026-09-30 |
 | D10 | Nghiệm thu mẫu trước | Trước khi viết hàng loạt quest (phase 4, 5) và map chương (phase 9): làm 3–5 quest mẫu đa dạng (khác tuần/dạng bài) + hoạt cảnh + UI cơ chế, đưa người sở hữu duyệt qua trang nghiệm thu (kịch bản từng bước, chữ SGK đánh dấu, ảnh màn hình từng cơ chế, bản chơi thử). Chỉ mở rộng sau khi duyệt; góp ý áp vào mẫu trước. Kiểm kê SGK không phải chờ. | Người sở hữu 2026-09-30 |
+| D12 | Không khóa bài | Quest SGK **không khóa nhau**, bé làm nhảy cóc theo bài cô giao. Quest SGK không `unlock` quest nào, và không quest nào `unlock` quest SGK: mọi bài mở từ đầu. Máy kiểm: schema (`a textbook quest unlocks nothing`) và catalog (`unlocks textbook quest`). Bước pha `unlock` của quest chỉ còn là lời nhử sang bài sau, không mở gì. Thay phần mở khóa tuyến tính ở phase 3, 4, 5, 10. | Người sở hữu 2026-09-30 |
+| D13 | Hiện trang SGK | Nơi nào nêu tên quest SGK (danh sách quest của khu vực, "Nhiệm vụ hôm nay", ô "Nhiệm vụ hiện tại") đều hiện **sách, tên bài và trang in**, ví dụ "Tiếng Việt 2, tập một · Bài 1. Tôi là học sinh lớp 2 · Trang 10–12", vì cô giao bài theo số trang hoặc tên bài. Quest SGK khai `lesson` (id bài kiểm kê); server lấy tên bài và trang từ kiểm kê lúc khởi động, đưa vào `QuestView.textbook`. `content:check` lỗi khi bài không có trong kiểm kê hoặc `curriculumRef`/phiếu viết thuộc bài khác. | Người sở hữu 2026-09-30 |
 | D11 | Luôn nói đi đâu | Mỗi quest SGK khai `places` (tên nơi của từng target, vùng của từng bước `search`); bước nào đổi nơi thì có dòng `goTo` nêu đúng tên nơi đó, hiện ở ô "Nhiệm vụ hiện tại" khi bé đang đi; `title` vẫn là tiêu đề cảnh. `content:check` lỗi khi thiếu. Mũi tên vàng chỉ target của bước hiện tại. | Người sở hữu 2026-09-30 |
 
 Chi tiết Jev: `plans/dattqh/reports/jev-260930-sgk-plan-decisions.md`.
@@ -58,9 +60,9 @@ Chi tiết Jev: `plans/dattqh/reports/jev-260930-sgk-plan-decisions.md`.
 Song song trong plan này: 1 ‖ 2 ngay từ đầu; sau 3: 4 ‖ 5 ‖ 6 (4, 5 chia tiếp theo chủ điểm/chủ đề); 7, 8 khi VS xong phase tương ứng; 9 sau 4, 5 và VS 5–7; 10 sau VS 10.
 
 ## Trạng thái `draft` (chống đỏ CI khi nội dung đang viết)
-- Quest `tv2-*`/`toan2-*` viết với `status: "draft"`: cùng schema với quest `active`, KHÔNG nạp vào catalog server (không chơi được, không vào `QuestView`, không bị kiểm target trên map), nhưng `content:check` vẫn validate schema, `curriculumRef`, chuỗi `unlock` giữa các draft (cho phép trỏ tới id draft chưa tạo nếu đúng quy ước id; phase 10 đòi đủ).
+- Quest `tv2-*`/`toan2-*` viết với `status: "draft"`: cùng schema với quest `active`, KHÔNG nạp vào catalog server (không chơi được, không vào `QuestView`, không bị kiểm target trên map), nhưng `content:check` vẫn validate schema, `curriculumRef`, `lesson` (D12: quest SGK không có chuỗi `unlock`).
 - Kiểm kê (`content/curriculum/<book>/book.json` có `status: "draft" | "complete"`): kiểm đủ bài/đủ trang chỉ LỖI khi `complete`; `draft` chỉ cảnh báo.
-- Phase 10 (sau VS 10): nối `forest-ch1` → `tv2-t01-b01` và `toan2-cd1-b01`, xóa `forest-ch2`, đổi draft → active theo chương khi target đã có trên map.
+- Phase 10 (sau VS 10): xóa `forest-ch2` (và `unlock` của `forest-ch1` trỏ tới nó), đổi draft → active theo chương khi target đã có trên map; không nối `forest-ch1` với bài SGK nào (D12).
 
 ## Sở hữu file
 
@@ -77,7 +79,7 @@ Song song trong plan này: 1 ‖ 2 ngay từ đầu; sau 3: 4 ‖ 5 ‖ 6 (4, 5 
 | 7 | `apps/web/src/ui/challenge/speak/**`, `apps/web/e2e/speak.spec.ts`, `apps/web/src/content-security-policy.test.ts` (media-src) |
 | 8 | `apps/web/src/ui/challenge/mechanics/**`, `apps/web/src/ui/challenge/illustrations/**`, `apps/web/e2e/sgk-mechanics.spec.ts` |
 | 9 | `tools/world/generate-school-map.ts`, `tools/world/chapters/**`, `assets/generated/world/truong-hoc/**` (qua generator + `pnpm assets:manifest`); sau phase 2: `packages/quest/src/quest-catalog.ts` (entity theo region) |
-| 10 | `apps/web/e2e/sgk-content.spec.ts`, `content/quests/forest-ch1.json` (`unlock`), `content/quests/forest-ch2.json` (xóa), `plans/dattqh/reports/sgk-*`, docs (xem phase) |
+| 10 | `apps/web/e2e/sgk-content.spec.ts`, `content/quests/forest-ch1.json` (bỏ `unlock` tới ch2), `content/quests/forest-ch2.json` (xóa), `plans/dattqh/reports/sgk-*`, docs (xem phase) |
 
 ### File dùng chung với VS (quy tắc thứ tự)
 
@@ -116,7 +118,8 @@ pnpm content:gaps ── phủ theo sách/chủ đề/bài (trong game và qua p
 - [ ] Cơ chế mới chơi được trên web (chuột, cảm ứng, bàn phím), có 3 lớp hỗ trợ, server chấm
 - [ ] Thu âm trên máy: ghi, nghe lại được trong bản build (CSP cho phép `blob:`), âm thanh không gửi đi
 - [ ] Phiếu viết in được cho mọi bài có phần Viết/Vận dụng
-- [ ] Sau VS 10: `forest-ch1` mở `tv2-t01-b01` và `toan2-cd1-b01` (khóa Trường học do server qua chuỗi mở khóa), `forest-ch2` bỏ, mọi quest SGK `active`
+- [ ] Sau VS 10: `forest-ch2` bỏ, mọi quest SGK `active` và mở từ đầu, không bài nào khóa bài nào (D12)
+- [x] Danh sách quest, "Nhiệm vụ hôm nay" và ô "Nhiệm vụ hiện tại" hiện sách, tên bài và trang in của quest SGK (D13)
 - [ ] Gate (`assets:check`, `content:check`, `test`, `typecheck`, `lint`, web build, E2E `e2e:ci`) xanh trên branch và sau merge
 
 ## Rủi ro chính

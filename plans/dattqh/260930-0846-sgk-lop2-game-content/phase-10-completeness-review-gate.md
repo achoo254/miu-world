@@ -10,15 +10,15 @@ dependencies: [1, 2, 3, 4, 5, 6, 7, 8, 9]
 # Phase 10: Kích hoạt, cổng 100%, trang review
 
 ## Goal
-Đưa toàn bộ nội dung SGK vào game thật (draft → active, nối với chương 1), khóa mục tiêu "100% nội dung hai sách có trong kịch bản game" bằng CI, và đưa bằng chứng cho người duyệt cuối.
+Đưa toàn bộ nội dung SGK vào game thật (draft → active, mọi bài mở từ đầu — D12), khóa mục tiêu "100% nội dung hai sách có trong kịch bản game" bằng CI, và đưa bằng chứng cho người duyệt cuối.
 
 ## Điều kiện bắt đầu
 VS phase 10 đã merge vào `main` (D7); phase 1–9 của plan này xong.
 
 ## Requirements
 - Kích hoạt (một commit):
-  - `forest-ch1.json`: `unlock` = `["tv2-t01-b01", "toan2-cd1-b01"]`; xóa `forest-ch2.json`.
-  - Mọi `tv2-*`/`toan2-*` đổi `status: "active"` (target đã có trên map từ phase 9); chuỗi `unlock` đủ, không còn id chưa có file.
+  - `forest-ch1.json`: `unlock` = `[]`; xóa `forest-ch2.json`; `regions.json`: `truong-hoc` → `open`.
+  - Mọi `tv2-*`/`toan2-*` đổi `status: "active"` (target đã có trên map từ phase 9); không quest nào khóa quest SGK (D12, catalog kiểm).
   - Cập nhật test đang nhắc `forest-ch2`: `apps/server/src/content/content-catalog.test.ts:22-25`, `packages/schema/src/game.test.ts` (chuyển kiểm stub sang fixture `quest-soon`), `apps/server/src/quest/quest-routes.test.ts` (đoạn chơi ch1 thật: `unlocked` mới), và spec E2E VS nhắc "mở khóa ch2".
 - `content:check` LỖI khi độ phủ < 100% (bật trong `check-curriculum.ts`).
 - `pnpm content:gaps --html .data/sgk/phu-noi-dung.html`: bảng sách → bài → item → trang SGK → quest/bước/phiếu phủ → cơ chế, cho giáo viên đối chiếu.

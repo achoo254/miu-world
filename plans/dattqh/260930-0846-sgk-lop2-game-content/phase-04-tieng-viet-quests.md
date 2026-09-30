@@ -14,7 +14,7 @@ Mỗi bài Tiếng Việt 2 tập 1 là một quest ở Khu rừng bí mật, ph
 
 ## Requirements
 - Nhân vật chính, nơi, tình huống mở đầu theo [story-map.md](./story-map.md). D8 + D9: chữ SGK nguyên văn; mỗi quest một câu chuyện/bối cảnh/NPC riêng, lời thoại và `feedback` không trùng quest khác, chuỗi cơ chế không trùng quest khác (`content:check` kiểm).
-- 34 quest: 32 bài (`tv2-t01-b01` … `tv2-t17-b32`) + `tv2-t09-on-giua-ki` + `tv2-t18-on-cuoi-ki`, `region: "khu-rung-bi-mat"`, `chapter` = tuần + 1 (2 quest/chương, D6), `status: "draft"` (phase 10 đổi `active`), `review: "teacher-pending"`, id và mở khóa theo quy ước phase 3 (bài 1 đã có từ phase 3).
+- 34 quest: 32 bài (`tv2-t01-b01` … `tv2-t17-b32`) + `tv2-t09-on-giua-ki` + `tv2-t18-on-cuoi-ki`, `region: "khu-rung-bi-mat"`, `chapter` = tuần + 1 (2 quest/chương, D6), `status: "draft"` (phase 10 đổi `active`), `review: "teacher-pending"`, id theo quy ước phase 3, `lesson` = id bài kiểm kê (D13), không `unlock` (D12).
 - Khuôn một bài (theo cấu trúc sách; bài lẻ có Nói và nghe, bài chẵn có Luyện tập + Đọc mở rộng):
   - Hook: NPC (Vẹt/Hải ly/nhân vật trong bài đọc) kể tình huống gắn chủ điểm tuần.
   - Explore: `search` tìm đồ vật gắn bài đọc (target theo quy ước `tv2-tNN-<vật>`, phase 9 đặt lên map).
@@ -35,11 +35,11 @@ Mỗi bài Tiếng Việt 2 tập 1 là một quest ở Khu rừng bí mật, ph
 | 4b | 5–9 (chủ điểm 2 + ôn giữa kì: bài 9–16) | `tv2-t0[5-9]-*.json` |
 | 4c | 10–13 (chủ điểm 3: bài 17–24) | `tv2-t1[0-3]-*.json` |
 | 4d | 14–18 (chủ điểm 4 + ôn cuối kì: bài 25–32) | `tv2-t1[4-8]-*.json` |
-Bài cuối mỗi gói `unlock` bài đầu gói sau theo quy ước id (draft chấp nhận id chưa có file, cảnh báo; phase 10 đòi đủ).
+Các gói độc lập: không bài nào mở khóa bài nào (D12).
 
 ## Steps
 1. Mỗi gói: đọc kiểm kê chủ điểm, viết quest theo khuôn, chạy `pnpm content:check` + `pnpm content:gaps --unit <chủ điểm>` sau mỗi bài.
-2. `apps/server/src/quest/tv2-quests.test.ts`: dựng catalog từ `content/quests/tv2-*.json` với draft coi như active (tham số của loader test), chơi hết mọi quest theo chuỗi mở khóa bằng `solution()` (`apps/server/test/quest-solution.ts`).
+2. `apps/server/src/quest/tv2-quests.test.ts`: dựng catalog từ `content/quests/tv2-*.json` với draft coi như active (tham số của loader test), chơi hết mọi quest (thứ tự bất kỳ, D12) bằng `solution()` (`apps/server/test/quest-solution.ts`).
 3. Report cuối phase: danh sách quest, số bước theo cơ chế, item phủ trong game/qua phiếu.
 
 ## Verification
