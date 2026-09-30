@@ -5,6 +5,7 @@ import { copyFile, mkdir, readFile, stat } from 'node:fs/promises';
 import type { ServerResponse } from 'node:http';
 import path from 'node:path';
 import type { Plugin } from 'vite';
+import { WORLD_OVERVIEW_MAP } from '../../packages/voxel/src/world-overview';
 
 export const ASSET_PREFIX = '/game-assets/';
 
@@ -19,6 +20,9 @@ const MIME: Record<string, string> = {
 
 /** Always shipped: whole generated groups the runtime/review pages read by path. */
 const SHIPPED_PREFIXES = ['generated/atlas/', 'generated/world/', 'generated/characters/', 'generated/review/', 'generated/sounds/'];
+/** Maps that only exist to be rendered into an image at build time (the world overview): never shipped. */
+const RENDER_ONLY_PREFIXES = [`generated/world/${WORLD_OVERVIEW_MAP}/`];
+const renderOnly = (p: string): boolean => RENDER_ONLY_PREFIXES.some((prefix) => p.startsWith(prefix));
 
 interface ManifestJson {
   files: Array<{ path: string }>;
@@ -59,11 +63,11 @@ export async function runtimeAssetPaths(assetsDir: string, manifestPaths: readon
   const allowed = new Set(manifestPaths);
   const wanted = new Set<string>(['manifest.json', ...uiPaths]);
   for (const p of manifestPaths) {
-    if (SHIPPED_PREFIXES.some((prefix) => p.startsWith(prefix))) wanted.add(p);
+    if (SHIPPED_PREFIXES.some((prefix) => p.startsWith(prefix)) && !renderOnly(p)) wanted.add(p);
     if (p.startsWith('packs/font-') && p.endsWith('.woff2')) wanted.add(p);
   }
   const models = new Set<string>();
-  for (const p of manifestPaths.filter((x) => /^generated\/world\/[^/]+\/entities\.json$/.test(x))) {
+  for (const p of manifestPaths.filter((x) => /^generated\/world\/[^/]+\/entities\.json$/.test(x) && !renderOnly(x))) {
     const entities = JSON.parse(await readFile(path.join(assetsDir, p), 'utf8')) as Record<string, unknown>;
     for (const list of Object.values(entities)) {
       if (!Array.isArray(list)) continue;

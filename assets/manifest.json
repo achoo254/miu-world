@@ -8328,8 +8328,8 @@
       "derivedFrom": [
         "kenney-voxel-pack"
       ],
-      "sha256": "0f443c4658ee546aba6414d7a8c41061b1e1014008c14a67e5f8ffc301f79a95",
-      "bytes": 5560
+      "sha256": "e66a44a063a641fffda8a57887c6eccf151654d30f17c261946208cd3bc3b046",
+      "bytes": 7213
     },
     {
       "path": "generated/atlas/atlas.png",
@@ -8338,8 +8338,8 @@
       "derivedFrom": [
         "kenney-voxel-pack"
       ],
-      "sha256": "86fea6f49f63908dba426ba96335d40ba2b7eebfaaa8fa7c03137b49cbdc6e56",
-      "bytes": 37791
+      "sha256": "ace6b629e4bb572996d5d15c7a57a0c805343945d8ca6a08bde3f5206f943d76",
+      "bytes": 42997
     },
     {
       "path": "generated/characters/bear.glb",
@@ -8382,7 +8382,7 @@
       "bytes": 184172
     },
     {
-      "path": "generated/home/island.png",
+      "path": "generated/home/world.png",
       "license": "CC0-1.0",
       "generator": "tools/assets/render-home-island.ts",
       "derivedFrom": [
@@ -8394,8 +8394,8 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "895651cb0fe57100d32ac270a68e388d81e29f3df0f403a030c3d2d500af59f3",
-      "bytes": 930433
+      "sha256": "649e9e152e04b77a5b15350eeef551e37dc5cd5737d9864f3c4fcc6f40632971",
+      "bytes": 602892
     },
     {
       "path": "generated/review/accessories/item-backpack-brown.png",
@@ -10274,6 +10274,22 @@
       "derivedFrom": [],
       "sha256": "d3229a9ab9100d5e2ecbdad5266af2018f4265a291a22c6f310b4be2eb408e65",
       "bytes": 18805
+    },
+    {
+      "path": "generated/world/the-gioi/chunks.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-world-overview.ts",
+      "derivedFrom": [],
+      "sha256": "05d0127d586962295fd0980088b86ac5c704e603c448962c950d84e2647e56f4",
+      "bytes": 19655
+    },
+    {
+      "path": "generated/world/the-gioi/entities.json",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-world-overview.ts",
+      "derivedFrom": [],
+      "sha256": "1f17d71e20e291f2246f5f70ea05b390e6bcdb8a00e435664e5d235012a56065",
+      "bytes": 6199
     },
     {
       "path": "generated/world/truong-hoc/chunks.bin",

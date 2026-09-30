@@ -29,6 +29,12 @@ describe('runtime asset selection for the web build', async () => {
     for (const dep of deps) expect(shipped).toContain(dep);
   });
 
+  it('keeps the render-only world overview map out of dist, but ships its rendered image for the UI', async () => {
+    expect(shipped.some((p) => p.startsWith('generated/world/the-gioi/'))).toBe(false);
+    expect(shipped).not.toContain('packs/kenney-castle-kit/2.0/flag-pennant.glb'); // placed only on the overview
+    expect(await runtimeAssetPaths(ASSETS_DIR, manifest, UI_ART_PATHS)).toContain('generated/home/world.png');
+  });
+
   it('leaves the rest of the licensed packs out of dist', () => {
     expect(shipped.length).toBeLessThan(manifest.length / 4);
     expect(shipped).not.toContain('packs/kenney-cube-pets/2.0/animal-bunny.glb');

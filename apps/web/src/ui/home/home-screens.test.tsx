@@ -2,7 +2,7 @@ import { Profiler, act } from 'react';
 import { cleanup, fireEvent, render, screen } from '@testing-library/react';
 import { MemoryRouter, Route, Routes } from 'react-router';
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import type { CharacterDto } from '@miu/schema/game';
+import type { CharacterDto, QuestSummary } from '@miu/schema/game';
 import { createGameStore } from '../../game-bridge/game-store';
 import { GameStoreContext } from '../../game-bridge/use-game-state';
 import { Hud } from '../hud/hud';
@@ -10,6 +10,7 @@ import type { PlayerData } from '../player/player-data';
 import { PROGRESS, questList } from '../player/test-fixtures';
 import { RegionMapScreen, RegionScreen } from '../region/region-screens';
 import { HomeScreen } from './home-screen';
+import { todayQuests } from './today-quests';
 
 const CHARACTER: CharacterDto = { species: 'cat', name: 'Mochi', equipped: [] };
 
@@ -55,11 +56,40 @@ describe('Home', () => {
     expect(screen.getByText('Hoàn thành 1/2')).toBeTruthy();
     expect(screen.getByRole('link', { name: 'Chơi tiếp' }).getAttribute('href')).toBe('/play?region=khu-rung-bi-mat&quest=forest-ch1');
 
-    // Region hotspots: the forest opens; "Nhà của {name}" uses the character name; others are locked.
-    expect((screen.getByRole('button', { name: /Khu rừng bí mật/ }) as HTMLButtonElement).disabled).toBe(false);
-    expect((screen.getByRole('button', { name: /Nhà của Mochi/ }) as HTMLButtonElement).disabled).toBe(true);
-    expect(screen.getByRole('button', { name: /Đảo bí ẩn/ }).textContent).toContain('Cần Lv.15');
-    expect(document.body.textContent).not.toMatch(/Kim cương|chuỗi ngày/i);
+    // Today's quests: one row per playable quest, the current one first, each with its XP from the server.
+    const rows = [...document.querySelectorAll('[data-id^="home-today-quest-"]')];
+    expect(rows.length).toBeGreaterThanOrEqual(1);
+    expect(rows.length).toBeLessThanOrEqual(3);
+    expect(rows[0]?.getAttribute('data-id')).toBe('home-today-quest-forest-ch1');
+    expect(rows[0]?.textContent).toContain('+100 XP');
+
+    // Region cards: the open forest with its subject; locked regions named with their state for screen readers.
+    expect(screen.getByRole('button', { name: /Khu rừng bí mật/ }).textContent).toBe('Khu rừng bí mậtTiếng Việt');
+    expect(screen.getByRole('button', { name: 'Nhà của Mochi: Sắp mở' })).toBeTruthy();
+    expect(screen.getByRole('button', { name: 'Đảo bí ẩn: Cần Lv.15' })).toBeTruthy();
+    // The rail of the mock, without the MVP's missing pieces (events, diamonds, streak).
+    for (const name of ['Nhiệm vụ', 'Bản đồ', 'Ba lô']) expect(screen.getByRole('link', { name })).toBeTruthy();
+    expect(document.body.textContent).not.toMatch(/Kim cương|chuỗi ngày|Sự kiện|TIMO/i);
+  });
+
+  it("shows a locked region's name in a bubble on tap, stays on Home, and hides the bubble again", async () => {
+    stubServer();
+    renderAt('/home');
+    const pin = await screen.findByRole('button', { name: 'Thư viện: Sắp có' });
+    vi.useFakeTimers();
+    try {
+      const bubbles = () => [...document.querySelectorAll('[data-id^="home-region-bubble-"]')].map((b) => b.textContent);
+      fireEvent.click(pin);
+      expect(bubbles()).toEqual(['Thư việnSắp có']);
+      expect(document.querySelector('[data-id="home"]')).toBeTruthy(); // no navigation to a locked region
+      // Another pin replaces the bubble; the bubble leaves on its own after a moment.
+      fireEvent.click(screen.getByRole('button', { name: 'Lâu đài: Sắp có' }));
+      expect(bubbles()).toEqual(['Lâu đàiSắp có']);
+      act(() => vi.advanceTimersByTime(3000));
+      expect(bubbles()).toEqual([]);
+    } finally {
+      vi.useRealTimers();
+    }
   });
 
   it('opens settings with sound and a way back to the Character Creator', async () => {
@@ -72,12 +102,29 @@ describe('Home', () => {
   });
 });
 
+describe("today's quests", () => {
+  const summary = (id: string, state: QuestSummary['state'], status: 'active' | 'stub' = 'active'): QuestSummary => {
+    const base = questList(0).quests[0];
+    if (!base || base.quest.status !== 'active') throw new Error('fixture has no active quest');
+    return { ...base, state, quest: status === 'active' ? { ...base.quest, id } : { id, region: base.quest.region, chapter: 9, title: id, status: 'stub' } };
+  };
+
+  it('lists the quest in progress first, then open ones in catalogue order, at most three, never locked, done or stub', () => {
+    const quests = [summary('a', 'open'), summary('b', 'completed'), summary('c', 'in-progress'), summary('d', 'locked'), summary('e', 'open', 'stub'), summary('f', 'open'), summary('g', 'open')];
+    expect(todayQuests(quests).map((q) => q.quest.id)).toEqual(['c', 'a', 'f']);
+    expect(todayQuests([summary('b', 'completed')])).toEqual([]);
+  });
+});
+
 describe('Map and region', () => {
-  it('lists regions, with the locked ones not clickable', async () => {
+  it('shows every region on the world map: the open one leads to its chapters, a locked one stays on the map', async () => {
     stubServer();
     renderAt('/map');
-    expect(await screen.findByRole('link', { name: /Khu rừng bí mật/ })).toBeTruthy();
-    expect(document.querySelector('[data-id="map-region-truong-hoc"]')?.getAttribute('aria-disabled')).toBe('true');
+    expect(await screen.findByRole('heading', { name: /Bản đồ thế giới/ })).toBeTruthy();
+    fireEvent.click(screen.getByRole('button', { name: 'Trường học: Sắp có' }));
+    expect(screen.getByRole('heading', { name: /Bản đồ thế giới/ })).toBeTruthy();
+    fireEvent.click(document.querySelector('[data-id="map-region-khu-rung-bi-mat"]') as HTMLElement);
+    expect(await screen.findByRole('heading', { name: 'Chương 1' })).toBeTruthy();
   });
 
   it('shows chapters with progress: chapter 1 playable, chapter 2 coming soon until chapter 1 is done', async () => {

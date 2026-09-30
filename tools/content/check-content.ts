@@ -146,7 +146,7 @@ export function checkRegions(raw: unknown, quests: Iterable<QuestDefinition>): s
   if (!parsed.success) return [`content/${REGIONS_FILE}: ${parsed.error.message}`];
   const issues: string[] = [];
   for (const region of parsed.data.regions) {
-    for (const text of [region.name, region.tagline]) for (const issue of playerTextIssues(text)) issues.push(`region ${region.id} ${issue}`);
+    for (const text of [region.name, region.tagline, region.subject ?? '']) for (const issue of playerTextIssues(text)) issues.push(`region ${region.id} ${issue}`);
   }
   const open = new Set(parsed.data.regions.filter((r) => r.status === 'open').map((r) => r.id));
   const played = new Set<string>();

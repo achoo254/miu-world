@@ -2,15 +2,21 @@
 import { expect, test } from '@playwright/test';
 import { readStats, waitReady } from './stats';
 
+type Box = { x: number; y: number; width: number; height: number };
+const overlaps = (a: Box, b: Box) => a.x < b.x + b.width && b.x < a.x + a.width && a.y < b.y + b.height && b.y < a.y + a.height;
+
 test('Home shows the child and the island, the forest lists its chapters, and chapter 1 opens the game with the HUD', async ({ page }) => {
   const consoleErrors: string[] = [];
   page.on('pageerror', (err) => consoleErrors.push(err.message));
   await page.goto('/home');
   await expect(page.locator('[data-id="player-level"]')).toHaveText(/^Lv\.\d+$/);
-  await expect(page.locator('.home-island-image')).toBeVisible();
+  await expect(page.locator('.world-island-image')).toBeVisible();
   // The island image is shipped with the build and actually loads.
-  expect(await page.locator('.home-island-image').evaluate((img: HTMLImageElement) => img.naturalWidth)).toBeGreaterThan(0);
-  await expect(page.locator('[data-id="home-region-lau-dai"]')).toBeDisabled();
+  expect(await page.locator('.world-island-image').evaluate((img: HTMLImageElement) => img.naturalWidth)).toBeGreaterThan(0);
+  // A locked region only names itself (its card on a wide island); it does not open.
+  await expect(page.locator('[data-id="home-region-lau-dai"]')).toHaveText(/Lâu đài\s*Sắp có/);
+  await page.locator('[data-id="home-region-lau-dai"]').click();
+  await expect(page).toHaveURL(/\/home$/);
   await expect(page.locator('[data-id="home-today"]')).toContainText('Hoàn thành');
 
   await page.locator('[data-id="home-region-khu-rung-bi-mat"]').click();
@@ -39,3 +45,75 @@ test('Home shows the child and the island, the forest lists its chapters, and ch
   await expect(page.locator('canvas')).toHaveCount(0);
   expect(consoleErrors).toEqual([]);
 });
+
+test.describe('on a phone', () => {
+  test.use({ viewport: { width: 390, height: 844 }, hasTouch: true });
+
+  test('every locked region pin on the Home island can be tapped (nothing covers it) and names its region', async ({ page }) => {
+    await page.goto('/home');
+    await expect(page.locator('.world-island-image')).toBeVisible();
+    const pins = page.locator('.world-marker--locked');
+    await expect(pins).toHaveCount(6);
+    for (const id of await pins.evaluateAll((els) => els.map((el) => el.getAttribute('data-id')?.replace('home-region-', '') ?? ''))) {
+      // tap() refuses when another element sits on top of the pin's centre.
+      await page.locator(`[data-id="home-region-${id}"]`).tap();
+      const bubble = page.locator(`[data-id="home-region-bubble-${id}"]`);
+      await expect(bubble).toBeVisible();
+      // The bubble stays inside the screen, even for pins at the island's edges.
+      const box = await bubble.boundingBox();
+      expect(box && box.x >= 0 && box.x + box.width <= 390 && box.y >= 0).toBe(true);
+    }
+    await page.locator('[data-id="home-region-khu-rung-bi-mat"]').tap();
+    await expect(page).toHaveURL(/\/region\/khu-rung-bi-mat$/);
+  });
+
+  for (const [path, prefix] of [
+    ['/home', 'home-region'],
+    ['/map', 'map-region'],
+  ] as const) {
+    test(`${path}: no region marker overlaps another, even in part`, async ({ page }) => {
+      await page.goto(path);
+      await expect(page.locator('.world-island-image')).toBeVisible();
+      const markers = page.locator(`[data-id^="${prefix}-"].world-marker`);
+      await expect(markers).toHaveCount(7);
+      const boxes = (await markers.evaluateAll((els) => els.map((el) => el.getBoundingClientRect().toJSON()))) as Box[];
+      boxes.forEach((a, i) => boxes.slice(i + 1).forEach((b) => expect(overlaps(a, b)).toBe(false)));
+    });
+  }
+});
+
+
+// iPad Gen 10 is the reference device: in both orientations every region is a readable card, as in the
+// mock, and no card covers another, the child's portrait or the edge of the screen.
+for (const viewport of [
+  { width: 820, height: 1180 },
+  { width: 1180, height: 820 },
+]) {
+  test.describe(`on an iPad ${viewport.width}x${viewport.height}`, () => {
+    test.use({ viewport, hasTouch: true });
+
+    for (const [path, prefix] of [
+      ['/home', 'home-region'],
+      ['/map', 'map-region'],
+    ] as const) {
+      test(`${path} shows every region as a card with nothing overlapping`, async ({ page }) => {
+        await page.goto(path);
+        await expect(page.locator('.world-island-image')).toBeVisible();
+        const markers = page.locator(`[data-id^="${prefix}-"].world-marker`);
+        await expect(markers).toHaveCount(7);
+        const boxes = (await markers.evaluateAll((els) => els.map((el) => el.getBoundingClientRect().toJSON()))) as Box[];
+        // Cards, not pins: a locked region shows its name next to the lock.
+        await expect(page.locator(`[data-id="${prefix}-lau-dai"]`)).toContainText('Lâu đài');
+        // Home only: the child's portrait in the stage corner.
+        const heroLocator = page.locator('.home-hero .miu-portrait');
+        const hero = (await heroLocator.count()) > 0 ? await heroLocator.boundingBox() : null;
+        expect(hero !== null).toBe(path === '/home');
+        boxes.forEach((a, i) => {
+          expect(a.x >= 0 && a.x + a.width <= viewport.width).toBe(true);
+          boxes.slice(i + 1).forEach((b) => expect(overlaps(a, b)).toBe(false));
+          if (hero) expect(overlaps(a, hero)).toBe(false);
+        });
+      });
+    }
+  });
+}

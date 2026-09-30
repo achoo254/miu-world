@@ -1,0 +1,90 @@
+/* World stage (M1.1, M1.4): values from tokens.css only. Marker size follows the island's width
+   (container query), not the window's: a small island gets pins, a big one gets the mock's cards. */
+.world-stage { position: relative; width: 100%; }
+.world-island { position: relative; width: 100%; aspect-ratio: 16 / 10; filter: var(--shadow-island); container-type: inline-size; }
+.world-island-image { width: 100%; height: 100%; object-fit: contain; display: block; user-select: none; }
+
+.world-anchor { position: absolute; z-index: 1; width: 0; height: 0; }
+/* The open region sits above the locked ones; an open bubble above everything. */
+.world-anchor--open { z-index: 2; }
+.world-anchor--peek { z-index: 3; }
+
+.world-marker {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translate(-50%, -50%);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  box-sizing: border-box;
+  padding: var(--space-xs) var(--space-sm);
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: var(--color-surface);
+  color: var(--color-ink);
+  font: inherit;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--text-sm);
+  line-height: 1.15;
+  text-align: left;
+  white-space: nowrap;
+  box-shadow: var(--shadow-label);
+  cursor: pointer;
+}
+.world-marker:focus-visible { box-shadow: var(--focus-ring); outline: none; }
+.world-marker-text { display: flex; flex-direction: column; }
+.world-marker-sub { font-family: var(--font-body); font-weight: 700; font-size: var(--text-sm); color: var(--color-ink-soft); }
+.world-marker--open .world-marker-sub { display: none; }
+
+/* Narrow island: a locked region is a round lock pin; its name comes in a bubble on tap. */
+.world-marker--locked { justify-content: center; width: 2.75rem; padding: 0; background: var(--color-surface-glass); }
+.world-marker--locked .world-marker-text { display: none; }
+.world-marker--peek { background: var(--color-surface); }
+.world-marker-lock { display: grid; place-items: center; }
+
+.world-bubble {
+  position: absolute;
+  left: 0;
+  bottom: calc(1.375rem + var(--space-xs));
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--radius-pill);
+  background: var(--color-surface);
+  color: var(--color-ink);
+  font-family: var(--font-display);
+  font-weight: 800;
+  white-space: nowrap;
+  box-shadow: var(--shadow-label);
+  pointer-events: none;
+  animation: world-bubble-in var(--duration-press) ease-out;
+}
+.world-bubble--start { transform: translateX(-1.375rem); }
+.world-bubble--end { transform: translateX(calc(-100% + 1.375rem)); }
+@keyframes world-bubble-in { from { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .world-bubble { animation: none; }
+}
+
+/* A very small island: the open region's card drops its sparkle to stay clear of the lock pins. */
+@container (max-width: 22rem) {
+  .world-marker--open .icon { display: none; }
+}
+
+/* Wide island: every region is a two-line card like the mock (name, then subject or lock state). */
+@container (min-width: 40rem) {
+  .world-marker { gap: var(--space-sm); padding: var(--space-xs) var(--space-md) var(--space-xs) var(--space-sm); border-radius: var(--radius-field); font-size: var(--text-body); }
+  .world-marker--open { font-size: var(--text-lg); min-height: 3.25rem; }
+  .world-marker--open .world-marker-sub { display: block; }
+  .world-marker--locked { width: auto; padding: var(--space-xs) var(--space-md) var(--space-xs) var(--space-sm); color: var(--color-ink-soft); }
+  .world-marker--locked .world-marker-text { display: flex; }
+  /* Everything is already written on the card: no bubble, and a tap changes nothing. */
+  .world-marker--locked.world-marker--peek { background: var(--color-surface-glass); }
+  .world-bubble { display: none; }
+}

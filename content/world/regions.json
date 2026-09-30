@@ -1,12 +1,12 @@
 {
   "version": 1,
   "regions": [
-    { "id": "khu-rung-bi-mat", "name": "Khu rừng bí mật", "tagline": "Cùng Vẹt và Hải ly cứu cây cổ thụ", "status": "open", "hotspot": { "x": 50, "y": 34 } },
-    { "id": "nha-cua-be", "name": "Nhà của {name}", "tagline": "Trang trí ngôi nhà nhỏ", "status": "soon", "hotspot": { "x": 44, "y": 66 } },
-    { "id": "truong-hoc", "name": "Trường học", "tagline": "Lớp học vui của muôn loài", "status": "v1", "hotspot": { "x": 18, "y": 40 } },
-    { "id": "thu-vien", "name": "Thư viện", "tagline": "Ngàn trang sách kỳ diệu", "status": "v1", "hotspot": { "x": 30, "y": 20 } },
-    { "id": "lau-dai", "name": "Lâu đài", "tagline": "Bí mật trên tháp cao", "status": "v1", "hotspot": { "x": 70, "y": 16 } },
-    { "id": "nui-tuyet", "name": "Núi tuyết", "tagline": "Hành trình lên đỉnh băng", "status": "soon", "hotspot": { "x": 84, "y": 36 } },
-    { "id": "dao-bi-an", "name": "Đảo bí ẩn", "tagline": "Hòn đảo lơ lửng xa xa", "status": "level", "level": 15, "hotspot": { "x": 88, "y": 72 } }
+    { "id": "khu-rung-bi-mat", "name": "Khu rừng bí mật", "tagline": "Cùng Vẹt và Hải ly cứu cây cổ thụ", "subject": "Tiếng Việt", "status": "open", "hotspot": { "x": 50, "y": 54 } },
+    { "id": "nha-cua-be", "name": "Nhà của {name}", "tagline": "Trang trí ngôi nhà nhỏ", "subject": "Trang trí · Bộ sưu tập", "status": "soon", "hotspot": { "x": 32, "y": 84 } },
+    { "id": "truong-hoc", "name": "Trường học", "tagline": "Lớp học vui của muôn loài", "subject": "Toán", "status": "v1", "hotspot": { "x": 19, "y": 54 } },
+    { "id": "thu-vien", "name": "Thư viện", "tagline": "Ngàn trang sách kỳ diệu", "subject": "Đọc sách", "status": "v1", "hotspot": { "x": 32, "y": 29 } },
+    { "id": "lau-dai", "name": "Lâu đài", "tagline": "Bí mật trên tháp cao", "subject": "Thử thách", "status": "v1", "hotspot": { "x": 70, "y": 30 } },
+    { "id": "nui-tuyet", "name": "Núi tuyết", "tagline": "Hành trình lên đỉnh băng", "status": "soon", "hotspot": { "x": 82, "y": 54 } },
+    { "id": "dao-bi-an", "name": "Đảo bí ẩn", "tagline": "Hòn đảo lơ lửng xa xa", "status": "level", "level": 15, "hotspot": { "x": 75, "y": 80 } }
   ]
 }

@@ -1,5 +1,5 @@
-// "Bản đồ" (M3.1 in the MVP as a region list: no second 3D scene, see plan phase 5) and the region
-// detail with its chapters and quests (M1.4 / M2.1). Chapter state and progress come from the server.
+// "Bản đồ thế giới" (M1.4: the Home island full width with every region, no second 3D scene) and the
+// region detail with its chapters and quests (M2.1). Chapter state and progress come from the server.
 import { Link, useParams } from 'react-router';
 import type { QuestSummary } from '@miu/schema/game';
 import { Icon } from '../kit/art';
@@ -7,13 +7,14 @@ import { buttonClass } from '../kit/button';
 import { SkyScene } from '../kit/sky-scene';
 import { PlayerBadge } from '../player/player-badge';
 import { chapters, playPath, say, stepProgress, usePlayer, type PlayerData } from '../player/player-data';
-import { REGIONS, findRegion, regionLockText } from './regions';
+import { WorldStage } from '../world/world-stage';
+import { findRegion } from './regions';
 import './region.css';
 
-function Frame({ data, error, children }: { data: PlayerData | null; error: string | null; children: (data: PlayerData) => React.ReactNode }) {
+function Frame({ data, error, wide = false, children }: { data: PlayerData | null; error: string | null; wide?: boolean; children: (data: PlayerData) => React.ReactNode }) {
   return (
     <SkyScene>
-      <main className="region-page" data-id="region-page">
+      <main className={`region-page${wide ? ' region-page--wide' : ''}`} data-id="region-page">
         {error ? (
           <p role="alert" className="error">
             {error} <Link to="/home">Về trang chủ</Link>
@@ -37,40 +38,19 @@ function Frame({ data, error, children }: { data: PlayerData | null; error: stri
   );
 }
 
+/** M1.4 "Bản đồ thế giới – Chọn khu vực": the same island as Home, full width, with every region on it. */
 export function RegionMapScreen() {
   const { data, error } = usePlayer();
   return (
-    <Frame data={data} error={error}>
+    <Frame data={data} error={error} wide>
       {(player) => (
-        <section className="panel" aria-labelledby="map-title" data-id="map">
-          <h1 id="map-title" className="panel-title">
+        <section className="world-map" aria-labelledby="map-title" data-id="map">
+          <h1 id="map-title" className="world-map-title">
             <Icon name="map" size={44} />
-            Bản đồ
+            Bản đồ thế giới
           </h1>
-          <ul className="region-grid">
-            {REGIONS.map((region) => {
-              const lock = regionLockText(region);
-              const name = say(region.name, player.character);
-              return (
-                <li key={region.id}>
-                  {lock ? (
-                    <div className="region-card region-card--locked" aria-disabled="true" data-id={`map-region-${region.id}`}>
-                      <Icon name="locked" size={40} label="Khóa" />
-                      <strong>{name}</strong>
-                      <span className="hint">{say(region.tagline, player.character)}</span>
-                      <span className="badge">{lock}</span>
-                    </div>
-                  ) : (
-                    <Link to={`/region/${region.id}`} className="region-card" data-id={`map-region-${region.id}`}>
-                      <Icon name="sparkles" size={40} />
-                      <strong>{name}</strong>
-                      <span className="hint">{say(region.tagline, player.character)}</span>
-                    </Link>
-                  )}
-                </li>
-              );
-            })}
-          </ul>
+          <p className="hint world-map-hint">Chạm vào khu vực để vào chơi. Khu có ổ khóa sẽ mở sau.</p>
+          <WorldStage character={player.character} idPrefix="map-region" />
         </section>
       )}
     </Frame>

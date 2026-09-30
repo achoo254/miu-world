@@ -19,10 +19,10 @@ Chỉ để định hướng: bắt đầu đọc từ đâu, ai làm chủ vi�
 | Game ↔ React | `apps/web/src/game-bridge/` | Store event rời rạc + `useGameState`; neo vị trí nhãn do game ghi mỗi khung hình |
 | Trang chơi | `apps/web/src/ui/play/play-screen.tsx`, `apps/web/src/ui/hud/` | `/play`: game + HUD (badge, nhiệm vụ hiện tại, Nhiệm vụ/Bản đồ/Ba lô/Menu, Tương tác), Tạm dừng, Ba lô |
 | Kit giao diện, màn hệ thống | `apps/web/src/ui/kit/`, `apps/web/src/ui/system/`, `apps/web/src/ui/tokens.css` | Nút, icon (`ui-art.ts` là danh sách asset UI được ship), Modal, Tabs, Toast, thanh tiến độ, bàn phím số; Tạm dừng, Đang tải, Mất mạng |
-| Màn trước game | `apps/web/src/ui/creator/`, `apps/web/src/ui/home/`, `apps/web/src/ui/region/`, `apps/web/src/ui/profile/` | Tạo nhân vật, Home (đảo + vùng nhấn), Bản đồ và chương, Ba lô và Hồ sơ/Bộ sưu tập |
+| Màn trước game | `apps/web/src/ui/creator/`, `apps/web/src/ui/home/`, `apps/web/src/ui/world/`, `apps/web/src/ui/region/`, `apps/web/src/ui/profile/` | Tạo nhân vật, Home và Bản đồ thế giới (cùng sân khấu `WorldStage`: ảnh toàn cảnh + thẻ khu vực), chương, Ba lô và Hồ sơ/Bộ sưu tập |
 | Luồng quest | `apps/web/src/ui/quest/`, `apps/web/src/ui/dialogue/`, `apps/web/src/ui/challenge/`, `apps/web/src/ui/rewards/` | Controller, hội thoại NPC, 3 thử thách Toán + đọc + đố + panel hỗ trợ, chuỗi màn thưởng/Level Up/Mở khóa; pool câu không lặp (`packages/quest/src/pick-fresh.ts`) |
 | Khu vực, vật phẩm | `content/world/regions.json` (`packages/schema/src/region.ts`), `content/items/` (`packages/schema/src/item.ts`) | Khu vực trên đảo và vùng nhấn; mô tả vật phẩm cho Ba lô |
-| Ảnh đảo Home | `tools/assets/render-home-island.ts` (`pnpm assets:home`) | Render map chương 1 thành đảo nền trong suốt, xác định |
+| Ảnh toàn cảnh Home/Bản đồ | `tools/world/generate-world-overview.ts` (`pnpm world:overview`), `tools/assets/render-home-island.ts` (`pnpm assets:home`), camera chung `packages/voxel/src/world-overview.ts` | Map `the-gioi`: mỗi khu vực một đảo nổi; generator ghi vị trí nhãn vào `content/world/regions.json`; render nền trong suốt, xác định. Map này chỉ để render, không vào bản build |
 | Phục vụ/đóng gói asset | `apps/web/vite-repo-assets.ts` | Chỉ file trong manifest; build chỉ copy file runtime dùng |
 | Tải asset runtime | `apps/web/src/game/asset-loader.ts` | Chặn URL ngoài manifest |
 | Trang review | `apps/web/review.html`, `apps/web/src/review/` | Gallery duyệt cuối, bảng license, bảng hiệu năng |

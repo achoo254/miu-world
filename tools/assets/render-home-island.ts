@@ -1,20 +1,22 @@
-// Renders the Home background: the chapter 1 forest map as a floating island under a fixed camera
-// (preview.html `?shot=island`). Home is a React screen over this image, so the GPU stays for /play
-// (validation decision `home_scene`). Output: assets/generated/home/island.png — deterministic;
-// re-run `pnpm assets:home` whenever the map or the palette changes.
+// Renders the Home and world-map background: the world overview map (one floating island per region,
+// tools/world/generate-world-overview.ts) from the shared overview camera (preview.html `?world=`). Home
+// is a React screen over this image, so the GPU stays for /play (validation decision `home_scene`).
+// Output: assets/generated/home/world.png — deterministic; re-run `pnpm assets:home` after
+// `pnpm world:overview` or a palette change.
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
+import { WORLD_OVERVIEW_IMAGE, WORLD_OVERVIEW_MAP } from '../../packages/voxel/src/world-overview';
 import { ASSETS_DIR } from './asset-lib';
 import { renderShots } from './render-preview';
 
-export const ISLAND_PATH = 'generated/home/island.png';
+export const WORLD_IMAGE_PATH = 'generated/home/world.png';
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   await renderShots([
     {
-      outDir: path.join(ASSETS_DIR, path.dirname(ISLAND_PATH)),
+      outDir: path.join(ASSETS_DIR, path.dirname(WORLD_IMAGE_PATH)),
       label: 'render-home-island',
-      shots: async () => [{ file: path.basename(ISLAND_PATH), query: { shot: 'island', quality: 'high' }, viewport: { width: 1600, height: 1000 }, transparent: true }],
+      shots: async () => [{ file: path.basename(WORLD_IMAGE_PATH), query: { world: WORLD_OVERVIEW_MAP }, viewport: { ...WORLD_OVERVIEW_IMAGE }, transparent: true }],
     },
   ]);
 }

@@ -15,6 +15,8 @@ export const Region = z
     /** May use `{name}` (the player's character name), like quest text. */
     name: z.string().min(1),
     tagline: z.string().min(1),
+    /** Short line under the name on the Home island and the world map: the subject or activity (mock M1.1). */
+    subject: z.string().min(1).optional(),
     status: RegionStatus,
     /** Level that opens a `level` region. */
     level: z.number().int().min(2).optional(),

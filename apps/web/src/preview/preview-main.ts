@@ -21,6 +21,7 @@ import { AssetRegistry, GuardedGltfLoader } from '../game/asset-loader';
 import { dressCharacter } from '../game/character/character-accessories';
 import { Game } from '../game/game';
 import '../ui/styles.css';
+import { renderWorldOverview } from './world-overview-shot';
 
 const params = new URLSearchParams(window.location.search);
 const size = Number(params.get('size') ?? 512);
@@ -99,7 +100,8 @@ function renderMapShot(): void {
   void new Game(document.body, { store, search: window.location.search, outfit: ['hat-witch-pink', 'backpack-brown'] }).start();
 }
 
-const run = params.get('shot') ? async () => renderMapShot() : render;
+const worldMap = params.get('world');
+const run = worldMap ? () => renderWorldOverview(worldMap) : params.get('shot') ? async () => renderMapShot() : render;
 run().catch((err: unknown) => {
   document.body.dataset.error = err instanceof Error ? err.message : String(err);
   console.error(err);

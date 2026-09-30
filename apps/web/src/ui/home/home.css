@@ -1,8 +1,9 @@
-/* Home (M1.1): values from tokens.css only. */
+/* Home (M1.1): values from tokens.css only. Wide screens: rail | world stage | today's quests, like the
+   mock; narrower ones stack the stage, today's quests and the rail (as a row) so the island stays big. */
 .home {
   position: relative;
   z-index: 1;
-  width: min(100%, 76rem);
+  width: min(100%, 90rem);
   min-height: 100vh;
   box-sizing: border-box;
   margin: 0 auto;
@@ -11,35 +12,89 @@
   flex-direction: column;
   gap: var(--space-md);
 }
-.home-top { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-sm); }
-.home-body { display: grid; grid-template-columns: minmax(0, 2.2fr) minmax(16rem, 1fr); gap: var(--space-lg); align-items: start; }
-@media (max-width: 56rem) {
-  .home-body { grid-template-columns: 1fr; }
-}
-.home-island { position: relative; width: 100%; aspect-ratio: 16 / 10; filter: var(--shadow-island); }
-.home-island-image { width: 100%; height: 100%; object-fit: contain; display: block; user-select: none; }
-.home-hotspot {
-  position: absolute;
-  transform: translate(-50%, -50%);
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-xs);
-  min-height: 2.75rem;
-  padding: var(--space-xs) var(--space-md);
-  border: 0;
-  border-radius: var(--radius-pill);
-  background: var(--color-surface);
-  color: var(--color-ink);
-  font: inherit;
-  font-family: var(--font-display);
-  font-weight: 800;
-  white-space: nowrap;
-  box-shadow: var(--shadow-label);
-  cursor: pointer;
-}
-.home-hotspot:focus-visible { box-shadow: var(--focus-ring); outline: none; }
-.home-hotspot--locked { background: var(--color-surface-glass); color: var(--color-ink-soft); cursor: default; }
-.home-today-quest { font-family: var(--font-display); font-weight: 800; font-size: var(--text-lg); }
-.home-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-sm); }
+.home-top { display: flex; justify-content: space-between; align-items: center; gap: var(--space-sm); }
 .home-profile-link { color: inherit; text-decoration: none; border-radius: var(--radius-pill); }
 .home-profile-link:focus-visible { box-shadow: var(--focus-ring); outline: none; }
+.home-round-button {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: var(--color-surface-glass);
+  box-shadow: var(--shadow-tile);
+  cursor: pointer;
+}
+.home-round-button:focus-visible { box-shadow: var(--focus-ring); outline: none; }
+
+.home-main {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas: 'stage' 'today' 'rail';
+  gap: var(--space-md);
+  align-items: end;
+}
+.home-main .world-stage { grid-area: stage; }
+.home-today { grid-area: today; }
+.home-rail { grid-area: rail; }
+@media (min-width: 64rem) {
+  .home-main { grid-template-columns: auto minmax(0, 1fr) clamp(16rem, 22vw, 22rem); grid-template-areas: 'rail stage today'; }
+  .home-rail { flex-direction: column; align-self: center; }
+}
+
+/* The child's character waves from the empty sky at the stage's lower left, as in the mock. The render has
+   a flat background, so it keeps its round frame. Phones leave that corner to the island. */
+.home-hero { position: absolute; left: 0; bottom: 0; z-index: 4; width: clamp(5rem, 14%, 8.5rem); pointer-events: none; }
+.home-hero .miu-portrait { width: 100%; height: auto; aspect-ratio: 1; margin: 0; }
+@media (max-width: 40rem) {
+  .home-hero { display: none; }
+  /* Every pixel of width goes to the island, so its markers keep apart. */
+  .home { padding-inline: 0; }
+  .home-top, .home-today, .home-rail { margin-inline: var(--space-sm); }
+}
+
+.home-rail { display: flex; justify-content: center; gap: var(--space-sm); }
+.home-rail-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  min-width: 5.5rem;
+  min-height: 5.5rem;
+  box-sizing: border-box;
+  padding: var(--space-sm);
+  border-radius: var(--radius-tile);
+  background: var(--color-surface-glass);
+  color: var(--color-ink);
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-decoration: none;
+  box-shadow: var(--shadow-tile);
+}
+.home-rail-item:focus-visible { box-shadow: var(--focus-ring); outline: none; }
+
+.home-today { gap: var(--space-sm); padding: var(--space-lg); }
+.today-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-xs); }
+.today-row-link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  min-height: 3.25rem;
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-field);
+  background: var(--color-field);
+  color: var(--color-ink);
+  text-decoration: none;
+}
+.today-row-link:focus-visible { box-shadow: var(--focus-ring); outline: none; }
+.today-row--current .today-row-link { background: var(--color-badge); }
+.today-row-text { display: flex; flex-direction: column; flex: 1; min-width: 0; }
+.today-row-title { font-family: var(--font-display); font-weight: 800; line-height: 1.2; }
+.today-row-summary, .today-row-meta { font-size: var(--text-sm); color: var(--color-ink-soft); }
+.today-row-meta { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-xs) var(--space-sm); }
+.today-xp { padding: 0 var(--space-sm); border-radius: var(--radius-pill); background: var(--color-surface); font-family: var(--font-display); font-weight: 800; color: var(--color-ink); }
+.today-chevron { flex-shrink: 0; font-family: var(--font-display); font-weight: 800; font-size: var(--text-xl); line-height: 1; color: var(--color-ink-soft); }

@@ -63,8 +63,8 @@ export const SPECIES_ART: Readonly<Record<string, Readonly<Record<MiuPose, strin
   Object.entries(characters as Record<string, { recipe?: { species: string } }>).flatMap(([id, spec]) => (spec.recipe ? [[spec.recipe.species, artFor(id)]] : [])),
 );
 
-/** Home background: the chapter map rendered as a floating island (`pnpm assets:home`). */
-export const HOME_ISLAND = 'generated/home/island.png';
+/** Home and world-map background: the world overview, one floating island per region (`pnpm assets:home`). */
+export const HOME_ISLAND = 'generated/home/world.png';
 
 export type UiIcon = keyof typeof UI_ICONS;
 

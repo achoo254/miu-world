@@ -18,7 +18,11 @@
     "rock-moss": { "file": "stone_grass.png", "tint": "moss", "strength": 0.25 },
     "birch-side": { "file": "trunk_white_side.png", "tint": "birch", "strength": 0.25 },
     "birch-top": { "file": "trunk_white_top.png", "tint": "birch", "strength": 0.25 },
-    "riverbed": { "file": "gravel_dirt.png", "tint": "dirt", "strength": 0.3 }
+    "riverbed": { "file": "gravel_dirt.png", "tint": "dirt", "strength": 0.3 },
+    "snow": { "file": "snow.png", "tint": "snow", "strength": 0.2 },
+    "brick-red": { "file": "brick_red.png", "tint": "roof", "strength": 0.35 },
+    "brick-grey": { "file": "brick_grey.png", "tint": "stone", "strength": 0.3 },
+    "wood-red": { "file": "wood_red.png", "tint": "roof", "strength": 0.3 }
   },
   "blocks": [
     { "id": 1, "name": "grass", "top": "grass-top", "side": "grass-side", "bottom": "dirt" },
@@ -33,6 +37,10 @@
     { "id": 10, "name": "rock-moss", "top": "rock-moss", "side": "rock-moss", "bottom": "rock-moss" },
     { "id": 11, "name": "birch-log", "top": "birch-top", "side": "birch-side", "bottom": "birch-top" },
     { "id": 12, "name": "leaves-autumn", "top": "leaves-autumn", "side": "leaves-autumn", "bottom": "leaves-autumn" },
-    { "id": 13, "name": "riverbed", "top": "riverbed", "side": "riverbed", "bottom": "riverbed" }
+    { "id": 13, "name": "riverbed", "top": "riverbed", "side": "riverbed", "bottom": "riverbed" },
+    { "id": 14, "name": "snow", "top": "snow", "side": "snow", "bottom": "snow" },
+    { "id": 15, "name": "brick-red", "top": "brick-red", "side": "brick-red", "bottom": "brick-red" },
+    { "id": 16, "name": "brick-grey", "top": "brick-grey", "side": "brick-grey", "bottom": "brick-grey" },
+    { "id": 17, "name": "wood-red", "top": "wood-red", "side": "wood-red", "bottom": "wood-red" }
   ]
 }

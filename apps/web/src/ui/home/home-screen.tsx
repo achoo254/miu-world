@@ -1,76 +1,20 @@
-// M1.1 (Trang chủ): the island with its regions, today's quest, and the child's level, XP and coins.
-// Home is a React screen over a pre-rendered island image, not a second 3D scene (validation
-// decision `home_scene`); no daily streak in the MVP (`streak_in_mvp` = defer_v1).
+// M1.1 (Trang chủ): the world stage with its regions, the child's character standing in it, a side rail
+// (Nhiệm vụ, Bản đồ, Ba lô), today's quests, and the child's level, XP and coins. Home is a React screen
+// over a pre-rendered island image, not a second 3D scene (validation decision `home_scene`). Not in the
+// MVP, so not shown: diamonds (Master Plan §15 #6), the daily streak (`streak_in_mvp` = defer_v1), the
+// "Sự kiện" rail entry and the TIMO event card (Live World).
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router';
-import { assetUrl, HOME_ISLAND } from '../kit/ui-art';
-import { Icon } from '../kit/art';
+import { Link } from 'react-router';
+import { Icon, MiuPortrait } from '../kit/art';
 import { buttonClass } from '../kit/button';
 import { Modal } from '../kit/modal';
 import { SkyScene } from '../kit/sky-scene';
 import { PlayerBadge } from '../player/player-badge';
-import { currentQuest, playPath, say, stepProgress, usePlayer, type PlayerData } from '../player/player-data';
-import { REGIONS, regionLockText } from '../region/regions';
+import { currentQuest, usePlayer } from '../player/player-data';
 import { SoundToggle } from '../system/sound-toggle';
+import { WorldStage } from '../world/world-stage';
+import { TodayQuests } from './today-quests';
 import './home.css';
-
-function Island({ data }: { data: PlayerData }) {
-  const navigate = useNavigate();
-  return (
-    <div className="home-island" data-id="home-island">
-      <img className="home-island-image" src={assetUrl(HOME_ISLAND)} alt="" draggable={false} />
-      {REGIONS.map((region) => {
-        const lock = regionLockText(region);
-        return (
-          <button
-            key={region.id}
-            type="button"
-            className={`home-hotspot${lock ? ' home-hotspot--locked' : ''}`}
-            style={{ left: `${region.hotspot.x}%`, top: `${region.hotspot.y}%` }}
-            disabled={lock !== null}
-            data-id={`home-region-${region.id}`}
-            onClick={() => navigate(`/region/${region.id}`)}
-          >
-            {lock ? <Icon name="locked" size={24} /> : <Icon name="sparkles" size={24} />}
-            <span>{say(region.name, data.character)}</span>
-            {lock ? <span className="badge">{lock}</span> : null}
-          </button>
-        );
-      })}
-    </div>
-  );
-}
-
-function TodayQuest({ data }: { data: PlayerData }) {
-  const quest = currentQuest(data.quests);
-  if (!quest) {
-    return (
-      <section className="panel home-today" data-id="home-today" aria-labelledby="home-today-title">
-        <h2 id="home-today-title">Nhiệm vụ hôm nay</h2>
-        <p className="hint">{data.character.name} đã xong mọi nhiệm vụ đang có. Nhiệm vụ mới sắp tới!</p>
-      </section>
-    );
-  }
-  const { done, total } = stepProgress(quest);
-  return (
-    <section className="panel home-today" data-id="home-today" aria-labelledby="home-today-title">
-      <h2 id="home-today-title" className="panel-title">
-        <Icon name="scroll" size={36} />
-        Nhiệm vụ hôm nay
-      </h2>
-      <p className="home-today-quest" data-id="home-today-quest">
-        {say(quest.quest.title, data.character)}
-      </p>
-      {quest.quest.status === 'active' ? <p className="hint">{say(quest.quest.summary, data.character)}</p> : null}
-      <p data-id="home-today-progress">
-        Hoàn thành {done}/{total}
-      </p>
-      <Link to={playPath(quest)} className={buttonClass('primary', { block: true })} data-id="home-today-play">
-        {quest.state === 'in-progress' ? 'Chơi tiếp' : 'Bắt đầu'}
-      </Link>
-    </section>
-  );
-}
 
 function SettingsDialog({ onClose }: { onClose: () => void }) {
   return (
@@ -111,34 +55,33 @@ export function HomeScreen() {
               <Link to="/profile" className="home-profile-link" data-id="home-profile" aria-label={`Hồ sơ của ${data.character.name}`}>
                 <PlayerBadge character={data.character} progress={data.progress} />
               </Link>
+              <button type="button" className="home-round-button" data-id="home-nav-settings" aria-label="Cài đặt" onClick={() => setSettings(true)}>
+                <Icon name="gear" size={36} />
+              </button>
             </header>
             <h1 className="visually-hidden">Trang chủ</h1>
-            <div className="home-body">
-              <Island data={data} />
-              <TodayQuest data={data} />
+            <div className="home-main">
+              <WorldStage character={data.character} idPrefix="home-region">
+                <div className="home-hero" aria-hidden="true">
+                  <MiuPortrait pose="wave" altPose="cheer" species={data.character.species} />
+                </div>
+              </WorldStage>
+              <nav className="home-rail" aria-label="Điều hướng">
+                <Link to={quest ? `/region/${quest.quest.region}` : '/map'} className="home-rail-item" data-id="home-nav-quests">
+                  <Icon name="scroll" size={40} />
+                  Nhiệm vụ
+                </Link>
+                <Link to="/map" className="home-rail-item" data-id="home-nav-map">
+                  <Icon name="map" size={40} />
+                  Bản đồ
+                </Link>
+                <Link to="/backpack" className="home-rail-item" data-id="home-nav-backpack">
+                  <Icon name="backpack" size={40} />
+                  Ba lô
+                </Link>
+              </nav>
+              <TodayQuests data={data} />
             </div>
-            <nav className="home-nav" aria-label="Điều hướng">
-              <Link
-                to={quest ? `/region/${quest.quest.region}` : '/map'}
-                className={buttonClass('secondary')}
-                data-id="home-nav-quests"
-              >
-                <Icon name="scroll" size={32} />
-                Nhiệm vụ
-              </Link>
-              <Link to="/map" className={buttonClass('secondary')} data-id="home-nav-map">
-                <Icon name="map" size={32} />
-                Bản đồ
-              </Link>
-              <Link to="/backpack" className={buttonClass('secondary')} data-id="home-nav-backpack">
-                <Icon name="backpack" size={32} />
-                Ba lô
-              </Link>
-              <button type="button" className={buttonClass('secondary')} data-id="home-nav-settings" onClick={() => setSettings(true)}>
-                <Icon name="gear" size={32} />
-                Cài đặt
-              </button>
-            </nav>
             {settings ? <SettingsDialog onClose={() => setSettings(false)} /> : null}
           </>
         ) : null}
