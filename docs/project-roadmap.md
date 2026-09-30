@@ -56,7 +56,7 @@ Mã chỉ dùng trong plan và roadmap, không dùng trong code, tên test, comm
 
 - **Gate POC (Đã qua - 2026-09-29):** Đã duyệt với kết quả: giữ kiến trúc kitbash/generator/mesher, chuyển sang tinh chỉnh visual (nhân vật chibi, palette phụ kiện & block); dời chốt số liệu hiệu năng sang đo máy thật trước nghiệm thu MVP (máy chuẩn: iPad Gen 10, chốt 2026-09-29).
 - **Gate Foundation (Đã qua - 2026-09-29):** monorepo, tài khoản phụ huynh (Google) + hồ sơ trẻ, API nhân vật-tiến độ-thưởng, Miu chibi A + palette, runtime trong `apps/web`; CI xanh. Report: `plans/dattqh/reports/foundation-review-260929.md`.
-- **Nội dung SGK lớp 2 tập 1 (song song):** plan `plans/dattqh/260930-0846-sgk-lop2-game-content/` — 100% nội dung Toán 2 và Tiếng Việt 2 (Kết nối tri thức) thành quest; Tiếng Việt ở Khu rừng (ch2–19), Toán ở Trường học; chạy ở worktree riêng, kích hoạt sau VS phase 10.
+- **Nội dung SGK lớp 2 tập 1 (song song):** plan `plans/dattqh/260930-0846-sgk-lop2-game-content/` — 100% nội dung Toán 2 và Tiếng Việt 2 (Kết nối tri thức) thành quest; Tiếng Việt ở Khu rừng (ch2–19), Toán ở Trường học; chạy ở worktree riêng, kích hoạt sau VS phase 10. Đang làm (2026-09-30): kiểm kê Tiếng Việt xong, Toán đang đọc lượt 2; schema + cơ chế mới, giao diện cơ chế, API phiếu viết, cổng nguyên văn/không lặp đã xong; 3 quest mẫu chờ người sở hữu nghiệm thu trước khi viết hết (D10).
 - **Gate Vertical slice MVP (chờ người duyệt, 2026-09-30):** plan `plans/dattqh/260929-2141-vertical-slice-mvp/` xong 10 phase; trang review `apps/web/review.html`, report `plans/dattqh/reports/mvp-slice-review-260930.md`. Trước nghiệm thu MVP: DEVICE-01 (iPad Gen 10), giáo viên duyệt nội dung học, designer duyệt UI/mock voxel (#23), chơi thử với trẻ (#24).
 
 ## Nợ đã biết (trước nghiệm thu MVP)

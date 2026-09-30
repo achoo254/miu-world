@@ -1,7 +1,7 @@
 ---
 phase: 6
 title: "Phiếu viết ngoài game"
-status: pending
+status: in-progress
 priority: P2
 effort: "M"
 dependencies: [1]

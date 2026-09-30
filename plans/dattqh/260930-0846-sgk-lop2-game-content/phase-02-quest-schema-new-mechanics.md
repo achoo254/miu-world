@@ -1,7 +1,7 @@
 ---
 phase: 2
 title: "Schema + runtime cho cơ chế mới"
-status: pending
+status: completed
 priority: P1
 effort: "L"
 dependencies: []

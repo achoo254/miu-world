@@ -56,6 +56,7 @@ Lượt 1 để `pageItems: []`; lượt 2 điền.
 (Chỉ minh hoạ định dạng, chưa đủ item của trang.)
 
 ## Quy ước bổ sung (chốt sau lượt 1)
+- Id trùng giữa item và section (bài 2 của `…-luyen-tap` trùng section `…-luyen-tap-2`): thêm `-a` vào item (`…-luyen-tap-2-a`), kể cả khi bài chỉ có một ý.
 - "Học thuộc lòng …" (dòng có dấu sao, không số): item `-doc-htl`, `exerciseType: "doc-thanh-tieng"`.
 - Ô trống trong câu lệnh: chép dấu sách in (`?`, `…`, `◻`, `■`); checker coi mọi dấu này là ô trống khi so chữ.
 - Bảng: mỗi hàng cách nhau `|`; ghép cột A–B: dòng `A: …; …` và `B: …; …`, hàng đang hỏi đặt cuối.

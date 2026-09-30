@@ -1,7 +1,7 @@
 ---
 title: "Nội dung SGK lớp 2 tập 1 (Toán, Tiếng Việt — Kết nối tri thức) thành kịch bản game"
 description: "Đưa 100% nội dung Toán 2 tập 1 (7 chủ đề, 36 bài) và Tiếng Việt 2 tập 1 (4 chủ điểm, 18 tuần, 32 bài + 2 ôn tập) vào quest của Miu World; chạy song song với plan vertical slice trong worktree riêng."
-status: pending
+status: in-progress
 priority: P1
 effort: "XL"
 branch: dattqh/feat/sgk-lop2-content
@@ -40,12 +40,12 @@ Chi tiết Jev: `plans/dattqh/reports/jev-260930-sgk-plan-decisions.md`.
 
 | # | Phase | Tier | Phụ thuộc | Status |
 |---|-------|------|-----------|--------|
-| 1 | [Kiểm kê SGK thành dữ liệu](./phase-01-textbook-inventory.md) | L | — | Pending |
-| 2 | [Schema + runtime cho cơ chế mới](./phase-02-quest-schema-new-mechanics.md) | L | — (VS phase 3 đã commit) | Pending |
-| 3 | [Kỹ năng, quy tắc cơ chế, cổng phủ nội dung](./phase-03-skills-mapping-completeness-gate.md) | M | 1, 2 | Pending |
+| 1 | [Kiểm kê SGK thành dữ liệu](./phase-01-textbook-inventory.md) | L | — | In progress (khung xong; TV lượt 1 xong, lượt 2 đang chạy; Toán lượt 1 đang chạy) |
+| 2 | [Schema + runtime cho cơ chế mới](./phase-02-quest-schema-new-mechanics.md) | L | — (VS phase 3 đã commit) | Done (trên `main` từ 6db35d6) |
+| 3 | [Kỹ năng, quy tắc cơ chế, cổng phủ nội dung](./phase-03-skills-mapping-completeness-gate.md) | M | 1, 2 | In progress (kỹ năng, quy tắc, kiểm nguyên văn/đáp án/lặp, `content:gaps` xong; còn 2 quest mẫu) |
 | 4 | [Kịch bản Tiếng Việt — 18 tuần](./phase-04-tieng-viet-quests.md) | XL | 3 | Pending |
 | 5 | [Kịch bản Toán — 7 chủ đề](./phase-05-toan-quests.md) | XL | 3 | Pending |
-| 6 | [Phiếu viết ngoài game](./phase-06-writing-worksheets.md) | M | 1; UI sau VS phase 1 | Pending |
+| 6 | [Phiếu viết ngoài game](./phase-06-writing-worksheets.md) | M | 1; UI sau VS phase 1 | In progress (schema + API xong; còn UI in phiếu) |
 | 7 | [Thu âm trên máy](./phase-07-on-device-voice.md) | M | 2; sau VS phase 1, 8 | Pending |
 | 8 | [UI cơ chế mới](./phase-08-new-mechanic-ui.md) | L | 2; sau VS phase 8 | Pending |
 | 9 | [Bản đồ Trường học + chương rừng 2–19](./phase-09-school-map-forest-chapters.md) | L | 4, 5; sau VS phase 5, 6, 7 | Pending |

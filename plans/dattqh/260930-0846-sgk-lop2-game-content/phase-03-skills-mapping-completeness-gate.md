@@ -1,7 +1,7 @@
 ---
 phase: 3
 title: "Kỹ năng, quy tắc cơ chế, cổng phủ nội dung"
-status: pending
+status: in-progress
 priority: P1
 effort: "M"
 dependencies: [1, 2]
