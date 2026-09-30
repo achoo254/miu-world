@@ -3,5 +3,5 @@
   "compilerOptions": {
     "types": ["node"]
   },
-  "include": ["src/**/*.ts", "test/**/*.ts", "drizzle.config.ts", "../../packages/schema/src/**/*.ts", "../../packages/quest/src/**/*.ts", "../../packages/voxel/src/**/*.ts"]
+  "include": ["src/**/*.ts", "test/**/*.ts", "drizzle.config.ts", "bundle.ts", "../../packages/schema/src/**/*.ts", "../../packages/quest/src/**/*.ts", "../../packages/voxel/src/**/*.ts"]
 }

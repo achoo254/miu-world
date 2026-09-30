@@ -2,12 +2,9 @@ import { randomUUID } from 'node:crypto';
 import { mkdir } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { PGlite } from '@electric-sql/pglite';
 import { drizzle as drizzleNodePg } from 'drizzle-orm/node-postgres';
 import { migrate as migrateNodePg } from 'drizzle-orm/node-postgres/migrator';
 import type { PgDatabase, PgQueryResultHKT } from 'drizzle-orm/pg-core';
-import { drizzle as drizzlePglite } from 'drizzle-orm/pglite';
-import { migrate as migratePglite } from 'drizzle-orm/pglite/migrator';
 import pg from 'pg';
 import * as schema from './schema';
 
@@ -32,10 +29,16 @@ export async function openPostgres(connectionString: string): Promise<DbHandle> 
 
 /** Embedded Postgres for dev (file under `.data/`, gitignored) and tests (in-memory when `dir` is omitted). */
 export async function openPglite(dir?: string): Promise<DbHandle> {
+  // Loaded on demand: the production bundle runs on Postgres and ships without PGlite.
+  const [{ PGlite }, { drizzle }, { migrate }] = await Promise.all([
+    import('@electric-sql/pglite'),
+    import('drizzle-orm/pglite'),
+    import('drizzle-orm/pglite/migrator'),
+  ]);
   if (dir) await mkdir(dir, { recursive: true });
   const client = dir ? new PGlite(dir) : new PGlite();
-  const db = drizzlePglite(client, { schema });
-  await migratePglite(db, { migrationsFolder: MIGRATIONS });
+  const db = drizzle(client, { schema });
+  await migrate(db, { migrationsFolder: MIGRATIONS });
   return { db, close: () => client.close() };
 }
 
