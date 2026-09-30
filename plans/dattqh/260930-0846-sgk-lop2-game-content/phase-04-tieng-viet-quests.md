@@ -13,7 +13,7 @@ dependencies: [3]
 Mỗi bài Tiếng Việt 2 tập 1 là một quest ở Khu rừng bí mật, phủ mọi item kiểm kê của bài bằng bước đúng cơ chế (trong game, hoặc qua phiếu viết cho phần Viết), đủ luật quest của repo.
 
 ## Requirements
-- D8 + D9: chữ SGK nguyên văn; mỗi quest một câu chuyện/bối cảnh/NPC riêng, lời thoại và `feedback` không trùng quest khác, chuỗi cơ chế không trùng quest khác (`content:check` kiểm).
+- Nhân vật chính, nơi, tình huống mở đầu theo [story-map.md](./story-map.md). D8 + D9: chữ SGK nguyên văn; mỗi quest một câu chuyện/bối cảnh/NPC riêng, lời thoại và `feedback` không trùng quest khác, chuỗi cơ chế không trùng quest khác (`content:check` kiểm).
 - 34 quest: 32 bài (`tv2-t01-b01` … `tv2-t17-b32`) + `tv2-t09-on-giua-ki` + `tv2-t18-on-cuoi-ki`, `region: "khu-rung-bi-mat"`, `chapter` = tuần + 1 (2 quest/chương, D6), `status: "draft"` (phase 10 đổi `active`), `review: "teacher-pending"`, id và mở khóa theo quy ước phase 3 (bài 1 đã có từ phase 3).
 - Khuôn một bài (theo cấu trúc sách; bài lẻ có Nói và nghe, bài chẵn có Luyện tập + Đọc mở rộng):
   - Hook: NPC (Vẹt/Hải ly/nhân vật trong bài đọc) kể tình huống gắn chủ điểm tuần.

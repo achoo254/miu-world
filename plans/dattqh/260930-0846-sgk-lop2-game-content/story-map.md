@@ -1,0 +1,122 @@
+# Bản đồ câu chuyện — 70 quest SGK (D9)
+
+Mỗi quest một nhân vật chính, một nơi, một tình huống mở đầu riêng; không quest nào mượn khung của quest khác. Phase 4, 5 viết lời thoại, `feedback`, chuỗi cơ chế theo bảng này (thứ tự cơ chế do bài tập quyết, `content:check` chặn trùng). Chữ SGK vẫn nguyên văn (D8) — câu chuyện chỉ bao quanh bài tập. Người chơi luôn là `{name}`.
+
+Dàn nhân vật dùng mô hình Cube Pets có sẵn (`assets/packs/kenney-cube-pets/2.0`): mỗi nhân vật có tên và tính cách riêng, xuất hiện lại thì câu chuyện của họ đi tiếp (không lặp cảnh cũ).
+
+| Nhân vật | Con vật | Tính cách | Tuyến truyện |
+| --- | --- | --- | --- |
+| Vẹt Xanh | parrot | lắm lời, hay đố | dẫn đường Khu rừng, sưu tầm từ ngữ lạ |
+| Hải Ly Cần | beaver | chăm chỉ, cẩn thận | xây dần cây cầu gỗ qua suối (mỗi chương thêm một nhịp) |
+| Nai Mơ | deer | mơ mộng, thích thơ | chép thơ vào cuốn sổ lá |
+| Thỏ Tí | bunny | nhanh nhảu, hay quên | làm rơi đồ khắp rừng |
+| Gấu Trúc Tròn | panda | chậm mà chắc | thủ thư gốc cây rỗng |
+| Cáo Lém | fox | tinh nghịch, hay bày trò | tổ chức trò chơi cuối tuần |
+| Voi Bảo | elephant | hiền, nhớ giỏi | giữ lịch và đồng hồ của trường |
+| Khỉ Lanh | monkey | lanh lợi | giáo viên thể dục, đo đếm |
+| Hổ Vằn | tiger | ra vẻ dữ, thật ra nhút nhát | học cách kết bạn |
+| Sư Tử Vàng | lion | hiệu trưởng Trường học | mở từng khu trường |
+| Chim Cánh Cụt Pin | penguin | kĩ tính | quản lí căng tin (cân, đong) |
+| Gà Con Chíp | chick | tò mò | học sinh mới của trường |
+| Heo Ủn | pig | ham ăn, vui tính | bếp trưởng |
+| Bò Sữa Mơ | cow | hiền hậu | trang trại cạnh trường |
+| Hươu Cao | giraffe | cao, nhìn xa | vẽ bản đồ, thích hình khối |
+| Gấu Koala Na | koala | buồn ngủ | hay ngủ quên giờ |
+| Cua Kềnh | crab | đi ngang, hay nói ngược | câu đố so sánh |
+| Ong Vàng | bee | siêng năng | đếm hoa, xếp tổ hình lục giác |
+| Chó Mực | dog | trung thành | canh cổng trường, đưa thư |
+| Mèo Mun | cat | điềm tĩnh | bạn cùng lớp của `{name}` |
+| Cá Bống | fish | ở hồ nước | đố dung tích |
+| Sâu Xanh | caterpillar | kiên nhẫn | lớn lên thành bướm qua các tuần (Tiếng Việt chủ điểm 1) |
+| Gấu Tuyết Bông | polar | từ phương xa tới | gửi thư, kể chuyện nơi khác |
+| Lợn Rừng Đốm | hog | vụng về | làm đồ chơi |
+
+## Tiếng Việt — Khu rừng bí mật (chương 2–19, mỗi tuần một chương, 2 quest/chương)
+
+| Quest | Bài | Chương | Nhân vật chính | Nơi | Tình huống mở đầu |
+| --- | --- | --- | --- | --- | --- |
+| tv2-t01-b01 | Tôi là học sinh lớp 2 | 2 | Sâu Xanh | cổng rừng lúc bình minh | Sâu Xanh háo hức ngày đầu vào "lớp Hai của rừng", sợ đến muộn |
+| tv2-t01-b02 | Ngày hôm qua đâu rồi? | 2 | Voi Bảo | gốc cây treo tờ lịch lá | tờ lịch lá bị gió thổi bay, Voi Bảo hỏi ngày hôm qua đi đâu |
+| tv2-t02-b03 | Niềm vui của Bi và Bống | 3 | Thỏ Tí | bãi cỏ sau mưa có cầu vồng | Thỏ Tí thấy cầu vồng, muốn ước nhiều thứ cùng lúc |
+| tv2-t02-b04 | Làm việc thật là vui | 3 | Ong Vàng | vườn hoa tổ ong | cả tổ bận rộn, Ong Vàng cần người phụ một việc nhỏ |
+| tv2-t03-b05 | Em có xinh không? | 4 | Voi Bảo (em voi nhỏ) | suối soi bóng | em voi nhỏ bắt chước các bạn để "xinh hơn" |
+| tv2-t03-b06 | Một giờ học | 4 | Mèo Mun | lớp học dưới tán cây | Mèo Mun ngại nói trước lớp |
+| tv2-t04-b07 | Cây xấu hổ | 5 | Nai Mơ | bụi cỏ xấu hổ ven đầm | lá cây cụp lại khi có tiếng động lạ |
+| tv2-t04-b08 | Cầu thủ dự bị | 5 | Hổ Vằn | sân bóng giữa rừng | Hổ Vằn chưa được vào đội, buồn bã tập một mình |
+| tv2-t05-b09 | Cô giáo lớp em | 6 | Nai Mơ | lớp học có cửa sổ lá | Nai Mơ muốn viết bài thơ tặng cô giáo |
+| tv2-t05-b10 | Thời khoá biểu | 6 | Thỏ Tí | tấm bảng gỗ ở gốc sồi | Thỏ Tí mang nhầm sách vì không xem thời khoá biểu |
+| tv2-t06-b11 | Cái trống trường em | 7 | Chó Mực | chòi trống bên suối | trống trường im tiếng cả hè, cần ai đánh thức |
+| tv2-t06-b12 | Danh sách học sinh | 7 | Gấu Trúc Tròn | gốc cây thư viện | danh sách lớp bị ướt mưa, nhoè tên |
+| tv2-t07-b13 | Yêu lắm trường ơi! | 8 | Gà Con Chíp | sân trường rừng giờ ra chơi | Chíp nhớ nhà, chưa thấy yêu trường |
+| tv2-t07-b14 | Em học vẽ | 8 | Hươu Cao | đồi cỏ nhìn ra biển | Hươu Cao vẽ tranh nhưng thiếu màu |
+| tv2-t08-b15 | Cuốn sách của em | 9 | Gấu Trúc Tròn | kệ sách trong hốc cây | sách bị xếp lộn xộn, không tìm được mục lục |
+| tv2-t08-b16 | Khi trang sách mở ra | 9 | Nai Mơ | tảng đá phẳng đọc sách | trang sách "mở ra" thành cảnh thật quanh {name} |
+| tv2-t09-on-giua-ki | Ôn tập giữa học kì 1 | 10 | Vẹt Xanh + cả lớp | lễ hội lá vàng | hội thi giữa kì của rừng, mỗi trạm một thử thách |
+| tv2-t10-b17 | Gọi bạn | 11 | Bò Sữa Mơ | đồng cỏ khô hạn | bạn của Bò lạc giữa đồng khô, phải gọi tìm |
+| tv2-t10-b18 | Tớ nhớ cậu | 11 | Gấu Tuyết Bông | bến thư bên hồ | Bông nhận thư của bạn phương xa, muốn viết trả lời |
+| tv2-t11-b19 | Chữ A và những người bạn | 12 | Vẹt Xanh | con đường chữ cái | các chữ cái cãi nhau ai quan trọng nhất |
+| tv2-t11-b20 | Nhím nâu kết bạn | 12 | Hổ Vằn | bụi gai cuối rừng | Hổ Vằn muốn làm quen nhưng các bạn sợ |
+| tv2-t12-b21 | Thả diều | 13 | Khỉ Lanh | đỉnh đồi lộng gió | diều của Khỉ vướng cành cây cao |
+| tv2-t12-b22 | Tớ là lê-gô | 13 | Lợn Rừng Đốm | xưởng đồ chơi gỗ | Đốm xếp khối mãi không thành hình |
+| tv2-t13-b23 | Rồng rắn lên mây | 14 | Cáo Lém | bãi đất trống giữa rừng | Cáo bày trò chơi dân gian nhưng quên luật |
+| tv2-t13-b24 | Nặn đồ chơi | 14 | Hải Ly Cần | bờ suối đất sét | Hải Ly nặn quà tặng nhưng đất sét khô cứng |
+| tv2-t14-b25 | Sự tích hoa tỉ muội | 15 | Ong Vàng | bụi hoa tỉ muội | hai chị em ong giận nhau vì một bông hoa |
+| tv2-t14-b26 | Em mang về yêu thương | 15 | Gà Con Chíp | tổ rơm của nhà Chíp | nhà Chíp sắp đón em bé, Chíp lo bị bỏ quên |
+| tv2-t15-b27 | Mẹ | 16 | Koala Na | võng lá dưới trăng | đêm nóng, Na không ngủ được, nhớ mẹ quạt |
+| tv2-t15-b28 | Trò chơi của bố | 16 | Sư Tử Vàng (bố sư tử con) | hang đá ấm | sư tử con giận vì bố bận, bố nghĩ ra trò chơi mới |
+| tv2-t16-b29 | Cánh cửa nhớ bà | 17 | Cua Kềnh | căn chòi cũ bên bờ | Cua tìm lại vết khắc chiều cao bà đánh dấu |
+| tv2-t16-b30 | Thương ông | 17 | Chó Mực | con dốc gập ghềnh | ông Chó già đau chân, cần dắt qua dốc |
+| tv2-t17-b31 | Ánh sáng của yêu thương | 18 | Cá Bống | hồ nước lúc hoàng hôn | mẹ cá bị ốm, đàn đom đóm soi đường tìm thuốc |
+| tv2-t17-b32 | Chơi chong chóng | 18 | Thỏ Tí | cánh đồng gió | Thỏ Tí và em tranh nhau một chiếc chong chóng |
+| tv2-t18-on-cuoi-ki | Ôn tập và đánh giá cuối học kì 1 | 19 | Vẹt Xanh + Hải Ly Cần | cây cầu gỗ hoàn thành | khánh thành cây cầu cả học kì cùng xây, mỗi nhịp một câu hỏi ôn |
+
+## Toán — Trường học (7 khu = 7 chủ đề, đi lại tự do)
+
+| Khu | Chủ đề | Người giữ khu |
+| --- | --- | --- |
+| Sân trường | 1 Ôn tập và bổ sung | Sư Tử Vàng |
+| Vườn trường | 2 Cộng, trừ trong phạm vi 20 | Ong Vàng, Bò Sữa Mơ |
+| Căng tin | 3 Khối lượng, dung tích | Chim Cánh Cụt Pin, Heo Ủn |
+| Xưởng đồ chơi | 4 Cộng, trừ có nhớ trong phạm vi 100 | Lợn Rừng Đốm |
+| Phòng mĩ thuật | 5 Hình phẳng | Hươu Cao |
+| Tháp đồng hồ | 6 Ngày – giờ, giờ – phút, ngày – tháng | Voi Bảo, Koala Na |
+| Hội trường | 7 Ôn tập học kì 1 | Sư Tử Vàng + cả trường |
+
+| Quest | Bài | Nhân vật chính | Nơi trong khu | Tình huống mở đầu |
+| --- | --- | --- | --- | --- |
+| toan2-cd1-b01 | Ôn tập các số đến 100 | Sư Tử Vàng | cột cờ | bảng số lớp học rơi mất các con số, cần xếp lại |
+| toan2-cd1-b02 | Tia số. Số liền trước, số liền sau | Gà Con Chíp | vạch kẻ sân nhảy lò cò | Chíp nhảy lò cò trên tia số nhưng hay nhảy nhầm ô |
+| toan2-cd1-b03 | Các thành phần của phép cộng, phép trừ | Mèo Mun | bảng tin sân trường | tấm biển tên "số hạng, tổng" bị gió thổi lẫn lộn |
+| toan2-cd1-b04 | Hơn, kém nhau bao nhiêu | Khỉ Lanh | đường chạy | hai đội thi nhặt bóng, cần biết đội nào hơn bao nhiêu quả |
+| toan2-cd1-b05 | Ôn tập phép cộng, phép trừ (không nhớ) trong phạm vi 100 | Chó Mực | cổng trường | túi thư đưa nhầm lớp, số trên phong bì là phép tính |
+| toan2-cd1-b06 | Luyện tập chung | Cáo Lém | góc trò chơi dân gian | Cáo mở "hội chợ số" có năm gian đố |
+| toan2-cd2-b07 | Phép cộng (qua 10) trong phạm vi 20 | Ong Vàng | luống hoa hướng dương | đếm hoa đủ chục để làm tổ mới |
+| toan2-cd2-b08 | Bảng cộng (qua 10) | Sâu Xanh | giàn bầu | bảng cộng khắc trên quả bầu bị rụng |
+| toan2-cd2-b09 | Bài toán về thêm, bớt một số đơn vị | Bò Sữa Mơ | chuồng rơm | đàn bê con chạy ra vào, đếm thêm bớt |
+| toan2-cd2-b10 | Luyện tập chung | Hải Ly Cần | ao cá vườn trường | Hải Ly làm đập nhỏ, mỗi viên đá là một phép tính |
+| toan2-cd2-b11 | Phép trừ (qua 10) trong phạm vi 20 | Heo Ủn | cây táo | táo rụng dần, Heo đếm còn lại bao nhiêu |
+| toan2-cd2-b12 | Bảng trừ (qua 10) | Gấu Trúc Tròn | vườn tre | lóng tre khắc bảng trừ bị xếp sai thứ tự |
+| toan2-cd2-b13 | Bài toán về nhiều hơn, ít hơn một số đơn vị | Hổ Vằn | luống cà rốt | Hổ và Thỏ so ai trồng được nhiều cà rốt hơn |
+| toan2-cd2-b14 | Luyện tập chung | Vẹt Xanh | nhà kính | Vẹt đố cả vườn trước khi mở cửa nhà kính |
+| toan2-cd3-b15 | Ki-lô-gam | Chim Cánh Cụt Pin | quầy cân hàng | chiếc cân đĩa lệch, Pin nhờ cân lại từng túi |
+| toan2-cd3-b16 | Lít | Cá Bống | bể nước căng tin | bể cá cần đổ đủ lít nước |
+| toan2-cd3-b17 | Thực hành và trải nghiệm với các đơn vị ki-lô-gam, lít | Heo Ủn | bếp lớn | nấu nồi chè cho cả trường theo công thức kg, lít |
+| toan2-cd3-b18 | Luyện tập chung | Gấu Tuyết Bông | kho lạnh | Bông gửi hàng về phương xa, cần ghi đúng cân nặng |
+| toan2-cd4-b19 | Phép cộng (có nhớ) số có hai chữ số với số có một chữ số | Lợn Rừng Đốm | bàn lắp ráp | Đốm đếm linh kiện theo chục và rời |
+| toan2-cd4-b20 | Phép cộng (có nhớ) số có hai chữ số với số có hai chữ số | Khỉ Lanh | đường ray tàu đồ chơi | ghép toa tàu, mỗi toa chở một số hàng |
+| toan2-cd4-b21 | Luyện tập chung | Cáo Lém | quầy trao giải | Cáo làm hộp quà bí mật, mở bằng phép tính |
+| toan2-cd4-b22 | Phép trừ (có nhớ) số có hai chữ số cho số có một chữ số | Koala Na | kệ gấu bông | Na tặng bớt gấu bông cho em nhỏ |
+| toan2-cd4-b23 | Phép trừ (có nhớ) số có hai chữ số cho số có hai chữ số | Hổ Vằn | sân thử máy bay giấy | máy bay bay xa bao nhiêu, về gần bao nhiêu |
+| toan2-cd4-b24 | Luyện tập chung | Mèo Mun | tủ kính trưng bày | xếp đồ chơi hoàn thành vào tủ theo số thứ tự |
+| toan2-cd5-b25 | Điểm, đoạn thẳng, đường thẳng, đường cong, ba điểm thẳng hàng | Hươu Cao | giá vẽ lớn | nối các chấm sao thành chòm sao |
+| toan2-cd5-b26 | Đường gấp khúc. Hình tứ giác | Ong Vàng | cửa sổ ghép kính | đi đường gấp khúc qua các ô kính màu |
+| toan2-cd5-b27 | Thực hành gấp, cắt, ghép, xếp hình. Vẽ đoạn thẳng | Gà Con Chíp | bàn thủ công | Chíp gấp thiệp chúc mừng cho cô giáo |
+| toan2-cd5-b28 | Luyện tập chung | Cua Kềnh | phòng trưng bày tranh | Cua treo ngược các bức tranh hình khối |
+| toan2-cd6-b29 | Ngày – giờ, giờ – phút | Koala Na | chân tháp đồng hồ | Na ngủ quên, đồng hồ tháp chạy sai giờ |
+| toan2-cd6-b30 | Ngày – tháng | Voi Bảo | phòng lịch trên tháp | tờ lịch tháng bị xé mất vài ngày |
+| toan2-cd6-b31 | Thực hành và trải nghiệm xem đồng hồ, xem lịch | Chó Mực | đỉnh tháp có chuông | lên lịch trực đánh chuông cho cả tuần |
+| toan2-cd6-b32 | Luyện tập chung | Sâu Xanh | ban công ngắm trời | Sâu Xanh đếm ngày chờ thành bướm |
+| toan2-cd7-b33 | Ôn tập phép cộng, phép trừ trong phạm vi 20, 100 | Sư Tử Vàng | sân khấu hội trường | tổng duyệt văn nghệ cuối kì, vé ghế là phép tính |
+| toan2-cd7-b34 | Ôn tập hình phẳng | Hươu Cao | phông nền sân khấu | dựng phông bằng các hình phẳng |
+| toan2-cd7-b35 | Ôn tập đo lường | Chim Cánh Cụt Pin | hậu trường | chuẩn bị nước và bánh cho buổi diễn |
+| toan2-cd7-b36 | Ôn tập chung | cả trường | lễ tổng kết | trao huy hiệu học kì, mỗi khu gửi một câu đố cuối |
