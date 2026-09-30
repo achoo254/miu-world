@@ -471,6 +471,16 @@ Mọi quyết định của đợt POC và Foundation đã chốt (2026-09-29).
 | 20 | Duyệt đợt Foundation (2026-09-29, Jev quyết theo ủy quyền của người sở hữu) | Miu chibi chọn biến thể A (đầu 1.0×, thân 0.85×, tay chân 0.8×, mặt bằng khối); bảng màu block pastel ấm, chỉnh một vòng làm dịu xanh cỏ và lá; giữ cơ chế co phụ kiện theo nhân vật; giữ luồng tài khoản; chơi trong app web sửa sương mù xa | Chọn A dưới ngưỡng tự quyết (người sở hữu có thể đảo); FPS iPad Gen 10 chưa đo, chuyển DEVICE-01 trước nghiệm thu MVP |
 | 19 | Đăng nhập phụ huynh | Google OAuth (Gmail), chỉ nhận email đã xác minh + mã tài khoản; PIN phụ huynh đặt ở lần đăng nhập đầu | Không lưu mật khẩu; văn bản đồng ý cập nhật (bản nháp draft-2, chờ pháp chế); ứng dụng Google cần xác minh trước khi mở người dùng thật |
 | 18 | Nối React và Three.js | Bridge tự viết (event → store → `useSyncExternalStore`), không dùng React Three Fiber | Runtime không phụ thuộc React; React không nhận dữ liệu theo khung hình |
+| 21 | Home Base (vertical slice, 2026-09-29, Jev) | Home là màn React trên ảnh đảo render sẵn từ map voxel (`pnpm assets:home`), không phải cảnh 3D dùng chung với World Map; "Bản đồ" là màn chọn khu vực | Lệch mục 4 và task #11 (một cảnh đảo 3D); GPU chỉ dành cho `/play`; dựng cảnh đảo 3D là việc sau MVP |
+| 22 | Slot trang phục MVP (2026-09-29, Jev) | Mũ + Balo, thêm món và biến thể màu (mỗi màu là một món có id, file `variantOf`); Áo, Giày, Cánh hiện ô khóa "Sắp có" | Lệch mục 5 (liệt kê Áo, Giày, Cánh); vẫn đạt tiêu chí 1 của mục 16; đồ mở theo level/quest do server kiểm |
+| 23 | Xem đáp án và sao (2026-09-29, Jev) | Xem lớp Đáp án làm XP quest giảm 10% (100 → 90), Xu/Skill XP/vật phẩm giữ nguyên; sao = 3 trừ xem đáp án và nhiều lần sai, tối thiểu 1; server tính và lưu | Vòng chính không xem đáp án mới lên Lv.2 (ngưỡng 100 XP); UI nói lời khích lệ, không có chữ "phạt" |
+| 24 | Dữ liệu chơi của trẻ (2026-09-29, Jev, stakes cao → phương án thu ít nhất) | Chỉ đếm số lần sai và số lần xem đáp án theo bước; không lưu nội dung trả lời, không nhật ký có dấu thời gian | Văn bản đồng ý draft-3 nêu các bộ đếm; test schema DB chặn cột nội dung trả lời |
+| 25 | Chuỗi ngày (2026-09-29, Jev) | Không có ở MVP, làm ở V1 | Không có UI chuỗi ngày ở Home/HUD |
+| 26 | Bước Decision (2026-09-29, Jev) | Chỉ kể chuyện: mọi lựa chọn dẫn tới cùng bước sau | Rẽ nhánh câu chuyện là việc sau MVP |
+| 27 | Mất mạng (2026-09-29, Jev) | Chặn và cho thử lại đúng thao tác đang chờ; không tính hay xếp hàng cục bộ | Không có chế độ chơi offline như mock "Tiếp tục chơi offline" |
+| 28 | Tính cách nhân vật (2026-09-29, Jev, stakes cao) | Chỉ là nhãn hiển thị "Nhà thám hiểm", không lưu cột nào | Không thêm trường dữ liệu trẻ |
+| 29 | Tên người chơi trong nội dung (2026-09-30, người sở hữu) | "Miu" chỉ là tên game; mọi chữ trong game gọi người chơi bằng tên nhân vật bé đặt (placeholder `{name}`) | `content:check` chặn chữ quest cứng "Miu"; nhân vật mới phải chọn tên |
+| 30 | Nội dung không lặp (2026-09-30, người sở hữu) | Không dùng lại nội dung/cảnh giữa các quest; mọi thứ lặp (phản hồi, lời NPC, lời mời thử lại) xoay vòng từ pool, không lặp ngay | Pool phản hồi đúng/sai trong nội dung, server trả câu luân phiên; `content:check` chặn câu dài lặp giữa các quest |
 
 ### Còn cần bạn chốt
 
