@@ -45,9 +45,11 @@ const byId = (id: string) => {
   return el;
 };
 const tap = (id: string) => fireEvent.click(byId(id));
+/** A tap on a draggable tile: press and release in place, then the tile's own click. */
 const tapTile = (id: string) => {
   fireEvent.pointerDown(byId(id), { pointerId: 1, clientX: 0, clientY: 0 });
   fireEvent.pointerUp(byId(id), { pointerId: 1, clientX: 0, clientY: 0 });
+  fireEvent.click(byId(id));
 };
 const check = () => fireEvent.click(screen.getByRole('button', { name: /Kiểm tra/ }));
 const body = (submit: ReturnType<typeof vi.fn>) => submit.mock.calls.at(-1)?.[1] as StepCompleteRequest | undefined;
@@ -76,10 +78,11 @@ describe('textbook mechanic screens send the answer the server grades', () => {
     expect(body(submit)).toEqual({ answer: { assignment: { sach: 'su-vat', doc: 'hoat-dong', but: 'su-vat' } } });
   });
 
-  it('classify works from the keyboard: Enter on a card, then on a group', () => {
+  it('classify cards and groups are buttons, so the keyboard works like a tap', () => {
     const submit = renderStep('sort-words');
     for (const [card, group] of [['sach', 'su-vat'], ['doc', 'hoat-dong'], ['but', 'su-vat']] as const) {
-      fireEvent.keyDown(byId(`card-${card}`), { key: 'Enter' });
+      expect(byId(`card-${card}`).tagName).toBe('BUTTON');
+      fireEvent.click(byId(`card-${card}`)); // Enter or Space on a focused button
       tap(`group-title-${group}`);
     }
     check();

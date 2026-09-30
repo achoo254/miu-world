@@ -1,6 +1,6 @@
 // Phân loại: drag each card into its group (words that name things / actions / qualities, pictures
-// to paragraphs), or tap a card then tap a group; tapping a placed card sends it back. Keyboard users
-// tab to a card, press Enter, then Enter on a group. The server checks the whole assignment.
+// to paragraphs), or tap a card then tap a group; tapping a placed card sends it back. Cards and group
+// titles are buttons, so Enter/Space work the same from the keyboard. The server checks the whole assignment.
 import { useCallback, useState } from 'react';
 import type { QuestStepPublic } from '@miu/schema/content';
 import type { StepAnswer } from '@miu/schema/game';
@@ -48,12 +48,6 @@ export function ClassifyChallenge({ step, context, onAnswer }: { step: ClassifyS
       aria-pressed={selected === item.id}
       data-id={`card-${item.id}`}
       {...dragProps(item.id)}
-      onKeyDown={(e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          onTap(item.id);
-        }
-      }}
     >
       {item.image ? <Illustration picture={item.image} /> : null}
       <span>{context.fill(item.label)}</span>
