@@ -54,32 +54,42 @@ const MERGE = 2;
 export async function createHorizonMesh(data: WorldData, sky: ColorRepresentation): Promise<HorizonMesh> {
   const source = data.horizon;
   const colours = topColours(data);
-  // Coarser cells: the highest of each MERGE x MERGE group, with that block on top.
+  // Coarser cells: the mean height and the mean top colour of each MERGE x MERGE group. Means, not the
+  // highest: a tree or a roof in one cell would stand the horizon up into a thin sheet over the field.
   const [sx, sz] = source.cells;
   const cell = source.cell * MERGE;
   const [cx, cz] = [Math.ceil(sx / MERGE), Math.ceil(sz / MERGE)];
-  const heights = new Uint8Array(cx * cz);
-  const tops = new Uint8Array(cx * cz);
+  const heights = new Float32Array(cx * cz);
+  const cellColours = Array.from({ length: cx * cz }, () => new Color(0, 0, 0));
+  const counts = new Uint8Array(cx * cz);
+  const grass = new Color('#7cae5a');
   for (let z = 0; z < sz; z++) {
     for (let x = 0; x < sx; x++) {
       const i = Math.floor(x / MERGE) + cx * Math.floor(z / MERGE);
-      const h = source.heights[x + sx * z] ?? 0;
-      if (h >= (heights[i] ?? 0)) {
-        heights[i] = h;
-        tops[i] = source.tops[x + sx * z] ?? 0;
-      }
+      heights[i] = (heights[i] ?? 0) + (source.heights[x + sx * z] ?? 0);
+      cellColours[i]?.add(colours.get(source.tops[x + sx * z] ?? 0) ?? grass);
+      counts[i] = (counts[i] ?? 0) + 1;
     }
   }
+  for (let i = 0; i < cx * cz; i++) {
+    const n = Math.max(1, counts[i] ?? 1);
+    heights[i] = (heights[i] ?? 0) / n;
+    cellColours[i]?.multiplyScalar(1 / n);
+  }
   const at = (x: number, z: number): number => Math.min(cx - 1, Math.max(0, x)) + cx * Math.min(cz - 1, Math.max(0, z));
-  // A vertex at each cell corner: the highest of the cells round it (just under the block tops), their mean colour.
+  // A vertex at each cell corner: the mean of the cells round it (just under the block tops).
   const positions = new Float32Array((cx + 1) * (cz + 1) * 3);
   const colourAttr = new Float32Array((cx + 1) * (cz + 1) * 3);
   for (let z = 0; z <= cz; z++) {
     for (let x = 0; x <= cx; x++) {
       const around = [at(x - 1, z - 1), at(x, z - 1), at(x - 1, z), at(x, z)];
-      const height = Math.max(...around.map((i) => heights[i] ?? 0));
+      let height = 0;
       const mean = new Color(0, 0, 0);
-      for (const i of around) mean.add(colours.get(tops[i] ?? 0) ?? new Color('#7cae5a'));
+      for (const i of around) {
+        height += heights[i] ?? 0;
+        mean.add(cellColours[i] ?? grass);
+      }
+      height /= around.length;
       mean.multiplyScalar(1 / around.length);
       const v = x + (cx + 1) * z;
       positions.set([x * cell, height - 0.6, z * cell], v * 3);
@@ -115,7 +125,7 @@ export async function createHorizonMesh(data: WorldData, sky: ColorRepresentatio
     shader.fragmentShader = shader.fragmentShader
       .replace('#include <common>', '#include <common>\nuniform vec3 uCam;\nuniform float uNear;\nuniform float uFar;\nuniform vec3 uSky;\nvarying vec3 vHorizonWorld;')
       .replace('#include <clipping_planes_fragment>', '#include <clipping_planes_fragment>\nfloat horizonD = distance(vHorizonWorld.xz, uCam.xz);\nif (horizonD < uNear) discard;')
-      .replace('#include <dithering_fragment>', '#include <dithering_fragment>\ngl_FragColor.rgb = mix(gl_FragColor.rgb, uSky, 0.55 + 0.4 * smoothstep(uNear, uFar, horizonD));');
+      .replace('#include <dithering_fragment>', '#include <dithering_fragment>\ngl_FragColor.rgb = mix(gl_FragColor.rgb, uSky, 0.2 + 0.7 * smoothstep(uNear, uFar, horizonD));');
   };
   const mesh = new Mesh(geometry, material);
   mesh.name = 'horizon';

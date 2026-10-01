@@ -418,8 +418,10 @@ export class Game {
         props.buildAround(reviewShot.target.x, reviewShot.target.z);
       }
       if (this.disposed) return;
-      // The sky dome stands beyond the furthest block the shot can see.
-      sky.scale.setScalar(Math.max(3, (Math.hypot(sx, sz) * 1.5) / (quality.viewDistance + 20)));
+      // The sky dome stands beyond the furthest block the shot can see, inside the camera's far plane (a dome
+      // past it is cut away and the clear colour shows through).
+      reviewShot.apply(camera);
+      sky.scale.setScalar((camera.far * 0.95) / (quality.viewDistance + 20));
       for (const el of [dom.stats, dom.joystick, dom.run.parentElement]) if (el) el.hidden = true;
       if (reviewShot.backdrop) {
         sky.visible = false;
