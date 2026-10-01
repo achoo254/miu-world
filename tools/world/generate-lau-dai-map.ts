@@ -222,6 +222,10 @@ export async function generateLauDai() {
       ...crowd('cow', ['Bò vàng'], [animal('cow')], landmark('canh-dong'), 30, 5),
       ...crowd('dog', ['Chó canh thành'], [animal('dog')], landmark('bai-co-truoc-cong'), 12, 3),
       ...crowd('chick', ['Gà con'], [animal('chick')], landmark('thi-tran'), 10, 6),
+      ...crowd('pig', ['Lợn nhà nông'], [animal('pig')], landmark('canh-dong'), 16, 4),
+      ...crowd('chick', ['Gà mái chân đồi'], [animal('chick')], landmark('ruong-lua'), 14, 6),
+      ...crowd('cat', ['Mèo chợ thành'], [animal('cat')], landmark('cho-trong-thanh'), 14, 5),
+      ...crowd('dog', ['Cún thị trấn'], [animal('dog')], landmark('thi-tran'), 16, 3),
     ],
     build: (base) => {
       // Every footprint the map builds, so houses, pines and stalls keep out of each other.

@@ -325,6 +325,9 @@ export async function generateChoPhien() {
       ...crowd('ploughman', ['Bác trồng rau'], [person('a'), person('e')], landmark('ruong-rau-ngoai-o'), 24, 4),
       ...crowd('dog', ['Cún chợ'], [animal('dog')], landmark('pho-cho'), 20, 4),
       ...crowd('cat', ['Mèo hàng cá'], [animal('cat')], landmark('vuon-hoa-giua-pho'), 12, 3),
+      ...crowd('chick', ['Gà ri'], [animal('chick')], landmark('cong-cho'), 10, 6),
+      ...crowd('dog', ['Chó giữ kho'], [animal('dog')], landmark('kho-gao'), 12, 3),
+      ...crowd('cat', ['Mèo nằm bếp'], [animal('cat')], landmark('bep-che'), 9, 3),
     ],
     build: (ctx) => {
       const kit = marketKit(ctx);

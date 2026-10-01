@@ -53,3 +53,11 @@ export async function expectTargetsReachable(world: VoxelWorld, entities: WorldE
   const stranded = entities.interactables.filter((t) => !reaches(Math.floor(t.position[0] ?? 0), Math.floor(t.position[2] ?? 0))).map((t) => t.id);
   expect(stranded, 'targets out of reach from the spawn').toEqual([]);
 }
+
+/** A lively map (owner, 01/10/2026): at least 8 people at their everyday work and 30 animals about. */
+export function expectLively(entities: WorldEntities): void {
+  const ambients = entities.ambients ?? [];
+  const animals = ambients.filter((a) => a.model.includes('/kenney-cube-pets/')).length;
+  expect(ambients.length - animals, 'people at work').toBeGreaterThanOrEqual(8);
+  expect(animals, 'animals').toBeGreaterThanOrEqual(30);
+}

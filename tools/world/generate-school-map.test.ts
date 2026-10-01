@@ -4,7 +4,7 @@ import { beforeAll, describe, expect, it } from 'vitest';
 import { worldEntitiesSchema } from '../../packages/voxel/src/world-entities';
 import { ASSETS_DIR } from '../assets/asset-lib';
 import { CAMPUS, MAIN_BUILDING, ZONES, generateSchool } from './generate-school-map';
-import { expectCommittedOutput, expectStandsOnGround, expectTargetsReachable, walkFromSpawn } from './map-checks';
+import { expectCommittedOutput, expectLively, expectStandsOnGround, expectTargetsReachable, walkFromSpawn } from './map-checks';
 
 // The hub is generated once for its checks (some 10 s for 800 x 800 blocks, the walk search a few more).
 describe('school hub map generator', () => {
@@ -29,6 +29,10 @@ describe('school hub map generator', () => {
       expect(t?.chapter === 1 || t?.chapters?.includes(1), target).toBe(true);
     }
     expectStandsOnGround(map.world, map.entities);
+  });
+
+  it('is lively: people at their everyday work and animals about', () => {
+    expectLively(map.entities);
   });
 
   it('has a gate into each of the seven theme maps', () => {

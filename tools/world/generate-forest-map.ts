@@ -12,6 +12,7 @@ import { placeBridge } from './structures/bridge';
 import { distanceToPath, pathColumns, type Point } from './structures/path';
 import { cellsIn } from './chapters/place-quest-targets';
 import { placeAncientTree } from './structures/tree';
+import { LIFE_CLIPS, LIFE_HEIGHTS, crowd, person, placeVillageLife } from './village-life';
 
 export const MAP_ID = 'forest-ch1';
 export const SEED_TEXT = 'miu-forest-ch1';
@@ -237,8 +238,8 @@ export async function generateForest(): Promise<{ world: VoxelWorld; entities: W
   // 8. Entities.
   const standY = standHeight(world, surface);
   const { props, scaleOf, place, addProp, addPropAt, modelled, animated } = await mapModels({
-    heights: { ...MODEL_HEIGHT, ...LIFE_MODEL_HEIGHT },
-    clips: { ...MODEL_ANIMATION, ...LIFE_MODEL_ANIMATION },
+    heights: { ...MODEL_HEIGHT, ...LIFE_HEIGHTS, ...LIFE_MODEL_HEIGHT },
+    clips: { ...MODEL_ANIMATION, ...LIFE_CLIPS, ...LIFE_MODEL_ANIMATION },
     standY,
   });
   addProp(`${PACK.survival}/signpost.glb`, spawn.x + 3, spawn.z + 3, 225);
@@ -334,6 +335,42 @@ export async function generateForest(): Promise<{ world: VoxelWorld; entities: W
     addProp: (model, x, z, yaw) => addProp(model, x, z, yaw),
     scaleOf,
   });
+
+  // Forest folk at the glades of chapters 2–5, each glade its own: a ranger, mushroom pickers, campers and
+  // a bird watcher (placed like the villagers of the wide maps, village-life.ts).
+  const basket = `${PACK.props}/basket.glb`;
+  const book = `${PACK.props}/open-book.glb`;
+  const axe = `${PACK.survival}/tool-axe.glb`;
+  const FOLK: ReadonlyArray<{ ranger: string; pickers: readonly string[]; campers: string; watcher: string }> = [
+    { ranger: 'Chú kiểm lâm', pickers: ['Cô hái nấm', 'Bà hái rau rừng'], campers: 'Bạn cắm trại', watcher: 'Bác ngắm chim' },
+    { ranger: 'Cô kiểm lâm', pickers: ['Chị nhặt hạt dẻ', 'Bác hái quả sim'], campers: 'Bạn dựng lều', watcher: 'Ông vẽ cây' },
+    { ranger: 'Bác giữ rừng', pickers: ['Cô nhặt lá khô', 'Bà hái chè rừng'], campers: 'Bạn đi dã ngoại', watcher: 'Cô chụp ảnh chim' },
+    { ranger: 'Anh kiểm lâm trẻ', pickers: ['Chú lấy mật ong', 'Chị hái hoa dại'], campers: 'Bạn chơi trốn tìm', watcher: 'Bác đọc sách dưới cây' },
+  ];
+  ambients.push(
+    ...placeVillageLife(
+      {
+        world,
+        surface,
+        standY,
+        onPath: (x, z) => pathCells.has(`${x},${z}`),
+        inWater: (x, z) => surface(x, z) <= WATER_LEVEL || Math.abs(z - riverCenter(x)) < riverHalfWidth(x) + 1,
+        questSpots: interactables.map((t) => [t.position[0] ?? 0, t.position[2] ?? 0] as const),
+        scaleOf,
+      },
+      DISTRICTS.flatMap((d, i) => {
+        const folk = FOLK[i % FOLK.length] ?? FOLK[0];
+        if (!folk) return [];
+        return [
+          ...crowd('sentry', [folk.ranger], [person('d')], [d.x, d.z - 18], 6, 1, [axe]),
+          ...crowd('waterer', folk.pickers, [person('e'), person('i')], [d.x - 20, d.z], 8, 2, [basket]),
+          ...crowd('pupil', [folk.campers], [person('f'), person('o'), person('q')], [d.x + 18, d.z + 6], 6, 3),
+          ...crowd('reader', [folk.watcher], [person('a')], [d.x, d.z + 22], 4, 1, [book]),
+        ];
+      }),
+      seed + 23,
+    ),
+  );
 
   // Chapters 2–5 (the Tiếng Việt quests): every target they name, placed from the catalogues, on firm
   // open ground off the path and the stream, clear of trees, props, chapter 1 and the villagers' places.

@@ -253,6 +253,7 @@ export async function generateSchool() {
       ...crowd('trumpeter', ['Chú thổi kèn'], [person('c')], [DISTRICT.castle.x + 14, DISTRICT.castle.z - 14], 3, 1, [HELD.flute]),
       ...crowd('dog', ['Cún nhà bên', 'Chó Vàng'], [animal('dog')], [DISTRICT.village.x, DISTRICT.village.z], 30, 5),
       ...crowd('cat', ['Mèo mướp'], [animal('cat')], [DISTRICT.hamlet.x, DISTRICT.hamlet.z], 30, 4),
+      ...crowd('chick', ['Gà nhà bác bảo vệ'], [animal('chick')], [DISTRICT.village.x + 20, DISTRICT.village.z - 20], 7, 6),
     ],
     build: (ctx) => {
       const { world, block, rng, ground } = ctx;

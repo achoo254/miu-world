@@ -6,7 +6,7 @@ import { generateLauDai } from './generate-lau-dai-map';
 import { generateNongTrai } from './generate-nong-trai-map';
 import { generateThuVien } from './generate-thu-vien-map';
 import { generateXomMaiAm } from './generate-xom-mai-am-map';
-import { expectCommittedOutput, expectStandsOnGround, expectTargetsReachable } from './map-checks';
+import { expectCommittedOutput, expectLively, expectStandsOnGround, expectTargetsReachable } from './map-checks';
 
 /** The maps built zone by zone (zone-map.ts), each with its generator and its side in blocks. */
 const MAPS = [
@@ -35,6 +35,10 @@ describe.each(MAPS)('%s map', (id, generate, side) => {
     expect(parsed.size).toEqual([side, 48, side]);
     expect(parsed.interactables.length).toBeGreaterThan(20);
     expectStandsOnGround(map.world, map.entities);
+  });
+
+  it('is lively: people at their everyday work and animals about', () => {
+    expectLively(map.entities);
   });
 
   it('can be walked from the spawn to every quest target', async () => {

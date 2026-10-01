@@ -198,6 +198,13 @@ export async function generateThuVien() {
       ...crowd('sweeper', ['Cô quét lá vàng'], [person('e'), person('h')], landmark('cay-la-vang'), 12, 2, [LIFE_HELD.basket]),
       ...crowd('dog', ['Cún phố sách'], [animal('dog')], landmark('thu-vien'), 30, 3),
       ...crowd('cat', ['Mèo thư viện'], [animal('cat')], landmark('goc-doc-co-goi'), 14, 3),
+      ...crowd('chick', ['Gà nhà bác làm vườn'], [animal('chick')], landmark('vuon-doc-sach'), 12, 8),
+      ...crowd('chick', ['Gà mái mẹ'], [animal('chick')], landmark('tang-da-phang'), 10, 5),
+      ...crowd('cat', ['Mèo nằm nắng'], [animal('cat')], landmark('bai-cat-nho'), 8, 4),
+      ...crowd('cat', ['Mèo phố hội'], [animal('cat')], landmark('cay-la-vang'), 10, 3),
+      ...crowd('dog', ['Cún đi hội'], [animal('dog')], landmark('duong-la-vang'), 16, 4),
+      ...crowd('dog', ['Chó giữ tháp'], [animal('dog')], landmark('goc-kinh-vien-vong'), 14, 3),
+      ...crowd('cow', ['Bò gặm cỏ bờ suối'], [animal('cow')], landmark('suoi-nho'), 18, 3),
     ],
     build: (ctx) => buildTown(ctx),
   });

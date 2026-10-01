@@ -377,6 +377,7 @@ export async function generateXomMaiAm() {
       ...crowd('dog', ['Cún nhà Mẩy', 'Chó Vàng', 'Cún Mực'], [animal('dog')], landmark('goc-sung'), 16, 5),
       ...crowd('cat', ['Mèo mướp', 'Mèo tam thể'], [animal('cat')], landmark('hien-nha-hang-xom'), 14, 5),
       ...crowd('pig', ['Lợn con'], [animal('pig')], landmark('nha-ba'), 12, 4),
+      ...crowd('chick', ['Gà nhà bà'], [animal('chick')], landmark('nha-ba'), 8, 6),
       ...crowd('cow', ['Bò vàng'], [animal('cow')], landmark('canh-dong-gio'), 24, 5),
     ],
     build: (ctx) => {

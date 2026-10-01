@@ -40,7 +40,8 @@ describe('forest generator', () => {
     const ambients = worldEntitiesSchema.parse(entities).ambients ?? [];
     const routines = new Set(ambients.map((a) => a.routine));
     for (const r of ['woodcutter', 'fisher', 'gardener', 'cook', 'firewood-carrier', 'parrot', 'bee', 'deer', 'fish'] as const) expect(routines).toContain(r);
-    expect(ambients.filter((a) => ROUTINES[a.routine].kind === 'person')).toHaveLength(5);
+    // The five of the camp and the stream, and the forest folk of each glade (a ranger, pickers, campers, a watcher).
+    expect(ambients.filter((a) => ROUTINES[a.routine].kind === 'person').length).toBeGreaterThanOrEqual(5 + 4 * 4);
     const quest = entities.interactables.map((t) => [t.position[0] ?? 0, t.position[2] ?? 0] as const);
     for (const a of ambients) {
       expect(Object.keys(a.spots).sort(), a.id).toEqual(expect.arrayContaining(spotsUsed(ROUTINES[a.routine])));
