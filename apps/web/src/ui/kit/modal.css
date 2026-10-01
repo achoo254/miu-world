@@ -9,6 +9,7 @@
   background: var(--color-backdrop);
 }
 .modal {
+  position: relative; /* anchors a corner close button (.scene-close) */
   width: min(100%, 26rem);
   max-height: 100%;
   overflow-y: auto;

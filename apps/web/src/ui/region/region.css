@@ -118,6 +118,9 @@
 /* The blue round "›" of the mock: the whole quest opens from it (48px touch target). */
 .board-row-go {
   flex-shrink: 0;
+  border: none; /* also a button on the in-game board */
+  padding: 0;
+  cursor: pointer;
   display: grid;
   place-items: center;
   width: 3rem;

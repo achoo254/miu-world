@@ -36,6 +36,21 @@ test('Home shows the child and the island, the forest lists its chapters, and ch
   for (const id of ['hud-quests', 'hud-map', 'hud-backpack', 'hud-menu']) await expect(page.locator(`[data-id="${id}"]`)).toBeVisible();
   await expect(page.locator('[data-id="hud-interact"]')).toHaveCount(0);
   await expect(page.locator('#stats')).toBeHidden(); // the developer overlay stays off for children
+  // The backpack closes with its corner ✕ and its Đóng button, not only with Esc.
+  await page.locator('[data-id="hud-backpack"]').click();
+  await page.locator('[data-id="play-backpack-close"]').click();
+  await expect(page.locator('[data-id="play-backpack"]')).toHaveCount(0);
+  await page.locator('[data-id="hud-backpack"]').click();
+  await page.locator('[data-id="play-backpack-done"]').click();
+  await expect(page.locator('[data-id="play-backpack"]')).toHaveCount(0);
+  // Nhiệm vụ opens this map's board over the game: every quest is open, and picking one switches to it here.
+  await page.locator('[data-id="hud-quests"]').click();
+  await expect(page.locator('[data-id="region-quest-current-forest-ch1"]')).toBeVisible();
+  await page.locator('[data-id="region-play-tv2-t01-b01"]').click();
+  await expect(page.locator('[data-id="play-quests"]')).toHaveCount(0);
+  await expect(page).toHaveURL(/\/play\?region=khu-rung-bi-mat&quest=tv2-t01-b01$/);
+  await waitReady(page);
+  await expect(page.locator('[data-id="hud-tracker-textbook"]')).toBeVisible();
 
   // The Interact button appears by a target and triggers it, like E and a tap on the label.
   await page.goto('/play?quality=low&spawnAt=clue-box');

@@ -104,7 +104,7 @@ describe('Home', () => {
     renderAt('/home');
     fireEvent.click(await screen.findByRole('button', { name: /Cài đặt/ }));
     expect(screen.getByRole('dialog', { name: 'Cài đặt' })).toBeTruthy();
-    fireEvent.click(screen.getByRole('link', { name: /Sửa nhân vật/ }));
+    fireEvent.click(screen.getByRole('link', { name: /Đổi nhân vật/ }));
     expect(await screen.findByText('Tạo nhân vật')).toBeTruthy();
   });
 });
@@ -185,7 +185,7 @@ describe('HUD', () => {
     render(
       <MemoryRouter>
         <GameStoreContext.Provider value={store}>
-          <Hud data={data} quest={data.quests[0] ?? null} onMenu={() => undefined} onBackpack={() => undefined} />
+          <Hud data={data} quest={data.quests[0] ?? null} onMenu={() => undefined} onQuests={() => undefined} onBackpack={() => undefined} />
         </GameStoreContext.Provider>
       </MemoryRouter>,
     );
@@ -202,7 +202,7 @@ describe('HUD', () => {
     render(
       <MemoryRouter>
         <GameStoreContext.Provider value={createGameStore()}>
-          <Hud data={data} quest={lesson} onMenu={() => undefined} onBackpack={() => undefined} />
+          <Hud data={data} quest={lesson} onMenu={() => undefined} onQuests={() => undefined} onBackpack={() => undefined} />
         </GameStoreContext.Provider>
       </MemoryRouter>,
     );
@@ -217,7 +217,7 @@ describe('HUD', () => {
     render(
       <MemoryRouter>
         <GameStoreContext.Provider value={createGameStore()}>
-          <Hud data={{ ...data, quests: [quest, ...rest] }} quest={quest} onMenu={() => undefined} onBackpack={() => undefined} />
+          <Hud data={{ ...data, quests: [quest, ...rest] }} quest={quest} onMenu={() => undefined} onQuests={() => undefined} onBackpack={() => undefined} />
         </GameStoreContext.Provider>
       </MemoryRouter>,
     );
@@ -233,7 +233,7 @@ describe('HUD', () => {
       <MemoryRouter>
         <GameStoreContext.Provider value={store}>
           <Profiler id="hud" onRender={() => (trackerRenders += 1)}>
-            <Hud data={data} quest={data.quests[0] ?? null} onMenu={() => undefined} onBackpack={() => undefined} />
+            <Hud data={data} quest={data.quests[0] ?? null} onMenu={() => undefined} onQuests={() => undefined} onBackpack={() => undefined} />
           </Profiler>
         </GameStoreContext.Provider>
       </MemoryRouter>,

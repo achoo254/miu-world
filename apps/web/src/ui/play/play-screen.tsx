@@ -11,11 +11,13 @@ import { Game } from '../../game/game';
 import { ApiError, errorMessage } from '../api-client';
 import { useAccount } from '../account/account-context';
 import { Hud } from '../hud/hud';
-import type { StepCompleteResponse } from '@miu/schema/game';
+import type { QuestSummary, StepCompleteResponse } from '@miu/schema/game';
 import { currentQuest, loadPlayer, say, type PlayerData } from '../player/player-data';
 import { QuestLayer } from '../quest/quest-layer';
 import { BackpackPanel } from '../backpack/backpack-panel';
+import { buttonClass } from '../kit/button';
 import { Modal } from '../kit/modal';
+import { QuestBoard } from '../region/region-detail';
 import { findRegion } from '../region/regions';
 import { LoadingOverlay } from '../system/loading-overlay';
 import { OfflineBanner } from '../system/offline-banner';
@@ -89,6 +91,7 @@ function GameView({
   quest,
   savedSpot,
   paused,
+  onSpotReader,
 }: {
   store: GameStore;
   playerName: string;
@@ -103,6 +106,8 @@ function GameView({
   /** Where the child last stood on this region's map, if anywhere. */
   savedSpot: PlayerPosition | null;
   paused: boolean;
+  /** Hands over a reader of where the child stands in the running game (null once it is gone), so a quest switch on the same map keeps the spot. */
+  onSpotReader: (read: (() => PlayerPosition | null) | null) => void;
 }) {
   const host = useRef<HTMLDivElement>(null);
   const game = useRef<Game | null>(null);
@@ -111,6 +116,7 @@ function GameView({
     if (!host.current) return;
     const instance = new Game(host.current, { store, search: window.location.search, playerName, species, pet, outfit: outfitKey ? outfitKey.split(',') : [], chapter, region, quest, savedSpot });
     game.current = instance;
+    onSpotReader(() => instance.currentSpot());
     void instance.start();
     const save = createPositionSaver(savedSpot);
     const timer = window.setInterval(() => save(instance.currentSpot()), SAVE_SPOT_MS);
@@ -129,8 +135,9 @@ function GameView({
       save(instance.currentSpot(), { keepalive: true }); // leaving /play: read before dispose clears it
       instance.dispose();
       if (game.current === instance) game.current = null;
+      onSpotReader(null);
     };
-  }, [store, playerName, species, pet, outfitKey, chapter, region, quest, savedSpot]);
+  }, [store, playerName, species, pet, outfitKey, chapter, region, quest, savedSpot, onSpotReader]);
   // Full-screen screens stop rendering (Master Plan §12); React only calls stop/resume.
   useEffect(() => {
     if (paused) game.current?.stop();
@@ -161,6 +168,11 @@ export function PlayScreen() {
   const [paused, setPaused] = useState(false);
   const [questOpen, setQuestOpen] = useState(false);
   const [backpackOpen, setBackpackOpen] = useState(false);
+  const [questsOpen, setQuestsOpen] = useState(false);
+  const spotOf = useRef<(() => PlayerPosition | null) | null>(null);
+  const onSpotReader = useCallback((read: (() => PlayerPosition | null) | null): void => {
+    spotOf.current = read;
+  }, []);
   const status = useSyncStatus(store);
 
   const onLoadError = useCallback(
@@ -223,7 +235,25 @@ export function PlayScreen() {
   const region = quest?.quest.region ?? 'khu-rung-bi-mat';
   // An element of `positions` (set once), so the same object on every render: the game is not rebuilt.
   const savedSpot = positions?.find((p) => p.map === mapForRegion(region)) ?? null;
-  const covered = paused || questOpen || backpackOpen;
+  const covered = paused || questOpen || backpackOpen || questsOpen;
+
+  /**
+   * Every quest of the map can be taken from the in-game board: the game is rebuilt with that quest's
+   * characters where the child stands now. The URL follows (a reload resumes the same quest) without a
+   * router navigation, which would reload the player data.
+   */
+  function switchQuest(next: QuestSummary): void {
+    setQuestsOpen(false);
+    if (next.quest.id === questId) return;
+    const spot = spotOf.current?.() ?? null;
+    if (spot) setPositions((list) => [...(list ?? []).filter((p) => p.map !== spot.map), spot]);
+    setQuestId(next.quest.id);
+    const url = new URL(window.location.href);
+    url.searchParams.set('region', next.quest.region);
+    url.searchParams.set('quest', next.quest.id);
+    window.history.replaceState(window.history.state, '', url);
+  }
+  const boardRegion = findRegion(region);
   const regionTitle = findRegion(quest?.quest.region ?? '')?.name ?? 'Khu rừng bí mật';
   const regionName = data ? say(regionTitle, data.character) : regionTitle;
 
@@ -231,7 +261,7 @@ export function PlayScreen() {
     <GameStoreContext.Provider value={store}>
       <main data-id="play">
         {data && positions ? (
-          <GameView store={store} playerName={data.character.name} species={data.character.species} pet={data.character.pet} outfit={data.character.equipped} chapter={quest?.quest.chapter ?? 1} region={region} quest={quest?.quest.id} savedSpot={savedSpot} paused={covered} />
+          <GameView store={store} playerName={data.character.name} species={data.character.species} pet={data.character.pet} outfit={data.character.equipped} chapter={quest?.quest.chapter ?? 1} region={region} quest={quest?.quest.id} savedSpot={savedSpot} paused={covered} onSpotReader={onSpotReader} />
         ) : null}
         {loadError ? (
           <div className="play-message" role="alert">
@@ -245,13 +275,27 @@ export function PlayScreen() {
         {/* The in-world label and Interact would show through a screen's backdrop: only while playing. */}
         {covered ? null : <InteractionLabel />}
         <GameStatus />
-        {data && status !== 'error' ? <Hud data={data} quest={quest} covered={covered} onMenu={() => setPaused(true)} onBackpack={() => setBackpackOpen(true)} /> : null}
+        {data && status !== 'error' ? <Hud data={data} quest={quest} covered={covered} onMenu={() => setPaused(true)} onQuests={() => setQuestsOpen(true)} onBackpack={() => setBackpackOpen(true)} /> : null}
         {data && backpackOpen ? (
           <Modal title="Ba lô" onClose={() => setBackpackOpen(false)} dataId="play-backpack" size="wide">
             <BackpackPanel data={data} />
+            <button type="button" className={buttonClass('primary', { block: true })} data-id="play-backpack-done" onClick={() => setBackpackOpen(false)}>
+              Đóng
+            </button>
+            <button type="button" className="scene-close" data-id="play-backpack-close" aria-label="Đóng ba lô" onClick={() => setBackpackOpen(false)}>
+              ✕
+            </button>
           </Modal>
         ) : null}
-        {data ? <QuestLayer store={store} data={data} questId={quest?.quest.id ?? null} onResponse={onResponse} onOverlayChange={setQuestOpen} /> : null}
+        {data && boardRegion && questsOpen ? (
+          <Modal title="Nhiệm vụ" onClose={() => setQuestsOpen(false)} dataId="play-quests" size="wide">
+            <QuestBoard region={boardRegion} quests={data.quests} data={data} pick={{ current: questId, onPick: switchQuest }} />
+            <button type="button" className="scene-close" data-id="play-quests-close" aria-label="Đóng bảng nhiệm vụ" onClick={() => setQuestsOpen(false)}>
+              ✕
+            </button>
+          </Modal>
+        ) : null}
+        {data ? <QuestLayer key={questId ?? 'none'} store={store} data={data} questId={quest?.quest.id ?? null} onResponse={onResponse} onOverlayChange={setQuestOpen} /> : null}
         {paused ? (
           <PauseScreen
             onResume={() => setPaused(false)}

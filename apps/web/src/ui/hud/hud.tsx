@@ -76,6 +76,7 @@ export function Hud({
   quest,
   covered = false,
   onMenu,
+  onQuests,
   onBackpack,
 }: {
   data: PlayerData;
@@ -83,6 +84,8 @@ export function Hud({
   /** A screen covers the paused game: Interact would only show through its backdrop. */
   covered?: boolean;
   onMenu: () => void;
+  /** Opens this map's quest board over the game: every quest can be taken from there. */
+  onQuests: () => void;
   onBackpack: () => void;
 }) {
   return (
@@ -92,10 +95,10 @@ export function Hud({
         <QuestTracker quest={quest} data={data} />
       </div>
       <nav className="hud-top-right" aria-label="Menu trò chơi">
-        <Link to={quest ? `/region/${quest.quest.region}` : '/map'} className={buttonClass('secondary', { small: true })} data-id="hud-quests">
+        <button type="button" className={buttonClass('secondary', { small: true })} data-id="hud-quests" onClick={onQuests}>
           <Icon name="scroll" size={28} />
           <span className="hud-btn-label">Nhiệm vụ</span>
-        </Link>
+        </button>
         <Link to="/map" className={buttonClass('secondary', { small: true })} data-id="hud-map">
           <Icon name="map" size={28} />
           <span className="hud-btn-label">Bản đồ</span>

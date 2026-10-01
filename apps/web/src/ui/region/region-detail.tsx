@@ -2,7 +2,8 @@
 // quest list only, so a new region needs a `regions.json` entry, not new components:
 // - RegionBackdrop: the region's own map behind everything (`pnpm assets:regions`), or the sky.
 // - RegionIntro: the wooden sign (name, subject), the speech bubble, progress with the chest, the button.
-// - QuestBoard: the parchment board listing every chapter and every quest (contract D6), with stars.
+// - QuestBoard: the parchment board listing every chapter and every quest (contract D6), with stars. The
+//   game shows the same board over the paused map, where picking a quest switches to it in place.
 import type { CSSProperties, ReactNode } from 'react';
 import { Link } from 'react-router';
 import type { QuestSummary } from '@miu/schema/game';
@@ -16,6 +17,7 @@ import { assetUrl, REGION_BACKDROPS, REGION_CHEST } from '../kit/ui-art';
 import { chapters, playPath, say, stepProgress, type PlayerData } from '../player/player-data';
 import { TextbookRef, textbookOf } from '../player/textbook-ref';
 import { isPlayable, recommendedQuest, regionProgress } from './region-board';
+import './region.css';
 
 /** The region's map as the backdrop (no image yet: the sky scene, so a new region still works). */
 export function RegionBackdrop({ regionId, children }: { regionId: string; children: ReactNode }) {
@@ -72,12 +74,24 @@ export function RegionIntro({ region, quests, data }: { region: Region; quests: 
   );
 }
 
-function BoardRow({ summary, region, data }: { summary: QuestSummary; region: Region; data: PlayerData }) {
+/** In the game: picking a row switches to that quest on the spot, and the quest being played is marked. */
+export interface BoardPick {
+  current: string | null;
+  onPick: (summary: QuestSummary) => void;
+}
+
+function BoardRow({ summary, region, data, pick }: { summary: QuestSummary; region: Region; data: PlayerData; pick?: BoardPick }) {
   const { done, total } = stepProgress(summary);
   const title = boardTitle(say(summary.quest.title, data.character), say(region.name, data.character));
   const stub = summary.quest.status === 'stub';
   const playable = isPlayable(summary);
   const textbook = textbookOf(summary);
+  const current = pick?.current === summary.quest.id;
+  const goArrow = (
+    <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
+      <path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
   return (
     <li className={`board-row${playable ? '' : ' board-row--locked'}`} data-id={`region-quest-${summary.quest.id}`} data-state={summary.state}>
       <div className="board-row-text">
@@ -90,6 +104,7 @@ function BoardRow({ summary, region, data }: { summary: QuestSummary; region: Re
         ) : (
           <span className="board-row-status">
             <StarRating stars={summary.progress.stars ?? 0} size={24} dataId={`region-quest-stars-${summary.quest.id}`} />
+            {current ? <span className="badge" data-id={`region-quest-current-${summary.quest.id}`}>Đang chơi</span> : null}
             {summary.state === 'completed' ? null : (
               <span className="board-row-progress" data-id={`region-quest-progress-${summary.quest.id}`}>
                 {STATE_TEXT[summary.state]} · Hoàn thành {done}/{total}
@@ -98,11 +113,13 @@ function BoardRow({ summary, region, data }: { summary: QuestSummary; region: Re
           </span>
         )}
       </div>
-      {playable ? (
+      {playable && pick ? (
+        <button type="button" className="board-row-go" aria-label={`${summary.state === 'completed' ? 'Chơi lại' : 'Khám phá'} ${title}`} data-id={`region-play-${summary.quest.id}`} onClick={() => pick.onPick(summary)}>
+          {goArrow}
+        </button>
+      ) : playable ? (
         <Link to={playPath(summary)} className="board-row-go" aria-label={`Khám phá ${title}`} data-id={`region-play-${summary.quest.id}`}>
-          <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
-            <path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
+          {goArrow}
         </Link>
       ) : (
         <Icon name="locked" size={32} label="Khóa" />
@@ -116,7 +133,7 @@ function chapterNamedByQuest(list: readonly QuestSummary[], chapter: number, reg
   return list.length === 1 && only !== undefined && boardTitle(say(only.quest.title, data.character), say(region.name, data.character)).startsWith(`Chương ${chapter}`);
 }
 
-export function QuestBoard({ region, quests, data }: { region: Region; quests: readonly QuestSummary[]; data: PlayerData }) {
+export function QuestBoard({ region, quests, data, pick }: { region: Region; quests: readonly QuestSummary[]; data: PlayerData; pick?: BoardPick }) {
   return (
     <section className="parchment quest-board" aria-labelledby="quest-board-title" data-id="region-board">
       <h2 id="quest-board-title" className="quest-board-title">
@@ -128,7 +145,7 @@ export function QuestBoard({ region, quests, data }: { region: Region; quests: r
           <h3 className={chapterNamedByQuest(list, chapter, region, data) ? 'visually-hidden' : 'board-chapter-title'}>Chương {chapter}</h3>
           <ul className="board-list">
             {list.map((q) => (
-              <BoardRow key={q.quest.id} summary={q} region={region} data={data} />
+              <BoardRow key={q.quest.id} summary={q} region={region} data={data} pick={pick} />
             ))}
           </ul>
         </section>
