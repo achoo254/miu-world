@@ -1037,6 +1037,72 @@
           "sha256": "0e29c28c9a442387fe5e98ca62a66dfe2bfb7b1c873ee9d081b42f0565af8858"
         }
       ]
+    },
+    {
+      "id": "kenney-furniture-kit",
+      "name": "Furniture Kit",
+      "author": "Kenney",
+      "version": "2.0",
+      "license": "CC0-1.0",
+      "homepage": "https://kenney.nl/assets/furniture-kit",
+      "licenseFile": "License.txt",
+      "mode": "zip",
+      "url": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "e67652d0932cee41683f74711c03d3e192a2af9979ef8e6b237711f5482d46b0",
+      "keep": [
+        {
+          "glob": "License.txt",
+          "strip": ""
+        },
+        {
+          "glob": "Models/GLTF format/*.glb",
+          "strip": "Models/GLTF format/"
+        }
+      ]
+    },
+    {
+      "id": "kenney-city-kit-roads",
+      "name": "City Kit (Roads)",
+      "author": "Kenney",
+      "version": "2.1",
+      "license": "CC0-1.0",
+      "homepage": "https://kenney.nl/assets/city-kit-roads",
+      "licenseFile": "License.txt",
+      "mode": "zip",
+      "url": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "22058af3d68173a7cf9bda9f0e243a8cef6bd68168c302ebc76327063849674e",
+      "keep": [
+        {
+          "glob": "License.txt",
+          "strip": ""
+        },
+        {
+          "glob": "Models/GLB format/**/*.{glb,png}",
+          "strip": "Models/GLB format/"
+        }
+      ]
+    },
+    {
+      "id": "kenney-city-kit-suburban",
+      "name": "City Kit (Suburban)",
+      "author": "Kenney",
+      "version": "2.0",
+      "license": "CC0-1.0",
+      "homepage": "https://kenney.nl/assets/city-kit-suburban",
+      "licenseFile": "License.txt",
+      "mode": "zip",
+      "url": "https://kenney.nl/media/pages/assets/city-kit-suburban/2c871b7af2-1745479373/kenney_city-kit-suburban_20.zip",
+      "sha256": "5869c35cf30b1c87bdb2d197b6d325eebadd2ef08ea27f04797e8e08d77a9a39",
+      "keep": [
+        {
+          "glob": "License.txt",
+          "strip": ""
+        },
+        {
+          "glob": "Models/GLB format/**/*.{glb,png}",
+          "strip": "Models/GLB format/"
+        }
+      ]
     }
   ]
 }

@@ -22,3 +22,17 @@ export async function modelScales(heights: Readonly<Record<string, number>>, cli
   }
   return scales;
 }
+
+/** Horizontal centre of each model (its bounds' middle on x and z), for placing pivot-at-corner models by their middle. */
+export async function modelCentres(models: readonly string[]): Promise<Map<string, [number, number]>> {
+  const io = new NodeIO().registerExtensions(ALL_EXTENSIONS);
+  const centres = new Map<string, [number, number]>();
+  for (const model of models) {
+    const doc = await io.read(path.join(ASSETS_DIR, model));
+    const scene = doc.getRoot().getDefaultScene() ?? doc.getRoot().listScenes()[0];
+    if (!scene) throw new Error(`${model} has no scene`);
+    const b = getBounds(scene);
+    centres.set(model, [(b.min[0] + b.max[0]) / 2, (b.min[2] + b.max[2]) / 2]);
+  }
+  return centres;
+}

@@ -108,6 +108,33 @@
       "license": "OFL-1.1",
       "homepage": "https://fontsource.org/fonts/nunito",
       "sourceUrl": "https://fontsource.org/fonts/nunito"
+    },
+    {
+      "id": "kenney-furniture-kit",
+      "name": "Furniture Kit",
+      "author": "Kenney",
+      "version": "2.0",
+      "license": "CC0-1.0",
+      "homepage": "https://kenney.nl/assets/furniture-kit",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip"
+    },
+    {
+      "id": "kenney-city-kit-roads",
+      "name": "City Kit (Roads)",
+      "author": "Kenney",
+      "version": "2.1",
+      "license": "CC0-1.0",
+      "homepage": "https://kenney.nl/assets/city-kit-roads",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip"
+    },
+    {
+      "id": "kenney-city-kit-suburban",
+      "name": "City Kit (Suburban)",
+      "author": "Kenney",
+      "version": "2.0",
+      "license": "CC0-1.0",
+      "homepage": "https://kenney.nl/assets/city-kit-suburban",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-suburban/2c871b7af2-1745479373/kenney_city-kit-suburban_20.zip"
     }
   ],
   "files": [
@@ -9142,6 +9169,2246 @@
       "sourceUrl": "https://fontsource.org/fonts/nunito",
       "sha256": "0e29c28c9a442387fe5e98ca62a66dfe2bfb7b1c873ee9d081b42f0565af8858",
       "bytes": 5960
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/License.txt",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "bc0de1a0742cb490f9ed4bae0bd284286ebb27e23149b9917c7d8c0d590b8b29",
+      "bytes": 614
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/bathroomCabinet.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "9db540227acaaedbbadc6a085f4a00460b73944e608afaad4770e53238a3b7f8",
+      "bytes": 7216
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/bathroomCabinetDrawer.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "f32d09c6dab20fe823d238310f75ce81f24e893a91c2078b12efd3f7fe6c6b10",
+      "bytes": 34744
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/bathroomMirror.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "940b986894101ea59b50541554b6dc608a22b133057975849259009012984175",
+      "bytes": 6792
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/bathroomSink.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "39d4f19608cab7e0fed52303b2c689f5f51fae1bad9b6913cb53d838875e797e",
+      "bytes": 22536
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/bathroomSinkSquare.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "360853c822f268e7267c62ef20cf646f170a13d76254cc0804a1d397a4a3ea67",
+      "bytes": 15108
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/bathtub.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "54c405c7035aab63dc41e709dc3c50fc5bcfbc4cddc91ffc54188075a6d25d01",
+      "bytes": 35500
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/bear.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "fd87c08f81dcd652b1f7f61afae9d1f040fa1322ac4ddda6f543ed423b954aed",
+      "bytes": 11884
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/bedBunk.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "a3eccbc4a04340dd84878d959e15eede76f517fb8d4de6862ca46877c88d764e",
+      "bytes": 40784
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/bedDouble.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "c49b33e7d797d2ba1111895587dba7ff63b17a712eb9b4ceeb40a598f73e476c",
+      "bytes": 23368
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/bedSingle.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "ca00c63f9a12da3138d902b2f5f18e0360fb6e8a5ac42ccb4bc3f185724b65d1",
+      "bytes": 18636
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/bench.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "ba05a6d23a5a5a44da016757632070e47ff7587ce10e2f6d6d52328b4cf5489b",
+      "bytes": 10756
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/benchCushion.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "5186ad938f8b9eff255361fd1fdc48a81f08c318161cde27c93753ab95a2d354",
+      "bytes": 12500
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/benchCushionLow.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "d1fac209eae2ea7393beefa4932dacb54d500e8f9932a1b17d2a842527df1b2c",
+      "bytes": 10268
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/bookcaseClosed.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "9d210448de5e1179541da895450bbc7a39f4cd673d677654cd6b134e4ea0e047",
+      "bytes": 23132
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/bookcaseClosedDoors.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "ff33f535acdb1825c0e958a293642b39665adcae0b1317b650e83d2bb687f4e2",
+      "bytes": 22644
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/bookcaseClosedWide.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "55b9903e9646dc407ed5237a1c41c1f0a14f9edc22e3392bdb9a4804d846af6a",
+      "bytes": 23140
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/bookcaseOpen.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "750702218d68c062b15dfef6ab06a4014d1cfa8bd05f02e57c53b7e13bec157c",
+      "bytes": 18020
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/bookcaseOpenLow.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "6d4d625faf977a2dbf155f1313cd32c6310e463114a1cd4c08cb9f80a5fb1d75",
+      "bytes": 11520
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/books.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "b8dc56e5d29f6fc1f4727fccb1b9642627fee9942c48060a00034e98df02701c",
+      "bytes": 6864
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/cabinetBed.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "b651fafb9e2c8e4adcb8cad3d10dc94404b46fe039b26e66b2c9020df4e5301d",
+      "bytes": 7496
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/cabinetBedDrawer.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "e3dfd2e120af3d4d29b66509e317452cd15bd3f57ac8945575462c582adc6de8",
+      "bytes": 16088
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/cabinetBedDrawerTable.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "fec6271639df5aff9f8ac75d6679385eab2abb7c8d2f51abeba3ed689ddb6f0d",
+      "bytes": 12200
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/cabinetTelevision.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "811719593d676ff76f7b5904d52c845ce0396af2bc9a6a2636c4818ead320b99",
+      "bytes": 10524
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/cabinetTelevisionDoors.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "8959347bfe26b1ac7e44c476f05789466bb84bcd2ad8b0fb40286005399bfcfc",
+      "bytes": 16876
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/cardboardBoxClosed.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "4af079dca52960912764574950f0549ff2ae1224b3db1528718629473a2d5d81",
+      "bytes": 5400
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/cardboardBoxOpen.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "960da412564774c75e7b32f9af0100895e1edb877fc1e70dd34ee2422a2196d4",
+      "bytes": 5404
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/ceilingFan.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "5fdf7b3c4328875462c9887c6b1f2fad08126ea42e758cf86534639b9ea72044",
+      "bytes": 15284
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/chair.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "c8a11eec93e89e31250ba91afc1b8d56c3bec7ae86640fd1239f595ff4180883",
+      "bytes": 10756
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/chairCushion.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "33544228984857f2cb502b58452fed72157335f9b1caf29e96da5c9094c53fdc",
+      "bytes": 12588
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/chairDesk.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "46406619186034cbe92b19b79a5f1a8e3f442a17a70a7524ef2c0ad0f35095c6",
+      "bytes": 39016
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/chairModernCushion.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "245132697e633e907e2b48c86d56f6c8543604a3440a055d1c71c06ce11d2858",
+      "bytes": 7376
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/chairModernFrameCushion.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "fd3351b077cafbd54224e20fa7a3a1b4a4304019cf44c25a6e7709ad71b852b8",
+      "bytes": 18592
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/chairRounded.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "53f4933ec547179c499f04dbda1231cf44b83ec82c7f4ab981cdf680aee5c973",
+      "bytes": 17156
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/coatRack.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "0f56540d57367ea6fea6b9aedf305d4fc58abeec8ff3b039dbff44360d819c76",
+      "bytes": 9948
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/coatRackStanding.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "d8231c22dab63ceb9fc8678f6c8ceafc62afa8726b51a73b4ce349043d3cdc91",
+      "bytes": 13288
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/computerKeyboard.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "9d9135789de2120e9f41ce3f0a56dd1b15f40adcc7888739bb842a2d820da322",
+      "bytes": 3476
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/computerMouse.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "d3ad1a923f0f7707ef367bb969eb94c9076e211c98c830ba52e133fadc5cdfc0",
+      "bytes": 5868
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/computerScreen.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "5942cbad29a2d2b956619569926e81d50a4174403d592fece6556e57632dc643",
+      "bytes": 6404
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/desk.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "0164fe828f028b321730fb8c74502e353583f751be74da1682d42fff7d3c5a42",
+      "bytes": 15048
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/deskCorner.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "a6a77ba0083d5ecd34ad50f738867b03ed7b7f469429bb1acc78f423bcc3f034",
+      "bytes": 17984
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/doorway.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "08983e299822140d580eb55d4b4e4e4552c37bb6e88571e41d2b7b5d2eef987e",
+      "bytes": 14532
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/doorwayFront.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "b5b8e4c14ee1f2ffa10ef5c69badc995ae6fbcc868abac240221c61b8c593b0e",
+      "bytes": 13016
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/doorwayOpen.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "cf05e165ea26dbbeaab4dc6296c143ef5f5a001e2ab5af9cd4fd65739408317e",
+      "bytes": 3256
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/dryer.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "d8b727612fdfc141c0b56360f75b897f1b71d3420c8c0942b5ec626bd3c8303c",
+      "bytes": 17760
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/floorCorner.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "7a3ed4473bd7dc71a7fac74a77c548412ed01caf9fd21be605bc8bbda824f8ff",
+      "bytes": 2524
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/floorCornerRound.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "d9d5392ecff520a263dd7e5b77e733da125f866002311ea65572731d90fb8990",
+      "bytes": 5168
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/floorFull.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "99fc5df646d8dc605d6fe35001fe5b15bb7b269cc5c65f4f7793fbc76ff3d822",
+      "bytes": 2260
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/floorHalf.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "8cf16d67b8185f6c28f957458da92a337f0949d2e127df9a50b53ea5e8894673",
+      "bytes": 2264
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/hoodLarge.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "e9b60fa02bba74d99103e8ba9d7ca99fbd99299bc57c4f5f84b2add2a6a3afcc",
+      "bytes": 4652
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/hoodModern.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "f5ac7dbadd1d98813c48315e56fa6ab2e8783870b1fb7be30825177bbf2b2afe",
+      "bytes": 3968
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/kitchenBar.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "792c3d31e60c8a8d8c7a28cf7d1efe004c5a601adc1b163a8799dde32c1b559d",
+      "bytes": 6004
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/kitchenBarEnd.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "410c6d83defe4ed248a8ec32f81553b56c8b610372d02ecf0e547e3f52cdc0a1",
+      "bytes": 11084
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/kitchenBlender.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "f471defb5b2b1cf3b949a1a8aaef0a8b727afe662b0815068cf4e963325a3c1f",
+      "bytes": 18728
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/kitchenCabinet.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "7238c57778935ae25db5e57e9f7af3ba7068c71b005ff7cfbff3b6f3b1a13200",
+      "bytes": 10444
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/kitchenCabinetCornerInner.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "8d1b69e63048424a0559d1e5c77427fab9021def7dea74cf1c4d3d8ce16e6e69",
+      "bytes": 5184
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/kitchenCabinetCornerRound.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "333ab73202cb87b76d4ff94939038dcaf315eda55285bdbeba20d255da488e97",
+      "bytes": 13656
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/kitchenCabinetDrawer.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "6f784807e3cadb15b4d2d3db726d93357ea5e6c4f2b6e4c9c064048a2d1d9cfc",
+      "bytes": 15384
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/kitchenCabinetUpper.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "8f2496feed85a745ffb6e554075b8450d647f8f68b01d6a010fcac1510fc173a",
+      "bytes": 8168
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/kitchenCabinetUpperCorner.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "b23551ff585b5b804cf3ec0fe046b7bc1e84a387021e3cdb01c93add56444e8d",
+      "bytes": 13712
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/kitchenCabinetUpperDouble.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "7b2abd976f2e8f1727d6ba23490aaf5fe18db9c5ac66e729ef6fe8de835c039e",
+      "bytes": 18184
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/kitchenCabinetUpperLow.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "c25293d38ad3d4338142f5bfb6832a2f7e8a069a552fc4a6730231b1b382d33e",
+      "bytes": 7216
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/kitchenCoffeeMachine.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "063f582c6fa0f00a9f24e3393dac2295491c4becdaf5513c893ab1a2826b6ec3",
+      "bytes": 13332
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/kitchenFridge.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "8af4f4bbb1b5525ad8226e97926a5af60fa8fb20a3cb74dbda5328a9d320dbab",
+      "bytes": 20116
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/kitchenFridgeBuiltIn.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "eedcfbca0a9e565424d941b8cf82ddc0c3c4dfc63911a420bfae058e9a18044c",
+      "bytes": 22616
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/kitchenFridgeLarge.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "5851cc59c7e12f6f34a01a2ea93d5b9540be4078c1b703f517239fcede98fb32",
+      "bytes": 30632
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/kitchenFridgeSmall.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "35dab7f63711623be321bfd82072f4ab29fe8006aac9371c6e6b78df2e02f5ed",
+      "bytes": 12988
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/kitchenMicrowave.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "dd6a6c919f4bebc6e2080fe419262cf97a0d6461ead3f3998aa3c9edf4d2bd27",
+      "bytes": 11248
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/kitchenSink.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "7b9610277d71f00dcf1bba49cf4d98d77ce5177e84bf76c7da2f8893e542f743",
+      "bytes": 23480
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/kitchenStove.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "3239edb36295dfca9530a9b9a6ad0aff98ce62e7cf8d13ca2a5a1a6b2a904656",
+      "bytes": 54324
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/kitchenStoveElectric.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "cf646b960d7dfed1fac27898ff6de1f0671cfa33beecbed06ead7d0684517392",
+      "bytes": 18604
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/lampRoundFloor.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "50fe1b5b588edf15bfa9cc880f71a02a4fda6036350b24733d0ef4de5cc5e908",
+      "bytes": 6600
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/lampRoundTable.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "75bb644caaa3da003b4fcad7a931722dd61cd2858aab70cf660021d5061fa1b2",
+      "bytes": 6604
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/lampSquareCeiling.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "57066be51583d83ae60071e8179af275189cb2911ecb9fc24953bb930c8bf118",
+      "bytes": 5628
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/lampSquareFloor.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "6466993748d8e184de9ec5b6b0af613867c50c0ce320d1898b1db9e4c27c2561",
+      "bytes": 5624
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/lampSquareTable.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "70ec9211af336b1ef3b4da32590b8737b4facf219348c22e6533a1e898cdb13d",
+      "bytes": 5624
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/lampWall.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "a9679ecd3be05731846f22ade97c37069598ca7a06dd9319f50230e63a1ea83c",
+      "bytes": 4828
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/laptop.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "5fa8a1f4a71ab8d82ef64da77a6973ffd350c6d4557516069a4ffd4bb8d808af",
+      "bytes": 5540
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/loungeChair.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "ddfe6bc4b3451bca61666d7b614552d6ed2a03d82fc76244b72ae3155874dc6c",
+      "bytes": 9648
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/loungeChairRelax.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "def698179e44de6cd17f4cfc2730273da54dd25458a29b079fbf4468abe5d98e",
+      "bytes": 13904
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/loungeDesignChair.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "f0766a7d5698974b711adac18a2108f0e74e3a036fa4e4e0ccf91195b0ee5abf",
+      "bytes": 9136
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/loungeDesignSofa.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "b4f4e6850118e409da301df678228c703b6ac02e94fbb9dbde61543af817fa53",
+      "bytes": 9128
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/loungeDesignSofaCorner.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "fe665d07d53fdc6bc96e9fed453874ba4202b008194e1e24100b067081c62be1",
+      "bytes": 13744
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/loungeSofa.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "1886b811c0d3ad0d8525a4fd43adf4112c497c8e0ed906f06877ca3517f4c7dd",
+      "bytes": 9644
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/loungeSofaCorner.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "bbdd91791e621ac71321eaf38a2432c53279792ef946707f23b216123bd52655",
+      "bytes": 13412
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/loungeSofaLong.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "452df1c862f97781615e2c1c832913b48cf6c6f011d3260dc023ff3f117cc9d1",
+      "bytes": 13112
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/loungeSofaOttoman.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "79087654136d7d69653fdc3b52a02d7833fe13e6a0a56b8dcdf652c611dbd959",
+      "bytes": 6960
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/paneling.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "69234bb71f54b0241ef6b78c3c7aa8aa855aae745475645f9adec4895296a96c",
+      "bytes": 3960
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/pillow.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "6fae7c190d0b676ef3efd35e5178cef21dffb5c80e1257d8b537ad424da0e5f6",
+      "bytes": 5044
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/pillowBlue.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "8326e018c09cb00c19c2c9b745f521cd7eba1169b755322b04f88440dbfef319",
+      "bytes": 5056
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/pillowBlueLong.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "b643f81a863595071b7907d3d0dcf5b1b0e3bb6ad8521db37778b2242ba46bbc",
+      "bytes": 5088
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/pillowLong.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "d8490ae920413fd04c85a2164ef384d67a1ca257f761dec1cc7f06fa2c027283",
+      "bytes": 5072
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/plantSmall1.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "2b9c022feb47be857b2c4fdc29f36522766ba9b70c578c31d7c05d71b4377d15",
+      "bytes": 8224
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/plantSmall2.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "d7c8ff42c66dd4f9238a73570549813d1ca6c5f6f661d7af9cb764c4fce314b9",
+      "bytes": 12996
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/plantSmall3.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "1aa38b1b22bd19fa4f9f3abd8c4cbf50da2d6fa721cf1f9aa4d80bb89b1bef94",
+      "bytes": 8424
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/pottedPlant.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "5b760eda2766f75fda36b2c5df652a1662f82981ef64cd8fa7fe7bcd386b3a15",
+      "bytes": 7576
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/radio.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "1ba93d6ba6f049750853b4652b92f286f2898e527695a0705b75cc7615897fed",
+      "bytes": 25020
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/rugDoormat.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "bd888e41853342cdc0d34d3f09b99cedc50a144f47b514943b65cdb9a2cfd802",
+      "bytes": 13812
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/rugRectangle.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "a989d2d59c04e3071e0c90388b113a9a8f339ce1814ef984c51cb6dcd7c8e0eb",
+      "bytes": 3188
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/rugRound.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "c4cdc8f51ed2dbfb853b147521ed40e995307392fd3b19045b2203ea50f376db",
+      "bytes": 10164
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/rugRounded.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "2ef5cc634bb1060a1a5774cfcaf6e11c235791c99d6b59da5fdbc09edfb95a68",
+      "bytes": 10876
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/rugSquare.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "18a63634e9bbdde0b309c008f4cd41df8455f7f2ffdb8fe8985fdf8c2cd06b3d",
+      "bytes": 3180
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/shower.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "25c1cebad681fe369dc04839a8f08f5da2ccbd99b3a70aa83fe2e4d1590c6951",
+      "bytes": 52020
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/showerRound.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "1723208eaba3fb215089e02c8cdd3d7201d0980ad0c7b275319eb539f6094bfb",
+      "bytes": 72048
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/sideTable.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "8227810584f7d37582e4e9ec821c56f1dc54b99c88a8dc74242ea3b7402bc472",
+      "bytes": 8800
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/sideTableDrawers.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "911145653c11b103b2c2e84f3d019205d1886186015c3b52aceddc3801ae8fdf",
+      "bytes": 19072
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/speaker.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "78230b9fb382a937cb19e4bf7556ee9402d33ac80b1baaee2d2eb89493cfa1fc",
+      "bytes": 15744
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/speakerSmall.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "34db09984703282822f3f57fc9a31bfdfa6a8f6bf8251893d0c907e7ee6601b2",
+      "bytes": 15244
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/stairs.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "b442f997583e417fcb32ec89470ecc441b0556f416d3afe00e3f18c806e556a0",
+      "bytes": 21616
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/stairsCorner.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "250d3c51e10fa250c30954b8a3d6bb0d011362be34ba85a50f5bebdd4184e0dc",
+      "bytes": 21576
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/stairsOpen.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "cbfe1dc9fd66f1375f9c79ccff7069923655238fdf49c7c366653d17632453a5",
+      "bytes": 39924
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/stairsOpenSingle.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "97172c18eff61b844cfa871da32b6c639230adf20901188f378926861e7610de",
+      "bytes": 24600
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/stoolBar.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "a86167a9f92401a61fec7e509ad089ecc552d0f299743add3aeb919acb24e341",
+      "bytes": 11816
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/stoolBarSquare.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "a7e1099d64eb35416d4d8c9b16921ef12ae7c1c1e6fff5ea75f3ae19cc934a8b",
+      "bytes": 9784
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/table.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "ff1a94498d023957f4bc3ff6f55a7a82977d336dbf01a573b3364f03afe5ff61",
+      "bytes": 8196
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/tableCloth.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "64de52b5c4370724c29feefd68a65b157c55c88592e2096987bbce007ae80bcb",
+      "bytes": 9920
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/tableCoffee.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "e38bea760fbd514efbb75528d09b4752c91af44677bbb97e6d4386c263525179",
+      "bytes": 8256
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/tableCoffeeGlass.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "05bf257a086a540b3b79b0c1c7dae35b036ed4d520686aed74ea94ea701c447e",
+      "bytes": 9428
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/tableCoffeeGlassSquare.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "e4a7ebef6ad0dbafee629df78b0edd88433a1059c4dd5fb3d70304ba2f71b945",
+      "bytes": 9448
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/tableCoffeeSquare.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "bcc81d8919a3af9141c9c93b4520106dd0a90a7144346cd87928014018aac816",
+      "bytes": 8276
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/tableCross.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "f0d83392aff5df82f6c9585cadff694643dbd30a4ff2b8bb01a00a7a161338a3",
+      "bytes": 12140
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/tableCrossCloth.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "3c16b86cdf9a9a82b80b97611030a1da2ed2e9e977ac76457e09a1547b0cebbc",
+      "bytes": 13852
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/tableGlass.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "a5ed516d18b51cf5db3cc78f1403451f853a81db45510543d3ed56c1dd9c412b",
+      "bytes": 9848
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/tableRound.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "f8daea9124a542a00b7bdacfddac82dc468573d43e44d7b54dd6316e9695754b",
+      "bytes": 6444
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/televisionAntenna.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "00eea4123b3efc7f8050fd3eaac0a83de3053c9e6cead18dc739260a429b2bb7",
+      "bytes": 4500
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/televisionModern.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "d89519ad0a5f28b5b0dccb0d83209dccf610cda959578238dd21bbf9e219cfc6",
+      "bytes": 6368
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/televisionVintage.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "eb144cc8fb1e7f761e3665226e4266c8868679421d21d6548f24d2abad7c67cf",
+      "bytes": 19392
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/toaster.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "38c1fb7b122be9997758c8ee855d87f28014cf282f24d66d39f4e8d8b236d2af",
+      "bytes": 14924
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/toilet.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "16165cfd03c56c2cb443b800570810a22ef770f65e7a468f6761d9dc14eaaeae",
+      "bytes": 18112
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/toiletSquare.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "f241e26a22b0d9512d8455f3e868124f8032710c83c5265a546c19c67ecdd4b9",
+      "bytes": 17548
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/trashcan.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "e0ccc1fe50cbd05386477fdff527171d1cf7c0de2ba7ff3233f8d9561feb2561",
+      "bytes": 6452
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/wall.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "69273d5d623bddfce41d12d4e5eeb5621ea04f1edcbd8f35c00a60c2fd3258b7",
+      "bytes": 3340
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/wallCorner.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "0e6521caee1f9282784c52e0f651084e49f575b091ad97bf25540b8049757aef",
+      "bytes": 4460
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/wallCornerRond.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "33e87dd846335dca5fce8a0e242225bb97d4a7b47c3ae84df33ba97fe1da33bf",
+      "bytes": 10448
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/wallDoorway.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "a55be1da05aa80c74749d0c38bd093fa5e2b1eaf21cbc9a7c3a0e6fbcfbe38e2",
+      "bytes": 6444
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/wallDoorwayWide.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "877af5b239f31f12027e3cec92aa26e97d511e1ae8673a8e3d7d13302d33edf3",
+      "bytes": 6468
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/wallHalf.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "24db9f126891b48b443dcfa9f80d79e4321c8780aede83fb6d8f384b3d4eb35f",
+      "bytes": 3348
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/wallWindow.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "166a10fddb8a78d942bc2791186913f7015dfee8501d20efd7a7b8f196fc5c3e",
+      "bytes": 10744
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/wallWindowSlide.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "33e51d7ee74f13de318e419b0ebfb31fe7f6e9fd37050f13aa9347641b49376a",
+      "bytes": 14564
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/washer.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "0c9704df1817d2699b72305b96cde097c9558bacabaef2fd5ab1ff4c03b81abf",
+      "bytes": 48104
+    },
+    {
+      "path": "packs/kenney-furniture-kit/2.0/washerDryerStacked.glb",
+      "pack": "kenney-furniture-kit",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/furniture-kit/440e0608a4-1677580847/kenney_furniture-kit.zip",
+      "sha256": "efcc2155ef170092dc2602a98179380de3442c2500998a6ca37cc5554d275676",
+      "bytes": 64060
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/License.txt",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "87b9404aef5dff6162ae1e53a27bc6427fe1cdd2e2dd5ec05fdd25f17da10498",
+      "bytes": 703
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/Textures/colormap.png",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "a48e2962661ae44368ffddf3054f80ed8491d082b757dcc3011184cd9a98b185",
+      "bytes": 11428
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/bridge-pillar-wide.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "8e605ee4b59bdb5066a08d32458c0676a2763da483925e9761a28e6a77120b82",
+      "bytes": 5488
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/bridge-pillar.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "71c8d9dbaa502e63bf803c6873165873df4601f7285e1fe040d0f03acab3f0ec",
+      "bytes": 5468
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/construction-barrier.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "906f73a6d62d8de58a4c5a19e76ff95b460c42b37e5fa37478b8612f06793f26",
+      "bytes": 7052
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/construction-cone.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "50ceae45cd1d71f738a8f7c40f8b6b46f360063c2754bf717aae54013d6f2ee4",
+      "bytes": 7056
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/construction-fence.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "8414c211efbc68358eb747cf6d0ad6b9ba4fbc5094603ddabaadf18e8573abbe",
+      "bytes": 14856
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/construction-light.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "80dd781d6ad1bcb6e07670cc1ce03027031381768aca62b9c7b6e7df99c33650",
+      "bytes": 15320
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/dumpster.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "c60ebecc23487c38b5e0750856a3b50744d2ea12b3c83ad03d537e5a4670777a",
+      "bytes": 24456
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/electricity-pole-single.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "28d9b7a7ee300999b4ea59c1a5fd9ad197c599ad5be5ab299d63483049af337d",
+      "bytes": 19480
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/electricity-pole-wide.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "85ec58e9e0e29465eed4f96f380b0f540404f097e90f7b6997ef0a3d212e900c",
+      "bytes": 56732
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/electricity-pole.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "08c9b924e297eaa46bbd79ac09795c045848a4e38a72b2ce4f973517f840c2d3",
+      "bytes": 43652
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/electricity-side-single.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "60d5641f288bf7fa30c6ecb181df8664034c307af27f15c65f54d066a7c8e738",
+      "bytes": 19464
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/electricity-side-wide.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "e167d413f65c11701df36af9aca834977ae35e1aa20c8e14dea3dce6149eb098",
+      "bytes": 56732
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/electricity-side.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "ce0c278d4da86e7fde075c64b540d4c9a4572ea7a6563fc60b3a0aed2597ef1a",
+      "bytes": 43652
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/electricity-wires-wide.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "858de38d8583cbf78f6cc7dfb65ece4c0c94628bc3a2e281fd8485a16af395bd",
+      "bytes": 22240
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/electricity-wires.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "514027014328d1465c9cb60755efc184a2b53a9c1ecd77fd34c5265856bd699f",
+      "bytes": 8952
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/light-curved-cross.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "df14b20f3b748fba97f9d4c419e7c03dae97cbe71851d74063d358ed1bb77490",
+      "bytes": 24912
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/light-curved-double.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "038808ab235b889686ae348994e1605f9ec239fecc47b04ba89131b5fb70969c",
+      "bytes": 14208
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/light-curved.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "154dcce9d58ec2cd165e26c91a89c97bdd2838cf06d255099b3570df84f82ec6",
+      "bytes": 9492
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/light-square-cross.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "0492d4389579336c0385e3e786bff351be43434b8a2805fb09aa380e28e2d108",
+      "bytes": 13512
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/light-square-double.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "b6d0441f7ef65ddc7baefe83de93d00f7df8343f89c5ee6b7b19e732386e29ad",
+      "bytes": 9216
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/light-square.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "6230d136c8883d7f9bc1b86f0309077e452e26e5e1e587ef1b77abef3c5f047c",
+      "bytes": 6996
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/road-bend-barrier.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "dc0dc4f8e82e25eee81c9dd31b5376d31a699e6541d7bb767d7722e3b93e0d86",
+      "bytes": 11912
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/road-bend-sidewalk.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "4e8f7a4cc6c130d55bd754693d5aaba94e037d8639389656964ad57abefd882d",
+      "bytes": 17024
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/road-bend-square-barrier.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "279a8aef4a6fc0603dbe970c1b251461fb3d66afc34280704e04976cd51651cc",
+      "bytes": 5880
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/road-bend-square.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "5864b49931091625ad5249f34b9f1ac4614170b8a3569494a003d4ec0d47907d",
+      "bytes": 6268
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/road-bend.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "9752f63448c8e7a3d30ca2e0e1bb6784c5adb72b56a2b05667be8d546c1674bc",
+      "bytes": 20164
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/road-bridge.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "5e2bdaabddf39b309a3b5d109d7c6423cd68829a8e63960fcc2d23d62c8425b0",
+      "bytes": 24796
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/road-crossing.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "eb8575335f77da513add4a5277a7b60cad4886c07966f024b15cf55e5966cde3",
+      "bytes": 8700
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/road-crossroad-barrier.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "7e159556f91d216aa519be29021d950612ed863bd1f5c61cccec726062d068e3",
+      "bytes": 11256
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/road-crossroad-line.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "87bde0f75b741d4d66e5992e003bb70ceb42847f32092e38c54893babbc4f7e9",
+      "bytes": 9692
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/road-crossroad-path.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "5876a578474fabaac8608819936c499bec3d5c68b8096e27498b2163efe1ca78",
+      "bytes": 18708
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/road-crossroad.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "2dc52a28cf89ec88025a047c0f6fff4c643f16b0f50f0e9a1140f16230c28b12",
+      "bytes": 10084
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/road-curve-barrier.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "32c812901deaa09dc3a7ae02ffc54d9cba6725c22e5fd0ada4069741dabe67aa",
+      "bytes": 17920
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/road-curve-intersection-barrier.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "d0620b573330af2325c5c2d27db0a092f16bd49c7a7601bdeac62cc2de183390",
+      "bytes": 15480
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/road-curve-intersection.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "76aa1cd40ab3fb649920c8c06d8a37d25d2dda990425603be370e360d587759c",
+      "bytes": 22788
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/road-curve-pavement.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "f028db0675286bfa0f48fe174bef9ff8d8c65886c327a85abe05fed9453e9853",
+      "bytes": 17044
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/road-curve.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "d076717bfe3493dfd5a4b4207a7825e4aff1876273f0d58f5e16e8e8670906f7",
+      "bytes": 23912
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/road-driveway-double-barrier.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "057ef29517e70a02dabda572779ae664f55beb3bfad92523e8f78e6cd9d2b287",
+      "bytes": 8460
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/road-driveway-double.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "784549802fc55d63a6a13d3ee2acc18ef1c6893d49787f4949c40a7873f887c0",
+      "bytes": 7664
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/road-driveway-single-barrier.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "a5bffceacfc54833b15bd4839e49b83c68c1e729f6df4a72391b036eb6977c66",
+      "bytes": 6272
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/road-driveway-single.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "59f22734d5c22b55ae007914939227e7742fdddf4c371ace106e8161bdfb5ad2",
+      "bytes": 6568
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/road-end-barrier.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "c7a73cfae01de7441c8dcc89a9dd77d64c34af467fc3f03a3cd644a85f1ca8bc",
+      "bytes": 4028
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/road-end-round-barrier.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "4dac7ad32a27354cf5201b6f4cca54547874d461a487e5173ba8b19e3b913569",
+      "bytes": 16328
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/road-end-round.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "0ad2c0cd4fde52724a5fe277f0eba71df530a5b6c7570d0efe1686c7b456bc76",
+      "bytes": 17532
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/road-end.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "bdf62518cfcc2c1a1425a4c8bc845e8e344f9c8b34dfb364b6b7d442e6171f11",
+      "bytes": 4940
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/road-intersection-barrier.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "924922890e2d01eb1c953b6def47b87392717cd7243e44ae4b4117f5eae0c670",
+      "bytes": 7676
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/road-intersection-line.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "a9a202594178362e89ae62b1d9cbfbc7c892f9fcb8564d014cdd96a81823a8d9",
+      "bytes": 7492
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/road-intersection-path.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "b5e5fcb458249c3059d12fb30880014781dcb5e3c6f958660d255986cebd865f",
+      "bytes": 13736
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/road-intersection.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "fdf4f213abe41ddfe2a7e798a0ef1c3de5b7a68143e21c44f1893985ec6aae58",
+      "bytes": 7900
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/road-roundabout-barrier.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "fc65f8b3f445146bed071c372e06fe3329c94f327f418c801f66c739955e2531",
+      "bytes": 61636
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/road-roundabout.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "6bde41e46040fa35c90f86a524fe5ff344ede07f50f077e1732762b82f8e2d66",
+      "bytes": 105876
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/road-side-barrier.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "35101d5cb8774c51b7203fabefc04c49335a5e54ef30e5ae5b858cbf0a3a2f9d",
+      "bytes": 4200
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/road-side-entry-barrier.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "a2186fdb216e0a59c2238efd2cb9c5d8cce30f8b8f23243132230966710aac54",
+      "bytes": 20276
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/road-side-entry.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "94828a34b4987f1dcbc7972df1612a7ee72f7d9fab207ffd234e021a7093027f",
+      "bytes": 24288
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/road-side-exit-barrier.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "4e79f3a1b06250b6423ea8a68692930b032052fdf4d021056eda998e5dbfaf92",
+      "bytes": 20272
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/road-side-exit.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "356df3d64123669461b7b176ab90173e1c8a84ab35af00034a62f2658e56c38f",
+      "bytes": 24280
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/road-side.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "f5482c921a40719f89b1e7c0f6cc9d662b1f3a6149060e9b6bb543390fbdff66",
+      "bytes": 5272
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/road-sign-empty-hanging.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "41021007cd856fada1f372a1f8ed93c229461cfac85ad888e16549e559455b23",
+      "bytes": 12072
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/road-sign-empty.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "7681ee84c5363e2c95a37593fc3bdd0afb81b23fa46ae6be1c0939a112a4306a",
+      "bytes": 5968
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/road-sign-object-stop.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "9691bb7ff4a7b911f9713d71cf473e0b8f30ac3964052650fd2395cd19dc36e4",
+      "bytes": 6600
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/road-sign-object-street.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "c44690d1d12f1a45dd1a24254fecf95c62c1ba088ef6104d677bf716f2a1cad3",
+      "bytes": 6648
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/road-sign-object-warning.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "5c9608d70854ba7ad3bca061b643d5731f2040c650653d4daca564f5a2b487c2",
+      "bytes": 7384
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/road-sign-stop.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "0991181f37171daf8d2501e436a688e46ea2bcebb5e27aa451640fcbaab107ef",
+      "bytes": 10720
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/road-sign-street.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "570ab030366f549575f0b111fca3965aa8d103043bd3a002f40fad2a3f8175c1",
+      "bytes": 15948
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/road-sign-warning.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "db8049a51eb60c77e40253e8b5a9d41359a49d2a9083223dce361cfb0605c3a9",
+      "bytes": 11496
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/road-slant-barrier.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "c620119f0a3b23c8e883d4f8089a2449432846a4908b7611ef9a22091d72bd2c",
+      "bytes": 4052
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/road-slant-curve-barrier.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "ebc41618b5f63bb339f9877520000e63d4c33c4fd350bc81ff6bb21dcc778eac",
+      "bytes": 38824
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/road-slant-curve.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "9cf7fed9d5770bdc6043825d99b9e814bf3315de56dd3e77ea38e1f2e54f3d4c",
+      "bytes": 47880
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/road-slant-flat-curve.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "a8a9a3c7a3ec243129bcf297ea1f9dbe97893ef839f4e9f3741bb25b069ef7ee",
+      "bytes": 55868
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/road-slant-flat-high.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "b203a50b1b4b021806b5639030c021ddd8113ae9f0600c0609467a26e48518ca",
+      "bytes": 5300
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/road-slant-flat.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "c9aca2db3277d4556c08b9950bf08f6c274023e8f6401fd649e271412f0d125f",
+      "bytes": 5284
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/road-slant-high-barrier.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "47df00c9a9ee8637d001958b002d0929e31fe3b65df3641c1ad5f85a01f5194b",
+      "bytes": 4068
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/road-slant-high.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "ecd06a3227745a7967a886ca80c6b467ca29430c17119334b6e1a26c4193b692",
+      "bytes": 5256
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/road-slant.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "c14bb57253db5cae32c4a10b572b9ddd7e3aa6fedad9f5e49ce92e1ca24f0a41",
+      "bytes": 5240
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/road-split-barrier.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "574e9ea5ae31b80ba02442d9c5f801877a75f0596e129a090e2ec540d8421a7b",
+      "bytes": 41340
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/road-split.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "4ef637bb724062d2165f3a288254117ae8e2d88f301a84578a2f21ab57de5542",
+      "bytes": 60128
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/road-square-barrier.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "fae603409f1375b51993a470e9f273c240c37da9983de87e20b7c61ef9bc86a2",
+      "bytes": 4048
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/road-square.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "97ee7a325fd53087388c317fdee2620a61fc8a9f5e467bbe1a0a80f0b52a98c0",
+      "bytes": 4436
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/road-straight-barrier-end.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "d8df21f1a931fc618d28440b5cbcbfaaa13c422dd5a240666bdc83cb8988f889",
+      "bytes": 3640
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/road-straight-barrier-half.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "6f850dedf540f9aadc618cf70c24af317a69a35e10cefd2da16df2c85311b994",
+      "bytes": 4092
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/road-straight-barrier.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "eeaf5469bb34b94e3edaf71c5d7c9da152c0a398f86c9ec6c234a82a42833e4e",
+      "bytes": 4196
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/road-straight-half.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "8dc2e2f4f6d38094f9c35004f78f20a596554454246d348db2832e6c443188bc",
+      "bytes": 5264
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/road-straight.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "f8f744fb6fc96dedd5ad1f763b550166f2624a3757bf36b4b39969d2e7cacac5",
+      "bytes": 5248
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/sign-highway-detailed.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "122d293bc9ee3378ab2492242ac615fee1c791066ec747599829a801f6a5b99d",
+      "bytes": 23532
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/sign-highway-wide.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "9b133033576388d10fdced59d2ef92bc30409fda3dfb40d6334f35276729d1fd",
+      "bytes": 13968
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/sign-highway.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "95858108df403b7051f97598a78b93ddc398ac6cac85ad8abc0bf9198a9fe282",
+      "bytes": 17288
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/tile-high.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "b3628407e66c95605c0290d177128e0a0dccead3e9b079399a7eb56aa8b86525",
+      "bytes": 2788
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/tile-low.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "23f54fced68c7647f6d851c8080791b56e2a7e7f541eac2e95c647006a5901c4",
+      "bytes": 2800
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/tile-slant.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "7900e14823d5cf1b0ffd2eb14bd8c6629bd35d972f181fcfb39f707f0dfe1caa",
+      "bytes": 2820
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/tile-slantHigh.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "f4d24adb093b598fd4f874c653b39ec9dc426e07754109c6e64394fb0674b2c7",
+      "bytes": 2832
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/traffic-light-hanging.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "a433ad0e253da289f40a859fd4f3fe35dd6b575804c5f8262fec7fad331b9522",
+      "bytes": 22132
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/traffic-light-object-hanging.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "67aa6068344ae6c17683aa80fcfc59224253b9136759e27e220dbe1ba43ca641",
+      "bytes": 10876
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/traffic-light-object-horizontal.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "882fbe0b1934445282ee4499b354f63b3d837615ffe1898ec679ecbb95cbb3a1",
+      "bytes": 11664
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/traffic-light-object-vertical.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "0e620c08dd25cd4eee700ff983f35ce2e7ebd20f1027e13b01c020fd961d0730",
+      "bytes": 12408
+    },
+    {
+      "path": "packs/kenney-city-kit-roads/2.1/traffic-light.glb",
+      "pack": "kenney-city-kit-roads",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-roads/74288c9459-1787042796/kenney_city-kit-roads.zip",
+      "sha256": "6c9ee253b7370e1043168493b2e662b349484a0cdd02100cff04d9d8d1bd9abb",
+      "bytes": 20344
+    },
+    {
+      "path": "packs/kenney-city-kit-suburban/2.0/License.txt",
+      "pack": "kenney-city-kit-suburban",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-suburban/2c871b7af2-1745479373/kenney_city-kit-suburban_20.zip",
+      "sha256": "d778fa769a89a7d9f167bc337fdf8fc2144e47d9abb0c35eb6ad897c0ee24d0a",
+      "bytes": 706
+    },
+    {
+      "path": "packs/kenney-city-kit-suburban/2.0/Textures/colormap.png",
+      "pack": "kenney-city-kit-suburban",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-suburban/2c871b7af2-1745479373/kenney_city-kit-suburban_20.zip",
+      "sha256": "9b5de86078c25ef02351a80d35ff3c978693a1044565b73eedd9ae9b5b80665d",
+      "bytes": 11784
+    },
+    {
+      "path": "packs/kenney-city-kit-suburban/2.0/building-type-a.glb",
+      "pack": "kenney-city-kit-suburban",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-suburban/2c871b7af2-1745479373/kenney_city-kit-suburban_20.zip",
+      "sha256": "49f32e20b9dcd24b1c8f6d6488807b8c8cb684cbb595bfb0bb36ad903e470faa",
+      "bytes": 98604
+    },
+    {
+      "path": "packs/kenney-city-kit-suburban/2.0/building-type-b.glb",
+      "pack": "kenney-city-kit-suburban",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-suburban/2c871b7af2-1745479373/kenney_city-kit-suburban_20.zip",
+      "sha256": "a964a10c51bb334be677657fd8fa483531974dd15b4243575990192818e2300e",
+      "bytes": 146720
+    },
+    {
+      "path": "packs/kenney-city-kit-suburban/2.0/building-type-c.glb",
+      "pack": "kenney-city-kit-suburban",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-suburban/2c871b7af2-1745479373/kenney_city-kit-suburban_20.zip",
+      "sha256": "86a69f30f1a09461283e158514945ae5cc9d56357b0ddc83a9a3f0eecd113591",
+      "bytes": 99592
+    },
+    {
+      "path": "packs/kenney-city-kit-suburban/2.0/building-type-d.glb",
+      "pack": "kenney-city-kit-suburban",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-suburban/2c871b7af2-1745479373/kenney_city-kit-suburban_20.zip",
+      "sha256": "a41cd28265b2b224e700373c3a8356562619699998b7fa4d70ed41de629a6731",
+      "bytes": 147368
+    },
+    {
+      "path": "packs/kenney-city-kit-suburban/2.0/building-type-e.glb",
+      "pack": "kenney-city-kit-suburban",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-suburban/2c871b7af2-1745479373/kenney_city-kit-suburban_20.zip",
+      "sha256": "9ec43994c8c332b1ae5b058d8b9646255831fd91047c1a35b1fc1ecae4c082fc",
+      "bytes": 145512
+    },
+    {
+      "path": "packs/kenney-city-kit-suburban/2.0/building-type-f.glb",
+      "pack": "kenney-city-kit-suburban",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-suburban/2c871b7af2-1745479373/kenney_city-kit-suburban_20.zip",
+      "sha256": "6f778f50d7f03c86f9a018e428cf8ffdd9e918df09954c0651d1c9559584a22b",
+      "bytes": 138536
+    },
+    {
+      "path": "packs/kenney-city-kit-suburban/2.0/building-type-g.glb",
+      "pack": "kenney-city-kit-suburban",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-suburban/2c871b7af2-1745479373/kenney_city-kit-suburban_20.zip",
+      "sha256": "f497a7bc3a8e6b6273ba99f090042d1cfb3141da57d3c51998c57a479a0ece11",
+      "bytes": 93596
+    },
+    {
+      "path": "packs/kenney-city-kit-suburban/2.0/building-type-h.glb",
+      "pack": "kenney-city-kit-suburban",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-suburban/2c871b7af2-1745479373/kenney_city-kit-suburban_20.zip",
+      "sha256": "b8b8eb7a50f85fa20b4862723e133157f553d69a0daad39b850ddbd2099ebb84",
+      "bytes": 65364
+    },
+    {
+      "path": "packs/kenney-city-kit-suburban/2.0/building-type-i.glb",
+      "pack": "kenney-city-kit-suburban",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-suburban/2c871b7af2-1745479373/kenney_city-kit-suburban_20.zip",
+      "sha256": "798bb0f1eb644b64a19584e6765da23750f04a86c3703704ce56bc63e5512b39",
+      "bytes": 69772
+    },
+    {
+      "path": "packs/kenney-city-kit-suburban/2.0/building-type-j.glb",
+      "pack": "kenney-city-kit-suburban",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-suburban/2c871b7af2-1745479373/kenney_city-kit-suburban_20.zip",
+      "sha256": "fbdce9cb6bb6cf60a861bab36a896403aff604afbf2cb2b86676ae6f49fa2de3",
+      "bytes": 99512
+    },
+    {
+      "path": "packs/kenney-city-kit-suburban/2.0/building-type-k.glb",
+      "pack": "kenney-city-kit-suburban",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-suburban/2c871b7af2-1745479373/kenney_city-kit-suburban_20.zip",
+      "sha256": "c1b819a526bbcf9663bc40c98e22337cded7fff7c50c14679132d5d98d75f583",
+      "bytes": 89152
+    },
+    {
+      "path": "packs/kenney-city-kit-suburban/2.0/building-type-l.glb",
+      "pack": "kenney-city-kit-suburban",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-suburban/2c871b7af2-1745479373/kenney_city-kit-suburban_20.zip",
+      "sha256": "5f03bf2e65a3a795afc18f7e56a5da891908d59d937e660be8478b66905d2cee",
+      "bytes": 109232
+    },
+    {
+      "path": "packs/kenney-city-kit-suburban/2.0/building-type-m.glb",
+      "pack": "kenney-city-kit-suburban",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-suburban/2c871b7af2-1745479373/kenney_city-kit-suburban_20.zip",
+      "sha256": "36d31f4e45498f6229805b6a7a1577ef00230daeea4c6a4469481e9d5a0fdb7c",
+      "bytes": 96996
+    },
+    {
+      "path": "packs/kenney-city-kit-suburban/2.0/building-type-n.glb",
+      "pack": "kenney-city-kit-suburban",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-suburban/2c871b7af2-1745479373/kenney_city-kit-suburban_20.zip",
+      "sha256": "f2a29ececcca4a27bbef187caba0e7bb0e35de7a0de9742a8b8440ce6874c48c",
+      "bytes": 139464
+    },
+    {
+      "path": "packs/kenney-city-kit-suburban/2.0/building-type-o.glb",
+      "pack": "kenney-city-kit-suburban",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-suburban/2c871b7af2-1745479373/kenney_city-kit-suburban_20.zip",
+      "sha256": "aa256fa55613bb4c5fbdf379123454e4f98cde4d07a68bc826bb143d287ae0c1",
+      "bytes": 114424
+    },
+    {
+      "path": "packs/kenney-city-kit-suburban/2.0/building-type-p.glb",
+      "pack": "kenney-city-kit-suburban",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-suburban/2c871b7af2-1745479373/kenney_city-kit-suburban_20.zip",
+      "sha256": "561b2eff15bd2bfe2799a8a049cafc70a1c7bfb6e35f3b2a4d95c8f4f376458c",
+      "bytes": 109260
+    },
+    {
+      "path": "packs/kenney-city-kit-suburban/2.0/building-type-q.glb",
+      "pack": "kenney-city-kit-suburban",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-suburban/2c871b7af2-1745479373/kenney_city-kit-suburban_20.zip",
+      "sha256": "9b56037cab0de804e308766cc5e69b95b3576ffb444084c9016a0748cbcaca04",
+      "bytes": 98632
+    },
+    {
+      "path": "packs/kenney-city-kit-suburban/2.0/building-type-r.glb",
+      "pack": "kenney-city-kit-suburban",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-suburban/2c871b7af2-1745479373/kenney_city-kit-suburban_20.zip",
+      "sha256": "9b76ee3b9061b680ca14fd8cc838d1d5ca91b959e02833254f15d9236b8b20b7",
+      "bytes": 88544
+    },
+    {
+      "path": "packs/kenney-city-kit-suburban/2.0/building-type-s.glb",
+      "pack": "kenney-city-kit-suburban",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-suburban/2c871b7af2-1745479373/kenney_city-kit-suburban_20.zip",
+      "sha256": "56dfd278f10bea2546cb0946f48659dde5876bc9ce100ea1fbe37c0cc94bf9e6",
+      "bytes": 103172
+    },
+    {
+      "path": "packs/kenney-city-kit-suburban/2.0/building-type-t.glb",
+      "pack": "kenney-city-kit-suburban",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-suburban/2c871b7af2-1745479373/kenney_city-kit-suburban_20.zip",
+      "sha256": "3b729b473fc995a632ebc4d96cc8f18ef9d43bdc1a6c26010a02ec0b298c34e7",
+      "bytes": 167512
+    },
+    {
+      "path": "packs/kenney-city-kit-suburban/2.0/building-type-u.glb",
+      "pack": "kenney-city-kit-suburban",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-suburban/2c871b7af2-1745479373/kenney_city-kit-suburban_20.zip",
+      "sha256": "fb259246fc73bdce626eed8b7167d5e97bd63651890551661ec4507311eba279",
+      "bytes": 117912
+    },
+    {
+      "path": "packs/kenney-city-kit-suburban/2.0/driveway-long.glb",
+      "pack": "kenney-city-kit-suburban",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-suburban/2c871b7af2-1745479373/kenney_city-kit-suburban_20.zip",
+      "sha256": "d6fc46e8a5363c87b616eaa65c5dbcffa9026b8af47f979dc6c38cfa91f53459",
+      "bytes": 2952
+    },
+    {
+      "path": "packs/kenney-city-kit-suburban/2.0/driveway-short.glb",
+      "pack": "kenney-city-kit-suburban",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-suburban/2c871b7af2-1745479373/kenney_city-kit-suburban_20.zip",
+      "sha256": "7c7e81602cd6b1024fc98f3f32803db2e21222a3e30cfc838fb7f2282f593823",
+      "bytes": 2956
+    },
+    {
+      "path": "packs/kenney-city-kit-suburban/2.0/fence-1x2.glb",
+      "pack": "kenney-city-kit-suburban",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-suburban/2c871b7af2-1745479373/kenney_city-kit-suburban_20.zip",
+      "sha256": "54dd8d87f4ee0fd4d945b694a10a74eb7b20b1bd7468e09fd21fc32fb2b78397",
+      "bytes": 16492
+    },
+    {
+      "path": "packs/kenney-city-kit-suburban/2.0/fence-1x3.glb",
+      "pack": "kenney-city-kit-suburban",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-suburban/2c871b7af2-1745479373/kenney_city-kit-suburban_20.zip",
+      "sha256": "b4f1b79a844381c29199df417dc4fe17c2eaa1b8aa719aaaa24a7f61687a3ca9",
+      "bytes": 21032
+    },
+    {
+      "path": "packs/kenney-city-kit-suburban/2.0/fence-1x4.glb",
+      "pack": "kenney-city-kit-suburban",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-suburban/2c871b7af2-1745479373/kenney_city-kit-suburban_20.zip",
+      "sha256": "f63d17e1bb8f83416cffefdc0a90615ddd5b2cb69d8ea721cebdd663f9b2c4fc",
+      "bytes": 25544
+    },
+    {
+      "path": "packs/kenney-city-kit-suburban/2.0/fence-2x2.glb",
+      "pack": "kenney-city-kit-suburban",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-suburban/2c871b7af2-1745479373/kenney_city-kit-suburban_20.zip",
+      "sha256": "91862d7ee50b70763b45498fc61401cd3a7f150d337b0815d50b9ce2e2dc3612",
+      "bytes": 23872
+    },
+    {
+      "path": "packs/kenney-city-kit-suburban/2.0/fence-2x3.glb",
+      "pack": "kenney-city-kit-suburban",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-suburban/2c871b7af2-1745479373/kenney_city-kit-suburban_20.zip",
+      "sha256": "1a8270c40f650c9a2e58785945aad457fd58d42cc979b862b347e05a5f0a2f6f",
+      "bytes": 28412
+    },
+    {
+      "path": "packs/kenney-city-kit-suburban/2.0/fence-3x2.glb",
+      "pack": "kenney-city-kit-suburban",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-suburban/2c871b7af2-1745479373/kenney_city-kit-suburban_20.zip",
+      "sha256": "a14090e53a25bc55bede6197edd39983519d995aa831ff2f640d4d636d090a2b",
+      "bytes": 31280
+    },
+    {
+      "path": "packs/kenney-city-kit-suburban/2.0/fence-3x3.glb",
+      "pack": "kenney-city-kit-suburban",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-suburban/2c871b7af2-1745479373/kenney_city-kit-suburban_20.zip",
+      "sha256": "8b4f5c808ea8fdea656bb79171cf489bf469a295cdb737c449ed8d387b5242e4",
+      "bytes": 35820
+    },
+    {
+      "path": "packs/kenney-city-kit-suburban/2.0/fence-low.glb",
+      "pack": "kenney-city-kit-suburban",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-suburban/2c871b7af2-1745479373/kenney_city-kit-suburban_20.zip",
+      "sha256": "fe0272d73820bb4c8db3bed408a28cbd5c042da1373142bd13122a1ac9d1a168",
+      "bytes": 18552
+    },
+    {
+      "path": "packs/kenney-city-kit-suburban/2.0/fence.glb",
+      "pack": "kenney-city-kit-suburban",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-suburban/2c871b7af2-1745479373/kenney_city-kit-suburban_20.zip",
+      "sha256": "073bd2000ac51879516d49f835d5156dac4d5038085380b1232858fc3f562d02",
+      "bytes": 9672
+    },
+    {
+      "path": "packs/kenney-city-kit-suburban/2.0/path-long.glb",
+      "pack": "kenney-city-kit-suburban",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-suburban/2c871b7af2-1745479373/kenney_city-kit-suburban_20.zip",
+      "sha256": "af6869e19f9922e84df23a48795618f03565587dc2c397bd84cf1f066cfa39d5",
+      "bytes": 2940
+    },
+    {
+      "path": "packs/kenney-city-kit-suburban/2.0/path-short.glb",
+      "pack": "kenney-city-kit-suburban",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-suburban/2c871b7af2-1745479373/kenney_city-kit-suburban_20.zip",
+      "sha256": "0f657ebadf8c56adcd54335b8da2e54120f539918ea50509812731790ef99c2b",
+      "bytes": 2944
+    },
+    {
+      "path": "packs/kenney-city-kit-suburban/2.0/path-stones-long.glb",
+      "pack": "kenney-city-kit-suburban",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-suburban/2c871b7af2-1745479373/kenney_city-kit-suburban_20.zip",
+      "sha256": "cbd73ca5746f2290f44a2e1fc6f0759076c2c5fcdb3cb3f1e3acd74d5751d114",
+      "bytes": 6664
+    },
+    {
+      "path": "packs/kenney-city-kit-suburban/2.0/path-stones-messy.glb",
+      "pack": "kenney-city-kit-suburban",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-suburban/2c871b7af2-1745479373/kenney_city-kit-suburban_20.zip",
+      "sha256": "5493589dfac443ecbc0ad5563d9bb98edcefdaa972a0dc65fa65575609fbcd92",
+      "bytes": 5476
+    },
+    {
+      "path": "packs/kenney-city-kit-suburban/2.0/path-stones-short.glb",
+      "pack": "kenney-city-kit-suburban",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-suburban/2c871b7af2-1745479373/kenney_city-kit-suburban_20.zip",
+      "sha256": "63148e02c35d4ad249ee1dcbb0c5ee921cd719f501b25eb8b66bc0e1b20ce28c",
+      "bytes": 4284
+    },
+    {
+      "path": "packs/kenney-city-kit-suburban/2.0/planter.glb",
+      "pack": "kenney-city-kit-suburban",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-suburban/2c871b7af2-1745479373/kenney_city-kit-suburban_20.zip",
+      "sha256": "a876e87d908f0397dcaf94b7705835447825c4c5b39195319535415386542c17",
+      "bytes": 20368
+    },
+    {
+      "path": "packs/kenney-city-kit-suburban/2.0/tree-large.glb",
+      "pack": "kenney-city-kit-suburban",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-suburban/2c871b7af2-1745479373/kenney_city-kit-suburban_20.zip",
+      "sha256": "16d1f95c149bc727a953a473cf20bf21de9bf1a88747c4f9d2eeb4ac7d43e291",
+      "bytes": 5812
+    },
+    {
+      "path": "packs/kenney-city-kit-suburban/2.0/tree-small.glb",
+      "pack": "kenney-city-kit-suburban",
+      "license": "CC0-1.0",
+      "sourceUrl": "https://kenney.nl/media/pages/assets/city-kit-suburban/2c871b7af2-1745479373/kenney_city-kit-suburban_20.zip",
+      "sha256": "5f63359e5f392609d7617cc98070855ca1ffd4f4b4bc3978a5ff56ece88a58d6",
+      "bytes": 5812
     }
   ],
   "generated": [
@@ -9164,6 +11431,38 @@
       ],
       "sha256": "d695fb298e06dfe10b2276bd143c78b93b11fca748b9d868d55d552d520b43dd",
       "bytes": 53529
+    },
+    {
+      "path": "generated/box-props/basketball-hoop.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "8b2cb5ef8bf1c87468c1a9f438879b67d747de3b8a1a5857b8c3964f0b2d6c62",
+      "bytes": 9968
+    },
+    {
+      "path": "generated/box-props/flagpole.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "14e51ba0643ec2f9b395315d5144dc314aaf0b3d41a0da683e2936f795e31164",
+      "bytes": 6992
+    },
+    {
+      "path": "generated/box-props/park-bench.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "6b74d06b358fc6c9aae8c21e523e3705362e45bfb25b106bf5c4d611e43c3480",
+      "bytes": 8432
+    },
+    {
+      "path": "generated/box-props/swing-set.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "0251df56a6cab225027d3a57e1b0a7c48987b8c82a12324f7a43e610ce979d7b",
+      "bytes": 10680
     },
     {
       "path": "generated/characters/bear.glb",
@@ -10726,8 +13025,8 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "2b9a1c35f17fe41e01928a751fa6da911c574f57bf12ee2ae1e6114ef018c375",
-      "bytes": 828820
+      "sha256": "db26a26828b166231678ccdd69337624012562ec885c2257419b5a84f21fc813",
+      "bytes": 816824
     },
     {
       "path": "generated/review/accessories/item-backpack-brown.png",
@@ -12420,8 +14719,8 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "ee1ca015c2d764993e09479cd776ec9e3d0b0e9ff09d6766da34021d709ef2f5",
-      "bytes": 823409
+      "sha256": "2da27da5c3ae31fd4f74f6aac9b3938fb3aeb05181c5e8c24c15bcdf579406e4",
+      "bytes": 822310
     },
     {
       "path": "generated/review/school/khu-02-cong-truong.png",
@@ -12436,8 +14735,8 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "6a3a1cbe0a7110cc22a63224dac6fad96bfe90dc5288e6ab53ab5c4b2c0dcb8f",
-      "bytes": 497211
+      "sha256": "e7f7790199546364ee2247d2798f2159698e98f48f4251bea2aa8107ff41a837",
+      "bytes": 497692
     },
     {
       "path": "generated/review/school/khu-03-san-truong-loi-vao.png",
@@ -12452,8 +14751,8 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "d3dc6ba247a9b378b019f7659aefe24b0d411ceb4317803eee14799e9449b889",
-      "bytes": 552804
+      "sha256": "5e0b309f14214d4e1ea77963993fa15dadb07e10b22063d335ad5ae0a234fe3a",
+      "bytes": 537979
     },
     {
       "path": "generated/review/school/khu-04-nha-da-nang-san-bong-ro.png",
@@ -12468,8 +14767,8 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "147a1d1e48a487858ce1144db221ed30cfdb3f576ae4b4266a78c6e8941a8924",
-      "bytes": 425636
+      "sha256": "7ac7bca6d6e164347dff7ac4ff4f91f692a776883f6bb0b5e76e5f68e1d9c9c2",
+      "bytes": 486851
     },
     {
       "path": "generated/review/school/khu-05-san-choi.png",
@@ -12484,8 +14783,8 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "368e3f0cb5dcca43d4662207d8f60dcc98bf46fcbaadc88ee0d5391653d306d4",
-      "bytes": 639674
+      "sha256": "da866210a7f2e945b5730463b939f76c4f374082614006f6ff18ffc00f19543f",
+      "bytes": 603071
     },
     {
       "path": "generated/review/school/khu-06-vuon-khoa-hoc.png",
@@ -12500,8 +14799,8 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "48c9a12d3968c25f231e071f4b09cc96575a7c4586d062ef99849a5653ca5a5f",
-      "bytes": 697824
+      "sha256": "e9c638dac27ee33908b8d13f3288384308575aace05069db989c77be34525a6a",
+      "bytes": 637497
     },
     {
       "path": "generated/review/school/khu-07-duong-truoc-truong.png",
@@ -12516,8 +14815,8 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "3526c5933616f335dda29ca367abfefe7e5ff42456d4b0631e4641566d3f08da",
-      "bytes": 540282
+      "sha256": "a20d52e5b4b4b65a335818e5d3b20b998607b60ac5282dac949cff751dd1466b",
+      "bytes": 452017
     },
     {
       "path": "generated/review/school/khu-08-goc-nhin-phia-sau.png",
@@ -12532,8 +14831,8 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "8d147f944bf88726c9e2e5b0a9facb41a4fce86147c67d46471216d8382bfb48",
-      "bytes": 683067
+      "sha256": "2c4195bceb1d0d2f210e389729bb22ee45037adff113d813954746e2cd5ccece",
+      "bytes": 663534
     },
     {
       "path": "generated/review/school/lop-01-mat-truoc.png",
@@ -12548,8 +14847,8 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "6525fb93b6e3402a09a46b943c49028fbe9739e7a8516974a700cab70995ccfb",
-      "bytes": 530670
+      "sha256": "d092529f4bf2f7a53800ec245571d599fcade691ab75d5e8105aeb3b34429dde",
+      "bytes": 520816
     },
     {
       "path": "generated/review/school/lop-02-goc-nhin-cheo.png",
@@ -12564,8 +14863,8 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "8a3fb59c36a22e8ecb81d86b9649831bc09d019bd5fa3f24f3f0ec92d00d6957",
-      "bytes": 793190
+      "sha256": "8a7c187e5bb84b1487e0e9d5ea53f1329a05788d420d06b00276ab99617357cb",
+      "bytes": 784265
     },
     {
       "path": "generated/review/school/lop-03-mat-sau-hanh-lang.png",
@@ -12580,8 +14879,8 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "c509143800164112e57dc4d824405e2153d17f45d3263ca8e42047fa69a098f2",
-      "bytes": 452799
+      "sha256": "4619314438fb8617675204164e2f443712df576bf46ed1b2b3597da9d6819730",
+      "bytes": 452900
     },
     {
       "path": "generated/review/school/lop-04-trong-lop-nhin-bang.png",
@@ -12596,8 +14895,8 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "08bcfcafb9c15d3756f31c76dc76b17d63d02ad78362dd9c49bb5b2452caeaed",
-      "bytes": 252141
+      "sha256": "4a431dbf6d6f46f9ad61c07bfb882e70b888eafee4f1dad4ba2703a87b187a48",
+      "bytes": 222491
     },
     {
       "path": "generated/review/school/lop-05-trong-lop-goc-cheo.png",
@@ -12612,8 +14911,8 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "ddb56f2fb8b88e42269d10cb59f6f752b86ee76552d4f9a0ca4a5b7b45d8e55c",
-      "bytes": 359385
+      "sha256": "a7f3aa3c8dfac97aa73c22b907cd4ef3ad869ed646fba7ac6c53d07ae64c7dff",
+      "bytes": 334342
     },
     {
       "path": "generated/review/school/lop-06-hanh-lang-trong.png",
@@ -12628,8 +14927,8 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "f3ad15222935f6c9b994fc1e4845ee1f971431bf6fe53d44bd540412a7a757c0",
-      "bytes": 231094
+      "sha256": "76eee934b21bb3da4922ac8d14793b44db16a81963833c2f85bc08ff662231a1",
+      "bytes": 201066
     },
     {
       "path": "generated/review/school/lop-07-cau-thang-tang-2.png",
@@ -12660,8 +14959,8 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "91e3a7ddb78b52df7acd9c48c95ff12c66cb30317a085f192ee84eeb7e7c1c91",
-      "bytes": 743815
+      "sha256": "f104d80d76f1d73881b76c94598c5146ecbf242efafd6bbb5d2e0212dfe272d4",
+      "bytes": 763754
     },
     {
       "path": "generated/review/school/nha-05-ben-phai-loi-hong.png",
@@ -12676,8 +14975,8 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "901143798ecbb6f47d491e56d7f8805bc15fbc1580e6dba4c297a3e4af6805fc",
-      "bytes": 436843
+      "sha256": "a64cc35209af6b8aa87cbc5bdc26763d7ea309fdb6ddf5e7e41e505c952b6088",
+      "bytes": 569220
     },
     {
       "path": "generated/review/sgk-coverage.json",
@@ -13114,16 +15413,16 @@
       "license": "CC0-1.0",
       "generator": "tools/world/generate-school-map.ts",
       "derivedFrom": [],
-      "sha256": "11cdd455586bde3c73daf4e96f11ad3281a68457802e8069c722eb30e98689e6",
-      "bytes": 78677
+      "sha256": "b1d12a544f1fcf284ea577ba8138893c570710ba811bb3f2857e8c8b7375d1b6",
+      "bytes": 65425
     },
     {
       "path": "generated/world/truong-hoc/entities.json",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-school-map.ts",
       "derivedFrom": [],
-      "sha256": "4eb75c244634aaf79945a0484f00c5ce15527c0743ce9af68ff236474eee8aa9",
-      "bytes": 93235
+      "sha256": "601d855b888415a402279d4188d0f149351498a2d65160eed51cf0ee43a73fda",
+      "bytes": 115691
     }
   ]
 }

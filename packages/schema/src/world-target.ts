@@ -60,3 +60,17 @@ export type EmojiProp = z.infer<typeof EmojiProp>;
 
 export const EmojiPropCatalog = z.strictObject({ version: z.literal(1), props: z.record(ContentId, EmojiProp) });
 export type EmojiPropCatalog = z.infer<typeof EmojiPropCatalog>;
+
+const BoxVec = z.tuple([z.number(), z.number(), z.number()]);
+/**
+ * Props no pack has that are too fine for whole blocks (swings, a hoop, the flag), as boxes in block units
+ * (origin at the bottom centre) with a colour each; tools/assets/build-box-props.ts builds them into
+ * generated/box-props/<id>.glb.
+ */
+export const BoxProp = z.strictObject({
+  boxes: z.array(z.strictObject({ from: BoxVec, to: BoxVec, color: z.string().regex(/^#[0-9a-f]{6}$/) })).min(1),
+});
+export type BoxProp = z.infer<typeof BoxProp>;
+
+export const BoxPropCatalog = z.strictObject({ version: z.literal(1), props: z.record(ContentId, BoxProp) });
+export type BoxPropCatalog = z.infer<typeof BoxPropCatalog>;

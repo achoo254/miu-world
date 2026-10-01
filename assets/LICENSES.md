@@ -18,6 +18,9 @@ Allowed licenses: CC0-1.0, MIT, OFL-1.1. Files built from these packs are listed
 | Fluent Emoji (3D subset) (`fluent-emoji`) | Microsoft | 1ffb34c752ec | MIT | https://github.com/microsoft/fluentui-emoji |
 | Baloo 2 (`font-baloo-2`) | Google Fonts / Fontsource | 5.3.0 | OFL-1.1 | https://fontsource.org/fonts/baloo-2 |
 | Nunito (`font-nunito`) | Google Fonts / Fontsource | 5.3.0 | OFL-1.1 | https://fontsource.org/fonts/nunito |
+| Furniture Kit (`kenney-furniture-kit`) | Kenney | 2.0 | CC0-1.0 | https://kenney.nl/assets/furniture-kit |
+| City Kit (Roads) (`kenney-city-kit-roads`) | Kenney | 2.1 | CC0-1.0 | https://kenney.nl/assets/city-kit-roads |
+| City Kit (Suburban) (`kenney-city-kit-suburban`) | Kenney | 2.0 | CC0-1.0 | https://kenney.nl/assets/city-kit-suburban |
 
 Credits: art by Kenney (www.kenney.nl), emoji by Microsoft Fluent Emoji, fonts Baloo 2 and Nunito (SIL Open Font License).
 
@@ -499,4 +502,92 @@ INCLUDING ANY GENERAL, SPECIAL, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL
 DAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM
 OTHER DEALINGS IN THE FONT SOFTWARE.
+```
+
+## Furniture Kit — CC0-1.0
+
+```text
+Furniture Kit (2.0)
+
+	Created/distributed by Kenney (www.kenney.nl)
+	Creation date: 20-10-2018 16:21
+
+			------------------------------
+
+	License: (Creative Commons Zero, CC0)
+	http://creativecommons.org/publicdomain/zero/1.0/
+
+	This content is free to use in personal, educational and commercial projects.
+	Support us by crediting Kenney or www.kenney.nl (this is not mandatory)
+
+			------------------------------
+
+	Donate:   http://support.kenney.nl
+	Request:  http://request.kenney.nl
+	Patreon:  http://patreon.com/kenney/
+
+	Follow on Twitter for updates:
+	http://twitter.com/KenneyNL
+```
+
+## City Kit (Roads) — CC0-1.0
+
+```text
+City Kit Roads (2.1)
+
+	Created/distributed by Kenney (www.kenney.nl)
+	Creation date: 18-08-2026 10:43
+	
+			------------------------------
+
+	License: (Creative Commons Zero, CC0)
+	http://creativecommons.org/publicdomain/zero/1.0/
+
+	You can use this content for personal, educational, and commercial purposes.
+
+	Support by crediting 'Kenney' or 'www.kenney.nl' (this is not a requirement)
+
+			------------------------------
+
+	• Website : www.kenney.nl
+	• Donate  : www.kenney.nl/donate
+
+	• Patreon : patreon.com/kenney
+	
+	Follow on social media for updates:
+
+	• Twitter:	 twitter.com/KenneyNL
+	• BlueSky:	 kenney.bsky.social
+	• Instagram: instagram.com/kenney_nl
+```
+
+## City Kit (Suburban) — CC0-1.0
+
+```text
+City Kit Suburban (2.0)
+
+	Created/distributed by Kenney (www.kenney.nl)
+	Creation date: 23-04-2025 20:22
+	
+			------------------------------
+
+	License: (Creative Commons Zero, CC0)
+	http://creativecommons.org/publicdomain/zero/1.0/
+
+	You can use this content for personal, educational, and commercial purposes.
+
+	Support by crediting 'Kenney' or 'www.kenney.nl' (this is not a requirement)
+
+			------------------------------
+
+	• Website : www.kenney.nl
+	• Donate  : www.kenney.nl/donate
+
+	• Patreon : patreon.com/kenney
+	
+	Follow on social media for updates:
+
+	• Twitter:	 twitter.com/KenneyNL
+	• BlueSky:	 kenney.bsky.social
+	• Instagram: instagram.com/kenney_nl
 ```

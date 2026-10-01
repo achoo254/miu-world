@@ -13,12 +13,12 @@ import { blockTableSchema } from '../../packages/voxel/src/block-table';
 import { VoxelWorld, encodeWorld } from '../../packages/voxel/src/chunk-format';
 import type { WorldEntities } from '../../packages/voxel/src/world-entities';
 import { ASSETS_DIR, REPO_ROOT, readJson } from '../assets/asset-lib';
-import { modelScales } from './model-scales';
+import { modelCentres, modelScales } from './model-scales';
 import { createRng, fbm, hashSeed } from './noise';
 import { distanceToPath, pathColumns, type Point } from './structures/path';
 import { cellsIn, placeQuestTargets, readQuests, targetUses } from './chapters/place-quest-targets';
 import { placeHouse } from './structures/buildings';
-import { placeBed, placeBench, placeCampusWall, placeCourt, placeGreenhouse, placeLamp, placeMainBuilding, placeSportsHall, placeStreet, placeSwings, type SchoolPalette } from './structures/school';
+import { placeBed, placeCampusWall, placeCourt, placeGreenhouse, placeMainBuilding, placeSportsHall, placeStreet, type FurnitureKind, type SchoolPalette } from './structures/school';
 import { placeTree, treeHeight } from './structures/tree';
 
 export const MAP_ID = 'truong-hoc';
@@ -34,6 +34,24 @@ const PACK = {
   nature: 'packs/kenney-nature-kit/2.1',
   castle: 'packs/kenney-castle-kit/2.0',
   props: 'generated/props',
+  box: 'generated/box-props',
+  furniture: 'packs/kenney-furniture-kit/2.0',
+  roads: 'packs/kenney-city-kit-roads/2.1',
+  suburb: 'packs/kenney-city-kit-suburban/2.0',
+};
+/** Houses of the neighbourhood around the school (City Kit Suburban), each its own design. */
+const HOUSES = 'abcdefghijklmnopqrstu'.split('').map((k) => `${PACK.suburb}/building-type-${k}.glb`);
+/** Classroom furniture (Furniture Kit): the model of each kind. */
+const FURNITURE: Record<FurnitureKind, string> = {
+  desk: `${PACK.furniture}/desk.glb`,
+  chair: `${PACK.furniture}/chairDesk.glb`,
+  'teacher-desk': `${PACK.furniture}/tableCloth.glb`,
+  'teacher-chair': `${PACK.furniture}/chair.glb`,
+  bookcase: `${PACK.furniture}/bookcaseOpen.glb`,
+  lamp: `${PACK.furniture}/lampSquareCeiling.glb`,
+  plant: `${PACK.furniture}/pottedPlant.glb`,
+  bin: `${PACK.furniture}/trashcan.glb`,
+  globe: 'generated/props/globe.glb',
 };
 const MODEL_HEIGHT: Record<string, number> = {
   [`${PACK.survival}/signpost.glb`]: 1.6,
@@ -61,6 +79,21 @@ const MODEL_HEIGHT: Record<string, number> = {
   [`${PACK.props}/abacus.glb`]: 0.6,
   [`${PACK.props}/teddy-bear.glb`]: 0.8,
   [`${PACK.props}/artist-palette.glb`]: 0.9,
+  [`${PACK.furniture}/desk.glb`]: 0.78,
+  [`${PACK.furniture}/chairDesk.glb`]: 1.2,
+  [`${PACK.furniture}/tableCloth.glb`]: 0.8,
+  [`${PACK.furniture}/chair.glb`]: 1.0,
+  [`${PACK.furniture}/bookcaseOpen.glb`]: 2.0,
+  [`${PACK.furniture}/lampSquareCeiling.glb`]: 0.45,
+  [`${PACK.furniture}/pottedPlant.glb`]: 1.3,
+  [`${PACK.furniture}/trashcan.glb`]: 0.8,
+  [`${PACK.roads}/light-curved.glb`]: 4.8,
+  [`${PACK.roads}/light-square.glb`]: 3.6,
+  [`${PACK.box}/swing-set.glb`]: 3.06,
+  [`${PACK.box}/basketball-hoop.glb`]: 3.85,
+  [`${PACK.box}/flagpole.glb`]: 9.2,
+  [`${PACK.box}/park-bench.glb`]: 0.96,
+  ...Object.fromEntries(HOUSES.map((m, i) => [m, 7 + (i % 3)])),
 };
 const MODEL_ANIMATION: Record<string, string> = {
   [`${PACK.pets}/animal-lion.glb`]: 'idle',
@@ -104,6 +137,10 @@ export async function generateSchool(): Promise<{ world: VoxelWorld; entities: W
   };
   const scales = await modelScales(MODEL_HEIGHT, MODEL_ANIMATION);
   const scaleOf = (model: string): number => scales.get(model) ?? 1;
+  // Pack models whose pivot is a corner stand by their middle (furniture, houses).
+  const centres = await modelCentres([...Object.values(FURNITURE).filter((m) => m.startsWith('packs/')), ...HOUSES]);
+  /** Props placed while the blocks go down, added once the ground is final: model, x, z, yaw (or a fixed y). */
+  const queued: Array<{ model: string; x: number; z: number; yaw: number; y?: number }> = [];
 
   const seed = hashSeed(SEED_TEXT);
   const rng = createRng(seed);
@@ -145,7 +182,12 @@ export async function generateSchool(): Promise<{ world: VoxelWorld; entities: W
       let h = GROUND + fbm(seed, x / 26, z / 26) * 2.5;
       const edge = Math.min(x, z, sx - 1 - x, sz - 1 - z);
       if (edge < 10) h += (10 - edge) * 1.1;
-      if (inCampus(x, z) || x === CAMPUS.x0 || x === CAMPUS.x1 || z === CAMPUS.z1 || onStreet(z) || Math.abs(x - RIVER.x0 + 2) < 2 || Math.abs(x - RIVER.x1 - 2) < 2) h = GROUND;
+      // Behind the wall the neighbourhood stands on a bank two blocks up, level with the wall's top: seen
+      // from the school, out of reach (the child steps up one block at most). South of the street the verge
+      // stays low.
+      if (!inCampus(x, z) && !onStreet(z) && z > STREET.z1) h = Math.max(h, GROUND + 2);
+      if (z < STREET.z0) h = GROUND + 1;
+      if (inCampus(x, z) || x === CAMPUS.x0 || x === CAMPUS.x1 || z === CAMPUS.z0 || z === CAMPUS.z1 || onStreet(z)) h = GROUND;
       if (inRiver(x) && z > STREET.z1 + 4) h = GROUND - 3;
       (heights[x] as number[])[z] = Math.round(Math.min(h, sy - 20));
     }
@@ -164,7 +206,7 @@ export async function generateSchool(): Promise<{ world: VoxelWorld; entities: W
   // 2. The street, the sidewalk with lamps, the campus wall and gate.
   placeStreet(world, 0, sx - 1, STREET.z0, STREET.z1, GROUND, [GATE[0] - 1, GATE[1] + 1], palette);
   for (let x = 0; x < sx; x++) for (let z = STREET.z1 + 1; z <= STREET.z1 + 3; z++) world.set(x, GROUND, z, B.path);
-  for (let x = 8; x < sx; x += 16) placeLamp(world, x, GROUND + 1, STREET.z1 + 3, palette);
+  for (let x = 8; x < sx; x += 16) queued.push({ model: `${PACK.roads}/light-curved.glb`, x, z: STREET.z1 + 2, yaw: 0 });
   placeCampusWall(world, CAMPUS.x0, CAMPUS.x1, CAMPUS.z0, CAMPUS.z1, () => GROUND + 1, GATE, palette);
 
   // 3. The main building with its clock tower, furnished classrooms and staircase.
@@ -175,18 +217,17 @@ export async function generateSchool(): Promise<{ world: VoxelWorld; entities: W
   for (const [x0, x1] of [[mid - 12, mid - 6], [mid + 6, mid + 12]] as const) {
     for (const z0 of [yard.z - 16, yard.z - 4, yard.z + 8]) flowers.push(...placeBed(world, x0, x1, z0, z0 + 4, GROUND + 1, palette));
   }
-  for (let z = yard.z - 18; z <= yard.z + 18; z += 9) for (const x of [mid - 4, mid + 4]) placeLamp(world, x, GROUND + 1, z, palette);
+  for (let z = yard.z - 18; z <= yard.z + 18; z += 9) for (const [x, yaw] of [[mid - 4, 270], [mid + 4, 90]] as const) queued.push({ model: `${PACK.roads}/light-square.glb`, x, z, yaw });
   const flag = { x: yard.x - 14, z: yard.z + 15 };
-  for (let y = GROUND + 1; y <= GROUND + 12; y++) world.set(flag.x, y, flag.z, B.birch);
-  for (let dz = 1; dz <= 4; dz++) for (let y = GROUND + 9; y <= GROUND + 12; y++) world.set(flag.x, y, flag.z + dz, B.woodRed);
+  queued.push({ model: `${PACK.box}/flagpole.glb`, x: flag.x, z: flag.z, yaw: 270 });
   const pitch = { x: yard.x - 19, z: yard.z - 6 };
   for (let dx = -5; dx <= 5; dx++) for (let dz = -10; dz <= 10; dz++) if (Math.abs(dx) === 5 || Math.abs(dz) === 10 || dz === 0) world.set(pitch.x + dx, GROUND, pitch.z + dz, B.snow);
 
   // 5. The other zones' buildings and equipment.
   placeHouse(world, canteen.x - 16, canteen.z + 8, 14, 10, 4, GROUND + 1, { wall: B.planks, roof: B.woodRed, trim: B.log });
   placeHouse(world, playground.x + 6, playground.z + 8, 13, 10, 4, GROUND + 1, { wall: B.sand, roof: B.roofBlue, trim: B.birch });
-  for (const [x, z] of [[playground.x - 16, playground.z - 12], [playground.x - 16, playground.z - 4]] as const) placeSwings(world, x, z, GROUND + 1, palette);
-  for (const [x, z] of [[playground.x - 6, playground.z - 16], [canteen.x - 4, canteen.z - 16], [courtyard.x - 16, courtyard.z + 6], [courtyard.x + 13, courtyard.z + 6]] as const) placeBench(world, x, z, GROUND + 1, palette);
+  for (const [x, z] of [[playground.x - 14, playground.z - 12], [playground.x - 14, playground.z - 4]] as const) queued.push({ model: `${PACK.box}/swing-set.glb`, x, z, yaw: 0 });
+  for (const [x, z] of [[playground.x - 6, playground.z - 16], [canteen.x - 4, canteen.z - 16], [courtyard.x - 16, courtyard.z + 6], [courtyard.x + 13, courtyard.z + 6], [mid - 9, yard.z + 17], [mid + 9, yard.z + 17]] as const) queued.push({ model: `${PACK.box}/park-bench.glb`, x, z, yaw: 180 });
   placeGreenhouse(world, garden.x - 17, garden.x + 1, garden.z + 12, garden.z + 26, GROUND + 1, palette);
   const crops: Array<[number, number]> = [];
   for (let i = 0; i < 6; i++) {
@@ -194,24 +235,22 @@ export async function generateSchool(): Promise<{ world: VoxelWorld; entities: W
     const z0 = garden.z - 22 + Math.floor(i / 3) * 12;
     crops.push(...placeBed(world, x0, x0 + 9, z0, z0 + 4, GROUND + 1, palette));
   }
-  placeCourt(world, sports.x - 17, sports.x + 17, sports.z - 26, sports.z - 2, GROUND, palette);
+  for (const hoop of placeCourt(world, sports.x - 17, sports.x + 17, sports.z - 26, sports.z - 2, GROUND, palette)) queued.push({ model: `${PACK.box}/basketball-hoop.glb`, x: hoop.at[0] - 0.5, z: hoop.at[2] - 0.5, yaw: hoop.yaw });
   placeSportsHall(world, sports.x - 15, sports.x + 17, sports.z + 6, sports.z + 28, GROUND + 1, palette);
   placeHouse(world, art.x - 12, art.z + 6, 24, 10, 5, GROUND + 1, { wall: B.brickGrey, roof: B.woodRed, trim: B.birch });
 
-  // 6. Outside the wall: houses north and west, trees (some in pink blossom) wherever nothing stands.
-  const houseKinds = [
-    { wall: B.sand, roof: B.brickRed, trim: B.log },
-    { wall: B.planks, roof: B.roofBlue, trim: B.birch },
-    { wall: B.brickGrey, roof: B.woodRed, trim: B.log },
-  ];
+  // 6. Outside the wall: the neighbourhood's houses on their bank, facing the school; trees (some in pink
+  // blossom) wherever nothing stands.
   const houses: Array<[number, number]> = [];
-  for (let i = 0, x = 22; x < RIVER.x0 - 16; x += 30, i++) {
-    for (const z of [160, 176]) {
-      placeHouse(world, x + (z === 176 ? 12 : 0), z, 10, 8, 3, surface(x, z) + 1, houseKinds[(i + (z === 176 ? 1 : 0)) % 3] ?? { wall: B.sand, roof: B.brickRed, trim: B.log });
-      houses.push([x + (z === 176 ? 12 : 0), z]);
-    }
-  }
-  const nearHouse = (x: number, z: number) => houses.some(([hx, hz]) => x >= hx - 3 && x <= hx + 13 && z >= hz - 3 && z <= hz + 11);
+  let houseKind = 0;
+  const addHouse = (x: number, z: number, yaw: number): void => {
+    houses.push([x, z]);
+    queued.push({ model: HOUSES[houseKind++ % HOUSES.length] ?? '', x, z, yaw });
+  };
+  for (let x = 24; x < RIVER.x0 - 8; x += 16) addHouse(x, CAMPUS.z1 + 12, 180);
+  for (let x = 32; x < RIVER.x0 - 8; x += 20) addHouse(x, CAMPUS.z1 + 30, 180);
+  for (let z = CAMPUS.z0 + 16; z < CAMPUS.z1; z += 18) addHouse(7, z, 90);
+  const nearHouse = (x: number, z: number) => houses.some(([hx, hz]) => Math.abs(x - hx) < 8 && Math.abs(z - hz) < 8);
   for (let gx = 4; gx < sx - 4; gx += 7) {
     for (let gz = 4; gz < sz - 4; gz += 7) {
       const x = Math.round(gx + (rng() - 0.5) * 5);
@@ -249,9 +288,21 @@ export async function generateSchool(): Promise<{ world: VoxelWorld; entities: W
   addPropAt(`${PACK.props}/clock-face.glb`, main.clock, 180);
   addPropAt(`${PACK.props}/school-bus.glb`, [mid + 28.5, GROUND + 1, (STREET.z0 + STREET.z1) / 2 + 2], 90);
   for (const side of [-1, 1]) addPropAt(`${PACK.castle}/metal-gate.glb`, [side < 0 ? GATE[0] - 0.5 : GATE[1] + 1.5, GROUND + 1, CAMPUS.z0 + 2.5], side < 0 ? 90 : 270);
-  for (const shelf of main.shelves) addPropAt(`${PACK.props}/books.glb`, shelf);
-  main.desks.forEach((desk, i) => addPropAt(i === 0 ? `${PACK.props}/globe.glb` : `${PACK.props}/abacus.glb`, desk));
+  /** A pack model by its middle: its pivot is a corner, so the offset turns with it. */
+  const addCentred = (model: string, at: readonly [number, number, number], yaw: number): void => {
+    const [cx, cz] = centres.get(model) ?? [0, 0];
+    const s = scaleOf(model);
+    const t = (yaw * Math.PI) / 180;
+    const [ox, oz] = [-cx * s, -cz * s];
+    addPropAt(model, [at[0] + ox * Math.cos(t) + oz * Math.sin(t), at[1], at[2] - ox * Math.sin(t) + oz * Math.cos(t)], yaw);
+  };
+  for (const piece of main.furniture) addCentred(FURNITURE[piece.kind], piece.at, piece.yaw);
+  for (const piece of main.furniture.filter((f) => f.kind === 'bookcase')) addPropAt(`${PACK.props}/books.glb`, [piece.at[0], piece.at[1] + 2, piece.at[2]]);
   addPropAt(`${PACK.props}/potted-plant.glb`, main.plant);
+  for (const q of queued) {
+    if (q.model.startsWith(PACK.suburb)) addCentred(q.model, place(q.x, q.z), q.yaw);
+    else addProp(q.model, q.x, q.z, q.yaw);
+  }
   for (let i = 0; i < 3; i++) addProp(`${PACK.survival}/workbench.glb`, canteen.x - 10 + i * 6, canteen.z - 4, 0);
   for (const [x, z] of [[playground.x - 4, playground.z - 8], [playground.x + 4, playground.z - 14]] as const) addProp(`${PACK.props}/playground-slide.glb`, x, z, 200);
   addProp(`${PACK.props}/teddy-bear.glb`, playground.x + 10, playground.z + 4, 180);

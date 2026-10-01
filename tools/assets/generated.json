@@ -153,5 +153,11 @@
       "fluent-emoji"
     ],
     "license": "MIT"
+  },
+  {
+    "glob": "generated/box-props/*.glb",
+    "generator": "tools/assets/build-box-props.ts",
+    "derivedFrom": [],
+    "license": "CC0-1.0"
   }
 ]

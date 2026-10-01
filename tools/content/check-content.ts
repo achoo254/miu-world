@@ -9,7 +9,7 @@ import { playerTextIssues } from '../../packages/quest/src/player-name';
 import { PrivacyDocument, stepTargets, type QuestDefinition } from '../../packages/schema/src/content';
 import { Item } from '../../packages/schema/src/item';
 import { PetCatalog } from '../../packages/schema/src/pet';
-import { EmojiPropCatalog, LookCatalog, QuestTargetCatalog } from '../../packages/schema/src/world-target';
+import { BoxPropCatalog, EmojiPropCatalog, LookCatalog, QuestTargetCatalog } from '../../packages/schema/src/world-target';
 import { RegionCatalog } from '../../packages/schema/src/region';
 import { UI_ICONS } from '../../apps/web/src/ui/kit/ui-art';
 import { entitiesForChapter, mapForRegion, worldEntitiesSchema } from '../../packages/voxel/src/world-entities';
@@ -38,6 +38,7 @@ const REGIONS_FILE = 'world/regions.json';
 const LOOKS_FILE = 'world/looks.json';
 const TARGETS_FILE = 'world/targets.json';
 const EMOJI_PROPS_FILE = 'world/emoji-props.json';
+const BOX_PROPS_FILE = 'world/box-props.json';
 const PRIVACY_FILE = 'legal/privacy-vi.json';
 const ITEMS_FOLDER = 'items/';
 
@@ -127,7 +128,7 @@ const readByCatalogue = (rel: string) =>
   CATALOGUE_FILES.some((o) => (o.endsWith('/') ? inFolder(rel, o) && rel.endsWith('.json') : rel === o));
 const readByAssetTools = (rel: string) => ASSET_TOOL_FILES.some((o) => (o.endsWith('/') ? inFolder(rel, o) : rel === o));
 const readByCurriculum = (rel: string) => CURRICULUM_FOLDERS.some((o) => inFolder(rel, o) && rel.endsWith('.json'));
-const readByWeb = (rel: string) => rel === REGIONS_FILE || rel === LOOKS_FILE || rel === EMOJI_PROPS_FILE || rel === TARGETS_FILE || rel === PRIVACY_FILE || (inFolder(rel, ITEMS_FOLDER) && rel.endsWith('.json'));
+const readByWeb = (rel: string) => rel === REGIONS_FILE || rel === LOOKS_FILE || rel === EMOJI_PROPS_FILE || rel === BOX_PROPS_FILE || rel === TARGETS_FILE || rel === PRIVACY_FILE || (inFolder(rel, ITEMS_FOLDER) && rel.endsWith('.json'));
 
 /** Items parse, use a shipped UI icon, file name = id, and every item a quest rewards exists. */
 export function checkItems(dir: string, files: readonly string[], quests: Iterable<QuestDefinition>): string[] {
@@ -283,6 +284,8 @@ export function checkContent(dir: string = CONTENT_DIR): ContentReport {
       issues.push(...checkLessonLooks(readQuestDefinitions(path.join(dir, 'quests')), read(LOOKS_FILE), read(TARGETS_FILE)));
       const pictures = new Set(manifest.files.flatMap((f) => f.path.match(/^packs\/fluent-emoji\/[^/]+\/props\/(.+)\.png$/)?.[1] ?? []));
       issues.push(...checkEmojiProps(read(EMOJI_PROPS_FILE), read(LOOKS_FILE), pictures));
+      const boxProps = BoxPropCatalog.safeParse(read(BOX_PROPS_FILE));
+      if (!boxProps.success) issues.push(`content/${BOX_PROPS_FILE}: ${boxProps.error.message}`);
     } else issues.push(`content/${TARGETS_FILE} is missing: the map generators place quest targets from it`);
     const privacy: unknown = JSON.parse(readFileSync(path.join(dir, PRIVACY_FILE), 'utf8'));
     issues.push(...checkPrivacy(privacy, catalog.consent.version));

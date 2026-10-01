@@ -43,14 +43,8 @@ export function placeStreet(world: WorldWriter, x0: number, x1: number, z0: numb
   }
 }
 
-/** A street lamp: a stone post four high with a glass lantern on top. */
-export function placeLamp(world: WorldWriter, x: number, baseY: number, z: number, b: SchoolPalette): void {
-  fill(world, x, baseY, z, x, baseY + 3, z, b.stone);
-  put(world, x, baseY + 4, z, b.light);
-}
-
 /**
- * The campus wall around x0..x1, z0..z1: a low stone wall with taller pillars every four blocks, open at
+ * The campus wall around x0..x1, z0..z1: a stone wall two high with taller pillars every four blocks, open at
  * `gate` (x from..to on the front side) between two broad gate pillars topped with lanterns.
  */
 export function placeCampusWall(world: WorldWriter, x0: number, x1: number, z0: number, z1: number, baseY: (x: number, z: number) => number, gate: readonly [number, number], b: SchoolPalette): void {
@@ -61,9 +55,10 @@ export function placeCampusWall(world: WorldWriter, x0: number, x1: number, z0: 
       if (z === z0 && x >= gate[0] && x <= gate[1]) continue;
       const y = baseY(x, z);
       put(world, x, y, z, b.brick);
+      put(world, x, y + 1, z, b.brick);
       if ((x - x0) % 4 === 0 && (z - z0) % 4 === 0) {
-        put(world, x, y + 1, z, b.stone);
-        put(world, x, y + 2, z, b.trim);
+        put(world, x, y + 2, z, b.stone);
+        put(world, x, y + 3, z, b.trim);
       }
     }
   }
@@ -73,6 +68,8 @@ export function placeCampusWall(world: WorldWriter, x0: number, x1: number, z0: 
     put(world, px + 1, baseY(px, z0) + 5, z0, b.light);
   }
 }
+
+export type FurnitureKind = 'desk' | 'chair' | 'teacher-desk' | 'teacher-chair' | 'bookcase' | 'lamp' | 'plant' | 'bin' | 'globe';
 
 export interface MainBuildingSpec {
   x0: number;
@@ -93,9 +90,8 @@ export interface MainBuilding {
   classrooms: Array<{ x0: number; x1: number; z0: number; z1: number; standY: number }>;
   /** Clock face position on the tower front (centre, y of its bottom). */
   clock: [number, number, number];
-  /** Bookshelf tops (books go here) and the teacher's desk tops (a globe, an abacus). */
-  shelves: Array<[number, number, number]>;
-  desks: Array<[number, number, number]>;
+  /** Classroom furniture (pack models): where each piece stands (its middle, on the floor) and its yaw. */
+  furniture: Array<{ kind: FurnitureKind; at: [number, number, number]; yaw: number }>;
   /** A pot plant at the foot of the staircase. */
   plant: [number, number, number];
   /** The top step of the staircase: standing here is the second floor. */
@@ -203,27 +199,30 @@ export function placeMainBuilding(world: WorldWriter, spec: MainBuildingSpec, b:
   put(world, sx1 + 1, u + 2, zBack, b.glass);
   const stairTop: [number, number, number] = [sx0 + 0.5, slab + 1, firstStep + STOREY - 1 + 0.5];
 
-  // Furnished classrooms: the board on the west wall, the teacher's desk, rows of desks and stools,
-  // bookshelves in the corners.
+  // Furnished classrooms (mock lop-04, lop-05): the board on the west wall; the teacher's desk before it;
+  // rows of desks facing the board, a chair behind each; bookcases on the back wall; lamps under the ceiling.
   const classrooms: MainBuilding['classrooms'] = [];
-  const shelves: MainBuilding['shelves'] = [];
-  const desks: MainBuilding['desks'] = [];
+  const furniture: MainBuilding['furniture'] = [];
+  const facingBoard = 270;
   for (const feet of [g, u]) {
     const room = { x0: showcase.start, x1: showcase.end, z0: zWall + 1, z1: zBack - 1, standY: feet };
     classrooms.push(room);
-    fill(world, room.x0 - 1, feet + 1, room.z0 + 1, room.x0 - 1, feet + 2, room.z1 - 1, b.board);
-    put(world, room.x0 + 1, feet, room.z0 + 2, b.floor);
-    desks.push([room.x0 + 1.5, feet + 1, room.z0 + 2.5]);
-    for (let x = room.x0 + 3; x < room.x1; x += 2) {
-      for (let z = room.z0 + 1; z < room.z1; z += 2) {
-        put(world, x, feet, z, b.floor);
-        put(world, x + 1, feet, z, b.log);
+    fill(world, room.x0 - 1, feet + 1, room.z0 + 2, room.x0 - 1, feet + 2, room.z1 - 2, b.board);
+    const midZ = (room.z0 + room.z1 + 1) / 2;
+    furniture.push({ kind: 'teacher-desk', at: [room.x0 + 1.6, feet, midZ], yaw: 90 });
+    furniture.push({ kind: 'teacher-chair', at: [room.x0 + 0.7, feet, midZ], yaw: 90 });
+    furniture.push({ kind: 'globe', at: [room.x0 + 1.6, feet + 0.85, midZ - 0.5], yaw: 0 });
+    for (let x = room.x0 + 4.5; x <= room.x1 - 1.5; x += 2.6) {
+      for (let z = room.z0 + 1.4; z <= room.z1; z += 2.3) {
+        if (Math.abs(z - midZ) < 0.8) continue; // an aisle down the middle
+        furniture.push({ kind: 'desk', at: [x, feet, z], yaw: facingBoard });
+        furniture.push({ kind: 'chair', at: [x + 0.95, feet, z], yaw: facingBoard });
       }
     }
-    for (const z of [room.z0, room.z1]) {
-      fill(world, room.x1, feet, z, room.x1, feet + 1, z, b.floor);
-      shelves.push([room.x1 + 0.5, feet + 2, z + 0.5]);
-    }
+    for (const z of [room.z0 + 0.6, room.z1 + 0.4]) furniture.push({ kind: 'bookcase', at: [room.x1 + 0.45, feet, z], yaw: facingBoard });
+    furniture.push({ kind: 'plant', at: [room.x1 + 0.5, feet, midZ], yaw: 0 });
+    furniture.push({ kind: 'bin', at: [room.x0 + 0.5, feet, room.z1 + 0.5], yaw: 0 });
+    for (let x = room.x0 + 3; x <= room.x1; x += 4) for (const z of [room.z0 + 2.5, room.z1 - 1.5]) furniture.push({ kind: 'lamp', at: [x + 0.5, feet + STOREY - 1.55, z], yaw: 0 });
   }
 
   // The clock tower over the hall: walls above the roof line, a gable facing the street, the clock face.
@@ -258,7 +257,7 @@ export function placeMainBuilding(world: WorldWriter, spec: MainBuildingSpec, b:
       if ((x === x0 || x === x1) && z >= zWall && z <= zBack) for (let fy = roofBase; fy < y; fy++) put(world, x, fy, z, b.wall);
     }
   }
-  return { hall, classrooms, clock, shelves, desks, plant: [hall.x1 + 1.5, g, zBack - 0.5], stairTop };
+  return { hall, classrooms, clock, furniture, plant: [hall.x1 + 1.5, g, zBack - 0.5], stairTop };
 }
 
 /** The sports hall (mock khu-04): pale stone walls with windows, a wide door, a blue vaulted roof, a stage inside. */
@@ -290,15 +289,15 @@ export function placeSportsHall(world: WorldWriter, x0: number, x1: number, z0: 
   fill(world, x0 + 2, baseY, z1 - 3, x1 - 2, baseY, z1 - 1, b.floor);
 }
 
-/** A basketball court: coloured floor, white border and middle line, a hoop at each end. */
-export function placeCourt(world: WorldWriter, x0: number, x1: number, z0: number, z1: number, y: number, b: SchoolPalette): void {
+/** A basketball court: coloured floor, white border and middle line; returns where its two hoops stand (and their yaw, facing the court). */
+export function placeCourt(world: WorldWriter, x0: number, x1: number, z0: number, z1: number, y: number, b: SchoolPalette): Array<{ at: [number, number, number]; yaw: number }> {
   const mz = Math.floor((z0 + z1) / 2);
   for (let x = x0; x <= x1; x++) for (let z = z0; z <= z1; z++) put(world, x, y, z, x === x0 || x === x1 || z === z0 || z === z1 || z === mz ? b.line : b.court);
-  const mx = Math.floor((x0 + x1) / 2);
-  for (const [z, inward] of [[z0 - 1, 1], [z1 + 1, -1]] as const) {
-    fill(world, mx, y + 1, z, mx, y + 4, z, b.stone);
-    fill(world, mx - 1, y + 4, z + inward, mx + 1, y + 5, z + inward, b.line);
-  }
+  const mx = (x0 + x1 + 1) / 2;
+  return [
+    { at: [mx, y + 1, z0 - 0.5], yaw: 0 },
+    { at: [mx, y + 1, z1 + 1.5], yaw: 180 },
+  ];
 }
 
 /** The greenhouse (mock khu-06): glass walls and gable on white posts, a door in front, beds inside. */
@@ -337,14 +336,3 @@ export function placeBed(world: WorldWriter, x0: number, x1: number, z0: number,
   return soil;
 }
 
-/** Swings (mock khu-05): two posts and a beam, seats hanging between. */
-export function placeSwings(world: WorldWriter, x0: number, z: number, baseY: number, b: SchoolPalette): void {
-  for (const x of [x0, x0 + 4]) fill(world, x, baseY, z, x, baseY + 3, z, b.roofBlue);
-  fill(world, x0, baseY + 4, z, x0 + 4, baseY + 4, z, b.roofBlue);
-  for (const x of [x0 + 1, x0 + 3]) put(world, x, baseY + 1, z, b.floor);
-}
-
-/** A bench: three planks on log legs. */
-export function placeBench(world: WorldWriter, x0: number, z: number, baseY: number, b: SchoolPalette): void {
-  fill(world, x0, baseY, z, x0 + 2, baseY, z, b.floor);
-}
