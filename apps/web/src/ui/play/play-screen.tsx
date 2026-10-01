@@ -3,6 +3,8 @@
 // visibility from game-bridge), Pause (the game stops rendering while it is open) and the offline retry.
 import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import { Link, useSearchParams } from 'react-router';
+import type { PlayerPosition } from '@miu/schema/player-position';
+import { mapForRegion } from '@miu/voxel/world-entities';
 import { createGameStore, type GameSnapshot, type GameStore } from '../../game-bridge/game-store';
 import { GameStoreContext, useGameState, useGameStore } from '../../game-bridge/use-game-state';
 import { Game } from '../../game/game';
@@ -18,8 +20,11 @@ import { findRegion } from '../region/regions';
 import { LoadingOverlay } from '../system/loading-overlay';
 import { OfflineBanner } from '../system/offline-banner';
 import { PauseScreen } from '../system/pause-screen';
+import { createPositionSaver, loadPlayerPositions } from './player-position';
 
 const HOME_PATH = '/home';
+/** How often the child's spot is saved while playing; hiding or leaving the page saves it at once. */
+const SAVE_SPOT_MS = 10_000;
 
 function InteractionLabel() {
   const store = useGameStore();
@@ -82,6 +87,7 @@ function GameView({
   chapter,
   region,
   quest,
+  savedSpot,
   paused,
 }: {
   store: GameStore;
@@ -94,6 +100,8 @@ function GameView({
   region: string;
   /** Quest being played (its own things show only during it). */
   quest?: string;
+  /** Where the child last stood on this region's map, if anywhere. */
+  savedSpot: PlayerPosition | null;
   paused: boolean;
 }) {
   const host = useRef<HTMLDivElement>(null);
@@ -101,15 +109,28 @@ function GameView({
   const outfitKey = outfit.join(',');
   useEffect(() => {
     if (!host.current) return;
-    const instance = new Game(host.current, { store, search: window.location.search, playerName, species, pet, outfit: outfitKey ? outfitKey.split(',') : [], chapter, region, quest });
+    const instance = new Game(host.current, { store, search: window.location.search, playerName, species, pet, outfit: outfitKey ? outfitKey.split(',') : [], chapter, region, quest, savedSpot });
     game.current = instance;
     void instance.start();
+    const save = createPositionSaver(savedSpot);
+    const timer = window.setInterval(() => save(instance.currentSpot()), SAVE_SPOT_MS);
+    // A hidden page may never come back (tab closed, iPad app switched): keepalive lets the save finish.
+    const onHidden = (): void => {
+      if (document.visibilityState === 'hidden') save(instance.currentSpot(), { keepalive: true });
+    };
+    const onPageHide = (): void => save(instance.currentSpot(), { keepalive: true });
+    document.addEventListener('visibilitychange', onHidden);
+    window.addEventListener('pagehide', onPageHide);
     // StrictMode mounts twice in dev: the first game is fully disposed before the second starts.
     return () => {
+      window.clearInterval(timer);
+      document.removeEventListener('visibilitychange', onHidden);
+      window.removeEventListener('pagehide', onPageHide);
+      save(instance.currentSpot(), { keepalive: true }); // leaving /play: read before dispose clears it
       instance.dispose();
       if (game.current === instance) game.current = null;
     };
-  }, [store, playerName, species, pet, outfitKey, chapter, region, quest]);
+  }, [store, playerName, species, pet, outfitKey, chapter, region, quest, savedSpot]);
   // Full-screen screens stop rendering (Master Plan §12); React only calls stop/resume.
   useEffect(() => {
     if (paused) game.current?.stop();
@@ -123,6 +144,8 @@ export function PlayScreen() {
   const [store] = useState(createGameStore);
   const [params] = useSearchParams();
   const [data, setData] = useState<PlayerData | null>(null);
+  // Read once per visit: later saves must not rebuild the game.
+  const [positions, setPositions] = useState<PlayerPosition[] | null>(null);
   // The quest of this visit, fixed once: the one named in the URL (Home, region screen), else the one
   // the child is on. It must not change when that quest finishes, or its reward screens would vanish.
   const [questId, setQuestId] = useState<string | null>(null);
@@ -157,6 +180,7 @@ export function PlayScreen() {
       (next) => live && loaded(next),
       (err: unknown) => live && onLoadError(err),
     );
+    void loadPlayerPositions().then((list) => live && setPositions(list));
     return () => {
       live = false;
     };
@@ -196,6 +220,9 @@ export function PlayScreen() {
   }, []);
 
   const quest = data?.quests.find((q) => q.quest.id === questId) ?? null;
+  const region = quest?.quest.region ?? 'khu-rung-bi-mat';
+  // An element of `positions` (set once), so the same object on every render: the game is not rebuilt.
+  const savedSpot = positions?.find((p) => p.map === mapForRegion(region)) ?? null;
   const covered = paused || questOpen || backpackOpen;
   const regionTitle = findRegion(quest?.quest.region ?? '')?.name ?? 'Khu rừng bí mật';
   const regionName = data ? say(regionTitle, data.character) : regionTitle;
@@ -203,7 +230,9 @@ export function PlayScreen() {
   return (
     <GameStoreContext.Provider value={store}>
       <main data-id="play">
-        {data ? <GameView store={store} playerName={data.character.name} species={data.character.species} pet={data.character.pet} outfit={data.character.equipped} chapter={quest?.quest.chapter ?? 1} region={quest?.quest.region ?? 'khu-rung-bi-mat'} quest={quest?.quest.id} paused={covered} /> : null}
+        {data && positions ? (
+          <GameView store={store} playerName={data.character.name} species={data.character.species} pet={data.character.pet} outfit={data.character.equipped} chapter={quest?.quest.chapter ?? 1} region={region} quest={quest?.quest.id} savedSpot={savedSpot} paused={covered} />
+        ) : null}
         {loadError ? (
           <div className="play-message" role="alert">
             <p>

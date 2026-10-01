@@ -14,6 +14,7 @@ import type { ServerConfig } from './config';
 import { loadContentCatalog, type ContentCatalog } from './content/content-catalog';
 import type { Db } from './db/client';
 import { HttpError } from './http-error';
+import { playerPositionRoutes } from './player-position/player-position-routes';
 import { questRoutes } from './quest/quest-routes';
 import { loadWorksheets } from './worksheet/worksheet-builder';
 import { worksheetRoutes } from './worksheet/worksheet-routes';
@@ -77,6 +78,7 @@ export function createApp({ config, db, content = loadContentCatalog(), workshee
   api.use(accountRoutes({ db, config, clock }));
   api.use(childProfileRoutes({ db, content, clock }));
   api.use(characterRoutes({ db, content }));
+  api.use(playerPositionRoutes({ db, content, clock }));
   api.use(questRoutes({ db, content, clock }));
   api.use(worksheetRoutes({ worksheets, clock, fontDir: config.handwritingFontDir }));
   app.use('/api', api);

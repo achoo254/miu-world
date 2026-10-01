@@ -50,7 +50,7 @@ test.describe('iPad landscape', () => {
   test('fits', async ({ page }) => checkLayout(page, 'ipad-landscape'));
 
   test('shows the way: the ground arrow from afar, the gem over the target up close', async ({ page }) => {
-    await page.goto('/play?quality=low');
+    await page.goto('/play?quality=low&spawnAt=spawn');
     await waitReady(page);
     await expect.poll(async () => (await readStats(page)).hintTarget).toBe('parrot-guide');
     await page.screenshot({ path: `${SHOTS}hint-arrow.png`, animations: 'disabled' });

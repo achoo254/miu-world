@@ -17,6 +17,9 @@ vi.mock('../../game/game', () => ({
     }
     stop() {}
     resume() {}
+    currentSpot() {
+      return null;
+    }
     dispose() {
       gameLifecycle.disposed += 1;
     }

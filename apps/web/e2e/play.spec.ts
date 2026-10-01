@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test';
+import { freshChild } from './quest-api';
 import { readStats, waitReady } from './stats';
 
 const DRAW_CALL_BUDGET = 150;
@@ -16,7 +17,8 @@ test('loads /play cleanly within the desktop budget and only talks to its own or
     if (!['data:', 'blob:'].includes(url.protocol) && url.origin !== new URL(baseURL ?? '').origin) foreign.push(req.url());
   });
 
-  await page.goto('/play?quality=high');
+  // The spawn point, not wherever an earlier spec left this shared child: the budget is measured there.
+  await page.goto('/play?quality=high&spawnAt=spawn');
   await waitReady(page);
   await page.waitForTimeout(3000);
   const stats = await readStats(page);
@@ -33,7 +35,7 @@ test('loads /play cleanly within the desktop budget and only talks to its own or
 });
 
 test('walks, runs and stays on the ground; the rim keeps the player inside the map', async ({ page }) => {
-  await page.goto('/play?quality=low');
+  await page.goto('/play?quality=low&spawnAt=spawn');
   await waitReady(page);
   const start = (await readStats(page)).player;
 
@@ -62,6 +64,37 @@ test('walks, runs and stays on the ground; the rim keeps the player inside the m
     expect(edge.player[axis]).toBeGreaterThanOrEqual(0);
     expect(edge.player[axis]).toBeLessThanOrEqual(192); // the forest is 192 blocks across
   }
+});
+
+test.describe('a child of its own', () => {
+  // Signing up a fresh parent in the shared session would sign that session out for the specs after this one.
+  test.use({ storageState: { cookies: [], origins: [] } });
+
+  test('comes back where the child left off, and `spawnAt=spawn` still starts at the spawn point', async ({ page, baseURL }) => {
+    await freshChild(page, baseURL ?? '');
+    await page.goto('/play?quality=low');
+    await waitReady(page);
+    const spawn = (await readStats(page)).player;
+    const from = (a: readonly number[], b: readonly number[]): number => Math.hypot((a[0] ?? 0) - (b[0] ?? 0), (a[2] ?? 0) - (b[2] ?? 0));
+    await page.keyboard.down('KeyW');
+    await expect.poll(async () => from((await readStats(page)).player, spawn), { timeout: 20_000 }).toBeGreaterThan(5);
+    await page.keyboard.up('KeyW');
+    await page.waitForTimeout(500);
+    const left = (await readStats(page)).player;
+
+    // Leaving /play saves the spot; the next visit starts there.
+    const saved = page.waitForResponse((r) => r.url().endsWith('/api/player-positions') && r.request().method() === 'PUT');
+    await page.getByRole('button', { name: /Menu/ }).click();
+    await page.getByRole('link', { name: /Về trang chủ/ }).click();
+    expect((await saved).status()).toBe(204);
+    await page.goto('/play?quality=low');
+    await waitReady(page);
+    expect(from((await readStats(page)).player, left)).toBeLessThan(1.5);
+
+    await page.goto('/play?quality=low&spawnAt=spawn');
+    await waitReady(page);
+    expect(from((await readStats(page)).player, spawn)).toBeLessThan(0.5);
+  });
 });
 
 test('dragging on the scene orbits the camera (mouse and touch share the pointer path)', async ({ page }) => {

@@ -166,3 +166,6 @@ export const DEFAULT_MAP = 'forest-ch1';
 export function mapForRegion(region: string): string {
   return MAP_BY_REGION[region] ?? DEFAULT_MAP;
 }
+
+/** Every map a child can play in. */
+export const MAP_IDS: readonly string[] = [...new Set([DEFAULT_MAP, ...Object.values(MAP_BY_REGION)])];

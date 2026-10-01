@@ -1,5 +1,5 @@
 import { sql } from 'drizzle-orm';
-import { index, integer, jsonb, pgTable, primaryKey, smallint, text, timestamp, unique, uuid } from 'drizzle-orm/pg-core';
+import { doublePrecision, index, integer, jsonb, pgTable, primaryKey, smallint, text, timestamp, unique, uuid } from 'drizzle-orm/pg-core';
 
 // Ids are generated in the app (crypto.randomUUID) so the schema needs no Postgres extension and
 // behaves the same on PGlite and Postgres.
@@ -155,4 +155,20 @@ export const skillProgress = pgTable(
     xp: integer('xp').notNull(),
   },
   (t) => [primaryKey({ columns: [t.childId, t.skillId] })],
+);
+
+/** Where the child last stood on each map (a safe spot on dry ground), so the next visit starts there. */
+export const playerPositions = pgTable(
+  'player_positions',
+  {
+    childId: childRef(),
+    mapId: text('map_id').notNull(),
+    x: doublePrecision('x').notNull(),
+    y: doublePrecision('y').notNull(),
+    z: doublePrecision('z').notNull(),
+    /** Heading in radians, as the game's player controller keeps it. */
+    facing: doublePrecision('facing').notNull(),
+    updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [primaryKey({ columns: [t.childId, t.mapId] })],
 );

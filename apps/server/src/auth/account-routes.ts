@@ -8,6 +8,7 @@ import {
   childProfiles,
   consents,
   inventoryItems,
+  playerPositions,
   parents,
   questProgress,
   rewardLedger,
@@ -37,7 +38,7 @@ async function buildExport(db: Db, parent: typeof parents.$inferSelect, now: Dat
   const profiles = await db.select().from(childProfiles).where(eq(childProfiles.parentId, parent.id)).orderBy(childProfiles.createdAt);
   const ids = profiles.map((p) => p.id);
   const ofChildren = <T extends { childId: string }>(rows: Promise<T[]>) => (ids.length ? rows : Promise.resolve([] as T[]));
-  const [consentRows, sessionRows, characterRows, questRows, counterRows, rewardRows, itemRows, skillRows] = await Promise.all([
+  const [consentRows, sessionRows, characterRows, questRows, counterRows, rewardRows, itemRows, skillRows, positionRows] = await Promise.all([
     db.select().from(consents).where(eq(consents.parentId, parent.id)).orderBy(consents.acceptedAt),
     db.select().from(sessions).where(eq(sessions.parentId, parent.id)).orderBy(sessions.createdAt),
     ofChildren(db.select().from(characters).where(inArray(characters.childId, ids))),
@@ -46,12 +47,14 @@ async function buildExport(db: Db, parent: typeof parents.$inferSelect, now: Dat
     ofChildren(db.select().from(rewardLedger).where(inArray(rewardLedger.childId, ids)).orderBy(rewardLedger.createdAt)),
     ofChildren(db.select().from(inventoryItems).where(inArray(inventoryItems.childId, ids))),
     ofChildren(db.select().from(skillProgress).where(inArray(skillProgress.childId, ids))),
+    ofChildren(db.select().from(playerPositions).where(inArray(playerPositions.childId, ids))),
   ]);
   const quests = byChild(questRows);
   const counters = byChild(counterRows);
   const rewards = byChild(rewardRows);
   const items = byChild(itemRows);
   const skills = byChild(skillRows);
+  const positions = byChild(positionRows);
   return {
     exportedAt: iso(now),
     parent: { email: parent.email, signIn: parent.googleSub ? 'google' : 'password', createdAt: iso(parent.createdAt) },
@@ -75,6 +78,7 @@ async function buildExport(db: Db, parent: typeof parents.$inferSelect, now: Dat
         rewards: (rewards.get(p.id) ?? []).map((r) => ({ source: r.source, xp: r.xp, coins: r.coins, skillXp: r.skillXp, items: r.items, createdAt: iso(r.createdAt) })),
         inventory: (items.get(p.id) ?? []).map(({ itemId, qty }) => ({ itemId, qty })),
         skills: (skills.get(p.id) ?? []).map(({ skillId, xp }) => ({ skillId, xp })),
+        positions: (positions.get(p.id) ?? []).map((r) => ({ map: r.mapId, position: [r.x, r.y, r.z], facing: r.facing, updatedAt: iso(r.updatedAt) })),
       };
     }),
   };

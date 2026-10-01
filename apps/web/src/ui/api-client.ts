@@ -11,13 +11,17 @@ export class ApiError extends Error {
   }
 }
 
-/** Same-origin JSON call; responses are validated so the UI never trusts an unexpected shape. */
-export async function api<S extends z.ZodType>(method: string, path: string, schema: S, body?: unknown): Promise<z.infer<S>> {
+/**
+ * Same-origin JSON call; responses are validated so the UI never trusts an unexpected shape.
+ * `keepalive` lets a small write finish while the page is being closed or hidden.
+ */
+export async function api<S extends z.ZodType>(method: string, path: string, schema: S, body?: unknown, options: { keepalive?: boolean } = {}): Promise<z.infer<S>> {
   let res: Response;
   try {
     res = await fetch(`/api${path}`, {
       method,
       credentials: 'same-origin',
+      keepalive: options.keepalive,
       headers: body === undefined ? undefined : { 'Content-Type': 'application/json' },
       body: body === undefined ? undefined : JSON.stringify(body),
     });

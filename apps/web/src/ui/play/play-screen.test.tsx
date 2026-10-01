@@ -6,25 +6,34 @@ import { AccountProvider } from '../account/account-context';
 import { PROGRESS, questList } from '../player/test-fixtures';
 import { PlayScreen } from './play-screen';
 
-/** The three reads /play makes, answered like the server; `character` may fail to simulate the network. */
+const SCHOOL_SPOT = { map: 'truong-hoc', position: [60, 9, 70], facing: 0.5 };
+const FOREST_SPOT = { map: 'forest-ch1', position: [40, 12, 88], facing: -1 };
+
+/** The reads /play makes, answered like the server; `character` may fail to simulate the network. */
 function playApi(character: () => Response = () => json({ species: 'cat', name: 'Mochi', equipped: [], pet: null })) {
-  return vi.fn(async (url: string) => {
+  return vi.fn(async (url: string, init?: RequestInit) => {
     if (url === '/api/character') return character();
     if (url === '/api/progress') return json(PROGRESS);
     if (url === '/api/quests') return json(questList(1));
+    if (url === '/api/player-positions' && init?.method === 'GET') return json({ positions: [SCHOOL_SPOT, FOREST_SPOT] });
+    if (url === '/api/player-positions' && init?.method === 'PUT') return new Response(null, { status: 204 });
     return json({ error: 'unauthenticated' }, 401);
   });
 }
 const json = (body: unknown, status = 200) => new Response(JSON.stringify(body), { status });
 
 // jsdom has no WebGL; the runtime itself is covered by Playwright. Here: lifecycle under StrictMode.
-const games = vi.hoisted(() => ({ live: 0, started: 0, stops: 0, resumes: 0 }));
+const games = vi.hoisted(() => ({ live: 0, started: 0, stops: 0, resumes: 0, savedSpot: undefined as unknown, spot: null as unknown }));
 vi.mock('../../game/game', () => ({
   Game: class {
     private alive = true;
     private readonly options: { store: { emit(e: { type: 'ready' }): void } };
-    constructor(_host: HTMLElement, options: { store: { emit(e: { type: 'ready' }): void } }) {
+    constructor(_host: HTMLElement, options: { store: { emit(e: { type: 'ready' }): void }; savedSpot?: unknown }) {
       this.options = options;
+      games.savedSpot = options.savedSpot;
+    }
+    currentSpot() {
+      return this.alive ? games.spot : null;
     }
     async start() {
       games.started += 1;
@@ -66,6 +75,25 @@ describe('PlayScreen under React StrictMode', () => {
     expect(games.live).toBe(1);
     view.unmount();
     expect(games.live).toBe(0);
+  });
+
+  it('starts the game at the saved spot of its own map, and saves where the child stands on leaving', async () => {
+    const fetchMock = playApi();
+    vi.stubGlobal('fetch', fetchMock);
+    const view = render(
+      <MemoryRouter>
+        <AccountProvider>
+          <PlayScreen />
+        </AccountProvider>
+      </MemoryRouter>,
+    );
+    expect(await screen.findByRole('button', { name: /Menu/ })).toBeTruthy();
+    expect(games.savedSpot).toEqual(FOREST_SPOT); // the fixture quests play in the forest
+    games.spot = { map: 'forest-ch1', position: [55, 12, 90], facing: 2 };
+    view.unmount();
+    const put = fetchMock.mock.calls.find(([url, init]) => url === '/api/player-positions' && init?.method === 'PUT');
+    expect(put?.[1]).toMatchObject({ keepalive: true, body: JSON.stringify(games.spot) });
+    games.spot = null;
   });
 
   it('stops the game while Pause is open and resumes it after', async () => {

@@ -21,6 +21,7 @@ import { PETS, UI_ICONS, assetUrl } from '../ui/kit/ui-art';
 import type { GameStore } from '../game-bridge/game-store';
 import { loadAmbientLife, type AmbientTarget } from './ambient/ambient-life';
 import { createConfetti } from './scene/confetti';
+import type { PlayerPosition } from '@miu/schema/player-position';
 import { RegionCatalog, WorldEventKind } from '@miu/schema/region';
 import regionsJson from '../../../../content/world/regions.json';
 import { AssetRegistry, GuardedGltfLoader } from './asset-loader';
@@ -37,6 +38,7 @@ import { CameraRig } from './player/camera-rig';
 import { PlayerInput } from './player/input';
 import { PlayerController, type MoveIntent } from './player/player-controller';
 import { RescueWatch } from './player/rescue';
+import { usableSpot } from './player/saved-spot';
 import { readQuality } from './quality';
 import { disposeSceneGraph } from './scene/dispose-scene';
 import { SKY_HORIZON, createSky, skyColours } from './scene/sky';
@@ -52,7 +54,7 @@ const LOADING_STEPS = 5;
 
 export interface GameOptions {
   store: GameStore;
-  /** Query string with dev/review switches: quality, stats, autopilot, spawnAt (`npc`, a target id or `x,y,z`), shot, outfit, life (`0`: no villagers or animals). */
+  /** Query string with dev/review switches: quality, stats, autopilot, spawnAt (`npc`, a target id, `x,y,z`, or `spawn` for the map's spawn point), shot, outfit, life (`0`: no villagers or animals). */
   search: string;
   /** Equipped accessory ids (`id` or `id:variant`), normally from `GET /api/character`. */
   outfit: string[];
@@ -68,6 +70,8 @@ export interface GameOptions {
   playerName?: string;
   /** Pet id (`content/pets.json`) that trots after the character, or none. */
   pet?: string | null;
+  /** Where the child last stood on this map (`GET /api/player-positions`); the spawn point when absent or no longer open ground. */
+  savedSpot?: Pick<PlayerPosition, 'position' | 'facing'> | null;
 }
 
 /** Bytes downloaded so far (compressed transfer size, falling back to body size for cache hits). */
@@ -134,6 +138,7 @@ export class Game {
   private loop: (() => void) | null = null;
   private timer: Timer | null = null;
   private input: PlayerInput | null = null;
+  private spotNow: (() => PlayerPosition | null) | null = null;
 
   constructor(
     private readonly host: HTMLElement,
@@ -164,6 +169,11 @@ export class Game {
   resume(): void {
     this.paused = false;
     this.runLoop();
+  }
+
+  /** Where the child stands now, to save for the next visit; null before the map is up and in dev runs (autopilot, review shots, `spawnAt`). */
+  currentSpot(): PlayerPosition | null {
+    return this.spotNow?.() ?? null;
   }
 
   private runLoop(): void {
@@ -244,7 +254,8 @@ export class Game {
     const registry = await AssetRegistry.load();
     stepLoaded();
     const loader = new GuardedGltfLoader(registry);
-    const data = await loadWorldData(registry, mapForRegion(this.options.region ?? ''));
+    const mapId = mapForRegion(this.options.region ?? '');
+    const data = await loadWorldData(registry, mapId);
     if (this.disposed) return;
     stepLoaded();
     const world = await createWorldRenderer(data);
@@ -329,12 +340,30 @@ export class Game {
       const [x, y, z] = spawnTarget.position;
       const offset = Math.min(1.5, spawnTarget.radius * 0.5);
       controller.position.set(x - offset, y, z - offset);
+    } else if (spawnAt === null && this.options.savedSpot) {
+      // Back where the child left off; any `spawnAt` (even `spawn`) starts where the URL says instead.
+      const at = usableSpot(this.options.savedSpot.position, solid, liquid, data.world.size);
+      if (at) {
+        controller.teleport(at);
+        controller.facing = this.options.savedSpot.facing;
+      }
     }
     const rig = new CameraRig(camera, solid, controller.facing + Math.PI);
     const input = new PlayerInput(dom.root, dom.joystick, dom.run, dom.jump);
     this.input = input;
     this.cleanups.push(() => input.dispose());
     const autopilot = params.get('autopilot') === '1' ? new Autopilot(entities) : null;
+    // Autopilot, review shots and URL-placed starts are dev runs: where they end up is nobody's place to come back to.
+    if (!autopilot && !params.has('shot') && spawnAt === null) {
+      this.spotNow = () => {
+        const p = controller.position;
+        const here = controller.onGround && !controller.inWater ? ([p.x, p.y, p.z] as const) : rescue.spot();
+        // The heading winds up past ±π as the child turns; saved folded back into one turn.
+        const facing = Math.atan2(Math.sin(controller.facing), Math.cos(controller.facing));
+        return here ? { map: mapId, position: [here[0], here[1], here[2]], facing } : null;
+      };
+      this.cleanups.push(() => (this.spotNow = null));
+    }
 
     const onResize = (): void => {
       camera.aspect = window.innerWidth / window.innerHeight;

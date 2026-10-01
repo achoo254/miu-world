@@ -71,7 +71,7 @@ Quy trình: commit `cbfc64b` được tạo khi `pnpm typecheck` đỏ (chỉ ch
 2. Giáo viên duyệt nội dung học của ch1 (5 bước học, 3 lớp hỗ trợ, câu phản hồi).
 3. Designer duyệt UI và mock voxel (#23); chơi thử với trẻ có phụ huynh đồng ý (#24).
 4. Pháp chế duyệt văn bản đồng ý (draft-3).
-5. Duyệt trên iPad qua LAN: chạy server với `ALLOWED_ORIGINS=http://<ip-LAN>:4173` và `PASSWORD_LOGIN=1`, bản preview với `--host` (dữ liệu giả); xong thì tắt tiến trình và xóa `.data/pglite` của lần duyệt.
+5. Duyệt trên iPad qua LAN: chạy server với `ALLOWED_ORIGINS=http://<ip-LAN>:4173`, `PASSWORD_LOGIN=1` và `PGLITE_DIR=.data/pglite-review` (dữ liệu giả, tách khỏi dữ liệu dev), bản preview với `--host`; xong thì tắt tiến trình và chỉ xóa `.data/pglite-review`. Không xóa `.data/pglite`: đó là dữ liệu dev của người phụ trách (tài khoản, hồ sơ, tiến độ).
 
 ## Câu hỏi mở
 
