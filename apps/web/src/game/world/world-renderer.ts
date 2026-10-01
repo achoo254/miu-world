@@ -6,7 +6,7 @@
 import { BufferAttribute, BufferGeometry, Group, Mesh, Vector3, type Camera, type ColorRepresentation, type Material } from 'three';
 import type { QuadGeometry } from '@miu/voxel/greedy-mesher';
 import { REGION_BLOCKS } from '@miu/voxel/region-format';
-import { createBlockMaterial, createWaterMaterial, type WaterUniforms } from './block-material';
+import { createBlockMaterial, createWaterMaterial, type SeeThroughUniforms, type WaterUniforms } from './block-material';
 import { PATCH_BLOCKS, createPatchMesher, type PatchGeometry } from './chunk-mesher';
 import { createHorizonMesh, type HorizonMesh } from './horizon-mesh';
 import type { MesherMessage, MesherRequest } from './mesher.worker';
@@ -15,6 +15,8 @@ import type { WorldData } from './world-data';
 export interface WorldRenderer {
   group: Group;
   water: WaterUniforms;
+  /** The line of sight to the child that see-through surfaces keep clear (props share it). */
+  seeThrough: SeeThroughUniforms;
   /** Milliseconds spent meshing so far (worker or main thread). */
   meshMs(): number;
   usedWorker: boolean;
@@ -230,6 +232,7 @@ export async function createWorldRenderer(data: WorldData, options: { sky: Color
   return {
     group,
     water: water.uniforms,
+    seeThrough,
     meshMs: () => meshMs,
     get usedWorker() {
       return source.usedWorker;

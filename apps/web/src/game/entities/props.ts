@@ -7,6 +7,7 @@ import { BufferGeometry, Euler, Group, Matrix4, Mesh, Quaternion, Vector3, type 
 import { mergeGeometries } from 'three/examples/jsm/utils/BufferGeometryUtils.js';
 import type { WorldEntities } from '@miu/voxel/world-entities';
 import type { GuardedGltfLoader } from '../asset-loader';
+import { seeThroughCopy, type SeeThroughUniforms } from '../world/block-material';
 
 /** Side of a prop tile in blocks: a region's, so at most 3 x 3 tiles are in view (draw calls stay low). */
 export const PROP_TILE = 128;
@@ -36,7 +37,11 @@ interface Placement {
   matrix: Matrix4;
 }
 
-export async function loadProps(loader: GuardedGltfLoader, entities: WorldEntities, shadows: boolean): Promise<PropField> {
+/**
+ * `seeThrough`: the world's line of sight to the child; props then fade like the trees where they would
+ * hide her or stand right by the camera (owner, 02/10/2026: bamboo beside the child filled the screen).
+ */
+export async function loadProps(loader: GuardedGltfLoader, entities: WorldEntities, shadows: boolean, seeThrough?: SeeThroughUniforms): Promise<PropField> {
   const group = new Group();
   group.name = 'props';
   // Every model the map places, loaded once; its meshes with their transforms inside the model.
@@ -58,9 +63,19 @@ export async function loadProps(loader: GuardedGltfLoader, entities: WorldEntiti
   for (const p of entities.props) {
     const key = `${Math.floor(p.position[0] / PROP_TILE)},${Math.floor(p.position[2] / PROP_TILE)}`;
     const matrix = new Matrix4().compose(new Vector3(...p.position), new Quaternion().setFromEuler(new Euler(0, (p.yaw * Math.PI) / 180, 0)), new Vector3(p.scale, p.scale, p.scale));
-    tiles.set(key, [...(tiles.get(key) ?? []), { model: p.model, matrix }]);
+    const tile = tiles.get(key);
+    if (tile) tile.push({ model: p.model, matrix });
+    else tiles.set(key, [{ model: p.model, matrix }]);
   }
   const built = new Map<string, Mesh[]>();
+  /** One fading copy per batch material, shared by every tile. */
+  const faded = new Map<string, Material>();
+  const fadingOf = (batchKey: string, material: Material): Material => {
+    if (!seeThrough) return material;
+    let copy = faded.get(batchKey);
+    if (!copy) faded.set(batchKey, (copy = seeThroughCopy(material, seeThrough)));
+    return copy;
+  };
 
   const build = (key: string): void => {
     const batches = new Map<string, { material: Material; geometries: BufferGeometry[] }>();
@@ -77,7 +92,7 @@ export async function loadProps(loader: GuardedGltfLoader, entities: WorldEntiti
       for (const g of geometries) g.dispose();
       if (!geometry) throw new Error(`props batch ${batchKey} could not be merged`);
       geometry.computeBoundingSphere();
-      const mesh = new Mesh(geometry, material);
+      const mesh = new Mesh(geometry, fadingOf(batchKey, material));
       mesh.name = `props:${key}:${material.name || 'batch'}`;
       mesh.castShadow = shadows;
       mesh.receiveShadow = shadows;
@@ -124,6 +139,7 @@ export async function loadProps(loader: GuardedGltfLoader, entities: WorldEntiti
     tileCount: () => built.size,
     dispose() {
       for (const key of [...built.keys()]) drop(key);
+      for (const material of faded.values()) material.dispose();
     },
   };
 }

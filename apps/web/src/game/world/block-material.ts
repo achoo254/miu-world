@@ -3,7 +3,7 @@
 // samples with explicit gradients (no seams), capping the mip level at the atlas' bleed-free level.
 // Trees standing between the camera and the child fade (screen-door dither, still opaque: no sorting,
 // no extra draw call); quest things are their own meshes and never fade.
-import { MeshLambertMaterial, Vector3, type Texture, type WebGLProgramParametersWithUniforms } from 'three';
+import { MeshLambertMaterial, Vector3, type Material, type Texture, type WebGLProgramParametersWithUniforms } from 'three';
 
 const ATLAS_VERTEX_DECLS = 'attribute vec4 tileRect;\nvarying vec4 vTileRect;\nvarying vec2 vBlockUv;';
 const ATLAS_FRAGMENT_DECLS = 'uniform float uAtlasSize;\nuniform float uMaxTexels;\nvarying vec4 vTileRect;\nvarying vec2 vBlockUv;';
@@ -38,26 +38,57 @@ export interface SeeThroughUniforms {
 }
 
 const SEE_VERTEX_DECLS = 'attribute float seeThrough;\nvarying float vSeeThrough;\nvarying vec3 vSeeWorld;';
-const SEE_FRAGMENT_DECLS = 'uniform vec3 uSeeFrom;\nuniform vec3 uSeeTo;\nuniform float uSeeOn;\nvarying float vSeeThrough;\nvarying vec3 vSeeWorld;';
 /**
- * A see-through face inside a tube around the line of sight, in front of the child (the tube widens
- * toward her so her whole body and what she stands by show), drops most of its pixels in a 4×4 ordered
- * pattern: the tree reads as faded, the child and the quest things behind it stay in view.
+ * How much of a see-through surface at `p` drops away: inside a tube round the line of sight, in front of the
+ * child (the tube widens toward her so her whole body and what she stands by show), and anything right by
+ * the lens, which would otherwise fill the screen. A faded surface drops most of its pixels in a 4×4
+ * ordered pattern: it reads as faded while the child and the quest things behind it stay in view.
  */
-const SEE_FRAGMENT = `
-  if (uSeeOn > 0.5 && vSeeThrough > 0.5) {
-    vec3 sight = uSeeTo - uSeeFrom;
-    float along = dot(vSeeWorld - uSeeFrom, sight) / max(dot(sight, sight), 1e-4);
-    if (along > 0.0 && along < 1.0) {
-      float away = length(vSeeWorld - (uSeeFrom + sight * along));
-      float radius = mix(1.2, 2.8, along);
-      float fade = 1.0 - smoothstep(radius - 1.6, radius, away);
-      const float bayer[16] = float[16](0.0, 8.0, 2.0, 10.0, 12.0, 4.0, 14.0, 6.0, 3.0, 11.0, 1.0, 9.0, 15.0, 7.0, 13.0, 5.0);
-      ivec2 cell = ivec2(mod(gl_FragCoord.xy, 4.0));
-      if (fade * 0.75 > (bayer[cell.x + cell.y * 4] + 0.5) / 16.0) discard;
-    }
+const SEE_FUNCTIONS = `uniform vec3 uSeeFrom;
+uniform vec3 uSeeTo;
+uniform float uSeeOn;
+varying vec3 vSeeWorld;
+float miuSeeFade(vec3 p) {
+  vec3 sight = uSeeTo - uSeeFrom;
+  float along = dot(p - uSeeFrom, sight) / max(dot(sight, sight), 1e-4);
+  float fade = 0.0;
+  if (along > 0.0 && along < 1.0) {
+    float away = length(p - (uSeeFrom + sight * along));
+    float radius = mix(1.6, 3.2, along);
+    fade = 1.0 - smoothstep(radius - 1.6, radius, away);
   }
-`;
+  return max(fade, 1.0 - smoothstep(1.5, 3.0, length(p - uSeeFrom)));
+}
+bool miuSeeDrop(vec3 p) {
+  const float bayer[16] = float[16](0.0, 8.0, 2.0, 10.0, 12.0, 4.0, 14.0, 6.0, 3.0, 11.0, 1.0, 9.0, 15.0, 7.0, 13.0, 5.0);
+  ivec2 cell = ivec2(mod(gl_FragCoord.xy, 4.0));
+  return miuSeeFade(p) * 0.9 > (bayer[cell.x + cell.y * 4] + 0.5) / 16.0;
+}`;
+const SEE_FRAGMENT_DECLS = `${SEE_FUNCTIONS}\nvarying float vSeeThrough;`;
+/** Blocks fade only where they are see-through (leaves, the trunks she walks through). */
+const SEE_FRAGMENT = 'if (uSeeOn > 0.5 && vSeeThrough > 0.5 && miuSeeDrop(vSeeWorld)) discard;';
+
+/**
+ * A copy of a model's material whose every surface fades like the trees (props: bamboo, palms, fences): a
+ * decoration beside the child or right by the camera never hides her. The original stays as it is, for the
+ * characters and quest things that share it.
+ */
+export function seeThroughCopy<M extends Material>(material: M, uniforms: SeeThroughUniforms): M {
+  const copy = material.clone() as M;
+  const previous = material.onBeforeCompile.bind(material);
+  copy.onBeforeCompile = (shader, renderer) => {
+    previous(shader, renderer);
+    Object.assign(shader.uniforms, uniforms);
+    shader.vertexShader = shader.vertexShader
+      .replace('#include <common>', '#include <common>\nvarying vec3 vSeeWorld;')
+      .replace('#include <begin_vertex>', '#include <begin_vertex>\nvSeeWorld = (modelMatrix * vec4(transformed, 1.0)).xyz;');
+    shader.fragmentShader = shader.fragmentShader
+      .replace('#include <common>', `#include <common>\n${SEE_FUNCTIONS}`)
+      .replace('#include <clipping_planes_fragment>', '#include <clipping_planes_fragment>\nif (uSeeOn > 0.5 && miuSeeDrop(vSeeWorld)) discard;');
+  };
+  copy.customProgramCacheKey = () => `miu-see-through:${material.customProgramCacheKey()}`;
+  return copy;
+}
 
 export function createBlockMaterial(atlas: Texture, atlasSize: number, safeMipLevel: number): { material: MeshLambertMaterial; seeThrough: SeeThroughUniforms } {
   const seeThrough: SeeThroughUniforms = { uSeeFrom: { value: new Vector3() }, uSeeTo: { value: new Vector3() }, uSeeOn: { value: 0 } };

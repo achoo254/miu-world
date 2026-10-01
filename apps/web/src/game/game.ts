@@ -316,7 +316,7 @@ export class Game {
     const [character, targets, props, life] = await Promise.all([
       loadPlayerCharacter(loader, this.options.species ?? DEFAULT_SPECIES, outfit),
       loadInteractables(loader, entities, quality.shadows),
-      loadProps(loader, entities, quality.shadows),
+      loadProps(loader, entities, quality.shadows, world.seeThrough),
       // `?life=0` (dev/perf switch): the map without its villagers and animals.
       loadAmbientLife(loader, params.get('life') === '0' ? [] : (entities.ambients ?? []), {
         quality: quality.level,
