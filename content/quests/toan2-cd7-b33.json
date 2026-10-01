@@ -1,0 +1,1967 @@
+{
+  "id": "toan2-cd7-b33",
+  "region": "truong-hoc",
+  "chapter": 7,
+  "title": "Vé ghế tổng duyệt văn nghệ",
+  "status": "draft",
+  "lesson": "toan2-t1-b33",
+  "summary": "Tổng duyệt văn nghệ cuối kì, vé ghế nào cũng in một phép tính; {name} cùng thầy Sư Tử Vàng, Gà Con Chíp, Heo Ủn và Lợn Rừng Đốm tính nhẩm, đặt tính và xây tháp số trước giờ mở màn.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "Thầy hiệu trưởng Sư Tử Vàng, Gà Con Chíp, Heo Ủn, Lợn Rừng Đốm",
+    "where": "Hội trường: sân khấu, hàng ghế khán giả, cánh gà, cửa hội trường",
+    "goal": "Xếp chỗ cho cả trường và dựng tháp số để buổi tổng duyệt kịp mở màn",
+    "play": "Tìm vé, tính nhẩm, điền dấu, chia bánh, chọn túi gạo, phân loại toa tàu và ô tô, đặt tính, giải toán, xây tháp số",
+    "learn": "Toán 2 Bài 33: ôn tập phép cộng, phép trừ trong phạm vi 20, 100",
+    "reward": "120 XP, 20 xu, Phép cộng +2, Phép trừ +2, Bài toán có lời văn +1",
+    "unlock": "Bài 34 \"Ôn tập hình phẳng\""
+  },
+  "phases": {
+    "hook": "ve-ghe-la-phep-tinh",
+    "explore": "tim-xap-ve",
+    "learn": "so-ghe-tinh-nham",
+    "challenge": "dau-tren-ve",
+    "decision": "doan-tau-dao-cu",
+    "finale": "thap-so-san-khau",
+    "reward": "huy-hieu-tong-duyet",
+    "unlock": "phong-nen-hinh-khoi"
+  },
+  "texts": {},
+  "places": {
+    "su-tu-vang": "sân khấu",
+    "tim-xap-ve": "hàng ghế",
+    "ga-con-chip": "hàng ghế",
+    "heo-un": "cánh gà",
+    "lon-rung-dom": "cửa hội trường"
+  },
+  "steps": [
+    {
+      "id": "ve-ghe-la-phep-tinh",
+      "title": "Vé ghế toàn phép tính",
+      "goTo": "Lên sân khấu hội trường, thầy Sư Tử Vàng đang thử micro",
+      "kind": "dialogue",
+      "target": "su-tu-vang",
+      "lines": [
+        {
+          "speaker": "Sư Tử Vàng",
+          "text": "A lô, a lô… GÀOOO! Ối, thầy thử micro hơi to, mấy tấm rèm rung rinh cả rồi."
+        },
+        {
+          "speaker": "Sư Tử Vàng",
+          "text": "Chiều nay cả trường tổng duyệt văn nghệ cuối kì. Thầy in vé ghế bằng phép tính cho vui, ai tính đúng mới biết mình ngồi ghế số mấy."
+        },
+        {
+          "speaker": "Gà Con Chíp",
+          "text": "Nhưng thầy ơi, cơn gió lúc nãy thổi bay ba xấp vé xuống gầm ghế rồi! Chíp chui vào thì bị kẹt mào."
+        },
+        {
+          "speaker": "Sư Tử Vàng",
+          "text": "{name} nhặt vé giúp thầy nhé. Hôm nay là buổi ôn lớn nhất học kì, cộng trừ trong phạm vi 20 rồi tới 100!"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu nhặt vé ngay ạ!",
+          "reply": "Sư Tử Vàng gầm nhẹ một tiếng \"Tuyệt!\", nghe vẫn to như sấm."
+        },
+        {
+          "text": "Chíp có sao không?",
+          "reply": "Chíp rút mào ra kêu \"bụp\": Không sao, chỉ hơi méo một tí thôi!"
+        }
+      ]
+    },
+    {
+      "id": "tim-xap-ve",
+      "title": "Ba xấp vé dưới gầm ghế",
+      "goTo": "Tìm ba xấp vé rơi dưới hàng ghế khán giả",
+      "kind": "search",
+      "targets": [
+        "toan2-cd7-xap-ve-do",
+        "toan2-cd7-xap-ve-xanh",
+        "toan2-cd7-xap-ve-vang"
+      ]
+    },
+    {
+      "id": "so-ghe-tinh-nham",
+      "title": "Số ghế tính nhẩm",
+      "target": "ga-con-chip",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Xấp vé đỏ ghi toàn phép tính trong phạm vi 20. Chíp đứng soát vé, ai đưa vé thì {name} đọc số ghế. Tính nhẩm.",
+      "template": "7 + 7 = {{b1}}   9 + 6 = {{b2}}   8 + 4 = {{b3}}   5 + 7 = {{b4}}   6 + 9 = {{b5}}   4 + 8 = {{b6}}\n14 – 5 = {{b7}}   15 – 6 = {{b8}}   12 – 4 = {{b9}}   11 – 7 = {{b10}}   15 – 9 = {{b11}}   13 – 8 = {{b12}}",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o12",
+              "text": "12"
+            },
+            {
+              "id": "o14",
+              "text": "14"
+            },
+            {
+              "id": "o15",
+              "text": "15"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o15",
+              "text": "15"
+            },
+            {
+              "id": "o17",
+              "text": "17"
+            },
+            {
+              "id": "o25",
+              "text": "25"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o2",
+              "text": "2"
+            },
+            {
+              "id": "o11",
+              "text": "11"
+            },
+            {
+              "id": "o12",
+              "text": "12"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "o12",
+              "text": "12"
+            },
+            {
+              "id": "o13",
+              "text": "13"
+            },
+            {
+              "id": "o21",
+              "text": "21"
+            }
+          ]
+        },
+        {
+          "id": "b5",
+          "options": [
+            {
+              "id": "o15",
+              "text": "15"
+            },
+            {
+              "id": "o17",
+              "text": "17"
+            },
+            {
+              "id": "o25",
+              "text": "25"
+            }
+          ]
+        },
+        {
+          "id": "b6",
+          "options": [
+            {
+              "id": "o10",
+              "text": "10"
+            },
+            {
+              "id": "o12",
+              "text": "12"
+            },
+            {
+              "id": "o21",
+              "text": "21"
+            }
+          ]
+        },
+        {
+          "id": "b7",
+          "options": [
+            {
+              "id": "o8",
+              "text": "8"
+            },
+            {
+              "id": "o9",
+              "text": "9"
+            },
+            {
+              "id": "o10",
+              "text": "10"
+            }
+          ]
+        },
+        {
+          "id": "b8",
+          "options": [
+            {
+              "id": "o8",
+              "text": "8"
+            },
+            {
+              "id": "o9",
+              "text": "9"
+            },
+            {
+              "id": "o19",
+              "text": "19"
+            }
+          ]
+        },
+        {
+          "id": "b9",
+          "options": [
+            {
+              "id": "o7",
+              "text": "7"
+            },
+            {
+              "id": "o8",
+              "text": "8"
+            },
+            {
+              "id": "o9",
+              "text": "9"
+            }
+          ]
+        },
+        {
+          "id": "b10",
+          "options": [
+            {
+              "id": "o3",
+              "text": "3"
+            },
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o5",
+              "text": "5"
+            }
+          ]
+        },
+        {
+          "id": "b11",
+          "options": [
+            {
+              "id": "o5",
+              "text": "5"
+            },
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o16",
+              "text": "16"
+            }
+          ]
+        },
+        {
+          "id": "b12",
+          "options": [
+            {
+              "id": "o5",
+              "text": "5"
+            },
+            {
+              "id": "o7",
+              "text": "7"
+            },
+            {
+              "id": "o15",
+              "text": "15"
+            }
+          ]
+        }
+      ],
+      "skill": "phep-cong",
+      "curriculumRef": [
+        "toan2-t1-b33-luyen-tap-1-a",
+        "toan2-t1-b33-luyen-tap-1-b",
+        "toan2-t1-b33-luyen-tap-1-c",
+        "toan2-t1-b33-luyen-tap-1-d",
+        "toan2-t1-b33-luyen-tap-1-e",
+        "toan2-t1-b33-luyen-tap-1-f",
+        "toan2-t1-b33-luyen-tap-1-g",
+        "toan2-t1-b33-luyen-tap-1-h",
+        "toan2-t1-b33-luyen-tap-1-i",
+        "toan2-t1-b33-luyen-tap-1-j",
+        "toan2-t1-b33-luyen-tap-1-k",
+        "toan2-t1-b33-luyen-tap-1-l"
+      ],
+      "support": {
+        "guide": [
+          "Cộng qua 10: tách số sau để làm tròn 10 trước. Ví dụ 9 + 6 = 9 + 1 + 5.",
+          "Trừ qua 10: trừ về 10 trước rồi trừ tiếp. Ví dụ 14 – 5 = 14 – 4 – 1."
+        ],
+        "hint": "8 + 4: lấy 2 từ số 4 cho đủ 10, còn 2, vậy là 12.",
+        "answer": {
+          "text": "7 + 7 = 14   9 + 6 = 15   8 + 4 = 12   5 + 7 = 12   6 + 9 = 15   4 + 8 = 12; 14 – 5 = 9   15 – 6 = 9   12 – 4 = 8   11 – 7 = 4   15 – 9 = 6   13 – 8 = 5",
+          "explanation": "Mỗi phép cộng làm tròn 10 rồi cộng phần còn lại; mỗi phép trừ trừ về 10 rồi trừ tiếp phần còn lại."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Mười hai tấm vé, mười hai ghế, khán giả ngồi vào tíu tít!",
+          "Chíp soát vé không kịp vì {name} tính nhanh quá trời.",
+          "Hàng ghế đỏ kín chỗ mà chẳng ai ngồi nhầm ai."
+        ],
+        "wrong": [
+          "Có bạn đang cầm vé đứng ngơ ngác vì số ghế chưa đúng.",
+          "Thử làm tròn 10 trước rồi cộng phần còn lại nhé.",
+          "Phép trừ qua 10: trừ về 10 trước, rồi trừ tiếp."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o14",
+          "b2": "o15",
+          "b3": "o12",
+          "b4": "o12",
+          "b5": "o15",
+          "b6": "o12",
+          "b7": "o9",
+          "b8": "o9",
+          "b9": "o8",
+          "b10": "o4",
+          "b11": "o6",
+          "b12": "o5"
+        }
+      }
+    },
+    {
+      "id": "dau-tren-ve",
+      "title": "Dấu so sánh trên vé xanh",
+      "target": "ga-con-chip",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Xấp vé xanh in dấu bị nhòe, Chíp nheo mắt mãi không đọc ra. >; <; = ?",
+      "template": "a) 5 + 7 {{b1}} 12\na) 6 + 7 {{b2}} 12\na) 4 + 7 {{b3}} 12\nb) 8 + 3 {{b4}} 3 + 8\nb) 6 + 5 {{b5}} 6 + 6",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "lon-hon",
+              "text": ">"
+            },
+            {
+              "id": "be-hon",
+              "text": "<"
+            },
+            {
+              "id": "bang",
+              "text": "="
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "lon-hon",
+              "text": ">"
+            },
+            {
+              "id": "be-hon",
+              "text": "<"
+            },
+            {
+              "id": "bang",
+              "text": "="
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "lon-hon",
+              "text": ">"
+            },
+            {
+              "id": "be-hon",
+              "text": "<"
+            },
+            {
+              "id": "bang",
+              "text": "="
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "lon-hon",
+              "text": ">"
+            },
+            {
+              "id": "be-hon",
+              "text": "<"
+            },
+            {
+              "id": "bang",
+              "text": "="
+            }
+          ]
+        },
+        {
+          "id": "b5",
+          "options": [
+            {
+              "id": "lon-hon",
+              "text": ">"
+            },
+            {
+              "id": "be-hon",
+              "text": "<"
+            },
+            {
+              "id": "bang",
+              "text": "="
+            }
+          ]
+        }
+      ],
+      "skill": "so-sanh-so",
+      "curriculumRef": [
+        "toan2-t1-b33-luyen-tap-2-2-a1",
+        "toan2-t1-b33-luyen-tap-2-2-a2",
+        "toan2-t1-b33-luyen-tap-2-2-a3",
+        "toan2-t1-b33-luyen-tap-2-2-b1",
+        "toan2-t1-b33-luyen-tap-2-2-b2"
+      ],
+      "support": {
+        "guide": [
+          "Tính kết quả bên trái trước rồi mới so với bên phải.",
+          "Đổi chỗ hai số hạng thì tổng không đổi."
+        ],
+        "hint": "8 + 3 và 3 + 8 có cùng các số hạng, chỉ đổi chỗ.",
+        "answer": {
+          "text": "a) 5 + 7 = 12; a) 6 + 7 > 12; a) 4 + 7 < 12; b) 8 + 3 = 3 + 8; b) 6 + 5 < 6 + 6",
+          "explanation": "5 + 7 = 12; 6 + 7 = 13 > 12; 4 + 7 = 11 < 12; 8 + 3 = 3 + 8; 6 + 5 = 11 < 12 = 6 + 6."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Dấu nào cũng rõ nét, vé xanh sáng bóng như mới in!",
+          "Chíp dụi mắt: hóa ra không phải mắt tớ kém, tại dấu bị nhòe.",
+          "So sánh chuẩn từng vé, không vé nào lạc hàng."
+        ],
+        "wrong": [
+          "Tính tổng bên trái ra số đã rồi hẵng đặt dấu nhé.",
+          "8 + 3 với 3 + 8 có khác gì nhau không nhỉ?",
+          "Miệng cá sấu luôn há về phía số lớn hơn đấy."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "bang",
+          "b2": "lon-hon",
+          "b3": "be-hon",
+          "b4": "bang",
+          "b5": "be-hon"
+        }
+      }
+    },
+    {
+      "id": "duong-hoa-toi-ghe",
+      "title": "Đường hoa dẫn tới ghế",
+      "target": "ga-con-chip",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Lối đi giữa hàng ghế kết hoa thành một vòng phép tính. Bắt đầu ở bông hoa 8. Số ?",
+      "template": "Đường trên: 8 → + 6 → {{b1}} → – 5 → {{b2}} → + 7 → {{b3}} → – 7 → {{b4}}\nĐường dưới: 8 → + 5 → {{b5}} → – 4 → về đúng bông hoa cuối",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o13",
+              "text": "13"
+            },
+            {
+              "id": "o14",
+              "text": "14"
+            },
+            {
+              "id": "o41",
+              "text": "41"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o8",
+              "text": "8"
+            },
+            {
+              "id": "o9",
+              "text": "9"
+            },
+            {
+              "id": "o10",
+              "text": "10"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o15",
+              "text": "15"
+            },
+            {
+              "id": "o16",
+              "text": "16"
+            },
+            {
+              "id": "o61",
+              "text": "61"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "o7",
+              "text": "7"
+            },
+            {
+              "id": "o9",
+              "text": "9"
+            },
+            {
+              "id": "o19",
+              "text": "19"
+            }
+          ]
+        },
+        {
+          "id": "b5",
+          "options": [
+            {
+              "id": "o11",
+              "text": "11"
+            },
+            {
+              "id": "o13",
+              "text": "13"
+            },
+            {
+              "id": "o14",
+              "text": "14"
+            }
+          ]
+        }
+      ],
+      "skill": "phep-cong",
+      "curriculumRef": [
+        "toan2-t1-b33-luyen-tap-3-a",
+        "toan2-t1-b33-luyen-tap-3-b",
+        "toan2-t1-b33-luyen-tap-3-c",
+        "toan2-t1-b33-luyen-tap-3-d",
+        "toan2-t1-b33-luyen-tap-3-e"
+      ],
+      "support": {
+        "guide": [
+          "Đi theo mũi tên, làm từng phép tính một.",
+          "Kết quả ô trước là số bắt đầu của ô sau."
+        ],
+        "hint": "Thêm 7 rồi bớt 7 thì lại về số cũ.",
+        "answer": {
+          "text": "Đường trên: 8 → + 6 → 14 → – 5 → 9 → + 7 → 16 → – 7 → 9; Đường dưới: 8 → + 5 → 13 → – 4 → về đúng bông hoa cuối",
+          "explanation": "8 + 6 = 14, 14 – 5 = 9, 9 + 7 = 16, 16 – 7 = 9; đường dưới 8 + 5 = 13, 13 – 4 = 9, cùng về bông hoa 9."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Hai con đường hoa gặp nhau đúng một bông, đẹp như phép màu!",
+          "Đi hết vòng hoa không lạc bước nào, giỏi quá.",
+          "Chíp cài một bông lên mào: thưởng cho người tính giỏi!"
+        ],
+        "wrong": [
+          "Lấy kết quả ô vừa rồi để làm tiếp ô sau nhé.",
+          "Đường dưới cũng phải về đúng bông hoa cuối của đường trên.",
+          "Một ô trên vòng hoa đang lệch số, dò lại mũi tên."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o14",
+          "b2": "o9",
+          "b3": "o16",
+          "b4": "o9",
+          "b5": "o13"
+        }
+      }
+    },
+    {
+      "id": "may-tinh-buoi-chieu",
+      "title": "Máy tính bán buổi chiều",
+      "target": "ga-con-chip",
+      "kind": "riddle",
+      "question": "Sau lưng ghế có dán tờ quảng cáo, Chíp đọc to: Một cửa hàng điện máy, buổi sáng bán được 11 máy tính, buổi chiều bán được ít hơn buổi sáng 3 máy tính. Hỏi buổi chiều cửa hàng bán được bao nhiêu máy tính?",
+      "skill": "bai-toan-loi-van",
+      "curriculumRef": [
+        "toan2-t1-b33-luyen-tap-2-4"
+      ],
+      "support": {
+        "guide": [
+          "\"Ít hơn\" thì làm phép trừ.",
+          "Lấy số máy buổi sáng trừ đi 3."
+        ],
+        "hint": "Phép tính là 11 – 3.",
+        "answer": {
+          "text": "8 máy tính",
+          "explanation": "Buổi chiều bán được: 11 – 3 = 8 (máy tính)."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Chíp gật gù như chuyên gia bán hàng: đúng tám chiếc!",
+          "Ít hơn thì trừ, {name} nhớ bài vững ghê.",
+          "Tờ quảng cáo đã được giải mã xong xuôi."
+        ],
+        "wrong": [
+          "Buổi chiều bán ít hơn, vậy kết quả phải bé hơn 11.",
+          "Bài này dùng phép trừ chứ không phải phép cộng.",
+          "Bớt 3 từ 11 xem còn mấy chiếc nào."
+        ]
+      },
+      "answer": {
+        "value": 8
+      }
+    },
+    {
+      "id": "banh-quy-giua-gio",
+      "title": "Đĩa bánh quy giờ nghỉ",
+      "goTo": "Vào cánh gà, Heo Ủn đang canh mâm bánh quy",
+      "target": "heo-un",
+      "kind": "challenge",
+      "mechanic": "classify",
+      "prompt": "Heo Ủn bày bốn đĩa bánh ghi 5, 7, 11, 13, nhưng bánh quy thì ghi phép tính. \"Xếp xong tớ mới được ăn thử một chiếc!\" Mỗi số 7, 5, 11, 13 là kết quả của những phép tính nào?",
+      "groups": [
+        {
+          "id": "nhom-so-5",
+          "label": "Số 5"
+        },
+        {
+          "id": "nhom-so-7",
+          "label": "Số 7"
+        },
+        {
+          "id": "nhom-so-11",
+          "label": "Số 11"
+        },
+        {
+          "id": "nhom-so-13",
+          "label": "Số 13"
+        }
+      ],
+      "items": [
+        {
+          "id": "banh-8-3",
+          "label": "8 + 3"
+        },
+        {
+          "id": "banh-8-5",
+          "label": "8 + 5"
+        },
+        {
+          "id": "banh-9-4",
+          "label": "9 + 4"
+        },
+        {
+          "id": "banh-12-5",
+          "label": "12 – 5"
+        },
+        {
+          "id": "banh-14-9",
+          "label": "14 – 9"
+        },
+        {
+          "id": "banh-14-7",
+          "label": "14 – 7"
+        },
+        {
+          "id": "banh-9-2",
+          "label": "9 + 2"
+        }
+      ],
+      "skill": "phep-tru",
+      "curriculumRef": [
+        "toan2-t1-b33-luyen-tap-2-a",
+        "toan2-t1-b33-luyen-tap-2-b",
+        "toan2-t1-b33-luyen-tap-2-c",
+        "toan2-t1-b33-luyen-tap-2-d",
+        "toan2-t1-b33-luyen-tap-2-e",
+        "toan2-t1-b33-luyen-tap-2-f",
+        "toan2-t1-b33-luyen-tap-2-g"
+      ],
+      "support": {
+        "guide": [
+          "Tính kết quả ghi trên từng chiếc bánh.",
+          "Mỗi đĩa có thể nhận nhiều chiếc bánh."
+        ],
+        "hint": "Bánh mẫu 12 – 7 đã nằm sẵn ở đĩa 5; còn bánh 14 – 9 cũng về đĩa đó.",
+        "answer": {
+          "text": "Số 5: 14 – 9; số 7: 12 – 5, 14 – 7; số 11: 8 + 3, 9 + 2; số 13: 8 + 5, 9 + 4",
+          "explanation": "8 + 3 = 9 + 2 = 11; 8 + 5 = 9 + 4 = 13; 12 – 5 = 14 – 7 = 7; 14 – 9 = 5."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bánh về đúng đĩa, Heo Ủn được thưởng một chiếc, nhai rôm rốp!",
+          "Bốn đĩa bánh tròn trịa, chẳng chiếc nào lạc đĩa.",
+          "Heo Ủn sụt sịt cảm động: lần đầu tớ thấy bánh xếp ngăn nắp thế."
+        ],
+        "wrong": [
+          "Có chiếc bánh đang nằm nhầm đĩa, Heo Ủn chưa dám ăn.",
+          "Tính phép trên bánh quy trước rồi mới đặt vào đĩa.",
+          "Đĩa số 13 cần hai chiếc bánh đấy, tìm thêm đi."
+        ]
+      },
+      "answer": {
+        "assignment": {
+          "banh-8-3": "nhom-so-11",
+          "banh-8-5": "nhom-so-13",
+          "banh-9-4": "nhom-so-13",
+          "banh-12-5": "nhom-so-7",
+          "banh-14-9": "nhom-so-5",
+          "banh-14-7": "nhom-so-7",
+          "banh-9-2": "nhom-so-11"
+        }
+      }
+    },
+    {
+      "id": "sot-buoi-sau-buoi-dien",
+      "title": "Bưởi vào sọt",
+      "target": "heo-un",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Heo Ủn hái 12 quả bưởi ghi số 11, 15, 13, 12, 13, 13, 12, 11, 12, 15, 15, 13 để mời khách. Sọt A ghi 8 + 7, sọt B ghi 6 + 5, sọt C ghi 7 + 5, sọt D ghi 9 + 4. Mỗi sọt sẽ đựng những quả bưởi có ghi số là kết quả của phép tính ghi trên sọt đó. Số ?",
+      "template": "Sọt | A | B | C | D\nSố quả bưởi | 3 | {{b1}} | {{b2}} | {{b3}}",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o2",
+              "text": "2"
+            },
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o12",
+              "text": "12"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o2",
+              "text": "2"
+            },
+            {
+              "id": "o3",
+              "text": "3"
+            },
+            {
+              "id": "o4",
+              "text": "4"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o3",
+              "text": "3"
+            },
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o14",
+              "text": "14"
+            }
+          ]
+        }
+      ],
+      "skill": "phep-cong",
+      "curriculumRef": [
+        "toan2-t1-b33-luyen-tap-2-1-b",
+        "toan2-t1-b33-luyen-tap-2-1-c",
+        "toan2-t1-b33-luyen-tap-2-1-d"
+      ],
+      "support": {
+        "guide": [
+          "Tính phép trên sọt để biết sọt nhận quả ghi số mấy.",
+          "Đếm số quả bưởi mang đúng số đó."
+        ],
+        "hint": "Sọt D ghi 9 + 4 = 13; có bốn quả ghi 13.",
+        "answer": {
+          "text": "Sọt | A | B | C | D; Số quả bưởi | 3 | 2 | 3 | 4",
+          "explanation": "Sọt B: 6 + 5 = 11, có 2 quả; sọt C: 7 + 5 = 12, có 3 quả; sọt D: 9 + 4 = 13, có 4 quả."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bốn sọt bưởi thơm lừng, Heo Ủn hít hà mãi không thôi.",
+          "Đếm bưởi chuẩn từng quả, khách ăn tha hồ!",
+          "Không quả bưởi nào chui nhầm sọt hàng xóm."
+        ],
+        "wrong": [
+          "Tính phép trên sọt trước, rồi mới đếm quả nhé.",
+          "Đếm lại các quả ghi số 13, hình như còn sót.",
+          "Sọt B ghi 6 + 5, vậy nó nhận quả ghi số mấy?"
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o2",
+          "b2": "o3",
+          "b3": "o4"
+        }
+      }
+    },
+    {
+      "id": "can-gao-nau-che",
+      "title": "Cân túi gạo nấu chè",
+      "target": "heo-un",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "prompt": "Heo Ủn đặt túi 3 kg và túi 9 kg lên đĩa bên trái của cân đĩa. Ba túi gạo còn lại nặng ① 5 kg, ② 6 kg, ③ 7 kg. Lấy hai trong ba túi gạo nào đặt lên đĩa bên phải để cân thăng bằng?",
+      "choices": [
+        {
+          "id": "5-kg",
+          "text": "① 5 kg"
+        },
+        {
+          "id": "6-kg",
+          "text": "② 6 kg"
+        },
+        {
+          "id": "7-kg",
+          "text": "③ 7 kg"
+        }
+      ],
+      "skill": "khoi-luong",
+      "curriculumRef": [
+        "toan2-t1-b33-luyen-tap-2-3"
+      ],
+      "support": {
+        "guide": [
+          "Tính đĩa bên trái nặng bao nhiêu ki-lô-gam.",
+          "Tìm hai túi cộng lại đúng bằng số đó."
+        ],
+        "hint": "Đĩa bên trái nặng 3 kg + 9 kg = 12 kg.",
+        "answer": {
+          "text": "① 5 kg và ③ 7 kg",
+          "explanation": "Đĩa trái nặng 12 kg; 5 kg + 7 kg = 12 kg nên chọn túi ① và túi ③."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Hai đĩa cân bằng phẳng lì, Heo Ủn reo: đủ gạo nấu chè rồi!",
+          "Mười hai bên trái, mười hai bên phải, chuẩn không lệch.",
+          "Cậu chọn túi gạo khéo như đầu bếp lão luyện."
+        ],
+        "wrong": [
+          "Cân vẫn nghiêng kìa, tổng hai túi chưa bằng 12 kg.",
+          "Tính xem đĩa bên trái nặng mấy ki-lô-gam đã nhé.",
+          "Chỉ được lấy đúng hai túi thôi đấy."
+        ]
+      },
+      "answer": {
+        "choices": [
+          "5-kg",
+          "7-kg"
+        ]
+      }
+    },
+    {
+      "id": "hoc-hat-hoc-vo",
+      "title": "Tiết mục hát và võ",
+      "goTo": "Trở lại sân khấu hội trường, thầy Sư Tử Vàng đang điểm danh tiết mục",
+      "target": "su-tu-vang",
+      "kind": "riddle",
+      "question": "Thầy Sư Tử Vàng cầm danh sách, giọng vang như kèn: Lớp 2A có 8 bạn học hát. Số bạn học võ nhiều hơn số bạn học hát là 5 bạn. Hỏi lớp 2A có bao nhiêu bạn học võ?",
+      "skill": "bai-toan-loi-van",
+      "curriculumRef": [
+        "toan2-t1-b33-luyen-tap-4-a"
+      ],
+      "support": {
+        "guide": [
+          "\"Nhiều hơn\" thì làm phép cộng.",
+          "Lấy số bạn học hát cộng thêm 5."
+        ],
+        "hint": "Phép tính là 8 + 5.",
+        "answer": {
+          "text": "13 bạn",
+          "explanation": "Số bạn học võ là: 8 + 5 = 13 (bạn)."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Mười ba võ sĩ nhí cùng hô \"Hây-a!\", sân khấu rung rinh.",
+          "Thầy Sư Tử gầm khen một tiếng, rèm lại bay phấp phới.",
+          "Nhiều hơn thì cộng, {name} trả lời gọn như võ sĩ ra đòn."
+        ],
+        "wrong": [
+          "Số bạn học võ nhiều hơn, nên kết quả phải lớn hơn 8.",
+          "Bài này cần phép cộng đấy.",
+          "Cộng 8 với 5, qua 10 rồi tính tiếp nhé."
+        ]
+      },
+      "answer": {
+        "value": 13
+      }
+    },
+    {
+      "id": "doan-tau-dao-cu",
+      "title": "Đoàn tàu đạo cụ",
+      "goTo": "Ra cửa hội trường, Lợn Rừng Đốm đang đẩy đoàn tàu đạo cụ",
+      "kind": "dialogue",
+      "target": "lon-rung-dom",
+      "lines": [
+        {
+          "speaker": "Lợn Rừng Đốm",
+          "text": "Ụt ịt! Tớ làm đoàn tàu đạo cụ năm toa cho tiết mục kết, mà lỡ tay dán phép tính lên hết các toa rồi."
+        },
+        {
+          "speaker": "Lợn Rừng Đốm",
+          "text": "Ngoài sân còn bãi xe của khán giả, ô tô nào cũng ghi phép tính nốt. Tớ vụng quá, tính tới đâu rối tới đó!"
+        },
+        {
+          "speaker": "Sư Tử Vàng",
+          "text": "Phép tính trong phạm vi 100 rồi đấy. {name} muốn nhẩm theo chục, hay đặt tính cho chắc ăn?"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Nhẩm theo chục cho nhanh",
+          "reply": "Lợn Rừng Đốm: 80 – 20 là 8 chục bớt 2 chục, ồ dễ thật!"
+        },
+        {
+          "text": "Đặt tính thẳng hàng cho chắc",
+          "reply": "Lợn Rừng Đốm: Đơn vị thẳng đơn vị, chục thẳng chục, tớ ghi nhớ rồi!"
+        }
+      ]
+    },
+    {
+      "id": "ket-qua-cac-toa",
+      "title": "Kết quả trên từng toa",
+      "target": "lon-rung-dom",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Toa A ghi 80 – 20, toa B ghi 50 + 10, toa C ghi 60 + 40, toa D ghi 60 – 30, toa E ghi 70 – 20. a) Số ?",
+      "template": "Toa | A | B | C | D | E\nKết quả phép tính | 60 | {{b1}} | {{b2}} | {{b3}} | {{b4}}",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o50",
+              "text": "50"
+            },
+            {
+              "id": "o60",
+              "text": "60"
+            },
+            {
+              "id": "o61",
+              "text": "61"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o90",
+              "text": "90"
+            },
+            {
+              "id": "o98",
+              "text": "98"
+            },
+            {
+              "id": "o100",
+              "text": "100"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o20",
+              "text": "20"
+            },
+            {
+              "id": "o30",
+              "text": "30"
+            },
+            {
+              "id": "o31",
+              "text": "31"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "o48",
+              "text": "48"
+            },
+            {
+              "id": "o50",
+              "text": "50"
+            },
+            {
+              "id": "o52",
+              "text": "52"
+            }
+          ]
+        }
+      ],
+      "skill": "phep-cong",
+      "curriculumRef": [
+        "toan2-t1-b33-luyen-tap-3-1-a-b",
+        "toan2-t1-b33-luyen-tap-3-1-a-c",
+        "toan2-t1-b33-luyen-tap-3-1-a-d",
+        "toan2-t1-b33-luyen-tap-3-1-a-e"
+      ],
+      "support": {
+        "guide": [
+          "Số tròn chục: cộng, trừ số chục với nhau.",
+          "6 chục + 4 chục = 10 chục, tức là 100."
+        ],
+        "hint": "60 – 30 là 6 chục bớt 3 chục.",
+        "answer": {
+          "text": "Toa | A | B | C | D | E; Kết quả phép tính | 60 | 60 | 100 | 30 | 50",
+          "explanation": "B: 50 + 10 = 60; C: 60 + 40 = 100; D: 60 – 30 = 30; E: 70 – 20 = 50."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Năm toa sáng đèn, đoàn tàu kêu \"xình xịch\" đầy tự hào!",
+          "Cộng trừ số tròn chục nhanh như tàu tốc hành.",
+          "Lợn Rừng Đốm reo: toa C chở tận 100 cơ à!"
+        ],
+        "wrong": [
+          "Đếm theo chục thử xem: 6 chục cộng 4 chục là mấy chục?",
+          "Có một toa ghi kết quả chưa khớp phép tính.",
+          "Số tròn chục cộng trừ thì hàng đơn vị vẫn là 0 đấy."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o60",
+          "b2": "o100",
+          "b3": "o30",
+          "b4": "o50"
+        }
+      }
+    },
+    {
+      "id": "xep-toa-theo-ket-qua",
+      "title": "Toa nào bé, toa nào lớn",
+      "target": "lon-rung-dom",
+      "kind": "challenge",
+      "mechanic": "classify",
+      "prompt": "Lợn Rừng Đốm muốn treo cờ cho đúng toa. b) Những toa nào ghi phép tính có kết quả bé hơn 60? c) Những toa nào ghi phép tính có kết quả lớn hơn 50 và bé hơn 100?",
+      "groups": [
+        {
+          "id": "nhom-be-hon-60",
+          "label": "Bé hơn 60"
+        },
+        {
+          "id": "nhom-lon-hon-50-va-be-hon-100",
+          "label": "Lớn hơn 50 và bé hơn 100"
+        },
+        {
+          "id": "nhom-toa-khong-vao-nhom-nao",
+          "label": "Toa không vào nhóm nào"
+        }
+      ],
+      "items": [
+        {
+          "id": "toa-toa-a-80-20",
+          "label": "Toa A: 80 – 20"
+        },
+        {
+          "id": "toa-toa-b-50-10",
+          "label": "Toa B: 50 + 10"
+        },
+        {
+          "id": "toa-toa-c-60-40",
+          "label": "Toa C: 60 + 40"
+        },
+        {
+          "id": "toa-toa-d-60-30",
+          "label": "Toa D: 60 – 30"
+        },
+        {
+          "id": "toa-toa-e-70-20",
+          "label": "Toa E: 70 – 20"
+        }
+      ],
+      "skill": "so-sanh-so",
+      "curriculumRef": [
+        "toan2-t1-b33-luyen-tap-3-1-b",
+        "toan2-t1-b33-luyen-tap-3-1-c"
+      ],
+      "support": {
+        "guide": [
+          "Dùng kết quả từng toa vừa tính.",
+          "Số 50 không lớn hơn 50; số 100 không bé hơn 100."
+        ],
+        "hint": "Toa C có kết quả 100, không vào nhóm nào.",
+        "answer": {
+          "text": "Bé hơn 60: toa D, toa E; lớn hơn 50 và bé hơn 100: toa A, toa B; toa C không thuộc nhóm nào",
+          "explanation": "D (30) và E (50) bé hơn 60; A (60) và B (60) lớn hơn 50 và bé hơn 100; C (100) không thuộc nhóm nào."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Cờ đỏ, cờ xanh cắm đúng toa, đoàn tàu rực rỡ hẳn lên.",
+          "Toa C chở 100 đứng riêng một mình, cậu tinh thật.",
+          "Đốm nhảy cẫng: tàu của tớ chưa bao giờ gọn gàng thế!"
+        ],
+        "wrong": [
+          "Số 50 có lớn hơn 50 không? Xem lại toa E nhé.",
+          "Có toa đang cắm nhầm cờ rồi.",
+          "Dò lại kết quả từng toa trước khi xếp nhóm."
+        ]
+      },
+      "answer": {
+        "assignment": {
+          "toa-toa-a-80-20": "nhom-lon-hon-50-va-be-hon-100",
+          "toa-toa-b-50-10": "nhom-lon-hon-50-va-be-hon-100",
+          "toa-toa-c-60-40": "nhom-toa-khong-vao-nhom-nao",
+          "toa-toa-d-60-30": "nhom-be-hon-60",
+          "toa-toa-e-70-20": "nhom-be-hon-60"
+        }
+      }
+    },
+    {
+      "id": "bai-do-o-to",
+      "title": "Bãi đỗ xe khán giả",
+      "target": "lon-rung-dom",
+      "kind": "challenge",
+      "mechanic": "classify",
+      "prompt": "Xe của phụ huynh tới đông nghịt, Đốm vẫy cờ điều khiển mà quay mòng mòng. Tìm chỗ đỗ cho ô tô.",
+      "groups": [
+        {
+          "id": "nhom-cho-do-27",
+          "label": "Chỗ đỗ 27"
+        },
+        {
+          "id": "nhom-cho-do-30",
+          "label": "Chỗ đỗ 30"
+        },
+        {
+          "id": "nhom-cho-do-43",
+          "label": "Chỗ đỗ 43"
+        },
+        {
+          "id": "nhom-cho-do-50",
+          "label": "Chỗ đỗ 50"
+        },
+        {
+          "id": "nhom-cho-do-53",
+          "label": "Chỗ đỗ 53"
+        }
+      ],
+      "items": [
+        {
+          "id": "xe-14-16",
+          "label": "14 + 16"
+        },
+        {
+          "id": "xe-72-45",
+          "label": "72 – 45"
+        },
+        {
+          "id": "xe-65-12",
+          "label": "65 – 12"
+        },
+        {
+          "id": "xe-34-16",
+          "label": "34 + 16"
+        }
+      ],
+      "skill": "phep-tru",
+      "curriculumRef": [
+        "toan2-t1-b33-luyen-tap-3-3-a",
+        "toan2-t1-b33-luyen-tap-3-3-b",
+        "toan2-t1-b33-luyen-tap-3-3-c",
+        "toan2-t1-b33-luyen-tap-3-3-d"
+      ],
+      "support": {
+        "guide": [
+          "Tính phép trên nóc mỗi ô tô.",
+          "Chỗ đỗ 43 đã có xe mẫu 28 + 15 rồi."
+        ],
+        "hint": "72 – 45: đặt tính, 2 không trừ được 5, mượn 1 chục.",
+        "answer": {
+          "text": "14 + 16 – chỗ 30; 72 – 45 – chỗ 27; 65 – 12 – chỗ 53; 34 + 16 – chỗ 50",
+          "explanation": "14 + 16 = 30; 72 – 45 = 27; 65 – 12 = 53; 34 + 16 = 50."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bíp bíp! Bốn chiếc ô tô đỗ thẳng hàng, không xe nào quẹt nhau.",
+          "Đốm thôi quay mòng mòng, bãi xe đã gọn tăm tắp.",
+          "Cậu điều khiển giao thông còn giỏi hơn chú cảnh sát."
+        ],
+        "wrong": [
+          "Một ô tô đang đỗ nhầm chỗ, bác tài gãi đầu kìa.",
+          "Phép trừ có nhớ: nhớ mượn 1 chục khi đơn vị không đủ trừ.",
+          "Tính kĩ phép cộng có nhớ trên xe 34 + 16 nhé."
+        ]
+      },
+      "answer": {
+        "assignment": {
+          "xe-14-16": "nhom-cho-do-30",
+          "xe-72-45": "nhom-cho-do-27",
+          "xe-65-12": "nhom-cho-do-53",
+          "xe-34-16": "nhom-cho-do-50"
+        }
+      }
+    },
+    {
+      "id": "dat-tinh-ve-vang",
+      "title": "Đặt tính trên vé vàng",
+      "target": "lon-rung-dom",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Xấp vé vàng dành cho khách mời, phép tính dài hơn hẳn. Đặt tính rồi tính.",
+      "template": "a) 28 + 35 = {{b1}}\na) 63 – 28 = {{b2}}\na) 63 – 35 = {{b3}}\nb) 42 + 49 = {{b4}}\nb) 91 – 42 = {{b5}}\nb) 91 – 49 = {{b6}}",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o36",
+              "text": "36"
+            },
+            {
+              "id": "o63",
+              "text": "63"
+            },
+            {
+              "id": "o65",
+              "text": "65"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o25",
+              "text": "25"
+            },
+            {
+              "id": "o35",
+              "text": "35"
+            },
+            {
+              "id": "o53",
+              "text": "53"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o27",
+              "text": "27"
+            },
+            {
+              "id": "o28",
+              "text": "28"
+            },
+            {
+              "id": "o82",
+              "text": "82"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "o89",
+              "text": "89"
+            },
+            {
+              "id": "o91",
+              "text": "91"
+            },
+            {
+              "id": "o101",
+              "text": "101"
+            }
+          ]
+        },
+        {
+          "id": "b5",
+          "options": [
+            {
+              "id": "o48",
+              "text": "48"
+            },
+            {
+              "id": "o49",
+              "text": "49"
+            },
+            {
+              "id": "o94",
+              "text": "94"
+            }
+          ]
+        },
+        {
+          "id": "b6",
+          "options": [
+            {
+              "id": "o42",
+              "text": "42"
+            },
+            {
+              "id": "o43",
+              "text": "43"
+            },
+            {
+              "id": "o52",
+              "text": "52"
+            }
+          ]
+        }
+      ],
+      "skill": "phep-tru",
+      "curriculumRef": [
+        "toan2-t1-b33-luyen-tap-3-2-a1",
+        "toan2-t1-b33-luyen-tap-3-2-a2",
+        "toan2-t1-b33-luyen-tap-3-2-a3",
+        "toan2-t1-b33-luyen-tap-3-2-b1",
+        "toan2-t1-b33-luyen-tap-3-2-b2",
+        "toan2-t1-b33-luyen-tap-3-2-b3"
+      ],
+      "support": {
+        "guide": [
+          "Viết đơn vị thẳng đơn vị, chục thẳng chục.",
+          "Cộng, trừ từ hàng đơn vị; nhớ 1 sang hàng chục khi cần."
+        ],
+        "hint": "Ba số 28, 35, 63 là một \"gia đình\": 28 + 35 = 63 nên 63 – 28 = 35.",
+        "answer": {
+          "text": "a) 28 + 35 = 63; a) 63 – 28 = 35; a) 63 – 35 = 28; b) 42 + 49 = 91; b) 91 – 42 = 49; b) 91 – 49 = 42",
+          "explanation": "28 + 35 = 63, 63 – 28 = 35, 63 – 35 = 28; 42 + 49 = 91, 91 – 42 = 49, 91 – 49 = 42."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Vé vàng đã có chủ, khách mời ngồi hàng đầu vỗ tay giòn giã.",
+          "Cậu phát hiện ra \"gia đình phép tính\" rồi đấy!",
+          "Đặt tính thẳng hàng như hàng ghế hội trường."
+        ],
+        "wrong": [
+          "Kiểm tra lại chỗ nhớ 1 sang hàng chục nhé.",
+          "Lấy tổng trừ đi một số hạng thì được số hạng kia.",
+          "Một vé vàng đang ghi sai số ghế rồi."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o63",
+          "b2": "o35",
+          "b3": "o28",
+          "b4": "o91",
+          "b5": "o49",
+          "b6": "o42"
+        }
+      }
+    },
+    {
+      "id": "doi-dong-dien",
+      "title": "Đội đồng diễn áo đỏ áo vàng",
+      "target": "lon-rung-dom",
+      "kind": "riddle",
+      "question": "Ngoài cửa, đội đồng diễn tập xếp hình, áo đỏ áo vàng rực cả sân. Một đội đồng diễn thể dục thể thao gồm có 56 người mặc áo đỏ và 28 người mặc áo vàng. Hỏi đội đồng diễn đó có tất cả bao nhiêu người?",
+      "skill": "bai-toan-loi-van",
+      "curriculumRef": [
+        "toan2-t1-b33-luyen-tap-3-4"
+      ],
+      "support": {
+        "guide": [
+          "\"Có tất cả\" thì gộp lại bằng phép cộng.",
+          "Đặt tính 56 + 28, nhớ 1 sang hàng chục."
+        ],
+        "hint": "6 + 8 = 14, viết 4 nhớ 1.",
+        "answer": {
+          "text": "84 người",
+          "explanation": "Đội đồng diễn có tất cả: 56 + 28 = 84 (người)."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Tám mươi tư bạn cùng giơ tay chào, đẹp như một bông hoa khổng lồ.",
+          "Cộng có nhớ mà không quên nhớ, tuyệt vời!",
+          "Đội đồng diễn tặng {name} một tràng vỗ tay đều tăm tắp."
+        ],
+        "wrong": [
+          "Hàng đơn vị 6 + 8 vượt 10, nhớ thêm 1 chục nhé.",
+          "Gộp cả áo đỏ lẫn áo vàng lại thì làm phép gì?",
+          "Kết quả phải lớn hơn 56 chứ."
+        ]
+      },
+      "answer": {
+        "value": 84
+      }
+    },
+    {
+      "id": "so-do-mui-ten-tong",
+      "title": "Mũi tên và tổng bằng nhau",
+      "target": "lon-rung-dom",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Trên cánh cửa hội trường, Đốm vẽ hai đường mũi tên và hai hộp quà. a) Số ?",
+      "template": "18 → + 17 → {{b1}} → – 9 → {{b2}}\n24 → – 8 → {{b3}} → + 15 → {{b4}}\nb) Tính tổng các số hạng bằng nhau.\n24 + 24 + 24 = {{b5}}\n2 + 2 + 2 + 2 + 2 = {{b6}}",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o33",
+              "text": "33"
+            },
+            {
+              "id": "o34",
+              "text": "34"
+            },
+            {
+              "id": "o35",
+              "text": "35"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o24",
+              "text": "24"
+            },
+            {
+              "id": "o26",
+              "text": "26"
+            },
+            {
+              "id": "o27",
+              "text": "27"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o16",
+              "text": "16"
+            },
+            {
+              "id": "o17",
+              "text": "17"
+            },
+            {
+              "id": "o26",
+              "text": "26"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "o13",
+              "text": "13"
+            },
+            {
+              "id": "o31",
+              "text": "31"
+            },
+            {
+              "id": "o33",
+              "text": "33"
+            }
+          ]
+        },
+        {
+          "id": "b5",
+          "options": [
+            {
+              "id": "o70",
+              "text": "70"
+            },
+            {
+              "id": "o72",
+              "text": "72"
+            },
+            {
+              "id": "o73",
+              "text": "73"
+            }
+          ]
+        },
+        {
+          "id": "b6",
+          "options": [
+            {
+              "id": "o0",
+              "text": "0"
+            },
+            {
+              "id": "o9",
+              "text": "9"
+            },
+            {
+              "id": "o10",
+              "text": "10"
+            }
+          ]
+        }
+      ],
+      "skill": "phep-cong",
+      "curriculumRef": [
+        "toan2-t1-b33-luyen-tap-4-1-a1",
+        "toan2-t1-b33-luyen-tap-4-1-a2",
+        "toan2-t1-b33-luyen-tap-4-1-a3",
+        "toan2-t1-b33-luyen-tap-4-1-a4",
+        "toan2-t1-b33-luyen-tap-4-1-b1",
+        "toan2-t1-b33-luyen-tap-4-1-b2"
+      ],
+      "support": {
+        "guide": [
+          "Làm lần lượt theo chiều mũi tên.",
+          "Tổng nhiều số hạng bằng nhau: cộng dần từ trái sang phải."
+        ],
+        "hint": "24 + 24 = 48, rồi 48 + 24 nữa.",
+        "answer": {
+          "text": "18 → + 17 → 35 → – 9 → 26; 24 → – 8 → 16 → + 15 → 31; b) Tính tổng các số hạng bằng nhau.; 24 + 24 + 24 = 72; 2 + 2 + 2 + 2 + 2 = 10",
+          "explanation": "18 + 17 = 35, 35 – 9 = 26; 24 – 8 = 16, 16 + 15 = 31; 24 + 24 + 24 = 72; 2 + 2 + 2 + 2 + 2 = 10."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Hai đường mũi tên tới đích, hai hộp quà bật nắp \"póc\"!",
+          "Cộng dần từng số hạng mà không sót cái nào, chuẩn!",
+          "Đốm vỗ đùi đen đét: cửa hội trường thành bảng toán rồi!"
+        ],
+        "wrong": [
+          "Ô sau dùng kết quả của ô trước đấy.",
+          "Đếm lại xem có mấy số 2 trong tổng nhé.",
+          "24 + 24 + 24: cộng hai số đầu trước rồi cộng tiếp."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o35",
+          "b2": "o26",
+          "b3": "o16",
+          "b4": "o31",
+          "b5": "o72",
+          "b6": "o10"
+        }
+      }
+    },
+    {
+      "id": "bang-so-tren-cua",
+      "title": "Bảng số dán ở cửa",
+      "target": "lon-rung-dom",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Cạnh cửa có tấm bảng số từ 11 đến 45, Đốm dán để khán giả xếp hàng. Cho bảng sau:",
+      "template": "11 | 12 | 13 | 14 | 15 | 16 | 17\n18 | 19 | 20 | 21 | 22 | 23 | 24\n25 | 26 | 27 | 28 | 29 | 30 | 31\n32 | 33 | 34 | 35 | 36 | 37 | 38\n39 | 40 | 41 | 42 | 43 | 44 | 45\na) Tính tổng của ba số tròn chục có trong bảng. {{b1}}\nb) Hai số nào trong bảng có tổng là 23? {{b2}} và {{b3}}\nc) Hai số nào trong bảng có tổng lớn nhất? {{b4}} và {{b5}}",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o90",
+              "text": "90"
+            },
+            {
+              "id": "o91",
+              "text": "91"
+            },
+            {
+              "id": "o92",
+              "text": "92"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o9",
+              "text": "9"
+            },
+            {
+              "id": "o10",
+              "text": "10"
+            },
+            {
+              "id": "o11",
+              "text": "11"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o12",
+              "text": "12"
+            },
+            {
+              "id": "o13",
+              "text": "13"
+            },
+            {
+              "id": "o21",
+              "text": "21"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "o43",
+              "text": "43"
+            },
+            {
+              "id": "o44",
+              "text": "44"
+            },
+            {
+              "id": "o45",
+              "text": "45"
+            }
+          ]
+        },
+        {
+          "id": "b5",
+          "options": [
+            {
+              "id": "o43",
+              "text": "43"
+            },
+            {
+              "id": "o44",
+              "text": "44"
+            },
+            {
+              "id": "o45",
+              "text": "45"
+            }
+          ]
+        }
+      ],
+      "skill": "phep-cong",
+      "curriculumRef": [
+        "toan2-t1-b33-luyen-tap-4-2-a",
+        "toan2-t1-b33-luyen-tap-4-2-b",
+        "toan2-t1-b33-luyen-tap-4-2-c"
+      ],
+      "support": {
+        "guide": [
+          "Số tròn chục có chữ số 0 ở hàng đơn vị.",
+          "Viết số bé hơn trước, số lớn hơn sau."
+        ],
+        "hint": "Các số tròn chục trong bảng là 20, 30, 40.",
+        "answer": {
+          "text": "11 | 12 | 13 | 14 | 15 | 16 | 17; 18 | 19 | 20 | 21 | 22 | 23 | 24; 25 | 26 | 27 | 28 | 29 | 30 | 31; 32 | 33 | 34 | 35 | 36 | 37 | 38; 39 | 40 | 41 | 42 | 43 | 44 | 45; a) Tính tổng của ba số tròn chục có trong bảng. 90; b) Hai số nào trong bảng có tổng là 23? 11 và 12; c) Hai số nào trong bảng có tổng lớn nhất? 44 và 45",
+          "explanation": "20 + 30 + 40 = 90; 11 + 12 = 23 (hai số bé nhất trong bảng); 44 + 45 là tổng lớn nhất vì đó là hai số lớn nhất."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bảng số trả lời trôi chảy, khán giả xếp hàng ngay ngắn.",
+          "Muốn tổng lớn nhất thì lấy hai số lớn nhất, cậu thông minh quá!",
+          "Ba số tròn chục cộng lại vừa tròn 9 chục, đẹp ghê."
+        ],
+        "wrong": [
+          "Tìm các số có hàng đơn vị là 0 trong bảng nhé.",
+          "Tổng 23 thì hai số phải khá bé, nhìn hàng đầu tiên xem.",
+          "Hai số lớn nhất nằm ở cuối bảng đấy."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o90",
+          "b2": "o11",
+          "b3": "o12",
+          "b4": "o44",
+          "b5": "o45"
+        }
+      }
+    },
+    {
+      "id": "thanh-go-cua-dom",
+      "title": "Thanh gỗ làm bục",
+      "target": "lon-rung-dom",
+      "kind": "riddle",
+      "question": "Đốm cầm cưa xoèn xoẹt làm bục đứng cho ca sĩ nhí. Một thanh gỗ dài 92 cm. Bác thợ mộc đã cưa đi một đoạn dài 27 cm. Hỏi thanh gỗ còn lại dài bao nhiêu xăng-ti-mét?",
+      "skill": "bai-toan-loi-van",
+      "curriculumRef": [
+        "toan2-t1-b33-luyen-tap-4-3"
+      ],
+      "support": {
+        "guide": [
+          "Cưa đi thì phần còn lại ngắn hơn: làm phép trừ.",
+          "Đặt tính 92 – 27, mượn 1 chục ở hàng chục."
+        ],
+        "hint": "12 – 7 = 5, rồi 8 – 2 = 6.",
+        "answer": {
+          "text": "65 cm",
+          "explanation": "Thanh gỗ còn lại dài: 92 – 27 = 65 (cm)."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bục gỗ đứng vững, ca sĩ nhí bước lên hát vang!",
+          "Đốm hết vụng nhờ có {name} tính giúp từng xăng-ti-mét.",
+          "Trừ có nhớ gọn gàng như nhát cưa thẳng tắp."
+        ],
+        "wrong": [
+          "Đoạn đã cưa đi thì phải bớt ra chứ.",
+          "Hàng đơn vị 2 không trừ được 7, mượn 1 chục nhé.",
+          "Phần còn lại phải ngắn hơn 92 cm."
+        ]
+      },
+      "answer": {
+        "value": 65
+      }
+    },
+    {
+      "id": "thap-so-san-khau",
+      "title": "Tháp số khai màn",
+      "goTo": "Lên lại sân khấu hội trường, thầy Sư Tử Vàng chờ dựng tháp khai màn",
+      "target": "su-tu-vang",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Màn cuối tổng duyệt: cả trường xếp tháp gạch số, mỗi viên bằng tổng hai viên ngay dưới. Thầy Sư Tử nín thở, sợ gầm một cái là tháp đổ. Số ?",
+      "template": "Đỉnh tháp: {{b1}}\nHàng bốn: 24 | {{b2}}\nHàng ba: 11 | {{b3}} | {{b4}}\nHàng hai: 5 | 6 | {{b5}} | {{b6}}\nHàng dưới: 2 | 3 | 3 | 4 | 4",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o52",
+              "text": "52"
+            },
+            {
+              "id": "o54",
+              "text": "54"
+            },
+            {
+              "id": "o62",
+              "text": "62"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o28",
+              "text": "28"
+            },
+            {
+              "id": "o29",
+              "text": "29"
+            },
+            {
+              "id": "o82",
+              "text": "82"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o13",
+              "text": "13"
+            },
+            {
+              "id": "o15",
+              "text": "15"
+            },
+            {
+              "id": "o23",
+              "text": "23"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "o15",
+              "text": "15"
+            },
+            {
+              "id": "o17",
+              "text": "17"
+            },
+            {
+              "id": "o25",
+              "text": "25"
+            }
+          ]
+        },
+        {
+          "id": "b5",
+          "options": [
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o7",
+              "text": "7"
+            },
+            {
+              "id": "o17",
+              "text": "17"
+            }
+          ]
+        },
+        {
+          "id": "b6",
+          "options": [
+            {
+              "id": "o7",
+              "text": "7"
+            },
+            {
+              "id": "o8",
+              "text": "8"
+            },
+            {
+              "id": "o18",
+              "text": "18"
+            }
+          ]
+        }
+      ],
+      "skill": "phep-cong",
+      "curriculumRef": [
+        "toan2-t1-b33-luyen-tap-4-4-f",
+        "toan2-t1-b33-luyen-tap-4-4-e",
+        "toan2-t1-b33-luyen-tap-4-4-c",
+        "toan2-t1-b33-luyen-tap-4-4-d",
+        "toan2-t1-b33-luyen-tap-4-4-a",
+        "toan2-t1-b33-luyen-tap-4-4-b"
+      ],
+      "support": {
+        "guide": [
+          "Xây từ dưới lên: mỗi viên bằng tổng hai viên ngay dưới nó.",
+          "Điền xong hàng hai rồi mới lên hàng ba."
+        ],
+        "hint": "Hàng hai: 3 + 4 = 7 và 4 + 4 = 8.",
+        "answer": {
+          "text": "Đỉnh tháp: 52; Hàng bốn: 24 | 28; Hàng ba: 11 | 13 | 15; Hàng hai: 5 | 6 | 7 | 8; Hàng dưới: 2 | 3 | 3 | 4 | 4",
+          "explanation": "Hàng hai 7, 8; hàng ba 6 + 7 = 13, 7 + 8 = 15; hàng bốn 13 + 15 = 28; đỉnh 24 + 28 = 52."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Tháp số đứng sừng sững, đèn sân khấu bật sáng rực!",
+          "Thầy Sư Tử cuối cùng cũng gầm thật to: TUYỆT VỜI! Tháp vẫn vững.",
+          "Từ hàng dưới lên tận đỉnh, không viên nào sai."
+        ],
+        "wrong": [
+          "Một viên gạch chưa bằng tổng hai viên ngay dưới nó.",
+          "Xây từ hàng dưới lên nhé, đừng vội lên đỉnh.",
+          "Tháp hơi chao rồi, kiểm tra lại hàng ba xem."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o52",
+          "b2": "o28",
+          "b3": "o13",
+          "b4": "o15",
+          "b5": "o7",
+          "b6": "o8"
+        }
+      }
+    },
+    {
+      "id": "huy-hieu-tong-duyet",
+      "title": "Huy hiệu tổng duyệt",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Màn nhung kéo lên, cả hội trường vỗ tay rào rào. Thầy Sư Tử Vàng cài cho {name} huy hiệu \"Người giữ vé vàng\" và thì thầm: lần sau thầy sẽ thử micro nhỏ tiếng hơn."
+    },
+    {
+      "id": "phong-nen-hinh-khoi",
+      "title": "Phông nền còn trống",
+      "kind": "unlock",
+      "trigger": "auto",
+      "text": "Hươu Cao ló đầu qua tấm phông trắng toát sau sân khấu: hình tròn, hình vuông, hình tứ giác bay tứ tung cả rồi, ai dựng phông với tớ đây?"
+    }
+  ],
+  "reward": {
+    "xp": 120,
+    "coin": 20,
+    "skillXp": {
+      "phep-cong": 2,
+      "phep-tru": 2,
+      "bai-toan-loi-van": 1
+    }
+  }
+}

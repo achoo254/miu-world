@@ -1,0 +1,1056 @@
+{
+  "id": "toan2-cd7-b35",
+  "region": "truong-hoc",
+  "chapter": 7,
+  "title": "Hậu trường của cô Pin kĩ tính",
+  "status": "draft",
+  "lesson": "toan2-t1-b35",
+  "summary": "Trước giờ diễn, Chim Cánh Cụt Pin kiểm từng ki-lô-gam bánh, từng lít nước ở hậu trường; {name} cân thú bông, tính cân nặng, đưa dê qua sông trong vở múa rối của Cáo Lém và chọn can rót đủ 15 l nước.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "Chim Cánh Cụt Pin, Heo Ủn, Cáo Lém",
+    "where": "Hội trường: hậu trường, góc bánh, bục múa rối",
+    "goal": "Chuẩn bị đủ nước và bánh, đúng cân, đúng lít cho buổi diễn cuối kì",
+    "play": "Tìm đồ đo, chọn câu đúng, điền cân nặng và số lít, giải toán, chọn can",
+    "learn": "Toán 2 Bài 35: ôn tập đo lường (ki-lô-gam, lít)",
+    "reward": "120 XP, 18 xu, Khối lượng +2, Dung tích +2, Bài toán có lời văn +1",
+    "unlock": "Bài 36 \"Ôn tập chung\""
+  },
+  "phases": {
+    "hook": "pin-so-kiem-dem",
+    "explore": "tim-do-do-luong",
+    "learn": "kg-va-lit-la-gi",
+    "challenge": "bap-benh-thu-bong",
+    "decision": "vo-roi-ba-chu-de",
+    "finale": "ba-can-muoi-lam-lit",
+    "reward": "huy-hieu-hau-truong",
+    "unlock": "le-tong-ket-sap-mo"
+  },
+  "texts": {},
+  "places": {
+    "chim-canh-cut-pin": "hậu trường",
+    "tim-do-do-luong": "hậu trường",
+    "heo-un": "góc bánh",
+    "cao-lem": "bục múa rối"
+  },
+  "steps": [
+    {
+      "id": "pin-so-kiem-dem",
+      "title": "Cuốn sổ kiểm đếm của Pin",
+      "goTo": "Vào hậu trường, Chim Cánh Cụt Pin đang lạch bạch đi kiểm đồ",
+      "kind": "dialogue",
+      "target": "chim-canh-cut-pin",
+      "lines": [
+        {
+          "speaker": "Cánh Cụt Pin",
+          "text": "Một, hai, ba… sai! Lại đếm lại! {name} đấy à? Tớ đang kiểm hậu trường, thiếu một mẩu bánh hay một giọt nước là không được diễn đâu."
+        },
+        {
+          "speaker": "Heo Ủn",
+          "text": "Pin ơi, một giọt thôi mà… với lại tớ mới chỉ nếm thử có ba cái bánh."
+        },
+        {
+          "speaker": "Cánh Cụt Pin",
+          "text": "BA CÁI?! Thôi xong, phải cân lại hết. Mà quả cân, cái ca một lít với cái can của tớ chạy đâu mất rồi?"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Để tớ đi tìm đồ đo cho!",
+          "reply": "Pin chỉnh lại nơ cổ: Cảm ơn, nhớ mang về đúng ba món, không thừa không thiếu."
+        },
+        {
+          "text": "Heo Ủn lại ăn vụng rồi!",
+          "reply": "Heo Ủn đỏ mặt: Tớ nếm thử chứ có ăn đâu… mà thôi, tớ giúp tìm đồ chuộc lỗi."
+        }
+      ]
+    },
+    {
+      "id": "tim-do-do-luong",
+      "title": "Quả cân, ca và can",
+      "goTo": "Tìm quả cân, ca một lít và chiếc can lạc quanh hậu trường",
+      "kind": "search",
+      "targets": [
+        "toan2-cd7-qua-can",
+        "toan2-cd7-ca-mot-lit",
+        "toan2-cd7-can-nuoc"
+      ]
+    },
+    {
+      "id": "kg-va-lit-la-gi",
+      "title": "Ki-lô-gam và lít",
+      "kind": "dialogue",
+      "target": "chim-canh-cut-pin",
+      "lines": [
+        {
+          "speaker": "Cánh Cụt Pin",
+          "text": "Ôn nhanh nhé: nặng nhẹ thì đo bằng ki-lô-gam, viết tắt kg; nước trong bình nhiều ít thì đo bằng lít, viết tắt l."
+        },
+        {
+          "speaker": "Cánh Cụt Pin",
+          "text": "Cộng trừ kg hay l cũng như cộng trừ số thường, chỉ nhớ viết tên đơn vị phía sau thôi."
+        },
+        {
+          "speaker": "Heo Ủn",
+          "text": "Vậy ba cái bánh tớ nếm nặng bao nhiêu kg nhỉ? À thôi, đừng cân tớ nhé!"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Bắt đầu kiểm đồ thôi!",
+          "reply": "Pin lật sổ soạt soạt: Mục một, khu đồ chơi bông."
+        }
+      ]
+    },
+    {
+      "id": "bap-benh-thu-bong",
+      "title": "Bập bênh thú bông",
+      "target": "chim-canh-cut-pin",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "prompt": "Đạo cụ có hai chiếc bập bênh. Bập bênh thứ nhất: gấu bông ở đầu thấp, thỏ bông ở đầu cao. Bập bênh thứ hai: sóc bông ở đầu cao, thỏ bông ở đầu thấp. Đ, S ? Chọn các câu đúng (Đ); câu không chọn là sai (S).",
+      "choices": [
+        {
+          "id": "a-gau-bong-nang-hon-tho-bong",
+          "text": "a) Gấu bông nặng hơn thỏ bông."
+        },
+        {
+          "id": "b-tho-bong-nhe-hon-soc-bong",
+          "text": "b) Thỏ bông nhẹ hơn sóc bông."
+        },
+        {
+          "id": "c-soc-bong-nhe-hon-gau-bong",
+          "text": "c) Sóc bông nhẹ hơn gấu bông."
+        }
+      ],
+      "skill": "khoi-luong",
+      "curriculumRef": [
+        "toan2-t1-b35-luyen-tap-1-a",
+        "toan2-t1-b35-luyen-tap-1-b",
+        "toan2-t1-b35-luyen-tap-1-c"
+      ],
+      "support": {
+        "guide": [
+          "Bên nào nặng hơn thì chúi xuống thấp.",
+          "Thỏ nặng hơn sóc, gấu nặng hơn thỏ, vậy gấu nặng nhất."
+        ],
+        "hint": "Ở bập bênh thứ hai, thỏ bông ở đầu thấp nên thỏ nặng hơn sóc.",
+        "answer": {
+          "text": "Đ: a, c; S: b",
+          "explanation": "Câu a đúng (gấu ở đầu thấp). Câu b sai: thỏ nặng hơn sóc. Câu c đúng: sóc nhẹ hơn thỏ, thỏ nhẹ hơn gấu."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Pin gạch một dấu tích thật đẹp: khu thú bông đạt yêu cầu!",
+          "Đầu nào thấp đầu ấy nặng, cậu nhìn bập bênh tinh ghê.",
+          "Ba chú thú bông cúi chào cảm ơn {name} đã cân giúp."
+        ],
+        "wrong": [
+          "Bên nào chúi xuống thấp thì bên đó nặng hơn nhé.",
+          "Thỏ bông ở bập bênh thứ hai đang ở đầu thấp đấy.",
+          "Gấu nặng hơn thỏ, thỏ nặng hơn sóc, vậy sóc so với gấu thế nào?"
+        ]
+      },
+      "answer": {
+        "choices": [
+          "a-gau-bong-nang-hon-tho-bong",
+          "c-soc-bong-nhe-hon-gau-bong"
+        ]
+      }
+    },
+    {
+      "id": "can-tho-va-tui-gao",
+      "title": "Cân thỏ và túi gạo",
+      "target": "chim-canh-cut-pin",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Cân đĩa thăng bằng: một đĩa có quả cân 1 kg và quả cân 2 kg, đĩa kia có con thỏ. Cân đồng hồ có quả cân 1 kg và túi gạo, kim chỉ 5 kg. Số ?",
+      "template": "a) {{b1}} kg + {{b2}} kg = {{b3}} kg\nCon thỏ cân nặng {{b4}} kg.\nb) {{b5}} kg – {{b6}} kg = {{b7}} kg\nTúi gạo cân nặng {{b8}} kg.",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o1",
+              "text": "1"
+            },
+            {
+              "id": "o2",
+              "text": "2"
+            },
+            {
+              "id": "o3",
+              "text": "3"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o1",
+              "text": "1"
+            },
+            {
+              "id": "o2",
+              "text": "2"
+            },
+            {
+              "id": "o4",
+              "text": "4"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o3",
+              "text": "3"
+            },
+            {
+              "id": "o5",
+              "text": "5"
+            },
+            {
+              "id": "o13",
+              "text": "13"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "o1",
+              "text": "1"
+            },
+            {
+              "id": "o3",
+              "text": "3"
+            },
+            {
+              "id": "o13",
+              "text": "13"
+            }
+          ]
+        },
+        {
+          "id": "b5",
+          "options": [
+            {
+              "id": "o5",
+              "text": "5"
+            },
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o7",
+              "text": "7"
+            }
+          ]
+        },
+        {
+          "id": "b6",
+          "options": [
+            {
+              "id": "o0",
+              "text": "0"
+            },
+            {
+              "id": "o1",
+              "text": "1"
+            },
+            {
+              "id": "o2",
+              "text": "2"
+            }
+          ]
+        },
+        {
+          "id": "b7",
+          "options": [
+            {
+              "id": "o3",
+              "text": "3"
+            },
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o6",
+              "text": "6"
+            }
+          ]
+        },
+        {
+          "id": "b8",
+          "options": [
+            {
+              "id": "o3",
+              "text": "3"
+            },
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o5",
+              "text": "5"
+            }
+          ]
+        }
+      ],
+      "skill": "khoi-luong",
+      "curriculumRef": [
+        "toan2-t1-b35-luyen-tap-3-a",
+        "toan2-t1-b35-luyen-tap-3-b"
+      ],
+      "support": {
+        "guide": [
+          "Cân đĩa thăng bằng: con thỏ nặng bằng hai quả cân cộng lại (viết quả cân nhỏ trước).",
+          "Cân đồng hồ chỉ cả túi gạo lẫn quả cân: bớt quả cân đi."
+        ],
+        "hint": "Cân đồng hồ chỉ 5 kg, trong đó có quả cân 1 kg.",
+        "answer": {
+          "text": "a) 1 kg + 2 kg = 3 kg; Con thỏ cân nặng 3 kg.; b) 5 kg – 1 kg = 4 kg; Túi gạo cân nặng 4 kg.",
+          "explanation": "a) 1 kg + 2 kg = 3 kg, con thỏ nặng 3 kg. b) 5 kg – 1 kg = 4 kg, túi gạo nặng 4 kg."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Thỏ 3 kg, gạo 4 kg, Pin ghi vào sổ không tẩy xóa chữ nào.",
+          "Biết bớt quả cân ra mới tinh ý đấy!",
+          "Cân nào cũng đọc chuẩn, Pin gật đầu lia lịa."
+        ],
+        "wrong": [
+          "Cân đồng hồ đang cân cả quả cân 1 kg đấy, bớt ra nhé.",
+          "Con thỏ nặng bằng tổng hai quả cân bên kia.",
+          "Viết quả cân 1 kg trước, quả 2 kg sau nhé."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o1",
+          "b2": "o2",
+          "b3": "o3",
+          "b4": "o3",
+          "b5": "o5",
+          "b6": "o1",
+          "b7": "o4",
+          "b8": "o4"
+        }
+      }
+    },
+    {
+      "id": "cong-tru-kilogam",
+      "title": "Sổ cân hàng của Pin",
+      "target": "chim-canh-cut-pin",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Sổ của Pin ghi khối lượng các thùng bánh, phải cộng trừ cho khớp. Tính.",
+      "template": "19 kg + 25 kg = {{b1}} kg\n35 kg + 28 kg = {{b2}} kg\n44 kg – 19 kg = {{b3}} kg\n63 kg – 28 kg = {{b4}} kg\n44 kg – 25 kg = {{b5}} kg\n63 kg – 35 kg = {{b6}} kg",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o42",
+              "text": "42"
+            },
+            {
+              "id": "o44",
+              "text": "44"
+            },
+            {
+              "id": "o54",
+              "text": "54"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o62",
+              "text": "62"
+            },
+            {
+              "id": "o63",
+              "text": "63"
+            },
+            {
+              "id": "o65",
+              "text": "65"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o15",
+              "text": "15"
+            },
+            {
+              "id": "o23",
+              "text": "23"
+            },
+            {
+              "id": "o25",
+              "text": "25"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "o33",
+              "text": "33"
+            },
+            {
+              "id": "o35",
+              "text": "35"
+            },
+            {
+              "id": "o37",
+              "text": "37"
+            }
+          ]
+        },
+        {
+          "id": "b5",
+          "options": [
+            {
+              "id": "o9",
+              "text": "9"
+            },
+            {
+              "id": "o17",
+              "text": "17"
+            },
+            {
+              "id": "o19",
+              "text": "19"
+            }
+          ]
+        },
+        {
+          "id": "b6",
+          "options": [
+            {
+              "id": "o27",
+              "text": "27"
+            },
+            {
+              "id": "o28",
+              "text": "28"
+            },
+            {
+              "id": "o38",
+              "text": "38"
+            }
+          ]
+        }
+      ],
+      "skill": "khoi-luong",
+      "curriculumRef": [
+        "toan2-t1-b35-luyen-tap-2-a",
+        "toan2-t1-b35-luyen-tap-2-b",
+        "toan2-t1-b35-luyen-tap-2-c",
+        "toan2-t1-b35-luyen-tap-2-d",
+        "toan2-t1-b35-luyen-tap-2-e",
+        "toan2-t1-b35-luyen-tap-2-f"
+      ],
+      "support": {
+        "guide": [
+          "Tính như số thường rồi viết \"kg\" sau kết quả.",
+          "Đặt tính khi có nhớ."
+        ],
+        "hint": "19 + 25 = 44, nên 44 – 19 = 25 và 44 – 25 = 19.",
+        "answer": {
+          "text": "19 kg + 25 kg = 44 kg; 35 kg + 28 kg = 63 kg; 44 kg – 19 kg = 25 kg; 63 kg – 28 kg = 35 kg; 44 kg – 25 kg = 19 kg; 63 kg – 35 kg = 28 kg",
+          "explanation": "19 kg + 25 kg = 44 kg; 35 kg + 28 kg = 63 kg; 44 kg – 19 kg = 25 kg; 63 kg – 28 kg = 35 kg; 44 kg – 25 kg = 19 kg; 63 kg – 35 kg = 28 kg."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Sổ cân hàng khớp từng ki-lô-gam, Pin vỗ cánh phành phạch!",
+          "Phép cộng và phép trừ \"soi gương\" nhau, cậu nhận ra rồi chứ?",
+          "Thùng bánh nào cũng đủ cân, Heo Ủn thở phào nhẹ nhõm."
+        ],
+        "wrong": [
+          "Hàng đơn vị có nhớ không? Kiểm tra lại nhé.",
+          "Lấy tổng trừ đi một số thì ra số còn lại đó.",
+          "Một dòng trong sổ đang lệch vài ki-lô-gam."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o44",
+          "b2": "o63",
+          "b3": "o25",
+          "b4": "o35",
+          "b5": "o19",
+          "b6": "o28"
+        }
+      }
+    },
+    {
+      "id": "con-lon-tang-can",
+      "title": "Con lợn tăng cân",
+      "goTo": "Sang góc bánh, Heo Ủn đang đọc truyện tranh",
+      "target": "heo-un",
+      "kind": "riddle",
+      "question": "Heo Ủn đọc to một bài toán rồi giãy nảy: \"Không phải tớ đâu nhé!\" Mẹ mua con lợn cân nặng 25 kg về nuôi. Sau một thời gian, con lợn tăng thêm 18 kg. Hỏi lúc này, con lợn cân nặng bao nhiêu ki-lô-gam?",
+      "skill": "bai-toan-loi-van",
+      "curriculumRef": [
+        "toan2-t1-b35-luyen-tap-4"
+      ],
+      "support": {
+        "guide": [
+          "\"Tăng thêm\" thì làm phép cộng.",
+          "Đặt tính 25 + 18, 5 + 8 = 13, viết 3 nhớ 1."
+        ],
+        "hint": "Phép tính là 25 + 18.",
+        "answer": {
+          "text": "43 kg",
+          "explanation": "Lúc này con lợn cân nặng: 25 + 18 = 43 (kg)."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Heo Ủn ôm bụng cười: 43 kg, vẫn nhẹ hơn tớ nhiều!",
+          "Tăng thêm thì cộng, cậu giải gọn như ăn bánh.",
+          "Nhớ 1 sang hàng chục chuẩn chỉnh, tuyệt quá."
+        ],
+        "wrong": [
+          "Con lợn béo lên thì cân nặng phải nhiều hơn 25 kg chứ.",
+          "Đừng quên nhớ 1 khi 5 + 8 vượt quá 10 nhé.",
+          "Bài này cộng hai số lại, không phải trừ đâu."
+        ]
+      },
+      "answer": {
+        "value": 43
+      }
+    },
+    {
+      "id": "vo-roi-ba-chu-de",
+      "title": "Vở múa rối ba chú dê",
+      "goTo": "Ra bục múa rối, Cáo Lém đang tập vở \"Dê qua sông\"",
+      "kind": "dialogue",
+      "target": "cao-lem",
+      "lines": [
+        {
+          "speaker": "Cáo Lém",
+          "text": "Kính thưa quý vị! Vở múa rối hôm nay có ba chú dê muốn qua sông ăn cỏ, và tớ đóng vai… Rô-bốt lái thuyền, bíp bíp!"
+        },
+        {
+          "speaker": "Cáo Lém",
+          "text": "Khổ nỗi thuyền nhỏ, chở quá nặng là chìm. Tớ thử cho cả ba chú dê lên rồi, rối dê ướt sũng luôn."
+        },
+        {
+          "speaker": "Cánh Cụt Pin",
+          "text": "Ướt rối là hỏng đạo cụ! {name}, cậu tính trước rồi mới cho dê lên thuyền nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Thử từng cặp dê một",
+          "reply": "Cáo Lém: Cặp nào nhẹ nhất thì lên trước, hay đấy!"
+        },
+        {
+          "text": "Tìm hai chú dê nhẹ nhất",
+          "reply": "Cáo Lém: Thông minh, đỡ phải thử đi thử lại!"
+        }
+      ]
+    },
+    {
+      "id": "de-qua-song",
+      "title": "Hai chú dê lên thuyền",
+      "target": "cao-lem",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Có ba con dê cân nặng 14 kg, 18 kg, 16 kg muốn sang sông để ăn cỏ. Rô-bốt nói: \"Thuyền chỉ chở thêm được nhiều nhất là 31 kg”. Hỏi hai con dê nào có thể cùng nhau sang sông?",
+      "template": "Hai con dê có thể cùng nhau sang sông: con dê nặng {{b1}} và con dê nặng {{b2}} (viết con nhẹ hơn trước).",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "14-kg",
+              "text": "14 kg"
+            },
+            {
+              "id": "16-kg",
+              "text": "16 kg"
+            },
+            {
+              "id": "18-kg",
+              "text": "18 kg"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "14-kg",
+              "text": "14 kg"
+            },
+            {
+              "id": "16-kg",
+              "text": "16 kg"
+            },
+            {
+              "id": "18-kg",
+              "text": "18 kg"
+            }
+          ]
+        }
+      ],
+      "skill": "bai-toan-loi-van",
+      "curriculumRef": [
+        "toan2-t1-b35-luyen-tap-5"
+      ],
+      "support": {
+        "guide": [
+          "Cộng thử cân nặng từng cặp dê.",
+          "Tổng phải không quá 31 kg."
+        ],
+        "hint": "14 + 18 = 32 và 16 + 18 = 34 đều quá 31 kg.",
+        "answer": {
+          "text": "Con dê 14 kg và con dê 16 kg",
+          "explanation": "14 kg + 16 kg = 30 kg, không quá 31 kg; hai cặp còn lại đều nặng hơn 31 kg."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Thuyền chở hai chú dê lướt qua sông, không ướt sợi lông nào!",
+          "Ba mươi ki-lô-gam, vẫn còn dư chỗ cho một bó cỏ.",
+          "Cáo Lém cúi chào khán giả: cảm ơn kĩ sư thuyền {name}!"
+        ],
+        "wrong": [
+          "Ối, thuyền chìm rồi! Tổng hai chú dê đã quá 31 kg.",
+          "Cộng thử cân nặng từng cặp rồi so với 31 kg nhé.",
+          "Chú dê 18 kg nặng quá, đi với ai cũng vượt 31 kg."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "14-kg",
+          "b2": "16-kg"
+        }
+      }
+    },
+    {
+      "id": "hai-binh-nuoc-cua-mai",
+      "title": "Hai bình nước mát",
+      "goTo": "Quay về hậu trường, Pin đang xếp bình nước cho diễn viên",
+      "target": "chim-canh-cut-pin",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Pin kể lại chuyện bạn Mai rót nước hôm qua. Số ? Có hai bình chứa đầy nước. Bạn Mai đã rót hết nước ở bình A sang đầy các ca 1 l thì được 8 ca, rót hết nước ở bình B sang đầy các ca 1 l thì được 5 ca.",
+      "template": "a) – Bình A chứa được {{b1}} l nước.\n– Bình B chứa được {{b2}} l nước.\nb) Cả hai bình chứa được {{b3}} l nước.",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o8",
+              "text": "8"
+            },
+            {
+              "id": "o9",
+              "text": "9"
+            },
+            {
+              "id": "o10",
+              "text": "10"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o3",
+              "text": "3"
+            },
+            {
+              "id": "o5",
+              "text": "5"
+            },
+            {
+              "id": "o15",
+              "text": "15"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o13",
+              "text": "13"
+            },
+            {
+              "id": "o14",
+              "text": "14"
+            },
+            {
+              "id": "o15",
+              "text": "15"
+            }
+          ]
+        }
+      ],
+      "skill": "dung-tich",
+      "curriculumRef": [
+        "toan2-t1-b35-luyen-tap-2-1-a1",
+        "toan2-t1-b35-luyen-tap-2-1-a2",
+        "toan2-t1-b35-luyen-tap-2-1-b"
+      ],
+      "support": {
+        "guide": [
+          "Mỗi ca chứa 1 l, đầy bao nhiêu ca thì có bấy nhiêu lít.",
+          "Cả hai bình: cộng số lít hai bình."
+        ],
+        "hint": "Bình A được 8 ca 1 l, tức là 8 l.",
+        "answer": {
+          "text": "a) – Bình A chứa được 8 l nước.; – Bình B chứa được 5 l nước.; b) Cả hai bình chứa được 13 l nước.",
+          "explanation": "Bình A chứa 8 l, bình B chứa 5 l; cả hai bình chứa 8 l + 5 l = 13 l."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Hai bình nước mát lạnh xếp ngay ngắn cho diễn viên rồi.",
+          "Đếm ca ra lít nhanh thật, Pin không kịp chấm sổ.",
+          "Mười ba lít nước, đủ cho cả đoàn uống thoải mái."
+        ],
+        "wrong": [
+          "Mỗi ca là 1 l, đếm lại số ca của từng bình nhé.",
+          "Cả hai bình thì cộng số lít lại với nhau.",
+          "Bình B được 5 ca, vậy nó chứa mấy lít?"
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o8",
+          "b2": "o5",
+          "b3": "o13"
+        }
+      }
+    },
+    {
+      "id": "cong-tru-lit",
+      "title": "Sổ nước của Pin",
+      "target": "chim-canh-cut-pin",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Trang tiếp theo trong sổ ghi các thùng nước chanh, nước cam. Tính.",
+      "template": "a) 25 l + 8 l = {{b1}} l\na) 44 l + 19 l = {{b2}} l\na) 33 l – 8 l = {{b3}} l\na) 63 l – 44 l = {{b4}} l\na) 33 l – 25 l = {{b5}} l\na) 63 l – 19 l = {{b6}} l\nb) 15 l + 8 l + 30 l = {{b7}} l\nb) 42 l – 7 l + 16 l = {{b8}} l",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o33",
+              "text": "33"
+            },
+            {
+              "id": "o35",
+              "text": "35"
+            },
+            {
+              "id": "o43",
+              "text": "43"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o61",
+              "text": "61"
+            },
+            {
+              "id": "o63",
+              "text": "63"
+            },
+            {
+              "id": "o65",
+              "text": "65"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o24",
+              "text": "24"
+            },
+            {
+              "id": "o25",
+              "text": "25"
+            },
+            {
+              "id": "o26",
+              "text": "26"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "o18",
+              "text": "18"
+            },
+            {
+              "id": "o19",
+              "text": "19"
+            },
+            {
+              "id": "o20",
+              "text": "20"
+            }
+          ]
+        },
+        {
+          "id": "b5",
+          "options": [
+            {
+              "id": "o7",
+              "text": "7"
+            },
+            {
+              "id": "o8",
+              "text": "8"
+            },
+            {
+              "id": "o18",
+              "text": "18"
+            }
+          ]
+        },
+        {
+          "id": "b6",
+          "options": [
+            {
+              "id": "o42",
+              "text": "42"
+            },
+            {
+              "id": "o44",
+              "text": "44"
+            },
+            {
+              "id": "o46",
+              "text": "46"
+            }
+          ]
+        },
+        {
+          "id": "b7",
+          "options": [
+            {
+              "id": "o35",
+              "text": "35"
+            },
+            {
+              "id": "o53",
+              "text": "53"
+            },
+            {
+              "id": "o54",
+              "text": "54"
+            }
+          ]
+        },
+        {
+          "id": "b8",
+          "options": [
+            {
+              "id": "o15",
+              "text": "15"
+            },
+            {
+              "id": "o51",
+              "text": "51"
+            },
+            {
+              "id": "o52",
+              "text": "52"
+            }
+          ]
+        }
+      ],
+      "skill": "dung-tich",
+      "curriculumRef": [
+        "toan2-t1-b35-luyen-tap-2-2-a1",
+        "toan2-t1-b35-luyen-tap-2-2-a2",
+        "toan2-t1-b35-luyen-tap-2-2-a3",
+        "toan2-t1-b35-luyen-tap-2-2-a4",
+        "toan2-t1-b35-luyen-tap-2-2-a5",
+        "toan2-t1-b35-luyen-tap-2-2-a6",
+        "toan2-t1-b35-luyen-tap-2-2-b1",
+        "toan2-t1-b35-luyen-tap-2-2-b2"
+      ],
+      "support": {
+        "guide": [
+          "Tính như số thường rồi viết \"l\" sau kết quả.",
+          "Có ba số thì tính lần lượt từ trái sang phải."
+        ],
+        "hint": "42 l – 7 l = 35 l, rồi 35 l + 16 l.",
+        "answer": {
+          "text": "a) 25 l + 8 l = 33 l; a) 44 l + 19 l = 63 l; a) 33 l – 8 l = 25 l; a) 63 l – 44 l = 19 l; a) 33 l – 25 l = 8 l; a) 63 l – 19 l = 44 l; b) 15 l + 8 l + 30 l = 53 l; b) 42 l – 7 l + 16 l = 51 l",
+          "explanation": "25 + 8 = 33; 44 + 19 = 63; 33 – 8 = 25; 63 – 44 = 19; 33 – 25 = 8; 63 – 19 = 44; 15 + 8 + 30 = 53; 42 – 7 + 16 = 51 (đều tính bằng lít)."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Nước chanh, nước cam đều khớp sổ, Pin lắc lư vui sướng.",
+          "Tính ba số lần lượt từ trái sang phải, rất bài bản!",
+          "Trang sổ nước sạch bong, không một vết gạch."
+        ],
+        "wrong": [
+          "Có ba số thì làm từ trái sang phải từng bước nhé.",
+          "Một thùng nước đang ghi lệch vài lít rồi.",
+          "Kiểm tra lại chỗ nhớ khi cộng 44 l với 19 l."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o33",
+          "b2": "o63",
+          "b3": "o25",
+          "b4": "o19",
+          "b5": "o8",
+          "b6": "o44",
+          "b7": "o53",
+          "b8": "o51"
+        }
+      }
+    },
+    {
+      "id": "thung-nuoc-mam-bep",
+      "title": "Thùng nước mắm nhà bếp",
+      "target": "chim-canh-cut-pin",
+      "kind": "riddle",
+      "question": "Xe hàng chở đồ cho bếp trường vừa tới, Pin cầm phiếu giao hàng. Giải bài toán theo tóm tắt sau: Tóm tắt Có: 18 thùng nước mắm Thêm: 4 thùng nước mắm Có tất cả: ... thùng nước mắm?",
+      "skill": "bai-toan-loi-van",
+      "curriculumRef": [
+        "toan2-t1-b35-luyen-tap-2-4"
+      ],
+      "support": {
+        "guide": [
+          "\"Thêm\" và \"có tất cả\" thì làm phép cộng.",
+          "Cộng 18 với 4, qua 20."
+        ],
+        "hint": "18 + 2 = 20, rồi thêm 2 nữa.",
+        "answer": {
+          "text": "22 thùng nước mắm",
+          "explanation": "Có tất cả: 18 + 4 = 22 (thùng nước mắm)."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Hai mươi hai thùng xếp gọn vào kho, Pin kí nhận ngay.",
+          "Đọc tóm tắt là biết làm phép gì, cậu giỏi quá.",
+          "Bếp trường đủ nước mắm nấu cả học kì sau!"
+        ],
+        "wrong": [
+          "Được thêm thùng thì số thùng nhiều hơn 18 chứ.",
+          "Tóm tắt có chữ \"Thêm\", vậy làm phép cộng nhé.",
+          "Cộng 18 với 4 lại xem, qua mốc 20 rồi đấy."
+        ]
+      },
+      "answer": {
+        "value": 22
+      }
+    },
+    {
+      "id": "ba-can-muoi-lam-lit",
+      "title": "Ba can vừa đủ 15 lít",
+      "target": "chim-canh-cut-pin",
+      "kind": "challenge",
+      "mechanic": "quiz",
+      "prompt": "Thử thách cuối của Pin: rót nước cho ba đội diễn, không được thừa một giọt! Phương án A: can 3 l, 10 l, 5 l. Phương án B: can 2 l, 5 l, 15 l. Phương án C: can 10 l, 2 l, 3 l. Chọn câu trả lời đúng. Trong thùng có 15 l nước. Múc hết nước từ thùng rót vào đầy các can. Có thể rót vào đầy ba can nào trong các phương án sau? A. B. C.",
+      "choices": [
+        {
+          "id": "a",
+          "text": "A"
+        },
+        {
+          "id": "b",
+          "text": "B"
+        },
+        {
+          "id": "c",
+          "text": "C"
+        }
+      ],
+      "skill": "dung-tich",
+      "curriculumRef": [
+        "toan2-t1-b35-luyen-tap-2-3"
+      ],
+      "support": {
+        "guide": [
+          "Cộng số lít ba can trong mỗi phương án.",
+          "Ba can phải đầy hết và thùng phải hết nước: tổng đúng 15 l."
+        ],
+        "hint": "Phương án A cần 18 l, nhiều hơn 15 l.",
+        "answer": {
+          "text": "C",
+          "explanation": "A: 3 + 10 + 5 = 18 l, không đủ nước; B: 2 + 5 + 15 = 22 l, không đủ nước; C: 10 + 2 + 3 = 15 l, vừa đúng."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Rót róc rách… vừa khít ba can, không rơi một giọt! Pin ôm chầm lấy {name}.",
+          "Mười lăm lít chia đúng ba can, kĩ tính như Pin luôn.",
+          "Phương án C thắng, cả đoàn diễn reo hò uống nước mát."
+        ],
+        "wrong": [
+          "Cộng số lít ba can xem có đúng 15 l không nhé.",
+          "Phương án đó cần nhiều nước hơn thùng đang có.",
+          "Thùng có 15 l, ba can phải vừa đầy, không thiếu không thừa."
+        ]
+      },
+      "answer": {
+        "choice": "c"
+      }
+    },
+    {
+      "id": "huy-hieu-hau-truong",
+      "title": "Huy hiệu hậu trường",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Pin đóng cuốn sổ kiểm đếm cái \"bộp\" và gắn cho {name} huy hiệu \"Thanh tra cân đong\". Heo Ủn được thưởng một chiếc bánh, đã cân trước hẳn hoi."
+    },
+    {
+      "id": "le-tong-ket-sap-mo",
+      "title": "Lễ tổng kết sắp mở",
+      "kind": "unlock",
+      "trigger": "auto",
+      "text": "Tiếng trống vang từ bục trao huy hiệu: cả trường đang kéo về hội trường, mỗi khu mang theo một câu đố cuối cùng của học kì!"
+    }
+  ],
+  "reward": {
+    "xp": 120,
+    "coin": 18,
+    "skillXp": {
+      "khoi-luong": 2,
+      "dung-tich": 2,
+      "bai-toan-loi-van": 1
+    }
+  }
+}
