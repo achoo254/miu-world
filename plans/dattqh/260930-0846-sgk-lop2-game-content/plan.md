@@ -47,8 +47,8 @@ Chi tiết Jev: `plans/dattqh/reports/jev-260930-sgk-plan-decisions.md`.
 | 1 | [Kiểm kê SGK thành dữ liệu](./phase-01-textbook-inventory.md) | L | — | Done (2 sách complete, 1.768 mục; report `reports/sgk-inventory-260930.md`) |
 | 2 | [Schema + runtime cho cơ chế mới](./phase-02-quest-schema-new-mechanics.md) | L | — (VS phase 3 đã commit) | Done (trên `main` từ 6db35d6) |
 | 3 | [Kỹ năng, quy tắc cơ chế, cổng phủ nội dung](./phase-03-skills-mapping-completeness-gate.md) | M | 1, 2 | Done (2 quest mẫu + công cụ phủ/nguyên văn/không lặp) |
-| 4 | [Kịch bản Tiếng Việt — 18 tuần](./phase-04-tieng-viet-quests.md) | XL | 3 | Mẫu đã nghiệm thu (D10, Jev 01/10/2026: chấp nhận kèm chỉnh sửa); 5/34 quest mẫu xong, viết tiếp |
-| 5 | [Kịch bản Toán — 7 chủ đề](./phase-05-toan-quests.md) | XL | 3 | Mẫu đã nghiệm thu (D10, Jev 01/10/2026: chấp nhận kèm chỉnh sửa); 1/36 quest mẫu xong, viết tiếp |
+| 4 | [Kịch bản Tiếng Việt — 18 tuần](./phase-04-tieng-viet-quests.md) | XL | 3 | Done (01/10/2026: 34/34 quest, phủ 735/735 mục — 628 trong game, 107 qua phiếu; giọng thoại vui nhộn theo nghiệm thu; đáp án do người viết chọn ở `reports/sgk-tv2-teacher-flags.md`) |
+| 5 | [Kịch bản Toán — 7 chủ đề](./phase-05-toan-quests.md) | XL | 3 | Done (01/10/2026: 36/36 quest, phủ 1033/1033 mục — 992 trong game, 41 qua phiếu; đáp án số tính bằng code; `reports/sgk-toan2-teacher-flags.md`) |
 | 6 | [Phiếu viết ngoài game](./phase-06-writing-worksheets.md) | M | 1; UI sau VS phase 1 | Done (API + trang Phiếu viết trong khu phụ huynh, in A4; E2E `worksheets` in 2 PDF mẫu) |
 | 7 | [Thu âm trên máy](./phase-07-on-device-voice.md) | M | 2; sau VS phase 1, 8 | Done (thu/nghe lại trên máy, CSP `media-src blob:`; E2E `speak`) |
 | 8 | [UI cơ chế mới](./phase-08-new-mechanic-ui.md) | L | 2; sau VS phase 8 | Done (màn cơ chế, minh họa, E2E `sgk-mechanics`); chờ nghiệm thu UI |
