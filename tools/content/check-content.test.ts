@@ -116,10 +116,10 @@ describe('content:check', () => {
 
     it('flags a character standing in the world twice while one lesson is played', () => {
       const worldDir = writeMap((e) => {
-        for (const t of e.interactables as Array<{ id: string; character?: string }>) if (t.id === 'gau-truc-tron') delete t.character;
+        for (const t of e.interactables as Array<{ id: string; character?: string }>) if (t.id === 'tv2-t12-cay-gao-cao') delete t.character;
       });
-      expect(checkQuestTargets(quests().values(), worldDir).issues).toContain(
-        'quest tv2-t08-b15: Gấu Trúc Tròn stands in the world twice (gau-truc, gau-truc-tron); name one as the other\'s "character" in content/world/targets.json',
+      expect(checkQuestTargets(quests().values(), worldDir).issues).toContainEqual(
+        expect.stringMatching(/^quest tv2-t12-b21: Khỉ Lanh stands in the world twice \((khi-lanh, tv2-t12-cay-gao-cao|tv2-t12-cay-gao-cao, khi-lanh)\); name one as the other's "character"/),
       );
     });
 

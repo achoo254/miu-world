@@ -70,7 +70,14 @@ export interface PlacementMap {
  * Blocks between two clusters of the same quest (tried widest first, narrower where the ground is
  * crowded), between residents, between a cluster and a resident, and from anything to keep clear.
  */
-const CLUSTER_GAPS = [6, 4.5, 3, 2];
+const CLUSTER_GAPS = [14, 10, 7, 4.5, 3, 2];
+/**
+ * A quest's places keep the child walking, not wandering: each stands at least WALK_GAP blocks from the
+ * quest's other places where the ground allows (`narrow` lists the ones that could not), and within
+ * QUEST_SPAN blocks of its first place, so the next stop is a short walk away.
+ */
+export const WALK_GAP = 10;
+const QUEST_SPAN = 36;
 const RESIDENT_GAPS = [4, 3, 2];
 const BESIDE_RESIDENT = 2.5;
 const CLEAR_GAP = 3;
@@ -92,7 +99,7 @@ export async function placeQuestTargets(options: {
   /** Already on the map (hand-placed); kept where they are, their chapter tags widened to every use. */
   existing: readonly Interactable[];
   seed: number;
-}): Promise<{ placed: Interactable[]; retagged: Interactable[] }> {
+}): Promise<{ placed: Interactable[]; retagged: Interactable[]; narrow: Array<{ quest: string; place: string; gap: number }> }> {
   const { uses, map, existing, seed } = options;
   const { looks, targets } = await readTargetCatalogues();
   const rng = createRng(seed);
@@ -166,17 +173,19 @@ export async function placeQuestTargets(options: {
     return { ...rest, ...chapterTags(uses.get(t.id) ?? []) };
   });
   const placed: Interactable[] = [];
+  const narrow: Array<{ quest: string; place: string; gap: number }> = [];
   // Everything always in the world (the map's own targets, residents) takes ground for good.
   const taken: Cell[] = existing.map((t) => [Math.floor(t.position[0] ?? 0), Math.floor(t.position[2] ?? 0)]);
 
-  /** The first free cell, keeping `gaps[0]` from `blocked` if the ground allows, else the next gap. */
-  const firstFree = (cells: readonly Cell[], blocked: readonly Cell[], gaps: readonly number[], near: readonly Cell[] = [], nearGap = 0): Cell | undefined => {
+  /** The first free cell, keeping `gaps[0]` from `blocked` if the ground allows, else the next gap (and which one held). */
+  const firstFreeAt = (cells: readonly Cell[], blocked: readonly Cell[], gaps: readonly number[], near: readonly Cell[] = [], nearGap = 0): { cell: Cell; gap: number } | undefined => {
     for (const gap of gaps) {
       const cell = candidates(cells, blocked, gap).find((c) => !nearAny(c, near, nearGap));
-      if (cell) return cell;
+      if (cell) return { cell, gap };
     }
     return undefined;
   };
+  const firstFree = (...args: Parameters<typeof firstFreeAt>): Cell | undefined => firstFreeAt(...args)?.cell;
   const nearAny = (a: Cell, list: readonly Cell[], gap: number): boolean => gap > 0 && near(a, list, gap);
 
   const residents = [...uses.entries()].filter(([id, list]) => list.length > 1 && !existingIds.has(id)).sort(([a], [b]) => a.localeCompare(b));
@@ -205,8 +214,14 @@ export async function placeQuestTargets(options: {
       const chapter = group[0]?.use.chapter ?? 1;
       // Clear of the other places of this quest and of everything always there; beside residents is fine.
       const always = taken.filter((c) => !residentAt.includes(c));
-      const centre = firstFree(map.chapterCells(chapter), [...always, ...centres], CLUSTER_GAPS, residentAt, BESIDE_RESIDENT);
-      if (!centre) throw new Error(`quest ${quest}: no room for the place "${place}" in chapter ${chapter}`);
+      // After its first place, a quest's next places stay within a short walk (anywhere if the span is full).
+      const [first] = centres;
+      const cells = map.chapterCells(chapter);
+      const span = first ? cells.filter((c) => Math.hypot(c[0] - first[0], c[1] - first[1]) <= QUEST_SPAN) : cells;
+      const found = firstFreeAt(span, [...always, ...centres], CLUSTER_GAPS, residentAt, BESIDE_RESIDENT) ?? firstFreeAt(cells, [...always, ...centres], CLUSTER_GAPS, residentAt, BESIDE_RESIDENT);
+      if (!found) throw new Error(`quest ${quest}: no room for the place "${place}" in chapter ${chapter}`);
+      const centre = found.cell;
+      if (centres.length > 0 && found.gap < WALK_GAP) narrow.push({ quest, place, gap: found.gap });
       centres.push(centre);
       for (const m of group) {
         const around = map.chapterCells(chapter).filter((c) => Math.hypot(c[0] - centre[0], c[1] - centre[1]) <= CLUSTER_RADIUS);
@@ -219,7 +234,7 @@ export async function placeQuestTargets(options: {
       }
     }
   }
-  return { placed, retagged };
+  return { placed, retagged, narrow };
 }
 
 /** Every column of a rectangle (inclusive), for `chapterCells` and `residentCells`. */

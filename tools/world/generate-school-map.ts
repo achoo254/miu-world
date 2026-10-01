@@ -16,7 +16,7 @@ import { ASSETS_DIR, REPO_ROOT, readJson } from '../assets/asset-lib';
 import { modelCentres, modelScales } from './model-scales';
 import { createRng, fbm, hashSeed } from './noise';
 import { distanceToPath, pathColumns, type Point } from './structures/path';
-import { cellsIn, placeQuestTargets, readQuests, targetUses } from './chapters/place-quest-targets';
+import { cellsIn, placeQuestTargets, WALK_GAP, readQuests, targetUses } from './chapters/place-quest-targets';
 import { placeHouse } from './structures/buildings';
 import { placeBed, placeCampusWall, placeCourt, placeGreenhouse, placeMainBuilding, placeSportsHall, placeStreet, type FurnitureKind, type SchoolPalette } from './structures/school';
 import { placeTree, treeHeight } from './structures/tree';
@@ -335,12 +335,14 @@ export async function generateSchool(): Promise<{ world: VoxelWorld; entities: W
     return cellsIn(zn.x - zn.hx + 1, zn.z - zn.hz + 1, zn.x + zn.hx - 1, zn.z + zn.hz - 1);
   };
   const spawnAt: [number, number] = [mid, CAMPUS.z0 + 3];
-  const { placed: topicTargets, retagged } = await placeQuestTargets({
+  const { placed: topicTargets, retagged, narrow } = await placeQuestTargets({
     uses: targetUses(await readQuests(), 'truong-hoc'),
     map: { canStand, stand: place, chapterCells: zoneCells, residentCells: ZONES.flatMap((zn) => zoneCells(zn.topic)), keepClear: [spawnAt, ...interactables.map((t) => [Math.floor(t.position[0] ?? 0), Math.floor(t.position[2] ?? 0)] as const)] },
     existing: interactables,
     seed: seed + 7,
   });
+  // Places that could not keep a walk apart: the sign that this map is crowded and should grow.
+  for (const n of narrow) console.warn(`${MAP_ID}: quest ${n.quest} place "${n.place}" only ${n.gap} blocks from its other places (aim ${WALK_GAP})`);
   const retaggedById = new Map(retagged.map((t) => [t.id, t]));
   interactables.splice(0, interactables.length, ...interactables.map((t) => retaggedById.get(t.id) ?? t), ...topicTargets);
 

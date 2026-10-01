@@ -18,6 +18,12 @@ export const MAX_STEPS_IN_A_ROW = 2;
 export const MAX_QUESTS_PER_CHARACTER = 2;
 /** The one guide per map who may appear in any number of that map's quests. */
 export const MAP_GUIDES: Readonly<Record<string, string>> = { 'khu-rung-bi-mat': 'vet-xanh' };
+/**
+ * The forest's chapter-1 tutorial, placed by hand on its own corner of the map and played end to end by
+ * the E2E suite: it already walks through nine places; its one stay of three (meet the beaver, then two
+ * tasks for it) is the tutorial's own beat. The spread rules cover every other quest.
+ */
+const HAND_BUILT = new Set(['forest-ch1']);
 
 export interface QuestSpread {
   quest: string;
@@ -46,7 +52,7 @@ export function questSpread(quests: Iterable<QuestDefinition>, targetsRaw: unkno
   const report: SpreadReport = { quests: [], overCap: new Map(), issues: [] };
   const castOf = new Map<string, Set<string>>();
   for (const quest of quests) {
-    if (!('steps' in quest) || quest.status !== 'active') continue;
+    if (!('steps' in quest) || quest.status !== 'active' || HAND_BUILT.has(quest.id)) continue;
     const named = 'places' in quest ? (quest.places ?? {}) : {};
     const placeOf = (step: Step, id: string): string => named[id] ?? named[step.id] ?? characterOf(id);
     const visited = new Set<string>();

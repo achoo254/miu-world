@@ -15,7 +15,7 @@ import { modelScales } from './model-scales';
 import { createRng, fbm, hashSeed } from './noise';
 import { placeBridge } from './structures/bridge';
 import { distanceToPath, pathColumns, type Point } from './structures/path';
-import { cellsIn, placeQuestTargets, readQuests, targetUses } from './chapters/place-quest-targets';
+import { cellsIn, placeQuestTargets, WALK_GAP, readQuests, targetUses } from './chapters/place-quest-targets';
 import { placeAncientTree, placeTree, treeHeight } from './structures/tree';
 
 export const MAP_ID = 'forest-ch1';
@@ -436,7 +436,7 @@ export async function generateForest(): Promise<{ world: VoxelWorld; entities: W
   };
   const forestCells = cellsIn(6, 6, sx - 7, sz - 7);
   const villagerSpots = ambients.flatMap((a) => [a.position, ...Object.values(a.spots)].map((p) => [Math.floor(p[0]), Math.floor(p[2])] as const));
-  const { placed: chapterTargets, retagged } = await placeQuestTargets({
+  const { placed: chapterTargets, retagged, narrow } = await placeQuestTargets({
     uses: targetUses(await readQuests(), 'khu-rung-bi-mat', 1),
     map: {
       canStand,
@@ -450,6 +450,8 @@ export async function generateForest(): Promise<{ world: VoxelWorld; entities: W
     existing: interactables,
     seed: seed + 19,
   });
+  // Places that could not keep a walk apart: the sign that this map is crowded and should grow.
+  for (const n of narrow) console.warn(`${MAP_ID}: quest ${n.quest} place "${n.place}" only ${n.gap} blocks from its other places (aim ${WALK_GAP})`);
   const retaggedById = new Map(retagged.map((t) => [t.id, t]));
   interactables.splice(0, interactables.length, ...interactables.map((t) => retaggedById.get(t.id) ?? t), ...chapterTargets);
 

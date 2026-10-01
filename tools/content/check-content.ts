@@ -20,6 +20,7 @@ import { CURRICULUM_FOLDERS, checkCurriculum } from './check-curriculum';
 import { percentCovered, sumGaps } from './content-gaps';
 import { varietyIssues } from './content-variety';
 import { checkCurriculumLinks } from './curriculum-links';
+import { questSpread } from './quest-spread';
 
 /** Content files the server catalogue reads (a trailing slash means the `.json` files directly in that folder). */
 const CATALOGUE_FILES = [
@@ -303,6 +304,8 @@ export function checkContent(dir: string = CONTENT_DIR): ContentReport {
     if (existsSync(path.join(dir, TARGETS_FILE))) {
       issues.push(...checkTargetCatalogues(read(LOOKS_FILE), read(TARGETS_FILE), new Set([...manifest.files, ...manifest.generated].map((f) => f.path))));
       issues.push(...checkLessonLooks(readQuestDefinitions(path.join(dir, 'quests')), read(LOOKS_FILE), read(TARGETS_FILE)));
+      // The child keeps moving and meets new characters: places per quest, stays per place, quests per character.
+      issues.push(...questSpread(readQuestDefinitions(path.join(dir, 'quests')), read(TARGETS_FILE), read(LOOKS_FILE)).issues);
       const pictures = new Set(manifest.files.flatMap((f) => f.path.match(/^packs\/fluent-emoji\/[^/]+\/props\/(.+)\.png$/)?.[1] ?? []));
       issues.push(...checkEmojiProps(read(EMOJI_PROPS_FILE), read(LOOKS_FILE), pictures));
       const boxProps = BoxPropCatalog.safeParse(read(BOX_PROPS_FILE));
