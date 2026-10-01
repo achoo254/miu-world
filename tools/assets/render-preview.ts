@@ -147,6 +147,9 @@ export const ZONE_MAPS: Record<string, string> = {
   'forest-ch1': 'khu-rung-bi-mat',
 };
 
+/** Close views per zone map on the review page. */
+const ZONE_SHOTS = 14;
+
 /**
  * A zone map for the owner to judge: the whole map from the south and from above, then each zone (its
  * landmark is at the zone's centre) from its south-west, high enough to see the zone's places.
@@ -163,7 +166,9 @@ async function zoneMapShots(map: string, region: string): Promise<Shot[]> {
     { file: `${map}-toan-canh.png`, query: { shot: view([sx / 2, sx * 0.62, -sz * 0.3], [sx / 2, 12, sz * 0.55], 55), quality: 'high', region }, viewport: wide },
     { file: `${map}-tren-cao.png`, query: { shot: view([sx / 2, sx * 1.25, sz / 2 + 1], [sx / 2, 12, sz / 2], 55), quality: 'high', region }, viewport: { width: 1000, height: 1000 } },
   ];
-  for (const landmark of entities.landmarks) {
+  // The zones come first among the landmarks: the first ones show every chapter's place, and the review
+  // stays light (a wide map has dozens of landmarks, each picture about a megabyte).
+  for (const landmark of entities.landmarks.slice(0, ZONE_SHOTS)) {
     const [x, y, z] = landmark.position;
     // A close view loads only the map round its landmark: meshing all of a wide map for each picture is slow.
     shots.push({ file: `${map}-${landmark.id}.png`, query: { shot: view([x - 22, y + 20, z - 30], [x, y, z], 60), quality: 'high', region, view: 140 }, viewport: wide });

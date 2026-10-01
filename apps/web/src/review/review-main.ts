@@ -204,7 +204,7 @@ function renderGallery(generated: string[]): void {
     ]);
     byId('world-maps').append(block);
   }
-  const mapCaption: Record<string, string> = { top: 'Nhìn từ trên', iso: 'Toàn cảnh', bridge: 'Cầu gỗ qua suối', tree: 'Cây cổ thụ', npc: 'Vẹt và lối đá', overview: 'Cả khu rừng 192 × 192: góc chương 1 và các bãi cỏ mới' };
+  const mapCaption: Record<string, string> = { top: 'Nhìn từ trên', iso: 'Toàn cảnh', bridge: 'Cầu gỗ qua suối', tree: 'Cây cổ thụ', npc: 'Vẹt và lối đá', overview: 'Góc chương 1 của khu rừng (cả rừng 800 × 800 ở mục các map)' };
   for (const p of reviewPaths.filter((x) => x.includes('/map/'))) {
     const key = name(p).replace('forest-ch1-', '');
     byId('map').append(figure(p, mapCaption[key] ?? key));

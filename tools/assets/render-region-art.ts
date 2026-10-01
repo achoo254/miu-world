@@ -19,7 +19,8 @@ export async function regionArtShots(): Promise<Shot[]> {
     const view = region.backdrop;
     if (!view) return [];
     const shot = `view:${view.eye.join(',')}:${view.target.join(',')}:${view.fov}`;
-    return [{ file: path.basename(regionBackdropPath(region.id)), query: { shot, quality: 'high', region: region.id }, viewport: BACKDROP_VIEWPORT }];
+    // A wide map loads only round the camera's target (the far land is the coarse horizon), as in play.
+    return [{ file: path.basename(regionBackdropPath(region.id)), query: { shot, quality: 'high', region: region.id, view: 160 }, viewport: BACKDROP_VIEWPORT }];
   });
   const chest: Shot = { file: path.basename(REGION_CHEST_ICON), query: { model: REGION_CHEST_MODEL, yaw: 35, pitch: 22, size: 256, bg: 'transparent' }, transparent: true };
   return [...backdrops, chest];

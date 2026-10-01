@@ -28,6 +28,7 @@
       "guide": "cun-lua",
       "book": "Tiếng Việt 2, tập một: bài 1–8",
       "hotspot": { "x": 17, "y": 65 },
+      "backdrop": { "eye": [191, 22, 250], "target": [191, 15, 211], "fov": 58 },
       "events": ["rain-rainbow", "fireflies", "animal-visit"]
     },
     { "id": "nha-cua-be", "name": "Nhà của {name}", "tagline": "Trang trí ngôi nhà nhỏ", "subject": "Trang trí · Bộ sưu tập", "status": "soon", "hotspot": { "x": 50, "y": 86 } },
@@ -58,6 +59,7 @@
       "guide": "gau-truc",
       "book": "Tiếng Việt 2, tập một: bài 15–16, ôn giữa học kì · Toán 2, tập một: bài 29–32",
       "hotspot": { "x": 24, "y": 22 },
+      "backdrop": { "eye": [231, 22, 596], "target": [231, 16, 531], "fov": 58 },
       "events": ["rain-rainbow", "fireflies", "animal-visit"]
     },
     {
@@ -72,6 +74,7 @@
       "guide": "huou-cao",
       "book": "Toán 2, tập một: bài 25–28, 33–36 · Tiếng Việt 2, tập một: ôn cuối học kì",
       "hotspot": { "x": 52, "y": 22 },
+      "backdrop": { "eye": [441, 28, 424], "target": [441, 22, 300], "fov": 58 },
       "events": ["rain-rainbow", "fireflies", "animal-visit"]
     },
     {
@@ -86,6 +89,7 @@
       "guide": "ba-gau-nau",
       "book": "Tiếng Việt 2, tập một: bài 25–32",
       "hotspot": { "x": 17, "y": 44 },
+      "backdrop": { "eye": [211, 22, 196], "target": [211, 15, 151], "fov": 58 },
       "events": ["rain-rainbow", "fireflies", "animal-visit"]
     },
     {
@@ -100,6 +104,7 @@
       "guide": "chim-canh-cut-pin",
       "book": "Toán 2, tập một: bài 7–18",
       "hotspot": { "x": 50, "y": 65 },
+      "backdrop": { "eye": [221, 22, 452], "target": [221, 15, 373], "fov": 58 },
       "events": ["rain-rainbow", "fireflies", "animal-visit"]
     },
     {
@@ -114,6 +119,7 @@
       "guide": "bo-sua-mo",
       "book": "Toán 2, tập một: bài 19–24",
       "hotspot": { "x": 83, "y": 65 },
+      "backdrop": { "eye": [401, 22, 520], "target": [401, 15, 431], "fov": 58 },
       "events": ["rain-rainbow", "fireflies", "animal-visit"]
     },
     { "id": "nui-tuyet", "name": "Núi tuyết", "tagline": "Hành trình lên đỉnh băng", "status": "soon", "hotspot": { "x": 76, "y": 23 } },
