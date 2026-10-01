@@ -16,6 +16,8 @@ export interface ReviewShot {
   readonly live: boolean;
   /** The player stays out of the picture. */
   readonly hidesPlayer: boolean;
+  /** Where the camera looks: a still shot with a limited view (`view=` in the URL) loads the map round it. */
+  readonly target: Vector3;
 }
 
 /** `view:ex,ey,ez:tx,ty,tz:fov` → the camera it names, or null when the name is not a well-formed view. */
@@ -87,7 +89,8 @@ export function createReviewShot(
   return {
     apply(camera) {
       camera.fov = view.fov;
-      camera.far = 400;
+      // Far enough for the whole map from wherever the eye is (wide maps are 800 blocks across).
+      camera.far = Math.max(400, view.eye.distanceTo(center) + Math.hypot(sx, sz));
       camera.updateProjectionMatrix();
       camera.position.copy(view.eye);
       camera.lookAt(view.target);
@@ -99,6 +102,7 @@ export function createReviewShot(
     backdrop: name === 'island',
     live: ambient !== undefined,
     hidesPlayer: ambient !== undefined || name.startsWith('view:'),
+    target: view.target.clone(),
     get settled() {
       return frames >= SETTLE_FRAMES;
     },

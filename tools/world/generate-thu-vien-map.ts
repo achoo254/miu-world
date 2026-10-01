@@ -46,6 +46,7 @@ export async function generateThuVien() {
     mapId: MAP_ID,
     region: 'thu-vien',
     seedText: 'miu-thu-vien',
+    size: 256,
     zones: ZONES,
     spawn: { x: 128, z: 18, yaw: 0 },
     water: { level: WATER_LEVEL, covers: (x, z) => z > 110 && z < 200 && Math.abs(x - STREAM_X(z)) < 2.5 },

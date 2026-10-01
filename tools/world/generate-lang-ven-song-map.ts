@@ -1,186 +1,180 @@
-// Generates "Làng Ven Sông" (Tiếng Việt weeks 1–4) from a fixed seed: a village either side of a wide river
-// crossed by bamboo bridges. South bank: the village gate under the banyan with the small village school and
-// the rice fields (chapter 1), the meadow by the river with the flower garden and its beehives (chapter 2).
-// North bank: the landing with its boats and the class under the banyan (chapter 3), the lotus marsh and the
-// village football field (chapter 4). Tiled-roof houses line the lanes, bamboo hedges and trees fill the rest.
+// Generates "Làng Ven Sông" (Tiếng Việt weeks 1–4) from a fixed seed, 800 x 800 blocks after the owner's
+// village and lake mocks (designs/lang-ven-song/, designs/the-gioi/b-04-ho-song-toan-canh.png,
+// b-09-ben-tau-toan-canh.png): a wide river winds across the map, bamboo bridges and a ferry cross it, and
+// it opens east into a lake with a harbour, sailboats, a beach and a red-and-white lighthouse. Four
+// districts, one per chapter: the village gate under the banyan with the little school and the well
+// (chapter 1), the meadow by the river with the flower garden and its beehives (chapter 2), the landing and
+// the class under the banyan on the north bank (chapter 3), the lotus marsh and the village football field
+// (chapter 4). Between them: rice paddies inside earth dykes, hamlets of tiled-roof cottages round shared
+// yards, lamp-lit lanes, bamboo hedges, fruit trees.
 // Output: assets/generated/world/lang-ven-song/{regions/, horizon.bin, entities.json}
 import { PACK, runIfMain } from './map-kit';
+import { bambooHedge, cottageRow, flowerBed, hamlet, jetty, lampRow } from './scenery';
 import { placeHouse } from './structures/buildings';
+import { placeLighthouse, placeWell } from './structures/countryside';
+import type { Point } from './structures/path';
 import { placeAncientTree } from './structures/tree';
 import { generateZoneMap, type Zone } from './zone-map';
 
 export const MAP_ID = 'lang-ven-song';
+const SIZE = 800;
+const WATER_LEVEL = 10;
 
 export const ZONES: readonly Zone[] = [
-  { chapter: 1, id: 'dau-lang', name: 'Đầu làng', x: 62, z: 56, hx: 28, hz: 24 },
-  { chapter: 2, id: 'bai-co-ven-song', name: 'Bãi cỏ ven sông', x: 192, z: 58, hx: 30, hz: 24 },
-  { chapter: 3, id: 'ben-song', name: 'Bến sông', x: 66, z: 202, hx: 30, hz: 24 },
-  { chapter: 4, id: 'dam-sen', name: 'Đầm sen và sân bóng', x: 190, z: 204, hx: 32, hz: 26 },
+  { chapter: 1, id: 'dau-lang', name: 'Đầu làng', x: 190, z: 210, hx: 34, hz: 28 },
+  { chapter: 2, id: 'bai-co-ven-song', name: 'Bãi cỏ ven sông', x: 520, z: 250, hx: 36, hz: 28 },
+  { chapter: 3, id: 'ben-song', name: 'Bến sông', x: 200, z: 560, hx: 36, hz: 28 },
+  { chapter: 4, id: 'dam-sen', name: 'Đầm sen và sân bóng', x: 520, z: 600, hx: 38, hz: 30 },
 ];
 
-/** The village lanes along each bank, and where the bamboo bridges cross between them. */
-const LANE_SOUTH = 92;
-const LANE_NORTH = 166;
-const BRIDGES = [58, 184];
-
+/** The river's centre line across the map. */
 export function riverCenter(x: number): number {
-  return 129 + 6 * Math.sin(x / 23) + 2 * Math.sin(x / 9 + 0.7);
+  return 400 + 34 * Math.sin(x / 70) + 10 * Math.sin(x / 23 + 0.7);
 }
-const RIVER_HALF = 5;
-const POND = { x: 210, z: 214, r: 10 };
-const WATER_LEVEL = 10;
-/** Rice paddies: west to east, south to north (inclusive), between the zones. */
+const RIVER_HALF = 9;
+/** The lake the river opens into at the east, and the spit the lighthouse stands on. */
+const LAKE = { x: 700, z: 410, rx: 90, rz: 130 };
+const SPIT = { x: 640, z: 300 };
+const MARSH = { x: 560, z: 640, r: 16 };
+
+/** The two village lanes along the banks, the bridges between them, a spur into each district. */
+const LANE_SOUTH: Point[] = [[30, 300], [250, 290], [470, 300], [600, 280]];
+const LANE_NORTH: Point[] = [[30, 500], [250, 500], [470, 510], [600, 520]];
+const ROUTES: Point[][] = [
+  [[60, 60], [60, 300]],
+  LANE_SOUTH,
+  LANE_NORTH,
+  [[120, 296], [120, 500]],
+  [[360, 296], [360, 505]],
+  ...ZONES.map((zn): Point[] => [[zn.x, zn.z < 400 ? 296 : 505], [zn.x, zn.z]]),
+  // Dykes through the paddies.
+  [[330, 60], [330, 296]],
+  [[330, 505], [330, 760]],
+];
+/** Rice paddies (inclusive) between the districts. */
 const PADDIES = [
-  { x0: 100, z0: 18, x1: 154, z1: 80 },
-  { x0: 104, z0: 176, x1: 150, z1: 236 },
+  { x0: 260, z0: 70, x1: 440, z1: 260 },
+  { x0: 40, z0: 340, x1: 300, z1: 380 },
+  { x0: 280, z0: 540, x1: 440, z1: 760 },
+  { x0: 620, z0: 600, x1: 760, z1: 760 },
 ];
 
+const N = PACK.nature;
 const M = {
-  rice: `${PACK.nature}/crops_wheatStageA.glb`,
-  riceRipe: `${PACK.nature}/crops_wheatStageB.glb`,
-  bamboo: `${PACK.nature}/crops_bambooStageB.glb`,
-  palm: `${PACK.nature}/tree_palmTall.glb`,
-  banana: `${PACK.nature}/tree_palmShort.glb`,
-  flowerRed: `${PACK.nature}/flower_redA.glb`,
-  flowerYellow: `${PACK.nature}/flower_yellowB.glb`,
-  flowerPurple: `${PACK.nature}/flower_purpleA.glb`,
-  bush: `${PACK.nature}/plant_bushLarge.glb`,
-  lily: `${PACK.nature}/lily_large.glb`,
-  lilySmall: `${PACK.nature}/lily_small.glb`,
-  canoe: `${PACK.nature}/canoe.glb`,
-  fence: `${PACK.nature}/fence_simple.glb`,
-  logs: `${PACK.nature}/log_stack.glb`,
-  barrel: `${PACK.survival}/barrel.glb`,
-  bucket: `${PACK.survival}/bucket.glb`,
+  rice: `${N}/crops_wheatStageA.glb`,
+  riceRipe: `${N}/crops_wheatStageB.glb`,
+  lily: `${N}/lily_large.glb`,
+  lilySmall: `${N}/lily_small.glb`,
+  fence: `${N}/fence_simple.glb`,
+  logs: `${N}/log_stack.glb`,
   box: `${PACK.survival}/box-large.glb`,
-  bench: `${PACK.box}/park-bench.glb`,
   workbench: `${PACK.survival}/workbench.glb`,
+  rock: `${N}/rock_largeB.glb`,
 };
 
-const inPaddy = (x: number, z: number): boolean => PADDIES.some((p) => x >= p.x0 && x <= p.x1 && z >= p.z0 && z <= p.z1);
+const inWater = (x: number, z: number): boolean =>
+  (x < LAKE.x && Math.abs(z - riverCenter(x)) < RIVER_HALF + 2 * Math.sin(x / 31)) ||
+  ((x - LAKE.x) / LAKE.rx) ** 2 + ((z - LAKE.z) / LAKE.rz) ** 2 < 1 ||
+  Math.hypot(x - MARSH.x, z - MARSH.z) < MARSH.r;
 
 export async function generateLangVenSong() {
   return generateZoneMap({
     mapId: MAP_ID,
     region: 'lang-ven-song',
     seedText: 'miu-lang-ven-song',
+    size: SIZE,
     zones: ZONES,
-    spawn: { x: 20, z: LANE_SOUTH - 4, yaw: 90 },
-    water: {
-      level: WATER_LEVEL,
-      covers: (x, z) => Math.abs(z - riverCenter(x)) < RIVER_HALF + Math.sin(x / 11) || Math.hypot(x - POND.x, z - POND.z) < POND.r,
-    },
+    spawn: { x: 60, z: 70, yaw: 0 },
+    water: { level: WATER_LEVEL, covers: inWater },
     pathsFromSpawn: false,
-    routes: [
-      [[14, LANE_SOUTH], [242, LANE_SOUTH]],
-      [[14, LANE_NORTH], [242, LANE_NORTH]],
-      ...BRIDGES.map((x): Array<[number, number]> => [[x, LANE_SOUTH], [x, LANE_NORTH]]),
-      // A short way from the lane into each zone.
-      ...ZONES.map((zn): Array<[number, number]> => [[zn.x, zn.z < 128 ? LANE_SOUTH : LANE_NORTH], [zn.x, zn.z]]),
-      // The dyke between the paddies.
-      [[127, 18], [127, LANE_SOUTH]],
-      [[127, LANE_NORTH], [127, 236]],
-    ],
-    trees: {
-      skip: 0.72,
-      blocks: (roll, block) => ({ log: block('tree-log'), leaves: block(roll < 0.12 ? 'leaves-autumn' : 'leaves') }),
-    },
+    routes: ROUTES,
+    trees: { skip: 0.8, blocks: (roll, block) => ({ log: block('tree-log'), leaves: block(roll < 0.12 ? 'leaves-autumn' : roll < 0.3 ? 'leaves-pink' : 'leaves') }) },
     models: {
-      heights: {
-        [M.rice]: 0.7, [M.riceRipe]: 1, [M.bamboo]: 5, [M.palm]: 7, [M.banana]: 3.2, [M.flowerRed]: 0.5, [M.flowerYellow]: 0.5, [M.flowerPurple]: 0.5,
-        [M.bush]: 1.2, [M.lily]: 0.1, [M.lilySmall]: 0.08, [M.canoe]: 0.6, [M.fence]: 1, [M.logs]: 0.9, [M.barrel]: 1,
-        [M.bucket]: 0.6, [M.box]: 0.9, [M.bench]: 0.96, [M.workbench]: 0.9,
-      },
+      heights: { [M.rice]: 0.7, [M.riceRipe]: 1, [M.lily]: 0.1, [M.lilySmall]: 0.08, [M.fence]: 1, [M.logs]: 0.9, [M.box]: 0.9, [M.workbench]: 0.9, [M.rock]: 2 },
     },
     build: (ctx) => {
       const { world, block, rng, ground, zone } = ctx;
       const [gate, meadow, landing, marsh] = [1, 2, 3, 4].map(zone) as [Zone, Zone, Zone, Zone];
-      const tiles = { wall: block('sand'), roof: block('brick-red'), trim: block('log') };
+      const banyan = (x: number, z: number, id: string, name: string): void => {
+        placeAncientTree(world, x, ground + 1, z, { log: block('tree-log'), leaves: block('leaves'), core: block('log') }, rng);
+        ctx.keepOut(x - 6, z - 6, x + 6, z + 6);
+        ctx.landmark(id, name, x, z);
+      };
 
-      // Rice paddies: flooded plots of young rice (ripe on the east plots) inside low earth dykes.
+      // Rice paddies: flooded plots inside earth dykes, rice every few columns (young, ripe here and there).
       for (const p of PADDIES) {
         for (let x = p.x0; x <= p.x1; x++) {
           for (let z = p.z0; z <= p.z1; z++) {
-            const dyke = (x - p.x0) % 9 === 0 || (z - p.z0) % 7 === 0 || x === p.x1 || z === p.z1;
-            if (ctx.onPath(x, z) || dyke) continue;
+            const dyke = (x - p.x0) % 12 === 0 || (z - p.z0) % 9 === 0 || x === p.x1 || z === p.z1;
+            if (dyke || ctx.onPath(x, z) || inWater(x, z)) continue;
             world.set(x, ctx.surface(x, z), z, block('water'));
-            if ((x - p.x0) % 3 === 2 && (z - p.z0) % 2 === 1) ctx.prop(x > (p.x0 + p.x1) / 2 + 9 ? M.riceRipe : M.rice, x, z, (x * 13 + z * 7) % 360);
+            if ((x - p.x0) % 4 === 2 && (z - p.z0) % 3 === 1) ctx.prop((x + z) % 7 < 3 ? M.riceRipe : M.rice, x, z, (x * 13 + z * 7) % 360);
           }
         }
         ctx.keepOut(p.x0, p.z0, p.x1, p.z1);
       }
-      ctx.landmark('canh-dong-lua', 'Cánh đồng lúa', 127, 50);
+      ctx.landmark('canh-dong-lua', 'Cánh đồng lúa', 350, 160);
 
-      // Tiled-roof houses with a yard and a bamboo hedge behind, both sides of each lane, doors on the lane.
-      let n = 0;
-      const house = (x0: number, z0: number): void => {
-        const w = 9 + (n % 3) * 2;
-        placeHouse(world, x0, z0, w, 7, 3 + (n % 2), ground + 1, tiles);
-        ctx.keepOut(x0 - 1, z0 - 3, x0 + w, z0 + 7);
-        ctx.prop(n % 2 === 0 ? M.palm : M.banana, x0 + w + 2, z0 + 3, n * 47);
-        for (let i = 0; i < w; i += 2) ctx.prop(M.bamboo, x0 + i, z0 + 9, (i * 61) % 360);
-        if (n % 3 === 0) ctx.prop(M.barrel, x0 - 1, z0 - 2, 0);
-        n++;
-      };
-      for (let x = 14; x < 236; x += 17) {
-        const free = (z0: number): boolean => !inPaddy(x, z0) && !inPaddy(x + 12, z0) && !ctx.inZone(x + 6, z0 + 4, 3) && BRIDGES.every((b) => Math.abs(x + 6 - b) > 10);
-        if (free(LANE_SOUTH + 4)) house(x, LANE_SOUTH + 4);
-        if (free(LANE_NORTH + 4)) house(x, LANE_NORTH + 4);
-      }
+      // Hamlets of cottages round shared yards along both lanes and beyond the districts.
+      hamlet(ctx, 30, 310, 250, 330);
+      hamlet(ctx, 420, 310, 600, 330);
+      hamlet(ctx, 30, 515, 250, 535);
+      hamlet(ctx, 420, 520, 600, 540);
+      hamlet(ctx, 40, 90, 140, 170);
+      hamlet(ctx, 460, 60, 600, 200);
+      hamlet(ctx, 60, 640, 160, 760);
+      for (const lane of [LANE_SOUTH, LANE_NORTH]) lampRow(ctx, lane);
+      bambooHedge(ctx, [[20, 20], [780, 20]]);
+      bambooHedge(ctx, [[20, 780], [600, 780]]);
+      bambooHedge(ctx, [[20, 20], [20, 780]]);
 
-      // Chapter 1: the banyan at the village gate, the small village school, the well.
-      const banyan = { x: gate.x - 14, z: gate.z + 10 };
-      placeAncientTree(world, banyan.x, ground + 1, banyan.z, { log: block('tree-log'), leaves: block('leaves'), core: block('log') }, rng);
-      ctx.keepOut(banyan.x - 5, banyan.z - 5, banyan.x + 5, banyan.z + 5);
-      ctx.landmark('cay-da-dau-lang', 'Cây đa đầu làng', banyan.x, banyan.z);
-      const school = { x0: gate.x + 6, z0: gate.z - 14, w: 15, d: 9 };
+      // Chapter 1: the banyan at the village gate, the little school, the well, a flower bed by the school.
+      banyan(gate.x - 22, gate.z + 12, 'cay-da-dau-lang', 'Cây đa đầu làng');
+      const school = { x0: gate.x + 6, z0: gate.z - 20, w: 17, d: 9 };
       placeHouse(world, school.x0, school.z0, school.w, school.d, 4, ground + 1, { wall: block('birch-log'), roof: block('brick-red'), trim: block('log') });
       ctx.keepOut(school.x0 - 1, school.z0 - 2, school.x0 + school.w, school.z0 + school.d);
+      flowerBed(ctx, school.x0, school.z0 - 4, 12, 2);
       ctx.landmark('lop-hoc-nho', 'Lớp học nhỏ', school.x0 + school.w / 2, school.z0 - 2);
-      for (let i = 0; i < 3; i++) ctx.prop(M.bench, school.x0 + 2 + i * 5, school.z0 - 3, 0);
-      const well = { x: gate.x - 4, z: gate.z - 10 };
-      for (const [dx, dz] of [[-1, -1], [0, -1], [1, -1], [-1, 0], [1, 0], [-1, 1], [0, 1], [1, 1]] as const) world.set(well.x + dx, ground + 1, well.z + dz, block('brick-grey'));
-      world.set(well.x, ground, well.z, block('water'));
-      ctx.prop(M.bucket, well.x + 2, well.z, 0);
+      const well = { x: gate.x - 6, z: gate.z - 12 };
+      placeWell(world, well.x, well.z, ground, { stone: block('brick-grey'), water: block('water') });
       ctx.keepOut(well.x - 1, well.z - 1, well.x + 1, well.z + 1);
       ctx.landmark('gieng-lang', 'Giếng làng', well.x, well.z);
 
       // Chapter 2: the meadow down to the river, the flower garden and its beehives.
-      const garden = { x: meadow.x + 12, z: meadow.z - 8 };
-      const flowers = [M.flowerRed, M.flowerYellow, M.flowerPurple];
-      for (let i = 0; i < 30; i++) ctx.prop(flowers[i % 3] ?? M.flowerRed, garden.x - 7 + (i % 6) * 3, garden.z - 6 + Math.floor(i / 6) * 3, i * 40);
-      for (const dx of [-10, 10]) ctx.prop(M.box, garden.x + dx, garden.z + 8, 10);
-      for (let i = 0; i < 6; i++) ctx.prop(M.bush, meadow.x - 22 + i * 7, meadow.z + 18, i * 30);
+      const garden = { x: meadow.x + 14, z: meadow.z - 10 };
+      flowerBed(ctx, garden.x - 9, garden.z - 7, 18, 14);
+      for (const dx of [-12, 12]) ctx.prop(M.box, garden.x + dx, garden.z + 9, 10);
       ctx.landmark('vuon-hoa-to-ong', 'Vườn hoa tổ ong', garden.x, garden.z);
 
-      // Chapter 3: the landing, a plank jetty into the river with boats, and the class under the banyan.
-      const jettyX = landing.x + 14;
-      const bank = Math.ceil(riverCenter(jettyX) + RIVER_HALF + 1);
-      for (let z = bank - 6; z <= bank + 1; z++) for (let x = jettyX - 1; x <= jettyX + 1; x++) world.set(x, WATER_LEVEL + 1, z, block('planks'));
-      for (const dx of [-3, 3]) ctx.propAt(M.canoe, [jettyX + dx + 0.5, WATER_LEVEL + 0.9, bank - 4.5], 90);
+      // Chapter 3: the landing on the north bank with its jetty and boats, the class under the banyan.
+      const jettyX = landing.x + 18;
+      const bank = Math.ceil(riverCenter(jettyX) + RIVER_HALF + 2);
+      jetty(ctx, jettyX, bank, 9, -1, WATER_LEVEL);
+      for (let i = 0; i < 3; i++) ctx.prop(M.logs, jettyX + 7 + i * 3, bank + 6, 90);
       ctx.landmark('ben-do', 'Bến đò', jettyX, bank);
-      for (let i = 0; i < 3; i++) ctx.prop(M.logs, jettyX + 6 + i * 3, LANE_NORTH - 4, 90);
-      const classTree = { x: landing.x - 12, z: landing.z + 10 };
-      placeAncientTree(world, classTree.x, ground + 1, classTree.z, { log: block('tree-log'), leaves: block('leaves'), core: block('log') }, rng);
-      ctx.keepOut(classTree.x - 5, classTree.z - 5, classTree.x + 5, classTree.z + 5);
-      for (let i = 0; i < 3; i++) ctx.prop(M.workbench, classTree.x - 4 + i * 4, classTree.z - 8, 180);
-      ctx.landmark('lop-hoc-goc-da', 'Lớp học dưới gốc đa', classTree.x, classTree.z);
+      banyan(landing.x - 16, landing.z + 12, 'lop-hoc-goc-da', 'Lớp học dưới gốc đa');
+      for (let i = 0; i < 3; i++) ctx.prop(M.workbench, landing.x - 20 + i * 4, landing.z + 2, 180);
 
-      // Chapter 4: the lotus marsh and the village football field.
-      for (let i = 0; i < 18; i++) {
-        const a = (i / 18) * Math.PI * 2;
-        const r = POND.r * (0.25 + 0.6 * (((i * 7) % 5) / 5));
-        ctx.propAt(i % 3 === 0 ? M.lilySmall : M.lily, [POND.x + Math.cos(a) * r + 0.5, WATER_LEVEL + 1.02, POND.z + Math.sin(a) * r + 0.5], i * 50);
+      // Chapter 4: lotus over the marsh, the village football field with its goals.
+      for (let i = 0; i < 22; i++) {
+        const a = (i / 22) * Math.PI * 2;
+        const r = MARSH.r * (0.25 + 0.6 * (((i * 7) % 5) / 5));
+        ctx.propAt(i % 3 === 0 ? M.lilySmall : M.lily, [MARSH.x + Math.cos(a) * r + 0.5, WATER_LEVEL + 1.02, MARSH.z + Math.sin(a) * r + 0.5], i * 50);
       }
-      ctx.landmark('dam-sen', 'Đầm sen', POND.x, POND.z);
-      const pitch = { x: marsh.x - 16, z: marsh.z - 6 };
-      for (let dx = -8; dx <= 8; dx++) for (let dz = -12; dz <= 12; dz++) if (Math.abs(dx) === 8 || Math.abs(dz) === 12 || dz === 0) world.set(pitch.x + dx, ground, pitch.z + dz, block('snow'));
-      for (const dz of [-13, 13]) for (const dx of [-1, 1]) ctx.prop(M.fence, pitch.x + dx, pitch.z + dz, 90);
+      ctx.landmark('dam-sen', 'Đầm sen', MARSH.x, MARSH.z);
+      const pitch = { x: marsh.x - 18, z: marsh.z - 8 };
+      for (let dx = -9; dx <= 9; dx++) for (let dz = -13; dz <= 13; dz++) if (Math.abs(dx) === 9 || Math.abs(dz) === 13 || dz === 0) world.set(pitch.x + dx, ground, pitch.z + dz, block('snow'));
+      for (const dz of [-14, 14]) for (const dx of [-1, 1]) ctx.prop(M.fence, pitch.x + dx, pitch.z + dz, 90);
       ctx.landmark('san-bong-lang', 'Sân bóng làng', pitch.x, pitch.z);
 
-      // Bamboo hedges along the village's edge.
-      for (let x = 12; x < 244; x += 3) for (const z of [11, 245]) if (!inPaddy(x, z)) ctx.prop(M.bamboo, x, z, (x * 37) % 360);
-      for (let z = 14; z < 244; z += 3) for (const x of [11, 245]) if (Math.abs(z - riverCenter(x)) > 8) ctx.prop(M.bamboo, x, z, (z * 37) % 360);
+      // The lake: the harbour's piers with sailboats, the lighthouse on its spit, the harbour's cottages.
+      for (const [i, z] of [370, 410, 450].entries()) jetty(ctx, LAKE.x - LAKE.rx + 4 + i * 2, z, 16, 1, WATER_LEVEL, true);
+      placeLighthouse(world, SPIT.x, SPIT.z, ground + 1, { red: block('wood-red'), white: block('snow'), glass: block('glass'), cap: block('roof-blue') });
+      ctx.keepOut(SPIT.x - 4, SPIT.z - 4, SPIT.x + 4, SPIT.z + 4);
+      ctx.landmark('hai-dang', 'Hải đăng', SPIT.x, SPIT.z);
+      ctx.landmark('ben-tau', 'Bến tàu', LAKE.x - LAKE.rx + 10, 410);
+      cottageRow(ctx, 600, 230, 3);
+      for (const [x, z] of [[620, 560], [650, 580]] as const) ctx.prop(M.rock, x, z, x);
     },
   });
 }

@@ -60,6 +60,7 @@ export async function generateXomMaiAm() {
     mapId: MAP_ID,
     region: 'xom-mai-am',
     seedText: 'miu-xom-mai-am',
+    size: 256,
     zones: ZONES,
     spawn: { x: 128, z: LANE - 4, yaw: 0 },
     water: { level: WATER_LEVEL, covers: (x, z) => ((x - LAKE.x) / LAKE.rx) ** 2 + ((z - LAKE.z) / LAKE.rz) ** 2 < 1 },

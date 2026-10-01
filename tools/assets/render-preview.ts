@@ -159,7 +159,8 @@ async function zoneMapShots(map: string, region: string): Promise<Shot[]> {
   ];
   for (const landmark of entities.landmarks) {
     const [x, y, z] = landmark.position;
-    shots.push({ file: `${map}-${landmark.id}.png`, query: { shot: view([x - 22, y + 20, z - 30], [x, y, z], 60), quality: 'high', region }, viewport: wide });
+    // A close view loads only the map round its landmark: meshing all of a wide map for each picture is slow.
+    shots.push({ file: `${map}-${landmark.id}.png`, query: { shot: view([x - 22, y + 20, z - 30], [x, y, z], 60), quality: 'high', region, view: 140 }, viewport: wide });
   }
   return shots;
 }

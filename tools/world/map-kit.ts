@@ -36,10 +36,10 @@ export const PACK = {
 /** 192 x 48 x 192 blocks (Jev, 01/10/2026: the owner found the maps small): the forest and the school. */
 export const MAP_CHUNKS = [12, 3, 12] as const;
 /**
- * 256 x 48 x 256 blocks (owner, 01/10/2026: wider maps, room for the villagers and animals to live and move):
- * every map built since.
+ * Side of the wide maps in blocks (owner, 01/10/2026: ten times the area of the 256-block maps, room for many
+ * children to explore together later; Jev chose ten times the area over ten times the side).
  */
-export const WIDE_MAP_CHUNKS = [16, 3, 16] as const;
+export const WIDE_MAP_SIDE = 800;
 
 /** A lookup of block ids by name from content/blocks.json; a name the table lacks is an error. */
 export async function loadBlocks(): Promise<(name: string) => number> {

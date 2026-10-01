@@ -6,7 +6,8 @@
 import { VoxelWorld } from '../../packages/voxel/src/chunk-format';
 import type { Interactable, WorldEntities } from '../../packages/voxel/src/world-entities';
 import { cellsIn } from './chapters/place-quest-targets';
-import { columnsOf, fillColumn, heightField, loadBlocks, mapModels, PACK, placeRegionTargets, rollingHeight, scatterTrees, smoothstep, standHeight, WIDE_MAP_CHUNKS } from './map-kit';
+import { columnsOf, fillColumn, heightField, loadBlocks, mapModels, PACK, placeRegionTargets, rollingHeight, scatterTrees, smoothstep, standHeight, WIDE_MAP_SIDE } from './map-kit';
+import { SCENERY_MODELS } from './scenery';
 import { createRng, hashSeed } from './noise';
 import { distanceToPath, pathColumns, type Point } from './structures/path';
 
@@ -56,6 +57,8 @@ export interface ZoneMapSpec {
   mapId: string;
   region: string;
   seedText: string;
+  /** Side of the map in blocks, a multiple of 16 (default 800: owner, 01/10/2026, ten times the area of 256). */
+  size?: number;
   ground?: { ground: number; roll: number; rim: number };
   zones: readonly Zone[];
   spawn: { x: number; z: number; yaw: number };
@@ -72,15 +75,27 @@ export interface ZoneMapSpec {
   /** Every model the map places with its standing height in blocks; clips of the animated ones; corner-pivot models. */
   models: { heights: Readonly<Record<string, number>>; clips?: Readonly<Record<string, string>>; centred?: readonly string[] };
   build: (ctx: ZoneMapContext) => void;
+  /**
+   * Small things dotted through every zone so it never reads as an empty lawn (flowers, bushes, stones), about
+   * one every `spacing` blocks, clear of the paths and what the map built; quest places still find room.
+   */
+  dressing?: { models: readonly string[]; spacing: number };
 }
 
+const DEFAULT_DRESSING = {
+  models: [`${PACK.nature}/flower_redA.glb`, `${PACK.nature}/flower_yellowB.glb`, `${PACK.nature}/flower_purpleA.glb`, `${PACK.nature}/plant_bushLarge.glb`, `${PACK.nature}/grass_large.glb`, `${PACK.nature}/rock_smallA.glb`],
+  spacing: 7,
+};
+
 const SIGNPOST = `${PACK.survival}/signpost.glb`;
+const DRESSING_HEIGHTS: Readonly<Record<string, number>> = { [`${PACK.nature}/grass_large.glb`]: 0.6, [`${PACK.nature}/rock_smallA.glb`]: 0.5 };
 
 export async function generateZoneMap(spec: ZoneMapSpec): Promise<{ world: VoxelWorld; entities: WorldEntities }> {
   const block = await loadBlocks();
   const seed = hashSeed(spec.seedText);
   const rng = createRng(seed);
-  const world = new VoxelWorld(WIDE_MAP_CHUNKS);
+  const side = (spec.size ?? WIDE_MAP_SIDE) / 16;
+  const world = new VoxelWorld([side, 3, side]);
   const [sx, sy, sz] = world.size;
   const ground = spec.ground ?? { ground: 12, roll: 3, rim: 10 };
   const level = ground.ground;
@@ -175,6 +190,20 @@ export async function generateZoneMap(spec: ZoneMapSpec): Promise<{ world: Voxel
     landmark: (id, name, x, z, y) => landmarks.push({ id, name, position: [x + 0.5, y ?? level + 1, z + 0.5] }),
   });
 
+  // 3b. Dress every zone: small things on a jittered grid, clear of paths, water and buildings.
+  const dressing = spec.dressing ?? DEFAULT_DRESSING;
+  for (const zn of zones) {
+    for (let gx = zn.x - zn.hx + 2; gx < zn.x + zn.hx - 1; gx += dressing.spacing) {
+      for (let gz = zn.z - zn.hz + 2; gz < zn.z + zn.hz - 1; gz += dressing.spacing) {
+        const x = Math.round(gx + (rng() - 0.5) * dressing.spacing * 0.8);
+        const z = Math.round(gz + (rng() - 0.5) * dressing.spacing * 0.8);
+        const model = dressing.models[Math.floor(rng() * dressing.models.length)];
+        if (!model || onPath(x, z) || inWater(x, z) || keptOut(x, z, 1) || world.get(x, surface(x, z) + 1, z) !== 0) continue;
+        queued.push({ kind: 'ground', model, x, z, yaw: Math.floor(rng() * 360) });
+      }
+    }
+  }
+
   // 4. Trees round the zones, the paths, the water and the buildings.
   const trunks = scatterTrees({
     world,
@@ -187,7 +216,7 @@ export async function generateZoneMap(spec: ZoneMapSpec): Promise<{ world: Voxel
 
   // 5. Props, now that the ground is final.
   const standY = standHeight(world, surface);
-  const models = await mapModels({ heights: { [SIGNPOST]: 1.6, ...spec.models.heights }, clips: spec.models.clips ?? {}, standY, centred: spec.models.centred });
+  const models = await mapModels({ heights: { [SIGNPOST]: 1.6, ...SCENERY_MODELS, ...DRESSING_HEIGHTS, ...spec.models.heights }, clips: spec.models.clips ?? {}, standY, centred: spec.models.centred });
   for (const q of queued) {
     if (q.kind === 'at') models.addPropAt(q.model, q.at, q.yaw);
     else if (q.kind === 'centred') models.addCentred(q.model, models.place(q.x, q.z), q.yaw);

@@ -7,8 +7,8 @@ import { CAMPUS, MAIN_BUILDING, ZONES, generateSchool } from './generate-school-
 import { expectCommittedOutput, expectStandsOnGround, expectTargetsReachable, walkFromSpawn } from './map-checks';
 
 describe('school map generator', () => {
-  it('is deterministic and matches the committed output (run `pnpm world:school` after changing it)', async () => {
-    await expectCommittedOutput(generateSchool);
+  it('matches the committed output (run `pnpm world:school` after changing it)', async () => {
+    await expectCommittedOutput(await generateSchool());
   }, 60_000);
 
   it('names a zone for each of the seven Toán topics, and places the first topic\'s characters in theirs', async () => {

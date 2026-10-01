@@ -407,14 +407,19 @@ export class Game {
     const reviewShot = createReviewShot(params.get('shot'), entities, scene, solid);
     if (reviewShot) {
       // Still pictures show the whole map; a live shot frames one character and keeps the frame's budget.
-      world.setViewDistance(reviewShot.live ? quality.viewDistance : Infinity);
-      props.setViewDistance(reviewShot.live ? quality.viewDistance : Infinity);
+      // Still pictures show the whole map, or (`view=<blocks>`, close views of a wide map) the part round what
+      // they look at; a live shot keeps the frame's budget.
+      const stillView = Number(params.get('view'));
+      const shotView = reviewShot.live ? quality.viewDistance : stillView > 0 ? stillView : Infinity;
+      world.setViewDistance(shotView);
+      props.setViewDistance(shotView);
       if (!reviewShot.live) {
-        await world.settle(0, 0);
-        props.buildAround(0, 0);
+        await world.settle(reviewShot.target.x, reviewShot.target.z);
+        props.buildAround(reviewShot.target.x, reviewShot.target.z);
       }
       if (this.disposed) return;
-      sky.scale.setScalar(3);
+      // The sky dome stands beyond the furthest block the shot can see.
+      sky.scale.setScalar(Math.max(3, (Math.hypot(sx, sz) * 1.5) / (quality.viewDistance + 20)));
       for (const el of [dom.stats, dom.joystick, dom.run.parentElement]) if (el) el.hidden = true;
       if (reviewShot.backdrop) {
         sky.visible = false;

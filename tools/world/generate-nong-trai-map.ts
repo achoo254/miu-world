@@ -47,6 +47,7 @@ export async function generateNongTrai() {
     mapId: MAP_ID,
     region: 'nong-trai',
     seedText: 'miu-nong-trai',
+    size: 256,
     zones: ZONES,
     spawn: { x: 128, z: 30, yaw: 0 },
     water: { level: WATER_LEVEL, covers: (x, z) => Math.hypot(x - POND.x, z - POND.z) < POND.r },

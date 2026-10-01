@@ -60,6 +60,7 @@ export async function generateChoPhien() {
     mapId: MAP_ID,
     region: 'cho-phien',
     seedText: 'miu-cho-phien',
+    size: 256,
     zones: ZONES,
     spawn: { x: ROAD_X, z: 16, yaw: 0 },
     water: { level: WATER_LEVEL, covers: (x, z) => Math.abs(z - CANAL.z - 3 * Math.sin(x / 19)) < CANAL.half || Math.hypot(x - DUCK_POND.x, z - DUCK_POND.z) < DUCK_POND.r },

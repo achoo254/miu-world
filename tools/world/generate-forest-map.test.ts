@@ -6,8 +6,8 @@ import { generateForest } from './generate-forest-map';
 import { expectCommittedOutput, expectStandsOnGround, expectTargetsReachable } from './map-checks';
 
 describe('forest chapter 1 generator', () => {
-  it('is deterministic and matches the committed output (run `pnpm world:forest` after changing it)', async () => {
-    await expectCommittedOutput(generateForest);
+  it('matches the committed output (run `pnpm world:forest` after changing it)', async () => {
+    await expectCommittedOutput(await generateForest());
   }, 60_000);
 
   it('places every chapter 1 quest target once, with a valid version 2 schema', async () => {

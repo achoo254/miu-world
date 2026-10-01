@@ -50,6 +50,7 @@ export async function generateLauDai() {
     mapId: MAP_ID,
     region: 'lau-dai',
     seedText: 'miu-lau-dai',
+    size: 256,
     zones: ZONES,
     spawn: { x: 128, z: 16, yaw: 0 },
     water: { level: WATER_LEVEL, covers: inMoat },

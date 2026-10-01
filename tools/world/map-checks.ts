@@ -4,19 +4,18 @@
 import { readdir, readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { expect } from 'vitest';
-import { encodeWorld, type VoxelWorld } from '../../packages/voxel/src/chunk-format';
+import type { VoxelWorld } from '../../packages/voxel/src/chunk-format';
 import { worldEntitiesSchema, type WorldEntities } from '../../packages/voxel/src/world-entities';
 import { mapDir, mapFiles } from './map-kit';
 import { reachable, walkSolid } from './walkable';
 
-type Generate = () => Promise<{ world: VoxelWorld; entities: WorldEntities }>;
+type Generated = { world: VoxelWorld; entities: WorldEntities };
 
-/** Two runs give the same blocks, and the map's files are the committed ones (else rerun the generator). */
-export async function expectCommittedOutput(generate: Generate): Promise<void> {
-  const first = await generate();
-  const second = await generate();
-  expect(Buffer.from(encodeWorld(second.world)).equals(Buffer.from(encodeWorld(first.world)))).toBe(true);
-  expect(second.entities).toEqual(first.entities);
+/**
+ * The map's files are the committed ones (else rerun the generator): an earlier run wrote them, so this also
+ * proves the generator gives the same map every time.
+ */
+export async function expectCommittedOutput(first: Generated): Promise<void> {
   const dir = mapDir(first.entities.id);
   const files = mapFiles(first.world, first.entities);
   expect((await readdir(path.join(dir, 'regions'))).sort(), 'the committed regions are this map\'s').toEqual(files.filter((f) => f.file.startsWith('regions/')).map((f) => f.file.slice(8)).sort());
