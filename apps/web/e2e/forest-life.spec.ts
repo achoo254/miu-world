@@ -71,12 +71,27 @@ test('villagers and animals add only a few draw calls each (one skinned mesh per
   expect(withLife.calls, `${without.calls} calls without life, ${withLife.visible} characters drawn`).toBeLessThanOrEqual(DRAW_CALL_BUDGET);
 });
 
-test('low quality draws at most six of them', async ({ page, baseURL }) => {
+test('low quality draws at most six of them, within the draw-call budget', async ({ page, baseURL }) => {
   await freshChild(page, baseURL ?? '');
   await page.goto(play(behind('bac-nau-an', 3), 'low'));
   await waitReady(page);
   await expect.poll(async () => (await readStats(page)).ambientVisible).toBeGreaterThan(0);
-  expect((await readStats(page)).ambientVisible).toBeLessThanOrEqual(6);
+  const stats = await readStats(page);
+  expect(stats.ambientVisible).toBeLessThanOrEqual(6);
+  expect(stats.calls).toBeLessThanOrEqual(DRAW_CALL_BUDGET);
+});
+
+test('stays quiet while a quest prompt is up', async ({ page, baseURL }) => {
+  await freshChild(page, baseURL ?? '');
+  // Next to the parrot guide: villagers and parrots are around, but the quest owns the moment.
+  await page.goto(play('npc'));
+  await waitReady(page);
+  await expect.poll(async () => (await readStats(page)).nearTarget).toBe('parrot-guide');
+  await page.waitForTimeout(8_000);
+  const stats = await readStats(page);
+  expect(stats.nearTarget).toBe('parrot-guide');
+  expect(stats.ambientVisible).toBeGreaterThan(0);
+  expect(stats.ambientLine).toBeNull();
 });
 
 test('the woodcutter stops, greets the child by name, and chats when tapped', async ({ page, baseURL }) => {
@@ -86,7 +101,8 @@ test('the woodcutter stops, greets the child by name, and chats when tapped', as
   await waitReady(page);
   const prompt = page.locator('[data-id="play-prompt-bac-tieu-phu"]');
   await expect(prompt).toHaveText('Bác Tiều phu · Trò chuyện');
-  await expect.poll(async () => (await readStats(page)).ambientLine ?? '').toMatch(/./);
+  // The greeting names the child's character.
+  await expect.poll(async () => (await readStats(page)).ambientLine ?? '').toContain('Mochi');
   await page.keyboard.press('KeyE');
   await expect.poll(async () => (await readStats(page)).ambientReactions).toBe(1);
   await page.waitForTimeout(600);

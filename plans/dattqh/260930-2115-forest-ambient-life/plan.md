@@ -1,8 +1,8 @@
 ---
 title: "Đời sống quanh Khu rừng bí mật: dân làng và muôn thú có việc thường ngày"
-status: in-progress
+status: completed
 priority: P2
-branch: dattqh/feat/forest-ambient-life
+branch: main
 created: 2026-09-30
 ---
 
@@ -48,13 +48,13 @@ Mức high đã sát 150 từ trước (chunk cả map trong tầm nhìn 110 + b
 Dân làng (Kenney Blocky): Bác Tiều phu (rìu), Chú Câu cá (bờ suối), Cô Làm vườn (cuốc, luống rau), Bà Nấu ăn (lửa trại gần điểm xuất phát), Bé Gánh củi (đi lại giữa đống củi và lửa trại). Thú (Cube Pets): 2 vẹt bay, 2 ong, thỏ, nai, cáo, heo rừng, gà con, cua, cá nhảy, sâu.
 
 ## Tiêu chí nghiệm thu
-- [ ] Mỗi nhân vật có ≥ 3 việc khác nhau, không việc nào lặp liền; người có nhịp phụ (lau mồ hôi, vươn vai…)
-- [ ] Chim vỗ cánh khi bay lên, lượn khi xuống, đôi lúc đậu; ong vỗ cánh nhanh khi bay
-- [ ] Đến gần: dừng việc, quay lại, vẫy, bong bóng chào có tên nhân vật của bé; bấm: câu phiếm/trò, rồi quay lại việc
-- [ ] Không che mũi tên, không đứng trên đường, im khi có lời nhắc quest
-- [ ] Draw call ≤ 150 ở mọi mức chất lượng; E2E `play` vẫn xanh; review shot cho người duyệt
-- [ ] prefers-reduced-motion: chim đậu, không nhảy vọt
-- [ ] Gate đủ 5 lệnh + web build + E2E
+- [x] Mỗi nhân vật có ≥ 3 việc khác nhau, không việc nào lặp liền; người có nhịp phụ (lau mồ hôi, vươn vai…) — test `ambient-actor.test.ts` (routine ≥ 3 việc, `pickChore` không lặp liền)
+- [x] Chim vỗ cánh khi bay lên, lượn khi xuống, đôi lúc đậu; ong vỗ cánh nhanh khi bay — test `ambient-actor.test.ts`
+- [x] Đến gần: dừng việc, quay lại, vẫy, bong bóng chào có tên nhân vật của bé; bấm: câu phiếm/trò, rồi quay lại việc — test đơn vị + E2E `forest-life` (lời chào chứa tên bé, bấm thì `ambientReactions` = 1, không gửi tương tác quest); ảnh `evidence/life-woodcutter-chat.png`
+- [x] Không che mũi tên, không đứng trên đường, im khi có lời nhắc quest — test generator (cách mục tiêu quest ≥ 5, cách đường ≥ 2) + E2E `forest-life` (đứng cạnh Vẹt 8 s: có nhân vật quanh đó, không bong bóng nào)
+- [x] Draw call ≤ 150 ở mọi mức chất lượng; E2E `play` vẫn xanh; review shot cho người duyệt — E2E `forest-life` kiểm ≤ 150 ở low, mid (7 nơi), high; `play` 18/18; ảnh ở `evidence/`, video 18 s ở `.data/life/review-shots/*.webm` (không commit)
+- [x] prefers-reduced-motion: chim đậu, không nhảy vọt — test `ambient-actor.test.ts`
+- [x] Gate đủ 5 lệnh + web build + E2E — kiểm 01/10/2026: 75 file/543 test, typecheck, lint sạch; E2E `setup` + `play` + `forest-life` 25/25
 
 ## Sau khi người sở hữu duyệt
 Viết phase áp dụng cho Trường học và các map sau (dàn nhân vật theo map, cùng runtime).
