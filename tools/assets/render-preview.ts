@@ -9,6 +9,7 @@ import { createServer, type ViteDevServer } from 'vite';
 import { ASSETS_DIR, REPO_ROOT } from './asset-lib';
 import { writeManifest } from './build-manifest';
 import { readCharacterSpecs, rigAnimationNames } from './kitbash-character';
+import { HUB_OFFSET } from '../world/generate-school-map';
 import { buildAccessoryCatalog, type AccessoryItem } from '../../packages/voxel/src/accessory-schema';
 
 const APP_DIR = path.join(REPO_ROOT, 'apps/web');
@@ -131,15 +132,17 @@ export const SCHOOL_VIEWS: Record<string, [eye: [number, number, number], target
 };
 
 async function schoolShots(): Promise<Shot[]> {
+  // The views were framed on the 192-block school; the campus now sits at HUB_OFFSET in the 800-block hub.
+  const at = ([x, y, z]: [number, number, number]): string => [x + HUB_OFFSET.x, y, z + HUB_OFFSET.z].join(',');
   return Object.entries(SCHOOL_VIEWS).map(([name, [eye, target, fov]]) => ({
     file: `${name}.png`,
-    query: { shot: `view:${eye.join(',')}:${target.join(',')}:${fov}`, quality: 'high', region: 'truong-hoc' },
+    query: { shot: `view:${at(eye)}:${at(target)}:${fov}`, quality: 'high', region: 'truong-hoc', view: 200 },
     viewport: { width: 1280, height: 720 },
   }));
 }
 
 /** Maps built zone by zone (tools/world/zone-map.ts): their region, for `pnpm assets:preview <map>`. */
-export const ZONE_MAPS: Record<string, string> = Object.fromEntries(['lang-ven-song', 'xom-mai-am', 'cho-phien', 'nong-trai', 'thu-vien', 'lau-dai'].map((m) => [m, m]));
+export const ZONE_MAPS: Record<string, string> = Object.fromEntries(['lang-ven-song', 'xom-mai-am', 'cho-phien', 'nong-trai', 'thu-vien', 'lau-dai', 'truong-hoc'].map((m) => [m, m]));
 
 /**
  * A zone map for the owner to judge: the whole map from the south and from above, then each zone (its

@@ -52,6 +52,8 @@ export interface ZoneMapContext {
   propAt: (model: string, at: readonly [number, number, number], yaw?: number) => void;
   /** A pack model whose pivot is a corner (furniture, houses), by its middle, on the ground at a column. */
   centred: (model: string, x: number, z: number, yaw: number) => void;
+  /** The same at a fixed point (furniture on a classroom floor). */
+  centredAt: (model: string, at: readonly [number, number, number], yaw: number) => void;
   /** Keeps trees and quest targets out of a rectangle (inclusive): a building's footprint and its doorstep. */
   keepOut: (x0: number, z0: number, x1: number, z1: number) => void;
   landmark: (id: string, name: string, x: number, z: number, y?: number) => void;
@@ -185,7 +187,7 @@ export async function generateZoneMap(spec: ZoneMapSpec): Promise<{ world: Voxel
   }
 
   // 3. The map's own structures and props.
-  const queued: Array<{ kind: 'ground' | 'centred'; model: string; x: number; z: number; yaw: number } | { kind: 'at'; model: string; at: readonly [number, number, number]; yaw: number }> = [];
+  const queued: Array<{ kind: 'ground' | 'centred'; model: string; x: number; z: number; yaw: number } | { kind: 'at' | 'centred-at'; model: string; at: readonly [number, number, number]; yaw: number }> = [];
   const kept: Array<[number, number, number, number]> = [];
   const landmarks: Landmark[] = [];
   const keptOut = (x: number, z: number, pad = 0): boolean => kept.some(([x0, z0, x1, z1]) => x >= x0 - pad && x <= x1 + pad && z >= z0 - pad && z <= z1 + pad);
@@ -203,6 +205,7 @@ export async function generateZoneMap(spec: ZoneMapSpec): Promise<{ world: Voxel
     prop: (model, x, z, yaw = 0) => queued.push({ kind: 'ground', model, x, z, yaw }),
     propAt: (model, at, yaw = 0) => queued.push({ kind: 'at', model, at, yaw }),
     centred: (model, x, z, yaw) => queued.push({ kind: 'centred', model, x, z, yaw }),
+    centredAt: (model, at, yaw) => queued.push({ kind: 'centred-at', model, at, yaw }),
     keepOut: (x0, z0, x1, z1) => kept.push([Math.min(x0, x1), Math.min(z0, z1), Math.max(x0, x1), Math.max(z0, z1)]),
     landmark: (id, name, x, z, y) => landmarks.push({ id, name, position: [x + 0.5, y ?? level + 1, z + 0.5] }),
   });
@@ -236,6 +239,7 @@ export async function generateZoneMap(spec: ZoneMapSpec): Promise<{ world: Voxel
   const models = await mapModels({ heights: { [SIGNPOST]: 1.6, [GATE]: 5, ...SCENERY_MODELS, ...DRESSING_HEIGHTS, ...(spec.life ? LIFE_HEIGHTS : {}), ...spec.models.heights }, clips: { ...(spec.life ? LIFE_CLIPS : {}), ...(spec.models.clips ?? {}) }, standY, centred: spec.models.centred });
   for (const q of queued) {
     if (q.kind === 'at') models.addPropAt(q.model, q.at, q.yaw);
+    else if (q.kind === 'centred-at') models.addCentred(q.model, q.at, q.yaw);
     else if (q.kind === 'centred') models.addCentred(q.model, models.place(q.x, q.z), q.yaw);
     else models.addProp(q.model, q.x, q.z, q.yaw);
   }
