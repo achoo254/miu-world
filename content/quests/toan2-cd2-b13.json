@@ -1,0 +1,710 @@
+{
+  "id": "toan2-cd2-b13",
+  "region": "truong-hoc",
+  "chapter": 2,
+  "title": "Hổ Vằn so cà rốt với Thỏ Tí",
+  "status": "draft",
+  "lesson": "toan2-t1-b13",
+  "summary": "Hổ Vằn và Thỏ Tí cãi nhau ai trồng nhiều cà rốt hơn; {name} giúp hai bạn hiểu \"nhiều hơn\" thì cộng, \"ít hơn\" thì trừ, rồi cùng giải các bài toán ở luống cà rốt và máng nước tưới.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "Hổ Vằn, Thỏ Tí",
+    "where": "Vườn trường: luống cà rốt, máng nước tưới cây",
+    "goal": "Giúp Hổ Vằn và Thỏ Tí làm hòa nhờ giải đúng các bài toán nhiều hơn, ít hơn",
+    "play": "Tìm đồ làm vườn, điền bài giải, chọn dấu phép tính, xếp thùng hàng lên tàu, chọn nhận định đúng, giải đố",
+    "learn": "Toán 2 Bài 13: bài toán về nhiều hơn, ít hơn một số đơn vị",
+    "reward": "70 XP, 12 xu, Bài toán có lời văn +2, Phép cộng +1",
+    "unlock": "Bài 14 \"Luyện tập chung\""
+  },
+  "phases": {
+    "hook": "ho-gam-tho-cuoi",
+    "explore": "do-lam-vuon",
+    "learn": "nhieu-hon-la-cong",
+    "challenge": "lop-hoc-boi",
+    "decision": "ho-muon-it-hon",
+    "finale": "cong-chieng-cua-ho",
+    "reward": "huy-hieu-ca-rot",
+    "unlock": "cua-nha-kinh"
+  },
+  "texts": {},
+  "places": {
+    "ho-van": "luống cà rốt",
+    "do-lam-vuon": "luống cà rốt",
+    "tho-ti": "máng nước tưới cây"
+  },
+  "steps": [
+    {
+      "id": "ho-gam-tho-cuoi",
+      "title": "Gừ… ai nhiều cà rốt hơn?",
+      "goTo": "Tới luống cà rốt, Hổ Vằn và Thỏ Tí đang cãi nhau",
+      "kind": "dialogue",
+      "target": "ho-van",
+      "lines": [
+        {
+          "speaker": "Hổ Vằn",
+          "text": "GỪ… ỪỪ! Luống của tớ nhiều cà rốt nhất vườn! …À mà, {name} đừng sợ nhé, tớ gầm cho oai thôi."
+        },
+        {
+          "speaker": "Thỏ Tí",
+          "text": "Xì, tớ trồng nhiều hơn cậu những 2 củ! À khoan… hay là 3 củ? Tớ quên mất rồi."
+        },
+        {
+          "speaker": "Hổ Vằn",
+          "text": "Nhiều hơn 2 củ là bao nhiêu củ? Tớ… tớ không biết tính, nên tớ mới gầm đấy."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Hai bạn đừng cãi, để tớ tính!",
+          "reply": "Thỏ Tí vểnh tai: Hay quá! Nhưng tớ làm rơi bình tưới đâu mất rồi."
+        },
+        {
+          "text": "Hổ Vằn gầm to quá đó!",
+          "reply": "Hổ Vằn cúi mặt, đỏ cả vằn: Xin lỗi… tớ gầm nhỏ lại đây, gừ… gừ…"
+        }
+      ]
+    },
+    {
+      "id": "do-lam-vuon",
+      "title": "Đồ làm vườn thất lạc",
+      "goTo": "Tìm bình tưới, biển tên luống và củ cà rốt khổng lồ quanh luống cà rốt",
+      "kind": "search",
+      "targets": [
+        "toan2-cd2-binh-tuoi",
+        "toan2-cd2-bien-ten-luong",
+        "toan2-cd2-ca-rot-khong-lo"
+      ]
+    },
+    {
+      "id": "nhieu-hon-la-cong",
+      "title": "Nhiều hơn thì làm sao?",
+      "kind": "dialogue",
+      "target": "ho-van",
+      "lines": [
+        {
+          "speaker": "Thỏ Tí",
+          "text": "Cô giáo dạy: nếu tớ nhiều hơn Hổ 2 củ, thì số củ của tớ bằng số củ của Hổ thêm 2. Thêm vào là phép cộng!"
+        },
+        {
+          "speaker": "Hổ Vằn",
+          "text": "Còn nếu tớ ít hơn Thỏ 2 củ thì… bớt đi 2. Bớt đi là phép trừ, đúng không?"
+        },
+        {
+          "speaker": "Thỏ Tí",
+          "text": "Chuẩn! Nhưng bài giải phải có tóm tắt, phép tính và đáp số đàng hoàng nhé. {name} làm mẫu đi!"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ làm mẫu ngay!",
+          "reply": "Hổ Vằn ngồi xuống luống, hai tai dựng đứng chăm chú."
+        }
+      ]
+    },
+    {
+      "id": "lop-hoc-boi",
+      "title": "Lớp học bơi",
+      "target": "ho-van",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Hổ Vằn mê bơi lắm nên chọn bài này trước. Đọc đề, xem tóm tắt rồi điền bài giải.",
+      "template": "Trong một lớp học bơi có 9 bạn nam, số bạn nữ nhiều hơn số bạn nam là 2 bạn. Hỏi lớp học bơi có bao nhiêu bạn nữ?\nTóm tắt Nam: 9 bạn Nữ nhiều hơn nam: 2 bạn Nữ: ... bạn?\nBài giải Số bạn nữ của lớp học bơi là: {{b1}} + {{b2}} = {{b3}} (bạn)\nĐáp số: {{b4}} bạn nữ.",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o7",
+              "text": "7"
+            },
+            {
+              "id": "o9",
+              "text": "9"
+            },
+            {
+              "id": "o10",
+              "text": "10"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o2",
+              "text": "2"
+            },
+            {
+              "id": "o3",
+              "text": "3"
+            },
+            {
+              "id": "o12",
+              "text": "12"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o11",
+              "text": "11"
+            },
+            {
+              "id": "o12",
+              "text": "12"
+            },
+            {
+              "id": "o13",
+              "text": "13"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "o1",
+              "text": "1"
+            },
+            {
+              "id": "o10",
+              "text": "10"
+            },
+            {
+              "id": "o11",
+              "text": "11"
+            }
+          ]
+        }
+      ],
+      "skill": "bai-toan-loi-van",
+      "curriculumRef": [
+        "toan2-t1-b13-hoat-dong-1"
+      ],
+      "support": {
+        "guide": [
+          "\"Nhiều hơn\" nên số bạn nữ = số bạn nam + 2.",
+          "Đáp số ghi lại đúng kết quả phép tính."
+        ],
+        "hint": "Phép tính là 9 + 2.",
+        "answer": {
+          "text": "Trong một lớp học bơi có 9 bạn nam, số bạn nữ nhiều hơn số bạn nam là 2 bạn. Hỏi lớp học bơi có bao nhiêu bạn nữ?; Tóm tắt Nam: 9 bạn Nữ nhiều hơn nam: 2 bạn Nữ: ... bạn?; Bài giải Số bạn nữ của lớp học bơi là: 9 + 2 = 11 (bạn); Đáp số: 11 bạn nữ.",
+          "explanation": "Số bạn nữ nhiều hơn số bạn nam 2 bạn, nên số bạn nữ là 9 + 2 = 11 (bạn)."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Mười một bạn nữ bơi tung tăng, Hổ Vằn vỗ nước tóe tung!",
+          "Bài giải đủ phép tính và đáp số, đúng chuẩn cô dặn.",
+          "Hổ Vằn thì thầm: hóa ra nhiều hơn là cộng thêm, dễ thật."
+        ],
+        "wrong": [
+          "Nhiều hơn thì thêm vào, mình làm phép cộng nhé.",
+          "Hai ô đầu là số bạn nam và số bạn nữ nhiều hơn.",
+          "Đáp số phải bằng kết quả của phép tính phía trên."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o9",
+          "b2": "o2",
+          "b3": "o11",
+          "b4": "o11"
+        }
+      }
+    },
+    {
+      "id": "ga-vit-tren-san",
+      "title": "Gà và vịt trên sân",
+      "target": "ho-van",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Thỏ Tí đố khó hơn: lần này {name} tự chọn cả dấu phép tính.",
+      "template": "Trên sân có 14 con gà, số vịt nhiều hơn số gà là 5 con. Hỏi trên sân có bao nhiêu con vịt?\nTóm tắt Gà: 14 con Vịt nhiều hơn gà: 5 con Vịt: ... con?\nBài giải Số con vịt trên sân là: {{b1}} {{b2}} {{b3}} = {{b4}} (con)\nĐáp số: {{b5}} con vịt.",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o13",
+              "text": "13"
+            },
+            {
+              "id": "o14",
+              "text": "14"
+            },
+            {
+              "id": "o15",
+              "text": "15"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "dau-tru",
+              "text": "–"
+            },
+            {
+              "id": "dau-cong",
+              "text": "+"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o5",
+              "text": "5"
+            },
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o15",
+              "text": "15"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "o19",
+              "text": "19"
+            },
+            {
+              "id": "o29",
+              "text": "29"
+            },
+            {
+              "id": "o91",
+              "text": "91"
+            }
+          ]
+        },
+        {
+          "id": "b5",
+          "options": [
+            {
+              "id": "o9",
+              "text": "9"
+            },
+            {
+              "id": "o17",
+              "text": "17"
+            },
+            {
+              "id": "o19",
+              "text": "19"
+            }
+          ]
+        }
+      ],
+      "skill": "bai-toan-loi-van",
+      "curriculumRef": [
+        "toan2-t1-b13-hoat-dong-2-a"
+      ],
+      "support": {
+        "guide": [
+          "Vịt nhiều hơn gà nên chọn dấu cộng.",
+          "Lấy số gà cộng 5."
+        ],
+        "hint": "14 + 5 = 19.",
+        "answer": {
+          "text": "Trên sân có 14 con gà, số vịt nhiều hơn số gà là 5 con. Hỏi trên sân có bao nhiêu con vịt?; Tóm tắt Gà: 14 con Vịt nhiều hơn gà: 5 con Vịt: ... con?; Bài giải Số con vịt trên sân là: 14 + 5 = 19 (con); Đáp số: 19 con vịt.",
+          "explanation": "Số con vịt trên sân là 14 + 5 = 19 (con)."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Dấu cộng đúng chỗ, mười chín chú vịt kêu cạp cạp cảm ơn!",
+          "Cậu tự chọn dấu mà không lăn tăn chút nào, giỏi quá.",
+          "Thỏ Tí phục lăn: lần này tớ đố mà cậu vẫn thắng."
+        ],
+        "wrong": [
+          "Vịt nhiều hơn gà, vậy mình thêm vào hay bớt đi?",
+          "Ô dấu phải là dấu cộng vì \"nhiều hơn\" nhé.",
+          "Kiểm tra lại kết quả 14 cộng 5 xem."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o14",
+          "b2": "dau-cong",
+          "b3": "o5",
+          "b4": "o19",
+          "b5": "o19"
+        }
+      }
+    },
+    {
+      "id": "ho-muon-it-hon",
+      "title": "Hổ muốn biết về \"ít hơn\"",
+      "kind": "dialogue",
+      "target": "ho-van",
+      "lines": [
+        {
+          "speaker": "Hổ Vằn",
+          "text": "Tớ đếm lại rồi: tớ ít cà rốt hơn Thỏ Tí. Buồn ghê… nhưng thôi, tớ muốn học bài \"ít hơn\" cho biết."
+        },
+        {
+          "speaker": "Thỏ Tí",
+          "text": "Học xong thì đi tưới cây với tớ nhé, máng nước có mấy chiếc thuyền đồ chơi vui lắm!"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Học \"ít hơn\" trước, rồi đi tưới cây",
+          "reply": "Hổ Vằn gật đầu lia lịa, đuôi ngoe nguẩy như mèo con."
+        },
+        {
+          "text": "Ít hơn cũng không sao đâu Hổ ơi",
+          "reply": "Hổ Vằn cười tít mắt: Ừ nhỉ, ít hơn thì mình trồng thêm!"
+        }
+      ]
+    },
+    {
+      "id": "hat-quan-ho",
+      "title": "Hội thi hát quan họ",
+      "target": "ho-van",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Thỏ Tí ngân nga một câu quan họ, Hổ Vằn lắc lư theo. Đọc đề rồi điền bài giải.",
+      "template": "Trong hội thi hát quan họ, thôn Thượng tham gia 9 tiết mục, thôn Hạ tham gia ít hơn thôn Thượng 3 tiết mục. Hỏi thôn Hạ tham gia bao nhiêu tiết mục?\nTóm tắt Thôn Thượng: 9 tiết mục Thôn Hạ ít hơn thôn Thượng: 3 tiết mục Thôn Hạ: ... tiết mục?\nBài giải Số tiết mục thôn Hạ tham gia là: {{b1}} – {{b2}} = {{b3}} (tiết mục)\nĐáp số: {{b4}} tiết mục.",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o8",
+              "text": "8"
+            },
+            {
+              "id": "o9",
+              "text": "9"
+            },
+            {
+              "id": "o11",
+              "text": "11"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o1",
+              "text": "1"
+            },
+            {
+              "id": "o3",
+              "text": "3"
+            },
+            {
+              "id": "o5",
+              "text": "5"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o7",
+              "text": "7"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "o5",
+              "text": "5"
+            },
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o16",
+              "text": "16"
+            }
+          ]
+        }
+      ],
+      "skill": "bai-toan-loi-van",
+      "curriculumRef": [
+        "toan2-t1-b13-hoat-dong-2-1"
+      ],
+      "support": {
+        "guide": [
+          "\"Ít hơn\" nên ta làm phép trừ.",
+          "Lấy số tiết mục thôn Thượng trừ 3."
+        ],
+        "hint": "Phép tính là 9 – 3.",
+        "answer": {
+          "text": "Trong hội thi hát quan họ, thôn Thượng tham gia 9 tiết mục, thôn Hạ tham gia ít hơn thôn Thượng 3 tiết mục. Hỏi thôn Hạ tham gia bao nhiêu tiết mục?; Tóm tắt Thôn Thượng: 9 tiết mục Thôn Hạ ít hơn thôn Thượng: 3 tiết mục Thôn Hạ: ... tiết mục?; Bài giải Số tiết mục thôn Hạ tham gia là: 9 – 3 = 6 (tiết mục); Đáp số: 6 tiết mục.",
+          "explanation": "Thôn Hạ ít hơn thôn Thượng 3 tiết mục, nên thôn Hạ tham gia 9 – 3 = 6 (tiết mục)."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Thôn Hạ có 6 tiết mục, Thỏ Tí hát luôn tiết mục thứ bảy tặng cậu!",
+          "Ít hơn thì bớt đi, cậu không nhầm sang phép cộng.",
+          "Hổ Vằn hát theo \"người ơi người ở đừng về\", lạc giọng mà vui."
+        ],
+        "wrong": [
+          "Ít hơn thì mình bớt đi, thử phép trừ nhé.",
+          "Số bị trừ là số tiết mục của thôn Thượng.",
+          "Đáp số phải ghi đúng kết quả 9 – 3."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o9",
+          "b2": "o3",
+          "b3": "o6",
+          "b4": "o6"
+        }
+      }
+    },
+    {
+      "id": "xep-thung-len-tau",
+      "title": "Xếp hàng lên tàu thứ hai",
+      "goTo": "Sang máng nước tưới cây, Thỏ Tí đang thả thuyền chở hàng",
+      "target": "tho-ti",
+      "kind": "challenge",
+      "mechanic": "drag-drop",
+      "prompt": "Thỏ Tí thả hai con tàu đồ chơi xuống máng nước. Giải bài toán theo tóm tắt sau: Tóm tắt Tàu thứ nhất: 20 thùng hàng Tàu thứ hai nhiều hơn tàu thứ nhất: 8 thùng hàng Tàu thứ hai: ... thùng hàng? Kéo các kiện hàng lên tàu thứ hai cho vừa đủ số thùng.",
+      "container": "Tàu thứ hai",
+      "pieces": [
+        {
+          "id": "manh-1",
+          "label": "Kiện 20 thùng",
+          "value": 20
+        },
+        {
+          "id": "manh-2",
+          "label": "Kiện 8 thùng",
+          "value": 8
+        },
+        {
+          "id": "manh-3",
+          "label": "Kiện 6 thùng",
+          "value": 6
+        },
+        {
+          "id": "manh-4",
+          "label": "Kiện 12 thùng",
+          "value": 12
+        }
+      ],
+      "skill": "bai-toan-loi-van",
+      "curriculumRef": [
+        "toan2-t1-b13-luyen-tap-1"
+      ],
+      "support": {
+        "guide": [
+          "Tàu thứ hai chở bằng tàu thứ nhất và thêm 8 thùng.",
+          "Kéo các kiện cộng lại vừa bằng số thùng tàu thứ hai."
+        ],
+        "hint": "20 thùng như tàu thứ nhất, thêm 8 thùng nữa.",
+        "answer": {
+          "text": "Đủ 28 thùng hàng (chẳng hạn 20 + 8)",
+          "explanation": "Tàu thứ hai chở 20 + 8 = 28 thùng hàng; ví dụ kiện 20 thùng và kiện 8 thùng."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Tàu thứ hai chở vừa khít, nước trong máng gợn sóng lăn tăn!",
+          "Thỏ Tí thổi còi \"tu… u\", tàu hàng lên đường!",
+          "Không thừa một thùng, không thiếu một thùng, tuyệt!"
+        ],
+        "wrong": [
+          "Tàu đang chở quá nặng, sắp chìm rồi, bớt kiện ra nhé.",
+          "Còn thiếu hàng, tàu thứ hai phải chở nhiều hơn tàu thứ nhất.",
+          "Cộng số thùng trên các kiện cậu đã kéo xem được bao nhiêu."
+        ]
+      },
+      "answer": {
+        "total": 28
+      }
+    },
+    {
+      "id": "tau-thu-hai-cho-gi",
+      "title": "Tàu thứ hai chở bao nhiêu?",
+      "target": "tho-ti",
+      "kind": "riddle",
+      "question": "Giải bài toán theo tóm tắt sau: Tóm tắt Tàu thứ nhất: 20 thùng hàng Tàu thứ hai nhiều hơn tàu thứ nhất: 8 thùng hàng Tàu thứ hai: ... thùng hàng? Gõ số thùng hàng của tàu thứ hai.",
+      "skill": "bai-toan-loi-van",
+      "curriculumRef": [
+        "toan2-t1-b13-luyen-tap-1"
+      ],
+      "support": {
+        "guide": [
+          "Đọc tóm tắt: tàu thứ hai nhiều hơn tàu thứ nhất 8 thùng.",
+          "Nhiều hơn nên làm phép cộng 20 + 8."
+        ],
+        "hint": "20 cộng 8 là hai chục và tám đơn vị.",
+        "answer": {
+          "text": "20 + 8 = 28. Đáp số: 28 thùng hàng",
+          "explanation": "Số thùng hàng tàu thứ hai chở là 20 + 8 = 28 (thùng hàng)."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Hai mươi tám thùng, đúng như cậu vừa xếp lên tàu!",
+          "Giải theo tóm tắt mà gọn gàng như sách mẫu.",
+          "Thỏ Tí ghi đáp số vào sổ, lần này không quên nữa."
+        ],
+        "wrong": [
+          "Nhiều hơn thì cộng thêm 8 vào số thùng tàu thứ nhất.",
+          "Tàu thứ hai phải chở nhiều hơn 20 thùng chứ.",
+          "Hai chục thêm tám đơn vị là bao nhiêu nhỉ?"
+        ]
+      },
+      "answer": {
+        "value": 28
+      }
+    },
+    {
+      "id": "cong-chieng-nhan-dinh",
+      "title": "Ngày hội cồng chiêng",
+      "goTo": "Quay về luống cà rốt, Hổ Vằn đã treo một chiếc chiêng",
+      "target": "ho-van",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "prompt": "Hổ Vằn treo chiếc chiêng lên cây để mở hội. Trong ngày hội cồng chiêng, đội Một có 11 người tham gia, đội Hai có số người tham gia ít hơn đội Một là 4 người. Hỏi đội Hai có bao nhiêu người tham gia ngày hội? Trước khi giải, chọn tất cả các câu nói đúng về bài toán này.",
+      "choices": [
+        {
+          "id": "doi-hai-co-it-nguoi-hon-doi-mot",
+          "text": "Đội Hai có ít người hơn đội Một."
+        },
+        {
+          "id": "muon-tim-so-nguoi-doi-hai-ta-lam-phep-tru-11-4",
+          "text": "Muốn tìm số người đội Hai, ta làm phép trừ 11 – 4."
+        },
+        {
+          "id": "muon-tim-so-nguoi-doi-hai-ta-lam-phep-cong-11-4",
+          "text": "Muốn tìm số người đội Hai, ta làm phép cộng 11 + 4."
+        },
+        {
+          "id": "doi-hai-co-15-nguoi-tham-gia",
+          "text": "Đội Hai có 15 người tham gia."
+        },
+        {
+          "id": "doi-hai-co-7-nguoi-tham-gia",
+          "text": "Đội Hai có 7 người tham gia."
+        }
+      ],
+      "skill": "bai-toan-loi-van",
+      "curriculumRef": [
+        "toan2-t1-b13-luyen-tap-2"
+      ],
+      "support": {
+        "guide": [
+          "\"Ít hơn đội Một\" nên đội Hai ít người hơn.",
+          "Ít hơn thì làm phép trừ, không phải phép cộng."
+        ],
+        "hint": "Có ba câu đúng.",
+        "answer": {
+          "text": "Đội Hai có ít người hơn đội Một; Muốn tìm số người đội Hai, ta làm phép trừ 11 – 4; Đội Hai có 7 người tham gia.",
+          "explanation": "Đội Hai ít hơn đội Một 4 người nên ta lấy 11 – 4 = 7; đội Hai có 7 người."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ba câu đúng sáng rực như mặt chiêng vàng!",
+          "Cậu không mắc bẫy phép cộng, Hổ Vằn gật gù thán phục.",
+          "Chọn chuẩn từng câu, giờ chỉ còn đánh chiêng thôi."
+        ],
+        "wrong": [
+          "Ít hơn thì có phải cộng thêm không nhỉ?",
+          "Còn một câu đúng đang chờ cậu chọn đấy.",
+          "Câu nói đội Hai có 15 người là sai rồi."
+        ]
+      },
+      "answer": {
+        "choices": [
+          "doi-hai-co-it-nguoi-hon-doi-mot",
+          "muon-tim-so-nguoi-doi-hai-ta-lam-phep-tru-11-4",
+          "doi-hai-co-7-nguoi-tham-gia"
+        ]
+      }
+    },
+    {
+      "id": "cong-chieng-cua-ho",
+      "title": "Hổ Vằn đánh chiêng",
+      "target": "ho-van",
+      "kind": "riddle",
+      "question": "Hổ Vằn cầm dùi, hít một hơi thật sâu. Trong ngày hội cồng chiêng, đội Một có 11 người tham gia, đội Hai có số người tham gia ít hơn đội Một là 4 người. Hỏi đội Hai có bao nhiêu người tham gia ngày hội?",
+      "skill": "bai-toan-loi-van",
+      "curriculumRef": [
+        "toan2-t1-b13-luyen-tap-2"
+      ],
+      "support": {
+        "guide": [
+          "Đội Hai ít hơn đội Một 4 người.",
+          "Lấy 11 – 4."
+        ],
+        "hint": "Đếm lùi 4 bước từ 11.",
+        "answer": {
+          "text": "11 – 4 = 7. Đáp số: 7 người",
+          "explanation": "Đội Hai có 11 – 4 = 7 (người) tham gia ngày hội."
+        }
+      },
+      "feedback": {
+        "right": [
+          "BOONG! Hổ Vằn đánh chiêng vang cả vườn, chẳng còn nhút nhát chút nào!",
+          "Bảy người đội Hai nhảy múa quanh cây nêu, vui như hội thật.",
+          "Thỏ Tí ôm Hổ Vằn: từ nay mình chung một luống nhé!"
+        ],
+        "wrong": [
+          "Đội Hai ít hơn, vậy số người phải bé hơn 11.",
+          "Lấy 11 bớt đi 4 người nhé.",
+          "Đếm lùi từ 11: 10, 9, 8… thêm một bước nữa."
+        ]
+      },
+      "answer": {
+        "value": 7
+      }
+    },
+    {
+      "id": "huy-hieu-ca-rot",
+      "title": "Huy hiệu cà rốt",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Hổ Vằn và Thỏ Tí làm hòa, cùng nhổ củ cà rốt to nhất tặng {name} kèm huy hiệu \"Giải toán nhiều hơn, ít hơn\". Hổ còn gầm một tiếng thật nhỏ: \"Gừ… cảm ơn!\""
+    },
+    {
+      "id": "cua-nha-kinh",
+      "title": "Cửa nhà kính còn khóa",
+      "kind": "unlock",
+      "trigger": "auto",
+      "text": "Vẹt Xanh đậu trên nóc nhà kính, rung chùm chìa khóa leng keng: \"Muốn vào nhà kính thì phải qua hết câu đố của tớ nhé!\""
+    }
+  ],
+  "reward": {
+    "xp": 70,
+    "coin": 12,
+    "skillXp": {
+      "bai-toan-loi-van": 2,
+      "phep-cong": 1
+    }
+  }
+}

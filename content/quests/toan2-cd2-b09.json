@@ -1,0 +1,828 @@
+{
+  "id": "toan2-cd2-b09",
+  "region": "truong-hoc",
+  "chapter": 2,
+  "title": "Đàn bê con chạy ra chạy vào",
+  "status": "draft",
+  "lesson": "toan2-t1-b09",
+  "summary": "Đàn bê con nghịch ngợm cứ chạy ra chạy vào chuồng rơm làm Bò Sữa Mơ đếm hoa cả mắt; {name} giúp cô viết tóm tắt, bài giải cho các bài toán thêm, bớt.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "Bò Sữa Mơ, Bê Bông (bê con nghịch nhất đàn)",
+    "where": "Vườn trường: chuồng rơm, đống rơm sau chuồng, máng nước, cổng trang trại",
+    "goal": "Giúp Bò Sữa Mơ biết lúc nào thêm, lúc nào bớt để đếm đúng",
+    "play": "Tìm bê con trốn, điền tóm tắt và bài giải, kéo thuyền lá vào bến, đố số bạn trên xe",
+    "learn": "Toán 2 Bài 9: bài toán về thêm, bớt một số đơn vị",
+    "reward": "75 XP, 12 xu, Bài toán có lời văn +2, Phép trừ +1",
+    "unlock": "Bài 10 \"Luyện tập chung\""
+  },
+  "phases": {
+    "hook": "bo-mo-dem-hoa-mat",
+    "explore": "tim-be-con",
+    "learn": "them-cong-bot-tru",
+    "challenge": "lo-hoa-cua-viet",
+    "decision": "be-bong-ru-di-choi",
+    "finale": "xe-cho-ban-ve-truong",
+    "reward": "huy-hieu-them-bot",
+    "unlock": "dap-da-cua-hai-ly"
+  },
+  "texts": {},
+  "places": {
+    "bo-sua-mo": "chuồng rơm",
+    "tim-be-con": "đống rơm sau chuồng",
+    "be-bong-mang-nuoc": "máng nước",
+    "bo-sua-mo-cong": "cổng trang trại"
+  },
+  "steps": [
+    {
+      "id": "bo-mo-dem-hoa-mat",
+      "title": "Bò Mơ đếm hoa cả mắt",
+      "goTo": "Vào chuồng rơm, Bò Sữa Mơ đang đếm bê",
+      "kind": "dialogue",
+      "target": "bo-sua-mo",
+      "lines": [
+        {
+          "speaker": "Bò Sữa Mơ",
+          "text": "Ụm bò… một, hai, ba… ơ kìa, con vừa chạy ra lại chạy vào! {name} ơi, cô đếm từ sáng tới giờ chưa xong."
+        },
+        {
+          "speaker": "Bê Bông",
+          "text": "Hi hi, tụi con chơi trốn tìm mà mẹ! Ba đứa còn đang trốn trong đống rơm kìa."
+        },
+        {
+          "speaker": "Bò Sữa Mơ",
+          "text": "Đấy, cứ thêm một đứa rồi bớt một đứa. Hôm nay cô phải học cho ra cách đếm thêm, đếm bớt mới được."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu đi tìm mấy bạn bê trốn!",
+          "reply": "Bê Bông nháy mắt: Tìm được thì tụi con xin ra ngoan ngoãn!"
+        },
+        {
+          "text": "Bê Bông nghịch thật đấy!",
+          "reply": "Bê Bông lắc cái chuông cổ leng keng: Nghịch mà vẫn đáng yêu mà!"
+        }
+      ]
+    },
+    {
+      "id": "tim-be-con",
+      "title": "Tìm bê con trốn trong rơm",
+      "goTo": "Tìm ba bạn bê con trốn trong đống rơm sau chuồng",
+      "kind": "search",
+      "targets": [
+        "toan2-cd2-be-con-dom",
+        "toan2-cd2-be-con-nau",
+        "toan2-cd2-be-con-khoang"
+      ]
+    },
+    {
+      "id": "them-cong-bot-tru",
+      "title": "Thêm thì cộng, bớt thì trừ",
+      "goTo": "Dắt ba bạn bê về chuồng rơm",
+      "kind": "dialogue",
+      "target": "bo-sua-mo",
+      "lines": [
+        {
+          "speaker": "Bò Sữa Mơ",
+          "text": "Ba bạn về rồi! Vậy là chuồng có thêm ba bê. Có thêm thì mình làm phép cộng, đúng không nhỉ?"
+        },
+        {
+          "speaker": "Bê Bông",
+          "text": "Còn lúc con chạy ra ngoài là bớt đi một, thì làm phép trừ ạ!"
+        },
+        {
+          "speaker": "Bò Sữa Mơ",
+          "text": "Giỏi! Giải bài toán thì ghi Tóm tắt trước, rồi Bài giải có câu trả lời và phép tính, cuối cùng là Đáp số."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu nhớ rồi: tóm tắt, bài giải, đáp số!",
+          "reply": "Bò Sữa Mơ vẫy đuôi: Vậy thử ngay với lọ hoa trên bàn cô nhé."
+        }
+      ]
+    },
+    {
+      "id": "lo-hoa-cua-viet",
+      "title": "Lọ hoa trên bàn",
+      "target": "bo-sua-mo",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Bạn Việt ghé trang trại, mang theo một bó hoa hồng. Lọ hoa có 9 bông hoa, Việt cắm thêm 6 bông hoa. Hỏi lọ hoa có tất cả bao nhiêu bông hoa?",
+      "template": "Tóm tắt\nCó : {{b1}} bông hoa\nThêm : {{b2}} bông hoa\nCó tất cả : ... bông hoa?\nBài giải\nSố bông hoa có tất cả là: {{b3}} + {{b4}} = {{b5}} (bông)\nĐáp số: {{b6}} bông hoa.",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o8",
+              "text": "8"
+            },
+            {
+              "id": "o9",
+              "text": "9"
+            },
+            {
+              "id": "o10",
+              "text": "10"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o5",
+              "text": "5"
+            },
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o16",
+              "text": "16"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o9",
+              "text": "9"
+            },
+            {
+              "id": "o11",
+              "text": "11"
+            },
+            {
+              "id": "o19",
+              "text": "19"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "o5",
+              "text": "5"
+            },
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o7",
+              "text": "7"
+            }
+          ]
+        },
+        {
+          "id": "b5",
+          "options": [
+            {
+              "id": "o15",
+              "text": "15"
+            },
+            {
+              "id": "o17",
+              "text": "17"
+            },
+            {
+              "id": "o51",
+              "text": "51"
+            }
+          ]
+        },
+        {
+          "id": "b6",
+          "options": [
+            {
+              "id": "o13",
+              "text": "13"
+            },
+            {
+              "id": "o15",
+              "text": "15"
+            },
+            {
+              "id": "o25",
+              "text": "25"
+            }
+          ]
+        }
+      ],
+      "skill": "bai-toan-loi-van",
+      "curriculumRef": [
+        "toan2-t1-b09-hoat-dong-1"
+      ],
+      "support": {
+        "guide": [
+          "Tóm tắt ghi số hoa có sẵn và số hoa cắm thêm.",
+          "Cắm thêm hoa thì làm phép cộng."
+        ],
+        "hint": "9 bông thêm 6 bông: 9 + 1 = 10, còn 5.",
+        "answer": {
+          "text": "Tóm tắt; Có : 9 bông hoa; Thêm : 6 bông hoa; Có tất cả : ... bông hoa?; Bài giải; Số bông hoa có tất cả là: 9 + 6 = 15 (bông); Đáp số: 15 bông hoa.",
+          "explanation": "Có 9 bông, thêm 6 bông. Số bông hoa có tất cả là 9 + 6 = 15 (bông). Đáp số: 15 bông hoa."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Lọ hoa đầy ắp mười lăm bông, thơm cả chuồng rơm!",
+          "Tóm tắt rõ ràng, bài giải gọn gàng, chuẩn như sách.",
+          "Bò Sữa Mơ hít hà: thêm hoa là cộng, cô hiểu rồi!"
+        ],
+        "wrong": [
+          "Dòng \"Có\" ghi số hoa ban đầu trong lọ đó.",
+          "Cắm thêm thì lọ hoa nhiều lên, phép cộng nhé.",
+          "Đáp số phải trùng với kết quả của phép tính."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o9",
+          "b2": "o6",
+          "b3": "o9",
+          "b4": "o6",
+          "b5": "o15",
+          "b6": "o15"
+        }
+      }
+    },
+    {
+      "id": "keo-co-them-ban",
+      "title": "Kéo co thêm bạn",
+      "target": "bo-sua-mo",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Ngoài sân, Bê Bông rủ các bạn chơi kéo co: \"Dô ta, dô ta!\" Có 8 bạn đang chơi kéo co, có thêm 4 bạn chạy đến cùng chơi. Hỏi lúc đó có tất cả bao nhiêu bạn chơi kéo co?",
+      "template": "Tóm tắt\nCó : {{b1}} bạn\nThêm : {{b2}} bạn\nCó tất cả : ... bạn?\nBài giải\nSố bạn chơi kéo co có tất cả là: {{b3}} {{b4}} {{b5}} = {{b6}} (bạn)\nĐáp số: {{b7}} bạn.",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o8",
+              "text": "8"
+            },
+            {
+              "id": "o18",
+              "text": "18"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o5",
+              "text": "5"
+            },
+            {
+              "id": "o6",
+              "text": "6"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o8",
+              "text": "8"
+            },
+            {
+              "id": "o9",
+              "text": "9"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "dau-tru",
+              "text": "–"
+            },
+            {
+              "id": "dau-cong",
+              "text": "+"
+            }
+          ]
+        },
+        {
+          "id": "b5",
+          "options": [
+            {
+              "id": "o3",
+              "text": "3"
+            },
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o6",
+              "text": "6"
+            }
+          ]
+        },
+        {
+          "id": "b6",
+          "options": [
+            {
+              "id": "o12",
+              "text": "12"
+            },
+            {
+              "id": "o13",
+              "text": "13"
+            },
+            {
+              "id": "o21",
+              "text": "21"
+            }
+          ]
+        },
+        {
+          "id": "b7",
+          "options": [
+            {
+              "id": "o12",
+              "text": "12"
+            },
+            {
+              "id": "o14",
+              "text": "14"
+            },
+            {
+              "id": "o22",
+              "text": "22"
+            }
+          ]
+        }
+      ],
+      "skill": "bai-toan-loi-van",
+      "curriculumRef": [
+        "toan2-t1-b09-hoat-dong-2-a"
+      ],
+      "support": {
+        "guide": [
+          "Có bạn chạy đến thêm thì số bạn chơi nhiều lên.",
+          "Nhiều lên thì chọn dấu cộng."
+        ],
+        "hint": "8 + 2 = 10, còn 2 nữa.",
+        "answer": {
+          "text": "Tóm tắt; Có : 8 bạn; Thêm : 4 bạn; Có tất cả : ... bạn?; Bài giải; Số bạn chơi kéo co có tất cả là: 8 + 4 = 12 (bạn); Đáp số: 12 bạn.",
+          "explanation": "Có 8 bạn, thêm 4 bạn. Số bạn chơi kéo co có tất cả là 8 + 4 = 12 (bạn). Đáp số: 12 bạn."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Dô ta! Mười hai bạn kéo một hơi, sợi dây căng như dây đàn!",
+          "Chọn đúng dấu cộng ngay, không bị lừa chút nào.",
+          "Bê Bông reo: đội tớ đông hẳn lên rồi!"
+        ],
+        "wrong": [
+          "Có thêm bạn chạy đến thì không phải dấu trừ đâu.",
+          "Dòng Thêm ghi số bạn mới tới chơi nhé.",
+          "Tám bạn cộng bốn bạn, đếm tiếp thử xem."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o8",
+          "b2": "o4",
+          "b3": "o8",
+          "b4": "dau-cong",
+          "b5": "o4",
+          "b6": "o12",
+          "b7": "o12"
+        }
+      }
+    },
+    {
+      "id": "be-bong-ru-di-choi",
+      "title": "Bê Bông rủ đi chơi",
+      "kind": "dialogue",
+      "target": "bo-sua-mo",
+      "lines": [
+        {
+          "speaker": "Bê Bông",
+          "text": "{name} ơi, máng nước có thuyền lá trôi vui lắm, đi xem đi!"
+        },
+        {
+          "speaker": "Bò Sữa Mơ",
+          "text": "Khoan đã, chú lợn hàng xóm vừa nhờ cô tính một bài bớt. {name} muốn tính xong rồi đi, hay vừa đi vừa tính?"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tính bài bớt xong rồi đi",
+          "reply": "Bò Sữa Mơ: Ngoan quá, bài ngắn thôi mà."
+        },
+        {
+          "text": "Vừa đi vừa tính cho vui",
+          "reply": "Bê Bông nhảy cẫng: Thế thì tính nhanh lên nào!"
+        }
+      ]
+    },
+    {
+      "id": "dan-lon-nha-an",
+      "title": "Đàn lợn nhà An",
+      "target": "bo-sua-mo",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Bác hàng xóm kể chuyện đàn lợn nhà An bên kia đồi. Đàn lợn nhà An có 15 con, mẹ đã bán 5 con. Hỏi đàn lợn nhà An còn lại bao nhiêu con?",
+      "template": "Tóm tắt\nCó : {{b1}} con lợn\nBán : {{b2}} con lợn\nCòn lại : ... con lợn?\nBài giải\nSố con lợn còn lại là: {{b3}} – {{b4}} = {{b5}} (con)\nĐáp số: {{b6}} con lợn.",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o13",
+              "text": "13"
+            },
+            {
+              "id": "o15",
+              "text": "15"
+            },
+            {
+              "id": "o25",
+              "text": "25"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o5",
+              "text": "5"
+            },
+            {
+              "id": "o6",
+              "text": "6"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o13",
+              "text": "13"
+            },
+            {
+              "id": "o15",
+              "text": "15"
+            },
+            {
+              "id": "o16",
+              "text": "16"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o5",
+              "text": "5"
+            },
+            {
+              "id": "o7",
+              "text": "7"
+            }
+          ]
+        },
+        {
+          "id": "b5",
+          "options": [
+            {
+              "id": "o0",
+              "text": "0"
+            },
+            {
+              "id": "o10",
+              "text": "10"
+            },
+            {
+              "id": "o20",
+              "text": "20"
+            }
+          ]
+        },
+        {
+          "id": "b6",
+          "options": [
+            {
+              "id": "o0",
+              "text": "0"
+            },
+            {
+              "id": "o10",
+              "text": "10"
+            },
+            {
+              "id": "o12",
+              "text": "12"
+            }
+          ]
+        }
+      ],
+      "skill": "phep-tru",
+      "curriculumRef": [
+        "toan2-t1-b09-hoat-dong-2-1"
+      ],
+      "support": {
+        "guide": [
+          "Bán đi thì đàn lợn ít đi: làm phép trừ.",
+          "Dòng Bán ghi số lợn đã bán."
+        ],
+        "hint": "15 bớt 5 còn mấy chục tròn?",
+        "answer": {
+          "text": "Tóm tắt; Có : 15 con lợn; Bán : 5 con lợn; Còn lại : ... con lợn?; Bài giải; Số con lợn còn lại là: 15 – 5 = 10 (con); Đáp số: 10 con lợn.",
+          "explanation": "Có 15 con, bán 5 con. Số con lợn còn lại là 15 – 5 = 10 (con). Đáp số: 10 con lợn."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Mười con lợn còn lại kêu ủn ỉn chào {name}!",
+          "Bớt thì trừ, {name} chọn phép tính không chút do dự.",
+          "Bò Mơ khen: lần này là bớt, cậu không nhầm sang cộng."
+        ],
+        "wrong": [
+          "Bán đi thì còn ít hơn lúc đầu đấy.",
+          "Dòng Có là 15 con, dòng Bán là số bị bớt đi.",
+          "Mười lăm bớt năm, nhẩm lại xem còn mấy."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o15",
+          "b2": "o5",
+          "b3": "o15",
+          "b4": "o5",
+          "b5": "o10",
+          "b6": "o10"
+        }
+      }
+    },
+    {
+      "id": "thuyen-la-vao-ben",
+      "title": "Kéo thuyền lá vào bến",
+      "goTo": "Chạy ra máng nước, Bê Bông đang thả thuyền lá",
+      "target": "be-bong-mang-nuoc",
+      "kind": "challenge",
+      "mechanic": "drag-drop",
+      "prompt": "Bê Bông thả thuyền lá trên máng nước, có thêm mấy chiếc trôi tới. Kéo đúng các nhóm thuyền trong tóm tắt vào bến. Giải bài toán theo tóm tắt sau: Tóm tắt Có : 9 thuyền Thêm : 4 thuyền Có tất cả : ... thuyền?",
+      "container": "Bến thuyền lá",
+      "pieces": [
+        {
+          "id": "thuyen-1",
+          "label": "9 thuyền đang đậu",
+          "value": 9
+        },
+        {
+          "id": "thuyen-2",
+          "label": "4 thuyền trôi thêm tới",
+          "value": 4
+        },
+        {
+          "id": "thuyen-3",
+          "label": "2 thuyền đã chìm",
+          "value": 2
+        }
+      ],
+      "skill": "bai-toan-loi-van",
+      "curriculumRef": [
+        "toan2-t1-b09-luyen-tap-1"
+      ],
+      "support": {
+        "guide": [
+          "Bến chỉ nhận số thuyền có và số thuyền thêm.",
+          "Thuyền đã chìm không có trong tóm tắt."
+        ],
+        "hint": "Kéo nhóm thuyền ghi trong dòng Có và dòng Thêm.",
+        "answer": {
+          "text": "9 thuyền và 4 thuyền, tất cả 13 thuyền",
+          "explanation": "Có 9 thuyền, thêm 4 thuyền: bến có 9 + 4 = 13 thuyền."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Mười ba chiếc thuyền lá cập bến, Bê Bông vỗ móng lộp cộp!",
+          "Không kéo nhầm thuyền chìm, cậu đọc tóm tắt kĩ lắm.",
+          "Bến thuyền lá đông vui như chợ phiên."
+        ],
+        "wrong": [
+          "Tóm tắt không nhắc tới thuyền đã chìm đâu.",
+          "Bến còn thiếu một nhóm thuyền trong dòng Thêm.",
+          "Chỉ kéo những nhóm có trong tóm tắt thôi nha."
+        ]
+      },
+      "answer": {
+        "total": 13
+      }
+    },
+    {
+      "id": "giai-bai-thuyen-la",
+      "title": "Giải bài thuyền lá",
+      "target": "be-bong-mang-nuoc",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Bê Bông nhờ viết bài giải lên một chiếc lá to. Giải bài toán theo tóm tắt sau: Tóm tắt Có : 9 thuyền Thêm : 4 thuyền Có tất cả : ... thuyền?",
+      "template": "Bài giải\nSố thuyền có tất cả là:\n{{b1}} + {{b2}} = {{b3}} (thuyền)\nĐáp số: {{b4}} thuyền.",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o8",
+              "text": "8"
+            },
+            {
+              "id": "o9",
+              "text": "9"
+            },
+            {
+              "id": "o11",
+              "text": "11"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o14",
+              "text": "14"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o3",
+              "text": "3"
+            },
+            {
+              "id": "o13",
+              "text": "13"
+            },
+            {
+              "id": "o15",
+              "text": "15"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "o13",
+              "text": "13"
+            },
+            {
+              "id": "o14",
+              "text": "14"
+            },
+            {
+              "id": "o15",
+              "text": "15"
+            }
+          ]
+        }
+      ],
+      "skill": "bai-toan-loi-van",
+      "curriculumRef": [
+        "toan2-t1-b09-luyen-tap-1"
+      ],
+      "support": {
+        "guide": [
+          "Viết phép tính lấy số thuyền có cộng số thuyền thêm.",
+          "Đáp số ghi kết quả kèm tên đơn vị."
+        ],
+        "hint": "9 + 1 = 10, còn 3, được 13.",
+        "answer": {
+          "text": "Bài giải; Số thuyền có tất cả là:; 9 + 4 = 13 (thuyền); Đáp số: 13 thuyền.",
+          "explanation": "Số thuyền có tất cả là 9 + 4 = 13 (thuyền). Đáp số: 13 thuyền."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bài giải trên lá đẹp như vở sạch chữ đẹp!",
+          "Phép tính, đơn vị, đáp số đều đủ cả.",
+          "Bê Bông treo chiếc lá lên chuồng làm bảng khen."
+        ],
+        "wrong": [
+          "Số thuyền có sẵn viết trước, số thuyền thêm viết sau.",
+          "Đáp số phải bằng kết quả phép cộng nhé.",
+          "Thêm thuyền thì cộng, kiểm lại kết quả nha."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o9",
+          "b2": "o4",
+          "b3": "o13",
+          "b4": "o13"
+        }
+      }
+    },
+    {
+      "id": "xe-cho-ban-ve-truong",
+      "title": "Xe chở các bạn về trường",
+      "goTo": "Ra cổng trang trại tiễn xe chở các bạn nhỏ",
+      "target": "bo-sua-mo-cong",
+      "kind": "riddle",
+      "question": "Bin bin! Xe đưa các bạn nhỏ thăm trang trại sắp về trường. Trên xe có 14 bạn, đến điểm dừng có 3 bạn xuống xe. Hỏi lúc đó trên xe còn lại bao nhiêu bạn?",
+      "skill": "phep-tru",
+      "curriculumRef": [
+        "toan2-t1-b09-luyen-tap-2"
+      ],
+      "support": {
+        "guide": [
+          "Có bạn xuống xe thì trên xe ít đi.",
+          "Lấy số bạn lúc đầu trừ số bạn xuống xe."
+        ],
+        "hint": "14 bớt 3: chỉ bớt ở hàng đơn vị 4 – 3.",
+        "answer": {
+          "text": "11 bạn",
+          "explanation": "Trên xe còn lại 14 – 3 = 11 (bạn)."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Mười một bạn vẫy tay chào Bò Mơ, xe chạy bon bon!",
+          "Xuống xe là bớt đi, {name} tính trúng phóc.",
+          "Bê Bông chạy theo xe một đoạn rồi quay về khen cậu."
+        ],
+        "wrong": [
+          "Bạn xuống xe thì trên xe không đông thêm đâu.",
+          "Lấy 14 bớt đi 3 bạn nhé.",
+          "Thử nhẩm: 4 bớt 3 còn 1, vậy 14 bớt 3 còn?"
+        ]
+      },
+      "answer": {
+        "value": 11
+      }
+    },
+    {
+      "id": "huy-hieu-them-bot",
+      "title": "Huy hiệu thêm bớt",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Bò Sữa Mơ đeo cho {name} chiếc chuông nhỏ khắc chữ \"Bạn của đàn bê\". Từ hôm nay, bê con chạy ra chạy vào bao nhiêu lần cô cũng đếm được."
+    },
+    {
+      "id": "dap-da-cua-hai-ly",
+      "title": "Con đập đá ở ao cá",
+      "kind": "unlock",
+      "trigger": "auto",
+      "text": "Ở ao cá vườn trường, Hải Ly Cần đang xếp một con đập nhỏ, mỗi viên đá khắc một phép tính. Hải Ly ngoắc đuôi gọi: \"Thiếu người tính giúp tớ rồi!\""
+    }
+  ],
+  "reward": {
+    "xp": 75,
+    "coin": 12,
+    "skillXp": {
+      "bai-toan-loi-van": 2,
+      "phep-tru": 1
+    }
+  }
+}

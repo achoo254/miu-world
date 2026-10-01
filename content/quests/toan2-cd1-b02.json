@@ -1,0 +1,1178 @@
+{
+  "id": "toan2-cd1-b02",
+  "region": "truong-hoc",
+  "chapter": 1,
+  "title": "Chíp nhảy lò cò trên tia số",
+  "status": "draft",
+  "lesson": "toan2-t1-b02",
+  "summary": "Cáo Lém mượn phấn xóa mất số trên vạch lò cò, Gà Con Chíp cứ nhảy nhầm ô; {name} kẻ lại tia số, tìm số liền trước, liền sau và làm trọng tài cuộc chạy thi của bốn bạn thỏ.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "Gà Con Chíp, Cáo Lém",
+    "where": "Sân trường: sân nhảy lò cò, bậc thềm có đoàn tàu đồ chơi, đường chạy",
+    "goal": "Kẻ lại tia số để Chíp nhảy lò cò không lạc ô nữa",
+    "play": "Tìm phấn, điền tia số, thả bóng vào vạch, chọn câu đúng, chọn số, điền toa tàu, đố số làn chạy",
+    "learn": "Toán 2 Bài 2: tia số, số liền trước, số liền sau",
+    "reward": "80 XP, 15 xu, Tia số +2, So sánh số +1",
+    "unlock": "Bài 3 \"Các thành phần của phép cộng, phép trừ\""
+  },
+  "phases": {
+    "hook": "chip-nhay-nham-o",
+    "explore": "tim-phan",
+    "learn": "vach-so-ke-lai",
+    "challenge": "tia-so-hai-doan",
+    "decision": "tau-hoa-cua-cao",
+    "finale": "lan-chay-tho-trang",
+    "reward": "huy-hieu-lo-co",
+    "unlock": "bien-ten-gio-gio"
+  },
+  "texts": {},
+  "places": {
+    "ga-con-chip": "sân nhảy lò cò",
+    "tim-phan": "sân nhảy lò cò",
+    "cao-lem": "bậc thềm lớp học",
+    "trong-tai-cao-lem": "đường chạy"
+  },
+  "steps": [
+    {
+      "id": "chip-nhay-nham-o",
+      "title": "Chíp lạc ô lò cò",
+      "goTo": "Ra sân nhảy lò cò, Gà Con Chíp đang nhảy loạn xạ",
+      "kind": "dialogue",
+      "target": "ga-con-chip",
+      "lines": [
+        {
+          "speaker": "Gà Con Chíp",
+          "text": "{name} ơi cứu tớ! Tớ định nhảy vào ô 4 mà chân tớ hạ cánh ngay ô 9, suýt nữa thì nhảy vào chậu cây luôn!"
+        },
+        {
+          "speaker": "Gà Con Chíp",
+          "text": "Tại mấy con số trên vạch kẻ biến đâu mất. Tớ là gà con chứ có phải thầy bói đâu mà đoán được."
+        },
+        {
+          "speaker": "Cáo Lém",
+          "text": "Hì hì… phấn của tớ thì tớ mượn lại tí thôi mà. Ai tìm được ba cục phấn tớ giấu thì tớ trả số!"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Để tớ đi tìm phấn!",
+          "reply": "Chíp vỗ cánh phành phạch: Nhanh nhé, không là tớ lò cò lạc sang tận căng tin mất!"
+        },
+        {
+          "text": "Cáo Lém nghịch quá đi!",
+          "reply": "Cáo Lém nháy mắt: Nghịch thì mới có trò vui chứ! Phấn ở ngay quanh đây thôi."
+        }
+      ]
+    },
+    {
+      "id": "tim-phan",
+      "title": "Tìm ba cục phấn",
+      "goTo": "Tìm ba cục phấn Cáo Lém giấu quanh sân nhảy lò cò",
+      "kind": "search",
+      "targets": [
+        "toan2-cd1-phan-trang",
+        "toan2-cd1-phan-vang",
+        "toan2-cd1-phan-hong"
+      ]
+    },
+    {
+      "id": "vach-so-ke-lai",
+      "title": "Tia số là gì nhỉ?",
+      "kind": "dialogue",
+      "target": "ga-con-chip",
+      "lines": [
+        {
+          "speaker": "Gà Con Chíp",
+          "text": "Đủ phấn rồi! Đường lò cò này có tên hẳn hoi đấy: tia số. Số 0 đứng đầu, cứ mỗi vạch lại lớn thêm 1."
+        },
+        {
+          "speaker": "Gà Con Chíp",
+          "text": "Số đứng ngay trước một số gọi là số liền trước, kém nó 1. Số đứng ngay sau gọi là số liền sau, hơn nó 1."
+        },
+        {
+          "speaker": "Cáo Lém",
+          "text": "Ví dụ nhé: liền trước của 10 là 9, liền sau của 10 là 11. Dễ ợt như Cáo Lém giấu phấn!"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ hiểu rồi, kẻ số thôi!",
+          "reply": "Chíp đưa cục phấn trắng: Cậu kẻ, tớ đứng canh không cho Cáo Lém xóa nữa."
+        }
+      ]
+    },
+    {
+      "id": "tia-so-hai-doan",
+      "title": "Điền số lên vạch lò cò",
+      "target": "ga-con-chip",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Hai đoạn tia số đang trống trơn mấy vạch. Số ?",
+      "template": "a) 0 1 2 3 {{b1}} {{b2}} {{b3}} {{b4}} 8 {{b5}} 10\nb) 10 11 12 {{b6}} {{b7}} {{b8}} {{b9}} 17 18 {{b10}} 20",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o3",
+              "text": "3"
+            },
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o6",
+              "text": "6"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o3",
+              "text": "3"
+            },
+            {
+              "id": "o5",
+              "text": "5"
+            },
+            {
+              "id": "o6",
+              "text": "6"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o5",
+              "text": "5"
+            },
+            {
+              "id": "o6",
+              "text": "6"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o7",
+              "text": "7"
+            },
+            {
+              "id": "o9",
+              "text": "9"
+            }
+          ]
+        },
+        {
+          "id": "b5",
+          "options": [
+            {
+              "id": "o7",
+              "text": "7"
+            },
+            {
+              "id": "o9",
+              "text": "9"
+            },
+            {
+              "id": "o19",
+              "text": "19"
+            }
+          ]
+        },
+        {
+          "id": "b6",
+          "options": [
+            {
+              "id": "o11",
+              "text": "11"
+            },
+            {
+              "id": "o13",
+              "text": "13"
+            },
+            {
+              "id": "o14",
+              "text": "14"
+            }
+          ]
+        },
+        {
+          "id": "b7",
+          "options": [
+            {
+              "id": "o14",
+              "text": "14"
+            },
+            {
+              "id": "o15",
+              "text": "15"
+            },
+            {
+              "id": "o24",
+              "text": "24"
+            }
+          ]
+        },
+        {
+          "id": "b8",
+          "options": [
+            {
+              "id": "o13",
+              "text": "13"
+            },
+            {
+              "id": "o15",
+              "text": "15"
+            },
+            {
+              "id": "o16",
+              "text": "16"
+            }
+          ]
+        },
+        {
+          "id": "b9",
+          "options": [
+            {
+              "id": "o16",
+              "text": "16"
+            },
+            {
+              "id": "o17",
+              "text": "17"
+            },
+            {
+              "id": "o26",
+              "text": "26"
+            }
+          ]
+        },
+        {
+          "id": "b10",
+          "options": [
+            {
+              "id": "o9",
+              "text": "9"
+            },
+            {
+              "id": "o19",
+              "text": "19"
+            },
+            {
+              "id": "o29",
+              "text": "29"
+            }
+          ]
+        }
+      ],
+      "skill": "tia-so",
+      "curriculumRef": [
+        "toan2-t1-b02-hoat-dong-1-a",
+        "toan2-t1-b02-hoat-dong-1-b"
+      ],
+      "support": {
+        "guide": [
+          "Trên tia số, mỗi vạch sau lớn hơn vạch trước 1 đơn vị.",
+          "Đếm thêm 1 từ số ngay bên trái ô trống."
+        ],
+        "hint": "Sau 3 là 4, sau 12 là 13; ô trước 10 là 9, ô trước 20 là 19.",
+        "answer": {
+          "text": "a) 0 1 2 3 4 5 6 7 8 9 10; b) 10 11 12 13 14 15 16 17 18 19 20",
+          "explanation": "Các số trên tia số đứng theo thứ tự, mỗi số liền sau hơn số liền trước 1."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đường lò cò hiện đủ số, Chíp nhảy phốc một mạch tới 10!",
+          "Chuẩn từng vạch luôn, Chíp đòi nhảy thêm ba lượt nữa.",
+          "Vạch số thẳng tắp, Cáo Lém hết đường xóa trộm rồi nhé."
+        ],
+        "wrong": [
+          "Chíp vừa đáp xuống ô có số lạ hoắc, đếm thêm 1 lại xem nào.",
+          "Mỗi bước nhảy chỉ thêm đúng 1 thôi, không nhảy cóc đâu.",
+          "Nhìn số ngay bên trái ô trống rồi cộng thêm 1 nhé."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o4",
+          "b2": "o5",
+          "b3": "o6",
+          "b4": "o7",
+          "b5": "o9",
+          "b6": "o13",
+          "b7": "o14",
+          "b8": "o15",
+          "b9": "o16",
+          "b10": "o19"
+        }
+      }
+    },
+    {
+      "id": "bong-roi-vach",
+      "title": "Bóng lăn về vạch nào?",
+      "target": "ga-con-chip",
+      "kind": "challenge",
+      "mechanic": "classify",
+      "prompt": "Cáo Lém tung một rổ bóng lên trời, bóng rơi lộp bộp khắp tia số. Mỗi quả bóng ứng với vạch nào trên tia số?",
+      "groups": [
+        {
+          "id": "nhom-vach-1",
+          "label": "Vạch 1"
+        },
+        {
+          "id": "nhom-vach-5",
+          "label": "Vạch 5"
+        },
+        {
+          "id": "nhom-vach-11",
+          "label": "Vạch 11"
+        },
+        {
+          "id": "nhom-vach-12",
+          "label": "Vạch 12"
+        },
+        {
+          "id": "nhom-vach-15",
+          "label": "Vạch 15"
+        },
+        {
+          "id": "nhom-vach-17",
+          "label": "Vạch 17"
+        }
+      ],
+      "items": [
+        {
+          "id": "bong-5",
+          "label": "5"
+        },
+        {
+          "id": "bong-10-1",
+          "label": "10 + 1"
+        },
+        {
+          "id": "bong-1",
+          "label": "1"
+        },
+        {
+          "id": "bong-10-7",
+          "label": "10 + 7"
+        },
+        {
+          "id": "bong-10-5",
+          "label": "10 + 5"
+        }
+      ],
+      "skill": "tia-so",
+      "curriculumRef": [
+        "toan2-t1-b02-hoat-dong-2-a",
+        "toan2-t1-b02-hoat-dong-2-b",
+        "toan2-t1-b02-hoat-dong-2-c",
+        "toan2-t1-b02-hoat-dong-2-d",
+        "toan2-t1-b02-hoat-dong-2-e"
+      ],
+      "support": {
+        "guide": [
+          "Quả bóng ghi phép tính thì tính ra số trước.",
+          "10 cộng thêm mấy thì đếm tiếp từ vạch 10 bấy nhiêu bước."
+        ],
+        "hint": "10 + 7 là đếm tiếp từ 10 thêm 7 vạch: 17.",
+        "answer": {
+          "text": "5 – vạch 5; 10 + 1 – vạch 11; 1 – vạch 1; 10 + 7 – vạch 17; 10 + 5 – vạch 15",
+          "explanation": "Bóng 5 về vạch 5, bóng 1 về vạch 1; 10 + 1 = 11, 10 + 7 = 17, 10 + 5 = 15. Vạch 12 là quả bóng mẫu 10 + 2 đã có sẵn."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bóng nào cũng nằm gọn trên vạch của mình, không quả nào lăn lung tung!",
+          "Cáo Lém há mồm: tớ tung loạn thế mà cậu vẫn xếp được à?",
+          "Năm quả bóng, năm vạch, chuẩn không cần chỉnh."
+        ],
+        "wrong": [
+          "Có một quả bóng đang đậu nhầm vạch hàng xóm rồi.",
+          "Tính phép cộng trên quả bóng trước rồi hẵng thả nhé.",
+          "Bóng 10 + 5 lăn về vạch nào? Đếm tiếp từ 10 thử xem."
+        ]
+      },
+      "answer": {
+        "assignment": {
+          "bong-5": "nhom-vach-5",
+          "bong-10-1": "nhom-vach-11",
+          "bong-1": "nhom-vach-1",
+          "bong-10-7": "nhom-vach-17",
+          "bong-10-5": "nhom-vach-15"
+        }
+      }
+    },
+    {
+      "id": "dung-sai-lien-truoc-sau",
+      "title": "Câu nào nói đúng?",
+      "target": "ga-con-chip",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "prompt": "Cáo Lém viết sáu câu lên nền sân, có câu thật có câu \"lừa\". Đ, S ? Chọn tất cả các câu đúng (Đ); câu không chọn là sai (S).",
+      "choices": [
+        {
+          "id": "a-so-lien-truoc-cua-16-la-15",
+          "text": "a) Số liền trước của 16 là 15."
+        },
+        {
+          "id": "b-so-lien-truoc-cua-16-la-17",
+          "text": "b) Số liền trước của 16 là 17."
+        },
+        {
+          "id": "c-so-lien-sau-cua-18-la-17",
+          "text": "c) Số liền sau của 18 là 17."
+        },
+        {
+          "id": "d-so-lien-sau-cua-18-la-19",
+          "text": "d) Số liền sau của 18 là 19."
+        },
+        {
+          "id": "e-so-lien-truoc-cua-1-la-0",
+          "text": "e) Số liền trước của 1 là 0."
+        },
+        {
+          "id": "g-so-lien-sau-cua-1-la-2",
+          "text": "g) Số liền sau của 1 là 2."
+        }
+      ],
+      "skill": "tia-so",
+      "curriculumRef": [
+        "toan2-t1-b02-hoat-dong-3-a",
+        "toan2-t1-b02-hoat-dong-3-b",
+        "toan2-t1-b02-hoat-dong-3-c",
+        "toan2-t1-b02-hoat-dong-3-d",
+        "toan2-t1-b02-hoat-dong-3-e",
+        "toan2-t1-b02-hoat-dong-3-g"
+      ],
+      "support": {
+        "guide": [
+          "Số liền trước bé hơn 1, số liền sau lớn hơn 1.",
+          "Đọc từng câu, nhìn tia số rồi mới chọn."
+        ],
+        "hint": "Liền trước của 16 phải bé hơn 16; liền sau của 18 phải lớn hơn 18.",
+        "answer": {
+          "text": "Đ: a, d, e, g; S: b, c",
+          "explanation": "Câu a, d, e, g đúng. Câu b sai vì 17 là số liền sau của 16; câu c sai vì 17 là số liền trước của 18."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bắt bài Cáo Lém gọn gàng, câu lừa nào cũng bị lộ!",
+          "Cậu tinh mắt hơn cả cú mèo canh đêm đấy.",
+          "Đúng hết! Cáo Lém lí nhí: lần sau tớ lừa khó hơn."
+        ],
+        "wrong": [
+          "Có một câu \"lừa\" vẫn đang lọt lưới kìa.",
+          "Liền trước thì bé hơn, liền sau thì lớn hơn, soi lại nhé.",
+          "Hình như cậu bỏ sót một câu đúng ở cuối danh sách."
+        ]
+      },
+      "answer": {
+        "choices": [
+          "a-so-lien-truoc-cua-16-la-15",
+          "d-so-lien-sau-cua-18-la-19",
+          "e-so-lien-truoc-cua-1-la-0",
+          "g-so-lien-sau-cua-1-la-2"
+        ]
+      }
+    },
+    {
+      "id": "so-be-hon-5",
+      "title": "Ô lò cò bé hơn 5",
+      "target": "ga-con-chip",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "prompt": "Chíp chỉ dám nhảy ở mấy ô đầu cho đỡ mỏi chân. Tìm trên tia số: a) Những số bé hơn 5.",
+      "choices": [
+        {
+          "id": "o0",
+          "text": "0"
+        },
+        {
+          "id": "o1",
+          "text": "1"
+        },
+        {
+          "id": "o2",
+          "text": "2"
+        },
+        {
+          "id": "o3",
+          "text": "3"
+        },
+        {
+          "id": "o4",
+          "text": "4"
+        },
+        {
+          "id": "o5",
+          "text": "5"
+        },
+        {
+          "id": "o6",
+          "text": "6"
+        },
+        {
+          "id": "o7",
+          "text": "7"
+        },
+        {
+          "id": "o8",
+          "text": "8"
+        },
+        {
+          "id": "o9",
+          "text": "9"
+        },
+        {
+          "id": "o10",
+          "text": "10"
+        }
+      ],
+      "skill": "so-sanh-so",
+      "curriculumRef": [
+        "toan2-t1-b02-luyen-tap-1-a"
+      ],
+      "support": {
+        "guide": [
+          "Số bé hơn 5 đứng bên trái số 5 trên tia số.",
+          "Đừng quên số 0 ở đầu tia số."
+        ],
+        "hint": "Có năm số đứng trước số 5.",
+        "answer": {
+          "text": "0, 1, 2, 3, 4",
+          "explanation": "Các số bên trái 5 là 0, 1, 2, 3, 4; số 5 không bé hơn chính nó."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Năm ô đầu tiên sáng đèn, Chíp nhảy cò cò sung sướng.",
+          "Cả số 0 cậu cũng không bỏ quên, giỏi ghê!",
+          "Chân Chíp đỡ mỏi rồi, cảm ơn {name} nha."
+        ],
+        "wrong": [
+          "Số 5 có bé hơn 5 không nhỉ? Nghĩ lại chút nào.",
+          "Còn một ô ở tận đầu tia số chưa được chọn đấy.",
+          "Chỉ lấy những số đứng bên trái số 5 thôi nhé."
+        ]
+      },
+      "answer": {
+        "choices": [
+          "o0",
+          "o1",
+          "o2",
+          "o3",
+          "o4"
+        ]
+      }
+    },
+    {
+      "id": "so-giua-3-va-6",
+      "title": "Ô giữa 3 và 6",
+      "target": "ga-con-chip",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "prompt": "Giờ Chíp muốn nhảy vào khúc giữa cho oai. Tìm trên tia số: b) Những số vừa lớn hơn 3 vừa bé hơn 6.",
+      "choices": [
+        {
+          "id": "o0",
+          "text": "0"
+        },
+        {
+          "id": "o1",
+          "text": "1"
+        },
+        {
+          "id": "o2",
+          "text": "2"
+        },
+        {
+          "id": "o3",
+          "text": "3"
+        },
+        {
+          "id": "o4",
+          "text": "4"
+        },
+        {
+          "id": "o5",
+          "text": "5"
+        },
+        {
+          "id": "o6",
+          "text": "6"
+        },
+        {
+          "id": "o7",
+          "text": "7"
+        },
+        {
+          "id": "o8",
+          "text": "8"
+        },
+        {
+          "id": "o9",
+          "text": "9"
+        },
+        {
+          "id": "o10",
+          "text": "10"
+        }
+      ],
+      "skill": "so-sanh-so",
+      "curriculumRef": [
+        "toan2-t1-b02-luyen-tap-1-b"
+      ],
+      "support": {
+        "guide": [
+          "Lớn hơn 3 là ở bên phải số 3.",
+          "Bé hơn 6 là ở bên trái số 6; lấy phần ở giữa."
+        ],
+        "hint": "Chỉ có hai số kẹp giữa 3 và 6.",
+        "answer": {
+          "text": "4, 5",
+          "explanation": "Giữa 3 và 6 trên tia số có 4 và 5; số 3 và số 6 không tính."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Hai ô giữa đây rồi, Chíp tạo dáng nhảy siêu oai!",
+          "Kẹp giữa 3 và 6 chỉ có đúng hai số, cậu bắt trúng phóc.",
+          "Chíp hô: ô 4, ô 5, xin chào hai bạn mới!"
+        ],
+        "wrong": [
+          "Số 3 và số 6 đứng ở hai đầu, không tính đâu.",
+          "Lấy số lớn hơn 3 mà vẫn bé hơn 6 cơ.",
+          "Cậu đang chọn thừa một ô rồi, đếm lại đi."
+        ]
+      },
+      "answer": {
+        "choices": [
+          "o4",
+          "o5"
+        ]
+      }
+    },
+    {
+      "id": "ghep-the-so",
+      "title": "Ghép ba thẻ số",
+      "target": "ga-con-chip",
+      "kind": "challenge",
+      "mechanic": "quiz",
+      "prompt": "Cáo Lém chìa ra ba thẻ số 4, 5, 0 và cười tủm tỉm. Chọn câu trả lời đúng. Ghép hai trong ba thẻ số bên được tất cả bao nhiêu số có hai chữ số? A. 6 B. 5 C. 4",
+      "choices": [
+        {
+          "id": "a-6",
+          "text": "A. 6"
+        },
+        {
+          "id": "b-5",
+          "text": "B. 5"
+        },
+        {
+          "id": "c-4",
+          "text": "C. 4"
+        }
+      ],
+      "skill": "logic",
+      "curriculumRef": [
+        "toan2-t1-b02-luyen-tap-2"
+      ],
+      "support": {
+        "guide": [
+          "Số có hai chữ số không bắt đầu bằng chữ số 0.",
+          "Lần lượt đặt thẻ 4, rồi thẻ 5 đứng đầu."
+        ],
+        "hint": "Thẻ 4 đứng đầu được 45 và 40; thẻ 5 đứng đầu được mấy số?",
+        "answer": {
+          "text": "C. 4 (45, 40, 54, 50)",
+          "explanation": "Ghép được 45, 40, 54, 50; 04 và 05 không phải số có hai chữ số, nên có 4 số."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bốn số tròn trịa, mẹo của Cáo Lém hết linh rồi!",
+          "Cậu không mắc bẫy số 0 đứng đầu, siêu thật.",
+          "Cáo Lém gãi tai: tớ tưởng cậu sẽ đếm cả 04 chứ."
+        ],
+        "wrong": [
+          "Số 0 đứng đầu thì không tạo thành số có hai chữ số đâu.",
+          "Thử viết hết các cách ghép ra rồi đếm lại nhé.",
+          "Cậu đếm dư rồi, có cách ghép không hợp lệ đấy."
+        ]
+      },
+      "answer": {
+        "choice": "c-4"
+      }
+    },
+    {
+      "id": "tau-hoa-cua-cao",
+      "title": "Đoàn tàu của Cáo Lém",
+      "goTo": "Sang bậc thềm lớp học, Cáo Lém đang kéo đoàn tàu đồ chơi",
+      "kind": "dialogue",
+      "target": "cao-lem",
+      "lines": [
+        {
+          "speaker": "Cáo Lém",
+          "text": "Tu tu xình xịch! Đoàn tàu này có toa 48 đến toa 53, nhưng tớ lỡ… quên mất toa nào nối sau toa nào."
+        },
+        {
+          "speaker": "Gà Con Chíp",
+          "text": "Cậu quên hay cậu lại định lừa bọn tớ đấy?"
+        },
+        {
+          "speaker": "Cáo Lém",
+          "text": "Lần này thật mà! {name} muốn dò từ đầu tàu, hay nhìn toa bên cạnh mà đoán?"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Dò từ đầu tàu, đếm từng toa",
+          "reply": "Cáo Lém: Chắc ăn đấy, cứ mỗi toa thêm 1."
+        },
+        {
+          "text": "Nhìn toa bên cạnh rồi thêm, bớt 1",
+          "reply": "Cáo Lém: Nhanh như tàu tốc hành luôn!"
+        }
+      ]
+    },
+    {
+      "id": "toa-lien-truoc-lien-sau",
+      "title": "Toa nào đứng cạnh toa nào?",
+      "target": "cao-lem",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Đoàn tàu có các toa 48, 49, 50, 51, 52, 53. Số ?",
+      "template": "a) Toa liền sau toa 50 là toa {{b1}}. Toa liền trước toa 51 là toa {{b2}}.\nb) Toa liền trước toa 49 là toa {{b3}}. Toa liền sau toa 52 là toa {{b4}}.\nc) Ở giữa toa 49 và toa 51 là toa {{b5}}. Ở giữa toa 50 và toa 53 là toa {{b6}} và toa {{b7}}.",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o49",
+              "text": "49"
+            },
+            {
+              "id": "o51",
+              "text": "51"
+            },
+            {
+              "id": "o53",
+              "text": "53"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o50",
+              "text": "50"
+            },
+            {
+              "id": "o52",
+              "text": "52"
+            },
+            {
+              "id": "o60",
+              "text": "60"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o38",
+              "text": "38"
+            },
+            {
+              "id": "o47",
+              "text": "47"
+            },
+            {
+              "id": "o48",
+              "text": "48"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "o53",
+              "text": "53"
+            },
+            {
+              "id": "o55",
+              "text": "55"
+            },
+            {
+              "id": "o63",
+              "text": "63"
+            }
+          ]
+        },
+        {
+          "id": "b5",
+          "options": [
+            {
+              "id": "o5",
+              "text": "5"
+            },
+            {
+              "id": "o50",
+              "text": "50"
+            },
+            {
+              "id": "o51",
+              "text": "51"
+            }
+          ]
+        },
+        {
+          "id": "b6",
+          "options": [
+            {
+              "id": "o49",
+              "text": "49"
+            },
+            {
+              "id": "o51",
+              "text": "51"
+            },
+            {
+              "id": "o53",
+              "text": "53"
+            }
+          ]
+        },
+        {
+          "id": "b7",
+          "options": [
+            {
+              "id": "o25",
+              "text": "25"
+            },
+            {
+              "id": "o50",
+              "text": "50"
+            },
+            {
+              "id": "o52",
+              "text": "52"
+            }
+          ]
+        }
+      ],
+      "skill": "tia-so",
+      "curriculumRef": [
+        "toan2-t1-b02-luyen-tap-3-a",
+        "toan2-t1-b02-luyen-tap-3-b",
+        "toan2-t1-b02-luyen-tap-3-c"
+      ],
+      "support": {
+        "guide": [
+          "Toa liền sau mang số lớn hơn 1, toa liền trước mang số bé hơn 1.",
+          "Toa ở giữa hai toa thì đếm các số kẹp giữa."
+        ],
+        "hint": "Giữa toa 50 và toa 53 có hai toa: 51 và 52.",
+        "answer": {
+          "text": "a) Toa liền sau toa 50 là toa 51. Toa liền trước toa 51 là toa 50.; b) Toa liền trước toa 49 là toa 48. Toa liền sau toa 52 là toa 53.; c) Ở giữa toa 49 và toa 51 là toa 50. Ở giữa toa 50 và toa 53 là toa 51 và toa 52.",
+          "explanation": "Các toa đánh số liên tiếp 48, 49, 50, 51, 52, 53 nên chỉ cần thêm hoặc bớt 1, hoặc đếm số kẹp giữa."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đoàn tàu nối toa ngay ngắn, còi kêu tu tu mừng rỡ!",
+          "Toa nào về toa nấy, Cáo Lém hết đường đổ tại quên.",
+          "Tàu tốc hành {name} chạy chuẩn từng ga!"
+        ],
+        "wrong": [
+          "Có một toa đang bị móc ngược chiều rồi kìa.",
+          "Liền sau thì thêm 1, liền trước thì bớt 1 nhé.",
+          "Giữa toa 50 và toa 53 có mấy toa? Đếm lại xem."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o51",
+          "b2": "o50",
+          "b3": "o48",
+          "b4": "o53",
+          "b5": "o50",
+          "b6": "o51",
+          "b7": "o52"
+        }
+      }
+    },
+    {
+      "id": "bang-lien-truoc-lien-sau",
+      "title": "Bảng số hàng xóm",
+      "target": "cao-lem",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Cáo Lém đố thêm một bảng \"hàng xóm của số\". Số ?",
+      "template": "Số liền trước | Số đã cho | Số liền sau:\n59 | 60 | 61\n{{b1}} | 53 | {{b2}}\n{{b3}} | 86 | {{b4}}\n{{b5}} | 69 | {{b6}}\n{{b7}} | 72 | {{b8}}",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o52",
+              "text": "52"
+            },
+            {
+              "id": "o53",
+              "text": "53"
+            },
+            {
+              "id": "o54",
+              "text": "54"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o44",
+              "text": "44"
+            },
+            {
+              "id": "o45",
+              "text": "45"
+            },
+            {
+              "id": "o54",
+              "text": "54"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o75",
+              "text": "75"
+            },
+            {
+              "id": "o85",
+              "text": "85"
+            },
+            {
+              "id": "o95",
+              "text": "95"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "o77",
+              "text": "77"
+            },
+            {
+              "id": "o85",
+              "text": "85"
+            },
+            {
+              "id": "o87",
+              "text": "87"
+            }
+          ]
+        },
+        {
+          "id": "b5",
+          "options": [
+            {
+              "id": "o58",
+              "text": "58"
+            },
+            {
+              "id": "o68",
+              "text": "68"
+            },
+            {
+              "id": "o86",
+              "text": "86"
+            }
+          ]
+        },
+        {
+          "id": "b6",
+          "options": [
+            {
+              "id": "o60",
+              "text": "60"
+            },
+            {
+              "id": "o68",
+              "text": "68"
+            },
+            {
+              "id": "o70",
+              "text": "70"
+            }
+          ]
+        },
+        {
+          "id": "b7",
+          "options": [
+            {
+              "id": "o70",
+              "text": "70"
+            },
+            {
+              "id": "o71",
+              "text": "71"
+            },
+            {
+              "id": "o73",
+              "text": "73"
+            }
+          ]
+        },
+        {
+          "id": "b8",
+          "options": [
+            {
+              "id": "o73",
+              "text": "73"
+            },
+            {
+              "id": "o74",
+              "text": "74"
+            },
+            {
+              "id": "o75",
+              "text": "75"
+            }
+          ]
+        }
+      ],
+      "skill": "tia-so",
+      "curriculumRef": [
+        "toan2-t1-b02-luyen-tap-4-a",
+        "toan2-t1-b02-luyen-tap-4-b",
+        "toan2-t1-b02-luyen-tap-4-c",
+        "toan2-t1-b02-luyen-tap-4-d"
+      ],
+      "support": {
+        "guide": [
+          "Cột bên trái: bớt đi 1. Cột bên phải: thêm 1.",
+          "Dòng mẫu: 59, 60, 61."
+        ],
+        "hint": "Liền sau của 69 là 70 — sang chục mới đấy.",
+        "answer": {
+          "text": "Số liền trước | Số đã cho | Số liền sau:; 59 | 60 | 61; 52 | 53 | 54; 85 | 86 | 87; 68 | 69 | 70; 71 | 72 | 73",
+          "explanation": "Mỗi số có hàng xóm bên trái kém 1 và hàng xóm bên phải hơn 1: 52, 53, 54; 85, 86, 87; 68, 69, 70; 71, 72, 73."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Hàng xóm nhà số nào cũng đủ mặt, vui như họp tổ!",
+          "Số 69 qua nhà 70 mà cậu không vấp, tuyệt cú mèo.",
+          "Bảng hàng xóm kín chỗ, Cáo Lém vỗ tay bôm bốp."
+        ],
+        "wrong": [
+          "Cột liền trước phải bé hơn số đã cho 1 đấy.",
+          "Liền sau của 69 sang tận chục mới, nghĩ kĩ nhé.",
+          "Một ô hàng xóm đang dọn nhầm nhà rồi."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o52",
+          "b2": "o54",
+          "b3": "o85",
+          "b4": "o87",
+          "b5": "o68",
+          "b6": "o70",
+          "b7": "o71",
+          "b8": "o73"
+        }
+      }
+    },
+    {
+      "id": "lan-chay-tho-trang",
+      "title": "Thỏ trắng ở làn nào?",
+      "goTo": "Chạy ra đường chạy, Cáo Lém làm trọng tài cuộc thi",
+      "target": "trong-tai-cao-lem",
+      "kind": "riddle",
+      "question": "Bốn bạn thỏ xếp từ làn trên cùng xuống: thỏ đen, thỏ nâu, thỏ trắng, thỏ xám. Thỏ đen, thỏ nâu, thỏ trắng và thỏ xám đang chuẩn bị chạy thi. Các làn chạy được đánh số lần lượt từ bé đến lớn. Thỏ trắng chạy ở làn số nào?",
+      "skill": "so-den-100",
+      "curriculumRef": [
+        "toan2-t1-b02-luyen-tap-5"
+      ],
+      "support": {
+        "guide": [
+          "Làn trên cùng là làn số 1.",
+          "Đếm từ làn số 1 xuống tới thỏ trắng."
+        ],
+        "hint": "Thỏ trắng đứng thứ ba tính từ trên xuống.",
+        "answer": {
+          "text": "Làn số 3",
+          "explanation": "Làn 1 thỏ đen, làn 2 thỏ nâu, làn 3 thỏ trắng, làn 4 thỏ xám."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Pằng! Thỏ trắng lao ra từ làn số 3 đúng như cậu nói.",
+          "Trọng tài {name} xếp làn chuẩn, cuộc thi bắt đầu!",
+          "Bốn bạn thỏ cúi chào trọng tài tinh mắt."
+        ],
+        "wrong": [
+          "Làn số 1 ở trên cùng đấy, đếm xuống từ từ nhé.",
+          "Thỏ trắng không ở làn đầu tiên đâu.",
+          "Đếm lại: thỏ đen, thỏ nâu, rồi tới ai?"
+        ]
+      },
+      "answer": {
+        "value": 3
+      }
+    },
+    {
+      "id": "huy-hieu-lo-co",
+      "title": "Huy hiệu lò cò",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Gà Con Chíp nhảy một mạch từ 0 tới 20 không lạc ô nào, rồi gắn cho {name} huy hiệu \"Trọng tài tia số\". Cáo Lém trả nốt cục phấn cuối cùng, mặt hơi tiếc."
+    },
+    {
+      "id": "bien-ten-gio-gio",
+      "title": "Tấm biển bay lung tung",
+      "kind": "unlock",
+      "trigger": "auto",
+      "text": "Mèo Mun chạy tới, tay ôm một xấp biển tên: \"Số hạng\", \"Tổng\", \"Hiệu\"… gió thổi lẫn hết lên bảng tin rồi, ai giúp tớ với!"
+    }
+  ],
+  "reward": {
+    "xp": 80,
+    "coin": 15,
+    "skillXp": {
+      "tia-so": 2,
+      "so-sanh-so": 1
+    }
+  }
+}

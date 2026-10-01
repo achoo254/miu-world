@@ -1,0 +1,1592 @@
+{
+  "id": "toan2-cd1-b06",
+  "region": "truong-hoc",
+  "chapter": 1,
+  "title": "Hội chợ số của Cáo Lém",
+  "status": "draft",
+  "lesson": "toan2-t1-b06",
+  "summary": "Cáo Lém hứa không bày trò nghịch nữa và mở hẳn một hội chợ số ở góc trò chơi dân gian; {name} đi qua từng gian đố, rồi thi \"Đưa ong về tổ\" với Cáo Lém và Ong Vàng.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "Cáo Lém, Ong Vàng",
+    "where": "Sân trường: góc trò chơi dân gian và các gian của hội chợ số",
+    "goal": "Qua hết các gian đố để được chơi trò \"Đưa ong về tổ\"",
+    "play": "Nhặt vé, điền tia số và bảng số liền nhau, tách số, xếp xe đua, mở bốn cửa trắc nghiệm, ghép thẻ số, điền dấu, đưa ong về tổ",
+    "learn": "Toán 2 Bài 6: luyện tập chung về số đến 100, cộng trừ, so sánh, bài toán",
+    "reward": "80 XP, 15 xu, Số đến 100 +2, Phép cộng +1, So sánh số +1",
+    "unlock": "Bài 7 \"Phép cộng (qua 10) trong phạm vi 20\""
+  },
+  "phases": {
+    "hook": "hoi-cho-khai-mac",
+    "explore": "nhat-ve-hoi-cho",
+    "learn": "luat-hoi-cho",
+    "challenge": "tia-so-va-hang-xom",
+    "decision": "cao-lem-ra-cua",
+    "finale": "dua-ong-ve-to",
+    "reward": "huy-hieu-hoi-cho",
+    "unlock": "luong-hoa-huong-duong"
+  },
+  "texts": {},
+  "places": {
+    "cao-lem": "góc trò chơi",
+    "nhat-ve-hoi-cho": "góc trò chơi",
+    "gian-so-lien-nhau": "gian số liền nhau",
+    "gian-tach-so": "gian tách số",
+    "gian-xe-dua": "gian xe đua",
+    "gian-bon-cua": "gian bốn cửa",
+    "gian-the-so": "gian thẻ số",
+    "ong-vang": "bàn cờ con ong"
+  },
+  "steps": [
+    {
+      "id": "hoi-cho-khai-mac",
+      "title": "Hội chợ khai mạc",
+      "goTo": "Tới góc trò chơi, Cáo Lém đang treo đèn lồng hội chợ",
+      "kind": "dialogue",
+      "target": "cao-lem",
+      "lines": [
+        {
+          "speaker": "Cáo Lém",
+          "text": "Kính thưa quý khách! Hội chợ số của Cáo Lém chính thức khai mạc! Không giấu phấn, không lừa ai… à, lừa một tẹo thôi."
+        },
+        {
+          "speaker": "Cáo Lém",
+          "text": "Muốn vào gian đố thì phải có vé. Mà vé thì… gió thổi bay mất ba tấm rồi. Hì hì, lần này tại gió thật đấy!"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ đi tìm vé!",
+          "reply": "Cáo Lém cúi chào: Quý khách {name} tận tình quá, vé bay quanh góc này thôi."
+        },
+        {
+          "text": "Có thật tại gió không đấy?",
+          "reply": "Cáo Lém giơ hai tay: Thề có đuôi tớ làm chứng!"
+        }
+      ]
+    },
+    {
+      "id": "nhat-ve-hoi-cho",
+      "title": "Ba tấm vé hội chợ",
+      "goTo": "Tìm ba tấm vé hội chợ bay quanh góc trò chơi",
+      "kind": "search",
+      "targets": [
+        "toan2-cd1-ve-do",
+        "toan2-cd1-ve-tim",
+        "toan2-cd1-ve-cam"
+      ]
+    },
+    {
+      "id": "luat-hoi-cho",
+      "title": "Luật của hội chợ",
+      "kind": "dialogue",
+      "target": "cao-lem",
+      "lines": [
+        {
+          "speaker": "Cáo Lém",
+          "text": "Hội chợ có các gian: số liền nhau, tách số, xe đua, bốn cửa và thẻ số. Qua hết thì được thi với Ong Vàng."
+        },
+        {
+          "speaker": "Cáo Lém",
+          "text": "Mẹo nhỏ: số liền sau thì thêm 1, số liền trước thì bớt 1; số có hai chữ số thì tách thành chục và đơn vị. Mấy cái này {name} học rồi, nhỉ?"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Học rồi, vào gian thôi!",
+          "reply": "Cáo Lém xé vé cái roẹt: Mời quý khách vào gian đầu tiên!"
+        }
+      ]
+    },
+    {
+      "id": "tia-so-va-hang-xom",
+      "title": "Dải số và bảng hàng xóm",
+      "goTo": "Vào gian số liền nhau, hai dải tia số treo trên vách",
+      "target": "gian-so-lien-nhau",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Gian đầu tiên có hai dải tia số bị dán đè và một bảng hàng xóm. Số ?",
+      "template": "a) 15 16 17 {{b1}} 19 {{b2}} {{b3}} 22 {{b4}} 24\nb) 40 41 {{b5}} 43 {{b6}} 45 {{b7}} {{b8}} 48 {{b9}}\nSố liền trước | Số đã cho | Số liền sau:\n34 | 35 | 36\n{{b10}} | 40 | {{b11}}\n{{b12}} | 59 | {{b13}}\n{{b14}} | 77 | {{b15}}",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o16",
+              "text": "16"
+            },
+            {
+              "id": "o18",
+              "text": "18"
+            },
+            {
+              "id": "o81",
+              "text": "81"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o20",
+              "text": "20"
+            },
+            {
+              "id": "o21",
+              "text": "21"
+            },
+            {
+              "id": "o30",
+              "text": "30"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o11",
+              "text": "11"
+            },
+            {
+              "id": "o21",
+              "text": "21"
+            },
+            {
+              "id": "o31",
+              "text": "31"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "o23",
+              "text": "23"
+            },
+            {
+              "id": "o24",
+              "text": "24"
+            },
+            {
+              "id": "o25",
+              "text": "25"
+            }
+          ]
+        },
+        {
+          "id": "b5",
+          "options": [
+            {
+              "id": "o42",
+              "text": "42"
+            },
+            {
+              "id": "o43",
+              "text": "43"
+            },
+            {
+              "id": "o52",
+              "text": "52"
+            }
+          ]
+        },
+        {
+          "id": "b6",
+          "options": [
+            {
+              "id": "o34",
+              "text": "34"
+            },
+            {
+              "id": "o43",
+              "text": "43"
+            },
+            {
+              "id": "o44",
+              "text": "44"
+            }
+          ]
+        },
+        {
+          "id": "b7",
+          "options": [
+            {
+              "id": "o36",
+              "text": "36"
+            },
+            {
+              "id": "o44",
+              "text": "44"
+            },
+            {
+              "id": "o46",
+              "text": "46"
+            }
+          ]
+        },
+        {
+          "id": "b8",
+          "options": [
+            {
+              "id": "o37",
+              "text": "37"
+            },
+            {
+              "id": "o47",
+              "text": "47"
+            },
+            {
+              "id": "o57",
+              "text": "57"
+            }
+          ]
+        },
+        {
+          "id": "b9",
+          "options": [
+            {
+              "id": "o39",
+              "text": "39"
+            },
+            {
+              "id": "o49",
+              "text": "49"
+            },
+            {
+              "id": "o94",
+              "text": "94"
+            }
+          ]
+        },
+        {
+          "id": "b10",
+          "options": [
+            {
+              "id": "o29",
+              "text": "29"
+            },
+            {
+              "id": "o39",
+              "text": "39"
+            },
+            {
+              "id": "o41",
+              "text": "41"
+            }
+          ]
+        },
+        {
+          "id": "b11",
+          "options": [
+            {
+              "id": "o40",
+              "text": "40"
+            },
+            {
+              "id": "o41",
+              "text": "41"
+            },
+            {
+              "id": "o43",
+              "text": "43"
+            }
+          ]
+        },
+        {
+          "id": "b12",
+          "options": [
+            {
+              "id": "o48",
+              "text": "48"
+            },
+            {
+              "id": "o56",
+              "text": "56"
+            },
+            {
+              "id": "o58",
+              "text": "58"
+            }
+          ]
+        },
+        {
+          "id": "b13",
+          "options": [
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o60",
+              "text": "60"
+            },
+            {
+              "id": "o70",
+              "text": "70"
+            }
+          ]
+        },
+        {
+          "id": "b14",
+          "options": [
+            {
+              "id": "o67",
+              "text": "67"
+            },
+            {
+              "id": "o76",
+              "text": "76"
+            },
+            {
+              "id": "o86",
+              "text": "86"
+            }
+          ]
+        },
+        {
+          "id": "b15",
+          "options": [
+            {
+              "id": "o77",
+              "text": "77"
+            },
+            {
+              "id": "o78",
+              "text": "78"
+            },
+            {
+              "id": "o88",
+              "text": "88"
+            }
+          ]
+        }
+      ],
+      "skill": "tia-so",
+      "curriculumRef": [
+        "toan2-t1-b06-luyen-tap-1-a",
+        "toan2-t1-b06-luyen-tap-1-b",
+        "toan2-t1-b06-luyen-tap-3-a",
+        "toan2-t1-b06-luyen-tap-3-b",
+        "toan2-t1-b06-luyen-tap-3-c"
+      ],
+      "support": {
+        "guide": [
+          "Trên dải tia số, cứ sang phải một vạch là thêm 1.",
+          "Trong bảng: cột trái bớt 1, cột phải thêm 1."
+        ],
+        "hint": "Sau 59 là 60, trước 40 là 39.",
+        "answer": {
+          "text": "a) 15 16 17 18 19 20 21 22 23 24; b) 40 41 42 43 44 45 46 47 48 49; Số liền trước | Số đã cho | Số liền sau:; 34 | 35 | 36; 39 | 40 | 41; 58 | 59 | 60; 76 | 77 | 78",
+          "explanation": "Tia số a: 18, 20, 21, 23; tia số b: 42, 44, 46, 47, 49. Bảng: 39, 40, 41; 58, 59, 60; 76, 77, 78."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Gian đầu tiên qua cửa! Cáo Lém đóng dấu hình đuôi cáo lên vé.",
+          "Dải số liền mạch, bảng hàng xóm đủ mặt, gọn ghê.",
+          "Số 59 sang 60 mà cậu không chớp mắt, quá siêu."
+        ],
+        "wrong": [
+          "Dò từng vạch một, mỗi vạch chỉ thêm 1 thôi.",
+          "Liền trước của 40 là số có 3 chục đấy.",
+          "Một ô đang nhảy cóc mất một số, xem lại nào."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o18",
+          "b2": "o20",
+          "b3": "o21",
+          "b4": "o23",
+          "b5": "o42",
+          "b6": "o44",
+          "b7": "o46",
+          "b8": "o47",
+          "b9": "o49",
+          "b10": "o39",
+          "b11": "o41",
+          "b12": "o58",
+          "b13": "o60",
+          "b14": "o76",
+          "b15": "o78"
+        }
+      }
+    },
+    {
+      "id": "gian-tach-so",
+      "title": "Gian tách số",
+      "goTo": "Sang gian tách số, Cáo Lém bày sẵn bút và bảng con",
+      "target": "gian-tach-so",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Gian thứ hai đố tách số thành chục và đơn vị.",
+      "template": "a) Viết mỗi số 27, 56, 95, 84, 72 thành tổng (theo mẫu). Mẫu: 27 = 20 + 7\n56 = {{b1}} + {{b2}}\n95 = {{b3}} + {{b4}}\n84 = {{b5}} + {{b6}}\n72 = {{b7}} + {{b8}}\nb) Số ?\n34 = 30 + {{b9}}\n55 = {{b10}} + 5\n68 = {{b11}} + 8\n89 = 80 + {{b12}}",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o50",
+              "text": "50"
+            },
+            {
+              "id": "o51",
+              "text": "51"
+            },
+            {
+              "id": "o52",
+              "text": "52"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o8",
+              "text": "8"
+            },
+            {
+              "id": "o16",
+              "text": "16"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o88",
+              "text": "88"
+            },
+            {
+              "id": "o89",
+              "text": "89"
+            },
+            {
+              "id": "o90",
+              "text": "90"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o5",
+              "text": "5"
+            },
+            {
+              "id": "o6",
+              "text": "6"
+            }
+          ]
+        },
+        {
+          "id": "b5",
+          "options": [
+            {
+              "id": "o8",
+              "text": "8"
+            },
+            {
+              "id": "o70",
+              "text": "70"
+            },
+            {
+              "id": "o80",
+              "text": "80"
+            }
+          ]
+        },
+        {
+          "id": "b6",
+          "options": [
+            {
+              "id": "o2",
+              "text": "2"
+            },
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o14",
+              "text": "14"
+            }
+          ]
+        },
+        {
+          "id": "b7",
+          "options": [
+            {
+              "id": "o70",
+              "text": "70"
+            },
+            {
+              "id": "o71",
+              "text": "71"
+            },
+            {
+              "id": "o80",
+              "text": "80"
+            }
+          ]
+        },
+        {
+          "id": "b8",
+          "options": [
+            {
+              "id": "o1",
+              "text": "1"
+            },
+            {
+              "id": "o2",
+              "text": "2"
+            },
+            {
+              "id": "o12",
+              "text": "12"
+            }
+          ]
+        },
+        {
+          "id": "b9",
+          "options": [
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o14",
+              "text": "14"
+            }
+          ]
+        },
+        {
+          "id": "b10",
+          "options": [
+            {
+              "id": "o5",
+              "text": "5"
+            },
+            {
+              "id": "o40",
+              "text": "40"
+            },
+            {
+              "id": "o50",
+              "text": "50"
+            }
+          ]
+        },
+        {
+          "id": "b11",
+          "options": [
+            {
+              "id": "o50",
+              "text": "50"
+            },
+            {
+              "id": "o59",
+              "text": "59"
+            },
+            {
+              "id": "o60",
+              "text": "60"
+            }
+          ]
+        },
+        {
+          "id": "b12",
+          "options": [
+            {
+              "id": "o7",
+              "text": "7"
+            },
+            {
+              "id": "o9",
+              "text": "9"
+            },
+            {
+              "id": "o19",
+              "text": "19"
+            }
+          ]
+        }
+      ],
+      "skill": "so-den-100",
+      "curriculumRef": [
+        "toan2-t1-b06-luyen-tap-2-a1",
+        "toan2-t1-b06-luyen-tap-2-a2",
+        "toan2-t1-b06-luyen-tap-2-a3",
+        "toan2-t1-b06-luyen-tap-2-a4",
+        "toan2-t1-b06-luyen-tap-2-b1",
+        "toan2-t1-b06-luyen-tap-2-b2",
+        "toan2-t1-b06-luyen-tap-2-b3",
+        "toan2-t1-b06-luyen-tap-2-b4"
+      ],
+      "support": {
+        "guide": [
+          "Chữ số hàng chục cho biết số tròn chục.",
+          "Chữ số hàng đơn vị đứng riêng ở phần sau."
+        ],
+        "hint": "95 gồm 9 chục và 5 đơn vị: 90 + 5.",
+        "answer": {
+          "text": "a) Viết mỗi số 27, 56, 95, 84, 72 thành tổng (theo mẫu). Mẫu: 27 = 20 + 7; 56 = 50 + 6; 95 = 90 + 5; 84 = 80 + 4; 72 = 70 + 2; b) Số ?; 34 = 30 + 4; 55 = 50 + 5; 68 = 60 + 8; 89 = 80 + 9",
+          "explanation": "56 = 50 + 6, 95 = 90 + 5, 84 = 80 + 4, 72 = 70 + 2; 34 = 30 + 4, 55 = 50 + 5, 68 = 60 + 8, 89 = 80 + 9."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Tách số ngọt như tách múi bưởi, Cáo Lém thèm rỏ dãi.",
+          "Chục ra chục, đơn vị ra đơn vị, chẳng lẫn chút nào.",
+          "Gian thứ hai xong, vé của cậu thêm một dấu đuôi cáo."
+        ],
+        "wrong": [
+          "Phần chục phải là số tròn chục, như 90 chứ không phải 9.",
+          "Cộng hai phần lại thử xem có bằng số ban đầu không.",
+          "55 = ? + 5: phần còn thiếu là 5 chục đấy."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o50",
+          "b2": "o6",
+          "b3": "o90",
+          "b4": "o5",
+          "b5": "o80",
+          "b6": "o4",
+          "b7": "o70",
+          "b8": "o2",
+          "b9": "o4",
+          "b10": "o50",
+          "b11": "o60",
+          "b12": "o9"
+        }
+      }
+    },
+    {
+      "id": "xe-dua-be-den-lon",
+      "title": "Gian xe đua",
+      "goTo": "Chạy tới gian xe đua, bốn chiếc xe đồ chơi đang nổ máy",
+      "target": "gian-xe-dua",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "prompt": "Bốn chiếc xe đua đỗ lộn xộn, xe nào cũng muốn đứng đầu. a) Viết các số trên xe đua theo thứ tự từ bé đến lớn.",
+      "items": [
+        {
+          "id": "xe-37",
+          "label": "37"
+        },
+        {
+          "id": "xe-45",
+          "label": "45"
+        },
+        {
+          "id": "xe-42",
+          "label": "42"
+        },
+        {
+          "id": "xe-24",
+          "label": "24"
+        }
+      ],
+      "skill": "so-sanh-so",
+      "curriculumRef": [
+        "toan2-t1-b06-luyen-tap-4-a"
+      ],
+      "support": {
+        "guide": [
+          "So hàng chục trước, hàng chục bằng nhau thì so hàng đơn vị.",
+          "Xe số bé nhất đứng đầu hàng."
+        ],
+        "hint": "42 và 45 cùng 4 chục; 2 bé hơn 5.",
+        "answer": {
+          "text": "24, 37, 42, 45",
+          "explanation": "Từ bé đến lớn: 24, 37, 42, 45."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Brừm brừm! Bốn xe vào vạch xuất phát theo đúng thứ tự.",
+          "Xe 24 bé nhất dẫn đường, xe 45 chốt đuôi, chuẩn!",
+          "Cáo Lém phất cờ ca-rô: xếp xe như dân chuyên nghiệp."
+        ],
+        "wrong": [
+          "Xe mang số bé nhất phải đứng đầu hàng nhé.",
+          "42 và 45 cùng hàng chục, so tiếp hàng đơn vị.",
+          "Lần này xếp từ bé đến lớn chứ không phải ngược lại."
+        ]
+      },
+      "answer": {
+        "order": [
+          "xe-24",
+          "xe-37",
+          "xe-42",
+          "xe-45"
+        ]
+      }
+    },
+    {
+      "id": "tong-xe-dua",
+      "title": "Tổng hai chiếc xe",
+      "target": "gian-xe-dua",
+      "kind": "riddle",
+      "question": "Bốn xe đua ghi số 37, 45, 42, 24. b) Tính tổng của số lớn nhất và số bé nhất trong các số trên xe đua.",
+      "skill": "phep-cong",
+      "curriculumRef": [
+        "toan2-t1-b06-luyen-tap-4-b"
+      ],
+      "support": {
+        "guide": [
+          "Số lớn nhất là 45, số bé nhất là 24.",
+          "Cộng hai số đó lại."
+        ],
+        "hint": "45 + 24.",
+        "answer": {
+          "text": "69",
+          "explanation": "45 + 24 = 69."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Tổng 69, hai xe đầu và cuối đập tay nhau cái bốp!",
+          "Lấy đúng xe lớn nhất và xe bé nhất rồi cộng, gọn gàng.",
+          "Đồng hồ bấm giờ còn chưa kịp chạy mà cậu đã xong."
+        ],
+        "wrong": [
+          "Tìm đúng xe lớn nhất và xe bé nhất trước nhé.",
+          "Lần này là tổng, nên mình làm phép cộng.",
+          "Hàng đơn vị: 5 cộng 4 bằng mấy?"
+        ]
+      },
+      "answer": {
+        "value": 69
+      }
+    },
+    {
+      "id": "cay-hai-lop",
+      "title": "Giải thưởng cây xanh",
+      "target": "gian-xe-dua",
+      "kind": "riddle",
+      "question": "Giải thưởng của gian xe đua là cây giống cho hai lớp. Lớp 2A trồng được 29 cây, lớp 2B trồng được 25 cây. Hỏi lớp 2A trồng được hơn lớp 2B bao nhiêu cây?",
+      "skill": "hon-kem",
+      "curriculumRef": [
+        "toan2-t1-b06-luyen-tap-5"
+      ],
+      "support": {
+        "guide": [
+          "Hai lớp chênh nhau bao nhiêu cây thì lấy số cây nhiều trừ số cây ít.",
+          "Lớp 2A trồng nhiều hơn."
+        ],
+        "hint": "29 – 25.",
+        "answer": {
+          "text": "4 cây",
+          "explanation": "29 – 25 = 4, lớp 2A trồng hơn lớp 2B 4 cây."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Hơn 4 cây, lớp 2A được tặng thêm bình tưới!",
+          "Số lớn trừ số bé, cậu nhớ bài hôm trước rồi.",
+          "Cáo Lém trồng ngay một cây con ở góc hội chợ."
+        ],
+        "wrong": [
+          "Lấy số cây lớp 2A trừ số cây lớp 2B nhé.",
+          "Chỉ cần trừ hàng đơn vị: 9 bớt 5.",
+          "Hỏi hơn bao nhiêu chứ không hỏi tất cả bao nhiêu."
+        ]
+      },
+      "answer": {
+        "value": 4
+      }
+    },
+    {
+      "id": "cao-lem-ra-cua",
+      "title": "Bốn cánh cửa bí ẩn",
+      "goTo": "Đến gian bốn cửa, mỗi cánh cửa dán một câu đố",
+      "kind": "dialogue",
+      "target": "gian-bon-cua",
+      "lines": [
+        {
+          "speaker": "Cáo Lém",
+          "text": "Gian này có bốn cánh cửa, sau mỗi cửa là một câu trắc nghiệm. Đoán bừa là cửa đóng sập trước mũi đấy nhé!"
+        },
+        {
+          "speaker": "Cáo Lém",
+          "text": "Quý khách muốn mở từ cửa một, hay nhắm mắt chọn đại một cửa?"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Mở lần lượt từ cửa một",
+          "reply": "Cáo Lém: Cẩn thận như thế thì cửa nào cũng mở!"
+        },
+        {
+          "text": "Chọn đại một cửa",
+          "reply": "Cáo Lém cười khúc khích: Cửa nào cũng dẫn về cửa một thôi, mời quý khách!"
+        }
+      ]
+    },
+    {
+      "id": "cua-thu-nhat",
+      "title": "Cửa thứ nhất",
+      "target": "gian-bon-cua",
+      "kind": "challenge",
+      "mechanic": "quiz",
+      "prompt": "Cửa thứ nhất kêu cót két. Chọn câu trả lời đúng. a) Tổng của 32 và 6 là: A. 92 B. 38 C. 82",
+      "choices": [
+        {
+          "id": "a-92",
+          "text": "A. 92"
+        },
+        {
+          "id": "b-38",
+          "text": "B. 38"
+        },
+        {
+          "id": "c-82",
+          "text": "C. 82"
+        }
+      ],
+      "skill": "so-den-100",
+      "curriculumRef": [
+        "toan2-t1-b06-luyen-tap-2-1-a"
+      ],
+      "support": {
+        "guide": [
+          "Tổng là kết quả phép cộng.",
+          "Cộng 32 với 6."
+        ],
+        "hint": "2 + 6 = 8, hàng chục giữ nguyên 3.",
+        "answer": {
+          "text": "B. 38",
+          "explanation": "32 + 6 = 38, chọn B."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Cót két… cạch! Cửa một mở toang.",
+          "Tổng 38, chọn B là chuẩn rồi.",
+          "Cáo Lém lẩm bẩm: cửa dễ nhất mà, hừm."
+        ],
+        "wrong": [
+          "Tổng là cộng chứ không phải trừ nhé.",
+          "6 cộng vào hàng đơn vị, không cộng vào hàng chục.",
+          "Cửa vẫn đóng, tính lại 32 + 6 xem."
+        ]
+      },
+      "answer": {
+        "choice": "b-38"
+      }
+    },
+    {
+      "id": "cua-thu-hai",
+      "title": "Cửa thứ hai",
+      "target": "gian-bon-cua",
+      "kind": "challenge",
+      "mechanic": "quiz",
+      "prompt": "Cửa thứ hai có treo chuông gió. Chọn câu trả lời đúng. b) Hiệu của 47 và 22 là: A. 69 B. 24 C. 25",
+      "choices": [
+        {
+          "id": "a-69",
+          "text": "A. 69"
+        },
+        {
+          "id": "b-24",
+          "text": "B. 24"
+        },
+        {
+          "id": "c-25",
+          "text": "C. 25"
+        }
+      ],
+      "skill": "so-den-100",
+      "curriculumRef": [
+        "toan2-t1-b06-luyen-tap-2-1-b"
+      ],
+      "support": {
+        "guide": [
+          "Hiệu là kết quả phép trừ.",
+          "Lấy 47 trừ 22."
+        ],
+        "hint": "7 – 2 = 5, 4 – 2 = 2.",
+        "answer": {
+          "text": "C. 25",
+          "explanation": "47 – 22 = 25, chọn C."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Leng keng! Chuông gió reo mừng hiệu 25.",
+          "Hiệu là trừ, cậu không bị phương án 69 lừa.",
+          "Cửa hai mở, Cáo Lém bắt đầu lo lo."
+        ],
+        "wrong": [
+          "Hiệu là trừ, đừng cộng hai số lại nhé.",
+          "Trừ hàng đơn vị: 7 bớt 2 còn 5.",
+          "24 hay 25? Tính lại thật chậm xem."
+        ]
+      },
+      "answer": {
+        "choice": "c-25"
+      }
+    },
+    {
+      "id": "cua-thu-ba",
+      "title": "Cửa thứ ba",
+      "target": "gian-bon-cua",
+      "kind": "challenge",
+      "mechanic": "quiz",
+      "prompt": "Cửa thứ ba sơn màu tím, viết chữ to tướng. Chọn câu trả lời đúng. c) Số liền trước của số bé nhất có hai chữ số là: A. 9 B. 10 C. 11",
+      "choices": [
+        {
+          "id": "a-9",
+          "text": "A. 9"
+        },
+        {
+          "id": "b-10",
+          "text": "B. 10"
+        },
+        {
+          "id": "c-11",
+          "text": "C. 11"
+        }
+      ],
+      "skill": "so-den-100",
+      "curriculumRef": [
+        "toan2-t1-b06-luyen-tap-2-1-c"
+      ],
+      "support": {
+        "guide": [
+          "Số bé nhất có hai chữ số là 10.",
+          "Số liền trước thì bớt 1."
+        ],
+        "hint": "Liền trước của 10 là bao nhiêu?",
+        "answer": {
+          "text": "A. 9",
+          "explanation": "Số bé nhất có hai chữ số là 10; số liền trước của 10 là 9, chọn A."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Số 9! Cửa tím mở ra một chùm bóng bay.",
+          "Hai bước suy luận mà cậu đi một mạch.",
+          "Cáo Lém gãi đầu: câu này tớ nghĩ mãi đấy."
+        ],
+        "wrong": [
+          "Trước hết tìm số bé nhất có hai chữ số nhé.",
+          "Liền trước là bớt 1 chứ không phải thêm 1.",
+          "Số 10 mới là số bé nhất có hai chữ số đấy."
+        ]
+      },
+      "answer": {
+        "choice": "a-9"
+      }
+    },
+    {
+      "id": "cua-thu-tu",
+      "title": "Cửa thứ tư",
+      "target": "gian-bon-cua",
+      "kind": "challenge",
+      "mechanic": "quiz",
+      "prompt": "Cửa cuối cùng dán ngôi sao vàng. Chọn câu trả lời đúng. d) Số liền sau của số lớn nhất có hai chữ số là: A. 98 B. 99 C. 100",
+      "choices": [
+        {
+          "id": "a-98",
+          "text": "A. 98"
+        },
+        {
+          "id": "b-99",
+          "text": "B. 99"
+        },
+        {
+          "id": "c-100",
+          "text": "C. 100"
+        }
+      ],
+      "skill": "so-den-100",
+      "curriculumRef": [
+        "toan2-t1-b06-luyen-tap-2-1-d"
+      ],
+      "support": {
+        "guide": [
+          "Số lớn nhất có hai chữ số là 99.",
+          "Số liền sau thì thêm 1."
+        ],
+        "hint": "Liền sau của 99 sang hẳn số có ba chữ số.",
+        "answer": {
+          "text": "C. 100",
+          "explanation": "Số lớn nhất có hai chữ số là 99; số liền sau của 99 là 100, chọn C."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Một trăm tròn trĩnh! Cửa sao vàng bật mở.",
+          "Bốn cửa mở hết, Cáo Lém phải nể cậu rồi.",
+          "99 thêm 1 là 100, cậu nhớ quá giỏi."
+        ],
+        "wrong": [
+          "Tìm số lớn nhất có hai chữ số trước nhé.",
+          "Liền sau là thêm 1 vào số 99.",
+          "98 là liền trước của 99 đấy, không phải liền sau."
+        ]
+      },
+      "answer": {
+        "choice": "c-100"
+      }
+    },
+    {
+      "id": "ghep-the-0-3-5",
+      "title": "Gian thẻ số",
+      "goTo": "Sang gian thẻ số, ba tấm thẻ 0, 3, 5 nằm trên bàn",
+      "target": "gian-the-so",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "prompt": "Cáo Lém lật ba thẻ số 0, 3, 5. a) Ghép hai trong ba thẻ số bên được các số có hai chữ số nào?",
+      "choices": [
+        {
+          "id": "o30",
+          "text": "30"
+        },
+        {
+          "id": "o35",
+          "text": "35"
+        },
+        {
+          "id": "o50",
+          "text": "50"
+        },
+        {
+          "id": "o53",
+          "text": "53"
+        },
+        {
+          "id": "o03",
+          "text": "03"
+        },
+        {
+          "id": "o05",
+          "text": "05"
+        },
+        {
+          "id": "o33",
+          "text": "33"
+        },
+        {
+          "id": "o55",
+          "text": "55"
+        },
+        {
+          "id": "o305",
+          "text": "305"
+        }
+      ],
+      "skill": "so-den-100",
+      "curriculumRef": [
+        "toan2-t1-b06-luyen-tap-2-2-a"
+      ],
+      "support": {
+        "guide": [
+          "Mỗi số dùng hai thẻ khác nhau.",
+          "Thẻ 0 không đứng đầu một số có hai chữ số."
+        ],
+        "hint": "Thẻ 3 đứng đầu được 30 và 35.",
+        "answer": {
+          "text": "30, 35, 50, 53",
+          "explanation": "Ghép được 30, 35, 50, 53; 03 và 05 không phải số có hai chữ số, 33 và 55 phải dùng một thẻ hai lần."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đủ bốn số, không mắc bẫy thẻ 0 đứng đầu!",
+          "Cáo Lém thu thẻ lại, mặt tiu nghỉu như mèo mất cá.",
+          "Mỗi thẻ đúng một lần, cậu ghép chuẩn quá."
+        ],
+        "wrong": [
+          "Thẻ 0 đứng đầu thì không thành số có hai chữ số đâu.",
+          "Mỗi tấm thẻ chỉ có một chiếc, không dùng hai lần.",
+          "Còn sót một số có thẻ 5 đứng đầu đấy."
+        ]
+      },
+      "answer": {
+        "choices": [
+          "o30",
+          "o35",
+          "o50",
+          "o53"
+        ]
+      }
+    },
+    {
+      "id": "hieu-the-so",
+      "title": "Hiệu của các số vừa ghép",
+      "target": "gian-the-so",
+      "kind": "riddle",
+      "question": "Cậu vừa ghép được bốn số từ ba thẻ 0, 3, 5. b) Tính hiệu của số lớn nhất và số bé nhất trong các số vừa ghép được.",
+      "skill": "phep-tru",
+      "curriculumRef": [
+        "toan2-t1-b06-luyen-tap-2-2-b"
+      ],
+      "support": {
+        "guide": [
+          "Số lớn nhất vừa ghép là 53, số bé nhất là 30.",
+          "Hiệu là kết quả của phép trừ."
+        ],
+        "hint": "53 – 30.",
+        "answer": {
+          "text": "23",
+          "explanation": "53 – 30 = 23."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Hiệu 23, thẻ số tự xếp thành hàng chào cậu.",
+          "Trừ số tròn chục chỉ cần trừ hàng chục, cậu biết mẹo rồi.",
+          "Thêm một dấu đuôi cáo nữa vào vé!"
+        ],
+        "wrong": [
+          "Lấy số lớn nhất 53 trừ số bé nhất 30 nhé.",
+          "Hiệu là trừ, đừng cộng lại.",
+          "Hàng đơn vị của 53 giữ nguyên là 3 đấy."
+        ]
+      },
+      "answer": {
+        "value": 23
+      }
+    },
+    {
+      "id": "dau-so-sanh-hoi-cho",
+      "title": "Dấu nào hợp lí?",
+      "target": "gian-the-so",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Câu đố cuối của gian thẻ số: Cáo Lém giấu các dấu vào trong túi áo. >; <; = ?",
+      "template": "a) 34 + 5 {{b1}} 41\na) 98 – 5 {{b2}} 89\nb) 87 – 32 {{b3}} 50 + 5\nb) 25 + 53 {{b4}} 76 – 4",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "lon-hon",
+              "text": ">"
+            },
+            {
+              "id": "be-hon",
+              "text": "<"
+            },
+            {
+              "id": "bang",
+              "text": "="
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "lon-hon",
+              "text": ">"
+            },
+            {
+              "id": "be-hon",
+              "text": "<"
+            },
+            {
+              "id": "bang",
+              "text": "="
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "lon-hon",
+              "text": ">"
+            },
+            {
+              "id": "be-hon",
+              "text": "<"
+            },
+            {
+              "id": "bang",
+              "text": "="
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "lon-hon",
+              "text": ">"
+            },
+            {
+              "id": "be-hon",
+              "text": "<"
+            },
+            {
+              "id": "bang",
+              "text": "="
+            }
+          ]
+        }
+      ],
+      "skill": "so-sanh-so",
+      "curriculumRef": [
+        "toan2-t1-b06-luyen-tap-2-3-a1",
+        "toan2-t1-b06-luyen-tap-2-3-a2",
+        "toan2-t1-b06-luyen-tap-2-3-b1",
+        "toan2-t1-b06-luyen-tap-2-3-b2"
+      ],
+      "support": {
+        "guide": [
+          "Tính kết quả từng vế trước rồi mới so.",
+          "Hai vế bằng nhau thì điền dấu =."
+        ],
+        "hint": "87 – 32 = 55 và 50 + 5 = 55.",
+        "answer": {
+          "text": "a) 34 + 5 < 41; a) 98 – 5 > 89; b) 87 – 32 = 50 + 5; b) 25 + 53 > 76 – 4",
+          "explanation": "34 + 5 = 39 < 41; 98 – 5 = 93 > 89; 87 – 32 = 55 = 50 + 5; 25 + 53 = 78 > 76 – 4 = 72."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bốn dấu ngay ngắn, túi áo Cáo Lém trống trơn rồi!",
+          "Tính hai vế rồi so, đúng là cách của nhà vô địch.",
+          "Dấu bằng cũng không làm khó được cậu."
+        ],
+        "wrong": [
+          "Tính cả hai vế trước khi chọn dấu nhé.",
+          "Đầu nhọn của dấu chĩa về phía vế có kết quả bé hơn.",
+          "87 – 32 và 50 + 5 có bằng nhau không nhỉ?"
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "be-hon",
+          "b2": "lon-hon",
+          "b3": "bang",
+          "b4": "lon-hon"
+        }
+      }
+    },
+    {
+      "id": "dua-ong-ve-to",
+      "title": "Đưa ong về tổ",
+      "goTo": "Tới bàn cờ con ong, Ong Vàng và Cáo Lém đã đứng ở ô xuất phát",
+      "target": "ong-vang",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Trò chơi ĐƯA ONG VỀ TỔ. Cách chơi: • Chơi theo nhóm. • Người chơi bắt đầu từ ô xuất phát. Khi đến lượt, người chơi gieo xúc xắc. Đếm số chấm ở mặt trên xúc xắc rồi di chuyển số ô bằng số chấm đó. Nêu kết quả phép tính tại ô đi đến, nếu nêu sai kết quả thì phải quay về ô xuất phát trước đó. Nếu đến được ô may mắn thì chú ong được bay ngay về tổ. • Trò chơi kết thúc khi đưa được ong về tổ. {name} và Cáo Lém thay nhau gieo xúc xắc; ở mỗi ô Cáo Lém hay \"nhắc bài\" sai để lừa, hãy chọn phép tính có kết quả đúng.",
+      "template": "Ô 1: {{b1}}\nÔ 2: {{b2}}\nÔ 3: {{b3}}\nÔ 4: {{b4}}\nÔ 5: {{b5}}\nÔ 6: {{b6}}\nÔ may mắn (con ong): ong bay ngay về tổ!\nÔ 7: {{b7}}\nÔ 8: {{b8}}\nÔ 9: {{b9}}\nÔ may mắn (con ong): ong bay ngay về tổ!\nÔ 10: {{b10}}\nÔ 11: {{b11}}\nÔ 12: {{b12}}\nÔ 13: {{b13}}",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "20-18-37",
+              "text": "20 + 18 = 37"
+            },
+            {
+              "id": "20-18-38",
+              "text": "20 + 18 = 38"
+            },
+            {
+              "id": "20-18-48",
+              "text": "20 + 18 = 48"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "46-6-39",
+              "text": "46 – 6 = 39"
+            },
+            {
+              "id": "46-6-40",
+              "text": "46 – 6 = 40"
+            },
+            {
+              "id": "46-6-50",
+              "text": "46 – 6 = 50"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "35-10-44",
+              "text": "35 + 10 = 44"
+            },
+            {
+              "id": "35-10-45",
+              "text": "35 + 10 = 45"
+            },
+            {
+              "id": "35-10-55",
+              "text": "35 + 10 = 55"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "17-5-11",
+              "text": "17 – 5 = 11"
+            },
+            {
+              "id": "17-5-12",
+              "text": "17 – 5 = 12"
+            },
+            {
+              "id": "17-5-22",
+              "text": "17 – 5 = 22"
+            }
+          ]
+        },
+        {
+          "id": "b5",
+          "options": [
+            {
+              "id": "5-50-54",
+              "text": "5 + 50 = 54"
+            },
+            {
+              "id": "5-50-55",
+              "text": "5 + 50 = 55"
+            },
+            {
+              "id": "5-50-65",
+              "text": "5 + 50 = 65"
+            }
+          ]
+        },
+        {
+          "id": "b6",
+          "options": [
+            {
+              "id": "70-40-29",
+              "text": "70 – 40 = 29"
+            },
+            {
+              "id": "70-40-30",
+              "text": "70 – 40 = 30"
+            },
+            {
+              "id": "70-40-40",
+              "text": "70 – 40 = 40"
+            }
+          ]
+        },
+        {
+          "id": "b7",
+          "options": [
+            {
+              "id": "85-20-64",
+              "text": "85 – 20 = 64"
+            },
+            {
+              "id": "85-20-65",
+              "text": "85 – 20 = 65"
+            },
+            {
+              "id": "85-20-75",
+              "text": "85 – 20 = 75"
+            }
+          ]
+        },
+        {
+          "id": "b8",
+          "options": [
+            {
+              "id": "30-50-79",
+              "text": "30 + 50 = 79"
+            },
+            {
+              "id": "30-50-80",
+              "text": "30 + 50 = 80"
+            },
+            {
+              "id": "30-50-90",
+              "text": "30 + 50 = 90"
+            }
+          ]
+        },
+        {
+          "id": "b9",
+          "options": [
+            {
+              "id": "68-2-65",
+              "text": "68 – 2 = 65"
+            },
+            {
+              "id": "68-2-66",
+              "text": "68 – 2 = 66"
+            },
+            {
+              "id": "68-2-76",
+              "text": "68 – 2 = 76"
+            }
+          ]
+        },
+        {
+          "id": "b10",
+          "options": [
+            {
+              "id": "83-2-84",
+              "text": "83 + 2 = 84"
+            },
+            {
+              "id": "83-2-85",
+              "text": "83 + 2 = 85"
+            },
+            {
+              "id": "83-2-95",
+              "text": "83 + 2 = 95"
+            }
+          ]
+        },
+        {
+          "id": "b11",
+          "options": [
+            {
+              "id": "20-33-52",
+              "text": "20 + 33 = 52"
+            },
+            {
+              "id": "20-33-53",
+              "text": "20 + 33 = 53"
+            },
+            {
+              "id": "20-33-63",
+              "text": "20 + 33 = 63"
+            }
+          ]
+        },
+        {
+          "id": "b12",
+          "options": [
+            {
+              "id": "99-90-8",
+              "text": "99 – 90 = 8"
+            },
+            {
+              "id": "99-90-9",
+              "text": "99 – 90 = 9"
+            },
+            {
+              "id": "99-90-19",
+              "text": "99 – 90 = 19"
+            }
+          ]
+        },
+        {
+          "id": "b13",
+          "options": [
+            {
+              "id": "51-15-65",
+              "text": "51 + 15 = 65"
+            },
+            {
+              "id": "51-15-66",
+              "text": "51 + 15 = 66"
+            },
+            {
+              "id": "51-15-76",
+              "text": "51 + 15 = 76"
+            }
+          ]
+        }
+      ],
+      "skill": "phep-cong",
+      "curriculumRef": [
+        "toan2-t1-b06-tro-choi-1"
+      ],
+      "support": {
+        "guide": [
+          "Tính phép tính ở từng ô rồi mới chọn.",
+          "Cáo Lém hay nói lệch 1 hoặc lệch 10, cẩn thận nhé."
+        ],
+        "hint": "Ô 1: 20 + 18, hàng chục 2 + 1 = 3, hàng đơn vị 0 + 8 = 8.",
+        "answer": {
+          "text": "20 + 18 = 38; 46 – 6 = 40; 35 + 10 = 45; 17 – 5 = 12; 5 + 50 = 55; 70 – 40 = 30; 85 – 20 = 65; 30 + 50 = 80; 68 – 2 = 66; 83 + 2 = 85; 20 + 33 = 53; 99 – 90 = 9; 51 + 15 = 66",
+          "explanation": "Kết quả các ô theo đường đi: 38, 40, 45, 12, 55, 30, 65, 80, 66, 85, 53, 9, 66."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Vù vù! Ong Vàng bay thẳng về tổ, cậu thắng ván cờ!",
+          "Không ô nào bị lừa, Cáo Lém đành giơ cờ trắng.",
+          "Ong Vàng tặng cậu một giọt mật ngọt lịm."
+        ],
+        "wrong": [
+          "Ối, ô này nêu sai rồi, ong phải quay về ô xuất phát!",
+          "Cáo Lém lại nhắc lệch 10 đấy, tính lại hàng chục nhé.",
+          "Kiểm tra hàng đơn vị của ô vừa chọn xem."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "20-18-38",
+          "b2": "46-6-40",
+          "b3": "35-10-45",
+          "b4": "17-5-12",
+          "b5": "5-50-55",
+          "b6": "70-40-30",
+          "b7": "85-20-65",
+          "b8": "30-50-80",
+          "b9": "68-2-66",
+          "b10": "83-2-85",
+          "b11": "20-33-53",
+          "b12": "99-90-9",
+          "b13": "51-15-66"
+        }
+      }
+    },
+    {
+      "id": "huy-hieu-hoi-cho",
+      "title": "Huy hiệu hội chợ",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Vé hội chợ của {name} kín dấu đuôi cáo. Cáo Lém trao huy hiệu \"Khách quý của hội chợ số\" và thú thật: hội chợ năm sau tớ sẽ đố khó gấp đôi!"
+    },
+    {
+      "id": "luong-hoa-huong-duong",
+      "title": "Hoa hướng dương gọi",
+      "kind": "unlock",
+      "trigger": "auto",
+      "text": "Ong Vàng rủ {name} ra luống hoa hướng dương ở vườn trường: tổ mới cần đủ chục bông hoa mà ong đếm mãi vẫn bị lố!"
+    }
+  ],
+  "reward": {
+    "xp": 80,
+    "coin": 15,
+    "skillXp": {
+      "so-den-100": 2,
+      "phep-cong": 1,
+      "so-sanh-so": 1
+    }
+  }
+}

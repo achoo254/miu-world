@@ -5,7 +5,7 @@
   "title": "Bảng số bay trong gió",
   "status": "draft",
   "lesson": "toan2-t1-b01",
-  "summary": "Ngày khai trường, gió thổi bay bảng số của lớp; {name} cùng thầy Sư Tử Vàng đếm que tính, tìm cà rốt, xếp áo đội bóng để ghép lại các số đến 100.",
+  "summary": "Gió khai trường thổi bay bảng số của lớp, bờm thầy Sư Tử Vàng rối tung; {name} đếm que tính, tìm cà rốt cho thỏ, xếp áo đội bóng để ghép lại các số đến 100.",
   "review": "teacher-pending",
   "sevenQuestions": {
     "who": "Thầy hiệu trưởng Sư Tử Vàng, Gà Con Chíp, thầy thể dục Khỉ Lanh",
@@ -41,21 +41,25 @@
       "lines": [
         {
           "speaker": "Sư Tử Vàng",
-          "text": "Chào {name}! Sáng nay gió lớn quá, các con số trên bảng số của lớp bay lả tả khắp sân trường."
+          "text": "Grào… à không, chào {name}! Gió sáng nay to quá, thổi bay cả bảng số của lớp lẫn… cái bờm oai phong của thầy."
         },
         {
           "speaker": "Gà Con Chíp",
-          "text": "Cháu nhặt được mấy que tính với cà rốt ở gốc cột cờ, nhưng không biết xếp lại thế nào ạ."
+          "text": "Cháu nhặt được que tính với cà rốt ở gốc cột cờ ạ. Có một củ cà rốt hơi bị… khuyết, không phải cháu gặm đâu!"
         },
         {
           "speaker": "Sư Tử Vàng",
-          "text": "Hôm nay là ngày khai trường, bảng số phải đủ trước khi trống vào học. {name} giúp thầy nhé?"
+          "text": "Trống vào học mà bảng số còn trống trơn thì thầy hiệu trưởng ngượng lắm. {name} giúp thầy ghép lại nhé?"
         }
       ],
       "choices": [
         {
           "text": "Cháu giúp ngay ạ!",
-          "reply": "Tốt lắm! Mình bắt đầu từ những bó que tính nhé."
+          "reply": "Tuyệt! Thầy vuốt bờm cho gọn đã, rồi mình bắt đầu từ mấy bó que tính."
+        },
+        {
+          "text": "Thầy ơi, bờm thầy đang dựng đứng kìa!",
+          "reply": "Thầy Sư Tử đỏ mặt vuốt bờm: Kệ bờm thầy, cứu bảng số trước đã!"
         }
       ]
     },
@@ -260,14 +264,14 @@
       },
       "feedback": {
         "right": [
-          "Bảng que tính đã đầy đủ, thầy Sư Tử gật gù!",
-          "Chuẩn rồi, chục trước đơn vị sau!",
-          "{name} đếm bó que nhanh như chớp!"
+          "Bảng que tính đủ cả, thầy Sư Tử gầm lên một tiếng… vui!",
+          "Chục trước, đơn vị sau, chuẩn như đồng hồ báo thức!",
+          "{name} đếm bó que nhanh hơn cả gió thổi!"
         ],
         "wrong": [
-          "Đếm lại số bó que tính ở từng dòng nhé.",
-          "Số 5 ở hàng đơn vị đọc là \"lăm\" đấy.",
-          "Một ô đang lệch, xem lại dòng mẫu 34 nào."
+          "Ơ, có bó que tính nào trốn đi chơi rồi, đếm lại từng dòng nhé.",
+          "Số 5 đứng ở hàng đơn vị thì đọc là \"lăm\" đấy.",
+          "Một ô đang lệch, ngó lại dòng mẫu 34 nào."
         ]
       }
     },
@@ -336,12 +340,12 @@
       },
       "feedback": {
         "right": [
-          "Ba bạn thỏ đã ôm được cà rốt của mình!",
-          "Thỏ nào cũng đúng củ, giỏi quá!",
-          "Gà Con Chíp vỗ cánh: cà rốt về đủ rồi!"
+          "Ba bạn thỏ ôm cà rốt nhảy tưng tưng!",
+          "Thỏ nào cũng đúng củ, chẳng bạn nào phải khóc nhè.",
+          "Gà Con Chíp vỗ cánh: cà rốt về đủ, không ai bị gặm khuyết!"
         ],
         "wrong": [
-          "Có bạn thỏ đang cầm nhầm củ cà rốt.",
+          "Có bạn thỏ đang cầm nhầm củ, mặt ngơ ngác lắm kìa.",
           "Chữ số chục đứng bên trái nhé.",
           "Không chục là số 0 ở hàng đơn vị đó."
         ]
@@ -480,12 +484,12 @@
       },
       "feedback": {
         "right": [
-          "Đọc số chuẩn như cô giáo luôn!",
-          "Hàng chục, hàng đơn vị đều đúng chỗ.",
-          "Bảng thứ hai của thầy Sư Tử xong rồi!"
+          "Đọc số chuẩn y như cô giáo luôn!",
+          "Hàng chục, hàng đơn vị ngồi đúng ghế của mình.",
+          "Bảng thứ hai xong, thầy Sư Tử nhún nhảy mừng rỡ!"
         ],
         "wrong": [
-          "Nhớ: số 4 ở cuối đọc là \"tư\" nhé.",
+          "Nhớ nhé: số 4 ở cuối đọc là \"tư\".",
           "Số 1 ở cuối đọc là \"mốt\" đấy.",
           "Kiểm tra lại số chục của số 91 nào."
         ]
@@ -497,7 +501,7 @@
       "kind": "challenge",
       "mechanic": "classify",
       "target": "su-tu-vang",
-      "prompt": "Gió làm rơi bình hoa ở cửa lớp. a) Tìm những bông hoa ghi số lớn hơn 60. b) Tìm những bông hoa ghi số bé hơn 50. c) Tìm những bông hoa ghi số vừa lớn hơn 50 vừa bé hơn 60.",
+      "prompt": "Gió hắt xì một cái, bình hoa ở cửa lớp đổ nghiêng, hoa nằm lăn lóc. a) Tìm những bông hoa ghi số lớn hơn 60. b) Tìm những bông hoa ghi số bé hơn 50. c) Tìm những bông hoa ghi số vừa lớn hơn 50 vừa bé hơn 60.",
       "groups": [
         {
           "id": "lon-hon-60",
@@ -704,17 +708,21 @@
       "lines": [
         {
           "speaker": "Khỉ Lanh",
-          "text": "Đội bóng lớp Hai sắp chào cờ mà bốn bạn cứ đứng lộn xộn, áo số nào cũng chen lên trước!"
+          "text": "Píp píp! Đội bóng lớp Hai sắp chào cờ mà bốn bạn cứ chen nhau như đàn vịt giành bánh mì!"
         },
         {
           "speaker": "Khỉ Lanh",
-          "text": "{name} xếp giúp thầy hai lượt nhé: lượt đầu theo một chiều, lượt sau đổi chiều ngược lại."
+          "text": "Thầy thổi còi đến hụt hơi rồi. {name} xếp giúp thầy hai lượt nhé: lượt đầu một chiều, lượt sau quay ngược lại."
         }
       ],
       "choices": [
         {
           "text": "Để cháu xếp!",
-          "reply": "Nhìn kĩ số trên áo nhé."
+          "reply": "Khỉ Lanh treo ngược trên xà đơn hô: Nhìn kĩ số trên áo nhé, đừng nhìn mặt!"
+        },
+        {
+          "text": "Cháu thổi còi giúp thầy luôn ạ!",
+          "reply": "Hì, còi để thầy giữ, cháu lo xếp hàng là được rồi."
         }
       ]
     },
@@ -1087,7 +1095,7 @@
       "kind": "challenge",
       "mechanic": "fill-blank",
       "target": "su-tu-vang",
-      "prompt": "Trong góc sân có một hũ bi và một rổ cà chua của bếp trường.",
+      "prompt": "Bác Heo Ủn bếp trưởng để quên hũ bi và rổ cà chua ở góc sân, còn dặn: đếm hộ bác, đừng ăn vụng cà chua nhé!",
       "template": "Em ước lượng xem trong hình có khoảng mấy chục viên bi rồi đếm số viên bi trong hình đó (theo mẫu). a) Mẫu: – Em ước lượng: Khoảng 3 chục viên bi. – Em đếm được: 32 viên bi.\nb) – Em ước lượng: Khoảng {{bi1}} chục viên bi. – Em đếm được: {{bi2}} viên bi.\nEm ước lượng xem trong hình có khoảng mấy chục quả cà chua rồi đếm số cà chua trong hình đó.\n– Em ước lượng: Khoảng {{ca1}} chục quả cà chua. – Em đếm được: {{ca2}} quả cà chua.",
       "blanks": [
         {
@@ -1375,7 +1383,7 @@
       "kind": "challenge",
       "mechanic": "classify",
       "target": "su-tu-vang",
-      "prompt": "Bảng số của lớp vẫn còn bốn ô trống. a) Em lắp bốn miếng bìa A, B, C, D vào vị trí thích hợp trong bảng.",
+      "prompt": "Bảng số của lớp chỉ còn thủng bốn lỗ, nhìn như bị chuột gặm. a) Em lắp bốn miếng bìa A, B, C, D vào vị trí thích hợp trong bảng.",
       "groups": [
         {
           "id": "o-xanh",
@@ -1437,14 +1445,14 @@
       },
       "feedback": {
         "right": [
-          "Bảng số đã kín, không còn ô trống!",
-          "Bốn miếng bìa khớp như xếp hình.",
-          "Thầy Sư Tử treo bảng số lên rồi!"
+          "Bốn lỗ thủng đã được vá, bảng số lành lặn rồi!",
+          "Bốn miếng bìa khớp khít như xếp hình.",
+          "Thầy Sư Tử treo bảng số lên, gió có thổi cũng chịu!"
         ],
         "wrong": [
           "Nhìn hàng chục của số trên miếng bìa nhé.",
           "Ô vàng và ô đỏ cùng hàng, khác cột.",
-          "Một miếng bìa đang lạc hàng rồi."
+          "Một miếng bìa đang đi lạc sang hàng khác rồi."
         ]
       }
     },
@@ -1514,14 +1522,14 @@
       "title": "Huy hiệu bảng số",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Thầy Sư Tử Vàng cài lên áo {name} huy hiệu \"Người giữ bảng số\" đầu tiên của Trường học."
+      "text": "Thầy Sư Tử Vàng (bờm đã gọn gàng) cài lên áo {name} huy hiệu \"Người giữ bảng số\" đầu tiên của Trường học, rồi gầm một tiếng thật to làm cả sân vỗ tay."
     },
     {
       "id": "mo-tia-so",
       "title": "Vạch kẻ trên sân",
       "kind": "unlock",
       "trigger": "auto",
-      "text": "Gà Con Chíp gọi to từ sân nhảy lò cò: các vạch kẻ vừa hiện số, nhưng Chíp cứ nhảy nhầm ô!"
+      "text": "Từ sân nhảy lò cò vọng sang tiếng Gà Con Chíp: \"Ối, ối! Các vạch kẻ mất hết số rồi, tớ lại nhảy nhầm ô!\""
     }
   ],
   "reward": {

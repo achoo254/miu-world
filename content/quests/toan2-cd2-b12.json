@@ -1,0 +1,1185 @@
+{
+  "id": "toan2-cd2-b12",
+  "region": "truong-hoc",
+  "chapter": 2,
+  "title": "Gấu Trúc Tròn và những lóng tre",
+  "status": "draft",
+  "lesson": "toan2-t1-b12",
+  "summary": "Gấu Trúc Tròn ôm lóng tre khắc bảng trừ ngủ trưa, lăn một vòng là lóng tre lộn xộn hết; {name} giúp Gấu Trúc dựng lại bảng trừ (qua 10), soi đèn ông sao, gửi thư và chia bóng cùng Khỉ Lanh.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "Gấu Trúc Tròn, Khỉ Lanh",
+    "where": "Vườn trường: vườn tre, bãi cỏ cạnh vườn tre",
+    "goal": "Xếp lại bảng trừ (qua 10) khắc trên lóng tre cho đúng",
+    "play": "Tìm lóng tre, điền bảng trừ, tính nhẩm, chọn đèn ông sao, điền số trên phong bì, so sánh, giải bài toán chia bóng",
+    "learn": "Toán 2 Bài 12: bảng trừ (qua 10)",
+    "reward": "80 XP, 15 xu, Phép trừ +2, So sánh số +1",
+    "unlock": "Bài 13 \"Bài toán về nhiều hơn, ít hơn một số đơn vị\""
+  },
+  "phases": {
+    "hook": "gau-truc-lan-mot-vong",
+    "explore": "tim-long-tre",
+    "learn": "robot-va-gau-truc",
+    "challenge": "nham-long-tre",
+    "decision": "hoc-thuoc-hay-tach",
+    "finale": "chia-bong-tren-co",
+    "reward": "huy-hieu-long-tre",
+    "unlock": "luong-ca-rot"
+  },
+  "texts": {},
+  "places": {
+    "gau-truc-tron": "vườn tre",
+    "tim-long-tre": "vườn tre",
+    "khi-lanh": "bãi cỏ cạnh vườn tre"
+  },
+  "steps": [
+    {
+      "id": "gau-truc-lan-mot-vong",
+      "title": "Một giấc ngủ trưa tai hại",
+      "goTo": "Vào vườn tre, Gấu Trúc Tròn đang ngồi gãi đầu",
+      "kind": "dialogue",
+      "target": "gau-truc-tron",
+      "lines": [
+        {
+          "speaker": "Gấu Trúc Tròn",
+          "text": "Oáp… chào… {name}. Tớ khắc cả bảng trừ lên lóng tre, khắc mất… ba ngày liền đấy."
+        },
+        {
+          "speaker": "Gấu Trúc Tròn",
+          "text": "Trưa nay tớ ôm chúng ngủ cho ấm. Lăn một vòng thôi… rắc rắc… lóng tre văng tứ tung, thứ tự lộn tùng phèo."
+        },
+        {
+          "speaker": "Gấu Trúc Tròn",
+          "text": "Tớ chậm lắm, nhặt một mình chắc đến Tết. Cậu… từ… từ… giúp tớ nhé?"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ giúp, nhưng nhanh nhanh lên nha!",
+          "reply": "Gấu Trúc Tròn: Nhanh… là bao nhanh? À, nhanh hơn tớ là được."
+        },
+        {
+          "text": "Lần sau đừng ôm lóng tre ngủ nữa!",
+          "reply": "Gấu Trúc Tròn đỏ mặt: Tại lóng tre mát quá mà… thôi, nhặt đã."
+        }
+      ]
+    },
+    {
+      "id": "tim-long-tre",
+      "title": "Nhặt lóng tre văng xa",
+      "goTo": "Nhặt ba lóng tre văng khắp vườn tre",
+      "kind": "search",
+      "targets": [
+        "toan2-cd2-long-tre-xanh",
+        "toan2-cd2-long-tre-vang",
+        "toan2-cd2-long-tre-cut"
+      ]
+    },
+    {
+      "id": "robot-va-gau-truc",
+      "title": "Mấy lóng tre đầu tiên",
+      "target": "gau-truc-tron",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Trên lóng tre đầu tiên còn dòng chữ Gấu Trúc chép từ sách: Mình và Rô-bốt cùng hoàn thành các phép trừ sau nhé!",
+      "template": "11 – 4 = 7\n13 – 5 = {{b1}}\n12 – 3 = {{b2}}\n14 – 8 = {{b3}}",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o7",
+              "text": "7"
+            },
+            {
+              "id": "o8",
+              "text": "8"
+            },
+            {
+              "id": "o9",
+              "text": "9"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o9",
+              "text": "9"
+            },
+            {
+              "id": "o11",
+              "text": "11"
+            },
+            {
+              "id": "o19",
+              "text": "19"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o16",
+              "text": "16"
+            }
+          ]
+        }
+      ],
+      "skill": "phep-tru",
+      "curriculumRef": [
+        "toan2-t1-b12-kham-pha-1-a",
+        "toan2-t1-b12-kham-pha-1-b",
+        "toan2-t1-b12-kham-pha-1-c"
+      ],
+      "support": {
+        "guide": [
+          "Tách số bị trừ thành 10 và phần lẻ.",
+          "Lấy 10 trừ trước rồi thêm phần lẻ, giống mẫu 11 – 4 = 7."
+        ],
+        "hint": "14 – 8: 10 – 8 = 2, 2 + 4 = 6.",
+        "answer": {
+          "text": "11 – 4 = 7; 13 – 5 = 8; 12 – 3 = 9; 14 – 8 = 6",
+          "explanation": "13 – 5 = 8, 12 – 3 = 9, 14 – 8 = 6: đều là phép trừ qua 10."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ba lóng tre đầu tiên nằm ngay ngắn, Gấu Trúc chậm rãi vỗ tay… bộp… bộp.",
+          "Rô-bốt trong sách chắc cũng phải khen cậu đấy.",
+          "Tách 10 rồi trừ, cậu làm như máy luôn."
+        ],
+        "wrong": [
+          "Thử gạch bớt từng chấm tròn như trong sách xem.",
+          "Lấy 10 trừ trước, phần lẻ cộng vào sau nhé.",
+          "Kết quả phép trừ không thể lớn hơn số bị trừ đâu."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o8",
+          "b2": "o9",
+          "b3": "o6"
+        }
+      }
+    },
+    {
+      "id": "bang-tru-tren-tre",
+      "title": "Dựng lại bảng trừ",
+      "target": "gau-truc-tron",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Gấu Trúc dựng các lóng tre thành từng cột. À, đó là các phép trừ qua 10. Chúng ta hoàn thành luôn bảng trừ (qua 10) nào!",
+      "template": "11 – 2 = 9 | 11 – 3 = 8 | 11 – 4 = 7 | 11 – 5 = 6 | 11 – 6 = 5 | 11 – 7 = 4 | 11 – 8 = 3 | 11 – 9 = 2\n12 – 3 = 9 | 12 – 4 = 8 | 12 – 5 = {{b1}} | 12 – 6 = 6 | 12 – 7 = 5 | 12 – 8 = 4 | 12 – 9 = 3\n13 – 4 = 9 | 13 – 5 = 8 | 13 – 6 = 7 | 13 – 7 = 6 | 13 – 8 = 5 | 13 – 9 = 4\n14 – 5 = 9 | 14 – 6 = {{b2}} | 14 – 7 = 7 | 14 – 8 = 6 | 14 – 9 = 5\n15 – 6 = 9 | 15 – 7 = 8 | 15 – 8 = 7 | 15 – 9 = 6\n16 – 7 = 9 | 16 – 8 = {{b3}} | 16 – 9 = 7\n17 – 8 = 9 | 17 – 9 = 8\n18 – 9 = {{b4}}",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o7",
+              "text": "7"
+            },
+            {
+              "id": "o8",
+              "text": "8"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o8",
+              "text": "8"
+            },
+            {
+              "id": "o9",
+              "text": "9"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o8",
+              "text": "8"
+            },
+            {
+              "id": "o10",
+              "text": "10"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "o9",
+              "text": "9"
+            },
+            {
+              "id": "o11",
+              "text": "11"
+            },
+            {
+              "id": "o19",
+              "text": "19"
+            }
+          ]
+        }
+      ],
+      "skill": "phep-tru",
+      "curriculumRef": [
+        "toan2-t1-b12-kham-pha-2-a",
+        "toan2-t1-b12-kham-pha-2-b",
+        "toan2-t1-b12-kham-pha-2-c",
+        "toan2-t1-b12-kham-pha-2-d"
+      ],
+      "support": {
+        "guide": [
+          "Mỗi dòng có cùng số bị trừ, số trừ tăng dần.",
+          "Trong một dòng, số trừ tăng 1 thì hiệu giảm 1."
+        ],
+        "hint": "Dòng 12: 12 – 4 = 8 nên 12 – 5 = 7.",
+        "answer": {
+          "text": "11 – 2 = 9 | 11 – 3 = 8 | 11 – 4 = 7 | 11 – 5 = 6 | 11 – 6 = 5 | 11 – 7 = 4 | 11 – 8 = 3 | 11 – 9 = 2; 12 – 3 = 9 | 12 – 4 = 8 | 12 – 5 = 7 | 12 – 6 = 6 | 12 – 7 = 5 | 12 – 8 = 4 | 12 – 9 = 3; 13 – 4 = 9 | 13 – 5 = 8 | 13 – 6 = 7 | 13 – 7 = 6 | 13 – 8 = 5 | 13 – 9 = 4; 14 – 5 = 9 | 14 – 6 = 8 | 14 – 7 = 7 | 14 – 8 = 6 | 14 – 9 = 5; 15 – 6 = 9 | 15 – 7 = 8 | 15 – 8 = 7 | 15 – 9 = 6; 16 – 7 = 9 | 16 – 8 = 8 | 16 – 9 = 7; 17 – 8 = 9 | 17 – 9 = 8; 18 – 9 = 9",
+          "explanation": "Bốn ô còn thiếu: 12 – 5 = 7, 14 – 6 = 8, 16 – 8 = 8, 18 – 9 = 9."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bảng trừ dựng đứng như rặng tre, gió thổi cũng không đổ!",
+          "Gấu Trúc ôm cả bảng… à không, lần này chỉ ngắm thôi.",
+          "Bốn lóng tre cuối cùng về đúng chỗ của mình rồi."
+        ],
+        "wrong": [
+          "Nhìn ô bên cạnh trong cùng dòng, hiệu chỉ hơn kém 1.",
+          "Dòng 18 chỉ có một phép trừ thôi, tính kĩ nhé.",
+          "Một lóng tre đang khắc nhầm số, kiểm tra lại dòng đó."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o7",
+          "b2": "o8",
+          "b3": "o8",
+          "b4": "o9"
+        }
+      }
+    },
+    {
+      "id": "nham-long-tre",
+      "title": "Đọc to lóng tre",
+      "target": "gau-truc-tron",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Gấu Trúc rút lóng tre ngẫu nhiên, đố {name} đọc kết quả thật nhanh. Tính nhẩm.",
+      "template": "11 – 6 = {{b1}}\n13 – 8 = {{b2}}\n16 – 7 = {{b3}}\n14 – 7 = {{b4}}\n15 – 6 = {{b5}}\n17 – 9 = {{b6}}",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o3",
+              "text": "3"
+            },
+            {
+              "id": "o5",
+              "text": "5"
+            },
+            {
+              "id": "o7",
+              "text": "7"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o5",
+              "text": "5"
+            },
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o15",
+              "text": "15"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o8",
+              "text": "8"
+            },
+            {
+              "id": "o9",
+              "text": "9"
+            },
+            {
+              "id": "o19",
+              "text": "19"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o7",
+              "text": "7"
+            },
+            {
+              "id": "o9",
+              "text": "9"
+            }
+          ]
+        },
+        {
+          "id": "b5",
+          "options": [
+            {
+              "id": "o7",
+              "text": "7"
+            },
+            {
+              "id": "o9",
+              "text": "9"
+            },
+            {
+              "id": "o19",
+              "text": "19"
+            }
+          ]
+        },
+        {
+          "id": "b6",
+          "options": [
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o8",
+              "text": "8"
+            },
+            {
+              "id": "o9",
+              "text": "9"
+            }
+          ]
+        }
+      ],
+      "skill": "phep-tru",
+      "curriculumRef": [
+        "toan2-t1-b12-hoat-dong-1-a",
+        "toan2-t1-b12-hoat-dong-1-b",
+        "toan2-t1-b12-hoat-dong-1-c",
+        "toan2-t1-b12-hoat-dong-1-d",
+        "toan2-t1-b12-hoat-dong-1-e",
+        "toan2-t1-b12-hoat-dong-1-g"
+      ],
+      "support": {
+        "guide": [
+          "Nhớ lại bảng trừ vừa dựng.",
+          "Quên thì tách 10 ra trừ trước."
+        ],
+        "hint": "16 – 7 = 9 vì 10 – 7 = 3, 3 + 6 = 9.",
+        "answer": {
+          "text": "11 – 6 = 5; 13 – 8 = 5; 16 – 7 = 9; 14 – 7 = 7; 15 – 6 = 9; 17 – 9 = 8",
+          "explanation": "11 – 6 = 5, 13 – 8 = 5, 16 – 7 = 9, 14 – 7 = 7, 15 – 6 = 9, 17 – 9 = 8."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Gấu Trúc chưa kịp chớp mắt cậu đã đọc xong!",
+          "Sáu lóng tre, sáu kết quả, không sai một li.",
+          "Nhanh thế này thì Gấu Trúc phải gọi cậu là \"tia chớp tre\"."
+        ],
+        "wrong": [
+          "Từ từ thôi, Gấu Trúc còn chậm hơn cậu nhiều mà.",
+          "Nhìn lại bảng trừ vừa dựng, dòng đó có sẵn kết quả.",
+          "Một kết quả còn lệch, tách 10 ra tính lại nhé."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o5",
+          "b2": "o5",
+          "b3": "o9",
+          "b4": "o7",
+          "b5": "o9",
+          "b6": "o8"
+        }
+      }
+    },
+    {
+      "id": "den-ong-sao",
+      "title": "Đèn ông sao trong vườn tre",
+      "target": "gau-truc-tron",
+      "kind": "challenge",
+      "mechanic": "classify",
+      "prompt": "Gấu Trúc treo bốn chiếc đèn ông sao còn sót từ đêm Trung thu. Bạn nào cầm đèn ông sao ghi phép tính có kết quả bé nhất?",
+      "groups": [
+        {
+          "id": "nhom-ket-qua-be-nhat",
+          "label": "Kết quả bé nhất"
+        },
+        {
+          "id": "nhom-khong-phai-be-nhat",
+          "label": "Không phải bé nhất"
+        }
+      ],
+      "items": [
+        {
+          "id": "den-13-4",
+          "label": "13 – 4"
+        },
+        {
+          "id": "den-15-7",
+          "label": "15 – 7"
+        },
+        {
+          "id": "den-12-8",
+          "label": "12 – 8"
+        },
+        {
+          "id": "den-11-5",
+          "label": "11 – 5"
+        }
+      ],
+      "skill": "so-sanh-so",
+      "curriculumRef": [
+        "toan2-t1-b12-hoat-dong-2"
+      ],
+      "support": {
+        "guide": [
+          "Tính kết quả trên từng chiếc đèn.",
+          "Chỉ một chiếc đèn có kết quả bé nhất."
+        ],
+        "hint": "Các kết quả là 9, 8, 4, 6.",
+        "answer": {
+          "text": "Kết quả bé nhất: 12 – 8 (bằng 4)",
+          "explanation": "12 – 8 = 4 bé nhất; 13 – 4 = 9, 15 – 7 = 8, 11 – 5 = 6."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đèn 12 – 8 sáng lung linh, cậu tìm ra ngay!",
+          "Gấu Trúc hát nghêu ngao \"Tết Trung thu rước đèn đi chơi\"…",
+          "Bé nhất là 4, cậu so sánh chuẩn như thước kẻ."
+        ],
+        "wrong": [
+          "Tính hết bốn chiếc đèn rồi mới so nhé.",
+          "Kết quả 6 chưa phải bé nhất đâu.",
+          "Có chiếc đèn nào ra kết quả là 4 không nhỉ?"
+        ]
+      },
+      "answer": {
+        "assignment": {
+          "den-13-4": "nhom-khong-phai-be-nhat",
+          "den-15-7": "nhom-khong-phai-be-nhat",
+          "den-12-8": "nhom-ket-qua-be-nhat",
+          "den-11-5": "nhom-khong-phai-be-nhat"
+        }
+      }
+    },
+    {
+      "id": "phong-bi-hop-thu-7",
+      "title": "Thư gửi hộp thư số 7",
+      "target": "gau-truc-tron",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Bưu tá Gấu Trúc chỉ nhận thư có kết quả bằng 7, như phong bì mẫu 11 – 4. Số ?",
+      "template": "11 – 4 = 7\n12 – {{b1}} = 7\n16 – {{b2}} = 7\n13 – {{b3}} = 7\n15 – {{b4}} = 7\n14 – {{b5}} = 7",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o5",
+              "text": "5"
+            },
+            {
+              "id": "o7",
+              "text": "7"
+            },
+            {
+              "id": "o15",
+              "text": "15"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o8",
+              "text": "8"
+            },
+            {
+              "id": "o9",
+              "text": "9"
+            },
+            {
+              "id": "o10",
+              "text": "10"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o8",
+              "text": "8"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "o8",
+              "text": "8"
+            },
+            {
+              "id": "o10",
+              "text": "10"
+            },
+            {
+              "id": "o18",
+              "text": "18"
+            }
+          ]
+        },
+        {
+          "id": "b5",
+          "options": [
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o7",
+              "text": "7"
+            },
+            {
+              "id": "o17",
+              "text": "17"
+            }
+          ]
+        }
+      ],
+      "skill": "thanh-phan-phep-tinh",
+      "curriculumRef": [
+        "toan2-t1-b12-hoat-dong-3-a",
+        "toan2-t1-b12-hoat-dong-3-b",
+        "toan2-t1-b12-hoat-dong-3-c",
+        "toan2-t1-b12-hoat-dong-3-d",
+        "toan2-t1-b12-hoat-dong-3-e"
+      ],
+      "support": {
+        "guide": [
+          "Tìm số trừ sao cho hiệu bằng 7.",
+          "Số trừ = số bị trừ – 7."
+        ],
+        "hint": "12 – 5 = 7, vậy ô đầu là 5.",
+        "answer": {
+          "text": "11 – 4 = 7; 12 – 5 = 7; 16 – 9 = 7; 13 – 6 = 7; 15 – 8 = 7; 14 – 7 = 7",
+          "explanation": "12 – 5 = 7, 16 – 9 = 7, 13 – 6 = 7, 15 – 8 = 7, 14 – 7 = 7."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Năm phong bì rơi tọt vào hộp thư, kêu \"tách\" một tiếng!",
+          "Bưu tá Gấu Trúc dán tem cảm ơn lên tay cậu.",
+          "Số trừ nào cũng vừa khít để hiệu bằng 7."
+        ],
+        "wrong": [
+          "Thử lấy số bị trừ trừ đi 7 xem số trừ là mấy.",
+          "Kiểm tra lại: số bị trừ trừ số cậu chọn có ra 7 không?",
+          "Phong bì này chưa vào được hộp thư, sửa một ô nhé."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o5",
+          "b2": "o9",
+          "b3": "o6",
+          "b4": "o8",
+          "b5": "o7"
+        }
+      }
+    },
+    {
+      "id": "hoc-thuoc-hay-tach",
+      "title": "Học thuộc hay tách số?",
+      "kind": "dialogue",
+      "target": "gau-truc-tron",
+      "lines": [
+        {
+          "speaker": "Gấu Trúc Tròn",
+          "text": "Bảng trừ đẹp rồi. Nhưng tớ hay quên, mai lại phải… lăn ra ngủ để nhớ à?"
+        },
+        {
+          "speaker": "Gấu Trúc Tròn",
+          "text": "{name} chỉ tớ đi: nên học thuộc bảng trừ, hay quên thì tách 10 ra mà tính?"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Học thuộc bảng trừ cho nhanh",
+          "reply": "Gấu Trúc: Được, mỗi ngày tớ đọc một cột, vừa đọc vừa nhai tre."
+        },
+        {
+          "text": "Quên thì tách 10 ra mà tính",
+          "reply": "Gấu Trúc: Ừ nhỉ, tách số thì không sợ quên. Chậm mà chắc!"
+        }
+      ]
+    },
+    {
+      "id": "luyen-nham-chin-phep",
+      "title": "Chín phép trừ liền mạch",
+      "target": "gau-truc-tron",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Gấu Trúc thử trí nhớ của cả hai. Tính nhẩm.",
+      "template": "13 – 6 = {{b1}}\n11 – 2 = {{b2}}\n16 – 8 = {{b3}}\n15 – 7 = {{b4}}\n14 – 5 = {{b5}}\n18 – 9 = {{b6}}\n12 – 4 = {{b7}}\n17 – 8 = {{b8}}\n12 – 3 = {{b9}}\na) 14 – 4 – 3 = {{b10}}\na) 14 – 7 = {{b11}}\nb) 12 – 2 – 6 = {{b12}}\nb) 12 – 8 = {{b13}}\nc) 16 – 6 – 3 = {{b14}}\nc) 16 – 9 = {{b15}}",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o5",
+              "text": "5"
+            },
+            {
+              "id": "o7",
+              "text": "7"
+            },
+            {
+              "id": "o8",
+              "text": "8"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o9",
+              "text": "9"
+            },
+            {
+              "id": "o10",
+              "text": "10"
+            },
+            {
+              "id": "o19",
+              "text": "19"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o7",
+              "text": "7"
+            },
+            {
+              "id": "o8",
+              "text": "8"
+            },
+            {
+              "id": "o10",
+              "text": "10"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "o7",
+              "text": "7"
+            },
+            {
+              "id": "o8",
+              "text": "8"
+            },
+            {
+              "id": "o10",
+              "text": "10"
+            }
+          ]
+        },
+        {
+          "id": "b5",
+          "options": [
+            {
+              "id": "o7",
+              "text": "7"
+            },
+            {
+              "id": "o9",
+              "text": "9"
+            },
+            {
+              "id": "o19",
+              "text": "19"
+            }
+          ]
+        },
+        {
+          "id": "b6",
+          "options": [
+            {
+              "id": "o8",
+              "text": "8"
+            },
+            {
+              "id": "o9",
+              "text": "9"
+            },
+            {
+              "id": "o10",
+              "text": "10"
+            }
+          ]
+        },
+        {
+          "id": "b7",
+          "options": [
+            {
+              "id": "o7",
+              "text": "7"
+            },
+            {
+              "id": "o8",
+              "text": "8"
+            },
+            {
+              "id": "o18",
+              "text": "18"
+            }
+          ]
+        },
+        {
+          "id": "b8",
+          "options": [
+            {
+              "id": "o8",
+              "text": "8"
+            },
+            {
+              "id": "o9",
+              "text": "9"
+            },
+            {
+              "id": "o19",
+              "text": "19"
+            }
+          ]
+        },
+        {
+          "id": "b9",
+          "options": [
+            {
+              "id": "o9",
+              "text": "9"
+            },
+            {
+              "id": "o11",
+              "text": "11"
+            },
+            {
+              "id": "o19",
+              "text": "19"
+            }
+          ]
+        },
+        {
+          "id": "b10",
+          "options": [
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o7",
+              "text": "7"
+            },
+            {
+              "id": "o9",
+              "text": "9"
+            }
+          ]
+        },
+        {
+          "id": "b11",
+          "options": [
+            {
+              "id": "o7",
+              "text": "7"
+            },
+            {
+              "id": "o8",
+              "text": "8"
+            },
+            {
+              "id": "o17",
+              "text": "17"
+            }
+          ]
+        },
+        {
+          "id": "b12",
+          "options": [
+            {
+              "id": "o2",
+              "text": "2"
+            },
+            {
+              "id": "o3",
+              "text": "3"
+            },
+            {
+              "id": "o4",
+              "text": "4"
+            }
+          ]
+        },
+        {
+          "id": "b13",
+          "options": [
+            {
+              "id": "o2",
+              "text": "2"
+            },
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o5",
+              "text": "5"
+            }
+          ]
+        },
+        {
+          "id": "b14",
+          "options": [
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o7",
+              "text": "7"
+            },
+            {
+              "id": "o17",
+              "text": "17"
+            }
+          ]
+        },
+        {
+          "id": "b15",
+          "options": [
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o7",
+              "text": "7"
+            },
+            {
+              "id": "o8",
+              "text": "8"
+            }
+          ]
+        }
+      ],
+      "skill": "phep-tru",
+      "curriculumRef": [
+        "toan2-t1-b12-luyen-tap-1-a",
+        "toan2-t1-b12-luyen-tap-1-b",
+        "toan2-t1-b12-luyen-tap-1-c",
+        "toan2-t1-b12-luyen-tap-1-d",
+        "toan2-t1-b12-luyen-tap-1-e",
+        "toan2-t1-b12-luyen-tap-1-g",
+        "toan2-t1-b12-luyen-tap-1-h",
+        "toan2-t1-b12-luyen-tap-1-i",
+        "toan2-t1-b12-luyen-tap-1-k",
+        "toan2-t1-b12-luyen-tap-2-a1",
+        "toan2-t1-b12-luyen-tap-2-a2",
+        "toan2-t1-b12-luyen-tap-2-b1",
+        "toan2-t1-b12-luyen-tap-2-b2",
+        "toan2-t1-b12-luyen-tap-2-c1",
+        "toan2-t1-b12-luyen-tap-2-c2"
+      ],
+      "support": {
+        "guide": [
+          "Dùng bảng trừ đã thuộc.",
+          "Trừ liên tiếp: tính từ trái sang phải, trừ cho tròn 10 trước."
+        ],
+        "hint": "14 – 4 – 3: 14 – 4 = 10, 10 – 3 = 7.",
+        "answer": {
+          "text": "13 – 6 = 7; 11 – 2 = 9; 16 – 8 = 8; 15 – 7 = 8; 14 – 5 = 9; 18 – 9 = 9; 12 – 4 = 8; 17 – 8 = 9; 12 – 3 = 9; a) 14 – 4 – 3 = 7; a) 14 – 7 = 7; b) 12 – 2 – 6 = 4; b) 12 – 8 = 4; c) 16 – 6 – 3 = 7; c) 16 – 9 = 7",
+          "explanation": "Chín phép đầu: 7, 9, 8, 8, 9, 9, 8, 9, 9. Trừ liên tiếp: 7 và 7, 4 và 4, 7 và 7 — trừ hai lần bằng trừ một lần tổng của hai số."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Mười lăm phép trừ mà không vấp cái nào, Gấu Trúc há hốc mồm!",
+          "Cậu còn nhớ bảng trừ giỏi hơn cả người khắc ra nó.",
+          "Trừ cho tròn 10 trước, mẹo hay quá trời."
+        ],
+        "wrong": [
+          "Ở dòng trừ hai lần, trừ cho tròn 10 trước đã.",
+          "Một kết quả lệch rồi, mở bảng trừ ra dò lại nhé.",
+          "Nhìn kĩ dấu trừ, đừng lỡ tay cộng vào."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o7",
+          "b2": "o9",
+          "b3": "o8",
+          "b4": "o8",
+          "b5": "o9",
+          "b6": "o9",
+          "b7": "o8",
+          "b8": "o9",
+          "b9": "o9",
+          "b10": "o7",
+          "b11": "o7",
+          "b12": "o4",
+          "b13": "o4",
+          "b14": "o7",
+          "b15": "o7"
+        }
+      }
+    },
+    {
+      "id": "dau-so-sanh-tre",
+      "title": "Dấu nào cho lóng tre?",
+      "target": "gau-truc-tron",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Giữa hai lóng tre có một khe nhỏ, Gấu Trúc muốn gắn dấu vào. >; <; = ?",
+      "template": "a) 14 – 6 {{b1}} 7\na) 17 – 9 {{b2}} 8\nb) 15 – 8 {{b3}} 11 – 2\nb) 16 – 7 {{b4}} 13 – 4",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "lon-hon",
+              "text": ">"
+            },
+            {
+              "id": "be-hon",
+              "text": "<"
+            },
+            {
+              "id": "bang",
+              "text": "="
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "lon-hon",
+              "text": ">"
+            },
+            {
+              "id": "be-hon",
+              "text": "<"
+            },
+            {
+              "id": "bang",
+              "text": "="
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "lon-hon",
+              "text": ">"
+            },
+            {
+              "id": "be-hon",
+              "text": "<"
+            },
+            {
+              "id": "bang",
+              "text": "="
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "lon-hon",
+              "text": ">"
+            },
+            {
+              "id": "be-hon",
+              "text": "<"
+            },
+            {
+              "id": "bang",
+              "text": "="
+            }
+          ]
+        }
+      ],
+      "skill": "so-sanh-so",
+      "curriculumRef": [
+        "toan2-t1-b12-luyen-tap-4-a1",
+        "toan2-t1-b12-luyen-tap-4-a2",
+        "toan2-t1-b12-luyen-tap-4-b1",
+        "toan2-t1-b12-luyen-tap-4-b2"
+      ],
+      "support": {
+        "guide": [
+          "Tính kết quả từng vế.",
+          "Vế nào lớn hơn thì miệng dấu mở về phía đó."
+        ],
+        "hint": "15 – 8 = 7 còn 11 – 2 = 9.",
+        "answer": {
+          "text": "a) 14 – 6 > 7; a) 17 – 9 = 8; b) 15 – 8 < 11 – 2; b) 16 – 7 = 13 – 4",
+          "explanation": "14 – 6 = 8 > 7; 17 – 9 = 8 = 8; 7 < 9; 16 – 7 = 9 = 13 – 4."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bốn dấu gắn khít vào khe tre, đẹp như đồ thủ công!",
+          "Dấu bằng nào cũng đặt đúng chỗ, tinh mắt ghê.",
+          "Gấu Trúc gõ thử lóng tre: cốc cốc, chắc nịch!"
+        ],
+        "wrong": [
+          "Hai vế bằng nhau thì dùng dấu bằng nhé.",
+          "Miệng dấu luôn mở về phía số lớn hơn.",
+          "Tính từng vế ra số rồi hẵng chọn dấu."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "lon-hon",
+          "b2": "bang",
+          "b3": "be-hon",
+          "b4": "bang"
+        }
+      }
+    },
+    {
+      "id": "chia-bong-tren-co",
+      "title": "Ai không có bóng?",
+      "goTo": "Ra bãi cỏ cạnh vườn tre, Khỉ Lanh đang ôm rổ bóng",
+      "target": "khi-lanh",
+      "kind": "riddle",
+      "question": "Khỉ Lanh thổi còi: \"Ai nhanh tay thì có bóng!\" Có 12 bạn và 9 quả bóng, mỗi bạn lấy một quả. Hỏi có bao nhiêu bạn không lấy được bóng?",
+      "skill": "bai-toan-loi-van",
+      "curriculumRef": [
+        "toan2-t1-b12-luyen-tap-3"
+      ],
+      "support": {
+        "guide": [
+          "Mỗi quả bóng thuộc về một bạn.",
+          "Số bạn không có bóng = số bạn – số bóng."
+        ],
+        "hint": "Phép tính là 12 – 9.",
+        "answer": {
+          "text": "12 – 9 = 3. Đáp số: 3 bạn",
+          "explanation": "Có 12 – 9 = 3 (bạn) không lấy được bóng."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ba bạn chưa có bóng, Khỉ Lanh liền lấy thêm ba quả nữa. Ai cũng được chơi!",
+          "Gấu Trúc là một trong ba bạn chậm chân, may mà cậu tính giúp.",
+          "Tuýt tuýt! Trọng tài khen cậu tính nhanh hơn cả chạy."
+        ],
+        "wrong": [
+          "Bóng ít hơn người, vậy dư ra mấy bạn?",
+          "Lấy số bạn trừ đi số bóng nhé.",
+          "Thử tách 12 thành 10 và 2 rồi trừ 9."
+        ]
+      },
+      "answer": {
+        "value": 3
+      }
+    },
+    {
+      "id": "huy-hieu-long-tre",
+      "title": "Huy hiệu lóng tre",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Gấu Trúc Tròn khắc tên {name} lên lóng tre đẹp nhất và tặng huy hiệu \"Thuộc bảng trừ\". Rồi Gấu Trúc… ôm bảng trừ ngủ tiếp, nhưng lần này nằm im không lăn."
+    },
+    {
+      "id": "luong-ca-rot",
+      "title": "Cuộc thi ở luống cà rốt",
+      "kind": "unlock",
+      "trigger": "auto",
+      "text": "Phía luống cà rốt vang lên tiếng gầm \"Gừ… ừ\" rồi tiếng cười khúc khích: Hổ Vằn và Thỏ đang cãi nhau xem ai trồng được nhiều cà rốt hơn."
+    }
+  ],
+  "reward": {
+    "xp": 80,
+    "coin": 15,
+    "skillXp": {
+      "phep-tru": 2,
+      "so-sanh-so": 1
+    }
+  }
+}

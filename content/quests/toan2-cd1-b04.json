@@ -1,0 +1,883 @@
+{
+  "id": "toan2-cd1-b04",
+  "region": "truong-hoc",
+  "chapter": 1,
+  "title": "Hơn kém trên đường chạy",
+  "status": "draft",
+  "lesson": "toan2-t1-b04",
+  "summary": "Hai đội nhặt bóng thi xong mà chẳng ai biết đội nào hơn bao nhiêu quả; {name} cùng thầy Khỉ Lanh và đội trưởng Hổ Vằn so chim trên cành, băng giấy, bút, rô-bốt và đua thuyền giấy để học cách tìm hơn, kém nhau bao nhiêu.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "Thầy thể dục Khỉ Lanh, Hổ Vằn",
+    "where": "Sân trường: đường chạy, vạch đích, rãnh nước cuối sân",
+    "goal": "Tìm ra mỗi bên hơn, kém nhau bao nhiêu để thầy Khỉ Lanh công bố kết quả",
+    "play": "Tìm bóng lăn, điền bài giải, đố tuổi, chọn bút ngắn nhất, điền số đo, đua thuyền giấy",
+    "learn": "Toán 2 Bài 4: hơn, kém nhau bao nhiêu (lấy số lớn trừ số bé)",
+    "reward": "70 XP, 12 xu, Hơn kém +2, Bài toán có lời văn +1",
+    "unlock": "Bài 5 \"Ôn tập phép cộng, phép trừ (không nhớ) trong phạm vi 100\""
+  },
+  "phases": {
+    "hook": "ket-qua-chua-ro",
+    "explore": "tim-bong-lan",
+    "learn": "hon-bao-nhieu-qua",
+    "challenge": "chim-tren-canh",
+    "decision": "bang-giay-vach-dich",
+    "finale": "dua-thuyen-giay",
+    "reward": "huy-chuong-hon-kem",
+    "unlock": "tui-thu-nham-lop"
+  },
+  "texts": {},
+  "places": {
+    "khi-lanh": "đường chạy",
+    "tim-bong-lan": "đường chạy",
+    "ho-van": "vạch đích",
+    "dua-thuyen": "rãnh nước cuối sân"
+  },
+  "steps": [
+    {
+      "id": "ket-qua-chua-ro",
+      "title": "Kết quả chưa rõ",
+      "goTo": "Ra đường chạy, thầy Khỉ Lanh đang thổi còi toe toe",
+      "kind": "dialogue",
+      "target": "khi-lanh",
+      "lines": [
+        {
+          "speaker": "Khỉ Lanh",
+          "text": "Toe toe! Đội Vằn nhặt được 6 quả bóng, đội Khỉ nhặt được 4 quả. Nhưng ai hơn ai bao nhiêu quả thì… thầy quên học bài này mất rồi!"
+        },
+        {
+          "speaker": "Hổ Vằn",
+          "text": "GỪỪ! Đội tớ thắng chắc rồi! Mà… ba quả bóng lăn vào bụi rậm kìa, tớ hơi ngại vào đó lấy."
+        },
+        {
+          "speaker": "Khỉ Lanh",
+          "text": "Hổ mà sợ bụi rậm à? Thôi, {name} đi tìm bóng giúp hai thầy trò nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ đi nhặt bóng ngay!",
+          "reply": "Hổ Vằn thở phào: Phù, cảm ơn cậu, tớ canh vạch đích cho."
+        },
+        {
+          "text": "Hổ Vằn sợ bụi rậm thật à?",
+          "reply": "Hổ Vằn đỏ mặt: Đâu có! Tớ chỉ… sợ làm bẩn bộ lông vằn thôi."
+        }
+      ]
+    },
+    {
+      "id": "tim-bong-lan",
+      "title": "Ba quả bóng lăn mất",
+      "goTo": "Tìm ba quả bóng lăn ra khỏi đường chạy",
+      "kind": "search",
+      "targets": [
+        "toan2-cd1-bong-do",
+        "toan2-cd1-bong-xanh",
+        "toan2-cd1-bong-vang"
+      ]
+    },
+    {
+      "id": "hon-bao-nhieu-qua",
+      "title": "Hơn bao nhiêu quả?",
+      "kind": "dialogue",
+      "target": "khi-lanh",
+      "lines": [
+        {
+          "speaker": "Khỉ Lanh",
+          "text": "Đủ bóng rồi! Xếp 6 quả của đội Vằn thành một hàng, 4 quả của đội Khỉ thành hàng dưới, mỗi quả một cặp."
+        },
+        {
+          "speaker": "Khỉ Lanh",
+          "text": "Hàng trên thừa ra 2 quả không có cặp. Vậy 6 – 4 = 2: đội Vằn hơn đội Khỉ 2 quả, đội Khỉ kém đội Vằn 2 quả."
+        },
+        {
+          "speaker": "Hổ Vằn",
+          "text": "Hơn 2 quả! GỪ… à không, yeah! Muốn biết hơn bao nhiêu thì lấy số lớn trừ số bé, tớ nhớ rồi."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Lấy số lớn trừ số bé!",
+          "reply": "Khỉ Lanh nhảy tót lên cây: Chuẩn! Giờ ta thử với bầy chim nào."
+        }
+      ]
+    },
+    {
+      "id": "chim-tren-canh",
+      "title": "Chim trên hai cành",
+      "target": "khi-lanh",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Thầy Khỉ Lanh vừa đu lên cây, chim hai cành nhao nhao: cành trên có 6 con, cành dưới có 4 con.",
+      "template": "Số chim cành trên hơn số chim cành dưới mấy con?\nBài giải\nSố chim cành trên hơn số chim cành dưới là:\n{{b1}} – {{b2}} = {{b3}} (con)\nĐáp số: {{b4}} con chim.",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o8",
+              "text": "8"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o14",
+              "text": "14"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o1",
+              "text": "1"
+            },
+            {
+              "id": "o2",
+              "text": "2"
+            },
+            {
+              "id": "o12",
+              "text": "12"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "o2",
+              "text": "2"
+            },
+            {
+              "id": "o3",
+              "text": "3"
+            },
+            {
+              "id": "o12",
+              "text": "12"
+            }
+          ]
+        }
+      ],
+      "skill": "hon-kem",
+      "curriculumRef": [
+        "toan2-t1-b04-hoat-dong-1"
+      ],
+      "support": {
+        "guide": [
+          "Số chim nhiều hơn viết trước dấu trừ.",
+          "Đáp số chính là kết quả của phép trừ."
+        ],
+        "hint": "Cành trên 6 con, cành dưới 4 con: 6 – 4.",
+        "answer": {
+          "text": "Số chim cành trên hơn số chim cành dưới mấy con?; Bài giải; Số chim cành trên hơn số chim cành dưới là:; 6 – 4 = 2 (con); Đáp số: 2 con chim.",
+          "explanation": "Muốn biết hơn bao nhiêu thì lấy số lớn trừ số bé: 6 – 4 = 2, cành trên hơn 2 con chim."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bài giải đẹp như vở mẫu, bầy chim hót líu lo khen cậu!",
+          "Đúng 2 con, thầy Khỉ treo ngược cành vỗ tay.",
+          "Phép tính, đơn vị, đáp số đủ cả, không chê vào đâu được."
+        ],
+        "wrong": [
+          "Số chim cành trên nhiều hơn, viết nó trước dấu trừ nhé.",
+          "Đáp số phải bằng kết quả phép trừ ở trên.",
+          "Đếm lại: cành trên mấy con, cành dưới mấy con?"
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o6",
+          "b2": "o4",
+          "b3": "o2",
+          "b4": "o2"
+        }
+      }
+    },
+    {
+      "id": "hoa-chua-to-mau",
+      "title": "Bông hoa chưa tô màu",
+      "target": "khi-lanh",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Hổ Vằn mượn hộp màu vẽ hoa lên vạch xuất phát, rồi kể cho cả lớp nghe chuyện của bạn Việt.",
+      "template": "Việt đã tô màu 6 bông hoa, còn 4 bông hoa chưa tô màu. Hỏi số bông hoa chưa tô màu kém số bông hoa đã tô màu mấy bông?\nBài giải\nSố bông hoa chưa tô màu kém số bông hoa đã tô màu là:\n{{b1}} – {{b2}} = {{b3}} (bông)\nĐáp số: {{b4}} bông hoa.",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o5",
+              "text": "5"
+            },
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o7",
+              "text": "7"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o2",
+              "text": "2"
+            },
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o6",
+              "text": "6"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o2",
+              "text": "2"
+            },
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o12",
+              "text": "12"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "o1",
+              "text": "1"
+            },
+            {
+              "id": "o2",
+              "text": "2"
+            },
+            {
+              "id": "o12",
+              "text": "12"
+            }
+          ]
+        }
+      ],
+      "skill": "hon-kem",
+      "curriculumRef": [
+        "toan2-t1-b04-hoat-dong-2"
+      ],
+      "support": {
+        "guide": [
+          "\"Kém mấy bông\" cũng lấy số lớn trừ số bé.",
+          "Bông đã tô nhiều hơn bông chưa tô."
+        ],
+        "hint": "Đã tô 6 bông, chưa tô 4 bông.",
+        "answer": {
+          "text": "Việt đã tô màu 6 bông hoa, còn 4 bông hoa chưa tô màu. Hỏi số bông hoa chưa tô màu kém số bông hoa đã tô màu mấy bông?; Bài giải; Số bông hoa chưa tô màu kém số bông hoa đã tô màu là:; 6 – 4 = 2 (bông); Đáp số: 2 bông hoa.",
+          "explanation": "Số hoa chưa tô kém số hoa đã tô: 6 – 4 = 2 bông."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Kém 2 bông, cậu không bị chữ \"kém\" đánh lừa!",
+          "Hổ Vằn tô nốt hai bông cuối cho vườn hoa thêm rực.",
+          "Lời giải gọn gàng, đáp số rõ ràng, tuyệt vời."
+        ],
+        "wrong": [
+          "Hỏi \"kém\" thì vẫn lấy số lớn trừ số bé đấy.",
+          "Số bông đã tô màu là số lớn hơn, viết trước nhé.",
+          "Đáp số ghi bằng kết quả phép trừ, xem lại dòng cuối."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o6",
+          "b2": "o4",
+          "b3": "o2",
+          "b4": "o2"
+        }
+      }
+    },
+    {
+      "id": "tuoi-bo-cua-mai",
+      "title": "Bố hơn Mai mấy tuổi?",
+      "target": "khi-lanh",
+      "kind": "riddle",
+      "question": "Thầy Khỉ Lanh nháy mắt: thầy không khai tuổi đâu, nhưng nhà bạn Mai thì có. Mai 7 tuổi, bố 38 tuổi. Hỏi bố hơn Mai bao nhiêu tuổi?",
+      "skill": "hon-kem",
+      "curriculumRef": [
+        "toan2-t1-b04-hoat-dong-3"
+      ],
+      "support": {
+        "guide": [
+          "Tuổi bố lớn hơn tuổi Mai.",
+          "Lấy tuổi bố trừ tuổi Mai."
+        ],
+        "hint": "Tính 38 – 7.",
+        "answer": {
+          "text": "31 tuổi",
+          "explanation": "38 – 7 = 31, bố hơn Mai 31 tuổi."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bố hơn Mai 31 tuổi, chính xác tới từng năm!",
+          "Thầy Khỉ gãi đầu: thầy còn trẻ hơn bố bạn Mai đấy nhé.",
+          "Trừ số có hai chữ số cho số một chữ số ngon ơ."
+        ],
+        "wrong": [
+          "Lấy tuổi bố trừ đi tuổi của Mai nhé.",
+          "Hàng đơn vị: 8 bớt 7 còn mấy?",
+          "Hàng chục của 38 vẫn giữ nguyên là 3 đấy."
+        ]
+      },
+      "answer": {
+        "value": 31
+      }
+    },
+    {
+      "id": "thung-rac-hai-mau",
+      "title": "Hai loại thùng rác",
+      "target": "khi-lanh",
+      "kind": "riddle",
+      "question": "Cạnh đường chạy có thùng rác tái chế màu xanh lá và thùng rác khác màu xanh dương. Một trường học có 5 thùng đựng rác tái chế và 10 thùng đựng rác khác. Hỏi số thùng đựng rác khác hơn số thùng đựng rác tái chế mấy thùng?",
+      "skill": "bai-toan-loi-van",
+      "curriculumRef": [
+        "toan2-t1-b04-hoat-dong-4"
+      ],
+      "support": {
+        "guide": [
+          "Thùng rác khác nhiều hơn thùng tái chế.",
+          "Lấy 10 trừ 5."
+        ],
+        "hint": "10 thùng so với 5 thùng.",
+        "answer": {
+          "text": "5 thùng",
+          "explanation": "10 – 5 = 5, số thùng rác khác hơn số thùng rác tái chế 5 thùng."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Hơn 5 thùng, cậu tính nhanh hơn cả xe rác chạy!",
+          "Phân loại rác giỏi, tính hơn kém càng giỏi.",
+          "Hổ Vằn nhặt vỏ chai bỏ đúng thùng xanh lá để mừng cậu."
+        ],
+        "wrong": [
+          "Số thùng rác khác là 10, số thùng tái chế là 5.",
+          "Lấy số lớn trừ số bé nhé.",
+          "Mười bớt năm còn mấy? Đếm ngón tay thử xem."
+        ]
+      },
+      "answer": {
+        "value": 5
+      }
+    },
+    {
+      "id": "bang-giay-vach-dich",
+      "title": "Băng giấy ở vạch đích",
+      "goTo": "Chạy tới vạch đích, Hổ Vằn đang cầm ba băng giấy",
+      "kind": "dialogue",
+      "target": "ho-van",
+      "lines": [
+        {
+          "speaker": "Hổ Vằn",
+          "text": "Thầy Khỉ bảo tớ dán băng giấy làm vạch đích. Băng đỏ dài 7 cm, băng vàng 4 cm, băng xanh 6 cm. Băng nào dài hơn băng nào bao nhiêu nhỉ?"
+        },
+        {
+          "speaker": "Khỉ Lanh",
+          "text": "Hổ Vằn mà cũng biết hỏi kìa! {name} chọn cách so đi."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Đặt các băng giấy sát nhau rồi so",
+          "reply": "Hổ Vằn: Phần thò ra chính là phần dài hơn, hay quá!"
+        },
+        {
+          "text": "Đọc số xăng-ti-mét rồi trừ",
+          "reply": "Hổ Vằn: Nhanh gọn, tớ thích kiểu này!"
+        }
+      ]
+    },
+    {
+      "id": "bang-giay-ba-mau",
+      "title": "So ba băng giấy",
+      "target": "ho-van",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Băng đỏ dài 7 cm, băng vàng dài 4 cm, băng xanh dài 6 cm. Số ?",
+      "template": "Mẫu: Băng giấy màu vàng ngắn hơn băng giấy màu xanh mấy xăng-ti-mét? 6 cm – 4 cm = 2 cm\na) Băng giấy màu đỏ dài hơn băng giấy màu vàng mấy xăng-ti-mét? 7 cm – 4 cm = {{b1}} cm\nb) Băng giấy màu xanh ngắn hơn băng giấy màu đỏ mấy xăng-ti-mét? {{b2}} cm – {{b3}} cm = {{b4}} cm",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o1",
+              "text": "1"
+            },
+            {
+              "id": "o3",
+              "text": "3"
+            },
+            {
+              "id": "o13",
+              "text": "13"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o5",
+              "text": "5"
+            },
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o7",
+              "text": "7"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o7",
+              "text": "7"
+            },
+            {
+              "id": "o16",
+              "text": "16"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "o0",
+              "text": "0"
+            },
+            {
+              "id": "o1",
+              "text": "1"
+            },
+            {
+              "id": "o3",
+              "text": "3"
+            }
+          ]
+        }
+      ],
+      "skill": "hon-kem",
+      "curriculumRef": [
+        "toan2-t1-b04-luyen-tap-1-a",
+        "toan2-t1-b04-luyen-tap-1-b"
+      ],
+      "support": {
+        "guide": [
+          "Băng dài hơn viết trước dấu trừ.",
+          "Nhớ ghi đơn vị xăng-ti-mét sau mỗi số."
+        ],
+        "hint": "Câu b: băng đỏ 7 cm dài hơn băng xanh 6 cm.",
+        "answer": {
+          "text": "Mẫu: Băng giấy màu vàng ngắn hơn băng giấy màu xanh mấy xăng-ti-mét? 6 cm – 4 cm = 2 cm; a) Băng giấy màu đỏ dài hơn băng giấy màu vàng mấy xăng-ti-mét? 7 cm – 4 cm = 3 cm; b) Băng giấy màu xanh ngắn hơn băng giấy màu đỏ mấy xăng-ti-mét? 7 cm – 6 cm = 1 cm",
+          "explanation": "Băng đỏ dài hơn băng vàng 7 – 4 = 3 cm; băng xanh ngắn hơn băng đỏ 7 – 6 = 1 cm."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Vạch đích dán xong, ba băng giấy so đâu ra đấy!",
+          "Hổ Vằn gầm khẽ: gừ… đúng quá đi mất!",
+          "Ngắn hơn hay dài hơn, cậu đều trừ đúng chiều."
+        ],
+        "wrong": [
+          "Băng đỏ là băng dài nhất, viết nó trước dấu trừ nhé.",
+          "Hỏi \"ngắn hơn\" vẫn lấy số lớn trừ số bé đấy.",
+          "Băng xanh dài 6 cm, xem lại câu b nào."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o3",
+          "b2": "o7",
+          "b3": "o6",
+          "b4": "o1"
+        }
+      }
+    },
+    {
+      "id": "but-ngan-nhat",
+      "title": "Cây bút ngắn nhất",
+      "target": "ho-van",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "prompt": "Hổ Vằn đánh rơi ba cây bút ở vạch đích: bút chì dài 25 cm, bút mực dài 20 cm, bút sáp dài 10 cm. a) Bút nào ngắn nhất?",
+      "choices": [
+        {
+          "id": "but-chi",
+          "text": "Bút chì"
+        },
+        {
+          "id": "but-muc",
+          "text": "Bút mực"
+        },
+        {
+          "id": "but-sap",
+          "text": "Bút sáp"
+        }
+      ],
+      "skill": "so-sanh-so",
+      "curriculumRef": [
+        "toan2-t1-b04-luyen-tap-2-a"
+      ],
+      "support": {
+        "guide": [
+          "So ba số đo 25 cm, 20 cm, 10 cm.",
+          "Số đo bé nhất là bút ngắn nhất."
+        ],
+        "hint": "10 cm là số đo bé nhất.",
+        "answer": {
+          "text": "Bút sáp",
+          "explanation": "Bút sáp dài 10 cm, ngắn hơn bút mực 20 cm và bút chì 25 cm."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bút sáp bé tí mà được cậu tìm ra ngay!",
+          "Ngắn nhất là bút sáp, Hổ Vằn cất vào túi áo.",
+          "So số đo nhanh thoăn thoắt, giỏi lắm."
+        ],
+        "wrong": [
+          "Bút ngắn nhất có số xăng-ti-mét bé nhất.",
+          "Bút chì dài 25 cm, đó là cây dài nhất đấy.",
+          "Chỉ chọn một cây bút ngắn nhất thôi nhé."
+        ]
+      },
+      "answer": {
+        "choices": [
+          "but-sap"
+        ]
+      }
+    },
+    {
+      "id": "but-hon-kem-cm",
+      "title": "Bút dài hơn bao nhiêu?",
+      "target": "ho-van",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Bút chì 25 cm, bút mực 20 cm, bút sáp 10 cm.",
+      "template": "b) Số ?\n– Bút chì dài hơn bút mực {{b1}} cm.\n– Bút sáp ngắn hơn bút chì {{b2}} cm.",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o5",
+              "text": "5"
+            },
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o7",
+              "text": "7"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o15",
+              "text": "15"
+            },
+            {
+              "id": "o16",
+              "text": "16"
+            },
+            {
+              "id": "o17",
+              "text": "17"
+            }
+          ]
+        }
+      ],
+      "skill": "hon-kem",
+      "curriculumRef": [
+        "toan2-t1-b04-luyen-tap-2-b1",
+        "toan2-t1-b04-luyen-tap-2-b2"
+      ],
+      "support": {
+        "guide": [
+          "Dài hơn bao nhiêu: lấy số đo lớn trừ số đo bé.",
+          "Ngắn hơn bao nhiêu cũng làm như vậy."
+        ],
+        "hint": "Bút sáp và bút chì: 25 – 10.",
+        "answer": {
+          "text": "b) Số ?; – Bút chì dài hơn bút mực 5 cm.; – Bút sáp ngắn hơn bút chì 15 cm.",
+          "explanation": "Bút chì dài hơn bút mực 25 – 20 = 5 cm; bút sáp ngắn hơn bút chì 25 – 10 = 15 cm."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Năm xăng-ti-mét và mười lăm xăng-ti-mét, chuẩn!",
+          "Hộp bút của Hổ Vằn giờ xếp theo độ dài luôn.",
+          "Tính dài hơn, ngắn hơn đều trúng, quá đỉnh."
+        ],
+        "wrong": [
+          "Bút chì 25 cm, bút mực 20 cm, trừ cho nhau nhé.",
+          "Bút sáp ngắn hơn bút chì bao nhiêu? Lấy 25 trừ 10.",
+          "Kết quả là số xăng-ti-mét chênh nhau, không phải độ dài bút."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o5",
+          "b2": "o15"
+        }
+      }
+    },
+    {
+      "id": "ro-bot-do-chieu-cao",
+      "title": "Ba bạn rô-bốt đo chiều cao",
+      "target": "ho-van",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Ba bạn rô-bốt chạy tới vạch đích: rô-bốt A cao 56 cm, rô-bốt B cao 54 cm, rô-bốt C cao 59 cm. Ba bạn rô-bốt rủ nhau đo chiều cao.",
+      "template": "a) Rô-bốt nào cao nhất? {{b1}}\nb) Số ?\n– Rô-bốt A cao hơn rô-bốt B {{b2}} cm.\n– Rô-bốt B thấp hơn rô-bốt C {{b3}} cm.",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "ro-bot-a",
+              "text": "Rô-bốt A"
+            },
+            {
+              "id": "ro-bot-b",
+              "text": "Rô-bốt B"
+            },
+            {
+              "id": "ro-bot-c",
+              "text": "Rô-bốt C"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o2",
+              "text": "2"
+            },
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o12",
+              "text": "12"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o5",
+              "text": "5"
+            },
+            {
+              "id": "o15",
+              "text": "15"
+            }
+          ]
+        }
+      ],
+      "skill": "hon-kem",
+      "curriculumRef": [
+        "toan2-t1-b04-luyen-tap-3-a",
+        "toan2-t1-b04-luyen-tap-3-b1",
+        "toan2-t1-b04-luyen-tap-3-b2"
+      ],
+      "support": {
+        "guide": [
+          "Cao nhất là số đo lớn nhất.",
+          "Cao hơn, thấp hơn bao nhiêu: lấy số lớn trừ số bé."
+        ],
+        "hint": "Rô-bốt C cao 59 cm; B thấp hơn C: 59 – 54.",
+        "answer": {
+          "text": "a) Rô-bốt nào cao nhất? Rô-bốt C; b) Số ?; – Rô-bốt A cao hơn rô-bốt B 2 cm.; – Rô-bốt B thấp hơn rô-bốt C 5 cm.",
+          "explanation": "Rô-bốt C cao nhất (59 cm); A cao hơn B 56 – 54 = 2 cm; B thấp hơn C 59 – 54 = 5 cm."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ba rô-bốt kêu bíp bíp cảm ơn chuyên gia đo đạc!",
+          "Rô-bốt C cao nhất, cậu so chuẩn từng xăng-ti-mét.",
+          "Bíp! Hệ thống ghi nhận: {name} trả lời đúng hết."
+        ],
+        "wrong": [
+          "Số đo lớn nhất mới là rô-bốt cao nhất.",
+          "Rô-bốt A 56 cm, rô-bốt B 54 cm, chênh nhau mấy?",
+          "Bíp bíp, có một ô chưa khớp, tính lại nhé."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "ro-bot-c",
+          "b2": "o2",
+          "b3": "o5"
+        }
+      }
+    },
+    {
+      "id": "dua-thuyen-giay",
+      "title": "Đua thuyền giấy",
+      "goTo": "Ra rãnh nước cuối sân, thầy Khỉ Lanh tổ chức đua thuyền giấy",
+      "target": "dua-thuyen",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Mai và Nam gấp được các thuyền giấy như hình dưới đây. Trên bàn Mai có 7 thuyền hồng và Mai đang đặt thêm 1 chiếc; trên bàn Nam có 5 thuyền xanh và Nam cầm thêm 1 chiếc. Thầy Khỉ Lanh hô: ai trả lời đúng trước thì được thả thuyền trước!",
+      "template": "a) Mai gấp được hơn Nam mấy cái thuyền? {{b1}}\nb) Nam gấp được kém Mai mấy cái thuyền? {{b2}}",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o1",
+              "text": "1"
+            },
+            {
+              "id": "o2",
+              "text": "2"
+            },
+            {
+              "id": "o3",
+              "text": "3"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o1",
+              "text": "1"
+            },
+            {
+              "id": "o2",
+              "text": "2"
+            },
+            {
+              "id": "o12",
+              "text": "12"
+            }
+          ]
+        }
+      ],
+      "skill": "bai-toan-loi-van",
+      "curriculumRef": [
+        "toan2-t1-b04-luyen-tap-4-a",
+        "toan2-t1-b04-luyen-tap-4-b"
+      ],
+      "support": {
+        "guide": [
+          "Đếm số thuyền của mỗi bạn, nhớ cả chiếc đang cầm.",
+          "Hơn hay kém đều lấy số lớn trừ số bé."
+        ],
+        "hint": "Mai có 8 thuyền, Nam có 6 thuyền.",
+        "answer": {
+          "text": "a) Mai gấp được hơn Nam mấy cái thuyền? 2; b) Nam gấp được kém Mai mấy cái thuyền? 2",
+          "explanation": "Mai gấp 8 thuyền, Nam gấp 6 thuyền; 8 – 6 = 2, nên Mai hơn Nam 2 thuyền và Nam kém Mai 2 thuyền."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Thuyền của cậu rẽ nước về nhất, cả sân reo hò!",
+          "Hơn 2 chiếc, kém 2 chiếc, hai câu cùng một phép trừ, thông minh!",
+          "Thầy Khỉ Lanh tung mũ: nhà vô địch hơn kém đây rồi!"
+        ],
+        "wrong": [
+          "Đừng quên chiếc thuyền đang ở trên tay mỗi bạn.",
+          "Hơn mấy và kém mấy ở đây ra cùng một số đấy.",
+          "Đếm lại thuyền của Mai: 7 chiếc trên bàn và 1 chiếc nữa."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o2",
+          "b2": "o2"
+        }
+      }
+    },
+    {
+      "id": "huy-chuong-hon-kem",
+      "title": "Huy chương hơn kém",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Thầy Khỉ Lanh đeo cho {name} chiếc huy chương \"Trọng tài hơn kém\". Hổ Vằn gầm một tiếng thật to… rồi ngượng ngùng xin chụp ảnh chung."
+    },
+    {
+      "id": "tui-thu-nham-lop",
+      "title": "Túi thư ở cổng trường",
+      "kind": "unlock",
+      "trigger": "auto",
+      "text": "Ở cổng trường, Chó Mực ôm túi thư rối rít: phong bì nào cũng ghi một phép tính thay cho tên lớp, thư sắp đưa nhầm hết rồi!"
+    }
+  ],
+  "reward": {
+    "xp": 70,
+    "coin": 12,
+    "skillXp": {
+      "hon-kem": 2,
+      "bai-toan-loi-van": 1
+    }
+  }
+}

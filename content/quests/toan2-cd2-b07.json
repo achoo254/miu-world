@@ -1,0 +1,2700 @@
+{
+  "id": "toan2-cd2-b07",
+  "region": "truong-hoc",
+  "chapter": 2,
+  "title": "Ong Vàng gom đủ chục hoa",
+  "status": "draft",
+  "lesson": "toan2-t1-b07",
+  "summary": "Ong Vàng cần đủ mười bông hoa hướng dương cho mỗi ngăn tổ mới nhưng cứ đếm lố; {name} cùng Ong Vàng và Bò Sữa Mơ học cách gom cho đủ 10 rồi cộng tiếp phần còn lại.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "Ong Vàng, Bò Sữa Mơ, Mèo Mun",
+    "where": "Vườn trường: luống hoa hướng dương, hàng rào hoa bí, tổ ong mới",
+    "goal": "Đếm đủ hoa cho từng ngăn của tổ ong mới bằng phép cộng qua 10",
+    "play": "Tìm que tính, tách số để gom đủ chục, điền bảng cộng, thả cá cho mèo, giải toán, đưa ong về đúng bông hoa",
+    "learn": "Toán 2 Bài 7: phép cộng (qua 10) trong phạm vi 20",
+    "reward": "90 XP, 15 xu, Phép cộng +2, Bài toán có lời văn +1",
+    "unlock": "Bài 8 \"Bảng cộng (qua 10)\""
+  },
+  "phases": {
+    "hook": "ong-dem-lo-hoa",
+    "explore": "tim-que-tinh-vuon",
+    "learn": "tach-cho-du-chuc",
+    "challenge": "dem-tiep-roi-tach",
+    "decision": "bo-mo-goi-sang",
+    "finale": "ong-ve-dung-hoa",
+    "reward": "huy-hieu-gom-chuc",
+    "unlock": "qua-bau-roi-lop-bop"
+  },
+  "texts": {},
+  "places": {
+    "ong-vang": "luống hoa hướng dương",
+    "tim-que-tinh-vuon": "quanh luống hoa",
+    "bo-sua-mo-rao": "hàng rào hoa bí",
+    "ong-vang-to-moi": "tổ ong mới"
+  },
+  "steps": [
+    {
+      "id": "ong-dem-lo-hoa",
+      "title": "Ong Vàng đếm lố",
+      "goTo": "Đến luống hoa hướng dương, Ong Vàng đang bay vù vù",
+      "kind": "dialogue",
+      "target": "ong-vang",
+      "lines": [
+        {
+          "speaker": "Ong Vàng",
+          "text": "Vù vù! {name} ơi, tổ mới của nhà ong có nhiều ngăn, mỗi ngăn phải đủ mười bông hướng dương mới đẹp."
+        },
+        {
+          "speaker": "Ong Vàng",
+          "text": "Mà tớ bay nhanh quá nên đếm 9 bông, thêm 6 bông… rồi quên luôn mình đang đếm tới đâu. Chóng mặt quá đi!"
+        },
+        {
+          "speaker": "Bò Sữa Mơ",
+          "text": "Ụm bò… Ong Vàng ơi, chậm lại thôi. Gom cho đủ 10 trước, phần dư cộng sau. Vườn có sẵn que tính để thử đấy."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Để tớ đi lấy que tính!",
+          "reply": "Ong Vàng xoay một vòng: Nhanh nhanh, que tính nằm rải quanh luống hoa đấy!"
+        },
+        {
+          "text": "Gom đủ 10 là sao hả Bò Mơ?",
+          "reply": "Bò Sữa Mơ cười hiền: Cứ tìm que tính về đây, cô chỉ cho bằng mắt luôn."
+        }
+      ]
+    },
+    {
+      "id": "tim-que-tinh-vuon",
+      "title": "Nhặt que tính quanh luống hoa",
+      "goTo": "Nhặt hai bó que tính và rổ táo nhỏ quanh luống hoa hướng dương",
+      "kind": "search",
+      "targets": [
+        "toan2-cd2-bo-que-do",
+        "toan2-cd2-bo-que-xanh",
+        "toan2-cd2-ro-tao-nho"
+      ]
+    },
+    {
+      "id": "tach-cho-du-chuc",
+      "title": "Tách để gom đủ chục",
+      "goTo": "Mang que tính về luống hoa hướng dương cho Ong Vàng",
+      "target": "ong-vang",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Bò Sữa Mơ xếp que tính lên lá hướng dương: lấy bớt vài que của số sau bù cho số trước đủ 10.",
+      "template": "a) Tính 9 + 6.\n• Tách: 6 = 1 + 5\n• 9 + {{b1}} = {{b2}}\n• 10 + {{b3}} = {{b4}}\n9 + 6 = {{b5}}\nb) Tính 8 + 6.\n• Tách: 6 = 2 + {{b6}}\n• 8 + {{b7}} = {{b8}}\n• 10 + {{b9}} = {{b10}}\n8 + 6 = {{b11}}",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o1",
+              "text": "1"
+            },
+            {
+              "id": "o2",
+              "text": "2"
+            },
+            {
+              "id": "o11",
+              "text": "11"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o1",
+              "text": "1"
+            },
+            {
+              "id": "o10",
+              "text": "10"
+            },
+            {
+              "id": "o12",
+              "text": "12"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o5",
+              "text": "5"
+            },
+            {
+              "id": "o15",
+              "text": "15"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "o14",
+              "text": "14"
+            },
+            {
+              "id": "o15",
+              "text": "15"
+            },
+            {
+              "id": "o16",
+              "text": "16"
+            }
+          ]
+        },
+        {
+          "id": "b5",
+          "options": [
+            {
+              "id": "o5",
+              "text": "5"
+            },
+            {
+              "id": "o15",
+              "text": "15"
+            },
+            {
+              "id": "o16",
+              "text": "16"
+            }
+          ]
+        },
+        {
+          "id": "b6",
+          "options": [
+            {
+              "id": "o2",
+              "text": "2"
+            },
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o6",
+              "text": "6"
+            }
+          ]
+        },
+        {
+          "id": "b7",
+          "options": [
+            {
+              "id": "o1",
+              "text": "1"
+            },
+            {
+              "id": "o2",
+              "text": "2"
+            },
+            {
+              "id": "o3",
+              "text": "3"
+            }
+          ]
+        },
+        {
+          "id": "b8",
+          "options": [
+            {
+              "id": "o9",
+              "text": "9"
+            },
+            {
+              "id": "o10",
+              "text": "10"
+            },
+            {
+              "id": "o12",
+              "text": "12"
+            }
+          ]
+        },
+        {
+          "id": "b9",
+          "options": [
+            {
+              "id": "o3",
+              "text": "3"
+            },
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o5",
+              "text": "5"
+            }
+          ]
+        },
+        {
+          "id": "b10",
+          "options": [
+            {
+              "id": "o12",
+              "text": "12"
+            },
+            {
+              "id": "o13",
+              "text": "13"
+            },
+            {
+              "id": "o14",
+              "text": "14"
+            }
+          ]
+        },
+        {
+          "id": "b11",
+          "options": [
+            {
+              "id": "o13",
+              "text": "13"
+            },
+            {
+              "id": "o14",
+              "text": "14"
+            },
+            {
+              "id": "o41",
+              "text": "41"
+            }
+          ]
+        }
+      ],
+      "skill": "phep-cong",
+      "curriculumRef": [
+        "toan2-t1-b07-hoat-dong-1-a",
+        "toan2-t1-b07-hoat-dong-1-b"
+      ],
+      "support": {
+        "guide": [
+          "9 cần thêm 1 để thành 10; 8 cần thêm 2 để thành 10.",
+          "Tách số thứ hai thành phần bù cho đủ 10 và phần còn lại, rồi lấy 10 cộng phần còn lại."
+        ],
+        "hint": "8 + 6: tách 6 = 2 + 4, vì 8 + 2 = 10, rồi 10 + 4 = 14.",
+        "answer": {
+          "text": "a) Tính 9 + 6.; • Tách: 6 = 1 + 5; • 9 + 1 = 10; • 10 + 5 = 15; 9 + 6 = 15; b) Tính 8 + 6.; • Tách: 6 = 2 + 4; • 8 + 2 = 10; • 10 + 4 = 14; 8 + 6 = 14",
+          "explanation": "9 + 6: tách 6 = 1 + 5, 9 + 1 = 10, 10 + 5 = 15. 8 + 6: tách 6 = 2 + 4, 8 + 2 = 10, 10 + 4 = 14."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Một ngăn tổ đủ chục hoa rồi, Ong Vàng nhảy điệu vù vù mừng rỡ!",
+          "Gom đủ 10 rồi cộng nốt, gọn như ong xếp sáp!",
+          "Bò Sữa Mơ gật gù: đúng cách tách số luôn rồi đó."
+        ],
+        "wrong": [
+          "Hỏi thử: 9 còn thiếu mấy để thành 10 nhỉ?",
+          "Phần tách ra phải cộng lại bằng đúng số ban đầu đấy.",
+          "Đủ 10 rồi thì chỉ cần cộng phần còn lại thôi."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o1",
+          "b2": "o10",
+          "b3": "o5",
+          "b4": "o15",
+          "b5": "o15",
+          "b6": "o4",
+          "b7": "o2",
+          "b8": "o10",
+          "b9": "o4",
+          "b10": "o14",
+          "b11": "o14"
+        }
+      }
+    },
+    {
+      "id": "dem-tiep-roi-tach",
+      "title": "Đếm tiếp và tách số",
+      "target": "ong-vang",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Ong Vàng thử hai cách: đếm tiếp từng bông, hoặc tách số cho đủ 10.",
+      "template": "a) Tính 9 + 2. Đếm tiếp: 9, 10, {{b1}}\n9 + 2 = {{b2}}\nb) Tính 9 + 3.\n• Tách: 3 = 1 + 2\n• 9 + {{b3}} = {{b4}}\n• 10 + {{b5}} = {{b6}}\n9 + 3 = {{b7}}\nb) Tính 9 + 7.\n• Tách: 7 = {{b8}} + {{b9}}\n• 9 + {{b10}} = {{b11}}\n• 10 + {{b12}} = {{b13}}\n9 + 7 = {{b14}}",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o9",
+              "text": "9"
+            },
+            {
+              "id": "o11",
+              "text": "11"
+            },
+            {
+              "id": "o12",
+              "text": "12"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o9",
+              "text": "9"
+            },
+            {
+              "id": "o10",
+              "text": "10"
+            },
+            {
+              "id": "o11",
+              "text": "11"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o1",
+              "text": "1"
+            },
+            {
+              "id": "o2",
+              "text": "2"
+            },
+            {
+              "id": "o3",
+              "text": "3"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "o0",
+              "text": "0"
+            },
+            {
+              "id": "o10",
+              "text": "10"
+            },
+            {
+              "id": "o20",
+              "text": "20"
+            }
+          ]
+        },
+        {
+          "id": "b5",
+          "options": [
+            {
+              "id": "o1",
+              "text": "1"
+            },
+            {
+              "id": "o2",
+              "text": "2"
+            },
+            {
+              "id": "o12",
+              "text": "12"
+            }
+          ]
+        },
+        {
+          "id": "b6",
+          "options": [
+            {
+              "id": "o10",
+              "text": "10"
+            },
+            {
+              "id": "o12",
+              "text": "12"
+            },
+            {
+              "id": "o21",
+              "text": "21"
+            }
+          ]
+        },
+        {
+          "id": "b7",
+          "options": [
+            {
+              "id": "o11",
+              "text": "11"
+            },
+            {
+              "id": "o12",
+              "text": "12"
+            },
+            {
+              "id": "o14",
+              "text": "14"
+            }
+          ]
+        },
+        {
+          "id": "b8",
+          "options": [
+            {
+              "id": "o0",
+              "text": "0"
+            },
+            {
+              "id": "o1",
+              "text": "1"
+            },
+            {
+              "id": "o2",
+              "text": "2"
+            }
+          ]
+        },
+        {
+          "id": "b9",
+          "options": [
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o8",
+              "text": "8"
+            }
+          ]
+        },
+        {
+          "id": "b10",
+          "options": [
+            {
+              "id": "o0",
+              "text": "0"
+            },
+            {
+              "id": "o1",
+              "text": "1"
+            },
+            {
+              "id": "o11",
+              "text": "11"
+            }
+          ]
+        },
+        {
+          "id": "b11",
+          "options": [
+            {
+              "id": "o0",
+              "text": "0"
+            },
+            {
+              "id": "o1",
+              "text": "1"
+            },
+            {
+              "id": "o10",
+              "text": "10"
+            }
+          ]
+        },
+        {
+          "id": "b12",
+          "options": [
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o16",
+              "text": "16"
+            }
+          ]
+        },
+        {
+          "id": "b13",
+          "options": [
+            {
+              "id": "o14",
+              "text": "14"
+            },
+            {
+              "id": "o15",
+              "text": "15"
+            },
+            {
+              "id": "o16",
+              "text": "16"
+            }
+          ]
+        },
+        {
+          "id": "b14",
+          "options": [
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o16",
+              "text": "16"
+            },
+            {
+              "id": "o17",
+              "text": "17"
+            }
+          ]
+        }
+      ],
+      "skill": "phep-cong",
+      "curriculumRef": [
+        "toan2-t1-b07-hoat-dong-2-a",
+        "toan2-t1-b07-hoat-dong-2-b1",
+        "toan2-t1-b07-hoat-dong-2-b2"
+      ],
+      "support": {
+        "guide": [
+          "Đếm tiếp: bắt đầu từ số lớn rồi đếm thêm từng bông.",
+          "9 + 7: tách 7 thành 1 và 6 để 9 + 1 = 10."
+        ],
+        "hint": "Với 9 cộng một số, luôn tách lấy 1 cho 9 trước.",
+        "answer": {
+          "text": "a) Tính 9 + 2. Đếm tiếp: 9, 10, 11; 9 + 2 = 11; b) Tính 9 + 3.; • Tách: 3 = 1 + 2; • 9 + 1 = 10; • 10 + 2 = 12; 9 + 3 = 12; b) Tính 9 + 7.; • Tách: 7 = 1 + 6; • 9 + 1 = 10; • 10 + 6 = 16; 9 + 7 = 16",
+          "explanation": "9 + 2: đếm 9, 10, 11 nên bằng 11. 9 + 3 = 10 + 2 = 12. 9 + 7: 7 = 1 + 6, 9 + 1 = 10, 10 + 6 = 16."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đếm tiếp hay tách số, cách nào cậu cũng ra đúng hết!",
+          "Ong Vàng ghi vội lên cánh: 9 cộng gì cũng mượn 1 trước!",
+          "Ba bông hướng dương gật đầu khen {name} khéo tính."
+        ],
+        "wrong": [
+          "Đếm tiếp thì bắt đầu ngay sau số 9 nhé, là 10.",
+          "Số 7 tách ra phải có một phần bằng 1 đó.",
+          "Kiểm lại dòng 10 + ? xem phần còn lại là mấy."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o11",
+          "b2": "o11",
+          "b3": "o1",
+          "b4": "o10",
+          "b5": "o2",
+          "b6": "o12",
+          "b7": "o12",
+          "b8": "o1",
+          "b9": "o6",
+          "b10": "o1",
+          "b11": "o10",
+          "b12": "o6",
+          "b13": "o16",
+          "b14": "o16"
+        }
+      }
+    },
+    {
+      "id": "tinh-hoa-luong-moi",
+      "title": "Tính hoa cho luống mới",
+      "target": "ong-vang",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Mèo Mun đi ngang, tò mò đọc to từng phép tính trên lá. Còn cả đàn sếu ngoài đồng đang chờ đếm nữa.",
+      "template": "c) 8 + 3 = {{b1}}\nc) 8 + 5 = {{b2}}\nc) 9 + 4 = {{b3}}\nTính 3 + 8.\n• Cách 1: 3 + 8 = 10 + 1 = {{b4}} |\n3 + 8 = {{b5}}\nTính 3 + 8.\n• Cách 2: 3 + 8 = 1 + 10 = {{b6}} |\n3 + 8 = {{b7}}\nTính.\n9 + 5 + 3 = {{b8}}\n6 + 3 + 4 = {{b9}}\n10 – 2 + 5 = {{b10}}\nĐàn sếu (9 con đứng dưới đất, 4 con đang bay). Số ? {{b11}} + {{b12}} = {{b13}}",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o10",
+              "text": "10"
+            },
+            {
+              "id": "o11",
+              "text": "11"
+            },
+            {
+              "id": "o12",
+              "text": "12"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o12",
+              "text": "12"
+            },
+            {
+              "id": "o13",
+              "text": "13"
+            },
+            {
+              "id": "o23",
+              "text": "23"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o12",
+              "text": "12"
+            },
+            {
+              "id": "o13",
+              "text": "13"
+            },
+            {
+              "id": "o14",
+              "text": "14"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "o10",
+              "text": "10"
+            },
+            {
+              "id": "o11",
+              "text": "11"
+            },
+            {
+              "id": "o12",
+              "text": "12"
+            }
+          ]
+        },
+        {
+          "id": "b5",
+          "options": [
+            {
+              "id": "o9",
+              "text": "9"
+            },
+            {
+              "id": "o11",
+              "text": "11"
+            },
+            {
+              "id": "o12",
+              "text": "12"
+            }
+          ]
+        },
+        {
+          "id": "b6",
+          "options": [
+            {
+              "id": "o9",
+              "text": "9"
+            },
+            {
+              "id": "o11",
+              "text": "11"
+            },
+            {
+              "id": "o21",
+              "text": "21"
+            }
+          ]
+        },
+        {
+          "id": "b7",
+          "options": [
+            {
+              "id": "o9",
+              "text": "9"
+            },
+            {
+              "id": "o10",
+              "text": "10"
+            },
+            {
+              "id": "o11",
+              "text": "11"
+            }
+          ]
+        },
+        {
+          "id": "b8",
+          "options": [
+            {
+              "id": "o7",
+              "text": "7"
+            },
+            {
+              "id": "o17",
+              "text": "17"
+            },
+            {
+              "id": "o19",
+              "text": "19"
+            }
+          ]
+        },
+        {
+          "id": "b9",
+          "options": [
+            {
+              "id": "o12",
+              "text": "12"
+            },
+            {
+              "id": "o13",
+              "text": "13"
+            },
+            {
+              "id": "o31",
+              "text": "31"
+            }
+          ]
+        },
+        {
+          "id": "b10",
+          "options": [
+            {
+              "id": "o11",
+              "text": "11"
+            },
+            {
+              "id": "o13",
+              "text": "13"
+            },
+            {
+              "id": "o23",
+              "text": "23"
+            }
+          ]
+        },
+        {
+          "id": "b11",
+          "options": [
+            {
+              "id": "o8",
+              "text": "8"
+            },
+            {
+              "id": "o9",
+              "text": "9"
+            },
+            {
+              "id": "o10",
+              "text": "10"
+            }
+          ]
+        },
+        {
+          "id": "b12",
+          "options": [
+            {
+              "id": "o3",
+              "text": "3"
+            },
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o14",
+              "text": "14"
+            }
+          ]
+        },
+        {
+          "id": "b13",
+          "options": [
+            {
+              "id": "o13",
+              "text": "13"
+            },
+            {
+              "id": "o14",
+              "text": "14"
+            },
+            {
+              "id": "o15",
+              "text": "15"
+            }
+          ]
+        }
+      ],
+      "skill": "phep-cong",
+      "curriculumRef": [
+        "toan2-t1-b07-hoat-dong-2-c1",
+        "toan2-t1-b07-hoat-dong-2-c2",
+        "toan2-t1-b07-hoat-dong-2-c3",
+        "toan2-t1-b07-luyen-tap-1-a",
+        "toan2-t1-b07-luyen-tap-1-b",
+        "toan2-t1-b07-luyen-tap-3-a",
+        "toan2-t1-b07-luyen-tap-3-b",
+        "toan2-t1-b07-luyen-tap-3-c",
+        "toan2-t1-b07-luyen-tap-5"
+      ],
+      "support": {
+        "guide": [
+          "Cách 1 tách số 8, cách 2 tách số 3: kết quả vẫn như nhau.",
+          "Dãy có ba số thì tính lần lượt từ trái sang phải."
+        ],
+        "hint": "9 + 5 + 3: lấy 9 + 5 = 14 trước, rồi 14 + 3.",
+        "answer": {
+          "text": "c) 8 + 3 = 11; c) 8 + 5 = 13; c) 9 + 4 = 13; Tính 3 + 8.; • Cách 1: 3 + 8 = 10 + 1 = 11 |; 3 + 8 = 11; Tính 3 + 8.; • Cách 2: 3 + 8 = 1 + 10 = 11 |; 3 + 8 = 11; Tính.; 9 + 5 + 3 = 17; 6 + 3 + 4 = 13; 10 – 2 + 5 = 13; Đàn sếu (9 con đứng dưới đất, 4 con đang bay). Số ? 9 + 4 = 13",
+          "explanation": "8 + 3 = 11, 8 + 5 = 13, 9 + 4 = 13; 3 + 8 = 11 theo cả hai cách; 9 + 5 + 3 = 17, 6 + 3 + 4 = 13, 10 – 2 + 5 = 13; đàn sếu có 9 + 4 = 13 con."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Mèo Mun vỗ tay: phép nào cũng tròn trịa đẹp như hoa!",
+          "Từ trái sang phải, không vấp phép nào, giỏi lắm!",
+          "Đàn sếu kêu \"quác quác\" như khen {name} đếm chuẩn."
+        ],
+        "wrong": [
+          "Dãy ba số thì làm phép tính đầu tiên trước nhé.",
+          "10 – 2 là trừ đấy, đừng cộng nhầm nha.",
+          "Sếu đứng dưới đất ghi trước, sếu đang bay ghi sau."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o11",
+          "b2": "o13",
+          "b3": "o13",
+          "b4": "o11",
+          "b5": "o11",
+          "b6": "o11",
+          "b7": "o11",
+          "b8": "o17",
+          "b9": "o13",
+          "b10": "o13",
+          "b11": "o9",
+          "b12": "o4",
+          "b13": "o13"
+        }
+      }
+    },
+    {
+      "id": "hai-bang-cong-hoa",
+      "title": "Hai bảng cộng trên cánh hoa",
+      "target": "ong-vang",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Ong Vàng lấy phấn hoa vẽ hai bảng cộng lên cánh hướng dương. Số ?",
+      "template": "+ | 9 | 9 | 9 | 9 | 9 | 9 | 9 | 9\n| 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9\n| 11 | {{b1}} | {{b2}} | {{b3}} | {{b4}} | {{b5}} | 17 | 18\n+ | 8 | 8 | 8 | 8 | 8 | 8 | 8\n| 3 | 4 | 5 | 6 | 7 | 8 | 9\n| 11 | {{b6}} | {{b7}} | {{b8}} | {{b9}} | 16 | {{b10}}",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o11",
+              "text": "11"
+            },
+            {
+              "id": "o12",
+              "text": "12"
+            },
+            {
+              "id": "o13",
+              "text": "13"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o3",
+              "text": "3"
+            },
+            {
+              "id": "o11",
+              "text": "11"
+            },
+            {
+              "id": "o13",
+              "text": "13"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o14",
+              "text": "14"
+            },
+            {
+              "id": "o24",
+              "text": "24"
+            },
+            {
+              "id": "o41",
+              "text": "41"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "o5",
+              "text": "5"
+            },
+            {
+              "id": "o15",
+              "text": "15"
+            },
+            {
+              "id": "o17",
+              "text": "17"
+            }
+          ]
+        },
+        {
+          "id": "b5",
+          "options": [
+            {
+              "id": "o15",
+              "text": "15"
+            },
+            {
+              "id": "o16",
+              "text": "16"
+            },
+            {
+              "id": "o61",
+              "text": "61"
+            }
+          ]
+        },
+        {
+          "id": "b6",
+          "options": [
+            {
+              "id": "o11",
+              "text": "11"
+            },
+            {
+              "id": "o12",
+              "text": "12"
+            },
+            {
+              "id": "o13",
+              "text": "13"
+            }
+          ]
+        },
+        {
+          "id": "b7",
+          "options": [
+            {
+              "id": "o11",
+              "text": "11"
+            },
+            {
+              "id": "o13",
+              "text": "13"
+            },
+            {
+              "id": "o15",
+              "text": "15"
+            }
+          ]
+        },
+        {
+          "id": "b8",
+          "options": [
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o14",
+              "text": "14"
+            },
+            {
+              "id": "o16",
+              "text": "16"
+            }
+          ]
+        },
+        {
+          "id": "b9",
+          "options": [
+            {
+              "id": "o14",
+              "text": "14"
+            },
+            {
+              "id": "o15",
+              "text": "15"
+            },
+            {
+              "id": "o51",
+              "text": "51"
+            }
+          ]
+        },
+        {
+          "id": "b10",
+          "options": [
+            {
+              "id": "o16",
+              "text": "16"
+            },
+            {
+              "id": "o17",
+              "text": "17"
+            },
+            {
+              "id": "o18",
+              "text": "18"
+            }
+          ]
+        }
+      ],
+      "skill": "phep-cong",
+      "curriculumRef": [
+        "toan2-t1-b07-luyen-tap-2-a",
+        "toan2-t1-b07-luyen-tap-2-b",
+        "toan2-t1-b07-luyen-tap-2-c",
+        "toan2-t1-b07-luyen-tap-2-d",
+        "toan2-t1-b07-luyen-tap-2-e",
+        "toan2-t1-b07-luyen-tap-2-4-a",
+        "toan2-t1-b07-luyen-tap-2-4-b",
+        "toan2-t1-b07-luyen-tap-2-4-c",
+        "toan2-t1-b07-luyen-tap-2-4-d",
+        "toan2-t1-b07-luyen-tap-2-4-e"
+      ],
+      "support": {
+        "guide": [
+          "Cột nào cũng là số hàng trên cộng số hàng giữa.",
+          "Cột sau lớn hơn cột trước 1, vì số hàng giữa tăng thêm 1."
+        ],
+        "hint": "Hàng 9: 11, 12, 13… Hàng 8 bắt đầu 11, 12, 13…",
+        "answer": {
+          "text": "+ | 9 | 9 | 9 | 9 | 9 | 9 | 9 | 9; | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9; | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18; + | 8 | 8 | 8 | 8 | 8 | 8 | 8; | 3 | 4 | 5 | 6 | 7 | 8 | 9; | 11 | 12 | 13 | 14 | 15 | 16 | 17",
+          "explanation": "9 + 3 = 12, 9 + 4 = 13, 9 + 5 = 14, 9 + 6 = 15, 9 + 7 = 16; 8 + 4 = 12, 8 + 5 = 13, 8 + 6 = 14, 8 + 7 = 15, 8 + 9 = 17."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Hai bảng cộng óng ánh phấn hoa, đẹp như tranh!",
+          "Cột nào cũng tăng đều từng bậc, chuẩn quá chừng.",
+          "Ong Vàng định chép bảng này dán trong tổ luôn."
+        ],
+        "wrong": [
+          "Các kết quả trong một hàng tăng dần từng 1 đấy.",
+          "Ô sau ô 16 của bảng 8 là 8 + 9 nhé.",
+          "Thử nhẩm cách gom đủ 10 cho từng cột xem."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o12",
+          "b2": "o13",
+          "b3": "o14",
+          "b4": "o15",
+          "b5": "o16",
+          "b6": "o12",
+          "b7": "o13",
+          "b8": "o14",
+          "b9": "o15",
+          "b10": "o17"
+        }
+      }
+    },
+    {
+      "id": "meo-mun-tim-ca",
+      "title": "Mèo Mun chọn cá",
+      "target": "ong-vang",
+      "kind": "challenge",
+      "mechanic": "classify",
+      "prompt": "Mèo Mun đói meo, ba bạn mèo con mỗi bạn đeo một phép tính. Tìm cá cho mèo.",
+      "groups": [
+        {
+          "id": "nhom-ca-12",
+          "label": "Cá 12"
+        },
+        {
+          "id": "nhom-ca-14",
+          "label": "Cá 14"
+        },
+        {
+          "id": "nhom-ca-11",
+          "label": "Cá 11"
+        },
+        {
+          "id": "nhom-ca-15",
+          "label": "Cá 15"
+        }
+      ],
+      "items": [
+        {
+          "id": "meo-9-2",
+          "label": "9 + 2"
+        },
+        {
+          "id": "meo-9-6",
+          "label": "9 + 6"
+        },
+        {
+          "id": "meo-9-3",
+          "label": "9 + 3"
+        }
+      ],
+      "skill": "phep-cong",
+      "curriculumRef": [
+        "toan2-t1-b07-luyen-tap-4-a",
+        "toan2-t1-b07-luyen-tap-4-b",
+        "toan2-t1-b07-luyen-tap-4-c"
+      ],
+      "support": {
+        "guide": [
+          "Tính phép cộng mèo đeo rồi tìm con cá ghi đúng kết quả.",
+          "Cá 14 đã có bạn mèo mẫu 8 + 6 rồi."
+        ],
+        "hint": "9 + 6: gom 9 + 1 = 10, còn 5, được 15.",
+        "answer": {
+          "text": "9 + 2 – cá 11; 9 + 6 – cá 15; 9 + 3 – cá 12",
+          "explanation": "9 + 2 = 11, 9 + 6 = 15, 9 + 3 = 12."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Meo meo! Ba bạn mèo ôm cá no nê, cảm ơn {name}!",
+          "Mèo nào cũng đúng cá, không bạn nào phải tranh nhau.",
+          "Mèo Mun liếm mép: tính nhanh thế này thì bữa trưa nhanh có."
+        ],
+        "wrong": [
+          "Có bạn mèo đang ôm nhầm con cá của bạn khác rồi.",
+          "Tính phép cộng trên cổ mèo trước khi chọn cá nha.",
+          "9 + 2 chưa tới 12 đâu, đếm tiếp từ 9 xem."
+        ]
+      },
+      "answer": {
+        "assignment": {
+          "meo-9-2": "nhom-ca-11",
+          "meo-9-6": "nhom-ca-15",
+          "meo-9-3": "nhom-ca-12"
+        }
+      }
+    },
+    {
+      "id": "bo-mo-goi-sang",
+      "title": "Bò Sữa Mơ gọi sang",
+      "goTo": "Sang hàng rào hoa bí, Bò Sữa Mơ đang vẫy đuôi gọi",
+      "kind": "dialogue",
+      "target": "bo-sua-mo-rao",
+      "lines": [
+        {
+          "speaker": "Bò Sữa Mơ",
+          "text": "Ụm bò! Cô xếp que tính cho các em lớp Một mà bị gió thổi tung, giờ toàn sơ đồ tách số chưa điền."
+        },
+        {
+          "speaker": "Ong Vàng",
+          "text": "Để tớ bay lại đếm cho! Ơ… mà tớ lại quên tách số nào trước rồi."
+        },
+        {
+          "speaker": "Bò Sữa Mơ",
+          "text": "{name} chọn giúp cô: tách số thứ hai cho đủ chục, hay nhẩm đếm tiếp từ số lớn?"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tách số thứ hai cho đủ chục",
+          "reply": "Bò Sữa Mơ: Cách chắc chắn nhất đấy, mình làm từng sơ đồ nhé."
+        },
+        {
+          "text": "Đếm tiếp từ số lớn",
+          "reply": "Bò Sữa Mơ: Cũng được, nhưng sơ đồ thì vẫn phải điền tách số đấy nha!"
+        }
+      ]
+    },
+    {
+      "id": "so-do-tach-cua-bo",
+      "title": "Sơ đồ tách số của Bò Mơ",
+      "target": "bo-sua-mo-rao",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Que tính rơi đầy hàng rào, sơ đồ tách số còn trống. Mai cũng đang chia que tính bên cạnh.",
+      "template": "a) Tính 7 + 5. 7 + 5 = 10 + {{b1}} = {{b2}} |\n7 + 5 = {{b3}}\nSơ đồ: 5 = 3 + {{b4}}\nb) Tính 7 + 6. 7 + 6 = 10 + {{b5}} = {{b6}} |\n7 + 6 = {{b7}}\nSơ đồ: 6 = 3 + {{b8}}\nb) Mai tách 14 que tính thành hai nhóm. Em hãy tìm số que tính ở nhóm 2 trong bảng sau:\nNhóm 1 | Nhóm 2:\n10 | 4\n9 | {{b9}}\n8 | {{b10}}\n7 | {{b11}}",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o2",
+              "text": "2"
+            },
+            {
+              "id": "o3",
+              "text": "3"
+            },
+            {
+              "id": "o4",
+              "text": "4"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o2",
+              "text": "2"
+            },
+            {
+              "id": "o12",
+              "text": "12"
+            },
+            {
+              "id": "o21",
+              "text": "21"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o12",
+              "text": "12"
+            },
+            {
+              "id": "o14",
+              "text": "14"
+            },
+            {
+              "id": "o21",
+              "text": "21"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "o2",
+              "text": "2"
+            },
+            {
+              "id": "o3",
+              "text": "3"
+            },
+            {
+              "id": "o4",
+              "text": "4"
+            }
+          ]
+        },
+        {
+          "id": "b5",
+          "options": [
+            {
+              "id": "o2",
+              "text": "2"
+            },
+            {
+              "id": "o3",
+              "text": "3"
+            },
+            {
+              "id": "o5",
+              "text": "5"
+            }
+          ]
+        },
+        {
+          "id": "b6",
+          "options": [
+            {
+              "id": "o11",
+              "text": "11"
+            },
+            {
+              "id": "o13",
+              "text": "13"
+            },
+            {
+              "id": "o23",
+              "text": "23"
+            }
+          ]
+        },
+        {
+          "id": "b7",
+          "options": [
+            {
+              "id": "o13",
+              "text": "13"
+            },
+            {
+              "id": "o14",
+              "text": "14"
+            },
+            {
+              "id": "o31",
+              "text": "31"
+            }
+          ]
+        },
+        {
+          "id": "b8",
+          "options": [
+            {
+              "id": "o3",
+              "text": "3"
+            },
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o13",
+              "text": "13"
+            }
+          ]
+        },
+        {
+          "id": "b9",
+          "options": [
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o5",
+              "text": "5"
+            },
+            {
+              "id": "o7",
+              "text": "7"
+            }
+          ]
+        },
+        {
+          "id": "b10",
+          "options": [
+            {
+              "id": "o5",
+              "text": "5"
+            },
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o7",
+              "text": "7"
+            }
+          ]
+        },
+        {
+          "id": "b11",
+          "options": [
+            {
+              "id": "o5",
+              "text": "5"
+            },
+            {
+              "id": "o7",
+              "text": "7"
+            },
+            {
+              "id": "o9",
+              "text": "9"
+            }
+          ]
+        }
+      ],
+      "skill": "phep-cong",
+      "curriculumRef": [
+        "toan2-t1-b07-luyen-tap-2-1-a",
+        "toan2-t1-b07-luyen-tap-2-1-b",
+        "toan2-t1-b07-luyen-tap-2-2-b1",
+        "toan2-t1-b07-luyen-tap-2-2-b2",
+        "toan2-t1-b07-luyen-tap-2-2-b3"
+      ],
+      "support": {
+        "guide": [
+          "7 cần thêm 3 để đủ 10, nên tách số còn lại thành 3 và phần dư.",
+          "Nhóm 1 cộng nhóm 2 phải bằng 14."
+        ],
+        "hint": "7 + 5: 5 = 3 + 2, 7 + 3 = 10, 10 + 2 = 12.",
+        "answer": {
+          "text": "a) Tính 7 + 5. 7 + 5 = 10 + 2 = 12 |; 7 + 5 = 12; Sơ đồ: 5 = 3 + 2; b) Tính 7 + 6. 7 + 6 = 10 + 3 = 13 |; 7 + 6 = 13; Sơ đồ: 6 = 3 + 3; b) Mai tách 14 que tính thành hai nhóm. Em hãy tìm số que tính ở nhóm 2 trong bảng sau:; Nhóm 1 | Nhóm 2:; 10 | 4; 9 | 5; 8 | 6; 7 | 7",
+          "explanation": "7 + 5 = 10 + 2 = 12; 7 + 6 = 10 + 3 = 13. Chia 14 que: 9 và 5, 8 và 6, 7 và 7."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Sơ đồ nào cũng kín số, Bò Mơ thở phào \"ụm bò\" một tiếng thật dài.",
+          "Bốn nhóm que tính chia chuẩn mười bốn que, không thừa không thiếu!",
+          "Mai mà thấy chắc phải học cách chia của {name}."
+        ],
+        "wrong": [
+          "7 cần thêm mấy để thành 10? Bắt đầu từ đó nhé.",
+          "Hai nhóm cộng lại phải đúng 14 que đấy.",
+          "Nhóm 1 càng ít thì nhóm 2 càng nhiều nha."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o2",
+          "b2": "o12",
+          "b3": "o12",
+          "b4": "o2",
+          "b5": "o3",
+          "b6": "o13",
+          "b7": "o13",
+          "b8": "o3",
+          "b9": "o5",
+          "b10": "o6",
+          "b11": "o7"
+        }
+      }
+    },
+    {
+      "id": "tach-so-qua-cam",
+      "title": "Tách số trên giỏ bí",
+      "target": "bo-sua-mo-rao",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Bò Sữa Mơ treo bốn quả bí, mỗi quả có một phép cộng và một sơ đồ tách.",
+      "template": "a) Tính 8 + 7.\n8 + 7 = {{b1}}\nSơ đồ: 7 = 2 + {{b2}}\nb) Tính 8 + 5.\n8 + 5 = {{b3}}\nSơ đồ: 5 = 2 + {{b4}}\nc) Tính 8 + 8.\n8 + 8 = {{b5}}\nSơ đồ: 8 = {{b6}} + {{b7}}\nd) Tính 6 + 5.\n6 + 5 = {{b8}}\nSơ đồ: 5 = {{b9}} + {{b10}}",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o15",
+              "text": "15"
+            },
+            {
+              "id": "o16",
+              "text": "16"
+            },
+            {
+              "id": "o51",
+              "text": "51"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o5",
+              "text": "5"
+            },
+            {
+              "id": "o6",
+              "text": "6"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o11",
+              "text": "11"
+            },
+            {
+              "id": "o13",
+              "text": "13"
+            },
+            {
+              "id": "o31",
+              "text": "31"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "o3",
+              "text": "3"
+            },
+            {
+              "id": "o5",
+              "text": "5"
+            },
+            {
+              "id": "o13",
+              "text": "13"
+            }
+          ]
+        },
+        {
+          "id": "b5",
+          "options": [
+            {
+              "id": "o15",
+              "text": "15"
+            },
+            {
+              "id": "o16",
+              "text": "16"
+            },
+            {
+              "id": "o17",
+              "text": "17"
+            }
+          ]
+        },
+        {
+          "id": "b6",
+          "options": [
+            {
+              "id": "o0",
+              "text": "0"
+            },
+            {
+              "id": "o2",
+              "text": "2"
+            },
+            {
+              "id": "o3",
+              "text": "3"
+            }
+          ]
+        },
+        {
+          "id": "b7",
+          "options": [
+            {
+              "id": "o5",
+              "text": "5"
+            },
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o7",
+              "text": "7"
+            }
+          ]
+        },
+        {
+          "id": "b8",
+          "options": [
+            {
+              "id": "o1",
+              "text": "1"
+            },
+            {
+              "id": "o9",
+              "text": "9"
+            },
+            {
+              "id": "o11",
+              "text": "11"
+            }
+          ]
+        },
+        {
+          "id": "b9",
+          "options": [
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o14",
+              "text": "14"
+            }
+          ]
+        },
+        {
+          "id": "b10",
+          "options": [
+            {
+              "id": "o1",
+              "text": "1"
+            },
+            {
+              "id": "o2",
+              "text": "2"
+            },
+            {
+              "id": "o11",
+              "text": "11"
+            }
+          ]
+        }
+      ],
+      "skill": "phep-cong",
+      "curriculumRef": [
+        "toan2-t1-b07-luyen-tap-2-3-a",
+        "toan2-t1-b07-luyen-tap-2-3-b",
+        "toan2-t1-b07-luyen-tap-2-3-c",
+        "toan2-t1-b07-luyen-tap-2-3-d"
+      ],
+      "support": {
+        "guide": [
+          "Với 8 cộng một số: tách lấy 2 cho 8 trước.",
+          "Với 6 cộng một số: tách lấy 4 cho 6 trước."
+        ],
+        "hint": "6 + 5: 6 cần thêm 4, nên 5 = 4 + 1, được 10 + 1 = 11.",
+        "answer": {
+          "text": "a) Tính 8 + 7.; 8 + 7 = 15; Sơ đồ: 7 = 2 + 5; b) Tính 8 + 5.; 8 + 5 = 13; Sơ đồ: 5 = 2 + 3; c) Tính 8 + 8.; 8 + 8 = 16; Sơ đồ: 8 = 2 + 6; d) Tính 6 + 5.; 6 + 5 = 11; Sơ đồ: 5 = 4 + 1",
+          "explanation": "8 + 7 = 15 (7 = 2 + 5); 8 + 5 = 13 (5 = 2 + 3); 8 + 8 = 16 (8 = 2 + 6); 6 + 5 = 11 (5 = 4 + 1)."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bốn quả bí kêu \"bụp\" một tiếng, lăn vào giỏ ngon lành!",
+          "Tách số khéo như Bò Mơ chia cỏ cho đàn bê.",
+          "Sơ đồ nào cũng bù đúng phần thiếu cho đủ 10."
+        ],
+        "wrong": [
+          "Hai phần trong sơ đồ cộng lại phải bằng số được tách.",
+          "6 cần thêm 4 mới thành 10, không phải 2 đâu.",
+          "Xem lại quả bí 8 + 8: phần đầu tiên bù cho đủ 10."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o15",
+          "b2": "o5",
+          "b3": "o13",
+          "b4": "o3",
+          "b5": "o16",
+          "b6": "o2",
+          "b7": "o6",
+          "b8": "o11",
+          "b9": "o4",
+          "b10": "o1"
+        }
+      }
+    },
+    {
+      "id": "bang-so-hang-tong-vuon",
+      "title": "Bảng số hạng, tổng ở vườn",
+      "target": "bo-sua-mo-rao",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Trên hàng rào còn ba tấm bảng số hạng, tổng bị nắng làm mờ chữ.",
+      "template": "a) Số ?\nSố hạng | 7 | 7 | 7 | 7 | 7\nSố hạng | 4 | 5 | 6 | 7 | 9\nTổng | 11 | {{b1}} | {{b2}} | {{b3}} | {{b4}}\nSố ? a)\nSố hạng | 6 | 6 | 6 | 6 | 6\nSố hạng | 4 | 5 | 7 | 8 | 9\nTổng | 10 | {{b5}} | {{b6}} | {{b7}} | {{b8}}\nSố ?\nSố hạng | 6 | 7 | 8 | 9 | 8 | 7\nSố hạng | 5 | 6 | 6 | 7 | 5 | 7\nTổng | 11 | {{b9}} | {{b10}} | {{b11}} | {{b12}} | {{b13}}",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o2",
+              "text": "2"
+            },
+            {
+              "id": "o12",
+              "text": "12"
+            },
+            {
+              "id": "o14",
+              "text": "14"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o12",
+              "text": "12"
+            },
+            {
+              "id": "o13",
+              "text": "13"
+            },
+            {
+              "id": "o31",
+              "text": "31"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o12",
+              "text": "12"
+            },
+            {
+              "id": "o14",
+              "text": "14"
+            },
+            {
+              "id": "o24",
+              "text": "24"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "o15",
+              "text": "15"
+            },
+            {
+              "id": "o16",
+              "text": "16"
+            },
+            {
+              "id": "o61",
+              "text": "61"
+            }
+          ]
+        },
+        {
+          "id": "b5",
+          "options": [
+            {
+              "id": "o9",
+              "text": "9"
+            },
+            {
+              "id": "o11",
+              "text": "11"
+            },
+            {
+              "id": "o13",
+              "text": "13"
+            }
+          ]
+        },
+        {
+          "id": "b6",
+          "options": [
+            {
+              "id": "o11",
+              "text": "11"
+            },
+            {
+              "id": "o13",
+              "text": "13"
+            },
+            {
+              "id": "o14",
+              "text": "14"
+            }
+          ]
+        },
+        {
+          "id": "b7",
+          "options": [
+            {
+              "id": "o12",
+              "text": "12"
+            },
+            {
+              "id": "o14",
+              "text": "14"
+            },
+            {
+              "id": "o16",
+              "text": "16"
+            }
+          ]
+        },
+        {
+          "id": "b8",
+          "options": [
+            {
+              "id": "o5",
+              "text": "5"
+            },
+            {
+              "id": "o15",
+              "text": "15"
+            },
+            {
+              "id": "o17",
+              "text": "17"
+            }
+          ]
+        },
+        {
+          "id": "b9",
+          "options": [
+            {
+              "id": "o12",
+              "text": "12"
+            },
+            {
+              "id": "o13",
+              "text": "13"
+            },
+            {
+              "id": "o31",
+              "text": "31"
+            }
+          ]
+        },
+        {
+          "id": "b10",
+          "options": [
+            {
+              "id": "o14",
+              "text": "14"
+            },
+            {
+              "id": "o15",
+              "text": "15"
+            },
+            {
+              "id": "o16",
+              "text": "16"
+            }
+          ]
+        },
+        {
+          "id": "b11",
+          "options": [
+            {
+              "id": "o16",
+              "text": "16"
+            },
+            {
+              "id": "o17",
+              "text": "17"
+            },
+            {
+              "id": "o26",
+              "text": "26"
+            }
+          ]
+        },
+        {
+          "id": "b12",
+          "options": [
+            {
+              "id": "o12",
+              "text": "12"
+            },
+            {
+              "id": "o13",
+              "text": "13"
+            },
+            {
+              "id": "o23",
+              "text": "23"
+            }
+          ]
+        },
+        {
+          "id": "b13",
+          "options": [
+            {
+              "id": "o14",
+              "text": "14"
+            },
+            {
+              "id": "o24",
+              "text": "24"
+            },
+            {
+              "id": "o41",
+              "text": "41"
+            }
+          ]
+        }
+      ],
+      "skill": "thanh-phan-phep-tinh",
+      "curriculumRef": [
+        "toan2-t1-b07-luyen-tap-2-2-a1",
+        "toan2-t1-b07-luyen-tap-2-2-a2",
+        "toan2-t1-b07-luyen-tap-2-2-a3",
+        "toan2-t1-b07-luyen-tap-2-2-a4",
+        "toan2-t1-b07-luyen-tap-3-1-a1",
+        "toan2-t1-b07-luyen-tap-3-1-a2",
+        "toan2-t1-b07-luyen-tap-3-1-a3",
+        "toan2-t1-b07-luyen-tap-3-1-a4",
+        "toan2-t1-b07-luyen-tap-4-1-a",
+        "toan2-t1-b07-luyen-tap-4-1-b",
+        "toan2-t1-b07-luyen-tap-4-1-c",
+        "toan2-t1-b07-luyen-tap-4-1-d",
+        "toan2-t1-b07-luyen-tap-4-1-e"
+      ],
+      "support": {
+        "guide": [
+          "Tổng bằng số hạng thứ nhất cộng số hạng thứ hai.",
+          "Cột đầu mỗi bảng là cột mẫu đã điền sẵn."
+        ],
+        "hint": "7 + 9: tách 9 = 3 + 6, được 10 + 6 = 16.",
+        "answer": {
+          "text": "a) Số ?; Số hạng | 7 | 7 | 7 | 7 | 7; Số hạng | 4 | 5 | 6 | 7 | 9; Tổng | 11 | 12 | 13 | 14 | 16; Số ? a); Số hạng | 6 | 6 | 6 | 6 | 6; Số hạng | 4 | 5 | 7 | 8 | 9; Tổng | 10 | 11 | 13 | 14 | 15; Số ?; Số hạng | 6 | 7 | 8 | 9 | 8 | 7; Số hạng | 5 | 6 | 6 | 7 | 5 | 7; Tổng | 11 | 13 | 14 | 16 | 13 | 14",
+          "explanation": "Bảng 1: 12, 13, 14, 16. Bảng 2: 11, 13, 14, 15. Bảng 3: 13, 14, 16, 13, 14."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ba tấm bảng sáng rõ lại, nắng có chiếu cũng không mờ nữa!",
+          "Số hạng cộng số hạng ra tổng, {name} nhớ chắc lắm.",
+          "Bò Mơ treo bảng lên rào cho các em lớp Một học theo."
+        ],
+        "wrong": [
+          "Tổng là kết quả của phép cộng hai số hạng nhé.",
+          "Ở bảng thứ hai, số hạng đầu luôn là 6 đấy.",
+          "Một ô tổng đang lệch 1, thử cộng lại từng cột."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o12",
+          "b2": "o13",
+          "b3": "o14",
+          "b4": "o16",
+          "b5": "o11",
+          "b6": "o13",
+          "b7": "o14",
+          "b8": "o15",
+          "b9": "o13",
+          "b10": "o14",
+          "b11": "o16",
+          "b12": "o13",
+          "b13": "o14"
+        }
+      }
+    },
+    {
+      "id": "thung-quyen-gop",
+      "title": "Những thùng quà quyên góp",
+      "target": "bo-sua-mo-rao",
+      "kind": "riddle",
+      "question": "Bò Sữa Mơ chỉ chồng thùng giấy cạnh chuồng: quà của lớp gửi các bạn vùng xa. Để giúp đỡ các bạn học sinh ở vùng khó khăn, lớp em đã quyên góp được 8 thùng quần áo và 5 thùng sách vở. Hỏi cả quần áo và sách vở, lớp em đã quyên góp được bao nhiêu thùng?",
+      "skill": "bai-toan-loi-van",
+      "curriculumRef": [
+        "toan2-t1-b07-luyen-tap-2-5"
+      ],
+      "support": {
+        "guide": [
+          "Gộp thùng quần áo và thùng sách vở lại thì làm phép cộng.",
+          "Tách 5 = 2 + 3 để 8 + 2 = 10."
+        ],
+        "hint": "8 thùng cộng 5 thùng.",
+        "answer": {
+          "text": "13 thùng",
+          "explanation": "Cả quần áo và sách vở: 8 + 5 = 13 (thùng)."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Mười ba thùng quà lên xe, các bạn vùng xa sắp vui lắm!",
+          "Gộp lại thì cộng, {name} chọn phép tính quá chuẩn.",
+          "Bò Mơ buộc nơ đỏ lên thùng quà thứ mười ba."
+        ],
+        "wrong": [
+          "Hỏi \"cả quần áo và sách vở\" là gộp lại đó nha.",
+          "Thử 8 + 2 = 10 trước, rồi cộng thêm 3.",
+          "Đếm lại số thùng sách vở trong đề bài nhé."
+        ]
+      },
+      "answer": {
+        "value": 13
+      }
+    },
+    {
+      "id": "thap-tron-va-hat-mam",
+      "title": "Tháp tròn và hạt nảy mầm",
+      "target": "bo-sua-mo-rao",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Ong Vàng xếp tháp sỏi tròn, mỗi viên bằng tổng hai viên ngay dưới. Bên cạnh, một hạt giống lớn dần và một chú sâu đang thành bướm. Số ?",
+      "template": "b) Tháp xanh: tầng dưới 1, 2, 6; tầng giữa 3, 8; đỉnh tháp {{b1}}\nTháp hồng: đỉnh tháp {{b2}}; tầng ba {{b3}}, {{b4}}; tầng hai 3, 4, {{b5}}; tầng dưới 1, 2, 2, 0\na) Hạt giống 6 → + 5 → hạt nảy mầm {{b6}} → + 7 → cây con {{b7}}\nb) Lá có trứng 5 → + 2 → sâu {{b8}} → + 6 → kén {{b9}} → + 4 → bướm {{b10}}",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o1",
+              "text": "1"
+            },
+            {
+              "id": "o11",
+              "text": "11"
+            },
+            {
+              "id": "o21",
+              "text": "21"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o11",
+              "text": "11"
+            },
+            {
+              "id": "o13",
+              "text": "13"
+            },
+            {
+              "id": "o31",
+              "text": "31"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o5",
+              "text": "5"
+            },
+            {
+              "id": "o7",
+              "text": "7"
+            },
+            {
+              "id": "o9",
+              "text": "9"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o7",
+              "text": "7"
+            }
+          ]
+        },
+        {
+          "id": "b5",
+          "options": [
+            {
+              "id": "o1",
+              "text": "1"
+            },
+            {
+              "id": "o2",
+              "text": "2"
+            },
+            {
+              "id": "o3",
+              "text": "3"
+            }
+          ]
+        },
+        {
+          "id": "b6",
+          "options": [
+            {
+              "id": "o1",
+              "text": "1"
+            },
+            {
+              "id": "o11",
+              "text": "11"
+            },
+            {
+              "id": "o21",
+              "text": "21"
+            }
+          ]
+        },
+        {
+          "id": "b7",
+          "options": [
+            {
+              "id": "o18",
+              "text": "18"
+            },
+            {
+              "id": "o28",
+              "text": "28"
+            },
+            {
+              "id": "o81",
+              "text": "81"
+            }
+          ]
+        },
+        {
+          "id": "b8",
+          "options": [
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o7",
+              "text": "7"
+            },
+            {
+              "id": "o17",
+              "text": "17"
+            }
+          ]
+        },
+        {
+          "id": "b9",
+          "options": [
+            {
+              "id": "o3",
+              "text": "3"
+            },
+            {
+              "id": "o13",
+              "text": "13"
+            },
+            {
+              "id": "o14",
+              "text": "14"
+            }
+          ]
+        },
+        {
+          "id": "b10",
+          "options": [
+            {
+              "id": "o16",
+              "text": "16"
+            },
+            {
+              "id": "o17",
+              "text": "17"
+            },
+            {
+              "id": "o18",
+              "text": "18"
+            }
+          ]
+        }
+      ],
+      "skill": "phep-cong",
+      "curriculumRef": [
+        "toan2-t1-b07-luyen-tap-3-1-b1",
+        "toan2-t1-b07-luyen-tap-3-1-b2",
+        "toan2-t1-b07-luyen-tap-3-2-a",
+        "toan2-t1-b07-luyen-tap-3-2-b"
+      ],
+      "support": {
+        "guide": [
+          "Ở tháp, mỗi viên bằng hai viên ngay dưới cộng lại; tính từ dưới lên.",
+          "Ở dãy mũi tên, lấy số vừa tìm được cộng tiếp."
+        ],
+        "hint": "Tháp hồng: 2 + 0 = 2, rồi 3 + 4 = 7 và 4 + 2 = 6, đỉnh 7 + 6.",
+        "answer": {
+          "text": "b) Tháp xanh: tầng dưới 1, 2, 6; tầng giữa 3, 8; đỉnh tháp 11; Tháp hồng: đỉnh tháp 13; tầng ba 7, 6; tầng hai 3, 4, 2; tầng dưới 1, 2, 2, 0; a) Hạt giống 6 → + 5 → hạt nảy mầm 11 → + 7 → cây con 18; b) Lá có trứng 5 → + 2 → sâu 7 → + 6 → kén 13 → + 4 → bướm 17",
+          "explanation": "Tháp xanh: 3 + 8 = 11. Tháp hồng: 2, rồi 7 và 6, đỉnh 13. Hạt: 6 + 5 = 11, 11 + 7 = 18. Bướm: 5 + 2 = 7, 7 + 6 = 13, 13 + 4 = 17."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Tháp sỏi đứng vững, hạt nảy mầm, sâu hóa bướm, tuyệt vời!",
+          "Tính từ dưới lên đúng từng tầng, kĩ sư {name} đây rồi.",
+          "Chú bướm vừa ra khỏi kén đã bay vòng quanh {name}."
+        ],
+        "wrong": [
+          "Tháp tính từ tầng dưới cùng đi lên nhé.",
+          "Mỗi mũi tên cộng vào số ngay trước nó đấy.",
+          "Ô 2 + 0 ở tầng hai bằng mấy nhỉ?"
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o11",
+          "b2": "o13",
+          "b3": "o7",
+          "b4": "o6",
+          "b5": "o2",
+          "b6": "o11",
+          "b7": "o18",
+          "b8": "o7",
+          "b9": "o13",
+          "b10": "o17"
+        }
+      }
+    },
+    {
+      "id": "tau-chui-ham",
+      "title": "Đoàn tàu chui hầm",
+      "target": "bo-sua-mo-rao",
+      "kind": "riddle",
+      "question": "Tu… tu… tiếng còi tàu vang qua đồi sau vườn, Bò Sữa Mơ giật mình đánh rơi cọng cỏ. Đoàn tàu chở hàng có 4 toa đã ra khỏi đường hầm, còn 7 toa ở trong đường hầm. Hỏi đoàn tàu đó có tất cả bao nhiêu toa?",
+      "skill": "bai-toan-loi-van",
+      "curriculumRef": [
+        "toan2-t1-b07-luyen-tap-3-4"
+      ],
+      "support": {
+        "guide": [
+          "Toa ra khỏi hầm và toa còn trong hầm gộp lại là cả đoàn tàu.",
+          "Cộng 4 với 7, đổi chỗ thành 7 + 4 cho dễ nhẩm."
+        ],
+        "hint": "7 + 3 = 10, còn 1 nữa.",
+        "answer": {
+          "text": "11 toa",
+          "explanation": "Đoàn tàu có tất cả: 4 + 7 = 11 (toa)."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Mười một toa tàu chui ra khỏi hầm, xình xịch vui ghê!",
+          "Bò Mơ nhặt lại cọng cỏ: đếm cả toa trong hầm, giỏi thật.",
+          "Tàu dài thế mà {name} không sót toa nào."
+        ],
+        "wrong": [
+          "Đừng quên mấy toa còn ở trong đường hầm nhé.",
+          "Hỏi \"có tất cả\" thì gộp hai phần lại.",
+          "Thử đổi chỗ: 7 + 4 nhẩm dễ hơn đấy."
+        ]
+      },
+      "answer": {
+        "value": 11
+      }
+    },
+    {
+      "id": "cau-thang-nha-san",
+      "title": "Cầu thang nhà sàn",
+      "target": "bo-sua-mo-rao",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Cạnh vườn có ngôi nhà sàn của bác bảo vệ, mỗi bậc thang ghi một phép tính.",
+      "template": "a) Tính kết quả của các phép tính ghi ở bậc thang.\n9 + 5 = {{b1}}\n7 + 4 = {{b2}}\n8 + 6 = {{b3}}\n6 + 7 = {{b4}}\n9 + 7 = {{b5}}",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o14",
+              "text": "14"
+            },
+            {
+              "id": "o16",
+              "text": "16"
+            },
+            {
+              "id": "o41",
+              "text": "41"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o1",
+              "text": "1"
+            },
+            {
+              "id": "o9",
+              "text": "9"
+            },
+            {
+              "id": "o11",
+              "text": "11"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o14",
+              "text": "14"
+            },
+            {
+              "id": "o15",
+              "text": "15"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "o12",
+              "text": "12"
+            },
+            {
+              "id": "o13",
+              "text": "13"
+            },
+            {
+              "id": "o14",
+              "text": "14"
+            }
+          ]
+        },
+        {
+          "id": "b5",
+          "options": [
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o15",
+              "text": "15"
+            },
+            {
+              "id": "o16",
+              "text": "16"
+            }
+          ]
+        }
+      ],
+      "skill": "phep-cong",
+      "curriculumRef": [
+        "toan2-t1-b07-luyen-tap-4-3-a1",
+        "toan2-t1-b07-luyen-tap-4-3-a2",
+        "toan2-t1-b07-luyen-tap-4-3-a3",
+        "toan2-t1-b07-luyen-tap-4-3-a4",
+        "toan2-t1-b07-luyen-tap-4-3-a5"
+      ],
+      "support": {
+        "guide": [
+          "Tính từng bậc từ trên xuống.",
+          "Nhớ cách gom cho đủ 10 với 9, 8, 7."
+        ],
+        "hint": "6 + 7: 6 + 4 = 10, còn 3, được 13.",
+        "answer": {
+          "text": "a) Tính kết quả của các phép tính ghi ở bậc thang.; 9 + 5 = 14; 7 + 4 = 11; 8 + 6 = 14; 6 + 7 = 13; 9 + 7 = 16",
+          "explanation": "9 + 5 = 14, 7 + 4 = 11, 8 + 6 = 14, 6 + 7 = 13, 9 + 7 = 16."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Năm bậc thang sáng đèn, bước lên không trượt chân!",
+          "Leo cầu thang mà tính nhẩm vèo vèo, {name} siêu ghê.",
+          "Bác bảo vệ ló đầu ra khen: bậc nào cũng đúng."
+        ],
+        "wrong": [
+          "Có một bậc thang tính hụt mất 1 rồi.",
+          "7 + 4: gom 7 + 3 = 10, còn 1 nữa nhé.",
+          "Leo chậm thôi, nhẩm lại bậc cuối cùng xem."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o14",
+          "b2": "o11",
+          "b3": "o14",
+          "b4": "o13",
+          "b5": "o16"
+        }
+      }
+    },
+    {
+      "id": "bac-thang-bang-nhau",
+      "title": "Hai bậc thang song sinh",
+      "target": "bo-sua-mo-rao",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "prompt": "Bác bảo vệ bảo có hai bậc \"song sinh\". b) Những phép tính nào có kết quả bằng nhau?",
+      "choices": [
+        {
+          "id": "9-5",
+          "text": "9 + 5"
+        },
+        {
+          "id": "7-4",
+          "text": "7 + 4"
+        },
+        {
+          "id": "8-6",
+          "text": "8 + 6"
+        },
+        {
+          "id": "6-7",
+          "text": "6 + 7"
+        },
+        {
+          "id": "9-7",
+          "text": "9 + 7"
+        }
+      ],
+      "skill": "phep-cong",
+      "curriculumRef": [
+        "toan2-t1-b07-luyen-tap-4-3-b"
+      ],
+      "support": {
+        "guide": [
+          "Dùng kết quả vừa tính ở cầu thang.",
+          "Tìm hai bậc có cùng một kết quả."
+        ],
+        "hint": "Có hai bậc cùng bằng 14.",
+        "answer": {
+          "text": "9 + 5 và 8 + 6",
+          "explanation": "9 + 5 = 14 và 8 + 6 = 14; các bậc khác là 11, 13, 16."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đúng cặp song sinh mười bốn, giống nhau như hai giọt nước!",
+          "Bác bảo vệ cười: hai bậc này vẫn hay bị nhầm là một.",
+          "Bắt được cặp kết quả giống nhau ngay lập tức."
+        ],
+        "wrong": [
+          "Hai bậc \"song sinh\" phải có kết quả bằng nhau đấy.",
+          "Xem lại: bậc 6 + 7 bằng 13 cơ.",
+          "Chỉ có đúng hai bậc thôi, cậu chọn thừa rồi."
+        ]
+      },
+      "answer": {
+        "choices": [
+          "9-5",
+          "8-6"
+        ]
+      }
+    },
+    {
+      "id": "nam-cua-ban-sao",
+      "title": "Gùi nấm của bạn Sao",
+      "target": "bo-sua-mo-rao",
+      "kind": "riddle",
+      "question": "Các cây nấm sau vườn ghi 5 + 8, 6 + 6, 9 + 3, 7 + 3, 8 + 4, 7 + 5, 10 + 4. Bạn Sao hái những cây nấm ghi phép tính có kết quả bằng 12. Hỏi bạn Sao hái được bao nhiêu cây nấm?",
+      "skill": "phep-cong",
+      "curriculumRef": [
+        "toan2-t1-b07-luyen-tap-4-2"
+      ],
+      "support": {
+        "guide": [
+          "Tính từng cây nấm, giữ lại cây nào bằng 12.",
+          "Đếm số cây nấm được giữ lại."
+        ],
+        "hint": "6 + 6 = 12 là một cây rồi, còn mấy cây nữa?",
+        "answer": {
+          "text": "4 cây nấm",
+          "explanation": "6 + 6, 9 + 3, 8 + 4, 7 + 5 đều bằng 12, nên bạn Sao hái được 4 cây nấm."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Gùi của bạn Sao đầy nấm mười hai, thơm phức!",
+          "Không hái nhầm cây nào, {name} tinh mắt quá.",
+          "Bốn cây nấm vừa vặn chiếc gùi nhỏ."
+        ],
+        "wrong": [
+          "7 + 3 chỉ bằng 10 thôi, không hái cây đó.",
+          "Đếm số cây nấm có kết quả 12, không phải cộng chúng lại.",
+          "Còn sót một cây nấm bằng 12 đấy, soi lại nhé."
+        ]
+      },
+      "answer": {
+        "value": 4
+      }
+    },
+    {
+      "id": "xuc-xac-muoi-mot",
+      "title": "Xúc xắc may mắn",
+      "target": "bo-sua-mo-rao",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "prompt": "Bò Mơ thả bốn con xúc xắc lên cỏ: A 6 chấm, B 4 chấm, C 5 chấm, D 3 chấm. Hai con xúc xắc nào dưới đây có tổng số chấm ở các mặt trên bằng 11?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "A"
+        },
+        {
+          "id": "b",
+          "text": "B"
+        },
+        {
+          "id": "c",
+          "text": "C"
+        },
+        {
+          "id": "d",
+          "text": "D"
+        }
+      ],
+      "skill": "phep-cong",
+      "curriculumRef": [
+        "toan2-t1-b07-luyen-tap-4-4"
+      ],
+      "support": {
+        "guide": [
+          "Thử cộng số chấm của từng cặp xúc xắc.",
+          "Cần tổng đúng bằng 11."
+        ],
+        "hint": "6 cộng mấy thì bằng 11?",
+        "answer": {
+          "text": "A và C",
+          "explanation": "Xúc xắc A có 6 chấm, C có 5 chấm: 6 + 5 = 11."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Sáu chấm với năm chấm, mười một tròn trĩnh!",
+          "Bò Mơ reo \"ụm bò\" vì {name} đoán trúng ngay.",
+          "Cặp xúc xắc may mắn đã lộ diện rồi."
+        ],
+        "wrong": [
+          "Hai con xúc xắc đó cộng lại chưa ra 11 đâu.",
+          "Bắt đầu từ con có nhiều chấm nhất xem.",
+          "Chỉ chọn đúng hai con xúc xắc thôi nhé."
+        ]
+      },
+      "answer": {
+        "choices": [
+          "a",
+          "c"
+        ]
+      }
+    },
+    {
+      "id": "ong-ve-dung-hoa",
+      "title": "Ong về đúng bông hoa",
+      "goTo": "Bay về tổ ong mới, đàn ong đang chờ ở cửa tổ",
+      "target": "ong-vang-to-moi",
+      "kind": "challenge",
+      "mechanic": "classify",
+      "prompt": "Tổ ong mới khai trương! Mỗi chú ong mang một phép tính, phải đậu vào bông hoa có cùng kết quả. Tìm hai phép tính có cùng kết quả.",
+      "groups": [
+        {
+          "id": "nhom-6-8",
+          "label": "6 + 8"
+        },
+        {
+          "id": "nhom-7-6",
+          "label": "7 + 6"
+        },
+        {
+          "id": "nhom-6-5",
+          "label": "6 + 5"
+        },
+        {
+          "id": "nhom-6-9",
+          "label": "6 + 9"
+        },
+        {
+          "id": "nhom-7-5",
+          "label": "7 + 5"
+        }
+      ],
+      "items": [
+        {
+          "id": "ong-6-7",
+          "label": "6 + 7"
+        },
+        {
+          "id": "ong-7-4",
+          "label": "7 + 4"
+        },
+        {
+          "id": "ong-7-7",
+          "label": "7 + 7"
+        },
+        {
+          "id": "ong-7-8",
+          "label": "7 + 8"
+        }
+      ],
+      "skill": "phep-cong",
+      "curriculumRef": [
+        "toan2-t1-b07-luyen-tap-3-3-a",
+        "toan2-t1-b07-luyen-tap-3-3-b",
+        "toan2-t1-b07-luyen-tap-3-3-c",
+        "toan2-t1-b07-luyen-tap-3-3-d"
+      ],
+      "support": {
+        "guide": [
+          "Tính kết quả phép tính của chú ong và của từng bông hoa.",
+          "Bông 7 + 5 đã có ong mẫu 6 + 6 đậu rồi."
+        ],
+        "hint": "6 + 7 và 7 + 6: đổi chỗ hai số, kết quả không đổi.",
+        "answer": {
+          "text": "6 + 7 – 7 + 6; 7 + 4 – 6 + 5; 7 + 7 – 6 + 8; 7 + 8 – 6 + 9",
+          "explanation": "6 + 7 = 13 = 7 + 6; 7 + 4 = 11 = 6 + 5; 7 + 7 = 14 = 6 + 8; 7 + 8 = 15 = 6 + 9."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bốn chú ong đậu đúng hoa, tổ mới mở cửa tưng bừng!",
+          "Vù vù vù! Cả đàn ong bay vòng tròn cảm ơn {name}.",
+          "Ong Vàng tuyên bố: từ nay tớ gom đủ chục rồi mới đếm!"
+        ],
+        "wrong": [
+          "Có một chú ong đậu nhầm bông, kết quả chưa bằng nhau.",
+          "Tính cả phép tính trên bông hoa nữa nhé.",
+          "Đổi chỗ hai số hạng thì tổng vẫn giữ nguyên đó."
+        ]
+      },
+      "answer": {
+        "assignment": {
+          "ong-6-7": "nhom-7-6",
+          "ong-7-4": "nhom-6-5",
+          "ong-7-7": "nhom-6-8",
+          "ong-7-8": "nhom-6-9"
+        }
+      }
+    },
+    {
+      "id": "huy-hieu-gom-chuc",
+      "title": "Huy hiệu gom chục",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Ong Vàng tặng {name} một hũ mật nhỏ có dán nhãn \"Bậc thầy gom đủ chục\". Bò Sữa Mơ thì tặng thêm một bông hướng dương to bằng cái mũ."
+    },
+    {
+      "id": "qua-bau-roi-lop-bop",
+      "title": "Quả bầu rơi lộp bộp",
+      "kind": "unlock",
+      "trigger": "auto",
+      "text": "Lộp bộp! Ở giàn bầu bên kia vườn, mấy quả bầu khắc bảng cộng rụng xuống đất. Sâu Xanh bò ra, mặt mếu máo: \"Bảng cộng của tớ lăn mất rồi!\""
+    }
+  ],
+  "reward": {
+    "xp": 90,
+    "coin": 15,
+    "skillXp": {
+      "phep-cong": 2,
+      "bai-toan-loi-van": 1
+    }
+  }
+}

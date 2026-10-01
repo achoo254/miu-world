@@ -1,0 +1,1554 @@
+{
+  "id": "toan2-cd2-b14",
+  "region": "truong-hoc",
+  "chapter": 2,
+  "title": "Câu đố trước cửa nhà kính",
+  "status": "draft",
+  "lesson": "toan2-t1-b14",
+  "summary": "Vẹt Xanh giữ chìa khóa nhà kính và chỉ chịu mở cửa khi cả vườn giải hết câu đố cộng, trừ qua 10 của nó; {name} trổ tài tính nhẩm rồi đấu với Vẹt một ván Cầu thang – cầu trượt.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "Vẹt Xanh",
+    "where": "Vườn trường: cửa nhà kính, sân gạch trước nhà kính",
+    "goal": "Giải hết câu đố của Vẹt Xanh để nhà kính được mở cửa",
+    "play": "Tìm chìa khóa, tính nhẩm, đưa chim về chuồng, điền theo mũi tên, chọn câu đúng, tìm thức ăn cho con vật, chọn phép tính, chơi Cầu thang – cầu trượt",
+    "learn": "Toán 2 Bài 14: luyện tập chung phép cộng, phép trừ (qua 10) trong phạm vi 20",
+    "reward": "80 XP, 15 xu, Phép cộng +1, Phép trừ +1, Bài toán có lời văn +1",
+    "unlock": "Bài 15 \"Ki-lô-gam\""
+  },
+  "phases": {
+    "hook": "vet-khoa-cua",
+    "explore": "tim-chia-khoa",
+    "learn": "vet-on-bai",
+    "challenge": "nham-hai-cot",
+    "decision": "de-truoc-kho-sau",
+    "finale": "cau-thang-cau-truot",
+    "reward": "huy-hieu-nha-kinh",
+    "unlock": "can-dia-lech"
+  },
+  "texts": {},
+  "places": {
+    "vet-xanh": "cửa nhà kính",
+    "tim-chia-khoa": "cửa nhà kính",
+    "vet-xanh-san-gach": "sân gạch trước nhà kính"
+  },
+  "steps": [
+    {
+      "id": "vet-khoa-cua",
+      "title": "Vẹt Xanh gác cửa",
+      "goTo": "Đến cửa nhà kính, Vẹt Xanh đang đậu trên tay nắm cửa",
+      "kind": "dialogue",
+      "target": "vet-xanh",
+      "lines": [
+        {
+          "speaker": "Vẹt Xanh",
+          "text": "Đứng lại! Đứng lại! Muốn vào nhà kính thì phải qua cửa ải câu đố của Vẹt Xanh. Đố! Đố! Đố!"
+        },
+        {
+          "speaker": "Vẹt Xanh",
+          "text": "Mà khoan… tớ lỡ làm rơi ba chiếc chìa khóa nhỏ quanh đây rồi. Lắm lời quá nên quên mất cất ở đâu."
+        },
+        {
+          "speaker": "Vẹt Xanh",
+          "text": "{name} tìm giúp tớ ba chiếc chìa khóa, rồi tớ đố, cậu giải. Đồng ý không? Đồng ý không?"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Đồng ý! Đố gì tớ cũng giải",
+          "reply": "Vẹt Xanh xòe cánh: Tự tin quá! Tự tin quá! Tớ thích rồi đấy."
+        },
+        {
+          "text": "Cậu nói ít thôi Vẹt ơi!",
+          "reply": "Vẹt Xanh: Ít thôi, ít thôi… à mà tớ vừa nói hai lần rồi. Hí hí!"
+        }
+      ]
+    },
+    {
+      "id": "tim-chia-khoa",
+      "title": "Ba chiếc chìa khóa nhỏ",
+      "goTo": "Tìm ba chiếc chìa khóa Vẹt Xanh làm rơi quanh cửa nhà kính",
+      "kind": "search",
+      "targets": [
+        "toan2-cd2-chia-khoa-do",
+        "toan2-cd2-chia-khoa-xanh",
+        "toan2-cd2-chia-khoa-vang"
+      ]
+    },
+    {
+      "id": "vet-on-bai",
+      "title": "Vẹt ôn bài siêu tốc",
+      "kind": "dialogue",
+      "target": "vet-xanh",
+      "lines": [
+        {
+          "speaker": "Vẹt Xanh",
+          "text": "Đủ chìa rồi! Giờ ôn bài siêu tốc nhé: cộng qua 10 thì gom cho đủ 10 trước, ví dụ 8 + 6 = 8 + 2 + 4 = 14."
+        },
+        {
+          "speaker": "Vẹt Xanh",
+          "text": "Trừ qua 10 thì trừ cho về 10 trước: 14 – 6 = 14 – 4 – 2 = 8. Nhớ chưa? Nhớ chưa?"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Nhớ rồi, đố đi Vẹt!",
+          "reply": "Vẹt Xanh ưỡn ngực: Câu đố thứ nhất, nghe cho kĩ đây!"
+        }
+      ]
+    },
+    {
+      "id": "nham-hai-cot",
+      "title": "Hai cột tính nhẩm",
+      "target": "vet-xanh",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Vẹt Xanh đọc liền một mạch, không kịp thở. Tính nhẩm.",
+      "template": "a) 8 + 6 = {{b1}}\na) 9 + 4 = {{b2}}\na) 7 + 8 = {{b3}}\na) 5 + 7 = {{b4}}\na) 4 + 8 = {{b5}}\na) 8 + 7 = {{b6}}\nb) 11 – 8 = {{b7}}\nb) 13 – 7 = {{b8}}\nb) 17 – 9 = {{b9}}\nb) 14 – 6 = {{b10}}\nb) 12 – 5 = {{b11}}\nb) 16 – 8 = {{b12}}",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o14",
+              "text": "14"
+            },
+            {
+              "id": "o15",
+              "text": "15"
+            },
+            {
+              "id": "o41",
+              "text": "41"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o11",
+              "text": "11"
+            },
+            {
+              "id": "o13",
+              "text": "13"
+            },
+            {
+              "id": "o15",
+              "text": "15"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o15",
+              "text": "15"
+            },
+            {
+              "id": "o17",
+              "text": "17"
+            },
+            {
+              "id": "o51",
+              "text": "51"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "o11",
+              "text": "11"
+            },
+            {
+              "id": "o12",
+              "text": "12"
+            },
+            {
+              "id": "o13",
+              "text": "13"
+            }
+          ]
+        },
+        {
+          "id": "b5",
+          "options": [
+            {
+              "id": "o10",
+              "text": "10"
+            },
+            {
+              "id": "o12",
+              "text": "12"
+            },
+            {
+              "id": "o14",
+              "text": "14"
+            }
+          ]
+        },
+        {
+          "id": "b6",
+          "options": [
+            {
+              "id": "o15",
+              "text": "15"
+            },
+            {
+              "id": "o17",
+              "text": "17"
+            },
+            {
+              "id": "o25",
+              "text": "25"
+            }
+          ]
+        },
+        {
+          "id": "b7",
+          "options": [
+            {
+              "id": "o3",
+              "text": "3"
+            },
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o13",
+              "text": "13"
+            }
+          ]
+        },
+        {
+          "id": "b8",
+          "options": [
+            {
+              "id": "o5",
+              "text": "5"
+            },
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o8",
+              "text": "8"
+            }
+          ]
+        },
+        {
+          "id": "b9",
+          "options": [
+            {
+              "id": "o8",
+              "text": "8"
+            },
+            {
+              "id": "o9",
+              "text": "9"
+            },
+            {
+              "id": "o10",
+              "text": "10"
+            }
+          ]
+        },
+        {
+          "id": "b10",
+          "options": [
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o8",
+              "text": "8"
+            },
+            {
+              "id": "o18",
+              "text": "18"
+            }
+          ]
+        },
+        {
+          "id": "b11",
+          "options": [
+            {
+              "id": "o5",
+              "text": "5"
+            },
+            {
+              "id": "o7",
+              "text": "7"
+            },
+            {
+              "id": "o8",
+              "text": "8"
+            }
+          ]
+        },
+        {
+          "id": "b12",
+          "options": [
+            {
+              "id": "o8",
+              "text": "8"
+            },
+            {
+              "id": "o9",
+              "text": "9"
+            },
+            {
+              "id": "o18",
+              "text": "18"
+            }
+          ]
+        }
+      ],
+      "skill": "phep-cong",
+      "curriculumRef": [
+        "toan2-t1-b14-luyen-tap-1-a1",
+        "toan2-t1-b14-luyen-tap-1-a2",
+        "toan2-t1-b14-luyen-tap-1-a3",
+        "toan2-t1-b14-luyen-tap-1-a4",
+        "toan2-t1-b14-luyen-tap-1-a5",
+        "toan2-t1-b14-luyen-tap-1-a6",
+        "toan2-t1-b14-luyen-tap-1-b1",
+        "toan2-t1-b14-luyen-tap-1-b2",
+        "toan2-t1-b14-luyen-tap-1-b3",
+        "toan2-t1-b14-luyen-tap-1-b4",
+        "toan2-t1-b14-luyen-tap-1-b5",
+        "toan2-t1-b14-luyen-tap-1-b6"
+      ],
+      "support": {
+        "guide": [
+          "Cột a là phép cộng qua 10, cột b là phép trừ qua 10.",
+          "Cộng thì gom đủ 10 trước, trừ thì trừ về 10 trước."
+        ],
+        "hint": "7 + 8: 7 + 3 = 10, thêm 5 nữa là 15.",
+        "answer": {
+          "text": "a) 8 + 6 = 14; a) 9 + 4 = 13; a) 7 + 8 = 15; a) 5 + 7 = 12; a) 4 + 8 = 12; a) 8 + 7 = 15; b) 11 – 8 = 3; b) 13 – 7 = 6; b) 17 – 9 = 8; b) 14 – 6 = 8; b) 12 – 5 = 7; b) 16 – 8 = 8",
+          "explanation": "Cột a: 14, 13, 15, 12, 12, 15. Cột b: 3, 6, 8, 8, 7, 8."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Vẹt Xanh đọc nhanh mấy cậu cũng theo kịp, nể thật!",
+          "Mười hai phép tính, mười hai kết quả đúng, Vẹt câm nín luôn.",
+          "Đố! Đố! Đố!… Vẹt hết chữ để đố câu này rồi."
+        ],
+        "wrong": [
+          "Cột a là cộng, cột b là trừ, đừng lẫn hai cột nhé.",
+          "Gom đủ 10 trước rồi cộng phần còn lại.",
+          "Một kết quả lệch, Vẹt Xanh đang nghiêng đầu chờ cậu sửa."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o14",
+          "b2": "o13",
+          "b3": "o15",
+          "b4": "o12",
+          "b5": "o12",
+          "b6": "o15",
+          "b7": "o3",
+          "b8": "o6",
+          "b9": "o8",
+          "b10": "o8",
+          "b11": "o7",
+          "b12": "o8"
+        }
+      }
+    },
+    {
+      "id": "chim-bo-cau-ve-chuong",
+      "title": "Bồ câu về chuồng",
+      "target": "vet-xanh",
+      "kind": "challenge",
+      "mechanic": "classify",
+      "prompt": "Đàn bồ câu bạn của Vẹt bay ngang mái kính, con nào cũng đeo một phép tính. Tìm chuồng cho mỗi con chim.",
+      "groups": [
+        {
+          "id": "nhom-chuong-9",
+          "label": "Chuồng 9"
+        },
+        {
+          "id": "nhom-chuong-13",
+          "label": "Chuồng 13"
+        },
+        {
+          "id": "nhom-chuong-15",
+          "label": "Chuồng 15"
+        }
+      ],
+      "items": [
+        {
+          "id": "bo-cau-6-9",
+          "label": "6 + 9"
+        },
+        {
+          "id": "bo-cau-17-8",
+          "label": "17 – 8"
+        },
+        {
+          "id": "bo-cau-7-8",
+          "label": "7 + 8"
+        },
+        {
+          "id": "bo-cau-14-5",
+          "label": "14 – 5"
+        },
+        {
+          "id": "bo-cau-6-7",
+          "label": "6 + 7"
+        }
+      ],
+      "skill": "phep-tru",
+      "curriculumRef": [
+        "toan2-t1-b14-luyen-tap-2-a",
+        "toan2-t1-b14-luyen-tap-2-b",
+        "toan2-t1-b14-luyen-tap-2-c",
+        "toan2-t1-b14-luyen-tap-2-d",
+        "toan2-t1-b14-luyen-tap-2-e"
+      ],
+      "support": {
+        "guide": [
+          "Tính phép tính trên mỗi chú chim.",
+          "Chim về chuồng ghi kết quả; chim mẫu 8 + 5 ở chuồng 13."
+        ],
+        "hint": "6 + 9 và 7 + 8 cùng bằng 15.",
+        "answer": {
+          "text": "Chuồng 15: 6 + 9, 7 + 8; chuồng 9: 17 – 8, 14 – 5; chuồng 13: 6 + 7",
+          "explanation": "6 + 9 = 15, 17 – 8 = 9, 7 + 8 = 15, 14 – 5 = 9, 6 + 7 = 13."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Gù gù gù! Cả đàn bồ câu chui vào chuồng ấm áp.",
+          "Không chú chim nào đậu nhầm mái, Vẹt Xanh vỗ cánh khen.",
+          "Phép cộng hay phép trừ cậu đều tính chuẩn cả."
+        ],
+        "wrong": [
+          "Có chú bồ câu đang gõ nhầm cửa chuồng hàng xóm.",
+          "Xem kĩ dấu cộng hay dấu trừ trên mỗi chú chim.",
+          "Hai chú chim cùng về chuồng 9 đấy, tìm lại nhé."
+        ]
+      },
+      "answer": {
+        "assignment": {
+          "bo-cau-6-9": "nhom-chuong-15",
+          "bo-cau-17-8": "nhom-chuong-9",
+          "bo-cau-7-8": "nhom-chuong-15",
+          "bo-cau-14-5": "nhom-chuong-9",
+          "bo-cau-6-7": "nhom-chuong-13"
+        }
+      }
+    },
+    {
+      "id": "gia-sach-vo",
+      "title": "Giá sách trong nhà kính",
+      "target": "vet-xanh",
+      "kind": "riddle",
+      "question": "Vẹt Xanh ghé mắt qua ô kính, nhìn thấy giá sách của lớp học vườn. Trên giá có 9 quyển sách và 8 quyển vở. Hỏi trên giá có tất cả bao nhiêu quyển sách và vở?",
+      "skill": "bai-toan-loi-van",
+      "curriculumRef": [
+        "toan2-t1-b14-luyen-tap-3-a"
+      ],
+      "support": {
+        "guide": [
+          "\"Tất cả\" nghĩa là gộp lại, ta làm phép cộng.",
+          "Phép tính là 9 + 8."
+        ],
+        "hint": "9 + 1 = 10, thêm 7 nữa.",
+        "answer": {
+          "text": "9 + 8 = 17. Đáp số: 17 quyển",
+          "explanation": "Trên giá có tất cả 9 + 8 = 17 (quyển sách và vở)."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Mười bảy quyển, Vẹt Xanh đếm lại bằng mỏ: chuẩn!",
+          "Gộp sách với vở gọn gàng như xếp lên giá.",
+          "Cậu giải nhanh hơn Vẹt kịp hỏi \"đố! đố!\"."
+        ],
+        "wrong": [
+          "Hỏi \"tất cả\" thì mình gộp lại bằng phép cộng.",
+          "Lấy 9 cộng 8, gom 1 từ số 8 để đủ 10 trước.",
+          "Thử đếm thêm 8 bước từ số 9 xem."
+        ]
+      },
+      "answer": {
+        "value": 17
+      }
+    },
+    {
+      "id": "mui-ten-quanh-chau",
+      "title": "Mũi tên quanh chậu cây",
+      "target": "vet-xanh",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Vẹt Xanh vẽ mũi tên nối các chậu cây trong nhà kính: bắt đầu từ chậu số 7, cộng 9, trừ 8, cộng 5. Số ?",
+      "template": "7 → (+ 9) → {{b1}} → (– 8) → {{b2}} → (+ 5) → {{b3}}",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o15",
+              "text": "15"
+            },
+            {
+              "id": "o16",
+              "text": "16"
+            },
+            {
+              "id": "o18",
+              "text": "18"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o8",
+              "text": "8"
+            },
+            {
+              "id": "o9",
+              "text": "9"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o13",
+              "text": "13"
+            },
+            {
+              "id": "o23",
+              "text": "23"
+            },
+            {
+              "id": "o31",
+              "text": "31"
+            }
+          ]
+        }
+      ],
+      "skill": "phep-cong",
+      "curriculumRef": [
+        "toan2-t1-b14-luyen-tap-4-a",
+        "toan2-t1-b14-luyen-tap-4-b",
+        "toan2-t1-b14-luyen-tap-4-c"
+      ],
+      "support": {
+        "guide": [
+          "Mỗi mũi tên làm một phép tính với số ở ô trước.",
+          "Kết quả ô này là số bắt đầu của ô sau."
+        ],
+        "hint": "7 + 9 = 16.",
+        "answer": {
+          "text": "7 → (+ 9) → 16 → (– 8) → 8 → (+ 5) → 13",
+          "explanation": "7 + 9 = 16; 16 – 8 = 8; 8 + 5 = 13."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đi hết các mũi tên, chậu cây cuối cùng nở hoa luôn!",
+          "Ba chậu cây, ba con số, chẳng lạc mũi tên nào.",
+          "Vẹt Xanh hót một tràng dài: tính tiếp sức hay quá!"
+        ],
+        "wrong": [
+          "Lấy kết quả ô trước để làm phép tính tiếp theo nhé.",
+          "Mũi tên thứ hai là trừ 8 đấy.",
+          "Kiểm tra lại 7 + 9 trước tiên."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o16",
+          "b2": "o8",
+          "b3": "o13"
+        }
+      }
+    },
+    {
+      "id": "de-truoc-kho-sau",
+      "title": "Đố dễ hay đố khó?",
+      "kind": "dialogue",
+      "target": "vet-xanh",
+      "lines": [
+        {
+          "speaker": "Vẹt Xanh",
+          "text": "Giỏi! Giỏi! Nửa cửa nhà kính đã hé ra rồi. Còn một nửa nữa thôi."
+        },
+        {
+          "speaker": "Vẹt Xanh",
+          "text": "Cậu muốn tớ đố tiếp loạt tính nhẩm siêu tốc, hay đố những câu \"bẫy\" Đúng – Sai trước?"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tính nhẩm siêu tốc trước!",
+          "reply": "Vẹt Xanh: Siêu tốc thì tớ đọc nhanh gấp đôi nhé! Chuẩn bị… bắt đầu!"
+        },
+        {
+          "text": "Câu bẫy trước cho vui!",
+          "reply": "Vẹt Xanh: Muốn bẫy thì phải qua tính nhẩm trước đã. Hí hí, tớ cũng biết bẫy đấy!"
+        }
+      ]
+    },
+    {
+      "id": "nham-sieu-toc",
+      "title": "Tính nhẩm siêu tốc",
+      "target": "vet-xanh",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Vẹt Xanh vừa đọc vừa nhảy lò cò trên giàn hoa. Tính nhẩm.",
+      "template": "7 + 6 = {{b1}}\n8 + 4 = {{b2}}\n6 + 8 = {{b3}}\n9 + 7 = {{b4}}\n13 – 7 = {{b5}}\n12 – 8 = {{b6}}\n14 – 6 = {{b7}}\n16 – 9 = {{b8}}\n13 – 6 = {{b9}}\n12 – 4 = {{b10}}\n14 – 8 = {{b11}}\n16 – 7 = {{b12}}",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o12",
+              "text": "12"
+            },
+            {
+              "id": "o13",
+              "text": "13"
+            },
+            {
+              "id": "o14",
+              "text": "14"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o10",
+              "text": "10"
+            },
+            {
+              "id": "o12",
+              "text": "12"
+            },
+            {
+              "id": "o22",
+              "text": "22"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o13",
+              "text": "13"
+            },
+            {
+              "id": "o14",
+              "text": "14"
+            },
+            {
+              "id": "o41",
+              "text": "41"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o16",
+              "text": "16"
+            },
+            {
+              "id": "o18",
+              "text": "18"
+            }
+          ]
+        },
+        {
+          "id": "b5",
+          "options": [
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o5",
+              "text": "5"
+            },
+            {
+              "id": "o6",
+              "text": "6"
+            }
+          ]
+        },
+        {
+          "id": "b6",
+          "options": [
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o5",
+              "text": "5"
+            },
+            {
+              "id": "o14",
+              "text": "14"
+            }
+          ]
+        },
+        {
+          "id": "b7",
+          "options": [
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o7",
+              "text": "7"
+            },
+            {
+              "id": "o8",
+              "text": "8"
+            }
+          ]
+        },
+        {
+          "id": "b8",
+          "options": [
+            {
+              "id": "o5",
+              "text": "5"
+            },
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o7",
+              "text": "7"
+            }
+          ]
+        },
+        {
+          "id": "b9",
+          "options": [
+            {
+              "id": "o7",
+              "text": "7"
+            },
+            {
+              "id": "o8",
+              "text": "8"
+            },
+            {
+              "id": "o9",
+              "text": "9"
+            }
+          ]
+        },
+        {
+          "id": "b10",
+          "options": [
+            {
+              "id": "o8",
+              "text": "8"
+            },
+            {
+              "id": "o10",
+              "text": "10"
+            },
+            {
+              "id": "o18",
+              "text": "18"
+            }
+          ]
+        },
+        {
+          "id": "b11",
+          "options": [
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o16",
+              "text": "16"
+            }
+          ]
+        },
+        {
+          "id": "b12",
+          "options": [
+            {
+              "id": "o8",
+              "text": "8"
+            },
+            {
+              "id": "o9",
+              "text": "9"
+            },
+            {
+              "id": "o10",
+              "text": "10"
+            }
+          ]
+        }
+      ],
+      "skill": "phep-tru",
+      "curriculumRef": [
+        "toan2-t1-b14-luyen-tap-2-1-a",
+        "toan2-t1-b14-luyen-tap-2-1-b",
+        "toan2-t1-b14-luyen-tap-2-1-c",
+        "toan2-t1-b14-luyen-tap-2-1-d",
+        "toan2-t1-b14-luyen-tap-2-1-e",
+        "toan2-t1-b14-luyen-tap-2-1-g",
+        "toan2-t1-b14-luyen-tap-2-1-h",
+        "toan2-t1-b14-luyen-tap-2-1-i",
+        "toan2-t1-b14-luyen-tap-2-1-k",
+        "toan2-t1-b14-luyen-tap-2-1-l",
+        "toan2-t1-b14-luyen-tap-2-1-m",
+        "toan2-t1-b14-luyen-tap-2-1-n"
+      ],
+      "support": {
+        "guide": [
+          "Bốn phép đầu là cộng, tám phép sau là trừ.",
+          "Quên thì tách số cho đủ 10 hoặc về 10."
+        ],
+        "hint": "16 – 7: 16 – 6 = 10, 10 – 1 = 9.",
+        "answer": {
+          "text": "7 + 6 = 13; 8 + 4 = 12; 6 + 8 = 14; 9 + 7 = 16; 13 – 7 = 6; 12 – 8 = 4; 14 – 6 = 8; 16 – 9 = 7; 13 – 6 = 7; 12 – 4 = 8; 14 – 8 = 6; 16 – 7 = 9",
+          "explanation": "13, 12, 14, 16; 6, 4, 8, 7, 7, 8, 6, 9."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Siêu tốc thật! Vẹt Xanh chóng mặt ngã khỏi giàn hoa.",
+          "Cậu tính còn nhanh hơn Vẹt Xanh nói, kỉ lục mới!",
+          "Không sót phép nào, cửa nhà kính kêu \"cạch\" mở thêm."
+        ],
+        "wrong": [
+          "Chậm lại một chút, Vẹt Xanh đọc nhanh quá đấy.",
+          "Nhìn dấu trước khi tính: cộng hay trừ nào?",
+          "Một ô lệch rồi, dùng mẹo về 10 tính lại nhé."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o13",
+          "b2": "o12",
+          "b3": "o14",
+          "b4": "o16",
+          "b5": "o6",
+          "b6": "o4",
+          "b7": "o8",
+          "b8": "o7",
+          "b9": "o7",
+          "b10": "o8",
+          "b11": "o6",
+          "b12": "o9"
+        }
+      }
+    },
+    {
+      "id": "cau-bay-dung-sai",
+      "title": "Câu bẫy của Vẹt",
+      "target": "vet-xanh",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "prompt": "Vẹt Xanh cười ranh mãnh: có câu thật, có câu bẫy. Đ, S ? Chọn tất cả các câu đúng (Đ); câu không chọn là sai (S).",
+      "choices": [
+        {
+          "id": "a-9-6-14",
+          "text": "a) 9 + 6 = 14"
+        },
+        {
+          "id": "b-8-4-4-8",
+          "text": "b) 8 + 4 = 4 + 8"
+        },
+        {
+          "id": "c-15-8-6",
+          "text": "c) 15 – 8 > 6"
+        },
+        {
+          "id": "d-13-4-17-9",
+          "text": "d) 13 – 4 < 17 – 9"
+        }
+      ],
+      "skill": "so-sanh-so",
+      "curriculumRef": [
+        "toan2-t1-b14-luyen-tap-2-4-a",
+        "toan2-t1-b14-luyen-tap-2-4-b",
+        "toan2-t1-b14-luyen-tap-2-4-c",
+        "toan2-t1-b14-luyen-tap-2-4-d"
+      ],
+      "support": {
+        "guide": [
+          "Tính từng vế của mỗi câu.",
+          "Đổi chỗ các số hạng thì tổng không đổi."
+        ],
+        "hint": "13 – 4 = 9 còn 17 – 9 = 8.",
+        "answer": {
+          "text": "Đ: b, c; S: a, d",
+          "explanation": "a) sai vì 9 + 6 = 15; b) đúng vì đổi chỗ số hạng; c) đúng vì 15 – 8 = 7 > 6; d) sai vì 9 không bé hơn 8."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bẫy của Vẹt bị cậu gỡ sạch sành sanh!",
+          "Vẹt Xanh lẩm bẩm: lần sau phải nghĩ bẫy khó hơn mới được.",
+          "Hai câu đúng, hai câu bẫy, cậu phân biệt rõ ràng."
+        ],
+        "wrong": [
+          "Tính 9 + 6 cẩn thận xem có phải 14 không.",
+          "Một câu đúng về đổi chỗ số hạng chưa được chọn.",
+          "So 13 – 4 với 17 – 9: bên nào lớn hơn?"
+        ]
+      },
+      "answer": {
+        "choices": [
+          "b-8-4-4-8",
+          "c-15-8-6"
+        ]
+      }
+    },
+    {
+      "id": "tranh-trai-he",
+      "title": "Tranh vẽ trại hè",
+      "target": "vet-xanh",
+      "kind": "riddle",
+      "question": "Vẹt Xanh khoe bức tranh treo trong nhà kính. Trong đợt đi trại hè, Nam vẽ được 11 bức tranh, Mai vẽ được ít hơn Nam 3 bức tranh. Hỏi Mai vẽ được bao nhiêu bức tranh?",
+      "skill": "bai-toan-loi-van",
+      "curriculumRef": [
+        "toan2-t1-b14-luyen-tap-2-3"
+      ],
+      "support": {
+        "guide": [
+          "Mai vẽ ít hơn Nam nên số tranh của Mai bớt đi 3.",
+          "Lấy số tranh của Nam trừ đi 3 bức."
+        ],
+        "hint": "Đếm lùi 3 bước từ 11.",
+        "answer": {
+          "text": "11 – 3 = 8. Đáp số: 8 bức tranh",
+          "explanation": "Mai vẽ được 11 – 3 = 8 (bức tranh)."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Tám bức tranh của Mai được Vẹt treo kín một vách kính!",
+          "Ít hơn thì bớt đi, cậu nhớ bài hôm trước rồi.",
+          "Bức tranh thứ chín Vẹt vẽ thêm… hình chính cậu đấy!"
+        ],
+        "wrong": [
+          "Mai vẽ ít hơn Nam, vậy kết quả phải bé hơn 11.",
+          "Ít hơn 3 bức thì lấy 11 trừ 3 nhé.",
+          "Đây không phải bài gộp lại, đừng cộng nhé."
+        ]
+      },
+      "answer": {
+        "value": 8
+      }
+    },
+    {
+      "id": "thuc-an-cho-thu",
+      "title": "Bữa trưa của các con vật",
+      "target": "vet-xanh",
+      "kind": "challenge",
+      "mechanic": "classify",
+      "prompt": "Đến giờ trưa, các con vật trong vườn kéo đến cửa nhà kính đòi ăn. Tính rồi tìm thức ăn cho mỗi con vật.",
+      "groups": [
+        {
+          "id": "nhom-7-chiec-la",
+          "label": "7 – chiếc lá"
+        },
+        {
+          "id": "nhom-8-dia-ca",
+          "label": "8 – đĩa cá"
+        },
+        {
+          "id": "nhom-9-bat-thuc-an",
+          "label": "9 – bát thức ăn"
+        },
+        {
+          "id": "nhom-11-nai-chuoi",
+          "label": "11 – nải chuối"
+        },
+        {
+          "id": "nhom-14-cay-mia",
+          "label": "14 – cây mía"
+        }
+      ],
+      "items": [
+        {
+          "id": "con-khi-5-6",
+          "label": "Khỉ: 5 + 6"
+        },
+        {
+          "id": "con-cho-17-8",
+          "label": "Chó: 17 – 8"
+        },
+        {
+          "id": "con-voi-7-7",
+          "label": "Voi: 7 + 7"
+        },
+        {
+          "id": "con-sau-16-9",
+          "label": "Sâu: 16 – 9"
+        }
+      ],
+      "skill": "phep-tru",
+      "curriculumRef": [
+        "toan2-t1-b14-luyen-tap-3-1-a",
+        "toan2-t1-b14-luyen-tap-3-1-b",
+        "toan2-t1-b14-luyen-tap-3-1-c",
+        "toan2-t1-b14-luyen-tap-3-1-d"
+      ],
+      "support": {
+        "guide": [
+          "Tính phép tính con vật đeo trên cổ.",
+          "Thức ăn ghi số bằng kết quả; mèo mẫu 14 – 6 đã có đĩa cá."
+        ],
+        "hint": "Voi 7 + 7 = 14, hợp với cây mía.",
+        "answer": {
+          "text": "Khỉ – nải chuối; chó – bát thức ăn; voi – cây mía; sâu – chiếc lá",
+          "explanation": "Khỉ 5 + 6 = 11: nải chuối; chó 17 – 8 = 9: bát thức ăn; voi 7 + 7 = 14: cây mía; sâu 16 – 9 = 7: chiếc lá."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Măm măm! Khỉ ôm chuối, voi nhai mía, sâu gặm lá ngon lành.",
+          "Ai cũng no căng bụng, Vẹt Xanh chỉ xin một hạt hướng dương.",
+          "Bốn con vật, bốn món ăn, không ai phải nhịn đói."
+        ],
+        "wrong": [
+          "Con sâu đâu có ăn cây mía, tính lại phép của sâu nhé.",
+          "Có con vật đang cầm nhầm bát của bạn rồi.",
+          "Đĩa cá đã thuộc về mèo mẫu, đừng chia thêm cho ai."
+        ]
+      },
+      "answer": {
+        "assignment": {
+          "con-khi-5-6": "nhom-11-nai-chuoi",
+          "con-cho-17-8": "nhom-9-bat-thuc-an",
+          "con-voi-7-7": "nhom-14-cay-mia",
+          "con-sau-16-9": "nhom-7-chiec-la"
+        }
+      }
+    },
+    {
+      "id": "phep-tinh-be-nhat",
+      "title": "Phép tính bé nhất",
+      "target": "vet-xanh",
+      "kind": "challenge",
+      "mechanic": "quiz",
+      "prompt": "Vẹt Xanh giơ ba tấm thẻ. Chọn câu trả lời đúng. a) Phép tính nào dưới đây có kết quả bé nhất? A. 15 – 9 B. 13 – 8 C. 12 – 5",
+      "choices": [
+        {
+          "id": "a-15-9",
+          "text": "A. 15 – 9"
+        },
+        {
+          "id": "b-13-8",
+          "text": "B. 13 – 8"
+        },
+        {
+          "id": "c-12-5",
+          "text": "C. 12 – 5"
+        }
+      ],
+      "skill": "so-sanh-so",
+      "curriculumRef": [
+        "toan2-t1-b14-luyen-tap-3-2-a"
+      ],
+      "support": {
+        "guide": [
+          "Tính kết quả cả ba phép tính.",
+          "Chọn phép có kết quả bé nhất."
+        ],
+        "hint": "Các kết quả là 6, 5, 7.",
+        "answer": {
+          "text": "B. 13 – 8",
+          "explanation": "15 – 9 = 6, 13 – 8 = 5, 12 – 5 = 7; bé nhất là 13 – 8."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Thẻ B bé nhất, Vẹt Xanh lật thẻ đánh \"tách\"!",
+          "Cậu so ba kết quả nhanh như chớp.",
+          "Bé nhất là 5, cậu chọn trúng phóc."
+        ],
+        "wrong": [
+          "Tính cả ba thẻ rồi mới chọn nhé.",
+          "Thẻ A ra 6, vẫn còn thẻ bé hơn nữa đấy.",
+          "Thử tính lại 13 – 8 xem ra mấy."
+        ]
+      },
+      "answer": {
+        "choice": "b-13-8"
+      }
+    },
+    {
+      "id": "phep-tinh-lon-nhat",
+      "title": "Phép tính lớn nhất",
+      "target": "vet-xanh",
+      "kind": "challenge",
+      "mechanic": "quiz",
+      "prompt": "Vẹt Xanh đổi sang ba thẻ phép cộng. Chọn câu trả lời đúng. b) Phép tính nào dưới đây có kết quả lớn nhất? A. 7 + 8 B. 9 + 5 C. 8 + 9",
+      "choices": [
+        {
+          "id": "a-7-8",
+          "text": "A. 7 + 8"
+        },
+        {
+          "id": "b-9-5",
+          "text": "B. 9 + 5"
+        },
+        {
+          "id": "c-8-9",
+          "text": "C. 8 + 9"
+        }
+      ],
+      "skill": "so-sanh-so",
+      "curriculumRef": [
+        "toan2-t1-b14-luyen-tap-3-2-b"
+      ],
+      "support": {
+        "guide": [
+          "Tính tổng của từng thẻ.",
+          "Lần này chọn tổng lớn nhất."
+        ],
+        "hint": "Các tổng là 15, 14, 17.",
+        "answer": {
+          "text": "C. 8 + 9",
+          "explanation": "7 + 8 = 15, 9 + 5 = 14, 8 + 9 = 17; lớn nhất là 8 + 9."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Thẻ C lớn nhất, Vẹt Xanh tung thẻ lên trời ăn mừng!",
+          "Mười bảy là lớn nhất, cậu thắng ván thẻ rồi.",
+          "Đổi đề mà cậu vẫn không lúng túng chút nào."
+        ],
+        "wrong": [
+          "Lần này tìm lớn nhất, không phải bé nhất nhé.",
+          "Tính lại tổng 8 + 9 xem.",
+          "15 chưa phải tổng lớn nhất đâu."
+        ]
+      },
+      "answer": {
+        "choice": "c-8-9"
+      }
+    },
+    {
+      "id": "tinh-ba-so",
+      "title": "Ba số liền một hàng",
+      "target": "vet-xanh",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Câu đố cuối của cửa ải: phép tính có ba số, tính từ trái sang phải. Tính.",
+      "template": "a) 9 + 7 – 8 = {{b1}}\nb) 6 + 5 + 4 = {{b2}}\na) 15 – 3 – 6 = {{b3}}\nb) 16 – 8 + 5 = {{b4}}",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o7",
+              "text": "7"
+            },
+            {
+              "id": "o8",
+              "text": "8"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o15",
+              "text": "15"
+            },
+            {
+              "id": "o16",
+              "text": "16"
+            },
+            {
+              "id": "o25",
+              "text": "25"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o16",
+              "text": "16"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "o11",
+              "text": "11"
+            },
+            {
+              "id": "o13",
+              "text": "13"
+            },
+            {
+              "id": "o14",
+              "text": "14"
+            }
+          ]
+        }
+      ],
+      "skill": "phep-cong",
+      "curriculumRef": [
+        "toan2-t1-b14-luyen-tap-2-2-a",
+        "toan2-t1-b14-luyen-tap-2-2-b",
+        "toan2-t1-b14-luyen-tap-3-3-a",
+        "toan2-t1-b14-luyen-tap-3-3-b"
+      ],
+      "support": {
+        "guide": [
+          "Tính hai số đầu trước.",
+          "Lấy kết quả đó tính tiếp với số thứ ba."
+        ],
+        "hint": "9 + 7 = 16, rồi 16 – 8.",
+        "answer": {
+          "text": "a) 9 + 7 – 8 = 8; b) 6 + 5 + 4 = 15; a) 15 – 3 – 6 = 6; b) 16 – 8 + 5 = 13",
+          "explanation": "9 + 7 – 8 = 8; 6 + 5 + 4 = 15; 15 – 3 – 6 = 6; 16 – 8 + 5 = 13."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Cạch! Ổ khóa cuối cùng bật mở, nhà kính chào cậu!",
+          "Tính từ trái sang phải, đều tăm tắp không sai bước nào.",
+          "Vẹt Xanh tuyên bố: cửa ải câu đố đã bị phá!"
+        ],
+        "wrong": [
+          "Tính lần lượt từ trái sang phải nhé.",
+          "Có dòng vừa cộng vừa trừ, nhìn kĩ từng dấu.",
+          "Kết quả bước đầu của dòng đó đã đúng chưa?"
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o8",
+          "b2": "o15",
+          "b3": "o6",
+          "b4": "o13"
+        }
+      }
+    },
+    {
+      "id": "cau-thang-cau-truot",
+      "title": "Ván Cầu thang – cầu trượt",
+      "goTo": "Ra sân gạch trước nhà kính, Vẹt Xanh đã kẻ bàn cờ",
+      "target": "vet-xanh-san-gach",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Vẹt Xanh thách đấu một ván CẦU THANG – CẦU TRƯỢT: em và Vẹt mỗi người một quân. Cách chơi: • Chơi theo nhóm. • Người chơi bắt đầu từ ô xuất phát. Khi đến lượt, người chơi gieo xúc xắc. Đếm số chấm ở mặt trên xúc xắc rồi di chuyển số ô bằng số chấm đó. Nêu kết quả phép tính tại ô đi đến, nếu nêu sai kết quả thì phải quay về ô xuất phát trước đó. Khi đến chân cầu thang, em leo lên; khi đến đỉnh cầu trượt, em trượt xuống. • Trò chơi kết thúc khi có người về đích. Đến ô nào, em nêu kết quả phép tính ở ô đó, kể cả ô của Vẹt.",
+      "template": "Lượt 1: Em gieo được 4 chấm, đến ô 14 – 8 = {{b1}}\nLượt 2: Vẹt gieo được 3 chấm, đến ô 13 – 6 = {{b2}}\nLượt 3: Em gieo được 2 chấm, đến ô 18 – 9 = {{b3}}\nÔ này là chân cầu thang, em leo lên tới ô 15 – 8 = {{b4}}\nLượt 4: Vẹt gieo được 5 chấm, đến ô 16 – 8 = {{b5}}\nLượt 5: Em gieo được 1 chấm, đến ô 14 – 5 = {{b6}}\nLại một chân cầu thang! Em leo lên tới ô 8 + 4 = {{b7}}\nLượt 6: Vẹt gieo được 6 chấm, đến ô 4 + 9 = {{b8}}\nLượt 7: Em gieo được 1 chấm, đến ô 7 + 8 = {{b9}}\nLượt 8: Vẹt gieo được 6 chấm, đến ô 16 – 7 = {{b10}}\nÔ của Vẹt là đỉnh cầu trượt, Vẹt trượt xuống ô 7 + 7 = {{b11}}\nLượt 9: Em gieo được 1 chấm và về ĐÍCH!",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o7",
+              "text": "7"
+            },
+            {
+              "id": "o16",
+              "text": "16"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o7",
+              "text": "7"
+            },
+            {
+              "id": "o9",
+              "text": "9"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o7",
+              "text": "7"
+            },
+            {
+              "id": "o9",
+              "text": "9"
+            },
+            {
+              "id": "o19",
+              "text": "19"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "o7",
+              "text": "7"
+            },
+            {
+              "id": "o8",
+              "text": "8"
+            },
+            {
+              "id": "o17",
+              "text": "17"
+            }
+          ]
+        },
+        {
+          "id": "b5",
+          "options": [
+            {
+              "id": "o7",
+              "text": "7"
+            },
+            {
+              "id": "o8",
+              "text": "8"
+            },
+            {
+              "id": "o10",
+              "text": "10"
+            }
+          ]
+        },
+        {
+          "id": "b6",
+          "options": [
+            {
+              "id": "o7",
+              "text": "7"
+            },
+            {
+              "id": "o9",
+              "text": "9"
+            },
+            {
+              "id": "o19",
+              "text": "19"
+            }
+          ]
+        },
+        {
+          "id": "b7",
+          "options": [
+            {
+              "id": "o11",
+              "text": "11"
+            },
+            {
+              "id": "o12",
+              "text": "12"
+            },
+            {
+              "id": "o22",
+              "text": "22"
+            }
+          ]
+        },
+        {
+          "id": "b8",
+          "options": [
+            {
+              "id": "o12",
+              "text": "12"
+            },
+            {
+              "id": "o13",
+              "text": "13"
+            },
+            {
+              "id": "o23",
+              "text": "23"
+            }
+          ]
+        },
+        {
+          "id": "b9",
+          "options": [
+            {
+              "id": "o14",
+              "text": "14"
+            },
+            {
+              "id": "o15",
+              "text": "15"
+            },
+            {
+              "id": "o51",
+              "text": "51"
+            }
+          ]
+        },
+        {
+          "id": "b10",
+          "options": [
+            {
+              "id": "o7",
+              "text": "7"
+            },
+            {
+              "id": "o9",
+              "text": "9"
+            },
+            {
+              "id": "o19",
+              "text": "19"
+            }
+          ]
+        },
+        {
+          "id": "b11",
+          "options": [
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o12",
+              "text": "12"
+            },
+            {
+              "id": "o14",
+              "text": "14"
+            }
+          ]
+        }
+      ],
+      "skill": "phep-tru",
+      "curriculumRef": [
+        "toan2-t1-b14-tro-choi-1"
+      ],
+      "support": {
+        "guide": [
+          "Mỗi lượt, tính phép tính ở ô quân vừa đến.",
+          "Leo thang hay trượt xuống thì tính tiếp ô mới."
+        ],
+        "hint": "Ô 18 – 9 là chân cầu thang đầu tiên.",
+        "answer": {
+          "text": "Lượt 1: Em gieo được 4 chấm, đến ô 14 – 8 = 6; Lượt 2: Vẹt gieo được 3 chấm, đến ô 13 – 6 = 7; Lượt 3: Em gieo được 2 chấm, đến ô 18 – 9 = 9; Ô này là chân cầu thang, em leo lên tới ô 15 – 8 = 7; Lượt 4: Vẹt gieo được 5 chấm, đến ô 16 – 8 = 8; Lượt 5: Em gieo được 1 chấm, đến ô 14 – 5 = 9; Lại một chân cầu thang! Em leo lên tới ô 8 + 4 = 12; Lượt 6: Vẹt gieo được 6 chấm, đến ô 4 + 9 = 13; Lượt 7: Em gieo được 1 chấm, đến ô 7 + 8 = 15; Lượt 8: Vẹt gieo được 6 chấm, đến ô 16 – 7 = 9; Ô của Vẹt là đỉnh cầu trượt, Vẹt trượt xuống ô 7 + 7 = 14; Lượt 9: Em gieo được 1 chấm và về ĐÍCH!",
+          "explanation": "Kết quả các ô theo lượt: 6, 7, 9, 7, 8, 9, 12, 13, 15, 9, 14. Em leo hai cầu thang và về đích trước, Vẹt bị trượt từ ô 16 – 7 xuống ô 7 + 7."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Về ĐÍCH! Vẹt Xanh thua mà vẫn hót \"Hay quá! Hay quá!\"",
+          "Hai lần leo thang, không lần nào nêu sai kết quả, vô địch!",
+          "Vẹt trượt cầu trượt kêu \"Ối ối\", cả vườn cười rộ."
+        ],
+        "wrong": [
+          "Nêu sai là phải về ô xuất phát đó, tính lại cẩn thận nhé.",
+          "Leo lên đỉnh thang thì tính ô mới ở đỉnh thang.",
+          "Có một lượt của Vẹt cậu tính chưa đúng."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o6",
+          "b2": "o7",
+          "b3": "o9",
+          "b4": "o7",
+          "b5": "o8",
+          "b6": "o9",
+          "b7": "o12",
+          "b8": "o13",
+          "b9": "o15",
+          "b10": "o9",
+          "b11": "o14"
+        }
+      }
+    },
+    {
+      "id": "huy-hieu-nha-kinh",
+      "title": "Nhà kính mở cửa",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Cửa nhà kính mở toang, hương hoa ùa ra. Vẹt Xanh đeo cho {name} huy hiệu \"Phá cửa ải câu đố\" và hót vang: \"Nhà vô địch! Nhà vô địch!\""
+    },
+    {
+      "id": "can-dia-lech",
+      "title": "Chiếc cân đĩa lệch",
+      "kind": "unlock",
+      "trigger": "auto",
+      "text": "Từ căng tin vọng sang tiếng kêu: Chim Cánh Cụt Pin đứng nhìn chiếc cân đĩa lệch hẳn một bên, chưa biết cân lại các túi hàng thế nào."
+    }
+  ],
+  "reward": {
+    "xp": 80,
+    "coin": 15,
+    "skillXp": {
+      "phep-cong": 1,
+      "phep-tru": 1,
+      "bai-toan-loi-van": 1
+    }
+  }
+}

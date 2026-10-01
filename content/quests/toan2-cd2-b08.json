@@ -1,0 +1,1155 @@
+{
+  "id": "toan2-cd2-b08",
+  "region": "truong-hoc",
+  "chapter": 2,
+  "title": "Sâu Xanh và những quả bầu bảng cộng",
+  "status": "draft",
+  "lesson": "toan2-t1-b08",
+  "summary": "Gió làm rụng những quả bầu Sâu Xanh khắc bảng cộng, Heo Ủn lại suýt đem nấu canh; {name} giúp Sâu Xanh khắc lại bảng cộng (qua 10) và giải đố trước khi nồi canh sôi.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "Sâu Xanh, Heo Ủn, Gấu Trúc Tròn",
+    "where": "Vườn trường: giàn bầu, gốc giàn bầu, bếp nhỏ cuối vườn",
+    "goal": "Khắc lại bảng cộng (qua 10) lên những quả bầu bị rụng",
+    "play": "Nhặt bầu, điền bảng cộng, chọn đèn lồng, thả cá, so sánh, đưa gấu về tổ ong, đố cáp treo",
+    "learn": "Toán 2 Bài 8: bảng cộng (qua 10)",
+    "reward": "85 XP, 15 xu, Phép cộng +2, So sánh số +1",
+    "unlock": "Bài 9 \"Bài toán về thêm, bớt một số đơn vị\""
+  },
+  "phases": {
+    "hook": "bau-rung-mat-bang",
+    "explore": "nhat-bau-rung",
+    "learn": "qua-bau-dau-tien",
+    "challenge": "bang-cong-tren-bau",
+    "decision": "heo-un-doi-nau-canh",
+    "finale": "cap-treo-cua-sau",
+    "reward": "huy-hieu-bang-cong",
+    "unlock": "be-con-chay-tung-tang"
+  },
+  "texts": {},
+  "places": {
+    "sau-xanh": "giàn bầu",
+    "nhat-bau-rung": "gốc giàn bầu",
+    "heo-un-bep-vuon": "bếp nhỏ cuối vườn"
+  },
+  "steps": [
+    {
+      "id": "bau-rung-mat-bang",
+      "title": "Bảng cộng rụng mất rồi",
+      "goTo": "Đến giàn bầu, Sâu Xanh đang treo lủng lẳng trên sợi tơ",
+      "kind": "dialogue",
+      "target": "sau-xanh",
+      "lines": [
+        {
+          "speaker": "Sâu Xanh",
+          "text": "Hu hu {name} ơi… Tớ mất cả mùa hè khắc bảng cộng lên từng quả bầu, đêm qua gió thổi rụng hết rồi."
+        },
+        {
+          "speaker": "Heo Ủn",
+          "text": "Ủn ỉn! Bầu rụng à? Thế thì tớ xin mấy quả nấu canh nhé, canh bầu ngon tuyệt cú mèo!"
+        },
+        {
+          "speaker": "Sâu Xanh",
+          "text": "Không được! Trên đó có bảng cộng đấy. Tớ bò chậm lắm, {name} nhặt giúp tớ trước khi Heo Ủn ôm đi hết nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ nhặt ngay đây!",
+          "reply": "Sâu Xanh rưng rưng: Cảm ơn cậu, tớ mà bò thì tới tối mới nhặt xong một quả."
+        },
+        {
+          "text": "Heo Ủn chờ chút nha!",
+          "reply": "Heo Ủn xoa bụng: Được thôi, nhưng bụng tớ đang réo ục ục rồi đấy."
+        }
+      ]
+    },
+    {
+      "id": "nhat-bau-rung",
+      "title": "Nhặt bầu rụng",
+      "goTo": "Nhặt ba quả bầu khắc số rụng quanh gốc giàn bầu",
+      "kind": "search",
+      "targets": [
+        "toan2-cd2-bau-tron",
+        "toan2-cd2-bau-dai",
+        "toan2-cd2-bau-ho-lo"
+      ]
+    },
+    {
+      "id": "qua-bau-dau-tien",
+      "title": "Quả bầu tròn đầu tiên",
+      "goTo": "Mang bầu về giàn bầu cho Sâu Xanh",
+      "target": "sau-xanh",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Trên quả bầu tròn còn dòng chữ Sâu Xanh khắc: \"Mình và Rô-bốt cùng hoàn thành các phép cộng này nhé!\"",
+      "template": "9 + 2 = 11\n8 + 6 = {{b1}}\n7 + 5 = {{b2}}\n6 + 6 = {{b3}}",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o14",
+              "text": "14"
+            },
+            {
+              "id": "o24",
+              "text": "24"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o2",
+              "text": "2"
+            },
+            {
+              "id": "o11",
+              "text": "11"
+            },
+            {
+              "id": "o12",
+              "text": "12"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o10",
+              "text": "10"
+            },
+            {
+              "id": "o11",
+              "text": "11"
+            },
+            {
+              "id": "o12",
+              "text": "12"
+            }
+          ]
+        }
+      ],
+      "skill": "phep-cong",
+      "curriculumRef": [
+        "toan2-t1-b08-kham-pha-1-a",
+        "toan2-t1-b08-kham-pha-1-b",
+        "toan2-t1-b08-kham-pha-1-c"
+      ],
+      "support": {
+        "guide": [
+          "Gom số đầu cho đủ 10 bằng cách mượn bớt từ số sau.",
+          "8 mượn 2, 7 mượn 3, 6 mượn 4."
+        ],
+        "hint": "6 + 6: 6 + 4 = 10, còn 2, được 12.",
+        "answer": {
+          "text": "9 + 2 = 11; 8 + 6 = 14; 7 + 5 = 12; 6 + 6 = 12",
+          "explanation": "8 + 6 = 10 + 4 = 14; 7 + 5 = 10 + 2 = 12; 6 + 6 = 10 + 2 = 12."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Quả bầu tròn sáng bóng, Sâu Xanh ôm chặt không rời!",
+          "Ba phép cộng qua 10 đầu tiên đã về chỗ cũ.",
+          "Sâu Xanh gật gù: cậu tính còn nhanh hơn tớ khắc."
+        ],
+        "wrong": [
+          "Mượn của số sau cho số trước đủ 10 rồi cộng tiếp nha.",
+          "7 cần thêm 3 mới thành 10 đấy.",
+          "Hai số 6 cộng lại vượt qua 10 rồi, thêm phần dư vào."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o14",
+          "b2": "o12",
+          "b3": "o12"
+        }
+      }
+    },
+    {
+      "id": "bang-cong-tren-bau",
+      "title": "Bảng cộng khắc trên bầu hồ lô",
+      "target": "sau-xanh",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Quả bầu hồ lô to nhất khắc cả bảng cộng, chỉ bị trầy mất bốn ô. À, đó là các phép cộng qua 10. Chúng ta hoàn thành luôn bảng cộng (qua 10) nào!",
+      "template": "9 + 2 = 11   9 + 3 = {{b1}}   9 + 4 = 13   9 + 5 = 14   9 + 6 = 15   9 + 7 = 16   9 + 8 = 17   9 + 9 = 18\n8 + 3 = 11   8 + 4 = 12   8 + 5 = 13   8 + 6 = 14   8 + 7 = 15   8 + 8 = 16   8 + 9 = 17\n7 + 4 = 11   7 + 5 = {{b2}}   7 + 6 = 13   7 + 7 = 14   7 + 8 = 15   7 + 9 = 16\n6 + 5 = 11   6 + 6 = 12   6 + 7 = 13   6 + 8 = 14   6 + 9 = 15\n5 + 6 = 11   5 + 7 = {{b3}}   5 + 8 = 13   5 + 9 = 14\n4 + 7 = 11   4 + 8 = 12   4 + 9 = 13\n3 + 8 = 11   3 + 9 = {{b4}}\n2 + 9 = 11",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o11",
+              "text": "11"
+            },
+            {
+              "id": "o12",
+              "text": "12"
+            },
+            {
+              "id": "o13",
+              "text": "13"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o11",
+              "text": "11"
+            },
+            {
+              "id": "o12",
+              "text": "12"
+            },
+            {
+              "id": "o14",
+              "text": "14"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o2",
+              "text": "2"
+            },
+            {
+              "id": "o12",
+              "text": "12"
+            },
+            {
+              "id": "o14",
+              "text": "14"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "o2",
+              "text": "2"
+            },
+            {
+              "id": "o10",
+              "text": "10"
+            },
+            {
+              "id": "o12",
+              "text": "12"
+            }
+          ]
+        }
+      ],
+      "skill": "phep-cong",
+      "curriculumRef": [
+        "toan2-t1-b08-kham-pha-2-a",
+        "toan2-t1-b08-kham-pha-2-b",
+        "toan2-t1-b08-kham-pha-2-c",
+        "toan2-t1-b08-kham-pha-2-d"
+      ],
+      "support": {
+        "guide": [
+          "Mỗi hàng bắt đầu bằng một phép cộng có kết quả 11.",
+          "Trong một hàng, số sau tăng 1 thì tổng tăng 1."
+        ],
+        "hint": "7 + 5 và 5 + 7 đổi chỗ số hạng nên tổng bằng nhau.",
+        "answer": {
+          "text": "9 + 2 = 11   9 + 3 = 12   9 + 4 = 13   9 + 5 = 14   9 + 6 = 15   9 + 7 = 16   9 + 8 = 17   9 + 9 = 18; 8 + 3 = 11   8 + 4 = 12   8 + 5 = 13   8 + 6 = 14   8 + 7 = 15   8 + 8 = 16   8 + 9 = 17; 7 + 4 = 11   7 + 5 = 12   7 + 6 = 13   7 + 7 = 14   7 + 8 = 15   7 + 9 = 16; 6 + 5 = 11   6 + 6 = 12   6 + 7 = 13   6 + 8 = 14   6 + 9 = 15; 5 + 6 = 11   5 + 7 = 12   5 + 8 = 13   5 + 9 = 14; 4 + 7 = 11   4 + 8 = 12   4 + 9 = 13; 3 + 8 = 11   3 + 9 = 12; 2 + 9 = 11",
+          "explanation": "9 + 3 = 12, 7 + 5 = 12, 5 + 7 = 12, 3 + 9 = 12: bốn ô trầy đều bằng 12."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bảng cộng trên bầu hồ lô lại đầy đủ, không sót ô nào!",
+          "Bốn ô trầy đều bằng 12, {name} nhìn ra quy luật rồi.",
+          "Sâu Xanh định khắc tên {name} lên bầu để cảm ơn."
+        ],
+        "wrong": [
+          "Nhìn ô bên cạnh: tổng chỉ hơn hoặc kém nhau 1 thôi.",
+          "Ô 5 + 7 chỉ là 7 + 5 đứng đổi chỗ thôi, Sâu Xanh nhắc vậy.",
+          "Ô 3 + 9 ở hàng gần cuối, đếm tiếp từ 9 xem."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o12",
+          "b2": "o12",
+          "b3": "o12",
+          "b4": "o12"
+        }
+      }
+    },
+    {
+      "id": "nham-nhanh-tren-day",
+      "title": "Nhẩm nhanh trên dây bầu",
+      "target": "sau-xanh",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Sâu Xanh bò dọc sợi dây bầu, mỗi đoạn dây có một phép cộng. Tính nhẩm.",
+      "template": "9 + 5 = {{b1}}\n8 + 3 = {{b2}}\n7 + 7 = {{b3}}\n6 + 6 = {{b4}}\n7 + 6 = {{b5}}\n9 + 4 = {{b6}}",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o12",
+              "text": "12"
+            },
+            {
+              "id": "o14",
+              "text": "14"
+            },
+            {
+              "id": "o16",
+              "text": "16"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o1",
+              "text": "1"
+            },
+            {
+              "id": "o10",
+              "text": "10"
+            },
+            {
+              "id": "o11",
+              "text": "11"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o13",
+              "text": "13"
+            },
+            {
+              "id": "o14",
+              "text": "14"
+            },
+            {
+              "id": "o24",
+              "text": "24"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "o11",
+              "text": "11"
+            },
+            {
+              "id": "o12",
+              "text": "12"
+            },
+            {
+              "id": "o22",
+              "text": "22"
+            }
+          ]
+        },
+        {
+          "id": "b5",
+          "options": [
+            {
+              "id": "o12",
+              "text": "12"
+            },
+            {
+              "id": "o13",
+              "text": "13"
+            },
+            {
+              "id": "o31",
+              "text": "31"
+            }
+          ]
+        },
+        {
+          "id": "b6",
+          "options": [
+            {
+              "id": "o11",
+              "text": "11"
+            },
+            {
+              "id": "o13",
+              "text": "13"
+            },
+            {
+              "id": "o23",
+              "text": "23"
+            }
+          ]
+        }
+      ],
+      "skill": "phep-cong",
+      "curriculumRef": [
+        "toan2-t1-b08-hoat-dong-1-a",
+        "toan2-t1-b08-hoat-dong-1-b",
+        "toan2-t1-b08-hoat-dong-1-c",
+        "toan2-t1-b08-hoat-dong-1-d",
+        "toan2-t1-b08-hoat-dong-1-e",
+        "toan2-t1-b08-hoat-dong-1-g"
+      ],
+      "support": {
+        "guide": [
+          "Dùng bảng cộng vừa khắc để nhẩm cho nhanh.",
+          "Hai số bằng nhau: 6 + 6, 7 + 7 nhớ thuộc lòng."
+        ],
+        "hint": "7 + 7 = 14, vậy 7 + 6 kém 1.",
+        "answer": {
+          "text": "9 + 5 = 14; 8 + 3 = 11; 7 + 7 = 14; 6 + 6 = 12; 7 + 6 = 13; 9 + 4 = 13",
+          "explanation": "9 + 5 = 14, 8 + 3 = 11, 7 + 7 = 14, 6 + 6 = 12, 7 + 6 = 13, 9 + 4 = 13."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Sâu Xanh bò tới cuối dây mà {name} đã nhẩm xong hết!",
+          "Sáu phép nhẩm, sáu kết quả chuẩn như in.",
+          "Nhẩm nhanh thế này thì bảng cộng thuộc làu rồi."
+        ],
+        "wrong": [
+          "Một đoạn dây bị nhẩm lệch, thử dò lại bảng cộng nhé.",
+          "8 + 3: 8 mượn 2 cho đủ 10, còn 1.",
+          "Nhìn số đầu là 9 thì nhẩm 10 cộng bớt đi 1."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o14",
+          "b2": "o11",
+          "b3": "o14",
+          "b4": "o12",
+          "b5": "o13",
+          "b6": "o13"
+        }
+      }
+    },
+    {
+      "id": "meo-con-duoi-gian",
+      "title": "Mèo con dưới giàn bầu",
+      "target": "sau-xanh",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Hai chú mèo con nằm dưới giàn bầu kêu meo meo đòi cá. Tìm cá cho mèo.",
+      "template": "Mèo 9 + 3 → cá {{b1}}\nMèo 8 + 9 → cá {{b2}}",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o12",
+              "text": "12"
+            },
+            {
+              "id": "o13",
+              "text": "13"
+            },
+            {
+              "id": "o17",
+              "text": "17"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o12",
+              "text": "12"
+            },
+            {
+              "id": "o13",
+              "text": "13"
+            },
+            {
+              "id": "o17",
+              "text": "17"
+            }
+          ]
+        }
+      ],
+      "skill": "phep-cong",
+      "curriculumRef": [
+        "toan2-t1-b08-hoat-dong-2-a",
+        "toan2-t1-b08-hoat-dong-2-b"
+      ],
+      "support": {
+        "guide": [
+          "Ba con cá ghi 13, 17, 12; cá 13 đã có mèo mẫu 7 + 6.",
+          "Tính phép cộng của mèo rồi chọn cá."
+        ],
+        "hint": "8 + 9: 8 mượn 2 của 9, còn 7, được 17.",
+        "answer": {
+          "text": "Mèo 9 + 3 → cá 12; Mèo 8 + 9 → cá 17",
+          "explanation": "9 + 3 = 12 nên mèo đó ăn cá 12; 8 + 9 = 17 nên mèo kia ăn cá 17."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Hai mèo con chén cá rồi lăn ra ngủ khò dưới giàn bầu.",
+          "Cá nào về đúng mèo nấy, không ai giành ai.",
+          "Meo! Mèo con dụi đầu cảm ơn {name}."
+        ],
+        "wrong": [
+          "Mèo 8 + 9 đang cầm nhầm con cá nhỏ hơn rồi.",
+          "Cá 13 là của mèo mẫu, hai bạn này ăn cá khác cơ.",
+          "Tính phép cộng trước, chọn cá sau nha."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o12",
+          "b2": "o17"
+        }
+      }
+    },
+    {
+      "id": "den-long-giong-nhau",
+      "title": "Đèn lồng giống nhau",
+      "target": "sau-xanh",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "prompt": "Heo Ủn treo sáu đèn lồng lên giàn bầu, từ trái sang: đỏ 7 + 5, vàng 9 + 5, đỏ 4 + 8, đỏ 6 + 5, hồng 9 + 3, đỏ 8 + 7. a) Những đèn lồng nào ghi phép tính có kết quả bằng nhau?",
+      "choices": [
+        {
+          "id": "7-5",
+          "text": "7 + 5"
+        },
+        {
+          "id": "9-5",
+          "text": "9 + 5"
+        },
+        {
+          "id": "4-8",
+          "text": "4 + 8"
+        },
+        {
+          "id": "6-5",
+          "text": "6 + 5"
+        },
+        {
+          "id": "9-3",
+          "text": "9 + 3"
+        },
+        {
+          "id": "8-7",
+          "text": "8 + 7"
+        }
+      ],
+      "skill": "phep-cong",
+      "curriculumRef": [
+        "toan2-t1-b08-hoat-dong-3-a"
+      ],
+      "support": {
+        "guide": [
+          "Tính kết quả của từng đèn lồng.",
+          "Chọn tất cả đèn có cùng một kết quả."
+        ],
+        "hint": "Có ba đèn lồng cùng bằng 12.",
+        "answer": {
+          "text": "7 + 5, 4 + 8, 9 + 3",
+          "explanation": "7 + 5, 4 + 8 và 9 + 3 đều bằng 12; các đèn khác bằng 14, 11 và 15."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ba đèn lồng mười hai sáng lên cùng lúc, lung linh quá!",
+          "Heo Ủn há mồm: ba đèn khác màu mà cùng kết quả cơ à?",
+          "Chọn đủ ba, không sót đèn nào, tinh mắt ghê."
+        ],
+        "wrong": [
+          "Còn một chiếc đèn bằng 12 nữa đang trốn đấy.",
+          "Đèn 6 + 5 chỉ bằng 11 thôi.",
+          "Tính hết sáu đèn rồi mới chọn nhé."
+        ]
+      },
+      "answer": {
+        "choices": [
+          "7-5",
+          "4-8",
+          "9-3"
+        ]
+      }
+    },
+    {
+      "id": "den-do-lon-be",
+      "title": "Đèn đỏ lớn nhất, bé nhất",
+      "target": "sau-xanh",
+      "kind": "challenge",
+      "mechanic": "classify",
+      "prompt": "Heo Ủn tháo bốn đèn đỏ xuống bàn để so. b) Trong bốn đèn lồng màu đỏ, đèn lồng nào ghi phép tính có kết quả lớn nhất, đèn lồng nào ghi phép tính có kết quả bé nhất?",
+      "groups": [
+        {
+          "id": "nhom-ket-qua-lon-nhat",
+          "label": "Kết quả lớn nhất"
+        },
+        {
+          "id": "nhom-ket-qua-be-nhat",
+          "label": "Kết quả bé nhất"
+        },
+        {
+          "id": "nhom-khong-lon-nhat-khong-be-nhat",
+          "label": "Không lớn nhất, không bé nhất"
+        }
+      ],
+      "items": [
+        {
+          "id": "den-do-7-5",
+          "label": "7 + 5"
+        },
+        {
+          "id": "den-do-4-8",
+          "label": "4 + 8"
+        },
+        {
+          "id": "den-do-6-5",
+          "label": "6 + 5"
+        },
+        {
+          "id": "den-do-8-7",
+          "label": "8 + 7"
+        }
+      ],
+      "skill": "so-sanh-so",
+      "curriculumRef": [
+        "toan2-t1-b08-hoat-dong-3-b"
+      ],
+      "support": {
+        "guide": [
+          "Chỉ xét bốn đèn màu đỏ.",
+          "Tính kết quả rồi so sánh: 12, 12, 11, 15."
+        ],
+        "hint": "Đèn đỏ 8 + 7 bằng 15.",
+        "answer": {
+          "text": "Lớn nhất: 8 + 7; bé nhất: 6 + 5",
+          "explanation": "Đèn đỏ: 7 + 5 = 12, 4 + 8 = 12, 6 + 5 = 11, 8 + 7 = 15; lớn nhất 8 + 7, bé nhất 6 + 5."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đèn 8 + 7 sáng nhất, đèn 6 + 5 hiền nhất, chuẩn rồi!",
+          "So bốn đèn đỏ mà không bị đèn vàng, đèn hồng làm rối.",
+          "Heo Ủn phục lăn: cậu so sánh nhanh hơn tớ ăn bánh."
+        ],
+        "wrong": [
+          "Chỉ so bốn đèn màu đỏ thôi, đèn vàng không tính.",
+          "Đèn lớn nhất phải có kết quả to nhất trong bốn đèn.",
+          "6 + 5 bằng 11, thử so với các đèn đỏ còn lại."
+        ]
+      },
+      "answer": {
+        "assignment": {
+          "den-do-7-5": "nhom-khong-lon-nhat-khong-be-nhat",
+          "den-do-4-8": "nhom-khong-lon-nhat-khong-be-nhat",
+          "den-do-6-5": "nhom-ket-qua-be-nhat",
+          "den-do-8-7": "nhom-ket-qua-lon-nhat"
+        }
+      }
+    },
+    {
+      "id": "heo-un-doi-nau-canh",
+      "title": "Heo Ủn đòi nấu canh",
+      "goTo": "Theo mùi khói sang bếp nhỏ cuối vườn, Heo Ủn đã nhóm lửa",
+      "kind": "dialogue",
+      "target": "heo-un-bep-vuon",
+      "lines": [
+        {
+          "speaker": "Heo Ủn",
+          "text": "Lửa cháy tí tách rồi! Quả bầu nào không có chữ thì cho tớ nấu canh nhé, nhé, nhé?"
+        },
+        {
+          "speaker": "Sâu Xanh",
+          "text": "Quả nào cũng có bài tập đấy Heo Ủn ơi! Phải giải hết thì tớ mới chép lại được."
+        },
+        {
+          "speaker": "Heo Ủn",
+          "text": "Thế {name} giải giúp đi, tớ đứng canh nồi. Cậu muốn làm bài bảng trước hay bài so sánh trước?"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Làm bài bảng trước",
+          "reply": "Heo Ủn: Được, bảng số hạng ở ngay trên nắp nồi đây."
+        },
+        {
+          "text": "Giải nhanh rồi cho Heo nấu canh",
+          "reply": "Heo Ủn reo lên: Bạn tốt quá! Tớ sẽ nấu canh bằng quả bầu trơn, không khắc chữ."
+        }
+      ]
+    },
+    {
+      "id": "bang-tren-nap-noi",
+      "title": "Bảng trên nắp nồi",
+      "target": "heo-un-bep-vuon",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Nắp nồi và cái thớt của Heo Ủn cũng bị Sâu Xanh khắc số lên từ bao giờ. Số ?",
+      "template": "Số hạng | 7 | 9 | 4 | 8 | 9\nSố hạng | 5 | 3 | 8 | 4 | 8\nTổng | 12 | {{b1}} | {{b2}} | {{b3}} | {{b4}}\na) Ô vuông 8 → + 6 → hình tròn {{b5}} → – 4 → ngôi sao {{b6}}\nb) Hình tròn 5 → + 9 → ô vuông {{b7}} → + 4 → tam giác {{b8}} → – 8 → ngôi sao {{b9}}",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o12",
+              "text": "12"
+            },
+            {
+              "id": "o14",
+              "text": "14"
+            },
+            {
+              "id": "o21",
+              "text": "21"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o12",
+              "text": "12"
+            },
+            {
+              "id": "o14",
+              "text": "14"
+            },
+            {
+              "id": "o22",
+              "text": "22"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o12",
+              "text": "12"
+            },
+            {
+              "id": "o13",
+              "text": "13"
+            },
+            {
+              "id": "o21",
+              "text": "21"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "o7",
+              "text": "7"
+            },
+            {
+              "id": "o16",
+              "text": "16"
+            },
+            {
+              "id": "o17",
+              "text": "17"
+            }
+          ]
+        },
+        {
+          "id": "b5",
+          "options": [
+            {
+              "id": "o14",
+              "text": "14"
+            },
+            {
+              "id": "o16",
+              "text": "16"
+            },
+            {
+              "id": "o24",
+              "text": "24"
+            }
+          ]
+        },
+        {
+          "id": "b6",
+          "options": [
+            {
+              "id": "o8",
+              "text": "8"
+            },
+            {
+              "id": "o10",
+              "text": "10"
+            },
+            {
+              "id": "o12",
+              "text": "12"
+            }
+          ]
+        },
+        {
+          "id": "b7",
+          "options": [
+            {
+              "id": "o13",
+              "text": "13"
+            },
+            {
+              "id": "o14",
+              "text": "14"
+            },
+            {
+              "id": "o15",
+              "text": "15"
+            }
+          ]
+        },
+        {
+          "id": "b8",
+          "options": [
+            {
+              "id": "o18",
+              "text": "18"
+            },
+            {
+              "id": "o20",
+              "text": "20"
+            },
+            {
+              "id": "o81",
+              "text": "81"
+            }
+          ]
+        },
+        {
+          "id": "b9",
+          "options": [
+            {
+              "id": "o8",
+              "text": "8"
+            },
+            {
+              "id": "o10",
+              "text": "10"
+            },
+            {
+              "id": "o12",
+              "text": "12"
+            }
+          ]
+        }
+      ],
+      "skill": "phep-cong",
+      "curriculumRef": [
+        "toan2-t1-b08-luyen-tap-1-a",
+        "toan2-t1-b08-luyen-tap-1-b",
+        "toan2-t1-b08-luyen-tap-1-c",
+        "toan2-t1-b08-luyen-tap-1-d",
+        "toan2-t1-b08-luyen-tap-2-a",
+        "toan2-t1-b08-luyen-tap-2-b"
+      ],
+      "support": {
+        "guide": [
+          "Tổng bằng hai số hạng cộng lại.",
+          "Theo mũi tên, lấy kết quả vừa có làm tiếp phép sau."
+        ],
+        "hint": "14 – 4 = 10; 18 – 8 = 10.",
+        "answer": {
+          "text": "Số hạng | 7 | 9 | 4 | 8 | 9; Số hạng | 5 | 3 | 8 | 4 | 8; Tổng | 12 | 12 | 12 | 12 | 17; a) Ô vuông 8 → + 6 → hình tròn 14 → – 4 → ngôi sao 10; b) Hình tròn 5 → + 9 → ô vuông 14 → + 4 → tam giác 18 → – 8 → ngôi sao 10",
+          "explanation": "Tổng: 12, 12, 12, 17. a) 8 + 6 = 14, 14 – 4 = 10. b) 5 + 9 = 14, 14 + 4 = 18, 18 – 8 = 10."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Nắp nồi kêu lạch cạch như vỗ tay khen {name}!",
+          "Đi theo mũi tên không lạc bước nào cả.",
+          "Heo Ủn ngạc nhiên: hai dãy mũi tên đều về đích 10!"
+        ],
+        "wrong": [
+          "Mũi tên có dấu trừ thì bớt đi, đừng cộng nhé.",
+          "Số vừa tìm được lại là điểm xuất phát cho mũi tên kế tiếp.",
+          "Thử cộng lại cột 9 và 8 trong bảng xem."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o12",
+          "b2": "o12",
+          "b3": "o12",
+          "b4": "o17",
+          "b5": "o14",
+          "b6": "o10",
+          "b7": "o14",
+          "b8": "o18",
+          "b9": "o10"
+        }
+      }
+    },
+    {
+      "id": "gau-tim-to-ong",
+      "title": "Gấu Trúc tìm tổ ong",
+      "target": "heo-un-bep-vuon",
+      "kind": "challenge",
+      "mechanic": "classify",
+      "prompt": "Gấu Trúc Tròn ghé bếp xin mật ong pha nước bầu, mang theo hai bạn gấu nhỏ. Tìm tổ ong cho gấu.",
+      "groups": [
+        {
+          "id": "nhom-to-ong-14",
+          "label": "Tổ ong 14"
+        },
+        {
+          "id": "nhom-to-ong-13",
+          "label": "Tổ ong 13"
+        },
+        {
+          "id": "nhom-to-ong-15",
+          "label": "Tổ ong 15"
+        }
+      ],
+      "items": [
+        {
+          "id": "gau-9-4",
+          "label": "9 + 4"
+        },
+        {
+          "id": "gau-8-7",
+          "label": "8 + 7"
+        }
+      ],
+      "skill": "phep-cong",
+      "curriculumRef": [
+        "toan2-t1-b08-luyen-tap-3-a",
+        "toan2-t1-b08-luyen-tap-3-b"
+      ],
+      "support": {
+        "guide": [
+          "Tổ ong 14 đã có gấu mẫu 6 + 8.",
+          "Tính phép cộng của gấu rồi chọn tổ."
+        ],
+        "hint": "8 + 7: 8 mượn 2, còn 5, được 15.",
+        "answer": {
+          "text": "9 + 4 – tổ ong 13; 8 + 7 – tổ ong 15",
+          "explanation": "9 + 4 = 13 nên về tổ 13; 8 + 7 = 15 nên về tổ 15."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Hai bạn gấu ôm tổ ong cười tít mắt, ngọt lịm!",
+          "Gấu Trúc Tròn chậm rãi gật đầu: đúng tổ cả rồi.",
+          "Không con ong nào bị đánh thức nhầm, khéo ghê."
+        ],
+        "wrong": [
+          "Một bạn gấu đang trèo nhầm tổ ong rồi.",
+          "Tổ 14 là của gấu mẫu, tìm tổ khác nhé.",
+          "9 + 4: 9 mượn 1, còn 3, được mấy?"
+        ]
+      },
+      "answer": {
+        "assignment": {
+          "gau-9-4": "nhom-to-ong-13",
+          "gau-8-7": "nhom-to-ong-15"
+        }
+      }
+    },
+    {
+      "id": "can-dau-ben-noi",
+      "title": "Cân đấu bên nồi canh",
+      "target": "heo-un-bep-vuon",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Heo Ủn bày bốn cặp phép tính lên mặt bàn, cặp nào cũng cãi nhau xem ai lớn hơn. >; <; = ?",
+      "template": "a) 6 + 6 {{b1}} 11\na) 7 + 5 {{b2}} 12\nb) 9 + 3 {{b3}} 3 + 9\nb) 9 + 2 {{b4}} 7 + 7",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "lon-hon",
+              "text": ">"
+            },
+            {
+              "id": "be-hon",
+              "text": "<"
+            },
+            {
+              "id": "bang",
+              "text": "="
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "lon-hon",
+              "text": ">"
+            },
+            {
+              "id": "be-hon",
+              "text": "<"
+            },
+            {
+              "id": "bang",
+              "text": "="
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "lon-hon",
+              "text": ">"
+            },
+            {
+              "id": "be-hon",
+              "text": "<"
+            },
+            {
+              "id": "bang",
+              "text": "="
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "lon-hon",
+              "text": ">"
+            },
+            {
+              "id": "be-hon",
+              "text": "<"
+            },
+            {
+              "id": "bang",
+              "text": "="
+            }
+          ]
+        }
+      ],
+      "skill": "so-sanh-so",
+      "curriculumRef": [
+        "toan2-t1-b08-luyen-tap-4-a1",
+        "toan2-t1-b08-luyen-tap-4-a2",
+        "toan2-t1-b08-luyen-tap-4-b1",
+        "toan2-t1-b08-luyen-tap-4-b2"
+      ],
+      "support": {
+        "guide": [
+          "Tính phép cộng ở mỗi bên trước.",
+          "Hai bên bằng nhau thì điền dấu =."
+        ],
+        "hint": "9 + 3 và 3 + 9 chỉ đổi chỗ số hạng.",
+        "answer": {
+          "text": "a) 6 + 6 > 11; a) 7 + 5 = 12; b) 9 + 3 = 3 + 9; b) 9 + 2 < 7 + 7",
+          "explanation": "6 + 6 = 12 > 11; 7 + 5 = 12 = 12; 9 + 3 = 12 = 3 + 9; 9 + 2 = 11 < 14 = 7 + 7."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bốn cặp phép tính hết cãi nhau, bắt tay làm hòa!",
+          "Dấu nào cũng đặt đúng chỗ, Heo Ủn quên cả nồi canh.",
+          "Cân đấu công bằng, {name} làm trọng tài giỏi thật."
+        ],
+        "wrong": [
+          "Tính hai bên trước rồi mới chọn dấu nha.",
+          "Hai bên bằng nhau thì không lớn, không bé đâu.",
+          "Miệng dấu mở về phía số lớn hơn đấy."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "lon-hon",
+          "b2": "bang",
+          "b3": "bang",
+          "b4": "be-hon"
+        }
+      }
+    },
+    {
+      "id": "cap-treo-cua-sau",
+      "title": "Cáp treo trong mơ",
+      "goTo": "Quay lại giàn bầu, Sâu Xanh có chuyện muốn kể",
+      "target": "sau-xanh",
+      "kind": "riddle",
+      "question": "Sâu Xanh kể: \"Khi nào thành bướm, tớ sẽ bay ngang khu cáp treo có các ca-bin vàng.\" Trong ca-bin thứ nhất có 7 người, trong ca-bin thứ hai có 8 người. Hỏi trong hai ca-bin có tất cả bao nhiêu người?",
+      "skill": "bai-toan-loi-van",
+      "curriculumRef": [
+        "toan2-t1-b08-luyen-tap-5"
+      ],
+      "support": {
+        "guide": [
+          "Hỏi \"tất cả\" thì gộp người ở hai ca-bin lại.",
+          "7 + 8: 7 mượn 3 của 8 cho đủ 10."
+        ],
+        "hint": "7 + 3 = 10, còn 5 người nữa.",
+        "answer": {
+          "text": "15 người",
+          "explanation": "Hai ca-bin có tất cả: 7 + 8 = 15 (người)."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Mười lăm người vẫy tay từ cáp treo, Sâu Xanh mơ màng mỉm cười!",
+          "Giải toán xong, Sâu Xanh nói sẽ bay theo cáp treo đếm lại.",
+          "Hai ca-bin gộp lại chuẩn xác, {name} giỏi quá."
+        ],
+        "wrong": [
+          "Đếm cả người ở ca-bin thứ hai nữa nhé.",
+          "Gộp hai ca-bin lại thì làm phép cộng.",
+          "7 + 8 vượt qua 10 rồi, thêm phần còn lại vào."
+        ]
+      },
+      "answer": {
+        "value": 15
+      }
+    },
+    {
+      "id": "huy-hieu-bang-cong",
+      "title": "Huy hiệu bảng cộng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Sâu Xanh tặng {name} một quả bầu tí hon khắc chữ \"Bạn thuộc bảng cộng\". Heo Ủn cũng múc mời một bát canh bầu nấu từ quả bầu trơn, thơm phưng phức."
+    },
+    {
+      "id": "be-con-chay-tung-tang",
+      "title": "Bê con chạy tung tăng",
+      "kind": "unlock",
+      "trigger": "auto",
+      "text": "Từ chuồng rơm vọng ra tiếng \"ụm bò\" hớt hải: đàn bê con của Bò Sữa Mơ cứ chạy ra chạy vào, cô đếm mãi không biết còn bao nhiêu con trong chuồng!"
+    }
+  ],
+  "reward": {
+    "xp": 85,
+    "coin": 15,
+    "skillXp": {
+      "phep-cong": 2,
+      "so-sanh-so": 1
+    }
+  }
+}
