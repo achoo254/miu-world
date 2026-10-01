@@ -1,0 +1,23 @@
+{
+  "state": {
+    "project": "Miu World: a voxel learning game for Vietnamese grade-2 children (web, iPad Gen 10 target), built 100% by AI. The owner's single wish: the game must be truly lively so children never get bored.",
+    "today": "2026-10-01",
+    "backlog": "Every P0 task the AI can do is done except the Master Plan line 'compress textures (KTX2)'. The others left (iPad measurement, teacher review, designer review, play test with children, Google app verification, legal review) need people.",
+    "facts": [
+      "All world blocks share one atlas: a 512x512 PNG of 53 KB, about 1.3 MB of GPU memory with mipmaps. KTX2 would cut that to roughly 0.3 MB of GPU memory; the download is already tiny.",
+      "Budget: first area at most 8 MB compressed. Last measurement (smaller maps, 30/09): 0.9 MB gzip; 60 FPS on an emulated iPad CPU, at most 108 draw calls.",
+      "KTX2 needs the Basis Universal transcoder (WebAssembly) as a new dependency, and the page's Content Security Policy must allow 'wasm-unsafe-eval'; the project rules list that CSP change as one to ask about.",
+      "The maps became four times bigger today (192x48x192); performance has not been re-measured since. A full perf run takes about 30 minutes on the owner's Mac and is run only on request."
+    ]
+  },
+  "questions": {
+    "ktx2": {
+      "stakes": "medium",
+      "instructions": "What should happen with the KTX2 texture compression task now?",
+      "criteria": {
+        "defer_with_evidence": "Do not add KTX2 now: record the measured sizes in the roadmap, mark the atlas part of the asset pipeline task done, and revisit when the atlas grows past 2048 px or texture memory shows up in an iPad measurement. No new dependency, CSP unchanged.",
+        "implement_now": "Add the Basis transcoder and KTX2 atlas now, with 'wasm-unsafe-eval' in the CSP, for about 1 MB less GPU memory."
+      }
+    }
+  }
+}

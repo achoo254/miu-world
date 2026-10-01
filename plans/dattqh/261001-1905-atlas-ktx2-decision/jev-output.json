@@ -1,0 +1,19 @@
+{
+  "model": "jev-1.13.0",
+  "usage": {
+    "input_tokens": 777,
+    "output_tokens": 44
+  },
+  "results": {
+    "ktx2": {
+      "stakes": "medium",
+      "choice": "defer_with_evidence",
+      "confidence": 0.98,
+      "probabilities": {
+        "defer_with_evidence": 0.99,
+        "implement_now": 0.01
+      },
+      "decision": "auto"
+    }
+  }
+}

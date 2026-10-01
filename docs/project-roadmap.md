@@ -34,6 +34,7 @@ Chỉ ghi task đã bắt đầu; các task còn lại đang ở trạng thái c
 | #14 | Hội thoại NPC, nhận quest, tracker + mũi tên chỉ hướng, tìm manh mối qua server | Hoàn thành (2026-09-30) | `plans/dattqh/260929-2141-vertical-slice-mvp/phase-07-npc-dialogue-quest-flow.md` |
 | #17, #18 | 3 thử thách Toán (kéo thả, sắp xếp, trắc nghiệm) + đọc thư + câu đố, hỗ trợ Hướng dẫn/Gợi ý/Đáp án không khóa tiến trình | Hoàn thành (2026-09-30); nội dung học chờ giáo viên duyệt; thử Safari iPad thật ở DEVICE-01 | `plans/dattqh/260929-2141-vertical-slice-mvp/phase-08-math-challenges-learning-support.md` |
 | #19, #20 | Hoàn thành nhiệm vụ (sao, XP thực nhận, Xu, vật phẩm, Skill XP), Level Up, Mở khóa; Ba lô, Hồ sơ + Bộ sưu tập | Hoàn thành (2026-09-30); Hành trình/Thành tích là V1 | `plans/dattqh/260929-2141-vertical-slice-mvp/phase-09-rewards-backpack-collection.md` |
+| #21 | Script asset pipeline: ghép mesh, đổi bảng màu, atlas một texture, render ảnh đại diện và ảnh review, kiểm license và ngân sách | Hoàn thành (2026-10-01); nén KTX2 hoãn có số đo (mục Nợ đã biết) | `tools/assets/`, `plans/dattqh/261001-1905-atlas-ktx2-decision/` |
 | #15 | Quest bằng dữ liệu: schema v2, runtime chấm đáp án, `pnpm content:check` trong CI, nội dung Khu rừng ch1 + stub ch2 | Hoàn thành phần dữ liệu và runtime (2026-09-30); nội dung học chờ giáo viên duyệt; `content:check` kiểm target trên map và chữ quest dùng `{name}` (tên nhân vật), không cứng "Miu" | `plans/dattqh/260929-2141-vertical-slice-mvp/phase-02-quest-schema-runtime-content.md` |
 
 ## Mã ổn định ↔ task Master Plan
@@ -62,7 +63,7 @@ Mã chỉ dùng trong plan và roadmap, không dùng trong code, tên test, comm
 ## Nợ đã biết (trước nghiệm thu MVP)
 
 - Đo trên máy chuẩn iPad Gen 10 ở Low/Mid/High (FPS, nhiệt, pin sau 15 phút).
-- Nén atlas KTX2 (task #21).
+- Nén texture KTX2: hoãn (Jev 0,98, 01/10/2026). Atlas block là một PNG 512 px, 53 KB, khoảng 1,3 MB bộ nhớ GPU; KTX2 cần thêm transcoder WebAssembly và `wasm-unsafe-eval` trong CSP để tiết kiệm chưa tới 1 MB. Xem lại khi atlas vượt 2048 px hoặc lần đo iPad cho thấy bộ nhớ texture là vấn đề. Lý do: `plans/dattqh/261001-1905-atlas-ktx2-decision/`.
 - Triển khai server: staging đã chạy tại `miu-staging.hoandat.com` bằng bundle production (`pnpm --filter @miu/server bundle`), IP thật của khách đi đúng qua chuỗi proxy. Production chạy tại `miu.hoandat.com` trên .65 từ 30/09/2026; deploy production phải hỏi người trước mỗi lần. Xem `docs/deployment-guide.md`.
 - Khi phụ kiện trở thành vật phẩm thưởng trong túi đồ: `PUT /api/character` phải kiểm sở hữu qua túi đồ. Hiện server đã kiểm điều kiện mở khóa theo level/quest của từng trang phục (403 `equipment-locked`); `unlock` chỉ nhận `level`/`quest`, chưa có trang phục nào là vật phẩm.
 - Xác minh ứng dụng Google OAuth (màn đồng ý, chính sách quyền riêng tư) và pháp chế duyệt văn bản đồng ý draft-3 — trước khi có người dùng thật.
