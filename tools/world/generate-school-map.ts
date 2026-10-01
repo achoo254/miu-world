@@ -1,6 +1,6 @@
 // Generates "Trường học" (the Toán region) from a fixed seed: a school gate in a low wall, an open lawn
 // with flower beds, the paved schoolyard with its flagpole and football pitch, two classroom wings behind
-// it (the overview island's school, at full size), and six more zones around it, one per Toán topic, joined by stone
+// it (a two-storey block with an upper corridor, the paths passing under it), and six more zones around it, one per Toán topic, joined by stone
 // paths with no gates between them (children roam freely). Each zone has its own floor and a signpost
 // with its name. Quest characters stand in their zone, tagged with the topic (chapter) whose quests
 // use them. Output: assets/generated/world/truong-hoc/{chunks.bin, entities.json}
@@ -15,7 +15,7 @@ import { modelScales } from './model-scales';
 import { createRng, fbm, hashSeed } from './noise';
 import { distanceToPath, pathColumns, type Point } from './structures/path';
 import { cellsIn, placeQuestTargets, readQuests, targetUses } from './chapters/place-quest-targets';
-import { placeHouse, placeVeranda } from './structures/buildings';
+import { placeSchoolBlock } from './structures/buildings';
 import { placeTree, treeHeight } from './structures/tree';
 
 export const MAP_ID = 'truong-hoc';
@@ -65,12 +65,11 @@ const GATE_HALF = 3;
 const WALL_HALF = 18;
 /** Open lawn between the gate and the yard: no trees, so the gate looks onto the yard and the classrooms. */
 const LAWN = { x0: 28, z0: 4, x1: 68, z1: 32 };
-/** Classroom wings (x0, z0, width, depth) behind the yard, either side of the path to the hall; doors face the yard (-z). */
-export const CLASSROOMS: ReadonlyArray<{ x0: number; z0: number; w: number; d: number }> = [
-  { x0: 36, z0: 66, w: 7, d: 5 },
-  { x0: 52, z0: 66, w: 6, d: 5 },
-];
-const WALL_HEIGHT = 4;
+/**
+ * The school block behind the yard, between the zones' borders: classrooms from x0 to x1 and z0 to z1,
+ * its corridor two rows out in front (-z, facing the yard), two storeys; the paths pass under it.
+ */
+export const SCHOOL_BLOCK = { x0: 31, z0: 65, x1: 63, z1: 68, floors: 2 } as const;
 
 export async function generateSchool(): Promise<{ world: VoxelWorld; entities: WorldEntities }> {
   const table = await readJson(path.join(REPO_ROOT, 'content/blocks.json'), blockTableSchema);
@@ -95,13 +94,12 @@ export async function generateSchool(): Promise<{ world: VoxelWorld; entities: W
   const pathCells = new Set(routes.flatMap((r) => [...pathColumns(r, 1.3)]));
   const nearPath = (x: number, z: number) => routes.some((r) => distanceToPath(r, x, z) < 3);
   /** Inside a classroom wing, eaves and `pad` included. */
-  // Footprint with the eaves and, in front, the veranda (two rows out).
-  const inClassroom = (x: number, z: number, pad = 0) => CLASSROOMS.some((c) => x >= c.x0 - 1 - pad && x <= c.x0 + c.w + pad && z >= c.z0 - 2 - pad && z <= c.z0 + c.d + pad);
-  for (const c of CLASSROOMS) {
-    for (let x = c.x0 - 1; x <= c.x0 + c.w; x++) for (let z = c.z0 - 2; z <= c.z0 + c.d; z++) {
-      if (nearPath(x, z) || inZone(x, z, 2)) throw new Error(`classroom at ${c.x0},${c.z0} would stand on a path or in a zone at ${x},${z}`);
-    }
+  // Footprint of the school block with its corridor and eaves; it must keep clear of the zones (paths pass under it).
+  const inSchool = (x: number, z: number, pad = 0) => x >= SCHOOL_BLOCK.x0 - 1 - pad && x <= SCHOOL_BLOCK.x1 + 1 + pad && z >= SCHOOL_BLOCK.z0 - 3 - pad && z <= SCHOOL_BLOCK.z1 + 1 + pad;
+  for (let x = SCHOOL_BLOCK.x0 - 1; x <= SCHOOL_BLOCK.x1 + 1; x++) {
+    for (let z = SCHOOL_BLOCK.z0 - 3; z <= SCHOOL_BLOCK.z1 + 1; z++) if (inZone(x, z, 2)) throw new Error(`the school block would stand in a zone at ${x},${z}`);
   }
+  const underPath = (x: number, z: number) => routes.some((r) => distanceToPath(r, x, z) < 2.2);
 
   // 1. Terrain: level ground in the zones and along the paths, gentle rolls elsewhere, rim hills.
   const heights: number[][] = [];
@@ -111,7 +109,7 @@ export async function generateSchool(): Promise<{ world: VoxelWorld; entities: W
       let h = GROUND + fbm(seed, x / 22, z / 22) * 2;
       const edge = Math.min(x, z, sx - 1 - x, sz - 1 - z);
       if (edge < 8) h += (8 - edge) * 1.2;
-      if (inZone(x, z, 2) || nearPath(x, z) || inClassroom(x, z, 1)) h = GROUND;
+      if (inZone(x, z, 2) || nearPath(x, z) || inSchool(x, z, 1)) h = GROUND;
       (heights[x] as number[])[z] = Math.round(Math.min(h, sy - 12));
     }
   }
@@ -137,12 +135,8 @@ export async function generateSchool(): Promise<{ world: VoxelWorld; entities: W
       if (Math.abs(dx) === 2 || Math.abs(dz) === 2) world.set(tower.x + dx, y, tower.z - 2 + dz, y >= GROUND + 9 && dz === 2 && Math.abs(dx) < 2 ? B.planks : B.stone);
     }
   }
-  // The classrooms as a Vietnamese school: yellow walls, white posts, red tiles and a veranda facing the
-  // yard; then the gate in the school's low wall.
-  for (const c of CLASSROOMS) {
-    placeHouse(world, c.x0, c.z0, c.w, c.d, WALL_HEIGHT, GROUND + 1, { wall: B.sand, roof: B.brickRed, trim: B.birch });
-    placeVeranda(world, c.x0, c.z0, c.w, WALL_HEIGHT, GROUND + 1, { roof: B.brickRed, post: B.birch });
-  }
+  // The school block (yellow walls, white posts and bands, red tiles), then the gate in the school's low wall.
+  placeSchoolBlock(world, SCHOOL_BLOCK.x0, SCHOOL_BLOCK.z0, SCHOOL_BLOCK.x1, SCHOOL_BLOCK.z1, SCHOOL_BLOCK.floors, GROUND + 1, { wall: B.sand, roof: B.brickRed, trim: B.birch, floor: B.planks }, underPath);
   for (const side of [-1, 1]) {
     for (let y = GROUND + 1; y <= GROUND + 5; y++) world.set(GATE.x + side * GATE_HALF, y, GATE.z, B.brickGrey);
     for (let x = GATE.x + side * (GATE_HALF + 1); Math.abs(x - GATE.x) <= WALL_HALF; x += side) {
@@ -161,7 +155,7 @@ export async function generateSchool(): Promise<{ world: VoxelWorld; entities: W
       const x = Math.round(gx + (rng() - 0.5) * 5);
       const z = Math.round(gz + (rng() - 0.5) * 5);
       const onLawn = x >= LAWN.x0 && x <= LAWN.x1 && z >= LAWN.z0 && z <= LAWN.z1;
-      if (x < 3 || z < 3 || x >= sx - 3 || z >= sz - 3 || inZone(x, z, 3) || nearPath(x, z) || inClassroom(x, z, 3) || onLawn || Math.hypot(x - GATE.x, z - GATE.z) < 6) continue;
+      if (x < 3 || z < 3 || x >= sx - 3 || z >= sz - 3 || inZone(x, z, 3) || nearPath(x, z) || inSchool(x, z, 3) || onLawn || Math.hypot(x - GATE.x, z - GATE.z) < 6) continue;
       if (rng() < 0.25) continue;
       placeTree(world, x, surface(x, z) + 1, z, treeHeight(rng), { log: B.log, leaves: rng() < 0.3 ? B.autumn : B.leaves }, rng);
     }
@@ -242,7 +236,7 @@ export async function generateSchool(): Promise<{ world: VoxelWorld; entities: W
     landmarks: [
       ...ZONES.map((zn) => ({ id: zn.id, name: zn.name, position: [zn.x + 0.5, GROUND + 1, zn.z + 0.5] as [number, number, number] })),
       { id: 'cot-co', name: 'Cột cờ', position: [flag.x + 0.5, GROUND + 1, flag.z + 0.5] },
-      { id: 'lop-hoc', name: 'Lớp học', position: [(CLASSROOMS[0]?.x0 ?? 0) + 3.5, GROUND + 1, (CLASSROOMS[0]?.z0 ?? 0) - 1.5] },
+      { id: 'lop-hoc', name: 'Lớp học', position: [SCHOOL_BLOCK.x0 + 6.5, GROUND + 1, SCHOOL_BLOCK.z0 - 3.5] },
       { id: 'san-bong', name: 'Sân bóng', position: [pitch.x + 0.5, GROUND + 1, pitch.z + 0.5] },
     ],
   };

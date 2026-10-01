@@ -45,16 +45,81 @@ export function placeHouse(world: WorldWriter, x0: number, z0: number, w: number
   return { roofTop };
 }
 
+export interface SchoolBlocks {
+  wall: number;
+  roof: number;
+  /** Posts, the railing and the white band between the storeys. */
+  trim: number;
+  /** The upper corridor's floor. */
+  floor: number;
+}
+
+/** Storey height in blocks; a way through the ground floor is this tall minus the corridor floor. */
+const STOREY = 4;
+
 /**
- * A school's veranda along the -z front of a `placeHouse` box: the eaves run on as a flat roof one row
- * further out, on white posts every other block (the gaps between posts are the way in).
+ * A Vietnamese school block: `floors` storeys of classrooms from x0 to x1 and z0 to z1, a corridor along
+ * the -z front on white posts (an upper corridor with a railing), windows and doors on every storey and a
+ * red-tiled gable roof. Where `passage(x, z)` is true the ground floor stays open (paths cross the block
+ * through it), so a school can stand across the ways between its yards.
  */
-export function placeVeranda(world: WorldWriter, x0: number, z0: number, w: number, wallHeight: number, baseY: number, blocks: { roof: number; post: number }): void {
-  const z = z0 - 2;
-  for (let x = x0 - 1; x <= x0 + w; x++) {
-    put(world, x, baseY + wallHeight, z, blocks.roof);
-    if ((x - x0 + 1) % 2 === 0) for (let y = baseY; y < baseY + wallHeight; y++) put(world, x, y, z, blocks.post);
+export function placeSchoolBlock(
+  world: WorldWriter,
+  x0: number,
+  z0: number,
+  x1: number,
+  z1: number,
+  floors: number,
+  baseY: number,
+  blocks: SchoolBlocks,
+  passage: (x: number, z: number) => boolean,
+): { roofTop: number } {
+  const top = baseY + floors * STOREY;
+  const set = (x: number, y: number, z: number, id: number): void => {
+    if (y < baseY + STOREY - 1 && passage(x, z)) return;
+    put(world, x, y, z, id);
+  };
+  for (let y = baseY; y < top; y++) {
+    const level = y - baseY;
+    const inStorey = level % STOREY;
+    for (let x = x0; x <= x1; x++) {
+      for (let z = z0; z <= z1; z++) {
+        const edgeX = x === x0 || x === x1;
+        const edgeZ = z === z0 || z === z1;
+        if (!edgeX && !edgeZ) continue;
+        const band = inStorey === STOREY - 1 && level < top - baseY - 1;
+        const door = z === z0 && (x - x0) % 6 === 3 && inStorey < 2;
+        const window = !edgeX && (inStorey === 1 || inStorey === 2) && (x - x0) % 3 === 1 && !door;
+        if (door || window) continue;
+        set(x, y, z, (edgeX && edgeZ) || band ? blocks.trim : blocks.wall);
+      }
+    }
   }
+  // The corridor: posts every third block, the upper floor with its railing, open between the posts.
+  for (let x = x0 - 1; x <= x1 + 1; x++) {
+    const post = (x - x0) % 3 === 0 || x === x0 - 1 || x === x1 + 1;
+    for (let z = z0 - 2; z < z0; z++) {
+      for (let f = 1; f < floors; f++) set(x, baseY + f * STOREY - 1, z, blocks.floor);
+      if (z === z0 - 2) {
+        if (post) for (let y = baseY; y < top; y++) set(x, y, z, blocks.trim);
+        for (let f = 1; f < floors; f++) set(x, baseY + f * STOREY, z, blocks.trim);
+      }
+    }
+  }
+  // Gable roof along x over the block and its corridor, eaves one row out.
+  const r0 = z0 - 3;
+  const r1 = z1 + 1;
+  let roofTop = top;
+  for (let z = r0; z <= r1; z++) {
+    const step = Math.min(z - r0, r1 - z);
+    const y = top + step;
+    roofTop = Math.max(roofTop, y);
+    for (let x = x0 - 1; x <= x1 + 1; x++) {
+      put(world, x, y, z, blocks.roof);
+      if ((x === x0 || x === x1) && z >= z0 && z <= z1) for (let fy = top; fy < y; fy++) put(world, x, fy, z, blocks.wall);
+    }
+  }
+  return { roofTop };
 }
 
 export interface CastleBlocks {
