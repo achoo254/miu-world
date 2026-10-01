@@ -10,6 +10,7 @@ import { Icon } from '../kit/art';
 import { buttonClass } from '../kit/button';
 import { Modal } from '../kit/modal';
 import { playCue } from '../sound/sfx';
+import { watchLandings } from './object-reactions';
 import { SupportPanel } from './support-panel';
 import './challenge.css';
 
@@ -63,6 +64,8 @@ export function ChallengeFrame({
     const timer = window.setTimeout(() => el.classList.remove(SHAKE), 450);
     return () => window.clearTimeout(timer);
   }, [context.wrongTries]);
+  // Pieces that land in a drop zone pop in, and the zone gulps them (every mechanic, drag or tap).
+  useEffect(() => (area.current ? watchLandings(area.current) : undefined), []);
   const tapSound = (e: MouseEvent<HTMLDivElement>) => {
     if (e.target instanceof Element && e.target.closest('button')) playCue('tap');
   };

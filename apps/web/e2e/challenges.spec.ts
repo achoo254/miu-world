@@ -16,7 +16,15 @@ test('drag ten apples by touch, a wrong candy answer then the right one, and the
   await tap(page, '[data-id="hud-interact"]');
   await expect(page.getByRole('dialog', { name: 'Hái 10 quả táo' })).toBeVisible();
   const scrollBefore = await page.evaluate(() => window.scrollY);
-  for (let i = 1; i <= 10; i += 1) await touchDrag(page, `[data-id="piece-apple-${i}"]`, '[data-id="drag-container"]');
+  // The apples waiting in the tree bob (what is drawn inside them; the tile itself stays put for the finger).
+  const animationOf = (selector: string) => page.locator(selector).evaluate((el) => getComputedStyle(el).animationName);
+  expect(await animationOf('[data-id="piece-apple-1"] > *')).toBe('object-idle');
+  expect(await animationOf('[data-id="piece-apple-1"]')).toBe('none');
+  await touchDrag(page, '[data-id="piece-apple-1"]', '[data-id="drag-container"]');
+  // It pops into the basket, and the basket gulps it.
+  await expect(page.locator('[data-id="drag-container"] [data-id="piece-apple-1"]')).toHaveClass(/object-landed/);
+  await expect(page.locator('[data-id="drag-container"]')).toHaveClass(/zone-gulp/);
+  for (let i = 2; i <= 10; i += 1) await touchDrag(page, `[data-id="piece-apple-${i}"]`, '[data-id="drag-container"]');
   await expect(page.locator('[data-id="drag-count"]')).toHaveText('10');
   expect(await page.evaluate(() => window.scrollY)).toBe(scrollBefore); // dragging never scrolls the page
   // One too many by tap-to-select (tap the apple, then the basket), then back out the same way.
