@@ -64,5 +64,9 @@ describe('school map generator', () => {
       return outside && y > MAIN_BUILDING.floorY;
     });
     expect(onBank).toEqual([]);
+    // Trees do not snag her: she walks through trunks (and canopies) as through air.
+    const blocks = JSON.parse(await readFile(path.join(ASSETS_DIR, '../content/blocks.json'), 'utf8')) as { blocks: Array<{ id: number; name: string }> };
+    const trunk = blocks.blocks.find((b) => b.name === 'tree-log')?.id;
+    expect([...spots].some((key) => world.get(...(key.split(',').map(Number) as [number, number, number])) === trunk)).toBe(true);
   }, 120_000);
 });

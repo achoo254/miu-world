@@ -111,6 +111,7 @@ export async function generateForest(): Promise<{ world: VoxelWorld; entities: W
   const B = {
     grass: id('grass'), dirt: id('dirt'), stone: id('stone'), sand: id('sand'), log: id('log'), leaves: id('leaves'),
     planks: id('planks'), path: id('path'), water: id('water'), rock: id('rock-moss'), birch: id('birch-log'),
+    treeLog: id('tree-log'), treeBirch: id('tree-birch-log'),
     autumn: id('leaves-autumn'), bed: id('riverbed'),
   };
   const scales = await modelScales({ ...MODEL_HEIGHT, ...LIFE_MODEL_HEIGHT }, { ...MODEL_ANIMATION, ...LIFE_MODEL_ANIMATION });
@@ -217,7 +218,7 @@ export async function generateForest(): Promise<{ world: VoxelWorld; entities: W
 
   // 5. Ancient tree landmark.
   const ancientBase = surface(ancient.x, ancient.z) + 1;
-  placeAncientTree(world, ancient.x, ancientBase, ancient.z, { log: B.log, leaves: B.leaves }, rng);
+  placeAncientTree(world, ancient.x, ancientBase, ancient.z, { log: B.treeLog, leaves: B.leaves, core: B.log }, rng);
 
   // 6. Scattered trees (jittered grid, rejecting path, stream, clearings and rim).
   const occupied: Array<[number, number]> = [];
@@ -231,7 +232,7 @@ export async function generateForest(): Promise<{ world: VoxelWorld; entities: W
       if (clearings.some((c) => Math.hypot(x - c.x, z - c.z) < c.radius + 1)) continue;
       if (rng() < 0.18) continue;
       const roll = rng();
-      const blocks = roll < 0.15 ? { log: B.birch, leaves: B.leaves } : roll < 0.3 ? { log: B.log, leaves: B.autumn } : { log: B.log, leaves: B.leaves };
+      const blocks = roll < 0.15 ? { log: B.treeBirch, leaves: B.leaves } : roll < 0.3 ? { log: B.treeLog, leaves: B.autumn } : { log: B.treeLog, leaves: B.leaves };
       placeTree(world, x, surface(x, z) + 1, z, treeHeight(rng), blocks, rng);
       occupied.push([x, z]);
     }

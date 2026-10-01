@@ -128,7 +128,7 @@ export async function generateSchool(): Promise<{ world: VoxelWorld; entities: W
   };
   const B = {
     grass: id('grass'), dirt: id('dirt'), stone: id('stone'), sand: id('sand'), log: id('log'), leaves: id('leaves'), planks: id('planks'), path: id('path'),
-    autumn: id('leaves-autumn'), pink: id('leaves-pink'), birch: id('birch-log'), brickRed: id('brick-red'), brickGrey: id('brick-grey'), woodRed: id('wood-red'),
+    autumn: id('leaves-autumn'), pink: id('leaves-pink'), birch: id('birch-log'), treeLog: id('tree-log'), brickRed: id('brick-red'), brickGrey: id('brick-grey'), woodRed: id('wood-red'),
     water: id('water'), riverbed: id('riverbed'), glass: id('glass'), roofBlue: id('roof-blue'), asphalt: id('asphalt'), board: id('board'), snow: id('snow'),
   };
   const palette: SchoolPalette = {
@@ -260,7 +260,7 @@ export async function generateSchool(): Promise<{ world: VoxelWorld; entities: W
       if (inCampus(x, z) && z < CAMPUS.z0 + 4) continue;
       if (rng() < 0.3) continue;
       const kind = rng();
-      placeTree(world, x, surface(x, z) + 1, z, treeHeight(rng), { log: B.log, leaves: kind < 0.25 ? B.pink : kind < 0.4 ? B.autumn : B.leaves }, rng);
+      placeTree(world, x, surface(x, z) + 1, z, treeHeight(rng), { log: B.treeLog, leaves: kind < 0.25 ? B.pink : kind < 0.4 ? B.autumn : B.leaves }, rng);
     }
   }
 

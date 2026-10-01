@@ -2,8 +2,11 @@
 import { put, type WorldWriter } from './world-writer';
 
 export interface TreeBlocks {
+  /** Trunk wood: a tree block the child walks through (`tree-log`), unlike a bridge's or a house's logs. */
   log: number;
   leaves: number;
+  /** The ancient tree's thick core stays a solid landmark; its roots and branches use `log`. */
+  core?: number;
 }
 
 /**
@@ -37,7 +40,7 @@ export function placeTree(world: WorldWriter, x: number, baseY: number, z: numbe
 export function placeAncientTree(world: WorldWriter, cx: number, baseY: number, cz: number, blocks: TreeBlocks, rng: () => number): number {
   const trunkHeight = 13;
   for (let y = baseY - 1; y < baseY + trunkHeight; y++) {
-    for (let dx = -1; dx <= 1; dx++) for (let dz = -1; dz <= 1; dz++) put(world, cx + dx, y, cz + dz, blocks.log);
+    for (let dx = -1; dx <= 1; dx++) for (let dz = -1; dz <= 1; dz++) put(world, cx + dx, y, cz + dz, blocks.core ?? blocks.log);
   }
   for (const [dx, dz] of [[2, 0], [-2, 0], [0, 2], [0, -2], [2, 1], [-2, -1], [1, -2], [-1, 2]] as const) {
     const h = 1 + Math.floor(rng() * 3);

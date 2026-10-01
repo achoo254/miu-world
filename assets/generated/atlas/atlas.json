@@ -705,6 +705,56 @@
       "solid": true,
       "transparent": false,
       "liquid": false
+    },
+    {
+      "id": 23,
+      "name": "tree-log",
+      "top": [
+        4,
+        148,
+        64,
+        64
+      ],
+      "side": [
+        436,
+        76,
+        64,
+        64
+      ],
+      "bottom": [
+        4,
+        148,
+        64,
+        64
+      ],
+      "solid": false,
+      "transparent": false,
+      "liquid": false
+    },
+    {
+      "id": 24,
+      "name": "tree-birch-log",
+      "top": [
+        148,
+        4,
+        64,
+        64
+      ],
+      "side": [
+        76,
+        4,
+        64,
+        64
+      ],
+      "bottom": [
+        148,
+        4,
+        64,
+        64
+      ],
+      "solid": false,
+      "transparent": false,
+      "liquid": false
     }
   ]
 }
