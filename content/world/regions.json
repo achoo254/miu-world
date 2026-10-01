@@ -21,7 +21,7 @@
       "description": "Sư Tử Vàng, Khỉ Lanh và cả trường đang chờ {name} đến học Toán thật vui!",
       "status": "open",
       "hotspot": { "x": 19, "y": 54 },
-      "backdrop": { "eye": [48, 19, 4], "target": [48, 13, 40], "fov": 55 },
+      "backdrop": { "eye": [48, 25, 15], "target": [48, 14, 60], "fov": 55 },
       "events": ["rain-rainbow", "fireflies"]
     },
     { "id": "thu-vien", "name": "Thư viện", "tagline": "Ngàn trang sách kỳ diệu", "subject": "Đọc sách", "status": "v1", "hotspot": { "x": 32, "y": 29 } },
