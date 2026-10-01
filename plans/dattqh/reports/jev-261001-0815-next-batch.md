@@ -23,3 +23,5 @@ Gọi `tools/decisions/jev-decide.py` (model jev-1.13.0). Đầu vào và đầu
 - Sau khi gate và E2E xanh: deploy `main` lên staging.
 
 Plan triển khai: `plans/dattqh/261001-0815-next-batch/plan.md`.
+
+Đính chính (cùng ngày): câu "Server kiểm sở hữu trang phục" mô tả sai hiện trạng. `PUT /api/character` đã kiểm điều kiện mở khóa level/quest (403 `equipment-locked`, có test), và `unlock` chỉ nhận `level`/`quest`, nên chưa có trang phục nào là vật phẩm túi đồ. Vì vậy không viết thêm code; chỉ sửa mục nợ trong `docs/project-roadmap.md`.

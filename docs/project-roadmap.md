@@ -64,7 +64,6 @@ Mã chỉ dùng trong plan và roadmap, không dùng trong code, tên test, comm
 - Đo trên máy chuẩn iPad Gen 10 ở Low/Mid/High (FPS, nhiệt, pin sau 15 phút).
 - Nén atlas KTX2 (task #21).
 - Triển khai server: staging đã chạy tại `miu-staging.hoandat.com` bằng bundle production (`pnpm --filter @miu/server bundle`), IP thật của khách đi đúng qua chuỗi proxy. Production (`miu.hoandat.com` trên .65) chưa dựng. Xem `docs/deployment-guide.md`.
-- Khi phụ kiện trở thành phần thưởng: `PUT /api/character` phải kiểm sở hữu qua túi đồ (hiện chỉ kiểm catalog).
-- Tách trang review/preview và ảnh review khỏi bản build phát hành (hiện build gồm cả ~5 MB ảnh review).
+- Khi phụ kiện trở thành vật phẩm thưởng trong túi đồ: `PUT /api/character` phải kiểm sở hữu qua túi đồ. Hiện server đã kiểm điều kiện mở khóa theo level/quest của từng trang phục (403 `equipment-locked`); `unlock` chỉ nhận `level`/`quest`, chưa có trang phục nào là vật phẩm.
 - Xác minh ứng dụng Google OAuth (màn đồng ý, chính sách quyền riêng tư) và pháp chế duyệt văn bản đồng ý draft-3 — trước khi có người dùng thật.
 - Đưa KayKit vào (chế độ tải tay đã hỗ trợ).
