@@ -1,3 +1,4 @@
+import { readdirSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
@@ -59,6 +60,16 @@ describe('runtime asset selection for the web build', async () => {
     for (const p of reviewInRelease) expect(UI_ART_PATHS).toContain(p);
     expect(release).not.toContain('generated/review/mvp/10-reward.png');
     expect(release).not.toContain('generated/review/perf.json');
+  });
+
+  it('lets the game reach review material only through the UI art list a release keeps', () => {
+    // Anything else under src/ that names generated/review/ would load in review builds and 404 in production.
+    const SRC = path.resolve(path.dirname(fileURLToPath(import.meta.url)), 'src');
+    const pageOnly = ['review/', 'preview/']; // the review and render tool pages, left out of a release
+    const naming = readdirSync(SRC, { recursive: true, encoding: 'utf8' })
+      .filter((f) => /\.tsx?$/.test(f) && !/\.test\.tsx?$/.test(f) && !pageOnly.some((dir) => f.startsWith(dir)))
+      .filter((f) => readFileSync(path.join(SRC, f), 'utf8').includes('generated/review/'));
+    expect(naming).toEqual([path.join('ui', 'kit', 'ui-art.ts')]);
   });
 
   it('refuses a runtime asset missing from the manifest', async () => {

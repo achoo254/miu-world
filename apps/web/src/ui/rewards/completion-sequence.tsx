@@ -58,10 +58,11 @@ function useCountUp(target: number, delayMs: number): number {
   return value;
 }
 
-/** A chime as the screen opens, then a ting for each star as it lights. */
+/** A chime as the screen opens, then a ting for each star as it lights (stars light at once under reduced motion: chime only). */
 function useRewardSounds(stars: number): void {
   useEffect(() => {
     playCue('complete');
+    if (prefersReducedMotion()) return;
     const timers = Array.from({ length: stars }, (_, i) => window.setTimeout(() => playCue('star'), (i + 1) * STAR_GAP_MS));
     return () => timers.forEach((t) => window.clearTimeout(t));
   }, [stars]);
@@ -91,11 +92,12 @@ function RewardScreen({ completion, reward, quest, data }: { completion: QuestCo
   const countFrom = (completion.stars + 1) * STAR_GAP_MS;
   const items = Object.entries(reward.items).filter(([, qty]) => qty > 0);
   const skills = completion.skillLevels.filter((s) => (reward.skillXp[s.skillId] ?? 0) > 0 || s.levelAfter > s.levelBefore);
-  // Rows after the counters slide in one after another (CSS reads --reveal).
+  // One clock for the CSS: stars light every --star-gap, the other rows slide in (by --reveal) once the counters stop.
+  const timing = { '--star-gap': `${STAR_GAP_MS}ms`, '--reveal-from': `${countFrom + COUNT_MS}ms` } as CSSProperties;
   const reveal = (i: number) => ({ '--reveal': i }) as CSSProperties;
 
   return (
-    <div className="reward-body">
+    <div className="reward-body" style={timing}>
       <div className="reward-cheer" data-id="reward-cheer">
         {cheerer ? <NpcPortrait name={fill(cheerer.name)} target={cheerer.target} size={72} reaction="cheer" /> : null}
         <MiuPortrait pose="cheer" size="6rem" species={data.character.species} />

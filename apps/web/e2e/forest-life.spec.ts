@@ -13,6 +13,8 @@ const SHOTS = fileURLToPath(new URL('../../../.data/life/review-shots/', import.
 mkdirSync(SHOTS, { recursive: true });
 const entities = JSON.parse(readFileSync(new URL('../../../assets/generated/world/forest-ch1/entities.json', import.meta.url), 'utf8')) as WorldEntities;
 const DRAW_CALL_BUDGET = 150;
+/** How far a speech bubble carries (`HEAR_RADIUS` in ambient-life.ts). */
+const HEAR_RADIUS = 16;
 
 /** A spot `back` blocks behind a character along the spawn heading (45°), so the follow camera frames it. */
 function behind(id: string, back = 5): string {
@@ -82,14 +84,18 @@ test('low quality draws at most six of them, within the draw-call budget', async
 });
 
 test('stays quiet while a quest prompt is up', async ({ page, baseURL }) => {
+  // By the red mushroom (a quest clue) the fisher is within earshot, but the quest owns the moment.
+  const target = entities.interactables.find((t) => t.id === 'clue-mushroom');
+  const fisher = (entities.ambients ?? []).find((a) => a.id === 'chu-cau-ca');
+  if (!target || !fisher) throw new Error('clue-mushroom or chu-cau-ca missing from the map');
+  expect(Math.hypot(...target.position.map((v, i) => v - (fisher.position[i] ?? 0)))).toBeLessThan(HEAR_RADIUS);
   await freshChild(page, baseURL ?? '');
-  // Next to the parrot guide: villagers and parrots are around, but the quest owns the moment.
-  await page.goto(play('npc'));
+  await page.goto(play('clue-mushroom'));
   await waitReady(page);
-  await expect.poll(async () => (await readStats(page)).nearTarget).toBe('parrot-guide');
+  await expect.poll(async () => (await readStats(page)).nearTarget).toBe('clue-mushroom');
   await page.waitForTimeout(8_000);
   const stats = await readStats(page);
-  expect(stats.nearTarget).toBe('parrot-guide');
+  expect(stats.nearTarget).toBe('clue-mushroom');
   expect(stats.ambientVisible).toBeGreaterThan(0);
   expect(stats.ambientLine).toBeNull();
 });

@@ -3,6 +3,7 @@ import { MemoryRouter } from 'react-router';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import type { CharacterDto, QuestCompletion } from '@miu/schema/game';
 import { BackpackPanel } from '../backpack/backpack-panel';
+import { lastSpeakerOf, presenterOf } from '../dialogue/npc-portrait';
 import type { PlayerData } from '../player/player-data';
 import { PROGRESS, questList } from '../player/test-fixtures';
 import { ProfileScreen } from '../profile/profile-screens';
@@ -93,6 +94,13 @@ describe('the reward moment unfolds in order', () => {
     render(<CompletionSequence completion={completion()} reward={REWARD} quest={QUEST} data={DATA} onMap={() => undefined} onExplore={() => undefined} />);
     expect(document.querySelector('[data-id="reward-xp"] [aria-hidden="true"]')?.textContent).toBe('+100 XP');
     expect(document.querySelector('[data-id="reward-coin"] [aria-hidden="true"]')?.textContent).toBe('+20 Xu');
+  });
+
+  it('picks the last character who spoke in the quest to cheer, as a challenge picks who asks it', () => {
+    expect(lastSpeakerOf(QUEST.steps)).toEqual({ name: 'Vẹt', target: 'parrot-guide' });
+    expect(presenterOf(QUEST.steps, 'find-clues')).toEqual({ name: 'Vẹt', target: 'parrot-guide' });
+    expect(presenterOf(QUEST.steps, 'meet-parrot')).toBeNull();
+    expect(lastSpeakerOf([])).toBeNull();
   });
 
   it('lets the child\'s character cheer, and leaves out rewards worth nothing', () => {

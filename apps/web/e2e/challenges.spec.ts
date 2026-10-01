@@ -85,7 +85,7 @@ test('the riddle with the Answer layer still finishes the chapter, for 90 XP ins
   await waitReady(page);
   await tap(page, '[data-id="hud-interact"]');
   await expect(page.getByRole('dialog', { name: 'Hoàn thành nhiệm vụ!' })).toBeVisible();
-  await expect(page.locator('[data-id="reward-xp"]')).toHaveText(/\+90 XP/);
+  await expect(page.locator('[data-id="reward-xp"] .visually-hidden')).toHaveText('+90 XP');
   await expect(page.locator('[data-id="reward-stars"]')).toHaveAttribute('data-stars', '2');
   await expect(page.locator('[data-id="reward-encourage"]')).toBeVisible();
   // No Level Up: 90 XP stays below the 100 XP of level 2; the next screen is the unlock.

@@ -90,7 +90,7 @@ test('finishing chapter 1 without seeing an answer: 100 XP, Level Up to 2, chapt
   const reward = page.getByRole('dialog', { name: 'Hoàn thành nhiệm vụ!' });
   await expect(reward).toBeVisible();
   await expect(page.locator('[data-id="reward-stars"]')).toHaveAttribute('data-stars', '3');
-  await expect(page.locator('[data-id="reward-xp"]')).toHaveText(/\+100 XP/);
+  await expect(page.locator('[data-id="reward-xp"] .visually-hidden')).toHaveText('+100 XP');
   await expect(page.locator('[data-id="reward-item-la-than"]')).toContainText('Lá thần');
   await page.locator('[data-id="completion-next"]').click();
   await expect(page.getByRole('dialog', { name: 'Lên cấp!' })).toContainText('Lv.1 → Lv.2');
