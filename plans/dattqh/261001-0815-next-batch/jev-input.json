@@ -1,0 +1,97 @@
+{
+  "state": {
+    "project": "Miu World: a voxel learning game for Vietnamese grade-2 children (web, iPad Gen 10 target). Monorepo apps/web (Vite + React + Three.js), apps/server (Express + Drizzle), packages/{voxel,quest,schema}. AI executes 100% of the work; the owner only reviews finished results in a UI (review page or staging). Owner directive: security, child-data and textbook-copyright concerns are not priorities right now.",
+    "today": "2026-10-01",
+    "repo_state": {
+      "main": "Just fast-forwarded to origin/main (10 new commits: forest villagers and animals with daily chores, Home and world map as floating islands, every textbook lesson open from the start with book/title/pages shown, parent area in two numbered steps, pnpm dev). No gate (tests/typecheck/lint/E2E) has been run on this machine since the pull.",
+      "sgk_worktree": "Worktree ../miu-world-sgk on branch dattqh/feat/sgk-lop2-content is clean, has no commits of its own, and is 11 commits behind main.",
+      "machine": "4 private out-of-git files (handwriting font for worksheets, textbook PDFs) are missing locally; `pnpm private:sync` restores them from iCloud.",
+      "staging": "https://miu-staging.hoandat.com is up (health ok). The agent may deploy to staging on its own; production requires asking the owner every time. The last recorded staging deploy decision covered the character library batch; 10+ commits have landed on main since, including the forest life and world map redesign, and it is not confirmed which commit staging runs."
+    },
+    "plans": {
+      "forest_ambient_life": "Code is committed on main (villagers and animals with chores, merged skinned meshes for draw calls, director keeping nearest K characters by quality). Its 7 acceptance checks are all still unticked: >=3 distinct chores per character without immediate repeats; birds flap when rising and glide when descending, bees flap fast; approaching makes them stop, turn, wave and greet the child by character name, tapping gives small talk then they resume; they never block the quest arrow or path and stay quiet during quest prompts; draw calls <=150 at every quality level, E2E `play` green, review screenshots for the owner; prefers-reduced-motion keeps birds perched and no jumping; full gate + web build + E2E.",
+      "scene_ui_richness": "6 of 7 items done (sounds, right/wrong feedback, NPC reactions, bigger text, progress row, hint/answer buttons by wrong attempts). Remaining item 7: the quest completion screen should reveal rewards in sequence (stars, then XP, then coins/items, then level up, then unlocks). It was blocked only until another session finished files in ui/rewards; that session (character library) is now done, so it is unblocked. Tier S.",
+      "sgk_textbook_content": "Goal: 100% of Math 2 and Vietnamese 2 volume 1 as quests. Done: inventory (1,768 items), schema and new mechanics, worksheets, on-device voice, mechanic UI. Phases 4 and 5 (writing all ~70 quests) are explicitly gated on the owner accepting 3-5 sample quests first (5 Vietnamese + 1 Math samples ready, waiting for the owner). Phase 9 (school map zones + forest chapters 2-19 map targets) formally depends on phases 4 and 5; the school map with one zone per Math topic was already built on main. Phase 10 activates everything after the vertical slice gate.",
+      "vertical_slice_mvp": "All 10 phases done; waiting on human-only work: iPad device measurement, teacher content review, designer UI review, playtest with children."
+    },
+    "known_debts": {
+      "release_build_split": "The release build still bundles the review/preview pages and about 5 MB of review screenshots; they should be separated from the shipped build.",
+      "character_ownership_check": "PUT /api/character only checks the outfit exists in the catalog, not that the child owns it; matters once outfits become rewards (some outfit variants already unlock by level/quest, checked server-side).",
+      "ktx2_atlas": "Compress the texture atlas to KTX2 (backlog task #21) to cut GPU memory and load time on iPad."
+    }
+  },
+  "questions": {
+    "task_forest_verify": {
+      "stakes": "low",
+      "instructions": "Using `plans.forest_ambient_life` and `repo_state`, decide whether the agent should take on verifying and finishing the forest ambient life work in the current batch (check each acceptance item against the running game, fix gaps, tick the plan, add review screenshots, run gate and E2E) or leave it for a later batch.",
+      "criteria": {
+        "now": "Do it in this batch: the feature is already on main but unverified, so a regression or unmet criterion would reach the owner's review unnoticed.",
+        "later": "Defer: other work is more valuable now and the feature can stay unverified for a while."
+      }
+    },
+    "task_completion_screen": {
+      "stakes": "low",
+      "instructions": "Using `plans.scene_ui_richness`, decide whether the agent should implement the remaining sequenced quest completion screen in this batch or defer it.",
+      "criteria": {
+        "now": "Do it in this batch: it is small, now unblocked, and closes a nearly finished plan that directly shapes what children feel after each quest.",
+        "later": "Defer: it is cosmetic and can wait behind more important work."
+      }
+    },
+    "task_release_split": {
+      "stakes": "low",
+      "instructions": "Using `known_debts.release_build_split` and `repo_state.staging`, decide whether to remove the review/preview pages and review screenshots from the release build in this batch or defer it. Note the owner reviews through the review page, so it must remain reachable in development and review builds.",
+      "criteria": {
+        "now": "Do it in this batch: shipped builds should not carry about 5 MB of review material, which slows loading on iPad.",
+        "later": "Defer: the extra size does not hurt anyone yet and the review page is still actively used."
+      }
+    },
+    "task_character_ownership": {
+      "stakes": "low",
+      "instructions": "Using `known_debts.character_ownership_check`, decide whether to make PUT /api/character verify that the child owns or has unlocked each chosen outfit in this batch, or defer it.",
+      "criteria": {
+        "now": "Do it in this batch: outfits already unlock by level or quest, so the server should enforce ownership before rewards grow.",
+        "later": "Defer: the security directive says this is not a priority yet and no reward outfits exist beyond the existing unlock checks."
+      }
+    },
+    "task_ktx2_atlas": {
+      "stakes": "low",
+      "instructions": "Using `known_debts.ktx2_atlas` and the fact that iPad device measurement is still pending human work, decide whether to compress the atlas to KTX2 in this batch or defer it.",
+      "criteria": {
+        "now": "Do it in this batch: lower GPU memory and faster loads make the coming iPad measurement more likely to pass.",
+        "later": "Defer: wait for real iPad measurements to show whether texture memory or load time is actually a problem."
+      }
+    },
+    "task_sgk_phase9": {
+      "stakes": "medium",
+      "instructions": "Using `plans.sgk_textbook_content`, decide whether the agent should start SGK phase 9 (map targets for forest chapters 2-19 and remaining school zone work) now, or wait until the owner has accepted the sample quests and phases 4 and 5 are written.",
+      "criteria": {
+        "start_now": "Start now: map work for chapters can proceed independently of quest wording, saving time later.",
+        "wait_for_samples": "Wait: the plan gates bulk work on the owner's sample acceptance, and map targets depend on the quests that phases 4 and 5 will define."
+      }
+    },
+    "sgk_worktree_sync": {
+      "stakes": "low",
+      "instructions": "Using `repo_state.sgk_worktree`, decide whether to fast-forward the SGK worktree branch to main now.",
+      "criteria": {
+        "fast_forward_now": "Fast-forward now: it is clean with no own commits, so syncing is risk-free and keeps the parallel session current.",
+        "leave_as_is": "Leave it: nobody is working in it right now, sync when the next SGK session starts."
+      }
+    },
+    "staging_deploy": {
+      "stakes": "medium",
+      "instructions": "Using `repo_state.staging` and that the owner reviews finished results in a UI, decide what to do about staging after this batch's work passes the full gate and E2E.",
+      "criteria": {
+        "deploy_after_gate": "Deploy the latest main to staging once the gate and E2E pass, so the owner can review the forest life, world map and any batch changes on a real URL.",
+        "wait_for_owner": "Do not deploy; wait for the owner to ask for a staging update."
+      }
+    },
+    "execution_mode": {
+      "stakes": "low",
+      "instructions": "Decide how the agent should execute the tasks chosen for this batch in this single main checkout.",
+      "criteria": {
+        "sequential": "One task at a time in the main session, each with its own gate run and commit; simpler, no file conflicts, slower.",
+        "parallel_disjoint": "Run tasks with disjoint file ownership in parallel subagents, then one shared gate and E2E run; faster but more coordination and shared-port contention for E2E."
+      }
+    }
+  }
+}

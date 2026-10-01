@@ -1,0 +1,99 @@
+{
+  "model": "jev-1.13.0",
+  "usage": {
+    "input_tokens": 2469,
+    "output_tokens": 311
+  },
+  "results": {
+    "task_forest_verify": {
+      "stakes": "low",
+      "choice": "now",
+      "confidence": 0.97,
+      "probabilities": {
+        "later": 0.02,
+        "now": 0.98
+      },
+      "decision": "auto"
+    },
+    "task_completion_screen": {
+      "stakes": "low",
+      "choice": "now",
+      "confidence": 1.0,
+      "probabilities": {
+        "later": 0.0,
+        "now": 1.0
+      },
+      "decision": "auto"
+    },
+    "task_release_split": {
+      "stakes": "low",
+      "choice": "now",
+      "confidence": 0.04,
+      "probabilities": {
+        "later": 0.48,
+        "now": 0.52
+      },
+      "decision": "escalate"
+    },
+    "task_character_ownership": {
+      "stakes": "low",
+      "choice": "now",
+      "confidence": 0.22,
+      "probabilities": {
+        "later": 0.39,
+        "now": 0.61
+      },
+      "decision": "escalate"
+    },
+    "task_ktx2_atlas": {
+      "stakes": "low",
+      "choice": "later",
+      "confidence": 0.59,
+      "probabilities": {
+        "later": 0.8,
+        "now": 0.2
+      },
+      "decision": "escalate"
+    },
+    "task_sgk_phase9": {
+      "stakes": "medium",
+      "choice": "wait_for_samples",
+      "confidence": 1.0,
+      "probabilities": {
+        "wait_for_samples": 1.0,
+        "start_now": 0.0
+      },
+      "decision": "auto"
+    },
+    "sgk_worktree_sync": {
+      "stakes": "low",
+      "choice": "fast_forward_now",
+      "confidence": 0.62,
+      "probabilities": {
+        "leave_as_is": 0.19,
+        "fast_forward_now": 0.81
+      },
+      "decision": "auto"
+    },
+    "staging_deploy": {
+      "stakes": "medium",
+      "choice": "deploy_after_gate",
+      "confidence": 1.0,
+      "probabilities": {
+        "deploy_after_gate": 1.0,
+        "wait_for_owner": 0.0
+      },
+      "decision": "auto"
+    },
+    "execution_mode": {
+      "stakes": "low",
+      "choice": "sequential",
+      "confidence": 0.35,
+      "probabilities": {
+        "parallel_disjoint": 0.33,
+        "sequential": 0.67
+      },
+      "decision": "escalate"
+    }
+  }
+}
