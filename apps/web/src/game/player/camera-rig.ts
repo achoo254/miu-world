@@ -20,6 +20,8 @@ const PITCH_PER_PX = 0.0025;
 const TILT_SLOPE = 1;
 /** While Miu walks and nobody drags, the tilt drifts back to DEFAULT_PITCH at this rate (per second). */
 const RECENTER_EASE = 1.5;
+/** How fast the view swings round behind the way Miu walks (per second): the scripted autopilot's pace. */
+const FOLLOW_EASE = 2.5;
 /**
  * Closer than this, the camera tilts up (in these steps) to find a clearer view, as far as looking
  * almost straight down when a bank is right at Miu's back; the child's own drag stops at MAX_PITCH.
@@ -61,11 +63,14 @@ export class CameraRig {
     this.pitch += (DEFAULT_PITCH - this.pitch) * Math.min(1, dt * RECENTER_EASE);
   }
 
-  /** Eases yaw to sit behind `facing` (used by the scripted autopilot). */
-  follow(facing: number, dt: number): void {
+  /**
+   * Eases yaw to sit behind `facing`: the scripted autopilot at full pace, the child's walking at a share of
+   * it (`strength` 0–1), so the view turns smoothly to where she goes.
+   */
+  follow(facing: number, dt: number, strength = 1): void {
     const behind = facing + Math.PI;
     const diff = Math.atan2(Math.sin(behind - this.yaw), Math.cos(behind - this.yaw));
-    this.yaw += diff * Math.min(1, dt * 2.5);
+    this.yaw += diff * Math.min(1, dt * FOLLOW_EASE * strength);
   }
 
   update(dt: number, player: Vector3): void {

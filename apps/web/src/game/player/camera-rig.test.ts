@@ -57,3 +57,17 @@ describe('camera drag', () => {
     expect(rig.pitch).toBeCloseTo(DEFAULT_PITCH, 1);
   });
 });
+
+describe('camera follow', () => {
+  it('swings smoothly round behind the way Miu walks, slower at a lower strength', () => {
+    const facing = Math.PI / 2; // walking toward +x: behind her is yaw 3π/2 (−π/2)
+    const turned = (strength: number, frames: number): number => {
+      const rig = new CameraRig(new PerspectiveCamera(), () => false, 0);
+      for (let i = 0; i < frames; i++) rig.follow(facing, 1 / 60, strength);
+      return Math.abs(Math.atan2(Math.sin(rig.yaw), Math.cos(rig.yaw)));
+    };
+    expect(turned(0.5, 10)).toBeGreaterThan(0);
+    expect(turned(0.5, 10)).toBeLessThan(turned(1, 10)); // no snap: a short walk turns a little
+    expect(turned(0.5, 600)).toBeCloseTo(Math.PI / 2, 2); // a longer walk ends right behind her
+  });
+});

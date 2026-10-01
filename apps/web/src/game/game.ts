@@ -51,6 +51,10 @@ import './game.css';
 
 /** Boot steps reported as `loading-progress`: renderer, asset registry, map data, world mesh, models. */
 const LOADING_STEPS = 5;
+/** After the child drags the view, the camera keeps her angle this long before settling behind her again. */
+const LOOK_HOLD_S = 1;
+/** Share of the autopilot's turning pace used while the child walks: a calm swing, not a snap. */
+const FOLLOW_STRENGTH = 0.5;
 
 export interface GameOptions {
   store: GameStore;
@@ -440,6 +444,8 @@ export class Game {
     this.timer = timer;
     this.cleanups.push(() => timer.dispose());
     let firstFrame = true;
+    /** Seconds since the child last dragged the view. */
+    let sinceLook = Infinity;
 
     this.loop = () => {
       timer.update();
@@ -456,8 +462,14 @@ export class Game {
         const state = input.read();
         interact ||= state.interact;
         rig.orbit(state.lookX, state.lookY);
-        // A tilt the child left behind drifts back once she walks on, so the view never stays stuck on the ground.
-        if (state.lookX === 0 && state.lookY === 0 && Math.hypot(state.moveX, state.moveY) > 0.1) rig.recenter(dt);
+        // While she walks on her own, the view settles behind her: the tilt drifts back to rest and the camera
+        // turns toward where she goes. Only walking forward turns it (a sideways or backward step would make
+        // the camera chase her round in circles), and not within a moment of her own drag.
+        sinceLook = state.lookX !== 0 || state.lookY !== 0 ? 0 : sinceLook + dt;
+        if (sinceLook > LOOK_HOLD_S && Math.hypot(state.moveX, state.moveY) > 0.1) {
+          rig.recenter(dt);
+          if (state.moveY > 0.1) rig.follow(controller.facing, dt, FOLLOW_STRENGTH * state.moveY);
+        }
         const { right, forward } = rig.basis();
         intent = {
           dirX: right[0] * state.moveX + forward[0] * state.moveY,
