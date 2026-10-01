@@ -1,0 +1,1201 @@
+{
+  "id": "toan2-cd6-b30",
+  "region": "truong-hoc",
+  "chapter": 6,
+  "title": "Voi Bảo và tờ lịch bị xé",
+  "status": "draft",
+  "lesson": "toan2-t1-b30",
+  "summary": "Voi Bảo hắt xì một cái, các tờ lịch trên tháp bay tán loạn và rách mất mấy ngày; {name} nhặt lại mảnh lịch, ghép ngày sinh, điền ngày còn thiếu và trả lời mọi câu đố lịch của Voi Bảo.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "Voi Bảo, Koala Na",
+    "where": "Tháp đồng hồ: phòng lịch trên tháp, cầu thang tháp, ban công tháp",
+    "goal": "Ghép lại các tờ lịch tháng cho phòng lịch của trường",
+    "play": "Tìm mảnh lịch, ghép thẻ ngày sinh, chạm ngày và thứ trên tờ lịch, điền ngày còn thiếu, nối tranh ngày lễ với ô chữ",
+    "learn": "Toán 2 Bài 30: ngày – tháng, đọc và xem tờ lịch tháng",
+    "reward": "90 XP, 15 xu, Xem lịch +2",
+    "unlock": "Bài 31 \"Thực hành và trải nghiệm xem đồng hồ, xem lịch\""
+  },
+  "phases": {
+    "hook": "hat-xi-bay-lich",
+    "explore": "nhat-manh-lich",
+    "learn": "doc-ngay-thang",
+    "challenge": "the-ngay-sinh",
+    "decision": "koala-dap-lich",
+    "finale": "thu-bay-tuan-truoc",
+    "reward": "huy-hieu-giu-lich",
+    "unlock": "chuong-thap-im-lim"
+  },
+  "texts": {},
+  "places": {
+    "voi-bao": "phòng lịch trên tháp",
+    "nhat-manh-lich": "cầu thang tháp đồng hồ",
+    "koala-na": "ban công tháp"
+  },
+  "steps": [
+    {
+      "id": "hat-xi-bay-lich",
+      "title": "Một cái hắt xì to đùng",
+      "goTo": "Leo lên phòng lịch trên tháp, Voi Bảo đang sụt sịt",
+      "kind": "dialogue",
+      "target": "voi-bao",
+      "lines": [
+        {
+          "speaker": "Voi Bảo",
+          "text": "Hắt… XÌÌÌ! Ôi không, {name} ơi! Cái vòi của tớ vừa thổi bay cả chồng lịch của trường rồi."
+        },
+        {
+          "speaker": "Voi Bảo",
+          "text": "Tờ lịch tháng Mười Hai rách mất mấy ô, tờ tháng Hai cũng thủng lỗ chỗ. Tớ nhớ giỏi lắm, nhưng nhớ… hơi chậm."
+        },
+        {
+          "speaker": "Koala Na",
+          "text": "(ngáp dài từ ngoài ban công) Lịch bay ra đây mấy tờ này, mềm như chăn ấy… khò…"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ đi nhặt lịch ngay!",
+          "reply": "Voi Bảo vẫy vòi: Nhanh lên kẻo Koala Na đắp hết làm chăn mất!"
+        },
+        {
+          "text": "Voi Bảo bị cảm à?",
+          "reply": "Voi Bảo: Không, tại hạt bụi bay vào vòi thôi. Mà cậu tìm giúp tớ mấy mảnh lịch nhé!"
+        }
+      ]
+    },
+    {
+      "id": "nhat-manh-lich",
+      "title": "Nhặt mảnh lịch bay",
+      "goTo": "Nhặt các mảnh lịch rơi dọc cầu thang tháp đồng hồ",
+      "kind": "search",
+      "targets": [
+        "toan2-cd6-to-lich-thang-12",
+        "toan2-cd6-to-lich-thang-2",
+        "toan2-cd6-the-ngay-sinh"
+      ]
+    },
+    {
+      "id": "doc-ngay-thang",
+      "title": "Đọc ngày, đọc tháng",
+      "goTo": "Mang mảnh lịch về phòng lịch trên tháp",
+      "kind": "dialogue",
+      "target": "voi-bao",
+      "lines": [
+        {
+          "speaker": "Voi Bảo",
+          "text": "Cảm ơn {name}! Nhìn này: mỗi tờ lịch là một tháng. Số to trong ô là ngày, hàng trên cùng ghi thứ."
+        },
+        {
+          "speaker": "Voi Bảo",
+          "text": "\"Ngày 8 tháng 3\" đọc là \"Ngày tám tháng Ba\". Tháng thì có tháng 30 ngày, tháng 31 ngày, riêng tháng Hai hay ăn bớt."
+        },
+        {
+          "speaker": "Voi Bảo",
+          "text": "Muốn biết một ngày là thứ mấy, cứ dò thẳng lên hàng thứ ở trên đầu cột. Dễ như tớ phun nước tắm!"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ dò cột thử xem!",
+          "reply": "Voi Bảo: Trước hết, giúp tớ ghép mấy tấm thẻ ngày sinh của các bạn đã."
+        }
+      ]
+    },
+    {
+      "id": "the-ngay-sinh",
+      "title": "Hai bạn cùng ngày sinh",
+      "target": "voi-bao",
+      "kind": "challenge",
+      "mechanic": "classify",
+      "prompt": "Thẻ ngày sinh của các bạn bị gió xáo tung, chữ viết một kiểu, số viết một kiểu. Tìm hai con vật có cùng ngày sinh.",
+      "groups": [
+        {
+          "id": "nhom-tho-ngay-1-thang-6",
+          "label": "Thỏ: Ngày 1 tháng 6"
+        },
+        {
+          "id": "nhom-chim-ngay-14-thang-8",
+          "label": "Chim: Ngày 14 tháng 8"
+        },
+        {
+          "id": "nhom-trau-ngay-8-thang-3",
+          "label": "Trâu: Ngày 8 tháng 3"
+        }
+      ],
+      "items": [
+        {
+          "id": "the-ngay-tam-thang-ba",
+          "label": "Ngày tám tháng Ba"
+        },
+        {
+          "id": "the-ngay-mot-thang-sau",
+          "label": "Ngày một tháng Sáu"
+        },
+        {
+          "id": "the-ngay-muoi-bon-thang-tam",
+          "label": "Ngày mười bốn tháng Tám"
+        }
+      ],
+      "skill": "xem-lich",
+      "curriculumRef": [
+        "toan2-t1-b30-hoat-dong-1-a",
+        "toan2-t1-b30-hoat-dong-1-b",
+        "toan2-t1-b30-hoat-dong-1-c"
+      ],
+      "support": {
+        "guide": [
+          "Đọc thẻ chữ thành số: \"tám\" là 8, \"tháng Ba\" là tháng 3.",
+          "Ghép thẻ chữ với thẻ số giống cả ngày lẫn tháng."
+        ],
+        "hint": "\"Ngày mười bốn tháng Tám\" viết bằng số là ngày 14 tháng 8.",
+        "answer": {
+          "text": "Ngày tám tháng Ba – Trâu; Ngày một tháng Sáu – Thỏ; Ngày mười bốn tháng Tám – Chim",
+          "explanation": "Ngày tám tháng Ba là ngày 8 tháng 3 (trâu), ngày một tháng Sáu là ngày 1 tháng 6 (thỏ), ngày mười bốn tháng Tám là ngày 14 tháng 8 (chim)."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ba cặp sinh nhật tìm thấy nhau, Voi Bảo định tổ chức tiệc chung luôn!",
+          "Chữ hay số thì cậu cũng đọc ra cùng một ngày, siêu ghê.",
+          "Thẻ nào về thẻ nấy, gió có xáo nữa cũng chịu thua."
+        ],
+        "wrong": [
+          "Có một thẻ đang ghép nhầm tháng rồi, đọc lại chữ tháng nhé.",
+          "Đổi chữ thành số trước: \"mười bốn\" là mấy nhỉ?",
+          "Ngày giống mà tháng phải giống nữa mới là cùng ngày sinh đấy."
+        ]
+      },
+      "answer": {
+        "assignment": {
+          "the-ngay-tam-thang-ba": "nhom-trau-ngay-8-thang-3",
+          "the-ngay-mot-thang-sau": "nhom-tho-ngay-1-thang-6",
+          "the-ngay-muoi-bon-thang-tam": "nhom-chim-ngay-14-thang-8"
+        }
+      }
+    },
+    {
+      "id": "o-trong-thang-muoi-hai",
+      "title": "Ô trống đầu tiên tháng 12",
+      "target": "voi-bao",
+      "kind": "challenge",
+      "mechanic": "calendar",
+      "prompt": "a) Nêu các ngày còn thiếu trong tờ lịch tháng 12 dưới đây.",
+      "month": 12,
+      "year": 2021,
+      "question": "Tờ lịch tháng 12 có ngày 9 rồi mà ô ngay sau lại trống trơn. Chạm vào ô của ngày còn thiếu đầu tiên.",
+      "ask": "day",
+      "skill": "xem-lich",
+      "curriculumRef": [
+        "toan2-t1-b30-hoat-dong-2-a"
+      ],
+      "support": {
+        "guide": [
+          "Các ngày trong tháng xếp liền nhau, mỗi ô hơn ô trước 1 ngày.",
+          "Tìm ô trống đứng ngay sau ngày 9."
+        ],
+        "hint": "Sau ngày 9 là ngày mấy?",
+        "answer": {
+          "text": "Ngày 10",
+          "explanation": "Ngày đứng ngay sau ngày 9 là ngày 10, đó là ô trống đầu tiên của tờ lịch."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ô ngày 10 sáng lên, tờ lịch bớt một lỗ thủng rồi!",
+          "Đếm liền mạch sau ngày 9, cậu tìm ra ngay.",
+          "Voi Bảo dán miếng vá đầu tiên lên ô ngày 10."
+        ],
+        "wrong": [
+          "Ô đó có số rồi mà, tìm ô trống ngay sau ngày 9 nhé.",
+          "Ngày 9 cộng thêm 1 ngày là ô cần tìm.",
+          "Dò theo hàng từ trái sang phải, ô trống nào gặp trước?"
+        ]
+      },
+      "answer": {
+        "day": 10
+      }
+    },
+    {
+      "id": "va-lich-thang-muoi-hai",
+      "title": "Vá kín tờ lịch tháng 12",
+      "target": "voi-bao",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "a) Nêu các ngày còn thiếu trong tờ lịch tháng 12 dưới đây.",
+      "template": "Voi Bảo đọc to từng ô trống, {name} điền số: {{b1}}, {{b2}}, {{b3}}, {{b4}}, {{b5}}, {{b6}}, {{b7}}.",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o8",
+              "text": "8"
+            },
+            {
+              "id": "o10",
+              "text": "10"
+            },
+            {
+              "id": "o12",
+              "text": "12"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o13",
+              "text": "13"
+            },
+            {
+              "id": "o14",
+              "text": "14"
+            },
+            {
+              "id": "o15",
+              "text": "15"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o16",
+              "text": "16"
+            },
+            {
+              "id": "o17",
+              "text": "17"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "o10",
+              "text": "10"
+            },
+            {
+              "id": "o20",
+              "text": "20"
+            },
+            {
+              "id": "o21",
+              "text": "21"
+            }
+          ]
+        },
+        {
+          "id": "b5",
+          "options": [
+            {
+              "id": "o21",
+              "text": "21"
+            },
+            {
+              "id": "o22",
+              "text": "22"
+            },
+            {
+              "id": "o24",
+              "text": "24"
+            }
+          ]
+        },
+        {
+          "id": "b6",
+          "options": [
+            {
+              "id": "o16",
+              "text": "16"
+            },
+            {
+              "id": "o26",
+              "text": "26"
+            },
+            {
+              "id": "o27",
+              "text": "27"
+            }
+          ]
+        },
+        {
+          "id": "b7",
+          "options": [
+            {
+              "id": "o28",
+              "text": "28"
+            },
+            {
+              "id": "o38",
+              "text": "38"
+            },
+            {
+              "id": "o82",
+              "text": "82"
+            }
+          ]
+        }
+      ],
+      "skill": "xem-lich",
+      "curriculumRef": [
+        "toan2-t1-b30-hoat-dong-2-a"
+      ],
+      "support": {
+        "guide": [
+          "Mỗi ô trống là ngày liền sau ô bên trái nó.",
+          "Ô đầu hàng thì nhìn ô cuối của hàng trên rồi thêm 1."
+        ],
+        "hint": "Các ô trống đều kẹp giữa hai ngày có sẵn: 9 và 11, 13 và 15…",
+        "answer": {
+          "text": "Voi Bảo đọc to từng ô trống, {name} điền số: 10, 14, 16, 20, 22, 26, 28.",
+          "explanation": "Tờ lịch tháng 12 thiếu các ngày 10, 14, 16, 20, 22, 26, 28; mỗi ngày đứng giữa hai ngày còn in."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bảy miếng vá nằm ngay ngắn, tờ tháng 12 lành lặn như mới!",
+          "Voi Bảo vỗ tai phành phạch: không sót ô nào luôn.",
+          "Tháng 12 đủ ngày rồi, Tết Dương lịch sắp tới nơi đấy."
+        ],
+        "wrong": [
+          "Có một miếng vá bị dán lệch sang ô bên cạnh.",
+          "Nhìn ô bên trái của mỗi ô trống, thêm 1 là ra.",
+          "Đọc lại từng hàng từ trái sang phải nhé."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o10",
+          "b2": "o14",
+          "b3": "o16",
+          "b4": "o20",
+          "b5": "o22",
+          "b6": "o26",
+          "b7": "o28"
+        }
+      }
+    },
+    {
+      "id": "thang-muoi-hai-may-ngay",
+      "title": "Tháng 12 dài bao nhiêu?",
+      "target": "voi-bao",
+      "kind": "challenge",
+      "mechanic": "calendar",
+      "prompt": "b) Xem tờ lịch tháng 12 rồi trả lời câu hỏi.",
+      "month": 12,
+      "year": 2021,
+      "question": "Tháng 12 có bao nhiêu ngày? Chạm vào ô ngày cuối cùng của tháng để trả lời.",
+      "ask": "day",
+      "skill": "xem-lich",
+      "curriculumRef": [
+        "toan2-t1-b30-hoat-dong-2-b1"
+      ],
+      "support": {
+        "guide": [
+          "Ngày cuối cùng của tháng cho biết tháng có bao nhiêu ngày.",
+          "Tìm ô có số lớn nhất trên tờ lịch."
+        ],
+        "hint": "Ô cuối cùng ở hàng dưới cùng của tờ lịch.",
+        "answer": {
+          "text": "Tháng 12 có 31 ngày.",
+          "explanation": "Tờ lịch tháng 12 kết thúc ở ngày 31, nên tháng 12 có 31 ngày."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ba mươi mốt ngày! Tháng 12 dài thật, đủ chỗ cho cả lễ Giáng sinh.",
+          "Cậu chạm đúng ô cuối, Voi Bảo ghi ngay vào sổ.",
+          "Chuẩn: số to nhất trên tờ lịch chính là số ngày."
+        ],
+        "wrong": [
+          "Ô đó chưa phải ngày cuối của tháng đâu.",
+          "Kéo mắt xuống hàng cuối cùng của tờ lịch xem.",
+          "Ngày lớn nhất trên tờ lịch là ngày mấy nhỉ?"
+        ]
+      },
+      "answer": {
+        "day": 31
+      }
+    },
+    {
+      "id": "mung-mot-thang-muoi-hai",
+      "title": "Ngày 1 tháng 12 là thứ mấy",
+      "target": "voi-bao",
+      "kind": "challenge",
+      "mechanic": "calendar",
+      "prompt": "b) Xem tờ lịch tháng 12 rồi trả lời câu hỏi.",
+      "month": 12,
+      "year": 2021,
+      "question": "Ngày đầu tiên của tháng 12 là thứ mấy? Chạm vào thứ của ngày 1.",
+      "ask": "weekday",
+      "skill": "xem-lich",
+      "curriculumRef": [
+        "toan2-t1-b30-hoat-dong-2-b2"
+      ],
+      "support": {
+        "guide": [
+          "Ngày đầu tiên của tháng là ngày 1.",
+          "Từ ô ngày 1, dò thẳng lên hàng thứ trên đầu cột."
+        ],
+        "hint": "Ngày 1 không nằm ở cột đầu tiên đâu.",
+        "answer": {
+          "text": "Ngày 1 tháng 12 là thứ Tư.",
+          "explanation": "Ô ngày 1 tháng 12 nằm dưới cột thứ Tư."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Thứ Tư! Tháng 12 khởi động giữa tuần cho đỡ vội.",
+          "Dò cột chuẩn như thước kẻ, Voi Bảo khen nức nở.",
+          "Đúng rồi, cột của ngày 1 có chữ thứ Tư trên đầu."
+        ],
+        "wrong": [
+          "Tìm ô số 1 trước rồi hẵng nhìn lên đầu cột.",
+          "Cột đó không chứa ngày 1 của tháng 12 đâu.",
+          "Ngón tay đi thẳng lên trên, đừng đi chéo nhé."
+        ]
+      },
+      "answer": {
+        "weekday": "thu-tu"
+      }
+    },
+    {
+      "id": "ngay-cuoi-thang-muoi-hai",
+      "title": "Ngày 31 tháng 12 là thứ mấy",
+      "target": "voi-bao",
+      "kind": "challenge",
+      "mechanic": "calendar",
+      "prompt": "b) Xem tờ lịch tháng 12 rồi trả lời câu hỏi.",
+      "month": 12,
+      "year": 2021,
+      "question": "Ngày cuối cùng của tháng 12 là thứ mấy? Chạm vào thứ của ngày 31.",
+      "ask": "weekday",
+      "skill": "xem-lich",
+      "curriculumRef": [
+        "toan2-t1-b30-hoat-dong-2-b3"
+      ],
+      "support": {
+        "guide": [
+          "Ngày cuối cùng của tháng 12 là ngày 31.",
+          "Dò từ ô 31 lên đầu cột để đọc thứ."
+        ],
+        "hint": "Ngày 31 nằm ở hàng cuối, gần cuối tuần.",
+        "answer": {
+          "text": "Ngày 31 tháng 12 là thứ Sáu.",
+          "explanation": "Ô ngày 31 tháng 12 nằm dưới cột thứ Sáu."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Thứ Sáu cuối năm, cả trường được nghỉ đón năm mới!",
+          "Ô 31 dưới cột thứ Sáu, cậu tìm chẳng chệch li nào.",
+          "Voi Bảo đánh dấu ngày 31 bằng một ngôi sao vàng."
+        ],
+        "wrong": [
+          "Hãy tìm ô số 31 ở hàng dưới cùng trước đã.",
+          "Cột cậu chọn không có ngày 31 rồi.",
+          "Nhìn đầu cột chứa ngày 31 để đọc thứ nhé."
+        ]
+      },
+      "answer": {
+        "weekday": "thu-sau"
+      }
+    },
+    {
+      "id": "koala-dap-lich",
+      "title": "Koala Na đắp lịch ngủ",
+      "goTo": "Ra ban công tháp, Koala Na đang đắp tờ lịch tháng 1 ngủ ngon lành",
+      "kind": "dialogue",
+      "target": "koala-na",
+      "lines": [
+        {
+          "speaker": "Koala Na",
+          "text": "Khò… khò… tháng Một ấm ghê… thêm năm phút nữa thôi…"
+        },
+        {
+          "speaker": "Voi Bảo",
+          "text": "Na ơi, đó là tờ lịch tháng 1 của trường chứ có phải chăn đâu!"
+        },
+        {
+          "speaker": "Koala Na",
+          "text": "(dụi mắt) Ờ… thế ai trả lời được câu đố lịch của tớ thì tớ trả tờ lịch, được chưa?"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Đố đi, tớ trả lời hết!",
+          "reply": "Koala Na ngồi dậy, mắt vẫn díp lại: Được, nhưng hỏi nhỏ nhỏ thôi nhé."
+        },
+        {
+          "text": "Tớ đắp cho Na cái chăn thật nhé",
+          "reply": "Koala Na cười tít: Tốt bụng thế! Vậy tớ đố cậu luôn cho tỉnh ngủ."
+        }
+      ]
+    },
+    {
+      "id": "thang-mot-may-ngay",
+      "title": "Tháng 1 có mấy ngày",
+      "target": "koala-na",
+      "kind": "challenge",
+      "mechanic": "calendar",
+      "prompt": "Xem tờ lịch tháng 1 dưới đây rồi trả lời câu hỏi.",
+      "month": 1,
+      "year": 2022,
+      "question": "Tháng 1 có bao nhiêu ngày? Koala Na lim dim: chạm vào ô ngày cuối cùng giúp tớ.",
+      "ask": "day",
+      "skill": "xem-lich",
+      "curriculumRef": [
+        "toan2-t1-b30-hoat-dong-3-a"
+      ],
+      "support": {
+        "guide": [
+          "Số ngày của tháng là số ở ô cuối cùng.",
+          "Tháng 1 kết thúc ở hàng dưới cùng của tờ lịch."
+        ],
+        "hint": "Tháng 1 dài bằng tháng 12.",
+        "answer": {
+          "text": "Tháng 1 có 31 ngày.",
+          "explanation": "Tờ lịch tháng 1 có ô cuối là ngày 31, vậy tháng 1 có 31 ngày."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ba mươi mốt ngày để ngủ… à không, để học chứ!",
+          "Koala Na mở một mắt: ừ, đúng là 31 thật.",
+          "Ô cuối của tháng 1 đây rồi, cậu nhanh tay ghê."
+        ],
+        "wrong": [
+          "Koala Na lắc đầu: ô đó còn ngày khác đứng sau cơ.",
+          "Ngày cuối của tháng 1 nằm ở hàng dưới cùng đấy.",
+          "Tìm con số lớn nhất trên tờ lịch tháng 1 nhé."
+        ]
+      },
+      "answer": {
+        "day": 31
+      }
+    },
+    {
+      "id": "tet-duong-lich-thu-may",
+      "title": "Tết Dương lịch vào thứ mấy",
+      "target": "koala-na",
+      "kind": "challenge",
+      "mechanic": "calendar",
+      "prompt": "Xem tờ lịch tháng 1 dưới đây rồi trả lời câu hỏi.",
+      "month": 1,
+      "year": 2022,
+      "question": "Ngày tết Dương lịch 1 tháng 1 là thứ mấy? Chạm vào thứ của ngày đó.",
+      "ask": "weekday",
+      "skill": "xem-lich",
+      "curriculumRef": [
+        "toan2-t1-b30-hoat-dong-3-b"
+      ],
+      "support": {
+        "guide": [
+          "Tết Dương lịch là ngày 1 tháng 1.",
+          "Từ ô ngày 1 nhìn lên đầu cột."
+        ],
+        "hint": "Ngày 1 tháng 1 nằm gần cuối hàng đầu tiên.",
+        "answer": {
+          "text": "Ngày 1 tháng 1 là thứ Bảy.",
+          "explanation": "Ô ngày 1 tháng 1 nằm dưới cột thứ Bảy."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Thứ Bảy đón năm mới, Koala Na được ngủ nướng hai ngày liền!",
+          "Đúng cột thứ Bảy, cậu đọc lịch thạo ghê.",
+          "Pháo hoa tưởng tượng nổ lộp bộp: chúc mừng năm mới!"
+        ],
+        "wrong": [
+          "Ngày tết Dương lịch là ngày 1, tìm ô số 1 nhé.",
+          "Ô số 1 tháng này nằm gần góc bên phải hàng đầu.",
+          "Đọc chữ trên đầu cột chứa ngày 1 thử xem."
+        ]
+      },
+      "answer": {
+        "weekday": "thu-bay"
+      }
+    },
+    {
+      "id": "mung-mot-thang-hai-thu-may",
+      "title": "Sang tháng 2 là thứ mấy",
+      "target": "koala-na",
+      "kind": "challenge",
+      "mechanic": "calendar",
+      "prompt": "Xem tờ lịch tháng 1 dưới đây rồi trả lời câu hỏi.",
+      "month": 1,
+      "year": 2022,
+      "question": "Ngày 1 tháng 2 cùng năm là thứ mấy? Gợi ý của Na: nó đến ngay sau ngày cuối của tháng 1.",
+      "ask": "weekday",
+      "skill": "xem-lich",
+      "curriculumRef": [
+        "toan2-t1-b30-hoat-dong-3-c"
+      ],
+      "support": {
+        "guide": [
+          "Ngày 1 tháng 2 đứng ngay sau ngày 31 tháng 1.",
+          "Tìm thứ của ngày 31 rồi lấy thứ liền sau."
+        ],
+        "hint": "Ngày 31 tháng 1 là thứ Hai.",
+        "answer": {
+          "text": "Ngày 1 tháng 2 là thứ Ba.",
+          "explanation": "Ngày 31 tháng 1 là thứ Hai nên ngày hôm sau, 1 tháng 2, là thứ Ba."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Thứ Ba! Cậu nhìn xuyên sang cả tháng sau, Na phục sát đất.",
+          "Ngày 31 là thứ Hai, vậy hôm sau là thứ Ba, chuẩn rồi.",
+          "Koala Na tỉnh hẳn ngủ vì câu trả lời quá thông minh."
+        ],
+        "wrong": [
+          "Ngày 1 tháng 2 không có trên tờ này, hãy nhìn ngày 31 trước.",
+          "Ngày 31 tháng 1 là thứ mấy? Ngày hôm sau là thứ kế tiếp.",
+          "Thứ Hai rồi tới thứ mấy nhỉ?"
+        ]
+      },
+      "answer": {
+        "weekday": "thu-ba"
+      }
+    },
+    {
+      "id": "tranh-ngay-le",
+      "title": "Tranh ngày lễ tìm ô chữ",
+      "target": "koala-na",
+      "kind": "challenge",
+      "mechanic": "classify",
+      "prompt": "Koala Na trả tờ lịch, kèm ba bức tranh ngày lễ dính trên lưng. Mỗi hình dưới đây ứng với ô chữ nào?",
+      "groups": [
+        {
+          "id": "nhom-ngay-hai-muoi-thang-muoi-mot",
+          "label": "Ngày hai mươi tháng Mười một"
+        },
+        {
+          "id": "nhom-ngay-mot-thang-mot",
+          "label": "Ngày một tháng Một"
+        },
+        {
+          "id": "nhom-ngay-mot-thang-sau",
+          "label": "Ngày một tháng Sáu"
+        },
+        {
+          "id": "nhom-ngay-hai-thang-chin",
+          "label": "Ngày hai tháng Chín"
+        }
+      ],
+      "items": [
+        {
+          "id": "tranh-ngay-nha-giao-viet-nam-20-thang-11",
+          "label": "Ngày Nhà giáo Việt Nam 20 tháng 11"
+        },
+        {
+          "id": "tranh-ngay-quoc-khanh-2-thang-9",
+          "label": "Ngày Quốc khánh 2 tháng 9"
+        },
+        {
+          "id": "tranh-ngay-tet-duong-lich-1-thang-1",
+          "label": "Ngày tết Dương lịch 1 tháng 1"
+        }
+      ],
+      "skill": "xem-lich",
+      "curriculumRef": [
+        "toan2-t1-b30-luyen-tap-1-a",
+        "toan2-t1-b30-luyen-tap-1-b",
+        "toan2-t1-b30-luyen-tap-1-c"
+      ],
+      "support": {
+        "guide": [
+          "Đọc số ngày và số tháng trên tranh rồi tìm ô chữ đọc đúng như thế.",
+          "Ô \"Ngày một tháng Sáu\" là ô mẫu của tranh Quốc tế Thiếu nhi."
+        ],
+        "hint": "\"tháng 11\" đọc là \"tháng Mười một\".",
+        "answer": {
+          "text": "20 tháng 11 – Ngày hai mươi tháng Mười một; 2 tháng 9 – Ngày hai tháng Chín; 1 tháng 1 – Ngày một tháng Một",
+          "explanation": "Ngày 20 tháng 11 đọc là Ngày hai mươi tháng Mười một, ngày 2 tháng 9 là Ngày hai tháng Chín, ngày 1 tháng 1 là Ngày một tháng Một."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ba bức tranh về đúng ô chữ, Na treo lên tường cho đẹp.",
+          "Ngày Nhà giáo, Quốc khánh, Tết Dương lịch: cậu nhớ cả ba!",
+          "Đọc số thành chữ trơn tru, Voi Bảo gật gù."
+        ],
+        "wrong": [
+          "Có một bức tranh lạc sang ô chữ của ngày khác.",
+          "Đọc lại số tháng trên tranh: tháng 9 hay tháng 11?",
+          "Ô chữ phải đọc đúng cả ngày lẫn tháng đấy."
+        ]
+      },
+      "answer": {
+        "assignment": {
+          "tranh-ngay-nha-giao-viet-nam-20-thang-11": "nhom-ngay-hai-muoi-thang-muoi-mot",
+          "tranh-ngay-quoc-khanh-2-thang-9": "nhom-ngay-hai-thang-chin",
+          "tranh-ngay-tet-duong-lich-1-thang-1": "nhom-ngay-mot-thang-mot"
+        }
+      }
+    },
+    {
+      "id": "o-trong-thang-hai",
+      "title": "Lỗ thủng trên tờ tháng 2",
+      "goTo": "Quay vào phòng lịch trên tháp, tờ tháng 2 đang chờ vá",
+      "target": "voi-bao",
+      "kind": "challenge",
+      "mechanic": "calendar",
+      "prompt": "a) Nêu các ngày còn thiếu trong tờ lịch tháng 2 dưới đây.",
+      "month": 2,
+      "year": 2022,
+      "question": "Tờ tháng 2 bị thủng ba ô. Chạm vào ô trống đầu tiên, ngay sau ngày 18.",
+      "ask": "day",
+      "skill": "xem-lich",
+      "curriculumRef": [
+        "toan2-t1-b30-luyen-tap-2-a"
+      ],
+      "support": {
+        "guide": [
+          "Ô trống đầu tiên đứng ngay sau một ngày còn in.",
+          "Ngày sau ngày 18 là ngày 19."
+        ],
+        "hint": "Tìm ngày 18 rồi nhích sang phải một ô.",
+        "answer": {
+          "text": "Ngày 19",
+          "explanation": "Ô ngay sau ngày 18 là ngày 19, đó là ô thủng đầu tiên."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ô ngày 19 được vá đầu tiên, Voi Bảo thở phào.",
+          "Cậu tìm lỗ thủng nhanh hơn cả chuột nhắt.",
+          "Ngày 19 về chỗ cũ rồi, còn hai ô nữa thôi."
+        ],
+        "wrong": [
+          "Ô đó vẫn còn số mà, tìm ô thủng sau ngày 18.",
+          "Ngày 18 thêm 1 là ngày mấy?",
+          "Đi theo hàng của ngày 18 sang bên phải nhé."
+        ]
+      },
+      "answer": {
+        "day": 19
+      }
+    },
+    {
+      "id": "va-lich-thang-hai",
+      "title": "Vá ba ô của tháng 2",
+      "target": "voi-bao",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "a) Nêu các ngày còn thiếu trong tờ lịch tháng 2 dưới đây.",
+      "template": "Ba miếng vá cho tờ lịch tháng 2: ngày {{b1}}, ngày {{b2}} và ngày {{b3}}.",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o19",
+              "text": "19"
+            },
+            {
+              "id": "o20",
+              "text": "20"
+            },
+            {
+              "id": "o91",
+              "text": "91"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o21",
+              "text": "21"
+            },
+            {
+              "id": "o23",
+              "text": "23"
+            },
+            {
+              "id": "o25",
+              "text": "25"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o24",
+              "text": "24"
+            },
+            {
+              "id": "o26",
+              "text": "26"
+            },
+            {
+              "id": "o42",
+              "text": "42"
+            }
+          ]
+        }
+      ],
+      "skill": "xem-lich",
+      "curriculumRef": [
+        "toan2-t1-b30-luyen-tap-2-a"
+      ],
+      "support": {
+        "guide": [
+          "Hai ô trống liền nhau thì ngày cũng liền nhau.",
+          "Kiểm tra lại bằng ngày còn in ngay sau ô trống."
+        ],
+        "hint": "Sau ngày 22 có hai ô thủng liền nhau.",
+        "answer": {
+          "text": "Ba miếng vá cho tờ lịch tháng 2: ngày 19, ngày 23 và ngày 24.",
+          "explanation": "Tờ lịch tháng 2 thiếu ngày 19 (sau 18), ngày 23 và 24 (sau 22, trước 25)."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Tờ lịch tháng 2 kín mít, gió thổi cũng không lọt!",
+          "Hai ô liền nhau mà cậu không nhầm thứ tự, giỏi lắm.",
+          "Voi Bảo treo tờ tháng 2 lên tường, phẳng phiu."
+        ],
+        "wrong": [
+          "Hai ô liền nhau thì số cũng liền nhau, xem lại nhé.",
+          "Ô trước ngày 25 là ngày mấy nhỉ?",
+          "Một miếng vá đang mang số của ô bên cạnh rồi."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o19",
+          "b2": "o23",
+          "b3": "o24"
+        }
+      }
+    },
+    {
+      "id": "thang-hai-may-ngay",
+      "title": "Tháng 2 ngắn ngủn",
+      "target": "voi-bao",
+      "kind": "challenge",
+      "mechanic": "calendar",
+      "prompt": "b) Xem tờ lịch bên rồi trả lời câu hỏi.",
+      "month": 2,
+      "year": 2022,
+      "question": "Tháng 2 có bao nhiêu ngày? Voi Bảo bảo tháng này \"ăn bớt\", chạm vào ngày cuối cùng xem bớt còn bao nhiêu.",
+      "ask": "day",
+      "skill": "xem-lich",
+      "curriculumRef": [
+        "toan2-t1-b30-luyen-tap-2-b1"
+      ],
+      "support": {
+        "guide": [
+          "Tháng 2 ngắn hơn các tháng khác.",
+          "Ô cuối cùng của tờ lịch cho biết số ngày."
+        ],
+        "hint": "Tháng 2 năm nay kết thúc trước ngày 30.",
+        "answer": {
+          "text": "Tháng 2 có 28 ngày.",
+          "explanation": "Tờ lịch tháng 2 dừng ở ngày 28, nên tháng 2 có 28 ngày."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Hai mươi tám ngày thôi, tháng 2 đúng là ăn bớt thật!",
+          "Cậu không bị lừa đếm tới 30, tuyệt vời.",
+          "Ngày 28 là ô cuối, Voi Bảo phì cười cái vòi."
+        ],
+        "wrong": [
+          "Tháng 2 ngắn lắm, không dài tới 30 hay 31 đâu.",
+          "Ô cậu chọn chưa phải ô cuối của tháng 2.",
+          "Nhìn hàng cuối của tờ lịch tháng 2 nhé."
+        ]
+      },
+      "answer": {
+        "day": 28
+      }
+    },
+    {
+      "id": "ngay-thay-thuoc",
+      "title": "Ngày Thầy thuốc Việt Nam",
+      "target": "voi-bao",
+      "kind": "challenge",
+      "mechanic": "calendar",
+      "prompt": "b) Xem tờ lịch bên rồi trả lời câu hỏi.",
+      "month": 2,
+      "year": 2022,
+      "question": "Ngày Thầy thuốc Việt Nam 27 tháng 2 là thứ mấy? Voi Bảo muốn tặng hoa cô y tá trường hôm đó.",
+      "ask": "weekday",
+      "skill": "xem-lich",
+      "curriculumRef": [
+        "toan2-t1-b30-luyen-tap-2-b2"
+      ],
+      "support": {
+        "guide": [
+          "Tìm ô ngày 27 trên tờ lịch tháng 2.",
+          "Đọc chữ ở đầu cột chứa ngày 27."
+        ],
+        "hint": "Ngày 27 nằm ở cột cuối cùng.",
+        "answer": {
+          "text": "Ngày 27 tháng 2 là Chủ nhật.",
+          "explanation": "Ô ngày 27 tháng 2 nằm dưới cột Chủ nhật."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Chủ nhật! Voi Bảo sẽ mang hoa sang nhà cô y tá vậy.",
+          "Ô 27 ở cột cuối, cậu tìm đúng ngay lần này.",
+          "Đọc lịch giỏi thế này thì chẳng bao giờ quên ngày lễ."
+        ],
+        "wrong": [
+          "Tìm ô số 27 trước, nó nằm ở hàng gần cuối.",
+          "Ngày 27 không ở cột đó đâu, dò lại nào.",
+          "Đầu cột cuối cùng ghi chữ gì nhỉ?"
+        ]
+      },
+      "answer": {
+        "weekday": "chu-nhat"
+      }
+    },
+    {
+      "id": "thang-ba-may-ngay",
+      "title": "Tháng 3 có mấy ngày",
+      "target": "voi-bao",
+      "kind": "challenge",
+      "mechanic": "calendar",
+      "prompt": "Xem tờ lịch tháng 3 dưới đây rồi trả lời câu hỏi.",
+      "month": 3,
+      "year": 2022,
+      "question": "Tháng 3 có bao nhiêu ngày? Lật sang tờ tháng 3 và chạm vào ngày cuối.",
+      "ask": "day",
+      "skill": "xem-lich",
+      "curriculumRef": [
+        "toan2-t1-b30-luyen-tap-3-a"
+      ],
+      "support": {
+        "guide": [
+          "Đếm xem tờ lịch tháng 3 dừng ở ngày nào.",
+          "Tháng 3 dài hơn tháng 2 nhiều."
+        ],
+        "hint": "Tháng 3 dài bằng tháng 1.",
+        "answer": {
+          "text": "Tháng 3 có 31 ngày.",
+          "explanation": "Tờ lịch tháng 3 kết thúc ở ngày 31, nên tháng 3 có 31 ngày."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Tháng 3 được đủ 31 ngày, không bị ăn bớt như tháng 2.",
+          "Cậu lật lịch nhanh như gió hắt xì của Voi Bảo.",
+          "Ô 31 của tháng 3 đây rồi!"
+        ],
+        "wrong": [
+          "Tháng 3 dài hơn tháng 2 đấy, tìm tiếp nhé.",
+          "Ô cuối nằm ở hàng dưới cùng cơ.",
+          "Ngày lớn nhất trên tờ tháng 3 là ngày mấy?"
+        ]
+      },
+      "answer": {
+        "day": 31
+      }
+    },
+    {
+      "id": "thu-hai-dau-thang-ba",
+      "title": "Thứ Hai đầu tiên tháng 3",
+      "target": "voi-bao",
+      "kind": "challenge",
+      "mechanic": "calendar",
+      "prompt": "Xem tờ lịch tháng 3 dưới đây rồi trả lời câu hỏi.",
+      "month": 3,
+      "year": 2022,
+      "question": "Ngày thứ Hai đầu tiên của tháng 3 là ngày nào? Chạm vào ngày đó.",
+      "ask": "day",
+      "skill": "xem-lich",
+      "curriculumRef": [
+        "toan2-t1-b30-luyen-tap-3-b"
+      ],
+      "support": {
+        "guide": [
+          "Tìm cột thứ Hai trên tờ lịch.",
+          "Ô có số đầu tiên trong cột đó là thứ Hai đầu tiên."
+        ],
+        "hint": "Ngày 1 tháng 3 là thứ Ba, nên ô thứ Hai ở hàng đầu còn trống.",
+        "answer": {
+          "text": "Ngày 7 tháng 3",
+          "explanation": "Hàng đầu tháng 3 bắt đầu từ thứ Ba; thứ Hai đầu tiên rơi vào hàng thứ hai, là ngày 7 tháng 3."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ngày 7! Cậu không bị ô trống ở hàng đầu đánh lừa.",
+          "Thứ Hai đầu tiên tìm ra rồi, chào cờ thôi!",
+          "Voi Bảo khoanh ngày 7 bằng bút đỏ thật to."
+        ],
+        "wrong": [
+          "Ô thứ Hai ở hàng đầu còn trống, nhìn xuống hàng dưới nhé.",
+          "Đi dọc cột thứ Hai, ô có số đầu tiên là ô nào?",
+          "Ngày 1 là thứ Ba, vậy thứ Hai đầu tiên phải đợi thêm mấy ngày?"
+        ]
+      },
+      "answer": {
+        "day": 7
+      }
+    },
+    {
+      "id": "ngay-quoc-te-phu-nu",
+      "title": "Ngày Quốc tế Phụ nữ",
+      "target": "voi-bao",
+      "kind": "challenge",
+      "mechanic": "calendar",
+      "prompt": "Xem tờ lịch tháng 3 dưới đây rồi trả lời câu hỏi.",
+      "month": 3,
+      "year": 2022,
+      "question": "Ngày Quốc tế Phụ nữ 8 tháng 3 là thứ mấy? Voi Bảo định tặng mẹ một bó hoa sen.",
+      "ask": "weekday",
+      "skill": "xem-lich",
+      "curriculumRef": [
+        "toan2-t1-b30-luyen-tap-3-c"
+      ],
+      "support": {
+        "guide": [
+          "Ngày 8 đứng ngay sau ngày 7.",
+          "Ngày 7 là thứ Hai, ngày 8 là thứ kế tiếp."
+        ],
+        "hint": "Nhìn lên đầu cột của ô ngày 8.",
+        "answer": {
+          "text": "Ngày 8 tháng 3 là thứ Ba.",
+          "explanation": "Ngày 8 tháng 3 nằm dưới cột thứ Ba, ngay sau thứ Hai ngày 7."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Thứ Ba! Mẹ Voi sẽ nhận hoa sen vào giữa tuần đấy.",
+          "Cậu dùng luôn ngày 7 để suy ra, thông minh ghê.",
+          "Ngày của mẹ, của cô đã được khoanh tròn rồi."
+        ],
+        "wrong": [
+          "Ngày 7 là thứ Hai, ngày 8 thì sao nhỉ?",
+          "Cột cậu chọn không chứa ô ngày 8.",
+          "Tìm ô số 8 rồi đọc chữ trên đầu cột nhé."
+        ]
+      },
+      "answer": {
+        "weekday": "thu-ba"
+      }
+    },
+    {
+      "id": "thang-tu-may-ngay",
+      "title": "Tháng 4 có mấy ngày",
+      "target": "voi-bao",
+      "kind": "challenge",
+      "mechanic": "calendar",
+      "prompt": "Xem tờ lịch tháng 4 dưới đây rồi trả lời câu hỏi.",
+      "month": 4,
+      "year": 2022,
+      "question": "Tháng 4 có bao nhiêu ngày? Tờ cuối cùng rồi, chạm vào ngày kết thúc tháng.",
+      "ask": "day",
+      "skill": "xem-lich",
+      "curriculumRef": [
+        "toan2-t1-b30-luyen-tap-4-a"
+      ],
+      "support": {
+        "guide": [
+          "Không phải tháng nào cũng có 31 ngày.",
+          "Ô cuối của tờ lịch tháng 4 cho biết số ngày."
+        ],
+        "hint": "Tháng 4 không có ngày 31.",
+        "answer": {
+          "text": "Tháng 4 có 30 ngày.",
+          "explanation": "Tờ lịch tháng 4 kết thúc ở ngày 30, nên tháng 4 có 30 ngày."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ba mươi ngày tròn trịa, tháng 4 gọn gàng ghê.",
+          "Cậu không nhầm với tháng 31 ngày, chuẩn luôn.",
+          "Ô ngày 30 sáng lên, Voi Bảo gật gù."
+        ],
+        "wrong": [
+          "Tháng 4 không có ngày 31 đâu nhé.",
+          "Chạm vào ô có số lớn nhất của tháng 4.",
+          "Nhìn kĩ hàng cuối của tờ lịch xem."
+        ]
+      },
+      "answer": {
+        "day": 30
+      }
+    },
+    {
+      "id": "thu-bay-tuan-truoc",
+      "title": "Thứ Bảy tuần trước là ngày nào",
+      "target": "voi-bao",
+      "kind": "challenge",
+      "mechanic": "calendar",
+      "prompt": "Xem tờ lịch tháng 4 dưới đây rồi trả lời câu hỏi.",
+      "month": 4,
+      "year": 2022,
+      "question": "Câu đố cuối của Voi Bảo, ai đúng được rung chuông tháp! Nếu thứ Bảy tuần này là ngày Giải phóng miền Nam 30 tháng 4 thì thứ Bảy tuần trước là ngày nào?",
+      "ask": "day",
+      "skill": "xem-lich",
+      "curriculumRef": [
+        "toan2-t1-b30-luyen-tap-4-b"
+      ],
+      "support": {
+        "guide": [
+          "Một tuần có 7 ngày.",
+          "Từ ô ngày 30, đi lên một hàng trong cùng cột thứ Bảy."
+        ],
+        "hint": "30 bớt đi 7 ngày là ngày mấy?",
+        "answer": {
+          "text": "Ngày 23 tháng 4",
+          "explanation": "Thứ Bảy tuần trước cách 30 tháng 4 đúng 7 ngày: 30 – 7 = 23, đó là ngày 23 tháng 4."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ngày 23! Boong boong, chuông tháp reo mừng {name}!",
+          "Lùi đúng một tuần, cậu là nhà du hành thời gian rồi.",
+          "Voi Bảo và Koala Na cùng vỗ tay rầm rầm."
+        ],
+        "wrong": [
+          "Thứ Bảy tuần trước cùng cột thứ Bảy, nhưng ở hàng trên.",
+          "Lùi lại 7 ngày từ ngày 30 thử xem.",
+          "Ô cậu chọn chưa phải thứ Bảy đâu."
+        ]
+      },
+      "answer": {
+        "day": 23
+      }
+    },
+    {
+      "id": "huy-hieu-giu-lich",
+      "title": "Huy hiệu người giữ lịch",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Voi Bảo treo đủ các tờ lịch lên tường, rồi lấy vòi gắn cho {name} huy hiệu \"Người giữ lịch tháp đồng hồ\". Lần này Voi Bảo nhớ quay mặt đi chỗ khác mới hắt xì."
+    },
+    {
+      "id": "chuong-thap-im-lim",
+      "title": "Chuông tháp im lìm",
+      "kind": "unlock",
+      "trigger": "auto",
+      "text": "Chó Mực chạy lên đỉnh tháp, thở hồng hộc: \"Cả tuần tới chưa ai trực đánh chuông! Phải xem đồng hồ, xem lịch để lên lịch trực ngay thôi!\""
+    }
+  ],
+  "reward": {
+    "xp": 90,
+    "coin": 15,
+    "skillXp": {
+      "xem-lich": 2
+    }
+  }
+}

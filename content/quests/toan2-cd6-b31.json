@@ -1,0 +1,1371 @@
+{
+  "id": "toan2-cd6-b31",
+  "region": "truong-hoc",
+  "chapter": 6,
+  "title": "Lịch trực chuông của Chó Mực",
+  "status": "draft",
+  "lesson": "toan2-t1-b31",
+  "summary": "Cả tuần tới chưa ai trực chuông trên tháp; {name} cùng Chó Mực quay kim đồng hồ, đọc giờ, xem ai đến lớp muộn và xem lịch tháng 5, tháng 6 để lên lịch trực đánh chuông cho cả trường.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "Chó Mực, Koala Na",
+    "where": "Tháp đồng hồ: đỉnh tháp có chuông, gác chuông, chân tháp đồng hồ",
+    "goal": "Lên lịch trực đánh chuông cho cả tuần mà không ai trễ giờ",
+    "play": "Tìm đồng hồ mô hình và tờ lịch, quay kim, đọc giờ, kể giờ giấc của em, chạm ngày và thứ trên lịch, điền ngày",
+    "learn": "Toán 2 Bài 31: thực hành xem đồng hồ, xem lịch",
+    "reward": "90 XP, 15 xu, Xem đồng hồ +2, Xem lịch +1",
+    "unlock": "Bài 32 \"Luyện tập chung\""
+  },
+  "phases": {
+    "hook": "chuong-chua-ai-truc",
+    "explore": "tim-do-truc-chuong",
+    "learn": "quay-kim-hai-gio",
+    "challenge": "quay-kim-chin-gio-ruoi",
+    "decision": "koala-chay-toi",
+    "finale": "lich-truc-thang-sau",
+    "reward": "huy-hieu-truc-chuong",
+    "unlock": "sau-xanh-dem-ngay"
+  },
+  "texts": {},
+  "places": {
+    "cho-muc": "đỉnh tháp có chuông",
+    "tim-do-truc-chuong": "gác chuông trên tháp",
+    "koala-na": "chân tháp đồng hồ"
+  },
+  "steps": [
+    {
+      "id": "chuong-chua-ai-truc",
+      "title": "Chuông tháp chưa ai trực",
+      "goTo": "Leo lên đỉnh tháp có chuông, Chó Mực đang ôm dùi chuông",
+      "kind": "dialogue",
+      "target": "cho-muc",
+      "lines": [
+        {
+          "speaker": "Chó Mực",
+          "text": "Gâu! {name} đến đúng lúc quá! Tuần tới chưa có ai trực chuông, mà tớ thì… không biết xem đồng hồ cho chuẩn."
+        },
+        {
+          "speaker": "Chó Mực",
+          "text": "Hôm qua tớ đánh chuông tan học lúc mọi người mới vào lớp. Cả trường tưởng được về sớm, chạy ùa ra như ong vỡ tổ!"
+        },
+        {
+          "speaker": "Chó Mực",
+          "text": "Kim ngắn chỉ giờ, kim dài chỉ phút. Kim dài chỉ số 3 là 15 phút, chỉ số 6 là 30 phút. Tớ thuộc lòng rồi mà tay cứ quay nhầm."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Mình cùng tập xem giờ nhé!",
+          "reply": "Chó Mực vẫy đuôi tít: Trước hết tìm giúp tớ đồng hồ mô hình với lịch đã!"
+        },
+        {
+          "text": "Ong vỡ tổ thật à? Buồn cười ghê",
+          "reply": "Chó Mực gãi tai: Cô hiệu phó thì không cười đâu. Đi tìm đồ trực chuông với tớ nào!"
+        }
+      ]
+    },
+    {
+      "id": "tim-do-truc-chuong",
+      "title": "Tìm đồ trực chuông",
+      "goTo": "Tìm đồng hồ mô hình và hai tờ lịch quanh gác chuông trên tháp",
+      "kind": "search",
+      "targets": [
+        "toan2-cd6-dong-ho-mo-hinh",
+        "toan2-cd6-to-lich-thang-5",
+        "toan2-cd6-to-lich-thang-6"
+      ]
+    },
+    {
+      "id": "quay-kim-hai-gio",
+      "title": "Quay kim chỉ 2 giờ",
+      "goTo": "Mang đồ về đỉnh tháp có chuông, Chó Mực đã chờ sẵn",
+      "target": "cho-muc",
+      "kind": "challenge",
+      "mechanic": "clock",
+      "prompt": "Chó Mực đưa chiếc đồng hồ mô hình: tập trước giờ chuông chiều nhé. Quay kim đồng hồ để đồng hồ chỉ: a) 2 giờ.",
+      "mode": "set",
+      "display": "analog",
+      "skill": "xem-dong-ho",
+      "curriculumRef": [
+        "toan2-t1-b31-hoat-dong-1-a"
+      ],
+      "support": {
+        "guide": [
+          "Giờ đúng thì kim dài chỉ số 12.",
+          "Kim ngắn chỉ vào số của giờ."
+        ],
+        "hint": "Kim ngắn chỉ số 2, kim dài chỉ số 12.",
+        "answer": {
+          "text": "Kim giờ chỉ 2, kim phút chỉ 12.",
+          "explanation": "Đồng hồ chỉ 2 giờ khi kim giờ chỉ số 2 và kim phút chỉ số 12."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Hai giờ đúng! Chó Mực thử gõ một tiếng boong nho nhỏ.",
+          "Kim dài thẳng lên số 12, chuẩn giờ tròn rồi.",
+          "Lần đầu quay kim mà gọn gàng ghê."
+        ],
+        "wrong": [
+          "Giờ đúng thì kim dài phải chỉ thẳng số 12.",
+          "Kim ngắn cần chỉ vào số 2 nhé.",
+          "Hình như hai kim đang đổi chỗ cho nhau rồi."
+        ]
+      },
+      "answer": {
+        "hour": 2,
+        "minute": 0
+      }
+    },
+    {
+      "id": "quay-kim-chin-gio-ruoi",
+      "title": "Quay kim chỉ 9 giờ 30 phút",
+      "target": "cho-muc",
+      "kind": "challenge",
+      "mechanic": "clock",
+      "prompt": "Giờ ra chơi buổi sáng cần một hồi chuông thật vang. Quay kim đồng hồ để đồng hồ chỉ: b) 9 giờ 30 phút.",
+      "mode": "set",
+      "display": "analog",
+      "skill": "xem-dong-ho",
+      "curriculumRef": [
+        "toan2-t1-b31-hoat-dong-1-b"
+      ],
+      "support": {
+        "guide": [
+          "30 phút thì kim dài chỉ số 6.",
+          "Lúc 9 giờ 30 phút, kim ngắn nằm giữa số 9 và số 10."
+        ],
+        "hint": "Kim dài quay nửa vòng, xuống số 6.",
+        "answer": {
+          "text": "Kim phút chỉ 6, kim giờ giữa 9 và 10.",
+          "explanation": "9 giờ 30 phút: kim phút chỉ số 6, kim giờ nằm giữa số 9 và số 10."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Chín rưỡi, ra chơi thôi! Chó Mực gõ boong boong.",
+          "Kim dài xuống đúng số 6, đẹp như vẽ.",
+          "Cả trường sẽ ra chơi đúng giờ nhờ cậu đấy."
+        ],
+        "wrong": [
+          "30 phút thì kim dài nằm ở số 6 cơ.",
+          "Kim ngắn phải ở giữa số 9 và số 10.",
+          "Kim dài quay nửa vòng thôi, đừng quay cả vòng."
+        ]
+      },
+      "answer": {
+        "hour": 9,
+        "minute": 30
+      }
+    },
+    {
+      "id": "quay-kim-bay-gio-muoi-lam",
+      "title": "Quay kim chỉ 7 giờ 15 phút",
+      "target": "cho-muc",
+      "kind": "challenge",
+      "mechanic": "clock",
+      "prompt": "Chuông vào học buổi sáng thì sớm hơn nữa. Quay kim đồng hồ để đồng hồ chỉ: c) 7 giờ 15 phút.",
+      "mode": "set",
+      "display": "analog",
+      "skill": "xem-dong-ho",
+      "curriculumRef": [
+        "toan2-t1-b31-hoat-dong-1-c"
+      ],
+      "support": {
+        "guide": [
+          "15 phút thì kim dài chỉ số 3.",
+          "Kim ngắn vừa đi qua số 7 một chút."
+        ],
+        "hint": "Kim dài quay một phần tư vòng, tới số 3.",
+        "answer": {
+          "text": "Kim phút chỉ 3, kim giờ vừa qua 7.",
+          "explanation": "7 giờ 15 phút: kim phút chỉ số 3, kim giờ vừa qua số 7."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bảy giờ mười lăm, chuông vào học sẵn sàng!",
+          "Một phần tư vòng chuẩn xác, Chó Mực tròn mắt.",
+          "Cậu quay kim còn khéo hơn bác thợ đồng hồ."
+        ],
+        "wrong": [
+          "15 phút là kim dài ở số 3 nhé.",
+          "Kim ngắn chỉ vừa qua số 7 thôi.",
+          "Kim dài đang ở số 6 là 30 phút rồi, quay lùi lại."
+        ]
+      },
+      "answer": {
+        "hour": 7,
+        "minute": 15
+      }
+    },
+    {
+      "id": "doc-dong-ho-a",
+      "title": "Đồng hồ A chỉ mấy giờ",
+      "target": "cho-muc",
+      "kind": "challenge",
+      "mechanic": "clock",
+      "prompt": "Chó Mực giơ chiếc đồng hồ thứ nhất lên. Đồng hồ chỉ mấy giờ? A",
+      "mode": "read",
+      "display": "analog",
+      "time": {
+        "hour": 2,
+        "minute": 15
+      },
+      "skill": "xem-dong-ho",
+      "curriculumRef": [
+        "toan2-t1-b31-hoat-dong-3-a"
+      ],
+      "support": {
+        "guide": [
+          "Kim phút chỉ số 3 là 15 phút.",
+          "Kim giờ vừa qua số nào thì đọc số đó."
+        ],
+        "hint": "Kim giờ vừa qua số 2.",
+        "answer": {
+          "text": "2 giờ 15 phút.",
+          "explanation": "Kim giờ quá số 2 một chút, kim phút chỉ 3: 2 giờ 15 phút."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Hai giờ mười lăm phút, Chó Mực vẫy đuôi tít mù!",
+          "Đồng hồ A đọc chuẩn rồi, sang chiếc tiếp nào.",
+          "Kim dài ở số 3 là 15 phút, cậu nhớ quá giỏi."
+        ],
+        "wrong": [
+          "Kim phút chỉ số 3 thì là mấy phút?",
+          "Kim giờ vừa qua số 2, chưa tới số 3 đâu.",
+          "Nhìn kim ngắn trước, kim dài sau nhé."
+        ]
+      },
+      "answer": {
+        "hour": 2,
+        "minute": 15
+      }
+    },
+    {
+      "id": "doc-dong-ho-b",
+      "title": "Đồng hồ B chỉ mấy giờ",
+      "target": "cho-muc",
+      "kind": "challenge",
+      "mechanic": "clock",
+      "prompt": "Chiếc đồng hồ thứ hai dính đầy lông chó, Chó Mực phủi phủi rồi đưa ra. Đồng hồ chỉ mấy giờ? B",
+      "mode": "read",
+      "display": "analog",
+      "time": {
+        "hour": 6,
+        "minute": 15
+      },
+      "skill": "xem-dong-ho",
+      "curriculumRef": [
+        "toan2-t1-b31-hoat-dong-3-b"
+      ],
+      "support": {
+        "guide": [
+          "Kim giờ vừa qua số 6.",
+          "Kim phút chỉ số 3."
+        ],
+        "hint": "Giờ thì là 6, phút thì là 15.",
+        "answer": {
+          "text": "6 giờ 15 phút.",
+          "explanation": "Kim giờ quá số 6, kim phút chỉ 3: 6 giờ 15 phút."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Sáu giờ mười lăm, giờ Chó Mực đi tuần sáng sớm!",
+          "Lông chó che không nổi mắt tinh của cậu.",
+          "Đồng hồ B xong, cậu đọc giờ thật đều tay."
+        ],
+        "wrong": [
+          "Kim ngắn vừa qua số mấy? Nhìn kĩ nhé.",
+          "Kim dài ở số 3 chứ không phải số 6.",
+          "Phủi lông đi rồi đọc lại kim giờ xem."
+        ]
+      },
+      "answer": {
+        "hour": 6,
+        "minute": 15
+      }
+    },
+    {
+      "id": "doc-dong-ho-c",
+      "title": "Đồng hồ C chỉ mấy giờ",
+      "target": "cho-muc",
+      "kind": "challenge",
+      "mechanic": "clock",
+      "prompt": "Chiếc thứ ba treo trên móc chuông, kêu tích tắc tích tắc. Đồng hồ chỉ mấy giờ? C",
+      "mode": "read",
+      "display": "analog",
+      "time": {
+        "hour": 11,
+        "minute": 15
+      },
+      "skill": "xem-dong-ho",
+      "curriculumRef": [
+        "toan2-t1-b31-hoat-dong-3-c"
+      ],
+      "support": {
+        "guide": [
+          "Kim giờ vừa qua số 11.",
+          "Kim dài nằm ở số 3 thì đọc thêm 15 phút."
+        ],
+        "hint": "Gần trưa rồi đấy.",
+        "answer": {
+          "text": "11 giờ 15 phút.",
+          "explanation": "Kim giờ quá số 11, kim phút chỉ 3: 11 giờ 15 phút."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Mười một giờ mười lăm, sắp đến giờ ăn trưa rồi!",
+          "Tích tắc đúng nhịp, cậu đọc chuẩn quá.",
+          "Đồng hồ C ngoan ngoãn chỉ đúng như cậu nói."
+        ],
+        "wrong": [
+          "Kim giờ vừa qua số 11 đấy.",
+          "Kim ngắn và kim dài đừng đọc lẫn nhau nhé.",
+          "Số 3 trên mặt đồng hồ là 15 phút cơ."
+        ]
+      },
+      "answer": {
+        "hour": 11,
+        "minute": 15
+      }
+    },
+    {
+      "id": "doc-dong-ho-d",
+      "title": "Đồng hồ D chỉ mấy giờ",
+      "target": "cho-muc",
+      "kind": "challenge",
+      "mechanic": "clock",
+      "prompt": "Chiếc cuối cùng nằm lăn lóc dưới quả chuông to. Đồng hồ chỉ mấy giờ? D",
+      "mode": "read",
+      "display": "analog",
+      "time": {
+        "hour": 12,
+        "minute": 15
+      },
+      "skill": "xem-dong-ho",
+      "curriculumRef": [
+        "toan2-t1-b31-hoat-dong-3-d"
+      ],
+      "support": {
+        "guide": [
+          "Kim giờ vừa qua số 12.",
+          "Kim dài vẫn đứng ở vạch số 3."
+        ],
+        "hint": "Kim giờ vừa đi qua đỉnh mặt số.",
+        "answer": {
+          "text": "12 giờ 15 phút.",
+          "explanation": "Kim giờ quá số 12, kim phút chỉ 3: 12 giờ 15 phút."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Mười hai giờ mười lăm, Chó Mực đói bụng ùng ục!",
+          "Cả bốn đồng hồ đều đọc đúng, cậu là thợ đồng hồ rồi.",
+          "Đồng hồ D được nhặt lên và đọc chuẩn luôn."
+        ],
+        "wrong": [
+          "Kim giờ đang ở ngay sau số 12 trên đỉnh.",
+          "Kim phút chỉ số 3, vậy là 15 phút.",
+          "Đây là giờ trưa, nhìn kim ngắn kĩ nhé."
+        ]
+      },
+      "answer": {
+        "hour": 12,
+        "minute": 15
+      }
+    },
+    {
+      "id": "koala-chay-toi",
+      "title": "Koala Na hớt hải chạy tới",
+      "goTo": "Xuống chân tháp đồng hồ, Koala Na vừa chạy tới, tóc rối bù",
+      "kind": "dialogue",
+      "target": "koala-na",
+      "lines": [
+        {
+          "speaker": "Koala Na",
+          "text": "Hộc hộc… tớ có muộn không? Tớ đặt báo thức rồi mà cái đồng hồ… cũng ngủ quên theo tớ."
+        },
+        {
+          "speaker": "Chó Mực",
+          "text": "Lớp học bắt đầu lúc 2 giờ chiều. Na xem ảnh này: có bạn cũng đến muộn giống Na đấy."
+        },
+        {
+          "speaker": "Koala Na",
+          "text": "{name} soi giúp tớ với, hay mình để Chó Mực đánh chuông thật to cho ai cũng tỉnh?"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Mình soi giờ trong ảnh trước đã",
+          "reply": "Koala Na gật gù: Ừ, soi kĩ thì mới biết ai muộn."
+        },
+        {
+          "text": "Đánh chuông to cho cả trường tỉnh!",
+          "reply": "Chó Mực cười khì: Đánh chuông thì phải đúng giờ đã, xem ảnh trước nhé!"
+        }
+      ]
+    },
+    {
+      "id": "ai-den-lop-muon",
+      "title": "Ai đến lớp muộn?",
+      "target": "koala-na",
+      "kind": "challenge",
+      "mechanic": "clock",
+      "prompt": "Ba bức ảnh: hai bạn đã ngồi viết bài trong lớp lúc 14:00; một bạn gái đeo cặp đứng ở cửa lớp 2A lúc 14:15; một bạn trai đi vào cổng trường lúc 13:30. Đồng hồ trong hình vẽ cho biết thời gian đến lớp học của mỗi bạn. Biết lớp học bắt đầu lúc 2 giờ chiều. Hỏi bạn nào đi học muộn? Đặt đồng hồ điện tử chỉ đúng giờ bạn đi học muộn đến lớp.",
+      "mode": "set",
+      "display": "digital",
+      "skill": "xem-dong-ho",
+      "curriculumRef": [
+        "toan2-t1-b31-hoat-dong-5"
+      ],
+      "support": {
+        "guide": [
+          "2 giờ chiều là 14:00.",
+          "Bạn nào đến sau 14:00 là đi học muộn."
+        ],
+        "hint": "13:30 còn sớm, 14:00 vừa kịp giờ.",
+        "answer": {
+          "text": "Bạn gái đến cửa lớp 2A lúc 14:15 là bạn đi học muộn.",
+          "explanation": "Lớp học bắt đầu lúc 14:00. Bạn gái đến cửa lớp 2A lúc 14:15, muộn 15 phút."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bạn gái lúc 14:15 đến muộn, Koala Na thở phào vì không chỉ mình tớ.",
+          "Cậu so giờ như thám tử, bắt trúng ngay.",
+          "Đúng rồi, muộn mười lăm phút đấy!"
+        ],
+        "wrong": [
+          "2 giờ chiều là 14:00, ai đến sau giờ đó nhỉ?",
+          "13:30 là còn sớm chán, chưa phải muộn đâu.",
+          "Các bạn ngồi trong lớp lúc 14:00 là vừa kịp giờ."
+        ]
+      },
+      "answer": {
+        "hour": 14,
+        "minute": 15
+      }
+    },
+    {
+      "id": "ngay-nghi-cua-nam-1",
+      "title": "Nam xếp hình khối lúc mấy giờ",
+      "target": "koala-na",
+      "kind": "challenge",
+      "mechanic": "clock",
+      "prompt": "Koala Na mở cuốn album ảnh ngày nghỉ của bạn Nam. Ảnh 1: Nam ngồi xếp hình khối. a) Vào ngày nghỉ cuối tuần, Nam làm gì lúc mấy giờ?",
+      "mode": "read",
+      "display": "analog",
+      "time": {
+        "hour": 10,
+        "minute": 30
+      },
+      "skill": "xem-dong-ho",
+      "curriculumRef": [
+        "toan2-t1-b31-hoat-dong-4-a1"
+      ],
+      "support": {
+        "guide": [
+          "Kim phút chỉ số 6 là 30 phút.",
+          "Kim giờ nằm giữa hai số thì đọc số nhỏ hơn."
+        ],
+        "hint": "Kim giờ ở giữa số 10 và số 11.",
+        "answer": {
+          "text": "10 giờ 30 phút sáng.",
+          "explanation": "Kim giờ giữa 10 và 11, kim phút chỉ 6: 10 giờ 30 phút sáng."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Mười giờ rưỡi, Nam xếp xong cả tòa lâu đài khối!",
+          "Đọc giờ rưỡi ngon lành, Koala Na lật trang tiếp.",
+          "Đúng 10 giờ 30 phút, giờ chơi xếp hình của Nam."
+        ],
+        "wrong": [
+          "Kim phút chỉ số 6, vậy là mấy phút nhỉ?",
+          "Kim giờ đã qua số 10 nhưng chưa tới số 11 đâu.",
+          "Đọc số nhỏ hơn trong hai số kẹp kim giờ nhé."
+        ]
+      },
+      "answer": {
+        "hour": 10,
+        "minute": 30
+      }
+    },
+    {
+      "id": "ngay-nghi-cua-nam-2",
+      "title": "Nam ăn cơm trưa lúc mấy giờ",
+      "target": "koala-na",
+      "kind": "challenge",
+      "mechanic": "clock",
+      "prompt": "Ảnh 2: Nam ngồi ăn cơm. a) Vào ngày nghỉ cuối tuần, Nam làm gì lúc mấy giờ?",
+      "mode": "read",
+      "display": "analog",
+      "time": {
+        "hour": 11,
+        "minute": 30
+      },
+      "skill": "xem-dong-ho",
+      "curriculumRef": [
+        "toan2-t1-b31-hoat-dong-4-a2"
+      ],
+      "support": {
+        "guide": [
+          "Nhìn kim ngắn trước để biết giờ.",
+          "Kim dài chỉ số 6 nghĩa là thêm 30 phút."
+        ],
+        "hint": "Kim giờ ở giữa số 11 và số 12.",
+        "answer": {
+          "text": "11 giờ 30 phút.",
+          "explanation": "Kim giờ giữa 11 và 12, kim phút chỉ 6: 11 giờ 30 phút."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Mười một giờ rưỡi, bữa trưa thơm phức của Nam!",
+          "Koala Na xoa bụng: nhìn ảnh này đói ghê.",
+          "Chuẩn giờ cơm trưa rồi, cậu đọc giỏi quá."
+        ],
+        "wrong": [
+          "Kim giờ chưa tới số 12 đâu, đọc số trước đó nhé.",
+          "Kim dài ở số 6 là 30 phút đấy.",
+          "Đồng hồ này khác ảnh trước một giờ thôi."
+        ]
+      },
+      "answer": {
+        "hour": 11,
+        "minute": 30
+      }
+    },
+    {
+      "id": "ngay-nghi-cua-nam-3",
+      "title": "Nam đạp xe lúc mấy giờ",
+      "target": "koala-na",
+      "kind": "challenge",
+      "mechanic": "clock",
+      "prompt": "Ảnh 3: Nam đạp xe ngoài sân, trời còn sáng. a) Vào ngày nghỉ cuối tuần, Nam làm gì lúc mấy giờ?",
+      "mode": "read",
+      "display": "analog",
+      "time": {
+        "hour": 16,
+        "minute": 30
+      },
+      "skill": "xem-dong-ho",
+      "curriculumRef": [
+        "toan2-t1-b31-hoat-dong-4-a3"
+      ],
+      "support": {
+        "guide": [
+          "Buổi chiều thì giờ được đọc thêm theo cách 13, 14, 15…",
+          "Kim giờ giữa số 4 và số 5 vào buổi chiều là 16 giờ hơn."
+        ],
+        "hint": "4 giờ chiều còn gọi là 16 giờ.",
+        "answer": {
+          "text": "16 giờ 30 phút.",
+          "explanation": "Kim giờ giữa 4 và 5, kim phút chỉ 6, lại là buổi chiều: 16 giờ 30 phút."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bốn rưỡi chiều, Nam đạp xe vù vù quanh xóm!",
+          "Cậu nhớ cả cách đọc giờ buổi chiều, giỏi thật.",
+          "Kính coong! Chuông xe của Nam reo đúng giờ."
+        ],
+        "wrong": [
+          "Kim giờ ở giữa số 4 và số 5 cơ.",
+          "Kim phút chỉ số 6, đừng quên 30 phút nhé.",
+          "Ảnh chụp buổi chiều, giờ chiều đọc thế nào nhỉ?"
+        ]
+      },
+      "answer": {
+        "hour": 16,
+        "minute": 30
+      }
+    },
+    {
+      "id": "ngay-nghi-cua-nam-4",
+      "title": "Nam nhặt rau lúc mấy giờ",
+      "target": "koala-na",
+      "kind": "challenge",
+      "mechanic": "clock",
+      "prompt": "Ảnh 4: Nam nhặt rau giúp mẹ. a) Vào ngày nghỉ cuối tuần, Nam làm gì lúc mấy giờ?",
+      "mode": "read",
+      "display": "analog",
+      "time": {
+        "hour": 17,
+        "minute": 30
+      },
+      "skill": "xem-dong-ho",
+      "curriculumRef": [
+        "toan2-t1-b31-hoat-dong-4-a4"
+      ],
+      "support": {
+        "guide": [
+          "Kim giờ nằm giữa số 5 và số 6.",
+          "Giờ này là chiều tối nên còn đọc là 17 giờ hơn."
+        ],
+        "hint": "Sau 16 giờ 30 phút một tiếng là mấy giờ?",
+        "answer": {
+          "text": "17 giờ 30 phút.",
+          "explanation": "Kim giờ giữa 5 và 6, kim phút chỉ 6, buổi chiều: 17 giờ 30 phút."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Năm rưỡi chiều, Nam nhặt rau đỡ mẹ, ngoan ghê!",
+          "Chuẩn 17 giờ 30 phút, Koala Na giơ ngón cái.",
+          "Cậu đọc giờ nhanh như mẹ Nam nhặt rau vậy."
+        ],
+        "wrong": [
+          "Kim ngắn đang đứng giữa số 5 và số 6 đấy.",
+          "Kim dài ở số 6 là nửa giờ, tức 30 phút.",
+          "Ảnh này sau ảnh đạp xe đúng một giờ thôi."
+        ]
+      },
+      "answer": {
+        "hour": 17,
+        "minute": 30
+      }
+    },
+    {
+      "id": "ngay-nghi-cua-nam-5",
+      "title": "Nam đọc sách lúc mấy giờ",
+      "target": "koala-na",
+      "kind": "challenge",
+      "mechanic": "clock",
+      "prompt": "Ảnh 5: Nam ngồi đọc sách dưới đèn. a) Vào ngày nghỉ cuối tuần, Nam làm gì lúc mấy giờ?",
+      "mode": "read",
+      "display": "analog",
+      "time": {
+        "hour": 19,
+        "minute": 30
+      },
+      "skill": "xem-dong-ho",
+      "curriculumRef": [
+        "toan2-t1-b31-hoat-dong-4-a5"
+      ],
+      "support": {
+        "guide": [
+          "Kim giờ nằm giữa số 7 và số 8.",
+          "Buổi tối, 7 giờ còn gọi là 19 giờ."
+        ],
+        "hint": "Kim dài chỉ số 6 nên là 30 phút.",
+        "answer": {
+          "text": "19 giờ 30 phút.",
+          "explanation": "Kim giờ giữa 7 và 8, kim phút chỉ 6, buổi tối: 19 giờ 30 phút."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bảy rưỡi tối, giờ đọc truyện của Nam đây rồi!",
+          "Đọc giờ tối không vấp chút nào, hay quá.",
+          "Koala Na ngáp một cái: giờ này tớ cũng hay đọc truyện."
+        ],
+        "wrong": [
+          "Kim giờ đã qua số 7 rồi, chưa tới số 8.",
+          "Buổi tối thì giờ được đọc thêm 12 đấy.",
+          "Đếm lại: kim dài ở số 6 là mấy phút?"
+        ]
+      },
+      "answer": {
+        "hour": 19,
+        "minute": 30
+      }
+    },
+    {
+      "id": "ngay-nghi-cua-nam-6",
+      "title": "Nam đi ngủ lúc mấy giờ",
+      "target": "koala-na",
+      "kind": "challenge",
+      "mechanic": "clock",
+      "prompt": "Ảnh 6: Nam đã nằm ngủ trên giường. a) Vào ngày nghỉ cuối tuần, Nam làm gì lúc mấy giờ?",
+      "mode": "read",
+      "display": "analog",
+      "time": {
+        "hour": 21,
+        "minute": 30
+      },
+      "skill": "xem-dong-ho",
+      "curriculumRef": [
+        "toan2-t1-b31-hoat-dong-4-a6"
+      ],
+      "support": {
+        "guide": [
+          "Kim giờ nằm giữa số 9 và số 10.",
+          "Đêm muộn, 9 giờ còn gọi là 21 giờ."
+        ],
+        "hint": "Kim dài vẫn chỉ số 6.",
+        "answer": {
+          "text": "21 giờ 30 phút.",
+          "explanation": "Kim giờ giữa 9 và 10, kim phút chỉ 6, buổi tối: 21 giờ 30 phút."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Chín rưỡi tối, Nam ngủ say, chúc ngủ ngon nhé!",
+          "Ảnh cuối cùng cũng đúng nốt, Koala Na vỗ tay khẽ khàng.",
+          "Cậu đọc trọn một ngày cuối tuần của Nam rồi đó."
+        ],
+        "wrong": [
+          "Kim giờ ở giữa số 9 và số 10 nhé.",
+          "Đêm rồi, giờ đêm đọc sau 20 giờ đấy.",
+          "Kim phút không ở số 12 đâu, nhìn lại xem."
+        ]
+      },
+      "answer": {
+        "hour": 21,
+        "minute": 30
+      }
+    },
+    {
+      "id": "gio-giac-cua-em",
+      "title": "Kể giờ giấc của em",
+      "kind": "speak",
+      "target": "koala-na",
+      "prompt": "Koala Na tò mò lắm: còn {name} thì sao? Xem thời khoá biểu hôm nay của em rồi trả lời câu hỏi.",
+      "hints": [
+        "a) Lúc 9 giờ 15 phút, em học môn gì?",
+        "b) Em học môn gì vào lúc 15 giờ 15 phút?",
+        "Nhìn lại album của Nam: b) Hằng ngày em thực hiện những hoạt động nào trong các hoạt động trên và em thực hiện mỗi hoạt động đó vào lúc mấy giờ?"
+      ],
+      "curriculumRef": [
+        "toan2-t1-b31-hoat-dong-2-a",
+        "toan2-t1-b31-hoat-dong-2-b",
+        "toan2-t1-b31-hoat-dong-4-b"
+      ]
+    },
+    {
+      "id": "hom-nay-hom-qua-ngay-mai",
+      "title": "Hôm nay, hôm qua, ngày mai",
+      "goTo": "Quay lên đỉnh tháp có chuông, Chó Mực trải hai tờ lịch ra sàn",
+      "kind": "speak",
+      "target": "cho-muc",
+      "prompt": "Chó Mực bảo: lên lịch trực thì phải biết hôm nay là ngày nào đã. Em xem tờ lịch tháng này rồi trả lời câu hỏi.",
+      "hints": [
+        "a) Hôm nay là thứ mấy, ngày mấy, tháng mấy?",
+        "b) Hôm qua là thứ mấy, ngày mấy, tháng mấy?",
+        "c) Ngày mai là thứ mấy, ngày mấy, tháng mấy?"
+      ],
+      "curriculumRef": [
+        "toan2-t1-b31-hoat-dong-2-1-a",
+        "toan2-t1-b31-hoat-dong-2-1-b",
+        "toan2-t1-b31-hoat-dong-2-1-c"
+      ]
+    },
+    {
+      "id": "thang-nam-may-ngay",
+      "title": "Tháng 5 có mấy ngày trực",
+      "target": "cho-muc",
+      "kind": "challenge",
+      "mechanic": "calendar",
+      "prompt": "Xem tờ lịch tháng 5 dưới đây rồi trả lời câu hỏi.",
+      "month": 5,
+      "year": 2022,
+      "question": "Tháng 5 có bao nhiêu ngày? Chó Mực cần biết để chia phiên trực, chạm vào ngày cuối của tháng.",
+      "ask": "day",
+      "skill": "xem-lich",
+      "curriculumRef": [
+        "toan2-t1-b31-hoat-dong-2-2-a"
+      ],
+      "support": {
+        "guide": [
+          "Ô cuối cùng của tờ lịch là ngày cuối tháng.",
+          "Số của ngày cuối tháng chính là số ngày."
+        ],
+        "hint": "Tháng 5 kết thúc vào một ngày thứ Ba.",
+        "answer": {
+          "text": "Tháng 5 có 31 ngày.",
+          "explanation": "Tờ lịch tháng 5 kết thúc ở ngày 31, nên tháng 5 có 31 ngày."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ba mươi mốt ngày trực chuông, Chó Mực xắn tay áo lên!",
+          "Ô 31 đây rồi, cậu tìm nhanh như chó săn.",
+          "Tháng 5 dài, đủ phiên trực cho cả lớp."
+        ],
+        "wrong": [
+          "Ô cậu chọn còn ngày khác đứng sau đó.",
+          "Ngày cuối tháng nằm ở hàng dưới cùng.",
+          "Tìm số lớn nhất trên tờ lịch tháng 5 nhé."
+        ]
+      },
+      "answer": {
+        "day": 31
+      }
+    },
+    {
+      "id": "thu-ba-dau-thang-nam",
+      "title": "Thứ Ba đầu tiên của tháng 5",
+      "target": "cho-muc",
+      "kind": "challenge",
+      "mechanic": "calendar",
+      "prompt": "Xem tờ lịch tháng 5 dưới đây rồi trả lời câu hỏi.",
+      "month": 5,
+      "year": 2022,
+      "question": "Tháng 5 có bao nhiêu ngày thứ Ba, đó là những ngày nào? Chó Mực trực vào các ngày thứ Ba: trước hết chạm vào ngày thứ Ba đầu tiên.",
+      "ask": "day",
+      "skill": "xem-lich",
+      "curriculumRef": [
+        "toan2-t1-b31-hoat-dong-2-2-b"
+      ],
+      "support": {
+        "guide": [
+          "Tìm cột thứ Ba trên tờ lịch.",
+          "Ô có số đầu tiên trong cột thứ Ba là thứ Ba đầu tiên."
+        ],
+        "hint": "Ngày 1 tháng 5 là Chủ nhật.",
+        "answer": {
+          "text": "Ngày 3 tháng 5",
+          "explanation": "Ngày 1 tháng 5 là Chủ nhật, ngày 2 là thứ Hai, nên thứ Ba đầu tiên là ngày 3."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ngày 3! Phiên trực đầu tiên của Chó Mực đã có chỗ.",
+          "Cột thứ Ba dò chuẩn ghê, giỏi lắm.",
+          "Chó Mực đánh dấu ngày 3 bằng dấu chân xinh xinh."
+        ],
+        "wrong": [
+          "Ngày 1 là Chủ nhật, đếm tiếp xem thứ Ba là ngày mấy.",
+          "Ô cậu chọn không nằm trong cột thứ Ba.",
+          "Tìm chữ thứ Ba trên đầu cột trước nhé."
+        ]
+      },
+      "answer": {
+        "day": 3
+      }
+    },
+    {
+      "id": "cac-thu-ba-thang-nam",
+      "title": "Đủ các ngày thứ Ba tháng 5",
+      "target": "cho-muc",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Xem tờ lịch tháng 5 dưới đây rồi trả lời câu hỏi.",
+      "template": "– Tháng 5 có bao nhiêu ngày thứ Ba, đó là những ngày nào?\nTháng 5 có {{b1}} ngày thứ Ba, đó là các ngày {{b2}}, {{b3}}, {{b4}}, {{b5}} và {{b6}}.",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o3",
+              "text": "3"
+            },
+            {
+              "id": "o5",
+              "text": "5"
+            },
+            {
+              "id": "o7",
+              "text": "7"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o2",
+              "text": "2"
+            },
+            {
+              "id": "o3",
+              "text": "3"
+            },
+            {
+              "id": "o4",
+              "text": "4"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o10",
+              "text": "10"
+            },
+            {
+              "id": "o11",
+              "text": "11"
+            },
+            {
+              "id": "o20",
+              "text": "20"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "o7",
+              "text": "7"
+            },
+            {
+              "id": "o15",
+              "text": "15"
+            },
+            {
+              "id": "o17",
+              "text": "17"
+            }
+          ]
+        },
+        {
+          "id": "b5",
+          "options": [
+            {
+              "id": "o24",
+              "text": "24"
+            },
+            {
+              "id": "o25",
+              "text": "25"
+            },
+            {
+              "id": "o26",
+              "text": "26"
+            }
+          ]
+        },
+        {
+          "id": "b6",
+          "options": [
+            {
+              "id": "o13",
+              "text": "13"
+            },
+            {
+              "id": "o29",
+              "text": "29"
+            },
+            {
+              "id": "o31",
+              "text": "31"
+            }
+          ]
+        }
+      ],
+      "skill": "xem-lich",
+      "curriculumRef": [
+        "toan2-t1-b31-hoat-dong-2-2-b"
+      ],
+      "support": {
+        "guide": [
+          "Các ngày thứ Ba cách nhau đúng 7 ngày.",
+          "Từ ngày 3, cứ cộng thêm 7."
+        ],
+        "hint": "3, 10, 17… tiếp theo là?",
+        "answer": {
+          "text": "– Tháng 5 có bao nhiêu ngày thứ Ba, đó là những ngày nào?; Tháng 5 có 5 ngày thứ Ba, đó là các ngày 3, 10, 17, 24 và 31.",
+          "explanation": "Các ngày thứ Ba là 3, 10, 17, 24, 31 (cứ thêm 7 ngày), tất cả có 5 ngày thứ Ba."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Năm phiên trực thứ Ba, đủ cả ngày 31 cuối tháng!",
+          "Cậu cộng 7 đều tăm tắp, Chó Mực phục lăn.",
+          "Lịch trực thứ Ba của tháng 5 xong rồi."
+        ],
+        "wrong": [
+          "Mỗi thứ Ba cách nhau 7 ngày đấy.",
+          "Đừng quên thứ Ba ở hàng cuối cùng nhé.",
+          "Đếm lại xem cột thứ Ba có mấy ô có số."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o5",
+          "b2": "o3",
+          "b3": "o10",
+          "b4": "o17",
+          "b5": "o24",
+          "b6": "o31"
+        }
+      }
+    },
+    {
+      "id": "sinh-nhat-bac-ho",
+      "title": "Ngày sinh nhật Bác Hồ",
+      "target": "cho-muc",
+      "kind": "challenge",
+      "mechanic": "calendar",
+      "prompt": "Xem tờ lịch tháng 5 dưới đây rồi trả lời câu hỏi.",
+      "month": 5,
+      "year": 2022,
+      "question": "Ngày 19 tháng 5 là sinh nhật Bác Hồ. Ngày đó là thứ mấy? Hôm ấy cả trường đánh chuông chào cờ thật trang trọng.",
+      "ask": "weekday",
+      "skill": "xem-lich",
+      "curriculumRef": [
+        "toan2-t1-b31-hoat-dong-2-2-c"
+      ],
+      "support": {
+        "guide": [
+          "Tìm ô ngày 19 trên tờ lịch tháng 5.",
+          "Đọc chữ trên đầu cột chứa ô đó."
+        ],
+        "hint": "Ngày 17 là thứ Ba, ngày 19 sau đó hai ngày.",
+        "answer": {
+          "text": "Ngày 19 tháng 5 là thứ Năm.",
+          "explanation": "Ngày 17 tháng 5 là thứ Ba, nên ngày 19 tháng 5 là thứ Năm."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Thứ Năm! Chó Mực sẽ đánh chuông trang trọng nhất năm.",
+          "Cậu suy từ thứ Ba ra thứ Năm, hay quá.",
+          "Ngày 19 tháng 5 đã được khoanh đỏ trên lịch."
+        ],
+        "wrong": [
+          "Ô 19 nằm ở cột khác cơ, dò lại nhé.",
+          "Ngày 17 là thứ Ba, thêm 2 ngày nữa là thứ mấy?",
+          "Đọc chữ đầu cột của ngày 19 thật chậm nhé."
+        ]
+      },
+      "answer": {
+        "weekday": "thu-nam"
+      }
+    },
+    {
+      "id": "o-trong-thang-sau",
+      "title": "Ô trống trên tờ tháng 6",
+      "target": "cho-muc",
+      "kind": "challenge",
+      "mechanic": "calendar",
+      "prompt": "a) Nêu các ngày còn thiếu trong tờ lịch tháng 6 ở bên.",
+      "month": 6,
+      "year": 2022,
+      "question": "Tờ tháng 6 bị Koala Na lấy làm quạt nên mất mấy số. Chạm vào ô trống đầu tiên của tờ lịch.",
+      "ask": "day",
+      "skill": "xem-lich",
+      "curriculumRef": [
+        "toan2-t1-b31-hoat-dong-2-3-a"
+      ],
+      "support": {
+        "guide": [
+          "Ô trống đầu tiên có thể là ngày mở đầu tháng.",
+          "Ô ngay trước ngày 2 là ngày mấy?"
+        ],
+        "hint": "Ngày đầu tiên của tháng cũng bị mất số.",
+        "answer": {
+          "text": "Ngày 1",
+          "explanation": "Ô trống đầu tiên đứng ngay trước ngày 2, đó là ngày 1 tháng 6."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ngày 1 bị mất số mà cậu vẫn tìm ra, hay quá!",
+          "Ô mở đầu tháng 6 đã được vá.",
+          "Chó Mực sủa vui: gâu, ngày đầu tháng đây rồi!"
+        ],
+        "wrong": [
+          "Ô trống đầu tiên nằm ngay trước ngày 2.",
+          "Nhìn hàng trên cùng của tờ lịch nhé.",
+          "Tháng nào cũng bắt đầu từ ngày mấy?"
+        ]
+      },
+      "answer": {
+        "day": 1
+      }
+    },
+    {
+      "id": "quoc-te-thieu-nhi",
+      "title": "Ngày Quốc tế Thiếu nhi",
+      "target": "cho-muc",
+      "kind": "challenge",
+      "mechanic": "calendar",
+      "prompt": "b) Xem tờ lịch bên rồi trả lời câu hỏi.",
+      "month": 6,
+      "year": 2022,
+      "question": "Ngày Quốc tế Thiếu nhi 1 tháng 6 là thứ mấy? Hôm đó Chó Mực được nghỉ trực để đi chơi.",
+      "ask": "weekday",
+      "skill": "xem-lich",
+      "curriculumRef": [
+        "toan2-t1-b31-hoat-dong-2-3-b1"
+      ],
+      "support": {
+        "guide": [
+          "Ngày 1 tháng 6 là ô trống cậu vừa vá.",
+          "Dò thẳng lên đầu cột của ô đó."
+        ],
+        "hint": "Ngày 1 tháng 6 nằm ở giữa hàng đầu.",
+        "answer": {
+          "text": "Ngày 1 tháng 6 là thứ Tư.",
+          "explanation": "Ô ngày 1 tháng 6 nằm dưới cột thứ Tư."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Thứ Tư! Tết thiếu nhi giữa tuần, cả trường vui chơi.",
+          "Cậu nhớ ngay ô vừa vá, nhanh trí thật.",
+          "Chó Mực đã ghi: thứ Tư nghỉ trực, đi ăn kem!"
+        ],
+        "wrong": [
+          "Ô ngày 1 ở hàng đầu, giữa tuần đấy.",
+          "Cột cậu chọn không chứa ngày 1 tháng 6.",
+          "Đọc chữ trên đầu cột của ô vừa vá nhé."
+        ]
+      },
+      "answer": {
+        "weekday": "thu-tu"
+      }
+    },
+    {
+      "id": "thu-nam-tuan-truoc",
+      "title": "Thứ Năm tuần trước",
+      "target": "cho-muc",
+      "kind": "challenge",
+      "mechanic": "calendar",
+      "prompt": "b) Xem tờ lịch bên rồi trả lời câu hỏi.",
+      "month": 6,
+      "year": 2022,
+      "question": "Nếu hôm nay là thứ Năm ngày 16 tháng 6 thì thứ Năm tuần trước là ngày nào, thứ Năm tuần sau là ngày nào? Trước hết, chạm vào thứ Năm tuần trước.",
+      "ask": "day",
+      "skill": "xem-lich",
+      "curriculumRef": [
+        "toan2-t1-b31-hoat-dong-2-3-b2"
+      ],
+      "support": {
+        "guide": [
+          "Tuần trước cách hôm nay 7 ngày.",
+          "Đi lên một hàng trong cột thứ Năm."
+        ],
+        "hint": "16 bớt 7 là bao nhiêu?",
+        "answer": {
+          "text": "Ngày 9 tháng 6",
+          "explanation": "Thứ Năm tuần trước là 16 – 7 = 9, tức ngày 9 tháng 6."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ngày 9! Lùi một tuần chuẩn như đồng hồ tháp.",
+          "Cậu lên đúng một hàng trong cột thứ Năm.",
+          "Chó Mực ghi ngày 9 vào sổ trực ngay."
+        ],
+        "wrong": [
+          "Tuần trước là lùi lại đúng 7 ngày.",
+          "Ô cậu chọn không phải thứ Năm rồi.",
+          "Đi lên một hàng, giữ nguyên cột thứ Năm nhé."
+        ]
+      },
+      "answer": {
+        "day": 9
+      }
+    },
+    {
+      "id": "lich-truc-thang-sau",
+      "title": "Hoàn thành lịch trực tháng 6",
+      "target": "cho-muc",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Chó Mực cầm bút, chờ {name} đọc to để chép vào lịch trực.",
+      "template": "a) Nêu các ngày còn thiếu trong tờ lịch tháng 6 ở bên. Các ngày còn thiếu: {{b1}}, {{b2}}, {{b3}}, {{b4}}, {{b5}}, {{b6}}.\nb) Xem tờ lịch bên rồi trả lời câu hỏi. – Nếu hôm nay là thứ Năm ngày 16 tháng 6 thì thứ Năm tuần trước là ngày nào, thứ Năm tuần sau là ngày nào? Thứ Năm tuần trước là ngày {{b7}}, thứ Năm tuần sau là ngày {{b8}}.",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o0",
+              "text": "0"
+            },
+            {
+              "id": "o1",
+              "text": "1"
+            },
+            {
+              "id": "o3",
+              "text": "3"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o8",
+              "text": "8"
+            },
+            {
+              "id": "o16",
+              "text": "16"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o7",
+              "text": "7"
+            },
+            {
+              "id": "o17",
+              "text": "17"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "o7",
+              "text": "7"
+            },
+            {
+              "id": "o8",
+              "text": "8"
+            },
+            {
+              "id": "o9",
+              "text": "9"
+            }
+          ]
+        },
+        {
+          "id": "b5",
+          "options": [
+            {
+              "id": "o8",
+              "text": "8"
+            },
+            {
+              "id": "o16",
+              "text": "16"
+            },
+            {
+              "id": "o18",
+              "text": "18"
+            }
+          ]
+        },
+        {
+          "id": "b6",
+          "options": [
+            {
+              "id": "o16",
+              "text": "16"
+            },
+            {
+              "id": "o26",
+              "text": "26"
+            },
+            {
+              "id": "o36",
+              "text": "36"
+            }
+          ]
+        },
+        {
+          "id": "b7",
+          "options": [
+            {
+              "id": "8-thang-6",
+              "text": "8 tháng 6"
+            },
+            {
+              "id": "9-thang-6",
+              "text": "9 tháng 6"
+            },
+            {
+              "id": "10-thang-6",
+              "text": "10 tháng 6"
+            }
+          ]
+        },
+        {
+          "id": "b8",
+          "options": [
+            {
+              "id": "22-thang-6",
+              "text": "22 tháng 6"
+            },
+            {
+              "id": "23-thang-6",
+              "text": "23 tháng 6"
+            },
+            {
+              "id": "24-thang-6",
+              "text": "24 tháng 6"
+            }
+          ]
+        }
+      ],
+      "skill": "xem-lich",
+      "curriculumRef": [
+        "toan2-t1-b31-hoat-dong-2-3-a",
+        "toan2-t1-b31-hoat-dong-2-3-b2"
+      ],
+      "support": {
+        "guide": [
+          "Mỗi ô trống là ngày liền sau ô đứng trước nó.",
+          "Thứ Năm tuần sau thì cộng thêm 7 ngày."
+        ],
+        "hint": "16 + 7 = 23.",
+        "answer": {
+          "text": "a) Nêu các ngày còn thiếu trong tờ lịch tháng 6 ở bên. Các ngày còn thiếu: 1, 6, 7, 8, 18, 26.; b) Xem tờ lịch bên rồi trả lời câu hỏi. – Nếu hôm nay là thứ Năm ngày 16 tháng 6 thì thứ Năm tuần trước là ngày nào, thứ Năm tuần sau là ngày nào? Thứ Năm tuần trước là ngày 9 tháng 6, thứ Năm tuần sau là ngày 23 tháng 6.",
+          "explanation": "Tờ lịch tháng 6 thiếu các ngày 1, 6, 7, 8, 18, 26. Thứ Năm tuần trước là 9 tháng 6, thứ Năm tuần sau là 23 tháng 6."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Lịch trực tháng 6 kín chữ, Chó Mực gõ chuông ăn mừng boong boong!",
+          "Vá ô, tính tuần, cậu làm trọn cả hai việc.",
+          "Cả tháng 6 không ai lỡ phiên trực nữa rồi."
+        ],
+        "wrong": [
+          "Có một ô vá đang mang số của ô bên cạnh.",
+          "Tuần sau là cộng thêm 7 ngày vào ngày 16.",
+          "Ba ô trống liền nhau thì ba số cũng liền nhau."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o1",
+          "b2": "o6",
+          "b3": "o7",
+          "b4": "o8",
+          "b5": "o18",
+          "b6": "o26",
+          "b7": "9-thang-6",
+          "b8": "23-thang-6"
+        }
+      }
+    },
+    {
+      "id": "huy-hieu-truc-chuong",
+      "title": "Huy hiệu trực chuông",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Chó Mực treo bảng lịch trực lên cột chuông, rồi đeo cho {name} huy hiệu \"Người giữ giờ tháp chuông\". Koala Na hứa từ nay đặt hai cái báo thức."
+    },
+    {
+      "id": "sau-xanh-dem-ngay",
+      "title": "Sâu Xanh đếm ngày",
+      "kind": "unlock",
+      "trigger": "auto",
+      "text": "Trên ban công tháp, Sâu Xanh nằm ngắm trời, đếm từng ngày chờ hóa bướm: \"Còn bao nhiêu ngày nữa nhỉ? Tớ đếm mãi mà cứ quên mất!\""
+    }
+  ],
+  "reward": {
+    "xp": 90,
+    "coin": 15,
+    "skillXp": {
+      "xem-dong-ho": 2,
+      "xem-lich": 1
+    }
+  }
+}

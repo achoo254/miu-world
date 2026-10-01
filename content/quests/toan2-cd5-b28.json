@@ -1,0 +1,538 @@
+{
+  "id": "toan2-cd5-b28",
+  "region": "truong-hoc",
+  "chapter": 5,
+  "title": "Phòng tranh treo ngược của Cua Kềnh",
+  "status": "draft",
+  "lesson": "toan2-t1-b28",
+  "summary": "Cua Kềnh treo bức tranh hình khối nào cũng ngược, nói câu nào cũng ngược; {name} cùng Hươu Cao soi từng bức tranh tìm đoạn thẳng, đường thẳng, hình tứ giác, ba bạn đứng thẳng hàng và đo đường ốc sên bò.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "Cua Kềnh, Hươu Cao",
+    "where": "Phòng mĩ thuật: phòng trưng bày tranh và giá vẽ lớn",
+    "goal": "Treo xuôi lại các bức tranh hình khối trước giờ mở cửa phòng tranh",
+    "play": "Tìm đinh và khung tranh, chọn câu đúng, chọn đoạn thẳng, đếm hình tứ giác, chọn nhóm thẳng hàng, nối đường ốc sên, tính quãng đường",
+    "learn": "Toán 2 Bài 28: luyện tập chung về điểm, đoạn thẳng, đường thẳng, đường cong, ba điểm thẳng hàng, hình tứ giác, đường gấp khúc",
+    "reward": "80 XP, 15 xu, Hình phẳng +2, Bài toán có lời văn +1",
+    "unlock": "Bài 29 \"Ngày – giờ, giờ – phút\""
+  },
+  "phases": {
+    "hook": "cua-treo-nguoc",
+    "explore": "tim-dinh-khung",
+    "learn": "huou-nhac-bai",
+    "challenge": "cau-dung-cau-sai",
+    "decision": "tro-dung-thang-hang",
+    "finale": "duong-oc-sen-bo",
+    "reward": "huy-hieu-phong-tranh",
+    "unlock": "dong-ho-thap-ngu-quen"
+  },
+  "texts": {},
+  "places": {
+    "cua-kenh": "phòng trưng bày tranh",
+    "tim-dinh-khung": "góc phòng tranh",
+    "huou-cao": "giá vẽ lớn"
+  },
+  "steps": [
+    {
+      "id": "cua-treo-nguoc",
+      "title": "Tranh treo ngược hết rồi!",
+      "goTo": "Vào phòng trưng bày tranh, Cua Kềnh đang bò ngang treo tranh",
+      "kind": "dialogue",
+      "target": "cua-kenh",
+      "lines": [
+        {
+          "speaker": "Cua Kềnh",
+          "text": "Tạm biệt {name}! À nhầm, tớ nói ngược quen rồi: chào {name}! Phòng tranh của tớ đẹp… xấu… à, đẹp lắm đấy."
+        },
+        {
+          "speaker": "Hươu Cao",
+          "text": "Đẹp gì mà đẹp! Cậu treo bức nào cũng lộn đầu xuống đất, ốc sên trong tranh bò ngược lên trời kìa."
+        },
+        {
+          "speaker": "Cua Kềnh",
+          "text": "Tại tớ đi ngang mà, nhìn cái gì cũng nghiêng nghiêng. Đinh với khung tranh rơi lả tả hết, {name} nhặt hộ tớ… đừng nhặt nhé!"
+        }
+      ],
+      "choices": [
+        {
+          "text": "\"Đừng nhặt\" nghĩa là nhặt hả? Tớ nhặt ngay!",
+          "reply": "Cua Kềnh giơ hai càng lên trời: Đúng là hiểu tiếng Cua, giỏi ghê!"
+        },
+        {
+          "text": "Cậu nói xuôi một câu thử xem nào!",
+          "reply": "Cua Kềnh cố gắng hết sức: \"Nhặt… giúp… tớ.\" Phù, mệt hơn bò dọc nữa!"
+        }
+      ]
+    },
+    {
+      "id": "tim-dinh-khung",
+      "title": "Nhặt đinh, thước và khung tranh",
+      "goTo": "Nhặt đồ Cua Kềnh làm rơi ở góc phòng tranh",
+      "kind": "search",
+      "targets": [
+        "toan2-cd5-dinh-treo-tranh",
+        "toan2-cd5-thuoc-ke-dai",
+        "toan2-cd5-khung-tranh-go"
+      ]
+    },
+    {
+      "id": "huou-nhac-bai",
+      "title": "Hươu Cao nhắc bài",
+      "goTo": "Mang đồ về phòng trưng bày tranh, Hươu Cao vừa ghé qua",
+      "kind": "dialogue",
+      "target": "cua-kenh",
+      "lines": [
+        {
+          "speaker": "Hươu Cao",
+          "text": "Trước khi treo lại, mình ôn nhanh nhé: đoạn thẳng có hai đầu mút, còn đường thẳng kéo dài mãi về hai phía."
+        },
+        {
+          "speaker": "Hươu Cao",
+          "text": "Ba điểm cùng nằm trên một đường thẳng thì gọi là ba điểm thẳng hàng. Hình có bốn cạnh là hình tứ giác."
+        },
+        {
+          "speaker": "Cua Kềnh",
+          "text": "Còn đường cong là đường… thẳng tắp! Hì, lại ngược rồi. Đường cong là đường uốn lượn như càng tớ ấy."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ nhớ rồi, soi tranh thôi!",
+          "reply": "Hươu Cao vươn cổ nhìn bao quát: Bức đầu tiên ở ngay trên tường kia."
+        }
+      ]
+    },
+    {
+      "id": "cau-dung-cau-sai",
+      "title": "Cua nói thật hay nói ngược?",
+      "target": "cua-kenh",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "prompt": "Bức tranh đầu tiên vẽ: đoạn thẳng BC, điểm A, đường thẳng đi qua D và E, đường cong x, đường thẳng đi qua M và N, còn điểm P nằm ngoài đường thẳng MN. Cua Kềnh đọc bốn câu về bức tranh. Đ, S ? Trong hình vẽ trên có: Chọn tất cả các câu đúng (Đ); câu không chọn là sai (S).",
+      "choices": [
+        {
+          "id": "a-doan-thang-bc",
+          "text": "a) Đoạn thẳng BC. ?"
+        },
+        {
+          "id": "b-duong-thang-de-va-duong-thang-mn",
+          "text": "b) Đường thẳng DE và đường thẳng MN. ?"
+        },
+        {
+          "id": "c-ba-diem-m-n-p-thang-hang",
+          "text": "c) Ba điểm M, N, P thẳng hàng. ?"
+        },
+        {
+          "id": "d-duong-cong-x",
+          "text": "d) Đường cong x. ?"
+        }
+      ],
+      "skill": "hinh-phang",
+      "curriculumRef": [
+        "toan2-t1-b28-luyen-tap-1-a",
+        "toan2-t1-b28-luyen-tap-1-b",
+        "toan2-t1-b28-luyen-tap-1-c",
+        "toan2-t1-b28-luyen-tap-1-d"
+      ],
+      "support": {
+        "guide": [
+          "Đọc từng câu rồi soi lại bức tranh.",
+          "Muốn ba điểm thẳng hàng thì cả ba phải nằm chung một đường thẳng."
+        ],
+        "hint": "Điểm P nằm ngoài đường thẳng MN.",
+        "answer": {
+          "text": "Đ: a, b, d; S: c",
+          "explanation": "Câu a, b, d đúng. Câu c sai vì P không nằm trên đường thẳng đi qua M và N, nên M, N, P không thẳng hàng."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bắt được câu nói ngược của Cua rồi, tranh thứ nhất treo xuôi!",
+          "Cua Kềnh vỗ càng lách cách: cậu không bị tớ lừa câu nào.",
+          "Điểm P đứng lẻ loi ngoài đường thẳng, cậu soi tinh thật."
+        ],
+        "wrong": [
+          "Điểm P có nằm trên đường thẳng MN không? Soi kĩ lại nhé.",
+          "Có một câu đúng đang bị bỏ quên, đọc lại từng câu nào.",
+          "Đường cong x vẫn nằm trong tranh đấy, đừng bỏ sót."
+        ]
+      },
+      "answer": {
+        "choices": [
+          "a-doan-thang-bc",
+          "b-duong-thang-de-va-duong-thang-mn",
+          "d-duong-cong-x"
+        ]
+      }
+    },
+    {
+      "id": "doan-thang-mnp",
+      "title": "Ba điểm trên một nét",
+      "target": "cua-kenh",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "prompt": "Bức tranh thứ hai chỉ có một nét kẻ ngang, ba điểm M ở đầu bên trái, N ở giữa, P ở đầu bên phải. Cho ba điểm M, N, P thẳng hàng. Kể tên các đoạn thẳng trong hình vẽ sau. Chọn tên tất cả các đoạn thẳng.",
+      "choices": [
+        {
+          "id": "mn",
+          "text": "MN"
+        },
+        {
+          "id": "mq",
+          "text": "MQ"
+        },
+        {
+          "id": "np",
+          "text": "NP"
+        },
+        {
+          "id": "na",
+          "text": "NA"
+        },
+        {
+          "id": "mp",
+          "text": "MP"
+        },
+        {
+          "id": "pb",
+          "text": "PB"
+        }
+      ],
+      "skill": "hinh-phang",
+      "curriculumRef": [
+        "toan2-t1-b28-luyen-tap-2"
+      ],
+      "support": {
+        "guide": [
+          "Mỗi đoạn thẳng có hai đầu là hai trong ba điểm M, N, P.",
+          "Đừng quên đoạn thẳng dài nhất nối hai đầu."
+        ],
+        "hint": "Ngoài hai đoạn ngắn MN và NP còn một đoạn dài nữa.",
+        "answer": {
+          "text": "MN, NP, MP",
+          "explanation": "Ba điểm M, N, P cho ba đoạn thẳng: MN, NP và MP. Trong hình không có điểm Q, A, B."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ba đoạn thẳng, không sót đoạn dài nào, tranh thứ hai lên tường!",
+          "Cậu nhớ cả đoạn MP chạy suốt từ đầu này sang đầu kia.",
+          "Hươu Cao gật gù: mắt cậu tinh hơn cả mắt hươu."
+        ],
+        "wrong": [
+          "Trong tranh làm gì có điểm Q hay điểm A, B đâu.",
+          "Còn một đoạn dài nối hai đầu M và P chưa được chọn.",
+          "Đếm lại: mỗi cặp hai điểm cho một đoạn thẳng."
+        ]
+      },
+      "answer": {
+        "choices": [
+          "mn",
+          "np",
+          "mp"
+        ]
+      }
+    },
+    {
+      "id": "dem-hinh-tu-giac",
+      "title": "Đếm hình tứ giác trong khung",
+      "target": "cua-kenh",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Hai bức tranh hình khối: bức a là một hình năm cạnh, từ đỉnh dưới bên trái kẻ hai đoạn thẳng chia thành một hình tam giác ở giữa và hai hình tứ giác; bức b là một hình chữ nhật có một đoạn thẳng kẻ xiên từ cạnh trên xuống cạnh dưới. Số ?",
+      "template": "a) Có {{b1}} hình tứ giác.\nb) Có {{b2}} hình tứ giác.",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o0",
+              "text": "0"
+            },
+            {
+              "id": "o2",
+              "text": "2"
+            },
+            {
+              "id": "o4",
+              "text": "4"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o3",
+              "text": "3"
+            },
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o13",
+              "text": "13"
+            }
+          ]
+        }
+      ],
+      "skill": "hinh-phang",
+      "curriculumRef": [
+        "toan2-t1-b28-luyen-tap-3-a",
+        "toan2-t1-b28-luyen-tap-3-b"
+      ],
+      "support": {
+        "guide": [
+          "Hình tứ giác có bốn cạnh, bốn đỉnh.",
+          "Đếm cả hình nhỏ lẫn hình lớn ghép từ các hình nhỏ."
+        ],
+        "hint": "Ở bức b, hình chữ nhật to bên ngoài cũng là một hình tứ giác.",
+        "answer": {
+          "text": "a) Có 2 hình tứ giác.; b) Có 3 hình tứ giác.",
+          "explanation": "Bức a có 2 hình tứ giác (hình tam giác ở giữa không tính). Bức b có 2 hình tứ giác nhỏ và hình chữ nhật lớn, tất cả là 3."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đếm không sót hình nào, kể cả hình to ngoài cùng!",
+          "Hai khung tranh hình khối đã được treo xuôi ngay ngắn.",
+          "Cua Kềnh thì thầm: tớ đếm ngược mãi vẫn không ra số đó đâu."
+        ],
+        "wrong": [
+          "Hình tam giác ở giữa có ba cạnh, không phải tứ giác nhé.",
+          "Hình chữ nhật to bao ngoài cũng có bốn cạnh đấy.",
+          "Đếm từng hình nhỏ trước, rồi xem có hình to nào ghép lại không."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o2",
+          "b2": "o3"
+        }
+      }
+    },
+    {
+      "id": "tro-dung-thang-hang",
+      "title": "Trò đứng thẳng hàng",
+      "goTo": "Sang giá vẽ lớn, Hươu Cao đang treo bức tranh sân chơi",
+      "kind": "dialogue",
+      "target": "huou-cao",
+      "lines": [
+        {
+          "speaker": "Hươu Cao",
+          "text": "Bức tranh này vẽ năm bạn đứng trên sân kẻ ô. Cua Kềnh bảo chẳng ai đứng thẳng hàng với ai cả."
+        },
+        {
+          "speaker": "Cua Kềnh",
+          "text": "Ý tớ là… có nhiều bạn thẳng hàng lắm! Cậu muốn soi bằng mắt hươu hay áp thước kẻ vào tranh?"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Mượn mắt Hươu Cao nhìn từ trên cao",
+          "reply": "Hươu Cao vươn cổ: Từ trên này nhìn xuống, hàng nào thẳng là thấy liền!"
+        },
+        {
+          "text": "Áp thước kẻ dài vào từng hàng",
+          "reply": "Cua Kềnh kẹp thước bằng càng: Tớ giữ thước, cậu ngắm nhé, cẩn thận đừng để tớ bò lệch."
+        }
+      ]
+    },
+    {
+      "id": "nhom-ba-ban-thang-hang",
+      "title": "Ba bạn nào thẳng hàng?",
+      "target": "huou-cao",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "prompt": "Trên sân kẻ ô: Nam, Việt và Mi đứng trên cùng một đường dọc, còn Rô-bốt, Mi và Mai đứng trên cùng một hàng ngang. Kể tên các nhóm ba bạn đứng thẳng hàng trong hình vẽ dưới đây. Chọn tất cả các nhóm đúng.",
+      "choices": [
+        {
+          "id": "nam-viet-mi",
+          "text": "Nam, Việt, Mi"
+        },
+        {
+          "id": "nam-ro-bot-mai",
+          "text": "Nam, Rô-bốt, Mai"
+        },
+        {
+          "id": "ro-bot-mi-mai",
+          "text": "Rô-bốt, Mi, Mai"
+        },
+        {
+          "id": "viet-mi-mai",
+          "text": "Việt, Mi, Mai"
+        }
+      ],
+      "skill": "hinh-phang",
+      "curriculumRef": [
+        "toan2-t1-b28-luyen-tap-4"
+      ],
+      "support": {
+        "guide": [
+          "Ba bạn thẳng hàng khi cùng đứng trên một đường thẳng.",
+          "Bạn Mi đứng ở chỗ hai hàng gặp nhau."
+        ],
+        "hint": "Có hai nhóm, và bạn Mi có mặt trong cả hai nhóm.",
+        "answer": {
+          "text": "Nam, Việt, Mi; Rô-bốt, Mi, Mai",
+          "explanation": "Nam, Việt, Mi cùng nằm trên đường dọc; Rô-bốt, Mi, Mai cùng nằm trên hàng ngang. Các nhóm khác không cùng nằm trên một đường thẳng."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Hai nhóm thẳng tắp như hai cây thước, Hươu Cao vỗ móng tán thưởng!",
+          "Bạn Mi đứng đúng chỗ hai hàng giao nhau, cậu tinh thật.",
+          "Cua Kềnh giữ thước mỏi càng, nhưng ai cũng thẳng hàng rồi."
+        ],
+        "wrong": [
+          "Nhóm cậu chọn có ba bạn nằm trên một đường thẳng không?",
+          "Còn một nhóm có bạn Mi đứng chung, tìm thêm nhé.",
+          "Nam và Mai không đứng chung một hàng nào đâu."
+        ]
+      },
+      "answer": {
+        "choices": [
+          "nam-viet-mi",
+          "ro-bot-mi-mai"
+        ]
+      }
+    },
+    {
+      "id": "duong-oc-sen-bo",
+      "title": "Vẽ đường ốc sên bò",
+      "target": "huou-cao",
+      "kind": "challenge",
+      "mechanic": "connect",
+      "prompt": "Hươu Cao vẽ thêm một chú ốc sên nhỏ xíu ở góc tranh. Hôm nay, chú ốc sên bò từ trường học đến sân bóng, rồi ghé qua thư viện và trở về nhà. Tính độ dài quãng đường mà ốc sên đã bò. Trước khi tính, nối các điểm theo đúng đường ốc sên đã bò.",
+      "points": [
+        {
+          "id": "truong-hoc",
+          "x": 1,
+          "y": 4,
+          "label": "Trường học"
+        },
+        {
+          "id": "san-bong",
+          "x": 2,
+          "y": 1,
+          "label": "Sân bóng"
+        },
+        {
+          "id": "thu-vien",
+          "x": 6,
+          "y": 2,
+          "label": "Thư viện"
+        },
+        {
+          "id": "nha",
+          "x": 8,
+          "y": 5,
+          "label": "Nhà"
+        }
+      ],
+      "skill": "hinh-phang",
+      "curriculumRef": [
+        "toan2-t1-b28-luyen-tap-5"
+      ],
+      "support": {
+        "guide": [
+          "Đi lần lượt: trường học, sân bóng, thư viện, nhà.",
+          "Mỗi chặng là một đoạn thẳng nối hai nơi liền nhau."
+        ],
+        "hint": "Ốc sên không bò thẳng từ trường về nhà; nó ghé hai nơi trên đường.",
+        "answer": {
+          "text": "Trường học – Sân bóng – Thư viện – Nhà",
+          "explanation": "Đường ốc sên bò là đường gấp khúc gồm ba đoạn: trường học – sân bóng, sân bóng – thư viện, thư viện – nhà."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đường gấp khúc ba đoạn hiện ra, ốc sên bò theo chậm rãi.",
+          "Ốc sên vẫy râu cảm ơn: đúng đường tớ đi hôm nay đấy!",
+          "Ba nét nối khéo léo, tranh ốc sên đã hoàn thành."
+        ],
+        "wrong": [
+          "Ốc sên ghé sân bóng trước rồi mới tới thư viện cơ.",
+          "Cậu nối thẳng từ trường về nhà là bỏ qua hai chặng rồi.",
+          "Mỗi chặng chỉ nối hai nơi liền nhau trên đường đi thôi."
+        ]
+      },
+      "answer": {
+        "edges": [
+          [
+            "truong-hoc",
+            "san-bong"
+          ],
+          [
+            "san-bong",
+            "thu-vien"
+          ],
+          [
+            "thu-vien",
+            "nha"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "quang-duong-oc-sen",
+      "title": "Ốc sên bò bao xa?",
+      "target": "huou-cao",
+      "kind": "riddle",
+      "question": "Trên tranh ghi: trường học – sân bóng 10 cm, sân bóng – thư viện 30 cm, thư viện – nhà 20 cm. Hôm nay, chú ốc sên bò từ trường học đến sân bóng, rồi ghé qua thư viện và trở về nhà. Tính độ dài quãng đường mà ốc sên đã bò. (Viết số xăng-ti-mét.)",
+      "skill": "bai-toan-loi-van",
+      "curriculumRef": [
+        "toan2-t1-b28-luyen-tap-5"
+      ],
+      "support": {
+        "guide": [
+          "Quãng đường ốc sên bò là đường gấp khúc ba đoạn.",
+          "Cộng độ dài ba đoạn lại với nhau."
+        ],
+        "hint": "Phép tính là 10 + 30 + 20.",
+        "answer": {
+          "text": "60 cm",
+          "explanation": "Độ dài quãng đường ốc sên đã bò là 10 + 30 + 20 = 60 (cm)."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Sáu mươi xăng-ti-mét, ốc sên bò cả ngày mới tới nhà!",
+          "Cộng ba chặng gọn gàng, Hươu Cao ghi số lên khung tranh.",
+          "Cua Kềnh hét: sai rồi… à không, đúng rồi, đúng quá rồi!"
+        ],
+        "wrong": [
+          "Cộng đủ cả ba chặng đường nhé, đừng bỏ chặng nào.",
+          "Thử cộng 10 với 30 trước, rồi cộng tiếp 20.",
+          "Đường về nhà dài 20 cm đấy, cậu đã tính chưa?"
+        ]
+      },
+      "answer": {
+        "value": 60
+      }
+    },
+    {
+      "id": "huy-hieu-phong-tranh",
+      "title": "Phòng tranh mở cửa",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Mọi bức tranh hình khối đã treo xuôi. Cua Kềnh trao cho {name} huy hiệu \"Thám tử hình khối\" và nói: \"Cảm ơn cậu chẳng giúp gì cả!\" — câu nói ngược hay nhất của Cua hôm nay."
+    },
+    {
+      "id": "dong-ho-thap-ngu-quen",
+      "title": "Tiếng ngáy dưới tháp đồng hồ",
+      "kind": "unlock",
+      "trigger": "auto",
+      "text": "Dưới chân tháp đồng hồ vọng lên tiếng ngáy khò khò: Koala Na ngủ quên, kim đồng hồ tháp chạy lung tung, cả trường không biết mấy giờ rồi!"
+    }
+  ],
+  "reward": {
+    "xp": 80,
+    "coin": 15,
+    "skillXp": {
+      "hinh-phang": 2,
+      "bai-toan-loi-van": 1
+    }
+  }
+}
