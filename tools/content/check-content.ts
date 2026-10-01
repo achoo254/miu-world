@@ -8,6 +8,7 @@ import { CONTENT_DIR, loadContentCatalog, readQuestDefinitions } from '../../app
 import { playerTextIssues } from '../../packages/quest/src/player-name';
 import { PrivacyDocument, stepTargets, type QuestDefinition } from '../../packages/schema/src/content';
 import { Item } from '../../packages/schema/src/item';
+import { PetCatalog } from '../../packages/schema/src/pet';
 import { RegionCatalog } from '../../packages/schema/src/region';
 import { UI_ICONS } from '../../apps/web/src/ui/kit/ui-art';
 import { worldEntitiesSchema } from '../../packages/voxel/src/world-entities';
@@ -25,6 +26,7 @@ const CATALOGUE_FILES = [
   'legal/consent-vi.json',
   'progression/level-curve.json',
   'progression/skill-curve.json',
+  'pets.json',
   'accessories/',
   'quests/',
 ];
@@ -140,13 +142,20 @@ export function checkItems(dir: string, files: readonly string[], quests: Iterab
   return issues;
 }
 
+/** Every pet's model is a licensed file in the asset manifest (the build ships it, the game loads it). */
+export function checkPets(raw: unknown, manifestPaths: ReadonlySet<string>): string[] {
+  const parsed = PetCatalog.safeParse(raw);
+  if (!parsed.success) return [`content/pets.json: ${parsed.error.message}`];
+  return parsed.data.pets.filter((p) => !manifestPaths.has(p.model)).map((p) => `pet ${p.id}: model ${p.model} is not in assets/manifest.json`);
+}
+
 /** Regions parse; their text addresses the player as `{name}`; active quests live in open regions, and every open region has one. */
 export function checkRegions(raw: unknown, quests: Iterable<QuestDefinition>): string[] {
   const parsed = RegionCatalog.safeParse(raw);
   if (!parsed.success) return [`content/${REGIONS_FILE}: ${parsed.error.message}`];
   const issues: string[] = [];
   for (const region of parsed.data.regions) {
-    for (const text of [region.name, region.tagline, region.subject ?? '']) for (const issue of playerTextIssues(text)) issues.push(`region ${region.id} ${issue}`);
+    for (const text of [region.name, region.tagline, region.subject ?? '', region.description ?? '']) for (const issue of playerTextIssues(text)) issues.push(`region ${region.id} ${issue}`);
   }
   const open = new Set(parsed.data.regions.filter((r) => r.status === 'open').map((r) => r.id));
   const played = new Set<string>();
@@ -187,6 +196,8 @@ export function checkContent(dir: string = CONTENT_DIR): ContentReport {
     issues.push(...checkPlayerText(readQuestDefinitions(path.join(dir, 'quests'))));
     issues.push(...checkItems(dir, files, catalog.quests.values()));
     issues.push(...checkRegions(JSON.parse(readFileSync(path.join(dir, REGIONS_FILE), 'utf8')), catalog.quests.values()));
+    const manifest = JSON.parse(readFileSync(path.join(ASSETS_DIR, 'manifest.json'), 'utf8')) as { files: Array<{ path: string }> };
+    issues.push(...checkPets(JSON.parse(readFileSync(path.join(dir, 'pets.json'), 'utf8')), new Set(manifest.files.map((f) => f.path))));
     const privacy: unknown = JSON.parse(readFileSync(path.join(dir, PRIVACY_FILE), 'utf8'));
     issues.push(...checkPrivacy(privacy, catalog.consent.version));
     if (PrivacyDocument.safeParse(privacy).data?.contactEmail === null) warnings.push(`content/${PRIVACY_FILE} has no contact email yet`);

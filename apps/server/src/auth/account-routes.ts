@@ -62,7 +62,7 @@ async function buildExport(db: Db, parent: typeof parents.$inferSelect, now: Dat
       return {
         displayName: p.displayName,
         createdAt: iso(p.createdAt),
-        character: character ? { species: character.species, name: character.name, equipped: character.equipped } : null,
+        character: character ? { species: character.species, name: character.name, equipped: character.equipped, pet: character.pet } : null,
         quests: (quests.get(p.id) ?? []).map((q) => ({
           questId: q.questId,
           completedSteps: q.completedSteps,

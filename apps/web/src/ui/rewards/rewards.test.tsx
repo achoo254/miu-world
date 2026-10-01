@@ -10,7 +10,7 @@ import { ProfileScreen } from '../profile/profile-screens';
 import type { ActiveQuestView } from '../quest/quest-flow';
 import { CompletionSequence, completionScreens, countUpValue } from './completion-sequence';
 
-const CHARACTER: CharacterDto = { species: 'cat', name: 'Mochi', equipped: [] };
+const CHARACTER: CharacterDto = { species: 'cat', name: 'Mochi', equipped: [], pet: null };
 const QUEST = questList(2).quests[0]?.quest as ActiveQuestView;
 const DATA: PlayerData = {
   character: CHARACTER,

@@ -12,7 +12,7 @@ import { RegionMapScreen, RegionScreen } from '../region/region-screens';
 import { HomeScreen } from './home-screen';
 import { todayQuests } from './today-quests';
 
-const CHARACTER: CharacterDto = { species: 'cat', name: 'Mochi', equipped: [] };
+const CHARACTER: CharacterDto = { species: 'cat', name: 'Mochi', equipped: [], pet: null };
 
 function stubServer(done = 1, list = questList) {
   vi.stubGlobal(

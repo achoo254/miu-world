@@ -13,7 +13,7 @@ const view = QuestView.parse(QuestDefinition.parse(questSgk));
 if (view.status !== 'active') throw new Error('quest-sgk is active');
 const quest = view as ActiveQuestView;
 const talk = quest.steps.find((s) => s.id === 'talk') as QuestStepPublic;
-const DATA: PlayerData = { character: { species: 'cat', name: 'Mochi', equipped: [] } as CharacterDto, progress: PROGRESS, quests: [] };
+const DATA: PlayerData = { character: { species: 'cat', name: 'Mochi', equipped: [], pet: null } as CharacterDto, progress: PROGRESS, quests: [] };
 const done: StepCompleteResponse = {
   correct: true,
   feedback: null,

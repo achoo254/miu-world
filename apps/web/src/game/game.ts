@@ -17,7 +17,7 @@ import {
 import { blockLookup } from '@miu/voxel/block-table';
 import type { SolidAt } from '@miu/voxel/grid-collision';
 import { entitiesForChapter, mapForRegion } from '@miu/voxel/world-entities';
-import { UI_ICONS, assetUrl } from '../ui/kit/ui-art';
+import { PETS, UI_ICONS, assetUrl } from '../ui/kit/ui-art';
 import type { GameStore } from '../game-bridge/game-store';
 import { loadAmbientLife, type AmbientTarget } from './ambient/ambient-life';
 import { createConfetti } from './scene/confetti';
@@ -30,6 +30,7 @@ import { loadInteractables, pickNearest, type InteractableObject } from './entit
 import { createTargetArrow } from './entities/target-arrow';
 import { DEFAULT_SPECIES } from './content/characters';
 import { loadPlayerCharacter } from './entities/player-character';
+import { loadPetCompanion } from './entities/pet-companion';
 import { loadProps } from './entities/props';
 import { Autopilot } from './player/autopilot';
 import { CameraRig } from './player/camera-rig';
@@ -63,6 +64,8 @@ export interface GameOptions {
   region?: string;
   /** The child's character name, which villagers use when they greet her. */
   playerName?: string;
+  /** Pet id (`content/pets.json`) that trots after the character, or none. */
+  pet?: string | null;
 }
 
 /** Bytes downloaded so far (compressed transfer size, falling back to body size for cache hits). */
@@ -286,6 +289,11 @@ export class Game {
     stepLoaded();
     const confetti = createConfetti();
     const lookAhead = new Vector3();
+    const petSpec = PETS.find((p) => p.id === this.options.pet);
+    const pet = petSpec ? await loadPetCompanion(loader, petSpec, quality.shadows) : null;
+    if (this.disposed) return;
+    if (pet) scene.add(pet.root);
+    overlay.stats.pet = petSpec?.id ?? null;
     // Surprises this region plays now and then (none in review shots, which must be the same every run).
     const surprise = WorldEventKind.safeParse(params.get('event'));
     const events = createWorldEvents(params.get('shot') ? [] : regionEvents(this.options.region), {
@@ -429,6 +437,12 @@ export class Game {
       rig.update(dt, controller.position);
       // With the camera inside Miu (nowhere left to back off to), hide her rather than show her insides.
       if (!reviewShot?.backdrop) character.root.visible = rig.viewDistance > 0.9 && !reviewShot?.hidesPlayer;
+      if (pet) {
+        const p = controller.position;
+        pet.update(dt, { x: p.x, y: p.y, z: p.z, facing: controller.facing }, ground);
+        pet.root.visible = !reviewShot?.backdrop && !reviewShot?.hidesPlayer;
+        overlay.stats.petClip = pet.clip;
+      }
       reviewShot?.apply(camera);
       sky.position.copy(camera.position);
       sun.position.set(controller.position.x + 18, controller.position.y + 30, controller.position.z + 12);
@@ -476,6 +490,7 @@ export class Game {
       if (celebrateRequested) {
         celebrateRequested = false;
         life.celebrate(controller.position);
+        pet?.celebrate();
         if (!reducedMotion) confetti.burst(controller.position);
       }
       confetti.update(dt);

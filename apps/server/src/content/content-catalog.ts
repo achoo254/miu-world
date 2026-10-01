@@ -1,5 +1,6 @@
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import path from 'node:path';
+import { PetCatalog } from '@miu/schema/pet';
 import { ConsentDocument, ContentId, LevelCurve, NameList, QuestDefinition, SkillCatalog, type PlayableQuest } from '@miu/schema/content';
 import type { QuestTextbook } from '@miu/schema/game';
 import { questCatalogIssues } from '@miu/quest/quest-catalog';
@@ -17,6 +18,8 @@ export interface ContentCatalog {
   characterNames: ReadonlySet<string>;
   /** Species a character may be (`content/species.json`). */
   species: ReadonlySet<string>;
+  /** Pets a character may take along (`content/pets.json`). */
+  pets: ReadonlySet<string>;
   consent: ConsentDocument;
   /** Wearable items (accessories and their colour variants); the character wears these, one per slot. */
   accessories: ReadonlyMap<string, AccessoryItem>;
@@ -101,6 +104,7 @@ export function loadContentCatalog({ dir = CONTENT_DIR, questDir, extraQuestDir 
     childDisplayNames: new Set(readContentJson(NameList, path.join(dir, 'names/child-display-names.json')).names),
     characterNames: new Set(readContentJson(NameList, path.join(dir, 'names/character-names.json')).names),
     species: new Set(Object.keys(readContentJson(z.record(ContentId, speciesSchema), path.join(dir, 'species.json')))),
+    pets: new Set(readContentJson(PetCatalog, path.join(dir, 'pets.json')).pets.map((p) => p.id)),
     consent: readContentJson(ConsentDocument, path.join(dir, 'legal/consent-vi.json')),
     accessories,
     levelCurve: readContentJson(LevelCurve, path.join(dir, 'progression/level-curve.json')),

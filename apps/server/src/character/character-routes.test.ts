@@ -102,3 +102,16 @@ describe('PUT /api/character equipment rules (server is the source of truth)', (
     await wear(agent, ['pack-at-level-9']).expect(403, { error: 'equipment-locked' });
   });
 });
+
+describe('PUT /api/character pet', () => {
+  const put = (agent: Agent, body: object) => agent.put('/api/character').send({ name: 'Miu', equipped: [], ...body });
+
+  it('takes a pet from the catalogue, keeps it when left out, drops it with null, and refuses an unknown one', async () => {
+    const { agent } = await playingChild();
+    expect((await agent.get('/api/character').expect(200)).body.pet).toBeNull();
+    expect((await put(agent, { pet: 'cun-con' }).expect(200)).body.pet).toBe('cun-con');
+    expect((await put(agent, {}).expect(200)).body.pet).toBe('cun-con');
+    expect((await put(agent, { pet: null }).expect(200)).body.pet).toBeNull();
+    expect((await put(agent, { pet: 'rong-lua' }).expect(400)).body.error).toBe('invalid-pet');
+  });
+});

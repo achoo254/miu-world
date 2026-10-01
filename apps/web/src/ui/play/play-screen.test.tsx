@@ -7,7 +7,7 @@ import { PROGRESS, questList } from '../player/test-fixtures';
 import { PlayScreen } from './play-screen';
 
 /** The three reads /play makes, answered like the server; `character` may fail to simulate the network. */
-function playApi(character: () => Response = () => json({ species: 'cat', name: 'Mochi', equipped: [] })) {
+function playApi(character: () => Response = () => json({ species: 'cat', name: 'Mochi', equipped: [], pet: null })) {
   return vi.fn(async (url: string) => {
     if (url === '/api/character') return character();
     if (url === '/api/progress') return json(PROGRESS);
@@ -95,7 +95,7 @@ describe('PlayScreen under React StrictMode', () => {
       'fetch',
       playApi(() => {
         if (!online) throw new TypeError('Failed to fetch');
-        return json({ species: 'cat', name: 'Mochi', equipped: [] });
+        return json({ species: 'cat', name: 'Mochi', equipped: [], pet: null });
       }),
     );
     const started = games.started;

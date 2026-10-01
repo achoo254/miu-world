@@ -11,7 +11,7 @@ import type { PlayerData } from '../player/player-data';
 import { PROGRESS, questList } from '../player/test-fixtures';
 import { QuestLayer } from './quest-layer';
 
-const CHARACTER: CharacterDto = { species: 'cat', name: 'Mochi', equipped: [] };
+const CHARACTER: CharacterDto = { species: 'cat', name: 'Mochi', equipped: [], pet: null };
 
 afterEach(() => {
   cleanup();

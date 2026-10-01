@@ -53,6 +53,8 @@ export type GameCommand =
   | { type: 'interact' }
   /** Equipped accessory ids (`id` or `id:variant`); swaps outfit without a remount. */
   | { type: 'set-outfit'; equipped: readonly string[] }
+  /** The pet beside the character in the creator preview (`content/pets.json`), or none. */
+  | { type: 'set-pet'; pet: string | null }
   | { type: 'set-world-state'; state: WorldState }
   /** Target the quest tracker points at (direction arrow), or none. */
   | { type: 'set-target-hint'; targetId: string | null }

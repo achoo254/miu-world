@@ -67,7 +67,7 @@ export const AccountExport = z.object({
     z.object({
       displayName: z.string(),
       createdAt: Instant,
-      character: z.object({ species: z.string(), name: z.string(), equipped: z.array(z.string()) }).nullable(),
+      character: z.object({ species: z.string(), name: z.string(), equipped: z.array(z.string()), pet: z.string().nullable() }).nullable(),
       quests: z.array(
         z.object({
           questId: z.string(),

@@ -58,7 +58,8 @@ export async function glbDependencies(assetsDir: string, rel: string): Promise<s
 
 /**
  * The runtime set: manifest, generated groups, self-hosted fonts, the files the React UI shows
- * (`uiPaths`), and every model the maps place (plus the textures those models reference). With
+ * (`uiPaths`, whose models count as models), and every model the maps place (plus the textures those
+ * models reference). With
  * `review` (every build but a release), also the review material the review page shows.
  * Everything else in the manifest stays out of `dist/`.
  */
@@ -75,7 +76,8 @@ export async function runtimeAssetPaths(
     if (shippedPrefixes.some((prefix) => p.startsWith(prefix)) && !renderOnly(p)) wanted.add(p);
     if (p.startsWith('packs/font-') && p.endsWith('.woff2')) wanted.add(p);
   }
-  const models = new Set<string>();
+  // Models the UI or the game loads by name (pets) bring their textures, like the ones the maps place.
+  const models = new Set<string>(uiPaths.filter((p) => p.endsWith('.glb')));
   for (const p of manifestPaths.filter((x) => /^generated\/world\/[^/]+\/entities\.json$/.test(x) && !renderOnly(x))) {
     const entities = JSON.parse(await readFile(path.join(assetsDir, p), 'utf8')) as Record<string, unknown>;
     for (const list of Object.values(entities)) {

@@ -1,6 +1,10 @@
 // Character Creator (M1.2, M1.3): a new profile goes through /create before playing; outfit changes
 // show at once on the voxel preview; what the child saves is what they wear in the world.
+import { mkdirSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import { expect, test, type Page } from '@playwright/test';
+
+mkdirSync(fileURLToPath(new URL('../../../.data/creator/', import.meta.url)), { recursive: true });
 import { readStats, waitReady } from './stats';
 
 // Its own parent, so selecting a new profile never changes the shared session other projects use.
@@ -43,6 +47,15 @@ test('a new profile creates its character first, sees outfit changes live, then 
   await expect(page.locator('canvas')).toHaveCount(1);
   await expect(page.getByRole('button', { name: /Balo chiếc lá/ })).toBeDisabled();
 
+  // A pet: it stands beside the character in the same preview (the last pick wins when tapped quickly).
+  await page.getByRole('tab', { name: 'Thú cưng' }).click();
+  await page.locator('[data-id="creator-pet-gau-truc"]').click();
+  await page.locator('[data-id="creator-pet-cun-con"]').click();
+  await expect(page.locator('[data-id="creator-pet-cun-con"]')).toHaveAttribute('aria-pressed', 'true');
+  await expect.poll(() => page.evaluate(() => window.__miuPreview?.pet ?? null)).toBe('cun-con');
+  await expect(page.locator('canvas')).toHaveCount(1);
+  await page.screenshot({ path: fileURLToPath(new URL('../../../.data/creator/pet-preview.png', import.meta.url)) });
+
   for (const [label, emote] of [['Vẫy tay', 'wave'], ['Nhảy', 'jump'], ['Ngáp', 'yawn'], ['Vui mừng', 'cheer']] as const) {
     await page.getByRole('button', { name: label }).click();
     await expect.poll(() => page.evaluate(() => window.__miuPreview?.emote ?? null)).toBe(emote);
@@ -69,6 +82,13 @@ test('a new profile creates its character first, sees outfit changes live, then 
   await expect(page).toHaveURL(/\/play\?/);
   await waitReady(page);
   expect((await readStats(page)).outfit).toEqual(['hat-cap-yellow', 'backpack-red']);
+  // The puppy came along: it trots after the character when she walks.
+  expect((await readStats(page)).pet).toBe('cun-con');
+  await page.keyboard.down('KeyW');
+  await expect.poll(async () => (await readStats(page)).petClip).toMatch(/walk|run/);
+  await page.keyboard.up('KeyW');
+  await expect.poll(async () => (await readStats(page)).petClip, { timeout: 8_000 }).toBe('idle');
+  await page.screenshot({ path: fileURLToPath(new URL('../../../.data/creator/pet-play.png', import.meta.url)) });
   // The preview was disposed on leaving /create: only the game's canvas remains.
   await expect(page.locator('canvas')).toHaveCount(1);
   expect(await page.evaluate(() => window.__miuPreview)).toBeUndefined();

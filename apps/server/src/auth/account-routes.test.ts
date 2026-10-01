@@ -67,7 +67,7 @@ describe('account export', () => {
     const [child] = data.children;
     expect(child).toMatchObject({
       displayName: 'Mèo Mây',
-      character: { species: 'cat', name: 'Miu', equipped: [] },
+      character: { species: 'cat', name: 'Miu', equipped: [], pet: null },
       stepCounters: [{ questId: 'q-open', stepId: 'b', wrongCount: 2, answerViews: 1 }],
       inventory: [{ itemId: 'la-than', qty: 1 }],
       skills: [{ skillId: 'doc-hieu', xp: 10 }],

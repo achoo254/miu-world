@@ -45,7 +45,7 @@ describe('child profiles', () => {
   it('creates a default character with each profile', async () => {
     const { childId } = await parentWithChild(app);
     const [character] = await app.db.select().from(t.characters).where(eq(t.characters.childId, childId));
-    expect(character).toMatchObject({ species: 'cat', name: 'Miu', equipped: [] });
+    expect(character).toMatchObject({ species: 'cat', name: 'Miu', equipped: [], pet: null });
   });
 
   it('selects a profile for play', async () => {

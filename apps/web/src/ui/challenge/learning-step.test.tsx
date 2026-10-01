@@ -7,7 +7,7 @@ import { PROGRESS } from '../player/test-fixtures';
 import type { ActiveQuestView } from '../quest/quest-flow';
 import { LearningStep } from './learning-step';
 
-const CHARACTER: CharacterDto = { species: 'cat', name: 'Mochi', equipped: [] };
+const CHARACTER: CharacterDto = { species: 'cat', name: 'Mochi', equipped: [], pet: null };
 const DATA: PlayerData = { character: CHARACTER, progress: PROGRESS, quests: [] };
 
 const steps = {

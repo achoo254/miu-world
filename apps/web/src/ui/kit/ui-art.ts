@@ -2,7 +2,9 @@
 // runtime set) into dist/, so a path that leaves the manifest fails the build instead of a 404.
 // Plain data on purpose: vite.config imports it.
 import characters from '../../../../../content/characters.json';
+import pets from '../../../../../content/pets.json';
 import regions from '../../../../../content/world/regions.json';
+import { petArtPath } from '../../../../../packages/schema/src/pet-art';
 import { REGION_CHEST_ICON, regionBackdropPath } from '../../../../../packages/schema/src/region-art';
 
 const FLUENT = 'packs/fluent-emoji/1ffb34c752ec/icons';
@@ -75,6 +77,11 @@ export const REGION_BACKDROPS: Readonly<Record<string, string>> = Object.fromEnt
 );
 export const REGION_CHEST = REGION_CHEST_ICON;
 
+/** Pets (content/pets.json, validated by `pnpm content:check`): the model the game and the creator load, and its tile picture. */
+export const PETS: ReadonlyArray<{ id: string; name: string; model: string; scale: number; art: string }> = (
+  pets as { pets: Array<{ id: string; name: string; model: string; scale: number }> }
+).pets.map((p) => ({ ...p, art: petArtPath(p.id) }));
+
 export type UiIcon = keyof typeof UI_ICONS;
 
 export const UI_ART_PATHS: readonly string[] = [
@@ -83,6 +90,7 @@ export const UI_ART_PATHS: readonly string[] = [
   HOME_ISLAND,
   ...Object.values(REGION_BACKDROPS),
   REGION_CHEST,
+  ...PETS.flatMap((p) => [p.model, p.art]),
 ];
 
 export const assetUrl = (manifestPath: string): string => `/game-assets/${manifestPath}`;

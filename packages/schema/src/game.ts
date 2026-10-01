@@ -9,6 +9,8 @@ export const CharacterDto = z.object({
   name: z.string(),
   /** Accessory ids from `content/accessories/`, at most one per slot. */
   equipped: z.array(ContentId),
+  /** Pet id from `content/pets.json` that trots after the character, or none. */
+  pet: ContentId.nullable().default(null),
 });
 export type CharacterDto = z.infer<typeof CharacterDto>;
 
@@ -21,6 +23,8 @@ export const CharacterUpdate = z.object({
   equipped: z.array(ContentId).max(8),
   /** Left out: the species stays as it is. */
   species: ContentId.optional(),
+  /** Left out: the pet stays as it is; null: no pet. */
+  pet: ContentId.nullable().optional(),
 });
 export type CharacterUpdate = z.infer<typeof CharacterUpdate>;
 

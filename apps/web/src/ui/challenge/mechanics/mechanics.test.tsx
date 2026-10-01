@@ -22,7 +22,7 @@ const stepOf = (id: string): QuestStepPublic => {
   return step;
 };
 
-const CHARACTER: CharacterDto = { species: 'cat', name: 'Mochi', equipped: [] };
+const CHARACTER: CharacterDto = { species: 'cat', name: 'Mochi', equipped: [], pet: null };
 const DATA: PlayerData = { character: CHARACTER, progress: PROGRESS, quests: [] };
 const response = (correct: boolean): StepCompleteResponse => ({
   correct,

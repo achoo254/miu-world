@@ -1,10 +1,12 @@
-// Character Creator preview (M1.3): a small scene with Miu alone, turned by dragging, playing one of
-// four emotes on request. Outfit changes arrive as the bridge command `set-outfit` and swap the
-// accessories in place (no remount, no second canvas). Like `Game`, it never imports React.
+// Character Creator preview (M1.3): a small scene with Miu (and her pet, if she has one), turned by
+// dragging, playing one of four emotes on request. Outfit and pet changes arrive as the bridge commands
+// `set-outfit` and `set-pet` and swap in place (no remount, no second canvas). Like `Game`, it never
+// imports React.
 import {
   AnimationMixer,
   Box3,
   DirectionalLight,
+  Group,
   HemisphereLight,
   LoopOnce,
   PerspectiveCamera,
@@ -21,7 +23,9 @@ import type { GameStore } from '../../game-bridge/game-store';
 import { AssetRegistry, GuardedGltfLoader } from '../asset-loader';
 import { dressCharacter, undressCharacter, type WornOutfit } from '../character/character-accessories';
 import { characterForSpecies } from '../content/characters';
+import { loadPetCompanion, type PetCompanion } from '../entities/pet-companion';
 import { accessoryScaler } from '../entities/player-character';
+import { PETS } from '../../ui/kit/ui-art';
 import { disposeSceneGraph } from '../scene/dispose-scene';
 
 export const EMOTES = ['wave', 'jump', 'yawn', 'cheer'] as const;
@@ -33,6 +37,8 @@ export interface MiuPreviewStats {
   outfit: string[];
   emote: Emote | null;
   yaw: number;
+  /** The pet standing beside the character, once its model is in. */
+  pet: string | null;
 }
 
 declare global {
@@ -42,6 +48,8 @@ declare global {
 }
 
 const DRAG_SPEED = 0.01;
+/** The pet's height in the preview, as a share of the character's. */
+const PET_HEIGHT = 0.38;
 const START_YAW = 0.5;
 
 export interface CharacterPreviewOptions {
@@ -50,6 +58,8 @@ export interface CharacterPreviewOptions {
   species: string;
   /** Items worn when the preview opens. */
   outfit: readonly string[];
+  /** Pet shown beside the character when the preview opens, or none. */
+  pet?: string | null;
 }
 
 export class CharacterPreview {
@@ -59,7 +69,7 @@ export class CharacterPreview {
   private renderer: WebGLRenderer | null = null;
   private scene: Scene | null = null;
   private playEmoteNow: ((emote: Emote) => void) | null = null;
-  readonly stats: MiuPreviewStats = { ready: false, outfit: [], emote: null, yaw: START_YAW };
+  readonly stats: MiuPreviewStats = { ready: false, outfit: [], emote: null, yaw: START_YAW, pet: null };
 
   constructor(
     private readonly host: HTMLElement,
@@ -106,8 +116,14 @@ export class CharacterPreview {
     // Listen before loading: a choice made while the model downloads is worn as soon as it is ready.
     let latestOutfit: readonly string[] = this.options.outfit;
     let wearNow: ((entries: readonly string[]) => void) | null = null;
+    let latestPet: string | null = this.options.pet ?? null;
+    let showPetNow: ((pet: string | null) => void) | null = null;
     this.cleanups.push(
       store.onCommand((command) => {
+        if (command.type === 'set-pet') {
+          latestPet = command.pet;
+          showPetNow?.(command.pet);
+        }
         if (command.type !== 'set-outfit') return;
         latestOutfit = command.equipped;
         wearNow?.(command.equipped);
@@ -130,7 +146,8 @@ export class CharacterPreview {
 
     const registry = await AssetRegistry.load();
     const character = characterForSpecies(this.options.species);
-    const gltf = await new GuardedGltfLoader(registry).load(character.output);
+    const loader = new GuardedGltfLoader(registry);
+    const gltf = await loader.load(character.output);
     if (this.disposed) return;
     const model: Object3D = gltf.scene;
     model.traverse((o) => (o.frustumCulled = false)); // skinned bounds lag the animated pose
@@ -158,6 +175,8 @@ export class CharacterPreview {
       action.clampWhenFinished = true;
       emotes.set(name, action);
     }
+    /** Set once the pet stand exists: the pet dances along with the character's cheer and jump. */
+    let petCheer: (() => void) | null = null;
     let playing: AnimationAction = idle;
     const fadeTo = (next: AnimationAction): void => {
       if (next === playing) next.reset();
@@ -169,6 +188,7 @@ export class CharacterPreview {
       if (!action) return;
       this.stats.emote = emote;
       fadeTo(action);
+      if (emote === 'cheer' || emote === 'jump') petCheer?.();
     };
     const onFinished = (): void => {
       this.stats.emote = null;
@@ -201,6 +221,38 @@ export class CharacterPreview {
     wear(latestOutfit);
     wearNow = wear;
 
+    // The pet stands at the character's feet on her left, turning with her. The latest choice wins when
+    // the child taps through pets faster than they load.
+    const petStand = new Group();
+    petStand.rotation.y = START_YAW;
+    scene.add(petStand);
+    let pet: PetCompanion | null = null;
+    let petRequest = 0;
+    const showPet = (petId: string | null): void => {
+      const request = ++petRequest;
+      if (pet) {
+        petStand.remove(pet.root);
+        disposeSceneGraph(pet.root);
+        pet = null;
+      }
+      this.stats.pet = null;
+      const spec = PETS.find((p) => p.id === petId);
+      if (!spec) return;
+      // In the preview the pet stands knee-to-waist high next to the character, whatever the model's size.
+      void loadPetCompanion(loader, { model: spec.model, scale: 1 }, false).then((loaded) => {
+        if (this.disposed || request !== petRequest) return disposeSceneGraph(loaded.root);
+        const petHeight = new Box3().setFromObject(loaded.root).getSize(new Vector3()).y || 1;
+        loaded.root.scale.setScalar((height * PET_HEIGHT) / petHeight);
+        loaded.root.position.set(center.x + height * 0.42, box.min.y, center.z + height * 0.12);
+        petStand.add(loaded.root);
+        pet = loaded;
+        this.stats.pet = spec.id;
+      });
+    };
+    showPet(latestPet);
+    showPetNow = showPet;
+    petCheer = () => pet?.celebrate();
+
     // Drag to turn (mouse and touch share Pointer Events).
     const canvas = renderer.domElement;
     let dragX: number | null = null;
@@ -211,6 +263,7 @@ export class CharacterPreview {
     const onMove = (e: PointerEvent): void => {
       if (dragX === null) return;
       model.rotation.y += (e.clientX - dragX) * DRAG_SPEED;
+      petStand.rotation.y = model.rotation.y;
       this.stats.yaw = model.rotation.y;
       dragX = e.clientX;
     };
@@ -245,7 +298,9 @@ export class CharacterPreview {
     this.cleanups.push(() => timer.dispose());
     renderer.setAnimationLoop(() => {
       timer.update();
-      mixer.update(Math.min(timer.getDelta(), 0.1));
+      const dt = Math.min(timer.getDelta(), 0.1);
+      mixer.update(dt);
+      pet?.tick(dt);
       renderer.render(scene, camera);
       if (!this.stats.ready) {
         this.stats.ready = true;

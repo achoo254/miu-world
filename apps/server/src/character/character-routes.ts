@@ -32,13 +32,14 @@ export function characterRoutes({ db, content }: CharacterRouteDeps): Router {
   /**
    * Name from the pick list; equipment only from the accessory catalogue, one item per slot, and only
    * items the child has unlocked (an item already worn stays wearable if its rule later tightens).
-   * Species from `content/species.json`; left out, it stays as it was.
+   * Species from `content/species.json`, pet from `content/pets.json` (null: none); left out, each stays as it was.
    */
   router.put('/character', requireParent, async (req, res) => {
     const childId = await activeChildId(db, res, content.consent.version);
     const input = parseInput(CharacterUpdate, req.body);
     if (!content.characterNames.has(input.name)) throw new HttpError(400, 'invalid-character-name');
     if (input.species !== undefined && !content.species.has(input.species)) throw new HttpError(400, 'invalid-species');
+    if (input.pet && !content.pets.has(input.pet)) throw new HttpError(400, 'invalid-pet');
     const items = input.equipped.map((id) => content.accessories.get(id));
     const slots = new Set<string>();
     for (const item of items) {
@@ -55,7 +56,12 @@ export function characterRoutes({ db, content }: CharacterRouteDeps): Router {
     }
     await db
       .update(characters)
-      .set({ name: input.name, equipped: input.equipped, ...(input.species === undefined ? {} : { species: input.species }) })
+      .set({
+        name: input.name,
+        equipped: input.equipped,
+        ...(input.species === undefined ? {} : { species: input.species }),
+        ...(input.pet === undefined ? {} : { pet: input.pet }),
+      })
       .where(eq(characters.childId, childId));
     res.json(await load(childId));
   });

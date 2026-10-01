@@ -78,6 +78,8 @@ export const characters = pgTable('characters', {
   species: text('species').notNull().default('cat'),
   name: text('name').notNull(),
   equipped: jsonb('equipped').$type<string[]>().notNull().default(sql`'[]'::jsonb`),
+  /** Pet that follows the character (`content/pets.json`), or none. */
+  pet: text('pet'),
 });
 
 export const questProgress = pgTable(

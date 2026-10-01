@@ -1,6 +1,7 @@
 // M1.2 (chọn loài) + M1.3 (trang phục, tên, tính cách, xem trước): the Character Creator. Every
-// species in content/species.json is open; the Áo/Giày/Cánh slots show "Sắp có". The 3D preview is
-// its own light renderer; outfit changes reach it as the bridge command `set-outfit`.
+// species in content/species.json is open; the Áo/Giày/Cánh slots show "Sắp có"; the "Thú cưng" tab picks
+// a pet (content/pets.json) that follows the character. The 3D preview is its own light renderer; outfit
+// and pet changes reach it as the bridge commands `set-outfit` and `set-pet`.
 import { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { fillPlayerName } from '@miu/quest/player-name';
@@ -13,6 +14,7 @@ import { ACCESSORIES } from '../../game/content/accessories';
 import { SPECIES } from '../../game/content/characters';
 import { api, errorMessage } from '../api-client';
 import { Icon, MiuArt } from '../kit/art';
+import { assetUrl, PETS } from '../kit/ui-art';
 import { buttonClass } from '../kit/button';
 import { SkyScene } from '../kit/sky-scene';
 import { isFreshCharacter } from './fresh-character';
@@ -70,14 +72,15 @@ function SpeciesStep({ current, onPick }: { current: string; onPick: (species: s
 }
 
 /** The 3D stage: mounts one CharacterPreview for the screen's lifetime and exposes its emotes. */
-function PreviewStage({ store, species, initialOutfit }: { store: GameStore; species: string; initialOutfit: readonly string[] }) {
+function PreviewStage({ store, species, initialOutfit, initialPet }: { store: GameStore; species: string; initialOutfit: readonly string[]; initialPet: string | null }) {
   const host = useRef<HTMLDivElement>(null);
   const preview = useRef<CharacterPreview | null>(null);
   const firstOutfit = useRef(initialOutfit);
+  const firstPet = useRef(initialPet);
   const status = useGameState((s) => s.status);
   useEffect(() => {
     if (!host.current) return;
-    const instance = new CharacterPreview(host.current, { store, species, outfit: firstOutfit.current });
+    const instance = new CharacterPreview(host.current, { store, species, outfit: firstOutfit.current, pet: firstPet.current });
     preview.current = instance;
     void instance.start();
     // StrictMode mounts twice in dev: the first preview is fully disposed before the second starts.
@@ -112,11 +115,15 @@ function PreviewStage({ store, species, initialOutfit }: { store: GameStore; spe
   );
 }
 
-/** Name and outfit picked so far: kept when the child goes back to pick another animal. */
+/** Name, outfit and pet picked so far: kept when the child goes back to pick another animal. */
 interface Draft {
   name: string;
   equipped: string[];
+  pet: string | null;
 }
+
+/** The wardrobe's tabs: the outfit slots, then the pet. */
+type Tab = OpenSlot | 'pet';
 
 function OutfitStep({
   data,
@@ -134,26 +141,32 @@ function OutfitStep({
   onChangeSpecies: () => void;
 }) {
   const navigate = useNavigate();
-  const { name, equipped } = draft;
+  const { name, equipped, pet } = draft;
   const setName = (next: string): void => onDraft({ ...draft, name: next });
   const setEquipped = (next: string[]): void => onDraft({ ...draft, equipped: next });
-  const [slot, setSlot] = useState<OpenSlot>('hat');
+  const [slot, setSlot] = useState<Tab>('hat');
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const worn = data.character.equipped;
   const questTitle = (id: string): string => fillPlayerName(data.questTitles.get(id) ?? id, name);
 
   function choose(itemId: string | null) {
+    if (slot === 'pet') return;
     const next = equip(equipped, slot, itemId);
     setEquipped(next);
     store.send({ type: 'set-outfit', equipped: next });
+  }
+
+  function choosePet(petId: string | null) {
+    onDraft({ ...draft, pet: petId });
+    store.send({ type: 'set-pet', pet: petId });
   }
 
   async function save() {
     setSaving(true);
     setError(null);
     try {
-      await api('PUT', '/character', CharacterDto, CharacterUpdate.parse({ name, equipped, species }));
+      await api('PUT', '/character', CharacterDto, CharacterUpdate.parse({ name, equipped, species, pet }));
       navigate('/home');
     } catch (err) {
       setError(errorMessage(err));
@@ -180,12 +193,40 @@ function OutfitStep({
               {s.label}
             </button>
           ))}
+          <button
+            type="button"
+            role="tab"
+            aria-selected={slot === 'pet'}
+            className={`slot-tab${slot === 'pet' ? ' slot-tab--active' : ''}`}
+            data-id="creator-slot-pet"
+            onClick={() => setSlot('pet')}
+          >
+            Thú cưng
+          </button>
           {COMING_SLOTS.map((label) => (
             <span key={label} className="slot-tab slot-tab--locked" aria-disabled="true" data-id={`creator-slot-coming-${label}`}>
               {label} <span className="badge">Sắp có</span>
             </span>
           ))}
         </div>
+        {slot === 'pet' ? (
+          <ul className="item-grid" role="tabpanel" aria-label="Thú cưng">
+            <li>
+              <button type="button" className="item-tile" aria-pressed={pet === null} data-id="creator-pet-none" onClick={() => choosePet(null)}>
+                <span className="item-swatch item-swatch--none" aria-hidden="true" />
+                Không mang
+              </button>
+            </li>
+            {PETS.map((p) => (
+              <li key={p.id}>
+                <button type="button" className="item-tile" aria-pressed={pet === p.id} data-id={`creator-pet-${p.id}`} onClick={() => choosePet(p.id)}>
+                  <img className="pet-art" src={assetUrl(p.art)} alt="" width={64} height={64} />
+                  {p.name}
+                </button>
+              </li>
+            ))}
+          </ul>
+        ) : (
         <ul className="item-grid" role="tabpanel" aria-label="Món đồ">
           <li>
             <button type="button" className="item-tile" aria-pressed={current === null} data-id={`creator-item-none-${slot}`} onClick={() => choose(null)}>
@@ -215,9 +256,10 @@ function OutfitStep({
             );
           })}
         </ul>
+        )}
       </section>
 
-      <PreviewStage store={store} species={species} initialOutfit={equipped} />
+      <PreviewStage store={store} species={species} initialOutfit={equipped} initialPet={pet} />
 
       <section className="panel creator-info" aria-labelledby="creator-info-title">
         <h2 id="creator-info-title">Thông tin</h2>
@@ -272,7 +314,7 @@ export function CreatorScreen() {
         if (!live) return;
         setData(next);
         // "Miu" is the game's name: a fresh character starts without a name and the child picks one.
-        setDraft({ name: isFreshCharacter(next.character) ? '' : next.character.name, equipped: next.character.equipped });
+        setDraft({ name: isFreshCharacter(next.character) ? '' : next.character.name, equipped: next.character.equipped, pet: next.character.pet });
       },
       (err: unknown) => live && setLoadError(errorMessage(err)),
     );

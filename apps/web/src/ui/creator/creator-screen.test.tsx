@@ -43,7 +43,7 @@ function stubApi({ level = 1, completed = [] as string[] } = {}) {
         puts.push(body);
         return json({ species: 'cat', ...body });
       }
-      if (url === '/api/character') return json({ species: 'cat', name: 'Miu', equipped: [] });
+      if (url === '/api/character') return json({ species: 'cat', name: 'Miu', equipped: [], pet: null });
       if (url === '/api/progress') {
         return json({
           quests: completed.map((questId) => ({ questId, completedSteps: [], completed: true, found: {}, stars: 3 })),
@@ -109,7 +109,7 @@ describe('Character Creator', () => {
 
     fireEvent.click(screen.getByRole('button', { name: /Vào thế giới/ }));
     expect(await screen.findByText('Trang chủ')).toBeTruthy();
-    expect(puts).toEqual([{ name: 'Bo', equipped: ['hat-cap-yellow'], species: 'bear' }]);
+    expect(puts).toEqual([{ name: 'Bo', equipped: ['hat-cap-yellow'], species: 'bear', pet: null }]);
   });
 
   it('sends every outfit change to the one live preview, locks what is not earned, and saves name and outfit', async () => {
@@ -143,7 +143,7 @@ describe('Character Creator', () => {
     fireEvent.change(screen.getByLabelText('Tên nhân vật'), { target: { value: 'Mochi' } });
     fireEvent.click(screen.getByRole('button', { name: /Vào thế giới/ }));
     expect(await screen.findByText('Trang chủ')).toBeTruthy();
-    expect(puts).toEqual([{ name: 'Mochi', equipped: ['hat-witch-pink', 'backpack-green'], species: 'cat' }]);
+    expect(puts).toEqual([{ name: 'Mochi', equipped: ['hat-witch-pink', 'backpack-green'], species: 'cat', pet: null }]);
     view.unmount();
     expect(previews.live).toBe(0);
   });

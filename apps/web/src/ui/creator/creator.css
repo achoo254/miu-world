@@ -130,3 +130,4 @@
 }
 .creator-stage-view canvas { display: block; touch-action: none; }
 .emote-row { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-sm); }
+.pet-art { width: 4rem; height: 4rem; object-fit: contain; }
