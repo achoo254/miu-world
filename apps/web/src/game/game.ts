@@ -581,7 +581,12 @@ export class Game {
           anchor.style.visibility = 'visible'; // hidden until first positioned: no flash at 0,0
         }
       }
-      if (interact && promptTarget?.def.travel) {
+      if (interact && promptTarget?.def.ride) {
+        // A ride across the map: the child gets off at the next stop (its regions are fetched ahead).
+        const [rx, ry, rz] = promptTarget.def.ride;
+        void world.settle(rx, rz).then(() => controller.teleport([rx, ry, rz]));
+        overlay.stats.lastInteraction = promptTarget.def.id;
+      } else if (interact && promptTarget?.def.travel) {
         store.emit({ type: 'travel', region: promptTarget.def.travel });
         overlay.stats.lastInteraction = promptTarget.def.id;
       } else if (interact && promptTarget) {

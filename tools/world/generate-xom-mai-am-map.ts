@@ -16,10 +16,23 @@ import { placeWell, placeWindmill } from './structures/countryside';
 import type { Point } from './structures/path';
 import { placeAncientTree } from './structures/tree';
 import { put } from './structures/world-writer';
+import { animal, crowd, person } from './village-life';
 import { generateZoneMap, type Zone, type ZoneMapContext } from './zone-map';
 
 export const MAP_ID = 'xom-mai-am';
 const WATER_LEVEL = 10;
+
+/** What the hamlet's people hold at their chores. */
+const LIFE_HELD = {
+  basket: `${PACK.props}/basket.glb`,
+  bucket: `${PACK.survival}/bucket.glb`,
+  hoe: `${PACK.survival}/tool-hoe.glb`,
+  book: `${PACK.props}/open-book.glb`,
+  kite: `${PACK.props}/kite.glb`,
+  crate: `${PACK.survival}/box.glb`,
+  paddle: `${PACK.nature}/canoe_paddle.glb`,
+  apple: `${PACK.food}/apple.glb`,
+};
 
 export const ZONES: readonly Zone[] = [
   { chapter: 1, id: 'vuon-hoa-ngo-nho', name: 'Vườn hoa và ngõ nhà Mẩy', x: 210, z: 150, hx: 44, hz: 34 },
@@ -345,6 +358,27 @@ export async function generateXomMaiAm() {
       centred: [M.chair, M.table],
     },
     dressing: { models: [M.flowerRed, M.flowerYellow, M.flowerPurple, M.bush, M.pebble], spacing: 7 },
+    // Family life round every house: cooking, washing, watering, kites on the windy mound, pets and hens.
+    life: ({ landmark }) => [
+      ...crowd('home-cook', ['Bà nấu cơm', 'Mẹ nấu cơm', 'Bố nấu cơm'], [person('i'), person('l'), person('a')], landmark('nha-may'), 20, 4, [LIFE_HELD.basket]),
+      ...crowd('laundry', ['Mẹ phơi đồ', 'Chị phơi áo'], [person('e'), person('h')], landmark('san-phoi'), 12, 4, [LIFE_HELD.basket]),
+      ...crowd('waterer', ['Ông tưới cây', 'Bà tưới rau'], [person('a'), person('i')], landmark('vuon-hoa'), 14, 3, [LIFE_HELD.bucket]),
+      ...crowd('hen-keeper', ['Bà cho gà ăn'], [person('i')], landmark('to-rom'), 6, 1, [LIFE_HELD.basket, LIFE_HELD.basket]),
+      ...crowd('chick', ['Gà con'], [animal('chick')], landmark('to-rom'), 7, 10),
+      ...crowd('reader', ['Ông đọc báo', 'Bạn đọc truyện'], [person('a'), person('o')], landmark('hien-nha'), 10, 3, [LIFE_HELD.book]),
+      ...crowd('home-cook', ['Bác nấu cỗ'], [person('m')], landmark('hang-da'), 12, 2, [LIFE_HELD.basket]),
+      ...crowd('pupil', ['Bạn trong xóm'], [person('f'), person('n'), person('p')], landmark('chong-tre'), 12, 4),
+      ...crowd('ferryman', ['Ông lái đò', 'Chú câu cá'], [person('m'), person('k')], landmark('ben-do'), 8, 3, [LIFE_HELD.paddle]),
+      ...crowd('laundry', ['Cô giặt đồ ven hồ'], [person('e')], landmark('bai-soi'), 8, 2, [LIFE_HELD.basket]),
+      ...crowd('waterer', ['Ông làm vườn'], [person('j')], landmark('nha-ong'), 8, 1, [LIFE_HELD.bucket]),
+      ...crowd('kite-flyer', ['Bạn thả diều'], [person('f'), person('o'), person('q'), person('r')], landmark('go-dat'), 14, 5, [LIFE_HELD.kite]),
+      ...crowd('ploughman', ['Bác nông dân'], [person('m'), person('a')], landmark('ruong-ngo'), 16, 3, [LIFE_HELD.hoe]),
+      ...crowd('rice-planter', ['Cô cấy lúa'], [person('h'), person('e')], landmark('canh-dong-lua'), 30, 4, [LIFE_HELD.basket]),
+      ...crowd('dog', ['Cún nhà Mẩy', 'Chó Vàng', 'Cún Mực'], [animal('dog')], landmark('goc-sung'), 16, 5),
+      ...crowd('cat', ['Mèo mướp', 'Mèo tam thể'], [animal('cat')], landmark('hien-nha-hang-xom'), 14, 5),
+      ...crowd('pig', ['Lợn con'], [animal('pig')], landmark('nha-ba'), 12, 4),
+      ...crowd('cow', ['Bò vàng'], [animal('cow')], landmark('canh-dong-gio'), 24, 5),
+    ],
     build: (ctx) => {
       const { world, block, rng, ground, zone, surface } = ctx;
       const b = builders(ctx);

@@ -42,6 +42,8 @@ const interactableSchema = z
     character: z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/).optional(),
     /** A gate to another map: the region it leads to (going through plays that region's next lesson). */
     travel: z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/).optional(),
+    /** A stop of the map's own rides (bus, ferry, cart): where it takes the child on this map. */
+    ride: vec3.optional(),
   })
   .refine((t) => !(t.chapter !== undefined && t.chapters !== undefined), { message: 'a target has one chapter or a list of chapters, not both' })
   .refine((t) => (t.model === undefined) === (t.scale === undefined), { message: 'model and scale go together' })
