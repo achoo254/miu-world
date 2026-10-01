@@ -1,0 +1,48 @@
+{
+  "state": {
+    "project": "Miu World: a voxel learning game for Vietnamese grade-2 children (web, iPad Gen 10), built 100% by AI. The owner's single wish: truly lively so children never get bored. Textbook (SGK) wording must stay verbatim; story text around it is free but every line must be fresh (no repeats).",
+    "today": "2026-10-01",
+    "owner_feedback": "Owner, relaying their child: 'one NPC holds at most 2 quests; make more scenarios and more quest NPCs in each map. The child complains about standing in one place to do the quest too much.'",
+    "facts": [
+      "71 quests (35 forest, 36 school), 17-19 steps each, 614 challenge steps. Each step is hosted by an NPC or a thing placed on the map by data.",
+      "School: on average 9 of 17 steps happen at the quest giver; the longest run of consecutive steps at one spot averages 7.3 (one quest does all 17 at one spot). Forest: 4.9 distinct characters per quest, longest run averages 5.3, max 11.",
+      "16 characters give 3-4 quests each; 23 characters appear (in any role) in more than 2 quests, e.g. the guide parrot Vẹt Xanh in 11.",
+      "Appearances available: 45 NPC looks (24 animals, 18 people, 3 calves) plus a character library that builds chibi characters from parts and shared outfits (4 species built so far; more can be assembled from data). Meeting the cap with about 4 NPCs per quest needs roughly 140 characters.",
+      "Placement and checks are data-driven: new characters are entries in a data file, placed in the quest's zone by a placer; a content check can enforce rules so they never regress."
+    ]
+  },
+  "questions": {
+    "cap_scope": {
+      "stakes": "medium",
+      "instructions": "What does 'one NPC holds at most 2 quests' cap?",
+      "criteria": {
+        "any_role": "A character appears as a quest NPC (giver or any step host) in at most 2 quests in total; things (signs, boards, objects) are not NPCs and are not capped.",
+        "giver_only": "A character gives at most 2 quests; it may still host steps in any number of other quests."
+      }
+    },
+    "spread_rule": {
+      "stakes": "medium",
+      "instructions": "How strictly should a quest's steps be spread over places so the child keeps moving?",
+      "criteria": {
+        "two_in_a_row_four_places": "At most 2 consecutive steps at the same place, and each quest visits at least 4 different places (NPCs or things), checked by content:check.",
+        "three_in_a_row_three_places": "At most 3 consecutive steps at the same place, and each quest visits at least 3 different places."
+      }
+    },
+    "new_npc_looks": {
+      "stakes": "low",
+      "instructions": "How should the ~140 quest characters get their appearance?",
+      "criteria": {
+        "looks_plus_chibi_library": "Use the 45 existing NPC looks with distinct names, and also assemble new chibi characters from the character library (species, colours, outfits) so neighbours rarely look alike.",
+        "existing_looks_only": "Reuse only the 45 existing looks under different names."
+      }
+    },
+    "guide_exempt": {
+      "stakes": "low",
+      "instructions": "Should the forest's guide parrot (Vẹt Xanh, a companion who guides the child in 11 quests) be exempt from the 2-quest cap?",
+      "criteria": {
+        "exempt_one_guide": "Yes: one guide per map may appear in any number of quests as a guide; every other character is capped.",
+        "cap_guide_too": "No: the guide is capped at 2 quests like every other character; other characters take over guiding."
+      }
+    }
+  }
+}

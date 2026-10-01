@@ -1,0 +1,49 @@
+{
+  "model": "jev-1.13.0",
+  "usage": {
+    "input_tokens": 1170,
+    "output_tokens": 164
+  },
+  "results": {
+    "cap_scope": {
+      "stakes": "medium",
+      "choice": "giver_only",
+      "confidence": 0.0,
+      "probabilities": {
+        "giver_only": 0.5,
+        "any_role": 0.5
+      },
+      "decision": "escalate"
+    },
+    "spread_rule": {
+      "stakes": "medium",
+      "choice": "two_in_a_row_four_places",
+      "confidence": 0.55,
+      "probabilities": {
+        "two_in_a_row_four_places": 0.77,
+        "three_in_a_row_three_places": 0.23
+      },
+      "decision": "escalate"
+    },
+    "new_npc_looks": {
+      "stakes": "low",
+      "choice": "looks_plus_chibi_library",
+      "confidence": 1.0,
+      "probabilities": {
+        "looks_plus_chibi_library": 1.0,
+        "existing_looks_only": 0.0
+      },
+      "decision": "auto"
+    },
+    "guide_exempt": {
+      "stakes": "low",
+      "choice": "exempt_one_guide",
+      "confidence": 0.45,
+      "probabilities": {
+        "cap_guide_too": 0.28,
+        "exempt_one_guide": 0.72
+      },
+      "decision": "escalate"
+    }
+  }
+}

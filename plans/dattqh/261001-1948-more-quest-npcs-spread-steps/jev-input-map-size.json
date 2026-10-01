@@ -1,0 +1,25 @@
+{
+  "state": {
+    "project": "Miu World: a voxel learning game for Vietnamese grade-2 children (web, iPad Gen 10), built 100% by AI. The owner's single wish: truly lively so children never get bored.",
+    "today": "2026-10-01",
+    "owner_feedback": "The child complains about standing in one place too long during quests. This batch spreads every quest over at least 4 places (at most 2 steps in a row at one place) and adds about 140 quest characters (each in at most 2 quests). The owner adds: 'the maps may be made bigger to fit the quests and the new NPCs; let Jev decide.'",
+    "facts": [
+      "Both playable maps are 192x48x192 blocks (made 4x bigger today). Performance re-measured today on them: 60 FPS average on an emulated iPad and phone, at most 108 draw calls of 150, first area 1.85 MB of an 8 MB budget, load 2.1-2.7 s.",
+      "Only one quest's places and characters are in the world at a time; quests of the same zone reuse its ground.",
+      "School: each of the 7 topic zones is about 40x40 to 42x60 blocks inside a walled campus; each quest stays in its topic's zone (an earlier decision). Forest: the whole map outside the chapter-1 corner is open to quest places, with 6 meadows.",
+      "Today the places of one quest stand only 2-6 blocks apart, so even a quest that moves between places barely makes the child walk. The placer can try wider gaps first (for example 14, then 10, then 7 blocks).",
+      "Growing a map means regenerating it, re-placing every quest, re-shooting the review pages and re-measuring performance; a bigger map loads more chunk data."
+    ]
+  },
+  "questions": {
+    "map_size": {
+      "stakes": "medium",
+      "instructions": "Should the maps grow for this batch?",
+      "criteria": {
+        "grow_where_crowded": "Keep 192x192 first and widen the gaps between a quest's places (14, 10, 7 blocks tried in order); after placing, enlarge a map (school zones or forest) only if its quests' places cannot keep at least 10 blocks apart, then re-measure performance.",
+        "keep_size": "Keep both maps at 192x192 whatever happens; accept narrower gaps where a zone is crowded.",
+        "grow_both_now": "Grow both maps to 256x256 now (78% more ground), give every zone and meadow more room, regenerate and re-measure."
+      }
+    }
+  }
+}

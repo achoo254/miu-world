@@ -1,0 +1,20 @@
+{
+  "model": "jev-1.13.0",
+  "usage": {
+    "input_tokens": 904,
+    "output_tokens": 51
+  },
+  "results": {
+    "map_size": {
+      "stakes": "medium",
+      "choice": "grow_where_crowded",
+      "confidence": 0.99,
+      "probabilities": {
+        "keep_size": 0.01,
+        "grow_both_now": 0.0,
+        "grow_where_crowded": 0.99
+      },
+      "decision": "auto"
+    }
+  }
+}

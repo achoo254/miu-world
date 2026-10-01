@@ -13,6 +13,7 @@
     "assets:check": "tsx tools/assets/check-assets.ts",
     "content:check": "tsx tools/content/check-content.ts",
     "content:gaps": "tsx tools/content/content-gaps.ts",
+    "content:spread": "tsx tools/content/quest-spread.ts",
     "sgk:review": "tsx tools/sgk/review-quests.ts",
     "sgk:acceptance": "tsx tools/sgk/acceptance-page.ts",
     "private:sync": "tsx tools/private/sync-private.ts",
