@@ -5,16 +5,17 @@
 // rendered into the Home / world-map image (`pnpm assets:home`), never played. Each region gets a landmark where its label goes; the label's place
 // on the image comes from the shared camera (packages/voxel/src/world-overview.ts) and is written into
 // content/world/regions.json.
-// Output: assets/generated/world/the-gioi/{chunks.bin, entities.json}
-import { mkdir, readFile, writeFile } from 'node:fs/promises';
+// Output: assets/generated/world/the-gioi/{regions/, horizon.bin, entities.json, stage-decor.json}
+import { readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { blockTableSchema } from '../../packages/voxel/src/block-table';
-import { VoxelWorld, encodeWorld } from '../../packages/voxel/src/chunk-format';
+import { VoxelWorld } from '../../packages/voxel/src/chunk-format';
 import type { WorldEntities } from '../../packages/voxel/src/world-entities';
 import { WORLD_OVERVIEW_MAP, projectToImage, type Vec3 } from '../../packages/voxel/src/world-overview';
 import { RegionCatalog } from '../../packages/schema/src/region';
 import { ASSETS_DIR, REPO_ROOT, readJson } from '../assets/asset-lib';
+import { writeMap } from './map-kit';
 import { modelScales } from './model-scales';
 import { createRng, hashSeed } from './noise';
 import { placeCastle, placeHouse, placeMountain, placeSkyBridge } from './structures/buildings';
@@ -274,14 +275,11 @@ export function withHotspots(regionsJson: string, hotspots: Record<string, { x: 
 
 async function main(): Promise<void> {
   const { world, entities, decor } = await generateWorldOverview();
-  const bin = encodeWorld(world);
-  await mkdir(OUT_DIR, { recursive: true });
-  await writeFile(path.join(OUT_DIR, 'chunks.bin'), bin);
-  await writeFile(path.join(OUT_DIR, 'entities.json'), `${JSON.stringify(entities, null, 2)}\n`);
+  await writeMap(world, entities);
   await writeFile(DECOR_PATH, `${JSON.stringify(stageDecor(decor), null, 2)}\n`);
   const regionsPath = path.join(REPO_ROOT, 'content/world/regions.json');
   await writeFile(regionsPath, withHotspots(await readFile(regionsPath, 'utf8'), regionHotspots(entities)));
-  console.log(`${MAP_ID}: ${world.size.join('x')} blocks, chunks.bin ${bin.byteLength} bytes, ${entities.props.length} props; region labels updated in content/world/regions.json`);
+  console.log('region labels updated in content/world/regions.json');
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {

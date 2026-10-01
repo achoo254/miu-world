@@ -3,7 +3,7 @@
 // the rice fields (chapter 1), the meadow by the river with the flower garden and its beehives (chapter 2).
 // North bank: the landing with its boats and the class under the banyan (chapter 3), the lotus marsh and the
 // village football field (chapter 4). Tiled-roof houses line the lanes, bamboo hedges and trees fill the rest.
-// Output: assets/generated/world/lang-ven-song/{chunks.bin, entities.json}
+// Output: assets/generated/world/lang-ven-song/{regions/, horizon.bin, entities.json}
 import { PACK, runIfMain } from './map-kit';
 import { placeHouse } from './structures/buildings';
 import { placeAncientTree } from './structures/tree';

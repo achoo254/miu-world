@@ -1,13 +1,14 @@
 // What every region map generator shares, so a new map is a small file that lays out its scene, its
 // places and its buildings: block ids from content/blocks.json, the rolling ground with rim hills, soil
 // columns, scattered trees, standing heights, props and model scales, the quest targets placed from the
-// catalogues (place-quest-targets.ts), and writing chunks.bin + entities.json.
-// Output of a map: assets/generated/world/<map id>/{chunks.bin, entities.json}
-import { mkdir, writeFile } from 'node:fs/promises';
+// catalogues (place-quest-targets.ts), and writing the map's region files, horizon and entities.json.
+// Output of a map: assets/generated/world/<map id>/{regions/r<x>-<z>.bin, horizon.bin, entities.json}
+import { mkdir, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { blockTableSchema } from '../../packages/voxel/src/block-table';
-import { encodeWorld, type VoxelWorld } from '../../packages/voxel/src/chunk-format';
+import type { VoxelWorld } from '../../packages/voxel/src/chunk-format';
+import { buildHorizon, encodeHorizon, encodeRegions, regionFile } from '../../packages/voxel/src/region-format';
 import type { Interactable, WorldEntities } from '../../packages/voxel/src/world-entities';
 import { ASSETS_DIR, REPO_ROOT, readJson } from '../assets/asset-lib';
 import { placeQuestTargets, readQuests, targetUses, WALK_GAP, type PlacementMap } from './chapters/place-quest-targets';
@@ -193,16 +194,26 @@ export async function placeRegionTargets(options: {
 /** Where a generated map is written. */
 export const mapDir = (mapId: string): string => path.join(ASSETS_DIR, 'generated/world', mapId);
 
-/** Writes chunks.bin and entities.json of a map and logs its size. */
+/** The files a map is written as (region-format.ts): every region, the horizon, and entities.json. */
+export function mapFiles(world: VoxelWorld, entities: WorldEntities): Array<{ file: string; bytes: Uint8Array | string }> {
+  return [
+    ...encodeRegions(world).map((r) => ({ file: regionFile(r.rx, r.rz), bytes: r.bytes })),
+    { file: 'horizon.bin', bytes: encodeHorizon(buildHorizon(world)) },
+    { file: 'entities.json', bytes: `${JSON.stringify(entities, null, 2)}\n` },
+  ];
+}
+
+/** Writes a map's region files, horizon and entities (replacing what was there) and logs its size. */
 export async function writeMap(world: VoxelWorld, entities: WorldEntities): Promise<void> {
-  const bin = encodeWorld(world);
   const dir = mapDir(entities.id);
-  await mkdir(dir, { recursive: true });
-  await writeFile(path.join(dir, 'chunks.bin'), bin);
-  await writeFile(path.join(dir, 'entities.json'), `${JSON.stringify(entities, null, 2)}\n`);
+  await rm(dir, { recursive: true, force: true });
+  await mkdir(path.join(dir, 'regions'), { recursive: true });
+  const files = mapFiles(world, entities);
+  for (const f of files) await writeFile(path.join(dir, f.file), f.bytes);
+  const bytes = files.filter((f) => f.file.startsWith('regions/')).reduce((n, f) => n + f.bytes.length, 0);
   const solid = world.data.reduce((n, id) => n + (id === 0 ? 0 : 1), 0);
   console.log(
-    `${entities.id}: ${world.size.join('x')} blocks, ${solid} non-air, chunks.bin ${bin.byteLength} bytes, ` +
+    `${entities.id}: ${world.size.join('x')} blocks, ${solid} non-air, ${files.length - 2} regions ${bytes} bytes, ` +
       `${entities.props.length} props, ${entities.interactables.length} interactables, ${entities.ambients?.length ?? 0} ambients`,
   );
 }

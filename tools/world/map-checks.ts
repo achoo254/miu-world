@@ -1,26 +1,31 @@
 // Checks every region map's test runs (map-kit.ts builds the maps): the generator is deterministic and its
 // committed output is current, every quest target stands on the ground, and the child can walk from the
 // spawn to every target.
-import { readFile } from 'node:fs/promises';
+import { readdir, readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { expect } from 'vitest';
 import { encodeWorld, type VoxelWorld } from '../../packages/voxel/src/chunk-format';
 import { worldEntitiesSchema, type WorldEntities } from '../../packages/voxel/src/world-entities';
-import { mapDir } from './map-kit';
+import { mapDir, mapFiles } from './map-kit';
 import { reachable, walkSolid } from './walkable';
 
 type Generate = () => Promise<{ world: VoxelWorld; entities: WorldEntities }>;
 
-/** Two runs give the same bytes, and they are the committed chunks.bin and entities.json (else rerun the generator). */
+/** Two runs give the same blocks, and the map's files are the committed ones (else rerun the generator). */
 export async function expectCommittedOutput(generate: Generate): Promise<void> {
   const first = await generate();
   const second = await generate();
-  const bytes = Buffer.from(encodeWorld(first.world));
-  expect(Buffer.from(encodeWorld(second.world)).equals(bytes)).toBe(true);
+  expect(Buffer.from(encodeWorld(second.world)).equals(Buffer.from(encodeWorld(first.world)))).toBe(true);
   expect(second.entities).toEqual(first.entities);
   const dir = mapDir(first.entities.id);
-  expect(bytes.equals(await readFile(path.join(dir, 'chunks.bin'))), `run the ${first.entities.id} generator after changing it`).toBe(true);
-  expect(JSON.parse(await readFile(path.join(dir, 'entities.json'), 'utf8'))).toEqual(first.entities);
+  const files = mapFiles(first.world, first.entities);
+  expect((await readdir(path.join(dir, 'regions'))).sort(), 'the committed regions are this map\'s').toEqual(files.filter((f) => f.file.startsWith('regions/')).map((f) => f.file.slice(8)).sort());
+  for (const f of files) {
+    const committed = await readFile(path.join(dir, f.file));
+    const message = `${f.file}: run the ${first.entities.id} generator after changing it`;
+    if (typeof f.bytes === 'string') expect(JSON.parse(committed.toString('utf8')), message).toEqual(first.entities);
+    else expect(committed.equals(Buffer.from(f.bytes)), message).toBe(true);
+  }
 }
 
 /** The entities parse as version 2; every target and the spawn stand in air on a solid block. */

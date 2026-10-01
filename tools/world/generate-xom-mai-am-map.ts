@@ -3,7 +3,7 @@
 // flower garden and Chíp's lane (chapter 1), the porches under the moon and the warm stone den at the foot
 // of the hill (chapter 2). North, round a big lotus lake: the old hut on the shore and the slope up to
 // grandpa's house (chapter 3), the lotus lake's far bank and the windy field of maize and carrots (chapter 4).
-// Output: assets/generated/world/xom-mai-am/{chunks.bin, entities.json}
+// Output: assets/generated/world/xom-mai-am/{regions/, horizon.bin, entities.json}
 import { PACK, runIfMain } from './map-kit';
 import { placeHouse } from './structures/buildings';
 import { generateZoneMap, type Zone } from './zone-map';

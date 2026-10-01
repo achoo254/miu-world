@@ -4,7 +4,7 @@
 // stained-glass windows, the picture gallery. Chapter 2, the great hall: a long stone hall with the stage,
 // the wings and the backstage. Chapter 3, outside the gate: the suspension bridge over the moat, the willow
 // on its bank and the meadow before the walls. Banners on the towers.
-// Output: assets/generated/world/lau-dai/{chunks.bin, entities.json}
+// Output: assets/generated/world/lau-dai/{regions/, horizon.bin, entities.json}
 import { PACK, runIfMain } from './map-kit';
 import { placeHouse } from './structures/buildings';
 import { generateZoneMap, type Zone } from './zone-map';

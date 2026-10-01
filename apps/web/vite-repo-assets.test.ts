@@ -14,7 +14,8 @@ describe('runtime asset selection for the web build', async () => {
   it('ships what the game loads: manifest, world, atlas, characters, fonts and placed models', () => {
     for (const p of [
       'manifest.json',
-      'generated/world/forest-ch1/chunks.bin',
+      'generated/world/forest-ch1/regions/r0-0.bin',
+      'generated/world/forest-ch1/horizon.bin',
       'generated/world/forest-ch1/entities.json',
       'generated/atlas/atlas.png',
       'generated/characters/miu-cat.glb',

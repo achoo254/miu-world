@@ -3,7 +3,7 @@
 // patch, a fisher on the stream bank, and animals where they belong (deer in the north-east meadow,
 // a fox by its den, a hog under mushrooms, chicks by the garden, a bunny in the west, a crab on the
 // sand, fish in the stream, bees at the flowers, parrots over the trees). Spots are the nearest open
-// grass to hand-picked anchors, found on the finished terrain so chunks.bin never changes; every
+// grass to hand-picked anchors, found on the finished terrain so the blocks never change; every
 // villager spot is a straight, clear walk from home, away from quest targets and off the quest path.
 import type { Ambient, AmbientRoutine } from '../../packages/voxel/src/world-entities';
 import type { VoxelWorld } from '../../packages/voxel/src/chunk-format';

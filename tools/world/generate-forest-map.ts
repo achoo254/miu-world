@@ -2,7 +2,7 @@
 // a wooden bridge, stepping stones, a stone path, scattered trees, the ancient tree, plus the quest's
 // interactables (ids match the `target`s in content/quests/forest-ch1.json) and decorative props; the
 // places of the forest's Tiếng Việt lessons (chapters 2–5) are placed from the catalogues.
-// Output: assets/generated/world/forest-ch1/{chunks.bin, entities.json}
+// Output: assets/generated/world/forest-ch1/{regions/, horizon.bin, entities.json}
 import { VoxelWorld } from '../../packages/voxel/src/chunk-format';
 import type { WorldEntities } from '../../packages/voxel/src/world-entities';
 import { LIFE_MODEL_ANIMATION, LIFE_MODEL_HEIGHT, QUEST_CLEARANCE, placeForestLife } from './forest-life';

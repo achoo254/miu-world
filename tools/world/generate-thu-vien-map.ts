@@ -4,7 +4,7 @@
 // garden with its flat stone by a little stream. Chapter 2, the golden-leaf festival yard in front of the
 // doors: golden trees, a leaf stage, a round pool and the contest stations. Chapter 3, the clock tower
 // beside the library with the calendar room. Cottages with coloured roofs and lamp-lit streets round it.
-// Output: assets/generated/world/thu-vien/{chunks.bin, entities.json}
+// Output: assets/generated/world/thu-vien/{regions/, horizon.bin, entities.json}
 import { PACK, runIfMain } from './map-kit';
 import { placeHouse } from './structures/buildings';
 import { placeCottage, placeFountain } from './structures/countryside';

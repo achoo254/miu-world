@@ -266,21 +266,41 @@ export class Game {
     const data = await loadWorldData(registry, mapId);
     if (this.disposed) return;
     stepLoaded();
-    const world = await createWorldRenderer(data);
+    const world = await createWorldRenderer(data, { sky: SKY_HORIZON, horizon: quality.horizon });
     if (this.disposed) return;
-    stepLoaded();
     world.setViewDistance(quality.viewDistance);
-    world.group.traverse((o) => (o.receiveShadow = quality.shadows));
+    world.group.userData.receiveShadow = quality.shadows;
     scene.add(world.group);
+    this.cleanups.push(() => world.dispose());
+    // The horizon reaches across the whole map: the camera sees that far, the sky dome stands beyond it.
+    const [sx, , sz] = data.world.size;
+    if (quality.horizon) {
+      camera.far = Math.max(camera.far, Math.hypot(sx, sz) + 40);
+      camera.updateProjectionMatrix();
+      sky.scale.setScalar(camera.far / (quality.viewDistance + 20) * 0.95);
+    }
 
     const blocks = blockLookup(data.atlas.blocks);
-    const [sx, , sz] = data.world.size;
     const solid: SolidAt = (x, y, z) => {
       if (x < 0 || z < 0 || x >= sx || z >= sz || y < 0) return true; // invisible walls at the map edge
+      // A region still on its way is a wall too: the child never walks off into blocks not there yet.
+      if (!data.regions.loadedAt(x, z)) return true;
       return blocks(data.world.get(x, y, z))?.solid ?? false;
     };
 
     const entities = entitiesForChapter(data.entities, this.options.chapter ?? 1, this.options.quest);
+    // Where the child starts (a URL spot, next to a target, where she left off, else the spawn): its
+    // regions and the patches in view are loaded and drawn before the first frame.
+    const spawnAtParam = params.get('spawnAt');
+    const start =
+      spawnAtParam?.split(',').map(Number).filter(Number.isFinite).length === 3
+        ? spawnAtParam.split(',').map(Number)
+        : (entities.interactables.find((t) => (spawnAtParam === 'npc' ? t.kind === 'npc' : t.id === spawnAtParam))?.position ??
+          (spawnAtParam === null ? this.options.savedSpot?.position : undefined) ??
+          entities.spawn.position);
+    await world.settle(start[0] ?? 0, start[2] ?? 0);
+    if (this.disposed) return;
+    stepLoaded();
     const outfitParam = params.get('outfit');
     const outfit = outfitParam === 'none' ? [] : outfitParam ? outfitParam.split(',') : this.options.outfit;
     /** Where a walker stands over a column: the first open cell with ground under it, searched near its height. */
@@ -339,7 +359,7 @@ export class Game {
     const controller = new PlayerController(solid, entities.spawn.position, entities.spawn.yaw, liquid);
     const rescue = new RescueWatch();
     // Dev/E2E switch: start next to a target (`npc` = the first NPC), or at `x,y,z`, instead of the spawn point.
-    const spawnAt = params.get('spawnAt');
+    const spawnAt = spawnAtParam;
     const spawnTarget = entities.interactables.find((t) => (spawnAt === 'npc' ? t.kind === 'npc' : t.id === spawnAt));
     const spawnPoint = spawnAt?.split(',').map(Number) ?? [];
     if (spawnPoint.length === 3 && spawnPoint.every(Number.isFinite)) {
@@ -385,6 +405,8 @@ export class Game {
     if (reviewShot) {
       // Still pictures show the whole map; a live shot frames one character and keeps the frame's budget.
       world.setViewDistance(reviewShot.live ? quality.viewDistance : Infinity);
+      if (!reviewShot.live) await world.settle(0, 0);
+      if (this.disposed) return;
       sky.scale.setScalar(3);
       for (const el of [dom.stats, dom.joystick, dom.run.parentElement]) if (el) el.hidden = true;
       if (reviewShot.backdrop) {
@@ -441,7 +463,7 @@ export class Game {
       return [x + offset, y + 0.5, z + offset];
     };
 
-    overlay.stats.meshMs = Math.round(world.meshMs);
+    overlay.stats.meshMs = Math.round(world.meshMs());
     overlay.stats.worker = world.usedWorker;
     const timer = new Timer();
     timer.connect(document);

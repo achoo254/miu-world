@@ -22,7 +22,9 @@ export async function renderWorldOverview(mapId: string): Promise<void> {
 
   const registry = await AssetRegistry.load();
   const data = await loadWorldData(registry, mapId);
-  const world = await createWorldRenderer(data);
+  const world = await createWorldRenderer(data, { sky: '#dff2ff', horizon: false });
+  world.setViewDistance(Infinity);
+  await world.settle(0, 0);
   world.group.traverse((o) => {
     o.castShadow = true;
     o.receiveShadow = true;

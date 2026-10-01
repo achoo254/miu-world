@@ -3,7 +3,7 @@
 // vegetables, maize and pumpkins, the granary, the tool workshop, the hen house and the pigsty, the fish
 // pond with its little bridge, the orchard, the drying yard and the cart track where the produce carts
 // wait. Cows graze in the paddock; pink blossom trees and hedges round the fields.
-// Output: assets/generated/world/nong-trai/{chunks.bin, entities.json}
+// Output: assets/generated/world/nong-trai/{regions/, horizon.bin, entities.json}
 import { PACK, runIfMain } from './map-kit';
 import { placeHouse } from './structures/buildings';
 import { placeCottage, placeWindmill } from './structures/countryside';

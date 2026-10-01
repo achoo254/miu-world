@@ -5,7 +5,7 @@
 // the tug-of-war ground. East, the weighing row (chapter 2): the scale stalls, the drinks counter with its
 // fish tank, the sweet-soup kitchen in the middle of the market and the goods store by the canal landing.
 // Cottages with coloured roofs ring the square; a lamp-lit main road runs from the market gate to the canal
-// and its dragon bridge. Output: assets/generated/world/cho-phien/{chunks.bin, entities.json}
+// and its dragon bridge. Output: assets/generated/world/cho-phien/{regions/, horizon.bin, entities.json}
 import { PACK, runIfMain } from './map-kit';
 import { placeHouse } from './structures/buildings';
 import { placeCottage, placeStall } from './structures/countryside';

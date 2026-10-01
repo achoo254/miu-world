@@ -5,7 +5,7 @@
 // staircase between them), and around it one zone per Toán topic: the canteen, the playground by the toy
 // workshop, the courtyard under the clock tower, the science garden with its greenhouse, the art yard, the
 // sports hall with the basketball court. Houses and a river lie outside the wall. Quest characters stand in
-// their topic's zone. Output: assets/generated/world/truong-hoc/{chunks.bin, entities.json}
+// their topic's zone. Output: assets/generated/world/truong-hoc/{regions/, horizon.bin, entities.json}
 import { VoxelWorld } from '../../packages/voxel/src/chunk-format';
 import type { WorldEntities } from '../../packages/voxel/src/world-entities';
 import { columnsOf, fillColumn, heightField, loadBlocks, MAP_CHUNKS, mapModels, PACK, placeRegionTargets, rollingHeight, runIfMain, scatterTrees, standHeight } from './map-kit';
