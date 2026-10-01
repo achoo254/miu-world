@@ -49,11 +49,20 @@ async function loadCreator(): Promise<CreatorData> {
   };
 }
 
-/** `current`: the species the child's character already is, marked on its card. */
-function SpeciesStep({ current, onPick }: { current: string; onPick: (species: string) => void }) {
+/**
+ * `current`: the species the child's character already is, marked on its card. `switching`: the child
+ * already plays, so the step says that a new animal keeps everything earned (progress belongs to the
+ * profile, not the character).
+ */
+function SpeciesStep({ current, switching, onPick }: { current: string; switching: boolean; onPick: (species: string) => void }) {
   return (
     <section className="panel creator-species" data-id="creator-species" aria-labelledby="creator-species-title">
       <h1 id="creator-species-title">Chọn nhân vật của bé</h1>
+      {switching ? (
+        <p className="hint" data-id="creator-keeps-progress">
+          Đổi bạn khác thoải mái nhé: cấp, sao, xu, đồ trong ba lô và nhiệm vụ của bé vẫn giữ nguyên.
+        </p>
+      ) : null}
       <ul className="species-grid">
         {SPECIES.map((s) => (
           <li key={s.id}>
@@ -333,7 +342,7 @@ export function CreatorScreen() {
             </p>
           ) : null}
           {!data && !loadError ? <p role="status">Đang tải…</p> : null}
-          {data && species === null ? <SpeciesStep current={data.character.species} onPick={setSpecies} /> : null}
+          {data && species === null ? <SpeciesStep current={data.character.species} switching={!isFreshCharacter(data.character)} onPick={setSpecies} /> : null}
           {data && draft && species !== null ? (
             <OutfitStep data={data} store={store} species={species} draft={draft} onDraft={setDraft} onChangeSpecies={() => setSpecies(null)} />
           ) : null}

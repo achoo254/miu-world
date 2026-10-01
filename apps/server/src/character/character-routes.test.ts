@@ -115,3 +115,16 @@ describe('PUT /api/character pet', () => {
     expect((await put(agent, { pet: 'rong-lua' }).expect(400)).body.error).toBe('invalid-pet');
   });
 });
+
+describe('PUT /api/character species', () => {
+  it('switches to another animal and keeps every reward, item and quest the child earned', async () => {
+    const { agent } = await playingChild();
+    await finishQuestA(agent);
+    const before = { progress: (await agent.get('/api/progress').expect(200)).body, quests: (await agent.get('/api/quests').expect(200)).body };
+    const switched = await agent.put('/api/character').send({ name: 'Miu', equipped: [], species: 'fox' }).expect(200);
+    expect(switched.body.species).toBe('fox');
+    expect((await agent.get('/api/progress').expect(200)).body).toEqual(before.progress);
+    expect((await agent.get('/api/quests').expect(200)).body).toEqual(before.quests);
+    expect(before.progress.xp).toBeGreaterThan(0);
+  });
+});

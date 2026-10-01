@@ -23,7 +23,7 @@ function SettingsDialog({ onClose }: { onClose: () => void }) {
         <SoundToggle dataId="home-settings-sound" />
         <Link to="/create" className={buttonClass('secondary', { block: true })} data-id="home-settings-character">
           <Icon name="catFace" size={32} />
-          Sửa nhân vật
+          Đổi nhân vật
         </Link>
         <Link to="/profiles" className={buttonClass('ghost', { block: true })} data-id="home-settings-profiles">
           Đổi hồ sơ
