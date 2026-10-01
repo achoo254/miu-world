@@ -5,10 +5,10 @@
   "title": "Tiếng gọi trên đồng cỏ khô",
   "status": "draft",
   "lesson": "tv2-t1-b17",
-  "summary": "Đồng cỏ khô nứt nẻ, Thỏ Tí đi tìm cỏ non rồi quên đường về. {name} cùng Bò Sữa Mơ đọc bài thơ Gọi bạn, lần theo dấu chân và kể lại chuyện đôi bạn bê vàng, dê trắng để gọi Thỏ Tí trở về.",
+  "summary": "Đồng cỏ khô giòn như bánh đa, Thỏ Tí đi hái cỏ non rồi quên béng đường về. {name} cùng Bò Sữa Mơ đọc bài thơ Gọi bạn, lần theo dấu chân tí xíu và kể chuyện bê vàng, dê trắng thật to để gọi Thỏ Tí trở về.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Bò Sữa Mơ (lo cho bạn), Thỏ Tí (đi tìm cỏ non rồi lạc đường), Vẹt Xanh",
+    "who": "Bò Sữa Mơ (hiền khô, gọi bạn đến khản cả giọng), Thỏ Tí (hái cỏ non rồi quên đường về), Vẹt Xanh (lắm lời)",
     "where": "Đồng cỏ khô hạn ở rìa Khu rừng bí mật, tấm bảng gỗ khắc bài thơ và vách đá có tranh bên suối cạn",
     "goal": "Tìm và gọi Thỏ Tí trở về với Bò Sữa Mơ",
     "play": "Lần dấu chân, nói, đọc thơ, chọn nhiều đáp án, điền từ, xếp dòng thơ, xếp tranh, kể chuyện, phiếu viết",
@@ -65,32 +65,32 @@
       "lines": [
         {
           "speaker": "Bò Sữa Mơ",
-          "text": "{name} ơi, đồng cỏ nhà tớ khô nứt cả rồi, chẳng còn lấy một ngọn cỏ non."
+          "text": "Ò… ò… {name} ơi, đồng cỏ nhà tớ khô giòn như bánh đa, giẫm lên kêu rau ráu."
         },
         {
           "speaker": "Bò Sữa Mơ",
-          "text": "Sáng nay Thỏ Tí bảo đi tìm cỏ non cho tớ, đến giờ vẫn chưa thấy về."
+          "text": "Sáng nay Thỏ Tí hứa đi hái cỏ non về chia tớ. Trưa trật rồi mà chưa thấy cái tai dài nào ló về."
         },
         {
           "speaker": "Vẹt Xanh",
-          "text": "Thỏ Tí đãng trí lắm, chắc lại quên mất đường về rồi!"
+          "text": "Thỏ Tí ấy à? Đãng trí, đãng trí! Có hôm bạn ấy đi tìm củ cà rốt đang cầm ngay trên tay!"
         },
         {
           "speaker": "Bò Sữa Mơ",
-          "text": "Cậu giúp tớ tìm bạn ấy nhé? Tớ gọi mãi mà khản cả giọng."
+          "text": "Tớ gọi mãi, giờ giọng chỉ còn kêu được “ò… ò…” bé tí. Cậu giúp tớ tìm bạn ấy nhé?"
         }
       ],
       "choices": [
         {
-          "text": "Mình cùng đi tìm Thỏ Tí ngay!",
-          "reply": "Cảm ơn cậu! Ta đi về phía mấy bụi cỏ cháy vàng kia."
+          "text": "Đi thôi, mình sẽ tìm Thỏ Tí cho bằng được!",
+          "reply": "Ò… cảm ơn cậu! Mình đi về phía mấy bụi cỏ cháy vàng kia, chậm thôi kẻo tớ theo không kịp."
         }
       ]
     },
     {
       "id": "lan-theo-dau-chan",
-      "title": "Lần theo dấu chân Thỏ Tí",
-      "goTo": "Lần theo dấu chân dọc bờ suối cạn",
+      "title": "Dấu chân tí xíu bên suối",
+      "goTo": "Lần theo dấu chân Thỏ Tí dọc bờ suối cạn",
       "kind": "search",
       "targets": [
         "tv2-t10-dau-chan-tho",
@@ -101,14 +101,14 @@
     {
       "id": "ke-ve-nguoi-ban",
       "title": "Kể Bò nghe về một người bạn",
-      "goTo": "Quay về đồng cỏ khô kể Bò nghe",
+      "goTo": "Quay về đồng cỏ khô, Bò Sữa Mơ đang đứng chờ",
       "kind": "speak",
       "target": "bo-sua-mo",
-      "prompt": "Vừa đi, Bò Sữa Mơ vừa kể về Thỏ Tí rồi quay sang hỏi {name}: Nói về một người bạn của em.",
+      "prompt": "Bò Sữa Mơ vừa nhai cọng rơm khô vừa kể: Thỏ Tí là bạn thân nhất của tớ, nhảy một cái cao hơn cả hàng rào! Đến lượt cậu nhé. Nói về một người bạn của em.",
       "hints": [
-        "Bạn ấy tên là gì, học cùng lớp hay ở gần nhà em?",
-        "Em và bạn ấy hay cùng nhau làm những gì?",
-        "Em quý nhất điều gì ở người bạn ấy?"
+        "Bạn ấy tên là gì? Ngồi cùng bàn hay ở gần nhà em?",
+        "Hai bạn hay rủ nhau chơi trò gì nhất?",
+        "Điều gì ở bạn ấy làm em quý ơi là quý?"
       ],
       "curriculumRef": [
         "tv2-t1-b17-doc-kd"
@@ -117,7 +117,7 @@
     {
       "id": "doc-bai-tho",
       "title": "Đọc bài thơ trên bảng gỗ",
-      "goTo": "Đến bảng gỗ khắc bài thơ đọc bài Gọi bạn",
+      "goTo": "Đến bảng gỗ khắc bài thơ, đọc bài Gọi bạn cho Bò nghe",
       "kind": "read",
       "target": "tv2-t10-bang-go-goi-ban",
       "textRef": "goi-ban",
@@ -157,14 +157,14 @@
       },
       "feedback": {
         "right": [
-          "Đúng rồi, chuyện có từ xa xưa lắm!",
-          "Chuẩn, đôi bạn sống giữa rừng xanh sâu thẳm.",
-          "Bò Sữa Mơ vẫy đuôi: cậu đọc thơ giỏi ghê!"
+          "Ò… ò… đúng rồi! Chuyện có từ xa xưa lắm, xưa hơn cả ông cố của tớ.",
+          "Vẹt Xanh vỗ cánh phành phạch: rừng xanh sâu thẳm, sâu thẳm! Chuẩn chuẩn!",
+          "Bò Sữa Mơ vẫy đuôi tít như chong chóng: {name} đọc thơ hay ghê!"
         ],
         "wrong": [
-          "Khổ thơ đầu có câu trả lời đấy, đọc lại nhé.",
-          "Bài thơ không nhắc tới đêm trăng hay bờ biển đâu.",
-          "Dòng thơ nào bắt đầu bằng \"Tự xa xưa\" nhỉ?"
+          "Ơ, mùa hè năm ngoái thì gần quá! Dòng thơ đầu tiên nói chuyện xưa lắm cơ.",
+          "Bài thơ chẳng có đêm trăng hay bờ biển nào đâu, tìm chữ “rừng” thử xem.",
+          "Suýt trúng rồi! Hai dòng đầu bài thơ giấu cả khi nào lẫn ở đâu đấy."
         ]
       }
     },
@@ -174,7 +174,7 @@
       "kind": "challenge",
       "mechanic": "multi-select",
       "target": "tv2-t10-bang-go-goi-ban",
-      "prompt": "Bò Sữa Mơ nhìn đồng cỏ nứt nẻ mà thở dài: y hệt trong bài thơ! Chuyện gì xảy ra khiến bê vàng phải lang thang đi tìm cỏ?",
+      "prompt": "Bò Sữa Mơ nhìn đồng cỏ nứt nẻ, thở dài thườn thượt: ò… y hệt trong bài thơ! Chuyện gì xảy ra khiến bê vàng phải lang thang đi tìm cỏ?",
       "choices": [
         {
           "id": "han-han",
@@ -221,14 +221,14 @@
       },
       "feedback": {
         "right": [
-          "Đủ cả ba điều rồi, giỏi quá!",
-          "Đúng thế, rừng khô hạn nên chẳng còn cỏ.",
-          "Bò Sữa Mơ gật gù: đồng cỏ của tớ cũng khô như thế."
+          "Đủ cả ba điều rồi! Bò Sữa Mơ gật gù làm cái chuông cổ kêu leng keng.",
+          "Đúng thế, rừng khô khốc nên chẳng còn ngọn cỏ nào cho bê vàng gặm.",
+          "Vẹt Xanh khoe từ mới: “hạn hán”, “hạn hán”! Cậu chọn chuẩn quá!"
         ],
         "wrong": [
-          "Hình như còn thiếu một điều, đọc lại khổ hai nhé.",
-          "Trong bài, đôi bạn có giận nhau đâu nào.",
-          "Năm ấy rừng mong mưa lắm, làm gì có mưa to."
+          "Hình như còn sót một điều, đọc lại hai dòng đầu khổ thơ thứ hai nhé.",
+          "Ơ kìa, trong bài đôi bạn có giận nhau bao giờ đâu nào.",
+          "Năm ấy rừng mong mưa đỏ cả mắt, làm gì có mưa to ngập rừng."
         ]
       }
     },
@@ -273,25 +273,25 @@
       },
       "feedback": {
         "right": [
-          "Chính xác, dê trắng chạy khắp nẻo tìm bạn.",
-          "Thương bạn quá nên dê trắng gọi mãi không thôi.",
-          "{name} tìm đúng những dòng thơ cuối rồi!"
+          "Chính xác! Dê trắng chạy khắp nẻo, chạy mỏi cả bốn cái móng.",
+          "Thương bạn quá nên dê trắng gọi mãi không thôi, Bò Sữa Mơ sụt sịt theo.",
+          "{name} tìm trúng bốn dòng thơ cuối rồi, giỏi như thám tử!"
         ],
         "wrong": [
-          "Dê trắng có ngồi chờ mưa đâu, đọc lại nhé.",
-          "Bạn ấy đi tìm bê chứ không tìm cỏ cho mình.",
-          "Dò lại bốn dòng thơ cuối cùng xem sao."
+          "Dê trắng không ngồi chờ mưa đâu, bạn ấy sốt ruột lắm cơ.",
+          "Dê trắng đi tìm bê chứ đâu tìm cỏ cho riêng mình.",
+          "Dò lại từ dòng “Dê trắng thương bạn quá” trở xuống xem sao."
         ]
       }
     },
     {
       "id": "tam-trang-de-trang",
       "title": "Tâm trạng của dê trắng",
-      "goTo": "Về đồng cỏ khô, Bò Sữa Mơ muốn hỏi thêm",
+      "goTo": "Về đồng cỏ khô ngồi cạnh Bò Sữa Mơ",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "target": "bo-sua-mo",
-      "prompt": "Bò Sữa Mơ khẽ nói: gọi Thỏ Tí mãi không thấy, tớ cũng giống dê trắng quá. Tìm từ ngữ thể hiện tâm trạng của dê trắng khi không thấy bạn trở về.",
+      "prompt": "Bò Sữa Mơ sụt sịt, nước mắt to như hạt đậu: Thỏ Tí đi lâu quá, tớ thấy mình giống dê trắng ghê. Tìm từ ngữ thể hiện tâm trạng của dê trắng khi không thấy bạn trở về.",
       "template": "Dê trắng {{tam-trang}}\nChạy khắp nẻo tìm bê",
       "blanks": [
         {
@@ -334,25 +334,25 @@
       },
       "feedback": {
         "right": [
-          "Đúng rồi, dê trắng thương bạn quá!",
-          "Điền chuẩn từ ngữ trong bài thơ luôn.",
-          "Bò Sữa Mơ rưng rưng: tớ cũng thương Thỏ Tí như thế."
+          "Đúng rồi, dê trắng thương bạn quá! Bò Sữa Mơ thơm lên má {name} một cái ướt nhẹp.",
+          "Điền chuẩn từ ngữ trong bài thơ luôn, không lệch một li.",
+          "Ò… ò… tớ cũng thương Thỏ Tí y như thế đấy."
         ],
         "wrong": [
-          "Dê trắng có giận bê vàng đâu nào.",
-          "Bạn lạc mất rồi, dê trắng vui sao được?",
-          "Đọc lại dòng thơ ngay trước \"Chạy khắp nẻo tìm bê\" nhé."
+          "Dê trắng có giận bê vàng chút xíu nào đâu.",
+          "Bạn lạc mất rồi, dê trắng vui sao nổi hả cậu?",
+          "Đọc lại dòng thơ đứng ngay trước “Chạy khắp nẻo tìm bê” nhé."
         ]
       }
     },
     {
       "id": "xep-dong-tho",
-      "title": "Xếp lại hai khổ thơ đầu",
-      "goTo": "Trở lại bảng gỗ khắc bài thơ, vài dòng đã rơi",
+      "title": "Gió khô thổi tung dòng thơ",
+      "goTo": "Chạy lại bảng gỗ khắc bài thơ, gió vừa thổi tung các dòng",
       "kind": "challenge",
       "mechanic": "sort",
       "target": "tv2-t10-bang-go-goi-ban",
-      "prompt": "Gió khô thổi tung các dòng thơ trên bảng gỗ. Xếp lại cho đúng để tập đọc thuộc: Học thuộc lòng 2 khổ thơ đầu.",
+      "prompt": "Vù! Một cơn gió khô thổi bay các dòng thơ trên bảng gỗ, rơi lả tả như lá khô. Xếp lại cho đúng để tập đọc thuộc: Học thuộc lòng 2 khổ thơ đầu.",
       "items": [
         {
           "id": "han-han",
@@ -416,14 +416,14 @@
       },
       "feedback": {
         "right": [
-          "Hai khổ thơ đã về đúng chỗ!",
-          "Đọc lên nghe êm như tiếng suối ngày xưa.",
-          "Xếp khéo quá, giờ mình tập đọc thuộc thôi."
+          "Hai khổ thơ đã về đúng chỗ, bảng gỗ thở phào nhẹ nhõm!",
+          "Đọc lên nghe êm như tiếng suối ngày xưa còn nước.",
+          "Xếp khéo quá! Vẹt Xanh định đọc theo mà vấp lưỡi hai lần."
         ],
         "wrong": [
-          "Có dòng thơ đang đứng nhầm chỗ rồi.",
-          "Nhớ nhé: khổ đầu nói về đôi bạn, khổ sau nói về hạn hán.",
-          "Dòng có dấu chấm hỏi là dòng cuối khổ hai đấy."
+          "Có dòng thơ đang đứng nhầm hàng, như Thỏ Tí đứng nhầm lớp vậy.",
+          "Nhớ nhé: khổ đầu nói về đôi bạn, khổ sau nói chuyện hạn hán.",
+          "Dòng có dấu chấm hỏi là dòng chốt cuối khổ hai đấy."
         ]
       }
     },
@@ -432,7 +432,7 @@
       "title": "Đọc thuộc lòng cho Bò nghe",
       "kind": "speak",
       "target": "tv2-t10-bang-go-goi-ban",
-      "prompt": "Bò Sữa Mơ nhắm mắt lắng nghe, tai khẽ vẫy theo nhịp thơ. Học thuộc lòng 2 khổ thơ đầu.",
+      "prompt": "Bò Sữa Mơ nhắm mắt, hai tai ve vẩy theo nhịp thơ như đang nghe hát ru. Học thuộc lòng 2 khổ thơ đầu.",
       "hints": [
         "Tự xa xưa thuở nào",
         "Một năm, trời hạn hán"
@@ -444,14 +444,14 @@
     {
       "id": "cam-nghi-doi-ban",
       "title": "Cảm nghĩ về bê vàng, dê trắng",
-      "goTo": "Ngồi với Bò Sữa Mơ giữa đồng cỏ khô",
+      "goTo": "Ra giữa đồng cỏ khô ngồi với Bò Sữa Mơ",
       "kind": "speak",
       "target": "bo-sua-mo",
-      "prompt": "Bò Sữa Mơ hỏi nhỏ: cậu nghĩ gì về đôi bạn trong bài thơ? Nêu cảm nghĩ của em về bê vàng và dê trắng.",
+      "prompt": "Bò Sữa Mơ nằm phịch xuống, cằm gối lên chân trước: ò… cậu thấy đôi bạn ấy thế nào? Nêu cảm nghĩ của em về bê vàng và dê trắng.",
       "hints": [
-        "Em thấy tình bạn của bê vàng và dê trắng thế nào?",
-        "Em thương bạn nào hơn? Vì sao?",
-        "Nếu là dê trắng, em sẽ làm gì?"
+        "Tình bạn của bê vàng và dê trắng có đẹp không?",
+        "Em thương bạn nào hơn, vì sao?",
+        "Nếu là dê trắng, em sẽ đi tìm bê ở đâu?"
       ],
       "curriculumRef": [
         "tv2-t1-b17-doc-4"
@@ -465,25 +465,25 @@
       "lines": [
         {
           "speaker": "Bò Sữa Mơ",
-          "text": "Tớ cứ nghĩ mãi về dê trắng, gọi hoài mà bạn chẳng về."
+          "text": "Ò… dê trắng gọi hoài mà bạn chẳng về. Tớ sợ mình cũng phải gọi hoài như thế."
         },
         {
-          "speaker": "Bò Sữa Mơ",
-          "text": "Giờ tớ cũng đang giống dê trắng đây này, {name} ạ."
+          "speaker": "Vẹt Xanh",
+          "text": "Đừng lo, đừng lo! Tai Thỏ Tí dài thế kia, gọi to là kiểu gì cũng nghe thấy!"
         }
       ],
       "choices": [
         {
-          "text": "Đừng buồn, mình sẽ cùng cậu tìm cho bằng được!",
-          "reply": "Có cậu bên cạnh, tớ thấy vững dạ hơn nhiều."
+          "text": "Đừng buồn, mình ở đây với cậu, mình sẽ tìm ra Thỏ Tí!",
+          "reply": "Có cậu bên cạnh, tớ thấy chân mình vững như bốn cái cột đình."
         },
         {
-          "text": "Cậu gọi to thêm lần nữa đi, mình gọi cùng cậu.",
-          "reply": "Được, ta cùng gọi thật to nhé: Tí ơi!"
+          "text": "Mình cùng gọi thật to nhé: Tí ơi ơi ơi!",
+          "reply": "Tí ơi! Ò… ò…! Ối, tớ gọi to quá làm Vẹt Xanh rơi khỏi cành."
         },
         {
-          "text": "Thỏ Tí nhanh nhảu lắm, chắc đang tìm đường về đấy.",
-          "reply": "Ừ nhỉ, biết đâu bạn ấy sắp về tới nơi."
+          "text": "Thỏ Tí nhanh chân lắm, chắc đang chạy về rồi đấy.",
+          "reply": "Ừ nhỉ! Biết đâu bạn ấy đang nhảy tưng tưng về phía mình."
         }
       ]
     },
@@ -492,11 +492,11 @@
       "title": "Nói lời an ủi dê trắng",
       "kind": "speak",
       "target": "bo-sua-mo",
-      "prompt": "Vẹt Xanh bày trò đóng vai cho Bò vui lên. Đóng vai một người bạn trong rừng, nói lời an ủi dê trắng.",
+      "prompt": "Vẹt Xanh đội cái lá lên đầu làm sừng: tớ là dê trắng đây, mặt buồn thiu, buồn thiu! Đóng vai một người bạn trong rừng, nói lời an ủi dê trắng.",
       "hints": [
-        "Dê trắng ơi, đừng buồn nhé!",
-        "Tớ sẽ cùng cậu đi tìm bê vàng.",
-        "Chắc bê vàng cũng đang nhớ cậu lắm."
+        "Dê trắng ơi, cậu đừng khóc nữa nhé!",
+        "Tớ sẽ rủ cả rừng cùng đi tìm bê vàng.",
+        "Bê vàng chắc cũng đang nhớ cậu nhiều lắm."
       ],
       "curriculumRef": [
         "tv2-t1-b17-doc-lt2"
@@ -504,12 +504,12 @@
     },
     {
       "id": "xep-tranh-goi-ban",
-      "title": "Xếp tranh trên vách đá",
+      "title": "Bốn bức tranh trên vách đá",
       "goTo": "Xuống vách đá có tranh bên suối cạn",
       "kind": "challenge",
       "mechanic": "sort",
       "target": "tv2-t10-vach-da-tranh",
-      "prompt": "Trên vách đá cạnh suối cạn có bốn bức tranh kể chuyện đôi bạn, nhưng đã bị xáo trộn. Dựa vào tranh minh hoạ câu chuyện trong bài thơ Gọi bạn và gợi ý, nói về sự việc trong từng tranh. Trước hết, hãy xếp các tranh theo đúng thứ tự câu chuyện.",
+      "prompt": "Trên vách đá có bốn bức tranh kể chuyện đôi bạn. Ban sáng Thỏ Tí đi qua, lỡ tay làm xáo tung cả lên. Dựa vào tranh minh hoạ câu chuyện trong bài thơ Gọi bạn và gợi ý, nói về sự việc trong từng tranh. Trước hết, xếp các tranh theo đúng thứ tự câu chuyện.",
       "items": [
         {
           "id": "be-vang-tim-co",
@@ -584,14 +584,14 @@
       },
       "feedback": {
         "right": [
-          "Bốn bức tranh đã kể đúng câu chuyện!",
-          "Vách đá giờ đọc lên thành bài thơ rồi.",
-          "Xếp tranh tài thật, {name} nhớ bài thơ kĩ quá."
+          "Bốn bức tranh đã kể đúng câu chuyện, vách đá như biết đọc thơ!",
+          "Ò… ò…! Bò Sữa Mơ dụi mũi vào tranh cuối, thương dê trắng quá.",
+          "Xếp tranh tài thật, {name} còn nhanh hơn cả Thỏ Tí lúc nhớ đường."
         ],
         "wrong": [
-          "Đôi bạn còn vui bên suối thì phải đứng đầu chứ.",
-          "Hạn hán xảy ra trước khi bê vàng đi tìm cỏ đấy.",
-          "Tiếng gọi \"Bê! Bê!\" là cảnh cuối cùng nhé."
+          "Lúc đôi bạn còn vui bên suối thì phải đứng đầu tiên chứ.",
+          "Hạn hán đến trước, rồi bê vàng mới phải đi tìm cỏ.",
+          "Tiếng gọi “Bê! Bê!” là cảnh khép lại câu chuyện đấy."
         ]
       }
     },
@@ -600,7 +600,7 @@
       "title": "Kể chuyện bê vàng theo tranh",
       "kind": "speak",
       "target": "tv2-t10-vach-da-tranh",
-      "prompt": "Bò Sữa Mơ bảo: kể to lên, biết đâu Thỏ Tí nghe thấy! Dựa vào tranh minh hoạ câu chuyện trong bài thơ Gọi bạn và gợi ý, nói về sự việc trong từng tranh. Chọn kể 1 – 2 đoạn của câu chuyện theo tranh.",
+      "prompt": "Bò Sữa Mơ hít một hơi căng phồng cả bụng: kể to lên nào, biết đâu Thỏ Tí nghe thấy! Dựa vào tranh minh hoạ câu chuyện trong bài thơ Gọi bạn và gợi ý, nói về sự việc trong từng tranh. Chọn kể 1 – 2 đoạn của câu chuyện theo tranh.",
       "hints": [
         "Từ xa xưa, trong rừng xanh sâu thẳm, (...).",
         "Một năm, trời hạn hán (...).",
@@ -650,11 +650,11 @@
       "title": "Kể tiếp đoạn kết chuyện đôi bạn",
       "kind": "speak",
       "target": "tv2-t10-vach-da-tranh",
-      "prompt": "Bài thơ dừng ở tiếng gọi \"Bê! Bê!\" vang mãi trong rừng. Kể tiếp đoạn kết của câu chuyện theo ý của em.",
+      "prompt": "Bài thơ dừng ở tiếng gọi “Bê! Bê!”. Bò Sữa Mơ mong đôi bạn được gặp lại lắm. Kể tiếp đoạn kết của câu chuyện theo ý của em.",
       "hints": [
-        "Bê vàng có nghe thấy tiếng gọi không?",
-        "Các bạn trong rừng có giúp dê trắng không?",
-        "Khi gặp lại nhau, đôi bạn nói gì với nhau?"
+        "Bê vàng có nghe thấy tiếng gọi của dê trắng không?",
+        "Ai trong rừng đã chỉ đường cho bê vàng?",
+        "Gặp lại nhau, đôi bạn làm gì đầu tiên?"
       ],
       "curriculumRef": [
         "tv2-t1-b17-ke-chuyen-3"
@@ -663,31 +663,31 @@
     {
       "id": "tho-ti-tro-ve",
       "title": "Thỏ Tí nghe tiếng gọi",
-      "goTo": "Nghe kìa! Có tiếng gọi từ đồng cỏ khô",
+      "goTo": "Nghe kìa! Có tiếng ai gọi từ đồng cỏ khô",
       "kind": "dialogue",
       "target": "tho-ti",
       "lines": [
         {
           "speaker": "Thỏ Tí",
-          "text": "Bò ơi! {name} ơi! Tớ nghe tiếng các cậu kể chuyện từ tận bên kia đồi!"
+          "text": "Bò ơi! {name} ơi! Tớ nghe tiếng các cậu kể chuyện vọng sang tận bên kia đồi!"
         },
         {
           "speaker": "Thỏ Tí",
-          "text": "Tớ mải hái cỏ non, quay đi quay lại thì quên béng mất lối về."
+          "text": "Tớ hái cỏ non vui quá, quay một vòng, hai vòng… rồi quên luôn nhà mình ở hướng nào."
         },
         {
           "speaker": "Bò Sữa Mơ",
-          "text": "May quá, tớ không phải gọi hoài như dê trắng nữa rồi!"
+          "text": "Ò… ò…! May quá, tớ không phải gọi hoài như dê trắng nữa rồi!"
         },
         {
           "speaker": "Thỏ Tí",
-          "text": "Tớ mang về cả một bó cỏ non đây, mình chia nhau nhé."
+          "text": "Cỏ non đây, cả một bó to bằng cái nón! À mà… tớ vừa định nói gì nữa nhỉ?"
         }
       ],
       "choices": [
         {
           "text": "Lần sau đi xa, cậu nhớ rủ bạn đi cùng nhé!",
-          "reply": "Tớ hứa! Mà cậu nhắc tớ với, tớ đãng trí lắm."
+          "reply": "Tớ hứa! Mà cậu nhắc tớ nhé, kẻo tớ quên luôn cả lời hứa."
         }
       ]
     },
@@ -697,7 +697,7 @@
       "kind": "worksheet",
       "trigger": "auto",
       "lessonId": "tv2-t1-b17",
-      "text": "Nhờ bố mẹ in phiếu Bài 17 ở khu phụ huynh để tập viết chữ hoa H, câu ứng dụng và vài câu nhận xét về đôi bạn bê vàng và dê trắng.",
+      "text": "Nhờ bố mẹ in phiếu Bài 17 ở khu phụ huynh nhé: tập viết chữ hoa H, câu ứng dụng và vài câu nhận xét về đôi bạn bê vàng, dê trắng. Bò Sữa Mơ hứa nằm im, không ve vẩy đuôi làm nhoè vở.",
       "curriculumRef": [
         "tv2-t1-b17-viet-chu-hoa-1",
         "tv2-t1-b17-viet-ung-dung-2",
@@ -709,14 +709,14 @@
       "title": "Chiếc chuông của Bò Sữa Mơ",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Bò Sữa Mơ tặng {name} một chiếc chuông đồng nhỏ: từ nay lạc nhau ở đâu, chỉ cần rung chuông là bạn bè tìm thấy."
+      "text": "Bò Sữa Mơ đeo cho {name} một chiếc chuông đồng nhỏ xíu: lạc nhau ở đâu cứ rung leng keng là bạn bè tìm thấy. Thỏ Tí xin một cái, để rung cho chính mình nhớ đường về."
     },
     {
       "id": "mo-bai-18",
       "title": "Lá thư bên bến hồ",
       "kind": "unlock",
       "trigger": "auto",
-      "text": "Trên đường về, Thỏ Tí nhặt được một lá thư dán tem hình bông tuyết, đề gửi Gấu Tuyết Bông ở bến thư bên hồ."
+      "text": "Trên đường về, Thỏ Tí nhặt được một lá thư lạnh buốt như vừa lấy ra từ tủ đá, dán tem hình bông tuyết, đề gửi Gấu Tuyết Bông ở bến thư bên hồ. Ai ở phương xa gửi thư thế nhỉ?"
     }
   ],
   "reward": {

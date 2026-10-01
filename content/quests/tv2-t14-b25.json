@@ -5,13 +5,13 @@
   "title": "Ong Vàng và bụi hoa tỉ muội",
   "status": "draft",
   "lesson": "tv2-t1-b25",
-  "summary": "Hai chị em ong con giận nhau vì một chùm hoa; {name} cùng Ong Vàng đọc sự tích chị Nết cõng em Na chạy lũ và giúp hai bạn làm lành.",
+  "summary": "Hai chị em ong con cãi nhau vì một chùm hoa; {name} cùng Ong Vàng đọc sự tích chị Nết cõng em Na chạy lũ và giúp hai bạn làm lành.",
   "review": "teacher-pending",
   "sevenQuestions": {
     "who": "Ong Vàng và hai chị em ong con Hồng, Nụ",
     "where": "Bụi hoa tỉ muội đầu vườn, vách tổ ong treo tranh sáp",
     "goal": "Giúp hai chị em ong làm lành và cùng chăm bụi hoa",
-    "play": "Tìm chùm hoa, nói, đọc truyện, chọn nhiều chi tiết, chọn đáp án, xếp từ vào hai giỏ, đoán tranh, xếp tranh, kể chuyện, phiếu viết",
+    "play": "Tìm chùm hoa, nói, đọc truyện, chọn đáp án, chọn nhiều chi tiết, xếp từ vào hai giỏ, đoán tranh, xếp tranh, kể chuyện, phiếu viết",
     "learn": "Tiếng Việt 2 Bài 25: đọc hiểu \"Sự tích hoa tỉ muội\", từ chỉ hoạt động và đặc điểm, đặt câu, kể chuyện \"Hai anh em\", viết chữ hoa N",
     "reward": "80 XP, 15 xu, Đọc hiểu +2, Từ ngữ +1, Kể chuyện +1",
     "unlock": "Bài 26 \"Em mang về yêu thương\""
@@ -51,39 +51,43 @@
   "steps": [
     {
       "id": "gap-ong-vang",
-      "title": "Hai chị em ong giận nhau",
-      "goTo": "Tới bụi hoa tỉ muội đầu vườn, hai chị em ong đang giận",
+      "title": "Hai chị em ong cãi nhau",
+      "goTo": "Tới bụi hoa tỉ muội đầu vườn, nơi đang vang tiếng ong cãi nhau",
       "kind": "dialogue",
       "target": "ong-vang",
       "lines": [
         {
           "speaker": "Ong Vàng",
-          "text": "{name} ơi, may quá cậu đến! Hai cháu ong nhà tớ đang giận nhau ở bụi hoa đầu vườn."
+          "text": "Vo vo! {name} đến đúng lúc quá! Hai cháu ong nhà tớ cãi nhau, tớ đếm được mười bảy câu \"Của chị!\" rồi đấy."
         },
         {
           "speaker": "Ong Hồng",
-          "text": "Chùm hoa to nhất là của chị, chị nhìn thấy nó trước!"
+          "text": "Chùm hoa to nhất là của chị! Chị nhìn thấy nó trước, nhìn bằng cả hai mắt hẳn hoi!"
         },
         {
           "speaker": "Ong Nụ",
-          "text": "Nhưng em bay tới trước mà... Chị chẳng bao giờ nhường em cả."
+          "text": "Nhưng em bay tới trước, bay bằng cả bốn cánh! Chị chẳng bao giờ chịu nhường em."
         },
         {
           "speaker": "Ong Vàng",
-          "text": "Sáng nay cả bụi chỉ nở đúng một chùm. Cậu giúp tớ dỗ hai đứa làm lành nhé?"
+          "text": "Sáng nay cả bụi chỉ nở đúng một chùm. Một… vẫn là một. Tớ đếm ba lần rồi, chẳng thêm được chùm nào."
         }
       ],
       "choices": [
         {
-          "text": "Để mình thử, chắc chắn hai bạn sẽ làm lành!",
-          "reply": "Ong Vàng rung cánh: trước hết, mình ra xem chùm hoa ấy đã."
+          "text": "Để mình giúp, hai bạn sẽ làm lành thôi!",
+          "reply": "Vo vo, cảm ơn {name}! Trước hết mình đi xem chùm hoa gây chuyện ấy đã."
+        },
+        {
+          "text": "Mười bảy câu \"Của chị\" cơ á? Nhiều thế!",
+          "reply": "Mười tám rồi, Hồng vừa nói thêm một câu! Mau đi tìm chùm hoa thôi."
         }
       ]
     },
     {
       "id": "tim-chum-hoa",
-      "title": "Tìm chùm hoa vừa nở",
-      "goTo": "Bay khắp vườn hoa tìm chùm hoa vừa nở",
+      "title": "Tìm chùm hoa gây chuyện",
+      "goTo": "Bay vòng quanh khắp vườn hoa tìm chùm hoa vừa nở và nụ hoa bé xíu",
       "kind": "search",
       "targets": [
         "tv2-t14-chum-hoa-lon",
@@ -92,11 +96,11 @@
     },
     {
       "id": "anh-chi-lam-cho-em",
-      "title": "Kể việc anh chị làm cho em",
-      "goTo": "Mang hoa về bụi hoa tỉ muội cho Ong Hồng",
+      "title": "Hỏi chuyện anh chị",
+      "goTo": "Mang tin về bụi hoa tỉ muội cho Ong Hồng",
       "kind": "speak",
       "target": "ong-hong",
-      "prompt": "Ong Hồng vẫn còn phụng phịu, quay sang hỏi {name}: Nói về những việc anh chị thường làm cho em.",
+      "prompt": "Ong Hồng chống nạnh, nhưng ong có sáu chân nên chống nạnh hơi lộn xộn. Hồng hỏi {name}: Nói về những việc anh chị thường làm cho em.",
       "hints": [
         "Anh chị của em, hoặc của bạn em, thường giúp em việc gì?",
         "Anh chị có hay nhường em quà bánh, đồ chơi không?",
@@ -113,7 +117,7 @@
       "target": "tv2-t14-bui-hoa-ti-muoi",
       "textRef": "su-tich-hoa-ti-muoi",
       "audio": true,
-      "question": "Nước lũ dâng cao, chị Nết đưa Na đến nơi an toàn bằng cách nào?",
+      "question": "Ong Vàng đếm được đúng một trăm cánh hoa thì ngồi xuống nghe {name} đọc. Nước lũ dâng cao, chị Nết đưa Na đến nơi an toàn bằng cách nào?",
       "choices": [
         {
           "id": "cong-em",
@@ -148,14 +152,63 @@
       },
       "feedback": {
         "right": [
-          "Đúng rồi, chị Nết cõng em chạy lũ!",
-          "Ong Nụ reo lên: chị Nết vừa khoẻ vừa thương em quá!",
-          "{name} tìm đúng câu trong bài rồi."
+          "Đúng rồi! Ong Nụ trèo lên lưng Ong Hồng đòi cõng thử, cả hai lảo đảo suýt rơi.",
+          "Chuẩn! Ong Vàng đếm số bước chị Nết chạy, đếm tới một nghìn thì xin thôi.",
+          "Hay quá, {name} tìm đúng câu cõng em chạy lũ rồi!"
         ],
         "wrong": [
-          "Trong bài không có chiếc thuyền nào đâu, đọc lại nhé.",
-          "Bụt chỉ đến sau đó thôi, {name} dò lại xem.",
-          "Khi nước dâng cao, chị Nết làm gì với em Na nhỉ?"
+          "Ối, chiếc thuyền này chưa từng ghé vào bài đọc đâu. Đọc lại câu có \"nước lũ\" nhé.",
+          "Bụt chỉ xuất hiện sau đó thôi. {name} dò xem lúc nước dâng, chị Nết tự làm gì.",
+          "Gần đúng rồi! Lúc nước dâng cao, chị Nết làm gì với em Na trên lưng nhỉ?"
+        ]
+      }
+    },
+    {
+      "id": "dem-nu-hoa",
+      "title": "Ong Vàng đếm nụ hoa",
+      "kind": "challenge",
+      "mechanic": "quiz",
+      "target": "tv2-t14-bui-hoa-ti-muoi",
+      "prompt": "Ong Vàng chúi đầu vào chùm hoa đếm nụ: một, hai, ba… rồi hoa cả mắt. Ong hỏi {name}: theo phần Từ ngữ dưới bài đọc, hoa tỉ muội là loài hoa thế nào?",
+      "choices": [
+        {
+          "id": "hoa-hong-chum",
+          "text": "một loại hoa hồng, mọc thành chùm với rất nhiều nụ."
+        },
+        {
+          "id": "hoa-sen-mot-bong",
+          "text": "một loại hoa sen, mỗi cây chỉ nở một bông giữa ao."
+        },
+        {
+          "id": "hoa-huong-duong",
+          "text": "một loại hoa hướng dương, cao vượt cả mái nhà."
+        }
+      ],
+      "skill": "doc-hieu",
+      "answer": {
+        "choice": "hoa-hong-chum"
+      },
+      "support": {
+        "guide": [
+          "Nhìn xuống ô Từ ngữ ở cuối bài đọc.",
+          "Tìm dòng giải nghĩa \"Hoa tỉ muội\"."
+        ],
+        "hint": "Hoa tỉ muội có rất nhiều nụ, nên Ong Vàng mới đếm mãi không xong.",
+        "answer": {
+          "text": "Hoa tỉ muội là một loại hoa hồng, mọc thành chùm với rất nhiều nụ.",
+          "explanation": "Ô Từ ngữ giải nghĩa: hoa tỉ muội là một loại hoa hồng, mọc thành chùm với rất nhiều nụ."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đúng! Ong Vàng reo: thảo nào tớ đếm nụ mãi không hết!",
+          "Chính xác, chùm hoa nhiều nụ như một nhà đông anh chị em.",
+          "Ong Vàng lộn một vòng trên cánh hoa: {name} đọc kĩ ghê!"
+        ],
+        "wrong": [
+          "Hoa sen thì ở ao cơ, còn bụi hoa này mọc bên sườn núi. Xem lại ô Từ ngữ nhé.",
+          "Hướng dương cao quá, Ong Vàng bay mỏi cánh mất! Tìm dòng giải nghĩa \"Hoa tỉ muội\" xem.",
+          "Chưa đúng rồi. Gợi ý: loài hoa này có rất, rất nhiều nụ."
         ]
       }
     },
@@ -165,7 +218,7 @@
       "kind": "challenge",
       "mechanic": "multi-select",
       "target": "tv2-t14-bui-hoa-ti-muoi",
-      "prompt": "Ong Vàng chỉ vào đoạn đầu câu chuyện: Tìm những chi tiết cho thấy chị em Nết, Na sống bên nhau rất đầm ấm.",
+      "prompt": "Ong Hồng đọc lại đoạn đêm đông, mặt đỏ dần lên như cánh hoa. Tìm những chi tiết cho thấy chị em Nết, Na sống bên nhau rất đầm ấm.",
       "choices": [
         {
           "id": "net-thuong-na-cai",
@@ -217,14 +270,14 @@
       },
       "feedback": {
         "right": [
-          "Đủ bốn chi tiết ấm áp rồi, giỏi quá!",
-          "Ong Hồng đỏ mặt: chị Nết nhường em nhiều thật.",
-          "Chọn chuẩn từng chi tiết của đêm đông!"
+          "Đủ bốn chi tiết ấm áp! Ong Hồng lí nhí: hình như chị chưa nhường em lần nào…",
+          "Chọn chuẩn từng chi tiết của đêm đông, ấm như chăn bông!",
+          "Ong Vàng đếm: một, hai, ba, bốn, đúng cả bốn! Vo vo!"
         ],
         "wrong": [
-          "Còn sót một chi tiết trong đêm đông đấy.",
-          "Chuyện bàn chân rớm máu xảy ra lúc chạy lũ cơ.",
-          "Đếm lại xem {name} đã chọn mấy chi tiết nhé."
+          "Còn sót một chi tiết trong đêm đông đấy, tìm câu có tiếng cười rúc rích nhé.",
+          "Chuyện bàn chân rớm máu xảy ra lúc chạy lũ cơ, chưa phải cảnh đầm ấm đâu.",
+          "Ong Vàng đếm giúp rồi: chi tiết đúng có bốn, {name} kiểm lại xem mình chọn mấy."
         ]
       }
     },
@@ -234,7 +287,7 @@
       "kind": "challenge",
       "mechanic": "quiz",
       "target": "tv2-t14-bui-hoa-ti-muoi",
-      "prompt": "Nói về điều kì lạ xảy ra khi Nết cõng em chạy lũ.",
+      "prompt": "Ong Nụ nín thở, hai cái râu dựng đứng như ăng-ten. Nói về điều kì lạ xảy ra khi Nết cõng em chạy lũ.",
       "choices": [
         {
           "id": "hoa-moc",
@@ -269,14 +322,14 @@
       },
       "feedback": {
         "right": [
-          "Đúng thế, hoa đỏ thắm mọc theo bước chân Nết!",
-          "Ong Vàng gật gù: vì thế mới có bụi hoa này đấy.",
-          "Tuyệt, {name} nhớ cả cây gậy thần của Bụt."
+          "Đúng thế! Hoa đỏ thắm mọc theo từng bước chân chị Nết.",
+          "Ong Vàng gật gù: thì ra bụi hoa nhà tớ có gốc gác oai thế!",
+          "Tuyệt! {name} nhớ cả cây gậy thần của Bụt."
         ],
         "wrong": [
-          "Nước lũ có rút đi đâu, đọc câu \"Kì lạ thay\" nhé.",
-          "Nết không bay, Nết vẫn cõng em đi bằng đôi chân mà.",
-          "Thử tìm xem sau khi Bụt giơ gậy, thứ gì mọc lên."
+          "Nước lũ có rút đi đâu. Đọc câu bắt đầu bằng \"Kì lạ thay\" nhé.",
+          "Nết có mọc cánh đâu, cánh là của nhà ong cơ! Chị vẫn cõng em đi bộ mà.",
+          "Thử tìm xem sau khi Bụt giơ gậy, thứ gì mọc lên trên đường chị Nết đi."
         ]
       }
     },
@@ -285,7 +338,7 @@
       "title": "Vì sao gọi là hoa tỉ muội",
       "kind": "speak",
       "target": "ong-nu",
-      "prompt": "Ong Nụ ngước nhìn chùm hoa trên đầu: Theo em, vì sao dân làng đặt tên loài hoa ấy là hoa tỉ muội (hoa chị em)?",
+      "prompt": "Ong Nụ ngước nhìn chùm hoa, hỏi nhỏ như sợ hoa nghe thấy: Theo em, vì sao dân làng đặt tên loài hoa ấy là hoa tỉ muội (hoa chị em)?",
       "hints": [
         "Nhìn bông hoa lớn và nụ hoa bé nhỏ cùng mọc trong một chùm.",
         "Chùm hoa giống tình cảm của ai trong câu chuyện?"
@@ -300,7 +353,7 @@
       "kind": "challenge",
       "mechanic": "classify",
       "target": "ong-hong",
-      "prompt": "Hồng cầm giỏ a, Nụ cầm giỏ b, hai chị em cùng làm chung một bài: Xếp các từ ngữ dưới đây vào nhóm thích hợp: đỏ thắm, bé nhỏ, chạy theo, cõng, đẹp, đi qua, cao, gật đầu",
+      "prompt": "Hồng cầm giỏ a, Nụ cầm giỏ b. Lần đầu tiên trong ngày, hai chị em làm chung mà không cãi nhau câu nào! Xếp các từ ngữ dưới đây vào nhóm thích hợp: đỏ thắm, bé nhỏ, chạy theo, cõng, đẹp, đi qua, cao, gật đầu",
       "groups": [
         {
           "id": "hoat-dong",
@@ -375,14 +428,14 @@
       },
       "feedback": {
         "right": [
-          "Hai giỏ đầy đủ, mỗi giỏ bốn từ, chuẩn luôn!",
+          "Hai giỏ đầy, mỗi giỏ bốn từ, Ong Vàng đếm lại vẫn đúng y nguyên!",
           "Hồng và Nụ chạm cánh vào nhau: chị em mình làm chung vui thật!",
-          "{name} làm động tác cõng trông giống chị Nết ghê."
+          "{name} làm động tác cõng trông giống chị Nết ghê, mà chẳng cần gậy thần."
         ],
         "wrong": [
-          "\"Đỏ thắm\" là màu sắc, không phải việc làm đâu.",
-          "\"Gật đầu\" là cử động, đưa sang giỏ hoạt động nhé.",
-          "Còn một từ tả độ cao của nước lũ đang nằm nhầm giỏ."
+          "\"Đỏ thắm\" là màu sắc, đâu phải việc làm. Thử đỏ thắm một cái xem, khó lắm!",
+          "\"Gật đầu\" thì ai cũng làm được ngay, vậy nó vào giỏ hoạt động nhé.",
+          "Còn một từ tả độ cao của nước lũ đang nằm nhầm giỏ đấy."
         ]
       }
     },
@@ -391,7 +444,7 @@
       "title": "Đặt câu về chị Nết",
       "kind": "speak",
       "target": "ong-hong",
-      "prompt": "Hồng muốn học làm một người chị tốt: Đặt một câu nói về việc chị Nết đã làm cho em Na.",
+      "prompt": "Hồng muốn học làm một người chị tốt, tốt như chị Nết, tốt hơn cả mật. Đặt một câu nói về việc chị Nết đã làm cho em Na.",
       "hints": [
         "Nhớ lại đêm đông gió rét và năm nước lũ dâng cao.",
         "Nói câu bắt đầu bằng \"Chị Nết...\" và kể một việc chị làm cho em."
@@ -408,11 +461,15 @@
       "lines": [
         {
           "speaker": "Ong Hồng",
-          "text": "Chị em mình giống Nết và Na mà lại đi giành nhau một chùm hoa..."
+          "text": "Chị em mình giống Nết và Na mà lại đi giành nhau một chùm hoa. Chị xin lỗi Nụ nhé."
         },
         {
           "speaker": "Ong Nụ",
-          "text": "Em cũng xin lỗi chị. {name} ơi, chúng tớ nên làm gì với chùm hoa này?"
+          "text": "Em cũng xin lỗi chị. {name} ơi, giờ chúng tớ nên làm gì với chùm hoa này?"
+        },
+        {
+          "speaker": "Ong Vàng",
+          "text": "Vo vo, tớ đếm rồi: cãi nhau mười tám câu, làm lành mới có hai câu. Thêm câu nữa đi!"
         }
       ],
       "choices": [
@@ -426,7 +483,7 @@
         },
         {
           "text": "Cùng chăm cả bụi hoa để ngày mai nở thêm nhiều chùm.",
-          "reply": "Ong Vàng vỗ cánh: sáng mai cả bụi sẽ đỏ rực cho mà xem."
+          "reply": "Ong Vàng vỗ cánh: sáng mai cả bụi sẽ đỏ rực, tớ lại có cái để đếm!"
         }
       ]
     },
@@ -436,7 +493,7 @@
       "goTo": "Sang vách tổ ong xem bốn tấm tranh sáp",
       "kind": "speak",
       "target": "tv2-t14-vach-to-ong",
-      "prompt": "Làm lành xong, Ong Vàng treo bốn tấm tranh sáp lên vách tổ nhưng chưa kể vội. Dựa vào câu hỏi gợi ý, đoán nội dung của từng tranh.",
+      "prompt": "Làm lành xong, Ong Vàng treo bốn tấm tranh sáp lên vách tổ, đếm đi đếm lại cho chắc là đủ bốn, rồi mới hỏi. Dựa vào câu hỏi gợi ý, đoán nội dung của từng tranh.",
       "hints": [
         "Lúc đầu, hai anh em đã chia lúa thế nào?",
         "Người em nghĩ gì và chia lại lúa ra sao?",
@@ -448,28 +505,32 @@
           "kind": "diagram",
           "type": "picture-card",
           "params": {
-            "n": 1
+            "n": 1,
+            "caption": "hai anh em trên cánh đồng bên những đống lúa, người anh đứng lau mồ hôi, người em ngồi nghỉ"
           }
         },
         {
           "kind": "diagram",
           "type": "picture-card",
           "params": {
-            "n": 2
+            "n": 2,
+            "caption": "người em vác bó lúa dưới trăng, nghĩ tới người anh"
           }
         },
         {
           "kind": "diagram",
           "type": "picture-card",
           "params": {
-            "n": 3
+            "n": 3,
+            "caption": "người anh cúi ôm lúa dưới trăng, nghĩ tới người em"
           }
         },
         {
           "kind": "diagram",
           "type": "picture-card",
           "params": {
-            "n": 4
+            "n": 4,
+            "caption": "hai anh em ôm chầm lấy nhau giữa hai đống lúa"
           }
         }
       ],
@@ -486,7 +547,7 @@
       "kind": "challenge",
       "mechanic": "sort",
       "target": "tv2-t14-vach-to-ong",
-      "prompt": "Ong Vàng vừa kể thì một cơn gió lùa qua, bốn tấm tranh rơi lộn xộn. Nghe kể chuyện. Nghe xong, {name} treo lại các tranh theo đúng thứ tự câu chuyện.",
+      "prompt": "Ong Vàng vừa kể xong thì vỗ cánh mạnh quá, gió thổi bốn tấm tranh rơi lộn xộn. Nghe kể chuyện. Nghe xong, {name} treo lại các tranh theo đúng thứ tự câu chuyện.",
       "items": [
         {
           "id": "om-cham",
@@ -495,7 +556,7 @@
             "kind": "diagram",
             "type": "picture-card",
             "params": {
-              "caption": "hai anh em ôm chầm lấy nhau giữa hai đống lúa"
+              "caption": "hai anh em ôm nhau thật chặt bên hai đống lúa"
             }
           }
         },
@@ -558,14 +619,14 @@
       },
       "feedback": {
         "right": [
-          "Bốn tấm tranh sáp đã đúng thứ tự câu chuyện!",
-          "Ong Vàng khen: {name} nghe kể chăm chú quá.",
-          "Hay lắm, chuyện Hai anh em hiện ra trọn vẹn."
+          "Bốn tấm tranh sáp đã thẳng hàng, đúng thứ tự câu chuyện!",
+          "Ong Vàng khen: {name} nghe kể chăm chú hơn cả tớ lúc đếm hoa.",
+          "Hay lắm, chuyện Hai anh em hiện ra trọn vẹn trên vách tổ."
         ],
         "wrong": [
-          "Hai anh em ôm nhau là lúc cuối truyện cơ.",
+          "Hai anh em ôm nhau là lúc cuối truyện cơ, treo tấm ấy xuống cuối nhé.",
           "Người em nghĩ tới anh trước, thử đổi chỗ hai tấm ở giữa xem.",
-          "Tấm nào vẽ cảnh hai anh em còn ở ngoài đồng ban ngày nhỉ?"
+          "Tấm nào vẽ hai anh em còn ở ngoài đồng ban ngày nhỉ? Tấm đó mở đầu đấy."
         ]
       }
     },
@@ -574,7 +635,7 @@
       "title": "Kể chuyện cho hai chị em ong",
       "kind": "speak",
       "target": "tv2-t14-vach-to-ong",
-      "prompt": "Hồng và Nụ ngồi sát cánh bên nhau chờ nghe {name}. Nghe kể chuyện. Chọn kể 1 – 2 đoạn của câu chuyện theo tranh.",
+      "prompt": "Hồng và Nụ ngồi sát cánh bên nhau, sát đến nỗi râu chạm cả vào nhau, chờ nghe {name}. Nghe kể chuyện. Chọn kể 1 – 2 đoạn của câu chuyện theo tranh.",
       "hints": [
         "Chọn đoạn em nhớ nhất: lúc chia lúa, đêm mang lúa sang hay lúc hai anh em gặp nhau.",
         "Kể rõ người anh, người em đã nghĩ gì và làm gì."
@@ -590,7 +651,7 @@
       "kind": "worksheet",
       "trigger": "auto",
       "lessonId": "tv2-t1-b25",
-      "text": "Nhờ bố mẹ in phiếu Bài 25 ở khu phụ huynh để tập viết chữ hoa N, câu ứng dụng, rồi kể chuyện Hai anh em cho người thân nghe.",
+      "text": "Ong Vàng đếm sẵn ba việc cho {name}: nhờ bố mẹ in phiếu Bài 25 ở khu phụ huynh, tập viết chữ hoa N cùng câu ứng dụng, rồi kể chuyện Hai anh em cho người thân nghe.",
       "curriculumRef": [
         "tv2-t1-b25-viet-chu-hoa-1",
         "tv2-t1-b25-viet-ung-dung-2",
@@ -602,14 +663,14 @@
       "title": "Giọt mật hoa tỉ muội",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Hai chị em ong tặng {name} một giọt mật hoa tỉ muội đựng trong chiếc lá cuộn tròn."
+      "text": "Hai chị em ong cùng nhau tặng {name} một giọt mật hoa tỉ muội, đựng trong chiếc lá cuộn tròn. Ong Vàng đếm kĩ: đúng một giọt, nhưng ngọt bằng mười!"
     },
     {
       "id": "mo-bai-26",
       "title": "Tiếng chiêm chiếp ở tổ rơm",
       "kind": "unlock",
       "trigger": "auto",
-      "text": "Từ tổ rơm cuối vườn vọng lại tiếng chiêm chiếp rộn ràng: nhà Gà Con Chíp sắp có chuyện vui!"
+      "text": "Từ tổ rơm cuối vườn vọng lại tiếng chiêm chiếp rộn ràng, xen lẫn một câu hỏi \"Tại sao?\" thật to: nhà Gà Con Chíp sắp có chuyện vui!"
     }
   ],
   "reward": {

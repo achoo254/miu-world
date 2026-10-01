@@ -5,25 +5,25 @@
   "title": "Sâu Xanh vào lớp Hai",
   "status": "draft",
   "lesson": "tv2-t1-b01",
-  "summary": "Sáng khai giảng của lớp Hai trong rừng: {name} đi cùng Sâu Xanh, đọc chuyện một bạn nhỏ háo hức đến trường và tập nói lời chào.",
+  "summary": "Sáng khai giảng, Sâu Xanh chạy vội tới cổng rừng, rơi cả giày lẫn cặp. {name} nhặt đồ giúp bạn, đọc chuyện một bạn nhỏ háo hức đến trường, rồi cùng Sâu Xanh tập nói lời chào.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Sâu Xanh (lần đầu vào lớp Hai của rừng), Vẹt Xanh dẫn đường",
-    "where": "Cổng Khu rừng bí mật lúc bình minh, bảng gỗ lớp Hai",
-    "goal": "Giúp Sâu Xanh bớt lo trong ngày khai giảng",
-    "play": "Nói, đọc bài, chọn nhiều đáp án, ghép đoạn với tranh, chọn từ, phiếu viết",
-    "learn": "Tiếng Việt 2 Bài 1: đọc hiểu \"Tôi là học sinh lớp 2\", lời chào, kể về kì nghỉ hè, viết chữ hoa A",
+    "who": "Sâu Xanh (mười sáu cái chân, lần đầu vào lớp Hai của rừng), Vẹt Xanh lắm lời, Gà Con Chíp mới vào lớp Một",
+    "where": "Cổng Khu rừng bí mật lúc bình minh, lối mòn trước cổng và bảng gỗ lớp Hai",
+    "goal": "Nhặt lại đồ Sâu Xanh đánh rơi và giúp bạn ấy bớt run trong ngày khai giảng",
+    "play": "Tìm đồ, nói, đọc bài, chọn nhiều đáp án, ghép tranh với đoạn, xếp thứ tự, điền từ, trắc nghiệm, lựa chọn trong hội thoại, phiếu viết",
+    "learn": "Tiếng Việt 2 Bài 1: đọc hiểu \"Tôi là học sinh lớp 2\", từ ngữ trong bài, lời chào, kể về kì nghỉ hè, viết chữ hoa A",
     "reward": "80 XP, 15 xu, Đọc hiểu +2, Từ ngữ +1",
     "unlock": "Bài 2 \"Ngày hôm qua đâu rồi?\""
   },
   "phases": {
     "hook": "gap-sau-xanh",
-    "explore": "chuan-bi-khai-giang",
+    "explore": "nhat-do-sau-xanh",
     "learn": "doc-bai",
-    "challenge": "chon-chi-tiet",
-    "decision": "tu-chi-lop-mot",
+    "challenge": "xep-buoi-sang",
+    "decision": "chip-rut-re",
     "finale": "tap-noi-loi-chao",
-    "reward": "phieu-viet",
+    "reward": "phan-thuong",
     "unlock": "mo-bai-2"
   },
   "texts": {
@@ -50,44 +50,76 @@
   },
   "places": {
     "sau-xanh": "cổng rừng",
+    "nhat-do-sau-xanh": "lối mòn trước cổng rừng",
     "bang-go-lop-hai": "bảng gỗ lớp Hai"
   },
   "steps": [
     {
       "id": "gap-sau-xanh",
       "title": "Gặp Sâu Xanh ở cổng rừng",
-      "goTo": "Ra cổng rừng, Sâu Xanh đợi từ sáng sớm",
+      "goTo": "Ra cổng rừng, Sâu Xanh đứng đợi từ lúc gà chưa gáy",
       "kind": "dialogue",
       "target": "sau-xanh",
       "lines": [
         {
           "speaker": "Sâu Xanh",
-          "text": "Ối, {name}! Hôm nay tớ vào lớp Hai của rừng mà tim cứ đập thình thịch."
+          "text": "{name} ơi! Hôm nay tớ vào lớp Hai của rừng, mà mười sáu cái chân cứ run cầm cập thế này!"
         },
         {
           "speaker": "Vẹt Xanh",
-          "text": "Sâu Xanh dậy từ lúc sương còn đọng trên lá đấy, bạn ấy sợ đến muộn nhất lớp."
+          "text": "Sâu Xanh dậy từ lúc ông mặt trời còn ngái ngủ đấy! Sớm sớm! Sớm sớm!"
         },
         {
           "speaker": "Sâu Xanh",
-          "text": "Cậu ở lại với tớ đến lúc trống vào học nhé?"
+          "text": "Tớ bò vội quá, rơi mất một chiếc giày, cái cặp lá và hộp bút dọc lối mòn rồi."
+        },
+        {
+          "speaker": "Sâu Xanh",
+          "text": "Cậu ở lại với tớ nhé? Có cậu, chắc chân tớ đỡ run được… tám cái."
         }
       ],
       "choices": [
         {
-          "text": "Được chứ, mình đi cùng cậu!",
-          "reply": "Vậy mình cùng xem cậu đã sẵn sàng chưa nào."
+          "text": "Được chứ, mình đi nhặt đồ cùng cậu!",
+          "reply": "Hoan hô! Mười sáu cái chân của tớ thôi run rồi… à, vẫn còn hai cái hơi run."
+        },
+        {
+          "text": "Để mình đếm chân giúp cậu trước nhé!",
+          "reply": "Một, hai, ba… mười sáu! Đủ cả. Giờ chỉ thiếu mỗi chiếc giày thôi."
         }
+      ]
+    },
+    {
+      "id": "nhat-do-sau-xanh",
+      "title": "Nhặt đồ Sâu Xanh đánh rơi",
+      "goTo": "Nhặt đồ Sâu Xanh đánh rơi dọc lối mòn trước cổng rừng",
+      "kind": "search",
+      "targets": [
+        "tv2-t01-giay-sau-xanh",
+        "tv2-t01-cap-la-sau-xanh",
+        "tv2-t01-hop-but-hat-de"
       ]
     },
     {
       "id": "chuan-bi-khai-giang",
       "title": "Kể chuyện chuẩn bị khai giảng",
+      "goTo": "Mang đồ về cổng rừng trả cho Sâu Xanh",
       "kind": "speak",
       "target": "sau-xanh",
-      "prompt": "Sâu Xanh tò mò hỏi: Em đã chuẩn bị những gì để đón ngày khai giảng?",
+      "prompt": "Sâu Xanh xỏ lại chiếc giày thứ mười sáu, ôm chặt cặp lá rồi hỏi {name}: Em đã chuẩn bị những gì để đón ngày khai giảng?",
       "hints": [
-        "Nhìn tranh các bạn mặc đồng phục chạy đến trường rồi kể về mình."
+        "Trong cặp sách của em có những đồ dùng gì?",
+        "Em mặc bộ quần áo nào để đi khai giảng?",
+        "Sâu Xanh chuẩn bị mười sáu chiếc giày, còn em chuẩn bị gì đặc biệt?"
+      ],
+      "pictureRefs": [
+        {
+          "kind": "diagram",
+          "type": "picture-card",
+          "params": {
+            "caption": "các bạn học sinh mặc đồng phục vui vẻ chạy đến trường, một bạn gái đeo cặp đi cùng mẹ, phía sau là ngôi trường có cờ đỏ"
+          }
+        }
       ],
       "curriculumRef": [
         "tv2-t1-b01-doc-kd"
@@ -96,7 +128,7 @@
     {
       "id": "doc-bai",
       "title": "Đọc bài trên bảng gỗ",
-      "goTo": "Đi theo mũi tên tới bảng gỗ lớp Hai để đọc bài",
+      "goTo": "Bò theo mũi tên tới bảng gỗ lớp Hai đọc bài",
       "kind": "read",
       "target": "bang-go-lop-hai",
       "textRef": "toi-la-hoc-sinh-lop-2",
@@ -136,14 +168,14 @@
       },
       "feedback": {
         "right": [
-          "Đúng rồi, các bạn cùng lớp đã tới trước!",
-          "Chuẩn! Không chỉ mình bạn ấy muốn đến sớm.",
-          "Giỏi lắm, {name} đọc kĩ thật đấy."
+          "Chuẩn! Các bạn đã ríu rít trong sân từ trước rồi. Vẹt Xanh vỗ cánh: đúng đúng!",
+          "Sâu Xanh gật gù đến rụng cả giọt sương trên đầu: {name} đọc kĩ ghê!",
+          "Giỏi quá! Hoá ra ai cũng muốn đến sớm, y như Sâu Xanh sáng nay."
         ],
         "wrong": [
-          "Đọc lại câu \"vừa đến cổng trường\" xem sao.",
-          "Sâu Xanh nghĩ khác đấy, mình dò lại đoạn hai nhé.",
-          "Ai đang ríu rít trong sân nhỉ? Thử lần nữa nào."
+          "Hụt mất rồi! Dò lại đoạn hai, chỗ bạn nhỏ vừa tới cổng trường nhé.",
+          "Bạn nhỏ vùng dậy ngay từ tiếng gọi đầu tiên, đâu có ngủ quên! Thử lại xem.",
+          "Trong sân có ai đang ríu rít nói cười nhỉ? Sâu Xanh bò đi tìm cùng {name} đây."
         ]
       }
     },
@@ -153,7 +185,7 @@
       "kind": "challenge",
       "mechanic": "multi-select",
       "target": "bang-go-lop-hai",
-      "prompt": "Những chi tiết nào cho thấy bạn nhỏ rất háo hức đến trường vào ngày khai giảng?",
+      "prompt": "Sâu Xanh thì thầm: bạn nhỏ này còn nôn nao hơn cả tớ! Những chi tiết nào cho thấy bạn nhỏ rất háo hức đến trường vào ngày khai giảng?",
       "choices": [
         {
           "id": "vung-day",
@@ -196,58 +228,82 @@
       },
       "feedback": {
         "right": [
-          "Tuyệt, đủ cả ba chi tiết háo hức!",
-          "Sâu Xanh gật gù: đúng là vội như tớ sáng nay!",
-          "Chọn chuẩn, không thừa không thiếu."
+          "Đủ cả ba chi tiết háo hức! Sâu Xanh vỗ mười sáu bàn chân lộp độp.",
+          "Vẹt Xanh khoe ngay từ mới học: nôn nao! nôn nao! Đúng y như {name} chọn.",
+          "Chọn chuẩn, không thừa không thiếu một chi tiết nào."
         ],
         "wrong": [
-          "Còn thiếu hoặc thừa một chi tiết đấy.",
-          "Chi tiết \"lớn bổng lên\" xảy ra lúc nào nhỉ?",
-          "Đếm lại xem mình đã chọn mấy chi tiết nhé."
+          "Còn thiếu hoặc thừa một chi tiết đấy, đếm lại trên đầu ngón tay nhé.",
+          "Chi tiết \"lớn bổng lên\" xảy ra lúc đứng cạnh các em lớp 1 cơ mà.",
+          "Bạn nhỏ chuẩn bị nhanh như chớp, tìm thêm chữ \"Loáng một cái\" xem."
         ]
       }
     },
     {
       "id": "doan-va-tranh",
-      "title": "Ghép đoạn với tranh",
+      "title": "Ghép tranh với đoạn",
       "kind": "challenge",
       "mechanic": "classify",
       "target": "bang-go-lop-hai",
-      "prompt": "Tìm tranh thích hợp với mỗi đoạn trong bài đọc.",
+      "prompt": "Gió thổi ba bức tranh rơi khỏi bảng gỗ, Vẹt Xanh ngậm lên trả nhưng quên chỗ treo. Tìm tranh thích hợp với mỗi đoạn trong bài đọc.",
       "groups": [
         {
-          "id": "tranh-1",
-          "label": "Tranh 1"
+          "id": "doan-1",
+          "label": "Đoạn 1: từ đầu đến “sớm nhất.”"
         },
         {
-          "id": "tranh-2",
-          "label": "Tranh 2"
+          "id": "doan-2",
+          "label": "Đoạn 2: tiếp theo đến “cùng các bạn.”"
         },
         {
-          "id": "tranh-3",
-          "label": "Tranh 3"
+          "id": "doan-3",
+          "label": "Đoạn 3: phần còn lại"
         }
       ],
       "items": [
         {
-          "id": "doan-1",
-          "label": "Đoạn 1"
+          "id": "tranh-1",
+          "label": "Tranh 1",
+          "image": {
+            "kind": "diagram",
+            "type": "picture-card",
+            "params": {
+              "caption": "bạn nhỏ đứng trò chuyện với các bạn trong sân trường, phía sau một em nhỏ rụt rè nắm tay mẹ",
+              "n": 1
+            }
+          }
         },
         {
-          "id": "doan-2",
-          "label": "Đoạn 2"
+          "id": "tranh-2",
+          "label": "Tranh 2",
+          "image": {
+            "kind": "diagram",
+            "type": "picture-card",
+            "params": {
+              "caption": "bạn nhỏ đeo cặp vẫy tay chào mẹ rồi chạy vào sân trường, phía xa có các bạn",
+              "n": 2
+            }
+          }
         },
         {
-          "id": "doan-3",
-          "label": "Đoạn 3"
+          "id": "tranh-3",
+          "label": "Tranh 3",
+          "image": {
+            "kind": "diagram",
+            "type": "picture-card",
+            "params": {
+              "caption": "bạn nhỏ mặc đồng phục, đeo cặp đứng trước bố mẹ ở nhà",
+              "n": 3
+            }
+          }
         }
       ],
       "skill": "doc-hieu",
       "answer": {
         "assignment": {
-          "doan-1": "tranh-3",
-          "doan-2": "tranh-2",
-          "doan-3": "tranh-1"
+          "tranh-3": "doan-1",
+          "tranh-2": "doan-2",
+          "tranh-1": "doan-3"
         }
       },
       "curriculumRef": [
@@ -266,14 +322,14 @@
       },
       "feedback": {
         "right": [
-          "Mỗi đoạn đã về đúng bức tranh của mình!",
-          "Hay quá, câu chuyện hiện ra theo đúng thứ tự.",
-          "{name} nhìn tranh tinh ghê!"
+          "Ba bức tranh đã về đúng chỗ! Vẹt Xanh khen: khớp khớp! Chuẩn chuẩn!",
+          "Câu chuyện hiện ra theo đúng thứ tự, từ ở nhà tới sân trường.",
+          "{name} nhìn tranh còn tinh hơn mắt Vẹt Xanh nữa đấy!"
         ],
         "wrong": [
-          "Đoạn nào kể chuyện ở nhà nhỉ?",
-          "Một đoạn đang lạc sang tranh khác rồi.",
-          "Thử nhìn xem trong tranh có em lớp 1 nào không."
+          "Đoạn nào kể chuyện ở nhà, có cả bố mẹ đứng nhìn nhỉ?",
+          "Một bức tranh đang đi lạc sang đoạn khác, giống chiếc giày của Sâu Xanh sáng nay.",
+          "Tranh nào có em nhỏ rụt rè nắm tay mẹ? Đó là đoạn cuối đấy."
         ]
       }
     },
@@ -319,24 +375,175 @@
       "feedback": {
         "right": [
           "Đúng thế, bạn nhỏ thấy mình lớn bổng lên!",
-          "Sâu Xanh cũng muốn lớn bổng như thế đấy.",
+          "Sâu Xanh kiễng cả mười sáu chân: tớ cũng muốn lớn bổng như thế!",
           "Chính xác, câu cuối bài nói rõ điều đó."
         ],
         "wrong": [
-          "Người rụt rè trong bài là ai thế?",
-          "Thử đọc lại câu cuối cùng của bài xem.",
-          "Gần được rồi, bạn nhỏ so mình với các em lớp 1 mà."
+          "Người rụt rè trong bài là các em lớp 1 chứ không phải bạn nhỏ đâu.",
+          "Thử đọc lại câu cuối cùng của bài, chỗ có chữ \"lớn bổng\" xem.",
+          "Gần được rồi, bạn nhỏ đang so mình với các em lớp 1 mà."
+        ]
+      }
+    },
+    {
+      "id": "xep-buoi-sang",
+      "title": "Xếp lại buổi sáng của bạn nhỏ",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "bang-go-lop-hai",
+      "prompt": "Sâu Xanh chép bốn câu trong bài lên bốn chiếc lá, ai ngờ gió trộn tung cả lên. Xếp các câu theo đúng thứ tự trong bài đọc nhé.",
+      "items": [
+        {
+          "id": "chao-me",
+          "label": "Tôi chào mẹ, chạy ào vào cùng các bạn."
+        },
+        {
+          "id": "vung-day",
+          "label": "Sáng sớm, mẹ mới gọi một câu mà tôi đã vùng dậy, khác hẳn mọi ngày."
+        },
+        {
+          "id": "lon-bong",
+          "label": "Trước các em, tôi cảm thấy mình lớn bổng lên."
+        },
+        {
+          "id": "thay-cac-ban",
+          "label": "Nhưng vừa đến cổng trường, tôi đã thấy mấy bạn cùng lớp đang ríu rít nói cười ở trong sân."
+        }
+      ],
+      "skill": "doc-hieu",
+      "answer": {
+        "order": [
+          "vung-day",
+          "thay-cac-ban",
+          "chao-me",
+          "lon-bong"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Câu nào kể chuyện ở nhà lúc sáng sớm?",
+          "Sau khi ra khỏi nhà, bạn nhỏ đến cổng trường rồi mới vào sân."
+        ],
+        "hint": "Câu \"lớn bổng lên\" nằm ở cuối bài.",
+        "answer": {
+          "text": "Vùng dậy → thấy các bạn ở cổng trường → chạy ào vào cùng các bạn → thấy mình lớn bổng lên",
+          "explanation": "Bài đọc đi từ ở nhà, tới cổng trường, vào sân, rồi tới lúc bạn nhỏ đứng cạnh các em lớp 1."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bốn chiếc lá xếp hàng thẳng tắp, Sâu Xanh định ăn thử một chiếc mà tiếc quá!",
+          "Đúng thứ tự rồi! Buổi sáng của bạn nhỏ chạy vèo vèo như phim.",
+          "Vẹt Xanh reo: trật tự! trật tự! {name} xếp chuẩn từng câu."
+        ],
+        "wrong": [
+          "Bạn nhỏ phải vùng dậy ở nhà trước rồi mới ra tới cổng trường chứ.",
+          "Câu \"lớn bổng lên\" là câu kết, đặt nó xuống cuối hàng nhé.",
+          "Chạy ào vào sân xảy ra sau khi thấy các bạn ríu rít ở trong đó đấy."
+        ]
+      }
+    },
+    {
+      "id": "tu-moi-cua-vet",
+      "title": "Ba từ lạ của Vẹt Xanh",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "target": "bang-go-lop-hai",
+      "prompt": "Vẹt Xanh sưu tầm được ba từ lạ trong bài: loáng, níu, lớn bổng. Lạ lạ! Hay hay! Đặt mỗi từ về đúng chỗ của nó trong bài đọc nhé.",
+      "template": "{{loang}} một cái, tôi đã chuẩn bị xong mọi thứ.\nMấy em lớp 1 đang rụt rè {{niu}} chặt tay bố mẹ.\nTrước các em, tôi cảm thấy mình {{lon}} lên.",
+      "blanks": [
+        {
+          "id": "loang",
+          "options": [
+            {
+              "id": "le-me",
+              "text": "Lề mề"
+            },
+            {
+              "id": "loang",
+              "text": "Loáng"
+            },
+            {
+              "id": "ngap",
+              "text": "Ngáp"
+            }
+          ]
+        },
+        {
+          "id": "niu",
+          "options": [
+            {
+              "id": "buong",
+              "text": "buông"
+            },
+            {
+              "id": "vay",
+              "text": "vẫy"
+            },
+            {
+              "id": "niu",
+              "text": "níu"
+            }
+          ]
+        },
+        {
+          "id": "lon",
+          "options": [
+            {
+              "id": "lon-bong",
+              "text": "lớn bổng"
+            },
+            {
+              "id": "be-ti",
+              "text": "bé tí"
+            },
+            {
+              "id": "buon-ngu",
+              "text": "buồn ngủ"
+            }
+          ]
+        }
+      ],
+      "skill": "tu-ngu",
+      "answer": {
+        "fills": {
+          "loang": "loang",
+          "niu": "niu",
+          "lon": "lon-bong"
+        }
+      },
+      "support": {
+        "guide": [
+          "Loáng (một cái) là rất nhanh; níu là nắm lấy và kéo lại; lớn bổng là lớn nhanh, vượt hẳn lên.",
+          "Đọc cả câu lên xem từ nào hợp nghĩa nhất."
+        ],
+        "hint": "Các em lớp 1 còn ngại nên nắm chặt tay bố mẹ không chịu buông.",
+        "answer": {
+          "text": "Loáng một cái…; …rụt rè níu chặt tay bố mẹ; …mình lớn bổng lên.",
+          "explanation": "Ba từ đều có trong mục Từ ngữ dưới bài đọc, và mỗi từ nằm đúng một câu của bài."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ba từ lạ về đúng tổ! Vẹt Xanh cất ngay vào bộ sưu tập: loáng loáng! níu níu!",
+          "Điền chuẩn như cô giáo rừng chấm, không sai một li.",
+          "{name} giỏi thật, giờ Vẹt Xanh phải tìm từ khó hơn để đố mất thôi."
+        ],
+        "wrong": [
+          "Bạn nhỏ chuẩn bị rất nhanh, \"lề mề\" thì chậm như rùa mất rồi.",
+          "Các em lớp 1 đang nắm chặt tay bố mẹ, đâu có buông ra hay vẫy tay.",
+          "Đứng trước các em, bạn nhỏ thấy mình to lên hay bé đi nhỉ? Thử lại nào."
         ]
       }
     },
     {
       "id": "tu-chi-lop-mot",
       "title": "Chọn từ tả các em lớp 1",
-      "goTo": "Trở lại cổng rừng, Sâu Xanh có chuyện muốn hỏi",
+      "goTo": "Trở lại cổng rừng, trống sắp vào học rồi",
       "kind": "challenge",
       "mechanic": "quiz",
       "target": "sau-xanh",
-      "prompt": "Từ nào dưới đây nói về các em lớp 1 trong ngày khai trường?",
+      "prompt": "Ở cổng rừng, Sâu Xanh chỉ về phía mấy bạn nhỏ xíu đang nấp sau lưng mẹ. Từ nào dưới đây nói về các em lớp 1 trong ngày khai trường?",
       "choices": [
         {
           "id": "ngac-nhien",
@@ -371,27 +578,61 @@
       },
       "feedback": {
         "right": [
-          "Đúng rồi, các em còn rụt rè lắm.",
-          "Sâu Xanh thì thầm: năm ngoái tớ cũng rụt rè y thế.",
-          "Chọn trúng từ trong bài luôn!"
+          "Đúng rồi, các em còn rụt rè lắm!",
+          "Sâu Xanh đỏ mặt thú nhận: năm ngoái tớ còn rụt rè gấp mười sáu lần.",
+          "Chọn trúng ngay từ có trong bài luôn!"
         ],
         "wrong": [
-          "Người háo hức là bạn nhỏ lớp 2 cơ.",
-          "Ai là người ngạc nhiên trong bài nhỉ? Không phải các em lớp 1 đâu.",
-          "Tìm lại câu có \"níu chặt tay bố mẹ\" nhé."
+          "Người háo hức là bạn nhỏ lớp 2 cơ, không phải các em lớp 1.",
+          "Ai ngạc nhiên nhìn bạn nhỏ trong bài nhỉ? Là bố đấy, đâu phải các em.",
+          "Tìm lại câu có \"níu chặt tay bố mẹ\" rồi chọn lại nhé."
         ]
       }
+    },
+    {
+      "id": "chip-rut-re",
+      "title": "Gà Con Chíp không dám vào lớp",
+      "kind": "dialogue",
+      "target": "sau-xanh",
+      "lines": [
+        {
+          "speaker": "Gà Con Chíp",
+          "text": "Chiếp… Tại sao lớp Một lại đông thế? Tại sao chân tớ cứ muốn chạy về nhà?"
+        },
+        {
+          "speaker": "Sâu Xanh",
+          "text": "Chíp mới vào lớp Một, cứ níu chặt cánh mẹ y như các em trong bài đọc ấy."
+        },
+        {
+          "speaker": "Sâu Xanh",
+          "text": "{name} ơi, mình nói gì cho Chíp đỡ sợ bây giờ?"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Chào Chíp! Năm ngoái mình cũng run y như cậu đấy.",
+          "reply": "Chíp ló đầu ra khỏi cánh mẹ: Thật á? Thế tại sao bây giờ cậu hết run?"
+        },
+        {
+          "text": "Chíp ơi, vào lớp vui lắm, có cả trống trường nữa!",
+          "reply": "Chíp nghiêng đầu: Tại sao trống lại kêu tùng tùng? Thôi, tớ vào xem thử!"
+        },
+        {
+          "text": "Sâu Xanh và mình sẽ dắt cậu tới tận cửa lớp.",
+          "reply": "Sâu Xanh chìa ra… bốn cái chân một lúc. Chíp bật cười, thôi không níu mẹ nữa."
+        }
+      ]
     },
     {
       "id": "tap-noi-loi-chao",
       "title": "Tập nói lời chào",
       "kind": "speak",
       "target": "sau-xanh",
-      "prompt": "Trống sắp vào học rồi! Thực hiện các yêu cầu sau: a. Nói lời chào tạm biệt mẹ trước khi đến trường. b. Nói lời chào thầy, cô giáo khi đến lớp. c. Cùng bạn nói và đáp lời chào khi gặp nhau ở trường.",
+      "prompt": "Tùng! Tùng! Trống vào học rồi, Sâu Xanh luống cuống chào nhầm cả cái cây. {name} làm mẫu giúp bạn nhé! Thực hiện các yêu cầu sau: a. Nói lời chào tạm biệt mẹ trước khi đến trường. b. Nói lời chào thầy, cô giáo khi đến lớp. c. Cùng bạn nói và đáp lời chào khi gặp nhau ở trường.",
       "hints": [
-        "Chào mẹ trước khi vào lớp.",
-        "Chào thầy cô khi bước vào lớp.",
-        "Chào một bạn và nghe bạn chào lại."
+        "Vẫy tay chào mẹ thật tươi trước khi vào cổng.",
+        "Khoanh tay, lễ phép chào thầy cô khi bước vào lớp.",
+        "Chào một bạn thật to, rồi lắng nghe bạn chào lại mình."
       ],
       "curriculumRef": [
         "tv2-t1-b01-doc-lt2-a",
@@ -404,11 +645,34 @@
       "title": "Kể về những ngày hè",
       "kind": "speak",
       "target": "sau-xanh",
-      "prompt": "Giờ ra chơi, Sâu Xanh rủ {name} kể chuyện: Kể về điều đáng nhớ nhất trong kì nghỉ hè của em. Em cảm thấy thế nào khi trở lại trường sau kì nghỉ hè?",
+      "prompt": "Giờ ra chơi, Sâu Xanh kể cả hè chỉ ăn lá với ngủ, rồi rủ {name} kể chuyện của mình: Kể về điều đáng nhớ nhất trong kì nghỉ hè của em. Em cảm thấy thế nào khi trở lại trường sau kì nghỉ hè?",
       "hints": [
         "Nghỉ hè, em được đi những đâu?",
         "Em được tham gia những hoạt động nào?",
         "Em nhớ nhất điều gì?"
+      ],
+      "pictureRefs": [
+        {
+          "kind": "diagram",
+          "type": "picture-card",
+          "params": {
+            "caption": "gia đình đi du lịch, xe buýt đỗ bên dòng sông có cầu gỗ, hàng dừa và nhà lá"
+          }
+        },
+        {
+          "kind": "diagram",
+          "type": "picture-card",
+          "params": {
+            "caption": "gia đình chơi ở bãi biển, mẹ và các con xây lâu đài cát, bố chơi bóng, có diều bay"
+          }
+        },
+        {
+          "kind": "diagram",
+          "type": "picture-card",
+          "params": {
+            "caption": "bốn bạn nhỏ đá bóng trên bãi cỏ"
+          }
+        }
       ],
       "curriculumRef": [
         "tv2-t1-b01-noi-nghe-1",
@@ -421,7 +685,7 @@
       "kind": "worksheet",
       "trigger": "auto",
       "lessonId": "tv2-t1-b01",
-      "text": "Nhờ bố mẹ in phiếu Bài 1 ở khu phụ huynh để tập viết chữ hoa A, câu ứng dụng và vài câu về ngày hè của em.",
+      "text": "Nhờ bố mẹ in phiếu Bài 1 ở khu phụ huynh nhé: tập viết chữ hoa A, câu ứng dụng và vài câu về ngày hè. Sâu Xanh cầm bút bằng cả mười sáu chân mà vẫn chưa viết đẹp bằng em đâu!",
       "curriculumRef": [
         "tv2-t1-b01-viet-chu-hoa-1",
         "tv2-t1-b01-viet-ung-dung-2",
@@ -433,14 +697,14 @@
       "title": "Quà của Sâu Xanh",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Sâu Xanh tặng {name} một chiếc lá vẽ hình ông mặt trời để kỉ niệm buổi sáng đầu tiên của lớp Hai."
+      "text": "Sâu Xanh tặng {name} một chiếc lá dâu non in mười sáu dấu chân bé xíu, rồi hứa sẽ ăn thật nhiều lá để mau lớn bổng như bạn nhỏ trong bài."
     },
     {
       "id": "mo-bai-2",
       "title": "Tờ lịch bay đi",
       "kind": "unlock",
       "trigger": "auto",
-      "text": "Một cơn gió thổi tờ lịch lá bay về phía gốc cây của Voi Bảo. Chuyện gì xảy ra với ngày hôm qua thế nhỉ?"
+      "text": "Vù… một cơn gió thổi tờ lịch lá bay về phía gốc cây của Voi Bảo. Voi Bảo nhớ mọi thứ trên đời, vậy mà hôm nay lại hỏi: ngày hôm qua đâu rồi?"
     }
   ],
   "reward": {
