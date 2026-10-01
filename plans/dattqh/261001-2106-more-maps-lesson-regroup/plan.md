@@ -63,10 +63,12 @@ Chương trong một map được đánh số lại 1..n theo thứ tự của s
 7. [~] **Thư viện và Lâu đài (L mỗi map).** Bản đầu xong (01/10): `generate-thu-vien-map.ts`, `generate-lau-dai-map.ts`; còn phong cách theo mock. Thư viện: kệ sách, góc đọc, tháp đồng hồ và bảng lịch (Toán ngày giờ). Lâu đài: tường thành, sân hình khối, cầu thang tháp — sân ôn tập cuối kì là "thử thách" như Master Plan §4. Giữ trong ngân sách: ≤ 150 draw call ở mức Cao, kích thước map 256 × 48 × 256.
 7b. **Đời sống của mỗi map (L).** Kiểu sinh hoạt mới trong `apps/web/src/game/ambient/ambient-routines.ts` (+ `AmbientRoutine` trong `packages/voxel`, lời thoại trong kho câu nói) theo đúng nghề và việc của từng nơi: chèo đò, cấy lúa, thả diều, bán nước chè (Làng); rao hàng, mặc cả, gánh hàng (Chợ); vắt sữa, cho gà ăn, cày ruộng (Nông trại); nhảy dây, bảo vệ, lao công (Trường); nấu cơm, phơi đồ, tưới cây (Xóm); đọc sách, xếp sách (Thư viện); lính gác, thổi kèn (Lâu đài). Hoạt cảnh nhóm: hai, ba người cùng làm một việc, nói qua lại. Generator đặt chỗ làm việc của họ (tách phần chung của `forest-life.ts`), giữ khoảng cách với mục tiêu quest như ở rừng. Test: mỗi map ≥ 8 người, ≥ 30 con vật, mọi chỗ làm việc đứng được và đi tới được; đo draw call ở E2E mẫu.
 7c. **Cổng giữa các map (M).** Bước tới cổng của một khu ở map trung tâm thì vào map của khu đó (cùng luồng như chọn khu ở màn Khu vực, tiến độ theo server như cũ); mỗi map có cổng về trung tâm ở gần điểm xuất phát. Cổng hiện tên map và các bài trong sách. E2E: đi từ trung tâm sang một map và về.
+7d. **Map rộng gấp 10, tải lười (XL).** Người sở hữu 01/10 23:28 + Jev (`plans/dattqh/reports/jev-261001-2345-wide-maps.md`): mỗi map ~800 × 48 × 800. Dữ liệu map chia vùng 128 × 128 (file tĩnh trong manifest) + một lưới chân trời thô; game tải vùng gần trước, meshing/giải phóng chunk theo khoảng cách trong worker với ngân sách mỗi khung, chưa có vùng thì bé không rơi; prop gộp theo ô 64 × 64 hiện theo khoảng cách; dân làng, thú vật, mục tiêu ở xa thì ngủ. Đo: thời gian vào map, khung hình, bộ nhớ ở mẫu E2E mỗi map (mức Thấp/Vừa/Cao).
+7e. **Đi lại trong map rộng (M).** Bài học vẫn là quãng đi ngắn trong khu của chương; các khu ở các quận khác nhau. Xe đời thường giữa các quận (trạm xe buýt, bến đò, xe bò, xe đạp) và biển chỉ đường chạm để tới nơi đã đến; mũi tên nhiệm vụ chỉ đường tới bến/xe gần nhất khi đích ở quận khác.
 8. **Bản đồ thế giới, Home, màn Khu vực (M).** `generate-world-overview.ts` thêm đảo cho 4 khu mới, đổi Thư viện và Lâu đài thành đảo chơi được; sinh lại ảnh đảo Home (`pnpm assets:home`) và vùng nhấn. Thẻ khu vực hiện khoảng bài trong sách (ví dụ "Tiếng Việt bài 1–8"). Nếu chưa có, thêm lối "Học tiếp" ở Home tới bài chưa xong đầu tiên theo thứ tự sách, qua mọi map.
 9. **Kiểm, docs, phát hành (M).** Gate 5 lệnh + web build + `e2e:ci`; sửa E2E đang chỉ theo map cũ (`sgk-content`, `school`, `wayfinding`, `forest-life`, `quest-api.ts`); `pnpm security:dist`. Thêm một mẫu E2E cho mỗi map mới (vào map, gặp hướng dẫn viên, nhận một bài). Docs: Master Plan §4 (bảng khu vực) và §15 #33, §16 tiêu chí 8; `docs/project-roadmap.md`; `CLAUDE.md` (câu "Hai map chơi được…" và lệnh `world:*`); trang review có ảnh 8 map và số liệu hiệu năng. Deploy staging rồi production: **hỏi người trước**; sao lưu database production trước khi deploy dù đợt này không đổi schema.
 
-Phụ thuộc: 1 → 2 → (3 → 4) song song được với (5, 6, 7) sau khi bảng phân bài của 3 xong; 7b sau 6, 7 (và 5 cho rừng, trường); 8 sau 6, 7; 9 cuối.
+Phụ thuộc: 1 → 2 → (3 → 4) song song được với (5, 6, 7) sau khi bảng phân bài của 3 xong; 7d (tải lười) trước khi phóng map lên 800; phong cách theo mock, 7b, 7c, 7e làm trên map 800; 8 sau 6, 7; 9 cuối.
 
 ## Rủi ro
 
@@ -80,7 +82,7 @@ Phụ thuộc: 1 → 2 → (3 → 4) song song được với (5, 6, 7) sau khi 
 
 ## Nghiệm thu
 
-- [ ] Mỗi map 256 × 256, ≥ 8 người và ≥ 30 con vật sinh hoạt.
+- [ ] Mỗi map ~800 × 800 (gấp 10 diện tích), tải lười theo vùng, chân trời thô; vào map và khung hình trong ngân sách ở mức Thấp; ≥ 8 người và ≥ 30 con vật sinh hoạt mỗi quận.
 - [ ] 8 map chơi được, mỗi map đúng các bài ở bảng chia; `content:check` xanh với các luật mới (map tồn tại, NPC một map, không nhắc khu khác).
 - [ ] `pnpm content:spread` = 0 vi phạm trên cả 8 map.
 - [ ] Không câu SGK nào đổi; id 71 quest giữ nguyên.
