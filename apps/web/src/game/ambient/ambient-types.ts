@@ -61,6 +61,8 @@ export interface RoutineSpec {
   readonly greet: { readonly clip: string; readonly pool: string };
   /** Played when the child taps it; then the character goes back to its chore. */
   readonly react: readonly Chore[];
+  /** Played when the child finishes a quest nearby: the world cheers (lively chores skipped under reduced motion; empty: it carries on). */
+  readonly celebrate: readonly Chore[];
   /** Clip while it watches the child (people idle; a sleepy fox keeps dozing). */
   readonly watchClip?: string;
   /** Wings the three.js layer moves: a bird's beat in flight, a bee's never-ending buzz. */

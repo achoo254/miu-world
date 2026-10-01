@@ -1,9 +1,14 @@
 // Chapter 1 against the real server and content: meet the parrot (M3.3) → take the quest → the arrow
 // points at a clue → find the three clues in reverse order → tracker 3/3 from the server → the letter
 // opens by itself → read it and answer → on to the beaver. The Math challenges: challenges.spec.ts.
+import { mkdirSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import { expect, test } from '@playwright/test';
 import { freshChild, playAt, playUntil } from './quest-api';
 import { readStats, waitReady } from './stats';
+
+/** The world's cheer for a finished quest, for the review (outside git). */
+const SHOTS = fileURLToPath(new URL('../../../.data/celebration/', import.meta.url));
 
 // Its own parent and child: quest progress must start empty and never leak into other projects.
 test.use({ storageState: { cookies: [], origins: [] } });
@@ -86,8 +91,15 @@ test('finishing chapter 1 without seeing an answer: 100 XP, Level Up to 2, chapt
   await waitReady(page);
   await page.locator('[data-id="hud-interact"]').click();
 
-  // The gate opens by itself after the chest; the server pays and the reward screens follow.
+  // The world cheers first: villagers and animals around join in and confetti flies, before any screen covers it.
   const reward = page.getByRole('dialog', { name: 'Hoàn thành nhiệm vụ!' });
+  await expect.poll(async () => (await readStats(page)).confetti).toBe(true);
+  expect((await readStats(page)).ambientCelebrations).toBeGreaterThan(0);
+  await page.waitForTimeout(700);
+  mkdirSync(SHOTS, { recursive: true });
+  await page.screenshot({ path: `${SHOTS}celebration.png` });
+  await expect(reward).toHaveCount(0);
+  // The gate opens by itself after the chest; the server pays and the reward screens follow.
   await expect(reward).toBeVisible();
   await expect(page.locator('[data-id="reward-stars"]')).toHaveAttribute('data-stars', '3');
   await expect(page.locator('[data-id="reward-xp"] .visually-hidden')).toHaveText('+100 XP');

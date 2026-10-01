@@ -19,6 +19,7 @@ import { entitiesForChapter, mapForRegion } from '@miu/voxel/world-entities';
 import { UI_ICONS, assetUrl } from '../ui/kit/ui-art';
 import type { GameStore } from '../game-bridge/game-store';
 import { loadAmbientLife, type AmbientTarget } from './ambient/ambient-life';
+import { createConfetti } from './scene/confetti';
 import { AssetRegistry, GuardedGltfLoader } from './asset-loader';
 import { createReviewShot } from './debug/review-shots';
 import { StatsOverlay } from './debug/stats-overlay';
@@ -256,6 +257,7 @@ export class Game {
       }
       return nearY;
     };
+    const reducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
     const [character, targets, props, life] = await Promise.all([
       loadPlayerCharacter(loader, this.options.species ?? DEFAULT_SPECIES, outfit),
       loadInteractables(loader, entities, quality.shadows),
@@ -264,14 +266,15 @@ export class Game {
       loadAmbientLife(loader, params.get('life') === '0' ? [] : (entities.ambients ?? []), {
         quality: quality.level,
         shadows: quality.shadows,
-        reduced: window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false,
+        reduced: reducedMotion,
         playerName: this.options.playerName ?? 'bạn',
         ground,
       }),
     ]);
     if (this.disposed) return;
     stepLoaded();
-    scene.add(character.root, props, life.group, ...targets.map((t) => t.root));
+    const confetti = createConfetti();
+    scene.add(character.root, props, life.group, confetti.mesh, ...targets.map((t) => t.root));
     overlay.stats.outfit = character.outfit;
 
     const liquid = (x: number, y: number, z: number): boolean => blocks(data.world.get(x, y, z))?.liquid ?? false;
@@ -321,6 +324,7 @@ export class Game {
     let promptAmbient: AmbientTarget | null = null;
     let interactRequested = false;
     let rescueRequested = false;
+    let celebrateRequested = false;
     const byId = new Map(targets.map((t) => [t.def.id, t]));
     const arrow = createTargetArrow();
     scene.add(arrow.root);
@@ -329,6 +333,7 @@ export class Game {
       store.onCommand((command) => {
         if (command.type === 'interact') interactRequested = true;
         if (command.type === 'rescue') rescueRequested = true;
+        if (command.type === 'celebrate') celebrateRequested = true;
         if (command.type === 'set-target-hint') hint = command.targetId ? (byId.get(command.targetId) ?? null) : null;
         // Server-backed target states; a target missing from the map returns to its initial look.
         if (command.type === 'set-world-state') for (const [id, target] of byId) target.setState(command.state[id]);
@@ -438,6 +443,15 @@ export class Game {
       } else if (interact && promptAmbient) {
         life.react(promptAmbient.id);
       }
+      // A finished quest: everyone around cheers; confetti unless the child asked for less motion.
+      if (celebrateRequested) {
+        celebrateRequested = false;
+        life.celebrate(controller.position);
+        if (!reducedMotion) confetti.burst(controller.position);
+      }
+      confetti.update(dt);
+      overlay.stats.ambientCelebrations = life.stats.celebrations;
+      overlay.stats.confetti = confetti.active;
       overlay.stats.ambientVisible = life.stats.visible;
       overlay.stats.ambientReactions = life.stats.reactions;
       overlay.stats.ambientLine = life.stats.lastLine;

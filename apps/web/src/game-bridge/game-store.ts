@@ -57,7 +57,9 @@ export type GameCommand =
   /** Target the quest tracker points at (direction arrow), or none. */
   | { type: 'set-target-hint'; targetId: string | null }
   /** Put Miu back where she last stood safely (the "Quay lại" button, the pause menu). */
-  | { type: 'rescue' };
+  | { type: 'rescue' }
+  /** A quest was just finished: the world around Miu cheers (villagers, animals, confetti). */
+  | { type: 'celebrate' };
 
 export interface GameStore {
   subscribe(listener: () => void): () => void;

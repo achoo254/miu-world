@@ -47,7 +47,9 @@ describe('ambient routines', () => {
     expect(Object.keys(ROUTINES).sort()).toEqual([...AMBIENT_ROUTINES].sort());
     for (const [name, spec] of Object.entries(ROUTINES) as Array<[string, RoutineSpec]>) {
       if (spec.kind !== 'swimmer') expect(spec.chores.length, name).toBeGreaterThanOrEqual(3);
-      const beats = [...spec.chores, ...spec.react].flatMap((c) => c.beats);
+      const beats = [...spec.chores, ...spec.react, ...spec.celebrate].flatMap((c) => c.beats);
+      // Everyone who can be seen cheers a finished quest; a fish that only leaps now and then may not.
+      if (spec.kind !== 'swimmer') expect(spec.celebrate.length, `${name} celebrates`).toBeGreaterThan(0);
       const pools = [spec.greet.pool, ...beats.flatMap((b) => (b.do === 'say' ? [b.pool, ...(b.reply ? [b.reply] : [])] : []))];
       for (const pool of pools) expect(AMBIENT_LINES[pool]?.length ?? 0, `${name} pool ${pool}`).toBeGreaterThanOrEqual(3);
     }
@@ -144,6 +146,23 @@ describe('AmbientActor', () => {
     const bunny = live(actorFor('bunny', 4), 60, reduced).frames;
     expect(bunny.every((f) => f.position[1] === 10)).toBe(true);
     expect(live(actorFor('fish', 4), 30, reduced).frames.every((f) => !f.visible)).toBe(true);
+  });
+
+  it('cheers a finished quest with its own line, then goes back to work; calmly under reduced motion', () => {
+    const woodcutter = actorFor('woodcutter', 7);
+    live(woodcutter, 5);
+    expect(woodcutter.celebrate(false)).toBe(true);
+    expect(woodcutter.celebrate(false)).toBe(false); // already cheering
+    expect(live(woodcutter, 4).speech[0]?.pool).toBe('woodcutter-cheer');
+    expect(woodcutter.canReact).toBe(true);
+    // Reduced motion: only cheers that stay on the ground, so the bunny never leaves it.
+    const bunny = actorFor('bunny', 7);
+    const calm = ctx({ reduced: true });
+    live(bunny, 3, calm);
+    for (let i = 0; i < 4; i++) {
+      bunny.celebrate(true);
+      expect(live(bunny, 4, calm).frames.every((f) => f.position[1] === 10)).toBe(true);
+    }
   });
 
   it('answers a neighbour on the next frame, turned towards them', () => {

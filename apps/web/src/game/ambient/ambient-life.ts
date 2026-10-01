@@ -31,6 +31,8 @@ const HEAR_RADIUS = 16;
 /** A villager within this distance may answer another; the answer comes after a short pause. */
 const ANSWER_RADIUS = 7;
 const ANSWER_DELAY = 1.6;
+/** How long cheering bubbles may show even beside a quest target (seconds). */
+const CHEER_SECONDS = 4;
 const CLIP_FADE = 0.25;
 /** Length of each held item in the model's own units (a Blocky character is 2.7 tall). */
 const HELD_LENGTH: Readonly<Record<string, number>> = { axe: 1.7, hoe: 2, bucket: 0.8, wood: 1, fish: 0.9, carrot: 0.7, spoon: 1 };
@@ -54,17 +56,19 @@ export interface AmbientTarget {
 export interface AmbientLife {
   readonly group: Group;
   /**
-   * `quiet`: a quest prompt is up, so ambient bubbles stay hidden. `lastFrameCalls`: draw calls of the
-   * previous frame, which keeps the cast within the budget.
+   * `questPrompt`: a quest prompt is up, so ambient bubbles stay hidden (except while cheering a finished
+   * quest). `lastFrameCalls`: draw calls of the previous frame, which keeps the cast within the budget.
    */
-  update(dt: number, player: { x: number; y: number; z: number }, quiet: boolean, lastFrameCalls: number): void;
+  update(dt: number, player: { x: number; y: number; z: number }, questPrompt: boolean, lastFrameCalls: number): void;
   /** The tappable ambient character within reach of the child, nearest first, or null. */
   nearest(player: { x: number; y: number; z: number }): AmbientTarget | null;
   /** The child tapped it: it chats or does a trick. */
   react(id: string): boolean;
+  /** The child finished a quest: everyone near them cheers (their bubbles show even next to a quest target). Returns how many joined in. */
+  celebrate(player: { x: number; y: number; z: number }): number;
   /** Screen position (CSS px) above the character, for the prompt anchor. */
   screenAnchor(target: AmbientTarget, camera: Camera, viewport: { width: number; height: number }): { x: number; y: number };
-  readonly stats: { visible: number; reactions: number; lastLine: string | null };
+  readonly stats: { visible: number; reactions: number; celebrations: number; lastLine: string | null };
 }
 
 export interface AmbientOptions {
@@ -142,7 +146,9 @@ export async function loadAmbientLife(loader: GuardedGltfLoader, ambients: reado
   const group = new Group();
   group.name = 'ambient-life';
   const limit = AMBIENT_LIMIT[options.quality] ?? AMBIENT_LIMIT.low ?? 6;
-  const stats = { visible: 0, reactions: 0, lastLine: null as string | null };
+  const stats = { visible: 0, reactions: 0, celebrations: 0, lastLine: null as string | null };
+  /** Seconds the celebration still lets bubbles show next to a quest target. */
+  let cheering = 0;
 
   const members = await Promise.all(
     ambients.map(async (def) => {
@@ -213,7 +219,9 @@ export async function loadAmbientLife(loader: GuardedGltfLoader, ambients: reado
   return {
     group,
     stats,
-    update(dt, player, quiet, lastFrameCalls) {
+    update(dt, player, questPrompt, lastFrameCalls) {
+      cheering = Math.max(0, cheering - dt);
+      const quiet = questPrompt && cheering <= 0;
       reselect -= dt;
       if (reselect <= 0) {
         reselect = RESELECT_SECONDS;
@@ -305,6 +313,17 @@ export async function loadAmbientLife(loader: GuardedGltfLoader, ambients: reado
       if (!member?.actor.react()) return false;
       stats.reactions++;
       return true;
+    },
+    celebrate(player) {
+      let joined = 0;
+      for (const m of members) {
+        const [x, , z] = m.actor.position;
+        // Everyone drawn around the child joins in, wherever the quest ends.
+        if (Math.hypot(player.x - x, player.z - z) <= DRAW_RADIUS && m.actor.celebrate(options.reduced)) joined++;
+      }
+      cheering = CHEER_SECONDS;
+      stats.celebrations += joined;
+      return joined;
     },
   };
 }

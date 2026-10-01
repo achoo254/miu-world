@@ -11,6 +11,11 @@ import { say, type PlayerData } from '../player/player-data';
 import { DONE_LINES, FOUND_LINES, NOT_NOW_LINES, fillLine } from './loop-lines';
 import { autoStep, currentStep, hintTarget, stepForTarget, worldState, type ActiveQuestView } from './quest-flow';
 
+/** How long the world cheers a finished quest before the reward screens (shorter under reduced motion: no confetti, no hops). */
+export const CELEBRATION_MS = 2600;
+const CELEBRATION_REDUCED_MS = 1200;
+const celebrationMs = (): number => (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ? CELEBRATION_REDUCED_MS : CELEBRATION_MS);
+
 /** What covers the game right now: a dialogue, or a learning step screen (read, riddle, challenge). */
 export type QuestOverlay = { step: QuestStepPublic } | null;
 
@@ -62,6 +67,14 @@ export function useQuestController({ store, data, questId, onResponse, onOverlay
   useEffect(() => {
     latest.current = { data, questId, overlay, busy, onResponse, onOverlayChange };
   });
+  /** The pending switch from the world's cheer to the reward screens. */
+  const celebration = useRef<number | null>(null);
+  useEffect(
+    () => () => {
+      if (celebration.current !== null) window.clearTimeout(celebration.current);
+    },
+    [],
+  );
   // What covers the game (it stops rendering meanwhile): a step screen, the offline retry, the rewards.
   const covers = useRef({ overlay: false, retry: false, finished: false });
   const cover = useCallback((part: 'overlay' | 'retry' | 'finished', on: boolean): void => {
@@ -120,8 +133,15 @@ export function useQuestController({ store, data, questId, onResponse, onOverlay
         syncWorld(active.quest, response.quest);
         // Only the call that finished the quest carries a completion; a repeat grants nothing new.
         if (response.completion && response.reward && !response.repeated) {
-          setFinished({ completion: response.completion, reward: response.reward });
-          cover('finished', true);
+          const done: FinishedQuest = { completion: response.completion, reward: response.reward };
+          // The world cheers first (villagers, animals, confetti around Miu), then the reward screens.
+          store.send({ type: 'celebrate' });
+          if (celebration.current !== null) window.clearTimeout(celebration.current);
+          celebration.current = window.setTimeout(() => {
+            celebration.current = null;
+            setFinished(done);
+            cover('finished', true);
+          }, celebrationMs());
         }
         // A wrong answer's line shows inside the step screen; only a right one becomes a toast.
         if (response.feedback && response.correct) setToast(say(response.feedback, latest.current.data.character));
@@ -148,7 +168,7 @@ export function useQuestController({ store, data, questId, onResponse, onOverlay
         setBusy(false);
       }
     },
-    [activeQuest, syncWorld, setOverlay, cover],
+    [activeQuest, syncWorld, setOverlay, cover, store],
   );
 
   /** Opens the screen for a step, or completes it straight away when it has none. */

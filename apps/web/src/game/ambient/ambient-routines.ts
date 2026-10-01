@@ -13,6 +13,11 @@ const personReact = (pool: string): Chore[] => [
   { id: 'nod', weight: 2, beats: [{ do: 'say', pool }, { do: 'act', clip: 'emote-yes', loops: [1, 1] }] },
   { id: 'point', weight: 1, beats: [{ do: 'say', pool }, { do: 'act', clip: 'interact-right', loops: [1, 1] }, { do: 'act', clip: 'idle', seconds: [0.6, 1] }] },
 ];
+/** A quest finished nearby: a villager cheers the child by name and waves, or (lively) hops for joy. */
+const personCelebrate = (pool: string): Chore[] => [
+  { id: 'cheer-wave', weight: 2, beats: [{ do: 'say', pool }, { do: 'act', clip: 'emote-yes', loops: [1, 1] }, { do: 'act', clip: 'idle', seconds: [1.4, 1.8], pose: 'wave' }] },
+  { id: 'cheer-hop', weight: 1, lively: true, beats: [{ do: 'say', pool }, { do: 'hop', to: 'wander', hops: [2, 3], radius: 0.8 }, { do: 'act', clip: 'idle', seconds: [0.8, 1.2], pose: 'wave' }] },
+];
 /** Stretching a sore back and looking around: a beat any villager slips in between chores. */
 const breather: Chore = {
   id: 'breather',
@@ -24,6 +29,11 @@ const breather: Chore = {
 };
 
 const ANIMAL = { kind: 'animal', walkSpeed: 1, noticeRadius: 3.5, reach: 2, label: 'Vuốt ve' } as const;
+/** A quest finished nearby: an animal dances and makes its sound, or (lively) bounces around. */
+const animalCelebrate = (pool: string): Chore[] => [
+  { id: 'cheer-dance', weight: 2, beats: [{ do: 'say', pool }, { do: 'act', clip: 'dance', loops: [1, 2] }] },
+  { id: 'cheer-bounce', weight: 1, lively: true, beats: [{ do: 'say', pool }, { do: 'hop', to: 'wander', hops: [2, 4], radius: 1 }, { do: 'act', clip: 'gesture-positive', loops: [1, 1] }] },
+];
 /** Tapping an animal: it does a trick and makes its sound. */
 const trick = (pool: string, clip: string, extra: Chore['beats'] = []): Chore[] => [
   { id: 'trick', weight: 1, beats: [{ do: 'say', pool }, { do: 'act', clip, loops: [1, 2] }, ...extra] },
@@ -34,6 +44,7 @@ export const ROUTINES: Readonly<Record<AmbientRoutine, RoutineSpec>> = {
     ...PERSON,
     greet: personGreet('woodcutter-greet'),
     react: personReact('woodcutter-chat'),
+    celebrate: personCelebrate('woodcutter-cheer'),
     chores: [
       {
         id: 'chop',
@@ -80,6 +91,7 @@ export const ROUTINES: Readonly<Record<AmbientRoutine, RoutineSpec>> = {
     ...PERSON,
     greet: personGreet('fisher-greet'),
     react: personReact('fisher-chat'),
+    celebrate: personCelebrate('fisher-cheer'),
     chores: [
       {
         id: 'catch',
@@ -126,6 +138,7 @@ export const ROUTINES: Readonly<Record<AmbientRoutine, RoutineSpec>> = {
     ...PERSON,
     greet: personGreet('gardener-greet'),
     react: personReact('gardener-chat'),
+    celebrate: personCelebrate('gardener-cheer'),
     chores: [
       {
         id: 'hoe',
@@ -172,6 +185,7 @@ export const ROUTINES: Readonly<Record<AmbientRoutine, RoutineSpec>> = {
     ...PERSON,
     greet: personGreet('cook-greet'),
     react: personReact('cook-chat'),
+    celebrate: personCelebrate('cook-cheer'),
     chores: [
       {
         id: 'stir',
@@ -223,6 +237,7 @@ export const ROUTINES: Readonly<Record<AmbientRoutine, RoutineSpec>> = {
     walkSpeed: 1.6,
     greet: personGreet('carrier-greet'),
     react: personReact('carrier-chat'),
+    celebrate: personCelebrate('carrier-cheer'),
     chores: [
       {
         id: 'carry',
@@ -269,6 +284,10 @@ export const ROUTINES: Readonly<Record<AmbientRoutine, RoutineSpec>> = {
     label: 'Chào',
     greet: { clip: 'gesture-positive', pool: 'parrot-greet' },
     react: trick('parrot-trick', 'dance'),
+    celebrate: [
+      { id: 'cheer-song', weight: 2, beats: [{ do: 'say', pool: 'parrot-cheer' }, { do: 'act', clip: 'dance', loops: [1, 2] }, { do: 'say', pool: 'parrot-sing' }] },
+      { id: 'cheer-loop', weight: 1, lively: true, beats: [{ do: 'say', pool: 'parrot-cheer' }, { do: 'circle', around: 'sky', radius: 4, height: 0, seconds: [3, 4] }, { do: 'fly', to: 'perch-a', height: 2 }] },
+    ],
     chores: [
       { id: 'loop', weight: 3, lively: true, beats: [{ do: 'circle', around: 'sky', radius: 7, height: 0, seconds: [9, 15] }, { do: 'fly', to: 'perch-a', height: 2 }] },
       { id: 'hop-trees', weight: 2, lively: true, beats: [{ do: 'fly', to: 'perch-b', height: 3 }, { do: 'act', clip: 'eat', loops: [2, 3] }, { do: 'fly', to: 'perch-a', height: 3 }] },
@@ -285,6 +304,7 @@ export const ROUTINES: Readonly<Record<AmbientRoutine, RoutineSpec>> = {
     label: 'Chào',
     greet: { clip: 'idle', pool: 'bee-buzz' },
     react: trick('bee-buzz', 'dance'),
+    celebrate: [{ id: 'cheer-dance', weight: 1, beats: [{ do: 'say', pool: 'bee-buzz' }, { do: 'act', clip: 'dance', loops: [1, 2] }] }],
     chores: [
       { id: 'flower-a', weight: 2, lively: true, beats: [{ do: 'fly', to: 'flower-a', height: 0.8 }, { do: 'act', clip: 'idle', seconds: [2, 4] }] },
       { id: 'flower-b', weight: 2, lively: true, beats: [{ do: 'fly', to: 'flower-b', height: 0.8 }, { do: 'act', clip: 'idle', seconds: [2, 4] }] },
@@ -296,6 +316,7 @@ export const ROUTINES: Readonly<Record<AmbientRoutine, RoutineSpec>> = {
     ...ANIMAL,
     greet: { clip: 'gesture-positive', pool: 'bunny-sound' },
     react: trick('bunny-trick', 'dance', [{ do: 'hop', to: 'wander', hops: [3, 4], radius: 1.5 }]),
+    celebrate: animalCelebrate('bunny-sound'),
     chores: [
       { id: 'to-bush', weight: 2, lively: true, beats: [{ do: 'hop', to: 'bush-b', hops: [4, 7] }, { do: 'act', clip: 'eat', loops: [2, 4] }, { do: 'hop', to: 'home', hops: [4, 7] }] },
       { id: 'nibble', weight: 3, beats: [{ do: 'act', clip: 'eat', loops: [2, 4] }, { do: 'act', clip: 'idle', seconds: [1.5, 3] }] },
@@ -309,6 +330,7 @@ export const ROUTINES: Readonly<Record<AmbientRoutine, RoutineSpec>> = {
     noticeRadius: 4.5,
     greet: { clip: 'gesture-positive', pool: 'deer-sound' },
     react: trick('deer-trick', 'gesture-positive'),
+    celebrate: animalCelebrate('deer-sound'),
     chores: [
       { id: 'graze', weight: 4, beats: [{ do: 'act', clip: 'eat', loops: [3, 6] }, { do: 'act', clip: 'idle', seconds: [1.5, 3] }] },
       { id: 'amble', weight: 2, beats: [{ do: 'walk', to: 'graze-b' }, { do: 'act', clip: 'eat', loops: [2, 4] }, { do: 'walk', to: 'home' }] },
@@ -322,6 +344,7 @@ export const ROUTINES: Readonly<Record<AmbientRoutine, RoutineSpec>> = {
     watchClip: 'idle',
     greet: { clip: 'gesture-positive', pool: 'fox-greet' },
     react: trick('fox-trick', 'dance'),
+    celebrate: animalCelebrate('fox-greet'),
     chores: [
       { id: 'nap', weight: 3, beats: [{ do: 'walk', to: 'den' }, { do: 'act', clip: 'idle', seconds: [6, 10], speed: 0.4, pose: 'sleepy' }, { do: 'say', pool: 'fox-snore' }] },
       { id: 'stretch', weight: 2, beats: [{ do: 'act', clip: 'dance', loops: [1, 1] }, { do: 'act', clip: 'gesture-negative', loops: [1, 1] }] },
@@ -334,6 +357,7 @@ export const ROUTINES: Readonly<Record<AmbientRoutine, RoutineSpec>> = {
     walkSpeed: 0.9,
     greet: { clip: 'gesture-positive', pool: 'hog-sound' },
     react: trick('hog-trick', 'dance'),
+    celebrate: animalCelebrate('hog-sound'),
     chores: [
       { id: 'root-a', weight: 3, beats: [{ do: 'walk', to: 'mush-a' }, { do: 'act', clip: 'eat', loops: [3, 5] }, { do: 'say', pool: 'hog-sound' }] },
       { id: 'root-b', weight: 3, beats: [{ do: 'walk', to: 'mush-b' }, { do: 'act', clip: 'eat', loops: [3, 5] }] },
@@ -347,6 +371,7 @@ export const ROUTINES: Readonly<Record<AmbientRoutine, RoutineSpec>> = {
     noticeRadius: 3,
     greet: { clip: 'gesture-positive', pool: 'chick-sound' },
     react: trick('chick-sound', 'dance'),
+    celebrate: animalCelebrate('chick-sound'),
     chores: [
       { id: 'peck', weight: 4, beats: [{ do: 'act', clip: 'eat', loops: [2, 4] }, { do: 'act', clip: 'idle', seconds: [0.8, 1.6] }] },
       { id: 'scurry', weight: 2, lively: true, beats: [{ do: 'wander', radius: 2.5, speed: 2.2, clip: 'run' }, { do: 'act', clip: 'eat', loops: [1, 2] }] },
@@ -360,6 +385,7 @@ export const ROUTINES: Readonly<Record<AmbientRoutine, RoutineSpec>> = {
     noticeRadius: 2.5,
     greet: { clip: 'gesture-positive', pool: 'crab-greet' },
     react: trick('crab-trick', 'dance'),
+    celebrate: animalCelebrate('crab-greet'),
     chores: [
       { id: 'scuttle-b', weight: 3, beats: [{ do: 'walk', to: 'sand-b', sideways: true }, { do: 'act', clip: 'eat', loops: [1, 3] }] },
       { id: 'scuttle-a', weight: 3, beats: [{ do: 'walk', to: 'sand-a', sideways: true }, { do: 'act', clip: 'idle', seconds: [1.5, 3] }] },
@@ -375,6 +401,7 @@ export const ROUTINES: Readonly<Record<AmbientRoutine, RoutineSpec>> = {
     hiddenAtRest: true,
     greet: { clip: 'idle', pool: 'fish-splash' },
     react: [],
+    celebrate: [],
     chores: [
       { id: 'leap-a', weight: 1, lively: true, beats: [{ do: 'leap', at: 'leap-a', height: 1.6, after: [3, 7] }] },
       { id: 'leap-b', weight: 1, lively: true, beats: [{ do: 'leap', at: 'leap-b', height: 1.3, after: [4, 8] }] },
@@ -386,6 +413,7 @@ export const ROUTINES: Readonly<Record<AmbientRoutine, RoutineSpec>> = {
     noticeRadius: 2.5,
     greet: { clip: 'gesture-positive', pool: 'caterpillar-greet' },
     react: trick('caterpillar-trick', 'dance'),
+    celebrate: animalCelebrate('caterpillar-greet'),
     chores: [
       { id: 'crawl-out', weight: 2, beats: [{ do: 'walk', to: 'log-end' }, { do: 'act', clip: 'eat', loops: [2, 3] }] },
       { id: 'crawl-back', weight: 2, beats: [{ do: 'walk', to: 'home' }, { do: 'act', clip: 'idle', seconds: [2, 4] }] },
@@ -414,6 +442,6 @@ function beatSpots(beat: Beat): string[] {
 
 /** Spot names a routine's chores go to (besides `home`); the map must give each character every one. */
 export function spotsUsed(spec: RoutineSpec): string[] {
-  const beats = [...spec.chores, ...spec.react].flatMap((c) => c.beats);
+  const beats = [...spec.chores, ...spec.react, ...spec.celebrate].flatMap((c) => c.beats);
   return [...new Set(beats.flatMap(beatSpots).filter((name) => name !== 'home'))].sort();
 }

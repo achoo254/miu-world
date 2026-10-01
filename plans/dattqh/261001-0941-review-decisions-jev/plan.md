@@ -11,7 +11,7 @@ Quyết định: `../reports/jev-261001-0941-review-decisions.md`. Tiêu chí c�
 
 | # | Việc | Tier | Ghi chú | Trạng thái |
 |---|---|---|---|---|
-| 1 | **Cả thế giới ăn mừng** khi xong quest: dân làng, muôn thú gần đó reo, pháo giấy, Vẹt hát trong cảnh 3D, trước màn thưởng | M | Dùng runtime đời sống rừng (`game/ambient`); dữ liệu phản ứng theo routine; tôn trọng giảm chuyển động | Pending |
+| 1 | **Cả thế giới ăn mừng** khi xong quest: dân làng, muôn thú gần đó reo, pháo giấy, Vẹt hát trong cảnh 3D, trước màn thưởng | M | Dùng runtime đời sống rừng (`game/ambient`); dữ liệu phản ứng theo routine; tôn trọng giảm chuyển động | Done (lệnh `celebrate`: mọi dân làng, thú đang được vẽ quanh bé ăn mừng theo dữ liệu routine; pháo giấy 1 draw call; màn thưởng chờ 2,6 s) |
 | 2 | **Đồ vật phản ứng khi chơi** ở mọi màn cơ chế (táo nảy vào giỏ, đá lắc lư, hũ kẹo cười, thẻ từ bật lên) | M | Một lớp hoạt ảnh chung cho mọi cơ chế, không sửa từng quest | Pending |
 | 3 | **Sự kiện bất ngờ trong rừng** giữa các bước (thỏ cuỗm manh mối phải đuổi, mưa rồi cầu vồng, đom đóm lúc chiều) | L | Kịch bản sự kiện bằng dữ liệu theo map; xoay vòng không lặp liền; không chặn quest, không thưởng ở client | Pending |
 | 4 | **Sự sống trên đảo Home/Bản đồ**: thác chảy, chim và bướm bay ngang, nhân vật của bé vẫy tay trên đảo | M | Lớp hoạt ảnh trên ảnh render sẵn, vị trí theo dữ liệu khu; giảm chuyển động thì đứng yên | Pending |

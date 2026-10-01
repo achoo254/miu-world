@@ -129,7 +129,17 @@ export class AmbientActor {
   /** The child tapped "Trò chuyện" / "Vuốt ve": play a reaction, then go back to the chore. */
   react(): boolean {
     if (!this.canReact) return false;
-    const chore = pickChore(this.spec.react, this.lastReact, this.random);
+    return this.interrupt(this.spec.react);
+  }
+
+  /** The child finished a quest nearby: cheer with them, then go back to the chore (in the air: carry on). */
+  celebrate(reduced: boolean): boolean {
+    if (this.mode === 'react' || this.airborne) return false;
+    return this.interrupt(reduced ? this.spec.celebrate.filter((c) => !c.lively) : this.spec.celebrate);
+  }
+
+  private interrupt(chores: readonly Chore[]): boolean {
+    const chore = pickChore(chores, this.lastReact, this.random);
     if (!chore) return false;
     this.lastReact = chore;
     if (this.mode === 'chores') this.resume = { chore: this.chore, beat: this.beatIndex };
