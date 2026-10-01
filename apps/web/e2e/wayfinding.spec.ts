@@ -1,7 +1,7 @@
-// Wayfinding on the forest map, with the first Tiếng Việt lesson (tv2-t01-b01): the tracker says where to
+// Wayfinding on the river village map, with the first Tiếng Việt lesson (tv2-t01-b01): the tracker says where to
 // walk (the step's goTo line), the arrow points at that place, and standing there offers the step; once
 // done, the tracker and the arrow move on to the next place. The review shot shows the tracker next to
-// the lesson's first character at the forest gate. Characters and lines are read from the lesson, so a
+// the lesson's first character at the village gate. Characters and lines are read from the lesson, so a
 // rewritten story keeps the test.
 import { mkdirSync, readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
@@ -13,7 +13,7 @@ test.use({ storageState: { cookies: [], origins: [] } });
 
 const SHOTS = fileURLToPath(new URL('../../../.data/sgk/review-shots/', import.meta.url));
 mkdirSync(SHOTS, { recursive: true });
-const QUEST = '/play?quality=low&region=khu-rung-bi-mat&quest=tv2-t01-b01';
+const QUEST = '/play?quality=low&region=lang-ven-song&quest=tv2-t01-b01';
 /** The lesson's own wayfinding lines and targets (read as data, not imported: quest files hold answers). */
 const lesson = JSON.parse(readFileSync(fileURLToPath(new URL('../../../content/quests/tv2-t01-b01.json', import.meta.url)), 'utf8')) as {
   steps: Array<{ id: string; goTo?: string; target?: string; targets?: string[]; lines?: Array<{ speaker: string }> }>;

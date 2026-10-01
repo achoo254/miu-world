@@ -70,6 +70,12 @@ describe('entities for the chapter being played', () => {
     expect(entitiesForChapter(entities, 2).props.map((p) => p.model)).toEqual(['bush.glb', 'oak.glb']);
   });
 
+  it("starts a chapter at its own spawn on a wide map, and at the map's spawn otherwise", () => {
+    const wide = worldEntitiesSchema.parse({ ...base, interactables: [], props: [], chapterSpawns: { 2: { position: [9, 5, 9], yaw: 90 } } });
+    expect(entitiesForChapter(wide, 2).spawn).toEqual({ position: [9, 5, 9], yaw: 90 });
+    expect(entitiesForChapter(wide, 1).spawn).toEqual(base.spawn);
+  });
+
   it('shows a recurring character in each of its chapters, and a quest\'s own things only during that quest', () => {
     const more = worldEntitiesSchema.parse({
       ...base,

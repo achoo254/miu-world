@@ -16,8 +16,8 @@ test('Home shows the child and the island, the forest lists its chapters, and ch
   // The island image is shipped with the build and actually loads.
   expect(await page.locator('.world-island-image').evaluate((img: HTMLImageElement) => img.naturalWidth)).toBeGreaterThan(0);
   // A region whose map is not built yet only names itself (its card on a wide island); it does not open.
-  await expect(page.locator('[data-id="home-region-lau-dai"]')).toHaveText(/Lâu đài\s*Sắp có/);
-  await page.locator('[data-id="home-region-lau-dai"]').click();
+  await expect(page.locator('[data-id="home-region-nui-tuyet"]')).toHaveText(/Núi tuyết\s*Sắp mở/);
+  await page.locator('[data-id="home-region-nui-tuyet"]').click();
   await expect(page).toHaveURL(/\/home$/);
   await expect(page.locator('[data-id="home-today"]')).toContainText('Hoàn thành');
 
@@ -25,8 +25,8 @@ test('Home shows the child and the island, the forest lists its chapters, and ch
   await expect(page).toHaveURL(/\/region\/khu-rung-bi-mat$/);
   await expect(page.getByRole('heading', { name: 'Chương 1', exact: true })).toBeAttached();
   // Every textbook lesson of the forest is open from the start, with its book and pages.
-  await expect(page.locator('[data-id="region-play-tv2-t01-b01"]')).toBeAttached();
-  await expect(page.locator('[data-id="region-quest-textbook-tv2-t01-b01"]')).toContainText('Trang');
+  await expect(page.locator('[data-id="region-play-tv2-t10-b17"]')).toBeAttached();
+  await expect(page.locator('[data-id="region-quest-textbook-tv2-t10-b17"]')).toContainText('Trang');
 
   await page.locator('[data-id="region-play-forest-ch1"]').click();
   await expect(page).toHaveURL(/\/play\?region=khu-rung-bi-mat&quest=forest-ch1$/);
@@ -46,9 +46,9 @@ test('Home shows the child and the island, the forest lists its chapters, and ch
   // Nhiệm vụ opens this map's board over the game: every quest is open, and picking one switches to it here.
   await page.locator('[data-id="hud-quests"]').click();
   await expect(page.locator('[data-id="region-quest-current-forest-ch1"]')).toBeVisible();
-  await page.locator('[data-id="region-play-tv2-t01-b01"]').click();
+  await page.locator('[data-id="region-play-tv2-t10-b17"]').click();
   await expect(page.locator('[data-id="play-quests"]')).toHaveCount(0);
-  await expect(page).toHaveURL(/\/play\?region=khu-rung-bi-mat&quest=tv2-t01-b01$/);
+  await expect(page).toHaveURL(/\/play\?region=khu-rung-bi-mat&quest=tv2-t10-b17$/);
   await waitReady(page);
   await expect(page.locator('[data-id="hud-tracker-textbook"]')).toBeVisible();
 

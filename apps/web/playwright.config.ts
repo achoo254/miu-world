@@ -10,7 +10,7 @@ const FAKE_GOOGLE = 'http://127.0.0.1:8788';
 export const PARENT_STATE = 'playwright/.auth/parent.json';
 
 /** Signed-in journeys: one project per `e2e/<name>.spec.ts`, all starting from the parent session. */
-const SIGNED_IN = ['play', 'creator', 'home', 'quest-flow', 'challenges', 'mvp-loop', 'sgk-mechanics', 'worksheets', 'wayfinding', 'hud-layout', 'rescue', 'school', 'forest-life', 'sgk-content'] as const;
+const SIGNED_IN = ['play', 'creator', 'home', 'quest-flow', 'challenges', 'mvp-loop', 'sgk-mechanics', 'worksheets', 'wayfinding', 'hud-layout', 'rescue', 'school', 'forest-life', 'sgk-content', 'maps'] as const;
 
 export default defineConfig({
   testDir: 'e2e',

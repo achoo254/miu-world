@@ -126,6 +126,11 @@ export const worldEntitiesSchema = z
     size: z.tuple([z.number().int(), z.number().int(), z.number().int()]),
     waterLevel: z.number().int(),
     spawn: z.object({ position: vec3, yaw: z.number() }),
+    /**
+     * Where a chapter's lessons start on a wide map (by chapter number): at the edge of the chapter's zone, so
+     * the child arrives where the lesson is. Chapters without one start at `spawn`.
+     */
+    chapterSpawns: z.record(z.string().regex(/^[0-9]+$/), z.object({ position: vec3, yaw: z.number() })).optional(),
     interactables: z.array(interactableSchema),
     props: z.array(
       z.object({ model: z.string(), position: vec3, yaw: z.number(), scale: z.number().positive(), chapter: z.number().int().min(1).optional() }),
@@ -158,7 +163,8 @@ export function entitiesForChapter(entities: WorldEntities, chapter: number, que
     const inChapter = e.chapters ? e.chapters.includes(chapter) : e.chapter === undefined || e.chapter === chapter;
     return inChapter && (e.quest === undefined || e.quest === quest);
   };
-  return { ...entities, interactables: entities.interactables.filter(shown), props: entities.props.filter(shown), ...(entities.ambients ? { ambients: entities.ambients.filter(shown) } : {}) };
+  const spawn = entities.chapterSpawns?.[String(chapter)] ?? entities.spawn;
+  return { ...entities, spawn, interactables: entities.interactables.filter(shown), props: entities.props.filter(shown), ...(entities.ambients ? { ambients: entities.ambients.filter(shown) } : {}) };
 }
 
 /**

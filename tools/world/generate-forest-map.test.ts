@@ -22,8 +22,11 @@ describe('forest generator', () => {
     // Chapter 1's own targets carry no chapter; every other target (the Tiếng Việt quests' places, placed
     // from content/world/targets.json) is tagged with the chapters or the quest it belongs to.
     const ch1 = ['ancient-tree', 'animal-beaver', 'chest', 'clue-box', 'clue-letter', 'clue-mushroom', 'cong-truong-hoc', 'gate-ch2', 'parrot-guide', 'stream-stones'];
-    expect(parsed.interactables.filter((t) => t.chapter === undefined && t.chapters === undefined).map((t) => t.id).sort()).toEqual(ch1.sort());
-    for (const t of parsed.interactables.filter((t) => !ch1.includes(t.id))) expect(t.chapter ?? t.chapters?.[0], t.id).toBeGreaterThanOrEqual(2);
+    // The forest train's stops (rides to the glades and back) stand in every chapter too.
+    const untagged = parsed.interactables.filter((t) => t.chapter === undefined && t.chapters === undefined && !t.ride);
+    expect(untagged.map((t) => t.id).sort()).toEqual(ch1.sort());
+    expect(parsed.interactables.filter((t) => t.ride)).toHaveLength(8);
+    for (const t of parsed.interactables.filter((t) => !ch1.includes(t.id) && !t.ride)) expect(t.chapter ?? t.chapters?.[0], t.id).toBeGreaterThanOrEqual(2);
     expectStandsOnGround(world, entities);
   }, 60_000);
 

@@ -19,6 +19,7 @@ const WATER_LEVEL = 9;
 
 /** Models and the height (in blocks) each should stand at; scale is derived from its bounds. */
 const MODEL_HEIGHT: Record<string, number> = {
+  [`${PACK.props}/railway-red.glb`]: 1.2,
   [`${PACK.survival}/chest.glb`]: 0.8,
   [`${PACK.survival}/box.glb`]: 0.6,
   [`${PACK.nature}/mushroom_red.glb`]: 0.8,
@@ -344,9 +345,37 @@ export async function generateForest(): Promise<{ world: VoxelWorld; entities: W
     if ([[1, 0], [-1, 0], [0, 1], [0, -1]].some(([dx, dz]) => Math.abs(surface(x + (dx ?? 0), z + (dz ?? 0)) - y) > 1)) return false;
     return !occupied.some(([tx, tz]) => Math.hypot(tx - x, tz - z) < 2.2) && !propCells.some(([px, pz]) => Math.hypot(px - x, pz - z) < 1.5);
   };
+  const villagerSpots = ambients.flatMap((a) => [a.position, ...Object.values(a.spots)].map((p) => [Math.floor(p[0]), Math.floor(p[2])] as const));
+  // Each glade's lessons start at its edge; the forest train runs from the spawn to every glade and back,
+  // its stops clear of the villagers' places like every target.
+  const clearOfLife = (x: number, z: number): boolean => villagerSpots.every(([vx, vz]) => Math.hypot(vx - x, vz - z) >= QUEST_CLEARANCE + 1);
+  const openNear = (x: number, z: number): [number, number] => {
+    for (let r = 0; r <= 14; r++) {
+      for (let dx = -r; dx <= r; dx++) {
+        for (let dz = -r; dz <= r; dz++) {
+          if (Math.max(Math.abs(dx), Math.abs(dz)) === r && canStand(x + dx, z + dz) && clearOfLife(x + dx, z + dz)) return [x + dx, z + dz];
+        }
+      }
+    }
+    return [x, z];
+  };
+  const gladeStart = new Map(DISTRICTS.map((d) => [d.chapter, openNear(d.x, d.z + d.hz - 4)] as const));
+  const trainModel = `${PACK.props}/railway-red.glb`;
+  const stops = [
+    ...DISTRICTS.map((d, i) => ({ name: `Tàu rừng tới bãi rừng ${i + 1}`, at: openNear(spawn.x + 2 + i * 3, spawn.z - 5), to: gladeStart.get(d.chapter) ?? [d.x, d.z] })),
+    ...DISTRICTS.map((d) => {
+      const [gx, gz] = gladeStart.get(d.chapter) ?? [d.x, d.z];
+      return { name: 'Tàu rừng về bìa rừng', at: openNear(gx + 4, gz), to: [spawn.x + 2, spawn.z + 2] as const };
+    }),
+  ];
+  stops.forEach((stop, i) =>
+    interactables.push({
+      id: `ben-tau-rung-${i + 1}`, kind: 'object', name: stop.name, label: 'Lên tàu', position: place(stop.at[0], stop.at[1]), yaw: 0, radius: 2.5,
+      ...modelled(trainModel), ride: place(stop.to[0] + 1, stop.to[1] + 1),
+    }),
+  );
   const gladeCells = new Map(DISTRICTS.map((d) => [d.chapter, cellsIn(d.x - d.hx, d.z - d.hz, d.x + d.hx, d.z + d.hz)]));
   const allGlades = [...gladeCells.values()].flat();
-  const villagerSpots = ambients.flatMap((a) => [a.position, ...Object.values(a.spots)].map((p) => [Math.floor(p[0]), Math.floor(p[2])] as const));
   const allInteractables = await placeRegionTargets({
     mapId: MAP_ID,
     region: 'khu-rung-bi-mat',
@@ -358,7 +387,7 @@ export async function generateForest(): Promise<{ world: VoxelWorld; entities: W
       residentCells: allGlades,
       // Villagers keep this far from every quest target (forest-life.ts): so do the targets from them.
       clearance: QUEST_CLEARANCE,
-      keepClear: [...columnsOf(interactables.filter((t) => t.chapter === undefined)), ...villagerSpots, [spawn.x, spawn.z]],
+      keepClear: [...columnsOf(interactables.filter((t) => t.chapter === undefined)), ...villagerSpots, [spawn.x, spawn.z], ...gladeStart.values()],
     },
     interactables,
     seed: seed + 19,
@@ -371,6 +400,7 @@ export async function generateForest(): Promise<{ world: VoxelWorld; entities: W
     size: [sx, sy, sz],
     waterLevel: WATER_LEVEL,
     spawn: { position: [spawn.x + 0.5, standY(spawn.x, spawn.z), spawn.z + 0.5], yaw: 45 },
+    chapterSpawns: Object.fromEntries([...gladeStart].map(([chapter, [x, z]]) => [String(chapter), { position: place(x, z), yaw: 180 }])),
     interactables: allInteractables,
     props,
     landmarks: [

@@ -106,6 +106,17 @@ const GATES: ReadonlyArray<{ to: string; at: readonly [number, number] }> = [
   { to: 'nong-trai', at: [DISTRICT.farm.x + 6, DISTRICT.farm.z + 6] },
 ];
 
+/** The district each gate stands in, as the bus names it. */
+const DISTRICT_NAMES: Record<string, string> = {
+  'lang-ven-song': 'làng ven sông',
+  'xom-mai-am': 'xóm mái ấm',
+  'thu-vien': 'thư viện',
+  'lau-dai': 'lâu đài',
+  'khu-rung-bi-mat': 'bìa rừng',
+  'cho-phien': 'chợ phiên',
+  'nong-trai': 'nông trại',
+};
+
 const N = PACK.nature;
 const HOUSES = 'abcdefghijklmnopqrstu'.split('').map((k) => `${PACK.suburb}/building-type-${k}.glb`);
 /** Classroom furniture (Furniture Kit): the model of each kind. */
@@ -201,6 +212,13 @@ export async function generateSchool() {
     pathsFromSpawn: false,
     routes: ROUTES,
     gates: GATES,
+    // The town bus: from the school gate to every district's gate, and from each district back to school.
+    rides: {
+      stops: [
+        ...GATES.map((g, i) => ({ name: `Xe buýt tới ${DISTRICT_NAMES[g.to] ?? g.to}`, at: [MID - 30 - (i % 4) * 5, STREET.z1 + 2 + Math.floor(i / 4) * 4] as const, to: g.at })),
+        ...GATES.map((g) => ({ name: 'Xe buýt về trường', at: [g.at[0] - 6, g.at[1] + 4] as const, to: [MID, CAMPUS.z0 - 4] as const })),
+      ],
+    },
     trees: { skip: 0.5, blocks: (roll, block) => ({ log: block('tree-log'), leaves: block(roll < 0.25 ? 'leaves-pink' : roll < 0.38 ? 'leaves-autumn' : 'leaves') }) },
     models: { heights: MODEL_HEIGHT, centred: [...Object.values(FURNITURE).filter((m) => m.startsWith('packs/')), ...HOUSES] },
     dressing: { models: [`${N}/flower_redA.glb`, `${N}/flower_yellowB.glb`, `${N}/plant_bush.glb`, `${PACK.props}/potted-plant.glb`], spacing: 9 },

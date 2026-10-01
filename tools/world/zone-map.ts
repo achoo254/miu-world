@@ -95,6 +95,12 @@ export interface ZoneMapSpec {
    * back to the hub, Trường học (Jev, 01/10/2026: the school is the hub, every theme map is reached from it).
    */
   gates?: ReadonlyArray<{ to: string; at: readonly [number, number] }>;
+  /**
+   * The map's rides (a wide map is long to walk): by default a row of stops by the spawn, one to each zone,
+   * and a stop at each zone back to the spawn. `vehicle` names them ("Xe buýt", "Đò") and gives their look;
+   * `stops` replaces the default with the map's own (from, to, name); false: none.
+   */
+  rides?: false | { vehicle?: { name: string; label: string; model: string; height: number }; stops?: ReadonlyArray<{ name: string; at: readonly [number, number]; to: readonly [number, number] }> };
   life?: (map: { zone: (chapter: number) => Zone; landmark: (id: string) => readonly [number, number] }) => readonly Resident[];
 }
 
@@ -105,6 +111,7 @@ const DEFAULT_DRESSING = {
 
 const SIGNPOST = `${PACK.survival}/signpost.glb`;
 const GATE = `${PACK.castle}/gate.glb`;
+const RIDE_MODEL = `${PACK.props}/automobile.glb`;
 /** The hub every theme map has a gate back to. */
 export const HUB_REGION = 'truong-hoc';
 const DRESSING_HEIGHTS: Readonly<Record<string, number>> = { [`${PACK.nature}/grass_large.glb`]: 0.6, [`${PACK.nature}/rock_smallA.glb`]: 0.5 };
@@ -187,7 +194,9 @@ export async function generateZoneMap(spec: ZoneMapSpec): Promise<{ world: Voxel
   }
 
   // 3. The map's own structures and props.
-  const queued: Array<{ kind: 'ground' | 'centred'; model: string; x: number; z: number; yaw: number } | { kind: 'at' | 'centred-at'; model: string; at: readonly [number, number, number]; yaw: number }> = [];
+  type OnGround = { model: string; x: number; z: number; yaw: number };
+  type AtPoint = { model: string; at: readonly [number, number, number]; yaw: number };
+  const queued: Array<(OnGround & { kind: 'ground' }) | (OnGround & { kind: 'centred' }) | (AtPoint & { kind: 'at' }) | (AtPoint & { kind: 'centred-at' })> = [];
   const kept: Array<[number, number, number, number]> = [];
   const landmarks: Landmark[] = [];
   const keptOut = (x: number, z: number, pad = 0): boolean => kept.some(([x0, z0, x1, z1]) => x >= x0 - pad && x <= x1 + pad && z >= z0 - pad && z <= z1 + pad);
@@ -236,7 +245,7 @@ export async function generateZoneMap(spec: ZoneMapSpec): Promise<{ world: Voxel
 
   // 5. Props, now that the ground is final.
   const standY = standHeight(world, surface);
-  const models = await mapModels({ heights: { [SIGNPOST]: 1.6, [GATE]: 5, ...SCENERY_MODELS, ...DRESSING_HEIGHTS, ...(spec.life ? LIFE_HEIGHTS : {}), ...spec.models.heights }, clips: { ...(spec.life ? LIFE_CLIPS : {}), ...(spec.models.clips ?? {}) }, standY, centred: spec.models.centred });
+  const models = await mapModels({ heights: { [SIGNPOST]: 1.6, [GATE]: 5, [RIDE_MODEL]: 1.6, ...(spec.rides && spec.rides.vehicle ? { [spec.rides.vehicle.model]: spec.rides.vehicle.height } : {}), ...SCENERY_MODELS, ...DRESSING_HEIGHTS, ...(spec.life ? LIFE_HEIGHTS : {}), ...spec.models.heights }, clips: { ...(spec.life ? LIFE_CLIPS : {}), ...(spec.models.clips ?? {}) }, standY, centred: spec.models.centred });
   for (const q of queued) {
     if (q.kind === 'at') models.addPropAt(q.model, q.at, q.yaw);
     else if (q.kind === 'centred-at') models.addCentred(q.model, q.at, q.yaw);
@@ -280,11 +289,59 @@ export async function generateZoneMap(spec: ZoneMapSpec): Promise<{ world: Voxel
       travel: g.to,
     };
   });
+  // Each chapter starts at the edge of its zone; rides link those starts with the spawn.
+  const openNear = (x: number, z: number): [number, number] => {
+    for (let r = 0; r <= 8; r++) {
+      for (let dx = -r; dx <= r; dx++) {
+        for (let dz = -r; dz <= r; dz++) {
+          if (Math.max(Math.abs(dx), Math.abs(dz)) !== r) continue;
+          const [cx, cz] = [Math.round(x) + dx, Math.round(z) + dz];
+          const y = surface(cx, cz);
+          if (inWater(cx, cz) || keptOut(cx, cz, 0) || Math.abs(y - level) > 1 || world.get(cx, y + 1, cz) !== 0 || world.get(cx, y + 2, cz) !== 0) continue;
+          return [cx, cz];
+        }
+      }
+    }
+    return [Math.round(x), Math.round(z)];
+  };
+  const chapterStart = new Map(zones.map((zn) => [zn.chapter, openNear(zn.x, zn.z + zn.hz - 3)] as const));
+  const vehicle = (spec.rides !== false && spec.rides?.vehicle) || { name: 'Xe buýt', label: 'Lên xe', model: RIDE_MODEL, height: 1.6 };
+  const rideStops =
+    spec.rides === false
+      ? []
+      : (spec.rides?.stops ?? [
+          ...zones.map((zn, i) => ({ name: `${vehicle.name} tới ${zn.name}`, at: [spec.spawn.x - 4 - (i % 4) * 4, spec.spawn.z - 6 - Math.floor(i / 4) * 4] as const, to: chapterStart.get(zn.chapter) ?? [zn.x, zn.z] })),
+          ...zones.map((zn) => {
+            const [sx0, sz0] = chapterStart.get(zn.chapter) ?? [zn.x, zn.z];
+            return { name: `${vehicle.name} về cổng`, at: [sx0 + 4, sz0] as const, to: [spec.spawn.x + 2, spec.spawn.z + 2] as const };
+          }),
+        ]);
+  const rides: Interactable[] = rideStops.map((stop, i) => {
+    const [ax, az] = openNear(stop.at[0], stop.at[1]);
+    const [tx, tz] = openNear(stop.to[0] + 2, stop.to[1] + 2);
+    return {
+      id: `ben-xe-${i + 1}`,
+      kind: 'object' as const,
+      name: stop.name,
+      label: vehicle.label,
+      position: models.place(ax, az),
+      yaw: 0,
+      radius: 2.5,
+      ...models.modelled(vehicle.model),
+      ride: models.place(tx, tz),
+    };
+  });
   const interactables: Interactable[] = await placeRegionTargets({
     mapId: spec.mapId,
     region: spec.region,
-    map: { canStand, stand: models.place, chapterCells: zoneCells, residentCells: zones.flatMap((zn) => zoneCells(zn.chapter)), keepClear: [[spec.spawn.x, spec.spawn.z]] },
-    interactables: gates,
+    map: {
+      canStand,
+      stand: models.place,
+      chapterCells: zoneCells,
+      residentCells: zones.flatMap((zn) => zoneCells(zn.chapter)),
+      keepClear: [[spec.spawn.x, spec.spawn.z], ...chapterStart.values()],
+    },
+    interactables: [...gates, ...rides],
     seed: seed + 11,
   });
 
@@ -309,6 +366,7 @@ export async function generateZoneMap(spec: ZoneMapSpec): Promise<{ world: Voxel
     size: [sx, sy, sz],
     waterLevel: spec.water?.level ?? level - 1,
     spawn: { position: models.place(spec.spawn.x, spec.spawn.z), yaw: spec.spawn.yaw },
+    chapterSpawns: Object.fromEntries([...chapterStart].map(([chapter, [x, z]]) => [String(chapter), { position: models.place(x, z), yaw: 180 }])),
     interactables,
     props: models.props,
     landmarks: [...zones.map((zn) => ({ id: zn.id, name: zn.name, position: [zn.x + 0.5, level + 1, zn.z + 0.5] as [number, number, number] })), ...landmarks],
