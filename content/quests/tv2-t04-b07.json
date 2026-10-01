@@ -1,15 +1,15 @@
 {
   "id": "tv2-t04-b07",
-  "region": "khu-rung-bi-mat",
-  "chapter": 5,
+  "region": "lang-ven-song",
+  "chapter": 4,
   "title": "Bụi xấu hổ cứ nhắm mắt",
   "status": "active",
   "lesson": "tv2-t1-b07",
-  "summary": "Cáo Vần đang làm thơ tặng bụi cỏ xấu hổ ven đầm thì cứ có tiếng động lạ là lá lại cụp hết. {name} tìm thủ phạm tiếng động, đọc bài Cây xấu hổ, nhặt từ chỉ đặc điểm cho bài thơ và kể chuyện chú đỗ con ru Gấu Ngáp ngủ.",
+  "summary": "Cáo Vần đang làm thơ tặng bụi cỏ xấu hổ ven đầm sen thì cứ có tiếng động lạ là lá lại cụp hết. {name} tìm thủ phạm tiếng động, đọc bài Cây xấu hổ, nhặt từ chỉ đặc điểm cho bài thơ và kể chuyện chú đỗ con ru Gấu Ngáp ngủ.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Cáo Vần (cáo con mê làm thơ, cái gì cũng muốn gieo vần), Lợn Rừng Lấm vụng về hay ngã “Oạch!”, Hải Ly Đinh đóng cầu, Gấu Ngáp buồn ngủ díp mắt",
-    "where": "Bụi cỏ xấu hổ ven đầm, gốc liễu ven đầm, phiến đá phẳng, vũng bùn ven đầm, nhịp cầu mới qua suối và gốc cây thanh mai bên bờ",
+    "who": "Cáo Vần (cáo con mê làm thơ, cái gì cũng muốn gieo vần), Heo Lấm vụng về hay ngã “Oạch!”, Hải Ly Đinh đóng cầu ván, Gấu Ngáp buồn ngủ díp mắt",
+    "where": "Bụi cỏ xấu hổ ven đầm sen, gốc liễu ven đầm, phiến đá phẳng, vũng bùn ven đầm, cầu ván qua đầm sen và gốc nhãn bên bờ",
     "goal": "Giúp Cáo Vần làm xong bài thơ mà bụi xấu hổ không phải giật mình cụp lá",
     "play": "Tìm thứ gây tiếng động, nói khởi động, đọc bài hai lượt, trắc nghiệm, chọn nhiều đáp án, điền từ, chọn cách giúp bạn, xếp tranh, kể chuyện, phiếu viết",
     "learn": "Tiếng Việt 2 Bài 7: đọc Cây xấu hổ, từ chỉ đặc điểm, nói tiếp lời nhân vật, chữ hoa C, kể chuyện Chú đỗ con theo tranh",
@@ -58,8 +58,8 @@
     "tv2-t04-bui-xau-ho": "bụi xấu hổ",
     "tv2-t04-phien-da": "phiến đá phẳng",
     "tv2-t04-b07-lon-rung-lam": "vũng bùn ven đầm",
-    "tv2-t02-b03-hai-ly-dinh": "nhịp cầu mới qua suối",
-    "tv2-t04-b07-gau-ngap": "gốc thanh mai"
+    "tv2-t02-b03-hai-ly-dinh": "cầu ván qua đầm sen",
+    "tv2-t04-b07-gau-ngap": "gốc nhãn bên bờ"
   },
   "steps": [
     {
@@ -74,7 +74,7 @@
           "text": "{name} ơi, tớ đang làm thơ tặng bụi cỏ này: “Lá xanh lá biếc, lá…” Ơ kìa, nó lại nhắm tịt mắt rồi!"
         },
         {
-          "speaker": "Lợn Rừng Lấm",
+          "speaker": "Heo Lấm",
           "text": "Không phải tại tớ đâu nhé! Tớ chỉ… Oạch! …vấp có một cái thôi."
         },
         {
@@ -82,7 +82,7 @@
           "text": "Hễ có tiếng động lạ là lá cụp hết lại. Bài thơ của tớ đứng hình, vần cũng chạy mất."
         },
         {
-          "speaker": "Lợn Rừng Lấm",
+          "speaker": "Heo Lấm",
           "text": "Dọc bờ đầm còn mấy thứ kêu to hơn cái mông tớ nhiều. {name} đi tìm thử xem!"
         }
       ],
@@ -100,7 +100,7 @@
     {
       "id": "tim-tieng-dong-la",
       "title": "Ai gây ra tiếng động?",
-      "goTo": "Đi dọc bờ đầm tìm ba thứ phát ra tiếng động lạ",
+      "goTo": "Đi dọc bờ đầm sen tìm ba thứ phát ra tiếng động lạ",
       "kind": "search",
       "targets": [
         "tv2-t04-dong-la-kho",
@@ -195,7 +195,7 @@
       "target": "tv2-t04-phien-da",
       "textRef": "cay-xau-ho",
       "audio": true,
-      "question": "Lợn Rừng Lấm ghé tai vào phiến đá, nghe mãi chẳng thấy gì vì… đá không biết nói.\nCây cỏ xung quanh xôn xao về chuyện gì?",
+      "question": "Heo Lấm ghé tai vào phiến đá, nghe mãi chẳng thấy gì vì… đá không biết nói.\nCây cỏ xung quanh xôn xao về chuyện gì?",
       "choices": [
         {
           "id": "gay-canh",
@@ -403,7 +403,7 @@
         "right": [
           "Đẹp, lóng lánh, xanh biếc: Cáo Vần nhét cả ba từ vào bài thơ!",
           "Không chọn nhầm từ chỉ việc làm nào. Mắt {name} tinh như mắt chim.",
-          "Lợn Rừng Lấm vỗ tay đôm đốp, may mà lần này không ngã."
+          "Heo Lấm vỗ tay đôm đốp, may mà lần này không ngã."
         ],
         "wrong": [
           "Bay đi là việc chim làm, chưa phải đặc điểm đâu nhé.",
@@ -440,7 +440,7 @@
     {
       "id": "so-la-bi-nhoe",
       "title": "Sổ lá bị nhoè",
-      "goTo": "Oạch! Chạy ra vũng bùn ven đầm, Lợn Rừng Lấm vừa ngã sóng soài",
+      "goTo": "Oạch! Chạy ra vũng bùn ven đầm, Heo Lấm vừa ngã sóng soài",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "target": "tv2-t04-b07-lon-rung-lam",
@@ -534,20 +534,20 @@
     {
       "id": "nhip-cau-cua-hai-ly",
       "title": "Tiếng búa của Hải Ly",
-      "goTo": "Theo tiếng cộc cộc tới nhịp cầu mới qua suối, Hải Ly Đinh đang đóng đinh",
+      "goTo": "Theo tiếng cộc cộc tới cầu ván qua đầm sen, Hải Ly Đinh đang đóng đinh",
       "kind": "dialogue",
       "target": "tv2-t02-b03-hai-ly-dinh",
       "lines": [
         {
           "speaker": "Hải Ly Đinh",
-          "text": "Xin lỗi các cậu, tớ phải đóng nốt một nhịp cầu mới qua suối, mà búa cứ kêu cộc cộc."
+          "text": "Xin lỗi các cậu, tớ phải đóng nốt chiếc cầu ván qua đầm sen, mà búa cứ kêu cộc cộc."
         },
         {
           "speaker": "Cáo Vần",
           "text": "Mỗi tiếng cộc là bụi cỏ nhắm mắt một lần. Cộc, nhắm. Cộc, nhắm. Nghe cũng thành thơ đấy chứ!"
         },
         {
-          "speaker": "Lợn Rừng Lấm",
+          "speaker": "Heo Lấm",
           "text": "{name} nghĩ cách đi, để cầu vẫn xong mà bụi xấu hổ không phải sợ."
         }
       ],
@@ -662,7 +662,7 @@
     {
       "id": "doan-va-nghe-ke",
       "title": "Đoán tranh, nghe kể",
-      "goTo": "Ôm tranh sang gốc thanh mai, Gấu Ngáp đang ngáp dài trong ổ lá",
+      "goTo": "Ôm tranh sang gốc nhãn bên bờ, Gấu Ngáp đang ngáp dài trong ổ lá",
       "kind": "speak",
       "target": "tv2-t04-b07-gau-ngap",
       "prompt": "Gấu Ngáp há miệng ngáp to, bốn cái chân mũm mĩm cùng duỗi ra một lượt.\nDựa vào câu hỏi gợi ý, đoán nội dung của từng tranh.\nNghe kể câu chuyện.\nĐoán xong, nhờ bố mẹ hoặc thầy cô kể chuyện Chú đỗ con để xem {name} đoán có trúng không.",
@@ -751,7 +751,7 @@
       "kind": "worksheet",
       "trigger": "auto",
       "lessonId": "tv2-t1-b07",
-      "text": "Hải Ly Đinh đóng xong nhịp cầu thì nhắc: nhờ bố mẹ in phiếu Bài 7 ở khu phụ huynh. Trên phiếu có chữ hoa C uốn cong như lưng Gấu Ngáp lúc cuộn tròn và câu “Có công mài sắt, có ngày nên kim.” để em tập viết.",
+      "text": "Hải Ly Đinh đóng xong cầu ván thì nhắc: nhờ bố mẹ in phiếu Bài 7 ở khu phụ huynh. Trên phiếu có chữ hoa C uốn cong như lưng Gấu Ngáp lúc cuộn tròn và câu “Có công mài sắt, có ngày nên kim.” để em tập viết.",
       "curriculumRef": [
         "tv2-t1-b07-viet-chu-hoa-1",
         "tv2-t1-b07-viet-ung-dung-2"
@@ -769,7 +769,7 @@
       "title": "Tiếng gầm ở sân bóng",
       "kind": "next",
       "trigger": "auto",
-      "text": "Từ sân bóng giữa rừng vọng lại một tiếng “Grừ!” rõ to, rồi im bặt. Hổ Sọc đang một mình sút bóng vào gôn, vì chưa đội nào chịu nhận cậu vào chơi."
+      "text": "Từ sân bóng của làng vọng lại một tiếng “Grừ!” rõ to, rồi im bặt. Hổ Sọc đang một mình sút bóng vào gôn, vì chưa đội nào chịu nhận cậu vào chơi."
     }
   ],
   "reward": {

@@ -1,0 +1,1884 @@
+{
+  "version": 2,
+  "id": "lau-dai",
+  "seed": 3918638102,
+  "size": [
+    256,
+    48,
+    256
+  ],
+  "waterLevel": 10,
+  "spawn": {
+    "position": [
+      128.5,
+      13,
+      16.5
+    ],
+    "yaw": 0
+  },
+  "interactables": [
+    {
+      "id": "huou-cao",
+      "kind": "npc",
+      "name": "Hươu Cao",
+      "label": "Nói chuyện",
+      "position": [
+        146.5,
+        13,
+        145.5
+      ],
+      "yaw": 281,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-giraffe.glb",
+      "scale": 1.2837,
+      "animation": "idle",
+      "chapters": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "toan2-cd5-b25-bac-ngan",
+      "kind": "npc",
+      "name": "Bác Ngân",
+      "label": "Nói chuyện",
+      "position": [
+        172.5,
+        13,
+        64.5
+      ],
+      "yaw": 125,
+      "radius": 3,
+      "model": "packs/kenney-blocky-characters/2.0/character-k.glb",
+      "scale": 0.7037,
+      "animation": "idle",
+      "chapters": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "toan2-cd5-b25-cao-bach",
+      "kind": "npc",
+      "name": "Cáo Bạch",
+      "label": "Nói chuyện",
+      "position": [
+        205.5,
+        13,
+        150.5
+      ],
+      "yaw": 163,
+      "radius": 3,
+      "model": "generated/characters/npc-fox-tuyet-overalls.glb",
+      "scale": 0.6296,
+      "chapters": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "toan2-cd5-b27-bac-thin",
+      "kind": "npc",
+      "name": "Bác Thìn",
+      "label": "Nói chuyện",
+      "position": [
+        108.5,
+        13,
+        185.5
+      ],
+      "yaw": 138,
+      "radius": 3,
+      "model": "packs/kenney-blocky-characters/2.0/character-m.glb",
+      "scale": 0.7037,
+      "animation": "idle",
+      "chapters": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "toan2-cd5-b28-co-hang",
+      "kind": "npc",
+      "name": "Cô Hằng",
+      "label": "Nói chuyện",
+      "position": [
+        137.5,
+        13,
+        26.5
+      ],
+      "yaw": 201,
+      "radius": 3,
+      "model": "packs/kenney-blocky-characters/2.0/character-e.glb",
+      "scale": 0.7037,
+      "animation": "idle",
+      "chapters": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "toan2-cd5-b28-meo-muop",
+      "kind": "npc",
+      "name": "Mèo Mướp",
+      "label": "Nói chuyện",
+      "position": [
+        205.5,
+        13,
+        208.5
+      ],
+      "yaw": 157,
+      "radius": 3,
+      "model": "generated/characters/npc-cat-cam-overalls.glb",
+      "scale": 0.6415,
+      "chapters": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "toan2-cd7-b33-bac-thuan",
+      "kind": "npc",
+      "name": "Bác Thuận",
+      "label": "Nói chuyện",
+      "position": [
+        183.5,
+        13,
+        148.5
+      ],
+      "yaw": 25,
+      "radius": 3,
+      "model": "packs/kenney-blocky-characters/2.0/character-m.glb",
+      "scale": 0.7037,
+      "animation": "idle",
+      "chapter": 2
+    },
+    {
+      "id": "toan2-cd7-b33-ga-loc-coc",
+      "kind": "npc",
+      "name": "Gà Lóc Cóc",
+      "label": "Nói chuyện",
+      "position": [
+        133.5,
+        13,
+        216.5
+      ],
+      "yaw": 356,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-chick.glb",
+      "scale": 0.4391,
+      "animation": "idle",
+      "chapter": 2
+    },
+    {
+      "id": "toan2-cd7-b33-gau-bum",
+      "kind": "npc",
+      "name": "Gấu Bum",
+      "label": "Nói chuyện",
+      "position": [
+        104.5,
+        13,
+        72.5
+      ],
+      "yaw": 251,
+      "radius": 3,
+      "model": "generated/characters/npc-bear-den-overalls-red.glb",
+      "scale": 0.6667,
+      "chapter": 2
+    },
+    {
+      "id": "toan2-cd7-b33-heo-mum-mim",
+      "kind": "npc",
+      "name": "Heo Mũm Mĩm",
+      "label": "Nói chuyện",
+      "position": [
+        112.5,
+        13,
+        59.5
+      ],
+      "yaw": 212,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-hog.glb",
+      "scale": 0.6597,
+      "animation": "idle",
+      "chapter": 2
+    },
+    {
+      "id": "toan2-cd7-b33-thay-quang",
+      "kind": "npc",
+      "name": "Thầy Quang",
+      "label": "Nói chuyện",
+      "position": [
+        78.5,
+        13,
+        186.5
+      ],
+      "yaw": 166,
+      "radius": 3,
+      "model": "packs/kenney-blocky-characters/2.0/character-q.glb",
+      "scale": 0.7037,
+      "animation": "idle",
+      "chapter": 2
+    },
+    {
+      "id": "toan2-cd7-b34-meo-cam-xiu",
+      "kind": "npc",
+      "name": "Mèo Cam Xíu",
+      "label": "Nói chuyện",
+      "position": [
+        137.5,
+        13,
+        66.5
+      ],
+      "yaw": 203,
+      "radius": 3,
+      "model": "generated/characters/npc-cat-cam-vest-shorts-navy.glb",
+      "scale": 0.6415,
+      "chapter": 2
+    },
+    {
+      "id": "toan2-cd7-b35-tho-gon",
+      "kind": "npc",
+      "name": "Thỏ Gòn",
+      "label": "Nói chuyện",
+      "position": [
+        108.5,
+        13,
+        167.5
+      ],
+      "yaw": 110,
+      "radius": 3,
+      "model": "generated/characters/npc-rabbit-trang-overalls-green.glb",
+      "scale": 0.5763,
+      "chapter": 2
+    },
+    {
+      "id": "toan2-cd5-b25-tho-bi",
+      "kind": "npc",
+      "name": "Thỏ Bi",
+      "label": "Nói chuyện",
+      "position": [
+        95.5,
+        13,
+        106.5
+      ],
+      "yaw": -135,
+      "radius": 3,
+      "model": "generated/characters/npc-rabbit-xam-vest-shorts-green.glb",
+      "scale": 0.5763,
+      "chapter": 1,
+      "quest": "toan2-cd5-b25"
+    },
+    {
+      "id": "toan2-cd5-but-chi",
+      "kind": "object",
+      "name": "Bút chì",
+      "label": "Nhặt lên",
+      "position": [
+        89.5,
+        13,
+        136.5
+      ],
+      "yaw": 337,
+      "radius": 2,
+      "model": "generated/props/pencil.glb",
+      "scale": 0.0437,
+      "chapter": 1,
+      "quest": "toan2-cd5-b25"
+    },
+    {
+      "id": "toan2-cd5-hop-sao-giay",
+      "kind": "object",
+      "name": "Hộp sao giấy",
+      "label": "Nhặt lên",
+      "position": [
+        89.5,
+        13,
+        140.5
+      ],
+      "yaw": 180,
+      "radius": 2,
+      "model": "packs/kenney-survival-kit/2.0/box.glb",
+      "scale": 2.8,
+      "chapter": 1,
+      "quest": "toan2-cd5-b25"
+    },
+    {
+      "id": "toan2-cd5-thuoc-ke",
+      "kind": "object",
+      "name": "Thước kẻ",
+      "label": "Nhặt lên",
+      "position": [
+        92.5,
+        13,
+        138.5
+      ],
+      "yaw": -108,
+      "radius": 2,
+      "model": "generated/props/ruler.glb",
+      "scale": 0.0437,
+      "chapter": 1,
+      "quest": "toan2-cd5-b25"
+    },
+    {
+      "id": "toan2-cd5-b26-bac-tam",
+      "kind": "npc",
+      "name": "Bác Tâm",
+      "label": "Nói chuyện",
+      "position": [
+        86.5,
+        13,
+        136.5
+      ],
+      "yaw": -162,
+      "radius": 3,
+      "model": "packs/kenney-blocky-characters/2.0/character-j.glb",
+      "scale": 0.7037,
+      "animation": "idle",
+      "chapter": 1,
+      "quest": "toan2-cd5-b26"
+    },
+    {
+      "id": "toan2-cd5-b26-bo-co-non",
+      "kind": "npc",
+      "name": "Bò Cỏ Non",
+      "label": "Nói chuyện",
+      "position": [
+        102.5,
+        13,
+        140.5
+      ],
+      "yaw": -27,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-cow.glb",
+      "scale": 0.8683,
+      "animation": "idle",
+      "chapter": 1,
+      "quest": "toan2-cd5-b26"
+    },
+    {
+      "id": "toan2-cd5-b26-gau-muc",
+      "kind": "npc",
+      "name": "Gấu Mực",
+      "label": "Nói chuyện",
+      "position": [
+        63.5,
+        13,
+        150.5
+      ],
+      "yaw": 63,
+      "radius": 3,
+      "model": "generated/characters/npc-bear-den-overalls-red.glb",
+      "scale": 0.6667,
+      "chapter": 1,
+      "quest": "toan2-cd5-b26"
+    },
+    {
+      "id": "toan2-cd5-b26-meo-tuyet",
+      "kind": "npc",
+      "name": "Mèo Tuyết",
+      "label": "Nói chuyện",
+      "position": [
+        49.5,
+        13,
+        134.5
+      ],
+      "yaw": 90,
+      "radius": 3,
+      "model": "generated/characters/npc-cat-trang-jacket-red.glb",
+      "scale": 0.6415,
+      "chapter": 1,
+      "quest": "toan2-cd5-b26"
+    },
+    {
+      "id": "toan2-cd5-b26-ong-nhi",
+      "kind": "npc",
+      "name": "Ong Nhí",
+      "label": "Nói chuyện",
+      "position": [
+        118.5,
+        13,
+        135.5
+      ],
+      "yaw": -72,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-bee.glb",
+      "scale": 0.3002,
+      "animation": "idle",
+      "chapter": 1,
+      "quest": "toan2-cd5-b26"
+    },
+    {
+      "id": "toan2-cd5-manh-kinh-do",
+      "kind": "object",
+      "name": "Mảnh kính đỏ",
+      "label": "Nhặt lên",
+      "position": [
+        116.5,
+        13,
+        139.5
+      ],
+      "yaw": -162,
+      "radius": 2,
+      "model": "generated/props/gem-red.glb",
+      "scale": 0.0417,
+      "chapter": 1,
+      "quest": "toan2-cd5-b26"
+    },
+    {
+      "id": "toan2-cd5-manh-kinh-tim",
+      "kind": "object",
+      "name": "Mảnh kính tím",
+      "label": "Nhặt lên",
+      "position": [
+        115.5,
+        13,
+        134.5
+      ],
+      "yaw": 274,
+      "radius": 2,
+      "model": "generated/props/gem-purple.glb",
+      "scale": 0.0417,
+      "chapter": 1,
+      "quest": "toan2-cd5-b26"
+    },
+    {
+      "id": "toan2-cd5-manh-kinh-xanh",
+      "kind": "object",
+      "name": "Mảnh kính xanh",
+      "label": "Nhặt lên",
+      "position": [
+        113.5,
+        13,
+        137.5
+      ],
+      "yaw": 117,
+      "radius": 2,
+      "model": "generated/props/gem-blue.glb",
+      "scale": 0.0417,
+      "chapter": 1,
+      "quest": "toan2-cd5-b26"
+    },
+    {
+      "id": "toan2-cd5-b27-gau-nut",
+      "kind": "npc",
+      "name": "Gấu Nút",
+      "label": "Nói chuyện",
+      "position": [
+        75.5,
+        13,
+        135.5
+      ],
+      "yaw": 45,
+      "radius": 3,
+      "model": "generated/characters/npc-bear-den-vest-shorts-green.glb",
+      "scale": 0.6667,
+      "chapter": 1,
+      "quest": "toan2-cd5-b27"
+    },
+    {
+      "id": "toan2-cd5-b27-ho-con-dau",
+      "kind": "npc",
+      "name": "Hổ Con Đậu",
+      "label": "Nói chuyện",
+      "position": [
+        88.5,
+        13,
+        139.5
+      ],
+      "yaw": 18,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-tiger.glb",
+      "scale": 0.7602,
+      "animation": "idle",
+      "chapter": 1,
+      "quest": "toan2-cd5-b27"
+    },
+    {
+      "id": "toan2-cd5-giay-mau",
+      "kind": "object",
+      "name": "Giấy màu",
+      "label": "Nhặt lên",
+      "position": [
+        88.5,
+        13,
+        143.5
+      ],
+      "yaw": 135,
+      "radius": 2,
+      "model": "generated/props/page-pink.glb",
+      "scale": 0.0375,
+      "chapter": 1,
+      "quest": "toan2-cd5-b27"
+    },
+    {
+      "id": "toan2-cd5-keo-nho",
+      "kind": "object",
+      "name": "Kéo nhỏ",
+      "label": "Nhặt lên",
+      "position": [
+        91.5,
+        13,
+        140.5
+      ],
+      "yaw": -45,
+      "radius": 2,
+      "model": "generated/props/scissors.glb",
+      "scale": 0.04,
+      "chapter": 1,
+      "quest": "toan2-cd5-b27"
+    },
+    {
+      "id": "toan2-cd5-lo-ho-dan",
+      "kind": "object",
+      "name": "Lọ hồ dán",
+      "label": "Nhặt lên",
+      "position": [
+        90.5,
+        13,
+        145.5
+      ],
+      "yaw": -162,
+      "radius": 2,
+      "model": "packs/kenney-survival-kit/2.0/bottle-large.glb",
+      "scale": 4.1705,
+      "chapter": 1,
+      "quest": "toan2-cd5-b27"
+    },
+    {
+      "id": "toan2-cd5-b27-tho-may",
+      "kind": "npc",
+      "name": "Thỏ Mây",
+      "label": "Nói chuyện",
+      "position": [
+        99.5,
+        13,
+        164.5
+      ],
+      "yaw": -117,
+      "radius": 3,
+      "model": "generated/characters/npc-rabbit-trang-vest-shorts.glb",
+      "scale": 0.5763,
+      "chapter": 1,
+      "quest": "toan2-cd5-b27"
+    },
+    {
+      "id": "toan2-cd5-b28-sau-ton-ten",
+      "kind": "npc",
+      "name": "Sâu Tòn Ten",
+      "label": "Nói chuyện",
+      "position": [
+        94.5,
+        13,
+        197.5
+      ],
+      "yaw": 290,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-caterpillar.glb",
+      "scale": 0.458,
+      "animation": "idle",
+      "chapter": 1,
+      "quest": "toan2-cd5-b28"
+    },
+    {
+      "id": "toan2-cd5-b28-tho-bong-lau",
+      "kind": "npc",
+      "name": "Thỏ Bông Lau",
+      "label": "Nói chuyện",
+      "position": [
+        123.5,
+        13,
+        187.5
+      ],
+      "yaw": -45,
+      "radius": 3,
+      "model": "generated/characters/npc-rabbit-nau-dress-blue.glb",
+      "scale": 0.5763,
+      "chapter": 1,
+      "quest": "toan2-cd5-b28"
+    },
+    {
+      "id": "toan2-cd5-dinh-treo-tranh",
+      "kind": "object",
+      "name": "Đinh treo tranh",
+      "label": "Nhặt lên",
+      "position": [
+        62.5,
+        13,
+        210.5
+      ],
+      "yaw": 104,
+      "radius": 2,
+      "model": "generated/props/pushpin.glb",
+      "scale": 0.0313,
+      "chapter": 1,
+      "quest": "toan2-cd5-b28"
+    },
+    {
+      "id": "toan2-cd5-khung-tranh-go",
+      "kind": "object",
+      "name": "Khung tranh gỗ",
+      "label": "Nhặt lên",
+      "position": [
+        61.5,
+        13,
+        213.5
+      ],
+      "yaw": 162,
+      "radius": 2,
+      "model": "generated/props/framed-picture.glb",
+      "scale": 0.0625,
+      "chapter": 1,
+      "quest": "toan2-cd5-b28"
+    },
+    {
+      "id": "toan2-cd5-thuoc-ke-dai",
+      "kind": "object",
+      "name": "Thước kẻ dài",
+      "label": "Nhặt lên",
+      "position": [
+        65.5,
+        13,
+        210.5
+      ],
+      "yaw": -90,
+      "radius": 2,
+      "model": "generated/props/ruler-blue.glb",
+      "scale": 0.0437,
+      "chapter": 1,
+      "quest": "toan2-cd5-b28"
+    },
+    {
+      "id": "toan2-cd7-b33-bac-hung",
+      "kind": "npc",
+      "name": "Bác Hùng",
+      "label": "Nói chuyện",
+      "position": [
+        195.5,
+        13,
+        134.5
+      ],
+      "yaw": -72,
+      "radius": 3,
+      "model": "packs/kenney-blocky-characters/2.0/character-j.glb",
+      "scale": 0.7037,
+      "animation": "idle",
+      "chapter": 2,
+      "quest": "toan2-cd7-b33"
+    },
+    {
+      "id": "toan2-cd7-b33-chu-toan",
+      "kind": "npc",
+      "name": "Chú Toàn",
+      "label": "Nói chuyện",
+      "position": [
+        205.5,
+        13,
+        155.5
+      ],
+      "yaw": -45,
+      "radius": 3,
+      "model": "packs/kenney-blocky-characters/2.0/character-b.glb",
+      "scale": 0.7037,
+      "animation": "idle",
+      "chapter": 2,
+      "quest": "toan2-cd7-b33"
+    },
+    {
+      "id": "toan2-cd7-xap-ve-do",
+      "kind": "object",
+      "name": "Xấp vé đỏ",
+      "label": "Nhặt lên",
+      "position": [
+        158.5,
+        13,
+        129.5
+      ],
+      "yaw": 117,
+      "radius": 2,
+      "model": "generated/props/ticket-red.glb",
+      "scale": 0.0667,
+      "chapter": 2,
+      "quest": "toan2-cd7-b33"
+    },
+    {
+      "id": "toan2-cd7-xap-ve-vang",
+      "kind": "object",
+      "name": "Xấp vé vàng",
+      "label": "Nhặt lên",
+      "position": [
+        160.5,
+        13,
+        131.5
+      ],
+      "yaw": 180,
+      "radius": 2,
+      "model": "generated/props/ticket-yellow.glb",
+      "scale": 0.0667,
+      "chapter": 2,
+      "quest": "toan2-cd7-b33"
+    },
+    {
+      "id": "toan2-cd7-xap-ve-xanh",
+      "kind": "object",
+      "name": "Xấp vé xanh",
+      "label": "Nhặt lên",
+      "position": [
+        162.5,
+        13,
+        126.5
+      ],
+      "yaw": -45,
+      "radius": 2,
+      "model": "generated/props/ticket-blue.glb",
+      "scale": 0.0667,
+      "chapter": 2,
+      "quest": "toan2-cd7-b33"
+    },
+    {
+      "id": "toan2-cd7-b34-chu-phong",
+      "kind": "npc",
+      "name": "Chú Phong",
+      "label": "Nói chuyện",
+      "position": [
+        185.5,
+        13,
+        125.5
+      ],
+      "yaw": 90,
+      "radius": 3,
+      "model": "packs/kenney-blocky-characters/2.0/character-c.glb",
+      "scale": 0.7037,
+      "animation": "idle",
+      "chapter": 2,
+      "quest": "toan2-cd7-b34"
+    },
+    {
+      "id": "toan2-cd7-manh-tam-giac",
+      "kind": "object",
+      "name": "Mảnh tam giác",
+      "label": "Nhặt lên",
+      "position": [
+        176.5,
+        13,
+        157.5
+      ],
+      "yaw": -90,
+      "radius": 2,
+      "model": "generated/props/triangle-ruler.glb",
+      "scale": 0.0375,
+      "chapter": 2,
+      "quest": "toan2-cd7-b34"
+    },
+    {
+      "id": "toan2-cd7-manh-tu-giac",
+      "kind": "object",
+      "name": "Mảnh tứ giác",
+      "label": "Nhặt lên",
+      "position": [
+        172.5,
+        13,
+        155.5
+      ],
+      "yaw": 27,
+      "radius": 2,
+      "model": "generated/props/orange-diamond.glb",
+      "scale": 0.0375,
+      "chapter": 2,
+      "quest": "toan2-cd7-b34"
+    },
+    {
+      "id": "toan2-cd7-thuoc-ke",
+      "kind": "object",
+      "name": "Thước kẻ",
+      "label": "Nhặt lên",
+      "position": [
+        172.5,
+        13,
+        160.5
+      ],
+      "yaw": 162,
+      "radius": 2,
+      "model": "generated/props/ruler.glb",
+      "scale": 0.0437,
+      "chapter": 2,
+      "quest": "toan2-cd7-b34"
+    },
+    {
+      "id": "toan2-cd7-b35-cao-cham-bi",
+      "kind": "npc",
+      "name": "Cáo Chấm Bi",
+      "label": "Nói chuyện",
+      "position": [
+        175.5,
+        13,
+        118.5
+      ],
+      "yaw": -108,
+      "radius": 3,
+      "model": "generated/characters/npc-fox-do-dress-mint.glb",
+      "scale": 0.6296,
+      "chapter": 2,
+      "quest": "toan2-cd7-b35"
+    },
+    {
+      "id": "toan2-cd7-b35-chi-ngan",
+      "kind": "npc",
+      "name": "Chị Ngân",
+      "label": "Nói chuyện",
+      "position": [
+        160.5,
+        13,
+        144.5
+      ],
+      "yaw": 90,
+      "radius": 3,
+      "model": "packs/kenney-blocky-characters/2.0/character-n.glb",
+      "scale": 0.7037,
+      "animation": "idle",
+      "chapter": 2,
+      "quest": "toan2-cd7-b35"
+    },
+    {
+      "id": "toan2-cd7-ca-mot-lit",
+      "kind": "object",
+      "name": "Ca một lít",
+      "label": "Nhặt lên",
+      "position": [
+        181.5,
+        13,
+        146.5
+      ],
+      "yaw": -135,
+      "radius": 2,
+      "model": "packs/kenney-food-kit/2.0/cup.glb",
+      "scale": 2,
+      "chapter": 2,
+      "quest": "toan2-cd7-b35"
+    },
+    {
+      "id": "toan2-cd7-can-nuoc",
+      "kind": "object",
+      "name": "Can nước",
+      "label": "Nhặt lên",
+      "position": [
+        179.5,
+        13,
+        144.5
+      ],
+      "yaw": 162,
+      "radius": 2,
+      "model": "packs/kenney-survival-kit/2.0/bucket.glb",
+      "scale": 3.124,
+      "chapter": 2,
+      "quest": "toan2-cd7-b35"
+    },
+    {
+      "id": "toan2-cd7-qua-can",
+      "kind": "object",
+      "name": "Quả cân",
+      "label": "Nhặt lên",
+      "position": [
+        178.5,
+        13,
+        147.5
+      ],
+      "yaw": 162,
+      "radius": 2,
+      "model": "generated/props/balance-scale.glb",
+      "scale": 0.0437,
+      "chapter": 2,
+      "quest": "toan2-cd7-b35"
+    },
+    {
+      "id": "toan2-cd7-b36-ong-ru-ri",
+      "kind": "npc",
+      "name": "Ong Rù Rì",
+      "label": "Nói chuyện",
+      "position": [
+        153.5,
+        13,
+        161.5
+      ],
+      "yaw": -117,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-bee.glb",
+      "scale": 0.3002,
+      "animation": "idle",
+      "chapter": 2,
+      "quest": "toan2-cd7-b36"
+    },
+    {
+      "id": "toan2-cd7-hop-huy-hieu-bac",
+      "kind": "object",
+      "name": "Hộp huy hiệu bạc",
+      "label": "Mở hộp",
+      "position": [
+        159.5,
+        13,
+        181.5
+      ],
+      "yaw": -18,
+      "radius": 2,
+      "model": "generated/props/medal-silver.glb",
+      "scale": 0.0375,
+      "chapter": 2,
+      "quest": "toan2-cd7-b36"
+    },
+    {
+      "id": "toan2-cd7-hop-huy-hieu-dong",
+      "kind": "object",
+      "name": "Hộp huy hiệu đồng",
+      "label": "Mở hộp",
+      "position": [
+        158.5,
+        13,
+        186.5
+      ],
+      "yaw": 180,
+      "radius": 2,
+      "model": "generated/props/medal-bronze.glb",
+      "scale": 0.0375,
+      "chapter": 2,
+      "quest": "toan2-cd7-b36"
+    },
+    {
+      "id": "toan2-cd7-hop-huy-hieu-vang",
+      "kind": "object",
+      "name": "Hộp huy hiệu vàng",
+      "label": "Mở hộp",
+      "position": [
+        156.5,
+        13,
+        182.5
+      ],
+      "yaw": 45,
+      "radius": 2,
+      "model": "generated/props/medal-gold.glb",
+      "scale": 0.0375,
+      "chapter": 2,
+      "quest": "toan2-cd7-b36"
+    },
+    {
+      "id": "tv2-t18-bua-hai-ly",
+      "kind": "object",
+      "name": "Búa của Hải Ly",
+      "label": "Nhặt lên",
+      "position": [
+        149.5,
+        13,
+        68.5
+      ],
+      "yaw": 90,
+      "radius": 2,
+      "model": "packs/kenney-survival-kit/2.0/tool-hammer.glb",
+      "scale": 3.9093,
+      "chapter": 3,
+      "quest": "tv2-t18-on-cuoi-ki"
+    },
+    {
+      "id": "tv2-t18-dai-lua-do",
+      "kind": "object",
+      "name": "Dải lụa đỏ",
+      "label": "Nhặt lên",
+      "position": [
+        149.5,
+        13,
+        65.5
+      ],
+      "yaw": 18,
+      "radius": 2,
+      "model": "generated/props/ribbon.glb",
+      "scale": 0.0429,
+      "chapter": 3,
+      "quest": "tv2-t18-on-cuoi-ki"
+    },
+    {
+      "id": "tv2-t18-tam-van-cuoi",
+      "kind": "object",
+      "name": "Tấm ván cuối",
+      "label": "Nhặt lên",
+      "position": [
+        153.5,
+        13,
+        69.5
+      ],
+      "yaw": -108,
+      "radius": 2,
+      "model": "packs/kenney-survival-kit/2.0/resource-planks.glb",
+      "scale": 5.3419,
+      "chapter": 3,
+      "quest": "tv2-t18-on-cuoi-ki"
+    },
+    {
+      "id": "tv2-t18-giua-cau",
+      "character": "huou-cao",
+      "kind": "npc",
+      "name": "Hươu Cao",
+      "label": "Nói chuyện",
+      "position": [
+        146.5,
+        13,
+        32.5
+      ],
+      "yaw": -72,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-giraffe.glb",
+      "scale": 1.2837,
+      "animation": "idle",
+      "chapter": 3,
+      "quest": "tv2-t18-on-cuoi-ki"
+    },
+    {
+      "id": "tv2-t18-nhip-cau-cuoi",
+      "kind": "object",
+      "name": "Nhịp cầu cuối",
+      "label": "Đọc truyện",
+      "position": [
+        132.5,
+        13,
+        72.5
+      ],
+      "yaw": -90,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/bridge_woodRound.glb",
+      "scale": 1.7778,
+      "chapter": 3,
+      "quest": "tv2-t18-on-cuoi-ki"
+    },
+    {
+      "id": "tv2-t18-nhip-cau-dau",
+      "kind": "object",
+      "name": "Nhịp cầu đầu",
+      "label": "Xem tranh",
+      "position": [
+        179.5,
+        13,
+        72.5
+      ],
+      "yaw": -72,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/bridge_wood.glb",
+      "scale": 2,
+      "chapter": 3,
+      "quest": "tv2-t18-on-cuoi-ki"
+    },
+    {
+      "id": "tv2-t18-nhip-cau-giua",
+      "kind": "object",
+      "name": "Nhịp cầu giữa",
+      "label": "Xem",
+      "position": [
+        122.5,
+        13,
+        61.5
+      ],
+      "yaw": 153,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/bridge_woodNarrow.glb",
+      "scale": 2.2857,
+      "chapter": 3,
+      "quest": "tv2-t18-on-cuoi-ki"
+    },
+    {
+      "id": "tv2-t18-on-cuoi-ki-bac-nong-dan-tam",
+      "kind": "npc",
+      "name": "Bác nông dân Tám",
+      "label": "Nói chuyện",
+      "position": [
+        162.5,
+        13,
+        50.5
+      ],
+      "yaw": -90,
+      "radius": 3,
+      "model": "packs/kenney-blocky-characters/2.0/character-j.glb",
+      "scale": 0.7037,
+      "animation": "idle",
+      "chapter": 3,
+      "quest": "tv2-t18-on-cuoi-ki"
+    },
+    {
+      "id": "tv2-t18-on-cuoi-ki-cao-linh",
+      "kind": "npc",
+      "name": "Cáo Linh",
+      "label": "Nói chuyện",
+      "position": [
+        143.5,
+        13,
+        49.5
+      ],
+      "yaw": -45,
+      "radius": 3,
+      "model": "generated/characters/npc-fox-tuyet-overalls.glb",
+      "scale": 0.6296,
+      "chapter": 3,
+      "quest": "tv2-t18-on-cuoi-ki"
+    },
+    {
+      "id": "tv2-t18-on-cuoi-ki-gau-than",
+      "kind": "npc",
+      "name": "Gấu Than",
+      "label": "Nói chuyện",
+      "position": [
+        181.5,
+        13,
+        54.5
+      ],
+      "yaw": -153,
+      "radius": 3,
+      "model": "generated/characters/npc-bear-den-overalls-red.glb",
+      "scale": 0.6667,
+      "chapter": 3,
+      "quest": "tv2-t18-on-cuoi-ki"
+    },
+    {
+      "id": "tv2-t18-on-cuoi-ki-hai-ly-mam",
+      "kind": "npc",
+      "name": "Hải Ly Mầm",
+      "label": "Nói chuyện",
+      "position": [
+        163.5,
+        13,
+        39.5
+      ],
+      "yaw": -162,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-beaver.glb",
+      "scale": 0.6661,
+      "animation": "idle",
+      "chapter": 3,
+      "quest": "tv2-t18-on-cuoi-ki"
+    },
+    {
+      "id": "tv2-t18-on-cuoi-ki-meo-kem",
+      "kind": "npc",
+      "name": "Mèo Kem",
+      "label": "Nói chuyện",
+      "position": [
+        119.5,
+        13,
+        72.5
+      ],
+      "yaw": -90,
+      "radius": 3,
+      "model": "generated/characters/npc-cat-trang-dress.glb",
+      "scale": 0.6415,
+      "chapter": 3,
+      "quest": "tv2-t18-on-cuoi-ki"
+    }
+  ],
+  "props": [
+    {
+      "model": "packs/kenney-castle-kit/2.0/flag-banner-long.glb",
+      "position": [
+        40.5,
+        28,
+        92.5
+      ],
+      "yaw": 0,
+      "scale": 1.3825
+    },
+    {
+      "model": "packs/kenney-castle-kit/2.0/flag-banner-long.glb",
+      "position": [
+        216.5,
+        28,
+        92.5
+      ],
+      "yaw": 0,
+      "scale": 1.3825
+    },
+    {
+      "model": "packs/kenney-castle-kit/2.0/flag-banner-long.glb",
+      "position": [
+        40.5,
+        28,
+        236.5
+      ],
+      "yaw": 0,
+      "scale": 1.3825
+    },
+    {
+      "model": "packs/kenney-castle-kit/2.0/flag-banner-long.glb",
+      "position": [
+        216.5,
+        28,
+        236.5
+      ],
+      "yaw": 0,
+      "scale": 1.3825
+    },
+    {
+      "model": "packs/kenney-castle-kit/2.0/flag-banner-long.glb",
+      "position": [
+        122.5,
+        28,
+        92.5
+      ],
+      "yaw": 0,
+      "scale": 1.3825
+    },
+    {
+      "model": "packs/kenney-castle-kit/2.0/flag-banner-long.glb",
+      "position": [
+        134.5,
+        28,
+        92.5
+      ],
+      "yaw": 0,
+      "scale": 1.3825
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/sign.glb",
+      "position": [
+        61.5,
+        13,
+        191.5
+      ],
+      "yaw": 180,
+      "scale": 3.4249
+    },
+    {
+      "model": "generated/props/artist-palette.glb",
+      "position": [
+        62.5,
+        13,
+        192.5
+      ],
+      "yaw": 180,
+      "scale": 0.06
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/sign.glb",
+      "position": [
+        65.5,
+        13,
+        191.5
+      ],
+      "yaw": 180,
+      "scale": 3.4249
+    },
+    {
+      "model": "generated/props/artist-palette.glb",
+      "position": [
+        66.5,
+        13,
+        192.5
+      ],
+      "yaw": 180,
+      "scale": 0.06
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/sign.glb",
+      "position": [
+        69.5,
+        13,
+        191.5
+      ],
+      "yaw": 180,
+      "scale": 3.4249
+    },
+    {
+      "model": "generated/props/artist-palette.glb",
+      "position": [
+        70.5,
+        13,
+        192.5
+      ],
+      "yaw": 180,
+      "scale": 0.06
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/sign.glb",
+      "position": [
+        73.5,
+        13,
+        191.5
+      ],
+      "yaw": 180,
+      "scale": 3.4249
+    },
+    {
+      "model": "generated/props/artist-palette.glb",
+      "position": [
+        74.5,
+        13,
+        192.5
+      ],
+      "yaw": 180,
+      "scale": 0.06
+    },
+    {
+      "model": "generated/props/framed-picture-yellow.glb",
+      "position": [
+        101.5,
+        13,
+        191.5
+      ],
+      "yaw": 180,
+      "scale": 0.075
+    },
+    {
+      "model": "generated/props/framed-picture.glb",
+      "position": [
+        106.5,
+        13,
+        191.5
+      ],
+      "yaw": 180,
+      "scale": 0.075
+    },
+    {
+      "model": "generated/props/framed-picture-yellow.glb",
+      "position": [
+        111.5,
+        13,
+        191.5
+      ],
+      "yaw": 180,
+      "scale": 0.075
+    },
+    {
+      "model": "generated/props/framed-picture.glb",
+      "position": [
+        116.5,
+        13,
+        191.5
+      ],
+      "yaw": 180,
+      "scale": 0.075
+    },
+    {
+      "model": "generated/box-props/park-bench.glb",
+      "position": [
+        158.5,
+        13,
+        136.5
+      ],
+      "yaw": 0,
+      "scale": 1
+    },
+    {
+      "model": "generated/box-props/park-bench.glb",
+      "position": [
+        170.5,
+        13,
+        136.5
+      ],
+      "yaw": 0,
+      "scale": 1
+    },
+    {
+      "model": "generated/box-props/park-bench.glb",
+      "position": [
+        182.5,
+        13,
+        136.5
+      ],
+      "yaw": 0,
+      "scale": 1
+    },
+    {
+      "model": "generated/box-props/park-bench.glb",
+      "position": [
+        194.5,
+        13,
+        136.5
+      ],
+      "yaw": 0,
+      "scale": 1
+    },
+    {
+      "model": "generated/box-props/park-bench.glb",
+      "position": [
+        158.5,
+        13,
+        144.5
+      ],
+      "yaw": 0,
+      "scale": 1
+    },
+    {
+      "model": "generated/box-props/park-bench.glb",
+      "position": [
+        170.5,
+        13,
+        144.5
+      ],
+      "yaw": 0,
+      "scale": 1
+    },
+    {
+      "model": "generated/box-props/park-bench.glb",
+      "position": [
+        182.5,
+        13,
+        144.5
+      ],
+      "yaw": 0,
+      "scale": 1
+    },
+    {
+      "model": "generated/box-props/park-bench.glb",
+      "position": [
+        194.5,
+        13,
+        144.5
+      ],
+      "yaw": 0,
+      "scale": 1
+    },
+    {
+      "model": "generated/box-props/park-bench.glb",
+      "position": [
+        158.5,
+        13,
+        152.5
+      ],
+      "yaw": 0,
+      "scale": 1
+    },
+    {
+      "model": "generated/box-props/park-bench.glb",
+      "position": [
+        170.5,
+        13,
+        152.5
+      ],
+      "yaw": 0,
+      "scale": 1
+    },
+    {
+      "model": "generated/box-props/park-bench.glb",
+      "position": [
+        182.5,
+        13,
+        152.5
+      ],
+      "yaw": 0,
+      "scale": 1
+    },
+    {
+      "model": "generated/box-props/park-bench.glb",
+      "position": [
+        194.5,
+        13,
+        152.5
+      ],
+      "yaw": 0,
+      "scale": 1
+    },
+    {
+      "model": "generated/props/teddy-bear.glb",
+      "position": [
+        160.5,
+        13,
+        168.5
+      ],
+      "yaw": 0,
+      "scale": 0.05
+    },
+    {
+      "model": "packs/kenney-survival-kit/2.0/barrel.glb",
+      "position": [
+        168.5,
+        13,
+        168.5
+      ],
+      "yaw": 0,
+      "scale": 2.907
+    },
+    {
+      "model": "generated/props/medal-gold.glb",
+      "position": [
+        184.5,
+        13,
+        168.5
+      ],
+      "yaw": 0,
+      "scale": 0.05
+    },
+    {
+      "model": "packs/kenney-survival-kit/2.0/barrel.glb",
+      "position": [
+        192.5,
+        13,
+        168.5
+      ],
+      "yaw": 0,
+      "scale": 2.907
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/tree_detailed.glb",
+      "position": [
+        88.5,
+        13,
+        64.5
+      ],
+      "yaw": -40,
+      "scale": 4.5031
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/tree_detailed.glb",
+      "position": [
+        164.5,
+        13,
+        68.5
+      ],
+      "yaw": 36,
+      "scale": 4.5031
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/tree_detailed.glb",
+      "position": [
+        70.5,
+        13,
+        44.5
+      ],
+      "yaw": -58,
+      "scale": 4.5031
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
+      "position": [
+        68.5,
+        13,
+        32.5
+      ],
+      "yaw": 0,
+      "scale": 1.7094
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
+      "position": [
+        74.5,
+        13,
+        35.5
+      ],
+      "yaw": 40,
+      "scale": 1.7094
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
+      "position": [
+        80.5,
+        13,
+        38.5
+      ],
+      "yaw": 80,
+      "scale": 1.7094
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
+      "position": [
+        86.5,
+        13,
+        32.5
+      ],
+      "yaw": 120,
+      "scale": 1.7094
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
+      "position": [
+        92.5,
+        13,
+        35.5
+      ],
+      "yaw": 160,
+      "scale": 1.7094
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
+      "position": [
+        98.5,
+        13,
+        38.5
+      ],
+      "yaw": 200,
+      "scale": 1.7094
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
+      "position": [
+        104.5,
+        13,
+        32.5
+      ],
+      "yaw": 240,
+      "scale": 1.7094
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
+      "position": [
+        110.5,
+        13,
+        35.5
+      ],
+      "yaw": 280,
+      "scale": 1.7094
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
+      "position": [
+        116.5,
+        13,
+        38.5
+      ],
+      "yaw": 320,
+      "scale": 1.7094
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
+      "position": [
+        122.5,
+        13,
+        32.5
+      ],
+      "yaw": 360,
+      "scale": 1.7094
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
+      "position": [
+        128.5,
+        13,
+        35.5
+      ],
+      "yaw": 400,
+      "scale": 1.7094
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
+      "position": [
+        134.5,
+        13,
+        38.5
+      ],
+      "yaw": 440,
+      "scale": 1.7094
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
+      "position": [
+        140.5,
+        13,
+        32.5
+      ],
+      "yaw": 480,
+      "scale": 1.7094
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
+      "position": [
+        146.5,
+        13,
+        35.5
+      ],
+      "yaw": 520,
+      "scale": 1.7094
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
+      "position": [
+        152.5,
+        13,
+        38.5
+      ],
+      "yaw": 560,
+      "scale": 1.7094
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
+      "position": [
+        158.5,
+        13,
+        32.5
+      ],
+      "yaw": 600,
+      "scale": 1.7094
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
+      "position": [
+        164.5,
+        13,
+        35.5
+      ],
+      "yaw": 640,
+      "scale": 1.7094
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
+      "position": [
+        170.5,
+        13,
+        38.5
+      ],
+      "yaw": 680,
+      "scale": 1.7094
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
+      "position": [
+        176.5,
+        13,
+        32.5
+      ],
+      "yaw": 720,
+      "scale": 1.7094
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
+      "position": [
+        182.5,
+        13,
+        35.5
+      ],
+      "yaw": 760,
+      "scale": 1.7094
+    },
+    {
+      "model": "packs/kenney-castle-kit/2.0/flag-wide.glb",
+      "position": [
+        124.5,
+        12,
+        84.5
+      ],
+      "yaw": 0,
+      "scale": 2.8881
+    },
+    {
+      "model": "packs/kenney-castle-kit/2.0/flag-wide.glb",
+      "position": [
+        132.5,
+        12,
+        84.5
+      ],
+      "yaw": 0,
+      "scale": 2.8881
+    },
+    {
+      "model": "packs/kenney-survival-kit/2.0/signpost.glb",
+      "position": [
+        135.5,
+        13,
+        103.5
+      ],
+      "yaw": 45,
+      "scale": 3.4777
+    },
+    {
+      "model": "packs/kenney-survival-kit/2.0/signpost.glb",
+      "position": [
+        143.5,
+        13,
+        111.5
+      ],
+      "yaw": 45,
+      "scale": 3.4777
+    },
+    {
+      "model": "packs/kenney-survival-kit/2.0/signpost.glb",
+      "position": [
+        128.5,
+        13,
+        23.5
+      ],
+      "yaw": 45,
+      "scale": 3.4777
+    }
+  ],
+  "landmarks": [
+    {
+      "id": "san-hinh-khoi",
+      "name": "Sân hình khối",
+      "position": [
+        92.5,
+        13,
+        162.5
+      ]
+    },
+    {
+      "id": "dai-sanh-on-tap",
+      "name": "Đại sảnh ôn tập",
+      "position": [
+        176.5,
+        13,
+        166.5
+      ]
+    },
+    {
+      "id": "cau-treo-cong-thanh",
+      "name": "Cầu treo trước cổng thành",
+      "position": [
+        128.5,
+        13,
+        50.5
+      ]
+    },
+    {
+      "id": "cong-thanh",
+      "name": "Cổng thành",
+      "position": [
+        128.5,
+        13,
+        92.5
+      ]
+    },
+    {
+      "id": "khoi-hinh",
+      "name": "Khối hình trên sân",
+      "position": [
+        82.5,
+        13,
+        122.5
+      ]
+    },
+    {
+      "id": "phong-ve",
+      "name": "Phòng vẽ",
+      "position": [
+        68.5,
+        13,
+        194.5
+      ]
+    },
+    {
+      "id": "phong-tranh",
+      "name": "Phòng trưng bày tranh",
+      "position": [
+        109.5,
+        13,
+        194.5
+      ]
+    },
+    {
+      "id": "dai-sanh",
+      "name": "Đại sảnh",
+      "position": [
+        176.5,
+        13,
+        170.5
+      ]
+    },
+    {
+      "id": "hau-truong",
+      "name": "Hậu trường",
+      "position": [
+        192.5,
+        13,
+        169.5
+      ]
+    },
+    {
+      "id": "cau-treo",
+      "name": "Cầu treo",
+      "position": [
+        128.5,
+        13,
+        89.5
+      ]
+    }
+  ]
+}

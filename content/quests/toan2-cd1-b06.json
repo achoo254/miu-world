@@ -14,7 +14,7 @@
     "play": "Nhặt vé, điền tia số và bảng số liền nhau, tách số, xếp xe đua, mở bốn cửa trắc nghiệm, ghép thẻ số, điền dấu, đưa ong về tổ",
     "learn": "Toán 2 Bài 6: luyện tập chung về số đến 100, cộng trừ, so sánh, bài toán",
     "reward": "80 XP, 15 xu, Số đến 100 +2, Phép cộng +1, So sánh số +1",
-    "next": "Bài 7 \"Phép cộng (qua 10) trong phạm vi 20\""
+    "next": "Bài 7 \"Phép cộng (qua 10) trong phạm vi 20\" ở Chợ phiên"
   },
   "phases": {
     "hook": "hoi-cho-khai-mac",
@@ -1582,10 +1582,10 @@
     },
     {
       "id": "luong-hoa-huong-duong",
-      "title": "Hoa hướng dương gọi",
+      "title": "Phiên chợ ngoài cổng trường",
       "kind": "next",
       "trigger": "auto",
-      "text": "Gấu Mật Nhi chỉ tay về vườn trường: Ong Vàng đang chờ {name} ở luống hoa hướng dương, tổ mới cần đủ chục bông hoa mà ong đếm mãi vẫn bị lố!"
+      "text": "Gấu Mật Nhi chỉ ra phố ngoài cổng trường: Chợ phiên đang họp rồi! Ong Vàng chờ {name} ở hàng hoa hướng dương, tổ mới cần đủ chục bông mà ong đếm mãi vẫn bị lố!"
     }
   ],
   "reward": {

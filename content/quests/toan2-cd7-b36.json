@@ -1,20 +1,20 @@
 {
   "id": "toan2-cd7-b36",
-  "region": "truong-hoc",
-  "chapter": 7,
-  "title": "Lễ tổng kết bảy khu trường",
+  "region": "lau-dai",
+  "chapter": 2,
+  "title": "Lễ tổng kết trong đại sảnh",
   "status": "active",
   "lesson": "toan2-t1-b36",
-  "summary": "Lễ tổng kết học kì một: mỗi khu của Trường học gửi một câu đố cuối, từ tia số của Gà Lóc Cóc tới đường bay của Ong Rù Rì; {name} giải hết để nhận huy hiệu học kì từ tay thầy Quang.",
+  "summary": "Lễ tổng kết học kì một trong đại sảnh lâu đài: mỗi gian ôn tập theo một chủ đề Toán gửi một câu đố cuối, từ tia số của Gà Lóc Cóc tới đường bay của Ong Rù Rì; {name} giải hết để nhận huy hiệu học kì từ tay thầy Quang.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Thầy Quang cùng các bạn giữ gian: Gà Lóc Cóc, ông Lộc, Gấu Trắng Ú, Mèo Cam Xíu, chị Thảo, cô Hằng, Mèo Mướp, Thỏ Gòn, bác Thuận, Ong Rù Rì",
-    "where": "Hội trường trong lễ tổng kết: bục huy hiệu, khán phòng và các gian của bảy khu (sân trường, đồng hồ và bàn lịch, đồ chơi, thể thao, mĩ thuật và giá ghim tranh, căng tin, vườn và giàn hoa giấy)",
-    "goal": "Giải câu đố cuối của từng khu để nhận huy hiệu học kì một",
+    "who": "Thầy Quang cùng các bạn giữ gian: Gà Lóc Cóc, Bác Ngân, Bác Thìn, Mèo Cam Xíu, Cáo Bạch, cô Hằng, Mèo Mướp, Thỏ Gòn, bác Thuận, Ong Rù Rì",
+    "where": "Lâu đài, đại sảnh trong lễ tổng kết: bục huy hiệu, khán phòng và các gian ôn tập (tia số, lịch, đồng hồ, đặt tính, đo chiều cao, hình phẳng và giá ghim tranh, cân đong, bài toán, giàn hoa giấy)",
+    "goal": "Giải câu đố cuối của từng gian ôn tập để nhận huy hiệu học kì một",
     "play": "Tìm hộp huy hiệu, chọn đáp án, ghép tranh với đồng hồ, đặt tính, giải toán, điền đường đi và sơ đồ mũi tên",
     "learn": "Toán 2 Bài 36: ôn tập chung (số, lịch, đồng hồ, cộng trừ có nhớ, độ dài, khối lượng, dung tích, hình tứ giác)",
     "reward": "120 XP, 20 xu, Phép cộng +1, Phép trừ +1, Xem đồng hồ +1, Hình phẳng +1, Bài toán có lời văn +1",
-    "next": "Học kì hai: Toán 2 tập hai"
+    "next": "Hết Toán 2 tập một; học kì hai mở Toán 2 tập hai"
   },
   "phases": {
     "hook": "mo-man-tong-ket",
@@ -30,32 +30,32 @@
   "places": {
     "toan2-cd7-b33-thay-quang": "bục huy hiệu",
     "tim-hop-huy-hieu": "khán phòng",
-    "toan2-cd7-b33-ga-loc-coc": "gian sân trường",
-    "toan2-cd6-b32-ong-loc": "bàn lịch cạnh gian đồng hồ",
-    "toan2-cd6-b31-gau-trang-u": "gian đồng hồ",
-    "toan2-cd7-b34-meo-cam-xiu": "gian đồ chơi",
-    "toan2-cd6-b32-chi-thao": "gian thể thao",
-    "toan2-cd5-b28-co-hang": "gian mĩ thuật",
+    "toan2-cd7-b33-ga-loc-coc": "gian tia số",
+    "toan2-cd5-b25-bac-ngan": "bàn lịch cạnh gian đồng hồ",
+    "toan2-cd5-b27-bac-thin": "gian đồng hồ",
+    "toan2-cd7-b34-meo-cam-xiu": "gian đặt tính",
+    "toan2-cd5-b25-cao-bach": "gian đo chiều cao",
+    "toan2-cd5-b28-co-hang": "gian hình phẳng",
     "toan2-cd5-b28-meo-muop": "giá ghim tranh",
-    "toan2-cd7-b35-tho-gon": "gian căng tin",
-    "toan2-cd7-b33-bac-thuan": "gian vườn",
+    "toan2-cd7-b35-tho-gon": "gian cân đong",
+    "toan2-cd7-b33-bac-thuan": "gian bài toán",
     "toan2-cd7-b36-ong-ru-ri": "giàn hoa giấy"
   },
   "steps": [
     {
       "id": "mo-man-tong-ket",
       "title": "Mở màn lễ tổng kết",
-      "goTo": "Đến bục huy hiệu giữa hội trường, thầy Quang sắp khai mạc",
+      "goTo": "Đến bục huy hiệu giữa đại sảnh, thầy Quang sắp khai mạc",
       "kind": "dialogue",
       "target": "toan2-cd7-b33-thay-quang",
       "lines": [
         {
           "speaker": "Thầy Quang",
-          "text": "Kính thưa toàn trường… hắt xì! Bụi kim tuyến bay vào mũi thầy rồi. Xin khai mạc lễ tổng kết học kì một!"
+          "text": "Kính thưa cả lâu đài… hắt xì! Bụi kim tuyến bay vào mũi thầy rồi. Xin khai mạc lễ tổng kết học kì một!"
         },
         {
           "speaker": "Thầy Quang",
-          "text": "Năm nay mỗi khu gửi một câu đố cuối. Ai giải hết sẽ nhận huy hiệu học kì, to bằng cái bánh rán luôn!"
+          "text": "Năm nay mỗi gian ôn tập gửi một câu đố cuối. Ai giải hết sẽ nhận huy hiệu học kì, to bằng cái bánh rán luôn!"
         },
         {
           "speaker": "Gà Lóc Cóc",
@@ -86,14 +86,14 @@
     },
     {
       "id": "luat-bay-cau-do",
-      "title": "Luật chơi bảy khu",
+      "title": "Luật chơi các gian ôn tập",
       "goTo": "Mang hộp về bục huy hiệu cho thầy Quang",
       "kind": "dialogue",
       "target": "toan2-cd7-b33-thay-quang",
       "lines": [
         {
           "speaker": "Thầy Quang",
-          "text": "Đủ ba hộp rồi! Luật chơi thế này: đi một vòng các gian, khu nào cũng có bạn chờ sẵn với câu đố của cả học kì."
+          "text": "Đủ ba hộp rồi! Luật chơi thế này: đi một vòng các gian ôn tập, gian nào cũng có bạn chờ sẵn với câu đố của cả học kì."
         },
         {
           "speaker": "Thầy Quang",
@@ -103,14 +103,14 @@
       "choices": [
         {
           "text": "Bắt đầu vòng tổng kết!",
-          "reply": "Cả hội trường gõ trống: tùng tùng tùng!"
+          "reply": "Cả đại sảnh gõ trống: tùng tùng tùng!"
         }
       ]
     },
     {
       "id": "tia-so-cua-chip",
       "title": "Câu đố của Gà Lóc Cóc",
-      "goTo": "Ghé gian sân trường, Gà Lóc Cóc kẻ sẵn tia số",
+      "goTo": "Ghé gian tia số, Gà Lóc Cóc kẻ sẵn tia số",
       "target": "toan2-cd7-b33-ga-loc-coc",
       "kind": "challenge",
       "mechanic": "quiz",
@@ -147,7 +147,7 @@
       "feedback": {
         "right": [
           "Lóc Cóc nhảy lò cò tới đúng vạch 41, không trượt chân lần nào!",
-          "Cả gian sân trường vỗ cánh khen {name}.",
+          "Mấy chú gà con ở gian tia số vỗ cánh khen {name}.",
           "Đếm vạch chuẩn như thước kẻ, tuyệt vời!"
         ],
         "wrong": [
@@ -162,12 +162,12 @@
     },
     {
       "id": "lich-cua-voi-bao",
-      "title": "Câu đố của ông Lộc",
-      "goTo": "Sang bàn lịch cạnh gian đồng hồ, ông Lộc giơ cuốn lịch tháng Mười hai",
-      "target": "toan2-cd6-b32-ong-loc",
+      "title": "Câu đố của Bác Ngân",
+      "goTo": "Sang bàn lịch cạnh gian đồng hồ, Bác Ngân giơ cuốn lịch tháng Mười hai",
+      "target": "toan2-cd5-b25-bac-ngan",
       "kind": "challenge",
       "mechanic": "quiz",
-      "prompt": "Ông Lộc phe phẩy tờ lịch: \"Câu này ông nhớ mãi từ hồi học kì!\" Chọn câu trả lời đúng. b) Nếu ngày 19 tháng 12 là thứ Hai thì ngày 22 tháng 12 là: A. Thứ Tư B. Thứ Năm C. Thứ Sáu",
+      "prompt": "Bác Ngân phe phẩy tờ lịch cạnh tấm bản đồ sao: \"Ngắm sao cũng phải biết ngày, câu này bác thích lắm!\" Chọn câu trả lời đúng. b) Nếu ngày 19 tháng 12 là thứ Hai thì ngày 22 tháng 12 là: A. Thứ Tư B. Thứ Năm C. Thứ Sáu",
       "choices": [
         {
           "id": "a-thu-tu",
@@ -199,9 +199,9 @@
       },
       "feedback": {
         "right": [
-          "Ông Lộc đẩy gọng kính cười: đúng thứ Năm, giỏi lắm!",
+          "Bác Ngân chỉ lên ngôi sao vẽ trên lịch: đúng thứ Năm, giỏi lắm!",
           "Đếm ngày nối thứ không lệch nhịp nào.",
-          "Tờ lịch tháng Mười hai được đánh dấu bằng một chiếc lá vàng."
+          "Tờ lịch tháng Mười hai được đánh dấu bằng một ngôi sao giấy."
         ],
         "wrong": [
           "Từ ngày 19 tới ngày 22 là thêm mấy ngày nhỉ?",
@@ -216,11 +216,11 @@
     {
       "id": "mot-ngay-cua-nam",
       "title": "Một ngày của Nam",
-      "goTo": "Bước vào gian đồng hồ, Gấu Trắng Ú dụi mắt bày bốn bức tranh",
-      "target": "toan2-cd6-b31-gau-trang-u",
+      "goTo": "Bước vào gian đồng hồ, Bác Thìn lau chiếc đồng hồ thần rồi bày bốn bức tranh",
+      "target": "toan2-cd5-b27-bac-thin",
       "kind": "challenge",
       "mechanic": "classify",
-      "prompt": "Gấu Trắng Ú dụi mắt, bày bốn bức tranh về một ngày của bạn Nam: \"Tớ ngủ quên nên xếp lộn hết rồi.\" Tìm đồng hồ chỉ thời gian thích hợp với mỗi bức tranh.",
+      "prompt": "Bác Thìn bày bốn bức tranh về một ngày của bạn Nam cạnh chiếc đồng hồ thần: \"Tranh xếp đúng giờ thì đồng hồ thần mới chịu kêu tích tắc!\" Tìm đồng hồ chỉ thời gian thích hợp với mỗi bức tranh.",
       "groups": [
         {
           "id": "nhom-dong-ho-07-15",
@@ -277,9 +277,9 @@
       },
       "feedback": {
         "right": [
-          "Một ngày của Nam xếp gọn gàng, Gấu Trắng Ú tỉnh cả ngủ!",
+          "Một ngày của Nam xếp gọn gàng, đồng hồ thần của Bác Thìn kêu tích tắc!",
           "Giờ chiều, giờ tối đổi sang đồng hồ điện tử đều đúng.",
-          "Ú ngáp một cái thật dài: cảm ơn, giờ tớ đi ngủ tiếp được rồi."
+          "Bác Thìn cười khà: đến đồng hồ thần cũng phải chịu cháu đấy!"
         ],
         "wrong": [
           "Buổi chiều thì đồng hồ điện tử chỉ số lớn hơn 12 đấy.",
@@ -299,10 +299,10 @@
     {
       "id": "dong-ho-cung-gio",
       "title": "Hai đồng hồ cùng giờ",
-      "target": "toan2-cd6-b31-gau-trang-u",
+      "target": "toan2-cd5-b27-bac-thin",
       "kind": "challenge",
       "mechanic": "quiz",
-      "prompt": "Trên bàn Ú có bốn đồng hồ: M có kim giờ ở giữa số 3 và số 4, kim phút chỉ số 6; N có kim giờ chỉ số 4, kim phút chỉ số 12; đồng hồ điện tử E chỉ 15:30; đồng hồ điện tử G chỉ 17:00. Chọn câu trả lời đúng. a) Hai đồng hồ chỉ cùng giờ vào buổi chiều là: A. M và E B. M và G C. N và G",
+      "prompt": "Trên bàn Bác Thìn có bốn đồng hồ: M có kim giờ ở giữa số 3 và số 4, kim phút chỉ số 6; N có kim giờ chỉ số 4, kim phút chỉ số 12; đồng hồ điện tử E chỉ 15:30; đồng hồ điện tử G chỉ 17:00. Chọn câu trả lời đúng. a) Hai đồng hồ chỉ cùng giờ vào buổi chiều là: A. M và E B. M và G C. N và G",
       "choices": [
         {
           "id": "a-m-va-e",
@@ -334,7 +334,7 @@
       },
       "feedback": {
         "right": [
-          "M và E sinh đôi rồi! Gấu Trắng Ú gật gù rồi… ngủ gật luôn.",
+          "M và E sinh đôi rồi! Bác Thìn gõ nhẹ lên mặt kính khen hay.",
           "Kim phút ở số 6 là 30 phút, cậu đọc chuẩn quá.",
           "Hai đồng hồ cùng reo \"tích tắc\" mừng cho {name}."
         ],
@@ -351,7 +351,7 @@
     {
       "id": "dat-tinh-cua-dom",
       "title": "Câu đố của Mèo Cam Xíu",
-      "goTo": "Qua gian đồ chơi, Mèo Cam Xíu đang lắp hộp nhạc",
+      "goTo": "Qua gian đặt tính, Mèo Cam Xíu đang lắp hộp nhạc",
       "target": "toan2-cd7-b34-meo-cam-xiu",
       "kind": "challenge",
       "mechanic": "fill-blank",
@@ -506,11 +506,11 @@
     },
     {
       "id": "chieu-cao-cua-mi",
-      "title": "Câu đố của chị Thảo",
-      "goTo": "Đi sang gian thể thao, chị Thảo dựng sẵn thước đo chiều cao",
-      "target": "toan2-cd6-b32-chi-thao",
+      "title": "Câu đố của Cáo Bạch",
+      "goTo": "Đi sang gian đo chiều cao, Cáo Bạch dựng sẵn thước đo",
+      "target": "toan2-cd5-b25-cao-bach",
       "kind": "riddle",
-      "question": "Chị Thảo kéo thước đo, nheo mắt đọc số: Rô-bốt cao 89 cm, Mi cao hơn Rô-bốt 9 cm. Hỏi Mi cao bao nhiêu xăng-ti-mét?",
+      "question": "Cáo Bạch kéo thước đo, ngoe nguẩy đuôi đọc số: Rô-bốt cao 89 cm, Mi cao hơn Rô-bốt 9 cm. Hỏi Mi cao bao nhiêu xăng-ti-mét?",
       "skill": "bai-toan-loi-van",
       "curriculumRef": [
         "toan2-t1-b36-luyen-tap-4"
@@ -528,9 +528,9 @@
       },
       "feedback": {
         "right": [
-          "Chị Thảo thổi còi \"toét\": Mi cao 98 cm, chính xác!",
+          "Cáo Bạch vẫy cái đuôi trắng: Mi cao 98 cm, chính xác!",
           "Cao hơn thì cộng thêm, cậu nhớ bài kĩ thật.",
-          "Gần một mét rồi, Mi sắp với tới rổ bóng của chị Thảo!"
+          "Gần một mét rồi, Mi sắp cao bằng cây thước của Cáo Bạch!"
         ],
         "wrong": [
           "Mi cao hơn nên phải lớn hơn 89 cm chứ.",
@@ -544,8 +544,8 @@
     },
     {
       "id": "hai-loi-mi-thuat",
-      "title": "Hai lối vào gian mĩ thuật",
-      "goTo": "Đến gian mĩ thuật, cô Hằng vẫy cây cọ gọi",
+      "title": "Hai lối đi trong tranh của cô Hằng",
+      "goTo": "Đến gian hình phẳng, cô Hằng vẫy cây cọ gọi",
       "kind": "dialogue",
       "target": "toan2-cd5-b28-co-hang",
       "lines": [
@@ -719,11 +719,11 @@
     {
       "id": "dem-hinh-tu-giac",
       "title": "Đếm hình tứ giác",
-      "goTo": "Quay lại gian mĩ thuật, cô Hằng vừa vẽ xong một hình thang",
+      "goTo": "Quay lại gian hình phẳng, cô Hằng vừa vẽ xong một hình thang",
       "target": "toan2-cd5-b28-co-hang",
       "kind": "challenge",
       "mechanic": "quiz",
-      "prompt": "Câu cuối của gian mĩ thuật: cô Hằng vẽ một hình thang rồi kẻ hai nét, chia nó thành một hình tứ giác ở giữa và hai hình tam giác hai bên. Chọn câu trả lời đúng. Số hình tứ giác có trong hình sau là: A. 2 B. 3 C. 4 D. 5",
+      "prompt": "Câu cuối của gian hình phẳng: cô Hằng vẽ một hình thang rồi kẻ hai nét, chia nó thành một hình tứ giác ở giữa và hai hình tam giác hai bên. Chọn câu trả lời đúng. Số hình tứ giác có trong hình sau là: A. 2 B. 3 C. 4 D. 5",
       "choices": [
         {
           "id": "a-2",
@@ -776,7 +776,7 @@
     {
       "id": "mit-va-can-nuoc",
       "title": "Câu đố của Thỏ Gòn",
-      "goTo": "Về gian căng tin, Thỏ Gòn đặt sẵn cân và can",
+      "goTo": "Về gian cân đong, Thỏ Gòn đặt sẵn cân và can",
       "target": "toan2-cd7-b35-tho-gon",
       "kind": "challenge",
       "mechanic": "fill-blank",
@@ -837,8 +837,8 @@
       "feedback": {
         "right": [
           "Thỏ Gòn chấm sổ \"tích\" một cái: mít 7 kg, can còn 6 l.",
-          "Cân và đong đều chuẩn, xứng danh thanh tra căng tin.",
-          "Quả mít thơm phức được bổ ra mời cả hội trường!"
+          "Cân và đong đều chuẩn, xứng danh thanh tra cân đong.",
+          "Quả mít thơm phức được bổ ra mời cả đại sảnh!"
         ],
         "wrong": [
           "Rót hai ca chứ không phải một ca đâu nhé.",
@@ -856,7 +856,7 @@
     {
       "id": "sach-cho-vung-lu",
       "title": "Câu đố của bác Thuận",
-      "goTo": "Sang gian vườn, bác Thuận đang buộc chồng sách",
+      "goTo": "Sang gian bài toán, bác Thuận đang buộc chồng sách",
       "target": "toan2-cd7-b33-bac-thuan",
       "kind": "riddle",
       "question": "Bác Thuận hiền hậu xếp từng chồng sách gửi các bạn nhỏ: Để ủng hộ các bạn vùng lũ lụt, lớp 2A quyên góp được 83 quyển sách, lớp 2B quyên góp được ít hơn lớp 2A là 18 quyển sách. Hỏi lớp 2B quyên góp được bao nhiêu quyển sách?",
@@ -1052,14 +1052,14 @@
       "title": "Huy hiệu học kì một",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Thầy Quang trao cho {name} huy hiệu học kì một, cả bảy khu cùng tung pháo giấy. Lần này thầy không hắt xì nữa, chỉ hô vang qua micro thật vui: HOAN HÔ!"
+      "text": "Thầy Quang trao cho {name} huy hiệu học kì một, các gian ôn tập cùng tung pháo giấy khắp đại sảnh. Lần này thầy không hắt xì nữa, chỉ hô vang qua micro thật vui: HOAN HÔ!"
     },
     {
       "id": "hen-gap-hoc-ki-hai",
       "title": "Hẹn gặp học kì hai",
       "kind": "next",
       "trigger": "auto",
-      "text": "Khi pháo giấy còn bay, ông Lộc lật sang tờ lịch mới và thì thầm: học kì hai sắp tới, Toán 2 tập hai đang chờ những câu đố lớn hơn!"
+      "text": "Khi pháo giấy còn bay, Hươu Cao vươn cổ nhìn qua ô cửa cao nhất của đại sảnh và thì thầm: Toán 2 tập một khép lại rồi, học kì hai, Toán 2 tập hai đang chờ những câu đố lớn hơn!"
     }
   ],
   "reward": {

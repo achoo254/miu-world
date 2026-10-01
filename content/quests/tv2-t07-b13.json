@@ -1,15 +1,15 @@
 {
   "id": "tv2-t07-b13",
-  "region": "khu-rung-bi-mat",
-  "chapter": 8,
+  "region": "truong-hoc",
+  "chapter": 4,
   "title": "Gà Con Ri nhớ nhà giờ ra chơi",
   "status": "active",
   "lesson": "tv2-t1-b13",
-  "summary": "Giờ ra chơi, Gà Con Ri ngồi một mình dưới gốc phượng nhớ ổ rơm và hỏi \"tại sao\" không ngớt. {name} cùng Mèo Khói và Heo Bột tìm niềm vui quanh sân, đọc bài thơ bên cửa sổ lớp, kể chuyện bữa trưa để Ri thấy yêu ngôi trường mới.",
+  "summary": "Giờ ra chơi, Gà Con Ri ngồi một mình dưới gốc phượng cạnh xích đu, nhớ ổ rơm và hỏi \"tại sao\" không ngớt. {name} cùng Mèo Khói và Heo Bột tìm niềm vui quanh cầu trượt, đọc bài thơ bên cửa sổ phòng mĩ thuật, kể chuyện bữa trưa ở căng tin để Ri thấy yêu ngôi trường mới.",
   "review": "teacher-pending",
   "sevenQuestions": {
     "who": "Gà Con Ri (học sinh mới, hỏi \"Tại sao?\" liên tục), Mèo Khói điềm tĩnh ít lời, Heo Bột bếp trưởng ham ăn",
-    "where": "Sân trường rừng giờ ra chơi: gốc phượng, bậc thềm lớp, khung cửa sổ lớp học, bếp trường và vách bếp treo tranh",
+    "where": "Sân chơi của trường giờ ra chơi: gốc phượng cạnh xích đu, quanh cầu trượt, bậc thềm sân chơi, cửa sổ phòng mĩ thuật nhìn ra sân, căng tin trường và vách căng tin treo tranh",
     "goal": "Giúp Ri bớt nhớ nhà và thấy yêu ngôi trường mới",
     "play": "Tìm đồ, hát, đọc thơ, ghép khổ thơ với tranh, chọn nhiều đáp án, điền từ, ghép câu, xếp tranh, kể chuyện, phiếu viết",
     "learn": "Tiếng Việt 2 Bài 13: đọc bài thơ Yêu lắm trường ơi!, từ chỉ tình cảm, câu nêu đặc điểm, chữ hoa E, Ê, kể chuyện Bữa ăn trưa",
@@ -36,17 +36,17 @@
   },
   "places": {
     "tv2-t07-b13-ga-con-ri": "gốc phượng",
-    "tim-niem-vui": "góc sân chơi",
-    "tv2-t07-b13-meo-khoi": "bậc thềm lớp",
-    "tv2-t07-cua-so-la": "cửa sổ lớp học",
-    "tv2-t07-b13-heo-bot": "bếp trường",
-    "tv2-t07-tranh-bua-trua": "vách bếp"
+    "tim-niem-vui": "quanh cầu trượt",
+    "tv2-t07-b13-meo-khoi": "bậc thềm sân chơi",
+    "tv2-t07-cua-so-la": "cửa sổ phòng mĩ thuật",
+    "tv2-t07-b13-heo-bot": "căng tin",
+    "tv2-t07-tranh-bua-trua": "vách căng tin"
   },
   "steps": [
     {
       "id": "chip-nho-nha",
       "title": "Ri ngồi một mình giờ ra chơi",
-      "goTo": "Tới sân trường rừng, Gà Con Ri đang ngồi thu lu dưới gốc phượng",
+      "goTo": "Tới sân chơi, Gà Con Ri đang ngồi thu lu dưới gốc phượng cạnh xích đu",
       "kind": "dialogue",
       "target": "tv2-t07-b13-ga-con-ri",
       "lines": [
@@ -56,7 +56,7 @@
         },
         {
           "speaker": "Mèo Khói",
-          "text": "Ri mới chuyển tới trường rừng hôm thứ Hai. Một buổi, bạn ấy hỏi \"tại sao\" bốn mươi lần."
+          "text": "Ri mới chuyển tới trường mình hôm thứ Hai. Một buổi, bạn ấy hỏi \"tại sao\" bốn mươi lần."
         },
         {
           "speaker": "Gà Con Ri",
@@ -81,7 +81,7 @@
     {
       "id": "tim-niem-vui",
       "title": "Ba niềm vui trốn quanh sân",
-      "goTo": "Lùng khắp góc sân chơi, tìm ba niềm vui đang trốn",
+      "goTo": "Lùng quanh cầu trượt, tìm ba niềm vui đang trốn",
       "kind": "search",
       "targets": [
         "tv2-t07-day-nhay",
@@ -92,7 +92,7 @@
     {
       "id": "hat-em-yeu-truong-em",
       "title": "Hát cho Ri nghe",
-      "goTo": "Mang ba niềm vui tới bậc thềm lớp, Mèo Khói đang chờ",
+      "goTo": "Mang ba niềm vui tới bậc thềm sân chơi, Mèo Khói đang chờ",
       "kind": "speak",
       "target": "tv2-t07-b13-meo-khoi",
       "prompt": "Mèo Khói ít nói, hôm nay cũng chỉ nói một câu: hát lên, nỗi buồn sẽ bay mất.\nHát bài Em yêu trường em của nhạc sĩ Hoàng Vân.",
@@ -123,7 +123,7 @@
     {
       "id": "doc-bai-tho",
       "title": "Bài thơ bên khung cửa sổ",
-      "goTo": "Ghé cửa sổ lớp học, nơi chiếc lá to đang vẫy vẫy",
+      "goTo": "Ghé cửa sổ phòng mĩ thuật, nơi cành lá to đang vẫy vẫy",
       "kind": "read",
       "target": "tv2-t07-cua-so-la",
       "textRef": "yeu-lam-truong-oi",
@@ -337,7 +337,7 @@
     {
       "id": "nho-loi-co",
       "title": "Ngày nghỉ nhớ cô giáo",
-      "goTo": "Ra bậc thềm lớp, Mèo Khói đang ngồi liếm chân rửa mặt",
+      "goTo": "Ra bậc thềm sân chơi, Mèo Khói đang ngồi liếm chân rửa mặt",
       "kind": "challenge",
       "mechanic": "quiz",
       "target": "tv2-t07-b13-meo-khoi",
@@ -527,13 +527,13 @@
     {
       "id": "heo-un-goi-an-trua",
       "title": "Heo Bột gọi ăn trưa",
-      "goTo": "Theo mùi cơm thơm xuống bếp trường, Heo Bột đang gõ vá leng keng",
+      "goTo": "Theo mùi cơm thơm sang căng tin trường, Heo Bột đang gõ vá leng keng",
       "kind": "dialogue",
       "target": "tv2-t07-b13-heo-bot",
       "lines": [
         {
           "speaker": "Heo Bột",
-          "text": "Ụt ịt! Trống báo giờ ăn trưa rồi! Hôm nay có cơm nắm, cá kho với canh bí, thơm lừng cả khu rừng."
+          "text": "Ụt ịt! Trống báo giờ ăn trưa rồi! Hôm nay có cơm nắm, cá kho với canh bí, thơm lừng cả sân trường."
         },
         {
           "speaker": "Gà Con Ri",
@@ -557,12 +557,12 @@
     },
     {
       "id": "xep-tranh-bua-trua",
-      "title": "Bốn bức tranh trên vách bếp",
-      "goTo": "Ngó lên vách bếp, bốn bức tranh dán lộn xộn cả",
+      "title": "Bốn bức tranh trên vách căng tin",
+      "goTo": "Ngó lên vách căng tin, bốn bức tranh dán lộn xộn cả",
       "kind": "challenge",
       "mechanic": "sort",
       "target": "tv2-t07-tranh-bua-trua",
-      "prompt": "Trên vách bếp trường treo bốn bức tranh kể chuyện Bữa ăn trưa, nhưng Heo Bột mải nếm canh nên dán lộn hết cả.\nNghe kể chuyện.\nXếp các tranh theo đúng thứ tự câu chuyện.",
+      "prompt": "Trên vách căng tin treo bốn bức tranh kể chuyện Bữa ăn trưa, nhưng Heo Bột mải nếm canh nên dán lộn hết cả.\nNghe kể chuyện.\nXếp các tranh theo đúng thứ tự câu chuyện.",
       "items": [
         {
           "id": "tranh-3",
@@ -648,7 +648,7 @@
     {
       "id": "ke-chuyen-bua-trua",
       "title": "Kể chuyện cho Heo Bột nghe",
-      "goTo": "Về bếp trường, Heo Bột ngồi phịch xuống chờ nghe kể",
+      "goTo": "Về căng tin, Heo Bột ngồi phịch xuống chờ nghe kể",
       "kind": "speak",
       "target": "tv2-t07-b13-heo-bot",
       "prompt": "Heo Bột ngồi phịch xuống, hai tai vểnh lên: ụt ịt, kể đi, đoạn nào có món ăn thì kể chậm thôi nhé!\nNghe kể chuyện.\nChọn kể 1 – 2 đoạn của câu chuyện theo tranh.",
@@ -731,10 +731,10 @@
     },
     {
       "id": "mo-bai-14",
-      "title": "Tiếng cộp trên đồi cỏ",
+      "title": "Tiếng ối trong phòng mĩ thuật",
       "kind": "next",
       "trigger": "auto",
-      "text": "Từ đồi cỏ ven biển vọng xuống một tiếng \"ối!\": Cáo Cọ lại nhúng nhầm đuôi vào chậu nước rửa cọ. Lần này bạn ấy còn kêu ầm lên rằng hộp màu vẽ trống trơn rồi!"
+      "text": "Từ phòng mĩ thuật cạnh sân chơi vọng ra một tiếng \"ối!\": Cáo Cọ lại nhúng nhầm đuôi vào chậu nước rửa cọ. Lần này bạn ấy còn kêu ầm lên rằng hộp màu vẽ trống trơn rồi!"
     }
   ],
   "reward": {

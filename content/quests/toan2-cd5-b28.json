@@ -1,20 +1,20 @@
 {
   "id": "toan2-cd5-b28",
-  "region": "truong-hoc",
-  "chapter": 5,
-  "title": "Phòng tranh treo ngược của Cua Kềnh",
+  "region": "lau-dai",
+  "chapter": 1,
+  "title": "Phòng tranh lộn ngược của Sâu Tòn Ten",
   "status": "active",
   "lesson": "toan2-t1-b28",
-  "summary": "Cua Kềnh treo bức tranh hình khối nào cũng ngược, nói câu nào cũng ngược; {name} cùng cô Hằng dạy vẽ, Thỏ Bông Lau và Mèo Mướp soi từng bức tranh tìm đoạn thẳng, đường thẳng, hình tứ giác, ba bạn đứng thẳng hàng và đo đường ốc sên bò.",
+  "summary": "Sâu Tòn Ten treo mình bằng sợi tơ, đu ngược trên xà phòng tranh của lâu đài, nhìn bức nào cũng thấy xuôi nên treo bức nào cũng ngược; {name} cùng cô Hằng dạy vẽ, Thỏ Bông Lau và Mèo Mướp soi từng bức tranh tìm đoạn thẳng, đường thẳng, hình tứ giác, ba bạn đứng thẳng hàng và đo đường ốc sên bò.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Cua Kềnh, cô Hằng dạy vẽ, Thỏ Bông Lau, Mèo Mướp",
-    "where": "Phòng mĩ thuật: phòng trưng bày tranh, giá vẽ lớn, bàn cắt dán giấy màu, bậu cửa sổ phòng tranh",
+    "who": "Sâu Tòn Ten, cô Hằng dạy vẽ, Thỏ Bông Lau, Mèo Mướp",
+    "where": "Lâu đài, phòng trưng bày tranh bên sân hình khối: xà treo tranh, góc phòng tranh, giá vẽ của cô Hằng, bàn cắt dán giấy màu, bậu cửa sổ phòng tranh",
     "goal": "Treo xuôi lại các bức tranh hình khối trước giờ mở cửa phòng tranh",
     "play": "Tìm đinh và khung tranh, chọn câu đúng, chọn đoạn thẳng, đếm hình tứ giác, chọn nhóm thẳng hàng, nối đường ốc sên, tính quãng đường",
     "learn": "Toán 2 Bài 28: luyện tập chung về điểm, đoạn thẳng, đường thẳng, đường cong, ba điểm thẳng hàng, hình tứ giác, đường gấp khúc",
     "reward": "80 XP, 15 xu, Hình phẳng +2, Bài toán có lời văn +1",
-    "next": "Bài 29 \"Ngày – giờ, giờ – phút\""
+    "next": "Bài 29 \"Ngày – giờ, giờ – phút\" ở Thư viện"
   },
   "phases": {
     "hook": "cua-treo-nguoc",
@@ -28,9 +28,9 @@
   },
   "texts": {},
   "places": {
-    "cua-kenh": "phòng trưng bày tranh",
+    "toan2-cd5-b28-sau-ton-ten": "xà treo tranh",
     "tim-dinh-khung": "góc phòng tranh",
-    "toan2-cd5-b28-co-hang": "giá vẽ lớn",
+    "toan2-cd5-b28-co-hang": "giá vẽ của cô Hằng",
     "toan2-cd5-b28-tho-bong-lau": "bàn cắt dán giấy màu",
     "toan2-cd5-b28-meo-muop": "bậu cửa sổ phòng tranh"
   },
@@ -38,38 +38,38 @@
     {
       "id": "cua-treo-nguoc",
       "title": "Tranh treo ngược hết rồi!",
-      "goTo": "Vào phòng trưng bày tranh, Cua Kềnh đang bò ngang treo tranh",
+      "goTo": "Vào phòng trưng bày tranh, Sâu Tòn Ten đang treo mình bằng sợi tơ trên xà treo tranh",
       "kind": "dialogue",
-      "target": "cua-kenh",
+      "target": "toan2-cd5-b28-sau-ton-ten",
       "lines": [
         {
-          "speaker": "Cua Kềnh",
-          "text": "Tạm biệt {name}! À nhầm, tớ nói ngược quen rồi: chào {name}! Phòng tranh của tớ đẹp… xấu… à, đẹp lắm đấy."
+          "speaker": "Sâu Tòn Ten",
+          "text": "Chào {name}! Tớ là Sâu Tòn Ten, cả ngày chỉ thích nhả tơ đu ngược trên xà. Nhìn từ trên này, bức tranh nào tớ treo cũng thẳng thớm lắm!"
         },
         {
           "speaker": "Cô Hằng",
-          "text": "Cô Hằng gọi vọng từ giá vẽ: Cua ơi, bức nào cũng chổng đầu xuống đất, ốc sên trong tranh đang bò lên trời kìa!"
+          "text": "Cô Hằng gọi vọng từ giá vẽ: Tòn Ten ơi, con đu ngược nên mới thấy xuôi đấy! Bức nào cũng chổng đầu xuống đất, ốc sên trong tranh đang bò lên trời kìa!"
         },
         {
-          "speaker": "Cua Kềnh",
-          "text": "Tại tớ đi ngang mà, nhìn cái gì cũng nghiêng nghiêng. Đinh với khung tranh rơi lả tả hết, {name} nhặt hộ tớ… đừng nhặt nhé!"
+          "speaker": "Sâu Tòn Ten",
+          "text": "Ối, thật á? Lúc nãy gió lùa làm tớ xoay tít một vòng, đinh với khung tranh rơi lả tả hết. {name} nhặt hộ tớ với!"
         }
       ],
       "choices": [
         {
-          "text": "\"Đừng nhặt\" nghĩa là nhặt hả? Tớ nhặt ngay!",
-          "reply": "Cua Kềnh giơ hai càng lên trời: Đúng là hiểu tiếng Cua, giỏi ghê!"
+          "text": "Tớ nhặt ngay, cậu cứ đu cho chắc nhé!",
+          "reply": "Sâu Tòn Ten đung đưa trên sợi tơ: Tơ của tớ chắc lắm, chỉ có đồ đạc là không chắc thôi!"
         },
         {
-          "text": "Cậu nói xuôi một câu thử xem nào!",
-          "reply": "Cua Kềnh cố gắng hết sức: \"Nhặt… giúp… tớ.\" Phù, mệt hơn bò dọc nữa!"
+          "text": "Cậu nhảy xuống đứng thẳng nhìn thử xem!",
+          "reply": "Sâu Tòn Ten thả tơ tụt xuống sàn đá, ngắm bức tranh rồi kêu ré lên: Ối, ngược thật này!"
         }
       ]
     },
     {
       "id": "tim-dinh-khung",
       "title": "Nhặt đinh, thước và khung tranh",
-      "goTo": "Nhặt đồ Cua Kềnh làm rơi ở góc phòng tranh",
+      "goTo": "Nhặt đồ Sâu Tòn Ten làm rơi ở góc phòng tranh",
       "kind": "search",
       "targets": [
         "toan2-cd5-dinh-treo-tranh",
@@ -80,7 +80,7 @@
     {
       "id": "huou-nhac-bai",
       "title": "Cô Hằng nhắc bài",
-      "goTo": "Mang đồ sang giá vẽ lớn, cô Hằng đang pha màu chờ cả hai",
+      "goTo": "Mang đồ sang giá vẽ của cô Hằng, cô đang pha màu chờ cả hai",
       "kind": "dialogue",
       "target": "toan2-cd5-b28-co-hang",
       "lines": [
@@ -93,25 +93,25 @@
           "text": "Ba điểm cùng nằm trên một đường thẳng thì gọi là ba điểm thẳng hàng. Hình có bốn cạnh là hình tứ giác."
         },
         {
-          "speaker": "Cua Kềnh",
-          "text": "Còn đường cong là đường… thẳng tắp! Hì, lại ngược rồi. Đường cong là đường uốn lượn như càng tớ ấy."
+          "speaker": "Sâu Tòn Ten",
+          "text": "Còn đường cong là đường uốn lượn như tớ lúc bò trên lá ấy, hí hí!"
         }
       ],
       "choices": [
         {
           "text": "Tớ nhớ rồi, soi tranh thôi!",
-          "reply": "Cô Hằng giơ cây bút lông chỉ về phía Cua: Bức đầu tiên Cua đang ôm đấy, chạy lại xem nào!"
+          "reply": "Cô Hằng giơ cây bút lông chỉ lên xà treo tranh: Bức đầu tiên Tòn Ten đang ôm đấy, chạy lại xem nào!"
         }
       ]
     },
     {
       "id": "cau-dung-cau-sai",
-      "title": "Cua nói thật hay nói ngược?",
-      "goTo": "Chạy về phòng trưng bày tranh, Cua Kềnh giơ càng đọc bốn câu",
-      "target": "cua-kenh",
+      "title": "Bốn câu của Sâu Tòn Ten",
+      "goTo": "Chạy về xà treo tranh, Sâu Tòn Ten đu ngược đọc bốn câu",
+      "target": "toan2-cd5-b28-sau-ton-ten",
       "kind": "challenge",
       "mechanic": "multi-select",
-      "prompt": "Bức tranh đầu tiên vẽ: đoạn thẳng BC, điểm A, đường thẳng đi qua D và E, đường cong x, đường thẳng đi qua M và N, còn điểm P nằm ngoài đường thẳng MN. Cua Kềnh đọc bốn câu về bức tranh. Đ, S ? Trong hình vẽ trên có: Chọn tất cả các câu đúng (Đ); câu không chọn là sai (S).",
+      "prompt": "Bức tranh đầu tiên vẽ: đoạn thẳng BC, điểm A, đường thẳng đi qua D và E, đường cong x, đường thẳng đi qua M và N, còn điểm P nằm ngoài đường thẳng MN. Sâu Tòn Ten đu ngược trên sợi tơ, đọc bốn câu về bức tranh. Đ, S ? Trong hình vẽ trên có: Chọn tất cả các câu đúng (Đ); câu không chọn là sai (S).",
       "choices": [
         {
           "id": "a-doan-thang-bc",
@@ -150,8 +150,8 @@
       },
       "feedback": {
         "right": [
-          "Bắt được câu nói ngược của Cua rồi, tranh thứ nhất treo xuôi!",
-          "Cua Kềnh vỗ càng lách cách: cậu không bị tớ lừa câu nào.",
+          "Bắt được câu sai của Tòn Ten rồi, tranh thứ nhất treo xuôi!",
+          "Sâu Tòn Ten vỗ mấy chục cái chân lách chách: cậu không bị lừa câu nào.",
           "Điểm P đứng lẻ loi ngoài đường thẳng, cậu soi tinh thật."
         ],
         "wrong": [
@@ -171,7 +171,7 @@
     {
       "id": "doan-thang-mnp",
       "title": "Ba điểm trên một nét",
-      "target": "cua-kenh",
+      "target": "toan2-cd5-b28-sau-ton-ten",
       "kind": "challenge",
       "mechanic": "multi-select",
       "prompt": "Bức tranh thứ hai chỉ có một nét kẻ ngang, ba điểm M ở đầu bên trái, N ở giữa, P ở đầu bên phải. Cho ba điểm M, N, P thẳng hàng. Kể tên các đoạn thẳng trong hình vẽ sau. Chọn tên tất cả các đoạn thẳng.",
@@ -220,7 +220,7 @@
         "right": [
           "Ba đoạn thẳng, không sót đoạn dài nào, tranh thứ hai lên tường!",
           "Cậu nhớ cả đoạn MP chạy suốt từ đầu này sang đầu kia.",
-          "Cua Kềnh khen ngược: mắt cậu kém… à nhầm, tinh quá trời!"
+          "Sâu Tòn Ten xoay một vòng trên sợi tơ để khen: mắt cậu tinh quá trời!"
         ],
         "wrong": [
           "Trong tranh làm gì có điểm Q hay điểm A, B đâu.",
@@ -301,7 +301,7 @@
         "right": [
           "Đếm không sót hình nào, kể cả hình to ngoài cùng!",
           "Hai khung tranh hình khối đã được treo xuôi ngay ngắn.",
-          "Cua Kềnh thì thầm: tớ đếm ngược mãi vẫn không ra số đó đâu."
+          "Sâu Tòn Ten thì thầm: tớ đu ngược đếm mãi vẫn không ra số đó đâu."
         ],
         "wrong": [
           "Hình tam giác ở giữa có ba cạnh, không phải tứ giác nhé.",
@@ -319,17 +319,17 @@
     {
       "id": "tro-dung-thang-hang",
       "title": "Trò đứng thẳng hàng",
-      "goTo": "Quay lại giá vẽ lớn, cô Hằng đang treo bức tranh sân chơi",
+      "goTo": "Quay lại giá vẽ của cô Hằng, cô đang treo bức tranh sân chơi",
       "kind": "dialogue",
       "target": "toan2-cd5-b28-co-hang",
       "lines": [
         {
           "speaker": "Cô Hằng",
-          "text": "Bức tranh này vẽ năm bạn đứng trên sân kẻ ô. Cua Kềnh bảo chẳng ai đứng thẳng hàng với ai cả."
+          "text": "Bức tranh này vẽ năm bạn đứng trên sân kẻ ô. Tòn Ten nhìn ngược nên bảo chẳng ai đứng thẳng hàng với ai cả."
         },
         {
-          "speaker": "Cua Kềnh",
-          "text": "Ý tớ là… có nhiều bạn thẳng hàng lắm! Cậu muốn trèo lên ghế nhìn từ trên cao hay áp thước kẻ vào tranh?"
+          "speaker": "Sâu Tòn Ten",
+          "text": "Giờ tớ bò xuôi rồi, thấy nhiều bạn thẳng hàng lắm! Cậu muốn trèo lên ghế nhìn từ trên cao hay áp thước kẻ vào tranh?"
         }
       ],
       "choices": [
@@ -339,7 +339,7 @@
         },
         {
           "text": "Áp thước kẻ dài vào từng hàng",
-          "reply": "Cua Kềnh kẹp thước bằng càng: Tớ giữ thước, cậu ngắm nhé, cẩn thận đừng để tớ bò lệch."
+          "reply": "Sâu Tòn Ten cuộn mình ôm lấy thước: Tớ giữ thước, cậu ngắm nhé, cẩn thận đừng để tớ bò lệch."
         }
       ]
     },
@@ -387,7 +387,7 @@
         "right": [
           "Hai nhóm thẳng tắp như hai cây thước, cô Hằng vỗ tay tán thưởng!",
           "Bạn Mi đứng đúng chỗ hai hàng giao nhau, cậu tinh thật.",
-          "Cua Kềnh giữ thước mỏi càng, nhưng ai cũng thẳng hàng rồi."
+          "Sâu Tòn Ten ôm thước mỏi cả chục cái chân, nhưng ai cũng thẳng hàng rồi."
         ],
         "wrong": [
           "Nhóm cậu chọn có ba bạn nằm trên một đường thẳng không?",
@@ -505,7 +505,7 @@
         "right": [
           "Sáu mươi xăng-ti-mét, ốc sên bò cả ngày mới tới nhà!",
           "Cộng ba chặng gọn gàng, Mèo Mướp lấy đuôi chấm màu ghi số lên khung.",
-          "Cua Kềnh hét: sai rồi… à không, đúng rồi, đúng quá rồi!"
+          "Sâu Tòn Ten đu một vòng trên sợi tơ, hét vang: đúng rồi, đúng quá rồi!"
         ],
         "wrong": [
           "Cộng đủ cả ba chặng đường nhé, đừng bỏ chặng nào.",
@@ -522,14 +522,14 @@
       "title": "Phòng tranh mở cửa",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Mọi bức tranh hình khối đã treo xuôi. Cua Kềnh trao cho {name} huy hiệu \"Thám tử hình khối\" và nói: \"Cảm ơn cậu chẳng giúp gì cả!\" — câu nói ngược hay nhất của Cua hôm nay."
+      "text": "Mọi bức tranh hình khối đã treo xuôi. Sâu Tòn Ten bò xuôi xuống ngắm lại một lượt, trao cho {name} huy hiệu \"Thám tử hình khối\" và hứa: từ nay treo tranh xong phải bò xuôi nhìn lại!"
     },
     {
       "id": "dong-ho-thap-ngu-quen",
       "title": "Tiếng ngáy dưới tháp đồng hồ",
       "kind": "next",
       "trigger": "auto",
-      "text": "Dưới chân tháp đồng hồ vọng lên tiếng ngáy khò khò: Gấu Trúc Khò ngủ quên, kim đồng hồ tháp chạy lung tung, cả trường không biết mấy giờ rồi!"
+      "text": "Ở Thư viện, dưới chân tháp đồng hồ vọng lên tiếng ngáy khò khò: Gấu Trúc Khò ngủ quên, kim đồng hồ tháp chạy lung tung, chẳng ai biết mấy giờ rồi!"
     }
   ],
   "reward": {

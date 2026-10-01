@@ -1,16 +1,16 @@
 {
   "id": "toan2-cd6-b30",
-  "region": "truong-hoc",
-  "chapter": 6,
+  "region": "thu-vien",
+  "chapter": 3,
   "title": "Voi Bảo và tờ lịch bị xé",
   "status": "active",
   "lesson": "toan2-t1-b30",
-  "summary": "Voi Bảo hắt xì một cái, các tờ lịch trên tháp bay tán loạn và rách mất mấy ngày; {name} nhặt lại mảnh lịch, ghép ngày sinh, điền ngày còn thiếu và trả lời mọi câu đố lịch của Voi Bảo.",
+  "summary": "Voi Bảo hắt xì một cái, các tờ lịch trong phòng lịch của tháp đồng hồ bay tán loạn và rách mất mấy ngày; {name} nhặt lại mảnh lịch, ghép ngày sinh, điền ngày còn thiếu và trả lời mọi câu đố lịch của Voi Bảo.",
   "review": "teacher-pending",
   "sevenQuestions": {
     "who": "Voi Bảo, Gấu Trúc Khò, Thỏ Kim Chỉ, Gấu Nâu Cốm, Bê Lúc Lắc",
-    "where": "Tháp đồng hồ: phòng lịch trên tháp, cầu thang tháp, bàn vá lịch, giá treo lịch, ban công tháp, cửa sổ hướng đông",
-    "goal": "Ghép lại các tờ lịch tháng cho phòng lịch của trường",
+    "where": "Tháp đồng hồ cạnh Thư viện: phòng lịch trên tháp, cầu thang xoắn, bàn vá lịch, giá treo lịch, ban công tháp, cửa sổ hướng đông",
+    "goal": "Ghép lại các tờ lịch tháng cho phòng lịch của thư viện",
     "play": "Tìm mảnh lịch, ghép thẻ ngày sinh, chạm ngày và thứ trên tờ lịch, điền ngày còn thiếu, nối tranh ngày lễ với ô chữ",
     "learn": "Toán 2 Bài 30: ngày – tháng, đọc và xem tờ lịch tháng",
     "reward": "90 XP, 15 xu, Xem lịch +2",
@@ -29,7 +29,7 @@
   "texts": {},
   "places": {
     "voi-bao": "phòng lịch trên tháp",
-    "nhat-manh-lich": "cầu thang tháp đồng hồ",
+    "nhat-manh-lich": "cầu thang xoắn của tháp",
     "toan2-cd6-b29-gau-truc-kho": "ban công tháp",
     "toan2-cd6-b30-tho-kim-chi": "bàn vá lịch",
     "toan2-cd6-b30-gau-nau-com": "giá treo lịch",
@@ -45,7 +45,7 @@
       "lines": [
         {
           "speaker": "Voi Bảo",
-          "text": "Hắt… XÌÌÌ! Ôi không, {name} ơi! Cái vòi của tớ vừa thổi bay cả chồng lịch của trường rồi."
+          "text": "Hắt… XÌÌÌ! Ôi không, {name} ơi! Cái vòi của tớ vừa thổi bay cả chồng lịch của thư viện rồi."
         },
         {
           "speaker": "Voi Bảo",
@@ -70,7 +70,7 @@
     {
       "id": "nhat-manh-lich",
       "title": "Nhặt mảnh lịch bay",
-      "goTo": "Nhặt các mảnh lịch rơi dọc cầu thang tháp đồng hồ",
+      "goTo": "Nhặt các mảnh lịch rơi dọc cầu thang xoắn của tháp",
       "kind": "search",
       "targets": [
         "toan2-cd6-to-lich-thang-12",
@@ -502,7 +502,7 @@
       },
       "feedback": {
         "right": [
-          "Thứ Sáu cuối năm, cả trường được nghỉ đón năm mới!",
+          "Thứ Sáu cuối năm, thư viện treo đèn lồng đón năm mới!",
           "Ô 31 dưới cột thứ Sáu, cậu tìm chẳng chệch li nào.",
           "Gấu Nâu Cốm đánh dấu ngày 31 bằng một ngôi sao vàng."
         ],
@@ -529,7 +529,7 @@
         },
         {
           "speaker": "Voi Bảo",
-          "text": "Khò ơi, đó là tờ lịch tháng 1 của trường chứ có phải chăn đâu!"
+          "text": "Khò ơi, đó là tờ lịch tháng 1 của phòng lịch chứ có phải chăn đâu!"
         },
         {
           "speaker": "Gấu Trúc Khò",
@@ -942,7 +942,7 @@
       "prompt": "b) Xem tờ lịch bên rồi trả lời câu hỏi.",
       "month": 2,
       "year": 2022,
-      "question": "Ngày Thầy thuốc Việt Nam 27 tháng 2 là thứ mấy? Voi Bảo muốn tặng hoa cô y tá trường hôm đó.",
+      "question": "Ngày Thầy thuốc Việt Nam 27 tháng 2 là thứ mấy? Voi Bảo muốn tặng hoa cô y tá từng băng vòi cho mình hôm đó.",
       "ask": "weekday",
       "skill": "xem-lich",
       "curriculumRef": [
@@ -1201,7 +1201,7 @@
       "title": "Chuông tháp im lìm",
       "kind": "next",
       "trigger": "auto",
-      "text": "Chó Mực chạy lên đỉnh tháp, thở hồng hộc: \"Cả tuần tới chưa ai trực đánh chuông! Phải xem đồng hồ, xem lịch để lên lịch trực ngay thôi!\""
+      "text": "Chó Đốm Boong chạy xuống từ gác chuông, thở hồng hộc: \"Cả tuần tới chưa ai trực đánh chuông cho tháp! Phải xem đồng hồ, xem lịch để lên lịch trực ngay thôi!\""
     }
   ],
   "reward": {

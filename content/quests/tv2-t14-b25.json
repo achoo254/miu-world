@@ -1,20 +1,20 @@
 {
   "id": "tv2-t14-b25",
-  "region": "khu-rung-bi-mat",
-  "chapter": 15,
+  "region": "xom-mai-am",
+  "chapter": 1,
   "title": "Chị em ong và bụi hoa tỉ muội",
   "status": "active",
   "lesson": "tv2-t1-b25",
-  "summary": "Hai chị em ong con cãi nhau vì một chùm hoa; {name} cùng Gấu Hũ giữ vườn đọc sự tích chị Nết cõng em Na chạy lũ, mượn giỏ của Thỏ Cải và giúp hai bạn làm lành.",
+  "summary": "Trong vườn hoa đầu ngõ của xóm, hai chị em ong con cãi nhau vì một chùm hoa; {name} cùng Gấu Hũ giữ vườn đọc sự tích chị Nết cõng em Na chạy lũ, nghe Bà Gấu Nâu hỏi chuyện tên hoa, mượn giỏ của Thỏ Cải và giúp hai bạn làm lành.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Gấu Hũ (gấu giữ vườn hoa, việc gì cũng đếm), hai chị em ong con Hồng, Nụ, Thỏ Cải (trồng cải góc vườn)",
-    "where": "Cổng vườn hoa, bụi hoa tỉ muội, giàn mướp cuối vườn, khóm cúc ven ao, luống cải góc vườn và vách tổ ong treo tranh sáp",
+    "who": "Gấu Hũ (gấu giữ vườn hoa, việc gì cũng đếm), hai chị em ong con Hồng, Nụ, Bà Gấu Nâu (bà của cả xóm, hay kể chuyện ngày xưa), Thỏ Cải (trồng cải góc vườn)",
+    "where": "Vườn hoa đầu ngõ của xóm: cổng vườn hoa, bụi hoa tỉ muội, giàn mướp cuối vườn, khóm cúc bên hàng rào, ghế mây của Bà Gấu Nâu bên ngõ, luống cải góc vườn và vách tổ ong treo tranh sáp",
     "goal": "Giúp hai chị em ong làm lành và cùng chăm bụi hoa",
     "play": "Tìm chùm hoa, nói, đọc truyện, chọn đáp án, chọn nhiều chi tiết, xếp từ vào hai giỏ, đoán tranh, xếp tranh, kể chuyện, phiếu viết",
     "learn": "Tiếng Việt 2 Bài 25: đọc hiểu \"Sự tích hoa tỉ muội\", từ chỉ hoạt động và đặc điểm, đặt câu, kể chuyện \"Hai anh em\", viết chữ hoa N",
     "reward": "80 XP, 15 xu, Đọc hiểu +2, Từ ngữ +1, Kể chuyện +1",
-    "next": "Bài 26 \"Em mang về yêu thương\""
+    "next": "Bài 26 \"Em mang về yêu thương\": tổ rơm nhà Gà Con Mẩy trong ngõ nhỏ của xóm"
   },
   "phases": {
     "hook": "gap-ong-vang",
@@ -42,11 +42,12 @@
   },
   "places": {
     "ong-hong": "giàn mướp cuối vườn",
-    "ong-nu": "khóm cúc ven ao",
+    "ong-nu": "khóm cúc bên hàng rào",
     "tv2-t14-bui-hoa-ti-muoi": "bụi hoa tỉ muội",
     "tim-chum-hoa": "khắp vườn hoa",
     "tv2-t14-vach-to-ong": "vách tổ ong",
     "tv2-t14-b25-gau-hu": "cổng vườn hoa",
+    "ba-gau-nau": "ghế mây bên ngõ",
     "tv2-t14-b25-tho-cai": "luống cải góc vườn"
   },
   "steps": [
@@ -286,7 +287,7 @@
     },
     {
       "id": "dieu-ki-la",
-      "goTo": "Tìm tới khóm cúc ven ao, Ong Nụ đang nấp sau một cánh hoa",
+      "goTo": "Tìm tới khóm cúc bên hàng rào, Ong Nụ đang nấp sau một cánh hoa",
       "title": "Điều kì lạ trên đường chạy lũ",
       "kind": "challenge",
       "mechanic": "quiz",
@@ -340,9 +341,10 @@
     {
       "id": "ten-hoa-ti-muoi",
       "title": "Vì sao gọi là hoa tỉ muội",
+      "goTo": "Ra ghế mây bên ngõ, Bà Gấu Nâu đang phe phẩy quạt, vẫy {name} lại gần",
       "kind": "speak",
-      "target": "ong-nu",
-      "prompt": "Ong Nụ ngước nhìn chùm hoa, hỏi nhỏ như sợ hoa nghe thấy: Theo em, vì sao dân làng đặt tên loài hoa ấy là hoa tỉ muội (hoa chị em)?",
+      "target": "ba-gau-nau",
+      "prompt": "Bà Gấu Nâu cười hiền: \"Chuyện hoa này, ngày bé bà cũng được bà của bà kể cho nghe đấy.\" Rồi bà hỏi {name}: Theo em, vì sao dân làng đặt tên loài hoa ấy là hoa tỉ muội (hoa chị em)?",
       "hints": [
         "Nhìn bông hoa lớn và nụ hoa bé nhỏ cùng mọc trong một chùm.",
         "Chùm hoa giống tình cảm của ai trong câu chuyện?"
@@ -639,7 +641,7 @@
     },
     {
       "id": "ke-hai-anh-em",
-      "goTo": "Bay sang khóm cúc ven ao, hai chị em ong đã ngồi sát cánh chờ nghe",
+      "goTo": "Bay sang khóm cúc bên hàng rào, hai chị em ong đã ngồi sát cánh chờ nghe",
       "title": "Kể chuyện cho hai chị em ong",
       "kind": "speak",
       "target": "ong-nu",
@@ -678,7 +680,7 @@
       "title": "Tiếng chiêm chiếp ở tổ rơm",
       "kind": "next",
       "trigger": "auto",
-      "text": "Từ tổ rơm cuối vườn vọng lại tiếng chiêm chiếp rộn ràng, xen lẫn một câu hỏi \"Tại sao?\" thật to: nhà Gà Con Chíp sắp có chuyện vui!"
+      "text": "Từ tổ rơm trong ngõ nhỏ vọng lại tiếng chiêm chiếp rộn ràng, xen lẫn một câu hỏi \"Tại sao?\" thật to: nhà Gà Con Mẩy sắp có chuyện vui!"
     }
   ],
   "reward": {

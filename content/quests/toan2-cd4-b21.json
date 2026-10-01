@@ -1,16 +1,16 @@
 {
   "id": "toan2-cd4-b21",
-  "region": "truong-hoc",
-  "chapter": 4,
-  "title": "Hộp quà bí mật của Cáo Lém",
+  "region": "nong-trai",
+  "chapter": 1,
+  "title": "Hộp quà bí mật của Cáo Mía",
   "status": "active",
   "lesson": "toan2-t1-b21",
-  "summary": "Cáo Lém giấu ba hộp quà quanh quầy trao giải của Xưởng đồ chơi, mỗi hộp khoá bằng một phép tính; {name} học bí kíp đặt tính của Bác thợ Tùng, cân đồ chơi với Heo Mũm, thi nhảy xa cùng Nai Lộc và đo mực nước bể cá để mở hết quà.",
+  "summary": "Cáo Mía bày hội thi mùa gặt trước kho thóc, giấu ba hộp quà khoá bằng phép tính; {name} học bí kíp đặt tính của Bác thợ Tùng ở xưởng nông cụ, cân lợn với Heo Mũm ở chuồng lợn, thi nhảy xa cùng Nai Lộc qua vườn cây và đo mực nước bể ươm cá để mở hết quà.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Cáo Lém, Bác thợ Tùng, Heo Mũm, Nai Lộc",
-    "where": "Xưởng đồ chơi: quầy trao giải, bàn bào gỗ, góc cân đĩa, đường đá nhảy xa và góc bể cá",
-    "goal": "Mở cả ba hộp quà bí mật trước giờ trao giải",
+    "who": "Cáo Mía, Bác thợ Tùng, Heo Mũm, Nai Lộc",
+    "where": "Nông trại: sân trước kho thóc, bàn bào gỗ ở xưởng nông cụ, chuồng lợn, lối đá qua vườn cây, bể ươm cá bên ao",
+    "goal": "Mở cả ba hộp quà bí mật trước giờ trao giải hội mùa",
     "play": "Tìm hộp quà, điền số mở khoá, giải đố, chọn đường bay dài nhất, đo mực nước, làm phiếu ở nhà",
     "learn": "Toán 2 Bài 21: luyện tập cộng có nhớ trong phạm vi 100, bài toán có lời văn",
     "reward": "80 XP, 15 xu, Phép cộng +2, Bài toán có lời văn +1",
@@ -28,49 +28,49 @@
   },
   "texts": {},
   "places": {
-    "cao-lem": "quầy trao giải",
-    "tim-hop-qua": "quầy trao giải",
-    "toan2-cd4-b21-bac-tho-tung": "bàn bào gỗ",
-    "toan2-cd4-b21-heo-mum": "góc cân đĩa",
-    "toan2-cd4-b21-nai-loc": "đường đá nhảy xa",
-    "toan2-cd4-be-ca": "góc bể cá"
+    "toan2-cd4-b21-cao-mia": "sân trước kho thóc",
+    "tim-hop-qua": "quanh kho thóc",
+    "toan2-cd4-b21-bac-tho-tung": "bàn bào gỗ ở xưởng nông cụ",
+    "toan2-cd4-b21-heo-mum": "chuồng lợn",
+    "toan2-cd4-b21-nai-loc": "lối đá qua vườn cây",
+    "toan2-cd4-be-ca": "bể ươm cá bên ao"
   },
   "steps": [
     {
       "id": "cao-lem-khoa-qua",
       "title": "Quà bị khoá hết rồi!",
-      "goTo": "Đến quầy trao giải của Xưởng đồ chơi, Cáo Lém đang huýt sáo",
+      "goTo": "Đến sân trước kho thóc, Cáo Mía đang huýt sáo dưới lá cờ hội mùa",
       "kind": "dialogue",
-      "target": "cao-lem",
+      "target": "toan2-cd4-b21-cao-mia",
       "lines": [
         {
-          "speaker": "Cáo Lém",
-          "text": "A lô a lô! Hôm nay tớ không giấu phấn nữa đâu, tớ giấu… quà! Ba hộp quà bí mật, khoá bằng ổ khoá số hẳn hoi."
+          "speaker": "Cáo Mía",
+          "text": "A lô a lô! Hội mùa năm nay tớ không giấu bắp ngô nữa đâu, tớ giấu… quà! Ba hộp quà bí mật, khoá bằng ổ khoá số hẳn hoi."
         },
         {
           "speaker": "Bác thợ Tùng",
-          "text": "Ơ kìa, quà ấy để trao giải cho cả xưởng mà! Bác vặn khoá mười lần, lần nào cũng kêu \"cạch\" rồi đứng im."
+          "text": "Ơ kìa, quà ấy để trao giải cho cả nông trại mà! Bác vặn khoá mười lần, lần nào cũng kêu \"cạch\" rồi đứng im."
         },
         {
-          "speaker": "Cáo Lém",
+          "speaker": "Cáo Mía",
           "text": "Muốn mở thì phải tính đúng. Tính sai là khoá hắt xì một cái, phì phì, hì hì!"
         }
       ],
       "choices": [
         {
           "text": "Tớ mở hết cho xem!",
-          "reply": "Cáo Lém nhướn mày: Tự tin ghê nhỉ! Thế thì đi tìm hộp trước đã."
+          "reply": "Cáo Mía nhướn mày: Tự tin ghê nhỉ! Thế thì đi tìm hộp trước đã."
         },
         {
           "text": "Khoá mà cũng biết hắt xì à?",
-          "reply": "Cáo Lém cười lăn: Khoá của tớ là khoá có cảm xúc đấy nhé!"
+          "reply": "Cáo Mía cười lăn: Khoá của tớ là khoá có cảm xúc đấy nhé!"
         }
       ]
     },
     {
       "id": "tim-hop-qua",
       "title": "Ba hộp quà biến đâu?",
-      "goTo": "Lục tìm ba hộp quà Cáo Lém giấu quanh quầy trao giải",
+      "goTo": "Lục tìm ba hộp quà Cáo Mía giấu quanh kho thóc",
       "kind": "search",
       "targets": [
         "toan2-cd4-hop-qua-do",
@@ -93,7 +93,7 @@
           "text": "Cộng từ phải sang trái. Hàng đơn vị được 10 trở lên thì viết chữ số đơn vị, nhớ 1 sang hàng chục."
         },
         {
-          "speaker": "Cáo Lém",
+          "speaker": "Cáo Mía",
           "text": "Nhớ 1 chứ đừng quên 1 nhé, quên là khoá hắt xì liền!"
         }
       ],
@@ -103,7 +103,7 @@
           "reply": "Bác thợ Tùng giơ ngón cái dính đầy mùn cưa: Chuẩn thợ cả!"
         }
       ],
-      "goTo": "Ôm hộp sang bàn bào gỗ, Bác thợ Tùng phủi mùn cưa chờ dạy bí kíp"
+      "goTo": "Ôm hộp sang bàn bào gỗ ở xưởng nông cụ, Bác thợ Tùng phủi mùn cưa chờ dạy bí kíp"
     },
     {
       "id": "khoa-hop-do",
@@ -187,7 +187,7 @@
         "right": [
           "Cạch cạch cạch! Ba vòng số khớp, nắp hộp đỏ bật tung.",
           "Nhớ 1 không sót lần nào, ổ khoá chịu thua rồi.",
-          "Trong hộp đỏ là hai chú bê gỗ đang ngơ ngác chào {name}."
+          "Trong hộp đỏ là tấm thẻ đố vẽ chú bê và chú nghé đang chào {name}."
         ],
         "wrong": [
           "Phì phì! Khoá hắt xì rồi, có chỗ quên nhớ 1 kìa.",
@@ -206,9 +206,9 @@
     {
       "id": "be-va-nghe-go",
       "title": "Con nghé nặng bao nhiêu?",
-      "target": "cao-lem",
+      "target": "toan2-cd4-b21-cao-mia",
       "kind": "riddle",
-      "question": "Trong hộp đỏ có một chú bê gỗ và một chú nghé gỗ, Cáo Lém đặt cả hai lên cân. Con bê cân nặng 47 kg. Con nghé nặng hơn con bê 18 kg. Hỏi con nghé cân nặng bao nhiêu ki-lô-gam?",
+      "question": "Tấm thẻ trong hộp đỏ đố về chú bê và chú nghé ở chuồng bò, Cáo Mía đọc to: Con bê cân nặng 47 kg. Con nghé nặng hơn con bê 18 kg. Hỏi con nghé cân nặng bao nhiêu ki-lô-gam?",
       "skill": "bai-toan-loi-van",
       "curriculumRef": [
         "toan2-t1-b21-luyen-tap-2-a"
@@ -226,9 +226,9 @@
       },
       "feedback": {
         "right": [
-          "Nghé gỗ nặng hẳn 65 ki-lô-gam, Cáo Lém suýt không nhấc nổi!",
+          "Chú nghé nặng hẳn 65 ki-lô-gam, Cáo Mía chẳng dám bế thử!",
           "Nặng hơn thì cộng thêm, {name} làm đúng bài rồi.",
-          "Chú nghé gỗ gật gù: đúng cân nặng của tớ đó."
+          "Từ chuồng bò, chú nghé kêu nghé ọ: đúng cân nặng của tớ đó."
         ],
         "wrong": [
           "Con nghé nặng HƠN con bê, vậy phải cộng thêm chứ.",
@@ -239,7 +239,7 @@
       "answer": {
         "value": 65
       },
-      "goTo": "Mang hộp đỏ về quầy trao giải, Cáo Lém đã đặt sẵn chiếc cân"
+      "goTo": "Mang hộp đỏ về sân trước kho thóc, Cáo Mía đã đặt sẵn chiếc cân"
     },
     {
       "id": "can-con-lon-dat",
@@ -277,7 +277,7 @@
       "answer": {
         "value": 33
       },
-      "goTo": "Ra góc cân đĩa, Heo Mũm đang hì hục giữ cho hai đĩa cân thăng bằng"
+      "goTo": "Ra chuồng lợn, Heo Mũm đang hì hục giữ cho hai đĩa cân thăng bằng"
     },
     {
       "id": "xo-nuoc-hai-ban",
@@ -343,7 +343,7 @@
         "right": [
           "Nước sóng sánh mà không đổ giọt nào, tính chuẩn quá!",
           "Gấu với cao bồi đứng cạnh nhau so xô, cả hai đều đúng số lít.",
-          "Cáo Lém huýt sáo: hộp xanh cũng mở được rồi à?"
+          "Cáo Mía huýt sáo: hộp xanh cũng mở được rồi à?"
         ],
         "wrong": [
           "Mỗi bạn xách HAI xô, nhớ cộng cả hai nhé.",
@@ -366,10 +366,10 @@
       "lines": [
         {
           "speaker": "Nai Lộc",
-          "text": "Hộp vàng có con chuột túi lên dây cót! Nó rủ tớ thi nhảy xa trên hàng tảng đá ghi 5, 10, 15… tới 50."
+          "text": "Hộp vàng có con chuột túi lên dây cót! Nó rủ tớ thi nhảy xa trên hàng tảng đá giữa vườn cây, đá ghi 5, 10, 15… tới 50."
         },
         {
-          "speaker": "Cáo Lém",
+          "speaker": "Cáo Mía",
           "text": "Cứ mỗi tảng đá là thêm 5 điểm. Tớ cá là {name} không đoán nổi lần nhảy thứ hai đâu!"
         },
         {
@@ -380,14 +380,14 @@
       "choices": [
         {
           "text": "Đếm từng tảng đá một",
-          "reply": "Nai Lộc: Chậm mà chắc, như tớ dò từng bước qua suối vậy."
+          "reply": "Nai Lộc: Chậm mà chắc, như tớ dò từng bước trên bờ ruộng vậy."
         },
         {
           "text": "Đếm thêm 5 mỗi bước",
-          "reply": "Cáo Lém: Hừm, nhảy cóc nhanh ghê, nhưng nhớ đừng đếm lố!"
+          "reply": "Cáo Mía: Hừm, nhảy cóc nhanh ghê, nhưng nhớ đừng đếm lố!"
         }
       ],
-      "goTo": "Chạy tới đường đá nhảy xa, Nai Lộc đang lên dây cót cho chú chuột túi"
+      "goTo": "Chạy tới lối đá qua vườn cây, Nai Lộc đang lên dây cót cho chú chuột túi"
     },
     {
       "id": "chuot-tui-nhay-xa",
@@ -453,7 +453,7 @@
         "right": [
           "Boing boing! Chuột túi nhảy tới đâu {name} tính tới đó.",
           "Sáu mươi điểm tròn trĩnh, chuột túi đòi lên bục nhận giải.",
-          "Cáo Lém thua cược, phải lau sạch quầy trao giải rồi nhé."
+          "Cáo Mía thua cược, phải quét sạch sân kho thóc rồi nhé."
         ],
         "wrong": [
           "Lần hai nhảy qua 6 tảng đá, đếm tới tảng thứ sáu xem.",
@@ -470,11 +470,11 @@
     },
     {
       "id": "tinh-nhanh-quay-giai",
-      "title": "Ba phép cộng ở quầy",
-      "target": "cao-lem",
+      "title": "Ba phép cộng trên biển hội mùa",
+      "target": "toan2-cd4-b21-cao-mia",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Cáo Lém viết ba phép tính lên tấm biển quầy trao giải. Tính.",
+      "prompt": "Cáo Mía viết ba phép tính lên tấm biển hội mùa. Tính.",
       "template": "41 + 19 = {{b1}}\n67 + 3 = {{b2}}\n76 + 14 = {{b3}}",
       "blanks": [
         {
@@ -549,8 +549,8 @@
       "feedback": {
         "right": [
           "Ba số tròn chục xếp hàng trên biển, đẹp như tranh.",
-          "Cáo Lém lẩm bẩm: sao cậu tính nhanh hơn tớ viết thế?",
-          "Biển quầy trao giải sáng bừng đèn nhấp nháy!"
+          "Cáo Mía lẩm bẩm: sao cậu tính nhanh hơn tớ viết thế?",
+          "Biển hội mùa sáng bừng đèn nhấp nháy!"
         ],
         "wrong": [
           "Hàng đơn vị cộng ra 10 thì viết 0 và nhớ 1 nhé.",
@@ -565,12 +565,12 @@
           "b3": "o90"
         }
       },
-      "goTo": "Về quầy trao giải, Cáo Lém đang nắn nót viết phép tính lên tấm biển"
+      "goTo": "Về sân trước kho thóc, Cáo Mía đang nắn nót viết phép tính lên tấm biển"
     },
     {
       "id": "duong-bay-dai-nhat",
       "title": "Đường bay dài nhất",
-      "target": "cao-lem",
+      "target": "toan2-cd4-b21-cao-mia",
       "kind": "challenge",
       "mechanic": "multi-select",
       "prompt": "Ba chiếc máy bay côn trùng bằng gỗ thi bay: ong bay 23 cm đến bông hoa đỏ rồi 38 cm đến bông hoa vàng; chuồn chuồn bay 39 cm đến hàng rào rồi 24 cm đến ao; châu chấu bay 51 cm đến khóm lúa. Đường bay của bạn nào dài nhất? Chọn bạn đó.",
@@ -657,12 +657,12 @@
       "answer": {
         "value": 72
       },
-      "goTo": "Sang bàn bào gỗ, Bác thợ Tùng bê ra một hũ bi thật to"
+      "goTo": "Sang bàn bào gỗ ở xưởng nông cụ, Bác thợ Tùng bê ra một hũ bi thật to"
     },
     {
       "id": "muc-nuoc-ba-be",
-      "title": "Ba bể cá dưới đáy xưởng",
-      "goTo": "Sang góc bể cá, món quà cuối cùng nằm dưới đáy bể",
+      "title": "Ba bể ươm cá bên ao",
+      "goTo": "Sang bể ươm cá bên ao, món quà cuối cùng nằm dưới đáy bể",
       "target": "toan2-cd4-be-ca",
       "kind": "challenge",
       "mechanic": "fill-blank",
@@ -775,14 +775,14 @@
       "title": "Cúp thợ mở khoá",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Ba hộp quà đều mở tung! Bác thợ Tùng trao cho {name} chiếc cúp gỗ \"Thợ mở khoá số\", còn Cáo Lém phải hứa từ nay chỉ khoá quà bằng nơ."
+      "text": "Ba hộp quà đều mở tung! Bác thợ Tùng trao cho {name} chiếc cúp gỗ \"Thợ mở khoá số\", còn Cáo Mía phải hứa từ nay chỉ khoá quà bằng nơ."
     },
     {
       "id": "ke-gau-bong-day-ap",
-      "title": "Kệ gấu bông đầy ắp",
+      "title": "Ruộng ngô đầy bắp",
       "kind": "next",
       "trigger": "auto",
-      "text": "Ở kệ gấu bông, Koala Na ngáp một cái thật dài: \"Tớ có nhiều gấu bông quá, muốn tặng bớt cho các em lớp Một… mà tặng bớt thì còn lại bao nhiêu nhỉ? Zzz…\""
+      "text": "Giữa ruộng ngô, Koala Lơ Mơ ngáp một cái thật dài: \"Tớ bẻ được nhiều bắp ngô quá, muốn tặng bớt cho các em nhỏ quanh vùng… mà tặng bớt thì còn lại bao nhiêu nhỉ? Zzz…\""
     }
   ],
   "reward": {

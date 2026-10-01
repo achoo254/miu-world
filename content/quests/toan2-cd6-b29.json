@@ -1,15 +1,15 @@
 {
   "id": "toan2-cd6-b29",
-  "region": "truong-hoc",
-  "chapter": 6,
+  "region": "thu-vien",
+  "chapter": 3,
   "title": "Gấu Trúc Khò và đồng hồ tháp ngủ quên",
   "status": "active",
   "lesson": "toan2-t1-b29",
-  "summary": "Gấu Trúc Khò ngủ quên lên dây cót, đồng hồ tháp chỉ giờ lung tung làm gà gáy giữa đêm; {name} cùng ông Khuê thợ đồng hồ và các bạn trên tháp tìm lại kim đồng hồ, đọc giờ sáng, chiều, tối, đêm, ghép đồng hồ kim với đồng hồ điện tử và đưa tháp về đúng giờ.",
+  "summary": "Gấu Trúc Khò, cháu của bác thủ thư Gấu Trúc Tròn, ngủ quên lên dây cót, thế là tháp đồng hồ cạnh thư viện chỉ giờ lung tung làm gà gáy giữa đêm; {name} cùng ông Khuê thợ đồng hồ và các bạn trên tháp tìm lại kim đồng hồ, đọc giờ sáng, chiều, tối, đêm, ghép đồng hồ kim với đồng hồ điện tử và đưa tháp về đúng giờ.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Gấu Trúc Khò, ông Khuê thợ đồng hồ, Cáo Tuyết Bíp, Mèo Xám Mây, Gấu Cơm Nắm, Khỉ Đu Dây",
-    "where": "Tháp đồng hồ: dưới chân tháp, bãi cỏ quanh tháp, phòng máy, kệ đồng hồ điện tử, ô cửa sổ tròn, chiếu nghỉ cầu thang, ban công mặt đồng hồ",
+    "who": "Gấu Trúc Khò (cháu bác thủ thư, mê ngủ), ông Khuê thợ đồng hồ, Cáo Tuyết Bíp, Mèo Xám Mây, Gấu Cơm Nắm, Khỉ Đu Dây",
+    "where": "Tháp đồng hồ cao cạnh Thư viện: dưới chân tháp, bãi cỏ quanh tháp, phòng máy, kệ đồng hồ điện tử, ô cửa sổ tròn, chiếu nghỉ cầu thang xoắn, ban công mặt đồng hồ",
     "goal": "Đưa đồng hồ tháp chạy đúng giờ trở lại",
     "play": "Tìm kim đồng hồ, đọc giờ trên đồng hồ kim, ghép tranh với đồng hồ điện tử, quay giờ, ghép đồng hồ cùng thời gian",
     "learn": "Toán 2 Bài 29: ngày – giờ (một ngày có 24 giờ, giờ buổi chiều, tối, đêm), giờ – phút (1 giờ = 60 phút, 15 phút, 30 phút)",
@@ -33,7 +33,7 @@
     "toan2-cd6-b29-ong-khue": "phòng máy đồng hồ",
     "toan2-cd6-b29-cao-tuyet-bip": "kệ đồng hồ điện tử",
     "toan2-cd6-b29-meo-xam-may": "ô cửa sổ tròn trên tháp",
-    "toan2-cd6-b29-gau-com-nam": "chiếu nghỉ cầu thang tháp",
+    "toan2-cd6-b29-gau-com-nam": "chiếu nghỉ cầu thang xoắn",
     "toan2-cd6-b29-khi-du-day": "ban công mặt đồng hồ"
   },
   "steps": [
@@ -54,7 +54,7 @@
         },
         {
           "speaker": "Gấu Trúc Khò",
-          "text": "Thế thì phải sửa… ngáp… sửa ngay. Mà hai cái kim đồng hồ rơi xuống bãi cỏ mất rồi ấy."
+          "text": "Bác Tròn dặn tớ làm gì cũng chậm mà chắc, ai ngờ tớ chậm quá… ngủ luôn. Mà hai cái kim đồng hồ rơi xuống bãi cỏ mất rồi ấy."
         }
       ],
       "choices": [
@@ -473,7 +473,7 @@
     {
       "id": "nam-lam-bai-buoi-chieu",
       "title": "Nam làm bài tập lúc nào?",
-      "goTo": "Xuống chiếu nghỉ cầu thang tháp, Gấu Cơm Nắm đang mở hộp cơm",
+      "goTo": "Xuống chiếu nghỉ cầu thang xoắn, Gấu Cơm Nắm đang mở hộp cơm",
       "target": "toan2-cd6-b29-gau-com-nam",
       "kind": "challenge",
       "mechanic": "clock",
@@ -892,7 +892,7 @@
       "title": "Người giữ giờ của tháp",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Tháp đồng hồ ngân vang mười hai tiếng boong. Ông Khuê trao cho {name} huy hiệu \"Người giữ giờ\", còn Gấu Trúc Khò hứa từ nay đặt báo thức… ba cái liền."
+      "text": "Tháp đồng hồ ngân vang mười hai tiếng boong, vọng xuống tận phòng đọc. Ông Khuê trao cho {name} huy hiệu \"Người giữ giờ\", còn Gấu Trúc Khò hứa từ nay đặt báo thức… ba cái liền."
     },
     {
       "id": "to-lich-bi-xe",

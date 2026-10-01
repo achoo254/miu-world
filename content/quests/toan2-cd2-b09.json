@@ -1,16 +1,16 @@
 {
   "id": "toan2-cd2-b09",
-  "region": "truong-hoc",
-  "chapter": 2,
+  "region": "cho-phien",
+  "chapter": 1,
   "title": "Đàn bê con chạy ra chạy vào",
   "status": "active",
   "lesson": "toan2-t1-b09",
-  "summary": "Đàn bê con nghịch ngợm cứ chạy ra chạy vào chuồng rơm làm Bò Sữa Mơ đếm hoa cả mắt; {name} chạy từ bãi kéo co tới bờ rào hàng xóm, giúp cô viết tóm tắt, bài giải cho các bài toán thêm, bớt.",
+  "summary": "Bò Mẹ Gạo kéo xe rơm ra chợ phiên, đàn bê con theo mẹ nghịch ngợm cứ chạy ra chạy vào bãi buộc xe làm cô đếm hoa cả mắt; {name} chạy từ bãi kéo co tới chuồng lợn giống góc chợ, giúp cô viết tóm tắt, bài giải cho các bài toán thêm, bớt.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Bò Sữa Mơ, Bê Bông (bê con nghịch nhất đàn), Bê Vàng Lúa, bác Lợn Ụt Ịt hàng xóm",
-    "where": "Vườn trường: chuồng rơm, đống rơm sau chuồng, bãi kéo co, bờ rào hàng xóm, máng nước, cổng trang trại",
-    "goal": "Giúp Bò Sữa Mơ biết lúc nào thêm, lúc nào bớt để đếm đúng",
+    "who": "Bò Mẹ Gạo, Bê Bông (bê con nghịch nhất đàn), Bê Vàng Lúa, bác Lợn Ụt Ịt bán lợn giống",
+    "where": "Chợ phiên, khu chợ rau hoa: bãi buộc xe bò, đống rơm sau xe, bãi kéo co, chuồng lợn giống góc chợ, ao vịt, cổng chợ",
+    "goal": "Giúp Bò Mẹ Gạo biết lúc nào thêm, lúc nào bớt để đếm đúng",
     "play": "Tìm bê con trốn, điền tóm tắt và bài giải, kéo thuyền lá vào bến, đố số bạn trên xe",
     "learn": "Toán 2 Bài 9: bài toán về thêm, bớt một số đơn vị",
     "reward": "75 XP, 12 xu, Bài toán có lời văn +2, Phép trừ +1",
@@ -28,31 +28,31 @@
   },
   "texts": {},
   "places": {
-    "bo-sua-mo": "chuồng rơm",
-    "tim-be-con": "đống rơm sau chuồng",
+    "toan2-cd2-b09-bo-me-gao": "bãi buộc xe bò",
+    "tim-be-con": "đống rơm sau xe",
     "toan2-cd2-b09-be-vang-lua": "bãi kéo co",
-    "toan2-cd2-b09-lon-ut-it": "bờ rào hàng xóm",
-    "be-bong-mang-nuoc": "máng nước",
-    "bo-sua-mo-cong": "cổng trang trại"
+    "toan2-cd2-b09-lon-ut-it": "chuồng lợn giống góc chợ",
+    "be-bong-mang-nuoc": "ao vịt",
+    "toan2-cd2-b09-bo-me-gao-cong": "cổng chợ"
   },
   "steps": [
     {
       "id": "bo-mo-dem-hoa-mat",
-      "title": "Bò Mơ đếm hoa cả mắt",
-      "goTo": "Vào chuồng rơm, Bò Sữa Mơ đang đếm bê",
+      "title": "Bò Mẹ Gạo đếm hoa cả mắt",
+      "goTo": "Ra bãi buộc xe bò, Bò Mẹ Gạo đang đếm bê bên xe rơm",
       "kind": "dialogue",
-      "target": "bo-sua-mo",
+      "target": "toan2-cd2-b09-bo-me-gao",
       "lines": [
         {
-          "speaker": "Bò Sữa Mơ",
-          "text": "Ụm bò… một, hai, ba… ơ kìa, con vừa chạy ra lại chạy vào! {name} ơi, cô đếm từ sáng tới giờ chưa xong."
+          "speaker": "Bò Mẹ Gạo",
+          "text": "Ụm bò… một, hai, ba… ơ kìa, con vừa chạy ra lại chạy vào! {name} ơi, cô đếm từ lúc vào chợ tới giờ chưa xong."
         },
         {
           "speaker": "Bê Bông",
           "text": "Hi hi, tụi con chơi trốn tìm mà mẹ! Ba đứa còn đang trốn trong đống rơm kìa."
         },
         {
-          "speaker": "Bò Sữa Mơ",
+          "speaker": "Bò Mẹ Gạo",
           "text": "Đấy, cứ thêm một đứa rồi bớt một đứa. Hôm nay cô phải học cho ra cách đếm thêm, đếm bớt mới được."
         }
       ],
@@ -70,7 +70,7 @@
     {
       "id": "tim-be-con",
       "title": "Tìm bê con trốn trong rơm",
-      "goTo": "Tìm ba bạn bê con trốn trong đống rơm sau chuồng",
+      "goTo": "Tìm ba bạn bê con trốn trong đống rơm sau xe",
       "kind": "search",
       "targets": [
         "toan2-cd2-be-con-dom",
@@ -81,37 +81,37 @@
     {
       "id": "them-cong-bot-tru",
       "title": "Thêm thì cộng, bớt thì trừ",
-      "goTo": "Dắt ba bạn bê về chuồng rơm",
+      "goTo": "Dắt ba bạn bê về bãi buộc xe bò",
       "kind": "dialogue",
-      "target": "bo-sua-mo",
+      "target": "toan2-cd2-b09-bo-me-gao",
       "lines": [
         {
-          "speaker": "Bò Sữa Mơ",
-          "text": "Ba bạn về rồi! Vậy là chuồng có thêm ba bê. Có thêm thì mình làm phép cộng, đúng không nhỉ?"
+          "speaker": "Bò Mẹ Gạo",
+          "text": "Ba bạn về rồi! Vậy là cạnh xe có thêm ba bê. Có thêm thì mình làm phép cộng, đúng không nhỉ?"
         },
         {
           "speaker": "Bê Bông",
           "text": "Còn lúc con chạy ra ngoài là bớt đi một, thì làm phép trừ ạ!"
         },
         {
-          "speaker": "Bò Sữa Mơ",
+          "speaker": "Bò Mẹ Gạo",
           "text": "Giỏi! Giải bài toán thì ghi Tóm tắt trước, rồi Bài giải có câu trả lời và phép tính, cuối cùng là Đáp số."
         }
       ],
       "choices": [
         {
           "text": "Cháu nhớ rồi: tóm tắt, bài giải, đáp số!",
-          "reply": "Bò Sữa Mơ vẫy đuôi: Vậy thử ngay với lọ hoa trên bàn cô nhé."
+          "reply": "Bò Mẹ Gạo vẫy đuôi: Vậy thử ngay với lọ hoa trên xe của cô nhé."
         }
       ]
     },
     {
       "id": "lo-hoa-cua-viet",
       "title": "Lọ hoa trên bàn",
-      "target": "bo-sua-mo",
+      "target": "toan2-cd2-b09-bo-me-gao",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Bạn Việt ghé trang trại, mang theo một bó hoa hồng. Lọ hoa có 9 bông hoa, Việt cắm thêm 6 bông hoa. Hỏi lọ hoa có tất cả bao nhiêu bông hoa?",
+      "prompt": "Bạn Việt đi chợ ghé qua, mua tặng cô một bó hoa hồng. Lọ hoa có 9 bông hoa, Việt cắm thêm 6 bông hoa. Hỏi lọ hoa có tất cả bao nhiêu bông hoa?",
       "template": "Tóm tắt\nCó : {{b1}} bông hoa\nThêm : {{b2}} bông hoa\nCó tất cả : ... bông hoa?\nBài giải\nSố bông hoa có tất cả là: {{b3}} + {{b4}} = {{b5}} (bông)\nĐáp số: {{b6}} bông hoa.",
       "blanks": [
         {
@@ -234,9 +234,9 @@
       },
       "feedback": {
         "right": [
-          "Lọ hoa đầy ắp mười lăm bông, thơm cả chuồng rơm!",
+          "Lọ hoa đầy ắp mười lăm bông, thơm cả xe rơm!",
           "Tóm tắt rõ ràng, bài giải gọn gàng, chuẩn như sách.",
-          "Bò Sữa Mơ hít hà: thêm hoa là cộng, cô hiểu rồi!"
+          "Bò Mẹ Gạo hít hà: thêm hoa là cộng, cô hiểu rồi!"
         ],
         "wrong": [
           "Dòng \"Có\" ghi số hoa ban đầu trong lọ đó.",
@@ -262,7 +262,7 @@
       "target": "toan2-cd2-b09-be-vang-lua",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Ngoài sân, Bê Bông rủ các bạn chơi kéo co: \"Dô ta, dô ta!\" Có 8 bạn đang chơi kéo co, có thêm 4 bạn chạy đến cùng chơi. Hỏi lúc đó có tất cả bao nhiêu bạn chơi kéo co?",
+      "prompt": "Ở bãi chơi cạnh chợ, Bê Bông rủ các bạn nhỏ đi chợ chơi kéo co: \"Dô ta, dô ta!\" Có 8 bạn đang chơi kéo co, có thêm 4 bạn chạy đến cùng chơi. Hỏi lúc đó có tất cả bao nhiêu bạn chơi kéo co?",
       "template": "Tóm tắt\nCó : {{b1}} bạn\nThêm : {{b2}} bạn\nCó tất cả : ... bạn?\nBài giải\nSố bạn chơi kéo co có tất cả là: {{b3}} {{b4}} {{b5}} = {{b6}} (bạn)\nĐáp số: {{b7}} bạn.",
       "blanks": [
         {
@@ -423,23 +423,23 @@
     {
       "id": "be-bong-ru-di-choi",
       "title": "Bê Bông rủ đi chơi",
-      "goTo": "Về chuồng rơm, Bê Bông đang níu đuôi Bò Sữa Mơ đòi đi chơi",
+      "goTo": "Về bãi buộc xe bò, Bê Bông đang níu đuôi Bò Mẹ Gạo đòi đi chơi",
       "kind": "dialogue",
-      "target": "bo-sua-mo",
+      "target": "toan2-cd2-b09-bo-me-gao",
       "lines": [
         {
           "speaker": "Bê Bông",
-          "text": "{name} ơi, máng nước có thuyền lá trôi vui lắm, đi xem đi!"
+          "text": "{name} ơi, ao vịt có thuyền lá trôi vui lắm, đi xem đi!"
         },
         {
-          "speaker": "Bò Sữa Mơ",
-          "text": "Khoan đã, bác Lợn Ụt Ịt hàng xóm vừa nhờ cô tính một bài bớt. {name} muốn tính xong rồi đi, hay vừa đi vừa tính?"
+          "speaker": "Bò Mẹ Gạo",
+          "text": "Khoan đã, bác Lợn Ụt Ịt bán lợn giống vừa nhờ cô tính một bài bớt. {name} muốn tính xong rồi đi, hay vừa đi vừa tính?"
         }
       ],
       "choices": [
         {
           "text": "Tính bài bớt xong rồi đi",
-          "reply": "Bò Sữa Mơ: Ngoan quá, bài ngắn thôi mà."
+          "reply": "Bò Mẹ Gạo: Ngoan quá, bài ngắn thôi mà."
         },
         {
           "text": "Vừa đi vừa tính cho vui",
@@ -450,11 +450,11 @@
     {
       "id": "dan-lon-nha-an",
       "title": "Đàn lợn nhà An",
-      "goTo": "Ra bờ rào hàng xóm, bác Lợn Ụt Ịt đang kể chuyện đàn lợn nhà An",
+      "goTo": "Ra chuồng lợn giống góc chợ, bác Lợn Ụt Ịt đang kể chuyện đàn lợn nhà An",
       "target": "toan2-cd2-b09-lon-ut-it",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Bác hàng xóm kể chuyện đàn lợn nhà An bên kia đồi. Đàn lợn nhà An có 15 con, mẹ đã bán 5 con. Hỏi đàn lợn nhà An còn lại bao nhiêu con?",
+      "prompt": "Bác Ụt Ịt kể chuyện nhà An vừa mang lợn ra chợ bán. Đàn lợn nhà An có 15 con, mẹ đã bán 5 con. Hỏi đàn lợn nhà An còn lại bao nhiêu con?",
       "template": "Tóm tắt\nCó : {{b1}} con lợn\nBán : {{b2}} con lợn\nCòn lại : ... con lợn?\nBài giải\nSố con lợn còn lại là: {{b3}} – {{b4}} = {{b5}} (con)\nĐáp số: {{b6}} con lợn.",
       "blanks": [
         {
@@ -601,11 +601,11 @@
     {
       "id": "thuyen-la-vao-ben",
       "title": "Kéo thuyền lá vào bến",
-      "goTo": "Chạy ra máng nước, Bê Bông đang thả thuyền lá",
+      "goTo": "Chạy ra ao vịt, Bê Bông đang thả thuyền lá",
       "target": "be-bong-mang-nuoc",
       "kind": "challenge",
       "mechanic": "drag-drop",
-      "prompt": "Bê Bông thả thuyền lá trên máng nước, có thêm mấy chiếc trôi tới. Kéo đúng các nhóm thuyền trong tóm tắt vào bến. Giải bài toán theo tóm tắt sau: Tóm tắt Có : 9 thuyền Thêm : 4 thuyền Có tất cả : ... thuyền?",
+      "prompt": "Bê Bông thả thuyền lá trên ao vịt, có thêm mấy chiếc trôi tới. Kéo đúng các nhóm thuyền trong tóm tắt vào bến. Giải bài toán theo tóm tắt sau: Tóm tắt Có : 9 thuyền Thêm : 4 thuyền Có tất cả : ... thuyền?",
       "container": "Bến thuyền lá",
       "pieces": [
         {
@@ -643,7 +643,7 @@
         "right": [
           "Mười ba chiếc thuyền lá cập bến, Bê Bông vỗ móng lộp cộp!",
           "Không kéo nhầm thuyền chìm, cậu đọc tóm tắt kĩ lắm.",
-          "Bến thuyền lá đông vui như chợ phiên."
+          "Bến thuyền lá đông vui chẳng kém dãy hàng rau."
         ],
         "wrong": [
           "Tóm tắt không nhắc tới thuyền đã chìm đâu.",
@@ -752,7 +752,7 @@
         "right": [
           "Bài giải trên lá đẹp như vở sạch chữ đẹp!",
           "Phép tính, đơn vị, đáp số đều đủ cả.",
-          "Bê Bông treo chiếc lá lên chuồng làm bảng khen."
+          "Bê Bông cài chiếc lá lên xe rơm làm bảng khen."
         ],
         "wrong": [
           "Số thuyền có sẵn viết trước, số thuyền thêm viết sau.",
@@ -771,11 +771,11 @@
     },
     {
       "id": "xe-cho-ban-ve-truong",
-      "title": "Xe chở các bạn về trường",
-      "goTo": "Ra cổng trang trại tiễn xe chở các bạn nhỏ",
-      "target": "bo-sua-mo-cong",
+      "title": "Xe chở các bạn rời chợ",
+      "goTo": "Ra cổng chợ tiễn xe chở các bạn nhỏ",
+      "target": "toan2-cd2-b09-bo-me-gao-cong",
       "kind": "riddle",
-      "question": "Bin bin! Xe đưa các bạn nhỏ thăm trang trại sắp về trường. Trên xe có 14 bạn, đến điểm dừng có 3 bạn xuống xe. Hỏi lúc đó trên xe còn lại bao nhiêu bạn?",
+      "question": "Bin bin! Xe đưa các bạn nhỏ đi chợ phiên sắp rời cổng chợ. Trên xe có 14 bạn, đến điểm dừng có 3 bạn xuống xe. Hỏi lúc đó trên xe còn lại bao nhiêu bạn?",
       "skill": "phep-tru",
       "curriculumRef": [
         "toan2-t1-b09-luyen-tap-2"
@@ -793,7 +793,7 @@
       },
       "feedback": {
         "right": [
-          "Mười một bạn vẫy tay chào Bò Mơ, xe chạy bon bon!",
+          "Mười một bạn vẫy tay chào Bò Mẹ Gạo, xe chạy bon bon!",
           "Xuống xe là bớt đi, {name} tính trúng phóc.",
           "Bê Bông chạy theo xe một đoạn rồi quay về khen cậu."
         ],
@@ -812,14 +812,14 @@
       "title": "Huy hiệu thêm bớt",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Bò Sữa Mơ đeo cho {name} chiếc chuông nhỏ khắc chữ \"Bạn của đàn bê\". Từ hôm nay, bê con chạy ra chạy vào bao nhiêu lần cô cũng đếm được."
+      "text": "Bò Mẹ Gạo đeo cho {name} chiếc chuông nhỏ khắc chữ \"Bạn của đàn bê\". Từ hôm nay, bê con chạy ra chạy vào giữa chợ bao nhiêu lần cô cũng đếm được."
     },
     {
       "id": "dap-da-cua-hai-ly",
-      "title": "Con đập đá ở ao cá",
+      "title": "Con đập đá bên bờ kênh",
       "kind": "next",
       "trigger": "auto",
-      "text": "Ở ao cá vườn trường, Hải Ly Cần đang xếp một con đập nhỏ, mỗi viên đá khắc một phép tính. Hải Ly ngoắc đuôi gọi: \"Thiếu người tính giúp tớ rồi!\""
+      "text": "Ở bờ kênh cạnh chợ, Hải Ly Sậy đang xếp một con đập nhỏ, mỗi viên đá khắc một phép tính. Hải Ly ngoắc đuôi gọi: \"Thiếu người tính giúp tớ rồi!\""
     }
   ],
   "reward": {

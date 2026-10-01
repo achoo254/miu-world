@@ -1,16 +1,16 @@
 {
   "id": "toan2-cd5-b27",
-  "region": "truong-hoc",
-  "chapter": 5,
-  "title": "Tấm thiệp tặng cô của Chíp",
+  "region": "lau-dai",
+  "chapter": 1,
+  "title": "Tấm thiệp cảm ơn của Hổ Con Đậu",
   "status": "active",
   "lesson": "toan2-t1-b27",
-  "summary": "Gà Con Chíp muốn gấp thiệp chúc mừng cô giáo nhưng tờ giấy cứ méo xệch; {name} cùng Chíp học gấp cắt với Gấu Nút, ghép hình với Thỏ Mây, kẻ viền bằng thước thần của Bác Thìn, đo que trang trí, rồi mang phiếu về nhà gấp cắt thật.",
+  "summary": "Hổ Con Đậu muốn gấp thiệp cảm ơn cô Hằng dạy vẽ, nhưng móng vuốt to quá nên tờ giấy cứ méo xệch; {name} cùng Đậu học gấp cắt với Gấu Nút, ghép hình với Thỏ Mây, kẻ viền bằng thước thần của Bác Thìn, đo que trang trí, rồi mang phiếu về nhà gấp cắt thật.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Gà Con Chíp, Gấu Nút, Thỏ Mây, Bác Thìn",
-    "where": "Phòng mĩ thuật: bàn thủ công, kệ giấy màu, góc ghép hình, bàn thước thần",
-    "goal": "Làm xong tấm thiệp chúc mừng cô giáo",
+    "who": "Hổ Con Đậu, Gấu Nút, Thỏ Mây, Bác Thìn",
+    "where": "Lâu đài, phòng vẽ bên sân hình khối: bàn thủ công, kệ giấy màu, góc ghép hình, bàn thước thần",
+    "goal": "Làm xong tấm thiệp cảm ơn cô Hằng dạy vẽ",
     "play": "Tìm đồ thủ công, nhận phiếu gấp cắt, ghép hình, kẻ đoạn thẳng, đo bằng thước, xếp que từ ngắn đến dài",
     "learn": "Toán 2 Bài 27: gấp, cắt, ghép, xếp hình; vẽ và đo đoạn thẳng",
     "reward": "70 XP, 15 xu, Hình phẳng +2",
@@ -28,7 +28,7 @@
   },
   "texts": {},
   "places": {
-    "ga-con-chip": "bàn thủ công",
+    "toan2-cd5-b27-ho-con-dau": "bàn thủ công",
     "tim-do-thu-cong": "bàn thủ công",
     "toan2-cd5-b27-gau-nut": "kệ giấy màu",
     "toan2-cd5-b27-tho-may": "góc ghép hình",
@@ -38,27 +38,27 @@
     {
       "id": "chip-giay-meo-xech",
       "title": "Tờ giấy méo xệch",
-      "goTo": "Sang bàn thủ công trong phòng mĩ thuật, Gà Con Chíp đang vò đầu",
+      "goTo": "Sang bàn thủ công trong phòng vẽ, Hổ Con Đậu đang lấy chân gãi đầu",
       "kind": "dialogue",
-      "target": "ga-con-chip",
+      "target": "toan2-cd5-b27-ho-con-dau",
       "lines": [
         {
-          "speaker": "Gà Con Chíp",
-          "text": "{name} ơi, tớ muốn gấp thiệp chúc mừng cô giáo, mà gấp kiểu gì tờ giấy cũng méo như cái bánh đa nhúng nước!"
+          "speaker": "Hổ Con Đậu",
+          "text": "{name} ơi, tớ muốn gấp thiệp cảm ơn cô Hằng dạy vẽ, mà gấp kiểu gì tờ giấy cũng méo như cái bánh đa nhúng nước!"
         },
         {
           "speaker": "Gấu Nút",
-          "text": "Tại cậu gấp bằng… mỏ đấy Chíp. Lại còn làm rơi kéo với hồ dán khắp nơi nữa."
+          "text": "Tại cậu gấp bằng… móng vuốt đấy Đậu. Lại còn hắt xì một cái làm kéo với hồ dán bay khắp phòng vẽ nữa."
         },
         {
-          "speaker": "Gà Con Chíp",
-          "text": "Mỏ tớ khéo lắm chứ bộ! À mà… đúng là đồ đạc rơi đâu hết rồi."
+          "speaker": "Hổ Con Đậu",
+          "text": "Móng tớ khéo lắm chứ bộ! À mà… đúng là đồ đạc bay đâu hết rồi."
         }
       ],
       "choices": [
         {
           "text": "Để tớ nhặt đồ cho!",
-          "reply": "Chíp nhảy tưng tưng: Cảm ơn cậu! Kéo nhớ cầm phần tay cầm nhé."
+          "reply": "Đậu vẫy cái đuôi vằn tít mù: Cảm ơn cậu! Kéo nhớ cầm phần tay cầm nhé."
         },
         {
           "text": "Mình cùng làm thiệp thật đẹp!",
@@ -92,14 +92,14 @@
           "text": "Còn muốn vẽ đoạn thẳng dài 5 cm thì chấm một điểm ở vạch 0 của thước, chấm điểm nữa ở vạch 5, rồi nối lại."
         },
         {
-          "speaker": "Gà Con Chíp",
-          "text": "Ồ, hóa ra không phải gấp bằng mỏ. Tớ học được rồi!"
+          "speaker": "Hổ Con Đậu",
+          "text": "Ồ, hóa ra không phải gấp bằng móng vuốt. Tớ học được rồi!"
         }
       ],
       "choices": [
         {
           "text": "Bắt tay vào làm thôi!",
-          "reply": "Chíp xòe cánh: Phần gấp cắt giấy thật thì mình mang phiếu về nhà làm cùng bố mẹ nhé."
+          "reply": "Đậu giơ hai chân trước lên reo: Phần gấp cắt giấy thật thì mình mang phiếu về nhà làm cùng bố mẹ nhé."
         }
       ],
       "goTo": "Sang kệ giấy màu, Gấu Nút đang gấp thử một tờ giấy chữ nhật"
@@ -124,10 +124,10 @@
     {
       "id": "ghep-thanh-tam-giac",
       "title": "Hai mảnh ghép tam giác lớn",
-      "target": "ga-con-chip",
+      "target": "toan2-cd5-b27-ho-con-dau",
       "kind": "challenge",
       "mechanic": "classify",
-      "prompt": "Chíp muốn dán một hình tam giác lớn (đáy 6 ô, cao 6 ô) lên mặt thiệp. Hai hình nào ở cột bên trái ghép được hình ở cột bên phải? a) Xếp hai hình ghép được vào một nhóm, hình còn lại để riêng.",
+      "prompt": "Đậu muốn dán một hình tam giác lớn (đáy 6 ô, cao 6 ô) lên mặt thiệp. Hai hình nào ở cột bên trái ghép được hình ở cột bên phải? a) Xếp hai hình ghép được vào một nhóm, hình còn lại để riêng.",
       "groups": [
         {
           "id": "nhom-ghep-vao-hinh-ben-phai",
@@ -215,7 +215,7 @@
         "right": [
           "Khớp khít khìn khịt, tam giác lớn hiện ra trên mặt thiệp!",
           "Hình thang làm thân, tam giác nhỏ làm chóp, chuẩn rồi.",
-          "Chíp dán ngay, không lệch một ô nào."
+          "Đậu dán ngay, không lệch một ô nào."
         ],
         "wrong": [
           "Mảnh hẹp và cao kia có vừa với phần chóp không nhỉ?",
@@ -230,7 +230,7 @@
           "manh-a-hinh-3": "nhom-ghep-vao-hinh-ben-phai"
         }
       },
-      "goTo": "Về bàn thủ công, Gà Con Chíp đã trải sẵn mặt thiệp chờ dán"
+      "goTo": "Về bàn thủ công, Hổ Con Đậu đã trải sẵn mặt thiệp chờ dán"
     },
     {
       "id": "ghep-thanh-hinh-vuong",
@@ -354,7 +354,7 @@
           "text": "Thiệp có hình rồi, giờ cần kẻ viền và dán mấy que trang trí. Thước thần của bác còn hiện cả số đo nữa cơ!"
         },
         {
-          "speaker": "Gà Con Chíp",
+          "speaker": "Hổ Con Đậu",
           "text": "Thước thần á? Tớ tưởng chỉ có đũa thần thôi chứ."
         },
         {
@@ -365,7 +365,7 @@
       "choices": [
         {
           "text": "Kẻ viền thiệp trước",
-          "reply": "Chíp: Kẻ thẳng tay vào nhé, đừng run như tớ!"
+          "reply": "Đậu: Kẻ thẳng tay vào nhé, đừng run như móng vuốt của tớ!"
         },
         {
           "text": "Đo que trang trí trước",
@@ -452,7 +452,7 @@
         "right": [
           "Hai nét viền dài đúng từng xăng-ti-mét, thiệp sang hẳn lên!",
           "Thước thần kêu \"ting ting\": 9 cm và 12 cm chuẩn chỉnh.",
-          "Chíp kẻ theo cậu mà tay không run nữa."
+          "Đậu kẻ theo cậu mà móng không run nữa."
         ],
         "wrong": [
           "Thước thần đang hiện số đo khác 9 cm, thử chấm khác nhé.",
@@ -569,10 +569,10 @@
     {
       "id": "ghi-so-do-que",
       "title": "Ghi số đo ba que",
-      "target": "ga-con-chip",
+      "target": "toan2-cd5-b27-ho-con-dau",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Chíp đọc số đo trên thước thần và ghi lại. Đo độ dài mỗi đoạn thẳng dưới đây.",
+      "prompt": "Đậu đọc số đo trên thước thần và ghi lại. Đo độ dài mỗi đoạn thẳng dưới đây.",
       "template": "AB: {{b1}} cm\nCD: {{b2}} cm\nMN: {{b3}} cm",
       "blanks": [
         {
@@ -646,7 +646,7 @@
       },
       "feedback": {
         "right": [
-          "Ba số đo ghi gọn gàng, Chíp dán que lên thiệp liền!",
+          "Ba số đo ghi gọn gàng, Đậu dán que lên thiệp liền!",
           "Đọc thước thần không sai số nào.",
           "Sổ ghi chép của Thỏ Mây có thêm ba dòng đẹp."
         ],
@@ -663,15 +663,15 @@
           "b3": "o4"
         }
       },
-      "goTo": "Quay về bàn thủ công, Gà Con Chíp cầm thước thần chờ đọc số"
+      "goTo": "Quay về bàn thủ công, Hổ Con Đậu kẹp thước thần giữa hai chân trước chờ đọc số"
     },
     {
       "id": "que-trang-tri-ngan-dai",
       "title": "Xếp que từ ngắn đến dài",
-      "target": "ga-con-chip",
+      "target": "toan2-cd5-b27-ho-con-dau",
       "kind": "challenge",
       "mechanic": "sort",
-      "prompt": "Chíp thách {name}: tớ cắt năm que theo các cạnh của hình ngôi nhà, ai xếp nhanh hơn từ ngắn đến dài thì thắng! Đo độ dài các đoạn thẳng: AB, CD, GH, MN, NP. Vẽ các đoạn thẳng có độ dài như vậy vào vở. Trong game, xếp các que từ ngắn đến dài.",
+      "prompt": "Đậu thách {name}: tớ cắt năm que theo các cạnh của hình ngôi nhà, ai xếp nhanh hơn từ ngắn đến dài thì thắng! Đo độ dài các đoạn thẳng: AB, CD, GH, MN, NP. Vẽ các đoạn thẳng có độ dài như vậy vào vở. Trong game, xếp các que từ ngắn đến dài.",
       "items": [
         {
           "id": "que-doan-thang-ab",
@@ -790,9 +790,9 @@
       },
       "feedback": {
         "right": [
-          "Cậu xếp xong trước Chíp cả một nhịp, thắng rồi!",
+          "Cậu xếp xong trước Đậu cả một nhịp, thắng rồi!",
           "Năm que thẳng hàng từ ngắn đến dài, đẹp như cầu thang.",
-          "Chíp thua mà vẫn cười toe: lần sau tớ luyện thêm."
+          "Đậu thua mà vẫn cười toe: lần sau tớ luyện thêm."
         ],
         "wrong": [
           "Que 7 cm và que 8 cm, que nào ngắn hơn nhỉ?",
@@ -836,14 +836,14 @@
       "title": "Huy hiệu thủ công",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Tấm thiệp có tam giác lớn, hình vuông vức và năm que trang trí thẳng tắp. Chíp ôm thiệp chạy đi tặng cô giáo, còn Gấu Nút cài cho {name} huy hiệu \"Đôi tay khéo léo\"."
+      "text": "Tấm thiệp có tam giác lớn, hình vuông vức và năm que trang trí thẳng tắp. Đậu ôm thiệp chạy lon ton đi tặng cô Hằng, còn Gấu Nút cài cho {name} huy hiệu \"Đôi tay khéo léo\"."
     },
     {
       "id": "tranh-treo-nguoc",
       "title": "Phòng tranh lộn ngược",
       "kind": "next",
       "trigger": "auto",
-      "text": "Từ phòng trưng bày tranh vọng ra tiếng Cua Kềnh: \"Tranh này đẹp quá, treo xuôi mới đúng!\" — ấy thế mà bức nào Cua cũng treo ngược cả."
+      "text": "Từ phòng trưng bày tranh vọng ra tiếng Sâu Tòn Ten: \"Treo mình ngược thế này nhìn tranh mới đẹp!\" — ấy thế mà bức nào Sâu cũng treo lộn ngược cả."
     }
   ],
   "reward": {

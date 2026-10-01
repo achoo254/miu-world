@@ -1,16 +1,16 @@
 {
   "id": "toan2-cd4-b23",
-  "region": "truong-hoc",
-  "chapter": 4,
-  "title": "Hổ Vằn và đường bay giấy",
+  "region": "nong-trai",
+  "chapter": 1,
+  "title": "Hổ Gừ và đường bay giấy",
   "status": "active",
   "lesson": "toan2-t1-b23",
-  "summary": "Hổ Vằn gầm gừ vì máy bay giấy bay xa mà về gần, thật ra là sợ bị cười; {name} cùng Hươu Gió dùng phép trừ có nhớ để đo từng chuyến bay, chạy lên khán đài rô-bốt của Koala Mây, vào kho máy bay của Gấu Xù, xuống bờ ao câu cá với Mèo Cam, rồi đấu trò dẫn nhím tìm món ăn với Hổ.",
+  "summary": "Hổ Gừ gầm gừ vì máy bay giấy bay xa mà về gần, thật ra là sợ bị cười; {name} cùng Hươu Gió dùng phép trừ có nhớ để đo từng chuyến bay bên cối xay gió, tới cây xoài của Koala Mây, vào nhà kho cỏ khô của Gấu Xù, xuống bờ ao câu cá với Mèo Cam, rồi đấu trò dẫn nhím tìm món ăn với Hổ.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Hổ Vằn, Hươu Gió, Koala Mây, Gấu Xù, Mèo Cam",
-    "where": "Xưởng đồ chơi: sân thử máy bay, vạch đo đường bay, khán đài rô-bốt, kho máy bay, bờ ao đồ chơi",
-    "goal": "Giúp Hổ Vằn hiểu máy bay giấy bay xa, về gần bao nhiêu để tự tin thi với các bạn",
+    "who": "Hổ Gừ, Hươu Gió, Koala Mây, Gấu Xù, Mèo Cam",
+    "where": "Nông trại: bãi cỏ cạnh cối xay gió, hàng rào đo đường bay, cây xoài đầu vườn, nhà kho cỏ khô, bờ ao cá",
+    "goal": "Giúp Hổ Gừ hiểu máy bay giấy bay xa, về gần bao nhiêu để tự tin thi với các bạn",
     "play": "Nhặt máy bay, điền phép trừ, chọn rô-bốt đúng, điền dấu, ghép quần áo, ghép mèo với cá, mở hòm, dẫn nhím",
     "learn": "Toán 2 Bài 23: phép trừ có nhớ số có hai chữ số cho số có hai chữ số",
     "reward": "100 XP, 20 xu, Phép trừ +2, So sánh số +1",
@@ -28,49 +28,49 @@
   },
   "texts": {},
   "places": {
-    "ho-van": "sân thử máy bay",
-    "tim-may-bay-giay": "sân thử máy bay",
-    "toan2-cd4-b23-huou-gio": "vạch đo đường bay",
-    "toan2-cd4-b23-koala-may": "khán đài rô-bốt",
-    "toan2-cd4-b23-gau-bin": "kho máy bay",
-    "toan2-cd4-b23-meo-cam": "bờ ao đồ chơi"
+    "toan2-cd4-b23-ho-gu": "bãi cỏ cạnh cối xay gió",
+    "tim-may-bay-giay": "quanh cối xay gió",
+    "toan2-cd4-b23-huou-gio": "hàng rào đo đường bay",
+    "toan2-cd4-b23-koala-may": "cây xoài đầu vườn",
+    "toan2-cd4-b23-gau-bin": "nhà kho cỏ khô",
+    "toan2-cd4-b23-meo-cam": "bờ ao cá"
   },
   "steps": [
     {
       "id": "ho-van-gam-gu",
       "title": "Grừ! Máy bay hư rồi!",
-      "goTo": "Ra sân thử máy bay, Hổ Vằn đang gầm gừ bên đống máy bay giấy",
+      "goTo": "Ra bãi cỏ cạnh cối xay gió, Hổ Gừ đang gầm gừ bên đống máy bay giấy",
       "kind": "dialogue",
-      "target": "ho-van",
+      "target": "toan2-cd4-b23-ho-gu",
       "lines": [
         {
-          "speaker": "Hổ Vằn",
+          "speaker": "Hổ Gừ",
           "text": "Grừ! Máy bay của ta bay xa 72 bước, thế mà gió thổi ngược, nó quay về gần hơn 19 bước. Thật là… thật là…"
         },
         {
           "speaker": "Hươu Gió",
-          "text": "Thật là gì cơ Hổ? Sao cậu nói xong lại chui ra sau gốc cây thế?"
+          "text": "Thật là gì cơ Hổ? Sao cậu nói xong lại chui ra sau đống rơm thế?"
         },
         {
-          "speaker": "Hổ Vằn",
+          "speaker": "Hổ Gừ",
           "text": "Tại… tại tớ sợ các bạn cười tớ tính sai. {name} ơi, cậu tính giúp tớ nhé, tớ chỉ ra vẻ dữ thôi."
         }
       ],
       "choices": [
         {
           "text": "Không ai cười đâu, mình cùng tính!",
-          "reply": "Hổ Vằn ló đầu ra, cười toe: Thật hả? Vậy… grừ nhẹ một cái cho oai nhé."
+          "reply": "Hổ Gừ ló đầu ra, cười toe: Thật hả? Vậy… grừ nhẹ một cái cho oai nhé."
         },
         {
           "text": "Hổ gầm to vậy mà nhát ghê!",
-          "reply": "Hổ Vằn đỏ mặt: Suỵt! Bí mật của tớ đó, đừng kể cho Cáo Lém nha."
+          "reply": "Hổ Gừ đỏ mặt: Suỵt! Bí mật của tớ đó, đừng kể cho Cáo Mía nha."
         }
       ]
     },
     {
       "id": "tim-may-bay-giay",
       "title": "Ba chiếc máy bay lạc",
-      "goTo": "Nhặt ba chiếc máy bay giấy rơi quanh sân thử máy bay",
+      "goTo": "Nhặt ba chiếc máy bay giấy rơi quanh cối xay gió",
       "kind": "search",
       "targets": [
         "toan2-cd4-may-bay-do",
@@ -93,7 +93,7 @@
           "text": "Hàng chục: 1 thêm 1 đã nhớ là 2; 7 – 2 = 5, viết 5. Vậy 72 – 19 = 53."
         },
         {
-          "speaker": "Hổ Vằn",
+          "speaker": "Hổ Gừ",
           "text": "Nhớ 1 cộng vào số trừ… giống tớ đeo thêm cái khăn quàng cho ấm. Hiểu rồi, grừ!"
         }
       ],
@@ -103,7 +103,7 @@
           "reply": "Hươu Gió vươn cổ cao vút: Tuyệt! Giờ mình đo chuyến bay nào."
         }
       ],
-      "goTo": "Ra vạch đo đường bay, Hươu Gió vươn cổ đón máy bay giấy giúp Hổ"
+      "goTo": "Ra hàng rào đo đường bay, Hươu Gió vươn cổ đón máy bay giấy giúp Hổ"
     },
     {
       "id": "do-chuyen-bay-dau",
@@ -111,7 +111,7 @@
       "target": "toan2-cd4-b23-huou-gio",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Hươu Gió ghi tám chuyến bay của Hổ Vằn lên bảng.",
+      "prompt": "Hươu Gió ghi tám chuyến bay của Hổ Gừ lên bảng.",
       "template": "Tính.\n72 – 19 = {{b1}}   60 – 28 = {{b2}}   93 – 46 = {{b3}}   41 – 32 = {{b4}}\nĐặt tính rồi tính.\n63 – 36 = {{b5}}   72 – 27 = {{b6}}   54 – 16 = {{b7}}   80 – 43 = {{b8}}",
       "blanks": [
         {
@@ -275,7 +275,7 @@
       },
       "feedback": {
         "right": [
-          "Tám chuyến bay đo chuẩn, Hổ Vằn gầm khẽ một tiếng sung sướng.",
+          "Tám chuyến bay đo chuẩn, Hổ Gừ gầm khẽ một tiếng sung sướng.",
           "Mượn rồi nhớ, nhớ rồi trừ, {name} đều như máy.",
           "Hươu Gió treo bảng lên cột: không sai một bước chân!"
         ],
@@ -301,9 +301,9 @@
     {
       "id": "cay-khe-chim-than",
       "title": "Máy bay đậu cây khế",
-      "target": "ho-van",
+      "target": "toan2-cd4-b23-ho-gu",
       "kind": "riddle",
-      "question": "Một chiếc máy bay mắc lên cây khế, Hổ Vằn nhớ ngay câu chuyện cổ tích. Trên cây khế có 90 quả. Chim thần đã ăn mất 24 quả. Hỏi trên cây còn lại bao nhiêu quả khế?",
+      "question": "Một chiếc máy bay mắc lên cây khế, Hổ Gừ nhớ ngay câu chuyện cổ tích. Trên cây khế có 90 quả. Chim thần đã ăn mất 24 quả. Hỏi trên cây còn lại bao nhiêu quả khế?",
       "skill": "bai-toan-loi-van",
       "curriculumRef": [
         "toan2-t1-b23-hoat-dong-3"
@@ -322,7 +322,7 @@
       "feedback": {
         "right": [
           "Còn 66 quả khế vàng ươm, chim thần ăn no rồi bay đi.",
-          "Hổ Vằn gỡ được máy bay mà không làm rụng quả nào!",
+          "Hổ Gừ gỡ được máy bay mà không làm rụng quả nào!",
           "Bớt đi thì trừ, câu chuyện cổ tích cũng phải gật đầu."
         ],
         "wrong": [
@@ -334,7 +334,7 @@
       "answer": {
         "value": 66
       },
-      "goTo": "Về sân thử máy bay, Hổ Vằn đang ngó chiếc máy bay mắc trên cây khế"
+      "goTo": "Về bãi cỏ cạnh cối xay gió, Hổ Gừ đang ngó chiếc máy bay mắc trên cây khế"
     },
     {
       "id": "bang-bay-thu-hai",
@@ -507,7 +507,7 @@
       "feedback": {
         "right": [
           "Vèo vèo! Lượt hai còn chuẩn hơn lượt một.",
-          "Hổ Vằn quên cả gầm vì mải xem {name} tính.",
+          "Hổ Gừ quên cả gầm vì mải xem {name} tính.",
           "Tám ô kết quả xếp thẳng như đường băng sân bay."
         ],
         "wrong": [
@@ -528,7 +528,7 @@
           "b8": "o47"
         }
       },
-      "goTo": "Sang vạch đo đường bay, Hươu Gió giơ thước chờ lượt bay thứ hai"
+      "goTo": "Sang hàng rào đo đường bay, Hươu Gió giơ thước chờ lượt bay thứ hai"
     },
     {
       "id": "robot-cam-bang-dung",
@@ -536,7 +536,7 @@
       "target": "toan2-cd4-b23-koala-may",
       "kind": "challenge",
       "mechanic": "multi-select",
-      "prompt": "Bốn rô-bốt cổ vũ giơ bảng phép tính: rô-bốt A cầm bảng 40 – 4 = 36, rô-bốt B cầm bảng 51 – 8 = 33, rô-bốt C cầm bảng 71 – 17 = 54, rô-bốt D cầm bảng 60 – 22 = 48. Bạn rô-bốt nào cầm bảng ghi phép tính đúng?",
+      "prompt": "Bốn rô-bốt đuổi chim dưới gốc xoài giơ bảng phép tính: rô-bốt A cầm bảng 40 – 4 = 36, rô-bốt B cầm bảng 51 – 8 = 33, rô-bốt C cầm bảng 71 – 17 = 54, rô-bốt D cầm bảng 60 – 22 = 48. Bạn rô-bốt nào cầm bảng ghi phép tính đúng?",
       "choices": [
         {
           "id": "a",
@@ -574,7 +574,7 @@
         "right": [
           "Rô-bốt A và C nhảy cẫng lên, đèn mắt nhấp nháy xanh.",
           "Bắt lỗi rô-bốt B và D ngay tắp lự, giỏi quá!",
-          "Hổ Vằn thì thầm: tớ suýt tin bảng D đấy."
+          "Hổ Gừ thì thầm: tớ suýt tin bảng D đấy."
         ],
         "wrong": [
           "Có một rô-bốt giơ bảng sai mà cậu vẫn chọn kìa.",
@@ -588,7 +588,7 @@
           "c"
         ]
       },
-      "goTo": "Lên khán đài rô-bốt, Koala Mây đu cành chỉ bốn rô-bốt cổ vũ"
+      "goTo": "Tới cây xoài đầu vườn, Koala Mây đu cành chỉ bốn rô-bốt đuổi chim"
     },
     {
       "id": "dau-so-sanh-duong-bay",
@@ -690,7 +690,7 @@
         "right": [
           "Dấu nào cũng mở đúng miệng về phía số lớn!",
           "Câu b cậu nhìn ra mẹo cùng trừ 15 với 17, tinh ý thật.",
-          "Koala Mây vỗ tay bép bép trên cành cây."
+          "Koala Mây vỗ tay bép bép trên cành xoài."
         ],
         "wrong": [
           "Tính kết quả phép trừ trước khi chọn dấu nhé.",
@@ -709,11 +709,11 @@
     },
     {
       "id": "tinh-nham-va-robot-hop",
-      "title": "Tính nhẩm trên đường băng",
-      "target": "ho-van",
+      "title": "Tính nhẩm trên bờ ruộng",
+      "target": "toan2-cd4-b23-ho-gu",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Ba rô-bốt xếp hàng trên đường băng: rô-bốt xanh thân khối lập phương ghi 46 – 28, rô-bốt vàng thân tròn ghi 50 – 14, rô-bốt cam thân khối hộp chữ nhật ghi 52 – 15. Trước đó, Hổ đọc nhanh mấy phép tính nhẩm.",
+      "prompt": "Ba rô-bốt xếp hàng trên bờ ruộng: rô-bốt xanh thân khối lập phương ghi 46 – 28, rô-bốt vàng thân tròn ghi 50 – 14, rô-bốt cam thân khối hộp chữ nhật ghi 52 – 15. Trước đó, Hổ đọc nhanh mấy phép tính nhẩm.",
       "template": "Tính nhẩm.\n100 – 40 = {{b1}}   100 – 70 = {{b2}}   100 – 90 = {{b3}}\na) Rô-bốt có thân dạng khối lập phương ghi phép tính có kết quả bằng bao nhiêu? {{b4}}\nb) Rô-bốt nào ghi phép tính có kết quả lớn nhất? {{b5}}",
       "blanks": [
         {
@@ -825,7 +825,7 @@
         "right": [
           "Ba rô-bốt cúi chào, rô-bốt cam được đội mũ phi công.",
           "Tính nhẩm số tròn chục nhanh như máy bay phản lực!",
-          "Hổ Vằn gầm khe khẽ: cậu nhẩm còn nhanh hơn tớ chạy."
+          "Hổ Gừ gầm khe khẽ: cậu nhẩm còn nhanh hơn tớ chạy."
         ],
         "wrong": [
           "100 trừ số tròn chục: nghĩ theo số chục cho dễ nhé.",
@@ -842,7 +842,7 @@
           "b5": "ro-bot-ghi-52-15"
         }
       },
-      "goTo": "Chạy về sân thử máy bay, Hổ Vằn đang dắt ba rô-bốt ra đường băng"
+      "goTo": "Chạy về bãi cỏ cạnh cối xay gió, Hổ Gừ đang dắt ba rô-bốt ra bờ ruộng"
     },
     {
       "id": "quan-ao-phi-cong",
@@ -850,7 +850,7 @@
       "target": "toan2-cd4-b23-gau-bin",
       "kind": "challenge",
       "mechanic": "classify",
-      "prompt": "Hổ Vằn muốn mặc đồ phi công cho thật oai, mỗi áo ghi một phép trừ, mỗi quần ghi một số. Tìm quần phù hợp với áo.",
+      "prompt": "Hổ Gừ muốn mặc đồ phi công cho thật oai, mỗi áo ghi một phép trừ, mỗi quần ghi một số. Tìm quần phù hợp với áo.",
       "groups": [
         {
           "id": "nhom-quan-13",
@@ -893,7 +893,7 @@
       },
       "feedback": {
         "right": [
-          "Hổ Vằn mặc đồ phi công, đứng tạo dáng như siêu sao.",
+          "Hổ Gừ mặc đồ phi công, đứng tạo dáng như siêu sao.",
           "Áo nào quần nấy, khớp như may đo!",
           "Gấu Xù huýt sáo: phi công Hổ trông oai phết."
         ],
@@ -909,16 +909,16 @@
           "ao-ao-trang-32-18": "nhom-quan-14"
         }
       },
-      "goTo": "Vào kho máy bay, Gấu Xù lôi ra cả chồng áo quần phi công"
+      "goTo": "Vào nhà kho cỏ khô, Gấu Xù lôi ra cả chồng áo quần phi công"
     },
     {
       "id": "ho-van-ru-thi",
       "title": "Hổ rủ thi đấu",
       "kind": "dialogue",
-      "target": "ho-van",
+      "target": "toan2-cd4-b23-ho-gu",
       "lines": [
         {
-          "speaker": "Hổ Vằn",
+          "speaker": "Hổ Gừ",
           "text": "Grừ… ý tớ là, {name} ơi! Tớ hết sợ rồi. Mình chia nhau giải nốt đống thử thách rồi thi trò dẫn nhím nhé?"
         },
         {
@@ -929,14 +929,14 @@
       "choices": [
         {
           "text": "Chậm mà chắc, tính kĩ từng bài",
-          "reply": "Hổ Vằn gật gù: Đúng kiểu thợ đo máy bay chuyên nghiệp."
+          "reply": "Hổ Gừ gật gù: Đúng kiểu thợ đo máy bay chuyên nghiệp."
         },
         {
           "text": "Thử tốc độ, ai nhanh hơn nào!",
-          "reply": "Hổ Vằn xắn tay áo: Grừ! Lần này tớ không trốn nữa đâu."
+          "reply": "Hổ Gừ xắn tay áo: Grừ! Lần này tớ không trốn nữa đâu."
         }
       ],
-      "goTo": "Quay lại sân thử máy bay, Hổ Vằn diện đồ phi công rủ cậu thi đấu"
+      "goTo": "Quay lại bãi cỏ cạnh cối xay gió, Hổ Gừ diện đồ phi công rủ cậu thi đấu"
     },
     {
       "id": "chon-ket-qua-hai-dong",
@@ -991,7 +991,7 @@
         "right": [
           "Hai dòng hai kết quả, Hươu Gió tặng cậu một quả chuối danh dự.",
           "Làm từ trái sang phải đâu ra đấy, tuyệt!",
-          "Hổ Vằn lẩm bẩm: 33 trừ 16 ra 17, nhớ rồi nhé."
+          "Hổ Gừ lẩm bẩm: 33 trừ 16 ra 17, nhớ rồi nhé."
         ],
         "wrong": [
           "Câu a cộng 32 với 48 trước rồi mới trừ 16.",
@@ -1005,7 +1005,7 @@
           "b-a-70"
         ]
       },
-      "goTo": "Ra vạch đo đường bay, Hươu Gió ngẩng cao cổ giơ bảng đố hai dòng"
+      "goTo": "Ra hàng rào đo đường bay, Hươu Gió ngẩng cao cổ giơ bảng đố hai dòng"
     },
     {
       "id": "meo-cau-ca-ben-ao",
@@ -1063,7 +1063,7 @@
         "right": [
           "Tõm tõm tõm! Ba con cá nhảy đúng vào ba cái xô.",
           "Ba chú mèo meo meo cảm ơn rối rít.",
-          "Hổ Vằn tròn mắt: cá cũng biết làm toán à?"
+          "Hổ Gừ tròn mắt: cá cũng biết làm toán à?"
         ],
         "wrong": [
           "Có chú mèo đang câu nhầm cá của bạn bên cạnh.",
@@ -1078,7 +1078,7 @@
           "meo-xo-65": "nhom-ca-81-16"
         }
       },
-      "goTo": "Xuống bờ ao đồ chơi, Mèo Cam cùng hai bạn mèo đang ngồi câu"
+      "goTo": "Xuống bờ ao cá, Mèo Cam cùng hai bạn mèo đang ngồi câu"
     },
     {
       "id": "so-ghi-chuyen-bay",
@@ -1180,7 +1180,7 @@
         "right": [
           "Sổ ghi kín bốn cột, Hươu Gió đóng dấu \"đã kiểm tra\".",
           "Hiệu nào cũng chuẩn, không cột nào bị bỏ trống.",
-          "Hổ Vằn chép lại sổ để mang về khoe mẹ."
+          "Hổ Gừ chép lại sổ để mang về khoe mẹ."
         ],
         "wrong": [
           "Lấy số ở hàng trên trừ số ở hàng giữa nhé.",
@@ -1196,7 +1196,7 @@
           "b4": "o20"
         }
       },
-      "goTo": "Về vạch đo đường bay, Hươu Gió mở cuốn sổ ghi chuyến bay"
+      "goTo": "Về hàng rào đo đường bay, Hươu Gió mở cuốn sổ ghi chuyến bay"
     },
     {
       "id": "chu-so-va-hop-qua",
@@ -1356,7 +1356,7 @@
       "feedback": {
         "right": [
           "Chữ số về đúng chỗ, hộp quà cũng mở đúng hộp!",
-          "Hổ Vằn ôm hộp vở, Koala Mây cầm hộp bút, ai cũng vui.",
+          "Hổ Gừ ôm hộp vở, Koala Mây cầm hộp bút, ai cũng vui.",
           "Thử chữ số rồi kiểm tra lại, đúng là thám tử số."
         ],
         "wrong": [
@@ -1376,15 +1376,15 @@
           "b7": "a"
         }
       },
-      "goTo": "Lên khán đài rô-bốt, Koala Mây ôm bốn hộp quà phần thưởng"
+      "goTo": "Trèo tới cây xoài đầu vườn, Koala Mây ôm bốn hộp quà phần thưởng"
     },
     {
       "id": "chia-khoa-mo-hom",
-      "title": "Chìa khoá kho máy bay",
+      "title": "Chìa khoá nhà kho cỏ khô",
       "target": "toan2-cd4-b23-gau-bin",
       "kind": "challenge",
       "mechanic": "quiz",
-      "prompt": "Kho máy bay có ba chiếc hòm: hòm vàng A ghi 31 – 16 = 5, hòm đỏ B ghi 43 – 24 = 19, hòm xanh C ghi 55 – 39 = 16. Chìa khoá mở được chiếc hòm ghi phép tính đúng nhưng không mở được chiếc hòm màu xanh. Chìa khoá mở được chiếc hòm nào?",
+      "prompt": "Nhà kho cỏ khô có ba chiếc hòm: hòm vàng A ghi 31 – 16 = 5, hòm đỏ B ghi 43 – 24 = 19, hòm xanh C ghi 55 – 39 = 16. Chìa khoá mở được chiếc hòm ghi phép tính đúng nhưng không mở được chiếc hòm màu xanh. Chìa khoá mở được chiếc hòm nào?",
       "choices": [
         {
           "id": "a",
@@ -1429,15 +1429,15 @@
       "answer": {
         "choice": "b"
       },
-      "goTo": "Vào kho máy bay, Gấu Xù lắc chùm chìa khoá trước ba chiếc hòm"
+      "goTo": "Vào nhà kho cỏ khô, Gấu Xù lắc chùm chìa khoá trước ba chiếc hòm"
     },
     {
       "id": "bon-bai-toan-cua-ho",
       "title": "Bốn câu đố của Hổ",
-      "target": "ho-van",
+      "target": "toan2-cd4-b23-ho-gu",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Hổ Vằn tự tin đọc to bốn bài toán nhặt được trong hòm.",
+      "prompt": "Hổ Gừ tự tin đọc to bốn bài toán nhặt được trong hòm.",
       "template": "Rô-bốt A cân nặng 33 kg. Rô-bốt D nhẹ hơn rô-bốt A 16 kg. Hỏi rô-bốt D cân nặng bao nhiêu ki-lô-gam? Rô-bốt D cân nặng {{b1}} kg.\nBình xăng của một ô tô có 42 l xăng. Ô tô đã đi một quãng đường hết 15 l xăng. Hỏi bình xăng của ô tô còn lại bao nhiêu lít xăng? Còn lại {{b2}} l xăng.\nToà nhà có 60 căn phòng. Có 35 căn phòng đã bật đèn. Hỏi còn bao nhiêu căn phòng chưa bật đèn? Còn {{b3}} căn phòng chưa bật đèn.\nMột đàn gà có 32 con gồm gà trống và gà mái, trong đó có 26 con gà mái. Hỏi đàn gà có bao nhiêu con gà trống? Có {{b4}} con gà trống.",
       "blanks": [
         {
@@ -1529,7 +1529,7 @@
       },
       "feedback": {
         "right": [
-          "Bốn bài toán, bốn đáp số, Hổ Vằn đọc to không run chút nào!",
+          "Bốn bài toán, bốn đáp số, Hổ Gừ đọc to không run chút nào!",
           "Cậu giải gọn như máy bay hạ cánh êm ru.",
           "Hươu Gió dán ngôi sao vàng lên trán Hổ và {name}."
         ],
@@ -1547,15 +1547,15 @@
           "b4": "o6"
         }
       },
-      "goTo": "Ôm hòm về sân thử máy bay, Hổ Vằn hắng giọng đọc bài toán"
+      "goTo": "Ôm hòm về bãi cỏ cạnh cối xay gió, Hổ Gừ hắng giọng đọc bài toán"
     },
     {
       "id": "nhim-tim-mon-an",
       "title": "Thi dẫn nhím tìm món ăn",
-      "target": "ho-van",
+      "target": "toan2-cd4-b23-ho-gu",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Trò chơi cuối: Hổ Vằn và {name} thi xem ai dẫn nhím tới món ăn trước. Ngã rẽ đầu có đường trên ghi 30 – 5 và đường dưới ghi 30 – 9; sau 30 – 5 có đường 41 – 17 tới củ khoai lang và đường 35 – 17 tới bắp cải; sau 30 – 9 có đường 50 – 35 tới cà rốt và đường 52 – 35 tới khoai tây.",
+      "prompt": "Trò chơi cuối: Hổ Gừ và {name} thi xem ai dẫn nhím tới món ăn trước. Ngã rẽ đầu có đường trên ghi 30 – 5 và đường dưới ghi 30 – 9; sau 30 – 5 có đường 41 – 17 tới củ khoai lang và đường 35 – 17 tới bắp cải; sau 30 – 9 có đường 50 – 35 tới cà rốt và đường 52 – 35 tới khoai tây.",
       "template": "Tại mỗi ngã rẽ, bạn nhím sẽ đi theo con đường ghi phép tính có kết quả lớn hơn. Bạn nhím sẽ đến chỗ món ăn nào?\n30 – 5 = {{b1}}   30 – 9 = {{b2}}   41 – 17 = {{b3}}   35 – 17 = {{b4}}   50 – 35 = {{b5}}   52 – 35 = {{b6}}\nBạn nhím đến chỗ: {{b7}}",
       "blanks": [
         {
@@ -1700,7 +1700,7 @@
       "feedback": {
         "right": [
           "Nhím ôm củ khoai lang lăn tròn, {name} về đích trước Hổ!",
-          "Hổ Vằn thua mà cười khà khà: lần sau tớ phục thù nhé.",
+          "Hổ Gừ thua mà cười khà khà: lần sau tớ phục thù nhé.",
           "Mỗi ngã rẽ chọn đúng số lớn hơn, nhím no căng bụng."
         ],
         "wrong": [
@@ -1726,14 +1726,14 @@
       "title": "Đôi cánh dũng cảm",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Hổ Vằn gỡ chiếc máy bay đẹp nhất tặng {name}, trên cánh có dòng chữ ngoằn ngoèo: \"Cảm ơn bạn đã không cười tớ\". Hươu Gió trao thêm huy hiệu \"Kĩ sư đường bay\"."
+      "text": "Hổ Gừ gỡ chiếc máy bay đẹp nhất tặng {name}, trên cánh có dòng chữ ngoằn ngoèo: \"Cảm ơn bạn đã không cười tớ\". Hươu Gió trao thêm huy hiệu \"Kĩ sư đường bay\"."
     },
     {
       "id": "tu-kinh-con-trong",
       "title": "Tủ kính còn trống",
       "kind": "next",
       "trigger": "auto",
-      "text": "Mèo Mun vẫy gọi từ tủ kính trưng bày: \"Đồ chơi làm xong nhiều quá mà tủ kính thì đánh số lung tung, xếp sao cho đúng thứ tự đây?\""
+      "text": "Mèo Tam Thể vẫy gọi từ tủ kính ở hiên kho: \"Bác Sáu đẽo xong nhiều đồ chơi gỗ quá mà tủ kính thì đánh số ngăn lung tung, xếp sao cho đúng thứ tự đây?\""
     }
   ],
   "reward": {

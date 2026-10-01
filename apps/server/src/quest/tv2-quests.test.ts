@@ -12,6 +12,19 @@ const lessons = book?.toc.flatMap((unit) => unit.lessons) ?? [];
 /** `tv2-t1-b03` in week 2 is played by `tv2-t02-b03`; `tv2-t1-on-giua-ki` in week 9 by `tv2-t09-on-giua-ki`. */
 const questIdFor = (lessonId: string, week: number) => `tv2-t${String(week).padStart(2, '0')}-${lessonId.replace(/^tv2-t1-/, '')}`;
 
+/**
+ * Where each week of the book plays (story-map.md, "Chia lại 8 map"): the map's region and its chapter, one
+ * chapter per week; the forest's chapter 1 is its opening quest.
+ */
+function placeOfWeek(week: number): { region: string; chapter: number } {
+  if (week <= 4) return { region: 'lang-ven-song', chapter: week };
+  if (week <= 7) return { region: 'truong-hoc', chapter: week - 3 };
+  if (week <= 9) return { region: 'thu-vien', chapter: week - 7 };
+  if (week <= 13) return { region: 'khu-rung-bi-mat', chapter: week - 8 };
+  if (week <= 17) return { region: 'xom-mai-am', chapter: week - 13 };
+  return { region: 'lau-dai', chapter: 3 };
+}
+
 describe('Tiếng Việt 2 quests', () => {
   it('play every lesson of the book, one quest per lesson', () => {
     expect(lessons).toHaveLength(34);
@@ -22,13 +35,11 @@ describe('Tiếng Việt 2 quests', () => {
   for (const lesson of lessons) {
     const week = lesson.week ?? 0;
     const id = questIdFor(lesson.id, week);
-    it(`${id} plays ${lesson.id} in the forest chapter of week ${week}`, () => {
+    it(`${id} plays ${lesson.id} in the chapter of week ${week} on its map`, () => {
       const quest = quests.find((q) => q.id === id);
       if (!quest || quest.status === 'stub') throw new Error(`${id} is missing or not written in full`);
       expect(quest.lesson).toBe(lesson.id);
-      expect(quest.region).toBe('khu-rung-bi-mat');
-      // Chapter 1 is the forest's opening quest; week N of the book plays in chapter N + 1.
-      expect(quest.chapter).toBe(week + 1);
+      expect({ region: quest.region, chapter: quest.chapter }).toEqual(placeOfWeek(week));
       expect(quest.review).toBe('teacher-pending');
     });
   }

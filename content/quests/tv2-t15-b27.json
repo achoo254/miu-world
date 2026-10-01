@@ -1,20 +1,20 @@
 {
   "id": "tv2-t15-b27",
-  "region": "khu-rung-bi-mat",
-  "chapter": 16,
+  "region": "xom-mai-am",
+  "chapter": 2,
   "title": "Koala Na thao thức đêm hè",
   "status": "active",
   "lesson": "tv2-t1-b27",
-  "summary": "Đêm hè nóng nực, Koala Na, con koala ngủ giỏi nhất rừng, lại thao thức vì nhớ mẹ quạt cho mình. {name} tìm quạt nan, đọc bài thơ Mẹ trên tàu lá, rồi nghe Hươu Nắng kể chuyện cây vú sữa dưới trăng.",
+  "summary": "Đêm hè nóng nực, Koala Na, con koala ngủ giỏi nhất xóm, lại thao thức trên chiếc võng dưới hiên vì nhớ mẹ quạt cho mình. {name} tìm quạt nan, đọc bài thơ Mẹ trên tàu lá, học hai từ xưa cùng Bà Gấu Nâu, rồi nghe Hươu Nắng kể chuyện cây vú sữa dưới trăng.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Koala Na mê ngủ mà đêm nay mất ngủ, Gấu Tuyết Bông từ xứ lạnh đang chết nóng, Mèo Tro mê đố chữ, Hươu Nắng cổ cao kể chuyện hay, Gấu Nâu Thóc thích nghe chuyện",
-    "where": "Võng lá dưới trăng, lối mòn ánh trăng, tàu lá chép thơ, gốc khế đầu lối, gốc cây vú sữa và chõng tre dưới trăng",
+    "who": "Koala Na mê ngủ mà đêm nay mất ngủ, Bà Gấu Nâu (bà của cả xóm, ngồi quạt cho cả bọn và hay kể chuyện ngày xưa), Mèo Tro mê đố chữ, Hươu Nắng cổ cao kể chuyện hay, Gấu Nâu Thóc (cháu của Bà Gấu Nâu) thích nghe chuyện",
+    "where": "Hiên nhà Koala Na trong đêm trăng: chiếc võng dưới hiên, ngõ nhỏ ánh trăng, tàu lá chép thơ, ghế mây đầu hiên, gốc khế đầu ngõ, cây vú sữa trong vườn và chõng tre ngoài sân",
     "goal": "Giúp Koala Na ngủ ngon dù mẹ vắng nhà, và gửi tới mẹ một lời biết ơn",
     "play": "Tìm đồ, nói, đọc thơ, chọn nhiều đáp án, trắc nghiệm, điền từ, xếp nhóm, xếp dòng thơ, lựa chọn trong hội thoại, xếp tranh, kể chuyện, phiếu viết",
     "learn": "Tiếng Việt 2 Bài 27: đọc hiểu và học thuộc bài thơ \"Mẹ\", từ chỉ hoạt động, câu nói lời biết ơn, chữ hoa O, kể chuyện Sự tích cây vú sữa",
     "reward": "80 XP, 15 xu, Đọc hiểu +2, Từ ngữ +1, Kể chuyện +1",
-    "next": "Bài 28 \"Trò chơi của bố\""
+    "next": "Bài 28 \"Trò chơi của bố\": hang đá ấm nhà sư tử ở chân đồi"
   },
   "phases": {
     "hook": "na-mat-ngu",
@@ -45,28 +45,29 @@
     }
   },
   "places": {
-    "koala-na": "võng lá",
-    "tim-quat-nan": "lối mòn ánh trăng",
+    "koala-na": "võng dưới hiên",
+    "tim-quat-nan": "ngõ nhỏ ánh trăng",
     "tv2-t15-la-chep-tho": "tàu lá chép thơ",
-    "tv2-t15-b27-huou-nang": "cây vú sữa",
-    "tv2-t15-b27-meo-tro": "gốc khế đầu lối",
-    "tv2-t15-b27-gau-nau-thoc": "chõng tre dưới trăng"
+    "ba-gau-nau": "ghế mây đầu hiên",
+    "tv2-t15-b27-huou-nang": "cây vú sữa trong vườn",
+    "tv2-t15-b27-meo-tro": "gốc khế đầu ngõ",
+    "tv2-t15-b27-gau-nau-thoc": "chõng tre ngoài sân"
   },
   "steps": [
     {
       "id": "na-mat-ngu",
       "title": "Con koala mất ngủ",
-      "goTo": "Tới võng lá dưới trăng, Koala Na trằn trọc mãi chưa ngủ",
+      "goTo": "Tới chiếc võng dưới hiên nhà Koala Na, Na trằn trọc mãi chưa ngủ",
       "kind": "dialogue",
       "target": "koala-na",
       "lines": [
         {
           "speaker": "Koala Na",
-          "text": "{name} ơi… tớ là con koala ngủ giỏi nhất rừng, thế mà đêm nay mắt cứ mở thao láo như hai hòn bi."
+          "text": "{name} ơi… tớ là con koala ngủ giỏi nhất xóm, thế mà đêm nay mắt cứ mở thao láo như hai hòn bi."
         },
         {
-          "speaker": "Gấu Tuyết Bông",
-          "text": "Nóng quá trời ơi! Lông tớ dày thế này, chắc tớ sắp tan thành một vũng nước mất thôi!"
+          "speaker": "Bà Gấu Nâu",
+          "text": "Nóng quá các cháu ơi! Bà mặc bộ lông dày thế này, khác gì khoác áo bông giữa mùa hè!"
         },
         {
           "speaker": "Koala Na",
@@ -76,7 +77,7 @@
       "choices": [
         {
           "text": "Mình đi tìm cái quạt cho cậu nhé!",
-          "reply": "Na dụi mắt gật gù: quạt nan của mẹ ở đâu đó trên lối mòn, tớ làm rơi lúc chiều."
+          "reply": "Na dụi mắt gật gù: quạt nan của mẹ ở đâu đó ngoài ngõ, tớ làm rơi lúc chiều."
         },
         {
           "text": "Hay để mình hát ru cậu ngủ?",
@@ -87,7 +88,7 @@
     {
       "id": "tim-quat-nan",
       "title": "Quạt nan dưới trăng",
-      "goTo": "Men theo lối mòn ánh trăng tìm quạt nan, gối bông lau và ống nước mát",
+      "goTo": "Men theo ngõ nhỏ ánh trăng tìm quạt nan, gối bông lau và ống nước mát",
       "kind": "search",
       "targets": [
         "tv2-t15-quat-nan",
@@ -98,7 +99,7 @@
     {
       "id": "khoi-dong",
       "title": "Người thân chăm em ra sao",
-      "goTo": "Mang đồ về võng lá cho Koala Na",
+      "goTo": "Mang đồ về chiếc võng dưới hiên cho Koala Na",
       "kind": "speak",
       "target": "koala-na",
       "prompt": "Na ôm gối bông lau, nằm nghiêng nhìn {name}: ở nhà cậu, ai hay chăm cậu nhất? Hãy kể cho bạn nghe một việc mà mẹ hoặc người thân đã làm để chăm sóc em.",
@@ -201,7 +202,7 @@
       "kind": "challenge",
       "mechanic": "multi-select",
       "target": "tv2-t15-la-chep-tho",
-      "prompt": "Gấu Tuyết Bông phe phẩy cái lá to như chiếc ô, hỏi giọng mếu máo: Trong đêm hè oi bức, mẹ đã làm gì để con ngủ ngon?\nChọn tất cả việc mẹ làm.",
+      "prompt": "Bà Gấu Nâu phe phẩy tàu lá chuối to như cái ô, hỏi thật khẽ cho Na khỏi giật mình: Trong đêm hè oi bức, mẹ đã làm gì để con ngủ ngon?\nChọn tất cả việc mẹ làm.",
       "choices": [
         {
           "id": "ru",
@@ -248,7 +249,7 @@
       },
       "feedback": {
         "right": [
-          "Đủ ba việc của mẹ! Gấu Tuyết Bông mát lòng hẳn đi.",
+          "Đủ ba việc của mẹ! Bà Gấu Nâu gật gù: ngày xưa mẹ bà cũng ru bà đúng như thế.",
           "Ru, quạt, đưa võng… nghe thôi đã thấy buồn ngủ rồi, oáp!",
           "Na mỉm cười: đúng y như mẹ tớ làm mỗi đêm."
         ],
@@ -262,7 +263,7 @@
     {
       "id": "cau-tho-cuoi",
       "title": "Ngọn gió của con",
-      "goTo": "Na ôm quạt nan chạy về võng lá, muốn đọc to câu thơ cuối",
+      "goTo": "Na ôm quạt nan chạy về võng dưới hiên, muốn đọc to câu thơ cuối",
       "kind": "challenge",
       "mechanic": "quiz",
       "target": "koala-na",
@@ -315,11 +316,11 @@
     {
       "id": "tu-kho-dem-he",
       "title": "Hai từ trong ô Từ ngữ",
-      "goTo": "Gấu Tuyết Bông kéo {name} lại tàu lá chép thơ, chỉ vào hai từ lạ",
+      "goTo": "Bà Gấu Nâu vẫy {name} ra ghế mây đầu hiên, tay cầm tàu lá chép thơ",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "target": "tv2-t15-la-chep-tho",
-      "prompt": "Gấu Tuyết Bông chưa từng nghe hai từ \"nắng oi\" và \"giấc tròn\" ở xứ tuyết. {name} giúp Bông đặt mỗi từ về đúng dòng thơ nhé.",
+      "target": "ba-gau-nau",
+      "prompt": "Bà Gấu Nâu kể: ngày xưa bà hay nói \"nắng oi\" và \"giấc tròn\", giờ các cháu ít nói lắm. {name} giúp bà đặt mỗi từ về đúng dòng thơ nhé.",
       "template": "Con ve cũng mệt vì hè {{nang}}.\nĐêm nay con ngủ {{giac}}",
       "blanks": [
         {
@@ -377,12 +378,12 @@
       },
       "feedback": {
         "right": [
-          "Bông ghi vội vào sổ: nắng oi là thứ đáng sợ nhất với gấu tuyết!",
+          "Bà Gấu Nâu cười móm mém: cháu dùng từ xưa mà chuẩn như người lớn!",
           "Hai từ về đúng chỗ, dòng thơ đọc lên êm ru.",
           "Giấc tròn! Na nghe xong đã ngáp một cái thật dài."
         ],
         "wrong": [
-          "Mưa phùn với gió lạnh thì ve đâu có mệt, mà Bông thì sướng quá!",
+          "Mưa phùn với gió lạnh thì con ve đâu có mệt, cháu ạ. Thử lại nhé.",
           "Có mẹ quạt thì con ngủ say, đâu có chập chờn hay thao thức.",
           "Nhớ ô Từ ngữ dưới bài thơ nhé, thử lại nào."
         ]
@@ -391,7 +392,7 @@
     {
       "id": "tu-chi-hoat-dong",
       "title": "Tìm từ chỉ hoạt động",
-      "goTo": "Ra gốc khế đầu lối, Mèo Tro vẫy đuôi rủ cả bọn chơi đố chữ",
+      "goTo": "Ra gốc khế đầu ngõ, Mèo Tro vẫy đuôi rủ cả bọn chơi đố chữ",
       "kind": "challenge",
       "mechanic": "classify",
       "target": "tv2-t15-b27-meo-tro",
@@ -469,7 +470,7 @@
       },
       "feedback": {
         "right": [
-          "Mèo Tro quẫy đuôi mạnh tới mức hất bay cả mũ của Bông!",
+          "Mèo Tro quẫy đuôi mạnh tới mức hất bay cả chiếc quạt của Bà Gấu Nâu!",
           "Năm hoạt động về đúng giỏ, chuẩn không lệch thẻ nào.",
           "{name} giỏi quá, đến Mèo Tro tinh mắt cũng phải khen."
         ],
@@ -567,7 +568,7 @@
     {
       "id": "hoc-thuoc-long",
       "title": "Đọc thuộc cho Na nghe",
-      "goTo": "Về bên võng lá, Na đã nằm sẵn chờ nghe đọc thơ",
+      "goTo": "Về bên võng dưới hiên, Na đã nằm sẵn chờ nghe đọc thơ",
       "kind": "speak",
       "target": "koala-na",
       "prompt": "Na kéo gối bông lau lên tận cằm: cậu đọc thuộc lòng cho tớ nghe nhé, giống mẹ ru ấy. Học thuộc lòng 6 dòng thơ cuối.",
@@ -591,8 +592,8 @@
           "text": "Oáp… mắt tớ díp lại rồi. Nhưng tớ muốn gửi mẹ một lời trước khi ngủ."
         },
         {
-          "speaker": "Gấu Tuyết Bông",
-          "text": "Nhờ gió mang đi! Ở xứ tớ, gió chở thư nhanh hơn cả chim đưa thư."
+          "speaker": "Bà Gấu Nâu",
+          "text": "Ngày xưa, nhớ ai là bà thì thầm với gió đầu ngõ. Gió mang lời đi nhanh lắm, cháu ạ."
         },
         {
           "speaker": "Koala Na",
@@ -617,10 +618,10 @@
     {
       "id": "loi-biet-on",
       "title": "Câu cảm ơn cha mẹ",
-      "goTo": "Rón rén ra tàu lá chép thơ cho Na ngủ yên, Bông nhón chân theo sau",
+      "goTo": "Rón rén ra tàu lá chép thơ cho Na ngủ yên, Bà Gấu Nâu chống gậy đi theo sau",
       "kind": "speak",
       "target": "tv2-t15-la-chep-tho",
-      "prompt": "Na ngủ rồi, Gấu Tuyết Bông thì thầm với {name}: còn cậu, cậu muốn cảm ơn bố mẹ điều gì? Nói một câu thể hiện lòng biết ơn của em đối với cha mẹ.",
+      "prompt": "Na ngủ rồi, Bà Gấu Nâu thì thầm với {name}: còn cháu, cháu muốn cảm ơn bố mẹ điều gì? Nói một câu thể hiện lòng biết ơn của em đối với cha mẹ.",
       "hints": [
         "Bố mẹ đã làm gì cho em hôm nay?",
         "Bắt đầu bằng: Con cảm ơn bố, con cảm ơn mẹ…",
@@ -633,7 +634,7 @@
     {
       "id": "doan-tranh-vu-sua",
       "title": "Chuyện dưới gốc vú sữa",
-      "goTo": "Theo Hươu Nắng tới cây vú sữa trĩu quả, cổ bạn ấy cao chạm ánh trăng",
+      "goTo": "Theo Hươu Nắng ra cây vú sữa trong vườn, quả trĩu cành, cổ bạn ấy cao chạm ánh trăng",
       "kind": "speak",
       "target": "tv2-t15-b27-huou-nang",
       "prompt": "Hươu Nắng vươn cổ hái một quả vú sữa tròn căng, nói khẽ: cây này có cả một sự tích, để tớ kể. Nhưng trước tiên, cùng xem tranh câu chuyện Sự tích cây vú sữa. Dựa vào câu hỏi gợi ý, đoán nội dung của từng tranh.",
@@ -768,7 +769,7 @@
         "right": [
           "Bốn tranh đã về chỗ, Hươu Nắng đứng thật im cho cổ khỏi quệt nữa.",
           "Đúng trình tự rồi, câu chuyện buồn mà đẹp quá.",
-          "Bông lau nước mắt: {name} xếp giỏi thật, tớ thì chỉ biết khóc."
+          "Gấu Nâu Thóc lau nước mắt: {name} xếp giỏi thật, tớ thì chỉ biết khóc."
         ],
         "wrong": [
           "Cậu bé phải bỏ đi trước thì mới có lúc quay về chứ.",
@@ -780,7 +781,7 @@
     {
       "id": "ke-chuyen-vu-sua",
       "title": "Kể chuyện cho Gấu Nâu Thóc",
-      "goTo": "Ra chõng tre dưới trăng, Gấu Nâu Thóc đã ngồi chờ nghe kể chuyện",
+      "goTo": "Ra chõng tre ngoài sân, Gấu Nâu Thóc, cháu của Bà Gấu Nâu, đã ngồi chờ nghe kể chuyện",
       "kind": "speak",
       "target": "tv2-t15-b27-gau-nau-thoc",
       "prompt": "Gấu Nâu Thóc khoanh tay, ngồi chăm chú như học sinh ngoan nhất lớp. Nghe kể chuyện.\nChọn kể 1 – 2 đoạn của câu chuyện theo tranh.",
@@ -828,7 +829,7 @@
     {
       "id": "cau-be-noi-gi",
       "title": "Nếu cậu bé gặp lại mẹ",
-      "goTo": "Quay lại cây vú sữa, Hươu Nắng đang ngước nhìn tán lá",
+      "goTo": "Quay lại cây vú sữa trong vườn, Hươu Nắng đang ngước nhìn tán lá",
       "kind": "speak",
       "target": "tv2-t15-b27-huou-nang",
       "prompt": "Hươu Nắng trầm ngâm, móng chân gõ nhẹ xuống đất: tớ cứ nghĩ mãi một điều. Theo em, nếu được gặp lại mẹ, cậu bé trong câu chuyện sẽ nói gì?",
@@ -858,14 +859,14 @@
       "title": "Quạt nan nhỏ của Koala Na",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Sáng hôm sau, Na tặng {name} một chiếc quạt nan bé xíu tự đan, trên cán khắc dòng chữ: \"Ngọn gió nhỏ của bạn tốt\". Gấu Tuyết Bông xin mượn ngay, vì trời vẫn nóng!"
+      "text": "Sáng hôm sau, Na tặng {name} một chiếc quạt nan bé xíu tự đan, trên cán khắc dòng chữ: \"Ngọn gió nhỏ của bạn tốt\". Bà Gấu Nâu xin mượn ngay, vì bộ lông của bà vẫn nóng hầm hập!"
     },
     {
       "id": "mo-bai-28",
       "title": "Sư tử con dỗi bố",
       "kind": "next",
       "trigger": "auto",
-      "text": "Từ hang đá ấm vọng ra tiếng gầm… bé tí: sư tử con đang dỗi vì bố Sư Tử Vàng bận suốt ngày. Hình như bố đang nghĩ ra một trò chơi bí mật thì phải?"
+      "text": "Từ hang đá ấm ở chân đồi vọng ra tiếng gầm… bé tí: sư tử con Tũn đang dỗi vì bố bận suốt ngày. Hình như bố Sư Tử Bờm đang nghĩ ra một trò chơi bí mật thì phải?"
     }
   ],
   "reward": {

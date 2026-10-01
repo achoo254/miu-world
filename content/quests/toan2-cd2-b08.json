@@ -1,15 +1,15 @@
 {
   "id": "toan2-cd2-b08",
-  "region": "truong-hoc",
-  "chapter": 2,
-  "title": "Sâu Xanh và những quả bầu bảng cộng",
+  "region": "cho-phien",
+  "chapter": 1,
+  "title": "Khỉ Lủng Lẳng và những quả bầu bảng cộng",
   "status": "active",
   "lesson": "toan2-t1-b08",
-  "summary": "Gió làm rụng những quả bầu Sâu Xanh khắc bảng cộng, bác cấp dưỡng Lành lại suýt đem nấu canh; {name} chạy khắp vườn cùng Mèo Mướp Ú, Thỏ Kem, Gấu Tiêu giúp Sâu Xanh khắc lại bảng cộng (qua 10) và giải đố trước khi nồi canh sôi.",
+  "summary": "Gió làm rụng những quả bầu Khỉ Lủng Lẳng khắc bảng cộng ở giàn bầu bán giống, bác Lành bán canh lại suýt đem nấu; {name} chạy khắp hàng bầu bí cùng Mèo Mướp Ú, Thỏ Kem, Gấu Tiêu giúp Khỉ khắc lại bảng cộng (qua 10) và giải đố trước khi nồi canh sôi.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Sâu Xanh, bác cấp dưỡng Lành, Mèo Mướp Ú, Thỏ Kem, Gấu Tiêu, Gấu Trúc Tròn",
-    "where": "Vườn trường: giàn bầu, gốc giàn bầu, chòi lá, giàn đèn lồng, bếp nhỏ cuối vườn, chum nước sau bếp",
+    "who": "Khỉ Lủng Lẳng, bác Lành bán canh, Mèo Mướp Ú, Thỏ Kem, Gấu Tiêu và em gấu nhỏ",
+    "where": "Chợ phiên, khu chợ rau hoa: giàn bầu bán giống, gốc giàn bầu, chõng tre bán rau, sạp đèn lồng, quán canh cuối dãy, chum nước sau quán",
     "goal": "Khắc lại bảng cộng (qua 10) lên những quả bầu bị rụng",
     "play": "Nhặt bầu, điền bảng cộng, chọn đèn lồng, thả cá, so sánh, đưa gấu về tổ ong, đố cáp treo",
     "learn": "Toán 2 Bài 8: bảng cộng (qua 10)",
@@ -28,42 +28,42 @@
   },
   "texts": {},
   "places": {
-    "sau-xanh": "giàn bầu",
+    "toan2-cd2-b08-khi-lung-lang": "giàn bầu bán giống",
     "nhat-bau-rung": "gốc giàn bầu",
-    "toan2-cd2-b08-meo-muop-u": "chòi lá",
-    "toan2-cd2-b08-tho-kem": "giàn đèn lồng",
-    "toan2-cd2-b08-bac-lanh": "bếp nhỏ cuối vườn",
-    "toan2-cd2-b08-gau-tieu": "chum nước sau bếp"
+    "toan2-cd2-b08-meo-muop-u": "chõng tre bán rau",
+    "toan2-cd2-b08-tho-kem": "sạp đèn lồng",
+    "toan2-cd2-b08-bac-lanh": "quán canh cuối dãy",
+    "toan2-cd2-b08-gau-tieu": "chum nước sau quán"
   },
   "steps": [
     {
       "id": "bau-rung-mat-bang",
       "title": "Bảng cộng rụng mất rồi",
-      "goTo": "Đến giàn bầu, Sâu Xanh đang treo lủng lẳng trên sợi tơ",
+      "goTo": "Đến giàn bầu bán giống, Khỉ Lủng Lẳng đang đu đuôi trên giàn",
       "kind": "dialogue",
-      "target": "sau-xanh",
+      "target": "toan2-cd2-b08-khi-lung-lang",
       "lines": [
         {
-          "speaker": "Sâu Xanh",
-          "text": "Hu hu {name} ơi… Tớ mất cả mùa hè khắc bảng cộng lên từng quả bầu, đêm qua gió thổi rụng hết rồi."
+          "speaker": "Khỉ Lủng Lẳng",
+          "text": "Hu hu {name} ơi… Tớ mất cả mùa hè khắc bảng cộng lên từng quả bầu giống, đêm qua gió thổi rụng hết rồi."
         },
         {
           "speaker": "Bác Lành",
-          "text": "Ơi, bầu rụng hả? Bác ở bếp nghe thấy rồi, cho bác xin mấy quả nấu canh trưa nhé!"
+          "text": "Ơi, bầu rụng hả? Bác ở quán canh nghe thấy rồi, cho bác xin mấy quả nấu canh bán buổi trưa nhé!"
         },
         {
-          "speaker": "Sâu Xanh",
-          "text": "Không được! Trên đó có bảng cộng đấy. Tớ bò chậm lắm, {name} nhặt giúp tớ trước khi bác Lành mang đi hết nhé."
+          "speaker": "Khỉ Lủng Lẳng",
+          "text": "Không được! Trên đó có bảng cộng đấy. Hai tay tớ còn đang ôm mấy quả trên giàn, {name} nhặt giúp tớ trước khi bác Lành mang đi hết nhé."
         }
       ],
       "choices": [
         {
           "text": "Tớ nhặt ngay đây!",
-          "reply": "Sâu Xanh rưng rưng: Cảm ơn cậu, tớ mà bò thì tới tối mới nhặt xong một quả."
+          "reply": "Khỉ Lủng Lẳng rưng rưng: Cảm ơn cậu, tớ mà buông tay là mấy quả trên giàn rụng nốt mất."
         },
         {
           "text": "Bác Lành chờ chút nha!",
-          "reply": "Bác Lành cười khà khà từ bếp: Được thôi, nhưng nồi nước sắp sôi rồi đấy."
+          "reply": "Bác Lành cười khà khà từ quán: Được thôi, nhưng nồi nước sắp sôi rồi đấy."
         }
       ]
     },
@@ -81,11 +81,11 @@
     {
       "id": "qua-bau-dau-tien",
       "title": "Quả bầu tròn đầu tiên",
-      "goTo": "Quả bầu tròn lăn tới chòi lá, Mèo Mướp Ú đang giữ hộ",
+      "goTo": "Quả bầu tròn lăn tới chõng tre bán rau, Mèo Mướp Ú đang giữ hộ",
       "target": "toan2-cd2-b08-meo-muop-u",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Trên quả bầu tròn còn dòng chữ Sâu Xanh khắc: \"Mình và Rô-bốt cùng hoàn thành các phép cộng này nhé!\"",
+      "prompt": "Trên quả bầu tròn còn dòng chữ Khỉ Lủng Lẳng khắc: \"Mình và Rô-bốt cùng hoàn thành các phép cộng này nhé!\"",
       "template": "9 + 2 = 11\n8 + 6 = {{b1}}\n7 + 5 = {{b2}}\n6 + 6 = {{b3}}",
       "blanks": [
         {
@@ -161,7 +161,7 @@
         "right": [
           "Quả bầu tròn sáng bóng, Mèo Mướp Ú ôm chặt không rời!",
           "Ba phép cộng qua 10 đầu tiên đã về chỗ cũ.",
-          "Mèo Mướp Ú meo khen: cậu tính còn nhanh hơn Sâu Xanh khắc."
+          "Mèo Mướp Ú meo khen: cậu tính còn nhanh hơn Khỉ Lủng Lẳng khắc."
         ],
         "wrong": [
           "Mượn của số sau cho số trước đủ 10 rồi cộng tiếp nha.",
@@ -180,8 +180,8 @@
     {
       "id": "bang-cong-tren-bau",
       "title": "Bảng cộng khắc trên bầu hồ lô",
-      "goTo": "Mang quả bầu hồ lô về giàn bầu, Sâu Xanh đang thả tơ chờ",
-      "target": "sau-xanh",
+      "goTo": "Mang quả bầu hồ lô về giàn bầu bán giống, Khỉ Lủng Lẳng đang thòng tay chờ",
+      "target": "toan2-cd2-b08-khi-lung-lang",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "prompt": "Quả bầu hồ lô to nhất khắc cả bảng cộng, chỉ bị trầy mất bốn ô. À, đó là các phép cộng qua 10. Chúng ta hoàn thành luôn bảng cộng (qua 10) nào!",
@@ -278,11 +278,11 @@
         "right": [
           "Bảng cộng trên bầu hồ lô lại đầy đủ, không sót ô nào!",
           "Bốn ô trầy đều bằng 12, {name} nhìn ra quy luật rồi.",
-          "Sâu Xanh định khắc tên {name} lên bầu để cảm ơn."
+          "Khỉ Lủng Lẳng định khắc tên {name} lên bầu giống để cảm ơn."
         ],
         "wrong": [
           "Nhìn ô bên cạnh: tổng chỉ hơn hoặc kém nhau 1 thôi.",
-          "Ô 5 + 7 chỉ là 7 + 5 đứng đổi chỗ thôi, Sâu Xanh nhắc vậy.",
+          "Ô 5 + 7 chỉ là 7 + 5 đứng đổi chỗ thôi, Khỉ Lủng Lẳng nhắc vậy.",
           "Ô 3 + 9 ở hàng gần cuối, đếm tiếp từ 9 xem."
         ]
       },
@@ -298,10 +298,10 @@
     {
       "id": "nham-nhanh-tren-day",
       "title": "Nhẩm nhanh trên dây bầu",
-      "target": "sau-xanh",
+      "target": "toan2-cd2-b08-khi-lung-lang",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Sâu Xanh bò dọc sợi dây bầu, mỗi đoạn dây có một phép cộng. Tính nhẩm.",
+      "prompt": "Khỉ Lủng Lẳng chuyền tay dọc sợi dây bầu, mỗi đoạn dây có một phép cộng. Tính nhẩm.",
       "template": "9 + 5 = {{b1}}\n8 + 3 = {{b2}}\n7 + 7 = {{b3}}\n6 + 6 = {{b4}}\n7 + 6 = {{b5}}\n9 + 4 = {{b6}}",
       "blanks": [
         {
@@ -429,7 +429,7 @@
       },
       "feedback": {
         "right": [
-          "Sâu Xanh bò tới cuối dây mà {name} đã nhẩm xong hết!",
+          "Khỉ Lủng Lẳng chuyền tới cuối dây mà {name} đã nhẩm xong hết!",
           "Sáu phép nhẩm, sáu kết quả chuẩn như in.",
           "Nhẩm nhanh thế này thì bảng cộng thuộc làu rồi."
         ],
@@ -452,12 +452,12 @@
     },
     {
       "id": "meo-con-duoi-gian",
-      "title": "Mèo con dưới giàn bầu",
-      "goTo": "Về chòi lá, hai chú mèo con của Mèo Mướp Ú đang đòi cá",
+      "title": "Mèo con dưới chõng tre",
+      "goTo": "Về chõng tre bán rau, hai chú mèo con của Mèo Mướp Ú đang đòi cá",
       "target": "toan2-cd2-b08-meo-muop-u",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Hai chú mèo con nằm dưới giàn bầu kêu meo meo đòi cá. Tìm cá cho mèo.",
+      "prompt": "Hai chú mèo con nằm dưới chõng tre kêu meo meo đòi cá. Tìm cá cho mèo.",
       "template": "Mèo 9 + 3 → cá {{b1}}\nMèo 8 + 9 → cá {{b2}}",
       "blanks": [
         {
@@ -513,7 +513,7 @@
       },
       "feedback": {
         "right": [
-          "Hai mèo con chén cá rồi lăn ra ngủ khò dưới giàn bầu.",
+          "Hai mèo con chén cá rồi lăn ra ngủ khò dưới chõng tre.",
           "Cá nào về đúng mèo nấy, không ai giành ai.",
           "Meo! Mèo con dụi đầu cảm ơn {name}."
         ],
@@ -533,11 +533,11 @@
     {
       "id": "den-long-giong-nhau",
       "title": "Đèn lồng giống nhau",
-      "goTo": "Sang giàn đèn lồng, Thỏ Kem đang kiễng chân treo đèn",
+      "goTo": "Sang sạp đèn lồng, Thỏ Kem đang kiễng chân treo đèn",
       "target": "toan2-cd2-b08-tho-kem",
       "kind": "challenge",
       "mechanic": "multi-select",
-      "prompt": "Thỏ Kem treo sáu đèn lồng lên giàn bầu, từ trái sang: đỏ 7 + 5, vàng 9 + 5, đỏ 4 + 8, đỏ 6 + 5, hồng 9 + 3, đỏ 8 + 7. a) Những đèn lồng nào ghi phép tính có kết quả bằng nhau?",
+      "prompt": "Thỏ Kem treo sáu đèn lồng lên sạp, từ trái sang: đỏ 7 + 5, vàng 9 + 5, đỏ 4 + 8, đỏ 6 + 5, hồng 9 + 3, đỏ 8 + 7. a) Những đèn lồng nào ghi phép tính có kết quả bằng nhau?",
       "choices": [
         {
           "id": "7-5",
@@ -605,7 +605,7 @@
       "target": "toan2-cd2-b08-tho-kem",
       "kind": "challenge",
       "mechanic": "classify",
-      "prompt": "Thỏ Kem tháo bốn đèn đỏ xuống bàn để so. b) Trong bốn đèn lồng màu đỏ, đèn lồng nào ghi phép tính có kết quả lớn nhất, đèn lồng nào ghi phép tính có kết quả bé nhất?",
+      "prompt": "Thỏ Kem tháo bốn đèn đỏ xuống mặt sạp để so. b) Trong bốn đèn lồng màu đỏ, đèn lồng nào ghi phép tính có kết quả lớn nhất, đèn lồng nào ghi phép tính có kết quả bé nhất?",
       "groups": [
         {
           "id": "nhom-ket-qua-lon-nhat",
@@ -677,7 +677,7 @@
     {
       "id": "heo-un-doi-nau-canh",
       "title": "Bác Lành đòi nấu canh",
-      "goTo": "Theo mùi khói sang bếp nhỏ cuối vườn, bác cấp dưỡng Lành đã nhóm lửa",
+      "goTo": "Theo mùi khói sang quán canh cuối dãy, bác Lành đã nhóm lửa",
       "kind": "dialogue",
       "target": "toan2-cd2-b08-bac-lanh",
       "lines": [
@@ -686,7 +686,7 @@
           "text": "Lửa cháy tí tách rồi! Quả bầu nào không có chữ thì cho bác nấu canh nhé, nhé, nhé?"
         },
         {
-          "speaker": "Sâu Xanh",
+          "speaker": "Khỉ Lủng Lẳng",
           "text": "Quả nào cũng có bài tập đấy bác Lành ơi! Phải giải hết thì cháu mới chép lại được."
         },
         {
@@ -711,7 +711,7 @@
       "target": "toan2-cd2-b08-bac-lanh",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Nắp nồi và cái thớt của bác Lành cũng bị Sâu Xanh khắc số lên từ bao giờ. Số ?",
+      "prompt": "Nắp nồi và cái thớt của bác Lành cũng bị Khỉ Lủng Lẳng khắc số lên từ bao giờ. Số ?",
       "template": "Số hạng | 7 | 9 | 4 | 8 | 9\nSố hạng | 5 | 3 | 8 | 4 | 8\nTổng | 12 | {{b1}} | {{b2}} | {{b3}} | {{b4}}\na) Ô vuông 8 → + 6 → hình tròn {{b5}} → – 4 → ngôi sao {{b6}}\nb) Hình tròn 5 → + 9 → ô vuông {{b7}} → + 4 → tam giác {{b8}} → – 8 → ngôi sao {{b9}}",
       "blanks": [
         {
@@ -916,12 +916,12 @@
     },
     {
       "id": "gau-tim-to-ong",
-      "title": "Gấu Trúc tìm tổ ong",
-      "goTo": "Ra chum nước sau bếp, Gấu Tiêu cùng em gấu nhỏ đang tìm tổ ong",
+      "title": "Gấu Tiêu tìm tổ ong",
+      "goTo": "Ra chum nước sau quán, Gấu Tiêu cùng em gấu nhỏ đang tìm tổ ong",
       "target": "toan2-cd2-b08-gau-tieu",
       "kind": "challenge",
       "mechanic": "classify",
-      "prompt": "Gấu Trúc Tròn ghé bếp xin mật ong pha nước bầu, mang theo hai bạn gấu nhỏ. Tìm tổ ong cho gấu.",
+      "prompt": "Gấu Tiêu dắt em gấu nhỏ ghé quán xin mật ong pha nước bầu. Tìm tổ ong cho gấu.",
       "groups": [
         {
           "id": "nhom-to-ong-14",
@@ -965,7 +965,7 @@
       "feedback": {
         "right": [
           "Hai bạn gấu ôm tổ ong cười tít mắt, ngọt lịm!",
-          "Gấu Trúc Tròn chậm rãi gật đầu: đúng tổ cả rồi.",
+          "Gấu Tiêu chậm rãi gật đầu: đúng tổ cả rồi, em ơi.",
           "Không con ong nào bị đánh thức nhầm, khéo ghê."
         ],
         "wrong": [
@@ -984,7 +984,7 @@
     {
       "id": "can-dau-ben-noi",
       "title": "Cân đấu bên nồi canh",
-      "goTo": "Quay vào bếp nhỏ cuối vườn, bác Lành bày bốn cặp phép tính lên bàn",
+      "goTo": "Quay vào quán canh cuối dãy, bác Lành bày bốn cặp phép tính lên bàn",
       "target": "toan2-cd2-b08-bac-lanh",
       "kind": "challenge",
       "mechanic": "fill-blank",
@@ -1101,11 +1101,11 @@
     },
     {
       "id": "cap-treo-cua-sau",
-      "title": "Cáp treo trong mơ",
-      "goTo": "Quay lại giàn bầu, Sâu Xanh có chuyện muốn kể",
-      "target": "sau-xanh",
+      "title": "Chuyện cáp treo của Khỉ",
+      "goTo": "Quay lại giàn bầu bán giống, Khỉ Lủng Lẳng có chuyện muốn kể",
+      "target": "toan2-cd2-b08-khi-lung-lang",
       "kind": "riddle",
-      "question": "Sâu Xanh kể: \"Khi nào thành bướm, tớ sẽ bay ngang khu cáp treo có các ca-bin vàng.\" Trong ca-bin thứ nhất có 7 người, trong ca-bin thứ hai có 8 người. Hỏi trong hai ca-bin có tất cả bao nhiêu người?",
+      "question": "Khỉ Lủng Lẳng kể: \"Có lần tớ được ngồi cáp treo có các ca-bin vàng, nhìn xuống thấy cả con kênh.\" Trong ca-bin thứ nhất có 7 người, trong ca-bin thứ hai có 8 người. Hỏi trong hai ca-bin có tất cả bao nhiêu người?",
       "skill": "bai-toan-loi-van",
       "curriculumRef": [
         "toan2-t1-b08-luyen-tap-5"
@@ -1123,8 +1123,8 @@
       },
       "feedback": {
         "right": [
-          "Mười lăm người vẫy tay từ cáp treo, Sâu Xanh mơ màng mỉm cười!",
-          "Giải toán xong, Sâu Xanh nói sẽ bay theo cáp treo đếm lại.",
+          "Mười lăm người vẫy tay từ cáp treo, Khỉ Lủng Lẳng đu giàn cười khoái chí!",
+          "Giải toán xong, Khỉ Lủng Lẳng hẹn lần sau đi cáp treo sẽ đếm lại cho chắc.",
           "Hai ca-bin gộp lại chuẩn xác, {name} giỏi quá."
         ],
         "wrong": [
@@ -1142,14 +1142,14 @@
       "title": "Huy hiệu bảng cộng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Sâu Xanh tặng {name} một quả bầu tí hon khắc chữ \"Bạn thuộc bảng cộng\". Bác Lành cũng múc mời một bát canh bầu nấu từ quả bầu trơn, thơm phưng phức."
+      "text": "Khỉ Lủng Lẳng tặng {name} một quả bầu giống tí hon khắc chữ \"Bạn thuộc bảng cộng\". Bác Lành cũng múc mời một bát canh bầu nấu từ quả bầu trơn, thơm phưng phức."
     },
     {
       "id": "be-con-chay-tung-tang",
       "title": "Bê con chạy tung tăng",
       "kind": "next",
       "trigger": "auto",
-      "text": "Từ chuồng rơm vọng ra tiếng \"ụm bò\" hớt hải: đàn bê con của Bò Sữa Mơ cứ chạy ra chạy vào, cô đếm mãi không biết còn bao nhiêu con trong chuồng!"
+      "text": "Từ góc chợ vọng ra tiếng \"ụm bò\" hớt hải: đàn bê con theo Bò Mẹ Gạo đi chợ cứ chạy ra chạy vào đống rơm, cô đếm mãi không biết còn bao nhiêu con!"
     }
   ],
   "reward": {

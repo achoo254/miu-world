@@ -82,16 +82,16 @@ describe('Home', () => {
   it("shows a locked region's name in a bubble on tap, stays on Home, and hides the bubble again", async () => {
     stubServer();
     renderAt('/home');
-    const pin = await screen.findByRole('button', { name: 'Thư viện: Sắp có' });
+    const pin = await screen.findByRole('button', { name: 'Núi tuyết: Sắp mở' });
     vi.useFakeTimers();
     try {
       const bubbles = () => [...document.querySelectorAll('[data-id^="home-region-bubble-"]')].map((b) => b.textContent);
       fireEvent.click(pin);
-      expect(bubbles()).toEqual(['Thư việnSắp có']);
+      expect(bubbles()).toEqual(['Núi tuyếtSắp mở']);
       expect(document.querySelector('[data-id="home"]')).toBeTruthy(); // no navigation to a locked region
       // Another pin replaces the bubble; the bubble leaves on its own after a moment.
-      fireEvent.click(screen.getByRole('button', { name: 'Lâu đài: Sắp có' }));
-      expect(bubbles()).toEqual(['Lâu đàiSắp có']);
+      fireEvent.click(screen.getByRole('button', { name: 'Đảo bí ẩn: Sắp mở' }));
+      expect(bubbles()).toEqual(['Đảo bí ẩnSắp mở']);
       act(() => vi.advanceTimersByTime(3000));
       expect(bubbles()).toEqual([]);
     } finally {
@@ -128,7 +128,7 @@ describe('Map and region', () => {
     stubServer();
     renderAt('/map');
     expect(await screen.findByRole('heading', { name: /Bản đồ thế giới/ })).toBeTruthy();
-    fireEvent.click(screen.getByRole('button', { name: 'Thư viện: Sắp có' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Núi tuyết: Sắp mở' }));
     expect(screen.getByRole('heading', { name: /Bản đồ thế giới/ })).toBeTruthy();
     fireEvent.click(document.querySelector('[data-id="map-region-khu-rung-bi-mat"]') as HTMLElement);
     expect(await screen.findByRole('heading', { name: 'Chương 1' })).toBeTruthy();
@@ -170,7 +170,7 @@ describe('Map and region', () => {
 
   it('refuses a region that is not open', async () => {
     stubServer();
-    renderAt('/region/lau-dai');
+    renderAt('/region/nui-tuyet');
     expect(await screen.findByText('Khu vực này chưa mở.')).toBeTruthy();
   });
 });

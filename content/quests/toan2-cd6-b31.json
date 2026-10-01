@@ -1,15 +1,15 @@
 {
   "id": "toan2-cd6-b31",
-  "region": "truong-hoc",
-  "chapter": 6,
-  "title": "Lịch trực chuông của Chó Mực",
+  "region": "thu-vien",
+  "chapter": 3,
+  "title": "Lịch trực chuông của Chó Đốm Boong",
   "status": "active",
   "lesson": "toan2-t1-b31",
-  "summary": "Cả tuần tới chưa ai trực chuông trên tháp; {name} cùng Chó Mực quay kim đồng hồ, đọc giờ, xem ai đến lớp muộn và xem lịch tháng 5, tháng 6 để lên lịch trực đánh chuông cho cả trường.",
+  "summary": "Cả tuần tới chưa ai trực chuông trên tháp đồng hồ của thư viện; {name} cùng Chó Đốm Boong quay kim đồng hồ, đọc giờ, xem ai đến muộn và xem lịch tháng 5, tháng 6 để lên lịch trực đánh chuông giờ mở cửa, giờ kể chuyện cho cả thư viện.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Chó Mực, Gấu Trắng Ú, Mèo Trắng Sữa, Cáo Leng Keng, Thỏ Tách Tách",
-    "where": "Tháp đồng hồ: đỉnh tháp có chuông, gác chuông, lan can đỉnh tháp, dưới quả chuông lớn, chân tháp, góc treo album ảnh",
+    "who": "Chó Đốm Boong (chú chó đốm giữ gác chuông, mê tiếng boong boong), Gấu Trắng Ú, Mèo Trắng Sữa, Cáo Leng Keng, Thỏ Tách Tách",
+    "where": "Tháp đồng hồ cạnh Thư viện: đỉnh tháp có chuông, gác chuông, lan can đỉnh tháp, dưới quả chuông lớn, chân tháp, góc treo album ảnh",
     "goal": "Lên lịch trực đánh chuông cho cả tuần mà không ai trễ giờ",
     "play": "Tìm đồng hồ mô hình và tờ lịch, quay kim, đọc giờ, kể giờ giấc của em, chạm ngày và thứ trên lịch, điền ngày",
     "learn": "Toán 2 Bài 31: thực hành xem đồng hồ, xem lịch",
@@ -28,7 +28,7 @@
   },
   "texts": {},
   "places": {
-    "cho-muc": "đỉnh tháp có chuông",
+    "toan2-cd6-b31-cho-dom-boong": "đỉnh tháp có chuông",
     "tim-do-truc-chuong": "gác chuông trên tháp",
     "toan2-cd6-b31-gau-trang-u": "chân tháp đồng hồ",
     "toan2-cd6-b31-meo-trang-sua": "lan can đỉnh tháp",
@@ -39,31 +39,31 @@
     {
       "id": "chuong-chua-ai-truc",
       "title": "Chuông tháp chưa ai trực",
-      "goTo": "Leo lên đỉnh tháp có chuông, Chó Mực đang ôm dùi chuông",
+      "goTo": "Leo lên đỉnh tháp có chuông, Chó Đốm Boong đang ôm dùi chuông",
       "kind": "dialogue",
-      "target": "cho-muc",
+      "target": "toan2-cd6-b31-cho-dom-boong",
       "lines": [
         {
-          "speaker": "Chó Mực",
-          "text": "Gâu! {name} đến đúng lúc quá! Tuần tới chưa có ai trực chuông, mà tớ thì… không biết xem đồng hồ cho chuẩn."
+          "speaker": "Chó Đốm Boong",
+          "text": "Gâu gâu! {name} lên đúng lúc quá! Tuần tới tháp chưa có ai trực chuông, mà tớ thì… xem đồng hồ chưa chuẩn lắm."
         },
         {
-          "speaker": "Chó Mực",
-          "text": "Hôm qua tớ đánh chuông tan học lúc mọi người mới vào lớp. Cả trường tưởng được về sớm, chạy ùa ra như ong vỡ tổ!"
+          "speaker": "Chó Đốm Boong",
+          "text": "Hôm qua tớ đánh chuông đóng cửa lúc các bạn mới mở sách. Cả phòng đọc tưởng hết giờ, gấp sách chạy ùa ra như ong vỡ tổ!"
         },
         {
-          "speaker": "Chó Mực",
+          "speaker": "Chó Đốm Boong",
           "text": "Kim ngắn chỉ giờ, kim dài chỉ phút. Kim dài chỉ số 3 là 15 phút, chỉ số 6 là 30 phút. Tớ thuộc lòng rồi mà tay cứ quay nhầm."
         }
       ],
       "choices": [
         {
           "text": "Mình cùng tập xem giờ nhé!",
-          "reply": "Chó Mực vẫy đuôi tít: Trước hết tìm giúp tớ đồng hồ mô hình với lịch đã!"
+          "reply": "Chó Đốm Boong vẫy cái đuôi đốm tít mù: Trước hết tìm giúp tớ đồng hồ mô hình với lịch đã!"
         },
         {
           "text": "Ong vỡ tổ thật à? Buồn cười ghê",
-          "reply": "Chó Mực gãi tai: Cô hiệu phó thì không cười đâu. Đi tìm đồ trực chuông với tớ nào!"
+          "reply": "Chó Đốm Boong gãi tai: Bác thủ thư Gấu Trúc Tròn thì không cười đâu. Đi tìm đồ trực chuông với tớ nào!"
         }
       ]
     },
@@ -81,11 +81,11 @@
     {
       "id": "quay-kim-hai-gio",
       "title": "Quay kim chỉ 2 giờ",
-      "goTo": "Mang đồ về đỉnh tháp có chuông, Chó Mực đã chờ sẵn",
-      "target": "cho-muc",
+      "goTo": "Mang đồ về đỉnh tháp có chuông, Chó Đốm Boong đã chờ sẵn",
+      "target": "toan2-cd6-b31-cho-dom-boong",
       "kind": "challenge",
       "mechanic": "clock",
-      "prompt": "Chó Mực đưa chiếc đồng hồ mô hình: tập trước giờ chuông chiều nhé. Quay kim đồng hồ để đồng hồ chỉ: a) 2 giờ.",
+      "prompt": "Chó Đốm Boong đưa chiếc đồng hồ mô hình: tập trước giờ chuông đọc truyện buổi chiều nhé. Quay kim đồng hồ để đồng hồ chỉ: a) 2 giờ.",
       "mode": "set",
       "display": "analog",
       "skill": "xem-dong-ho",
@@ -105,7 +105,7 @@
       },
       "feedback": {
         "right": [
-          "Hai giờ đúng! Chó Mực thử gõ một tiếng boong nho nhỏ.",
+          "Hai giờ đúng! Chó Đốm Boong thử gõ một tiếng boong nho nhỏ.",
           "Kim dài thẳng lên số 12, chuẩn giờ tròn rồi.",
           "Lần đầu quay kim mà gọn gàng ghê."
         ],
@@ -123,10 +123,10 @@
     {
       "id": "quay-kim-chin-gio-ruoi",
       "title": "Quay kim chỉ 9 giờ 30 phút",
-      "target": "cho-muc",
+      "target": "toan2-cd6-b31-cho-dom-boong",
       "kind": "challenge",
       "mechanic": "clock",
-      "prompt": "Giờ ra chơi buổi sáng cần một hồi chuông thật vang. Quay kim đồng hồ để đồng hồ chỉ: b) 9 giờ 30 phút.",
+      "prompt": "Giờ kể chuyện buổi sáng ở phòng đọc cần một hồi chuông thật vang. Quay kim đồng hồ để đồng hồ chỉ: b) 9 giờ 30 phút.",
       "mode": "set",
       "display": "analog",
       "skill": "xem-dong-ho",
@@ -146,9 +146,9 @@
       },
       "feedback": {
         "right": [
-          "Chín rưỡi, ra chơi thôi! Chó Mực gõ boong boong.",
+          "Chín rưỡi, giờ kể chuyện tới rồi! Chó Đốm Boong gõ boong boong.",
           "Kim dài xuống đúng số 6, đẹp như vẽ.",
-          "Cả trường sẽ ra chơi đúng giờ nhờ cậu đấy."
+          "Cả phòng đọc sẽ nghe kể chuyện đúng giờ nhờ cậu đấy."
         ],
         "wrong": [
           "30 phút thì kim dài nằm ở số 6 cơ.",
@@ -168,7 +168,7 @@
       "target": "toan2-cd6-b31-meo-trang-sua",
       "kind": "challenge",
       "mechanic": "clock",
-      "prompt": "Chuông vào học buổi sáng thì sớm hơn nữa. Quay kim đồng hồ để đồng hồ chỉ: c) 7 giờ 15 phút.",
+      "prompt": "Chuông mở cửa thư viện buổi sáng thì sớm hơn nữa. Quay kim đồng hồ để đồng hồ chỉ: c) 7 giờ 15 phút.",
       "mode": "set",
       "display": "analog",
       "skill": "xem-dong-ho",
@@ -188,7 +188,7 @@
       },
       "feedback": {
         "right": [
-          "Bảy giờ mười lăm, chuông vào học sẵn sàng!",
+          "Bảy giờ mười lăm, chuông mở cửa thư viện sẵn sàng!",
           "Một phần tư vòng chuẩn xác, Mèo Trắng Sữa tròn xoe mắt.",
           "Cậu quay kim còn khéo hơn bác thợ đồng hồ."
         ],
@@ -206,11 +206,11 @@
     {
       "id": "doc-dong-ho-a",
       "title": "Đồng hồ A chỉ mấy giờ",
-      "goTo": "Quay vào đỉnh tháp có chuông, Chó Mực giơ chiếc đồng hồ thứ nhất",
-      "target": "cho-muc",
+      "goTo": "Quay vào đỉnh tháp có chuông, Chó Đốm Boong giơ chiếc đồng hồ thứ nhất",
+      "target": "toan2-cd6-b31-cho-dom-boong",
       "kind": "challenge",
       "mechanic": "clock",
-      "prompt": "Chó Mực giơ chiếc đồng hồ thứ nhất lên. Đồng hồ chỉ mấy giờ? A",
+      "prompt": "Chó Đốm Boong giơ chiếc đồng hồ thứ nhất lên. Đồng hồ chỉ mấy giờ? A",
       "mode": "read",
       "display": "analog",
       "time": {
@@ -234,7 +234,7 @@
       },
       "feedback": {
         "right": [
-          "Hai giờ mười lăm phút, Chó Mực vẫy đuôi tít mù!",
+          "Hai giờ mười lăm phút, Chó Đốm Boong vẫy đuôi tít mù!",
           "Đồng hồ A đọc chuẩn rồi, sang chiếc tiếp nào.",
           "Kim dài ở số 3 là 15 phút, cậu nhớ quá giỏi."
         ],
@@ -252,10 +252,10 @@
     {
       "id": "doc-dong-ho-b",
       "title": "Đồng hồ B chỉ mấy giờ",
-      "target": "cho-muc",
+      "target": "toan2-cd6-b31-cho-dom-boong",
       "kind": "challenge",
       "mechanic": "clock",
-      "prompt": "Chiếc đồng hồ thứ hai dính đầy lông chó, Chó Mực phủi phủi rồi đưa ra. Đồng hồ chỉ mấy giờ? B",
+      "prompt": "Chiếc đồng hồ thứ hai dính đầy lông chó, Chó Đốm Boong phủi phủi rồi đưa ra. Đồng hồ chỉ mấy giờ? B",
       "mode": "read",
       "display": "analog",
       "time": {
@@ -279,7 +279,7 @@
       },
       "feedback": {
         "right": [
-          "Sáu giờ mười lăm, giờ Chó Mực đi tuần sáng sớm!",
+          "Sáu giờ mười lăm, giờ Chó Đốm Boong đi tuần quanh vườn đọc sách!",
           "Lông chó che không nổi mắt tinh của cậu.",
           "Đồng hồ B xong, cậu đọc giờ thật đều tay."
         ],
@@ -371,7 +371,7 @@
       },
       "feedback": {
         "right": [
-          "Mười hai giờ mười lăm, Chó Mực đói bụng ùng ục!",
+          "Mười hai giờ mười lăm, Chó Đốm Boong đói bụng ùng ục!",
           "Cả bốn đồng hồ đều đọc đúng, cậu là thợ đồng hồ rồi.",
           "Đồng hồ D được nhặt lên và đọc chuẩn luôn."
         ],
@@ -395,15 +395,15 @@
       "lines": [
         {
           "speaker": "Gấu Trắng Ú",
-          "text": "Hộc hộc… tớ có muộn không? Tớ đặt báo thức rồi mà cái đồng hồ… cũng ngủ quên theo tớ."
+          "text": "Hộc hộc… tớ có muộn giờ đọc truyện không? Tớ đặt báo thức rồi mà cái đồng hồ… cũng ngủ quên theo tớ."
         },
         {
-          "speaker": "Chó Mực",
-          "text": "Lớp học bắt đầu lúc 2 giờ chiều. Ú xem ảnh này: có bạn cũng đến muộn giống Ú đấy."
+          "speaker": "Chó Đốm Boong",
+          "text": "Giờ đọc truyện của tháp bắt đầu lúc 2 giờ chiều, y như lớp học trong ảnh này. Ú xem: có bạn cũng đến muộn giống Ú đấy."
         },
         {
           "speaker": "Gấu Trắng Ú",
-          "text": "{name} soi giúp tớ với, hay mình để Chó Mực đánh chuông thật to cho ai cũng tỉnh?"
+          "text": "{name} soi giúp tớ với, hay mình để Chó Đốm Boong đánh chuông thật to cho ai cũng tỉnh?"
         }
       ],
       "choices": [
@@ -412,8 +412,8 @@
           "reply": "Gấu Trắng Ú gật gù: Ừ, soi kĩ thì mới biết ai muộn."
         },
         {
-          "text": "Đánh chuông to cho cả trường tỉnh!",
-          "reply": "Chó Mực cười khì: Đánh chuông thì phải đúng giờ đã, xem ảnh trước nhé!"
+          "text": "Đánh chuông to cho cả thư viện tỉnh!",
+          "reply": "Chó Đốm Boong cười khì: Đánh chuông thì phải đúng giờ đã, xem ảnh trước nhé!"
         }
       ]
     },
@@ -752,10 +752,10 @@
     {
       "id": "hom-nay-hom-qua-ngay-mai",
       "title": "Hôm nay, hôm qua, ngày mai",
-      "goTo": "Quay lên đỉnh tháp có chuông, Chó Mực trải hai tờ lịch ra sàn",
+      "goTo": "Quay lên đỉnh tháp có chuông, Chó Đốm Boong trải hai tờ lịch ra sàn",
       "kind": "speak",
-      "target": "cho-muc",
-      "prompt": "Chó Mực bảo: lên lịch trực thì phải biết hôm nay là ngày nào đã. Em xem tờ lịch tháng này rồi trả lời câu hỏi.",
+      "target": "toan2-cd6-b31-cho-dom-boong",
+      "prompt": "Chó Đốm Boong bảo: lên lịch trực thì phải biết hôm nay là ngày nào đã. Em xem tờ lịch tháng này rồi trả lời câu hỏi.",
       "hints": [
         "a) Hôm nay là thứ mấy, ngày mấy, tháng mấy?",
         "b) Hôm qua là thứ mấy, ngày mấy, tháng mấy?",
@@ -770,13 +770,13 @@
     {
       "id": "thang-nam-may-ngay",
       "title": "Tháng 5 có mấy ngày trực",
-      "target": "cho-muc",
+      "target": "toan2-cd6-b31-cho-dom-boong",
       "kind": "challenge",
       "mechanic": "calendar",
       "prompt": "Xem tờ lịch tháng 5 dưới đây rồi trả lời câu hỏi.",
       "month": 5,
       "year": 2022,
-      "question": "Tháng 5 có bao nhiêu ngày? Chó Mực cần biết để chia phiên trực, chạm vào ngày cuối của tháng.",
+      "question": "Tháng 5 có bao nhiêu ngày? Chó Đốm Boong cần biết để chia phiên trực, chạm vào ngày cuối của tháng.",
       "ask": "day",
       "skill": "xem-lich",
       "curriculumRef": [
@@ -795,9 +795,9 @@
       },
       "feedback": {
         "right": [
-          "Ba mươi mốt ngày trực chuông, Chó Mực xắn tay áo lên!",
+          "Ba mươi mốt ngày trực chuông, Chó Đốm Boong xắn tay áo lên!",
           "Ô 31 đây rồi, cậu tìm nhanh như chó săn.",
-          "Tháng 5 dài, đủ phiên trực cho cả lớp."
+          "Tháng 5 dài, đủ phiên trực cho cả nhóm giữ tháp."
         ],
         "wrong": [
           "Ô cậu chọn còn ngày khác đứng sau đó.",
@@ -819,7 +819,7 @@
       "prompt": "Xem tờ lịch tháng 5 dưới đây rồi trả lời câu hỏi.",
       "month": 5,
       "year": 2022,
-      "question": "Tháng 5 có bao nhiêu ngày thứ Ba, đó là những ngày nào? Chó Mực trực vào các ngày thứ Ba: trước hết chạm vào ngày thứ Ba đầu tiên.",
+      "question": "Tháng 5 có bao nhiêu ngày thứ Ba, đó là những ngày nào? Chó Đốm Boong trực vào các ngày thứ Ba: trước hết chạm vào ngày thứ Ba đầu tiên.",
       "ask": "day",
       "skill": "xem-lich",
       "curriculumRef": [
@@ -838,7 +838,7 @@
       },
       "feedback": {
         "right": [
-          "Ngày 3! Phiên trực đầu tiên của Chó Mực đã có chỗ.",
+          "Ngày 3! Phiên trực đầu tiên của Chó Đốm Boong đã có chỗ.",
           "Cột thứ Ba dò chuẩn ghê, giỏi lắm.",
           "Mèo Trắng Sữa đánh dấu ngày 3 bằng dấu chân xinh xinh."
         ],
@@ -1005,14 +1005,14 @@
     {
       "id": "sinh-nhat-bac-ho",
       "title": "Ngày sinh nhật Bác Hồ",
-      "goTo": "Vào đỉnh tháp có chuông, Chó Mực đang lau quả chuông thật sáng",
-      "target": "cho-muc",
+      "goTo": "Vào đỉnh tháp có chuông, Chó Đốm Boong đang lau quả chuông thật sáng",
+      "target": "toan2-cd6-b31-cho-dom-boong",
       "kind": "challenge",
       "mechanic": "calendar",
       "prompt": "Xem tờ lịch tháng 5 dưới đây rồi trả lời câu hỏi.",
       "month": 5,
       "year": 2022,
-      "question": "Ngày 19 tháng 5 là sinh nhật Bác Hồ. Ngày đó là thứ mấy? Hôm ấy cả trường đánh chuông chào cờ thật trang trọng.",
+      "question": "Ngày 19 tháng 5 là sinh nhật Bác Hồ. Ngày đó là thứ mấy? Hôm ấy chuông tháp sẽ ngân thật trang trọng.",
       "ask": "weekday",
       "skill": "xem-lich",
       "curriculumRef": [
@@ -1031,7 +1031,7 @@
       },
       "feedback": {
         "right": [
-          "Thứ Năm! Chó Mực sẽ đánh chuông trang trọng nhất năm.",
+          "Thứ Năm! Chó Đốm Boong sẽ đánh chuông trang trọng nhất năm.",
           "Cậu suy từ thứ Ba ra thứ Năm, hay quá.",
           "Ngày 19 tháng 5 đã được khoanh đỏ trên lịch."
         ],
@@ -1097,7 +1097,7 @@
       "prompt": "b) Xem tờ lịch bên rồi trả lời câu hỏi.",
       "month": 6,
       "year": 2022,
-      "question": "Ngày Quốc tế Thiếu nhi 1 tháng 6 là thứ mấy? Hôm đó Chó Mực được nghỉ trực để đi chơi.",
+      "question": "Ngày Quốc tế Thiếu nhi 1 tháng 6 là thứ mấy? Hôm đó Chó Đốm Boong được nghỉ trực để đi chơi.",
       "ask": "weekday",
       "skill": "xem-lich",
       "curriculumRef": [
@@ -1116,9 +1116,9 @@
       },
       "feedback": {
         "right": [
-          "Thứ Tư! Tết thiếu nhi giữa tuần, cả trường vui chơi.",
+          "Thứ Tư! Tết thiếu nhi giữa tuần, cả thư viện mở hội đọc truyện.",
           "Cậu nhớ ngay ô vừa vá, nhanh trí thật.",
-          "Chó Mực đã ghi: thứ Tư nghỉ trực, đi ăn kem!"
+          "Chó Đốm Boong đã ghi: thứ Tư nghỉ trực, đi ăn kem!"
         ],
         "wrong": [
           "Ô ngày 1 ở hàng đầu, giữa tuần đấy.",
@@ -1133,8 +1133,8 @@
     {
       "id": "thu-nam-tuan-truoc",
       "title": "Thứ Năm tuần trước",
-      "goTo": "Lên lại đỉnh tháp có chuông, Chó Mực mở sổ trực chờ sẵn",
-      "target": "cho-muc",
+      "goTo": "Lên lại đỉnh tháp có chuông, Chó Đốm Boong mở sổ trực chờ sẵn",
+      "target": "toan2-cd6-b31-cho-dom-boong",
       "kind": "challenge",
       "mechanic": "calendar",
       "prompt": "b) Xem tờ lịch bên rồi trả lời câu hỏi.",
@@ -1161,7 +1161,7 @@
         "right": [
           "Ngày 9! Lùi một tuần chuẩn như đồng hồ tháp.",
           "Cậu lên đúng một hàng trong cột thứ Năm.",
-          "Chó Mực ghi ngày 9 vào sổ trực ngay."
+          "Chó Đốm Boong ghi ngày 9 vào sổ trực ngay."
         ],
         "wrong": [
           "Tuần trước là lùi lại đúng 7 ngày.",
@@ -1176,10 +1176,10 @@
     {
       "id": "lich-truc-thang-sau",
       "title": "Hoàn thành lịch trực tháng 6",
-      "target": "cho-muc",
+      "target": "toan2-cd6-b31-cho-dom-boong",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Chó Mực cầm bút, chờ {name} đọc to để chép vào lịch trực.",
+      "prompt": "Chó Đốm Boong cầm bút, chờ {name} đọc to để chép vào lịch trực.",
       "template": "a) Nêu các ngày còn thiếu trong tờ lịch tháng 6 ở bên. Các ngày còn thiếu: {{b1}}, {{b2}}, {{b3}}, {{b4}}, {{b5}}, {{b6}}.\nb) Xem tờ lịch bên rồi trả lời câu hỏi. – Nếu hôm nay là thứ Năm ngày 16 tháng 6 thì thứ Năm tuần trước là ngày nào, thứ Năm tuần sau là ngày nào? Thứ Năm tuần trước là ngày {{b7}}, thứ Năm tuần sau là ngày {{b8}}.",
       "blanks": [
         {
@@ -1337,7 +1337,7 @@
       },
       "feedback": {
         "right": [
-          "Lịch trực tháng 6 kín chữ, Chó Mực gõ chuông ăn mừng boong boong!",
+          "Lịch trực tháng 6 kín chữ, Chó Đốm Boong gõ chuông ăn mừng boong boong!",
           "Vá ô, tính tuần, cậu làm trọn cả hai việc.",
           "Cả tháng 6 không ai lỡ phiên trực nữa rồi."
         ],
@@ -1365,7 +1365,7 @@
       "title": "Huy hiệu trực chuông",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Chó Mực treo bảng lịch trực lên cột chuông, rồi đeo cho {name} huy hiệu \"Người giữ giờ tháp chuông\". Gấu Trắng Ú hứa từ nay đặt hai cái báo thức."
+      "text": "Chó Đốm Boong treo bảng lịch trực lên cột chuông, rồi đeo cho {name} huy hiệu \"Người giữ giờ tháp chuông\". Gấu Trắng Ú hứa từ nay đặt hai cái báo thức."
     },
     {
       "id": "sau-xanh-dem-ngay",

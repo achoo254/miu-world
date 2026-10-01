@@ -58,7 +58,7 @@ describe('content:check', () => {
     expect(issues[0]).toBe('region nha-cua-be says "Miu" instead of {name}');
     // Every quest of the forest (chapter 1 and the Tiếng Việt lessons) now sits in a region that is not open.
     expect(issues).toContain('quest forest-ch1 is in region khu-rung-bi-mat, which is not an open region');
-    expect(issues).toContain('quest tv2-t01-b01 is in region khu-rung-bi-mat, which is not an open region');
+    expect(issues).toContain('quest tv2-t10-b17 is in region khu-rung-bi-mat, which is not an open region');
     expect(issues.filter((i) => i.includes('not an open region')).every((i) => i.includes('khu-rung-bi-mat'))).toBe(true);
     writeFileSync(file, JSON.stringify({ version: 1, regions: [{ ...forest, status: 'level' }] }));
     // No region is locked behind a level any more: the old "level" status is refused.

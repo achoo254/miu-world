@@ -1,20 +1,20 @@
 {
   "id": "tv2-t17-b31",
-  "region": "khu-rung-bi-mat",
-  "chapter": 18,
+  "region": "xom-mai-am",
+  "chapter": 4,
   "title": "Đèn vỏ trai cho mẹ Bống",
   "status": "active",
   "lesson": "tv2-t1-b31",
-  "summary": "Hoàng hôn, mẹ của Cá Bống đau bụng mà hang tối om, Bác sĩ Rùa chẳng nhìn thấy gì. {name} đọc chuyện cậu bé Ê-đi-xơn dùng gương cứu mẹ, rồi cùng đàn đom đóm và những chiếc vỏ trai sáng bóng thắp sáng cả hang.",
+  "summary": "Hoàng hôn trên hồ sen của xóm, mẹ của Cá Bống đau bụng mà hang tối om, Bác sĩ Rùa chẳng nhìn thấy gì. {name} đọc chuyện cậu bé Ê-đi-xơn dùng gương cứu mẹ, rồi cùng đàn đom đóm và những chiếc vỏ trai sáng bóng thắp sáng cả hang dưới hồ.",
   "review": "teacher-pending",
   "sevenQuestions": {
     "who": "Cá Bống hay ấc bong bóng khi lo, mẹ Bống, Bác sĩ Rùa chậm rãi, Đom Đóm Nhí cố phát sáng to nhất, Bác lái đò Ngọ chèo đò cuối hồ",
-    "where": "Hồ nước cuối rừng lúc hoàng hôn: mép hồ, bãi sỏi ven hồ, lá sen giữa hồ, bến đò cuối hồ và hang mẹ Bống",
+    "where": "Hồ sen lớn của xóm lúc hoàng hôn: mép hồ sen, bãi sỏi ven hồ, lá sen giữa hồ, bến đò cuối hồ và hang mẹ Bống",
     "goal": "Tìm đồ sáng bóng, hắt ánh đom đóm vào hang để Bác sĩ Rùa chữa cho mẹ Bống",
     "play": "Tìm đồ, nói, đọc truyện, trắc nghiệm, chọn nhiều đáp án, điền từ, xếp tranh, kể chuyện, lựa chọn trong hội thoại, phiếu viết",
     "learn": "Tiếng Việt 2 Bài 31: đọc hiểu \"Ánh sáng của yêu thương\", từ ngữ trong bài, tình cảm với mẹ, kể chuyện theo tranh, viết chữ hoa P",
     "reward": "80 XP, 15 xu, Đọc hiểu +2, Kể chuyện +2, Từ ngữ +1",
-    "next": "Bài 32 \"Chơi chong chóng\""
+    "next": "Bài 32 \"Chơi chong chóng\": cánh đồng gió có ruộng ngô và luống cà rốt"
   },
   "phases": {
     "hook": "gap-ca-bong",
@@ -49,7 +49,7 @@
     }
   },
   "places": {
-    "ca-bong": "mép hồ",
+    "ca-bong": "mép hồ sen",
     "tim-do-sang-bong": "bãi sỏi ven hồ",
     "tv2-t17-la-sen": "lá sen giữa hồ",
     "tv2-t17-hang-me-bong": "hang mẹ Bống",
@@ -59,7 +59,7 @@
     {
       "id": "gap-ca-bong",
       "title": "Cá Bống ấc bong bóng",
-      "goTo": "Ra mép hồ, Cá Bống đang ấc bong bóng vì lo",
+      "goTo": "Ra mép hồ sen, Cá Bống đang ấc bong bóng vì lo",
       "kind": "dialogue",
       "target": "ca-bong",
       "lines": [
@@ -73,7 +73,7 @@
         },
         {
           "speaker": "Đom Đóm Nhí",
-          "text": "Để em! Em sẽ phồng đuôi sáng nhất rừng! Hừm… hừm… sao chỉ lập loè được có tí thế này?"
+          "text": "Để em! Em sẽ phồng đuôi sáng nhất hồ sen! Hừm… hừm… sao chỉ lập loè được có tí thế này?"
         },
         {
           "speaker": "Cá Bống",
@@ -94,7 +94,7 @@
     {
       "id": "tim-do-sang-bong",
       "title": "Nhặt đồ sáng bóng ven hồ",
-      "goTo": "Tìm những thứ sáng bóng nằm trên bãi sỏi ven hồ",
+      "goTo": "Tìm những thứ sáng bóng nằm trên bãi sỏi ven hồ sen",
       "kind": "search",
       "targets": [
         "tv2-t17-vo-trai-lon",
@@ -105,7 +105,7 @@
     {
       "id": "giup-nguoi-than-bi-met",
       "title": "Khi người thân bị mệt",
-      "goTo": "Mang đồ sáng bóng về mép hồ cho Cá Bống",
+      "goTo": "Mang đồ sáng bóng về mép hồ sen cho Cá Bống",
       "kind": "speak",
       "target": "ca-bong",
       "prompt": "Cá Bống ôm chiếc vỏ trai, thì thào: \"Mẹ tớ mệt, tớ chỉ biết ấc bong bóng thôi\". {name} kể cho Bống nghe mình hay làm gì nhé.\nNếu người thân bị mệt, em có thể làm gì để giúp đỡ, động viên?",
@@ -227,7 +227,7 @@
     {
       "id": "chi-tiet-lo-cho-me",
       "title": "Cậu bé lo cho mẹ",
-      "goTo": "Bơi về mép hồ, Cá Bống ấc liền ba quả bong bóng",
+      "goTo": "Bơi về mép hồ sen, Cá Bống ấc liền ba quả bong bóng",
       "kind": "challenge",
       "mechanic": "multi-select",
       "target": "ca-bong",
@@ -425,7 +425,7 @@
     {
       "id": "tinh-cam-cua-cau-be",
       "title": "Tình cảm của cậu bé",
-      "goTo": "Về mép hồ, Cá Bống nghe tiếng mẹ rên khẽ vọng ra từ hang",
+      "goTo": "Về mép hồ sen, Cá Bống nghe tiếng mẹ rên khẽ vọng ra từ hang",
       "kind": "challenge",
       "mechanic": "quiz",
       "target": "ca-bong",
@@ -678,7 +678,7 @@
     {
       "id": "ke-cho-nguoi-than",
       "title": "Kể về cậu bé cho cả nhà",
-      "goTo": "Ra mép hồ, Cá Bống vẫy vây dặn dò trước lúc chia tay",
+      "goTo": "Ra mép hồ sen, Cá Bống vẫy vây dặn dò trước lúc chia tay",
       "kind": "speak",
       "target": "ca-bong",
       "prompt": "Cá Bống dặn: tối nay về nhà, {name} nhớ kể lại cho mọi người nhé, kể cả chuyện tớ ấc bong bóng cũng được.\nKể về cậu bé Ê-đi-xơn trong câu chuyện Ánh sáng của yêu thương cho người thân nghe.",
@@ -715,7 +715,7 @@
       "title": "Chong chóng trên đồng gió",
       "kind": "next",
       "trigger": "auto",
-      "text": "Sáng hôm sau, gió từ cánh đồng thổi về mang theo tiếng cãi nhau chí chóe. Thỏ Tí và em gái đang giành nhau một chiếc chong chóng, chưa ai chịu nhường ai."
+      "text": "Sáng hôm sau, gió từ cánh đồng sau xóm thổi về mang theo tiếng cãi nhau chí chóe. Thỏ Tí và em trai bé Tẹo đang giành nhau một chiếc chong chóng, chưa ai chịu nhường ai."
     }
   ],
   "reward": {

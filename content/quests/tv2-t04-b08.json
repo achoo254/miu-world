@@ -1,7 +1,7 @@
 {
   "id": "tv2-t04-b08",
-  "region": "khu-rung-bi-mat",
-  "chapter": 5,
+  "region": "lang-ven-song",
+  "chapter": 4,
   "title": "Hổ Sọc làm cầu thủ dự bị",
   "status": "active",
   "lesson": "tv2-t1-b08",
@@ -9,12 +9,12 @@
   "review": "teacher-pending",
   "sevenQuestions": {
     "who": "Hổ Sọc (ra vẻ dữ mà nhút nhát), Khỉ Mít dạy thể dục hay đu cành đếm nhịp, Gấu Ngáp ngủ dậy ra cổ vũ ở cuối chủ điểm",
-    "where": "Sân bóng giữa rừng: bụi cây cạnh gôn, cành me đầu sân, bảng tỉ số, dây phơi áo cạnh sân, bìa rừng quanh sân và kho dụng cụ",
+    "where": "Sân bóng của làng cạnh đầm sen: bụi cây cạnh gôn, cây me đầu sân, bảng tỉ số, dây phơi áo cạnh sân, lũy tre quanh sân và kho dụng cụ",
     "goal": "Giúp Hổ Sọc nhận làm cầu thủ dự bị, chăm tập để được hai đội cùng mời",
     "play": "Nhặt bóng lạc, nói khởi động, đọc bài hai lượt, trắc nghiệm, chọn nhiều đáp án, xếp tên theo bảng chữ cái, kéo dụng cụ vào tranh, điền tên trò chơi, xếp thẻ thành câu, nói và kể, phiếu viết",
     "learn": "Tiếng Việt 2 Bài 8: đọc Cầu thủ dự bị, lời khen và lời chúc mừng, viết hoa tên riêng, sắp xếp họ tên theo bảng chữ cái, từ ngữ về dụng cụ thể thao và trò chơi dân gian, câu nêu hoạt động, kể về hoạt động thể thao",
     "reward": "90 XP, 15 xu, Đọc hiểu +2, Chính tả +2, Từ ngữ +1, Câu +1",
-    "next": "Bài 9 \"Cô giáo lớp em\""
+    "next": "Bài 9 \"Cô giáo lớp em\" ở Trường học"
   },
   "phases": {
     "hook": "ho-van-tap-mot-minh",
@@ -42,8 +42,8 @@
   },
   "places": {
     "tv2-t04-b08-ho-soc": "bụi cây cạnh gôn",
-    "nhat-bong-lac": "bìa rừng quanh sân",
-    "tv2-t01-b02-khi-mit": "cành me đầu sân",
+    "nhat-bong-lac": "lũy tre quanh sân",
+    "tv2-t01-b02-khi-mit": "cây me đầu sân",
     "tv2-t04-bang-ti-so": "bảng tỉ số",
     "tv2-t04-day-ao": "dây phơi áo cạnh sân",
     "tv2-t04-kho-dung-cu": "kho dụng cụ"
@@ -52,7 +52,7 @@
     {
       "id": "ho-van-tap-mot-minh",
       "title": "Hổ Sọc sút bóng một mình",
-      "goTo": "Tới sân bóng giữa rừng, Hổ Sọc đang trốn trong bụi cây cạnh gôn",
+      "goTo": "Tới sân bóng của làng, Hổ Sọc đang trốn trong bụi cây cạnh gôn",
       "kind": "dialogue",
       "target": "tv2-t04-b08-ho-soc",
       "lines": [
@@ -70,7 +70,7 @@
         },
         {
           "speaker": "Khỉ Mít",
-          "text": "Một, hai! Ba quả bóng còn lạc quanh bìa rừng kìa. {name} nhặt giúp, rồi ta tính tiếp!"
+          "text": "Một, hai! Ba quả bóng còn lạc quanh lũy tre kìa. {name} nhặt giúp, rồi ta tính tiếp!"
         }
       ],
       "choices": [
@@ -87,7 +87,7 @@
     {
       "id": "nhat-bong-lac",
       "title": "Ba quả bóng đi lạc",
-      "goTo": "Nhặt ba quả bóng lạc ở bìa rừng quanh sân",
+      "goTo": "Nhặt ba quả bóng lạc trong lũy tre quanh sân",
       "kind": "search",
       "targets": [
         "tv2-t04-bong-bui-sim",
@@ -98,7 +98,7 @@
     {
       "id": "mon-the-thao-trong-tranh",
       "title": "Môn thể thao trong tranh",
-      "goTo": "Ôm bóng về sân, Khỉ Mít đang treo ngược trên cành me đầu sân",
+      "goTo": "Ôm bóng về sân, Khỉ Mít đang treo ngược trên cây me đầu sân",
       "kind": "speak",
       "target": "tv2-t01-b02-khi-mit",
       "prompt": "Khỉ Mít đu một vòng, treo ngược trên cành, giơ ra một bức tranh: một, hai, nhìn này!\nQuan sát tranh và cho biết:\nCác bạn nhỏ đang chơi môn thể thao gì?\nEm có thích môn thể thao này không? Vì sao?",
@@ -231,7 +231,7 @@
     {
       "id": "du-bi-lam-gi",
       "title": "Cầu thủ dự bị làm gì?",
-      "goTo": "Khỉ Mít vỗ tay gọi {name} lại cành me đầu sân",
+      "goTo": "Khỉ Mít vỗ tay gọi {name} lại cây me đầu sân",
       "kind": "challenge",
       "mechanic": "multi-select",
       "target": "tv2-t01-b02-khi-mit",
@@ -492,7 +492,7 @@
     {
       "id": "danh-sach-doi-du-bi",
       "title": "Danh sách đội dự bị",
-      "goTo": "Khỉ Mít cầm danh sách trên cành me đầu sân, gọi tên mãi vẫn lộn",
+      "goTo": "Khỉ Mít cầm danh sách ngồi trên cây me đầu sân, gọi tên mãi vẫn lộn",
       "kind": "challenge",
       "mechanic": "sort",
       "target": "tv2-t01-b02-khi-mit",
@@ -645,7 +645,7 @@
       "kind": "challenge",
       "mechanic": "fill-blank",
       "target": "tv2-t04-kho-dung-cu",
-      "prompt": "Sau giá vợt, Khỉ Mít lôi ra bốn bức tranh cũ: hồi bé cả rừng chơi mấy trò này mỗi chiều, mà giờ tớ quên mất đuôi tên.\nDựa vào tranh và gợi ý dưới tranh, nói tên các trò chơi dân gian.",
+      "prompt": "Sau giá vợt, Khỉ Mít lôi ra bốn bức tranh cũ: hồi bé cả làng chơi mấy trò này mỗi chiều, mà giờ tớ quên mất đuôi tên.\nDựa vào tranh và gợi ý dưới tranh, nói tên các trò chơi dân gian.",
       "template": "Tranh 1 (một bạn bịt mắt bằng khăn đỏ dang tay bắt, các bạn khác chạy né): Bịt mắt (...) → {{g1}}\nTranh 2 (bốn bạn đứng chụm tay vào giữa): Chi chi (...) → {{g2}}\nTranh 3 (bốn bạn ngồi duỗi chân thành hàng trên chiếu): Nu na (...) → {{g3}}\nTranh 4 (bốn bạn nắm tay nhau thành hàng vừa đi vừa vung tay): Dung dăng (...) → {{g4}}",
       "blanks": [
         {
@@ -845,7 +845,7 @@
     {
       "id": "lam-du-bi-nhe",
       "title": "Làm dự bị nhé?",
-      "goTo": "Khỉ Mít đu cành me đầu sân, có chuyện muốn bàn với Hổ Sọc",
+      "goTo": "Khỉ Mít đu cây me đầu sân, có chuyện muốn bàn với Hổ Sọc",
       "kind": "dialogue",
       "target": "tv2-t01-b02-khi-mit",
       "lines": [
@@ -908,7 +908,7 @@
       "goTo": "Hết trận, ghé bụi cây cạnh gôn, Hổ Sọc có cuốn sách muốn khoe",
       "kind": "speak",
       "target": "tv2-t04-b08-ho-soc",
-      "prompt": "Hết trận, Hổ Sọc lôi từ sau bụi cây ra cuốn sách “Bí kíp sút bóng” mượn của thư viện gốc cây, khoe với {name}.\nTìm đọc một bài viết về hoạt động thể thao.\nKể cho các bạn nghe điều thú vị em đọc được.",
+      "prompt": "Hết trận, Hổ Sọc lôi từ sau bụi cây ra cuốn sách “Bí kíp sút bóng” mượn của Koala Lim Dim bên vườn hoa, khoe với {name}.\nTìm đọc một bài viết về hoạt động thể thao.\nKể cho các bạn nghe điều thú vị em đọc được.",
       "hints": [
         "Bài em đọc nói về môn thể thao nào?",
         "Điều gì trong bài làm em thấy thú vị nhất?",
@@ -947,14 +947,14 @@
       "title": "Băng đội trưởng dự bị",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Hổ Sọc tặng {name} chiếc băng tay “Đội trưởng dự bị” khâu bằng lá chuối. Đúng lúc ấy, Gấu Ngáp vừa ngủ dậy ở gốc thanh mai, lũn cũn chạy ra sân vỗ tay cổ vũ rồi ôm chầm lấy Hổ Sọc. Lần này Hổ Sọc không gầm, chỉ cười."
+      "text": "Hổ Sọc tặng {name} chiếc băng tay “Đội trưởng dự bị” khâu bằng lá chuối. Đúng lúc ấy, Gấu Ngáp vừa ngủ dậy ở gốc nhãn bên đầm sen, lũn cũn chạy ra sân vỗ tay cổ vũ rồi ôm chầm lấy Hổ Sọc. Lần này Hổ Sọc không gầm, chỉ cười."
     },
     {
       "id": "mo-bai-9",
       "title": "Bài thơ tặng cô giáo",
       "kind": "next",
       "trigger": "auto",
-      "text": "Bên khung cửa sổ lá của lớp học, Nai Mơ đang cắn bút lá suy nghĩ: tớ muốn viết một bài thơ tặng cô giáo, mà chưa tìm được câu mở đầu nào đủ đẹp. {name} có muốn giúp không?"
+      "text": "Ở Trường học, lớp 2A sắp đón cô giáo vào giờ đầu tiên. Có một bạn nhỏ đang cắn bút, muốn viết một bài thơ tặng cô mà chưa tìm được câu mở đầu nào đủ đẹp. {name} có muốn giúp không?"
     }
   ],
   "reward": {

@@ -1,16 +1,16 @@
 {
   "id": "tv2-t05-b09",
-  "region": "khu-rung-bi-mat",
-  "chapter": 6,
-  "title": "Bài thơ Nai Mơ tặng cô",
+  "region": "truong-hoc",
+  "chapter": 2,
+  "title": "Bài thơ Nai Sương tặng cô",
   "status": "active",
   "lesson": "tv2-t1-b09",
-  "summary": "Nai Mơ muốn viết bài thơ tặng cô giáo nhưng bí vần. {name} cùng Nai Mơ tìm ý thơ ở vườn nhài, đọc bài “Cô giáo lớp em” trên khung cửa sổ lá, nhờ Mèo Sữa nhặt lại dòng thơ bị gió thổi, nói câu ngạc nhiên với Vẹt Xanh và nghe cô Gấu Mật kể chuyện cậu bé Vũ Duệ ham học.",
+  "summary": "Nai Sương muốn viết bài thơ tặng cô giáo nhưng bí vần. {name} cùng Nai Sương tìm ý thơ quanh bồn nhài ngoài hành lang, đọc bài “Cô giáo lớp em” dán bên cửa sổ lớp 2A, nhờ Mèo Sữa nhặt lại dòng thơ bị gió thổi, tròn mắt nghe thầy hiệu trưởng Sư Tử Vàng hát và nghe cô Gấu Mật kể chuyện cậu bé Vũ Duệ ham học.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Nai Mơ (mơ mộng, cái gì cũng muốn làm thơ), Vẹt Xanh ghé hát, Mèo Sữa lớp trưởng nhanh tay, cô giáo Gấu Mật",
-    "where": "Lớp học có cửa sổ lá, khung cửa sổ lá, vườn nhài sau lớp, hiên lớp, cành phượng trước lớp, ghế mây của cô và góc kể chuyện",
-    "goal": "Giúp Nai Mơ tìm ý và hoàn thành bài thơ tặng cô giáo",
+    "who": "Nai Sương (mơ mộng, cái gì cũng muốn làm thơ), thầy hiệu trưởng Sư Tử Vàng hát hay bất ngờ, Mèo Sữa lớp trưởng nhanh tay, cô giáo Gấu Mật",
+    "where": "Lớp 2A trong nhà chính của trường: chỗ ngồi của Nai Sương, cửa sổ lớp, bồn nhài ngoài hành lang, đầu hành lang, chân cầu thang, bàn cô giáo và góc kể chuyện",
+    "goal": "Giúp Nai Sương tìm ý và hoàn thành bài thơ tặng cô giáo",
     "play": "Tìm đồ trong vườn, hát khởi động, đọc thơ, chọn nhiều đáp án, xếp thẻ vào giỏ, chọn một đáp án, xếp dòng thơ, ghép câu ngạc nhiên, xếp thẻ thành câu, xếp tranh, nói và kể, phiếu viết",
     "learn": "Tiếng Việt 2 Bài 9: đọc hiểu và học thuộc bài thơ “Cô giáo lớp em”, câu thể hiện sự ngạc nhiên, câu nói tình cảm với thầy cô, kể chuyện “Cậu bé ham học”, viết chữ hoa D",
     "reward": "80 XP, 15 xu, Đọc hiểu +2, Câu +1, Kể chuyện +1",
@@ -35,42 +35,42 @@
     }
   },
   "places": {
-    "nai-mo": "lớp cửa sổ lá",
-    "tim-y-tho-vuon-nhai": "vườn nhài sau lớp",
-    "tv2-t05-khung-cua-so-la": "khung cửa sổ lá",
-    "tv2-t05-b09-meo-sua": "hiên lớp",
-    "vet-xanh": "cành phượng trước lớp",
-    "tv2-t01-b01-co-gau-mat": "ghế mây của cô",
+    "tv2-t05-b09-nai-suong": "lớp 2A",
+    "tim-y-tho-vuon-nhai": "bồn nhài ngoài hành lang",
+    "tv2-t05-khung-cua-so-la": "cửa sổ lớp 2A",
+    "tv2-t05-b09-meo-sua": "đầu hành lang",
+    "su-tu-vang": "chân cầu thang",
+    "tv2-t01-b01-co-gau-mat": "bàn cô giáo",
     "tv2-t05-tranh-cau-be-ham-hoc": "góc kể chuyện trong lớp"
   },
   "steps": [
     {
       "id": "nai-mo-bi-van",
-      "title": "Nai Mơ bí vần",
-      "goTo": "Ghé lớp cửa sổ lá, Nai Mơ đang ngồi cắn bút",
+      "title": "Nai Sương bí vần",
+      "goTo": "Vào lớp 2A, Nai Sương đang ngồi cắn bút bên bàn",
       "kind": "dialogue",
-      "target": "nai-mo",
+      "target": "tv2-t05-b09-nai-suong",
       "lines": [
         {
-          "speaker": "Nai Mơ",
+          "speaker": "Nai Sương",
           "text": "{name} ơi! Mai là ngày cả lớp tặng quà cô giáo. Tớ muốn tặng cô một bài thơ tự viết cơ."
         },
         {
-          "speaker": "Nai Mơ",
+          "speaker": "Nai Sương",
           "text": "Tớ viết được một câu rồi nè: “Cô giáo dịu dàng, như… quả chuối vàng!” Ối, nghe như tớ đang đói bụng ấy."
         },
         {
-          "speaker": "Nai Mơ",
-          "text": "Sổ lá của tớ gạch xoá chi chít. Hôm nay tớ bí vần, đầu nặng như đội cả rổ hạt dẻ."
+          "speaker": "Nai Sương",
+          "text": "Sổ thơ của tớ gạch xoá chi chít. Hôm nay tớ bí vần, đầu nặng như đội cả rổ hạt dẻ."
         },
         {
-          "speaker": "Nai Mơ",
-          "text": "Cô bảo muốn có ý thơ thì ra vườn nhài sau lớp mà ngắm, mà ngửi, mà nghe."
+          "speaker": "Nai Sương",
+          "text": "Cô bảo muốn có ý thơ thì ra bồn nhài ngoài hành lang mà ngắm, mà ngửi, mà nghe."
         }
       ],
       "choices": [
         {
-          "text": "Mình cùng ra vườn nhài tìm ý thơ nhé!",
+          "text": "Mình cùng ra bồn nhài tìm ý thơ nhé!",
           "reply": "Đi thôi! Nhớ ngửi hoa thật sâu, nhưng đừng hắt xì vào hoa đấy."
         },
         {
@@ -81,8 +81,8 @@
     },
     {
       "id": "tim-y-tho-vuon-nhai",
-      "title": "Tìm ý thơ trong vườn nhài",
-      "goTo": "Ra vườn nhài sau lớp, tìm ba thứ gợi ý thơ cho Nai Mơ",
+      "title": "Tìm ý thơ quanh bồn nhài",
+      "goTo": "Ra bồn nhài ngoài hành lang, tìm ba thứ gợi ý thơ cho Nai Sương",
       "kind": "search",
       "targets": [
         "tv2-t05-bui-hoa-nhai",
@@ -93,13 +93,13 @@
     {
       "id": "hat-ve-thay-co",
       "title": "Hát cho ấm giọng",
-      "goTo": "Mang ý thơ về lớp cửa sổ lá cho Nai Mơ",
+      "goTo": "Mang ý thơ về lớp 2A cho Nai Sương",
       "kind": "speak",
-      "target": "nai-mo",
-      "prompt": "Nai Mơ hít hà bông nhài, rung rung cái chuông gió tre rồi reo: “Có ý thơ rồi! Nhưng trước hết, tớ cần nghe thơ cho ấm giọng.”\nĐọc một bài thơ hoặc hát một bài hát về thầy cô.",
+      "target": "tv2-t05-b09-nai-suong",
+      "prompt": "Nai Sương hít hà bông nhài, rung rung cái chuông gió tre rồi reo: “Có ý thơ rồi! Nhưng trước hết, tớ cần nghe thơ cho ấm giọng.”\nĐọc một bài thơ hoặc hát một bài hát về thầy cô.",
       "hints": [
         "Em thuộc bài hát nào có từ “cô giáo” hay “thầy giáo”?",
-        "Vừa hát vừa vỗ tay theo nhịp, Nai Mơ sẽ gõ móng lóc cóc theo."
+        "Vừa hát vừa vỗ tay theo nhịp, Nai Sương sẽ gõ móng lóc cóc theo."
       ],
       "curriculumRef": [
         "tv2-t1-b09-doc-kd"
@@ -107,13 +107,13 @@
     },
     {
       "id": "doc-bai-tho-cua-so",
-      "title": "Bài thơ trên khung cửa sổ lá",
-      "goTo": "Ngó lên khung cửa sổ lá, bài thơ Cô giáo lớp em hiện ra",
+      "title": "Bài thơ bên cửa sổ lớp",
+      "goTo": "Ngó lên cửa sổ lớp 2A, bài thơ Cô giáo lớp em dán ngay cạnh khung kính",
       "kind": "read",
       "target": "tv2-t05-khung-cua-so-la",
       "textRef": "co-giao-lop-em",
       "audio": true,
-      "question": "Nai Mơ chỉ lên khung cửa sổ lá: bài thơ chị lớp Ba chép tặng lớp mình dán ở đây này, đọc cùng tớ nhé!\nCô giáo đáp lại lời chào của các bạn nhỏ như thế nào?",
+      "question": "Nai Sương chỉ lên cửa sổ lớp: bài thơ chị lớp Ba chép tặng lớp mình dán ở đây này, đọc cùng tớ nhé!\nCô giáo đáp lại lời chào của các bạn nhỏ như thế nào?",
       "choices": [
         {
           "id": "vay-tay",
@@ -148,9 +148,9 @@
       },
       "feedback": {
         "right": [
-          "Đúng rồi! Nai Mơ cười tươi theo, tươi đến lộ cả hai cái răng cửa.",
-          "Chuẩn! Nụ cười của cô sáng như nắng sớm trên cửa sổ lá.",
-          "Giỏi quá! Nai Mơ ghi ngay chữ “mỉm cười” vào sổ lá."
+          "Đúng rồi! Nai Sương cười tươi theo, tươi đến lộ cả hai cái răng cửa.",
+          "Chuẩn! Nụ cười của cô sáng như nắng sớm trên khung kính cửa sổ.",
+          "Giỏi quá! Nai Sương ghi ngay chữ “mỉm cười” vào sổ thơ."
         ],
         "wrong": [
           "Chưa đúng rồi. Đọc lại dòng thơ ngay sau “Chào cô ạ!” nhé.",
@@ -165,7 +165,7 @@
       "kind": "challenge",
       "mechanic": "multi-select",
       "target": "tv2-t05-khung-cua-so-la",
-      "prompt": "Nai Mơ nhảy cẫng: gió, nắng, hoa nhài… toàn là ý thơ cả! Tớ phải chép ngay những câu ấy.\nTìm những câu thơ tả cảnh vật khi cô dạy em học bài.",
+      "prompt": "Nai Sương nhảy cẫng: gió, nắng, hoa nhài… toàn là ý thơ cả! Tớ phải chép ngay những câu ấy.\nTìm những câu thơ tả cảnh vật khi cô dạy em học bài.",
       "choices": [
         {
           "id": "gio-dua",
@@ -216,9 +216,9 @@
       },
       "feedback": {
         "right": [
-          "Đủ cả gió lẫn nắng! Nai Mơ chép lia lịa, sổ lá kêu sột soạt.",
+          "Đủ cả gió lẫn nắng! Nai Sương chép lia lịa, sổ thơ kêu sột soạt.",
           "Tuyệt! Lớp học có gió đưa hương, có nắng ghé chơi, thơ quá đi mất.",
-          "Ba câu đúng phóc! Nai Mơ vẫy đuôi như vừa được điểm mười."
+          "Ba câu đúng phóc! Nai Sương vẫy đuôi như vừa được điểm mười."
         ],
         "wrong": [
           "Còn sót một câu nắng đang ghé xem các bạn học đấy.",
@@ -230,11 +230,11 @@
     {
       "id": "ban-nho-ke-ve-co",
       "title": "Những điều về cô",
-      "goTo": "Về lớp cửa sổ lá, Nai Mơ ôm sổ lá phồng như bánh bao",
+      "goTo": "Về chỗ ngồi trong lớp 2A, Nai Sương ôm sổ thơ phồng như bánh bao",
       "kind": "challenge",
       "mechanic": "classify",
-      "target": "nai-mo",
-      "prompt": "Nai Mơ muốn nhét thật nhiều điều về cô vào bài thơ, nhét nhiều đến mức sổ lá phồng như cái bánh bao.\nBạn nhỏ đã kể những gì về cô giáo của mình?\nKéo mỗi thẻ vào đúng giỏ.",
+      "target": "tv2-t05-b09-nai-suong",
+      "prompt": "Nai Sương muốn nhét thật nhiều điều về cô vào bài thơ, nhét nhiều đến mức sổ thơ phồng như cái bánh bao.\nBạn nhỏ đã kể những gì về cô giáo của mình?\nKéo mỗi thẻ vào đúng giỏ.",
       "groups": [
         {
           "id": "co-ke",
@@ -308,9 +308,9 @@
       },
       "feedback": {
         "right": [
-          "Hai giỏ gọn gàng! Nai Mơ ôm sổ lá xoay một vòng.",
+          "Hai giỏ gọn gàng! Nai Sương ôm sổ thơ xoay một vòng.",
           "Chính xác! Cô đến sớm, cười tươi, dạy viết, cho điểm mười… đủ cả.",
-          "Giỏi ghê! Nai Mơ bảo {name} đọc bài thơ còn kĩ hơn tớ."
+          "Giỏi ghê! Nai Sương bảo {name} đọc bài thơ còn kĩ hơn tớ."
         ],
         "wrong": [
           "Cô dạy đá bóng ư? Bài thơ đâu có sân bóng nào! Xem lại giỏ nhé.",
@@ -324,8 +324,8 @@
       "title": "Bạn nhỏ thương cô thế nào?",
       "kind": "challenge",
       "mechanic": "quiz",
-      "target": "nai-mo",
-      "prompt": "Qua bài thơ, em thấy tình cảm bạn nhỏ dành cho cô giáo thế nào?\nNai Mơ chớp chớp hàng mi dài: tớ đoán ra rồi, còn {name} chọn câu nào?",
+      "target": "tv2-t05-b09-nai-suong",
+      "prompt": "Qua bài thơ, em thấy tình cảm bạn nhỏ dành cho cô giáo thế nào?\nNai Sương chớp chớp hàng mi dài: tớ đoán ra rồi, còn {name} chọn câu nào?",
       "choices": [
         {
           "id": "so-co",
@@ -360,9 +360,9 @@
       },
       "feedback": {
         "right": [
-          "Đúng thế! Nai Mơ xúc động, sụt sịt mũi kêu khịt khịt.",
+          "Đúng thế! Nai Sương xúc động, sụt sịt mũi kêu khịt khịt.",
           "Chuẩn rồi! Yêu thương cô thì mới ngắm điểm mười mãi không chán.",
-          "Hay quá! Câu này Nai Mơ sẽ đưa vào bài thơ tặng cô."
+          "Hay quá! Câu này Nai Sương sẽ đưa vào bài thơ tặng cô."
         ],
         "wrong": [
           "Bạn nhỏ chào cô rất vui, đâu có sợ! Đọc lại khổ đầu nhé.",
@@ -374,11 +374,11 @@
     {
       "id": "gio-thoi-dong-tho",
       "title": "Gió thổi bay dòng thơ",
-      "goTo": "Gió thổi bốn dòng thơ bay ra hiên lớp, Mèo Sữa nhảy lên chụp hộ",
+      "goTo": "Gió thổi bốn dòng thơ bay ra đầu hành lang, Mèo Sữa nhảy lên chụp hộ",
       "kind": "challenge",
       "mechanic": "sort",
       "target": "tv2-t05-b09-meo-sua",
-      "prompt": "Phù! Một cơn gió tinh nghịch lùa qua cửa sổ lá, thổi tung bốn dòng thơ Nai Mơ vừa chép. Xếp lại khổ thơ thứ hai cho đúng thứ tự nhé.\nHọc thuộc lòng 2 khổ thơ em thích.",
+      "prompt": "Phù! Một cơn gió tinh nghịch lùa qua cửa sổ lớp, thổi tung bốn dòng thơ Nai Sương vừa chép. Xếp lại khổ thơ thứ hai cho đúng thứ tự nhé.\nHọc thuộc lòng 2 khổ thơ em thích.",
       "items": [
         {
           "id": "nang-ghe",
@@ -422,7 +422,7 @@
       },
       "feedback": {
         "right": [
-          "Khổ thơ về chỗ cũ rồi! Nai Mơ đè hòn sỏi lên cho gió hết nghịch.",
+          "Khổ thơ về chỗ cũ rồi! Nai Sương chặn cục tẩy lên cho gió hết nghịch.",
           "Đúng thứ tự! {name} thuộc bài nhanh như sóc leo cây.",
           "Tuyệt vời, đọc lên nghe êm như gió thoảng hương nhài."
         ],
@@ -435,14 +435,14 @@
     },
     {
       "id": "doc-thuoc-long",
-      "title": "Đọc thuộc lòng cho Nai Mơ nghe",
-      "goTo": "Quay vào lớp cửa sổ lá, Nai Mơ vểnh tai chờ nghe đọc",
+      "title": "Đọc thuộc lòng cho Nai Sương nghe",
+      "goTo": "Quay vào lớp 2A, Nai Sương vểnh tai chờ nghe đọc",
       "kind": "speak",
-      "target": "nai-mo",
-      "prompt": "Học thuộc lòng 2 khổ thơ em thích.\nNai Mơ nhắm mắt nghe, đọc tới đâu đôi tai cụp xuống vểnh lên tới đó. {name} đọc cho bạn ấy nghe nhé.",
+      "target": "tv2-t05-b09-nai-suong",
+      "prompt": "Học thuộc lòng 2 khổ thơ em thích.\nNai Sương nhắm mắt nghe, đọc tới đâu đôi tai cụp xuống vểnh lên tới đó. {name} đọc cho bạn ấy nghe nhé.",
       "hints": [
         "Đọc chậm, ngắt hơi ở cuối mỗi dòng thơ.",
-        "Quên một dòng thì liếc lên khung cửa sổ lá rồi đọc tiếp."
+        "Quên một dòng thì liếc lên tờ thơ bên cửa sổ rồi đọc tiếp."
       ],
       "curriculumRef": [
         "tv2-t1-b09-doc-htl"
@@ -450,12 +450,12 @@
     },
     {
       "id": "vet-xanh-hat-bat-ngo",
-      "title": "Vẹt Xanh hát bất ngờ",
-      "goTo": "Vẹt Xanh hót vang trên cành phượng trước lớp, chạy ra xem nào",
+      "title": "Thầy hiệu trưởng hát bất ngờ",
+      "goTo": "Tiếng hát vang lên ở chân cầu thang, chạy ra xem nào",
       "kind": "challenge",
       "mechanic": "classify",
-      "target": "vet-xanh",
-      "prompt": "Bỗng Vẹt Xanh sà xuống bậu cửa sổ lá, hát một tràng hay đến nỗi Nai Mơ đánh rơi cả bút.\nNói câu thể hiện sự ngạc nhiên của em khi:\nGhép mỗi câu với đúng lúc em nói câu ấy.",
+      "target": "su-tu-vang",
+      "prompt": "Bỗng thầy hiệu trưởng Sư Tử Vàng vừa bước lên cầu thang vừa hát, giọng ấm và ngọt đến nỗi Nai Sương đánh rơi cả bút. Cả lớp cứ tưởng thầy chỉ biết gầm thôi cơ!\nNói câu thể hiện sự ngạc nhiên của em khi:\nGhép mỗi câu với đúng lúc em nói câu ấy.",
       "groups": [
         {
           "id": "ban-hat-hay",
@@ -510,26 +510,26 @@
       },
       "feedback": {
         "right": [
-          "Hay hay! Đúng đúng! Vẹt Xanh vỗ cánh khen hai lần liền.",
-          "Chuẩn! Vẹt Xanh ưỡn ngực: tớ biết ngay giọng tớ trong như suối mà.",
-          "Ghép khéo quá! Nai Mơ bảo câu nào nghe cũng tròn xoe mắt."
+          "Thầy Sư Tử Vàng cười khà khà, bờm vàng rung rinh: khen đúng ý thầy quá!",
+          "Chuẩn! Thầy ưỡn ngực kể: hồi bé thầy hát đầu đàn ở đội văn nghệ đấy.",
+          "Ghép khéo quá! Nai Sương bảo câu nào nghe cũng tròn xoe mắt."
         ],
         "wrong": [
           "Câu có chữ “quà” là lúc bố mẹ tặng quà, đâu phải lúc nghe hát.",
-          "Ối, Vẹt Xanh đâu có hộp quà nào! Xem lại câu khen giọng hát nhé.",
+          "Ối, thầy đâu có mang hộp quà nào! Xem lại câu khen giọng hát nhé.",
           "Tìm chữ “hát” và chữ “giọng” trong thẻ, hai thẻ đó đi cùng nhau."
         ]
       }
     },
     {
       "id": "khen-vet-xanh",
-      "title": "Nói câu ngạc nhiên",
+      "title": "Nói câu ngạc nhiên với thầy",
       "kind": "speak",
-      "target": "vet-xanh",
-      "prompt": "Vẹt Xanh nghiêng đầu: “Khen tớ đi, khen tớ đi! Nói bằng giọng thật ngạc nhiên ấy, ngạc nhiên ấy!”\nNói câu thể hiện sự ngạc nhiên của em khi: a. Lần đầu được nghe một bạn hát rất hay\nb. Được bố mẹ tặng một món quà bất ngờ",
+      "target": "su-tu-vang",
+      "prompt": "Thầy Sư Tử Vàng nháy mắt: “Thầy hát thế có được không nào? Con nói thật ngạc nhiên cho thầy nghe xem!”\nNói câu thể hiện sự ngạc nhiên của em khi: a. Lần đầu được nghe một bạn hát rất hay\nb. Được bố mẹ tặng một món quà bất ngờ",
       "hints": [
         "Mở đầu bằng Ôi…, Chà…, Ồ… cho thật bất ngờ.",
-        "Nói to, mắt tròn xoe như vừa thấy Vẹt Xanh hát.",
+        "Nói to, mắt tròn xoe như vừa nghe thầy hiệu trưởng hát.",
         "Nhớ lại một món quà bố mẹ từng tặng em, em đã reo lên thế nào?"
       ],
       "curriculumRef": [
@@ -540,11 +540,11 @@
     {
       "id": "cau-ket-bai-tho",
       "title": "Câu kết bài thơ",
-      "goTo": "Mèo Sữa vẫy {name} ra hiên lớp, tay ôm mấy thẻ chữ lộn xộn",
+      "goTo": "Mèo Sữa vẫy {name} ra đầu hành lang, tay ôm mấy thẻ chữ lộn xộn",
       "kind": "challenge",
       "mechanic": "sort",
       "target": "tv2-t05-b09-meo-sua",
-      "prompt": "Nai Mơ muốn kết bài thơ bằng một câu thật ấm áp, nhưng các thẻ chữ lại nằm lộn tùng phèo.\nNói câu thể hiện tình cảm của em đối với thầy cô giáo của mình.\nXếp thẻ thành câu rồi đọc to lên nhé.",
+      "prompt": "Nai Sương muốn kết bài thơ bằng một câu thật ấm áp, nhưng các thẻ chữ lại nằm lộn tùng phèo.\nNói câu thể hiện tình cảm của em đối với thầy cô giáo của mình.\nXếp thẻ thành câu rồi đọc to lên nhé.",
       "items": [
         {
           "id": "co-giao",
@@ -588,7 +588,7 @@
       },
       "feedback": {
         "right": [
-          "Câu ấm áp quá! Nai Mơ chép vào dòng cuối, nắn nót từng chữ.",
+          "Câu ấm áp quá! Nai Sương chép vào dòng cuối, nắn nót từng chữ.",
           "Đúng rồi! Đọc lên nghe thơm như bông nhài vừa nở.",
           "Tuyệt! Cô đọc câu này chắc sẽ mỉm cười thật tươi."
         ],
@@ -602,21 +602,21 @@
     {
       "id": "tang-tho-the-nao",
       "title": "Tặng thơ thế nào đây?",
-      "goTo": "Về lớp cửa sổ lá, Nai Mơ ôm bài thơ vừa viết xong",
+      "goTo": "Về lớp 2A, Nai Sương ôm bài thơ vừa viết xong",
       "kind": "dialogue",
-      "target": "nai-mo",
+      "target": "tv2-t05-b09-nai-suong",
       "lines": [
         {
-          "speaker": "Nai Mơ",
+          "speaker": "Nai Sương",
           "text": "Bài thơ xong rồi! Nhưng tặng cô thế nào cho thật bất ngờ hả {name}?"
         },
         {
-          "speaker": "Vẹt Xanh",
-          "text": "Hát lên! Hát lên! Tớ đệm cho, tớ đệm cho!"
+          "speaker": "Sư Tử Vàng",
+          "text": "Thầy ghé xem nào! Hay là hát lên đi, thầy gõ trống con đệm cho!"
         },
         {
-          "speaker": "Nai Mơ",
-          "text": "Vẹt Xanh mà đệm thì to hơn cả tiếng trống trường mất. {name} chọn giúp tớ nhé."
+          "speaker": "Nai Sương",
+          "text": "Thầy mà gõ đệm thì còn to hơn cả tiếng trống trường mất. {name} chọn giúp tớ nhé."
         }
       ],
       "choices": [
@@ -633,10 +633,10 @@
     {
       "id": "nghe-chuyen-vu-due",
       "title": "Chuyện cậu bé ham học",
-      "goTo": "Ghé ghế mây của cô, cô Gấu Mật đang ôm chồng tranh truyện",
+      "goTo": "Ghé bàn cô giáo, cô Gấu Mật đang ôm chồng tranh truyện",
       "kind": "speak",
       "target": "tv2-t01-b01-co-gau-mat",
-      "prompt": "Nai Mơ thì thầm: hôm qua cô kể chuyện một cậu bé ham học, nghe xong tớ thương cậu ấy quá.\nNghe kể chuyện.\nNhờ bố mẹ hoặc thầy cô kể câu chuyện “Cậu bé ham học”, rồi trả lời từng câu hỏi nhé.",
+      "prompt": "Nai Sương thì thầm: hôm qua cô kể chuyện một cậu bé ham học, nghe xong tớ thương cậu ấy quá.\nNghe kể chuyện.\nNhờ bố mẹ hoặc thầy cô kể câu chuyện “Cậu bé ham học”, rồi trả lời từng câu hỏi nhé.",
       "hints": [
         "Vì sao cậu bé Vũ Duệ không được đi học?",
         "Buổi sáng, Vũ Duệ thường cõng em đi đâu?",
@@ -699,8 +699,8 @@
       "feedback": {
         "right": [
           "Bốn tranh thẳng hàng! Câu chuyện chạy từ đầu tới cuối, không vấp chỗ nào.",
-          "Đúng rồi! Nai Mơ lấy bốn cái gai mềm ghim tranh thật chặt.",
-          "Giỏi quá, {name} nhớ chuyện còn kĩ hơn cả sổ lá của Nai Mơ."
+          "Đúng rồi! Nai Sương lấy bốn chiếc đinh ghim cài tranh thật chặt.",
+          "Giỏi quá, {name} nhớ chuyện còn kĩ hơn cả sổ thơ của Nai Sương."
         ],
         "wrong": [
           "Vũ Duệ được ngồi học là chuyện cuối cùng, để tranh ấy về sau nhé.",
@@ -712,10 +712,10 @@
     {
       "id": "ke-cho-nguoi-than",
       "title": "Kể chuyện Vũ Duệ",
-      "goTo": "Chạy về lớp cửa sổ lá, Nai Mơ đang tìm vần cho chữ Duệ",
+      "goTo": "Chạy về lớp 2A, Nai Sương đang tìm vần cho chữ Duệ",
       "kind": "speak",
-      "target": "nai-mo",
-      "prompt": "Chọn kể 1 – 2 đoạn của câu chuyện theo tranh.\nKể cho người thân về cậu bé Vũ Duệ trong câu chuyện Cậu bé ham học.\nNai Mơ hứa sẽ viết thêm một bài thơ về Vũ Duệ, chỉ cần tìm được chữ nào vần với “Duệ”.",
+      "target": "tv2-t05-b09-nai-suong",
+      "prompt": "Chọn kể 1 – 2 đoạn của câu chuyện theo tranh.\nKể cho người thân về cậu bé Vũ Duệ trong câu chuyện Cậu bé ham học.\nNai Sương hứa sẽ viết thêm một bài thơ về Vũ Duệ, chỉ cần tìm được chữ nào vần với “Duệ”.",
       "hints": [
         "Chọn một hai bức tranh em thích nhất rồi kể theo tranh.",
         "Kể Vũ Duệ ham học thế nào và vì sao thầy quý cậu.",
@@ -774,17 +774,17 @@
     },
     {
       "id": "qua-cua-nai-mo",
-      "title": "Trang sổ lá thơm nhài",
+      "title": "Trang sổ thơ thơm nhài",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Nai Mơ tặng {name} một trang sổ lá chép bài thơ “Cô giáo lớp em”, ép kèm một bông nhài. Vẹt Xanh đòi ký tên bằng một chiếc lông xanh, còn Mèo Sữa hứa chép bài thơ lên bảng cho cả lớp cùng đọc."
+      "text": "Nai Sương tặng {name} một trang sổ thơ chép bài thơ “Cô giáo lớp em”, ép kèm một bông nhài. Thầy Sư Tử Vàng đóng lên đó con dấu hình mặt sư tử cười, còn Mèo Sữa hứa chép bài thơ lên bảng cho cả lớp cùng đọc."
     },
     {
       "id": "mo-bai-10",
-      "title": "Ai lục cặp ở gốc sồi?",
+      "title": "Ai lục cặp ngoài hành lang?",
       "kind": "next",
       "trigger": "auto",
-      "text": "Ở gốc sồi đầu lối mòn có tiếng lục cặp loạt xoạt. Hình như Thỏ Tí lại mang nhầm sách, mà hôm nay là thứ mấy ấy nhỉ?"
+      "text": "Ngoài hành lang, ngay trước bảng thời khoá biểu, có tiếng lục cặp loạt xoạt. Hình như Thỏ Vội lại mang nhầm sách, mà hôm nay là thứ mấy ấy nhỉ?"
     }
   ],
   "reward": {

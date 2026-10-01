@@ -1,16 +1,16 @@
 {
   "id": "toan2-cd5-b26",
-  "region": "truong-hoc",
-  "chapter": 5,
-  "title": "Ong Vàng bay qua ô kính màu",
+  "region": "lau-dai",
+  "chapter": 1,
+  "title": "Ong Nhí bay qua ô kính màu",
   "status": "active",
   "lesson": "toan2-t1-b26",
-  "summary": "Ong Vàng bay qua cửa sổ kính màu theo lối gãy khúc tới hoa cả mắt; {name} cùng Ong, Bác Tâm thợ kính và họa sĩ Gấu Mực gọi tên đường gấp khúc, tính độ dài đường bay, săn hình tứ giác với Mèo Tuyết ở bàn ghép tranh và cùng Bò Cỏ Non soi đường chạy thi khắp phòng mĩ thuật.",
+  "summary": "Ong Nhí mới tập bay, lượn qua cửa sổ kính màu của lâu đài theo lối gãy khúc tới hoa cả mắt; {name} cùng Ong Nhí, Bác Tâm thợ kính và họa sĩ Gấu Mực gọi tên đường gấp khúc, tính độ dài đường bay, săn hình tứ giác với Mèo Tuyết ở bàn ghép tranh và cùng Bò Cỏ Non soi đường chạy thi trên bãi cỏ.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Ong Vàng, Bác Tâm, Gấu Mực, Mèo Tuyết, Bò Cỏ Non",
-    "where": "Phòng mĩ thuật: cửa sổ kính màu, giá để kính màu, góc bàn vẽ, bàn ghép tranh, hiên nhìn bãi cỏ",
-    "goal": "Vẽ lại lối bay của Ong Vàng và tìm đủ các ô kính hình tứ giác",
+    "who": "Ong Nhí, Bác Tâm, Gấu Mực, Mèo Tuyết, Bò Cỏ Non",
+    "where": "Lâu đài, quanh sân hình khối: cửa sổ kính màu, giá để kính màu, góc bàn vẽ, bàn ghép tranh, hiên đá nhìn ra bãi cỏ",
+    "goal": "Vẽ lại lối bay của Ong Nhí và tìm đủ các ô kính hình tứ giác",
     "play": "Tìm mảnh kính, nối đường bay, chọn tên, phân loại ô kính, đếm, điền phép tính, nói đồ vật, thi đường bay dài hơn",
     "learn": "Toán 2 Bài 26: đường gấp khúc, độ dài đường gấp khúc, hình tứ giác",
     "reward": "80 XP, 15 xu, Hình phẳng +2, Phép cộng +1",
@@ -28,49 +28,49 @@
   },
   "texts": {},
   "places": {
-    "ong-vang": "cửa sổ kính màu",
+    "toan2-cd5-b26-ong-nhi": "cửa sổ kính màu",
     "nhat-manh-kinh": "cửa sổ kính màu",
     "toan2-cd5-b26-bac-tam": "giá để kính màu",
     "toan2-cd5-b26-gau-muc": "góc bàn vẽ",
     "toan2-cd5-b26-meo-tuyet": "bàn ghép tranh",
-    "toan2-cd5-b26-bo-co-non": "hiên nhìn bãi cỏ"
+    "toan2-cd5-b26-bo-co-non": "hiên đá nhìn ra bãi cỏ"
   },
   "steps": [
     {
       "id": "ong-hoa-mat",
-      "title": "Ong Vàng hoa cả mắt",
-      "goTo": "Tới cửa sổ kính màu trong phòng mĩ thuật, Ong Vàng đang bay vòng vòng",
+      "title": "Ong Nhí hoa cả mắt",
+      "goTo": "Tới cửa sổ kính màu bên sân hình khối, Ong Nhí đang bay vòng vòng",
       "kind": "dialogue",
-      "target": "ong-vang",
+      "target": "toan2-cd5-b26-ong-nhi",
       "lines": [
         {
-          "speaker": "Ong Vàng",
-          "text": "Vo ve… cộp! Lại đâm vào kính rồi. Lối bay qua mấy ô kính màu này gãy khúc liên tục, tớ chóng mặt quá {name} ơi!"
+          "speaker": "Ong Nhí",
+          "text": "Vo ve… cộp! Tớ là Ong Nhí, mới tập bay được ba hôm. Ô kính nào cũng lấp lánh, tớ bay gãy khúc liên tục, chóng mặt quá {name} ơi!"
         },
         {
           "speaker": "Gấu Mực",
           "text": "Tớ đã bảo cậu bay thẳng thôi mà. À quên, bay thẳng thì đâm vào ô kính đỏ mất, hơ hơ."
         },
         {
-          "speaker": "Ong Vàng",
-          "text": "Gió vừa làm rơi mấy mảnh kính màu xuống bậu cửa. Lắp lại đủ thì tớ mới vẽ được lối bay."
+          "speaker": "Ong Nhí",
+          "text": "Gió trên tường thành vừa làm rơi mấy mảnh kính màu xuống bậu cửa. Lắp lại đủ thì tớ mới vẽ được lối bay."
         }
       ],
       "choices": [
         {
           "text": "Tớ nhặt kính giúp cậu!",
-          "reply": "Ong Vàng xoay một vòng: Cẩn thận nhé, kính trơn lắm, tớ trượt ba lần rồi."
+          "reply": "Ong Nhí xoay một vòng: Cẩn thận nhé, kính trơn lắm, tớ trượt ba lần rồi."
         },
         {
-          "text": "Ong ơi, đậu nghỉ một chút đi!",
-          "reply": "Ong Vàng đậu lên mũi đen bóng của Gấu Mực: Đậu rồi nè. Còn mảnh kính thì nhờ cậu đó!"
+          "text": "Ong Nhí ơi, đậu nghỉ một chút đi!",
+          "reply": "Ong Nhí đậu lên mũi đen bóng của Gấu Mực: Đậu rồi nè. Còn mảnh kính thì nhờ cậu đó!"
         }
       ]
     },
     {
       "id": "nhat-manh-kinh",
       "title": "Nhặt mảnh kính màu",
-      "goTo": "Nhặt ba mảnh kính màu rơi quanh cửa sổ kính màu",
+      "goTo": "Nhặt ba mảnh kính màu rơi quanh bậu cửa sổ kính màu",
       "kind": "search",
       "targets": [
         "toan2-cd5-manh-kinh-xanh",
@@ -82,10 +82,10 @@
       "id": "duong-gay-khuc-la-gi",
       "title": "Đường gấp khúc là gì?",
       "kind": "dialogue",
-      "target": "ong-vang",
+      "target": "toan2-cd5-b26-ong-nhi",
       "lines": [
         {
-          "speaker": "Ong Vàng",
+          "speaker": "Ong Nhí",
           "text": "Lối bay của tớ là mấy đoạn thẳng nối tiếp nhau, gãy ở chỗ nối. Người ta gọi là đường gấp khúc!"
         },
         {
@@ -93,24 +93,24 @@
           "text": "Đi qua A, B, C thì gọi là đường gấp khúc ABC. Muốn biết nó dài bao nhiêu, cộng độ dài các đoạn thẳng lại."
         },
         {
-          "speaker": "Ong Vàng",
+          "speaker": "Ong Nhí",
           "text": "Còn ô kính nào có bốn cạnh, bốn đỉnh thì là hình tứ giác. Ô kính tròn thì… tớ không đếm, nhìn là chóng mặt."
         }
       ],
       "choices": [
         {
           "text": "Bay thử một lối nào!",
-          "reply": "Ong Vàng chấm bốn điểm lên kính: D, E, G, H. Cậu nối giúp tớ nhé."
+          "reply": "Ong Nhí chấm bốn điểm lên kính: D, E, G, H. Cậu nối giúp tớ nhé."
         }
       ]
     },
     {
       "id": "noi-loi-bay-dgeh",
       "title": "Nối lối bay của Ong",
-      "target": "ong-vang",
+      "target": "toan2-cd5-b26-ong-nhi",
       "kind": "challenge",
       "mechanic": "connect",
-      "prompt": "Ong Vàng bay từ D sang ngang tới E, bay thẳng xuống G rồi bay ngang tới H. Kể tên các đường gấp khúc trong mỗi hình vẽ sau: b) Trước hết, nối lối bay của Ong qua các điểm theo thứ tự.",
+      "prompt": "Ong Nhí bay từ D sang ngang tới E, bay thẳng xuống G rồi bay ngang tới H. Kể tên các đường gấp khúc trong mỗi hình vẽ sau: b) Trước hết, nối lối bay của Ong qua các điểm theo thứ tự.",
       "points": [
         {
           "id": "d",
@@ -156,7 +156,7 @@
         "right": [
           "Vo ve vèo! Ong bay đúng lối, không đâm vào kính nữa.",
           "Ba đoạn nối tiếp ngay ngắn, đúng là đường gấp khúc.",
-          "Ong Vàng xin cậu vẽ bản đồ bay cho cả tổ luôn."
+          "Ong Nhí xin cậu vẽ bản đồ bay cho cả tổ luôn."
         ],
         "wrong": [
           "Ong không bay chéo từ D xuống G đâu, đi lần lượt nhé.",
@@ -221,7 +221,7 @@
         "right": [
           "ABC, gọn như bảng chữ cái!",
           "Đọc tên theo đúng lối bay, chuẩn rồi.",
-          "Ong Vàng ghi tên ABC lên cánh, tự hào ghê."
+          "Ong Nhí ghi tên ABC lên cánh, tự hào ghê."
         ],
         "wrong": [
           "Tên phải đi qua đủ ba điểm theo thứ tự.",
@@ -289,7 +289,7 @@
     {
       "id": "san-o-kinh-tu-giac",
       "title": "Săn ô kính bốn cạnh",
-      "target": "ong-vang",
+      "target": "toan2-cd5-b26-ong-nhi",
       "kind": "challenge",
       "mechanic": "classify",
       "prompt": "Sáu ô kính màu đã lắp lại vào khung. Có mấy hình tứ giác? Trước hết, xếp mỗi ô kính vào đúng nhóm.",
@@ -466,7 +466,7 @@
         "right": [
           "Bốn ô bốn cạnh đã vào nhóm, khung kính sáng rực!",
           "Ô kính xiên xẹo vẫn là tứ giác, cậu không bị lừa.",
-          "Ong Vàng đếm cạnh theo cậu: một, hai, ba, bốn!"
+          "Ong Nhí đếm cạnh theo cậu: một, hai, ba, bốn!"
         ],
         "wrong": [
           "Đếm số cạnh từng ô kính thật chậm xem.",
@@ -484,14 +484,14 @@
           "kinh-o-kinh-6": "nhom-hinh-tu-giac"
         }
       },
-      "goTo": "Về cửa sổ kính màu, Ong Vàng đang lắp sáu ô kính vào khung"
+      "goTo": "Về cửa sổ kính màu, Ong Nhí đang lắp sáu ô kính vào khung"
     },
     {
       "id": "dem-o-kinh-tu-giac",
       "title": "Đếm ô kính tứ giác",
-      "target": "ong-vang",
+      "target": "toan2-cd5-b26-ong-nhi",
       "kind": "riddle",
-      "question": "Ong Vàng muốn khắc số lên khung cửa sổ. Có mấy hình tứ giác?",
+      "question": "Ong Nhí muốn khắc số lên khung cửa sổ. Có mấy hình tứ giác?",
       "skill": "hinh-phang",
       "curriculumRef": [
         "toan2-t1-b26-hoat-dong-2"
@@ -508,7 +508,7 @@
       },
       "feedback": {
         "right": [
-          "Ong Vàng khắc số 4 lên khung, nét chữ hơi run vì vui quá.",
+          "Ong Nhí khắc số 4 lên khung, nét chữ hơi run vì vui quá.",
           "Đếm đúng phóc, khung kính vừa vặn rồi.",
           "Bốn ô tứ giác, không thừa không thiếu!"
         ],
@@ -528,7 +528,7 @@
       "target": "toan2-cd5-b26-bac-tam",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Ong Vàng bay một lối mới qua A, B, C, D: đoạn AB dài 5 cm, đoạn BC dài 4 cm, đoạn CD dài 4 cm. Tính độ dài đường gấp khúc ABCD.",
+      "prompt": "Ong Nhí bay một lối mới qua A, B, C, D: đoạn AB dài 5 cm, đoạn BC dài 4 cm, đoạn CD dài 4 cm. Tính độ dài đường gấp khúc ABCD.",
       "template": "Bài giải\nĐộ dài đường gấp khúc ABCD là:\n{{b1}} + {{b2}} + {{b3}} = {{b4}} (cm)\nĐáp số: {{b5}} cm.",
       "blanks": [
         {
@@ -634,7 +634,7 @@
       },
       "feedback": {
         "right": [
-          "Mười ba xăng-ti-mét, Ong Vàng bay hết lối không mỏi cánh!",
+          "Mười ba xăng-ti-mét, Ong Nhí bay hết lối không mỏi cánh!",
           "Bài giải trình bày đẹp như vở mẫu của cô.",
           "Cộng ba đoạn liền một mạch, giỏi quá {name}."
         ],
@@ -667,7 +667,7 @@
           "text": "Lại đây xem! Tớ là Gấu Mực, vừa vẽ xong bức tranh phòng học, trong đó giấu đủ thứ hình gấp khúc với tứ giác."
         },
         {
-          "speaker": "Ong Vàng",
+          "speaker": "Ong Nhí",
           "text": "Tớ còn ghi lại đường chạy của Rô-bốt, Việt và Mai qua bãi cỏ nữa. Chạy gì mà ngoằn ngoèo như tớ bay!"
         },
         {
@@ -682,7 +682,7 @@
         },
         {
           "text": "Xem ba bạn chạy thi trước",
-          "reply": "Ong Vàng: Được thôi, nhưng soi tranh một chút đã, tranh sắp khô rồi!"
+          "reply": "Ong Nhí: Được thôi, nhưng soi tranh một chút đã, tranh sắp khô rồi!"
         }
       ]
     },
@@ -854,7 +854,7 @@
         "right": [
           "Ba đường chạy đã có chủ, không ai chạy nhầm làn!",
           "Đọc tên đường chạy nhanh hơn cả Rô-bốt chạy.",
-          "Ong Vàng bay một vòng mừng ba vận động viên."
+          "Ong Nhí bay một vòng mừng ba vận động viên."
         ],
         "wrong": [
           "Việt chạy qua bốn điểm, tên đường phải có bốn chữ.",
@@ -869,7 +869,7 @@
           "duong-chay-cdeg": "nhom-viet"
         }
       },
-      "goTo": "Ra hiên nhìn bãi cỏ, Bò Cỏ Non đang làm trọng tài cuộc chạy thi"
+      "goTo": "Ra hiên đá nhìn ra bãi cỏ, Bò Cỏ Non đang làm trọng tài cuộc chạy thi"
     },
     {
       "id": "ai-chay-gap-khuc",
@@ -981,7 +981,7 @@
         "right": [
           "Đếm đoạn chuẩn tới từng khúc rẽ!",
           "Mai hai đoạn, Việt ba đoạn, Rô-bốt một đoạn, gọn gàng.",
-          "Ong Vàng phong cậu làm trọng tài bãi cỏ."
+          "Ong Nhí phong cậu làm trọng tài bãi cỏ."
         ],
         "wrong": [
           "Đường HIK có mấy khúc? Đếm từ H tới K xem.",
@@ -1146,7 +1146,7 @@
       "feedback": {
         "right": [
           "Chín và mười hai, cộng không sai một li!",
-          "Hai lối bay đo xong, Ong Vàng bay thử ngay.",
+          "Hai lối bay đo xong, Ong Nhí bay thử ngay.",
           "Cậu cộng ba số bằng nhau thật nhanh."
         ],
         "wrong": [
@@ -1170,11 +1170,11 @@
     {
       "id": "thi-bay-ai-xa-hon",
       "title": "Thi bay: lối nào dài hơn?",
-      "goTo": "Quay lại cửa sổ kính màu, Ong Vàng thách thi bay",
-      "target": "ong-vang",
+      "goTo": "Quay lại cửa sổ kính màu, Ong Nhí thách thi bay",
+      "target": "toan2-cd5-b26-ong-nhi",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Ong Vàng bay đường gấp khúc màu hồng gồm các đoạn dài 1, 2, 3 cạnh ô. {name} bay đường gấp khúc màu xanh gồm các đoạn dài 2, 2, 1, 1, 1 cạnh ô. Đường gấp khúc nào dài hơn?",
+      "prompt": "Ong Nhí bay đường gấp khúc màu hồng gồm các đoạn dài 1, 2, 3 cạnh ô. {name} bay đường gấp khúc màu xanh gồm các đoạn dài 2, 2, 1, 1, 1 cạnh ô. Đường gấp khúc nào dài hơn?",
       "template": "Đường màu hồng dài {{b1}} cạnh ô.\nĐường màu xanh dài {{b2}} cạnh ô.\n{{b3}} dài hơn.",
       "blanks": [
         {
@@ -1242,9 +1242,9 @@
       },
       "feedback": {
         "right": [
-          "Đường xanh của {name} dài hơn, Ong Vàng chịu thua tâm phục!",
+          "Đường xanh của {name} dài hơn, Ong Nhí chịu thua tâm phục!",
           "Bảy hơn sáu, cậu thắng cuộc thi bay rồi.",
-          "Ong Vàng tặng cậu một giọt mật vì thua cuộc vui vẻ."
+          "Ong Nhí tặng cậu một giọt mật vì thua cuộc vui vẻ."
         ],
         "wrong": [
           "Cộng lại các đoạn của đường xanh, có năm đoạn đấy.",
@@ -1265,14 +1265,14 @@
       "title": "Huy hiệu cánh ong",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Cửa sổ ghép kính lấp lánh trở lại, Ong Vàng bay một vòng đúng lối không đâm vào đâu. Ong gắn lên áo {name} huy hiệu \"Phi công đường gấp khúc\", Gấu Mực vỗ tay rung cả giá vẽ."
+      "text": "Cửa sổ kính màu của lâu đài lấp lánh trở lại, Ong Nhí bay một vòng đúng lối mà không đâm vào ô nào. Ong Nhí gắn lên áo {name} huy hiệu \"Phi công đường gấp khúc\", Gấu Mực vỗ tay rung cả giá vẽ."
     },
     {
       "id": "thiep-cua-chip",
-      "title": "Tấm thiệp của Chíp",
+      "title": "Tấm thiệp của Hổ Con Đậu",
       "kind": "next",
       "trigger": "auto",
-      "text": "Ở bàn thủ công, Gà Con Chíp ôm một xấp giấy màu và cây kéo nhỏ: Chíp muốn gấp thiệp chúc mừng cô giáo mà gấp mãi tờ giấy vẫn méo xệch!"
+      "text": "Ở bàn thủ công trong phòng vẽ, Hổ Con Đậu ôm một xấp giấy màu bằng hai chân trước: Đậu muốn gấp thiệp cảm ơn cô Hằng dạy vẽ, mà gấp mãi tờ giấy vẫn méo xệch!"
     }
   ],
   "reward": {

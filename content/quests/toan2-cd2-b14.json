@@ -1,20 +1,20 @@
 {
   "id": "toan2-cd2-b14",
-  "region": "truong-hoc",
-  "chapter": 2,
+  "region": "cho-phien",
+  "chapter": 1,
   "title": "Câu đố trước cửa nhà kính",
   "status": "active",
   "lesson": "toan2-t1-b14",
-  "summary": "Vẹt Xanh giữ chìa khóa nhà kính và chỉ chịu mở cửa khi cả vườn giải hết câu đố cộng, trừ qua 10 của nó; {name} chạy quanh nhà kính giúp Ông Sáu lùa bồ câu, cùng Gấu Bơ nhìn qua ô kính, xem tranh với Cáo Hoa rồi đấu với Vẹt một ván Cầu thang – cầu trượt.",
+  "summary": "Cánh Cụt Pin giữ chìa khóa nhà kính bán cây giống và kĩ tính tới mức chỉ chịu mở cửa khi mọi câu đố cộng, trừ qua 10 được kiểm đúng hết; {name} chạy quanh nhà kính giúp Ông Sáu lùa bồ câu, cùng Gấu Bơ nhìn qua ô kính, xem tranh với Cáo Hoa rồi đấu với Pin một ván Cầu thang – cầu trượt.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Vẹt Xanh, Ông Sáu, Gấu Bơ, Cáo Hoa",
-    "where": "Vườn trường: cửa nhà kính, chuồng bồ câu sau nhà kính, ô cửa kính bên hông, lối giữa nhà kính, sân gạch trước nhà kính",
-    "goal": "Giải hết câu đố của Vẹt Xanh để nhà kính được mở cửa",
+    "who": "Cánh Cụt Pin, Ông Sáu, Gấu Bơ, Cáo Hoa",
+    "where": "Chợ phiên, khu chợ rau hoa: cửa nhà kính bán cây giống, lồng bồ câu góc chợ, ô cửa kính bên hông, lối giữa nhà kính, sân gạch trước nhà kính",
+    "goal": "Giải hết câu đố của Cánh Cụt Pin để nhà kính được mở cửa",
     "play": "Tìm chìa khóa, tính nhẩm, đưa chim về chuồng, điền theo mũi tên, chọn câu đúng, tìm thức ăn cho con vật, chọn phép tính, chơi Cầu thang – cầu trượt",
     "learn": "Toán 2 Bài 14: luyện tập chung phép cộng, phép trừ (qua 10) trong phạm vi 20",
     "reward": "80 XP, 15 xu, Phép cộng +1, Phép trừ +1, Bài toán có lời văn +1",
-    "next": "Bài 15 \"Ki-lô-gam\""
+    "next": "Bài 15 \"Ki-lô-gam\" ở dãy hàng cân đong của Chợ phiên"
   },
   "phases": {
     "hook": "vet-khoa-cua",
@@ -28,49 +28,49 @@
   },
   "texts": {},
   "places": {
-    "vet-xanh": "cửa nhà kính",
+    "toan2-cd2-b14-canh-cut-pin": "cửa nhà kính",
     "tim-chia-khoa": "cửa nhà kính",
-    "toan2-cd2-b14-ong-sau": "chuồng bồ câu sau nhà kính",
+    "toan2-cd2-b14-ong-sau": "lồng bồ câu góc chợ",
     "toan2-cd2-b14-gau-mat": "ô cửa kính bên hông",
     "toan2-cd2-b14-cao-hoa": "lối giữa nhà kính",
-    "vet-xanh-san-gach": "sân gạch trước nhà kính"
+    "toan2-cd2-b14-canh-cut-pin-san-gach": "sân gạch trước nhà kính"
   },
   "steps": [
     {
       "id": "vet-khoa-cua",
-      "title": "Vẹt Xanh gác cửa",
-      "goTo": "Đến cửa nhà kính, Vẹt Xanh đang đậu trên tay nắm cửa",
+      "title": "Cánh Cụt Pin gác cửa",
+      "goTo": "Đến cửa nhà kính, Cánh Cụt Pin đang đứng thẳng như cột mốc, cánh ôm cuốn sổ",
       "kind": "dialogue",
-      "target": "vet-xanh",
+      "target": "toan2-cd2-b14-canh-cut-pin",
       "lines": [
         {
-          "speaker": "Vẹt Xanh",
-          "text": "Đứng lại! Đứng lại! Muốn vào nhà kính thì phải qua cửa ải câu đố của Vẹt Xanh. Đố! Đố! Đố!"
+          "speaker": "Cánh Cụt Pin",
+          "text": "Khoan đã! Nhà kính bán cây giống chỉ mở khi mọi câu đố được kiểm đúng hết. Tớ là Pin, giữ cân của chợ, sai một li tớ cũng biết."
         },
         {
-          "speaker": "Vẹt Xanh",
-          "text": "Mà khoan… tớ lỡ làm rơi ba chiếc chìa khóa nhỏ quanh đây rồi. Lắm lời quá nên quên mất cất ở đâu."
+          "speaker": "Cánh Cụt Pin",
+          "text": "Có điều… sáng nay tớ lôi chùm chìa khóa ra đếm đi đếm lại ba lần, rồi đánh rơi mất ba chiếc nhỏ quanh đây."
         },
         {
-          "speaker": "Vẹt Xanh",
-          "text": "{name} tìm giúp tớ ba chiếc chìa khóa, rồi tớ đố, cậu giải. Đồng ý không? Đồng ý không?"
+          "speaker": "Cánh Cụt Pin",
+          "text": "{name} tìm giúp tớ ba chiếc chìa khóa, rồi tớ đố, cậu giải, tớ kiểm. Được không?"
         }
       ],
       "choices": [
         {
           "text": "Đồng ý! Đố gì tớ cũng giải",
-          "reply": "Vẹt Xanh xòe cánh: Tự tin quá! Tự tin quá! Tớ thích rồi đấy."
+          "reply": "Cánh Cụt Pin gật đầu một cái thật nghiêm: Tốt. Tớ sẽ ghi từng câu vào sổ."
         },
         {
-          "text": "Cậu nói ít thôi Vẹt ơi!",
-          "reply": "Vẹt Xanh: Ít thôi, ít thôi… à mà tớ vừa nói hai lần rồi. Hí hí!"
+          "text": "Pin kĩ tính ghê!",
+          "reply": "Cánh Cụt Pin ưỡn ngực: Kĩ tính thì cân mới đúng, câu đố mới chuẩn chứ!"
         }
       ]
     },
     {
       "id": "tim-chia-khoa",
       "title": "Ba chiếc chìa khóa nhỏ",
-      "goTo": "Tìm ba chiếc chìa khóa Vẹt Xanh làm rơi quanh cửa nhà kính",
+      "goTo": "Tìm ba chiếc chìa khóa Cánh Cụt Pin làm rơi quanh cửa nhà kính",
       "kind": "search",
       "targets": [
         "toan2-cd2-chia-khoa-do",
@@ -80,33 +80,33 @@
     },
     {
       "id": "vet-on-bai",
-      "title": "Vẹt ôn bài siêu tốc",
+      "title": "Pin ôn bài từng bước",
       "kind": "dialogue",
-      "target": "vet-xanh",
+      "target": "toan2-cd2-b14-canh-cut-pin",
       "lines": [
         {
-          "speaker": "Vẹt Xanh",
-          "text": "Đủ chìa rồi! Giờ ôn bài siêu tốc nhé: cộng qua 10 thì gom cho đủ 10 trước, ví dụ 8 + 6 = 8 + 2 + 4 = 14."
+          "speaker": "Cánh Cụt Pin",
+          "text": "Một, hai, ba: đủ chìa rồi, tớ đếm lại hai lần. Giờ ôn bài nhé: cộng qua 10 thì gom cho đủ 10 trước, ví dụ 8 + 6 = 8 + 2 + 4 = 14."
         },
         {
-          "speaker": "Vẹt Xanh",
-          "text": "Trừ qua 10 thì trừ cho về 10 trước: 14 – 6 = 14 – 4 – 2 = 8. Nhớ chưa? Nhớ chưa?"
+          "speaker": "Cánh Cụt Pin",
+          "text": "Trừ qua 10 thì trừ cho về 10 trước: 14 – 6 = 14 – 4 – 2 = 8. Tớ soát rồi, đúng từng bước một."
         }
       ],
       "choices": [
         {
-          "text": "Nhớ rồi, đố đi Vẹt!",
-          "reply": "Vẹt Xanh ưỡn ngực: Câu đố thứ nhất, nghe cho kĩ đây!"
+          "text": "Nhớ rồi, đố đi Pin!",
+          "reply": "Cánh Cụt Pin mở sổ, hắng giọng: Câu đố thứ nhất, nghe cho kĩ đây!"
         }
       ]
     },
     {
       "id": "nham-hai-cot",
       "title": "Hai cột tính nhẩm",
-      "target": "vet-xanh",
+      "target": "toan2-cd2-b14-canh-cut-pin",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Vẹt Xanh đọc liền một mạch, không kịp thở. Tính nhẩm.",
+      "prompt": "Cánh Cụt Pin đọc từng phép một, đọc xong lại gạch một vạch vào sổ. Tính nhẩm.",
       "template": "a) 8 + 6 = {{b1}}\na) 9 + 4 = {{b2}}\na) 7 + 8 = {{b3}}\na) 5 + 7 = {{b4}}\na) 4 + 8 = {{b5}}\na) 8 + 7 = {{b6}}\nb) 11 – 8 = {{b7}}\nb) 13 – 7 = {{b8}}\nb) 17 – 9 = {{b9}}\nb) 14 – 6 = {{b10}}\nb) 12 – 5 = {{b11}}\nb) 16 – 8 = {{b12}}",
       "blanks": [
         {
@@ -342,14 +342,14 @@
       },
       "feedback": {
         "right": [
-          "Vẹt Xanh đọc nhanh mấy cậu cũng theo kịp, nể thật!",
-          "Mười hai phép tính, mười hai kết quả đúng, Vẹt câm nín luôn.",
-          "Đố! Đố! Đố!… Vẹt hết chữ để đố câu này rồi."
+          "Pin đọc tới đâu cậu theo kịp tới đó, nể thật!",
+          "Mười hai phép tính, mười hai kết quả đúng, Pin gạch đủ mười hai vạch.",
+          "Pin soát lại cả hai cột rồi gật gù: không sai một li."
         ],
         "wrong": [
           "Cột a là cộng, cột b là trừ, đừng lẫn hai cột nhé.",
           "Gom đủ 10 trước rồi cộng phần còn lại.",
-          "Một kết quả lệch, Vẹt Xanh đang nghiêng đầu chờ cậu sửa."
+          "Một kết quả lệch, Pin đang nghiêng đầu chờ cậu sửa."
         ]
       },
       "answer": {
@@ -372,11 +372,11 @@
     {
       "id": "chim-bo-cau-ve-chuong",
       "title": "Bồ câu về chuồng",
-      "goTo": "Vòng ra chuồng bồ câu sau nhà kính, Ông Sáu đang rắc thóc gọi chim",
+      "goTo": "Vòng ra lồng bồ câu góc chợ, Ông Sáu đang rắc thóc gọi chim",
       "target": "toan2-cd2-b14-ong-sau",
       "kind": "challenge",
       "mechanic": "classify",
-      "prompt": "Đàn bồ câu bạn của Vẹt bay ngang mái kính, con nào cũng đeo một phép tính. Tìm chuồng cho mỗi con chim.",
+      "prompt": "Đàn bồ câu Ông Sáu mang ra chợ bay ngang mái kính, con nào cũng đeo một phép tính. Tìm chuồng cho mỗi con chim.",
       "groups": [
         {
           "id": "nhom-chuong-9",
@@ -460,7 +460,7 @@
       "goTo": "Sang ô cửa kính bên hông, Gấu Bơ đang áp mũi nhìn vào trong",
       "target": "toan2-cd2-b14-gau-mat",
       "kind": "riddle",
-      "question": "Vẹt Xanh ghé mắt qua ô kính, nhìn thấy giá sách của lớp học vườn. Trên giá có 9 quyển sách và 8 quyển vở. Hỏi trên giá có tất cả bao nhiêu quyển sách và vở?",
+      "question": "Cánh Cụt Pin ghé mắt qua ô kính, thấy giá sách dạy trồng cây trong nhà kính. Trên giá có 9 quyển sách và 8 quyển vở. Hỏi trên giá có tất cả bao nhiêu quyển sách và vở?",
       "skill": "bai-toan-loi-van",
       "curriculumRef": [
         "toan2-t1-b14-luyen-tap-3-a"
@@ -480,7 +480,7 @@
         "right": [
           "Mười bảy quyển, Gấu Bơ đếm lại bằng ngón tay mũm mĩm: chuẩn!",
           "Gộp sách với vở gọn gàng như xếp lên giá.",
-          "Cậu giải nhanh hơn Vẹt kịp hỏi \"đố! đố!\"."
+          "Cậu giải xong trước cả khi Pin kịp lật sổ."
         ],
         "wrong": [
           "Hỏi \"tất cả\" thì mình gộp lại bằng phép cộng.",
@@ -498,7 +498,7 @@
       "target": "toan2-cd2-b14-gau-mat",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Vẹt Xanh vẽ mũi tên nối các chậu cây trong nhà kính: bắt đầu từ chậu số 7, cộng 9, trừ 8, cộng 5. Số ?",
+      "prompt": "Cánh Cụt Pin vẽ mũi tên nối các chậu cây giống trong nhà kính: bắt đầu từ chậu số 7, cộng 9, trừ 8, cộng 5. Số ?",
       "template": "7 → (+ 9) → {{b1}} → (– 8) → {{b2}} → (+ 5) → {{b3}}",
       "blanks": [
         {
@@ -574,7 +574,7 @@
         "right": [
           "Đi hết các mũi tên, chậu cây cuối cùng nở hoa luôn!",
           "Ba chậu cây, ba con số, chẳng lạc mũi tên nào.",
-          "Vẹt Xanh hót một tràng dài: tính tiếp sức hay quá!"
+          "Pin vỗ hai cánh lạch phạch: tính tiếp sức mà không trượt bước nào!"
         ],
         "wrong": [
           "Lấy kết quả ô trước để làm phép tính tiếp theo nhé.",
@@ -593,37 +593,37 @@
     {
       "id": "de-truoc-kho-sau",
       "title": "Đố dễ hay đố khó?",
-      "goTo": "Về cửa nhà kính, Vẹt Xanh đang lắc chùm chìa khóa leng keng",
+      "goTo": "Về cửa nhà kính, Cánh Cụt Pin đang lắc chùm chìa khóa leng keng",
       "kind": "dialogue",
-      "target": "vet-xanh",
+      "target": "toan2-cd2-b14-canh-cut-pin",
       "lines": [
         {
-          "speaker": "Vẹt Xanh",
-          "text": "Giỏi! Giỏi! Nửa cửa nhà kính đã hé ra rồi. Còn một nửa nữa thôi."
+          "speaker": "Cánh Cụt Pin",
+          "text": "Đúng hết, tớ đã kiểm! Nửa cửa nhà kính hé ra rồi. Còn một nửa nữa thôi."
         },
         {
-          "speaker": "Vẹt Xanh",
+          "speaker": "Cánh Cụt Pin",
           "text": "Cậu muốn tớ đố tiếp loạt tính nhẩm siêu tốc, hay đố những câu \"bẫy\" Đúng – Sai trước?"
         }
       ],
       "choices": [
         {
           "text": "Tính nhẩm siêu tốc trước!",
-          "reply": "Vẹt Xanh: Siêu tốc thì tớ đọc nhanh gấp đôi nhé! Chuẩn bị… bắt đầu!"
+          "reply": "Cánh Cụt Pin: Siêu tốc thì tớ bấm đồng hồ nhé! Chuẩn bị… bắt đầu!"
         },
         {
           "text": "Câu bẫy trước cho vui!",
-          "reply": "Vẹt Xanh: Muốn bẫy thì phải qua tính nhẩm trước đã. Hí hí, tớ cũng biết bẫy đấy!"
+          "reply": "Cánh Cụt Pin: Muốn gỡ bẫy thì phải qua tính nhẩm trước đã. Làm đúng thứ tự mới được!"
         }
       ]
     },
     {
       "id": "nham-sieu-toc",
       "title": "Tính nhẩm siêu tốc",
-      "target": "vet-xanh",
+      "target": "toan2-cd2-b14-canh-cut-pin",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Vẹt Xanh vừa đọc vừa nhảy lò cò trên giàn hoa. Tính nhẩm.",
+      "prompt": "Cánh Cụt Pin bấm đồng hồ, đọc phép tính đều như tiếng quả cân gõ. Tính nhẩm.",
       "template": "7 + 6 = {{b1}}\n8 + 4 = {{b2}}\n6 + 8 = {{b3}}\n9 + 7 = {{b4}}\n13 – 7 = {{b5}}\n12 – 8 = {{b6}}\n14 – 6 = {{b7}}\n16 – 9 = {{b8}}\n13 – 6 = {{b9}}\n12 – 4 = {{b10}}\n14 – 8 = {{b11}}\n16 – 7 = {{b12}}",
       "blanks": [
         {
@@ -859,12 +859,12 @@
       },
       "feedback": {
         "right": [
-          "Siêu tốc thật! Vẹt Xanh chóng mặt ngã khỏi giàn hoa.",
-          "Cậu tính còn nhanh hơn Vẹt Xanh nói, kỉ lục mới!",
+          "Siêu tốc thật! Pin nhìn đồng hồ mà tròn cả mắt.",
+          "Cậu tính còn nhanh hơn Pin đọc, kỉ lục mới của chợ!",
           "Không sót phép nào, cửa nhà kính kêu \"cạch\" mở thêm."
         ],
         "wrong": [
-          "Chậm lại một chút, Vẹt Xanh đọc nhanh quá đấy.",
+          "Chậm lại một chút, Pin bấm giờ nhưng không giục đâu.",
           "Nhìn dấu trước khi tính: cộng hay trừ nào?",
           "Một ô lệch rồi, dùng mẹo về 10 tính lại nhé."
         ]
@@ -888,12 +888,12 @@
     },
     {
       "id": "cau-bay-dung-sai",
-      "title": "Câu bẫy của Vẹt",
-      "goTo": "Ra sân gạch trước nhà kính, Vẹt Xanh nhảy lò cò chờ đố câu bẫy",
-      "target": "vet-xanh-san-gach",
+      "title": "Câu bẫy của Pin",
+      "goTo": "Ra sân gạch trước nhà kính, Cánh Cụt Pin đã kẻ sẵn bốn ô câu bẫy",
+      "target": "toan2-cd2-b14-canh-cut-pin-san-gach",
       "kind": "challenge",
       "mechanic": "multi-select",
-      "prompt": "Vẹt Xanh cười ranh mãnh: có câu thật, có câu bẫy. Đ, S ? Chọn tất cả các câu đúng (Đ); câu không chọn là sai (S).",
+      "prompt": "Cánh Cụt Pin nghiêm mặt: có câu thật, có câu bẫy. Đ, S ? Chọn tất cả các câu đúng (Đ); câu không chọn là sai (S).",
       "choices": [
         {
           "id": "a-9-6-14",
@@ -932,8 +932,8 @@
       },
       "feedback": {
         "right": [
-          "Bẫy của Vẹt bị cậu gỡ sạch sành sanh!",
-          "Vẹt Xanh lẩm bẩm: lần sau phải nghĩ bẫy khó hơn mới được.",
+          "Bẫy của Pin bị cậu gỡ sạch sành sanh, sổ ghi: đúng cả!",
+          "Pin lẩm bẩm ghi sổ: lần sau phải nghĩ bẫy khó hơn mới được.",
           "Hai câu đúng, hai câu bẫy, cậu phân biệt rõ ràng."
         ],
         "wrong": [
@@ -955,7 +955,7 @@
       "goTo": "Lách qua nửa cửa vừa hé vào lối giữa nhà kính, Cáo Hoa đang treo tranh",
       "target": "toan2-cd2-b14-cao-hoa",
       "kind": "riddle",
-      "question": "Vẹt Xanh khoe bức tranh treo trong nhà kính. Trong đợt đi trại hè, Nam vẽ được 11 bức tranh, Mai vẽ được ít hơn Nam 3 bức tranh. Hỏi Mai vẽ được bao nhiêu bức tranh?",
+      "question": "Cáo Hoa khoe bức tranh treo giữa các chậu cây. Trong đợt đi trại hè, Nam vẽ được 11 bức tranh, Mai vẽ được ít hơn Nam 3 bức tranh. Hỏi Mai vẽ được bao nhiêu bức tranh?",
       "skill": "bai-toan-loi-van",
       "curriculumRef": [
         "toan2-t1-b14-luyen-tap-2-3"
@@ -993,7 +993,7 @@
       "target": "toan2-cd2-b14-cao-hoa",
       "kind": "challenge",
       "mechanic": "classify",
-      "prompt": "Đến giờ trưa, các con vật trong vườn kéo đến cửa nhà kính đòi ăn. Tính rồi tìm thức ăn cho mỗi con vật.",
+      "prompt": "Đến giờ trưa, các con vật đi chợ kéo đến cửa nhà kính đòi ăn. Tính rồi tìm thức ăn cho mỗi con vật.",
       "groups": [
         {
           "id": "nhom-7-chiec-la",
@@ -1055,7 +1055,7 @@
       "feedback": {
         "right": [
           "Măm măm! Khỉ ôm chuối, voi nhai mía, sâu gặm lá ngon lành.",
-          "Ai cũng no căng bụng, Vẹt Xanh chỉ xin một hạt hướng dương.",
+          "Ai cũng no căng bụng, Pin chỉ xin một con cá khô bé xíu.",
           "Bốn con vật, bốn món ăn, không ai phải nhịn đói."
         ],
         "wrong": [
@@ -1076,11 +1076,11 @@
     {
       "id": "phep-tinh-be-nhat",
       "title": "Phép tính bé nhất",
-      "goTo": "Chạy ra sân gạch trước nhà kính, Vẹt Xanh giơ ba tấm thẻ chờ cậu",
-      "target": "vet-xanh-san-gach",
+      "goTo": "Chạy ra sân gạch trước nhà kính, Cánh Cụt Pin giơ ba tấm thẻ chờ cậu",
+      "target": "toan2-cd2-b14-canh-cut-pin-san-gach",
       "kind": "challenge",
       "mechanic": "quiz",
-      "prompt": "Vẹt Xanh giơ ba tấm thẻ. Chọn câu trả lời đúng. a) Phép tính nào dưới đây có kết quả bé nhất? A. 15 – 9 B. 13 – 8 C. 12 – 5",
+      "prompt": "Cánh Cụt Pin giơ ba tấm thẻ. Chọn câu trả lời đúng. a) Phép tính nào dưới đây có kết quả bé nhất? A. 15 – 9 B. 13 – 8 C. 12 – 5",
       "choices": [
         {
           "id": "a-15-9",
@@ -1112,7 +1112,7 @@
       },
       "feedback": {
         "right": [
-          "Thẻ B bé nhất, Vẹt Xanh lật thẻ đánh \"tách\"!",
+          "Thẻ B bé nhất, Pin lật thẻ đánh \"tách\"!",
           "Cậu so ba kết quả nhanh như chớp.",
           "Bé nhất là 5, cậu chọn trúng phóc."
         ],
@@ -1129,10 +1129,10 @@
     {
       "id": "phep-tinh-lon-nhat",
       "title": "Phép tính lớn nhất",
-      "target": "vet-xanh-san-gach",
+      "target": "toan2-cd2-b14-canh-cut-pin-san-gach",
       "kind": "challenge",
       "mechanic": "quiz",
-      "prompt": "Vẹt Xanh đổi sang ba thẻ phép cộng. Chọn câu trả lời đúng. b) Phép tính nào dưới đây có kết quả lớn nhất? A. 7 + 8 B. 9 + 5 C. 8 + 9",
+      "prompt": "Cánh Cụt Pin đổi sang ba thẻ phép cộng. Chọn câu trả lời đúng. b) Phép tính nào dưới đây có kết quả lớn nhất? A. 7 + 8 B. 9 + 5 C. 8 + 9",
       "choices": [
         {
           "id": "a-7-8",
@@ -1164,7 +1164,7 @@
       },
       "feedback": {
         "right": [
-          "Thẻ C lớn nhất, Vẹt Xanh tung thẻ lên trời ăn mừng!",
+          "Thẻ C lớn nhất, Pin tung thẻ lên trời ăn mừng!",
           "Mười bảy là lớn nhất, cậu thắng ván thẻ rồi.",
           "Đổi đề mà cậu vẫn không lúng túng chút nào."
         ],
@@ -1182,7 +1182,7 @@
       "id": "tinh-ba-so",
       "title": "Ba số liền một hàng",
       "goTo": "Quay lại cửa nhà kính, chỉ còn đúng một ổ khóa chưa mở",
-      "target": "vet-xanh",
+      "target": "toan2-cd2-b14-canh-cut-pin",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "prompt": "Câu đố cuối của cửa ải: phép tính có ba số, tính từ trái sang phải. Tính.",
@@ -1279,7 +1279,7 @@
         "right": [
           "Cạch! Ổ khóa cuối cùng bật mở, nhà kính chào cậu!",
           "Tính từ trái sang phải, đều tăm tắp không sai bước nào.",
-          "Vẹt Xanh tuyên bố: cửa ải câu đố đã bị phá!"
+          "Cánh Cụt Pin đóng sổ: cửa ải câu đố đã qua, không sai câu nào!"
         ],
         "wrong": [
           "Tính lần lượt từ trái sang phải nhé.",
@@ -1299,12 +1299,12 @@
     {
       "id": "cau-thang-cau-truot",
       "title": "Ván Cầu thang – cầu trượt",
-      "goTo": "Ra sân gạch trước nhà kính, Vẹt Xanh đã kẻ bàn cờ",
-      "target": "vet-xanh-san-gach",
+      "goTo": "Ra sân gạch trước nhà kính, Cánh Cụt Pin đã kẻ bàn cờ",
+      "target": "toan2-cd2-b14-canh-cut-pin-san-gach",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Vẹt Xanh thách đấu một ván CẦU THANG – CẦU TRƯỢT: em và Vẹt mỗi người một quân. Cách chơi: • Chơi theo nhóm. • Người chơi bắt đầu từ ô xuất phát. Khi đến lượt, người chơi gieo xúc xắc. Đếm số chấm ở mặt trên xúc xắc rồi di chuyển số ô bằng số chấm đó. Nêu kết quả phép tính tại ô đi đến, nếu nêu sai kết quả thì phải quay về ô xuất phát trước đó. Khi đến chân cầu thang, em leo lên; khi đến đỉnh cầu trượt, em trượt xuống. • Trò chơi kết thúc khi có người về đích. Đến ô nào, em nêu kết quả phép tính ở ô đó, kể cả ô của Vẹt.",
-      "template": "Lượt 1: Em gieo được 4 chấm, đến ô 14 – 8 = {{b1}}\nLượt 2: Vẹt gieo được 3 chấm, đến ô 13 – 6 = {{b2}}\nLượt 3: Em gieo được 2 chấm, đến ô 18 – 9 = {{b3}}\nÔ này là chân cầu thang, em leo lên tới ô 15 – 8 = {{b4}}\nLượt 4: Vẹt gieo được 5 chấm, đến ô 16 – 8 = {{b5}}\nLượt 5: Em gieo được 1 chấm, đến ô 14 – 5 = {{b6}}\nLại một chân cầu thang! Em leo lên tới ô 8 + 4 = {{b7}}\nLượt 6: Vẹt gieo được 6 chấm, đến ô 4 + 9 = {{b8}}\nLượt 7: Em gieo được 1 chấm, đến ô 7 + 8 = {{b9}}\nLượt 8: Vẹt gieo được 6 chấm, đến ô 16 – 7 = {{b10}}\nÔ của Vẹt là đỉnh cầu trượt, Vẹt trượt xuống ô 7 + 7 = {{b11}}\nLượt 9: Em gieo được 1 chấm và về ĐÍCH!",
+      "prompt": "Cánh Cụt Pin thách đấu một ván CẦU THANG – CẦU TRƯỢT: em và Pin mỗi người một quân. Cách chơi: • Chơi theo nhóm. • Người chơi bắt đầu từ ô xuất phát. Khi đến lượt, người chơi gieo xúc xắc. Đếm số chấm ở mặt trên xúc xắc rồi di chuyển số ô bằng số chấm đó. Nêu kết quả phép tính tại ô đi đến, nếu nêu sai kết quả thì phải quay về ô xuất phát trước đó. Khi đến chân cầu thang, em leo lên; khi đến đỉnh cầu trượt, em trượt xuống. • Trò chơi kết thúc khi có người về đích. Đến ô nào, em nêu kết quả phép tính ở ô đó, kể cả ô của Pin.",
+      "template": "Lượt 1: Em gieo được 4 chấm, đến ô 14 – 8 = {{b1}}\nLượt 2: Pin gieo được 3 chấm, đến ô 13 – 6 = {{b2}}\nLượt 3: Em gieo được 2 chấm, đến ô 18 – 9 = {{b3}}\nÔ này là chân cầu thang, em leo lên tới ô 15 – 8 = {{b4}}\nLượt 4: Pin gieo được 5 chấm, đến ô 16 – 8 = {{b5}}\nLượt 5: Em gieo được 1 chấm, đến ô 14 – 5 = {{b6}}\nLại một chân cầu thang! Em leo lên tới ô 8 + 4 = {{b7}}\nLượt 6: Pin gieo được 6 chấm, đến ô 4 + 9 = {{b8}}\nLượt 7: Em gieo được 1 chấm, đến ô 7 + 8 = {{b9}}\nLượt 8: Pin gieo được 6 chấm, đến ô 16 – 7 = {{b10}}\nÔ của Pin là đỉnh cầu trượt, Pin trượt xuống ô 7 + 7 = {{b11}}\nLượt 9: Em gieo được 1 chấm và về ĐÍCH!",
       "blanks": [
         {
           "id": "b1",
@@ -1505,20 +1505,20 @@
         ],
         "hint": "Ô 18 – 9 là chân cầu thang đầu tiên.",
         "answer": {
-          "text": "Lượt 1: Em gieo được 4 chấm, đến ô 14 – 8 = 6; Lượt 2: Vẹt gieo được 3 chấm, đến ô 13 – 6 = 7; Lượt 3: Em gieo được 2 chấm, đến ô 18 – 9 = 9; Ô này là chân cầu thang, em leo lên tới ô 15 – 8 = 7; Lượt 4: Vẹt gieo được 5 chấm, đến ô 16 – 8 = 8; Lượt 5: Em gieo được 1 chấm, đến ô 14 – 5 = 9; Lại một chân cầu thang! Em leo lên tới ô 8 + 4 = 12; Lượt 6: Vẹt gieo được 6 chấm, đến ô 4 + 9 = 13; Lượt 7: Em gieo được 1 chấm, đến ô 7 + 8 = 15; Lượt 8: Vẹt gieo được 6 chấm, đến ô 16 – 7 = 9; Ô của Vẹt là đỉnh cầu trượt, Vẹt trượt xuống ô 7 + 7 = 14; Lượt 9: Em gieo được 1 chấm và về ĐÍCH!",
-          "explanation": "Kết quả các ô theo lượt: 6, 7, 9, 7, 8, 9, 12, 13, 15, 9, 14. Em leo hai cầu thang và về đích trước, Vẹt bị trượt từ ô 16 – 7 xuống ô 7 + 7."
+          "text": "Lượt 1: Em gieo được 4 chấm, đến ô 14 – 8 = 6; Lượt 2: Pin gieo được 3 chấm, đến ô 13 – 6 = 7; Lượt 3: Em gieo được 2 chấm, đến ô 18 – 9 = 9; Ô này là chân cầu thang, em leo lên tới ô 15 – 8 = 7; Lượt 4: Pin gieo được 5 chấm, đến ô 16 – 8 = 8; Lượt 5: Em gieo được 1 chấm, đến ô 14 – 5 = 9; Lại một chân cầu thang! Em leo lên tới ô 8 + 4 = 12; Lượt 6: Pin gieo được 6 chấm, đến ô 4 + 9 = 13; Lượt 7: Em gieo được 1 chấm, đến ô 7 + 8 = 15; Lượt 8: Pin gieo được 6 chấm, đến ô 16 – 7 = 9; Ô của Pin là đỉnh cầu trượt, Pin trượt xuống ô 7 + 7 = 14; Lượt 9: Em gieo được 1 chấm và về ĐÍCH!",
+          "explanation": "Kết quả các ô theo lượt: 6, 7, 9, 7, 8, 9, 12, 13, 15, 9, 14. Em leo hai cầu thang và về đích trước, Pin bị trượt từ ô 16 – 7 xuống ô 7 + 7."
         }
       },
       "feedback": {
         "right": [
-          "Về ĐÍCH! Vẹt Xanh thua mà vẫn hót \"Hay quá! Hay quá!\"",
+          "Về ĐÍCH! Pin thua mà vẫn ghi vào sổ: \"Thắng đúng luật, chính xác!\"",
           "Hai lần leo thang, không lần nào nêu sai kết quả, vô địch!",
-          "Vẹt trượt cầu trượt kêu \"Ối ối\", cả vườn cười rộ."
+          "Pin trượt cầu trượt kêu \"Ối ối\", cả dãy hàng cười rộ."
         ],
         "wrong": [
           "Nêu sai là phải về ô xuất phát đó, tính lại cẩn thận nhé.",
           "Leo lên đỉnh thang thì tính ô mới ở đỉnh thang.",
-          "Có một lượt của Vẹt cậu tính chưa đúng."
+          "Có một lượt của Pin cậu tính chưa đúng."
         ]
       },
       "answer": {
@@ -1542,14 +1542,14 @@
       "title": "Nhà kính mở cửa",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Cửa nhà kính mở toang, hương hoa ùa ra. Vẹt Xanh đeo cho {name} huy hiệu \"Phá cửa ải câu đố\" và hót vang: \"Nhà vô địch! Nhà vô địch!\""
+      "text": "Cửa nhà kính mở toang, hương cây giống ùa ra. Cánh Cụt Pin đeo cho {name} huy hiệu \"Phá cửa ải câu đố\" và nghiêm trang ghi tên cậu vào sổ của chợ."
     },
     {
       "id": "can-dia-lech",
       "title": "Chiếc cân đĩa lệch",
       "kind": "next",
       "trigger": "auto",
-      "text": "Từ căng tin vọng sang tiếng kêu: Chim Cánh Cụt Pin đứng nhìn chiếc cân đĩa lệch hẳn một bên, chưa biết cân lại các túi hàng thế nào."
+      "text": "Từ dãy hàng cân đong của Chợ phiên vọng sang tiếng kêu: chiếc cân đĩa ở quầy cân lệch hẳn một bên. Cánh Cụt Pin vội lạch bạch chạy sang, chưa biết cân lại các túi hàng thế nào."
     }
   ],
   "reward": {

@@ -32,8 +32,11 @@
       "model": "packs/kenney-cube-pets/2.0/animal-lion.glb",
       "scale": 0.7446,
       "animation": "idle",
-      "chapter": 1,
-      "quest": "toan2-cd1-b01"
+      "chapters": [
+        1,
+        2,
+        4
+      ]
     },
     {
       "id": "khi-lanh",
@@ -50,208 +53,7 @@
       "model": "packs/kenney-cube-pets/2.0/animal-monkey.glb",
       "scale": 0.6832,
       "animation": "idle",
-      "chapter": 4,
-      "quest": "toan2-cd4-b20"
-    },
-    {
-      "id": "cao-lem",
-      "kind": "npc",
-      "name": "Cáo Lém",
-      "label": "Nói chuyện",
-      "position": [
-        40.5,
-        13,
-        32.5
-      ],
-      "yaw": 165,
-      "radius": 3,
-      "model": "packs/kenney-cube-pets/2.0/animal-fox.glb",
-      "scale": 0.593,
-      "animation": "idle",
-      "chapters": [
-        1,
-        4
-      ]
-    },
-    {
-      "id": "chim-canh-cut-pin",
-      "kind": "npc",
-      "name": "Cánh Cụt Pin",
-      "label": "Nói chuyện",
-      "position": [
-        94.5,
-        13,
-        141.5
-      ],
-      "yaw": 122,
-      "radius": 3,
-      "model": "packs/kenney-cube-pets/2.0/animal-penguin.glb",
-      "scale": 0.6273,
-      "animation": "idle",
-      "chapters": [
-        3,
-        7
-      ]
-    },
-    {
-      "id": "cho-muc",
-      "kind": "npc",
-      "name": "Chó Mực",
-      "label": "Nói chuyện",
-      "position": [
-        110.5,
-        13,
-        29.5
-      ],
-      "yaw": 160,
-      "radius": 3,
-      "model": "packs/kenney-cube-pets/2.0/animal-dog.glb",
-      "scale": 0.6311,
-      "animation": "idle",
-      "chapters": [
-        1,
-        6
-      ]
-    },
-    {
-      "id": "ga-con-chip",
-      "kind": "npc",
-      "name": "Gà Con Chíp",
-      "label": "Nói chuyện",
-      "position": [
-        31.5,
-        13,
-        49.5
-      ],
-      "yaw": 333,
-      "radius": 3,
-      "model": "packs/kenney-cube-pets/2.0/animal-chick.glb",
-      "scale": 0.4391,
-      "animation": "idle",
-      "chapters": [
-        1,
-        5
-      ]
-    },
-    {
-      "id": "heo-un",
-      "kind": "npc",
-      "name": "Heo Ủn",
-      "label": "Nói chuyện",
-      "position": [
-        113.5,
-        13,
-        131.5
-      ],
-      "yaw": 39,
-      "radius": 3,
-      "model": "packs/kenney-cube-pets/2.0/animal-pig.glb",
-      "scale": 0.6311,
-      "animation": "idle",
-      "chapters": [
-        2,
-        3
-      ]
-    },
-    {
-      "id": "ho-van",
-      "kind": "npc",
-      "name": "Hổ Vằn",
-      "label": "Nói chuyện",
-      "position": [
-        111.5,
-        13,
-        60.5
-      ],
-      "yaw": 138,
-      "radius": 3,
-      "model": "packs/kenney-cube-pets/2.0/animal-tiger.glb",
-      "scale": 0.7602,
-      "animation": "idle",
-      "chapters": [
-        2,
-        4
-      ]
-    },
-    {
-      "id": "huou-cao",
-      "kind": "npc",
-      "name": "Hươu Cao",
-      "label": "Nói chuyện",
-      "position": [
-        59.5,
-        13,
-        93.5
-      ],
-      "yaw": 157,
-      "radius": 3,
-      "model": "packs/kenney-cube-pets/2.0/animal-giraffe.glb",
-      "scale": 1.2837,
-      "animation": "idle",
-      "chapters": [
-        5,
-        7
-      ]
-    },
-    {
-      "id": "meo-mun",
-      "kind": "npc",
-      "name": "Mèo Mun",
-      "label": "Nói chuyện",
-      "position": [
-        165.5,
-        13,
-        25.5
-      ],
-      "yaw": 164,
-      "radius": 3,
-      "model": "packs/kenney-cube-pets/2.0/animal-cat.glb",
-      "scale": 0.5263,
-      "animation": "idle",
-      "chapters": [
-        1,
-        4
-      ]
-    },
-    {
-      "id": "ong-vang",
-      "kind": "npc",
-      "name": "Ong Vàng",
-      "label": "Nói chuyện",
-      "position": [
-        77.5,
-        13,
-        54.5
-      ],
-      "yaw": 208,
-      "radius": 3,
-      "model": "packs/kenney-cube-pets/2.0/animal-bee.glb",
-      "scale": 0.3002,
-      "animation": "idle",
-      "chapters": [
-        2,
-        5
-      ]
-    },
-    {
-      "id": "sau-xanh",
-      "kind": "npc",
-      "name": "Sâu Xanh",
-      "label": "Nói chuyện",
-      "position": [
-        146.5,
-        13,
-        51.5
-      ],
-      "yaw": 283,
-      "radius": 3,
-      "model": "packs/kenney-cube-pets/2.0/animal-caterpillar.glb",
-      "scale": 0.458,
-      "animation": "idle",
-      "chapters": [
-        2,
-        6
-      ]
+      "chapter": 1
     },
     {
       "id": "toan2-cd1-b01-co-tham",
@@ -259,11 +61,11 @@
       "name": "Cô Thắm",
       "label": "Nói chuyện",
       "position": [
-        168.5,
+        34.5,
         13,
-        56.5
+        41.5
       ],
-      "yaw": 10,
+      "yaw": 334,
       "radius": 3,
       "model": "packs/kenney-blocky-characters/2.0/character-n.glb",
       "scale": 0.7037,
@@ -271,255 +73,24 @@
       "chapter": 1
     },
     {
-      "id": "toan2-cd5-b28-co-hang",
+      "id": "toan2-cd1-b03-khi-ti-toay",
       "kind": "npc",
-      "name": "Cô Hằng",
+      "name": "Khỉ Tí Toáy",
       "label": "Nói chuyện",
       "position": [
-        51.5,
-        13,
-        116.5
-      ],
-      "yaw": 125,
-      "radius": 3,
-      "model": "packs/kenney-blocky-characters/2.0/character-e.glb",
-      "scale": 0.7037,
-      "animation": "idle",
-      "chapters": [
-        5,
-        7
-      ]
-    },
-    {
-      "id": "toan2-cd5-b28-meo-muop",
-      "kind": "npc",
-      "name": "Mèo Mướp",
-      "label": "Nói chuyện",
-      "position": [
-        155.5,
-        13,
-        130.5
-      ],
-      "yaw": 236,
-      "radius": 3,
-      "model": "generated/characters/npc-cat-cam-overalls.glb",
-      "scale": 0.6415,
-      "chapters": [
-        5,
-        7
-      ]
-    },
-    {
-      "id": "toan2-cd6-b29-gau-truc-kho",
-      "kind": "npc",
-      "name": "Gấu Trúc Khò",
-      "label": "Nói chuyện",
-      "position": [
-        135.5,
-        13,
-        126.5
-      ],
-      "yaw": 162,
-      "radius": 3,
-      "model": "packs/kenney-cube-pets/2.0/animal-panda.glb",
-      "scale": 0.7993,
-      "animation": "idle",
-      "chapter": 6
-    },
-    {
-      "id": "toan2-cd6-b31-gau-trang-u",
-      "kind": "npc",
-      "name": "Gấu Trắng Ú",
-      "label": "Nói chuyện",
-      "position": [
-        49.5,
-        13,
-        96.5
-      ],
-      "yaw": 124,
-      "radius": 3,
-      "model": "packs/kenney-cube-pets/2.0/animal-polar.glb",
-      "scale": 0.9326,
-      "animation": "idle",
-      "chapters": [
-        6,
-        7
-      ]
-    },
-    {
-      "id": "toan2-cd6-b32-chi-thao",
-      "kind": "npc",
-      "name": "Chị Thảo",
-      "label": "Nói chuyện",
-      "position": [
-        39.5,
-        13,
-        120.5
-      ],
-      "yaw": 347,
-      "radius": 3,
-      "model": "packs/kenney-blocky-characters/2.0/character-f.glb",
-      "scale": 0.7037,
-      "animation": "idle",
-      "chapters": [
-        6,
-        7
-      ]
-    },
-    {
-      "id": "toan2-cd6-b32-ong-loc",
-      "kind": "npc",
-      "name": "Ông Lộc",
-      "label": "Nói chuyện",
-      "position": [
-        107.5,
-        13,
-        43.5
-      ],
-      "yaw": 85,
-      "radius": 3,
-      "model": "packs/kenney-blocky-characters/2.0/character-i.glb",
-      "scale": 0.7037,
-      "animation": "idle",
-      "chapters": [
-        6,
-        7
-      ]
-    },
-    {
-      "id": "toan2-cd7-b33-bac-thuan",
-      "kind": "npc",
-      "name": "Bác Thuận",
-      "label": "Nói chuyện",
-      "position": [
-        25.5,
-        13,
-        60.5
-      ],
-      "yaw": 8,
-      "radius": 3,
-      "model": "packs/kenney-blocky-characters/2.0/character-m.glb",
-      "scale": 0.7037,
-      "animation": "idle",
-      "chapter": 7
-    },
-    {
-      "id": "toan2-cd7-b33-ga-loc-coc",
-      "kind": "npc",
-      "name": "Gà Lóc Cóc",
-      "label": "Nói chuyện",
-      "position": [
-        80.5,
+        86.5,
         13,
         89.5
       ],
-      "yaw": 184,
+      "yaw": 231,
       "radius": 3,
-      "model": "packs/kenney-cube-pets/2.0/animal-chick.glb",
-      "scale": 0.4391,
+      "model": "packs/kenney-cube-pets/2.0/animal-monkey.glb",
+      "scale": 0.6832,
       "animation": "idle",
-      "chapter": 7
-    },
-    {
-      "id": "toan2-cd7-b33-gau-bum",
-      "kind": "npc",
-      "name": "Gấu Bum",
-      "label": "Nói chuyện",
-      "position": [
-        154.5,
-        13,
-        29.5
-      ],
-      "yaw": 292,
-      "radius": 3,
-      "model": "generated/characters/npc-bear-den-overalls-red.glb",
-      "scale": 0.6667,
-      "chapter": 7
-    },
-    {
-      "id": "toan2-cd7-b33-heo-mum-mim",
-      "kind": "npc",
-      "name": "Heo Mũm Mĩm",
-      "label": "Nói chuyện",
-      "position": [
-        159.5,
-        13,
-        38.5
-      ],
-      "yaw": 331,
-      "radius": 3,
-      "model": "packs/kenney-cube-pets/2.0/animal-hog.glb",
-      "scale": 0.6597,
-      "animation": "idle",
-      "chapter": 7
-    },
-    {
-      "id": "toan2-cd7-b33-thay-quang",
-      "kind": "npc",
-      "name": "Thầy Quang",
-      "label": "Nói chuyện",
-      "position": [
-        140.5,
-        13,
-        24.5
-      ],
-      "yaw": 12,
-      "radius": 3,
-      "model": "packs/kenney-blocky-characters/2.0/character-q.glb",
-      "scale": 0.7037,
-      "animation": "idle",
-      "chapter": 7
-    },
-    {
-      "id": "toan2-cd7-b34-meo-cam-xiu",
-      "kind": "npc",
-      "name": "Mèo Cam Xíu",
-      "label": "Nói chuyện",
-      "position": [
-        79.5,
-        13,
-        144.5
-      ],
-      "yaw": 41,
-      "radius": 3,
-      "model": "generated/characters/npc-cat-cam-vest-shorts-navy.glb",
-      "scale": 0.6415,
-      "chapter": 7
-    },
-    {
-      "id": "toan2-cd7-b35-tho-gon",
-      "kind": "npc",
-      "name": "Thỏ Gòn",
-      "label": "Nói chuyện",
-      "position": [
-        90.5,
-        13,
-        105.5
-      ],
-      "yaw": 9,
-      "radius": 3,
-      "model": "generated/characters/npc-rabbit-trang-overalls-green.glb",
-      "scale": 0.5763,
-      "chapter": 7
-    },
-    {
-      "id": "vet-xanh",
-      "kind": "npc",
-      "name": "Vẹt Xanh",
-      "label": "Nói chuyện",
-      "position": [
-        111.5,
-        13,
-        119.5
-      ],
-      "yaw": 272,
-      "radius": 3,
-      "model": "packs/kenney-cube-pets/2.0/animal-parrot.glb",
-      "scale": 0.4758,
-      "animation": "idle",
+      "tint": "#e3b778",
       "chapters": [
         1,
-        2
+        3
       ]
     },
     {
@@ -528,11 +99,11 @@
       "name": "Cô Nguyệt",
       "label": "Nói chuyện",
       "position": [
-        102.5,
+        99.5,
         13,
-        55.5
+        43.5
       ],
-      "yaw": -72,
+      "yaw": -153,
       "radius": 3,
       "model": "packs/kenney-blocky-characters/2.0/character-e.glb",
       "scale": 0.7037,
@@ -546,11 +117,11 @@
       "name": "Gấu Đô",
       "label": "Nói chuyện",
       "position": [
-        119.5,
+        109.5,
         13,
-        50.5
+        25.5
       ],
-      "yaw": 167,
+      "yaw": -135,
       "radius": 3,
       "model": "generated/characters/npc-bear-nau-vest-shorts.glb",
       "scale": 0.6667,
@@ -563,11 +134,11 @@
       "name": "Nai Phi",
       "label": "Nói chuyện",
       "position": [
-        115.5,
+        120.5,
         13,
-        27.5
+        56.5
       ],
-      "yaw": -27,
+      "yaw": 57,
       "radius": 3,
       "model": "packs/kenney-cube-pets/2.0/animal-deer.glb",
       "scale": 0.7025,
@@ -581,11 +152,11 @@
       "name": "Thỏ Lúm",
       "label": "Nói chuyện",
       "position": [
-        98.5,
+        118.5,
         13,
-        44.5
+        38.5
       ],
-      "yaw": 180,
+      "yaw": 45,
       "radius": 3,
       "model": "generated/characters/npc-rabbit-trang-overalls-green.glb",
       "scale": 0.5763,
@@ -593,16 +164,85 @@
       "quest": "toan2-cd1-b01"
     },
     {
+      "id": "ga-con-chip",
+      "kind": "npc",
+      "name": "Gà Con Chíp",
+      "label": "Nói chuyện",
+      "position": [
+        120.5,
+        13,
+        31.5
+      ],
+      "yaw": 90,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-chick.glb",
+      "scale": 0.4391,
+      "animation": "idle",
+      "chapter": 1,
+      "quest": "toan2-cd1-b02"
+    },
+    {
+      "id": "toan2-cd1-phan-hong",
+      "kind": "object",
+      "name": "Phấn hồng",
+      "label": "Nhặt lên",
+      "position": [
+        120.5,
+        13,
+        34.5
+      ],
+      "yaw": 162,
+      "radius": 2,
+      "model": "generated/props/crayon-pink.glb",
+      "scale": 0.0375,
+      "chapter": 1,
+      "quest": "toan2-cd1-b02"
+    },
+    {
+      "id": "toan2-cd1-phan-trang",
+      "kind": "object",
+      "name": "Phấn trắng",
+      "label": "Nhặt lên",
+      "position": [
+        121.5,
+        13,
+        28.5
+      ],
+      "yaw": 21,
+      "radius": 2,
+      "model": "generated/props/crayon-white.glb",
+      "scale": 0.0375,
+      "chapter": 1,
+      "quest": "toan2-cd1-b02"
+    },
+    {
+      "id": "toan2-cd1-phan-vang",
+      "kind": "object",
+      "name": "Phấn vàng",
+      "label": "Nhặt lên",
+      "position": [
+        121.5,
+        13,
+        31.5
+      ],
+      "yaw": 7,
+      "radius": 2,
+      "model": "generated/props/crayon-yellow.glb",
+      "scale": 0.0375,
+      "chapter": 1,
+      "quest": "toan2-cd1-b02"
+    },
+    {
       "id": "toan2-cd1-b02-chi-ha",
       "kind": "npc",
       "name": "Chị Hà",
       "label": "Nói chuyện",
       "position": [
-        112.5,
+        104.5,
         13,
-        53.5
+        31.5
       ],
-      "yaw": 70,
+      "yaw": -63,
       "radius": 3,
       "model": "packs/kenney-blocky-characters/2.0/character-i.glb",
       "scale": 0.7037,
@@ -616,11 +256,11 @@
       "name": "Gấu Bin",
       "label": "Nói chuyện",
       "position": [
-        111.5,
+        110.5,
         13,
-        37.5
+        51.5
       ],
-      "yaw": -90,
+      "yaw": 94,
       "radius": 3,
       "model": "generated/characters/npc-bear-den-overalls-red.glb",
       "scale": 0.6667,
@@ -633,11 +273,11 @@
       "name": "Mèo Xoài",
       "label": "Nói chuyện",
       "position": [
-        108.5,
+        88.5,
         13,
-        23.5
+        22.5
       ],
-      "yaw": -117,
+      "yaw": 63,
       "radius": 3,
       "model": "generated/characters/npc-cat-cam-overalls.glb",
       "scale": 0.6415,
@@ -650,11 +290,11 @@
       "name": "Thỏ Bắp",
       "label": "Nói chuyện",
       "position": [
-        119.5,
+        121.5,
         13,
-        24.5
+        51.5
       ],
-      "yaw": 45,
+      "yaw": -90,
       "radius": 3,
       "model": "generated/characters/npc-rabbit-nau-dress-blue.glb",
       "scale": 0.5763,
@@ -662,55 +302,73 @@
       "quest": "toan2-cd1-b02"
     },
     {
-      "id": "toan2-cd1-phan-hong",
-      "kind": "object",
-      "name": "Phấn hồng",
-      "label": "Nhặt lên",
+      "id": "meo-mun",
+      "kind": "npc",
+      "name": "Mèo Mun",
+      "label": "Nói chuyện",
       "position": [
-        93.5,
+        114.5,
         13,
         28.5
       ],
-      "yaw": -135,
-      "radius": 2,
-      "model": "generated/props/crayon-pink.glb",
-      "scale": 0.0375,
+      "yaw": 90,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-cat.glb",
+      "scale": 0.5263,
+      "animation": "idle",
       "chapter": 1,
-      "quest": "toan2-cd1-b02"
+      "quest": "toan2-cd1-b03"
     },
     {
-      "id": "toan2-cd1-phan-trang",
+      "id": "toan2-cd1-bien-hieu",
       "kind": "object",
-      "name": "Phấn trắng",
+      "name": "Biển tên Hiệu",
       "label": "Nhặt lên",
       "position": [
-        92.5,
+        117.5,
+        13,
+        27.5
+      ],
+      "yaw": -63,
+      "radius": 2,
+      "model": "generated/props/placard.glb",
+      "scale": 0.075,
+      "chapter": 1,
+      "quest": "toan2-cd1-b03"
+    },
+    {
+      "id": "toan2-cd1-bien-so-hang",
+      "kind": "object",
+      "name": "Biển tên Số hạng",
+      "label": "Nhặt lên",
+      "position": [
+        117.5,
+        13,
+        30.5
+      ],
+      "yaw": -135,
+      "radius": 2,
+      "model": "generated/props/placard-blue.glb",
+      "scale": 0.075,
+      "chapter": 1,
+      "quest": "toan2-cd1-b03"
+    },
+    {
+      "id": "toan2-cd1-bien-tong",
+      "kind": "object",
+      "name": "Biển tên Tổng",
+      "label": "Nhặt lên",
+      "position": [
+        115.5,
         13,
         25.5
       ],
-      "yaw": -45,
+      "yaw": 92,
       "radius": 2,
-      "model": "generated/props/crayon-white.glb",
-      "scale": 0.0375,
+      "model": "packs/kenney-nature-kit/2.1/sign.glb",
+      "scale": 3.4249,
       "chapter": 1,
-      "quest": "toan2-cd1-b02"
-    },
-    {
-      "id": "toan2-cd1-phan-vang",
-      "kind": "object",
-      "name": "Phấn vàng",
-      "label": "Nhặt lên",
-      "position": [
-        89.5,
-        13,
-        24.5
-      ],
-      "yaw": 45,
-      "radius": 2,
-      "model": "generated/props/crayon-yellow.glb",
-      "scale": 0.0375,
-      "chapter": 1,
-      "quest": "toan2-cd1-b02"
+      "quest": "toan2-cd1-b03"
     },
     {
       "id": "toan2-cd1-b03-co-duyen",
@@ -718,11 +376,11 @@
       "name": "Cô Duyên",
       "label": "Nói chuyện",
       "position": [
-        106.5,
+        92.5,
         13,
-        24.5
+        37.5
       ],
-      "yaw": -90,
+      "yaw": -45,
       "radius": 3,
       "model": "packs/kenney-blocky-characters/2.0/character-a.glb",
       "scale": 0.7037,
@@ -736,11 +394,11 @@
       "name": "Koala Bơ",
       "label": "Nói chuyện",
       "position": [
-        112.5,
+        102.5,
         13,
-        43.5
+        47.5
       ],
-      "yaw": 45,
+      "yaw": 143,
       "radius": 3,
       "model": "packs/kenney-cube-pets/2.0/animal-koala.glb",
       "scale": 0.6836,
@@ -754,65 +412,14 @@
       "name": "Thỏ Tiêu",
       "label": "Nói chuyện",
       "position": [
-        107.5,
+        120.5,
         13,
-        58.5
+        54.5
       ],
-      "yaw": 1,
+      "yaw": -72,
       "radius": 3,
       "model": "generated/characters/npc-rabbit-xam-overalls-red.glb",
       "scale": 0.5763,
-      "chapter": 1,
-      "quest": "toan2-cd1-b03"
-    },
-    {
-      "id": "toan2-cd1-bien-hieu",
-      "kind": "object",
-      "name": "Biển tên Hiệu",
-      "label": "Nhặt lên",
-      "position": [
-        86.5,
-        13,
-        22.5
-      ],
-      "yaw": 90,
-      "radius": 2,
-      "model": "generated/props/placard.glb",
-      "scale": 0.075,
-      "chapter": 1,
-      "quest": "toan2-cd1-b03"
-    },
-    {
-      "id": "toan2-cd1-bien-so-hang",
-      "kind": "object",
-      "name": "Biển tên Số hạng",
-      "label": "Nhặt lên",
-      "position": [
-        89.5,
-        13,
-        23.5
-      ],
-      "yaw": 180,
-      "radius": 2,
-      "model": "generated/props/placard-blue.glb",
-      "scale": 0.075,
-      "chapter": 1,
-      "quest": "toan2-cd1-b03"
-    },
-    {
-      "id": "toan2-cd1-bien-tong",
-      "kind": "object",
-      "name": "Biển tên Tổng",
-      "label": "Nhặt lên",
-      "position": [
-        89.5,
-        13,
-        22.5
-      ],
-      "yaw": 343,
-      "radius": 2,
-      "model": "packs/kenney-nature-kit/2.1/sign.glb",
-      "scale": 3.4249,
       "chapter": 1,
       "quest": "toan2-cd1-b03"
     },
@@ -822,11 +429,11 @@
       "name": "Cá Vàng Mũm",
       "label": "Nói chuyện",
       "position": [
-        114.5,
+        91.5,
         13,
-        32.5
+        39.5
       ],
-      "yaw": 117,
+      "yaw": 90,
       "radius": 3,
       "model": "packs/kenney-cube-pets/2.0/animal-fish.glb",
       "scale": 0.3686,
@@ -840,9 +447,9 @@
       "name": "Cô Lụa",
       "label": "Nói chuyện",
       "position": [
-        112.5,
+        116.5,
         13,
-        45.5
+        57.5
       ],
       "yaw": -90,
       "radius": 3,
@@ -858,11 +465,11 @@
       "name": "Gấu Sún",
       "label": "Nói chuyện",
       "position": [
-        91.5,
+        116.5,
         13,
-        26.5
+        32.5
       ],
-      "yaw": -162,
+      "yaw": -90,
       "radius": 3,
       "model": "generated/characters/npc-bear-den-vest-shorts-green.glb",
       "scale": 0.6667,
@@ -875,11 +482,11 @@
       "name": "Hươu Lêu Nghêu",
       "label": "Nói chuyện",
       "position": [
-        103.5,
+        101.5,
         13,
-        33.5
+        26.5
       ],
-      "yaw": -63,
+      "yaw": 162,
       "radius": 3,
       "model": "packs/kenney-cube-pets/2.0/animal-giraffe.glb",
       "scale": 1.2837,
@@ -893,11 +500,11 @@
       "name": "Bóng đỏ",
       "label": "Nhặt lên",
       "position": [
-        98.5,
+        105.5,
         13,
-        35.5
+        23.5
       ],
-      "yaw": 108,
+      "yaw": -90,
       "radius": 2,
       "model": "generated/props/balloon.glb",
       "scale": 0.0625,
@@ -910,11 +517,11 @@
       "name": "Bóng vàng",
       "label": "Nhặt lên",
       "position": [
-        103.5,
+        102.5,
         13,
-        36.5
+        22.5
       ],
-      "yaw": -135,
+      "yaw": 109,
       "radius": 2,
       "model": "generated/props/balloon-yellow.glb",
       "scale": 0.0625,
@@ -927,11 +534,11 @@
       "name": "Bóng xanh",
       "label": "Nhặt lên",
       "position": [
-        100.5,
+        102.5,
         13,
-        37.5
+        23.5
       ],
-      "yaw": 162,
+      "yaw": 207,
       "radius": 2,
       "model": "generated/props/balloon-blue.glb",
       "scale": 0.0625,
@@ -944,11 +551,11 @@
       "name": "Mèo Mây",
       "label": "Nói chuyện",
       "position": [
-        101.5,
+        71.5,
         13,
-        52.5
+        47.5
       ],
-      "yaw": -18,
+      "yaw": 153,
       "radius": 3,
       "model": "generated/characters/npc-cat-trang-jacket-red.glb",
       "scale": 0.6415,
@@ -956,16 +563,85 @@
       "quest": "toan2-cd1-b04"
     },
     {
+      "id": "cho-muc",
+      "kind": "npc",
+      "name": "Chó Mực",
+      "label": "Nói chuyện",
+      "position": [
+        113.5,
+        13,
+        23.5
+      ],
+      "yaw": -90,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-dog.glb",
+      "scale": 0.6311,
+      "animation": "idle",
+      "chapter": 1,
+      "quest": "toan2-cd1-b05"
+    },
+    {
+      "id": "toan2-cd1-phong-bi-do",
+      "kind": "object",
+      "name": "Phong bì đỏ",
+      "label": "Nhặt lên",
+      "position": [
+        109.5,
+        13,
+        23.5
+      ],
+      "yaw": 90,
+      "radius": 2,
+      "model": "generated/props/envelope-red.glb",
+      "scale": 0.0545,
+      "chapter": 1,
+      "quest": "toan2-cd1-b05"
+    },
+    {
+      "id": "toan2-cd1-phong-bi-vang",
+      "kind": "object",
+      "name": "Phong bì vàng",
+      "label": "Nhặt lên",
+      "position": [
+        109.5,
+        13,
+        26.5
+      ],
+      "yaw": 162,
+      "radius": 2,
+      "model": "generated/props/envelope-yellow.glb",
+      "scale": 0.0545,
+      "chapter": 1,
+      "quest": "toan2-cd1-b05"
+    },
+    {
+      "id": "toan2-cd1-phong-bi-xanh",
+      "kind": "object",
+      "name": "Phong bì xanh",
+      "label": "Nhặt lên",
+      "position": [
+        110.5,
+        13,
+        23.5
+      ],
+      "yaw": 73,
+      "radius": 2,
+      "model": "generated/props/envelope-blue.glb",
+      "scale": 0.0545,
+      "chapter": 1,
+      "quest": "toan2-cd1-b05"
+    },
+    {
       "id": "toan2-cd1-b05-bac-loc",
       "kind": "npc",
       "name": "Bác Lộc",
       "label": "Nói chuyện",
       "position": [
-        106.5,
+        100.5,
         13,
-        35.5
+        57.5
       ],
-      "yaw": 108,
+      "yaw": -90,
       "radius": 3,
       "model": "packs/kenney-blocky-characters/2.0/character-k.glb",
       "scale": 0.7037,
@@ -979,11 +655,11 @@
       "name": "Cáo Tuyết Mi",
       "label": "Nói chuyện",
       "position": [
-        109.5,
+        99.5,
         13,
-        56.5
+        34.5
       ],
-      "yaw": 180,
+      "yaw": 234,
       "radius": 3,
       "model": "generated/characters/npc-fox-tuyet-overalls.glb",
       "scale": 0.6296,
@@ -996,11 +672,11 @@
       "name": "Chú hề Tò Te",
       "label": "Nói chuyện",
       "position": [
-        94.5,
+        119.5,
         13,
-        29.5
+        33.5
       ],
-      "yaw": -63,
+      "yaw": 117,
       "radius": 3,
       "model": "packs/kenney-blocky-characters/2.0/character-q.glb",
       "scale": 0.7037,
@@ -1014,11 +690,11 @@
       "name": "Cô Yến",
       "label": "Nói chuyện",
       "position": [
-        118.5,
+        109.5,
         13,
         43.5
       ],
-      "yaw": 63,
+      "yaw": 23,
       "radius": 3,
       "model": "packs/kenney-blocky-characters/2.0/character-n.glb",
       "scale": 0.7037,
@@ -1032,11 +708,11 @@
       "name": "Mèo Bạc Hà",
       "label": "Nói chuyện",
       "position": [
-        120.5,
+        119.5,
         13,
-        22.5
+        54.5
       ],
-      "yaw": 27,
+      "yaw": 280,
       "radius": 3,
       "model": "generated/characters/npc-cat-xam-dress-mint.glb",
       "scale": 0.6415,
@@ -1044,55 +720,73 @@
       "quest": "toan2-cd1-b05"
     },
     {
-      "id": "toan2-cd1-phong-bi-do",
-      "kind": "object",
-      "name": "Phong bì đỏ",
-      "label": "Nhặt lên",
+      "id": "cao-lem",
+      "kind": "npc",
+      "name": "Cáo Lém",
+      "label": "Nói chuyện",
       "position": [
-        100.5,
+        113.5,
         13,
-        45.5
+        31.5
       ],
       "yaw": -135,
-      "radius": 2,
-      "model": "generated/props/envelope-red.glb",
-      "scale": 0.0545,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-fox.glb",
+      "scale": 0.593,
+      "animation": "idle",
       "chapter": 1,
-      "quest": "toan2-cd1-b05"
+      "quest": "toan2-cd1-b06"
     },
     {
-      "id": "toan2-cd1-phong-bi-vang",
+      "id": "toan2-cd1-ve-cam",
       "kind": "object",
-      "name": "Phong bì vàng",
+      "name": "Vé màu cam",
       "label": "Nhặt lên",
       "position": [
-        98.5,
+        109.5,
         13,
-        43.5
+        29.5
       ],
-      "yaw": 28,
+      "yaw": 90,
       "radius": 2,
-      "model": "generated/props/envelope-yellow.glb",
-      "scale": 0.0545,
+      "model": "generated/props/tickets.glb",
+      "scale": 0.06,
       "chapter": 1,
-      "quest": "toan2-cd1-b05"
+      "quest": "toan2-cd1-b06"
     },
     {
-      "id": "toan2-cd1-phong-bi-xanh",
+      "id": "toan2-cd1-ve-do",
       "kind": "object",
-      "name": "Phong bì xanh",
+      "name": "Vé màu đỏ",
       "label": "Nhặt lên",
       "position": [
-        98.5,
+        112.5,
         13,
-        40.5
+        26.5
       ],
-      "yaw": 135,
+      "yaw": -18,
       "radius": 2,
-      "model": "generated/props/envelope-blue.glb",
-      "scale": 0.0545,
+      "model": "generated/props/tickets-red.glb",
+      "scale": 0.06,
       "chapter": 1,
-      "quest": "toan2-cd1-b05"
+      "quest": "toan2-cd1-b06"
+    },
+    {
+      "id": "toan2-cd1-ve-tim",
+      "kind": "object",
+      "name": "Vé màu tím",
+      "label": "Nhặt lên",
+      "position": [
+        110.5,
+        13,
+        32.5
+      ],
+      "yaw": 162,
+      "radius": 2,
+      "model": "generated/props/tickets-purple.glb",
+      "scale": 0.06,
+      "chapter": 1,
+      "quest": "toan2-cd1-b06"
     },
     {
       "id": "gian-bon-cua",
@@ -1101,9 +795,9 @@
       "name": "Cáo Lém",
       "label": "Nói chuyện",
       "position": [
-        75.5,
+        110.5,
         13,
-        44.5
+        58.5
       ],
       "yaw": -45,
       "radius": 3,
@@ -1119,11 +813,11 @@
       "name": "Gian số liền nhau",
       "label": "Xem",
       "position": [
-        98.5,
+        93.5,
         13,
-        41.5
+        36.5
       ],
-      "yaw": 135,
+      "yaw": 180,
       "radius": 2,
       "model": "packs/kenney-nature-kit/2.1/sign.glb",
       "scale": 3.4249,
@@ -1136,11 +830,11 @@
       "name": "Gian tách số",
       "label": "Xem",
       "position": [
-        93.5,
+        112.5,
         13,
-        27.5
+        43.5
       ],
-      "yaw": -117,
+      "yaw": -45,
       "radius": 2,
       "model": "packs/kenney-survival-kit/2.0/workbench.glb",
       "scale": 3.8382,
@@ -1153,11 +847,11 @@
       "name": "Gian thẻ số",
       "label": "Xem",
       "position": [
-        99.5,
+        120.5,
         13,
         56.5
       ],
-      "yaw": 230,
+      "yaw": 153,
       "radius": 2,
       "model": "generated/props/card-index.glb",
       "scale": 0.0375,
@@ -1170,11 +864,11 @@
       "name": "Gian xe đua",
       "label": "Xem",
       "position": [
-        71.5,
+        83.5,
         13,
-        60.5
+        44.5
       ],
-      "yaw": 200,
+      "yaw": -90,
       "radius": 2,
       "model": "packs/kenney-survival-kit/2.0/box-large.glb",
       "scale": 4,
@@ -1187,11 +881,11 @@
       "name": "Cáo Rung Rinh",
       "label": "Nói chuyện",
       "position": [
-        91.5,
+        99.5,
         13,
-        43.5
+        45.5
       ],
-      "yaw": -45,
+      "yaw": 180,
       "radius": 3,
       "model": "generated/characters/npc-fox-cam-jacket-red.glb",
       "scale": 0.6296,
@@ -1204,11 +898,11 @@
       "name": "Chú Phúc",
       "label": "Nói chuyện",
       "position": [
-        106.5,
+        94.5,
         13,
-        46.5
+        56.5
       ],
-      "yaw": 294,
+      "yaw": 228,
       "radius": 3,
       "model": "packs/kenney-blocky-characters/2.0/character-m.glb",
       "scale": 0.7037,
@@ -1222,11 +916,11 @@
       "name": "Gấu Mật Nhi",
       "label": "Nói chuyện",
       "position": [
-        100.5,
+        119.5,
         13,
-        27.5
+        32.5
       ],
-      "yaw": 153,
+      "yaw": 135,
       "radius": 3,
       "model": "generated/characters/npc-bear-mat-ong-dress-blue.glb",
       "scale": 0.6667,
@@ -1234,3500 +928,727 @@
       "quest": "toan2-cd1-b06"
     },
     {
-      "id": "toan2-cd1-ve-cam",
-      "kind": "object",
-      "name": "Vé màu cam",
-      "label": "Nhặt lên",
-      "position": [
-        92.5,
-        13,
-        53.5
-      ],
-      "yaw": 135,
-      "radius": 2,
-      "model": "generated/props/tickets.glb",
-      "scale": 0.06,
-      "chapter": 1,
-      "quest": "toan2-cd1-b06"
-    },
-    {
-      "id": "toan2-cd1-ve-do",
-      "kind": "object",
-      "name": "Vé màu đỏ",
-      "label": "Nhặt lên",
-      "position": [
-        94.5,
-        13,
-        50.5
-      ],
-      "yaw": 192,
-      "radius": 2,
-      "model": "generated/props/tickets-red.glb",
-      "scale": 0.06,
-      "chapter": 1,
-      "quest": "toan2-cd1-b06"
-    },
-    {
-      "id": "toan2-cd1-ve-tim",
-      "kind": "object",
-      "name": "Vé màu tím",
-      "label": "Nhặt lên",
-      "position": [
-        94.5,
-        13,
-        51.5
-      ],
-      "yaw": 158,
-      "radius": 2,
-      "model": "generated/props/tickets-purple.glb",
-      "scale": 0.06,
-      "chapter": 1,
-      "quest": "toan2-cd1-b06"
-    },
-    {
-      "id": "ong-vang-to-moi",
-      "character": "ong-vang",
+      "id": "tv2-t01-b01-co-gau-mat",
       "kind": "npc",
-      "name": "Ong Vàng",
+      "name": "Cô Gấu Mật",
       "label": "Nói chuyện",
       "position": [
-        60.5,
+        93.5,
         13,
-        90.5
-      ],
-      "yaw": 90,
-      "radius": 3,
-      "model": "packs/kenney-cube-pets/2.0/animal-bee.glb",
-      "scale": 0.3002,
-      "animation": "idle",
-      "chapter": 2,
-      "quest": "toan2-cd2-b07"
-    },
-    {
-      "id": "toan2-cd2-b07-bac-can",
-      "kind": "npc",
-      "name": "Bác Cẩn",
-      "label": "Nói chuyện",
-      "position": [
-        32.5,
-        13,
-        103.5
-      ],
-      "yaw": 208,
-      "radius": 3,
-      "model": "packs/kenney-blocky-characters/2.0/character-c.glb",
-      "scale": 0.7037,
-      "animation": "idle",
-      "chapter": 2,
-      "quest": "toan2-cd2-b07"
-    },
-    {
-      "id": "toan2-cd2-b07-bac-manh",
-      "kind": "npc",
-      "name": "Bác Mạnh",
-      "label": "Nói chuyện",
-      "position": [
-        62.5,
-        13,
-        114.5
-      ],
-      "yaw": -135,
-      "radius": 3,
-      "model": "packs/kenney-blocky-characters/2.0/character-m.glb",
-      "scale": 0.7037,
-      "animation": "idle",
-      "chapter": 2,
-      "quest": "toan2-cd2-b07"
-    },
-    {
-      "id": "toan2-cd2-b07-co-thom",
-      "kind": "npc",
-      "name": "Cô Thơm",
-      "label": "Nói chuyện",
-      "position": [
-        41.5,
-        13,
-        91.5
-      ],
-      "yaw": -45,
-      "radius": 3,
-      "model": "packs/kenney-blocky-characters/2.0/character-n.glb",
-      "scale": 0.7037,
-      "animation": "idle",
-      "chapter": 2,
-      "quest": "toan2-cd2-b07"
-    },
-    {
-      "id": "toan2-cd2-b07-sau-do-nhich",
-      "kind": "npc",
-      "name": "Sâu Đo Nhích",
-      "label": "Nói chuyện",
-      "position": [
-        47.5,
-        13,
-        113.5
-      ],
-      "yaw": -135,
-      "radius": 3,
-      "model": "packs/kenney-cube-pets/2.0/animal-caterpillar.glb",
-      "scale": 0.458,
-      "animation": "idle",
-      "chapter": 2,
-      "quest": "toan2-cd2-b07"
-    },
-    {
-      "id": "toan2-cd2-bo-que-do",
-      "kind": "object",
-      "name": "Bó que đỏ",
-      "label": "Nhặt lên",
-      "position": [
-        60.5,
-        13,
-        128.5
-      ],
-      "yaw": 135,
-      "radius": 2,
-      "model": "packs/kenney-nature-kit/2.1/log_stack.glb",
-      "scale": 2.8868,
-      "tint": "#e2483f",
-      "chapter": 2,
-      "quest": "toan2-cd2-b07"
-    },
-    {
-      "id": "toan2-cd2-bo-que-xanh",
-      "kind": "object",
-      "name": "Bó que xanh",
-      "label": "Nhặt lên",
-      "position": [
-        62.5,
-        13,
-        125.5
-      ],
-      "yaw": 183,
-      "radius": 2,
-      "model": "packs/kenney-nature-kit/2.1/log_stack.glb",
-      "scale": 2.8868,
-      "tint": "#3d8fe0",
-      "chapter": 2,
-      "quest": "toan2-cd2-b07"
-    },
-    {
-      "id": "toan2-cd2-ro-tao-nho",
-      "kind": "object",
-      "name": "Rổ táo nhỏ",
-      "label": "Nhặt lên",
-      "position": [
-        63.5,
-        13,
-        129.5
-      ],
-      "yaw": -162,
-      "radius": 2,
-      "model": "generated/props/basket.glb",
-      "scale": 0.0375,
-      "chapter": 2,
-      "quest": "toan2-cd2-b07"
-    },
-    {
-      "id": "toan2-cd2-b08-bac-lanh",
-      "kind": "npc",
-      "name": "Bác Lành",
-      "label": "Nói chuyện",
-      "position": [
-        34.5,
-        13,
-        123.5
-      ],
-      "yaw": 117,
-      "radius": 3,
-      "model": "packs/kenney-blocky-characters/2.0/character-p.glb",
-      "scale": 0.7037,
-      "animation": "idle",
-      "chapter": 2,
-      "quest": "toan2-cd2-b08"
-    },
-    {
-      "id": "toan2-cd2-b08-gau-tieu",
-      "kind": "npc",
-      "name": "Gấu Tiêu",
-      "label": "Nói chuyện",
-      "position": [
-        59.5,
-        13,
-        114.5
+        97.5
       ],
       "yaw": 180,
       "radius": 3,
-      "model": "generated/characters/npc-bear-nau-overalls-green.glb",
+      "model": "generated/characters/npc-bear-mat-ong-dress-blue.glb",
       "scale": 0.6667,
       "chapter": 2,
-      "quest": "toan2-cd2-b08"
+      "quest": "tv2-t05-b09"
     },
     {
-      "id": "toan2-cd2-b08-meo-muop-u",
+      "id": "tv2-t05-b09-meo-sua",
       "kind": "npc",
-      "name": "Mèo Mướp Ú",
+      "name": "Mèo Sữa",
       "label": "Nói chuyện",
       "position": [
-        54.5,
+        74.5,
         13,
-        133.5
-      ],
-      "yaw": -108,
-      "radius": 3,
-      "model": "packs/kenney-cube-pets/2.0/animal-cat.glb",
-      "scale": 0.5263,
-      "animation": "idle",
-      "chapter": 2,
-      "quest": "toan2-cd2-b08"
-    },
-    {
-      "id": "toan2-cd2-b08-tho-kem",
-      "kind": "npc",
-      "name": "Thỏ Kem",
-      "label": "Nói chuyện",
-      "position": [
-        39.5,
-        13,
-        103.5
-      ],
-      "yaw": 108,
-      "radius": 3,
-      "model": "generated/characters/npc-rabbit-trang-vest-shorts.glb",
-      "scale": 0.5763,
-      "chapter": 2,
-      "quest": "toan2-cd2-b08"
-    },
-    {
-      "id": "toan2-cd2-bau-dai",
-      "kind": "object",
-      "name": "Quả bầu dài",
-      "label": "Nhặt lên",
-      "position": [
-        23.5,
-        13,
-        138.5
-      ],
-      "yaw": 117,
-      "radius": 2,
-      "model": "generated/props/cucumber.glb",
-      "scale": 0.0313,
-      "chapter": 2,
-      "quest": "toan2-cd2-b08"
-    },
-    {
-      "id": "toan2-cd2-bau-ho-lo",
-      "kind": "object",
-      "name": "Quả bầu hồ lô",
-      "label": "Nhặt lên",
-      "position": [
-        24.5,
-        13,
-        134.5
-      ],
-      "yaw": 18,
-      "radius": 2,
-      "model": "packs/kenney-nature-kit/2.1/crop_pumpkin.glb",
-      "scale": 2.0969,
-      "chapter": 2,
-      "quest": "toan2-cd2-b08"
-    },
-    {
-      "id": "toan2-cd2-bau-tron",
-      "kind": "object",
-      "name": "Quả bầu tròn",
-      "label": "Nhặt lên",
-      "position": [
-        27.5,
-        13,
-        138.5
-      ],
-      "yaw": -117,
-      "radius": 2,
-      "model": "packs/kenney-nature-kit/2.1/crop_melon.glb",
-      "scale": 1.7241,
-      "chapter": 2,
-      "quest": "toan2-cd2-b08"
-    },
-    {
-      "id": "be-bong-mang-nuoc",
-      "kind": "npc",
-      "name": "Bê Bông",
-      "label": "Nói chuyện",
-      "position": [
-        57.5,
-        13,
-        140.5
-      ],
-      "yaw": 117,
-      "radius": 3,
-      "model": "packs/kenney-cube-pets/2.0/animal-cow.glb",
-      "scale": 0.5582,
-      "animation": "idle",
-      "chapter": 2,
-      "quest": "toan2-cd2-b09"
-    },
-    {
-      "id": "bo-sua-mo",
-      "kind": "npc",
-      "name": "Bò Sữa Mơ",
-      "label": "Nói chuyện",
-      "position": [
-        35.5,
-        13,
-        122.5
-      ],
-      "yaw": 45,
-      "radius": 3,
-      "model": "packs/kenney-cube-pets/2.0/animal-cow.glb",
-      "scale": 0.8683,
-      "animation": "idle",
-      "chapter": 2,
-      "quest": "toan2-cd2-b09"
-    },
-    {
-      "id": "bo-sua-mo-cong",
-      "character": "bo-sua-mo",
-      "kind": "npc",
-      "name": "Bò Sữa Mơ",
-      "label": "Nói chuyện",
-      "position": [
-        40.5,
-        13,
-        143.5
-      ],
-      "yaw": -90,
-      "radius": 3,
-      "model": "packs/kenney-cube-pets/2.0/animal-cow.glb",
-      "scale": 0.8683,
-      "animation": "idle",
-      "chapter": 2,
-      "quest": "toan2-cd2-b09"
-    },
-    {
-      "id": "toan2-cd2-b09-be-vang-lua",
-      "kind": "npc",
-      "name": "Bê Vàng Lúa",
-      "label": "Nói chuyện",
-      "position": [
-        52.5,
-        13,
-        103.5
-      ],
-      "yaw": 45,
-      "radius": 3,
-      "model": "packs/kenney-cube-pets/2.0/animal-cow.glb",
-      "scale": 0.5582,
-      "animation": "idle",
-      "tint": "#e3c48a",
-      "chapter": 2,
-      "quest": "toan2-cd2-b09"
-    },
-    {
-      "id": "toan2-cd2-b09-lon-ut-it",
-      "kind": "npc",
-      "name": "Lợn Ụt Ịt",
-      "label": "Nói chuyện",
-      "position": [
-        62.5,
-        13,
-        119.5
-      ],
-      "yaw": 162,
-      "radius": 3,
-      "model": "packs/kenney-cube-pets/2.0/animal-pig.glb",
-      "scale": 0.6311,
-      "animation": "idle",
-      "chapter": 2,
-      "quest": "toan2-cd2-b09"
-    },
-    {
-      "id": "toan2-cd2-be-con-dom",
-      "kind": "npc",
-      "name": "Bê con Đốm",
-      "label": "Dắt về",
-      "position": [
-        24.5,
-        13,
-        132.5
-      ],
-      "yaw": 27,
-      "radius": 3,
-      "model": "packs/kenney-cube-pets/2.0/animal-cow.glb",
-      "scale": 0.5582,
-      "animation": "idle",
-      "chapter": 2,
-      "quest": "toan2-cd2-b09"
-    },
-    {
-      "id": "toan2-cd2-be-con-khoang",
-      "kind": "npc",
-      "name": "Bê con Khoang",
-      "label": "Dắt về",
-      "position": [
-        24.5,
-        13,
-        136.5
-      ],
-      "yaw": 153,
-      "radius": 3,
-      "model": "packs/kenney-cube-pets/2.0/animal-cow.glb",
-      "scale": 0.5582,
-      "animation": "idle",
-      "tint": "#e3c48a",
-      "chapter": 2,
-      "quest": "toan2-cd2-b09"
-    },
-    {
-      "id": "toan2-cd2-be-con-nau",
-      "kind": "npc",
-      "name": "Bê con Nâu",
-      "label": "Dắt về",
-      "position": [
-        27.5,
-        13,
-        136.5
-      ],
-      "yaw": -135,
-      "radius": 3,
-      "model": "packs/kenney-cube-pets/2.0/animal-cow.glb",
-      "scale": 0.5582,
-      "animation": "idle",
-      "tint": "#a8743f",
-      "chapter": 2,
-      "quest": "toan2-cd2-b09"
-    },
-    {
-      "id": "hai-ly-bai-co",
-      "character": "hai-ly-can",
-      "kind": "npc",
-      "name": "Hải Ly Cần",
-      "label": "Nói chuyện",
-      "position": [
-        41.5,
-        13,
-        113.5
-      ],
-      "yaw": 135,
-      "radius": 3,
-      "model": "packs/kenney-cube-pets/2.0/animal-beaver.glb",
-      "scale": 0.6661,
-      "animation": "idle",
-      "chapter": 2,
-      "quest": "toan2-cd2-b10"
-    },
-    {
-      "id": "hai-ly-can",
-      "kind": "npc",
-      "name": "Hải Ly Cần",
-      "label": "Nói chuyện",
-      "position": [
-        27.5,
-        13,
-        123.5
-      ],
-      "yaw": 90,
-      "radius": 3,
-      "model": "packs/kenney-cube-pets/2.0/animal-beaver.glb",
-      "scale": 0.6661,
-      "animation": "idle",
-      "chapter": 2,
-      "quest": "toan2-cd2-b10"
-    },
-    {
-      "id": "hai-ly-lan-go",
-      "character": "hai-ly-can",
-      "kind": "npc",
-      "name": "Hải Ly Cần",
-      "label": "Nói chuyện",
-      "position": [
-        47.5,
-        13,
-        92.5
-      ],
-      "yaw": 90,
-      "radius": 3,
-      "model": "packs/kenney-cube-pets/2.0/animal-beaver.glb",
-      "scale": 0.6661,
-      "animation": "idle",
-      "chapter": 2,
-      "quest": "toan2-cd2-b10"
-    },
-    {
-      "id": "toan2-cd2-b10-huou-tit",
-      "kind": "npc",
-      "name": "Hươu Vươn",
-      "label": "Nói chuyện",
-      "position": [
-        62.5,
-        13,
-        119.5
-      ],
-      "yaw": -153,
-      "radius": 3,
-      "model": "packs/kenney-cube-pets/2.0/animal-giraffe.glb",
-      "scale": 1.2837,
-      "animation": "idle",
-      "chapter": 2,
-      "quest": "toan2-cd2-b10"
-    },
-    {
-      "id": "toan2-cd2-b10-voi-mit",
-      "kind": "npc",
-      "name": "Voi Mít",
-      "label": "Nói chuyện",
-      "position": [
-        49.5,
-        13,
-        131.5
-      ],
-      "yaw": -18,
-      "radius": 3,
-      "model": "packs/kenney-cube-pets/2.0/animal-elephant.glb",
-      "scale": 1.1179,
-      "animation": "idle",
-      "chapter": 2,
-      "quest": "toan2-cd2-b10"
-    },
-    {
-      "id": "toan2-cd2-da-cuoi-det",
-      "kind": "object",
-      "name": "Đá cuội dẹt",
-      "label": "Nhặt lên",
-      "position": [
-        25.5,
-        13,
-        140.5
-      ],
-      "yaw": 180,
-      "radius": 2,
-      "model": "packs/kenney-survival-kit/2.0/rock-flat.glb",
-      "scale": 2.5641,
-      "chapter": 2,
-      "quest": "toan2-cd2-b10"
-    },
-    {
-      "id": "toan2-cd2-da-cuoi-tron",
-      "kind": "object",
-      "name": "Đá cuội tròn",
-      "label": "Nhặt lên",
-      "position": [
-        23.5,
-        13,
-        137.5
-      ],
-      "yaw": 45,
-      "radius": 2,
-      "model": "packs/kenney-nature-kit/2.1/rock_smallA.glb",
-      "scale": 3.1377,
-      "chapter": 2,
-      "quest": "toan2-cd2-b10"
-    },
-    {
-      "id": "toan2-cd2-da-cuoi-vang",
-      "kind": "object",
-      "name": "Đá cuội vàng",
-      "label": "Nhặt lên",
-      "position": [
-        27.5,
-        13,
-        138.5
-      ],
-      "yaw": -63,
-      "radius": 2,
-      "model": "packs/kenney-nature-kit/2.1/rock_smallA.glb",
-      "scale": 3.1377,
-      "tint": "#f4c430",
-      "chapter": 2,
-      "quest": "toan2-cd2-b10"
-    },
-    {
-      "id": "heo-un-cong-sau",
-      "character": "heo-un",
-      "kind": "npc",
-      "name": "Heo Ủn",
-      "label": "Nói chuyện",
-      "position": [
-        23.5,
-        13,
-        107.5
-      ],
-      "yaw": 14,
-      "radius": 3,
-      "model": "packs/kenney-cube-pets/2.0/animal-pig.glb",
-      "scale": 0.6311,
-      "animation": "idle",
-      "chapter": 2,
-      "quest": "toan2-cd2-b11"
-    },
-    {
-      "id": "toan2-cd2-b11-bo-kem",
-      "kind": "npc",
-      "name": "Bò Kem",
-      "label": "Nói chuyện",
-      "position": [
-        40.5,
-        13,
-        113.5
-      ],
-      "yaw": 135,
-      "radius": 3,
-      "model": "packs/kenney-cube-pets/2.0/animal-cow.glb",
-      "scale": 0.8683,
-      "animation": "idle",
-      "chapter": 2,
-      "quest": "toan2-cd2-b11"
-    },
-    {
-      "id": "toan2-cd2-b11-cao-gio",
-      "kind": "npc",
-      "name": "Cáo Gió",
-      "label": "Nói chuyện",
-      "position": [
-        29.5,
-        13,
-        126.5
-      ],
-      "yaw": 180,
-      "radius": 3,
-      "model": "generated/characters/npc-fox-cam-jacket-red.glb",
-      "scale": 0.6296,
-      "chapter": 2,
-      "quest": "toan2-cd2-b11"
-    },
-    {
-      "id": "toan2-cd2-b11-meo-nhung",
-      "kind": "npc",
-      "name": "Mèo Nhung",
-      "label": "Nói chuyện",
-      "position": [
-        54.5,
-        13,
-        122.5
+        89.5
       ],
       "yaw": -90,
       "radius": 3,
       "model": "generated/characters/npc-cat-trang-dress.glb",
       "scale": 0.6415,
       "chapter": 2,
-      "quest": "toan2-cd2-b11"
+      "quest": "tv2-t05-b09"
     },
     {
-      "id": "toan2-cd2-b11-ong-cham",
+      "id": "tv2-t05-b09-nai-suong",
       "kind": "npc",
-      "name": "Ong Chăm",
-      "label": "Nói chuyện",
-      "position": [
-        41.5,
-        13,
-        93.5
-      ],
-      "yaw": -108,
-      "radius": 3,
-      "model": "packs/kenney-cube-pets/2.0/animal-bee.glb",
-      "scale": 0.3002,
-      "animation": "idle",
-      "chapter": 2,
-      "quest": "toan2-cd2-b11"
-    },
-    {
-      "id": "toan2-cd2-b11-sau-bim",
-      "kind": "npc",
-      "name": "Sâu Bim",
-      "label": "Nói chuyện",
-      "position": [
-        42.5,
-        13,
-        138.5
-      ],
-      "yaw": -90,
-      "radius": 3,
-      "model": "packs/kenney-cube-pets/2.0/animal-caterpillar.glb",
-      "scale": 0.458,
-      "animation": "idle",
-      "chapter": 2,
-      "quest": "toan2-cd2-b11"
-    },
-    {
-      "id": "toan2-cd2-b11-thay-dung",
-      "kind": "npc",
-      "name": "Thầy Dũng",
-      "label": "Nói chuyện",
-      "position": [
-        25.5,
-        13,
-        90.5
-      ],
-      "yaw": -63,
-      "radius": 3,
-      "model": "packs/kenney-blocky-characters/2.0/character-j.glb",
-      "scale": 0.7037,
-      "animation": "idle",
-      "chapter": 2,
-      "quest": "toan2-cd2-b11"
-    },
-    {
-      "id": "toan2-cd2-b11-tho-may",
-      "kind": "npc",
-      "name": "Thỏ Sữa",
-      "label": "Nói chuyện",
-      "position": [
-        58.5,
-        13,
-        102.5
-      ],
-      "yaw": -72,
-      "radius": 3,
-      "model": "generated/characters/npc-rabbit-trang-overalls-green.glb",
-      "scale": 0.5763,
-      "chapter": 2,
-      "quest": "toan2-cd2-b11"
-    },
-    {
-      "id": "toan2-cd2-gio-tao-do",
-      "kind": "object",
-      "name": "Giỏ táo đổ",
-      "label": "Nhặt táo",
-      "position": [
-        25.5,
-        13,
-        142.5
-      ],
-      "yaw": 239,
-      "radius": 2,
-      "model": "packs/kenney-survival-kit/2.0/box-open.glb",
-      "scale": 2.2857,
-      "chapter": 2,
-      "quest": "toan2-cd2-b11"
-    },
-    {
-      "id": "toan2-cd2-tao-bui-co",
-      "kind": "object",
-      "name": "Táo trong bụi cỏ",
-      "label": "Tìm trong bụi",
-      "position": [
-        28.5,
-        13,
-        143.5
-      ],
-      "yaw": -90,
-      "radius": 2,
-      "model": "packs/kenney-nature-kit/2.1/plant_bushLarge.glb",
-      "scale": 4.9396,
-      "chapter": 2,
-      "quest": "toan2-cd2-b11"
-    },
-    {
-      "id": "toan2-cd2-tao-la-kho",
-      "kind": "object",
-      "name": "Táo dưới lá khô",
-      "label": "Nhặt lên",
-      "position": [
-        23.5,
-        13,
-        144.5
-      ],
-      "yaw": 117,
-      "radius": 2,
-      "model": "packs/kenney-food-kit/2.0/apple.glb",
-      "scale": 2.0969,
-      "chapter": 2,
-      "quest": "toan2-cd2-b11"
-    },
-    {
-      "id": "gau-truc-tron",
-      "character": "gau-truc",
-      "kind": "npc",
-      "name": "Gấu Trúc Tròn",
-      "label": "Nói chuyện",
-      "position": [
-        63.5,
-        13,
-        89.5
-      ],
-      "yaw": -153,
-      "radius": 3,
-      "model": "packs/kenney-cube-pets/2.0/animal-panda.glb",
-      "scale": 0.7993,
-      "animation": "idle",
-      "chapter": 2,
-      "quest": "toan2-cd2-b12"
-    },
-    {
-      "id": "toan2-cd2-long-tre-cut",
-      "kind": "object",
-      "name": "Lóng tre cụt",
-      "label": "Nhặt lên",
-      "position": [
-        59.5,
-        13,
-        88.5
-      ],
-      "yaw": 108,
-      "radius": 2,
-      "model": "packs/kenney-nature-kit/2.1/crops_bambooStageA.glb",
-      "scale": 2.1858,
-      "chapter": 2,
-      "quest": "toan2-cd2-b12"
-    },
-    {
-      "id": "toan2-cd2-long-tre-vang",
-      "kind": "object",
-      "name": "Lóng tre vàng",
-      "label": "Nhặt lên",
-      "position": [
-        62.5,
-        13,
-        87.5
-      ],
-      "yaw": 46,
-      "radius": 2,
-      "model": "packs/kenney-nature-kit/2.1/crops_bambooStageB.glb",
-      "scale": 2.0225,
-      "tint": "#f4c430",
-      "chapter": 2,
-      "quest": "toan2-cd2-b12"
-    },
-    {
-      "id": "toan2-cd2-long-tre-xanh",
-      "kind": "object",
-      "name": "Lóng tre xanh",
-      "label": "Nhặt lên",
-      "position": [
-        62.5,
-        13,
-        87.5
-      ],
-      "yaw": 202,
-      "radius": 2,
-      "model": "packs/kenney-nature-kit/2.1/crops_bambooStageB.glb",
-      "scale": 2.0225,
-      "chapter": 2,
-      "quest": "toan2-cd2-b12"
-    },
-    {
-      "id": "toan2-cd2-b12-bac-tho-moc-khang",
-      "kind": "npc",
-      "name": "Bác thợ mộc Khang",
-      "label": "Nói chuyện",
-      "position": [
-        47.5,
-        13,
-        114.5
-      ],
-      "yaw": 135,
-      "radius": 3,
-      "model": "packs/kenney-blocky-characters/2.0/character-c.glb",
-      "scale": 0.7037,
-      "animation": "idle",
-      "chapter": 2,
-      "quest": "toan2-cd2-b12"
-    },
-    {
-      "id": "toan2-cd2-b12-meo-suong",
-      "kind": "npc",
-      "name": "Mèo Sương",
-      "label": "Nói chuyện",
-      "position": [
-        36.5,
-        13,
-        91.5
-      ],
-      "yaw": 180,
-      "radius": 3,
-      "model": "generated/characters/npc-cat-xam-jacket-green.glb",
-      "scale": 0.6415,
-      "chapter": 2,
-      "quest": "toan2-cd2-b12"
-    },
-    {
-      "id": "toan2-cd2-b12-nai-vut",
-      "kind": "npc",
-      "name": "Nai Vút",
-      "label": "Nói chuyện",
-      "position": [
-        35.5,
-        13,
-        106.5
-      ],
-      "yaw": 135,
-      "radius": 3,
-      "model": "packs/kenney-cube-pets/2.0/animal-deer.glb",
-      "scale": 0.7025,
-      "animation": "idle",
-      "chapter": 2,
-      "quest": "toan2-cd2-b12"
-    },
-    {
-      "id": "toan2-cd2-b12-tho-hat-de",
-      "kind": "npc",
-      "name": "Thỏ Hạt Dẻ",
-      "label": "Nói chuyện",
-      "position": [
-        56.5,
-        13,
-        102.5
-      ],
-      "yaw": 90,
-      "radius": 3,
-      "model": "generated/characters/npc-rabbit-nau-jacket.glb",
-      "scale": 0.5763,
-      "chapter": 2,
-      "quest": "toan2-cd2-b12"
-    },
-    {
-      "id": "toan2-cd2-b13-be-hong",
-      "kind": "npc",
-      "name": "Bê Hồng",
-      "label": "Nói chuyện",
-      "position": [
-        53.5,
-        13,
-        123.5
-      ],
-      "yaw": 180,
-      "radius": 3,
-      "model": "packs/kenney-cube-pets/2.0/animal-cow.glb",
-      "scale": 0.5582,
-      "animation": "idle",
-      "tint": "#e3c48a",
-      "chapter": 2,
-      "quest": "toan2-cd2-b13"
-    },
-    {
-      "id": "toan2-cd2-b13-koala-phan",
-      "kind": "npc",
-      "name": "Koala Phấn",
-      "label": "Nói chuyện",
-      "position": [
-        49.5,
-        13,
-        137.5
-      ],
-      "yaw": 180,
-      "radius": 3,
-      "model": "packs/kenney-cube-pets/2.0/animal-koala.glb",
-      "scale": 0.6836,
-      "animation": "idle",
-      "chapter": 2,
-      "quest": "toan2-cd2-b13"
-    },
-    {
-      "id": "toan2-cd2-b13-tho-com",
-      "kind": "npc",
-      "name": "Thỏ Cốm",
-      "label": "Nói chuyện",
-      "position": [
-        37.5,
-        13,
-        102.5
-      ],
-      "yaw": -108,
-      "radius": 3,
-      "model": "generated/characters/npc-rabbit-xam-vest-shorts-green.glb",
-      "scale": 0.5763,
-      "chapter": 2,
-      "quest": "toan2-cd2-b13"
-    },
-    {
-      "id": "toan2-cd2-bien-ten-luong",
-      "kind": "object",
-      "name": "Biển tên luống",
-      "label": "Nhặt lên",
-      "position": [
-        38.5,
-        13,
-        143.5
-      ],
-      "yaw": 27,
-      "radius": 2,
-      "model": "packs/kenney-survival-kit/2.0/signpost-single.glb",
-      "scale": 3.4777,
-      "chapter": 2,
-      "quest": "toan2-cd2-b13"
-    },
-    {
-      "id": "toan2-cd2-binh-tuoi",
-      "kind": "object",
-      "name": "Bình tưới",
-      "label": "Nhặt lên",
-      "position": [
-        41.5,
-        13,
-        144.5
-      ],
-      "yaw": -63,
-      "radius": 2,
-      "model": "packs/kenney-survival-kit/2.0/bucket.glb",
-      "scale": 3.124,
-      "chapter": 2,
-      "quest": "toan2-cd2-b13"
-    },
-    {
-      "id": "toan2-cd2-ca-rot-khong-lo",
-      "kind": "object",
-      "name": "Cà rốt khổng lồ",
-      "label": "Nhổ lên",
-      "position": [
-        36.5,
-        13,
-        145.5
-      ],
-      "yaw": 90,
-      "radius": 2,
-      "model": "packs/kenney-nature-kit/2.1/crop_carrot.glb",
-      "scale": 0.9687,
-      "chapter": 2,
-      "quest": "toan2-cd2-b13"
-    },
-    {
-      "id": "toan2-cd2-b14-cao-hoa",
-      "kind": "npc",
-      "name": "Cáo Hoa",
-      "label": "Nói chuyện",
-      "position": [
-        54.5,
-        13,
-        114.5
-      ],
-      "yaw": 27,
-      "radius": 3,
-      "model": "generated/characters/npc-fox-cam-dress.glb",
-      "scale": 0.6296,
-      "chapter": 2,
-      "quest": "toan2-cd2-b14"
-    },
-    {
-      "id": "toan2-cd2-b14-gau-mat",
-      "kind": "npc",
-      "name": "Gấu Bơ",
-      "label": "Nói chuyện",
-      "position": [
-        26.5,
-        13,
-        115.5
-      ],
-      "yaw": -27,
-      "radius": 3,
-      "model": "generated/characters/npc-bear-mat-ong-jacket.glb",
-      "scale": 0.6667,
-      "chapter": 2,
-      "quest": "toan2-cd2-b14"
-    },
-    {
-      "id": "toan2-cd2-b14-ong-sau",
-      "kind": "npc",
-      "name": "Ông Sáu",
-      "label": "Nói chuyện",
-      "position": [
-        58.5,
-        13,
-        141.5
-      ],
-      "yaw": 180,
-      "radius": 3,
-      "model": "packs/kenney-blocky-characters/2.0/character-k.glb",
-      "scale": 0.7037,
-      "animation": "idle",
-      "chapter": 2,
-      "quest": "toan2-cd2-b14"
-    },
-    {
-      "id": "toan2-cd2-chia-khoa-do",
-      "kind": "object",
-      "name": "Chìa khóa đỏ",
-      "label": "Nhặt lên",
-      "position": [
-        45.5,
-        13,
-        127.5
-      ],
-      "yaw": 15,
-      "radius": 2,
-      "model": "generated/props/key-red.glb",
-      "scale": 0.0313,
-      "chapter": 2,
-      "quest": "toan2-cd2-b14"
-    },
-    {
-      "id": "toan2-cd2-chia-khoa-vang",
-      "kind": "object",
-      "name": "Chìa khóa vàng",
-      "label": "Nhặt lên",
-      "position": [
-        46.5,
-        13,
-        133.5
-      ],
-      "yaw": -162,
-      "radius": 2,
-      "model": "generated/props/key.glb",
-      "scale": 0.0313,
-      "chapter": 2,
-      "quest": "toan2-cd2-b14"
-    },
-    {
-      "id": "toan2-cd2-chia-khoa-xanh",
-      "kind": "object",
-      "name": "Chìa khóa xanh",
-      "label": "Nhặt lên",
-      "position": [
-        43.5,
-        13,
-        131.5
-      ],
-      "yaw": 117,
-      "radius": 2,
-      "model": "generated/props/key-blue.glb",
-      "scale": 0.0313,
-      "chapter": 2,
-      "quest": "toan2-cd2-b14"
-    },
-    {
-      "id": "vet-xanh-san-gach",
-      "character": "vet-xanh",
-      "kind": "npc",
-      "name": "Vẹt Xanh",
-      "label": "Nói chuyện",
-      "position": [
-        25.5,
-        13,
-        132.5
-      ],
-      "yaw": 180,
-      "radius": 3,
-      "model": "packs/kenney-cube-pets/2.0/animal-parrot.glb",
-      "scale": 0.4758,
-      "animation": "idle",
-      "chapter": 2,
-      "quest": "toan2-cd2-b14"
-    },
-    {
-      "id": "canh-cut-pin",
-      "character": "chim-canh-cut-pin",
-      "kind": "npc",
-      "name": "Cánh Cụt Pin",
-      "label": "Nói chuyện",
-      "position": [
-        153.5,
-        13,
-        58.5
-      ],
-      "yaw": -108,
-      "radius": 3,
-      "model": "packs/kenney-cube-pets/2.0/animal-penguin.glb",
-      "scale": 0.6273,
-      "animation": "idle",
-      "chapter": 3,
-      "quest": "toan2-cd3-b15"
-    },
-    {
-      "id": "toan2-cd3-b15-be-lua",
-      "kind": "npc",
-      "name": "Bê Mầm",
-      "label": "Nói chuyện",
-      "position": [
-        141.5,
-        13,
-        44.5
-      ],
-      "yaw": 90,
-      "radius": 3,
-      "model": "packs/kenney-cube-pets/2.0/animal-cow.glb",
-      "scale": 0.5582,
-      "animation": "idle",
-      "tint": "#a8743f",
-      "chapter": 3,
-      "quest": "toan2-cd3-b15"
-    },
-    {
-      "id": "toan2-cd3-b15-cao-chanh",
-      "kind": "npc",
-      "name": "Cáo Chanh",
-      "label": "Nói chuyện",
-      "position": [
-        164.5,
-        13,
-        40.5
-      ],
-      "yaw": 18,
-      "radius": 3,
-      "model": "packs/kenney-cube-pets/2.0/animal-fox.glb",
-      "scale": 0.593,
-      "animation": "idle",
-      "chapter": 3,
-      "quest": "toan2-cd3-b15"
-    },
-    {
-      "id": "toan2-cd3-b15-heo-mum",
-      "kind": "npc",
-      "name": "Heo Lúc Lắc",
-      "label": "Nói chuyện",
-      "position": [
-        136.5,
-        13,
-        25.5
-      ],
-      "yaw": 63,
-      "radius": 3,
-      "model": "packs/kenney-cube-pets/2.0/animal-pig.glb",
-      "scale": 0.6311,
-      "animation": "idle",
-      "chapter": 3,
-      "quest": "toan2-cd3-b15"
-    },
-    {
-      "id": "toan2-cd3-b15-meo-cam",
-      "kind": "npc",
-      "name": "Mèo Quýt",
-      "label": "Nói chuyện",
-      "position": [
-        133.5,
-        13,
-        58.5
-      ],
-      "yaw": 117,
-      "radius": 3,
-      "model": "generated/characters/npc-cat-cam-vest-shorts-navy.glb",
-      "scale": 0.6415,
-      "chapter": 3,
-      "quest": "toan2-cd3-b15"
-    },
-    {
-      "id": "toan2-cd3-qua-can-1kg",
-      "kind": "object",
-      "name": "Quả cân 1 kg",
-      "label": "Nhặt lên",
-      "position": [
-        160.5,
-        13,
-        30.5
-      ],
-      "yaw": 162,
-      "radius": 2,
-      "model": "packs/kenney-nature-kit/2.1/pot_small.glb",
-      "scale": 2.2388,
-      "tint": "#9aa4ad",
-      "chapter": 3,
-      "quest": "toan2-cd3-b15"
-    },
-    {
-      "id": "toan2-cd3-qua-can-2kg",
-      "kind": "object",
-      "name": "Quả cân 2 kg",
-      "label": "Nhặt lên",
-      "position": [
-        161.5,
-        13,
-        27.5
-      ],
-      "yaw": 291,
-      "radius": 2,
-      "model": "packs/kenney-nature-kit/2.1/pot_small.glb",
-      "scale": 2.2388,
-      "tint": "#d9b13b",
-      "chapter": 3,
-      "quest": "toan2-cd3-b15"
-    },
-    {
-      "id": "toan2-cd3-qua-can-5kg",
-      "kind": "object",
-      "name": "Quả cân 5 kg",
-      "label": "Nhặt lên",
-      "position": [
-        162.5,
-        13,
-        24.5
-      ],
-      "yaw": -18,
-      "radius": 2,
-      "model": "packs/kenney-nature-kit/2.1/pot_small.glb",
-      "scale": 2.2388,
-      "tint": "#b06a3b",
-      "chapter": 3,
-      "quest": "toan2-cd3-b15"
-    },
-    {
-      "id": "ca-bong",
-      "kind": "npc",
-      "name": "Cá Bống",
-      "label": "Nói chuyện",
-      "position": [
-        155.5,
-        13,
-        60.5
-      ],
-      "yaw": -117,
-      "radius": 3,
-      "model": "packs/kenney-cube-pets/2.0/animal-fish.glb",
-      "scale": 0.3686,
-      "animation": "idle",
-      "chapter": 3,
-      "quest": "toan2-cd3-b16"
-    },
-    {
-      "id": "toan2-cd3-b16-cao-bac",
-      "kind": "npc",
-      "name": "Cáo Bạc",
-      "label": "Nói chuyện",
-      "position": [
-        154.5,
-        13,
-        44.5
-      ],
-      "yaw": 135,
-      "radius": 3,
-      "model": "generated/characters/npc-fox-tuyet-overalls.glb",
-      "scale": 0.6296,
-      "chapter": 3,
-      "quest": "toan2-cd3-b16"
-    },
-    {
-      "id": "toan2-cd3-b16-co-ngan",
-      "kind": "npc",
-      "name": "Cô Thoa",
-      "label": "Nói chuyện",
-      "position": [
-        137.5,
-        13,
-        44.5
-      ],
-      "yaw": 233,
-      "radius": 3,
-      "model": "packs/kenney-blocky-characters/2.0/character-f.glb",
-      "scale": 0.7037,
-      "animation": "idle",
-      "chapter": 3,
-      "quest": "toan2-cd3-b16"
-    },
-    {
-      "id": "toan2-cd3-b16-gau-soi",
-      "kind": "npc",
-      "name": "Gấu Sồi",
-      "label": "Nói chuyện",
-      "position": [
-        138.5,
-        13,
-        29.5
-      ],
-      "yaw": -117,
-      "radius": 3,
-      "model": "generated/characters/npc-bear-nau-vest-shorts.glb",
-      "scale": 0.6667,
-      "chapter": 3,
-      "quest": "toan2-cd3-b16"
-    },
-    {
-      "id": "toan2-cd3-ca-mot-lit",
-      "kind": "object",
-      "name": "Ca 1 lít",
-      "label": "Nhặt lên",
-      "position": [
-        147.5,
-        13,
-        30.5
-      ],
-      "yaw": 108,
-      "radius": 2,
-      "model": "packs/kenney-food-kit/2.0/cup.glb",
-      "scale": 2,
-      "chapter": 3,
-      "quest": "toan2-cd3-b16"
-    },
-    {
-      "id": "toan2-cd3-chai-nuoc",
-      "kind": "object",
-      "name": "Chai nước",
-      "label": "Nhặt lên",
-      "position": [
-        150.5,
-        13,
-        27.5
-      ],
-      "yaw": 151,
-      "radius": 2,
-      "model": "packs/kenney-survival-kit/2.0/bottle.glb",
-      "scale": 3.2495,
-      "chapter": 3,
-      "quest": "toan2-cd3-b16"
-    },
-    {
-      "id": "toan2-cd3-coc-thuy-tinh",
-      "kind": "object",
-      "name": "Cốc thủy tinh",
-      "label": "Nhặt lên",
-      "position": [
-        149.5,
-        13,
-        32.5
-      ],
-      "yaw": 162,
-      "radius": 2,
-      "model": "packs/kenney-food-kit/2.0/glass.glb",
-      "scale": 1.4028,
-      "chapter": 3,
-      "quest": "toan2-cd3-b16"
-    },
-    {
-      "id": "toan2-cd3-b17-cao-lum",
-      "kind": "npc",
-      "name": "Cáo Lúm",
-      "label": "Nói chuyện",
-      "position": [
-        152.5,
-        13,
-        48.5
-      ],
-      "yaw": 135,
-      "radius": 3,
-      "model": "generated/characters/npc-fox-do-jacket-green.glb",
-      "scale": 0.6296,
-      "chapter": 3,
-      "quest": "toan2-cd3-b17"
-    },
-    {
-      "id": "toan2-cd3-b17-gau-manh",
-      "kind": "npc",
-      "name": "Gấu Mạnh",
-      "label": "Nói chuyện",
-      "position": [
-        138.5,
-        13,
-        44.5
-      ],
-      "yaw": 4,
-      "radius": 3,
-      "model": "generated/characters/npc-bear-den-vest-shorts-green.glb",
-      "scale": 0.6667,
-      "chapter": 3,
-      "quest": "toan2-cd3-b17"
-    },
-    {
-      "id": "toan2-cd3-b17-meo-u",
-      "kind": "npc",
-      "name": "Mèo Ú",
-      "label": "Nói chuyện",
-      "position": [
-        149.5,
-        13,
-        33.5
-      ],
-      "yaw": -90,
-      "radius": 3,
-      "model": "generated/characters/npc-cat-trang-jacket-red.glb",
-      "scale": 0.6415,
-      "chapter": 3,
-      "quest": "toan2-cd3-b17"
-    },
-    {
-      "id": "toan2-cd3-ca-dong-nuoc",
-      "kind": "object",
-      "name": "Ca đong nước",
-      "label": "Nhặt lên",
-      "position": [
-        168.5,
-        13,
-        29.5
-      ],
-      "yaw": -27,
-      "radius": 2,
-      "model": "packs/kenney-food-kit/2.0/mug.glb",
-      "scale": 1.4633,
-      "chapter": 3,
-      "quest": "toan2-cd3-b17"
-    },
-    {
-      "id": "toan2-cd3-tui-gao",
-      "kind": "object",
-      "name": "Túi gạo",
-      "label": "Nhặt lên",
-      "position": [
-        166.5,
-        13,
-        31.5
-      ],
-      "yaw": 90,
-      "radius": 2,
-      "model": "packs/kenney-food-kit/2.0/bag.glb",
-      "scale": 1.0004,
-      "chapter": 3,
-      "quest": "toan2-cd3-b17"
-    },
-    {
-      "id": "toan2-cd3-tui-muoi",
-      "kind": "object",
-      "name": "Túi muối",
-      "label": "Nhặt lên",
-      "position": [
-        168.5,
-        13,
-        33.5
-      ],
-      "yaw": -153,
-      "radius": 2,
-      "model": "generated/props/salt.glb",
-      "scale": 0.0313,
-      "chapter": 3,
-      "quest": "toan2-cd3-b17"
-    },
-    {
-      "id": "gau-tuyet-bong",
-      "kind": "npc",
-      "name": "Gấu Tuyết Bông",
-      "label": "Nói chuyện",
-      "position": [
-        167.5,
-        13,
-        43.5
-      ],
-      "yaw": 297,
-      "radius": 3,
-      "model": "packs/kenney-cube-pets/2.0/animal-polar.glb",
-      "scale": 0.9326,
-      "animation": "idle",
-      "chapter": 3,
-      "quest": "toan2-cd3-b18"
-    },
-    {
-      "id": "toan2-cd3-thung-qua-do",
-      "kind": "object",
-      "name": "Thùng quà đỏ",
-      "label": "Nhặt lên",
-      "position": [
-        168.5,
-        13,
-        46.5
-      ],
-      "yaw": -90,
-      "radius": 2,
-      "model": "generated/props/package-red.glb",
-      "scale": 0.0437,
-      "chapter": 3,
-      "quest": "toan2-cd3-b18"
-    },
-    {
-      "id": "toan2-cd3-thung-qua-vang",
-      "kind": "object",
-      "name": "Thùng quà vàng",
-      "label": "Nhặt lên",
-      "position": [
-        166.5,
-        13,
-        49.5
-      ],
-      "yaw": 162,
-      "radius": 2,
-      "model": "generated/props/package-yellow.glb",
-      "scale": 0.0437,
-      "chapter": 3,
-      "quest": "toan2-cd3-b18"
-    },
-    {
-      "id": "toan2-cd3-thung-qua-xanh",
-      "kind": "object",
-      "name": "Thùng quà xanh",
-      "label": "Nhặt lên",
-      "position": [
-        164.5,
-        13,
-        47.5
-      ],
-      "yaw": 108,
-      "radius": 2,
-      "model": "generated/props/package-blue.glb",
-      "scale": 0.0437,
-      "chapter": 3,
-      "quest": "toan2-cd3-b18"
-    },
-    {
-      "id": "toan2-cd3-b18-bac-thu-kho-loc",
-      "kind": "npc",
-      "name": "Bác thủ kho Lộc",
-      "label": "Nói chuyện",
-      "position": [
-        160.5,
-        13,
-        26.5
-      ],
-      "yaw": -45,
-      "radius": 3,
-      "model": "packs/kenney-blocky-characters/2.0/character-b.glb",
-      "scale": 0.7037,
-      "animation": "idle",
-      "chapter": 3,
-      "quest": "toan2-cd3-b18"
-    },
-    {
-      "id": "toan2-cd3-b18-gau-nep",
-      "kind": "npc",
-      "name": "Gấu Nếp",
-      "label": "Nói chuyện",
-      "position": [
-        162.5,
-        13,
-        59.5
-      ],
-      "yaw": -45,
-      "radius": 3,
-      "model": "generated/characters/npc-bear-den-overalls-red.glb",
-      "scale": 0.6667,
-      "chapter": 3,
-      "quest": "toan2-cd3-b18"
-    },
-    {
-      "id": "toan2-cd3-b18-su-tu-bon",
-      "kind": "npc",
-      "name": "Sư Tử Bon",
-      "label": "Nói chuyện",
-      "position": [
-        134.5,
-        13,
-        60.5
-      ],
-      "yaw": -162,
-      "radius": 3,
-      "model": "packs/kenney-cube-pets/2.0/animal-lion.glb",
-      "scale": 0.7446,
-      "animation": "idle",
-      "chapter": 3,
-      "quest": "toan2-cd3-b18"
-    },
-    {
-      "id": "lon-rung-dom",
-      "kind": "npc",
-      "name": "Lợn Rừng Đốm",
-      "label": "Nói chuyện",
-      "position": [
-        36.5,
-        13,
-        29.5
-      ],
-      "yaw": 347,
-      "radius": 3,
-      "model": "packs/kenney-cube-pets/2.0/animal-hog.glb",
-      "scale": 0.6597,
-      "animation": "idle",
-      "chapter": 4,
-      "quest": "toan2-cd4-b19"
-    },
-    {
-      "id": "toan2-cd4-banh-xe",
-      "kind": "object",
-      "name": "Bánh xe",
-      "label": "Nhặt lên",
-      "position": [
-        34.5,
-        13,
-        31.5
-      ],
-      "yaw": 63,
-      "radius": 2,
-      "model": "packs/kenney-food-kit/2.0/cookie.glb",
-      "scale": 6.0277,
-      "chapter": 4,
-      "quest": "toan2-cd4-b19"
-    },
-    {
-      "id": "toan2-cd4-hop-oc-vit",
-      "kind": "object",
-      "name": "Hộp ốc vít",
-      "label": "Nhặt lên",
-      "position": [
-        34.5,
-        13,
-        34.5
-      ],
-      "yaw": 135,
-      "radius": 2,
-      "model": "generated/props/nut-and-bolt.glb",
-      "scale": 0.0313,
-      "chapter": 4,
-      "quest": "toan2-cd4-b19"
-    },
-    {
-      "id": "toan2-cd4-lo-xo",
-      "kind": "object",
-      "name": "Lò xo",
-      "label": "Nhặt lên",
-      "position": [
-        37.5,
-        13,
-        35.5
-      ],
-      "yaw": -162,
-      "radius": 2,
-      "model": "generated/props/paperclip.glb",
-      "scale": 0.0333,
-      "chapter": 4,
-      "quest": "toan2-cd4-b19"
-    },
-    {
-      "id": "toan2-cd4-b19-bac-tho-son-tham",
-      "kind": "npc",
-      "name": "Bác thợ sơn Thắm",
-      "label": "Nói chuyện",
-      "position": [
-        52.5,
-        13,
-        52.5
-      ],
-      "yaw": -108,
-      "radius": 3,
-      "model": "packs/kenney-blocky-characters/2.0/character-b.glb",
-      "scale": 0.7037,
-      "animation": "idle",
-      "chapter": 4,
-      "quest": "toan2-cd4-b19"
-    },
-    {
-      "id": "toan2-cd4-b19-be-rom",
-      "kind": "npc",
-      "name": "Bê Rơm",
-      "label": "Nói chuyện",
-      "position": [
-        50.5,
-        13,
-        35.5
-      ],
-      "yaw": 153,
-      "radius": 3,
-      "model": "packs/kenney-cube-pets/2.0/animal-cow.glb",
-      "scale": 0.5582,
-      "animation": "idle",
-      "tint": "#e3c48a",
-      "chapter": 4,
-      "quest": "toan2-cd4-b19"
-    },
-    {
-      "id": "toan2-cd4-b19-canh-cut-so",
-      "kind": "npc",
-      "name": "Cánh Cụt Sò",
-      "label": "Nói chuyện",
-      "position": [
-        35.5,
-        13,
-        48.5
-      ],
-      "yaw": -153,
-      "radius": 3,
-      "model": "packs/kenney-cube-pets/2.0/animal-penguin.glb",
-      "scale": 0.6273,
-      "animation": "idle",
-      "chapter": 4,
-      "quest": "toan2-cd4-b19"
-    },
-    {
-      "id": "toan2-cd4-b19-ga-con-liu",
-      "kind": "npc",
-      "name": "Gà Con Líu",
-      "label": "Nói chuyện",
-      "position": [
-        31.5,
-        13,
-        60.5
-      ],
-      "yaw": 90,
-      "radius": 3,
-      "model": "packs/kenney-cube-pets/2.0/animal-chick.glb",
-      "scale": 0.4391,
-      "animation": "idle",
-      "chapter": 4,
-      "quest": "toan2-cd4-b19"
-    },
-    {
-      "id": "toan2-cd4-b20-bac-lai-tau-khai",
-      "kind": "npc",
-      "name": "Bác tài Khải",
-      "label": "Nói chuyện",
-      "position": [
-        28.5,
-        13,
-        57.5
-      ],
-      "yaw": -90,
-      "radius": 3,
-      "model": "packs/kenney-blocky-characters/2.0/character-c.glb",
-      "scale": 0.7037,
-      "animation": "idle",
-      "chapter": 4,
-      "quest": "toan2-cd4-b20"
-    },
-    {
-      "id": "toan2-cd4-b20-gau-truc-mang",
-      "kind": "npc",
-      "name": "Gấu Trúc Măng",
-      "label": "Nói chuyện",
-      "position": [
-        39.5,
-        13,
-        55.5
-      ],
-      "yaw": 162,
-      "radius": 3,
-      "model": "packs/kenney-cube-pets/2.0/animal-panda.glb",
-      "scale": 0.7993,
-      "animation": "idle",
-      "chapter": 4,
-      "quest": "toan2-cd4-b20"
-    },
-    {
-      "id": "toan2-cd4-b20-tho-co-may",
-      "kind": "npc",
-      "name": "Thỏ Cỏ May",
-      "label": "Nói chuyện",
-      "position": [
-        24.5,
-        13,
-        33.5
-      ],
-      "yaw": -153,
-      "radius": 3,
-      "model": "generated/characters/npc-rabbit-trang-overalls-green.glb",
-      "scale": 0.5763,
-      "chapter": 4,
-      "quest": "toan2-cd4-b20"
-    },
-    {
-      "id": "toan2-cd4-b20-voi-bot",
-      "kind": "npc",
-      "name": "Voi Bọt",
-      "label": "Nói chuyện",
-      "position": [
-        49.5,
-        13,
-        36.5
-      ],
-      "yaw": 27,
-      "radius": 3,
-      "model": "packs/kenney-cube-pets/2.0/animal-elephant.glb",
-      "scale": 1.1179,
-      "animation": "idle",
-      "chapter": 4,
-      "quest": "toan2-cd4-b20"
-    },
-    {
-      "id": "toan2-cd4-toa-hang-do",
-      "kind": "object",
-      "name": "Toa hàng đỏ",
-      "label": "Nhặt lên",
-      "position": [
-        58.5,
-        13,
-        52.5
-      ],
-      "yaw": -90,
-      "radius": 2,
-      "model": "generated/props/railway-red.glb",
-      "scale": 0.0437,
-      "chapter": 4,
-      "quest": "toan2-cd4-b20"
-    },
-    {
-      "id": "toan2-cd4-toa-hang-vang",
-      "kind": "object",
-      "name": "Toa hàng vàng",
-      "label": "Nhặt lên",
-      "position": [
-        53.5,
-        13,
-        52.5
-      ],
-      "yaw": 90,
-      "radius": 2,
-      "model": "generated/props/railway-yellow.glb",
-      "scale": 0.0437,
-      "chapter": 4,
-      "quest": "toan2-cd4-b20"
-    },
-    {
-      "id": "toan2-cd4-toa-hang-xanh",
-      "kind": "object",
-      "name": "Toa hàng xanh",
-      "label": "Nhặt lên",
-      "position": [
-        57.5,
-        13,
-        55.5
-      ],
-      "yaw": -162,
-      "radius": 2,
-      "model": "generated/props/railway-blue.glb",
-      "scale": 0.0437,
-      "chapter": 4,
-      "quest": "toan2-cd4-b20"
-    },
-    {
-      "id": "toan2-cd4-b21-bac-tho-tung",
-      "kind": "npc",
-      "name": "Bác thợ Tùng",
-      "label": "Nói chuyện",
-      "position": [
-        51.5,
-        13,
-        34.5
-      ],
-      "yaw": 316,
-      "radius": 3,
-      "model": "packs/kenney-blocky-characters/2.0/character-q.glb",
-      "scale": 0.7037,
-      "animation": "idle",
-      "chapter": 4,
-      "quest": "toan2-cd4-b21"
-    },
-    {
-      "id": "toan2-cd4-b21-heo-mum",
-      "kind": "npc",
-      "name": "Heo Mũm",
-      "label": "Nói chuyện",
-      "position": [
-        40.5,
-        13,
-        50.5
-      ],
-      "yaw": 90,
-      "radius": 3,
-      "model": "packs/kenney-cube-pets/2.0/animal-pig.glb",
-      "scale": 0.6311,
-      "animation": "idle",
-      "chapter": 4,
-      "quest": "toan2-cd4-b21"
-    },
-    {
-      "id": "toan2-cd4-b21-nai-loc",
-      "kind": "npc",
-      "name": "Nai Lộc",
-      "label": "Nói chuyện",
-      "position": [
-        30.5,
-        13,
-        34.5
-      ],
-      "yaw": 50,
-      "radius": 3,
-      "model": "packs/kenney-cube-pets/2.0/animal-deer.glb",
-      "scale": 0.7025,
-      "animation": "idle",
-      "chapter": 4,
-      "quest": "toan2-cd4-b21"
-    },
-    {
-      "id": "toan2-cd4-be-ca",
-      "kind": "object",
-      "name": "Bể cá",
-      "label": "Xem",
-      "position": [
-        45.5,
-        13,
-        24.5
-      ],
-      "yaw": -135,
-      "radius": 2,
-      "model": "generated/props/tropical-fish.glb",
-      "scale": 0.0462,
-      "chapter": 4,
-      "quest": "toan2-cd4-b21"
-    },
-    {
-      "id": "toan2-cd4-hop-qua-do",
-      "kind": "object",
-      "name": "Hộp quà đỏ",
-      "label": "Mở hộp",
-      "position": [
-        32.5,
-        13,
-        58.5
-      ],
-      "yaw": 27,
-      "radius": 2,
-      "model": "generated/props/gift-red.glb",
-      "scale": 0.0437,
-      "chapter": 4,
-      "quest": "toan2-cd4-b21"
-    },
-    {
-      "id": "toan2-cd4-hop-qua-vang",
-      "kind": "object",
-      "name": "Hộp quà vàng",
-      "label": "Mở hộp",
-      "position": [
-        36.5,
-        13,
-        59.5
-      ],
-      "yaw": -72,
-      "radius": 2,
-      "model": "generated/props/gift-yellow.glb",
-      "scale": 0.0437,
-      "chapter": 4,
-      "quest": "toan2-cd4-b21"
-    },
-    {
-      "id": "toan2-cd4-hop-qua-xanh",
-      "kind": "object",
-      "name": "Hộp quà xanh",
-      "label": "Mở hộp",
-      "position": [
-        30.5,
-        13,
-        60.5
-      ],
-      "yaw": 90,
-      "radius": 2,
-      "model": "generated/props/gift-blue.glb",
-      "scale": 0.0437,
-      "chapter": 4,
-      "quest": "toan2-cd4-b21"
-    },
-    {
-      "id": "koala-na",
-      "kind": "npc",
-      "name": "Koala Na",
-      "label": "Nói chuyện",
-      "position": [
-        46.5,
-        13,
-        30.5
-      ],
-      "yaw": 180,
-      "radius": 3,
-      "model": "packs/kenney-cube-pets/2.0/animal-koala.glb",
-      "scale": 0.6836,
-      "animation": "idle",
-      "chapter": 4,
-      "quest": "toan2-cd4-b22"
-    },
-    {
-      "id": "toan2-cd4-b22-bac-hue",
-      "kind": "npc",
-      "name": "Bác Huệ",
-      "label": "Nói chuyện",
-      "position": [
-        32.5,
-        13,
-        46.5
-      ],
-      "yaw": 45,
-      "radius": 3,
-      "model": "packs/kenney-blocky-characters/2.0/character-f.glb",
-      "scale": 0.7037,
-      "animation": "idle",
-      "chapter": 4,
-      "quest": "toan2-cd4-b22"
-    },
-    {
-      "id": "toan2-cd4-b22-bac-thu-kho-lam",
-      "kind": "npc",
-      "name": "Bác thủ kho Lâm",
-      "label": "Nói chuyện",
-      "position": [
-        60.5,
-        13,
-        43.5
-      ],
-      "yaw": 45,
-      "radius": 3,
-      "model": "packs/kenney-blocky-characters/2.0/character-i.glb",
-      "scale": 0.7037,
-      "animation": "idle",
-      "chapter": 4,
-      "quest": "toan2-cd4-b22"
-    },
-    {
-      "id": "toan2-cd4-b22-gau-mat",
-      "kind": "npc",
-      "name": "Gấu Rô",
-      "label": "Nói chuyện",
-      "position": [
-        61.5,
-        13,
-        32.5
-      ],
-      "yaw": -162,
-      "radius": 3,
-      "model": "generated/characters/npc-bear-mat-ong-jacket.glb",
-      "scale": 0.6667,
-      "chapter": 4,
-      "quest": "toan2-cd4-b22"
-    },
-    {
-      "id": "toan2-cd4-b22-tho-ruy-bang",
-      "kind": "npc",
-      "name": "Thỏ Ruy Băng",
-      "label": "Nói chuyện",
-      "position": [
-        23.5,
-        13,
-        34.5
-      ],
-      "yaw": 108,
-      "radius": 3,
-      "model": "generated/characters/npc-rabbit-nau-jacket.glb",
-      "scale": 0.5763,
-      "chapter": 4,
-      "quest": "toan2-cd4-b22"
-    },
-    {
-      "id": "toan2-cd4-b23-gau-bin",
-      "kind": "npc",
-      "name": "Gấu Xù",
-      "label": "Nói chuyện",
-      "position": [
-        37.5,
-        13,
-        55.5
-      ],
-      "yaw": -27,
-      "radius": 3,
-      "model": "generated/characters/npc-bear-nau-overalls-green.glb",
-      "scale": 0.6667,
-      "chapter": 4,
-      "quest": "toan2-cd4-b23"
-    },
-    {
-      "id": "toan2-cd4-b23-huou-gio",
-      "kind": "npc",
-      "name": "Hươu Gió",
-      "label": "Nói chuyện",
-      "position": [
-        58.5,
-        13,
-        38.5
-      ],
-      "yaw": -135,
-      "radius": 3,
-      "model": "packs/kenney-cube-pets/2.0/animal-giraffe.glb",
-      "scale": 1.2837,
-      "animation": "idle",
-      "chapter": 4,
-      "quest": "toan2-cd4-b23"
-    },
-    {
-      "id": "toan2-cd4-b23-koala-may",
-      "kind": "npc",
-      "name": "Koala Mây",
-      "label": "Nói chuyện",
-      "position": [
-        50.5,
-        13,
-        52.5
-      ],
-      "yaw": 291,
-      "radius": 3,
-      "model": "packs/kenney-cube-pets/2.0/animal-koala.glb",
-      "scale": 0.6836,
-      "animation": "idle",
-      "chapter": 4,
-      "quest": "toan2-cd4-b23"
-    },
-    {
-      "id": "toan2-cd4-b23-meo-cam",
-      "kind": "npc",
-      "name": "Mèo Cam",
-      "label": "Nói chuyện",
-      "position": [
-        27.5,
-        13,
-        32.5
-      ],
-      "yaw": -45,
-      "radius": 3,
-      "model": "generated/characters/npc-cat-cam-vest-shorts-navy.glb",
-      "scale": 0.6415,
-      "chapter": 4,
-      "quest": "toan2-cd4-b23"
-    },
-    {
-      "id": "toan2-cd4-may-bay-do",
-      "kind": "object",
-      "name": "Máy bay giấy đỏ",
-      "label": "Nhặt lên",
-      "position": [
-        38.5,
-        13,
-        25.5
-      ],
-      "yaw": 117,
-      "radius": 2,
-      "model": "generated/props/airplane-red.glb",
-      "scale": 0.0437,
-      "chapter": 4,
-      "quest": "toan2-cd4-b23"
-    },
-    {
-      "id": "toan2-cd4-may-bay-vang",
-      "kind": "object",
-      "name": "Máy bay giấy vàng",
-      "label": "Nhặt lên",
-      "position": [
-        41.5,
-        13,
-        26.5
-      ],
-      "yaw": -153,
-      "radius": 2,
-      "model": "generated/props/airplane-yellow.glb",
-      "scale": 0.0437,
-      "chapter": 4,
-      "quest": "toan2-cd4-b23"
-    },
-    {
-      "id": "toan2-cd4-may-bay-xanh",
-      "kind": "object",
-      "name": "Máy bay giấy xanh",
-      "label": "Nhặt lên",
-      "position": [
-        40.5,
-        13,
-        22.5
-      ],
-      "yaw": 190,
-      "radius": 2,
-      "model": "generated/props/airplane-blue.glb",
-      "scale": 0.0437,
-      "chapter": 4,
-      "quest": "toan2-cd4-b23"
-    },
-    {
-      "id": "toan2-cd4-b24-bac-sau",
-      "kind": "npc",
-      "name": "Bác Sáu",
-      "label": "Nói chuyện",
-      "position": [
-        25.5,
-        13,
-        53.5
-      ],
-      "yaw": 108,
-      "radius": 3,
-      "model": "packs/kenney-blocky-characters/2.0/character-j.glb",
-      "scale": 0.7037,
-      "animation": "idle",
-      "chapter": 4,
-      "quest": "toan2-cd4-b24"
-    },
-    {
-      "id": "toan2-cd4-b24-be-com",
-      "kind": "npc",
-      "name": "Bê Phính",
-      "label": "Nói chuyện",
-      "position": [
-        50.5,
-        13,
-        33.5
-      ],
-      "yaw": 108,
-      "radius": 3,
-      "model": "packs/kenney-cube-pets/2.0/animal-cow.glb",
-      "scale": 0.5582,
-      "animation": "idle",
-      "tint": "#a8743f",
-      "chapter": 4,
-      "quest": "toan2-cd4-b24"
-    },
-    {
-      "id": "toan2-cd4-b24-gau-bo",
-      "kind": "npc",
-      "name": "Gấu Keo",
-      "label": "Nói chuyện",
-      "position": [
-        47.5,
-        13,
-        60.5
-      ],
-      "yaw": 90,
-      "radius": 3,
-      "model": "generated/characters/npc-bear-nau-vest-shorts.glb",
-      "scale": 0.6667,
-      "chapter": 4,
-      "quest": "toan2-cd4-b24"
-    },
-    {
-      "id": "toan2-cd4-bup-be-go",
-      "kind": "object",
-      "name": "Búp bê gỗ",
-      "label": "Nhặt lên",
-      "position": [
-        40.5,
-        13,
-        41.5
-      ],
-      "yaw": -90,
-      "radius": 2,
-      "model": "generated/props/nesting-dolls.glb",
-      "scale": 0.0437,
-      "chapter": 4,
-      "quest": "toan2-cd4-b24"
-    },
-    {
-      "id": "toan2-cd4-con-quay",
-      "kind": "object",
-      "name": "Con quay",
-      "label": "Nhặt lên",
-      "position": [
-        39.5,
-        13,
-        44.5
-      ],
-      "yaw": 180,
-      "radius": 2,
-      "model": "packs/kenney-food-kit/2.0/cupcake.glb",
-      "scale": 0.9438,
-      "chapter": 4,
-      "quest": "toan2-cd4-b24"
-    },
-    {
-      "id": "toan2-cd4-o-to-go",
-      "kind": "object",
-      "name": "Ô tô gỗ",
-      "label": "Nhặt lên",
-      "position": [
-        37.5,
-        13,
-        41.5
-      ],
-      "yaw": 90,
-      "radius": 2,
-      "model": "generated/props/automobile.glb",
-      "scale": 0.0636,
-      "chapter": 4,
-      "quest": "toan2-cd4-b24"
-    },
-    {
-      "id": "toan2-cd5-b25-bac-ngan",
-      "kind": "npc",
-      "name": "Bác Ngân",
-      "label": "Nói chuyện",
-      "position": [
-        86.5,
-        13,
-        125.5
-      ],
-      "yaw": 108,
-      "radius": 3,
-      "model": "packs/kenney-blocky-characters/2.0/character-k.glb",
-      "scale": 0.7037,
-      "animation": "idle",
-      "chapter": 5,
-      "quest": "toan2-cd5-b25"
-    },
-    {
-      "id": "toan2-cd5-b25-cao-bach",
-      "kind": "npc",
-      "name": "Cáo Bạch",
-      "label": "Nói chuyện",
-      "position": [
-        108.5,
-        13,
-        124.5
-      ],
-      "yaw": 149,
-      "radius": 3,
-      "model": "generated/characters/npc-fox-tuyet-overalls.glb",
-      "scale": 0.6296,
-      "chapter": 5,
-      "quest": "toan2-cd5-b25"
-    },
-    {
-      "id": "toan2-cd5-b25-tho-bi",
-      "kind": "npc",
-      "name": "Thỏ Bi",
-      "label": "Nói chuyện",
-      "position": [
-        108.5,
-        13,
-        143.5
-      ],
-      "yaw": 45,
-      "radius": 3,
-      "model": "generated/characters/npc-rabbit-xam-vest-shorts-green.glb",
-      "scale": 0.5763,
-      "chapter": 5,
-      "quest": "toan2-cd5-b25"
-    },
-    {
-      "id": "toan2-cd5-but-chi",
-      "kind": "object",
-      "name": "Bút chì",
-      "label": "Nhặt lên",
-      "position": [
-        76.5,
-        13,
-        144.5
-      ],
-      "yaw": -108,
-      "radius": 2,
-      "model": "generated/props/pencil.glb",
-      "scale": 0.0437,
-      "chapter": 5,
-      "quest": "toan2-cd5-b25"
-    },
-    {
-      "id": "toan2-cd5-hop-sao-giay",
-      "kind": "object",
-      "name": "Hộp sao giấy",
-      "label": "Nhặt lên",
-      "position": [
-        73.5,
-        13,
-        143.5
-      ],
-      "yaw": 105,
-      "radius": 2,
-      "model": "packs/kenney-survival-kit/2.0/box.glb",
-      "scale": 2.8,
-      "chapter": 5,
-      "quest": "toan2-cd5-b25"
-    },
-    {
-      "id": "toan2-cd5-thuoc-ke",
-      "kind": "object",
-      "name": "Thước kẻ",
-      "label": "Nhặt lên",
-      "position": [
-        75.5,
-        13,
-        141.5
-      ],
-      "yaw": -45,
-      "radius": 2,
-      "model": "generated/props/ruler.glb",
-      "scale": 0.0437,
-      "chapter": 5,
-      "quest": "toan2-cd5-b25"
-    },
-    {
-      "id": "toan2-cd5-b26-bac-tam",
-      "kind": "npc",
-      "name": "Bác Tâm",
-      "label": "Nói chuyện",
-      "position": [
-        116.5,
-        13,
-        133.5
-      ],
-      "yaw": 153,
-      "radius": 3,
-      "model": "packs/kenney-blocky-characters/2.0/character-j.glb",
-      "scale": 0.7037,
-      "animation": "idle",
-      "chapter": 5,
-      "quest": "toan2-cd5-b26"
-    },
-    {
-      "id": "toan2-cd5-b26-bo-co-non",
-      "kind": "npc",
-      "name": "Bò Cỏ Non",
-      "label": "Nói chuyện",
-      "position": [
-        102.5,
-        13,
-        129.5
-      ],
-      "yaw": -162,
-      "radius": 3,
-      "model": "packs/kenney-cube-pets/2.0/animal-cow.glb",
-      "scale": 0.8683,
-      "animation": "idle",
-      "chapter": 5,
-      "quest": "toan2-cd5-b26"
-    },
-    {
-      "id": "toan2-cd5-b26-gau-muc",
-      "kind": "npc",
-      "name": "Gấu Mực",
-      "label": "Nói chuyện",
-      "position": [
-        109.5,
-        13,
-        143.5
-      ],
-      "yaw": -108,
-      "radius": 3,
-      "model": "generated/characters/npc-bear-den-overalls-red.glb",
-      "scale": 0.6667,
-      "chapter": 5,
-      "quest": "toan2-cd5-b26"
-    },
-    {
-      "id": "toan2-cd5-b26-meo-tuyet",
-      "kind": "npc",
-      "name": "Mèo Tuyết",
-      "label": "Nói chuyện",
-      "position": [
-        86.5,
-        13,
-        140.5
-      ],
-      "yaw": 228,
-      "radius": 3,
-      "model": "generated/characters/npc-cat-trang-jacket-red.glb",
-      "scale": 0.6415,
-      "chapter": 5,
-      "quest": "toan2-cd5-b26"
-    },
-    {
-      "id": "toan2-cd5-manh-kinh-do",
-      "kind": "object",
-      "name": "Mảnh kính đỏ",
-      "label": "Nhặt lên",
-      "position": [
-        117.5,
-        13,
-        115.5
-      ],
-      "yaw": 135,
-      "radius": 2,
-      "model": "generated/props/gem-red.glb",
-      "scale": 0.0417,
-      "chapter": 5,
-      "quest": "toan2-cd5-b26"
-    },
-    {
-      "id": "toan2-cd5-manh-kinh-tim",
-      "kind": "object",
-      "name": "Mảnh kính tím",
-      "label": "Nhặt lên",
-      "position": [
-        119.5,
-        13,
-        113.5
-      ],
-      "yaw": 198,
-      "radius": 2,
-      "model": "generated/props/gem-purple.glb",
-      "scale": 0.0417,
-      "chapter": 5,
-      "quest": "toan2-cd5-b26"
-    },
-    {
-      "id": "toan2-cd5-manh-kinh-xanh",
-      "kind": "object",
-      "name": "Mảnh kính xanh",
-      "label": "Nhặt lên",
-      "position": [
-        119.5,
-        13,
-        113.5
-      ],
-      "yaw": 57,
-      "radius": 2,
-      "model": "generated/props/gem-blue.glb",
-      "scale": 0.0417,
-      "chapter": 5,
-      "quest": "toan2-cd5-b26"
-    },
-    {
-      "id": "toan2-cd5-b27-bac-thin",
-      "kind": "npc",
-      "name": "Bác Thìn",
-      "label": "Nói chuyện",
-      "position": [
-        100.5,
-        13,
-        117.5
-      ],
-      "yaw": 45,
-      "radius": 3,
-      "model": "packs/kenney-blocky-characters/2.0/character-m.glb",
-      "scale": 0.7037,
-      "animation": "idle",
-      "chapter": 5,
-      "quest": "toan2-cd5-b27"
-    },
-    {
-      "id": "toan2-cd5-b27-gau-nut",
-      "kind": "npc",
-      "name": "Gấu Nút",
-      "label": "Nói chuyện",
-      "position": [
-        113.5,
-        13,
-        138.5
-      ],
-      "yaw": 289,
-      "radius": 3,
-      "model": "generated/characters/npc-bear-den-vest-shorts-green.glb",
-      "scale": 0.6667,
-      "chapter": 5,
-      "quest": "toan2-cd5-b27"
-    },
-    {
-      "id": "toan2-cd5-b27-tho-may",
-      "kind": "npc",
-      "name": "Thỏ Mây",
-      "label": "Nói chuyện",
-      "position": [
-        75.5,
-        13,
-        127.5
-      ],
-      "yaw": 90,
-      "radius": 3,
-      "model": "generated/characters/npc-rabbit-trang-vest-shorts.glb",
-      "scale": 0.5763,
-      "chapter": 5,
-      "quest": "toan2-cd5-b27"
-    },
-    {
-      "id": "toan2-cd5-giay-mau",
-      "kind": "object",
-      "name": "Giấy màu",
-      "label": "Nhặt lên",
-      "position": [
-        99.5,
-        13,
-        141.5
-      ],
-      "yaw": -117,
-      "radius": 2,
-      "model": "generated/props/page-pink.glb",
-      "scale": 0.0375,
-      "chapter": 5,
-      "quest": "toan2-cd5-b27"
-    },
-    {
-      "id": "toan2-cd5-keo-nho",
-      "kind": "object",
-      "name": "Kéo nhỏ",
-      "label": "Nhặt lên",
-      "position": [
-        97.5,
-        13,
-        137.5
-      ],
-      "yaw": 48,
-      "radius": 2,
-      "model": "generated/props/scissors.glb",
-      "scale": 0.04,
-      "chapter": 5,
-      "quest": "toan2-cd5-b27"
-    },
-    {
-      "id": "toan2-cd5-lo-ho-dan",
-      "kind": "object",
-      "name": "Lọ hồ dán",
-      "label": "Nhặt lên",
-      "position": [
-        96.5,
-        13,
-        143.5
-      ],
-      "yaw": 162,
-      "radius": 2,
-      "model": "packs/kenney-survival-kit/2.0/bottle-large.glb",
-      "scale": 4.1705,
-      "chapter": 5,
-      "quest": "toan2-cd5-b27"
-    },
-    {
-      "id": "cua-kenh",
-      "kind": "npc",
-      "name": "Cua Kềnh",
-      "label": "Nói chuyện",
-      "position": [
-        113.5,
-        13,
-        114.5
-      ],
-      "yaw": -45,
-      "radius": 3,
-      "model": "packs/kenney-cube-pets/2.0/animal-crab.glb",
-      "scale": 0.4192,
-      "animation": "idle",
-      "chapter": 5,
-      "quest": "toan2-cd5-b28"
-    },
-    {
-      "id": "toan2-cd5-b28-tho-bong-lau",
-      "kind": "npc",
-      "name": "Thỏ Bông Lau",
-      "label": "Nói chuyện",
-      "position": [
-        91.5,
-        13,
-        117.5
-      ],
-      "yaw": 45,
-      "radius": 3,
-      "model": "generated/characters/npc-rabbit-nau-dress-blue.glb",
-      "scale": 0.5763,
-      "chapter": 5,
-      "quest": "toan2-cd5-b28"
-    },
-    {
-      "id": "toan2-cd5-dinh-treo-tranh",
-      "kind": "object",
-      "name": "Đinh treo tranh",
-      "label": "Nhặt lên",
-      "position": [
-        117.5,
-        13,
-        138.5
-      ],
-      "yaw": 18,
-      "radius": 2,
-      "model": "generated/props/pushpin.glb",
-      "scale": 0.0313,
-      "chapter": 5,
-      "quest": "toan2-cd5-b28"
-    },
-    {
-      "id": "toan2-cd5-khung-tranh-go",
-      "kind": "object",
-      "name": "Khung tranh gỗ",
-      "label": "Nhặt lên",
-      "position": [
-        117.5,
-        13,
-        142.5
-      ],
-      "yaw": 135,
-      "radius": 2,
-      "model": "generated/props/framed-picture.glb",
-      "scale": 0.0625,
-      "chapter": 5,
-      "quest": "toan2-cd5-b28"
-    },
-    {
-      "id": "toan2-cd5-thuoc-ke-dai",
-      "kind": "object",
-      "name": "Thước kẻ dài",
-      "label": "Nhặt lên",
-      "position": [
-        119.5,
-        13,
-        140.5
-      ],
-      "yaw": -45,
-      "radius": 2,
-      "model": "generated/props/ruler-blue.glb",
-      "scale": 0.0437,
-      "chapter": 5,
-      "quest": "toan2-cd5-b28"
-    },
-    {
-      "id": "toan2-cd6-b29-cao-tuyet-bip",
-      "kind": "npc",
-      "name": "Cáo Tuyết Bíp",
-      "label": "Nói chuyện",
-      "position": [
-        100.5,
-        13,
-        94.5
-      ],
-      "yaw": 135,
-      "radius": 3,
-      "model": "generated/characters/npc-fox-tuyet-overalls.glb",
-      "scale": 0.6296,
-      "chapter": 6,
-      "quest": "toan2-cd6-b29"
-    },
-    {
-      "id": "toan2-cd6-b29-gau-com-nam",
-      "kind": "npc",
-      "name": "Gấu Cơm Nắm",
-      "label": "Nói chuyện",
-      "position": [
-        77.5,
-        13,
-        92.5
-      ],
-      "yaw": -27,
-      "radius": 3,
-      "model": "generated/characters/npc-bear-mat-ong-dress-blue.glb",
-      "scale": 0.6667,
-      "chapter": 6,
-      "quest": "toan2-cd6-b29"
-    },
-    {
-      "id": "toan2-cd6-b29-khi-du-day",
-      "kind": "npc",
-      "name": "Khỉ Đu Dây",
-      "label": "Nói chuyện",
-      "position": [
-        117.5,
-        13,
-        101.5
-      ],
-      "yaw": 320,
-      "radius": 3,
-      "model": "packs/kenney-cube-pets/2.0/animal-monkey.glb",
-      "scale": 0.6832,
-      "animation": "idle",
-      "chapter": 6,
-      "quest": "toan2-cd6-b29"
-    },
-    {
-      "id": "toan2-cd6-b29-meo-xam-may",
-      "kind": "npc",
-      "name": "Mèo Xám Mây",
+      "name": "Nai Sương",
       "label": "Nói chuyện",
       "position": [
         112.5,
         13,
-        89.5
-      ],
-      "yaw": 135,
-      "radius": 3,
-      "model": "generated/characters/npc-cat-xam-dress-mint.glb",
-      "scale": 0.6415,
-      "chapter": 6,
-      "quest": "toan2-cd6-b29"
-    },
-    {
-      "id": "toan2-cd6-b29-ong-khue",
-      "kind": "npc",
-      "name": "Ông Khuê",
-      "label": "Nói chuyện",
-      "position": [
-        88.5,
-        13,
-        101.5
-      ],
-      "yaw": -27,
-      "radius": 3,
-      "model": "packs/kenney-blocky-characters/2.0/character-a.glb",
-      "scale": 0.7037,
-      "animation": "idle",
-      "chapter": 6,
-      "quest": "toan2-cd6-b29"
-    },
-    {
-      "id": "toan2-cd6-chia-khoa-day-cot",
-      "kind": "object",
-      "name": "Chìa khoá dây cót",
-      "label": "Nhặt lên",
-      "position": [
-        93.5,
-        13,
-        87.5
-      ],
-      "yaw": -63,
-      "radius": 2,
-      "model": "generated/props/old-key.glb",
-      "scale": 0.0313,
-      "chapter": 6,
-      "quest": "toan2-cd6-b29"
-    },
-    {
-      "id": "toan2-cd6-kim-gio-thap",
-      "kind": "object",
-      "name": "Kim giờ",
-      "label": "Nhặt lên",
-      "position": [
-        89.5,
-        13,
-        90.5
-      ],
-      "yaw": 135,
-      "radius": 2,
-      "model": "generated/props/alarm-clock.glb",
-      "scale": 0.0375,
-      "chapter": 6,
-      "quest": "toan2-cd6-b29"
-    },
-    {
-      "id": "toan2-cd6-kim-phut-thap",
-      "kind": "object",
-      "name": "Kim phút",
-      "label": "Nhặt lên",
-      "position": [
-        88.5,
-        13,
-        87.5
-      ],
-      "yaw": 72,
-      "radius": 2,
-      "model": "generated/props/watch.glb",
-      "scale": 0.0313,
-      "chapter": 6,
-      "quest": "toan2-cd6-b29"
-    },
-    {
-      "id": "toan2-cd6-b30-be-luc-lac",
-      "kind": "npc",
-      "name": "Bê Lúc Lắc",
-      "label": "Nói chuyện",
-      "position": [
-        84.5,
-        13,
         94.5
-      ],
-      "yaw": 90,
-      "radius": 3,
-      "model": "packs/kenney-cube-pets/2.0/animal-cow.glb",
-      "scale": 0.5582,
-      "animation": "idle",
-      "tint": "#a8743f",
-      "chapter": 6,
-      "quest": "toan2-cd6-b30"
-    },
-    {
-      "id": "toan2-cd6-b30-gau-nau-com",
-      "kind": "npc",
-      "name": "Gấu Nâu Cốm",
-      "label": "Nói chuyện",
-      "position": [
-        80.5,
-        13,
-        105.5
-      ],
-      "yaw": -108,
-      "radius": 3,
-      "model": "generated/characters/npc-bear-nau-overalls-green.glb",
-      "scale": 0.6667,
-      "chapter": 6,
-      "quest": "toan2-cd6-b30"
-    },
-    {
-      "id": "toan2-cd6-b30-tho-kim-chi",
-      "kind": "npc",
-      "name": "Thỏ Kim Chỉ",
-      "label": "Nói chuyện",
-      "position": [
-        104.5,
-        13,
-        91.5
-      ],
-      "yaw": 180,
-      "radius": 3,
-      "model": "generated/characters/npc-rabbit-xam-overalls-red.glb",
-      "scale": 0.5763,
-      "chapter": 6,
-      "quest": "toan2-cd6-b30"
-    },
-    {
-      "id": "toan2-cd6-the-ngay-sinh",
-      "kind": "object",
-      "name": "Thẻ ngày sinh",
-      "label": "Nhặt lên",
-      "position": [
-        117.5,
-        13,
-        92.5
-      ],
-      "yaw": 45,
-      "radius": 2,
-      "model": "generated/props/birthday-cake.glb",
-      "scale": 0.0375,
-      "chapter": 6,
-      "quest": "toan2-cd6-b30"
-    },
-    {
-      "id": "toan2-cd6-to-lich-thang-12",
-      "kind": "object",
-      "name": "Tờ lịch tháng 12",
-      "label": "Nhặt lên",
-      "position": [
-        119.5,
-        13,
-        94.5
-      ],
-      "yaw": 302,
-      "radius": 2,
-      "model": "generated/props/calendar.glb",
-      "scale": 0.0437,
-      "chapter": 6,
-      "quest": "toan2-cd6-b30"
-    },
-    {
-      "id": "toan2-cd6-to-lich-thang-2",
-      "kind": "object",
-      "name": "Tờ lịch tháng 2",
-      "label": "Nhặt lên",
-      "position": [
-        119.5,
-        13,
-        94.5
-      ],
-      "yaw": 205,
-      "radius": 2,
-      "model": "generated/props/spiral-calendar.glb",
-      "scale": 0.0437,
-      "chapter": 6,
-      "quest": "toan2-cd6-b30"
-    },
-    {
-      "id": "voi-bao",
-      "kind": "npc",
-      "name": "Voi Bảo",
-      "label": "Nói chuyện",
-      "position": [
-        99.5,
-        13,
-        101.5
-      ],
-      "yaw": 18,
-      "radius": 3,
-      "model": "packs/kenney-cube-pets/2.0/animal-elephant.glb",
-      "scale": 1.1179,
-      "animation": "idle",
-      "chapter": 6,
-      "quest": "toan2-cd6-b30"
-    },
-    {
-      "id": "toan2-cd6-b31-cao-leng-keng",
-      "kind": "npc",
-      "name": "Cáo Leng Keng",
-      "label": "Nói chuyện",
-      "position": [
-        89.5,
-        13,
-        99.5
-      ],
-      "yaw": 135,
-      "radius": 3,
-      "model": "generated/characters/npc-fox-cam-dress.glb",
-      "scale": 0.6296,
-      "chapter": 6,
-      "quest": "toan2-cd6-b31"
-    },
-    {
-      "id": "toan2-cd6-b31-meo-trang-sua",
-      "kind": "npc",
-      "name": "Mèo Trắng Sữa",
-      "label": "Nói chuyện",
-      "position": [
-        115.5,
-        13,
-        100.5
       ],
       "yaw": -90,
       "radius": 3,
-      "model": "generated/characters/npc-cat-trang-dress.glb",
-      "scale": 0.6415,
-      "chapter": 6,
-      "quest": "toan2-cd6-b31"
+      "model": "packs/kenney-cube-pets/2.0/animal-deer.glb",
+      "scale": 0.7025,
+      "animation": "idle",
+      "tint": "#e9dcc8",
+      "chapter": 2,
+      "quest": "tv2-t05-b09"
     },
     {
-      "id": "toan2-cd6-b31-tho-tach-tach",
-      "kind": "npc",
-      "name": "Thỏ Tách Tách",
-      "label": "Nói chuyện",
-      "position": [
-        77.5,
-        13,
-        88.5
-      ],
-      "yaw": 343,
-      "radius": 3,
-      "model": "generated/characters/npc-rabbit-xam-vest-shorts-green.glb",
-      "scale": 0.5763,
-      "chapter": 6,
-      "quest": "toan2-cd6-b31"
-    },
-    {
-      "id": "toan2-cd6-dong-ho-mo-hinh",
+      "id": "tv2-t05-bui-hoa-nhai",
       "kind": "object",
-      "name": "Đồng hồ mô hình",
-      "label": "Nhặt lên",
+      "name": "Bụi hoa nhài",
+      "label": "Xem",
       "position": [
         75.5,
         13,
-        103.5
+        105.5
       ],
-      "yaw": 45,
+      "yaw": 90,
       "radius": 2,
-      "model": "generated/props/mantelpiece-clock.glb",
-      "scale": 0.05,
-      "chapter": 6,
-      "quest": "toan2-cd6-b31"
+      "model": "packs/kenney-nature-kit/2.1/flower_yellowB.glb",
+      "scale": 4.4164,
+      "chapter": 2,
+      "quest": "tv2-t05-b09"
     },
     {
-      "id": "toan2-cd6-to-lich-thang-5",
+      "id": "tv2-t05-chuong-gio-tre",
       "kind": "object",
-      "name": "Tờ lịch tháng 5",
-      "label": "Nhặt lên",
+      "name": "Chuông gió tre",
+      "label": "Xem",
       "position": [
         78.5,
         13,
         103.5
       ],
-      "yaw": -27,
+      "yaw": -45,
       "radius": 2,
-      "model": "generated/props/tear-off-calendar.glb",
-      "scale": 0.0437,
-      "chapter": 6,
-      "quest": "toan2-cd6-b31"
+      "model": "generated/props/wind-chime.glb",
+      "scale": 0.0667,
+      "chapter": 2,
+      "quest": "tv2-t05-b09"
     },
     {
-      "id": "toan2-cd6-to-lich-thang-6",
+      "id": "tv2-t05-vo-tap-viet",
       "kind": "object",
-      "name": "Tờ lịch tháng 6",
-      "label": "Nhặt lên",
+      "name": "Vở tập viết",
+      "label": "Xem",
       "position": [
-        80.5,
-        13,
-        105.5
-      ],
-      "yaw": -90,
-      "radius": 2,
-      "model": "generated/props/calendar-blue.glb",
-      "scale": 0.0437,
-      "chapter": 6,
-      "quest": "toan2-cd6-b31"
-    },
-    {
-      "id": "toan2-cd6-b32-cao-do-tem",
-      "kind": "npc",
-      "name": "Cáo Đỏ Tem",
-      "label": "Nói chuyện",
-      "position": [
-        92.5,
-        13,
-        93.5
-      ],
-      "yaw": 52,
-      "radius": 3,
-      "model": "generated/characters/npc-fox-do-jacket-green.glb",
-      "scale": 0.6296,
-      "chapter": 6,
-      "quest": "toan2-cd6-b32"
-    },
-    {
-      "id": "toan2-cd6-buu-anh-hue",
-      "kind": "object",
-      "name": "Bưu ảnh Huế",
-      "label": "Nhặt lên",
-      "position": [
-        119.5,
-        13,
-        104.5
-      ],
-      "yaw": -63,
-      "radius": 2,
-      "model": "generated/props/postcard-hue.glb",
-      "scale": 0.05,
-      "chapter": 6,
-      "quest": "toan2-cd6-b32"
-    },
-    {
-      "id": "toan2-cd6-buu-anh-mu-cang-chai",
-      "kind": "object",
-      "name": "Bưu ảnh Mù Cang Chải",
-      "label": "Nhặt lên",
-      "position": [
-        116.5,
-        13,
-        105.5
-      ],
-      "yaw": 90,
-      "radius": 2,
-      "model": "generated/props/postcard-mountains.glb",
-      "scale": 0.05,
-      "chapter": 6,
-      "quest": "toan2-cd6-b32"
-    },
-    {
-      "id": "toan2-cd6-buu-anh-nam-can",
-      "kind": "object",
-      "name": "Bưu ảnh Năm Căn",
-      "label": "Nhặt lên",
-      "position": [
-        116.5,
+        75.5,
         13,
         102.5
       ],
       "yaw": 18,
       "radius": 2,
-      "model": "generated/props/postcard-island.glb",
-      "scale": 0.0533,
-      "chapter": 6,
-      "quest": "toan2-cd6-b32"
+      "model": "generated/props/notebook.glb",
+      "scale": 0.0375,
+      "chapter": 2,
+      "quest": "tv2-t05-b09"
     },
     {
-      "id": "toan2-cd7-b33-bac-hung",
+      "id": "tv2-t05-khung-cua-so-la",
+      "kind": "object",
+      "name": "Cửa sổ lớp 2A",
+      "label": "Đọc thơ",
+      "position": [
+        102.5,
+        13,
+        105.5
+      ],
+      "yaw": 309,
+      "radius": 2,
+      "model": "generated/props/window.glb",
+      "scale": 0.075,
+      "chapter": 2,
+      "quest": "tv2-t05-b09"
+    },
+    {
+      "id": "tv2-t05-tranh-cau-be-ham-hoc",
+      "kind": "object",
+      "name": "Tranh kể chuyện",
+      "label": "Xem tranh",
+      "position": [
+        102.5,
+        13,
+        88.5
+      ],
+      "yaw": 0,
+      "radius": 2,
+      "model": "generated/props/framed-picture.glb",
+      "scale": 0.0625,
+      "chapter": 2,
+      "quest": "tv2-t05-b09"
+    },
+    {
+      "id": "bang-go-goc-soi",
+      "kind": "object",
+      "name": "Bảng thời khoá biểu",
+      "label": "Đọc bảng",
+      "position": [
+        105.5,
+        13,
+        103.5
+      ],
+      "yaw": -45,
+      "radius": 2,
+      "model": "generated/props/placard.glb",
+      "scale": 0.075,
+      "chapter": 2,
+      "quest": "tv2-t05-b10"
+    },
+    {
+      "id": "tv2-t05-b10-cua-keo",
       "kind": "npc",
-      "name": "Bác Hùng",
+      "name": "Cua Kéo",
       "label": "Nói chuyện",
       "position": [
-        150.5,
-        13,
-        119.5
-      ],
-      "yaw": -63,
-      "radius": 3,
-      "model": "packs/kenney-blocky-characters/2.0/character-j.glb",
-      "scale": 0.7037,
-      "animation": "idle",
-      "chapter": 7,
-      "quest": "toan2-cd7-b33"
-    },
-    {
-      "id": "toan2-cd7-b33-chu-toan",
-      "kind": "npc",
-      "name": "Chú Toàn",
-      "label": "Nói chuyện",
-      "position": [
-        139.5,
-        13,
-        139.5
-      ],
-      "yaw": 180,
-      "radius": 3,
-      "model": "packs/kenney-blocky-characters/2.0/character-b.glb",
-      "scale": 0.7037,
-      "animation": "idle",
-      "chapter": 7,
-      "quest": "toan2-cd7-b33"
-    },
-    {
-      "id": "toan2-cd7-xap-ve-do",
-      "kind": "object",
-      "name": "Xấp vé đỏ",
-      "label": "Nhặt lên",
-      "position": [
-        168.5,
-        13,
-        109.5
-      ],
-      "yaw": 357,
-      "radius": 2,
-      "model": "generated/props/ticket-red.glb",
-      "scale": 0.0667,
-      "chapter": 7,
-      "quest": "toan2-cd7-b33"
-    },
-    {
-      "id": "toan2-cd7-xap-ve-vang",
-      "kind": "object",
-      "name": "Xấp vé vàng",
-      "label": "Nhặt lên",
-      "position": [
-        167.5,
-        13,
-        113.5
-      ],
-      "yaw": 135,
-      "radius": 2,
-      "model": "generated/props/ticket-yellow.glb",
-      "scale": 0.0667,
-      "chapter": 7,
-      "quest": "toan2-cd7-b33"
-    },
-    {
-      "id": "toan2-cd7-xap-ve-xanh",
-      "kind": "object",
-      "name": "Xấp vé xanh",
-      "label": "Nhặt lên",
-      "position": [
-        169.5,
-        13,
-        115.5
-      ],
-      "yaw": -162,
-      "radius": 2,
-      "model": "generated/props/ticket-blue.glb",
-      "scale": 0.0667,
-      "chapter": 7,
-      "quest": "toan2-cd7-b33"
-    },
-    {
-      "id": "toan2-cd7-b34-chu-phong",
-      "kind": "npc",
-      "name": "Chú Phong",
-      "label": "Nói chuyện",
-      "position": [
-        132.5,
+        79.5,
         13,
         100.5
       ],
+      "yaw": 135,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-crab.glb",
+      "scale": 0.4192,
+      "animation": "idle",
+      "chapter": 2,
+      "quest": "tv2-t05-b10"
+    },
+    {
+      "id": "tv2-t05-b10-gau-bap",
+      "kind": "npc",
+      "name": "Gấu Bắp",
+      "label": "Nói chuyện",
+      "position": [
+        100.5,
+        13,
+        88.5
+      ],
+      "yaw": -18,
+      "radius": 3,
+      "model": "generated/characters/npc-bear-nau-vest-shorts.glb",
+      "scale": 0.6667,
+      "chapter": 2,
+      "quest": "tv2-t05-b10"
+    },
+    {
+      "id": "tv2-t05-b10-tho-voi",
+      "kind": "npc",
+      "name": "Thỏ Vội",
+      "label": "Nói chuyện",
+      "position": [
+        113.5,
+        13,
+        93.5
+      ],
       "yaw": 90,
       "radius": 3,
-      "model": "packs/kenney-blocky-characters/2.0/character-c.glb",
-      "scale": 0.7037,
+      "model": "packs/kenney-cube-pets/2.0/animal-bunny.glb",
+      "scale": 0.4478,
       "animation": "idle",
-      "chapter": 7,
-      "quest": "toan2-cd7-b34"
+      "chapter": 2,
+      "quest": "tv2-t05-b10"
     },
     {
-      "id": "toan2-cd7-manh-tam-giac",
+      "id": "tv2-t05-cai-keo",
       "kind": "object",
-      "name": "Mảnh tam giác",
+      "name": "Cái kéo",
       "label": "Nhặt lên",
       "position": [
-        130.5,
+        91.5,
         13,
-        131.5
+        98.5
       ],
-      "yaw": -162,
+      "yaw": 113,
       "radius": 2,
-      "model": "generated/props/triangle-ruler.glb",
-      "scale": 0.0375,
-      "chapter": 7,
-      "quest": "toan2-cd7-b34"
+      "model": "generated/props/scissors.glb",
+      "scale": 0.04,
+      "chapter": 2,
+      "quest": "tv2-t05-b10"
     },
     {
-      "id": "toan2-cd7-manh-tu-giac",
+      "id": "tv2-t05-cap-sach",
       "kind": "object",
-      "name": "Mảnh tứ giác",
+      "name": "Cặp sách",
       "label": "Nhặt lên",
       "position": [
-        132.5,
+        88.5,
         13,
-        128.5
+        99.5
       ],
-      "yaw": -90,
+      "yaw": 90,
       "radius": 2,
-      "model": "generated/props/orange-diamond.glb",
-      "scale": 0.0375,
-      "chapter": 7,
-      "quest": "toan2-cd7-b34"
+      "model": "generated/props/backpack.glb",
+      "scale": 0.0437,
+      "chapter": 2,
+      "quest": "tv2-t05-b10"
     },
     {
-      "id": "toan2-cd7-thuoc-ke",
+      "id": "tv2-t05-thuoc-ke",
       "kind": "object",
       "name": "Thước kẻ",
       "label": "Nhặt lên",
       "position": [
-        129.5,
+        90.5,
         13,
-        126.5
-      ],
-      "yaw": 336,
-      "radius": 2,
-      "model": "generated/props/ruler.glb",
-      "scale": 0.0437,
-      "chapter": 7,
-      "quest": "toan2-cd7-b34"
-    },
-    {
-      "id": "toan2-cd7-b35-chi-ngan",
-      "kind": "npc",
-      "name": "Chị Ngân",
-      "label": "Nói chuyện",
-      "position": [
-        167.5,
-        13,
-        109.5
-      ],
-      "yaw": -162,
-      "radius": 3,
-      "model": "packs/kenney-blocky-characters/2.0/character-n.glb",
-      "scale": 0.7037,
-      "animation": "idle",
-      "chapter": 7,
-      "quest": "toan2-cd7-b35"
-    },
-    {
-      "id": "toan2-cd7-ca-mot-lit",
-      "kind": "object",
-      "name": "Ca một lít",
-      "label": "Nhặt lên",
-      "position": [
-        133.5,
-        13,
-        92.5
-      ],
-      "yaw": 226,
-      "radius": 2,
-      "model": "packs/kenney-food-kit/2.0/cup.glb",
-      "scale": 2,
-      "chapter": 7,
-      "quest": "toan2-cd7-b35"
-    },
-    {
-      "id": "toan2-cd7-can-nuoc",
-      "kind": "object",
-      "name": "Can nước",
-      "label": "Nhặt lên",
-      "position": [
-        131.5,
-        13,
-        90.5
-      ],
-      "yaw": 45,
-      "radius": 2,
-      "model": "packs/kenney-survival-kit/2.0/bucket.glb",
-      "scale": 3.124,
-      "chapter": 7,
-      "quest": "toan2-cd7-b35"
-    },
-    {
-      "id": "toan2-cd7-qua-can",
-      "kind": "object",
-      "name": "Quả cân",
-      "label": "Nhặt lên",
-      "position": [
-        136.5,
-        13,
-        92.5
-      ],
-      "yaw": -90,
-      "radius": 2,
-      "model": "generated/props/balance-scale.glb",
-      "scale": 0.0437,
-      "chapter": 7,
-      "quest": "toan2-cd7-b35"
-    },
-    {
-      "id": "toan2-cd7-b36-ong-ru-ri",
-      "kind": "npc",
-      "name": "Ong Rù Rì",
-      "label": "Nói chuyện",
-      "position": [
-        167.5,
-        13,
-        96.5
-      ],
-      "yaw": 180,
-      "radius": 3,
-      "model": "packs/kenney-cube-pets/2.0/animal-bee.glb",
-      "scale": 0.3002,
-      "animation": "idle",
-      "chapter": 7,
-      "quest": "toan2-cd7-b36"
-    },
-    {
-      "id": "toan2-cd7-hop-huy-hieu-bac",
-      "kind": "object",
-      "name": "Hộp huy hiệu bạc",
-      "label": "Mở hộp",
-      "position": [
-        154.5,
-        13,
-        92.5
-      ],
-      "yaw": -63,
-      "radius": 2,
-      "model": "generated/props/medal-silver.glb",
-      "scale": 0.0375,
-      "chapter": 7,
-      "quest": "toan2-cd7-b36"
-    },
-    {
-      "id": "toan2-cd7-hop-huy-hieu-dong",
-      "kind": "object",
-      "name": "Hộp huy hiệu đồng",
-      "label": "Mở hộp",
-      "position": [
-        151.5,
-        13,
-        95.5
+        101.5
       ],
       "yaw": 153,
       "radius": 2,
-      "model": "generated/props/medal-bronze.glb",
-      "scale": 0.0375,
-      "chapter": 7,
-      "quest": "toan2-cd7-b36"
+      "model": "generated/props/ruler.glb",
+      "scale": 0.0437,
+      "chapter": 2,
+      "quest": "tv2-t05-b10"
     },
     {
-      "id": "toan2-cd7-hop-huy-hieu-vang",
-      "kind": "object",
-      "name": "Hộp huy hiệu vàng",
-      "label": "Mở hộp",
+      "id": "tv2-t06-b11-ca-chep-hong",
+      "kind": "npc",
+      "name": "Cá Chép Hồng",
+      "label": "Nói chuyện",
       "position": [
-        151.5,
+        53.5,
         13,
-        91.5
+        125.5
+      ],
+      "yaw": -90,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-fish.glb",
+      "scale": 0.3686,
+      "animation": "idle",
+      "chapter": 3,
+      "quest": "tv2-t06-b11"
+    },
+    {
+      "id": "tv2-t06-b11-cho-lu",
+      "kind": "npc",
+      "name": "Chó Lu",
+      "label": "Nói chuyện",
+      "position": [
+        48.5,
+        13,
+        89.5
+      ],
+      "yaw": 45,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-dog.glb",
+      "scale": 0.6311,
+      "animation": "idle",
+      "chapter": 3,
+      "quest": "tv2-t06-b11"
+    },
+    {
+      "id": "tv2-t06-b11-hai-ly-moc",
+      "kind": "npc",
+      "name": "Hải Ly Mộc",
+      "label": "Nói chuyện",
+      "position": [
+        58.5,
+        13,
+        137.5
+      ],
+      "yaw": -45,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-beaver.glb",
+      "scale": 0.6661,
+      "animation": "idle",
+      "chapter": 3,
+      "quest": "tv2-t06-b11"
+    },
+    {
+      "id": "tv2-t06-chot-gia-trong",
+      "kind": "object",
+      "name": "Chốt giá trống",
+      "label": "Nhặt lên",
+      "position": [
+        24.5,
+        13,
+        133.5
       ],
       "yaw": 27,
       "radius": 2,
-      "model": "generated/props/medal-gold.glb",
+      "model": "generated/props/round-pushpin.glb",
+      "scale": 0.0313,
+      "chapter": 3,
+      "quest": "tv2-t06-b11"
+    },
+    {
+      "id": "tv2-t06-dui-trong",
+      "kind": "object",
+      "name": "Dùi trống",
+      "label": "Nhặt lên",
+      "position": [
+        27.5,
+        13,
+        136.5
+      ],
+      "yaw": -117,
+      "radius": 2,
+      "model": "packs/kenney-survival-kit/2.0/tool-hammer.glb",
+      "scale": 3.9093,
+      "chapter": 3,
+      "quest": "tv2-t06-b11"
+    },
+    {
+      "id": "tv2-t06-khan-lau-trong",
+      "kind": "object",
+      "name": "Khăn lau trống",
+      "label": "Nhặt lên",
+      "position": [
+        27.5,
+        13,
+        133.5
+      ],
+      "yaw": -45,
+      "radius": 2,
+      "model": "generated/props/scarf.glb",
       "scale": 0.0375,
-      "chapter": 7,
-      "quest": "toan2-cd7-b36"
+      "chapter": 3,
+      "quest": "tv2-t06-b11"
+    },
+    {
+      "id": "tv2-t06-trong-truong",
+      "kind": "object",
+      "name": "Trống trường",
+      "label": "Đọc thơ",
+      "position": [
+        33.5,
+        13,
+        100.5
+      ],
+      "yaw": 18,
+      "radius": 2,
+      "model": "packs/kenney-survival-kit/2.0/barrel.glb",
+      "scale": 3.1977,
+      "chapter": 3,
+      "quest": "tv2-t06-b11"
+    },
+    {
+      "id": "ban-doc-sach",
+      "kind": "object",
+      "name": "Bản danh sách",
+      "label": "Đọc danh sách",
+      "position": [
+        24.5,
+        13,
+        96.5
+      ],
+      "yaw": 44,
+      "radius": 2,
+      "model": "generated/props/memo.glb",
+      "scale": 0.0375,
+      "chapter": 3,
+      "quest": "tv2-t06-b12"
+    },
+    {
+      "id": "tv2-t06-b12-co-meo-kinh",
+      "kind": "npc",
+      "name": "Cô Mèo Kính",
+      "label": "Nói chuyện",
+      "position": [
+        30.5,
+        13,
+        117.5
+      ],
+      "yaw": 77,
+      "radius": 3,
+      "model": "generated/characters/npc-cat-xam-jacket-green.glb",
+      "scale": 0.6415,
+      "chapter": 3,
+      "quest": "tv2-t06-b12"
+    },
+    {
+      "id": "tv2-t06-b12-tho-dau",
+      "kind": "npc",
+      "name": "Thỏ Đậu",
+      "label": "Nói chuyện",
+      "position": [
+        41.5,
+        13,
+        100.5
+      ],
+      "yaw": -90,
+      "radius": 3,
+      "model": "generated/characters/npc-rabbit-xam-overalls-red.glb",
+      "scale": 0.5763,
+      "chapter": 3,
+      "quest": "tv2-t06-b12"
+    },
+    {
+      "id": "tv2-t06-but-chi-tre",
+      "kind": "object",
+      "name": "Bút chì tre",
+      "label": "Nhặt lên",
+      "position": [
+        62.5,
+        13,
+        90.5
+      ],
+      "yaw": -72,
+      "radius": 2,
+      "model": "generated/props/pencil-green.glb",
+      "scale": 0.0437,
+      "chapter": 3,
+      "quest": "tv2-t06-b12"
+    },
+    {
+      "id": "tv2-t06-kinh-lup-gau-truc",
+      "kind": "object",
+      "name": "Kính lúp",
+      "label": "Nhặt lên",
+      "position": [
+        59.5,
+        13,
+        90.5
+      ],
+      "yaw": 75,
+      "radius": 2,
+      "model": "generated/props/magnifier.glb",
+      "scale": 0.0375,
+      "chapter": 3,
+      "quest": "tv2-t06-b12"
+    },
+    {
+      "id": "tv2-t06-trang-giay-uot",
+      "kind": "object",
+      "name": "Trang giấy ướt",
+      "label": "Nhặt lên",
+      "position": [
+        57.5,
+        13,
+        92.5
+      ],
+      "yaw": 117,
+      "radius": 2,
+      "model": "generated/props/page-curl.glb",
+      "scale": 0.0375,
+      "chapter": 3,
+      "quest": "tv2-t06-b12"
+    },
+    {
+      "id": "tv2-t07-b13-ga-con-ri",
+      "kind": "npc",
+      "name": "Gà Con Ri",
+      "label": "Nói chuyện",
+      "position": [
+        51.5,
+        13,
+        57.5
+      ],
+      "yaw": -27,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-chick.glb",
+      "scale": 0.4391,
+      "animation": "idle",
+      "chapter": 4,
+      "quest": "tv2-t07-b13"
+    },
+    {
+      "id": "tv2-t07-b13-heo-bot",
+      "kind": "npc",
+      "name": "Heo Bột",
+      "label": "Nói chuyện",
+      "position": [
+        42.5,
+        13,
+        45.5
+      ],
+      "yaw": -63,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-hog.glb",
+      "scale": 0.6597,
+      "animation": "idle",
+      "chapter": 4,
+      "quest": "tv2-t07-b13"
+    },
+    {
+      "id": "tv2-t07-b13-meo-khoi",
+      "kind": "npc",
+      "name": "Mèo Khói",
+      "label": "Nói chuyện",
+      "position": [
+        53.5,
+        13,
+        34.5
+      ],
+      "yaw": -72,
+      "radius": 3,
+      "model": "generated/characters/npc-cat-xam-dress-mint.glb",
+      "scale": 0.6415,
+      "chapter": 4,
+      "quest": "tv2-t07-b13"
+    },
+    {
+      "id": "tv2-t07-cua-so-la",
+      "kind": "object",
+      "name": "Cửa sổ phòng mĩ thuật",
+      "label": "Đọc thơ",
+      "position": [
+        28.5,
+        13,
+        48.5
+      ],
+      "yaw": -90,
+      "radius": 2,
+      "model": "generated/props/window-green.glb",
+      "scale": 0.075,
+      "chapter": 4,
+      "quest": "tv2-t07-b13"
+    },
+    {
+      "id": "tv2-t07-day-nhay",
+      "kind": "object",
+      "name": "Dây nhảy",
+      "label": "Nhặt lên",
+      "position": [
+        33.5,
+        13,
+        30.5
+      ],
+      "yaw": 27,
+      "radius": 2,
+      "model": "generated/props/knot.glb",
+      "scale": 0.0313,
+      "chapter": 4,
+      "quest": "tv2-t07-b13"
+    },
+    {
+      "id": "tv2-t07-long-chim-xanh",
+      "kind": "object",
+      "name": "Lông chim xanh",
+      "label": "Nhặt lên",
+      "position": [
+        35.5,
+        13,
+        32.5
+      ],
+      "yaw": -90,
+      "radius": 2,
+      "model": "generated/props/feather-blue.glb",
+      "scale": 0.0437,
+      "chapter": 4,
+      "quest": "tv2-t07-b13"
+    },
+    {
+      "id": "tv2-t07-qua-cau-long",
+      "kind": "object",
+      "name": "Quả cầu lông",
+      "label": "Nhặt lên",
+      "position": [
+        33.5,
+        13,
+        35.5
+      ],
+      "yaw": 162,
+      "radius": 2,
+      "model": "generated/props/badminton.glb",
+      "scale": 0.0375,
+      "chapter": 4,
+      "quest": "tv2-t07-b13"
+    },
+    {
+      "id": "tv2-t07-tranh-bua-trua",
+      "kind": "object",
+      "name": "Tranh bữa trưa",
+      "label": "Xem tranh",
+      "position": [
+        60.5,
+        13,
+        46.5
+      ],
+      "yaw": -27,
+      "radius": 2,
+      "model": "generated/props/framed-picture-yellow.glb",
+      "scale": 0.0625,
+      "chapter": 4,
+      "quest": "tv2-t07-b13"
+    },
+    {
+      "id": "tv2-t07-b14-cao-co",
+      "kind": "npc",
+      "name": "Cáo Cọ",
+      "label": "Nói chuyện",
+      "position": [
+        47.5,
+        13,
+        57.5
+      ],
+      "yaw": 117,
+      "radius": 3,
+      "model": "generated/characters/npc-fox-cam-jacket-red.glb",
+      "scale": 0.6296,
+      "chapter": 4,
+      "quest": "tv2-t07-b14"
+    },
+    {
+      "id": "tv2-t07-gia-ve",
+      "kind": "object",
+      "name": "Giá vẽ",
+      "label": "Đọc thơ",
+      "position": [
+        35.5,
+        13,
+        44.5
+      ],
+      "yaw": -45,
+      "radius": 2,
+      "model": "generated/props/artist-palette.glb",
+      "scale": 0.0533,
+      "chapter": 4,
+      "quest": "tv2-t07-b14"
+    },
+    {
+      "id": "tv2-t07-hoa-cuc-dai",
+      "kind": "object",
+      "name": "Hoa cúc dại",
+      "label": "Hái hoa",
+      "position": [
+        47.5,
+        13,
+        22.5
+      ],
+      "yaw": -72,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/flower_yellowB.glb",
+      "scale": 4.4164,
+      "chapter": 4,
+      "quest": "tv2-t07-b14"
+    },
+    {
+      "id": "tv2-t07-la-xanh-non",
+      "kind": "object",
+      "name": "Lá xanh non",
+      "label": "Hái lá",
+      "position": [
+        41.5,
+        13,
+        24.5
+      ],
+      "yaw": 108,
+      "radius": 2,
+      "model": "generated/props/seedling.glb",
+      "scale": 0.0375,
+      "chapter": 4,
+      "quest": "tv2-t07-b14"
+    },
+    {
+      "id": "tv2-t07-qua-mam-xoi",
+      "kind": "object",
+      "name": "Quả mâm xôi",
+      "label": "Hái quả",
+      "position": [
+        46.5,
+        13,
+        25.5
+      ],
+      "yaw": -135,
+      "radius": 2,
+      "model": "packs/kenney-food-kit/2.0/grapes.glb",
+      "scale": 0.9465,
+      "chapter": 4,
+      "quest": "tv2-t07-b14"
+    },
+    {
+      "id": "tv2-t07-leu-ve",
+      "kind": "object",
+      "name": "Lều vẽ",
+      "label": "Vào lều",
+      "position": [
+        60.5,
+        13,
+        45.5
+      ],
+      "yaw": 18,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/tent_smallOpen.glb",
+      "scale": 3.9207,
+      "chapter": 4,
+      "quest": "tv2-t07-b14"
     }
   ],
   "props": [

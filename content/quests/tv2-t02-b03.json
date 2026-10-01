@@ -1,15 +1,15 @@
 {
   "id": "tv2-t02-b03",
-  "region": "khu-rung-bi-mat",
-  "chapter": 3,
+  "region": "lang-ven-song",
+  "chapter": 2,
   "title": "Thỏ Bồng Bềnh ước dưới cầu vồng",
   "status": "active",
   "lesson": "tv2-t1-b03",
-  "summary": "Mưa vừa tạnh, cầu vồng vắt ngang bãi cỏ, Thỏ Bồng Bềnh muốn ước một lúc cả chục điều rồi quên sạch. {name} nhặt đồ Thỏ Bồng Bềnh đánh rơi, đọc chuyện Bi và Bống, xếp lại tranh phơi trên dây và kể chuyện về niềm vui không cần hũ vàng.",
+  "summary": "Mưa vừa tạnh, cầu vồng vắt ngang bãi cỏ ven sông, Thỏ Bồng Bềnh muốn ước một lúc cả chục điều rồi quên sạch. {name} nhặt đồ Thỏ Bồng Bềnh đánh rơi, đọc chuyện Bi và Bống, xếp lại tranh phơi trên dây và kể chuyện về niềm vui không cần hũ vàng.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Thỏ Bồng Bềnh (nhanh nhảu, đang nói thì quên), Vẹt Xanh sưu tầm từ lạ, Hải Ly Đinh vừa đóng xong nhịp cầu gỗ thứ hai",
-    "where": "Bãi cỏ sau mưa có cầu vồng trong Khu rừng bí mật, chân cầu vồng, bảng gỗ bãi cỏ, cây gạo đầu bãi, dây phơi tranh và cầu gỗ bắc qua suối",
+    "who": "Thỏ Bồng Bềnh (nhanh nhảu, đang nói thì quên), Cún Lúa chạy dọc bờ sông dẫn đường, Hải Ly Đinh vừa buộc xong nhịp cầu tre thứ hai",
+    "where": "Bãi cỏ ven sông sau mưa có cầu vồng, chân cầu vồng, bảng gỗ bãi cỏ, bờ sông đầu bãi, dây phơi tranh và cầu tre bắc qua sông",
     "goal": "Giúp Thỏ Bồng Bềnh tìm ra niềm vui thật sự sau khi cầu vồng biến mất",
     "play": "Tìm đồ, nói, đọc truyện, phân loại, trắc nghiệm, chọn nhiều đáp án, lựa chọn trong hội thoại, xếp tranh, điền từ, kể chuyện, phiếu viết",
     "learn": "Tiếng Việt 2 Bài 3: đọc hiểu \"Niềm vui của Bi và Bống\", từ ngữ chỉ người và chỉ vật, câu thể hiện sự ngạc nhiên, kể chuyện theo tranh, viết chữ hoa Ă, Â",
@@ -41,18 +41,18 @@
     }
   },
   "places": {
-    "tv2-t02-b03-tho-may": "bãi cỏ sau mưa",
+    "tv2-t02-b03-tho-may": "bãi cỏ ven sông",
     "tim-do-tho-ti": "chân cầu vồng",
     "tv2-t02-bang-go-bai-co": "bảng gỗ bãi cỏ",
-    "vet-xanh": "cây gạo đầu bãi",
+    "cun-lua": "bờ sông đầu bãi",
     "tv2-t02-day-phoi-tranh": "dây phơi tranh",
-    "tv2-t02-b03-hai-ly-dinh": "cầu gỗ bắc qua suối"
+    "tv2-t02-b03-hai-ly-dinh": "cầu tre bắc qua sông"
   },
   "steps": [
     {
       "id": "gap-tho-ti",
       "title": "Thỏ Bồng Bềnh và chiếc cầu vồng",
-      "goTo": "Ra bãi cỏ sau mưa, Thỏ Bồng Bềnh đang ngửa cổ ngắm cầu vồng",
+      "goTo": "Ra bãi cỏ ven sông, Thỏ Bồng Bềnh đang ngửa cổ ngắm cầu vồng",
       "kind": "dialogue",
       "target": "tv2-t02-b03-tho-may",
       "lines": [
@@ -65,8 +65,8 @@
           "text": "Tớ ước một củ cà rốt to bằng cái cây, một đôi ủng đỏ, rồi một… một… ơ, tớ định ước gì nhỉ?"
         },
         {
-          "speaker": "Vẹt Xanh",
-          "text": "Nghe đồn dưới chân cầu vồng có cả hũ vàng! Hũ hũ! Từ này lạ ghê, tớ cất vào bộ sưu tập ngay!"
+          "speaker": "Cún Lúa",
+          "text": "Gâu! Người trong làng bảo dưới chân cầu vồng có cả hũ vàng đấy! Tớ ngửi mãi mà chỉ thấy mùi cỏ ướt."
         },
         {
           "speaker": "Thỏ Bồng Bềnh",
@@ -98,10 +98,10 @@
     {
       "id": "doan-tranh-cau-vong",
       "title": "Hai bạn nhỏ ngắm cầu vồng",
-      "goTo": "Ôm hũ sành, bút màu, giấy vẽ về bãi cỏ sau mưa cho Thỏ Bồng Bềnh",
+      "goTo": "Ôm hũ sành, bút màu, giấy vẽ về bãi cỏ ven sông cho Thỏ Bồng Bềnh",
       "kind": "speak",
       "target": "tv2-t02-b03-tho-may",
-      "prompt": "Thỏ Bồng Bềnh giơ tấm tranh lấy ra từ cuộn giấy vẽ, định hỏi gì đó rồi quên béng. Vẹt Xanh nhắc hộ: Bức tranh dưới đây vẽ những gì? Đoán xem hai bạn nhỏ nói gì với nhau.",
+      "prompt": "Thỏ Bồng Bềnh giơ tấm tranh lấy ra từ cuộn giấy vẽ, định hỏi gì đó rồi quên béng. Cún Lúa lấy chân khều khều mép tranh, nhắc hộ: Bức tranh dưới đây vẽ những gì? Đoán xem hai bạn nhỏ nói gì với nhau.",
       "hints": [
         "Kể xem trong tranh có những ai, họ đứng ở đâu.",
         "Bầu trời sau cơn mưa có gì lạ và đẹp?",
@@ -165,7 +165,7 @@
       "feedback": {
         "right": [
           "Đúng rồi! Bi reo y như Thỏ Bồng Bềnh lúc nãy, chỉ khác là Bi không quên mình định nói gì.",
-          "Chuẩn! Vẹt Xanh nhại lại liền hai lần: Đẹp quá! Đẹp quá!",
+          "Chuẩn! Cún Lúa hớn hở chạy vòng quanh bảng gỗ, như cũng đang reo: Đẹp quá!",
           "Thỏ Bồng Bềnh vỗ tay bộp bộp: {name} tìm ra câu reo của Bi nhanh như thỏ!"
         ],
         "wrong": [
@@ -264,7 +264,7 @@
       "feedback": {
         "right": [
           "Mỗi món quà về đúng tay người muốn mua! Thỏ Bồng Bềnh ước mình cũng có ngựa hồng.",
-          "Chuẩn rồi! Vẹt Xanh đếm: hai món cho Bống, hai món cho Bi, chẳng ai thiệt.",
+          "Chuẩn rồi! Cún Lúa đếm bằng chân trước: hai món cho Bống, hai món cho Bi, chẳng ai thiệt.",
           "{name} nhớ lời hai anh em còn giỏi hơn Thỏ Bồng Bềnh nhớ điều ước của mình."
         ],
         "wrong": [
@@ -277,7 +277,7 @@
     {
       "id": "khong-co-hu-vang",
       "title": "Cầu vồng biến mất",
-      "goTo": "Chạy về bãi cỏ sau mưa, cầu vồng trên đầu Thỏ Bồng Bềnh nhạt dần",
+      "goTo": "Chạy về bãi cỏ ven sông, cầu vồng trên đầu Thỏ Bồng Bềnh nhạt dần",
       "kind": "challenge",
       "mechanic": "quiz",
       "target": "tv2-t02-b03-tho-may",
@@ -330,11 +330,11 @@
     {
       "id": "cau-noi-yeu-thuong",
       "title": "Những câu nói yêu thương",
-      "goTo": "Vẹt Xanh đậu trên cây gạo đầu bãi, mỏ ngậm năm chiếc lá chép chữ",
+      "goTo": "Cún Lúa ngồi chờ ở bờ sông đầu bãi, miệng ngậm năm chiếc lá chép chữ",
       "kind": "challenge",
       "mechanic": "multi-select",
-      "target": "vet-xanh",
-      "prompt": "Vẹt Xanh chép lời hai anh em lên năm chiếc lá, rồi đố liền hai lần: Tìm những câu nói cho thấy hai anh em rất quan tâm và yêu quý nhau.",
+      "target": "cun-lua",
+      "prompt": "Cún Lúa ngậm năm chiếc lá chép lời hai anh em, đặt xuống từng chiếc một rồi ngồi chờ: Tìm những câu nói cho thấy hai anh em rất quan tâm và yêu quý nhau.",
       "choices": [
         {
           "id": "hu-vang",
@@ -380,7 +380,7 @@
       },
       "feedback": {
         "right": [
-          "Hai câu \"vẽ tặng\" được tìm ra rồi! Vẹt Xanh reo: tặng tặng! thương thương!",
+          "Hai câu \"vẽ tặng\" được tìm ra rồi! Cún Lúa mừng rỡ liếm má {name} một cái.",
           "Đúng rồi, ai cũng nghĩ tới người kia trước, ấm áp ghê.",
           "Thỏ Bồng Bềnh suýt khóc vì cảm động… rồi quên mất vì sao mình khóc."
         ],
@@ -475,7 +475,7 @@
         "right": [
           "Tám đám mây đã bay về hai bầu trời ngăn nắp!",
           "Thỏ Bồng Bềnh đếm lại lần thứ năm và lần này nhớ được: đủ tám, đúng cả tám!",
-          "Vẹt Xanh khoe với cả rừng: {name} phân loại siêu siêu! nhanh nhanh!"
+          "Cún Lúa chạy khắp bãi cỏ khoe với cả làng: {name} xếp từ giỏi nhất bờ sông!"
         ],
         "wrong": [
           "Búp bê biết đi học không nhỉ? Nó là đồ chơi, tức là vật đấy.",
@@ -487,7 +487,7 @@
     {
       "id": "ve-tang-ai",
       "title": "Thỏ Bồng Bềnh vẽ tặng ai",
-      "goTo": "Thỏ Bồng Bềnh vẫy cả hai tai gọi {name} về bãi cỏ sau mưa",
+      "goTo": "Thỏ Bồng Bềnh vẫy cả hai tai gọi {name} về bãi cỏ ven sông",
       "kind": "dialogue",
       "target": "tv2-t02-b03-tho-may",
       "lines": [
@@ -497,25 +497,25 @@
         },
         {
           "speaker": "Hải Ly Đinh",
-          "text": "Tặng tớ một bức vẽ cây cầu nhé! Nhịp cầu thứ hai tớ vừa đóng xong, cầu vồng còn vắt ngang trên đó."
+          "text": "Tặng tớ một bức vẽ cây cầu nhé! Nhịp cầu tre thứ hai tớ vừa buộc xong, cầu vồng còn vắt ngang trên đó."
         },
         {
-          "speaker": "Vẹt Xanh",
-          "text": "Tớ thì thích tranh có thật nhiều từ lạ! Lạ lạ! {name} bảo Thỏ Bồng Bềnh vẽ tặng ai đi!"
+          "speaker": "Cún Lúa",
+          "text": "Tớ thì thích tranh có một chú cún đang chạy dọc bờ sông! {name} bảo Thỏ Bồng Bềnh vẽ tặng ai đi!"
         }
       ],
       "choices": [
         {
           "text": "Vẽ tặng Hải Ly Đinh cây cầu dưới cầu vồng!",
-          "reply": "Thỏ Bồng Bềnh cầm bút màu lên: cầu nâu, cầu vồng bảy màu… thêm cả Hải Ly đang ôm khúc gỗ nữa!"
+          "reply": "Thỏ Bồng Bềnh cầm bút màu lên: cầu tre vàng, cầu vồng bảy màu… thêm cả Hải Ly đang ôm bó tre nữa!"
         },
         {
           "text": "Vẽ tặng em nhỏ ở nhà cậu một chiếc chong chóng!",
           "reply": "Ơ đúng rồi, tớ có một đứa em mà quên mất! Em ấy mê chong chóng lắm."
         },
         {
-          "text": "Vẽ tặng Vẹt Xanh một cuốn sổ đầy từ lạ!",
-          "reply": "Vẹt Xanh sướng quá kêu ầm lên: sổ sổ! lạ lạ! Thỏ Bồng Bềnh cười lăn ra cỏ."
+          "text": "Vẽ tặng Cún Lúa một chú cún chạy bên sông!",
+          "reply": "Cún Lúa sướng quá chạy vòng vòng đuổi theo đuôi mình. Thỏ Bồng Bềnh cười lăn ra cỏ."
         }
       ]
     },
@@ -722,7 +722,7 @@
       "feedback": {
         "right": [
           "Chữ dưới tranh rõ ràng trở lại, Thỏ Bồng Bềnh đọc to mà không quên chữ nào!",
-          "Điền chuẩn từng chỗ, Vẹt Xanh gật gù: khớp khớp! khớp khớp!",
+          "Điền chuẩn từng chỗ, Cún Lúa gật gù, hai tai vểnh lên nghe Thỏ Bồng Bềnh đọc.",
           "{name} nhớ chuyện kĩ ghê, chẳng bù cho Thỏ Bồng Bềnh hay quên."
         ],
         "wrong": [
@@ -735,7 +735,7 @@
     {
       "id": "ke-chuyen-theo-tranh",
       "title": "Kể chuyện Bi và Bống",
-      "goTo": "Ôm tranh khô sang cầu gỗ bắc qua suối, Hải Ly Đinh ngồi chờ nghe kể",
+      "goTo": "Ôm tranh khô sang cầu tre bắc qua sông, Hải Ly Đinh ngồi chờ nghe kể",
       "kind": "speak",
       "target": "tv2-t02-b03-hai-ly-dinh",
       "prompt": "Thỏ Bồng Bềnh ôm bốn bức tranh đã khô cong, định kể chuyện thì quên sạch đoạn đầu! {name} kể giúp nhé. Nói tiếp để hoàn thành câu dưới tranh. Chọn kể 1 – 2 đoạn của câu chuyện theo tranh.",
@@ -786,7 +786,7 @@
     {
       "id": "ke-cho-nguoi-than",
       "title": "Kể chuyện cho người thân",
-      "goTo": "Về bãi cỏ sau mưa chào Thỏ Bồng Bềnh trước khi trời tối",
+      "goTo": "Về bãi cỏ ven sông chào Thỏ Bồng Bềnh trước khi trời tối",
       "kind": "speak",
       "target": "tv2-t02-b03-tho-may",
       "prompt": "Thỏ Bồng Bềnh dặn đi dặn lại: về nhà nhớ kể nhé, chứ tớ kiểu gì cũng quên mất đoạn giữa! Kể cho người thân nghe câu chuyện Niềm vui của Bi và Bống.",
@@ -823,7 +823,7 @@
       "title": "Tiếng vo ve trong vườn hoa",
       "kind": "next",
       "trigger": "auto",
-      "text": "Vo ve… vo ve… Từ vườn hoa tổ ong vọng ra tiếng đếm: một nghìn lẻ một, một nghìn lẻ hai… Gấu Nhẩm đang cần người phụ một việc nhỏ đấy!"
+      "text": "Vo ve… vo ve… Từ vườn hoa có tổ ong cạnh bãi cỏ vọng ra tiếng đếm: một nghìn lẻ một, một nghìn lẻ hai… Gấu Nhẩm đang cần người phụ một việc nhỏ đấy!"
     }
   ],
   "reward": {

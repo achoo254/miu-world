@@ -28,6 +28,42 @@
     "license": "CC0-1.0"
   },
   {
+    "glob": "generated/world/lang-ven-song/**",
+    "generator": "tools/world/generate-lang-ven-song-map.ts",
+    "derivedFrom": [],
+    "license": "CC0-1.0"
+  },
+  {
+    "glob": "generated/world/xom-mai-am/**",
+    "generator": "tools/world/generate-xom-mai-am-map.ts",
+    "derivedFrom": [],
+    "license": "CC0-1.0"
+  },
+  {
+    "glob": "generated/world/cho-phien/**",
+    "generator": "tools/world/generate-cho-phien-map.ts",
+    "derivedFrom": [],
+    "license": "CC0-1.0"
+  },
+  {
+    "glob": "generated/world/nong-trai/**",
+    "generator": "tools/world/generate-nong-trai-map.ts",
+    "derivedFrom": [],
+    "license": "CC0-1.0"
+  },
+  {
+    "glob": "generated/world/thu-vien/**",
+    "generator": "tools/world/generate-thu-vien-map.ts",
+    "derivedFrom": [],
+    "license": "CC0-1.0"
+  },
+  {
+    "glob": "generated/world/lau-dai/**",
+    "generator": "tools/world/generate-lau-dai-map.ts",
+    "derivedFrom": [],
+    "license": "CC0-1.0"
+  },
+  {
     "glob": "generated/world/the-gioi/**",
     "generator": "tools/world/generate-world-overview.ts",
     "derivedFrom": [],

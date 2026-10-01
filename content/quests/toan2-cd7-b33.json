@@ -1,16 +1,16 @@
 {
   "id": "toan2-cd7-b33",
-  "region": "truong-hoc",
-  "chapter": 7,
+  "region": "lau-dai",
+  "chapter": 2,
   "title": "Vé ghế tổng duyệt văn nghệ",
   "status": "active",
   "lesson": "toan2-t1-b33",
-  "summary": "Tổng duyệt văn nghệ cuối kì, vé ghế nào cũng in một phép tính; {name} cùng thầy Quang, Gà Lóc Cóc, Heo Mũm Mĩm, Gấu Bum, bác Thuận, chú Toàn và bác Hùng tính nhẩm, đặt tính và xây tháp số trước giờ mở màn.",
+  "summary": "Tổng duyệt văn nghệ cuối kì trong đại sảnh lâu đài, vé ghế nào cũng in một phép tính; {name} cùng thầy Quang, Gà Lóc Cóc, Heo Mũm Mĩm, Gấu Bum, bác Thuận, chú Toàn và bác Hùng tính nhẩm, đặt tính và xây tháp số trước giờ mở màn.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Thầy Quang dẫn chương trình, Gà Lóc Cóc, Heo Mũm Mĩm, Gấu Bum, bác Thuận làm vườn, chú Toàn thợ mộc, bác Hùng bảo vệ",
-    "where": "Hội trường: sân khấu, hàng ghế khán giả, lối đi kết hoa, cánh gà, cửa hội trường, góc dựng bục gỗ, bãi xe trước hội trường",
-    "goal": "Xếp chỗ cho cả trường và dựng tháp số để buổi tổng duyệt kịp mở màn",
+    "who": "Thầy Quang dẫn chương trình, Gà Lóc Cóc, Heo Mũm Mĩm, Gấu Bum, bác Thuận làm vườn, chú Toàn thợ mộc, bác Hùng gác cổng thành",
+    "where": "Lâu đài, đại sảnh ôn tập: sân khấu, hàng ghế khán giả, lối đi kết hoa, cánh gà, cửa đại sảnh, góc dựng bục gỗ, sân đỗ xe trước đại sảnh",
+    "goal": "Xếp chỗ cho khách khắp lâu đài và dựng tháp số để buổi tổng duyệt kịp mở màn",
     "play": "Tìm vé, tính nhẩm, điền dấu, chia bánh, chọn túi gạo, phân loại toa tàu và ô tô, đặt tính, giải toán, xây tháp số",
     "learn": "Toán 2 Bài 33: ôn tập phép cộng, phép trừ trong phạm vi 20, 100",
     "reward": "120 XP, 20 xu, Phép cộng +2, Phép trừ +2, Bài toán có lời văn +1",
@@ -33,15 +33,15 @@
     "toan2-cd7-b33-ga-loc-coc": "hàng ghế",
     "toan2-cd7-b33-bac-thuan": "lối đi kết hoa",
     "toan2-cd7-b33-heo-mum-mim": "cánh gà",
-    "toan2-cd7-b33-gau-bum": "cửa hội trường",
+    "toan2-cd7-b33-gau-bum": "cửa đại sảnh",
     "toan2-cd7-b33-chu-toan": "góc dựng bục gỗ",
-    "toan2-cd7-b33-bac-hung": "bãi xe trước hội trường"
+    "toan2-cd7-b33-bac-hung": "sân đỗ xe trước đại sảnh"
   },
   "steps": [
     {
       "id": "ve-ghe-la-phep-tinh",
       "title": "Vé ghế toàn phép tính",
-      "goTo": "Lên sân khấu hội trường, thầy Quang đang thử micro",
+      "goTo": "Lên sân khấu đại sảnh, thầy Quang đang thử micro",
       "kind": "dialogue",
       "target": "toan2-cd7-b33-thay-quang",
       "lines": [
@@ -51,7 +51,7 @@
         },
         {
           "speaker": "Thầy Quang",
-          "text": "Chiều nay cả trường tổng duyệt văn nghệ cuối kì. Thầy in vé ghế bằng phép tính cho vui, ai tính đúng mới biết mình ngồi ghế số mấy."
+          "text": "Chiều nay cả lâu đài tổng duyệt văn nghệ cuối kì trong đại sảnh. Thầy in vé ghế bằng phép tính cho vui, ai tính đúng mới biết mình ngồi ghế số mấy."
         },
         {
           "speaker": "Gà Lóc Cóc",
@@ -924,7 +924,7 @@
     {
       "id": "hoc-hat-hoc-vo",
       "title": "Tiết mục hát và võ",
-      "goTo": "Trở lại sân khấu hội trường, thầy Quang đang điểm danh tiết mục",
+      "goTo": "Trở lại sân khấu đại sảnh, thầy Quang đang điểm danh tiết mục",
       "target": "toan2-cd7-b33-thay-quang",
       "kind": "riddle",
       "question": "Thầy Quang cầm danh sách, giọng vang như kèn: Lớp 2A có 8 bạn học hát. Số bạn học võ nhiều hơn số bạn học hát là 5 bạn. Hỏi lớp 2A có bao nhiêu bạn học võ?",
@@ -962,7 +962,7 @@
     {
       "id": "doan-tau-dao-cu",
       "title": "Đoàn tàu đạo cụ",
-      "goTo": "Ra cửa hội trường, Gấu Bum đang đẩy đoàn tàu đạo cụ",
+      "goTo": "Ra cửa đại sảnh, Gấu Bum đang đẩy đoàn tàu đạo cụ",
       "kind": "dialogue",
       "target": "toan2-cd7-b33-gau-bum",
       "lines": [
@@ -972,7 +972,7 @@
         },
         {
           "speaker": "Gấu Bum",
-          "text": "Ngoài sân còn bãi xe của khán giả, ô tô nào cũng ghi phép tính nốt. Tớ vụng quá, tính tới đâu rối tới đó!"
+          "text": "Ngoài sân đỗ xe trước đại sảnh, ô tô của khách nào cũng ghi phép tính nốt. Tớ vụng quá, tính tới đâu rối tới đó!"
         },
         {
           "speaker": "Thầy Quang",
@@ -1192,11 +1192,11 @@
     {
       "id": "bai-do-o-to",
       "title": "Bãi đỗ xe khán giả",
-      "goTo": "Chạy ra bãi xe trước hội trường, bác Hùng bảo vệ vẫy cờ điều khiển",
+      "goTo": "Chạy ra sân đỗ xe trước đại sảnh, bác Hùng gác cổng thành vẫy cờ điều khiển",
       "target": "toan2-cd7-b33-bac-hung",
       "kind": "challenge",
       "mechanic": "classify",
-      "prompt": "Xe của phụ huynh tới đông nghịt, bác Hùng vẫy cờ điều khiển mà quay mòng mòng. Tìm chỗ đỗ cho ô tô.",
+      "prompt": "Xe chở khách tới xem tổng duyệt đông nghịt, bác Hùng vẫy cờ điều khiển mà quay mòng mòng. Tìm chỗ đỗ cho ô tô.",
       "groups": [
         {
           "id": "nhom-cho-do-27",
@@ -1413,7 +1413,7 @@
         "right": [
           "Vé vàng đã có chủ, khách mời ngồi hàng đầu vỗ tay giòn giã.",
           "Cậu phát hiện ra \"gia đình phép tính\" rồi đấy!",
-          "Đặt tính thẳng hàng như hàng ghế hội trường."
+          "Đặt tính thẳng hàng như hàng ghế trong đại sảnh."
         ],
         "wrong": [
           "Kiểm tra lại chỗ nhớ 1 sang hàng chục nhé.",
@@ -1435,7 +1435,7 @@
     {
       "id": "doi-dong-dien",
       "title": "Đội đồng diễn áo đỏ áo vàng",
-      "goTo": "Ra cửa hội trường, Gấu Bum chỉ đội đồng diễn đang tập",
+      "goTo": "Ra cửa đại sảnh, Gấu Bum chỉ đội đồng diễn đang tập",
       "target": "toan2-cd7-b33-gau-bum",
       "kind": "riddle",
       "question": "Ngoài cửa, đội đồng diễn tập xếp hình, áo đỏ áo vàng rực cả sân. Một đội đồng diễn thể dục thể thao gồm có 56 người mặc áo đỏ và 28 người mặc áo vàng. Hỏi đội đồng diễn đó có tất cả bao nhiêu người?",
@@ -1476,7 +1476,7 @@
       "target": "toan2-cd7-b33-gau-bum",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Trên cánh cửa hội trường, Gấu Bum vẽ hai đường mũi tên và hai hộp quà. a) Số ?",
+      "prompt": "Trên cánh cửa gỗ của đại sảnh, Gấu Bum vẽ hai đường mũi tên và hai hộp quà. a) Số ?",
       "template": "18 → + 17 → {{b1}} → – 9 → {{b2}}\n24 → – 8 → {{b3}} → + 15 → {{b4}}\nb) Tính tổng các số hạng bằng nhau.\n24 + 24 + 24 = {{b5}}\n2 + 2 + 2 + 2 + 2 = {{b6}}",
       "blanks": [
         {
@@ -1606,7 +1606,7 @@
         "right": [
           "Hai đường mũi tên tới đích, hai hộp quà bật nắp \"póc\"!",
           "Cộng dần từng số hạng mà không sót cái nào, chuẩn!",
-          "Gấu Bum vỗ đùi đen đét: cửa hội trường thành bảng toán rồi!"
+          "Gấu Bum vỗ đùi đen đét: cửa đại sảnh thành bảng toán rồi!"
         ],
         "wrong": [
           "Ô sau dùng kết quả của ô trước đấy.",
@@ -1800,11 +1800,11 @@
     {
       "id": "thap-so-san-khau",
       "title": "Tháp số khai màn",
-      "goTo": "Lên lại sân khấu hội trường, thầy Quang chờ dựng tháp khai màn",
+      "goTo": "Lên lại sân khấu đại sảnh, thầy Quang chờ dựng tháp khai màn",
       "target": "toan2-cd7-b33-thay-quang",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Màn cuối tổng duyệt: cả trường xếp tháp gạch số, mỗi viên bằng tổng hai viên ngay dưới. Thầy Quang nín thở, sợ nói to một câu là tháp đổ. Số ?",
+      "prompt": "Màn cuối tổng duyệt: cả lâu đài xếp tháp gạch số, mỗi viên bằng tổng hai viên ngay dưới. Thầy Quang nín thở, sợ nói to một câu là tháp đổ. Số ?",
       "template": "Đỉnh tháp: {{b1}}\nHàng bốn: 24 | {{b2}}\nHàng ba: 11 | {{b3}} | {{b4}}\nHàng hai: 5 | 6 | {{b5}} | {{b6}}\nHàng dưới: 2 | 3 | 3 | 4 | 4",
       "blanks": [
         {
@@ -1958,7 +1958,7 @@
       "title": "Huy hiệu tổng duyệt",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Màn nhung kéo lên, cả hội trường vỗ tay rào rào. Thầy Quang cài cho {name} huy hiệu \"Người giữ vé vàng\" và thì thầm: lần sau thầy sẽ thử micro nhỏ tiếng hơn."
+      "text": "Màn nhung kéo lên, cả đại sảnh vỗ tay rào rào. Thầy Quang cài cho {name} huy hiệu \"Người giữ vé vàng\" và thì thầm: lần sau thầy sẽ thử micro nhỏ tiếng hơn."
     },
     {
       "id": "phong-nen-hinh-khoi",

@@ -1,16 +1,16 @@
 {
   "id": "tv2-t05-b10",
-  "region": "khu-rung-bi-mat",
-  "chapter": 6,
-  "title": "Thỏ Tí mang nhầm sách vở",
+  "region": "truong-hoc",
+  "chapter": 2,
+  "title": "Thỏ Vội mang nhầm sách vở",
   "status": "active",
   "lesson": "tv2-t1-b10",
-  "summary": "Sáng thứ Năm, Thỏ Tí phóng tới gốc sồi với chiếc cặp rỗng tuếch và một củ cà rốt thay cho thước kẻ. {name} chạy khắp quanh gốc sồi: đọc thời khoá biểu trên tấm bảng gỗ, hỏi Gấu Bắp giữ lịch của trường, nhờ Cua Kéo bên suối cắt nhãn đồ dùng và giúp Thỏ Tí soạn cặp thật ngăn nắp.",
+  "summary": "Sáng thứ Năm, Thỏ Vội phóng lên hành lang lớp 2A với chiếc cặp rỗng tuếch và một củ cà rốt thay cho thước kẻ. {name} chạy khắp hành lang: đọc thời khoá biểu dán trên bảng, hỏi Gấu Bắp giữ lịch của trường ở bàn trực, nhờ Cua Kéo ở góc thủ công cắt nhãn đồ dùng và giúp Thỏ Vội soạn cặp thật ngăn nắp.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Thỏ Tí (nhanh nhảu, hay quên), Gấu Bắp giữ lịch và đồng hồ của trường, Cua Kéo cắt nhãn bên suối, Vẹt Xanh lắm lời",
-    "where": "Tấm bảng gỗ ở gốc sồi, nơi dán thời khoá biểu của lớp Hai trong rừng, cùng bụi dương xỉ, tảng đá rêu và bờ suối quanh đó",
-    "goal": "Giúp Thỏ Tí biết hôm nay học môn gì để không mang nhầm sách vở nữa",
+    "who": "Thỏ Vội (nhanh nhảu, hay quên), Gấu Bắp giữ lịch và đồng hồ của trường, Cua Kéo cắt nhãn ở góc thủ công, Mèo Sữa lớp trưởng lớp 2A",
+    "where": "Hành lang trước lớp 2A trong nhà chính: bảng thời khoá biểu, ghế dài hành lang, bàn trực của Gấu Bắp, góc thủ công cuối hành lang và bậc cầu thang",
+    "goal": "Giúp Thỏ Vội biết hôm nay học môn gì để không mang nhầm sách vở nữa",
     "play": "Nhặt đồ, đọc thời khoá biểu, xếp môn học vào giỏ, chọn nhiều đáp án, chọn thứ trên lịch, điền chữ, xếp thẻ từ thành câu, xem đồng hồ, nói và kể, phiếu viết",
     "learn": "Tiếng Việt 2 Bài 10: đọc thời khoá biểu, hỏi – đáp về môn học, chính tả c/k, ch/tr, v/d, từ chỉ sự vật và hoạt động, câu nêu hoạt động, kể hoạt động theo giờ, thời gian biểu",
     "reward": "90 XP, 15 xu, Đọc hiểu +2, Chính tả +2, Từ ngữ +1, Câu +1",
@@ -34,45 +34,45 @@
     }
   },
   "places": {
-    "tho-ti": "bụi dương xỉ",
-    "tv2-t05-b10-gau-bap": "tảng đá rêu",
-    "bang-go-goc-soi": "gốc sồi",
-    "tv2-t05-b10-cua-keo": "bờ suối",
-    "nhat-do-roi": "lối mòn quanh gốc sồi"
+    "tv2-t05-b10-tho-voi": "ghế dài hành lang",
+    "tv2-t05-b10-gau-bap": "bàn trực",
+    "bang-go-goc-soi": "bảng thời khoá biểu",
+    "tv2-t05-b10-cua-keo": "góc thủ công cuối hành lang",
+    "nhat-do-roi": "bậc cầu thang"
   },
   "steps": [
     {
       "id": "tho-ti-hot-hoang",
-      "title": "Thỏ Tí cuống quýt ở gốc sồi",
-      "goTo": "Chạy tới bụi dương xỉ cạnh gốc sồi, Thỏ Tí đang cuống quýt",
+      "title": "Thỏ Vội cuống quýt ngoài hành lang",
+      "goTo": "Lên tầng hai, Thỏ Vội đang cuống quýt ở ghế dài hành lang",
       "kind": "dialogue",
-      "target": "tho-ti",
+      "target": "tv2-t05-b10-tho-voi",
       "lines": [
         {
-          "speaker": "Thỏ Tí",
-          "text": "{name} ơi, cứu tớ với! Tớ phóng nhanh quá, cặp sách tuột quai, thước kẻ với cái kéo bay vèo đi đâu mất rồi!"
+          "speaker": "Thỏ Vội",
+          "text": "{name} ơi, cứu tớ với! Tớ phóng lên cầu thang nhanh quá, cặp sách tuột quai, thước kẻ với cái kéo bay vèo đi đâu mất rồi!"
         },
         {
-          "speaker": "Thỏ Tí",
+          "speaker": "Thỏ Vội",
           "text": "Mà sao trong cặp tớ chỉ còn mỗi củ cà rốt này nhỉ? Hôm nay đâu có môn Ăn cà rốt…"
         },
         {
-          "speaker": "Vẹt Xanh",
-          "text": "Hôm qua cậu mang gối đi học vì tưởng có tiết Ngủ trưa! Vẹt tớ kể khắp rừng rồi! Khắp rừng!"
+          "speaker": "Mèo Sữa",
+          "text": "Hôm qua cậu mang gối đi học vì tưởng có tiết Ngủ trưa! Cả lớp 2A cười đến tận giờ tan học đấy."
         },
         {
-          "speaker": "Thỏ Tí",
+          "speaker": "Thỏ Vội",
           "text": "Tại tớ soạn cặp bằng trí nhớ, mà trí nhớ của tớ chạy còn nhanh hơn chân tớ. Hôm nay thứ Năm, học gì nhỉ?"
         },
         {
-          "speaker": "Vẹt Xanh",
-          "text": "Bảng gỗ ở gốc sồi có dán thời khoá biểu! Nhặt đồ trước đã, rồi ôm ra tảng đá rêu, Gấu Bắp giữ lịch của trường ngồi đó! Ngồi đó!"
+          "speaker": "Mèo Sữa",
+          "text": "Thời khoá biểu dán ngay trên bảng ngoài hành lang kia kìa. Nhặt đồ trước đã, rồi sang bàn trực hỏi Gấu Bắp, bạn ấy giữ lịch của cả trường."
         }
       ],
       "choices": [
         {
           "text": "Mình giúp cậu tìm đồ ngay!",
-          "reply": "Hoan hô! Tai tớ nghe thấy cái thước kêu leng keng ở bụi dương xỉ… à không, đó là con dế."
+          "reply": "Hoan hô! Tai tớ nghe thấy cái thước kêu leng keng ở bậc cầu thang… à không, đó là chuông đồng hồ."
         },
         {
           "text": "Cậu cất củ cà rốt đi đã nhé!",
@@ -82,8 +82,8 @@
     },
     {
       "id": "nhat-do-roi",
-      "title": "Nhặt đồ Thỏ Tí đánh rơi",
-      "goTo": "Nhặt đồ Thỏ Tí rơi dọc lối mòn quanh gốc sồi",
+      "title": "Nhặt đồ Thỏ Vội đánh rơi",
+      "goTo": "Nhặt đồ Thỏ Vội rơi dọc các bậc cầu thang",
       "kind": "search",
       "targets": [
         "tv2-t05-thuoc-ke",
@@ -94,10 +94,10 @@
     {
       "id": "cach-biet-mon-hoc",
       "title": "Làm sao biết môn học?",
-      "goTo": "Ôm đồ ra tảng đá rêu, Gấu Bắp đang lật cuốn sổ lịch dày cộp",
+      "goTo": "Ôm đồ sang bàn trực, Gấu Bắp đang lật cuốn sổ lịch dày cộp",
       "kind": "speak",
       "target": "tv2-t05-b10-gau-bap",
-      "prompt": "Gấu Bắp phủi lá khô bám trên cặp, ghi một dòng vào cuốn sổ lịch để nhớ việc, rồi hỏi {name}: Em làm thế nào để biết được các môn học trong ngày, trong tuần?",
+      "prompt": "Gấu Bắp phủi bụi phấn bám trên cặp, ghi một dòng vào cuốn sổ lịch để nhớ việc, rồi hỏi {name}: Em làm thế nào để biết được các môn học trong ngày, trong tuần?",
       "hints": [
         "Ở nhà, trước khi soạn sách vở, em thường xem gì?",
         "Bạn gái trong tranh dán tờ giấy gì trên tường cạnh bàn học?"
@@ -108,8 +108,8 @@
     },
     {
       "id": "doc-thoi-khoa-bieu",
-      "title": "Đọc thời khoá biểu trên bảng gỗ",
-      "goTo": "Sang gốc sồi, thời khoá biểu dán trên tấm bảng gỗ",
+      "title": "Đọc thời khoá biểu ngoài hành lang",
+      "goTo": "Ra bảng thời khoá biểu, tờ lịch học dán ngay giữa hành lang",
       "kind": "read",
       "target": "bang-go-goc-soi",
       "textRef": "thoi-khoa-bieu",
@@ -150,12 +150,12 @@
       },
       "feedback": {
         "right": [
-          "Đúng, sáng thứ Hai có 4 tiết! Thỏ Tí đếm lại trên bốn ngón chân cho chắc.",
+          "Đúng, sáng thứ Hai có 4 tiết! Thỏ Vội đếm lại trên bốn ngón chân cho chắc.",
           "Gấu Bắp ôm sổ chạy sang xem, gật gù: đếm từng hàng cẩn thận ghê!",
           "Chuẩn rồi, từ tiết 1 đến tiết 4, không thừa không thiếu."
         ],
         "wrong": [
-          "Đếm lại các hàng trong phần BUỔI SÁNG nhé, Thỏ Tí cũng đếm hụt một hàng.",
+          "Đếm lại các hàng trong phần BUỔI SÁNG nhé, Thỏ Vội cũng đếm hụt một hàng.",
           "Buổi chiều chưa tính đâu, sáng nay thôi, kẻo đói bụng giữa chừng.",
           "Dò ngón tay dọc cột Thứ Hai từ trên xuống, chậm như rùa cũng được."
         ]
@@ -167,7 +167,7 @@
       "kind": "challenge",
       "mechanic": "classify",
       "target": "bang-go-goc-soi",
-      "prompt": "Thỏ Tí ôm tai rối rít: “Hôm nay là thứ Năm, tớ phải mang sách gì đây? Không phải gối chứ?”\nThứ Năm có những môn học nào?\nKéo mỗi môn vào đúng giỏ.",
+      "prompt": "Thỏ Vội ôm tai rối rít: “Hôm nay là thứ Năm, tớ phải mang sách gì đây? Không phải gối chứ?”\nThứ Năm có những môn học nào?\nKéo mỗi môn vào đúng giỏ.",
       "groups": [
         {
           "id": "co-thu-nam",
@@ -251,12 +251,12 @@
       },
       "feedback": {
         "right": [
-          "Thỏ Tí reo lên: vậy là tớ cần vở Tiếng Việt và sách Toán, không cần cà rốt!",
+          "Thỏ Vội reo lên: vậy là tớ cần vở Tiếng Việt và sách Toán, không cần cà rốt!",
           "Đủ cả năm môn của thứ Năm, giỏ nào cũng gọn gàng.",
           "Không sót môn nào của buổi chiều, Gấu Bắp phải ghi tên {name} vào sổ lịch."
         ],
         "wrong": [
-          "Có một môn đang ngồi nhầm giỏ, như Thỏ Tí ngồi nhầm lớp hôm trước ấy.",
+          "Có một môn đang ngồi nhầm giỏ, như Thỏ Vội ngồi nhầm lớp hôm trước ấy.",
           "Mĩ thuật học vào ngày nào nhỉ? Liếc sang cột Thứ Tư xem.",
           "Đừng bỏ quên các tiết buổi chiều của thứ Năm, chúng buồn đấy."
         ]
@@ -265,11 +265,11 @@
     {
       "id": "kho-khan-khi-thieu-tkb",
       "title": "Thiếu thời khoá biểu thì sao?",
-      "goTo": "Về bụi dương xỉ, Thỏ Tí đang gãi tai sột soạt",
+      "goTo": "Về ghế dài hành lang, Thỏ Vội đang gãi tai sột soạt",
       "kind": "challenge",
       "mechanic": "multi-select",
-      "target": "tho-ti",
-      "prompt": "Nếu không có thời khoá biểu, em sẽ gặp khó khăn gì?\nThỏ Tí gãi tai sột soạt: sáng nay tớ gặp đủ mấy chuyện ấy, chỉ thiếu mỗi chuyện quên đường về nhà. Chọn tất cả những khó khăn có thể xảy ra.",
+      "target": "tv2-t05-b10-tho-voi",
+      "prompt": "Nếu không có thời khoá biểu, em sẽ gặp khó khăn gì?\nThỏ Vội gãi tai sột soạt: sáng nay tớ gặp đủ mấy chuyện ấy, chỉ thiếu mỗi chuyện quên đường về nhà. Chọn tất cả những khó khăn có thể xảy ra.",
       "choices": [
         {
           "id": "khong-biet-hom-nay-hoc-nhung-mon-gi",
@@ -306,7 +306,7 @@
       "support": {
         "guide": [
           "Nghĩ xem thời khoá biểu cho em biết điều gì.",
-          "Nhớ lại chuyện Thỏ Tí quên hộp bút màu hôm qua."
+          "Nhớ lại chuyện Thỏ Vội quên hộp bút màu hôm qua."
         ],
         "hint": "Có ba khó khăn gắn với môn học và sách vở.",
         "answer": {
@@ -316,13 +316,13 @@
       },
       "feedback": {
         "right": [
-          "Đúng cả ba, y như buổi sáng lộn tùng phèo của Thỏ Tí.",
-          "Thỏ Tí lè lưỡi: tớ trúng đủ ba chuyện đó, giải nhất luôn!",
-          "Không thừa lựa chọn nào, Thỏ Tí vỗ hai bàn chân bôm bốp."
+          "Đúng cả ba, y như buổi sáng lộn tùng phèo của Thỏ Vội.",
+          "Thỏ Vội lè lưỡi: tớ trúng đủ ba chuyện đó, giải nhất luôn!",
+          "Không thừa lựa chọn nào, Thỏ Vội vỗ hai bàn chân bôm bốp."
         ],
         "wrong": [
           "Thời khoá biểu có chỉ đường đến trường đâu, thời khoá biểu đâu phải bản đồ.",
-          "Còn sót một khó khăn về đồ dùng học tập, như cái gối của Thỏ Tí ấy.",
+          "Còn sót một khó khăn về đồ dùng học tập, như cái gối của Thỏ Vội ấy.",
           "Lựa chọn nào chẳng dính gì đến môn học nhỉ? Gạt nó ra."
         ]
       }
@@ -330,7 +330,7 @@
     {
       "id": "hoi-dap-tiet-mi-thuat",
       "title": "Tiết Mĩ thuật vào thứ mấy?",
-      "goTo": "Ra tảng đá rêu, Gấu Bắp đã trải tờ lịch tháng Mười chờ sẵn",
+      "goTo": "Sang bàn trực, Gấu Bắp đã trải tờ lịch tháng Mười chờ sẵn",
       "kind": "challenge",
       "mechanic": "calendar",
       "target": "tv2-t05-b10-gau-bap",
@@ -359,9 +359,9 @@
       },
       "feedback": {
         "right": [
-          "Thứ Tư, chính xác! Hèn gì hôm qua Thỏ Tí cần bút màu mà lại mang gối.",
+          "Thứ Tư, chính xác! Hèn gì hôm qua Thỏ Vội cần bút màu mà lại mang gối.",
           "Gấu Bắp đặt một hạt bắp vàng lên ô thứ Tư làm dấu.",
-          "Hỏi – đáp đúng như mẫu, Thỏ Tí nghe xong nhớ được… ít nhất đến trưa."
+          "Hỏi – đáp đúng như mẫu, Thỏ Vội nghe xong nhớ được… ít nhất đến trưa."
         ],
         "wrong": [
           "Hôm nay thứ Năm đâu có tiết Mĩ thuật, bút màu cứ cất trong hộp đã.",
@@ -372,11 +372,11 @@
     },
     {
       "id": "hoi-dap-cung-tho-ti",
-      "title": "Hỏi – đáp cùng Thỏ Tí",
-      "goTo": "Chạy về bụi dương xỉ hỏi – đáp cùng Thỏ Tí",
+      "title": "Hỏi – đáp cùng Thỏ Vội",
+      "goTo": "Chạy về ghế dài hành lang hỏi – đáp cùng Thỏ Vội",
       "kind": "speak",
-      "target": "tho-ti",
-      "prompt": "Dựa vào thời khoá biểu trên đây, hỏi – đáp theo mẫu:\nLớp mình có tiết Âm nhạc vào thứ mấy?\nLớp mình có tiết Âm nhạc vào thứ Sáu.\nBây giờ {name} hỏi, Thỏ Tí đáp (nhớ đừng để bạn ấy đáp “môn Cà rốt”), rồi hai bạn đổi vai cho nhau.",
+      "target": "tv2-t05-b10-tho-voi",
+      "prompt": "Dựa vào thời khoá biểu trên đây, hỏi – đáp theo mẫu:\nLớp mình có tiết Âm nhạc vào thứ mấy?\nLớp mình có tiết Âm nhạc vào thứ Sáu.\nBây giờ {name} hỏi, Thỏ Vội đáp (nhớ đừng để bạn ấy đáp “môn Cà rốt”), rồi hai bạn đổi vai cho nhau.",
       "hints": [
         "Lớp mình có tiết Đạo đức vào thứ mấy?",
         "Lớp mình có tiết Tiếng Anh vào thứ mấy?",
@@ -390,8 +390,8 @@
       "id": "mon-hoc-em-thich",
       "title": "Môn học em yêu thích",
       "kind": "speak",
-      "target": "tho-ti",
-      "prompt": "Thỏ Tí nhảy ba vòng khoe: tớ mê nhất giờ Giáo dục thể chất, chạy nhanh đến mức quên luôn mình đang chạy đi đâu! Còn {name} thì sao?\nNói một câu giới thiệu môn học hoặc hoạt động ở trường mà em thích.\nM: Tiếng Việt là môn học tôi yêu thích nhất.",
+      "target": "tv2-t05-b10-tho-voi",
+      "prompt": "Thỏ Vội nhảy ba vòng khoe: tớ mê nhất giờ Giáo dục thể chất, chạy nhanh đến mức quên luôn mình đang chạy đi đâu! Còn {name} thì sao?\nNói một câu giới thiệu môn học hoặc hoạt động ở trường mà em thích.\nM: Tiếng Việt là môn học tôi yêu thích nhất.",
       "hints": [
         "Ở trường, em thích môn học hay hoạt động nào nhất?",
         "Vì sao em thích môn học hay hoạt động đó?"
@@ -403,11 +403,11 @@
     {
       "id": "dan-nhan-do-dung",
       "title": "Dán nhãn cho đồ vừa nhặt",
-      "goTo": "Mang ba món đồ ra bờ suối, Cua Kéo đang cắt nhãn lách cách",
+      "goTo": "Mang ba món đồ ra góc thủ công cuối hành lang, Cua Kéo đang cắt nhãn lách cách",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "target": "tv2-t05-b10-cua-keo",
-      "prompt": "Ba món đồ {name} nhặt được vẫn còn dính lá khô. Thỏ Tí muốn dán nhãn tên lên từng món, để lần sau đồ lạc thì người nhặt biết đường mang trả.\nDựa vào tranh, viết tên đồ vật có tiếng chứa c hoặc k.",
+      "prompt": "Ba món đồ {name} nhặt được vẫn còn dính bụi cầu thang. Thỏ Vội muốn dán nhãn tên lên từng món, để lần sau đồ lạc thì người nhặt biết đường mang trả.\nDựa vào tranh, viết tên đồ vật có tiếng chứa c hoặc k.",
       "template": "Tranh 1: {{b1}}\nTranh 2: {{b2}}\nTranh 3: {{b3}}",
       "blanks": [
         {
@@ -494,11 +494,11 @@
     {
       "id": "hai-chan-troi",
       "title": "Đoạn thơ bị nhoè chữ",
-      "goTo": "Quay ra tảng đá rêu, Gấu Bắp đang ngâm thơ về mặt trời",
+      "goTo": "Quay sang bàn trực, Gấu Bắp đang ngâm thơ về mặt trời",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "target": "tv2-t05-b10-gau-bap",
-      "prompt": "Gấu Bắp đọc cho cả lớp một đoạn thơ về mặt trời, nhưng mưa đêm qua làm nhoè mấy chữ, trông như bị ai lấy tẩy xoá vội. Hôm nay mình làm cả phần a lẫn phần b.\nChọn a hoặc b.\na. Chọn ch hoặc tr thay cho ô vuông.",
+      "prompt": "Gấu Bắp đọc cho cả lớp một đoạn thơ về mặt trời, nhưng cốc nước đổ làm nhoè mấy chữ, trông như bị ai lấy tẩy xoá vội. Hôm nay mình làm cả phần a lẫn phần b.\nChọn a hoặc b.\na. Chọn ch hoặc tr thay cho ô vuông.",
       "template": "Mặt {{b1}}ời mọc rồi lặn\n{{b2}}ên đôi {{b3}}ân lon ton\nHai {{b4}}ân {{b5}}ời của con\nLà mẹ và cô giáo.\n(Theo Trần Quốc Toàn)",
       "blanks": [
         {
@@ -607,11 +607,11 @@
     {
       "id": "tim-tu-trong-tranh",
       "title": "Tìm từ trong năm bức tranh",
-      "goTo": "Sang gốc sồi, năm bức tranh treo kín tấm bảng gỗ",
+      "goTo": "Ra bảng thời khoá biểu, năm bức tranh treo kín xung quanh",
       "kind": "challenge",
       "mechanic": "classify",
       "target": "bang-go-goc-soi",
-      "prompt": "Gấu Bắp kiễng chân treo lên bảng gỗ năm bức tranh về một ngày ở trường của các bạn nhỏ: viết bài, làm thủ công, hát theo đàn, tập thể dục và chơi dưới sân.\nDựa vào tranh, tìm từ ngữ:\n– Chỉ sự vật\n– Chỉ hoạt động",
+      "prompt": "Gấu Bắp kiễng chân treo lên bảng hành lang năm bức tranh về một ngày ở trường của các bạn nhỏ: viết bài, làm thủ công, hát theo đàn, tập thể dục và chơi dưới sân.\nDựa vào tranh, tìm từ ngữ:\n– Chỉ sự vật\n– Chỉ hoạt động",
       "groups": [
         {
           "id": "su-vat",
@@ -708,18 +708,18 @@
         "wrong": [
           "Có thẻ gọi tên đồ vật đang lạc sang nhóm hoạt động.",
           "Thử nói “các bạn đang…” trước từ đó xem có xuôi không.",
-          "Quả cầu và đá cầu giống chữ nhưng khác nhóm, khéo nhầm như Thỏ Tí đấy."
+          "Quả cầu và đá cầu giống chữ nhưng khác nhóm, khéo nhầm như Thỏ Vội đấy."
         ]
       }
     },
     {
       "id": "dat-cau-hoat-dong",
       "title": "Ghép câu nêu hoạt động",
-      "goTo": "Thỏ Tí đang nhảy dây ở bụi dương xỉ, thẻ chữ văng tứ tung",
+      "goTo": "Ra ghế dài hành lang, Thỏ Vội đang nhảy dây làm thẻ chữ văng tứ tung",
       "kind": "challenge",
       "mechanic": "sort",
-      "target": "tho-ti",
-      "prompt": "Đặt một câu nêu hoạt động với từ ngữ vừa tìm được.\nThỏ Tí chọn từ nhảy dây, rồi nhảy luôn một trận, làm các thẻ chữ văng tứ tung. Xếp lại thành câu giúp bạn ấy nhé.",
+      "target": "tv2-t05-b10-tho-voi",
+      "prompt": "Đặt một câu nêu hoạt động với từ ngữ vừa tìm được.\nThỏ Vội chọn từ nhảy dây, rồi nhảy luôn một trận, làm các thẻ chữ văng tứ tung. Xếp lại thành câu giúp bạn ấy nhé.",
       "items": [
         {
           "id": "nhay-day",
@@ -763,14 +763,14 @@
       },
       "feedback": {
         "right": [
-          "Câu tròn trịa, Thỏ Tí đọc to đến nỗi chim trên cành giật mình.",
+          "Câu tròn trịa, Thỏ Vội đọc to đến nỗi cả hành lang giật mình.",
           "Xếp chuẩn: khi nào, ai, làm gì, ở đâu, đủ cả bốn.",
           "Câu nêu hoạt động hoàn thành, sợi dây nhảy cũng thôi rối."
         ],
         "wrong": [
           "Thẻ nào có chữ viết hoa nhỉ? Nó phải chạy lên đầu hàng.",
           "Dấu chấm đang đi lạc, nó chỉ thích đứng cuối câu thôi.",
-          "Đọc thử câu vừa xếp xem có xuôi tai không, hay nghe như Thỏ Tí nói vội."
+          "Đọc thử câu vừa xếp xem có xuôi tai không, hay nghe như Thỏ Vội nói vội."
         ]
       }
     },
@@ -779,8 +779,8 @@
       "title": "Bài thơ chú chim nhỏ",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "target": "tho-ti",
-      "prompt": "Trên cành sồi, một chú chim nhỏ hót chào {name}. Thỏ Tí thuộc một bài thơ về chú chim này, à không, thuộc… gần hết, vì quên mất vài chữ.\nChọn a hoặc b.\nb. Chọn v hoặc d thay cho ô vuông.",
+      "target": "tv2-t05-b10-tho-voi",
+      "prompt": "Trên cành cây ngoài cửa sổ hành lang, một chú chim nhỏ hót chào {name}. Thỏ Vội thuộc một bài thơ về chú chim này, à không, thuộc… gần hết, vì quên mất vài chữ.\nChọn a hoặc b.\nb. Chọn v hoặc d thay cho ô vuông.",
       "template": "Có con chim {{b1}}ành khuyên nhỏ\n{{b2}}áng trông thật ngoan ngoãn quá\nGọi {{b3}}ạ, bảo {{b4}}âng lễ phép ngoan nhất nhà.\n(Theo Hoàng Vân)",
       "blanks": [
         {
@@ -863,7 +863,7 @@
         "right": [
           "Chú chim vành khuyên hót vang như cảm ơn {name}!",
           "Gọi dạ, bảo vâng: {name} điền đúng hết, ngoan như chim vành khuyên.",
-          "Thỏ Tí đọc lại trơn tru cả bài thơ, lần này không quên chữ nào."
+          "Thỏ Vội đọc lại trơn tru cả bài thơ, lần này không quên chữ nào."
         ],
         "wrong": [
           "Dạ và vâng không mở đầu bằng cùng một chữ đâu.",
@@ -874,21 +874,21 @@
     },
     {
       "id": "hua-voi-voi-bao",
-      "title": "Lời hứa của Thỏ Tí",
-      "goTo": "Đến tảng đá rêu, Gấu Bắp mở sổ chờ nghe Thỏ Tí hứa",
+      "title": "Lời hứa của Thỏ Vội",
+      "goTo": "Đến bàn trực, Gấu Bắp mở sổ chờ nghe Thỏ Vội hứa",
       "kind": "dialogue",
       "target": "tv2-t05-b10-gau-bap",
       "lines": [
         {
           "speaker": "Gấu Bắp",
-          "text": "Thỏ Tí này, từ mai cậu làm gì để không mang gối, mang cà rốt đi học nữa?"
+          "text": "Thỏ Vội này, từ mai cậu làm gì để không mang gối, mang cà rốt đi học nữa?"
         },
         {
-          "speaker": "Thỏ Tí",
+          "speaker": "Thỏ Vội",
           "text": "Tớ định ghi vào sổ giống Gấu Bắp… nhưng tớ chạy nhanh quá, sổ rơi đâu mất, chỉ còn cái bút!"
         },
         {
-          "speaker": "Thỏ Tí",
+          "speaker": "Thỏ Vội",
           "text": "{name} gợi ý cho tớ một cách thật dễ nhớ đi, tớ hứa sẽ làm theo!"
         }
       ],
@@ -909,7 +909,7 @@
       "kind": "challenge",
       "mechanic": "clock",
       "target": "tv2-t05-b10-gau-bap",
-      "prompt": "Gấu Bắp kể về một ngày ở trường của bạn Nam, bức tranh nào cũng có một chiếc đồng hồ. Thỏ Tí thì thầm: bạn Nam chắc chẳng bao giờ mang nhầm gối.\nQuan sát tranh, kể lại các hoạt động của bạn Nam.\nM: 7 giờ 30 phút, bạn Nam đi học.\nỞ tranh 3, các bạn đang chạy ra sân chơi. Đồng hồ trong tranh chỉ mấy giờ?",
+      "prompt": "Gấu Bắp kể về một ngày ở trường của bạn Nam, bức tranh nào cũng có một chiếc đồng hồ. Thỏ Vội thì thầm: bạn Nam chắc chẳng bao giờ mang nhầm gối.\nQuan sát tranh, kể lại các hoạt động của bạn Nam.\nM: 7 giờ 30 phút, bạn Nam đi học.\nỞ tranh 3, các bạn đang chạy ra sân chơi. Đồng hồ trong tranh chỉ mấy giờ?",
       "mode": "read",
       "display": "analog",
       "time": {
@@ -937,7 +937,7 @@
       },
       "feedback": {
         "right": [
-          "9 giờ 30 phút, đúng giờ ra chơi, Thỏ Tí đã phóng ra sân!",
+          "9 giờ 30 phút, đúng giờ ra chơi, Thỏ Vội đã phóng ra sân!",
           "Gấu Bắp lắc chiếc chuông đồng leng keng: {name} xem đồng hồ giỏi thật.",
           "Kim dài chỉ số 6 là 30 phút, chuẩn không cần chỉnh."
         ],
@@ -951,10 +951,10 @@
     {
       "id": "ke-mot-ngay-cua-nam",
       "title": "Kể một ngày của bạn Nam",
-      "goTo": "Về bụi dương xỉ kể cho Thỏ Tí nghe một ngày của bạn Nam",
+      "goTo": "Về ghế dài hành lang kể cho Thỏ Vội nghe một ngày của bạn Nam",
       "kind": "speak",
-      "target": "tho-ti",
-      "prompt": "Quan sát tranh, kể lại các hoạt động của bạn Nam.\nM: 7 giờ 30 phút, bạn Nam đi học.\n{name} kể lần lượt bốn tranh cho Thỏ Tí nghe, nói giờ trước rồi mới nói việc bạn Nam làm. Thỏ Tí hứa nghe hết, không chạy đi đâu giữa chừng.",
+      "target": "tv2-t05-b10-tho-voi",
+      "prompt": "Quan sát tranh, kể lại các hoạt động của bạn Nam.\nM: 7 giờ 30 phút, bạn Nam đi học.\n{name} kể lần lượt bốn tranh cho Thỏ Vội nghe, nói giờ trước rồi mới nói việc bạn Nam làm. Thỏ Vội hứa nghe hết, không chạy đi đâu giữa chừng.",
       "hints": [
         "Tranh 1: bạn Nam đeo cặp đi vào cổng trường.",
         "Tranh 2 (8 giờ): cô giáo giảng bài, các bạn ngồi học.",
@@ -998,10 +998,10 @@
     {
       "id": "bang-tin-goc-soi",
       "title": "Bảng tin của trường em",
-      "goTo": "Ghé gốc sồi, góc bảng gỗ vừa dán thêm một tờ tin",
+      "goTo": "Ghé bảng thời khoá biểu, góc bảng vừa dán thêm một tờ tin",
       "kind": "speak",
       "target": "bang-go-goc-soi",
-      "prompt": "Góc dưới tấm bảng gỗ có dán tờ tin: tối thứ Bảy, cả rừng họp mặt đọc truyện dưới trăng. Thỏ Tí dỏng tai tò mò: trường của {name} có tin gì vui không, có ai mang gối đi học như tớ không?\nĐọc bảng tin của nhà trường.\nChia sẻ với bạn những thông tin mà em quan tâm.",
+      "prompt": "Góc dưới tấm bảng có dán tờ tin: chiều thứ Sáu, cả trường đọc truyện ở phòng đọc. Thỏ Vội dỏng tai tò mò: trường của {name} có tin gì vui không, có ai mang gối đi học như tớ không?\nĐọc bảng tin của nhà trường.\nChia sẻ với bạn những thông tin mà em quan tâm.",
       "hints": [
         "Bảng tin ở trường em đặt ở đâu?",
         "Tuần này bảng tin có thông báo gì mới?",
@@ -1027,7 +1027,7 @@
       "kind": "worksheet",
       "trigger": "auto",
       "lessonId": "tv2-t1-b10",
-      "text": "Nhờ bố mẹ in phiếu Bài 10 ở khu phụ huynh (Thỏ Tí bảo nhớ cất phiếu vào cặp ngay kẻo quên): nghe – viết đoạn đầu bài Thời khoá biểu, kể các hoạt động của bạn Nam và lập thời gian biểu buổi tối của em.",
+      "text": "Nhờ bố mẹ in phiếu Bài 10 ở khu phụ huynh (Thỏ Vội bảo nhớ cất phiếu vào cặp ngay kẻo quên): nghe – viết đoạn đầu bài Thời khoá biểu, kể các hoạt động của bạn Nam và lập thời gian biểu buổi tối của em.",
       "curriculumRef": [
         "tv2-t1-b10-nghe-viet-1",
         "tv2-t1-b10-viet-doan-1",
@@ -1036,17 +1036,17 @@
     },
     {
       "id": "qua-cua-tho-ti",
-      "title": "Kẹp lá sồi của Thỏ Tí",
+      "title": "Kẹp gỗ hình cà rốt của Thỏ Vội",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Thỏ Tí tặng {name} một chiếc kẹp lá sồi để kẹp thời khoá biểu vào góc học tập, kèm củ cà rốt “dự phòng”. Gấu Bắp đóng lên đó con dấu hình bắp ngô, còn Cua Kéo cắt tặng thêm một cái nhãn tên."
+      "text": "Thỏ Vội tặng {name} một chiếc kẹp gỗ hình cà rốt để kẹp thời khoá biểu vào góc học tập, kèm củ cà rốt “dự phòng”. Gấu Bắp đóng lên đó con dấu hình bắp ngô, còn Cua Kéo cắt tặng thêm một cái nhãn tên."
     },
     {
       "id": "mo-bai-11",
-      "title": "Tiếng trống bên suối",
+      "title": "Tiếng gọi trống ngoài sân",
       "kind": "next",
       "trigger": "auto",
-      "text": "Từ chòi trống bên suối vọng lại tiếng Chó Lu gọi í ới: “Dậy đi trống ơi, hết hè rồi!”. Chiếc trống trường ngủ say suốt mùa hè, liệu hôm nay có chịu cất tiếng không?"
+      "text": "Từ chòi trống giữa sân trường vọng lên tiếng Chó Lu gọi í ới: “Dậy đi trống ơi, hết hè rồi!”. Chiếc trống trường ngủ say suốt mùa hè, liệu hôm nay có chịu cất tiếng không?"
     }
   ],
   "reward": {

@@ -32,8 +32,13 @@ export const PACK = {
   box: 'generated/box-props',
 } as const;
 
-/** 192 x 48 x 192 blocks (Jev, 01/10/2026: the owner found the maps small). */
+/** 192 x 48 x 192 blocks (Jev, 01/10/2026: the owner found the maps small): the forest and the school. */
 export const MAP_CHUNKS = [12, 3, 12] as const;
+/**
+ * 256 x 48 x 256 blocks (owner, 01/10/2026: wider maps, room for the villagers and animals to live and move):
+ * every map built since.
+ */
+export const WIDE_MAP_CHUNKS = [16, 3, 16] as const;
 
 /** A lookup of block ids by name from content/blocks.json; a name the table lacks is an error. */
 export async function loadBlocks(): Promise<(name: string) => number> {

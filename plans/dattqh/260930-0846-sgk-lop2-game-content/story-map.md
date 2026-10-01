@@ -42,7 +42,7 @@ Quy tắc:
 | Thư viện | 1 | Phòng đọc (kệ sách, góc đọc, tảng đá đọc sách ngoài vườn) | `tv2-t08-b15`, `tv2-t08-b16` |
 | | 2 | Sân lễ hội lá vàng | `tv2-t09-on-giua-ki` |
 | | 3 | Tháp đồng hồ và phòng lịch | `toan2-cd6-b29` … `toan2-cd6-b32` |
-| Xóm Mái Ấm | 1 | Vườn hoa và ngõ nhà Chíp | `tv2-t14-b25`, `tv2-t14-b26` |
+| Xóm Mái Ấm | 1 | Vườn hoa và ngõ nhà Mẩy | `tv2-t14-b25`, `tv2-t14-b26` |
 | | 2 | Hiên nhà đêm trăng và hang đá nhà sư tử | `tv2-t15-b27`, `tv2-t15-b28` |
 | | 3 | Chòi cũ bên bờ và con dốc nhà ông | `tv2-t16-b29`, `tv2-t16-b30` |
 | | 4 | Hồ sen và cánh đồng gió | `tv2-t17-b31`, `tv2-t17-b32` |

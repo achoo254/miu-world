@@ -4,7 +4,8 @@
 //   character or the thing a step happens at; a search sends the child to several places at once);
 // - never hold the child at one place for more than MAX_STEPS_IN_A_ROW steps in a row;
 // and every character (an NPC look) plays in at most MAX_QUESTS_PER_CHARACTER quests, in any role, except
-// one guide per map. Things (boards, boxes, trees) are not characters and are not capped.
+// one guide per map, and lives on one map only (as a target or a speaker). Things (boards, boxes, trees)
+// are not characters and are not capped.
 // content:check reports the same issues; this script also prints where each quest stands.
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
@@ -35,6 +36,8 @@ export interface SpreadReport {
   quests: QuestSpread[];
   /** Character id → quests it plays in (only characters over the cap). */
   overCap: Map<string, string[]>;
+  /** Character name → regions it plays or speaks in (only characters met on more than one map). */
+  acrossMaps: Map<string, string[]>;
   issues: string[];
 }
 
@@ -52,9 +55,30 @@ export function questSpread(quests: Iterable<QuestDefinition>, targetsRaw: unkno
     const look = targets[id]?.look;
     return look !== undefined && looks[look]?.kind === 'npc';
   };
-  const report: SpreadReport = { quests: [], overCap: new Map(), issues: [] };
+  const report: SpreadReport = { quests: [], overCap: new Map(), acrossMaps: new Map(), issues: [] };
   const castOf = new Map<string, Set<string>>();
-  for (const quest of quests) {
+  // A character lives on one map: by name, as a target or as a speaker (a line can bring a character in
+  // without placing it). Names are the catalogue's NPC names, so "Cả lớp" or the child are not counted.
+  const npcNames = new Set(Object.entries(targets).filter(([id]) => isCharacter(id)).map(([, t]) => t.name));
+  const mapsOf = new Map<string, Set<string>>();
+  const meet = (name: string, region: string): void => {
+    if (npcNames.has(name)) mapsOf.set(name, (mapsOf.get(name) ?? new Set()).add(region));
+  };
+  const all = [...quests];
+  for (const quest of all) {
+    if (!('steps' in quest)) continue;
+    for (const step of quest.steps) {
+      for (const id of stepTargets(step)) if (isCharacter(id)) meet(targets[characterOf(id)]?.name ?? targets[id]?.name ?? id, quest.region);
+      if ('lines' in step) for (const line of step.lines) meet(line.speaker, quest.region);
+    }
+  }
+  for (const [name, regions] of [...mapsOf].sort(([a], [b]) => a.localeCompare(b))) {
+    if (regions.size <= 1) continue;
+    const list = [...regions].sort();
+    report.acrossMaps.set(name, list);
+    report.issues.push(`character ${name} is met on ${list.length} maps (${list.join(', ')}): a character lives on one map, give the others a new character`);
+  }
+  for (const quest of all) {
     if (!('steps' in quest) || quest.status !== 'active' || HAND_BUILT.has(quest.id)) continue;
     const named = 'places' in quest ? (quest.places ?? {}) : {};
     const placeOf = (step: Step, id: string): string => named[id] ?? named[step.id] ?? characterOf(id);

@@ -1,15 +1,15 @@
 {
   "id": "toan2-cd3-b17",
-  "region": "truong-hoc",
-  "chapter": 3,
-  "title": "Nồi chè to nhất trường",
+  "region": "cho-phien",
+  "chapter": 2,
+  "title": "Nồi chè to nhất phiên chợ",
   "status": "active",
   "lesson": "toan2-t1-b17",
-  "summary": "Heo Ủn muốn nấu một nồi chè đậu xanh cho cả trường, nhưng công thức ghi toàn ki-lô-gam với lít; {name} cùng Mèo Ú đoán nặng nhẹ, đọc cân ở góc của Gấu Mạnh, đếm cốc nước với Cáo Lúm rồi mang phiếu về nhà tập cân, tập đong thật.",
+  "summary": "Heo Ủn muốn nấu một nồi chè đậu xanh thật to ở bếp chè giữa chợ, nhưng công thức ghi toàn ki-lô-gam với lít; {name} cùng Mèo Ú đoán nặng nhẹ, đọc cân ở sạp của Gấu Mạnh, đếm cốc nước với Cáo Lúm rồi mang phiếu về nhà tập cân, tập đong thật.",
   "review": "teacher-pending",
   "sevenQuestions": {
     "who": "Heo Ủn, Mèo Ú, Gấu Mạnh, Cáo Lúm",
-    "where": "Căng tin: bếp lớn, kho gạo, góc đặt cân, chậu nước rửa rau, dãy bình nước cuối bếp",
+    "where": "Chợ phiên, dãy hàng cân đong: bếp chè giữa chợ, kho gạo của chợ, sạp cân đồng hồ, chậu rửa rau bên kênh, dãy bình nước sau bếp chè",
     "goal": "Đong đủ đường, gạo, nước theo công thức nồi chè",
     "play": "Tìm túi gạo, túi muối, ca 1 lít; phân loại nặng nhẹ; điền số cân, số cốc; đố múc nước; phiếu tập cân và đong ở nhà",
     "learn": "Toán 2 Bài 17: thực hành và trải nghiệm với ki-lô-gam, lít",
@@ -28,23 +28,23 @@
   },
   "texts": {},
   "places": {
-    "heo-un": "bếp lớn",
-    "tim-nguyen-lieu-che": "kho gạo",
-    "toan2-cd3-b17-gau-manh": "góc đặt cân",
-    "toan2-cd3-b17-meo-u": "chậu nước rửa rau",
-    "toan2-cd3-b17-cao-lum": "dãy bình nước cuối bếp"
+    "heo-un": "bếp chè giữa chợ",
+    "tim-nguyen-lieu-che": "kho gạo của chợ",
+    "toan2-cd3-b17-gau-manh": "sạp cân đồng hồ",
+    "toan2-cd3-b17-meo-u": "chậu rửa rau bên kênh",
+    "toan2-cd3-b17-cao-lum": "dãy bình nước sau bếp chè"
   },
   "steps": [
     {
       "id": "cong-thuc-che-heo-un",
       "title": "Công thức nấu chè của Heo",
-      "goTo": "Vào bếp lớn, Heo Ủn đang đội mũ đầu bếp cao ngất",
+      "goTo": "Tới bếp chè giữa chợ, Heo Ủn đang đội mũ đầu bếp cao ngất",
       "kind": "dialogue",
       "target": "heo-un",
       "lines": [
         {
           "speaker": "Heo Ủn",
-          "text": "Ủn ỉn! Hôm nay tớ nấu nồi chè to nhất lịch sử trường! Công thức đây: đậu xanh, đường, nước… ghi toàn \"kg\" với \"l\"."
+          "text": "Ủn ỉn! Hôm nay tớ nấu nồi chè to nhất lịch sử phiên chợ! Công thức đây: đậu xanh, đường, nước… ghi toàn \"kg\" với \"l\"."
         },
         {
           "speaker": "Mèo Ú",
@@ -68,8 +68,8 @@
     },
     {
       "id": "tim-nguyen-lieu-che",
-      "title": "Lục kho tìm nguyên liệu",
-      "goTo": "Vào kho gạo tìm túi gạo, túi muối và ca 1 lít",
+      "title": "Lục kho gạo tìm nguyên liệu",
+      "goTo": "Vào kho gạo của chợ tìm túi gạo, túi muối và ca 1 lít",
       "kind": "search",
       "targets": [
         "toan2-cd3-tui-gao",
@@ -80,7 +80,7 @@
     {
       "id": "doan-truoc-can-sau",
       "title": "Đoán trước, cân sau",
-      "goTo": "Ôm nguyên liệu về bếp lớn",
+      "goTo": "Ôm nguyên liệu về bếp chè giữa chợ",
       "kind": "dialogue",
       "target": "heo-un",
       "lines": [
@@ -179,7 +179,7 @@
     {
       "id": "buoi-va-cam-tren-can",
       "title": "Quả bưởi, quả cam và quả cân",
-      "goTo": "Sang góc đặt cân, Gấu Mạnh nhấc quả bưởi đặt lên đĩa cân",
+      "goTo": "Sang sạp cân đồng hồ, Gấu Mạnh nhấc quả bưởi đặt lên đĩa cân",
       "target": "toan2-cd3-b17-gau-manh",
       "kind": "challenge",
       "mechanic": "fill-blank",
@@ -367,11 +367,11 @@
     {
       "id": "so-tay-can-suc-khoe",
       "title": "Sổ cân sức khoẻ bốn bạn",
-      "goTo": "Về bếp lớn, Heo Ủn chỉ tờ kết quả dán trên tường",
+      "goTo": "Về bếp chè giữa chợ, Heo Ủn chỉ tờ kết quả dán trên cột bếp",
       "target": "heo-un",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Trên tường bếp dán tờ kết quả: Mai đứng cân, kim chỉ 23 kg; Nam 25 kg; Việt 24 kg; Rô-bốt 20 kg. Heo Ủn cần biết để chia chè cho vừa sức. Bốn bạn Mai, Nam, Việt và Rô-bốt cân kiểm tra sức khoẻ được kết quả như sau:",
+      "prompt": "Trên cột bếp chè dán tờ kết quả: Mai đứng cân, kim chỉ 23 kg; Nam 25 kg; Việt 24 kg; Rô-bốt 20 kg. Heo Ủn cần biết để chia chè cho vừa sức. Bốn bạn Mai, Nam, Việt và Rô-bốt cân kiểm tra sức khoẻ được kết quả như sau:",
       "template": "a) Số ?\nTên | Việt | Rô-bốt | Nam | Mai\nCân nặng | 24 kg | {{b1}} kg | {{b2}} kg | {{b3}} kg\nb) Bạn nào cân nặng nhất? {{b4}} Bạn nào cân nhẹ nhất? {{b5}}",
       "blanks": [
         {
@@ -519,7 +519,7 @@
     {
       "id": "chip-hoi-cach-dong",
       "title": "Đong nước bằng gì đây?",
-      "goTo": "Mèo Ú vẫy gọi ở chậu nước rửa rau trong bếp",
+      "goTo": "Mèo Ú vẫy gọi ở chậu rửa rau bên kênh",
       "kind": "dialogue",
       "target": "toan2-cd3-b17-meo-u",
       "lines": [
@@ -620,7 +620,7 @@
     {
       "id": "binh-a-chin-binh-b-bay",
       "title": "Bình A chín cốc, bình B bảy cốc",
-      "goTo": "Ra dãy bình nước cuối bếp, Cáo Lúm đang xếp hai bình A, B",
+      "goTo": "Ra dãy bình nước sau bếp chè, Cáo Lúm đang xếp hai bình A, B",
       "target": "toan2-cd3-b17-cao-lum",
       "kind": "challenge",
       "mechanic": "fill-blank",
@@ -714,7 +714,7 @@
     {
       "id": "phieu-tap-dong-nuoc",
       "title": "Phiếu tập đong nước",
-      "goTo": "Quay lại chậu nước rửa rau, Mèo Ú cầm sẵn một tờ phiếu",
+      "goTo": "Quay lại chậu rửa rau bên kênh, Mèo Ú cầm sẵn một tờ phiếu",
       "kind": "worksheet",
       "target": "toan2-cd3-b17-meo-u",
       "lessonId": "toan2-t1-b17",
@@ -726,7 +726,7 @@
     {
       "id": "hai-xo-nuoc-vang-do",
       "title": "Hai chiếc xô vàng và đỏ",
-      "goTo": "Về bếp lớn, Heo Ủn xách hai chiếc xô vàng và đỏ chờ thi",
+      "goTo": "Về bếp chè giữa chợ, Heo Ủn xách hai chiếc xô vàng và đỏ chờ thi",
       "target": "heo-un",
       "kind": "riddle",
       "question": "Thử thách cuối: Heo Ủn và {name} thi múc nước, mỗi người một xô. Dùng ca 1 l, múc nước ở trong thùng đổ 3 ca đầy vào xô màu vàng và 5 ca đầy vào xô màu đỏ. Hỏi cả hai xô có bao nhiêu lít nước?",
@@ -766,14 +766,14 @@
       "title": "Chiếc muôi gỗ phụ bếp",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Nồi chè đậu xanh thơm lừng cả căng tin. Heo Ủn trao cho {name} chiếc muôi gỗ \"Phụ bếp siêu đong\", còn Mèo Ú được múc bát chè đầu tiên… và làm đổ một nửa."
+      "text": "Nồi chè đậu xanh thơm lừng cả dãy hàng cân đong. Heo Ủn trao cho {name} chiếc muôi gỗ \"Phụ bếp siêu đong\", còn Mèo Ú được múc bát chè đầu tiên… và làm đổ một nửa."
     },
     {
       "id": "kho-lanh-tuyet-roi",
-      "title": "Tuyết rơi trong kho lạnh",
+      "title": "Hắt xì trong kho hàng",
       "kind": "next",
       "trigger": "auto",
-      "text": "Cửa kho lạnh mở ra, hơi lạnh phả mù mịt: Gấu Tuyết Bông đang đóng thùng hàng gửi về phương xa, nhưng nhãn cân nặng thì chưa ghi gì cả!"
+      "text": "Cửa kho hàng cuối chợ kẽo kẹt mở ra: Gấu Băng đang đóng thùng hàng gửi về phương xa, vừa đóng vừa hắt xì, mà nhãn cân nặng thì chưa ghi gì cả!"
     }
   ],
   "reward": {

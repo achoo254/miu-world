@@ -1,16 +1,16 @@
 {
   "id": "toan2-cd4-b24",
-  "region": "truong-hoc",
-  "chapter": 4,
-  "title": "Tủ kính của Mèo Mun",
+  "region": "nong-trai",
+  "chapter": 1,
+  "title": "Tủ kính của Mèo Tam Thể",
   "status": "active",
   "lesson": "toan2-t1-b24",
-  "summary": "Đồ chơi Xưởng làm xong chất đầy sàn mà tủ kính đánh số lung tung; {name} giúp Mèo Mun ôn cộng trừ có nhớ để xếp từng món vào đúng ngăn, chạy ra băng chuyền của Bê Phính, thang dây nhà sóc của Bác Sáu, kệ nhãn vở của Gấu Keo, rồi thắng Mèo Mun trò Cặp tấm thẻ anh em.",
+  "summary": "Đồ chơi gỗ Bác Sáu đẽo cho hội mùa chất đầy hiên kho mà tủ kính đánh số lung tung; {name} giúp Mèo Tam Thể ôn cộng trừ có nhớ để xếp từng món vào đúng ngăn, chạy ra băng chuyền đóng bao của Bê Phính, thang dây nhà sóc trong vườn của Bác Sáu, kệ nhãn ở xưởng nông cụ của Gấu Keo, rồi thắng Mèo Tam Thể trò Cặp tấm thẻ anh em.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Mèo Mun, Bê Phính, Bác Sáu, Gấu Keo",
-    "where": "Xưởng đồ chơi: tủ kính trưng bày, trạm băng chuyền, thang dây nhà sóc, kệ nhãn vở",
-    "goal": "Xếp đồ chơi đã làm xong vào tủ kính theo đúng số thứ tự",
+    "who": "Mèo Tam Thể, Bê Phính, Bác Sáu, Gấu Keo",
+    "where": "Nông trại: tủ kính ở hiên kho, băng chuyền đóng bao, thang dây nhà sóc trong vườn, kệ nhãn ở xưởng nông cụ",
+    "goal": "Xếp đồ chơi gỗ Bác Sáu đẽo xong vào tủ kính theo đúng số thứ tự",
     "play": "Gom đồ chơi, đặt tính, đi băng chuyền số, giải toán, chọn nhãn vở, xếp số ngăn tủ, tìm chữ số, chơi Cặp tấm thẻ anh em",
     "learn": "Toán 2 Bài 24: luyện tập chung cộng, trừ có nhớ trong phạm vi 100",
     "reward": "80 XP, 15 xu, Phép trừ +2, Logic +1",
@@ -28,37 +28,37 @@
   },
   "texts": {},
   "places": {
-    "meo-mun": "tủ kính",
-    "gom-do-choi": "tủ kính",
-    "toan2-cd4-b24-be-com": "trạm băng chuyền",
-    "toan2-cd4-b24-bac-sau": "thang dây nhà sóc",
-    "toan2-cd4-b24-gau-bo": "kệ nhãn vở"
+    "toan2-cd4-b24-meo-tam-the": "tủ kính ở hiên kho",
+    "gom-do-choi": "khắp hiên kho",
+    "toan2-cd4-b24-be-com": "băng chuyền đóng bao",
+    "toan2-cd4-b24-bac-sau": "thang dây nhà sóc trong vườn",
+    "toan2-cd4-b24-gau-bo": "kệ nhãn ở xưởng nông cụ"
   },
   "steps": [
     {
       "id": "meo-mun-thu-dai",
-      "title": "Mèo Mun thở dài",
-      "goTo": "Đến tủ kính trưng bày của Xưởng, Mèo Mun đang lau kính",
+      "title": "Mèo Tam Thể thở dài",
+      "goTo": "Đến tủ kính ở hiên kho, Mèo Tam Thể đang lau kính",
       "kind": "dialogue",
-      "target": "meo-mun",
+      "target": "toan2-cd4-b24-meo-tam-the",
       "lines": [
         {
-          "speaker": "Mèo Mun",
+          "speaker": "Mèo Tam Thể",
           "text": "Chào {name}. Tớ lau tủ kính ba lần rồi mà vẫn chưa xếp được món nào, vì số ngăn tủ cứ nhảy lung tung."
         },
         {
           "speaker": "Bê Phính",
-          "text": "Lỗi tại tớ! Tớ dán số ngăn lúc đang… nhai bánh cốm, thế là dán ngược hết. Mà đồ chơi làm xong thì lăn khắp sàn rồi."
+          "text": "Lỗi tại tớ! Tớ dán số ngăn lúc đang… nhai bánh cốm, thế là dán ngược hết. Mà đồ chơi Bác Sáu đẽo xong thì lăn khắp hiên rồi."
         },
         {
-          "speaker": "Mèo Mun",
-          "text": "Không sao, mình bình tĩnh làm từng việc. Cứ thở đều, mèo đen không bao giờ vội."
+          "speaker": "Mèo Tam Thể",
+          "text": "Không sao, mình bình tĩnh làm từng việc. Cứ thở đều, mèo tam thể không bao giờ vội."
         }
       ],
       "choices": [
         {
           "text": "Mình gom đồ chơi trước nhé!",
-          "reply": "Mèo Mun gật đầu chậm rãi: Đúng thứ tự rồi đấy, giống xếp tủ vậy."
+          "reply": "Mèo Tam Thể gật đầu chậm rãi: Đúng thứ tự rồi đấy, giống xếp tủ vậy."
         },
         {
           "text": "Bê Phính ăn bánh mà không mời à?",
@@ -68,8 +68,8 @@
     },
     {
       "id": "gom-do-choi",
-      "title": "Đồ chơi lăn khắp sàn",
-      "goTo": "Gom ba món đồ chơi lăn lóc quanh tủ kính",
+      "title": "Đồ chơi lăn khắp hiên",
+      "goTo": "Gom ba món đồ chơi gỗ lăn lóc khắp hiên kho",
       "kind": "search",
       "targets": [
         "toan2-cd4-o-to-go",
@@ -81,14 +81,14 @@
       "id": "meo-mun-on-bai",
       "title": "Ôn bài trước khi xếp",
       "kind": "dialogue",
-      "target": "meo-mun",
+      "target": "toan2-cd4-b24-meo-tam-the",
       "lines": [
         {
-          "speaker": "Mèo Mun",
+          "speaker": "Mèo Tam Thể",
           "text": "Mỗi ngăn tủ ghi một phép tính. Trừ có nhớ: hàng đơn vị không đủ thì mượn một chục, rồi nhớ 1 vào hàng chục."
         },
         {
-          "speaker": "Mèo Mun",
+          "speaker": "Mèo Tam Thể",
           "text": "Phép tính dài thì cứ làm từ trái sang phải, từng bước một, như mèo bước trên bờ tường."
         },
         {
@@ -99,14 +99,15 @@
       "choices": [
         {
           "text": "Từng bước một, rõ rồi!",
-          "reply": "Mèo Mun đỡ Bê Phính dậy: Thấy chưa, vội là ngã ngay."
+          "reply": "Mèo Tam Thể đỡ Bê Phính dậy: Thấy chưa, vội là ngã ngay."
         }
-      ]
+      ],
+      "goTo": "Ôm đồ chơi về tủ kính ở hiên kho, Mèo Tam Thể đang chờ ôn bài"
     },
     {
       "id": "ngan-tu-dat-tinh",
       "title": "Bốn ngăn tủ đầu tiên",
-      "target": "meo-mun",
+      "target": "toan2-cd4-b24-meo-tam-the",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "prompt": "Bốn ngăn tủ đầu ghi bốn phép trừ, tính đúng thì cửa ngăn mới mở. Đặt tính rồi tính.",
@@ -201,7 +202,7 @@
       },
       "feedback": {
         "right": [
-          "Bốn cửa ngăn kêu tách tách mở ra, Mèo Mun mỉm cười hài lòng.",
+          "Bốn cửa ngăn kêu tách tách mở ra, Mèo Tam Thể mỉm cười hài lòng.",
           "Ô tô gỗ đã nằm gọn trong ngăn đầu tiên.",
           "Trừ có nhớ gọn gàng như mèo rửa mặt."
         ],
@@ -222,11 +223,11 @@
     },
     {
       "id": "bang-chuyen-so",
-      "title": "Băng chuyền đồ chơi",
+      "title": "Băng chuyền đếm bao ngô",
       "target": "toan2-cd4-b24-be-com",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Bê Phính bật băng chuyền, mỗi trạm thêm hoặc bớt đồ chơi. Số ?",
+      "prompt": "Bê Phính bật băng chuyền, mỗi trạm thêm hoặc bớt bao ngô. Số ?",
       "template": "88 → + 4 → {{b1}} → – 7 → {{b2}} → – 26 → {{b3}}",
       "blanks": [
         {
@@ -300,7 +301,7 @@
       },
       "feedback": {
         "right": [
-          "Băng chuyền chạy ro ro, đồ chơi tới cuối đúng 59 món.",
+          "Băng chuyền chạy ro ro, cuối băng còn đúng 59 bao ngô.",
           "Ba trạm, ba con số, không trạm nào kẹt cả.",
           "Bê Phính reo: lần đầu băng chuyền chạy không kêu cà rịch!"
         ],
@@ -317,7 +318,7 @@
           "b3": "o59"
         }
       },
-      "goTo": "Sang trạm băng chuyền, Bê Phính vừa bật công tắc chạy ro ro"
+      "goTo": "Sang băng chuyền đóng bao, Bê Phính vừa bật công tắc chạy ro ro"
     },
     {
       "id": "thang-len-nha-soc",
@@ -344,7 +345,7 @@
         "right": [
           "Sóc gỗ leo thoăn thoắt 23 bậc nữa rồi chui tọt vào nhà.",
           "Lấy tất cả trừ phần đã leo, đúng bài luôn.",
-          "Mèo Mun vỗ nhẹ hai chân: tuyệt vời, không vội mà đúng."
+          "Mèo Tam Thể vỗ nhẹ hai chân: tuyệt vời, không vội mà đúng."
         ],
         "wrong": [
           "Còn phải leo thêm thì làm phép trừ nhé.",
@@ -355,7 +356,7 @@
       "answer": {
         "value": 23
       },
-      "goTo": "Tới thang dây nhà sóc, Bác Sáu thợ già đang lên dây cót cho sóc gỗ"
+      "goTo": "Tới thang dây nhà sóc trong vườn, Bác Sáu thợ già đang lên dây cót cho sóc gỗ"
     },
     {
       "id": "nhan-vo-ba-ban",
@@ -408,15 +409,15 @@
       "answer": {
         "choice": "c-51-33"
       },
-      "goTo": "Ra kệ nhãn vở, Gấu Keo đang ôm chồng nhãn chờ dán ngăn tủ"
+      "goTo": "Ra kệ nhãn ở xưởng nông cụ, Gấu Keo đang ôm chồng nhãn chờ dán ngăn tủ"
     },
     {
       "id": "so-ngan-tu-tu-the",
       "title": "Xếp số ngăn tủ",
-      "target": "meo-mun",
+      "target": "toan2-cd4-b24-meo-tam-the",
       "kind": "challenge",
       "mechanic": "sort",
-      "prompt": "Mèo Mun làm ba thẻ số 3, 3, 8 để đánh số ngăn tủ. Ghép hai trong ba thẻ số bên được các số có hai chữ số. Số bé nhất trong các số đó là số nào? Số lớn nhất trong các số đó là số nào? Hãy xếp các số ghép được theo thứ tự từ bé đến lớn để dán lên ngăn tủ.",
+      "prompt": "Mèo Tam Thể làm ba thẻ số 3, 3, 8 để đánh số ngăn tủ. Ghép hai trong ba thẻ số bên được các số có hai chữ số. Số bé nhất trong các số đó là số nào? Số lớn nhất trong các số đó là số nào? Hãy xếp các số ghép được theo thứ tự từ bé đến lớn để dán lên ngăn tủ.",
       "items": [
         {
           "id": "ngan-38",
@@ -465,12 +466,12 @@
           "ngan-83"
         ]
       },
-      "goTo": "Về tủ kính, Mèo Mun xếp ba thẻ số 3, 3, 8 lên mặt kính"
+      "goTo": "Về tủ kính ở hiên kho, Mèo Tam Thể xếp ba thẻ số 3, 3, 8 lên mặt kính"
     },
     {
       "id": "so-be-nhat-lon-nhat",
       "title": "Ngăn đầu và ngăn cuối",
-      "target": "meo-mun",
+      "target": "toan2-cd4-b24-meo-tam-the",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "prompt": "Ghép hai trong ba thẻ số bên được các số có hai chữ số. Số bé nhất trong các số đó là số nào? Số lớn nhất trong các số đó là số nào?",
@@ -530,7 +531,7 @@
         "right": [
           "Ngăn số 33 ở đầu, ngăn số 83 ở cuối, tủ kính ngay ngắn hẳn.",
           "Bé nhất, lớn nhất, chọn trúng cả hai.",
-          "Mèo Mun đặt búp bê gỗ vào ngăn cuối cùng."
+          "Mèo Tam Thể đặt búp bê gỗ vào ngăn cuối cùng."
         ],
         "wrong": [
           "Số bé nhất đứng ở đầu dãy vừa xếp đấy.",
@@ -552,7 +553,7 @@
       "target": "toan2-cd4-b24-be-com",
       "lines": [
         {
-          "speaker": "Mèo Mun",
+          "speaker": "Mèo Tam Thể",
           "text": "Còn chiếc con quay và mấy món nhỏ. Tớ thích đặt con quay ở ngăn giữa, nhưng Bê Phính cứ đòi ngăn trên cùng."
         },
         {
@@ -560,26 +561,26 @@
           "text": "Ngăn trên cùng cho oai! Con quay xoay vù vù thì phải đứng chỗ cao nhất chứ."
         },
         {
-          "speaker": "Mèo Mun",
+          "speaker": "Mèo Tam Thể",
           "text": "{name} quyết đi. Trước đó mình làm nốt mấy bài ôn đã nhé."
         }
       ],
       "choices": [
         {
           "text": "Đặt ở ngăn giữa cho dễ ngắm",
-          "reply": "Mèo Mun kêu meo khe khẽ, ra chiều rất hài lòng."
+          "reply": "Mèo Tam Thể kêu meo khe khẽ, ra chiều rất hài lòng."
         },
         {
           "text": "Đặt ở ngăn trên cùng cho oai",
           "reply": "Bê Phính nhảy cẫng lên, suýt húc đổ cả băng chuyền."
         }
       ],
-      "goTo": "Ra trạm băng chuyền, Bê Phính ôm khư khư chiếc con quay, Mèo Mun theo sau"
+      "goTo": "Ra băng chuyền đóng bao, Bê Phính ôm khư khư chiếc con quay, Mèo Tam Thể theo sau"
     },
     {
       "id": "tinh-day-phep-tinh",
       "title": "Phép tính dài ở cửa tủ",
-      "target": "meo-mun",
+      "target": "toan2-cd4-b24-meo-tam-the",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "prompt": "Cửa tủ kính có hai phép tính dài và một chú ong gỗ bay qua ba bông hoa ghi 5, 61, 8.",
@@ -658,7 +659,7 @@
         "right": [
           "Ong gỗ vo ve về tổ, mang theo đúng tổng 74.",
           "Hai phép tính dài mà không vấp bước nào.",
-          "Mèo Mun gõ nhẹ vào kính: cửa tủ đã mở khoá."
+          "Mèo Tam Thể gõ nhẹ vào kính: cửa tủ đã mở khoá."
         ],
         "wrong": [
           "Làm từ trái sang phải, đừng tính phần sau trước.",
@@ -673,7 +674,7 @@
           "b3": "o74"
         }
       },
-      "goTo": "Quay lại tủ kính, Mèo Mun chỉ hai phép tính dài trên cánh cửa"
+      "goTo": "Quay lại tủ kính ở hiên kho, Mèo Tam Thể chỉ hai phép tính dài trên cánh cửa"
     },
     {
       "id": "cay-tre-tram-dot",
@@ -711,12 +712,12 @@
       "answer": {
         "value": 93
       },
-      "goTo": "Lên thang dây nhà sóc, Bác Sáu bày đồ chơi cây tre trăm đốt"
+      "goTo": "Lên thang dây nhà sóc trong vườn, Bác Sáu bày đồ chơi cây tre trăm đốt"
     },
     {
       "id": "chu-so-tron-kinh",
       "title": "Chữ số trốn sau kính",
-      "target": "meo-mun",
+      "target": "toan2-cd4-b24-meo-tam-the",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "prompt": "Hơi thở của Bê Phính làm mờ kính, che mất hai chữ số trên nhãn ngăn tủ.",
@@ -777,7 +778,7 @@
         "right": [
           "Kính hết mờ, hai chữ số hiện rõ mồn một.",
           "Thử từng chữ số mà tìm ra ngay, đúng là thám tử.",
-          "Mèo Mun lau kính lần thứ tư, lần này để ngắm cho đẹp."
+          "Mèo Tam Thể lau kính lần thứ tư, lần này để ngắm cho đẹp."
         ],
         "wrong": [
           "Thay chữ số vào rồi kiểm tra dấu so sánh nhé.",
@@ -791,15 +792,15 @@
           "b2": "o9"
         }
       },
-      "goTo": "Về tủ kính, Mèo Mun hà hơi lau ô kính mờ"
+      "goTo": "Về tủ kính ở hiên kho, Mèo Tam Thể hà hơi lau ô kính mờ"
     },
     {
       "id": "cap-the-anh-em",
       "title": "Cặp tấm thẻ anh em",
-      "target": "meo-mun",
+      "target": "toan2-cd4-b24-meo-tam-the",
       "kind": "challenge",
       "mechanic": "classify",
-      "prompt": "Mèo Mun rủ {name} chơi trò CẶP TẤM THẺ ANH EM, ai ghép được nhiều cặp thì được đặt món đồ chơi cuối vào tủ. Thẻ phép trừ: 30 – 5, 100 – 20, 35 – 8, 40 – 12, 52 – 15; thẻ số: 25, 37, 27, 28, 80. Cách chơi: • Chơi theo nhóm. • Úp các tấm thẻ có các phép trừ dưới đây thành một nhóm theo thứ tự bất kì. • Úp các tấm thẻ có các số dưới đây thành một nhóm theo thứ tự bất kì. • Khi đến lượt, người chơi lấy ở mỗi nhóm một tấm thẻ. Nếu là cặp tấm thẻ anh em (cặp tấm thẻ ghi phép tính và kết quả của phép tính đó) thì người chơi được giữ lấy, nếu không thì xếp trả lại. • Trò chơi kết thúc khi có người lấy được 2 cặp tấm thẻ anh em. Ghép mỗi thẻ phép trừ với thẻ số anh em của nó.",
+      "prompt": "Mèo Tam Thể rủ {name} chơi trò CẶP TẤM THẺ ANH EM, ai ghép được nhiều cặp thì được đặt món đồ chơi cuối vào tủ. Thẻ phép trừ: 30 – 5, 100 – 20, 35 – 8, 40 – 12, 52 – 15; thẻ số: 25, 37, 27, 28, 80. Cách chơi: • Chơi theo nhóm. • Úp các tấm thẻ có các phép trừ dưới đây thành một nhóm theo thứ tự bất kì. • Úp các tấm thẻ có các số dưới đây thành một nhóm theo thứ tự bất kì. • Khi đến lượt, người chơi lấy ở mỗi nhóm một tấm thẻ. Nếu là cặp tấm thẻ anh em (cặp tấm thẻ ghi phép tính và kết quả của phép tính đó) thì người chơi được giữ lấy, nếu không thì xếp trả lại. • Trò chơi kết thúc khi có người lấy được 2 cặp tấm thẻ anh em. Ghép mỗi thẻ phép trừ với thẻ số anh em của nó.",
       "groups": [
         {
           "id": "nhom-the-so-25",
@@ -861,8 +862,8 @@
       },
       "feedback": {
         "right": [
-          "Năm cặp anh em đoàn tụ, {name} thắng Mèo Mun ván này!",
-          "Mèo Mun chịu thua, cúi đầu kiểu mèo lịch sự.",
+          "Năm cặp anh em đoàn tụ, {name} thắng Mèo Tam Thể ván này!",
+          "Mèo Tam Thể chịu thua, cúi đầu kiểu mèo lịch sự.",
           "Thẻ 27 và 28 sát nhau mà cậu không ghép lẫn."
         ],
         "wrong": [
@@ -886,14 +887,14 @@
       "title": "Tủ kính lung linh",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Tủ kính sáng đèn, món nào cũng đúng ngăn. Mèo Mun tặng {name} chiếc con quay nhỏ sơn đen bóng, còn Bê Phính mang ra miếng bánh để dành… đã bị chính Bê Phính cắn mất một nửa."
+      "text": "Tủ kính sáng đèn, món nào cũng đúng ngăn. Mèo Tam Thể tặng {name} chiếc con quay nhỏ sơn ba màu loang lổ như bộ lông của mình, còn Bê Phính mang ra miếng bánh để dành… đã bị chính Bê Phính cắn mất một nửa."
     },
     {
       "id": "chom-sao-cua-huou",
       "title": "Những chấm sao trên giá vẽ",
       "kind": "next",
       "trigger": "auto",
-      "text": "Từ phòng mĩ thuật, Hươu Cao thò cái cổ dài qua cửa sổ: \"Tớ chấm đầy sao lên giá vẽ lớn rồi mà chưa nối được thành chòm sao nào cả!\""
+      "text": "Từ phòng vẽ của Lâu đài, Hươu Cao thò cái cổ dài qua ô cửa sổ kính màu: \"Tớ chấm đầy sao lên giá vẽ lớn rồi mà chưa nối được thành chòm sao nào cả!\""
     }
   ],
   "reward": {

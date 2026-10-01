@@ -1,15 +1,15 @@
 {
   "id": "toan2-cd5-b25",
-  "region": "truong-hoc",
-  "chapter": 5,
+  "region": "lau-dai",
+  "chapter": 1,
   "title": "Hươu Cao vẽ chòm sao",
   "status": "active",
   "lesson": "toan2-t1-b25",
-  "summary": "Hươu Cao muốn vẽ một chòm sao thật to trên giá vẽ nhưng cổ dài quá nên cứ chấm lệch; {name} cùng Hươu Cao, Cáo Bạch ở bàn thước kẻ và Bác Ngân ở góc bản đồ sao gọi tên điểm, đoạn thẳng, đường thẳng, đường cong, tìm ba điểm thẳng hàng, rồi ra cửa sổ cùng Thỏ Bi ngắm sân trường.",
+  "summary": "Hươu Cao muốn vẽ một chòm sao thật to lên giá vẽ trong phòng vẽ của lâu đài, nhưng cổ dài quá nên chấm nào cũng lệch; {name} cùng Hươu Cao, Cáo Bạch ở bàn thước kẻ và Bác Ngân ở góc bản đồ sao gọi tên điểm, đoạn thẳng, đường thẳng, đường cong, tìm ba điểm thẳng hàng, rồi ra ô cửa cùng Thỏ Bi ngắm sân hình khối.",
   "review": "teacher-pending",
   "sevenQuestions": {
     "who": "Hươu Cao, Cáo Bạch, Bác Ngân, Thỏ Bi",
-    "where": "Phòng mĩ thuật: giá vẽ lớn, góc bản đồ sao, bàn thước kẻ, cửa sổ nhìn ra sân",
+    "where": "Lâu đài, phòng vẽ bên sân hình khối: giá vẽ lớn, góc bản đồ sao, bàn thước kẻ, ô cửa nhìn xuống sân",
     "goal": "Giúp Hươu Cao vẽ xong bức tranh chòm sao trên giá vẽ",
     "play": "Tìm đồ vẽ, phân loại điểm và đoạn thẳng, chọn nhiều, nối chòm sao, đọc thước, phân loại đường thẳng và đường cong, nói điều nhìn thấy",
     "learn": "Toán 2 Bài 25: điểm, đoạn thẳng, đường thẳng, đường cong, ba điểm thẳng hàng",
@@ -32,19 +32,19 @@
     "tim-do-ve": "giá vẽ lớn",
     "toan2-cd5-b25-bac-ngan": "góc bản đồ sao",
     "toan2-cd5-b25-cao-bach": "bàn thước kẻ",
-    "toan2-cd5-b25-tho-bi": "cửa sổ nhìn ra sân"
+    "toan2-cd5-b25-tho-bi": "ô cửa phòng vẽ"
   },
   "steps": [
     {
       "id": "huou-cham-lech",
       "title": "Cổ dài chấm lệch",
-      "goTo": "Vào phòng mĩ thuật, tới giá vẽ lớn nơi Hươu Cao đang đứng ngẩn ngơ",
+      "goTo": "Vào phòng vẽ bên sân hình khối, tới giá vẽ lớn nơi Hươu Cao đang đứng ngẩn ngơ",
       "kind": "dialogue",
       "target": "huou-cao",
       "lines": [
         {
           "speaker": "Hươu Cao",
-          "text": "Ô kìa {name}! Tớ định vẽ chòm sao lên giá vẽ, mà cổ tớ dài quá, chấm cái nào cũng lệch tít lên trần nhà."
+          "text": "Ô kìa {name}! Tớ định vẽ chòm sao lên giá vẽ, mà cổ tớ dài quá, chấm cái nào cũng lệch tít lên trần vòm của phòng vẽ."
         },
         {
           "speaker": "Cáo Bạch",
@@ -531,7 +531,7 @@
       "choices": [
         {
           "text": "Dải thẳng tắp như tia nắng!",
-          "reply": "Hươu Cao kéo một nét thật dài: Vút! Dài tới tận cửa sổ luôn."
+          "reply": "Hươu Cao kéo một nét thật dài: Vút! Dài tới tận ô cửa sổ của phòng vẽ luôn."
         },
         {
           "text": "Dải uốn lượn như con sóng!",
@@ -648,7 +648,7 @@
       "feedback": {
         "right": [
           "Đúng rồi, điểm D lạc đàn bị cậu phát hiện ngay!",
-          "Ba điểm thẳng hàng như ba bạn xếp hàng chào cờ.",
+          "Ba điểm thẳng hàng như ba chú lính gác đứng trên tường thành.",
           "Cáo Bạch cất thước: bài này cậu nắm chắc rồi."
         ],
         "wrong": [
@@ -730,11 +730,11 @@
     },
     {
       "id": "nhin-ra-san-truong",
-      "title": "Ngắm sân trường qua cửa sổ",
-      "goTo": "Ra cửa sổ nhìn ra sân, Thỏ Bi kiễng chân chỉ xuống sân trường",
+      "title": "Ngắm sân hình khối qua ô cửa",
+      "goTo": "Ra ô cửa phòng vẽ, Thỏ Bi kiễng chân chỉ xuống sân hình khối",
       "kind": "speak",
       "target": "toan2-cd5-b25-tho-bi",
-      "prompt": "Dưới sân, ba bạn nhỏ đang nhảy dây, phía sau là hàng cây và dãy lớp học có cửa sổ. Tìm một đường thẳng, một đường cong và ba cây thẳng hàng có trong hình dưới đây. Nói to cho Thỏ Bi nghe nhé.",
+      "prompt": "Dưới sân hình khối, ba bạn nhỏ đang nhảy dây giữa các khối đá, phía sau là hàng cây và dãy nhà có cửa sổ. Tìm một đường thẳng, một đường cong và ba cây thẳng hàng có trong hình dưới đây. Nói to cho Thỏ Bi nghe nhé.",
       "hints": [
         "Mép viên gạch lát sân hay mép cửa sổ trông như đường gì?",
         "Sợi dây nhảy đang uốn cong kìa.",
@@ -749,14 +749,14 @@
       "title": "Huy hiệu chòm sao",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Bức tranh chòm sao treo giữa phòng mĩ thuật, sáng nhất là ba ngôi sao thẳng hàng. Hươu Cao cúi thật thấp để cài cho {name} huy hiệu \"Họa sĩ đường thẳng\", Cáo Bạch thì vẫn đang gỡ ngôi sao trên đuôi."
+      "text": "Bức tranh chòm sao được treo giữa phòng vẽ của lâu đài, sáng nhất là ba ngôi sao thẳng hàng. Hươu Cao cúi thật thấp để cài cho {name} huy hiệu \"Họa sĩ đường thẳng\", Cáo Bạch thì vẫn đang gỡ ngôi sao trên đuôi."
     },
     {
       "id": "o-kinh-ong-vang",
       "title": "Ô kính màu vo ve",
       "kind": "next",
       "trigger": "auto",
-      "text": "Ong Vàng bay vo ve quanh cửa sổ ghép kính: lối bay qua các ô kính màu cứ gãy khúc liên tục, Ong hoa cả mắt rồi, ai bay cùng Ong với!"
+      "text": "Ong Nhí bay vo ve quanh cửa sổ ghép kính màu bên sân hình khối: lối bay qua các ô kính cứ gãy khúc liên tục, Ong Nhí hoa cả mắt rồi, ai bay cùng với!"
     }
   ],
   "reward": {

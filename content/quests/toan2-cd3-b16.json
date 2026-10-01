@@ -1,15 +1,15 @@
 {
   "id": "toan2-cd3-b16",
-  "region": "truong-hoc",
-  "chapter": 3,
-  "title": "Cá Bống và bể nước vơi",
+  "region": "cho-phien",
+  "chapter": 2,
+  "title": "Cá Lia Thia và bể nước vơi",
   "status": "active",
   "lesson": "toan2-t1-b16",
-  "summary": "Bể cá ở căng tin vơi mất nửa, Cá Bống lo sốt vó; {name} học đơn vị lít với Cô Thoa, đọc nhãn ở kệ của Gấu Sồi, đong ở bàn của Cáo Bạc, tính lít nước và đổ đầy bể cho Cá Bống tung tăng.",
+  "summary": "Bể cá ở quầy nước giữa chợ vơi mất nửa, Cá Lia Thia lo sốt vó; {name} học đơn vị lít với Cô Thoa, đọc nhãn ở kệ can, bình của Gấu Sồi, đong ở bàn của Cáo Bạc, tính lít nước và đổ đầy bể cho Lia Thia tung tăng.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Cá Bống, Cô Thoa, Gấu Sồi, Cáo Bạc",
-    "where": "Căng tin: bể cá căng tin, quầy nước uống, kệ đồ đựng nước, bảng đen quầy nước, bàn đong nước",
+    "who": "Cá Lia Thia, Cô Thoa, Gấu Sồi, Cáo Bạc",
+    "where": "Chợ phiên, dãy hàng cân đong: bể cá ở quầy nước, quầy nước uống, kệ can, bình, bảng đen quầy nước, bàn đong nước",
     "goal": "Đổ đủ lít nước để bể cá đầy trở lại",
     "play": "Tìm ca, chai, cốc; chọn câu đúng; điền số lít; tính với lít; xếp đồ vật theo lượng nước; đố can nước mắm",
     "learn": "Toán 2 Bài 16: lít, đơn vị l; cộng, trừ với đơn vị l",
@@ -28,9 +28,9 @@
   },
   "texts": {},
   "places": {
-    "ca-bong": "bể cá căng tin",
+    "toan2-cd3-b16-ca-lia-thia": "bể cá ở quầy nước",
     "tim-do-dong-nuoc": "quầy nước uống",
-    "toan2-cd3-b16-gau-soi": "kệ đồ đựng nước",
+    "toan2-cd3-b16-gau-soi": "kệ can, bình",
     "toan2-cd3-b16-co-ngan": "bảng đen quầy nước",
     "toan2-cd3-b16-cao-bac": "bàn đong nước"
   },
@@ -38,31 +38,31 @@
     {
       "id": "be-ca-voi-nua",
       "title": "Bể cá vơi mất nửa",
-      "goTo": "Đến bể cá căng tin, Cá Bống đang ngoi lên thở phì phò",
+      "goTo": "Đến bể cá ở quầy nước, Cá Lia Thia đang ngoi lên thở phì phò",
       "kind": "dialogue",
-      "target": "ca-bong",
+      "target": "toan2-cd3-b16-ca-lia-thia",
       "lines": [
         {
-          "speaker": "Cá Bống",
+          "speaker": "Cá Lia Thia",
           "text": "Bóp bóp! {name} ơi, nước trong bể tớ vơi mất nửa rồi! Tớ bơi một vòng là cạ bụng xuống đáy."
         },
         {
-          "speaker": "Cá Bống",
-          "text": "Hôm qua Heo Ủn múc nước nấu canh, múc mãi múc mãi… mà chẳng ai đếm xem múc bao nhiêu."
+          "speaker": "Cá Lia Thia",
+          "text": "Sáng nay Heo Ủn múc nước nấu chè, múc mãi múc mãi… mà chẳng ai đếm xem múc bao nhiêu."
         },
         {
-          "speaker": "Cá Bống",
+          "speaker": "Cá Lia Thia",
           "text": "Phải đổ lại cho đủ lít nước. Mà \"lít\" là gì nhỉ? Tớ chỉ biết bơi thôi!"
         }
       ],
       "choices": [
         {
           "text": "Để tớ đi tìm ca múc nước!",
-          "reply": "Cá Bống quẫy đuôi té nước lên mặt {name}: Ối, xin lỗi, tại tớ mừng quá!"
+          "reply": "Cá Lia Thia quẫy đuôi té nước lên mặt {name}: Ối, xin lỗi, tại tớ mừng quá!"
         },
         {
           "text": "Cậu cứ bơi chậm thôi nhé!",
-          "reply": "Cá Bống: Chậm thì tớ ngủ quên mất. Nhanh lên giùm tớ với!"
+          "reply": "Cá Lia Thia: Chậm thì tớ ngủ quên mất. Nhanh lên giùm tớ với!"
         }
       ]
     },
@@ -80,9 +80,9 @@
     {
       "id": "ca-mot-lit",
       "title": "Lít là gì hả Cô Thoa?",
-      "goTo": "Mang ca, chai, cốc về bể cá căng tin",
+      "goTo": "Mang ca, chai, cốc về bể cá ở quầy nước",
       "kind": "dialogue",
-      "target": "ca-bong",
+      "target": "toan2-cd3-b16-ca-lia-thia",
       "lines": [
         {
           "speaker": "Cô Thoa",
@@ -93,25 +93,25 @@
           "text": "Chiếc ca này đựng đầy được đúng 1 l nước. Cốc nhỏ thì đựng ít hơn, cái can to đựng nhiều hơn."
         },
         {
-          "speaker": "Cá Bống",
+          "speaker": "Cá Lia Thia",
           "text": "Vậy bể của tớ chắc phải đựng… một nghìn tỉ lít!"
         },
         {
           "speaker": "Cô Thoa",
-          "text": "Không đến mức đó đâu, Bống ạ. Ta đong từ từ."
+          "text": "Không đến mức đó đâu, Lia Thia ạ. Ta đong từ từ."
         }
       ],
       "choices": [
         {
           "text": "Bắt đầu đong thôi!",
-          "reply": "Cá Bống há miệng chờ sẵn: Rót vào đây, rót vào đây!"
+          "reply": "Cá Lia Thia há miệng chờ sẵn: Rót vào đây, rót vào đây!"
         }
       ]
     },
     {
       "id": "chai-va-ca-mot-lit",
       "title": "Chai đựng bao nhiêu nước?",
-      "target": "ca-bong",
+      "target": "toan2-cd3-b16-ca-lia-thia",
       "kind": "challenge",
       "mechanic": "quiz",
       "prompt": "Cô Thoa rót hết ca 1 l: nước đầy một chai, phần còn lại vừa đầy một chiếc cốc. Quan sát tranh rồi chọn câu đúng. Đổ hết nước từ ca 1 l được đầy một chai và một cốc (như hình vẽ).",
@@ -148,7 +148,7 @@
         "right": [
           "Phần nước dư chạy sang cốc, nên chai chưa tới 1 lít!",
           "Cô Thoa búng tay tách một cái: suy luận gọn như rót nước không rớt giọt.",
-          "Cá Bống ngoi lên: chai nhỏ hơn ca, tớ nhìn thấy rồi!"
+          "Cá Lia Thia ngoi lên: chai nhỏ hơn ca, tớ nhìn thấy rồi!"
         ],
         "wrong": [
           "Ca 1 l còn đổ thêm được một cốc nữa đấy.",
@@ -163,7 +163,7 @@
     {
       "id": "doc-nhan-lit",
       "title": "Nhãn lít trên bình, ca, xô, thùng",
-      "goTo": "Sang kệ đồ đựng nước, Gấu Sồi đang lau từng chiếc bình, ca, xô",
+      "goTo": "Sang kệ can, bình, Gấu Sồi đang lau từng chiếc bình, ca, xô",
       "target": "toan2-cd3-b16-gau-soi",
       "kind": "challenge",
       "mechanic": "fill-blank",
@@ -261,7 +261,7 @@
         "right": [
           "Bốn chiếc nhãn mới dán thẳng hàng như đội xếp hình!",
           "Cô Thoa chép vào sổ: chữ số rõ ràng, khỏi nhầm lẫn.",
-          "Cá Bống đếm theo: ba, hai, năm, hai mươi… lít lít lít!"
+          "Cá Lia Thia đếm theo: ba, hai, năm, hai mươi… lít lít lít!"
         ],
         "wrong": [
           "Hai mươi lít có hai chữ số đấy nhé.",
@@ -358,7 +358,7 @@
       "feedback": {
         "right": [
           "Mười chiếc cốc xếp hàng, không cốc nào bị bỏ sót!",
-          "Bình B hơn đúng hai cốc, Cá Bống tròn mắt thán phục.",
+          "Bình B hơn đúng hai cốc, Cá Lia Thia tròn mắt thán phục.",
           "Gấu Sồi gật gù: đếm cốc kĩ y như thủ kho lâu năm."
         ],
         "wrong": [
@@ -512,7 +512,7 @@
         "right": [
           "Bảng đen đầy kết quả, phấn còn chưa kịp nguội!",
           "Sáu phép tính lít đều trúng, Cô Thoa vỗ tay đôm đốp.",
-          "Cá Bống hét vọng lên: tớ nghe thấy tiếng \"đúng\" rồi!"
+          "Cá Lia Thia hét vọng lên: tớ nghe thấy tiếng \"đúng\" rồi!"
         ],
         "wrong": [
           "Coi lại phép cộng qua 10 ở dòng 7 l + 6 l nhé.",
@@ -542,7 +542,7 @@
           "text": "Giờ mới đến phần đổ bể. Luật của cô: không được đổ ào ào, đổ ào là tràn ra sàn, trượt chân như chơi."
         },
         {
-          "speaker": "Cá Bống",
+          "speaker": "Cá Lia Thia",
           "text": "Nhưng đổ chậm thì tớ khô mất! {name} chọn cách nào đi!"
         }
       ],
@@ -553,15 +553,15 @@
         },
         {
           "text": "Đổ từng can, vừa đổ vừa đếm",
-          "reply": "Cá Bống: Đếm to lên nhé, tớ đếm theo bằng bong bóng."
+          "reply": "Cá Lia Thia: Đếm to lên nhé, tớ đếm theo bằng bong bóng."
         }
       ]
     },
     {
       "id": "gop-can-xo-ca",
       "title": "Gộp can, xô và ca",
-      "goTo": "Xách can, xô về bể cá căng tin, Cá Bống đang há miệng chờ",
-      "target": "ca-bong",
+      "goTo": "Xách can, xô về bể cá ở quầy nước, Cá Lia Thia đang há miệng chờ",
+      "target": "toan2-cd3-b16-ca-lia-thia",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "prompt": "Cô Thoa xếp các đồ đựng thành từng nhóm, mỗi nhóm đổ chung vào một thùng. Số ?",
@@ -640,7 +640,7 @@
         "right": [
           "Ba thùng đầy ắp, Cô Thoa không để rơi giọt nào!",
           "Gộp can, gộp xô, gộp ca đều trúng phóc.",
-          "Cá Bống nhìn mực nước dâng lên mà mừng rơn."
+          "Cá Lia Thia nhìn mực nước dâng lên mà mừng rơn."
         ],
         "wrong": [
           "Gộp lại thì cộng tất cả số lít trong nhóm.",
@@ -659,7 +659,7 @@
     {
       "id": "can-con-lai-bao-nhieu",
       "title": "Can còn lại bao nhiêu lít?",
-      "target": "ca-bong",
+      "target": "toan2-cd3-b16-ca-lia-thia",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "prompt": "Cô Thoa rót từ can sang ca, sang xô, để biết trong can còn bao nhiêu. Số ?",
@@ -816,7 +816,7 @@
       },
       "feedback": {
         "right": [
-          "Bảng số lít đầy đủ, Cáo Bạc treo ngay lên tường căng tin!",
+          "Bảng số lít đầy đủ, Cáo Bạc treo ngay lên cột quầy nước!",
           "Ấm, xô, can đều đúng số lít, giỏi hết chỗ chê.",
           "Cộng ba ca liền một mạch mà không vấp chút nào."
         ],
@@ -892,7 +892,7 @@
         "right": [
           "Can 7 l giành ngôi vô địch đựng nước!",
           "Bình bé xíu đứng cuối, cháu phân loại chuẩn quá.",
-          "Cáo Bạc đặt can lên bục cao nhất cho cả căng tin xem."
+          "Cáo Bạc đặt can lên bục cao nhất cho khách đi chợ cùng xem."
         ],
         "wrong": [
           "So lại bốn số lít trong bảng xem số nào lớn nhất.",
@@ -912,10 +912,10 @@
     {
       "id": "can-nuoc-mam-cua-me",
       "title": "Can nước mắm của mẹ",
-      "goTo": "Về bể cá căng tin, Cá Bống ngoi lên đố câu cuối cùng",
-      "target": "ca-bong",
+      "goTo": "Về bể cá ở quầy nước, Cá Lia Thia ngoi lên đố câu cuối cùng",
+      "target": "toan2-cd3-b16-ca-lia-thia",
       "kind": "riddle",
-      "question": "Câu đố cuối của Cá Bống, giải xong là bể đầy! Trong can có 15 l nước mắm. Mẹ đã rót 7 l nước mắm vào các chai. Hỏi trong can còn lại bao nhiêu lít nước mắm?",
+      "question": "Câu đố cuối của Cá Lia Thia, giải xong là bể đầy! Trong can có 15 l nước mắm. Mẹ đã rót 7 l nước mắm vào các chai. Hỏi trong can còn lại bao nhiêu lít nước mắm?",
       "skill": "bai-toan-loi-van",
       "curriculumRef": [
         "toan2-t1-b16-luyen-tap-5"
@@ -933,9 +933,9 @@
       },
       "feedback": {
         "right": [
-          "Ào ào! Bể đầy nước, Cá Bống nhào lộn ba vòng liền!",
-          "Đúng 8 lít, cháu là thợ đong số một của căng tin.",
-          "Cá Bống thổi một chuỗi bong bóng hình trái tim."
+          "Ào ào! Bể đầy nước, Cá Lia Thia nhào lộn ba vòng liền!",
+          "Đúng 8 lít, cháu là thợ đong số một của dãy hàng cân đong.",
+          "Cá Lia Thia thổi một chuỗi bong bóng hình trái tim."
         ],
         "wrong": [
           "Mẹ rót bớt đi, vậy số lít trong can giảm xuống.",
@@ -949,17 +949,17 @@
     },
     {
       "id": "vay-bac-ca-bong",
-      "title": "Chiếc vảy bạc của Cá Bống",
+      "title": "Chiếc vảy bạc của Cá Lia Thia",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Bể nước trong veo, đầy tới miệng. Cá Bống tặng {name} một chiếc vảy bạc lấp lánh và hứa từ nay sẽ đếm từng lít Heo Ủn múc đi."
+      "text": "Bể nước trong veo, đầy tới miệng. Cá Lia Thia tặng {name} một chiếc vảy bạc lấp lánh và hứa từ nay sẽ đếm từng lít Heo Ủn múc đi."
     },
     {
       "id": "mui-che-thom-phuc",
       "title": "Mùi chè thơm phức",
       "kind": "next",
       "trigger": "auto",
-      "text": "Từ bếp lớn bay ra mùi đậu xanh thơm lừng. Heo Ủn đội mũ đầu bếp gọi ầm lên: nồi chè cho cả trường cần đúng ki-lô-gam đường, đúng lít nước, ai phụ tớ với!"
+      "text": "Từ bếp chè giữa chợ bay ra mùi đậu xanh thơm lừng. Heo Ủn đội mũ đầu bếp gọi ầm lên: nồi chè cho cả phiên chợ cần đúng ki-lô-gam đường, đúng lít nước, ai phụ tớ với!"
     }
   ],
   "reward": {

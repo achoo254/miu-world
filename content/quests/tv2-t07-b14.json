@@ -1,20 +1,20 @@
 {
   "id": "tv2-t07-b14",
-  "region": "khu-rung-bi-mat",
-  "chapter": 8,
+  "region": "truong-hoc",
+  "chapter": 4,
   "title": "Cáo Cọ hết sạch màu vẽ",
   "status": "active",
   "lesson": "tv2-t1-b14",
-  "summary": "Sắp tới hội vẽ của trường rừng mà hộp màu của Cáo Cọ trống trơn. {name} hái quả, hoa, lá làm màu, đọc bài thơ Em học vẽ bên giá vẽ trên đồi cỏ, săn vần cùng Vẹt Xanh trên mỏm đá, giải đố chính tả trong lều vẽ và giúp Cáo Cọ chọn bức tranh dự hội.",
+  "summary": "Sắp tới hội vẽ của trường mà hộp màu của Cáo Cọ trống trơn. {name} hái quả, hoa, lá dọc bờ rào làm màu, đọc bài thơ Em học vẽ bên giá vẽ trong phòng mĩ thuật, săn vần cùng thầy hiệu trưởng Sư Tử Vàng ở bục giám khảo, giải đố chính tả trong lều vẽ và giúp Cáo Cọ chọn bức tranh dự hội.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Cáo Cọ (hoạ sĩ nhí, hay nhúng nhầm đuôi vào chậu màu), Vẹt Xanh lắm lời, sưu tầm từ ngữ lạ",
-    "where": "Đồi cỏ nhìn ra biển: gốc thông của Cáo Cọ, giá vẽ trên đồi, mỏm đá của Vẹt Xanh và chiếc lều vẽ",
+    "who": "Cáo Cọ (hoạ sĩ nhí, hay nhúng nhầm đuôi vào chậu màu), thầy hiệu trưởng Sư Tử Vàng làm giám khảo hội vẽ, giọng to như sấm mà mê thơ có vần",
+    "where": "Góc vẽ và sân chơi của trường: góc vẽ ngoài hiên phòng mĩ thuật, giá vẽ trong phòng, bờ rào cạnh sân chơi, bục giám khảo giữa sân và chiếc lều vẽ",
     "goal": "Tìm màu vẽ và giúp Cáo Cọ hoàn thành bức tranh dự hội vẽ",
     "play": "Hái màu, đọc thơ, chọn đáp án, chọn nhiều dòng thơ, ghép cặp vần, phân loại từ, điền chữ, xếp câu, điền dấu câu, nói và kể, phiếu viết",
     "learn": "Tiếng Việt 2 Bài 14: đọc bài thơ Em học vẽ, tiếng cùng vần, từ chỉ sự vật, câu nêu đặc điểm, chính tả ng/ngh, r/d/gi, an/ang, câu nêu công dụng, dấu chấm, dấu chấm hỏi",
     "reward": "90 XP, 15 xu, Đọc hiểu +2, Chính tả +2, Từ ngữ +1, Câu +1, Dấu câu +1",
-    "next": "Bài 15 \"Cuốn sách của em\""
+    "next": "Bài 15 \"Cuốn sách của em\" ở Thư viện"
   },
   "phases": {
     "hook": "huou-cao-het-mau",
@@ -35,17 +35,17 @@
     }
   },
   "places": {
-    "tv2-t07-b14-cao-co": "gốc thông",
-    "tim-mau-ve": "sườn đồi",
-    "tv2-t07-gia-ve": "đồi cỏ ven biển",
-    "vet-xanh": "mỏm đá",
+    "tv2-t07-b14-cao-co": "góc vẽ",
+    "tim-mau-ve": "bờ rào cạnh sân chơi",
+    "tv2-t07-gia-ve": "phòng mĩ thuật",
+    "su-tu-vang": "bục giám khảo",
     "tv2-t07-leu-ve": "lều vẽ"
   },
   "steps": [
     {
       "id": "huou-cao-het-mau",
-      "title": "Cáo Cọ vắt đuôi bên gốc thông",
-      "goTo": "Leo lên đồi cỏ, Cáo Cọ đang lau cái đuôi lem màu dưới gốc thông",
+      "title": "Cáo Cọ vắt đuôi ở góc vẽ",
+      "goTo": "Ra góc vẽ ngoài hiên phòng mĩ thuật, Cáo Cọ đang lau cái đuôi lem màu",
       "kind": "dialogue",
       "target": "tv2-t07-b14-cao-co",
       "lines": [
@@ -55,15 +55,15 @@
         },
         {
           "speaker": "Cáo Cọ",
-          "text": "Tớ đang vẽ tranh dự hội vẽ của trường rừng. Khổ nỗi hộp màu trống trơn, chỉ còn mỗi màu… không màu!"
+          "text": "Tớ đang vẽ tranh dự hội vẽ của trường. Khổ nỗi hộp màu trống trơn, chỉ còn mỗi màu… không màu!"
         },
         {
-          "speaker": "Vẹt Xanh",
-          "text": "Thiếu màu! Thiếu màu! Tớ vừa nhặt được từ mới \"lung linh\"! Mà từ thì không tô tranh được. Không được!"
+          "speaker": "Sư Tử Vàng",
+          "text": "Thiếu màu thì thầy chịu, thầy chỉ có mỗi cái bờm vàng thôi! Nhưng hội vẽ chiều nay phải có tranh của Cáo Cọ đấy nhé!"
         },
         {
           "speaker": "Cáo Cọ",
-          "text": "Dưới sườn đồi có quả chín, có hoa, có lá non. {name} nhặt giúp tớ về làm màu nhé?"
+          "text": "Dọc bờ rào cạnh sân chơi có quả chín, có hoa, có lá non. {name} hái giúp tớ về làm màu nhé?"
         }
       ],
       "choices": [
@@ -72,15 +72,15 @@
           "reply": "Cảm ơn nhé! Qua vũng nước thì nhìn kĩ, đừng như tớ nhúng nhầm cả đuôi."
         },
         {
-          "text": "Vẹt Xanh bay theo chỉ đường nhé!",
-          "reply": "Chỉ đường! Chỉ đường! Rẽ trái… à không, rẽ phải! Rẽ phải!"
+          "text": "Thầy chỉ đường cho con với ạ!",
+          "reply": "Thầy Sư Tử Vàng chỉ tay về bờ rào: đi thẳng qua cầu trượt rồi rẽ phải, nhớ đừng giẫm vào luống hoa nhé!"
         }
       ]
     },
     {
       "id": "tim-mau-ve",
-      "title": "Ba màu dưới sườn đồi",
-      "goTo": "Xuống sườn đồi hái quả, hoa và lá để làm màu",
+      "title": "Ba màu dọc bờ rào",
+      "goTo": "Ra bờ rào cạnh sân chơi hái quả, hoa và lá để làm màu",
       "kind": "search",
       "targets": [
         "tv2-t07-qua-mam-xoi",
@@ -91,7 +91,7 @@
     {
       "id": "gioi-thieu-buc-tranh",
       "title": "Bức tranh em thích",
-      "goTo": "Mang màu về gốc thông cho Cáo Cọ",
+      "goTo": "Mang màu về góc vẽ cho Cáo Cọ",
       "kind": "speak",
       "target": "tv2-t07-b14-cao-co",
       "prompt": "Cáo Cọ giã quả mâm xôi ra màu đỏ tươi, vừa giã vừa hỏi: ở nhà {name} có bức tranh nào đẹp không?\nGiới thiệu với bạn một bức tranh mà em thích.",
@@ -107,7 +107,7 @@
     {
       "id": "doc-em-hoc-ve",
       "title": "Bài thơ sau lưng giá vẽ",
-      "goTo": "Ra đồi cỏ ven biển, sau lưng giá vẽ có chép một bài thơ",
+      "goTo": "Vào phòng mĩ thuật, sau lưng giá vẽ có chép một bài thơ",
       "kind": "read",
       "target": "tv2-t07-gia-ve",
       "textRef": "em-hoc-ve",
@@ -149,7 +149,7 @@
         "right": [
           "Đúng! Cáo Cọ ngẩng lên ngắm trời, đuôi vẫy tít làm văng mấy giọt màu.",
           "Chuẩn rồi, trời đêm có sao, có trăng, có cả cánh diều.",
-          "Vẹt Xanh nhắc lại: bầu trời sao! Bầu trời sao!"
+          "Thầy Sư Tử Vàng ngân nga: bầu trời sao lung linh, hay quá!"
         ],
         "wrong": [
           "Chưa đúng. Đọc lại khổ hai, khổ có ông trăng nhé.",
@@ -161,11 +161,11 @@
     {
       "id": "tranh-canh-bien",
       "title": "Biển trong tranh đẹp ở đâu?",
-      "goTo": "Về gốc thông, Cáo Cọ nheo mắt nhìn ra biển",
+      "goTo": "Về góc vẽ, Cáo Cọ nheo mắt ngắm bức ảnh biển dán trên tường",
       "kind": "challenge",
       "mechanic": "quiz",
       "target": "tv2-t07-b14-cao-co",
-      "prompt": "Cáo Cọ nheo mắt nhìn ra biển, thấy rõ từng gợn sóng xa tít tắp.\nBức tranh cảnh biển của bạn nhỏ có gì đẹp?",
+      "prompt": "Cáo Cọ nheo mắt ngắm bức ảnh biển dán trên tường, như thấy rõ từng gợn sóng xa tít tắp.\nBức tranh cảnh biển của bạn nhỏ có gì đẹp?",
       "choices": [
         {
           "id": "song-to",
@@ -202,7 +202,7 @@
         "right": [
           "Đẹp quá! Cáo Cọ chấm ngay một chấm đỏ làm cánh buồm.",
           "Đúng rồi, thuyền trắng buồm đỏ đang rẽ sóng ra khơi.",
-          "Vẹt Xanh khoe từ mới: \"đỏ thắm\"! Đỏ thắm! Đỏ thắm!"
+          "Thầy Sư Tử Vàng đi ngang, khen vang cả hiên: đỏ thắm, đẹp lắm!"
         ],
         "wrong": [
           "Bài thơ nói biển trong lành cơ. Đọc lại khổ ba nhé.",
@@ -214,7 +214,7 @@
     {
       "id": "kho-tho-san-truong",
       "title": "Khổ thơ của tranh sân trường",
-      "goTo": "Chạy ra đồi cỏ ven biển, giá vẽ đã kẹp tờ giấy mới",
+      "goTo": "Chạy vào phòng mĩ thuật, giá vẽ đã kẹp tờ giấy mới",
       "kind": "challenge",
       "mechanic": "multi-select",
       "target": "tv2-t07-gia-ve",
@@ -292,11 +292,11 @@
     {
       "id": "tieng-cung-van",
       "title": "Bài thơ kêu leng keng",
-      "goTo": "Leo lên mỏm đá, Vẹt Xanh đang nhún nhảy hát vần",
+      "goTo": "Ra bục giám khảo giữa sân, thầy Sư Tử Vàng đang gõ nhịp đọc vần",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "target": "vet-xanh",
-      "prompt": "Vẹt Xanh nhún nhảy trên cành: tớ nghe bài thơ kêu leng keng, vì cuối dòng có tiếng cùng vần! Cùng vần! Cùng vần!\nTìm tiếng cùng vần ở cuối các dòng thơ.\nChọn cặp tiếng cùng vần cho mỗi chỗ trống.",
+      "target": "su-tu-vang",
+      "prompt": "Thầy Sư Tử Vàng gõ nhịp lên bục: thầy nghe bài thơ kêu leng keng, vì cuối dòng có những tiếng cùng vần đấy!\nTìm tiếng cùng vần ở cuối các dòng thơ.\nChọn cặp tiếng cùng vần cho mỗi chỗ trống.",
       "template": "Cuối khổ một nối sang khổ hai: {{b1}}\nGiữa khổ hai: {{b2}}\nCuối khổ hai nối sang khổ ba: {{b3}}\nCuối khổ ba nối sang khổ bốn: {{b4}}\nGiữa khổ bốn: {{b5}}",
       "blanks": [
         {
@@ -391,7 +391,7 @@
       },
       "feedback": {
         "right": [
-          "Leng keng! Vẹt Xanh lắc lư theo vần, lộn một vòng trên cành.",
+          "Leng keng! Thầy Sư Tử Vàng lắc lư bờm vàng theo vần.",
           "Đúng cả năm cặp, bài thơ kêu leng keng thật rồi!",
           "Tai {name} thính ghê, nghe ra vần ngay từ dòng đầu."
         ],
@@ -404,10 +404,10 @@
     },
     {
       "id": "doc-thuoc-hai-kho",
-      "title": "Đọc thuộc cho Vẹt Xanh nghe",
+      "title": "Đọc thuộc cho thầy hiệu trưởng nghe",
       "kind": "speak",
-      "target": "vet-xanh",
-      "prompt": "Vẹt Xanh thuộc lòng mọi thứ, nhưng dòng nào cũng đọc hai lần. Đến lượt {name}, mỗi dòng một lần thôi nhé!\nHọc thuộc lòng 2 khổ thơ em thích.",
+      "target": "su-tu-vang",
+      "prompt": "Thầy Sư Tử Vàng thuộc bài thơ này, nhưng thầy đọc to như sấm, chim sẻ bay hết cả. Đến lượt {name}, đọc vừa đủ nghe thôi nhé!\nHọc thuộc lòng 2 khổ thơ em thích.",
       "hints": [
         "Hôm nay trong lớp học",
         "Vẽ ông trăng trên cao",
@@ -421,7 +421,7 @@
     {
       "id": "tu-chi-su-vat",
       "title": "Vẽ được gì vào tranh?",
-      "goTo": "Về đồi cỏ ven biển, giá vẽ còn trống nhiều chỗ",
+      "goTo": "Vào lại phòng mĩ thuật, giá vẽ còn trống nhiều chỗ",
       "kind": "challenge",
       "mechanic": "classify",
       "target": "tv2-t07-gia-ve",
@@ -516,7 +516,7 @@
         "right": [
           "Cáo Cọ vẽ ngay sáu thứ, đuôi dựng đứng vì tự hào.",
           "Hai giỏ gọn gàng như hộp màu mới mua!",
-          "Đúng hết! Vẹt Xanh đòi đổi tên thành Vẹt Sự Vật."
+          "Đúng hết! Cáo Cọ vẽ thêm cả một ông mặt trời cười toe."
         ],
         "wrong": [
           "\"Vi vu\" là tiếng gió thổi, vẽ lên giấy được không nhỉ?",
@@ -527,11 +527,11 @@
     },
     {
       "id": "so-tu-moi-cua-vet",
-      "title": "Cuốn sổ từ mới của Vẹt Xanh",
-      "goTo": "Lên mỏm đá, Vẹt Xanh khoe cuốn sổ từ mới",
+      "title": "Ba từ thầy viết lên bảng",
+      "goTo": "Quay ra bục giám khảo, thầy Sư Tử Vàng viết ba từ lên tấm bảng nhỏ",
       "kind": "speak",
-      "target": "vet-xanh",
-      "prompt": "Vẹt Xanh mở cuốn sổ sưu tầm, khoe ba từ vừa nhặt trong bài thơ, từ nào cũng đọc hai lần cho oai. Rồi bạn ấy đố {name} đặt câu.\nĐặt câu nêu đặc điểm với 1 trong 3 từ lung linh, vi vu, râm ran.\nM: Bầu trời sao lung linh.",
+      "target": "su-tu-vang",
+      "prompt": "Thầy Sư Tử Vàng viết lên tấm bảng nhỏ ba từ thầy thích nhất trong bài thơ, rồi đố {name} đặt câu.\nĐặt câu nêu đặc điểm với 1 trong 3 từ lung linh, vi vu, râm ran.\nM: Bầu trời sao lung linh.",
       "hints": [
         "Cái gì kêu vi vu trên trời cao?",
         "Mùa hè, con gì kêu râm ran trên cành phượng?",
@@ -544,7 +544,7 @@
     {
       "id": "ng-hay-ngh",
       "title": "Hai câu tục ngữ trên vách lều",
-      "goTo": "Chui vào lều vẽ của Cáo Cọ, cửa lều buông rèm lá",
+      "goTo": "Chui vào lều vẽ dựng giữa sân chơi, cửa lều buông rèm vải",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "target": "tv2-t07-leu-ve",
@@ -616,7 +616,7 @@
     {
       "id": "hinh-ve-thay-chu",
       "title": "Sáu hình đố chữ của Cáo Cọ",
-      "goTo": "Ra gốc thông, Cáo Cọ vừa vẽ xong sáu hình đố chữ",
+      "goTo": "Ra góc vẽ, Cáo Cọ vừa vẽ xong sáu hình đố chữ",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "target": "tv2-t07-b14-cao-co",
@@ -748,7 +748,7 @@
         "right": [
           "Sáu hình giải sạch, Cáo Cọ phe phẩy đuôi khen lấy khen để.",
           "Đúng cả r, gi, d lẫn an, ang, tai {name} tinh thật!",
-          "Vẹt Xanh ghi ngay vào sổ: rùa, gió, dưa! Ghi rồi! Ghi rồi!"
+          "Thầy Sư Tử Vàng ghé xem, đọc vang: rùa, gió, dưa, đúng hết!"
         ],
         "wrong": [
           "Có hình bị viết nhầm âm đầu rồi. Đọc to từng từ nhé.",
@@ -785,11 +785,11 @@
     {
       "id": "cau-cong-dung",
       "title": "Câu giới thiệu cục tẩy",
-      "goTo": "Ra mỏm đá, Vẹt Xanh ngậm mấy thẻ chữ bay vòng vòng",
+      "goTo": "Ra bục giám khảo, thầy Sư Tử Vàng đang xếp mấy thẻ chữ",
       "kind": "challenge",
       "mechanic": "sort",
-      "target": "vet-xanh",
-      "prompt": "Vẹt Xanh tuyên bố: đồ dùng nào cũng phải có câu giới thiệu! Giới thiệu! Rồi bạn ấy ngậm mấy thẻ chữ bay vòng vòng, làm rơi lộn xộn.\nĐặt một câu nêu công dụng của một đồ dùng học tập.\nM:\nSố thứ tự | Từ | Câu\n1 | bút màu | Bút màu dùng để vẽ tranh.\n2 | ... | ...\nXếp lại các thẻ thành câu nêu công dụng của cục tẩy.",
+      "target": "su-tu-vang",
+      "prompt": "Thầy Sư Tử Vàng tuyên bố: tranh dự hội nào cũng phải kèm một câu giới thiệu đồ dùng! Rồi thầy hắt xì một cái thật to, mấy thẻ chữ bay tung lộn xộn.\nĐặt một câu nêu công dụng của một đồ dùng học tập.\nM:\nSố thứ tự | Từ | Câu\n1 | bút màu | Bút màu dùng để vẽ tranh.\n2 | ... | ...\nXếp lại các thẻ thành câu nêu công dụng của cục tẩy.",
       "items": [
         {
           "id": "xoa",
@@ -834,7 +834,7 @@
       "feedback": {
         "right": [
           "Câu giới thiệu chuẩn rồi! Cục tẩy chắc đang sướng rơn.",
-          "Vẹt Xanh đọc lại hai lần: dùng để xoá! Dùng để xoá!",
+          "Thầy Sư Tử Vàng gật gù: dùng để xoá, câu gọn mà rõ!",
           "Xếp gọn ghẽ như hàng bút trong ống."
         ],
         "wrong": [
@@ -964,7 +964,7 @@
     {
       "id": "chon-tranh-du-hoi",
       "title": "Vẽ bức nào dự hội?",
-      "goTo": "Trở lại gốc thông, Cáo Cọ đã pha đủ ba màu",
+      "goTo": "Trở lại góc vẽ, Cáo Cọ đã pha đủ ba màu",
       "kind": "dialogue",
       "target": "tv2-t07-b14-cao-co",
       "lines": [
@@ -973,12 +973,12 @@
           "text": "Màu đủ rồi: đỏ mâm xôi, vàng hoa cúc, xanh lá non. Nhưng trước hội vẽ, tớ chỉ kịp vẽ một bức thôi."
         },
         {
-          "speaker": "Vẹt Xanh",
-          "text": "Vẽ tớ đi! Vẽ tớ đi! Lông tớ xanh sẵn rồi, đỡ tốn màu!"
+          "speaker": "Sư Tử Vàng",
+          "text": "Vẽ thầy đi! Bờm thầy vàng sẵn rồi, đỡ tốn màu!"
         },
         {
           "speaker": "Cáo Cọ",
-          "text": "{name} chọn giúp tớ nhé: bức nào cả trường rừng sẽ thích nhất?"
+          "text": "{name} chọn giúp tớ nhé: bức nào cả trường sẽ thích nhất?"
         }
       ],
       "choices": [
@@ -991,8 +991,8 @@
           "reply": "Ý hay! Tớ sẽ vẽ thêm một chú ve đang kêu trên cành."
         },
         {
-          "text": "Vẽ Vẹt Xanh đang đọc thơ",
-          "reply": "Vẹt Xanh sướng quá, hét hai lần: đọc thơ! Đọc thơ!"
+          "text": "Vẽ thầy hiệu trưởng đang đọc thơ",
+          "reply": "Thầy Sư Tử Vàng cười khà khà, vuốt bờm thật mượt để ngồi làm mẫu."
         }
       ]
     },
@@ -1030,14 +1030,14 @@
       "title": "Bức tranh nhỏ tặng bạn",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Cáo Cọ tặng {name} một bức tranh nhỏ vẽ biển có thuyền buồm đỏ, góc tranh còn dính một chiếc lông xanh của Vẹt Xanh. Cạnh đó là một vệt cam quệt bằng chóp đuôi, chữ kí riêng của hoạ sĩ Cáo Cọ."
+      "text": "Cáo Cọ tặng {name} một bức tranh nhỏ vẽ biển có thuyền buồm đỏ, góc tranh có lời phê “Đẹp lắm!” của thầy Sư Tử Vàng. Cạnh đó là một vệt cam quệt bằng chóp đuôi, chữ kí riêng của hoạ sĩ Cáo Cọ."
     },
     {
       "id": "mo-bai-15",
-      "title": "Tiếng rầm trong hốc cây",
+      "title": "Tiếng rầm ở Thư viện",
       "kind": "next",
       "trigger": "auto",
-      "text": "Từ kệ sách trong hốc cây vọng ra một tiếng \"rầm\" thật to, rồi giọng Gấu Trúc Tròn chậm rãi: từ… từ… thôi… sách… đổ… hết… rồi…"
+      "text": "Ở Thư viện vừa vang lên một tiếng \"rầm\" thật to: cả một kệ sách đổ nhào, sách văng tứ tung, trang mục lục bay đâu mất. Những cuốn sách đang chờ {name} tới xếp lại đấy!"
     }
   ],
   "reward": {

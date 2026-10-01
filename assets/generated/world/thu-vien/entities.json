@@ -1,0 +1,2258 @@
+{
+  "version": 2,
+  "id": "thu-vien",
+  "seed": 3826298473,
+  "size": [
+    256,
+    48,
+    256
+  ],
+  "waterLevel": 10,
+  "spawn": {
+    "position": [
+      128.5,
+      13,
+      18.5
+    ],
+    "yaw": 0
+  },
+  "interactables": [
+    {
+      "id": "gau-truc",
+      "kind": "npc",
+      "name": "Gấu Trúc Tròn",
+      "label": "Nói chuyện",
+      "position": [
+        198.5,
+        13,
+        133.5
+      ],
+      "yaw": 190,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-panda.glb",
+      "scale": 0.7993,
+      "animation": "idle",
+      "chapters": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "toan2-cd6-b29-gau-truc-kho",
+      "kind": "npc",
+      "name": "Gấu Trúc Khò",
+      "label": "Nói chuyện",
+      "position": [
+        223.5,
+        13,
+        190.5
+      ],
+      "yaw": 201,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-panda.glb",
+      "scale": 0.7993,
+      "animation": "idle",
+      "chapter": 3
+    },
+    {
+      "id": "tv2-t08-b15-gau-me",
+      "kind": "npc",
+      "name": "Gấu Me",
+      "label": "Nói chuyện",
+      "position": [
+        196.5,
+        13,
+        186.5
+      ],
+      "yaw": 284,
+      "radius": 3,
+      "model": "generated/characters/npc-bear-mat-ong-dress-blue.glb",
+      "scale": 0.6667,
+      "chapter": 1
+    },
+    {
+      "id": "toan2-cd6-b29-cao-tuyet-bip",
+      "kind": "npc",
+      "name": "Cáo Tuyết Bíp",
+      "label": "Nói chuyện",
+      "position": [
+        219.5,
+        13,
+        146.5
+      ],
+      "yaw": 45,
+      "radius": 3,
+      "model": "generated/characters/npc-fox-tuyet-overalls.glb",
+      "scale": 0.6296,
+      "chapter": 3,
+      "quest": "toan2-cd6-b29"
+    },
+    {
+      "id": "toan2-cd6-b29-gau-com-nam",
+      "kind": "npc",
+      "name": "Gấu Cơm Nắm",
+      "label": "Nói chuyện",
+      "position": [
+        198.5,
+        13,
+        151.5
+      ],
+      "yaw": 18,
+      "radius": 3,
+      "model": "generated/characters/npc-bear-mat-ong-dress-blue.glb",
+      "scale": 0.6667,
+      "chapter": 3,
+      "quest": "toan2-cd6-b29"
+    },
+    {
+      "id": "toan2-cd6-b29-khi-du-day",
+      "kind": "npc",
+      "name": "Khỉ Đu Dây",
+      "label": "Nói chuyện",
+      "position": [
+        221.5,
+        13,
+        177.5
+      ],
+      "yaw": 90,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-monkey.glb",
+      "scale": 0.6832,
+      "animation": "idle",
+      "chapter": 3,
+      "quest": "toan2-cd6-b29"
+    },
+    {
+      "id": "toan2-cd6-b29-meo-xam-may",
+      "kind": "npc",
+      "name": "Mèo Xám Mây",
+      "label": "Nói chuyện",
+      "position": [
+        203.5,
+        13,
+        127.5
+      ],
+      "yaw": -90,
+      "radius": 3,
+      "model": "generated/characters/npc-cat-xam-dress-mint.glb",
+      "scale": 0.6415,
+      "chapter": 3,
+      "quest": "toan2-cd6-b29"
+    },
+    {
+      "id": "toan2-cd6-b29-ong-khue",
+      "kind": "npc",
+      "name": "Ông Khuê",
+      "label": "Nói chuyện",
+      "position": [
+        223.5,
+        13,
+        124.5
+      ],
+      "yaw": 63,
+      "radius": 3,
+      "model": "packs/kenney-blocky-characters/2.0/character-a.glb",
+      "scale": 0.7037,
+      "animation": "idle",
+      "chapter": 3,
+      "quest": "toan2-cd6-b29"
+    },
+    {
+      "id": "toan2-cd6-chia-khoa-day-cot",
+      "kind": "object",
+      "name": "Chìa khoá dây cót",
+      "label": "Nhặt lên",
+      "position": [
+        187.5,
+        13,
+        137.5
+      ],
+      "yaw": -45,
+      "radius": 2,
+      "model": "generated/props/old-key.glb",
+      "scale": 0.0313,
+      "chapter": 3,
+      "quest": "toan2-cd6-b29"
+    },
+    {
+      "id": "toan2-cd6-kim-gio-thap",
+      "kind": "object",
+      "name": "Kim giờ",
+      "label": "Nhặt lên",
+      "position": [
+        183.5,
+        13,
+        137.5
+      ],
+      "yaw": 72,
+      "radius": 2,
+      "model": "generated/props/alarm-clock.glb",
+      "scale": 0.0375,
+      "chapter": 3,
+      "quest": "toan2-cd6-b29"
+    },
+    {
+      "id": "toan2-cd6-kim-phut-thap",
+      "kind": "object",
+      "name": "Kim phút",
+      "label": "Nhặt lên",
+      "position": [
+        185.5,
+        13,
+        139.5
+      ],
+      "yaw": 135,
+      "radius": 2,
+      "model": "generated/props/watch.glb",
+      "scale": 0.0313,
+      "chapter": 3,
+      "quest": "toan2-cd6-b29"
+    },
+    {
+      "id": "toan2-cd6-b30-be-luc-lac",
+      "kind": "npc",
+      "name": "Bê Lúc Lắc",
+      "label": "Nói chuyện",
+      "position": [
+        228.5,
+        13,
+        159.5
+      ],
+      "yaw": 135,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-cow.glb",
+      "scale": 0.5582,
+      "animation": "idle",
+      "tint": "#a8743f",
+      "chapter": 3,
+      "quest": "toan2-cd6-b30"
+    },
+    {
+      "id": "toan2-cd6-b30-gau-nau-com",
+      "kind": "npc",
+      "name": "Gấu Nâu Cốm",
+      "label": "Nói chuyện",
+      "position": [
+        200.5,
+        13,
+        176.5
+      ],
+      "yaw": 117,
+      "radius": 3,
+      "model": "generated/characters/npc-bear-nau-overalls-green.glb",
+      "scale": 0.6667,
+      "chapter": 3,
+      "quest": "toan2-cd6-b30"
+    },
+    {
+      "id": "toan2-cd6-b30-tho-kim-chi",
+      "kind": "npc",
+      "name": "Thỏ Kim Chỉ",
+      "label": "Nói chuyện",
+      "position": [
+        207.5,
+        13,
+        155.5
+      ],
+      "yaw": -45,
+      "radius": 3,
+      "model": "generated/characters/npc-rabbit-xam-overalls-red.glb",
+      "scale": 0.5763,
+      "chapter": 3,
+      "quest": "toan2-cd6-b30"
+    },
+    {
+      "id": "toan2-cd6-the-ngay-sinh",
+      "kind": "object",
+      "name": "Thẻ ngày sinh",
+      "label": "Nhặt lên",
+      "position": [
+        226.5,
+        13,
+        188.5
+      ],
+      "yaw": 135,
+      "radius": 2,
+      "model": "generated/props/birthday-cake.glb",
+      "scale": 0.0375,
+      "chapter": 3,
+      "quest": "toan2-cd6-b30"
+    },
+    {
+      "id": "toan2-cd6-to-lich-thang-12",
+      "kind": "object",
+      "name": "Tờ lịch tháng 12",
+      "label": "Nhặt lên",
+      "position": [
+        227.5,
+        13,
+        183.5
+      ],
+      "yaw": 18,
+      "radius": 2,
+      "model": "generated/props/calendar.glb",
+      "scale": 0.0437,
+      "chapter": 3,
+      "quest": "toan2-cd6-b30"
+    },
+    {
+      "id": "toan2-cd6-to-lich-thang-2",
+      "kind": "object",
+      "name": "Tờ lịch tháng 2",
+      "label": "Nhặt lên",
+      "position": [
+        228.5,
+        13,
+        186.5
+      ],
+      "yaw": 221,
+      "radius": 2,
+      "model": "generated/props/spiral-calendar.glb",
+      "scale": 0.0437,
+      "chapter": 3,
+      "quest": "toan2-cd6-b30"
+    },
+    {
+      "id": "voi-bao",
+      "kind": "npc",
+      "name": "Voi Bảo",
+      "label": "Nói chuyện",
+      "position": [
+        228.5,
+        13,
+        141.5
+      ],
+      "yaw": -90,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-elephant.glb",
+      "scale": 1.1179,
+      "animation": "idle",
+      "chapter": 3,
+      "quest": "toan2-cd6-b30"
+    },
+    {
+      "id": "toan2-cd6-b31-cao-leng-keng",
+      "kind": "npc",
+      "name": "Cáo Leng Keng",
+      "label": "Nói chuyện",
+      "position": [
+        226.5,
+        13,
+        181.5
+      ],
+      "yaw": -27,
+      "radius": 3,
+      "model": "generated/characters/npc-fox-cam-dress.glb",
+      "scale": 0.6296,
+      "chapter": 3,
+      "quest": "toan2-cd6-b31"
+    },
+    {
+      "id": "toan2-cd6-b31-cho-dom-boong",
+      "kind": "npc",
+      "name": "Chó Đốm Boong",
+      "label": "Nói chuyện",
+      "position": [
+        208.5,
+        13,
+        188.5
+      ],
+      "yaw": -135,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-dog.glb",
+      "scale": 0.6311,
+      "animation": "idle",
+      "tint": "#c9ccd1",
+      "chapter": 3,
+      "quest": "toan2-cd6-b31"
+    },
+    {
+      "id": "toan2-cd6-b31-gau-trang-u",
+      "kind": "npc",
+      "name": "Gấu Trắng Ú",
+      "label": "Nói chuyện",
+      "position": [
+        198.5,
+        13,
+        161.5
+      ],
+      "yaw": 27,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-polar.glb",
+      "scale": 0.9326,
+      "animation": "idle",
+      "chapter": 3,
+      "quest": "toan2-cd6-b31"
+    },
+    {
+      "id": "toan2-cd6-b31-meo-trang-sua",
+      "kind": "npc",
+      "name": "Mèo Trắng Sữa",
+      "label": "Nói chuyện",
+      "position": [
+        222.5,
+        13,
+        159.5
+      ],
+      "yaw": 18,
+      "radius": 3,
+      "model": "generated/characters/npc-cat-trang-dress.glb",
+      "scale": 0.6415,
+      "chapter": 3,
+      "quest": "toan2-cd6-b31"
+    },
+    {
+      "id": "toan2-cd6-b31-tho-tach-tach",
+      "kind": "npc",
+      "name": "Thỏ Tách Tách",
+      "label": "Nói chuyện",
+      "position": [
+        190.5,
+        13,
+        184.5
+      ],
+      "yaw": 18,
+      "radius": 3,
+      "model": "generated/characters/npc-rabbit-xam-vest-shorts-green.glb",
+      "scale": 0.5763,
+      "chapter": 3,
+      "quest": "toan2-cd6-b31"
+    },
+    {
+      "id": "toan2-cd6-dong-ho-mo-hinh",
+      "kind": "object",
+      "name": "Đồng hồ mô hình",
+      "label": "Nhặt lên",
+      "position": [
+        229.5,
+        13,
+        147.5
+      ],
+      "yaw": 305,
+      "radius": 2,
+      "model": "generated/props/mantelpiece-clock.glb",
+      "scale": 0.05,
+      "chapter": 3,
+      "quest": "toan2-cd6-b31"
+    },
+    {
+      "id": "toan2-cd6-to-lich-thang-5",
+      "kind": "object",
+      "name": "Tờ lịch tháng 5",
+      "label": "Nhặt lên",
+      "position": [
+        228.5,
+        13,
+        151.5
+      ],
+      "yaw": 162,
+      "radius": 2,
+      "model": "generated/props/tear-off-calendar.glb",
+      "scale": 0.0437,
+      "chapter": 3,
+      "quest": "toan2-cd6-b31"
+    },
+    {
+      "id": "toan2-cd6-to-lich-thang-6",
+      "kind": "object",
+      "name": "Tờ lịch tháng 6",
+      "label": "Nhặt lên",
+      "position": [
+        226.5,
+        13,
+        148.5
+      ],
+      "yaw": 90,
+      "radius": 2,
+      "model": "generated/props/calendar-blue.glb",
+      "scale": 0.0437,
+      "chapter": 3,
+      "quest": "toan2-cd6-b31"
+    },
+    {
+      "id": "sau-xanh",
+      "kind": "npc",
+      "name": "Sâu Xanh",
+      "label": "Nói chuyện",
+      "position": [
+        228.5,
+        13,
+        175.5
+      ],
+      "yaw": -27,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-caterpillar.glb",
+      "scale": 0.458,
+      "animation": "idle",
+      "chapter": 3,
+      "quest": "toan2-cd6-b32"
+    },
+    {
+      "id": "toan2-cd6-b32-cao-do-tem",
+      "kind": "npc",
+      "name": "Cáo Đỏ Tem",
+      "label": "Nói chuyện",
+      "position": [
+        196.5,
+        13,
+        175.5
+      ],
+      "yaw": 180,
+      "radius": 3,
+      "model": "generated/characters/npc-fox-do-jacket-green.glb",
+      "scale": 0.6296,
+      "chapter": 3,
+      "quest": "toan2-cd6-b32"
+    },
+    {
+      "id": "toan2-cd6-b32-chi-thao",
+      "kind": "npc",
+      "name": "Chị Thảo",
+      "label": "Nói chuyện",
+      "position": [
+        218.5,
+        13,
+        164.5
+      ],
+      "yaw": -117,
+      "radius": 3,
+      "model": "packs/kenney-blocky-characters/2.0/character-f.glb",
+      "scale": 0.7037,
+      "animation": "idle",
+      "chapter": 3,
+      "quest": "toan2-cd6-b32"
+    },
+    {
+      "id": "toan2-cd6-b32-ong-loc",
+      "kind": "npc",
+      "name": "Ông Lộc",
+      "label": "Nói chuyện",
+      "position": [
+        194.5,
+        13,
+        188.5
+      ],
+      "yaw": 157,
+      "radius": 3,
+      "model": "packs/kenney-blocky-characters/2.0/character-i.glb",
+      "scale": 0.7037,
+      "animation": "idle",
+      "chapter": 3,
+      "quest": "toan2-cd6-b32"
+    },
+    {
+      "id": "toan2-cd6-buu-anh-hue",
+      "kind": "object",
+      "name": "Bưu ảnh Huế",
+      "label": "Nhặt lên",
+      "position": [
+        217.5,
+        13,
+        142.5
+      ],
+      "yaw": 70,
+      "radius": 2,
+      "model": "generated/props/postcard-hue.glb",
+      "scale": 0.05,
+      "chapter": 3,
+      "quest": "toan2-cd6-b32"
+    },
+    {
+      "id": "toan2-cd6-buu-anh-mu-cang-chai",
+      "kind": "object",
+      "name": "Bưu ảnh Mù Cang Chải",
+      "label": "Nhặt lên",
+      "position": [
+        218.5,
+        13,
+        146.5
+      ],
+      "yaw": -153,
+      "radius": 2,
+      "model": "generated/props/postcard-mountains.glb",
+      "scale": 0.05,
+      "chapter": 3,
+      "quest": "toan2-cd6-b32"
+    },
+    {
+      "id": "toan2-cd6-buu-anh-nam-can",
+      "kind": "object",
+      "name": "Bưu ảnh Năm Căn",
+      "label": "Nhặt lên",
+      "position": [
+        215.5,
+        13,
+        146.5
+      ],
+      "yaw": 135,
+      "radius": 2,
+      "model": "generated/props/postcard-island.glb",
+      "scale": 0.0533,
+      "chapter": 3,
+      "quest": "toan2-cd6-b32"
+    },
+    {
+      "id": "ke-sach",
+      "kind": "object",
+      "name": "Kệ sách",
+      "label": "Đọc bài",
+      "position": [
+        102.5,
+        13,
+        149.5
+      ],
+      "yaw": -63,
+      "radius": 2,
+      "model": "packs/kenney-survival-kit/2.0/box-large.glb",
+      "scale": 4,
+      "chapter": 1,
+      "quest": "tv2-t08-b15"
+    },
+    {
+      "id": "tv2-t08-b15-tho-lo-xo",
+      "kind": "npc",
+      "name": "Thỏ Lò Xo",
+      "label": "Nói chuyện",
+      "position": [
+        94.5,
+        13,
+        124.5
+      ],
+      "yaw": -45,
+      "radius": 3,
+      "model": "generated/characters/npc-rabbit-trang-vest-shorts.glb",
+      "scale": 0.5763,
+      "chapter": 1,
+      "quest": "tv2-t08-b15"
+    },
+    {
+      "id": "tv2-t08-sach-de-men",
+      "kind": "object",
+      "name": "Sách Dế Mèn",
+      "label": "Nhặt lên",
+      "position": [
+        114.5,
+        13,
+        126.5
+      ],
+      "yaw": 90,
+      "radius": 2,
+      "model": "generated/props/green-book.glb",
+      "scale": 0.0375,
+      "chapter": 1,
+      "quest": "tv2-t08-b15"
+    },
+    {
+      "id": "tv2-t08-sach-the-gioi-quanh-em",
+      "kind": "object",
+      "name": "Sách Thế giới quanh em",
+      "label": "Nhặt lên",
+      "position": [
+        117.5,
+        13,
+        128.5
+      ],
+      "yaw": -135,
+      "radius": 2,
+      "model": "generated/props/blue-book.glb",
+      "scale": 0.0375,
+      "chapter": 1,
+      "quest": "tv2-t08-b15"
+    },
+    {
+      "id": "tv2-t08-trang-muc-luc",
+      "kind": "object",
+      "name": "Trang mục lục",
+      "label": "Nhặt lên",
+      "position": [
+        114.5,
+        13,
+        129.5
+      ],
+      "yaw": 162,
+      "radius": 2,
+      "model": "generated/props/bookmark-tabs.glb",
+      "scale": 0.0375,
+      "chapter": 1,
+      "quest": "tv2-t08-b15"
+    },
+    {
+      "id": "nai-mo",
+      "kind": "npc",
+      "name": "Nai Mơ",
+      "label": "Nói chuyện",
+      "position": [
+        78.5,
+        13,
+        175.5
+      ],
+      "yaw": -135,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-deer.glb",
+      "scale": 0.7025,
+      "animation": "idle",
+      "chapter": 1,
+      "quest": "tv2-t08-b16"
+    },
+    {
+      "id": "tv2-t08-b16-canh-cut-phao",
+      "kind": "npc",
+      "name": "Cánh Cụt Phao",
+      "label": "Nói chuyện",
+      "position": [
+        105.5,
+        13,
+        188.5
+      ],
+      "yaw": 180,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-penguin.glb",
+      "scale": 0.6273,
+      "animation": "idle",
+      "chapter": 1,
+      "quest": "tv2-t08-b16"
+    },
+    {
+      "id": "tv2-t08-canh-buom-giay",
+      "kind": "object",
+      "name": "Cánh buồm giấy",
+      "label": "Nhặt lên",
+      "position": [
+        82.5,
+        13,
+        154.5
+      ],
+      "yaw": -108,
+      "radius": 2,
+      "model": "generated/props/sailboat.glb",
+      "scale": 0.05,
+      "chapter": 1,
+      "quest": "tv2-t08-b16"
+    },
+    {
+      "id": "tv2-t08-long-chim-bay",
+      "kind": "object",
+      "name": "Lông chim",
+      "label": "Nhặt lên",
+      "position": [
+        77.5,
+        13,
+        152.5
+      ],
+      "yaw": 63,
+      "radius": 2,
+      "model": "generated/props/feather.glb",
+      "scale": 0.0437,
+      "chapter": 1,
+      "quest": "tv2-t08-b16"
+    },
+    {
+      "id": "tv2-t08-nhanh-co-dai",
+      "kind": "object",
+      "name": "Nhánh cỏ dại",
+      "label": "Nhặt lên",
+      "position": [
+        80.5,
+        13,
+        152.5
+      ],
+      "yaw": -45,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/crops_wheatStageB.glb",
+      "scale": 1.6824,
+      "chapter": 1,
+      "quest": "tv2-t08-b16"
+    },
+    {
+      "id": "tv2-t08-canh-buom-hien-ra",
+      "kind": "object",
+      "name": "Cánh buồm lớn",
+      "label": "Xem",
+      "position": [
+        102.5,
+        13,
+        155.5
+      ],
+      "yaw": 180,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/tent_smallOpen.glb",
+      "scale": 3.9207,
+      "chapter": 1,
+      "quest": "tv2-t08-b16"
+    },
+    {
+      "id": "tv2-t08-hop-but-nai-mo",
+      "kind": "object",
+      "name": "Hộp bút Nai Mơ",
+      "label": "Mở hộp",
+      "position": [
+        44.5,
+        13,
+        179.5
+      ],
+      "yaw": 117,
+      "radius": 2,
+      "model": "generated/props/fountain-pen.glb",
+      "scale": 0.0375,
+      "chapter": 1,
+      "quest": "tv2-t08-b16"
+    },
+    {
+      "id": "tv2-t08-tang-da-phang",
+      "kind": "object",
+      "name": "Tảng đá phẳng",
+      "label": "Đọc thơ",
+      "position": [
+        47.5,
+        13,
+        177.5
+      ],
+      "yaw": -45,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/stone_smallFlatB.glb",
+      "scale": 7.6989,
+      "chapter": 1,
+      "quest": "tv2-t08-b16"
+    },
+    {
+      "id": "tv2-t09-on-giua-ki-ba-tu",
+      "kind": "npc",
+      "name": "Bà Tư",
+      "label": "Nói chuyện",
+      "position": [
+        132.5,
+        13,
+        88.5
+      ],
+      "yaw": -90,
+      "radius": 3,
+      "model": "packs/kenney-blocky-characters/2.0/character-i.glb",
+      "scale": 0.7037,
+      "animation": "idle",
+      "chapter": 2,
+      "quest": "tv2-t09-on-giua-ki"
+    },
+    {
+      "id": "tv2-t09-on-giua-ki-bac-tieu-phu-lam",
+      "kind": "npc",
+      "name": "Bác tiều phu Lâm",
+      "label": "Nói chuyện",
+      "position": [
+        135.5,
+        13,
+        62.5
+      ],
+      "yaw": 117,
+      "radius": 3,
+      "model": "packs/kenney-blocky-characters/2.0/character-a.glb",
+      "scale": 0.7037,
+      "animation": "idle",
+      "chapter": 2,
+      "quest": "tv2-t09-on-giua-ki"
+    },
+    {
+      "id": "tv2-t09-on-giua-ki-ca-bay-mau",
+      "kind": "npc",
+      "name": "Cá Bảy Màu",
+      "label": "Nói chuyện",
+      "position": [
+        151.5,
+        13,
+        71.5
+      ],
+      "yaw": 63,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-fish.glb",
+      "scale": 0.3686,
+      "animation": "idle",
+      "tint": "#e86fb0",
+      "chapter": 2,
+      "quest": "tv2-t09-on-giua-ki"
+    },
+    {
+      "id": "tv2-t09-on-giua-ki-cao-ot",
+      "kind": "npc",
+      "name": "Cáo Ớt",
+      "label": "Nói chuyện",
+      "position": [
+        114.5,
+        13,
+        64.5
+      ],
+      "yaw": -153,
+      "radius": 3,
+      "model": "generated/characters/npc-fox-do-dress-mint.glb",
+      "scale": 0.6296,
+      "chapter": 2,
+      "quest": "tv2-t09-on-giua-ki"
+    },
+    {
+      "id": "tv2-t09-on-giua-ki-co-giao-thu",
+      "kind": "npc",
+      "name": "Cô giáo Thu",
+      "label": "Nói chuyện",
+      "position": [
+        101.5,
+        13,
+        95.5
+      ],
+      "yaw": -90,
+      "radius": 3,
+      "model": "packs/kenney-blocky-characters/2.0/character-e.glb",
+      "scale": 0.7037,
+      "animation": "idle",
+      "chapter": 2,
+      "quest": "tv2-t09-on-giua-ki"
+    },
+    {
+      "id": "tv2-t09-on-giua-ki-gau-bui",
+      "kind": "npc",
+      "name": "Gấu Bùi",
+      "label": "Nói chuyện",
+      "position": [
+        152.5,
+        13,
+        85.5
+      ],
+      "yaw": 45,
+      "radius": 3,
+      "model": "generated/characters/npc-bear-den-vest-shorts-green.glb",
+      "scale": 0.6667,
+      "chapter": 2,
+      "quest": "tv2-t09-on-giua-ki"
+    },
+    {
+      "id": "tv2-t09-on-giua-ki-gau-trang-kem",
+      "kind": "npc",
+      "name": "Gấu Trắng Kem",
+      "label": "Nói chuyện",
+      "position": [
+        124.5,
+        13,
+        74.5
+      ],
+      "yaw": 135,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-polar.glb",
+      "scale": 0.9326,
+      "animation": "idle",
+      "chapter": 2,
+      "quest": "tv2-t09-on-giua-ki"
+    },
+    {
+      "id": "tv2-t09-on-giua-ki-hai-ly-bao",
+      "kind": "npc",
+      "name": "Hải Ly Bào",
+      "label": "Nói chuyện",
+      "position": [
+        103.5,
+        13,
+        77.5
+      ],
+      "yaw": 45,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-beaver.glb",
+      "scale": 0.6661,
+      "animation": "idle",
+      "tint": "#c87a46",
+      "chapter": 2,
+      "quest": "tv2-t09-on-giua-ki"
+    },
+    {
+      "id": "tv2-t09-on-giua-ki-khi-nhot",
+      "kind": "npc",
+      "name": "Khỉ Nhót",
+      "label": "Nói chuyện",
+      "position": [
+        142.5,
+        13,
+        75.5
+      ],
+      "yaw": -90,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-monkey.glb",
+      "scale": 0.6832,
+      "animation": "idle",
+      "chapter": 2,
+      "quest": "tv2-t09-on-giua-ki"
+    },
+    {
+      "id": "tv2-t09-on-giua-ki-meo-gung",
+      "kind": "npc",
+      "name": "Mèo Gừng",
+      "label": "Nói chuyện",
+      "position": [
+        113.5,
+        13,
+        92.5
+      ],
+      "yaw": 105,
+      "radius": 3,
+      "model": "generated/characters/npc-cat-cam-overalls.glb",
+      "scale": 0.6415,
+      "chapter": 2,
+      "quest": "tv2-t09-on-giua-ki"
+    },
+    {
+      "id": "tv2-t09-on-giua-ki-meo-muoi",
+      "kind": "npc",
+      "name": "Mèo Muối",
+      "label": "Nói chuyện",
+      "position": [
+        162.5,
+        13,
+        82.5
+      ],
+      "yaw": 180,
+      "radius": 3,
+      "model": "generated/characters/npc-cat-trang-jacket-red.glb",
+      "scale": 0.6415,
+      "chapter": 2,
+      "quest": "tv2-t09-on-giua-ki"
+    },
+    {
+      "id": "tv2-t09-on-giua-ki-su-tu-keo",
+      "kind": "npc",
+      "name": "Sư Tử Kẹo",
+      "label": "Nói chuyện",
+      "position": [
+        143.5,
+        13,
+        87.5
+      ],
+      "yaw": 45,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-lion.glb",
+      "scale": 0.7446,
+      "animation": "idle",
+      "chapter": 2,
+      "quest": "tv2-t09-on-giua-ki"
+    },
+    {
+      "id": "tv2-t09-ve-la-vang-1",
+      "kind": "object",
+      "name": "Vé lá vàng",
+      "label": "Nhặt lên",
+      "position": [
+        165.5,
+        13,
+        95.5
+      ],
+      "yaw": -108,
+      "radius": 2,
+      "model": "generated/props/fallen-leaf.glb",
+      "scale": 0.0313,
+      "chapter": 2,
+      "quest": "tv2-t09-on-giua-ki"
+    },
+    {
+      "id": "tv2-t09-ve-la-vang-2",
+      "kind": "object",
+      "name": "Vé lá vàng",
+      "label": "Nhặt lên",
+      "position": [
+        159.5,
+        13,
+        93.5
+      ],
+      "yaw": 72,
+      "radius": 2,
+      "model": "generated/props/fallen-leaf.glb",
+      "scale": 0.0313,
+      "chapter": 2,
+      "quest": "tv2-t09-on-giua-ki"
+    },
+    {
+      "id": "tv2-t09-ve-la-vang-3",
+      "kind": "object",
+      "name": "Vé lá vàng",
+      "label": "Nhặt lên",
+      "position": [
+        162.5,
+        13,
+        93.5
+      ],
+      "yaw": 248,
+      "radius": 2,
+      "model": "generated/props/fallen-leaf.glb",
+      "scale": 0.0313,
+      "chapter": 2,
+      "quest": "tv2-t09-on-giua-ki"
+    }
+  ],
+  "props": [
+    {
+      "model": "packs/kenney-furniture-kit/2.0/bookcaseOpen.glb",
+      "position": [
+        61.54546000812799,
+        13,
+        156.1590875
+      ],
+      "yaw": 180,
+      "scale": 2.7273
+    },
+    {
+      "model": "packs/kenney-furniture-kit/2.0/bookcaseOpen.glb",
+      "position": [
+        64.54546000812799,
+        13,
+        156.1590875
+      ],
+      "yaw": 180,
+      "scale": 2.7273
+    },
+    {
+      "model": "packs/kenney-furniture-kit/2.0/bookcaseOpen.glb",
+      "position": [
+        67.54546000812799,
+        13,
+        156.1590875
+      ],
+      "yaw": 180,
+      "scale": 2.7273
+    },
+    {
+      "model": "packs/kenney-furniture-kit/2.0/bookcaseOpen.glb",
+      "position": [
+        70.54546000812799,
+        13,
+        156.1590875
+      ],
+      "yaw": 180,
+      "scale": 2.7273
+    },
+    {
+      "model": "packs/kenney-furniture-kit/2.0/bookcaseOpen.glb",
+      "position": [
+        73.54546000812799,
+        13,
+        156.1590875
+      ],
+      "yaw": 180,
+      "scale": 2.7273
+    },
+    {
+      "model": "packs/kenney-furniture-kit/2.0/bookcaseOpen.glb",
+      "position": [
+        76.54546000812799,
+        13,
+        156.1590875
+      ],
+      "yaw": 180,
+      "scale": 2.7273
+    },
+    {
+      "model": "packs/kenney-furniture-kit/2.0/bookcaseOpen.glb",
+      "position": [
+        79.54546000812799,
+        13,
+        156.1590875
+      ],
+      "yaw": 180,
+      "scale": 2.7273
+    },
+    {
+      "model": "packs/kenney-furniture-kit/2.0/bookcaseOpen.glb",
+      "position": [
+        82.54546000812799,
+        13,
+        156.1590875
+      ],
+      "yaw": 180,
+      "scale": 2.7273
+    },
+    {
+      "model": "packs/kenney-furniture-kit/2.0/bookcaseOpen.glb",
+      "position": [
+        85.54546000812799,
+        13,
+        156.1590875
+      ],
+      "yaw": 180,
+      "scale": 2.7273
+    },
+    {
+      "model": "packs/kenney-furniture-kit/2.0/bookcaseOpen.glb",
+      "position": [
+        88.54546000812799,
+        13,
+        156.1590875
+      ],
+      "yaw": 180,
+      "scale": 2.7273
+    },
+    {
+      "model": "packs/kenney-furniture-kit/2.0/bookcaseOpen.glb",
+      "position": [
+        91.54546000812799,
+        13,
+        156.1590875
+      ],
+      "yaw": 180,
+      "scale": 2.7273
+    },
+    {
+      "model": "packs/kenney-furniture-kit/2.0/bookcaseOpen.glb",
+      "position": [
+        94.54546000812799,
+        13,
+        156.1590875
+      ],
+      "yaw": 180,
+      "scale": 2.7273
+    },
+    {
+      "model": "packs/kenney-furniture-kit/2.0/bookcaseOpen.glb",
+      "position": [
+        60.3409125,
+        13,
+        140.54546000812798
+      ],
+      "yaw": 90,
+      "scale": 2.7273
+    },
+    {
+      "model": "packs/kenney-furniture-kit/2.0/bookcaseOpen.glb",
+      "position": [
+        60.3409125,
+        13,
+        143.54546000812798
+      ],
+      "yaw": 90,
+      "scale": 2.7273
+    },
+    {
+      "model": "packs/kenney-furniture-kit/2.0/bookcaseOpen.glb",
+      "position": [
+        60.3409125,
+        13,
+        146.54546000812798
+      ],
+      "yaw": 90,
+      "scale": 2.7273
+    },
+    {
+      "model": "packs/kenney-furniture-kit/2.0/bookcaseOpen.glb",
+      "position": [
+        60.3409125,
+        13,
+        149.54546000812798
+      ],
+      "yaw": 90,
+      "scale": 2.7273
+    },
+    {
+      "model": "packs/kenney-furniture-kit/2.0/bookcaseOpen.glb",
+      "position": [
+        60.3409125,
+        13,
+        152.54546000812798
+      ],
+      "yaw": 90,
+      "scale": 2.7273
+    },
+    {
+      "model": "packs/kenney-furniture-kit/2.0/bookcaseOpen.glb",
+      "position": [
+        60.3409125,
+        13,
+        155.54546000812798
+      ],
+      "yaw": 90,
+      "scale": 2.7273
+    },
+    {
+      "model": "packs/kenney-furniture-kit/2.0/table.glb",
+      "position": [
+        65.96980838440359,
+        13,
+        143.5476967999786
+      ],
+      "yaw": 0,
+      "scale": 2.4485
+    },
+    {
+      "model": "packs/kenney-furniture-kit/2.0/chair.glb",
+      "position": [
+        66.78722999682948,
+        13,
+        142.21277000317053
+      ],
+      "yaw": 0,
+      "scale": 2.1277
+    },
+    {
+      "model": "packs/kenney-furniture-kit/2.0/chair.glb",
+      "position": [
+        67.21277000317052,
+        13,
+        143.78722999682947
+      ],
+      "yaw": 180,
+      "scale": 2.1277
+    },
+    {
+      "model": "generated/props/books.glb",
+      "position": [
+        66.5,
+        13.8,
+        142.5
+      ],
+      "yaw": 0,
+      "scale": 0.04
+    },
+    {
+      "model": "packs/kenney-furniture-kit/2.0/table.glb",
+      "position": [
+        72.96980838440359,
+        13,
+        143.5476967999786
+      ],
+      "yaw": 0,
+      "scale": 2.4485
+    },
+    {
+      "model": "packs/kenney-furniture-kit/2.0/chair.glb",
+      "position": [
+        73.78722999682948,
+        13,
+        142.21277000317053
+      ],
+      "yaw": 0,
+      "scale": 2.1277
+    },
+    {
+      "model": "packs/kenney-furniture-kit/2.0/chair.glb",
+      "position": [
+        74.21277000317052,
+        13,
+        143.78722999682947
+      ],
+      "yaw": 180,
+      "scale": 2.1277
+    },
+    {
+      "model": "generated/props/books.glb",
+      "position": [
+        73.5,
+        13.8,
+        142.5
+      ],
+      "yaw": 40,
+      "scale": 0.04
+    },
+    {
+      "model": "packs/kenney-furniture-kit/2.0/table.glb",
+      "position": [
+        79.96980838440359,
+        13,
+        143.5476967999786
+      ],
+      "yaw": 0,
+      "scale": 2.4485
+    },
+    {
+      "model": "packs/kenney-furniture-kit/2.0/chair.glb",
+      "position": [
+        80.78722999682948,
+        13,
+        142.21277000317053
+      ],
+      "yaw": 0,
+      "scale": 2.1277
+    },
+    {
+      "model": "packs/kenney-furniture-kit/2.0/chair.glb",
+      "position": [
+        81.21277000317052,
+        13,
+        143.78722999682947
+      ],
+      "yaw": 180,
+      "scale": 2.1277
+    },
+    {
+      "model": "generated/props/books.glb",
+      "position": [
+        80.5,
+        13.8,
+        142.5
+      ],
+      "yaw": 80,
+      "scale": 0.04
+    },
+    {
+      "model": "packs/kenney-furniture-kit/2.0/table.glb",
+      "position": [
+        86.96980838440359,
+        13,
+        143.5476967999786
+      ],
+      "yaw": 0,
+      "scale": 2.4485
+    },
+    {
+      "model": "packs/kenney-furniture-kit/2.0/chair.glb",
+      "position": [
+        87.78722999682948,
+        13,
+        142.21277000317053
+      ],
+      "yaw": 0,
+      "scale": 2.1277
+    },
+    {
+      "model": "packs/kenney-furniture-kit/2.0/chair.glb",
+      "position": [
+        88.21277000317052,
+        13,
+        143.78722999682947
+      ],
+      "yaw": 180,
+      "scale": 2.1277
+    },
+    {
+      "model": "generated/props/books.glb",
+      "position": [
+        87.5,
+        13.8,
+        142.5
+      ],
+      "yaw": 120,
+      "scale": 0.04
+    },
+    {
+      "model": "packs/kenney-furniture-kit/2.0/table.glb",
+      "position": [
+        65.96980838440359,
+        13,
+        149.5476967999786
+      ],
+      "yaw": 0,
+      "scale": 2.4485
+    },
+    {
+      "model": "packs/kenney-furniture-kit/2.0/chair.glb",
+      "position": [
+        66.78722999682948,
+        13,
+        148.21277000317053
+      ],
+      "yaw": 0,
+      "scale": 2.1277
+    },
+    {
+      "model": "packs/kenney-furniture-kit/2.0/chair.glb",
+      "position": [
+        67.21277000317052,
+        13,
+        149.78722999682947
+      ],
+      "yaw": 180,
+      "scale": 2.1277
+    },
+    {
+      "model": "generated/props/books.glb",
+      "position": [
+        66.5,
+        13.8,
+        148.5
+      ],
+      "yaw": 0,
+      "scale": 0.04
+    },
+    {
+      "model": "packs/kenney-furniture-kit/2.0/table.glb",
+      "position": [
+        72.96980838440359,
+        13,
+        149.5476967999786
+      ],
+      "yaw": 0,
+      "scale": 2.4485
+    },
+    {
+      "model": "packs/kenney-furniture-kit/2.0/chair.glb",
+      "position": [
+        73.78722999682948,
+        13,
+        148.21277000317053
+      ],
+      "yaw": 0,
+      "scale": 2.1277
+    },
+    {
+      "model": "packs/kenney-furniture-kit/2.0/chair.glb",
+      "position": [
+        74.21277000317052,
+        13,
+        149.78722999682947
+      ],
+      "yaw": 180,
+      "scale": 2.1277
+    },
+    {
+      "model": "generated/props/books.glb",
+      "position": [
+        73.5,
+        13.8,
+        148.5
+      ],
+      "yaw": 40,
+      "scale": 0.04
+    },
+    {
+      "model": "packs/kenney-furniture-kit/2.0/table.glb",
+      "position": [
+        79.96980838440359,
+        13,
+        149.5476967999786
+      ],
+      "yaw": 0,
+      "scale": 2.4485
+    },
+    {
+      "model": "packs/kenney-furniture-kit/2.0/chair.glb",
+      "position": [
+        80.78722999682948,
+        13,
+        148.21277000317053
+      ],
+      "yaw": 0,
+      "scale": 2.1277
+    },
+    {
+      "model": "packs/kenney-furniture-kit/2.0/chair.glb",
+      "position": [
+        81.21277000317052,
+        13,
+        149.78722999682947
+      ],
+      "yaw": 180,
+      "scale": 2.1277
+    },
+    {
+      "model": "generated/props/books.glb",
+      "position": [
+        80.5,
+        13.8,
+        148.5
+      ],
+      "yaw": 80,
+      "scale": 0.04
+    },
+    {
+      "model": "packs/kenney-furniture-kit/2.0/table.glb",
+      "position": [
+        86.96980838440359,
+        13,
+        149.5476967999786
+      ],
+      "yaw": 0,
+      "scale": 2.4485
+    },
+    {
+      "model": "packs/kenney-furniture-kit/2.0/chair.glb",
+      "position": [
+        87.78722999682948,
+        13,
+        148.21277000317053
+      ],
+      "yaw": 0,
+      "scale": 2.1277
+    },
+    {
+      "model": "packs/kenney-furniture-kit/2.0/chair.glb",
+      "position": [
+        88.21277000317052,
+        13,
+        149.78722999682947
+      ],
+      "yaw": 180,
+      "scale": 2.1277
+    },
+    {
+      "model": "generated/props/books.glb",
+      "position": [
+        87.5,
+        13.8,
+        148.5
+      ],
+      "yaw": 120,
+      "scale": 0.04
+    },
+    {
+      "model": "packs/kenney-furniture-kit/2.0/rugRectangle.glb",
+      "position": [
+        88.575000166893,
+        13,
+        144.80000004172325
+      ],
+      "yaw": 0,
+      "scale": 5
+    },
+    {
+      "model": "packs/kenney-furniture-kit/2.0/pillow.glb",
+      "position": [
+        90.31882899671346,
+        13,
+        143.56969852140696
+      ],
+      "yaw": 0,
+      "scale": 1.5754
+    },
+    {
+      "model": "packs/kenney-furniture-kit/2.0/pillow.glb",
+      "position": [
+        91.37795056942821,
+        13,
+        143.65094619178788
+      ],
+      "yaw": 30,
+      "scale": 1.5754
+    },
+    {
+      "model": "packs/kenney-furniture-kit/2.0/pillow.glb",
+      "position": [
+        92.46977518850136,
+        13,
+        143.69174795197873
+      ],
+      "yaw": 60,
+      "scale": 1.5754
+    },
+    {
+      "model": "packs/kenney-furniture-kit/2.0/pillow.glb",
+      "position": [
+        93.56969852140695,
+        13,
+        143.68117100328655
+      ],
+      "yaw": 90,
+      "scale": 1.5754
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/rock_largeA.glb",
+      "position": [
+        46.5,
+        13,
+        154.5
+      ],
+      "yaw": -280,
+      "scale": 5.3893
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/rock_largeA.glb",
+      "position": [
+        42.5,
+        13,
+        140.5
+      ],
+      "yaw": -320,
+      "scale": 5.3893
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/rock_largeA.glb",
+      "position": [
+        48.5,
+        13,
+        168.5
+      ],
+      "yaw": -260,
+      "scale": 5.3893
+    },
+    {
+      "model": "generated/box-props/park-bench.glb",
+      "position": [
+        52.5,
+        13,
+        132.5
+      ],
+      "yaw": 90,
+      "scale": 1
+    },
+    {
+      "model": "generated/box-props/park-bench.glb",
+      "position": [
+        52.5,
+        13,
+        144.5
+      ],
+      "yaw": 90,
+      "scale": 1
+    },
+    {
+      "model": "generated/box-props/park-bench.glb",
+      "position": [
+        52.5,
+        13,
+        156.5
+      ],
+      "yaw": 90,
+      "scale": 1
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/statue_obelisk.glb",
+      "position": [
+        128.5,
+        14,
+        66.5
+      ],
+      "yaw": 0,
+      "scale": 3.427
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/tree_oak_fall.glb",
+      "position": [
+        82.5,
+        13,
+        42.5
+      ],
+      "yaw": 0,
+      "scale": 4.893
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/tree_oak_fall.glb",
+      "position": [
+        92.5,
+        13,
+        90.5
+      ],
+      "yaw": 36,
+      "scale": 4.893
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/tree_oak_fall.glb",
+      "position": [
+        102.5,
+        13,
+        42.5
+      ],
+      "yaw": 72,
+      "scale": 4.893
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/tree_oak_fall.glb",
+      "position": [
+        112.5,
+        13,
+        90.5
+      ],
+      "yaw": 108,
+      "scale": 4.893
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/tree_oak_fall.glb",
+      "position": [
+        122.5,
+        13,
+        42.5
+      ],
+      "yaw": 144,
+      "scale": 4.893
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/tree_oak_fall.glb",
+      "position": [
+        132.5,
+        13,
+        90.5
+      ],
+      "yaw": 180,
+      "scale": 4.893
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/tree_oak_fall.glb",
+      "position": [
+        142.5,
+        13,
+        42.5
+      ],
+      "yaw": 216,
+      "scale": 4.893
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/tree_oak_fall.glb",
+      "position": [
+        152.5,
+        13,
+        90.5
+      ],
+      "yaw": 252,
+      "scale": 4.893
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/tree_oak_fall.glb",
+      "position": [
+        162.5,
+        13,
+        42.5
+      ],
+      "yaw": 288,
+      "scale": 4.893
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/tree_oak_fall.glb",
+      "position": [
+        172.5,
+        13,
+        90.5
+      ],
+      "yaw": 324,
+      "scale": 4.893
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_yellowB.glb",
+      "position": [
+        88.5,
+        13,
+        82.5
+      ],
+      "yaw": 0,
+      "scale": 3.1546
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_yellowB.glb",
+      "position": [
+        92.5,
+        13,
+        82.5
+      ],
+      "yaw": 30,
+      "scale": 3.1546
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_yellowB.glb",
+      "position": [
+        96.5,
+        13,
+        82.5
+      ],
+      "yaw": 60,
+      "scale": 3.1546
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_yellowB.glb",
+      "position": [
+        100.5,
+        13,
+        82.5
+      ],
+      "yaw": 90,
+      "scale": 3.1546
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_yellowB.glb",
+      "position": [
+        104.5,
+        13,
+        82.5
+      ],
+      "yaw": 120,
+      "scale": 3.1546
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_yellowB.glb",
+      "position": [
+        108.5,
+        13,
+        82.5
+      ],
+      "yaw": 150,
+      "scale": 3.1546
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_yellowB.glb",
+      "position": [
+        112.5,
+        13,
+        82.5
+      ],
+      "yaw": 180,
+      "scale": 3.1546
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_yellowB.glb",
+      "position": [
+        116.5,
+        13,
+        82.5
+      ],
+      "yaw": 210,
+      "scale": 3.1546
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_yellowB.glb",
+      "position": [
+        120.5,
+        13,
+        82.5
+      ],
+      "yaw": 240,
+      "scale": 3.1546
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_yellowB.glb",
+      "position": [
+        124.5,
+        13,
+        82.5
+      ],
+      "yaw": 270,
+      "scale": 3.1546
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_yellowB.glb",
+      "position": [
+        128.5,
+        13,
+        82.5
+      ],
+      "yaw": 300,
+      "scale": 3.1546
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_yellowB.glb",
+      "position": [
+        132.5,
+        13,
+        82.5
+      ],
+      "yaw": 330,
+      "scale": 3.1546
+    },
+    {
+      "model": "generated/props/clock-face.glb",
+      "position": [
+        190.5,
+        31,
+        143.4
+      ],
+      "yaw": 180,
+      "scale": 0.1875
+    },
+    {
+      "model": "generated/props/calendar.glb",
+      "position": [
+        204.5,
+        13,
+        162.5
+      ],
+      "yaw": 0,
+      "scale": 0.0625
+    },
+    {
+      "model": "generated/props/calendar.glb",
+      "position": [
+        208.5,
+        13,
+        162.5
+      ],
+      "yaw": 0,
+      "scale": 0.0625
+    },
+    {
+      "model": "generated/props/calendar.glb",
+      "position": [
+        212.5,
+        13,
+        162.5
+      ],
+      "yaw": 0,
+      "scale": 0.0625
+    },
+    {
+      "model": "packs/kenney-city-kit-roads/2.1/light-curved.glb",
+      "position": [
+        36.5,
+        13,
+        108.5
+      ],
+      "yaw": 0,
+      "scale": 7.1111
+    },
+    {
+      "model": "packs/kenney-city-kit-roads/2.1/light-curved.glb",
+      "position": [
+        52.5,
+        13,
+        108.5
+      ],
+      "yaw": 0,
+      "scale": 7.1111
+    },
+    {
+      "model": "packs/kenney-city-kit-roads/2.1/light-curved.glb",
+      "position": [
+        68.5,
+        13,
+        108.5
+      ],
+      "yaw": 0,
+      "scale": 7.1111
+    },
+    {
+      "model": "packs/kenney-city-kit-roads/2.1/light-curved.glb",
+      "position": [
+        84.5,
+        13,
+        108.5
+      ],
+      "yaw": 0,
+      "scale": 7.1111
+    },
+    {
+      "model": "packs/kenney-city-kit-roads/2.1/light-curved.glb",
+      "position": [
+        100.5,
+        13,
+        108.5
+      ],
+      "yaw": 0,
+      "scale": 7.1111
+    },
+    {
+      "model": "packs/kenney-city-kit-roads/2.1/light-curved.glb",
+      "position": [
+        116.5,
+        13,
+        108.5
+      ],
+      "yaw": 0,
+      "scale": 7.1111
+    },
+    {
+      "model": "packs/kenney-city-kit-roads/2.1/light-curved.glb",
+      "position": [
+        132.5,
+        14,
+        108.5
+      ],
+      "yaw": 0,
+      "scale": 7.1111
+    },
+    {
+      "model": "packs/kenney-city-kit-roads/2.1/light-curved.glb",
+      "position": [
+        148.5,
+        12,
+        108.5
+      ],
+      "yaw": 0,
+      "scale": 7.1111
+    },
+    {
+      "model": "packs/kenney-city-kit-roads/2.1/light-curved.glb",
+      "position": [
+        164.5,
+        13,
+        108.5
+      ],
+      "yaw": 0,
+      "scale": 7.1111
+    },
+    {
+      "model": "packs/kenney-city-kit-roads/2.1/light-curved.glb",
+      "position": [
+        180.5,
+        14,
+        108.5
+      ],
+      "yaw": 0,
+      "scale": 7.1111
+    },
+    {
+      "model": "packs/kenney-city-kit-roads/2.1/light-curved.glb",
+      "position": [
+        196.5,
+        12,
+        108.5
+      ],
+      "yaw": 0,
+      "scale": 7.1111
+    },
+    {
+      "model": "packs/kenney-city-kit-roads/2.1/light-curved.glb",
+      "position": [
+        212.5,
+        12,
+        108.5
+      ],
+      "yaw": 0,
+      "scale": 7.1111
+    },
+    {
+      "model": "packs/kenney-city-kit-roads/2.1/light-curved.glb",
+      "position": [
+        124.5,
+        13,
+        20.5
+      ],
+      "yaw": 90,
+      "scale": 7.1111
+    },
+    {
+      "model": "packs/kenney-city-kit-roads/2.1/light-curved.glb",
+      "position": [
+        124.5,
+        13,
+        36.5
+      ],
+      "yaw": 90,
+      "scale": 7.1111
+    },
+    {
+      "model": "packs/kenney-city-kit-roads/2.1/light-curved.glb",
+      "position": [
+        124.5,
+        13,
+        52.5
+      ],
+      "yaw": 90,
+      "scale": 7.1111
+    },
+    {
+      "model": "packs/kenney-city-kit-roads/2.1/light-curved.glb",
+      "position": [
+        124.5,
+        13,
+        68.5
+      ],
+      "yaw": 90,
+      "scale": 7.1111
+    },
+    {
+      "model": "packs/kenney-city-kit-roads/2.1/light-curved.glb",
+      "position": [
+        124.5,
+        13,
+        84.5
+      ],
+      "yaw": 90,
+      "scale": 7.1111
+    },
+    {
+      "model": "packs/kenney-city-kit-roads/2.1/light-curved.glb",
+      "position": [
+        124.5,
+        13,
+        100.5
+      ],
+      "yaw": 90,
+      "scale": 7.1111
+    },
+    {
+      "model": "packs/kenney-survival-kit/2.0/signpost.glb",
+      "position": [
+        119.5,
+        13,
+        111.5
+      ],
+      "yaw": 45,
+      "scale": 3.4777
+    },
+    {
+      "model": "packs/kenney-survival-kit/2.0/signpost.glb",
+      "position": [
+        128.5,
+        13,
+        37.5
+      ],
+      "yaw": 45,
+      "scale": 3.4777
+    },
+    {
+      "model": "packs/kenney-survival-kit/2.0/signpost.glb",
+      "position": [
+        151.5,
+        13,
+        117.5
+      ],
+      "yaw": 45,
+      "scale": 3.4777
+    }
+  ],
+  "landmarks": [
+    {
+      "id": "phong-doc",
+      "name": "Phòng đọc",
+      "position": [
+        74.5,
+        13,
+        150.5
+      ]
+    },
+    {
+      "id": "san-le-hoi-la-vang",
+      "name": "Sân lễ hội lá vàng",
+      "position": [
+        128.5,
+        13,
+        66.5
+      ]
+    },
+    {
+      "id": "thap-dong-ho",
+      "name": "Tháp đồng hồ và phòng lịch",
+      "position": [
+        190.5,
+        13,
+        156.5
+      ]
+    },
+    {
+      "id": "phong-doc",
+      "name": "Phòng đọc",
+      "position": [
+        78.5,
+        13,
+        138.5
+      ]
+    },
+    {
+      "id": "vuon-doc-sach",
+      "name": "Vườn đọc sách",
+      "position": [
+        46.5,
+        13,
+        150.5
+      ]
+    },
+    {
+      "id": "be-nuoc-tron",
+      "name": "Bể nước tròn",
+      "position": [
+        128.5,
+        13,
+        66.5
+      ]
+    },
+    {
+      "id": "san-khau-la-vang",
+      "name": "Sân khấu lá vàng",
+      "position": [
+        159.5,
+        13,
+        65.5
+      ]
+    },
+    {
+      "id": "thap-dong-ho",
+      "name": "Tháp đồng hồ",
+      "position": [
+        190.5,
+        13,
+        142.5
+      ]
+    },
+    {
+      "id": "phong-lich",
+      "name": "Phòng lịch",
+      "position": [
+        208.5,
+        13,
+        162.5
+      ]
+    }
+  ]
+}

@@ -1,16 +1,16 @@
 {
   "id": "tv2-t10-b17",
   "region": "khu-rung-bi-mat",
-  "chapter": 11,
+  "chapter": 2,
   "title": "Tiếng gọi trên đồng cỏ khô",
   "status": "active",
   "lesson": "tv2-t1-b17",
-  "summary": "Đồng cỏ khô giòn như bánh đa, Thỏ Lúa đi hái cỏ non rồi quên béng đường về. {name} cùng Bò Sữa Mơ đọc bài thơ Gọi bạn, lần theo dấu chân tí xíu, gặp Bê Xôi ở bụi cỏ may và kể chuyện bê vàng, dê trắng thật to để gọi Thỏ Lúa trở về.",
+  "summary": "Đồng cỏ khô giòn như bánh đa, Thỏ Lúa đi hái cỏ non rồi quên béng đường về. {name} cùng Nai Nhung nhút nhát đọc bài thơ Gọi bạn, lần theo dấu chân tí xíu, gặp Bê Xôi ở bụi cỏ may và kể chuyện bê vàng, dê trắng thật to để gọi Thỏ Lúa trở về.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Bò Sữa Mơ (hiền khô, gọi bạn đến khản cả giọng), Thỏ Lúa (hái cỏ non rồi quên đường về), Bê Xôi cô bê hàng xóm thuộc thơ, Vẹt Xanh (lắm lời)",
+    "who": "Nai Nhung (cô nai hiền khô, nhút nhát, gọi bạn đến khản cả giọng), Thỏ Lúa (hái cỏ non rồi quên đường về), Bê Xôi (cô bê con ở bụi cỏ may, thuộc thơ), Vẹt Xanh (lắm lời)",
     "where": "Đồng cỏ khô hạn ở rìa Khu rừng bí mật, tấm bảng gỗ khắc bài thơ, bụi cỏ may, cành keo khô, vách đá có tranh bên suối cạn và đồi cỏ non",
-    "goal": "Tìm và gọi Thỏ Lúa trở về với Bò Sữa Mơ",
+    "goal": "Tìm và gọi Thỏ Lúa trở về với Nai Nhung",
     "play": "Lần dấu chân, nói, đọc thơ, chọn nhiều đáp án, điền từ, xếp dòng thơ, xếp tranh, kể chuyện, phiếu viết",
     "learn": "Tiếng Việt 2 Bài 17: đọc hiểu và học thuộc bài thơ \"Gọi bạn\", nói lời an ủi, kể chuyện theo tranh, viết chữ hoa H",
     "reward": "85 XP, 15 xu, Đọc hiểu +2, Kể chuyện +2, Từ ngữ +1",
@@ -49,7 +49,7 @@
     }
   },
   "places": {
-    "bo-sua-mo": "đồng cỏ khô",
+    "tv2-t10-b17-nai-nhung": "đồng cỏ khô",
     "lan-theo-dau-chan": "bờ suối cạn",
     "tv2-t10-bang-go-goi-ban": "bảng gỗ khắc bài thơ",
     "tv2-t10-b17-be-xoi": "bụi cỏ may",
@@ -60,17 +60,17 @@
   "steps": [
     {
       "id": "gap-bo-sua-mo",
-      "title": "Bò Sữa Mơ giữa đồng khô",
-      "goTo": "Ra đồng cỏ khô ở rìa rừng gặp Bò Sữa Mơ",
+      "title": "Nai Nhung giữa đồng khô",
+      "goTo": "Ra đồng cỏ khô ở rìa rừng gặp Nai Nhung",
       "kind": "dialogue",
-      "target": "bo-sua-mo",
+      "target": "tv2-t10-b17-nai-nhung",
       "lines": [
         {
-          "speaker": "Bò Sữa Mơ",
-          "text": "Ò… ò… {name} ơi, đồng cỏ nhà tớ khô giòn như bánh đa, giẫm lên kêu rau ráu."
+          "speaker": "Nai Nhung",
+          "text": "{name} ơi… đồng cỏ khô giòn như bánh đa, tớ bước khẽ mấy cũng kêu rau ráu."
         },
         {
-          "speaker": "Bò Sữa Mơ",
+          "speaker": "Nai Nhung",
           "text": "Sáng nay Thỏ Lúa hứa đi hái cỏ non về chia tớ. Trưa trật rồi mà chưa thấy cái tai dài nào ló về."
         },
         {
@@ -78,14 +78,14 @@
           "text": "Thỏ Lúa ấy à? Đãng trí, đãng trí! Có hôm bạn ấy đi tìm củ cà rốt đang cầm ngay trên tay!"
         },
         {
-          "speaker": "Bò Sữa Mơ",
-          "text": "Tớ gọi mãi, giờ giọng chỉ còn kêu được “ò… ò…” bé tí. Cậu giúp tớ tìm bạn ấy nhé?"
+          "speaker": "Nai Nhung",
+          "text": "Tớ gọi “Lúa ơi” mãi, giờ giọng chỉ còn thều thào như gió lùa qua cỏ. Cậu giúp tớ tìm bạn ấy nhé?"
         }
       ],
       "choices": [
         {
           "text": "Đi thôi, mình sẽ tìm Thỏ Lúa cho bằng được!",
-          "reply": "Ò… cảm ơn cậu! Mình đi về phía mấy bụi cỏ cháy vàng kia, chậm thôi kẻo tớ theo không kịp."
+          "reply": "Cảm ơn cậu! Mình đi về phía mấy bụi cỏ cháy vàng kia nhé. Cậu đi trước một chút, tớ hơi sợ chỗ lạ."
         }
       ]
     },
@@ -102,11 +102,11 @@
     },
     {
       "id": "ke-ve-nguoi-ban",
-      "title": "Kể Bò nghe về một người bạn",
-      "goTo": "Quay về đồng cỏ khô, Bò Sữa Mơ đang đứng chờ",
+      "title": "Kể Nai Nhung nghe về một người bạn",
+      "goTo": "Quay về đồng cỏ khô, Nai Nhung đang đứng chờ",
       "kind": "speak",
-      "target": "bo-sua-mo",
-      "prompt": "Bò Sữa Mơ vừa nhai cọng rơm khô vừa kể: Thỏ Lúa là bạn thân nhất của tớ, nhảy một cái cao hơn cả hàng rào! Đến lượt cậu nhé. Nói về một người bạn của em.",
+      "target": "tv2-t10-b17-nai-nhung",
+      "prompt": "Nai Nhung nhấm nháp một cọng cỏ khô, rụt rè kể: Thỏ Lúa là bạn thân nhất của tớ, nhảy một cái cao hơn cả hàng rào! Đến lượt cậu nhé. Nói về một người bạn của em.",
       "hints": [
         "Bạn ấy tên là gì? Ngồi cùng bàn hay ở gần nhà em?",
         "Hai bạn hay rủ nhau chơi trò gì nhất?",
@@ -119,7 +119,7 @@
     {
       "id": "doc-bai-tho",
       "title": "Đọc bài thơ trên bảng gỗ",
-      "goTo": "Đến bảng gỗ khắc bài thơ, đọc bài Gọi bạn cho Bò nghe",
+      "goTo": "Đến bảng gỗ khắc bài thơ, đọc bài Gọi bạn cho Nai Nhung nghe",
       "kind": "read",
       "target": "tv2-t10-bang-go-goi-ban",
       "textRef": "goi-ban",
@@ -159,9 +159,9 @@
       },
       "feedback": {
         "right": [
-          "Ò… ò… đúng rồi! Chuyện có từ xa xưa lắm, xưa hơn cả ông cố của tớ.",
+          "Đúng rồi! Chuyện có từ xa xưa lắm, xưa hơn cả cụ nai già nhất đồng cỏ.",
           "Vẹt Xanh vỗ cánh phành phạch: rừng xanh sâu thẳm, sâu thẳm! Chuẩn chuẩn!",
-          "Bò Sữa Mơ vẫy đuôi tít như chong chóng: {name} đọc thơ hay ghê!"
+          "Nai Nhung vẫy cái đuôi ngắn tũn lia lịa: {name} đọc thơ hay ghê!"
         ],
         "wrong": [
           "Ơ, mùa hè năm ngoái thì gần quá! Dòng thơ đầu tiên nói chuyện xưa lắm cơ.",
@@ -176,7 +176,7 @@
       "kind": "challenge",
       "mechanic": "multi-select",
       "target": "tv2-t10-bang-go-goi-ban",
-      "prompt": "Bò Sữa Mơ nhìn đồng cỏ nứt nẻ, thở dài thườn thượt: ò… y hệt trong bài thơ! Chuyện gì xảy ra khiến bê vàng phải lang thang đi tìm cỏ?",
+      "prompt": "Nai Nhung nhìn đồng cỏ nứt nẻ, thở dài thườn thượt: y hệt trong bài thơ! Chuyện gì xảy ra khiến bê vàng phải lang thang đi tìm cỏ?",
       "choices": [
         {
           "id": "han-han",
@@ -223,7 +223,7 @@
       },
       "feedback": {
         "right": [
-          "Đủ cả ba điều rồi! Bò Sữa Mơ gật gù làm cái chuông cổ kêu leng keng.",
+          "Đủ cả ba điều rồi! Nai Nhung gật gù, hai mẩu sừng nhung non lúc lắc.",
           "Đúng thế, rừng khô khốc nên chẳng còn ngọn cỏ nào cho bê vàng gặm.",
           "Vẹt Xanh khoe từ mới: “hạn hán”, “hạn hán”! Cậu chọn chuẩn quá!"
         ],
@@ -290,11 +290,11 @@
     {
       "id": "tam-trang-de-trang",
       "title": "Tâm trạng của dê trắng",
-      "goTo": "Về đồng cỏ khô ngồi cạnh Bò Sữa Mơ",
+      "goTo": "Về đồng cỏ khô ngồi cạnh Nai Nhung",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "target": "bo-sua-mo",
-      "prompt": "Bò Sữa Mơ sụt sịt, nước mắt to như hạt đậu: Thỏ Lúa đi lâu quá, tớ thấy mình giống dê trắng ghê. Tìm từ ngữ thể hiện tâm trạng của dê trắng khi không thấy bạn trở về.",
+      "target": "tv2-t10-b17-nai-nhung",
+      "prompt": "Nai Nhung sụt sịt, nước mắt to như hạt đậu: Thỏ Lúa đi lâu quá, tớ thấy mình giống dê trắng ghê. Tìm từ ngữ thể hiện tâm trạng của dê trắng khi không thấy bạn trở về.",
       "template": "Dê trắng {{tam-trang}}\nChạy khắp nẻo tìm bê",
       "blanks": [
         {
@@ -337,9 +337,9 @@
       },
       "feedback": {
         "right": [
-          "Đúng rồi, dê trắng thương bạn quá! Bò Sữa Mơ thơm lên má {name} một cái ướt nhẹp.",
+          "Đúng rồi, dê trắng thương bạn quá! Nai Nhung dụi cái mõm ươn ướt vào má {name}.",
           "Điền chuẩn từ ngữ trong bài thơ luôn, không lệch một li.",
-          "Ò… ò… tớ cũng thương Thỏ Lúa y như thế đấy."
+          "Tớ cũng thương Thỏ Lúa y như thế đấy, thương ơi là thương."
         ],
         "wrong": [
           "Dê trắng có giận bê vàng chút xíu nào đâu.",
@@ -432,10 +432,10 @@
     },
     {
       "id": "doc-thuoc-long",
-      "title": "Đọc thuộc lòng cho Bò nghe",
+      "title": "Đọc thuộc lòng cho Nai Nhung nghe",
       "kind": "speak",
       "target": "tv2-t10-bang-go-goi-ban",
-      "prompt": "Bò Sữa Mơ nhắm mắt, hai tai ve vẩy theo nhịp thơ như đang nghe hát ru. Học thuộc lòng 2 khổ thơ đầu.",
+      "prompt": "Nai Nhung nhắm mắt, hai tai ve vẩy theo nhịp thơ như đang nghe hát ru. Học thuộc lòng 2 khổ thơ đầu.",
       "hints": [
         "Tự xa xưa thuở nào",
         "Một năm, trời hạn hán"
@@ -447,10 +447,10 @@
     {
       "id": "cam-nghi-doi-ban",
       "title": "Cảm nghĩ về bê vàng, dê trắng",
-      "goTo": "Ra giữa đồng cỏ khô ngồi với Bò Sữa Mơ",
+      "goTo": "Ra giữa đồng cỏ khô ngồi với Nai Nhung",
       "kind": "speak",
-      "target": "bo-sua-mo",
-      "prompt": "Bò Sữa Mơ nằm phịch xuống, cằm gối lên chân trước: ò… cậu thấy đôi bạn ấy thế nào? Nêu cảm nghĩ của em về bê vàng và dê trắng.",
+      "target": "tv2-t10-b17-nai-nhung",
+      "prompt": "Nai Nhung gập bốn chân khẳng khiu nằm xuống cỏ, cằm gối lên chân trước: cậu thấy đôi bạn ấy thế nào? Nêu cảm nghĩ của em về bê vàng và dê trắng.",
       "hints": [
         "Tình bạn của bê vàng và dê trắng có đẹp không?",
         "Em thương bạn nào hơn, vì sao?",
@@ -462,13 +462,13 @@
     },
     {
       "id": "bo-buon-ben-suoi",
-      "title": "Bò Sữa Mơ buồn bên suối cạn",
+      "title": "Nai Nhung buồn bên suối cạn",
       "kind": "dialogue",
-      "target": "bo-sua-mo",
+      "target": "tv2-t10-b17-nai-nhung",
       "lines": [
         {
-          "speaker": "Bò Sữa Mơ",
-          "text": "Ò… dê trắng gọi hoài mà bạn chẳng về. Tớ sợ mình cũng phải gọi hoài như thế."
+          "speaker": "Nai Nhung",
+          "text": "Dê trắng gọi hoài mà bạn chẳng về. Tớ sợ mình cũng phải gọi hoài như thế."
         },
         {
           "speaker": "Vẹt Xanh",
@@ -478,11 +478,11 @@
       "choices": [
         {
           "text": "Đừng buồn, mình ở đây với cậu, mình sẽ tìm ra Thỏ Lúa!",
-          "reply": "Có cậu bên cạnh, tớ thấy chân mình vững như bốn cái cột đình."
+          "reply": "Có cậu bên cạnh, bốn cái chân khẳng khiu của tớ hết run rồi."
         },
         {
           "text": "Mình cùng gọi thật to nhé: Lúa ơi ơi ơi!",
-          "reply": "Lúa ơi! Ò… ò…! Ối, tớ gọi to quá làm Vẹt Xanh rơi khỏi cành."
+          "reply": "Lúa ơi ơi! Ối, lần đầu tớ gọi to thế, làm Vẹt Xanh giật mình rơi khỏi cành."
         },
         {
           "text": "Thỏ Lúa nhanh chân lắm, chắc đang chạy về rồi đấy.",
@@ -589,7 +589,7 @@
       "feedback": {
         "right": [
           "Bốn bức tranh đã kể đúng câu chuyện, vách đá như biết đọc thơ!",
-          "Ò… ò…! Bò Sữa Mơ dụi mũi vào tranh cuối, thương dê trắng quá.",
+          "Nai Nhung khẽ chạm mõm vào bức tranh cuối, thương dê trắng quá chừng.",
           "Xếp tranh tài thật, {name} còn nhanh hơn cả Thỏ Lúa lúc nhớ đường."
         ],
         "wrong": [
@@ -604,7 +604,7 @@
       "title": "Kể chuyện bê vàng theo tranh",
       "kind": "speak",
       "target": "tv2-t10-vach-da-tranh",
-      "prompt": "Bò Sữa Mơ hít một hơi căng phồng cả bụng: kể to lên nào, biết đâu Thỏ Lúa nghe thấy! Dựa vào tranh minh hoạ câu chuyện trong bài thơ Gọi bạn và gợi ý, nói về sự việc trong từng tranh. Chọn kể 1 – 2 đoạn của câu chuyện theo tranh.",
+      "prompt": "Nai Nhung hít một hơi thật sâu, lấy hết can đảm: kể to lên nào, biết đâu Thỏ Lúa nghe thấy! Dựa vào tranh minh hoạ câu chuyện trong bài thơ Gọi bạn và gợi ý, nói về sự việc trong từng tranh. Chọn kể 1 – 2 đoạn của câu chuyện theo tranh.",
       "hints": [
         "Từ xa xưa, trong rừng xanh sâu thẳm, (...).",
         "Một năm, trời hạn hán (...).",
@@ -655,7 +655,7 @@
       "goTo": "Về bụi cỏ may, Bê Xôi ngồi chờ nghe kể đoạn kết",
       "kind": "speak",
       "target": "tv2-t10-b17-be-xoi",
-      "prompt": "Bài thơ dừng ở tiếng gọi “Bê! Bê!”. Bò Sữa Mơ mong đôi bạn được gặp lại lắm. Kể tiếp đoạn kết của câu chuyện theo ý của em.",
+      "prompt": "Bài thơ dừng ở tiếng gọi “Bê! Bê!”. Nai Nhung mong đôi bạn được gặp lại lắm. Kể tiếp đoạn kết của câu chuyện theo ý của em.",
       "hints": [
         "Bê vàng có nghe thấy tiếng gọi của dê trắng không?",
         "Ai trong rừng đã chỉ đường cho bê vàng?",
@@ -674,15 +674,15 @@
       "lines": [
         {
           "speaker": "Thỏ Lúa",
-          "text": "Bò ơi! {name} ơi! Tớ nghe tiếng các cậu kể chuyện vọng sang tận bên kia đồi!"
+          "text": "Nhung ơi! {name} ơi! Tớ nghe tiếng các cậu kể chuyện vọng sang tận bên kia đồi!"
         },
         {
           "speaker": "Thỏ Lúa",
           "text": "Tớ hái cỏ non vui quá, quay một vòng, hai vòng… rồi quên luôn nhà mình ở hướng nào."
         },
         {
-          "speaker": "Bò Sữa Mơ",
-          "text": "Ò… ò…! May quá, tớ không phải gọi hoài như dê trắng nữa rồi!"
+          "speaker": "Nai Nhung",
+          "text": "Lúa đây rồi! May quá, tớ không phải gọi hoài như dê trắng nữa rồi!"
         },
         {
           "speaker": "Thỏ Lúa",
@@ -702,7 +702,7 @@
       "kind": "worksheet",
       "trigger": "auto",
       "lessonId": "tv2-t1-b17",
-      "text": "Nhờ bố mẹ in phiếu Bài 17 ở khu phụ huynh nhé: tập viết chữ hoa H, câu ứng dụng và vài câu nhận xét về đôi bạn bê vàng, dê trắng. Bò Sữa Mơ hứa nằm im, không ve vẩy đuôi làm nhoè vở.",
+      "text": "Nhờ bố mẹ in phiếu Bài 17 ở khu phụ huynh nhé: tập viết chữ hoa H, câu ứng dụng và vài câu nhận xét về đôi bạn bê vàng, dê trắng. Nai Nhung hứa đứng thật im, không giậm móng lộc cộc làm nhoè vở.",
       "curriculumRef": [
         "tv2-t1-b17-viet-chu-hoa-1",
         "tv2-t1-b17-viet-ung-dung-2",
@@ -711,10 +711,10 @@
     },
     {
       "id": "qua-cua-bo-sua-mo",
-      "title": "Chiếc chuông của Bò Sữa Mơ",
+      "title": "Chiếc lục lạc của Nai Nhung",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Bò Sữa Mơ đeo cho {name} một chiếc chuông đồng nhỏ xíu: lạc nhau ở đâu cứ rung leng keng là bạn bè tìm thấy. Thỏ Lúa xin một cái, để rung cho chính mình nhớ đường về."
+      "text": "Nai Nhung tặng {name} một chiếc lục lạc kết bằng quả keo khô: lạc nhau ở đâu cứ lắc lách cách là bạn bè tìm thấy. Thỏ Lúa xin một cái, để lắc cho chính mình nhớ đường về."
     },
     {
       "id": "mo-bai-18",

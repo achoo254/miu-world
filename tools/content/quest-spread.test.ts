@@ -23,7 +23,7 @@ const targets = {
 };
 
 /** Only the fields the rule reads: id, region, status, places and the steps' kinds and targets. */
-function quest(id: string, steps: Array<{ kind: string; target?: string; targets?: string[] }>, places: Record<string, string> = {}, region = 'truong-hoc'): QuestDefinition {
+function quest(id: string, steps: Array<{ kind: string; target?: string; targets?: string[]; lines?: Array<{ speaker: string; text: string }> }>, places: Record<string, string> = {}, region = 'truong-hoc'): QuestDefinition {
   return { id, region, status: 'active', places, steps: steps.map((s, i) => ({ id: `s${i}`, ...s })) } as unknown as QuestDefinition;
 }
 
@@ -74,5 +74,13 @@ describe('quest spread', () => {
     // the sign is a thing, and Vẹt Xanh guides the forest.
     expect([...report.overCap.keys()].sort()).toEqual(['fox', 'owl', 'parrot']);
     expect(report.overCap.get('fox')).toEqual(['a', 'b', 'c']);
+  });
+
+  it('keeps a character on one map, whether it stands there or only speaks a line', () => {
+    const spread = (steps: Parameters<typeof quest>[1]) =>
+      questSpread([quest('a', [{ kind: 'dialogue', target: 'fox' }]), quest('b', steps, {}, 'cho-phien')], targets, looks).acrossMaps;
+    expect(spread([{ kind: 'dialogue', target: 'owl' }])).toEqual(new Map());
+    expect(spread([{ kind: 'dialogue', target: 'fox-at-gate' }])).toEqual(new Map([['Cáo', ['cho-phien', 'truong-hoc']]]));
+    expect(spread([{ kind: 'dialogue', target: 'owl', lines: [{ speaker: 'Cáo', text: 'Chào!' }, { speaker: 'Cả lớp', text: 'Chào!' }] }])).toEqual(new Map([['Cáo', ['cho-phien', 'truong-hoc']]]));
   });
 });

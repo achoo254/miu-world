@@ -1,20 +1,20 @@
 {
   "id": "tv2-t08-b15",
-  "region": "khu-rung-bi-mat",
-  "chapter": 9,
-  "title": "Kệ sách đổ rầm trong hốc cây",
+  "region": "thu-vien",
+  "chapter": 1,
+  "title": "Kệ sách đổ rầm trong phòng đọc",
   "status": "active",
   "lesson": "tv2-t1-b15",
-  "summary": "Thỏ Lò Xo nhảy cẫng lên trong hốc cây làm cả kệ sách của cô thủ thư Gấu Me đổ rầm, sách văng tứ tung, trang mục lục bay mất. {name} nhặt sách, đọc bài \"Cuốn sách của em\" để biết tên sách, tác giả, nhà xuất bản, mục lục nằm ở đâu, rồi nghe Vẹt Xanh kể chuyện \"Hoạ mi, vẹt và quạ\".",
+  "summary": "Thỏ Lò Xo nhún nhảy trên đống gối của góc đọc, làm cả kệ sách của cô Gấu Me đổ rầm, sách văng khắp lối đi, trang mục lục bay mất. {name} nhặt sách, đọc bài \"Cuốn sách của em\" để biết tên sách, tác giả, nhà xuất bản, mục lục nằm ở đâu, rồi cùng bác thủ thư Gấu Trúc Tròn xếp tranh, kể chuyện \"Hoạ mi, vẹt và quạ\".",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Gấu Me (cô thủ thư nói khẽ, hay \"Suỵt!\"), Thỏ Lò Xo nhảy tưng tưng không ngồi yên, Vẹt Xanh lắm lời tự nhận là chắt của chú vẹt trong truyện",
-    "where": "Kệ sách trong hốc cây lớn của Khu rừng bí mật: bàn thủ thư, bậc rễ cây, chạc cây cao và lối vào hốc cây đầy sách văng ra",
+    "who": "Gấu Me (cô trông phòng đọc nói khẽ, hay \"Suỵt!\"), Thỏ Lò Xo nhảy tưng tưng không ngồi yên, bác thủ thư Gấu Trúc Tròn chậm mà chắc, đọc truyện từng trang một",
+    "where": "Phòng đọc của Thư viện: góc đọc có gối, kệ sách lớn, bậc cầu thang lên gác sách, bàn thủ thư và lối đi giữa các kệ đầy sách văng ra",
     "goal": "Xếp lại kệ sách cho ngăn nắp, dán nhãn đúng các phần của cuốn sách và tìm lại trang mục lục",
     "play": "Tìm đồ, nói về bìa sách, đọc bài, nối thông tin, xếp thứ tự, chọn nhiều đáp án, trắc nghiệm, phân nhóm từ, lựa chọn trong hội thoại, xếp tranh, kể chuyện, phiếu viết",
     "learn": "Tiếng Việt 2 Bài 15: đọc hiểu \"Cuốn sách của em\", tên sách, tác giả, nhà xuất bản, mục lục, từ chỉ người, vật, hoạt động, viết chữ hoa G, kể chuyện \"Hoạ mi, vẹt và quạ\"",
     "reward": "80 XP, 15 xu, Đọc hiểu +2, Từ ngữ +1, Kể chuyện +1",
-    "next": "Bài 16 \"Khi trang sách mở ra\""
+    "next": "Bài 16 \"Khi trang sách mở ra\" ở vườn đọc sách của Thư viện"
   },
   "phases": {
     "hook": "ke-sach-do-ram",
@@ -35,27 +35,27 @@
     }
   },
   "places": {
-    "tv2-t08-b15-gau-me": "bàn thủ thư",
-    "ke-sach": "hốc cây kệ sách",
-    "tv2-t08-b15-tho-lo-xo": "bậc rễ cây",
-    "vet-xanh": "chạc cây cao",
-    "nhat-sach-van-ra": "lối vào hốc cây"
+    "tv2-t08-b15-gau-me": "góc đọc có gối",
+    "ke-sach": "kệ sách phòng đọc",
+    "tv2-t08-b15-tho-lo-xo": "bậc cầu thang gác sách",
+    "gau-truc": "bàn thủ thư",
+    "nhat-sach-van-ra": "lối đi giữa các kệ sách"
   },
   "steps": [
     {
       "id": "ke-sach-do-ram",
       "title": "Ai làm đổ kệ sách?",
-      "goTo": "Chui vào hốc cây, Gấu Me đang đứng sững bên bàn thủ thư",
+      "goTo": "Bước vào phòng đọc, Gấu Me đang đứng sững bên góc đọc có gối",
       "kind": "dialogue",
       "target": "tv2-t08-b15-gau-me",
       "lines": [
         {
           "speaker": "Thỏ Lò Xo",
-          "text": "Không phải tớ! À… thật ra là tớ. Tớ nhảy lên lấy cuốn sách trên cùng, thế là… rầm!"
+          "text": "Không phải tớ! À… thật ra là tớ. Tớ nhún trên đống gối để với cuốn sách trên cùng, thế là… rầm!"
         },
         {
           "speaker": "Gấu Me",
-          "text": "Suỵt… khẽ thôi nào. Sách văng ra tận lối vào, trang mục lục của cuốn sách mới cũng bay đâu mất rồi."
+          "text": "Suỵt… khẽ thôi nào. Sách văng ra tận lối đi giữa các kệ, trang mục lục của cuốn sách mới cũng bay đâu mất rồi."
         },
         {
           "speaker": "Thỏ Lò Xo",
@@ -79,8 +79,8 @@
     },
     {
       "id": "nhat-sach-van-ra",
-      "title": "Nhặt sách văng ra ngoài",
-      "goTo": "Nhặt sách và trang mục lục văng ra lối vào hốc cây",
+      "title": "Nhặt sách văng khắp lối đi",
+      "goTo": "Nhặt sách và trang mục lục văng ra lối đi giữa các kệ sách",
       "kind": "search",
       "targets": [
         "tv2-t08-sach-de-men",
@@ -91,7 +91,7 @@
     {
       "id": "bia-sach-de-men",
       "title": "Bìa cuốn sách có chú dế",
-      "goTo": "Ôm sách về bàn thủ thư cho Gấu Me",
+      "goTo": "Ôm sách về góc đọc có gối cho Gấu Me",
       "kind": "speak",
       "target": "tv2-t08-b15-gau-me",
       "prompt": "Gấu Me phủi bụi cuốn sách có chú dế chống nạnh trên bìa, rồi khẽ hỏi {name}:\nQuan sát bìa sách sau và cho biết các thông tin có trên bìa sách.",
@@ -116,7 +116,7 @@
     {
       "id": "doc-cuon-sach",
       "title": "Đọc bài về cuốn sách",
-      "goTo": "Đến hốc cây kệ sách, bài đọc dán ngay cạnh ngăn trên cùng",
+      "goTo": "Đến kệ sách phòng đọc, bài đọc dán ngay cạnh ngăn trên cùng",
       "kind": "read",
       "target": "ke-sach",
       "textRef": "cuon-sach-cua-em",
@@ -170,7 +170,7 @@
     {
       "id": "nhan-ten-sach",
       "title": "Nhãn cho ngăn tên sách",
-      "goTo": "Ra bậc rễ cây, Thỏ Lò Xo đang nhún nhảy cầm tấm nhãn",
+      "goTo": "Ra bậc cầu thang gác sách, Thỏ Lò Xo đang nhún nhảy cầm tấm nhãn",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "target": "tv2-t08-b15-tho-lo-xo",
@@ -286,7 +286,7 @@
       "feedback": {
         "right": [
           "Tác giả là người viết sách, chuẩn không cần chỉnh!",
-          "Gấu Me thì thầm từ bàn thủ thư: Tô Hoài là tác giả của chú dế đấy.",
+          "Gấu Me thì thầm từ góc đọc: Tô Hoài là tác giả của chú dế đấy.",
           "Nhãn thứ hai vào chỗ, kệ sách gọn thêm một ngăn."
         ],
         "wrong": [
@@ -299,7 +299,7 @@
     {
       "id": "nhan-nha-xuat-ban",
       "title": "Nhãn cho ngăn nhà xuất bản",
-      "goTo": "Mang tấm nhãn dài nhất vào hốc cây kệ sách",
+      "goTo": "Mang tấm nhãn dài nhất tới kệ sách phòng đọc",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "target": "ke-sach",
@@ -364,7 +364,7 @@
     {
       "id": "nhan-muc-luc",
       "title": "Nhãn cho ngăn mục lục",
-      "goTo": "Thỏ Lò Xo nhảy ra bậc rễ cây, giơ tấm nhãn cuối cùng",
+      "goTo": "Thỏ Lò Xo nhảy lên bậc cầu thang gác sách, giơ tấm nhãn cuối cùng",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "target": "tv2-t08-b15-tho-lo-xo",
@@ -490,7 +490,7 @@
     {
       "id": "cho-dat-ten-sach",
       "title": "Tên ở đâu trên bìa sách?",
-      "goTo": "Về bàn thủ thư, Gấu Me giơ cuốn Dế Mèn lên cao",
+      "goTo": "Về góc đọc có gối, Gấu Me giơ cuốn Dế Mèn lên cao",
       "kind": "challenge",
       "mechanic": "classify",
       "target": "tv2-t08-b15-gau-me",
@@ -562,11 +562,11 @@
     {
       "id": "trang-muc-luc",
       "title": "Trang mục lục bay về",
-      "goTo": "Vào hốc cây kệ sách vuốt phẳng trang mục lục",
+      "goTo": "Tới kệ sách phòng đọc vuốt phẳng trang mục lục",
       "kind": "challenge",
       "mechanic": "multi-select",
       "target": "ke-sach",
-      "prompt": "{name} vuốt phẳng trang mục lục nhặt được ở lối vào. Trên đó ghi: Phần 1. THẾ GIỚI ĐỘNG VẬT – Khủng long 5, Khỉ 8, Voi 14, Cá heo 18, Gấu 22; Phần 2. THẾ GIỚI THỰC VẬT – Xương rồng 25, Thông 29, Đước 33.\nĐọc mục lục bên và cho biết:\na. Phần 2 có những mục nào?",
+      "prompt": "{name} vuốt phẳng trang mục lục nhặt được ở lối đi giữa các kệ. Trên đó ghi: Phần 1. THẾ GIỚI ĐỘNG VẬT – Khủng long 5, Khỉ 8, Voi 14, Cá heo 18, Gấu 22; Phần 2. THẾ GIỚI THỰC VẬT – Xương rồng 25, Thông 29, Đước 33.\nĐọc mục lục bên và cho biết:\na. Phần 2 có những mục nào?",
       "choices": [
         {
           "id": "khung-long",
@@ -631,7 +631,7 @@
     {
       "id": "trang-xuong-rong",
       "title": "Cây xương rồng ở trang nào?",
-      "goTo": "Ra bậc rễ cây, Thỏ Lò Xo đang ôm cuốn sách nhảy tưng tưng",
+      "goTo": "Ra bậc cầu thang gác sách, Thỏ Lò Xo đang ôm cuốn sách nhảy tưng tưng",
       "kind": "challenge",
       "mechanic": "quiz",
       "target": "tv2-t08-b15-tho-lo-xo",
@@ -671,7 +671,7 @@
       "feedback": {
         "right": [
           "Trang 25! Thỏ Lò Xo lật vèo tới nơi, lần này không chạm vào gai nữa.",
-          "Chuẩn rồi, mục lục chỉ đường nhanh hơn cả Vẹt Xanh.",
+          "Chuẩn rồi, mục lục chỉ đường nhanh hơn chạy dọc mười dãy kệ.",
           "Gấu Me đánh dấu trang 25 bằng một lá me non."
         ],
         "wrong": [
@@ -684,7 +684,7 @@
     {
       "id": "nguoi-vat-hay-viec",
       "title": "Xếp năm từ về hai giỏ",
-      "goTo": "Về bàn thủ thư, Gấu Me đặt hai cái giỏ mây xuống đất",
+      "goTo": "Về góc đọc có gối, Gấu Me đặt hai cái giỏ mây xuống thảm",
       "kind": "challenge",
       "mechanic": "classify",
       "target": "tv2-t08-b15-gau-me",
@@ -761,47 +761,47 @@
     },
     {
       "id": "chat-cua-vet",
-      "title": "Vẹt Xanh và cụ vẹt trong truyện",
-      "goTo": "Ngẩng lên chạc cây cao, Vẹt Xanh vừa đáp xuống ôm một cuốn truyện",
+      "title": "Bác thủ thư ôm truyện xuống",
+      "goTo": "Sang bàn thủ thư, bác Gấu Trúc Tròn vừa ôm cuốn truyện từ gác sách xuống",
       "kind": "dialogue",
-      "target": "vet-xanh",
+      "target": "gau-truc",
       "lines": [
         {
-          "speaker": "Vẹt Xanh",
-          "text": "Tránh ra! Tránh ra! Truyện \"Hoạ mi, vẹt và quạ\" đây! Chú vẹt trong truyện là cụ cố của cụ cố của tớ đấy!"
+          "speaker": "Gấu Trúc Tròn",
+          "text": "Bác xuống đây… từng bậc… từng bậc một. Chậm mà chắc, cuốn truyện \"Hoạ mi, vẹt và quạ\" vẫn còn nguyên trong tay bác."
         },
         {
           "speaker": "Thỏ Lò Xo",
-          "text": "Thật không? Sao cậu biết?"
+          "text": "Bác ơi, bác kể luôn đi! Kể nhanh nhanh lên, tai cháu dựng đứng hết cả rồi!"
         },
         {
-          "speaker": "Vẹt Xanh",
-          "text": "Vì cụ ấy cũng lắm lời y như tớ! Y như tớ! Nhưng tranh rơi lộn xộn hết cả, tớ chưa kể được."
+          "speaker": "Gấu Trúc Tròn",
+          "text": "Bác kể chậm thôi, kể chậm thì nhớ lâu. Nhưng bốn bức tranh kẹp trong truyện vừa bị cháu nhảy trúng, rơi lộn xộn cả rồi."
         },
         {
           "speaker": "Gấu Me",
-          "text": "Suỵt, Vẹt Xanh ơi, khẽ thôi! {name} có muốn xếp tranh trước khi Vẹt Xanh kể lạc đề không?"
+          "text": "Suỵt, Lò Xo đứng yên nào! {name} có muốn xếp tranh trước, rồi bác Gấu Trúc mới kể không?"
         }
       ],
       "choices": [
         {
-          "text": "Có chứ! Mình xếp tranh trước, Vẹt Xanh kể sau nhé.",
-          "reply": "Vẹt Xanh ưỡn ngực: đồng ý! đồng ý! Tranh xếp xong là tớ kể không ngừng!"
+          "text": "Có ạ! Cháu xếp tranh trước, bác kể sau nhé.",
+          "reply": "Bác Gấu Trúc Tròn gật đầu một cái thật chậm: được, cháu cứ xếp thong thả, bác chờ."
         },
         {
-          "text": "Vẹt Xanh ơi, chắc gì cụ vẹt trong truyện là cụ của cậu?",
-          "reply": "Vẹt Xanh nghiêng đầu: ừ thì… chắc là họ hàng xa. Xa lắm. Xa xa!"
+          "text": "Bác ơi, sao lúc nào bác cũng làm chậm thế ạ?",
+          "reply": "Bác Gấu Trúc Tròn cười hiền: vì làm chậm thì không đánh rơi trang nào, cháu ạ."
         }
       ]
     },
     {
       "id": "xep-tranh-hoa-mi",
       "title": "Xếp bốn tranh câu chuyện",
-      "goTo": "Bốn bức tranh rơi xuống chân hốc cây kệ sách, nhặt lên xếp lại",
+      "goTo": "Bốn bức tranh rơi dưới chân kệ sách phòng đọc, nhặt lên xếp lại",
       "kind": "challenge",
       "mechanic": "sort",
       "target": "ke-sach",
-      "prompt": "Nghe kể chuyện.\nHoạ mi, vẹt và quạ nói chuyện gì với nhau?\nHoạ mi, vẹt và quạ đến gặp chim hoàng oanh vì chuyện gì?\nVì sao quạ bỏ các bạn bay đi?\nCâu chuyện kết thúc thế nào?\nVẹt Xanh làm rơi bốn bức tranh của câu chuyện. Xếp lại tranh theo đúng thứ tự để cả hốc cây nghe kể nhé.",
+      "prompt": "Nghe kể chuyện.\nHoạ mi, vẹt và quạ nói chuyện gì với nhau?\nHoạ mi, vẹt và quạ đến gặp chim hoàng oanh vì chuyện gì?\nVì sao quạ bỏ các bạn bay đi?\nCâu chuyện kết thúc thế nào?\nThỏ Lò Xo nhảy trúng bốn bức tranh của câu chuyện, tranh rơi lộn xộn. Xếp lại tranh theo đúng thứ tự để cả phòng đọc nghe kể nhé.",
       "items": [
         {
           "id": "tranh-3",
@@ -877,9 +877,9 @@
       },
       "feedback": {
         "right": [
-          "Bốn tranh nối đuôi nhau như bốn toa tàu! Vẹt Xanh hắng giọng chuẩn bị kể.",
+          "Bốn tranh nối đuôi nhau như bốn toa tàu! Bác Gấu Trúc Tròn đeo kính lên, sẵn sàng kể.",
           "Đúng thứ tự rồi, câu chuyện bắt đầu, có giữa, có kết.",
-          "Gấu Me treo bốn tranh lên vách hốc cây, ngay ngắn tăm tắp."
+          "Gấu Me dựng bốn tranh lên giá cạnh kệ sách, ngay ngắn tăm tắp."
         ],
         "wrong": [
           "Quạ chưa thể bay đi khi ba bạn còn chưa gặp hoàng oanh mà.",
@@ -891,10 +891,10 @@
     {
       "id": "ke-chuyen-hoa-mi",
       "title": "Kể chuyện theo tranh",
-      "goTo": "Leo lên chạc cây cao nghe Vẹt Xanh kể chuyện",
+      "goTo": "Về bàn thủ thư nghe bác Gấu Trúc Tròn kể chuyện",
       "kind": "speak",
-      "target": "vet-xanh",
-      "prompt": "Vẹt Xanh kể một mạch… rồi quên mất đoạn giữa. Đến lượt {name} kể giúp!\nNghe kể chuyện.\nChọn kể 1 – 2 đoạn của câu chuyện theo tranh.",
+      "target": "gau-truc",
+      "prompt": "Bác Gấu Trúc Tròn kể chậm rãi từng tranh, rồi gấp sách lại: giờ bác muốn nghe {name} kể.\nNghe kể chuyện.\nChọn kể 1 – 2 đoạn của câu chuyện theo tranh.",
       "hints": [
         "Hoạ mi, vẹt và quạ nói chuyện gì với nhau?",
         "Hoạ mi, vẹt và quạ đến gặp chim hoàng oanh vì chuyện gì?",
@@ -943,7 +943,7 @@
     {
       "id": "ke-cho-nguoi-than",
       "title": "Kể lại cho người thân",
-      "goTo": "Về bàn thủ thư, Gấu Me khẽ dặn thêm một điều",
+      "goTo": "Về góc đọc có gối, Gấu Me khẽ dặn thêm một điều",
       "kind": "speak",
       "target": "tv2-t08-b15-gau-me",
       "prompt": "Gấu Me bảo: kể một lần thì nhớ một hôm, kể cho người nhà nghe thì nhớ… cả năm.\nKể cho người thân nghe câu chuyện Hoạ mi, vẹt và quạ.",
@@ -973,14 +973,14 @@
       "title": "Thẻ kẹp sách hình lá me",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Gấu Me tặng {name} một chiếc thẻ kẹp sách cắt từ lá me khô, một mặt in chữ \"mục lục\", mặt kia in dấu móng vuốt của cô thủ thư. Vẹt Xanh tặng thêm… một bài kể chuyện dài nửa tiếng."
+      "text": "Gấu Me tặng {name} một chiếc thẻ kẹp sách cắt từ lá me khô, một mặt in chữ \"mục lục\", mặt kia in dấu móng vuốt của cô trông phòng đọc. Bác Gấu Trúc Tròn đóng thêm con dấu tròn của thư viện, ấn thật chậm cho thật rõ."
     },
     {
       "id": "mo-bai-16",
       "title": "Trang sách hoá thành cảnh thật",
       "kind": "next",
       "trigger": "auto",
-      "text": "Trên tảng đá phẳng ven rừng, Nai Mơ vừa lật một trang sách thì lá cây, cánh chim, giọt mưa trong sách bỗng bay ra lượn quanh. Cảnh gì mà kì lạ thế này?"
+      "text": "Ngoài vườn đọc sách, trên tảng đá phẳng bên suối nhỏ, Nai Mơ vừa lật một trang sách thì lá cây, cánh chim, giọt mưa trong sách bỗng bay ra lượn quanh. Cảnh gì mà kì lạ thế này?"
     }
   ],
   "reward": {

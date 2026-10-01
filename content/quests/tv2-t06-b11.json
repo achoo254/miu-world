@@ -1,15 +1,15 @@
 {
   "id": "tv2-t06-b11",
-  "region": "khu-rung-bi-mat",
-  "chapter": 7,
+  "region": "truong-hoc",
+  "chapter": 3,
   "title": "Đánh thức trống trường",
   "status": "active",
   "lesson": "tv2-t1-b11",
-  "summary": "Cái trống trường bên suối im tiếng suốt mùa hè. {name} cùng Chó Lu tìm lại dùi trống, đọc bài thơ “Cái trống trường em” khắc trên giá, sang nhịp cầu gỗ cùng Hải Ly Mộc tìm từ nói về trống như nói về người, rồi gõ vang tiếng trống đón năm học mới cho cả Cá Chép Hồng dưới suối nghe.",
+  "summary": "Cái trống trường trong chòi trống giữa sân im tiếng suốt mùa hè. {name} cùng Chó Lu tìm lại dùi trống, đọc bài thơ “Cái trống trường em” khắc trên giá, ra hàng rào gỗ cùng Hải Ly Mộc tìm từ nói về trống như nói về người, rồi gõ vang tiếng trống đón năm học mới cho cả Cá Chép Hồng dưới hồ cá nghe.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Chó Lu (canh chòi trống, “Gâu!” vẫy đuôi tít), Hải Ly Mộc đóng cầu bên chòi, Cá Chép Hồng tò mò dưới suối",
-    "where": "Chòi trống bên suối, hiên chòi, nhịp cầu gỗ, khúc suối trong và bờ suối quanh chòi",
+    "who": "Chó Lu (canh chòi trống, “Gâu!” vẫy đuôi tít), Hải Ly Mộc sửa hàng rào gỗ bên chòi, Cá Chép Hồng tò mò dưới hồ cá",
+    "where": "Chòi trống giữa sân trường: hiên chòi, giá trống, hàng rào gỗ cạnh chòi, hồ cá nhỏ trong sân và bãi cỏ cạnh chòi",
     "goal": "Đánh thức cái trống trường đã im tiếng cả mùa hè",
     "play": "Tìm đồ dọc bờ suối, nói về tiếng trống, đọc thơ, xếp dòng thơ vào giỏ, chọn một đáp án, chọn nhiều đáp án, xếp lời tạm biệt, nói và đáp, điền chữ vào khổ thơ, nói về trường em, phiếu viết",
     "learn": "Tiếng Việt 2 Bài 11: đọc hiểu bài thơ “Cái trống trường em”, từ ngữ nói về vật như nói về người, nói và đáp lời tạm biệt, nói về ngôi trường của em, viết chữ hoa Đ",
@@ -43,15 +43,15 @@
   "places": {
     "tv2-t06-b11-cho-lu": "hiên chòi",
     "tv2-t06-trong-truong": "chòi trống",
-    "tv2-t06-b11-hai-ly-moc": "nhịp cầu gỗ",
-    "tv2-t06-b11-ca-chep-hong": "khúc suối trong",
-    "tim-do-cua-trong": "bờ suối quanh chòi"
+    "tv2-t06-b11-hai-ly-moc": "hàng rào gỗ",
+    "tv2-t06-b11-ca-chep-hong": "hồ cá nhỏ trong sân",
+    "tim-do-cua-trong": "bãi cỏ cạnh chòi"
   },
   "steps": [
     {
       "id": "trong-ngu-ca-he",
       "title": "Cái trống ngủ cả hè",
-      "goTo": "Xuống chòi trống bên suối, Chó Lu đang vẫy đuôi gọi ở hiên chòi",
+      "goTo": "Ra chòi trống giữa sân trường, Chó Lu đang vẫy đuôi gọi ở hiên chòi",
       "kind": "dialogue",
       "target": "tv2-t06-b11-cho-lu",
       "lines": [
@@ -65,7 +65,7 @@
         },
         {
           "speaker": "Hải Ly Mộc",
-          "text": "Tớ đóng nhịp cầu mới ngay cạnh chòi cả hè, chưa nghe trống kêu lần nào. Chắc dùi trống trôi đâu mất rồi."
+          "text": "Tớ sửa hàng rào gỗ ngay cạnh chòi suốt cả hè, chưa nghe trống kêu lần nào. Chắc dùi trống lăn đâu mất rồi."
         },
         {
           "speaker": "Chó Lu",
@@ -79,14 +79,14 @@
         },
         {
           "text": "Hay là trống đang ngủ nướng?",
-          "reply": "Ngủ suốt ba tháng hè thì còn hơn cả Koala Na! Phải đánh thức nó thôi."
+          "reply": "Ngủ suốt ba tháng hè thì còn hơn cả mèo lười! Phải đánh thức nó thôi."
         }
       ]
     },
     {
       "id": "tim-do-cua-trong",
       "title": "Tìm đồ cho trống",
-      "goTo": "Lần dọc bờ suối quanh chòi, tìm đồ của trống",
+      "goTo": "Lần quanh bãi cỏ cạnh chòi, tìm đồ của trống",
       "kind": "search",
       "targets": [
         "tv2-t06-dui-trong",
@@ -386,7 +386,7 @@
     {
       "id": "ngam-nghi-la-gi",
       "title": "Ngẫm nghĩ là gì?",
-      "goTo": "Qua nhịp cầu gỗ, Hải Ly Mộc đang gặm dở một khúc gỗ",
+      "goTo": "Ra hàng rào gỗ, Hải Ly Mộc đang gặm dở một thanh gỗ",
       "kind": "challenge",
       "mechanic": "quiz",
       "target": "tv2-t06-b11-hai-ly-moc",
@@ -424,7 +424,7 @@
         "right": [
           "Đúng rồi! Hải Ly Mộc thử ngẫm nghĩ, mặt nhăn như quả táo khô.",
           "Chuẩn! Nghĩ đi nghĩ lại, chứ không phải gặm đi gặm lại đâu.",
-          "Hay quá! Hải Ly Mộc ghi nhớ từ mới, đập đuôi dẹt xuống ván cầu hai cái."
+          "Hay quá! Hải Ly Mộc ghi nhớ từ mới, đập đuôi dẹt xuống thanh rào hai cái."
         ],
         "wrong": [
           "Ngủ say thì đâu có nghĩ gì! Xem lại ô Từ ngữ nhé.",
@@ -483,7 +483,7 @@
       "feedback": {
         "right": [
           "Đúng ba từ! Trống biết nghĩ, biết buồn, biết vui y như người.",
-          "Chuẩn! Hải Ly Mộc gõ đuôi lên ván cầu: trống ơi, cậu giống tớ ghê.",
+          "Chuẩn! Hải Ly Mộc gõ đuôi lên hàng rào: trống ơi, cậu giống tớ ghê.",
           "Giỏi quá! Không bị chữ “đi vắng” lừa chút nào."
         ],
         "wrong": [
@@ -579,7 +579,7 @@
         },
         {
           "speaker": "Hải Ly Mộc",
-          "text": "Gõ nhẹ trước rồi mạnh dần, giống tớ đóng đinh cho nhịp cầu ấy."
+          "text": "Gõ nhẹ trước rồi mạnh dần, giống tớ đóng đinh cho hàng rào ấy."
         },
         {
           "speaker": "Chó Lu",
@@ -669,8 +669,8 @@
       "feedback": {
         "right": [
           "TÙNG! TÙNG! Trống thức dậy rồi! Chó Lu nhảy cẫng ba vòng quanh chòi.",
-          "Đúng hết! Tiếng trống vang tới tận nhịp cầu của Hải Ly Mộc.",
-          "Tuyệt vời! Cả rừng nghe trống gọi, chim chóc bay lên chào."
+          "Đúng hết! Tiếng trống vang tới tận hàng rào của Hải Ly Mộc.",
+          "Tuyệt vời! Cả trường nghe trống gọi, đàn chim sẻ trên mái bay lên chào."
         ],
         "wrong": [
           "Trống đang ngủ thì làm sao kêu “Tùng!” được? Thử chữ khác nhé.",
@@ -682,7 +682,7 @@
     {
       "id": "truong-em-co-gi-vui",
       "title": "Trường em có gì vui?",
-      "goTo": "Ra khúc suối trong, Cá Chép Hồng nhảy vọt lên chào",
+      "goTo": "Ra hồ cá nhỏ trong sân, Cá Chép Hồng nhảy vọt lên chào",
       "kind": "speak",
       "target": "tv2-t06-b11-ca-chep-hong",
       "prompt": "Trống vừa thức dậy, Cá Chép Hồng đã ngoi lên hỏi ngay về trường của {name}, đuôi quẫy không ngừng.\nNói những điều em thích về trường của em.",
@@ -737,14 +737,14 @@
       "title": "Chiếc dùi trống tí hon",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Chó Lu tặng {name} một chiếc dùi trống tí hon khắc chữ “Tùng!”, còn Hải Ly Mộc mời {name} bước thử đầu tiên lên nhịp cầu gỗ vừa đóng xong bên chòi."
+      "text": "Chó Lu tặng {name} một chiếc dùi trống tí hon khắc chữ “Tùng!”, còn Hải Ly Mộc mời {name} ngồi thử chiếc ghế gỗ đầu tiên vừa đóng xong bên hàng rào."
     },
     {
       "id": "mo-bai-12",
       "title": "Danh sách ướt sũng",
       "kind": "next",
       "trigger": "auto",
-      "text": "Mưa rào đổ xuống gốc cây thư viện. Gấu Trúc Tròn ôm tờ danh sách ướt sũng, tên các bạn nhoè hết. Ai giúp cậu ấy từ… từ… đọc lại đây?"
+      "text": "Mưa rào hắt qua cửa sổ phòng đọc của trường. Cô thủ thư Mèo Kính ôm tờ danh sách ướt sũng, tên các bạn nhoè hết, dí sát mắt cũng chẳng đọc ra. Ai giúp cô đọc lại đây?"
     }
   ],
   "reward": {

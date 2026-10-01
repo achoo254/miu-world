@@ -90,6 +90,11 @@ export const ZONES: ReadonlyArray<{ id: string; name: string; topic: number; x: 
   { id: 'thap-dong-ho', name: 'Tháp đồng hồ', topic: 6, x: 96, z: 96, hx: 24, hz: 10, floor: 'stone' },
   { id: 'hoi-truong', name: 'Hội trường', topic: 7, x: 149, z: 116, hx: 21, hz: 30, floor: 'planks' },
 ];
+/**
+ * The zone each chapter's places go in (by its topic number): chapter 1 is Toán topic 1 in the yard; the
+ * Tiếng Việt weeks 5–7 (chapters 2–4) play behind the classrooms, in the garden and on the playground.
+ */
+const CHAPTER_ZONE: Readonly<Record<number, number>> = { 1: 1, 2: 6, 3: 2, 4: 4 };
 /** Campus wall (inclusive) and the gate's opening on its south side. */
 export const CAMPUS = { x0: 16, x1: 175, z0: 17, z1: 152 };
 const GATE: readonly [number, number] = [91, 101];
@@ -278,15 +283,15 @@ export async function generateSchool(): Promise<{ world: VoxelWorld; entities: W
     if (y > GROUND + 2 || world.get(x, y, z) !== 0 || world.get(x, y + 1, z) !== 0) return false; // walls, beds, trees
     return !propCells.some(([px, pz]) => Math.hypot(px - x, pz - z) < 1.5);
   };
-  const zoneCells = (topic: number) => {
-    const zn = zone(topic);
+  const zoneCells = (chapter: number) => {
+    const zn = zone(CHAPTER_ZONE[chapter] ?? chapter);
     return cellsIn(zn.x - zn.hx + 1, zn.z - zn.hz + 1, zn.x + zn.hx - 1, zn.z + zn.hz - 1);
   };
   const spawnAt: [number, number] = [mid, CAMPUS.z0 + 3];
   const allInteractables = await placeRegionTargets({
     mapId: MAP_ID,
     region: 'truong-hoc',
-    map: { canStand, stand: place, chapterCells: zoneCells, residentCells: ZONES.flatMap((zn) => zoneCells(zn.topic)), keepClear: [spawnAt, ...columnsOf(interactables)] },
+    map: { canStand, stand: place, chapterCells: zoneCells, residentCells: Object.keys(CHAPTER_ZONE).flatMap((chapter) => zoneCells(Number(chapter))), keepClear: [spawnAt, ...columnsOf(interactables)] },
     interactables,
     seed: seed + 7,
   });

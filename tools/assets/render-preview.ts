@@ -138,11 +138,38 @@ async function schoolShots(): Promise<Shot[]> {
   }));
 }
 
+/** Maps built zone by zone (tools/world/zone-map.ts): their region, for `pnpm assets:preview <map>`. */
+export const ZONE_MAPS: Record<string, string> = Object.fromEntries(['lang-ven-song', 'xom-mai-am', 'cho-phien', 'nong-trai', 'thu-vien', 'lau-dai'].map((m) => [m, m]));
+
+/**
+ * A zone map for the owner to judge: the whole map from the south and from above, then each zone (its
+ * landmark is at the zone's centre) from its south-west, high enough to see the zone's places.
+ */
+async function zoneMapShots(map: string, region: string): Promise<Shot[]> {
+  const entities = JSON.parse(await readFile(path.join(ASSETS_DIR, 'generated/world', map, 'entities.json'), 'utf8')) as {
+    size: [number, number, number];
+    landmarks: Array<{ id: string; position: [number, number, number] }>;
+  };
+  const [sx, , sz] = entities.size;
+  const view = (eye: readonly number[], target: readonly number[], fov: number): string => `view:${eye.map(Math.round).join(',')}:${target.map(Math.round).join(',')}:${fov}`;
+  const wide = { width: 1280, height: 720 };
+  const shots: Shot[] = [
+    { file: `${map}-toan-canh.png`, query: { shot: view([sx / 2, sx * 0.62, -sz * 0.3], [sx / 2, 12, sz * 0.55], 55), quality: 'high', region }, viewport: wide },
+    { file: `${map}-tren-cao.png`, query: { shot: view([sx / 2, sx * 1.25, sz / 2 + 1], [sx / 2, 12, sz / 2], 55), quality: 'high', region }, viewport: { width: 1000, height: 1000 } },
+  ];
+  for (const landmark of entities.landmarks) {
+    const [x, y, z] = landmark.position;
+    shots.push({ file: `${map}-${landmark.id}.png`, query: { shot: view([x - 22, y + 20, z - 30], [x, y, z], 60), quality: 'high', region }, viewport: wide });
+  }
+  return shots;
+}
+
 export const SHOT_GROUPS: Record<string, () => Promise<Shot[]>> = {
   character: characterShots,
   accessories: accessoryShots,
   map: mapShots,
   school: schoolShots,
+  ...Object.fromEntries(Object.entries(ZONE_MAPS).map(([map, region]) => [map, () => zoneMapShots(map, region)])),
 };
 
 async function capture(browser: Browser, shots: Shot[], outDir: string): Promise<void> {

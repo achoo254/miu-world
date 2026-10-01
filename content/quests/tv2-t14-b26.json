@@ -1,20 +1,20 @@
 {
   "id": "tv2-t14-b26",
-  "region": "khu-rung-bi-mat",
-  "chapter": 15,
-  "title": "Gà Con Chíp đón em bé",
+  "region": "xom-mai-am",
+  "chapter": 1,
+  "title": "Gà Con Mẩy đón em bé",
   "status": "active",
   "lesson": "tv2-t1-b26",
-  "summary": "Nhà Gà Con Chíp sắp đón em bé từ quả trứng, Chíp lo bị quên; {name} cùng Chíp đọc bài thơ \"Em mang về yêu thương\" và chờ em chào đời.",
+  "summary": "Trong ngõ nhỏ của xóm, nhà Gà Con Mẩy sắp đón em bé từ quả trứng, Mẩy lo bị quên; {name} cùng Mẩy đọc bài thơ \"Em mang về yêu thương\", hỏi khắp hàng xóm trong ngõ và chờ em chào đời.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Gà Con Chíp, Mẹ Gà, Bố Gà Trống, em gà con trong quả trứng và bốn hàng xóm: Cáo Hạt Dẻ, Gấu Trúc Bánh Bao, Cá Rô Bọt, Chị hái nấm Thơm",
-    "where": "Tổ rơm của nhà Chíp, sân rơm quanh tổ, bụi tre đầu ngõ, bãi đất trống bên rào, vũng nước cạnh ao bèo, gốc sung ven đường, chiếc võng dưới hiên",
-    "goal": "Giúp Chíp hết lo bị quên và sẵn sàng làm anh",
+    "who": "Gà Con Mẩy, Mẹ Gà, Bố Gà Trống, em gà con trong quả trứng và bốn hàng xóm: Cáo Hạt Dẻ, Gấu Trúc Bánh Bao, Cá Rô Bọt, Chị hái nấm Thơm",
+    "where": "Ngõ nhà Mẩy trong xóm: tổ rơm của nhà Mẩy, sân rơm quanh tổ, bụi tre đầu ngõ, bãi đất trống bên rào, vũng nước cạnh ao bèo, gốc sung ven ngõ, chiếc võng dưới hiên",
+    "goal": "Giúp Mẩy hết lo bị quên và sẵn sàng làm anh",
     "play": "Tìm đầu mối, nói, đọc thơ, ghép mảnh thơ, chọn nhiều đáp án, chọn đáp án, ghép câu, chọn vần, đọc thơ cho em, phiếu viết",
     "learn": "Tiếng Việt 2 Bài 26: đọc hiểu \"Em mang về yêu thương\", từ tả em bé, họ nội họ ngoại, iên/yên/uyên, d/r, gi/r, ai/ay, ghép câu, nghe – viết, viết đoạn",
     "reward": "85 XP, 15 xu, Đọc hiểu +2, Chính tả +2, Từ ngữ +1, Câu +1",
-    "next": "Bài 27 \"Mẹ\""
+    "next": "Bài 27 \"Mẹ\": chiếc võng dưới hiên nhà Koala Na trong đêm trăng"
   },
   "phases": {
     "hook": "gap-ga-con-chip",
@@ -41,59 +41,59 @@
     }
   },
   "places": {
-    "me-ga": "tổ rơm nhà Chíp",
-    "tv2-t14-qua-trung": "tổ rơm nhà Chíp",
+    "me-ga": "tổ rơm nhà Mẩy",
+    "tv2-t14-qua-trung": "tổ rơm nhà Mẩy",
     "tim-dau-moi": "sân rơm quanh tổ",
-    "tv2-t14-vong-hien": "chiếc võng dưới hiên nhà Chíp",
+    "tv2-t14-vong-hien": "chiếc võng dưới hiên nhà Mẩy",
     "tv2-t14-b26-cao-hat-de": "bụi tre đầu ngõ",
     "tv2-t14-b26-gau-truc-banh-bao": "bãi đất trống bên rào",
     "tv2-t14-b26-ca-ro-bot": "vũng nước cạnh ao bèo",
-    "tv2-t14-b26-chi-hai-nam-thom": "gốc sung ven đường"
+    "tv2-t14-b26-chi-hai-nam-thom": "gốc sung ven ngõ"
   },
   "steps": [
     {
       "id": "gap-ga-con-chip",
-      "title": "Chíp và quả trứng bí ẩn",
-      "goTo": "Tới tổ rơm nhà Chíp, nơi tiếng chiêm chiếp đang rộn ràng",
+      "title": "Mẩy và quả trứng bí ẩn",
+      "goTo": "Tới tổ rơm nhà Mẩy, nơi tiếng chiêm chiếp đang rộn ràng",
       "kind": "dialogue",
       "target": "me-ga",
       "lines": [
         {
-          "speaker": "Gà Con Chíp",
+          "speaker": "Gà Con Mẩy",
           "text": "{name} ơi! Mẹ bảo nhà tớ sắp có em bé. Tại sao lại là \"sắp\"? Tại sao không phải ngay bây giờ?"
         },
         {
           "speaker": "Mẹ Gà",
-          "text": "Em bé đang nằm trong quả trứng này, Chíp ạ. Mẹ phải ủ ấm thêm vài hôm nữa."
+          "text": "Em bé đang nằm trong quả trứng này, Mẩy ạ. Mẹ phải ủ ấm thêm vài hôm nữa."
         },
         {
-          "speaker": "Gà Con Chíp",
-          "text": "Tại sao em lại chui vào trứng? Mà có em rồi, mẹ còn nhớ tới Chíp không ạ?"
+          "speaker": "Gà Con Mẩy",
+          "text": "Tại sao em lại chui vào trứng? Mà có em rồi, mẹ còn nhớ tới Mẩy không ạ?"
         },
         {
           "speaker": "Bố Gà Trống",
           "text": "Ò ó o! Ơ, trời chưa sáng à? Bố hồi hộp quá nên gáy nhầm giờ mất rồi."
         },
         {
-          "speaker": "Gà Con Chíp",
+          "speaker": "Gà Con Mẩy",
           "text": "Ông bảo em từ sao xuống, chú Vịt bảo em từ biển lên. Tại sao mỗi người nói một kiểu?"
         }
       ],
       "choices": [
         {
-          "text": "Mình cùng đi tìm hiểu nhé, Chíp!",
+          "text": "Mình cùng đi tìm hiểu nhé, Mẩy!",
           "reply": "Hay quá! Tớ để sẵn ba đầu mối quanh sân rơm rồi, nhưng… tớ quên mất để ở đâu."
         },
         {
-          "text": "Mẹ không quên Chíp đâu, đừng lo!",
+          "text": "Mẹ không quên Mẩy đâu, đừng lo!",
           "reply": "Thật không? Tại sao cậu biết? Thôi, đi tìm ba đầu mối với tớ đã!"
         }
       ]
     },
     {
       "id": "tim-dau-moi",
-      "title": "Ba đầu mối của Chíp",
-      "goTo": "Lục khắp sân rơm quanh tổ tìm ba đầu mối Chíp đánh rơi",
+      "title": "Ba đầu mối của Mẩy",
+      "goTo": "Lục khắp sân rơm quanh tổ tìm ba đầu mối Mẩy đánh rơi",
       "kind": "search",
       "targets": [
         "tv2-t14-ngoi-sao-giay",
@@ -104,10 +104,10 @@
     {
       "id": "ke-ve-em-be",
       "title": "Kể về một em bé",
-      "goTo": "Mang ba đầu mối về tổ rơm nhà Chíp cho Mẹ Gà xem",
+      "goTo": "Mang ba đầu mối về tổ rơm nhà Mẩy cho Mẹ Gà xem",
       "kind": "speak",
       "target": "me-ga",
-      "prompt": "Mẹ Gà cười hiền: \"Ngôi sao giấy, vỏ ốc, chùm nhãn… chẳng thấy em bé nào trong đó cả, Chíp ơi.\" Rồi mẹ quay sang hỏi {name}: Nói về một em bé mà em biết.",
+      "prompt": "Mẹ Gà cười hiền: \"Ngôi sao giấy, vỏ ốc, chùm nhãn… chẳng thấy em bé nào trong đó cả, Mẩy ơi.\" Rồi mẹ quay sang hỏi {name}: Nói về một em bé mà em biết.",
       "hints": [
         "Em bé ấy tên là gì, là em của ai?",
         "Em bé trông thế nào: má, bàn tay, tiếng cười, dáng đi?",
@@ -124,7 +124,7 @@
       "target": "tv2-t14-qua-trung",
       "textRef": "em-mang-ve-yeu-thuong",
       "audio": true,
-      "question": "Chíp kêu lên: \"Bạn này cũng hỏi giống hệt tớ!\" Bạn nhỏ đã hỏi mẹ điều gì?",
+      "question": "Mẩy kêu lên: \"Bạn này cũng hỏi giống hệt tớ!\" Bạn nhỏ đã hỏi mẹ điều gì?",
       "choices": [
         {
           "id": "em-tu-dau",
@@ -151,7 +151,7 @@
           "Đọc lại hai dòng thơ đầu tiên.",
           "Bạn nhỏ gọi \"Mẹ, mẹ ơi\" rồi hỏi điều gì?"
         ],
-        "hint": "Câu hỏi của bạn nhỏ cũng là điều Chíp thắc mắc từ sáng: em bé từ đâu tới?",
+        "hint": "Câu hỏi của bạn nhỏ cũng là điều Mẩy thắc mắc từ sáng: em bé từ đâu tới?",
         "answer": {
           "text": "Bạn nhỏ hỏi: \"Mẹ, mẹ ơi em bé / Từ đâu đến nhà ta\"",
           "explanation": "Hai dòng thơ đầu là lời bạn nhỏ hỏi mẹ: em bé từ đâu đến nhà mình."
@@ -159,7 +159,7 @@
       },
       "feedback": {
         "right": [
-          "Đúng rồi! Chíp gật đầu lia lịa: câu này tớ hỏi mẹ hai mươi lần rồi!",
+          "Đúng rồi! Mẩy gật đầu lia lịa: câu này tớ hỏi mẹ hai mươi lần rồi!",
           "Chuẩn! Bạn nhỏ trong thơ tò mò y như một chú gà con.",
           "Hay lắm, {name} tìm đúng câu hỏi ở ngay hai dòng đầu."
         ],
@@ -177,7 +177,7 @@
       "kind": "challenge",
       "mechanic": "classify",
       "target": "tv2-t14-b26-cao-hat-de",
-      "prompt": "Bố Gà Trống đọc lại khổ thơ đầu cho Chíp nghe, nhưng hồi hộp quá, cứ \"Ò ó o!\" làm các mảnh thơ rơi lả tả. Đặt mỗi mảnh về đúng chỗ. Trong khổ thơ đầu, bạn nhỏ tả em của mình như thế nào?",
+      "prompt": "Bố Gà Trống đọc lại khổ thơ đầu cho Mẩy nghe, nhưng hồi hộp quá, cứ \"Ò ó o!\" làm các mảnh thơ rơi lả tả. Đặt mỗi mảnh về đúng chỗ. Trong khổ thơ đầu, bạn nhỏ tả em của mình như thế nào?",
       "groups": [
         {
           "id": "nu-cuoi",
@@ -240,7 +240,7 @@
       "feedback": {
         "right": [
           "Khổ thơ ghép lại đủ rồi! Bố Gà Trống xấu hổ, hứa từ giờ gáy nhỏ thôi.",
-          "Đúng hết! Chíp tưởng tượng em mình cười như tia nắng, sướng rung cả mào.",
+          "Đúng hết! Mẩy tưởng tượng em mình cười như tia nắng, sướng rung cả mào.",
           "Bốn mảnh về đúng chỗ, {name} đọc thơ thuộc ghê!"
         ],
         "wrong": [
@@ -256,7 +256,7 @@
       "kind": "challenge",
       "mechanic": "multi-select",
       "target": "tv2-t14-b26-cao-hat-de",
-      "prompt": "Chíp giơ ngôi sao giấy, vỏ ốc và chùm nhãn lên cao: \"Tại sao bạn ấy đoán nhiều thế?\" Trong khổ thơ thứ hai và thứ ba, bạn nhỏ đoán em bé từ đâu đến?",
+      "prompt": "Mẩy giơ ngôi sao giấy, vỏ ốc và chùm nhãn lên cao: \"Tại sao bạn ấy đoán nhiều thế?\" Trong khổ thơ thứ hai và thứ ba, bạn nhỏ đoán em bé từ đâu đến?",
       "choices": [
         {
           "id": "ngoi-sao",
@@ -304,9 +304,9 @@
       },
       "feedback": {
         "right": [
-          "Đúng cả bốn! Chíp ôm khư khư ba đầu mối: vậy là tớ đoán giỏi như nhà thơ!",
+          "Đúng cả bốn! Mẩy ôm khư khư ba đầu mối: vậy là tớ đoán giỏi như nhà thơ!",
           "Chuẩn! Sao, biển, mây, nhãn: bạn nhỏ đoán tài thật.",
-          "Mẹ Gà tủm tỉm: {name} đọc kĩ hơn cả Chíp đấy."
+          "Mẹ Gà tủm tỉm: {name} đọc kĩ hơn cả Mẩy đấy."
         ],
         "wrong": [
           "\"Nụ hoa\" ở khổ đầu là để tả bàn tay em, chưa phải chỗ em đến đâu.",
@@ -317,12 +317,12 @@
     },
     {
       "id": "em-mang-den-gi",
-      "title": "Chíp sợ bị quên",
-      "goTo": "Chíp chạy ù về tổ rơm nhà Chíp, ôm chặt lấy quả trứng",
+      "title": "Mẩy sợ bị quên",
+      "goTo": "Mẩy chạy ù về tổ rơm nhà Mẩy, ôm chặt lấy quả trứng",
       "kind": "challenge",
       "mechanic": "quiz",
       "target": "me-ga",
-      "prompt": "Chíp ôm quả trứng, thì thầm: \"Em đến rồi, liệu mẹ có bớt thương con không?\" Mẹ Gà xoà cánh ôm Chíp, chỉ vào khổ thơ cuối. Em bé mang đến những gì cho gia đình bạn nhỏ?",
+      "prompt": "Mẩy ôm quả trứng, thì thầm: \"Em đến rồi, liệu mẹ có bớt thương con không?\" Mẹ Gà xoà cánh ôm Mẩy, chỉ vào khổ thơ cuối. Em bé mang đến những gì cho gia đình bạn nhỏ?",
       "choices": [
         {
           "id": "nang-vang-bien-rong",
@@ -357,14 +357,14 @@
       },
       "feedback": {
         "right": [
-          "Đúng rồi! Mẹ Gà thơm lên đầu Chíp: yêu thương không bị chia nhỏ đâu, nó còn nhiều thêm.",
-          "Chíp thở phào: thì ra em mang thêm yêu thương, chứ không lấy bớt của Chíp!",
+          "Đúng rồi! Mẹ Gà thơm lên đầu Mẩy: yêu thương không bị chia nhỏ đâu, nó còn nhiều thêm.",
+          "Mẩy thở phào: thì ra em mang thêm yêu thương, chứ không lấy bớt của Mẩy!",
           "{name} đọc đúng dòng thơ cuối rồi, ấm áp quá."
         ],
         "wrong": [
           "Nắng vàng, biển rộng chỉ là hình ảnh so sánh thôi. Đọc dòng cuối bài nhé.",
           "Mây và hoa đẹp thật, nhưng em bé mang vào nhà một thứ còn quý hơn thế.",
-          "Gợi ý: thứ em mang đến khiến Chíp hết lo bị quên đấy."
+          "Gợi ý: thứ em mang đến khiến Mẩy hết lo bị quên đấy."
         ]
       }
     },
@@ -375,7 +375,7 @@
       "kind": "challenge",
       "mechanic": "multi-select",
       "target": "tv2-t14-b26-gau-truc-banh-bao",
-      "prompt": "Chíp muốn gom thật nhiều từ để khen em ngay khi em chui ra khỏi vỏ. Tìm thêm các từ ngữ tả em bé. M: bụ bẫm",
+      "prompt": "Mẩy muốn gom thật nhiều từ để khen em ngay khi em chui ra khỏi vỏ. Tìm thêm các từ ngữ tả em bé. M: bụ bẫm",
       "choices": [
         {
           "id": "mum-mim",
@@ -431,12 +431,12 @@
       },
       "feedback": {
         "right": [
-          "Kho từ đầy ắp! Chíp lẩm nhẩm học thuộc để khen em cho thật kêu.",
+          "Kho từ đầy ắp! Mẩy lẩm nhẩm học thuộc để khen em cho thật kêu.",
           "Đúng bốn từ! Bố Gà Trống định gáy chúc mừng, may mà kịp ngậm mỏ lại.",
           "Hay quá, từ nào của {name} cũng tròn trịa đáng yêu như em bé."
         ],
         "wrong": [
-          "Ha ha, em bé mà có râu ria thì Chíp giật mình mất! Bỏ từ đó ra nhé.",
+          "Ha ha, em bé mà có râu ria thì Mẩy giật mình mất! Bỏ từ đó ra nhé.",
           "Em bé đâu có lom khom như ông bà, chọn từ tả em tròn trịa, dễ thương thôi.",
           "Còn sót một từ tả má em bé đỏ hây hây đấy, tìm lại xem."
         ]
@@ -445,10 +445,10 @@
     {
       "id": "cau-khen-em",
       "title": "Tập khen em trước vũng nước",
-      "goTo": "Tới vũng nước cạnh ao bèo, Cá Rô Bọt ngoi lên xem Chíp tập khen em",
+      "goTo": "Tới vũng nước cạnh ao bèo, Cá Rô Bọt ngoi lên xem Mẩy tập khen em",
       "kind": "speak",
       "target": "tv2-t14-b26-ca-ro-bot",
-      "prompt": "Chíp soi vũng nước tập khen em, khen nhiều đến nỗi cái bóng trong nước cũng phải đỏ mặt. Đặt một câu với từ ngữ em tìm được ở bài tập 1. M: Bé Hà rất bụ bẫm.",
+      "prompt": "Mẩy soi vũng nước tập khen em, khen nhiều đến nỗi cái bóng trong nước cũng phải đỏ mặt. Đặt một câu với từ ngữ em tìm được ở bài tập 1. M: Bé Hà rất bụ bẫm.",
       "hints": [
         "Chọn một từ vừa tìm được: mũm mĩm, xinh xắn, đáng yêu, hồng hào…",
         "Câu có tên em bé và từ tả em, nói to, rõ ràng."
@@ -460,11 +460,11 @@
     {
       "id": "ho-noi-ho-ngoai",
       "title": "Họ hàng kéo đến thăm em",
-      "goTo": "Về tổ rơm nhà Chíp, họ hàng hai bên đã kéo đến chật sân",
+      "goTo": "Về tổ rơm nhà Mẩy, họ hàng hai bên đã kéo đến chật sân",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "target": "me-ga",
-      "prompt": "Họ hàng nhà Chíp rủ nhau tới thăm quả trứng. Chíp hỏi một lèo: \"Tại sao dì là họ ngoại? Tại sao chú là họ nội? Tại sao…\" Chọn từ ngữ trong ngoặc thay cho ô vuông.",
+      "prompt": "Họ hàng nhà Mẩy rủ nhau tới thăm quả trứng. Mẩy hỏi một lèo: \"Tại sao dì là họ ngoại? Tại sao chú là họ nội? Tại sao…\" Chọn từ ngữ trong ngoặc thay cho ô vuông.",
       "template": "(mẹ, bố, họ nội, họ ngoại) Dì Chi là em gái của {{b1}}. Chú Long là em trai của {{b2}}. Dì và cậu là những người thuộc {{b3}}. Cô, chú là những người thuộc {{b4}}.",
       "blanks": [
         {
@@ -577,8 +577,8 @@
       },
       "feedback": {
         "right": [
-          "Đúng hết! Chíp xếp họ hàng thành hai hàng: bên nội một hàng, bên ngoại một hàng.",
-          "Chuẩn! Lần đầu tiên Chíp không hỏi \"Tại sao?\" nữa, vì đã hiểu rồi.",
+          "Đúng hết! Mẩy xếp họ hàng thành hai hàng: bên nội một hàng, bên ngoại một hàng.",
+          "Chuẩn! Lần đầu tiên Mẩy không hỏi \"Tại sao?\" nữa, vì đã hiểu rồi.",
           "{name} giỏi quá, nhớ rõ cả họ nội lẫn họ ngoại."
         ],
         "wrong": [
@@ -591,7 +591,7 @@
     {
       "id": "ghep-cau-thiep-moi",
       "title": "Tấm thiệp bị gió thổi rời",
-      "goTo": "Đuổi theo mảnh thiệp tới gốc sung ven đường, Chị hái nấm Thơm chụp được rồi",
+      "goTo": "Đuổi theo mảnh thiệp tới gốc sung ven ngõ, Chị hái nấm Thơm chụp được rồi",
       "kind": "challenge",
       "mechanic": "classify",
       "target": "tv2-t14-b26-chi-hai-nam-thom",
@@ -650,7 +650,7 @@
         "right": [
           "Ba câu ghép khớp như ba mảnh thiệp! Bố Gà Trống dán lại ngay.",
           "Hay lắm! Đọc lên nghe xuôi tai, Mẹ Gà gật gù khen.",
-          "Đúng rồi, {name} ghép câu còn nhanh hơn Chíp chạy đi hỏi."
+          "Đúng rồi, {name} ghép câu còn nhanh hơn Mẩy chạy đi hỏi."
         ],
         "wrong": [
           "\"Em bé đã già\" nghe buồn cười quá! Đổi mảnh khác cho em bé nhé.",
@@ -662,11 +662,11 @@
     {
       "id": "van-ien-yen-uyen",
       "title": "Bài hát ru quả trứng",
-      "goTo": "Quay về tổ rơm nhà Chíp, Mẹ Gà đang khe khẽ hát ru quả trứng",
+      "goTo": "Quay về tổ rơm nhà Mẩy, Mẹ Gà đang khe khẽ hát ru quả trứng",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "target": "tv2-t14-qua-trung",
-      "prompt": "Mẹ Gà hát ru quả trứng bốn câu, nhưng Chíp chen \"Tại sao?\" vào giữa nên mấy vần bị rơi mất. Chọn iên, yên hoặc uyên thay cho ô vuông.",
+      "prompt": "Mẹ Gà hát ru quả trứng bốn câu, nhưng Mẩy chen \"Tại sao?\" vào giữa nên mấy vần bị rơi mất. Chọn iên, yên hoặc uyên thay cho ô vuông.",
       "template": "– Em bé hồn nh{{b1}} ngủ trong lòng mẹ.\n– Ngoài h{{b2}}, trời lặng gió.\n– Hàng cây đứng {{b3}}.\n– Nắng x{{b4}} qua kẽ lá.",
       "blanks": [
         {
@@ -783,7 +783,7 @@
       "kind": "challenge",
       "mechanic": "fill-blank",
       "target": "tv2-t14-qua-trung",
-      "prompt": "Chíp tập làm anh: đọc to cho em trong trứng nghe, nhưng cứ líu lưỡi giữa d với r, gi với r. Chọn a hoặc b. a. Chọn tiếng thích hợp thay cho ô vuông.",
+      "prompt": "Mẩy tập làm anh: đọc to cho em trong trứng nghe, nhưng cứ líu lưỡi giữa d với r, gi với r. Chọn a hoặc b. a. Chọn tiếng thích hợp thay cho ô vuông.",
       "template": "(dắt/ rắt)\n– Mẹ {{b1}} em đến trường.\n– Tiếng sáo diều réo {{b2}}.\n(gieo/ reo)\n– Em bé {{b3}} lên khi thấy mẹ về.\n– Chị Bống cẩn thận {{b4}} hạt vào chậu đất nhỏ.",
       "blanks": [
         {
@@ -868,7 +868,7 @@
       "feedback": {
         "right": [
           "Đọc trơn tru rồi! Từ trong trứng vang lên tiếng \"cốc\" khe khẽ như vỗ tay.",
-          "Đúng hết! Chíp hết líu lưỡi, đọc to như một anh trai thực thụ.",
+          "Đúng hết! Mẩy hết líu lưỡi, đọc to như một anh trai thực thụ.",
           "Bốn tiếng chuẩn chỉnh, {name} tinh tai quá!"
         ],
         "wrong": [
@@ -880,13 +880,13 @@
     },
     {
       "id": "ai-hay-ay",
-      "title": "Bức tranh đố của Chíp",
-      "goTo": "Ra bãi đất trống bên rào, Gấu Trúc Bánh Bao nhường chỗ cho Chíp vẽ tranh đố",
+      "title": "Bức tranh đố của Mẩy",
+      "goTo": "Ra bãi đất trống bên rào, Gấu Trúc Bánh Bao nhường chỗ cho Mẩy vẽ tranh đố",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "target": "tv2-t14-b26-gau-truc-banh-bao",
-      "prompt": "Chíp lấy mỏ vẽ một bạn gái lên nền đất, đánh số 1, 2, 3, 4 vào tranh rồi đố {name}. Chọn a hoặc b. b. Nhìn tranh, tìm từ ngữ chứa ai hoặc ay. Viết các từ em tìm được vào vở.",
-      "template": "Số 1, chỗ bạn gái dùng để vẫy chào: {{b1}}\nSố 2, chỗ để nghe Chíp hỏi \"Tại sao?\": {{b2}}\nSố 3, chỗ đeo quai cặp sách: {{b3}}\nSố 4, thứ màu đỏ bạn gái mặc, xoay một vòng là xoè ra: {{b4}}",
+      "prompt": "Mẩy lấy mỏ vẽ một bạn gái lên nền đất, đánh số 1, 2, 3, 4 vào tranh rồi đố {name}. Chọn a hoặc b. b. Nhìn tranh, tìm từ ngữ chứa ai hoặc ay. Viết các từ em tìm được vào vở.",
+      "template": "Số 1, chỗ bạn gái dùng để vẫy chào: {{b1}}\nSố 2, chỗ để nghe Mẩy hỏi \"Tại sao?\": {{b2}}\nSố 3, chỗ đeo quai cặp sách: {{b3}}\nSố 4, thứ màu đỏ bạn gái mặc, xoay một vòng là xoè ra: {{b4}}",
       "blanks": [
         {
           "id": "b1",
@@ -966,7 +966,7 @@
       },
       "feedback": {
         "right": [
-          "Đoán trúng cả bốn! Chíp vỗ cánh: tại sao cậu giỏi thế?",
+          "Đoán trúng cả bốn! Mẩy vỗ cánh: tại sao cậu giỏi thế?",
           "Đúng rồi, tay – tai – vai – váy, không nhầm vần nào!",
           "{name} đọc tranh còn tinh hơn mắt gà con."
         ],
@@ -980,7 +980,7 @@
     {
       "id": "qua-trung-nut",
       "title": "Quả trứng nứt rồi!",
-      "goTo": "Cốc cốc! Chạy vội về tổ rơm nhà Chíp, quả trứng đang rung rinh",
+      "goTo": "Cốc cốc! Chạy vội về tổ rơm nhà Mẩy, quả trứng đang rung rinh",
       "kind": "dialogue",
       "target": "me-ga",
       "lines": [
@@ -989,30 +989,30 @@
           "text": "Cốc… cốc… rắc!"
         },
         {
-          "speaker": "Gà Con Chíp",
+          "speaker": "Gà Con Mẩy",
           "text": "Nứt rồi! Tại sao nó nứt? À, chắc vì em muốn ra chơi với tớ!"
         },
         {
           "speaker": "Mẹ Gà",
-          "text": "Chíp ơi, con muốn làm gì đầu tiên khi gặp em nào?"
+          "text": "Mẩy ơi, con muốn làm gì đầu tiên khi gặp em nào?"
         },
         {
-          "speaker": "Gà Con Chíp",
-          "text": "{name} ơi, cậu chọn giúp tớ với, tim tớ đập thình thịch như trống trường rồi!"
+          "speaker": "Gà Con Mẩy",
+          "text": "{name} ơi, cậu chọn giúp tớ với, tim tớ đập thình thịch như trống múa lân rồi!"
         }
       ],
       "choices": [
         {
           "text": "Hát ru em bằng bài vừa học",
-          "reply": "Chíp hắng giọng: chiếp… chiếp… hơi lạc giọng, nhưng em nghe chăm chú lắm."
+          "reply": "Mẩy hắng giọng: chiếp… chiếp… hơi lạc giọng, nhưng em nghe chăm chú lắm."
         },
         {
           "text": "Nhường em góc rơm ấm nhất",
-          "reply": "Chíp dịch sang bên: góc ấm cho em, còn tớ cứ ôm em là ấm rồi."
+          "reply": "Mẩy dịch sang bên: góc ấm cho em, còn tớ cứ ôm em là ấm rồi."
         },
         {
           "text": "Kể cho em nghe chuyện ba đầu mối",
-          "reply": "Chíp kể say sưa: em không từ sao, không từ biển, em từ yêu thương của nhà mình!"
+          "reply": "Mẩy kể say sưa: em không từ sao, không từ biển, em từ yêu thương của nhà mình!"
         }
       ]
     },
@@ -1022,7 +1022,7 @@
       "kind": "challenge",
       "mechanic": "fill-blank",
       "target": "tv2-t14-qua-trung",
-      "prompt": "Em gà con lông vàng óng mở mắt nhìn Chíp không chớp. Mẹ Gà mỉm cười: \"Giống hệt em Nụ trong sách nhé!\" Chọn từ ngữ trong ngoặc thay cho ô vuông.",
+      "prompt": "Em gà con lông vàng óng mở mắt nhìn Mẩy không chớp. Mẹ Gà mỉm cười: \"Giống hệt em Nụ trong sách nhé!\" Chọn từ ngữ trong ngoặc thay cho ô vuông.",
       "template": "(mở to, đen láy, đỏ hồng) Em Nụ môi {{b1}}, trông yêu lắm. Em đã lớn lên nhiều. Em ngủ ít hơn trước. Có lúc, mắt em {{b2}}, tròn và {{b3}}. Em cứ nhìn Hoa mãi. Hoa yêu em và rất thích đưa võng ru em ngủ. (Theo Minh Tâm)",
       "blanks": [
         {
@@ -1101,7 +1101,7 @@
       },
       "feedback": {
         "right": [
-          "Đúng rồi! Em gà con chớp mắt đen láy, Chíp sướng quá nhảy tưng tưng.",
+          "Đúng rồi! Em gà con chớp mắt đen láy, Mẩy sướng quá nhảy tưng tưng.",
           "Ba ô chuẩn hết! Mẹ Gà khen {name} tả em bé dễ thương ghê.",
           "Hay lắm, đọc lên thấy ngay một em bé xinh xinh."
         ],
@@ -1115,10 +1115,10 @@
     {
       "id": "doc-tho-cho-em",
       "title": "Tiếng võng dưới hiên",
-      "goTo": "Cùng Chíp ra chiếc võng dưới hiên nhà Chíp ru em",
+      "goTo": "Cùng Mẩy ra chiếc võng dưới hiên nhà Mẩy ru em",
       "kind": "speak",
       "target": "tv2-t14-vong-hien",
-      "prompt": "Chíp đưa võng cho em, cót két, cót két, mắt em díp dần. Tìm đọc bài thơ về tình cảm anh chị em trong nhà. Đọc cho bạn nghe những câu thơ em thích.",
+      "prompt": "Mẩy đưa võng cho em, cót két, cót két, mắt em díp dần. Tìm đọc bài thơ về tình cảm anh chị em trong nhà. Đọc cho bạn nghe những câu thơ em thích.",
       "hints": [
         "Trong sách có bài \"Tiếng võng kêu\" của Trần Đăng Khoa: Em ơi hãy ngủ / Tay anh đưa đều…",
         "Nhờ bố mẹ, thầy cô hoặc tìm ở thư viện lớp một bài thơ khác về anh chị em.",
@@ -1135,7 +1135,7 @@
       "kind": "worksheet",
       "trigger": "auto",
       "lessonId": "tv2-t1-b26",
-      "text": "Chíp thì thầm cho em khỏi thức: {name} nhờ bố mẹ in phiếu Bài 26 ở khu phụ huynh để nghe – viết hai khổ thơ đầu, đọc đoạn văn về ông ngoại rồi viết 3 – 4 câu kể việc người thân làm cho em nhé.",
+      "text": "Mẩy thì thầm cho em khỏi thức: {name} nhờ bố mẹ in phiếu Bài 26 ở khu phụ huynh để nghe – viết hai khổ thơ đầu, đọc đoạn văn về ông ngoại rồi viết 3 – 4 câu kể việc người thân làm cho em nhé.",
       "curriculumRef": [
         "tv2-t1-b26-nghe-viet-1",
         "tv2-t1-b26-viet-doan-1-a",
@@ -1149,14 +1149,14 @@
       "title": "Sợi lông tơ đầu tiên",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Chíp tặng {name} sợi lông tơ vàng đầu tiên của em, buộc bằng cọng rơm thắt nơ. Bố Gà Trống gáy chúc mừng, lần này đúng giờ hẳn hoi! Ngoài suối, Hải Ly Cần vừa đóng thêm một nhịp cầu gỗ mới."
+      "text": "Mẩy tặng {name} sợi lông tơ vàng đầu tiên của em, buộc bằng cọng rơm thắt nơ. Bố Gà Trống gáy chúc mừng, lần này đúng giờ hẳn hoi! Bà Gấu Nâu ở đầu ngõ nghe tin cũng chống gậy sang, dúi cho em gà con một nắm thóc mới thơm phức."
     },
     {
       "id": "mo-bai-27",
       "title": "Tiếng ngáp dưới trăng",
       "kind": "next",
       "trigger": "auto",
-      "text": "Đêm xuống, từ chiếc võng lá dưới trăng vọng lại một tiếng \"Oáp…\" dài thật dài. Trời nóng quá, Koala Na không ngủ được, đang nhớ bàn tay mẹ quạt."
+      "text": "Đêm xuống, dưới hiên một ngôi nhà nhỏ cuối xóm vọng lại một tiếng \"Oáp…\" dài thật dài. Trời nóng quá, Koala Na nằm võng mãi không ngủ được, đang nhớ bàn tay mẹ quạt."
     }
   ],
   "reward": {

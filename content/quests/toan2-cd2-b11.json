@@ -1,16 +1,16 @@
 {
   "id": "toan2-cd2-b11",
-  "region": "truong-hoc",
-  "chapter": 2,
+  "region": "cho-phien",
+  "chapter": 1,
   "title": "Heo Ủn và cây táo rụng",
   "status": "active",
   "lesson": "toan2-t1-b11",
-  "summary": "Cây táo vườn trường rụng quả lộp độp, Heo Ủn vừa nhặt vừa… ăn; {name} giúp Heo tính còn lại bao nhiêu quả bằng cách trừ qua 10, rồi đi khắp vườn giải đố cùng Thỏ Sữa, Ong Chăm, Mèo Nhung, Sâu Bim, Cáo Gió, Bò Kem và Thầy Dũng.",
+  "summary": "Cây táo già bên hàng quả rụng quả lộp độp, Heo Ủn vừa nhặt vừa… ăn; {name} giúp Heo tính còn lại bao nhiêu quả bằng cách trừ qua 10, rồi đi khắp khu chợ rau hoa giải đố cùng Thỏ Sữa, Ong Chăm, Mèo Nhung, Sâu Bim, Cáo Gió, Bò Kem và chú Dũng.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Heo Ủn, Thỏ Sữa, Ong Chăm, Mèo Nhung, Sâu Bim, Cáo Gió, Bò Kem, Thầy Dũng",
-    "where": "Vườn trường: gốc cây táo, chuồng thỏ cạnh luống rau, bờ rào hoa dâm bụt, góc treo tranh cuối bờ rào, giàn bí ngô, lối đi lát sỏi, bãi cỏ sau vườn, cổng sau vườn trường, chân cầu hình rồng",
-    "goal": "Giúp Heo Ủn đếm số táo còn lại để đủ làm bánh táo cho cả trường",
+    "who": "Heo Ủn, Thỏ Sữa, Ong Chăm, Mèo Nhung, Sâu Bim, Cáo Gió, Bò Kem, chú Dũng",
+    "where": "Chợ phiên, khu chợ rau hoa: gốc táo bên hàng quả, sạp rau cải, hàng hoa dâm bụt, sạp tranh hoa giấy, đống bí ngô ở hàng bầu bí, lối đi giữa hai dãy sạp, bãi cỏ bờ kênh, cổng sau của chợ, chân cầu rồng bắc qua kênh",
+    "goal": "Giúp Heo Ủn đếm số táo còn lại để đủ làm bánh táo mời cả chợ",
     "play": "Nhặt táo, điền phép tách, tính nhẩm, đưa thỏ về chuồng, đưa ong về hoa, chọn máy bay, phân loại cánh diều, giải bài toán",
     "learn": "Toán 2 Bài 11: phép trừ (qua 10) trong phạm vi 20",
     "reward": "90 XP, 15 xu, Phép trừ +2, Bài toán có lời văn +1",
@@ -28,22 +28,22 @@
   },
   "texts": {},
   "places": {
-    "heo-un": "gốc cây táo",
-    "nhat-tao-rung": "gốc cây táo",
-    "toan2-cd2-b11-tho-may": "chuồng thỏ cạnh luống rau",
-    "toan2-cd2-b11-ong-cham": "bờ rào hoa dâm bụt",
-    "toan2-cd2-b11-meo-nhung": "góc treo tranh cuối bờ rào",
-    "toan2-cd2-b11-sau-bim": "giàn bí ngô",
-    "toan2-cd2-b11-cao-gio": "lối đi lát sỏi",
-    "toan2-cd2-b11-bo-kem": "bãi cỏ sau vườn",
-    "heo-un-cong-sau": "cổng sau vườn trường",
-    "toan2-cd2-b11-thay-dung": "chân cầu hình rồng"
+    "heo-un": "gốc táo bên hàng quả",
+    "nhat-tao-rung": "bãi cỏ sau hàng quả",
+    "toan2-cd2-b11-tho-may": "sạp rau cải",
+    "toan2-cd2-b11-ong-cham": "hàng hoa dâm bụt",
+    "toan2-cd2-b11-meo-nhung": "sạp tranh hoa giấy",
+    "toan2-cd2-b11-sau-bim": "đống bí ngô ở hàng bầu bí",
+    "toan2-cd2-b11-cao-gio": "lối đi giữa hai dãy sạp",
+    "toan2-cd2-b11-bo-kem": "bãi cỏ bờ kênh",
+    "heo-un-cong-sau": "cổng sau của chợ",
+    "toan2-cd2-b11-thay-dung": "chân cầu rồng bắc qua kênh"
   },
   "steps": [
     {
       "id": "tao-rung-lop-dop",
       "title": "Táo rụng lộp độp",
-      "goTo": "Tới gốc cây táo, Heo Ủn đang ôm bụng cười khì",
+      "goTo": "Tới gốc táo bên hàng quả, Heo Ủn đang ôm bụng cười khì",
       "kind": "dialogue",
       "target": "heo-un",
       "lines": [
@@ -53,7 +53,7 @@
         },
         {
           "speaker": "Heo Ủn",
-          "text": "Tớ định nhặt đủ táo làm bánh cho cả trường… nhưng cứ nhặt một quả là miệng tớ tự cắn một miếng. Ngoàm!"
+          "text": "Tớ định nhặt đủ táo làm bánh mời cả chợ… nhưng cứ nhặt một quả là miệng tớ tự cắn một miếng. Ngoàm!"
         },
         {
           "speaker": "Heo Ủn",
@@ -67,14 +67,14 @@
         },
         {
           "text": "Mình nhặt táo trước đã nhé",
-          "reply": "Heo Ủn: Đúng rồi, táo lăn khắp gốc cây, nhặt nhanh kẻo kiến tha mất!"
+          "reply": "Heo Ủn: Đúng rồi, táo lăn khắp gốc cây, lăn cả xuống gầm sạp, nhặt nhanh kẻo kiến tha mất!"
         }
       ]
     },
     {
       "id": "nhat-tao-rung",
       "title": "Nhặt táo quanh gốc",
-      "goTo": "Nhặt táo rơi quanh gốc cây táo: trong giỏ đổ, bụi cỏ và dưới lá khô",
+      "goTo": "Táo lăn cả ra bãi cỏ sau hàng quả: nhặt trong giỏ đổ, bụi cỏ và dưới lá khô",
       "kind": "search",
       "targets": [
         "toan2-cd2-gio-tao-do",
@@ -85,6 +85,7 @@
     {
       "id": "tach-de-tru",
       "title": "Mẹo tách số của Heo",
+      "goTo": "Ôm giỏ táo về gốc táo bên hàng quả, Heo Ủn đang chìa hai tay chờ",
       "target": "heo-un",
       "kind": "challenge",
       "mechanic": "fill-blank",
@@ -447,11 +448,11 @@
     {
       "id": "tho-ve-chuong",
       "title": "Thỏ con về chuồng",
-      "goTo": "Đuổi theo đàn thỏ tới chuồng thỏ cạnh luống rau, Thỏ Sữa đang mở cửa chuồng",
+      "goTo": "Đuổi theo đàn thỏ tới sạp rau cải, Thỏ Sữa đang mở cửa lồng",
       "target": "toan2-cd2-b11-tho-may",
       "kind": "challenge",
       "mechanic": "classify",
-      "prompt": "Năm chú thỏ ngửi mùi táo chạy ào tới, Heo Ủn phải lùa về chuồng. Tìm chuồng cho mỗi chú thỏ.",
+      "prompt": "Năm chú thỏ ngửi mùi táo chui ra khỏi lồng chạy ào tới, Heo Ủn phải lùa về. Tìm chuồng cho mỗi chú thỏ.",
       "groups": [
         {
           "id": "nhom-chuong-3",
@@ -544,7 +545,7 @@
     {
       "id": "tach-12-va-13",
       "title": "Tách số lần nữa",
-      "goTo": "Về gốc cây táo, Heo Ủn vẫy tay đòi làm thêm phép tách",
+      "goTo": "Về gốc táo bên hàng quả, Heo Ủn vẫy tay đòi làm thêm phép tách",
       "target": "heo-un",
       "kind": "challenge",
       "mechanic": "fill-blank",
@@ -1074,7 +1075,7 @@
     {
       "id": "ong-tim-hoa",
       "title": "Ong về đúng hoa",
-      "goTo": "Sang bờ rào hoa dâm bụt, Ong Chăm vo ve tìm hoa cho cả đàn",
+      "goTo": "Sang hàng hoa dâm bụt, Ong Chăm vo ve tìm hoa cho cả đàn",
       "target": "toan2-cd2-b11-ong-cham",
       "kind": "challenge",
       "mechanic": "classify",
@@ -1196,10 +1197,10 @@
     {
       "id": "giay-mau-cua-mai",
       "title": "Giấy màu cắt hoa",
-      "goTo": "Đi tới góc treo tranh cuối bờ rào, Mèo Nhung đang ghim tranh hoa giấy",
+      "goTo": "Đi tới sạp tranh hoa giấy, Mèo Nhung đang ghim tranh lên vách sạp",
       "target": "toan2-cd2-b11-meo-nhung",
       "kind": "riddle",
-      "question": "Ong Chăm chỉ bức tranh hoa cắt dán treo trên bờ rào. Mai có 13 tờ giấy màu, Mai đã dùng 5 tờ giấy màu để cắt dán bức tranh. Hỏi Mai còn lại bao nhiêu tờ giấy màu?",
+      "question": "Ong Chăm chỉ bức tranh hoa cắt dán Mèo Nhung bày bán. Mai có 13 tờ giấy màu, Mai đã dùng 5 tờ giấy màu để cắt dán bức tranh. Hỏi Mai còn lại bao nhiêu tờ giấy màu?",
       "skill": "bai-toan-loi-van",
       "curriculumRef": [
         "toan2-t1-b11-luyen-tap-5"
@@ -1217,9 +1218,9 @@
       },
       "feedback": {
         "right": [
-          "Tám tờ giấy màu còn lại, đủ cắt thêm cả vườn hoa giấy!",
+          "Tám tờ giấy màu còn lại, đủ cắt thêm cả một sạp hoa giấy!",
           "Bài toán gọn gàng như nếp gấp giấy thẳng tắp.",
-          "Mèo Nhung ngoe nguẩy đuôi, khoe tranh hoa giấy với cả vườn."
+          "Mèo Nhung ngoe nguẩy đuôi, khoe tranh hoa giấy với khách đi chợ."
         ],
         "wrong": [
           "Dùng mất thì còn ít đi, cậu thử phép trừ nhé.",
@@ -1234,7 +1235,7 @@
     {
       "id": "heo-chon-cach",
       "title": "Heo Ủn phân vân",
-      "goTo": "Về lại gốc cây táo, Heo Ủn đang ngồi đếm trên ngón chân",
+      "goTo": "Về lại gốc táo bên hàng quả, Heo Ủn đang ngồi đếm trên ngón chân",
       "kind": "dialogue",
       "target": "heo-un",
       "lines": [
@@ -1502,7 +1503,7 @@
     {
       "id": "nham-15-bang-14",
       "title": "Mười lăm quả và bảng trừ 14",
-      "goTo": "Ôm rổ táo sang giàn bí ngô, Sâu Bim nhổm dậy xin đếm giúp",
+      "goTo": "Ôm rổ táo sang đống bí ngô ở hàng bầu bí, Sâu Bim nhổm dậy xin đếm giúp",
       "target": "toan2-cd2-b11-sau-bim",
       "kind": "challenge",
       "mechanic": "fill-blank",
@@ -1734,7 +1735,7 @@
     {
       "id": "may-bay-hieu-7",
       "title": "Máy bay giấy số 7",
-      "goTo": "Chạy ra lối đi lát sỏi, Cáo Gió đang ngắm hướng gió phóng máy bay",
+      "goTo": "Chạy ra lối đi giữa hai dãy sạp, Cáo Gió đang ngắm hướng gió phóng máy bay",
       "target": "toan2-cd2-b11-cao-gio",
       "kind": "challenge",
       "mechanic": "multi-select",
@@ -1871,7 +1872,7 @@
     {
       "id": "oi-cua-ba",
       "title": "Ổi của bà",
-      "goTo": "Quay lại gốc cây táo, Heo Ủn ngồi kể chuyện bà của mình",
+      "goTo": "Quay lại gốc táo bên hàng quả, Heo Ủn ngồi kể chuyện bà của mình",
       "target": "heo-un",
       "kind": "riddle",
       "question": "Heo Ủn kể chuyện nhà mình. Bà có 14 quả ổi, bà cho cháu 6 quả. Hỏi bà còn lại bao nhiêu quả ổi?",
@@ -1909,7 +1910,7 @@
     {
       "id": "dieu-bang-hieu",
       "title": "Bảng của Bò Kem",
-      "goTo": "Ra bãi cỏ sau vườn, Bò Kem đang kéo con diều đỏ chạy lon ton",
+      "goTo": "Ra bãi cỏ bờ kênh, Bò Kem đang kéo con diều đỏ chạy lon ton",
       "target": "toan2-cd2-b11-bo-kem",
       "kind": "challenge",
       "mechanic": "fill-blank",
@@ -2336,7 +2337,7 @@
     {
       "id": "hoa-cua-mai-mi",
       "title": "Ai hái nhiều hoa hơn?",
-      "goTo": "Ghé lại chuồng thỏ cạnh luống rau, Thỏ Sữa vừa hái hoa về",
+      "goTo": "Ghé lại sạp rau cải, Thỏ Sữa vừa hái hoa về",
       "target": "toan2-cd2-b11-tho-may",
       "kind": "riddle",
       "question": "Thỏ Sữa cài hoa lên tai rồi đố: Mai hái được 16 bông hoa, Mi hái được 9 bông hoa. Hỏi Mai hái được hơn Mi bao nhiêu bông hoa?",
@@ -2374,7 +2375,7 @@
     {
       "id": "so-o-trong-heo",
       "title": "Sổ bếp của Heo Ủn",
-      "goTo": "Chạy ra cổng sau vườn trường, Heo Ủn chờ xem đua xe",
+      "goTo": "Chạy ra cổng sau của chợ, Heo Ủn chờ xem đua xe",
       "target": "heo-un-cong-sau",
       "kind": "challenge",
       "mechanic": "fill-blank",
@@ -3008,10 +3009,10 @@
     {
       "id": "dua-xe-qua-cau",
       "title": "Đoàn đua xe qua cầu",
-      "goTo": "Chạy tới chân cầu hình rồng, Thầy Dũng đang phất cờ cho đoàn đua",
+      "goTo": "Chạy tới chân cầu rồng bắc qua kênh, chú Dũng đang phất cờ cho đoàn đua",
       "target": "toan2-cd2-b11-thay-dung",
       "kind": "riddle",
-      "question": "Đoàn đua xe đạp phóng qua cây cầu hình rồng ngoài cổng, Heo Ủn đứng cổ vũ ầm ĩ. Có 15 vận động viên đua xe đạp, 6 vận động viên đã qua cầu. Hỏi còn bao nhiêu vận động viên chưa qua cầu?",
+      "question": "Đoàn đua xe đạp phóng qua cây cầu hình rồng bắc ngang con kênh, Heo Ủn đứng cổ vũ ầm ĩ. Có 15 vận động viên đua xe đạp, 6 vận động viên đã qua cầu. Hỏi còn bao nhiêu vận động viên chưa qua cầu?",
       "skill": "bai-toan-loi-van",
       "curriculumRef": [
         "toan2-t1-b11-luyen-tap-4-5"
@@ -3030,7 +3031,7 @@
       "feedback": {
         "right": [
           "Kính coong! Chín tay đua còn lại phóng vút qua cầu rồng.",
-          "Thầy Dũng thổi còi tuýt dài, Heo Ủn hò reo vang cả vườn.",
+          "Chú Dũng thổi còi tuýt dài, Heo Ủn hò reo vang cả chợ.",
           "Câu đố cuối cùng hạ gục gọn gàng, nhà vô địch đây rồi!"
         ],
         "wrong": [
@@ -3048,14 +3049,14 @@
       "title": "Bánh táo thơm lừng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Heo Ủn nướng xong mẻ bánh táo thơm lừng cả vườn trường, cắt miếng to nhất tặng {name} kèm huy hiệu \"Thợ trừ qua 10\". Lần này Heo chỉ ăn đúng… một miếng!"
+      "text": "Heo Ủn nướng xong mẻ bánh táo thơm lừng cả chợ, cắt miếng to nhất tặng {name} kèm huy hiệu \"Thợ trừ qua 10\". Lần này Heo chỉ ăn đúng… một miếng!"
     },
     {
       "id": "long-tre-lon-xon",
       "title": "Lóng tre lộn xộn",
       "kind": "next",
       "trigger": "auto",
-      "text": "Từ vườn tre vọng sang tiếng thở dài: Gấu Trúc Tròn khắc bảng trừ lên từng lóng tre, mà ai đó xếp lộn xộn hết cả rồi."
+      "text": "Từ hàng tre nứa vọng sang tiếng thở dài: Gấu Trúc Nứa khắc bảng trừ lên từng lóng tre, mà ai đó xếp lộn xộn hết cả rồi."
     }
   ],
   "reward": {

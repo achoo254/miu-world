@@ -1,8 +1,8 @@
 // Generates the world overview (mock M1.1 / M1.4) from a fixed seed: one floating island per region of
 // content/world/regions.json, each with its landmark — the forest and its ancient tree in the middle, the
-// school with its flag, the library, the castle, the snowy mountain, the child's house and the far-off
-// mystery island — joined by plank sky bridges. It is only rendered into the Home / world-map image
-// (`pnpm assets:home`), never played. Each region gets a landmark where its label goes; the label's place
+// school with its flag, the library, the castle, the snowy mountain, the child's house, the village, the
+// hamlet, the market, the farm and the far-off mystery island — joined by plank sky bridges. It is only
+// rendered into the Home / world-map image (`pnpm assets:home`), never played. Each region gets a landmark where its label goes; the label's place
 // on the image comes from the shared camera (packages/voxel/src/world-overview.ts) and is written into
 // content/world/regions.json.
 // Output: assets/generated/world/the-gioi/{chunks.bin, entities.json}
@@ -18,6 +18,7 @@ import { ASSETS_DIR, REPO_ROOT, readJson } from '../assets/asset-lib';
 import { modelScales } from './model-scales';
 import { createRng, hashSeed } from './noise';
 import { placeCastle, placeHouse, placeMountain, placeSkyBridge } from './structures/buildings';
+import { placeStall, placeWindmill } from './structures/countryside';
 import { placeFloatingIsland } from './structures/floating-island';
 import { placeAncientTree, placeTree } from './structures/tree';
 
@@ -62,6 +63,10 @@ const ISLANDS = [
   { region: 'nui-tuyet', across: 64, away: 120, radius: 12, top: 20, depth: 13 },
   { region: 'nha-cua-be', across: -30, away: 60, radius: 9, top: 17, depth: 10 },
   { region: 'dao-bi-an', across: 44, away: 72, radius: 7, top: 13, depth: 9 },
+  { region: 'lang-ven-song', across: -56, away: 80, radius: 8, top: 16, depth: 10 },
+  { region: 'cho-phien', across: 8, away: 68, radius: 8, top: 15, depth: 10 },
+  { region: 'xom-mai-am', across: -76, away: 156, radius: 8, top: 21, depth: 10 },
+  { region: 'nong-trai', across: 4, away: 204, radius: 8, top: 24, depth: 10 },
 ].map((island) => ({ ...island, x: Math.round((island.away - island.across) / 2), z: Math.round((island.away + island.across) / 2) }));
 
 /** Things on the overview the Home stage animates on top of the render: each waterfall's top and foot (world blocks). */
@@ -179,6 +184,19 @@ export async function generateWorldOverview(): Promise<{ world: VoxelWorld; enti
   addProp(`${PACK.nature}/mushroom_redTall.glb`, mystery.x + 3, mystery.top + 1, mystery.z - 2);
   addProp(`${PACK.nature}/mushroom_redGroup.glb`, mystery.x - 1, mystery.top + 1, mystery.z - 4);
   addProp(`${PACK.nature}/tree_pineRoundC.glb`, mystery.x + 2, mystery.top + 1, mystery.z + 3);
+
+  // Làng Ven Sông: two tiled-roof cottages by a pond. Xóm Mái Ấm: a row of three cottages.
+  const village = island('lang-ven-song');
+  for (const dx of [-5, 1]) placeHouse(world, village.x + dx, village.z - 1, 5, 4, 3, village.top + 1, { wall: B.sand, roof: B.brickRed, trim: B.log });
+  for (let dx = -2; dx <= 2; dx++) for (let dz = -6; dz <= -4; dz++) if (tops.get(village.region)?.(village.x + dx, village.z + dz)) world.set(village.x + dx, village.top, village.z + dz, B.water);
+  const hamlet = island('xom-mai-am');
+  for (const [i, dx] of [-6, -1, 4].entries()) placeHouse(world, hamlet.x + dx, hamlet.z - 2, 4, 4, 3, hamlet.top + 1, { wall: i === 1 ? B.planks : B.sand, roof: i === 2 ? B.woodRed : B.brickRed, trim: B.log });
+  // Chợ phiên: three stalls under striped awnings. Nông trại: the windmill beside a fenced field.
+  const market = island('cho-phien');
+  for (const [i, dx] of [-6, -1, 4].entries()) placeStall(world, market.x + dx, market.z - 2, 4, 3, market.top + 1, { log: B.log, planks: B.planks, stripes: [i === 1 ? B.woodRed : B.brickRed, B.snow] });
+  const farm = island('nong-trai');
+  placeWindmill(world, farm.x - 2, farm.z + 1, farm.top + 1, { planks: B.planks, log: B.log, roof: B.brickRed, sail: B.snow });
+  for (let x = farm.x + 2; x <= farm.x + 6; x += 2) addProp(`${PACK.nature}/fence_simple.glb`, x, farm.top + 1, farm.z - 4);
 
   // Sky bridges from the forest's rim to the school, the house and the mountain.
   const rim = (to: (typeof ISLANDS)[number]): [number, number, number] => {

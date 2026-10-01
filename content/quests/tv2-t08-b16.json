@@ -1,20 +1,20 @@
 {
   "id": "tv2-t08-b16",
-  "region": "khu-rung-bi-mat",
-  "chapter": 9,
-  "title": "Trang sách mở ra quanh tảng đá",
+  "region": "thu-vien",
+  "chapter": 1,
+  "title": "Trang sách mở ra giữa vườn đọc sách",
   "status": "active",
   "lesson": "tv2-t1-b16",
-  "summary": "Nai Mơ mở cuốn sách mượn của cô thủ thư Gấu Me, thế là cỏ dại, cánh chim, cánh buồm bay ra khỏi trang giấy, cả một chú cánh cụt cũng lạch bạch bước ra. {name} cùng Nai Mơ và Vẹt Xanh đọc bài thơ, đi theo những cảnh hiện ra bên suối rồi làm phiếu đọc sách trước khi trả sách.",
+  "summary": "Nai Mơ mang cuốn sách mượn của cô Gấu Me ra vườn đọc sách, vừa mở ra thì cỏ dại, cánh chim, cánh buồm bay khỏi trang giấy, cả một chú cánh cụt cũng lạch bạch bước ra. {name} cùng Nai Mơ và bác thủ thư Gấu Trúc Tròn đọc bài thơ, đi theo những cảnh hiện ra bên suối nhỏ rồi làm phiếu đọc sách trước khi trả sách.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Nai Mơ (mơ mộng, cái gì cũng muốn làm thơ), Vẹt Xanh sưu tầm từ lạ, Cánh Cụt Phao bước ra từ trang sách, Gấu Me cô thủ thư nói khẽ",
-    "where": "Tảng đá phẳng bên bãi cỏ dại, gốc sim tím của Nai Mơ, mỏm đá rêu, bến suối hoá thành biển nhỏ với bãi cát, và cửa thư viện gốc cây",
+    "who": "Nai Mơ (mơ mộng, cái gì cũng muốn làm thơ), bác thủ thư Gấu Trúc Tròn chậm rãi mà nghe vần rất tinh, Cánh Cụt Phao bước ra từ trang sách, Gấu Me cô trông phòng đọc nói khẽ",
+    "where": "Vườn đọc sách của Thư viện: tảng đá phẳng giữa bãi cỏ dại, gốc sim tím của Nai Mơ, bậc thềm ra vườn, suối nhỏ hoá thành biển nhỏ với bãi cát, và quầy trả sách trong phòng đọc",
     "goal": "Nhặt lại những thứ bay ra từ trang sách, đọc hiểu bài thơ và giúp Nai Mơ trả sách đúng hẹn",
     "play": "Nhặt đồ, đọc thơ, xếp thứ tự, chọn nhiều đáp án, xếp thẻ vào giỏ, trắc nghiệm, điền vần, điền chữ, ghép câu, điền dấu câu, nói và kể, phiếu viết",
     "learn": "Tiếng Việt 2 Bài 16: đọc hiểu bài thơ Khi trang sách mở ra, vần cuối dòng thơ, chính tả l/n và các tiếng có vần an/ang, ăn/ăng, ân/âng, từ chỉ đặc điểm, câu nêu đặc điểm, dấu chấm và dấu chấm hỏi, phiếu đọc sách",
     "reward": "90 XP, 15 xu, Đọc hiểu +2, Chính tả +2, Từ ngữ +1, Câu +1, Dấu câu +1",
-    "next": "Ôn tập giữa học kì 1: lễ hội lá vàng"
+    "next": "Ôn tập giữa học kì 1: lễ hội lá vàng ở sân trước Thư viện"
   },
   "phases": {
     "hook": "nai-mo-om-sach",
@@ -46,19 +46,19 @@
   },
   "places": {
     "nai-mo": "gốc sim tím",
-    "vet-xanh": "mỏm đá rêu",
+    "gau-truc": "bậc thềm ra vườn",
     "tv2-t08-tang-da-phang": "tảng đá phẳng",
     "tv2-t08-hop-but-nai-mo": "tảng đá phẳng",
     "nhat-do-bay-khoi-trang": "bãi cỏ dại quanh tảng đá",
-    "tv2-t08-canh-buom-hien-ra": "bến suối sau tảng đá",
+    "tv2-t08-canh-buom-hien-ra": "suối nhỏ sau tảng đá",
     "tv2-t08-b16-canh-cut-phao": "bãi cát nhỏ",
-    "tv2-t08-b15-gau-me": "cửa thư viện gốc cây"
+    "tv2-t08-b15-gau-me": "quầy trả sách"
   },
   "steps": [
     {
       "id": "nai-mo-om-sach",
       "title": "Cuốn sách biết mọc cỏ",
-      "goTo": "Ra gốc sim tím cạnh tảng đá phẳng, Nai Mơ đang ôm sách",
+      "goTo": "Ra gốc sim tím trong vườn đọc sách, Nai Mơ đang ôm sách",
       "kind": "dialogue",
       "target": "nai-mo",
       "lines": [
@@ -67,8 +67,8 @@
           "text": "{name} ơi! Tớ vừa mở cuốn sách Gấu Me cho mượn, thế là… phụt! Một nhánh cỏ dại mọc vọt lên giữa trang!"
         },
         {
-          "speaker": "Vẹt Xanh",
-          "text": "Thần kì! Thần kì! Tớ tận mắt thấy một chiếc lông chim bay ra khỏi trang giấy, bay ra luôn!"
+          "speaker": "Gấu Trúc Tròn",
+          "text": "Bác đi chậm nên bác thấy rõ lắm: một chiếc lông chim vừa bay ra khỏi trang giấy, bay thong thả qua đầu bác."
         },
         {
           "speaker": "Nai Mơ",
@@ -125,7 +125,7 @@
       "target": "tv2-t08-tang-da-phang",
       "textRef": "khi-trang-sach-mo-ra",
       "audio": true,
-      "question": "Vẹt Xanh chen vào: tớ vừa nhặt được từ lạ “xích lại”, nhặt được rồi! Khi trang sách mở ra, cái gì xích lại?",
+      "question": "Bác Gấu Trúc Tròn ngồi xuống bên tảng đá, đọc thật chậm hai chữ “xích lại” rồi hỏi: Khi trang sách mở ra, cái gì xích lại?",
       "choices": [
         {
           "id": "canh-rung-xanh",
@@ -157,7 +157,7 @@
       },
       "feedback": {
         "right": [
-          "Vẹt Xanh lộn một vòng trên tảng đá: xích lại! xích lại! Đúng đúng!",
+          "Bác Gấu Trúc Tròn gõ nhẹ lên mặt đá: khoảng trời xa xích lại, đúng rồi đấy.",
           "Nai Mơ ngước nhìn, thấy khoảng trời như sà xuống sát sừng mình.",
           "Chuẩn rồi, khoảng trời xa xích lại gần {name} luôn!"
         ],
@@ -233,7 +233,7 @@
     {
       "id": "bien-hien-ra-ben-suoi",
       "title": "Biển hiện ra bên suối",
-      "goTo": "Nghe tiếng sóng ào ào, chạy ra bến suối sau tảng đá",
+      "goTo": "Nghe tiếng sóng ào ào, chạy ra suối nhỏ sau tảng đá",
       "kind": "challenge",
       "mechanic": "multi-select",
       "target": "tv2-t08-canh-buom-hien-ra",
@@ -305,7 +305,7 @@
         "right": [
           "Đủ cả sáu! Cánh buồm đỏ nghiêng mình chào {name} rồi lướt đi.",
           "Biển, rừng, gió, lửa, ao sâu: trang sách đúng là cả một thế giới!",
-          "Vẹt Xanh hét toáng: chọn chuẩn! chọn chuẩn! Không sót món nào!"
+          "Bác Gấu Trúc Tròn đếm chậm từng thứ trên ngón tay: đủ sáu, không sót món nào."
         ],
         "wrong": [
           "Có vị khách lạc từ khổ đầu sang đây rồi, kiểm tra lại nhé.",
@@ -464,7 +464,7 @@
         "right": [
           "Đúng! Sóng biển lùi ra xa, cúi chào {name} một cái.",
           "Nai Mơ gật gù: một chân trời đang đi chính là bao điều hay ho đấy.",
-          "Vẹt Xanh ghi ngay từ mới: “dạt dào”, “dạt dào”!"
+          "Bác Gấu Trúc Tròn chép hai chữ “dạt dào” vào sổ, nét nào cũng tròn trịa."
         ],
         "wrong": [
           "Tiếng sóng chỉ là so sánh thôi, ý thơ còn rộng hơn nhiều.",
@@ -475,12 +475,12 @@
     },
     {
       "id": "vet-xanh-suu-tam-van",
-      "title": "Vẹt Xanh sưu tầm vần",
-      "goTo": "Leo lên mỏm đá rêu, Vẹt Xanh đang lẩm nhẩm vần",
+      "title": "Bác thủ thư lắng nghe vần",
+      "goTo": "Ra bậc thềm ra vườn, bác Gấu Trúc Tròn đang đọc nhẩm từng dòng thơ",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "target": "vet-xanh",
-      "prompt": "Vẹt Xanh vỗ ngực: tiếng cuối dòng nào nghe na ná nhau là tớ nhặt liền, nhặt liền!\nTìm những tiếng có vần giống nhau ở cuối các dòng thơ.\nChọn cặp tiếng có vần giống nhau cho từng khổ thơ.",
+      "target": "gau-truc",
+      "prompt": "Bác Gấu Trúc Tròn đọc chậm từng dòng: đọc chậm thì tai mới nghe ra tiếng cuối dòng nào na ná nhau, cháu thử xem.\nTìm những tiếng có vần giống nhau ở cuối các dòng thơ.\nChọn cặp tiếng có vần giống nhau cho từng khổ thơ.",
       "template": "Khổ thơ thứ nhất: {{v1}}\nKhổ thơ thứ ba: {{v2}}\nKhổ thơ thứ tư: {{v3}}",
       "blanks": [
         {
@@ -559,9 +559,9 @@
       },
       "feedback": {
         "right": [
-          "Vẹt Xanh nhét ba cặp vần vào túi lông: lại dại, đâu sâu, gì đi!",
+          "Bác Gấu Trúc Tròn ghi ba cặp vần vào sổ: lại dại, đâu sâu, gì đi!",
           "Êm tai quá! Nai Mơ đọc lại mà nghe như hát.",
-          "Ba cặp vần chuẩn chỉnh, Vẹt Xanh đòi đổi tên thành Vẹt Vần!"
+          "Ba cặp vần chuẩn chỉnh, bác thủ thư gật gù: nghe từ từ là ra cả thôi!"
         ],
         "wrong": [
           "“Chim” với “con” đọc lên đâu có giống nhau, thử cặp khác nhé.",
@@ -691,7 +691,7 @@
         "right": [
           "Đàn chữ l, chữ n về đúng chỗ, sổ lá thơm mùi giấy mới!",
           "Nắn nót, lật trang: {name} nghe l và n tinh như tai nai.",
-          "Nai Mơ đọc to câu tục ngữ, Vẹt Xanh nhại lại hai lần liền."
+          "Nai Mơ đọc to câu tục ngữ, bác Gấu Trúc Tròn đọc theo chậm rãi từng tiếng."
         ],
         "wrong": [
           "“Nắn nót” có hai tiếng cùng một chữ đầu đấy, thử lại nhé.",
@@ -817,12 +817,12 @@
     },
     {
       "id": "tieng-sinh-doi",
-      "title": "Bộ sưu tập tiếng sinh đôi",
-      "goTo": "Lên mỏm đá rêu xem bộ sưu tập tiếng sinh đôi của Vẹt Xanh",
+      "title": "Hộp phiếu tiếng sinh đôi",
+      "goTo": "Về bậc thềm ra vườn, bác Gấu Trúc Tròn mở hộp phiếu tiếng sinh đôi",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "target": "vet-xanh",
-      "prompt": "Vẹt Xanh khoe bộ sưu tập tiếng sinh đôi: gắn với gắng, nắn với nắng, nghe na ná mà nghĩa khác xa, khác xa!\nChọn a hoặc b.\nb. Chọn tiếng trong ngoặc thay cho ô vuông.",
+      "target": "gau-truc",
+      "prompt": "Bác Gấu Trúc Tròn mở hộp phiếu, rút từng tấm thật chậm: gắn với gắng, nắn với nắng, nghe na ná nhau mà nghĩa khác hẳn.\nChọn a hoặc b.\nb. Chọn tiếng trong ngoặc thay cho ô vuông.",
       "template": "– (gắn/ gắng): {{g1}} bó, cố {{g2}}, {{g3}} sức\n– (nắn/ nắng): ánh {{n1}} , uốn {{n2}}, {{n3}} nót\n– (vần/ vầng): {{v1}} thơ, {{v2}} trăng, {{v3}} trán\n– (vân/ vâng): {{w1}} gỗ, {{w2}} lời, {{w3}} tay",
       "blanks": [
         {
@@ -1018,9 +1018,9 @@
       },
       "feedback": {
         "right": [
-          "Mười hai ô đều trúng! Vẹt Xanh múa một vòng: chuẩn chuẩn!",
+          "Mười hai ô đều trúng! Bác Gấu Trúc Tròn xếp phiếu vào hộp, thẳng hàng tăm tắp.",
           "Vầng trăng, vần thơ, vâng lời: {name} phân biệt tài như thám tử chữ.",
-          "Vẹt Xanh đeo cho {name} chiếc huy hiệu “Tai thính số một”."
+          "Bác thủ thư cài lên áo {name} chiếc huy hiệu “Tai thính số một”."
         ],
         "wrong": [
           "Có một tiếng đang thiếu chữ g ở cuối, đọc chậm lại nhé.",
@@ -1092,7 +1092,7 @@
       "feedback": {
         "right": [
           "Ba câu nêu đặc điểm tròn trịa, góc học tập của Bống sáng lên!",
-          "Cục tẩy nhỏ xíu, Vẹt Xanh suýt tưởng là kẹo mà mổ thử.",
+          "Cục tẩy nhỏ xíu, Cánh Cụt Phao suýt tưởng là kẹo mà mổ thử.",
           "Nai Mơ khen: ghép khéo như xếp sách lên kệ!"
         ],
         "wrong": [
@@ -1201,8 +1201,8 @@
           "text": "Cuốn sách này hay quá, {name} ạ. Tớ muốn ôm nó ngủ, ôm nó ăn, ôm nó làm thơ mãi mãi."
         },
         {
-          "speaker": "Vẹt Xanh",
-          "text": "Nhưng hẹn trả Gấu Me hôm nay rồi! Hôm nay rồi!"
+          "speaker": "Gấu Trúc Tròn",
+          "text": "Bác nhắc khẽ thôi: hôm nay là hẹn trả sách cho cô Gấu Me rồi đấy, cháu ạ."
         },
         {
           "speaker": "Nai Mơ",
@@ -1223,7 +1223,7 @@
     {
       "id": "phieu-doc-sach-cua-nam",
       "title": "Tấm phiếu kẹp trong sách",
-      "goTo": "Ôm sách tới cửa thư viện gốc cây trả Gấu Me",
+      "goTo": "Ôm sách vào phòng đọc, trả Gấu Me ở quầy trả sách",
       "kind": "challenge",
       "mechanic": "multi-select",
       "target": "tv2-t08-b15-gau-me",
@@ -1299,7 +1299,7 @@
       "title": "Kể điều thích nhất trong sách",
       "kind": "speak",
       "target": "tv2-t08-b15-gau-me",
-      "prompt": "Gấu Me ngồi xuống gốc cây, chống cằm: cứ kể thong thả thôi, tớ có cả buổi chiều để nghe.\nNói về điều em thích nhất trong cuốn sách em đã đọc.",
+      "prompt": "Gấu Me ngồi xuống chiếc gối cạnh quầy, chống cằm: cứ kể thong thả thôi, tớ có cả buổi chiều để nghe.\nNói về điều em thích nhất trong cuốn sách em đã đọc.",
       "hints": [
         "Cuốn sách {name} muốn kể cho Gấu Me tên là gì?",
         "Em thích nhân vật, đoạn truyện hay bức tranh nào nhất trong đó?",
@@ -1345,7 +1345,7 @@
       "title": "Lá vàng rơi đầy lối",
       "kind": "next",
       "trigger": "auto",
-      "text": "Vẹt Xanh bay vụt qua, rải lá vàng khắp lối: sắp có hội thi giữa kì của cả khu rừng, mỗi trạm một thử thách! Ai dám chơi nào, ai dám chơi nào?"
+      "text": "Bác Gấu Trúc Tròn chậm rãi treo tấm biển trước cửa thư viện: sân lễ hội lá vàng sắp mở hội thi giữa kì, mỗi trạm một thử thách! Bác dặn thong thả: ai muốn chơi thì cứ từ từ mà tới."
     }
   ],
   "reward": {

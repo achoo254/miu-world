@@ -1,17 +1,17 @@
 {
   "id": "toan2-cd4-b20",
-  "region": "truong-hoc",
-  "chapter": 4,
-  "title": "Khỉ Lanh ghép đoàn tàu",
+  "region": "nong-trai",
+  "chapter": 1,
+  "title": "Khỉ Ổi ghép đoàn xe kéo",
   "status": "active",
   "lesson": "toan2-t1-b20",
-  "summary": "Khỉ Lanh ghép đoàn tàu đồ chơi mà toa nào cũng đòi đi trước; {name} cộng có nhớ số có hai chữ số với số có hai chữ số để xếp hàng lên toa cùng Bác tài Khải, đưa tàu ngầm của Voi Bọt và Gấu Trúc Măng về bến, chỉ đường cho kiến với Thỏ Cỏ May và sửa phép tính que diêm của Khỉ.",
+  "summary": "Khỉ Ổi ghép đoàn xe kéo chở nông sản mà toa nào cũng đòi đi trước; {name} cộng có nhớ số có hai chữ số với số có hai chữ số để chất hàng lên toa cùng Bác tài Khải, đưa tàu ngầm đồ chơi của Voi Bọt và Gấu Trúc Măng nổi lên khỏi ao, chỉ đường cho kiến với Thỏ Cỏ May và sửa phép tính que diêm của Khỉ.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Khỉ Lanh, Bác tài Khải, Voi Bọt, Gấu Trúc Măng, Thỏ Cỏ May",
-    "where": "Xưởng đồ chơi: đường ray tàu, trạm gác ghi, bể bơi đồ chơi, bến tàu ngầm, bụi cỏ cạnh xưởng",
-    "goal": "Ghép đủ toa và chất đúng hàng để đoàn tàu chạy",
-    "play": "Tìm toa tàu, điền kết quả cộng có nhớ, chọn tàu đúng, nối hàng với máy bay, xếp tàu ngầm, chọn đường cho kiến, chọn câu đúng, đố que tính",
+    "who": "Khỉ Ổi, Bác tài Khải, Voi Bọt, Gấu Trúc Măng, Thỏ Cỏ May",
+    "where": "Nông trại: bãi xe kéo, cổng nông trại, ao cá, cầu ao, bờ ruộng rau",
+    "goal": "Ghép đủ toa và chất đúng hàng để đoàn xe kéo chở nông sản lăn bánh",
+    "play": "Tìm toa xe kéo, điền kết quả cộng có nhớ, chọn con tàu ghi đúng, nối hàng với máy bay, xếp tàu ngầm, chọn đường cho kiến, chọn câu đúng, đố que tính",
     "learn": "Toán 2 Bài 20: phép cộng (có nhớ) số có hai chữ số với số có hai chữ số",
     "reward": "90 XP, 15 xu, Phép cộng +2, Logic +1",
     "next": "Bài 21 \"Luyện tập chung\""
@@ -28,53 +28,53 @@
   },
   "texts": {},
   "places": {
-    "khi-lanh": "đường ray tàu",
-    "tim-toa-tau": "đường ray tàu",
-    "toan2-cd4-b20-bac-lai-tau-khai": "trạm gác ghi",
-    "toan2-cd4-b20-voi-bot": "bể bơi đồ chơi",
-    "toan2-cd4-b20-gau-truc-mang": "bến tàu ngầm",
-    "toan2-cd4-b20-tho-co-may": "bụi cỏ cạnh xưởng"
+    "toan2-cd4-b20-khi-oi": "bãi xe kéo",
+    "tim-toa-tau": "bãi xe kéo",
+    "toan2-cd4-b20-bac-lai-tau-khai": "cổng nông trại",
+    "toan2-cd4-b20-voi-bot": "ao cá",
+    "toan2-cd4-b20-gau-truc-mang": "cầu ao",
+    "toan2-cd4-b20-tho-co-may": "bờ ruộng rau"
   },
   "steps": [
     {
       "id": "toa-nao-cung-doi-di-truoc",
       "title": "Toa nào cũng đòi đi trước",
-      "goTo": "Đến đường ray tàu trong Xưởng đồ chơi, Khỉ Lanh đang đu trên móc treo",
+      "goTo": "Đến bãi xe kéo của Nông trại, Khỉ Ổi đang đu trên cành ổi",
       "kind": "dialogue",
-      "target": "khi-lanh",
+      "target": "toan2-cd4-b20-khi-oi",
       "lines": [
         {
-          "speaker": "Khỉ Lanh",
-          "text": "Ê a! {name} tới đúng lúc! Thầy đang ghép đoàn tàu đồ chơi chở hàng đi khắp trường."
+          "speaker": "Khỉ Ổi",
+          "text": "Ê a! {name} tới đúng lúc! Tớ đang ghép đoàn xe kéo chở rau, ngô, bí đi khắp nông trại."
         },
         {
-          "speaker": "Khỉ Lanh",
-          "text": "Nhưng mấy cái toa nghịch lắm, toa nào cũng đòi đi trước, lại còn trốn biệt khỏi đường ray."
+          "speaker": "Khỉ Ổi",
+          "text": "Nhưng mấy cái toa nghịch lắm, toa nào cũng đòi đi trước, lại còn trốn biệt sau đống rơm."
         },
         {
           "speaker": "Bác tài Khải",
-          "text": "Thầy Khỉ cứ treo ngược thế kia, tôi đội mũ lái tàu chờ mãi chưa thấy toa nào đây!"
+          "text": "Ổi cứ treo ngược trên cành thế kia, bác đội mũ cầm lái chờ mãi chưa thấy toa nào đây!"
         },
         {
-          "speaker": "Khỉ Lanh",
-          "text": "Treo ngược mới thấy rõ gầm bàn chứ! Thôi, xuống đây, mình đi tìm toa."
+          "speaker": "Khỉ Ổi",
+          "text": "Treo ngược mới thấy rõ chỗ toa trốn chứ bác! Thôi, xuống đây, mình đi tìm toa."
         }
       ],
       "choices": [
         {
-          "text": "Cháu tìm toa giúp thầy!",
-          "reply": "Khỉ Lanh nhảy xuống đánh bịch: Đi nào, nhanh như khỉ!"
+          "text": "Tớ tìm toa giúp cậu!",
+          "reply": "Khỉ Ổi nhảy xuống đánh bịch: Đi nào, nhanh như khỉ!"
         },
         {
-          "text": "Thầy xuống đi kẻo ngã ạ!",
-          "reply": "Khỉ Lanh lộn một vòng đáp đất: Ngã sao được, thầy dạy thể dục mà!"
+          "text": "Xuống đi kẻo ngã đấy!",
+          "reply": "Khỉ Ổi lộn một vòng đáp đất: Ngã sao được, tớ leo cây ổi từ bé mà!"
         }
       ]
     },
     {
       "id": "tim-toa-tau",
-      "title": "Ba toa tàu đi trốn",
-      "goTo": "Tìm ba toa tàu trốn quanh đường ray tàu",
+      "title": "Ba toa xe đi trốn",
+      "goTo": "Tìm ba toa xe kéo trốn quanh bãi xe kéo",
       "kind": "search",
       "targets": [
         "toan2-cd4-toa-hang-do",
@@ -86,39 +86,39 @@
       "id": "nho-mot-hai-chu-so",
       "title": "Cộng hai số có hai chữ số",
       "kind": "dialogue",
-      "target": "khi-lanh",
+      "target": "toan2-cd4-b20-khi-oi",
       "lines": [
         {
-          "speaker": "Khỉ Lanh",
-          "text": "Mỗi toa chở một số kiện hàng. Ghép hai toa thì cộng hai số có hai chữ số, ví dụ 17 + 24."
+          "speaker": "Khỉ Ổi",
+          "text": "Mỗi toa chở một số sọt nông sản. Ghép hai toa thì cộng hai số có hai chữ số, ví dụ 17 + 24."
         },
         {
-          "speaker": "Khỉ Lanh",
+          "speaker": "Khỉ Ổi",
           "text": "Hàng đơn vị: 7 + 4 = 11, viết 1, nhớ 1. Hàng chục: 1 + 2 = 3, thêm 1 nhớ là 4. Vậy 17 + 24 = 41."
         },
         {
           "speaker": "Bác tài Khải",
-          "text": "Số 1 nhớ cứ như hành khách nhảy sang toa hàng chục, phải không thầy?"
+          "text": "Số 1 nhớ cứ như quả bí nhảy sang toa hàng chục, phải không Ổi?"
         },
         {
-          "speaker": "Khỉ Lanh",
-          "text": "Chuẩn! Đừng để vị khách nhỏ nào rơi khỏi toa là được."
+          "speaker": "Khỉ Ổi",
+          "text": "Chuẩn! Đừng để quả bí nhỏ nào lăn khỏi toa là được."
         }
       ],
       "choices": [
         {
           "text": "Không để rơi số nhớ!",
-          "reply": "Khỉ Lanh giơ ngón cái: Tàu xuất phát!"
+          "reply": "Khỉ Ổi giơ ngón cái: Xe kéo xuất phát!"
         }
       ]
     },
     {
       "id": "hang-len-toa-dau-tien",
       "title": "Chất hàng lên toa đầu tiên",
-      "target": "khi-lanh",
+      "target": "toan2-cd4-b20-khi-oi",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Mỗi toa tàu dán một phép cộng, kết quả là số kiện hàng phải chất lên. Tính.",
+      "prompt": "Mỗi toa xe kéo dán một phép cộng, kết quả là số sọt nông sản phải chất lên. Tính.",
       "template": "17 + 24 = {{b1}}\n37 + 36 = {{b2}}\n42 + 48 = {{b3}}\n59 + 25 = {{b4}}\nĐặt tính rồi tính.\n23 + 67 = {{b5}}\n46 + 18 = {{b6}}\n59 + 21 = {{b7}}\n64 + 19 = {{b8}}",
       "blanks": [
         {
@@ -282,8 +282,8 @@
       },
       "feedback": {
         "right": [
-          "Tám toa đầy ắp hàng, đầu tàu kêu tu tu sốt ruột!",
-          "Không rơi số nhớ nào, Khỉ Lanh nhảy cẫng lên.",
+          "Tám toa đầy ắp rau củ, đầu xe kéo nổ máy bành bạch sốt ruột!",
+          "Không rơi số nhớ nào, Khỉ Ổi nhảy cẫng lên.",
           "Cộng hai chữ số với hai chữ số mà nhẹ tênh!"
         ],
         "wrong": [
@@ -311,7 +311,7 @@
       "target": "toan2-cd4-b20-bac-lai-tau-khai",
       "kind": "challenge",
       "mechanic": "quiz",
-      "prompt": "Khỉ Lanh viết vội lên ba con tàu, có tàu ghi sai. Con tàu nào ghi phép tính đúng?",
+      "prompt": "Khỉ Ổi viết vội lên ba tấm biển hình con tàu treo ở cổng, có tàu ghi sai. Con tàu nào ghi phép tính đúng?",
       "choices": [
         {
           "id": "65-5-71",
@@ -343,8 +343,8 @@
       },
       "feedback": {
         "right": [
-          "Tàu xanh lá chạy trước, phép tính chuẩn không cần chỉnh!",
-          "Khỉ Lanh gãi đầu: thầy viết vội quá, cảm ơn cháu.",
+          "Biển tàu xanh lá được treo lên trước, phép tính chuẩn không cần chỉnh!",
+          "Khỉ Ổi gãi đầu: tớ viết vội quá, cảm ơn cậu nhé.",
           "Bắt được hai con tàu ghi sai, cháu tinh mắt ghê."
         ],
         "wrong": [
@@ -356,7 +356,7 @@
       "answer": {
         "choice": "23-18-41"
       },
-      "goTo": "Chạy tới trạm gác ghi, Bác tài Khải đang soi ba con tàu ghi số"
+      "goTo": "Chạy tới cổng nông trại, Bác tài Khải đang soi ba tấm biển hình con tàu"
     },
     {
       "id": "may-bay-cho-hang",
@@ -416,7 +416,7 @@
       },
       "feedback": {
         "right": [
-          "Vù vù! Ba máy bay gắp đúng hàng, bay về ga tàu!",
+          "Vù vù! Ba máy bay gắp đúng hàng, bay thẳng về kho thóc!",
           "Cộng ki-lô-gam có nhớ mà không trượt phát nào.",
           "Bác tài Khải chụp ảnh lưu niệm đội máy bay chở hàng."
         ],
@@ -437,9 +437,9 @@
     {
       "id": "buu-thiep-cua-mai",
       "title": "Bưu thiếp cành hoa đào",
-      "target": "khi-lanh",
+      "target": "toan2-cd4-b20-khi-oi",
       "kind": "riddle",
-      "question": "Toa cuối chở bưu thiếp gửi khắp trường. Ngày thứ nhất, Mai làm được 29 tấm bưu thiếp. Ngày thứ hai, Mai làm được 31 tấm bưu thiếp. Hỏi cả hai ngày Mai làm được bao nhiêu tấm bưu thiếp?",
+      "question": "Toa cuối chở bưu thiếp gửi bà con quanh nông trại. Ngày thứ nhất, Mai làm được 29 tấm bưu thiếp. Ngày thứ hai, Mai làm được 31 tấm bưu thiếp. Hỏi cả hai ngày Mai làm được bao nhiêu tấm bưu thiếp?",
       "skill": "bai-toan-loi-van",
       "curriculumRef": [
         "toan2-t1-b20-luyen-tap-4"
@@ -459,7 +459,7 @@
         "right": [
           "Sáu mươi tấm bưu thiếp hồng rực lên toa!",
           "Tròn sáu chục, đẹp như cành hoa đào trên thiếp.",
-          "Khỉ Lanh gửi một tấm cho cháu, ghi \"Thợ cộng siêu nhanh\"."
+          "Khỉ Ổi gửi một tấm cho cậu, ghi \"Thợ cộng siêu nhanh\"."
         ],
         "wrong": [
           "Cả hai ngày thì gộp số bưu thiếp lại nhé.",
@@ -470,32 +470,32 @@
       "answer": {
         "value": 60
       },
-      "goTo": "Quay về đường ray tàu, Khỉ Lanh vẫy xấp bưu thiếp hồng cho toa cuối"
+      "goTo": "Quay về bãi xe kéo, Khỉ Ổi vẫy xấp bưu thiếp hồng cho toa cuối"
     },
     {
       "id": "meo-mun-goi-tau-ngam",
       "title": "Voi Bọt gọi tàu ngầm",
-      "goTo": "Sang bể bơi đồ chơi, Voi Bọt đang thò vòi khua nước tìm tàu ngầm",
+      "goTo": "Sang ao cá, Voi Bọt đang thò vòi khua nước tìm tàu ngầm đồ chơi",
       "kind": "dialogue",
       "target": "toan2-cd4-b20-voi-bot",
       "lines": [
         {
           "speaker": "Voi Bọt",
-          "text": "Phì phò! Tớ là Voi Bọt, canh bể bơi đồ chơi. Bốn chiếc tàu ngầm chở hàng lặn mất tăm, tớ khua vòi mãi chẳng chiếc nào chịu nổi!"
+          "text": "Phì phò! Tớ là Voi Bọt, canh ao cá của nông trại. Bốn chiếc tàu ngầm đồ chơi của lũ trẻ lặn mất tăm, tớ khua vòi mãi chẳng chiếc nào chịu nổi!"
         },
         {
-          "speaker": "Khỉ Lanh",
+          "speaker": "Khỉ Ổi",
           "text": "Khỏi khua nữa! Cứ tính phép cộng trên mỗi tàu là biết tàu nào nổi lên trước. {name} muốn tính hết rồi xếp, hay so từng đôi?"
         }
       ],
       "choices": [
         {
           "text": "Tính hết rồi mới xếp",
-          "reply": "Voi Bọt phun một vòi nước lên trời: Chắc ăn như cá bơi trong bể!"
+          "reply": "Voi Bọt phun một vòi nước lên trời: Chắc ăn như cá bơi dưới ao!"
         },
         {
           "text": "So từng đôi tàu một",
-          "reply": "Khỉ Lanh: Cũng được, miễn là cuối cùng xếp đúng."
+          "reply": "Khỉ Ổi: Cũng được, miễn là cuối cùng xếp đúng."
         }
       ]
     },
@@ -676,7 +676,7 @@
           "tau-ngam-tau-ngam-a-15-82"
         ]
       },
-      "goTo": "Ra bến tàu ngầm, Gấu Trúc Măng ôm phao ngồi chờ tàu nổi lên"
+      "goTo": "Ra cầu ao, Gấu Trúc Măng ôm phao ngồi chờ tàu ngầm nổi lên"
     },
     {
       "id": "duong-ngan-cho-kien-vang",
@@ -729,14 +729,14 @@
       "answer": {
         "choice": "b-duong-mau-xanh"
       },
-      "goTo": "Ra bụi cỏ cạnh xưởng, Thỏ Cỏ May đang nằm bò xem đàn kiến"
+      "goTo": "Ra bờ ruộng rau, Thỏ Cỏ May đang nằm bò xem đàn kiến"
     },
     {
       "id": "kien-do-qua-bui-co",
       "title": "Kiến đỏ đi tìm kẹo",
       "target": "toan2-cd4-b20-tho-co-may",
       "kind": "riddle",
-      "question": "Kiến đỏ cũng muốn lên tàu, nhưng phải bò qua bụi cỏ: một đoạn 37 cm rồi một đoạn 54 cm. Số ? Kiến đỏ phải bò qua bụi cỏ để đến cái kẹo. Kiến đỏ phải bò ? cm.",
+      "question": "Kiến đỏ cũng muốn lên xe kéo, nhưng phải bò qua bụi cỏ: một đoạn 37 cm rồi một đoạn 54 cm. Số ? Kiến đỏ phải bò qua bụi cỏ để đến cái kẹo. Kiến đỏ phải bò ? cm.",
       "skill": "phep-cong",
       "curriculumRef": [
         "toan2-t1-b20-luyen-tap-5"
@@ -771,11 +771,11 @@
     {
       "id": "ba-so-cong-lien",
       "title": "Ba số cộng liền mạch",
-      "goTo": "Quay về đường ray tàu, Khỉ Lanh đang đếm kiện hàng trên ba toa cuối",
-      "target": "khi-lanh",
+      "goTo": "Quay về bãi xe kéo, Khỉ Ổi đang đếm sọt hàng trên ba toa cuối",
+      "target": "toan2-cd4-b20-khi-oi",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Mỗi toa cuối chở ba loại hàng, Khỉ Lanh cộng một lèo. Tính.",
+      "prompt": "Mỗi toa cuối chở ba loại hàng, Khỉ Ổi cộng một lèo. Tính.",
       "template": "23 + 27 + 1 = {{b1}}\n45 + 45 + 2 = {{b2}}\n58 + 12 + 3 = {{b3}}\n69 + 11 + 4 = {{b4}}",
       "blanks": [
         {
@@ -867,7 +867,7 @@
       },
       "feedback": {
         "right": [
-          "Tròn chục rồi cộng thêm, Khỉ Lanh tấm tắc khen mẹo hay!",
+          "Tròn chục rồi cộng thêm, Khỉ Ổi tấm tắc khen mẹo hay!",
           "Bốn toa cuối đã đủ hàng, chuẩn bị lăn bánh.",
           "Cộng ba số mà nhanh như khỉ đu cành."
         ],
@@ -888,11 +888,11 @@
     },
     {
       "id": "dat-tinh-toa-hang",
-      "title": "Bảng đặt tính của ga tàu",
-      "target": "khi-lanh",
+      "title": "Bảng đặt tính ở bãi xe kéo",
+      "target": "toan2-cd4-b20-khi-oi",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Trên bảng ga, Khỉ Lanh dán hai lượt phép tính viết dọc. Đặt tính rồi tính.",
+      "prompt": "Trên tấm bảng gỗ ở bãi xe kéo, Khỉ Ổi dán hai lượt phép tính viết dọc. Đặt tính rồi tính.",
       "template": "36 + 36 = {{b1}}\n73 + 17 = {{b2}}\n28 + 53 = {{b3}}\n25 + 35 = {{b4}}\n38 + 52 = {{b5}}\n15 + 15 = {{b6}}\n67 + 17 = {{b7}}\n72 + 19 = {{b8}}",
       "blanks": [
         {
@@ -1056,9 +1056,9 @@
       },
       "feedback": {
         "right": [
-          "Bảng ga sạch sẽ, tám phép tính đều đúng!",
-          "Cột thẳng, nhớ đủ, đoàn tàu sẵn sàng khởi hành.",
-          "Khỉ Lanh thổi còi: toét toét, cháu xuất sắc!"
+          "Bảng gỗ sạch sẽ, tám phép tính đều đúng!",
+          "Cột thẳng, nhớ đủ, đoàn xe kéo sẵn sàng lăn bánh.",
+          "Khỉ Ổi bóp còi xe: bim bim, cậu xuất sắc!"
         ],
         "wrong": [
           "Một phép tính quên cộng số nhớ rồi.",
@@ -1085,7 +1085,7 @@
       "target": "toan2-cd4-b20-bac-lai-tau-khai",
       "kind": "challenge",
       "mechanic": "multi-select",
-      "prompt": "Trên trời xưởng bay lơ lửng ba khinh khí cầu, mỗi chiếc buộc dây vào một số trên tia số 64, 67, 70, …, 100. Đ, S ? Chọn những khinh khí cầu nối đúng (Đ); chiếc không chọn là nối sai (S).",
+      "prompt": "Trên trời nông trại bay lơ lửng ba khinh khí cầu, mỗi chiếc buộc dây vào một số trên tia số 64, 67, 70, …, 100. Đ, S ? Chọn những khinh khí cầu nối đúng (Đ); chiếc không chọn là nối sai (S).",
       "choices": [
         {
           "id": "khinh-khi-cau-58-19-noi-voi-so-76",
@@ -1121,7 +1121,7 @@
         "right": [
           "Chỉ một khinh khí cầu buộc đúng dây, cháu tìm ra liền!",
           "Hai chiếc buộc nhầm đã bị cắt dây, bay về chỗ đúng.",
-          "Khỉ Lanh đu lên dây kiểm tra: chuẩn không cần chỉnh!"
+          "Khỉ Ổi đu lên dây kiểm tra: chuẩn không cần chỉnh!"
         ],
         "wrong": [
           "Tính lại từng khinh khí cầu, có chiếc lệch 1 đơn vị.",
@@ -1134,7 +1134,7 @@
           "khinh-khi-cau-49-48-noi-voi-so-97"
         ]
       },
-      "goTo": "Lên trạm gác ghi, Bác tài Khải chỉ ba khinh khí cầu lơ lửng"
+      "goTo": "Lên cổng nông trại, Bác tài Khải chỉ ba khinh khí cầu lơ lửng"
     },
     {
       "id": "dan-cuu-qua-cau",
@@ -1142,7 +1142,7 @@
       "target": "toan2-cd4-b20-bac-lai-tau-khai",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Đàn cừu đồ chơi lên tàu theo từng nhóm: lúc đầu có 45 con, mỗi cây cầu lại có thêm cừu nhập đàn. Số ?",
+      "prompt": "Đàn cừu của nông trại lên xe kéo theo từng nhóm: lúc đầu có 45 con, mỗi cây cầu lại có thêm cừu nhập đàn. Số ?",
       "template": "a) 45 → + 27 → {{b1}} → + 19 → {{b2}}\nb) 45 → + 19 → {{b3}} → + 27 → {{b4}}",
       "blanks": [
         {
@@ -1234,7 +1234,7 @@
         "right": [
           "Be be! Hai nhóm cừu cùng về đích 91 con!",
           "Đổi thứ tự cộng mà kết quả cuối vẫn như nhau, hay quá.",
-          "Cừu nào cũng lên tàu, không con nào lạc đàn."
+          "Cừu nào cũng lên xe kéo, không con nào lạc đàn."
         ],
         "wrong": [
           "Kết quả ở ô đầu là số bắt đầu cho mũi tên tiếp theo.",
@@ -1254,9 +1254,9 @@
     {
       "id": "bi-cua-nam",
       "title": "Túi bi của Nam",
-      "target": "khi-lanh",
+      "target": "toan2-cd4-b20-khi-oi",
       "kind": "riddle",
-      "question": "Trên toa khách có Nam, Mai và Rô-bốt ngồi chơi bi. Nam có 57 viên bi. Mai cho Nam thêm 15 viên bi. Hỏi lúc này Nam có bao nhiêu viên bi?",
+      "question": "Trên toa cuối của xe kéo có Nam, Mai và Rô-bốt ngồi chơi bi. Nam có 57 viên bi. Mai cho Nam thêm 15 viên bi. Hỏi lúc này Nam có bao nhiêu viên bi?",
       "skill": "bai-toan-loi-van",
       "curriculumRef": [
         "toan2-t1-b20-luyen-tap-3-4"
@@ -1287,15 +1287,15 @@
       "answer": {
         "value": 72
       },
-      "goTo": "Về đường ray tàu, Khỉ Lanh mời cậu lên toa khách xem chơi bi"
+      "goTo": "Về bãi xe kéo, Khỉ Ổi mời cậu lên toa cuối xem chơi bi"
     },
     {
       "id": "que-tinh-dat-sai",
       "title": "Trò que tính đặt sai",
-      "target": "khi-lanh",
+      "target": "toan2-cd4-b20-khi-oi",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Trò chơi cuối: Khỉ Lanh lén dời một que tính trên mỗi phép tính xếp bằng que, ai sửa đúng trước thì được lái đầu tàu! Mỗi hình có 1 que tính đặt sai vị trí. Em hãy đặt lại cho đúng. Biết rằng:",
+      "prompt": "Trò chơi cuối: Khỉ Ổi lén dời một que tính trên mỗi phép tính xếp bằng que, ai sửa đúng trước thì được ngồi ghế lái xe kéo! Mỗi hình có 1 que tính đặt sai vị trí. Em hãy đặt lại cho đúng. Biết rằng:",
       "template": "a) Que tính ở kết quả đặt sai. 36 + 45 = 97 → sửa lại: 36 + 45 = {{b1}}\nb) Que tính ở số hạng thứ hai đặt sai. 74 + 16 = 84 → sửa lại: 74 + {{b2}} = 84",
       "blanks": [
         {
@@ -1351,9 +1351,9 @@
       },
       "feedback": {
         "right": [
-          "Cháu thắng! Mời bác lái tàu {name} lên buồng lái!",
+          "Cậu thắng! Mời bác tài {name} lên ghế lái!",
           "Hai que tính về đúng chỗ, phép tính hết \"lệch pha\".",
-          "Khỉ Lanh lộn ba vòng chúc mừng nhà vô địch que tính."
+          "Khỉ Ổi lộn ba vòng chúc mừng nhà vô địch que tính."
         ],
         "wrong": [
           "Tính lại 36 + 45 trước, rồi nghĩ cách dời que.",
@@ -1370,17 +1370,17 @@
     },
     {
       "id": "coi-tau-truong-ga",
-      "title": "Còi trưởng ga",
+      "title": "Còi bác tài xe kéo",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Đoàn tàu đồ chơi chạy một vòng quanh Xưởng đồ chơi, kéo theo cả đàn kiến, đàn cừu và Voi Bọt. Khỉ Lanh trao cho {name} chiếc còi \"Trưởng ga nhớ một\" kêu toét toét."
+      "text": "Đoàn xe kéo chở đầy rau củ chạy một vòng quanh nông trại, kéo theo cả đàn kiến, đàn cừu và Voi Bọt. Khỉ Ổi trao cho {name} chiếc còi \"Bác tài nhớ một\" kêu bim bim."
     },
     {
       "id": "hop-qua-bi-mat",
       "title": "Hộp quà khóa bằng phép tính",
       "kind": "next",
       "trigger": "auto",
-      "text": "Cáo Lém thò đầu ra từ quầy trao giải: \"Tớ làm xong một hộp quà bí mật, nhưng ổ khóa chỉ mở khi giải đúng phép tính. Ai dám thử nào?\""
+      "text": "Cáo Mía thò đầu ra từ sân trước kho thóc: \"Tớ làm xong một hộp quà bí mật cho hội mùa, nhưng ổ khóa chỉ mở khi giải đúng phép tính. Ai dám thử nào?\""
     }
   ],
   "reward": {

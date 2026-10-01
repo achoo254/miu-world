@@ -1,16 +1,16 @@
 {
   "id": "toan2-cd4-b19",
-  "region": "truong-hoc",
-  "chapter": 4,
-  "title": "Đốm và hộp linh kiện đổ",
+  "region": "nong-trai",
+  "chapter": 1,
+  "title": "Lem và hộp ốc vít đổ",
   "status": "active",
   "lesson": "toan2-t1-b19",
-  "summary": "Lợn Rừng Đốm vụng về làm đổ cả hộp linh kiện ra bàn lắp ráp; {name} giúp Đốm gom ốc vít thành từng chục, chạy khắp xưởng cộng có nhớ số có hai chữ số với số có một chữ số cùng Bác thợ sơn Thắm, Cánh Cụt Sò, Bê Rơm, sửa phép tính Gà Con Líu bới mất và thi cộng hạt dẻ với Đốm.",
+  "summary": "Ở xưởng nông cụ, Lợn Lấm Lem vụng về làm đổ cả hộp ốc vít ra bàn sửa xe; {name} giúp Lem gom ốc vít thành từng chục, chạy khắp nông trại cộng có nhớ số có hai chữ số với số có một chữ số cùng Bác thợ sơn Thắm, Cánh Cụt Sò, Bê Rơm, sửa phép tính Gà Con Líu bới mất trước chuồng gà và thi cộng hạt dẻ với Lem.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Lợn Rừng Đốm, Bác thợ sơn Thắm, Cánh Cụt Sò, Gà Con Líu, Bê Rơm",
-    "where": "Xưởng đồ chơi: bàn lắp ráp, góc pha sơn, mô hình hải đăng, bãi đất sau xưởng, kệ máy gặt đồ chơi",
-    "goal": "Đếm lại linh kiện theo chục và rời để lắp xong đồ chơi",
+    "who": "Lợn Lấm Lem, Bò Sữa Mơ, Bác thợ sơn Thắm, Cánh Cụt Sò, Gà Con Líu, Bê Rơm",
+    "where": "Nông trại: bàn sửa xe trong xưởng nông cụ, góc pha sơn, bờ ao cá, chuồng gà, kho thóc",
+    "goal": "Đếm lại linh kiện theo chục và rời để sửa xong chiếc xe kéo chở rau",
     "play": "Tìm linh kiện, điền kết quả phép cộng có nhớ, chọn chum, nối quả với lá, đố vỏ ốc, xây tháp đá, chọn kết quả, thi cộng hạt dẻ",
     "learn": "Toán 2 Bài 19: phép cộng (có nhớ) số có hai chữ số với số có một chữ số",
     "reward": "80 XP, 15 xu, Phép cộng +2, Bài toán có lời văn +1",
@@ -28,49 +28,53 @@
   },
   "texts": {},
   "places": {
-    "lon-rung-dom": "bàn lắp ráp",
-    "tim-linh-kien": "bàn lắp ráp",
+    "toan2-cd4-b19-lon-lam-lem": "bàn sửa xe",
+    "tim-linh-kien": "bàn sửa xe",
     "toan2-cd4-b19-bac-tho-son-tham": "góc pha sơn",
-    "toan2-cd4-b19-canh-cut-so": "mô hình hải đăng",
-    "toan2-cd4-b19-ga-con-liu": "bãi đất sau xưởng",
-    "toan2-cd4-b19-be-rom": "kệ máy gặt đồ chơi"
+    "toan2-cd4-b19-canh-cut-so": "bờ ao cá",
+    "toan2-cd4-b19-ga-con-liu": "chuồng gà",
+    "toan2-cd4-b19-be-rom": "kho thóc"
   },
   "steps": [
     {
       "id": "dom-lam-do-hop",
-      "title": "Rầm! Hộp linh kiện đổ",
-      "goTo": "Vào Xưởng đồ chơi, tới bàn lắp ráp nơi vừa vang lên tiếng loảng xoảng",
+      "title": "Rầm! Hộp ốc vít đổ",
+      "goTo": "Vào xưởng nông cụ của Nông trại, tới bàn sửa xe nơi vừa vang lên tiếng loảng xoảng",
       "kind": "dialogue",
-      "target": "lon-rung-dom",
+      "target": "toan2-cd4-b19-lon-lam-lem",
       "lines": [
         {
-          "speaker": "Lợn Rừng Đốm",
-          "text": "Loảng xoảng! Ối, tớ chỉ định hắt xì một cái thôi mà cả hộp linh kiện đổ tung ra bàn lắp ráp!"
+          "speaker": "Bò Sữa Mơ",
+          "text": "Ò… chào {name} tới nông trại! Nghe tiếng loảng xoảng kia là bác biết ngay: Lem lại làm đổ gì rồi."
         },
         {
-          "speaker": "Lợn Rừng Đốm",
-          "text": "Ốc vít lăn dưới gầm bàn, bánh xe chui vào góc, lò xo nảy tưng tưng. Tớ cần đếm lại để lắp xe đồ chơi."
+          "speaker": "Lợn Lấm Lem",
+          "text": "Loảng xoảng! Ối, tớ chỉ định hắt xì một cái thôi mà cả hộp ốc vít đổ tung ra bàn sửa xe!"
         },
         {
-          "speaker": "Lợn Rừng Đốm",
+          "speaker": "Lợn Lấm Lem",
+          "text": "Ốc vít lăn dưới gầm bàn, bánh xe chui vào đống rơm, lò xo nảy tưng tưng. Tớ cần đếm lại để lắp chiếc xe kéo chở rau."
+        },
+        {
+          "speaker": "Lợn Lấm Lem",
           "text": "Mà đếm từng chiếc thì tớ đếm tới 27 là… quên mất đang đếm gì. {name} cứu tớ với!"
         }
       ],
       "choices": [
         {
           "text": "Mình nhặt cùng cậu!",
-          "reply": "Đốm cười tít mắt, rồi vấp chân vào ghế: Ối… cảm ơn cậu nhé!"
+          "reply": "Lem cười tít mắt, rồi vấp chân vào ghế: Ối… cảm ơn cậu nhé!"
         },
         {
-          "text": "Đốm đừng hắt xì nữa nhé!",
-          "reply": "Đốm bịt mũi: Tớ cố… hắt… à không, tớ nhịn được rồi!"
+          "text": "Lem đừng hắt xì nữa nhé!",
+          "reply": "Lem bịt mũi: Tớ cố… hắt… à không, tớ nhịn được rồi!"
         }
       ]
     },
     {
       "id": "tim-linh-kien",
       "title": "Nhặt linh kiện dưới gầm bàn",
-      "goTo": "Nhặt ốc vít, bánh xe, lò xo lăn quanh bàn lắp ráp",
+      "goTo": "Nhặt ốc vít, bánh xe, lò xo lăn quanh bàn sửa xe",
       "kind": "search",
       "targets": [
         "toan2-cd4-hop-oc-vit",
@@ -82,35 +86,35 @@
       "id": "goi-muoi-oc-vit",
       "title": "Gói mười chiếc thành một chục",
       "kind": "dialogue",
-      "target": "lon-rung-dom",
+      "target": "toan2-cd4-b19-lon-lam-lem",
       "lines": [
         {
-          "speaker": "Lợn Rừng Đốm",
+          "speaker": "Lợn Lấm Lem",
           "text": "À, tớ nhớ ra mẹo rồi: cứ đủ 10 chiếc ốc vít thì cho vào một túi, gọi là một chục!"
         },
         {
-          "speaker": "Lợn Rừng Đốm",
+          "speaker": "Lợn Lấm Lem",
           "text": "Có 28 chiếc là 2 túi và 8 chiếc rời. Thêm 3 chiếc nữa: 8 + 3 = 11, đủ thêm một túi, còn 1 chiếc rời."
         },
         {
-          "speaker": "Lợn Rừng Đốm",
+          "speaker": "Lợn Lấm Lem",
           "text": "Viết 1, nhớ 1 sang hàng chục: 2 túi thêm 1 túi là 3 túi. Vậy 28 + 3 = 31. Ủn… à nhầm, tớ là lợn rừng, không ủn!"
         }
       ],
       "choices": [
         {
           "text": "Đủ mười thì nhớ một!",
-          "reply": "Đốm giơ ngón tay cái: Câu thần chú của xưởng mình đấy!"
+          "reply": "Lem giơ ngón tay cái dính đầy dầu máy: Câu thần chú của xưởng nông cụ đấy!"
         }
       ]
     },
     {
       "id": "cong-co-nho-dau-tien",
       "title": "Những túi ốc vít đầu tiên",
-      "target": "lon-rung-dom",
+      "target": "toan2-cd4-b19-lon-lam-lem",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Mỗi túi ốc vít Đốm ghi một phép cộng. Tính.",
+      "prompt": "Mỗi túi ốc vít Lem ghi một phép cộng. Tính.",
       "template": "28 + 3 = {{b1}}\n78 + 9 = {{b2}}\n57 + 7 = {{b3}}\n13 + 7 = {{b4}}\nĐặt tính rồi tính.\n35 + 6 = {{b5}}\n47 + 8 = {{b6}}\n89 + 2 = {{b7}}\n63 + 9 = {{b8}}",
       "blanks": [
         {
@@ -274,9 +278,9 @@
       },
       "feedback": {
         "right": [
-          "Tám túi ốc vít buộc gọn gàng, Đốm múa một điệu vụng về!",
+          "Tám túi ốc vít buộc gọn gàng, Lem múa một điệu vụng về!",
           "Nhớ 1 sang hàng chục không sót lần nào, siêu thật.",
-          "Đốm thì thầm: cậu cộng nhanh hơn cả máy bắn vít."
+          "Lem thì thầm: cậu cộng nhanh hơn cả máy bắn vít."
         ],
         "wrong": [
           "Đủ mười ở hàng đơn vị thì nhớ 1 sang hàng chục nhé.",
@@ -303,7 +307,7 @@
       "target": "toan2-cd4-b19-bac-tho-son-tham",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Đốm pha sơn trong ba chum: chum A ghi 59 l + 9 l, chum B ghi 61 l + 9 l, chum C ghi 57 l + 4 l.",
+      "prompt": "Lem pha sơn trong ba chum: chum A ghi 59 l + 9 l, chum B ghi 61 l + 9 l, chum C ghi 57 l + 4 l.",
       "template": "Mỗi chum đựng số lít nước là kết quả của phép tính ghi trên chum. Hỏi chum nào đựng nhiều nước nhất? Chum {{b1}}",
       "blanks": [
         {
@@ -341,9 +345,9 @@
       },
       "feedback": {
         "right": [
-          "Chum B bảy mươi lít, nước sơn đủ tô cả đoàn tàu!",
+          "Chum B bảy mươi lít, nước sơn đủ quét cả cổng nông trại!",
           "Cháu tính cả ba chum rồi mới chọn, rất cẩn thận.",
-          "Đốm khuấy chum B, sơn đỏ bắn lên mũi: ha ha, đúng rồi!"
+          "Lem khuấy chum B, sơn đỏ bắn lên mũi: ha ha, đúng rồi!"
         ],
         "wrong": [
           "Tính hết ba chum rồi mới so nhé.",
@@ -356,15 +360,15 @@
           "b1": "b"
         }
       },
-      "goTo": "Chạy sang góc pha sơn, Bác thợ sơn Thắm vẫy cọ gọi cậu xem ba chum sơn của Đốm"
+      "goTo": "Chạy sang góc pha sơn, Bác thợ sơn Thắm vẫy cọ gọi cậu xem ba chum sơn của Lem"
     },
     {
       "id": "toa-tau-va-dat-tinh",
-      "title": "Toa tàu chở linh kiện",
+      "title": "Thùng gỗ đựng linh kiện",
       "target": "toan2-cd4-b19-bac-tho-son-tham",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Đốm lắp một đoàn tàu nhỏ, mỗi toa dán một phép tính, rồi còn bốn phép tính viết dọc trên bàn.",
+      "prompt": "Lem xếp bốn thùng gỗ đựng linh kiện, mỗi thùng dán một phép tính, rồi còn bốn phép tính viết dọc trên bàn.",
       "template": "a) Số ?\n12 + 8 = {{b1}}\n33 + 7 = {{b2}}\n65 + 5 = {{b3}}\n84 + 6 = {{b4}}\nb) Đặt tính rồi tính.\n35 + 5 = {{b5}}\n69 + 4 = {{b6}}\n19 + 3 = {{b7}}\n29 + 6 = {{b8}}",
       "blanks": [
         {
@@ -517,7 +521,7 @@
       ],
       "support": {
         "guide": [
-          "Bốn toa tàu đầu đều cộng ra số tròn chục.",
+          "Bốn thùng gỗ đầu đều cộng ra số tròn chục.",
           "Đặt tính: viết thẳng cột đơn vị với đơn vị."
         ],
         "hint": "69 + 4: 9 + 4 = 13, viết 3 nhớ 1; 6 thêm 1 là 7.",
@@ -528,13 +532,13 @@
       },
       "feedback": {
         "right": [
-          "Tu tu! Đoàn tàu chạy một vòng quanh bàn lắp ráp!",
-          "Toa nào cũng tròn chục, cháu nhìn ra quy luật rồi.",
-          "Bốn phép tính dọc thẳng hàng như đường ray mới."
+          "Cộp cộp! Bốn thùng gỗ đóng nắp, xếp ngay ngắn bên bàn sửa xe!",
+          "Thùng nào cũng tròn chục, cháu nhìn ra quy luật rồi.",
+          "Bốn phép tính dọc thẳng hàng như luống rau mới gieo."
         ],
         "wrong": [
           "Đơn vị cộng đủ 10 thì hàng đơn vị là 0 đấy.",
-          "Một toa tàu đang chở sai số hàng, kiểm lại nhé.",
+          "Một thùng gỗ đang dán sai số, kiểm lại nhé.",
           "Nhớ cộng thêm 1 vào hàng chục khi có nhớ."
         ]
       },
@@ -554,10 +558,10 @@
     {
       "id": "qua-tim-la",
       "title": "Quả nào về lá nấy",
-      "target": "lon-rung-dom",
+      "target": "toan2-cd4-b19-lon-lam-lem",
       "kind": "challenge",
       "mechanic": "classify",
-      "prompt": "Đốm làm cây đồ chơi treo quả gỗ, mỗi quả phải gắn đúng chiếc lá ghi kết quả. Tính rồi tìm lá của mỗi loại quả.",
+      "prompt": "Lem khắc quả gỗ treo lên biển của vườn cây ăn quả, mỗi quả phải gắn đúng chiếc lá ghi kết quả. Tính rồi tìm lá của mỗi loại quả.",
       "groups": [
         {
           "id": "nhom-la-26",
@@ -610,8 +614,8 @@
       "feedback": {
         "right": [
           "Dưa hấu, lựu, chuối đều tìm được lá của mình!",
-          "Cây đồ chơi xanh mướt, quả nào cũng đúng chỗ.",
-          "Đốm treo cây lên cửa xưởng, ai đi qua cũng trầm trồ."
+          "Tấm biển xanh mướt, quả nào cũng đúng chỗ.",
+          "Lem treo biển lên cổng vườn cây, ai đi qua cũng trầm trồ."
         ],
         "wrong": [
           "Có một quả đang ôm nhầm lá của bạn khác.",
@@ -626,14 +630,14 @@
           "qua-69-1": "nhom-la-70"
         }
       },
-      "goTo": "Về lại bàn lắp ráp, Đốm đang kiễng chân treo quả gỗ lên cây đồ chơi"
+      "goTo": "Về lại bàn sửa xe, Lem đang khắc những quả gỗ để treo biển cho vườn cây ăn quả"
     },
     {
       "id": "vo-oc-trang-xanh",
-      "title": "Vỏ ốc làm còi tàu",
+      "title": "Vỏ ốc làm còi xe kéo",
       "target": "toan2-cd4-b19-canh-cut-so",
       "kind": "riddle",
-      "question": "Đốm dùng vỏ ốc làm còi cho đồ chơi. Trên bàn có 18 vỏ ốc màu trắng và 5 vỏ ốc màu xanh. Hỏi trên bàn có tất cả bao nhiêu vỏ ốc?",
+      "question": "Lem dùng vỏ ốc làm còi cho chiếc xe kéo. Trên bàn có 18 vỏ ốc màu trắng và 5 vỏ ốc màu xanh. Hỏi trên bàn có tất cả bao nhiêu vỏ ốc?",
       "skill": "bai-toan-loi-van",
       "curriculumRef": [
         "toan2-t1-b19-luyen-tap-3"
@@ -651,9 +655,9 @@
       },
       "feedback": {
         "right": [
-          "Hai mươi ba chiếc còi vỏ ốc thổi tuýt tuýt vang xưởng!",
+          "Hai mươi ba chiếc còi vỏ ốc thổi tuýt tuýt vang cả bờ ao!",
           "Gộp trắng với xanh, cháu cộng có nhớ chuẩn rồi.",
-          "Đốm thử thổi một vỏ ốc, ra tiếng… ủn ỉn. Ha ha!"
+          "Lem thử thổi một vỏ ốc, ra tiếng… ủn ỉn. Ha ha!"
         ],
         "wrong": [
           "Có tất cả thì phải cộng hai loại vỏ ốc.",
@@ -664,15 +668,15 @@
       "answer": {
         "value": 23
       },
-      "goTo": "Ra mô hình hải đăng, Cánh Cụt Sò lạch bạch ôm cả rổ vỏ ốc tới khoe"
+      "goTo": "Ra bờ ao cá, Cánh Cụt Sò lạch bạch ôm cả rổ vỏ ốc vừa nhặt dưới ao tới khoe"
     },
     {
       "id": "thap-da-hai-dang",
-      "title": "Tháp đá cạnh ngọn hải đăng",
+      "title": "Tháp đá bên bờ ao",
       "target": "toan2-cd4-b19-canh-cut-so",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Đốm xếp tháp đá đồ chơi cạnh ngọn hải đăng: mỗi viên đá bằng tổng hai viên ngay dưới nó. Số ?",
+      "prompt": "Lem xếp tháp đá nhỏ bên bờ ao: mỗi viên đá bằng tổng hai viên ngay dưới nó. Số ?",
       "template": "Hàng dưới: 4, 5, 7, 2\nHàng giữa: 9, 12, {{b1}}\nHàng trên: {{b2}}, {{b3}}",
       "blanks": [
         {
@@ -746,9 +750,9 @@
       },
       "feedback": {
         "right": [
-          "Tháp đá đứng vững, đèn hải đăng bật sáng chớp chớp!",
+          "Tháp đá đứng vững, đàn cá dưới ao quẫy đuôi tán thưởng!",
           "Hai viên trên đỉnh cùng là 21, cân đối ghê.",
-          "Đốm rón rén đặt viên cuối, may quá không đổ!"
+          "Lem rón rén đặt viên cuối, may quá không đổ!"
         ],
         "wrong": [
           "Viên đá bằng tổng hai viên ngay dưới nó đấy.",
@@ -767,23 +771,23 @@
     {
       "id": "chip-boi-dat",
       "title": "Líu bới mất kết quả",
-      "goTo": "Chạy ra bãi đất sau xưởng, Gà Con Líu nhảy tưng tưng chỉ chỗ đất bị bới",
+      "goTo": "Chạy ra chuồng gà, Gà Con Líu nhảy tưng tưng chỉ chỗ đất bị bới",
       "kind": "dialogue",
       "target": "toan2-cd4-b19-ga-con-liu",
       "lines": [
         {
           "speaker": "Gà Con Líu",
-          "text": "Chiếp chiếp! Tớ là Líu. Tớ mải tìm giun thôi mà, ai ngờ bới tung hết kết quả phép tính Đốm viết dưới đất!"
+          "text": "Chiếp chiếp! Tớ là Líu. Tớ mải tìm giun thôi mà, ai ngờ bới tung hết kết quả phép tính Lem viết dưới đất trước chuồng!"
         },
         {
-          "speaker": "Lợn Rừng Đốm",
+          "speaker": "Lợn Lấm Lem",
           "text": "Ối, đó là bảng tính đặt hàng linh kiện của tớ! {name} ơi, mình viết lại nhé. Cậu thích tính nhẩm hay đặt tính dọc?"
         }
       ],
       "choices": [
         {
           "text": "Tính nhẩm cho nhanh",
-          "reply": "Đốm: Nhanh nhưng nhớ đừng quên số 1 đã nhớ nha!"
+          "reply": "Lem: Nhanh nhưng nhớ đừng quên số 1 đã nhớ nha!"
         },
         {
           "text": "Đặt tính cho chắc",
@@ -797,7 +801,7 @@
       "target": "toan2-cd4-b19-ga-con-liu",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Chú gà bới đất làm mất kết quả của các phép tính mà Việt vừa viết. Hãy tìm lại kết quả giúp bạn Việt nhé! (Ở xưởng này, chú gà ấy chính là Líu.)",
+      "prompt": "Chú gà bới đất làm mất kết quả của các phép tính mà Việt vừa viết. Hãy tìm lại kết quả giúp bạn Việt nhé! (Ở nông trại này, chú gà ấy chính là Líu.)",
       "template": "47 + 8 = {{b1}}\n84 + 9 = {{b2}}\n23 + 7 = {{b3}}\n15 + 5 = {{b4}}",
       "blanks": [
         {
@@ -911,10 +915,10 @@
     {
       "id": "dat-tinh-don-xuong",
       "title": "Bốn phép tính dọn xưởng",
-      "target": "lon-rung-dom",
+      "target": "toan2-cd4-b19-lon-lam-lem",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Dọn xong bãi đất, Đốm nhờ tính nốt bốn phép trên bảng gỗ. Đặt tính rồi tính.",
+      "prompt": "Dọn xong sân chuồng gà, Lem nhờ tính nốt bốn phép trên bảng gỗ. Đặt tính rồi tính.",
       "template": "83 + 9 = {{b1}}\n57 + 4 = {{b2}}\n62 + 8 = {{b3}}\n39 + 5 = {{b4}}",
       "blanks": [
         {
@@ -1008,7 +1012,7 @@
         "right": [
           "Bảng gỗ sạch bong, phép tính nào cũng đúng!",
           "Cột thẳng tắp, số nhớ đặt đúng chỗ, tuyệt!",
-          "Đốm vỗ tay bôm bốp, làm rơi luôn chiếc búa đồ chơi."
+          "Lem vỗ tay bôm bốp, làm rơi luôn chiếc búa xuống chân."
         ],
         "wrong": [
           "Nhớ viết số đơn vị thẳng hàng đơn vị nhé.",
@@ -1024,14 +1028,14 @@
           "b4": "o44"
         }
       },
-      "goTo": "Quay về bàn lắp ráp, Đốm đã dựng sẵn tấm bảng gỗ ghi bốn phép tính"
+      "goTo": "Quay về bàn sửa xe, Lem đã dựng sẵn tấm bảng gỗ ghi bốn phép tính"
     },
     {
       "id": "thoc-bac-manh",
-      "title": "Máy gặt của bác Mạnh",
+      "title": "Bảng thu hoạch ở kho thóc",
       "target": "toan2-cd4-b19-be-rom",
       "kind": "riddle",
-      "question": "Đốm vừa lắp xong chiếc máy gặt đồ chơi, Bê Rơm đọc to bài toán trên hộp: Buổi sáng, bác Mạnh thu hoạch được 87 bao thóc. Buổi chiều, bác Mạnh thu hoạch được nhiều hơn buổi sáng 6 bao thóc. Hỏi buổi chiều bác Mạnh thu hoạch được bao nhiêu bao thóc?",
+      "question": "Bê Rơm đọc to bài toán ghi trên tấm bảng của kho thóc: Buổi sáng, bác Mạnh thu hoạch được 87 bao thóc. Buổi chiều, bác Mạnh thu hoạch được nhiều hơn buổi sáng 6 bao thóc. Hỏi buổi chiều bác Mạnh thu hoạch được bao nhiêu bao thóc?",
       "skill": "bai-toan-loi-van",
       "curriculumRef": [
         "toan2-t1-b19-luyen-tap-2-2"
@@ -1049,9 +1053,9 @@
       },
       "feedback": {
         "right": [
-          "Chín mươi ba bao thóc, máy gặt đồ chơi kêu rè rè vui vẻ!",
+          "Chín mươi ba bao thóc xếp cao gần chạm mái kho!",
           "Nhiều hơn thì cộng, cháu nắm chắc rồi.",
-          "Bê Rơm nhặt một hạt thóc đồ chơi… và định ăn thật."
+          "Bê Rơm nhặt một hạt thóc rơi… và định nếm thử."
         ],
         "wrong": [
           "Buổi chiều nhiều hơn buổi sáng, vậy phải cộng thêm.",
@@ -1062,7 +1066,7 @@
       "answer": {
         "value": 93
       },
-      "goTo": "Sang kệ máy gặt đồ chơi, Bê Rơm đang nghển cổ đọc chữ trên chiếc hộp mới"
+      "goTo": "Sang kho thóc, Bê Rơm đang nghển cổ đọc chữ trên tấm bảng ghi thu hoạch"
     },
     {
       "id": "chon-ket-qua-ba-so-a",
@@ -1115,7 +1119,7 @@
       "answer": {
         "choice": "b-39"
       },
-      "goTo": "Ra lại bãi đất sau xưởng, Gà Con Líu chống cánh chờ đố cậu hai câu"
+      "goTo": "Ra lại chuồng gà, Gà Con Líu chống cánh chờ đố cậu hai câu"
     },
     {
       "id": "chon-ket-qua-ba-so-b",
@@ -1171,12 +1175,12 @@
     },
     {
       "id": "thi-cong-hat-de",
-      "title": "Thi cộng hạt dẻ với Đốm",
-      "goTo": "Quay lại bàn lắp ráp, Đốm bày trò mê cung chú sóc",
-      "target": "lon-rung-dom",
+      "title": "Thi cộng hạt dẻ với Lem",
+      "goTo": "Quay lại bàn sửa xe, Lem vẽ mê cung chú sóc lên nền đất",
+      "target": "toan2-cd4-b19-lon-lam-lem",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Trò chơi cuối: Đốm vẽ mê cung, chú sóc đi từ cửa vào tới nhà trên cây và nhặt ba hạt dẻ ghi 38, 9 và 5 dọc đường. Ai tính ra trước thì thắng! Tính tổng các số trên những hạt dẻ mà chú sóc nhặt được trên đường về nhà.",
+      "prompt": "Trò chơi cuối: Lem vẽ mê cung, chú sóc đi từ cửa vào tới nhà trên cây và nhặt ba hạt dẻ ghi 38, 9 và 5 dọc đường. Ai tính ra trước thì thắng! Tính tổng các số trên những hạt dẻ mà chú sóc nhặt được trên đường về nhà.",
       "template": "38 + 9 + 5 = {{b1}}",
       "blanks": [
         {
@@ -1214,12 +1218,12 @@
       },
       "feedback": {
         "right": [
-          "Cháu thắng rồi! Đốm vẫn còn đang đếm ngón tay.",
+          "Cháu thắng rồi! Lem vẫn còn đang đếm ngón tay.",
           "Năm mươi hai hạt dẻ, sóc no căng bụng!",
-          "Đốm cúi chào nhà vô địch cộng hạt dẻ."
+          "Lem cúi chào nhà vô địch cộng hạt dẻ."
         ],
         "wrong": [
-          "Đốm sắp đuổi kịp rồi, tính lại từng bước nhé.",
+          "Lem sắp đuổi kịp rồi, tính lại từng bước nhé.",
           "47 + 5: 7 + 5 = 12, nhớ 1 sang hàng chục.",
           "Cộng đủ cả ba hạt dẻ chưa nhỉ?"
         ]
@@ -1232,17 +1236,17 @@
     },
     {
       "id": "co-le-tho-lap-rap",
-      "title": "Cờ lê thợ lắp ráp",
+      "title": "Cờ lê thợ sửa xe",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Chiếc xe đồ chơi chạy bon bon quanh bàn lắp ráp. Lợn Rừng Đốm trao cho {name} chiếc cờ lê nhỏ \"Thợ lắp ráp nhớ một\", rồi… vấp chân lần thứ mười trong ngày."
+      "text": "Chiếc xe kéo chở rau chạy bon bon quanh sân nông trại. Lợn Lấm Lem trao cho {name} chiếc cờ lê nhỏ \"Thợ sửa xe nhớ một\", rồi… vấp chân lần thứ mười trong ngày."
     },
     {
       "id": "toa-tau-roi-ray",
-      "title": "Toa tàu rời đường ray",
+      "title": "Toa xe kéo đòi đi trước",
       "kind": "next",
       "trigger": "auto",
-      "text": "Ở góc xưởng, Khỉ Lanh ôm một chồng toa tàu đồ chơi: mỗi toa chở một số hàng, ghép mãi chẳng khớp, toa nào cũng đòi đi trước!"
+      "text": "Ở bãi xe kéo, Khỉ Ổi ôm một chồng toa xe chở nông sản: mỗi toa chở một số hàng, ghép mãi chẳng khớp, toa nào cũng đòi đi trước!"
     }
   ],
   "reward": {

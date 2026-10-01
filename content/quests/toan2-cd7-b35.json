@@ -1,15 +1,15 @@
 {
   "id": "toan2-cd7-b35",
-  "region": "truong-hoc",
-  "chapter": 7,
-  "title": "Hậu trường của cô Pin kĩ tính",
+  "region": "lau-dai",
+  "chapter": 2,
+  "title": "Cuốn sổ chấm bi ở hậu trường",
   "status": "active",
   "lesson": "toan2-t1-b35",
-  "summary": "Trước giờ diễn, Chim Cánh Cụt Pin kiểm từng ki-lô-gam bánh, từng lít nước ở hậu trường; {name} cân thú bông, tính cân nặng, đưa dê qua sông trong vở múa rối của chị Ngân và chọn can rót đủ 15 l nước.",
+  "summary": "Trước giờ diễn trong đại sảnh, Cáo Chấm Bi kiểm từng ki-lô-gam bánh, từng lít nước ở hậu trường, xong món nào chấm một chấm vào sổ; {name} cân thú bông, tính cân nặng, đưa dê qua sông trong vở múa rối của chị Ngân và chọn can rót đủ 15 l nước.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Chim Cánh Cụt Pin, Heo Mũm Mĩm, Thỏ Gòn giữ kho thú bông, chị Ngân múa rối",
-    "where": "Hội trường: hậu trường, kho thú bông, góc bánh, bục múa rối",
+    "who": "Cáo Chấm Bi, Heo Mũm Mĩm, Thỏ Gòn giữ kho thú bông, chị Ngân múa rối",
+    "where": "Lâu đài, hậu trường đại sảnh: hậu trường, kho thú bông, góc bánh, bục múa rối",
     "goal": "Chuẩn bị đủ nước và bánh, đúng cân, đúng lít cho buổi diễn cuối kì",
     "play": "Tìm đồ đo, chọn câu đúng, điền cân nặng và số lít, giải toán, chọn can",
     "learn": "Toán 2 Bài 35: ôn tập đo lường (ki-lô-gam, lít)",
@@ -28,7 +28,7 @@
   },
   "texts": {},
   "places": {
-    "chim-canh-cut-pin": "hậu trường",
+    "toan2-cd7-b35-cao-cham-bi": "hậu trường",
     "tim-do-do-luong": "quanh hậu trường",
     "toan2-cd7-b33-heo-mum-mim": "góc bánh",
     "toan2-cd7-b35-tho-gon": "kho thú bông",
@@ -37,28 +37,28 @@
   "steps": [
     {
       "id": "pin-so-kiem-dem",
-      "title": "Cuốn sổ kiểm đếm của Pin",
-      "goTo": "Vào hậu trường, Chim Cánh Cụt Pin đang lạch bạch đi kiểm đồ",
+      "title": "Cuốn sổ chấm bi của Cáo",
+      "goTo": "Vào hậu trường đại sảnh, Cáo Chấm Bi đang lon ton đi kiểm đồ",
       "kind": "dialogue",
-      "target": "chim-canh-cut-pin",
+      "target": "toan2-cd7-b35-cao-cham-bi",
       "lines": [
         {
-          "speaker": "Cánh Cụt Pin",
-          "text": "Một, hai, ba… sai! Lại đếm lại! {name} đấy à? Tớ đang kiểm hậu trường, thiếu một mẩu bánh hay một giọt nước là không được diễn đâu."
+          "speaker": "Cáo Chấm Bi",
+          "text": "Một, hai, ba… chấm! Ơ, chấm nhầm dòng rồi! {name} đấy à? Tớ là Cáo Chấm Bi, kiểm xong món nào ở hậu trường là tớ chấm một chấm vào sổ."
         },
         {
           "speaker": "Heo Mũm Mĩm",
-          "text": "Pin ơi, một giọt thôi mà… với lại tớ mới chỉ nếm thử có ba cái bánh."
+          "text": "Chấm Bi ơi, sổ của cậu chi chít chấm, nhìn hoa cả mắt… mà tớ mới chỉ nếm thử có ba cái bánh thôi."
         },
         {
-          "speaker": "Cánh Cụt Pin",
+          "speaker": "Cáo Chấm Bi",
           "text": "BA CÁI?! Thôi xong, phải cân lại hết. Mà quả cân, cái ca một lít với cái can của tớ chạy đâu mất rồi?"
         }
       ],
       "choices": [
         {
           "text": "Để tớ đi tìm đồ đo cho!",
-          "reply": "Pin chỉnh lại nơ cổ: Cảm ơn, nhớ mang về đúng ba món, không thừa không thiếu."
+          "reply": "Cáo Chấm Bi phe phẩy cái đuôi đỏ: Cảm ơn nhé, tìm được món nào tớ chấm ngay món đó!"
         },
         {
           "text": "Heo Mũm Mĩm lại ăn vụng rồi!",
@@ -80,16 +80,16 @@
     {
       "id": "kg-va-lit-la-gi",
       "title": "Ki-lô-gam và lít",
-      "goTo": "Mang đồ về hậu trường, Pin mở cuốn sổ kiểm đếm",
+      "goTo": "Mang đồ về hậu trường, Cáo Chấm Bi mở cuốn sổ chấm bi",
       "kind": "dialogue",
-      "target": "chim-canh-cut-pin",
+      "target": "toan2-cd7-b35-cao-cham-bi",
       "lines": [
         {
-          "speaker": "Cánh Cụt Pin",
+          "speaker": "Cáo Chấm Bi",
           "text": "Ôn nhanh nhé: nặng nhẹ thì đo bằng ki-lô-gam, viết tắt kg; nước trong bình nhiều ít thì đo bằng lít, viết tắt l."
         },
         {
-          "speaker": "Cánh Cụt Pin",
+          "speaker": "Cáo Chấm Bi",
           "text": "Cộng trừ kg hay l cũng như cộng trừ số thường, chỉ nhớ viết tên đơn vị phía sau thôi."
         },
         {
@@ -100,7 +100,7 @@
       "choices": [
         {
           "text": "Bắt đầu kiểm đồ thôi!",
-          "reply": "Pin lật sổ soạt soạt: Mục một, khu đồ chơi bông."
+          "reply": "Cáo Chấm Bi lật sổ soạt soạt: Mục một, kho thú bông."
         }
       ]
     },
@@ -145,7 +145,7 @@
       },
       "feedback": {
         "right": [
-          "Pin gạch một dấu tích thật đẹp: khu thú bông đạt yêu cầu!",
+          "Cáo Chấm Bi chấm một chấm thật tròn: kho thú bông đạt yêu cầu!",
           "Đầu nào thấp đầu ấy nặng, cậu nhìn bập bênh tinh ghê.",
           "Ba chú thú bông cúi chào cảm ơn {name} đã cân giúp."
         ],
@@ -165,8 +165,8 @@
     {
       "id": "can-tho-va-tui-gao",
       "title": "Cân thỏ và túi gạo",
-      "goTo": "Về hậu trường, Pin đã đặt sẵn cân đĩa",
-      "target": "chim-canh-cut-pin",
+      "goTo": "Về hậu trường, Cáo Chấm Bi đã đặt sẵn cân đĩa",
+      "target": "toan2-cd7-b35-cao-cham-bi",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "prompt": "Cân đĩa thăng bằng: một đĩa có quả cân 1 kg và quả cân 2 kg, đĩa kia có con thỏ. Cân đồng hồ có quả cân 1 kg và túi gạo, kim chỉ 5 kg. Số ?",
@@ -327,9 +327,9 @@
       },
       "feedback": {
         "right": [
-          "Thỏ 3 kg, gạo 4 kg, Pin ghi vào sổ không tẩy xóa chữ nào.",
+          "Thỏ 3 kg, gạo 4 kg, Cáo Chấm Bi ghi vào sổ không tẩy xóa chữ nào.",
           "Biết bớt quả cân ra mới tinh ý đấy!",
-          "Cân nào cũng đọc chuẩn, Pin gật đầu lia lịa."
+          "Cân nào cũng đọc chuẩn, Cáo Chấm Bi gật đầu lia lịa."
         ],
         "wrong": [
           "Cân đồng hồ đang cân cả quả cân 1 kg đấy, bớt ra nhé.",
@@ -352,11 +352,11 @@
     },
     {
       "id": "cong-tru-kilogam",
-      "title": "Sổ cân hàng của Pin",
-      "target": "chim-canh-cut-pin",
+      "title": "Sổ cân hàng của Cáo",
+      "target": "toan2-cd7-b35-cao-cham-bi",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Sổ của Pin ghi khối lượng các thùng bánh, phải cộng trừ cho khớp. Tính.",
+      "prompt": "Sổ của Cáo Chấm Bi ghi khối lượng các thùng bánh, phải cộng trừ cho khớp. Tính.",
       "template": "19 kg + 25 kg = {{b1}} kg\n35 kg + 28 kg = {{b2}} kg\n44 kg – 19 kg = {{b3}} kg\n63 kg – 28 kg = {{b4}} kg\n44 kg – 25 kg = {{b5}} kg\n63 kg – 35 kg = {{b6}} kg",
       "blanks": [
         {
@@ -484,7 +484,7 @@
       },
       "feedback": {
         "right": [
-          "Sổ cân hàng khớp từng ki-lô-gam, Pin vỗ cánh phành phạch!",
+          "Sổ cân hàng khớp từng ki-lô-gam, Cáo Chấm Bi nhảy cẫng lên, váy bay phấp phới!",
           "Phép cộng và phép trừ \"soi gương\" nhau, cậu nhận ra rồi chứ?",
           "Thùng bánh nào cũng đủ cân, Heo Mũm Mĩm thở phào nhẹ nhõm."
         ],
@@ -559,7 +559,7 @@
           "text": "Khổ nỗi thuyền nhỏ, chở quá nặng là chìm. Chị thử cho cả ba chú dê lên rồi, rối dê ướt sũng luôn."
         },
         {
-          "speaker": "Cánh Cụt Pin",
+          "speaker": "Cáo Chấm Bi",
           "text": "Ướt rối là hỏng đạo cụ! {name}, cậu tính trước rồi mới cho dê lên thuyền nhé."
         }
       ],
@@ -655,11 +655,11 @@
     {
       "id": "hai-binh-nuoc-cua-mai",
       "title": "Hai bình nước mát",
-      "goTo": "Quay về hậu trường, Pin đang xếp bình nước cho diễn viên",
-      "target": "chim-canh-cut-pin",
+      "goTo": "Quay về hậu trường, Cáo Chấm Bi đang xếp bình nước cho diễn viên",
+      "target": "toan2-cd7-b35-cao-cham-bi",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Pin kể lại chuyện bạn Mai rót nước hôm qua. Số ? Có hai bình chứa đầy nước. Bạn Mai đã rót hết nước ở bình A sang đầy các ca 1 l thì được 8 ca, rót hết nước ở bình B sang đầy các ca 1 l thì được 5 ca.",
+      "prompt": "Cáo Chấm Bi kể lại chuyện bạn Mai rót nước hôm qua. Số ? Có hai bình chứa đầy nước. Bạn Mai đã rót hết nước ở bình A sang đầy các ca 1 l thì được 8 ca, rót hết nước ở bình B sang đầy các ca 1 l thì được 5 ca.",
       "template": "a) – Bình A chứa được {{b1}} l nước.\n– Bình B chứa được {{b2}} l nước.\nb) Cả hai bình chứa được {{b3}} l nước.",
       "blanks": [
         {
@@ -734,7 +734,7 @@
       "feedback": {
         "right": [
           "Hai bình nước mát lạnh xếp ngay ngắn cho diễn viên rồi.",
-          "Đếm ca ra lít nhanh thật, Pin không kịp chấm sổ.",
+          "Đếm ca ra lít nhanh thật, Cáo Chấm Bi không kịp chấm sổ.",
           "Mười ba lít nước, đủ cho cả đoàn uống thoải mái."
         ],
         "wrong": [
@@ -753,7 +753,7 @@
     },
     {
       "id": "cong-tru-lit",
-      "title": "Sổ nước của Pin",
+      "title": "Sổ nước của Cáo Chấm Bi",
       "goTo": "Ghé kho thú bông, Thỏ Gòn bày các thùng nước chanh, nước cam",
       "target": "toan2-cd7-b35-tho-gon",
       "kind": "challenge",
@@ -922,7 +922,7 @@
       },
       "feedback": {
         "right": [
-          "Nước chanh, nước cam đều khớp sổ, Pin lắc lư vui sướng.",
+          "Nước chanh, nước cam đều khớp sổ, Cáo Chấm Bi lắc lư vui sướng.",
           "Tính ba số lần lượt từ trái sang phải, rất bài bản!",
           "Trang sổ nước sạch bong, không một vết gạch."
         ],
@@ -948,10 +948,10 @@
     {
       "id": "thung-nuoc-mam-bep",
       "title": "Thùng nước mắm nhà bếp",
-      "goTo": "Về hậu trường, Pin cầm phiếu giao hàng chờ sẵn",
-      "target": "chim-canh-cut-pin",
+      "goTo": "Về hậu trường, Cáo Chấm Bi cầm phiếu giao hàng chờ sẵn",
+      "target": "toan2-cd7-b35-cao-cham-bi",
       "kind": "riddle",
-      "question": "Xe hàng chở đồ cho bếp trường vừa tới, Pin cầm phiếu giao hàng. Giải bài toán theo tóm tắt sau: Tóm tắt Có: 18 thùng nước mắm Thêm: 4 thùng nước mắm Có tất cả: ... thùng nước mắm?",
+      "question": "Xe hàng chở đồ cho bếp lâu đài vừa tới, Cáo Chấm Bi cầm phiếu giao hàng. Giải bài toán theo tóm tắt sau: Tóm tắt Có: 18 thùng nước mắm Thêm: 4 thùng nước mắm Có tất cả: ... thùng nước mắm?",
       "skill": "bai-toan-loi-van",
       "curriculumRef": [
         "toan2-t1-b35-luyen-tap-2-4"
@@ -969,9 +969,9 @@
       },
       "feedback": {
         "right": [
-          "Hai mươi hai thùng xếp gọn vào kho, Pin kí nhận ngay.",
+          "Hai mươi hai thùng xếp gọn vào kho, Cáo Chấm Bi kí nhận ngay.",
           "Đọc tóm tắt là biết làm phép gì, cậu giỏi quá.",
-          "Bếp trường đủ nước mắm nấu cả học kì sau!"
+          "Bếp lâu đài đủ nước mắm nấu cả học kì sau!"
         ],
         "wrong": [
           "Được thêm thùng thì số thùng nhiều hơn 18 chứ.",
@@ -986,10 +986,10 @@
     {
       "id": "ba-can-muoi-lam-lit",
       "title": "Ba can vừa đủ 15 lít",
-      "target": "chim-canh-cut-pin",
+      "target": "toan2-cd7-b35-cao-cham-bi",
       "kind": "challenge",
       "mechanic": "quiz",
-      "prompt": "Thử thách cuối của Pin: rót nước cho ba đội diễn, không được thừa một giọt! Phương án A: can 3 l, 10 l, 5 l. Phương án B: can 2 l, 5 l, 15 l. Phương án C: can 10 l, 2 l, 3 l. Chọn câu trả lời đúng. Trong thùng có 15 l nước. Múc hết nước từ thùng rót vào đầy các can. Có thể rót vào đầy ba can nào trong các phương án sau? A. B. C.",
+      "prompt": "Thử thách cuối của Cáo Chấm Bi: rót nước cho ba đội diễn, không được thừa một giọt! Phương án A: can 3 l, 10 l, 5 l. Phương án B: can 2 l, 5 l, 15 l. Phương án C: can 10 l, 2 l, 3 l. Chọn câu trả lời đúng. Trong thùng có 15 l nước. Múc hết nước từ thùng rót vào đầy các can. Có thể rót vào đầy ba can nào trong các phương án sau? A. B. C.",
       "choices": [
         {
           "id": "a",
@@ -1021,8 +1021,8 @@
       },
       "feedback": {
         "right": [
-          "Rót róc rách… vừa khít ba can, không rơi một giọt! Pin ôm chầm lấy {name}.",
-          "Mười lăm lít chia đúng ba can, kĩ tính như Pin luôn.",
+          "Rót róc rách… vừa khít ba can, không rơi một giọt! Cáo Chấm Bi dụi mũi vào vai {name}.",
+          "Mười lăm lít chia đúng ba can, chuẩn như sổ của Cáo Chấm Bi luôn.",
           "Phương án C thắng, cả đoàn diễn reo hò uống nước mát."
         ],
         "wrong": [
@@ -1040,14 +1040,14 @@
       "title": "Huy hiệu hậu trường",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Pin đóng cuốn sổ kiểm đếm cái \"bộp\" và gắn cho {name} huy hiệu \"Thanh tra cân đong\". Heo Mũm Mĩm được thưởng một chiếc bánh, đã cân trước hẳn hoi."
+      "text": "Cáo Chấm Bi chấm chấm bi cuối cùng vào sổ rồi gắn cho {name} huy hiệu \"Thanh tra cân đong\". Heo Mũm Mĩm được thưởng một chiếc bánh, đã cân trước hẳn hoi."
     },
     {
       "id": "le-tong-ket-sap-mo",
       "title": "Lễ tổng kết sắp mở",
       "kind": "next",
       "trigger": "auto",
-      "text": "Tiếng trống vang từ bục trao huy hiệu: cả trường đang kéo về hội trường, mỗi khu mang theo một câu đố cuối cùng của học kì!"
+      "text": "Tiếng trống vang từ bục trao huy hiệu: cả lâu đài đang kéo về đại sảnh, mỗi gian ôn tập mang theo một câu đố cuối cùng của học kì!"
     }
   ],
   "reward": {

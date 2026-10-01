@@ -1,15 +1,15 @@
 {
   "id": "tv2-t02-b04",
-  "region": "khu-rung-bi-mat",
-  "chapter": 3,
+  "region": "lang-ven-song",
+  "chapter": 2,
   "title": "Gấu Nhẩm tìm việc",
   "status": "active",
   "lesson": "tv2-t1-b04",
-  "summary": "Cả tổ ong bận tối mắt, chỉ có Gấu Nhẩm được giao việc đếm ong đến mỏi cả đầu. {name} phụ Gấu Nhẩm ghi sổ những ai đang làm việc quanh vườn hoa, khắc lại chữ cái trên vách tổ, xếp sách trả Koala Lim Dim, đóng kịch với Vẹt Xanh và dọn góc vườn um tùm.",
+  "summary": "Cả tổ ong bận tối mắt, chỉ có Gấu Nhẩm được giao việc đếm ong đến mỏi cả đầu. {name} phụ Gấu Nhẩm ghi sổ những ai đang làm việc quanh vườn hoa, khắc lại chữ cái trên vách tổ, xếp sách trả Koala Lim Dim, đóng kịch với Cún Lúa và dọn góc vườn um tùm.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Gấu Nhẩm (gấu con lông màu mật ong, phụ việc ở tổ ong, cái gì cũng nhẩm đếm), Vẹt Xanh lắm lời, Koala Lim Dim cho tổ ong mượn sách",
-    "where": "Vườn hoa tổ ong trong Khu rừng bí mật: bảng sáp ong, cành đào vừa nở, vách tổ ong, gốc bạch đàn và góc vườn um tùm",
+    "who": "Gấu Nhẩm (gấu con lông màu mật ong, phụ việc ở tổ ong, cái gì cũng nhẩm đếm), Cún Lúa vui tính chạy khắp bãi cỏ dẫn đường, Koala Lim Dim cho tổ ong mượn sách",
+    "where": "Vườn hoa có tổ ong cạnh bãi cỏ ven sông: bảng sáp ong, gốc đào vừa nở, vách tổ ong, gốc bạch đàn và góc vườn um tùm",
     "goal": "Phụ Gấu Nhẩm một việc nhỏ: ghi sổ những ai đang làm việc và dọn dẹp quanh tổ",
     "play": "Tìm đồ, nói, đọc bài, chọn nhiều đáp án, phân loại, đóng vai, ghép câu, điền chữ cái, xếp thứ tự sách, lựa chọn trong hội thoại, phiếu viết",
     "learn": "Tiếng Việt 2 Bài 4: đọc hiểu \"Làm việc thật là vui\", câu nêu hoạt động, bảng chữ cái (h, i, l, n, o, ơ), từ ngữ chỉ vật và hoạt động, nghe – viết, viết đoạn về việc ở nhà, đọc mở rộng",
@@ -52,7 +52,7 @@
     "tv2-t02-b04-gau-nham": "vườn hoa tổ ong",
     "tim-nguoi-lam-viec": "khắp vườn hoa",
     "tv2-t02-bang-sap-ong": "bảng sáp ong",
-    "vet-xanh": "cành đào vừa nở",
+    "cun-lua": "gốc đào vừa nở",
     "tv2-t02-vach-to-ong": "vách tổ ong",
     "tv2-t02-b04-koala-lim-dim": "gốc bạch đàn",
     "tv2-t02-goc-vuon-um-tum": "góc vườn um tùm"
@@ -74,8 +74,8 @@
           "text": "Chị ong hút mật, em ong xây tổ, bác ong canh cửa… còn tớ chỉ được giao mỗi việc đếm. Nhẩm mãi mỏi cả đầu!"
         },
         {
-          "speaker": "Vẹt Xanh",
-          "text": "Gấu Nhẩm muốn làm một việc thật sự! Thật sự! Mà việc ấy lại cần thêm một người phụ."
+          "speaker": "Cún Lúa",
+          "text": "Gâu! Gấu Nhẩm muốn làm một việc thật sự, mà việc ấy lại cần thêm người phụ. Tớ chạy một mạch ra bãi cỏ gọi {name} đấy!"
         },
         {
           "speaker": "Gấu Nhẩm",
@@ -240,7 +240,7 @@
         "right": [
           "Đủ bốn con vật! Gấu Nhẩm đếm lại ba lần cho chắc: bốn, bốn, vẫn là bốn!",
           "Đúng hết rồi, chẳng sót bạn nào trong bài.",
-          "Vẹt Xanh khen: tinh mắt! tinh mắt! {name} không bị cú mèo lừa."
+          "Cún Lúa vẫy đuôi khen: {name} không bị cú mèo lừa đâu nhé!"
         ],
         "wrong": [
           "Gấu Nhẩm buồn thiu: bài không nhắc tới ong đâu, tiếc ghê!",
@@ -344,9 +344,9 @@
     {
       "id": "dong-vai-con-vat",
       "title": "Đóng vai con vật chăm chỉ",
-      "goTo": "Tới cành đào vừa nở, Vẹt Xanh dựng sân khấu đóng kịch",
+      "goTo": "Tới gốc đào vừa nở, Cún Lúa dựng sân khấu đóng kịch",
       "kind": "speak",
-      "target": "vet-xanh",
+      "target": "cun-lua",
       "prompt": "Gấu Nhẩm bày trò đóng kịch và nhanh chân nhận vai con ong trước, dù bài không có ong. Đóng vai một con vật trong bài, nói về công việc của mình. Theo em, mọi người, mọi vật làm việc như thế nào?",
       "hints": [
         "Tớ là gà trống, sáng nào tớ cũng gáy vang để…",
@@ -451,7 +451,7 @@
           "Đúng hết, câu nào cũng nói rõ ai làm việc gì."
         ],
         "wrong": [
-          "Gà trống mà kêu tu hú thì cả rừng phải bật cười mất!",
+          "Gà trống mà kêu tu hú thì cả làng phải bật cười mất!",
           "Chim tu hú kêu đúng tên mình đấy, tìm nửa thẻ có chữ \"tu hú\" nhé.",
           "Việc bắt sâu là của chú chim, đọc lại câu đó xem."
         ]
@@ -708,8 +708,8 @@
           "text": "Để tớ nhẩm nào: hôm nay tớ làm được bốn việc mà chẳng thấy mệt tí nào. Lạ thật!"
         },
         {
-          "speaker": "Vẹt Xanh",
-          "text": "Vì làm việc thật là vui! Vui vui! Câu này tớ học được trong bài đấy."
+          "speaker": "Cún Lúa",
+          "text": "Vì làm việc thật là vui! Câu này tớ thuộc từ lúc nghe {name} đọc bài đấy."
         },
         {
           "speaker": "Gấu Nhẩm",
@@ -726,8 +726,8 @@
           "reply": "Hay quá! Nghe đồn ở đó có cả một cái giường lạc giữa đám cỏ. Chạy ra xem thôi!"
         },
         {
-          "text": "Đi hút thêm mật ở cành đào vừa nở.",
-          "reply": "Mật hoa đào chắc ngọt lắm! Nhưng đường tới cành đào phải băng qua góc vườn um tùm đấy."
+          "text": "Đi hút thêm mật ở gốc đào vừa nở.",
+          "reply": "Mật hoa đào chắc ngọt lắm! Nhưng đường tới gốc đào phải băng qua góc vườn um tùm đấy."
         }
       ]
     },
@@ -806,7 +806,7 @@
         "right": [
           "Tìm đủ sáu đồ vật rồi! Gấu Nhẩm tròn mắt: cả cái giường cũng lạc ra vườn!",
           "Chuẩn, toàn tên đồ vật, không lẫn một việc làm nào.",
-          "Vẹt Xanh reo: tìm giỏi! tìm giỏi! {name} như có mắt ong."
+          "Cún Lúa sủa mừng: {name} tìm đồ còn giỏi hơn cái mũi của tớ!"
         ],
         "wrong": [
           "\"Quét nhà\" là việc làm, còn cái dùng để quét mới là đồ vật.",
@@ -906,9 +906,9 @@
     {
       "id": "cau-viec-o-nha",
       "title": "Một câu về việc ở nhà",
-      "goTo": "Ghé cành đào vừa nở, Vẹt Xanh tò mò hỏi chuyện việc nhà",
+      "goTo": "Ghé gốc đào vừa nở, Cún Lúa tò mò hỏi chuyện việc nhà",
       "kind": "speak",
-      "target": "vet-xanh",
+      "target": "cun-lua",
       "prompt": "Gấu Nhẩm khoe ở tổ ong, tớ phụ lau từng ô sáp sạch bong. Ở nhà {name} làm gì? Đặt một câu nói về việc em làm ở nhà. M: Em quét nhà.",
       "hints": [
         "Ở nhà em hay giúp bố mẹ việc gì?",
@@ -967,10 +967,10 @@
     },
     {
       "id": "mo-bai-5",
-      "title": "Ai đó soi bóng bên suối",
+      "title": "Ai đó soi bóng bên bến sông",
       "kind": "next",
       "trigger": "auto",
-      "text": "Bên suối soi bóng, Voi Út, cô em gái bé nhất của Voi Tùng, đang lén gài cành cây khô lên đầu cho giống bạn Hươu. Chuyện gì thế nhỉ?"
+      "text": "Bên bến nước soi bóng, Voi Út, cô em gái bé nhất của Voi Tùng, đang lén gài cành cây khô lên đầu cho giống bạn Hươu. Chuyện gì thế nhỉ?"
     }
   ],
   "reward": {

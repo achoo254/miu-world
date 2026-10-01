@@ -1,15 +1,15 @@
 {
   "id": "tv2-t03-b06",
-  "region": "khu-rung-bi-mat",
-  "chapter": 4,
+  "region": "lang-ven-song",
+  "chapter": 3,
   "title": "Mèo Nghệ run râu trước lớp",
   "status": "active",
   "lesson": "tv2-t1-b06",
-  "summary": "Giờ tập nói dưới tán cây sắp bắt đầu mà Mèo Nghệ run cả bộ râu. {name} cùng thầy Gấu Dẻ đọc chuyện bạn Quang tập nói, chữa tấm ván chữ cái, tìm từ chỉ đặc điểm và giúp Mèo Nghệ tự tin kể về buổi sáng của mình.",
+  "summary": "Giờ tập nói dưới gốc đa sắp bắt đầu mà Mèo Nghệ run cả bộ râu. {name} cùng thầy Gấu Dẻ đọc chuyện bạn Quang tập nói, chữa tấm ván chữ cái, tìm từ chỉ đặc điểm và giúp Mèo Nghệ tự tin kể về buổi sáng của mình.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Mèo Nghệ (mèo lông vàng nghệ, điềm tĩnh, nói ít mà thâm, hôm nay ngại nói trước lớp), thầy Gấu Dẻ từ… từ… thôi, Vẹt Xanh lớp trưởng lắm lời",
-    "where": "Lớp học dưới tán cây đa giữa Khu rừng bí mật: bàn cuối lớp, bàn thầy cạnh hốc cây, bảng xanh, cành đa thấp, bục gỗ giữa lớp và gốc đa có tấm ván chữ cái",
+    "who": "Mèo Nghệ (mèo lông vàng nghệ, điềm tĩnh, nói ít mà thâm, hôm nay ngại nói trước lớp), thầy Gấu Dẻ từ… từ… thôi, Cún Lúa chạy từ bến sông tới ngồi hàng đầu cổ vũ",
+    "where": "Lớp học dưới gốc đa gần bến sông: bàn cuối lớp, bàn thầy cạnh gốc đa, bảng xanh, chùm rễ đa, bục gỗ giữa lớp và gốc đa có tấm ván chữ cái",
     "goal": "Giúp Mèo Nghệ hết run, đứng lên bục kể trước lớp về buổi sáng của mình",
     "play": "Tìm đồ Mèo Nghệ giấu, nói khởi động, đọc bài, trắc nghiệm, chọn nhiều đáp án, kéo câu vào nhóm, điền chữ cái, xếp tên theo bảng chữ cái, ghép từ chỉ đặc điểm, xếp tranh, nói và kể, phiếu viết",
     "learn": "Tiếng Việt 2 Bài 6: đọc Một giờ học, câu hỏi trong bài, nói và đáp lời khen, bảng chữ cái (t, u, v, y), sắp xếp tên theo bảng chữ cái, từ chỉ đặc điểm, câu nêu đặc điểm, kể việc làm trước khi đi học",
@@ -46,10 +46,10 @@
   },
   "places": {
     "tv2-t03-b06-meo-gung": "bàn cuối lớp",
-    "tim-do-meo-mun-giau": "bụi rậm quanh lớp học",
-    "tv2-t03-b06-thay-gau-de": "bàn thầy cạnh hốc cây",
+    "tim-do-meo-mun-giau": "lũy tre quanh lớp học",
+    "tv2-t03-b06-thay-gau-de": "bàn thầy cạnh gốc đa",
     "tv2-t03-bang-xanh": "bảng xanh dưới tán đa",
-    "vet-xanh": "cành đa thấp",
+    "cun-lua": "chùm rễ đa",
     "tv2-t03-van-chu-cai": "gốc đa chữ cái",
     "tv2-t03-buc-go": "bục gỗ giữa lớp"
   },
@@ -57,21 +57,21 @@
     {
       "id": "meo-mun-run-rau",
       "title": "Mèo Nghệ run râu",
-      "goTo": "Tới lớp dưới tán đa, Mèo Nghệ ngồi im thin thít ở bàn cuối lớp",
+      "goTo": "Tới lớp dưới gốc đa, Mèo Nghệ ngồi im thin thít ở bàn cuối lớp",
       "kind": "dialogue",
       "target": "tv2-t03-b06-meo-gung",
       "lines": [
         {
-          "speaker": "Vẹt Xanh",
-          "text": "Giờ tập nói! Giờ tập nói! Hôm nay ai cũng được lên nói trước lớp đấy, {name} ơi!"
+          "speaker": "Cún Lúa",
+          "text": "Gâu gâu! Giờ tập nói đấy {name} ơi! Hôm nay ai cũng được lên nói trước lớp, tớ chạy từ bến sông tới để nghe đây!"
         },
         {
           "speaker": "Mèo Nghệ",
           "text": "Nói với một bạn thì dễ. Nói với cả lớp thì… râu tớ rung như dây đàn."
         },
         {
-          "speaker": "Vẹt Xanh",
-          "text": "Cậu ấy còn giấu hết đồ dùng buổi sáng vào bụi rậm, để khỏi phải kể chuyện buổi sáng. Giấu kĩ lắm! Kĩ lắm!"
+          "speaker": "Cún Lúa",
+          "text": "Mèo Nghệ còn giấu hết đồ dùng buổi sáng vào lũy tre, để khỏi phải kể chuyện buổi sáng. Mũi tớ ngửi thấy cả mùi kem đánh răng ở đó!"
         },
         {
           "speaker": "Mèo Nghệ",
@@ -81,7 +81,7 @@
       "choices": [
         {
           "text": "Mình tìm đồ cho cậu, rồi mình cùng tập nhé!",
-          "reply": "Mèo Nghệ khẽ vẫy đuôi: bàn chải ở bụi sim, còn khăn mặt với cặp thì… tớ giấu kĩ quá nên quên mất rồi."
+          "reply": "Mèo Nghệ khẽ vẫy đuôi: bàn chải ở gốc tre, còn khăn mặt với cặp thì… tớ giấu kĩ quá nên quên mất rồi."
         },
         {
           "text": "Râu run thì mình buộc nơ cho râu nhé!",
@@ -92,7 +92,7 @@
     {
       "id": "tim-do-meo-mun-giau",
       "title": "Tìm đồ Mèo Nghệ giấu",
-      "goTo": "Lục tìm ba món đồ trong bụi rậm quanh lớp học",
+      "goTo": "Lục tìm ba món đồ trong lũy tre quanh lớp học",
       "kind": "search",
       "targets": [
         "tv2-t03-ban-chai-meo",
@@ -103,7 +103,7 @@
     {
       "id": "khoe-loi-khen",
       "title": "Lần được thầy cô khen",
-      "goTo": "Mang đồ về bàn thầy cạnh hốc cây, thầy Gấu Dẻ đang chờ",
+      "goTo": "Mang đồ về bàn thầy cạnh gốc đa, thầy Gấu Dẻ đang chờ",
       "kind": "speak",
       "target": "tv2-t03-b06-thay-gau-de",
       "prompt": "Thầy Gấu Dẻ nhai nốt hạt dẻ rồi chậm rãi bảo: Từ… từ… thôi, mình khởi động bằng chuyện vui đã.\nNói về việc làm của em được thầy cô khen.\nEm cảm thấy thế nào khi được thầy cô khen?",
@@ -134,7 +134,7 @@
       "target": "tv2-t03-bang-xanh",
       "textRef": "mot-gio-hoc",
       "audio": true,
-      "question": "Vẹt Xanh treo bài đọc lên tấm bảng xanh trên cành: nghe kĩ nhé, nghe kĩ nhé!\nTrong giờ học, thầy giáo yêu cầu cả lớp làm gì?",
+      "question": "Thầy Gấu Dẻ treo bài đọc lên tấm bảng xanh, Cún Lúa ngồi ngay ngắn, hai tai vểnh lên nghe.\nTrong giờ học, thầy giáo yêu cầu cả lớp làm gì?",
       "choices": [
         {
           "id": "chep-bai",
@@ -169,7 +169,7 @@
       },
       "feedback": {
         "right": [
-          "Vẹt Xanh lộn một vòng trên cành: tập nói! Tập nói! Đúng rồi!",
+          "Cún Lúa đứng bật dậy, đuôi quẫy tít: tập nói! Đúng rồi!",
           "Chuẩn! Hôm nay không chép bài, chỉ tập nói thôi.",
           "Mèo Nghệ gật gù, râu chỉ còn run có một tí."
         ],
@@ -236,7 +236,7 @@
     {
       "id": "quang-hoa-tu-tin",
       "title": "Điều gì giúp Quang tự tin?",
-      "goTo": "Thầy Gấu Dẻ gọi {name} lên bàn thầy cạnh hốc cây",
+      "goTo": "Thầy Gấu Dẻ gọi {name} lên bàn thầy cạnh gốc đa",
       "kind": "challenge",
       "mechanic": "multi-select",
       "target": "tv2-t03-b06-thay-gau-de",
@@ -317,11 +317,11 @@
     {
       "id": "cau-hoi-trong-bai",
       "title": "Câu nào là câu hỏi?",
-      "goTo": "Vẹt Xanh bay vòng quanh bảng xanh dưới tán đa ra câu đố",
+      "goTo": "Cún Lúa chạy vòng quanh bảng xanh dưới tán đa, nghĩ ra một câu đố",
       "kind": "challenge",
       "mechanic": "classify",
       "target": "tv2-t03-bang-xanh",
-      "prompt": "Vẹt Xanh đố: câu nào kết thúc bằng dấu chấm hỏi thì giơ cánh lên! Giơ cánh lên!\nTìm những câu hỏi có trong bài đọc. Đó là câu hỏi của ai dành cho ai?\nKéo mỗi câu vào đúng nhóm.",
+      "prompt": "Cún Lúa đố: câu nào kết thúc bằng dấu chấm hỏi thì giơ tay lên, tớ giơ chân lên cùng!\nTìm những câu hỏi có trong bài đọc. Đó là câu hỏi của ai dành cho ai?\nKéo mỗi câu vào đúng nhóm.",
       "groups": [
         {
           "id": "thay-hoi-quang",
@@ -384,7 +384,7 @@
       },
       "feedback": {
         "right": [
-          "Vẹt Xanh giơ cả hai cánh: hai câu hỏi! Hai câu hỏi của thầy!",
+          "Cún Lúa giơ cả hai chân trước: hai câu hỏi! Hai câu hỏi của thầy!",
           "Đúng rồi, thầy hỏi để giúp Quang nhớ ra mình định kể gì.",
           "Xếp gọn gàng! Nhóm “Quang hỏi thầy” trống trơn là đúng đấy."
         ],
@@ -398,10 +398,10 @@
     {
       "id": "khen-ban-quang",
       "title": "Khen và đáp lời khen",
-      "goTo": "Vẹt Xanh đáp xuống cành đa thấp, xin đóng vai bạn Quang",
+      "goTo": "Cún Lúa nằm dưới chùm rễ đa, xin đóng vai bạn Quang",
       "kind": "speak",
-      "target": "vet-xanh",
-      "prompt": "Đóng vai các bạn và Quang, nói và đáp lời khen khi Quang trở nên tự tin.\nVẹt Xanh vuốt lông cho thật bóng rồi nhận vai Quang. {name} đóng vai các bạn. Khen xong thì hai bạn đổi vai nhé.",
+      "target": "cun-lua",
+      "prompt": "Đóng vai các bạn và Quang, nói và đáp lời khen khi Quang trở nên tự tin.\nCún Lúa liếm lông cho thật mượt rồi nhận vai Quang. {name} đóng vai các bạn. Khen xong thì hai bạn đổi vai nhé.",
       "hints": [
         "Các bạn khen: Cậu kể chuyện buổi sáng hay quá!",
         "Quang đáp: Cảm ơn các bạn đã vỗ tay cổ vũ tớ.",
@@ -520,7 +520,7 @@
         "right": [
           "Gõ kiến ngượng ngùng gõ ba tiếng xin lỗi rồi bay đi. Tấm ván đủ chữ rồi!",
           "Tê, u, vê, i dài: {name} đọc trơn như hát.",
-          "Vẹt Xanh nhắc hai lần cho nhớ: t, u, v, y! T, u, v, y!"
+          "Cún Lúa sủa đúng bốn tiếng cho nhớ: t, u, v, y!"
         ],
         "wrong": [
           "Chữ tên “i dài” không phải chữ i ngắn đâu. Thử chữ đứng cuối bảng xem.",
@@ -535,7 +535,7 @@
       "kind": "challenge",
       "mechanic": "sort",
       "target": "tv2-t03-van-chu-cai",
-      "prompt": "Năm bạn nhỏ làng bên sang dự giờ tập nói, đứng chen nhau lộn xộn. Vẹt Xanh điểm danh cứ gọi nhầm, gọi nhầm!\nSắp xếp tên các bạn dưới đây theo đúng thứ tự trong bảng chữ cái. Viết lại tên các bạn theo thứ tự đã sắp xếp.",
+      "prompt": "Năm bạn nhỏ làng bên sang dự giờ tập nói, đứng chen nhau lộn xộn. Cún Lúa chạy quanh lùa mãi mà hàng vẫn chưa thẳng!\nSắp xếp tên các bạn dưới đây theo đúng thứ tự trong bảng chữ cái. Viết lại tên các bạn theo thứ tự đã sắp xếp.",
       "items": [
         {
           "id": "son",
@@ -584,9 +584,9 @@
       },
       "feedback": {
         "right": [
-          "Năm bạn xếp hàng thẳng tắp, Vẹt Xanh điểm danh không vấp chữ nào!",
+          "Năm bạn xếp hàng thẳng tắp, Cún Lúa ngồi gác đầu hàng như một chú lính nhỏ!",
           "Quân đứng đầu, Xuân đứng cuối: chuẩn bảng chữ cái rồi.",
-          "Vẹt Xanh khoe: tớ vừa học được chữ “thứ tự”! Thứ tự!"
+          "Cún Lúa khoe: giờ tớ biết lùa các bạn theo thứ tự chữ cái rồi nhé!"
         ],
         "wrong": [
           "Chữ q và chữ s, chữ nào đứng trước trong bảng nhỉ?",
@@ -598,7 +598,7 @@
     {
       "id": "may-cho-tu-dac-diem",
       "title": "Mười đám mây chở chữ",
-      "goTo": "Quay về bàn cuối lớp, mây đang trôi qua kẽ lá",
+      "goTo": "Quay về bàn cuối lớp, mây đang trôi qua kẽ lá đa",
       "kind": "challenge",
       "mechanic": "multi-select",
       "target": "tv2-t03-b06-meo-gung",
@@ -673,7 +673,7 @@
       "feedback": {
         "right": [
           "Mèo Nghệ vuốt bộ lông vàng nghệ, mượt mà: đúng sáu từ!",
-          "Sáu đám mây đặc điểm sà xuống đậu trên tán cây. Đẹp quá!",
+          "Sáu đám mây đặc điểm sà xuống đậu trên tán đa. Đẹp quá!",
           "Tinh mắt ghê! {name} không bị đám mây “mái tóc” đánh lừa."
         ],
         "wrong": [
@@ -686,7 +686,7 @@
     {
       "id": "ghep-cau-dac-diem",
       "title": "Ghép câu nêu đặc điểm",
-      "goTo": "Thầy Gấu Dẻ bày lá tre lên bàn thầy cạnh hốc cây",
+      "goTo": "Thầy Gấu Dẻ bày lá tre lên bàn thầy cạnh gốc đa",
       "kind": "challenge",
       "mechanic": "classify",
       "target": "tv2-t03-b06-thay-gau-de",
@@ -810,7 +810,7 @@
         },
         {
           "text": "Mình ngồi bàn đầu, vỗ tay to nhất lớp!",
-          "reply": "Vẹt Xanh chen vào: tớ vỗ cánh to thứ nhì! To thứ nhì!"
+          "reply": "Cún Lúa chen vào: còn tớ vẫy đuôi to thứ nhì lớp!"
         }
       ]
     },
@@ -895,7 +895,7 @@
         "right": [
           "Bốn bức tranh xếp ngay ngắn, Mèo Nghệ ưỡn ngực đứng thẳng trên bục.",
           "Đúng nếp buổi sáng: dậy, đánh răng, ăn, rồi mới đi học!",
-          "Vẹt Xanh reo: giống hệt buổi sáng của bạn Quang! Giống hệt!"
+          "Cún Lúa vẫy đuôi: giống hệt buổi sáng của bạn Quang luôn!"
         ],
         "wrong": [
           "Ơ kìa, bạn nhỏ đeo cặp đi học khi còn chưa ngủ dậy à? Xếp lại nhé.",
@@ -956,10 +956,10 @@
     {
       "id": "doc-sach-ban-tay-be",
       "title": "Cuốn sách đôi bàn tay",
-      "goTo": "Ghé bàn thầy cạnh hốc cây, thầy Gấu Dẻ có cuốn sách mỏng",
+      "goTo": "Ghé bàn thầy cạnh gốc đa, thầy Gấu Dẻ có cuốn sách mỏng",
       "kind": "speak",
       "target": "tv2-t03-b06-thay-gau-de",
-      "prompt": "Thầy Gấu Dẻ rút từ hốc cây ra một cuốn sách mỏng, bìa vẽ đôi bàn tay bé xíu đang nhặt rau.\nTìm đọc một bài thơ hoặc câu chuyện viết về trẻ em làm việc nhà.\nĐọc cho các bạn nghe một đoạn em thích.",
+      "prompt": "Thầy Gấu Dẻ rút từ hốc đa ra một cuốn sách mỏng, bìa vẽ đôi bàn tay bé xíu đang nhặt rau.\nTìm đọc một bài thơ hoặc câu chuyện viết về trẻ em làm việc nhà.\nĐọc cho các bạn nghe một đoạn em thích.",
       "hints": [
         "Bài thơ hay câu chuyện em tìm được tên là gì?",
         "Bạn nhỏ trong bài đã giúp ai làm việc gì?",
@@ -1004,7 +1004,7 @@
       "title": "Bụi cỏ nhắm mắt",
       "kind": "next",
       "trigger": "auto",
-      "text": "Ven đầm vọng lại tiếng Cáo Vần ngâm nga: lá ơi sao cụp, lá ơi sao xoè? Vừa có một tiếng động lạ, bụi cỏ xấu hổ đã nhắm tịt cả trăm con mắt lá. Tiếng động ấy là của ai nhỉ?"
+      "text": "Ven đầm sen vọng lại tiếng Cáo Vần ngâm nga: lá ơi sao cụp, lá ơi sao xoè? Vừa có một tiếng động lạ, bụi cỏ xấu hổ đã nhắm tịt cả trăm con mắt lá. Tiếng động ấy là của ai nhỉ?"
     }
   ],
   "reward": {

@@ -5,11 +5,11 @@
   "title": "Biển tên trên bảng tin",
   "status": "active",
   "lesson": "toan2-t1-b03",
-  "summary": "Gió thổi tung các tấm biển \"Số hạng\", \"Tổng\", \"Số bị trừ\", \"Hiệu\" trên bảng tin; {name} cùng Mèo Mun gọi đúng tên từng thành phần của phép cộng, phép trừ, mặc cho Vẹt Xanh cứ đọc nhầm lung tung.",
+  "summary": "Gió thổi tung các tấm biển \"Số hạng\", \"Tổng\", \"Số bị trừ\", \"Hiệu\" trên bảng tin; {name} cùng Mèo Mun gọi đúng tên từng thành phần của phép cộng, phép trừ, mặc cho Khỉ Tí Toáy cứ đọc nhầm lung tung.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Mèo Mun, Vẹt Xanh, Thỏ Tiêu, cô Duyên, Koala Bơ",
-    "where": "Sân trường: bảng tin, bồn cát, bàn trực nhật, sân chơi có đoàn tàu gỗ, cầu trượt",
+    "who": "Mèo Mun, Khỉ Tí Toáy, Thỏ Tiêu, cô Duyên, Koala Bơ",
+    "where": "Sân trường: bảng tin, bồn cát, bàn trực nhật, góc sân có đoàn tàu gỗ, bồn hoa",
     "goal": "Treo lại biển tên đúng chỗ trên bảng tin trước giờ chào cờ",
     "play": "Nhặt biển tên, điền bảng tổng và hiệu, ghép phép tính từ vỏ sò, đếm dây sao, xếp toa tàu, đố hiệu",
     "learn": "Toán 2 Bài 3: số hạng, tổng; số bị trừ, số trừ, hiệu",
@@ -30,10 +30,10 @@
   "places": {
     "meo-mun": "bảng tin",
     "nhat-bien-ten": "bảng tin",
-    "vet-xanh": "sân chơi có đoàn tàu gỗ",
+    "toan2-cd1-b03-khi-ti-toay": "góc sân có đoàn tàu gỗ",
     "toan2-cd1-b03-tho-tieu": "bồn cát",
     "toan2-cd1-b03-co-duyen": "bàn trực nhật",
-    "toan2-cd1-b03-koala-bo": "cầu trượt"
+    "toan2-cd1-b03-koala-bo": "bồn hoa"
   },
   "steps": [
     {
@@ -48,7 +48,7 @@
           "text": "Chào {name}. Tớ vẫn bình tĩnh nhé… chỉ là gió vừa thổi bay hết biển tên trên bảng tin thôi mà."
         },
         {
-          "speaker": "Vẹt Xanh",
+          "speaker": "Khỉ Tí Toáy",
           "text": "Tổng! Tổng! Số hạng! Hiệu! Tớ đọc to giúp đấy, nhưng tớ chẳng biết tấm nào treo ở đâu cả!"
         },
         {
@@ -62,8 +62,8 @@
           "reply": "Mèo Mun vuốt râu: Tốt quá, ba tấm biển bay quanh đây thôi."
         },
         {
-          "text": "Vẹt Xanh đọc nhỏ thôi nào!",
-          "reply": "Vẹt Xanh thì thầm: Tổng… tổng… thế này được chưa?"
+          "text": "Khỉ Tí Toáy đọc nhỏ thôi nào!",
+          "reply": "Khỉ Tí Toáy thì thầm: Tổng… tổng… thế này được chưa?"
         }
       ]
     },
@@ -89,12 +89,12 @@
           "text": "Nhìn phép cộng 7 + 3 = 10 này. Hai số đem cộng, 7 và 3, gọi là số hạng. Kết quả 10 gọi là tổng."
         },
         {
-          "speaker": "Vẹt Xanh",
+          "speaker": "Khỉ Tí Toáy",
           "text": "Vậy tớ cộng 2 quả chuối với 3 quả chuối thì tổng là… một bữa no nê!"
         },
         {
           "speaker": "Mèo Mun",
-          "text": "Là 5 quả chuối, Vẹt ạ. Còn 7 + 3 cũng được gọi là tổng đấy."
+          "text": "Là 5 quả chuối, Khỉ ạ. Còn 7 + 3 cũng được gọi là tổng đấy."
         }
       ],
       "choices": [
@@ -186,7 +186,7 @@
         "right": [
           "Ba ô tổng sáng choang, bảng tin gọn như mới!",
           "Mèo Mun ngoe nguẩy đuôi: đúng hết, khỏi cần dò lại.",
-          "Vẹt Xanh hô vang: Tổng! Tổng! Lần này đúng thật!"
+          "Khỉ Tí Toáy hô vang: Tổng! Tổng! Lần này đúng thật!"
         ],
         "wrong": [
           "Cộng hai số trong cùng một cột thôi nhé.",
@@ -307,7 +307,7 @@
       "target": "toan2-cd1-b03-tho-tieu",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Vẹt Xanh tha về hai vỏ sò xanh ghi 32 và 23, hai vỏ sò vàng ghi 21 và 4 (đều là số hạng), cùng hai sao biển đỏ ghi 36 và 44 (là tổng). Từ các số hạng và tổng, em hãy lập các phép cộng thích hợp.",
+      "prompt": "Khỉ Tí Toáy nhặt về hai vỏ sò xanh ghi 32 và 23, hai vỏ sò vàng ghi 21 và 4 (đều là số hạng), cùng hai sao biển đỏ ghi 36 và 44 (là tổng). Từ các số hạng và tổng, em hãy lập các phép cộng thích hợp.",
       "template": "Phép cộng với sao biển 36: {{b1}}\nPhép cộng với sao biển 44: {{b2}}",
       "blanks": [
         {
@@ -363,7 +363,7 @@
       "feedback": {
         "right": [
           "Vỏ sò nào gặp đúng sao biển nấy, đẹp như tranh!",
-          "Vẹt Xanh cắp sao biển treo lên bảng tin ngay.",
+          "Khỉ Tí Toáy đu lên treo sao biển vào bảng tin ngay.",
           "Hai phép cộng ghép khéo quá, Thỏ Tiêu chấm mười điểm."
         ],
         "wrong": [
@@ -391,7 +391,7 @@
           "text": "Phép trừ cũng có biển tên riêng. Trong 10 – 3 = 7: 10 là số bị trừ, 3 là số trừ, 7 là hiệu."
         },
         {
-          "speaker": "Vẹt Xanh",
+          "speaker": "Khỉ Tí Toáy",
           "text": "Số bị trừ nghe tội ghê! Nó bị ai trừ thế?"
         },
         {
@@ -532,7 +532,7 @@
       "feedback": {
         "right": [
           "Số bị trừ, số trừ, hiệu đều nhận đúng tên mình!",
-          "Vẹt Xanh lẩm nhẩm theo cậu, lần đầu không đọc nhầm.",
+          "Khỉ Tí Toáy lẩm nhẩm theo cậu, lần đầu không đọc nhầm.",
           "Biển \"Hiệu\" treo đúng chỗ, bảng tin vỗ tay rào rào."
         ],
         "wrong": [
@@ -756,7 +756,7 @@
       "target": "meo-mun",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Dưới chân bảng tin có một bến xe đồ chơi của lớp, Vẹt Xanh lái mấy chiếc xe đi mất.",
+      "prompt": "Dưới chân bảng tin có một bến xe đồ chơi của lớp, Khỉ Tí Toáy lái mấy chiếc xe đi mất.",
       "template": "Một bến xe có 15 ô tô, sau đó có 3 xe rời bến. Hỏi bến xe còn lại bao nhiêu ô tô?\n{{b1}} – {{b2}} = {{b3}}\nBến xe còn lại {{b4}} ô tô.",
       "blanks": [
         {
@@ -845,7 +845,7 @@
       },
       "feedback": {
         "right": [
-          "Bến xe còn đúng 12 chiếc, Vẹt Xanh lái nốt về bến.",
+          "Bến xe còn đúng 12 chiếc, Khỉ Tí Toáy lái nốt về bến.",
           "Phép trừ chuẩn, bến xe xếp lại thẳng hàng.",
           "Cậu đếm xe giỏi hơn cả bác bảo vệ bến xe!"
         ],
@@ -866,42 +866,42 @@
     },
     {
       "id": "vet-xanh-thach-do",
-      "title": "Vẹt Xanh thách đố",
-      "goTo": "Sang sân chơi có đoàn tàu gỗ, Vẹt Xanh đang đậu trên nóc toa",
+      "title": "Khỉ Tí Toáy thách đố",
+      "goTo": "Sang góc sân có đoàn tàu gỗ, Khỉ Tí Toáy đang ngồi vắt vẻo trên nóc toa",
       "kind": "dialogue",
-      "target": "vet-xanh",
+      "target": "toan2-cd1-b03-khi-ti-toay",
       "lines": [
         {
-          "speaker": "Vẹt Xanh",
-          "text": "Bảng tin xong rồi thì sang đây chơi với tớ! Tớ có hai đoàn tàu, còn dây sao với hộp thẻ số bí mật thì Koala Bơ giữ ở cầu trượt."
+          "speaker": "Khỉ Tí Toáy",
+          "text": "Bảng tin xong rồi thì sang đây chơi với tớ! Tớ có hai đoàn tàu, còn dây sao với hộp thẻ số bí mật thì Koala Bơ giữ ở bồn hoa."
         },
         {
           "speaker": "Mèo Mun",
-          "text": "Vẹt Xanh mà đã đố thì đố tới tối. {name} muốn bắt đầu từ đâu?"
+          "text": "Khỉ Tí Toáy mà đã đố thì đố tới tối. {name} muốn bắt đầu từ đâu?"
         },
         {
-          "speaker": "Vẹt Xanh",
+          "speaker": "Khỉ Tí Toáy",
           "text": "Chọn đi, chọn đi! Đằng nào tớ cũng đố hết!"
         }
       ],
       "choices": [
         {
           "text": "Viết số thành tổng trước",
-          "reply": "Vẹt Xanh: Tách số à? Tớ có ngay bốn số đây!"
+          "reply": "Khỉ Tí Toáy: Tách số à? Tớ có ngay bốn số đây!"
         },
         {
           "text": "Đếm dây sao trước",
-          "reply": "Vẹt Xanh: Từ từ, đếm sao phải để sau màn tách số cơ, tớ là quản trò mà!"
+          "reply": "Khỉ Tí Toáy: Từ từ, đếm sao phải để sau màn tách số cơ, tớ là quản trò mà!"
         }
       ]
     },
     {
       "id": "tach-thanh-tong",
       "title": "Tách số thành tổng",
-      "target": "vet-xanh",
+      "target": "toan2-cd1-b03-khi-ti-toay",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Vẹt Xanh viết bốn số lên nóc toa tàu. Viết mỗi số 75, 64, 87, 46 thành tổng (theo mẫu).",
+      "prompt": "Khỉ Tí Toáy viết bốn số lên nóc toa tàu. Viết mỗi số 75, 64, 87, 46 thành tổng (theo mẫu).",
       "template": "Mẫu: 75 = 70 + 5\n64 = {{b1}} + {{b2}}\n87 = {{b3}} + {{b4}}\n46 = {{b5}} + {{b6}}",
       "blanks": [
         {
@@ -1026,7 +1026,7 @@
       },
       "feedback": {
         "right": [
-          "Bốn số tách gọn, Vẹt Xanh vỗ cánh khen lấy khen để.",
+          "Bốn số tách gọn, Khỉ Tí Toáy vỗ tay khen lấy khen để.",
           "Số tròn chục trước, đơn vị sau, chuẩn từng li!",
           "Tách số kiểu này thì toa tàu chở được cả trăm số."
         ],
@@ -1050,11 +1050,11 @@
     {
       "id": "day-ngoi-sao",
       "title": "Dây sao lấp lánh",
-      "goTo": "Ra cầu trượt, Koala Bơ đang ôm dây sao Vẹt Xanh giăng dở",
+      "goTo": "Ra bồn hoa, Koala Bơ đang ôm dây sao Khỉ Tí Toáy giăng dở",
       "target": "toan2-cd1-b03-koala-bo",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Vẹt Xanh giăng dây sao quanh sân chơi, mỗi chấm tròn màu là một ngôi sao: 🔴🟡🔵🔴🟡🔵🔴🟡🔵🔴🟡🔵🔴🟡🔵🔴🟡🔵🔴🟡🔵🔴🟡🔵🔴🔵🔴🔵🔴",
+      "prompt": "Khỉ Tí Toáy giăng dây sao quanh bồn hoa, mỗi chấm tròn màu là một ngôi sao: 🔴🟡🔵🔴🟡🔵🔴🟡🔵🔴🟡🔵🔴🟡🔵🔴🟡🔵🔴🟡🔵🔴🟡🔵🔴🔵🔴🔵🔴",
       "template": "a) Số ?\nMàu | Đỏ | Vàng | Xanh\nSố ngôi sao | {{b1}} | {{b2}} | {{b3}}\nb) Tính tổng của số ngôi sao màu đỏ và số ngôi sao màu vàng. → {{b4}}\nc) Tính hiệu của số ngôi sao màu xanh và số ngôi sao màu vàng. → {{b5}}",
       "blanks": [
         {
@@ -1164,7 +1164,7 @@
         "right": [
           "Đếm sao không sót ngôi nào, mắt cậu sáng như sao luôn!",
           "Tổng và hiệu của dây sao đều trúng phóc.",
-          "Koala Bơ treo dây sao lên cầu trượt: đẹp nhất sân trường!"
+          "Koala Bơ quấn dây sao quanh bồn hoa: đẹp nhất sân trường!"
         ],
         "wrong": [
           "Đếm lại từng màu một, đừng trộn đỏ với vàng nhé.",
@@ -1185,8 +1185,8 @@
     {
       "id": "doi-cho-toa-tau-a",
       "title": "Đoàn tàu A xếp lại",
-      "goTo": "Quay lại sân chơi có đoàn tàu gỗ, Vẹt Xanh đứng trên toa đầu",
-      "target": "vet-xanh",
+      "goTo": "Quay lại góc sân có đoàn tàu gỗ, Khỉ Tí Toáy đứng trên toa đầu",
+      "target": "toan2-cd1-b03-khi-ti-toay",
       "kind": "challenge",
       "mechanic": "sort",
       "prompt": "Trên mỗi toa tàu ghi một số. a) Đổi chỗ hai toa nào của đoàn tàu A để được các số xếp theo thứ tự từ lớn đến bé?",
@@ -1227,7 +1227,7 @@
         "right": [
           "Tu tu! Đoàn tàu A chạy từ lớn đến bé thẳng băng.",
           "Chỉ đổi hai toa mà xong cả đoàn, khéo thật!",
-          "Vẹt Xanh đứng trên toa 70 hô: Tớ dẫn đầu!"
+          "Khỉ Tí Toáy đứng trên toa 70 hô: Tớ dẫn đầu!"
         ],
         "wrong": [
           "Toa ghi số lớn nhất phải ra đầu đoàn tàu.",
@@ -1247,7 +1247,7 @@
     {
       "id": "hieu-doan-tau-b",
       "title": "Đoàn tàu B",
-      "target": "vet-xanh",
+      "target": "toan2-cd1-b03-khi-ti-toay",
       "kind": "riddle",
       "question": "Đoàn tàu B có các toa ghi 30, 41, 35, 39. Trên mỗi toa tàu ghi một số. b) Tính hiệu của số lớn nhất và số bé nhất trong các số ở đoàn tàu B.",
       "skill": "phep-tru",
@@ -1269,7 +1269,7 @@
         "right": [
           "Hiệu là 11, đoàn tàu B kéo còi chào cậu!",
           "Tìm đúng số lớn nhất, số bé nhất rồi trừ, gọn gàng.",
-          "Vẹt Xanh lắp bắp: tớ còn chưa kịp đố xong!"
+          "Khỉ Tí Toáy lắp bắp: tớ còn chưa kịp đố xong!"
         ],
         "wrong": [
           "Số lớn nhất trong đoàn tàu B là số mấy nhỉ?",
@@ -1284,7 +1284,7 @@
     {
       "id": "lap-phep-tru-the-so",
       "title": "Hộp thẻ số bí mật",
-      "goTo": "Chạy ra cầu trượt, Koala Bơ đang ôm khư khư hộp thẻ số bí mật",
+      "goTo": "Chạy ra bồn hoa, Koala Bơ đang ôm khư khư hộp thẻ số bí mật",
       "target": "toan2-cd1-b03-koala-bo",
       "kind": "challenge",
       "mechanic": "fill-blank",
@@ -1365,7 +1365,7 @@
       "title": "Huy hiệu bảng tin",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Bảng tin treo đủ biển \"Số hạng\", \"Tổng\", \"Số bị trừ\", \"Số trừ\", \"Hiệu\". Mèo Mun trao cho {name} huy hiệu \"Người gọi tên phép tính\", còn Vẹt Xanh hứa từ nay đọc nhỏ hơn… một chút."
+      "text": "Bảng tin treo đủ biển \"Số hạng\", \"Tổng\", \"Số bị trừ\", \"Số trừ\", \"Hiệu\". Mèo Mun trao cho {name} huy hiệu \"Người gọi tên phép tính\", còn Khỉ Tí Toáy hứa từ nay đọc nhỏ hơn… một chút."
     },
     {
       "id": "bong-dem-tren-duong-chay",

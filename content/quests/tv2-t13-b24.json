@@ -1,20 +1,20 @@
 {
   "id": "tv2-t13-b24",
   "region": "khu-rung-bi-mat",
-  "chapter": 14,
+  "chapter": 5,
   "title": "Hải Ly Cần nặn quà bên suối",
   "status": "active",
   "lesson": "tv2-t1-b24",
   "summary": "Đất sét bên suối khô cứng, Hải Ly Cần gặm thử suýt mẻ răng. {name} tìm nước và lá chuối ủ đất, đọc bài thơ Nặn đồ chơi bên phiến đá rêu, giúp Lợn Rừng Đốm tả đồ chơi trên giá rồi cùng Hải Ly chia quà nặn cho cả rừng. Dọc suối còn có Bác thợ gốm Hai, Khỉ Toe, Mèo Nơ và Cá Chép Kim chờ góp vui.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Hải Ly Cần chăm chỉ cẩn thận, Mèo Mun điềm tĩnh mê nắm đất hình chuột, Lợn Rừng Đốm vụng về làm đồ chơi, Bác thợ gốm Hai (nặn bình bên lò gốm), Khỉ Toe (cười suốt ngày), Mèo Nơ (khéo gói quà), Cá Chép Kim (mê nghe đồng dao)",
+    "who": "Hải Ly Cần chăm chỉ cẩn thận, Mèo Bùn (lông nâu như bùn suối, điềm tĩnh, nói ít, mê nắm đất hình chuột), Lợn Rừng Đốm vụng về làm đồ chơi, Bác thợ gốm Hai (nặn bình bên lò gốm), Khỉ Toe (cười suốt ngày), Mèo Nơ (khéo gói quà), Cá Chép Kim (mê nghe đồng dao)",
     "where": "Bờ suối đất sét, bãi lau ven suối, phiến đá rêu chép bài thơ, giá đồ chơi gỗ, lò gốm ven suối, cành ổi bên suối, bụi hồng ven suối và vũng suối trong",
     "goal": "Làm mềm đất sét để Hải Ly nặn quà tặng cả nhà và các bạn",
     "play": "Tìm đồ, nói, đọc thơ, xếp nhóm, chọn nhiều đáp án, trắc nghiệm, điền từ, điền vần, đặt dấu phẩy, lựa chọn trong hội thoại, phiếu viết",
     "learn": "Tiếng Việt 2 Bài 24: đọc hiểu bài thơ \"Nặn đồ chơi\", từ chỉ cảm xúc, da/gia, s/x, ươn/ương, từ chỉ đặc điểm của đồ chơi, dấu phẩy, tả đồ chơi",
     "reward": "85 XP, 15 xu, Từ ngữ +2, Đọc hiểu +1, Chính tả +1, Dấu câu +1",
-    "next": "Bài 25 \"Sự tích hoa tỉ muội\""
+    "next": "Bài 25 \"Sự tích hoa tỉ muội\" ở Xóm Mái Ấm"
   },
   "phases": {
     "hook": "gap-hai-ly",
@@ -71,12 +71,12 @@
           "text": "Tớ thử gặm cho mềm, suýt mẻ luôn hai cái răng cửa quý nhất rừng!"
         },
         {
-          "speaker": "Mèo Mun",
+          "speaker": "Mèo Bùn",
           "text": "Đất khô thì cần nước. Ủ thêm lá chuối."
         },
         {
           "speaker": "Hải Ly Cần",
-          "text": "Mèo Mun nói ít mà trúng phóc! Nhưng gáo nước với lá chuối tớ để đâu mất rồi nhỉ…"
+          "text": "Mèo Bùn nói ít mà trúng phóc! Nhưng gáo nước với lá chuối tớ để đâu mất rồi nhỉ…"
         }
       ],
       "choices": [
@@ -134,7 +134,7 @@
       "target": "tv2-t13-phien-da-reu",
       "textRef": "nan-do-choi",
       "audio": true,
-      "question": "Hải Ly Cần hỏi nhỏ, sợ làm Mèo Mun thức giấc: bạn nhỏ trong bài ngồi nặn đồ chơi ở đâu?",
+      "question": "Hải Ly Cần hỏi nhỏ, sợ làm Mèo Bùn thức giấc: bạn nhỏ trong bài ngồi nặn đồ chơi ở đâu?",
       "choices": [
         {
           "id": "goc-da",
@@ -168,7 +168,7 @@
         "right": [
           "Đúng rồi, bên thềm gió mát! Hải Ly cũng muốn ngồi đó nặn cho mát.",
           "Chuẩn! Ngay dòng đầu đã kể chỗ bé ngồi rồi.",
-          "Mèo Mun mở hé một mắt, gật đầu, rồi lại ngủ tiếp."
+          "Mèo Bùn mở hé một mắt, gật đầu, rồi lại ngủ tiếp."
         ],
         "wrong": [
           "Trong bài không có cây đa nào đâu, đọc lại dòng thơ đầu nhé.",
@@ -261,12 +261,12 @@
     },
     {
       "id": "tang-cho-ai",
-      "goTo": "Quay ra phiến đá rêu, Mèo Mun đang cuộn tròn ngủ trên đó",
+      "goTo": "Quay ra phiến đá rêu, Mèo Bùn đang cuộn tròn ngủ trên đó",
       "title": "Những người được bé tặng quà",
       "kind": "challenge",
       "mechanic": "multi-select",
       "target": "tv2-t13-phien-da-reu",
-      "prompt": "Mèo Mun vươn vai tỉnh dậy, hỏi đúng một câu rồi ngồi chờ: Bé nặn đồ chơi để tặng cho những ai?",
+      "prompt": "Mèo Bùn vươn vai tỉnh dậy, hỏi đúng một câu rồi ngồi chờ: Bé nặn đồ chơi để tặng cho những ai?",
       "choices": [
         {
           "id": "me",
@@ -318,7 +318,7 @@
       },
       "feedback": {
         "right": [
-          "Đủ bốn người nhận quà! Mèo Mun kêu \"meo\" một tiếng, nghe rất hài lòng.",
+          "Đủ bốn người nhận quà! Mèo Bùn kêu \"meo\" một tiếng, nghe rất hài lòng.",
           "Chọn chuẩn không thừa một ai, giỏi quá {name}!",
           "Hải Ly ghi ngay vào sổ: bé trong bài chu đáo ghê."
         ],
@@ -400,12 +400,12 @@
     },
     {
       "id": "meo-thich-chi",
-      "goTo": "Mang chú chuột đất ra phiến đá rêu tặng Mèo Mun",
+      "goTo": "Mang chú chuột đất ra phiến đá rêu tặng Mèo Bùn",
       "title": "Chú mèo vui ra sao",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "target": "tv2-t13-phien-da-reu",
-      "prompt": "Hải Ly nặn tặng Mèo Mun một chú chuột đất, râu Mèo Mun vểnh lên tận mang tai. Tìm từ ngữ cho biết chú mèo rất vui vì được bé tặng quà.",
+      "prompt": "Hải Ly nặn tặng Mèo Bùn một chú chuột đất, râu Mèo Bùn vểnh lên tận mang tai. Tìm từ ngữ cho biết chú mèo rất vui vì được bé tặng quà.",
       "template": "Mèo ta {{vui}}\nVểnh râu “meo meo”!",
       "blanks": [
         {
@@ -448,7 +448,7 @@
       },
       "feedback": {
         "right": [
-          "Thích chí! Mèo Mun cũng thích chí y như chú mèo trong bài.",
+          "Thích chí! Mèo Bùn cũng thích chí y như chú mèo trong bài.",
           "Đúng rồi, chữ ấy có cả trong ô Từ ngữ đấy.",
           "Hải Ly vỗ tay: râu vểnh, mắt cười, đúng là thích chí!"
         ],
@@ -641,7 +641,7 @@
       "kind": "challenge",
       "mechanic": "fill-blank",
       "target": "hai-ly-can",
-      "prompt": "Mèo Mun đưa ra hai tấm tranh trò chơi dân gian và bốn câu thơ bị mưa làm mất vần. Chọn a hoặc b. a. Chọn s hoặc x thay cho ô vuông.\nKéo cưa lừa ■ẻ · Múa ■ạp\nb. Chọn ươn hoặc ương thay cho ô vuông.\n– Con đ■̀ uốn l■̣ quanh s■̀ núi.\n– Hoa h■́ d■ v■ mình đón ánh mặt trời.\nỞ đây, em làm cả a và b nhé.",
+      "prompt": "Mèo Bùn đưa ra hai tấm tranh trò chơi dân gian và bốn câu thơ bị mưa làm mất vần. Chọn a hoặc b. a. Chọn s hoặc x thay cho ô vuông.\nKéo cưa lừa ■ẻ · Múa ■ạp\nb. Chọn ươn hoặc ương thay cho ô vuông.\n– Con đ■̀ uốn l■̣ quanh s■̀ núi.\n– Hoa h■́ d■ v■ mình đón ánh mặt trời.\nỞ đây, em làm cả a và b nhé.",
       "template": "Kéo cưa lừa {{xe}}ẻ\nMúa {{sap}}ạp\nCon {{duong}} uốn {{luon}} quanh {{sun}} núi.\nHoa {{huong}} {{duong2}} {{vuon}} mình đón ánh mặt trời.",
       "blanks": [
         {
@@ -781,7 +781,7 @@
       },
       "feedback": {
         "right": [
-          "Đúng hết rồi! Mèo Mun hiếm khi cười, mà giờ cười tủm tỉm.",
+          "Đúng hết rồi! Mèo Bùn hiếm khi cười, mà giờ cười tủm tỉm.",
           "Câu thơ đủ vần, đọc lên nghe êm như suối chảy.",
           "Hải Ly đòi chơi kéo cưa lừa xẻ ngay với {name}!"
         ],
@@ -1115,7 +1115,7 @@
           "text": "Cho tớ sờ thử cây cầu một tí thôi!"
         },
         {
-          "speaker": "Mèo Mun",
+          "speaker": "Mèo Bùn",
           "text": "Đừng sờ. Còn đang phơi."
         },
         {
@@ -1129,8 +1129,8 @@
           "reply": "Hải Ly đỏ mặt gật đầu: đúng thế, tối nay tớ tặng bố mẹ, rồi kể cả bài thơ cho nghe."
         },
         {
-          "text": "Tặng Mèo Mun, cậu ấy chỉ cách làm mềm đất!",
-          "reply": "Mèo Mun nhận cây cầu, lặng im một lúc, rồi khẽ nói: cảm ơn. Đuôi vẫy liền ba cái."
+          "text": "Tặng Mèo Bùn, cậu ấy chỉ cách làm mềm đất!",
+          "reply": "Mèo Bùn nhận cây cầu, lặng im một lúc, rồi khẽ nói: cảm ơn. Đuôi vẫy liền ba cái."
         },
         {
           "text": "Tặng Đốm cho bạn ấy đỡ buồn vì không được sờ!",
@@ -1188,14 +1188,14 @@
       "title": "Quà đất sét của Hải Ly",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Hải Ly Cần tặng {name} một chú hải ly đất sét bé bằng ngón tay, răng cửa to đúng như thật, kèm lời dặn của Mèo Mun: đừng sờ, còn đang phơi."
+      "text": "Hải Ly Cần tặng {name} một chú hải ly đất sét bé bằng ngón tay, răng cửa to đúng như thật, kèm lời dặn của Mèo Bùn: đừng sờ, còn đang phơi."
     },
     {
       "id": "mo-bai-25",
       "title": "Hai chị em ong giận nhau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Bên bụi hoa tỉ muội vang lên tiếng vo ve cãi cọ: hai chị em ong Hồng và Nụ giành nhau một bông hoa, chẳng ai chịu ai. Ai sẽ làm lành cho hai chị em đây?"
+      "text": "Gió mang về một tin từ Xóm Mái Ấm: bên bụi hoa tỉ muội trong vườn, hai chị em ong Hồng và Nụ đang vo ve cãi cọ, giành nhau một bông hoa, chẳng ai chịu ai. Ai sẽ làm lành cho hai chị em đây?"
     }
   ],
   "reward": {

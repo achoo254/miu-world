@@ -1,20 +1,20 @@
 {
   "id": "tv2-t16-b29",
-  "region": "khu-rung-bi-mat",
-  "chapter": 17,
+  "region": "xom-mai-am",
+  "chapter": 3,
   "title": "Vết khắc trên cánh cửa chòi",
   "status": "active",
   "lesson": "tv2-t1-b29",
-  "summary": "Cua Kềnh bò ngang về căn chòi cũ bên bờ, tìm lại những vạch khắc chiều cao bà đánh dấu năm nào. {name} cùng Cua đọc bài thơ Cánh cửa nhớ bà, tìm từ chỉ hoạt động, rồi nghe và kể chuyện Bà cháu.",
+  "summary": "Cua Kềnh bò ngang về căn chòi cũ bên bờ hồ sen của xóm, tìm lại những vạch khắc chiều cao bà đánh dấu năm nào. {name} cùng Cua đọc bài thơ Cánh cửa nhớ bà, tìm từ chỉ hoạt động, nghe và kể chuyện Bà cháu, rồi gặp Bà Gấu Nâu còn nhớ bà Cua ngày xưa.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Cua Kềnh (đi ngang, hay nói ngược, đang nhớ bà), Chú chài Khơi vớt tranh và mê nghe chuyện, Hải Ly Cần ghé qua tìm ván làm cầu",
-    "where": "Căn chòi cũ bên bờ: bãi cát quanh chòi, cánh cửa gỗ có hai then, bãi đá mép sóng, vách đá gắn vỏ sò sau chòi",
+    "who": "Cua Kềnh (đi ngang, hay nói ngược, đang nhớ bà), Chú chài Khơi vớt tranh và mê nghe chuyện, Bà Gấu Nâu (bà của cả xóm) ghé qua, còn nhớ bà Cua ngày xưa",
+    "where": "Căn chòi cũ bên bờ hồ sen: bãi cát quanh chòi, cánh cửa gỗ có hai then, bãi sỏi mép hồ, vách đá gắn vỏ sò sau chòi",
     "goal": "Tìm lại các vạch khắc chiều cao bà Cua đánh dấu trên cánh cửa và khắc thêm vạch mới",
     "play": "Lục tìm đồ cũ, nói, đọc thơ, chọn đáp án, xếp tranh, chọn nhiều từ, phân loại, chọn cách làm, nghe và kể chuyện, phiếu viết",
     "learn": "Tiếng Việt 2 Bài 29: đọc hiểu bài thơ \"Cánh cửa nhớ bà\", từ chỉ hoạt động, nghe và kể chuyện \"Bà cháu\", viết chữ hoa Ô, Ơ",
     "reward": "80 XP, 15 xu, Đọc hiểu +2, Kể chuyện +2, Từ ngữ +1, mẩu then cửa khắc vạch",
-    "next": "Lời nhử sang Bài 30 \"Thương ông\""
+    "next": "Lời nhử sang Bài 30 \"Thương ông\": con dốc gập ghềnh lên nhà ông"
   },
   "phases": {
     "hook": "gap-cua-kenh",
@@ -45,13 +45,13 @@
     "tim-quanh-choi": "bãi cát cạnh căn chòi",
     "tv2-t16-canh-cua-go": "cánh cửa gỗ của chòi",
     "tv2-t16-vach-vo-so": "vách đá gắn vỏ sò",
-    "tv2-t16-b29-chu-chai-khoi": "bãi đá mép sóng"
+    "tv2-t16-b29-chu-chai-khoi": "bãi sỏi mép hồ"
   },
   "steps": [
     {
       "id": "gap-cua-kenh",
       "title": "Cua Kềnh bò ngang về chòi cũ",
-      "goTo": "Ra căn chòi cũ bên bờ, Cua Kềnh đang bò ngang tới",
+      "goTo": "Ra căn chòi cũ bên bờ hồ, Cua Kềnh đang bò ngang tới",
       "kind": "dialogue",
       "target": "cua-kenh",
       "lines": [
@@ -219,11 +219,11 @@
     {
       "id": "xep-tranh-ba-kho-tho",
       "title": "Ba tấm tranh treo cạnh cửa",
-      "goTo": "Tranh bay ra bãi đá mép sóng, Chú chài Khơi vừa vớt được cả ba tấm",
+      "goTo": "Tranh bay ra bãi sỏi mép hồ, Chú chài Khơi vừa vớt được cả ba tấm",
       "kind": "challenge",
       "mechanic": "sort",
       "target": "tv2-t16-b29-chu-chai-khoi",
-      "prompt": "Gió biển thổi ba tấm tranh bà treo cạnh cửa rơi lộn xộn. Cua Kềnh định xếp từ cuối lên đầu… À không, phải xuôi chứ! Sắp xếp các bức tranh sau theo thứ tự của 3 khổ thơ trong bài.",
+      "prompt": "Gió hồ thổi ba tấm tranh bà treo cạnh cửa rơi lộn xộn. Cua Kềnh định xếp từ cuối lên đầu… À không, phải xuôi chứ! Sắp xếp các bức tranh sau theo thứ tự của 3 khổ thơ trong bài.",
       "items": [
         {
           "id": "tranh-1",
@@ -667,7 +667,7 @@
     {
       "id": "ke-chuyen-ba-chau",
       "title": "Đến lượt {name} kể chuyện",
-      "goTo": "Ra bãi đá mép sóng kể chuyện Bà cháu cho Chú chài Khơi nghe",
+      "goTo": "Ra bãi sỏi mép hồ kể chuyện Bà cháu cho Chú chài Khơi nghe",
       "kind": "speak",
       "target": "tv2-t16-b29-chu-chai-khoi",
       "prompt": "Cua Kềnh lau mắt bằng càng: tớ kể xong rồi, cậu có nhớ không? Nghe kể chuyện. Chọn kể 1 – 2 đoạn của câu chuyện theo tranh.",
@@ -739,22 +739,22 @@
           "text": "Xong rồi! Vạch mới cao hơn vạch cũ một gang càng. Tớ khắc ngay ngắn, không ngược tí nào!"
         },
         {
-          "speaker": "Hải Ly Cần",
-          "text": "Chào hai cậu! Tớ đi ngang qua tìm ván cho nhịp cầu mới, nghe tiếng khắc cộc cộc ở đây."
+          "speaker": "Bà Gấu Nâu",
+          "text": "Chào hai cháu! Bà đi ngang bờ hồ, nghe tiếng khắc cộc cộc là nhớ ngay bà Cua ngày trước."
         },
         {
           "speaker": "Cua Kềnh",
-          "text": "Cậu cũng đi ngang à? Hay quá, có bạn rồi! Cái then cửa gãy kia, cậu lấy làm cầu nhé."
+          "text": "Bà Gấu Nâu biết bà cháu ạ? Ơ, cháu chào bà mới phải, cháu lại nói ngược rồi!"
         },
         {
-          "speaker": "Hải Ly Cần",
-          "text": "Cảm ơn Cua! Nhịp cầu chương này sẽ có một mẩu then cửa của bà, chắc chắn lắm đây."
+          "speaker": "Bà Gấu Nâu",
+          "text": "Ngày xưa, khắc vạch xong, bà Cua hay ngồi ghế mây kể chuyện Bà cháu cho cả xóm nghe. Cái then cửa gãy kia, cháu giữ làm kỉ niệm nhé."
         }
       ],
       "choices": [
         {
-          "text": "Một nhịp cầu nhớ bà, nghe hay quá!",
-          "reply": "Đi qua cầu là tớ lại nhớ bà, giống đẩy cửa trong bài thơ ấy."
+          "text": "Cua ơi, giữ mẩu then cửa ấy thật cẩn thận nhé!",
+          "reply": "Cua Kềnh ôm mẩu then cửa: cầm nó là tớ lại nhớ bà, giống đẩy cửa trong bài thơ ấy."
         }
       ]
     },

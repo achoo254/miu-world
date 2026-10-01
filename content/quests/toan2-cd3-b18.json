@@ -1,15 +1,15 @@
 {
   "id": "toan2-cd3-b18",
-  "region": "truong-hoc",
-  "chapter": 3,
+  "region": "cho-phien",
+  "chapter": 2,
   "title": "Thùng hàng gửi phương xa",
   "status": "active",
   "lesson": "toan2-t1-b18",
-  "summary": "Gấu Tuyết Bông đóng thùng quà gửi về phương Bắc lạnh giá, nhưng nhãn ki-lô-gam, lít còn trống trơn; {name} tính nhãn từng thùng ở bàn của Bác thủ kho Lộc, cân thú bông trên cầu thăng bằng, chọn túi gạo cùng Gấu Nếp và tính xăng cho xe chở hàng của Sư Tử Bon.",
+  "summary": "Gấu Băng đóng thùng quà gửi về phương Bắc lạnh giá, nhưng nhãn ki-lô-gam, lít còn trống trơn; {name} tính nhãn từng thùng ở bàn của Bác thủ kho Lượm, cân thú bông trên cầu thăng bằng, chọn túi gạo cùng Gấu Nếp và tính xăng cho xe chở hàng của Sư Tử Bon ở bến hàng bên kênh.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Gấu Tuyết Bông, Bác thủ kho Lộc, Gấu Nếp, Sư Tử Bon",
-    "where": "Căng tin: kho lạnh, bàn thủ kho, giá xếp bao gạo, cổng sau căng tin",
+    "who": "Gấu Băng, Bác thủ kho Lượm, Gấu Nếp, Sư Tử Bon",
+    "where": "Chợ phiên, kho hàng cuối chợ: góc mát trong kho hàng, bàn thủ kho, giá xếp bao gạo, bến hàng bên kênh",
     "goal": "Ghi đúng cân nặng, số lít trên mọi thùng quà trước khi xe chở hàng tới",
     "play": "Tìm thùng hàng, điền kết quả kg và l, đố cầu thăng bằng, chọn túi gạo, đố số lít xăng",
     "learn": "Toán 2 Bài 18: luyện tập chung về ki-lô-gam, lít",
@@ -28,48 +28,48 @@
   },
   "texts": {},
   "places": {
-    "gau-tuyet-bong": "kho lạnh",
-    "tim-thung-qua": "kho lạnh",
+    "toan2-cd3-b18-gau-bang": "góc mát trong kho hàng",
+    "tim-thung-qua": "giữa những bao gạo",
     "toan2-cd3-b18-bac-thu-kho-loc": "bàn thủ kho",
     "toan2-cd3-b18-gau-nep": "giá xếp bao gạo",
-    "toan2-cd3-b18-su-tu-bon": "cổng sau căng tin"
+    "toan2-cd3-b18-su-tu-bon": "bến hàng bên kênh"
   },
   "steps": [
     {
       "id": "bong-dong-thung-qua",
-      "title": "Gấu Tuyết Bông đóng thùng",
-      "goTo": "Vào kho lạnh, Gấu Tuyết Bông đang hắt xì vì… quá ấm",
+      "title": "Gấu Băng đóng thùng",
+      "goTo": "Vào góc mát trong kho hàng cuối chợ, Gấu Băng đang hắt xì vì… quá ấm",
       "kind": "dialogue",
-      "target": "gau-tuyet-bong",
+      "target": "toan2-cd3-b18-gau-bang",
       "lines": [
         {
-          "speaker": "Gấu Tuyết Bông",
-          "text": "Hắt xììì! Ở trường nóng quá, chỉ có kho lạnh là dễ chịu. Tớ đang gói quà gửi về nhà ở phương Bắc đây."
+          "speaker": "Gấu Băng",
+          "text": "Hắt xììì! Chợ đông người nóng quá, chỉ góc kho hàng này là mát. Tớ đang gói quà gửi về nhà ở phương Bắc đây."
         },
         {
-          "speaker": "Gấu Tuyết Bông",
+          "speaker": "Gấu Băng",
           "text": "Nhưng bác đưa thư bảo: thùng nào không ghi cân nặng thì không nhận. Mà tớ quên sạch cách cộng ki-lô-gam rồi!"
         },
         {
-          "speaker": "Bác Lộc",
-          "text": "Kho của bác, luật của bác: mọi thùng phải có nhãn đúng. {name}, cháu giúp Bông nhé, bác… ngồi canh cho lạnh."
+          "speaker": "Bác Lượm",
+          "text": "Kho của bác, luật của bác: mọi thùng phải có nhãn đúng. {name}, cháu giúp Băng nhé, bác… ngồi canh cửa kho."
         }
       ],
       "choices": [
         {
           "text": "Mình giúp cậu ghi nhãn!",
-          "reply": "Gấu Tuyết Bông ôm chầm lấy {name}: Ôi, cái ôm này hơi lạnh, cậu chịu khó nhé!"
+          "reply": "Gấu Băng ôm chầm lấy {name}: Ôi, cái ôm này hơi lạnh, cậu chịu khó nhé!"
         },
         {
-          "text": "Phương Bắc có xa không Bông?",
-          "reply": "Gấu Tuyết Bông: Xa lắm! Xa đến nỗi tuyết ở đó dày bằng… ba chú gấu tuyết chồng lên nhau."
+          "text": "Phương Bắc có xa không Băng?",
+          "reply": "Gấu Băng: Xa lắm! Xa đến nỗi tuyết ở đó dày bằng… ba chú gấu tuyết chồng lên nhau."
         }
       ]
     },
     {
       "id": "tim-thung-qua",
-      "title": "Ba thùng quà lạc trong sương",
-      "goTo": "Tìm ba thùng quà lẫn trong hơi lạnh của kho lạnh",
+      "title": "Ba thùng quà lẫn giữa bao gạo",
+      "goTo": "Tìm ba thùng quà lẫn giữa những bao gạo trong kho hàng",
       "kind": "search",
       "targets": [
         "toan2-cd3-thung-qua-xanh",
@@ -80,27 +80,27 @@
     {
       "id": "kg-di-voi-kg",
       "title": "Ki-lô-gam đi với ki-lô-gam",
-      "goTo": "Sang bàn thủ kho, Bác thủ kho Lộc đang xoa tay cho ấm",
+      "goTo": "Sang bàn thủ kho, Bác thủ kho Lượm đang phe phẩy chiếc quạt nan",
       "kind": "dialogue",
       "target": "toan2-cd3-b18-bac-thu-kho-loc",
       "lines": [
         {
-          "speaker": "Bác Lộc",
+          "speaker": "Bác Lượm",
           "text": "Nhớ kĩ: cộng, trừ ki-lô-gam thì tính như số rồi giữ nguyên chữ kg. Lít cũng thế, giữ nguyên chữ l."
         },
         {
-          "speaker": "Gấu Tuyết Bông",
+          "speaker": "Gấu Băng",
           "text": "Thế cộng 3 kg với 2 l thì sao ạ?"
         },
         {
-          "speaker": "Bác Lộc",
+          "speaker": "Bác Lượm",
           "text": "Thì ra… món canh lẫn lộn! Kg đi với kg, lít đi với lít, không trộn vào nhau."
         }
       ],
       "choices": [
         {
           "text": "Kg với kg, lít với lít!",
-          "reply": "Bác Lộc gật đầu cái rụp: Câu thần chú của kho lạnh đấy."
+          "reply": "Bác Lượm gật đầu cái rụp: Câu thần chú của kho hàng đấy."
         }
       ]
     },
@@ -110,7 +110,7 @@
       "target": "toan2-cd3-b18-bac-thu-kho-loc",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Mỗi thùng quà dán một phép tính, Bông cần kết quả để ghi nhãn.",
+      "prompt": "Mỗi thùng quà dán một phép tính, Băng cần kết quả để ghi nhãn.",
       "template": "Tính.\na) 40 kg + 20 kg = {{b1}} kg\na) 8 kg + 5 kg = {{b2}} kg\na) 25 kg + 31 kg = {{b3}} kg\na) 60 kg – 40 kg = {{b4}} kg\na) 13 kg – 8 kg = {{b5}} kg\na) 56 kg – 31 kg = {{b6}} kg",
       "blanks": [
         {
@@ -239,13 +239,13 @@
       "feedback": {
         "right": [
           "Sáu thùng quà có nhãn, bác đưa thư chắc chắn nhận!",
-          "Bông nhảy cẫng lên, tuyết trên lông rơi lả tả.",
+          "Băng nhảy cẫng lên, làm rung cả giá bao gạo.",
           "Cộng trừ ki-lô-gam đều tay, chuẩn từng con số."
         ],
         "wrong": [
           "Phép 8 kg + 5 kg qua 10, tách số cho dễ nhé.",
           "Dòng trừ có hai chữ số thì trừ chục trước, đơn vị sau.",
-          "Một nhãn đang ghi lệch, Bông chưa dám dán đâu."
+          "Một nhãn đang ghi lệch, Băng chưa dám dán đâu."
         ]
       },
       "answer": {
@@ -262,11 +262,11 @@
     {
       "id": "nhan-binh-lit",
       "title": "Nhãn lít cho bình sữa, bình dầu",
-      "goTo": "Quay vào kho lạnh, Gấu Tuyết Bông ôm mấy bình sữa, bình dầu",
-      "target": "gau-tuyet-bong",
+      "goTo": "Quay vào góc mát trong kho hàng, Gấu Băng ôm mấy bình sữa, bình dầu",
+      "target": "toan2-cd3-b18-gau-bang",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Bông còn gửi mấy bình sữa, bình dầu ăn cho cả nhà. Mỗi bình lại một phép tính lít.",
+      "prompt": "Băng còn gửi mấy bình sữa, bình dầu ăn cho cả nhà. Mỗi bình lại một phép tính lít.",
       "template": "Tính.\nb) 30 l + 10 l = {{b1}} l\nb) 7 l + 6 l = {{b2}} l\nb) 45 l + 23 l = {{b3}} l\nb) 40 l – 10 l = {{b4}} l\nb) 13 l – 7 l = {{b5}} l\nb) 68 l – 23 l = {{b6}} l",
       "blanks": [
         {
@@ -396,7 +396,7 @@
         "right": [
           "Bình sữa, bình dầu đều có nhãn lít sáng choang!",
           "Cháu thấy không, 45 l + 23 l rồi 68 l – 23 l quay về 45 l.",
-          "Bác Lộc giơ ngón cái từ bàn thủ kho: không chệch một lít nào."
+          "Bác Lượm giơ ngón cái từ bàn thủ kho: không chệch một lít nào."
         ],
         "wrong": [
           "Nhớ đơn vị lít giữ nguyên, chỉ tính phần số thôi.",
@@ -418,10 +418,10 @@
     {
       "id": "cau-thang-bang-thu-bong",
       "title": "Thú bông trên cầu thăng bằng",
-      "target": "gau-tuyet-bong",
+      "target": "toan2-cd3-b18-gau-bang",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Bông có ba thú bông gửi tặng em: thỏ, gà, chó. Lần một, 1 con thỏ ngồi cân với 2 con gà; lần hai, 1 con chó ngồi cân với 2 con thỏ. Số ? Thỏ, gà, chó chơi cầu thăng bằng. Biết cả hai trường hợp dưới đây cầu đều thăng bằng.",
+      "prompt": "Băng có ba thú bông gửi tặng em: thỏ, gà, chó. Lần một, 1 con thỏ ngồi cân với 2 con gà; lần hai, 1 con chó ngồi cân với 2 con thỏ. Số ? Thỏ, gà, chó chơi cầu thăng bằng. Biết cả hai trường hợp dưới đây cầu đều thăng bằng.",
       "template": "a) Con thỏ nặng bằng {{b1}} con gà.\nb) Con chó nặng bằng {{b2}} con gà.",
       "blanks": [
         {
@@ -479,7 +479,7 @@
         "right": [
           "Cầu đứng yên phăng phắc, ba thú bông cười toe!",
           "Một chú chó bằng bốn chú gà, cháu đổi nhanh quá.",
-          "Bông thốt lên: đầu óc cậu còn lạnh lùng hơn kho lạnh!"
+          "Băng thốt lên: đầu óc cậu tỉnh táo như gió bấc phương Bắc!"
         ],
         "wrong": [
           "Con chó cân với 2 con thỏ, mỗi con thỏ lại bằng mấy con gà?",
@@ -497,27 +497,27 @@
     {
       "id": "tui-gao-cho-ba-noi",
       "title": "Gạo gửi bà nội",
-      "goTo": "Ra bàn thủ kho, Bác Lộc đang lật sổ ghi gạo",
+      "goTo": "Ra bàn thủ kho, Bác Lượm đang lật sổ ghi gạo",
       "kind": "dialogue",
       "target": "toan2-cd3-b18-bac-thu-kho-loc",
       "lines": [
         {
-          "speaker": "Gấu Tuyết Bông",
+          "speaker": "Gấu Băng",
           "text": "Bà nội tớ dặn: gửi đúng 13 kg gạo cho nhà bác, 9 kg cho nhà cô. Trong kho có năm túi 2 kg, 4 kg, 6 kg, 3 kg, 7 kg."
         },
         {
-          "speaker": "Bác Lộc",
+          "speaker": "Bác Lượm",
           "text": "Không được bóc túi ra chia đâu đấy, kho của bác cấm làm rơi gạo! {name} định thử từng cặp, hay chọn túi to trước?"
         }
       ],
       "choices": [
         {
           "text": "Thử ghép từng cặp túi",
-          "reply": "Bông: Chậm mà chắc, giống bà nội tớ hay nói."
+          "reply": "Băng: Chậm mà chắc, giống bà nội tớ hay nói."
         },
         {
           "text": "Chọn túi to trước rồi bù thêm",
-          "reply": "Bác Lộc: Mẹo hay! Nhưng nhớ cộng lại cho chắc."
+          "reply": "Bác Lượm: Mẹo hay! Nhưng nhớ cộng lại cho chắc."
         }
       ]
     },
@@ -588,8 +588,8 @@
     {
       "id": "ba-tui-chin-kg",
       "title": "Ba túi đủ 9 kg",
-      "goTo": "Mang gạo vào kho lạnh, Gấu Tuyết Bông chờ phần gạo cho nhà cô",
-      "target": "gau-tuyet-bong",
+      "goTo": "Mang gạo vào góc mát trong kho hàng, Gấu Băng chờ phần gạo cho nhà cô",
+      "target": "toan2-cd3-b18-gau-bang",
       "kind": "challenge",
       "mechanic": "multi-select",
       "prompt": "Giờ đến phần gạo cho nhà cô. Có năm túi gạo sau: 2 kg, 4 kg, 6 kg, 3 kg, 7 kg. b) Muốn lấy ba túi để được 9 kg gạo thì phải lấy ra ba túi gạo nào?",
@@ -633,7 +633,7 @@
       "feedback": {
         "right": [
           "Ba túi nhỏ xíu gộp lại vừa khít chín ki-lô-gam!",
-          "Nhà cô nhận đủ gạo, bà nội Bông chắc vui lắm.",
+          "Nhà cô nhận đủ gạo, bà nội Băng chắc vui lắm.",
           "Cháu chọn túi khéo như xếp hình khối vậy."
         ],
         "wrong": [
@@ -653,7 +653,7 @@
     {
       "id": "xang-cho-xe-cho-hang",
       "title": "Xăng cho xe chở hàng",
-      "goTo": "Ôm thùng quà ra cổng sau căng tin, Sư Tử Bon đang chờ với xe chở hàng",
+      "goTo": "Ôm thùng quà ra bến hàng bên kênh, Sư Tử Bon đang chờ với xe chở hàng",
       "target": "toan2-cd3-b18-su-tu-bon",
       "kind": "riddle",
       "question": "Sư Tử Bon bấm còi bim bim: \"Muốn chạy tới phương Bắc thì xe phải đổ xăng đã! Đố {name} câu này.\" Tại cửa hàng xăng dầu, một người đi ô tô vào mua 25 l xăng, một người đi xe máy vào mua 3 l xăng. Hỏi cả hai người mua bao nhiêu lít xăng?",
@@ -676,7 +676,7 @@
         "right": [
           "Bim bim! Xe chở hàng nổ máy, quà lên đường về phương Bắc!",
           "Hai mươi tám lít, Sư Tử Bon lắc bờm tít mù.",
-          "Bông vẫy tay chào thùng quà, mắt rưng rưng hạnh phúc."
+          "Băng vẫy tay chào thùng quà, mắt rưng rưng hạnh phúc."
         ],
         "wrong": [
           "Cả hai người mua thì phải cộng lại chứ.",
@@ -693,14 +693,14 @@
       "title": "Khăn len tuyết trắng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Gấu Tuyết Bông quàng cho {name} chiếc khăn len trắng muốt đan ở phương Bắc. \"Lần sau tớ gửi thư kể chuyện tuyết cho cậu nhé!\""
+      "text": "Gấu Băng quàng cho {name} chiếc khăn len trắng muốt đan ở phương Bắc. \"Lần sau tớ gửi thư kể chuyện tuyết cho cậu nhé!\""
     },
     {
       "id": "linh-kien-lach-cach",
-      "title": "Tiếng lách cách ở xưởng",
+      "title": "Tiếng loảng xoảng ở xưởng nông cụ",
       "kind": "next",
       "trigger": "auto",
-      "text": "Ở Xưởng đồ chơi vang lên tiếng lách cách: Lợn Rừng Đốm làm đổ cả hộp linh kiện ra bàn lắp ráp, đang cuống cuồng đếm theo chục và rời."
+      "text": "Ở Nông trại, trong xưởng nông cụ vang lên tiếng loảng xoảng: Lợn Lấm Lem làm đổ cả hộp ốc vít ra bàn sửa xe, đang cuống cuồng đếm theo chục và rời."
     }
   ],
   "reward": {

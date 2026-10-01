@@ -1,6 +1,10 @@
 {
   "version": 1,
   "targets": {
+    "ba-gau-nau": {
+      "name": "Bà Gấu Nâu",
+      "look": "chibi-bear-mat-ong-dress-blue"
+    },
     "ban-doc-sach": {
       "name": "Bản danh sách",
       "look": "memo",
@@ -12,8 +16,8 @@
       "label": "Đọc bài"
     },
     "bang-go-goc-soi": {
-      "name": "Bảng gỗ gốc sồi",
-      "look": "signpost"
+      "name": "Bảng thời khoá biểu",
+      "look": "placard"
     },
     "bang-go-lop-hai": {
       "name": "Bảng gỗ lớp Hai",
@@ -61,6 +65,10 @@
     "cua-kenh": {
       "name": "Cua Kềnh",
       "look": "animal-crab"
+    },
+    "cun-lua": {
+      "name": "Cún Lúa",
+      "look": "animal-dog-vang-lua"
     },
     "dom": {
       "name": "Lợn Rừng Đốm",
@@ -117,7 +125,7 @@
       "look": "box-large"
     },
     "goc-cay-lich-la": {
-      "name": "Gốc cây lịch lá",
+      "name": "Gốc gạo treo lịch",
       "look": "stump-old",
       "label": "Xem tờ lịch"
     },
@@ -262,6 +270,10 @@
     "toan2-cd1-b03-co-duyen": {
       "name": "Cô Duyên",
       "look": "person-a"
+    },
+    "toan2-cd1-b03-khi-ti-toay": {
+      "name": "Khỉ Tí Toáy",
+      "look": "animal-monkey-ti-toay"
     },
     "toan2-cd1-b03-koala-bo": {
       "name": "Koala Bơ",
@@ -416,6 +428,10 @@
       "name": "Gấu Tiêu",
       "look": "chibi-bear-nau-overalls-green"
     },
+    "toan2-cd2-b08-khi-lung-lang": {
+      "name": "Khỉ Lủng Lẳng",
+      "look": "animal-monkey"
+    },
     "toan2-cd2-b08-meo-muop-u": {
       "name": "Mèo Mướp Ú",
       "look": "animal-cat"
@@ -428,9 +444,32 @@
       "name": "Bê Vàng Lúa",
       "look": "calf-tan"
     },
+    "toan2-cd2-b09-bo-me-gao": {
+      "name": "Bò Mẹ Gạo",
+      "look": "animal-cow"
+    },
+    "toan2-cd2-b09-bo-me-gao-cong": {
+      "name": "Bò Mẹ Gạo",
+      "look": "animal-cow",
+      "character": "toan2-cd2-b09-bo-me-gao"
+    },
     "toan2-cd2-b09-lon-ut-it": {
       "name": "Lợn Ụt Ịt",
       "look": "animal-pig"
+    },
+    "toan2-cd2-b10-hai-ly-say": {
+      "name": "Hải Ly Sậy",
+      "look": "animal-beaver"
+    },
+    "toan2-cd2-b10-hai-ly-say-ao-vit": {
+      "name": "Hải Ly Sậy",
+      "look": "animal-beaver",
+      "character": "toan2-cd2-b10-hai-ly-say"
+    },
+    "toan2-cd2-b10-hai-ly-say-lan-go": {
+      "name": "Hải Ly Sậy",
+      "look": "animal-beaver",
+      "character": "toan2-cd2-b10-hai-ly-say"
     },
     "toan2-cd2-b10-huou-tit": {
       "name": "Hươu Vươn",
@@ -461,7 +500,7 @@
       "look": "animal-caterpillar"
     },
     "toan2-cd2-b11-thay-dung": {
-      "name": "Thầy Dũng",
+      "name": "Chú Dũng",
       "look": "person-j"
     },
     "toan2-cd2-b11-tho-may": {
@@ -471,6 +510,10 @@
     "toan2-cd2-b12-bac-tho-moc-khang": {
       "name": "Bác thợ mộc Khang",
       "look": "person-c"
+    },
+    "toan2-cd2-b12-gau-truc-nua": {
+      "name": "Gấu Trúc Nứa",
+      "look": "animal-panda"
     },
     "toan2-cd2-b12-meo-suong": {
       "name": "Mèo Sương",
@@ -495,6 +538,16 @@
     "toan2-cd2-b13-tho-com": {
       "name": "Thỏ Cốm",
       "look": "chibi-rabbit-xam-vest-shorts-green"
+    },
+    "toan2-cd2-b14-canh-cut-pin": {
+      "name": "Cánh Cụt Pin",
+      "look": "animal-penguin",
+      "character": "chim-canh-cut-pin"
+    },
+    "toan2-cd2-b14-canh-cut-pin-san-gach": {
+      "name": "Cánh Cụt Pin",
+      "look": "animal-penguin",
+      "character": "chim-canh-cut-pin"
     },
     "toan2-cd2-b14-cao-hoa": {
       "name": "Cáo Hoa",
@@ -539,7 +592,7 @@
       "label": "Dắt về"
     },
     "toan2-cd2-bien-ten-luong": {
-      "name": "Biển tên luống",
+      "name": "Biển tên sạp",
       "look": "signpost-single",
       "label": "Nhặt lên"
     },
@@ -636,6 +689,10 @@
       "name": "Mèo Quýt",
       "look": "chibi-cat-cam-vest-shorts-navy"
     },
+    "toan2-cd3-b16-ca-lia-thia": {
+      "name": "Cá Lia Thia",
+      "look": "animal-fish-lia-thia"
+    },
     "toan2-cd3-b16-cao-bac": {
       "name": "Cáo Bạc",
       "look": "chibi-fox-tuyet-overalls"
@@ -661,8 +718,12 @@
       "look": "chibi-cat-trang-jacket-red"
     },
     "toan2-cd3-b18-bac-thu-kho-loc": {
-      "name": "Bác thủ kho Lộc",
+      "name": "Bác thủ kho Lượm",
       "look": "person-b"
+    },
+    "toan2-cd3-b18-gau-bang": {
+      "name": "Gấu Băng",
+      "look": "animal-polar"
     },
     "toan2-cd3-b18-gau-nep": {
       "name": "Gấu Nếp",
@@ -745,6 +806,10 @@
       "name": "Gà Con Líu",
       "look": "animal-chick"
     },
+    "toan2-cd4-b19-lon-lam-lem": {
+      "name": "Lợn Lấm Lem",
+      "look": "animal-hog"
+    },
     "toan2-cd4-b20-bac-lai-tau-khai": {
       "name": "Bác tài Khải",
       "look": "person-c"
@@ -752,6 +817,10 @@
     "toan2-cd4-b20-gau-truc-mang": {
       "name": "Gấu Trúc Măng",
       "look": "animal-panda"
+    },
+    "toan2-cd4-b20-khi-oi": {
+      "name": "Khỉ Ổi",
+      "look": "animal-monkey-oi"
     },
     "toan2-cd4-b20-tho-co-may": {
       "name": "Thỏ Cỏ May",
@@ -764,6 +833,10 @@
     "toan2-cd4-b21-bac-tho-tung": {
       "name": "Bác thợ Tùng",
       "look": "person-q"
+    },
+    "toan2-cd4-b21-cao-mia": {
+      "name": "Cáo Mía",
+      "look": "animal-fox"
     },
     "toan2-cd4-b21-heo-mum": {
       "name": "Heo Mũm",
@@ -785,6 +858,10 @@
       "name": "Gấu Rô",
       "look": "chibi-bear-mat-ong-jacket"
     },
+    "toan2-cd4-b22-koala-lo-mo": {
+      "name": "Koala Lơ Mơ",
+      "look": "animal-koala"
+    },
     "toan2-cd4-b22-tho-ruy-bang": {
       "name": "Thỏ Ruy Băng",
       "look": "chibi-rabbit-nau-jacket"
@@ -792,6 +869,10 @@
     "toan2-cd4-b23-gau-bin": {
       "name": "Gấu Xù",
       "look": "chibi-bear-nau-overalls-green"
+    },
+    "toan2-cd4-b23-ho-gu": {
+      "name": "Hổ Gừ",
+      "look": "animal-tiger"
     },
     "toan2-cd4-b23-huou-gio": {
       "name": "Hươu Gió",
@@ -816,6 +897,10 @@
     "toan2-cd4-b24-gau-bo": {
       "name": "Gấu Keo",
       "look": "chibi-bear-nau-vest-shorts"
+    },
+    "toan2-cd4-b24-meo-tam-the": {
+      "name": "Mèo Tam Thể",
+      "look": "animal-cat"
     },
     "toan2-cd4-banh-xe": {
       "name": "Bánh xe",
@@ -878,17 +963,17 @@
       "label": "Nhặt lên"
     },
     "toan2-cd4-toa-hang-do": {
-      "name": "Toa hàng đỏ",
+      "name": "Toa xe kéo đỏ",
       "look": "railway-red",
       "label": "Nhặt lên"
     },
     "toan2-cd4-toa-hang-vang": {
-      "name": "Toa hàng vàng",
+      "name": "Toa xe kéo vàng",
       "look": "railway-yellow",
       "label": "Nhặt lên"
     },
     "toan2-cd4-toa-hang-xanh": {
-      "name": "Toa hàng xanh",
+      "name": "Toa xe kéo xanh",
       "look": "railway-blue",
       "label": "Nhặt lên"
     },
@@ -920,6 +1005,10 @@
       "name": "Mèo Tuyết",
       "look": "chibi-cat-trang-jacket-red"
     },
+    "toan2-cd5-b26-ong-nhi": {
+      "name": "Ong Nhí",
+      "look": "animal-bee"
+    },
     "toan2-cd5-b27-bac-thin": {
       "name": "Bác Thìn",
       "look": "person-m"
@@ -927,6 +1016,10 @@
     "toan2-cd5-b27-gau-nut": {
       "name": "Gấu Nút",
       "look": "chibi-bear-den-vest-shorts-green"
+    },
+    "toan2-cd5-b27-ho-con-dau": {
+      "name": "Hổ Con Đậu",
+      "look": "animal-tiger"
     },
     "toan2-cd5-b27-tho-may": {
       "name": "Thỏ Mây",
@@ -939,6 +1032,10 @@
     "toan2-cd5-b28-meo-muop": {
       "name": "Mèo Mướp",
       "look": "chibi-cat-cam-overalls"
+    },
+    "toan2-cd5-b28-sau-ton-ten": {
+      "name": "Sâu Tòn Ten",
+      "look": "animal-caterpillar"
     },
     "toan2-cd5-b28-tho-bong-lau": {
       "name": "Thỏ Bông Lau",
@@ -1035,6 +1132,10 @@
     "toan2-cd6-b31-cao-leng-keng": {
       "name": "Cáo Leng Keng",
       "look": "chibi-fox-cam-dress"
+    },
+    "toan2-cd6-b31-cho-dom-boong": {
+      "name": "Chó Đốm Boong",
+      "look": "animal-dog-dom"
     },
     "toan2-cd6-b31-gau-trang-u": {
       "name": "Gấu Trắng Ú",
@@ -1155,6 +1256,10 @@
       "name": "Mèo Cam Xíu",
       "look": "chibi-cat-cam-vest-shorts-navy"
     },
+    "toan2-cd7-b35-cao-cham-bi": {
+      "name": "Cáo Chấm Bi",
+      "look": "chibi-fox-do-dress-mint"
+    },
     "toan2-cd7-b35-chi-ngan": {
       "name": "Chị Ngân",
       "look": "person-n"
@@ -1234,6 +1339,10 @@
       "name": "Cô Gấu Mật",
       "look": "chibi-bear-mat-ong-dress-blue"
     },
+    "tv2-t01-b01-co-tho-ngoc": {
+      "name": "Cô Thỏ Ngọc",
+      "look": "animal-bunny"
+    },
     "tv2-t01-b01-ga-con-tiu": {
       "name": "Gà Con Tíu",
       "look": "animal-chick"
@@ -1250,13 +1359,17 @@
       "name": "Mèo Tíc Tắc",
       "look": "chibi-cat-xam-dress-mint"
     },
+    "tv2-t01-b02-ong-cua-dong": {
+      "name": "Ông Cua Đồng",
+      "look": "animal-crab"
+    },
     "tv2-t01-bang-chu-cai": {
       "name": "Bảng chữ cái",
       "look": "signpost",
       "label": "Xem bảng"
     },
     "tv2-t01-cap-la-sau-xanh": {
-      "name": "Cặp lá Thỏ Hạt Tiêu",
+      "name": "Cặp sách Thỏ Hạt Tiêu",
       "look": "backpack-green"
     },
     "tv2-t01-giay-sau-xanh": {
@@ -1402,7 +1515,7 @@
       "look": "glasses"
     },
     "tv2-t03-tang-da-ben-suoi": {
-      "name": "Tảng đá bên suối",
+      "name": "Tảng đá bên bến",
       "look": "rock-large",
       "label": "Đọc chuyện"
     },
@@ -1423,7 +1536,7 @@
       "look": "chibi-bear-den-overalls-red"
     },
     "tv2-t04-b07-lon-rung-lam": {
-      "name": "Lợn Rừng Lấm",
+      "name": "Heo Lấm",
       "look": "animal-hog"
     },
     "tv2-t04-b08-ho-soc": {
@@ -1435,7 +1548,7 @@
       "look": "placard"
     },
     "tv2-t04-bong-bui-sim": {
-      "name": "Bóng ở bụi sim",
+      "name": "Bóng ở bờ rào dâm bụt",
       "look": "soccer-ball"
     },
     "tv2-t04-bong-goc-tre": {
@@ -1443,7 +1556,7 @@
       "look": "basketball"
     },
     "tv2-t04-bong-ven-suoi": {
-      "name": "Bóng ven suối",
+      "name": "Bóng ven đầm sen",
       "look": "volleyball"
     },
     "tv2-t04-bua-hai-ly": {
@@ -1485,6 +1598,10 @@
       "name": "Mèo Sữa",
       "look": "chibi-cat-trang-dress"
     },
+    "tv2-t05-b09-nai-suong": {
+      "name": "Nai Sương",
+      "look": "animal-deer-suong"
+    },
     "tv2-t05-b10-cua-keo": {
       "name": "Cua Kéo",
       "look": "animal-crab"
@@ -1492,6 +1609,10 @@
     "tv2-t05-b10-gau-bap": {
       "name": "Gấu Bắp",
       "look": "chibi-bear-nau-vest-shorts"
+    },
+    "tv2-t05-b10-tho-voi": {
+      "name": "Thỏ Vội",
+      "look": "animal-bunny"
     },
     "tv2-t05-bui-hoa-nhai": {
       "name": "Bụi hoa nhài",
@@ -1510,7 +1631,7 @@
       "look": "wind-chime"
     },
     "tv2-t05-khung-cua-so-la": {
-      "name": "Khung cửa sổ lá",
+      "name": "Cửa sổ lớp 2A",
       "look": "window",
       "label": "Đọc thơ"
     },
@@ -1537,6 +1658,10 @@
     "tv2-t06-b11-hai-ly-moc": {
       "name": "Hải Ly Mộc",
       "look": "animal-beaver"
+    },
+    "tv2-t06-b12-co-meo-kinh": {
+      "name": "Cô Mèo Kính",
+      "look": "chibi-cat-xam-jacket-green"
     },
     "tv2-t06-b12-tho-dau": {
       "name": "Thỏ Đậu",
@@ -1590,7 +1715,7 @@
       "look": "chibi-fox-cam-jacket-red"
     },
     "tv2-t07-cua-so-la": {
-      "name": "Cửa sổ lá",
+      "name": "Cửa sổ phòng mĩ thuật",
       "look": "window-green",
       "label": "Đọc thơ"
     },
@@ -1698,6 +1823,10 @@
       "name": "Bác tiều phu Lâm",
       "look": "person-a"
     },
+    "tv2-t09-on-giua-ki-ca-bay-mau": {
+      "name": "Cá Bảy Màu",
+      "look": "animal-fish-bay-mau"
+    },
     "tv2-t09-on-giua-ki-cao-ot": {
       "name": "Cáo Ớt",
       "look": "chibi-fox-do-dress-mint"
@@ -1713,6 +1842,10 @@
     "tv2-t09-on-giua-ki-gau-trang-kem": {
       "name": "Gấu Trắng Kem",
       "look": "animal-polar"
+    },
+    "tv2-t09-on-giua-ki-hai-ly-bao": {
+      "name": "Hải Ly Bào",
+      "look": "animal-beaver-hat-de"
     },
     "tv2-t09-on-giua-ki-khi-nhot": {
       "name": "Khỉ Nhót",
@@ -1745,6 +1878,10 @@
     "tv2-t10-b17-be-xoi": {
       "name": "Bê Xôi",
       "look": "calf"
+    },
+    "tv2-t10-b17-nai-nhung": {
+      "name": "Nai Nhung",
+      "look": "animal-deer"
     },
     "tv2-t10-b17-tho-lua": {
       "name": "Thỏ Lúa",
@@ -1799,7 +1936,7 @@
       "look": "rock-tall"
     },
     "tv2-t11-b19-gau-mat": {
-      "name": "Gấu Mật",
+      "name": "Gấu Kính",
       "look": "chibi-bear-mat-ong-jacket"
     },
     "tv2-t11-b19-huou-tre": {
@@ -2003,7 +2140,7 @@
     },
     "tv2-t14-b25-gau-hu": {
       "name": "Gấu Hũ",
-      "look": "chibi-bear-mat-ong-dress-blue"
+      "look": "chibi-bear-nau-overalls-green"
     },
     "tv2-t14-b25-tho-cai": {
       "name": "Thỏ Cải",
@@ -2076,6 +2213,10 @@
     "tv2-t15-b27-meo-tro": {
       "name": "Mèo Tro",
       "look": "chibi-cat-xam-dress-mint"
+    },
+    "tv2-t15-b28-bo-su-tu": {
+      "name": "Bố Sư Tử Bờm",
+      "look": "lion-tall"
     },
     "tv2-t15-b28-cao-man": {
       "name": "Cáo Mận",
@@ -2255,9 +2396,9 @@
       "look": "ribbon"
     },
     "tv2-t18-giua-cau": {
-      "name": "Vẹt Xanh",
-      "look": "animal-parrot",
-      "character": "vet-xanh"
+      "name": "Hươu Cao",
+      "look": "animal-giraffe",
+      "character": "huou-cao"
     },
     "tv2-t18-nhip-cau-cuoi": {
       "name": "Nhịp cầu cuối",
