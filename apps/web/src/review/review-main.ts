@@ -35,6 +35,20 @@ const SCHOOL_CAPTIONS: Record<string, string> = {
   'nha-05-ben-phai-loi-hong': 'Bên phải, lối đi bên hông',
 };
 
+/** The owner's mocks of the world and its maps (designs/the-gioi/, designs/<map>/; docs/design-cac-map.md). */
+const MAP_MOCKS = import.meta.glob<string>('../../../../designs/{the-gioi,lang-ven-song,cho-phien,nong-trai,khu-rung-bi-mat,nui-tuyet}/{a,b}-*.png', { eager: true, query: '?url', import: 'default' });
+/** The eight maps (owner, 01/10/2026: each ten times the area, alive like real life), their mock folders and preview group. */
+const WORLD_MAPS: ReadonlyArray<{ map: string; name: string; mocks: readonly string[]; note: string }> = [
+  { map: 'truong-hoc', name: 'Trường học (trung tâm)', mocks: ['the-gioi/a-01-', 'the-gioi/b-01-', 'the-gioi/b-10-'], note: 'Trường ở giữa như mock toàn cảnh, phố chính, các quận có cổng sang 7 map.' },
+  { map: 'lang-ven-song', name: 'Làng Ven Sông', mocks: ['lang-ven-song/', 'the-gioi/b-04-', 'the-gioi/b-09-'], note: 'Sông lớn, cầu tre, ruộng lúa, hồ có bến tàu và hải đăng.' },
+  { map: 'khu-rung-bi-mat', name: 'Khu rừng bí mật', mocks: ['khu-rung-bi-mat/'], note: 'Góc chương 1 giữ nguyên, rừng rậm 800 × 800, bốn bãi rừng, vách đá có thác.' },
+  { map: 'cho-phien', name: 'Chợ phiên', mocks: ['cho-phien/'], note: 'Sạp mái sọc, phố chợ bên kênh, cầu rồng.' },
+  { map: 'nong-trai', name: 'Nông trại', mocks: ['nong-trai/'], note: 'Trang trại, chuồng đỏ, cối xay gió, đồng cỏ bò sữa.' },
+  { map: 'xom-mai-am', name: 'Xóm Mái Ấm', mocks: [], note: 'Không có mock riêng: theo phong cách chung (mái nhiều màu, hoa, hàng rào).' },
+  { map: 'thu-vien', name: 'Thư viện', mocks: [], note: 'Phòng đọc theo khung "Thư viện" trong mock Trường học.' },
+  { map: 'lau-dai', name: 'Lâu đài', mocks: ['nui-tuyet/'], note: 'Không có mock riêng; núi đá có thác làm phông.' },
+];
+
 /** Content versions of the review material (asset-versions.ts), read from the manifest on load. */
 let versions: ReadonlyMap<string, string> = new Map();
 const assetHref = (manifestPath: string): string => versioned(`${ASSET_PREFIX}${manifestPath}`, versions.get(manifestPath));
@@ -174,6 +188,21 @@ function renderGallery(generated: string[]): void {
       figure(p, `Trong game · ${caption}`),
     ]);
     byId('school-pairs').append(pair);
+  }
+  // The eight maps: the owner's mock frames beside in-game previews of each (`pnpm assets:preview <map>`).
+  const previewGroup = (map: string): string => (map === 'khu-rung-bi-mat' ? 'forest-ch1' : map);
+  for (const m of WORLD_MAPS) {
+    const mocks = Object.entries(MAP_MOCKS).filter(([key]) => m.mocks.some((prefix) => key.includes(`/designs/${prefix}`))).map(([, url]) => url);
+    const shots = reviewPaths.filter((x) => x.includes(`/review/${previewGroup(m.map)}/`)).sort();
+    const block = el('div', { className: 'map-block' }, [
+      el('h3', { textContent: m.name }),
+      el('p', { className: 'sub', textContent: m.note }),
+      el('div', { className: 'grid grid-4' }, [
+        ...mocks.map((url) => el('figure', {}, [el('img', { src: url, alt: `Mock ${m.name}`, loading: 'lazy', decoding: 'async' }), el('figcaption', { textContent: 'Mock' })])),
+        ...shots.map((p) => figure(p, `Trong game · ${name(p).replace(`${previewGroup(m.map)}-`, '')}`)),
+      ]),
+    ]);
+    byId('world-maps').append(block);
   }
   const mapCaption: Record<string, string> = { top: 'Nhìn từ trên', iso: 'Toàn cảnh', bridge: 'Cầu gỗ qua suối', tree: 'Cây cổ thụ', npc: 'Vẹt và lối đá', overview: 'Cả khu rừng 192 × 192: góc chương 1 và các bãi cỏ mới' };
   for (const p of reviewPaths.filter((x) => x.includes('/map/'))) {

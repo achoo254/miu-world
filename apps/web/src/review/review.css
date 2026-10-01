@@ -81,3 +81,5 @@ output { margin-left: var(--space-sm); color: var(--ok); }
 .pairs { display: grid; gap: 16px; }
 .pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 12px; align-items: start; }
 .pair img { width: 100%; height: auto; border-radius: 8px; display: block; }
+.map-block { margin-block: 20px 28px; }
+.map-block h3 { margin: 0 0 4px; }

@@ -141,8 +141,11 @@ async function schoolShots(): Promise<Shot[]> {
   }));
 }
 
-/** Maps built zone by zone (tools/world/zone-map.ts): their region, for `pnpm assets:preview <map>`. */
-export const ZONE_MAPS: Record<string, string> = Object.fromEntries(['lang-ven-song', 'xom-mai-am', 'cho-phien', 'nong-trai', 'thu-vien', 'lau-dai', 'truong-hoc'].map((m) => [m, m]));
+/** Wide maps (zone-map.ts, and the forest): their region, for `pnpm assets:preview <map>`. */
+export const ZONE_MAPS: Record<string, string> = {
+  ...Object.fromEntries(['lang-ven-song', 'xom-mai-am', 'cho-phien', 'nong-trai', 'thu-vien', 'lau-dai', 'truong-hoc'].map((m) => [m, m])),
+  'forest-ch1': 'khu-rung-bi-mat',
+};
 
 /**
  * A zone map for the owner to judge: the whole map from the south and from above, then each zone (its
