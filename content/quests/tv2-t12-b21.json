@@ -1,0 +1,745 @@
+{
+  "id": "tv2-t12-b21",
+  "region": "khu-rung-bi-mat",
+  "chapter": 13,
+  "title": "Cánh diều trên đỉnh đồi gió",
+  "status": "draft",
+  "lesson": "tv2-t1-b21",
+  "summary": "Diều của Khỉ Lanh mắc trên ngọn cây gạo. {name} nhặt lại cuộn dây và cây sáo, đọc bài thơ Thả diều trên phiến đá, gỡ diều xuống và kể chuyện ba người bạn trên bốn lá cờ đuôi diều.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "Khỉ Lanh (giáo viên thể dục, mê thả diều, việc gì cũng đếm nhịp), Vẹt Xanh",
+    "where": "Đỉnh đồi gió có cây gạo cao, sườn đồi cỏ và phiến đá khắc thơ",
+    "goal": "Gỡ cánh diều của Khỉ Lanh khỏi ngọn cây gạo và cho diều bay lại",
+    "play": "Tìm đồ rơi, nói, đọc thơ, trắc nghiệm, chọn nhiều đáp án, điền từ, xếp câu, xếp cờ tranh, kể chuyện, phiếu viết",
+    "learn": "Tiếng Việt 2 Bài 21: đọc hiểu và học thuộc bài thơ \"Thả diều\", từ ngữ chỉ âm thanh, nói câu tả cánh diều, kể chuyện Chúng mình là bạn, viết chữ hoa L",
+    "reward": "80 XP, 15 xu, Đọc hiểu +2, Kể chuyện +2, Từ ngữ +1, Câu +1",
+    "unlock": "Lời nhử sang Bài 22 \"Tớ là lê-gô\""
+  },
+  "phases": {
+    "hook": "khi-lanh-mac-dieu",
+    "explore": "nhat-do-cua-dieu",
+    "learn": "doc-tho-tha-dieu",
+    "challenge": "tieng-sao-dieu",
+    "decision": "go-dieu-khoi-cay",
+    "finale": "co-duoi-dieu",
+    "reward": "phieu-viet-bai-21",
+    "unlock": "mo-bai-22"
+  },
+  "texts": {
+    "tha-dieu": {
+      "title": "Thả diều",
+      "author": "Trần Đăng Khoa",
+      "body": "Cánh diều no gió\nSáo nó thổi vang\nSao trời trôi qua\nDiều thành trăng vàng.\n\nCánh diều no gió\nTiếng nó trong ngần\nDiều hay chiếc thuyền\nTrôi trên sông Ngân.\n\nCánh diều no gió\nTiếng nó chơi vơi\nDiều là hạt cau\nPhơi trên nong trời.\n\nTrời như cánh đồng\nXong mùa gặt hái\nDiều em – lưỡi liềm\nAi quên bỏ lại.\n\nCánh diều no gió\nNhạc trời réo vang\nTiếng diều xanh lúa\nUốn cong tre làng.",
+      "glossary": [
+        {
+          "term": "Sông Ngân (dải Ngân Hà)",
+          "meaning": "dải trắng bạc, vắt ngang bầu trời, được tạo nên từ nhiều ngôi sao, trông giống một con sông."
+        },
+        {
+          "term": "Nong",
+          "meaning": "vật dụng làm từ tre nứa, có hình tròn, dùng để phơi thóc lúa."
+        }
+      ],
+      "section": "tv2-t1-b21-doc"
+    }
+  },
+  "places": {
+    "khi-lanh": "đỉnh đồi gió",
+    "tv2-t12-cay-gao-cao": "gốc cây gạo cao",
+    "nhat-do-cua-dieu": "sườn đồi cỏ",
+    "tv2-t12-phien-da-tho": "phiến đá khắc thơ"
+  },
+  "steps": [
+    {
+      "id": "khi-lanh-mac-dieu",
+      "title": "Cánh diều mắc ngọn cây gạo",
+      "goTo": "Leo lên đỉnh đồi gió, Khỉ Lanh đang nhảy tưng tưng vẫy gọi",
+      "kind": "dialogue",
+      "target": "khi-lanh",
+      "lines": [
+        {
+          "speaker": "Khỉ Lanh",
+          "text": "{name} ơi! Một – hai – ba – thả! Tớ vừa thả diều thì… vèo, nó chui tọt lên ngọn cây gạo!"
+        },
+        {
+          "speaker": "Khỉ Lanh",
+          "text": "Tớ đu cành giỏi nhất rừng, vậy mà cây gạo này cao quá, đu ba nhịp vẫn chưa tới."
+        },
+        {
+          "speaker": "Vẹt Xanh",
+          "text": "Diều mắc cây! Mắc cây! Nó đang ngồi trên ngọn ngắm mây một mình kìa!"
+        },
+        {
+          "speaker": "Khỉ Lanh",
+          "text": "Cuộn dây với cây sáo diều cũng rơi mất dưới sườn đồi. Cậu giúp tớ cứu diều nhé?"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Để mình giúp! Khỉ Lanh cứ đếm nhịp, mình đi tìm đồ.",
+          "reply": "Tuyệt! Một – hai – ba – đi! Nhớ nhặt cả cuộn dây lẫn cây sáo trúc nhé."
+        },
+        {
+          "text": "Diều đang ngắm mây thật hả Vẹt Xanh?",
+          "reply": "Vẹt Xanh nói quá đấy! Nhưng nhanh lên, kẻo diều ngủ quên trên ngọn cây mất."
+        }
+      ]
+    },
+    {
+      "id": "nhat-do-cua-dieu",
+      "title": "Nhặt đồ rơi trên sườn đồi",
+      "goTo": "Xuống sườn đồi cỏ tìm đồ của cánh diều",
+      "kind": "search",
+      "targets": [
+        "tv2-t12-cuon-day-dieu",
+        "tv2-t12-sao-truc-dieu",
+        "tv2-t12-phien-da-tho"
+      ]
+    },
+    {
+      "id": "tro-choi-trong-tranh",
+      "title": "Trò chơi trong bức tranh",
+      "goTo": "Ôm cuộn dây trở lại đỉnh đồi gió với Khỉ Lanh",
+      "kind": "speak",
+      "target": "khi-lanh",
+      "prompt": "Khỉ Lanh vừa quấn dây vừa đếm: một vòng, hai vòng, ba vòng… rồi chìa ra một bức tranh nhặt được. Các bạn trong tranh đang chơi trò chơi gì? Em biết gì về trò chơi này?",
+      "hints": [
+        "Diều làm bằng gì? Muốn thả diều cần có những gì?",
+        "Người ta hay thả diều ở đâu, vào lúc nào trong ngày?",
+        "Em đã thả diều bao giờ chưa? Diều của em bay cao không?"
+      ],
+      "pictureRefs": [
+        {
+          "kind": "diagram",
+          "type": "picture-card",
+          "params": {
+            "caption": "bốn bạn nhỏ thả hai con diều trên con đường bên cánh đồng lúa"
+          }
+        }
+      ],
+      "curriculumRef": [
+        "tv2-t1-b21-doc-kd1",
+        "tv2-t1-b21-doc-kd2"
+      ]
+    },
+    {
+      "id": "doc-tho-tha-dieu",
+      "title": "Bài thơ trên phiến đá",
+      "goTo": "Ra phiến đá khắc thơ đọc bài Thả diều",
+      "kind": "read",
+      "target": "tv2-t12-phien-da-tho",
+      "textRef": "tha-dieu",
+      "audio": true,
+      "question": "Khỉ Lanh dặn: học thuộc thì phải đọc thật kĩ trước đã! Học thuộc lòng khổ thơ em thích. Đố {name} khởi động nhé: trong bài thơ, cánh diều no gì?",
+      "choices": [
+        {
+          "id": "no-gio",
+          "text": "no gió"
+        },
+        {
+          "id": "no-nang",
+          "text": "no nắng"
+        },
+        {
+          "id": "no-com",
+          "text": "no cơm"
+        }
+      ],
+      "skill": "doc-hieu",
+      "answer": {
+        "choice": "no-gio"
+      },
+      "curriculumRef": [
+        "tv2-t1-b21-doc-htl"
+      ],
+      "support": {
+        "guide": [
+          "Đọc dòng thơ đầu tiên của khổ một.",
+          "Dòng ấy được nhắc lại ở nhiều khổ thơ."
+        ],
+        "hint": "Cánh diều căng phồng lên nhờ thứ thổi vù vù trên đỉnh đồi.",
+        "answer": {
+          "text": "no gió",
+          "explanation": "Bài thơ nhắc nhiều lần: \"Cánh diều no gió\" – gió thổi căng cánh diều."
+        }
+      },
+      "feedback": {
+        "right": [
+          "No gió! Khỉ Lanh dang tay đón gió, suýt bay theo diều luôn.",
+          "Chuẩn! Câu \"Cánh diều no gió\" lặp lại mấy lần liền.",
+          "Vẹt Xanh vỗ cánh phành phạch: no gió! No gió! Đúng đúng!"
+        ],
+        "wrong": [
+          "Nắng chỉ làm diều ấm thôi, đâu làm diều căng được. Đọc dòng thơ đầu nhé.",
+          "Diều mà ăn cơm thì nặng quá, bay sao nổi! Tìm lại dòng \"Cánh diều…\".",
+          "Gợi ý: trên đỉnh đồi có thứ gì thổi vù vù làm diều phồng lên?"
+        ]
+      }
+    },
+    {
+      "id": "dieu-luc-nao",
+      "title": "Cánh diều lúc trời sao",
+      "kind": "challenge",
+      "mechanic": "quiz",
+      "target": "tv2-t12-phien-da-tho",
+      "prompt": "Khỉ Lanh ngước nhìn trời, đọc xong khổ đầu thì quên cả đếm nhịp. Hai câu thơ “Sao trời trôi qua/ Diều thành trăng vàng” tả cánh diều vào lúc nào?",
+      "choices": [
+        {
+          "id": "sang",
+          "text": "Vào buổi sáng"
+        },
+        {
+          "id": "chieu",
+          "text": "Vào buổi chiều"
+        },
+        {
+          "id": "dem",
+          "text": "Vào buổi đêm"
+        }
+      ],
+      "skill": "doc-hieu",
+      "answer": {
+        "choice": "dem"
+      },
+      "curriculumRef": [
+        "tv2-t1-b21-doc-2"
+      ],
+      "support": {
+        "guide": [
+          "Đọc lại khổ thơ có trăng vàng.",
+          "Sao trời và trăng vàng hiện ra vào lúc nào trong ngày?"
+        ],
+        "hint": "Có sao trời và trăng vàng thì ông mặt trời đã đi ngủ rồi.",
+        "answer": {
+          "text": "Vào buổi đêm",
+          "explanation": "Sao trời trôi qua, diều thành trăng vàng: sao và trăng sáng rõ vào buổi đêm."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Khỉ Lanh đu một vòng quanh cành: đêm, đúng là đêm rồi!",
+          "Chuẩn! Có sao có trăng là trời đêm.",
+          "Vẹt Xanh reo: trăng vàng! Trăng vàng! {name} đọc kĩ ghê!"
+        ],
+        "wrong": [
+          "Buổi sáng làm gì có sao trời trôi qua nhỉ? Đọc lại khổ đầu nhé.",
+          "Ối, buổi chiều trăng chưa kịp lên đâu. Tìm chữ \"sao trời\" xem.",
+          "Trăng vàng sáng nhất lúc nào? Nhìn kĩ hai dòng thơ có chữ \"trăng\"."
+        ]
+      }
+    },
+    {
+      "id": "dieu-bien-hinh",
+      "title": "Cánh diều biến hình",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "target": "tv2-t12-phien-da-tho",
+      "prompt": "Vẹt Xanh khoe: tớ thấy cánh diều biến hình mấy lần liền, như ảo thuật ấy! Kể tên những sự vật giống cánh diều được nhắc tới trong bài thơ.",
+      "choices": [
+        {
+          "id": "trang-vang",
+          "text": "trăng vàng"
+        },
+        {
+          "id": "canh-dong",
+          "text": "cánh đồng"
+        },
+        {
+          "id": "chiec-thuyen",
+          "text": "chiếc thuyền"
+        },
+        {
+          "id": "tre-lang",
+          "text": "tre làng"
+        },
+        {
+          "id": "hat-cau",
+          "text": "hạt cau"
+        },
+        {
+          "id": "sao-troi",
+          "text": "sao trời"
+        },
+        {
+          "id": "luoi-liem",
+          "text": "lưỡi liềm"
+        }
+      ],
+      "skill": "doc-hieu",
+      "answer": {
+        "choices": [
+          "trang-vang",
+          "chiec-thuyen",
+          "hat-cau",
+          "luoi-liem"
+        ]
+      },
+      "curriculumRef": [
+        "tv2-t1-b21-doc-1"
+      ],
+      "support": {
+        "guide": [
+          "Tìm các dòng thơ bắt đầu bằng \"Diều thành\", \"Diều hay\", \"Diều là\", \"Diều em\".",
+          "Ngay sau mỗi chữ ấy là một sự vật giống cánh diều."
+        ],
+        "hint": "Có bốn sự vật: một thứ trên trời đêm, một thứ trôi trên sông, một quả nhỏ và một dụng cụ gặt lúa.",
+        "answer": {
+          "text": "trăng vàng, chiếc thuyền, hạt cau, lưỡi liềm",
+          "explanation": "Diều thành trăng vàng; diều hay chiếc thuyền; diều là hạt cau; diều em – lưỡi liềm."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đủ bốn! Khỉ Lanh đếm trên ngón chân: một, hai, ba, bốn – chuẩn!",
+          "Cánh diều biến hình bốn lần, {name} bắt được cả bốn!",
+          "Vẹt Xanh hét toáng: thuyền! Liềm! Cau! Trăng! Hay hay!"
+        ],
+        "wrong": [
+          "Còn sót một sự vật. Tìm thêm dòng thơ bắt đầu bằng chữ \"Diều\" nhé.",
+          "\"Trời như cánh đồng\" là tả bầu trời cơ, không phải cánh diều đâu.",
+          "Tre làng chỉ bị tiếng diều uốn cong thôi, sao trời thì trôi qua. Chọn lại nha."
+        ]
+      }
+    },
+    {
+      "id": "kho-tho-cuoi",
+      "title": "Khổ thơ cuối nói gì",
+      "kind": "challenge",
+      "mechanic": "quiz",
+      "target": "tv2-t12-phien-da-tho",
+      "prompt": "Khỉ Lanh gãi đầu sột soạt: khổ cuối có tiếng diều uốn cong cả tre làng, nghe vui tai ghê! Khổ thơ cuối bài muốn nói điều gì?",
+      "choices": [
+        {
+          "id": "dong-vui",
+          "text": "Cánh diều làm thôn quê đông vui hơn."
+        },
+        {
+          "id": "giau-co",
+          "text": "Cánh diều làm thôn quê giàu có hơn."
+        },
+        {
+          "id": "tuoi-dep",
+          "text": "Cánh diều làm cảnh thôn quê tươi đẹp hơn."
+        }
+      ],
+      "skill": "doc-hieu",
+      "answer": {
+        "choice": "tuoi-dep"
+      },
+      "curriculumRef": [
+        "tv2-t1-b21-doc-3"
+      ],
+      "support": {
+        "guide": [
+          "Đọc khổ thơ cuối: nhạc trời, tiếng diều, lúa, tre làng.",
+          "Tiếng diều làm cho lúa và tre thế nào?"
+        ],
+        "hint": "Tiếng diều làm lúa thêm xanh, tre thêm cong: cảnh làng quê đẹp hẳn lên.",
+        "answer": {
+          "text": "Cánh diều làm cảnh thôn quê tươi đẹp hơn.",
+          "explanation": "Khổ cuối tả nhạc trời réo vang, tiếng diều xanh lúa, uốn cong tre làng: cảnh thôn quê thêm tươi đẹp."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đúng rồi! Lúa xanh hơn, tre cong hơn, làng quê đẹp hơn!",
+          "Khỉ Lanh treo ngược trên cành vỗ tay bôm bốp.",
+          "Chính xác, tiếng diều tô thêm màu xanh cho cả làng."
+        ],
+        "wrong": [
+          "Khổ thơ không nói chuyện tiền bạc đâu. Tìm chữ \"xanh lúa\" nhé.",
+          "Khổ cuối đâu có đếm có bao nhiêu người. Xem tiếng diều làm gì với lúa và tre.",
+          "Gần đúng rồi! Đọc lại dòng \"Tiếng diều xanh lúa\" xem cảnh vật ra sao."
+        ]
+      }
+    },
+    {
+      "id": "tieng-sao-dieu",
+      "title": "Thử tiếng cây sáo diều",
+      "goTo": "Mang cây sáo trúc lên đỉnh đồi gió thử tiếng",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "target": "khi-lanh",
+      "prompt": "Khỉ Lanh giơ cây sáo trúc lên trước gió, sáo kêu u… u… nghe mát cả tai. Từ ngữ nào được dùng để nói về âm thanh của sáo diều?",
+      "template": "Tiếng sáo diều nghe {{am-thanh}}.",
+      "blanks": [
+        {
+          "id": "am-thanh",
+          "options": [
+            {
+              "id": "no-gio",
+              "text": "no gió"
+            },
+            {
+              "id": "trong-ngan",
+              "text": "trong ngần"
+            },
+            {
+              "id": "uon-cong",
+              "text": "uốn cong"
+            }
+          ]
+        }
+      ],
+      "skill": "tu-ngu",
+      "answer": {
+        "fills": {
+          "am-thanh": "trong-ngan"
+        }
+      },
+      "curriculumRef": [
+        "tv2-t1-b21-doc-lt1"
+      ],
+      "support": {
+        "guide": [
+          "Đọc khổ thơ có chiếc thuyền trôi trên sông Ngân.",
+          "Tìm từ đứng ngay sau hai chữ \"Tiếng nó\"."
+        ],
+        "hint": "\"No gió\" nói về cánh diều căng phồng, \"uốn cong\" nói về tre làng.",
+        "answer": {
+          "text": "trong ngần",
+          "explanation": "Bài thơ viết: \"Tiếng nó trong ngần\" – tiếng sáo diều trong và vang."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Trong ngần thật! Khỉ Lanh nhắm mắt nghe, đuôi đung đưa theo nhịp sáo.",
+          "Đúng từ rồi, tiếng sáo trong vắt như nước suối đầu nguồn.",
+          "Vẹt Xanh nhại lại: trong ngần! Trong ngần! Từ hay, từ hay!"
+        ],
+        "wrong": [
+          "\"No gió\" là cánh diều căng phồng cơ, đâu phải tiếng kêu.",
+          "\"Uốn cong\" là cây tre bị tiếng diều làm cong. Đọc lại khổ hai nhé.",
+          "Nghe này: tiếng sáo trong và vang. Tìm từ có chữ \"trong\" xem!"
+        ]
+      }
+    },
+    {
+      "id": "kho-tho-yeu-thich",
+      "title": "Khổ thơ em thích nhất",
+      "kind": "speak",
+      "target": "khi-lanh",
+      "prompt": "Khỉ Lanh khoe bí kíp thuộc thơ: mỗi dòng thơ, đu một cành! Em thích nhất khổ thơ nào trong bài? Vì sao? Học thuộc lòng khổ thơ em thích.",
+      "hints": [
+        "Ở khổ thơ em thích, cánh diều giống cái gì?",
+        "Đọc to khổ ấy ba lần, mỗi lần nhỏ giọng hơn một chút.",
+        "Thử nhắm mắt đọc thuộc lòng cho Khỉ Lanh nghe nào."
+      ],
+      "curriculumRef": [
+        "tv2-t1-b21-doc-4",
+        "tv2-t1-b21-doc-htl"
+      ]
+    },
+    {
+      "id": "xep-cau-ta-dieu",
+      "title": "Mẩu giấy câu tả diều",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "khi-lanh",
+      "prompt": "Gió giật một cái, mấy mẩu giấy ghi câu của Khỉ Lanh bay lộn tùng phèo. Dựa theo khổ thơ thứ tư, nói một câu tả cánh diều. Xếp các mẩu giấy thành câu nhé.",
+      "items": [
+        {
+          "id": "luoi-liem",
+          "label": "như lưỡi liềm"
+        },
+        {
+          "id": "bo-lai",
+          "label": "ai quên bỏ lại."
+        },
+        {
+          "id": "canh-dieu",
+          "label": "Cánh diều của em"
+        },
+        {
+          "id": "cong-cong",
+          "label": "cong cong"
+        }
+      ],
+      "skill": "cau",
+      "answer": {
+        "order": [
+          "canh-dieu",
+          "cong-cong",
+          "luoi-liem",
+          "bo-lai"
+        ]
+      },
+      "curriculumRef": [
+        "tv2-t1-b21-doc-lt2"
+      ],
+      "support": {
+        "guide": [
+          "Câu bắt đầu bằng mẩu có chữ viết hoa.",
+          "Mẩu có dấu chấm đứng cuối câu."
+        ],
+        "hint": "Nói cánh diều trước, rồi nói nó trông thế nào, giống cái gì.",
+        "answer": {
+          "text": "Cánh diều của em cong cong như lưỡi liềm ai quên bỏ lại.",
+          "explanation": "Khổ thơ thứ tư so cánh diều với lưỡi liềm ai quên bỏ lại trên cánh đồng trời."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Câu thơm mùi lúa mới! Khỉ Lanh đếm: bốn mẩu, bốn nhịp, khớp!",
+          "Lưỡi liềm giữa cánh đồng trời, tả hay quá {name} ơi.",
+          "Vẹt Xanh nhắc hai lần cho nhớ: cong cong như lưỡi liềm! Như lưỡi liềm!"
+        ],
+        "wrong": [
+          "Mẩu có chữ hoa \"Cánh\" phải đứng đầu câu cơ.",
+          "Dấu chấm đang lạc giữa câu kìa, đưa mẩu \"ai quên bỏ lại.\" về cuối nhé.",
+          "Nói hình dáng \"cong cong\" trước, rồi mới so \"như lưỡi liềm\" nha."
+        ]
+      }
+    },
+    {
+      "id": "cau-ta-dieu-cua-em",
+      "title": "Câu tả diều của em",
+      "kind": "speak",
+      "target": "khi-lanh",
+      "prompt": "Giờ đến lượt {name} tự nghĩ một câu thật riêng, Khỉ Lanh sẽ đu ba nhịp để vỗ tay. Dựa theo khổ thơ thứ tư, nói một câu tả cánh diều.",
+      "hints": [
+        "Cánh diều của em có hình gì, màu gì?",
+        "Trên cánh đồng trời, cánh diều trông giống cái gì?",
+        "Thử dùng chữ \"như\" để so sánh, giống bài thơ."
+      ],
+      "curriculumRef": [
+        "tv2-t1-b21-doc-lt2"
+      ]
+    },
+    {
+      "id": "go-dieu-khoi-cay",
+      "title": "Gỡ diều khỏi cây gạo",
+      "goTo": "Đến gốc cây gạo cao, diều vẫn mắc trên ngọn",
+      "kind": "dialogue",
+      "target": "tv2-t12-cay-gao-cao",
+      "lines": [
+        {
+          "speaker": "Khỉ Lanh",
+          "text": "Có dây, có sáo rồi. Giờ gỡ diều thế nào đây? Tớ đếm nhịp sẵn rồi: một – hai…"
+        },
+        {
+          "speaker": "Vẹt Xanh",
+          "text": "Đừng đu lên ngọn! Đừng đu! Cành gạo trên ấy giòn như bánh đa!"
+        },
+        {
+          "speaker": "Khỉ Lanh",
+          "text": "{name} chọn cách đi, tớ làm theo cậu!"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Khỉ Lanh giật nhẹ dây theo nhịp, để gió nâng diều lên.",
+          "reply": "Một – hai – ba – giật! Ơ kìa, gió nhấc bổng diều ra khỏi cành rồi!"
+        },
+        {
+          "text": "Chờ một cơn gió to rồi cả hai cùng kéo nhé.",
+          "reply": "Vù… gió tới! Cùng kéo nào! Diều tuột khỏi cành, nhẹ như chiếc lá."
+        },
+        {
+          "text": "Nhờ Vẹt Xanh bay lên gỡ chỗ dây bị vướng.",
+          "reply": "Vẹt Xanh mổ lách tách, sợi dây tuột ra, diều chao một vòng rồi bay vút!"
+        }
+      ]
+    },
+    {
+      "id": "co-duoi-dieu",
+      "title": "Bốn lá cờ đuôi diều",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "tv2-t12-cay-gao-cao",
+      "prompt": "Diều về tay rồi! Đuôi diều có bốn lá cờ nhỏ vẽ chuyện ba người bạn, nhưng mắc cây nên rối tung. Nghe kể chuyện. Chúng mình là bạn (Theo Tuyển tập truyện, thơ, câu đố cho trẻ Mầm non) (1) Ếch ộp, sơn ca và nai vàng chơi với nhau như thế nào? (2) Ba bạn thường kể cho nhau nghe những gì? (3) Ba bạn nghĩ ra cách gì để tận mắt thấy những điều đã nghe? (4) Ếch ộp, sơn ca và nai vàng đã rút ra được bài học gì? Nghe xong, {name} xếp bốn lá cờ theo đúng thứ tự câu chuyện nhé.",
+      "items": [
+        {
+          "id": "nai-nhan-mat",
+          "label": "Nai vàng nhăn mặt bên vách đá",
+          "image": {
+            "kind": "diagram",
+            "type": "picture-card",
+            "params": {
+              "caption": "nai vàng nhăn mặt bên vách đá, ếch ộp và sơn ca ở gần đó"
+            }
+          }
+        },
+        {
+          "id": "ba-ban-ben-ao",
+          "label": "Ba bạn gặp nhau bên ao trong rừng",
+          "image": {
+            "kind": "diagram",
+            "type": "picture-card",
+            "params": {
+              "caption": "nai vàng, ếch ộp bên ao và sơn ca đậu trên cành cây trong rừng"
+            }
+          }
+        },
+        {
+          "id": "nai-mim-cuoi",
+          "label": "Nai vàng cúi đầu mỉm cười bên hai bạn",
+          "image": {
+            "kind": "diagram",
+            "type": "picture-card",
+            "params": {
+              "caption": "ếch ộp và sơn ca đứng trên tảng đá, nai vàng cúi đầu mỉm cười bên cạnh"
+            }
+          }
+        },
+        {
+          "id": "ba-ban-tro-chuyen",
+          "label": "Ba bạn ngồi trò chuyện, xa xa là biển",
+          "image": {
+            "kind": "diagram",
+            "type": "picture-card",
+            "params": {
+              "caption": "sơn ca, nai vàng và ếch ộp ngồi bên tảng đá trò chuyện, xa xa là biển"
+            }
+          }
+        }
+      ],
+      "skill": "ke-chuyen",
+      "answer": {
+        "order": [
+          "ba-ban-ben-ao",
+          "ba-ban-tro-chuyen",
+          "nai-nhan-mat",
+          "nai-mim-cuoi"
+        ]
+      },
+      "curriculumRef": [
+        "tv2-t1-b21-ke-chuyen-1"
+      ],
+      "support": {
+        "guide": [
+          "Lá cờ nào cho thấy ba bạn còn đang chơi với nhau trong rừng?",
+          "Các bạn kể chuyện cho nhau nghe trước, rồi mới rủ nhau đi xem tận mắt."
+        ],
+        "hint": "Bốn câu hỏi (1), (2), (3), (4) đi đúng thứ tự bốn lá cờ.",
+        "answer": {
+          "text": "Ba bạn bên ao → ba bạn trò chuyện → nai vàng nhăn mặt bên vách đá → nai vàng mỉm cười bên hai bạn",
+          "explanation": "Thứ tự bốn lá cờ theo bốn tranh 1 – 4 của câu chuyện Chúng mình là bạn."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bốn lá cờ phấp phới đúng thứ tự, đuôi diều thẳng tắp!",
+          "Khỉ Lanh đếm cờ: một, hai, ba, bốn – không lệch nhịp nào!",
+          "Câu chuyện ba người bạn đã bay lên cùng cánh diều rồi."
+        ],
+        "wrong": [
+          "Lá cờ ba bạn còn ở bên ao phải bay đầu tiên chứ.",
+          "Ngồi kể chuyện cho nhau nghe là việc xảy ra trước chuyến đi đấy.",
+          "Nai vàng mỉm cười là lúc cuối truyện, đưa lá cờ ấy về cuối nhé."
+        ]
+      }
+    },
+    {
+      "id": "ke-chuyen-ba-ban",
+      "title": "Kể chuyện ba người bạn",
+      "kind": "speak",
+      "target": "tv2-t12-cay-gao-cao",
+      "prompt": "Khỉ Lanh ngồi vắt vẻo trên cành thấp, đuôi quấn dây diều, chờ nghe kể. Nghe kể chuyện. Chúng mình là bạn (Theo Tuyển tập truyện, thơ, câu đố cho trẻ Mầm non) (1) Ếch ộp, sơn ca và nai vàng chơi với nhau như thế nào? (2) Ba bạn thường kể cho nhau nghe những gì? (3) Ba bạn nghĩ ra cách gì để tận mắt thấy những điều đã nghe? (4) Ếch ộp, sơn ca và nai vàng đã rút ra được bài học gì? Chọn kể 1 – 2 đoạn của câu chuyện theo tranh.",
+      "hints": [
+        "Lá cờ 1: ba bạn ở đâu, mỗi bạn sống ở chỗ nào?",
+        "Lá cờ 3: vì sao nai vàng lại nhăn mặt?",
+        "Lá cờ 4: sau chuyến đi, ba bạn hiểu ra điều gì?"
+      ],
+      "pictureRefs": [
+        {
+          "kind": "diagram",
+          "type": "picture-card",
+          "params": {
+            "n": 1
+          }
+        },
+        {
+          "kind": "diagram",
+          "type": "picture-card",
+          "params": {
+            "n": 2
+          }
+        },
+        {
+          "kind": "diagram",
+          "type": "picture-card",
+          "params": {
+            "n": 3
+          }
+        },
+        {
+          "kind": "diagram",
+          "type": "picture-card",
+          "params": {
+            "n": 4
+          }
+        }
+      ],
+      "curriculumRef": [
+        "tv2-t1-b21-ke-chuyen-1",
+        "tv2-t1-b21-ke-chuyen-2"
+      ]
+    },
+    {
+      "id": "dieu-bay-cao",
+      "title": "Diều lại bay cao",
+      "goTo": "Lên chỗ trống trải nhất trên đỉnh đồi gió thả diều",
+      "kind": "dialogue",
+      "target": "khi-lanh",
+      "lines": [
+        {
+          "speaker": "Khỉ Lanh",
+          "text": "Một – hai – ba – thả! Diều lên rồi, cao hơn cả ngọn cây gạo!"
+        },
+        {
+          "speaker": "Vẹt Xanh",
+          "text": "Sáo kêu trong ngần! Trong ngần! Y như trong bài thơ luôn!"
+        },
+        {
+          "speaker": "Khỉ Lanh",
+          "text": "Lần sau tớ thả diều chỗ trống trải, tránh xa cây cao. Cảm ơn {name} nhé!"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cho mình cầm dây diều một lúc được không?",
+          "reply": "Được chứ! Cầm chắc nhé, gió đồi kéo mạnh như chơi kéo co đấy!"
+        }
+      ]
+    },
+    {
+      "id": "phieu-viet-bai-21",
+      "title": "Phiếu viết Bài 21",
+      "kind": "worksheet",
+      "trigger": "auto",
+      "lessonId": "tv2-t1-b21",
+      "text": "Nhờ bố mẹ in phiếu Bài 21 ở khu phụ huynh: tập viết chữ hoa L thẳng như dây diều căng gió, viết câu ứng dụng, rồi kể chuyện ba người bạn cho cả nhà nghe.",
+      "curriculumRef": [
+        "tv2-t1-b21-viet-chu-hoa-1",
+        "tv2-t1-b21-viet-ung-dung-2",
+        "tv2-t1-b21-van-dung-1"
+      ]
+    },
+    {
+      "id": "qua-cua-khi-lanh",
+      "title": "Con diều tí hon",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Khỉ Lanh tặng {name} một con diều giấy tí hon gắn cây sáo bằng ống sậy: gió thổi qua là kêu u… u… trong veo."
+    },
+    {
+      "id": "mo-bai-22",
+      "title": "Tiếng oạch dưới chân đồi",
+      "kind": "unlock",
+      "trigger": "auto",
+      "text": "Từ xưởng đồ chơi gỗ dưới chân đồi vọng lên một tiếng \"Oạch!\" rõ to, rồi tiếng khối gỗ đổ lộp cộp. Lợn Rừng Đốm lại làm sao thế nhỉ?"
+    }
+  ],
+  "reward": {
+    "xp": 80,
+    "coin": 15,
+    "skillXp": {
+      "doc-hieu": 2,
+      "ke-chuyen": 2,
+      "tu-ngu": 1,
+      "cau": 1
+    }
+  }
+}

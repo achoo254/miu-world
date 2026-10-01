@@ -1,0 +1,1012 @@
+{
+  "id": "tv2-t03-b06",
+  "region": "khu-rung-bi-mat",
+  "chapter": 4,
+  "title": "Mèo Mun run râu trước lớp",
+  "status": "draft",
+  "lesson": "tv2-t1-b06",
+  "summary": "Giờ tập nói dưới tán cây sắp bắt đầu mà Mèo Mun run cả bộ râu. {name} cùng thầy Gấu Trúc Tròn đọc chuyện bạn Quang tập nói, chữa tấm ván chữ cái, tìm từ chỉ đặc điểm và giúp Mèo Mun tự tin kể về buổi sáng của mình.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "Mèo Mun (điềm tĩnh, nói ít mà thâm, hôm nay ngại nói trước lớp), thầy Gấu Trúc Tròn từ… từ… thôi, Vẹt Xanh lớp trưởng lắm lời",
+    "where": "Lớp học dưới tán cây đa giữa Khu rừng bí mật, gốc đa có tấm ván chữ cái",
+    "goal": "Giúp Mèo Mun hết run, đứng lên bục kể trước lớp về buổi sáng của mình",
+    "play": "Tìm đồ Mèo Mun giấu, nói khởi động, đọc bài, trắc nghiệm, chọn nhiều đáp án, kéo câu vào nhóm, điền chữ cái, xếp tên theo bảng chữ cái, ghép từ chỉ đặc điểm, xếp tranh, nói và kể, phiếu viết",
+    "learn": "Tiếng Việt 2 Bài 6: đọc Một giờ học, câu hỏi trong bài, nói và đáp lời khen, bảng chữ cái (t, u, v, y), sắp xếp tên theo bảng chữ cái, từ chỉ đặc điểm, câu nêu đặc điểm, kể việc làm trước khi đi học",
+    "reward": "85 XP, 15 xu, Đọc hiểu +2, Bảng chữ cái +1, Từ ngữ +1, Câu +1, Kể chuyện +1",
+    "unlock": "Bài 7 \"Cây xấu hổ\""
+  },
+  "phases": {
+    "hook": "meo-mun-run-rau",
+    "explore": "tim-do-meo-mun-giau",
+    "learn": "doc-mot-gio-hoc",
+    "challenge": "van-chu-cai-bi-xuoc",
+    "decision": "meo-mun-quyet-dinh",
+    "finale": "xep-tranh-buoi-sang",
+    "reward": "phieu-viet-bai-6",
+    "unlock": "mo-bai-7"
+  },
+  "texts": {
+    "mot-gio-hoc": {
+      "title": "Một giờ học",
+      "author": "Theo Tốt-tô-chan, cô bé bên cửa sổ",
+      "body": "Thầy giáo nói: “Chúng ta cần học cách giao tiếp tự tin. Vì thế hôm nay chúng ta sẽ tập nói trước lớp về bất cứ điều gì mình thích.”.\n\nQuang được mời lên nói đầu tiên. Cậu lúng túng, đỏ mặt. Quang cảm thấy nói với bạn bên cạnh thì dễ, nhưng nói trước cả lớp thì sao mà khó thế. Thầy bảo: “Em cố nhớ xem, sáng nay ngủ dậy, em đã làm gì?”.\n\nQuang ngập ngừng, vừa nói vừa gãi đầu: “Em...”.\n\nThầy giáo nhắc: “Rồi gì nữa?”.\n\nQuang lại gãi đầu: “À... ờ... Em ngủ dậy.”. Và cậu nói tiếp: “Rồi… ờ…”.\n\nThầy giáo mỉm cười, kiên nhẫn nghe Quang nói. Thầy bảo: “Thế là được rồi đấy!”.\n\nNhưng Quang chưa chịu về chỗ. Bỗng cậu nói to: “Rồi sau đó... ờ... à...”. Quang thở mạnh một hơi rồi nói tiếp: “Mẹ... ờ... bảo: Con đánh răng đi. Thế là em đánh răng.”. Thầy giáo vỗ tay. Cả lớp vỗ tay theo. Cuối cùng, Quang nói với giọng rất tự tin: “Sau đó bố đưa em đi học.”.\n\nThầy giáo vỗ tay. Các bạn vỗ tay theo. Quang cũng vỗ tay. Cả lớp tràn ngập tiếng vỗ tay.",
+      "glossary": [
+        {
+          "term": "Lúng túng",
+          "meaning": "không biết nói hoặc làm như thế nào."
+        },
+        {
+          "term": "Kiên nhẫn",
+          "meaning": "tiếp tục làm việc đã định mà không nản lòng."
+        }
+      ],
+      "section": "tv2-t1-b06-doc"
+    }
+  },
+  "places": {
+    "meo-mun": "lớp dưới tán đa",
+    "gau-truc-tron": "lớp dưới tán đa",
+    "vet-xanh": "lớp dưới tán đa",
+    "tv2-t03-bang-xanh": "lớp dưới tán đa",
+    "tv2-t03-buc-go": "lớp dưới tán đa",
+    "tim-do-meo-mun-giau": "bụi rậm quanh lớp học",
+    "tv2-t03-van-chu-cai": "gốc đa chữ cái"
+  },
+  "steps": [
+    {
+      "id": "meo-mun-run-rau",
+      "title": "Mèo Mun run râu",
+      "goTo": "Tới lớp dưới tán đa, Mèo Mun đang ngồi im thin thít",
+      "kind": "dialogue",
+      "target": "meo-mun",
+      "lines": [
+        {
+          "speaker": "Vẹt Xanh",
+          "text": "Giờ tập nói! Giờ tập nói! Hôm nay ai cũng được lên nói trước lớp đấy, {name} ơi!"
+        },
+        {
+          "speaker": "Mèo Mun",
+          "text": "Nói với một bạn thì dễ. Nói với cả lớp thì… râu tớ rung như dây đàn."
+        },
+        {
+          "speaker": "Vẹt Xanh",
+          "text": "Cậu ấy còn giấu hết đồ dùng buổi sáng vào bụi rậm, để khỏi phải kể chuyện buổi sáng. Giấu kĩ lắm! Kĩ lắm!"
+        },
+        {
+          "speaker": "Mèo Mun",
+          "text": "Giấu thì đã giấu. Còn tìm thấy hay không thì… tuỳ cái mũi của {name}."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Mình tìm đồ cho cậu, rồi mình cùng tập nhé!",
+          "reply": "Mèo Mun khẽ vẫy đuôi: bàn chải ở bụi sim, còn khăn mặt với cặp thì… tớ giấu kĩ quá nên quên mất rồi."
+        },
+        {
+          "text": "Râu run thì mình buộc nơ cho râu nhé!",
+          "reply": "Mèo Mun suýt bật cười: buộc nơ thì râu run thành nơ run. Đi tìm đồ trước đã."
+        }
+      ]
+    },
+    {
+      "id": "tim-do-meo-mun-giau",
+      "title": "Tìm đồ Mèo Mun giấu",
+      "goTo": "Lục tìm ba món đồ trong bụi rậm quanh lớp học",
+      "kind": "search",
+      "targets": [
+        "tv2-t03-ban-chai-meo",
+        "tv2-t03-khan-mat-meo",
+        "tv2-t03-cap-la-meo"
+      ]
+    },
+    {
+      "id": "khoe-loi-khen",
+      "title": "Lần được thầy cô khen",
+      "goTo": "Mang đồ về lớp dưới tán đa, thầy Gấu Trúc Tròn đang chờ",
+      "kind": "speak",
+      "target": "gau-truc-tron",
+      "prompt": "Thầy Gấu Trúc Tròn nhai nốt khúc tre rồi chậm rãi bảo: Từ… từ… thôi, mình khởi động bằng chuyện vui đã.\nNói về việc làm của em được thầy cô khen.\nEm cảm thấy thế nào khi được thầy cô khen?",
+      "hints": [
+        "Hôm ấy em đã làm được việc gì?",
+        "Thầy cô khen em bằng lời nào?",
+        "Lúc được khen, em muốn cười tủm tỉm hay nhảy cẫng lên?"
+      ],
+      "pictureRefs": [
+        {
+          "kind": "diagram",
+          "type": "picture-card",
+          "params": {
+            "caption": "lớp học, thầy giáo đứng cạnh bảng xanh, học sinh ngồi ở bàn giơ tay phát biểu"
+          }
+        }
+      ],
+      "curriculumRef": [
+        "tv2-t1-b06-doc-kd1",
+        "tv2-t1-b06-doc-kd2"
+      ]
+    },
+    {
+      "id": "doc-mot-gio-hoc",
+      "title": "Đọc bài Một giờ học",
+      "kind": "read",
+      "target": "tv2-t03-bang-xanh",
+      "textRef": "mot-gio-hoc",
+      "audio": true,
+      "question": "Vẹt Xanh treo bài đọc lên tấm bảng xanh trên cành: nghe kĩ nhé, nghe kĩ nhé!\nTrong giờ học, thầy giáo yêu cầu cả lớp làm gì?",
+      "choices": [
+        {
+          "id": "chep-bai",
+          "text": "chép bài vào vở thật nhanh"
+        },
+        {
+          "id": "tap-noi",
+          "text": "tập nói trước lớp về bất cứ điều gì mình thích"
+        },
+        {
+          "id": "danh-rang",
+          "text": "đánh răng thật sạch trước giờ học"
+        }
+      ],
+      "skill": "doc-hieu",
+      "answer": {
+        "choice": "tap-noi"
+      },
+      "curriculumRef": [
+        "tv2-t1-b06-doc-1"
+      ],
+      "support": {
+        "guide": [
+          "Đọc lại lời thầy giáo ở đoạn đầu tiên.",
+          "Tìm câu bắt đầu bằng “Vì thế hôm nay chúng ta sẽ…”."
+        ],
+        "hint": "Thầy muốn cả lớp học cách giao tiếp tự tin.",
+        "answer": {
+          "text": "Thầy giáo yêu cầu cả lớp tập nói trước lớp về bất cứ điều gì mình thích.",
+          "explanation": "Ngay đoạn đầu, thầy nói: “Vì thế hôm nay chúng ta sẽ tập nói trước lớp về bất cứ điều gì mình thích.”"
+        }
+      },
+      "feedback": {
+        "right": [
+          "Vẹt Xanh lộn một vòng trên cành: tập nói! Tập nói! Đúng rồi!",
+          "Chuẩn! Hôm nay không chép bài, chỉ tập nói thôi.",
+          "Mèo Mun gật gù, râu chỉ còn run có một tí."
+        ],
+        "wrong": [
+          "Ối, đánh răng là chuyện của Quang ở nhà. Đọc lại lời thầy giáo ở đoạn đầu nhé.",
+          "Lớp này hôm nay không chép bài đâu. Tìm câu thầy nói “Vì thế hôm nay…”.",
+          "Gần rồi! Thầy muốn các bạn giao tiếp tự tin, vậy phải tập làm gì nhỉ?"
+        ]
+      }
+    },
+    {
+      "id": "vi-sao-quang-lung-tung",
+      "title": "Vì sao Quang lúng túng?",
+      "kind": "challenge",
+      "mechanic": "quiz",
+      "target": "meo-mun",
+      "prompt": "Mèo Mun liếm bộ ria rồi thì thầm: cậu Quang này giống tớ y hệt.\nVì sao lúc đầu Quang lúng túng?",
+      "choices": [
+        {
+          "id": "quen-danh-rang",
+          "text": "Vì Quang quên chưa đánh răng."
+        },
+        {
+          "id": "chua-thuoc-tho",
+          "text": "Vì Quang chưa thuộc bài thơ thầy giao."
+        },
+        {
+          "id": "noi-truoc-lop-kho",
+          "text": "Quang cảm thấy nói với bạn bên cạnh thì dễ, nhưng nói trước cả lớp thì sao mà khó thế."
+        }
+      ],
+      "skill": "doc-hieu",
+      "answer": {
+        "choice": "noi-truoc-lop-kho"
+      },
+      "curriculumRef": [
+        "tv2-t1-b06-doc-2"
+      ],
+      "support": {
+        "guide": [
+          "Tìm đoạn kể Quang được mời lên nói đầu tiên.",
+          "Đọc câu ngay sau “Cậu lúng túng, đỏ mặt.”"
+        ],
+        "hint": "Quang thấy nói với một bạn và nói với cả lớp khác nhau lắm.",
+        "answer": {
+          "text": "Quang cảm thấy nói với bạn bên cạnh thì dễ, nhưng nói trước cả lớp thì sao mà khó thế.",
+          "explanation": "Bài đọc kể: Quang cảm thấy nói với bạn bên cạnh thì dễ, nhưng nói trước cả lớp thì sao mà khó thế. Vì vậy cậu lúng túng."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Mèo Mun thở phào: hoá ra không chỉ mình tớ thấy khó!",
+          "Đúng rồi, nói với bạn bên cạnh thì dễ ợt, nói với cả lớp mới khó.",
+          "Giỏi ghê! {name} tìm đúng câu ngay sau chữ “đỏ mặt”."
+        ],
+        "wrong": [
+          "Bài đọc không nhắc tới bài thơ nào cả. Đọc lại câu sau chữ “lúng túng” nhé.",
+          "Chuyện đánh răng xuất hiện lúc Quang kể, chứ đâu phải lí do cậu ấy lúng túng.",
+          "Thử so sánh: nói với một bạn và nói với cả lớp, Quang thấy thế nào?"
+        ]
+      }
+    },
+    {
+      "id": "quang-hoa-tu-tin",
+      "title": "Điều gì giúp Quang tự tin?",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "target": "gau-truc-tron",
+      "prompt": "Thầy Gấu Trúc Tròn xoa cái bụng tròn: Quang lúc đầu ờ ờ à à, lúc sau nói rất tự tin. Thầy hỏi {name} này.\nTheo em, điều gì khiến Quang trở nên tự tin?\nChọn tất cả những điều đã giúp Quang.",
+      "choices": [
+        {
+          "id": "thay-kien-nhan",
+          "text": "Thầy giáo mỉm cười, kiên nhẫn nghe Quang nói."
+        },
+        {
+          "id": "ve-cho-ngay",
+          "text": "Thầy cho Quang về chỗ ngồi ngay."
+        },
+        {
+          "id": "ca-lop-vo-tay",
+          "text": "Thầy giáo và cả lớp vỗ tay động viên Quang."
+        },
+        {
+          "id": "ban-noi-ho",
+          "text": "Bạn bên cạnh lên nói hộ Quang."
+        },
+        {
+          "id": "quang-co-gang",
+          "text": "Quang thở mạnh một hơi rồi cố nói tiếp."
+        }
+      ],
+      "skill": "doc-hieu",
+      "answer": {
+        "choices": [
+          "thay-kien-nhan",
+          "ca-lop-vo-tay",
+          "quang-co-gang"
+        ]
+      },
+      "curriculumRef": [
+        "tv2-t1-b06-doc-3"
+      ],
+      "support": {
+        "guide": [
+          "Đọc lại đoạn thầy giáo mỉm cười.",
+          "Tìm những chỗ có tiếng vỗ tay, và chỗ Quang thở mạnh một hơi."
+        ],
+        "hint": "Có ba điều: một từ thầy, một từ cả lớp, một từ chính Quang.",
+        "answer": {
+          "text": "Thầy giáo kiên nhẫn nghe; thầy và cả lớp vỗ tay động viên; Quang cố gắng nói tiếp.",
+          "explanation": "Thầy giáo mỉm cười, kiên nhẫn nghe Quang nói; thầy và các bạn vỗ tay; Quang thở mạnh một hơi rồi nói tiếp. Không ai nói hộ, và Quang cũng chưa chịu về chỗ."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Thầy Gấu Trúc Tròn vỗ hai bàn tay mũm mĩm: đủ cả ba điều!",
+          "Chuẩn: thầy kiên nhẫn, bạn bè vỗ tay, còn Quang thì cố gắng.",
+          "Mèo Mun ghi nhớ ba điều ấy vào… bộ ria. Cảm ơn {name}!"
+        ],
+        "wrong": [
+          "Bài đọc viết “Quang chưa chịu về chỗ” cơ mà. Bỏ lựa chọn về chỗ ngồi ra nhé.",
+          "Có ai lên nói hộ Quang đâu! Quang tự nói hết đấy.",
+          "Còn sót một điều đến từ chính Quang. Tìm câu “thở mạnh một hơi” xem."
+        ]
+      }
+    },
+    {
+      "id": "cam-giac-noi-truoc-lop",
+      "title": "Em thấy thế nào?",
+      "kind": "speak",
+      "target": "meo-mun",
+      "prompt": "Mèo Mun cuộn đuôi thành hình dấu hỏi, hỏi rất khẽ: Khi nói trước lớp, em cảm thấy thế nào?",
+      "hints": [
+        "Lúc đứng lên, tim em đập thình thịch hay vẫn bình thường?",
+        "Ai đã giúp em bớt run?",
+        "Nói xong rồi, em thấy thế nào?"
+      ],
+      "curriculumRef": [
+        "tv2-t1-b06-doc-4"
+      ]
+    },
+    {
+      "id": "cau-hoi-trong-bai",
+      "title": "Câu nào là câu hỏi?",
+      "kind": "challenge",
+      "mechanic": "classify",
+      "target": "tv2-t03-bang-xanh",
+      "prompt": "Vẹt Xanh đố: câu nào kết thúc bằng dấu chấm hỏi thì giơ cánh lên! Giơ cánh lên!\nTìm những câu hỏi có trong bài đọc. Đó là câu hỏi của ai dành cho ai?\nKéo mỗi câu vào đúng nhóm.",
+      "groups": [
+        {
+          "id": "thay-hoi-quang",
+          "label": "Câu hỏi của thầy giáo dành cho Quang"
+        },
+        {
+          "id": "quang-hoi-thay",
+          "label": "Câu hỏi của Quang dành cho thầy giáo"
+        },
+        {
+          "id": "khong-phai-cau-hoi",
+          "label": "Không phải câu hỏi"
+        }
+      ],
+      "items": [
+        {
+          "id": "the-la-duoc",
+          "label": "Thế là được rồi đấy!"
+        },
+        {
+          "id": "em-co-nho",
+          "label": "Em cố nhớ xem, sáng nay ngủ dậy, em đã làm gì?"
+        },
+        {
+          "id": "bo-dua-di-hoc",
+          "label": "Sau đó bố đưa em đi học."
+        },
+        {
+          "id": "roi-gi-nua",
+          "label": "Rồi gì nữa?"
+        },
+        {
+          "id": "danh-rang-di",
+          "label": "Con đánh răng đi."
+        }
+      ],
+      "skill": "doc-hieu",
+      "answer": {
+        "assignment": {
+          "the-la-duoc": "khong-phai-cau-hoi",
+          "em-co-nho": "thay-hoi-quang",
+          "bo-dua-di-hoc": "khong-phai-cau-hoi",
+          "roi-gi-nua": "thay-hoi-quang",
+          "danh-rang-di": "khong-phai-cau-hoi"
+        }
+      },
+      "curriculumRef": [
+        "tv2-t1-b06-doc-lt1"
+      ],
+      "support": {
+        "guide": [
+          "Nhìn dấu cuối câu: câu hỏi kết thúc bằng dấu chấm hỏi.",
+          "Đọc lại bài xem ai nói câu đó, và nói với ai."
+        ],
+        "hint": "Bài có hai câu hỏi, đều do thầy giáo hỏi.",
+        "answer": {
+          "text": "Câu hỏi của thầy giáo dành cho Quang: “Em cố nhớ xem, sáng nay ngủ dậy, em đã làm gì?” và “Rồi gì nữa?”. Ba câu còn lại không phải câu hỏi.",
+          "explanation": "Hai câu có dấu chấm hỏi đều là lời thầy giáo nhắc Quang. Quang không hỏi thầy câu nào."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Vẹt Xanh giơ cả hai cánh: hai câu hỏi! Hai câu hỏi của thầy!",
+          "Đúng rồi, thầy hỏi để giúp Quang nhớ ra mình định kể gì.",
+          "Xếp gọn gàng! Nhóm “Quang hỏi thầy” trống trơn là đúng đấy."
+        ],
+        "wrong": [
+          "Câu có dấu chấm than không phải câu hỏi đâu. Nhìn kĩ dấu cuối câu nhé.",
+          "Quang có hỏi thầy câu nào không nhỉ? Đọc lại xem ai nói câu “Rồi gì nữa?”.",
+          "Câu “Con đánh răng đi.” là lời mẹ dặn, kết thúc bằng dấu chấm cơ mà."
+        ]
+      }
+    },
+    {
+      "id": "khen-ban-quang",
+      "title": "Khen và đáp lời khen",
+      "kind": "speak",
+      "target": "vet-xanh",
+      "prompt": "Đóng vai các bạn và Quang, nói và đáp lời khen khi Quang trở nên tự tin.\nVẹt Xanh vuốt lông cho thật bóng rồi nhận vai Quang. {name} đóng vai các bạn. Khen xong thì hai bạn đổi vai nhé.",
+      "hints": [
+        "Các bạn khen: Cậu kể chuyện buổi sáng hay quá!",
+        "Quang đáp: Cảm ơn các bạn đã vỗ tay cổ vũ tớ.",
+        "Nhớ nhìn vào bạn và nói thật to, thật rõ."
+      ],
+      "curriculumRef": [
+        "tv2-t1-b06-doc-lt2"
+      ]
+    },
+    {
+      "id": "van-chu-cai-bi-xuoc",
+      "title": "Tấm ván chữ cái bị xước",
+      "goTo": "Sang gốc đa chữ cái, chú gõ kiến vừa làm xước tấm ván",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "target": "tv2-t03-van-chu-cai",
+      "prompt": "Chú gõ kiến tập gõ nhịp nhầm chỗ, cốc cốc cốc, xước mất bốn ô trên tấm ván chữ cái của lớp.\nTìm những chữ cái còn thiếu trong bảng. Học thuộc tên các chữ cái.",
+      "template": "Số thứ tự 24, chữ cái {{o24}}, tên chữ cái tê.\nSố thứ tự 25, chữ cái {{o25}}, tên chữ cái u.\nSố thứ tự 27, chữ cái {{o27}}, tên chữ cái vê.\nSố thứ tự 29, chữ cái {{o29}}, tên chữ cái i dài.",
+      "blanks": [
+        {
+          "id": "o24",
+          "options": [
+            {
+              "id": "th",
+              "text": "th"
+            },
+            {
+              "id": "t",
+              "text": "t"
+            },
+            {
+              "id": "dd",
+              "text": "đ"
+            }
+          ]
+        },
+        {
+          "id": "o25",
+          "options": [
+            {
+              "id": "uw",
+              "text": "ư"
+            },
+            {
+              "id": "ow",
+              "text": "ơ"
+            },
+            {
+              "id": "u",
+              "text": "u"
+            }
+          ]
+        },
+        {
+          "id": "o27",
+          "options": [
+            {
+              "id": "v",
+              "text": "v"
+            },
+            {
+              "id": "b",
+              "text": "b"
+            },
+            {
+              "id": "d",
+              "text": "d"
+            }
+          ]
+        },
+        {
+          "id": "o29",
+          "options": [
+            {
+              "id": "i",
+              "text": "i"
+            },
+            {
+              "id": "x",
+              "text": "x"
+            },
+            {
+              "id": "y",
+              "text": "y"
+            }
+          ]
+        }
+      ],
+      "skill": "bang-chu-cai",
+      "answer": {
+        "fills": {
+          "o24": "t",
+          "o25": "u",
+          "o27": "v",
+          "o29": "y"
+        }
+      },
+      "curriculumRef": [
+        "tv2-t1-b06-bang-chu-cai-2-a",
+        "tv2-t1-b06-bang-chu-cai-2-b",
+        "tv2-t1-b06-bang-chu-cai-2-c",
+        "tv2-t1-b06-bang-chu-cai-2-d"
+      ],
+      "support": {
+        "guide": [
+          "Đọc tên chữ cái ở cuối mỗi dòng.",
+          "Nhẩm đoạn cuối bảng chữ cái: p, q, r, s, …, x, …"
+        ],
+        "hint": "Chữ tên “i dài” là chữ đứng cuối cùng bảng chữ cái.",
+        "answer": {
+          "text": "t, u, v, y",
+          "explanation": "Chữ t tên là tê, chữ u tên là u, chữ v tên là vê, chữ y tên là i dài."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Gõ kiến ngượng ngùng gõ ba tiếng xin lỗi rồi bay đi. Tấm ván đủ chữ rồi!",
+          "Tê, u, vê, i dài: {name} đọc trơn như hát.",
+          "Vẹt Xanh nhắc hai lần cho nhớ: t, u, v, y! T, u, v, y!"
+        ],
+        "wrong": [
+          "Chữ tên “i dài” không phải chữ i ngắn đâu. Thử chữ đứng cuối bảng xem.",
+          "Chữ ư có râu, chữ ơ đội mũ. Còn chữ tên “u” thì sao nhỉ?",
+          "Đọc to tên chữ “vê” rồi nghĩ xem chữ nào phát ra tiếng ấy."
+        ]
+      }
+    },
+    {
+      "id": "xep-ten-nam-ban",
+      "title": "Điểm danh năm bạn nhỏ",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "tv2-t03-van-chu-cai",
+      "prompt": "Năm bạn nhỏ làng bên sang dự giờ tập nói, đứng chen nhau lộn xộn. Vẹt Xanh điểm danh cứ gọi nhầm, gọi nhầm!\nSắp xếp tên các bạn dưới đây theo đúng thứ tự trong bảng chữ cái. Viết lại tên các bạn theo thứ tự đã sắp xếp.",
+      "items": [
+        {
+          "id": "son",
+          "label": "Sơn"
+        },
+        {
+          "id": "xuan",
+          "label": "Xuân"
+        },
+        {
+          "id": "quan",
+          "label": "Quân"
+        },
+        {
+          "id": "tuan",
+          "label": "Tuấn"
+        },
+        {
+          "id": "van",
+          "label": "Vân"
+        }
+      ],
+      "skill": "bang-chu-cai",
+      "answer": {
+        "order": [
+          "quan",
+          "son",
+          "tuan",
+          "van",
+          "xuan"
+        ]
+      },
+      "curriculumRef": [
+        "tv2-t1-b06-bang-chu-cai-3"
+      ],
+      "support": {
+        "guide": [
+          "Nhìn chữ cái đầu của mỗi tên.",
+          "Tìm các chữ đầu ấy trong bảng chữ cái: q, s, t, v, x."
+        ],
+        "hint": "Chữ q đứng trước chữ s, nên Quân đứng đầu hàng.",
+        "answer": {
+          "text": "Quân, Sơn, Tuấn, Vân, Xuân",
+          "explanation": "Chữ cái đầu của các tên là Q, S, T, V, X. Trong bảng chữ cái, q đứng trước s, rồi đến t, v, x."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Năm bạn xếp hàng thẳng tắp, Vẹt Xanh điểm danh không vấp chữ nào!",
+          "Quân đứng đầu, Xuân đứng cuối: chuẩn bảng chữ cái rồi.",
+          "Vẹt Xanh khoe: tớ vừa học được chữ “thứ tự”! Thứ tự!"
+        ],
+        "wrong": [
+          "Chữ q và chữ s, chữ nào đứng trước trong bảng nhỉ?",
+          "Bạn Xuân có chữ x, mà chữ x đứng gần cuối bảng lắm đấy.",
+          "Tuấn và Vân đang đổi chỗ cho nhau rồi. Nhẩm lại: t, u, ư, v."
+        ]
+      }
+    },
+    {
+      "id": "may-cho-tu-dac-diem",
+      "title": "Mười đám mây chở chữ",
+      "goTo": "Quay về lớp dưới tán đa, mây đang trôi qua kẽ lá",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "target": "meo-mun",
+      "prompt": "Mười đám mây nhỏ trôi ngang kẽ lá, đám nào cũng chở một từ. Mèo Mun liếc nhìn rồi bảo: mấy từ tả bộ lông của tớ đẹp nhất.\nNhững từ ngữ nào dưới đây chỉ đặc điểm?",
+      "choices": [
+        {
+          "id": "tu-1",
+          "text": "mượt mà"
+        },
+        {
+          "id": "tu-2",
+          "text": "đôi mắt"
+        },
+        {
+          "id": "tu-3",
+          "text": "bầu bĩnh"
+        },
+        {
+          "id": "tu-4",
+          "text": "khuôn mặt"
+        },
+        {
+          "id": "tu-5",
+          "text": "vầng trán"
+        },
+        {
+          "id": "tu-6",
+          "text": "sáng"
+        },
+        {
+          "id": "tu-7",
+          "text": "cao"
+        },
+        {
+          "id": "tu-8",
+          "text": "đen láy"
+        },
+        {
+          "id": "tu-9",
+          "text": "mái tóc"
+        },
+        {
+          "id": "tu-10",
+          "text": "đen nhánh"
+        }
+      ],
+      "skill": "tu-ngu",
+      "answer": {
+        "choices": [
+          "tu-1",
+          "tu-3",
+          "tu-6",
+          "tu-7",
+          "tu-8",
+          "tu-10"
+        ]
+      },
+      "curriculumRef": [
+        "tv2-t1-b06-tu-ngu-cau-1"
+      ],
+      "support": {
+        "guide": [
+          "Từ chỉ đặc điểm cho biết sự vật trông thế nào: màu gì, cao hay thấp, mượt hay ráp.",
+          "Từ gọi tên một bộ phận như đôi mắt, mái tóc là từ chỉ sự vật."
+        ],
+        "hint": "Có sáu từ chỉ đặc điểm, trong đó ba từ nói về màu và độ sáng.",
+        "answer": {
+          "text": "mượt mà, bầu bĩnh, sáng, cao, đen láy, đen nhánh",
+          "explanation": "Mượt mà, bầu bĩnh, sáng, cao, đen láy, đen nhánh cho biết sự vật trông thế nào. Đôi mắt, khuôn mặt, vầng trán, mái tóc là tên các bộ phận."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Mèo Mun vuốt bộ lông đen nhánh, mượt mà: đúng sáu từ!",
+          "Sáu đám mây đặc điểm sà xuống đậu trên tán cây. Đẹp quá!",
+          "Tinh mắt ghê! {name} không bị đám mây “mái tóc” đánh lừa."
+        ],
+        "wrong": [
+          "Đôi mắt là tên một bộ phận, chưa phải đặc điểm đâu. Bỏ ra nhé.",
+          "Còn sót một từ chỉ độ cao đấy. Thử tìm lại xem.",
+          "Hỏi thử: “đôi mắt thế nào?” Từ trả lời câu ấy mới là từ chỉ đặc điểm."
+        ]
+      }
+    },
+    {
+      "id": "ghep-cau-dac-diem",
+      "title": "Ghép câu nêu đặc điểm",
+      "kind": "challenge",
+      "mechanic": "classify",
+      "target": "gau-truc-tron",
+      "prompt": "Thầy Gấu Trúc Tròn chậm rãi xếp bốn chiếc lá tre lên bàn, mỗi lá ghi tên một bộ phận.\nGhép các từ ngữ ở bài tập 1 để tạo câu nêu đặc điểm. M: Đôi mắt đen láy.\nKéo mỗi từ chỉ đặc điểm vào chiếc lá hợp với nó.",
+      "groups": [
+        {
+          "id": "doi-mat",
+          "label": "Đôi mắt"
+        },
+        {
+          "id": "mai-toc",
+          "label": "Mái tóc"
+        },
+        {
+          "id": "khuon-mat",
+          "label": "Khuôn mặt"
+        },
+        {
+          "id": "vang-tran",
+          "label": "Vầng trán"
+        }
+      ],
+      "items": [
+        {
+          "id": "mf-cao",
+          "label": "cao"
+        },
+        {
+          "id": "mf-muot-ma",
+          "label": "mượt mà"
+        },
+        {
+          "id": "mf-den-lay",
+          "label": "đen láy"
+        },
+        {
+          "id": "mf-bau-binh",
+          "label": "bầu bĩnh"
+        },
+        {
+          "id": "mf-den-nhanh",
+          "label": "đen nhánh"
+        }
+      ],
+      "skill": "cau",
+      "answer": {
+        "assignment": {
+          "mf-cao": "vang-tran",
+          "mf-muot-ma": "mai-toc",
+          "mf-den-lay": "doi-mat",
+          "mf-bau-binh": "khuon-mat",
+          "mf-den-nhanh": "mai-toc"
+        }
+      },
+      "curriculumRef": [
+        "tv2-t1-b06-tu-ngu-cau-2"
+      ],
+      "support": {
+        "guide": [
+          "Đọc câu mẫu: Đôi mắt đen láy.",
+          "Ghép thử từng từ vào sau tên bộ phận, đọc to xem có xuôi tai không."
+        ],
+        "hint": "Mái tóc nhận được hai từ: một từ chỉ màu, một từ chỉ độ mượt.",
+        "answer": {
+          "text": "Đôi mắt đen láy. Mái tóc mượt mà. Mái tóc đen nhánh. Khuôn mặt bầu bĩnh. Vầng trán cao.",
+          "explanation": "Mỗi câu ghép tên một bộ phận với từ chỉ đặc điểm hợp với nó, đúng như câu mẫu “Đôi mắt đen láy.”"
+        }
+      },
+      "feedback": {
+        "right": [
+          "Thầy Gấu Trúc Tròn đọc chậm từng câu, câu nào cũng xuôi tai.",
+          "Vầng trán cao, khuôn mặt bầu bĩnh: ghép khéo quá!",
+          "Năm câu nêu đặc điểm ra lò, nóng hổi như bánh tre mới hấp."
+        ],
+        "wrong": [
+          "Thử đọc to “Vầng trán bầu bĩnh” xem, nghe lạ tai chưa?",
+          "Mái tóc mới mượt mà được thôi, khuôn mặt thì không ai khen mượt mà cả.",
+          "Đen láy thường dùng để tả đôi mắt. Xem lại câu mẫu nhé."
+        ]
+      }
+    },
+    {
+      "id": "ta-mot-ban-trong-lop",
+      "title": "Tả một bạn trong lớp",
+      "kind": "speak",
+      "target": "meo-mun",
+      "prompt": "Mèo Mun ngồi thẳng lưng, giả vờ làm người mẫu: tả tớ cũng được, miễn đừng nhắc bộ râu đang run.\nĐặt một câu nêu đặc điểm ngoại hình của một bạn trong lớp em.",
+      "hints": [
+        "Bạn ấy có mái tóc thế nào?",
+        "Đôi mắt hay khuôn mặt bạn ấy trông ra sao?",
+        "Nói thành một câu, ví dụ bắt đầu bằng tên bạn."
+      ],
+      "curriculumRef": [
+        "tv2-t1-b06-tu-ngu-cau-3"
+      ]
+    },
+    {
+      "id": "meo-mun-quyet-dinh",
+      "title": "Câu thần chú cho bộ râu",
+      "kind": "dialogue",
+      "target": "meo-mun",
+      "lines": [
+        {
+          "speaker": "Thầy Gấu Trúc Tròn",
+          "text": "Đến lượt Mèo Mun rồi đấy. Từ… từ… thôi, thầy chờ được, cả buổi cũng chờ được."
+        },
+        {
+          "speaker": "Mèo Mun",
+          "text": "Tớ sẽ lên. Nhưng {name} cho tớ một câu thần chú đi, để bộ râu chịu đứng yên."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cứ nói chậm thôi, cả lớp đang chờ nghe cậu!",
+          "reply": "Mèo Mun hít một hơi thật sâu. Bộ râu giờ chỉ còn run đúng một sợi."
+        },
+        {
+          "text": "Lỡ quên thì cứ “Rồi… ờ…” như bạn Quang!",
+          "reply": "Mèo Mun phì cười: ừ nhỉ, Quang ờ mấy lần mà vẫn được vỗ tay cơ mà."
+        },
+        {
+          "text": "Mình ngồi bàn đầu, vỗ tay to nhất lớp!",
+          "reply": "Vẹt Xanh chen vào: tớ vỗ cánh to thứ nhì! To thứ nhì!"
+        }
+      ]
+    },
+    {
+      "id": "xep-tranh-buoi-sang",
+      "title": "Bốn bức tranh buổi sáng",
+      "goTo": "Lên chiếc bục gỗ giữa lớp dưới tán đa",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "tv2-t03-buc-go",
+      "prompt": "Mèo Mun ôm bốn bức tranh về buổi sáng của một bạn nhỏ bước lên bục, vấp nhẹ một cái, thế là tranh xáo tung cả.\nNói về các hoạt động của bạn nhỏ trong tranh.\n– Bạn nhỏ làm những việc gì?\n– Theo em, bạn nhỏ làm những việc đó trong thời gian nào?\n– Còn em, trước khi đi học, em thường tự làm những việc gì?\nXếp tranh theo đúng thứ tự việc bạn nhỏ làm.",
+      "items": [
+        {
+          "id": "an-sang",
+          "label": "Ngồi ăn sáng",
+          "image": {
+            "kind": "diagram",
+            "type": "picture-card",
+            "params": {
+              "caption": "bạn nhỏ ngồi bàn ăn bát mì"
+            }
+          }
+        },
+        {
+          "id": "di-hoc",
+          "label": "Đeo cặp đi học",
+          "image": {
+            "kind": "diagram",
+            "type": "picture-card",
+            "params": {
+              "caption": "bạn nhỏ đeo cặp đi học"
+            }
+          }
+        },
+        {
+          "id": "ngu-day",
+          "label": "Vươn vai ngồi dậy",
+          "image": {
+            "kind": "diagram",
+            "type": "picture-card",
+            "params": {
+              "caption": "bạn nhỏ vươn vai ngồi dậy trên giường"
+            }
+          }
+        },
+        {
+          "id": "danh-rang",
+          "label": "Đánh răng",
+          "image": {
+            "kind": "diagram",
+            "type": "picture-card",
+            "params": {
+              "caption": "bạn nhỏ đánh răng bên bồn rửa, tay cầm cốc"
+            }
+          }
+        }
+      ],
+      "skill": "ke-chuyen",
+      "answer": {
+        "order": [
+          "ngu-day",
+          "danh-rang",
+          "an-sang",
+          "di-hoc"
+        ]
+      },
+      "curriculumRef": [
+        "tv2-t1-b06-viet-doan-1"
+      ],
+      "support": {
+        "guide": [
+          "Nghĩ xem buổi sáng, việc gì em làm đầu tiên khi mở mắt.",
+          "Việc đeo cặp ra khỏi nhà thường là việc cuối cùng."
+        ],
+        "hint": "Bạn nhỏ thức dậy rồi mới đánh răng, ăn sáng.",
+        "answer": {
+          "text": "Vươn vai ngồi dậy → Đánh răng → Ngồi ăn sáng → Đeo cặp đi học",
+          "explanation": "Đây là thứ tự bốn tranh trong sách: bạn nhỏ ngủ dậy, đánh răng, ăn sáng rồi đi học, giống buổi sáng của bạn Quang."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bốn bức tranh xếp ngay ngắn, Mèo Mun ưỡn ngực đứng thẳng trên bục.",
+          "Đúng nếp buổi sáng: dậy, đánh răng, ăn, rồi mới đi học!",
+          "Vẹt Xanh reo: giống hệt buổi sáng của bạn Quang! Giống hệt!"
+        ],
+        "wrong": [
+          "Ơ kìa, bạn nhỏ đeo cặp đi học khi còn chưa ngủ dậy à? Xếp lại nhé.",
+          "Ăn sáng rồi mới đánh răng thì bát mì sẽ ngạc nhiên lắm đấy. Đổi chỗ thử xem.",
+          "Tranh vươn vai ngồi dậy nên đứng đầu hàng, vì đó là lúc vừa mở mắt."
+        ]
+      }
+    },
+    {
+      "id": "mun-ke-buoi-sang",
+      "title": "Mèo Mun kể, {name} kể",
+      "kind": "speak",
+      "target": "tv2-t03-buc-go",
+      "prompt": "Mèo Mun kể trước, giọng nhỏ mà rõ: tớ dậy, tớ rửa mặt, tớ… ờ… ăn cá. Cả lớp vỗ tay rào rào. Giờ đến lượt {name}.\nNói về các hoạt động của bạn nhỏ trong tranh.",
+      "hints": [
+        "Bạn nhỏ làm những việc gì?",
+        "Theo em, bạn nhỏ làm những việc đó trong thời gian nào?",
+        "Còn em, trước khi đi học, em thường tự làm những việc gì?"
+      ],
+      "pictureRefs": [
+        {
+          "kind": "diagram",
+          "type": "picture-card",
+          "params": {
+            "caption": "Tranh 1: bạn nhỏ vươn vai ngồi dậy trên giường",
+            "n": 1
+          }
+        },
+        {
+          "kind": "diagram",
+          "type": "picture-card",
+          "params": {
+            "caption": "Tranh 2: bạn nhỏ đánh răng bên bồn rửa, tay cầm cốc",
+            "n": 2
+          }
+        },
+        {
+          "kind": "diagram",
+          "type": "picture-card",
+          "params": {
+            "caption": "Tranh 3: bạn nhỏ ngồi bàn ăn bát mì",
+            "n": 3
+          }
+        },
+        {
+          "kind": "diagram",
+          "type": "picture-card",
+          "params": {
+            "caption": "Tranh 4: bạn nhỏ đeo cặp đi học",
+            "n": 4
+          }
+        }
+      ],
+      "curriculumRef": [
+        "tv2-t1-b06-viet-doan-1"
+      ]
+    },
+    {
+      "id": "doc-sach-ban-tay-be",
+      "title": "Cuốn sách đôi bàn tay",
+      "kind": "speak",
+      "target": "gau-truc-tron",
+      "prompt": "Thầy Gấu Trúc Tròn rút từ hốc cây ra một cuốn sách mỏng, bìa vẽ đôi bàn tay bé xíu đang nhặt rau.\nTìm đọc một bài thơ hoặc câu chuyện viết về trẻ em làm việc nhà.\nĐọc cho các bạn nghe một đoạn em thích.",
+      "hints": [
+        "Bài thơ hay câu chuyện em tìm được tên là gì?",
+        "Bạn nhỏ trong bài đã giúp ai làm việc gì?",
+        "Đọc thật rõ đoạn em thích nhất cho Mèo Mun nghe."
+      ],
+      "pictureRefs": [
+        {
+          "kind": "diagram",
+          "type": "picture-card",
+          "params": {
+            "caption": "Đôi bàn tay bé (Trích) / Đôi bàn tay bé xíu / Lại siêng năng nhất nhà / Hết xâu kim cho bà / Lại nhặt rau giúp mẹ. (Nguyễn Lãm Thắng)"
+          }
+        }
+      ],
+      "curriculumRef": [
+        "tv2-t1-b06-doc-mo-rong-1",
+        "tv2-t1-b06-doc-mo-rong-2"
+      ]
+    },
+    {
+      "id": "phieu-viet-bai-6",
+      "title": "Phiếu viết bài 6",
+      "kind": "worksheet",
+      "trigger": "auto",
+      "lessonId": "tv2-t1-b06",
+      "text": "Mèo Mun dặn khẽ: nhờ bố mẹ in phiếu Bài 6 ở khu phụ huynh nhé. Trên phiếu có nghe – viết đoạn văn về bạn Quang, kể theo bốn bức tranh buổi sáng, và chỗ để em viết vài câu về việc em làm trước khi đi học.",
+      "curriculumRef": [
+        "tv2-t1-b06-nghe-viet-1",
+        "tv2-t1-b06-viet-doan-1",
+        "tv2-t1-b06-viet-doan-2"
+      ]
+    },
+    {
+      "id": "qua-cua-meo-mun",
+      "title": "Chiếc nơ buộc râu",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Mèo Mun tặng {name} một chiếc nơ buộc râu bện bằng cỏ may, kèm lời dặn rất Mèo Mun: lúc run thì buộc nơ, nói xong thì cởi. Ở hàng cuối, Sâu Xanh ăn lá no căng bụng, vỗ cả chục cái chân lộp độp."
+    },
+    {
+      "id": "mo-bai-7",
+      "title": "Bụi cỏ nhắm mắt",
+      "kind": "unlock",
+      "trigger": "auto",
+      "text": "Ven đầm vọng lại tiếng Nai Mơ ngâm nga: lá ơi sao cụp, lá ơi sao xoè? Vừa có một tiếng động lạ, bụi cỏ xấu hổ đã nhắm tịt cả trăm con mắt lá. Tiếng động ấy là của ai nhỉ?"
+    }
+  ],
+  "reward": {
+    "xp": 85,
+    "coin": 15,
+    "skillXp": {
+      "doc-hieu": 2,
+      "bang-chu-cai": 1,
+      "tu-ngu": 1,
+      "cau": 1,
+      "ke-chuyen": 1
+    }
+  }
+}

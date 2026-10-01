@@ -1,0 +1,941 @@
+{
+  "id": "tv2-t11-b20",
+  "region": "khu-rung-bi-mat",
+  "chapter": 12,
+  "title": "Hổ Vằn muốn có bạn",
+  "status": "draft",
+  "lesson": "tv2-t1-b20",
+  "summary": "Hổ Vằn gầm “Grừ!” cho oai nhưng thật ra rất nhút nhát, muốn làm quen mà ai cũng chạy mất. {name} cùng Hổ Vằn đọc truyện Nhím nâu kết bạn, học từ chỉ việc tốt và lời xin lỗi để làm quen với Gà Con Chíp.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "Hổ Vằn (ra vẻ dữ, thật ra nhút nhát), Gà Con Chíp (hỏi “Tại sao?” liên tục)",
+    "where": "Bụi gai cuối rừng, lối mòn sau bụi gai, cái hang nhỏ và gốc sồi đầu lối mòn",
+    "goal": "Giúp Hổ Vằn kết bạn với Gà Con Chíp",
+    "play": "Tìm đồ trên lối mòn, nói, đọc truyện, xếp nhóm, trắc nghiệm, điền chữ, đóng vai, chọn cách làm quen, phiếu viết",
+    "learn": "Tiếng Việt 2 Bài 20: đọc hiểu truyện “Nhím nâu kết bạn”, nói và đáp lời xin lỗi, chính tả g/gh, iu/ưu, iên/iêng, từ chỉ hoạt động và đặc điểm, đặt câu về hoạt động",
+    "reward": "90 XP, 15 xu, Đọc hiểu +2, Chính tả +2, Từ ngữ +2",
+    "unlock": "Bài 21 \"Thả diều\""
+  },
+  "phases": {
+    "hook": "gap-ho-van",
+    "explore": "do-vat-loi-mon",
+    "learn": "doc-nhim-nau",
+    "challenge": "gio-van-iu-uu",
+    "decision": "ho-van-lam-quen",
+    "finale": "hoat-dong-yeu-thich",
+    "reward": "phieu-viet-bai-20",
+    "unlock": "mo-bai-21"
+  },
+  "texts": {
+    "nhim-nau": {
+      "title": "Nhím nâu kết bạn",
+      "author": "Theo Minh Anh",
+      "body": "Trong khu rừng nọ, có chú nhím nâu hiền lành, nhút nhát. Một buổi sáng, chú đang kiếm quả cây thì thấy nhím trắng chạy tới. Nhím trắng vồn vã: “Chào bạn! Rất vui được gặp bạn!”. Nhím nâu lúng túng, nói lí nhí: “Chào bạn!”, rồi nấp vào bụi cây. Chú cuộn tròn người lại mà vẫn sợ hãi.\n\nMùa đông đến, nhím nâu đi tìm nơi để trú ngụ. Bất chợt, mưa kéo đến. Nhím nâu vội bước vào cái hang nhỏ. Thì ra là nhà nhím trắng. Nhím nâu run run: “Xin lỗi, tôi không biết đây là nhà của bạn.”. Nhím trắng tươi cười: “Đừng ngại! Gặp lại bạn, tôi rất vui. Tôi ở đây một mình, buồn lắm. Bạn ở lại cùng tôi nhé!”.\n\n“Nhím trắng tốt bụng quá. Bạn ấy nói đúng, không có bạn bè thì thật buồn.”. Nghĩ thế, nhím nâu mạnh dạn hẳn lên. Chú nhận lời kết bạn với nhím trắng. Cả hai cùng thu dọn, trang trí chỗ ở cho đẹp. Chúng trải qua những ngày vui vẻ, ấm áp vì không phải sống một mình giữa mùa đông lạnh giá.",
+      "glossary": [
+        {
+          "term": "Vồn vã",
+          "meaning": "niềm nở, nhiệt tình khi trò chuyện với người khác."
+        },
+        {
+          "term": "Trú ngụ",
+          "meaning": "sinh sống tạm ở một nơi nào đó."
+        }
+      ],
+      "section": "tv2-t1-b20-doc"
+    }
+  },
+  "places": {
+    "ho-van": "bụi gai cuối rừng",
+    "do-vat-loi-mon": "lối mòn sau bụi gai",
+    "tv2-t11-hang-da-nho": "cái hang nhỏ",
+    "ga-con-chip": "gốc sồi đầu lối mòn"
+  },
+  "steps": [
+    {
+      "id": "gap-ho-van",
+      "title": "Hổ Vằn nấp trong bụi gai",
+      "goTo": "Đến bụi gai cuối rừng, chỗ vừa vang lên tiếng Grừ!",
+      "kind": "dialogue",
+      "target": "ho-van",
+      "lines": [
+        {
+          "speaker": "Hổ Vằn",
+          "text": "Grừ! Ai đó? À… {name} à. Đừng sợ nhé, tớ gầm cho oai thôi, chứ chân tớ đang run cầm cập."
+        },
+        {
+          "speaker": "Hổ Vằn",
+          "text": "Tớ muốn làm quen với các bạn lắm. Mà hễ tớ chào là cả đám chạy biến, chỉ còn mỗi chiếc lá rơi."
+        },
+        {
+          "speaker": "Gà Con Chíp",
+          "text": "Tại sao bạn ấy nhiều vằn thế? Tại sao răng to thế? Tại sao… á, tớ trốn đây!"
+        },
+        {
+          "speaker": "Hổ Vằn",
+          "text": "Thấy chưa, Chíp chui tọt ra sau gốc sồi rồi. Grừ… à không, hu hu."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Đừng buồn, mình sẽ giúp cậu kết bạn!",
+          "reply": "Thật không? Vậy cậu đi trước nhé, tớ… tớ nấp sau bụi gai thêm một chút đã."
+        }
+      ]
+    },
+    {
+      "id": "do-vat-loi-mon",
+      "title": "Đồ vật trên lối mòn",
+      "goTo": "Đi dọc lối mòn sau bụi gai tìm đồ",
+      "kind": "search",
+      "targets": [
+        "tv2-t11-qua-dai-chin",
+        "tv2-t11-hang-da-nho",
+        "tv2-t11-sach-nhim-nau"
+      ]
+    },
+    {
+      "id": "duc-tinh-ban-tot",
+      "title": "Bạn tốt là bạn thế nào",
+      "goTo": "Mang cuốn truyện về bụi gai cuối rừng cho Hổ Vằn",
+      "kind": "speak",
+      "target": "ho-van",
+      "prompt": "Hổ Vằn nằm bẹp sau bụi gai, chỉ thò mỗi cái đuôi vằn ra ngoài: thế bạn tốt thì phải như thế nào hả cậu?\nHãy kể những đức tính tốt của bạn em.\nEm muốn học tập những đức tính nào của bạn?",
+      "hints": [
+        "Bạn em hiền lành, vui vẻ hay hay giúp đỡ người khác?",
+        "Bạn ấy đã làm gì khiến em quý?",
+        "Em muốn giống bạn ở điểm nào nhất?"
+      ],
+      "pictureRefs": [
+        {
+          "kind": "diagram",
+          "type": "picture-card",
+          "params": {
+            "caption": "hai bạn gái trò chuyện, bóng nói: “Ai cũng bảo cậu hiền lành, tốt bụng.” và “Cậu lúc nào cũng vui vẻ.”"
+          }
+        }
+      ],
+      "curriculumRef": [
+        "tv2-t1-b20-doc-kd1",
+        "tv2-t1-b20-doc-kd2"
+      ]
+    },
+    {
+      "id": "doc-nhim-nau",
+      "title": "Đọc truyện trong hang đá",
+      "goTo": "Chui vào cái hang nhỏ ven lối mòn đọc truyện cho ấm",
+      "kind": "read",
+      "target": "tv2-t11-hang-da-nho",
+      "textRef": "nhim-nau",
+      "audio": true,
+      "question": "Hổ Vằn chui theo, đầu vào được mà mông kẹt ngoài cửa hang. Nghe xong đoạn đầu, bạn ấy thì thào: giống tớ quá! Chi tiết nào cho thấy nhím nâu rất nhút nhát?",
+      "choices": [
+        {
+          "id": "nhim-trang-von-va",
+          "text": "Nhím trắng vồn vã: “Chào bạn! Rất vui được gặp bạn!”."
+        },
+        {
+          "id": "lung-tung-li-nhi",
+          "text": "Nhím nâu lúng túng, nói lí nhí: “Chào bạn!”, rồi nấp vào bụi cây. Chú cuộn tròn người lại mà vẫn sợ hãi."
+        },
+        {
+          "id": "manh-dan-han-len",
+          "text": "Nhím nâu mạnh dạn hẳn lên và nhận lời kết bạn."
+        }
+      ],
+      "skill": "doc-hieu",
+      "answer": {
+        "choice": "lung-tung-li-nhi"
+      },
+      "curriculumRef": [
+        "tv2-t1-b20-doc-1"
+      ],
+      "support": {
+        "guide": [
+          "Đọc đoạn một.",
+          "Tìm những việc nhím nâu làm ngay sau khi nhím trắng chào."
+        ],
+        "hint": "Nhím nâu nói rất nhỏ rồi trốn đi, cuộn tròn người lại.",
+        "answer": {
+          "text": "Nhím nâu lúng túng, nói lí nhí: “Chào bạn!”, rồi nấp vào bụi cây. Chú cuộn tròn người lại mà vẫn sợ hãi.",
+          "explanation": "Nhím nâu lúng túng, chào lí nhí rồi nấp vào bụi cây, cuộn tròn mà vẫn sợ: đó là những chi tiết cho thấy chú rất nhút nhát."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đúng rồi! Hổ Vằn gật đầu lia lịa, cụng cả vào trần hang: cộp!",
+          "Chuẩn! Nói lí nhí rồi nấp đi, đúng là nhút nhát y như Hổ Vằn.",
+          "{name} tìm chi tiết giỏi như mũi Chó Mực đánh hơi."
+        ],
+        "wrong": [
+          "Câu đó là lời chào của nhím trắng, bạn ấy đâu có nhút nhát.",
+          "Mạnh dạn hẳn lên là chuyện ở cuối truyện, lúc đầu nhím nâu còn sợ lắm.",
+          "Tìm câu có chữ “lí nhí” trong đoạn một nhé."
+        ]
+      }
+    },
+    {
+      "id": "nhung-lan-gap-nhau",
+      "title": "Hai lần gặp nhau",
+      "kind": "challenge",
+      "mechanic": "classify",
+      "target": "tv2-t11-hang-da-nho",
+      "prompt": "Hổ Vằn đếm trên móng vuốt: một lần, hai lần… ối, đếm lẫn sang móng chân rồi! Kể về những lần nhím trắng và nhím nâu gặp nhau. Xếp mỗi việc vào đúng lần gặp.",
+      "groups": [
+        {
+          "id": "lan-dau",
+          "label": "Lần đầu: một buổi sáng"
+        },
+        {
+          "id": "gap-lai",
+          "label": "Lần gặp lại: mùa đông, trời mưa"
+        }
+      ],
+      "items": [
+        {
+          "id": "vao-hang",
+          "label": "Nhím nâu vội bước vào cái hang nhỏ để tránh mưa."
+        },
+        {
+          "id": "kiem-qua",
+          "label": "Nhím nâu đang kiếm quả cây thì thấy nhím trắng chạy tới."
+        },
+        {
+          "id": "moi-o-lai",
+          "label": "Nhím trắng tươi cười, mời bạn ở lại cùng mình."
+        },
+        {
+          "id": "chao-von-va",
+          "label": "Nhím trắng vồn vã chào bạn."
+        },
+        {
+          "id": "run-xin-loi",
+          "label": "Nhím nâu run run xin lỗi vì vào nhầm nhà bạn."
+        },
+        {
+          "id": "nap-bui-cay",
+          "label": "Nhím nâu chào lí nhí rồi nấp vào bụi cây."
+        }
+      ],
+      "skill": "doc-hieu",
+      "answer": {
+        "assignment": {
+          "kiem-qua": "lan-dau",
+          "chao-von-va": "lan-dau",
+          "nap-bui-cay": "lan-dau",
+          "vao-hang": "gap-lai",
+          "run-xin-loi": "gap-lai",
+          "moi-o-lai": "gap-lai"
+        }
+      },
+      "curriculumRef": [
+        "tv2-t1-b20-doc-2"
+      ],
+      "support": {
+        "guide": [
+          "Đoạn một kể lần gặp đầu tiên, đoạn hai kể lần gặp lại.",
+          "Việc nào xảy ra vào mùa đông, lúc trời mưa?"
+        ],
+        "hint": "Mỗi lần gặp có ba việc.",
+        "answer": {
+          "text": "Lần đầu: nhím nâu kiếm quả cây, nhím trắng vồn vã chào, nhím nâu nấp vào bụi cây. Lần gặp lại: nhím nâu vào hang tránh mưa, run run xin lỗi, nhím trắng mời bạn ở lại.",
+          "explanation": "Buổi sáng đầu tiên nhím nâu còn sợ nên trốn đi; mùa đông gặp lại trong hang, nhím trắng tươi cười mời bạn ở lại."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Hai lần gặp rõ ràng rành mạch! Hổ Vằn đếm lại, lần này không lẫn móng nào.",
+          "Đúng rồi, buổi sáng thì trốn, mùa đông thì được mời ở lại.",
+          "Giỏi quá, Hổ Vằn vẫy đuôi đập vào vách hang bồm bộp."
+        ],
+        "wrong": [
+          "Chuyện trú mưa trong hang là lần gặp lại vào mùa đông đấy.",
+          "Lúc kiếm quả cây buổi sáng là lần đầu hai bạn gặp nhau.",
+          "Có một việc đang nằm nhầm lần gặp, đọc lại đoạn hai nhé."
+        ]
+      }
+    },
+    {
+      "id": "vi-sao-nhan-loi",
+      "title": "Vì sao nhím nâu nhận lời",
+      "kind": "read",
+      "target": "tv2-t11-hang-da-nho",
+      "textRef": "nhim-nau",
+      "question": "Theo em, vì sao nhím nâu nhận lời kết bạn cùng nhím trắng?",
+      "choices": [
+        {
+          "id": "nhieu-qua",
+          "text": "Vì nhà nhím trắng có rất nhiều quả cây ngon."
+        },
+        {
+          "id": "tot-bung-buon",
+          "text": "Vì nhím trắng tốt bụng, và nhím nâu thấy không có bạn bè thì thật buồn."
+        },
+        {
+          "id": "so-gian",
+          "text": "Vì nhím nâu sợ nhím trắng giận mình."
+        }
+      ],
+      "skill": "doc-hieu",
+      "answer": {
+        "choice": "tot-bung-buon"
+      },
+      "curriculumRef": [
+        "tv2-t1-b20-doc-3"
+      ],
+      "support": {
+        "guide": [
+          "Đọc đoạn ba.",
+          "Tìm điều nhím nâu nghĩ trước khi nhận lời."
+        ],
+        "hint": "Nhím nâu nghĩ: “Nhím trắng tốt bụng quá…”.",
+        "answer": {
+          "text": "Nhím trắng tốt bụng quá, mà sống không có bạn thì buồn lắm.",
+          "explanation": "Nhím nâu thấy nhím trắng tốt bụng và hiểu rằng không có bạn bè thì thật buồn, nên mạnh dạn nhận lời kết bạn."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đúng rồi! Hổ Vằn lẩm bẩm: không có bạn thì buồn thật, tớ biết mà.",
+          "Chuẩn, tấm lòng tốt bụng của nhím trắng đã làm nhím nâu mạnh dạn.",
+          "{name} hiểu bạn nhím nâu ghê, Hổ Vằn chớp chớp mắt cảm động."
+        ],
+        "wrong": [
+          "Truyện không nói gì về quả cây trong hang đâu, đọc đoạn ba nhé.",
+          "Nhím trắng tươi cười mà, có giận gì đâu nào.",
+          "Tìm câu nhím nâu tự nghĩ, câu có chữ “tốt bụng”."
+        ]
+      }
+    },
+    {
+      "id": "mua-dong-am-ap",
+      "title": "Mùa đông ấm áp của hai bạn",
+      "kind": "challenge",
+      "mechanic": "quiz",
+      "target": "tv2-t11-hang-da-nho",
+      "prompt": "Hổ Vằn ôm má mơ màng: một mùa đông ấm áp… nghe thích quá, tớ cũng muốn có một mùa đông như thế. Nhờ đâu nhím trắng và nhím nâu có những ngày mùa đông vui vẻ, ấm áp?",
+      "choices": [
+        {
+          "id": "lo-suoi",
+          "text": "Vì cái hang nhỏ có một lò sưởi thật to."
+        },
+        {
+          "id": "khong-mot-minh",
+          "text": "Vì không phải sống một mình giữa mùa đông lạnh giá."
+        },
+        {
+          "id": "troi-khong-lanh",
+          "text": "Vì mùa đông năm ấy trời chẳng lạnh chút nào."
+        }
+      ],
+      "skill": "doc-hieu",
+      "answer": {
+        "choice": "khong-mot-minh"
+      },
+      "curriculumRef": [
+        "tv2-t1-b20-doc-4"
+      ],
+      "support": {
+        "guide": [
+          "Đọc câu cuối cùng của truyện.",
+          "Điều gì làm hai bạn thấy ấm áp?"
+        ],
+        "hint": "Câu trả lời bắt đầu bằng chữ “vì”, ở cuối truyện.",
+        "answer": {
+          "text": "Hai bạn có nhau, chẳng ai phải ở một mình suốt mùa đông lạnh giá.",
+          "explanation": "Hai bạn có những ngày vui vẻ, ấm áp vì không phải sống một mình giữa mùa đông lạnh giá."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đúng rồi, có bạn bên cạnh là ấm hơn cả chăn bông!",
+          "Chính xác! Hổ Vằn quyết tâm: mùa đông này tớ cũng phải có bạn.",
+          "Giỏi lắm, câu cuối truyện đã được {name} tìm ra."
+        ],
+        "wrong": [
+          "Hang của nhím làm gì có lò sưởi, đọc lại câu cuối nhé.",
+          "Truyện nói rõ mùa đông lạnh giá cơ mà.",
+          "Tìm chữ “vì” ở câu cuối cùng của truyện xem sao."
+        ]
+      }
+    },
+    {
+      "id": "dong-vai-gap-lai",
+      "title": "Đóng vai lần gặp lại",
+      "goTo": "Ra khỏi hang, về bụi gai cuối rừng tập đóng vai",
+      "kind": "speak",
+      "target": "ho-van",
+      "prompt": "Hổ Vằn xin làm nhím nâu vì bạn ấy cuộn tròn giỏi lắm… nhưng cuộn mãi vẫn thò cái đuôi vằn ra ngoài. Đóng vai nhím trắng, nhím nâu trong lần gặp lại để nói tiếp các câu: Xin lỗi,... Đừng ngại,...",
+      "hints": [
+        "Nhím nâu run run: Xin lỗi, …",
+        "Nhím trắng tươi cười: Đừng ngại, …",
+        "Nói thật dịu dàng và mỉm cười với bạn nhé."
+      ],
+      "pictureRefs": [
+        {
+          "kind": "diagram",
+          "type": "picture-card",
+          "params": {
+            "caption": "nhím nâu và nhím trắng gặp nhau, bóng nói của nhím nâu: “Xin lỗi,...”, bóng nói của nhím trắng: “Đừng ngại,...”"
+          }
+        }
+      ],
+      "curriculumRef": [
+        "tv2-t1-b20-doc-lt1"
+      ]
+    },
+    {
+      "id": "noi-loi-xin-loi",
+      "title": "Lời xin lỗi khi va phải bạn",
+      "kind": "speak",
+      "target": "ho-van",
+      "prompt": "Hổ Vằn gãi đầu: hôm qua tớ chạy vội, va trúng Chíp làm Chíp lăn một vòng. Thảo nào Chíp sợ tớ! Đóng vai Bình và An để nói và đáp lời xin lỗi trong tình huống: Bình vô tình va vào An, làm An ngã.",
+      "hints": [
+        "Bình: Ôi, …",
+        "An: …",
+        "Bình đỡ An dậy rồi nói gì thêm?"
+      ],
+      "curriculumRef": [
+        "tv2-t1-b20-doc-lt2"
+      ]
+    },
+    {
+      "id": "gio-van-iu-uu",
+      "title": "Bốn cái giỏ vần",
+      "goTo": "Sang gốc sồi đầu lối mòn, Chíp đang ló đầu ra nhìn",
+      "kind": "challenge",
+      "mechanic": "classify",
+      "target": "ga-con-chip",
+      "prompt": "Chíp hết sợ rồi, lại hỏi: tại sao iu với ưu trông giống nhau thế? Tại sao iên với iêng lại khác nhau? Cùng chia các từ vào đúng giỏ nào!\nChọn a hoặc b. a. Tìm từ có tiếng chứa iu hoặc ưu. M: iu: líu lo; ưu: lưu luyến\nChọn a hoặc b. b. Tìm từ có tiếng chứa iên hoặc iêng. M: iên: hiền lành; iêng: siêng năng",
+      "groups": [
+        {
+          "id": "iu",
+          "label": "iu"
+        },
+        {
+          "id": "uu",
+          "label": "ưu"
+        },
+        {
+          "id": "ien",
+          "label": "iên"
+        },
+        {
+          "id": "ieng",
+          "label": "iêng"
+        }
+      ],
+      "items": [
+        {
+          "id": "qua-luu",
+          "label": "quả lựu"
+        },
+        {
+          "id": "tieng-hat",
+          "label": "tiếng hát"
+        },
+        {
+          "id": "cai-riu",
+          "label": "cái rìu"
+        },
+        {
+          "id": "co-tien",
+          "label": "cô tiên"
+        },
+        {
+          "id": "cuu-ban",
+          "label": "cứu bạn"
+        },
+        {
+          "id": "cai-kieng",
+          "label": "cái kiềng"
+        },
+        {
+          "id": "chiu-kho",
+          "label": "chịu khó"
+        },
+        {
+          "id": "bo-bien",
+          "label": "bờ biển"
+        }
+      ],
+      "skill": "chinh-ta",
+      "answer": {
+        "assignment": {
+          "cai-riu": "iu",
+          "chiu-kho": "iu",
+          "qua-luu": "uu",
+          "cuu-ban": "uu",
+          "co-tien": "ien",
+          "bo-bien": "ien",
+          "tieng-hat": "ieng",
+          "cai-kieng": "ieng"
+        }
+      },
+      "curriculumRef": [
+        "tv2-t1-b20-chinh-ta-3-a",
+        "tv2-t1-b20-chinh-ta-3-b"
+      ],
+      "support": {
+        "guide": [
+          "Đọc to từng từ, nghe phần vần.",
+          "Từ mẫu: líu lo (iu), lưu luyến (ưu), hiền lành (iên), siêng năng (iêng)."
+        ],
+        "hint": "Mỗi giỏ có đúng hai từ.",
+        "answer": {
+          "text": "iu: cái rìu, chịu khó; ưu: quả lựu, cứu bạn; iên: cô tiên, bờ biển; iêng: tiếng hát, cái kiềng",
+          "explanation": "Rìu, chịu có vần iu; lựu, cứu có vần ưu; tiên, biển có vần iên; tiếng, kiềng có vần iêng."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bốn giỏ đầy đủ! Chíp vỗ cánh: à, ra là thế, ra là thế!",
+          "Đúng hết rồi, Chíp quên luôn câu “tại sao” tiếp theo.",
+          "Chíp nhảy tưng tưng: {name} phân biệt vần tài quá!"
+        ],
+        "wrong": [
+          "Quả lựu có vần ưu, cái rìu mới là iu đấy.",
+          "Nghe cuối tiếng nhé: “tiếng” có ng, còn “tiên” thì không.",
+          "Có từ lạc giỏ rồi, đọc chậm phần vần thêm lần nữa."
+        ]
+      }
+    },
+    {
+      "id": "ba-manh-tho-g-gh",
+      "title": "Ba mẩu thơ g hay gh",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "target": "ga-con-chip",
+      "prompt": "Chíp chìa ra ba mẩu thơ nhặt dưới gốc sồi: tại sao chỗ này viết g, chỗ kia lại viết gh? Chọn g hoặc gh thay cho ô vuông.",
+      "template": "– Suối {{a1}}ặp bạn rồi\n{{a2}}óp thành sông lớn.\nSông đi ra biển\nBiển thành mênh mông.\n(Theo Nguyễn Bao)\n– Quả {{b1}}ấc nào mà chín\nCũng {{b2}}ặp được mặt trời.\n(Theo Nguyễn Đức Quang)\n– Nắng {{c1}}é vào cửa lớp\nXem chúng em học bài.\n(Theo Nguyễn Xuân Sanh)",
+      "blanks": [
+        {
+          "id": "a1",
+          "options": [
+            {
+              "id": "g",
+              "text": "g"
+            },
+            {
+              "id": "gh",
+              "text": "gh"
+            }
+          ]
+        },
+        {
+          "id": "a2",
+          "options": [
+            {
+              "id": "g-hoa",
+              "text": "G"
+            },
+            {
+              "id": "gh-hoa",
+              "text": "Gh"
+            }
+          ]
+        },
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "g",
+              "text": "g"
+            },
+            {
+              "id": "gh",
+              "text": "gh"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "g",
+              "text": "g"
+            },
+            {
+              "id": "gh",
+              "text": "gh"
+            }
+          ]
+        },
+        {
+          "id": "c1",
+          "options": [
+            {
+              "id": "g",
+              "text": "g"
+            },
+            {
+              "id": "gh",
+              "text": "gh"
+            }
+          ]
+        }
+      ],
+      "skill": "chinh-ta",
+      "answer": {
+        "fills": {
+          "a1": "g",
+          "a2": "g-hoa",
+          "b1": "g",
+          "b2": "g",
+          "c1": "gh"
+        }
+      },
+      "curriculumRef": [
+        "tv2-t1-b20-chinh-ta-2-a",
+        "tv2-t1-b20-chinh-ta-2-b",
+        "tv2-t1-b20-chinh-ta-2-c"
+      ],
+      "support": {
+        "guide": [
+          "Nhìn chữ cái đứng ngay sau ô vuông.",
+          "Đứng trước e, ê, i thì viết gh; trước các chữ khác thì viết g."
+        ],
+        "hint": "Chỉ có một ô cần gh: ô đứng trước chữ é.",
+        "answer": {
+          "text": "gặp; Góp; gấc; gặp; ghé",
+          "explanation": "Gặp, góp, gấc đứng trước ă, o, â nên viết g; ghé đứng trước e nên viết gh."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Năm ô đều đúng! Chíp gật gù, lần đầu tiên quên hỏi “tại sao”.",
+          "Chuẩn rồi, gh chỉ đi với e, ê, i thôi, {name} nhớ chắc ghê.",
+          "Ba mẩu thơ liền mạch, Chíp đọc to đến mức Hổ Vằn cũng vỗ tay."
+        ],
+        "wrong": [
+          "Ô trước chữ é thì cần thêm h đấy.",
+          "Trước ă, â, o thì chỉ cần g thôi, không cần h đâu.",
+          "Đầu dòng thơ thì viết hoa, nhớ chọn G nhé."
+        ]
+      }
+    },
+    {
+      "id": "la-tu-ngu-ho-van",
+      "title": "Sáu chiếc lá của Hổ Vằn",
+      "goTo": "Về bụi gai cuối rừng, Hổ Vằn có việc nhờ",
+      "kind": "challenge",
+      "mechanic": "classify",
+      "target": "ho-van",
+      "prompt": "Hổ Vằn viết sáu từ lên sáu chiếc lá để tập làm bạn tốt, nhưng gió thổi lẫn hết cả. Grừ… à không, nhờ cậu nhé! Xếp các từ ngữ dưới đây vào nhóm thích hợp: nhường bạn, hiền lành, giúp đỡ, chia sẻ, chăm chỉ, tươi cười.",
+      "groups": [
+        {
+          "id": "hoat-dong",
+          "label": "Từ ngữ chỉ hoạt động"
+        },
+        {
+          "id": "dac-diem",
+          "label": "Từ ngữ chỉ đặc điểm"
+        }
+      ],
+      "items": [
+        {
+          "id": "nhuong-ban",
+          "label": "nhường bạn"
+        },
+        {
+          "id": "hien-lanh",
+          "label": "hiền lành"
+        },
+        {
+          "id": "giup-do",
+          "label": "giúp đỡ"
+        },
+        {
+          "id": "chia-se",
+          "label": "chia sẻ"
+        },
+        {
+          "id": "cham-chi",
+          "label": "chăm chỉ"
+        },
+        {
+          "id": "tuoi-cuoi",
+          "label": "tươi cười"
+        }
+      ],
+      "skill": "tu-ngu",
+      "answer": {
+        "assignment": {
+          "nhuong-ban": "hoat-dong",
+          "giup-do": "hoat-dong",
+          "chia-se": "hoat-dong",
+          "hien-lanh": "dac-diem",
+          "cham-chi": "dac-diem",
+          "tuoi-cuoi": "dac-diem"
+        }
+      },
+      "curriculumRef": [
+        "tv2-t1-b20-tu-ngu-cau-1-a",
+        "tv2-t1-b20-tu-ngu-cau-1-b"
+      ],
+      "support": {
+        "guide": [
+          "Từ chỉ hoạt động là việc mình làm cho bạn.",
+          "Từ chỉ đặc điểm nói một người như thế nào."
+        ],
+        "hint": "Mỗi nhóm có ba từ.",
+        "answer": {
+          "text": "Hoạt động: nhường bạn, giúp đỡ, chia sẻ. Đặc điểm: hiền lành, chăm chỉ, tươi cười.",
+          "explanation": "Nhường bạn, giúp đỡ, chia sẻ là những việc làm; hiền lành, chăm chỉ, tươi cười cho biết một người như thế nào."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Hai nhóm gọn gàng! Hổ Vằn dán sáu chiếc lá lên ngực như huân chương.",
+          "Đúng rồi, việc làm một bên, tính nết một bên.",
+          "Hổ Vằn hứa sẽ “tươi cười” thay cho “gầm grừ” từ hôm nay."
+        ],
+        "wrong": [
+          "Giúp đỡ là việc mình làm, nên nó thuộc nhóm hoạt động.",
+          "Hiền lành nói một bạn như thế nào, đó là đặc điểm đấy.",
+          "Mỗi nhóm có đúng ba chiếc lá, đếm lại xem nhé."
+        ]
+      }
+    },
+    {
+      "id": "chuyen-hai-xuan-ha",
+      "title": "Chuyện của Hải và Xuân",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "target": "ho-van",
+      "prompt": "Hổ Vằn đọc ba mẩu chuyện về Hải và Xuân, gật gù: tớ cũng muốn được khen như thế! Chọn từ ngữ chỉ hoạt động đã tìm được ở bài tập 1 thay cho ô vuông.",
+      "template": "a. Mẹ cho Hải cái bánh rất ngon. Hải mang đến cho Hà và Xuân cùng ăn. Mẹ khen: “Con biết {{o-a}} cùng bạn bè rồi đấy”.\nb. Biết Hải ốm, phải nghỉ học, Xuân mang sách vở sang, giảng bài cho bạn. Hải xúc động vì bạn đã {{o-b}} khi mình bị ốm.\nc. Hải và Xuân đều muốn ngồi bàn đầu. Nhưng ở đó chỉ còn một chỗ. Xuân xin cô cho Hải được ngồi chỗ mới. Cô khen Xuân đã biết {{o-c}}.",
+      "blanks": [
+        {
+          "id": "o-a",
+          "options": [
+            {
+              "id": "nhuong-ban",
+              "text": "nhường bạn"
+            },
+            {
+              "id": "giup-do",
+              "text": "giúp đỡ"
+            },
+            {
+              "id": "chia-se",
+              "text": "chia sẻ"
+            }
+          ]
+        },
+        {
+          "id": "o-b",
+          "options": [
+            {
+              "id": "nhuong-ban",
+              "text": "nhường bạn"
+            },
+            {
+              "id": "giup-do",
+              "text": "giúp đỡ"
+            },
+            {
+              "id": "chia-se",
+              "text": "chia sẻ"
+            }
+          ]
+        },
+        {
+          "id": "o-c",
+          "options": [
+            {
+              "id": "nhuong-ban",
+              "text": "nhường bạn"
+            },
+            {
+              "id": "giup-do",
+              "text": "giúp đỡ"
+            },
+            {
+              "id": "chia-se",
+              "text": "chia sẻ"
+            }
+          ]
+        }
+      ],
+      "skill": "tu-ngu",
+      "answer": {
+        "fills": {
+          "o-a": "chia-se",
+          "o-b": "giup-do",
+          "o-c": "nhuong-ban"
+        }
+      },
+      "curriculumRef": [
+        "tv2-t1-b20-tu-ngu-cau-2-a",
+        "tv2-t1-b20-tu-ngu-cau-2-b",
+        "tv2-t1-b20-tu-ngu-cau-2-c"
+      ],
+      "support": {
+        "guide": [
+          "Đọc từng mẩu chuyện xem bạn đã làm gì.",
+          "Mang bánh cho bạn cùng ăn, giảng bài cho bạn ốm, xin chỗ ngồi cho bạn."
+        ],
+        "hint": "Ba ô dùng ba từ khác nhau: chia sẻ, giúp đỡ, nhường bạn.",
+        "answer": {
+          "text": "a. chia sẻ; b. giúp đỡ; c. nhường bạn",
+          "explanation": "Hải mang bánh cho bạn cùng ăn là biết chia sẻ; Xuân giảng bài cho bạn ốm là giúp đỡ; Xuân xin cho Hải chỗ mới là biết nhường bạn."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ba mẩu chuyện tròn trịa! Hổ Vằn xoa bụng: nghe chuyện bánh mà đói ghê.",
+          "Đúng cả ba, chia sẻ, giúp đỡ, nhường bạn đều đúng chỗ.",
+          "Hổ Vằn reo: tớ sẽ thử cả ba việc tốt này với Chíp!"
+        ],
+        "wrong": [
+          "Mang bánh mời bạn cùng ăn là biết làm gì với bạn nhỉ?",
+          "Xuân giảng bài khi Hải ốm, vậy Xuân đã làm gì cho bạn?",
+          "Chỗ ngồi bàn đầu Xuân để cho Hải, đó là biết nhường hay chia sẻ?"
+        ]
+      }
+    },
+    {
+      "id": "tranh-tren-bui-gai",
+      "title": "Bốn bức tranh trên bụi gai",
+      "kind": "speak",
+      "target": "ho-van",
+      "prompt": "Hổ Vằn treo bốn bức tranh lên bụi gai, gai nhọn giữ tranh chắc ra phết! Đặt một câu về hoạt động của các bạn trong tranh. M: Bạn Lan cho bạn Hải mượn bút.",
+      "hints": [
+        "Tranh 2: Cô giáo và các bạn đến nhà ai? Để làm gì?",
+        "Tranh 3: Hai bạn đang lau những gì trong lớp?",
+        "Tranh 4: Các bạn đang múa hát ở đâu?"
+      ],
+      "pictureRefs": [
+        {
+          "kind": "diagram",
+          "type": "picture-card",
+          "params": {
+            "caption": "tranh 1 (mẫu): bạn gái đưa bút cho bạn trai",
+            "n": 1
+          }
+        },
+        {
+          "kind": "diagram",
+          "type": "picture-card",
+          "params": {
+            "caption": "tranh 2: cô giáo và các bạn đến thăm bạn gái bị ốm nằm trên giường",
+            "n": 2
+          }
+        },
+        {
+          "kind": "diagram",
+          "type": "picture-card",
+          "params": {
+            "caption": "tranh 3: hai bạn lau bàn và lau cửa kính lớp học",
+            "n": 3
+          }
+        },
+        {
+          "kind": "diagram",
+          "type": "picture-card",
+          "params": {
+            "caption": "tranh 4: bốn bạn múa hát, hai bạn cầm micro",
+            "n": 4
+          }
+        }
+      ],
+      "curriculumRef": [
+        "tv2-t1-b20-tu-ngu-cau-3-a",
+        "tv2-t1-b20-tu-ngu-cau-3-b",
+        "tv2-t1-b20-tu-ngu-cau-3-c"
+      ]
+    },
+    {
+      "id": "ho-van-lam-quen",
+      "title": "Hổ Vằn chọn cách làm quen",
+      "kind": "dialogue",
+      "target": "ho-van",
+      "lines": [
+        {
+          "speaker": "Hổ Vằn",
+          "text": "Tớ hiểu rồi! Nhím trắng đâu có gầm, nhím trắng tươi cười và chào thật vồn vã."
+        },
+        {
+          "speaker": "Hổ Vằn",
+          "text": "Vậy lần này tớ làm quen với Chíp thế nào đây, {name}? Đuôi tớ lại bắt đầu run rồi…"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cậu cười thật tươi rồi chào: Chào bạn, rất vui được gặp bạn!",
+          "reply": "Grừ… à nhầm, chào bạn! Ôi, Chíp vẫy cánh chào lại tớ kìa!"
+        },
+        {
+          "text": "Cậu mời Chíp ăn chung mấy quả dại vừa hái.",
+          "reply": "Chíp mổ một quả rồi hỏi: tại sao quả này ngọt thế? Tớ chẳng biết, nhưng vui quá!"
+        },
+        {
+          "text": "Cậu rủ Chíp chơi trốn tìm, cậu làm người đi tìm.",
+          "reply": "Ý hay! Lần này tớ đi tìm, khỏi lo cái đuôi vằn thò ra ngoài nữa."
+        }
+      ]
+    },
+    {
+      "id": "hoat-dong-yeu-thich",
+      "title": "Kể về trò em thích",
+      "goTo": "Cùng Hổ Vằn sang gốc sồi đầu lối mòn ngồi với Chíp",
+      "kind": "speak",
+      "target": "ga-con-chip",
+      "prompt": "Chíp kéo Hổ Vằn ngồi xuống cạnh mình, chẳng ai trốn nữa. Chíp hỏi: tại sao cậu thích trò đó? Tìm đọc các bài viết về hoạt động của học sinh ở trường. Nói với bạn về hoạt động em yêu thích.",
+      "hints": [
+        "Tên của hoạt động là gì?",
+        "Những ai đã tham gia hoạt động đó?",
+        "Điều bạn thích nhất ở hoạt động đó là gì?"
+      ],
+      "pictureRefs": [
+        {
+          "kind": "diagram",
+          "type": "picture-card",
+          "params": {
+            "caption": "bạn trai nói với bạn gái, bóng nói: “– Tên của hoạt động là gì? – Những ai đã tham gia hoạt động đó? – Điều bạn thích nhất ở hoạt động đó là gì?”"
+          }
+        }
+      ],
+      "curriculumRef": [
+        "tv2-t1-b20-doc-mo-rong-1",
+        "tv2-t1-b20-doc-mo-rong-2"
+      ]
+    },
+    {
+      "id": "phieu-viet-bai-20",
+      "title": "Phiếu viết Bài 20",
+      "kind": "worksheet",
+      "trigger": "auto",
+      "lessonId": "tv2-t1-b20",
+      "text": "Nhờ bố mẹ in phiếu Bài 20 ở khu phụ huynh: nghe – viết đoạn Nhím nâu kết bạn, kể tên các hoạt động giờ ra chơi và viết 3 – 4 câu về giờ ra chơi ở trường em. Hổ Vằn hứa ngồi cạnh, không gầm làm em giật mình.",
+      "curriculumRef": [
+        "tv2-t1-b20-nghe-viet-1",
+        "tv2-t1-b20-viet-doan-1",
+        "tv2-t1-b20-viet-doan-2"
+      ]
+    },
+    {
+      "id": "huy-hieu-nhim-tron",
+      "title": "Huy hiệu nhím cuộn tròn",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Hổ Vằn tặng {name} chiếc huy hiệu hình chú nhím cuộn tròn, khắc dòng chữ “Bạn đầu tiên của Hổ Vằn”. Lần này bạn ấy chỉ gầm khẽ: grừ… cảm ơn nhé!"
+    },
+    {
+      "id": "mo-bai-21",
+      "title": "Con diều trên ngọn cây",
+      "kind": "unlock",
+      "trigger": "auto",
+      "text": "Từ đỉnh đồi lộng gió, Khỉ Lanh đu cành kêu ầm: con diều mới tinh vướng trên ngọn cây cao vút rồi! Một, hai, ba… ai lên giúp tớ với?"
+    }
+  ],
+  "reward": {
+    "xp": 90,
+    "coin": 15,
+    "skillXp": {
+      "doc-hieu": 2,
+      "chinh-ta": 2,
+      "tu-ngu": 2
+    }
+  }
+}

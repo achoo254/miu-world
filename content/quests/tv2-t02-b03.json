@@ -1,0 +1,832 @@
+{
+  "id": "tv2-t02-b03",
+  "region": "khu-rung-bi-mat",
+  "chapter": 3,
+  "title": "Thỏ Tí ước dưới cầu vồng",
+  "status": "draft",
+  "lesson": "tv2-t1-b03",
+  "summary": "Mưa vừa tạnh, cầu vồng vắt ngang bãi cỏ, Thỏ Tí muốn ước một lúc cả chục điều rồi quên sạch. {name} nhặt đồ Thỏ Tí đánh rơi, đọc chuyện Bi và Bống, xếp lại tranh phơi trên dây và kể chuyện về niềm vui không cần hũ vàng.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "Thỏ Tí (nhanh nhảu, đang nói thì quên), Vẹt Xanh sưu tầm từ lạ, Hải Ly Cần vừa xong nhịp cầu thứ hai",
+    "where": "Bãi cỏ sau mưa có cầu vồng trong Khu rừng bí mật, chân cầu vồng, bảng gỗ bãi cỏ và dây phơi tranh",
+    "goal": "Giúp Thỏ Tí tìm ra niềm vui thật sự sau khi cầu vồng biến mất",
+    "play": "Tìm đồ, nói, đọc truyện, phân loại, trắc nghiệm, chọn nhiều đáp án, lựa chọn trong hội thoại, xếp tranh, điền từ, kể chuyện, phiếu viết",
+    "learn": "Tiếng Việt 2 Bài 3: đọc hiểu \"Niềm vui của Bi và Bống\", từ ngữ chỉ người và chỉ vật, câu thể hiện sự ngạc nhiên, kể chuyện theo tranh, viết chữ hoa Ă, Â",
+    "reward": "80 XP, 15 xu, Đọc hiểu +2, Kể chuyện +2, Từ ngữ +1",
+    "unlock": "Bài 4 \"Làm việc thật là vui\""
+  },
+  "phases": {
+    "hook": "gap-tho-ti",
+    "explore": "tim-do-tho-ti",
+    "learn": "doc-truyen",
+    "challenge": "may-tu-ngu",
+    "decision": "ve-tang-ai",
+    "finale": "xep-tranh-phoi",
+    "reward": "qua-cua-tho-ti",
+    "unlock": "mo-bai-4"
+  },
+  "texts": {
+    "niem-vui-cua-bi-va-bong": {
+      "title": "Niềm vui của Bi và Bống",
+      "author": "Theo 108 truyện mẹ kể con nghe",
+      "body": "Khi cơn mưa vừa dứt, hai anh em Bi và Bống chợt thấy cầu vồng.\n\n– Cầu vồng kìa! Em nhìn xem. Đẹp quá!\n\nBi chỉ lên bầu trời và nói tiếp:\n\n– Anh nghe nói dưới chân cầu vồng có bảy hũ vàng đấy.\n\nBống hưởng ứng:\n\n– Lát nữa, mình sẽ đi lấy về nhé! Có vàng rồi, em sẽ mua nhiều búp bê và quần áo đẹp.\n\n– Còn anh sẽ mua một con ngựa hồng và một cái ô tô.\n\nBỗng nhiên, cầu vồng biến mất. Bi cười:\n\n– Em ơi! Anh đùa đấy! Ở đó không có vàng đâu.\n\nBống vui vẻ:\n\n– Thế ạ? Nếu vậy, em sẽ lấy bút màu để vẽ tặng anh ngựa hồng và ô tô.\n\n– Còn anh sẽ vẽ tặng em nhiều búp bê và quần áo đủ các màu sắc.\n\nKhông có bảy hũ vàng dưới chân cầu vồng, hai anh em vẫn cười vui vẻ.",
+      "glossary": [
+        {
+          "term": "Hũ",
+          "meaning": "bình sành sứ loại nhỏ, ở giữa phình ra, nhỏ dần về đáy, dùng để đựng."
+        }
+      ],
+      "section": "tv2-t1-b03-doc"
+    }
+  },
+  "places": {
+    "tho-ti": "bãi cỏ sau mưa",
+    "tim-do-tho-ti": "chân cầu vồng",
+    "tv2-t02-bang-go-bai-co": "bảng gỗ bãi cỏ",
+    "tv2-t02-day-phoi-tranh": "dây phơi tranh"
+  },
+  "steps": [
+    {
+      "id": "gap-tho-ti",
+      "title": "Thỏ Tí và chiếc cầu vồng",
+      "goTo": "Ra bãi cỏ sau mưa, Thỏ Tí đang nhảy tưng tưng",
+      "kind": "dialogue",
+      "target": "tho-ti",
+      "lines": [
+        {
+          "speaker": "Thỏ Tí",
+          "text": "{name} ơi, nhìn kìa! Cầu vồng! Tớ phải ước ngay, ước thật nhiều cơ!"
+        },
+        {
+          "speaker": "Thỏ Tí",
+          "text": "Tớ ước một củ cà rốt to bằng cái cây, một đôi ủng đỏ, rồi một… một… ơ, tớ định ước gì nhỉ?"
+        },
+        {
+          "speaker": "Vẹt Xanh",
+          "text": "Nghe đồn dưới chân cầu vồng có cả hũ vàng! Hũ hũ! Từ này lạ ghê, tớ cất vào bộ sưu tập ngay!"
+        },
+        {
+          "speaker": "Thỏ Tí",
+          "text": "Tớ chạy tới tận chân cầu vồng rồi, chẳng thấy vàng đâu, lại còn đánh rơi đồ dọc đường."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Mình giúp cậu nhặt đồ trước đã nhé!",
+          "reply": "Thỏ Tí gật lia lịa: ừ ừ! Tớ rơi mất… à, cậu cứ tìm đi, thấy rồi tớ sẽ nhớ ra!"
+        },
+        {
+          "text": "Cầu vồng đẹp thế, cậu ước một điều thôi!",
+          "reply": "Một điều thôi á? Khó quá! Để tớ vừa đi nhặt đồ vừa nghĩ."
+        }
+      ]
+    },
+    {
+      "id": "tim-do-tho-ti",
+      "title": "Nhặt đồ ở chân cầu vồng",
+      "goTo": "Ra chân cầu vồng nhặt đồ Thỏ Tí đánh rơi",
+      "kind": "search",
+      "targets": [
+        "tv2-t02-hu-sanh-rong",
+        "tv2-t02-hop-but-mau",
+        "tv2-t02-cuon-giay-ve"
+      ]
+    },
+    {
+      "id": "doan-tranh-cau-vong",
+      "title": "Hai bạn nhỏ ngắm cầu vồng",
+      "goTo": "Mang hũ sành, bút màu, giấy vẽ về bãi cỏ sau mưa",
+      "kind": "speak",
+      "target": "tho-ti",
+      "prompt": "Thỏ Tí giơ tấm tranh lấy ra từ cuộn giấy vẽ, định hỏi gì đó rồi quên béng. Vẹt Xanh nhắc hộ: Bức tranh dưới đây vẽ những gì? Đoán xem hai bạn nhỏ nói gì với nhau.",
+      "hints": [
+        "Kể xem trong tranh có những ai, họ đứng ở đâu.",
+        "Bầu trời sau cơn mưa có gì lạ và đẹp?",
+        "Người anh đang chỉ tay lên trời, chắc anh ấy nói gì với em?"
+      ],
+      "pictureRefs": [
+        {
+          "kind": "diagram",
+          "type": "picture-card",
+          "params": {
+            "caption": "hai anh em đứng bên lan can, anh chỉ tay lên cầu vồng trên bầu trời sau mưa"
+          }
+        }
+      ],
+      "curriculumRef": [
+        "tv2-t1-b03-doc-kd1",
+        "tv2-t1-b03-doc-kd2"
+      ]
+    },
+    {
+      "id": "doc-truyen",
+      "title": "Đọc chuyện Bi và Bống",
+      "goTo": "Nhảy tới bảng gỗ bãi cỏ đọc chuyện Bi và Bống",
+      "kind": "read",
+      "target": "tv2-t02-bang-go-bai-co",
+      "textRef": "niem-vui-cua-bi-va-bong",
+      "audio": true,
+      "question": "Tìm trong bài những câu cho thấy sự ngạc nhiên của Bi khi nhìn thấy cầu vồng.",
+      "choices": [
+        {
+          "id": "anh-dua",
+          "text": "Em ơi! Anh đùa đấy! Ở đó không có vàng đâu."
+        },
+        {
+          "id": "cau-vong-kia",
+          "text": "Cầu vồng kìa! Em nhìn xem. Đẹp quá!"
+        },
+        {
+          "id": "hu-vang",
+          "text": "Anh nghe nói dưới chân cầu vồng có bảy hũ vàng đấy."
+        }
+      ],
+      "skill": "doc-hieu",
+      "answer": {
+        "choice": "cau-vong-kia"
+      },
+      "curriculumRef": [
+        "tv2-t1-b03-doc-lt2"
+      ],
+      "support": {
+        "guide": [
+          "Đọc lại lời Bi nói ngay khi vừa thấy cầu vồng.",
+          "Câu ngạc nhiên thường kết thúc bằng dấu chấm than."
+        ],
+        "hint": "Bi vừa nhìn thấy cầu vồng là reo lên, chỉ cho em xem.",
+        "answer": {
+          "text": "Cầu vồng kìa! Em nhìn xem. Đẹp quá!",
+          "explanation": "Lúc cơn mưa vừa dứt, Bi chợt thấy cầu vồng và reo lên: \"Cầu vồng kìa! Em nhìn xem. Đẹp quá!\". Hai câu kia Bi nói sau đó."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đúng rồi! Bi reo y như Thỏ Tí lúc nãy, chỉ khác là Bi không quên mình định nói gì.",
+          "Chuẩn! Vẹt Xanh nhại lại liền hai lần: Đẹp quá! Đẹp quá!",
+          "Thỏ Tí vỗ tay bộp bộp: {name} tìm ra câu reo của Bi nhanh như thỏ!"
+        ],
+        "wrong": [
+          "Câu này Bi nói lúc đùa với em, khi cầu vồng đã biến mất rồi cơ.",
+          "Chuyện hũ vàng là Bi kể thêm sau đó, đâu phải lúc mới ngạc nhiên.",
+          "Tìm câu Bi reo lên ngay khi vừa thấy cầu vồng, có tới hai dấu chấm than đấy."
+        ]
+      }
+    },
+    {
+      "id": "neu-co-hu-vang",
+      "title": "Nếu có bảy hũ vàng",
+      "kind": "challenge",
+      "mechanic": "classify",
+      "target": "tv2-t02-bang-go-bai-co",
+      "prompt": "Nghe tới bảy hũ vàng, Thỏ Tí quên luôn củ cà rốt to bằng cái cây. Nếu có bảy hũ vàng, Bi và Bống sẽ làm gì?",
+      "groups": [
+        {
+          "id": "bong-mua",
+          "label": "Bống sẽ mua"
+        },
+        {
+          "id": "bi-mua",
+          "label": "Bi sẽ mua"
+        }
+      ],
+      "items": [
+        {
+          "id": "o-to",
+          "label": "một cái ô tô",
+          "image": {
+            "kind": "diagram",
+            "type": "picture-card",
+            "params": {
+              "caption": "chiếc ô tô màu đỏ"
+            }
+          }
+        },
+        {
+          "id": "bup-be",
+          "label": "nhiều búp bê",
+          "image": {
+            "kind": "diagram",
+            "type": "picture-card",
+            "params": {
+              "caption": "hai con búp bê"
+            }
+          }
+        },
+        {
+          "id": "ngua-hong",
+          "label": "một con ngựa hồng",
+          "image": {
+            "kind": "diagram",
+            "type": "picture-card",
+            "params": {
+              "caption": "con ngựa màu hồng"
+            }
+          }
+        },
+        {
+          "id": "quan-ao",
+          "label": "quần áo đẹp",
+          "image": {
+            "kind": "diagram",
+            "type": "picture-card",
+            "params": {
+              "caption": "quần áo: áo, váy, quần"
+            }
+          }
+        }
+      ],
+      "skill": "doc-hieu",
+      "answer": {
+        "assignment": {
+          "bup-be": "bong-mua",
+          "quan-ao": "bong-mua",
+          "ngua-hong": "bi-mua",
+          "o-to": "bi-mua"
+        }
+      },
+      "curriculumRef": [
+        "tv2-t1-b03-doc-1"
+      ],
+      "support": {
+        "guide": [
+          "Đọc lời Bống ngay sau câu \"Lát nữa, mình sẽ đi lấy về nhé!\".",
+          "Đọc tiếp câu trả lời của Bi bắt đầu bằng \"Còn anh\"."
+        ],
+        "hint": "Bống nói trước: búp bê và quần áo. Bi nói sau.",
+        "answer": {
+          "text": "Bống sẽ mua nhiều búp bê và quần áo đẹp; Bi sẽ mua một con ngựa hồng và một cái ô tô.",
+          "explanation": "Bống muốn mua nhiều búp bê và quần áo đẹp; Bi muốn mua một con ngựa hồng và một cái ô tô."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Mỗi món quà về đúng tay người muốn mua! Thỏ Tí ước mình cũng có ngựa hồng.",
+          "Chuẩn rồi! Vẹt Xanh đếm: hai món cho Bống, hai món cho Bi, chẳng ai thiệt.",
+          "{name} nhớ lời hai anh em còn giỏi hơn Thỏ Tí nhớ điều ước của mình."
+        ],
+        "wrong": [
+          "Ai nói \"em sẽ mua nhiều búp bê\" nhỉ? Người xưng em là Bống đấy.",
+          "Câu bắt đầu bằng \"Còn anh\" là lời Bi, đọc lại xem Bi muốn mua gì.",
+          "Có một món quà đang nằm nhầm giỏ, giống Thỏ Tí bỏ nhầm cà rốt vào túi bạn ấy."
+        ]
+      }
+    },
+    {
+      "id": "khong-co-hu-vang",
+      "title": "Cầu vồng biến mất",
+      "kind": "challenge",
+      "mechanic": "quiz",
+      "target": "tv2-t02-bang-go-bai-co",
+      "prompt": "Cầu vồng trên bãi cỏ cũng nhạt dần, Thỏ Tí cụp cả hai tai xuống. Không có bảy hũ vàng, hai anh em làm gì?",
+      "choices": [
+        {
+          "id": "gian-nhau",
+          "text": "Hai anh em giận nhau rồi ai về nhà nấy."
+        },
+        {
+          "id": "tim-cau-vong-khac",
+          "text": "Hai anh em lại chạy đi tìm một chiếc cầu vồng khác."
+        },
+        {
+          "id": "ve-tang-nhau",
+          "text": "Bống sẽ lấy bút màu để vẽ tặng anh ngựa hồng và ô tô; Bi sẽ vẽ tặng em nhiều búp bê và quần áo đủ các màu sắc."
+        }
+      ],
+      "skill": "doc-hieu",
+      "answer": {
+        "choice": "ve-tang-nhau"
+      },
+      "curriculumRef": [
+        "tv2-t1-b03-doc-2"
+      ],
+      "support": {
+        "guide": [
+          "Đọc đoạn sau câu \"Bỗng nhiên, cầu vồng biến mất.\"",
+          "Hai anh em định làm gì với bút màu?"
+        ],
+        "hint": "Không có vàng, hai anh em vẽ tặng nhau đúng những món người kia thích.",
+        "answer": {
+          "text": "Bống sẽ lấy bút màu để vẽ tặng anh ngựa hồng và ô tô; Bi sẽ vẽ tặng em nhiều búp bê và quần áo đủ các màu sắc.",
+          "explanation": "Bống vẽ tặng anh ngựa hồng và ô tô, Bi vẽ tặng em búp bê và quần áo: món quà bằng tranh mà ai cũng vui."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đúng thế! Không có vàng, hai anh em vẽ tặng nhau, vui ơi là vui.",
+          "Thỏ Tí dựng ngay hai tai lên: tớ cũng có bút màu nè!",
+          "Giỏi quá, {name} tìm đúng đoạn có hộp bút màu rồi."
+        ],
+        "wrong": [
+          "Hai anh em có giận nhau đâu, cuối bài còn cười vui vẻ mà.",
+          "Bài không kể chuyện đi tìm cầu vồng khác đâu, đọc đoạn cuối nhé.",
+          "Tìm chỗ Bống nói \"em sẽ lấy bút màu\" rồi chọn lại xem."
+        ]
+      }
+    },
+    {
+      "id": "cau-noi-yeu-thuong",
+      "title": "Những câu nói yêu thương",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "target": "tv2-t02-bang-go-bai-co",
+      "prompt": "Vẹt Xanh chép lời hai anh em lên năm chiếc lá, rồi đố liền hai lần: Tìm những câu nói cho thấy hai anh em rất quan tâm và yêu quý nhau.",
+      "choices": [
+        {
+          "id": "hu-vang",
+          "text": "Anh nghe nói dưới chân cầu vồng có bảy hũ vàng đấy."
+        },
+        {
+          "id": "bong-ve-tang",
+          "text": "Thế ạ? Nếu vậy, em sẽ lấy bút màu để vẽ tặng anh ngựa hồng và ô tô."
+        },
+        {
+          "id": "bong-mua",
+          "text": "Lát nữa, mình sẽ đi lấy về nhé! Có vàng rồi, em sẽ mua nhiều búp bê và quần áo đẹp."
+        },
+        {
+          "id": "bi-ve-tang",
+          "text": "Còn anh sẽ vẽ tặng em nhiều búp bê và quần áo đủ các màu sắc."
+        },
+        {
+          "id": "bi-mua",
+          "text": "Còn anh sẽ mua một con ngựa hồng và một cái ô tô."
+        }
+      ],
+      "skill": "doc-hieu",
+      "answer": {
+        "choices": [
+          "bong-ve-tang",
+          "bi-ve-tang"
+        ]
+      },
+      "curriculumRef": [
+        "tv2-t1-b03-doc-3"
+      ],
+      "support": {
+        "guide": [
+          "Tìm những câu hai anh em nghĩ tới người kia chứ không nghĩ cho mình.",
+          "Câu nào có chữ \"tặng\"?"
+        ],
+        "hint": "Có hai câu đúng, đều nói về việc vẽ tặng nhau.",
+        "answer": {
+          "text": "– Thế ạ? Nếu vậy, em sẽ lấy bút màu để vẽ tặng anh ngựa hồng và ô tô. – Còn anh sẽ vẽ tặng em nhiều búp bê và quần áo đủ các màu sắc.",
+          "explanation": "Bống vẽ tặng anh món anh thích, Bi vẽ tặng em món em thích: hai anh em luôn nghĩ tới nhau."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Hai câu \"vẽ tặng\" được tìm ra rồi! Vẹt Xanh reo: tặng tặng! thương thương!",
+          "Đúng rồi, ai cũng nghĩ tới người kia trước, ấm áp ghê.",
+          "Thỏ Tí suýt khóc vì cảm động… rồi quên mất vì sao mình khóc."
+        ],
+        "wrong": [
+          "Câu mua đồ cho mình chưa cho thấy quan tâm tới người kia đâu.",
+          "Còn thiếu một câu có chữ \"tặng\" đấy, tìm thêm nhé.",
+          "Chuyện hũ vàng chỉ là tin đồn, chưa phải lời yêu thương. Chọn lại nào."
+        ]
+      }
+    },
+    {
+      "id": "may-tu-ngu",
+      "title": "Tám đám mây chở từ",
+      "kind": "challenge",
+      "mechanic": "classify",
+      "target": "tv2-t02-bang-go-bai-co",
+      "prompt": "Sau mưa, tám đám mây nhỏ trôi lững thững qua bảng gỗ, mỗi đám mây chở một từ. Thỏ Tí đếm tới bốn thì quên mất đã đếm tới đâu. Xếp các từ ngữ dưới đây vào nhóm thích hợp: hũ vàng, Bống, Bi, anh, quần áo, ô tô, búp bê, em.",
+      "groups": [
+        {
+          "id": "chi-nguoi",
+          "label": "Từ ngữ chỉ người"
+        },
+        {
+          "id": "chi-vat",
+          "label": "Từ ngữ chỉ vật"
+        }
+      ],
+      "items": [
+        {
+          "id": "anh",
+          "label": "anh"
+        },
+        {
+          "id": "o-to",
+          "label": "ô tô"
+        },
+        {
+          "id": "bong",
+          "label": "Bống"
+        },
+        {
+          "id": "hu-vang",
+          "label": "hũ vàng"
+        },
+        {
+          "id": "em",
+          "label": "em"
+        },
+        {
+          "id": "bup-be",
+          "label": "búp bê"
+        },
+        {
+          "id": "bi",
+          "label": "Bi"
+        },
+        {
+          "id": "quan-ao",
+          "label": "quần áo"
+        }
+      ],
+      "skill": "tu-ngu",
+      "answer": {
+        "assignment": {
+          "bong": "chi-nguoi",
+          "bi": "chi-nguoi",
+          "anh": "chi-nguoi",
+          "em": "chi-nguoi",
+          "hu-vang": "chi-vat",
+          "quan-ao": "chi-vat",
+          "o-to": "chi-vat",
+          "bup-be": "chi-vat"
+        }
+      },
+      "curriculumRef": [
+        "tv2-t1-b03-doc-lt1-a",
+        "tv2-t1-b03-doc-lt1-b"
+      ],
+      "support": {
+        "guide": [
+          "Từ chỉ người là tên người hoặc tiếng gọi người: anh, em, Bi…",
+          "Từ chỉ vật gọi tên đồ vật, đồ chơi."
+        ],
+        "hint": "Búp bê trông giống người nhưng chỉ là đồ chơi thôi.",
+        "answer": {
+          "text": "Chỉ người: Bống, Bi, anh, em. Chỉ vật: hũ vàng, quần áo, ô tô, búp bê.",
+          "explanation": "Bi, Bống là tên hai anh em; anh, em là tiếng gọi người. Hũ vàng, quần áo, ô tô, búp bê là đồ vật."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Tám đám mây đã bay về hai bầu trời ngăn nắp!",
+          "Thỏ Tí đếm lại lần thứ năm và lần này nhớ được: đủ tám, đúng cả tám!",
+          "Vẹt Xanh khoe với cả rừng: {name} phân loại siêu siêu! nhanh nhanh!"
+        ],
+        "wrong": [
+          "Búp bê biết đi học không nhỉ? Nó là đồ chơi, tức là vật đấy.",
+          "\"Anh\" và \"em\" là tiếng gọi người, đưa chúng về nhóm chỉ người nhé.",
+          "Còn một đám mây đang bay lạc nhóm, đọc lại từng từ thật chậm xem."
+        ]
+      }
+    },
+    {
+      "id": "ve-tang-ai",
+      "title": "Thỏ Tí vẽ tặng ai",
+      "goTo": "Thỏ Tí gọi {name} ra giữa bãi cỏ sau mưa",
+      "kind": "dialogue",
+      "target": "tho-ti",
+      "lines": [
+        {
+          "speaker": "Thỏ Tí",
+          "text": "Bi với Bống chẳng cần hũ vàng mà vẫn vui ghê. Tớ cũng muốn vẽ tặng… tặng… ơ, tặng ai nhỉ?"
+        },
+        {
+          "speaker": "Hải Ly Cần",
+          "text": "Tặng tớ một bức vẽ cây cầu nhé! Nhịp cầu thứ hai tớ vừa đóng xong, cầu vồng còn vắt ngang trên đó."
+        },
+        {
+          "speaker": "Vẹt Xanh",
+          "text": "Tớ thì thích tranh có thật nhiều từ lạ! Lạ lạ! {name} bảo Thỏ Tí vẽ tặng ai đi!"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Vẽ tặng Hải Ly Cần cây cầu dưới cầu vồng!",
+          "reply": "Thỏ Tí cầm bút màu lên: cầu nâu, cầu vồng bảy màu… thêm cả Hải Ly đang ôm khúc gỗ nữa!"
+        },
+        {
+          "text": "Vẽ tặng em nhỏ ở nhà cậu một chiếc chong chóng!",
+          "reply": "Ơ đúng rồi, tớ có một đứa em mà quên mất! Em ấy mê chong chóng lắm."
+        },
+        {
+          "text": "Vẽ tặng Vẹt Xanh một cuốn sổ đầy từ lạ!",
+          "reply": "Vẹt Xanh sướng quá kêu ầm lên: sổ sổ! lạ lạ! Thỏ Tí cười lăn ra cỏ."
+        }
+      ]
+    },
+    {
+      "id": "xep-tranh-phoi",
+      "title": "Bốn bức tranh trên dây phơi",
+      "goTo": "Sang dây phơi tranh, bốn bức tranh ướt đang bay phấp phới",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "tv2-t02-day-phoi-tranh",
+      "prompt": "Thỏ Tí phơi bốn bức tranh kể chuyện Bi và Bống cho khô, gió thổi một cái là lộn tùng phèo. Xếp tranh theo đúng thứ tự câu chuyện. Nói tiếp để hoàn thành câu dưới tranh.",
+      "items": [
+        {
+          "id": "tranh-3",
+          "label": "Khi cầu vồng biến mất, (…).",
+          "image": {
+            "kind": "diagram",
+            "type": "picture-card",
+            "params": {
+              "caption": "Bi nói \"Anh sẽ vẽ tặng em…\", Bống dang tay nói \"Em sẽ vẽ tặng anh…\"",
+              "n": 3
+            }
+          }
+        },
+        {
+          "id": "tranh-1",
+          "label": "Khi cầu vồng hiện ra, Bi nói (…).",
+          "image": {
+            "kind": "diagram",
+            "type": "picture-card",
+            "params": {
+              "caption": "Bi chỉ tay lên cầu vồng, Bống đứng cạnh; bóng nghĩ có bảy hũ vàng",
+              "n": 1
+            }
+          }
+        },
+        {
+          "id": "tranh-4",
+          "label": "Không có bảy hũ vàng, hai anh em vẫn (…).",
+          "image": {
+            "kind": "diagram",
+            "type": "picture-card",
+            "params": {
+              "caption": "hai anh em cười vui vẻ",
+              "n": 4
+            }
+          }
+        },
+        {
+          "id": "tranh-2",
+          "label": "Có bảy hũ vàng, Bống sẽ (…) và Bi sẽ (…).",
+          "image": {
+            "kind": "diagram",
+            "type": "picture-card",
+            "params": {
+              "caption": "Bi gãi đầu, nghĩ đến ô tô và ngựa hồng; Bống nghĩ đến quần áo và búp bê; cầu vồng phía sau",
+              "n": 2
+            }
+          }
+        }
+      ],
+      "skill": "ke-chuyen",
+      "answer": {
+        "order": [
+          "tranh-1",
+          "tranh-2",
+          "tranh-3",
+          "tranh-4"
+        ]
+      },
+      "curriculumRef": [
+        "tv2-t1-b03-ke-chuyen-1-a",
+        "tv2-t1-b03-ke-chuyen-1-b",
+        "tv2-t1-b03-ke-chuyen-1-c",
+        "tv2-t1-b03-ke-chuyen-1-d"
+      ],
+      "support": {
+        "guide": [
+          "Câu chuyện bắt đầu khi cầu vồng hiện ra.",
+          "Sau đó hai anh em bàn chuyện hũ vàng, rồi cầu vồng biến mất."
+        ],
+        "hint": "Bức tranh hai anh em cười vui vẻ là bức cuối cùng.",
+        "answer": {
+          "text": "Cầu vồng hiện ra → có bảy hũ vàng sẽ mua gì → cầu vồng biến mất, vẽ tặng nhau → hai anh em cười vui vẻ",
+          "explanation": "Bốn bức tranh đi đúng thứ tự các đoạn của bài đọc Niềm vui của Bi và Bống."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bốn bức tranh đã treo đúng hàng, gió thổi cũng không lộn được nữa!",
+          "Xếp chuẩn! Thỏ Tí kẹp thêm bốn cái kẹp phơi cho chắc ăn.",
+          "Câu chuyện chạy từ cầu vồng hiện ra tới tiếng cười, {name} xếp đẹp quá."
+        ],
+        "wrong": [
+          "Cầu vồng phải hiện ra trước thì Bi mới chỉ cho em xem được chứ.",
+          "Hai anh em cười vui vẻ ở cuối chuyện, treo bức ấy ở cuối dây nhé.",
+          "Chuyện mua búp bê, ngựa hồng xảy ra trước khi cầu vồng biến mất đấy."
+        ]
+      }
+    },
+    {
+      "id": "chu-nhoe-duoi-tranh",
+      "title": "Chữ nhoè dưới tranh",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "target": "tv2-t02-day-phoi-tranh",
+      "prompt": "Nước mưa làm nhoè mất mấy chữ dưới tranh, Thỏ Tí chỉ nhớ được đúng một nửa. Nói tiếp để hoàn thành câu dưới tranh.",
+      "template": "Khi cầu vồng hiện ra, Bi nói ({{bi-noi}}).\nCó bảy hũ vàng, Bống sẽ ({{bong-se}}) và Bi sẽ ({{bi-se}}).\nKhông có bảy hũ vàng, hai anh em vẫn ({{van}}).",
+      "blanks": [
+        {
+          "id": "bi-noi",
+          "options": [
+            {
+              "id": "ca-rot",
+              "text": "dưới chân cầu vồng có bảy củ cà rốt"
+            },
+            {
+              "id": "hu-vang",
+              "text": "dưới chân cầu vồng có bảy hũ vàng"
+            },
+            {
+              "id": "con-chim",
+              "text": "trên đỉnh cầu vồng có bảy con chim"
+            }
+          ]
+        },
+        {
+          "id": "bong-se",
+          "options": [
+            {
+              "id": "bup-be",
+              "text": "mua nhiều búp bê và quần áo đẹp"
+            },
+            {
+              "id": "ngua-hong",
+              "text": "mua một con ngựa hồng và một cái ô tô"
+            },
+            {
+              "id": "keo",
+              "text": "mua thật nhiều kẹo"
+            }
+          ]
+        },
+        {
+          "id": "bi-se",
+          "options": [
+            {
+              "id": "bup-be",
+              "text": "mua nhiều búp bê và quần áo đẹp"
+            },
+            {
+              "id": "nha-vang",
+              "text": "xây một ngôi nhà bằng vàng"
+            },
+            {
+              "id": "ngua-hong",
+              "text": "mua một con ngựa hồng và một cái ô tô"
+            }
+          ]
+        },
+        {
+          "id": "van",
+          "options": [
+            {
+              "id": "khoc",
+              "text": "khóc hu hu"
+            },
+            {
+              "id": "cuoi",
+              "text": "cười vui vẻ"
+            },
+            {
+              "id": "gian",
+              "text": "giận nhau"
+            }
+          ]
+        }
+      ],
+      "skill": "ke-chuyen",
+      "answer": {
+        "fills": {
+          "bi-noi": "hu-vang",
+          "bong-se": "bup-be",
+          "bi-se": "ngua-hong",
+          "van": "cuoi"
+        }
+      },
+      "curriculumRef": [
+        "tv2-t1-b03-ke-chuyen-1-a",
+        "tv2-t1-b03-ke-chuyen-1-b",
+        "tv2-t1-b03-ke-chuyen-1-d"
+      ],
+      "support": {
+        "guide": [
+          "Nhớ lại lời Bi khi chỉ lên cầu vồng.",
+          "Bống thích búp bê, Bi thích ngựa hồng và ô tô."
+        ],
+        "hint": "Câu cuối của bài đọc kể hai anh em vẫn làm gì khi không có vàng.",
+        "answer": {
+          "text": "…Bi nói dưới chân cầu vồng có bảy hũ vàng. …Bống sẽ mua nhiều búp bê và quần áo đẹp và Bi sẽ mua một con ngựa hồng và một cái ô tô. …hai anh em vẫn cười vui vẻ.",
+          "explanation": "Các chữ còn thiếu đều lấy từ bài đọc: lời Bi kể về hũ vàng, điều ước của từng người và tiếng cười ở cuối chuyện."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Chữ dưới tranh rõ ràng trở lại, Thỏ Tí đọc to mà không quên chữ nào!",
+          "Điền chuẩn từng chỗ, Vẹt Xanh gật gù: khớp khớp! khớp khớp!",
+          "{name} nhớ chuyện kĩ ghê, chẳng bù cho Thỏ Tí hay quên."
+        ],
+        "wrong": [
+          "Bi nói về hũ vàng chứ đâu phải cà rốt, đó là món Thỏ Tí thích mà!",
+          "Búp bê là của Bống, ngựa hồng với ô tô là của Bi, đổi chỗ lại nhé.",
+          "Không có vàng mà hai anh em vẫn vui đấy, chọn lại chữ ở câu cuối xem."
+        ]
+      }
+    },
+    {
+      "id": "ke-chuyen-theo-tranh",
+      "title": "Kể chuyện Bi và Bống",
+      "kind": "speak",
+      "target": "tv2-t02-day-phoi-tranh",
+      "prompt": "Thỏ Tí ôm bốn bức tranh đã khô cong, định kể chuyện thì quên sạch đoạn đầu! {name} kể giúp nhé. Nói tiếp để hoàn thành câu dưới tranh. Chọn kể 1 – 2 đoạn của câu chuyện theo tranh.",
+      "hints": [
+        "Khi cầu vồng hiện ra, Bi nói (…).",
+        "Có bảy hũ vàng, Bống sẽ (…) và Bi sẽ (…).",
+        "Khi cầu vồng biến mất, (…).",
+        "Không có bảy hũ vàng, hai anh em vẫn (…)."
+      ],
+      "pictureRefs": [
+        {
+          "kind": "diagram",
+          "type": "picture-card",
+          "params": {
+            "n": 1
+          }
+        },
+        {
+          "kind": "diagram",
+          "type": "picture-card",
+          "params": {
+            "n": 2
+          }
+        },
+        {
+          "kind": "diagram",
+          "type": "picture-card",
+          "params": {
+            "n": 3
+          }
+        },
+        {
+          "kind": "diagram",
+          "type": "picture-card",
+          "params": {
+            "n": 4
+          }
+        }
+      ],
+      "curriculumRef": [
+        "tv2-t1-b03-ke-chuyen-1-a",
+        "tv2-t1-b03-ke-chuyen-1-b",
+        "tv2-t1-b03-ke-chuyen-1-c",
+        "tv2-t1-b03-ke-chuyen-1-d",
+        "tv2-t1-b03-ke-chuyen-2"
+      ]
+    },
+    {
+      "id": "ke-cho-nguoi-than",
+      "title": "Kể chuyện cho người thân",
+      "goTo": "Về bãi cỏ sau mưa chào Thỏ Tí",
+      "kind": "speak",
+      "target": "tho-ti",
+      "prompt": "Thỏ Tí dặn đi dặn lại: về nhà nhớ kể nhé, chứ tớ kiểu gì cũng quên mất đoạn giữa! Kể cho người thân nghe câu chuyện Niềm vui của Bi và Bống.",
+      "hints": [
+        "Kể lúc cầu vồng hiện ra và lời Bi nói về hũ vàng.",
+        "Kể hai anh em định mua gì, rồi vẽ tặng nhau những gì.",
+        "Nói cho người thân biết em thích nhất đoạn nào."
+      ],
+      "curriculumRef": [
+        "tv2-t1-b03-van-dung-1"
+      ]
+    },
+    {
+      "id": "phieu-viet-bai-3",
+      "title": "Phiếu viết bài 3",
+      "kind": "worksheet",
+      "trigger": "auto",
+      "lessonId": "tv2-t1-b03",
+      "text": "Nhờ bố mẹ in phiếu Bài 3 ở khu phụ huynh để tập viết chữ hoa Ă, Â và câu ứng dụng. Thỏ Tí hứa lần này sẽ không quên mang bút!",
+      "curriculumRef": [
+        "tv2-t1-b03-viet-chu-hoa-1",
+        "tv2-t1-b03-viet-ung-dung-2"
+      ]
+    },
+    {
+      "id": "qua-cua-tho-ti",
+      "title": "Bức tranh cầu vồng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Thỏ Tí tặng {name} bức tranh cầu vồng bảy màu tự tay vẽ, đựng trong chiếc hũ sành nhặt được. Góc tranh còn trống vì Thỏ Tí lại quên ghi tên người tặng!"
+    },
+    {
+      "id": "mo-bai-4",
+      "title": "Tiếng vo ve trong vườn hoa",
+      "kind": "unlock",
+      "trigger": "auto",
+      "text": "Vo ve… vo ve… Từ vườn hoa tổ ong vọng ra tiếng đếm: một nghìn lẻ một, một nghìn lẻ hai… Ong Vàng đang cần người phụ một việc nhỏ đấy!"
+    }
+  ],
+  "reward": {
+    "xp": 80,
+    "coin": 15,
+    "skillXp": {
+      "doc-hieu": 2,
+      "ke-chuyen": 2,
+      "tu-ngu": 1
+    }
+  }
+}

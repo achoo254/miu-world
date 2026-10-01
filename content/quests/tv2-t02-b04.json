@@ -1,0 +1,978 @@
+{
+  "id": "tv2-t02-b04",
+  "region": "khu-rung-bi-mat",
+  "chapter": 3,
+  "title": "Ong Vàng tìm việc",
+  "status": "draft",
+  "lesson": "tv2-t1-b04",
+  "summary": "Cả tổ ong bận tối mắt, chỉ có Ong Vàng ngồi đếm mãi đến mỏi râu. {name} phụ Ong Vàng ghi sổ những ai đang làm việc quanh vườn hoa, khắc lại chữ cái trên vách tổ, xếp sách trả Gấu Trúc Tròn và dọn góc vườn um tùm.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "Ong Vàng (vo ve, cái gì cũng đếm), Vẹt Xanh lắm lời, Gấu Trúc Tròn cho tổ ong mượn sách",
+    "where": "Vườn hoa tổ ong trong Khu rừng bí mật: bảng sáp ong, vách tổ ong và góc vườn um tùm",
+    "goal": "Phụ Ong Vàng một việc nhỏ: ghi sổ những ai đang làm việc và dọn dẹp quanh tổ",
+    "play": "Tìm đồ, nói, đọc bài, chọn nhiều đáp án, phân loại, đóng vai, ghép câu, điền chữ cái, xếp thứ tự sách, lựa chọn trong hội thoại, phiếu viết",
+    "learn": "Tiếng Việt 2 Bài 4: đọc hiểu \"Làm việc thật là vui\", câu nêu hoạt động, bảng chữ cái (h, i, l, n, o, ơ), từ ngữ chỉ vật và hoạt động, nghe – viết, viết đoạn về việc ở nhà, đọc mở rộng",
+    "reward": "85 XP, 15 xu, Đọc hiểu +2, Bảng chữ cái +2, Từ ngữ +1, Câu +1",
+    "unlock": "Bài 5 \"Em có xinh không?\""
+  },
+  "phases": {
+    "hook": "gap-ong-vang",
+    "explore": "tim-nguoi-lam-viec",
+    "learn": "doc-bai",
+    "challenge": "ghep-cau-hoat-dong",
+    "decision": "viec-cuoi-ngay",
+    "finale": "doc-mo-rong",
+    "reward": "qua-cua-ong-vang",
+    "unlock": "mo-bai-5"
+  },
+  "texts": {
+    "lam-viec-that-la-vui": {
+      "title": "Làm việc thật là vui",
+      "author": "Theo Tô Hoài",
+      "body": "Quanh ta, mọi vật, mọi người đều làm việc.\n\nCái đồng hồ tích tắc, tích tắc, báo phút, báo giờ. Con gà trống gáy vang ò ó o, báo cho mọi người biết trời sắp sáng, mau mau thức dậy. Con tu hú kêu tu hú, tu hú. Thế là sắp đến mùa vải chín. Chim bắt sâu, bảo vệ mùa màng. Cành đào nở hoa cho sắc xuân thêm rực rỡ, ngày xuân thêm tưng bừng. Chim cú mèo chập tối đứng trong hốc cây rúc cú cú cũng làm việc có ích cho đồng ruộng.\n\nNhư mọi vật, mọi người, bé cũng làm việc. Bé làm bài. Bé đi học. Học xong, bé quét nhà, nhặt rau, chơi với em đỡ mẹ. Bé luôn luôn bận rộn, mà lúc nào cũng vui.",
+      "glossary": [
+        {
+          "term": "Sắc xuân",
+          "meaning": "cảnh vật, màu sắc của mùa xuân."
+        },
+        {
+          "term": "Tưng bừng",
+          "meaning": "(quang cảnh, không khí) nhộn nhịp, tươi vui."
+        },
+        {
+          "term": "Rúc",
+          "meaning": "kêu lên một hồi dài."
+        }
+      ],
+      "section": "tv2-t1-b04-doc"
+    }
+  },
+  "places": {
+    "ong-vang": "vườn hoa tổ ong",
+    "tim-nguoi-lam-viec": "khắp vườn hoa",
+    "tv2-t02-bang-sap-ong": "bảng sáp ong",
+    "tv2-t02-vach-to-ong": "vách tổ ong",
+    "tv2-t02-goc-vuon-um-tum": "góc vườn um tùm"
+  },
+  "steps": [
+    {
+      "id": "gap-ong-vang",
+      "title": "Ong Vàng chưa có việc",
+      "goTo": "Tới vườn hoa tổ ong, Ong Vàng đang vo ve đếm",
+      "kind": "dialogue",
+      "target": "ong-vang",
+      "lines": [
+        {
+          "speaker": "Ong Vàng",
+          "text": "Vo ve! {name} tới đúng lúc quá! Tổ tớ có một nghìn hai trăm lẻ ba chị em, ai cũng bận tối mắt."
+        },
+        {
+          "speaker": "Ong Vàng",
+          "text": "Chị hút mật, em xây tổ, bác canh cửa… còn tớ chỉ được giao mỗi việc đếm. Đếm mãi mỏi cả râu!"
+        },
+        {
+          "speaker": "Vẹt Xanh",
+          "text": "Ong Vàng muốn làm một việc thật sự! Thật sự! Mà việc ấy lại cần thêm một người phụ."
+        },
+        {
+          "speaker": "Ong Vàng",
+          "text": "Ong chúa dặn tớ ghi vào sổ tất cả những ai đang làm việc quanh vườn. Cậu giúp tớ nhé?"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Mình phụ cậu, việc nhỏ mấy cũng được!",
+          "reply": "Vo ve vui quá! Vậy là tổ có một nghìn hai trăm lẻ bốn người làm việc rồi!"
+        },
+        {
+          "text": "Đếm cũng là một việc có ích mà!",
+          "reply": "Ơ… ừ nhỉ, không ai đếm thì sao biết đủ mật cho mùa đông! Nhưng cứ phụ tớ ghi sổ đã nhé."
+        }
+      ]
+    },
+    {
+      "id": "tim-nguoi-lam-viec",
+      "title": "Ai đang làm việc quanh vườn",
+      "goTo": "Bay một vòng khắp vườn hoa xem ai đang làm việc",
+      "kind": "search",
+      "targets": [
+        "tv2-t02-dong-ho-goc-cay",
+        "tv2-t02-long-ga-trong",
+        "tv2-t02-chum-vai-chin"
+      ]
+    },
+    {
+      "id": "khoi-dong",
+      "title": "Bức tranh trong sổ của Ong Vàng",
+      "goTo": "Mang đồng hồ, lông gà, chùm vải về vườn hoa tổ ong",
+      "kind": "speak",
+      "target": "ong-vang",
+      "prompt": "Ong Vàng giở cuốn sổ có bức tranh vẽ cả khu vườn lúc bình minh, đếm được năm thứ mà chưa biết ghi gì. Quan sát tranh và cho biết mỗi người, mỗi vật trong tranh đang làm gì.",
+      "hints": [
+        "Chú gà trống trên đồi đang làm gì?",
+        "Bạn nhỏ bên bàn học có đèn đang làm gì?",
+        "Chú chim trên cành vải và cành đào nở hoa thì sao?"
+      ],
+      "pictureRefs": [
+        {
+          "kind": "diagram",
+          "type": "picture-card",
+          "params": {
+            "caption": "chim đậu trên cành cây vải chín đỏ, bạn nhỏ ngồi đọc sách bên bàn học có đèn và giá sách, gà trống đứng gáy trên đồi, cành đào nở hoa hồng, mặt trời mọc phía xa"
+          }
+        }
+      ],
+      "curriculumRef": [
+        "tv2-t1-b04-doc-kd"
+      ]
+    },
+    {
+      "id": "doc-bai",
+      "title": "Bài đọc trên bảng sáp ong",
+      "goTo": "Bay sang bảng sáp ong đọc bài Làm việc thật là vui",
+      "kind": "read",
+      "target": "tv2-t02-bang-sap-ong",
+      "textRef": "lam-viec-that-la-vui",
+      "audio": true,
+      "question": "Ong Vàng vừa nhặt được chiếc đồng hồ ở gốc cây. Theo bài đọc, cái đồng hồ làm việc gì?",
+      "choices": [
+        {
+          "id": "gay-vang",
+          "text": "Cái đồng hồ gáy vang báo trời sắp sáng."
+        },
+        {
+          "id": "bao-gio",
+          "text": "Cái đồng hồ tích tắc, tích tắc, báo phút, báo giờ."
+        },
+        {
+          "id": "goi-mua-vai",
+          "text": "Cái đồng hồ kêu tu hú báo sắp đến mùa vải chín."
+        }
+      ],
+      "skill": "doc-hieu",
+      "answer": {
+        "choice": "bao-gio"
+      },
+      "support": {
+        "guide": [
+          "Đọc câu đầu tiên của đoạn hai.",
+          "Tìm câu có tiếng tích tắc."
+        ],
+        "hint": "Đồng hồ không gáy, cũng không kêu tu hú đâu.",
+        "answer": {
+          "text": "Cái đồng hồ tích tắc, tích tắc, báo phút, báo giờ.",
+          "explanation": "Bài đọc viết: cái đồng hồ tích tắc, tích tắc, báo phút, báo giờ. Gáy vang là việc của gà trống, kêu tu hú là việc của chim tu hú."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Tích tắc, tích tắc, đúng rồi! Ong Vàng ghi ngay dòng đầu tiên vào sổ.",
+          "Chuẩn! Đồng hồ báo phút, báo giờ, chẳng nghỉ lúc nào.",
+          "{name} đọc nhanh như ong bay, Ong Vàng đếm không kịp!"
+        ],
+        "wrong": [
+          "Gáy vang là việc của chú gà trống cơ, đồng hồ đâu có mỏ.",
+          "Kêu tu hú là chim tu hú làm, đồng hồ thì kêu tiếng khác cơ.",
+          "Tìm câu có tiếng tích tắc trong bài rồi chọn lại nhé."
+        ]
+      }
+    },
+    {
+      "id": "con-vat-trong-bai",
+      "title": "Đếm con vật trong bài",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "target": "tv2-t02-bang-sap-ong",
+      "prompt": "Ong Vàng đếm chân, đếm cánh, rồi đếm luôn các con vật trong bài. Những con vật nào được nói đến trong bài?",
+      "choices": [
+        {
+          "id": "ga-trong",
+          "text": "con gà trống"
+        },
+        {
+          "id": "con-ong",
+          "text": "con ong"
+        },
+        {
+          "id": "tu-hu",
+          "text": "con tu hú"
+        },
+        {
+          "id": "chim",
+          "text": "chim"
+        },
+        {
+          "id": "con-meo",
+          "text": "con mèo"
+        },
+        {
+          "id": "cu-meo",
+          "text": "chim cú mèo"
+        }
+      ],
+      "skill": "doc-hieu",
+      "answer": {
+        "choices": [
+          "ga-trong",
+          "tu-hu",
+          "chim",
+          "cu-meo"
+        ]
+      },
+      "curriculumRef": [
+        "tv2-t1-b04-doc-1"
+      ],
+      "support": {
+        "guide": [
+          "Đọc đoạn hai, tìm tên từng con vật.",
+          "Cú mèo là một loài chim, không phải con mèo."
+        ],
+        "hint": "Có bốn con vật được nhắc tới trong bài.",
+        "answer": {
+          "text": "con gà trống, con tu hú, chim, chim cú mèo",
+          "explanation": "Bài nói tới con gà trống gáy vang, con tu hú kêu, chim bắt sâu và chim cú mèo rúc cú cú. Bài không nhắc tới con ong hay con mèo."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đủ bốn con vật! Ong Vàng đếm lại ba lần cho chắc: bốn, bốn, vẫn là bốn!",
+          "Đúng hết rồi, chẳng sót bạn nào trong bài.",
+          "Vẹt Xanh khen: tinh mắt! tinh mắt! {name} không bị cú mèo lừa."
+        ],
+        "wrong": [
+          "Ong Vàng buồn thiu: bài không nhắc tới ong đâu, tiếc ghê!",
+          "Cú mèo là chim, còn con mèo thì không có trong bài đâu nhé.",
+          "Còn sót một con vật đấy, đọc lại câu nói về việc bắt sâu xem."
+        ]
+      }
+    },
+    {
+      "id": "viec-cua-be",
+      "title": "Hai cột trong sổ của Ong Vàng",
+      "kind": "challenge",
+      "mechanic": "classify",
+      "target": "tv2-t02-bang-sap-ong",
+      "prompt": "Ong Vàng kẻ hai cột trong sổ cho khỏi lẫn, rồi hỏi {name}: Kể tên những việc bạn nhỏ trong bài đã làm.",
+      "groups": [
+        {
+          "id": "ban-nho",
+          "label": "Việc bạn nhỏ đã làm"
+        },
+        {
+          "id": "moi-vat",
+          "label": "Việc của con vật, đồ vật, cây cối"
+        }
+      ],
+      "items": [
+        {
+          "id": "quet-nha",
+          "label": "quét nhà"
+        },
+        {
+          "id": "bao-gio",
+          "label": "báo phút, báo giờ"
+        },
+        {
+          "id": "lam-bai",
+          "label": "làm bài"
+        },
+        {
+          "id": "bat-sau",
+          "label": "bắt sâu"
+        },
+        {
+          "id": "nhat-rau",
+          "label": "nhặt rau"
+        },
+        {
+          "id": "di-hoc",
+          "label": "đi học"
+        },
+        {
+          "id": "no-hoa",
+          "label": "nở hoa"
+        },
+        {
+          "id": "choi-voi-em",
+          "label": "chơi với em đỡ mẹ"
+        }
+      ],
+      "skill": "doc-hieu",
+      "answer": {
+        "assignment": {
+          "lam-bai": "ban-nho",
+          "di-hoc": "ban-nho",
+          "quet-nha": "ban-nho",
+          "nhat-rau": "ban-nho",
+          "choi-voi-em": "ban-nho",
+          "bao-gio": "moi-vat",
+          "bat-sau": "moi-vat",
+          "no-hoa": "moi-vat"
+        }
+      },
+      "curriculumRef": [
+        "tv2-t1-b04-doc-3"
+      ],
+      "support": {
+        "guide": [
+          "Đọc đoạn cuối, bắt đầu từ \"Như mọi vật, mọi người, bé cũng làm việc.\"",
+          "Báo giờ, bắt sâu, nở hoa là việc của đồng hồ, chim và cành đào."
+        ],
+        "hint": "Bạn nhỏ làm năm việc, kể cả việc giúp mẹ trông em.",
+        "answer": {
+          "text": "Bạn nhỏ: làm bài, đi học, quét nhà, nhặt rau, chơi với em đỡ mẹ. Mọi vật: báo phút, báo giờ; bắt sâu; nở hoa.",
+          "explanation": "Đoạn cuối kể: bé làm bài, bé đi học, học xong bé quét nhà, nhặt rau, chơi với em đỡ mẹ."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Hai cột thẳng tắp như hai hàng ô sáp! Ong Vàng đếm đủ năm việc của bạn nhỏ.",
+          "Đúng rồi, bạn nhỏ bận rộn mà lúc nào cũng vui.",
+          "Ong Vàng vo ve: bạn nhỏ làm năm việc, tớ mới làm có một, phải cố lên thôi!"
+        ],
+        "wrong": [
+          "Bạn nhỏ đâu có nở hoa, đó là việc của cành đào mà.",
+          "Chơi với em đỡ mẹ cũng là một việc bạn nhỏ làm đấy, đừng bỏ sót.",
+          "Bắt sâu là việc của chú chim, đưa về cột bên kia nhé."
+        ]
+      }
+    },
+    {
+      "id": "dong-vai-con-vat",
+      "title": "Đóng vai con vật chăm chỉ",
+      "kind": "speak",
+      "target": "tv2-t02-bang-sap-ong",
+      "prompt": "Ong Vàng bày trò đóng kịch và nhanh chân nhận vai con ong trước, dù bài không có ong. Đóng vai một con vật trong bài, nói về công việc của mình. Theo em, mọi người, mọi vật làm việc như thế nào?",
+      "hints": [
+        "Tớ là gà trống, sáng nào tớ cũng gáy vang để…",
+        "Tớ là chim cú mèo, chập tối tớ đứng trong hốc cây và…",
+        "Mọi người, mọi vật làm việc chăm hay lười? Làm việc có vui không?"
+      ],
+      "curriculumRef": [
+        "tv2-t1-b04-doc-2",
+        "tv2-t1-b04-doc-4"
+      ]
+    },
+    {
+      "id": "ghep-cau-hoat-dong",
+      "title": "Ba tấm thẻ sáp bị chảy",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "target": "tv2-t02-bang-sap-ong",
+      "prompt": "Trời nắng, ba tấm thẻ dán bằng sáp bị chảy, nửa đầu nửa cuối tuột khỏi nhau. Kết hợp từ ngữ ở cột A với từ ngữ ở cột B để tạo câu nêu hoạt động.",
+      "template": "Con gà trống {{ga-trong}}\nChim {{chim}}\nCon tu hú {{tu-hu}}",
+      "blanks": [
+        {
+          "id": "ga-trong",
+          "options": [
+            {
+              "id": "tu-hu",
+              "text": "kêu tu hú báo hiệu mùa vải chín."
+            },
+            {
+              "id": "gay-vang",
+              "text": "gáy vang báo trời sắp sáng."
+            },
+            {
+              "id": "bat-sau",
+              "text": "bắt sâu để bảo vệ mùa màng."
+            }
+          ]
+        },
+        {
+          "id": "chim",
+          "options": [
+            {
+              "id": "bat-sau",
+              "text": "bắt sâu để bảo vệ mùa màng."
+            },
+            {
+              "id": "tu-hu",
+              "text": "kêu tu hú báo hiệu mùa vải chín."
+            },
+            {
+              "id": "gay-vang",
+              "text": "gáy vang báo trời sắp sáng."
+            }
+          ]
+        },
+        {
+          "id": "tu-hu",
+          "options": [
+            {
+              "id": "gay-vang",
+              "text": "gáy vang báo trời sắp sáng."
+            },
+            {
+              "id": "bat-sau",
+              "text": "bắt sâu để bảo vệ mùa màng."
+            },
+            {
+              "id": "tu-hu",
+              "text": "kêu tu hú báo hiệu mùa vải chín."
+            }
+          ]
+        }
+      ],
+      "skill": "cau",
+      "answer": {
+        "fills": {
+          "ga-trong": "gay-vang",
+          "chim": "bat-sau",
+          "tu-hu": "tu-hu"
+        }
+      },
+      "curriculumRef": [
+        "tv2-t1-b04-doc-lt1-a",
+        "tv2-t1-b04-doc-lt1-b",
+        "tv2-t1-b04-doc-lt1-c"
+      ],
+      "support": {
+        "guide": [
+          "Nhớ lại trong bài: con vật nào gáy, con vật nào bắt sâu, con vật nào kêu tu hú?",
+          "Đọc cả câu lên xem có hợp không."
+        ],
+        "hint": "Chim tu hú kêu đúng tên của mình.",
+        "answer": {
+          "text": "Con gà trống gáy vang báo trời sắp sáng. Chim bắt sâu để bảo vệ mùa màng. Con tu hú kêu tu hú báo hiệu mùa vải chín.",
+          "explanation": "Mỗi câu nói một con vật và việc nó làm, đúng như trong bài đọc."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ba câu liền lại khít rịt như ô sáp mới xây!",
+          "Ghép chuẩn cả ba! Ong Vàng đọc to lên, cả tổ vo ve vỗ tay.",
+          "Đúng hết, câu nào cũng nói rõ ai làm việc gì."
+        ],
+        "wrong": [
+          "Gà trống mà kêu tu hú thì cả rừng phải bật cười mất!",
+          "Chim tu hú kêu đúng tên mình đấy, tìm nửa thẻ có chữ \"tu hú\" nhé.",
+          "Việc bắt sâu là của chú chim, đọc lại câu đó xem."
+        ]
+      }
+    },
+    {
+      "id": "cau-o-truong",
+      "title": "Một việc của em ở trường",
+      "kind": "speak",
+      "target": "tv2-t02-bang-sap-ong",
+      "prompt": "Ong Vàng kể ở tổ có lớp học bay, ngày nào cũng tập bay vòng số tám. Còn trường của {name} thì sao? Đặt một câu nêu hoạt động của em ở trường.",
+      "hints": [
+        "Ở trường em thường học, chơi hay giúp cô việc gì?",
+        "Nói câu có người làm và việc người đó làm, chẳng hạn: Em lau bảng.",
+        "Cuối câu nhớ hạ giọng như khi gặp dấu chấm."
+      ],
+      "curriculumRef": [
+        "tv2-t1-b04-doc-lt2"
+      ]
+    },
+    {
+      "id": "o-chu-cai-to-ong",
+      "title": "Sáu ô chữ cái bị lấp mật",
+      "goTo": "Bay vào vách tổ ong, sáu ô chữ cái đang bị lấp",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "target": "tv2-t02-vach-to-ong",
+      "prompt": "Vách tổ ong có mười ô lục giác khắc chữ cái, đêm qua sáu ô bị mật tràn lấp mất. Tìm những chữ cái còn thiếu trong bảng. Học thuộc tên các chữ cái.",
+      "template": "Số thứ tự 11, chữ cái {{o-11}}, tên chữ cái hát.\nSố thứ tự 12, chữ cái {{o-12}}, tên chữ cái i.\nSố thứ tự 14, chữ cái {{o-14}}, tên chữ cái e-lờ.\nSố thứ tự 16, chữ cái {{o-16}}, tên chữ cái en-nờ.\nSố thứ tự 17, chữ cái {{o-17}}, tên chữ cái o.\nSố thứ tự 19, chữ cái {{o-19}}, tên chữ cái ơ.",
+      "blanks": [
+        {
+          "id": "o-11",
+          "options": [
+            {
+              "id": "k",
+              "text": "k"
+            },
+            {
+              "id": "h",
+              "text": "h"
+            },
+            {
+              "id": "g",
+              "text": "g"
+            }
+          ]
+        },
+        {
+          "id": "o-12",
+          "options": [
+            {
+              "id": "i",
+              "text": "i"
+            },
+            {
+              "id": "y",
+              "text": "y"
+            },
+            {
+              "id": "l",
+              "text": "l"
+            }
+          ]
+        },
+        {
+          "id": "o-14",
+          "options": [
+            {
+              "id": "n",
+              "text": "n"
+            },
+            {
+              "id": "m",
+              "text": "m"
+            },
+            {
+              "id": "l",
+              "text": "l"
+            }
+          ]
+        },
+        {
+          "id": "o-16",
+          "options": [
+            {
+              "id": "m",
+              "text": "m"
+            },
+            {
+              "id": "n",
+              "text": "n"
+            },
+            {
+              "id": "u",
+              "text": "u"
+            }
+          ]
+        },
+        {
+          "id": "o-17",
+          "options": [
+            {
+              "id": "oo",
+              "text": "ô"
+            },
+            {
+              "id": "ow",
+              "text": "ơ"
+            },
+            {
+              "id": "o",
+              "text": "o"
+            }
+          ]
+        },
+        {
+          "id": "o-19",
+          "options": [
+            {
+              "id": "ow",
+              "text": "ơ"
+            },
+            {
+              "id": "o",
+              "text": "o"
+            },
+            {
+              "id": "oo",
+              "text": "ô"
+            }
+          ]
+        }
+      ],
+      "skill": "bang-chu-cai",
+      "answer": {
+        "fills": {
+          "o-11": "h",
+          "o-12": "i",
+          "o-14": "l",
+          "o-16": "n",
+          "o-17": "o",
+          "o-19": "ow"
+        }
+      },
+      "curriculumRef": [
+        "tv2-t1-b04-bang-chu-cai-2-a",
+        "tv2-t1-b04-bang-chu-cai-2-b",
+        "tv2-t1-b04-bang-chu-cai-2-c",
+        "tv2-t1-b04-bang-chu-cai-2-d",
+        "tv2-t1-b04-bang-chu-cai-2-e",
+        "tv2-t1-b04-bang-chu-cai-2-f"
+      ],
+      "support": {
+        "guide": [
+          "Mỗi dòng đã cho sẵn tên chữ cái, em tìm chữ cái mang tên đó.",
+          "Nhẩm bảng chữ cái từ g: g, h, i, k, l, m, n, o, ô, ơ."
+        ],
+        "hint": "Chữ tên \"e-lờ\" là l, chữ tên \"en-nờ\" là n; o không đội mũ, ơ có râu.",
+        "answer": {
+          "text": "11: h; 12: i; 14: l; 16: n; 17: o; 19: ơ.",
+          "explanation": "Bảng chữ cái đi theo thứ tự g, h, i, k, l, m, n, o, ô, ơ nên các ô còn thiếu là h, i, l, n, o, ơ."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Sáu ô sáng bóng trở lại! Ong Vàng đếm: sáu trên sáu, không thiếu ô nào.",
+          "Đúng cả sáu chữ, vách tổ ong đẹp như mới xây.",
+          "{name} thuộc tên chữ cái nhanh hơn ong bay qua vườn!"
+        ],
+        "wrong": [
+          "Chữ tên \"hát\" là chữ h đấy, nhìn lại ô số 11 nhé.",
+          "Chữ o tròn xoe không đội mũ, chữ ơ thì có thêm cái râu bên phải.",
+          "Chữ tên \"e-lờ\" và chữ tên \"en-nờ\" dễ lẫn lắm, đọc thật chậm rồi chọn lại."
+        ]
+      }
+    },
+    {
+      "id": "sach-cua-gau-truc",
+      "title": "Trả sách cho Gấu Trúc Tròn",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "tv2-t02-vach-to-ong",
+      "prompt": "Gấu Trúc Tròn cho tổ ong mượn năm cuốn sách và dặn: từ… từ… thôi, trả lại thì xếp cho đúng nhé. Dựa vào chữ cái đầu tiên, sắp xếp tên các cuốn sách theo thứ tự bảng chữ cái.",
+      "items": [
+        {
+          "id": "hoa-mao-ga",
+          "label": "Hoa mào gà"
+        },
+        {
+          "id": "ga-trong-nhanh-tri",
+          "label": "Gà trống nhanh trí"
+        },
+        {
+          "id": "ong-can-ngu",
+          "label": "Ông Cản Ngũ"
+        },
+        {
+          "id": "nang-tien-oc",
+          "label": "Nàng tiên Ốc"
+        },
+        {
+          "id": "kien-va-chim-bo-cau",
+          "label": "Kiến và chim bồ câu"
+        }
+      ],
+      "skill": "bang-chu-cai",
+      "answer": {
+        "order": [
+          "ga-trong-nhanh-tri",
+          "hoa-mao-ga",
+          "kien-va-chim-bo-cau",
+          "nang-tien-oc",
+          "ong-can-ngu"
+        ]
+      },
+      "curriculumRef": [
+        "tv2-t1-b04-bang-chu-cai-3"
+      ],
+      "support": {
+        "guide": [
+          "Nhìn chữ cái đầu tiên của mỗi tên sách: G, H, K, N, Ô.",
+          "Xếp theo thứ tự các chữ đó trong bảng chữ cái."
+        ],
+        "hint": "Cuốn có tên bắt đầu bằng chữ G đứng đầu, cuốn bắt đầu bằng chữ Ô đứng cuối.",
+        "answer": {
+          "text": "Gà trống nhanh trí, Hoa mào gà, Kiến và chim bồ câu, Nàng tiên Ốc, Ông Cản Ngũ",
+          "explanation": "Trong bảng chữ cái, g đứng trước h, rồi tới k, n, và ô đứng sau cùng."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Năm cuốn sách đứng thẳng hàng, Gấu Trúc Tròn gật gù chậm rãi: tốt… tốt… lắm!",
+          "Đúng thứ tự bảng chữ cái rồi, giá sách gọn gàng hẳn.",
+          "Ong Vàng đếm từ trái sang phải: G, H, K, N, Ô, chuẩn từng cuốn!"
+        ],
+        "wrong": [
+          "Nhìn chữ cái đầu tiên của tên sách thôi, chữ G phải đứng đầu đấy.",
+          "Cuốn \"Ông Cản Ngũ\" bắt đầu bằng chữ Ô nên phải xếp cuối cùng.",
+          "Chữ K đứng trước chữ N trong bảng chữ cái, đổi chỗ hai cuốn ấy nhé."
+        ]
+      }
+    },
+    {
+      "id": "viec-cuoi-ngay",
+      "title": "Việc cuối cùng trước khi trời tối",
+      "goTo": "Ra vườn hoa tổ ong, Ong Vàng có chuyện muốn bàn",
+      "kind": "dialogue",
+      "target": "ong-vang",
+      "lines": [
+        {
+          "speaker": "Ong Vàng",
+          "text": "Vo ve! Tớ vừa đếm: hôm nay tớ làm được bốn việc mà chẳng thấy mệt tí nào. Lạ thật!"
+        },
+        {
+          "speaker": "Vẹt Xanh",
+          "text": "Vì làm việc thật là vui! Vui vui! Câu này tớ học được trong bài đấy."
+        },
+        {
+          "speaker": "Ong Vàng",
+          "text": "Còn một việc cuối trước khi trời tối. {name} chọn giúp tớ nhé?"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Trông các em ong nhỏ để mẹ ong nghỉ một lát.",
+          "reply": "Giống bạn nhỏ chơi với em đỡ mẹ! Nhưng trước tiên phải dọn góc vườn cho các em có chỗ chơi đã."
+        },
+        {
+          "text": "Dọn sạch góc vườn đang mọc um tùm.",
+          "reply": "Hay quá! Nghe đồn ở đó có cả một cái giường lạc giữa đám cỏ. Bay ra xem thôi!"
+        },
+        {
+          "text": "Đi hút thêm mật ở cành đào vừa nở.",
+          "reply": "Mật hoa đào chắc ngọt lắm! Nhưng đường bay tới cành đào phải đi qua góc vườn um tùm đấy."
+        }
+      ]
+    },
+    {
+      "id": "vat-trong-vuon",
+      "title": "Đồ đạc lạc giữa đám cỏ",
+      "goTo": "Bay ra góc vườn um tùm, có đồ đạc lạc giữa đám cỏ",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "target": "tv2-t02-goc-vuon-um-tum",
+      "prompt": "Tìm và gọi tên các vật trong tranh. Ong Vàng đếm được chín thứ thò ra khỏi đám cỏ, nhưng có ba thứ không phải là tên vật. Chọn tên những vật em tìm thấy.",
+      "choices": [
+        {
+          "id": "ti-vi",
+          "text": "ti vi"
+        },
+        {
+          "id": "quet-nha",
+          "text": "quét nhà"
+        },
+        {
+          "id": "den-ban",
+          "text": "đèn bàn"
+        },
+        {
+          "id": "giuong",
+          "text": "giường"
+        },
+        {
+          "id": "nau-com",
+          "text": "nấu cơm"
+        },
+        {
+          "id": "quat-dien",
+          "text": "quạt điện"
+        },
+        {
+          "id": "choi",
+          "text": "chổi"
+        },
+        {
+          "id": "ngu-trua",
+          "text": "ngủ trưa"
+        },
+        {
+          "id": "noi",
+          "text": "nồi"
+        }
+      ],
+      "skill": "tu-ngu",
+      "answer": {
+        "choices": [
+          "ti-vi",
+          "den-ban",
+          "giuong",
+          "quat-dien",
+          "choi",
+          "noi"
+        ]
+      },
+      "curriculumRef": [
+        "tv2-t1-b04-tu-ngu-cau-1"
+      ],
+      "support": {
+        "guide": [
+          "Tên vật là tên đồ dùng em cầm, nhìn thấy được.",
+          "Từ chỉ việc làm như quét, nấu, ngủ là từ chỉ hoạt động."
+        ],
+        "hint": "Có sáu tên vật, ba từ còn lại là việc làm.",
+        "answer": {
+          "text": "ti vi, đèn bàn, giường, quạt điện, chổi, nồi",
+          "explanation": "Trong tranh, giữa khu vườn um tùm có ti vi, đèn bàn, giường, quạt điện, chổi, nồi và nhiều đồ dùng khác. Quét nhà, nấu cơm, ngủ trưa là hoạt động."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Tìm đủ sáu đồ vật rồi! Ong Vàng tròn mắt: cả cái giường cũng lạc ra vườn!",
+          "Chuẩn, toàn tên đồ vật, không lẫn một việc làm nào.",
+          "Vẹt Xanh reo: tìm giỏi! tìm giỏi! {name} như có mắt ong."
+        ],
+        "wrong": [
+          "\"Quét nhà\" là việc làm, còn cái dùng để quét mới là đồ vật.",
+          "Còn sót một đồ dùng trong bếp đấy, nhìn lại danh sách nhé.",
+          "Ngủ trưa thì dễ chịu thật, nhưng đó là hoạt động chứ không phải tên vật."
+        ]
+      }
+    },
+    {
+      "id": "vat-va-viec",
+      "title": "Mỗi đồ vật một việc",
+      "kind": "challenge",
+      "mechanic": "classify",
+      "target": "tv2-t02-goc-vuon-um-tum",
+      "prompt": "Ong Vàng muốn ghi vào sổ mỗi đồ vật dùng để làm gì, cho các em ong nhỏ học theo. Tìm 3 – 5 từ ngữ chỉ hoạt động gắn với các vật trong tranh ở bài tập 1. M: chổi – quét nhà",
+      "groups": [
+        {
+          "id": "quat-mat",
+          "label": "quạt mát"
+        },
+        {
+          "id": "nau-com",
+          "label": "nấu cơm"
+        },
+        {
+          "id": "ngu",
+          "label": "ngủ"
+        },
+        {
+          "id": "pha-tra",
+          "label": "pha trà"
+        },
+        {
+          "id": "treo-ao",
+          "label": "treo áo"
+        }
+      ],
+      "items": [
+        {
+          "id": "giuong",
+          "label": "giường"
+        },
+        {
+          "id": "moc-ao",
+          "label": "móc áo"
+        },
+        {
+          "id": "quat-dien",
+          "label": "quạt điện"
+        },
+        {
+          "id": "am-chen",
+          "label": "ấm và chén"
+        },
+        {
+          "id": "noi",
+          "label": "nồi"
+        }
+      ],
+      "skill": "tu-ngu",
+      "answer": {
+        "assignment": {
+          "quat-dien": "quat-mat",
+          "noi": "nau-com",
+          "giuong": "ngu",
+          "am-chen": "pha-tra",
+          "moc-ao": "treo-ao"
+        }
+      },
+      "curriculumRef": [
+        "tv2-t1-b04-tu-ngu-cau-2"
+      ],
+      "support": {
+        "guide": [
+          "Hỏi: đồ vật này dùng để làm gì?",
+          "Giống mẫu: chổi dùng để quét nhà."
+        ],
+        "hint": "Ấm và chén dùng khi mời khách uống nước.",
+        "answer": {
+          "text": "quạt điện – quạt mát; nồi – nấu cơm; giường – ngủ; ấm và chén – pha trà; móc áo – treo áo",
+          "explanation": "Mỗi đồ vật gắn với một hoạt động người ta làm khi dùng nó."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đồ vật nào cũng tìm được việc của mình, y như cả tổ ong!",
+          "Ghép đúng cả năm cặp, Ong Vàng ghi kín một trang sổ.",
+          "{name} giỏi quá, giờ thì các em ong nhỏ biết giường để làm gì rồi."
+        ],
+        "wrong": [
+          "Nằm ngủ trên móc áo thì khó lắm đấy, thử đổi chỗ xem.",
+          "Cái gì quay vù vù cho mát? Đưa nó về nhóm quạt mát nhé.",
+          "Nấu cơm cần nồi chứ không cần chén, ghép lại nào."
+        ]
+      }
+    },
+    {
+      "id": "cau-viec-o-nha",
+      "title": "Một câu về việc ở nhà",
+      "kind": "speak",
+      "target": "tv2-t02-goc-vuon-um-tum",
+      "prompt": "Ong Vàng khoe ở tổ, tớ lau từng ô sáp sạch bong. Ở nhà {name} làm gì? Đặt một câu nói về việc em làm ở nhà. M: Em quét nhà.",
+      "hints": [
+        "Ở nhà em hay giúp bố mẹ việc gì?",
+        "Bắt đầu câu bằng \"Em\" rồi nói việc em làm.",
+        "Ví dụ: Em gấp quần áo."
+      ],
+      "curriculumRef": [
+        "tv2-t1-b04-tu-ngu-cau-3"
+      ]
+    },
+    {
+      "id": "doc-mo-rong",
+      "title": "Tối kể chuyện ở tổ ong",
+      "goTo": "Về vườn hoa tổ ong, cả tổ đang chờ nghe kể chuyện",
+      "kind": "speak",
+      "target": "ong-vang",
+      "prompt": "Tối đến, cả tổ ong quây quần nghe kể chuyện, ong nào cũng mỏi cánh mà vui. Tìm đọc các bài viết về những hoạt động của thiếu nhi. Trao đổi với các bạn về bài đã đọc dựa vào gợi ý sau: (1) Tên bài đọc là gì? (2) Điều em thích nhất trong bài đọc là gì?",
+      "hints": [
+        "Em đã đọc bài nào kể về các bạn nhỏ chăm làm?",
+        "Kể tên bài và điều em thích nhất cho cả tổ ong nghe.",
+        "Ong Vàng sẽ đếm xem em kể được mấy điều hay đấy!"
+      ],
+      "pictureRefs": [
+        {
+          "kind": "diagram",
+          "type": "picture-card",
+          "params": {
+            "caption": "mặt trời và các đám mây, hai đám mây ghi gợi ý (1) và (2)"
+          }
+        }
+      ],
+      "curriculumRef": [
+        "tv2-t1-b04-doc-mo-rong-1",
+        "tv2-t1-b04-doc-mo-rong-2"
+      ]
+    },
+    {
+      "id": "phieu-viet-bai-4",
+      "title": "Phiếu viết bài 4",
+      "kind": "worksheet",
+      "trigger": "auto",
+      "lessonId": "tv2-t1-b04",
+      "text": "Nhờ bố mẹ in phiếu Bài 4 ở khu phụ huynh: nghe – viết đoạn Làm việc thật là vui, kể việc bạn nhỏ làm theo tranh và viết vài câu về một việc em làm ở nhà. Ong Vàng sẽ đếm từng chữ em viết!",
+      "curriculumRef": [
+        "tv2-t1-b04-nghe-viet-1",
+        "tv2-t1-b04-viet-doan-1",
+        "tv2-t1-b04-viet-doan-2"
+      ]
+    },
+    {
+      "id": "qua-cua-ong-vang",
+      "title": "Huy hiệu sáp ong",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Ong Vàng tặng {name} một hũ mật hoa đào bé xíu và chiếc huy hiệu sáp ghi: người phụ việc thứ một nghìn hai trăm lẻ bốn của tổ ong."
+    },
+    {
+      "id": "mo-bai-5",
+      "title": "Ai đó soi bóng bên suối",
+      "kind": "unlock",
+      "trigger": "auto",
+      "text": "Bên suối soi bóng, Voi Út, cô em gái bé nhất của Voi Bảo, đang lén gài cành cây khô lên đầu cho giống bạn Hươu. Chuyện gì thế nhỉ?"
+    }
+  ],
+  "reward": {
+    "xp": 85,
+    "coin": 15,
+    "skillXp": {
+      "doc-hieu": 2,
+      "bang-chu-cai": 2,
+      "tu-ngu": 1,
+      "cau": 1
+    }
+  }
+}

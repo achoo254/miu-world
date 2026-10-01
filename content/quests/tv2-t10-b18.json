@@ -1,0 +1,1047 @@
+{
+  "id": "tv2-t10-b18",
+  "region": "khu-rung-bi-mat",
+  "chapter": 11,
+  "title": "Lá thư từ xứ băng",
+  "status": "draft",
+  "lesson": "tv2-t1-b18",
+  "summary": "Gấu Tuyết Bông nhận thư của Hải Cẩu Bạc ở xứ băng: “Bông ơi, tớ nhớ cậu!”. Bông muốn trả lời mà viết mãi không xong. {name} cùng Bông đọc truyện Tớ nhớ cậu, giúp Chó Mực ghi tên phong bì và chọn từ thật ấm cho lá thư hồi âm.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "Gấu Tuyết Bông (từ xứ băng tới, lúc nào cũng thấy rừng nóng), Chó Mực (đưa thư), Thỏ Tí (mang thư tới)",
+    "where": "Bến thư bên hồ, bờ hồ lau sậy, thuyền thư neo bên hồ và hòm thư đầu bến",
+    "goal": "Giúp Gấu Tuyết Bông viết thư trả lời người bạn ở phương xa",
+    "play": "Tìm giấy bút, nói, đọc truyện, điền chữ, xếp nhóm, chọn nhiều đáp án, chọn lời viết thư, phiếu viết",
+    "learn": "Tiếng Việt 2 Bài 18: đọc hiểu truyện “Tớ nhớ cậu”, nói lời chia tay, chính tả c/k, iêu/ươu, en/eng, từ ngữ chỉ tình cảm bạn bè, câu kể – câu hỏi – câu cảm và dấu câu",
+    "reward": "90 XP, 15 xu, Đọc hiểu +2, Chính tả +2, Từ ngữ +1, Câu +1, Dấu câu +1",
+    "unlock": "Bài 19 \"Chữ A và những người bạn\""
+  },
+  "phases": {
+    "hook": "gap-gau-tuyet-bong",
+    "explore": "tim-giay-but",
+    "learn": "doc-to-nho-cau",
+    "challenge": "phong-bi-con-vat",
+    "decision": "bong-viet-thu",
+    "finale": "bai-tho-gui-kem",
+    "reward": "phieu-viet-bai-18",
+    "unlock": "mo-bai-19"
+  },
+  "texts": {
+    "to-nho-cau": {
+      "title": "Tớ nhớ cậu",
+      "author": "Theo Tun Te-le-gơn",
+      "body": "Kiến là bạn thân của sóc. Hằng ngày, hai bạn thường rủ nhau đi học. Thế rồi nhà kiến chuyển đến một khu rừng khác. Lúc chia tay, kiến rất buồn. Kiến nói: “Cậu phải thường xuyên nhớ tớ đấy.”. Sóc gật đầu nhận lời.\n\nMột buổi sáng, sóc lấy một tờ giấy và viết thư cho kiến. Sóc nắn nót ghi: “Tớ nhớ cậu.”. Một cơn gió đi ngang qua mang theo lá thư. Chiều hôm đó, kiến đi dạo trong rừng. Một lá thư nhẹ nhẹ bay xuống. Kiến reo lên: “A, thư của sóc!”.\n\nHôm sau, kiến ngồi bên thềm và viết thư cho sóc. Kiến không biết làm sao cho sóc biết mình rất nhớ bạn. Cậu viết: \"Chào sóc!\". Nhưng kiến không định chào sóc. Cậu bèn viết một lá thư khác: \"Sóc thân mến!\". Như thế vẫn không đúng ý của kiến. Lấy một tờ giấy mới, kiến ghi: \"Sóc ơi!\". Cứ thế, cậu cặm cụi viết đi viết lại trong nhiều giờ liền.\n\nKhông lâu sau, sóc nhận được một lá thư do kiến gửi đến. Thư viết: \"Sóc ơi, tớ cũng nhớ cậu!\".",
+      "glossary": [
+        {
+          "term": "Nắn nót",
+          "meaning": "viết rất cẩn thận cho đẹp."
+        },
+        {
+          "term": "Cặm cụi",
+          "meaning": "chăm chú, tập trung vào việc đang làm."
+        }
+      ],
+      "section": "tv2-t1-b18-doc"
+    }
+  },
+  "places": {
+    "gau-tuyet-bong": "bến thư bên hồ",
+    "tim-giay-but": "bờ hồ lau sậy",
+    "tv2-t10-thuyen-thu": "thuyền thư",
+    "cho-muc": "hòm thư đầu bến"
+  },
+  "steps": [
+    {
+      "id": "gap-gau-tuyet-bong",
+      "title": "Lá thư dán tem bông tuyết",
+      "goTo": "Ra bến thư bên hồ gặp Gấu Tuyết Bông",
+      "kind": "dialogue",
+      "target": "gau-tuyet-bong",
+      "lines": [
+        {
+          "speaker": "Gấu Tuyết Bông",
+          "text": "Phù phù… {name} ơi, rừng mình nóng quá, tớ phải ngồi thò chân xuống hồ cho mát."
+        },
+        {
+          "speaker": "Thỏ Tí",
+          "text": "Thư của cậu đây, tem bông tuyết hẳn hoi! Mà… tớ nhặt nó ở chỗ nào ấy nhỉ?"
+        },
+        {
+          "speaker": "Gấu Tuyết Bông",
+          "text": "Thư của Hải Cẩu Bạc, bạn thân của tớ ở xứ băng! Bạc viết: “Bông ơi, tớ nhớ cậu!”."
+        },
+        {
+          "speaker": "Gấu Tuyết Bông",
+          "text": "Tớ muốn trả lời ngay, mà cầm bút lên là đầu óc tan chảy như que kem giữa trưa."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Mình giúp cậu viết thư trả lời nhé!",
+          "reply": "Thật hả? Vậy tìm giấy bút trước đã, tớ để quên đâu đó quanh bờ hồ lau sậy rồi."
+        }
+      ]
+    },
+    {
+      "id": "tim-giay-but",
+      "title": "Giấy bút lạc trong lau sậy",
+      "goTo": "Tìm giấy, bút và phong bì quanh bờ hồ lau sậy",
+      "kind": "search",
+      "targets": [
+        "tv2-t10-to-giay-xanh",
+        "tv2-t10-but-long-chim",
+        "tv2-t10-phong-bi-bong-tuyet"
+      ]
+    },
+    {
+      "id": "cam-xuc-ben-ban",
+      "title": "Chơi cùng bạn, xa bạn",
+      "goTo": "Mang giấy bút về bến thư bên hồ cho Bông",
+      "kind": "speak",
+      "target": "gau-tuyet-bong",
+      "prompt": "Bông vừa quạt phành phạch bằng phong bì vừa kể: ở xứ băng, tớ với Bạc trượt tuyết bằng bụng suốt ngày. Còn cậu thì sao?\nKhi cùng chơi với bạn, em cảm thấy thế nào?\nKhi xa bạn, em cảm thấy thế nào?",
+      "hints": [
+        "Chơi cùng bạn, em thấy vui đến mức nào?",
+        "Đã có lần nào em phải xa bạn thân chưa?",
+        "Những lúc nhớ bạn, em thường làm gì?"
+      ],
+      "curriculumRef": [
+        "tv2-t1-b18-doc-kd1",
+        "tv2-t1-b18-doc-kd2"
+      ]
+    },
+    {
+      "id": "doc-to-nho-cau",
+      "title": "Cuốn truyện trên thuyền thư",
+      "goTo": "Bước lên thuyền thư, đọc truyện Tớ nhớ cậu",
+      "kind": "read",
+      "target": "tv2-t10-thuyen-thu",
+      "textRef": "to-nho-cau",
+      "audio": true,
+      "question": "Bông lật cuốn truyện trên thuyền thư: ơ, truyện này cũng có hai bạn phải xa nhau! Khi chia tay sóc, kiến cảm thấy thế nào?",
+      "choices": [
+        {
+          "id": "vui-nha-moi",
+          "text": "Kiến vui lắm vì sắp được ở nhà mới."
+        },
+        {
+          "id": "rat-buon",
+          "text": "Lúc chia tay, kiến rất buồn."
+        },
+        {
+          "id": "ban-tha-moi",
+          "text": "Kiến chẳng thấy gì, vì kiến đang bận tha mồi."
+        }
+      ],
+      "skill": "doc-hieu",
+      "answer": {
+        "choice": "rat-buon"
+      },
+      "curriculumRef": [
+        "tv2-t1-b18-doc-1"
+      ],
+      "support": {
+        "guide": [
+          "Đọc đoạn đầu của câu chuyện.",
+          "Tìm câu kể lúc hai bạn chia tay."
+        ],
+        "hint": "Câu trả lời nằm ngay sau chữ “Lúc chia tay”.",
+        "answer": {
+          "text": "Lúc chia tay, kiến rất buồn.",
+          "explanation": "Nhà kiến chuyển đến một khu rừng khác; lúc chia tay sóc, kiến rất buồn."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đúng rồi, kiến buồn lắm! Bông cũng buồn y thế lúc rời xứ băng.",
+          "Chuẩn! Bông gật gù, mũi lấm tấm mồ hôi vì nóng.",
+          "{name} tìm ra câu chia tay nhanh như gió mang thư."
+        ],
+        "wrong": [
+          "Chuyển nhà xa bạn thân thì vui sao được, đọc lại đoạn một nhé.",
+          "Kiến không bận tha mồi đâu, kiến đang nói lời chia tay mà.",
+          "Tìm chữ “Lúc chia tay” trong đoạn đầu xem kiến thế nào."
+        ]
+      }
+    },
+    {
+      "id": "soc-nhan-loi",
+      "title": "Sóc gật đầu nhận lời",
+      "kind": "read",
+      "target": "tv2-t10-thuyen-thu",
+      "textRef": "to-nho-cau",
+      "question": "Sóc đồng ý với kiến điều gì?",
+      "choices": [
+        {
+          "id": "chuyen-theo",
+          "text": "Sóc đồng ý chuyển nhà theo kiến sang khu rừng khác."
+        },
+        {
+          "id": "mang-hat-de",
+          "text": "Sóc đồng ý ngày nào cũng mang hạt dẻ sang cho kiến."
+        },
+        {
+          "id": "thuong-xuyen-nho",
+          "text": "Sóc nhận lời kiến dặn: “Cậu phải thường xuyên nhớ tớ đấy.”"
+        }
+      ],
+      "skill": "doc-hieu",
+      "answer": {
+        "choice": "thuong-xuyen-nho"
+      },
+      "curriculumRef": [
+        "tv2-t1-b18-doc-2"
+      ],
+      "support": {
+        "guide": [
+          "Tìm lời kiến nói lúc chia tay.",
+          "Xem sóc làm gì sau lời nói ấy."
+        ],
+        "hint": "Sóc gật đầu nhận lời ngay sau câu kiến dặn bạn.",
+        "answer": {
+          "text": "Sóc đồng ý thường xuyên nhớ kiến: “Cậu phải thường xuyên nhớ tớ đấy.”",
+          "explanation": "Kiến dặn: “Cậu phải thường xuyên nhớ tớ đấy.”. Sóc gật đầu nhận lời."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đúng! Sóc gật đầu cái rụp, hứa sẽ nhớ kiến thường xuyên.",
+          "Chính xác, Bông chép ngay lời dặn ấy vào sổ tay.",
+          "Giỏi ghê, {name} đọc kĩ như bác đưa thư soi địa chỉ."
+        ],
+        "wrong": [
+          "Sóc vẫn ở lại rừng cũ, không chuyển nhà theo kiến đâu.",
+          "Trong truyện chẳng có hạt dẻ nào cả, tìm lời kiến dặn nhé.",
+          "Đọc lại câu kiến nói ngay trước khi sóc gật đầu."
+        ]
+      }
+    },
+    {
+      "id": "kien-viet-di-viet-lai",
+      "title": "Kiến viết đi viết lại",
+      "kind": "read",
+      "target": "tv2-t10-thuyen-thu",
+      "textRef": "to-nho-cau",
+      "question": "Bông nhìn đống giấy nháp của mình, ngượng ngùng: tớ cũng viết lại mấy lần rồi. Vì sao kiến phải viết lại nhiều lần lá thư gửi sóc?",
+      "choices": [
+        {
+          "id": "sai-chinh-ta",
+          "text": "Vì kiến viết sai chính tả nhiều quá."
+        },
+        {
+          "id": "khong-biet-lam-sao",
+          "text": "Kiến không biết làm sao cho sóc biết mình rất nhớ bạn."
+        },
+        {
+          "id": "gio-thoi-bay",
+          "text": "Vì gió thổi bay mất lá thư đầu tiên của kiến."
+        }
+      ],
+      "skill": "doc-hieu",
+      "answer": {
+        "choice": "khong-biet-lam-sao"
+      },
+      "curriculumRef": [
+        "tv2-t1-b18-doc-3"
+      ],
+      "support": {
+        "guide": [
+          "Đọc đoạn thứ ba, đoạn kiến ngồi bên thềm viết thư.",
+          "Tìm câu nói kiến đang băn khoăn điều gì."
+        ],
+        "hint": "Kiến viết “Chào sóc!”, “Sóc thân mến!” mà vẫn thấy chưa đúng ý mình.",
+        "answer": {
+          "text": "Kiến không biết làm sao cho sóc biết mình rất nhớ bạn.",
+          "explanation": "Kiến muốn sóc biết mình rất nhớ bạn nên viết đi viết lại cho tới khi đúng ý."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đúng rồi! Kiến muốn nói thật đúng nỗi nhớ của mình.",
+          "Bông reo: hoá ra tớ giống kiến, chỉ là tớ to hơn một chút… à, to hơn nhiều!",
+          "Chuẩn chuẩn, {name} hiểu lòng kiến luôn rồi."
+        ],
+        "wrong": [
+          "Truyện không nói kiến viết sai chính tả đâu, đọc đoạn ba nhé.",
+          "Gió mang thư của sóc chứ không thổi bay thư của kiến.",
+          "Tìm câu bắt đầu bằng “Kiến không biết làm sao…” thử xem."
+        ]
+      }
+    },
+    {
+      "id": "neu-khong-co-thu",
+      "title": "Nếu thư không tới thì sao",
+      "kind": "speak",
+      "target": "tv2-t10-thuyen-thu",
+      "prompt": "Bông ôm lá thư của Bạc vào lòng, mắt chớp chớp như tuyết rơi. Theo em, hai bạn sẽ cảm thấy thế nào nếu không nhận được thư của nhau?",
+      "hints": [
+        "Sóc chờ thư mãi mà không thấy, sóc sẽ thấy sao?",
+        "Kiến viết thư mà sóc không đọc được, kiến sẽ nghĩ gì?",
+        "Em đã bao giờ chờ tin của ai đó chưa?"
+      ],
+      "curriculumRef": [
+        "tv2-t1-b18-doc-4"
+      ]
+    },
+    {
+      "id": "dong-vai-chia-tay",
+      "title": "Đóng vai sóc và kiến",
+      "goTo": "Xuống thuyền, về bến thư bên hồ chơi đóng vai",
+      "kind": "speak",
+      "target": "gau-tuyet-bong",
+      "prompt": "Bông xung phong làm sóc, trèo lên cành liễu… Rắc! Cành cong vòng xuống tận mặt hồ. Thôi, sóc đứng dưới đất vậy. Đóng vai sóc và kiến để nói và đáp lời chào lúc chia tay.",
+      "hints": [
+        "Kiến: Cậu phải thường xuyên nhớ tớ đấy!",
+        "Sóc đáp lại: Tớ hứa…",
+        "Chào nhau xong, hai bạn còn dặn nhau điều gì?"
+      ],
+      "pictureRefs": [
+        {
+          "kind": "diagram",
+          "type": "picture-card",
+          "params": {
+            "caption": "kiến nói với sóc đang đứng trên cành cây, bóng nói của kiến: “Cậu phải thường xuyên nhớ tớ đấy!”, bóng nói của sóc: “(...)”"
+          }
+        }
+      ],
+      "curriculumRef": [
+        "tv2-t1-b18-doc-lt1"
+      ]
+    },
+    {
+      "id": "loi-tam-biet-ban",
+      "title": "Lời tạm biệt ở trường",
+      "kind": "speak",
+      "target": "gau-tuyet-bong",
+      "prompt": "Bông kể: ở xứ băng, lúc chia tay tụi tớ cọ mũi vào nhau, mũi lạnh ngắt. Còn ở trường cậu thì sao? Em sẽ nói với bạn thế nào khi:",
+      "hints": [
+        "– – Bạn chuyển đến một ngôi trường khác.",
+        "– – Tan học, em về trước còn bạn ở lại chờ bố mẹ đón."
+      ],
+      "curriculumRef": [
+        "tv2-t1-b18-doc-lt2-a",
+        "tv2-t1-b18-doc-lt2-b"
+      ]
+    },
+    {
+      "id": "phong-bi-con-vat",
+      "title": "Bốn phong bì chưa ghi tên",
+      "goTo": "Ra hòm thư đầu bến, Chó Mực đang chờ",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "target": "cho-muc",
+      "prompt": "Gâu! Chó Mực vẫy đuôi tít, túi thư rơi bịch xuống cỏ. Bốn phong bì có vẽ con vật nhận thư mà chưa ghi tên. Tìm từ ngữ có tiếng bắt đầu bằng c hoặc k gọi tên mỗi con vật trong hình.",
+      "template": "Hình 1 – con vật có hai càng, bò ngang: {{hinh-1}}\nHình 2 – con chim đang xoè đuôi rực rỡ: {{hinh-2}}\nHình 3 – con vật bốn chân, da sần, đuôi dài, thè lưỡi: {{hinh-3}}\nHình 4 – con vật bé xíu, chăm chỉ tha mồi: {{hinh-4}}",
+      "blanks": [
+        {
+          "id": "hinh-1",
+          "options": [
+            {
+              "id": "con-kua",
+              "text": "con kua"
+            },
+            {
+              "id": "con-cua",
+              "text": "con cua"
+            }
+          ]
+        },
+        {
+          "id": "hinh-2",
+          "options": [
+            {
+              "id": "con-cong",
+              "text": "con công"
+            },
+            {
+              "id": "con-kong",
+              "text": "con kông"
+            }
+          ]
+        },
+        {
+          "id": "hinh-3",
+          "options": [
+            {
+              "id": "con-ci-da",
+              "text": "con cì đà"
+            },
+            {
+              "id": "con-ki-da",
+              "text": "con kì đà"
+            }
+          ]
+        },
+        {
+          "id": "hinh-4",
+          "options": [
+            {
+              "id": "con-kien",
+              "text": "con kiến"
+            },
+            {
+              "id": "con-cien",
+              "text": "con ciến"
+            }
+          ]
+        }
+      ],
+      "skill": "chinh-ta",
+      "answer": {
+        "fills": {
+          "hinh-1": "con-cua",
+          "hinh-2": "con-cong",
+          "hinh-3": "con-ki-da",
+          "hinh-4": "con-kien"
+        }
+      },
+      "curriculumRef": [
+        "tv2-t1-b18-chinh-ta-2-a",
+        "tv2-t1-b18-chinh-ta-2-b",
+        "tv2-t1-b18-chinh-ta-2-c",
+        "tv2-t1-b18-chinh-ta-2-d"
+      ],
+      "support": {
+        "guide": [
+          "Đọc to tên từng con vật.",
+          "Âm cờ đứng trước e, ê, i thì viết k; trước các vần khác thì viết c."
+        ],
+        "hint": "Kì đà và kiến có i đứng sau âm đầu, nên viết bằng k.",
+        "answer": {
+          "text": "con cua; con công; con kì đà; con kiến",
+          "explanation": "Cua, công viết c vì sau âm đầu là u, ô; kì đà, kiến viết k vì sau âm đầu là i, iê."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Gâu gâu! Bốn phong bì đủ tên, Chó Mực chạy đi phát thư ngay!",
+          "Đúng hết rồi, chữ k với chữ c đứng ngay ngắn như hàng rào.",
+          "Chó Mực vẫy đuôi mạnh đến mức túi thư quay tròn một vòng."
+        ],
+        "wrong": [
+          "Ối, có con vật bị ghi nhầm chữ rồi, thư mà đến nhầm nhà thì gay!",
+          "Nhớ luật nhé: trước i, iê thì viết k, như trong kiến.",
+          "Cua với công thì viết c, vì sau âm đầu là u và ô."
+        ]
+      }
+    },
+    {
+      "id": "buu-thiep-cua-soc",
+      "title": "Tấm bưu thiếp nhoè chữ",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "target": "cho-muc",
+      "prompt": "Chó Mực khụt khịt: tấm bưu thiếp của sóc bị mưa làm nhoè ba chữ, gâu, phải cứu nó thôi! Bông bảo làm cả hai phần cho vui.\nChọn a hoặc b. a. Chọn tiếng chứa iêu hoặc ươu thay cho ô vuông. (hươu, nhiều, khướu)",
+      "template": "Sóc hái rất {{b1}} hoa để tặng bạn bè. Nó tặng {{b2}} cao cổ một bó hoa thiên điểu rực rỡ. Còn chim {{b3}} và chim liếu điếu được sóc tặng một bó hoa bồ công anh nhẹ như bông.",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "huou",
+              "text": "hươu"
+            },
+            {
+              "id": "nhieu",
+              "text": "nhiều"
+            },
+            {
+              "id": "khuou",
+              "text": "khướu"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "huou",
+              "text": "hươu"
+            },
+            {
+              "id": "nhieu",
+              "text": "nhiều"
+            },
+            {
+              "id": "khuou",
+              "text": "khướu"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "huou",
+              "text": "hươu"
+            },
+            {
+              "id": "nhieu",
+              "text": "nhiều"
+            },
+            {
+              "id": "khuou",
+              "text": "khướu"
+            }
+          ]
+        }
+      ],
+      "skill": "chinh-ta",
+      "answer": {
+        "fills": {
+          "b1": "nhieu",
+          "b2": "huou",
+          "b3": "khuou"
+        }
+      },
+      "curriculumRef": [
+        "tv2-t1-b18-chinh-ta-3-a"
+      ],
+      "support": {
+        "guide": [
+          "Đọc từng câu, xem ô vuông cần một con vật hay một từ chỉ số lượng.",
+          "Con nào cao cổ? Con chim nào hót hay?"
+        ],
+        "hint": "“Rất nhiều hoa”; “hươu cao cổ”; “chim khướu”.",
+        "answer": {
+          "text": "nhiều; hươu; khướu",
+          "explanation": "Sóc hái rất nhiều hoa, tặng hươu cao cổ hoa thiên điểu, còn chim khướu và chim liếu điếu được hoa bồ công anh."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bưu thiếp sáng bừng trở lại! Chó Mực sủa hai tiếng cảm ơn.",
+          "Đúng cả ba chữ, vần iêu và ươu không lẫn chút nào.",
+          "Bông vỗ tay bộp bộp, tuyết trên lông rơi lả tả."
+        ],
+        "wrong": [
+          "Ủa, “hươu cao cổ” chứ đâu phải “nhiều cao cổ”, đọc lại câu hai nhé.",
+          "Ô đầu tiên nói sóc hái hoa nhiều hay ít đấy.",
+          "Chim gì có tên vần ươu? Thử đặt vào ô cuối xem."
+        ]
+      }
+    },
+    {
+      "id": "ngan-chu-en-eng",
+      "title": "Túi chữ en và eng",
+      "kind": "challenge",
+      "mechanic": "classify",
+      "target": "cho-muc",
+      "prompt": "Chó Mực đánh hơi ra một túi chữ lộn xộn, chữ nào cũng kêu leng keng. Gâu, chia giúp vào hai ngăn nhé!\nChọn a hoặc b. b. Tìm từ ngữ có tiếng chứa en hoặc eng.\nM:\nen | M: dế mèn\neng | M: cái xẻng",
+      "groups": [
+        {
+          "id": "en",
+          "label": "Tiếng chứa en"
+        },
+        {
+          "id": "eng",
+          "label": "Tiếng chứa eng"
+        }
+      ],
+      "items": [
+        {
+          "id": "leng-keng",
+          "label": "leng keng"
+        },
+        {
+          "id": "hoa-sen",
+          "label": "hoa sen"
+        },
+        {
+          "id": "cai-keng",
+          "label": "cái kẻng"
+        },
+        {
+          "id": "cai-ken",
+          "label": "cái kèn"
+        },
+        {
+          "id": "xa-beng",
+          "label": "xà beng"
+        },
+        {
+          "id": "ngon-den",
+          "label": "ngọn đèn"
+        }
+      ],
+      "skill": "chinh-ta",
+      "answer": {
+        "assignment": {
+          "leng-keng": "eng",
+          "hoa-sen": "en",
+          "cai-keng": "eng",
+          "cai-ken": "en",
+          "xa-beng": "eng",
+          "ngon-den": "en"
+        }
+      },
+      "curriculumRef": [
+        "tv2-t1-b18-chinh-ta-3-b"
+      ],
+      "support": {
+        "guide": [
+          "Đọc chậm từng tiếng.",
+          "Nghe xem cuối tiếng có âm ngờ (ng) hay chỉ có nờ (n)."
+        ],
+        "hint": "Dế mèn có en, cái xẻng có eng. Tiếng nào ngân dài ở mũi là eng.",
+        "answer": {
+          "text": "en: hoa sen, cái kèn, ngọn đèn; eng: leng keng, cái kẻng, xà beng",
+          "explanation": "Sen, kèn, đèn kết thúc bằng n; leng, keng, kẻng, beng kết thúc bằng ng."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Hai ngăn gọn gàng! Chó Mực khoác túi đi, kêu leng keng vui tai.",
+          "Đúng rồi, en với eng chẳng lẫn được {name} đâu.",
+          "Bông thử đọc “xà beng” ba lần liền mà không vấp, nhờ cậu đấy!"
+        ],
+        "wrong": [
+          "Có từ đang nằm nhầm ngăn, đọc to lên nghe cuối tiếng nhé.",
+          "Cái kèn thổi “en”, cái kẻng gõ “eng”, nghe kĩ là thấy khác.",
+          "Ngọn đèn có ng hay chỉ có n ở cuối? Thử đọc chậm lại."
+        ]
+      }
+    },
+    {
+      "id": "tu-ngu-am-ap",
+      "title": "Những từ ấm như chăn bông",
+      "goTo": "Về bến thư bên hồ, Bông đang nắn nót tờ giấy mới",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "target": "gau-tuyet-bong",
+      "prompt": "Bông muốn thư trả lời ấm đến mức tan cả băng trên lưng Bạc. Nhặt giúp tớ những từ thật xinh nhé! Tìm từ ngữ chỉ tình cảm bạn bè. M: quý mến",
+      "choices": [
+        {
+          "id": "yeu-quy",
+          "text": "yêu quý"
+        },
+        {
+          "id": "che-bai",
+          "text": "chê bai"
+        },
+        {
+          "id": "gan-bo",
+          "text": "gắn bó"
+        },
+        {
+          "id": "than-thiet",
+          "text": "thân thiết"
+        },
+        {
+          "id": "gian-doi",
+          "text": "giận dỗi"
+        },
+        {
+          "id": "thuong-men",
+          "text": "thương mến"
+        }
+      ],
+      "skill": "tu-ngu",
+      "answer": {
+        "choices": [
+          "yeu-quy",
+          "gan-bo",
+          "than-thiet",
+          "thuong-men"
+        ]
+      },
+      "curriculumRef": [
+        "tv2-t1-b18-tu-ngu-cau-1"
+      ],
+      "support": {
+        "guide": [
+          "Đọc từng từ và tự hỏi: từ này có làm bạn bè gần nhau hơn không?",
+          "Từ mẫu là “quý mến”."
+        ],
+        "hint": "Có bốn từ chỉ tình cảm bạn bè; hai từ còn lại làm bạn buồn.",
+        "answer": {
+          "text": "yêu quý, gắn bó, thân thiết, thương mến",
+          "explanation": "Yêu quý, gắn bó, thân thiết, thương mến nói về tình cảm tốt đẹp giữa bạn bè; chê bai, giận dỗi thì không."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bốn từ ấm áp đã vào thư! Bông ôm tờ giấy mà thấy mát cả người.",
+          "Đúng rồi, toàn những từ làm bạn bè xích lại gần nhau.",
+          "Bông bảo: thư này mà tới xứ băng chắc Bạc cười tít mắt."
+        ],
+        "wrong": [
+          "Ối, “chê bai” mà gửi cho bạn thì bạn buồn thiu mất.",
+          "Còn sót một từ chỉ tình cảm bạn bè đấy, tìm thêm nhé.",
+          "Bạn thân thì đâu có “giận dỗi” mãi, bỏ từ đó ra nào."
+        ]
+      }
+    },
+    {
+      "id": "thu-cua-ca-bong",
+      "title": "Chuyện cá nhỏ và nòng nọc",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "target": "gau-tuyet-bong",
+      "prompt": "Cá Bống ngoi lên gửi nhờ một mẩu chuyện, nhưng nước hồ liếm mất ba chữ. Bông nhờ {name} điền lại. Chọn từ trong ngoặc đơn thay cho ô vuông. (nhớ, tươi vui, thân thiết, vui đùa)",
+      "template": "Cá nhỏ và nòng nọc là đôi bạn {{b1}}. Hằng ngày, chúng cùng nhau bơi lội. Thế rồi nòng nọc trở thành ếch. Nó phải lên bờ để sinh sống. Nhưng nó vẫn {{b2}} cá nhỏ. Thỉnh thoảng, nó nhảy xuống ao {{b3}} cùng cá nhỏ.",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "nho",
+              "text": "nhớ"
+            },
+            {
+              "id": "tuoi-vui",
+              "text": "tươi vui"
+            },
+            {
+              "id": "than-thiet",
+              "text": "thân thiết"
+            },
+            {
+              "id": "vui-dua",
+              "text": "vui đùa"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "nho",
+              "text": "nhớ"
+            },
+            {
+              "id": "tuoi-vui",
+              "text": "tươi vui"
+            },
+            {
+              "id": "than-thiet",
+              "text": "thân thiết"
+            },
+            {
+              "id": "vui-dua",
+              "text": "vui đùa"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "nho",
+              "text": "nhớ"
+            },
+            {
+              "id": "tuoi-vui",
+              "text": "tươi vui"
+            },
+            {
+              "id": "than-thiet",
+              "text": "thân thiết"
+            },
+            {
+              "id": "vui-dua",
+              "text": "vui đùa"
+            }
+          ]
+        }
+      ],
+      "skill": "tu-ngu",
+      "answer": {
+        "fills": {
+          "b1": "than-thiet",
+          "b2": "nho",
+          "b3": "vui-dua"
+        }
+      },
+      "curriculumRef": [
+        "tv2-t1-b18-tu-ngu-cau-2"
+      ],
+      "support": {
+        "guide": [
+          "Đọc cả đoạn một lượt trước khi điền.",
+          "Ô đầu nói hai bạn thế nào, ô hai nói ếch vẫn làm gì, ô ba nói ếch xuống ao để làm gì."
+        ],
+        "hint": "Có một từ trong ngoặc không dùng tới: tươi vui.",
+        "answer": {
+          "text": "thân thiết; nhớ; vui đùa",
+          "explanation": "Cá nhỏ và nòng nọc là đôi bạn thân thiết; lên bờ rồi ếch vẫn nhớ cá nhỏ, thỉnh thoảng nhảy xuống ao vui đùa cùng bạn."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Mẩu chuyện liền mạch rồi! Cá Bống quẫy đuôi làm Bông ướt cả mũi.",
+          "Đúng cả ba ô, giống ếch vẫn nhớ cá nhỏ, Bông vẫn nhớ Bạc.",
+          "Điền khéo thế, Cá Bống thổi một chuỗi bong bóng khen {name}."
+        ],
+        "wrong": [
+          "Thử lại nhé: ếch lên bờ rồi mà vẫn làm gì cá nhỏ?",
+          "Nhảy xuống ao để “tươi vui” nghe hơi lạ, có từ hợp hơn đấy.",
+          "Ô đầu tiên nói hai bạn gần gũi với nhau thế nào."
+        ]
+      }
+    },
+    {
+      "id": "cau-nao-de-lam-gi",
+      "title": "Câu nào để làm gì",
+      "kind": "challenge",
+      "mechanic": "classify",
+      "target": "gau-tuyet-bong",
+      "prompt": "Bông chép ba câu trong truyện vào giấy nháp rồi gãi đầu sột soạt: câu nào để làm gì nhỉ?\nChọn câu ở cột A phù hợp với ý ở cột B. Nói tên dấu câu đặt cuối mỗi câu. B: Hỏi điều chưa biết; Kể lại sự việc; Bộc lộ cảm xúc.",
+      "groups": [
+        {
+          "id": "hoi",
+          "label": "Hỏi điều chưa biết"
+        },
+        {
+          "id": "ke",
+          "label": "Kể lại sự việc"
+        },
+        {
+          "id": "boc-lo",
+          "label": "Bộc lộ cảm xúc"
+        }
+      ],
+      "items": [
+        {
+          "id": "cau-b",
+          "label": "Vì sao lúc chia tay sóc, kiến rất buồn?"
+        },
+        {
+          "id": "cau-c",
+          "label": "Sóc ơi, tớ cũng nhớ cậu!"
+        },
+        {
+          "id": "cau-a",
+          "label": "Hằng ngày, hai bạn thường rủ nhau đi học."
+        }
+      ],
+      "skill": "cau",
+      "answer": {
+        "assignment": {
+          "cau-a": "ke",
+          "cau-b": "hoi",
+          "cau-c": "boc-lo"
+        }
+      },
+      "curriculumRef": [
+        "tv2-t1-b18-tu-ngu-cau-3-a",
+        "tv2-t1-b18-tu-ngu-cau-3-b",
+        "tv2-t1-b18-tu-ngu-cau-3-c"
+      ],
+      "support": {
+        "guide": [
+          "Đọc từng câu, chú ý dấu ở cuối câu.",
+          "Câu nào đang hỏi? Câu nào kể việc hằng ngày? Câu nào reo lên vì nhớ bạn?"
+        ],
+        "hint": "Câu có dấu chấm hỏi là câu hỏi; câu có dấu chấm than thường bộc lộ cảm xúc.",
+        "answer": {
+          "text": "Kể lại sự việc: Hằng ngày, hai bạn thường rủ nhau đi học. Hỏi điều chưa biết: Vì sao lúc chia tay sóc, kiến rất buồn? Bộc lộ cảm xúc: Sóc ơi, tớ cũng nhớ cậu!",
+          "explanation": "Câu kể việc hai bạn đi học kết thúc bằng dấu chấm; câu hỏi vì sao kết thúc bằng dấu chấm hỏi; câu nói nỗi nhớ kết thúc bằng dấu chấm than."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ba câu về đúng nhà! Bông xếp giấy nháp thẳng tăm.",
+          "Chuẩn rồi, câu hỏi thì hỏi, câu kể thì kể, câu nhớ thì reo lên.",
+          "Bông khen: {name} chia câu còn giỏi hơn Chó Mực chia thư!"
+        ],
+        "wrong": [
+          "Câu có chữ “Vì sao” đang muốn biết điều gì đó đấy.",
+          "Câu “Sóc ơi, tớ cũng nhớ cậu!” nghe như đang reo lên, đúng không?",
+          "Việc hai bạn rủ nhau đi học là chuyện kể lại thôi, thử đổi chỗ xem."
+        ]
+      }
+    },
+    {
+      "id": "ten-dau-cuoi-cau",
+      "title": "Gọi tên dấu cuối câu",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "target": "gau-tuyet-bong",
+      "prompt": "Giờ đến phần gọi tên dấu câu. Bông thì thầm: dấu chấm than trông như cây kem que úp ngược, tớ thèm ghê!\nChọn câu ở cột A phù hợp với ý ở cột B. Nói tên dấu câu đặt cuối mỗi câu. B: Hỏi điều chưa biết; Kể lại sự việc; Bộc lộ cảm xúc.",
+      "template": "Hằng ngày, hai bạn thường rủ nhau đi học. → {{dau-1}}\nVì sao lúc chia tay sóc, kiến rất buồn? → {{dau-2}}\nSóc ơi, tớ cũng nhớ cậu! → {{dau-3}}",
+      "blanks": [
+        {
+          "id": "dau-1",
+          "options": [
+            {
+              "id": "cham-hoi",
+              "text": "dấu chấm hỏi"
+            },
+            {
+              "id": "cham",
+              "text": "dấu chấm"
+            },
+            {
+              "id": "cham-than",
+              "text": "dấu chấm than"
+            }
+          ]
+        },
+        {
+          "id": "dau-2",
+          "options": [
+            {
+              "id": "cham-than",
+              "text": "dấu chấm than"
+            },
+            {
+              "id": "cham-hoi",
+              "text": "dấu chấm hỏi"
+            },
+            {
+              "id": "cham",
+              "text": "dấu chấm"
+            }
+          ]
+        },
+        {
+          "id": "dau-3",
+          "options": [
+            {
+              "id": "cham",
+              "text": "dấu chấm"
+            },
+            {
+              "id": "cham-than",
+              "text": "dấu chấm than"
+            },
+            {
+              "id": "cham-hoi",
+              "text": "dấu chấm hỏi"
+            }
+          ]
+        }
+      ],
+      "skill": "dau-cau",
+      "answer": {
+        "fills": {
+          "dau-1": "cham",
+          "dau-2": "cham-hoi",
+          "dau-3": "cham-than"
+        }
+      },
+      "curriculumRef": [
+        "tv2-t1-b18-tu-ngu-cau-3-a",
+        "tv2-t1-b18-tu-ngu-cau-3-b",
+        "tv2-t1-b18-tu-ngu-cau-3-c"
+      ],
+      "support": {
+        "guide": [
+          "Nhìn kĩ dấu đứng cuối mỗi câu.",
+          "Dấu có cái móc cong là dấu chấm hỏi; dấu có gạch đứng là dấu chấm than."
+        ],
+        "hint": "Ba câu dùng ba dấu khác nhau.",
+        "answer": {
+          "text": "dấu chấm; dấu chấm hỏi; dấu chấm than",
+          "explanation": "Câu kể dùng dấu chấm, câu hỏi dùng dấu chấm hỏi, câu bộc lộ cảm xúc dùng dấu chấm than."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Gọi tên dấu câu không trật cái nào! Bông thưởng mình một… cái quạt tưởng tượng.",
+          "Đúng rồi, chấm, chấm hỏi, chấm than đứng đúng chỗ.",
+          "Chính xác! Giờ Bông biết đặt dấu cho thư gửi Bạc rồi."
+        ],
+        "wrong": [
+          "Câu hỏi vì sao thì đứng cuối phải là dấu có cái móc cong.",
+          "Câu reo lên nhớ bạn cần dấu có gạch đứng, thử lại nhé.",
+          "Câu kể chuyện đi học chỉ cần một chấm nhỏ xíu ở cuối thôi."
+        ]
+      }
+    },
+    {
+      "id": "bong-viet-thu",
+      "title": "Bông viết rồi lại gạch",
+      "kind": "dialogue",
+      "target": "gau-tuyet-bong",
+      "lines": [
+        {
+          "speaker": "Gấu Tuyết Bông",
+          "text": "Tớ viết “Chào Bạc!” rồi… gạch. Viết “Bạc thân mến!” rồi… lại gạch. Giấy nhăn nhúm như vỏ hến!"
+        },
+        {
+          "speaker": "Gấu Tuyết Bông",
+          "text": "Giống hệt chú kiến trong truyện. Cậu bảo tớ viết thế nào cho Bạc hiểu tớ nhớ cậu ấy?"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Viết giống kiến ấy: “Bạc ơi, tớ cũng nhớ cậu!”",
+          "reply": "Ngắn thôi mà ấm cả bụng! Tớ viết ngay đây, nắn nót từng chữ."
+        },
+        {
+          "text": "Kể thêm cho Bạc nghe rừng mình nóng thế nào!",
+          "reply": "Ha ha, tớ sẽ kể là chiều nào tớ cũng ngâm chân dưới hồ như ngâm dưa."
+        },
+        {
+          "text": "Rủ Bạc mùa đông sang rừng chơi nhé!",
+          "reply": "Ý hay! Tớ sẽ dẫn Bạc đi qua nhịp cầu gỗ mới tinh mà Hải Ly Cần vừa đóng xong."
+        }
+      ]
+    },
+    {
+      "id": "bai-tho-gui-kem",
+      "title": "Bài thơ gửi kèm lá thư",
+      "kind": "speak",
+      "target": "gau-tuyet-bong",
+      "prompt": "Bông muốn kẹp thêm một bài thơ vào phong bì cho Bạc đọc đỡ nhớ. Tìm đọc một bài thơ về tình bạn. Khi đọc, chú ý những thông tin sau: – Tên của bài thơ. – Tên của tác giả. Nói về những điều em thích trong bài thơ đó.",
+      "hints": [
+        "Bài thơ em đọc có tên là gì? Ai viết bài thơ ấy?",
+        "Em thích nhất câu thơ nào?",
+        "Bài thơ làm em nhớ tới người bạn nào?"
+      ],
+      "pictureRefs": [
+        {
+          "kind": "diagram",
+          "type": "picture-card",
+          "params": {
+            "caption": "bốn bạn học sinh ngồi trên ghế đá sân trường cầm sách; bóng nói: “Bạn Dương thích bài Chú bò tìm bạn của nhà thơ Phạm Hổ.”; bóng nói: “Còn bạn Châu Anh lại thích bài Ngỗng và vịt.”"
+          }
+        }
+      ],
+      "curriculumRef": [
+        "tv2-t1-b18-doc-mo-rong-1",
+        "tv2-t1-b18-doc-mo-rong-2"
+      ]
+    },
+    {
+      "id": "phieu-viet-bai-18",
+      "title": "Phiếu viết Bài 18",
+      "kind": "worksheet",
+      "trigger": "auto",
+      "lessonId": "tv2-t1-b18",
+      "text": "Nhờ bố mẹ in phiếu Bài 18 ở khu phụ huynh: nghe – viết đoạn Tớ nhớ cậu, nói về việc làm của các bạn trong tranh rồi viết 3 – 4 câu kể chuyện em cùng các bạn. Bông dặn: viết nắn nót như sóc, đừng để giọt mồ hôi gấu rơi vào vở nhé!",
+      "curriculumRef": [
+        "tv2-t1-b18-nghe-viet-1",
+        "tv2-t1-b18-viet-doan-1",
+        "tv2-t1-b18-viet-doan-2"
+      ]
+    },
+    {
+      "id": "qua-cau-tuyet",
+      "title": "Quả cầu tuyết của Bông",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Bông tặng {name} một quả cầu tuyết nhỏ: lắc lên là tuyết bay lả tả quanh hai chú gấu đang ôm nhau. Bông bảo cầm vào là mát lạnh, rừng nóng mấy cũng chịu được!"
+    },
+    {
+      "id": "mo-bai-19",
+      "title": "Ồn ào trên đường chữ cái",
+      "kind": "unlock",
+      "trigger": "auto",
+      "text": "Chó Mực chạy về báo tin: trên con đường chữ cái, chữ A và các bạn đang cãi nhau ầm ĩ xem ai quan trọng nhất. Vẹt Xanh đã bay tới… và cãi to nhất!"
+    }
+  ],
+  "reward": {
+    "xp": 90,
+    "coin": 15,
+    "skillXp": {
+      "doc-hieu": 2,
+      "chinh-ta": 2,
+      "tu-ngu": 1,
+      "cau": 1,
+      "dau-cau": 1
+    }
+  }
+}

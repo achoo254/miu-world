@@ -1,0 +1,1140 @@
+{
+  "id": "tv2-t17-b32",
+  "region": "khu-rung-bi-mat",
+  "chapter": 18,
+  "title": "Thỏ Tí giành chong chóng với em",
+  "status": "draft",
+  "lesson": "tv2-t1-b32",
+  "summary": "Trên cánh đồng gió, Thỏ Tí và bé Tẹo giằng nhau một chiếc chong chóng đến nỗi gió giật tung cả bốn cánh. {name} nhặt lại từng mảnh, đọc chuyện hai anh em An và Mai, rồi giúp hai anh em thỏ tìm cách chơi chung thật vui.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "Thỏ Tí (nhanh nhảu, hay quên) và em trai là bé Tẹo",
+    "where": "Cánh đồng gió và gò đất lộng gió ven Khu rừng bí mật",
+    "goal": "Ráp lại chiếc chong chóng bị gió thổi tung và giúp hai anh em thỏ chơi chung, không giành nhau nữa",
+    "play": "Nhặt mảnh chong chóng, nói và kể, đọc truyện, trắc nghiệm, điền chữ, chọn nhiều đáp án, xếp từ vào nhóm, đặt dấu phẩy, đọc tin nhắn, phiếu viết",
+    "learn": "Tiếng Việt 2 Bài 32: đọc hiểu Chơi chong chóng, từ ngữ tả đồ vật, chính tả iu/ưu và ăt/ăc/ât/âc, từ ngữ về tình cảm gia đình, câu nói về anh chị em, dấu phẩy, đọc và viết tin nhắn",
+    "reward": "90 XP, 15 xu, Đọc hiểu +2, Chính tả +2, Từ ngữ +1, Dấu câu +1",
+    "unlock": "Ôn tập và Đánh giá cuối học kì 1: ngày khánh thành cây cầu gỗ"
+  },
+  "phases": {
+    "hook": "tho-ti-va-be-teo",
+    "explore": "nhat-manh-chong-chong",
+    "learn": "doc-choi-chong-chong",
+    "challenge": "sieu-va-phung-phiu",
+    "decision": "chia-chong-chong",
+    "finale": "tin-nhan-cua-soc-nau",
+    "reward": "phieu-viet-bai-32",
+    "unlock": "mo-on-cuoi-ki"
+  },
+  "texts": {
+    "choi-chong-chong": {
+      "title": "Chơi chong chóng",
+      "author": "Theo Tuệ Nhi",
+      "body": "An yêu thích những chiếc chong chóng giấy. Mỗi chiếc chong chóng chỉ có một cái cán nhỏ và dài, một đầu gắn bốn cánh giấy mỏng, xinh như một bông hoa. Nhưng mỗi lần quay, nó mang lại bao nhiêu là tiếng cười và sự háo hức. An thích chạy thật nhanh để những cánh giấy không ngừng quay trong gió. Gió lướt qua cánh chong chóng tạo ra tiếng u u rất lạ.\n\nAn thường rủ bé Mai chơi chong chóng và thi xem ai thắng. Hai anh em chạy quanh sân cho chong chóng quay, rồi đột ngột dừng lại. Chong chóng của ai dừng quay trước thì người đó thua. An chạy nhanh hơn nên chong chóng quay lâu hơn. Thua mãi, Mai buồn thiu. An liền cho em giơ chong chóng ra trước quạt máy, còn mình thì phùng má thổi phù phù cho chong chóng quay. Mai cười toe vì thắng. Bây giờ cũng giống như anh, Mai cũng rất mê những chiếc chong chóng.",
+      "glossary": [
+        {
+          "term": "Cười toe",
+          "meaning": "cười với khuôn miệng mở rộng sang hai bên, thể hiện sự vui sướng, thích thú."
+        }
+      ],
+      "section": "tv2-t1-b32-doc"
+    }
+  },
+  "places": {
+    "tho-ti": "cánh đồng gió",
+    "nhat-manh-chong-chong": "gò đất lộng gió",
+    "tho-teo": "cánh đồng gió",
+    "tv2-t17-bu-nhin": "cánh đồng gió",
+    "tv2-t17-goc-cay-de": "gốc cây dẻ"
+  },
+  "steps": [
+    {
+      "id": "tho-ti-va-be-teo",
+      "title": "Hai anh em giằng chong chóng",
+      "goTo": "Chạy ra cánh đồng gió, nơi Thỏ Tí và bé Tẹo đang giằng co",
+      "kind": "dialogue",
+      "target": "tho-ti",
+      "lines": [
+        {
+          "speaker": "Thỏ Tí",
+          "text": "{name} ơi, cứu tớ! Bé Tẹo giữ khư khư cái cán, tớ giữ cái cánh, chong chóng sắp thành hai nửa rồi!"
+        },
+        {
+          "speaker": "Bé Tẹo",
+          "text": "Của em! Anh Tí cầm cả buổi sáng rồi, giờ phải đến lượt em chứ!"
+        },
+        {
+          "speaker": "Thỏ Tí",
+          "text": "Nhưng anh mới… ơ, anh định nói gì ấy nhỉ? À đúng: anh mới chạy có chín mươi chín vòng thôi mà!"
+        },
+        {
+          "speaker": "Cơn gió đồng",
+          "text": "Vùùù… Phựt! Một luồng gió to giật tung bốn cánh giấy, thổi bay lên tận gò đất."
+        },
+        {
+          "speaker": "Bé Tẹo",
+          "text": "Oaaa! Chong chóng của em… à không, của hai anh em… bay mất rồi!"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Đừng khóc, mình đi nhặt lại ngay!",
+          "reply": "Thỏ Tí gãi tai: cánh đỏ bay về phía gò đất… hay là cánh xanh nhỉ? Thôi, nhặt hết cho chắc!"
+        },
+        {
+          "text": "Hai bạn thôi giằng co đi, gió nghe thấy đấy!",
+          "reply": "Bé Tẹo sụt sịt: em hết giằng rồi, {name} giúp em tìm cánh chong chóng nhé?"
+        }
+      ]
+    },
+    {
+      "id": "nhat-manh-chong-chong",
+      "title": "Nhặt mảnh chong chóng",
+      "goTo": "Lên gò đất lộng gió nhặt cánh giấy đỏ, cán tre nhỏ và chiếc ghim chong chóng",
+      "kind": "search",
+      "targets": [
+        "tv2-t17-canh-giay-do",
+        "tv2-t17-can-tre-nho",
+        "tv2-t17-ghim-chong-chong"
+      ]
+    },
+    {
+      "id": "tro-choi-voi-anh-chi-em",
+      "title": "Trò chơi của anh chị em",
+      "goTo": "Mang các mảnh về cánh đồng gió cho bé Tẹo",
+      "kind": "speak",
+      "target": "tho-teo",
+      "prompt": "Bé Tẹo ôm đống mảnh chong chóng, mắt vẫn đỏ hoe như hai quả dâu. Thỏ Tí vừa ráp vừa hỏi chuyện cho em quên buồn.\nEm thích chơi trò chơi gì với anh chị em của mình?",
+      "hints": [
+        "Ở nhà, em hay chơi cùng anh, chị hay em của mình?",
+        "Trò chơi đó chơi thế nào, ai hay thắng hơn?",
+        "Nếu em chưa có anh chị em ruột, em thích chơi gì với anh chị em họ?"
+      ],
+      "pictureRefs": [
+        {
+          "kind": "diagram",
+          "type": "picture-card",
+          "params": {
+            "n": 1,
+            "caption": "anh trai kéo xe đẩy chở em gái ôm thỏ bông"
+          }
+        },
+        {
+          "kind": "diagram",
+          "type": "picture-card",
+          "params": {
+            "n": 2,
+            "caption": "hai anh em đá bóng trên bãi cỏ"
+          }
+        },
+        {
+          "kind": "diagram",
+          "type": "picture-card",
+          "params": {
+            "n": 3,
+            "caption": "hai chị em chơi búp bê bên bàn"
+          }
+        }
+      ],
+      "curriculumRef": [
+        "tv2-t1-b32-doc-kd"
+      ]
+    },
+    {
+      "id": "doc-choi-chong-chong",
+      "title": "Trang truyện trên áo bù nhìn",
+      "goTo": "Tới chỗ chú bù nhìn rơm giữa cánh đồng gió",
+      "kind": "read",
+      "target": "tv2-t17-bu-nhin",
+      "textRef": "choi-chong-chong",
+      "audio": true,
+      "question": "Chú bù nhìn rơm có ghim một trang truyện về hai anh em cũng mê chong chóng y như nhà thỏ.\nTìm chi tiết cho thấy An rất thích chơi chong chóng.",
+      "choices": [
+        {
+          "id": "chong-chong-giay",
+          "text": "An yêu thích những chiếc chong chóng giấy."
+        },
+        {
+          "id": "can-nho-va-dai",
+          "text": "Mỗi chiếc chong chóng chỉ có một cái cán nhỏ và dài."
+        },
+        {
+          "id": "tieng-u-u",
+          "text": "Gió lướt qua cánh chong chóng tạo ra tiếng u u rất lạ."
+        }
+      ],
+      "skill": "doc-hieu",
+      "answer": {
+        "choice": "chong-chong-giay"
+      },
+      "curriculumRef": [
+        "tv2-t1-b32-doc-1"
+      ],
+      "support": {
+        "guide": [
+          "Tìm câu có tên An và một từ nói về tình cảm.",
+          "Từ “yêu thích” cho biết An mê một thứ gì đó lắm."
+        ],
+        "hint": "Chi tiết ấy nằm ngay câu mở đầu bài đọc.",
+        "answer": {
+          "text": "An yêu thích những chiếc chong chóng giấy.",
+          "explanation": "Câu đầu bài nói rõ An yêu thích chong chóng giấy; hai câu còn lại chỉ tả chiếc chong chóng và tiếng gió."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bù nhìn rơm như gật gù: chuẩn, “yêu thích” là chữ chìa khoá!",
+          "Thỏ Tí vỗ tay bộp bộp: An mê chong chóng y như tớ!",
+          "Bé Tẹo nín khóc luôn để nghe kể tiếp."
+        ],
+        "wrong": [
+          "Câu này tả cái cán thôi, chưa nói An có thích hay không đâu.",
+          "Tiếng u u là của gió nhé, tìm câu nói về lòng thích của An.",
+          "Ối, chong chóng quay trật hướng rồi! Đọc lại câu mở đầu xem."
+        ]
+      }
+    },
+    {
+      "id": "vi-sao-an-luon-thang",
+      "title": "Bí quyết thắng của An",
+      "kind": "challenge",
+      "mechanic": "quiz",
+      "target": "tho-ti",
+      "prompt": "Thỏ Tí ngẩn ra: “Ơ, anh cũng hay thắng bé Tẹo, mà anh quên mất vì sao…”\nVì sao An luôn thắng khi thi chơi chong chóng cùng bé Mai?",
+      "choices": [
+        {
+          "id": "chay-nhanh-hon",
+          "text": "An chạy nhanh hơn nên chong chóng quay lâu hơn."
+        },
+        {
+          "id": "nhieu-canh-hon",
+          "text": "Chong chóng của An có nhiều cánh hơn."
+        },
+        {
+          "id": "dung-truoc-quat",
+          "text": "An đứng trước quạt máy cho chong chóng quay."
+        }
+      ],
+      "skill": "doc-hieu",
+      "answer": {
+        "choice": "chay-nhanh-hon"
+      },
+      "curriculumRef": [
+        "tv2-t1-b32-doc-2"
+      ],
+      "support": {
+        "guide": [
+          "Tìm đoạn kể hai anh em thi chạy quanh sân.",
+          "Chong chóng của ai dừng quay trước thì người đó thua."
+        ],
+        "hint": "Đọc câu có chữ “chạy nhanh hơn”.",
+        "answer": {
+          "text": "An chạy nhanh hơn nên chong chóng quay lâu hơn.",
+          "explanation": "Chạy càng nhanh thì gió lùa vào cánh càng nhiều, chong chóng của An quay lâu hơn nên An thắng."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Thỏ Tí đập trán cái bốp: à, tại chân anh dài hơn chân Tẹo!",
+          "Đúng! Chạy càng nhanh, cánh giấy càng quay tít mù.",
+          "Vù vù! Câu trả lời của {name} nhanh như gió đồng."
+        ],
+        "wrong": [
+          "Chong chóng nào trong bài cũng chỉ có bốn cánh mà.",
+          "Quạt máy xuất hiện sau, lúc An nhường em cơ.",
+          "Thử tìm chữ “nhanh hơn” trong đoạn thứ hai nhé."
+        ]
+      }
+    },
+    {
+      "id": "cach-an-lam-em-vui",
+      "title": "Cách An làm em vui",
+      "kind": "read",
+      "target": "tv2-t17-bu-nhin",
+      "textRef": "choi-chong-chong",
+      "audio": true,
+      "question": "Bé Tẹo phụng phịu: “Thua mãi thì buồn lắm!” Đọc tiếp trang truyện xem anh An làm gì nào.\nAn nghĩ ra cách gì để bé Mai vui?",
+      "choices": [
+        {
+          "id": "quat-may-va-thoi",
+          "text": "An liền cho em giơ chong chóng ra trước quạt máy, còn mình thì phùng má thổi phù phù cho chong chóng quay."
+        },
+        {
+          "id": "cat-chong-chong",
+          "text": "An cất chong chóng đi để hai anh em khỏi thi nữa."
+        },
+        {
+          "id": "lam-chong-chong-moi",
+          "text": "An làm thêm cho Mai một chiếc chong chóng to hơn."
+        }
+      ],
+      "skill": "doc-hieu",
+      "answer": {
+        "choice": "quat-may-va-thoi"
+      },
+      "curriculumRef": [
+        "tv2-t1-b32-doc-3"
+      ],
+      "support": {
+        "guide": [
+          "Tìm câu kể chuyện xảy ra sau khi Mai buồn thiu.",
+          "An dùng hai thứ tạo ra gió cho chong chóng của em."
+        ],
+        "hint": "Đọc câu có chữ “quạt máy” và “phùng má”.",
+        "answer": {
+          "text": "An liền cho em giơ chong chóng ra trước quạt máy, còn mình thì phùng má thổi phù phù cho chong chóng quay.",
+          "explanation": "Chong chóng của Mai đứng trước quạt máy nên quay mãi, còn An chỉ thổi bằng miệng, vì thế Mai thắng và cười toe."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Phù phù! Thỏ Tí phồng má thử, trông như quả bóng bay.",
+          "Đúng rồi, An nhường em phần gió mạnh của quạt máy.",
+          "Bé Tẹo cười toe: cách của anh An hay quá!"
+        ],
+        "wrong": [
+          "An không cất chong chóng đâu, hai anh em vẫn chơi tiếp mà.",
+          "Trong bài chẳng có chiếc chong chóng mới nào cả.",
+          "Sau chữ “Thua mãi, Mai buồn thiu” là cách của An đấy, đọc lại nhé."
+        ]
+      }
+    },
+    {
+      "id": "tinh-cam-an-va-mai",
+      "title": "Anh em An và Mai",
+      "kind": "challenge",
+      "mechanic": "quiz",
+      "target": "tho-teo",
+      "prompt": "Bé Tẹo ngước lên, hỏi anh Tí một câu khó ơi là khó.\nQua câu chuyện, em thấy tình cảm của anh em An và Mai thế nào?",
+      "choices": [
+        {
+          "id": "thuong-yeu-nhau",
+          "text": "Anh em An và Mai rất thương yêu nhau."
+        },
+        {
+          "id": "gianh-do-choi",
+          "text": "Anh em An và Mai hay giành đồ chơi của nhau."
+        },
+        {
+          "id": "khong-choi-chung",
+          "text": "Anh em An và Mai chẳng thích chơi chung."
+        }
+      ],
+      "skill": "doc-hieu",
+      "answer": {
+        "choice": "thuong-yeu-nhau"
+      },
+      "curriculumRef": [
+        "tv2-t1-b32-doc-4"
+      ],
+      "support": {
+        "guide": [
+          "Nhớ lại An làm gì khi thấy em buồn.",
+          "Cuối bài, Mai cũng mê chong chóng giống ai?"
+        ],
+        "hint": "Anh nhường em cho em vui, đó là anh thương em.",
+        "answer": {
+          "text": "An và Mai thương yêu nhau: anh nhường em, em vui cùng anh.",
+          "explanation": "An rủ em chơi, thấy em buồn thì nhường quạt máy cho em thắng; Mai thì mê chong chóng giống anh. Hai anh em rất thương nhau."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Tẹo ôm chầm lấy anh Tí: nhà mình cũng thương nhau thế!",
+          "Chuẩn! Anh nhường em, em vui lây sang anh.",
+          "Thỏ Tí đỏ mặt: anh… anh cũng sẽ thương em như anh An."
+        ],
+        "wrong": [
+          "Giành đồ chơi là chuyện của ai đó lúc sáng cơ, đâu phải An!",
+          "An rủ Mai chơi suốt, sao lại không thích chơi chung?",
+          "Nghĩ xem: ai nhường quạt máy cho ai, để làm gì?"
+        ]
+      }
+    },
+    {
+      "id": "ta-chiec-chong-chong",
+      "title": "Tả chiếc chong chóng vừa ráp",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "target": "tho-ti",
+      "prompt": "Thỏ Tí ráp xong chong chóng, định khoe thì quên béng nó trông thế nào. Mượn chữ trong bài đọc giúp bạn ấy nhé!\nTìm từ ngữ trong bài đọc tả chiếc chong chóng.",
+      "template": "Mỗi chiếc chong chóng chỉ có một cái cán {{b1}}, một đầu gắn bốn cánh giấy {{b2}}, xinh như {{b3}}.",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "to-va-ngan",
+              "text": "to và ngắn"
+            },
+            {
+              "id": "nho-va-dai",
+              "text": "nhỏ và dài"
+            },
+            {
+              "id": "cong-va-tron",
+              "text": "cong và tròn"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "mong",
+              "text": "mỏng"
+            },
+            {
+              "id": "day",
+              "text": "dày"
+            },
+            {
+              "id": "uot",
+              "text": "ướt"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "cai-banh",
+              "text": "một cái bánh"
+            },
+            {
+              "id": "qua-bong",
+              "text": "một quả bóng"
+            },
+            {
+              "id": "bong-hoa",
+              "text": "một bông hoa"
+            }
+          ]
+        }
+      ],
+      "skill": "tu-ngu",
+      "answer": {
+        "fills": {
+          "b1": "nho-va-dai",
+          "b2": "mong",
+          "b3": "bong-hoa"
+        }
+      },
+      "curriculumRef": [
+        "tv2-t1-b32-doc-lt1"
+      ],
+      "support": {
+        "guide": [
+          "Đọc lại câu thứ hai của bài đọc.",
+          "Những từ tả cán, cánh và dáng chong chóng đều nằm trong câu đó."
+        ],
+        "hint": "Cánh giấy thì mỏng, cả chiếc chong chóng xinh như một bông hoa.",
+        "answer": {
+          "text": "Mỗi chiếc chong chóng chỉ có một cái cán nhỏ và dài, một đầu gắn bốn cánh giấy mỏng, xinh như một bông hoa.",
+          "explanation": "Các từ ngữ “nhỏ và dài”, “mỏng”, “xinh như một bông hoa” là từ ngữ trong bài tả chiếc chong chóng."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Thỏ Tí khoe ngay: chong chóng của anh xinh như một bông hoa!",
+          "Nhỏ và dài, mỏng, bông hoa: đúng y chữ trong bài.",
+          "Bé Tẹo thổi thử, chong chóng quay vù như muốn khen {name}."
+        ],
+        "wrong": [
+          "Cái cán to và ngắn thì cầm sao vừa tay thỏ con?",
+          "Cánh giấy dày quá thì gió đẩy không nổi đâu.",
+          "Một cái bánh thì Heo Ủn thích, còn bài đọc so với gì nhỉ?"
+        ]
+      }
+    },
+    {
+      "id": "sieu-va-phung-phiu",
+      "title": "Hết phụng phịu nào",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "target": "tho-teo",
+      "prompt": "Bé Tẹo lại phụng phịu vì cánh chong chóng chưa dán xong. Thỏ Tí dỗ: “Điền xong mấy chữ này là em hết phụng phịu nhé!”\nChọn a hoặc b.\na. Chọn iu hoặc ưu thay cho ô vuông.",
+      "template": "s{{b1}} tầm\nphụng ph{{b2}}̣\nd{{b3}}̣ dàng\nt{{b4}}̣ trường",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "iu",
+              "text": "iu"
+            },
+            {
+              "id": "uu",
+              "text": "ưu"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "uu",
+              "text": "ưu"
+            },
+            {
+              "id": "iu",
+              "text": "iu"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "iu",
+              "text": "iu"
+            },
+            {
+              "id": "uu",
+              "text": "ưu"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "uu",
+              "text": "ưu"
+            },
+            {
+              "id": "iu",
+              "text": "iu"
+            }
+          ]
+        }
+      ],
+      "skill": "chinh-ta",
+      "answer": {
+        "fills": {
+          "b1": "uu",
+          "b2": "iu",
+          "b3": "iu",
+          "b4": "uu"
+        }
+      },
+      "curriculumRef": [
+        "tv2-t1-b32-chinh-ta-2-a-1",
+        "tv2-t1-b32-chinh-ta-2-a-2",
+        "tv2-t1-b32-chinh-ta-2-a-3",
+        "tv2-t1-b32-chinh-ta-2-a-4"
+      ],
+      "support": {
+        "guide": [
+          "Đọc to từng từ, nghe kĩ vần là iu hay ưu.",
+          "“Sưu tầm” là gom góp lại, “dịu dàng” là nhẹ nhàng, êm ái."
+        ],
+        "hint": "Có hai từ mang vần ưu và hai từ mang vần iu.",
+        "answer": {
+          "text": "sưu tầm, phụng phịu, dịu dàng, tựu trường",
+          "explanation": "Sưu tầm và tựu trường viết vần ưu; phụng phịu và dịu dàng viết vần iu."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bé Tẹo hết phụng phịu, cười tít cả mắt luôn!",
+          "Sưu tầm, tựu trường: vần ưu ngồi đúng chỗ rồi.",
+          "Thỏ Tí khen: tai {name} thính hơn cả tai thỏ!"
+        ],
+        "wrong": [
+          "Ngày tựu trường là ngày tới trường đầu năm, vần gì nhỉ?",
+          "Phụng phịu với dịu dàng mang cùng một vần đấy.",
+          "Ối, có chữ đang đội nhầm vần rồi, đọc to lên nghe thử nhé."
+        ]
+      }
+    },
+    {
+      "id": "do-choi-van-at-ac",
+      "title": "Giỏ đồ chơi của Thỏ Tí",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "target": "tho-ti",
+      "prompt": "Thỏ Tí lục giỏ đồ chơi tìm hồ dán, lôi ra đủ thứ linh tinh, cả tấm bưu thiếp vẽ đồi núi.\nChọn a hoặc b.\nb. Tìm từ ngữ chỉ sự vật có tiếng chứa ăt, ăc, ât hoặc âc.\nChọn mọi món có tiếng như thế.",
+      "choices": [
+        {
+          "id": "mac-ao",
+          "text": "mắc áo"
+        },
+        {
+          "id": "cai-bat",
+          "text": "cái bát"
+        },
+        {
+          "id": "lat-dat",
+          "text": "lật đật"
+        },
+        {
+          "id": "qua-mit",
+          "text": "quả mít"
+        },
+        {
+          "id": "ruong-bac-thang",
+          "text": "ruộng bậc thang"
+        },
+        {
+          "id": "buc-tranh",
+          "text": "bức tranh"
+        },
+        {
+          "id": "mat-na",
+          "text": "mặt nạ"
+        }
+      ],
+      "skill": "chinh-ta",
+      "answer": {
+        "choices": [
+          "mac-ao",
+          "lat-dat",
+          "ruong-bac-thang",
+          "mat-na"
+        ]
+      },
+      "curriculumRef": [
+        "tv2-t1-b32-chinh-ta-2-b"
+      ],
+      "support": {
+        "guide": [
+          "Đọc từng tiếng, tìm vần ăt, ăc, ât hoặc âc.",
+          "Chữ ă có dấu mũ ngược, chữ â có dấu mũ."
+        ],
+        "hint": "Có bốn món: một món treo áo, một món lắc lư, một bức ảnh đồi núi, một món đeo lên mặt.",
+        "answer": {
+          "text": "mắc áo, lật đật, ruộng bậc thang, mặt nạ",
+          "explanation": "Mắc (ăc), lật đật (ât), bậc (âc), mặt (ăt) đều chứa vần cần tìm; bát, mít, bức thì không."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Thỏ Tí đeo mặt nạ, ôm lật đật nhảy tưng tưng!",
+          "Đủ bốn món: mắc áo, lật đật, ruộng bậc thang, mặt nạ.",
+          "Giỏ đồ chơi gọn gàng hẳn nhờ đôi mắt tinh của {name}."
+        ],
+        "wrong": [
+          "Cái bát mang vần at, chữ a chưa đội mũ đâu.",
+          "Còn sót một món vần âc trên tấm bưu thiếp đồi núi.",
+          "Quả mít vần it, bức tranh vần ưc, đều không phải nhé."
+        ]
+      }
+    },
+    {
+      "id": "tu-ngu-tinh-cam-nha",
+      "title": "Chong chóng “nhà mình”",
+      "kind": "challenge",
+      "mechanic": "classify",
+      "target": "tho-teo",
+      "prompt": "Bé Tẹo muốn dán lên chong chóng những chữ thật ấm áp để gọi là chong chóng “nhà mình”.\nTìm từ ngữ về tình cảm gia đình. M: che chở\nTừ ấm áp dán lên cánh chong chóng, từ làm cả nhà buồn thì bỏ vào giỏ rác.",
+      "groups": [
+        {
+          "id": "canh-chong-chong",
+          "label": "Cánh chong chóng: tình cảm gia đình"
+        },
+        {
+          "id": "gio-rac",
+          "label": "Giỏ rác: làm cả nhà buồn"
+        }
+      ],
+      "items": [
+        {
+          "id": "yeu-thuong",
+          "label": "yêu thương"
+        },
+        {
+          "id": "tranh-gianh",
+          "label": "tranh giành"
+        },
+        {
+          "id": "cham-soc",
+          "label": "chăm sóc"
+        },
+        {
+          "id": "nhuong-nhin",
+          "label": "nhường nhịn"
+        },
+        {
+          "id": "cai-nhau",
+          "label": "cãi nhau"
+        },
+        {
+          "id": "quan-tam",
+          "label": "quan tâm"
+        },
+        {
+          "id": "gian-doi",
+          "label": "giận dỗi"
+        },
+        {
+          "id": "che-cho",
+          "label": "che chở"
+        }
+      ],
+      "skill": "tu-ngu",
+      "answer": {
+        "assignment": {
+          "yeu-thuong": "canh-chong-chong",
+          "cham-soc": "canh-chong-chong",
+          "nhuong-nhin": "canh-chong-chong",
+          "quan-tam": "canh-chong-chong",
+          "che-cho": "canh-chong-chong",
+          "tranh-gianh": "gio-rac",
+          "cai-nhau": "gio-rac",
+          "gian-doi": "gio-rac"
+        }
+      },
+      "curriculumRef": [
+        "tv2-t1-b32-tu-ngu-cau-1"
+      ],
+      "support": {
+        "guide": [
+          "Từ ngữ về tình cảm gia đình nói lên việc người thân thương nhau.",
+          "Mẫu “che chở” là một từ như thế."
+        ],
+        "hint": "Có ba từ làm nhà buồn: đều là chuyện hai anh em thỏ làm lúc sáng.",
+        "answer": {
+          "text": "Tình cảm gia đình: yêu thương, chăm sóc, nhường nhịn, quan tâm, che chở.",
+          "explanation": "Những từ này nói người trong nhà thương yêu, lo cho nhau; tranh giành, cãi nhau, giận dỗi làm cả nhà buồn."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Chong chóng “nhà mình” quay tít, chữ nào cũng ấm áp!",
+          "Tẹo thì thầm: em bỏ “tranh giành” vào giỏ rác luôn.",
+          "Đúng hết! Từ nào trên cánh cũng làm cả nhà vui."
+        ],
+        "wrong": [
+          "“Tranh giành” mà lên cánh chong chóng thì nó quay ngược mất!",
+          "Nhường nhịn là việc anh em thương nhau hay làm đấy.",
+          "Đọc lại mẫu “che chở” rồi tìm từ cùng nhóm với nó."
+        ]
+      }
+    },
+    {
+      "id": "cau-noi-anh-chi-em",
+      "title": "Câu bà Thỏ hay đọc",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "target": "tho-ti",
+      "prompt": "Thỏ Tí nhớ bà Thỏ hay đọc mấy câu tục ngữ, nhưng nhớ được nửa câu là… quên sạch nửa sau.\nNhững câu nào dưới đây nói về tình cảm anh chị em?\nChị ngã em nâng. / Lá lành đùm lá rách. / Anh thuận em hoà là nhà có phúc. / Anh em như thể chân tay\nRách lành đùm bọc, dở hay đỡ đần.",
+      "choices": [
+        {
+          "id": "chi-nga-em-nang",
+          "text": "Chị ngã em nâng."
+        },
+        {
+          "id": "la-lanh-dum-la-rach",
+          "text": "Lá lành đùm lá rách."
+        },
+        {
+          "id": "anh-thuan-em-hoa",
+          "text": "Anh thuận em hoà là nhà có phúc."
+        },
+        {
+          "id": "anh-em-nhu-the-chan-tay",
+          "text": "Anh em như thể chân tay\nRách lành đùm bọc, dở hay đỡ đần."
+        }
+      ],
+      "skill": "tu-ngu",
+      "answer": {
+        "choices": [
+          "chi-nga-em-nang",
+          "anh-thuan-em-hoa",
+          "anh-em-nhu-the-chan-tay"
+        ]
+      },
+      "curriculumRef": [
+        "tv2-t1-b32-tu-ngu-cau-2"
+      ],
+      "support": {
+        "guide": [
+          "Tìm câu có nhắc tới anh, chị hoặc em.",
+          "Có một câu nói về giúp đỡ mọi người nói chung, không riêng anh chị em."
+        ],
+        "hint": "“Lá lành đùm lá rách” khuyên giúp đỡ người gặp khó khăn.",
+        "answer": {
+          "text": "Chị ngã em nâng.; Anh thuận em hoà là nhà có phúc.; Anh em như thể chân tay / Rách lành đùm bọc, dở hay đỡ đần.",
+          "explanation": "Ba câu này nói anh chị em phải thương yêu, giúp đỡ nhau; câu “Lá lành đùm lá rách” nói về tình thương giữa mọi người."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bà Thỏ mà nghe {name} chọn chắc thưởng ngay củ cà rốt to nhất!",
+          "Ba câu đều nói anh chị em thương nhau, đúng rồi!",
+          "Thỏ Tí đọc thuộc lòng luôn: anh thuận em hoà!"
+        ],
+        "wrong": [
+          "“Lá lành đùm lá rách” nói về giúp đỡ mọi người nói chung đấy.",
+          "Còn sót câu nói anh em như chân với tay.",
+          "Thử tìm những câu có chữ anh, chị hoặc em nhé."
+        ]
+      }
+    },
+    {
+      "id": "dau-phay-nha-soc",
+      "title": "Lá thư hạt dẻ của sóc",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "target": "tho-ti",
+      "prompt": "Một bạn sóc gửi Thỏ Tí lá thư kể chuyện nhà mình, nhưng quên sạch dấu phẩy. Thư đây:\nCó thể đặt dấu phẩy vào chỗ nào trong các đoạn văn sau?\na. Sóc anh sóc em kiếm được rất nhiều hạt dẻ. Hai anh em để dành hạt lớn cho bố mẹ. Hạt vừa hạt nhỏ để hai anh em ăn.\nChạm từng ô: cần dấu phẩy thì chọn “,”, không cần thì chọn “không dấu”.",
+      "template": "Sóc anh{{p1}} sóc em{{p2}} kiếm được rất nhiều hạt dẻ. Hai anh em{{p3}} để dành hạt lớn cho bố mẹ. Hạt vừa{{p4}} hạt nhỏ{{p5}} để hai anh em ăn.",
+      "blanks": [
+        {
+          "id": "p1",
+          "options": [
+            {
+              "id": "phay",
+              "text": ","
+            },
+            {
+              "id": "khong",
+              "text": "không dấu"
+            }
+          ]
+        },
+        {
+          "id": "p2",
+          "options": [
+            {
+              "id": "khong",
+              "text": "không dấu"
+            },
+            {
+              "id": "phay",
+              "text": ","
+            }
+          ]
+        },
+        {
+          "id": "p3",
+          "options": [
+            {
+              "id": "phay",
+              "text": ","
+            },
+            {
+              "id": "khong",
+              "text": "không dấu"
+            }
+          ]
+        },
+        {
+          "id": "p4",
+          "options": [
+            {
+              "id": "khong",
+              "text": "không dấu"
+            },
+            {
+              "id": "phay",
+              "text": ","
+            }
+          ]
+        },
+        {
+          "id": "p5",
+          "options": [
+            {
+              "id": "phay",
+              "text": ","
+            },
+            {
+              "id": "khong",
+              "text": "không dấu"
+            }
+          ]
+        }
+      ],
+      "skill": "dau-cau",
+      "answer": {
+        "fills": {
+          "p1": "phay",
+          "p2": "khong",
+          "p3": "khong",
+          "p4": "phay",
+          "p5": "khong"
+        }
+      },
+      "curriculumRef": [
+        "tv2-t1-b32-tu-ngu-cau-3-a"
+      ],
+      "support": {
+        "guide": [
+          "Dấu phẩy ngăn hai từ cùng loại đứng liền nhau.",
+          "Tìm chỗ hai bạn sóc, hai loại hạt được kể liền nhau."
+        ],
+        "hint": "Có hai dấu phẩy: một giữa hai bạn sóc, một giữa hai loại hạt.",
+        "answer": {
+          "text": "Sóc anh, sóc em kiếm được rất nhiều hạt dẻ. Hai anh em để dành hạt lớn cho bố mẹ. Hạt vừa, hạt nhỏ để hai anh em ăn.",
+          "explanation": "Dấu phẩy đặt giữa “Sóc anh” và “sóc em”, giữa “Hạt vừa” và “hạt nhỏ”, vì đó là những từ cùng loại kể liền nhau."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Lá thư hết rối, hạt dẻ xếp thành hàng ngay ngắn!",
+          "Dấu phẩy ngăn “sóc anh” với “sóc em”, chuẩn quá.",
+          "Thỏ Tí gật gù: hạt vừa, hạt nhỏ, phẩy đúng chỗ!"
+        ],
+        "wrong": [
+          "“Hai anh em” là một cụm, đừng chẻ đôi bằng dấu phẩy nhé.",
+          "Chỗ “Hạt vừa” với “hạt nhỏ” đang cần một dấu phẩy đấy.",
+          "Dấu phẩy đứng giữa hai bạn sóc được kể liền nhau, thử lại ô đầu."
+        ]
+      }
+    },
+    {
+      "id": "dau-phay-loi-khen-chi",
+      "title": "Lá thư khen chị gái",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "target": "tho-teo",
+      "prompt": "Bé Tẹo đọc lá thư bạn thỏ nhà bên viết khen chị gái, cũng thiếu dấu phẩy nốt. Hôm nay dấu phẩy rủ nhau đi chơi xa hết à?\nCó thể đặt dấu phẩy vào chỗ nào trong các đoạn văn sau?\nb. Chị tớ rất yêu thương chăm sóc tớ. Chị thường hướng dẫn tớ làm bài tập chơi với tớ cùng tớ làm việc nhà. Tớ yêu chị lắm!\nÔ nào cần thì đặt “,”, ô nào không thì để “không dấu”.",
+      "template": "Chị tớ{{q1}} rất yêu thương{{q2}} chăm sóc tớ. Chị thường hướng dẫn tớ làm bài tập{{q3}} chơi với tớ{{q4}} cùng tớ làm việc nhà. Tớ yêu chị lắm!",
+      "blanks": [
+        {
+          "id": "q1",
+          "options": [
+            {
+              "id": "khong",
+              "text": "không dấu"
+            },
+            {
+              "id": "phay",
+              "text": ","
+            }
+          ]
+        },
+        {
+          "id": "q2",
+          "options": [
+            {
+              "id": "phay",
+              "text": ","
+            },
+            {
+              "id": "khong",
+              "text": "không dấu"
+            }
+          ]
+        },
+        {
+          "id": "q3",
+          "options": [
+            {
+              "id": "khong",
+              "text": "không dấu"
+            },
+            {
+              "id": "phay",
+              "text": ","
+            }
+          ]
+        },
+        {
+          "id": "q4",
+          "options": [
+            {
+              "id": "phay",
+              "text": ","
+            },
+            {
+              "id": "khong",
+              "text": "không dấu"
+            }
+          ]
+        }
+      ],
+      "skill": "dau-cau",
+      "answer": {
+        "fills": {
+          "q1": "khong",
+          "q2": "phay",
+          "q3": "phay",
+          "q4": "phay"
+        }
+      },
+      "curriculumRef": [
+        "tv2-t1-b32-tu-ngu-cau-3-b"
+      ],
+      "support": {
+        "guide": [
+          "Tìm những việc chị làm được kể liền nhau.",
+          "Mỗi việc kể liền nhau cần một dấu phẩy ngăn cách."
+        ],
+        "hint": "Có ba dấu phẩy: một sau “yêu thương”, hai dấu ngăn ba việc chị làm cùng tớ.",
+        "answer": {
+          "text": "Chị tớ rất yêu thương, chăm sóc tớ. Chị thường hướng dẫn tớ làm bài tập, chơi với tớ, cùng tớ làm việc nhà. Tớ yêu chị lắm!",
+          "explanation": "Dấu phẩy ngăn “yêu thương” với “chăm sóc”, và ngăn ba việc “làm bài tập”, “chơi với tớ”, “cùng tớ làm việc nhà”."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ba dấu phẩy ngồi đúng ghế, lá thư đọc êm như ru!",
+          "Bé Tẹo đọc lại một mạch, chẳng vấp chữ nào.",
+          "Làm bài tập, chơi với tớ, làm việc nhà: phẩy, phẩy, chuẩn!"
+        ],
+        "wrong": [
+          "“Chị tớ” là một cụm, đừng tách nó ra nhé.",
+          "Chị làm ba việc kể liền nhau, cần dấu phẩy ngăn từng việc.",
+          "Giữa “yêu thương” và “chăm sóc” còn thiếu một dấu phẩy đó."
+        ]
+      }
+    },
+    {
+      "id": "chia-chong-chong",
+      "title": "Chơi chung thế nào?",
+      "kind": "dialogue",
+      "target": "tho-ti",
+      "lines": [
+        {
+          "speaker": "Thỏ Tí",
+          "text": "Chong chóng ráp xong rồi! Giờ… ơ, anh định nói gì nhỉ? À, giờ ai cầm trước đây?"
+        },
+        {
+          "speaker": "Bé Tẹo",
+          "text": "Em nhỏ nhất, em cầm trước! … Mà thôi, anh Tí cũng thích lắm, em biết."
+        },
+        {
+          "speaker": "Thỏ Tí",
+          "text": "{name} ơi, chọn giúp tụi tớ cách chơi để không ai phải buồn thiu như bé Mai nhé!"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Thay phiên nhau, mỗi người chạy một vòng",
+          "reply": "Thỏ Tí đếm: vòng một của Tẹo, vòng hai của anh, vòng ba của… ai ấy nhỉ?"
+        },
+        {
+          "text": "Tẹo cầm, anh Tí phùng má thổi giúp như anh An",
+          "reply": "Thỏ Tí phồng má to như hai quả đào: phùùù… chong chóng quay tít!"
+        }
+      ]
+    },
+    {
+      "id": "neu-em-la-mai",
+      "title": "Nếu em là Mai",
+      "kind": "speak",
+      "target": "tho-teo",
+      "prompt": "Chơi xong, bé Tẹo muốn nói một câu thật hay với anh Tí mà ngượng đỏ cả tai. {name} nói thử trước giúp em nhé.\nNếu em là Mai, em sẽ nói gì với anh An sau khi chơi?",
+      "hints": [
+        "Em muốn cảm ơn anh điều gì?",
+        "Em có muốn rủ anh chơi tiếp lần sau không?",
+        "Thử bắt đầu bằng: Em cảm ơn anh An vì…"
+      ],
+      "curriculumRef": [
+        "tv2-t1-b32-doc-lt2"
+      ]
+    },
+    {
+      "id": "tin-nhan-cua-soc-nau",
+      "title": "Tờ giấy trên gốc dẻ",
+      "goTo": "Tới gốc cây dẻ ở mép đồng, có tờ giấy ai ghim trên thân cây",
+      "kind": "read",
+      "target": "tv2-t17-goc-cay-de",
+      "text": "Mẹ ơi!\nChiều nay, bà đón\ncon sang nhà bà chơi.\nCon ăn ở nhà bà.\nTối con sẽ về, mẹ nhé!\nCon\nSóc nâu",
+      "question": "Trời sắp tối, Thỏ Tí bỗng nhớ ra: “Chết, anh quên chưa nói với mẹ là đi chơi xa!” Xem bạn sóc để lại tờ giấy thế nào.\nQuan sát tranh, đọc tin nhắn của sóc con và trả lời câu hỏi. a. Sóc con nhắn tin cho ai?",
+      "choices": [
+        {
+          "id": "me",
+          "text": "Mẹ"
+        },
+        {
+          "id": "ba",
+          "text": "Bà"
+        },
+        {
+          "id": "ban-tho",
+          "text": "Bạn thỏ"
+        }
+      ],
+      "skill": "doc-hieu",
+      "answer": {
+        "choice": "me"
+      },
+      "curriculumRef": [
+        "tv2-t1-b32-viet-doan-1-a"
+      ],
+      "support": {
+        "guide": [
+          "Tin nhắn thường bắt đầu bằng lời gọi người nhận.",
+          "Cuối tin nhắn là tên người viết: Sóc nâu."
+        ],
+        "hint": "Dòng đầu tiên của tờ giấy là “Mẹ ơi!”.",
+        "answer": {
+          "text": "Mẹ",
+          "explanation": "Sóc con mở đầu bằng “Mẹ ơi!”, nên tin nhắn này gửi cho mẹ."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Mẹ! Thỏ Tí reo: vậy anh cũng nhắn cho mẹ mình!",
+          "Chuẩn, dòng đầu tin nhắn gọi “Mẹ ơi!” rõ to.",
+          "Bé Tẹo khen {name} đọc tin nhắn nhanh hơn thỏ chạy."
+        ],
+        "wrong": [
+          "Bà là người đến đón sóc cơ, còn người nhận tin là ai?",
+          "Đọc dòng đầu tiên của tờ giấy xem sóc gọi ai.",
+          "Bạn thỏ nào có trong tin nhắn đâu, nhìn lại chữ đầu tờ giấy nhé."
+        ]
+      }
+    },
+    {
+      "id": "doc-ve-ca-nha",
+      "title": "Kể chuyện cả nhà",
+      "goTo": "Quay lại cánh đồng gió, hai anh em thỏ đang trải lá ngồi nghỉ",
+      "kind": "speak",
+      "target": "tho-ti",
+      "prompt": "Ba anh em thỏ… à không, hai anh em thỏ và {name} ngồi nghỉ kể chuyện nhà mình. Thỏ Tí đếm nhầm cả số người!\nTìm đọc một bài thơ, câu chuyện, kể về sinh hoạt chung của gia đình (nấu ăn, thăm họ hàng, đi du lịch,…).\nKhi đọc, chú ý những điều sau:\n– Câu chuyện, bài thơ nói về sinh hoạt chung nào của gia đình?\n– Chia sẻ về một hoạt động em thích.\nKể lại câu chuyện hoặc đọc một đoạn thơ cho các bạn nghe. Chia sẻ điều em thấy thú vị nhất trong câu chuyện hoặc bài thơ đã đọc.",
+      "hints": [
+        "Nhà em hay cùng nhau nấu ăn, thăm ông bà hay đi chơi xa?",
+        "Thỏ Tí mách: nhà tớ hay cùng nhau nhổ cà rốt, rồi… tớ quên mất là ăn hay đem cho!",
+        "Kể xong, nói thêm vì sao em thấy chi tiết ấy thú vị."
+      ],
+      "curriculumRef": [
+        "tv2-t1-b32-doc-mo-rong-1",
+        "tv2-t1-b32-doc-mo-rong-2"
+      ]
+    },
+    {
+      "id": "phieu-viet-bai-32",
+      "title": "Phiếu viết bài 32",
+      "kind": "worksheet",
+      "trigger": "auto",
+      "lessonId": "tv2-t1-b32",
+      "text": "Nhờ bố mẹ in phiếu Bài 32 ở khu phụ huynh: nghe – viết đoạn đầu bài Chơi chong chóng, trả lời về tin nhắn của sóc con, rồi viết tin nhắn để bố mẹ yên tâm khi ông đưa em đi mua sách.",
+      "curriculumRef": [
+        "tv2-t1-b32-nghe-viet-1",
+        "tv2-t1-b32-viet-doan-1-a",
+        "tv2-t1-b32-viet-doan-1-b",
+        "tv2-t1-b32-viet-doan-1-c",
+        "tv2-t1-b32-viet-doan-2"
+      ]
+    },
+    {
+      "id": "qua-cua-hai-anh-em-tho",
+      "title": "Chong chóng ba chữ",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Hai anh em thỏ tặng {name} một chiếc chong chóng có ba cánh ghi “thương”, “nhường”, “chơi chung”. Còn cánh thứ tư ghi gì thì… Thỏ Tí quên mất rồi, {name} tự nghĩ nhé!"
+    },
+    {
+      "id": "mo-on-cuoi-ki",
+      "title": "Tiếng reo ở cây cầu gỗ",
+      "kind": "unlock",
+      "trigger": "auto",
+      "text": "Từ phía suối vọng lại tiếng Vẹt Xanh oang oang: “Khánh thành! Khánh thành!” Cây cầu gỗ Hải Ly Cần xây suốt học kì đã xong nhịp cuối, cả khu rừng sắp mở hội đấy."
+    }
+  ],
+  "reward": {
+    "xp": 90,
+    "coin": 15,
+    "skillXp": {
+      "doc-hieu": 2,
+      "chinh-ta": 2,
+      "tu-ngu": 1,
+      "dau-cau": 1
+    }
+  }
+}

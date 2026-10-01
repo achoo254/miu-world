@@ -1,0 +1,1044 @@
+{
+  "id": "tv2-t07-b14",
+  "region": "khu-rung-bi-mat",
+  "chapter": 8,
+  "title": "Hươu Cao hết sạch màu vẽ",
+  "status": "draft",
+  "lesson": "tv2-t1-b14",
+  "summary": "Sắp tới hội vẽ của trường rừng mà hộp màu của Hươu Cao trống trơn. {name} hái quả, hoa, lá làm màu, đọc bài thơ Em học vẽ, giải đố chính tả trong lều vẽ và giúp Hươu Cao chọn bức tranh dự hội.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "Hươu Cao (nhìn xa nhưng hay cụng đầu vào cành), Vẹt Xanh lắm lời, sưu tầm từ ngữ lạ",
+    "where": "Đồi cỏ nhìn ra biển và chiếc lều vẽ của Hươu Cao",
+    "goal": "Tìm màu vẽ và giúp Hươu Cao hoàn thành bức tranh dự hội vẽ",
+    "play": "Hái màu, đọc thơ, chọn đáp án, chọn nhiều dòng thơ, ghép cặp vần, phân loại từ, điền chữ, xếp câu, điền dấu câu, nói và kể, phiếu viết",
+    "learn": "Tiếng Việt 2 Bài 14: đọc bài thơ Em học vẽ, tiếng cùng vần, từ chỉ sự vật, câu nêu đặc điểm, chính tả ng/ngh, r/d/gi, an/ang, câu nêu công dụng, dấu chấm, dấu chấm hỏi",
+    "reward": "90 XP, 15 xu, Đọc hiểu +2, Chính tả +2, Từ ngữ +1, Câu +1, Dấu câu +1",
+    "unlock": "Bài 15 \"Cuốn sách của em\""
+  },
+  "phases": {
+    "hook": "huou-cao-het-mau",
+    "explore": "tim-mau-ve",
+    "learn": "doc-em-hoc-ve",
+    "challenge": "tu-chi-su-vat",
+    "decision": "chon-tranh-du-hoi",
+    "finale": "ke-chuyen-truong-hoc",
+    "reward": "phieu-viet-bai-14",
+    "unlock": "mo-bai-15"
+  },
+  "texts": {
+    "em-hoc-ve": {
+      "title": "Em học vẽ",
+      "author": "Phan Thị Diên",
+      "body": "Hôm nay trong lớp học\nVới giấy trắng, bút màu\nNắn nót em ngồi vẽ\nLung linh bầu trời sao.\n\nVẽ ông trăng trên cao\nRải ánh vàng đầy ngõ\nVẽ cánh diều no gió\nVi vu giữa trời xanh.\n\nVẽ biển cả trong lành\nCó một con thuyền trắng\nGiương cánh buồm đỏ thắm\nĐang rẽ sóng ra khơi.\n\nVẽ cả ông mặt trời\nVà những chùm phượng đỏ\nTrên sân trường lộng gió\nGọi ve về râm ran.",
+      "section": "tv2-t1-b14-doc"
+    }
+  },
+  "places": {
+    "huou-cao": "đồi cỏ ven biển",
+    "tim-mau-ve": "sườn đồi",
+    "tv2-t07-gia-ve": "đồi cỏ ven biển",
+    "vet-xanh": "đồi cỏ ven biển",
+    "tv2-t07-leu-ve": "lều vẽ"
+  },
+  "steps": [
+    {
+      "id": "huou-cao-het-mau",
+      "title": "Hươu Cao ôm đầu bên giá vẽ",
+      "goTo": "Leo lên đồi cỏ ven biển, Hươu Cao đang xoa cục u trên đầu",
+      "kind": "dialogue",
+      "target": "huou-cao",
+      "lines": [
+        {
+          "speaker": "Hươu Cao",
+          "text": "Cộp! Ui da… {name} đấy à? Tớ nhìn thấy tận con thuyền ngoài khơi, mà lại chẳng thấy cành cây ngay trước mũi."
+        },
+        {
+          "speaker": "Hươu Cao",
+          "text": "Tớ đang vẽ tranh dự hội vẽ của trường rừng. Khổ nỗi hộp màu trống trơn, chỉ còn mỗi màu… không màu!"
+        },
+        {
+          "speaker": "Vẹt Xanh",
+          "text": "Thiếu màu! Thiếu màu! Tớ vừa nhặt được từ mới \"lung linh\"! Mà từ thì không tô tranh được. Không được!"
+        },
+        {
+          "speaker": "Hươu Cao",
+          "text": "Dưới sườn đồi có quả chín, có hoa, có lá non. {name} nhặt giúp tớ về làm màu nhé?"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Để tớ đi tìm màu ngay!",
+          "reply": "Cảm ơn nhé! Đi nhớ cúi đầu qua cành cây, đừng giống tớ."
+        },
+        {
+          "text": "Vẹt Xanh bay theo chỉ đường nhé!",
+          "reply": "Chỉ đường! Chỉ đường! Rẽ trái… à không, rẽ phải! Rẽ phải!"
+        }
+      ]
+    },
+    {
+      "id": "tim-mau-ve",
+      "title": "Ba màu dưới sườn đồi",
+      "goTo": "Xuống sườn đồi hái quả, hoa và lá để làm màu",
+      "kind": "search",
+      "targets": [
+        "tv2-t07-qua-mam-xoi",
+        "tv2-t07-hoa-cuc-dai",
+        "tv2-t07-la-xanh-non"
+      ]
+    },
+    {
+      "id": "gioi-thieu-buc-tranh",
+      "title": "Bức tranh em thích",
+      "goTo": "Mang màu về đồi cỏ ven biển cho Hươu Cao",
+      "kind": "speak",
+      "target": "huou-cao",
+      "prompt": "Hươu Cao giã quả mâm xôi ra màu đỏ tươi, vừa giã vừa hỏi: ở nhà {name} có bức tranh nào đẹp không?\nGiới thiệu với bạn một bức tranh mà em thích.",
+      "hints": [
+        "Bức tranh ấy vẽ cảnh gì, vẽ ai?",
+        "Tranh có những màu nào nổi bật?",
+        "Vì sao em thích bức tranh đó?"
+      ],
+      "curriculumRef": [
+        "tv2-t1-b14-doc-kd"
+      ]
+    },
+    {
+      "id": "doc-em-hoc-ve",
+      "title": "Bài thơ sau lưng giá vẽ",
+      "kind": "read",
+      "target": "tv2-t07-gia-ve",
+      "textRef": "em-hoc-ve",
+      "audio": true,
+      "question": "Sau lưng giá vẽ, Hươu Cao chép một bài thơ để lấy cảm hứng. Cổ dài nên bạn ấy viết chữ cao tít, may mà {name} vẫn đọc được.\nBạn nhỏ vẽ những gì trong bức tranh bầu trời đêm?",
+      "choices": [
+        {
+          "id": "truong",
+          "text": "Ông mặt trời, chùm phượng đỏ, sân trường"
+        },
+        {
+          "id": "dem",
+          "text": "Bầu trời sao, ông trăng, cánh diều"
+        },
+        {
+          "id": "bien",
+          "text": "Biển cả, con thuyền trắng, cánh buồm đỏ"
+        }
+      ],
+      "skill": "doc-hieu",
+      "answer": {
+        "choice": "dem"
+      },
+      "curriculumRef": [
+        "tv2-t1-b14-doc-1"
+      ],
+      "support": {
+        "guide": [
+          "Đọc khổ một và khổ hai, hai khổ kể về bầu trời.",
+          "Ông trăng rải ánh vàng là lúc trời đã tối."
+        ],
+        "hint": "Có một thứ bay vi vu giữa trời cũng được vẽ vào tranh.",
+        "answer": {
+          "text": "Bạn nhỏ vẽ bầu trời sao, ông trăng và cánh diều.",
+          "explanation": "Khổ một và khổ hai kể bạn nhỏ vẽ bầu trời sao lung linh, ông trăng rải ánh vàng và cánh diều no gió."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đúng! Hươu Cao ngẩng lên ngắm trời, rồi… cộp, lại cụng cành.",
+          "Chuẩn rồi, trời đêm có sao, có trăng, có cả cánh diều.",
+          "Vẹt Xanh nhắc lại: bầu trời sao! Bầu trời sao!"
+        ],
+        "wrong": [
+          "Chưa đúng. Đọc lại khổ hai, khổ có ông trăng nhé.",
+          "Mặt trời và biển xanh là tranh ban ngày, chưa phải trời đêm.",
+          "Tìm khổ có \"ông trăng\" rồi đọc luôn khổ ngay trước nó."
+        ]
+      }
+    },
+    {
+      "id": "tranh-canh-bien",
+      "title": "Biển trong tranh đẹp ở đâu?",
+      "kind": "challenge",
+      "mechanic": "quiz",
+      "target": "huou-cao",
+      "prompt": "Hươu Cao nheo mắt nhìn ra biển, thấy rõ từng gợn sóng xa tít tắp.\nBức tranh cảnh biển của bạn nhỏ có gì đẹp?",
+      "choices": [
+        {
+          "id": "song-to",
+          "text": "Biển nổi sóng to, mây đen kéo kín cả trời"
+        },
+        {
+          "id": "bai-vang",
+          "text": "Bãi cát vắng tanh, không có lấy một con thuyền"
+        },
+        {
+          "id": "trong-lanh",
+          "text": "Biển cả trong lành, có con thuyền trắng giương cánh buồm đỏ thắm rẽ sóng ra khơi"
+        }
+      ],
+      "skill": "doc-hieu",
+      "answer": {
+        "choice": "trong-lanh"
+      },
+      "curriculumRef": [
+        "tv2-t1-b14-doc-2"
+      ],
+      "support": {
+        "guide": [
+          "Đọc khổ thơ thứ ba.",
+          "Con thuyền màu gì? Cánh buồm màu gì?"
+        ],
+        "hint": "Biển trong tranh rất trong lành và có một con thuyền.",
+        "answer": {
+          "text": "Biển trong lành; thuyền trắng, buồm đỏ thắm đang rẽ sóng ra khơi.",
+          "explanation": "Khổ ba tả biển cả trong lành, con thuyền trắng giương cánh buồm đỏ thắm đang rẽ sóng ra khơi."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đẹp quá! Hươu Cao chấm ngay một chấm đỏ làm cánh buồm.",
+          "Đúng rồi, thuyền trắng buồm đỏ đang rẽ sóng ra khơi.",
+          "Vẹt Xanh khoe từ mới: \"đỏ thắm\"! Đỏ thắm! Đỏ thắm!"
+        ],
+        "wrong": [
+          "Bài thơ nói biển trong lành cơ. Đọc lại khổ ba nhé.",
+          "Tìm dòng \"Có một con thuyền trắng\" rồi đọc cả khổ.",
+          "Gần đúng rồi, xem biển trong tranh có thuyền không, buồm màu gì."
+        ]
+      }
+    },
+    {
+      "id": "kho-tho-san-truong",
+      "title": "Khổ thơ của tranh sân trường",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "target": "tv2-t07-gia-ve",
+      "prompt": "Hươu Cao lật sang tờ giấy vẽ khác: sân trường với ba cây phượng nở hoa đỏ, ông mặt trời chiếu sáng, phía sau là dãy lớp học.\nĐọc khổ thơ tương ứng với bức tranh dưới đây:\nChọn đủ bốn dòng thơ của khổ đó.",
+      "choices": [
+        {
+          "id": "k3-1",
+          "text": "Vẽ biển cả trong lành"
+        },
+        {
+          "id": "k4-2",
+          "text": "Và những chùm phượng đỏ"
+        },
+        {
+          "id": "k3-3",
+          "text": "Giương cánh buồm đỏ thắm"
+        },
+        {
+          "id": "k4-1",
+          "text": "Vẽ cả ông mặt trời"
+        },
+        {
+          "id": "k3-4",
+          "text": "Đang rẽ sóng ra khơi."
+        },
+        {
+          "id": "k4-4",
+          "text": "Gọi ve về râm ran."
+        },
+        {
+          "id": "k3-2",
+          "text": "Có một con thuyền trắng"
+        },
+        {
+          "id": "k4-3",
+          "text": "Trên sân trường lộng gió"
+        }
+      ],
+      "skill": "doc-hieu",
+      "answer": {
+        "choices": [
+          "k4-1",
+          "k4-2",
+          "k4-3",
+          "k4-4"
+        ]
+      },
+      "curriculumRef": [
+        "tv2-t1-b14-doc-3"
+      ],
+      "support": {
+        "guide": [
+          "Tranh có ông mặt trời và hoa phượng.",
+          "Tìm khổ thơ có chữ \"phượng đỏ\"."
+        ],
+        "hint": "Khổ thơ cần tìm là khổ cuối cùng của bài.",
+        "answer": {
+          "text": "Bốn dòng: Vẽ cả ông mặt trời / Và những chùm phượng đỏ / Trên sân trường lộng gió / Gọi ve về râm ran.",
+          "explanation": "Khổ cuối tả ông mặt trời, chùm phượng đỏ trên sân trường lộng gió, đúng như bức tranh."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Cả khổ thơ hiện lên y như tranh, phượng đỏ rực luôn!",
+          "Chọn đủ bốn dòng, Hươu Cao gật đầu… mà lần này không cụng cành.",
+          "Chuẩn! Nghe như có tiếng ve râm ran đâu đây."
+        ],
+        "wrong": [
+          "Có dòng thơ về biển lọt vào rồi. Tranh này là sân trường cơ.",
+          "Còn thiếu dòng có tiếng ve đấy, tìm thêm nhé.",
+          "Thuyền với buồm đâu có trong tranh sân trường, bỏ ra thôi."
+        ]
+      }
+    },
+    {
+      "id": "tieng-cung-van",
+      "title": "Bài thơ kêu leng keng",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "target": "vet-xanh",
+      "prompt": "Vẹt Xanh nhún nhảy trên cành: tớ nghe bài thơ kêu leng keng, vì cuối dòng có tiếng cùng vần! Cùng vần! Cùng vần!\nTìm tiếng cùng vần ở cuối các dòng thơ.\nChọn cặp tiếng cùng vần cho mỗi chỗ trống.",
+      "template": "Cuối khổ một nối sang khổ hai: {{b1}}\nGiữa khổ hai: {{b2}}\nCuối khổ hai nối sang khổ ba: {{b3}}\nCuối khổ ba nối sang khổ bốn: {{b4}}\nGiữa khổ bốn: {{b5}}",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "sao-mau",
+              "text": "sao – màu"
+            },
+            {
+              "id": "dung",
+              "text": "sao – cao"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "dung",
+              "text": "ngõ – gió"
+            },
+            {
+              "id": "ngo-trang",
+              "text": "ngõ – trăng"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "xanh-trang",
+              "text": "xanh – trắng"
+            },
+            {
+              "id": "dung",
+              "text": "xanh – lành"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "dung",
+              "text": "khơi – trời"
+            },
+            {
+              "id": "khoi-tham",
+              "text": "khơi – thắm"
+            }
+          ]
+        },
+        {
+          "id": "b5",
+          "options": [
+            {
+              "id": "do-ran",
+              "text": "đỏ – ran"
+            },
+            {
+              "id": "dung",
+              "text": "đỏ – gió"
+            }
+          ]
+        }
+      ],
+      "skill": "doc-hieu",
+      "answer": {
+        "fills": {
+          "b1": "dung",
+          "b2": "dung",
+          "b3": "dung",
+          "b4": "dung",
+          "b5": "dung"
+        }
+      },
+      "curriculumRef": [
+        "tv2-t1-b14-doc-4"
+      ],
+      "support": {
+        "guide": [
+          "Đọc to tiếng cuối của từng dòng thơ.",
+          "Hai tiếng cùng vần nghe giống nhau ở phần cuối, như sao với cao."
+        ],
+        "hint": "Vần ao, vần o, vần anh, vần ơi: nghe kĩ phần đuôi của mỗi tiếng.",
+        "answer": {
+          "text": "sao – cao; ngõ – gió; xanh – lành; khơi – trời; đỏ – gió",
+          "explanation": "Năm cặp tiếng cuối dòng có phần vần giống nhau: ao, o, anh, ơi và o."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Leng keng! Vẹt Xanh lắc lư theo vần, lộn một vòng trên cành.",
+          "Đúng cả năm cặp, bài thơ kêu leng keng thật rồi!",
+          "Tai {name} thính ghê, nghe ra vần ngay từ dòng đầu."
+        ],
+        "wrong": [
+          "Có cặp đọc lên chẳng vang giống nhau. Đọc to từng cặp nhé.",
+          "Đọc tiếng cuối dòng này rồi tiếng cuối dòng ngay dưới, nghe có hợp vần không?",
+          "Một cặp đang lệch vần. Nghe kĩ phần đuôi: anh hay ăng, ao hay au?"
+        ]
+      }
+    },
+    {
+      "id": "doc-thuoc-hai-kho",
+      "title": "Đọc thuộc cho Vẹt Xanh nghe",
+      "kind": "speak",
+      "target": "vet-xanh",
+      "prompt": "Vẹt Xanh thuộc lòng mọi thứ, nhưng dòng nào cũng đọc hai lần. Đến lượt {name}, mỗi dòng một lần thôi nhé!\nHọc thuộc lòng 2 khổ thơ em thích.",
+      "hints": [
+        "Hôm nay trong lớp học",
+        "Vẽ ông trăng trên cao",
+        "Vẽ biển cả trong lành",
+        "Vẽ cả ông mặt trời"
+      ],
+      "curriculumRef": [
+        "tv2-t1-b14-doc-htl"
+      ]
+    },
+    {
+      "id": "tu-chi-su-vat",
+      "title": "Vẽ được gì vào tranh?",
+      "kind": "challenge",
+      "mechanic": "classify",
+      "target": "tv2-t07-gia-ve",
+      "prompt": "Hươu Cao muốn vẽ thêm vào tranh mọi thứ có trong bài thơ, nhưng chỉ vẽ được những gì là sự vật thôi.\nTìm trong bài thơ những từ ngữ chỉ sự vật.\nKéo từng thẻ vào đúng giỏ.",
+      "groups": [
+        {
+          "id": "su-vat",
+          "label": "Chỉ sự vật"
+        },
+        {
+          "id": "khong",
+          "label": "Không chỉ sự vật"
+        }
+      ],
+      "items": [
+        {
+          "id": "nan-not",
+          "label": "nắn nót"
+        },
+        {
+          "id": "giay-trang",
+          "label": "giấy trắng"
+        },
+        {
+          "id": "ong-trang",
+          "label": "ông trăng"
+        },
+        {
+          "id": "lung-linh",
+          "label": "lung linh"
+        },
+        {
+          "id": "but-mau",
+          "label": "bút màu"
+        },
+        {
+          "id": "vi-vu",
+          "label": "vi vu"
+        },
+        {
+          "id": "canh-dieu",
+          "label": "cánh diều"
+        },
+        {
+          "id": "re-song",
+          "label": "rẽ sóng"
+        },
+        {
+          "id": "con-thuyen",
+          "label": "con thuyền"
+        },
+        {
+          "id": "ram-ran",
+          "label": "râm ran"
+        },
+        {
+          "id": "chum-phuong",
+          "label": "chùm phượng"
+        }
+      ],
+      "skill": "tu-ngu",
+      "answer": {
+        "assignment": {
+          "giay-trang": "su-vat",
+          "but-mau": "su-vat",
+          "ong-trang": "su-vat",
+          "canh-dieu": "su-vat",
+          "con-thuyen": "su-vat",
+          "chum-phuong": "su-vat",
+          "nan-not": "khong",
+          "lung-linh": "khong",
+          "vi-vu": "khong",
+          "re-song": "khong",
+          "ram-ran": "khong"
+        }
+      },
+      "curriculumRef": [
+        "tv2-t1-b14-doc-lt1"
+      ],
+      "support": {
+        "guide": [
+          "Từ chỉ sự vật gọi tên đồ vật, cây cối, con vật, cảnh vật.",
+          "Hỏi thử: \"Đây là cái gì?\" Trả lời được bằng từ đó thì là sự vật."
+        ],
+        "hint": "Nắn nót, lung linh, vi vu, râm ran, rẽ sóng không phải tên sự vật.",
+        "answer": {
+          "text": "Chỉ sự vật: giấy trắng, bút màu, ông trăng, cánh diều, con thuyền, chùm phượng.",
+          "explanation": "Đó là tên đồ vật và cảnh vật trong bài thơ; các từ còn lại tả dáng vẻ, âm thanh hay việc làm."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Hươu Cao vẽ ngay sáu thứ, cổ vươn cao vì tự hào.",
+          "Hai giỏ gọn gàng như hộp màu mới mua!",
+          "Đúng hết! Vẹt Xanh đòi đổi tên thành Vẹt Sự Vật."
+        ],
+        "wrong": [
+          "\"Vi vu\" là tiếng gió thổi, vẽ lên giấy được không nhỉ?",
+          "Có một tên đồ vật đang nằm nhầm giỏ, tìm lại nhé.",
+          "Từ tả cách làm hay âm thanh thì không phải sự vật đâu."
+        ]
+      }
+    },
+    {
+      "id": "so-tu-moi-cua-vet",
+      "title": "Cuốn sổ từ mới của Vẹt Xanh",
+      "kind": "speak",
+      "target": "vet-xanh",
+      "prompt": "Vẹt Xanh mở cuốn sổ sưu tầm, khoe ba từ vừa nhặt trong bài thơ, từ nào cũng đọc hai lần cho oai. Rồi bạn ấy đố {name} đặt câu.\nĐặt câu nêu đặc điểm với 1 trong 3 từ lung linh, vi vu, râm ran.\nM: Bầu trời sao lung linh.",
+      "hints": [
+        "Cái gì kêu vi vu trên trời cao?",
+        "Mùa hè, con gì kêu râm ran trên cành phượng?",
+        "Nói đủ câu: nêu sự vật trước, rồi tới từ em chọn."
+      ],
+      "curriculumRef": [
+        "tv2-t1-b14-doc-lt2"
+      ]
+    },
+    {
+      "id": "ng-hay-ngh",
+      "title": "Hai câu tục ngữ trên vách lều",
+      "goTo": "Chui vào lều vẽ của Hươu Cao, cửa lều hơi thấp",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "target": "tv2-t07-leu-ve",
+      "prompt": "Cửa lều thấp, Hươu Cao chui vào… cộp! Trên vách lều treo hai câu tục ngữ, mưa đêm qua làm nhoè mất mấy chữ.\nChọn ng hoặc ngh thay cho ô vuông.",
+      "template": "a. Công cha, {{b1}}ĩa mẹ, ơn thầy.\nb. Có công mài sắt, có {{b2}}ày nên kim.",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "ng",
+              "text": "ng"
+            },
+            {
+              "id": "ngh",
+              "text": "ngh"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "ngh",
+              "text": "ngh"
+            },
+            {
+              "id": "ng",
+              "text": "ng"
+            }
+          ]
+        }
+      ],
+      "skill": "chinh-ta",
+      "answer": {
+        "fills": {
+          "b1": "ngh",
+          "b2": "ng"
+        }
+      },
+      "curriculumRef": [
+        "tv2-t1-b14-chinh-ta-2-a",
+        "tv2-t1-b14-chinh-ta-2-b"
+      ],
+      "support": {
+        "guide": [
+          "Nhìn chữ đứng ngay sau ô vuông.",
+          "Trước i, e, ê viết ngh; trước các chữ khác viết ng."
+        ],
+        "hint": "Ô thứ nhất đứng trước chữ i, ô thứ hai đứng trước chữ a.",
+        "answer": {
+          "text": "Công cha, nghĩa mẹ, ơn thầy. / Có công mài sắt, có ngày nên kim.",
+          "explanation": "Nghĩa có chữ i đứng sau nên viết ngh; ngày có chữ a đứng sau nên viết ng."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Hai câu tục ngữ sáng rõ lại trên vách lều!",
+          "Đúng luật ngh rồi, Hươu Cao xoa cục u mà vẫn cười toe.",
+          "Chuẩn! Có công mài sắt, {name} đã mài ra kim rồi đấy."
+        ],
+        "wrong": [
+          "Chữ i đứng sau thì phải dùng ngh đấy.",
+          "Trước chữ a chỉ cần ng thôi, không cần thêm h.",
+          "Hai ô đang đổi chỗ cho nhau rồi, đọc to từng tiếng nhé."
+        ]
+      }
+    },
+    {
+      "id": "hinh-ve-thay-chu",
+      "title": "Sáu hình đố chữ của Hươu Cao",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "target": "tv2-t07-leu-ve",
+      "prompt": "Hươu Cao vẽ hình vào chỗ trống thay cho chữ để đố bạn. Hôm nay mình giải cả phần a lẫn phần b nhé.\nChọn a hoặc b.\na. Tìm từ ngữ có tiếng bắt đầu bằng r, d hoặc gi thay cho hình.\n– Chậm như .\n– Nhanh như .\n– Nắng tốt , mưa tốt lúa.\nb. Tìm từ ngữ có tiếng chứa an hoặc ang gọi tên sự vật trong mỗi hình.\nMỗi hình có một lời tả nhỏ, chọn cách viết đúng.",
+      "template": "Hình con vật đội mai, bò chậm rì rì: {{a1}}\nHình làn hơi thổi lá bay vù vù: {{a2}}\nHình quả to, vỏ xanh, ruột đỏ: {{a3}}\nHình đồ gỗ bốn chân để ngồi học: {{b1}}\nHình tấm đen để cô viết phấn: {{b2}}\nHình đồ có dây, gảy kêu tưng tưng: {{b3}}",
+      "blanks": [
+        {
+          "id": "a1",
+          "options": [
+            {
+              "id": "dua",
+              "text": "dùa"
+            },
+            {
+              "id": "rua",
+              "text": "rùa"
+            },
+            {
+              "id": "giua",
+              "text": "giùa"
+            }
+          ]
+        },
+        {
+          "id": "a2",
+          "options": [
+            {
+              "id": "do",
+              "text": "dó"
+            },
+            {
+              "id": "ro",
+              "text": "ró"
+            },
+            {
+              "id": "gio",
+              "text": "gió"
+            }
+          ]
+        },
+        {
+          "id": "a3",
+          "options": [
+            {
+              "id": "dua",
+              "text": "dưa"
+            },
+            {
+              "id": "rua",
+              "text": "rưa"
+            },
+            {
+              "id": "giua",
+              "text": "giưa"
+            }
+          ]
+        },
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "bang",
+              "text": "cái bàng"
+            },
+            {
+              "id": "ban",
+              "text": "cái bàn"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "bang",
+              "text": "cái bảng"
+            },
+            {
+              "id": "ban",
+              "text": "cái bản"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "dang",
+              "text": "cây đàng"
+            },
+            {
+              "id": "dan",
+              "text": "cây đàn"
+            }
+          ]
+        }
+      ],
+      "skill": "chinh-ta",
+      "answer": {
+        "fills": {
+          "a1": "rua",
+          "a2": "gio",
+          "a3": "dua",
+          "b1": "ban",
+          "b2": "bang",
+          "b3": "dan"
+        }
+      },
+      "curriculumRef": [
+        "tv2-t1-b14-chinh-ta-3-a-1",
+        "tv2-t1-b14-chinh-ta-3-a-2",
+        "tv2-t1-b14-chinh-ta-3-a-3",
+        "tv2-t1-b14-chinh-ta-3-b-1",
+        "tv2-t1-b14-chinh-ta-3-b-2",
+        "tv2-t1-b14-chinh-ta-3-b-3"
+      ],
+      "support": {
+        "guide": [
+          "Phần a: đọc to từng từ, nghe âm đầu là r, d hay gi.",
+          "Phần b: nghe thật kĩ vần cuối là an hay ang."
+        ],
+        "hint": "Chậm như rùa, nhanh như gió, nắng tốt dưa; còn bàn, bảng, đàn thì lắng nghe vần.",
+        "answer": {
+          "text": "rùa; gió; dưa; cái bàn; cái bảng; cây đàn",
+          "explanation": "Chậm như rùa, nhanh như gió, nắng tốt dưa, mưa tốt lúa; cái bàn, cây đàn có vần an, cái bảng có vần ang."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Sáu hình giải sạch, Hươu Cao gõ móng lộp cộp khen.",
+          "Đúng cả r, gi, d lẫn an, ang, tai {name} tinh thật!",
+          "Vẹt Xanh ghi ngay vào sổ: rùa, gió, dưa! Ghi rồi! Ghi rồi!"
+        ],
+        "wrong": [
+          "Có hình bị viết nhầm âm đầu rồi. Đọc to từng từ nhé.",
+          "Bảng đen viết vần ang, còn bàn học thì vần an.",
+          "Câu \"nắng tốt…, mưa tốt lúa\" nói về quả gì? Âm đầu của nó là d đấy."
+        ]
+      }
+    },
+    {
+      "id": "goc-hoc-tap-trong-leu",
+      "title": "Góc học tập trong lều",
+      "kind": "speak",
+      "target": "tv2-t07-leu-ve",
+      "prompt": "Góc học tập của Hươu Cao gọn gàng lắm, chỉ có cái đèn bàn treo cao tít… ngang tầm mắt hươu.\nNói tên các đồ dùng có ở góc học tập.",
+      "hints": [
+        "Trên mặt bàn học có những gì?",
+        "Trong ngăn kéo, dưới gầm bàn và trên giá sách có gì?",
+        "Trên tường treo gì?"
+      ],
+      "pictureRefs": [
+        {
+          "kind": "diagram",
+          "type": "picture-card",
+          "params": {
+            "caption": "góc học tập: bàn học xanh có đèn bàn hồng, ống bút chì màu, chồng sách; ngăn kéo mở có hộp màu; cặp sách vàng dưới gầm bàn; giá sách trên có bình, lọ và sách; ghế xanh; bức tranh treo tường; cửa sổ"
+          }
+        }
+      ],
+      "curriculumRef": [
+        "tv2-t1-b14-tu-ngu-cau-1"
+      ]
+    },
+    {
+      "id": "cau-cong-dung",
+      "title": "Câu giới thiệu cục tẩy",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "tv2-t07-leu-ve",
+      "prompt": "Vẹt Xanh tuyên bố: đồ dùng nào cũng phải có câu giới thiệu! Giới thiệu! Rồi bạn ấy ngậm mấy thẻ chữ bay vòng vòng, làm rơi lộn xộn.\nĐặt một câu nêu công dụng của một đồ dùng học tập.\nM:\nSố thứ tự | Từ | Câu\n1 | bút màu | Bút màu dùng để vẽ tranh.\n2 | ... | ...\nXếp lại các thẻ thành câu nêu công dụng của cục tẩy.",
+      "items": [
+        {
+          "id": "xoa",
+          "label": "xoá"
+        },
+        {
+          "id": "net-ve-sai",
+          "label": "những nét vẽ sai."
+        },
+        {
+          "id": "cuc-tay",
+          "label": "Cục tẩy"
+        },
+        {
+          "id": "dung-de",
+          "label": "dùng để"
+        }
+      ],
+      "skill": "cau",
+      "answer": {
+        "order": [
+          "cuc-tay",
+          "dung-de",
+          "xoa",
+          "net-ve-sai"
+        ]
+      },
+      "curriculumRef": [
+        "tv2-t1-b14-tu-ngu-cau-2"
+      ],
+      "support": {
+        "guide": [
+          "Tìm thẻ có chữ cái viết hoa: thẻ ấy mở đầu câu.",
+          "Câu nêu công dụng có dạng: cái gì dùng để làm gì."
+        ],
+        "hint": "Làm giống câu mẫu: Bút màu dùng để vẽ tranh.",
+        "answer": {
+          "text": "Cục tẩy dùng để xoá những nét vẽ sai.",
+          "explanation": "Câu nói rõ đồ dùng (cục tẩy) và công dụng của nó (xoá những nét vẽ sai), giống câu mẫu về bút màu."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Câu giới thiệu chuẩn rồi! Cục tẩy chắc đang sướng rơn.",
+          "Vẹt Xanh đọc lại hai lần: dùng để xoá! Dùng để xoá!",
+          "Xếp gọn ghẽ như hàng bút trong ống."
+        ],
+        "wrong": [
+          "Thẻ có chữ viết hoa phải đứng đầu câu nhé.",
+          "Thẻ có dấu chấm thì đứng cuối cùng.",
+          "Nhìn câu mẫu về bút màu: tên đồ dùng, rồi \"dùng để\", rồi việc làm."
+        ]
+      }
+    },
+    {
+      "id": "but-chi-va-tay",
+      "title": "Bút chì trò chuyện với tẩy",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "target": "tv2-t07-leu-ve",
+      "prompt": "Đêm qua trong hộp bút của Hươu Cao, bút chì và cục tẩy rì rầm trò chuyện, nhưng quên đặt dấu câu.\nChọn dấu chấm hoặc dấu chấm hỏi thay cho ô vuông.",
+      "template": "Bút chì: – Tẩy ơi, cậu giúp tớ một chút được không{{b1}}\nTẩy: – Cậu muốn tớ giúp gì nào{{b2}}\nBút chì: – Tớ muốn xoá hình vẽ này{{b3}}\nTẩy: – Tớ sẽ giúp cậu{{b4}}\nBút chì: – Cảm ơn cậu{{b5}}",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "cham",
+              "text": "."
+            },
+            {
+              "id": "hoi",
+              "text": "?"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "hoi",
+              "text": "?"
+            },
+            {
+              "id": "cham",
+              "text": "."
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "cham",
+              "text": "."
+            },
+            {
+              "id": "hoi",
+              "text": "?"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "hoi",
+              "text": "?"
+            },
+            {
+              "id": "cham",
+              "text": "."
+            }
+          ]
+        },
+        {
+          "id": "b5",
+          "options": [
+            {
+              "id": "cham",
+              "text": "."
+            },
+            {
+              "id": "hoi",
+              "text": "?"
+            }
+          ]
+        }
+      ],
+      "skill": "dau-cau",
+      "answer": {
+        "fills": {
+          "b1": "hoi",
+          "b2": "hoi",
+          "b3": "cham",
+          "b4": "cham",
+          "b5": "cham"
+        }
+      },
+      "curriculumRef": [
+        "tv2-t1-b14-tu-ngu-cau-3-a",
+        "tv2-t1-b14-tu-ngu-cau-3-b",
+        "tv2-t1-b14-tu-ngu-cau-3-c",
+        "tv2-t1-b14-tu-ngu-cau-3-d",
+        "tv2-t1-b14-tu-ngu-cau-3-e"
+      ],
+      "support": {
+        "guide": [
+          "Câu hỏi bạn điều gì thì cuối câu đặt dấu chấm hỏi.",
+          "Câu kể và câu cảm ơn thì đặt dấu chấm."
+        ],
+        "hint": "Hai câu đầu là hai câu hỏi.",
+        "answer": {
+          "text": "được không? / giúp gì nào? / hình vẽ này. / giúp cậu. / Cảm ơn cậu.",
+          "explanation": "Câu hỏi bạn kết thúc bằng dấu chấm hỏi; câu kể và câu cảm ơn kết thúc bằng dấu chấm."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bút chì cúi đầu cảm ơn, cục tẩy lăn một vòng sung sướng.",
+          "Dấu câu nào cũng đúng chỗ, đọc lên trơn tru như suối chảy.",
+          "Hươu Cao thì thầm: hoá ra đồ dùng của tớ nói chuyện lịch sự ghê."
+        ],
+        "wrong": [
+          "Câu nào đang hỏi bạn thì cần dấu chấm hỏi đấy.",
+          "Lời cảm ơn và lời hứa giúp không phải câu hỏi đâu.",
+          "Đọc to từng câu: lên giọng ở cuối là câu hỏi, xuống giọng là câu kể."
+        ]
+      }
+    },
+    {
+      "id": "chon-tranh-du-hoi",
+      "title": "Vẽ bức nào dự hội?",
+      "goTo": "Trở lại đồi cỏ ven biển, giá vẽ đã sẵn đủ màu",
+      "kind": "dialogue",
+      "target": "huou-cao",
+      "lines": [
+        {
+          "speaker": "Hươu Cao",
+          "text": "Màu đủ rồi: đỏ mâm xôi, vàng hoa cúc, xanh lá non. Nhưng trước hội vẽ, tớ chỉ kịp vẽ một bức thôi."
+        },
+        {
+          "speaker": "Vẹt Xanh",
+          "text": "Vẽ tớ đi! Vẽ tớ đi! Lông tớ xanh sẵn rồi, đỡ tốn màu!"
+        },
+        {
+          "speaker": "Hươu Cao",
+          "text": "{name} chọn giúp tớ nhé: bức nào cả trường rừng sẽ thích nhất?"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Vẽ biển trong lành có thuyền buồm đỏ",
+          "reply": "Hay đấy! Tớ nhìn xa nên thấy rõ cả cánh buồm ngoài khơi."
+        },
+        {
+          "text": "Vẽ sân trường có chùm phượng đỏ",
+          "reply": "Ý hay! Tớ sẽ vẽ thêm một chú ve đang kêu trên cành."
+        },
+        {
+          "text": "Vẽ Vẹt Xanh đang đọc thơ",
+          "reply": "Vẹt Xanh sướng quá, hét hai lần: đọc thơ! Đọc thơ!"
+        }
+      ]
+    },
+    {
+      "id": "ke-chuyen-truong-hoc",
+      "title": "Kể chuyện trường học",
+      "kind": "speak",
+      "target": "huou-cao",
+      "prompt": "Chờ màu khô, Hươu Cao rủ {name} kể chuyện. Bạn ấy vươn cổ nghe chăm chú, quên béng cành cây ngay trên đầu.\nTìm đọc một câu chuyện về trường học. Chia sẻ thông tin về câu chuyện dựa trên gợi ý sau:\n– Tên câu chuyện là gì?\n– Câu chuyện mở đầu như thế nào?\n– Điều gì diễn ra tiếp theo?\n– Câu chuyện kết thúc ra sao?\nNói về một nhân vật em thích trong câu chuyện.",
+      "hints": [
+        "Nói tên câu chuyện trước, rồi kể lần lượt từ đầu tới cuối.",
+        "Nhân vật em thích tên là gì? Bạn ấy đã làm gì?",
+        "Vì sao em thích nhân vật đó?"
+      ],
+      "curriculumRef": [
+        "tv2-t1-b14-doc-mo-rong-1",
+        "tv2-t1-b14-doc-mo-rong-2"
+      ]
+    },
+    {
+      "id": "phieu-viet-bai-14",
+      "title": "Phiếu viết bài 14",
+      "kind": "worksheet",
+      "trigger": "auto",
+      "lessonId": "tv2-t1-b14",
+      "text": "Nhờ bố mẹ in phiếu Bài 14 ở khu phụ huynh: nghe – viết hai khổ thơ đầu bài Em học vẽ, nói tên và công dụng đồ vật trong tranh, rồi viết 3 – 4 câu giới thiệu một đồ vật em dùng để vẽ.",
+      "curriculumRef": [
+        "tv2-t1-b14-nghe-viet-1",
+        "tv2-t1-b14-viet-doan-1",
+        "tv2-t1-b14-viet-doan-2"
+      ]
+    },
+    {
+      "id": "qua-cua-huou-cao",
+      "title": "Bức tranh nhỏ tặng bạn",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Hươu Cao tặng {name} một bức tranh nhỏ vẽ biển có thuyền buồm đỏ, góc tranh còn dính một chiếc lông xanh của Vẹt Xanh. Dưới chân đồi, Hải Ly Cần ghé xem rồi khen màu mâm xôi đẹp như nhịp cầu gỗ mới đóng."
+    },
+    {
+      "id": "mo-bai-15",
+      "title": "Tiếng rầm trong hốc cây",
+      "kind": "unlock",
+      "trigger": "auto",
+      "text": "Từ kệ sách trong hốc cây vọng ra một tiếng \"rầm\" thật to, rồi giọng Gấu Trúc Tròn chậm rãi: từ… từ… thôi… sách… đổ… hết… rồi…"
+    }
+  ],
+  "reward": {
+    "xp": 90,
+    "coin": 15,
+    "skillXp": {
+      "doc-hieu": 2,
+      "chinh-ta": 2,
+      "tu-ngu": 1,
+      "cau": 1,
+      "dau-cau": 1
+    }
+  }
+}

@@ -1,0 +1,961 @@
+{
+  "id": "tv2-t04-b08",
+  "region": "khu-rung-bi-mat",
+  "chapter": 5,
+  "title": "Hổ Vằn làm cầu thủ dự bị",
+  "status": "draft",
+  "lesson": "tv2-t1-b08",
+  "summary": "Chưa đội nào nhận Hổ Vằn, cậu gầm “Grừ!” cho oai rồi lủi vào bụi cây tập sút một mình. {name} cùng Khỉ Lanh đọc chuyện Cầu thủ dự bị, sửa tên trên áo đấu, dọn kho dụng cụ, gọi tên trò chơi dân gian và giúp Hổ Vằn tự tin ra sân.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "Hổ Vằn (ra vẻ dữ mà nhút nhát), Khỉ Lanh dạy thể dục hay đu cành đếm nhịp, Sâu Xanh hoá bướm ở cuối chủ điểm",
+    "where": "Sân bóng giữa rừng, bìa rừng quanh sân và kho dụng cụ bên sân",
+    "goal": "Giúp Hổ Vằn nhận làm cầu thủ dự bị, chăm tập để được hai đội cùng mời",
+    "play": "Nhặt bóng lạc, nói khởi động, đọc bài hai lượt, trắc nghiệm, chọn nhiều đáp án, xếp tên theo bảng chữ cái, kéo dụng cụ vào tranh, điền tên trò chơi, xếp thẻ thành câu, nói và kể, phiếu viết",
+    "learn": "Tiếng Việt 2 Bài 8: đọc Cầu thủ dự bị, lời khen và lời chúc mừng, viết hoa tên riêng, sắp xếp họ tên theo bảng chữ cái, từ ngữ về dụng cụ thể thao và trò chơi dân gian, câu nêu hoạt động, kể về hoạt động thể thao",
+    "reward": "90 XP, 15 xu, Đọc hiểu +2, Chính tả +2, Từ ngữ +1, Câu +1",
+    "unlock": "Bài 9 \"Cô giáo lớp em\""
+  },
+  "phases": {
+    "hook": "ho-van-tap-mot-minh",
+    "explore": "nhat-bong-lac",
+    "learn": "doc-cau-thu-du-bi",
+    "challenge": "ao-dau-theu-ten",
+    "decision": "lam-du-bi-nhe",
+    "finale": "hoi-the-thao-giua-hiep",
+    "reward": "phieu-viet-bai-8",
+    "unlock": "mo-bai-9"
+  },
+  "texts": {
+    "cau-thu-du-bi": {
+      "title": "Cầu thủ dự bị",
+      "author": "Theo 100 truyện ngụ ngôn hay nhất",
+      "body": "Nhìn các bạn đá bóng, gấu con rất muốn chơi cùng. Nhưng thấy gấu con có vẻ chậm chạp và đá bóng không tốt nên chưa đội nào muốn nhận cậu.\n\n– Gấu à, cậu làm cầu thủ dự bị nhé! – Khỉ nói.\n\nGấu con hơi buồn nhưng cũng đồng ý. Trong khi chờ được vào sân, gấu đi nhặt bóng cho các bạn. Gấu cố gắng chạy thật nhanh để các bạn không phải chờ lâu.\n\nHằng ngày, gấu đến sân bóng từ sớm để luyện tập. Gấu đá bóng ra xa, chạy đi nhặt rồi đá vào gôn, đá đi đá lại,… Cứ thế, gấu đá bóng ngày càng giỏi hơn.\n\nMột hôm, đến sân bóng thấy gấu đang luyện tập, các bạn ngạc nhiên nhìn gấu rồi nói: “Cậu giỏi quá!”, “Này, vào đội tớ nhé!”, “Vào đội tớ đi!”.\n\n– Tớ nên vào đội nào đây? – Gấu hỏi khỉ.\n\n– Hiệp đầu cậu đá cho đội đỏ, hiệp sau cậu đá cho đội xanh. – Khỉ nói.\n\nGấu vui vẻ gật đầu. Cậu nghĩ: “Hoá ra làm cầu thủ dự bị cũng hay nhỉ!”.",
+      "glossary": [
+        {
+          "term": "Dự bị",
+          "meaning": "chưa phải là thành viên chính thức, nhưng có thể thay thế hoặc bổ sung khi cần."
+        }
+      ],
+      "section": "tv2-t1-b08-doc"
+    }
+  },
+  "places": {
+    "ho-van": "sân bóng",
+    "khi-lanh": "sân bóng",
+    "tv2-t04-bang-ti-so": "sân bóng",
+    "tv2-t04-day-ao": "sân bóng",
+    "nhat-bong-lac": "bìa rừng quanh sân",
+    "tv2-t04-kho-dung-cu": "kho dụng cụ"
+  },
+  "steps": [
+    {
+      "id": "ho-van-tap-mot-minh",
+      "title": "Hổ Vằn sút bóng một mình",
+      "goTo": "Tới sân bóng giữa rừng, có tiếng sút bóng bộp bộp",
+      "kind": "dialogue",
+      "target": "ho-van",
+      "lines": [
+        {
+          "speaker": "Hổ Vằn",
+          "text": "Grừ! Ai đấy? À, {name} à… Tớ đâu có buồn. Tớ đang gầm cho… đỡ buồn thôi."
+        },
+        {
+          "speaker": "Khỉ Lanh",
+          "text": "Hai đội chia xong rồi mà chưa đội nào nhận Hổ Vằn. Cậu ấy sút quả nào cũng bay thẳng vào bụi cây."
+        },
+        {
+          "speaker": "Hổ Vằn",
+          "text": "Thế là tớ lại chui vào bụi nhặt bóng. Mà chui vào rồi thì… ở luôn trong đó cũng được."
+        },
+        {
+          "speaker": "Khỉ Lanh",
+          "text": "Một, hai! Ba quả bóng còn lạc quanh bìa rừng kìa. {name} nhặt giúp, rồi ta tính tiếp!"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Để mình nhặt bóng cùng cậu!",
+          "reply": "Hổ Vằn ló cái đầu vằn vện ra khỏi bụi: thật hả? Grừ… à nhầm, cảm ơn nhé!"
+        },
+        {
+          "text": "Cậu gầm to thế, sao lại trốn?",
+          "reply": "Hổ Vằn gãi tai: gầm to là để che tiếng tim tớ đập thình thịch đấy."
+        }
+      ]
+    },
+    {
+      "id": "nhat-bong-lac",
+      "title": "Ba quả bóng đi lạc",
+      "goTo": "Nhặt ba quả bóng lạc ở bìa rừng quanh sân",
+      "kind": "search",
+      "targets": [
+        "tv2-t04-bong-bui-sim",
+        "tv2-t04-bong-goc-tre",
+        "tv2-t04-bong-ven-suoi"
+      ]
+    },
+    {
+      "id": "mon-the-thao-trong-tranh",
+      "title": "Môn thể thao trong tranh",
+      "goTo": "Ôm bóng về sân bóng, Khỉ Lanh đang đu cành đếm nhịp",
+      "kind": "speak",
+      "target": "khi-lanh",
+      "prompt": "Khỉ Lanh đu một vòng, treo ngược trên cành, giơ ra một bức tranh: một, hai, nhìn này!\nQuan sát tranh và cho biết:\nCác bạn nhỏ đang chơi môn thể thao gì?\nEm có thích môn thể thao này không? Vì sao?",
+      "hints": [
+        "Các bạn trong tranh đang làm gì với quả bóng?",
+        "Bạn áo vàng đứng trước khung thành để làm gì?",
+        "Em thích hay không thích môn này? Nói thêm lí do nhé."
+      ],
+      "pictureRefs": [
+        {
+          "kind": "diagram",
+          "type": "picture-card",
+          "params": {
+            "caption": "sân bóng, hai cầu thủ áo đỏ (số 8, số 6) và hai cầu thủ áo xanh tranh bóng, thủ môn áo vàng số 1 đứng trước khung thành"
+          }
+        }
+      ],
+      "curriculumRef": [
+        "tv2-t1-b08-doc-kd1",
+        "tv2-t1-b08-doc-kd2"
+      ]
+    },
+    {
+      "id": "doc-cau-thu-du-bi",
+      "title": "Đọc bài Cầu thủ dự bị",
+      "kind": "read",
+      "target": "tv2-t04-bang-ti-so",
+      "textRef": "cau-thu-du-bi",
+      "audio": true,
+      "question": "Khỉ Lanh dán câu chuyện lên tấm bảng tỉ số, rồi nháy mắt với Hổ Vằn: đọc đi, chuyện này hợp với cậu lắm.\nCâu chuyện kể về ai?",
+      "choices": [
+        {
+          "id": "khi",
+          "text": "khỉ"
+        },
+        {
+          "id": "gau-con",
+          "text": "gấu con"
+        },
+        {
+          "id": "huou-sao",
+          "text": "hươu sao"
+        }
+      ],
+      "skill": "doc-hieu",
+      "answer": {
+        "choice": "gau-con"
+      },
+      "curriculumRef": [
+        "tv2-t1-b08-doc-1"
+      ],
+      "support": {
+        "guide": [
+          "Đọc câu đầu tiên của bài.",
+          "Nhân vật nào xuất hiện từ đầu đến cuối câu chuyện?"
+        ],
+        "hint": "Bạn ấy chậm chạp lúc đầu nhưng chăm luyện tập.",
+        "answer": {
+          "text": "gấu con",
+          "explanation": "Ngay câu đầu, bài kể gấu con rất muốn chơi cùng các bạn. Cả câu chuyện xoay quanh gấu con."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Gấu con đấy! Hổ Vằn thì thầm: hơi giống tớ, chỉ khác bộ lông.",
+          "Chuẩn! Khỉ chỉ là người chia đội thôi.",
+          "Khỉ Lanh lộn một vòng: đọc nhanh mà chắc, một, hai, tuyệt!"
+        ],
+        "wrong": [
+          "Khỉ có trong bài, nhưng chuyện không kể về khỉ. Đọc câu đầu tiên nhé.",
+          "Hươu sao chỉ có trong tranh thôi. Ai muốn chơi bóng mà chưa được nhận?",
+          "Tìm nhân vật được nhắc tới nhiều nhất trong bài xem."
+        ]
+      }
+    },
+    {
+      "id": "vi-sao-chua-duoc-nhan",
+      "title": "Vì sao chưa được nhận?",
+      "kind": "challenge",
+      "mechanic": "quiz",
+      "target": "ho-van",
+      "prompt": "Hổ Vằn lấy hai chân trước che mặt, chỉ chừa ra một con mắt.\nVì sao lúc đầu chưa đội nào muốn nhận gấu con?",
+      "choices": [
+        {
+          "id": "chua-co-ao",
+          "text": "Vì gấu con chưa có áo đấu."
+        },
+        {
+          "id": "den-muon",
+          "text": "Vì gấu con đến sân bóng muộn."
+        },
+        {
+          "id": "cham-chap",
+          "text": "Vì thấy gấu con có vẻ chậm chạp và đá bóng không tốt."
+        }
+      ],
+      "skill": "doc-hieu",
+      "answer": {
+        "choice": "cham-chap"
+      },
+      "curriculumRef": [
+        "tv2-t1-b08-doc-2"
+      ],
+      "support": {
+        "guide": [
+          "Đọc đoạn đầu tiên của bài.",
+          "Tìm câu bắt đầu bằng “Nhưng thấy gấu con…”."
+        ],
+        "hint": "Các bạn thấy gấu con chưa nhanh nhẹn và chưa đá giỏi.",
+        "answer": {
+          "text": "Vì thấy gấu con có vẻ chậm chạp và đá bóng không tốt.",
+          "explanation": "Đoạn đầu viết: thấy gấu con có vẻ chậm chạp và đá bóng không tốt nên chưa đội nào muốn nhận cậu."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đúng rồi. Hổ Vằn thở dài: tớ cũng hay sút trượt y như vậy.",
+          "Chính xác! Chậm chạp và đá chưa tốt, nhưng câu chuyện chưa hết đâu.",
+          "{name} tìm câu nhanh như cầu thủ chạy cánh!"
+        ],
+        "wrong": [
+          "Bài không nhắc tới áo đấu. Đọc câu “Nhưng thấy gấu con…” nhé.",
+          "Gấu con còn đến sân từ sớm cơ mà, đâu có muộn.",
+          "Các bạn thấy gấu con thế nào khi đá bóng? Tìm lại ở đoạn đầu."
+        ]
+      }
+    },
+    {
+      "id": "du-bi-lam-gi",
+      "title": "Cầu thủ dự bị làm gì?",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "target": "khi-lanh",
+      "prompt": "Khỉ Lanh vừa đếm vừa vỗ tay: một việc, hai việc, ba việc! Gấu con làm được những việc gì nhỉ?\nLà cầu thủ dự bị, gấu con đã làm gì?\nChọn tất cả những việc gấu con đã làm.",
+      "choices": [
+        {
+          "id": "nhat-bong",
+          "text": "Gấu đi nhặt bóng cho các bạn."
+        },
+        {
+          "id": "ngoi-cho",
+          "text": "Gấu ngồi một chỗ chờ các bạn gọi."
+        },
+        {
+          "id": "chay-nhanh",
+          "text": "Gấu cố gắng chạy thật nhanh để các bạn không phải chờ lâu."
+        },
+        {
+          "id": "bo-ve",
+          "text": "Gấu bỏ về nhà vì buồn quá."
+        },
+        {
+          "id": "luyen-tap",
+          "text": "Hằng ngày, gấu đến sân bóng từ sớm để luyện tập."
+        }
+      ],
+      "skill": "doc-hieu",
+      "answer": {
+        "choices": [
+          "nhat-bong",
+          "chay-nhanh",
+          "luyen-tap"
+        ]
+      },
+      "curriculumRef": [
+        "tv2-t1-b08-doc-3"
+      ],
+      "support": {
+        "guide": [
+          "Đọc đoạn sau câu “Gấu con hơi buồn nhưng cũng đồng ý.”",
+          "Đọc tiếp đoạn bắt đầu bằng “Hằng ngày…”."
+        ],
+        "hint": "Có ba việc: nhặt bóng, chạy nhanh, đến sân sớm luyện tập.",
+        "answer": {
+          "text": "Gấu đi nhặt bóng cho các bạn, cố gắng chạy thật nhanh để các bạn không phải chờ lâu. Hằng ngày, gấu đến sân bóng từ sớm để luyện tập.",
+          "explanation": "Gấu hơi buồn nhưng không bỏ về, cũng không ngồi chờ: gấu nhặt bóng, chạy thật nhanh và đến sân từ sớm để luyện tập."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ba việc, không sót việc nào! Khỉ Lanh đếm đủ: một, hai, ba!",
+          "Hổ Vằn ghi nhớ: nhặt bóng, chạy nhanh, tập sớm. Grừ, tớ làm được!",
+          "Đúng hết! Cầu thủ dự bị mà chăm chẳng kém cầu thủ chính."
+        ],
+        "wrong": [
+          "Gấu con hơi buồn, nhưng có bỏ về nhà đâu! Bỏ lựa chọn ấy ra nhé.",
+          "Gấu không ngồi chờ mà chạy đi nhặt bóng cơ. Đọc lại đoạn hai.",
+          "Còn sót việc gấu làm hằng ngày từ sớm đấy."
+        ]
+      }
+    },
+    {
+      "id": "ca-hai-doi-muon-gau",
+      "title": "Hai đội cùng muốn gấu",
+      "kind": "read",
+      "target": "tv2-t04-bang-ti-so",
+      "textRef": "cau-thu-du-bi",
+      "audio": true,
+      "question": "Hổ Vằn ghé sát tấm bảng tỉ số, đọc to đến mức lá cây rung rinh.\nVì sao cuối cùng cả hai đội đều muốn gấu con về đội của mình?",
+      "choices": [
+        {
+          "id": "giay-moi",
+          "text": "Vì gấu có đôi giày đá bóng mới."
+        },
+        {
+          "id": "khi-bat",
+          "text": "Vì khỉ bắt hai đội phải nhận gấu."
+        },
+        {
+          "id": "gioi-hon",
+          "text": "Vì gấu đá bóng ngày càng giỏi hơn."
+        }
+      ],
+      "skill": "doc-hieu",
+      "answer": {
+        "choice": "gioi-hon"
+      },
+      "curriculumRef": [
+        "tv2-t1-b08-doc-4"
+      ],
+      "support": {
+        "guide": [
+          "Đọc đoạn bắt đầu bằng “Hằng ngày, gấu đến sân bóng từ sớm…”.",
+          "Câu cuối đoạn ấy cho biết gấu đã thay đổi thế nào."
+        ],
+        "hint": "Nhờ luyện tập mỗi ngày, gấu đá bóng tốt lên.",
+        "answer": {
+          "text": "Vì gấu đá bóng ngày càng giỏi hơn.",
+          "explanation": "Gấu luyện tập hằng ngày nên “đá bóng ngày càng giỏi hơn”. Các bạn thấy vậy liền rủ gấu vào đội mình."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đúng! Chăm tập thì giỏi lên, Hổ Vằn gầm một tiếng “Grừ!” vui ơi là vui.",
+          "Chuẩn rồi, không nhờ giày mới, cũng không nhờ ai ép cả.",
+          "Khỉ Lanh vỗ đùi: cái này gọi là luyện tập thành tài!"
+        ],
+        "wrong": [
+          "Bài không kể chuyện giày mới đâu. Đọc câu “Cứ thế, gấu đá bóng…” nhé.",
+          "Khỉ chỉ chia hiệp thôi, không bắt đội nào cả.",
+          "Các bạn ngạc nhiên khi thấy gấu đang làm gì? Đọc lại đoạn đó."
+        ]
+      }
+    },
+    {
+      "id": "loi-khen-trong-bai",
+      "title": "Tìm lời khen",
+      "kind": "challenge",
+      "mechanic": "quiz",
+      "target": "ho-van",
+      "prompt": "Hổ Vằn mơ màng: giá mà có ai khen tớ một câu như trong truyện nhỉ.\nCâu nào trong bài là lời khen?",
+      "choices": [
+        {
+          "id": "du-bi-nhe",
+          "text": "Gấu à, cậu làm cầu thủ dự bị nhé!"
+        },
+        {
+          "id": "doi-nao",
+          "text": "Tớ nên vào đội nào đây?"
+        },
+        {
+          "id": "gioi-qua",
+          "text": "Cậu giỏi quá!"
+        },
+        {
+          "id": "vao-doi-di",
+          "text": "Vào đội tớ đi!"
+        }
+      ],
+      "skill": "doc-hieu",
+      "answer": {
+        "choice": "gioi-qua"
+      },
+      "curriculumRef": [
+        "tv2-t1-b08-doc-lt1"
+      ],
+      "support": {
+        "guide": [
+          "Lời khen nói về cái hay, cái giỏi của ai đó.",
+          "Tìm câu các bạn nói khi ngạc nhiên nhìn gấu tập."
+        ],
+        "hint": "Lời khen có chữ “giỏi”.",
+        "answer": {
+          "text": "Cậu giỏi quá!",
+          "explanation": "“Cậu giỏi quá!” khen gấu đá bóng giỏi. Các câu còn lại là lời rủ, lời hỏi hoặc lời đề nghị."
+        }
+      },
+      "feedback": {
+        "right": [
+          "“Cậu giỏi quá!” Hổ Vằn nghe xong cười tít cả mắt vằn.",
+          "Đúng là lời khen rồi! Câu còn có cả dấu chấm than nữa.",
+          "Khỉ Lanh giơ ngón cái: tìm lời khen mà giỏi quá!"
+        ],
+        "wrong": [
+          "Câu này là lời rủ vào đội, chưa phải lời khen đâu.",
+          "Đây là câu gấu hỏi khỉ. Lời khen thì phải nói về cái giỏi của gấu.",
+          "Khỉ đề nghị gấu làm dự bị, đâu có khen. Tìm câu có chữ “giỏi” nhé."
+        ]
+      }
+    },
+    {
+      "id": "chuc-mung-gau-con",
+      "title": "Chúc mừng gấu con",
+      "kind": "speak",
+      "target": "ho-van",
+      "prompt": "Nếu là bạn của gấu con trong câu chuyện trên, em sẽ nói lời chúc mừng gấu con như thế nào? Đoán xem, gấu con sẽ trả lời em ra sao?\nHổ Vằn xung phong đóng vai gấu con, giọng ồm ồm nhưng tai thì đỏ lựng.",
+      "hints": [
+        "Em chúc mừng gấu con vì điều gì?",
+        "Gấu con có thể đáp: Cảm ơn cậu, nhờ tớ chăm tập đấy!",
+        "Đổi vai: em làm gấu con, Hổ Vằn chúc mừng em."
+      ],
+      "curriculumRef": [
+        "tv2-t1-b08-doc-lt2"
+      ]
+    },
+    {
+      "id": "ao-dau-theu-ten",
+      "title": "Áo đấu thêu tên",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "target": "tv2-t04-day-ao",
+      "prompt": "Trên dây phơi cạnh sân treo sáu chiếc áo đấu, áo nào cũng thêu tên. Khỉ Lanh thêu vội quá nên có tên quên viết hoa.\nNhững tên riêng nào dưới đây được viết đúng?",
+      "choices": [
+        {
+          "id": "hong",
+          "text": "Hồng"
+        },
+        {
+          "id": "minh",
+          "text": "minh"
+        },
+        {
+          "id": "hung",
+          "text": "Hùng"
+        },
+        {
+          "id": "thuy",
+          "text": "thuỷ"
+        },
+        {
+          "id": "phuong",
+          "text": "Phương"
+        },
+        {
+          "id": "giang",
+          "text": "Giang"
+        }
+      ],
+      "skill": "chinh-ta",
+      "answer": {
+        "choices": [
+          "hong",
+          "hung",
+          "phuong",
+          "giang"
+        ]
+      },
+      "curriculumRef": [
+        "tv2-t1-b08-chinh-ta-2"
+      ],
+      "support": {
+        "guide": [
+          "Tên riêng của người phải viết hoa chữ cái đầu.",
+          "Nhìn chữ cái đầu của từng tên."
+        ],
+        "hint": "Có hai tên quên viết hoa chữ cái đầu.",
+        "answer": {
+          "text": "Hồng, Hùng, Phương, Giang",
+          "explanation": "Hồng, Hùng, Phương, Giang viết hoa chữ cái đầu nên đúng. “minh” và “thuỷ” chưa viết hoa nên sai."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bốn chiếc áo đúng chính tả bay phấp phới như cờ!",
+          "Khỉ Lanh gãi đầu: để tớ thêu lại chữ M và chữ T hoa ngay.",
+          "Đúng rồi, tên riêng phải đội “mũ” chữ hoa."
+        ],
+        "wrong": [
+          "Tên “minh” chưa viết hoa chữ đầu đâu, đừng chọn nhé.",
+          "Còn sót một tên viết hoa đúng đấy. Nhìn lại cả sáu áo xem.",
+          "Thử tìm áo có chữ cái đầu viết thường, đó là áo thêu sai."
+        ]
+      }
+    },
+    {
+      "id": "danh-sach-doi-du-bi",
+      "title": "Danh sách đội dự bị",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "khi-lanh",
+      "prompt": "Khỉ Lanh cầm danh sách năm bạn ghi tên đá bóng, muốn đọc to theo thứ tự mà đọc mãi vẫn lộn. Một, hai… ơ, ai trước?\nSắp xếp tên của các bạn học sinh dưới đây theo thứ tự trong bảng chữ cái.",
+      "items": [
+        {
+          "id": "anh",
+          "label": "Nguyễn Ngọc Anh"
+        },
+        {
+          "id": "vu",
+          "label": "Nguyễn Mạnh Vũ"
+        },
+        {
+          "id": "dao",
+          "label": "Phạm Hồng Đào"
+        },
+        {
+          "id": "cuong",
+          "label": "Hoàng Văn Cường"
+        },
+        {
+          "id": "huy",
+          "label": "Lê Gia Huy"
+        }
+      ],
+      "skill": "chinh-ta",
+      "answer": {
+        "order": [
+          "anh",
+          "cuong",
+          "dao",
+          "huy",
+          "vu"
+        ]
+      },
+      "curriculumRef": [
+        "tv2-t1-b08-chinh-ta-3"
+      ],
+      "support": {
+        "guide": [
+          "Nhìn chữ cuối cùng của mỗi họ tên: đó là tên của bạn.",
+          "Xếp theo chữ cái đầu của tên: A, C, Đ, H, V."
+        ],
+        "hint": "Bạn tên Anh đứng đầu, bạn tên Vũ đứng cuối.",
+        "answer": {
+          "text": "Nguyễn Ngọc Anh, Hoàng Văn Cường, Phạm Hồng Đào, Lê Gia Huy, Nguyễn Mạnh Vũ",
+          "explanation": "Xếp theo tên: Anh (A), Cường (C), Đào (Đ), Huy (H), Vũ (V), đúng thứ tự trong bảng chữ cái."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Khỉ Lanh đọc một lèo không vấp: Anh, Cường, Đào, Huy, Vũ!",
+          "Đúng rồi, xếp theo tên chứ không xếp theo họ.",
+          "Năm bạn xếp hàng ngay ngắn, Hổ Vằn đứng sau cùng cổ vũ."
+        ],
+        "wrong": [
+          "Hai bạn họ Nguyễn đứng cạnh nhau chưa chắc đúng đâu. Hãy nhìn tên, chữ cuối cùng.",
+          "Chữ đ đứng sau chữ d và trước chữ e. Bạn Đào đứng ở đâu nhỉ?",
+          "Bạn Vũ có chữ v, mà v đứng gần cuối bảng chữ cái đấy."
+        ]
+      }
+    },
+    {
+      "id": "kho-dung-cu",
+      "title": "Trong kho dụng cụ",
+      "goTo": "Vào kho dụng cụ bên sân, cửa gỗ kêu kẽo kẹt",
+      "kind": "challenge",
+      "mechanic": "classify",
+      "target": "tv2-t04-kho-dung-cu",
+      "prompt": "Hổ Vằn mở kho thì đồ rơi ào ào, vợt một nơi bóng một nẻo. Hổ Vằn giật mình nhảy tót lên giá.\nNói tên các dụng cụ thể thao sau:\nKéo mỗi dụng cụ về đúng bức tranh của nó.",
+      "groups": [
+        {
+          "id": "tranh-1",
+          "label": "Tranh 1: hai cây vợt mặt đỏ, mặt xanh và một quả bóng nhỏ màu trắng"
+        },
+        {
+          "id": "tranh-2",
+          "label": "Tranh 2: hai cây vợt căng lưới và một quả cầu cắm lông"
+        },
+        {
+          "id": "tranh-3",
+          "label": "Tranh 3: một quả bóng to khâu múi trắng xanh"
+        }
+      ],
+      "items": [
+        {
+          "id": "vot-cau-long",
+          "label": "vợt cầu lông"
+        },
+        {
+          "id": "qua-bong-da",
+          "label": "quả bóng đá"
+        },
+        {
+          "id": "vot-bong-ban",
+          "label": "vợt bóng bàn"
+        },
+        {
+          "id": "qua-cau-long",
+          "label": "quả cầu lông"
+        },
+        {
+          "id": "qua-bong-ban",
+          "label": "quả bóng bàn"
+        }
+      ],
+      "skill": "tu-ngu",
+      "answer": {
+        "assignment": {
+          "vot-cau-long": "tranh-2",
+          "qua-bong-da": "tranh-3",
+          "vot-bong-ban": "tranh-1",
+          "qua-cau-long": "tranh-2",
+          "qua-bong-ban": "tranh-1"
+        }
+      },
+      "curriculumRef": [
+        "tv2-t1-b08-tu-ngu-cau-1-a",
+        "tv2-t1-b08-tu-ngu-cau-1-b",
+        "tv2-t1-b08-tu-ngu-cau-1-c"
+      ],
+      "support": {
+        "guide": [
+          "Vợt bóng bàn mặt nhẵn, vợt cầu lông có căng lưới.",
+          "Quả bóng bàn nhỏ và nhẹ, quả bóng đá to và có nhiều múi."
+        ],
+        "hint": "Tranh 3 chỉ có một dụng cụ.",
+        "answer": {
+          "text": "Tranh 1: vợt bóng bàn, quả bóng bàn. Tranh 2: vợt cầu lông, quả cầu lông. Tranh 3: quả bóng đá.",
+          "explanation": "Mỗi môn có dụng cụ riêng: bóng bàn đánh bằng vợt mặt nhẵn, cầu lông đánh bằng vợt lưới, bóng đá chỉ cần quả bóng."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Kho gọn gàng hẳn! Hổ Vằn rón rén trèo xuống khỏi giá.",
+          "Đúng hết! Vợt nào về với bóng nấy, chẳng ai lạc nhà.",
+          "Khỉ Lanh đếm: năm dụng cụ, ba bức tranh, không sai cái nào!"
+        ],
+        "wrong": [
+          "Quả cầu cắm lông đi với cây vợt căng lưới cơ. Xem lại tranh 2 nhé.",
+          "Quả bóng đá to quá, không vừa với vợt bóng bàn đâu.",
+          "Tranh 1 có quả bóng nhỏ màu trắng. Quả nào nhỏ xíu như thế?"
+        ]
+      }
+    },
+    {
+      "id": "tro-choi-dan-gian",
+      "title": "Tên trò chơi dân gian",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "target": "tv2-t04-kho-dung-cu",
+      "prompt": "Sau giá vợt, Khỉ Lanh lôi ra bốn bức tranh cũ: hồi bé cả rừng chơi mấy trò này mỗi chiều, mà giờ tớ quên mất đuôi tên.\nDựa vào tranh và gợi ý dưới tranh, nói tên các trò chơi dân gian.",
+      "template": "Tranh 1 (một bạn bịt mắt bằng khăn đỏ dang tay bắt, các bạn khác chạy né): Bịt mắt (...) → {{g1}}\nTranh 2 (bốn bạn đứng chụm tay vào giữa): Chi chi (...) → {{g2}}\nTranh 3 (bốn bạn ngồi duỗi chân thành hàng trên chiếu): Nu na (...) → {{g3}}\nTranh 4 (bốn bạn nắm tay nhau thành hàng vừa đi vừa vung tay): Dung dăng (...) → {{g4}}",
+      "blanks": [
+        {
+          "id": "g1",
+          "options": [
+            {
+              "id": "bat-de-sac",
+              "text": "Bịt mắt bắt dế"
+            },
+            {
+              "id": "bat-de",
+              "text": "Bịt mắt bắt dê"
+            },
+            {
+              "id": "bat-be",
+              "text": "Bịt mắt bắt bê"
+            }
+          ]
+        },
+        {
+          "id": "g2",
+          "options": [
+            {
+              "id": "chanh-chanh",
+              "text": "Chi chi chành chành"
+            },
+            {
+              "id": "chanh-nang",
+              "text": "Chi chi chánh chánh"
+            },
+            {
+              "id": "chanh-qua",
+              "text": "Chi chi chanh chanh"
+            }
+          ]
+        },
+        {
+          "id": "g3",
+          "options": [
+            {
+              "id": "nu-nong-ngang",
+              "text": "Nu na nu nông"
+            },
+            {
+              "id": "nu-nong-huyen",
+              "text": "Nu na nu nồng"
+            },
+            {
+              "id": "nu-nong",
+              "text": "Nu na nu nống"
+            }
+          ]
+        },
+        {
+          "id": "g4",
+          "options": [
+            {
+              "id": "dung-de-nga",
+              "text": "Dung dăng dung dẽ"
+            },
+            {
+              "id": "dung-de",
+              "text": "Dung dăng dung dẻ"
+            },
+            {
+              "id": "dung-de-huyen",
+              "text": "Dung dăng dung dè"
+            }
+          ]
+        }
+      ],
+      "skill": "tu-ngu",
+      "answer": {
+        "fills": {
+          "g1": "bat-de",
+          "g2": "chanh-chanh",
+          "g3": "nu-nong",
+          "g4": "dung-de"
+        }
+      },
+      "curriculumRef": [
+        "tv2-t1-b08-tu-ngu-cau-2-a",
+        "tv2-t1-b08-tu-ngu-cau-2-b",
+        "tv2-t1-b08-tu-ngu-cau-2-c",
+        "tv2-t1-b08-tu-ngu-cau-2-d"
+      ],
+      "support": {
+        "guide": [
+          "Đọc gợi ý dưới mỗi tranh, rồi nhẩm cả câu đồng dao em từng nghe.",
+          "Để ý dấu thanh của tiếng cuối."
+        ],
+        "hint": "Trò bịt mắt thì đi bắt con vật kêu “be be”.",
+        "answer": {
+          "text": "Bịt mắt bắt dê; Chi chi chành chành; Nu na nu nống; Dung dăng dung dẻ",
+          "explanation": "Tên bốn trò chơi dân gian trong sách là Bịt mắt bắt dê, Chi chi chành chành, Nu na nu nống, Dung dăng dung dẻ."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Khỉ Lanh hát luôn: “Dung dăng dung dẻ, dắt trẻ đi chơi…”",
+          "Bốn cái tên đầy đủ rồi! Hổ Vằn muốn chơi bịt mắt bắt dê ngay.",
+          "Dấu thanh nào cũng đúng chỗ, tai {name} thính thật."
+        ],
+        "wrong": [
+          "Con dế không kêu be be đâu. Trò bịt mắt bắt con gì nhỉ?",
+          "Nghe kĩ tiếng cuối: nống mang dấu sắc đấy.",
+          "Chành chành mang dấu huyền. Đọc to lên nghe thử xem."
+        ]
+      }
+    },
+    {
+      "id": "xep-cau-cau-long",
+      "title": "Câu về trận cầu lông",
+      "goTo": "Ra lại sân bóng, Hổ Vằn đang tung hứng quả cầu",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "ho-van",
+      "prompt": "Hổ Vằn tung quả cầu lông lên, đỡ trượt, quả cầu cắm luôn vào… mũi. Grừ!\nĐặt câu về hoạt động trong mỗi tranh.\nM: Hai bạn chơi bóng bàn.\nTranh 2 vẽ hai bạn đánh cầu lông qua lưới. Xếp các thẻ thành câu về tranh 2.",
+      "items": [
+        {
+          "id": "choi-cau-long",
+          "label": "chơi cầu lông"
+        },
+        {
+          "id": "tren-san",
+          "label": "trên sân."
+        },
+        {
+          "id": "hai-ban",
+          "label": "hai bạn"
+        },
+        {
+          "id": "sau-gio-hoc",
+          "label": "Sau giờ học,"
+        }
+      ],
+      "skill": "cau",
+      "answer": {
+        "order": [
+          "sau-gio-hoc",
+          "hai-ban",
+          "choi-cau-long",
+          "tren-san"
+        ]
+      },
+      "curriculumRef": [
+        "tv2-t1-b08-tu-ngu-cau-3-a"
+      ],
+      "support": {
+        "guide": [
+          "Thẻ có chữ viết hoa đứng đầu câu, thẻ có dấu chấm đứng cuối.",
+          "Câu mẫu: Hai bạn chơi bóng bàn. Ai trước, làm gì sau."
+        ],
+        "hint": "Câu nói khi nào, ai, làm gì, ở đâu.",
+        "answer": {
+          "text": "Sau giờ học, hai bạn chơi cầu lông trên sân.",
+          "explanation": "Câu có từ chỉ hoạt động “chơi cầu lông”, giống câu mẫu “Hai bạn chơi bóng bàn.” và thêm thời gian, nơi chốn."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Câu tròn trịa! Hổ Vằn rút quả cầu khỏi mũi, gật gù đọc theo.",
+          "Đúng nếp câu mẫu: ai, làm gì, thêm cả lúc nào, ở đâu.",
+          "Quả cầu bay vèo qua lưới như reo mừng cho {name}."
+        ],
+        "wrong": [
+          "Thẻ “Sau giờ học,” có chữ viết hoa, phải đứng đầu câu.",
+          "Dấu chấm đang lạc giữa câu rồi. Thẻ có dấu chấm phải đứng cuối.",
+          "Đọc thử câu vừa xếp, nghe có giống câu mẫu không?"
+        ]
+      }
+    },
+    {
+      "id": "cau-ve-bong-ro",
+      "title": "Câu về trận bóng rổ",
+      "kind": "speak",
+      "target": "ho-van",
+      "prompt": "Hổ Vằn chỉ tay sang tranh cuối, nơi một bạn đang nhảy lên ném bóng: tranh này khó, {name} nói giúp tớ.\nĐặt câu về hoạt động trong mỗi tranh.",
+      "hints": [
+        "Tranh có mấy bạn? Các bạn chơi môn gì?",
+        "Bạn đang cầm bóng làm gì?",
+        "Nói thành câu, ví dụ bắt đầu bằng: Ba bạn…"
+      ],
+      "pictureRefs": [
+        {
+          "kind": "diagram",
+          "type": "picture-card",
+          "params": {
+            "caption": "ba bạn chơi bóng rổ, một bạn ném bóng vào rổ"
+          }
+        }
+      ],
+      "curriculumRef": [
+        "tv2-t1-b08-tu-ngu-cau-3-b"
+      ]
+    },
+    {
+      "id": "lam-du-bi-nhe",
+      "title": "Làm dự bị nhé?",
+      "kind": "dialogue",
+      "target": "ho-van",
+      "lines": [
+        {
+          "speaker": "Khỉ Lanh",
+          "text": "Hổ Vằn này, tuần sau cậu làm dự bị cho cả hai đội nhé. Một, hai, đồng ý không?"
+        },
+        {
+          "speaker": "Hổ Vằn",
+          "text": "Grừ… dự bị là ngồi ngoài à? Tớ… tớ muốn chui vào bụi cây quá."
+        },
+        {
+          "speaker": "Hổ Vằn",
+          "text": "{name} nói thật đi, tớ có nên nhận không?"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Nhận đi, rồi chăm tập như gấu con!",
+          "reply": "Hổ Vằn ưỡn ngực: được! Sáng mai tớ ra sân từ lúc gà còn chưa gáy."
+        },
+        {
+          "text": "Dự bị cũng là cầu thủ mà!",
+          "reply": "Hổ Vằn cười toe: ừ nhỉ, có cả chữ “cầu thủ” trong đó cơ mà. Grừ, vui ghê!"
+        },
+        {
+          "text": "Mình sẽ ra sân tập cùng cậu.",
+          "reply": "Hổ Vằn ôm chầm lấy {name}, quên luôn chuyện trốn vào bụi cây."
+        }
+      ]
+    },
+    {
+      "id": "hoi-the-thao-giua-hiep",
+      "title": "Giờ nghỉ giữa hiệp",
+      "kind": "speak",
+      "target": "khi-lanh",
+      "prompt": "Một tuần sau, Hổ Vằn sút trúng gôn liền ba quả. Hai đội tranh nhau gọi, Khỉ Lanh xếp cho cậu hiệp đầu đá đội đỏ, hiệp sau đá đội xanh. Giờ nghỉ giữa hiệp, cả sân rủ nhau chơi nhảy dây, kéo co, đá cầu.\nNói về một hoạt động của các bạn nhỏ trong tranh.",
+      "hints": [
+        "Hoạt động các bạn tham gia là gì?",
+        "Hoạt động đó cần mấy người?",
+        "Dụng cụ để thực hiện hoạt động là gì?",
+        "Em đoán xem các bạn cảm thấy thế nào khi tham gia hoạt động đó."
+      ],
+      "pictureRefs": [
+        {
+          "kind": "diagram",
+          "type": "picture-card",
+          "params": {
+            "caption": "sân trường, ba bạn chơi nhảy dây (hai bạn quay dây, một bạn nhảy), phía sau các bạn chơi kéo co có bạn cổ vũ, bên phải hai bạn đá cầu"
+          }
+        }
+      ],
+      "curriculumRef": [
+        "tv2-t1-b08-viet-doan-1"
+      ]
+    },
+    {
+      "id": "sach-the-thao-cua-ho-van",
+      "title": "Cuốn sách thể thao",
+      "kind": "speak",
+      "target": "ho-van",
+      "prompt": "Hết trận, Hổ Vằn lôi từ sau bụi cây ra cuốn sách “Bí kíp sút bóng” mượn của thư viện gốc cây, khoe với {name}.\nTìm đọc một bài viết về hoạt động thể thao.\nKể cho các bạn nghe điều thú vị em đọc được.",
+      "hints": [
+        "Bài em đọc nói về môn thể thao nào?",
+        "Điều gì trong bài làm em thấy thú vị nhất?",
+        "Kể lại thật rõ để Hổ Vằn và Khỉ Lanh cùng nghe."
+      ],
+      "pictureRefs": [
+        {
+          "kind": "diagram",
+          "type": "picture-card",
+          "params": {
+            "caption": "ba bạn nhỏ cùng xem một quyển sách"
+          }
+        }
+      ],
+      "curriculumRef": [
+        "tv2-t1-b08-doc-mo-rong-1",
+        "tv2-t1-b08-doc-mo-rong-2"
+      ]
+    },
+    {
+      "id": "phieu-viet-bai-8",
+      "title": "Phiếu viết bài 8",
+      "kind": "worksheet",
+      "trigger": "auto",
+      "lessonId": "tv2-t1-b08",
+      "text": "Khỉ Lanh thổi còi: nhờ bố mẹ in phiếu Bài 8 ở khu phụ huynh nhé! Trên phiếu có nghe – viết đoạn văn về gấu con, viết họ tên của em và hai bạn trong tổ, nói về hoạt động trong tranh và viết vài câu về một trò chơi em từng tham gia ở trường.",
+      "curriculumRef": [
+        "tv2-t1-b08-nghe-viet-1",
+        "tv2-t1-b08-chinh-ta-4",
+        "tv2-t1-b08-viet-doan-1",
+        "tv2-t1-b08-viet-doan-2"
+      ]
+    },
+    {
+      "id": "qua-cua-ho-van",
+      "title": "Băng đội trưởng dự bị",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Hổ Vằn tặng {name} chiếc băng tay “Đội trưởng dự bị” khâu bằng lá chuối. Đúng lúc ấy, chiếc kén trên cành thanh mai nứt ra: Sâu Xanh đã thành bướm, bay một vòng quanh khung thành rồi đậu lên mũi Hổ Vằn. Lần này Hổ Vằn không gầm, chỉ cười."
+    },
+    {
+      "id": "mo-bai-9",
+      "title": "Bài thơ tặng cô giáo",
+      "kind": "unlock",
+      "trigger": "auto",
+      "text": "Bên khung cửa sổ lá của lớp học, Nai Mơ đang cắn bút lá suy nghĩ: tớ muốn viết một bài thơ tặng cô giáo, mà chưa tìm được câu mở đầu nào đủ đẹp. {name} có muốn giúp không?"
+    }
+  ],
+  "reward": {
+    "xp": 90,
+    "coin": 15,
+    "skillXp": {
+      "doc-hieu": 2,
+      "chinh-ta": 2,
+      "tu-ngu": 1,
+      "cau": 1
+    }
+  }
+}
