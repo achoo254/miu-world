@@ -13,18 +13,23 @@ import { OfflineBanner } from '../system/offline-banner';
 import { useCallback, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { CompletionSequence } from '../rewards/completion-sequence';
+import { REGION_MUSIC } from '../sound/music';
+import { playMood, useMusicMood } from '../sound/music-player';
 import { useQuestController } from './use-quest-controller';
 
 export function QuestLayer({
   store,
   data,
   questId,
+  region,
   onResponse,
   onOverlayChange,
 }: {
   store: GameStore;
   data: PlayerData;
   questId: string | null;
+  /** The region on screen: its music plays while no quest is under way. */
+  region: string;
   onResponse: (response: StepCompleteResponse) => void;
   /** True while a screen covers the game (it stops rendering meanwhile). */
   onOverlayChange: (open: boolean) => void;
@@ -35,6 +40,9 @@ export function QuestLayer({
   const step = quest.overlay?.step ?? null;
   // The burst of the last right answer, until it has played.
   const [burstShown, setBurstShown] = useState(0);
+  const learning = step !== null && step.kind !== 'dialogue';
+  const questStarted = summary?.state === 'in-progress' && summary.progress.completedSteps.length > 0;
+  useMusicMood(playMood({ region, questStarted, learning, finished: quest.finished !== null }, REGION_MUSIC));
   const endBurst = useCallback(() => setBurstShown(quest.cheers), [quest.cheers]);
   return (
     <>

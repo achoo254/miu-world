@@ -16,11 +16,12 @@ const MIME: Record<string, string> = {
   '.png': 'image/png',
   '.bin': 'application/octet-stream',
   '.ogg': 'audio/ogg',
+  '.mp3': 'audio/mpeg',
   '.woff2': 'font/woff2',
 };
 
 /** Always shipped: whole generated groups the runtime reads by path (the creator's item pictures by item id). */
-const SHIPPED_PREFIXES = ['generated/atlas/', 'generated/world/', 'generated/characters/', 'generated/sounds/', ACCESSORY_ART_DIR];
+const SHIPPED_PREFIXES = ['generated/atlas/', 'generated/world/', 'generated/characters/', 'generated/sounds/', 'generated/music/', ACCESSORY_ART_DIR];
 /** Shipped with the review pages only: screenshots, renders and measurements for the owner's review. */
 const REVIEW_PREFIX = 'generated/review/';
 /** Maps that only exist to be rendered into an image at build time (the world overview): never shipped. */

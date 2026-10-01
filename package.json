@@ -30,6 +30,7 @@
     "security:dist": "tsx tools/security/scan-dist.ts",
     "assets:atlas": "tsx tools/assets/build-atlas.ts",
     "assets:sounds": "tsx tools/assets/build-sounds.ts",
+    "assets:music": "tsx tools/assets/build-music.ts",
     "assets:props": "tsx tools/assets/build-emoji-props.ts",
     "assets:box-props": "tsx tools/assets/build-box-props.ts",
     "world:forest": "tsx tools/world/generate-forest-map.ts",

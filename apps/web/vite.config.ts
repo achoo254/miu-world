@@ -7,6 +7,7 @@ import { defineConfig, type Plugin } from 'vite';
 import { ACCESSORY_ART_DIR } from '../../packages/schema/src/accessory-art.ts';
 import { VERSION_CHARS, manifestVersions } from './src/asset-versions.ts';
 import { SOUND_PATHS } from './src/ui/sound/cues.ts';
+import { MUSIC_PATHS } from './src/ui/sound/music.ts';
 import { UI_ART_PATHS } from './src/ui/kit/ui-art.ts';
 import { repoAssets } from './vite-repo-assets.ts';
 
@@ -45,7 +46,7 @@ function assetVersionDefines(): Record<string, string> {
   const versions = manifestVersions([...manifest.files, ...manifest.generated]);
   // Item pictures are looked up by item id at runtime, so the whole folder is versioned.
   const itemArt = [...versions.keys()].filter((p) => p.startsWith(ACCESSORY_ART_DIR));
-  const ui = Object.fromEntries([...UI_ART_PATHS, ...SOUND_PATHS, ...itemArt].flatMap((p) => (versions.has(p) ? [[p, versions.get(p)]] : [])));
+  const ui = Object.fromEntries([...UI_ART_PATHS, ...SOUND_PATHS, ...MUSIC_PATHS, ...itemArt].flatMap((p) => (versions.has(p) ? [[p, versions.get(p)]] : [])));
   return {
     __MIU_MANIFEST_VERSION__: JSON.stringify(createHash('sha256').update(text).digest('hex').slice(0, VERSION_CHARS)),
     __MIU_UI_ASSET_VERSIONS__: JSON.stringify(ui),

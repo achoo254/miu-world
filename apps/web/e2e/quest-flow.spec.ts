@@ -3,9 +3,12 @@
 // opens by itself → read it and answer → on to the beaver. The Math challenges: challenges.spec.ts.
 import { mkdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { expect, test } from '@playwright/test';
+import { expect, test, type Page } from '@playwright/test';
 import { freshChild, playAt, playUntil } from './quest-api';
 import { readStats, waitReady } from './stats';
+
+/** The background music's mood and whether it really plays (music-player.ts). */
+const music = (page: Page) => page.evaluate(() => (window.__miuMusic ? { mood: window.__miuMusic.mood, playing: window.__miuMusic.playing } : null));
 
 /** The world's cheer for a finished quest, for the review (outside git). */
 const SHOTS = fileURLToPath(new URL('../../../.data/celebration/', import.meta.url));
@@ -21,6 +24,8 @@ test('meet the parrot, follow the arrow, find the three clues, and the letter op
   await page.goto(playAt('parrot-guide'));
   await waitReady(page);
   await page.keyboard.press('KeyE');
+  // The forest's walking music plays (the key press is the gesture browsers wait for).
+  await expect.poll(() => music(page)).toEqual({ mood: 'forest', playing: true });
   const dialogue = page.getByRole('dialog', { name: 'Vẹt' });
   await expect(dialogue).toBeVisible();
   await expect(dialogue).toContainText('Chào Mochi!'); // the character's name, never "Miu"
@@ -35,6 +40,8 @@ test('meet the parrot, follow the arrow, find the three clues, and the letter op
   await page.getByRole('button', { name: 'Tiếp tục' }).click();
   await expect(dialogue).toHaveCount(0);
   await expect(page.locator('[data-id="hud-tracker-count"]')).toHaveText(/0\/3/);
+  // The quest is under way: adventure music.
+  await expect.poll(() => music(page)).toMatchObject({ mood: 'quest' });
   // The arrow now points at the first clue still to find.
   await expect.poll(async () => (await readStats(page)).hintTarget).toBe('clue-box');
 
@@ -49,6 +56,8 @@ test('meet the parrot, follow the arrow, find the three clues, and the letter op
   // All three found: the letter step starts without another touch.
   const letter = page.getByRole('dialog', { name: 'Đọc lá thư' });
   await expect(letter).toBeVisible();
+  // A learning step: lighter music to think by.
+  await expect.poll(() => music(page)).toMatchObject({ mood: 'puzzle' });
 
   // Touching a clue again after it was found changes nothing: the letter is still the step on.
   await page.goto(playAt('clue-box'));

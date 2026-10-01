@@ -2,6 +2,7 @@
 // The sound stays in this screen's memory (a Blob behind an object URL) and is never sent or stored;
 // leaving the step, hiding the tab or unmounting stops the microphone and drops the recording.
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { holdMusic } from '../../sound/music-player';
 
 export type RecorderState = 'idle' | 'recording' | 'recorded' | 'unsupported' | 'denied';
 
@@ -97,6 +98,9 @@ export function useVoiceRecorder(maxMs: number = MAX_RECORDING_MS): VoiceRecorde
     tick.current = window.setInterval(() => setSecondsLeft(Math.max(0, Math.round((maxMs - (Date.now() - startedAt)) / 1000))), 250);
     limit.current = window.setTimeout(stop, maxMs);
   }, [maxMs, stop]);
+
+  // The background music is silent while the microphone listens.
+  useEffect(() => (state === 'recording' ? holdMusic() : undefined), [state]);
 
   useEffect(() => {
     // A hidden tab stops recording, so the microphone is never left open in the background.

@@ -295,7 +295,7 @@ export function PlayScreen() {
             </button>
           </Modal>
         ) : null}
-        {data ? <QuestLayer key={questId ?? 'none'} store={store} data={data} questId={quest?.quest.id ?? null} onResponse={onResponse} onOverlayChange={setQuestOpen} /> : null}
+        {data ? <QuestLayer key={questId ?? 'none'} store={store} data={data} questId={quest?.quest.id ?? null} region={region} onResponse={onResponse} onOverlayChange={setQuestOpen} /> : null}
         {paused ? (
           <PauseScreen
             onResume={() => setPaused(false)}

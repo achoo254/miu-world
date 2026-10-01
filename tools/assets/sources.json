@@ -1103,6 +1103,183 @@
           "strip": "Models/GLB format/"
         }
       ]
+    },
+    {
+      "id": "komiku-poupi",
+      "name": "Poupi's Incredible Adventures (32 tracks)",
+      "author": "Komiku (Loyalty Freak Music)",
+      "version": "1.0",
+      "license": "CC0-1.0",
+      "homepage": "https://opengameart.org/content/poupis-incredible-adventures-full-album",
+      "licenseFile": "LICENSE.txt",
+      "mode": "files",
+      "files": [
+        {
+          "url": "https://creativecommons.org/publicdomain/zero/1.0/legalcode.txt",
+          "to": "LICENSE.txt",
+          "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499"
+        },
+        {
+          "url": "https://opengameart.org/sites/default/files/Komiku%20-%20Poupi%27s%20incredible%20adventures%20%21%20-%2002%20Poupi%27s%20Theme_1.mp3",
+          "to": "music/poupis-theme.mp3",
+          "sha256": "8b11e4bcd6b47cb12faaed873c36a4a518dc972e6d48b1bf99fc732da1c95897"
+        },
+        {
+          "url": "https://opengameart.org/sites/default/files/Komiku%20-%20Poupi%27s%20incredible%20adventures%20%21%20-%2050%20Chillin%27%20Poupi_0.mp3",
+          "to": "music/chillin-poupi.mp3",
+          "sha256": "ebc5b6ce877da92d38a68b1863dfcc4955b230046d1d650131781e70dfc64fee"
+        },
+        {
+          "url": "https://opengameart.org/sites/default/files/Komiku%20-%20Poupi%27s%20incredible%20adventures%20%21%20-%2056%20Tea%20with%20Granma_0.mp3",
+          "to": "music/tea-with-granma.mp3",
+          "sha256": "0a74162ba26b9541f536b0ff3a5343d245d5a0e9081a1e1f6bf7a570008d33cc"
+        },
+        {
+          "url": "https://opengameart.org/sites/default/files/Komiku%20-%20Poupi%27s%20incredible%20adventures%20%21%20-%2057%20Quiet%20Saturday_0.mp3",
+          "to": "music/quiet-saturday.mp3",
+          "sha256": "a96d193eeeda710d98d471145e30e6ae96cf06aab2a245450e4329117aa4cc57"
+        },
+        {
+          "url": "https://opengameart.org/sites/default/files/Komiku%20-%20Poupi%27s%20incredible%20adventures%20%21%20-%2003%20Time%20for%20the%20walk%20of%20the%20day_1.mp3",
+          "to": "music/time-for-the-walk-of-the-day.mp3",
+          "sha256": "96cf0720d7af8633e1bdea2dd3e573df865444bdf08051a6cd76507d550008d7"
+        },
+        {
+          "url": "https://opengameart.org/sites/default/files/Komiku%20-%20Poupi%27s%20incredible%20adventures%20%21%20-%2006%20Fetch%20Land_1.mp3",
+          "to": "music/fetch-land.mp3",
+          "sha256": "a597c82367fecb95f22a9067526e02371b34702348c7a454cbb09306c285b20d"
+        },
+        {
+          "url": "https://opengameart.org/sites/default/files/Komiku%20-%20Poupi%27s%20incredible%20adventures%20%21%20-%2012%20Bicycle_0.mp3",
+          "to": "music/bicycle.mp3",
+          "sha256": "4e8e184517d1335d61e9ac29e7e3e77b0b9445e8f111cdcc3d44c626b2f8a08d"
+        },
+        {
+          "url": "https://opengameart.org/sites/default/files/Komiku%20-%20Poupi%27s%20incredible%20adventures%20%21%20-%2013%20Good%20Fellow_0.mp3",
+          "to": "music/good-fellow.mp3",
+          "sha256": "62840bbccf4b7a7d9536fd166f7a423ea919a4327107b75f57bf9a041b616baa"
+        },
+        {
+          "url": "https://opengameart.org/sites/default/files/Komiku%20-%20Poupi%27s%20incredible%20adventures%20%21%20-%2045%20The%20Horizon_0.mp3",
+          "to": "music/the-horizon.mp3",
+          "sha256": "40a7fc9b8320d3e8647cc0e42d55997bd48578b756d4b2ea82dcb27bb635dde8"
+        },
+        {
+          "url": "https://opengameart.org/sites/default/files/Komiku%20-%20Poupi%27s%20incredible%20adventures%20%21%20-%2047%20The%20Beach_0.mp3",
+          "to": "music/the-beach.mp3",
+          "sha256": "c3d2b6e3653a71dc9d4f795fd52fb58fb0bf15fb40a9e335af1d89ae96bc5621"
+        },
+        {
+          "url": "https://opengameart.org/sites/default/files/Komiku%20-%20Poupi%27s%20incredible%20adventures%20%21%20-%2060%20The%20Strawberry_0.mp3",
+          "to": "music/the-strawberry.mp3",
+          "sha256": "278805e01d4e3b3c3ce53f2d4f15a7d845ec2a8e60a0a2daa2b2ebd284eb50c5"
+        },
+        {
+          "url": "https://opengameart.org/sites/default/files/Komiku%20-%20Poupi%27s%20incredible%20adventures%20%21%20-%2004%20The%20weekly%20fair_1.mp3",
+          "to": "music/the-weekly-fair.mp3",
+          "sha256": "20f18596a17b12e842351085dcf8ac88200c6a1d60451c1c561e0c289dd6d351"
+        },
+        {
+          "url": "https://opengameart.org/sites/default/files/Komiku%20-%20Poupi%27s%20incredible%20adventures%20%21%20-%2016%20Disco%20Cat_0.mp3",
+          "to": "music/disco-cat.mp3",
+          "sha256": "b52a5b625ea6641edd1d4bc0dad115e904b1f514a7559c345ef286d9ccac213d"
+        },
+        {
+          "url": "https://opengameart.org/sites/default/files/Komiku%20-%20Poupi%27s%20incredible%20adventures%20%21%20-%2031%20Mr%20Paillettes%20Theme_0.mp3",
+          "to": "music/mr-paillettes-theme.mp3",
+          "sha256": "7feb69bf3619a653e4254f22c8ae6d80f76b1de72fa0301dc366ed900c1af2eb"
+        },
+        {
+          "url": "https://opengameart.org/sites/default/files/Komiku%20-%20Poupi%27s%20incredible%20adventures%20%21%20-%2048%20Princess%20Cheese%20Burger_0.mp3",
+          "to": "music/princess-cheese-burger.mp3",
+          "sha256": "0f25692b59fbaff85ca84d1e61fb1863af430cb4ffa232145ce0cc1201ead3a9"
+        },
+        {
+          "url": "https://opengameart.org/sites/default/files/Komiku%20-%20Poupi%27s%20incredible%20adventures%20%21%20-%2021%20Poupi%20on%20a%20scooter_0.mp3",
+          "to": "music/poupi-on-a-scooter.mp3",
+          "sha256": "d3da7e6ee934709a91cb06eadf1389c8675d68052d6940308638e55025627c58"
+        },
+        {
+          "url": "https://opengameart.org/sites/default/files/Komiku%20-%20Poupi%27s%20incredible%20adventures%20%21%20-%2022%20The%20adventure_0.mp3",
+          "to": "music/the-adventure.mp3",
+          "sha256": "07ad55ca44b13595c4a3fce602e060f37781cf61e20c2c7e33b1a7c5b54a1610"
+        },
+        {
+          "url": "https://opengameart.org/sites/default/files/Komiku%20-%20Poupi%27s%20incredible%20adventures%20%21%20-%2001%20Opening%20%21_1.mp3",
+          "to": "music/opening.mp3",
+          "sha256": "8e80b9d6ca1be4014ab8479c3718e03f466d0803fde86bc9cf17b7e19f57835a"
+        },
+        {
+          "url": "https://opengameart.org/sites/default/files/Komiku%20-%20Poupi%27s%20incredible%20adventures%20%21%20-%2020%20SUPER%20POUPI_0.mp3",
+          "to": "music/super-poupi.mp3",
+          "sha256": "f8e99ba5182219f6d2115800c0352681667f01b1db11ef64cf68b88b58c9edaf"
+        },
+        {
+          "url": "https://opengameart.org/sites/default/files/Komiku%20-%20Poupi%27s%20incredible%20adventures%20%21%20-%2040%20Treasure%20finding_0.mp3",
+          "to": "music/treasure-finding.mp3",
+          "sha256": "71e61f0ed891766bdd8581cbf545251345d5c80d08397ba0a3d9a82008880abd"
+        },
+        {
+          "url": "https://opengameart.org/sites/default/files/Komiku%20-%20Poupi%27s%20incredible%20adventures%20%21%20-%2043%20Travel%20to%20the%20Horizon_0.mp3",
+          "to": "music/travel-to-the-horizon.mp3",
+          "sha256": "25772c53b0f0acb918193e6a3ef9f1d29604bc5faa9cce365a8f16d28a9bc71c"
+        },
+        {
+          "url": "https://opengameart.org/sites/default/files/Komiku%20-%20Poupi%27s%20incredible%20adventures%20%21%20-%2038%20Paddle%20Boat_0.mp3",
+          "to": "music/paddle-boat.mp3",
+          "sha256": "13626e8df876f7d8be347a988b8c6384d9ba287a5bf3525ae261aad87e6950bb"
+        },
+        {
+          "url": "https://opengameart.org/sites/default/files/Komiku%20-%20Poupi%27s%20incredible%20adventures%20%21%20-%2025%20Space%20Bicycle_0.mp3",
+          "to": "music/space-bicycle.mp3",
+          "sha256": "ae5fd9d79be7062f117b6d9a51aad346d4f428749411d6328c6962bb187eef93"
+        },
+        {
+          "url": "https://opengameart.org/sites/default/files/Komiku%20-%20Poupi%27s%20incredible%20adventures%20%21%20-%2026%20Space%20Good%20Fellow_0.mp3",
+          "to": "music/space-good-fellow.mp3",
+          "sha256": "3bdfc3230c61c35b3ca231facf39529791de857d3cb50e666e306fcc0f19a905"
+        },
+        {
+          "url": "https://opengameart.org/sites/default/files/Komiku%20-%20Poupi%27s%20incredible%20adventures%20%21%20-%2036%20Intensive%20puzzle%20resolution_0.mp3",
+          "to": "music/intensive-puzzle-resolution.mp3",
+          "sha256": "4c4774a52751de7a2ee12e77c120ff874a4a69191150c86fdfc09cf0a83024c8"
+        },
+        {
+          "url": "https://opengameart.org/sites/default/files/Komiku%20-%20Poupi%27s%20incredible%20adventures%20%21%20-%2046%20Merfolk%20Music%20Box_0.mp3",
+          "to": "music/merfolk-music-box.mp3",
+          "sha256": "c7ad7373388a9e06f334976364acdfe50e2fa91679d17dff84d72d46153705e6"
+        },
+        {
+          "url": "https://opengameart.org/sites/default/files/Komiku%20-%20Poupi%27s%20incredible%20adventures%20%21%20-%2061%20A%20maze%20that%20smells%20fruits_0.mp3",
+          "to": "music/a-maze-that-smells-fruits.mp3",
+          "sha256": "10d6dc9d367a6a6d59d5cf418376518a605725430a7d2ae95f6a7d04f47b2ca4"
+        },
+        {
+          "url": "https://opengameart.org/sites/default/files/Komiku%20-%20Poupi%27s%20incredible%20adventures%20%21%20-%2063%20The%20Zone_0.mp3",
+          "to": "music/the-zone.mp3",
+          "sha256": "f3b6071daf78436ef0e89ca9a6e1c4cf0736a82ca9bb93f0b29cbf2438104d03"
+        },
+        {
+          "url": "https://opengameart.org/sites/default/files/Komiku%20-%20Poupi%27s%20incredible%20adventures%20%21%20-%2008%20Fetch%20Contest_1.mp3",
+          "to": "music/fetch-contest.mp3",
+          "sha256": "3163e445ebc7c694858f4c0f45cc1fab38cc06cfaee931cf9e60c9fff4e187ef"
+        },
+        {
+          "url": "https://opengameart.org/sites/default/files/Komiku%20-%20Poupi%27s%20incredible%20adventures%20%21%20-%2011%20WIN_1.mp3",
+          "to": "music/win.mp3",
+          "sha256": "5276516898974cf405646e7372db6c151d9e827e76a6f2aab9e0c34a6156d494"
+        },
+        {
+          "url": "https://opengameart.org/sites/default/files/Komiku%20-%20Poupi%27s%20incredible%20adventures%20%21%20-%2009%20Fetch%20Dance_1.mp3",
+          "to": "music/fetch-dance.mp3",
+          "sha256": "0beb5bb7f461c159407c6bf7a526656485a4f1fa86657183292f40d8488b23d0"
+        },
+        {
+          "url": "https://opengameart.org/sites/default/files/Komiku%20-%20Poupi%27s%20incredible%20adventures%20%21%20-%2010%20Fetch%20Fever_1.mp3",
+          "to": "music/fetch-fever.mp3",
+          "sha256": "dd3dce9e8346ef09d968aaf576977f66d46de4e5aa39d8e17a63e8046d923a91"
+        }
+      ]
     }
   ]
 }

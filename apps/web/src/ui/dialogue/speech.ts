@@ -2,6 +2,7 @@
 // on the device: "remote" voices (localService = false, e.g. some Chrome/Edge voices) send the text
 // to the vendor's servers, which Master Plan §9 rules out. No local Vietnamese voice → no button.
 import { useEffect, useState } from 'react';
+import { duckMusic } from '../sound/music-player';
 import { readSoundOn } from '../system/sound-setting';
 
 type VoiceLike = Pick<SpeechSynthesisVoice, 'lang' | 'localService' | 'name'>;
@@ -43,5 +44,9 @@ export function speak(text: string, voice: SpeechSynthesisVoice): void {
   const utterance = new SpeechSynthesisUtterance(text);
   utterance.voice = voice;
   utterance.lang = voice.lang;
+  // The music steps back while the line is read.
+  const release = duckMusic();
+  utterance.onend = release;
+  utterance.onerror = release;
   speech.speak(utterance);
 }

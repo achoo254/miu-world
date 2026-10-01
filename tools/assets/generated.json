@@ -147,6 +147,14 @@
     "license": "CC0-1.0"
   },
   {
+    "glob": "generated/music/*.m4a",
+    "generator": "tools/assets/build-music.ts",
+    "derivedFrom": [
+      "komiku-poupi"
+    ],
+    "license": "CC0-1.0"
+  },
+  {
     "glob": "generated/review/sgk-coverage.json",
     "generator": "tools/content/content-gaps.ts",
     "derivedFrom": [],

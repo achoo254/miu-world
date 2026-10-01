@@ -322,7 +322,7 @@ Toàn bộ asset lấy từ nguồn miễn phí có license rõ ràng hoặc sin
 | Boss | Quái vật rừng: Quaternius Cute Animated Monsters hoặc ghép block, chốt ở V1 | CC0 | CC |
 | Icon | Vật phẩm, tiền tệ, HUD, huy hiệu | Microsoft Fluent Emoji 3D, MIT | CC |
 | UI | Khung, nút, banner bằng CSS và design tokens; ảnh đại diện, thumbnail cửa hàng và khu vực render từ model 3D bằng script | Code | CC, designer duyệt |
-| Font, âm thanh, VFX | Baloo 2 và Nunito (có tiếng Việt, tự host); âm thanh Kenney; Kenney Particle Pack; "Nghe lại" dùng Web Speech API | OFL, CC0 | CC |
+| Font, âm thanh, VFX | Baloo 2 và Nunito (có tiếng Việt, tự host); âm thanh Kenney; nhạc nền 32 bài album "Poupi's Incredible Adventures" của Komiku; Kenney Particle Pack; "Nghe lại" dùng Web Speech API | OFL, CC0 | CC |
 
 Chọn Mèo cho MVP; Thỏ (`animal-bunny`), Cáo (`animal-fox`), Gấu (`animal-polar` hoặc `animal-panda`) dùng lại cách ghép đầu, để V1.
 
@@ -482,6 +482,7 @@ Mọi quyết định của đợt POC và Foundation đã chốt (2026-09-29).
 | 29 | Tên người chơi trong nội dung (2026-09-30, người sở hữu) | "Miu" chỉ là tên game; mọi chữ trong game gọi người chơi bằng tên nhân vật bé đặt (placeholder `{name}`) | `content:check` chặn chữ quest cứng "Miu"; nhân vật mới phải chọn tên |
 | 30 | Nội dung không lặp (2026-09-30, người sở hữu) | Không dùng lại nội dung/cảnh giữa các quest; mọi thứ lặp (phản hồi, lời NPC, lời mời thử lại) xoay vòng từ pool, không lặp ngay | Pool phản hồi đúng/sai trong nội dung, server trả câu luân phiên; `content:check` chặn câu dài lặp giữa các quest |
 | 31 | Phụ kiện nhân vật mở rộng (2026-10-01, người sở hữu) | 7 loại phụ kiện: Mũ, Kính, Khăn, Balo, Cánh, Giày, Cầm tay; mỗi loại ít nhất 20 món mở ngay từ Lv.1, ô chọn có ảnh từng món; Áo vẫn "Sắp có" vì áo nướng sẵn trong mô hình nhân vật | Thay mục 22 (chỉ Mũ + Balo); `content:check` chặn loại nào dưới 20 món mở từ Lv.1 hoặc thiếu ảnh; đồ khóa theo level/quest vẫn được thêm ngoài 20 món |
+| 32 | Nhạc nền (2026-10-01, người sở hữu; nguồn nhạc do Jev chọn) | 32 bài thu sẵn CC0 của Komiku, phát ngẫu nhiên không lặp liền theo cảnh: nhà/menu, đi dạo rừng, đi dạo trường, đang làm nhiệm vụ, bài học, hoàn thành nhiệm vụ; nén AAC 96 kbps | Jev chọn nhạc thu sẵn (66%) thay vì nhạc sinh bằng code; pack gốc 77 MB (tổng packs 108/150 MB), bản phát 23 MB; nhạc theo nút Âm thanh, tắt khi ghi âm, nhỏ lại khi đọc to |
 
 ### Còn cần bạn chốt
 

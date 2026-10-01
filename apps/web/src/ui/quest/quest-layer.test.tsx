@@ -85,7 +85,7 @@ describe('quest controller', () => {
     const overlay = vi.fn();
     const layer = () => (
       <MemoryRouter>
-        <QuestLayer store={store} data={data} questId="forest-ch1" onResponse={onResponse} onOverlayChange={overlay} />
+        <QuestLayer store={store} data={data} questId="forest-ch1" region="khu-rung-bi-mat" onResponse={onResponse} onOverlayChange={overlay} />
       </MemoryRouter>
     );
     const view = render(layer());

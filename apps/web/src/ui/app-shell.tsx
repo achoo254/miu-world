@@ -8,6 +8,8 @@ import { ProfilePickerScreen } from './account/profile-screens';
 import { LoginScreen, RegisterScreen, SetPinScreen } from './account/sign-in-screens';
 import { PrivacyScreen } from './legal/privacy-screen';
 import { Logo, MiuOnIsland, SkyScene } from './kit/sky-scene';
+import type { MusicMood } from './sound/music';
+import { useMusicMood } from './sound/music-player';
 // three.js is only needed on /play: keep it out of the sign-in and profile bundle.
 const PlayScreen = lazy(() => import('./play/play-screen').then((m) => ({ default: m.PlayScreen })));
 const CreatorScreen = lazy(() => import('./creator/creator-screen').then((m) => ({ default: m.CreatorScreen })));
@@ -19,8 +21,18 @@ const ProfileScreen = lazy(() => import('./profile/profile-screens').then((m) =>
 const WorksheetListScreen = lazy(() => import('./parent/worksheets/worksheets-screen').then((m) => ({ default: m.WorksheetListScreen })));
 const WorksheetSheetScreen = lazy(() => import('./parent/worksheets/worksheets-screen').then((m) => ({ default: m.WorksheetSheetScreen })));
 
-/** A child's screen: needs the parent session and a selected profile; loaded on demand. */
-function ChildScreen({ children }: { children: ReactNode }) {
+/** Plays `mood` while its screen is up (screens outside the child's area: sign-in, profile picker). */
+function WithMusic({ mood, children }: { mood: MusicMood; children: ReactNode }) {
+  useMusicMood(mood);
+  return children;
+}
+
+/**
+ * A child's screen: needs the parent session and a selected profile; loaded on demand. `music`: the
+ * scene's background music; the play screen leaves it out and picks its own.
+ */
+function ChildScreen({ children, music }: { children: ReactNode; music?: MusicMood }) {
+  useMusicMood(music);
   return (
     <RequireParent>
       <RequireActiveChild>
@@ -90,21 +102,21 @@ export function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<RequireParent>{<Navigate to="/profiles" replace />}</RequireParent>} />
-      <Route path="/login" element={<SignedOutOnly><LoginScreen /></SignedOutOnly>} />
-      <Route path="/register" element={<SignedOutOnly><RegisterScreen /></SignedOutOnly>} />
+      <Route path="/login" element={<WithMusic mood="home"><SignedOutOnly><LoginScreen /></SignedOutOnly></WithMusic>} />
+      <Route path="/register" element={<WithMusic mood="home"><SignedOutOnly><RegisterScreen /></SignedOutOnly></WithMusic>} />
       <Route path="/privacy" element={<PrivacyScreen />} />
       <Route path="/set-pin" element={<RequireParent needsPin={false} needsConsent={false}><SetPinScreen /></RequireParent>} />
       <Route path="/consent" element={<RequireParent needsConsent={false}><ConsentScreen /></RequireParent>} />
-      <Route path="/profiles" element={<RequireParent><ProfilePickerScreen /></RequireParent>} />
+      <Route path="/profiles" element={<WithMusic mood="home"><RequireParent><ProfilePickerScreen /></RequireParent></WithMusic>} />
       <Route path="/parent" element={<RequireParent><ParentAreaScreen /></RequireParent>} />
       <Route path="/parent/worksheets" element={<RequireParent><Suspense fallback={<Loading />}><WorksheetListScreen /></Suspense></RequireParent>} />
       <Route path="/parent/worksheets/:lessonId" element={<RequireParent><Suspense fallback={<Loading />}><WorksheetSheetScreen /></Suspense></RequireParent>} />
-      <Route path="/create" element={<ChildScreen><CreatorScreen /></ChildScreen>} />
-      <Route path="/home" element={<ChildScreen><HomeScreen /></ChildScreen>} />
-      <Route path="/map" element={<ChildScreen><RegionMapScreen /></ChildScreen>} />
-      <Route path="/region/:regionId" element={<ChildScreen><RegionScreen /></ChildScreen>} />
-      <Route path="/backpack" element={<ChildScreen><BackpackScreen /></ChildScreen>} />
-      <Route path="/profile" element={<ChildScreen><ProfileScreen /></ChildScreen>} />
+      <Route path="/create" element={<ChildScreen music="home"><CreatorScreen /></ChildScreen>} />
+      <Route path="/home" element={<ChildScreen music="home"><HomeScreen /></ChildScreen>} />
+      <Route path="/map" element={<ChildScreen music="home"><RegionMapScreen /></ChildScreen>} />
+      <Route path="/region/:regionId" element={<ChildScreen music="home"><RegionScreen /></ChildScreen>} />
+      <Route path="/backpack" element={<ChildScreen music="home"><BackpackScreen /></ChildScreen>} />
+      <Route path="/profile" element={<ChildScreen music="home"><ProfileScreen /></ChildScreen>} />
       <Route path="/play" element={<ChildScreen><PlayScreen /></ChildScreen>} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
