@@ -112,7 +112,7 @@ export const ZONES: ReadonlyArray<{ id: string; name: string; topic: number; x: 
   { id: 'hoi-truong', name: 'Hội trường', topic: 7, x: 149, z: 116, hx: 21, hz: 30, floor: 'planks' },
 ];
 /** Campus wall (inclusive) and the gate's opening on its south side. */
-const CAMPUS = { x0: 16, x1: 175, z0: 17, z1: 152 };
+export const CAMPUS = { x0: 16, x1: 175, z0: 17, z1: 152 };
 const GATE: readonly [number, number] = [91, 101];
 const STREET = { z0: 3, z1: 12 };
 const RIVER = { x0: 180, x1: 187 };
@@ -182,10 +182,10 @@ export async function generateSchool(): Promise<{ world: VoxelWorld; entities: W
       let h = GROUND + fbm(seed, x / 26, z / 26) * 2.5;
       const edge = Math.min(x, z, sx - 1 - x, sz - 1 - z);
       if (edge < 10) h += (10 - edge) * 1.1;
-      // Behind the wall the neighbourhood stands on a bank two blocks up, level with the wall's top: seen
-      // from the school, out of reach (the child steps up one block at most). South of the street the verge
+      // Behind the wall the neighbourhood stands on a bank three blocks up, level with the wall's top: seen
+      // from the school, out of reach (the child climbs two blocks at most). South of the street the verge
       // stays low.
-      if (!inCampus(x, z) && !onStreet(z) && z > STREET.z1) h = Math.max(h, GROUND + 2);
+      if (!inCampus(x, z) && !onStreet(z) && z > STREET.z1) h = Math.max(h, GROUND + 3);
       if (z < STREET.z0) h = GROUND + 1;
       if (inCampus(x, z) || x === CAMPUS.x0 || x === CAMPUS.x1 || z === CAMPUS.z0 || z === CAMPUS.z1 || onStreet(z)) h = GROUND;
       if (inRiver(x) && z > STREET.z1 + 4) h = GROUND - 3;

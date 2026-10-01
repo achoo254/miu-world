@@ -44,6 +44,11 @@ function overlaps(pos: Vec3, body: Body, solid: SolidAt): boolean {
   return false;
 }
 
+/** Whether the body fits at a position without touching any solid block. */
+export function bodyFits(pos: Vec3, body: Body, solid: SolidAt): boolean {
+  return !overlaps(pos, body, solid);
+}
+
 /** Moves along one axis in small steps; on contact snaps flush against the block face. */
 function sweep(pos: Vec3, axis: number, delta: number, body: Body, solid: SolidAt): boolean {
   let remaining = delta;

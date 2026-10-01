@@ -10,7 +10,7 @@ const blockSchema = z.object({
   top: z.string(),
   side: z.string(),
   bottom: z.string(),
-  /** Collides with the player. */
+  /** Collides with the player (and the camera). Leaves do not: Miu walks through canopies. */
   solid: z.boolean().default(true),
   /** Lets light/faces through: neighbours keep their faces. */
   transparent: z.boolean().default(false),

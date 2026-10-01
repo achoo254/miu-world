@@ -54,11 +54,11 @@ export function placeCampusWall(world: WorldWriter, x0: number, x1: number, z0: 
       if (!onWall(x, z)) continue;
       if (z === z0 && x >= gate[0] && x <= gate[1]) continue;
       const y = baseY(x, z);
-      put(world, x, y, z, b.brick);
-      put(world, x, y + 1, z, b.brick);
+      // Three bricks high: the child climbs two blocks on her own, so the wall keeps her in the campus.
+      for (let h = 0; h < 3; h++) put(world, x, y + h, z, b.brick);
       if ((x - x0) % 4 === 0 && (z - z0) % 4 === 0) {
-        put(world, x, y + 2, z, b.stone);
-        put(world, x, y + 3, z, b.trim);
+        put(world, x, y + 3, z, b.stone);
+        put(world, x, y + 4, z, b.trim);
       }
     }
   }

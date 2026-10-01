@@ -4,8 +4,8 @@ import { describe, expect, it } from 'vitest';
 import { encodeWorld } from '../../packages/voxel/src/chunk-format';
 import { worldEntitiesSchema } from '../../packages/voxel/src/world-entities';
 import { ASSETS_DIR } from '../assets/asset-lib';
-import { MAIN_BUILDING, MAP_ID, ZONES, generateSchool } from './generate-school-map';
-import { reachable } from './walkable';
+import { CAMPUS, MAIN_BUILDING, MAP_ID, ZONES, generateSchool } from './generate-school-map';
+import { reachable, walkSolid } from './walkable';
 
 const OUT = path.join(ASSETS_DIR, 'generated/world', MAP_ID);
 
@@ -44,8 +44,7 @@ describe('school map generator', () => {
 
   it('can be walked from the gate to every zone, into the classroom and up the stairs to the one upstairs', async () => {
     const { world, entities } = await generateSchool();
-    const water = 9;
-    const spots = reachable(world, entities.spawn.position as [number, number, number], (id) => id !== 0 && id !== water);
+    const spots = reachable(world, entities.spawn.position as [number, number, number], await walkSolid());
     const at = (x: number, z: number, y?: number) => [...spots].some((key) => {
       const [kx, ky, kz] = key.split(',').map(Number) as [number, number, number];
       return Math.abs(kx - x) <= 1 && Math.abs(kz - z) <= 1 && (y === undefined || ky === y);
@@ -57,5 +56,13 @@ describe('school map generator', () => {
     // Upstairs: the same classroom one storey (four blocks) higher.
     expect(at(Math.floor(lx), Math.floor(lz), ly + 4), 'the classroom upstairs').toBe(true);
     expect(MAIN_BUILDING.x1 - MAIN_BUILDING.x0).toBeGreaterThan(60);
+    // The wall and the houses' bank are three blocks high: climbing two never lifts her onto the bank. Off the
+    // campus she only reaches the ground-level river and sidewalk, as with a one-block step.
+    const onBank = [...spots].filter((key) => {
+      const [x, y, z] = key.split(',').map(Number) as [number, number, number];
+      const outside = z > CAMPUS.z1 || (z >= CAMPUS.z0 && (x < CAMPUS.x0 || x > CAMPUS.x1));
+      return outside && y > MAIN_BUILDING.floorY;
+    });
+    expect(onBank).toEqual([]);
   }, 120_000);
 });
