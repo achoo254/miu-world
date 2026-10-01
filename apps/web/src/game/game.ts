@@ -51,6 +51,8 @@ import './game.css';
 
 /** Boot steps reported as `loading-progress`: renderer, asset registry, map data, world mesh, models. */
 const LOADING_STEPS = 5;
+/** Middle of the child's body: the end of the line of sight that trees fade along. */
+const SEE_FOCUS_HEIGHT = 0.9;
 /** After the child drags the view, the camera keeps her angle this long before settling behind her again. */
 const LOOK_HOLD_S = 1;
 /** Share of the autopilot's turning pace used while the child walks: a calm swing, not a snap. */
@@ -446,6 +448,7 @@ export class Game {
     let firstFrame = true;
     /** Seconds since the child last dragged the view. */
     let sinceLook = Infinity;
+    const seeFocus = new Vector3();
 
     this.loop = () => {
       timer.update();
@@ -508,7 +511,8 @@ export class Game {
       sun.position.set(controller.position.x + 18, controller.position.y + 30, controller.position.z + 12);
       sun.target.position.copy(controller.position);
       world.water.uTime.value += dt;
-      world.update(camera);
+      // Trees between the camera and the child fade; review shots have no child to keep in view.
+      world.update(camera, reviewShot ? undefined : seeFocus.copy(controller.position).setY(controller.position.y + SEE_FOCUS_HEIGHT));
 
       for (const target of targets) target.update(dt, controller.position, camera.position);
       arrow.update(dt, controller.position, hint?.available ? hint.def : null);

@@ -13,7 +13,8 @@ export interface WorldRenderer {
   meshMs: number;
   usedWorker: boolean;
   setViewDistance(distance: number): void;
-  update(camera: Camera): void;
+  /** `focus`: the child's body, kept in view by fading the trees in front of it; none in review shots. */
+  update(camera: Camera, focus?: Vector3): void;
 }
 
 function toGeometry(geo: QuadGeometry): BufferGeometry {
@@ -22,6 +23,7 @@ function toGeometry(geo: QuadGeometry): BufferGeometry {
   out.setAttribute('normal', new BufferAttribute(geo.normals, 3));
   out.setAttribute('uv', new BufferAttribute(geo.uvs, 2));
   out.setAttribute('tileRect', new BufferAttribute(geo.extra.tileRect ?? new Float32Array(0), 4));
+  out.setAttribute('seeThrough', new BufferAttribute(geo.extra.seeThrough ?? new Float32Array(geo.positions.length / 3), 1));
   const vertexCount = geo.positions.length / 3;
   out.setIndex(new BufferAttribute(vertexCount > 65535 ? geo.indices : Uint16Array.from(geo.indices), 1));
   out.computeBoundingSphere();
@@ -74,7 +76,7 @@ function meshOnMainThread(data: WorldData, onChunk: (chunk: ChunkGeometry) => vo
 export async function createWorldRenderer(data: WorldData): Promise<WorldRenderer> {
   const group = new Group();
   group.name = 'world';
-  const blockMaterial = createBlockMaterial(data.atlasTexture, data.atlas.size, data.atlas.safeMipLevel);
+  const { material: blockMaterial, seeThrough } = createBlockMaterial(data.atlasTexture, data.atlas.size, data.atlas.safeMipLevel);
   const water = createWaterMaterial(data.atlasTexture, data.atlas.size, data.atlas.safeMipLevel);
   // One mesh per chunk column and material (the chunks stacked at one x, z): a column is one draw call,
   // so a big map's view distance costs draw calls per column, not per chunk.
@@ -125,8 +127,13 @@ export async function createWorldRenderer(data: WorldData): Promise<WorldRendere
     setViewDistance(distance) {
       viewDistance = distance;
     },
-    update(camera) {
+    update(camera, focus) {
       camera.getWorldPosition(camPos);
+      seeThrough.uSeeOn.value = focus ? 1 : 0;
+      if (focus) {
+        seeThrough.uSeeFrom.value.copy(camPos);
+        seeThrough.uSeeTo.value.copy(focus);
+      }
       // Column distance on the ground minus its half-diagonal, so partly-visible columns stay drawn.
       const pad = CHUNK_SIZE * 0.71;
       for (const { mesh, center } of columnMeshes) mesh.visible = Math.hypot(center.x - camPos.x, center.z - camPos.z) - pad < viewDistance;
