@@ -285,6 +285,39 @@ export function checkRegions(
   return issues;
 }
 
+/**
+ * A quest tells its story where the child stands: its story text never names another region (a lesson moved
+ * to a new map must not still say it happens in the forest). Story text is the summary, who / where / what
+ * of the seven questions, the places, and each step's title, directions, lines and prompt. The textbook's
+ * own wording (readings, choices, answers) and where the story goes next (the `next` step,
+ * `sevenQuestions.next`) may name any region.
+ */
+export function checkRegionMentions(quests: Iterable<QuestDefinition>, regions: RegionCatalog): string[] {
+  const names = regions.regions.filter((r) => !r.name.includes('{'));
+  const issues: string[] = [];
+  for (const quest of quests) {
+    if (quest.status === 'stub') continue;
+    const story: Array<[string, string]> = [['summary', quest.summary]];
+    if (quest.sevenQuestions) {
+      const { who, where, goal } = quest.sevenQuestions;
+      story.push(['sevenQuestions.who', who], ['sevenQuestions.where', where], ['sevenQuestions.goal', goal]);
+    }
+    for (const [id, place] of Object.entries(quest.places ?? {})) story.push([`places.${id}`, place]);
+    for (const step of quest.steps) {
+      if (step.kind === 'next') continue;
+      story.push([`step ${step.id} title`, step.title]);
+      if ('goTo' in step && step.goTo) story.push([`step ${step.id} goTo`, step.goTo]);
+      if ('prompt' in step && typeof step.prompt === 'string') story.push([`step ${step.id} prompt`, step.prompt]);
+      if ('text' in step && typeof step.text === 'string') story.push([`step ${step.id} text`, step.text]);
+      if ('lines' in step) step.lines.forEach((line, n) => story.push([`step ${step.id} line ${n + 1}`, line.text]));
+    }
+    for (const region of names.filter((r) => r.id !== quest.region)) {
+      for (const [where, text] of story) if (text.includes(region.name)) issues.push(`quest ${quest.id} ${where} names ${region.name}, another region: tell the story where the quest is`);
+    }
+  }
+  return issues;
+}
+
 /** The public privacy page parses and describes the consent version parents are asked to accept. */
 export function checkPrivacy(raw: unknown, consentVersion: string): string[] {
   const parsed = PrivacyDocument.safeParse(raw);
@@ -317,6 +350,7 @@ export function checkContent(dir: string = CONTENT_DIR): ContentReport {
     const targetCatalog = existsSync(path.join(dir, TARGETS_FILE)) ? QuestTargetCatalog.safeParse(JSON.parse(readFileSync(path.join(dir, TARGETS_FILE), 'utf8'))).data : undefined;
     const targetIds = targetCatalog ? new Set(Object.keys(targetCatalog.targets)) : null;
     issues.push(...checkRegions(JSON.parse(readFileSync(path.join(dir, REGIONS_FILE), 'utf8')), catalog.quests.values(), undefined, targetIds));
+    if (regions.success) issues.push(...checkRegionMentions(readQuestDefinitions(path.join(dir, 'quests')), regions.data));
     const manifest = JSON.parse(readFileSync(path.join(ASSETS_DIR, 'manifest.json'), 'utf8')) as { files: Array<{ path: string }>; generated: Array<{ path: string }> };
     issues.push(...checkPets(JSON.parse(readFileSync(path.join(dir, 'pets.json'), 'utf8')), new Set(manifest.files.map((f) => f.path))));
     const read = (rel: string): unknown => JSON.parse(readFileSync(path.join(dir, rel), 'utf8'));

@@ -35,6 +35,16 @@ describe('content:check', () => {
     expect(checkContent(dir).issues).toEqual(['quest forest-ch1 steps[0].lines[0].text says "Miu" instead of {name}']);
   });
 
+  it('flags quest story text that names another region, but not the textbook wording or where the story goes next', () => {
+    const file = path.join(dir, 'quests/toan2-cd1-b01.json');
+    const quest = JSON.parse(readFileSync(file, 'utf8')) as { summary: string; steps: Array<{ kind: string; text?: string }> };
+    quest.summary = `${quest.summary} Rồi cả lớp ra Khu rừng bí mật.`;
+    const next = quest.steps.find((s) => s.kind === 'next');
+    if (next) next.text = 'Mai mình vào Khu rừng bí mật nhé.';
+    writeFileSync(file, JSON.stringify(quest));
+    expect(checkContent(dir).issues).toEqual(['quest toan2-cd1-b01 summary names Khu rừng bí mật, another region: tell the story where the quest is']);
+  });
+
   it('flags regions that break the schema, say "Miu", or do not match the quests', () => {
     const file = path.join(dir, 'world/regions.json');
     const regions = JSON.parse(readFileSync(file, 'utf8')) as { regions: Array<{ id: string; name: string; status: string }> };

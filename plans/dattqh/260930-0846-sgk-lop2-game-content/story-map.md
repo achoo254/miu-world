@@ -1,4 +1,92 @@
-# Bản đồ câu chuyện — 70 quest SGK (D9)
+# Bản đồ câu chuyện — 71 quest SGK (D9)
+
+> **01/10/2026 — chia lại 8 map** (plan `plans/dattqh/261001-2106-more-maps-lesson-regroup/`). Mục "Chia lại 8 map" ngay dưới là nguồn sự thật cho map, chương, hướng dẫn viên và nơi của từng bài. Hai bảng cũ ở cuối file ("Khu rừng bí mật", "Trường học") giữ lại cho tính cách và tình huống mở đầu; cột chương và nơi trong đó đã cũ. Nhân vật trong bảng cũ cũng đã đổi nhiều ở đợt "nhân vật mới cho mỗi bài": danh sách đúng là `content/world/targets.json` và các bước của từng quest.
+
+## Chia lại 8 map
+
+Quy tắc:
+
+- Chương trong một map đánh số lại từ 1 theo thứ tự sách: Tiếng Việt mỗi tuần một chương (2 bài), Toán mỗi chủ đề một chương. Khu rừng giữ chương 1 là bài hướng dẫn. Mỗi chương là một khu trên map (generator khai khu, `placeQuestTargets` đặt các nơi của bài trong khu của chương đó).
+- Mỗi map một hướng dẫn viên (`guide` trong `content/world/regions.json`), được có mặt ở bao nhiêu bài của map cũng được. Bài nào ở map khác đang dùng Vẹt Xanh làm người dẫn thì đổi sang hướng dẫn viên của map đó.
+- Một nhân vật chỉ có mặt ở một map. Nhân vật đang có ở hai map thì giữ ở bài ghi trong bảng "Nhân vật ở nhiều map", bài kia dùng nhân vật mới (tên mới, chưa có ở bài nào; mô hình chọn trong `content/world/looks.json`).
+- Lời SGK, id quest, id các bước giữ nguyên. Chỉ viết lại phần kể chuyện: `region`, `chapter`, `summary`, `sevenQuestions.where`, lời dẫn đường, hội thoại, `places`, bước `next` (nói đúng tên map của bài kế tiếp trong sách).
+
+| Map (region) | Hướng dẫn viên | Nhạc (`MUSIC_MOODS`) | Sách (`book`) |
+| --- | --- | --- | --- |
+| Làng Ven Sông (`lang-ven-song`) | Cún Lúa (`cun-lua`, mới — chú cún vàng của làng, chạy dọc bờ sông) | `forest` | Tiếng Việt 2, tập một: bài 1–8 |
+| Khu rừng bí mật (`khu-rung-bi-mat`) | Vẹt Xanh (`vet-xanh`) | `forest` | Tiếng Việt 2, tập một: bài 17–24 |
+| Trường học (`truong-hoc`) | Sư Tử Vàng (`su-tu-vang`, hiệu trưởng) | `school` | Toán 2, tập một: bài 1–6 · Tiếng Việt 2, tập một: bài 9–14 |
+| Thư viện (`thu-vien`) | Gấu Trúc Tròn (`gau-truc`, thủ thư) | `puzzle` | Tiếng Việt 2, tập một: bài 15–16, ôn giữa học kì · Toán 2, tập một: bài 29–32 |
+| Xóm Mái Ấm (`xom-mai-am`) | Bà Gấu Nâu (`ba-gau-nau`, mới — bà của cả xóm) | `home` | Tiếng Việt 2, tập một: bài 25–32 |
+| Chợ phiên (`cho-phien`) | Cánh Cụt Pin (`chim-canh-cut-pin`, giữ cân của chợ) | `school` | Toán 2, tập một: bài 7–18 |
+| Nông trại (`nong-trai`) | Bò Sữa Mơ (`bo-sua-mo`) | `forest` | Toán 2, tập một: bài 19–24 |
+| Lâu đài (`lau-dai`) | Hươu Cao (`huou-cao`, vẽ bản đồ, thích hình khối) | `quest` | Toán 2, tập một: bài 25–28, 33–36 · Tiếng Việt 2, tập một: ôn cuối học kì |
+
+### Chương và khu của từng map
+
+| Map | Chương | Khu (tên trên map) | Bài |
+| --- | --- | --- | --- |
+| Làng Ven Sông | 1 | Đầu làng (cổng làng, lớp học nhỏ, ruộng lúa) | `tv2-t01-b01`, `tv2-t01-b02` |
+| | 2 | Bãi cỏ ven sông (cầu vồng, cầu tre, vườn hoa tổ ong) | `tv2-t02-b03`, `tv2-t02-b04` |
+| | 3 | Bến sông (bến nước soi bóng, lớp học dưới gốc đa) | `tv2-t03-b05`, `tv2-t03-b06` |
+| | 4 | Đầm sen và sân bóng làng | `tv2-t04-b07`, `tv2-t04-b08` |
+| Khu rừng bí mật | 1 | Góc rừng của Lá thần (bài hướng dẫn, giữ nguyên) | `forest-ch1` |
+| | 2 | Đồng cỏ và hồ thư | `tv2-t10-b17`, `tv2-t10-b18` |
+| | 3 | Con đường chữ cái và bụi gai | `tv2-t11-b19`, `tv2-t11-b20` |
+| | 4 | Đồi gió và xưởng gỗ | `tv2-t12-b21`, `tv2-t12-b22` |
+| | 5 | Bãi đất trống bên suối đất sét | `tv2-t13-b23`, `tv2-t13-b24` |
+| Trường học | 1 | Sân trường (khung trường giữ như mock đã duyệt) | `toan2-cd1-b01` … `toan2-cd1-b06` |
+| | 2 | Lớp học (lớp 2A trong nhà chính, hành lang có thời khoá biểu) | `tv2-t05-b09`, `tv2-t05-b10` |
+| | 3 | Chòi trống và phòng đọc của trường | `tv2-t06-b11`, `tv2-t06-b12` |
+| | 4 | Sân chơi và góc vẽ | `tv2-t07-b13`, `tv2-t07-b14` |
+| Thư viện | 1 | Phòng đọc (kệ sách, góc đọc, tảng đá đọc sách ngoài vườn) | `tv2-t08-b15`, `tv2-t08-b16` |
+| | 2 | Sân lễ hội lá vàng | `tv2-t09-on-giua-ki` |
+| | 3 | Tháp đồng hồ và phòng lịch | `toan2-cd6-b29` … `toan2-cd6-b32` |
+| Xóm Mái Ấm | 1 | Vườn hoa và ngõ nhà Chíp | `tv2-t14-b25`, `tv2-t14-b26` |
+| | 2 | Hiên nhà đêm trăng và hang đá nhà sư tử | `tv2-t15-b27`, `tv2-t15-b28` |
+| | 3 | Chòi cũ bên bờ và con dốc nhà ông | `tv2-t16-b29`, `tv2-t16-b30` |
+| | 4 | Hồ sen và cánh đồng gió | `tv2-t17-b31`, `tv2-t17-b32` |
+| Chợ phiên | 1 | Chợ rau hoa (hàng hoa, hàng bầu bí, vườn tre, nhà kính bán cây) | `toan2-cd2-b07` … `toan2-cd2-b14` |
+| | 2 | Dãy hàng cân đong (quầy cân, quầy nước, bếp chè, kho hàng) | `toan2-cd3-b15` … `toan2-cd3-b18` |
+| Nông trại | 1 | Nông trại (chuồng, ruộng, kho thóc, xưởng nông cụ, ao) | `toan2-cd4-b19` … `toan2-cd4-b24` |
+| Lâu đài | 1 | Sân hình khối (phòng vẽ, cửa sổ kính màu, phòng tranh) | `toan2-cd5-b25` … `toan2-cd5-b28` |
+| | 2 | Đại sảnh ôn tập (sân khấu, hậu trường, lễ tổng kết) | `toan2-cd7-b33` … `toan2-cd7-b36` |
+| | 3 | Cầu treo trước cổng thành (khánh thành cây cầu) | `tv2-t18-on-cuoi-ki` |
+
+### Nhân vật ở nhiều map
+
+Lấy từ dữ liệu ngày 01/10/2026 (mọi NPC mà các bước của quest nhắc tới, gộp theo `character`). Cột "Giữ ở" là bài nhân vật ở lại; các bài ở cột "Đổi" dùng nhân vật mới.
+
+| Nhân vật | Giữ ở | Đổi |
+| --- | --- | --- |
+| Vẹt Xanh `vet-xanh` | Khu rừng (`tv2-t10-b17`, `tv2-t11-b19`), hướng dẫn viên | đổi sang hướng dẫn viên của map: `toan2-cd1-b03`, `tv2-t05-b09`, `tv2-t06-b12`, `tv2-t07-b14` (Trường học); `toan2-cd2-b14` (Chợ); `tv2-t01-b01`, `tv2-t02-b03`, `tv2-t02-b04`, `tv2-t03-b06` (Làng); `tv2-t08-b15`, `tv2-t08-b16`, `tv2-t09-on-giua-ki` (Thư viện); `tv2-t18-on-cuoi-ki` (Lâu đài) |
+| Sư Tử Vàng `su-tu-vang` | Trường học `toan2-cd1-b01`, hướng dẫn viên | `tv2-t15-b28` (bố sư tử con: nhân vật mới) |
+| Gấu Trúc Tròn `gau-truc` | Thư viện, hướng dẫn viên | `tv2-t06-b12`, `toan2-cd2-b12` |
+| Bò Sữa Mơ `bo-sua-mo` | Nông trại, hướng dẫn viên | `toan2-cd2-b09`, `tv2-t10-b17` |
+| Cánh Cụt Pin `chim-canh-cut-pin` | Chợ `toan2-cd3-b15`, hướng dẫn viên | `toan2-cd7-b35` |
+| Gà Con Chíp `ga-con-chip` | Trường học `toan2-cd1-b02` | `toan2-cd5-b27` |
+| Mèo Mun `meo-mun` | Trường học `toan2-cd1-b03` | `toan2-cd4-b24` |
+| Chó Mực `cho-muc` | Trường học `toan2-cd1-b05` | `toan2-cd6-b31` |
+| Cáo Lém `cao-lem` | Trường học `toan2-cd1-b06` | `toan2-cd4-b21` |
+| Ong Vàng `ong-vang` | Chợ `toan2-cd2-b07` | `toan2-cd5-b26` |
+| Sâu Xanh `sau-xanh` | Thư viện `toan2-cd6-b32` (đếm ngày hoá bướm) | `toan2-cd2-b08` |
+| Hải Ly Cần `hai-ly-can` | Khu rừng `tv2-t13-b24` | `toan2-cd2-b10` |
+| Hổ Vằn `ho-van` | Chợ `toan2-cd2-b13` | `toan2-cd4-b23` |
+| Cá Bống `ca-bong` | Xóm `tv2-t17-b31` (cùng mẹ Bống) | `toan2-cd3-b16` |
+| Gấu Tuyết Bông `gau-tuyet-bong` | Khu rừng `tv2-t10-b18` | `toan2-cd3-b18` |
+| Lợn Rừng Đốm `lon-rung-dom` | Khu rừng `tv2-t12-b22` | `toan2-cd4-b19` |
+| Khỉ Lanh `khi-lanh` | Khu rừng `tv2-t12-b21` | `toan2-cd4-b20` |
+| Koala Na `koala-na` | Xóm `tv2-t15-b27` | `toan2-cd4-b22` |
+| Cua Kềnh `cua-kenh` | Xóm `tv2-t16-b29` | `toan2-cd5-b28` |
+| Voi Bảo `voi-bao` | Thư viện `toan2-cd6-b30` (phòng lịch) | `tv2-t01-b02` |
+| Nai Mơ `nai-mo` | Thư viện `tv2-t08-b16` | `tv2-t05-b09` |
+| Thỏ Tí `tho-ti` | Xóm `tv2-t17-b32` (cùng em Bé Tẹo) | `tv2-t05-b10` |
+| Cô Gấu Mật `tv2-t01-b01-co-gau-mat` | Trường học `tv2-t05-b09` (cô giáo lớp em) | `tv2-t01-b01` |
+| Hải Ly Mộc, Cá Chép Hồng (`tv2-t06-b11-*`) | Trường học `tv2-t06-b11` | `tv2-t09-on-giua-ki` |
+| Gấu Trắng Ú, Ông Lộc, Chị Thảo (`toan2-cd6-b31/b32-*`) | Thư viện `toan2-cd6-b31`, `toan2-cd6-b32` | `toan2-cd7-b36` |
+
+Khỉ Lanh hiện cũng đứng sẵn ở sân bóng Trường học (đặt tay trong generator, chương 1): bỏ khỏi Trường học khi dọn map ở phase 5, vì không còn bài Toán chủ đề 1 nào dùng (kiểm lại bằng dữ liệu trước khi bỏ).
+
 
 Mỗi quest một nhân vật chính, một nơi, một tình huống mở đầu riêng; không quest nào mượn khung của quest khác. Phase 4, 5 viết lời thoại, `feedback`, chuỗi cơ chế theo bảng này (thứ tự cơ chế do bài tập quyết, `content:check` chặn trùng). Chữ SGK vẫn nguyên văn (D8) — câu chuyện chỉ bao quanh bài tập. Người chơi luôn là `{name}`.
 
