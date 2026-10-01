@@ -489,14 +489,14 @@ describe('the shipped forest chapter 1', () => {
   const ch1 = real.quests.get('forest-ch1');
   if (ch1?.status !== 'active') throw new Error('forest-ch1 must be an active quest');
 
-  it('finishing without the answer layer levels up to 2 and opens chapter 2 as coming soon', async () => {
+  it('finishing without the answer layer levels up to 2; the textbook lessons were open all along', async () => {
     const agent = await realChild();
+    expect((await agent.get('/api/quests/tv2-t01-b01').expect(200)).body).toMatchObject({ state: 'open', quest: { status: 'active' } });
     let last: request.Response | undefined;
     for (const [stepId, body] of solution(ch1)) last = await step(agent, 'forest-ch1', stepId, body).expect(200);
-    expect(last?.body.completion).toMatchObject({ stars: 3, xpAwarded: 100, levelBefore: 1, levelAfter: 2, unlocked: ['forest-ch2'] });
+    expect(last?.body.completion).toMatchObject({ stars: 3, xpAwarded: 100, levelBefore: 1, levelAfter: 2, unlocked: [] });
     expect(last?.body.reward).toMatchObject({ xp: 100, coin: 20, items: { 'la-than': 1 } });
-    expect((await agent.get('/api/quests/forest-ch2').expect(200)).body).toMatchObject({ state: 'open', quest: { status: 'stub' } });
-    await step(agent, 'forest-ch2', 'anything').expect(409, { error: 'quest-coming-soon' });
+    expect((await agent.get('/api/quests/toan2-cd1-b01').expect(200)).body).toMatchObject({ state: 'open' });
   });
 
   it('viewing an answer keeps 90 XP, so the same run stays at level 1', async () => {

@@ -1,7 +1,7 @@
 ---
 phase: 9
 title: "Bản đồ Trường học + chương rừng 2–19"
-status: pending
+status: completed
 priority: P2
 effort: "L"
 dependencies: [4, 5]

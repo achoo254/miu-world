@@ -212,10 +212,39 @@ function renderDecisions(): void {
   byId('decisions').append(list);
 }
 
+interface CoverageTotals {
+  items: number;
+  inGame: number;
+  onWorksheet: number;
+  missing: number;
+}
+interface CoverageSummary {
+  books: Array<{ title: string; totals: CoverageTotals; percent: number; units: Array<{ title: string; totals: CoverageTotals; percent: number; lessons: number }> }>;
+}
+
+/** Textbook coverage per book and unit (assets/generated/review/sgk-coverage.json, from `pnpm content:gaps --review`). */
+async function renderCoverage(generated: readonly string[]): Promise<void> {
+  if (!generated.includes('generated/review/sgk-coverage.json')) return;
+  const summary = (await (await fetch(`${ASSET_PREFIX}generated/review/sgk-coverage.json`)).json()) as CoverageSummary;
+  for (const book of summary.books) {
+    const table = el('table', { className: 'coverage' });
+    const head = el('tr');
+    for (const h of ['Chủ đề', 'Bài', 'Bài tập', 'Trong game', 'Phiếu', 'Phủ']) head.append(el('th', { textContent: h }));
+    table.append(head);
+    for (const u of [...book.units, { title: 'Cả sách', totals: book.totals, percent: book.percent, lessons: book.units.reduce((n, x) => n + x.lessons, 0) }]) {
+      const row = el('tr');
+      for (const cell of [u.title, String(u.lessons), String(u.totals.items), String(u.totals.inGame), String(u.totals.onWorksheet), `${u.percent}%`]) row.append(el('td', { textContent: cell }));
+      table.append(row);
+    }
+    byId('sgk-coverage').append(el('figure', {}, [el('figcaption', { textContent: book.title }), table]));
+  }
+}
+
 async function main(): Promise<void> {
   renderDecisions();
   const manifest = (await (await fetch(`${ASSET_PREFIX}manifest.json`)).json()) as ManifestJson;
   const generated = manifest.generated.map((g) => g.path);
+  await renderCoverage(generated);
   renderGallery(generated);
   renderPalette();
   renderLicenses(manifest);

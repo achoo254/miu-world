@@ -270,7 +270,7 @@ export function placeForestLife(map: ForestLifeMap): Ambient[] {
     });
   };
   parrot('vet-trai', map.spawn.x + 4, map.spawn.z + 18, [map.spawn.x + 18, map.spawn.z - 2]);
-  parrot('vet-xanh', 70, 30, [60, 20]);
+  parrot('vet-suoi', 70, 30, [60, 20]);
 
   return ambients;
 }

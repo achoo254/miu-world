@@ -23,10 +23,14 @@ describe('school map generator', () => {
     const parsed = worldEntitiesSchema.parse(entities);
     expect(ZONES.map((z) => z.topic)).toEqual([1, 2, 3, 4, 5, 6, 7]);
     expect(parsed.landmarks.map((l) => l.name)).toEqual(expect.arrayContaining([...ZONES.map((z) => z.name), 'Cột cờ', 'Sân bóng']));
-    // Every target of the first Toán quest stands here, tagged with its topic.
+    // Every target of the first Toán quest stands here and shows while topic 1 is played (its own things,
+    // or characters who come back in other topics too).
     const quest = JSON.parse(await readFile(path.join(ASSETS_DIR, '../content/quests/toan2-cd1-b01.json'), 'utf8')) as { steps: Array<{ target?: string }> };
     const targets = new Set(quest.steps.flatMap((s) => (s.target ? [s.target] : [])));
-    for (const target of targets) expect(parsed.interactables.find((t) => t.id === target)?.chapter, target).toBe(1);
+    for (const target of targets) {
+      const t = parsed.interactables.find((i) => i.id === target);
+      expect(t?.chapter === 1 || t?.chapters?.includes(1), target).toBe(true);
+    }
     for (const t of parsed.interactables) {
       const [x, y, z] = t.position.map(Math.floor) as [number, number, number];
       expect(world.get(x, y, z), `${t.id} is buried`).toBe(0);

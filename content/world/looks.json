@@ -1,0 +1,617 @@
+{
+ "version": 1,
+ "looks": {
+  "animal-elephant": {
+   "model": "packs/kenney-cube-pets/2.0/animal-elephant.glb",
+   "height": 1.6,
+   "kind": "npc",
+   "label": "Nói chuyện",
+   "animation": "idle"
+  },
+  "animal-bunny": {
+   "model": "packs/kenney-cube-pets/2.0/animal-bunny.glb",
+   "height": 0.9,
+   "kind": "npc",
+   "label": "Nói chuyện",
+   "animation": "idle"
+  },
+  "animal-chick": {
+   "model": "packs/kenney-cube-pets/2.0/animal-chick.glb",
+   "height": 0.7,
+   "kind": "npc",
+   "label": "Nói chuyện",
+   "animation": "idle"
+  },
+  "animal-bee": {
+   "model": "packs/kenney-cube-pets/2.0/animal-bee.glb",
+   "height": 0.6,
+   "kind": "npc",
+   "label": "Nói chuyện",
+   "animation": "idle"
+  },
+  "animal-beaver": {
+   "model": "packs/kenney-cube-pets/2.0/animal-beaver.glb",
+   "height": 1.0,
+   "kind": "npc",
+   "label": "Nói chuyện",
+   "animation": "idle"
+  },
+  "animal-caterpillar": {
+   "model": "packs/kenney-cube-pets/2.0/animal-caterpillar.glb",
+   "height": 0.8,
+   "kind": "npc",
+   "label": "Nói chuyện",
+   "animation": "idle"
+  },
+  "animal-fox": {
+   "model": "packs/kenney-cube-pets/2.0/animal-fox.glb",
+   "height": 1.0,
+   "kind": "npc",
+   "label": "Nói chuyện",
+   "animation": "idle"
+  },
+  "animal-deer": {
+   "model": "packs/kenney-cube-pets/2.0/animal-deer.glb",
+   "height": 1.4,
+   "kind": "npc",
+   "label": "Nói chuyện",
+   "animation": "idle"
+  },
+  "animal-panda": {
+   "model": "packs/kenney-cube-pets/2.0/animal-panda.glb",
+   "height": 1.2,
+   "kind": "npc",
+   "label": "Nói chuyện",
+   "animation": "idle"
+  },
+  "animal-monkey": {
+   "model": "packs/kenney-cube-pets/2.0/animal-monkey.glb",
+   "height": 1.1,
+   "kind": "npc",
+   "label": "Nói chuyện",
+   "animation": "idle"
+  },
+  "animal-lion": {
+   "model": "packs/kenney-cube-pets/2.0/animal-lion.glb",
+   "height": 1.3,
+   "kind": "npc",
+   "label": "Nói chuyện",
+   "animation": "idle"
+  },
+  "animal-tiger": {
+   "model": "packs/kenney-cube-pets/2.0/animal-tiger.glb",
+   "height": 1.3,
+   "kind": "npc",
+   "label": "Nói chuyện",
+   "animation": "idle"
+  },
+  "animal-giraffe": {
+   "model": "packs/kenney-cube-pets/2.0/animal-giraffe.glb",
+   "height": 2.2,
+   "kind": "npc",
+   "label": "Nói chuyện",
+   "animation": "idle"
+  },
+  "animal-koala": {
+   "model": "packs/kenney-cube-pets/2.0/animal-koala.glb",
+   "height": 1.0,
+   "kind": "npc",
+   "label": "Nói chuyện",
+   "animation": "idle"
+  },
+  "animal-penguin": {
+   "model": "packs/kenney-cube-pets/2.0/animal-penguin.glb",
+   "height": 1.0,
+   "kind": "npc",
+   "label": "Nói chuyện",
+   "animation": "idle"
+  },
+  "animal-pig": {
+   "model": "packs/kenney-cube-pets/2.0/animal-pig.glb",
+   "height": 1.0,
+   "kind": "npc",
+   "label": "Nói chuyện",
+   "animation": "idle"
+  },
+  "animal-cow": {
+   "model": "packs/kenney-cube-pets/2.0/animal-cow.glb",
+   "height": 1.4,
+   "kind": "npc",
+   "label": "Nói chuyện",
+   "animation": "idle"
+  },
+  "animal-dog": {
+   "model": "packs/kenney-cube-pets/2.0/animal-dog.glb",
+   "height": 1.0,
+   "kind": "npc",
+   "label": "Nói chuyện",
+   "animation": "idle"
+  },
+  "animal-cat": {
+   "model": "packs/kenney-cube-pets/2.0/animal-cat.glb",
+   "height": 0.9,
+   "kind": "npc",
+   "label": "Nói chuyện",
+   "animation": "idle"
+  },
+  "animal-parrot": {
+   "model": "packs/kenney-cube-pets/2.0/animal-parrot.glb",
+   "height": 0.8,
+   "kind": "npc",
+   "label": "Nói chuyện",
+   "animation": "idle"
+  },
+  "animal-polar": {
+   "model": "packs/kenney-cube-pets/2.0/animal-polar.glb",
+   "height": 1.4,
+   "kind": "npc",
+   "label": "Nói chuyện",
+   "animation": "idle"
+  },
+  "animal-hog": {
+   "model": "packs/kenney-cube-pets/2.0/animal-hog.glb",
+   "height": 1.0,
+   "kind": "npc",
+   "label": "Nói chuyện",
+   "animation": "idle"
+  },
+  "animal-crab": {
+   "model": "packs/kenney-cube-pets/2.0/animal-crab.glb",
+   "height": 0.6,
+   "kind": "npc",
+   "label": "Nói chuyện",
+   "animation": "idle"
+  },
+  "animal-fish": {
+   "model": "packs/kenney-cube-pets/2.0/animal-fish.glb",
+   "height": 0.6,
+   "kind": "npc",
+   "label": "Nói chuyện",
+   "animation": "idle"
+  },
+  "person-a": {
+   "model": "packs/kenney-blocky-characters/2.0/character-a.glb",
+   "height": 1.9,
+   "kind": "npc",
+   "label": "Nói chuyện",
+   "animation": "idle"
+  },
+  "person-b": {
+   "model": "packs/kenney-blocky-characters/2.0/character-b.glb",
+   "height": 1.9,
+   "kind": "npc",
+   "label": "Nói chuyện",
+   "animation": "idle"
+  },
+  "person-c": {
+   "model": "packs/kenney-blocky-characters/2.0/character-c.glb",
+   "height": 1.9,
+   "kind": "npc",
+   "label": "Nói chuyện",
+   "animation": "idle"
+  },
+  "person-d": {
+   "model": "packs/kenney-blocky-characters/2.0/character-d.glb",
+   "height": 1.9,
+   "kind": "npc",
+   "label": "Nói chuyện",
+   "animation": "idle"
+  },
+  "person-e": {
+   "model": "packs/kenney-blocky-characters/2.0/character-e.glb",
+   "height": 1.9,
+   "kind": "npc",
+   "label": "Nói chuyện",
+   "animation": "idle"
+  },
+  "person-f": {
+   "model": "packs/kenney-blocky-characters/2.0/character-f.glb",
+   "height": 1.9,
+   "kind": "npc",
+   "label": "Nói chuyện",
+   "animation": "idle"
+  },
+  "person-g": {
+   "model": "packs/kenney-blocky-characters/2.0/character-g.glb",
+   "height": 1.9,
+   "kind": "npc",
+   "label": "Nói chuyện",
+   "animation": "idle"
+  },
+  "person-h": {
+   "model": "packs/kenney-blocky-characters/2.0/character-h.glb",
+   "height": 1.9,
+   "kind": "npc",
+   "label": "Nói chuyện",
+   "animation": "idle"
+  },
+  "person-i": {
+   "model": "packs/kenney-blocky-characters/2.0/character-i.glb",
+   "height": 1.9,
+   "kind": "npc",
+   "label": "Nói chuyện",
+   "animation": "idle"
+  },
+  "person-j": {
+   "model": "packs/kenney-blocky-characters/2.0/character-j.glb",
+   "height": 1.9,
+   "kind": "npc",
+   "label": "Nói chuyện",
+   "animation": "idle"
+  },
+  "person-k": {
+   "model": "packs/kenney-blocky-characters/2.0/character-k.glb",
+   "height": 1.9,
+   "kind": "npc",
+   "label": "Nói chuyện",
+   "animation": "idle"
+  },
+  "person-l": {
+   "model": "packs/kenney-blocky-characters/2.0/character-l.glb",
+   "height": 1.9,
+   "kind": "npc",
+   "label": "Nói chuyện",
+   "animation": "idle"
+  },
+  "person-m": {
+   "model": "packs/kenney-blocky-characters/2.0/character-m.glb",
+   "height": 1.9,
+   "kind": "npc",
+   "label": "Nói chuyện",
+   "animation": "idle"
+  },
+  "person-n": {
+   "model": "packs/kenney-blocky-characters/2.0/character-n.glb",
+   "height": 1.9,
+   "kind": "npc",
+   "label": "Nói chuyện",
+   "animation": "idle"
+  },
+  "person-o": {
+   "model": "packs/kenney-blocky-characters/2.0/character-o.glb",
+   "height": 1.9,
+   "kind": "npc",
+   "label": "Nói chuyện",
+   "animation": "idle"
+  },
+  "person-p": {
+   "model": "packs/kenney-blocky-characters/2.0/character-p.glb",
+   "height": 1.9,
+   "kind": "npc",
+   "label": "Nói chuyện",
+   "animation": "idle"
+  },
+  "person-q": {
+   "model": "packs/kenney-blocky-characters/2.0/character-q.glb",
+   "height": 1.9,
+   "kind": "npc",
+   "label": "Nói chuyện",
+   "animation": "idle"
+  },
+  "person-r": {
+   "model": "packs/kenney-blocky-characters/2.0/character-r.glb",
+   "height": 1.9,
+   "kind": "npc",
+   "label": "Nói chuyện",
+   "animation": "idle"
+  },
+  "chest": {
+   "model": "packs/kenney-survival-kit/2.0/chest.glb",
+   "height": 0.9,
+   "kind": "object",
+   "label": "Mở rương"
+  },
+  "box": {
+   "model": "packs/kenney-survival-kit/2.0/box.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Mở hộp"
+  },
+  "box-open": {
+   "model": "packs/kenney-survival-kit/2.0/box-open.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "box-large": {
+   "model": "packs/kenney-survival-kit/2.0/box-large.glb",
+   "height": 1.0,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "barrel": {
+   "model": "packs/kenney-survival-kit/2.0/barrel.glb",
+   "height": 1.1,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "bucket": {
+   "model": "packs/kenney-survival-kit/2.0/bucket.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "bottle": {
+   "model": "packs/kenney-survival-kit/2.0/bottle.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "signpost": {
+   "model": "packs/kenney-survival-kit/2.0/signpost.glb",
+   "height": 2.2,
+   "kind": "object",
+   "label": "Đọc bảng"
+  },
+  "sign": {
+   "model": "packs/kenney-nature-kit/2.1/sign.glb",
+   "height": 1.4,
+   "kind": "object",
+   "label": "Đọc bảng"
+  },
+  "tent": {
+   "model": "packs/kenney-nature-kit/2.1/tent_smallOpen.glb",
+   "height": 2.2,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "campfire": {
+   "model": "packs/kenney-nature-kit/2.1/campfire_logs.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "workbench": {
+   "model": "packs/kenney-survival-kit/2.0/workbench.glb",
+   "height": 1.1,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "bedroll": {
+   "model": "packs/kenney-survival-kit/2.0/bedroll.glb",
+   "height": 0.4,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "bag": {
+   "model": "packs/kenney-food-kit/2.0/bag.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "pot": {
+   "model": "packs/kenney-nature-kit/2.1/pot_small.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "flower-red": {
+   "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "flower-yellow": {
+   "model": "packs/kenney-nature-kit/2.1/flower_yellowB.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "flower-purple": {
+   "model": "packs/kenney-nature-kit/2.1/flower_purpleA.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "mushroom": {
+   "model": "packs/kenney-nature-kit/2.1/mushroom_red.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "mushroom-group": {
+   "model": "packs/kenney-nature-kit/2.1/mushroom_redGroup.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "rock": {
+   "model": "packs/kenney-nature-kit/2.1/rock_smallA.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "log": {
+   "model": "packs/kenney-nature-kit/2.1/log.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "log-stack": {
+   "model": "packs/kenney-nature-kit/2.1/log_stack.glb",
+   "height": 1.0,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "stump": {
+   "model": "packs/kenney-nature-kit/2.1/stump_round.glb",
+   "height": 0.8,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "bush": {
+   "model": "packs/kenney-nature-kit/2.1/plant_bushLarge.glb",
+   "height": 1.2,
+   "kind": "object",
+   "label": "Tìm trong bụi"
+  },
+  "tree-small": {
+   "model": "packs/kenney-nature-kit/2.1/tree_small.glb",
+   "height": 3.0,
+   "kind": "object",
+   "label": "Xem cây"
+  },
+  "pumpkin": {
+   "model": "packs/kenney-nature-kit/2.1/crop_pumpkin.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "carrot": {
+   "model": "packs/kenney-nature-kit/2.1/crop_carrot.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Nhổ lên"
+  },
+  "melon": {
+   "model": "packs/kenney-nature-kit/2.1/crop_melon.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "turnip": {
+   "model": "packs/kenney-nature-kit/2.1/crop_turnip.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Nhổ lên"
+  },
+  "wheat": {
+   "model": "packs/kenney-nature-kit/2.1/crops_wheatStageB.glb",
+   "height": 0.9,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "corn": {
+   "model": "packs/kenney-nature-kit/2.1/crops_cornStageD.glb",
+   "height": 1.6,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "bamboo": {
+   "model": "packs/kenney-nature-kit/2.1/crops_bambooStageB.glb",
+   "height": 1.8,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "lily": {
+   "model": "packs/kenney-nature-kit/2.1/lily_large.glb",
+   "height": 0.2,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "apple": {
+   "model": "packs/kenney-food-kit/2.0/apple.glb",
+   "height": 0.4,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "pear": {
+   "model": "packs/kenney-food-kit/2.0/pear.glb",
+   "height": 0.4,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "banana": {
+   "model": "packs/kenney-food-kit/2.0/banana.glb",
+   "height": 0.4,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "grapes": {
+   "model": "packs/kenney-food-kit/2.0/grapes.glb",
+   "height": 0.4,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "orange": {
+   "model": "packs/kenney-food-kit/2.0/orange.glb",
+   "height": 0.4,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "cake": {
+   "model": "packs/kenney-food-kit/2.0/cake.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "cupcake": {
+   "model": "packs/kenney-food-kit/2.0/cupcake.glb",
+   "height": 0.4,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "bread": {
+   "model": "packs/kenney-food-kit/2.0/bread.glb",
+   "height": 0.4,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "cookie": {
+   "model": "packs/kenney-food-kit/2.0/cookie.glb",
+   "height": 0.3,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "candy": {
+   "model": "packs/kenney-food-kit/2.0/lollypop.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "cup": {
+   "model": "packs/kenney-food-kit/2.0/cup.glb",
+   "height": 0.4,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "bowl": {
+   "model": "packs/kenney-food-kit/2.0/bowl.glb",
+   "height": 0.4,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "egg": {
+   "model": "packs/kenney-food-kit/2.0/egg.glb",
+   "height": 0.3,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "honey": {
+   "model": "packs/kenney-food-kit/2.0/honey.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "fish-food": {
+   "model": "packs/kenney-food-kit/2.0/fish.glb",
+   "height": 0.4,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "tool-hammer": {
+   "model": "packs/kenney-survival-kit/2.0/tool-hammer.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "tool-shovel": {
+   "model": "packs/kenney-survival-kit/2.0/tool-shovel.glb",
+   "height": 0.9,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "tool-hoe": {
+   "model": "packs/kenney-survival-kit/2.0/tool-hoe.glb",
+   "height": 0.9,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "letter": {
+   "shape": "letter",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Đọc thư"
+  }
+ }
+}

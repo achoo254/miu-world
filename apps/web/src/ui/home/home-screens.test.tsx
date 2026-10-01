@@ -128,7 +128,7 @@ describe('Map and region', () => {
     stubServer();
     renderAt('/map');
     expect(await screen.findByRole('heading', { name: /Bản đồ thế giới/ })).toBeTruthy();
-    fireEvent.click(screen.getByRole('button', { name: 'Trường học: Sắp có' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Thư viện: Sắp có' }));
     expect(screen.getByRole('heading', { name: /Bản đồ thế giới/ })).toBeTruthy();
     fireEvent.click(document.querySelector('[data-id="map-region-khu-rung-bi-mat"]') as HTMLElement);
     expect(await screen.findByRole('heading', { name: 'Chương 1' })).toBeTruthy();

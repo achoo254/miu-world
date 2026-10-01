@@ -42,7 +42,7 @@ describe('runtime asset selection for the web build', async () => {
 
   it('leaves the rest of the licensed packs out of dist', () => {
     expect(shipped.length).toBeLessThan(manifest.length / 4);
-    expect(shipped).not.toContain('packs/kenney-cube-pets/2.0/animal-giraffe.glb');
+    expect(shipped).not.toContain('packs/kenney-castle-kit/2.0/siege-catapult.glb');
     expect(shipped.every((p) => manifest.includes(p))).toBe(true);
   });
 

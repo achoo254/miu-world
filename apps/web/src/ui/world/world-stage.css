@@ -72,8 +72,12 @@
   .world-bubble { animation: none; }
 }
 
-/* A very small island: the open region's card drops its sparkle to stay clear of the lock pins. */
-@container (max-width: 22rem) {
+/* A narrow island with several open regions: their names wrap onto two short lines, so neighbouring
+   cards stay apart; on a phone-sized island the sparkle goes too. */
+@container (max-width: 40rem) {
+  .world-marker--open { white-space: normal; max-width: 6.5rem; text-align: center; justify-content: center; }
+}
+@container (max-width: 30rem) {
   .world-marker--open .icon { display: none; }
 }
 

@@ -1,7 +1,7 @@
 ---
 phase: 10
 title: "Kích hoạt, cổng 100%, trang review"
-status: pending
+status: completed
 priority: P1
 effort: "M"
 dependencies: [1, 2, 3, 4, 5, 6, 7, 8, 9]

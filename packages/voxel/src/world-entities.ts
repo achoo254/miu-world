@@ -32,7 +32,12 @@ const interactableSchema = z
     board: z.string().min(1).optional(),
     /** Shown only while that chapter is played (see `entitiesForChapter`); absent for the map's own chapter. */
     chapter: z.number().int().min(1).optional(),
+    /** A character who comes back in several chapters: shown in each of them, placed once. */
+    chapters: z.array(z.number().int().min(1)).min(1).optional(),
+    /** Something only one quest uses: shown only while that quest is played (with its chapter). */
+    quest: z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/).optional(),
   })
+  .refine((t) => !(t.chapter !== undefined && t.chapters !== undefined), { message: 'a target has one chapter or a list of chapters, not both' })
   .refine((t) => (t.model === undefined) === (t.scale === undefined), { message: 'model and scale go together' })
   .refine((t) => !(t.model && t.shape), { message: 'a target has a model or a built shape, not both' })
   .refine((t) => t.animation === undefined || t.model !== undefined, { message: 'animation needs a model' });
@@ -111,11 +116,15 @@ export const worldEntitiesSchema = z
 export type WorldEntities = z.infer<typeof worldEntitiesSchema>;
 
 /**
- * What the runtime builds while `chapter` is played: everything untagged (the map's own chapter) plus
- * what is tagged with that chapter. Another chapter's characters and props are neither drawn nor met.
+ * What the runtime builds while `chapter` (and, when known, `quest`) is played: everything untagged (the
+ * map's own chapter) plus what is tagged with that chapter, or lists it among its chapters; something tagged
+ * with a quest shows only for that quest. Another chapter's characters and props are neither drawn nor met.
  */
-export function entitiesForChapter(entities: WorldEntities, chapter: number): WorldEntities {
-  const shown = (e: { chapter?: number }): boolean => e.chapter === undefined || e.chapter === chapter;
+export function entitiesForChapter(entities: WorldEntities, chapter: number, quest?: string): WorldEntities {
+  const shown = (e: { chapter?: number; chapters?: readonly number[]; quest?: string }): boolean => {
+    const inChapter = e.chapters ? e.chapters.includes(chapter) : e.chapter === undefined || e.chapter === chapter;
+    return inChapter && (e.quest === undefined || e.quest === quest);
+  };
   return { ...entities, interactables: entities.interactables.filter(shown), props: entities.props.filter(shown), ...(entities.ambients ? { ambients: entities.ambients.filter(shown) } : {}) };
 }
 

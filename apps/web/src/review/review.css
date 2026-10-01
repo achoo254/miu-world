@@ -72,3 +72,7 @@ output { margin-left: var(--space-sm); color: var(--ok); }
 .security p { margin: 0; }
 .debts { line-height: 1.6; }
 .decisions { display: grid; gap: var(--space-xs); padding-left: var(--space-lg); }
+.coverage { width: 100%; border-collapse: collapse; font-size: var(--text-sm); }
+.coverage th, .coverage td { padding: var(--space-xs) var(--space-sm); border-bottom: 1px solid var(--line); text-align: right; }
+.coverage th:first-child, .coverage td:first-child { text-align: left; }
+.coverage tr:last-child td { font-weight: 700; }

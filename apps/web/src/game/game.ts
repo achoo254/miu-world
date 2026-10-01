@@ -62,6 +62,8 @@ export interface GameOptions {
   chapter?: number;
   /** Region of the quest being played, which picks the map. */
   region?: string;
+  /** Quest being played: things only another quest uses stay out of the world. */
+  quest?: string;
   /** The child's character name, which villagers use when they greet her. */
   playerName?: string;
   /** Pet id (`content/pets.json`) that trots after the character, or none. */
@@ -259,7 +261,7 @@ export class Game {
       return blocks(data.world.get(x, y, z))?.solid ?? false;
     };
 
-    const entities = entitiesForChapter(data.entities, this.options.chapter ?? 1);
+    const entities = entitiesForChapter(data.entities, this.options.chapter ?? 1, this.options.quest);
     const outfitParam = params.get('outfit');
     const outfit = outfitParam === 'none' ? [] : outfitParam ? outfitParam.split(',') : this.options.outfit;
     /** Where a walker stands over a column: the first open cell with ground under it, searched near its height. */

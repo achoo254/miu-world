@@ -44,10 +44,12 @@ describe('content:check', () => {
     forest.status = 'soon';
     home.name = 'Nhà của Miu';
     writeFileSync(file, JSON.stringify(regions));
-    expect(checkContent(dir).issues).toEqual([
-      'region nha-cua-be says "Miu" instead of {name}',
-      'quest forest-ch1 is in region khu-rung-bi-mat, which is not an open region',
-    ]);
+    const issues = checkContent(dir).issues;
+    expect(issues[0]).toBe('region nha-cua-be says "Miu" instead of {name}');
+    // Every quest of the forest (chapter 1 and the Tiếng Việt lessons) now sits in a region that is not open.
+    expect(issues).toContain('quest forest-ch1 is in region khu-rung-bi-mat, which is not an open region');
+    expect(issues).toContain('quest tv2-t01-b01 is in region khu-rung-bi-mat, which is not an open region');
+    expect(issues.filter((i) => i.includes('not an open region')).every((i) => i.includes('khu-rung-bi-mat'))).toBe(true);
     writeFileSync(file, JSON.stringify({ version: 1, regions: [{ ...forest, status: 'level' }] }));
     expect(checkContent(dir).issues.join('\n')).toMatch(/level goes with status/);
   });
@@ -104,7 +106,8 @@ describe('content:check', () => {
     it('notes, without failing, an active quest whose map is not generated yet; stubs are skipped', () => {
       const report = checkQuestTargets(quests().values(), path.join(dir, 'no-maps'));
       expect(report.issues).toEqual([]);
-      expect(report.notes).toEqual(['quest forest-ch1: map targets not checked, region khu-rung-bi-mat chapter 1 has no generated map']);
+      expect(report.notes).toContain('quest forest-ch1: map targets not checked, region khu-rung-bi-mat chapter 1 has no generated map');
+      expect(report.notes).toContain('quest toan2-cd1-b01: map targets not checked, region truong-hoc chapter 1 has no generated map');
     });
   });
 

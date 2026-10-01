@@ -1,0 +1,1441 @@
+{
+  "version": 1,
+  "targets": {
+    "ban-doc-sach": {
+      "name": "Bản danh sách",
+      "look": "letter",
+      "label": "Đọc danh sách"
+    },
+    "ban-lap-rap": {
+      "name": "Bàn lắp ráp",
+      "look": "workbench",
+      "label": "Đọc bài"
+    },
+    "bang-go-goc-soi": {
+      "name": "Bảng gỗ gốc sồi",
+      "look": "signpost"
+    },
+    "bang-go-lop-hai": {
+      "name": "Bảng gỗ lớp Hai",
+      "look": "signpost"
+    },
+    "be-bong-mang-nuoc": {
+      "name": "Bê Bông",
+      "look": "animal-cow"
+    },
+    "bo-sua-mo": {
+      "name": "Bò Sữa Mơ",
+      "look": "animal-cow"
+    },
+    "bo-sua-mo-cong": {
+      "name": "Bò Sữa Mơ",
+      "look": "animal-cow"
+    },
+    "bo-sua-mo-rao": {
+      "name": "Bò Sữa Mơ",
+      "look": "animal-cow"
+    },
+    "ca-bong": {
+      "name": "Cá Bống",
+      "look": "animal-fish"
+    },
+    "canh-cut-pin": {
+      "name": "Cánh Cụt Pin",
+      "look": "animal-penguin"
+    },
+    "cao-lem": {
+      "name": "Cáo Lém",
+      "look": "animal-fox"
+    },
+    "chim-canh-cut-pin": {
+      "name": "Cánh Cụt Pin",
+      "look": "animal-penguin"
+    },
+    "cho-muc": {
+      "name": "Chó Mực",
+      "look": "animal-dog"
+    },
+    "cua-kenh": {
+      "name": "Cua Kềnh",
+      "look": "animal-crab"
+    },
+    "dom": {
+      "name": "Lợn Rừng Đốm",
+      "look": "animal-hog"
+    },
+    "dua-thuyen": {
+      "name": "Khỉ Lanh",
+      "look": "animal-monkey"
+    },
+    "ga-chip": {
+      "name": "Gà Con Chíp",
+      "look": "animal-chick"
+    },
+    "ga-con-chip": {
+      "name": "Gà Con Chíp",
+      "look": "animal-chick"
+    },
+    "gau-truc": {
+      "name": "Gấu Trúc Tròn",
+      "look": "animal-panda"
+    },
+    "gau-truc-tron": {
+      "name": "Gấu Trúc Tròn",
+      "look": "animal-panda"
+    },
+    "gau-tuyet-bong": {
+      "name": "Gấu Tuyết Bông",
+      "look": "animal-polar"
+    },
+    "gian-bon-cua": {
+      "name": "Cáo Lém",
+      "look": "animal-fox"
+    },
+    "gian-so-lien-nhau": {
+      "name": "Gian số liền nhau",
+      "look": "sign",
+      "label": "Xem"
+    },
+    "gian-tach-so": {
+      "name": "Gian tách số",
+      "look": "workbench"
+    },
+    "gian-the-so": {
+      "name": "Gian thẻ số",
+      "look": "workbench"
+    },
+    "gian-xe-dua": {
+      "name": "Gian xe đua",
+      "look": "box-large"
+    },
+    "goc-cay-lich-la": {
+      "name": "Gốc cây lịch lá",
+      "look": "letter",
+      "label": "Xem tờ lịch"
+    },
+    "hai-ly-bai-co": {
+      "name": "Hải Ly Cần",
+      "look": "animal-beaver"
+    },
+    "hai-ly-can": {
+      "name": "Hải Ly Cần",
+      "look": "animal-beaver"
+    },
+    "hai-ly-lan-go": {
+      "name": "Hải Ly Cần",
+      "look": "animal-beaver"
+    },
+    "heo-un": {
+      "name": "Heo Ủn",
+      "look": "animal-pig"
+    },
+    "heo-un-bep-vuon": {
+      "name": "Heo Ủn",
+      "look": "animal-pig"
+    },
+    "heo-un-cong-sau": {
+      "name": "Heo Ủn",
+      "look": "animal-pig"
+    },
+    "ho-van": {
+      "name": "Hổ Vằn",
+      "look": "animal-tiger"
+    },
+    "huou-cao": {
+      "name": "Hươu Cao",
+      "look": "animal-giraffe"
+    },
+    "ke-sach": {
+      "name": "Kệ sách",
+      "look": "box-large",
+      "label": "Đọc bài"
+    },
+    "khi-lanh": {
+      "name": "Khỉ Lanh",
+      "look": "animal-monkey"
+    },
+    "koala-na": {
+      "name": "Koala Na",
+      "look": "animal-koala"
+    },
+    "lon-rung-dom": {
+      "name": "Lợn Rừng Đốm",
+      "look": "animal-hog"
+    },
+    "me-ga": {
+      "name": "Mẹ Gà",
+      "look": "animal-chick"
+    },
+    "meo-mun": {
+      "name": "Mèo Mun",
+      "look": "animal-cat"
+    },
+    "nai-mo": {
+      "name": "Nai Mơ",
+      "look": "animal-deer"
+    },
+    "ong-hong": {
+      "name": "Ong Hồng",
+      "look": "animal-bee"
+    },
+    "ong-nu": {
+      "name": "Ong Nụ",
+      "look": "animal-bee"
+    },
+    "ong-vang": {
+      "name": "Ong Vàng",
+      "look": "animal-bee"
+    },
+    "ong-vang-to-moi": {
+      "name": "Ong Vàng",
+      "look": "animal-bee"
+    },
+    "ong-ven": {
+      "name": "Ông Vện",
+      "look": "animal-dog"
+    },
+    "sau-xanh": {
+      "name": "Sâu Xanh",
+      "look": "animal-caterpillar"
+    },
+    "su-tu-vang": {
+      "name": "Sư Tử Vàng",
+      "look": "animal-lion"
+    },
+    "tho-teo": {
+      "name": "Bé Tẹo",
+      "look": "animal-bunny"
+    },
+    "tho-ti": {
+      "name": "Thỏ Tí",
+      "look": "animal-bunny"
+    },
+    "toan2-cd1-bien-hieu": {
+      "name": "Biển tên Hiệu",
+      "look": "sign",
+      "label": "Nhặt lên"
+    },
+    "toan2-cd1-bien-so-hang": {
+      "name": "Biển tên Số hạng",
+      "look": "sign",
+      "label": "Nhặt lên"
+    },
+    "toan2-cd1-bien-tong": {
+      "name": "Biển tên Tổng",
+      "look": "sign",
+      "label": "Nhặt lên"
+    },
+    "toan2-cd1-bong-do": {
+      "name": "Bóng đỏ",
+      "look": "apple"
+    },
+    "toan2-cd1-bong-vang": {
+      "name": "Bóng vàng",
+      "look": "orange"
+    },
+    "toan2-cd1-bong-xanh": {
+      "name": "Bóng xanh",
+      "look": "melon",
+      "label": "Nhặt lên"
+    },
+    "toan2-cd1-phan-hong": {
+      "name": "Phấn hồng",
+      "look": "rock",
+      "label": "Nhặt lên"
+    },
+    "toan2-cd1-phan-trang": {
+      "name": "Phấn trắng",
+      "look": "rock",
+      "label": "Nhặt lên"
+    },
+    "toan2-cd1-phan-vang": {
+      "name": "Phấn vàng",
+      "look": "rock",
+      "label": "Nhặt lên"
+    },
+    "toan2-cd1-phong-bi-do": {
+      "name": "Phong bì đỏ",
+      "look": "letter",
+      "label": "Nhặt lên"
+    },
+    "toan2-cd1-phong-bi-vang": {
+      "name": "Phong bì vàng",
+      "look": "letter",
+      "label": "Nhặt lên"
+    },
+    "toan2-cd1-phong-bi-xanh": {
+      "name": "Phong bì xanh",
+      "look": "letter",
+      "label": "Nhặt lên"
+    },
+    "toan2-cd1-ve-cam": {
+      "name": "Vé màu cam",
+      "look": "letter",
+      "label": "Nhặt lên"
+    },
+    "toan2-cd1-ve-do": {
+      "name": "Vé màu đỏ",
+      "look": "letter",
+      "label": "Nhặt lên"
+    },
+    "toan2-cd1-ve-tim": {
+      "name": "Vé màu tím",
+      "look": "letter",
+      "label": "Nhặt lên"
+    },
+    "toan2-cd2-bau-dai": {
+      "name": "Quả bầu dài",
+      "look": "melon",
+      "label": "Nhặt lên"
+    },
+    "toan2-cd2-bau-ho-lo": {
+      "name": "Quả bầu hồ lô",
+      "look": "pumpkin",
+      "label": "Nhặt lên"
+    },
+    "toan2-cd2-bau-tron": {
+      "name": "Quả bầu tròn",
+      "look": "pumpkin",
+      "label": "Nhặt lên"
+    },
+    "toan2-cd2-be-con-dom": {
+      "name": "Bê con Đốm",
+      "look": "animal-cow",
+      "label": "Dắt về"
+    },
+    "toan2-cd2-be-con-khoang": {
+      "name": "Bê con Khoang",
+      "look": "animal-cow",
+      "label": "Dắt về"
+    },
+    "toan2-cd2-be-con-nau": {
+      "name": "Bê con Nâu",
+      "look": "animal-cow",
+      "label": "Dắt về"
+    },
+    "toan2-cd2-bien-ten-luong": {
+      "name": "Biển tên luống",
+      "look": "sign",
+      "label": "Nhặt lên"
+    },
+    "toan2-cd2-binh-tuoi": {
+      "name": "Bình tưới",
+      "look": "bucket",
+      "label": "Nhặt lên"
+    },
+    "toan2-cd2-bo-que-do": {
+      "name": "Bó que đỏ",
+      "look": "log-stack",
+      "label": "Nhặt lên"
+    },
+    "toan2-cd2-bo-que-xanh": {
+      "name": "Bó que xanh",
+      "look": "log-stack",
+      "label": "Nhặt lên"
+    },
+    "toan2-cd2-ca-rot-khong-lo": {
+      "name": "Cà rốt khổng lồ",
+      "look": "carrot"
+    },
+    "toan2-cd2-chia-khoa-do": {
+      "name": "Chìa khóa đỏ",
+      "look": "candy"
+    },
+    "toan2-cd2-chia-khoa-vang": {
+      "name": "Chìa khóa vàng",
+      "look": "candy"
+    },
+    "toan2-cd2-chia-khoa-xanh": {
+      "name": "Chìa khóa xanh",
+      "look": "candy"
+    },
+    "toan2-cd2-da-cuoi-det": {
+      "name": "Đá cuội dẹt",
+      "look": "rock",
+      "label": "Nhặt lên"
+    },
+    "toan2-cd2-da-cuoi-tron": {
+      "name": "Đá cuội tròn",
+      "look": "rock",
+      "label": "Nhặt lên"
+    },
+    "toan2-cd2-da-cuoi-vang": {
+      "name": "Đá cuội vàng",
+      "look": "rock",
+      "label": "Nhặt lên"
+    },
+    "toan2-cd2-gio-tao-do": {
+      "name": "Giỏ táo đổ",
+      "look": "box-open",
+      "label": "Nhặt táo"
+    },
+    "toan2-cd2-long-tre-cut": {
+      "name": "Lóng tre cụt",
+      "look": "bamboo",
+      "label": "Nhặt lên"
+    },
+    "toan2-cd2-long-tre-vang": {
+      "name": "Lóng tre vàng",
+      "look": "bamboo",
+      "label": "Nhặt lên"
+    },
+    "toan2-cd2-long-tre-xanh": {
+      "name": "Lóng tre xanh",
+      "look": "bamboo",
+      "label": "Nhặt lên"
+    },
+    "toan2-cd2-ro-tao-nho": {
+      "name": "Rổ táo nhỏ",
+      "look": "apple"
+    },
+    "toan2-cd2-tao-bui-co": {
+      "name": "Táo trong bụi cỏ",
+      "look": "bush"
+    },
+    "toan2-cd2-tao-la-kho": {
+      "name": "Táo dưới lá khô",
+      "look": "apple"
+    },
+    "toan2-cd3-ca-dong-nuoc": {
+      "name": "Ca đong nước",
+      "look": "cup",
+      "label": "Nhặt lên"
+    },
+    "toan2-cd3-ca-mot-lit": {
+      "name": "Ca 1 lít",
+      "look": "cup",
+      "label": "Nhặt lên"
+    },
+    "toan2-cd3-chai-nuoc": {
+      "name": "Chai nước",
+      "look": "bottle"
+    },
+    "toan2-cd3-coc-thuy-tinh": {
+      "name": "Cốc thủy tinh",
+      "look": "cup",
+      "label": "Nhặt lên"
+    },
+    "toan2-cd3-qua-can-1kg": {
+      "name": "Quả cân 1 kg",
+      "look": "pot",
+      "label": "Nhặt lên"
+    },
+    "toan2-cd3-qua-can-2kg": {
+      "name": "Quả cân 2 kg",
+      "look": "pot",
+      "label": "Nhặt lên"
+    },
+    "toan2-cd3-qua-can-5kg": {
+      "name": "Quả cân 5 kg",
+      "look": "pot",
+      "label": "Nhặt lên"
+    },
+    "toan2-cd3-thung-qua-do": {
+      "name": "Thùng quà đỏ",
+      "look": "box",
+      "label": "Nhặt lên"
+    },
+    "toan2-cd3-thung-qua-vang": {
+      "name": "Thùng quà vàng",
+      "look": "box",
+      "label": "Nhặt lên"
+    },
+    "toan2-cd3-thung-qua-xanh": {
+      "name": "Thùng quà xanh",
+      "look": "box",
+      "label": "Nhặt lên"
+    },
+    "toan2-cd3-tui-gao": {
+      "name": "Túi gạo",
+      "look": "bag"
+    },
+    "toan2-cd3-tui-muoi": {
+      "name": "Túi muối",
+      "look": "bag"
+    },
+    "toan2-cd4-banh-xe": {
+      "name": "Bánh xe",
+      "look": "cookie"
+    },
+    "toan2-cd4-be-ca": {
+      "name": "Bể cá",
+      "look": "bucket"
+    },
+    "toan2-cd4-bup-be-go": {
+      "name": "Búp bê gỗ",
+      "look": "bottle"
+    },
+    "toan2-cd4-con-quay": {
+      "name": "Con quay",
+      "look": "cupcake",
+      "label": "Nhặt lên"
+    },
+    "toan2-cd4-hop-oc-vit": {
+      "name": "Hộp ốc vít",
+      "look": "box",
+      "label": "Nhặt lên"
+    },
+    "toan2-cd4-hop-qua-do": {
+      "name": "Hộp quà đỏ",
+      "look": "box"
+    },
+    "toan2-cd4-hop-qua-vang": {
+      "name": "Hộp quà vàng",
+      "look": "box"
+    },
+    "toan2-cd4-hop-qua-xanh": {
+      "name": "Hộp quà xanh",
+      "look": "box"
+    },
+    "toan2-cd4-lo-xo": {
+      "name": "Lò xo",
+      "look": "log",
+      "label": "Nhặt lên"
+    },
+    "toan2-cd4-may-bay-do": {
+      "name": "Máy bay giấy đỏ",
+      "look": "letter",
+      "label": "Nhặt lên"
+    },
+    "toan2-cd4-may-bay-vang": {
+      "name": "Máy bay giấy vàng",
+      "look": "letter",
+      "label": "Nhặt lên"
+    },
+    "toan2-cd4-may-bay-xanh": {
+      "name": "Máy bay giấy xanh",
+      "look": "letter",
+      "label": "Nhặt lên"
+    },
+    "toan2-cd4-o-to-go": {
+      "name": "Ô tô gỗ",
+      "look": "box",
+      "label": "Nhặt lên"
+    },
+    "toan2-cd4-toa-hang-do": {
+      "name": "Toa hàng đỏ",
+      "look": "box",
+      "label": "Nhặt lên"
+    },
+    "toan2-cd4-toa-hang-vang": {
+      "name": "Toa hàng vàng",
+      "look": "box",
+      "label": "Nhặt lên"
+    },
+    "toan2-cd4-toa-hang-xanh": {
+      "name": "Toa hàng xanh",
+      "look": "box",
+      "label": "Nhặt lên"
+    },
+    "toan2-cd5-but-chi": {
+      "name": "Bút chì",
+      "look": "log",
+      "label": "Nhặt lên"
+    },
+    "toan2-cd5-dinh-treo-tranh": {
+      "name": "Đinh treo tranh",
+      "look": "box",
+      "label": "Nhặt lên"
+    },
+    "toan2-cd5-giay-mau": {
+      "name": "Giấy màu",
+      "look": "letter",
+      "label": "Nhặt lên"
+    },
+    "toan2-cd5-hop-sao-giay": {
+      "name": "Hộp sao giấy",
+      "look": "box",
+      "label": "Nhặt lên"
+    },
+    "toan2-cd5-keo-nho": {
+      "name": "Kéo nhỏ",
+      "look": "box",
+      "label": "Nhặt lên"
+    },
+    "toan2-cd5-khung-tranh-go": {
+      "name": "Khung tranh gỗ",
+      "look": "sign",
+      "label": "Nhặt lên"
+    },
+    "toan2-cd5-lo-ho-dan": {
+      "name": "Lọ hồ dán",
+      "look": "bottle"
+    },
+    "toan2-cd5-manh-kinh-do": {
+      "name": "Mảnh kính đỏ",
+      "look": "bottle"
+    },
+    "toan2-cd5-manh-kinh-tim": {
+      "name": "Mảnh kính tím",
+      "look": "bottle"
+    },
+    "toan2-cd5-manh-kinh-xanh": {
+      "name": "Mảnh kính xanh",
+      "look": "bottle"
+    },
+    "toan2-cd5-thuoc-ke": {
+      "name": "Thước kẻ",
+      "look": "log",
+      "label": "Nhặt lên"
+    },
+    "toan2-cd5-thuoc-ke-dai": {
+      "name": "Thước kẻ dài",
+      "look": "log",
+      "label": "Nhặt lên"
+    },
+    "toan2-cd6-buu-anh-hue": {
+      "name": "Bưu ảnh Huế",
+      "look": "letter",
+      "label": "Nhặt lên"
+    },
+    "toan2-cd6-buu-anh-mu-cang-chai": {
+      "name": "Bưu ảnh Mù Cang Chải",
+      "look": "letter",
+      "label": "Nhặt lên"
+    },
+    "toan2-cd6-buu-anh-nam-can": {
+      "name": "Bưu ảnh Năm Căn",
+      "look": "letter",
+      "label": "Nhặt lên"
+    },
+    "toan2-cd6-chia-khoa-day-cot": {
+      "name": "Chìa khoá dây cót",
+      "look": "candy"
+    },
+    "toan2-cd6-dong-ho-mo-hinh": {
+      "name": "Đồng hồ mô hình",
+      "look": "box",
+      "label": "Nhặt lên"
+    },
+    "toan2-cd6-kim-gio-thap": {
+      "name": "Kim giờ",
+      "look": "log",
+      "label": "Nhặt lên"
+    },
+    "toan2-cd6-kim-phut-thap": {
+      "name": "Kim phút",
+      "look": "log",
+      "label": "Nhặt lên"
+    },
+    "toan2-cd6-the-ngay-sinh": {
+      "name": "Thẻ ngày sinh",
+      "look": "letter",
+      "label": "Nhặt lên"
+    },
+    "toan2-cd6-to-lich-thang-12": {
+      "name": "Tờ lịch tháng 12",
+      "look": "letter",
+      "label": "Nhặt lên"
+    },
+    "toan2-cd6-to-lich-thang-2": {
+      "name": "Tờ lịch tháng 2",
+      "look": "letter",
+      "label": "Nhặt lên"
+    },
+    "toan2-cd6-to-lich-thang-5": {
+      "name": "Tờ lịch tháng 5",
+      "look": "letter",
+      "label": "Nhặt lên"
+    },
+    "toan2-cd6-to-lich-thang-6": {
+      "name": "Tờ lịch tháng 6",
+      "look": "letter",
+      "label": "Nhặt lên"
+    },
+    "toan2-cd7-ca-mot-lit": {
+      "name": "Ca một lít",
+      "look": "cup",
+      "label": "Nhặt lên"
+    },
+    "toan2-cd7-can-nuoc": {
+      "name": "Can nước",
+      "look": "bucket",
+      "label": "Nhặt lên"
+    },
+    "toan2-cd7-hop-huy-hieu-bac": {
+      "name": "Hộp huy hiệu bạc",
+      "look": "box"
+    },
+    "toan2-cd7-hop-huy-hieu-dong": {
+      "name": "Hộp huy hiệu đồng",
+      "look": "box"
+    },
+    "toan2-cd7-hop-huy-hieu-vang": {
+      "name": "Hộp huy hiệu vàng",
+      "look": "box"
+    },
+    "toan2-cd7-manh-tam-giac": {
+      "name": "Mảnh tam giác",
+      "look": "letter",
+      "label": "Nhặt lên"
+    },
+    "toan2-cd7-manh-tu-giac": {
+      "name": "Mảnh tứ giác",
+      "look": "letter",
+      "label": "Nhặt lên"
+    },
+    "toan2-cd7-qua-can": {
+      "name": "Quả cân",
+      "look": "pot",
+      "label": "Nhặt lên"
+    },
+    "toan2-cd7-thuoc-ke": {
+      "name": "Thước kẻ",
+      "look": "log",
+      "label": "Nhặt lên"
+    },
+    "toan2-cd7-xap-ve-do": {
+      "name": "Xấp vé đỏ",
+      "look": "letter",
+      "label": "Nhặt lên"
+    },
+    "toan2-cd7-xap-ve-vang": {
+      "name": "Xấp vé vàng",
+      "look": "letter",
+      "label": "Nhặt lên"
+    },
+    "toan2-cd7-xap-ve-xanh": {
+      "name": "Xấp vé xanh",
+      "look": "letter",
+      "label": "Nhặt lên"
+    },
+    "trong-tai-cao-lem": {
+      "name": "Cáo Lém",
+      "look": "animal-fox"
+    },
+    "tv2-t01-bang-chu-cai": {
+      "name": "Bảng chữ cái",
+      "look": "signpost",
+      "label": "Xem bảng"
+    },
+    "tv2-t01-cap-la-sau-xanh": {
+      "name": "Cặp lá Sâu Xanh",
+      "look": "bag"
+    },
+    "tv2-t01-giay-sau-xanh": {
+      "name": "Giày Sâu Xanh",
+      "look": "bag"
+    },
+    "tv2-t01-hoc-cay": {
+      "name": "Hốc cây",
+      "look": "stump",
+      "label": "Nhìn vào hốc cây"
+    },
+    "tv2-t01-hop-but-hat-de": {
+      "name": "Hộp bút hạt dẻ",
+      "look": "box",
+      "label": "Nhặt lên"
+    },
+    "tv2-t01-to-lich-ban-hoc": {
+      "name": "Tờ lịch trên bàn học",
+      "look": "letter",
+      "label": "Nhặt tờ lịch"
+    },
+    "tv2-t01-to-lich-bui-hong": {
+      "name": "Tờ lịch ở bụi hồng",
+      "look": "letter",
+      "label": "Nhặt tờ lịch"
+    },
+    "tv2-t01-to-lich-ruong-lua": {
+      "name": "Tờ lịch ở ruộng lúa",
+      "look": "letter",
+      "label": "Nhặt tờ lịch"
+    },
+    "tv2-t02-bang-go-bai-co": {
+      "name": "Bảng gỗ bãi cỏ",
+      "look": "signpost"
+    },
+    "tv2-t02-bang-sap-ong": {
+      "name": "Bảng sáp ong",
+      "look": "sign"
+    },
+    "tv2-t02-chum-vai-chin": {
+      "name": "Chùm vải chín",
+      "look": "grapes",
+      "label": "Xem"
+    },
+    "tv2-t02-cuon-giay-ve": {
+      "name": "Cuộn giấy vẽ",
+      "look": "letter",
+      "label": "Nhặt lên"
+    },
+    "tv2-t02-day-phoi-tranh": {
+      "name": "Dây phơi tranh",
+      "look": "sign",
+      "label": "Xem tranh"
+    },
+    "tv2-t02-dong-ho-goc-cay": {
+      "name": "Đồng hồ gốc cây",
+      "look": "stump"
+    },
+    "tv2-t02-goc-vuon-um-tum": {
+      "name": "Góc vườn um tùm",
+      "look": "bush"
+    },
+    "tv2-t02-hop-but-mau": {
+      "name": "Hộp bút màu",
+      "look": "box",
+      "label": "Nhặt lên"
+    },
+    "tv2-t02-hu-sanh-rong": {
+      "name": "Hũ sành",
+      "look": "pot",
+      "label": "Nhặt lên"
+    },
+    "tv2-t02-long-ga-trong": {
+      "name": "Lông gà trống",
+      "look": "wheat"
+    },
+    "tv2-t02-vach-to-ong": {
+      "name": "Vách tổ ong",
+      "look": "honey"
+    },
+    "tv2-t03-ban-chai-meo": {
+      "name": "Bàn chải",
+      "look": "log",
+      "label": "Nhặt lên"
+    },
+    "tv2-t03-bang-xanh": {
+      "name": "Bảng xanh",
+      "look": "sign"
+    },
+    "tv2-t03-buc-go": {
+      "name": "Bục gỗ",
+      "look": "box-large",
+      "label": "Lên bục"
+    },
+    "tv2-t03-canh-cay-kho": {
+      "name": "Cành cây khô",
+      "look": "log"
+    },
+    "tv2-t03-cap-la-meo": {
+      "name": "Cặp lá Mèo Mun",
+      "look": "bag"
+    },
+    "tv2-t03-khan-mat-meo": {
+      "name": "Khăn mặt",
+      "look": "bag"
+    },
+    "tv2-t03-khom-co-dai": {
+      "name": "Khóm cỏ dại",
+      "look": "bush"
+    },
+    "tv2-t03-kinh-voi-bao": {
+      "name": "Kính Voi Bảo",
+      "look": "bottle"
+    },
+    "tv2-t03-tang-da-ben-suoi": {
+      "name": "Tảng đá bên suối",
+      "look": "rock",
+      "label": "Đọc chuyện"
+    },
+    "tv2-t03-van-chu-cai": {
+      "name": "Ván chữ cái",
+      "look": "sign",
+      "label": "Xem"
+    },
+    "tv2-t03-vung-nuoc-trong": {
+      "name": "Vũng nước trong",
+      "look": "lily"
+    },
+    "tv2-t04-bang-ti-so": {
+      "name": "Bảng tỉ số",
+      "look": "sign"
+    },
+    "tv2-t04-bong-bui-sim": {
+      "name": "Bóng ở bụi sim",
+      "look": "apple"
+    },
+    "tv2-t04-bong-goc-tre": {
+      "name": "Bóng ở gốc tre",
+      "look": "orange"
+    },
+    "tv2-t04-bong-ven-suoi": {
+      "name": "Bóng ven suối",
+      "look": "melon",
+      "label": "Nhặt lên"
+    },
+    "tv2-t04-bua-hai-ly": {
+      "name": "Búa của Hải Ly",
+      "look": "tool-hammer",
+      "label": "Xem"
+    },
+    "tv2-t04-bui-xau-ho": {
+      "name": "Bụi xấu hổ",
+      "look": "bush",
+      "label": "Xem"
+    },
+    "tv2-t04-day-ao": {
+      "name": "Dây phơi áo đấu",
+      "look": "sign",
+      "label": "Xem áo"
+    },
+    "tv2-t04-dong-la-kho": {
+      "name": "Đống lá khô",
+      "look": "bush",
+      "label": "Xem"
+    },
+    "tv2-t04-kho-dung-cu": {
+      "name": "Kho dụng cụ",
+      "look": "tent",
+      "label": "Mở cửa"
+    },
+    "tv2-t04-long-chim-xanh": {
+      "name": "Lông chim xanh",
+      "look": "wheat"
+    },
+    "tv2-t04-phien-da": {
+      "name": "Phiến đá",
+      "look": "rock",
+      "label": "Đọc bài"
+    },
+    "tv2-t05-bui-hoa-nhai": {
+      "name": "Bụi hoa nhài",
+      "look": "flower-yellow"
+    },
+    "tv2-t05-cai-keo": {
+      "name": "Cái kéo",
+      "look": "box",
+      "label": "Nhặt lên"
+    },
+    "tv2-t05-cap-sach": {
+      "name": "Cặp sách",
+      "look": "bag"
+    },
+    "tv2-t05-chuong-gio-tre": {
+      "name": "Chuông gió tre",
+      "look": "bamboo"
+    },
+    "tv2-t05-khung-cua-so-la": {
+      "name": "Khung cửa sổ lá",
+      "look": "sign",
+      "label": "Đọc thơ"
+    },
+    "tv2-t05-thuoc-ke": {
+      "name": "Thước kẻ",
+      "look": "log",
+      "label": "Nhặt lên"
+    },
+    "tv2-t05-tranh-cau-be-ham-hoc": {
+      "name": "Tranh kể chuyện",
+      "look": "sign",
+      "label": "Xem tranh"
+    },
+    "tv2-t05-vo-tap-viet": {
+      "name": "Vở tập viết",
+      "look": "letter",
+      "label": "Xem"
+    },
+    "tv2-t06-but-chi-tre": {
+      "name": "Bút chì tre",
+      "look": "log",
+      "label": "Nhặt lên"
+    },
+    "tv2-t06-chot-gia-trong": {
+      "name": "Chốt giá trống",
+      "look": "log",
+      "label": "Nhặt lên"
+    },
+    "tv2-t06-dui-trong": {
+      "name": "Dùi trống",
+      "look": "tool-hammer"
+    },
+    "tv2-t06-khan-lau-trong": {
+      "name": "Khăn lau trống",
+      "look": "bag"
+    },
+    "tv2-t06-kinh-lup-gau-truc": {
+      "name": "Kính lúp",
+      "look": "bottle"
+    },
+    "tv2-t06-trang-giay-uot": {
+      "name": "Trang giấy ướt",
+      "look": "letter",
+      "label": "Nhặt lên"
+    },
+    "tv2-t06-trong-truong": {
+      "name": "Trống trường",
+      "look": "barrel",
+      "label": "Đọc thơ"
+    },
+    "tv2-t07-cua-so-la": {
+      "name": "Cửa sổ lá",
+      "look": "sign",
+      "label": "Đọc thơ"
+    },
+    "tv2-t07-day-nhay": {
+      "name": "Dây nhảy",
+      "look": "bag"
+    },
+    "tv2-t07-gia-ve": {
+      "name": "Giá vẽ",
+      "look": "sign",
+      "label": "Đọc thơ"
+    },
+    "tv2-t07-hoa-cuc-dai": {
+      "name": "Hoa cúc dại",
+      "look": "flower-yellow",
+      "label": "Hái hoa"
+    },
+    "tv2-t07-la-xanh-non": {
+      "name": "Lá xanh non",
+      "look": "lily",
+      "label": "Hái lá"
+    },
+    "tv2-t07-leu-ve": {
+      "name": "Lều vẽ",
+      "look": "tent",
+      "label": "Vào lều"
+    },
+    "tv2-t07-long-chim-xanh": {
+      "name": "Lông chim xanh",
+      "look": "wheat",
+      "label": "Nhặt lên"
+    },
+    "tv2-t07-qua-cau-long": {
+      "name": "Quả cầu lông",
+      "look": "wheat",
+      "label": "Nhặt lên"
+    },
+    "tv2-t07-qua-mam-xoi": {
+      "name": "Quả mâm xôi",
+      "look": "grapes",
+      "label": "Hái quả"
+    },
+    "tv2-t07-tranh-bua-trua": {
+      "name": "Tranh bữa trưa",
+      "look": "sign",
+      "label": "Xem tranh"
+    },
+    "tv2-t08-canh-buom-giay": {
+      "name": "Cánh buồm giấy",
+      "look": "letter",
+      "label": "Nhặt lên"
+    },
+    "tv2-t08-canh-buom-hien-ra": {
+      "name": "Cánh buồm lớn",
+      "look": "tent"
+    },
+    "tv2-t08-hop-but-nai-mo": {
+      "name": "Hộp bút Nai Mơ",
+      "look": "box"
+    },
+    "tv2-t08-long-chim-bay": {
+      "name": "Lông chim",
+      "look": "wheat",
+      "label": "Nhặt lên"
+    },
+    "tv2-t08-nhanh-co-dai": {
+      "name": "Nhánh cỏ dại",
+      "look": "wheat",
+      "label": "Nhặt lên"
+    },
+    "tv2-t08-sach-de-men": {
+      "name": "Sách Dế Mèn",
+      "look": "letter",
+      "label": "Nhặt lên"
+    },
+    "tv2-t08-sach-the-gioi-quanh-em": {
+      "name": "Sách Thế giới quanh em",
+      "look": "letter",
+      "label": "Nhặt lên"
+    },
+    "tv2-t08-tang-da-phang": {
+      "name": "Tảng đá phẳng",
+      "look": "rock",
+      "label": "Đọc thơ"
+    },
+    "tv2-t08-trang-muc-luc": {
+      "name": "Trang mục lục",
+      "look": "letter",
+      "label": "Nhặt lên"
+    },
+    "tv2-t09-ve-la-vang-1": {
+      "name": "Vé lá vàng",
+      "look": "letter",
+      "label": "Nhặt lên"
+    },
+    "tv2-t09-ve-la-vang-2": {
+      "name": "Vé lá vàng",
+      "look": "letter",
+      "label": "Nhặt lên"
+    },
+    "tv2-t09-ve-la-vang-3": {
+      "name": "Vé lá vàng",
+      "look": "letter",
+      "label": "Nhặt lên"
+    },
+    "tv2-t10-bang-go-goi-ban": {
+      "name": "Bảng gỗ khắc thơ",
+      "look": "signpost"
+    },
+    "tv2-t10-but-long-chim": {
+      "name": "Bút lông chim",
+      "look": "wheat",
+      "label": "Nhặt lên"
+    },
+    "tv2-t10-cu-ca-rot-roi": {
+      "name": "Củ cà rốt rơi",
+      "look": "carrot",
+      "label": "Nhặt lên"
+    },
+    "tv2-t10-dau-chan-tho": {
+      "name": "Dấu chân thỏ",
+      "look": "rock"
+    },
+    "tv2-t10-phong-bi-bong-tuyet": {
+      "name": "Phong bì tuyết",
+      "look": "letter",
+      "label": "Nhặt lên"
+    },
+    "tv2-t10-thuyen-thu": {
+      "name": "Thuyền thư",
+      "look": "log",
+      "label": "Đọc truyện"
+    },
+    "tv2-t10-to-giay-xanh": {
+      "name": "Tờ giấy xanh",
+      "look": "letter",
+      "label": "Nhặt lên"
+    },
+    "tv2-t10-vach-da-tranh": {
+      "name": "Vách đá có tranh",
+      "look": "rock",
+      "label": "Xem tranh"
+    },
+    "tv2-t11-chu-c-truot-van": {
+      "name": "Chữ C trượt ván",
+      "look": "letter",
+      "label": "Nhặt lên"
+    },
+    "tv2-t11-chu-e-tron-bui": {
+      "name": "Chữ E trốn bụi",
+      "look": "bush"
+    },
+    "tv2-t11-chu-g-treo-canh": {
+      "name": "Chữ G treo cành",
+      "look": "tree-small",
+      "label": "Gỡ xuống"
+    },
+    "tv2-t11-cuon-sach-lon": {
+      "name": "Cuốn sách lớn",
+      "look": "letter",
+      "label": "Đọc sách"
+    },
+    "tv2-t11-hang-da-nho": {
+      "name": "Hang đá nhỏ",
+      "look": "rock",
+      "label": "Vào hang"
+    },
+    "tv2-t11-qua-dai-chin": {
+      "name": "Quả dại chín",
+      "look": "grapes"
+    },
+    "tv2-t11-sach-nhim-nau": {
+      "name": "Sách Nhím Nâu",
+      "look": "letter",
+      "label": "Nhặt lên"
+    },
+    "tv2-t11-vach-tranh": {
+      "name": "Vách tranh",
+      "look": "sign",
+      "label": "Xem tranh"
+    },
+    "tv2-t12-banh-xe-le-go": {
+      "name": "Bánh xe lê-gô",
+      "look": "box",
+      "label": "Nhặt lên"
+    },
+    "tv2-t12-cay-gao-cao": {
+      "name": "Khỉ Lanh",
+      "look": "animal-monkey"
+    },
+    "tv2-t12-cuon-day-dieu": {
+      "name": "Cuộn dây diều",
+      "look": "log",
+      "label": "Nhặt lên"
+    },
+    "tv2-t12-khoi-do": {
+      "name": "Khối lê-gô đỏ",
+      "look": "box",
+      "label": "Nhặt lên"
+    },
+    "tv2-t12-khoi-vang": {
+      "name": "Khối lê-gô vàng",
+      "look": "box",
+      "label": "Nhặt lên"
+    },
+    "tv2-t12-phien-da-tho": {
+      "name": "Phiến đá khắc thơ",
+      "look": "rock",
+      "label": "Đọc thơ"
+    },
+    "tv2-t12-sao-truc-dieu": {
+      "name": "Sáo trúc diều",
+      "look": "bamboo",
+      "label": "Nhặt lên"
+    },
+    "tv2-t13-cay-nuc-nac": {
+      "name": "Cây núc nác",
+      "look": "tree-small",
+      "label": "Đọc luật"
+    },
+    "tv2-t13-gao-nuoc": {
+      "name": "Gáo nước",
+      "look": "bowl",
+      "label": "Nhặt lên"
+    },
+    "tv2-t13-gia-do-choi": {
+      "name": "Giá đồ chơi",
+      "look": "box-large"
+    },
+    "tv2-t13-la-chuoi": {
+      "name": "Tàu lá chuối",
+      "look": "lily",
+      "label": "Nhặt lên"
+    },
+    "tv2-t13-manh-la-dau": {
+      "name": "Mảnh lá đầu",
+      "look": "lily",
+      "label": "Nhặt lên"
+    },
+    "tv2-t13-manh-la-duoi": {
+      "name": "Mảnh lá đuôi",
+      "look": "lily",
+      "label": "Nhặt lên"
+    },
+    "tv2-t13-manh-la-giua": {
+      "name": "Mảnh lá giữa",
+      "look": "lily",
+      "label": "Nhặt lên"
+    },
+    "tv2-t13-phien-da-reu": {
+      "name": "Phiến đá rêu",
+      "look": "rock",
+      "label": "Đọc thơ"
+    },
+    "tv2-t13-que-nan": {
+      "name": "Que nặn",
+      "look": "log",
+      "label": "Nhặt lên"
+    },
+    "tv2-t14-bui-hoa-ti-muoi": {
+      "name": "Bụi hoa tỉ muội",
+      "look": "flower-red",
+      "label": "Đọc chuyện"
+    },
+    "tv2-t14-chum-hoa-lon": {
+      "name": "Chùm hoa lớn",
+      "look": "flower-purple"
+    },
+    "tv2-t14-chum-nhan": {
+      "name": "Chùm nhãn",
+      "look": "grapes"
+    },
+    "tv2-t14-ngoi-sao-giay": {
+      "name": "Ngôi sao giấy",
+      "look": "letter",
+      "label": "Nhặt lên"
+    },
+    "tv2-t14-nu-hoa-be": {
+      "name": "Nụ hoa bé",
+      "look": "flower-yellow"
+    },
+    "tv2-t14-qua-trung": {
+      "name": "Quả trứng",
+      "look": "egg",
+      "label": "Đọc thơ"
+    },
+    "tv2-t14-vach-to-ong": {
+      "name": "Vách tổ ong",
+      "look": "honey",
+      "label": "Xem tranh"
+    },
+    "tv2-t14-vo-oc-bien": {
+      "name": "Vỏ ốc biển",
+      "look": "rock",
+      "label": "Nhặt lên"
+    },
+    "tv2-t14-vong-hien": {
+      "name": "Võng dưới hiên",
+      "look": "bedroll",
+      "label": "Ru em"
+    },
+    "tv2-t15-bat-go": {
+      "name": "Bát gỗ",
+      "look": "bowl",
+      "label": "Nhặt lên"
+    },
+    "tv2-t15-dua-tre": {
+      "name": "Đôi đũa tre",
+      "look": "log",
+      "label": "Nhặt lên"
+    },
+    "tv2-t15-goi-bong-lau": {
+      "name": "Gối bông lau",
+      "look": "bag"
+    },
+    "tv2-t15-la-chep-tho": {
+      "name": "Tàu lá chép thơ",
+      "look": "lily",
+      "label": "Đọc thơ"
+    },
+    "tv2-t15-mam-la": {
+      "name": "Mâm lá",
+      "look": "lily",
+      "label": "Nhặt lên"
+    },
+    "tv2-t15-ong-nuoc-mat": {
+      "name": "Ống nước mát",
+      "look": "bamboo",
+      "label": "Nhặt lên"
+    },
+    "tv2-t15-quat-nan": {
+      "name": "Quạt nan",
+      "look": "letter",
+      "label": "Nhặt lên"
+    },
+    "tv2-t15-vach-da": {
+      "name": "Vách đá khắc chữ",
+      "look": "rock",
+      "label": "Đọc chuyện"
+    },
+    "tv2-t16-canh-cua-go": {
+      "name": "Cánh cửa gỗ",
+      "look": "sign",
+      "label": "Mở cửa"
+    },
+    "tv2-t16-gay-ong-ven": {
+      "name": "Gậy của ông",
+      "look": "log",
+      "label": "Nhặt lên"
+    },
+    "tv2-t16-ghe-may-cua-ba": {
+      "name": "Ghế mây của bà",
+      "look": "stump"
+    },
+    "tv2-t16-kinh-ong-ven": {
+      "name": "Kính của ông",
+      "look": "bottle"
+    },
+    "tv2-t16-mu-coi-ong-ven": {
+      "name": "Mũ cói của ông",
+      "look": "bowl",
+      "label": "Nhặt lên"
+    },
+    "tv2-t16-tang-da-lung-doc": {
+      "name": "Tảng đá lưng dốc",
+      "look": "rock",
+      "label": "Đọc thơ"
+    },
+    "tv2-t16-them-nha-ong": {
+      "name": "Ông Vện",
+      "look": "animal-dog"
+    },
+    "tv2-t16-then-cua-tre": {
+      "name": "Then cửa tre",
+      "look": "bamboo",
+      "label": "Nhặt lên"
+    },
+    "tv2-t16-vach-vo-so": {
+      "name": "Vách vỏ sò",
+      "look": "rock",
+      "label": "Xem tranh"
+    },
+    "tv2-t17-bu-nhin": {
+      "name": "Bù nhìn rơm",
+      "look": "corn",
+      "label": "Đọc truyện"
+    },
+    "tv2-t17-can-tre-nho": {
+      "name": "Cán tre nhỏ",
+      "look": "bamboo",
+      "label": "Nhặt lên"
+    },
+    "tv2-t17-canh-giay-do": {
+      "name": "Cánh giấy đỏ",
+      "look": "letter",
+      "label": "Nhặt lên"
+    },
+    "tv2-t17-ghim-chong-chong": {
+      "name": "Ghim chong chóng",
+      "look": "candy"
+    },
+    "tv2-t17-goc-cay-de": {
+      "name": "Gốc cây dẻ",
+      "look": "tree-small",
+      "label": "Đọc tờ giấy"
+    },
+    "tv2-t17-hang-me-bong": {
+      "name": "Mẹ Bống",
+      "look": "animal-fish"
+    },
+    "tv2-t17-la-sen": {
+      "name": "Lá sen",
+      "look": "lily",
+      "label": "Đọc truyện"
+    },
+    "tv2-t17-manh-guong-cu": {
+      "name": "Mảnh gương cũ",
+      "look": "bottle"
+    },
+    "tv2-t17-vo-oc-bong": {
+      "name": "Vỏ ốc bóng",
+      "look": "rock",
+      "label": "Nhặt lên"
+    },
+    "tv2-t17-vo-trai-lon": {
+      "name": "Vỏ trai lớn",
+      "look": "rock",
+      "label": "Nhặt lên"
+    },
+    "tv2-t18-bua-hai-ly": {
+      "name": "Búa của Hải Ly",
+      "look": "tool-hammer"
+    },
+    "tv2-t18-dai-lua-do": {
+      "name": "Dải lụa đỏ",
+      "look": "letter",
+      "label": "Nhặt lên"
+    },
+    "tv2-t18-giua-cau": {
+      "name": "Vẹt Xanh",
+      "look": "animal-parrot"
+    },
+    "tv2-t18-nhip-cau-cuoi": {
+      "name": "Nhịp cầu cuối",
+      "look": "log",
+      "label": "Đọc truyện"
+    },
+    "tv2-t18-nhip-cau-dau": {
+      "name": "Nhịp cầu đầu",
+      "look": "log",
+      "label": "Xem tranh"
+    },
+    "tv2-t18-nhip-cau-giua": {
+      "name": "Nhịp cầu giữa",
+      "look": "log"
+    },
+    "tv2-t18-tam-van-cuoi": {
+      "name": "Tấm ván cuối",
+      "look": "log",
+      "label": "Nhặt lên"
+    },
+    "vet-xanh": {
+      "name": "Vẹt Xanh",
+      "look": "animal-parrot"
+    },
+    "vet-xanh-san-gach": {
+      "name": "Vẹt Xanh",
+      "look": "animal-parrot"
+    },
+    "voi-bao": {
+      "name": "Voi Bảo",
+      "look": "animal-elephant"
+    },
+    "voi-ut": {
+      "name": "Voi Út",
+      "look": "animal-elephant"
+    }
+  }
+}

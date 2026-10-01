@@ -112,7 +112,7 @@
     "license": "CC0-1.0"
   },
   {
-    "glob": "generated/review/*.json",
+    "glob": "generated/review/perf.json",
     "generator": "apps/web/e2e/perf.spec.ts",
     "derivedFrom": [],
     "license": "CC0-1.0"
@@ -123,6 +123,12 @@
     "derivedFrom": [
       "kenney-interface-sounds"
     ],
+    "license": "CC0-1.0"
+  },
+  {
+    "glob": "generated/review/sgk-coverage.json",
+    "generator": "tools/content/content-gaps.ts",
+    "derivedFrom": [],
     "license": "CC0-1.0"
   }
 ]

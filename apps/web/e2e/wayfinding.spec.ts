@@ -1,8 +1,8 @@
-// Wayfinding on the forest map, with the E2E-only quest e2e-sgk-walk (loaded through EXTRA_QUEST_DIR):
-// the tracker says where to walk (the step's goTo line), the arrow points at that place, and standing
-// there offers the step; once done, the tracker and the arrow move on to the next place. The review
-// shot shows the tracker next to Sâu Xanh at the forest gate.
-import { mkdirSync } from 'node:fs';
+// Wayfinding on the forest map, with the first Tiếng Việt lesson (tv2-t01-b01): the tracker says where to
+// walk (the step's goTo line), the arrow points at that place, and standing there offers the step; once
+// done, the tracker and the arrow move on to the next place. The review shot shows the tracker next to
+// Sâu Xanh at the forest gate.
+import { mkdirSync, readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { expect, test } from '@playwright/test';
 import { freshChild } from './quest-api';
@@ -12,15 +12,25 @@ test.use({ storageState: { cookies: [], origins: [] } });
 
 const SHOTS = fileURLToPath(new URL('../../../.data/sgk/review-shots/', import.meta.url));
 mkdirSync(SHOTS, { recursive: true });
-const QUEST = '/play?quality=low&region=khu-rung-bi-mat&quest=e2e-sgk-walk';
+const QUEST = '/play?quality=low&region=khu-rung-bi-mat&quest=tv2-t01-b01';
+/** The lesson's own wayfinding lines and targets (read as data, not imported: quest files hold answers). */
+const lesson = JSON.parse(readFileSync(fileURLToPath(new URL('../../../content/quests/tv2-t01-b01.json', import.meta.url)), 'utf8')) as {
+  steps: Array<{ id: string; goTo?: string; target?: string; targets?: string[]; lines?: unknown[] }>;
+};
+const [meet, search] = lesson.steps;
+const meetGoTo = meet?.goTo;
+const meetTarget = meet?.target;
+const searchGoTo = search?.goTo;
+const searchTargets = search?.targets;
+if (!meetGoTo || !meetTarget || !searchGoTo || !searchTargets) throw new Error('tv2-t01-b01 starts with a dialogue, then a search');
 const tracker = '[data-id="hud-tracker-step"]';
 
 test('the tracker says where to go, the arrow points there, and both move on when the step is done', async ({ page, baseURL }) => {
   await freshChild(page, baseURL ?? '');
   await page.goto(QUEST);
   await waitReady(page);
-  await expect(page.locator(tracker)).toHaveText('Ra cổng rừng gặp Sâu Xanh');
-  await expect.poll(async () => (await readStats(page)).hintTarget).toBe('sau-xanh');
+  await expect(page.locator(tracker)).toHaveText(meetGoTo);
+  await expect.poll(async () => (await readStats(page)).hintTarget).toBe(meetTarget);
 
   await page.goto(`${QUEST}&spawnAt=sau-xanh`);
   await waitReady(page);
@@ -30,20 +40,27 @@ test('the tracker says where to go, the arrow points there, and both move on whe
   await page.keyboard.press('KeyE');
   const dialog = page.getByRole('dialog', { name: 'Sâu Xanh' });
   await expect(dialog).toBeVisible();
-  await page.locator('[data-id="dialogue-done"]').click();
+  // Through the lines (answering a choice when one comes) to the end of the talk.
+  const done = page.locator('[data-id="dialogue-done"]');
+  for (let i = 0; i < 20 && !(await done.isVisible()); i++) {
+    const choice = page.locator('[data-id="dialogue-choice-0"]');
+    if (await choice.isVisible()) await choice.click();
+    else await page.locator('[data-id="dialogue-next"]').click();
+  }
+  await done.click();
   await expect(dialog).toHaveCount(0);
 
-  await expect(page.locator(tracker)).toHaveText('Sang bảng gỗ lớp Hai xem bài');
-  await expect.poll(async () => (await readStats(page)).hintTarget).toBe('bang-go-lop-hai');
+  await expect(page.locator(tracker)).toContainText(searchGoTo); // followed by the count found so far
+  await expect.poll(async () => (await readStats(page)).hintTarget).toMatch(new RegExp(`^(${searchTargets.join('|')})$`));
 });
 
 test('the region list names each lesson with its printed pages, and every lesson is open from the start', async ({ page, baseURL }) => {
   await freshChild(page, baseURL ?? '');
   await page.goto('/region/khu-rung-bi-mat');
-  const row = page.locator('[data-id="region-quest-e2e-sgk-walk"]');
-  await expect(row.locator('[data-id="region-quest-textbook-e2e-sgk-walk"]')).toHaveText('Tiếng Việt 2, tập một · Bài 1. Tôi là học sinh lớp 2Trang 10–12');
+  const row = page.locator('[data-id="region-quest-tv2-t01-b01"]');
+  await expect(row.locator('[data-id="region-quest-textbook-tv2-t01-b01"]')).toHaveText('Tiếng Việt 2, tập một · Bài 1. Tôi là học sinh lớp 2Trang 10–12');
   await expect(row).toHaveAttribute('data-state', 'open');
-  await expect(page.locator('[data-id="region-play-e2e-sgk-walk"]')).toBeVisible();
+  await expect(page.locator('[data-id="region-play-tv2-t01-b01"]')).toBeAttached();
   await row.scrollIntoViewIfNeeded();
   await page.screenshot({ path: `${SHOTS}region-list-pages.png` });
 });

@@ -23,9 +23,10 @@ test('Home shows the child and the island, the forest lists its chapters, and ch
 
   await page.locator('[data-id="home-region-khu-rung-bi-mat"]').click();
   await expect(page).toHaveURL(/\/region\/khu-rung-bi-mat$/);
-  await expect(page.getByRole('heading', { name: 'Chương 1' })).toBeVisible();
-  await expect(page.locator('[data-id="region-quest-forest-ch2"]')).toContainText(/Sắp có|Hoàn thành chương trước/);
-  await expect(page.locator('[data-id="region-play-forest-ch2"]')).toHaveCount(0);
+  await expect(page.getByRole('heading', { name: 'Chương 1', exact: true })).toBeAttached();
+  // Every textbook lesson of the forest is open from the start, with its book and pages.
+  await expect(page.locator('[data-id="region-play-tv2-t01-b01"]')).toBeAttached();
+  await expect(page.locator('[data-id="region-quest-textbook-tv2-t01-b01"]')).toContainText('Trang');
 
   await page.locator('[data-id="region-play-forest-ch1"]').click();
   await expect(page).toHaveURL(/\/play\?region=khu-rung-bi-mat&quest=forest-ch1$/);
@@ -55,7 +56,8 @@ test.describe('on a phone', () => {
     await page.goto('/home');
     await expect(page.locator('.world-island-image')).toBeVisible();
     const pins = page.locator('.world-marker--locked');
-    await expect(pins).toHaveCount(6);
+    // Seven regions, two of them open (the forest and the school).
+    await expect(pins).toHaveCount(5);
     for (const id of await pins.evaluateAll((els) => els.map((el) => el.getAttribute('data-id')?.replace('home-region-', '') ?? ''))) {
       // tap() refuses when another element sits on top of the pin's centre.
       await page.locator(`[data-id="home-region-${id}"]`).tap();

@@ -13,6 +13,7 @@ import { ASSETS_DIR, REPO_ROOT, readJson } from '../assets/asset-lib';
 import { modelScales } from './model-scales';
 import { createRng, fbm, hashSeed } from './noise';
 import { distanceToPath, pathColumns, type Point } from './structures/path';
+import { cellsIn, placeQuestTargets, readQuests, targetUses } from './chapters/place-quest-targets';
 import { placeTree, treeHeight } from './structures/tree';
 
 export const MAP_ID = 'truong-hoc';
@@ -162,6 +163,28 @@ export async function generateSchool(): Promise<{ world: VoxelWorld; entities: W
     { id: 'su-tu-vang', kind: 'npc', name: 'Sư Tử Vàng', label: 'Nói chuyện', position: place(flag.x + 2, flag.z - 2), yaw: 200, radius: 3, ...animated(`${PACK.pets}/animal-lion.glb`), chapter: 1 },
     { id: 'khi-lanh', kind: 'npc', name: 'Khỉ Lanh', label: 'Nói chuyện', position: place(pitch.x, pitch.z - 3), yaw: 90, radius: 3, ...animated(`${PACK.pets}/animal-monkey.glb`), chapter: 1 },
   ];
+
+  // Every Toán topic's targets in its own zone; characters who come back in several topics live in any
+  // zone. Placed from the catalogues on open floor, off the paths and clear of props and the gate.
+  const propCells = props.map((p) => [Math.floor(p.position[0] ?? 0), Math.floor(p.position[2] ?? 0)] as const);
+  const canStand = (x: number, z: number): boolean => {
+    if (pathCells.has(`${x},${z}`) || !inZone(x, z)) return false;
+    const y = surface(x, z) + 1;
+    if (y > GROUND + 2 || world.get(x, y, z) !== 0 || world.get(x, y + 1, z) !== 0) return false; // walls, trees
+    return !propCells.some(([px, pz]) => Math.hypot(px - x, pz - z) < 1.5);
+  };
+  const zoneCells = (topic: number) => {
+    const zn = ZONES.find((z) => z.topic === topic) ?? yard;
+    return cellsIn(zn.x - zn.half + 1, zn.z - zn.half + 1, zn.x + zn.half - 1, zn.z + zn.half - 1);
+  };
+  const { placed: topicTargets, retagged } = await placeQuestTargets({
+    uses: targetUses(await readQuests(), 'truong-hoc'),
+    map: { canStand, stand: place, chapterCells: zoneCells, residentCells: ZONES.flatMap((zn) => zoneCells(zn.topic)), keepClear: [[GATE.x, GATE.z + 2], ...interactables.map((t) => [Math.floor(t.position[0] ?? 0), Math.floor(t.position[2] ?? 0)] as const)] },
+    existing: interactables,
+    seed: seed + 7,
+  });
+  const retaggedById = new Map(retagged.map((t) => [t.id, t]));
+  interactables.splice(0, interactables.length, ...interactables.map((t) => retaggedById.get(t.id) ?? t), ...topicTargets);
 
   const entities: WorldEntities = {
     version: 2,

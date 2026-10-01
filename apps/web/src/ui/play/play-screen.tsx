@@ -81,6 +81,7 @@ function GameView({
   outfit,
   chapter,
   region,
+  quest,
   paused,
 }: {
   store: GameStore;
@@ -91,6 +92,8 @@ function GameView({
   outfit: string[];
   chapter: number;
   region: string;
+  /** Quest being played (its own things show only during it). */
+  quest?: string;
   paused: boolean;
 }) {
   const host = useRef<HTMLDivElement>(null);
@@ -98,7 +101,7 @@ function GameView({
   const outfitKey = outfit.join(',');
   useEffect(() => {
     if (!host.current) return;
-    const instance = new Game(host.current, { store, search: window.location.search, playerName, species, pet, outfit: outfitKey ? outfitKey.split(',') : [], chapter, region });
+    const instance = new Game(host.current, { store, search: window.location.search, playerName, species, pet, outfit: outfitKey ? outfitKey.split(',') : [], chapter, region, quest });
     game.current = instance;
     void instance.start();
     // StrictMode mounts twice in dev: the first game is fully disposed before the second starts.
@@ -106,7 +109,7 @@ function GameView({
       instance.dispose();
       if (game.current === instance) game.current = null;
     };
-  }, [store, playerName, species, pet, outfitKey, chapter, region]);
+  }, [store, playerName, species, pet, outfitKey, chapter, region, quest]);
   // Full-screen screens stop rendering (Master Plan §12); React only calls stop/resume.
   useEffect(() => {
     if (paused) game.current?.stop();
@@ -200,7 +203,7 @@ export function PlayScreen() {
   return (
     <GameStoreContext.Provider value={store}>
       <main data-id="play">
-        {data ? <GameView store={store} playerName={data.character.name} species={data.character.species} pet={data.character.pet} outfit={data.character.equipped} chapter={quest?.quest.chapter ?? 1} region={quest?.quest.region ?? 'khu-rung-bi-mat'} paused={covered} /> : null}
+        {data ? <GameView store={store} playerName={data.character.name} species={data.character.species} pet={data.character.pet} outfit={data.character.equipped} chapter={quest?.quest.chapter ?? 1} region={quest?.quest.region ?? 'khu-rung-bi-mat'} quest={quest?.quest.id} paused={covered} /> : null}
         {loadError ? (
           <div className="play-message" role="alert">
             <p>

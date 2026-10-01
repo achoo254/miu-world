@@ -25,17 +25,11 @@ describe('forest chapter 1 generator', () => {
   it('places every chapter 1 quest target once, with a valid version 2 schema', async () => {
     const { world, entities } = await generateForest();
     const parsed = worldEntitiesSchema.parse(entities);
-    expect(parsed.interactables.map((t) => t.id).sort()).toEqual(
-      [
-        'ancient-tree', 'animal-beaver', 'chest', 'clue-box', 'clue-letter', 'clue-mushroom', 'gate-ch2', 'parrot-guide', 'stream-stones',
-        // Stand-ins for the first two Tiếng Việt quests until their chapter map exists.
-        'sau-xanh', 'bang-go-lop-hai', 'goc-cay-lich-la', 'voi-bao', 'tv2-t01-to-lich-bui-hong', 'tv2-t01-to-lich-ruong-lua',
-        'tv2-t01-to-lich-ban-hoc', 'tv2-t01-bang-chu-cai', 'tv2-t01-hoc-cay',
-      ].sort(),
-    );
-    // The stand-ins belong to chapter 2 only; chapter 1's own targets carry no chapter.
-    const ch1 = new Set(['ancient-tree', 'animal-beaver', 'chest', 'clue-box', 'clue-letter', 'clue-mushroom', 'gate-ch2', 'parrot-guide', 'stream-stones']);
-    for (const t of parsed.interactables) expect(t.chapter, t.id).toBe(ch1.has(t.id) ? undefined : 2);
+    // Chapter 1's own targets carry no chapter; every other target (the Tiếng Việt quests' places, placed
+    // from content/world/targets.json) is tagged with the chapters or the quest it belongs to.
+    const ch1 = ['ancient-tree', 'animal-beaver', 'chest', 'clue-box', 'clue-letter', 'clue-mushroom', 'gate-ch2', 'parrot-guide', 'stream-stones'];
+    expect(parsed.interactables.filter((t) => t.chapter === undefined && t.chapters === undefined).map((t) => t.id).sort()).toEqual(ch1.sort());
+    for (const t of parsed.interactables.filter((t) => !ch1.includes(t.id))) expect(t.chapter ?? t.chapters?.[0], t.id).toBeGreaterThanOrEqual(2);
     // Targets stand on the surface: never inside a solid block.
     for (const t of parsed.interactables) {
       const [x, y, z] = t.position.map(Math.floor) as [number, number, number];

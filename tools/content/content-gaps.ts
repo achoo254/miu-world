@@ -1,9 +1,12 @@
-// `pnpm content:gaps [--book toan2-t1|tv2-t1] [--unit <unit id>] [--missing]`: which textbook exercises
-// the quests cover, in the game or on a printed worksheet, per lesson, unit and book.
+// `pnpm content:gaps [--book toan2-t1|tv2-t1] [--unit <unit id>] [--missing] [--review]`: which textbook
+// exercises the quests cover, in the game or on a printed worksheet, per lesson, unit and book. `--review`
+// also writes the totals for the review page (assets/generated/review/sgk-coverage.json).
+import { writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { parseArgs } from 'node:util';
 import { pathToFileURL } from 'node:url';
 import { CONTENT_DIR, readQuestDefinitions } from '../../apps/server/src/content/content-catalog';
+import { ASSETS_DIR } from '../assets/asset-lib';
 import { checkCurriculum } from './check-curriculum';
 import { checkCurriculumLinks, type LessonGaps } from './curriculum-links';
 
@@ -55,13 +58,44 @@ export function gapTable(lessons: readonly LessonGaps[], showMissing: boolean): 
   return lines;
 }
 
+export const COVERAGE_FILE = path.join(ASSETS_DIR, 'generated/review/sgk-coverage.json');
+
+/** Totals per book and unit (with their titles from the inventory), as the review page shows them. */
+export function coverageSummary(
+  lessons: readonly LessonGaps[],
+  titles: ReadonlyMap<string, string> = new Map(),
+): { books: Array<{ book: string; title: string; totals: GapTotals; percent: number; units: Array<{ unit: string; title: string; totals: GapTotals; percent: number; lessons: number }> }> } {
+  return {
+    books: [...new Set(lessons.map((l) => l.book))].map((book) => {
+      const inBook = lessons.filter((l) => l.book === book);
+      const totals = sumGaps(inBook);
+      return {
+        book,
+        title: titles.get(book) ?? book,
+        totals,
+        percent: percentCovered(totals),
+        units: [...new Set(inBook.map((l) => l.unit))].map((unit) => {
+          const inUnit = inBook.filter((l) => l.unit === unit);
+          const t = sumGaps(inUnit);
+          return { unit, title: titles.get(unit) ?? unit, totals: t, percent: percentCovered(t), lessons: inUnit.length };
+        }),
+      };
+    }),
+  };
+}
+
 function main(): void {
-  const { values } = parseArgs({ options: { book: { type: 'string' }, unit: { type: 'string' }, missing: { type: 'boolean' } } });
+  const { values } = parseArgs({ options: { book: { type: 'string' }, unit: { type: 'string' }, missing: { type: 'boolean' }, review: { type: 'boolean' } } });
   const curriculum = checkCurriculum();
   const quests = readQuestDefinitions(path.join(CONTENT_DIR, 'quests'));
   const report = checkCurriculumLinks(curriculum.books, quests);
   const lessons = report.lessons.filter((l) => (!values.book || l.book === values.book) && (!values.unit || l.unit === values.unit));
   for (const line of gapTable(lessons, values.missing ?? false)) console.log(line);
+  if (values.review) {
+    const titles = new Map(curriculum.books.flatMap((b) => [[b.book.id, b.book.title] as const, ...b.book.toc.map((u) => [u.id, u.title] as const)]));
+    writeFileSync(COVERAGE_FILE, `${JSON.stringify(coverageSummary(report.lessons, titles), null, 2)}\n`);
+    console.log(`\nreview totals written to ${path.relative(process.cwd(), COVERAGE_FILE)} (run pnpm assets:manifest)`);
+  }
   const problems = [...curriculum.issues, ...report.issues];
   if (problems.length > 0) {
     console.error(`\n${problems.length} problem(s) to fix first:`);

@@ -69,4 +69,18 @@ describe('entities for the chapter being played', () => {
     expect(entitiesForChapter(entities, 2).interactables.map((t) => t.id)).toEqual(['parrot', 'caterpillar']);
     expect(entitiesForChapter(entities, 2).props.map((p) => p.model)).toEqual(['bush.glb', 'oak.glb']);
   });
+
+  it('shows a recurring character in each of its chapters, and a quest\'s own things only during that quest', () => {
+    const more = worldEntitiesSchema.parse({
+      ...base,
+      interactables: [{ ...target('tho-ti'), chapters: [3, 6] }, { ...target('hu-sanh', 3), quest: 'tv2-t02-b03' }, { ...target('cay-but', 3), quest: 'tv2-t02-b04' }],
+      props: [],
+    });
+    const ids = (chapter: number, quest?: string) => entitiesForChapter(more, chapter, quest).interactables.map((t) => t.id);
+    expect(ids(3, 'tv2-t02-b03')).toEqual(['tho-ti', 'hu-sanh']);
+    expect(ids(3, 'tv2-t02-b04')).toEqual(['tho-ti', 'cay-but']);
+    expect(ids(6)).toEqual(['tho-ti']);
+    expect(ids(4)).toEqual([]);
+    expect(worldEntitiesSchema.safeParse({ ...base, interactables: [{ ...target('x', 2), chapters: [2] }], props: [] }).success).toBe(false);
+  });
 });

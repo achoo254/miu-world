@@ -84,7 +84,7 @@ test('an NPC whose turn has not come says so, and never the same line twice in a
   await expect(page.getByRole('dialog')).toHaveCount(0);
 });
 
-test('finishing chapter 1 without seeing an answer: 100 XP, Level Up to 2, chapter 2 unlocked, the Lá thần in the backpack', async ({ page, baseURL }) => {
+test('finishing chapter 1 without seeing an answer: 100 XP, Level Up to 2, the Lá thần in the backpack', async ({ page, baseURL }) => {
   await freshChild(page, baseURL ?? '');
   await playUntil(page, baseURL ?? '', 'open-chest');
   await page.goto(playAt('chest'));
@@ -106,14 +106,13 @@ test('finishing chapter 1 without seeing an answer: 100 XP, Level Up to 2, chapt
   await expect(page.locator('[data-id="reward-item-la-than"]')).toContainText('Lá thần');
   await page.locator('[data-id="completion-next"]').click();
   await expect(page.getByRole('dialog', { name: 'Lên cấp!' })).toContainText('Lv.1 → Lv.2');
-  await page.locator('[data-id="completion-next"]').click();
-  await expect(page.locator('[data-id="unlock-forest-ch2"]')).toBeVisible();
+  // Chapter 1 opens no other quest (every textbook lesson is open from the start): Level Up is the last screen.
+  await expect(page.locator('[data-id="completion-next"]')).toHaveCount(0);
   await expect(page.locator('body')).not.toContainText('Kim cương');
   await page.locator('[data-id="completion-map"]').click();
 
   await expect(page).toHaveURL(/\/region\/khu-rung-bi-mat$/);
   await expect(page.locator('[data-id="region-quest-forest-ch1"]')).toHaveAttribute('data-state', 'completed');
-  await expect(page.locator('[data-id="region-quest-forest-ch2"]')).toContainText('Sắp có');
   await expect(page.locator('[data-id="player-level"]')).toHaveText('Lv.2');
 
   await page.goto('/backpack');

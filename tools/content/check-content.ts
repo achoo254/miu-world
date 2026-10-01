@@ -9,9 +9,10 @@ import { playerTextIssues } from '../../packages/quest/src/player-name';
 import { PrivacyDocument, stepTargets, type QuestDefinition } from '../../packages/schema/src/content';
 import { Item } from '../../packages/schema/src/item';
 import { PetCatalog } from '../../packages/schema/src/pet';
+import { LookCatalog, QuestTargetCatalog } from '../../packages/schema/src/world-target';
 import { RegionCatalog } from '../../packages/schema/src/region';
 import { UI_ICONS } from '../../apps/web/src/ui/kit/ui-art';
-import { worldEntitiesSchema } from '../../packages/voxel/src/world-entities';
+import { entitiesForChapter, mapForRegion, worldEntitiesSchema } from '../../packages/voxel/src/world-entities';
 import { ASSETS_DIR } from '../assets/asset-lib';
 import { CURRICULUM_FOLDERS, checkCurriculum } from './check-curriculum';
 import { percentCovered, sumGaps } from './content-gaps';
@@ -34,18 +35,16 @@ const CATALOGUE_FILES = [
 const ASSET_TOOL_FILES = ['blocks.json', 'characters.json', 'palette.json', 'species.json', 'character-bases.json', 'outfit-rules.json', 'character-parts/', 'outfits/', 'faces/', 'animations/'];
 /** Content only the web app reads; validated here. */
 const REGIONS_FILE = 'world/regions.json';
+const LOOKS_FILE = 'world/looks.json';
+const TARGETS_FILE = 'world/targets.json';
 const PRIVACY_FILE = 'legal/privacy-vi.json';
 const ITEMS_FOLDER = 'items/';
 
 /**
- * Map id prefix of each region; chapter N plays on `<prefix>-ch<N>`. Moves into the region catalogue
- * once content/world/regions.json exists.
- */
-const REGION_MAP_PREFIX: Record<string, string> = { 'khu-rung-bi-mat': 'forest' };
-
-/**
- * Every map target an active quest names must be an interactable on its chapter map. Stubs and drafts
- * are skipped; an active quest whose map is not generated yet is reported as a note, not an error.
+ * Every map target a quest names must be an interactable on its region's map, and shown while that quest's
+ * chapter and the quest itself are played (`entitiesForChapter`). Active quests and drafts are both
+ * checked (drafts are placed before they go live); stubs are skipped; a quest whose map is not generated
+ * yet is reported as a note, not an error.
  */
 export function checkQuestTargets(
   quests: Iterable<QuestDefinition>,
@@ -54,11 +53,10 @@ export function checkQuestTargets(
   const issues: string[] = [];
   const notes: string[] = [];
   for (const quest of quests) {
-    if (quest.status !== 'active') continue;
-    const prefix = REGION_MAP_PREFIX[quest.region];
-    const mapId = prefix ? `${prefix}-ch${quest.chapter}` : null;
-    const file = mapId ? path.join(worldDir, mapId, 'entities.json') : null;
-    if (!mapId || !file || !existsSync(file)) {
+    if (quest.status === 'stub') continue;
+    const mapId = mapForRegion(quest.region);
+    const file = path.join(worldDir, mapId, 'entities.json');
+    if (!existsSync(file)) {
       notes.push(`quest ${quest.id}: map targets not checked, region ${quest.region} chapter ${quest.chapter} has no generated map`);
       continue;
     }
@@ -67,10 +65,12 @@ export function checkQuestTargets(
       issues.push(`map ${mapId}: entities.json is not a valid version 2 world entities file`);
       continue;
     }
-    const onMap = new Map(parsed.data.interactables.map((t) => [t.id, t]));
+    const everywhere = new Set(parsed.data.interactables.map((t) => t.id));
+    const onMap = new Map(entitiesForChapter(parsed.data, quest.chapter, quest.id).interactables.map((t) => [t.id, t]));
     for (const step of quest.steps) {
       for (const target of stepTargets(step)) {
-        if (!onMap.has(target)) issues.push(`quest ${quest.id} step ${step.id} targets ${target}, which map ${mapId} does not place`);
+        if (!everywhere.has(target)) issues.push(`quest ${quest.id} step ${step.id} targets ${target}, which map ${mapId} does not place`);
+        else if (!onMap.has(target)) issues.push(`quest ${quest.id} step ${step.id} targets ${target}, which map ${mapId} hides in chapter ${quest.chapter}`);
       }
       // The map paints the riddle on a board: it must say what the step asks.
       const board = step.kind === 'riddle' && step.target ? onMap.get(step.target)?.board : undefined;
@@ -117,7 +117,7 @@ const readByCatalogue = (rel: string) =>
   CATALOGUE_FILES.some((o) => (o.endsWith('/') ? inFolder(rel, o) && rel.endsWith('.json') : rel === o));
 const readByAssetTools = (rel: string) => ASSET_TOOL_FILES.some((o) => (o.endsWith('/') ? inFolder(rel, o) : rel === o));
 const readByCurriculum = (rel: string) => CURRICULUM_FOLDERS.some((o) => inFolder(rel, o) && rel.endsWith('.json'));
-const readByWeb = (rel: string) => rel === REGIONS_FILE || rel === PRIVACY_FILE || (inFolder(rel, ITEMS_FOLDER) && rel.endsWith('.json'));
+const readByWeb = (rel: string) => rel === REGIONS_FILE || rel === LOOKS_FILE || rel === TARGETS_FILE || rel === PRIVACY_FILE || (inFolder(rel, ITEMS_FOLDER) && rel.endsWith('.json'));
 
 /** Items parse, use a shipped UI icon, file name = id, and every item a quest rewards exists. */
 export function checkItems(dir: string, files: readonly string[], quests: Iterable<QuestDefinition>): string[] {
@@ -139,6 +139,18 @@ export function checkItems(dir: string, files: readonly string[], quests: Iterab
     if (quest.status !== 'active') continue;
     for (const id of Object.keys(quest.reward.items)) if (!ids.has(id)) issues.push(`quest ${quest.id} rewards item ${id}, which content/items does not describe`);
   }
+  return issues;
+}
+
+/** Map target catalogues (read by the map generators): they parse, every target's look exists, every look's model is licensed. */
+export function checkTargetCatalogues(looksRaw: unknown, targetsRaw: unknown, manifestPaths: ReadonlySet<string>): string[] {
+  const looks = LookCatalog.safeParse(looksRaw);
+  if (!looks.success) return [`content/${LOOKS_FILE}: ${looks.error.message}`];
+  const targets = QuestTargetCatalog.safeParse(targetsRaw);
+  if (!targets.success) return [`content/${TARGETS_FILE}: ${targets.error.message}`];
+  const issues: string[] = [];
+  for (const [id, look] of Object.entries(looks.data.looks)) if (look.model && !manifestPaths.has(look.model)) issues.push(`look ${id}: model ${look.model} is not in assets/manifest.json`);
+  for (const [id, target] of Object.entries(targets.data.targets)) if (!looks.data.looks[target.look]) issues.push(`target ${id}: look ${target.look} is not in content/${LOOKS_FILE}`);
   return issues;
 }
 
@@ -198,6 +210,9 @@ export function checkContent(dir: string = CONTENT_DIR): ContentReport {
     issues.push(...checkRegions(JSON.parse(readFileSync(path.join(dir, REGIONS_FILE), 'utf8')), catalog.quests.values()));
     const manifest = JSON.parse(readFileSync(path.join(ASSETS_DIR, 'manifest.json'), 'utf8')) as { files: Array<{ path: string }> };
     issues.push(...checkPets(JSON.parse(readFileSync(path.join(dir, 'pets.json'), 'utf8')), new Set(manifest.files.map((f) => f.path))));
+    const read = (rel: string): unknown => JSON.parse(readFileSync(path.join(dir, rel), 'utf8'));
+    if (existsSync(path.join(dir, TARGETS_FILE))) issues.push(...checkTargetCatalogues(read(LOOKS_FILE), read(TARGETS_FILE), new Set(manifest.files.map((f) => f.path))));
+    else issues.push(`content/${TARGETS_FILE} is missing: the map generators place quest targets from it`);
     const privacy: unknown = JSON.parse(readFileSync(path.join(dir, PRIVACY_FILE), 'utf8'));
     issues.push(...checkPrivacy(privacy, catalog.consent.version));
     if (PrivacyDocument.safeParse(privacy).data?.contactEmail === null) warnings.push(`content/${PRIVACY_FILE} has no contact email yet`);
@@ -220,8 +235,11 @@ export function checkContent(dir: string = CONTENT_DIR): ContentReport {
     issues.push(...varietyIssues(quests, curriculum.books));
     for (const book of curriculum.books) {
       const totals = sumGaps(links.lessons.filter((l) => l.book === book.book.id));
+      // Every exercise of a finished inventory must be in the game or on a worksheet (the textbook goal).
       if (totals.missing + totals.missingTexts > 0) {
-        warnings.push(`${book.book.id}: ${percentCovered(totals)}% of ${totals.items} textbook items covered by quests (pnpm content:gaps)`);
+        const line = `${book.book.id}: ${percentCovered(totals)}% of ${totals.items} textbook items covered by quests (pnpm content:gaps --missing)`;
+        if (book.book.status === 'complete') issues.push(line);
+        else warnings.push(line);
       }
     }
   } catch {

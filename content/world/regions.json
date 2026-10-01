@@ -13,7 +13,17 @@
       "events": ["rain-rainbow", "fireflies", "animal-visit"]
     },
     { "id": "nha-cua-be", "name": "Nhà của {name}", "tagline": "Trang trí ngôi nhà nhỏ", "subject": "Trang trí · Bộ sưu tập", "status": "soon", "hotspot": { "x": 32, "y": 84 } },
-    { "id": "truong-hoc", "name": "Trường học", "tagline": "Lớp học vui của muôn loài", "subject": "Toán", "status": "v1", "hotspot": { "x": 19, "y": 54 } },
+    {
+      "id": "truong-hoc",
+      "name": "Trường học",
+      "tagline": "Lớp học vui của muôn loài",
+      "subject": "Toán",
+      "description": "Sư Tử Vàng, Khỉ Lanh và cả trường đang chờ {name} đến học Toán thật vui!",
+      "status": "open",
+      "hotspot": { "x": 19, "y": 54 },
+      "backdrop": { "eye": [48, 19, 4], "target": [48, 13, 40], "fov": 55 },
+      "events": ["rain-rainbow", "fireflies"]
+    },
     { "id": "thu-vien", "name": "Thư viện", "tagline": "Ngàn trang sách kỳ diệu", "subject": "Đọc sách", "status": "v1", "hotspot": { "x": 32, "y": 29 } },
     { "id": "lau-dai", "name": "Lâu đài", "tagline": "Bí mật trên tháp cao", "subject": "Thử thách", "status": "v1", "hotspot": { "x": 70, "y": 30 } },
     { "id": "nui-tuyet", "name": "Núi tuyết", "tagline": "Hành trình lên đỉnh băng", "status": "soon", "hotspot": { "x": 82, "y": 54 } },

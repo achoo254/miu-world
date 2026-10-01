@@ -32,11 +32,22 @@ test.afterAll(() => {
 /** Answer-layer text of every quest: only POST …/support with layer "answer" may carry it. */
 function answerTexts(): string[] {
   const dir = path.join(REPO_ROOT, 'content/quests');
+  /** Every string a quest shows anyway (its texts, lines, prompts…): everything but its answers and support layers. */
+  const publicText = (value: unknown): string[] =>
+    typeof value === 'string'
+      ? [value]
+      : Array.isArray(value)
+        ? value.flatMap(publicText)
+        : value && typeof value === 'object'
+          ? Object.entries(value).flatMap(([k, v]) => (k === 'support' || k === 'answer' ? [] : publicText(v)))
+          : [];
   return readdirSync(dir)
     .filter((f) => f.endsWith('.json'))
     .flatMap((f) => {
       const quest = JSON.parse(readFileSync(path.join(dir, f), 'utf8')) as { steps?: Array<{ support?: { answer?: { explanation?: string } } }> };
-      return (quest.steps ?? []).map((s) => s.support?.answer?.explanation).filter((t): t is string => typeof t === 'string');
+      const shown = publicText(quest).join('\n');
+      // An explanation that only quotes the reading passage (a textbook sentence the child reads anyway) is no secret.
+      return (quest.steps ?? []).map((s) => s.support?.answer?.explanation).filter((t): t is string => typeof t === 'string' && !shown.includes(t));
     });
 }
 
@@ -188,8 +199,7 @@ test('one child plays the whole MVP loop by touch, from Google sign-in to the L�
   await tap(page, '[data-id="completion-next"]');
   await expect(page.locator('[data-id="level-up"]')).toContainText('Lv.1 → Lv.2');
   await shot(page, '11-level-up');
-  await tap(page, '[data-id="completion-next"]');
-  await expect(page.locator('[data-id="unlock-forest-ch2"]')).toBeVisible();
+  // Level Up is the last screen: chapter 1 opens no other quest (the textbook lessons are open from the start).
   await tap(page, '[data-id="completion-map"]');
   await expect(page.locator('[data-id="region-quest-forest-ch1"]')).toHaveAttribute('data-state', 'completed');
 

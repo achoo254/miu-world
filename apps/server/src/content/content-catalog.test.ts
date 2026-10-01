@@ -17,12 +17,15 @@ const { unlock: _unlock, ...base } = JSON.parse(
 ) as Record<string, unknown>;
 
 describe('content catalogue', () => {
-  it('loads the shipped content: chapter 1 unlocks the chapter 2 stub', () => {
+  it('loads the shipped content: chapter 1 and every textbook lesson, all open from the start', () => {
     const catalog = loadContentCatalog();
-    expect([...catalog.quests.keys()]).toEqual(['forest-ch1', 'forest-ch2']);
-    expect(catalog.quests.get('forest-ch1')?.status).toBe('active');
-    expect(catalog.quests.get('forest-ch2')?.status).toBe('stub');
-    expect(catalog.unlockedBy.get('forest-ch2')).toEqual(['forest-ch1']);
+    const ids = [...catalog.quests.keys()];
+    expect(ids[0]).toBe('forest-ch1');
+    expect(ids.filter((id) => id.startsWith('tv2-'))).toHaveLength(34);
+    expect(ids.filter((id) => id.startsWith('toan2-'))).toHaveLength(36);
+    for (const quest of catalog.quests.values()) expect(quest.status, quest.id).toBe('active');
+    // Nothing locks a textbook lesson, and chapter 1 unlocks nothing any more.
+    expect([...catalog.unlockedBy.keys()]).toEqual([]);
     expect(catalog.accessories.get('hat-witch-pink')?.slot).toBe('hat');
     expect(catalog.accessories.get('backpack-brown')?.slot).toBe('back');
     expect(catalog.accessories.get('hat-witch-night')).toMatchObject({ slot: 'hat', variant: 'night', unlock: { level: 2 } });

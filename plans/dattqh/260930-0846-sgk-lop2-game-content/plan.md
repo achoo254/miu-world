@@ -1,7 +1,7 @@
 ---
 title: "Nội dung SGK lớp 2 tập 1 (Toán, Tiếng Việt — Kết nối tri thức) thành kịch bản game"
 description: "Đưa 100% nội dung Toán 2 tập 1 (7 chủ đề, 36 bài) và Tiếng Việt 2 tập 1 (4 chủ điểm, 18 tuần, 32 bài + 2 ôn tập) vào quest của Miu World; chạy song song với plan vertical slice trong worktree riêng."
-status: in-progress
+status: completed
 priority: P1
 effort: "XL"
 branch: dattqh/feat/sgk-lop2-content
@@ -52,8 +52,8 @@ Chi tiết Jev: `plans/dattqh/reports/jev-260930-sgk-plan-decisions.md`.
 | 6 | [Phiếu viết ngoài game](./phase-06-writing-worksheets.md) | M | 1; UI sau VS phase 1 | Done (API + trang Phiếu viết trong khu phụ huynh, in A4; E2E `worksheets` in 2 PDF mẫu) |
 | 7 | [Thu âm trên máy](./phase-07-on-device-voice.md) | M | 2; sau VS phase 1, 8 | Done (thu/nghe lại trên máy, CSP `media-src blob:`; E2E `speak`) |
 | 8 | [UI cơ chế mới](./phase-08-new-mechanic-ui.md) | L | 2; sau VS phase 8 | Done (màn cơ chế, minh họa, E2E `sgk-mechanics`); chờ nghiệm thu UI |
-| 9 | [Bản đồ Trường học + chương rừng 2–19](./phase-09-school-map-forest-chapters.md) | L | 4, 5; sau VS phase 5, 6, 7 | Pending |
-| 10 | [Kích hoạt, cổng 100%, trang review](./phase-10-completeness-review-gate.md) | M | 1–9; sau VS phase 10 | Pending |
+| 9 | [Bản đồ Trường học + chương rừng 2–19](./phase-09-school-map-forest-chapters.md) | L | 4, 5; sau VS phase 5, 6, 7 | Done (01/10/2026: mục tiêu đặt tự động từ danh mục; `content:check` kiểm theo chương và quest) |
+| 10 | [Kích hoạt, cổng 100%, trang review](./phase-10-completeness-review-gate.md) | M | 1–9; sau VS phase 10 | Done (01/10/2026: 70 quest kích hoạt, phủ 100% thành cổng lỗi, trang review, E2E `sgk-content`) |
 
 "VS" = plan `plans/dattqh/260929-2141-vertical-slice-mvp/` chạy ở phiên khác trên `main`.
 

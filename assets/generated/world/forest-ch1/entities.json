@@ -165,7 +165,10 @@
       "model": "packs/kenney-cube-pets/2.0/animal-caterpillar.glb",
       "scale": 0.5725,
       "animation": "idle",
-      "chapter": 2
+      "chapters": [
+        2,
+        5
+      ]
     },
     {
       "id": "bang-go-lop-hai",
@@ -179,9 +182,10 @@
       ],
       "yaw": 0,
       "radius": 2,
-      "chapter": 2,
       "model": "packs/kenney-survival-kit/2.0/signpost.glb",
-      "scale": 3.4777
+      "scale": 3.4777,
+      "chapter": 2,
+      "quest": "tv2-t01-b01"
     },
     {
       "id": "goc-cay-lich-la",
@@ -195,8 +199,9 @@
       ],
       "yaw": 0,
       "radius": 2,
+      "shape": "letter",
       "chapter": 2,
-      "shape": "letter"
+      "quest": "tv2-t01-b02"
     },
     {
       "id": "voi-bao",
@@ -213,7 +218,13 @@
       "model": "packs/kenney-cube-pets/2.0/animal-elephant.glb",
       "scale": 1.1179,
       "animation": "idle",
-      "chapter": 2
+      "chapters": [
+        2,
+        4,
+        6,
+        10,
+        16
+      ]
     },
     {
       "id": "tv2-t01-to-lich-bui-hong",
@@ -227,8 +238,9 @@
       ],
       "yaw": 0,
       "radius": 2,
+      "shape": "letter",
       "chapter": 2,
-      "shape": "letter"
+      "quest": "tv2-t01-b02"
     },
     {
       "id": "tv2-t01-to-lich-ruong-lua",
@@ -242,8 +254,9 @@
       ],
       "yaw": 0,
       "radius": 2,
+      "shape": "letter",
       "chapter": 2,
-      "shape": "letter"
+      "quest": "tv2-t01-b02"
     },
     {
       "id": "tv2-t01-to-lich-ban-hoc",
@@ -257,8 +270,9 @@
       ],
       "yaw": 0,
       "radius": 2,
+      "shape": "letter",
       "chapter": 2,
-      "shape": "letter"
+      "quest": "tv2-t01-b02"
     },
     {
       "id": "tv2-t01-bang-chu-cai",
@@ -272,9 +286,10 @@
       ],
       "yaw": 0,
       "radius": 2,
-      "chapter": 2,
       "model": "packs/kenney-survival-kit/2.0/signpost.glb",
-      "scale": 3.4777
+      "scale": 3.4777,
+      "chapter": 2,
+      "quest": "tv2-t01-b02"
     },
     {
       "id": "tv2-t01-hoc-cay",
@@ -288,9 +303,3161 @@
       ],
       "yaw": 0,
       "radius": 2,
-      "chapter": 2,
       "model": "packs/kenney-nature-kit/2.1/stump_oldTall.glb",
-      "scale": 2.1005
+      "scale": 2.1005,
+      "chapter": 2,
+      "quest": "tv2-t01-b02"
+    },
+    {
+      "id": "ca-bong",
+      "kind": "npc",
+      "name": "Cá Bống",
+      "label": "Nói chuyện",
+      "position": [
+        67.5,
+        12,
+        15.5
+      ],
+      "yaw": 291,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-fish.glb",
+      "scale": 0.3686,
+      "animation": "idle",
+      "chapters": [
+        10,
+        18
+      ]
+    },
+    {
+      "id": "cao-lem",
+      "kind": "npc",
+      "name": "Cáo Lém",
+      "label": "Nói chuyện",
+      "position": [
+        9.5,
+        13,
+        83.5
+      ],
+      "yaw": 306,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-fox.glb",
+      "scale": 0.593,
+      "animation": "idle",
+      "chapters": [
+        10,
+        14
+      ]
+    },
+    {
+      "id": "cho-muc",
+      "kind": "npc",
+      "name": "Chó Mực",
+      "label": "Nói chuyện",
+      "position": [
+        23.5,
+        15,
+        87.5
+      ],
+      "yaw": 25,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-dog.glb",
+      "scale": 0.6311,
+      "animation": "idle",
+      "chapters": [
+        7,
+        11,
+        17
+      ]
+    },
+    {
+      "id": "ga-con-chip",
+      "kind": "npc",
+      "name": "Gà Con Chíp",
+      "label": "Nói chuyện",
+      "position": [
+        43.5,
+        12,
+        62.5
+      ],
+      "yaw": 35,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-chick.glb",
+      "scale": 0.4391,
+      "animation": "idle",
+      "chapters": [
+        8,
+        12
+      ]
+    },
+    {
+      "id": "gau-truc",
+      "kind": "npc",
+      "name": "Gấu Trúc Tròn",
+      "label": "Nói chuyện",
+      "position": [
+        43.5,
+        14,
+        19.5
+      ],
+      "yaw": 53,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-panda.glb",
+      "scale": 0.7993,
+      "animation": "idle",
+      "chapters": [
+        7,
+        9,
+        10
+      ]
+    },
+    {
+      "id": "gau-truc-tron",
+      "kind": "npc",
+      "name": "Gấu Trúc Tròn",
+      "label": "Nói chuyện",
+      "position": [
+        9.5,
+        12,
+        42.5
+      ],
+      "yaw": 325,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-panda.glb",
+      "scale": 0.7993,
+      "animation": "idle",
+      "chapters": [
+        4,
+        9
+      ]
+    },
+    {
+      "id": "hai-ly-can",
+      "kind": "npc",
+      "name": "Hải Ly Cần",
+      "label": "Nói chuyện",
+      "position": [
+        44.5,
+        13,
+        69.5
+      ],
+      "yaw": 152,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-beaver.glb",
+      "scale": 0.6661,
+      "animation": "idle",
+      "chapters": [
+        14,
+        19
+      ]
+    },
+    {
+      "id": "ho-van",
+      "kind": "npc",
+      "name": "Hổ Vằn",
+      "label": "Nói chuyện",
+      "position": [
+        28.5,
+        14,
+        86.5
+      ],
+      "yaw": 210,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-tiger.glb",
+      "scale": 0.7602,
+      "animation": "idle",
+      "chapters": [
+        5,
+        12
+      ]
+    },
+    {
+      "id": "khi-lanh",
+      "kind": "npc",
+      "name": "Khỉ Lanh",
+      "label": "Nói chuyện",
+      "position": [
+        54.5,
+        14,
+        69.5
+      ],
+      "yaw": 343,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-monkey.glb",
+      "scale": 0.6832,
+      "animation": "idle",
+      "chapters": [
+        5,
+        13
+      ]
+    },
+    {
+      "id": "meo-mun",
+      "kind": "npc",
+      "name": "Mèo Mun",
+      "label": "Nói chuyện",
+      "position": [
+        72.5,
+        11,
+        51.5
+      ],
+      "yaw": 32,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-cat.glb",
+      "scale": 0.5263,
+      "animation": "idle",
+      "chapters": [
+        4,
+        8,
+        10
+      ]
+    },
+    {
+      "id": "nai-mo",
+      "kind": "npc",
+      "name": "Nai Mơ",
+      "label": "Nói chuyện",
+      "position": [
+        77.5,
+        13,
+        69.5
+      ],
+      "yaw": 302,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-deer.glb",
+      "scale": 0.7025,
+      "animation": "idle",
+      "chapters": [
+        5,
+        6,
+        9,
+        10
+      ]
+    },
+    {
+      "id": "ong-vang",
+      "kind": "npc",
+      "name": "Ong Vàng",
+      "label": "Nói chuyện",
+      "position": [
+        7.5,
+        15,
+        88.5
+      ],
+      "yaw": 283,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-bee.glb",
+      "scale": 0.3002,
+      "animation": "idle",
+      "chapters": [
+        3,
+        10,
+        15
+      ]
+    },
+    {
+      "id": "tho-ti",
+      "kind": "npc",
+      "name": "Thỏ Tí",
+      "label": "Nói chuyện",
+      "position": [
+        67.5,
+        15,
+        6.5
+      ],
+      "yaw": 308,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-bunny.glb",
+      "scale": 0.4478,
+      "animation": "idle",
+      "chapters": [
+        3,
+        6,
+        10,
+        11,
+        14,
+        18
+      ]
+    },
+    {
+      "id": "vet-xanh",
+      "kind": "npc",
+      "name": "Vẹt Xanh",
+      "label": "Nói chuyện",
+      "position": [
+        58.5,
+        13,
+        21.5
+      ],
+      "yaw": 41,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-parrot.glb",
+      "scale": 0.4758,
+      "animation": "idle",
+      "chapters": [
+        4,
+        6,
+        7,
+        8,
+        9,
+        10,
+        12
+      ]
+    },
+    {
+      "id": "tv2-t01-cap-la-sau-xanh",
+      "kind": "object",
+      "name": "Cặp lá Sâu Xanh",
+      "label": "Nhặt lên",
+      "position": [
+        37.5,
+        14,
+        81.5
+      ],
+      "yaw": 135,
+      "radius": 2,
+      "model": "packs/kenney-food-kit/2.0/bag.glb",
+      "scale": 1.0004,
+      "chapter": 2,
+      "quest": "tv2-t01-b01"
+    },
+    {
+      "id": "tv2-t01-giay-sau-xanh",
+      "kind": "object",
+      "name": "Giày Sâu Xanh",
+      "label": "Nhặt lên",
+      "position": [
+        40.5,
+        13,
+        80.5
+      ],
+      "yaw": -90,
+      "radius": 2,
+      "model": "packs/kenney-food-kit/2.0/bag.glb",
+      "scale": 1.0004,
+      "chapter": 2,
+      "quest": "tv2-t01-b01"
+    },
+    {
+      "id": "tv2-t01-hop-but-hat-de",
+      "kind": "object",
+      "name": "Hộp bút hạt dẻ",
+      "label": "Nhặt lên",
+      "position": [
+        38.5,
+        13,
+        80.5
+      ],
+      "yaw": 267,
+      "radius": 2,
+      "model": "packs/kenney-survival-kit/2.0/box.glb",
+      "scale": 2.8,
+      "chapter": 2,
+      "quest": "tv2-t01-b01"
+    },
+    {
+      "id": "tv2-t02-bang-go-bai-co",
+      "kind": "object",
+      "name": "Bảng gỗ bãi cỏ",
+      "label": "Đọc bảng",
+      "position": [
+        84.5,
+        12,
+        9.5
+      ],
+      "yaw": 135,
+      "radius": 2,
+      "model": "packs/kenney-survival-kit/2.0/signpost.glb",
+      "scale": 4.7818,
+      "chapter": 3,
+      "quest": "tv2-t02-b03"
+    },
+    {
+      "id": "tv2-t02-cuon-giay-ve",
+      "kind": "object",
+      "name": "Cuộn giấy vẽ",
+      "label": "Nhặt lên",
+      "position": [
+        18.5,
+        17,
+        89.5
+      ],
+      "yaw": -90,
+      "radius": 2,
+      "shape": "letter",
+      "chapter": 3,
+      "quest": "tv2-t02-b03"
+    },
+    {
+      "id": "tv2-t02-hop-but-mau",
+      "kind": "object",
+      "name": "Hộp bút màu",
+      "label": "Nhặt lên",
+      "position": [
+        15.5,
+        17,
+        89.5
+      ],
+      "yaw": 90,
+      "radius": 2,
+      "model": "packs/kenney-survival-kit/2.0/box.glb",
+      "scale": 2.8,
+      "chapter": 3,
+      "quest": "tv2-t02-b03"
+    },
+    {
+      "id": "tv2-t02-hu-sanh-rong",
+      "kind": "object",
+      "name": "Hũ sành",
+      "label": "Nhặt lên",
+      "position": [
+        16.5,
+        17,
+        89.5
+      ],
+      "yaw": 98,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/pot_small.glb",
+      "scale": 2.2388,
+      "chapter": 3,
+      "quest": "tv2-t02-b03"
+    },
+    {
+      "id": "tv2-t02-day-phoi-tranh",
+      "kind": "object",
+      "name": "Dây phơi tranh",
+      "label": "Xem tranh",
+      "position": [
+        75.5,
+        11,
+        13.5
+      ],
+      "yaw": 180,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/sign.glb",
+      "scale": 3.4249,
+      "chapter": 3,
+      "quest": "tv2-t02-b03"
+    },
+    {
+      "id": "tv2-t02-bang-sap-ong",
+      "kind": "object",
+      "name": "Bảng sáp ong",
+      "label": "Đọc bảng",
+      "position": [
+        69.5,
+        14,
+        7.5
+      ],
+      "yaw": 336,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/sign.glb",
+      "scale": 3.4249,
+      "chapter": 3,
+      "quest": "tv2-t02-b04"
+    },
+    {
+      "id": "tv2-t02-chum-vai-chin",
+      "kind": "object",
+      "name": "Chùm vải chín",
+      "label": "Xem",
+      "position": [
+        19.5,
+        14,
+        77.5
+      ],
+      "yaw": 135,
+      "radius": 2,
+      "model": "packs/kenney-food-kit/2.0/grapes.glb",
+      "scale": 0.9465,
+      "chapter": 3,
+      "quest": "tv2-t02-b04"
+    },
+    {
+      "id": "tv2-t02-dong-ho-goc-cay",
+      "kind": "object",
+      "name": "Đồng hồ gốc cây",
+      "label": "Xem",
+      "position": [
+        22.5,
+        14,
+        77.5
+      ],
+      "yaw": -117,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/stump_round.glb",
+      "scale": 3.8741,
+      "chapter": 3,
+      "quest": "tv2-t02-b04"
+    },
+    {
+      "id": "tv2-t02-long-ga-trong",
+      "kind": "object",
+      "name": "Lông gà trống",
+      "label": "Xem",
+      "position": [
+        22.5,
+        14,
+        75.5
+      ],
+      "yaw": -63,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/crops_wheatStageB.glb",
+      "scale": 1.6824,
+      "chapter": 3,
+      "quest": "tv2-t02-b04"
+    },
+    {
+      "id": "tv2-t02-goc-vuon-um-tum",
+      "kind": "object",
+      "name": "Góc vườn um tùm",
+      "label": "Tìm trong bụi",
+      "position": [
+        13.5,
+        13,
+        82.5
+      ],
+      "yaw": 180,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/plant_bushLarge.glb",
+      "scale": 4.9396,
+      "chapter": 3,
+      "quest": "tv2-t02-b04"
+    },
+    {
+      "id": "tv2-t02-vach-to-ong",
+      "kind": "object",
+      "name": "Vách tổ ong",
+      "label": "Xem",
+      "position": [
+        72.5,
+        13,
+        67.5
+      ],
+      "yaw": 180,
+      "radius": 2,
+      "model": "packs/kenney-food-kit/2.0/honey.glb",
+      "scale": 1.5822,
+      "chapter": 3,
+      "quest": "tv2-t02-b04"
+    },
+    {
+      "id": "tv2-t03-canh-cay-kho",
+      "kind": "object",
+      "name": "Cành cây khô",
+      "label": "Xem",
+      "position": [
+        78.5,
+        12,
+        56.5
+      ],
+      "yaw": 180,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/log.glb",
+      "scale": 3.4641,
+      "chapter": 4,
+      "quest": "tv2-t03-b05"
+    },
+    {
+      "id": "tv2-t03-khom-co-dai",
+      "kind": "object",
+      "name": "Khóm cỏ dại",
+      "label": "Tìm trong bụi",
+      "position": [
+        76.5,
+        12,
+        55.5
+      ],
+      "yaw": 90,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/plant_bushLarge.glb",
+      "scale": 4.9396,
+      "chapter": 4,
+      "quest": "tv2-t03-b05"
+    },
+    {
+      "id": "tv2-t03-kinh-voi-bao",
+      "kind": "object",
+      "name": "Kính Voi Bảo",
+      "label": "Nhặt lên",
+      "position": [
+        79.5,
+        11,
+        54.5
+      ],
+      "yaw": -45,
+      "radius": 2,
+      "model": "packs/kenney-survival-kit/2.0/bottle.glb",
+      "scale": 3.2495,
+      "chapter": 4,
+      "quest": "tv2-t03-b05"
+    },
+    {
+      "id": "tv2-t03-tang-da-ben-suoi",
+      "kind": "object",
+      "name": "Tảng đá bên suối",
+      "label": "Đọc chuyện",
+      "position": [
+        66.5,
+        12,
+        57.5
+      ],
+      "yaw": 192,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/rock_smallA.glb",
+      "scale": 3.1377,
+      "chapter": 4,
+      "quest": "tv2-t03-b05"
+    },
+    {
+      "id": "tv2-t03-vung-nuoc-trong",
+      "kind": "object",
+      "name": "Vũng nước trong",
+      "label": "Xem",
+      "position": [
+        36.5,
+        13,
+        20.5
+      ],
+      "yaw": 27,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/lily_large.glb",
+      "scale": 2.0408,
+      "chapter": 4,
+      "quest": "tv2-t03-b05"
+    },
+    {
+      "id": "voi-ut",
+      "kind": "npc",
+      "name": "Voi Út",
+      "label": "Nói chuyện",
+      "position": [
+        18.5,
+        13,
+        46.5
+      ],
+      "yaw": 0,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-elephant.glb",
+      "scale": 1.1179,
+      "animation": "idle",
+      "chapter": 4,
+      "quest": "tv2-t03-b05"
+    },
+    {
+      "id": "tv2-t03-ban-chai-meo",
+      "kind": "object",
+      "name": "Bàn chải",
+      "label": "Nhặt lên",
+      "position": [
+        10.5,
+        14,
+        69.5
+      ],
+      "yaw": 117,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/log.glb",
+      "scale": 3.4641,
+      "chapter": 4,
+      "quest": "tv2-t03-b06"
+    },
+    {
+      "id": "tv2-t03-cap-la-meo",
+      "kind": "object",
+      "name": "Cặp lá Mèo Mun",
+      "label": "Nhặt lên",
+      "position": [
+        11.5,
+        14,
+        67.5
+      ],
+      "yaw": 45,
+      "radius": 2,
+      "model": "packs/kenney-food-kit/2.0/bag.glb",
+      "scale": 1.0004,
+      "chapter": 4,
+      "quest": "tv2-t03-b06"
+    },
+    {
+      "id": "tv2-t03-khan-mat-meo",
+      "kind": "object",
+      "name": "Khăn mặt",
+      "label": "Nhặt lên",
+      "position": [
+        14.5,
+        14,
+        67.5
+      ],
+      "yaw": -63,
+      "radius": 2,
+      "model": "packs/kenney-food-kit/2.0/bag.glb",
+      "scale": 1.0004,
+      "chapter": 4,
+      "quest": "tv2-t03-b06"
+    },
+    {
+      "id": "tv2-t03-bang-xanh",
+      "kind": "object",
+      "name": "Bảng xanh",
+      "label": "Đọc bảng",
+      "position": [
+        27.5,
+        13,
+        43.5
+      ],
+      "yaw": 212,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/sign.glb",
+      "scale": 3.4249,
+      "chapter": 4,
+      "quest": "tv2-t03-b06"
+    },
+    {
+      "id": "tv2-t03-buc-go",
+      "kind": "object",
+      "name": "Bục gỗ",
+      "label": "Lên bục",
+      "position": [
+        28.5,
+        12,
+        45.5
+      ],
+      "yaw": -153,
+      "radius": 2,
+      "model": "packs/kenney-survival-kit/2.0/box-large.glb",
+      "scale": 4,
+      "chapter": 4,
+      "quest": "tv2-t03-b06"
+    },
+    {
+      "id": "tv2-t03-van-chu-cai",
+      "kind": "object",
+      "name": "Ván chữ cái",
+      "label": "Xem",
+      "position": [
+        49.5,
+        12,
+        42.5
+      ],
+      "yaw": 27,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/sign.glb",
+      "scale": 3.4249,
+      "chapter": 4,
+      "quest": "tv2-t03-b06"
+    },
+    {
+      "id": "lon-rung-dom",
+      "kind": "npc",
+      "name": "Lợn Rừng Đốm",
+      "label": "Nói chuyện",
+      "position": [
+        36.5,
+        14,
+        83.5
+      ],
+      "yaw": 27,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-hog.glb",
+      "scale": 0.6597,
+      "animation": "idle",
+      "chapter": 5,
+      "quest": "tv2-t04-b07"
+    },
+    {
+      "id": "tv2-t04-bui-xau-ho",
+      "kind": "object",
+      "name": "Bụi xấu hổ",
+      "label": "Xem",
+      "position": [
+        36.5,
+        14,
+        85.5
+      ],
+      "yaw": 90,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/plant_bushLarge.glb",
+      "scale": 4.9396,
+      "chapter": 5,
+      "quest": "tv2-t04-b07"
+    },
+    {
+      "id": "tv2-t04-phien-da",
+      "kind": "object",
+      "name": "Phiến đá",
+      "label": "Đọc bài",
+      "position": [
+        38.5,
+        15,
+        87.5
+      ],
+      "yaw": -153,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/rock_smallA.glb",
+      "scale": 3.1377,
+      "chapter": 5,
+      "quest": "tv2-t04-b07"
+    },
+    {
+      "id": "tv2-t04-bua-hai-ly",
+      "kind": "object",
+      "name": "Búa của Hải Ly",
+      "label": "Xem",
+      "position": [
+        58.5,
+        14,
+        80.5
+      ],
+      "yaw": 90,
+      "radius": 2,
+      "model": "packs/kenney-survival-kit/2.0/tool-hammer.glb",
+      "scale": 3.9093,
+      "chapter": 5,
+      "quest": "tv2-t04-b07"
+    },
+    {
+      "id": "tv2-t04-dong-la-kho",
+      "kind": "object",
+      "name": "Đống lá khô",
+      "label": "Xem",
+      "position": [
+        60.5,
+        14,
+        78.5
+      ],
+      "yaw": 132,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/plant_bushLarge.glb",
+      "scale": 4.9396,
+      "chapter": 5,
+      "quest": "tv2-t04-b07"
+    },
+    {
+      "id": "tv2-t04-long-chim-xanh",
+      "kind": "object",
+      "name": "Lông chim xanh",
+      "label": "Xem",
+      "position": [
+        61.5,
+        14,
+        82.5
+      ],
+      "yaw": -153,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/crops_wheatStageB.glb",
+      "scale": 1.6824,
+      "chapter": 5,
+      "quest": "tv2-t04-b07"
+    },
+    {
+      "id": "tv2-t04-bang-ti-so",
+      "kind": "object",
+      "name": "Bảng tỉ số",
+      "label": "Đọc bảng",
+      "position": [
+        54.5,
+        11,
+        56.5
+      ],
+      "yaw": 117,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/sign.glb",
+      "scale": 3.4249,
+      "chapter": 5,
+      "quest": "tv2-t04-b08"
+    },
+    {
+      "id": "tv2-t04-day-ao",
+      "kind": "object",
+      "name": "Dây phơi áo đấu",
+      "label": "Xem áo",
+      "position": [
+        56.5,
+        11,
+        57.5
+      ],
+      "yaw": 180,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/sign.glb",
+      "scale": 3.4249,
+      "chapter": 5,
+      "quest": "tv2-t04-b08"
+    },
+    {
+      "id": "tv2-t04-bong-bui-sim",
+      "kind": "object",
+      "name": "Bóng ở bụi sim",
+      "label": "Nhặt lên",
+      "position": [
+        28.5,
+        15,
+        78.5
+      ],
+      "yaw": 90,
+      "radius": 2,
+      "model": "packs/kenney-food-kit/2.0/apple.glb",
+      "scale": 2.0969,
+      "chapter": 5,
+      "quest": "tv2-t04-b08"
+    },
+    {
+      "id": "tv2-t04-bong-goc-tre",
+      "kind": "object",
+      "name": "Bóng ở gốc tre",
+      "label": "Nhặt lên",
+      "position": [
+        30.5,
+        14,
+        78.5
+      ],
+      "yaw": 80,
+      "radius": 2,
+      "model": "packs/kenney-food-kit/2.0/orange.glb",
+      "scale": 2.3923,
+      "chapter": 5,
+      "quest": "tv2-t04-b08"
+    },
+    {
+      "id": "tv2-t04-bong-ven-suoi",
+      "kind": "object",
+      "name": "Bóng ven suối",
+      "label": "Nhặt lên",
+      "position": [
+        31.5,
+        14,
+        80.5
+      ],
+      "yaw": -153,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/crop_melon.glb",
+      "scale": 1.7241,
+      "chapter": 5,
+      "quest": "tv2-t04-b08"
+    },
+    {
+      "id": "tv2-t04-kho-dung-cu",
+      "kind": "object",
+      "name": "Kho dụng cụ",
+      "label": "Mở cửa",
+      "position": [
+        81.5,
+        14,
+        7.5
+      ],
+      "yaw": -90,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/tent_smallOpen.glb",
+      "scale": 3.9207,
+      "chapter": 5,
+      "quest": "tv2-t04-b08"
+    },
+    {
+      "id": "tv2-t05-bui-hoa-nhai",
+      "kind": "object",
+      "name": "Bụi hoa nhài",
+      "label": "Xem",
+      "position": [
+        56.5,
+        14,
+        72.5
+      ],
+      "yaw": -63,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/flower_yellowB.glb",
+      "scale": 4.4164,
+      "chapter": 6,
+      "quest": "tv2-t05-b09"
+    },
+    {
+      "id": "tv2-t05-chuong-gio-tre",
+      "kind": "object",
+      "name": "Chuông gió tre",
+      "label": "Xem",
+      "position": [
+        54.5,
+        14,
+        73.5
+      ],
+      "yaw": 45,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/crops_bambooStageB.glb",
+      "scale": 2.0225,
+      "chapter": 6,
+      "quest": "tv2-t05-b09"
+    },
+    {
+      "id": "tv2-t05-vo-tap-viet",
+      "kind": "object",
+      "name": "Vở tập viết",
+      "label": "Xem",
+      "position": [
+        54.5,
+        14,
+        75.5
+      ],
+      "yaw": 180,
+      "radius": 2,
+      "shape": "letter",
+      "chapter": 6,
+      "quest": "tv2-t05-b09"
+    },
+    {
+      "id": "tv2-t05-khung-cua-so-la",
+      "kind": "object",
+      "name": "Khung cửa sổ lá",
+      "label": "Đọc thơ",
+      "position": [
+        87.5,
+        13,
+        65.5
+      ],
+      "yaw": -63,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/sign.glb",
+      "scale": 3.4249,
+      "chapter": 6,
+      "quest": "tv2-t05-b09"
+    },
+    {
+      "id": "tv2-t05-tranh-cau-be-ham-hoc",
+      "kind": "object",
+      "name": "Tranh kể chuyện",
+      "label": "Xem tranh",
+      "position": [
+        47.5,
+        13,
+        76.5
+      ],
+      "yaw": -90,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/sign.glb",
+      "scale": 3.4249,
+      "chapter": 6,
+      "quest": "tv2-t05-b09"
+    },
+    {
+      "id": "bang-go-goc-soi",
+      "kind": "object",
+      "name": "Bảng gỗ gốc sồi",
+      "label": "Đọc bảng",
+      "position": [
+        75.5,
+        11,
+        12.5
+      ],
+      "yaw": 45,
+      "radius": 2,
+      "model": "packs/kenney-survival-kit/2.0/signpost.glb",
+      "scale": 4.7818,
+      "chapter": 6,
+      "quest": "tv2-t05-b10"
+    },
+    {
+      "id": "tv2-t05-cai-keo",
+      "kind": "object",
+      "name": "Cái kéo",
+      "label": "Nhặt lên",
+      "position": [
+        30.5,
+        14,
+        75.5
+      ],
+      "yaw": -63,
+      "radius": 2,
+      "model": "packs/kenney-survival-kit/2.0/box.glb",
+      "scale": 2.8,
+      "chapter": 6,
+      "quest": "tv2-t05-b10"
+    },
+    {
+      "id": "tv2-t05-cap-sach",
+      "kind": "object",
+      "name": "Cặp sách",
+      "label": "Nhặt lên",
+      "position": [
+        29.5,
+        14,
+        77.5
+      ],
+      "yaw": -135,
+      "radius": 2,
+      "model": "packs/kenney-food-kit/2.0/bag.glb",
+      "scale": 1.0004,
+      "chapter": 6,
+      "quest": "tv2-t05-b10"
+    },
+    {
+      "id": "tv2-t05-thuoc-ke",
+      "kind": "object",
+      "name": "Thước kẻ",
+      "label": "Nhặt lên",
+      "position": [
+        26.5,
+        15,
+        76.5
+      ],
+      "yaw": 90,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/log.glb",
+      "scale": 3.4641,
+      "chapter": 6,
+      "quest": "tv2-t05-b10"
+    },
+    {
+      "id": "tv2-t06-chot-gia-trong",
+      "kind": "object",
+      "name": "Chốt giá trống",
+      "label": "Nhặt lên",
+      "position": [
+        22.5,
+        12,
+        64.5
+      ],
+      "yaw": 180,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/log.glb",
+      "scale": 3.4641,
+      "chapter": 7,
+      "quest": "tv2-t06-b11"
+    },
+    {
+      "id": "tv2-t06-dui-trong",
+      "kind": "object",
+      "name": "Dùi trống",
+      "label": "Nhặt lên",
+      "position": [
+        23.5,
+        12,
+        61.5
+      ],
+      "yaw": -45,
+      "radius": 2,
+      "model": "packs/kenney-survival-kit/2.0/tool-hammer.glb",
+      "scale": 3.9093,
+      "chapter": 7,
+      "quest": "tv2-t06-b11"
+    },
+    {
+      "id": "tv2-t06-khan-lau-trong",
+      "kind": "object",
+      "name": "Khăn lau trống",
+      "label": "Nhặt lên",
+      "position": [
+        21.5,
+        12,
+        60.5
+      ],
+      "yaw": 27,
+      "radius": 2,
+      "model": "packs/kenney-food-kit/2.0/bag.glb",
+      "scale": 1.0004,
+      "chapter": 7,
+      "quest": "tv2-t06-b11"
+    },
+    {
+      "id": "tv2-t06-trong-truong",
+      "kind": "object",
+      "name": "Trống trường",
+      "label": "Đọc thơ",
+      "position": [
+        42.5,
+        12,
+        60.5
+      ],
+      "yaw": 135,
+      "radius": 2,
+      "model": "packs/kenney-survival-kit/2.0/barrel.glb",
+      "scale": 3.1977,
+      "chapter": 7,
+      "quest": "tv2-t06-b11"
+    },
+    {
+      "id": "ban-doc-sach",
+      "kind": "object",
+      "name": "Bản danh sách",
+      "label": "Đọc danh sách",
+      "position": [
+        37.5,
+        13,
+        21.5
+      ],
+      "yaw": -90,
+      "radius": 2,
+      "shape": "letter",
+      "chapter": 7,
+      "quest": "tv2-t06-b12"
+    },
+    {
+      "id": "tv2-t06-but-chi-tre",
+      "kind": "object",
+      "name": "Bút chì tre",
+      "label": "Nhặt lên",
+      "position": [
+        73.5,
+        13,
+        66.5
+      ],
+      "yaw": 180,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/log.glb",
+      "scale": 3.4641,
+      "chapter": 7,
+      "quest": "tv2-t06-b12"
+    },
+    {
+      "id": "tv2-t06-kinh-lup-gau-truc",
+      "kind": "object",
+      "name": "Kính lúp",
+      "label": "Nhặt lên",
+      "position": [
+        73.5,
+        13,
+        64.5
+      ],
+      "yaw": 116,
+      "radius": 2,
+      "model": "packs/kenney-survival-kit/2.0/bottle.glb",
+      "scale": 3.2495,
+      "chapter": 7,
+      "quest": "tv2-t06-b12"
+    },
+    {
+      "id": "tv2-t06-trang-giay-uot",
+      "kind": "object",
+      "name": "Trang giấy ướt",
+      "label": "Nhặt lên",
+      "position": [
+        75.5,
+        13,
+        65.5
+      ],
+      "yaw": -117,
+      "radius": 2,
+      "shape": "letter",
+      "chapter": 7,
+      "quest": "tv2-t06-b12"
+    },
+    {
+      "id": "heo-un",
+      "kind": "npc",
+      "name": "Heo Ủn",
+      "label": "Nói chuyện",
+      "position": [
+        61.5,
+        12,
+        59.5
+      ],
+      "yaw": 226,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-pig.glb",
+      "scale": 0.6311,
+      "animation": "idle",
+      "chapter": 8,
+      "quest": "tv2-t07-b13"
+    },
+    {
+      "id": "tv2-t07-tranh-bua-trua",
+      "kind": "object",
+      "name": "Tranh bữa trưa",
+      "label": "Xem tranh",
+      "position": [
+        62.5,
+        12,
+        61.5
+      ],
+      "yaw": -153,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/sign.glb",
+      "scale": 3.4249,
+      "chapter": 8,
+      "quest": "tv2-t07-b13"
+    },
+    {
+      "id": "tv2-t07-cua-so-la",
+      "kind": "object",
+      "name": "Cửa sổ lá",
+      "label": "Đọc thơ",
+      "position": [
+        63.5,
+        13,
+        79.5
+      ],
+      "yaw": -135,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/sign.glb",
+      "scale": 3.4249,
+      "chapter": 8,
+      "quest": "tv2-t07-b13"
+    },
+    {
+      "id": "tv2-t07-day-nhay",
+      "kind": "object",
+      "name": "Dây nhảy",
+      "label": "Nhặt lên",
+      "position": [
+        32.5,
+        13,
+        67.5
+      ],
+      "yaw": -135,
+      "radius": 2,
+      "model": "packs/kenney-food-kit/2.0/bag.glb",
+      "scale": 1.0004,
+      "chapter": 8,
+      "quest": "tv2-t07-b13"
+    },
+    {
+      "id": "tv2-t07-long-chim-xanh",
+      "kind": "object",
+      "name": "Lông chim xanh",
+      "label": "Nhặt lên",
+      "position": [
+        30.5,
+        13,
+        67.5
+      ],
+      "yaw": 135,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/crops_wheatStageB.glb",
+      "scale": 1.6824,
+      "chapter": 8,
+      "quest": "tv2-t07-b13"
+    },
+    {
+      "id": "tv2-t07-qua-cau-long",
+      "kind": "object",
+      "name": "Quả cầu lông",
+      "label": "Nhặt lên",
+      "position": [
+        30.5,
+        12,
+        65.5
+      ],
+      "yaw": 45,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/crops_wheatStageB.glb",
+      "scale": 1.6824,
+      "chapter": 8,
+      "quest": "tv2-t07-b13"
+    },
+    {
+      "id": "huou-cao",
+      "kind": "npc",
+      "name": "Hươu Cao",
+      "label": "Nói chuyện",
+      "position": [
+        46.5,
+        14,
+        21.5
+      ],
+      "yaw": -27,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-giraffe.glb",
+      "scale": 1.2837,
+      "animation": "idle",
+      "chapter": 8,
+      "quest": "tv2-t07-b14"
+    },
+    {
+      "id": "tv2-t07-gia-ve",
+      "kind": "object",
+      "name": "Giá vẽ",
+      "label": "Đọc thơ",
+      "position": [
+        47.5,
+        14,
+        23.5
+      ],
+      "yaw": -90,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/sign.glb",
+      "scale": 3.4249,
+      "chapter": 8,
+      "quest": "tv2-t07-b14"
+    },
+    {
+      "id": "tv2-t07-hoa-cuc-dai",
+      "kind": "object",
+      "name": "Hoa cúc dại",
+      "label": "Hái hoa",
+      "position": [
+        6.5,
+        16,
+        45.5
+      ],
+      "yaw": 180,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/flower_yellowB.glb",
+      "scale": 4.4164,
+      "chapter": 8,
+      "quest": "tv2-t07-b14"
+    },
+    {
+      "id": "tv2-t07-la-xanh-non",
+      "kind": "object",
+      "name": "Lá xanh non",
+      "label": "Hái lá",
+      "position": [
+        6.5,
+        16,
+        43.5
+      ],
+      "yaw": 184,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/lily_large.glb",
+      "scale": 2.0408,
+      "chapter": 8,
+      "quest": "tv2-t07-b14"
+    },
+    {
+      "id": "tv2-t07-qua-mam-xoi",
+      "kind": "object",
+      "name": "Quả mâm xôi",
+      "label": "Hái quả",
+      "position": [
+        6.5,
+        16,
+        43.5
+      ],
+      "yaw": 155,
+      "radius": 2,
+      "model": "packs/kenney-food-kit/2.0/grapes.glb",
+      "scale": 0.9465,
+      "chapter": 8,
+      "quest": "tv2-t07-b14"
+    },
+    {
+      "id": "tv2-t07-leu-ve",
+      "kind": "object",
+      "name": "Lều vẽ",
+      "label": "Vào lều",
+      "position": [
+        63.5,
+        13,
+        23.5
+      ],
+      "yaw": 135,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/tent_smallOpen.glb",
+      "scale": 3.9207,
+      "chapter": 8,
+      "quest": "tv2-t07-b14"
+    },
+    {
+      "id": "ke-sach",
+      "kind": "object",
+      "name": "Kệ sách",
+      "label": "Đọc bài",
+      "position": [
+        80.5,
+        11,
+        13.5
+      ],
+      "yaw": -63,
+      "radius": 2,
+      "model": "packs/kenney-survival-kit/2.0/box-large.glb",
+      "scale": 4,
+      "chapter": 9,
+      "quest": "tv2-t08-b15"
+    },
+    {
+      "id": "tv2-t08-sach-de-men",
+      "kind": "object",
+      "name": "Sách Dế Mèn",
+      "label": "Nhặt lên",
+      "position": [
+        47.5,
+        13,
+        85.5
+      ],
+      "yaw": -90,
+      "radius": 2,
+      "shape": "letter",
+      "chapter": 9,
+      "quest": "tv2-t08-b15"
+    },
+    {
+      "id": "tv2-t08-sach-the-gioi-quanh-em",
+      "kind": "object",
+      "name": "Sách Thế giới quanh em",
+      "label": "Nhặt lên",
+      "position": [
+        43.5,
+        14,
+        85.5
+      ],
+      "yaw": 90,
+      "radius": 2,
+      "shape": "letter",
+      "chapter": 9,
+      "quest": "tv2-t08-b15"
+    },
+    {
+      "id": "tv2-t08-trang-muc-luc",
+      "kind": "object",
+      "name": "Trang mục lục",
+      "label": "Nhặt lên",
+      "position": [
+        44.5,
+        15,
+        87.5
+      ],
+      "yaw": 153,
+      "radius": 2,
+      "shape": "letter",
+      "chapter": 9,
+      "quest": "tv2-t08-b15"
+    },
+    {
+      "id": "tv2-t08-canh-buom-giay",
+      "kind": "object",
+      "name": "Cánh buồm giấy",
+      "label": "Nhặt lên",
+      "position": [
+        25.5,
+        15,
+        76.5
+      ],
+      "yaw": 117,
+      "radius": 2,
+      "shape": "letter",
+      "chapter": 9,
+      "quest": "tv2-t08-b16"
+    },
+    {
+      "id": "tv2-t08-long-chim-bay",
+      "kind": "object",
+      "name": "Lông chim",
+      "label": "Nhặt lên",
+      "position": [
+        27.5,
+        14,
+        73.5
+      ],
+      "yaw": 266,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/crops_wheatStageB.glb",
+      "scale": 1.6824,
+      "chapter": 9,
+      "quest": "tv2-t08-b16"
+    },
+    {
+      "id": "tv2-t08-nhanh-co-dai",
+      "kind": "object",
+      "name": "Nhánh cỏ dại",
+      "label": "Nhặt lên",
+      "position": [
+        29.5,
+        14,
+        76.5
+      ],
+      "yaw": -117,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/crops_wheatStageB.glb",
+      "scale": 1.6824,
+      "chapter": 9,
+      "quest": "tv2-t08-b16"
+    },
+    {
+      "id": "tv2-t08-canh-buom-hien-ra",
+      "kind": "object",
+      "name": "Cánh buồm lớn",
+      "label": "Xem",
+      "position": [
+        87.5,
+        13,
+        60.5
+      ],
+      "yaw": -90,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/tent_smallOpen.glb",
+      "scale": 3.9207,
+      "chapter": 9,
+      "quest": "tv2-t08-b16"
+    },
+    {
+      "id": "tv2-t08-hop-but-nai-mo",
+      "kind": "object",
+      "name": "Hộp bút Nai Mơ",
+      "label": "Mở hộp",
+      "position": [
+        64.5,
+        12,
+        60.5
+      ],
+      "yaw": 153,
+      "radius": 2,
+      "model": "packs/kenney-survival-kit/2.0/box.glb",
+      "scale": 2.8,
+      "chapter": 9,
+      "quest": "tv2-t08-b16"
+    },
+    {
+      "id": "tv2-t08-tang-da-phang",
+      "kind": "object",
+      "name": "Tảng đá phẳng",
+      "label": "Đọc thơ",
+      "position": [
+        64.5,
+        12,
+        57.5
+      ],
+      "yaw": 45,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/rock_smallA.glb",
+      "scale": 3.1377,
+      "chapter": 9,
+      "quest": "tv2-t08-b16"
+    },
+    {
+      "id": "tv2-t09-ve-la-vang-1",
+      "kind": "object",
+      "name": "Vé lá vàng",
+      "label": "Nhặt lên",
+      "position": [
+        58.5,
+        14,
+        72.5
+      ],
+      "yaw": 117,
+      "radius": 2,
+      "shape": "letter",
+      "chapter": 10,
+      "quest": "tv2-t09-on-giua-ki"
+    },
+    {
+      "id": "tv2-t09-ve-la-vang-2",
+      "kind": "object",
+      "name": "Vé lá vàng",
+      "label": "Nhặt lên",
+      "position": [
+        61.5,
+        14,
+        72.5
+      ],
+      "yaw": -135,
+      "radius": 2,
+      "shape": "letter",
+      "chapter": 10,
+      "quest": "tv2-t09-on-giua-ki"
+    },
+    {
+      "id": "tv2-t09-ve-la-vang-3",
+      "kind": "object",
+      "name": "Vé lá vàng",
+      "label": "Nhặt lên",
+      "position": [
+        58.5,
+        14,
+        70.5
+      ],
+      "yaw": 63,
+      "radius": 2,
+      "shape": "letter",
+      "chapter": 10,
+      "quest": "tv2-t09-on-giua-ki"
+    },
+    {
+      "id": "bo-sua-mo",
+      "kind": "npc",
+      "name": "Bò Sữa Mơ",
+      "label": "Nói chuyện",
+      "position": [
+        74.5,
+        13,
+        34.5
+      ],
+      "yaw": -63,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-cow.glb",
+      "scale": 0.8683,
+      "animation": "idle",
+      "chapter": 11,
+      "quest": "tv2-t10-b17"
+    },
+    {
+      "id": "tv2-t10-bang-go-goi-ban",
+      "kind": "object",
+      "name": "Bảng gỗ khắc thơ",
+      "label": "Đọc bảng",
+      "position": [
+        12.5,
+        12,
+        43.5
+      ],
+      "yaw": 45,
+      "radius": 2,
+      "model": "packs/kenney-survival-kit/2.0/signpost.glb",
+      "scale": 4.7818,
+      "chapter": 11,
+      "quest": "tv2-t10-b17"
+    },
+    {
+      "id": "tv2-t10-cu-ca-rot-roi",
+      "kind": "object",
+      "name": "Củ cà rốt rơi",
+      "label": "Nhặt lên",
+      "position": [
+        32.5,
+        13,
+        71.5
+      ],
+      "yaw": -117,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/crop_carrot.glb",
+      "scale": 0.9687,
+      "chapter": 11,
+      "quest": "tv2-t10-b17"
+    },
+    {
+      "id": "tv2-t10-dau-chan-tho",
+      "kind": "object",
+      "name": "Dấu chân thỏ",
+      "label": "Xem",
+      "position": [
+        30.5,
+        14,
+        71.5
+      ],
+      "yaw": 180,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/rock_smallA.glb",
+      "scale": 3.1377,
+      "chapter": 11,
+      "quest": "tv2-t10-b17"
+    },
+    {
+      "id": "tv2-t10-vach-da-tranh",
+      "kind": "object",
+      "name": "Vách đá có tranh",
+      "label": "Xem tranh",
+      "position": [
+        27.5,
+        15,
+        80.5
+      ],
+      "yaw": 45,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/rock_smallA.glb",
+      "scale": 3.1377,
+      "chapter": 11,
+      "quest": "tv2-t10-b17"
+    },
+    {
+      "id": "gau-tuyet-bong",
+      "kind": "npc",
+      "name": "Gấu Tuyết Bông",
+      "label": "Nói chuyện",
+      "position": [
+        23.5,
+        14,
+        7.5
+      ],
+      "yaw": 117,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-polar.glb",
+      "scale": 0.9326,
+      "animation": "idle",
+      "chapter": 11,
+      "quest": "tv2-t10-b18"
+    },
+    {
+      "id": "tv2-t10-but-long-chim",
+      "kind": "object",
+      "name": "Bút lông chim",
+      "label": "Nhặt lên",
+      "position": [
+        17.5,
+        13,
+        11.5
+      ],
+      "yaw": -135,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/crops_wheatStageB.glb",
+      "scale": 1.6824,
+      "chapter": 11,
+      "quest": "tv2-t10-b18"
+    },
+    {
+      "id": "tv2-t10-phong-bi-bong-tuyet",
+      "kind": "object",
+      "name": "Phong bì tuyết",
+      "label": "Nhặt lên",
+      "position": [
+        15.5,
+        13,
+        9.5
+      ],
+      "yaw": 45,
+      "radius": 2,
+      "shape": "letter",
+      "chapter": 11,
+      "quest": "tv2-t10-b18"
+    },
+    {
+      "id": "tv2-t10-to-giay-xanh",
+      "kind": "object",
+      "name": "Tờ giấy xanh",
+      "label": "Nhặt lên",
+      "position": [
+        17.5,
+        13,
+        8.5
+      ],
+      "yaw": -27,
+      "radius": 2,
+      "shape": "letter",
+      "chapter": 11,
+      "quest": "tv2-t10-b18"
+    },
+    {
+      "id": "tv2-t10-thuyen-thu",
+      "kind": "object",
+      "name": "Thuyền thư",
+      "label": "Đọc truyện",
+      "position": [
+        55.5,
+        14,
+        87.5
+      ],
+      "yaw": -63,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/log.glb",
+      "scale": 3.4641,
+      "chapter": 11,
+      "quest": "tv2-t10-b18"
+    },
+    {
+      "id": "tv2-t11-chu-c-truot-van",
+      "kind": "object",
+      "name": "Chữ C trượt ván",
+      "label": "Nhặt lên",
+      "position": [
+        36.5,
+        12,
+        65.5
+      ],
+      "yaw": -90,
+      "radius": 2,
+      "shape": "letter",
+      "chapter": 12,
+      "quest": "tv2-t11-b19"
+    },
+    {
+      "id": "tv2-t11-chu-e-tron-bui",
+      "kind": "object",
+      "name": "Chữ E trốn bụi",
+      "label": "Tìm trong bụi",
+      "position": [
+        34.5,
+        12,
+        63.5
+      ],
+      "yaw": 327,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/plant_bushLarge.glb",
+      "scale": 4.9396,
+      "chapter": 12,
+      "quest": "tv2-t11-b19"
+    },
+    {
+      "id": "tv2-t11-chu-g-treo-canh",
+      "kind": "object",
+      "name": "Chữ G treo cành",
+      "label": "Gỡ xuống",
+      "position": [
+        32.5,
+        13,
+        64.5
+      ],
+      "yaw": 63,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/tree_small.glb",
+      "scale": 2.7026,
+      "chapter": 12,
+      "quest": "tv2-t11-b19"
+    },
+    {
+      "id": "tv2-t11-cuon-sach-lon",
+      "kind": "object",
+      "name": "Cuốn sách lớn",
+      "label": "Đọc sách",
+      "position": [
+        18.5,
+        13,
+        10.5
+      ],
+      "yaw": -45,
+      "radius": 2,
+      "shape": "letter",
+      "chapter": 12,
+      "quest": "tv2-t11-b19"
+    },
+    {
+      "id": "tv2-t11-vach-tranh",
+      "kind": "object",
+      "name": "Vách tranh",
+      "label": "Xem tranh",
+      "position": [
+        16.5,
+        13,
+        78.5
+      ],
+      "yaw": -45,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/sign.glb",
+      "scale": 3.4249,
+      "chapter": 12,
+      "quest": "tv2-t11-b19"
+    },
+    {
+      "id": "tv2-t11-hang-da-nho",
+      "kind": "object",
+      "name": "Hang đá nhỏ",
+      "label": "Vào hang",
+      "position": [
+        27.5,
+        14,
+        72.5
+      ],
+      "yaw": 258,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/rock_smallA.glb",
+      "scale": 3.1377,
+      "chapter": 12,
+      "quest": "tv2-t11-b20"
+    },
+    {
+      "id": "tv2-t11-qua-dai-chin",
+      "kind": "object",
+      "name": "Quả dại chín",
+      "label": "Nhặt lên",
+      "position": [
+        37.5,
+        14,
+        84.5
+      ],
+      "yaw": -135,
+      "radius": 2,
+      "model": "packs/kenney-food-kit/2.0/grapes.glb",
+      "scale": 0.9465,
+      "chapter": 12,
+      "quest": "tv2-t11-b20"
+    },
+    {
+      "id": "tv2-t11-sach-nhim-nau",
+      "kind": "object",
+      "name": "Sách Nhím Nâu",
+      "label": "Nhặt lên",
+      "position": [
+        37.5,
+        14,
+        81.5
+      ],
+      "yaw": -27,
+      "radius": 2,
+      "shape": "letter",
+      "chapter": 12,
+      "quest": "tv2-t11-b20"
+    },
+    {
+      "id": "tv2-t12-cay-gao-cao",
+      "kind": "npc",
+      "name": "Khỉ Lanh",
+      "label": "Nói chuyện",
+      "position": [
+        40.5,
+        12,
+        40.5
+      ],
+      "yaw": -153,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-monkey.glb",
+      "scale": 0.6832,
+      "animation": "idle",
+      "chapter": 13,
+      "quest": "tv2-t12-b21"
+    },
+    {
+      "id": "tv2-t12-cuon-day-dieu",
+      "kind": "object",
+      "name": "Cuộn dây diều",
+      "label": "Nhặt lên",
+      "position": [
+        37.5,
+        14,
+        81.5
+      ],
+      "yaw": -27,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/log.glb",
+      "scale": 3.4641,
+      "chapter": 13,
+      "quest": "tv2-t12-b21"
+    },
+    {
+      "id": "tv2-t12-sao-truc-dieu",
+      "kind": "object",
+      "name": "Sáo trúc diều",
+      "label": "Nhặt lên",
+      "position": [
+        35.5,
+        14,
+        81.5
+      ],
+      "yaw": 27,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/crops_bambooStageB.glb",
+      "scale": 2.0225,
+      "chapter": 13,
+      "quest": "tv2-t12-b21"
+    },
+    {
+      "id": "tv2-t12-phien-da-tho",
+      "kind": "object",
+      "name": "Phiến đá khắc thơ",
+      "label": "Đọc thơ",
+      "position": [
+        78.5,
+        13,
+        73.5
+      ],
+      "yaw": 153,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/rock_smallA.glb",
+      "scale": 3.1377,
+      "chapter": 13,
+      "quest": "tv2-t12-b21"
+    },
+    {
+      "id": "ban-lap-rap",
+      "kind": "object",
+      "name": "Bàn lắp ráp",
+      "label": "Đọc bài",
+      "position": [
+        60.5,
+        14,
+        77.5
+      ],
+      "yaw": -45,
+      "radius": 2,
+      "model": "packs/kenney-survival-kit/2.0/workbench.glb",
+      "scale": 3.8382,
+      "chapter": 13,
+      "quest": "tv2-t12-b22"
+    },
+    {
+      "id": "dom",
+      "kind": "npc",
+      "name": "Lợn Rừng Đốm",
+      "label": "Nói chuyện",
+      "position": [
+        57.5,
+        14,
+        78.5
+      ],
+      "yaw": 90,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-hog.glb",
+      "scale": 0.6597,
+      "animation": "idle",
+      "chapter": 13,
+      "quest": "tv2-t12-b22"
+    },
+    {
+      "id": "tv2-t12-banh-xe-le-go",
+      "kind": "object",
+      "name": "Bánh xe lê-gô",
+      "label": "Nhặt lên",
+      "position": [
+        28.5,
+        12,
+        66.5
+      ],
+      "yaw": 180,
+      "radius": 2,
+      "model": "packs/kenney-survival-kit/2.0/box.glb",
+      "scale": 2.8,
+      "chapter": 13,
+      "quest": "tv2-t12-b22"
+    },
+    {
+      "id": "tv2-t12-khoi-do",
+      "kind": "object",
+      "name": "Khối lê-gô đỏ",
+      "label": "Nhặt lên",
+      "position": [
+        28.5,
+        12,
+        64.5
+      ],
+      "yaw": 308,
+      "radius": 2,
+      "model": "packs/kenney-survival-kit/2.0/box.glb",
+      "scale": 2.8,
+      "chapter": 13,
+      "quest": "tv2-t12-b22"
+    },
+    {
+      "id": "tv2-t12-khoi-vang",
+      "kind": "object",
+      "name": "Khối lê-gô vàng",
+      "label": "Nhặt lên",
+      "position": [
+        26.5,
+        12,
+        65.5
+      ],
+      "yaw": 90,
+      "radius": 2,
+      "model": "packs/kenney-survival-kit/2.0/box.glb",
+      "scale": 2.8,
+      "chapter": 13,
+      "quest": "tv2-t12-b22"
+    },
+    {
+      "id": "tv2-t13-cay-nuc-nac",
+      "kind": "object",
+      "name": "Cây núc nác",
+      "label": "Đọc luật",
+      "position": [
+        39.5,
+        13,
+        35.5
+      ],
+      "yaw": 222,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/tree_small.glb",
+      "scale": 2.7026,
+      "chapter": 14,
+      "quest": "tv2-t13-b23"
+    },
+    {
+      "id": "tv2-t13-manh-la-dau",
+      "kind": "object",
+      "name": "Mảnh lá đầu",
+      "label": "Nhặt lên",
+      "position": [
+        9.5,
+        13,
+        63.5
+      ],
+      "yaw": -45,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/lily_large.glb",
+      "scale": 2.0408,
+      "chapter": 14,
+      "quest": "tv2-t13-b23"
+    },
+    {
+      "id": "tv2-t13-manh-la-duoi",
+      "kind": "object",
+      "name": "Mảnh lá đuôi",
+      "label": "Nhặt lên",
+      "position": [
+        6.5,
+        16,
+        65.5
+      ],
+      "yaw": 117,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/lily_large.glb",
+      "scale": 2.0408,
+      "chapter": 14,
+      "quest": "tv2-t13-b23"
+    },
+    {
+      "id": "tv2-t13-manh-la-giua",
+      "kind": "object",
+      "name": "Mảnh lá giữa",
+      "label": "Nhặt lên",
+      "position": [
+        7.5,
+        15,
+        63.5
+      ],
+      "yaw": 45,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/lily_large.glb",
+      "scale": 2.0408,
+      "chapter": 14,
+      "quest": "tv2-t13-b23"
+    },
+    {
+      "id": "tv2-t13-gao-nuoc",
+      "kind": "object",
+      "name": "Gáo nước",
+      "label": "Nhặt lên",
+      "position": [
+        72.5,
+        11,
+        11.5
+      ],
+      "yaw": 27,
+      "radius": 2,
+      "model": "packs/kenney-food-kit/2.0/bowl.glb",
+      "scale": 1.8707,
+      "chapter": 14,
+      "quest": "tv2-t13-b24"
+    },
+    {
+      "id": "tv2-t13-la-chuoi",
+      "kind": "object",
+      "name": "Tàu lá chuối",
+      "label": "Nhặt lên",
+      "position": [
+        75.5,
+        11,
+        14.5
+      ],
+      "yaw": -117,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/lily_large.glb",
+      "scale": 2.0408,
+      "chapter": 14,
+      "quest": "tv2-t13-b24"
+    },
+    {
+      "id": "tv2-t13-que-nan",
+      "kind": "object",
+      "name": "Que nặn",
+      "label": "Nhặt lên",
+      "position": [
+        75.5,
+        11,
+        12.5
+      ],
+      "yaw": -63,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/log.glb",
+      "scale": 3.4641,
+      "chapter": 14,
+      "quest": "tv2-t13-b24"
+    },
+    {
+      "id": "tv2-t13-gia-do-choi",
+      "kind": "object",
+      "name": "Giá đồ chơi",
+      "label": "Xem",
+      "position": [
+        67.5,
+        13,
+        22.5
+      ],
+      "yaw": 327,
+      "radius": 2,
+      "model": "packs/kenney-survival-kit/2.0/box-large.glb",
+      "scale": 4,
+      "chapter": 14,
+      "quest": "tv2-t13-b24"
+    },
+    {
+      "id": "tv2-t13-phien-da-reu",
+      "kind": "object",
+      "name": "Phiến đá rêu",
+      "label": "Đọc thơ",
+      "position": [
+        48.5,
+        13,
+        66.5
+      ],
+      "yaw": 45,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/rock_smallA.glb",
+      "scale": 3.1377,
+      "chapter": 14,
+      "quest": "tv2-t13-b24"
+    },
+    {
+      "id": "ong-hong",
+      "kind": "npc",
+      "name": "Ong Hồng",
+      "label": "Nói chuyện",
+      "position": [
+        12.5,
+        14,
+        72.5
+      ],
+      "yaw": -135,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-bee.glb",
+      "scale": 0.3002,
+      "animation": "idle",
+      "chapter": 15,
+      "quest": "tv2-t14-b25"
+    },
+    {
+      "id": "ong-nu",
+      "kind": "npc",
+      "name": "Ong Nụ",
+      "label": "Nói chuyện",
+      "position": [
+        11.5,
+        14,
+        70.5
+      ],
+      "yaw": 190,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-bee.glb",
+      "scale": 0.3002,
+      "animation": "idle",
+      "chapter": 15,
+      "quest": "tv2-t14-b25"
+    },
+    {
+      "id": "tv2-t14-bui-hoa-ti-muoi",
+      "kind": "object",
+      "name": "Bụi hoa tỉ muội",
+      "label": "Đọc chuyện",
+      "position": [
+        10.5,
+        13,
+        73.5
+      ],
+      "yaw": 153,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
+      "scale": 2.3932,
+      "chapter": 15,
+      "quest": "tv2-t14-b25"
+    },
+    {
+      "id": "tv2-t14-chum-hoa-lon",
+      "kind": "object",
+      "name": "Chùm hoa lớn",
+      "label": "Xem",
+      "position": [
+        15.5,
+        13,
+        47.5
+      ],
+      "yaw": 153,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/flower_purpleA.glb",
+      "scale": 2.8866,
+      "chapter": 15,
+      "quest": "tv2-t14-b25"
+    },
+    {
+      "id": "tv2-t14-nu-hoa-be",
+      "kind": "object",
+      "name": "Nụ hoa bé",
+      "label": "Xem",
+      "position": [
+        17.5,
+        13,
+        47.5
+      ],
+      "yaw": -153,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/flower_yellowB.glb",
+      "scale": 4.4164,
+      "chapter": 15,
+      "quest": "tv2-t14-b25"
+    },
+    {
+      "id": "tv2-t14-vach-to-ong",
+      "kind": "object",
+      "name": "Vách tổ ong",
+      "label": "Xem tranh",
+      "position": [
+        71.5,
+        12,
+        38.5
+      ],
+      "yaw": 180,
+      "radius": 2,
+      "model": "packs/kenney-food-kit/2.0/honey.glb",
+      "scale": 1.5822,
+      "chapter": 15,
+      "quest": "tv2-t14-b25"
+    },
+    {
+      "id": "ga-chip",
+      "kind": "npc",
+      "name": "Gà Con Chíp",
+      "label": "Nói chuyện",
+      "position": [
+        85.5,
+        12,
+        10.5
+      ],
+      "yaw": -45,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-chick.glb",
+      "scale": 0.4391,
+      "animation": "idle",
+      "chapter": 15,
+      "quest": "tv2-t14-b26"
+    },
+    {
+      "id": "me-ga",
+      "kind": "npc",
+      "name": "Mẹ Gà",
+      "label": "Nói chuyện",
+      "position": [
+        82.5,
+        12,
+        12.5
+      ],
+      "yaw": 117,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-chick.glb",
+      "scale": 0.4391,
+      "animation": "idle",
+      "chapter": 15,
+      "quest": "tv2-t14-b26"
+    },
+    {
+      "id": "tv2-t14-qua-trung",
+      "kind": "object",
+      "name": "Quả trứng",
+      "label": "Đọc thơ",
+      "position": [
+        83.5,
+        12,
+        9.5
+      ],
+      "yaw": 27,
+      "radius": 2,
+      "model": "packs/kenney-food-kit/2.0/egg.glb",
+      "scale": 1.816,
+      "chapter": 15,
+      "quest": "tv2-t14-b26"
+    },
+    {
+      "id": "tv2-t14-chum-nhan",
+      "kind": "object",
+      "name": "Chùm nhãn",
+      "label": "Nhặt lên",
+      "position": [
+        85.5,
+        12,
+        62.5
+      ],
+      "yaw": 180,
+      "radius": 2,
+      "model": "packs/kenney-food-kit/2.0/grapes.glb",
+      "scale": 0.9465,
+      "chapter": 15,
+      "quest": "tv2-t14-b26"
+    },
+    {
+      "id": "tv2-t14-ngoi-sao-giay",
+      "kind": "object",
+      "name": "Ngôi sao giấy",
+      "label": "Nhặt lên",
+      "position": [
+        84.5,
+        12,
+        59.5
+      ],
+      "yaw": 27,
+      "radius": 2,
+      "shape": "letter",
+      "chapter": 15,
+      "quest": "tv2-t14-b26"
+    },
+    {
+      "id": "tv2-t14-vo-oc-bien",
+      "kind": "object",
+      "name": "Vỏ ốc biển",
+      "label": "Nhặt lên",
+      "position": [
+        87.5,
+        13,
+        62.5
+      ],
+      "yaw": -117,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/rock_smallA.glb",
+      "scale": 3.1377,
+      "chapter": 15,
+      "quest": "tv2-t14-b26"
+    },
+    {
+      "id": "tv2-t14-vong-hien",
+      "kind": "object",
+      "name": "Võng dưới hiên",
+      "label": "Ru em",
+      "position": [
+        46.5,
+        16,
+        7.5
+      ],
+      "yaw": -90,
+      "radius": 2,
+      "model": "packs/kenney-survival-kit/2.0/bedroll.glb",
+      "scale": 3.2041,
+      "chapter": 15,
+      "quest": "tv2-t14-b26"
+    },
+    {
+      "id": "koala-na",
+      "kind": "npc",
+      "name": "Koala Na",
+      "label": "Nói chuyện",
+      "position": [
+        46.5,
+        13,
+        64.5
+      ],
+      "yaw": 90,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-koala.glb",
+      "scale": 0.6836,
+      "animation": "idle",
+      "chapter": 16,
+      "quest": "tv2-t15-b27"
+    },
+    {
+      "id": "tv2-t15-goi-bong-lau",
+      "kind": "object",
+      "name": "Gối bông lau",
+      "label": "Nhặt lên",
+      "position": [
+        53.5,
+        14,
+        35.5
+      ],
+      "yaw": 90,
+      "radius": 2,
+      "model": "packs/kenney-food-kit/2.0/bag.glb",
+      "scale": 1.0004,
+      "chapter": 16,
+      "quest": "tv2-t15-b27"
+    },
+    {
+      "id": "tv2-t15-ong-nuoc-mat",
+      "kind": "object",
+      "name": "Ống nước mát",
+      "label": "Nhặt lên",
+      "position": [
+        54.5,
+        13,
+        33.5
+      ],
+      "yaw": 91,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/crops_bambooStageB.glb",
+      "scale": 2.0225,
+      "chapter": 16,
+      "quest": "tv2-t15-b27"
+    },
+    {
+      "id": "tv2-t15-quat-nan",
+      "kind": "object",
+      "name": "Quạt nan",
+      "label": "Nhặt lên",
+      "position": [
+        56.5,
+        13,
+        35.5
+      ],
+      "yaw": -90,
+      "radius": 2,
+      "shape": "letter",
+      "chapter": 16,
+      "quest": "tv2-t15-b27"
+    },
+    {
+      "id": "tv2-t15-la-chep-tho",
+      "kind": "object",
+      "name": "Tàu lá chép thơ",
+      "label": "Đọc thơ",
+      "position": [
+        70.5,
+        12,
+        13.5
+      ],
+      "yaw": -117,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/lily_large.glb",
+      "scale": 2.0408,
+      "chapter": 16,
+      "quest": "tv2-t15-b27"
+    },
+    {
+      "id": "su-tu-vang",
+      "kind": "npc",
+      "name": "Sư Tử Vàng",
+      "label": "Nói chuyện",
+      "position": [
+        57.5,
+        13,
+        62.5
+      ],
+      "yaw": -90,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-lion.glb",
+      "scale": 0.7446,
+      "animation": "idle",
+      "chapter": 16,
+      "quest": "tv2-t15-b28"
+    },
+    {
+      "id": "tv2-t15-bat-go",
+      "kind": "object",
+      "name": "Bát gỗ",
+      "label": "Nhặt lên",
+      "position": [
+        40.5,
+        12,
+        64.5
+      ],
+      "yaw": -63,
+      "radius": 2,
+      "model": "packs/kenney-food-kit/2.0/bowl.glb",
+      "scale": 1.8707,
+      "chapter": 16,
+      "quest": "tv2-t15-b28"
+    },
+    {
+      "id": "tv2-t15-dua-tre",
+      "kind": "object",
+      "name": "Đôi đũa tre",
+      "label": "Nhặt lên",
+      "position": [
+        36.5,
+        12,
+        65.5
+      ],
+      "yaw": 90,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/log.glb",
+      "scale": 3.4641,
+      "chapter": 16,
+      "quest": "tv2-t15-b28"
+    },
+    {
+      "id": "tv2-t15-mam-la",
+      "kind": "object",
+      "name": "Mâm lá",
+      "label": "Nhặt lên",
+      "position": [
+        37.5,
+        12,
+        63.5
+      ],
+      "yaw": 27,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/lily_large.glb",
+      "scale": 2.0408,
+      "chapter": 16,
+      "quest": "tv2-t15-b28"
+    },
+    {
+      "id": "tv2-t15-vach-da",
+      "kind": "object",
+      "name": "Vách đá khắc chữ",
+      "label": "Đọc chuyện",
+      "position": [
+        44.5,
+        15,
+        87.5
+      ],
+      "yaw": -27,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/rock_smallA.glb",
+      "scale": 3.1377,
+      "chapter": 16,
+      "quest": "tv2-t15-b28"
+    },
+    {
+      "id": "cua-kenh",
+      "kind": "npc",
+      "name": "Cua Kềnh",
+      "label": "Nói chuyện",
+      "position": [
+        19.5,
+        13,
+        62.5
+      ],
+      "yaw": 90,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-crab.glb",
+      "scale": 0.4192,
+      "animation": "idle",
+      "chapter": 17,
+      "quest": "tv2-t16-b29"
+    },
+    {
+      "id": "tv2-t16-canh-cua-go",
+      "kind": "object",
+      "name": "Cánh cửa gỗ",
+      "label": "Mở cửa",
+      "position": [
+        13.5,
+        14,
+        72.5
+      ],
+      "yaw": 299,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/sign.glb",
+      "scale": 3.4249,
+      "chapter": 17,
+      "quest": "tv2-t16-b29"
+    },
+    {
+      "id": "tv2-t16-ghe-may-cua-ba",
+      "kind": "object",
+      "name": "Ghế mây của bà",
+      "label": "Xem",
+      "position": [
+        55.5,
+        14,
+        74.5
+      ],
+      "yaw": -90,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/stump_round.glb",
+      "scale": 3.8741,
+      "chapter": 17,
+      "quest": "tv2-t16-b29"
+    },
+    {
+      "id": "tv2-t16-then-cua-tre",
+      "kind": "object",
+      "name": "Then cửa tre",
+      "label": "Nhặt lên",
+      "position": [
+        53.5,
+        14,
+        72.5
+      ],
+      "yaw": 125,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/crops_bambooStageB.glb",
+      "scale": 2.0225,
+      "chapter": 17,
+      "quest": "tv2-t16-b29"
+    },
+    {
+      "id": "tv2-t16-vach-vo-so",
+      "kind": "object",
+      "name": "Vách vỏ sò",
+      "label": "Xem tranh",
+      "position": [
+        53.5,
+        11,
+        56.5
+      ],
+      "yaw": 208,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/rock_smallA.glb",
+      "scale": 3.1377,
+      "chapter": 17,
+      "quest": "tv2-t16-b29"
+    },
+    {
+      "id": "ong-ven",
+      "kind": "npc",
+      "name": "Ông Vện",
+      "label": "Nói chuyện",
+      "position": [
+        50.5,
+        14,
+        75.5
+      ],
+      "yaw": -153,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-dog.glb",
+      "scale": 0.6311,
+      "animation": "idle",
+      "chapter": 17,
+      "quest": "tv2-t16-b30"
+    },
+    {
+      "id": "tv2-t16-gay-ong-ven",
+      "kind": "object",
+      "name": "Gậy của ông",
+      "label": "Nhặt lên",
+      "position": [
+        50.5,
+        12,
+        57.5
+      ],
+      "yaw": 45,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/log.glb",
+      "scale": 3.4641,
+      "chapter": 17,
+      "quest": "tv2-t16-b30"
+    },
+    {
+      "id": "tv2-t16-kinh-ong-ven",
+      "kind": "object",
+      "name": "Kính của ông",
+      "label": "Nhặt lên",
+      "position": [
+        52.5,
+        12,
+        59.5
+      ],
+      "yaw": -135,
+      "radius": 2,
+      "model": "packs/kenney-survival-kit/2.0/bottle.glb",
+      "scale": 3.2495,
+      "chapter": 17,
+      "quest": "tv2-t16-b30"
+    },
+    {
+      "id": "tv2-t16-mu-coi-ong-ven",
+      "kind": "object",
+      "name": "Mũ cói của ông",
+      "label": "Nhặt lên",
+      "position": [
+        53.5,
+        12,
+        57.5
+      ],
+      "yaw": -63,
+      "radius": 2,
+      "model": "packs/kenney-food-kit/2.0/bowl.glb",
+      "scale": 1.8707,
+      "chapter": 17,
+      "quest": "tv2-t16-b30"
+    },
+    {
+      "id": "tv2-t16-tang-da-lung-doc",
+      "kind": "object",
+      "name": "Tảng đá lưng dốc",
+      "label": "Đọc thơ",
+      "position": [
+        65.5,
+        12,
+        57.5
+      ],
+      "yaw": -90,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/rock_smallA.glb",
+      "scale": 3.1377,
+      "chapter": 17,
+      "quest": "tv2-t16-b30"
+    },
+    {
+      "id": "tv2-t16-them-nha-ong",
+      "kind": "npc",
+      "name": "Ông Vện",
+      "label": "Nói chuyện",
+      "position": [
+        68.5,
+        12,
+        63.5
+      ],
+      "yaw": 260,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-dog.glb",
+      "scale": 0.6311,
+      "animation": "idle",
+      "chapter": 17,
+      "quest": "tv2-t16-b30"
+    },
+    {
+      "id": "tv2-t17-hang-me-bong",
+      "kind": "npc",
+      "name": "Mẹ Bống",
+      "label": "Nói chuyện",
+      "position": [
+        39.5,
+        12,
+        60.5
+      ],
+      "yaw": -45,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-fish.glb",
+      "scale": 0.3686,
+      "animation": "idle",
+      "chapter": 18,
+      "quest": "tv2-t17-b31"
+    },
+    {
+      "id": "tv2-t17-la-sen",
+      "kind": "object",
+      "name": "Lá sen",
+      "label": "Đọc truyện",
+      "position": [
+        13.5,
+        12,
+        48.5
+      ],
+      "yaw": 45,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/lily_large.glb",
+      "scale": 2.0408,
+      "chapter": 18,
+      "quest": "tv2-t17-b31"
+    },
+    {
+      "id": "tv2-t17-manh-guong-cu",
+      "kind": "object",
+      "name": "Mảnh gương cũ",
+      "label": "Nhặt lên",
+      "position": [
+        8.5,
+        14,
+        62.5
+      ],
+      "yaw": 283,
+      "radius": 2,
+      "model": "packs/kenney-survival-kit/2.0/bottle.glb",
+      "scale": 3.2495,
+      "chapter": 18,
+      "quest": "tv2-t17-b31"
+    },
+    {
+      "id": "tv2-t17-vo-oc-bong",
+      "kind": "object",
+      "name": "Vỏ ốc bóng",
+      "label": "Nhặt lên",
+      "position": [
+        6.5,
+        16,
+        63.5
+      ],
+      "yaw": 117,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/rock_smallA.glb",
+      "scale": 3.1377,
+      "chapter": 18,
+      "quest": "tv2-t17-b31"
+    },
+    {
+      "id": "tv2-t17-vo-trai-lon",
+      "kind": "object",
+      "name": "Vỏ trai lớn",
+      "label": "Nhặt lên",
+      "position": [
+        10.5,
+        13,
+        61.5
+      ],
+      "yaw": -63,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/rock_smallA.glb",
+      "scale": 3.1377,
+      "chapter": 18,
+      "quest": "tv2-t17-b31"
+    },
+    {
+      "id": "tho-teo",
+      "kind": "npc",
+      "name": "Bé Tẹo",
+      "label": "Nói chuyện",
+      "position": [
+        25.5,
+        14,
+        71.5
+      ],
+      "yaw": 312,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-bunny.glb",
+      "scale": 0.4478,
+      "animation": "idle",
+      "chapter": 18,
+      "quest": "tv2-t17-b32"
+    },
+    {
+      "id": "tv2-t17-bu-nhin",
+      "kind": "object",
+      "name": "Bù nhìn rơm",
+      "label": "Đọc truyện",
+      "position": [
+        27.5,
+        14,
+        72.5
+      ],
+      "yaw": -117,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/crops_cornStageD.glb",
+      "scale": 1.28,
+      "chapter": 18,
+      "quest": "tv2-t17-b32"
+    },
+    {
+      "id": "tv2-t17-can-tre-nho",
+      "kind": "object",
+      "name": "Cán tre nhỏ",
+      "label": "Nhặt lên",
+      "position": [
+        23.5,
+        14,
+        79.5
+      ],
+      "yaw": -27,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/crops_bambooStageB.glb",
+      "scale": 2.0225,
+      "chapter": 18,
+      "quest": "tv2-t17-b32"
+    },
+    {
+      "id": "tv2-t17-canh-giay-do",
+      "kind": "object",
+      "name": "Cánh giấy đỏ",
+      "label": "Nhặt lên",
+      "position": [
+        22.5,
+        14,
+        82.5
+      ],
+      "yaw": 180,
+      "radius": 2,
+      "shape": "letter",
+      "chapter": 18,
+      "quest": "tv2-t17-b32"
+    },
+    {
+      "id": "tv2-t17-ghim-chong-chong",
+      "kind": "object",
+      "name": "Ghim chong chóng",
+      "label": "Nhặt lên",
+      "position": [
+        21.5,
+        14,
+        79.5
+      ],
+      "yaw": 27,
+      "radius": 2,
+      "model": "packs/kenney-food-kit/2.0/lollypop.glb",
+      "scale": 1.3165,
+      "chapter": 18,
+      "quest": "tv2-t17-b32"
+    },
+    {
+      "id": "tv2-t17-goc-cay-de",
+      "kind": "object",
+      "name": "Gốc cây dẻ",
+      "label": "Đọc tờ giấy",
+      "position": [
+        81.5,
+        12,
+        58.5
+      ],
+      "yaw": 117,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/tree_small.glb",
+      "scale": 2.7026,
+      "chapter": 18,
+      "quest": "tv2-t17-b32"
+    },
+    {
+      "id": "tv2-t18-bua-hai-ly",
+      "kind": "object",
+      "name": "Búa của Hải Ly",
+      "label": "Nhặt lên",
+      "position": [
+        71.5,
+        12,
+        17.5
+      ],
+      "yaw": 135,
+      "radius": 2,
+      "model": "packs/kenney-survival-kit/2.0/tool-hammer.glb",
+      "scale": 3.9093,
+      "chapter": 19,
+      "quest": "tv2-t18-on-cuoi-ki"
+    },
+    {
+      "id": "tv2-t18-dai-lua-do",
+      "kind": "object",
+      "name": "Dải lụa đỏ",
+      "label": "Nhặt lên",
+      "position": [
+        74.5,
+        11,
+        15.5
+      ],
+      "yaw": -63,
+      "radius": 2,
+      "shape": "letter",
+      "chapter": 19,
+      "quest": "tv2-t18-on-cuoi-ki"
+    },
+    {
+      "id": "tv2-t18-tam-van-cuoi",
+      "kind": "object",
+      "name": "Tấm ván cuối",
+      "label": "Nhặt lên",
+      "position": [
+        71.5,
+        11,
+        14.5
+      ],
+      "yaw": 27,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/log.glb",
+      "scale": 3.4641,
+      "chapter": 19,
+      "quest": "tv2-t18-on-cuoi-ki"
+    },
+    {
+      "id": "tv2-t18-giua-cau",
+      "kind": "npc",
+      "name": "Vẹt Xanh",
+      "label": "Nói chuyện",
+      "position": [
+        7.5,
+        16,
+        72.5
+      ],
+      "yaw": -153,
+      "radius": 3,
+      "model": "packs/kenney-cube-pets/2.0/animal-parrot.glb",
+      "scale": 0.4758,
+      "animation": "idle",
+      "chapter": 19,
+      "quest": "tv2-t18-on-cuoi-ki"
+    },
+    {
+      "id": "tv2-t18-nhip-cau-cuoi",
+      "kind": "object",
+      "name": "Nhịp cầu cuối",
+      "label": "Đọc truyện",
+      "position": [
+        80.5,
+        13,
+        69.5
+      ],
+      "yaw": 56,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/log.glb",
+      "scale": 3.4641,
+      "chapter": 19,
+      "quest": "tv2-t18-on-cuoi-ki"
+    },
+    {
+      "id": "tv2-t18-nhip-cau-dau",
+      "kind": "object",
+      "name": "Nhịp cầu đầu",
+      "label": "Xem tranh",
+      "position": [
+        65.5,
+        13,
+        87.5
+      ],
+      "yaw": 27,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/log.glb",
+      "scale": 3.4641,
+      "chapter": 19,
+      "quest": "tv2-t18-on-cuoi-ki"
+    },
+    {
+      "id": "tv2-t18-nhip-cau-giua",
+      "kind": "object",
+      "name": "Nhịp cầu giữa",
+      "label": "Xem",
+      "position": [
+        39.5,
+        13,
+        67.5
+      ],
+      "yaw": 180,
+      "radius": 2,
+      "model": "packs/kenney-nature-kit/2.1/log.glb",
+      "scale": 3.4641,
+      "chapter": 19,
+      "quest": "tv2-t18-on-cuoi-ki"
     }
   ],
   "props": [
@@ -1693,7 +4860,7 @@
       }
     },
     {
-      "id": "vet-xanh",
+      "id": "vet-suoi",
       "routine": "parrot",
       "name": "Vẹt rừng",
       "model": "packs/kenney-cube-pets/2.0/animal-parrot.glb",

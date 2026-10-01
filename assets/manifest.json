@@ -8480,6 +8480,22 @@
       "bytes": 799674
     },
     {
+      "path": "generated/regions/truong-hoc.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-region-art.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "6d2667b3c355910f0293742e6acd22396b81be49a0035394ebbf94aa6715285a",
+      "bytes": 779339
+    },
+    {
       "path": "generated/review/accessories/item-backpack-brown.png",
       "license": "CC0-1.0",
       "generator": "tools/assets/render-preview.ts",
@@ -10040,6 +10056,14 @@
       "bytes": 5103
     },
     {
+      "path": "generated/review/sgk-coverage.json",
+      "license": "CC0-1.0",
+      "generator": "tools/content/content-gaps.ts",
+      "derivedFrom": [],
+      "sha256": "173a23f5d7e925a0cc6237ac1f1fefd8e3dea86b94db4b74110fd32c947f1e3e",
+      "bytes": 4290
+    },
+    {
       "path": "generated/review/ui/01-login.png",
       "license": "CC0-1.0",
       "generator": "apps/web/e2e/account-flow.spec.ts",
@@ -10434,8 +10458,8 @@
       "license": "CC0-1.0",
       "generator": "tools/world/generate-forest-map.ts",
       "derivedFrom": [],
-      "sha256": "a18135e79f63f74388b055e69979300fa25fce78125e008dfc1819d9dc295cbf",
-      "bytes": 31802
+      "sha256": "ce3f05b94b5c850ccf016ce0191ef1e064d7e66819718a344e61cba3ed560abf",
+      "bytes": 99387
     },
     {
       "path": "generated/world/the-gioi/chunks.bin",
@@ -10474,8 +10498,8 @@
       "license": "CC0-1.0",
       "generator": "tools/world/generate-school-map.ts",
       "derivedFrom": [],
-      "sha256": "e6c34fa90199863ca4c997bdb6c40f52e3f25c408ecd39a0b8bc299d5c99da73",
-      "bytes": 6416
+      "sha256": "3a1831248c9d3180433ce34d51fc9eec1193cdb3c151a6e26b475b649a774f9e",
+      "bytes": 58457
     }
   ]
 }

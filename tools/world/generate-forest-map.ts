@@ -10,11 +10,12 @@ import { blockTableSchema } from '../../packages/voxel/src/block-table';
 import { VoxelWorld, encodeWorld } from '../../packages/voxel/src/chunk-format';
 import type { WorldEntities } from '../../packages/voxel/src/world-entities';
 import { ASSETS_DIR, REPO_ROOT, readJson } from '../assets/asset-lib';
-import { LIFE_MODEL_ANIMATION, LIFE_MODEL_HEIGHT, placeForestLife } from './forest-life';
+import { LIFE_MODEL_ANIMATION, LIFE_MODEL_HEIGHT, QUEST_CLEARANCE, placeForestLife } from './forest-life';
 import { modelScales } from './model-scales';
 import { createRng, fbm, hashSeed } from './noise';
 import { placeBridge } from './structures/bridge';
 import { distanceToPath, pathColumns, type Point } from './structures/path';
+import { cellsIn, placeQuestTargets, readQuests, targetUses } from './chapters/place-quest-targets';
 import { placeAncientTree, placeTree, treeHeight } from './structures/tree';
 
 export const MAP_ID = 'forest-ch1';
@@ -408,6 +409,35 @@ export async function generateForest(): Promise<{ world: VoxelWorld; entities: W
       thing('tv2-t01-hoc-cay', 'Hốc cây', 'Nhìn vào hốc cây', stump, { model: `${PACK.nature}/stump_oldTall.glb` }),
     ];
   }
+
+  // Chapters 2–19 (the Tiếng Việt quests): every target they name, placed from the catalogues, on firm
+  // open ground off the path and the stream, clear of trees, props, chapter 1 and the villagers' places.
+  const propCells = props.map((p) => [Math.floor(p.position[0] ?? 0), Math.floor(p.position[2] ?? 0)] as const);
+  const canStand = (x: number, z: number): boolean => {
+    const y = surface(x, z);
+    if (y <= WATER_LEVEL || Math.abs(z - riverCenter(x)) < riverHalfWidth(x) + 2 || distanceToPath(route, x, z) < 2) return false;
+    if (world.get(x, y + 1, z) !== 0 || world.get(x, y + 2, z) !== 0) return false; // a boulder or a trunk
+    if ([[1, 0], [-1, 0], [0, 1], [0, -1]].some(([dx, dz]) => Math.abs(surface(x + (dx ?? 0), z + (dz ?? 0)) - y) > 1)) return false;
+    return !occupied.some(([tx, tz]) => Math.hypot(tx - x, tz - z) < 2.2) && !propCells.some(([px, pz]) => Math.hypot(px - x, pz - z) < 1.5);
+  };
+  const forestCells = cellsIn(6, 6, sx - 7, sz - 7);
+  const villagerSpots = ambients.flatMap((a) => [a.position, ...Object.values(a.spots)].map((p) => [Math.floor(p[0]), Math.floor(p[2])] as const));
+  const { placed: chapterTargets, retagged } = await placeQuestTargets({
+    uses: targetUses(await readQuests(), 'khu-rung-bi-mat', 1),
+    map: {
+      canStand,
+      stand: (x, z) => [x + 0.5, standY(x, z), z + 0.5],
+      chapterCells: () => forestCells,
+      residentCells: forestCells,
+      // Villagers keep this far from every quest target (forest-life.ts): so do the targets from them.
+      clearance: QUEST_CLEARANCE,
+      keepClear: [...interactables.filter((t) => t.chapter === undefined).map((t) => [Math.floor(t.position[0] ?? 0), Math.floor(t.position[2] ?? 0)] as const), ...villagerSpots, [spawn.x, spawn.z]],
+    },
+    existing: interactables,
+    seed: seed + 19,
+  });
+  const retaggedById = new Map(retagged.map((t) => [t.id, t]));
+  interactables.splice(0, interactables.length, ...interactables.map((t) => retaggedById.get(t.id) ?? t), ...chapterTargets);
 
   const entities: WorldEntities = {
     version: 2,
