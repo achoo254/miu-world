@@ -22,44 +22,50 @@ export const CONTENT_SECURITY_POLICY =
  */
 function contentSecurityPolicy(): Plugin {
   return {
-    name: 'miu-csp',
-    apply: 'build',
-    transformIndexHtml: () => [
-      { tag: 'meta', attrs: { 'http-equiv': 'Content-Security-Policy', content: CONTENT_SECURITY_POLICY }, injectTo: 'head-prepend' },
-    ],
-  };
-}
+      name: 'miu-csp',
+      apply: 'build',
+      transformIndexHtml: () => [
+        { tag: 'meta', attrs: { 'http-equiv': 'Content-Security-Policy', content: CONTENT_SECURITY_POLICY }, injectTo: 'head-prepend' },
+      ],
+    };
+  }
 
-// xfwd: the server trusts X-Forwarded-For from loopback so rate limits see the real client IP.
-const apiProxy = { '/api': { target: API_TARGET, changeOrigin: false, xfwd: true } };
-/**
- * Extra Host names the dev/preview server accepts (e.g. a review tunnel), comma-separated in
- * MIU_PUBLIC_HOSTS. Vite rejects unknown hosts by default (DNS-rebinding protection); keep that.
- */
-const publicHosts = (process.env.MIU_PUBLIC_HOSTS ?? '')
-  .split(',')
-  .map((h) => h.trim())
-  .filter(Boolean);
+  // xfwd: the server trusts X-Forwarded-For from loopback so rate limits see the real client IP.
+  const apiProxy = { '/api': { target: API_TARGET, changeOrigin: false, xfwd: true } };
+  /**
+   * Extra Host names the dev/preview server accepts (e.g. a review tunnel), comma-separated in
+   * MIU_PUBLIC_HOSTS. Vite rejects unknown hosts by default (DNS-rebinding protection); keep that.
+   */
+  const publicHosts = (process.env.MIU_PUBLIC_HOSTS ?? '')
+    .split(',')
+    .map((h) => h.trim())
+    .filter(Boolean);
 
-export default defineConfig({
-  plugins: [react(), contentSecurityPolicy(), repoAssets(ASSETS_DIR, APP_DIR, UI_ART_PATHS)],
-  publicDir: false,
-  server: { proxy: apiProxy, allowedHosts: publicHosts },
-  preview: { proxy: apiProxy, allowedHosts: publicHosts },
-  worker: { format: 'es' },
-  build: {
-    target: 'es2022',
-    rollupOptions: {
-      input: {
-        index: path.join(APP_DIR, 'index.html'),
-        preview: path.join(APP_DIR, 'preview.html'),
-        review: path.join(APP_DIR, 'review.html'),
-      },
-      output: {
-        // Zod and its jitless setting share one chunk, so the setting is applied before any other chunk
-        // runs a schema; otherwise Zod probes for eval and the CSP reports it.
-        manualChunks: (id) => (id.includes('/node_modules/zod/') || id.endsWith('/src/zod-config.ts') ? 'zod' : undefined),
+  /**
+   * `vite build --mode release` (production): the game only. Every other build (E2E, local review,
+   * staging) also carries the review page, the render tool page and the review material they show.
+   */
+  export default defineConfig(({ mode }) => {
+    const review = mode !== 'release';
+    return {
+    plugins: [react(), contentSecurityPolicy(), repoAssets(ASSETS_DIR, APP_DIR, UI_ART_PATHS, { review })],
+    publicDir: false,
+    server: { proxy: apiProxy, allowedHosts: publicHosts },
+    preview: { proxy: apiProxy, allowedHosts: publicHosts },
+    worker: { format: 'es' },
+    build: {
+      target: 'es2022',
+      rollupOptions: {
+        input: {
+          index: path.join(APP_DIR, 'index.html'),
+          ...(review ? { preview: path.join(APP_DIR, 'preview.html'), review: path.join(APP_DIR, 'review.html') } : {}),
+        },
+        output: {
+          // Zod and its jitless setting share one chunk, so the setting is applied before any other chunk
+          // runs a schema; otherwise Zod probes for eval and the CSP reports it.
+          manualChunks: (id) => (id.includes('/node_modules/zod/') || id.endsWith('/src/zod-config.ts') ? 'zod' : undefined),
+        },
       },
     },
-  },
+  };
 });

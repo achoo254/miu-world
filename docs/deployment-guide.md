@@ -160,6 +160,8 @@ tools/deploy/production/deploy.sh fonts     # tải font chữ mẫu của phi�
 tools/deploy/production/deploy.sh release   # build, security:dist, backup DB, upload, switch, health, tự rollback
 ```
 
+- Bản build: production dùng `pnpm --filter @miu/web build:release` (`vite build --mode release`): chỉ có game, không có `review.html`, `preview.html` hay ảnh review (chỉ giữ ảnh chân dung nhân vật mà UI dùng), khoảng 8,6 MB thay vì 19 MB. `release` dừng nếu `dist` vẫn còn trang review. Staging, E2E và bản review chạy local dùng `build` thường, vẫn có trang review cho người duyệt.
+
 - Secret: entry `service == "postgresql"`, `used_by` bắt đầu bằng `miu-world production` trong `access-tokens.json` (mật khẩu role `miu`); Google client dùng chung entry của staging. `setup` ghi `/etc/miu/production.env` (640 `root:miu`).
 - Working tree phải sạch; nếu chỉ còn file chưa track không thuộc bản build thì đặt `MIU_RELEASE_REV=$(git rev-parse --short HEAD)` sau khi kiểm `git diff --quiet HEAD`.
 - Nghiệm thu: `curl -s https://miu.hoandat.com/api/health` trả `{"status":"ok"}`; revision đang chạy ở `/opt/miu/current/apps/server/dist/server/REVISION` trên .65.

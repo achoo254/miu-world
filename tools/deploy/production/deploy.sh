@@ -78,7 +78,9 @@ release() {
   local id; id="$(date +%y%m%d-%H%M%S)-$rev"
 
   echo "== build $id"
-  pnpm --filter @miu/web build >/dev/null
+  # The game only: no review page, render tool page or review screenshots in production.
+  pnpm --filter @miu/web build:release >/dev/null
+  [ ! -e apps/web/dist/review.html ] && [ ! -e apps/web/dist/game-assets/generated/review/mvp ] || { echo "release build still carries review material" >&2; exit 1; }
   pnpm --filter @miu/server bundle >/dev/null
   pnpm -s security:dist
 

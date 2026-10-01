@@ -51,6 +51,16 @@ describe('runtime asset selection for the web build', async () => {
     await expect(runtimeAssetPaths(ASSETS_DIR, manifest, ['packs/fluent-emoji/unknown.png'])).rejects.toThrow(/missing from manifest/);
   });
 
+  it('ships the review material with the review pages, and leaves it out of a release but for the portraits the UI shows', async () => {
+    expect(shipped).toContain('generated/review/mvp/10-reward.png');
+    const release = await runtimeAssetPaths(ASSETS_DIR, manifest, UI_ART_PATHS, { review: false });
+    const reviewInRelease = release.filter((p) => p.startsWith('generated/review/'));
+    expect(reviewInRelease.length).toBeGreaterThan(0);
+    for (const p of reviewInRelease) expect(UI_ART_PATHS).toContain(p);
+    expect(release).not.toContain('generated/review/mvp/10-reward.png');
+    expect(release).not.toContain('generated/review/perf.json');
+  });
+
   it('refuses a runtime asset missing from the manifest', async () => {
     const withoutParrot = manifest.filter((p) => !p.endsWith('animal-parrot.glb'));
     await expect(runtimeAssetPaths(ASSETS_DIR, withoutParrot)).rejects.toThrow(/missing from manifest/);

@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite --port 5173 --strictPort",
     "build": "tsc --noEmit -p tsconfig.json && vite build",
+    "build:release": "tsc --noEmit -p tsconfig.json && vite build --mode release",
     "preview": "vite preview --port 4173 --strictPort",
     "typecheck": "tsc --noEmit -p tsconfig.json",
     "e2e": "playwright test",

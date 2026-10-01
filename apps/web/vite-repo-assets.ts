@@ -18,8 +18,10 @@ const MIME: Record<string, string> = {
   '.woff2': 'font/woff2',
 };
 
-/** Always shipped: whole generated groups the runtime/review pages read by path. */
-const SHIPPED_PREFIXES = ['generated/atlas/', 'generated/world/', 'generated/characters/', 'generated/review/', 'generated/sounds/'];
+/** Always shipped: whole generated groups the runtime reads by path. */
+const SHIPPED_PREFIXES = ['generated/atlas/', 'generated/world/', 'generated/characters/', 'generated/sounds/'];
+/** Shipped with the review pages only: screenshots, renders and measurements for the owner's review. */
+const REVIEW_PREFIX = 'generated/review/';
 /** Maps that only exist to be rendered into an image at build time (the world overview): never shipped. */
 const RENDER_ONLY_PREFIXES = [`generated/world/${WORLD_OVERVIEW_MAP}/`];
 const renderOnly = (p: string): boolean => RENDER_ONLY_PREFIXES.some((prefix) => p.startsWith(prefix));
@@ -56,14 +58,21 @@ export async function glbDependencies(assetsDir: string, rel: string): Promise<s
 
 /**
  * The runtime set: manifest, generated groups, self-hosted fonts, the files the React UI shows
- * (`uiPaths`), and every model the maps place (plus the textures those models reference).
+ * (`uiPaths`), and every model the maps place (plus the textures those models reference). With
+ * `review` (every build but a release), also the review material the review page shows.
  * Everything else in the manifest stays out of `dist/`.
  */
-export async function runtimeAssetPaths(assetsDir: string, manifestPaths: readonly string[], uiPaths: readonly string[] = []): Promise<string[]> {
+export async function runtimeAssetPaths(
+  assetsDir: string,
+  manifestPaths: readonly string[],
+  uiPaths: readonly string[] = [],
+  { review = true }: { review?: boolean } = {},
+): Promise<string[]> {
   const allowed = new Set(manifestPaths);
   const wanted = new Set<string>(['manifest.json', ...uiPaths]);
+  const shippedPrefixes = review ? [...SHIPPED_PREFIXES, REVIEW_PREFIX] : SHIPPED_PREFIXES;
   for (const p of manifestPaths) {
-    if (SHIPPED_PREFIXES.some((prefix) => p.startsWith(prefix)) && !renderOnly(p)) wanted.add(p);
+    if (shippedPrefixes.some((prefix) => p.startsWith(prefix)) && !renderOnly(p)) wanted.add(p);
     if (p.startsWith('packs/font-') && p.endsWith('.woff2')) wanted.add(p);
   }
   const models = new Set<string>();
@@ -88,7 +97,7 @@ export async function runtimeAssetPaths(assetsDir: string, manifestPaths: readon
   return [...wanted].sort();
 }
 
-export function repoAssets(assetsDir: string, appDir: string, uiPaths: readonly string[] = []): Plugin {
+export function repoAssets(assetsDir: string, appDir: string, uiPaths: readonly string[] = [], options: { review?: boolean } = {}): Plugin {
   const manifestPaths = createManifestReader(assetsDir);
   const serve = async (url: string | undefined, res: ServerResponse, next: () => void): Promise<void> => {
     if (!url?.startsWith(ASSET_PREFIX)) return next();
@@ -157,9 +166,9 @@ export function repoAssets(assetsDir: string, appDir: string, uiPaths: readonly 
           });
       });
     },
-    async writeBundle(options) {
-      const outDir = options.dir ?? path.join(appDir, 'dist');
-      const shipped = await runtimeAssetPaths(assetsDir, await manifestPaths(), uiPaths);
+    async writeBundle(output) {
+      const outDir = output.dir ?? path.join(appDir, 'dist');
+      const shipped = await runtimeAssetPaths(assetsDir, await manifestPaths(), uiPaths, options);
       let bytes = 0;
       for (const rel of shipped) {
         const target = path.join(outDir, ASSET_PREFIX, rel);
