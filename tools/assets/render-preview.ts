@@ -94,13 +94,48 @@ async function mapShots(): Promise<Shot[]> {
     query: { shot, quality: 'high' },
     viewport: shot === 'top' ? { width: 1000, height: 1000 } : wide,
   }));
+  // The whole 192-block forest from the south, chapter 1's corner to the meadows beyond.
+  shots.push({ file: 'forest-ch1-overview.png', query: { shot: 'view:96,150,-60:96,12,100:55', quality: 'high' }, viewport: wide });
   return shots;
+}
+
+/**
+ * The school map from the angle of each frame of the owner's mocks (designs/truong-hoc/, named after them),
+ * for the review page to set beside the mock: eye, target, field of view.
+ */
+export const SCHOOL_VIEWS: Record<string, [eye: [number, number, number], target: [number, number, number], fov: number]> = {
+  'khu-01-toan-canh': [[96, 95, -45], [96, 12, 85], 55],
+  'khu-02-cong-truong': [[96, 17, 4], [96, 15, 40], 60],
+  'khu-03-san-truong-loi-vao': [[96, 17, 22], [96, 17, 68], 60],
+  'khu-04-nha-da-nang-san-bong-ro': [[149, 21, 82], [149, 15, 130], 62],
+  'khu-05-san-choi': [[56, 18, 20], [34, 13, 36], 62],
+  'khu-06-vuon-khoa-hoc': [[58, 19, 90], [36, 14, 132], 62],
+  'khu-07-duong-truoc-truong': [[150, 16, 5], [110, 14, 13], 60],
+  'khu-08-goc-nhin-phia-sau': [[96, 62, 186], [96, 12, 70], 60],
+  'lop-01-mat-truoc': [[96, 18, 48], [96, 20, 70], 62],
+  'lop-02-goc-nhin-cheo': [[122, 18, 50], [92, 18, 72], 62],
+  'lop-03-mat-sau-hanh-lang': [[96, 18, 100], [96, 18, 78], 62],
+  'lop-04-trong-lop-nhin-bang': [[91.5, 15.8, 73.5], [79, 15.2, 73.5], 72],
+  'lop-05-trong-lop-goc-cheo': [[81, 16.2, 69.6], [92, 14.6, 77.5], 72],
+  'lop-06-hanh-lang-trong': [[56, 15.8, 67.5], [92, 15, 67.5], 70],
+  'lop-07-cau-thang-tang-2': [[102.5, 15.8, 69.4], [102.5, 17.5, 76], 72],
+  'nha-03-cheo-truoc-trai': [[70, 18, 50], [100, 18, 72], 62],
+  'nha-05-ben-phai-loi-hong': [[152, 17, 74], [130, 16, 72], 62],
+};
+
+async function schoolShots(): Promise<Shot[]> {
+  return Object.entries(SCHOOL_VIEWS).map(([name, [eye, target, fov]]) => ({
+    file: `${name}.png`,
+    query: { shot: `view:${eye.join(',')}:${target.join(',')}:${fov}`, quality: 'high', region: 'truong-hoc' },
+    viewport: { width: 1280, height: 720 },
+  }));
 }
 
 export const SHOT_GROUPS: Record<string, () => Promise<Shot[]>> = {
   character: characterShots,
   accessories: accessoryShots,
   map: mapShots,
+  school: schoolShots,
 };
 
 async function capture(browser: Browser, shots: Shot[], outDir: string): Promise<void> {

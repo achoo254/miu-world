@@ -20,7 +20,8 @@ import { placeAncientTree, placeTree, treeHeight } from './structures/tree';
 
 export const MAP_ID = 'forest-ch1';
 export const SEED_TEXT = 'miu-forest-ch1';
-const CHUNKS = [6, 2, 6] as const; // 96 x 32 x 96 blocks
+/** 192 x 48 x 192 blocks (Jev, 01/10/2026: the owner found the maps small); chapter 1 keeps its corner. */
+const CHUNKS = [12, 3, 12] as const;
 const WATER_LEVEL = 9;
 const OUT_DIR = path.join(ASSETS_DIR, 'generated/world', MAP_ID);
 
@@ -79,6 +80,16 @@ export function riverHalfWidth(x: number): number {
   return 2.3 + 0.8 * Math.sin(x / 9);
 }
 
+/** Meadows in the forest beyond chapter 1's corner (open ground for the lessons' places and the wild life). */
+export const MEADOWS: ReadonlyArray<{ x: number; z: number }> = [
+  { x: 140, z: 28 },
+  { x: 164, z: 84 },
+  { x: 128, z: 140 },
+  { x: 60, z: 150 },
+  { x: 166, z: 164 },
+  { x: 100, z: 116 },
+];
+
 interface Clearing {
   x: number;
   z: number;
@@ -130,6 +141,7 @@ export async function generateForest(): Promise<{ world: VoxelWorld; entities: W
     { x: beaver.x, z: beaver.z, radius: 5 },
     { x: stonesX, z: stonesZ1 + 4, radius: 4 },
     { x: ancient.x, z: ancient.z, radius: 10 },
+    ...MEADOWS.map((m) => ({ x: m.x, z: m.z, radius: 9 })),
   ];
   const route: Point[] = [
     [spawn.x, spawn.z],
@@ -226,7 +238,7 @@ export async function generateForest(): Promise<{ world: VoxelWorld; entities: W
   }
 
   // 7. Mossy boulders.
-  for (let i = 0; i < 14; i++) {
+  for (let i = 0; i < Math.round((14 * sx * sz) / (96 * 96)); i++) {
     const x = 6 + Math.floor(rng() * (sx - 12));
     const z = 6 + Math.floor(rng() * (sz - 12));
     if (distanceToPath(route, x, z) < 3 || Math.abs(z - riverCenter(x)) < riverHalfWidth(x) + 1) continue;
@@ -334,6 +346,7 @@ export async function generateForest(): Promise<{ world: VoxelWorld; entities: W
     questSpots: interactables.map((t) => [t.position[0] ?? 0, t.position[2] ?? 0] as const),
     trees: occupied,
     spawn,
+    meadows: MEADOWS,
     waterLevel: WATER_LEVEL,
     riverCenter,
     riverHalfWidth,

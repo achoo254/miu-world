@@ -4,7 +4,8 @@ import { describe, expect, it } from 'vitest';
 import { encodeWorld } from '../../packages/voxel/src/chunk-format';
 import { worldEntitiesSchema } from '../../packages/voxel/src/world-entities';
 import { ASSETS_DIR } from '../assets/asset-lib';
-import { MAP_ID, ZONES, generateSchool } from './generate-school-map';
+import { MAIN_BUILDING, MAP_ID, ZONES, generateSchool } from './generate-school-map';
+import { reachable } from './walkable';
 
 const OUT = path.join(ASSETS_DIR, 'generated/world', MAP_ID);
 
@@ -40,4 +41,21 @@ describe('school map generator', () => {
     const [sx, sy, sz] = parsed.spawn.position.map(Math.floor) as [number, number, number];
     expect(world.get(sx, sy, sz)).toBe(0);
   }, 60_000);
+
+  it('can be walked from the gate to every zone, into the classroom and up the stairs to the one upstairs', async () => {
+    const { world, entities } = await generateSchool();
+    const water = 9;
+    const spots = reachable(world, entities.spawn.position as [number, number, number], (id) => id !== 0 && id !== water);
+    const at = (x: number, z: number, y?: number) => [...spots].some((key) => {
+      const [kx, ky, kz] = key.split(',').map(Number) as [number, number, number];
+      return Math.abs(kx - x) <= 1 && Math.abs(kz - z) <= 1 && (y === undefined || ky === y);
+    });
+    for (const zone of ZONES) expect(at(zone.x, zone.z), zone.name).toBe(true);
+    const lop = entities.landmarks.find((l) => l.id === 'lop-hoc');
+    const [lx = 0, ly = 0, lz = 0] = lop?.position ?? [];
+    expect(at(Math.floor(lx), Math.floor(lz), ly), 'the classroom downstairs').toBe(true);
+    // Upstairs: the same classroom one storey (four blocks) higher.
+    expect(at(Math.floor(lx), Math.floor(lz), ly + 4), 'the classroom upstairs').toBe(true);
+    expect(MAIN_BUILDING.x1 - MAIN_BUILDING.x0).toBeGreaterThan(60);
+  }, 120_000);
 });

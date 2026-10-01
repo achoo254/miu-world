@@ -1,0 +1,36 @@
+{
+  "state": {
+    "project": "Miu World: voxel learning game for Vietnamese grade-2 children, web, target iPad Gen 10, built 100% by AI. Owner's one wish: lively, children never bored. Budgets per scene: <= 150 draw calls, <= 150k triangles, first area <= 8 MB.",
+    "task": "The owner sent three mocks of the Trường học (Math) map to rebuild in the game: (1) a whole campus: school gate with pillars and lamp posts on a street with a school bus and crosswalk, a fenced campus, an entrance yard with flower beds, a two-storey main building with a clock tower gable and colonnades, a sports hall with a blue curved roof and a basketball court, a playground with swings and a slide, a science garden with a glass greenhouse and raised vegetable beds, houses and a river around; (2) the classroom block: front, diagonal and back facades, inside a classroom (blackboard, desks and chairs, bookshelves, ceiling lights), the indoor corridor and a staircase to the second floor; (3) the main building from five angles.",
+    "current_map": "96x96 blocks (6x6 chunks of 16, 2 high). It has 7 Math topic zones, each holding the quest targets of one textbook topic (36 lessons): schoolyard (topic 1, centre), school garden (2), canteen (3), toy workshop (4), art room (5), clock tower (6), hall (7). Paths join the yard to each zone. Quest targets are placed automatically into each zone's open floor.",
+    "tech": "Buildings are generated from blocks by code; the player can step up one block (stairs work) and the camera avoids clipping through blocks. New block types are data (texture from the licensed Kenney voxel pack: glass, blue cloth, grey stone exist). Props come from licensed packs or are built from Fluent Emoji pictures (a school bus, a playground slide, books exist). The forest map at 96x96 already runs at the draw-call budget with its life; a 128x128 map has 78% more chunks to draw and mesh.",
+    "owner_rules": "Keep every existing lesson playable; no hand drawing; decisions are made by Jev."
+  },
+  "questions": {
+    "map_size": {
+      "stakes": "medium",
+      "instructions": "How big should the rebuilt school map be, so the mocks' campus fits while the scene stays within the iPad performance budgets?",
+      "criteria": {
+        "keep_96": "Keep 96x96: fit the campus by compressing it (street along the south edge, river along one side, a few houses beyond the street), no new performance risk.",
+        "grow_128": "Grow to 128x128 so every mock area has room as drawn, accepting more chunks to draw and a performance risk on iPad."
+      }
+    },
+    "interiors": {
+      "stakes": "medium",
+      "instructions": "How much of the classroom block's inside should be built and walkable in this batch?",
+      "criteria": {
+        "showcase": "One fully furnished classroom on each floor (blackboard, desks, chairs, bookshelves, lights), the indoor corridor and the staircase to the second floor; the other rooms are closed doors.",
+        "all_rooms": "Every classroom of both floors furnished and open, plus the corridor and staircase.",
+        "facade_only": "Only the outside of the building; no interiors yet."
+      }
+    },
+    "zones": {
+      "stakes": "medium",
+      "instructions": "How should the seven Math topic zones (each holding its lessons' quest targets) relate to the mock's campus areas?",
+      "criteria": {
+        "map_to_areas": "Give each topic zone one of the mock's areas: schoolyard = entrance yard, garden = science garden with greenhouse, hall = sports hall and basketball court, canteen, toy workshop and art room as rooms or corners around the main building, clock tower = the main building's clock tower; quest targets stay in their topic's zone.",
+        "keep_zones_separate": "Keep the seven zones as they are and add the mock's buildings around them as scenery only."
+      }
+    }
+  }
+}

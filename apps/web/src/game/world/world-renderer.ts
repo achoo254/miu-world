@@ -1,7 +1,7 @@
 // Builds chunk meshes (Web Worker, main-thread fallback) and hides chunks beyond the view distance.
 import { BufferAttribute, BufferGeometry, Group, Mesh, Vector3, type Camera, type Material } from 'three';
 import { CHUNK_SIZE } from '@miu/voxel/chunk-format';
-import type { QuadGeometry } from '@miu/voxel/greedy-mesher';
+import { mergeQuads, type QuadGeometry } from '@miu/voxel/greedy-mesher';
 import { createBlockMaterial, createWaterMaterial, type WaterUniforms } from './block-material';
 import { createChunkMesher, type ChunkGeometry } from './chunk-mesher';
 import type { MesherMessage, MesherRequest } from './mesher.worker';
@@ -76,21 +76,31 @@ export async function createWorldRenderer(data: WorldData): Promise<WorldRendere
   group.name = 'world';
   const blockMaterial = createBlockMaterial(data.atlasTexture, data.atlas.size, data.atlas.safeMipLevel);
   const water = createWaterMaterial(data.atlasTexture, data.atlas.size, data.atlas.safeMipLevel);
-  const chunkMeshes: Array<{ mesh: Mesh; center: Vector3 }> = [];
-
-  const add = (geo: QuadGeometry | null, material: Material, chunk: ChunkGeometry, suffix: string): void => {
-    if (!geo) return;
-    const mesh = new Mesh(toGeometry(geo), material);
-    mesh.name = `chunk:${chunk.key}:${suffix}`;
-    mesh.matrixAutoUpdate = false;
-    if (suffix === 'water') mesh.renderOrder = 1;
-    group.add(mesh);
-    const half = CHUNK_SIZE / 2;
-    chunkMeshes.push({ mesh, center: new Vector3(chunk.origin[0] + half, chunk.origin[1] + half, chunk.origin[2] + half) });
-  };
+  // One mesh per chunk column and material (the chunks stacked at one x, z): a column is one draw call,
+  // so a big map's view distance costs draw calls per column, not per chunk.
+  const columnMeshes: Array<{ mesh: Mesh; center: Vector3 }> = [];
+  const columns = new Map<string, { origin: [number, number]; opaque: QuadGeometry[]; water: QuadGeometry[] }>();
   const onChunk = (chunk: ChunkGeometry): void => {
-    add(chunk.opaque, blockMaterial, chunk, 'opaque');
-    add(chunk.water, water.material, chunk, 'water');
+    const key = `${chunk.origin[0]},${chunk.origin[2]}`;
+    const column = columns.get(key) ?? { origin: [chunk.origin[0], chunk.origin[2]], opaque: [], water: [] };
+    if (chunk.opaque) column.opaque.push(chunk.opaque);
+    if (chunk.water) column.water.push(chunk.water);
+    columns.set(key, column);
+  };
+  const buildColumns = (): void => {
+    const half = CHUNK_SIZE / 2;
+    for (const [key, column] of columns) {
+      for (const [parts, material, suffix] of [[column.opaque, blockMaterial, 'opaque'], [column.water, water.material, 'water']] as const) {
+        const geo = mergeQuads(parts);
+        if (!geo) continue;
+        const mesh = new Mesh(toGeometry(geo), material as Material);
+        mesh.name = `column:${key}:${suffix}`;
+        mesh.matrixAutoUpdate = false;
+        if (suffix === 'water') mesh.renderOrder = 1;
+        group.add(mesh);
+        columnMeshes.push({ mesh, center: new Vector3(column.origin[0] + half, 0, column.origin[1] + half) });
+      }
+    }
   };
 
   let usedWorker = true;
@@ -100,8 +110,10 @@ export async function createWorldRenderer(data: WorldData): Promise<WorldRendere
   } catch (err) {
     console.warn('mesher worker unavailable, meshing on main thread', err);
     usedWorker = false;
+    columns.clear();
     meshMs = meshOnMainThread(data, onChunk);
   }
+  buildColumns();
 
   let viewDistance = Infinity;
   const camPos = new Vector3();
@@ -115,9 +127,9 @@ export async function createWorldRenderer(data: WorldData): Promise<WorldRendere
     },
     update(camera) {
       camera.getWorldPosition(camPos);
-      // Chunk centre distance minus its half-diagonal, so partly-visible chunks stay drawn.
-      const pad = CHUNK_SIZE * 0.87;
-      for (const { mesh, center } of chunkMeshes) mesh.visible = center.distanceTo(camPos) - pad < viewDistance;
+      // Column distance on the ground minus its half-diagonal, so partly-visible columns stay drawn.
+      const pad = CHUNK_SIZE * 0.71;
+      for (const { mesh, center } of columnMeshes) mesh.visible = Math.hypot(center.x - camPos.x, center.z - camPos.z) - pad < viewDistance;
     },
   };
 }

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { countExposedFaces, greedyQuads, quadsToGeometry, type Dims } from './greedy-mesher';
+import { countExposedFaces, greedyQuads, mergeQuads, quadsToGeometry, type Dims } from './greedy-mesher';
 
 function gridSampler(dims: Dims, filled: (x: number, y: number, z: number) => number) {
   return (x: number, y: number, z: number): number => {
@@ -74,5 +74,26 @@ describe('quadsToGeometry', () => {
       const n = [geo.normals[a ?? 0], geo.normals[(a ?? 0) + 1], geo.normals[(a ?? 0) + 2]];
       expect(cross.reduce((s, v, k) => s + v * (n[k] ?? 0), 0)).toBeGreaterThan(0);
     }
+  });
+});
+
+describe('merging the chunks of a column', () => {
+  const quad = (offset: number) => ({
+    positions: new Float32Array([0, offset, 0, 1, offset, 0, 1, offset, 1, 0, offset, 1]),
+    normals: new Float32Array(12).fill(1),
+    uvs: new Float32Array(8),
+    indices: new Uint32Array([0, 1, 2, 0, 2, 3]),
+    extra: { tileRect: new Float32Array(16) },
+  });
+  it('concatenates the vertices and offsets the second part\'s indices', () => {
+    const merged = mergeQuads([quad(0), quad(16)]);
+    expect(merged?.positions.length).toBe(24);
+    expect([...(merged?.indices ?? [])].slice(6)).toEqual([4, 5, 6, 4, 6, 7]);
+    expect(merged?.extra.tileRect?.length).toBe(32);
+  });
+  it('keeps a lone part as it is and has nothing for no parts', () => {
+    const one = quad(0);
+    expect(mergeQuads([one])).toBe(one);
+    expect(mergeQuads([])).toBeNull();
   });
 });

@@ -76,3 +76,8 @@ output { margin-left: var(--space-sm); color: var(--ok); }
 .coverage th, .coverage td { padding: var(--space-xs) var(--space-sm); border-bottom: 1px solid var(--line); text-align: right; }
 .coverage th:first-child, .coverage td:first-child { text-align: left; }
 .coverage tr:last-child td { font-weight: 700; }
+
+/* Mock frame beside the same view in the game. */
+.pairs { display: grid; gap: 16px; }
+.pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 12px; align-items: start; }
+.pair img { width: 100%; height: auto; border-radius: 8px; display: block; }

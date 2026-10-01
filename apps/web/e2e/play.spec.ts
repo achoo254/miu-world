@@ -60,7 +60,7 @@ test('walks, runs and stays on the ground; the rim keeps the player inside the m
   const edge = await readStats(page);
   for (const axis of [0, 2] as const) {
     expect(edge.player[axis]).toBeGreaterThanOrEqual(0);
-    expect(edge.player[axis]).toBeLessThanOrEqual(96);
+    expect(edge.player[axis]).toBeLessThanOrEqual(192); // the forest is 192 blocks across
   }
 });
 

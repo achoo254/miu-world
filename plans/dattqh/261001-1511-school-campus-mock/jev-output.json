@@ -1,0 +1,40 @@
+{
+  "model": "jev-1.13.0",
+  "usage": {
+    "input_tokens": 1220,
+    "output_tokens": 124
+  },
+  "results": {
+    "map_size": {
+      "stakes": "medium",
+      "choice": "keep_96",
+      "confidence": 0.93,
+      "probabilities": {
+        "keep_96": 0.96,
+        "grow_128": 0.04
+      },
+      "decision": "auto"
+    },
+    "interiors": {
+      "stakes": "medium",
+      "choice": "showcase",
+      "confidence": 0.96,
+      "probabilities": {
+        "facade_only": 0.01,
+        "all_rooms": 0.02,
+        "showcase": 0.97
+      },
+      "decision": "auto"
+    },
+    "zones": {
+      "stakes": "medium",
+      "choice": "map_to_areas",
+      "confidence": 0.91,
+      "probabilities": {
+        "map_to_areas": 0.95,
+        "keep_zones_separate": 0.05
+      },
+      "decision": "auto"
+    }
+  }
+}

@@ -109,6 +109,40 @@ export interface QuadGeometry {
   extra: Record<string, Float32Array>;
 }
 
+/**
+ * One geometry from several (the chunks of one column): the runtime draws a column in one call instead
+ * of one per chunk. An extra attribute is kept only when every part has it.
+ */
+export function mergeQuads(parts: readonly QuadGeometry[]): QuadGeometry | null {
+  if (parts.length === 0) return null;
+  if (parts.length === 1) return parts[0] ?? null;
+  const concat = (pick: (q: QuadGeometry) => Float32Array): Float32Array => {
+    const out = new Float32Array(parts.reduce((n, q) => n + pick(q).length, 0));
+    let at = 0;
+    for (const q of parts) {
+      out.set(pick(q), at);
+      at += pick(q).length;
+    }
+    return out;
+  };
+  const indices = new Uint32Array(parts.reduce((n, q) => n + q.indices.length, 0));
+  let at = 0;
+  let base = 0;
+  for (const q of parts) {
+    for (let i = 0; i < q.indices.length; i++) indices[at + i] = (q.indices[i] ?? 0) + base;
+    at += q.indices.length;
+    base += q.positions.length / 3;
+  }
+  const extraKeys = Object.keys(parts[0]?.extra ?? {}).filter((k) => parts.every((q) => q.extra[k] !== undefined));
+  return {
+    positions: concat((q) => q.positions),
+    normals: concat((q) => q.normals),
+    uvs: concat((q) => q.uvs),
+    indices,
+    extra: Object.fromEntries(extraKeys.map((k) => [k, concat((q) => q.extra[k] ?? new Float32Array(0))])),
+  };
+}
+
 /** Texture axes per face axis: x-faces use (z, y), y-faces (x, z), z-faces (x, y). */
 const UV_AXES: Record<Axis, readonly [Axis, Axis]> = { 0: [2, 1], 1: [0, 2], 2: [0, 1] };
 

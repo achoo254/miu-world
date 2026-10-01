@@ -346,7 +346,8 @@ export class Game {
 
     const reviewShot = createReviewShot(params.get('shot'), entities, scene, solid);
     if (reviewShot) {
-      world.setViewDistance(Infinity);
+      // Still pictures show the whole map; a live shot frames one character and keeps the frame's budget.
+      world.setViewDistance(reviewShot.live ? quality.viewDistance : Infinity);
       sky.scale.setScalar(3);
       for (const el of [dom.stats, dom.joystick, dom.run.parentElement]) if (el) el.hidden = true;
       if (reviewShot.backdrop) {

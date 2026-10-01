@@ -1,0 +1,41 @@
+{
+  "model": "jev-1.13.0",
+  "usage": {
+    "input_tokens": 1069,
+    "output_tokens": 138
+  },
+  "results": {
+    "map_size": {
+      "stakes": "medium",
+      "choice": "size_192",
+      "confidence": 0.93,
+      "probabilities": {
+        "size_192": 0.95,
+        "keep_96": 0.0,
+        "size_128": 0.04,
+        "size_256": 0.01
+      },
+      "decision": "auto"
+    },
+    "height": {
+      "stakes": "low",
+      "choice": "height_48",
+      "confidence": 0.97,
+      "probabilities": {
+        "keep_32": 0.02,
+        "height_48": 0.98
+      },
+      "decision": "auto"
+    },
+    "which_maps": {
+      "stakes": "medium",
+      "choice": "both_now",
+      "confidence": 0.6,
+      "probabilities": {
+        "both_now": 0.8,
+        "school_now_forest_later": 0.2
+      },
+      "decision": "escalate"
+    }
+  }
+}

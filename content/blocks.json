@@ -22,7 +22,12 @@
     "snow": { "file": "snow.png", "tint": "snow", "strength": 0.2 },
     "brick-red": { "file": "brick_red.png", "tint": "roof", "strength": 0.35 },
     "brick-grey": { "file": "brick_grey.png", "tint": "stone", "strength": 0.3 },
-    "wood-red": { "file": "wood_red.png", "tint": "roof", "strength": 0.3 }
+    "wood-red": { "file": "wood_red.png", "tint": "roof", "strength": 0.3 },
+    "glass": { "file": "ice.png", "tint": "water", "strength": 0.2 },
+    "roof-blue": { "file": "cotton_blue.png", "tint": "roof-blue", "strength": 0.3 },
+    "asphalt": { "file": "greystone.png", "tint": "asphalt", "strength": 0.5 },
+    "leaves-pink": { "file": "leaves.png", "tint": "blossom", "strength": 0.92 },
+    "board": { "file": "cotton_green.png", "tint": "board", "strength": 0.55 }
   },
   "blocks": [
     { "id": 1, "name": "grass", "top": "grass-top", "side": "grass-side", "bottom": "dirt" },
@@ -41,6 +46,11 @@
     { "id": 14, "name": "snow", "top": "snow", "side": "snow", "bottom": "snow" },
     { "id": 15, "name": "brick-red", "top": "brick-red", "side": "brick-red", "bottom": "brick-red" },
     { "id": 16, "name": "brick-grey", "top": "brick-grey", "side": "brick-grey", "bottom": "brick-grey" },
-    { "id": 17, "name": "wood-red", "top": "wood-red", "side": "wood-red", "bottom": "wood-red" }
+    { "id": 17, "name": "wood-red", "top": "wood-red", "side": "wood-red", "bottom": "wood-red" },
+    { "id": 18, "name": "glass", "top": "glass", "side": "glass", "bottom": "glass" },
+    { "id": 19, "name": "roof-blue", "top": "roof-blue", "side": "roof-blue", "bottom": "roof-blue" },
+    { "id": 20, "name": "asphalt", "top": "asphalt", "side": "asphalt", "bottom": "asphalt" },
+    { "id": 21, "name": "leaves-pink", "top": "leaves-pink", "side": "leaves-pink", "bottom": "leaves-pink" },
+    { "id": 22, "name": "board", "top": "board", "side": "board", "bottom": "board" }
   ]
 }

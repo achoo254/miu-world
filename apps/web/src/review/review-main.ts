@@ -12,6 +12,28 @@ interface ManifestJson {
   generated: Array<{ path: string; generator: string; sha256?: string }>;
 }
 
+/** The owner's school mock frames (designs/truong-hoc/), bundled into the review build by Vite. */
+const SCHOOL_MOCKS = import.meta.glob<string>('../../../../designs/truong-hoc/{khu,lop,nha}-*.png', { eager: true, query: '?url', import: 'default' });
+const SCHOOL_CAPTIONS: Record<string, string> = {
+  'khu-01-toan-canh': 'Toàn cảnh khu trường',
+  'khu-02-cong-truong': 'Cổng trường (nhìn từ ngoài)',
+  'khu-03-san-truong-loi-vao': 'Sân trường, lối vào chính',
+  'khu-04-nha-da-nang-san-bong-ro': 'Nhà đa năng, sân bóng rổ',
+  'khu-05-san-choi': 'Sân chơi',
+  'khu-06-vuon-khoa-hoc': 'Vườn khoa học',
+  'khu-07-duong-truoc-truong': 'Đường trước trường',
+  'khu-08-goc-nhin-phia-sau': 'Góc nhìn phía sau',
+  'lop-01-mat-truoc': 'Tòa nhà chính, mặt trước',
+  'lop-02-goc-nhin-cheo': 'Góc nhìn chéo',
+  'lop-03-mat-sau-hanh-lang': 'Mặt sau, hành lang',
+  'lop-04-trong-lop-nhin-bang': 'Trong lớp, nhìn về bảng',
+  'lop-05-trong-lop-goc-cheo': 'Trong lớp, góc chéo',
+  'lop-06-hanh-lang-trong': 'Hành lang lớp học',
+  'lop-07-cau-thang-tang-2': 'Cầu thang lên tầng 2',
+  'nha-03-cheo-truoc-trai': 'Góc chéo trước trái',
+  'nha-05-ben-phai-loi-hong': 'Bên phải, lối đi bên hông',
+};
+
 /** Content versions of the review material (asset-versions.ts), read from the manifest on load. */
 let versions: ReadonlyMap<string, string> = new Map();
 const assetHref = (manifestPath: string): string => versioned(`${ASSET_PREFIX}${manifestPath}`, versions.get(manifestPath));
@@ -140,7 +162,18 @@ function renderGallery(generated: string[]): void {
     'tv2-t18-on-cuoi-ki': 'Nhịp cầu đầu, giữa, cuối (Tiếng Việt ôn cuối kì)',
   };
   for (const p of reviewPaths.filter((x) => x.includes('/review/props/')).sort()) byId('sgk-props').append(figure(p, propsCaption[name(p)] ?? name(p)));
-  const mapCaption: Record<string, string> = { top: 'Nhìn từ trên', iso: 'Toàn cảnh', bridge: 'Cầu gỗ qua suối', tree: 'Cây cổ thụ', npc: 'Vẹt và lối đá' };
+  // The school beside the owner's mock frames (bundled with the review page only, from designs/).
+  for (const p of reviewPaths.filter((x) => x.includes('/review/school/')).sort()) {
+    const key = name(p);
+    const mock = SCHOOL_MOCKS[`../../../../designs/truong-hoc/${key}.png`];
+    const caption = SCHOOL_CAPTIONS[key] ?? key;
+    const pair = el('div', { className: 'pair' }, [
+      ...(mock ? [el('figure', {}, [el('img', { src: mock, alt: `Mock: ${caption}`, loading: 'lazy', decoding: 'async' }), el('figcaption', { textContent: `Mock · ${caption}` })])] : []),
+      figure(p, `Trong game · ${caption}`),
+    ]);
+    byId('school-pairs').append(pair);
+  }
+  const mapCaption: Record<string, string> = { top: 'Nhìn từ trên', iso: 'Toàn cảnh', bridge: 'Cầu gỗ qua suối', tree: 'Cây cổ thụ', npc: 'Vẹt và lối đá', overview: 'Cả khu rừng 192 × 192: góc chương 1 và các bãi cỏ mới' };
   for (const p of reviewPaths.filter((x) => x.includes('/map/'))) {
     const key = name(p).replace('forest-ch1-', '');
     byId('map').append(figure(p, mapCaption[key] ?? key));

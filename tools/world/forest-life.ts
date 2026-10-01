@@ -59,6 +59,8 @@ export interface ForestLifeMap {
   /** Trunks of the scattered trees (x, z). */
   trees: ReadonlyArray<readonly [number, number]>;
   spawn: { x: number; z: number };
+  /** Meadows of the forest beyond chapter 1's corner: each gets its own deer, fox, hog, bunny, bees and parrot. */
+  meadows: ReadonlyArray<{ x: number; z: number }>;
   waterLevel: number;
   riverCenter(x: number): number;
   riverHalfWidth(x: number): number;
@@ -271,6 +273,33 @@ export function placeForestLife(map: ForestLifeMap): Ambient[] {
   };
   parrot('vet-trai', map.spawn.x + 4, map.spawn.z + 18, [map.spawn.x + 18, map.spawn.z - 2]);
   parrot('vet-suoi', 70, 30, [60, 20]);
+
+  // The wider forest: every meadow has a family of its own, so wherever the child walks something lives.
+  map.meadows.forEach((m, i) => {
+    const n = i + 1;
+    const doe = spot(m.x - 3, m.z - 2, { maxRing: 6 });
+    const grazeAt = spot(m.x + 2, m.z + 3, { from: doe, maxRing: 6 });
+    add(`nai-me-${n}`, 'deer', 'Nai mẹ', `${P.pets}/animal-deer.glb`, doe, (n * 70) % 360, { 'graze-b': at(grazeAt) });
+    const fawn = spot(doe.x + 2, doe.z + 1, { maxRing: 6 });
+    add(`nai-con-${n}`, 'deer', 'Nai con', `${P.pets}/animal-deer.glb`, fawn, (n * 70 + 40) % 360, { 'graze-b': at(spot(grazeAt.x + 1, grazeAt.z + 1, { from: fawn, maxRing: 6 })) }, { scale: 0.62 });
+    const blooms = [spot(m.x + 4, m.z - 4, { maxRing: 6 }), spot(m.x + 6, m.z, { maxRing: 6 }), spot(m.x + 3, m.z + 6, { maxRing: 6 })];
+    blooms.forEach((c, k) => map.addProp(k === 1 ? `${P.nature}/flower_purpleB.glb` : `${P.nature}/flower_yellowA.glb`, c.x, c.z, k * 70 + n * 13));
+    const [fa, fb, fc] = blooms.map((c) => at(c, 0.7));
+    if (fa && fb && fc) add(`ong-mat-${n}`, 'bee', 'Ong mật', `${P.pets}/animal-bee.glb`, fb, 0, { 'flower-a': fa, 'flower-b': fb, 'flower-c': fc });
+    const den = spot(m.x - 6, m.z + 5, { maxRing: 6 });
+    add(`cao-${n}`, 'fox', 'Cáo', `${P.pets}/animal-fox.glb`, den, (n * 50) % 360, { den: at(den), lookout: at(spot(den.x + 4, den.z - 2, { from: den, maxRing: 6 })) });
+    const hog = spot(m.x + 6, m.z + 6, { maxRing: 6 });
+    const mushroomA = spot(hog.x + 2, hog.z + 1, { from: hog, maxRing: 6 });
+    const mushroomB = spot(hog.x - 2, hog.z + 2, { from: hog, maxRing: 6 });
+    map.addProp(`${P.nature}/mushroom_redGroup.glb`, mushroomA.x + 1, mushroomA.z, 20 + n);
+    map.addProp(`${P.nature}/mushroom_tanGroup.glb`, mushroomB.x, mushroomB.z + 1, 70 + n);
+    add(`heo-rung-${n}`, 'hog', 'Heo rừng', `${P.pets}/animal-hog.glb`, hog, (n * 90) % 360, { 'mush-a': at(mushroomA), 'mush-b': at(mushroomB) });
+    const bunny = spot(m.x - 5, m.z - 6, { maxRing: 6 });
+    const bush = spot(bunny.x + 3, bunny.z + 2, { from: bunny, maxRing: 6 });
+    map.addProp(`${P.nature}/plant_bush.glb`, bush.x + 1, bush.z, 40 + n);
+    add(`tho-${n}`, 'bunny', 'Thỏ', `${P.pets}/animal-bunny.glb`, bunny, (n * 120) % 360, { 'bush-b': at(bush) });
+    parrot(`vet-rung-${n}`, m.x, m.z, [m.x + 12, m.z - 8]);
+  });
 
   return ambients;
 }

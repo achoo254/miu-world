@@ -3,16 +3,16 @@
   "id": "truong-hoc",
   "seed": 3471503019,
   "size": [
-    96,
-    32,
-    96
+    192,
+    48,
+    192
   ],
-  "waterLevel": 0,
+  "waterLevel": 11,
   "spawn": {
     "position": [
-      48.5,
+      96.5,
       13,
-      14.5
+      20.5
     ],
     "yaw": 0
   },
@@ -23,9 +23,9 @@
       "name": "Sư Tử Vàng",
       "label": "Nói chuyện",
       "position": [
-        50.5,
+        85.5,
         13,
-        44.5
+        54.5
       ],
       "yaw": 200,
       "radius": 3,
@@ -43,9 +43,9 @@
       "name": "Khỉ Lanh",
       "label": "Nói chuyện",
       "position": [
-        40.5,
+        77.5,
         13,
-        43.5
+        31.5
       ],
       "yaw": 90,
       "radius": 3,
@@ -66,11 +66,11 @@
       "name": "Bò Sữa Mơ",
       "label": "Nói chuyện",
       "position": [
-        43.5,
+        92.5,
         13,
-        77.5
+        49.5
       ],
-      "yaw": 265,
+      "yaw": 101,
       "radius": 3,
       "model": "packs/kenney-cube-pets/2.0/animal-cow.glb",
       "scale": 0.8683,
@@ -87,11 +87,11 @@
       "name": "Cánh Cụt Pin",
       "label": "Nói chuyện",
       "position": [
-        25.5,
+        57.5,
         13,
-        78.5
+        128.5
       ],
-      "yaw": 268,
+      "yaw": 232,
       "radius": 3,
       "model": "packs/kenney-cube-pets/2.0/animal-penguin.glb",
       "scale": 0.6273,
@@ -104,11 +104,11 @@
       "name": "Cáo Lém",
       "label": "Nói chuyện",
       "position": [
-        18.5,
+        37.5,
         13,
-        66.5
+        92.5
       ],
-      "yaw": 87,
+      "yaw": 346,
       "radius": 3,
       "model": "packs/kenney-cube-pets/2.0/animal-fox.glb",
       "scale": 0.593,
@@ -125,11 +125,11 @@
       "name": "Cánh Cụt Pin",
       "label": "Nói chuyện",
       "position": [
-        69.5,
+        110.5,
         13,
-        78.5
+        128.5
       ],
-      "yaw": 307,
+      "yaw": 326,
       "radius": 3,
       "model": "packs/kenney-cube-pets/2.0/animal-penguin.glb",
       "scale": 0.6273,
@@ -145,11 +145,11 @@
       "name": "Chó Mực",
       "label": "Nói chuyện",
       "position": [
-        75.5,
+        33.5,
         13,
-        75.5
+        131.5
       ],
-      "yaw": 81,
+      "yaw": 214,
       "radius": 3,
       "model": "packs/kenney-cube-pets/2.0/animal-dog.glb",
       "scale": 0.6311,
@@ -166,11 +166,11 @@
       "name": "Gà Con Chíp",
       "label": "Nói chuyện",
       "position": [
-        14.5,
+        35.5,
         13,
-        20.5
+        122.5
       ],
-      "yaw": 134,
+      "yaw": 314,
       "radius": 3,
       "model": "packs/kenney-cube-pets/2.0/animal-chick.glb",
       "scale": 0.4391,
@@ -189,11 +189,11 @@
       "name": "Gấu Tuyết Bông",
       "label": "Nói chuyện",
       "position": [
-        41.5,
+        77.5,
         13,
-        47.5
+        145.5
       ],
-      "yaw": 261,
+      "yaw": 129,
       "radius": 3,
       "model": "packs/kenney-cube-pets/2.0/animal-polar.glb",
       "scale": 0.9326,
@@ -209,11 +209,11 @@
       "name": "Heo Ủn",
       "label": "Nói chuyện",
       "position": [
-        40.5,
+        51.5,
         13,
-        56.5
+        102.5
       ],
-      "yaw": 31,
+      "yaw": 145,
       "radius": 3,
       "model": "packs/kenney-cube-pets/2.0/animal-pig.glb",
       "scale": 0.6311,
@@ -230,11 +230,11 @@
       "name": "Hổ Vằn",
       "label": "Nói chuyện",
       "position": [
-        54.5,
+        160.5,
         13,
-        58.5
+        113.5
       ],
-      "yaw": 95,
+      "yaw": 297,
       "radius": 3,
       "model": "packs/kenney-cube-pets/2.0/animal-tiger.glb",
       "scale": 0.7602,
@@ -251,11 +251,11 @@
       "name": "Hươu Cao",
       "label": "Nói chuyện",
       "position": [
-        69.5,
+        83.5,
         13,
-        83.5
+        125.5
       ],
-      "yaw": 334,
+      "yaw": 239,
       "radius": 3,
       "model": "packs/kenney-cube-pets/2.0/animal-giraffe.glb",
       "scale": 1.2837,
@@ -271,11 +271,11 @@
       "name": "Koala Na",
       "label": "Nói chuyện",
       "position": [
-        13.5,
+        150.5,
         13,
-        30.5
+        88.5
       ],
-      "yaw": 328,
+      "yaw": 139,
       "radius": 3,
       "model": "packs/kenney-cube-pets/2.0/animal-koala.glb",
       "scale": 0.6836,
@@ -292,11 +292,11 @@
       "name": "Lợn Rừng Đốm",
       "label": "Nói chuyện",
       "position": [
-        27.5,
+        40.5,
         13,
-        19.5
+        104.5
       ],
-      "yaw": 199,
+      "yaw": 194,
       "radius": 3,
       "model": "packs/kenney-cube-pets/2.0/animal-hog.glb",
       "scale": 0.6597,
@@ -312,11 +312,11 @@
       "name": "Mèo Mun",
       "label": "Nói chuyện",
       "position": [
-        52.5,
+        93.5,
         13,
-        80.5
+        137.5
       ],
-      "yaw": 192,
+      "yaw": 66,
       "radius": 3,
       "model": "packs/kenney-cube-pets/2.0/animal-cat.glb",
       "scale": 0.5263,
@@ -332,11 +332,11 @@
       "name": "Ong Vàng",
       "label": "Nói chuyện",
       "position": [
-        58.5,
+        59.5,
         13,
-        41.5
+        136.5
       ],
-      "yaw": 351,
+      "yaw": 45,
       "radius": 3,
       "model": "packs/kenney-cube-pets/2.0/animal-bee.glb",
       "scale": 0.3002,
@@ -354,11 +354,11 @@
       "name": "Sâu Xanh",
       "label": "Nói chuyện",
       "position": [
-        86.5,
+        91.5,
         13,
-        50.5
+        90.5
       ],
-      "yaw": 12,
+      "yaw": 172,
       "radius": 3,
       "model": "packs/kenney-cube-pets/2.0/animal-caterpillar.glb",
       "scale": 0.458,
@@ -374,11 +374,11 @@
       "name": "Vẹt Xanh",
       "label": "Nói chuyện",
       "position": [
-        15.5,
+        157.5,
         13,
-        72.5
+        33.5
       ],
-      "yaw": 255,
+      "yaw": 26,
       "radius": 3,
       "model": "packs/kenney-cube-pets/2.0/animal-parrot.glb",
       "scale": 0.4758,
@@ -394,11 +394,11 @@
       "name": "Voi Bảo",
       "label": "Nói chuyện",
       "position": [
-        43.5,
+        131.5,
         13,
-        35.5
+        46.5
       ],
-      "yaw": 158,
+      "yaw": 338,
       "radius": 3,
       "model": "packs/kenney-cube-pets/2.0/animal-elephant.glb",
       "scale": 1.1179,
@@ -414,11 +414,11 @@
       "name": "Phấn hồng",
       "label": "Nhặt lên",
       "position": [
-        52.5,
+        118.5,
         13,
-        34.5
+        22.5
       ],
-      "yaw": -45,
+      "yaw": 45,
       "radius": 2,
       "model": "generated/props/crayon-pink.glb",
       "scale": 0.0375,
@@ -431,11 +431,11 @@
       "name": "Phấn trắng",
       "label": "Nhặt lên",
       "position": [
-        53.5,
+        116.5,
         13,
-        36.5
+        24.5
       ],
-      "yaw": -117,
+      "yaw": 108,
       "radius": 2,
       "model": "generated/props/crayon-white.glb",
       "scale": 0.0375,
@@ -448,11 +448,11 @@
       "name": "Phấn vàng",
       "label": "Nhặt lên",
       "position": [
-        50.5,
+        119.5,
         13,
-        37.5
+        25.5
       ],
-      "yaw": 153,
+      "yaw": 180,
       "radius": 2,
       "model": "generated/props/crayon-yellow.glb",
       "scale": 0.0375,
@@ -466,11 +466,11 @@
       "name": "Cáo Lém",
       "label": "Nói chuyện",
       "position": [
-        51.5,
+        104.5,
         13,
-        54.5
+        36.5
       ],
-      "yaw": 63,
+      "yaw": -90,
       "radius": 3,
       "model": "packs/kenney-cube-pets/2.0/animal-fox.glb",
       "scale": 0.593,
@@ -484,11 +484,11 @@
       "name": "Biển tên Hiệu",
       "label": "Nhặt lên",
       "position": [
-        36.5,
+        80.5,
         13,
-        53.5
+        39.5
       ],
-      "yaw": 90,
+      "yaw": 72,
       "radius": 2,
       "model": "generated/props/placard.glb",
       "scale": 0.075,
@@ -501,11 +501,11 @@
       "name": "Biển tên Số hạng",
       "label": "Nhặt lên",
       "position": [
-        39.5,
+        83.5,
         13,
-        52.5
+        39.5
       ],
-      "yaw": -45,
+      "yaw": 91,
       "radius": 2,
       "model": "generated/props/placard-blue.glb",
       "scale": 0.075,
@@ -518,11 +518,11 @@
       "name": "Biển tên Tổng",
       "label": "Nhặt lên",
       "position": [
-        37.5,
+        82.5,
         13,
-        51.5
+        43.5
       ],
-      "yaw": 27,
+      "yaw": 162,
       "radius": 2,
       "model": "packs/kenney-nature-kit/2.1/sign.glb",
       "scale": 3.4249,
@@ -536,11 +536,11 @@
       "name": "Khỉ Lanh",
       "label": "Nói chuyện",
       "position": [
-        44.5,
+        91.5,
         13,
-        52.5
+        54.5
       ],
-      "yaw": 90,
+      "yaw": 180,
       "radius": 3,
       "model": "packs/kenney-cube-pets/2.0/animal-monkey.glb",
       "scale": 0.6832,
@@ -554,11 +554,11 @@
       "name": "Bóng đỏ",
       "label": "Nhặt lên",
       "position": [
-        58.5,
+        115.5,
         13,
         51.5
       ],
-      "yaw": 135,
+      "yaw": 117,
       "radius": 2,
       "model": "generated/props/balloon.glb",
       "scale": 0.0625,
@@ -571,11 +571,11 @@
       "name": "Bóng vàng",
       "label": "Nhặt lên",
       "position": [
-        60.5,
+        117.5,
         13,
-        51.5
+        48.5
       ],
-      "yaw": -135,
+      "yaw": 39,
       "radius": 2,
       "model": "generated/props/balloon-yellow.glb",
       "scale": 0.0625,
@@ -588,11 +588,11 @@
       "name": "Bóng xanh",
       "label": "Nhặt lên",
       "position": [
-        59.5,
+        119.5,
         13,
-        50.5
+        51.5
       ],
-      "yaw": 231,
+      "yaw": -117,
       "radius": 2,
       "model": "generated/props/balloon-blue.glb",
       "scale": 0.0625,
@@ -605,11 +605,11 @@
       "name": "Phong bì đỏ",
       "label": "Nhặt lên",
       "position": [
-        38.5,
+        94.5,
         13,
-        52.5
+        37.5
       ],
-      "yaw": -135,
+      "yaw": 180,
       "radius": 2,
       "model": "generated/props/envelope-red.glb",
       "scale": 0.0545,
@@ -622,11 +622,11 @@
       "name": "Phong bì vàng",
       "label": "Nhặt lên",
       "position": [
-        37.5,
+        92.5,
         13,
-        50.5
+        33.5
       ],
-      "yaw": 295,
+      "yaw": 45,
       "radius": 2,
       "model": "generated/props/envelope-yellow.glb",
       "scale": 0.0545,
@@ -639,11 +639,11 @@
       "name": "Phong bì xanh",
       "label": "Nhặt lên",
       "position": [
-        36.5,
+        91.5,
         13,
-        52.5
+        36.5
       ],
-      "yaw": 135,
+      "yaw": 108,
       "radius": 2,
       "model": "generated/props/envelope-blue.glb",
       "scale": 0.0545,
@@ -657,11 +657,11 @@
       "name": "Cáo Lém",
       "label": "Nói chuyện",
       "position": [
-        44.5,
+        115.5,
         13,
-        54.5
+        55.5
       ],
-      "yaw": 153,
+      "yaw": -90,
       "radius": 3,
       "model": "packs/kenney-cube-pets/2.0/animal-fox.glb",
       "scale": 0.593,
@@ -675,11 +675,11 @@
       "name": "Gian số liền nhau",
       "label": "Xem",
       "position": [
-        38.5,
+        74.5,
         13,
-        51.5
+        54.5
       ],
-      "yaw": -27,
+      "yaw": 135,
       "radius": 2,
       "model": "packs/kenney-nature-kit/2.1/sign.glb",
       "scale": 3.4249,
@@ -692,11 +692,11 @@
       "name": "Gian tách số",
       "label": "Xem",
       "position": [
-        51.5,
+        93.5,
         13,
-        38.5
+        41.5
       ],
-      "yaw": 180,
+      "yaw": -27,
       "radius": 2,
       "model": "packs/kenney-survival-kit/2.0/workbench.glb",
       "scale": 3.8382,
@@ -709,11 +709,11 @@
       "name": "Gian thẻ số",
       "label": "Xem",
       "position": [
-        57.5,
+        86.5,
         13,
-        44.5
+        30.5
       ],
-      "yaw": -27,
+      "yaw": -45,
       "radius": 2,
       "model": "generated/props/card-index.glb",
       "scale": 0.0375,
@@ -726,11 +726,11 @@
       "name": "Gian xe đua",
       "label": "Xem",
       "position": [
-        60.5,
+        99.5,
         13,
-        54.5
+        44.5
       ],
-      "yaw": -90,
+      "yaw": 63,
       "radius": 2,
       "model": "packs/kenney-survival-kit/2.0/box-large.glb",
       "scale": 4,
@@ -743,11 +743,11 @@
       "name": "Vé màu cam",
       "label": "Nhặt lên",
       "position": [
-        49.5,
+        112.5,
         13,
-        58.5
+        47.5
       ],
-      "yaw": 90,
+      "yaw": 88,
       "radius": 2,
       "model": "generated/props/tickets.glb",
       "scale": 0.06,
@@ -760,11 +760,11 @@
       "name": "Vé màu đỏ",
       "label": "Nhặt lên",
       "position": [
-        51.5,
+        115.5,
         13,
-        57.5
+        47.5
       ],
-      "yaw": -45,
+      "yaw": -90,
       "radius": 2,
       "model": "generated/props/tickets-red.glb",
       "scale": 0.06,
@@ -777,11 +777,11 @@
       "name": "Vé màu tím",
       "label": "Nhặt lên",
       "position": [
-        49.5,
+        111.5,
         13,
-        56.5
+        50.5
       ],
-      "yaw": 27,
+      "yaw": 162,
       "radius": 2,
       "model": "generated/props/tickets-purple.glb",
       "scale": 0.06,
@@ -795,11 +795,11 @@
       "name": "Bò Sữa Mơ",
       "label": "Nói chuyện",
       "position": [
-        16.5,
+        34.5,
         13,
-        30.5
+        103.5
       ],
-      "yaw": 135,
+      "yaw": 90,
       "radius": 3,
       "model": "packs/kenney-cube-pets/2.0/animal-cow.glb",
       "scale": 0.8683,
@@ -814,11 +814,11 @@
       "name": "Ong Vàng",
       "label": "Nói chuyện",
       "position": [
-        15.5,
+        37.5,
         13,
-        23.5
+        124.5
       ],
-      "yaw": 71,
+      "yaw": 90,
       "radius": 3,
       "model": "packs/kenney-cube-pets/2.0/animal-bee.glb",
       "scale": 0.3002,
@@ -832,11 +832,11 @@
       "name": "Bó que đỏ",
       "label": "Nhặt lên",
       "position": [
-        22.5,
+        62.5,
         13,
-        19.5
+        139.5
       ],
-      "yaw": -90,
+      "yaw": 202,
       "radius": 2,
       "model": "packs/kenney-nature-kit/2.1/log_stack.glb",
       "scale": 2.8868,
@@ -850,11 +850,11 @@
       "name": "Bó que xanh",
       "label": "Nhặt lên",
       "position": [
-        20.5,
+        63.5,
         13,
-        18.5
+        143.5
       ],
-      "yaw": 45,
+      "yaw": -153,
       "radius": 2,
       "model": "packs/kenney-nature-kit/2.1/log_stack.glb",
       "scale": 2.8868,
@@ -868,11 +868,11 @@
       "name": "Rổ táo nhỏ",
       "label": "Nhặt lên",
       "position": [
-        22.5,
+        60.5,
         13,
-        17.5
+        142.5
       ],
-      "yaw": -27,
+      "yaw": 117,
       "radius": 2,
       "model": "generated/props/basket.glb",
       "scale": 0.0375,
@@ -886,11 +886,11 @@
       "name": "Heo Ủn",
       "label": "Nói chuyện",
       "position": [
-        21.5,
+        38.5,
         13,
-        18.5
+        144.5
       ],
-      "yaw": 117,
+      "yaw": 180,
       "radius": 3,
       "model": "packs/kenney-cube-pets/2.0/animal-pig.glb",
       "scale": 0.6311,
@@ -904,11 +904,11 @@
       "name": "Quả bầu dài",
       "label": "Nhặt lên",
       "position": [
-        14.5,
+        38.5,
         13,
-        24.5
+        125.5
       ],
-      "yaw": 45,
+      "yaw": 162,
       "radius": 2,
       "model": "generated/props/cucumber.glb",
       "scale": 0.0313,
@@ -921,11 +921,11 @@
       "name": "Quả bầu hồ lô",
       "label": "Nhặt lên",
       "position": [
-        14.5,
+        38.5,
         13,
-        27.5
+        119.5
       ],
-      "yaw": 153,
+      "yaw": 18,
       "radius": 2,
       "model": "packs/kenney-nature-kit/2.1/crop_pumpkin.glb",
       "scale": 2.0969,
@@ -938,11 +938,11 @@
       "name": "Quả bầu tròn",
       "label": "Nhặt lên",
       "position": [
-        15.5,
+        41.5,
         13,
-        25.5
+        122.5
       ],
-      "yaw": 185,
+      "yaw": -90,
       "radius": 2,
       "model": "packs/kenney-nature-kit/2.1/crop_melon.glb",
       "scale": 1.7241,
@@ -955,11 +955,11 @@
       "name": "Bê Bông",
       "label": "Nói chuyện",
       "position": [
-        13.5,
+        56.5,
         13,
-        27.5
+        115.5
       ],
-      "yaw": 135,
+      "yaw": 18,
       "radius": 3,
       "model": "packs/kenney-cube-pets/2.0/animal-cow.glb",
       "scale": 0.5582,
@@ -974,11 +974,11 @@
       "name": "Bò Sữa Mơ",
       "label": "Nói chuyện",
       "position": [
-        21.5,
+        41.5,
         13,
-        31.5
+        92.5
       ],
-      "yaw": -135,
+      "yaw": -90,
       "radius": 3,
       "model": "packs/kenney-cube-pets/2.0/animal-cow.glb",
       "scale": 0.8683,
@@ -992,11 +992,11 @@
       "name": "Bê con Đốm",
       "label": "Dắt về",
       "position": [
-        17.5,
+        41.5,
         13,
-        17.5
+        116.5
       ],
-      "yaw": -90,
+      "yaw": 180,
       "radius": 3,
       "model": "packs/kenney-cube-pets/2.0/animal-cow.glb",
       "scale": 0.5582,
@@ -1010,11 +1010,11 @@
       "name": "Bê con Khoang",
       "label": "Dắt về",
       "position": [
-        16.5,
+        44.5,
         13,
-        19.5
+        114.5
       ],
-      "yaw": 180,
+      "yaw": -90,
       "radius": 3,
       "model": "packs/kenney-cube-pets/2.0/animal-cow.glb",
       "scale": 0.5582,
@@ -1029,11 +1029,11 @@
       "name": "Bê con Nâu",
       "label": "Dắt về",
       "position": [
-        15.5,
+        38.5,
         13,
-        17.5
+        115.5
       ],
-      "yaw": 90,
+      "yaw": 108,
       "radius": 3,
       "model": "packs/kenney-cube-pets/2.0/animal-cow.glb",
       "scale": 0.5582,
@@ -1049,11 +1049,11 @@
       "name": "Hải Ly Cần",
       "label": "Nói chuyện",
       "position": [
-        15.5,
+        61.5,
         13,
-        27.5
+        106.5
       ],
-      "yaw": 180,
+      "yaw": 45,
       "radius": 3,
       "model": "packs/kenney-cube-pets/2.0/animal-beaver.glb",
       "scale": 0.6661,
@@ -1067,11 +1067,11 @@
       "name": "Hải Ly Cần",
       "label": "Nói chuyện",
       "position": [
-        22.5,
+        47.5,
         13,
-        30.5
+        138.5
       ],
-      "yaw": 117,
+      "yaw": 21,
       "radius": 3,
       "model": "packs/kenney-cube-pets/2.0/animal-beaver.glb",
       "scale": 0.6661,
@@ -1086,11 +1086,11 @@
       "name": "Hải Ly Cần",
       "label": "Nói chuyện",
       "position": [
-        17.5,
+        30.5,
         13,
-        19.5
+        119.5
       ],
-      "yaw": -135,
+      "yaw": -72,
       "radius": 3,
       "model": "packs/kenney-cube-pets/2.0/animal-beaver.glb",
       "scale": 0.6661,
@@ -1104,11 +1104,11 @@
       "name": "Đá cuội dẹt",
       "label": "Nhặt lên",
       "position": [
-        23.5,
+        53.5,
         13,
-        17.5
+        145.5
       ],
-      "yaw": 90,
+      "yaw": 117,
       "radius": 2,
       "model": "packs/kenney-survival-kit/2.0/rock-flat.glb",
       "scale": 2.5641,
@@ -1121,11 +1121,11 @@
       "name": "Đá cuội tròn",
       "label": "Nhặt lên",
       "position": [
-        24.5,
+        56.5,
         13,
-        19.5
+        143.5
       ],
-      "yaw": 153,
+      "yaw": -45,
       "radius": 2,
       "model": "packs/kenney-nature-kit/2.1/rock_smallA.glb",
       "scale": 3.1377,
@@ -1138,11 +1138,11 @@
       "name": "Đá cuội vàng",
       "label": "Nhặt lên",
       "position": [
-        25.5,
+        53.5,
         13,
-        17.5
+        142.5
       ],
-      "yaw": 70,
+      "yaw": 45,
       "radius": 2,
       "model": "packs/kenney-nature-kit/2.1/rock_smallA.glb",
       "scale": 3.1377,
@@ -1157,11 +1157,11 @@
       "name": "Heo Ủn",
       "label": "Nói chuyện",
       "position": [
-        21.5,
+        24.5,
         13,
-        19.5
+        140.5
       ],
-      "yaw": -153,
+      "yaw": 72,
       "radius": 3,
       "model": "packs/kenney-cube-pets/2.0/animal-pig.glb",
       "scale": 0.6311,
@@ -1175,11 +1175,11 @@
       "name": "Giỏ táo đổ",
       "label": "Nhặt táo",
       "position": [
-        27.5,
+        54.5,
         13,
-        23.5
+        117.5
       ],
-      "yaw": -135,
+      "yaw": 45,
       "radius": 2,
       "model": "packs/kenney-survival-kit/2.0/box-open.glb",
       "scale": 2.2857,
@@ -1192,11 +1192,11 @@
       "name": "Táo trong bụi cỏ",
       "label": "Tìm trong bụi",
       "position": [
-        27.5,
+        56.5,
         13,
-        21.5
+        120.5
       ],
-      "yaw": -45,
+      "yaw": -153,
       "radius": 2,
       "model": "packs/kenney-nature-kit/2.1/plant_bushLarge.glb",
       "scale": 4.9396,
@@ -1209,11 +1209,11 @@
       "name": "Táo dưới lá khô",
       "label": "Nhặt lên",
       "position": [
-        25.5,
+        56.5,
         13,
-        21.5
+        115.5
       ],
-      "yaw": 45,
+      "yaw": -18,
       "radius": 2,
       "model": "packs/kenney-food-kit/2.0/apple.glb",
       "scale": 2.0969,
@@ -1227,9 +1227,9 @@
       "name": "Gấu Trúc Tròn",
       "label": "Nói chuyện",
       "position": [
-        22.5,
+        34.5,
         13,
-        31.5
+        88.5
       ],
       "yaw": 117,
       "radius": 3,
@@ -1245,11 +1245,11 @@
       "name": "Lóng tre cụt",
       "label": "Nhặt lên",
       "position": [
-        24.5,
+        37.5,
         13,
-        31.5
+        88.5
       ],
-      "yaw": 180,
+      "yaw": -135,
       "radius": 2,
       "model": "packs/kenney-nature-kit/2.1/crops_bambooStageA.glb",
       "scale": 2.1858,
@@ -1262,11 +1262,11 @@
       "name": "Lóng tre vàng",
       "label": "Nhặt lên",
       "position": [
-        22.5,
+        36.5,
         13,
-        29.5
+        87.5
       ],
-      "yaw": 63,
+      "yaw": 287,
       "radius": 2,
       "model": "packs/kenney-nature-kit/2.1/crops_bambooStageB.glb",
       "scale": 2.0225,
@@ -1280,11 +1280,11 @@
       "name": "Lóng tre xanh",
       "label": "Nhặt lên",
       "position": [
-        26.5,
+        36.5,
         13,
-        31.5
+        87.5
       ],
-      "yaw": -117,
+      "yaw": 348,
       "radius": 2,
       "model": "packs/kenney-nature-kit/2.1/crops_bambooStageB.glb",
       "scale": 2.0225,
@@ -1297,11 +1297,11 @@
       "name": "Thỏ Tí",
       "label": "Nói chuyện",
       "position": [
-        27.5,
+        29.5,
         13,
-        24.5
+        101.5
       ],
-      "yaw": -27,
+      "yaw": -45,
       "radius": 3,
       "model": "packs/kenney-cube-pets/2.0/animal-bunny.glb",
       "scale": 0.4478,
@@ -1315,11 +1315,11 @@
       "name": "Biển tên luống",
       "label": "Nhặt lên",
       "position": [
-        18.5,
+        26.5,
         13,
-        18.5
+        90.5
       ],
-      "yaw": 117,
+      "yaw": 72,
       "radius": 2,
       "model": "packs/kenney-survival-kit/2.0/signpost-single.glb",
       "scale": 3.4777,
@@ -1332,11 +1332,11 @@
       "name": "Bình tưới",
       "label": "Nhặt lên",
       "position": [
-        20.5,
+        31.5,
         13,
-        18.5
+        89.5
       ],
-      "yaw": 180,
+      "yaw": -45,
       "radius": 2,
       "model": "packs/kenney-survival-kit/2.0/bucket.glb",
       "scale": 3.124,
@@ -1349,9 +1349,9 @@
       "name": "Cà rốt khổng lồ",
       "label": "Nhổ lên",
       "position": [
-        22.5,
+        31.5,
         13,
-        18.5
+        92.5
       ],
       "yaw": -117,
       "radius": 2,
@@ -1366,11 +1366,11 @@
       "name": "Chìa khóa đỏ",
       "label": "Nhặt lên",
       "position": [
-        22.5,
+        62.5,
         13,
-        18.5
+        105.5
       ],
-      "yaw": 135,
+      "yaw": 201,
       "radius": 2,
       "model": "generated/props/key-red.glb",
       "scale": 0.0313,
@@ -1383,11 +1383,11 @@
       "name": "Chìa khóa vàng",
       "label": "Nhặt lên",
       "position": [
-        25.5,
+        61.5,
         13,
-        17.5
+        110.5
       ],
-      "yaw": -90,
+      "yaw": 153,
       "radius": 2,
       "model": "generated/props/key.glb",
       "scale": 0.0313,
@@ -1400,11 +1400,11 @@
       "name": "Chìa khóa xanh",
       "label": "Nhặt lên",
       "position": [
-        24.5,
+        63.5,
         13,
-        19.5
+        108.5
       ],
-      "yaw": -153,
+      "yaw": -90,
       "radius": 2,
       "model": "generated/props/key-blue.glb",
       "scale": 0.0313,
@@ -1418,11 +1418,11 @@
       "name": "Vẹt Xanh",
       "label": "Nói chuyện",
       "position": [
-        14.5,
+        36.5,
         13,
-        27.5
+        110.5
       ],
-      "yaw": 45,
+      "yaw": -45,
       "radius": 3,
       "model": "packs/kenney-cube-pets/2.0/animal-parrot.glb",
       "scale": 0.4758,
@@ -1436,11 +1436,11 @@
       "name": "Quả cân 1 kg",
       "label": "Nhặt lên",
       "position": [
-        72.5,
+        136.5,
         13,
-        29.5
+        24.5
       ],
-      "yaw": 307,
+      "yaw": 18,
       "radius": 2,
       "model": "packs/kenney-nature-kit/2.1/pot_small.glb",
       "scale": 2.2388,
@@ -1454,11 +1454,11 @@
       "name": "Quả cân 2 kg",
       "label": "Nhặt lên",
       "position": [
-        74.5,
+        139.5,
         13,
-        29.5
+        28.5
       ],
-      "yaw": -63,
+      "yaw": -117,
       "radius": 2,
       "model": "packs/kenney-nature-kit/2.1/pot_small.glb",
       "scale": 2.2388,
@@ -1472,11 +1472,11 @@
       "name": "Quả cân 5 kg",
       "label": "Nhặt lên",
       "position": [
-        72.5,
+        139.5,
         13,
-        30.5
+        25.5
       ],
-      "yaw": 359,
+      "yaw": -45,
       "radius": 2,
       "model": "packs/kenney-nature-kit/2.1/pot_small.glb",
       "scale": 2.2388,
@@ -1490,11 +1490,11 @@
       "name": "Cá Bống",
       "label": "Nói chuyện",
       "position": [
-        70.5,
+        164.5,
         13,
-        25.5
+        45.5
       ],
-      "yaw": 29,
+      "yaw": -162,
       "radius": 3,
       "model": "packs/kenney-cube-pets/2.0/animal-fish.glb",
       "scale": 0.3686,
@@ -1508,11 +1508,11 @@
       "name": "Ca 1 lít",
       "label": "Nhặt lên",
       "position": [
-        77.5,
+        148.5,
         13,
-        20.5
+        47.5
       ],
-      "yaw": 90,
+      "yaw": -72,
       "radius": 2,
       "model": "packs/kenney-food-kit/2.0/cup.glb",
       "scale": 2,
@@ -1525,11 +1525,11 @@
       "name": "Chai nước",
       "label": "Nhặt lên",
       "position": [
-        80.5,
+        144.5,
         13,
-        20.5
+        51.5
       ],
-      "yaw": -90,
+      "yaw": 162,
       "radius": 2,
       "model": "packs/kenney-survival-kit/2.0/bottle.glb",
       "scale": 3.2495,
@@ -1542,11 +1542,11 @@
       "name": "Cốc thủy tinh",
       "label": "Nhặt lên",
       "position": [
-        79.5,
+        144.5,
         13,
-        18.5
+        45.5
       ],
-      "yaw": 230,
+      "yaw": 18,
       "radius": 2,
       "model": "packs/kenney-food-kit/2.0/glass.glb",
       "scale": 1.4028,
@@ -1559,11 +1559,11 @@
       "name": "Ca đong nước",
       "label": "Nhặt lên",
       "position": [
-        82.5,
+        136.5,
         13,
-        26.5
+        32.5
       ],
-      "yaw": -45,
+      "yaw": -135,
       "radius": 2,
       "model": "packs/kenney-food-kit/2.0/mug.glb",
       "scale": 1.4633,
@@ -1576,11 +1576,11 @@
       "name": "Túi gạo",
       "label": "Nhặt lên",
       "position": [
-        81.5,
+        136.5,
         13,
         28.5
       ],
-      "yaw": 180,
+      "yaw": -18,
       "radius": 2,
       "model": "packs/kenney-food-kit/2.0/bag.glb",
       "scale": 1.0004,
@@ -1593,11 +1593,11 @@
       "name": "Túi muối",
       "label": "Nhặt lên",
       "position": [
-        79.5,
+        132.5,
         13,
-        28.5
+        31.5
       ],
-      "yaw": 117,
+      "yaw": 90,
       "radius": 2,
       "model": "generated/props/salt.glb",
       "scale": 0.0313,
@@ -1610,11 +1610,11 @@
       "name": "Thùng quà đỏ",
       "label": "Nhặt lên",
       "position": [
-        74.5,
+        166.5,
         13,
-        30.5
+        22.5
       ],
-      "yaw": 180,
+      "yaw": -90,
       "radius": 2,
       "model": "generated/props/package-red.glb",
       "scale": 0.0437,
@@ -1627,11 +1627,11 @@
       "name": "Thùng quà vàng",
       "label": "Nhặt lên",
       "position": [
-        72.5,
+        162.5,
         13,
-        29.5
+        25.5
       ],
-      "yaw": 117,
+      "yaw": 162,
       "radius": 2,
       "model": "generated/props/package-yellow.glb",
       "scale": 0.0437,
@@ -1644,11 +1644,11 @@
       "name": "Thùng quà xanh",
       "label": "Nhặt lên",
       "position": [
-        76.5,
+        162.5,
         13,
-        28.5
+        22.5
       ],
-      "yaw": -90,
+      "yaw": 90,
       "radius": 2,
       "model": "generated/props/package-blue.glb",
       "scale": 0.0437,
@@ -1661,11 +1661,11 @@
       "name": "Bánh xe",
       "label": "Nhặt lên",
       "position": [
-        85.5,
+        56.5,
         13,
-        58.5
+        27.5
       ],
-      "yaw": -153,
+      "yaw": -45,
       "radius": 2,
       "model": "packs/kenney-food-kit/2.0/cookie.glb",
       "scale": 6.0277,
@@ -1678,11 +1678,11 @@
       "name": "Hộp ốc vít",
       "label": "Nhặt lên",
       "position": [
-        84.5,
+        55.5,
         13,
-        55.5
+        30.5
       ],
-      "yaw": 13,
+      "yaw": 180,
       "radius": 2,
       "model": "generated/props/nut-and-bolt.glb",
       "scale": 0.0313,
@@ -1695,11 +1695,11 @@
       "name": "Lò xo",
       "label": "Nhặt lên",
       "position": [
-        86.5,
+        52.5,
         13,
-        56.5
+        27.5
       ],
-      "yaw": -90,
+      "yaw": 72,
       "radius": 2,
       "model": "generated/props/paperclip.glb",
       "scale": 0.0333,
@@ -1712,11 +1712,11 @@
       "name": "Toa hàng đỏ",
       "label": "Nhặt lên",
       "position": [
-        80.5,
+        35.5,
         13,
-        57.5
+        60.5
       ],
-      "yaw": -63,
+      "yaw": -135,
       "radius": 2,
       "model": "generated/props/railway-red.glb",
       "scale": 0.0437,
@@ -1729,11 +1729,11 @@
       "name": "Toa hàng vàng",
       "label": "Nhặt lên",
       "position": [
-        78.5,
+        37.5,
         13,
-        57.5
+        58.5
       ],
-      "yaw": 132,
+      "yaw": -72,
       "radius": 2,
       "model": "generated/props/railway-yellow.glb",
       "scale": 0.0437,
@@ -1746,11 +1746,11 @@
       "name": "Toa hàng xanh",
       "label": "Nhặt lên",
       "position": [
-        76.5,
+        33.5,
         13,
-        58.5
+        56.5
       ],
-      "yaw": 90,
+      "yaw": 18,
       "radius": 2,
       "model": "generated/props/railway-blue.glb",
       "scale": 0.0437,
@@ -1763,11 +1763,11 @@
       "name": "Bể cá",
       "label": "Xem",
       "position": [
-        83.5,
+        57.5,
         13,
-        48.5
+        25.5
       ],
-      "yaw": 153,
+      "yaw": 135,
       "radius": 2,
       "model": "generated/props/tropical-fish.glb",
       "scale": 0.0462,
@@ -1780,11 +1780,11 @@
       "name": "Hộp quà đỏ",
       "label": "Mở hộp",
       "position": [
-        84.5,
+        36.5,
         13,
-        57.5
+        43.5
       ],
-      "yaw": -63,
+      "yaw": -45,
       "radius": 2,
       "model": "generated/props/gift-red.glb",
       "scale": 0.0437,
@@ -1797,11 +1797,11 @@
       "name": "Hộp quà vàng",
       "label": "Mở hộp",
       "position": [
-        81.5,
+        33.5,
         13,
-        58.5
+        46.5
       ],
-      "yaw": 90,
+      "yaw": 135,
       "radius": 2,
       "model": "generated/props/gift-yellow.glb",
       "scale": 0.0437,
@@ -1814,11 +1814,11 @@
       "name": "Hộp quà xanh",
       "label": "Mở hộp",
       "position": [
-        82.5,
+        36.5,
         13,
-        58.5
+        47.5
       ],
-      "yaw": 146,
+      "yaw": -162,
       "radius": 2,
       "model": "generated/props/gift-blue.glb",
       "scale": 0.0437,
@@ -1831,11 +1831,11 @@
       "name": "Máy bay giấy đỏ",
       "label": "Nhặt lên",
       "position": [
-        79.5,
+        54.5,
         13,
-        58.5
+        53.5
       ],
-      "yaw": -90,
+      "yaw": -117,
       "radius": 2,
       "model": "generated/props/airplane-red.glb",
       "scale": 0.0437,
@@ -1848,11 +1848,11 @@
       "name": "Máy bay giấy vàng",
       "label": "Nhặt lên",
       "position": [
-        76.5,
+        49.5,
         13,
-        58.5
+        51.5
       ],
-      "yaw": 90,
+      "yaw": 72,
       "radius": 2,
       "model": "generated/props/airplane-yellow.glb",
       "scale": 0.0437,
@@ -1865,11 +1865,11 @@
       "name": "Máy bay giấy xanh",
       "label": "Nhặt lên",
       "position": [
-        77.5,
+        53.5,
         13,
-        56.5
+        49.5
       ],
-      "yaw": 202,
+      "yaw": -18,
       "radius": 2,
       "model": "generated/props/airplane-blue.glb",
       "scale": 0.0437,
@@ -1882,11 +1882,11 @@
       "name": "Búp bê gỗ",
       "label": "Nhặt lên",
       "position": [
-        85.5,
+        56.5,
         13,
-        46.5
+        26.5
       ],
-      "yaw": -27,
+      "yaw": 135,
       "radius": 2,
       "model": "generated/props/nesting-dolls.glb",
       "scale": 0.0437,
@@ -1899,11 +1899,11 @@
       "name": "Con quay",
       "label": "Nhặt lên",
       "position": [
-        83.5,
+        58.5,
         13,
-        48.5
+        22.5
       ],
-      "yaw": 90,
+      "yaw": -18,
       "radius": 2,
       "model": "packs/kenney-food-kit/2.0/cupcake.glb",
       "scale": 0.9438,
@@ -1916,9 +1916,9 @@
       "name": "Ô tô gỗ",
       "label": "Nhặt lên",
       "position": [
-        86.5,
+        59.5,
         13,
-        48.5
+        25.5
       ],
       "yaw": -90,
       "radius": 2,
@@ -1933,11 +1933,11 @@
       "name": "Bút chì",
       "label": "Nhặt lên",
       "position": [
-        76.5,
+        78.5,
         13,
-        73.5
+        125.5
       ],
-      "yaw": 135,
+      "yaw": 90,
       "radius": 2,
       "model": "generated/props/pencil.glb",
       "scale": 0.0437,
@@ -1952,9 +1952,9 @@
       "position": [
         78.5,
         13,
-        73.5
+        122.5
       ],
-      "yaw": -135,
+      "yaw": 18,
       "radius": 2,
       "model": "packs/kenney-survival-kit/2.0/box.glb",
       "scale": 2.8,
@@ -1967,11 +1967,11 @@
       "name": "Thước kẻ",
       "label": "Nhặt lên",
       "position": [
-        77.5,
+        80.5,
         13,
-        72.5
+        128.5
       ],
-      "yaw": 326,
+      "yaw": -162,
       "radius": 2,
       "model": "generated/props/ruler.glb",
       "scale": 0.0437,
@@ -1984,11 +1984,11 @@
       "name": "Mảnh kính đỏ",
       "label": "Nhặt lên",
       "position": [
-        72.5,
+        114.5,
         13,
-        80.5
+        118.5
       ],
-      "yaw": 90,
+      "yaw": -117,
       "radius": 2,
       "model": "generated/props/gem-red.glb",
       "scale": 0.0417,
@@ -2001,11 +2001,11 @@
       "name": "Mảnh kính tím",
       "label": "Nhặt lên",
       "position": [
-        75.5,
+        109.5,
         13,
-        81.5
+        116.5
       ],
-      "yaw": -135,
+      "yaw": 72,
       "radius": 2,
       "model": "generated/props/gem-purple.glb",
       "scale": 0.0417,
@@ -2018,9 +2018,9 @@
       "name": "Mảnh kính xanh",
       "label": "Nhặt lên",
       "position": [
-        75.5,
+        114.5,
         13,
-        79.5
+        115.5
       ],
       "yaw": -45,
       "radius": 2,
@@ -2035,11 +2035,11 @@
       "name": "Giấy màu",
       "label": "Nhặt lên",
       "position": [
-        78.5,
+        117.5,
         13,
-        76.5
+        136.5
       ],
-      "yaw": 180,
+      "yaw": -45,
       "radius": 2,
       "model": "generated/props/page-pink.glb",
       "scale": 0.0375,
@@ -2052,11 +2052,11 @@
       "name": "Kéo nhỏ",
       "label": "Nhặt lên",
       "position": [
-        77.5,
+        115.5,
         13,
-        72.5
+        138.5
       ],
-      "yaw": 27,
+      "yaw": 135,
       "radius": 2,
       "model": "generated/props/scissors.glb",
       "scale": 0.04,
@@ -2069,11 +2069,11 @@
       "name": "Lọ hồ dán",
       "label": "Nhặt lên",
       "position": [
-        77.5,
+        119.5,
         13,
-        74.5
+        138.5
       ],
-      "yaw": 90,
+      "yaw": -108,
       "radius": 2,
       "model": "packs/kenney-survival-kit/2.0/bottle-large.glb",
       "scale": 4.1705,
@@ -2086,9 +2086,9 @@
       "name": "Cua Kềnh",
       "label": "Nói chuyện",
       "position": [
-        80.5,
+        81.5,
         13,
-        75.5
+        139.5
       ],
       "yaw": -90,
       "radius": 3,
@@ -2104,9 +2104,9 @@
       "name": "Đinh treo tranh",
       "label": "Nhặt lên",
       "position": [
-        72.5,
+        77.5,
         13,
-        82.5
+        116.5
       ],
       "yaw": 90,
       "radius": 2,
@@ -2121,11 +2121,11 @@
       "name": "Khung tranh gỗ",
       "label": "Nhặt lên",
       "position": [
-        75.5,
+        80.5,
         13,
-        82.5
+        118.5
       ],
-      "yaw": -90,
+      "yaw": -153,
       "radius": 2,
       "model": "generated/props/framed-picture.glb",
       "scale": 0.0625,
@@ -2138,11 +2138,11 @@
       "name": "Thước kẻ dài",
       "label": "Nhặt lên",
       "position": [
-        73.5,
+        78.5,
         13,
-        80.5
+        113.5
       ],
-      "yaw": 160,
+      "yaw": 18,
       "radius": 2,
       "model": "generated/props/ruler-blue.glb",
       "scale": 0.0437,
@@ -2155,11 +2155,11 @@
       "name": "Chìa khoá dây cót",
       "label": "Nhặt lên",
       "position": [
-        24.5,
+        85.5,
         13,
-        73.5
+        89.5
       ],
-      "yaw": -135,
+      "yaw": -117,
       "radius": 2,
       "model": "generated/props/old-key.glb",
       "scale": 0.0313,
@@ -2172,11 +2172,11 @@
       "name": "Kim giờ",
       "label": "Nhặt lên",
       "position": [
-        25.5,
+        82.5,
         13,
-        71.5
+        91.5
       ],
-      "yaw": -63,
+      "yaw": 162,
       "radius": 2,
       "model": "generated/props/alarm-clock.glb",
       "scale": 0.0375,
@@ -2189,11 +2189,11 @@
       "name": "Kim phút",
       "label": "Nhặt lên",
       "position": [
-        21.5,
+        83.5,
         13,
-        73.5
+        87.5
       ],
-      "yaw": 117,
+      "yaw": 336,
       "radius": 2,
       "model": "generated/props/watch.glb",
       "scale": 0.0313,
@@ -2206,11 +2206,11 @@
       "name": "Thẻ ngày sinh",
       "label": "Nhặt lên",
       "position": [
-        19.5,
+        94.5,
         13,
-        69.5
+        95.5
       ],
-      "yaw": 109,
+      "yaw": -27,
       "radius": 2,
       "model": "generated/props/birthday-cake.glb",
       "scale": 0.0375,
@@ -2223,11 +2223,11 @@
       "name": "Tờ lịch tháng 12",
       "label": "Nhặt lên",
       "position": [
-        19.5,
+        91.5,
         13,
-        71.5
+        95.5
       ],
-      "yaw": 180,
+      "yaw": 45,
       "radius": 2,
       "model": "generated/props/calendar.glb",
       "scale": 0.0437,
@@ -2240,11 +2240,11 @@
       "name": "Tờ lịch tháng 2",
       "label": "Nhặt lên",
       "position": [
-        17.5,
+        92.5,
         13,
-        69.5
+        100.5
       ],
-      "yaw": 90,
+      "yaw": 162,
       "radius": 2,
       "model": "generated/props/spiral-calendar.glb",
       "scale": 0.0437,
@@ -2257,11 +2257,11 @@
       "name": "Đồng hồ mô hình",
       "label": "Nhặt lên",
       "position": [
-        22.5,
+        84.5,
         13,
-        75.5
+        103.5
       ],
-      "yaw": 180,
+      "yaw": -45,
       "radius": 2,
       "model": "generated/props/mantelpiece-clock.glb",
       "scale": 0.05,
@@ -2274,11 +2274,11 @@
       "name": "Tờ lịch tháng 5",
       "label": "Nhặt lên",
       "position": [
-        24.5,
+        81.5,
         13,
-        72.5
+        103.5
       ],
-      "yaw": -63,
+      "yaw": 63,
       "radius": 2,
       "model": "generated/props/tear-off-calendar.glb",
       "scale": 0.0437,
@@ -2291,11 +2291,11 @@
       "name": "Tờ lịch tháng 6",
       "label": "Nhặt lên",
       "position": [
-        22.5,
+        86.5,
         13,
-        73.5
+        105.5
       ],
-      "yaw": 149,
+      "yaw": -108,
       "radius": 2,
       "model": "generated/props/calendar-blue.glb",
       "scale": 0.0437,
@@ -2308,11 +2308,11 @@
       "name": "Bưu ảnh Huế",
       "label": "Nhặt lên",
       "position": [
-        15.5,
+        114.5,
         13,
-        76.5
+        90.5
       ],
-      "yaw": -27,
+      "yaw": -162,
       "radius": 2,
       "model": "generated/props/postcard-hue.glb",
       "scale": 0.05,
@@ -2325,11 +2325,11 @@
       "name": "Bưu ảnh Mù Cang Chải",
       "label": "Nhặt lên",
       "position": [
-        15.5,
+        112.5,
         13,
-        78.5
+        87.5
       ],
-      "yaw": -90,
+      "yaw": 90,
       "radius": 2,
       "model": "generated/props/postcard-mountains.glb",
       "scale": 0.05,
@@ -2342,11 +2342,11 @@
       "name": "Bưu ảnh Năm Căn",
       "label": "Nhặt lên",
       "position": [
-        14.5,
+        116.5,
         13,
-        78.5
+        87.5
       ],
-      "yaw": 251,
+      "yaw": -90,
       "radius": 2,
       "model": "generated/props/postcard-island.glb",
       "scale": 0.0533,
@@ -2359,11 +2359,11 @@
       "name": "Xấp vé đỏ",
       "label": "Nhặt lên",
       "position": [
-        43.5,
+        166.5,
         13,
-        82.5
+        120.5
       ],
-      "yaw": 153,
+      "yaw": -108,
       "radius": 2,
       "model": "generated/props/ticket-red.glb",
       "scale": 0.0667,
@@ -2376,9 +2376,9 @@
       "name": "Xấp vé vàng",
       "label": "Nhặt lên",
       "position": [
-        43.5,
+        161.5,
         13,
-        80.5
+        119.5
       ],
       "yaw": 90,
       "radius": 2,
@@ -2393,11 +2393,11 @@
       "name": "Xấp vé xanh",
       "label": "Nhặt lên",
       "position": [
-        44.5,
+        163.5,
         13,
-        80.5
+        116.5
       ],
-      "yaw": 257,
+      "yaw": 169,
       "radius": 2,
       "model": "generated/props/ticket-blue.glb",
       "scale": 0.0667,
@@ -2410,11 +2410,11 @@
       "name": "Mảnh tam giác",
       "label": "Nhặt lên",
       "position": [
-        49.5,
+        152.5,
         13,
-        76.5
+        117.5
       ],
-      "yaw": 117,
+      "yaw": -135,
       "radius": 2,
       "model": "generated/props/triangle-ruler.glb",
       "scale": 0.0375,
@@ -2427,11 +2427,11 @@
       "name": "Mảnh tứ giác",
       "label": "Nhặt lên",
       "position": [
-        51.5,
+        150.5,
         13,
-        77.5
+        113.5
       ],
-      "yaw": 180,
+      "yaw": 142,
       "radius": 2,
       "model": "generated/props/orange-diamond.glb",
       "scale": 0.0375,
@@ -2444,11 +2444,11 @@
       "name": "Thước kẻ",
       "label": "Nhặt lên",
       "position": [
-        53.5,
+        148.5,
         13,
-        75.5
+        115.5
       ],
-      "yaw": -90,
+      "yaw": 90,
       "radius": 2,
       "model": "generated/props/ruler.glb",
       "scale": 0.0437,
@@ -2461,11 +2461,11 @@
       "name": "Ca một lít",
       "label": "Nhặt lên",
       "position": [
-        53.5,
+        136.5,
         13,
-        78.5
+        136.5
       ],
-      "yaw": -135,
+      "yaw": 45,
       "radius": 2,
       "model": "packs/kenney-food-kit/2.0/cup.glb",
       "scale": 2,
@@ -2478,11 +2478,11 @@
       "name": "Can nước",
       "label": "Nhặt lên",
       "position": [
-        51.5,
+        140.5,
         13,
-        76.5
+        136.5
       ],
-      "yaw": 45,
+      "yaw": -72,
       "radius": 2,
       "model": "packs/kenney-survival-kit/2.0/bucket.glb",
       "scale": 3.124,
@@ -2495,11 +2495,11 @@
       "name": "Quả cân",
       "label": "Nhặt lên",
       "position": [
-        50.5,
+        136.5,
         13,
-        78.5
+        140.5
       ],
-      "yaw": 117,
+      "yaw": 162,
       "radius": 2,
       "model": "generated/props/balance-scale.glb",
       "scale": 0.0437,
@@ -2512,11 +2512,11 @@
       "name": "Hộp huy hiệu bạc",
       "label": "Mở hộp",
       "position": [
-        41.5,
+        137.5,
         13,
-        76.5
+        95.5
       ],
-      "yaw": -45,
+      "yaw": 90,
       "radius": 2,
       "model": "generated/props/medal-silver.glb",
       "scale": 0.0375,
@@ -2529,9 +2529,9 @@
       "name": "Hộp huy hiệu đồng",
       "label": "Mở hộp",
       "position": [
-        41.5,
+        141.5,
         13,
-        78.5
+        96.5
       ],
       "yaw": -135,
       "radius": 2,
@@ -2546,11 +2546,11 @@
       "name": "Hộp huy hiệu vàng",
       "label": "Mở hộp",
       "position": [
-        39.5,
+        140.5,
         13,
-        77.5
+        92.5
       ],
-      "yaw": 90,
+      "yaw": 137,
       "radius": 2,
       "model": "generated/props/medal-gold.glb",
       "scale": 0.0375,
@@ -2562,219 +2562,1809 @@
     {
       "model": "packs/kenney-survival-kit/2.0/signpost.glb",
       "position": [
-        36.5,
-        13,
-        34.5
-      ],
-      "yaw": 45,
-      "scale": 3.4777
-    },
-    {
-      "model": "packs/kenney-survival-kit/2.0/signpost.glb",
-      "position": [
-        13.5,
-        13,
-        17.5
-      ],
-      "yaw": 45,
-      "scale": 3.4777
-    },
-    {
-      "model": "packs/kenney-survival-kit/2.0/signpost.glb",
-      "position": [
-        70.5,
-        13,
-        18.5
-      ],
-      "yaw": 45,
-      "scale": 3.4777
-    },
-    {
-      "model": "packs/kenney-survival-kit/2.0/signpost.glb",
-      "position": [
-        74.5,
-        13,
-        46.5
-      ],
-      "yaw": 45,
-      "scale": 3.4777
-    },
-    {
-      "model": "packs/kenney-survival-kit/2.0/signpost.glb",
-      "position": [
-        68.5,
-        13,
-        72.5
-      ],
-      "yaw": 45,
-      "scale": 3.4777
-    },
-    {
-      "model": "packs/kenney-survival-kit/2.0/signpost.glb",
-      "position": [
-        14.5,
-        13,
-        66.5
-      ],
-      "yaw": 45,
-      "scale": 3.4777
-    },
-    {
-      "model": "packs/kenney-survival-kit/2.0/signpost.glb",
-      "position": [
-        39.5,
-        13,
-        75.5
-      ],
-      "yaw": 45,
-      "scale": 3.4777
-    },
-    {
-      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
-      "position": [
-        44.5,
-        13,
-        16.5
-      ],
-      "yaw": 0,
-      "scale": 1.7094
-    },
-    {
-      "model": "packs/kenney-nature-kit/2.1/flower_yellowB.glb",
-      "position": [
-        52.5,
-        14,
-        16.5
-      ],
-      "yaw": 0,
-      "scale": 3.1546
-    },
-    {
-      "model": "packs/kenney-nature-kit/2.1/flower_yellowB.glb",
-      "position": [
-        44.5,
-        13,
-        19.5
-      ],
-      "yaw": 30,
-      "scale": 3.1546
-    },
-    {
-      "model": "packs/kenney-nature-kit/2.1/flower_purpleA.glb",
-      "position": [
-        52.5,
-        14,
-        19.5
-      ],
-      "yaw": 30,
-      "scale": 2.0619
-    },
-    {
-      "model": "packs/kenney-nature-kit/2.1/flower_purpleA.glb",
-      "position": [
-        44.5,
+        71.5,
         13,
         22.5
       ],
-      "yaw": 60,
-      "scale": 2.0619
+      "yaw": 45,
+      "scale": 3.4777
     },
     {
-      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
+      "model": "packs/kenney-survival-kit/2.0/signpost.glb",
       "position": [
-        52.5,
-        14,
+        23.5,
+        13,
+        87.5
+      ],
+      "yaw": 45,
+      "scale": 3.4777
+    },
+    {
+      "model": "packs/kenney-survival-kit/2.0/signpost.glb",
+      "position": [
+        131.5,
+        13,
         22.5
       ],
-      "yaw": 60,
-      "scale": 1.7094
+      "yaw": 45,
+      "scale": 3.4777
     },
     {
-      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
+      "model": "packs/kenney-survival-kit/2.0/signpost.glb",
       "position": [
-        44.5,
+        23.5,
         13,
-        25.5
+        22.5
       ],
-      "yaw": 90,
-      "scale": 1.7094
+      "yaw": 45,
+      "scale": 3.4777
     },
     {
-      "model": "packs/kenney-nature-kit/2.1/flower_yellowB.glb",
-      "position": [
-        52.5,
-        14,
-        25.5
-      ],
-      "yaw": 90,
-      "scale": 3.1546
-    },
-    {
-      "model": "packs/kenney-nature-kit/2.1/flower_yellowB.glb",
-      "position": [
-        44.5,
-        13,
-        28.5
-      ],
-      "yaw": 120,
-      "scale": 3.1546
-    },
-    {
-      "model": "packs/kenney-nature-kit/2.1/flower_purpleA.glb",
-      "position": [
-        52.5,
-        14,
-        28.5
-      ],
-      "yaw": 120,
-      "scale": 2.0619
-    },
-    {
-      "model": "packs/kenney-nature-kit/2.1/plant_bushSmall.glb",
-      "position": [
-        38.5,
-        13,
-        20.5
-      ],
-      "yaw": 0,
-      "scale": 3.3769
-    },
-    {
-      "model": "packs/kenney-nature-kit/2.1/plant_bushSmall.glb",
-      "position": [
-        58.5,
-        14,
-        20.5
-      ],
-      "yaw": 0,
-      "scale": 3.3769
-    },
-    {
-      "model": "packs/kenney-nature-kit/2.1/plant_bushSmall.glb",
-      "position": [
-        34.5,
-        14,
-        28.5
-      ],
-      "yaw": 0,
-      "scale": 3.3769
-    },
-    {
-      "model": "packs/kenney-nature-kit/2.1/plant_bushSmall.glb",
-      "position": [
-        62.5,
-        14,
-        28.5
-      ],
-      "yaw": 0,
-      "scale": 3.3769
-    },
-    {
-      "model": "packs/kenney-survival-kit/2.0/workbench.glb",
+      "model": "packs/kenney-survival-kit/2.0/signpost.glb",
       "position": [
         73.5,
         13,
+        113.5
+      ],
+      "yaw": 45,
+      "scale": 3.4777
+    },
+    {
+      "model": "packs/kenney-survival-kit/2.0/signpost.glb",
+      "position": [
+        73.5,
+        13,
+        87.5
+      ],
+      "yaw": 45,
+      "scale": 3.4777
+    },
+    {
+      "model": "packs/kenney-survival-kit/2.0/signpost.glb",
+      "position": [
+        129.5,
+        13,
+        87.5
+      ],
+      "yaw": 45,
+      "scale": 3.4777
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
+      "position": [
+        85.5,
+        13,
         26.5
+      ],
+      "yaw": 0,
+      "scale": 2.3932
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_yellowB.glb",
+      "position": [
+        85.5,
+        13,
+        27.5
+      ],
+      "yaw": 37,
+      "scale": 4.4164
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_purpleA.glb",
+      "position": [
+        85.5,
+        13,
+        28.5
+      ],
+      "yaw": 74,
+      "scale": 2.8866
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
+      "position": [
+        86.5,
+        13,
+        26.5
+      ],
+      "yaw": 111,
+      "scale": 2.3932
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_yellowB.glb",
+      "position": [
+        86.5,
+        13,
+        27.5
+      ],
+      "yaw": 148,
+      "scale": 4.4164
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_purpleA.glb",
+      "position": [
+        86.5,
+        13,
+        28.5
+      ],
+      "yaw": 185,
+      "scale": 2.8866
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
+      "position": [
+        87.5,
+        13,
+        26.5
+      ],
+      "yaw": 222,
+      "scale": 2.3932
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_yellowB.glb",
+      "position": [
+        87.5,
+        13,
+        27.5
+      ],
+      "yaw": 259,
+      "scale": 4.4164
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_purpleA.glb",
+      "position": [
+        87.5,
+        13,
+        28.5
+      ],
+      "yaw": 296,
+      "scale": 2.8866
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
+      "position": [
+        88.5,
+        13,
+        26.5
+      ],
+      "yaw": 333,
+      "scale": 2.3932
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_yellowB.glb",
+      "position": [
+        88.5,
+        13,
+        27.5
+      ],
+      "yaw": 370,
+      "scale": 4.4164
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_purpleA.glb",
+      "position": [
+        88.5,
+        13,
+        28.5
+      ],
+      "yaw": 407,
+      "scale": 2.8866
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
+      "position": [
+        89.5,
+        13,
+        26.5
+      ],
+      "yaw": 444,
+      "scale": 2.3932
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_yellowB.glb",
+      "position": [
+        89.5,
+        13,
+        27.5
+      ],
+      "yaw": 481,
+      "scale": 4.4164
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_purpleA.glb",
+      "position": [
+        89.5,
+        13,
+        28.5
+      ],
+      "yaw": 518,
+      "scale": 2.8866
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
+      "position": [
+        85.5,
+        13,
+        38.5
+      ],
+      "yaw": 555,
+      "scale": 2.3932
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_yellowB.glb",
+      "position": [
+        85.5,
+        13,
+        39.5
+      ],
+      "yaw": 592,
+      "scale": 4.4164
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_purpleA.glb",
+      "position": [
+        85.5,
+        13,
+        40.5
+      ],
+      "yaw": 629,
+      "scale": 2.8866
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
+      "position": [
+        86.5,
+        13,
+        38.5
+      ],
+      "yaw": 666,
+      "scale": 2.3932
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_yellowB.glb",
+      "position": [
+        86.5,
+        13,
+        39.5
+      ],
+      "yaw": 703,
+      "scale": 4.4164
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_purpleA.glb",
+      "position": [
+        86.5,
+        13,
+        40.5
+      ],
+      "yaw": 740,
+      "scale": 2.8866
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
+      "position": [
+        87.5,
+        13,
+        38.5
+      ],
+      "yaw": 777,
+      "scale": 2.3932
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_yellowB.glb",
+      "position": [
+        87.5,
+        13,
+        39.5
+      ],
+      "yaw": 814,
+      "scale": 4.4164
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_purpleA.glb",
+      "position": [
+        87.5,
+        13,
+        40.5
+      ],
+      "yaw": 851,
+      "scale": 2.8866
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
+      "position": [
+        88.5,
+        13,
+        38.5
+      ],
+      "yaw": 888,
+      "scale": 2.3932
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_yellowB.glb",
+      "position": [
+        88.5,
+        13,
+        39.5
+      ],
+      "yaw": 925,
+      "scale": 4.4164
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_purpleA.glb",
+      "position": [
+        88.5,
+        13,
+        40.5
+      ],
+      "yaw": 962,
+      "scale": 2.8866
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
+      "position": [
+        89.5,
+        13,
+        38.5
+      ],
+      "yaw": 999,
+      "scale": 2.3932
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_yellowB.glb",
+      "position": [
+        89.5,
+        13,
+        39.5
+      ],
+      "yaw": 1036,
+      "scale": 4.4164
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_purpleA.glb",
+      "position": [
+        89.5,
+        13,
+        40.5
+      ],
+      "yaw": 1073,
+      "scale": 2.8866
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
+      "position": [
+        85.5,
+        13,
+        50.5
+      ],
+      "yaw": 1110,
+      "scale": 2.3932
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_yellowB.glb",
+      "position": [
+        85.5,
+        13,
+        51.5
+      ],
+      "yaw": 1147,
+      "scale": 4.4164
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_purpleA.glb",
+      "position": [
+        85.5,
+        13,
+        52.5
+      ],
+      "yaw": 1184,
+      "scale": 2.8866
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
+      "position": [
+        86.5,
+        13,
+        50.5
+      ],
+      "yaw": 1221,
+      "scale": 2.3932
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_yellowB.glb",
+      "position": [
+        86.5,
+        13,
+        51.5
+      ],
+      "yaw": 1258,
+      "scale": 4.4164
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_purpleA.glb",
+      "position": [
+        86.5,
+        13,
+        52.5
+      ],
+      "yaw": 1295,
+      "scale": 2.8866
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
+      "position": [
+        87.5,
+        13,
+        50.5
+      ],
+      "yaw": 1332,
+      "scale": 2.3932
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_yellowB.glb",
+      "position": [
+        87.5,
+        13,
+        51.5
+      ],
+      "yaw": 1369,
+      "scale": 4.4164
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_purpleA.glb",
+      "position": [
+        87.5,
+        13,
+        52.5
+      ],
+      "yaw": 1406,
+      "scale": 2.8866
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
+      "position": [
+        88.5,
+        13,
+        50.5
+      ],
+      "yaw": 1443,
+      "scale": 2.3932
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_yellowB.glb",
+      "position": [
+        88.5,
+        13,
+        51.5
+      ],
+      "yaw": 1480,
+      "scale": 4.4164
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_purpleA.glb",
+      "position": [
+        88.5,
+        13,
+        52.5
+      ],
+      "yaw": 1517,
+      "scale": 2.8866
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
+      "position": [
+        89.5,
+        13,
+        50.5
+      ],
+      "yaw": 1554,
+      "scale": 2.3932
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_yellowB.glb",
+      "position": [
+        89.5,
+        13,
+        51.5
+      ],
+      "yaw": 1591,
+      "scale": 4.4164
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_purpleA.glb",
+      "position": [
+        89.5,
+        13,
+        52.5
+      ],
+      "yaw": 1628,
+      "scale": 2.8866
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
+      "position": [
+        103.5,
+        13,
+        26.5
+      ],
+      "yaw": 1665,
+      "scale": 2.3932
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_yellowB.glb",
+      "position": [
+        103.5,
+        13,
+        27.5
+      ],
+      "yaw": 1702,
+      "scale": 4.4164
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_purpleA.glb",
+      "position": [
+        103.5,
+        13,
+        28.5
+      ],
+      "yaw": 1739,
+      "scale": 2.8866
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
+      "position": [
+        104.5,
+        13,
+        26.5
+      ],
+      "yaw": 1776,
+      "scale": 2.3932
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_yellowB.glb",
+      "position": [
+        104.5,
+        13,
+        27.5
+      ],
+      "yaw": 1813,
+      "scale": 4.4164
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_purpleA.glb",
+      "position": [
+        104.5,
+        13,
+        28.5
+      ],
+      "yaw": 1850,
+      "scale": 2.8866
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
+      "position": [
+        105.5,
+        13,
+        26.5
+      ],
+      "yaw": 1887,
+      "scale": 2.3932
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_yellowB.glb",
+      "position": [
+        105.5,
+        13,
+        27.5
+      ],
+      "yaw": 1924,
+      "scale": 4.4164
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_purpleA.glb",
+      "position": [
+        105.5,
+        13,
+        28.5
+      ],
+      "yaw": 1961,
+      "scale": 2.8866
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
+      "position": [
+        106.5,
+        13,
+        26.5
+      ],
+      "yaw": 1998,
+      "scale": 2.3932
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_yellowB.glb",
+      "position": [
+        106.5,
+        13,
+        27.5
+      ],
+      "yaw": 2035,
+      "scale": 4.4164
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_purpleA.glb",
+      "position": [
+        106.5,
+        13,
+        28.5
+      ],
+      "yaw": 2072,
+      "scale": 2.8866
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
+      "position": [
+        107.5,
+        13,
+        26.5
+      ],
+      "yaw": 2109,
+      "scale": 2.3932
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_yellowB.glb",
+      "position": [
+        107.5,
+        13,
+        27.5
+      ],
+      "yaw": 2146,
+      "scale": 4.4164
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_purpleA.glb",
+      "position": [
+        107.5,
+        13,
+        28.5
+      ],
+      "yaw": 2183,
+      "scale": 2.8866
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
+      "position": [
+        103.5,
+        13,
+        38.5
+      ],
+      "yaw": 2220,
+      "scale": 2.3932
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_yellowB.glb",
+      "position": [
+        103.5,
+        13,
+        39.5
+      ],
+      "yaw": 2257,
+      "scale": 4.4164
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_purpleA.glb",
+      "position": [
+        103.5,
+        13,
+        40.5
+      ],
+      "yaw": 2294,
+      "scale": 2.8866
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
+      "position": [
+        104.5,
+        13,
+        38.5
+      ],
+      "yaw": 2331,
+      "scale": 2.3932
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_yellowB.glb",
+      "position": [
+        104.5,
+        13,
+        39.5
+      ],
+      "yaw": 2368,
+      "scale": 4.4164
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_purpleA.glb",
+      "position": [
+        104.5,
+        13,
+        40.5
+      ],
+      "yaw": 2405,
+      "scale": 2.8866
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
+      "position": [
+        105.5,
+        13,
+        38.5
+      ],
+      "yaw": 2442,
+      "scale": 2.3932
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_yellowB.glb",
+      "position": [
+        105.5,
+        13,
+        39.5
+      ],
+      "yaw": 2479,
+      "scale": 4.4164
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_purpleA.glb",
+      "position": [
+        105.5,
+        13,
+        40.5
+      ],
+      "yaw": 2516,
+      "scale": 2.8866
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
+      "position": [
+        106.5,
+        13,
+        38.5
+      ],
+      "yaw": 2553,
+      "scale": 2.3932
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_yellowB.glb",
+      "position": [
+        106.5,
+        13,
+        39.5
+      ],
+      "yaw": 2590,
+      "scale": 4.4164
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_purpleA.glb",
+      "position": [
+        106.5,
+        13,
+        40.5
+      ],
+      "yaw": 2627,
+      "scale": 2.8866
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
+      "position": [
+        107.5,
+        13,
+        38.5
+      ],
+      "yaw": 2664,
+      "scale": 2.3932
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_yellowB.glb",
+      "position": [
+        107.5,
+        13,
+        39.5
+      ],
+      "yaw": 2701,
+      "scale": 4.4164
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_purpleA.glb",
+      "position": [
+        107.5,
+        13,
+        40.5
+      ],
+      "yaw": 2738,
+      "scale": 2.8866
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
+      "position": [
+        103.5,
+        13,
+        50.5
+      ],
+      "yaw": 2775,
+      "scale": 2.3932
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_yellowB.glb",
+      "position": [
+        103.5,
+        13,
+        51.5
+      ],
+      "yaw": 2812,
+      "scale": 4.4164
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_purpleA.glb",
+      "position": [
+        103.5,
+        13,
+        52.5
+      ],
+      "yaw": 2849,
+      "scale": 2.8866
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
+      "position": [
+        104.5,
+        13,
+        50.5
+      ],
+      "yaw": 2886,
+      "scale": 2.3932
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_yellowB.glb",
+      "position": [
+        104.5,
+        13,
+        51.5
+      ],
+      "yaw": 2923,
+      "scale": 4.4164
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_purpleA.glb",
+      "position": [
+        104.5,
+        13,
+        52.5
+      ],
+      "yaw": 2960,
+      "scale": 2.8866
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
+      "position": [
+        105.5,
+        13,
+        50.5
+      ],
+      "yaw": 2997,
+      "scale": 2.3932
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_yellowB.glb",
+      "position": [
+        105.5,
+        13,
+        51.5
+      ],
+      "yaw": 3034,
+      "scale": 4.4164
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_purpleA.glb",
+      "position": [
+        105.5,
+        13,
+        52.5
+      ],
+      "yaw": 3071,
+      "scale": 2.8866
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
+      "position": [
+        106.5,
+        13,
+        50.5
+      ],
+      "yaw": 3108,
+      "scale": 2.3932
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_yellowB.glb",
+      "position": [
+        106.5,
+        13,
+        51.5
+      ],
+      "yaw": 3145,
+      "scale": 4.4164
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_purpleA.glb",
+      "position": [
+        106.5,
+        13,
+        52.5
+      ],
+      "yaw": 3182,
+      "scale": 2.8866
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
+      "position": [
+        107.5,
+        13,
+        50.5
+      ],
+      "yaw": 3219,
+      "scale": 2.3932
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_yellowB.glb",
+      "position": [
+        107.5,
+        13,
+        51.5
+      ],
+      "yaw": 3256,
+      "scale": 4.4164
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/flower_purpleA.glb",
+      "position": [
+        107.5,
+        13,
+        52.5
+      ],
+      "yaw": 3293,
+      "scale": 2.8866
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crop_carrot.glb",
+      "position": [
+        26.5,
+        13,
+        95.5
+      ],
+      "yaw": 0,
+      "scale": 0.8072
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crop_carrot.glb",
+      "position": [
+        26.5,
+        13,
+        97.5
+      ],
+      "yaw": 106,
+      "scale": 0.8072
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crop_carrot.glb",
+      "position": [
+        27.5,
+        13,
+        96.5
+      ],
+      "yaw": 212,
+      "scale": 0.8072
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crop_carrot.glb",
+      "position": [
+        28.5,
+        13,
+        95.5
+      ],
+      "yaw": 318,
+      "scale": 0.8072
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crop_carrot.glb",
+      "position": [
+        28.5,
+        13,
+        97.5
+      ],
+      "yaw": 424,
+      "scale": 0.8072
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crop_carrot.glb",
+      "position": [
+        29.5,
+        13,
+        96.5
+      ],
+      "yaw": 530,
+      "scale": 0.8072
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crop_carrot.glb",
+      "position": [
+        30.5,
+        13,
+        95.5
+      ],
+      "yaw": 636,
+      "scale": 0.8072
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crop_carrot.glb",
+      "position": [
+        30.5,
+        13,
+        97.5
+      ],
+      "yaw": 742,
+      "scale": 0.8072
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crop_pumpkin.glb",
+      "position": [
+        31.5,
+        13,
+        96.5
+      ],
+      "yaw": 848,
+      "scale": 1.7973
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crop_pumpkin.glb",
+      "position": [
+        32.5,
+        13,
+        95.5
+      ],
+      "yaw": 954,
+      "scale": 1.7973
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crop_pumpkin.glb",
+      "position": [
+        32.5,
+        13,
+        97.5
+      ],
+      "yaw": 1060,
+      "scale": 1.7973
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crop_pumpkin.glb",
+      "position": [
+        33.5,
+        13,
+        96.5
+      ],
+      "yaw": 1166,
+      "scale": 1.7973
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crop_pumpkin.glb",
+      "position": [
+        39.5,
+        13,
+        95.5
+      ],
+      "yaw": 1272,
+      "scale": 1.7973
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crop_pumpkin.glb",
+      "position": [
+        39.5,
+        13,
+        97.5
+      ],
+      "yaw": 1378,
+      "scale": 1.7973
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crop_pumpkin.glb",
+      "position": [
+        40.5,
+        13,
+        96.5
+      ],
+      "yaw": 1484,
+      "scale": 1.7973
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crop_pumpkin.glb",
+      "position": [
+        41.5,
+        13,
+        95.5
+      ],
+      "yaw": 1590,
+      "scale": 1.7973
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crops_cornStageD.glb",
+      "position": [
+        41.5,
+        13,
+        97.5
+      ],
+      "yaw": 1696,
+      "scale": 1.12
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crops_cornStageD.glb",
+      "position": [
+        42.5,
+        13,
+        96.5
+      ],
+      "yaw": 1802,
+      "scale": 1.12
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crops_cornStageD.glb",
+      "position": [
+        43.5,
+        13,
+        95.5
+      ],
+      "yaw": 1908,
+      "scale": 1.12
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crops_cornStageD.glb",
+      "position": [
+        43.5,
+        13,
+        97.5
+      ],
+      "yaw": 2014,
+      "scale": 1.12
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crops_cornStageD.glb",
+      "position": [
+        44.5,
+        13,
+        96.5
+      ],
+      "yaw": 2120,
+      "scale": 1.12
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crops_cornStageD.glb",
+      "position": [
+        45.5,
+        13,
+        95.5
+      ],
+      "yaw": 2226,
+      "scale": 1.12
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crops_cornStageD.glb",
+      "position": [
+        45.5,
+        13,
+        97.5
+      ],
+      "yaw": 2332,
+      "scale": 1.12
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crops_cornStageD.glb",
+      "position": [
+        46.5,
+        13,
+        96.5
+      ],
+      "yaw": 2438,
+      "scale": 1.12
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crop_carrot.glb",
+      "position": [
+        52.5,
+        13,
+        95.5
+      ],
+      "yaw": 2544,
+      "scale": 0.8072
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crop_carrot.glb",
+      "position": [
+        52.5,
+        13,
+        97.5
+      ],
+      "yaw": 2650,
+      "scale": 0.8072
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crop_carrot.glb",
+      "position": [
+        53.5,
+        13,
+        96.5
+      ],
+      "yaw": 2756,
+      "scale": 0.8072
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crop_carrot.glb",
+      "position": [
+        54.5,
+        13,
+        95.5
+      ],
+      "yaw": 2862,
+      "scale": 0.8072
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crop_carrot.glb",
+      "position": [
+        54.5,
+        13,
+        97.5
+      ],
+      "yaw": 2968,
+      "scale": 0.8072
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crop_carrot.glb",
+      "position": [
+        55.5,
+        13,
+        96.5
+      ],
+      "yaw": 3074,
+      "scale": 0.8072
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crop_carrot.glb",
+      "position": [
+        56.5,
+        13,
+        95.5
+      ],
+      "yaw": 3180,
+      "scale": 0.8072
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crop_carrot.glb",
+      "position": [
+        56.5,
+        13,
+        97.5
+      ],
+      "yaw": 3286,
+      "scale": 0.8072
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crop_pumpkin.glb",
+      "position": [
+        57.5,
+        13,
+        96.5
+      ],
+      "yaw": 3392,
+      "scale": 1.7973
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crop_pumpkin.glb",
+      "position": [
+        58.5,
+        13,
+        95.5
+      ],
+      "yaw": 3498,
+      "scale": 1.7973
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crop_pumpkin.glb",
+      "position": [
+        58.5,
+        13,
+        97.5
+      ],
+      "yaw": 3604,
+      "scale": 1.7973
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crop_pumpkin.glb",
+      "position": [
+        59.5,
+        13,
+        96.5
+      ],
+      "yaw": 3710,
+      "scale": 1.7973
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crop_pumpkin.glb",
+      "position": [
+        26.5,
+        13,
+        107.5
+      ],
+      "yaw": 3816,
+      "scale": 1.7973
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crop_pumpkin.glb",
+      "position": [
+        26.5,
+        13,
+        109.5
+      ],
+      "yaw": 3922,
+      "scale": 1.7973
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crop_pumpkin.glb",
+      "position": [
+        27.5,
+        13,
+        108.5
+      ],
+      "yaw": 4028,
+      "scale": 1.7973
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crop_pumpkin.glb",
+      "position": [
+        28.5,
+        13,
+        107.5
+      ],
+      "yaw": 4134,
+      "scale": 1.7973
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crops_cornStageD.glb",
+      "position": [
+        28.5,
+        13,
+        109.5
+      ],
+      "yaw": 4240,
+      "scale": 1.12
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crops_cornStageD.glb",
+      "position": [
+        29.5,
+        13,
+        108.5
+      ],
+      "yaw": 4346,
+      "scale": 1.12
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crops_cornStageD.glb",
+      "position": [
+        30.5,
+        13,
+        107.5
+      ],
+      "yaw": 4452,
+      "scale": 1.12
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crops_cornStageD.glb",
+      "position": [
+        30.5,
+        13,
+        109.5
+      ],
+      "yaw": 4558,
+      "scale": 1.12
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crops_cornStageD.glb",
+      "position": [
+        31.5,
+        13,
+        108.5
+      ],
+      "yaw": 4664,
+      "scale": 1.12
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crops_cornStageD.glb",
+      "position": [
+        32.5,
+        13,
+        107.5
+      ],
+      "yaw": 4770,
+      "scale": 1.12
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crops_cornStageD.glb",
+      "position": [
+        32.5,
+        13,
+        109.5
+      ],
+      "yaw": 4876,
+      "scale": 1.12
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crops_cornStageD.glb",
+      "position": [
+        33.5,
+        13,
+        108.5
+      ],
+      "yaw": 4982,
+      "scale": 1.12
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crop_carrot.glb",
+      "position": [
+        39.5,
+        13,
+        107.5
+      ],
+      "yaw": 5088,
+      "scale": 0.8072
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crop_carrot.glb",
+      "position": [
+        39.5,
+        13,
+        109.5
+      ],
+      "yaw": 5194,
+      "scale": 0.8072
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crop_carrot.glb",
+      "position": [
+        40.5,
+        13,
+        108.5
+      ],
+      "yaw": 5300,
+      "scale": 0.8072
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crop_carrot.glb",
+      "position": [
+        41.5,
+        13,
+        107.5
+      ],
+      "yaw": 5406,
+      "scale": 0.8072
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crop_carrot.glb",
+      "position": [
+        41.5,
+        13,
+        109.5
+      ],
+      "yaw": 5512,
+      "scale": 0.8072
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crop_carrot.glb",
+      "position": [
+        42.5,
+        13,
+        108.5
+      ],
+      "yaw": 5618,
+      "scale": 0.8072
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crop_carrot.glb",
+      "position": [
+        43.5,
+        13,
+        107.5
+      ],
+      "yaw": 5724,
+      "scale": 0.8072
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crop_carrot.glb",
+      "position": [
+        43.5,
+        13,
+        109.5
+      ],
+      "yaw": 5830,
+      "scale": 0.8072
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crop_pumpkin.glb",
+      "position": [
+        44.5,
+        13,
+        108.5
+      ],
+      "yaw": 5936,
+      "scale": 1.7973
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crop_pumpkin.glb",
+      "position": [
+        45.5,
+        13,
+        107.5
+      ],
+      "yaw": 6042,
+      "scale": 1.7973
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crop_pumpkin.glb",
+      "position": [
+        45.5,
+        13,
+        109.5
+      ],
+      "yaw": 6148,
+      "scale": 1.7973
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crop_pumpkin.glb",
+      "position": [
+        46.5,
+        13,
+        108.5
+      ],
+      "yaw": 6254,
+      "scale": 1.7973
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crop_pumpkin.glb",
+      "position": [
+        52.5,
+        13,
+        107.5
+      ],
+      "yaw": 6360,
+      "scale": 1.7973
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crop_pumpkin.glb",
+      "position": [
+        52.5,
+        13,
+        109.5
+      ],
+      "yaw": 6466,
+      "scale": 1.7973
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crop_pumpkin.glb",
+      "position": [
+        53.5,
+        13,
+        108.5
+      ],
+      "yaw": 6572,
+      "scale": 1.7973
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crop_pumpkin.glb",
+      "position": [
+        54.5,
+        13,
+        107.5
+      ],
+      "yaw": 6678,
+      "scale": 1.7973
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crops_cornStageD.glb",
+      "position": [
+        54.5,
+        13,
+        109.5
+      ],
+      "yaw": 6784,
+      "scale": 1.12
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crops_cornStageD.glb",
+      "position": [
+        55.5,
+        13,
+        108.5
+      ],
+      "yaw": 6890,
+      "scale": 1.12
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crops_cornStageD.glb",
+      "position": [
+        56.5,
+        13,
+        107.5
+      ],
+      "yaw": 6996,
+      "scale": 1.12
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crops_cornStageD.glb",
+      "position": [
+        56.5,
+        13,
+        109.5
+      ],
+      "yaw": 7102,
+      "scale": 1.12
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crops_cornStageD.glb",
+      "position": [
+        57.5,
+        13,
+        108.5
+      ],
+      "yaw": 7208,
+      "scale": 1.12
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crops_cornStageD.glb",
+      "position": [
+        58.5,
+        13,
+        107.5
+      ],
+      "yaw": 7314,
+      "scale": 1.12
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crops_cornStageD.glb",
+      "position": [
+        58.5,
+        13,
+        109.5
+      ],
+      "yaw": 7420,
+      "scale": 1.12
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crops_cornStageD.glb",
+      "position": [
+        59.5,
+        13,
+        108.5
+      ],
+      "yaw": 7526,
+      "scale": 1.12
+    },
+    {
+      "model": "generated/props/clock-face.glb",
+      "position": [
+        96.5,
+        23,
+        65.6
+      ],
+      "yaw": 180,
+      "scale": 0.2125
+    },
+    {
+      "model": "generated/props/school-bus.glb",
+      "position": [
+        124.5,
+        13,
+        9.5
+      ],
+      "yaw": 90,
+      "scale": 0.2462
+    },
+    {
+      "model": "packs/kenney-castle-kit/2.0/metal-gate.glb",
+      "position": [
+        90.5,
+        13,
+        19.5
+      ],
+      "yaw": 90,
+      "scale": 5.4789
+    },
+    {
+      "model": "packs/kenney-castle-kit/2.0/metal-gate.glb",
+      "position": [
+        102.5,
+        13,
+        19.5
+      ],
+      "yaw": 270,
+      "scale": 5.4789
+    },
+    {
+      "model": "generated/props/books.glb",
+      "position": [
+        91.5,
+        16,
+        69.5
+      ],
+      "yaw": 0,
+      "scale": 0.04
+    },
+    {
+      "model": "generated/props/books.glb",
+      "position": [
+        91.5,
+        16,
+        78.5
+      ],
+      "yaw": 0,
+      "scale": 0.04
+    },
+    {
+      "model": "generated/props/books.glb",
+      "position": [
+        91.5,
+        20,
+        69.5
+      ],
+      "yaw": 0,
+      "scale": 0.04
+    },
+    {
+      "model": "generated/props/books.glb",
+      "position": [
+        91.5,
+        20,
+        78.5
+      ],
+      "yaw": 0,
+      "scale": 0.04
+    },
+    {
+      "model": "generated/props/globe.glb",
+      "position": [
+        81.5,
+        15,
+        71.5
+      ],
+      "yaw": 0,
+      "scale": 0.0437
+    },
+    {
+      "model": "generated/props/abacus.glb",
+      "position": [
+        81.5,
+        19,
+        71.5
+      ],
+      "yaw": 0,
+      "scale": 0.0375
+    },
+    {
+      "model": "generated/props/potted-plant.glb",
+      "position": [
+        100.5,
+        14,
+        78.5
+      ],
+      "yaw": 0,
+      "scale": 0.0625
+    },
+    {
+      "model": "packs/kenney-survival-kit/2.0/workbench.glb",
+      "position": [
+        140.5,
+        13,
+        37.5
       ],
       "yaw": 0,
       "scale": 3.1404
@@ -2782,9 +4372,9 @@
     {
       "model": "packs/kenney-survival-kit/2.0/workbench.glb",
       "position": [
-        76.5,
+        146.5,
         13,
-        26.5
+        37.5
       ],
       "yaw": 0,
       "scale": 3.1404
@@ -2792,139 +4382,189 @@
     {
       "model": "packs/kenney-survival-kit/2.0/workbench.glb",
       "position": [
-        79.5,
+        152.5,
         13,
-        26.5
+        37.5
       ],
       "yaw": 0,
       "scale": 3.1404
+    },
+    {
+      "model": "generated/props/playground-slide.glb",
+      "position": [
+        38.5,
+        13,
+        33.5
+      ],
+      "yaw": 200,
+      "scale": 0.1733
+    },
+    {
+      "model": "generated/props/playground-slide.glb",
+      "position": [
+        46.5,
+        13,
+        27.5
+      ],
+      "yaw": 200,
+      "scale": 0.1733
+    },
+    {
+      "model": "generated/props/teddy-bear.glb",
+      "position": [
+        52.5,
+        13,
+        45.5
+      ],
+      "yaw": 180,
+      "scale": 0.05
     },
     {
       "model": "packs/kenney-survival-kit/2.0/box-large.glb",
       "position": [
-        78.5,
+        46.5,
         13,
-        54.5
+        45.5
       ],
       "yaw": 20,
       "scale": 3.6
     },
     {
-      "model": "packs/kenney-survival-kit/2.0/box.glb",
+      "model": "packs/kenney-nature-kit/2.1/sign.glb",
       "position": [
-        82.5,
+        81.5,
         13,
-        55.5
+        121.5
       ],
-      "yaw": 40,
-      "scale": 2.4
+      "yaw": 180,
+      "scale": 3.4249
     },
     {
-      "model": "packs/kenney-survival-kit/2.0/barrel.glb",
+      "model": "generated/props/artist-palette.glb",
       "position": [
         83.5,
         13,
-        50.5
+        123.5
+      ],
+      "yaw": 180,
+      "scale": 0.06
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/sign.glb",
+      "position": [
+        90.5,
+        13,
+        121.5
+      ],
+      "yaw": 180,
+      "scale": 3.4249
+    },
+    {
+      "model": "generated/props/artist-palette.glb",
+      "position": [
+        92.5,
+        13,
+        123.5
+      ],
+      "yaw": 180,
+      "scale": 0.06
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/sign.glb",
+      "position": [
+        99.5,
+        13,
+        121.5
+      ],
+      "yaw": 180,
+      "scale": 3.4249
+    },
+    {
+      "model": "generated/props/artist-palette.glb",
+      "position": [
+        101.5,
+        13,
+        123.5
+      ],
+      "yaw": 180,
+      "scale": 0.06
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/sign.glb",
+      "position": [
+        108.5,
+        13,
+        121.5
+      ],
+      "yaw": 180,
+      "scale": 3.4249
+    },
+    {
+      "model": "generated/props/artist-palette.glb",
+      "position": [
+        110.5,
+        13,
+        123.5
+      ],
+      "yaw": 180,
+      "scale": 0.06
+    },
+    {
+      "model": "generated/props/potted-plant.glb",
+      "position": [
+        76.5,
+        13,
+        90.5
       ],
       "yaw": 0,
-      "scale": 2.907
+      "scale": 0.0625
     },
     {
-      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
+      "model": "generated/props/potted-plant.glb",
       "position": [
-        17.5,
+        116.5,
         13,
-        21.5
+        90.5
       ],
       "yaw": 0,
-      "scale": 1.7094
-    },
-    {
-      "model": "packs/kenney-nature-kit/2.1/flower_yellowB.glb",
-      "position": [
-        20.5,
-        13,
-        21.5
-      ],
-      "yaw": 40,
-      "scale": 3.1546
-    },
-    {
-      "model": "packs/kenney-nature-kit/2.1/flower_purpleA.glb",
-      "position": [
-        23.5,
-        13,
-        21.5
-      ],
-      "yaw": 80,
-      "scale": 2.0619
-    },
-    {
-      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
-      "position": [
-        17.5,
-        13,
-        24.5
-      ],
-      "yaw": 120,
-      "scale": 1.7094
-    },
-    {
-      "model": "packs/kenney-nature-kit/2.1/flower_yellowB.glb",
-      "position": [
-        20.5,
-        13,
-        24.5
-      ],
-      "yaw": 160,
-      "scale": 3.1546
-    },
-    {
-      "model": "packs/kenney-nature-kit/2.1/flower_purpleA.glb",
-      "position": [
-        23.5,
-        13,
-        24.5
-      ],
-      "yaw": 200,
-      "scale": 2.0619
-    },
-    {
-      "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
-      "position": [
-        17.5,
-        13,
-        27.5
-      ],
-      "yaw": 240,
-      "scale": 1.7094
-    },
-    {
-      "model": "packs/kenney-nature-kit/2.1/flower_yellowB.glb",
-      "position": [
-        20.5,
-        13,
-        27.5
-      ],
-      "yaw": 280,
-      "scale": 3.1546
-    },
-    {
-      "model": "packs/kenney-nature-kit/2.1/flower_purpleA.glb",
-      "position": [
-        23.5,
-        13,
-        27.5
-      ],
-      "yaw": 320,
-      "scale": 2.0619
+      "scale": 0.0625
     },
     {
       "model": "packs/kenney-nature-kit/2.1/plant_bush.glb",
       "position": [
-        24.5,
+        80.5,
         13,
-        24.5
+        21.5
+      ],
+      "yaw": 0,
+      "scale": 4.0909
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/plant_bush.glb",
+      "position": [
+        112.5,
+        13,
+        21.5
+      ],
+      "yaw": 0,
+      "scale": 4.0909
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/plant_bush.glb",
+      "position": [
+        74.5,
+        13,
+        59.5
+      ],
+      "yaw": 0,
+      "scale": 4.0909
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/plant_bush.glb",
+      "position": [
+        118.5,
+        13,
+        59.5
       ],
       "yaw": 0,
       "scale": 4.0909
@@ -2935,90 +4575,108 @@
       "id": "san-truong",
       "name": "Sân trường",
       "position": [
-        48.5,
+        96.5,
         13,
-        46.5
+        41.5
       ]
     },
     {
       "id": "vuon-truong",
       "name": "Vườn trường",
       "position": [
-        20.5,
+        43.5,
         13,
-        24.5
+        116.5
       ]
     },
     {
       "id": "cang-tin",
       "name": "Căng tin",
       "position": [
-        76.5,
+        150.5,
         13,
-        24.5
+        41.5
       ]
     },
     {
       "id": "xuong-do-choi",
       "name": "Xưởng đồ chơi",
       "position": [
-        80.5,
+        42.5,
         13,
-        52.5
+        41.5
       ]
     },
     {
       "id": "phong-mi-thuat",
       "name": "Phòng mĩ thuật",
       "position": [
-        74.5,
+        96.5,
         13,
-        78.5
+        129.5
       ]
     },
     {
       "id": "thap-dong-ho",
       "name": "Tháp đồng hồ",
       "position": [
-        20.5,
+        96.5,
         13,
-        72.5
+        96.5
       ]
     },
     {
       "id": "hoi-truong",
       "name": "Hội trường",
       "position": [
-        46.5,
+        149.5,
         13,
-        82.5
+        116.5
+      ]
+    },
+    {
+      "id": "cong-truong",
+      "name": "Cổng trường",
+      "position": [
+        96.5,
+        13,
+        17.5
       ]
     },
     {
       "id": "cot-co",
       "name": "Cột cờ",
       "position": [
-        48.5,
+        82.5,
         13,
-        46.5
-      ]
-    },
-    {
-      "id": "lop-hoc",
-      "name": "Lớp học",
-      "position": [
-        37.5,
-        13,
-        61.5
+        56.5
       ]
     },
     {
       "id": "san-bong",
       "name": "Sân bóng",
       "position": [
-        40.5,
+        77.5,
         13,
-        46.5
+        35.5
+      ]
+    },
+    {
+      "id": "lop-hoc",
+      "name": "Lớp học",
+      "position": [
+        86,
+        14,
+        74
+      ]
+    },
+    {
+      "id": "nha-da-nang",
+      "name": "Nhà đa năng",
+      "position": [
+        149.5,
+        13,
+        133.5
       ]
     }
   ]

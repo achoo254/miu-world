@@ -1,0 +1,42 @@
+{
+  "state": {
+    "project": "Miu World: voxel learning game for Vietnamese grade-2 children, web, target iPad Gen 10, built 100% by AI. Owner's one wish: lively, children never bored.",
+    "owner_opinion": "The owner finds the maps a bit small and would like them several times bigger, done now so it does not need much rework later; the owner leaves the decision to Jev.",
+    "earlier_decision": "An hour ago Jev chose to keep the school map at 96x96 when told a bigger map carried an iPad performance risk. That risk was overstated: measured facts below.",
+    "facts": {
+      "maps": "Two playable maps, both 96x96 blocks and 32 high: Khu rừng bí mật (34 Tiếng Việt lessons, chapter 1 hand-built) and Trường học (36 Toán lessons in 7 topic zones), being rebuilt now from the owner's campus mocks. A child crosses a 96 map in about 25 seconds of walking.",
+      "rendering": "Only chunks within the view distance are drawn (40 blocks at low quality, 64 mid, 110 high), so per-frame draw calls depend on the view distance, not the map size; the draw-call budget (<=150) holds on a bigger map. Villagers and animals are already limited to the nearest few.",
+      "costs": "Voxel data 1.2 MB in memory for 192x32x192; download grows from about 25 KB to about 100 KB per map; meshing at load grows with the map (4x the chunks for 192); walking between places takes longer, the quest arrow already guides the child.",
+      "height": "32 blocks high limits the school's clock tower (its roof peak is at the top now); 48 high would leave room for taller buildings, trees and hills.",
+      "rework": "The map generators place quest targets from data into zones; their layouts use fixed coordinates, so the size should be settled now and the layouts written against it."
+    }
+  },
+  "questions": {
+    "map_size": {
+      "stakes": "medium",
+      "instructions": "Which size should every playable map be built at from now on, weighing the owner's wish for several times bigger maps against load time and walking distance on an iPad?",
+      "criteria": {
+        "keep_96": "Keep 96x96.",
+        "size_128": "128x128 (1.8 times the area).",
+        "size_192": "192x192 (4 times the area).",
+        "size_256": "256x256 (7 times the area)."
+      }
+    },
+    "height": {
+      "stakes": "low",
+      "instructions": "How high should the maps be?",
+      "criteria": {
+        "keep_32": "Keep 32 blocks high.",
+        "height_48": "48 blocks high, room for taller buildings, trees and hills."
+      }
+    },
+    "which_maps": {
+      "stakes": "medium",
+      "instructions": "Which maps should be enlarged in this batch?",
+      "criteria": {
+        "both_now": "Both the school map (being rebuilt now) and the forest map, so neither needs reworking later.",
+        "school_now_forest_later": "The school map now; the forest map in a later batch."
+      }
+    }
+  }
+}

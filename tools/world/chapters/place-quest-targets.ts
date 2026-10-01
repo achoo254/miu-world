@@ -74,9 +74,12 @@ const CLUSTER_GAPS = [6, 4.5, 3, 2];
 const RESIDENT_GAPS = [4, 3, 2];
 const BESIDE_RESIDENT = 2.5;
 const CLEAR_GAP = 3;
-/** Members of a cluster stand within this distance of its centre, at least this far apart. */
-const CLUSTER_RADIUS = 2.6;
-const MEMBER_GAP = 1.5;
+/**
+ * Members of a cluster stand within this distance of its centre, at least this far apart: an object's
+ * prompt reaches 2 blocks, so two members closer than that would take each other's prompt.
+ */
+const CLUSTER_RADIUS = 3.6;
+const MEMBER_GAP = 2.5;
 
 export async function readTargetCatalogues(): Promise<{ looks: LookCatalog['looks']; targets: QuestTargetCatalog['targets'] }> {
   const read = async (rel: string): Promise<unknown> => JSON.parse(await readFile(path.join(REPO_ROOT, rel), 'utf8'));
@@ -130,10 +133,26 @@ export async function placeQuestTargets(options: {
     };
   };
 
+  /** Columns closer than `gap` to any of `list`, as "x,z" keys (a spatial lookup: maps hold tens of thousands of cells). */
+  const within = (list: readonly Cell[], gap: number): Set<string> => {
+    const out = new Set<string>();
+    const r = Math.ceil(gap);
+    for (const [bx, bz] of list) for (let dx = -r; dx <= r; dx++) for (let dz = -r; dz <= r; dz++) if (Math.hypot(dx, dz) < gap) out.add(`${bx + dx},${bz + dz}`);
+    return out;
+  };
   const near = (a: Cell, list: readonly Cell[], gap: number): boolean => list.some((b) => Math.hypot(a[0] - b[0], a[1] - b[1]) < gap);
+  const keepClear = within(map.keepClear, map.clearance ?? CLEAR_GAP);
+  /** Cells a target may stand on at all (the map's ground and its keep-clear spots), once per cell list. */
+  const standable = new Map<readonly Cell[], Cell[]>();
   /** Shuffled candidates (deterministic), free of what must stay clear. */
   const candidates = (cells: readonly Cell[], blocked: readonly Cell[], gap: number): Cell[] => {
-    const free = cells.filter((c) => map.canStand(c[0], c[1]) && !near(c, map.keepClear, map.clearance ?? CLEAR_GAP) && !near(c, blocked, gap));
+    let base = standable.get(cells);
+    if (!base) {
+      base = cells.filter((c) => map.canStand(c[0], c[1]) && !keepClear.has(`${c[0]},${c[1]}`));
+      standable.set(cells, base);
+    }
+    const taken = within(blocked, gap);
+    const free = base.filter((c) => !taken.has(`${c[0]},${c[1]}`));
     for (let i = free.length - 1; i > 0; i--) {
       const j = Math.floor(rng() * (i + 1));
       [free[i], free[j]] = [free[j] as Cell, free[i] as Cell];
@@ -153,7 +172,7 @@ export async function placeQuestTargets(options: {
   /** The first free cell, keeping `gaps[0]` from `blocked` if the ground allows, else the next gap. */
   const firstFree = (cells: readonly Cell[], blocked: readonly Cell[], gaps: readonly number[], near: readonly Cell[] = [], nearGap = 0): Cell | undefined => {
     for (const gap of gaps) {
-      const [cell] = candidates(cells, blocked, gap).filter((c) => !nearAny(c, near, nearGap));
+      const cell = candidates(cells, blocked, gap).find((c) => !nearAny(c, near, nearGap));
       if (cell) return cell;
     }
     return undefined;
