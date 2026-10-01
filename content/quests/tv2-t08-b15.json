@@ -1,0 +1,983 @@
+{
+  "id": "tv2-t08-b15",
+  "region": "khu-rung-bi-mat",
+  "chapter": 9,
+  "title": "Kệ sách đổ rầm trong hốc cây",
+  "status": "draft",
+  "lesson": "tv2-t1-b15",
+  "summary": "Thỏ Tí nhảy cẫng lên trong hốc cây làm cả kệ sách của Gấu Trúc Tròn đổ rầm, sách văng tứ tung, trang mục lục bay mất. {name} nhặt sách, đọc bài \"Cuốn sách của em\" để biết tên sách, tác giả, nhà xuất bản, mục lục nằm ở đâu, rồi nghe Vẹt Xanh kể chuyện \"Hoạ mi, vẹt và quạ\".",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "Gấu Trúc Tròn (thủ thư chậm mà chắc), Thỏ Tí nhanh nhảu đoảng, Vẹt Xanh lắm lời tự nhận là chắt của chú vẹt trong truyện",
+    "where": "Kệ sách trong hốc cây lớn của Khu rừng bí mật và lối vào hốc cây đầy sách văng ra",
+    "goal": "Xếp lại kệ sách cho ngăn nắp, dán nhãn đúng các phần của cuốn sách và tìm lại trang mục lục",
+    "play": "Tìm đồ, nói về bìa sách, đọc bài, nối thông tin, xếp thứ tự, chọn nhiều đáp án, trắc nghiệm, phân nhóm từ, lựa chọn trong hội thoại, xếp tranh, kể chuyện, phiếu viết",
+    "learn": "Tiếng Việt 2 Bài 15: đọc hiểu \"Cuốn sách của em\", tên sách, tác giả, nhà xuất bản, mục lục, từ chỉ người, vật, hoạt động, viết chữ hoa G, kể chuyện \"Hoạ mi, vẹt và quạ\"",
+    "reward": "80 XP, 15 xu, Đọc hiểu +2, Từ ngữ +1, Kể chuyện +1",
+    "unlock": "Bài 16 \"Khi trang sách mở ra\""
+  },
+  "phases": {
+    "hook": "ke-sach-do-ram",
+    "explore": "nhat-sach-van-ra",
+    "learn": "doc-cuon-sach",
+    "challenge": "nhan-ten-sach",
+    "decision": "chat-cua-vet",
+    "finale": "xep-tranh-hoa-mi",
+    "reward": "phieu-viet-bai-15",
+    "unlock": "mo-bai-16"
+  },
+  "texts": {
+    "cuon-sach-cua-em": {
+      "title": "Cuốn sách của em",
+      "author": "Nhật Huy",
+      "body": "Mỗi cuốn sách có một tên gọi. Tên sách là hàng chữ lớn ở khoảng giữa bìa sách, thường chứa đựng rất nhiều ý nghĩa. Qua tên sách, em có thể biết được sách viết về điều gì.\n\nNgười viết cuốn sách được gọi là tác giả. Tên tác giả thường được ghi vào phía trên của bìa sách.\n\nNơi các cuốn sách ra đời được gọi là nhà xuất bản. Tên nhà xuất bản thường được ghi ở phía dưới bìa sách.\n\nPhần lớn các cuốn sách đều có mục lục thể hiện các mục chính và vị trí của chúng trong cuốn sách. Mục lục thường được đặt ở ngay sau trang bìa, cũng có khi được đặt ở cuối sách.\n\nMỗi lần đọc một cuốn sách mới, đừng quên những điều này em nhé.",
+      "section": "tv2-t1-b15-doc"
+    }
+  },
+  "places": {
+    "gau-truc": "hốc cây kệ sách",
+    "ke-sach": "hốc cây kệ sách",
+    "nhat-sach-van-ra": "lối vào hốc cây",
+    "vet-xanh": "hốc cây kệ sách"
+  },
+  "steps": [
+    {
+      "id": "ke-sach-do-ram",
+      "title": "Ai làm đổ kệ sách?",
+      "goTo": "Chui vào hốc cây kệ sách, nơi vừa có tiếng rầm",
+      "kind": "dialogue",
+      "target": "gau-truc",
+      "lines": [
+        {
+          "speaker": "Thỏ Tí",
+          "text": "Không phải tớ! À… thật ra là tớ. Tớ nhảy lên lấy cuốn sách trên cùng, thế là… rầm!"
+        },
+        {
+          "speaker": "Gấu Trúc Tròn",
+          "text": "Sách… văng… ra tận… lối vào. Trang mục lục của cuốn sách mới… cũng bay đâu mất rồi."
+        },
+        {
+          "speaker": "Thỏ Tí",
+          "text": "Mà {name} ơi, mục lục là cái gì thế? Ăn được không? Tớ hỏi để còn biết đường mà tìm."
+        },
+        {
+          "speaker": "Gấu Trúc Tròn",
+          "text": "Không… ăn… được. Nhặt sách về đây, rồi tớ… cho cậu đọc… một bài… nói về điều đó."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Thỏ Tí ơi, lần sau nhờ mình lấy sách giúp nhé!",
+          "reply": "Thỏ Tí đỏ tai: được, lần sau tớ nhờ, nhưng mà nhảy vui lắm cơ!"
+        },
+        {
+          "text": "Không sao đâu, ba đứa mình nhặt một loáng là xong.",
+          "reply": "Gấu Trúc Tròn cười hiền: một loáng… của tớ… là cả buổi chiều đấy."
+        }
+      ]
+    },
+    {
+      "id": "nhat-sach-van-ra",
+      "title": "Nhặt sách văng ra ngoài",
+      "goTo": "Nhặt sách và trang mục lục văng ra lối vào hốc cây",
+      "kind": "search",
+      "targets": [
+        "tv2-t08-sach-de-men",
+        "tv2-t08-sach-the-gioi-quanh-em",
+        "tv2-t08-trang-muc-luc"
+      ]
+    },
+    {
+      "id": "bia-sach-de-men",
+      "title": "Bìa cuốn sách có chú dế",
+      "goTo": "Ôm sách về hốc cây kệ sách cho Gấu Trúc Tròn",
+      "kind": "speak",
+      "target": "gau-truc",
+      "prompt": "Gấu Trúc Tròn phủi bụi cuốn sách có chú dế chống nạnh trên bìa, rồi chậm rãi hỏi {name}:\nQuan sát bìa sách sau và cho biết các thông tin có trên bìa sách.",
+      "hints": [
+        "Hàng chữ in ở phía trên bìa sách là gì?",
+        "Hàng chữ to nhất ở giữa bìa sách viết gì?",
+        "Ở phía dưới bìa sách có ghi tên nơi nào?"
+      ],
+      "pictureRefs": [
+        {
+          "kind": "diagram",
+          "type": "picture-card",
+          "params": {
+            "caption": "bìa sách: phía trên ghi TÔ HOÀI, ở giữa là tên sách Dế Mèn phiêu lưu kí trên chiếc lá, chú dế mèn chống nạnh trên mô đất, phía dưới ghi NHÀ XUẤT BẢN GIÁO DỤC VIỆT NAM"
+          }
+        }
+      ],
+      "curriculumRef": [
+        "tv2-t1-b15-doc-kd"
+      ]
+    },
+    {
+      "id": "doc-cuon-sach",
+      "title": "Đọc bài về cuốn sách",
+      "kind": "read",
+      "target": "ke-sach",
+      "textRef": "cuon-sach-cua-em",
+      "audio": true,
+      "question": "Qua tên sách, em có thể biết được điều gì?",
+      "choices": [
+        {
+          "id": "nang",
+          "text": "sách nặng hay nhẹ"
+        },
+        {
+          "id": "ve-dieu-gi",
+          "text": "sách viết về điều gì"
+        },
+        {
+          "id": "so-trang",
+          "text": "sách dày bao nhiêu trang"
+        }
+      ],
+      "skill": "doc-hieu",
+      "answer": {
+        "choice": "ve-dieu-gi"
+      },
+      "curriculumRef": [
+        "tv2-t1-b15-doc-2"
+      ],
+      "support": {
+        "guide": [
+          "Đọc đoạn mở đầu, đoạn nói về hàng chữ lớn giữa bìa sách.",
+          "Tìm câu bắt đầu bằng \"Qua tên sách…\"."
+        ],
+        "hint": "Tên sách thường chứa đựng rất nhiều ý nghĩa.",
+        "answer": {
+          "text": "Đọc tên sách là em đoán được cuốn sách kể chuyện gì, nói về điều gì.",
+          "explanation": "Bài đọc viết: \"Qua tên sách, em có thể biết được sách viết về điều gì.\""
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đúng rồi! Đọc tên sách là biết sách viết về gì, Thỏ Tí ghi ngay vào tai.",
+          "Gấu Trúc Tròn gật gù: tên sách… là cánh cửa… đầu tiên.",
+          "Chuẩn! Cuốn có chú dế trên bìa chắc chắn kể chuyện chú dế rồi."
+        ],
+        "wrong": [
+          "Muốn biết sách nặng hay nhẹ thì phải bê lên, đâu cần đọc tên.",
+          "Số trang thì xem ở cuối sách, còn tên sách cho biết điều khác cơ.",
+          "Đọc lại câu cuối của đoạn một, chỗ có chữ \"Qua tên sách\" nhé."
+        ]
+      }
+    },
+    {
+      "id": "nhan-ten-sach",
+      "title": "Nhãn cho ngăn tên sách",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "target": "ke-sach",
+      "prompt": "Thỏ Tí giơ tấm nhãn thứ nhất lên, lật ngược lật xuôi:\nChọn từ ngữ ở cột A với nội dung thích hợp ở cột B.\nA: tên sách; tác giả; nhà xuất bản; mục lục\nB: nơi cuốn sách ra đời; thường chứa đựng nhiều ý nghĩa; người viết sách, báo; thể hiện các mục chính và vị trí của chúng\ntên sách",
+      "template": "tên sách – {{nghia}}",
+      "blanks": [
+        {
+          "id": "nghia",
+          "options": [
+            {
+              "id": "ra-doi",
+              "text": "nơi cuốn sách ra đời"
+            },
+            {
+              "id": "y-nghia",
+              "text": "thường chứa đựng nhiều ý nghĩa"
+            },
+            {
+              "id": "nguoi-viet",
+              "text": "người viết sách, báo"
+            },
+            {
+              "id": "cac-muc",
+              "text": "thể hiện các mục chính và vị trí của chúng"
+            }
+          ]
+        }
+      ],
+      "skill": "doc-hieu",
+      "answer": {
+        "fills": {
+          "nghia": "y-nghia"
+        }
+      },
+      "curriculumRef": [
+        "tv2-t1-b15-doc-1-a"
+      ],
+      "support": {
+        "guide": [
+          "Đọc đoạn một: tên sách là hàng chữ lớn ở khoảng giữa bìa.",
+          "Tìm câu có chữ \"tên sách\" trong bài đọc."
+        ],
+        "hint": "Ghép tên sách với dòng ở cột B nói đúng về nó.",
+        "answer": {
+          "text": "tên sách – thường chứa đựng nhiều ý nghĩa",
+          "explanation": "Qua tên sách, em biết được sách viết về điều gì."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Tên sách chứa đựng rất nhiều ý nghĩa, đúng rồi! Nhãn thứ nhất dán xong.",
+          "Thỏ Tí dán nhãn cái bộp, lần này không dán ngược.",
+          "Chuẩn! Hàng chữ to giữa bìa đúng là chứa cả một kho ý nghĩa."
+        ],
+        "wrong": [
+          "Tên sách không phải là người, đọc lại đoạn một xem nào.",
+          "Hàng chữ lớn giữa bìa cho em biết sách viết về điều gì, nó mang nhiều ý nghĩa lắm.",
+          "Nơi sách ra đời là chuyện của nhãn khác cơ, thử lại nhé."
+        ]
+      }
+    },
+    {
+      "id": "nhan-tac-gia",
+      "title": "Nhãn cho ngăn tác giả",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "target": "ke-sach",
+      "prompt": "Tấm nhãn thứ hai dính đầy vụn lá, Thỏ Tí thổi phù phù:\nChọn từ ngữ ở cột A với nội dung thích hợp ở cột B.\nA: tên sách; tác giả; nhà xuất bản; mục lục\nB: nơi cuốn sách ra đời; thường chứa đựng nhiều ý nghĩa; người viết sách, báo; thể hiện các mục chính và vị trí của chúng\ntác giả",
+      "template": "tác giả – {{nghia}}",
+      "blanks": [
+        {
+          "id": "nghia",
+          "options": [
+            {
+              "id": "ra-doi",
+              "text": "nơi cuốn sách ra đời"
+            },
+            {
+              "id": "y-nghia",
+              "text": "thường chứa đựng nhiều ý nghĩa"
+            },
+            {
+              "id": "nguoi-viet",
+              "text": "người viết sách, báo"
+            },
+            {
+              "id": "cac-muc",
+              "text": "thể hiện các mục chính và vị trí của chúng"
+            }
+          ]
+        }
+      ],
+      "skill": "doc-hieu",
+      "answer": {
+        "fills": {
+          "nghia": "nguoi-viet"
+        }
+      },
+      "curriculumRef": [
+        "tv2-t1-b15-doc-1-b"
+      ],
+      "support": {
+        "guide": [
+          "Đoạn hai nói về người viết ra cuốn sách.",
+          "Tìm câu có chữ \"tác giả\" trong bài đọc."
+        ],
+        "hint": "Ghép tác giả với dòng ở cột B nói đúng về nó.",
+        "answer": {
+          "text": "tác giả – người viết sách, báo",
+          "explanation": "Người viết cuốn sách được gọi là tác giả."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Tác giả là người viết sách, chuẩn không cần chỉnh!",
+          "Gấu Trúc Tròn gật gù: Tô Hoài… là… tác giả… của chú dế đấy.",
+          "Nhãn thứ hai vào chỗ, kệ sách gọn thêm một ngăn."
+        ],
+        "wrong": [
+          "Tác giả là một người cơ, không phải một trang sách.",
+          "Đọc lại đoạn hai: người viết cuốn sách được gọi là gì nhỉ?",
+          "Mục lục thì không cầm bút viết sách được đâu, chọn lại nào."
+        ]
+      }
+    },
+    {
+      "id": "nhan-nha-xuat-ban",
+      "title": "Nhãn cho ngăn nhà xuất bản",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "target": "ke-sach",
+      "prompt": "Tấm nhãn thứ ba dài nhất, Thỏ Tí phải cầm bằng cả hai tai:\nChọn từ ngữ ở cột A với nội dung thích hợp ở cột B.\nA: tên sách; tác giả; nhà xuất bản; mục lục\nB: nơi cuốn sách ra đời; thường chứa đựng nhiều ý nghĩa; người viết sách, báo; thể hiện các mục chính và vị trí của chúng\nnhà xuất bản",
+      "template": "nhà xuất bản – {{nghia}}",
+      "blanks": [
+        {
+          "id": "nghia",
+          "options": [
+            {
+              "id": "ra-doi",
+              "text": "nơi cuốn sách ra đời"
+            },
+            {
+              "id": "y-nghia",
+              "text": "thường chứa đựng nhiều ý nghĩa"
+            },
+            {
+              "id": "nguoi-viet",
+              "text": "người viết sách, báo"
+            },
+            {
+              "id": "cac-muc",
+              "text": "thể hiện các mục chính và vị trí của chúng"
+            }
+          ]
+        }
+      ],
+      "skill": "doc-hieu",
+      "answer": {
+        "fills": {
+          "nghia": "ra-doi"
+        }
+      },
+      "curriculumRef": [
+        "tv2-t1-b15-doc-1-c"
+      ],
+      "support": {
+        "guide": [
+          "Đoạn ba nói về nơi các cuốn sách ra đời.",
+          "Tìm câu có chữ \"nhà xuất bản\" trong bài đọc."
+        ],
+        "hint": "Ghép nhà xuất bản với dòng ở cột B nói đúng về nó.",
+        "answer": {
+          "text": "nhà xuất bản – nơi cuốn sách ra đời",
+          "explanation": "Nơi các cuốn sách ra đời được gọi là nhà xuất bản."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Nhà xuất bản là nơi cuốn sách ra đời, giỏi lắm!",
+          "Thỏ Tí reo: thì ra sách cũng có quê, quê nó là nhà xuất bản!",
+          "Ba ngăn kệ có nhãn rồi, chỉ còn một ngăn nữa thôi."
+        ],
+        "wrong": [
+          "Nhà xuất bản không phải người viết, mà là một nơi chốn.",
+          "Đọc lại đoạn ba: nơi các cuốn sách ra đời được gọi là gì?",
+          "Hàng chữ ở phía dưới bìa sách chính là tên nơi sách ra đời đấy."
+        ]
+      }
+    },
+    {
+      "id": "nhan-muc-luc",
+      "title": "Nhãn cho ngăn mục lục",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "target": "ke-sach",
+      "prompt": "Tấm nhãn cuối cùng, chính là thứ Thỏ Tí hỏi có ăn được không:\nChọn từ ngữ ở cột A với nội dung thích hợp ở cột B.\nA: tên sách; tác giả; nhà xuất bản; mục lục\nB: nơi cuốn sách ra đời; thường chứa đựng nhiều ý nghĩa; người viết sách, báo; thể hiện các mục chính và vị trí của chúng\nmục lục",
+      "template": "mục lục – {{nghia}}",
+      "blanks": [
+        {
+          "id": "nghia",
+          "options": [
+            {
+              "id": "ra-doi",
+              "text": "nơi cuốn sách ra đời"
+            },
+            {
+              "id": "y-nghia",
+              "text": "thường chứa đựng nhiều ý nghĩa"
+            },
+            {
+              "id": "nguoi-viet",
+              "text": "người viết sách, báo"
+            },
+            {
+              "id": "cac-muc",
+              "text": "thể hiện các mục chính và vị trí của chúng"
+            }
+          ]
+        }
+      ],
+      "skill": "doc-hieu",
+      "answer": {
+        "fills": {
+          "nghia": "cac-muc"
+        }
+      },
+      "curriculumRef": [
+        "tv2-t1-b15-doc-1-d"
+      ],
+      "support": {
+        "guide": [
+          "Đoạn bốn nói về trang giúp em tìm các mục chính.",
+          "Tìm câu có chữ \"mục lục\" trong bài đọc."
+        ],
+        "hint": "Ghép mục lục với dòng ở cột B nói đúng về nó.",
+        "answer": {
+          "text": "mục lục – thể hiện các mục chính và vị trí của chúng",
+          "explanation": "Mục lục thể hiện các mục chính và vị trí của chúng trong cuốn sách."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Mục lục thể hiện các mục chính và vị trí của chúng, chuẩn luôn!",
+          "Thỏ Tí ỉu xìu: không ăn được thật à? Nhưng mà tìm bài nhanh ghê!",
+          "Đủ bốn nhãn rồi! Gấu Trúc Tròn đóng đinh… cộp… cộp… thật chậm."
+        ],
+        "wrong": [
+          "Mục lục không phải người viết sách đâu, nó là một trang trong sách.",
+          "Đọc lại đoạn bốn: mục lục thể hiện điều gì của cuốn sách?",
+          "Mục lục giúp em tìm các mục chính nằm ở trang nào đấy."
+        ]
+      }
+    },
+    {
+      "id": "thu-tu-trong-bai",
+      "title": "Thứ tự bốn thông tin",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "ke-sach",
+      "prompt": "Thỏ Tí muốn kể lại bài đọc cho mẹ nghe, nhưng nhớ lộn xộn hết cả.\nSắp xếp các thông tin theo đúng trình tự trong bài đọc.\na. Tác giả\tc. Tên sách\nb. Mục lục\td. Nhà xuất bản",
+      "items": [
+        {
+          "id": "tac-gia",
+          "label": "a. Tác giả"
+        },
+        {
+          "id": "muc-luc",
+          "label": "b. Mục lục"
+        },
+        {
+          "id": "ten-sach",
+          "label": "c. Tên sách"
+        },
+        {
+          "id": "nha-xuat-ban",
+          "label": "d. Nhà xuất bản"
+        }
+      ],
+      "skill": "doc-hieu",
+      "answer": {
+        "order": [
+          "ten-sach",
+          "tac-gia",
+          "nha-xuat-ban",
+          "muc-luc"
+        ]
+      },
+      "curriculumRef": [
+        "tv2-t1-b15-doc-3"
+      ],
+      "support": {
+        "guide": [
+          "Mỗi đoạn của bài nói về một thông tin.",
+          "Đọc chữ đầu tiên được giải thích trong từng đoạn, từ đoạn một tới đoạn bốn."
+        ],
+        "hint": "Đoạn đầu nói về hàng chữ lớn ở giữa bìa sách.",
+        "answer": {
+          "text": "c. Tên sách → a. Tác giả → d. Nhà xuất bản → b. Mục lục",
+          "explanation": "Bài đọc nói về tên sách, rồi tác giả, rồi nhà xuất bản, cuối cùng là mục lục."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đúng trình tự rồi! Thỏ Tí kể cho mẹ nghe chắc không vấp chữ nào.",
+          "Tên sách, tác giả, nhà xuất bản, mục lục, gọn gàng như kệ mới.",
+          "Gấu Trúc Tròn khen: {name} nhớ bài… nhanh hơn tớ… nhớ đường về nhà."
+        ],
+        "wrong": [
+          "Bài đọc mở đầu bằng tên sách, đặt nó lên trước nhé.",
+          "Mục lục được nói đến ở đoạn cuối cùng cơ mà.",
+          "Nhà xuất bản đứng sau tác giả, thử đọc lại đoạn hai và đoạn ba."
+        ]
+      }
+    },
+    {
+      "id": "cho-dat-ten-sach",
+      "title": "Tên ở đâu trên bìa sách?",
+      "kind": "challenge",
+      "mechanic": "classify",
+      "target": "ke-sach",
+      "prompt": "Gấu Trúc Tròn giơ cuốn Dế Mèn lên cao: nhìn bìa này nhé, mỗi hàng chữ nằm một chỗ.\nNói tiếp để hoàn thành câu.\na. Tên sách được đặt ở (…).\nb. Tên tác giả được đặt ở (…).\nKéo mỗi chỗ trên bìa sách về câu thích hợp.",
+      "groups": [
+        {
+          "id": "ten-sach",
+          "label": "a. Tên sách được đặt ở (…)."
+        },
+        {
+          "id": "tac-gia",
+          "label": "b. Tên tác giả được đặt ở (…)."
+        },
+        {
+          "id": "nxb",
+          "label": "Tên nhà xuất bản được đặt ở (…)."
+        }
+      ],
+      "items": [
+        {
+          "id": "phia-duoi",
+          "label": "phía dưới bìa sách"
+        },
+        {
+          "id": "khoang-giua",
+          "label": "khoảng giữa bìa sách"
+        },
+        {
+          "id": "phia-tren",
+          "label": "phía trên của bìa sách"
+        }
+      ],
+      "skill": "cau",
+      "answer": {
+        "assignment": {
+          "khoang-giua": "ten-sach",
+          "phia-tren": "tac-gia",
+          "phia-duoi": "nxb"
+        }
+      },
+      "curriculumRef": [
+        "tv2-t1-b15-doc-lt2-a",
+        "tv2-t1-b15-doc-lt2-b"
+      ],
+      "support": {
+        "guide": [
+          "Nhìn lại bìa cuốn Dế Mèn: TÔ HOÀI ở trên, tên sách ở giữa, tên nhà xuất bản ở dưới.",
+          "Đọc lại đoạn một, hai và ba của bài."
+        ],
+        "hint": "Tên sách là hàng chữ lớn ở khoảng giữa bìa.",
+        "answer": {
+          "text": "Tên sách – khoảng giữa bìa sách; tên tác giả – phía trên của bìa sách; tên nhà xuất bản – phía dưới bìa sách",
+          "explanation": "Bài đọc viết: tên sách ở khoảng giữa bìa, tên tác giả ghi phía trên, tên nhà xuất bản ghi phía dưới bìa sách."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Trên, giữa, dưới đều đúng chỗ, bìa sách gọn như mặt trống!",
+          "Gấu Trúc Tròn úp cuốn sách vào ngực: chuẩn… như… sách in.",
+          "Từ giờ cầm cuốn nào {name} cũng tìm ra tên tác giả ngay."
+        ],
+        "wrong": [
+          "Tên sách to nhất, nằm ở khoảng giữa bìa cơ.",
+          "TÔ HOÀI ghi trên cùng bìa sách, đó là tên tác giả đấy.",
+          "Nhà xuất bản ghi ở phía dưới, gần mép bìa, thử kéo lại nào."
+        ]
+      }
+    },
+    {
+      "id": "trang-muc-luc",
+      "title": "Trang mục lục bay về",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "target": "ke-sach",
+      "prompt": "{name} vuốt phẳng trang mục lục nhặt được ở lối vào. Trên đó ghi: Phần 1. THẾ GIỚI ĐỘNG VẬT – Khủng long 5, Khỉ 8, Voi 14, Cá heo 18, Gấu 22; Phần 2. THẾ GIỚI THỰC VẬT – Xương rồng 25, Thông 29, Đước 33.\nĐọc mục lục bên và cho biết:\na. Phần 2 có những mục nào?",
+      "choices": [
+        {
+          "id": "khung-long",
+          "text": "Khủng long"
+        },
+        {
+          "id": "xuong-rong",
+          "text": "Xương rồng"
+        },
+        {
+          "id": "voi",
+          "text": "Voi"
+        },
+        {
+          "id": "thong",
+          "text": "Thông"
+        },
+        {
+          "id": "ca-heo",
+          "text": "Cá heo"
+        },
+        {
+          "id": "duoc",
+          "text": "Đước"
+        }
+      ],
+      "skill": "doc-hieu",
+      "answer": {
+        "choices": [
+          "xuong-rong",
+          "thong",
+          "duoc"
+        ]
+      },
+      "curriculumRef": [
+        "tv2-t1-b15-doc-4-a"
+      ],
+      "support": {
+        "guide": [
+          "Tìm dòng Phần 2 trên trang mục lục.",
+          "Các mục ghi ngay dưới Phần 2 là những mục của phần ấy."
+        ],
+        "hint": "Phần 2 nói về thế giới thực vật, tức là cây cối.",
+        "answer": {
+          "text": "Phần 2 có ba mục: Xương rồng, Thông, Đước.",
+          "explanation": "Phần 2. THẾ GIỚI THỰC VẬT gồm Xương rồng (trang 25), Thông (trang 29), Đước (trang 33)."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ba loài cây của Phần 2 đây rồi! Gấu Trúc Tròn liếm mép: có tre không nhỉ?",
+          "Không lẫn con vật nào, {name} đọc mục lục như thủ thư thứ thiệt.",
+          "Xương rồng, Thông, Đước, đủ cả, không thiếu không thừa."
+        ],
+        "wrong": [
+          "Khủng long với cá heo là con vật, thuộc Phần 1 cơ.",
+          "Phần 2 là thế giới thực vật, chỉ chọn cây cối thôi nhé.",
+          "Còn sót một loài cây mọc ở trang 33 đấy."
+        ]
+      }
+    },
+    {
+      "id": "trang-xuong-rong",
+      "title": "Cây xương rồng ở trang nào?",
+      "kind": "challenge",
+      "mechanic": "quiz",
+      "target": "ke-sach",
+      "prompt": "Thỏ Tí chạm thử vào hình cây xương rồng: ui da, gai! Bạn ấy vẫn muốn đọc thêm về loài cây đầy gai này.\nĐọc mục lục bên và cho biết:\nb. Để tìm hiểu về cây xương rồng, em đọc trang nào?",
+      "choices": [
+        {
+          "id": "trang-5",
+          "text": "trang 5"
+        },
+        {
+          "id": "trang-25",
+          "text": "trang 25"
+        },
+        {
+          "id": "trang-33",
+          "text": "trang 33"
+        }
+      ],
+      "skill": "doc-hieu",
+      "answer": {
+        "choice": "trang-25"
+      },
+      "curriculumRef": [
+        "tv2-t1-b15-doc-4-b"
+      ],
+      "support": {
+        "guide": [
+          "Tìm chữ Xương rồng trên trang mục lục.",
+          "Số ghi bên cạnh tên mục là số trang."
+        ],
+        "hint": "Xương rồng là mục đầu tiên của Phần 2.",
+        "answer": {
+          "text": "Muốn tìm hiểu về cây xương rồng, em mở trang 25.",
+          "explanation": "Trong mục lục, cạnh chữ Xương rồng ghi số 25."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Trang 25! Thỏ Tí lật vèo tới nơi, lần này không chạm vào gai nữa.",
+          "Chuẩn rồi, mục lục chỉ đường nhanh hơn cả Vẹt Xanh.",
+          "Gấu Trúc Tròn đánh dấu trang 25 bằng… một lá tre non."
+        ],
+        "wrong": [
+          "Trang 5 là khủng long cơ, xương rồng đâu có răng nhọn thế.",
+          "Trang 33 là cây đước, nhìn lại số cạnh chữ Xương rồng nhé.",
+          "Dò ngón tay theo dòng Xương rồng sang tới con số bên cạnh xem."
+        ]
+      }
+    },
+    {
+      "id": "nguoi-vat-hay-viec",
+      "title": "Xếp năm từ về hai giỏ",
+      "kind": "challenge",
+      "mechanic": "classify",
+      "target": "ke-sach",
+      "prompt": "Năm tấm thẻ từ rơi ra từ cuốn sách mới. Gấu Trúc Tròn đặt hai cái giỏ mây xuống đất và đọc chậm rãi tên giỏ thứ nhất:\nXếp các từ ngữ sau vào nhóm thích hợp.\ntác giả; cuốn sách; bìa sách; đọc sách; ghi\nTừ ngữ chỉ người, chỉ vật\nRồi thầy đọc lại các thẻ, và tên giỏ thứ hai:\ntác giả; cuốn sách; bìa sách; đọc sách; ghi\nTừ ngữ chỉ hoạt động",
+      "groups": [
+        {
+          "id": "nguoi-vat",
+          "label": "Từ ngữ chỉ người, chỉ vật"
+        },
+        {
+          "id": "hoat-dong",
+          "label": "Từ ngữ chỉ hoạt động"
+        }
+      ],
+      "items": [
+        {
+          "id": "doc-sach",
+          "label": "đọc sách"
+        },
+        {
+          "id": "tac-gia",
+          "label": "tác giả"
+        },
+        {
+          "id": "ghi",
+          "label": "ghi"
+        },
+        {
+          "id": "cuon-sach",
+          "label": "cuốn sách"
+        },
+        {
+          "id": "bia-sach",
+          "label": "bìa sách"
+        }
+      ],
+      "skill": "tu-ngu",
+      "answer": {
+        "assignment": {
+          "tac-gia": "nguoi-vat",
+          "cuon-sach": "nguoi-vat",
+          "bia-sach": "nguoi-vat",
+          "doc-sach": "hoat-dong",
+          "ghi": "hoat-dong"
+        }
+      },
+      "curriculumRef": [
+        "tv2-t1-b15-doc-lt1-a",
+        "tv2-t1-b15-doc-lt1-b"
+      ],
+      "support": {
+        "guide": [
+          "Từ chỉ người, chỉ vật gọi tên một ai đó hay một đồ vật.",
+          "Từ chỉ hoạt động nói về việc mình làm: thử đặt chữ \"đang\" phía trước."
+        ],
+        "hint": "\"Đang đọc sách\", \"đang ghi\" nghe hợp, còn \"đang bìa sách\" thì không.",
+        "answer": {
+          "text": "Chỉ người, chỉ vật: tác giả, cuốn sách, bìa sách. Chỉ hoạt động: đọc sách, ghi.",
+          "explanation": "Tác giả là người viết sách; cuốn sách, bìa sách là đồ vật; đọc sách và ghi là những việc làm."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Hai giỏ mây đầy ắp đúng từ! Thỏ Tí đội luôn một giỏ lên đầu.",
+          "Người, vật một bên, việc làm một bên, xếp đẹp như sách giáo khoa.",
+          "Gấu Trúc Tròn gật đầu ba cái… rất… chậm, nghĩa là rất hài lòng."
+        ],
+        "wrong": [
+          "Thử nói \"đang tác giả\" xem, nghe có kì không nào?",
+          "\"Ghi\" là việc tay mình làm, đưa nó về giỏ hoạt động nhé.",
+          "Cuốn sách là một đồ vật, không phải việc làm đâu."
+        ]
+      }
+    },
+    {
+      "id": "chat-cua-vet",
+      "title": "Vẹt Xanh và cụ vẹt trong truyện",
+      "goTo": "Vẹt Xanh vừa bay vào hốc cây kệ sách, ôm một cuốn truyện",
+      "kind": "dialogue",
+      "target": "vet-xanh",
+      "lines": [
+        {
+          "speaker": "Vẹt Xanh",
+          "text": "Tránh ra! Tránh ra! Truyện \"Hoạ mi, vẹt và quạ\" đây! Chú vẹt trong truyện là cụ cố của cụ cố của tớ đấy!"
+        },
+        {
+          "speaker": "Thỏ Tí",
+          "text": "Thật không? Sao cậu biết?"
+        },
+        {
+          "speaker": "Vẹt Xanh",
+          "text": "Vì cụ ấy cũng lắm lời y như tớ! Y như tớ! Nhưng tranh rơi lộn xộn hết cả, tớ chưa kể được."
+        },
+        {
+          "speaker": "Gấu Trúc Tròn",
+          "text": "{name} có muốn… nghe… trước khi… Vẹt Xanh… kể… lạc đề không?"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Có chứ! Mình xếp tranh trước, Vẹt Xanh kể sau nhé.",
+          "reply": "Vẹt Xanh ưỡn ngực: đồng ý! đồng ý! Tranh xếp xong là tớ kể không ngừng!"
+        },
+        {
+          "text": "Vẹt Xanh ơi, chắc gì cụ vẹt trong truyện là cụ của cậu?",
+          "reply": "Vẹt Xanh nghiêng đầu: ừ thì… chắc là họ hàng xa. Xa lắm. Xa xa!"
+        }
+      ]
+    },
+    {
+      "id": "xep-tranh-hoa-mi",
+      "title": "Xếp bốn tranh câu chuyện",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "vet-xanh",
+      "prompt": "Nghe kể chuyện.\nHoạ mi, vẹt và quạ nói chuyện gì với nhau?\nHoạ mi, vẹt và quạ đến gặp chim hoàng oanh vì chuyện gì?\nVì sao quạ bỏ các bạn bay đi?\nCâu chuyện kết thúc thế nào?\nVẹt Xanh làm rơi bốn bức tranh của câu chuyện. Xếp lại tranh theo đúng thứ tự để cả hốc cây nghe kể nhé.",
+      "items": [
+        {
+          "id": "tranh-3",
+          "label": "Quạ quay đầu bay đi",
+          "image": {
+            "kind": "diagram",
+            "type": "picture-card",
+            "params": {
+              "caption": "quạ quay đầu bay đi, phía sau là vẹt, hoạ mi và hoàng oanh đứng nhìn theo",
+              "n": 3
+            }
+          }
+        },
+        {
+          "id": "tranh-1",
+          "label": "Ba bạn chim trò chuyện",
+          "image": {
+            "kind": "diagram",
+            "type": "picture-card",
+            "params": {
+              "caption": "hoạ mi lông xanh lá, vẹt và quạ đậu trên một cành cây trong rừng, đang trò chuyện",
+              "n": 1
+            }
+          }
+        },
+        {
+          "id": "tranh-4",
+          "label": "Quạ đậu một mình",
+          "image": {
+            "kind": "diagram",
+            "type": "picture-card",
+            "params": {
+              "caption": "hoàng oanh, vẹt, hoạ mi vui vẻ trên cành; quạ đậu một mình nấp sau tán lá, cúi đầu",
+              "n": 4
+            }
+          }
+        },
+        {
+          "id": "tranh-2",
+          "label": "Gặp chim hoàng oanh",
+          "image": {
+            "kind": "diagram",
+            "type": "picture-card",
+            "params": {
+              "caption": "vẹt, hoạ mi và quạ bay tới gặp chim hoàng oanh lông vàng đang dang cánh trên cành cạnh một hốc cây",
+              "n": 2
+            }
+          }
+        }
+      ],
+      "skill": "ke-chuyen",
+      "answer": {
+        "order": [
+          "tranh-1",
+          "tranh-2",
+          "tranh-3",
+          "tranh-4"
+        ]
+      },
+      "curriculumRef": [
+        "tv2-t1-b15-ke-chuyen-1"
+      ],
+      "support": {
+        "guide": [
+          "Câu chuyện bắt đầu khi ba bạn chim còn đang trò chuyện với nhau.",
+          "Bốn câu hỏi của sách đi theo đúng thứ tự bốn tranh."
+        ],
+        "hint": "Chim hoàng oanh xuất hiện ở tranh thứ hai; quạ đậu một mình ở cuối.",
+        "answer": {
+          "text": "Tranh 1: ba bạn trò chuyện → tranh 2: gặp hoàng oanh → tranh 3: quạ bay đi → tranh 4: quạ đậu một mình",
+          "explanation": "Các tranh trả lời lần lượt bốn câu hỏi: ba bạn nói chuyện gì, đến gặp hoàng oanh vì sao, vì sao quạ bỏ đi, câu chuyện kết thúc thế nào."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bốn tranh nối đuôi nhau như bốn toa tàu! Vẹt Xanh hắng giọng chuẩn bị kể.",
+          "Đúng thứ tự rồi, câu chuyện bắt đầu, có giữa, có kết.",
+          "Gấu Trúc Tròn treo bốn tranh lên vách hốc cây, ngay ngắn tăm tắp."
+        ],
+        "wrong": [
+          "Quạ chưa thể bay đi khi ba bạn còn chưa gặp hoàng oanh mà.",
+          "Tranh quạ ngồi một mình cúi đầu là đoạn kết đấy, đặt xuống cuối nhé.",
+          "Câu chuyện mở đầu bằng cảnh ba bạn chim trò chuyện trên cành."
+        ]
+      }
+    },
+    {
+      "id": "ke-chuyen-hoa-mi",
+      "title": "Kể chuyện theo tranh",
+      "kind": "speak",
+      "target": "vet-xanh",
+      "prompt": "Vẹt Xanh kể một mạch… rồi quên mất đoạn giữa. Đến lượt {name} kể giúp!\nNghe kể chuyện.\nChọn kể 1 – 2 đoạn của câu chuyện theo tranh.",
+      "hints": [
+        "Hoạ mi, vẹt và quạ nói chuyện gì với nhau?",
+        "Hoạ mi, vẹt và quạ đến gặp chim hoàng oanh vì chuyện gì?",
+        "Vì sao quạ bỏ các bạn bay đi?",
+        "Câu chuyện kết thúc thế nào?"
+      ],
+      "pictureRefs": [
+        {
+          "kind": "diagram",
+          "type": "picture-card",
+          "params": {
+            "caption": "ba bạn hoạ mi, vẹt, quạ đậu trò chuyện trên cành cây rừng",
+            "n": 1
+          }
+        },
+        {
+          "kind": "diagram",
+          "type": "picture-card",
+          "params": {
+            "caption": "ba bạn chim bay đến bên chim hoàng oanh đang dang đôi cánh vàng",
+            "n": 2
+          }
+        },
+        {
+          "kind": "diagram",
+          "type": "picture-card",
+          "params": {
+            "caption": "chú quạ quay lưng bay khỏi các bạn",
+            "n": 3
+          }
+        },
+        {
+          "kind": "diagram",
+          "type": "picture-card",
+          "params": {
+            "caption": "quạ đứng lẻ loi sau tán lá trong khi các bạn vui vẻ trên cành",
+            "n": 4
+          }
+        }
+      ],
+      "curriculumRef": [
+        "tv2-t1-b15-ke-chuyen-1",
+        "tv2-t1-b15-ke-chuyen-2"
+      ]
+    },
+    {
+      "id": "ke-cho-nguoi-than",
+      "title": "Kể lại cho người thân",
+      "kind": "speak",
+      "target": "gau-truc",
+      "prompt": "Gấu Trúc Tròn bảo: kể một lần thì nhớ một hôm, kể cho người nhà nghe thì nhớ… cả năm.\nKể cho người thân nghe câu chuyện Hoạ mi, vẹt và quạ.",
+      "hints": [
+        "Mở đầu bằng tên câu chuyện và ba bạn chim.",
+        "Kể xem chuyện gì xảy ra khi ba bạn gặp chim hoàng oanh.",
+        "Kết thúc bằng điều em học được từ câu chuyện."
+      ],
+      "curriculumRef": [
+        "tv2-t1-b15-van-dung-1"
+      ]
+    },
+    {
+      "id": "phieu-viet-bai-15",
+      "title": "Phiếu viết bài 15",
+      "kind": "worksheet",
+      "trigger": "auto",
+      "lessonId": "tv2-t1-b15",
+      "text": "Nhờ bố mẹ in phiếu Bài 15 ở khu phụ huynh: tập viết chữ hoa G và câu ứng dụng \"Gần mực thì đen, gần đèn thì sáng.\" Thỏ Tí hứa ngồi yên một chỗ, không nhảy làm đổ bàn khi em viết đâu!",
+      "curriculumRef": [
+        "tv2-t1-b15-viet-chu-hoa-1",
+        "tv2-t1-b15-viet-ung-dung-2"
+      ]
+    },
+    {
+      "id": "qua-kep-sach",
+      "title": "Thẻ kẹp sách hình lá tre",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Gấu Trúc Tròn tặng {name} một chiếc thẻ kẹp sách cắt từ lá tre, một mặt in chữ \"mục lục\", mặt kia in dấu móng vuốt của thầy thủ thư. Vẹt Xanh tặng thêm… một bài kể chuyện dài nửa tiếng."
+    },
+    {
+      "id": "mo-bai-16",
+      "title": "Trang sách hoá thành cảnh thật",
+      "kind": "unlock",
+      "trigger": "auto",
+      "text": "Trên tảng đá phẳng ven rừng, Nai Mơ vừa lật một trang sách thì lá cây, cánh chim, giọt mưa trong sách bỗng bay ra lượn quanh. Cảnh gì mà kì lạ thế này?"
+    }
+  ],
+  "reward": {
+    "xp": 80,
+    "coin": 15,
+    "skillXp": {
+      "doc-hieu": 2,
+      "tu-ngu": 1,
+      "ke-chuyen": 1
+    }
+  }
+}

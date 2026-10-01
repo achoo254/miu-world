@@ -1,0 +1,1241 @@
+{
+  "id": "tv2-t12-b22",
+  "region": "khu-rung-bi-mat",
+  "chapter": 13,
+  "title": "Lợn Rừng Đốm và chú lê-gô biết nói",
+  "status": "draft",
+  "lesson": "tv2-t1-b22",
+  "summary": "Lợn Rừng Đốm xếp khối gỗ mãi chẳng ra hình gì, đổ cái oạch cả đống. Từ đống khối ấy, một chú lê-gô tí hon đứng dậy tự giới thiệu. {name} đọc bài \"Tớ là lê-gô\", tìm từ chỉ đặc điểm, điền chữ ng/ngh, ch/tr, uôn/uông và giúp Đốm ghép câu, giới thiệu đồ chơi.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "Lợn Rừng Đốm vụng về mê làm đồ chơi, chú lê-gô Tí Hon tự giới thiệu bằng giọng của bài đọc",
+    "where": "Xưởng đồ chơi gỗ dưới chân đồi và khoảng sân trước xưởng đầy khối gỗ lăn lóc",
+    "goal": "Giúp Lợn Rừng Đốm hiểu cách chơi lắp ráp để ghép được một món đồ chơi ra hình ra dáng",
+    "play": "Tìm đồ, nói, đọc bài, trắc nghiệm, chọn nhiều đáp án, ghép nội dung với đoạn, điền chữ, xếp thẻ thành câu, lựa chọn trong hội thoại, phiếu viết",
+    "learn": "Tiếng Việt 2 Bài 22: đọc hiểu \"Tớ là lê-gô\", từ chỉ đặc điểm, chính tả ng/ngh, ch/tr, uôn/uông, từ gọi tên đồ chơi, sắp xếp từ ngữ thành câu, giới thiệu đồ chơi",
+    "reward": "90 XP, 15 xu, Đọc hiểu +2, Chính tả +2, Từ ngữ +1, Câu +1",
+    "unlock": "Bài 23 \"Rồng rắn lên mây\""
+  },
+  "phases": {
+    "hook": "tieng-oach",
+    "explore": "nhat-khoi-lan",
+    "learn": "doc-to-la-le-go",
+    "challenge": "ngang-hay-nghieng",
+    "decision": "dan-keo-hay-thao",
+    "finale": "gioi-thieu-do-choi",
+    "reward": "phieu-viet-bai-22",
+    "unlock": "mo-bai-23"
+  },
+  "texts": {
+    "to-la-le-go": {
+      "title": "Tớ là lê-gô",
+      "author": "Bảo Châu",
+      "body": "Tớ là lê-gô. Nhiều bạn gọi tớ là đồ chơi lắp ráp. Các bạn có nhận ra tớ không?\n\nĐể tớ giới thiệu với các bạn về gia đình của tớ nhé. Tớ có rất nhiều anh chị em. Chúng tớ là những khối nhỏ đầy màu sắc. Hầu hết chúng tớ có hình viên gạch. Một số thành viên có hình nhân vật tí hon và các hình xinh xắn khác.\n\nTừ những mảnh ghép nhỏ bé, chúng tớ kết hợp với nhau để tạo ra cả một thế giới kì diệu. Các bạn có thể lắp ráp nhà cửa, xe cộ, người máy,... theo ý thích. Sau đó, các bạn tháo rời ra để ghép thành những vật khác.\n\nChúng tớ giúp các bạn có trí tưởng tượng phong phú, khả năng sáng tạo và tính kiên nhẫn. Nào, các bạn đã sẵn sàng chơi cùng chúng tớ chưa?",
+      "glossary": [
+        {
+          "term": "Lắp ráp",
+          "meaning": "lắp các bộ phận vào với nhau cho đúng vị trí để tạo nên một vật hoàn chỉnh."
+        }
+      ],
+      "section": "tv2-t1-b22-doc"
+    }
+  },
+  "places": {
+    "dom": "xưởng gỗ",
+    "ban-lap-rap": "xưởng gỗ",
+    "nhat-khoi-lan": "sân trước xưởng"
+  },
+  "steps": [
+    {
+      "id": "tieng-oach",
+      "title": "Núi khối gỗ đổ oạch",
+      "goTo": "Chạy xuống xưởng gỗ dưới chân đồi, nơi vừa vang tiếng oạch",
+      "kind": "dialogue",
+      "target": "dom",
+      "lines": [
+        {
+          "speaker": "Lợn Rừng Đốm",
+          "text": "Ủn ỉn… {name} đấy à? Tớ xếp khối từ sáng tới giờ, định làm lâu đài, mà lần nào cũng thành… một đống."
+        },
+        {
+          "speaker": "Lợn Rừng Đốm",
+          "text": "Vừa rồi tớ đặt thêm khối thứ một trăm lên đỉnh, thế là oạch! Khối lăn tứ tung ra sân."
+        },
+        {
+          "speaker": "Tí Hon",
+          "text": "Ê này! Ai vừa đè lên đầu tớ thế? Tớ là lê-gô chứ có phải cái gối đâu!"
+        },
+        {
+          "speaker": "Lợn Rừng Đốm",
+          "text": "Ơ… khối gỗ… biết nói?! {name} ơi, tớ không hoa mắt đấy chứ?"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Chào bạn lê-gô! Bạn tên là gì thế?",
+          "reply": "Tí Hon phủi bụi trên mũ: cứ gọi tớ là Tí Hon. Nhặt hết anh chị em tớ về đây đã, rồi tớ kể!"
+        },
+        {
+          "text": "Đốm ơi, cậu không hoa mắt đâu, mình cũng nghe thấy!",
+          "reply": "Đốm ngồi phịch xuống, lại làm đổ thêm ba khối nữa. Tí Hon thở dài: lại phải nhặt rồi."
+        }
+      ]
+    },
+    {
+      "id": "nhat-khoi-lan",
+      "title": "Nhặt khối lê-gô lăn ra sân",
+      "goTo": "Nhặt các khối lê-gô lăn ra sân trước xưởng",
+      "kind": "search",
+      "targets": [
+        "tv2-t12-khoi-do",
+        "tv2-t12-khoi-vang",
+        "tv2-t12-banh-xe-le-go"
+      ]
+    },
+    {
+      "id": "do-choi-cua-em",
+      "title": "Đồ chơi {name} thích nhất",
+      "goTo": "Mang khối lê-gô về bàn lắp ráp trong xưởng gỗ",
+      "kind": "speak",
+      "target": "dom",
+      "prompt": "Đốm xếp mấy khối vừa nhặt thành một hàng ngay ngắn, rồi tò mò hỏi {name}:\nNói tên một số đồ chơi của em. Em thích đồ chơi nào nhất?",
+      "hints": [
+        "Ở nhà em có những đồ chơi gì: búp bê, ô tô, quả bóng, hay khối xếp hình?",
+        "Em thích đồ chơi nào nhất? Vì sao?",
+        "Đốm thích nhất cái búa gỗ, dù nó chẳng phải đồ chơi."
+      ],
+      "pictureRefs": [
+        {
+          "kind": "diagram",
+          "type": "picture-card",
+          "params": {
+            "caption": "bốn bạn nhỏ ngồi chơi trên sàn nhà, quanh các khối xếp hình, quả bóng, chiếc ô tô và chú vịt đồ chơi"
+          }
+        }
+      ],
+      "curriculumRef": [
+        "tv2-t1-b22-doc-kd"
+      ]
+    },
+    {
+      "id": "doc-to-la-le-go",
+      "title": "Tí Hon tự giới thiệu",
+      "kind": "read",
+      "target": "ban-lap-rap",
+      "textRef": "to-la-le-go",
+      "audio": true,
+      "question": "Đồ chơi lê-gô còn được các bạn nhỏ gọi là gì?",
+      "choices": [
+        {
+          "id": "nhoi-bong",
+          "text": "đồ chơi nhồi bông"
+        },
+        {
+          "id": "lap-rap",
+          "text": "đồ chơi lắp ráp"
+        },
+        {
+          "id": "ban-do",
+          "text": "đồ chơi bày bán ngoài chợ"
+        }
+      ],
+      "skill": "doc-hieu",
+      "answer": {
+        "choice": "lap-rap"
+      },
+      "curriculumRef": [
+        "tv2-t1-b22-doc-1"
+      ],
+      "support": {
+        "guide": [
+          "Đọc đoạn một, chỗ Tí Hon tự giới thiệu tên mình.",
+          "Tìm câu có chữ \"gọi tớ là\"."
+        ],
+        "hint": "Lê-gô được lắp các mảnh vào với nhau.",
+        "answer": {
+          "text": "Nhiều bạn gọi lê-gô là đồ chơi lắp ráp.",
+          "explanation": "Bài đọc viết: \"Tớ là lê-gô. Nhiều bạn gọi tớ là đồ chơi lắp ráp.\""
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đúng rồi! Tí Hon cúi chào: đồ chơi lắp ráp, rất hân hạnh!",
+          "Đốm vỗ đùi đánh đét: thảo nào tớ cứ chồng lên mà không lắp vào nhau!",
+          "Chuẩn ngay từ câu đầu, {name} đọc nhanh mà chắc."
+        ],
+        "wrong": [
+          "Tí Hon cứng đơ như gạch, đâu có mềm như đồ chơi nhồi bông.",
+          "Bài đọc không nói chuyện bày bán, đọc lại đoạn một nhé.",
+          "Tìm câu \"Nhiều bạn gọi tớ là…\" ở ngay đầu bài xem."
+        ]
+      }
+    },
+    {
+      "id": "cach-choi-le-go",
+      "title": "Chơi lê-gô thế nào?",
+      "kind": "challenge",
+      "mechanic": "quiz",
+      "target": "ban-lap-rap",
+      "prompt": "Đốm giơ tay xin phát biểu: tớ biết rồi, chơi lê-gô là xếp thật cao cho nó đổ! Tí Hon lắc đầu quầy quậy.\nNêu cách chơi lê-gô.",
+      "choices": [
+        {
+          "id": "xep-cao-cho-do",
+          "text": "Xếp các khối thật cao rồi đẩy cho đổ ầm xuống."
+        },
+        {
+          "id": "lap-rap-thao-roi",
+          "text": "Các bạn có thể lắp ráp nhà cửa, xe cộ, người máy,... theo ý thích. Sau đó, các bạn tháo rời ra để ghép thành những vật khác."
+        },
+        {
+          "id": "nem-vao-ro",
+          "text": "Ném từng khối vào rổ như chơi ném bóng."
+        }
+      ],
+      "skill": "doc-hieu",
+      "answer": {
+        "choice": "lap-rap-thao-roi"
+      },
+      "curriculumRef": [
+        "tv2-t1-b22-doc-2"
+      ],
+      "support": {
+        "guide": [
+          "Đọc lại đoạn Tí Hon kể về những mảnh ghép nhỏ bé.",
+          "Các bạn làm gì với những mảnh ghép nhỏ bé?"
+        ],
+        "hint": "Lắp ráp theo ý thích, rồi tháo ra ghép thành vật khác.",
+        "answer": {
+          "text": "Lắp ráp thành nhà cửa, xe cộ, người máy… tuỳ thích, chơi xong thì tháo ra ghép thành vật mới.",
+          "explanation": "Đoạn ba kể cách chơi: lắp ráp nhà cửa, xe cộ, người máy theo ý thích, sau đó tháo rời ra để ghép thành những vật khác."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Lắp rồi tháo, tháo rồi lắp, chơi mãi không chán! Tí Hon nhảy cẫng lên.",
+          "Đốm gật gù: vậy là tớ không cần đẩy cho đổ nữa, đỡ phải nhặt.",
+          "Đúng cách chơi rồi, hôm nay lắp xe, mai lắp nhà."
+        ],
+        "wrong": [
+          "Đẩy cho đổ là cách chơi riêng của Đốm thôi, bài đọc nói khác cơ.",
+          "Lê-gô đâu phải quả bóng mà ném vào rổ, đọc lại đoạn ba nhé.",
+          "Tìm câu có chữ \"lắp ráp nhà cửa, xe cộ\" trong bài xem nào."
+        ]
+      }
+    },
+    {
+      "id": "loi-ich-le-go",
+      "title": "Chơi lê-gô được gì?",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "target": "ban-lap-rap",
+      "prompt": "Tí Hon chống nạnh: chơi với tớ không chỉ vui đâu nhé, còn được nhiều thứ lắm!\nTrò chơi lê-gô đem lại lợi ích gì?\nChọn tất cả những điều bài đọc nhắc tới.",
+      "choices": [
+        {
+          "id": "tuong-tuong",
+          "text": "trí tưởng tượng phong phú"
+        },
+        {
+          "id": "chay-nhanh",
+          "text": "chạy nhanh hơn"
+        },
+        {
+          "id": "sang-tao",
+          "text": "khả năng sáng tạo"
+        },
+        {
+          "id": "ngu-ngon",
+          "text": "ngủ ngon hơn"
+        },
+        {
+          "id": "kien-nhan",
+          "text": "tính kiên nhẫn"
+        }
+      ],
+      "skill": "doc-hieu",
+      "answer": {
+        "choices": [
+          "tuong-tuong",
+          "sang-tao",
+          "kien-nhan"
+        ]
+      },
+      "curriculumRef": [
+        "tv2-t1-b22-doc-3"
+      ],
+      "support": {
+        "guide": [
+          "Đọc đoạn Tí Hon hỏi các bạn đã sẵn sàng chơi chưa.",
+          "Tìm câu bắt đầu bằng \"Chúng tớ giúp các bạn…\"."
+        ],
+        "hint": "Có ba lợi ích, cái cuối cùng là điều Đốm đang thiếu nhất.",
+        "answer": {
+          "text": "Ba điều: trí tưởng tượng phong phú, khả năng sáng tạo và tính kiên nhẫn.",
+          "explanation": "Đoạn cuối viết: chúng tớ giúp các bạn có trí tưởng tượng phong phú, khả năng sáng tạo và tính kiên nhẫn."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đủ ba điều quý! Đốm thì thầm: tớ cần nhất là cái… kiên nhẫn.",
+          "Tí Hon giơ ba ngón tay nhựa: tưởng tượng, sáng tạo, kiên nhẫn!",
+          "Không chọn thừa điều nào, {name} đọc đoạn cuối kĩ thật."
+        ],
+        "wrong": [
+          "Lắp lê-gô ngồi một chỗ, đâu giúp mình chạy nhanh hơn nhỉ?",
+          "Bài đọc không nhắc gì tới chuyện ngủ ngon cả.",
+          "Còn thiếu một điều, ở cuối câu \"Chúng tớ giúp các bạn…\" đấy."
+        ]
+      }
+    },
+    {
+      "id": "noi-dung-tung-doan",
+      "title": "Mỗi đoạn nói gì?",
+      "kind": "challenge",
+      "mechanic": "classify",
+      "target": "ban-lap-rap",
+      "prompt": "Tí Hon xé bài giới thiệu của mình thành bốn mảnh để đố Đốm, ai ngờ Đốm ghép sai bét. {name} giúp nhé!\nChọn nội dung phù hợp với mỗi đoạn trong bài đọc. a. Hướng dẫn cách chơi lê-gô; b. Nói về lợi ích của việc chơi lê-gô; c. Giới thiệu tên gọi lê-gô; d. Tả đặc điểm lê-gô.",
+      "groups": [
+        {
+          "id": "doan-1",
+          "label": "Đoạn 1"
+        },
+        {
+          "id": "doan-2",
+          "label": "Đoạn 2"
+        },
+        {
+          "id": "doan-3",
+          "label": "Đoạn 3"
+        },
+        {
+          "id": "doan-4",
+          "label": "Đoạn 4"
+        }
+      ],
+      "items": [
+        {
+          "id": "huong-dan",
+          "label": "a. Hướng dẫn cách chơi lê-gô"
+        },
+        {
+          "id": "loi-ich",
+          "label": "b. Nói về lợi ích của việc chơi lê-gô"
+        },
+        {
+          "id": "ten-goi",
+          "label": "c. Giới thiệu tên gọi lê-gô"
+        },
+        {
+          "id": "dac-diem",
+          "label": "d. Tả đặc điểm lê-gô."
+        }
+      ],
+      "skill": "doc-hieu",
+      "answer": {
+        "assignment": {
+          "ten-goi": "doan-1",
+          "dac-diem": "doan-2",
+          "huong-dan": "doan-3",
+          "loi-ich": "doan-4"
+        }
+      },
+      "curriculumRef": [
+        "tv2-t1-b22-doc-4-a",
+        "tv2-t1-b22-doc-4-b",
+        "tv2-t1-b22-doc-4-c",
+        "tv2-t1-b22-doc-4-d"
+      ],
+      "support": {
+        "guide": [
+          "Đọc lần lượt từng đoạn, mỗi đoạn hỏi: đoạn này nói về điều gì?",
+          "Đoạn có tên gọi, đoạn có màu sắc hình dạng, đoạn có cách lắp, đoạn có lợi ích."
+        ],
+        "hint": "Đoạn 1 có câu \"Tớ là lê-gô\".",
+        "answer": {
+          "text": "Đoạn 1 – c; đoạn 2 – d; đoạn 3 – a; đoạn 4 – b",
+          "explanation": "Đoạn 1 giới thiệu tên gọi, đoạn 2 tả các khối nhỏ đầy màu sắc, đoạn 3 kể cách lắp ráp rồi tháo rời, đoạn 4 nói lợi ích của trò chơi."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bốn mảnh khớp nhau tách tách như lê-gô thật!",
+          "Tí Hon hét lên sung sướng: bài giới thiệu của tớ lành lặn rồi!",
+          "Đốm học được bí kíp: muốn biết đoạn nói gì thì đọc từng câu."
+        ],
+        "wrong": [
+          "Đoạn đầu tiên có câu \"Tớ là lê-gô\", nó giới thiệu điều gì nhỉ?",
+          "Lợi ích của trò chơi nằm ở đoạn cuối cùng cơ.",
+          "Đoạn nói về khối nhỏ đầy màu sắc là đoạn tả đặc điểm đấy."
+        ]
+      }
+    },
+    {
+      "id": "tu-dac-diem-le-go",
+      "title": "Lê-gô trông như thế nào?",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "target": "ban-lap-rap",
+      "prompt": "Tí Hon xoay một vòng khoe dáng: tả tớ đi, tả tớ đi!\nTìm từ ngữ chỉ đặc điểm của những khối lê-gô.",
+      "choices": [
+        {
+          "id": "nho",
+          "text": "nhỏ"
+        },
+        {
+          "id": "thao-roi",
+          "text": "tháo rời"
+        },
+        {
+          "id": "mau-sac",
+          "text": "đầy màu sắc"
+        },
+        {
+          "id": "xinh-xan",
+          "text": "xinh xắn"
+        },
+        {
+          "id": "lap-rap",
+          "text": "lắp ráp"
+        },
+        {
+          "id": "ti-hon",
+          "text": "tí hon"
+        }
+      ],
+      "skill": "tu-ngu",
+      "answer": {
+        "choices": [
+          "nho",
+          "mau-sac",
+          "xinh-xan",
+          "ti-hon"
+        ]
+      },
+      "curriculumRef": [
+        "tv2-t1-b22-doc-lt1"
+      ],
+      "support": {
+        "guide": [
+          "Từ chỉ đặc điểm cho biết khối lê-gô trông thế nào: to hay nhỏ, màu gì, dáng ra sao.",
+          "Lắp ráp, tháo rời là việc mình làm với lê-gô, không phải đặc điểm."
+        ],
+        "hint": "Đọc lại đoạn hai: những khối nhỏ đầy màu sắc, nhân vật tí hon, hình xinh xắn.",
+        "answer": {
+          "text": "Từ chỉ đặc điểm: nhỏ, đầy màu sắc, tí hon, xinh xắn.",
+          "explanation": "Đoạn hai tả các khối lê-gô nhỏ, đầy màu sắc, có nhân vật tí hon và hình xinh xắn; lắp ráp, tháo rời là hoạt động."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Tí Hon đỏ mặt: được khen xinh xắn, ngại ghê!",
+          "Bốn từ đặc điểm, không lẫn một việc làm nào, giỏi quá.",
+          "Đốm ghi vội lên tấm ván: nhỏ, đầy màu sắc, tí hon, xinh xắn."
+        ],
+        "wrong": [
+          "Lắp ráp là việc mình làm, chưa tả được lê-gô trông thế nào.",
+          "Tháo rời là hoạt động, bỏ nó ra khỏi giỏ đặc điểm nhé.",
+          "Còn sót một từ tả các nhân vật bé xíu trong đoạn hai đấy."
+        ]
+      }
+    },
+    {
+      "id": "ngang-hay-nghieng",
+      "title": "Ba câu thiếu chữ ng",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "target": "ban-lap-rap",
+      "prompt": "Đốm khắc ba câu lên ba tấm ván làm biển xưởng, nhưng tay vụng quá, khắc sót mất chữ đầu.\nChọn ng hoặc ngh thay cho ô vuông.",
+      "template": "a. Dù ai nói {{a1}}ả nói {{a2}}iêng\nLòng ta vẫn vững như kiềng ba chân.\nb. Vào những {{b1}}ày {{b2}}ỉ, chúng tôi thường chơi đá bóng.\nc. Mấy cậu bạn đang {{c1}}ó {{c2}}iêng tìm chỗ chơi đá cầu.",
+      "blanks": [
+        {
+          "id": "a1",
+          "options": [
+            {
+              "id": "ng",
+              "text": "ng"
+            },
+            {
+              "id": "ngh",
+              "text": "ngh"
+            }
+          ]
+        },
+        {
+          "id": "a2",
+          "options": [
+            {
+              "id": "ngh",
+              "text": "ngh"
+            },
+            {
+              "id": "ng",
+              "text": "ng"
+            }
+          ]
+        },
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "ng",
+              "text": "ng"
+            },
+            {
+              "id": "ngh",
+              "text": "ngh"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "ngh",
+              "text": "ngh"
+            },
+            {
+              "id": "ng",
+              "text": "ng"
+            }
+          ]
+        },
+        {
+          "id": "c1",
+          "options": [
+            {
+              "id": "ng",
+              "text": "ng"
+            },
+            {
+              "id": "ngh",
+              "text": "ngh"
+            }
+          ]
+        },
+        {
+          "id": "c2",
+          "options": [
+            {
+              "id": "ngh",
+              "text": "ngh"
+            },
+            {
+              "id": "ng",
+              "text": "ng"
+            }
+          ]
+        }
+      ],
+      "skill": "chinh-ta",
+      "answer": {
+        "fills": {
+          "a1": "ng",
+          "a2": "ngh",
+          "b1": "ng",
+          "b2": "ngh",
+          "c1": "ng",
+          "c2": "ngh"
+        }
+      },
+      "curriculumRef": [
+        "tv2-t1-b22-chinh-ta-2-a",
+        "tv2-t1-b22-chinh-ta-2-b",
+        "tv2-t1-b22-chinh-ta-2-c"
+      ],
+      "support": {
+        "guide": [
+          "Nhìn chữ cái đứng ngay sau ô trống.",
+          "Trước e, ê, i viết ngh; trước a, o, ô, ơ, u, ư viết ng."
+        ],
+        "hint": "Ngả, ngày, ngó viết ng; nghiêng, nghỉ viết ngh.",
+        "answer": {
+          "text": "ngả – nghiêng; ngày – nghỉ; ngó – nghiêng",
+          "explanation": "Sau ô trống là a, o thì viết ng (ngả, ngày, ngó); là i thì viết ngh (nghiêng, nghỉ)."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ba tấm biển đủ chữ rồi! Đốm treo lên cửa xưởng, chỉ… hơi lệch một tí.",
+          "Ngờ đơn, ngờ kép không lẫn chỗ nào, tuyệt!",
+          "Tí Hon đọc to từng câu, câu nào cũng tròn vành rõ chữ."
+        ],
+        "wrong": [
+          "Trước chữ i phải dùng ngh đấy, nhìn lại tiếng \"…iêng\" nhé.",
+          "Trước chữ a thì viết ng thôi, không cần thêm h.",
+          "Đọc to \"ngày nghỉ\": tiếng nào đứng trước i thì mới có h."
+        ]
+      }
+    },
+    {
+      "id": "do-choi-trong-tranh",
+      "title": "Kệ đồ chơi của hai bạn nhỏ",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "target": "ban-lap-rap",
+      "prompt": "Tí Hon chỉ lên bức tranh treo trong xưởng: hai bạn nhỏ chơi xếp hình trước một cái kệ đầy ắp, dưới sàn còn dây nhảy và khối lê-gô. Đốm nhìn mà thèm rỏ dãi.\nTìm từ ngữ gọi tên các đồ chơi có trong bức tranh sau:",
+      "choices": [
+        {
+          "id": "gau-bong",
+          "text": "gấu bông"
+        },
+        {
+          "id": "ban-chai",
+          "text": "bàn chải đánh răng"
+        },
+        {
+          "id": "may-bay",
+          "text": "máy bay"
+        },
+        {
+          "id": "ro-bot",
+          "text": "rô-bốt"
+        },
+        {
+          "id": "tu-lanh",
+          "text": "tủ lạnh"
+        },
+        {
+          "id": "bup-be",
+          "text": "búp bê"
+        },
+        {
+          "id": "qua-bong",
+          "text": "quả bóng"
+        },
+        {
+          "id": "day-nhay",
+          "text": "dây nhảy"
+        }
+      ],
+      "skill": "tu-ngu",
+      "answer": {
+        "choices": [
+          "gau-bong",
+          "may-bay",
+          "ro-bot",
+          "bup-be",
+          "qua-bong",
+          "day-nhay"
+        ]
+      },
+      "curriculumRef": [
+        "tv2-t1-b22-tu-ngu-cau-1"
+      ],
+      "support": {
+        "guide": [
+          "Nhìn từng ngăn của kệ đồ chơi, rồi nhìn xuống sàn.",
+          "Chỉ chọn những thứ dùng để chơi."
+        ],
+        "hint": "Có sáu món đồ chơi; bàn chải và tủ lạnh thì không ai mang ra chơi cả.",
+        "answer": {
+          "text": "Đồ chơi trong tranh: gấu bông, máy bay, rô-bốt, búp bê, quả bóng, dây nhảy (và cả khối lê-gô).",
+          "explanation": "Trên kệ có gấu bông, máy bay, rô-bốt, búp bê, quả bóng…; dưới sàn có dây nhảy và các khối lê-gô. Bàn chải đánh răng, tủ lạnh là đồ dùng trong nhà."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Sáu món đồ chơi về đủ! Đốm hứa sẽ làm thử từng món bằng gỗ.",
+          "Tí Hon hí hửng: toàn bạn bè của tớ cả!",
+          "Không chọn nhầm đồ dùng nào, {name} sành đồ chơi quá."
+        ],
+        "wrong": [
+          "Bàn chải đánh răng dùng để đánh răng, đâu phải để chơi.",
+          "Ai lại chơi trò ôm tủ lạnh bao giờ, chọn lại nhé.",
+          "Còn sót món đồ chơi nằm dưới sàn, dùng để nhảy đấy."
+        ]
+      }
+    },
+    {
+      "id": "cau-ve-le-go",
+      "title": "Câu đầu tiên của Đốm",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "ban-lap-rap",
+      "prompt": "Đốm muốn đặt một câu thật hay về Tí Hon, dùng cả tên đồ chơi lẫn từ chỉ đặc điểm vừa tìm được.\nĐặt một câu với từ ngữ vừa tìm được.\nGhép bốn thẻ thành câu giúp Đốm nhé.",
+      "items": [
+        {
+          "id": "nho-xinh",
+          "label": "nhỏ xinh"
+        },
+        {
+          "id": "mau-sac",
+          "label": "đầy màu sắc."
+        },
+        {
+          "id": "khoi-le-go",
+          "label": "Những khối lê-gô"
+        },
+        {
+          "id": "va",
+          "label": "và"
+        }
+      ],
+      "skill": "cau",
+      "answer": {
+        "order": [
+          "khoi-le-go",
+          "nho-xinh",
+          "va",
+          "mau-sac"
+        ]
+      },
+      "curriculumRef": [
+        "tv2-t1-b22-doc-lt2",
+        "tv2-t1-b22-tu-ngu-cau-2"
+      ],
+      "support": {
+        "guide": [
+          "Thẻ viết hoa đứng đầu câu, thẻ có dấu chấm đứng cuối.",
+          "Nói tên đồ chơi trước, rồi mới tả nó."
+        ],
+        "hint": "Chữ \"và\" nối hai đặc điểm với nhau.",
+        "answer": {
+          "text": "Những khối lê-gô nhỏ xinh và đầy màu sắc.",
+          "explanation": "Câu có tên đồ chơi (lê-gô) và các từ chỉ đặc điểm (nhỏ xinh, đầy màu sắc) vừa tìm được."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Câu đầu đời của Đốm hay ra phết! Đốm sướng quá húc đổ… một cái ghế.",
+          "Tên đồ chơi đứng trước, đặc điểm theo sau, chuẩn quá.",
+          "Tí Hon nghe khen tới mức đỏ ửng cả mấy cái núm trên đầu."
+        ],
+        "wrong": [
+          "Thẻ viết hoa \"Những khối lê-gô\" phải đứng ở đầu câu.",
+          "Chữ \"và\" đứng giữa hai đặc điểm, đừng để nó lạc ra cuối.",
+          "Dấu chấm là dấu kết, đưa thẻ \"đầy màu sắc.\" về cuối hàng nhé."
+        ]
+      }
+    },
+    {
+      "id": "cau-gau-bong",
+      "title": "Chú gấu bông của xưởng",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "ban-lap-rap",
+      "prompt": "Đốm vừa may xong một chú gấu bông, ôm vào lòng không chịu buông. Ba tấm thẻ chữ trên bàn thì lộn tùng phèo.\nSắp xếp từ ngữ thành câu và viết câu vào vở. a. rất, mềm mại, chú gấu bông",
+      "items": [
+        {
+          "id": "mem-mai",
+          "label": "mềm mại."
+        },
+        {
+          "id": "gau-bong",
+          "label": "Chú gấu bông"
+        },
+        {
+          "id": "rat",
+          "label": "rất"
+        }
+      ],
+      "skill": "cau",
+      "answer": {
+        "order": [
+          "gau-bong",
+          "rat",
+          "mem-mai"
+        ]
+      },
+      "curriculumRef": [
+        "tv2-t1-b22-tu-ngu-cau-3-a"
+      ],
+      "support": {
+        "guide": [
+          "Câu bắt đầu bằng tên đồ chơi, viết hoa chữ đầu.",
+          "Từ \"rất\" đứng ngay trước từ chỉ đặc điểm."
+        ],
+        "hint": "Ai thế nào: Chú gấu bông… thế nào?",
+        "answer": {
+          "text": "Chú gấu bông rất mềm mại.",
+          "explanation": "Câu nêu đặc điểm của chú gấu bông: rất mềm mại."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Chú gấu bông rất mềm mại, Đốm dụi mõm vào ôm thêm cái nữa.",
+          "Ba thẻ vào hàng, câu nghe êm như bông luôn.",
+          "Tí Hon ghen tị: sao chẳng ai khen tớ mềm mại nhỉ?"
+        ],
+        "wrong": [
+          "\"Rất\" phải đứng trước \"mềm mại\" thì câu mới thuận tai.",
+          "Thẻ viết hoa là thẻ mở đầu, đặt \"Chú gấu bông\" lên trước.",
+          "Dấu chấm nằm cuối thẻ \"mềm mại.\" nên thẻ ấy đứng cuối câu."
+        ]
+      }
+    },
+    {
+      "id": "chung-suc-trung-thu",
+      "title": "Biển treo đêm trung thu",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "target": "ban-lap-rap",
+      "prompt": "Sắp tới đêm hội, Đốm làm bốn tấm biển treo đèn, mà đục gỗ trượt tay mất chữ đầu.\nChọn a hoặc b. a. Chọn ch hoặc tr thay cho ô vuông.",
+      "template": "{{x1}}ung thu\n{{x2}}ung sức\n{{x3}}ong {{x4}}óng\n{{x5}}ong xanh",
+      "blanks": [
+        {
+          "id": "x1",
+          "options": [
+            {
+              "id": "ch",
+              "text": "ch"
+            },
+            {
+              "id": "tr",
+              "text": "tr"
+            }
+          ]
+        },
+        {
+          "id": "x2",
+          "options": [
+            {
+              "id": "tr",
+              "text": "tr"
+            },
+            {
+              "id": "ch",
+              "text": "ch"
+            }
+          ]
+        },
+        {
+          "id": "x3",
+          "options": [
+            {
+              "id": "ch",
+              "text": "ch"
+            },
+            {
+              "id": "tr",
+              "text": "tr"
+            }
+          ]
+        },
+        {
+          "id": "x4",
+          "options": [
+            {
+              "id": "tr",
+              "text": "tr"
+            },
+            {
+              "id": "ch",
+              "text": "ch"
+            }
+          ]
+        },
+        {
+          "id": "x5",
+          "options": [
+            {
+              "id": "ch",
+              "text": "ch"
+            },
+            {
+              "id": "tr",
+              "text": "tr"
+            }
+          ]
+        }
+      ],
+      "skill": "chinh-ta",
+      "answer": {
+        "fills": {
+          "x1": "tr",
+          "x2": "ch",
+          "x3": "ch",
+          "x4": "ch",
+          "x5": "tr"
+        }
+      },
+      "curriculumRef": [
+        "tv2-t1-b22-chinh-ta-3-a-1",
+        "tv2-t1-b22-chinh-ta-3-a-2",
+        "tv2-t1-b22-chinh-ta-3-a-3",
+        "tv2-t1-b22-chinh-ta-3-a-4"
+      ],
+      "support": {
+        "guide": [
+          "Đọc to cả từ, nghĩ xem từ ấy có nghĩa gì.",
+          "Đêm rằm tháng Tám là trung thu; cùng nhau góp sức là chung sức."
+        ],
+        "hint": "Đồ chơi quay tít trong gió là chong chóng; bầu trời trong xanh.",
+        "answer": {
+          "text": "trung thu, chung sức, chong chóng, trong xanh",
+          "explanation": "Trung thu và trong xanh viết tr; chung sức và chong chóng viết ch."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bốn tấm biển sáng choang! Đốm treo cạnh chiếc đèn ông sao.",
+          "Tr với ch không lẫn chỗ nào, mắt {name} tinh như cú.",
+          "Tí Hon reo: trung thu này xưởng mình đẹp nhất rừng!"
+        ],
+        "wrong": [
+          "Chiếc chong chóng có cả hai tiếng đều viết ch đấy.",
+          "Cùng nhau góp sức thì gọi là \"chung sức\", với chữ ch.",
+          "Đêm rằm tháng Tám là \"trung thu\", nghe lại xem đầu tiếng là gì."
+        ]
+      }
+    },
+    {
+      "id": "cau-le-go-sac-so",
+      "title": "Câu khoe hộp lê-gô",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "ban-lap-rap",
+      "prompt": "Tí Hon gọi cả nhà lê-gô ra khoe với {name}. Đốm muốn viết một câu thật kêu về họ.\nSắp xếp từ ngữ thành câu và viết câu vào vở. b. sặc sỡ, có nhiều màu sắc, đồ chơi lê-gô",
+      "items": [
+        {
+          "id": "sac-so",
+          "label": "sặc sỡ."
+        },
+        {
+          "id": "nhieu-mau",
+          "label": "có nhiều màu sắc"
+        },
+        {
+          "id": "le-go",
+          "label": "Đồ chơi lê-gô"
+        }
+      ],
+      "skill": "cau",
+      "answer": {
+        "order": [
+          "le-go",
+          "nhieu-mau",
+          "sac-so"
+        ]
+      },
+      "curriculumRef": [
+        "tv2-t1-b22-tu-ngu-cau-3-b"
+      ],
+      "support": {
+        "guide": [
+          "Mở đầu câu bằng tên đồ chơi.",
+          "Từ \"sặc sỡ\" tả màu sắc, đứng ở cuối câu."
+        ],
+        "hint": "Đồ chơi lê-gô… có gì… trông ra sao?",
+        "answer": {
+          "text": "Đồ chơi lê-gô có nhiều màu sắc sặc sỡ.",
+          "explanation": "Câu nói đồ chơi lê-gô có nhiều màu, và các màu ấy sặc sỡ."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Cả nhà lê-gô xếp hàng vỗ tay lách cách!",
+          "Câu khoe màu sắc rực rỡ như cầu vồng, hay lắm.",
+          "Đốm đọc đi đọc lại, lần này không làm đổ thứ gì cả."
+        ],
+        "wrong": [
+          "Tên đồ chơi phải đứng đầu, thẻ ấy có chữ viết hoa đấy.",
+          "Thẻ có dấu chấm là thẻ kết câu nhé.",
+          "Có nhiều màu sắc trước, rồi mới tả các màu ấy sặc sỡ."
+        ]
+      }
+    },
+    {
+      "id": "dan-keo-hay-thao",
+      "title": "Đốm muốn dán keo cả lâu đài",
+      "kind": "dialogue",
+      "target": "dom",
+      "lines": [
+        {
+          "speaker": "Lợn Rừng Đốm",
+          "text": "Hay là tớ phết keo vào hết các khối, cho lâu đài không bao giờ đổ nữa? Ý hay chưa?"
+        },
+        {
+          "speaker": "Tí Hon",
+          "text": "Không! Dán keo thì tớ không tháo ra được, không ghép được thành vật khác nữa đâu!"
+        },
+        {
+          "speaker": "Lợn Rừng Đốm",
+          "text": "{name} ơi, cậu đứng về phía ai? Tớ hay Tí Hon?"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Đừng dán Đốm ạ, mình lắp từ từ, kiên nhẫn là được.",
+          "reply": "Đốm cất lọ keo đi: được rồi, từ từ thôi. Nhưng nếu đổ thì {name} nhặt giúp tớ nhé!"
+        },
+        {
+          "text": "Mình lắp xong lâu đài, chụp ảnh lại, rồi tháo ra lắp tàu thuỷ!",
+          "reply": "Tí Hon nhảy tưng tưng: đúng là cách chơi lê-gô chuẩn nhất rừng!"
+        }
+      ]
+    },
+    {
+      "id": "chuong-gio-chuon-chuon",
+      "title": "Chuông gió và chuồn chuồn",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "target": "ban-lap-rap",
+      "prompt": "Ngoài cửa xưởng, chiếc chuông gió leng keng, một chú chuồn chuồn đậu trên ngọn cỏ, còn cuộn chỉ xanh của Đốm lăn lông lốc. Sách in bài này như sau:\nChọn a hoặc b.\nb. Chọn uôn hoặc uông thay cho ô vuông.\nch■ gió   ch■̀ ch■̀   c■̣ chỉ\nTrong game, vần đã ghi sẵn dấu thanh của tiếng.",
+      "template": "Treo trước xưởng: ch{{b1}} gió\nĐậu trên ngọn cỏ: ch{{b2}} ch{{b3}}\nLăn dưới chân bàn: c{{b4}} chỉ",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "uon",
+              "text": "uôn"
+            },
+            {
+              "id": "uong",
+              "text": "uông"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "uong",
+              "text": "uồng"
+            },
+            {
+              "id": "uon",
+              "text": "uồn"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "uon",
+              "text": "uồn"
+            },
+            {
+              "id": "uong",
+              "text": "uồng"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "uong",
+              "text": "uộng"
+            },
+            {
+              "id": "uon",
+              "text": "uộn"
+            }
+          ]
+        }
+      ],
+      "skill": "chinh-ta",
+      "answer": {
+        "fills": {
+          "b1": "uong",
+          "b2": "uon",
+          "b3": "uon",
+          "b4": "uon"
+        }
+      },
+      "curriculumRef": [
+        "tv2-t1-b22-chinh-ta-3-b-1",
+        "tv2-t1-b22-chinh-ta-3-b-2",
+        "tv2-t1-b22-chinh-ta-3-b-3"
+      ],
+      "support": {
+        "guide": [
+          "Đọc to tên đồ vật, con vật: nghe cuối tiếng có âm \"ng\" hay không.",
+          "Chuông có \"ng\" ở cuối; chuồn, cuộn thì không."
+        ],
+        "hint": "Leng keng là chiếc chuông; con vật có cánh mỏng là chuồn chuồn.",
+        "answer": {
+          "text": "chuông gió, chuồn chuồn, cuộn chỉ",
+          "explanation": "Chuông kết thúc bằng vần uông; chuồn và cuộn kết thúc bằng vần uôn."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Leng keng! Chuông gió reo mừng {name} điền đúng hết.",
+          "Chú chuồn chuồn vỗ cánh bay một vòng khen ngợi.",
+          "Đốm cuộn lại cuộn chỉ, vừa cuộn vừa đọc: uôn, uôn, uông!"
+        ],
+        "wrong": [
+          "Đọc to \"chuông\": cuối tiếng nghe có âm \"ng\" đấy.",
+          "Chuồn chuồn không có âm \"ng\" ở cuối, thử chọn lại nhé.",
+          "Cuộn chỉ đọc là \"cuộn\", vần uôn, không phải uông."
+        ]
+      }
+    },
+    {
+      "id": "cau-bup-be",
+      "title": "Cô búp bê trên kệ",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "ban-lap-rap",
+      "prompt": "Tí Hon giới thiệu thêm một người bạn trên kệ cao: cô búp bê váy hồng. Đốm lóng ngóng xếp thẻ mãi chưa xong.\nSắp xếp từ ngữ thành câu và viết câu vào vở. c. xinh xắn, bạn búp bê, và dễ thương",
+      "items": [
+        {
+          "id": "va-de-thuong",
+          "label": "và dễ thương."
+        },
+        {
+          "id": "xinh-xan",
+          "label": "xinh xắn"
+        },
+        {
+          "id": "bup-be",
+          "label": "Bạn búp bê"
+        }
+      ],
+      "skill": "cau",
+      "answer": {
+        "order": [
+          "bup-be",
+          "xinh-xan",
+          "va-de-thuong"
+        ]
+      },
+      "curriculumRef": [
+        "tv2-t1-b22-tu-ngu-cau-3-c"
+      ],
+      "support": {
+        "guide": [
+          "Tên đồ chơi đứng đầu, viết hoa.",
+          "Hai từ chỉ đặc điểm nối với nhau bằng \"và\"."
+        ],
+        "hint": "Bạn búp bê… thế nào và thế nào?",
+        "answer": {
+          "text": "Bạn búp bê xinh xắn và dễ thương.",
+          "explanation": "Câu nêu đặc điểm của bạn búp bê: xinh xắn và dễ thương."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Cô búp bê nháy mắt cảm ơn, Đốm suýt ngã ngửa vì bất ngờ.",
+          "Xinh xắn và dễ thương, câu đẹp như chính cô búp bê.",
+          "Ba thẻ khớp nhau, Tí Hon tặng {name} một tràng pháo tay nhựa."
+        ],
+        "wrong": [
+          "\"Và dễ thương.\" có dấu chấm, nên đứng cuối câu.",
+          "Câu phải mở đầu bằng thẻ viết hoa \"Bạn búp bê\".",
+          "Xinh xắn đứng trước, rồi mới \"và dễ thương\" nhé."
+        ]
+      }
+    },
+    {
+      "id": "gioi-thieu-do-choi",
+      "title": "Hội chợ đồ chơi của Đốm",
+      "kind": "speak",
+      "target": "dom",
+      "prompt": "Đốm bày một hội chợ đồ chơi tí hon trước cửa xưởng và mời {name} làm người dẫn chương trình.\nGiới thiệu các đồ chơi mà trẻ em yêu thích.",
+      "hints": [
+        "Đồ chơi này tên là gì?",
+        "Nó trông thế nào: màu gì, to hay nhỏ, làm bằng gì?",
+        "Bạn nhỏ chơi với nó như thế nào?"
+      ],
+      "pictureRefs": [
+        {
+          "kind": "diagram",
+          "type": "picture-card",
+          "params": {
+            "caption": "cô búp bê tóc vàng đứng trên quầy hội chợ đồ chơi",
+            "n": 1
+          }
+        },
+        {
+          "kind": "diagram",
+          "type": "picture-card",
+          "params": {
+            "caption": "chú gấu bông nâu ngồi cạnh tấm biển giá gỗ",
+            "n": 2
+          }
+        },
+        {
+          "kind": "diagram",
+          "type": "picture-card",
+          "params": {
+            "caption": "bộ đồ nấu ăn tí hon gồm nồi, ấm, bát, chảo",
+            "n": 3
+          }
+        },
+        {
+          "kind": "diagram",
+          "type": "picture-card",
+          "params": {
+            "caption": "chiếc máy bay đồ chơi sơn trắng đỏ",
+            "n": 4
+          }
+        },
+        {
+          "kind": "diagram",
+          "type": "picture-card",
+          "params": {
+            "caption": "chú rô-bốt đồ chơi giơ hai tay chào",
+            "n": 5
+          }
+        },
+        {
+          "kind": "diagram",
+          "type": "picture-card",
+          "params": {
+            "caption": "siêu nhân đồ chơi mặc áo choàng bay",
+            "n": 6
+          }
+        }
+      ],
+      "curriculumRef": [
+        "tv2-t1-b22-viet-doan-1"
+      ]
+    },
+    {
+      "id": "tim-bai-huong-dan",
+      "title": "Tìm bài hướng dẫn trò chơi",
+      "kind": "speak",
+      "target": "dom",
+      "prompt": "Tí Hon bảo: muốn chơi vui thì phải biết luật! Hãy kể cho Đốm nghe một bài hướng dẫn em từng đọc.\nTìm đọc các bài hướng dẫn tổ chức trò chơi hoặc hoạt động tập thể. Tên trò chơi hoặc hoạt động. Các bước thực hiện.",
+      "hints": [
+        "Trò chơi hay hoạt động đó tên là gì?",
+        "Bước đầu tiên phải làm gì? Rồi tiếp theo thế nào?",
+        "Ai tham gia được trò chơi hay hoạt động ấy?"
+      ],
+      "curriculumRef": [
+        "tv2-t1-b22-doc-mo-rong-1"
+      ]
+    },
+    {
+      "id": "phieu-viet-bai-22",
+      "title": "Phiếu viết bài 22",
+      "kind": "worksheet",
+      "trigger": "auto",
+      "lessonId": "tv2-t1-b22",
+      "text": "Nhờ bố mẹ in phiếu Bài 22 ở khu phụ huynh: nghe – viết đoạn \"Đồ chơi yêu thích\", giới thiệu các đồ chơi trẻ em yêu thích, viết 3 – 4 câu giới thiệu một đồ chơi, và ghi lại các bước tổ chức một trò chơi em thích. Đốm hứa không làm đổ lọ mực lên phiếu của em!",
+      "curriculumRef": [
+        "tv2-t1-b22-nghe-viet-1",
+        "tv2-t1-b22-viet-doan-1",
+        "tv2-t1-b22-viet-doan-2",
+        "tv2-t1-b22-doc-mo-rong-2"
+      ]
+    },
+    {
+      "id": "qua-cua-dom",
+      "title": "Chú lợn gỗ lắp ráp",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Đốm kiên nhẫn ngồi lắp cả buổi chiều, không làm đổ khối nào, rồi tặng {name} một chú lợn rừng gỗ tháo lắp được. Tí Hon đứng gác trên lưng chú lợn như một hiệp sĩ tí hon."
+    },
+    {
+      "id": "mo-bai-23",
+      "title": "Trò chơi thiếu luật",
+      "kind": "unlock",
+      "trigger": "auto",
+      "text": "Trên bãi đất trống giữa rừng, Cáo Lém rủ cả bọn chơi rồng rắn lên mây, nhưng vừa xếp hàng xong thì Cáo gãi đầu: ơ… luật chơi thế nào nhỉ?"
+    }
+  ],
+  "reward": {
+    "xp": 90,
+    "coin": 15,
+    "skillXp": {
+      "doc-hieu": 2,
+      "chinh-ta": 2,
+      "tu-ngu": 1,
+      "cau": 1
+    }
+  }
+}
