@@ -33,7 +33,8 @@ test('all 70 lessons are live, open from the start', () => {
 
 for (const id of ['tv2-t01-b01', 'toan2-cd1-b01']) {
   test(`${id} plays through: its places are in the world, and it ends with its reward`, async ({ page, baseURL }) => {
-    test.setTimeout(120_000);
+    // Meets every place of the lesson in the world (one page load each), then plays it through.
+    test.setTimeout(90_000);
     const quest = textbook.find((q) => q.id === id);
     if (!quest) throw new Error(`${id} is not an active quest`);
     await freshChild(page, baseURL ?? '');
@@ -53,13 +54,18 @@ for (const id of ['tv2-t01-b01', 'toan2-cd1-b01']) {
   });
 }
 
-test('every chapter of the forest and the school shows its first lesson\'s first place in the world', async ({ page, baseURL }) => {
-  test.setTimeout(240_000);
+// A sample, not every chapter: `pnpm content:check` already proves every target of every quest is on its
+// map and shown for its chapter and quest (the same `entitiesForChapter` the game runs). This checks the
+// game draws them, at the first and the last chapter of each region, so the run does not grow with content.
+test('the first and the last chapter of each region show their lesson\'s first place in the world', async ({ page, baseURL }) => {
   await freshChild(page, baseURL ?? '');
-  const firstOfChapter = new Map<string, ActiveQuest>();
-  for (const q of textbook) if (!firstOfChapter.has(`${q.region}:${q.chapter}`)) firstOfChapter.set(`${q.region}:${q.chapter}`, q);
-  expect(firstOfChapter.size).toBe(18 + 7);
-  for (const quest of firstOfChapter.values()) {
+  const sample = new Map<string, ActiveQuest>();
+  for (const region of [...new Set(textbook.map((q) => q.region))]) {
+    const inRegion = textbook.filter((q) => q.region === region).sort((a, b) => a.chapter - b.chapter);
+    for (const q of [inRegion[0], inRegion.at(-1)]) if (q) sample.set(`${q.region}:${q.chapter}`, q);
+  }
+  expect(sample.size).toBe(4);
+  for (const quest of sample.values()) {
     const target = firstTarget(quest);
     if (!target) throw new Error(`${quest.id} names no target`);
     await meets(page, quest, target);

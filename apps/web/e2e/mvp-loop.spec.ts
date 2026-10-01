@@ -74,7 +74,8 @@ async function goTo(page: Page, target: string): Promise<void> {
 }
 
 test('one child plays the whole MVP loop by touch, from Google sign-in to the Lá thần in the backpack', async ({ page, baseURL }) => {
-  test.setTimeout(240_000);
+  // The whole MVP loop by touch, sign-in to backpack, in one journey (about 30s).
+  test.setTimeout(90_000);
   const origin = new URL(baseURL ?? '').origin;
   const foreign: string[] = [];
   const leaks: string[] = [];

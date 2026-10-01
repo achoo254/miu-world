@@ -13,6 +13,12 @@ const SHOTS = fileURLToPath(new URL('../../../.data/life/review-shots/', import.
 mkdirSync(SHOTS, { recursive: true });
 const entities = JSON.parse(readFileSync(new URL('../../../assets/generated/world/forest-ch1/entities.json', import.meta.url), 'utf8')) as WorldEntities;
 const DRAW_CALL_BUDGET = 150;
+/**
+ * REVIEW_SHOTS=1 makes the owner's review material (videos, long waits so the life on screen settles into
+ * a good picture). The everyday run checks the same behaviour with short waits and no video.
+ */
+const REVIEW_SHOTS = process.env.REVIEW_SHOTS === '1';
+const settle = (reviewMs: number, checkMs: number) => (REVIEW_SHOTS ? reviewMs : checkMs);
 /** How far a speech bubble carries (`HEAR_RADIUS` in ambient-life.ts). */
 const HEAR_RADIUS = 16;
 
@@ -29,6 +35,8 @@ test.use({ viewport: { width: 1180, height: 820 } });
 
 // Shots on the default quality (what an iPad shows); the budget is checked on every quality.
 test('the camp, the woods, the garden, the stream and the meadow are alive, within the draw-call budget', async ({ page, baseURL }) => {
+  // Seven places, one page load each (longer with REVIEW_SHOTS, which lets the life settle for the pictures).
+  test.setTimeout(REVIEW_SHOTS ? 120_000 : 60_000);
   await freshChild(page, baseURL ?? '');
   for (const [place, id] of [
     ['camp', 'bac-nau-an'],
@@ -43,7 +51,7 @@ test('the camp, the woods, the garden, the stream and the meadow are alive, with
     await page.goto(`${play(behind(id, 7))}&shot=life:${id}`);
     await waitReady(page);
     // Let them get on with their chores for a while.
-    await page.waitForTimeout(7_000);
+    await page.waitForTimeout(settle(7_000, 1_500));
     const stats = await readStats(page);
     expect(stats.ambientVisible, place).toBeGreaterThan(0);
     expect(stats.ambientVisible, place).toBeLessThanOrEqual(9);
@@ -118,6 +126,7 @@ test('the woodcutter stops, greets the child by name, and chats when tapped', as
 });
 
 test('records short videos of the camp, the woodcutter and the stream for the owner', async ({ browser, baseURL }) => {
+  test.skip(!REVIEW_SHOTS, 'review material only: REVIEW_SHOTS=1');
   test.setTimeout(180_000);
   const size = { width: 960, height: 668 };
   for (const [place, id] of [
@@ -149,14 +158,16 @@ for (const [kind, near, quality] of [
     await page.goto(`${play(behind(near, 4), quality)}&event=${kind}`);
     await waitReady(page);
     await expect.poll(async () => (await readStats(page)).worldEvent).toBe(kind);
-    await page.waitForTimeout(kind === 'rain-rainbow' ? 6_000 : 4_000);
+    await page.waitForTimeout(settle(kind === 'rain-rainbow' ? 6_000 : 4_000, 1_500));
     const stats = await readStats(page);
     expect(stats.calls).toBeLessThanOrEqual(DRAW_CALL_BUDGET);
-    if (kind === 'animal-visit') expect(stats.ambientLine ?? '').toMatch(/./);
+    // The animal runs over and says hello: wait for its line rather than a fixed time.
+    if (kind === 'animal-visit') await expect.poll(async () => (await readStats(page)).ambientLine ?? '', { timeout: 10_000 }).toMatch(/./);
     await page.screenshot({ path: `${SHOTS}event-${kind}.png` });
     if (kind === 'rain-rainbow') {
       // The rain stops and the rainbow shows.
-      await page.waitForTimeout(10_000);
+      await page.waitForTimeout(settle(10_000, 0));
+      if (!REVIEW_SHOTS) return;
       await page.screenshot({ path: `${SHOTS}event-rainbow.png` });
     }
   });

@@ -1,5 +1,6 @@
 import { fileURLToPath } from 'node:url';
 import { defineConfig } from '@playwright/test';
+import { DEFAULT_TEST_TIMEOUT_MS } from './e2e/time-budget-reporter';
 
 // Fixed ports: a stale server shows up with `netstat -ano | findstr :4173` (web) or `:8787` (API).
 const WEB_PORT = 4173;
@@ -13,11 +14,14 @@ const SIGNED_IN = ['play', 'creator', 'home', 'quest-flow', 'challenges', 'mvp-l
 
 export default defineConfig({
   testDir: 'e2e',
-  timeout: 120_000,
+  // Time budget (docs/code-standards.md): a test fails fast at 45s unless it declares a longer timeout;
+  // the reporter lists the slowest tests and fails one over 30s that did not declare itself long. One
+  // worker on purpose: parallel browsers freeze the dev machine (shard on CI instead, never locally).
+  timeout: DEFAULT_TEST_TIMEOUT_MS,
   workers: 1,
   // Long journeys on software-GL CI runners: one retry, and a trace only for the runs that failed.
   retries: process.env.CI ? 1 : 0,
-  reporter: [['list']],
+  reporter: [['list'], ['./e2e/time-budget-reporter.ts']],
   use: {
     baseURL: BASE_URL,
     trace: 'retain-on-failure',
