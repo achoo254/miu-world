@@ -456,6 +456,8 @@ export class Game {
         const state = input.read();
         interact ||= state.interact;
         rig.orbit(state.lookX, state.lookY);
+        // A tilt the child left behind drifts back once she walks on, so the view never stays stuck on the ground.
+        if (state.lookX === 0 && state.lookY === 0 && Math.hypot(state.moveX, state.moveY) > 0.1) rig.recenter(dt);
         const { right, forward } = rig.basis();
         intent = {
           dirX: right[0] * state.moveX + forward[0] * state.moveY,

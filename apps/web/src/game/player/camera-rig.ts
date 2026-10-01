@@ -6,8 +6,20 @@ import { raycastGrid, type SolidAt } from '@miu/voxel/grid-collision';
 const TARGET_HEIGHT = 1.9;
 /** Gap kept between the camera and the block the ray hit. */
 const WALL_MARGIN = 0.3;
-const MIN_PITCH = -0.15;
-const MAX_PITCH = 1.1;
+/**
+ * The child's drag tilts only within a comfortable band: never below the head looking up at the sky,
+ * never so steep that the screen is all ground. Away from walls the view rests at DEFAULT_PITCH.
+ */
+const MIN_PITCH = 0.12;
+const MAX_PITCH = 0.75;
+export const DEFAULT_PITCH = 0.32;
+/** Drag pixels to radians: sideways turns fast, tilting is slower so a sweeping swipe barely tilts. */
+const YAW_PER_PX = 0.005;
+const PITCH_PER_PX = 0.0025;
+/** A drag counts as a tilt only when it is at least this steep (|dy| / |dx|); flatter swipes only turn. */
+const TILT_SLOPE = 1;
+/** While Miu walks and nobody drags, the tilt drifts back to DEFAULT_PITCH at this rate (per second). */
+const RECENTER_EASE = 1.5;
 /**
  * Closer than this, the camera tilts up (in these steps) to find a clearer view, as far as looking
  * almost straight down when a bank is right at Miu's back; the child's own drag stops at MAX_PITCH.
@@ -20,7 +32,7 @@ const LIFT_EASE = 6;
 
 export class CameraRig {
   yaw: number;
-  pitch = 0.32;
+  pitch = DEFAULT_PITCH;
   distance = 7;
   private readonly target = new Vector3();
   private readonly smoothed = new Vector3();
@@ -40,8 +52,13 @@ export class CameraRig {
   }
 
   orbit(dx: number, dy: number): void {
-    this.yaw -= dx * 0.005;
-    this.pitch = MathUtils.clamp(this.pitch + dy * 0.004, MIN_PITCH, MAX_PITCH);
+    this.yaw -= dx * YAW_PER_PX;
+    if (Math.abs(dy) >= Math.abs(dx) * TILT_SLOPE) this.pitch = MathUtils.clamp(this.pitch + dy * PITCH_PER_PX, MIN_PITCH, MAX_PITCH);
+  }
+
+  /** Eases the tilt back to the resting view (called while Miu walks without a drag). */
+  recenter(dt: number): void {
+    this.pitch += (DEFAULT_PITCH - this.pitch) * Math.min(1, dt * RECENTER_EASE);
   }
 
   /** Eases yaw to sit behind `facing` (used by the scripted autopilot). */
