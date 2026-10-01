@@ -13,7 +13,7 @@ import { OfflineBanner } from '../system/offline-banner';
 import { useCallback, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { CompletionSequence } from '../rewards/completion-sequence';
-import { REGION_MUSIC } from '../sound/music';
+import { REGION_MUSIC } from '../region/regions';
 import { playMood, useMusicMood } from '../sound/music-player';
 import { useQuestController } from './use-quest-controller';
 

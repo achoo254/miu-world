@@ -1,7 +1,6 @@
 import { eq } from 'drizzle-orm';
 import { Router } from 'express';
 import { PlayerPosition, type PlayerPositionList } from '@miu/schema/player-position';
-import { MAP_IDS } from '@miu/voxel/world-entities';
 import { activeChildId, requireParent } from '../auth/auth-context';
 import type { ContentCatalog } from '../content/content-catalog';
 import type { Db } from '../db/client';
@@ -13,8 +12,6 @@ export interface PlayerPositionRouteDeps {
   content: ContentCatalog;
   clock: () => Date;
 }
-
-const KNOWN_MAPS = new Set(MAP_IDS);
 
 /** The active child's last spot on each map. Not a reward input: the client may report any spot it likes. */
 export function playerPositionRoutes({ db, content, clock }: PlayerPositionRouteDeps): Router {
@@ -32,7 +29,7 @@ export function playerPositionRoutes({ db, content, clock }: PlayerPositionRoute
   router.put('/player-positions', requireParent, async (req, res) => {
     const childId = await activeChildId(db, res, content.consent.version);
     const input = parseInput(PlayerPosition, req.body);
-    if (!KNOWN_MAPS.has(input.map)) throw new HttpError(400, 'invalid-map');
+    if (!content.maps.has(input.map)) throw new HttpError(400, 'invalid-map');
     const [x, y, z] = input.position;
     const spot = { x, y, z, facing: input.facing, updatedAt: clock() };
     await db

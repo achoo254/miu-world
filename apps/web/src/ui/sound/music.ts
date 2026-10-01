@@ -24,9 +24,6 @@ export const MUSIC_MOODS = {
 } as const;
 export type MusicMood = keyof typeof MUSIC_MOODS;
 
-/** Region → the pool played while walking about it. */
-export const REGION_MUSIC: Readonly<Record<string, MusicMood>> = { 'khu-rung-bi-mat': 'forest', 'truong-hoc': 'school' };
-
 /** Every track, once (a track may serve several scenes). */
 export const MUSIC_TRACKS: readonly string[] = [...new Set(Object.values(MUSIC_MOODS).flat())];
 

@@ -8,7 +8,7 @@ import { mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'nod
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { stepTargets, type QuestDefinition, type QuestStep } from '../../packages/schema/src/content';
-import { mapForRegion } from '../../packages/voxel/src/world-entities';
+import { RegionCatalog, mapForRegion } from '../../packages/schema/src/region';
 import { CONTENT_DIR, readQuestDefinitions } from '../../apps/server/src/content/content-catalog';
 
 export const REVIEW_DIR = path.resolve(CONTENT_DIR, '../.data/sgk/review-quests');
@@ -18,7 +18,8 @@ const STAND_IN_TARGETS = ['clue-box', 'clue-letter', 'clue-mushroom'];
 
 /** Ids of everything the region's map places. */
 export function mapTargets(region: string): Set<string> {
-  const file = path.resolve(CONTENT_DIR, `../assets/generated/world/${mapForRegion(region)}/entities.json`);
+  const regions = RegionCatalog.parse(JSON.parse(readFileSync(path.join(CONTENT_DIR, 'world/regions.json'), 'utf8')));
+  const file = path.resolve(CONTENT_DIR, `../assets/generated/world/${mapForRegion(regions, region)}/entities.json`);
   const entities = JSON.parse(readFileSync(file, 'utf8')) as { interactables: Array<{ id: string }> };
   return new Set(entities.interactables.map((t) => t.id));
 }

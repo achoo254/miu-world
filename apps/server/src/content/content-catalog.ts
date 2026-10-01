@@ -1,6 +1,7 @@
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import path from 'node:path';
 import { PetCatalog } from '@miu/schema/pet';
+import { RegionCatalog, playableMaps } from '@miu/schema/region';
 import { ConsentDocument, ContentId, LevelCurve, NameList, QuestDefinition, SkillCatalog, type PlayableQuest } from '@miu/schema/content';
 import type { QuestTextbook } from '@miu/schema/game';
 import { questCatalogIssues } from '@miu/quest/quest-catalog';
@@ -33,6 +34,8 @@ export interface ContentCatalog {
   quests: ReadonlyMap<string, PlayableQuest>;
   /** Quest id → the textbook lesson it plays, with its printed pages (quests naming a `lesson`). */
   textbooks: ReadonlyMap<string, QuestTextbook>;
+  /** Maps a child can play in: the open regions' maps (content/world/regions.json). */
+  maps: ReadonlySet<string>;
 }
 
 export interface ContentOptions {
@@ -107,5 +110,6 @@ export function loadContentCatalog({ dir = CONTENT_DIR, questDir, extraQuestDir 
     skillIds,
     quests,
     textbooks: questTextbooks(quests.values(), path.join(dir, 'curriculum')),
+    maps: new Set(playableMaps(readContentJson(RegionCatalog, path.join(dir, 'world/regions.json')))),
   };
 }

@@ -11,13 +11,12 @@ import { pathToFileURL } from 'node:url';
 import { readFileSync } from 'node:fs';
 import { CONTENT_DIR, readQuestDefinitions } from '../../apps/server/src/content/content-catalog';
 import { stepTargets, type QuestDefinition } from '../../packages/schema/src/content';
+import { RegionCatalog, regionGuides } from '../../packages/schema/src/region';
 import { LookCatalog, QuestTargetCatalog } from '../../packages/schema/src/world-target';
 
 export const MIN_PLACES = 4;
 export const MAX_STEPS_IN_A_ROW = 2;
 export const MAX_QUESTS_PER_CHARACTER = 2;
-/** The one guide per map who may appear in any number of that map's quests. */
-export const MAP_GUIDES: Readonly<Record<string, string>> = { 'khu-rung-bi-mat': 'vet-xanh' };
 /**
  * The forest's chapter-1 tutorial, placed by hand on its own corner of the map and played end to end by
  * the E2E suite: it already walks through nine places; its one stay of three (meet the beaver, then two
@@ -41,7 +40,11 @@ export interface SpreadReport {
 
 type Step = QuestDefinition extends infer Q ? (Q extends { steps: ReadonlyArray<infer S> } ? S : never) : never;
 
-export function questSpread(quests: Iterable<QuestDefinition>, targetsRaw: unknown, looksRaw: unknown): SpreadReport {
+/**
+ * `guides`: region → the one guide of its map (`guide` in content/world/regions.json), who may appear in any
+ * number of that map's quests.
+ */
+export function questSpread(quests: Iterable<QuestDefinition>, targetsRaw: unknown, looksRaw: unknown, guides: Readonly<Record<string, string>> = {}): SpreadReport {
   const targets = QuestTargetCatalog.parse(targetsRaw).targets;
   const looks = LookCatalog.parse(looksRaw).looks;
   const characterOf = (id: string): string => targets[id]?.character ?? id;
@@ -66,7 +69,7 @@ export function questSpread(quests: Iterable<QuestDefinition>, targetsRaw: unkno
         visited.add(placeOf(step, id));
         if (isCharacter(id)) {
           const character = characterOf(id);
-          if (MAP_GUIDES[quest.region] !== character) castOf.set(character, (castOf.get(character) ?? new Set()).add(quest.id));
+          if (guides[quest.region] !== character) castOf.set(character, (castOf.get(character) ?? new Set()).add(quest.id));
         }
       }
       // A search walks the child round several places: it breaks a run like moving on would.
@@ -88,10 +91,11 @@ export function questSpread(quests: Iterable<QuestDefinition>, targetsRaw: unkno
   return report;
 }
 
-/** The same check over content/ (quest files, targets and looks), for content:check and the CLI. */
+/** The same check over content/ (quest files, targets, looks and the regions' guides), for the CLI. */
 export function questSpreadOf(dir: string = CONTENT_DIR): SpreadReport {
   const read = (rel: string): unknown => JSON.parse(readFileSync(path.join(dir, rel), 'utf8'));
-  return questSpread(readQuestDefinitions(path.join(dir, 'quests')), read('world/targets.json'), read('world/looks.json'));
+  const guides = regionGuides(RegionCatalog.parse(read('world/regions.json')));
+  return questSpread(readQuestDefinitions(path.join(dir, 'quests')), read('world/targets.json'), read('world/looks.json'), guides);
 }
 
 function main(): void {

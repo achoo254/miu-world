@@ -11,10 +11,11 @@ import { accessoryArtPath } from '../../packages/schema/src/accessory-art';
 import { Item } from '../../packages/schema/src/item';
 import { PetCatalog } from '../../packages/schema/src/pet';
 import { BoxPropCatalog, EmojiPropCatalog, LookCatalog, QuestTargetCatalog } from '../../packages/schema/src/world-target';
-import { RegionCatalog } from '../../packages/schema/src/region';
+import { RegionCatalog, mapForRegion, regionGuides } from '../../packages/schema/src/region';
 import { UI_ICONS } from '../../apps/web/src/ui/kit/ui-art';
+import { MUSIC_MOODS } from '../../apps/web/src/ui/sound/music';
 import { ACCESSORY_SLOTS, MIN_OPEN_ITEMS_PER_SLOT, openItemsInSlot, type AccessoryItem } from '../../packages/voxel/src/accessory-schema';
-import { entitiesForChapter, mapForRegion, worldEntitiesSchema } from '../../packages/voxel/src/world-entities';
+import { entitiesForChapter, worldEntitiesSchema } from '../../packages/voxel/src/world-entities';
 import { ASSETS_DIR } from '../assets/asset-lib';
 import { CURRICULUM_FOLDERS, checkCurriculum } from './check-curriculum';
 import { percentCovered, sumGaps } from './content-gaps';
@@ -54,12 +55,13 @@ const ITEMS_FOLDER = 'items/';
 export function checkQuestTargets(
   quests: Iterable<QuestDefinition>,
   worldDir: string = path.join(ASSETS_DIR, 'generated/world'),
+  regions: RegionCatalog = RegionCatalog.parse(JSON.parse(readFileSync(path.join(CONTENT_DIR, REGIONS_FILE), 'utf8'))),
 ): { issues: string[]; notes: string[] } {
   const issues: string[] = [];
   const notes: string[] = [];
   for (const quest of quests) {
     if (quest.status === 'stub') continue;
-    const mapId = mapForRegion(quest.region);
+    const mapId = mapForRegion(regions, quest.region);
     const file = path.join(worldDir, mapId, 'entities.json');
     if (!existsSync(file)) {
       notes.push(`quest ${quest.id}: map targets not checked, region ${quest.region} chapter ${quest.chapter} has no generated map`);
@@ -251,13 +253,26 @@ export function checkPets(raw: unknown, manifestPaths: ReadonlySet<string>): str
   return parsed.data.pets.filter((p) => !manifestPaths.has(p.model)).map((p) => `pet ${p.id}: model ${p.model} is not in assets/manifest.json`);
 }
 
-/** Regions parse; their text addresses the player as `{name}`; active quests live in open regions, and every open region has one. */
-export function checkRegions(raw: unknown, quests: Iterable<QuestDefinition>): string[] {
+/**
+ * Regions parse; their text addresses the player as `{name}`; active quests live in open regions, and every
+ * open region has one, a generated map, a known music pool, and a guide (if any) from the targets catalogue.
+ */
+export function checkRegions(
+  raw: unknown,
+  quests: Iterable<QuestDefinition>,
+  worldDir: string = path.join(ASSETS_DIR, 'generated/world'),
+  targetIds: ReadonlySet<string> | null = null,
+): string[] {
   const parsed = RegionCatalog.safeParse(raw);
   if (!parsed.success) return [`content/${REGIONS_FILE}: ${parsed.error.message}`];
   const issues: string[] = [];
   for (const region of parsed.data.regions) {
     for (const text of [region.name, region.tagline, region.subject ?? '', region.description ?? '']) for (const issue of playerTextIssues(text)) issues.push(`region ${region.id} ${issue}`);
+  }
+  for (const region of parsed.data.regions) {
+    if (region.status === 'open' && region.map && !existsSync(path.join(worldDir, region.map, 'entities.json'))) issues.push(`region ${region.id}: map ${region.map} is not generated (assets/generated/world/${region.map})`);
+    if (region.music && !(region.music in MUSIC_MOODS)) issues.push(`region ${region.id}: music ${region.music} is not a mood of the music catalogue`);
+    if (region.guide && targetIds && !targetIds.has(region.guide)) issues.push(`region ${region.id}: guide ${region.guide} is not in content/${TARGETS_FILE}`);
   }
   const open = new Set(parsed.data.regions.filter((r) => r.status === 'open').map((r) => r.id));
   const played = new Set<string>();
@@ -292,12 +307,16 @@ export function checkContent(dir: string = CONTENT_DIR): ContentReport {
   const warnings: string[] = [];
   try {
     const catalog = loadContentCatalog({ dir });
-    const targets = checkQuestTargets(catalog.quests.values());
+    const regions = RegionCatalog.safeParse(JSON.parse(readFileSync(path.join(dir, REGIONS_FILE), 'utf8')));
+    const targets = regions.success ? checkQuestTargets(catalog.quests.values(), undefined, regions.data) : { issues: [], notes: [] };
     issues.push(...targets.issues);
     // Drafts become game text too, so the player's name rule covers every quest file.
     issues.push(...checkPlayerText(readQuestDefinitions(path.join(dir, 'quests'))));
     issues.push(...checkItems(dir, files, catalog.quests.values()));
-    issues.push(...checkRegions(JSON.parse(readFileSync(path.join(dir, REGIONS_FILE), 'utf8')), catalog.quests.values()));
+    // A broken targets file is reported by checkTargetCatalogues below; the guide check then waits for it.
+    const targetCatalog = existsSync(path.join(dir, TARGETS_FILE)) ? QuestTargetCatalog.safeParse(JSON.parse(readFileSync(path.join(dir, TARGETS_FILE), 'utf8'))).data : undefined;
+    const targetIds = targetCatalog ? new Set(Object.keys(targetCatalog.targets)) : null;
+    issues.push(...checkRegions(JSON.parse(readFileSync(path.join(dir, REGIONS_FILE), 'utf8')), catalog.quests.values(), undefined, targetIds));
     const manifest = JSON.parse(readFileSync(path.join(ASSETS_DIR, 'manifest.json'), 'utf8')) as { files: Array<{ path: string }>; generated: Array<{ path: string }> };
     issues.push(...checkPets(JSON.parse(readFileSync(path.join(dir, 'pets.json'), 'utf8')), new Set(manifest.files.map((f) => f.path))));
     const read = (rel: string): unknown => JSON.parse(readFileSync(path.join(dir, rel), 'utf8'));
@@ -305,7 +324,8 @@ export function checkContent(dir: string = CONTENT_DIR): ContentReport {
       issues.push(...checkTargetCatalogues(read(LOOKS_FILE), read(TARGETS_FILE), new Set([...manifest.files, ...manifest.generated].map((f) => f.path))));
       issues.push(...checkLessonLooks(readQuestDefinitions(path.join(dir, 'quests')), read(LOOKS_FILE), read(TARGETS_FILE)));
       // The child keeps moving and meets new characters: places per quest, stays per place, quests per character.
-      issues.push(...questSpread(readQuestDefinitions(path.join(dir, 'quests')), read(TARGETS_FILE), read(LOOKS_FILE)).issues);
+      const guides = regions.success ? regionGuides(regions.data) : {};
+      issues.push(...questSpread(readQuestDefinitions(path.join(dir, 'quests')), read(TARGETS_FILE), read(LOOKS_FILE), guides).issues);
       const pictures = new Set(manifest.files.flatMap((f) => f.path.match(/^packs\/fluent-emoji\/[^/]+\/props\/(.+)\.png$/)?.[1] ?? []));
       issues.push(...checkEmojiProps(read(EMOJI_PROPS_FILE), read(LOOKS_FILE), pictures));
       const boxProps = BoxPropCatalog.safeParse(read(BOX_PROPS_FILE));

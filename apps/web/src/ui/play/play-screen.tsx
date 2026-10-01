@@ -4,7 +4,6 @@
 import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import { Link, useSearchParams } from 'react-router';
 import type { PlayerPosition } from '@miu/schema/player-position';
-import { mapForRegion } from '@miu/voxel/world-entities';
 import { createGameStore, type GameSnapshot, type GameStore } from '../../game-bridge/game-store';
 import { GameStoreContext, useGameState, useGameStore } from '../../game-bridge/use-game-state';
 import { Game } from '../../game/game';
@@ -18,7 +17,7 @@ import { BackpackPanel } from '../backpack/backpack-panel';
 import { buttonClass } from '../kit/button';
 import { Modal } from '../kit/modal';
 import { QuestBoard } from '../region/region-detail';
-import { findRegion } from '../region/regions';
+import { DEFAULT_REGION, findRegion, regionMap } from '../region/regions';
 import { LoadingOverlay } from '../system/loading-overlay';
 import { OfflineBanner } from '../system/offline-banner';
 import { PauseScreen } from '../system/pause-screen';
@@ -232,9 +231,9 @@ export function PlayScreen() {
   }, []);
 
   const quest = data?.quests.find((q) => q.quest.id === questId) ?? null;
-  const region = quest?.quest.region ?? 'khu-rung-bi-mat';
+  const region = quest?.quest.region ?? DEFAULT_REGION;
   // An element of `positions` (set once), so the same object on every render: the game is not rebuilt.
-  const savedSpot = positions?.find((p) => p.map === mapForRegion(region)) ?? null;
+  const savedSpot = positions?.find((p) => p.map === regionMap(region)) ?? null;
   const covered = paused || questOpen || backpackOpen || questsOpen;
 
   /**

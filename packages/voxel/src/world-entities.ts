@@ -159,13 +159,3 @@ export function castHidden(interactables: readonly Interactable[], pointedAt: re
   return hidden;
 }
 
-/** Generated map of each region (assets/generated/world/<map>); a region without its own map plays in the forest. */
-const MAP_BY_REGION: Readonly<Record<string, string>> = { 'khu-rung-bi-mat': 'forest-ch1', 'truong-hoc': 'truong-hoc' };
-export const DEFAULT_MAP = 'forest-ch1';
-
-export function mapForRegion(region: string): string {
-  return MAP_BY_REGION[region] ?? DEFAULT_MAP;
-}
-
-/** Every map a child can play in. */
-export const MAP_IDS: readonly string[] = [...new Set([DEFAULT_MAP, ...Object.values(MAP_BY_REGION)])];

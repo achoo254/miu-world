@@ -68,6 +68,7 @@ describe('quest spread', () => {
       ],
       { ...targets, targets: { ...targets.targets, 'vet-xanh': { name: 'Vẹt Xanh', look: 'animal-fox' } } },
       looks,
+      { 'khu-rung-bi-mat': 'vet-xanh' },
     );
     // fox plays in a, b (as fox-at-gate) and c; owl gives a, b and c; another parrot is capped like anyone;
     // the sign is a thing, and Vẹt Xanh guides the forest.

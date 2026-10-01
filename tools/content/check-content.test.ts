@@ -55,6 +55,25 @@ describe('content:check', () => {
     expect(checkContent(dir).issues.join('\n')).toMatch(/regions\.json/);
   });
 
+  it('flags an open region without a map or music, a map not generated, an unknown music pool or guide', () => {
+    const file = path.join(dir, 'world/regions.json');
+    const regions = JSON.parse(readFileSync(file, 'utf8')) as { regions: Array<Record<string, unknown>> };
+    const forest = regions.regions.find((r) => r.id === 'khu-rung-bi-mat');
+    if (!forest) throw new Error('fixture regions missing');
+    const { map: _map, ...noMap } = forest;
+    writeFileSync(file, JSON.stringify({ ...regions, regions: regions.regions.map((r) => (r === forest ? noMap : r)) }));
+    expect(checkContent(dir).issues.join('\n')).toMatch(/an open region needs a map and music/);
+    Object.assign(forest, { map: 'no-such-map', music: 'disco', guide: 'nobody' });
+    writeFileSync(file, JSON.stringify(regions));
+    expect(checkContent(dir).issues).toEqual(
+      expect.arrayContaining([
+        'region khu-rung-bi-mat: map no-such-map is not generated (assets/generated/world/no-such-map)',
+        'region khu-rung-bi-mat: music disco is not a mood of the music catalogue',
+        'region khu-rung-bi-mat: guide nobody is not in content/world/targets.json',
+      ]),
+    );
+  });
+
   it('flags a privacy page that does not match the consent parents accept', () => {
     const consent = path.join(dir, 'legal/consent-vi.json');
     writeFileSync(consent, readFileSync(consent, 'utf8').replace('"version": "v1"', '"version": "v2"'));

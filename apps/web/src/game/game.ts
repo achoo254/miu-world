@@ -16,13 +16,13 @@ import {
 } from 'three';
 import { blockLookup } from '@miu/voxel/block-table';
 import type { SolidAt } from '@miu/voxel/grid-collision';
-import { castHidden, entitiesForChapter, mapForRegion } from '@miu/voxel/world-entities';
+import { castHidden, entitiesForChapter } from '@miu/voxel/world-entities';
 import { PETS, UI_ICONS, assetUrl } from '../ui/kit/ui-art';
 import type { GameStore } from '../game-bridge/game-store';
 import { loadAmbientLife, type AmbientTarget } from './ambient/ambient-life';
 import { createConfetti } from './scene/confetti';
 import type { PlayerPosition } from '@miu/schema/player-position';
-import { RegionCatalog, WorldEventKind } from '@miu/schema/region';
+import { RegionCatalog, WorldEventKind, mapForRegion } from '@miu/schema/region';
 import regionsJson from '../../../../content/world/regions.json';
 import { AssetRegistry, GuardedGltfLoader } from './asset-loader';
 import { createReviewShot } from './debug/review-shots';
@@ -127,9 +127,11 @@ function buildDom(host: HTMLElement) {
   return { root, stats, joystick, run, jump };
 }
 
+const REGION_CATALOG = RegionCatalog.parse(regionsJson);
+
 /** The surprises a region plays (content/world/regions.json `events`); none for a region without any. */
 function regionEvents(region: string | undefined): readonly WorldEventKind[] {
-  return RegionCatalog.parse(regionsJson).regions.find((r) => r.id === region)?.events ?? [];
+  return REGION_CATALOG.regions.find((r) => r.id === region)?.events ?? [];
 }
 
 export class Game {
@@ -260,7 +262,7 @@ export class Game {
     const registry = await AssetRegistry.load();
     stepLoaded();
     const loader = new GuardedGltfLoader(registry);
-    const mapId = mapForRegion(this.options.region ?? '');
+    const mapId = mapForRegion(REGION_CATALOG, this.options.region ?? '');
     const data = await loadWorldData(registry, mapId);
     if (this.disposed) return;
     stepLoaded();

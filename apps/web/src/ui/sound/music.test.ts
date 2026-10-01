@@ -2,7 +2,8 @@ import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { describe, expect, it } from 'vitest';
 import regions from '../../../../../content/world/regions.json';
-import { MUSIC_MOODS, MUSIC_PATHS, MUSIC_SOURCE_DIR, MUSIC_TRACKS, REGION_MUSIC, type MusicMood } from './music';
+import { REGION_MUSIC } from '../region/regions';
+import { MUSIC_MOODS, MUSIC_PATHS, MUSIC_SOURCE_DIR, MUSIC_TRACKS, type MusicMood } from './music';
 import { nextTrack, playMood } from './music-player';
 
 const SOURCES = path.resolve(import.meta.dirname, '../../../../../tools/assets/sources.json');
@@ -23,8 +24,9 @@ describe('music catalogue', () => {
   });
 
   it('gives every open region a walking pool', () => {
-    const open = (regions as { regions: Array<{ id: string; status: string }> }).regions.filter((r) => r.status === 'open');
-    for (const region of open) expect(Object.keys(MUSIC_MOODS)).toContain(REGION_MUSIC[region.id]);
+    const open = (regions as { regions: Array<{ id: string; status: string; music?: string }> }).regions.filter((r) => r.status === 'open');
+    for (const region of open) expect(Object.keys(MUSIC_MOODS)).toContain(region.music);
+    for (const region of open) expect(REGION_MUSIC[region.id]).toBe(region.music);
   });
 });
 

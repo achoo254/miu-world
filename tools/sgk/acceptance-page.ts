@@ -11,9 +11,12 @@ import { fileURLToPath } from 'node:url';
 import { readQuestDefinitions } from '../../apps/server/src/content/content-catalog';
 import { readCurriculum } from '../../apps/server/src/worksheet/curriculum-books';
 import type { QuestDefinition, QuestStep } from '../../packages/schema/src/content';
+import { RegionCatalog } from '../../packages/schema/src/region';
 import { checkCurriculumLinks, indexInventory, printedPhrases, stepMechanic } from '../content/curriculum-links';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
+/** Region id → its name, for where each lesson is played. */
+const REGION_NAMES = new Map(RegionCatalog.parse(JSON.parse(readFileSync(path.join(ROOT, 'content/world/regions.json'), 'utf8'))).regions.map((r) => [r.id, r.name]));
 const OUT_DIR = path.join(ROOT, 'plans/dattqh/260930-0846-sgk-lop2-game-content/nghiem-thu');
 const SAMPLES = ['tv2-t01-b01', 'tv2-t01-b02', 'tv2-t05-b10', 'tv2-t10-b17', 'tv2-t14-b25', 'toan2-cd1-b01'];
 
@@ -123,7 +126,7 @@ function questSection(quest: QuestDefinition): string {
   const lesson = quest.lesson ?? '';
   const gaps = links.lessons.find((l) => l.lesson === lesson);
   const book = quest.id.startsWith('toan2') ? 'Toán 2' : 'Tiếng Việt 2';
-  const where = quest.region === 'truong-hoc' ? `Trường học · chủ đề ${quest.chapter}` : `Khu rừng bí mật · chương ${quest.chapter}`;
+  const where = `${REGION_NAMES.get(quest.region) ?? quest.region} · chương ${quest.chapter}`;
   const sequence = quest.steps.map((s) => MECHANIC_NAMES[stepMechanic(s)] ?? stepMechanic(s));
   const notes = NOTES[quest.id] ?? [];
   return `<section class="quest" id="${quest.id}">
