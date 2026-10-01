@@ -13,7 +13,7 @@ import { ASSETS_DIR, REPO_ROOT, readJson } from '../assets/asset-lib';
 import { modelScales } from './model-scales';
 import { createRng, fbm, hashSeed } from './noise';
 import { distanceToPath, pathColumns, type Point } from './structures/path';
-import { placeTree } from './structures/tree';
+import { placeTree, treeHeight } from './structures/tree';
 
 export const MAP_ID = 'truong-hoc';
 export const SEED_TEXT = 'miu-truong-hoc';
@@ -124,11 +124,11 @@ export async function generateSchool(): Promise<{ world: VoxelWorld; entities: W
       const z = Math.round(gz + (rng() - 0.5) * 5);
       if (x < 3 || z < 3 || x >= sx - 3 || z >= sz - 3 || inZone(x, z, 3) || nearPath(x, z) || Math.hypot(x - GATE.x, z - GATE.z) < 6) continue;
       if (rng() < 0.25) continue;
-      placeTree(world, x, surface(x, z) + 1, z, 4 + Math.floor(rng() * 3), { log: B.log, leaves: rng() < 0.3 ? B.autumn : B.leaves }, rng);
+      placeTree(world, x, surface(x, z) + 1, z, treeHeight(rng), { log: B.log, leaves: rng() < 0.3 ? B.autumn : B.leaves }, rng);
     }
   }
   const garden = ZONES.find((zn) => zn.id === 'vuon-truong');
-  if (garden) for (const [dx, dz] of [[-6, -6], [6, -6], [-6, 6], [6, 6]] as const) placeTree(world, garden.x + dx, GROUND + 1, garden.z + dz, 5, { log: B.log, leaves: B.leaves }, rng);
+  if (garden) for (const [dx, dz] of [[-6, -6], [6, -6], [-6, 6], [6, 6]] as const) placeTree(world, garden.x + dx, GROUND + 1, garden.z + dz, 7, { log: B.log, leaves: B.leaves }, rng);
 
   // 4. Entities.
   const standY = (x: number, z: number): number => {

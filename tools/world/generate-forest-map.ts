@@ -15,7 +15,7 @@ import { modelScales } from './model-scales';
 import { createRng, fbm, hashSeed } from './noise';
 import { placeBridge } from './structures/bridge';
 import { distanceToPath, pathColumns, type Point } from './structures/path';
-import { placeAncientTree, placeTree } from './structures/tree';
+import { placeAncientTree, placeTree, treeHeight } from './structures/tree';
 
 export const MAP_ID = 'forest-ch1';
 export const SEED_TEXT = 'miu-forest-ch1';
@@ -219,7 +219,7 @@ export async function generateForest(): Promise<{ world: VoxelWorld; entities: W
       if (rng() < 0.18) continue;
       const roll = rng();
       const blocks = roll < 0.15 ? { log: B.birch, leaves: B.leaves } : roll < 0.3 ? { log: B.log, leaves: B.autumn } : { log: B.log, leaves: B.leaves };
-      placeTree(world, x, surface(x, z) + 1, z, 4 + Math.floor(rng() * 3), blocks, rng);
+      placeTree(world, x, surface(x, z) + 1, z, treeHeight(rng), blocks, rng);
       occupied.push([x, z]);
     }
   }

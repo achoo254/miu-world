@@ -6,15 +6,27 @@ export interface TreeBlocks {
   leaves: number;
 }
 
+/**
+ * Trunk height of an ordinary tree on a playable map: tall enough that the crown towers over the child
+ * (6–9 blocks of trunk, about 10–13 with the crown). One `rng` draw, like before, so maps keep their layout.
+ */
+export function treeHeight(rng: () => number): number {
+  return 6 + Math.floor(rng() * 4);
+}
+
+/** Trims a canopy corner without drawing from `rng` (the lowest, widest layer): the same tree every run. */
+const trimmed = (x: number, z: number, dy: number): boolean => (((x * 31 + z * 17 + dy * 7) % 5) + 5) % 5 < 3;
+
 /** Trunk of `height` starting at (x, baseY, z) with a layered canopy; `rng` trims canopy corners. */
 export function placeTree(world: WorldWriter, x: number, baseY: number, z: number, height: number, blocks: TreeBlocks, rng: () => number): void {
   const top = baseY + height;
   for (let y = baseY; y < top; y++) put(world, x, y, z, blocks.log);
-  for (const [dy, radius] of [[-2, 2], [-1, 2], [0, 1], [1, 1]] as const) {
+  // A full crown: three wide layers, then two narrow ones.
+  for (const [dy, radius] of [[-3, 2], [-2, 2], [-1, 2], [0, 1], [1, 1]] as const) {
     for (let dx = -radius; dx <= radius; dx++) {
       for (let dz = -radius; dz <= radius; dz++) {
         const corner = Math.abs(dx) === radius && Math.abs(dz) === radius;
-        if (corner && (radius === 1 ? dy === 1 : rng() < 0.6)) continue;
+        if (corner && (radius === 1 ? dy === 1 : dy === -3 ? trimmed(x + dx, z + dz, dy) : rng() < 0.6)) continue;
         put(world, x + dx, top + dy, z + dz, blocks.leaves, true);
       }
     }

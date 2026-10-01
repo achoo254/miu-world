@@ -221,7 +221,7 @@
       "name": "Tờ lịch ở bụi hồng",
       "label": "Nhặt tờ lịch",
       "position": [
-        42.5,
+        41.5,
         13,
         29.5
       ],
@@ -236,9 +236,9 @@
       "name": "Tờ lịch ở ruộng lúa",
       "label": "Nhặt tờ lịch",
       "position": [
-        56.5,
-        13,
-        19.5
+        55.5,
+        14,
+        16.5
       ],
       "yaw": 0,
       "radius": 2,
@@ -251,7 +251,7 @@
       "name": "Tờ lịch trên bàn học",
       "label": "Nhặt tờ lịch",
       "position": [
-        55.5,
+        54.5,
         14,
         28.5
       ],
@@ -266,7 +266,7 @@
       "name": "Bảng chữ cái",
       "label": "Xem bảng",
       "position": [
-        59.5,
+        60.5,
         13,
         13.5
       ],
@@ -858,7 +858,7 @@
     {
       "model": "packs/kenney-nature-kit/2.1/plant_bushLarge.glb",
       "position": [
-        43.5,
+        42.5,
         14,
         26.5
       ],
@@ -869,7 +869,7 @@
     {
       "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
       "position": [
-        44.5,
+        43.5,
         14,
         26.5
       ],
@@ -880,7 +880,7 @@
     {
       "model": "packs/kenney-nature-kit/2.1/flower_redA.glb",
       "position": [
-        43.5,
+        42.5,
         14,
         27.5
       ],
@@ -891,31 +891,9 @@
     {
       "model": "packs/kenney-nature-kit/2.1/crops_wheatStageB.glb",
       "position": [
-        57.5,
-        16,
-        14.5
-      ],
-      "yaw": 0,
-      "scale": 1.4955,
-      "chapter": 2
-    },
-    {
-      "model": "packs/kenney-nature-kit/2.1/crops_wheatStageB.glb",
-      "position": [
-        58.5,
-        15,
-        14.5
-      ],
-      "yaw": 0,
-      "scale": 1.4955,
-      "chapter": 2
-    },
-    {
-      "model": "packs/kenney-nature-kit/2.1/crops_wheatStageB.glb",
-      "position": [
-        59.5,
-        13,
-        14.5
+        56.5,
+        14,
+        11.5
       ],
       "yaw": 0,
       "scale": 1.4955,
@@ -926,7 +904,7 @@
       "position": [
         57.5,
         14,
-        15.5
+        11.5
       ],
       "yaw": 0,
       "scale": 1.4955,
@@ -936,8 +914,8 @@
       "model": "packs/kenney-nature-kit/2.1/crops_wheatStageB.glb",
       "position": [
         58.5,
-        13,
-        15.5
+        14,
+        11.5
       ],
       "yaw": 0,
       "scale": 1.4955,
@@ -946,9 +924,31 @@
     {
       "model": "packs/kenney-nature-kit/2.1/crops_wheatStageB.glb",
       "position": [
-        59.5,
-        13,
-        15.5
+        56.5,
+        14,
+        12.5
+      ],
+      "yaw": 0,
+      "scale": 1.4955,
+      "chapter": 2
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crops_wheatStageB.glb",
+      "position": [
+        57.5,
+        14,
+        12.5
+      ],
+      "yaw": 0,
+      "scale": 1.4955,
+      "chapter": 2
+    },
+    {
+      "model": "packs/kenney-nature-kit/2.1/crops_wheatStageB.glb",
+      "position": [
+        58.5,
+        14,
+        12.5
       ],
       "yaw": 0,
       "scale": 1.4955,
@@ -1000,7 +1000,7 @@
       "position": [
         16.5,
         11,
-        36.5
+        37.5
       ],
       "yaw": 0,
       "scale": 2.4213
@@ -1010,7 +1010,7 @@
       "position": [
         13.5,
         12,
-        37.5
+        38.5
       ],
       "yaw": 90,
       "scale": 1.8042
@@ -1158,9 +1158,9 @@
     {
       "model": "packs/kenney-nature-kit/2.1/plant_bush.glb",
       "position": [
-        18.5,
-        12,
-        41.5
+        19.5,
+        11,
+        40.5
       ],
       "yaw": 40,
       "scale": 4.0909
@@ -1294,15 +1294,15 @@
       "scale": 0.6667,
       "position": [
         14.5,
-        11,
-        33.5
+        12,
+        34.5
       ],
       "yaw": 270,
       "spots": {
         "tree": [
-          12.5,
-          11,
-          32.5
+          13.5,
+          12,
+          33.5
         ],
         "trunk": [
           12.5,
@@ -1310,14 +1310,14 @@
           33.5
         ],
         "logs": [
-          11.5,
+          12.5,
           13,
-          23.5
+          24.5
         ],
         "stump": [
           16.5,
           11,
-          35.5
+          36.5
         ]
       },
       "held": [
@@ -1334,14 +1334,14 @@
       "position": [
         12.5,
         12,
-        36.5
+        37.5
       ],
       "yaw": 90,
       "spots": {
         "log-end": [
           14.5,
           12,
-          36.5
+          37.5
         ]
       }
     },
@@ -1352,9 +1352,9 @@
       "model": "packs/kenney-blocky-characters/2.0/character-e.glb",
       "scale": 0.6481,
       "position": [
-        25.5,
+        26.5,
         12,
-        14.5
+        15.5
       ],
       "yaw": 180,
       "spots": {
@@ -1536,9 +1536,9 @@
       "yaw": 200,
       "spots": {
         "graze-b": [
-          83.5,
+          84.5,
           13,
-          30.5
+          31.5
         ]
       }
     },
@@ -1556,9 +1556,9 @@
       "yaw": 160,
       "spots": {
         "graze-b": [
-          83.5,
+          85.5,
           13,
-          31.5
+          32.5
         ]
       }
     },
@@ -1656,9 +1656,9 @@
       "yaw": 120,
       "spots": {
         "bush-b": [
-          17.5,
-          12,
-          41.5
+          18.5,
+          11,
+          40.5
         ]
       }
     },
@@ -1670,24 +1670,24 @@
       "scale": 0.6543,
       "position": [
         17.5,
-        18,
+        20,
         32.5
       ],
       "yaw": 0,
       "spots": {
         "perch-a": [
           17.5,
-          18,
+          20,
           32.5
         ],
         "perch-b": [
           31.5,
-          20,
+          23,
           12.5
         ],
         "sky": [
           20.5,
-          23,
+          25,
           34.5
         ]
       }
@@ -1700,24 +1700,24 @@
       "scale": 0.6543,
       "position": [
         67.5,
-        18,
+        21,
         27.5
       ],
       "yaw": 0,
       "spots": {
         "perch-a": [
           67.5,
-          18,
+          21,
           27.5
         ],
         "perch-b": [
           62.5,
-          21,
+          23,
           17.5
         ],
         "sky": [
           70.5,
-          23,
+          26,
           30.5
         ]
       }
