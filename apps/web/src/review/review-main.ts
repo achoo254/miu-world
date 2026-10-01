@@ -1,5 +1,6 @@
 // Final review page: renders the preview gallery, perf table vs budget and license table from the
 // manifest, and lists the review decisions TypeSafe Jev took on the owner's behalf.
+import { MANIFEST_VERSION, manifestVersions, versioned } from '../asset-versions';
 import { ASSET_PREFIX } from '../game/asset-loader';
 import palette from '../../../../content/palette.json';
 import '../ui/fonts.css';
@@ -7,9 +8,13 @@ import './review.css';
 
 interface ManifestJson {
   packs: Array<{ id: string; name: string; author: string; version: string; license: string; homepage: string }>;
-  files: Array<{ path: string; pack: string }>;
-  generated: Array<{ path: string; generator: string }>;
+  files: Array<{ path: string; pack: string; sha256?: string }>;
+  generated: Array<{ path: string; generator: string; sha256?: string }>;
 }
+
+/** Content versions of the review material (asset-versions.ts), read from the manifest on load. */
+let versions: ReadonlyMap<string, string> = new Map();
+const assetHref = (manifestPath: string): string => versioned(`${ASSET_PREFIX}${manifestPath}`, versions.get(manifestPath));
 
 interface PerfRun {
   device?: string;
@@ -94,7 +99,7 @@ function byId(id: string): HTMLElement {
 }
 
 function figure(path: string, caption: string): HTMLElement {
-  const img = el('img', { src: `${ASSET_PREFIX}${path}`, alt: caption, loading: 'lazy', decoding: 'async' });
+  const img = el('img', { src: assetHref(path), alt: caption, loading: 'lazy', decoding: 'async' });
   return el('figure', {}, [img, el('figcaption', { textContent: caption })]);
 }
 
@@ -234,7 +239,7 @@ interface CoverageSummary {
 /** Textbook coverage per book and unit (assets/generated/review/sgk-coverage.json, from `pnpm content:gaps --review`). */
 async function renderCoverage(generated: readonly string[]): Promise<void> {
   if (!generated.includes('generated/review/sgk-coverage.json')) return;
-  const summary = (await (await fetch(`${ASSET_PREFIX}generated/review/sgk-coverage.json`)).json()) as CoverageSummary;
+  const summary = (await (await fetch(assetHref('generated/review/sgk-coverage.json'))).json()) as CoverageSummary;
   for (const book of summary.books) {
     const table = el('table', { className: 'coverage' });
     const head = el('tr');
@@ -251,14 +256,15 @@ async function renderCoverage(generated: readonly string[]): Promise<void> {
 
 async function main(): Promise<void> {
   renderDecisions();
-  const manifest = (await (await fetch(`${ASSET_PREFIX}manifest.json`)).json()) as ManifestJson;
+  const manifest = (await (await fetch(versioned(`${ASSET_PREFIX}manifest.json`, MANIFEST_VERSION))).json()) as ManifestJson;
+  versions = manifestVersions([...manifest.files, ...manifest.generated]);
   const generated = manifest.generated.map((g) => g.path);
   await renderCoverage(generated);
   renderGallery(generated);
   renderPalette();
   renderLicenses(manifest);
   const perfPath = generated.find((p) => p === 'generated/review/perf.json');
-  const perf = perfPath ? ((await (await fetch(`${ASSET_PREFIX}${perfPath}`)).json()) as PerfReport) : null;
+  const perf = perfPath ? ((await (await fetch(assetHref(perfPath))).json()) as PerfReport) : null;
   renderPerf(perf);
 }
 

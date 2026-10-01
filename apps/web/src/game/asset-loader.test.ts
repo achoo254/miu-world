@@ -27,4 +27,12 @@ describe('AssetRegistry', () => {
     expect(registry.checkUrl('blob:http://localhost:4173/1234')).toBe('blob:http://localhost:4173/1234');
     expect(registry.checkUrl('data:image/png;base64,AAAA')).toBe('data:image/png;base64,AAAA');
   });
+
+  it('puts each file\'s content version in its URL, for the GLB and for the texture it asks for', () => {
+    const versions = new Map([['packs/kenney-cube-pets/2.0/animal-parrot.glb', 'aaaaaaaaaaaa'], ['packs/kenney-cube-pets/2.0/Textures/colormap.png', 'bbbbbbbbbbbb']]);
+    const fresh = new AssetRegistry(new Set(versions.keys()), ORIGIN, versions);
+    expect(fresh.url('packs/kenney-cube-pets/2.0/animal-parrot.glb')).toBe('/game-assets/packs/kenney-cube-pets/2.0/animal-parrot.glb?v=aaaaaaaaaaaa');
+    expect(fresh.checkUrl(`${ORIGIN}/game-assets/packs/kenney-cube-pets/2.0/Textures/colormap.png`)).toBe(`${ORIGIN}/game-assets/packs/kenney-cube-pets/2.0/Textures/colormap.png?v=bbbbbbbbbbbb`);
+    expect(fresh.checkUrl('/game-assets/packs/kenney-cube-pets/2.0/animal-parrot.glb?v=aaaaaaaaaaaa')).toBe('/game-assets/packs/kenney-cube-pets/2.0/animal-parrot.glb?v=aaaaaaaaaaaa');
+  });
 });

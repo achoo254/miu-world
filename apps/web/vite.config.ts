@@ -1,7 +1,11 @@
+import { createHash } from 'node:crypto';
+import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import react from '@vitejs/plugin-react';
 import { defineConfig, type Plugin } from 'vite';
+import { VERSION_CHARS, manifestVersions } from './src/asset-versions.ts';
+import { SOUND_PATHS } from './src/ui/sound/cues.ts';
 import { UI_ART_PATHS } from './src/ui/kit/ui-art.ts';
 import { repoAssets } from './vite-repo-assets.ts';
 
@@ -30,6 +34,21 @@ function contentSecurityPolicy(): Plugin {
   };
 }
 
+/**
+ * Content versions baked into the build (src/asset-versions.ts): the manifest's own, for the game and the
+ * review page to fetch it fresh, and those of the files the React UI shows (icons, art, sounds).
+ */
+function assetVersionDefines(): Record<string, string> {
+  const text = readFileSync(path.join(ASSETS_DIR, 'manifest.json'), 'utf8');
+  const manifest = JSON.parse(text) as { files: Array<{ path: string; sha256: string }>; generated: Array<{ path: string; sha256: string }> };
+  const versions = manifestVersions([...manifest.files, ...manifest.generated]);
+  const ui = Object.fromEntries([...UI_ART_PATHS, ...SOUND_PATHS].flatMap((p) => (versions.has(p) ? [[p, versions.get(p)]] : [])));
+  return {
+    __MIU_MANIFEST_VERSION__: JSON.stringify(createHash('sha256').update(text).digest('hex').slice(0, VERSION_CHARS)),
+    __MIU_UI_ASSET_VERSIONS__: JSON.stringify(ui),
+  };
+}
+
 // xfwd: the server trusts X-Forwarded-For from loopback so rate limits see the real client IP.
 const apiProxy = { '/api': { target: API_TARGET, changeOrigin: false, xfwd: true } };
 /**
@@ -49,6 +68,7 @@ export default defineConfig(({ mode }) => {
   const review = mode !== 'release';
   return {
     plugins: [react(), contentSecurityPolicy(), repoAssets(ASSETS_DIR, APP_DIR, UI_ART_PATHS, { review })],
+    define: assetVersionDefines(),
     publicDir: false,
     server: { proxy: apiProxy, allowedHosts: publicHosts },
     preview: { proxy: apiProxy, allowedHosts: publicHosts },

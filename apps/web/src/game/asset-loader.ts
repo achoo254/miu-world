@@ -2,12 +2,13 @@
 // Every URL that three.js loaders request passes through the LoadingManager URL modifier.
 import { LoadingManager, Mesh, MeshStandardMaterial, type Object3D } from 'three';
 import { GLTFLoader, type GLTF } from 'three/addons/loaders/GLTFLoader.js';
+import { MANIFEST_VERSION, manifestVersions, versioned } from '../asset-versions';
 
 export const ASSET_PREFIX = '/game-assets/';
 
 interface ManifestJson {
-  files: Array<{ path: string }>;
-  generated: Array<{ path: string }>;
+  files: Array<{ path: string; sha256?: string }>;
+  generated: Array<{ path: string; sha256?: string }>;
 }
 
 export class AssetNotInManifestError extends Error {
@@ -22,13 +23,16 @@ export class AssetRegistry {
     private readonly paths: ReadonlySet<string>,
     /** Only same-origin URLs under ASSET_PREFIX are loadable (no hotlinking). */
     private readonly origin: string,
+    /** Path → content version for the URL (asset-versions.ts); a path without one gets a plain URL. */
+    private readonly versions: ReadonlyMap<string, string> = new Map(),
   ) {}
 
   static async load(): Promise<AssetRegistry> {
-    const res = await fetch(`${ASSET_PREFIX}manifest.json`);
+    const res = await fetch(versioned(`${ASSET_PREFIX}manifest.json`, MANIFEST_VERSION));
     if (!res.ok) throw new Error(`manifest fetch failed: ${res.status}`);
     const manifest = (await res.json()) as ManifestJson;
-    return new AssetRegistry(new Set([...manifest.files, ...manifest.generated].map((f) => f.path)), window.location.origin);
+    const entries = [...manifest.files, ...manifest.generated];
+    return new AssetRegistry(new Set(entries.map((f) => f.path)), window.location.origin, manifestVersions(entries));
   }
 
   has(assetPath: string): boolean {
@@ -38,7 +42,7 @@ export class AssetRegistry {
   /** Returns the served URL for a manifest path, throwing for anything undeclared. */
   url(assetPath: string): string {
     if (!this.paths.has(assetPath)) throw new AssetNotInManifestError(assetPath);
-    return `${ASSET_PREFIX}${assetPath.split('/').map(encodeURIComponent).join('/')}`;
+    return versioned(`${ASSET_PREFIX}${assetPath.split('/').map(encodeURIComponent).join('/')}`, this.versions.get(assetPath));
   }
 
   /** Validates an absolute/relative URL requested by a loader (e.g. a GLB's external texture). */
@@ -50,7 +54,8 @@ export class AssetRegistry {
     }
     const rel = decodeURIComponent(parsed.pathname.slice(ASSET_PREFIX.length));
     if (!this.paths.has(rel)) throw new AssetNotInManifestError(url);
-    return url;
+    // A GLB's own texture is requested by its plain path: give it its version too.
+    return parsed.search ? url : versioned(url, this.versions.get(rel));
   }
 
   createLoadingManager(): LoadingManager {

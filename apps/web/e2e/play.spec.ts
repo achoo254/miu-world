@@ -197,6 +197,8 @@ test('a lost WebGL context stops the game and offers a reload instead of breakin
 test('the build serves only runtime assets and nothing outside the manifest', async ({ request }) => {
   expect((await request.get('/game-assets/manifest.json')).ok()).toBe(true);
   expect((await request.get('/game-assets/packs/kenney-cube-pets/2.0/animal-parrot.glb')).ok()).toBe(true);
+  // URLs carry a content version (?v=…, src/asset-versions.ts): the file is served all the same.
+  expect((await request.get('/game-assets/packs/kenney-cube-pets/2.0/animal-parrot.glb?v=0123456789ab')).ok()).toBe(true);
   expect((await request.get('/game-assets/packs/kenney-cube-pets/2.0/not-a-file.glb')).status()).toBe(404);
   // Licensed but not used at runtime: not copied into dist/, so the preview (production build) refuses it.
   expect((await request.get('/game-assets/packs/kenney-castle-kit/2.0/siege-catapult.glb')).status()).toBe(404);

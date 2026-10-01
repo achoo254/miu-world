@@ -77,7 +77,7 @@ test('a new profile creates its character first, sees outfit changes live, then 
   await expect(page).toHaveURL(/\/home$/);
   await expect(page.locator('[data-id="player-name"]')).toHaveText('Mochi');
   // The server kept the species: the HUD shows the fox.
-  await expect(page.locator('[data-id="player-badge"] .miu-art').first()).toHaveAttribute('src', /\/fox-anim-idle\.png$/);
+  await expect(page.locator('[data-id="player-badge"] .miu-art').first()).toHaveAttribute('src', /\/fox-anim-idle\.png(\?v=[0-9a-f]+)?$/);
   await page.locator('[data-id="home-today-play"]').click();
   await expect(page).toHaveURL(/\/play\?/);
   await waitReady(page);
@@ -95,7 +95,7 @@ test('a new profile creates its character first, sees outfit changes live, then 
 
   // Back on the picker, the profile shows its fox and now goes straight Home.
   await page.goto('/profiles');
-  await expect(page.getByRole('button', { name: 'Thỏ Bông' }).locator('.miu-art')).toHaveAttribute('src', /\/fox-anim-idle\.png$/);
+  await expect(page.getByRole('button', { name: 'Thỏ Bông' }).locator('.miu-art')).toHaveAttribute('src', /\/fox-anim-idle\.png(\?v=[0-9a-f]+)?$/);
   await page.getByRole('button', { name: 'Thỏ Bông' }).click();
   await expect(page).toHaveURL(/\/home$/);
 });

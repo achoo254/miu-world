@@ -112,7 +112,7 @@ tools/deploy/staging/deploy.sh release   # mỗi lần deploy
 
 - `curl -s https://miu-staging.hoandat.com/api/health` trả `{"status":"ok"}`.
 - Revision đang chạy nằm ở `/opt/miu/current/apps/server/dist/server/REVISION` trên 176.
-- File dưới `/game-assets/` không có hash trong tên, và Cloudflare giữ chúng ở edge tới 4 giờ (`s-maxage=14400` từ nginx lab; tunelo không cache chúng, xem §6). Release có đổi asset ở đường dẫn cũ (nhân vật, ảnh review) thì xoá cache đúng các URL đó theo §4 (tối đa 30 URL một lần gọi), rồi so sha256 của bản trên staging với file local. Danh sách file đổi: `git show --name-only --format= <commit> | grep '^assets/'`.
+- File dưới `/game-assets/` giữ đường dẫn qua các release, và Cloudflare cùng trình duyệt giữ chúng tới 4 giờ (`s-maxage=14400` từ nginx lab, Browser Cache TTL của zone; tunelo không cache chúng, xem §6). Vì vậy web gắn phiên bản nội dung vào URL (`?v=` + 12 ký tự đầu sha256 trong manifest; `apps/web/src/asset-versions.ts`): file đổi thì URL đổi, không cần xoá cache. Bản build gắn sẵn phiên bản của `manifest.json` và của các file UI hiển thị. Sau release vẫn so sha256 của bản trên staging với file local. Xoá cache theo §4 chỉ còn dùng cho URL không phiên bản (ví dụ khách còn mở trang cũ).
 
 **Log:**
 
