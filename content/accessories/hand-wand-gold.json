@@ -1,0 +1,103 @@
+{
+  "id": "hand-wand-gold",
+  "name": "Đũa thần ngôi sao",
+  "slot": "hand",
+  "attachNode": "arm-right",
+  "voxelSize": 0.075,
+  "offset": [
+    -0.15,
+    -0.425,
+    0.0
+  ],
+  "rotation": [
+    40,
+    0,
+    0
+  ],
+  "palette": {
+    "stick": "#7d4bb3",
+    "star": "#ffd23f",
+    "gem": "#ffffff"
+  },
+  "variants": {
+    "pink": {
+      "stick": "#fff6f0",
+      "star": "#f78fbf",
+      "gem": "#ffd23f"
+    }
+  },
+  "boxes": [
+    {
+      "x": 0,
+      "y": -2,
+      "z": 0,
+      "w": 1,
+      "h": 10,
+      "d": 1,
+      "color": "stick"
+    },
+    {
+      "x": 0,
+      "y": 12,
+      "z": 0,
+      "w": 1,
+      "h": 1,
+      "d": 2,
+      "color": "star"
+    },
+    {
+      "x": -1,
+      "y": 11,
+      "z": 0,
+      "w": 3,
+      "h": 1,
+      "d": 2,
+      "color": "star"
+    },
+    {
+      "x": -2,
+      "y": 10,
+      "z": 0,
+      "w": 5,
+      "h": 1,
+      "d": 2,
+      "color": "star"
+    },
+    {
+      "x": -1,
+      "y": 9,
+      "z": 0,
+      "w": 3,
+      "h": 1,
+      "d": 2,
+      "color": "star"
+    },
+    {
+      "x": -1,
+      "y": 8,
+      "z": 0,
+      "w": 1,
+      "h": 1,
+      "d": 2,
+      "color": "star"
+    },
+    {
+      "x": 1,
+      "y": 8,
+      "z": 0,
+      "w": 1,
+      "h": 1,
+      "d": 2,
+      "color": "star"
+    },
+    {
+      "x": 0,
+      "y": 10,
+      "z": 2,
+      "w": 1,
+      "h": 1,
+      "d": 1,
+      "color": "gem"
+    }
+  ]
+}

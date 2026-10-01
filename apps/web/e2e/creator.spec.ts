@@ -46,6 +46,12 @@ test('a new profile creates its character first, sees outfit changes live, then 
   await expect.poll(() => previewOutfit(page)).toEqual(['hat-cap-yellow', 'backpack-red']);
   await expect(page.locator('canvas')).toHaveCount(1);
   await expect(page.getByRole('button', { name: /Balo chiếc lá/ })).toBeDisabled();
+  // Shoes are a pair: one item, worn on both feet. Every tile shows the item's picture from the build.
+  await page.getByRole('tab', { name: 'Giày' }).click();
+  const shoe = page.locator('[data-id="creator-item-shoes-sneaker-blue"]');
+  await expect.poll(() => shoe.locator('img.item-art').evaluate((img: HTMLImageElement) => img.complete && img.naturalWidth > 0)).toBe(true);
+  await shoe.click();
+  await expect.poll(() => previewOutfit(page)).toEqual(['hat-cap-yellow', 'backpack-red', 'shoes-sneaker-blue']);
 
   // A pet: it stands beside the character in the same preview (the last pick wins when tapped quickly).
   await page.getByRole('tab', { name: 'Thú cưng' }).click();
@@ -81,7 +87,7 @@ test('a new profile creates its character first, sees outfit changes live, then 
   await page.locator('[data-id="home-today-play"]').click();
   await expect(page).toHaveURL(/\/play\?/);
   await waitReady(page);
-  expect((await readStats(page)).outfit).toEqual(['hat-cap-yellow', 'backpack-red']);
+  expect((await readStats(page)).outfit).toEqual(['hat-cap-yellow', 'backpack-red', 'shoes-sneaker-blue']);
   // The puppy came along: it trots after the character when she walks.
   expect((await readStats(page)).pet).toBe('cun-con');
   await page.keyboard.down('KeyW');

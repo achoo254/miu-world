@@ -1,5 +1,5 @@
 // M1.2 (chọn loài) + M1.3 (trang phục, tên, tính cách, xem trước): the Character Creator. Every
-// species in content/species.json is open; the Áo/Giày/Cánh slots show "Sắp có"; the "Thú cưng" tab picks
+// species in content/species.json is open; every accessory slot has a tab, Áo shows "Sắp có"; the "Thú cưng" tab picks
 // a pet (content/pets.json) that follows the character. The 3D preview is its own light renderer; outfit
 // and pet changes reach it as the bridge commands `set-outfit` and `set-pet`.
 import { useEffect, useRef, useState } from 'react';
@@ -18,7 +18,7 @@ import { assetUrl, PETS } from '../kit/ui-art';
 import { buttonClass } from '../kit/button';
 import { SkyScene } from '../kit/sky-scene';
 import { isFreshCharacter } from './fresh-character';
-import { COMING_SLOTS, OPEN_SLOTS, equip, isOpen, itemsForSlot, lockText, swatchColor, type OpenSlot } from './creator-outfit';
+import { COMING_SLOTS, OPEN_SLOTS, equip, isOpen, itemArtUrl, itemsForSlot, lockText, type OpenSlot } from './creator-outfit';
 import './creator.css';
 
 const NAMES: readonly string[] = (characterNames as { names: string[] }).names;
@@ -255,8 +255,13 @@ function OutfitStep({
                   data-id={`creator-item-${item.id}`}
                   onClick={() => choose(item.id)}
                 >
-                  <span className="item-swatch" style={{ background: swatchColor(item) }} aria-hidden="true">
-                    {open ? null : <Icon name="locked" size={28} />}
+                  <span className="item-art-frame" aria-hidden="true">
+                    <img className="item-art" src={itemArtUrl(item)} alt="" width={64} height={64} loading="lazy" />
+                    {open ? null : (
+                      <span className="item-art-lock">
+                        <Icon name="locked" size={28} />
+                      </span>
+                    )}
                   </span>
                   {item.name}
                   {open ? null : <span className="item-lock">{lockText(item, questTitle)}</span>}

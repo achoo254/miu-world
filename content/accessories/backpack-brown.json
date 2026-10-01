@@ -15,7 +15,11 @@
   },
   "variants": {
     "red": { "bag": "#c9463d", "flap": "#9e3029", "pocket": "#e0665d" },
-    "green": { "bag": "#5f9e4f", "flap": "#467a39", "pocket": "#7dbb6a" }
+    "green": { "bag": "#5f9e4f", "flap": "#467a39", "pocket": "#7dbb6a" },
+    "blue": { "bag": "#4f8fd8", "flap": "#3f72b8", "pocket": "#7fb2f0" },
+    "pink": { "bag": "#f78fbf", "flap": "#d9609a", "pocket": "#f9b8d3" },
+    "yellow": { "bag": "#ffd23f", "flap": "#e0a01e", "pocket": "#fff1a8", "buckle": "#e05a4f" },
+    "purple": { "bag": "#8a63c4", "flap": "#6a4bb3", "pocket": "#b48ae0" }
   },
   "boxes": [
     { "x": -5, "y": 0, "z": -4, "w": 10, "h": 10, "d": 4, "color": "bag" },

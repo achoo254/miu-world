@@ -481,6 +481,7 @@ Mọi quyết định của đợt POC và Foundation đã chốt (2026-09-29).
 | 28 | Tính cách nhân vật (2026-09-29, Jev, stakes cao) | Chỉ là nhãn hiển thị "Nhà thám hiểm", không lưu cột nào | Không thêm trường dữ liệu trẻ |
 | 29 | Tên người chơi trong nội dung (2026-09-30, người sở hữu) | "Miu" chỉ là tên game; mọi chữ trong game gọi người chơi bằng tên nhân vật bé đặt (placeholder `{name}`) | `content:check` chặn chữ quest cứng "Miu"; nhân vật mới phải chọn tên |
 | 30 | Nội dung không lặp (2026-09-30, người sở hữu) | Không dùng lại nội dung/cảnh giữa các quest; mọi thứ lặp (phản hồi, lời NPC, lời mời thử lại) xoay vòng từ pool, không lặp ngay | Pool phản hồi đúng/sai trong nội dung, server trả câu luân phiên; `content:check` chặn câu dài lặp giữa các quest |
+| 31 | Phụ kiện nhân vật mở rộng (2026-10-01, người sở hữu) | 7 loại phụ kiện: Mũ, Kính, Khăn, Balo, Cánh, Giày, Cầm tay; mỗi loại ít nhất 20 món mở ngay từ Lv.1, ô chọn có ảnh từng món; Áo vẫn "Sắp có" vì áo nướng sẵn trong mô hình nhân vật | Thay mục 22 (chỉ Mũ + Balo); `content:check` chặn loại nào dưới 20 món mở từ Lv.1 hoặc thiếu ảnh; đồ khóa theo level/quest vẫn được thêm ngoài 20 món |
 
 ### Còn cần bạn chốt
 

@@ -1,0 +1,77 @@
+{
+  "id": "shoes-boots-brown",
+  "name": "Giày bốt nâu",
+  "slot": "shoes",
+  "attachNode": "leg-left",
+  "voxelSize": 0.05,
+  "offset": [
+    0,
+    0,
+    0
+  ],
+  "mirror": true,
+  "palette": {
+    "sole": "#4a2c1a",
+    "main": "#9a6a3f",
+    "fur": "#fff6f0"
+  },
+  "variants": {
+    "white": {
+      "main": "#eaf3ff",
+      "fur": "#c2dcf5",
+      "sole": "#7a8aa0"
+    },
+    "black": {
+      "main": "#3b3446",
+      "fur": "#e05a4f",
+      "sole": "#24202c"
+    }
+  },
+  "boxes": [
+    {
+      "x": -4,
+      "y": -10,
+      "z": -4,
+      "w": 8,
+      "h": 1,
+      "d": 9,
+      "color": "sole"
+    },
+    {
+      "x": -4,
+      "y": -9,
+      "z": -4,
+      "w": 8,
+      "h": 4,
+      "d": 9,
+      "color": "main"
+    },
+    {
+      "x": -4,
+      "y": -5,
+      "z": -4,
+      "w": 8,
+      "h": 2,
+      "d": 8,
+      "color": "main"
+    },
+    {
+      "x": -5,
+      "y": -3,
+      "z": -5,
+      "w": 10,
+      "h": 2,
+      "d": 10,
+      "color": "fur"
+    },
+    {
+      "x": -4,
+      "y": -9,
+      "z": 4,
+      "w": 8,
+      "h": 1,
+      "d": 1,
+      "color": "sole"
+    }
+  ]
+}

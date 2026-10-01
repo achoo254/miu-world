@@ -4,6 +4,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import react from '@vitejs/plugin-react';
 import { defineConfig, type Plugin } from 'vite';
+import { ACCESSORY_ART_DIR } from '../../packages/schema/src/accessory-art.ts';
 import { VERSION_CHARS, manifestVersions } from './src/asset-versions.ts';
 import { SOUND_PATHS } from './src/ui/sound/cues.ts';
 import { UI_ART_PATHS } from './src/ui/kit/ui-art.ts';
@@ -42,7 +43,9 @@ function assetVersionDefines(): Record<string, string> {
   const text = readFileSync(path.join(ASSETS_DIR, 'manifest.json'), 'utf8');
   const manifest = JSON.parse(text) as { files: Array<{ path: string; sha256: string }>; generated: Array<{ path: string; sha256: string }> };
   const versions = manifestVersions([...manifest.files, ...manifest.generated]);
-  const ui = Object.fromEntries([...UI_ART_PATHS, ...SOUND_PATHS].flatMap((p) => (versions.has(p) ? [[p, versions.get(p)]] : [])));
+  // Item pictures are looked up by item id at runtime, so the whole folder is versioned.
+  const itemArt = [...versions.keys()].filter((p) => p.startsWith(ACCESSORY_ART_DIR));
+  const ui = Object.fromEntries([...UI_ART_PATHS, ...SOUND_PATHS, ...itemArt].flatMap((p) => (versions.has(p) ? [[p, versions.get(p)]] : [])));
   return {
     __MIU_MANIFEST_VERSION__: JSON.stringify(createHash('sha256').update(text).digest('hex').slice(0, VERSION_CHARS)),
     __MIU_UI_ASSET_VERSIONS__: JSON.stringify(ui),

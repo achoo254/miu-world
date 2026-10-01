@@ -7,11 +7,13 @@ import { pathToFileURL } from 'node:url';
 import { CONTENT_DIR, loadContentCatalog, readQuestDefinitions } from '../../apps/server/src/content/content-catalog';
 import { playerTextIssues } from '../../packages/quest/src/player-name';
 import { PrivacyDocument, stepTargets, type QuestDefinition } from '../../packages/schema/src/content';
+import { accessoryArtPath } from '../../packages/schema/src/accessory-art';
 import { Item } from '../../packages/schema/src/item';
 import { PetCatalog } from '../../packages/schema/src/pet';
 import { BoxPropCatalog, EmojiPropCatalog, LookCatalog, QuestTargetCatalog } from '../../packages/schema/src/world-target';
 import { RegionCatalog } from '../../packages/schema/src/region';
 import { UI_ICONS } from '../../apps/web/src/ui/kit/ui-art';
+import { ACCESSORY_SLOTS, MIN_OPEN_ITEMS_PER_SLOT, openItemsInSlot, type AccessoryItem } from '../../packages/voxel/src/accessory-schema';
 import { entitiesForChapter, mapForRegion, worldEntitiesSchema } from '../../packages/voxel/src/world-entities';
 import { ASSETS_DIR } from '../assets/asset-lib';
 import { CURRICULUM_FOLDERS, checkCurriculum } from './check-curriculum';
@@ -222,6 +224,25 @@ export function checkLessonLooks(quests: Iterable<QuestDefinition>, looksRaw: un
   return issues;
 }
 
+/**
+ * Wearable items: quest unlocks name real quests, every slot offers enough items from level 1, and
+ * every item has its Character Creator picture in the manifest.
+ */
+export function checkAccessories(items: Iterable<AccessoryItem>, questIds: ReadonlySet<string>, generatedPaths: ReadonlySet<string>): string[] {
+  const list = [...items];
+  const issues: string[] = [];
+  for (const item of list) {
+    const quest = item.unlock?.quest;
+    if (quest && !questIds.has(quest)) issues.push(`accessory ${item.id} unlocks with unknown quest ${quest}`);
+    if (!generatedPaths.has(accessoryArtPath(item.id))) issues.push(`accessory ${item.id} has no picture ${accessoryArtPath(item.id)}: run pnpm assets:accessories`);
+  }
+  for (const slot of ACCESSORY_SLOTS) {
+    const open = openItemsInSlot(list, slot).length;
+    if (open < MIN_OPEN_ITEMS_PER_SLOT) issues.push(`accessory slot ${slot} offers ${open} items from level 1, needs at least ${MIN_OPEN_ITEMS_PER_SLOT}`);
+  }
+  return issues;
+}
+
 /** Every pet's model is a licensed file in the asset manifest (the build ships it, the game loads it). */
 export function checkPets(raw: unknown, manifestPaths: ReadonlySet<string>): string[] {
   const parsed = PetCatalog.safeParse(raw);
@@ -290,10 +311,7 @@ export function checkContent(dir: string = CONTENT_DIR): ContentReport {
     const privacy: unknown = JSON.parse(readFileSync(path.join(dir, PRIVACY_FILE), 'utf8'));
     issues.push(...checkPrivacy(privacy, catalog.consent.version));
     if (PrivacyDocument.safeParse(privacy).data?.contactEmail === null) warnings.push(`content/${PRIVACY_FILE} has no contact email yet`);
-    for (const item of catalog.accessories.values()) {
-      const quest = item.unlock?.quest;
-      if (quest && !catalog.quests.has(quest)) issues.push(`accessory ${item.id} unlocks with unknown quest ${quest}`);
-    }
+    issues.push(...checkAccessories(catalog.accessories.values(), new Set(catalog.quests.keys()), new Set(manifest.generated.map((f) => f.path))));
     notes.push(...targets.notes);
   } catch (error) {
     issues.push(error instanceof Error ? error.message : String(error));

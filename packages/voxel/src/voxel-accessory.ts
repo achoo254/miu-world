@@ -1,6 +1,6 @@
 // Accessory JSON → one vertex-colored mesh: boxes/layers are rasterised into a voxel grid, then the
 // shared greedy mesher drops hidden inner faces and merges flat areas.
-import type { AccessoryDef } from './accessory-schema';
+import { MIRRORED_NODES, type AccessoryDef } from './accessory-schema';
 import { countExposedFaces, greedyQuads, quadsToGeometry, type Dims, type QuadGeometry } from './greedy-mesher';
 
 export const MAX_ACCESSORY_TRIANGLES = 1500;
@@ -29,6 +29,25 @@ export function resolvePalette(def: AccessoryDef, variant?: string): Record<stri
   const overrides = def.variants[variant];
   if (!overrides) throw new Error(`${def.id}: unknown variant "${variant}"`);
   return { ...def.palette, ...overrides };
+}
+
+/**
+ * The other half of a `mirror` accessory: the same boxes flipped across x = 0 of the attach pivot,
+ * worn on the paired limb (the left shoe of a right one).
+ */
+export function mirroredAccessory(def: AccessoryDef): AccessoryDef {
+  const node = MIRRORED_NODES[def.attachNode];
+  if (!node) throw new Error(`${def.id}: ${def.attachNode} has no mirrored node`);
+  const [ox, oy, oz] = def.offset;
+  const [rx, ry, rz] = def.rotation;
+  return {
+    ...def,
+    attachNode: node,
+    mirror: false,
+    offset: [-ox, oy, oz],
+    rotation: [rx, -ry, -rz],
+    boxes: def.boxes.map((b) => ({ ...b, x: -(b.x + b.w) })),
+  };
 }
 
 type Paint = { x: number; y: number; z: number; color: string };

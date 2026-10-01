@@ -4,7 +4,7 @@ import path from 'node:path';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { CONTENT_DIR, loadContentCatalog } from '../../apps/server/src/content/content-catalog';
 import { ASSETS_DIR } from '../assets/asset-lib';
-import { LOOK_CAP, checkContent, checkEmojiProps, checkLessonLooks, checkQuestTargets, checkTargetCatalogues } from './check-content';
+import { LOOK_CAP, checkAccessories, checkContent, checkEmojiProps, checkLessonLooks, checkQuestTargets, checkTargetCatalogues } from './check-content';
 
 let dir: string;
 beforeEach(() => {
@@ -66,7 +66,18 @@ describe('content:check', () => {
 
   it('flags an accessory that unlocks with an unknown quest', () => {
     writeFileSync(path.join(dir, 'accessories/hat-ghost.json'), JSON.stringify({ id: 'hat-ghost', name: 'Mũ ma', variantOf: 'hat-witch-pink', variant: 'mint', unlock: { quest: 'forest-ch9' } }));
-    expect(checkContent(dir).issues).toEqual(['accessory hat-ghost unlocks with unknown quest forest-ch9']);
+    expect(checkContent(dir).issues).toEqual([
+      'accessory hat-ghost unlocks with unknown quest forest-ch9',
+      'accessory hat-ghost has no picture generated/accessories/hat-ghost.png: run pnpm assets:accessories',
+    ]);
+  });
+
+  it('flags a slot offering fewer than 20 items from level 1', () => {
+    const catalog = loadContentCatalog();
+    const art = new Set([...catalog.accessories.keys()].map((id) => `generated/accessories/${id}.png`));
+    expect(checkAccessories(catalog.accessories.values(), new Set(catalog.quests.keys()), art)).toEqual([]);
+    const fewerShoes = [...catalog.accessories.values()].filter((item, i) => item.slot !== 'shoes' || i % 2 === 0 || item.unlock);
+    expect(checkAccessories(fewerShoes, new Set(catalog.quests.keys()), art)).toEqual([expect.stringMatching(/^accessory slot shoes offers \d+ items from level 1, needs at least 20$/)]);
   });
 
   describe('quest map targets', () => {

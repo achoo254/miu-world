@@ -1,0 +1,102 @@
+{
+  "id": "glasses-ski",
+  "name": "Kính trượt tuyết",
+  "slot": "glasses",
+  "attachNode": "head",
+  "voxelSize": 0.0385,
+  "offset": [
+    0,
+    0,
+    0
+  ],
+  "palette": {
+    "frame": "#fff6f0",
+    "lens": "#f2a03c",
+    "shine": "#ffe2a8",
+    "strap": "#e05a4f"
+  },
+  "variants": {},
+  "boxes": [
+    {
+      "x": -11,
+      "y": 6,
+      "z": 11,
+      "w": 22,
+      "h": 10,
+      "d": 1,
+      "color": "frame"
+    },
+    {
+      "x": -10,
+      "y": 7,
+      "z": 12,
+      "w": 20,
+      "h": 8,
+      "d": 1,
+      "color": "lens"
+    },
+    {
+      "x": -10,
+      "y": 13,
+      "z": 13,
+      "w": 4,
+      "h": 1,
+      "d": 1,
+      "color": "shine"
+    },
+    {
+      "x": -9,
+      "y": 12,
+      "z": 13,
+      "w": 2,
+      "h": 1,
+      "d": 1,
+      "color": "shine"
+    },
+    {
+      "x": 11,
+      "y": 9,
+      "z": 11,
+      "w": 3,
+      "h": 4,
+      "d": 1,
+      "color": "strap"
+    },
+    {
+      "x": -14,
+      "y": 9,
+      "z": 11,
+      "w": 3,
+      "h": 4,
+      "d": 1,
+      "color": "strap"
+    },
+    {
+      "x": 13,
+      "y": 9,
+      "z": -11,
+      "w": 1,
+      "h": 4,
+      "d": 21,
+      "color": "strap"
+    },
+    {
+      "x": -14,
+      "y": 9,
+      "z": -11,
+      "w": 1,
+      "h": 4,
+      "d": 21,
+      "color": "strap"
+    },
+    {
+      "x": -14,
+      "y": 9,
+      "z": -12,
+      "w": 28,
+      "h": 4,
+      "d": 1,
+      "color": "strap"
+    }
+  ]
+}

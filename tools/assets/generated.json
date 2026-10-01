@@ -113,6 +113,12 @@
     "license": "CC0-1.0"
   },
   {
+    "glob": "generated/accessories/*.png",
+    "generator": "tools/assets/render-accessory-art.ts",
+    "derivedFrom": [],
+    "license": "CC0-1.0"
+  },
+  {
     "glob": "generated/review/**/*.png",
     "generator": "tools/assets/render-preview.ts",
     "derivedFrom": [

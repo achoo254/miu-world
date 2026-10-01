@@ -78,8 +78,11 @@
 
 .item-grid {
   list-style: none;
+  max-height: 30rem;
+  overflow-y: auto;
+  overscroll-behavior: contain;
   margin: 0;
-  padding: 0;
+  padding: var(--space-xs); /* keeps the focus ring inside the scroll box */
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(7rem, 1fr));
   gap: var(--space-sm);
@@ -114,6 +117,16 @@
   border-radius: var(--radius-field);
   box-shadow: var(--shadow-tile);
 }
+.item-art-frame {
+  position: relative;
+  width: 4rem;
+  height: 4rem;
+  display: grid;
+  place-items: center;
+}
+.item-art { width: 4rem; height: 4rem; object-fit: contain; }
+.item-tile--locked .item-art { opacity: 0.45; filter: grayscale(0.6); }
+.item-art-lock { position: absolute; inset: 0; display: grid; place-items: center; }
 .item-swatch--none { background: var(--color-surface); border: 3px dashed var(--color-field-edge); box-sizing: border-box; }
 .item-lock { font-weight: 400; }
 

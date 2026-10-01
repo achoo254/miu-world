@@ -1,0 +1,72 @@
+{
+  "id": "hat-top-black",
+  "name": "Mũ ảo thuật đen",
+  "slot": "hat",
+  "attachNode": "head",
+  "voxelSize": 0.0385,
+  "offset": [
+    0,
+    0,
+    0
+  ],
+  "palette": {
+    "hat": "#3b3446",
+    "band": "#e05a4f",
+    "deco": "#fff6f0",
+    "deco2": "#ffd23f"
+  },
+  "variants": {
+    "purple": {
+      "hat": "#6a4bb3",
+      "band": "#ffd23f",
+      "deco2": "#f07fb0"
+    }
+  },
+  "boxes": [
+    {
+      "x": -15,
+      "y": 22,
+      "z": -12,
+      "w": 30,
+      "h": 1,
+      "d": 24,
+      "color": "hat"
+    },
+    {
+      "x": -9,
+      "y": 23,
+      "z": -7,
+      "w": 18,
+      "h": 10,
+      "d": 14,
+      "color": "hat"
+    },
+    {
+      "x": -9,
+      "y": 23,
+      "z": -7,
+      "w": 18,
+      "h": 2,
+      "d": 14,
+      "color": "band"
+    },
+    {
+      "x": 4,
+      "y": 24,
+      "z": 7,
+      "w": 3,
+      "h": 3,
+      "d": 1,
+      "color": "deco"
+    },
+    {
+      "x": 5,
+      "y": 25,
+      "z": 8,
+      "w": 1,
+      "h": 1,
+      "d": 1,
+      "color": "deco2"
+    }
+  ]
+}

@@ -14,7 +14,18 @@ const unlockSchema = z
   .refine((u) => u.level !== undefined || u.quest !== undefined, { message: 'unlock needs a level or a quest' });
 export type AccessoryUnlock = z.infer<typeof unlockSchema>;
 
-export const ACCESSORY_SLOTS = ['hat', 'back', 'wings', 'glasses', 'scarf'] as const;
+export const ACCESSORY_SLOTS = ['hat', 'glasses', 'scarf', 'back', 'wings', 'shoes', 'hand'] as const;
+
+/** Every slot offers at least this many items open from level 1 (checked by `pnpm content:check`). */
+export const MIN_OPEN_ITEMS_PER_SLOT = 20;
+
+/** Limb nodes worn in pairs: a `mirror` accessory authored on one is also worn, mirrored, on the other. */
+export const MIRRORED_NODES: Readonly<Record<string, string>> = {
+  'leg-left': 'leg-right',
+  'leg-right': 'leg-left',
+  'arm-left': 'arm-right',
+  'arm-right': 'arm-left',
+};
 
 const boxSchema = z.object({
   x: int,
@@ -42,6 +53,8 @@ export const accessorySchema = z
     slot: z.enum(ACCESSORY_SLOTS),
     unlock: unlockSchema.optional(),
     attachNode: z.string().min(1),
+    /** Also worn mirrored (x → -x) on the paired limb (`MIRRORED_NODES`): shoes, gloves. Boxes only. */
+    mirror: z.boolean().optional(),
     /** World units per voxel (in character model space, before the rig node's own scale). */
     voxelSize: z.number().positive(),
     /** Position of voxel (0,0,0) relative to the attach node pivot, in model units. */
@@ -56,6 +69,8 @@ export const accessorySchema = z
   })
   .superRefine((def, ctx) => {
     if (def.boxes.length === 0 && !def.layers) ctx.addIssue({ code: 'custom', message: 'accessory needs boxes or layers' });
+    if (def.mirror && !(def.attachNode in MIRRORED_NODES)) ctx.addIssue({ code: 'custom', message: `mirror needs a paired limb node, not "${def.attachNode}"` });
+    if (def.mirror && def.layers) ctx.addIssue({ code: 'custom', message: 'mirror works on boxes only' });
     const used = [...def.boxes.map((b) => b.color), ...Object.values(def.layers?.legend ?? {})];
     for (const color of used) {
       if (!(color in def.palette)) ctx.addIssue({ code: 'custom', message: `color "${color}" is not in the palette` });
@@ -86,6 +101,11 @@ export function parseAccessory(json: unknown): AccessoryDef {
 export function isAccessoryOpen(unlock: AccessoryUnlock | undefined, level: number, completed: ReadonlySet<string>): boolean {
   if (!unlock) return true;
   return (unlock.level === undefined || level >= unlock.level) && (unlock.quest === undefined || completed.has(unlock.quest));
+}
+
+/** Items of `slot` a child can wear from level 1 (no unlock condition). */
+export function openItemsInSlot(items: Iterable<AccessoryItem>, slot: AccessoryDef['slot']): AccessoryItem[] {
+  return [...items].filter((item) => item.slot === slot && !item.unlock);
 }
 
 /** A colour variant sold as its own item: the base accessory's shape with one of its palette variants. */

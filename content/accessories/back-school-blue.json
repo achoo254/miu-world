@@ -1,0 +1,141 @@
+{
+  "id": "back-school-blue",
+  "name": "Cặp sách xanh",
+  "slot": "back",
+  "attachNode": "torso",
+  "voxelSize": 0.0625,
+  "offset": [
+    0,
+    0,
+    0
+  ],
+  "palette": {
+    "bag": "#4f8fd8",
+    "flap": "#3f72b8",
+    "clasp": "#ffd23f",
+    "patch": "#fff6f0",
+    "strap": "#2f4f80"
+  },
+  "variants": {
+    "pink": {
+      "bag": "#f78fbf",
+      "flap": "#d9609a",
+      "strap": "#a8457a"
+    },
+    "orange": {
+      "bag": "#f28a3c",
+      "flap": "#d9722a",
+      "strap": "#8a4a20"
+    }
+  },
+  "boxes": [
+    {
+      "x": -6,
+      "y": 6,
+      "z": -10,
+      "w": 12,
+      "h": 11,
+      "d": 4,
+      "color": "bag"
+    },
+    {
+      "x": -6,
+      "y": 10,
+      "z": -11,
+      "w": 12,
+      "h": 6,
+      "d": 1,
+      "color": "flap"
+    },
+    {
+      "x": -6,
+      "y": 16,
+      "z": -10,
+      "w": 12,
+      "h": 1,
+      "d": 4,
+      "color": "flap"
+    },
+    {
+      "x": -1,
+      "y": 10,
+      "z": -12,
+      "w": 2,
+      "h": 2,
+      "d": 1,
+      "color": "clasp"
+    },
+    {
+      "x": -2,
+      "y": 17,
+      "z": -9,
+      "w": 1,
+      "h": 1,
+      "d": 1,
+      "color": "clasp"
+    },
+    {
+      "x": 1,
+      "y": 17,
+      "z": -9,
+      "w": 1,
+      "h": 1,
+      "d": 1,
+      "color": "clasp"
+    },
+    {
+      "x": -2,
+      "y": 18,
+      "z": -9,
+      "w": 4,
+      "h": 1,
+      "d": 1,
+      "color": "clasp"
+    },
+    {
+      "x": -4,
+      "y": 7,
+      "z": -11,
+      "w": 2,
+      "h": 2,
+      "d": 1,
+      "color": "patch"
+    },
+    {
+      "x": -5,
+      "y": 20,
+      "z": -6,
+      "w": 2,
+      "h": 1,
+      "d": 12,
+      "color": "strap"
+    },
+    {
+      "x": 3,
+      "y": 20,
+      "z": -6,
+      "w": 2,
+      "h": 1,
+      "d": 12,
+      "color": "strap"
+    },
+    {
+      "x": -5,
+      "y": 12,
+      "z": 5,
+      "w": 2,
+      "h": 9,
+      "d": 1,
+      "color": "strap"
+    },
+    {
+      "x": 3,
+      "y": 12,
+      "z": 5,
+      "w": 2,
+      "h": 9,
+      "d": 1,
+      "color": "strap"
+    }
+  ]
+}

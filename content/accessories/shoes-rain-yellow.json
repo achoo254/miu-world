@@ -1,0 +1,95 @@
+{
+  "id": "shoes-rain-yellow",
+  "name": "Ủng đi mưa vàng",
+  "slot": "shoes",
+  "attachNode": "leg-left",
+  "voxelSize": 0.05,
+  "offset": [
+    0,
+    0,
+    0
+  ],
+  "mirror": true,
+  "palette": {
+    "sole": "#8a5a35",
+    "main": "#ffd23f",
+    "cuff": "#f0a82a",
+    "dot": "#fff6f0"
+  },
+  "variants": {
+    "red": {
+      "main": "#e05a4f",
+      "cuff": "#b8382f"
+    },
+    "green": {
+      "main": "#6fbf5a",
+      "cuff": "#467a39",
+      "dot": "#ffd23f"
+    }
+  },
+  "boxes": [
+    {
+      "x": -4,
+      "y": -10,
+      "z": -4,
+      "w": 8,
+      "h": 1,
+      "d": 9,
+      "color": "sole"
+    },
+    {
+      "x": -4,
+      "y": -9,
+      "z": -4,
+      "w": 8,
+      "h": 4,
+      "d": 9,
+      "color": "main"
+    },
+    {
+      "x": -4,
+      "y": -5,
+      "z": -4,
+      "w": 8,
+      "h": 3,
+      "d": 8,
+      "color": "main"
+    },
+    {
+      "x": -4,
+      "y": -2,
+      "z": -4,
+      "w": 8,
+      "h": 1,
+      "d": 8,
+      "color": "cuff"
+    },
+    {
+      "x": 3,
+      "y": -4,
+      "z": -1,
+      "w": 1,
+      "h": 1,
+      "d": 1,
+      "color": "dot"
+    },
+    {
+      "x": -4,
+      "y": -7,
+      "z": 1,
+      "w": 1,
+      "h": 1,
+      "d": 1,
+      "color": "dot"
+    },
+    {
+      "x": 3,
+      "y": -7,
+      "z": 2,
+      "w": 1,
+      "h": 1,
+      "d": 1,
+      "color": "dot"
+    }
+  ]
+}

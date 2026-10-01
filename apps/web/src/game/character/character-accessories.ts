@@ -13,7 +13,7 @@ import {
   type Object3D,
 } from 'three';
 import type { AccessoryDef } from '@miu/voxel/accessory-schema';
-import { buildAccessoryMesh } from '@miu/voxel/voxel-accessory';
+import { buildAccessoryMesh, mirroredAccessory } from '@miu/voxel/voxel-accessory';
 import { resolveOutfitEntry } from '../content/accessories';
 
 const DEG = Math.PI / 180;
@@ -61,7 +61,7 @@ export function attachAccessory(character: Object3D, def: AccessoryDef, mesh: Me
 }
 
 export interface WornOutfit {
-  /** Entries actually attached, in order. */
+  /** Entries actually attached, in order (a mirrored pair is one entry, two meshes). */
   entries: string[];
   /** Entries that could not be attached (unknown id or colour, missing node), with the reason. */
   skipped: Array<{ entry: string; error: unknown }>;
@@ -77,11 +77,16 @@ export function dressCharacter(character: Object3D, entries: readonly string[], 
   for (const entry of entries) {
     try {
       const { def, variant } = resolveOutfitEntry(entry);
-      const mesh = createAccessoryMesh(def, variant);
-      mesh.castShadow = castShadow;
-      attachAccessory(character, def, mesh, scaleFor(def.attachNode));
+      // A pair (shoes) is two meshes: the authored one and its mirror on the other limb.
+      const parts = def.mirror ? [def, mirroredAccessory(def)] : [def];
+      const meshes = parts.map((part) => {
+        const mesh = createAccessoryMesh(part, variant);
+        mesh.castShadow = castShadow;
+        attachAccessory(character, part, mesh, scaleFor(part.attachNode));
+        return mesh;
+      });
       worn.entries.push(entry);
-      worn.meshes.push(mesh);
+      worn.meshes.push(...meshes);
     } catch (error) {
       worn.skipped.push({ entry, error });
     }

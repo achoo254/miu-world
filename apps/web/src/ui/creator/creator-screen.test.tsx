@@ -131,7 +131,7 @@ describe('Character Creator', () => {
     fireEvent.click(screen.getByRole('tab', { name: 'Balo' }));
     fireEvent.click(screen.getByRole('button', { name: /Balo xanh lá/ }));
     expect(previews.commands.at(-1)).toEqual({ type: 'set-outfit', equipped: ['hat-witch-pink', 'backpack-green'] });
-    expect(document.querySelector('[data-id="creator-slot-coming-Cánh"]')?.getAttribute('aria-disabled')).toBe('true');
+    expect(document.querySelector('[data-id="creator-slot-coming-Áo"]')?.getAttribute('aria-disabled')).toBe('true');
 
     fireEvent.click(screen.getByRole('button', { name: 'Vui mừng' }));
     expect(previews.emotes).toEqual(['cheer']);
@@ -146,6 +146,32 @@ describe('Character Creator', () => {
     expect(puts).toEqual([{ name: 'Mochi', equipped: ['hat-witch-pink', 'backpack-green'], species: 'cat', pet: null }]);
     view.unmount();
     expect(previews.live).toBe(0);
+  });
+
+  it('offers at least 20 open items with a picture in every slot from level 1, and wears one of each', async () => {
+    stubApi();
+    renderCreator();
+    fireEvent.click(await screen.findByRole('button', { name: /Mèo/ }));
+    const picks: Record<string, RegExp> = {
+      Mũ: /Nón lá nơ đỏ/,
+      Kính: /Kính tròn đen/,
+      Khăn: /Khăn quàng đỏ/,
+      Balo: /Cặp sách xanh/,
+      Cánh: /Cánh bướm hồng/,
+      Giày: /Giày thể thao đỏ/,
+      'Cầm tay': /Đèn ông sao đỏ/,
+    };
+    for (const [tab, item] of Object.entries(picks)) {
+      fireEvent.click(screen.getByRole('tab', { name: tab }));
+      const tiles = screen.getAllByRole('button').filter((b) => b.dataset.id?.startsWith('creator-item-') && !b.dataset.id.startsWith('creator-item-none'));
+      expect(tiles.filter((t) => !(t as HTMLButtonElement).disabled).length).toBeGreaterThanOrEqual(20);
+      expect(tiles.every((t) => t.querySelector('img.item-art')?.getAttribute('src')?.startsWith('/game-assets/generated/accessories/'))).toBe(true);
+      fireEvent.click(screen.getByRole('button', { name: item }));
+    }
+    expect(previews.commands.at(-1)).toEqual({
+      type: 'set-outfit',
+      equipped: ['hat-non-la-red', 'glasses-round-black', 'scarf-pioneer', 'back-school-blue', 'wings-butterfly-pink', 'shoes-sneaker-red', 'hand-lantern-red'],
+    });
   });
 
   it('opens items once the level or quest is reached', async () => {

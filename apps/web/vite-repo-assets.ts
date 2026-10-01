@@ -5,6 +5,7 @@ import { copyFile, mkdir, readFile, stat } from 'node:fs/promises';
 import type { ServerResponse } from 'node:http';
 import path from 'node:path';
 import type { Plugin } from 'vite';
+import { ACCESSORY_ART_DIR } from '../../packages/schema/src/accessory-art';
 import { WORLD_OVERVIEW_MAP } from '../../packages/voxel/src/world-overview';
 
 export const ASSET_PREFIX = '/game-assets/';
@@ -18,8 +19,8 @@ const MIME: Record<string, string> = {
   '.woff2': 'font/woff2',
 };
 
-/** Always shipped: whole generated groups the runtime reads by path. */
-const SHIPPED_PREFIXES = ['generated/atlas/', 'generated/world/', 'generated/characters/', 'generated/sounds/'];
+/** Always shipped: whole generated groups the runtime reads by path (the creator's item pictures by item id). */
+const SHIPPED_PREFIXES = ['generated/atlas/', 'generated/world/', 'generated/characters/', 'generated/sounds/', ACCESSORY_ART_DIR];
 /** Shipped with the review pages only: screenshots, renders and measurements for the owner's review. */
 const REVIEW_PREFIX = 'generated/review/';
 /** Maps that only exist to be rendered into an image at build time (the world overview): never shipped. */

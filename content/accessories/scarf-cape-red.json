@@ -1,0 +1,115 @@
+{
+  "id": "scarf-cape-red",
+  "name": "Áo choàng siêu nhân đỏ",
+  "slot": "scarf",
+  "attachNode": "torso",
+  "voxelSize": 0.0625,
+  "offset": [
+    0,
+    -0.1875,
+    0
+  ],
+  "palette": {
+    "main": "#d9463d",
+    "clasp": "#ffd23f",
+    "emblem": "#ffd23f"
+  },
+  "variants": {
+    "blue": {
+      "main": "#3f82c4",
+      "emblem": "#fff6f0"
+    }
+  },
+  "boxes": [
+    {
+      "x": -8,
+      "y": 18,
+      "z": -6,
+      "w": 16,
+      "h": 2,
+      "d": 12,
+      "color": "main"
+    },
+    {
+      "x": -9,
+      "y": 3,
+      "z": -9,
+      "w": 18,
+      "h": 16,
+      "d": 2,
+      "color": "main"
+    },
+    {
+      "x": -8,
+      "y": 2,
+      "z": -9,
+      "w": 16,
+      "h": 1,
+      "d": 2,
+      "color": "main"
+    },
+    {
+      "x": -9,
+      "y": 18,
+      "z": -8,
+      "w": 18,
+      "h": 1,
+      "d": 2,
+      "color": "main"
+    },
+    {
+      "x": -1,
+      "y": 17,
+      "z": 6,
+      "w": 2,
+      "h": 2,
+      "d": 1,
+      "color": "clasp"
+    },
+    {
+      "x": -1,
+      "y": 13,
+      "z": -10,
+      "w": 1,
+      "h": 1,
+      "d": 1,
+      "color": "emblem"
+    },
+    {
+      "x": -2,
+      "y": 12,
+      "z": -10,
+      "w": 3,
+      "h": 1,
+      "d": 1,
+      "color": "emblem"
+    },
+    {
+      "x": -3,
+      "y": 11,
+      "z": -10,
+      "w": 5,
+      "h": 1,
+      "d": 1,
+      "color": "emblem"
+    },
+    {
+      "x": -2,
+      "y": 10,
+      "z": -10,
+      "w": 1,
+      "h": 1,
+      "d": 1,
+      "color": "emblem"
+    },
+    {
+      "x": 0,
+      "y": 10,
+      "z": -10,
+      "w": 1,
+      "h": 1,
+      "d": 1,
+      "color": "emblem"
+    }
+  ]
+}

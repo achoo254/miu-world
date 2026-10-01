@@ -1,0 +1,114 @@
+{
+  "id": "shoes-sneaker-red",
+  "name": "Giày thể thao đỏ",
+  "slot": "shoes",
+  "attachNode": "leg-left",
+  "voxelSize": 0.05,
+  "offset": [
+    0,
+    0,
+    0
+  ],
+  "mirror": true,
+  "palette": {
+    "sole": "#fff6f0",
+    "main": "#e05a4f",
+    "cap": "#fff6f0",
+    "lace": "#fff6f0",
+    "stripe": "#ffd23f"
+  },
+  "variants": {
+    "blue": {
+      "main": "#4f8fd8"
+    },
+    "pink": {
+      "main": "#f78fbf",
+      "stripe": "#a77ad8"
+    },
+    "green": {
+      "main": "#5fb84f"
+    },
+    "yellow": {
+      "main": "#ffd23f",
+      "stripe": "#e05a4f"
+    },
+    "purple": {
+      "main": "#8a63c4",
+      "stripe": "#7fd8be"
+    }
+  },
+  "boxes": [
+    {
+      "x": -4,
+      "y": -10,
+      "z": -4,
+      "w": 8,
+      "h": 1,
+      "d": 9,
+      "color": "sole"
+    },
+    {
+      "x": -4,
+      "y": -9,
+      "z": -4,
+      "w": 8,
+      "h": 4,
+      "d": 9,
+      "color": "main"
+    },
+    {
+      "x": -4,
+      "y": -9,
+      "z": 3,
+      "w": 8,
+      "h": 1,
+      "d": 2,
+      "color": "cap"
+    },
+    {
+      "x": -2,
+      "y": -6,
+      "z": 0,
+      "w": 4,
+      "h": 1,
+      "d": 1,
+      "color": "lace"
+    },
+    {
+      "x": -2,
+      "y": -6,
+      "z": 2,
+      "w": 4,
+      "h": 1,
+      "d": 1,
+      "color": "lace"
+    },
+    {
+      "x": 3,
+      "y": -8,
+      "z": -2,
+      "w": 1,
+      "h": 1,
+      "d": 4,
+      "color": "stripe"
+    },
+    {
+      "x": -4,
+      "y": -8,
+      "z": -2,
+      "w": 1,
+      "h": 1,
+      "d": 4,
+      "color": "stripe"
+    },
+    {
+      "x": -1,
+      "y": -5,
+      "z": -4,
+      "w": 2,
+      "h": 1,
+      "d": 1,
+      "color": "cap"
+    }
+  ]
+}

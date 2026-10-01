@@ -1,0 +1,85 @@
+{
+  "id": "hat-beanie-red",
+  "name": "Mũ len đỏ",
+  "slot": "hat",
+  "attachNode": "head",
+  "voxelSize": 0.0385,
+  "offset": [
+    0,
+    0,
+    0
+  ],
+  "palette": {
+    "knit": "#e05a4f",
+    "rim": "#fff6f0",
+    "stripe": "#ffd23f",
+    "pom": "#fff6f0"
+  },
+  "variants": {
+    "blue": {
+      "knit": "#5fa8e8",
+      "stripe": "#fff6f0"
+    },
+    "green": {
+      "knit": "#6fbf5a",
+      "stripe": "#f07fb0",
+      "pom": "#ffd23f"
+    }
+  },
+  "boxes": [
+    {
+      "x": -14,
+      "y": 17,
+      "z": -11,
+      "w": 28,
+      "h": 3,
+      "d": 22,
+      "color": "rim"
+    },
+    {
+      "x": -13,
+      "y": 20,
+      "z": -10,
+      "w": 26,
+      "h": 3,
+      "d": 20,
+      "color": "knit"
+    },
+    {
+      "x": -13,
+      "y": 21,
+      "z": -10,
+      "w": 26,
+      "h": 1,
+      "d": 20,
+      "color": "stripe"
+    },
+    {
+      "x": -12,
+      "y": 23,
+      "z": -9,
+      "w": 24,
+      "h": 2,
+      "d": 18,
+      "color": "knit"
+    },
+    {
+      "x": -9,
+      "y": 25,
+      "z": -7,
+      "w": 18,
+      "h": 1,
+      "d": 14,
+      "color": "knit"
+    },
+    {
+      "x": -2,
+      "y": 26,
+      "z": -2,
+      "w": 4,
+      "h": 3,
+      "d": 4,
+      "color": "pom"
+    }
+  ]
+}

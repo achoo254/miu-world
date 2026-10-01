@@ -1,0 +1,104 @@
+{
+  "id": "shoes-skates",
+  "name": "Giày patin",
+  "slot": "shoes",
+  "attachNode": "leg-left",
+  "voxelSize": 0.05,
+  "offset": [
+    0,
+    0,
+    0
+  ],
+  "mirror": true,
+  "palette": {
+    "plate": "#8a8396",
+    "main": "#5fc4e8",
+    "cap": "#fff6f0",
+    "lace": "#ffd23f",
+    "wheel": "#f07fb0"
+  },
+  "variants": {},
+  "boxes": [
+    {
+      "x": -4,
+      "y": -10,
+      "z": -4,
+      "w": 8,
+      "h": 1,
+      "d": 9,
+      "color": "plate"
+    },
+    {
+      "x": -4,
+      "y": -9,
+      "z": -4,
+      "w": 8,
+      "h": 5,
+      "d": 9,
+      "color": "main"
+    },
+    {
+      "x": -4,
+      "y": -9,
+      "z": 3,
+      "w": 8,
+      "h": 1,
+      "d": 2,
+      "color": "cap"
+    },
+    {
+      "x": -2,
+      "y": -5,
+      "z": -1,
+      "w": 4,
+      "h": 1,
+      "d": 1,
+      "color": "lace"
+    },
+    {
+      "x": -2,
+      "y": -5,
+      "z": 1,
+      "w": 4,
+      "h": 1,
+      "d": 1,
+      "color": "lace"
+    },
+    {
+      "x": -4,
+      "y": -11,
+      "z": -3,
+      "w": 1,
+      "h": 1,
+      "d": 2,
+      "color": "wheel"
+    },
+    {
+      "x": 3,
+      "y": -11,
+      "z": -3,
+      "w": 1,
+      "h": 1,
+      "d": 2,
+      "color": "wheel"
+    },
+    {
+      "x": -4,
+      "y": -11,
+      "z": 2,
+      "w": 1,
+      "h": 1,
+      "d": 2,
+      "color": "wheel"
+    },
+    {
+      "x": 3,
+      "y": -11,
+      "z": 2,
+      "w": 1,
+      "h": 1,
+      "d": 2,
+      "color": "wheel"
+    }
+  ]
+}

@@ -2,12 +2,14 @@
 // Map shots: ?shot=top|iso|bridge|tree|npc|view:…&quality=…&region=… runs the game with a fixed review camera.
 // Model shots: ?model=<manifest path>&anim=<clip>&t=<seconds>&yaw=<deg>&pitch=<deg>&size=<px>
 //        &acc=<id[:variant],id[:variant]>&accScale=<node:scale,...>&bg=<css colour | transparent>
+// Item shots: ?item=<accessory id>&yaw=…&pitch=…&size=…&bg=… renders one wearable item alone (a pair side by side).
 // Sets document.body.dataset.ready = '1' once the frame is drawn (or data-error on failure).
 import {
   AnimationMixer,
   Box3,
   Color,
   DirectionalLight,
+  Group,
   HemisphereLight,
   PerspectiveCamera,
   Scene,
@@ -18,7 +20,9 @@ import {
 } from 'three';
 import { createGameStore } from '../game-bridge/game-store';
 import { AssetRegistry, GuardedGltfLoader } from '../game/asset-loader';
-import { dressCharacter } from '../game/character/character-accessories';
+import { mirroredAccessory } from '@miu/voxel/voxel-accessory';
+import { createAccessoryMesh, dressCharacter } from '../game/character/character-accessories';
+import { resolveOutfitEntry } from '../game/content/accessories';
 import { Game } from '../game/game';
 import '../ui/styles.css';
 import { renderWorldOverview } from './world-overview-shot';
@@ -26,30 +30,12 @@ import { renderWorldOverview } from './world-overview-shot';
 const params = new URLSearchParams(window.location.search);
 const size = Number(params.get('size') ?? 512);
 
-async function render(): Promise<void> {
-  const registry = await AssetRegistry.load();
-  const loader = new GuardedGltfLoader(registry);
-  // `bg=transparent`: an icon for the UI, cut out on its own (body and page stay see-through too).
-  const transparent = params.get('bg') === 'transparent';
-  if (transparent) for (const el of [document.documentElement, document.body]) el.style.background = 'transparent';
-  const renderer = new WebGLRenderer({ antialias: true, preserveDrawingBuffer: true, alpha: transparent });
-  renderer.setPixelRatio(1);
-  renderer.setSize(size, size);
-  renderer.outputColorSpace = SRGBColorSpace;
-  document.body.appendChild(renderer.domElement);
-
-  const scene = new Scene();
-  scene.background = transparent ? null : new Color(params.get('bg') ?? '#eaf3ff');
-  scene.add(new HemisphereLight('#ffffff', '#b9c6d8', 2.2));
-  const sun = new DirectionalLight('#ffffff', 1.6);
-  sun.position.set(3, 6, 5);
-  scene.add(sun);
-
+/** The character of `?model=`, dressed in `?acc=` and posed at `?anim=`/`?t=`. */
+async function posedCharacter(loader: GuardedGltfLoader): Promise<Object3D> {
   const modelPath = params.get('model');
   if (!modelPath) throw new Error('missing ?model=');
   const gltf = await loader.load(modelPath);
   const model: Object3D = gltf.scene;
-  scene.add(model);
   const accScale = new Map(
     (params.get('accScale') ?? '')
       .split(',')
@@ -71,6 +57,50 @@ async function render(): Promise<void> {
     mixer.clipAction(clip).play();
     mixer.setTime(Number(params.get('t') ?? 0));
   }
+  return model;
+}
+
+/** One item on its own, in its attach-node space; a pair (shoes) shows both halves side by side. */
+function itemModel(entry: string): Object3D {
+  const { def, variant } = resolveOutfitEntry(entry);
+  const group = new Group();
+  const first = createAccessoryMesh(def, variant);
+  group.add(first);
+  if (def.mirror) {
+    const second = createAccessoryMesh(mirroredAccessory(def), variant);
+    // Both halves sit on their own pivot (x = 0): pull them apart by the width of one.
+    first.geometry.computeBoundingBox();
+    const box = first.geometry.boundingBox;
+    const gap = box ? box.max.x - box.min.x : 0;
+    first.position.x = gap * 0.6;
+    second.position.x = -gap * 0.6;
+    group.add(second);
+  }
+  return group;
+}
+
+async function render(): Promise<void> {
+  const registry = await AssetRegistry.load();
+  const loader = new GuardedGltfLoader(registry);
+  // `bg=transparent`: an icon for the UI, cut out on its own (body and page stay see-through too).
+  const transparent = params.get('bg') === 'transparent';
+  if (transparent) for (const el of [document.documentElement, document.body]) el.style.background = 'transparent';
+  const renderer = new WebGLRenderer({ antialias: true, preserveDrawingBuffer: true, alpha: transparent });
+  renderer.setPixelRatio(1);
+  renderer.setSize(size, size);
+  renderer.outputColorSpace = SRGBColorSpace;
+  document.body.appendChild(renderer.domElement);
+
+  const scene = new Scene();
+  scene.background = transparent ? null : new Color(params.get('bg') ?? '#eaf3ff');
+  scene.add(new HemisphereLight('#ffffff', '#b9c6d8', 2.2));
+  const sun = new DirectionalLight('#ffffff', 1.6);
+  sun.position.set(3, 6, 5);
+  scene.add(sun);
+
+  const itemId = params.get('item');
+  const model = itemId ? itemModel(itemId) : await posedCharacter(loader);
+  scene.add(model);
   model.updateMatrixWorld(true);
 
   // Frame the posed model (skinned bounds) so raised arms or jumps stay in view.

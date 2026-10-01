@@ -1,0 +1,110 @@
+{
+  "id": "shoes-bunny-pink",
+  "name": "Dép thỏ bông hồng",
+  "slot": "shoes",
+  "attachNode": "leg-left",
+  "voxelSize": 0.05,
+  "offset": [
+    0,
+    0,
+    0
+  ],
+  "mirror": true,
+  "palette": {
+    "fur": "#f9c4d8",
+    "sole": "#d9609a",
+    "nose": "#e05a8a",
+    "eye": "#2f2130",
+    "inner": "#fff6f0"
+  },
+  "variants": {
+    "white": {
+      "fur": "#fff6f0",
+      "sole": "#c0b4c8",
+      "inner": "#f6a5c0"
+    }
+  },
+  "boxes": [
+    {
+      "x": -4,
+      "y": -10,
+      "z": -4,
+      "w": 8,
+      "h": 4,
+      "d": 10,
+      "color": "fur"
+    },
+    {
+      "x": -4,
+      "y": -10,
+      "z": -4,
+      "w": 8,
+      "h": 1,
+      "d": 10,
+      "color": "sole"
+    },
+    {
+      "x": -1,
+      "y": -9,
+      "z": 6,
+      "w": 2,
+      "h": 1,
+      "d": 1,
+      "color": "nose"
+    },
+    {
+      "x": -3,
+      "y": -8,
+      "z": 6,
+      "w": 1,
+      "h": 1,
+      "d": 1,
+      "color": "eye"
+    },
+    {
+      "x": 2,
+      "y": -8,
+      "z": 6,
+      "w": 1,
+      "h": 1,
+      "d": 1,
+      "color": "eye"
+    },
+    {
+      "x": -3,
+      "y": -6,
+      "z": 1,
+      "w": 1,
+      "h": 4,
+      "d": 2,
+      "color": "fur"
+    },
+    {
+      "x": 2,
+      "y": -6,
+      "z": 1,
+      "w": 1,
+      "h": 4,
+      "d": 2,
+      "color": "fur"
+    },
+    {
+      "x": -3,
+      "y": -5,
+      "z": 3,
+      "w": 1,
+      "h": 2,
+      "d": 1,
+      "color": "inner"
+    },
+    {
+      "x": 2,
+      "y": -5,
+      "z": 3,
+      "w": 1,
+      "h": 2,
+      "d": 1,
+      "color": "inner"
+    }
+  ]
+}

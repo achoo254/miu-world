@@ -1,0 +1,89 @@
+{
+  "id": "hat-helmet-yellow",
+  "name": "Mũ bảo hiểm vàng",
+  "slot": "hat",
+  "attachNode": "head",
+  "voxelSize": 0.0385,
+  "offset": [
+    0,
+    0,
+    0
+  ],
+  "palette": {
+    "shell": "#ffd23f",
+    "stripe": "#fff6f0",
+    "visor": "#5a4a6a",
+    "strap": "#5a4a6a"
+  },
+  "variants": {
+    "pink": {
+      "shell": "#f78fbf",
+      "stripe": "#ffd23f"
+    }
+  },
+  "boxes": [
+    {
+      "x": -14,
+      "y": 16,
+      "z": -11,
+      "w": 28,
+      "h": 6,
+      "d": 22,
+      "color": "shell"
+    },
+    {
+      "x": -13,
+      "y": 22,
+      "z": -10,
+      "w": 26,
+      "h": 2,
+      "d": 20,
+      "color": "shell"
+    },
+    {
+      "x": -10,
+      "y": 24,
+      "z": -7,
+      "w": 20,
+      "h": 1,
+      "d": 14,
+      "color": "shell"
+    },
+    {
+      "x": -2,
+      "y": 16,
+      "z": -11,
+      "w": 4,
+      "h": 9,
+      "d": 22,
+      "color": "stripe"
+    },
+    {
+      "x": -12,
+      "y": 16,
+      "z": 11,
+      "w": 24,
+      "h": 1,
+      "d": 3,
+      "color": "visor"
+    },
+    {
+      "x": -14,
+      "y": 9,
+      "z": -1,
+      "w": 1,
+      "h": 7,
+      "d": 2,
+      "color": "strap"
+    },
+    {
+      "x": 13,
+      "y": 9,
+      "z": -1,
+      "w": 1,
+      "h": 7,
+      "d": 2,
+      "color": "strap"
+    }
+  ]
+}

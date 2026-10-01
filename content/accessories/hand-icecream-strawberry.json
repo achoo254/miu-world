@@ -1,0 +1,134 @@
+{
+  "id": "hand-icecream-strawberry",
+  "name": "Kem dâu",
+  "slot": "hand",
+  "attachNode": "arm-right",
+  "voxelSize": 0.075,
+  "offset": [
+    -0.15,
+    -0.425,
+    0.0
+  ],
+  "rotation": [
+    15,
+    0,
+    0
+  ],
+  "palette": {
+    "cone": "#e0a35a",
+    "wafer": "#b8763a",
+    "scoop": "#f9a8c8",
+    "cherry": "#e8463d"
+  },
+  "variants": {
+    "chocolate": {
+      "scoop": "#8a5a35",
+      "cherry": "#fff6f0"
+    },
+    "mint": {
+      "scoop": "#a8ecd4",
+      "cherry": "#5c3b20"
+    }
+  },
+  "boxes": [
+    {
+      "x": 0,
+      "y": -3,
+      "z": 0,
+      "w": 1,
+      "h": 2,
+      "d": 1,
+      "color": "cone"
+    },
+    {
+      "x": -1,
+      "y": -1,
+      "z": -1,
+      "w": 3,
+      "h": 2,
+      "d": 3,
+      "color": "cone"
+    },
+    {
+      "x": -2,
+      "y": 1,
+      "z": -2,
+      "w": 5,
+      "h": 2,
+      "d": 5,
+      "color": "cone"
+    },
+    {
+      "x": -2,
+      "y": 1,
+      "z": 2,
+      "w": 1,
+      "h": 2,
+      "d": 1,
+      "color": "wafer"
+    },
+    {
+      "x": 0,
+      "y": 1,
+      "z": 2,
+      "w": 1,
+      "h": 2,
+      "d": 1,
+      "color": "wafer"
+    },
+    {
+      "x": 2,
+      "y": 1,
+      "z": 2,
+      "w": 1,
+      "h": 2,
+      "d": 1,
+      "color": "wafer"
+    },
+    {
+      "x": -2,
+      "y": 3,
+      "z": -2,
+      "w": 5,
+      "h": 1,
+      "d": 5,
+      "color": "scoop"
+    },
+    {
+      "x": -3,
+      "y": 4,
+      "z": -3,
+      "w": 7,
+      "h": 2,
+      "d": 7,
+      "color": "scoop"
+    },
+    {
+      "x": -2,
+      "y": 6,
+      "z": -2,
+      "w": 5,
+      "h": 1,
+      "d": 5,
+      "color": "scoop"
+    },
+    {
+      "x": -3,
+      "y": 3,
+      "z": 3,
+      "w": 1,
+      "h": 1,
+      "d": 1,
+      "color": "scoop"
+    },
+    {
+      "x": 0,
+      "y": 7,
+      "z": 0,
+      "w": 1,
+      "h": 1,
+      "d": 1,
+      "color": "cherry"
+    }
+  ]
+}

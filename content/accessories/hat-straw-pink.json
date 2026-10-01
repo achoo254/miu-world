@@ -1,0 +1,81 @@
+{
+  "id": "hat-straw-pink",
+  "name": "Mũ rơm nơ hồng",
+  "slot": "hat",
+  "attachNode": "head",
+  "voxelSize": 0.0385,
+  "offset": [
+    0,
+    0,
+    0
+  ],
+  "palette": {
+    "straw": "#f0d78c",
+    "band": "#f07fb0",
+    "flower": "#fff6f0",
+    "center": "#ffd23f"
+  },
+  "variants": {
+    "blue": {
+      "band": "#5fa8e8",
+      "flower": "#ffd23f",
+      "center": "#e05a4f"
+    }
+  },
+  "boxes": [
+    {
+      "x": -17,
+      "y": 22,
+      "z": -15,
+      "w": 34,
+      "h": 1,
+      "d": 30,
+      "color": "straw"
+    },
+    {
+      "x": -10,
+      "y": 23,
+      "z": -8,
+      "w": 20,
+      "h": 5,
+      "d": 16,
+      "color": "straw"
+    },
+    {
+      "x": -9,
+      "y": 28,
+      "z": -7,
+      "w": 18,
+      "h": 1,
+      "d": 14,
+      "color": "straw"
+    },
+    {
+      "x": -10,
+      "y": 23,
+      "z": -8,
+      "w": 20,
+      "h": 2,
+      "d": 16,
+      "color": "band"
+    },
+    {
+      "x": 4,
+      "y": 24,
+      "z": 8,
+      "w": 3,
+      "h": 3,
+      "d": 1,
+      "color": "flower"
+    },
+    {
+      "x": 5,
+      "y": 25,
+      "z": 9,
+      "w": 1,
+      "h": 1,
+      "d": 1,
+      "color": "center"
+    }
+  ]
+}

@@ -1,0 +1,107 @@
+{
+  "id": "shoes-sandal-brown",
+  "name": "Dép quai hậu nâu",
+  "slot": "shoes",
+  "attachNode": "leg-left",
+  "voxelSize": 0.05,
+  "offset": [
+    0,
+    0,
+    0
+  ],
+  "mirror": true,
+  "palette": {
+    "sole": "#6b4a2e",
+    "strap": "#a8693a",
+    "buckle": "#ffd23f"
+  },
+  "variants": {
+    "blue": {
+      "sole": "#2f5f99",
+      "strap": "#5fa8e8"
+    }
+  },
+  "boxes": [
+    {
+      "x": -4,
+      "y": -10,
+      "z": -4,
+      "w": 8,
+      "h": 1,
+      "d": 9,
+      "color": "sole"
+    },
+    {
+      "x": -4,
+      "y": -8,
+      "z": -4,
+      "w": 8,
+      "h": 1,
+      "d": 1,
+      "color": "strap"
+    },
+    {
+      "x": -4,
+      "y": -8,
+      "z": 4,
+      "w": 8,
+      "h": 1,
+      "d": 1,
+      "color": "strap"
+    },
+    {
+      "x": -4,
+      "y": -8,
+      "z": -3,
+      "w": 1,
+      "h": 1,
+      "d": 7,
+      "color": "strap"
+    },
+    {
+      "x": 3,
+      "y": -8,
+      "z": -3,
+      "w": 1,
+      "h": 1,
+      "d": 7,
+      "color": "strap"
+    },
+    {
+      "x": -4,
+      "y": -9,
+      "z": 3,
+      "w": 8,
+      "h": 1,
+      "d": 2,
+      "color": "strap"
+    },
+    {
+      "x": -4,
+      "y": -7,
+      "z": -4,
+      "w": 8,
+      "h": 1,
+      "d": 1,
+      "color": "strap"
+    },
+    {
+      "x": 3,
+      "y": -8,
+      "z": -1,
+      "w": 1,
+      "h": 1,
+      "d": 1,
+      "color": "buckle"
+    },
+    {
+      "x": -4,
+      "y": -8,
+      "z": -1,
+      "w": 1,
+      "h": 1,
+      "d": 1,
+      "color": "buckle"
+    }
+  ]
+}

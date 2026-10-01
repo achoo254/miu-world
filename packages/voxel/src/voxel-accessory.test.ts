@@ -2,7 +2,7 @@ import { readFileSync, readdirSync } from 'node:fs';
 import path from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { buildAccessoryCatalog, parseAccessory } from './accessory-schema';
-import { MAX_ACCESSORY_TRIANGLES, buildAccessoryMesh } from './voxel-accessory';
+import { MAX_ACCESSORY_TRIANGLES, buildAccessoryMesh, mirroredAccessory } from './voxel-accessory';
 
 const CONTENT = path.resolve(import.meta.dirname, '../../../content/accessories');
 
@@ -28,6 +28,18 @@ describe('accessory schema', () => {
   it('rejects an unknown slot and non-integer boxes', () => {
     expect(() => parseAccessory(base({ slot: 'cape' }))).toThrow();
     expect(() => parseAccessory(base({ boxes: [{ x: 0.5, y: 0, z: 0, w: 1, h: 1, d: 1, color: 'a' }] }))).toThrow();
+  });
+
+  it('mirrors only boxes on a paired limb', () => {
+    expect(() => parseAccessory(base({ mirror: true }))).toThrow(/paired limb/);
+    expect(() => parseAccessory(base({ attachNode: 'leg-left', mirror: true, boxes: [], layers: { origin: [0, 0, 0], legend: { A: 'a' }, rows: [['A']] } }))).toThrow(
+      /boxes only/,
+    );
+    const shoe = parseAccessory(base({ attachNode: 'leg-left', mirror: true, offset: [0.1, 0, 0.2], rotation: [10, 20, 30] }));
+    const other = mirroredAccessory(shoe);
+    expect(other).toMatchObject({ attachNode: 'leg-right', mirror: false, offset: [-0.1, 0, 0.2], rotation: [10, -20, -30] });
+    expect(other.boxes[0]).toMatchObject({ x: -2, w: 2 });
+    expect(buildAccessoryMesh(other).triangles).toBe(buildAccessoryMesh(shoe).triangles);
   });
 
   it('rejects a variant overriding an unknown color', () => {

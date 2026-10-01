@@ -2,6 +2,7 @@
 // manifest, and lists the review decisions TypeSafe Jev took on the owner's behalf.
 import { MANIFEST_VERSION, manifestVersions, versioned } from '../asset-versions';
 import { ASSET_PREFIX } from '../game/asset-loader';
+import { ACCESSORIES } from '../game/content/accessories';
 import palette from '../../../../content/palette.json';
 import '../ui/fonts.css';
 import './review.css';
@@ -149,6 +150,7 @@ function renderGallery(generated: string[]): void {
   const accessoryCaption = (key: string): string => {
     if (key.startsWith('miu-outfit-turn-')) return `Trọn bộ · góc ${key.split('-').pop() ?? ''}°`;
     if (key.startsWith('miu-variant-')) return `Biến thể màu: ${key.replace('miu-variant-', '').replace('-', ' + ')}`;
+    if (key.startsWith('item-')) return ACCESSORIES.get(key.replace('item-', ''))?.name ?? key;
     const clip = key.replace('miu-outfit-', '');
     return `Trọn bộ · ${CLIP_LABEL[clip] ?? clip}`;
   };

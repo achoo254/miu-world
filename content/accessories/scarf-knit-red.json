@@ -1,0 +1,135 @@
+{
+  "id": "scarf-knit-red",
+  "name": "Khăn len đỏ",
+  "slot": "scarf",
+  "attachNode": "torso",
+  "voxelSize": 0.0625,
+  "offset": [
+    0,
+    -0.1875,
+    0
+  ],
+  "palette": {
+    "main": "#e05a4f",
+    "stripe": "#fff6f0"
+  },
+  "variants": {
+    "blue": {
+      "main": "#5fa8e8",
+      "stripe": "#ffd23f"
+    },
+    "green": {
+      "main": "#6fbf5a",
+      "stripe": "#fff6f0"
+    },
+    "yellow": {
+      "main": "#ffd23f",
+      "stripe": "#e05a4f"
+    },
+    "pink": {
+      "main": "#f78fbf",
+      "stripe": "#a77ad8"
+    }
+  },
+  "boxes": [
+    {
+      "x": -8,
+      "y": 17,
+      "z": -6,
+      "w": 16,
+      "h": 3,
+      "d": 12,
+      "color": "main"
+    },
+    {
+      "x": -8,
+      "y": 18,
+      "z": -6,
+      "w": 16,
+      "h": 1,
+      "d": 12,
+      "color": "stripe"
+    },
+    {
+      "x": 2,
+      "y": 8,
+      "z": 6,
+      "w": 4,
+      "h": 10,
+      "d": 1,
+      "color": "main"
+    },
+    {
+      "x": 2,
+      "y": 10,
+      "z": 6,
+      "w": 4,
+      "h": 1,
+      "d": 1,
+      "color": "stripe"
+    },
+    {
+      "x": 2,
+      "y": 13,
+      "z": 6,
+      "w": 4,
+      "h": 1,
+      "d": 1,
+      "color": "stripe"
+    },
+    {
+      "x": 2,
+      "y": 7,
+      "z": 6,
+      "w": 1,
+      "h": 1,
+      "d": 1,
+      "color": "stripe"
+    },
+    {
+      "x": 4,
+      "y": 7,
+      "z": 6,
+      "w": 1,
+      "h": 1,
+      "d": 1,
+      "color": "stripe"
+    },
+    {
+      "x": -3,
+      "y": 9,
+      "z": 6,
+      "w": 4,
+      "h": 9,
+      "d": 1,
+      "color": "main"
+    },
+    {
+      "x": -3,
+      "y": 11,
+      "z": 6,
+      "w": 4,
+      "h": 1,
+      "d": 1,
+      "color": "stripe"
+    },
+    {
+      "x": -3,
+      "y": 8,
+      "z": 6,
+      "w": 1,
+      "h": 1,
+      "d": 1,
+      "color": "stripe"
+    },
+    {
+      "x": -1,
+      "y": 8,
+      "z": 6,
+      "w": 1,
+      "h": 1,
+      "d": 1,
+      "color": "stripe"
+    }
+  ]
+}

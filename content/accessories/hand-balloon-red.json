@@ -1,0 +1,105 @@
+{
+  "id": "hand-balloon-red",
+  "name": "Bóng bay đỏ",
+  "slot": "hand",
+  "attachNode": "arm-right",
+  "voxelSize": 0.075,
+  "offset": [
+    -0.15,
+    -0.425,
+    0.0
+  ],
+  "rotation": [
+    8,
+    0,
+    25
+  ],
+  "palette": {
+    "string": "#fff6f0",
+    "knot": "#b8382f",
+    "balloon": "#e8463d",
+    "shine": "#ffd0d0"
+  },
+  "variants": {
+    "blue": {
+      "knot": "#2f6fb8",
+      "balloon": "#5fa8e8",
+      "shine": "#d6ecff"
+    },
+    "yellow": {
+      "knot": "#e0a01e",
+      "balloon": "#ffd23f",
+      "shine": "#fff6d0"
+    },
+    "pink": {
+      "knot": "#c4507f",
+      "balloon": "#f78fbf",
+      "shine": "#ffe0ee"
+    }
+  },
+  "boxes": [
+    {
+      "x": 0,
+      "y": -2,
+      "z": 0,
+      "w": 1,
+      "h": 16,
+      "d": 1,
+      "color": "string"
+    },
+    {
+      "x": 0,
+      "y": 14,
+      "z": 0,
+      "w": 1,
+      "h": 1,
+      "d": 1,
+      "color": "knot"
+    },
+    {
+      "x": -3,
+      "y": 16,
+      "z": -2,
+      "w": 7,
+      "h": 8,
+      "d": 5,
+      "color": "balloon"
+    },
+    {
+      "x": -2,
+      "y": 15,
+      "z": -1,
+      "w": 5,
+      "h": 10,
+      "d": 3,
+      "color": "balloon"
+    },
+    {
+      "x": -2,
+      "y": 17,
+      "z": -3,
+      "w": 5,
+      "h": 6,
+      "d": 7,
+      "color": "balloon"
+    },
+    {
+      "x": -4,
+      "y": 17,
+      "z": -1,
+      "w": 9,
+      "h": 6,
+      "d": 3,
+      "color": "balloon"
+    },
+    {
+      "x": -2,
+      "y": 21,
+      "z": 3,
+      "w": 1,
+      "h": 2,
+      "d": 1,
+      "color": "shine"
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "id": "shoes-flats-pink",
+  "name": "Giày búp bê hồng",
+  "slot": "shoes",
+  "attachNode": "leg-left",
+  "voxelSize": 0.05,
+  "offset": [
+    0,
+    0,
+    0
+  ],
+  "mirror": true,
+  "palette": {
+    "sole": "#d9609a",
+    "main": "#f78fbf",
+    "bow": "#fff6f0",
+    "knot": "#ffd23f"
+  },
+  "variants": {
+    "red": {
+      "sole": "#9e3029",
+      "main": "#e05a4f"
+    }
+  },
+  "boxes": [
+    {
+      "x": -4,
+      "y": -10,
+      "z": -4,
+      "w": 8,
+      "h": 1,
+      "d": 9,
+      "color": "sole"
+    },
+    {
+      "x": -4,
+      "y": -9,
+      "z": -4,
+      "w": 8,
+      "h": 2,
+      "d": 9,
+      "color": "main"
+    },
+    {
+      "x": -2,
+      "y": -8,
+      "z": 4,
+      "w": 4,
+      "h": 1,
+      "d": 1,
+      "color": "bow"
+    },
+    {
+      "x": -1,
+      "y": -7,
+      "z": 4,
+      "w": 2,
+      "h": 1,
+      "d": 1,
+      "color": "knot"
+    }
+  ]
+}
