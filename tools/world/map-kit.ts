@@ -194,12 +194,26 @@ export async function placeRegionTargets(options: {
 /** Where a generated map is written. */
 export const mapDir = (mapId: string): string => path.join(ASSETS_DIR, 'generated/world', mapId);
 
+/**
+ * entities.json one entry per line (props, targets, villagers, landmarks): a wide map has some fifteen
+ * thousand props, so indenting every field would make the file several megabytes; this keeps it readable and
+ * diffable at a third of that.
+ */
+export function entitiesJson(entities: WorldEntities): string {
+  const lines: string[] = [];
+  for (const [key, value] of Object.entries(entities)) {
+    if (Array.isArray(value) && value.some((v) => typeof v === 'object')) lines.push(`  ${JSON.stringify(key)}: [\n${value.map((v) => `    ${JSON.stringify(v)}`).join(',\n')}\n  ]`);
+    else lines.push(`  ${JSON.stringify(key)}: ${JSON.stringify(value)}`);
+  }
+  return `{\n${lines.join(',\n')}\n}\n`;
+}
+
 /** The files a map is written as (region-format.ts): every region, the horizon, and entities.json. */
 export function mapFiles(world: VoxelWorld, entities: WorldEntities): Array<{ file: string; bytes: Uint8Array | string }> {
   return [
     ...encodeRegions(world).map((r) => ({ file: regionFile(r.rx, r.rz), bytes: r.bytes })),
     { file: 'horizon.bin', bytes: encodeHorizon(buildHorizon(world)) },
-    { file: 'entities.json', bytes: `${JSON.stringify(entities, null, 2)}\n` },
+    { file: 'entities.json', bytes: entitiesJson(entities) },
   ];
 }
 
