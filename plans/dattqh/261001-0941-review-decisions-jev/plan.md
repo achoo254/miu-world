@@ -1,6 +1,6 @@
 ---
 title: Làm theo quyết định của Jev trên trang review — game sinh động hơn, mở viết quest SGK
-status: pending
+status: completed
 created: 2026-10-01
 branch: main
 ---
@@ -18,10 +18,10 @@ Quyết định: `../reports/jev-261001-0941-review-decisions.md`. Tiêu chí c�
 | 5 | **Thú cưng đi theo nhân vật** (chọn trong Tạo nhân vật, server lưu) | L | Model Kenney Cube Pets sẵn có; ngân sách draw call; schema + API nhân vật | Done (5 thú trong `content/pets.json`; cột `characters.pet` + migration `0003_character-pet`; thẻ "Thú cưng" có xem trước; trong game thú chạy theo, nhảy múa khi ăn mừng; xuất dữ liệu cho phụ huynh có `pet`) |
 | 6 | **Quest mẫu SGK theo nghiệm thu**: lời thoại vui nhộn hơn ở 6 mẫu; đánh dấu đáp án do AI tự chọn cho giáo viên | M | Chữ SGK giữ nguyên văn; chỉ đổi lời dẫn | Done (6 mẫu đổi sang giọng vui nhộn; đáp án do người viết chọn liệt kê cho giáo viên) |
 | 7 | **Viết hàng loạt quest SGK** (phase 4, 5, 9 của plan SGK) theo cách của mẫu đã duyệt | XL | Chạy trong worktree `../miu-world-sgk` theo plan SGK | Done cho phase 4, 5 (70 quest, ở trạng thái `draft`, đã vào `main`); phase 9 (đặt mục tiêu lên map) và 10 (kích hoạt) còn lại |
-| 8 | Trang review: mục "Quyết định" hiện kết quả của Jev; gate, `e2e:ci`, deploy staging | S | | Pending |
+| 8 | Trang review: mục "Quyết định" hiện kết quả của Jev; gate, `e2e:ci`, deploy staging | S | | Done (gate 80 file/702 test, `e2e:ci` xanh, staging `6c6f71e`; 2 ảnh review bản đồ còn bản cũ trong cache tầng trên của Cloudflare, tự hết hạn sau ≤ 4 giờ) |
 
 ## Tiêu chí xong
-- [ ] Mỗi hướng chỉnh của Jev có trong game, chơi được trên iPad (cảm ứng), có E2E và ảnh/video review
-- [ ] Không phase nào thêm code riêng cho một map hay một quest: sự kiện, phản ứng, ăn mừng là dữ liệu + runtime chung
-- [ ] Draw call ≤ 150 ở mọi mức chất lượng; giảm chuyển động được tôn trọng
-- [ ] Gate, web build, `e2e:ci` xanh sau mỗi phase
+- [x] Mỗi hướng chỉnh của Jev có trong game, chơi được trên iPad (cảm ứng), có E2E và ảnh/video review
+- [x] Không phase nào thêm code riêng cho một map hay một quest: sự kiện, phản ứng, ăn mừng là dữ liệu + runtime chung
+- [x] Draw call ≤ 150 ở mọi mức chất lượng; giảm chuyển động được tôn trọng
+- [x] Gate, web build, `e2e:ci` xanh sau mỗi phase
