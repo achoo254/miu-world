@@ -5,11 +5,11 @@
   "title": "Gấu Trúc Tròn và những lóng tre",
   "status": "active",
   "lesson": "toan2-t1-b12",
-  "summary": "Gấu Trúc Tròn ôm lóng tre khắc bảng trừ ngủ trưa, lăn một vòng là lóng tre lộn xộn hết; {name} giúp Gấu Trúc dựng lại bảng trừ (qua 10), soi đèn ông sao, gửi thư và chia bóng cùng Khỉ Lanh.",
+  "summary": "Gấu Trúc Tròn ôm lóng tre khắc bảng trừ ngủ trưa, lăn một vòng là lóng tre lộn xộn hết; {name} giúp Gấu Trúc dựng lại bảng trừ (qua 10), đố lóng tre và soi đèn ông sao với Mèo Sương, gửi thư cùng Thỏ Hạt Dẻ, gắn dấu ở bàn bào của Bác thợ mộc Khang rồi chia bóng cùng Nai Vút.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Gấu Trúc Tròn, Khỉ Lanh",
-    "where": "Vườn trường: vườn tre, bãi cỏ cạnh vườn tre",
+    "who": "Gấu Trúc Tròn, Mèo Sương, Thỏ Hạt Dẻ, Bác thợ mộc Khang, Nai Vút",
+    "where": "Vườn trường: vườn tre, chòi lá đầu vườn tre, hộp thư cạnh cổng vườn tre, bàn bào tre, bãi cỏ cạnh vườn tre",
     "goal": "Xếp lại bảng trừ (qua 10) khắc trên lóng tre cho đúng",
     "play": "Tìm lóng tre, điền bảng trừ, tính nhẩm, chọn đèn ông sao, điền số trên phong bì, so sánh, giải bài toán chia bóng",
     "learn": "Toán 2 Bài 12: bảng trừ (qua 10)",
@@ -30,7 +30,10 @@
   "places": {
     "gau-truc-tron": "vườn tre",
     "tim-long-tre": "vườn tre",
-    "khi-lanh": "bãi cỏ cạnh vườn tre"
+    "toan2-cd2-b12-meo-suong": "chòi lá đầu vườn tre",
+    "toan2-cd2-b12-tho-hat-de": "hộp thư cạnh cổng vườn tre",
+    "toan2-cd2-b12-bac-tho-moc-khang": "bàn bào tre",
+    "toan2-cd2-b12-nai-vut": "bãi cỏ cạnh vườn tre"
   },
   "steps": [
     {
@@ -293,7 +296,8 @@
     {
       "id": "nham-long-tre",
       "title": "Đọc to lóng tre",
-      "target": "gau-truc-tron",
+      "goTo": "Ôm bó lóng tre ra chòi lá đầu vườn tre, Mèo Sương vẫy đuôi chờ đố cùng",
+      "target": "toan2-cd2-b12-meo-suong",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "prompt": "Gấu Trúc rút lóng tre ngẫu nhiên, đố {name} đọc kết quả thật nhanh. Tính nhẩm.",
@@ -425,7 +429,7 @@
       "feedback": {
         "right": [
           "Gấu Trúc chưa kịp chớp mắt cậu đã đọc xong!",
-          "Sáu lóng tre, sáu kết quả, không sai một li.",
+          "Mèo Sương tròn mắt: sáu lóng tre, sáu kết quả, không sai một li.",
           "Nhanh thế này thì Gấu Trúc phải gọi cậu là \"tia chớp tre\"."
         ],
         "wrong": [
@@ -448,7 +452,7 @@
     {
       "id": "den-ong-sao",
       "title": "Đèn ông sao trong vườn tre",
-      "target": "gau-truc-tron",
+      "target": "toan2-cd2-b12-meo-suong",
       "kind": "challenge",
       "mechanic": "classify",
       "prompt": "Gấu Trúc treo bốn chiếc đèn ông sao còn sót từ đêm Trung thu. Bạn nào cầm đèn ông sao ghi phép tính có kết quả bé nhất?",
@@ -519,7 +523,8 @@
     {
       "id": "phong-bi-hop-thu-7",
       "title": "Thư gửi hộp thư số 7",
-      "target": "gau-truc-tron",
+      "goTo": "Chạy ra hộp thư cạnh cổng vườn tre, Thỏ Hạt Dẻ ôm năm phong bì chờ gửi",
+      "target": "toan2-cd2-b12-tho-hat-de",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "prompt": "Bưu tá Gấu Trúc chỉ nhận thư có kết quả bằng 7, như phong bì mẫu 11 – 4. Số ?",
@@ -655,6 +660,7 @@
     {
       "id": "hoc-thuoc-hay-tach",
       "title": "Học thuộc hay tách số?",
+      "goTo": "Quay về vườn tre, Gấu Trúc Tròn đang ngáp dài bên bảng trừ",
       "kind": "dialogue",
       "target": "gau-truc-tron",
       "lines": [
@@ -1007,7 +1013,8 @@
     {
       "id": "dau-so-sanh-tre",
       "title": "Dấu nào cho lóng tre?",
-      "target": "gau-truc-tron",
+      "goTo": "Sang bàn bào tre, Bác thợ mộc Khang đã gọt sẵn mấy chiếc dấu bằng tre",
+      "target": "toan2-cd2-b12-bac-tho-moc-khang",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "prompt": "Giữa hai lóng tre có một khe nhỏ, Gấu Trúc muốn gắn dấu vào. >; <; = ?",
@@ -1104,7 +1111,7 @@
         "right": [
           "Bốn dấu gắn khít vào khe tre, đẹp như đồ thủ công!",
           "Dấu bằng nào cũng đặt đúng chỗ, tinh mắt ghê.",
-          "Gấu Trúc gõ thử lóng tre: cốc cốc, chắc nịch!"
+          "Bác Khang gõ thử lóng tre: cốc cốc, chắc nịch!"
         ],
         "wrong": [
           "Hai vế bằng nhau thì dùng dấu bằng nhé.",
@@ -1124,10 +1131,10 @@
     {
       "id": "chia-bong-tren-co",
       "title": "Ai không có bóng?",
-      "goTo": "Ra bãi cỏ cạnh vườn tre, Khỉ Lanh đang ôm rổ bóng",
-      "target": "khi-lanh",
+      "goTo": "Phi ra bãi cỏ cạnh vườn tre, Nai Vút đang ôm rổ bóng và chiếc còi",
+      "target": "toan2-cd2-b12-nai-vut",
       "kind": "riddle",
-      "question": "Khỉ Lanh thổi còi: \"Ai nhanh tay thì có bóng!\" Có 12 bạn và 9 quả bóng, mỗi bạn lấy một quả. Hỏi có bao nhiêu bạn không lấy được bóng?",
+      "question": "Nai Vút thổi còi: \"Ai nhanh tay thì có bóng!\" Có 12 bạn và 9 quả bóng, mỗi bạn lấy một quả. Hỏi có bao nhiêu bạn không lấy được bóng?",
       "skill": "bai-toan-loi-van",
       "curriculumRef": [
         "toan2-t1-b12-luyen-tap-3"
@@ -1145,7 +1152,7 @@
       },
       "feedback": {
         "right": [
-          "Ba bạn chưa có bóng, Khỉ Lanh liền lấy thêm ba quả nữa. Ai cũng được chơi!",
+          "Ba bạn chưa có bóng, Nai Vút liền lấy thêm ba quả nữa. Ai cũng được chơi!",
           "Gấu Trúc là một trong ba bạn chậm chân, may mà cậu tính giúp.",
           "Tuýt tuýt! Trọng tài khen cậu tính nhanh hơn cả chạy."
         ],

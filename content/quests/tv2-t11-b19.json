@@ -5,11 +5,11 @@
   "title": "Chữ cái cãi nhau",
   "status": "active",
   "lesson": "tv2-t1-b19",
-  "summary": "Trên con đường chữ cái, các chữ cãi nhau xem ai quan trọng nhất, còn chữ A giận dỗi ôm sách ngồi riêng. {name} cùng Vẹt Xanh lắm lời đọc bài Chữ A và những người bạn, xếp hàng bảng chữ cái và giúp cả đám làm lành.",
+  "summary": "Trên con đường chữ cái, các chữ cãi nhau xem ai quan trọng nhất, còn chữ A giận dỗi ôm sách ngồi riêng. {name} cùng Vẹt Xanh lắm lời đọc bài Chữ A và những người bạn, cùng Hươu Tre xếp hàng bảng chữ cái, ghé góc đọc của Gấu Mật và giúp cả đám làm lành.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Vẹt Xanh (lắm lời, sưu tầm từ ngữ lạ), chữ A, chữ B, chữ Đ",
-    "where": "Con đường chữ cái: đầu đường, bãi cỏ ven đường, cuốn sách khổng lồ và vách tranh cuối đường",
+    "who": "Vẹt Xanh (lắm lời, sưu tầm từ ngữ lạ), chữ A, chữ B, chữ Đ, Hươu Tre (cổ cao, nhìn thấy cả hàng chữ), Gấu Mật (giữ góc đọc dưới gốc sồi)",
+    "where": "Con đường chữ cái: đầu đường, bãi cỏ ven đường, cuốn sách khổng lồ, bụi tre ven đường, góc đọc gốc sồi và vách tranh cuối đường",
     "goal": "Giúp các chữ cái thôi cãi nhau và hiểu rằng ai cũng cần có bạn",
     "play": "Gom chữ lạc, nói, đọc bài, xếp hàng chữ cái, chọn nhiều đáp án, trắc nghiệm, chọn cách vui cùng nhau, phiếu viết",
     "learn": "Tiếng Việt 2 Bài 19: đọc hiểu bài “Chữ A và những người bạn”, từ chỉ cảm xúc, nói lời cảm ơn, nói về niềm vui, viết chữ hoa I, K",
@@ -38,7 +38,9 @@
     "vet-xanh": "đầu con đường chữ cái",
     "gom-chu-chay-lac": "bãi cỏ ven đường chữ cái",
     "tv2-t11-cuon-sach-lon": "cuốn sách khổng lồ",
-    "tv2-t11-vach-tranh": "vách tranh cuối đường"
+    "tv2-t11-vach-tranh": "vách tranh cuối đường",
+    "tv2-t11-b19-huou-tre": "bụi tre ven đường",
+    "tv2-t11-b19-gau-mat": "góc đọc gốc sồi"
   },
   "steps": [
     {
@@ -163,10 +165,11 @@
     },
     {
       "id": "xep-hang-chu-cai",
+      "goTo": "Chạy ra bụi tre ven đường, Hươu Tre đang vươn cổ dồn đám chữ xô lấn",
       "title": "Các chữ cái xếp hàng lại",
       "kind": "challenge",
       "mechanic": "sort",
-      "target": "tv2-t11-cuon-sach-lon",
+      "target": "tv2-t11-b19-huou-tre",
       "prompt": "Nghe chữ A nói “đứng đầu”, cả đám chữ chen nhau xô lấn, hàng lối rối tung. Vẹt Xanh hô: xếp hàng, xếp hàng! Xếp các chữ cái theo đúng thứ tự trong bảng chữ cái tiếng Việt.",
       "items": [
         {
@@ -236,6 +239,7 @@
     },
     {
       "id": "uoc-mo-chu-a",
+      "goTo": "Quay về cuốn sách khổng lồ, chữ A vừa lật sang trang mới",
       "title": "Ước mơ của chữ A",
       "kind": "read",
       "target": "tv2-t11-cuon-sach-lon",
@@ -347,10 +351,11 @@
     },
     {
       "id": "loi-nhan-nhu",
+      "goTo": "Theo chữ A tới góc đọc gốc sồi, Gấu Mật đang chồng sách cao ngất",
       "title": "Lời nhắn của chữ A",
       "kind": "challenge",
       "mechanic": "quiz",
-      "target": "tv2-t11-cuon-sach-lon",
+      "target": "tv2-t11-b19-gau-mat",
       "prompt": "Chữ A lí nhí nhờ Vẹt Xanh hỏi giùm, vì ngại quá. Chữ A muốn nhắn nhủ điều gì với các bạn?",
       "choices": [
         {
@@ -386,7 +391,7 @@
       },
       "feedback": {
         "right": [
-          "Chăm đọc sách! Chữ A ôm lấy cuốn sách khổng lồ cười híp mắt.",
+          "Chăm đọc sách! Chữ A ôm chặt một cuốn sách trên chồng của Gấu Mật, cười híp mắt.",
           "Đúng rồi, gặp chữ cái hằng ngày trên trang sách đấy.",
           "Vẹt Xanh reo: đọc sách, đọc sách! Tớ đọc mỗi ngày một trang!"
         ],
@@ -402,7 +407,7 @@
       "title": "Sổ sưu tầm của Vẹt Xanh",
       "kind": "challenge",
       "mechanic": "multi-select",
-      "target": "tv2-t11-cuon-sach-lon",
+      "target": "tv2-t11-b19-gau-mat",
       "prompt": "Vẹt Xanh giở sổ sưu tầm từ ngữ: hôm nay tớ nhặt được ba từ trong bài, ba từ! Những từ nào dưới đây chỉ cảm xúc?",
       "choices": [
         {
@@ -570,9 +575,10 @@
     },
     {
       "id": "niem-vui-ca-nha",
+      "goTo": "Về lại đầu con đường chữ cái, chữ A lon ton chạy theo dặn với",
       "title": "Niềm vui của cả nhà",
       "kind": "speak",
-      "target": "tv2-t11-vach-tranh",
+      "target": "vet-xanh",
       "prompt": "Chữ A dặn với theo: về nhà làm thêm việc này nhé, còn vui hơn đọc sách một mình! Nói chuyện với người thân về niềm vui của từng thành viên trong gia đình em.",
       "hints": [
         "Bố mẹ em vui nhất khi nào?",
@@ -607,7 +613,7 @@
       "title": "Tiếng gầm sau bụi gai",
       "kind": "unlock",
       "trigger": "auto",
-      "text": "Đang vui thì “Grừ!” vang lên từ bụi gai cuối rừng. Hổ Vằn ló đầu ra rồi thụt ngay vào. Hình như bạn ấy muốn làm quen, mà ai cũng chạy mất?"
+      "text": "Đang vui thì “Grừ!” vang lên từ bụi gai cuối rừng. Sư Tử Xù ló cái bờm ra rồi thụt ngay vào. Hình như bạn ấy muốn làm quen, mà ai cũng chạy mất?"
     }
   ],
   "reward": {

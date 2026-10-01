@@ -5,11 +5,11 @@
   "title": "Chiếc cân đĩa lệch của Pin",
   "status": "active",
   "lesson": "toan2-t1-b15",
-  "summary": "Chiếc cân đĩa ở quầy căng tin bị lệch, Chim Cánh Cụt Pin kĩ tính không chịu bán hàng khi chưa cân lại; {name} tìm quả cân, so nặng nhẹ, đọc ki-lô-gam và giúp Pin cân từng túi hàng, còn Heo Ủn thì cứ lăm le ăn vụng quả để cân.",
+  "summary": "Chiếc cân đĩa ở quầy căng tin bị lệch, Chim Cánh Cụt Pin kĩ tính không chịu bán hàng khi chưa cân lại; {name} tìm quả cân, so nặng nhẹ ở cân bàn của Mèo Quýt và quầy trái cây của Cáo Chanh, đọc ki-lô-gam, cân ngỗng gà với Bê Mầm, còn Heo Lúc Lắc thì cứ lăm le ăn vụng quả để cân.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Chim Cánh Cụt Pin, Heo Ủn",
-    "where": "Căng tin: quầy cân hàng",
+    "who": "Chim Cánh Cụt Pin, Heo Lúc Lắc, Mèo Quýt, Cáo Chanh, Bê Mầm",
+    "where": "Căng tin: quầy cân hàng, cân bàn cạnh cửa bếp, quầy trái cây, bàn sổ sách, bàn bánh ngọt, cửa kho thóc",
     "goal": "Cân lại từng túi hàng cho đúng trước giờ ăn trưa",
     "play": "Tìm quả cân, chọn câu đúng, điền con nào nặng hơn, đọc cân nặng, tính với ki-lô-gam, đố bài toán thóc và rô-bốt",
     "learn": "Toán 2 Bài 15: nặng hơn, nhẹ hơn; ki-lô-gam; cộng, trừ với đơn vị kg",
@@ -30,7 +30,11 @@
   "places": {
     "chim-canh-cut-pin": "quầy cân hàng",
     "tim-qua-can": "quầy cân hàng",
-    "heo-un": "quầy cân hàng"
+    "toan2-cd3-b15-meo-cam": "cân bàn cạnh cửa bếp",
+    "toan2-cd3-b15-cao-chanh": "quầy trái cây",
+    "canh-cut-pin": "bàn sổ sách",
+    "toan2-cd3-b15-heo-mum": "bàn bánh ngọt",
+    "toan2-cd3-b15-be-lua": "cửa kho thóc"
   },
   "steps": [
     {
@@ -45,7 +49,7 @@
           "text": "Dừng lại! Hôm nay quầy cân hàng chưa bán gì cả. Cái cân đĩa này nghiêng như con thuyền gặp sóng!"
         },
         {
-          "speaker": "Heo Ủn",
+          "speaker": "Heo Lúc Lắc",
           "text": "Ủn ỉn… tớ chỉ đặt lên đó một quả bưởi, à không, ba quả bưởi, thì nó nghiêng thôi mà."
         },
         {
@@ -59,8 +63,8 @@
           "reply": "Pin chỉnh lại cặp kính: Tốt. Trước hết phải có quả cân, mà quả cân thì… lăn đi đâu mất rồi."
         },
         {
-          "text": "Heo Ủn đừng ăn bưởi nữa nhé!",
-          "reply": "Heo Ủn giấu vội quả bưởi ra sau lưng: Ủn… tớ chỉ ngửi thôi mà."
+          "text": "Heo Lúc Lắc đừng ăn bưởi nữa nhé!",
+          "reply": "Heo Lúc Lắc giấu vội quả bưởi ra sau lưng: Ủn… tớ chỉ ngửi thôi mà."
         }
       ]
     },
@@ -86,8 +90,8 @@
           "text": "Đủ quả cân rồi. Nghe kĩ này: trên cân đĩa, bên nào nặng hơn thì đĩa bên đó tụt xuống thấp hơn."
         },
         {
-          "speaker": "Heo Ủn",
-          "text": "Giống tớ ngồi bập bênh với Khỉ Lanh, tớ ngồi xuống là Khỉ Lanh bay vèo lên trời!"
+          "speaker": "Heo Lúc Lắc",
+          "text": "Giống tớ ngồi bập bênh ở sân chơi, tớ vừa ngồi xuống là bạn bên kia bay vèo lên trời!"
         },
         {
           "speaker": "Cánh Cụt Pin",
@@ -156,7 +160,8 @@
     {
       "id": "meo-cho-tho-len-can",
       "title": "Mèo, chó, thỏ thay nhau lên cân",
-      "target": "chim-canh-cut-pin",
+      "goTo": "Sang cân bàn cạnh cửa bếp, Mèo Quýt bế cả mèo, chó, thỏ tới cân",
+      "target": "toan2-cd3-b15-meo-cam",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "prompt": "Cân thứ nhất: mèo ở đĩa thấp, thỏ ở đĩa cao. Cân thứ hai: mèo ở đĩa cao, chó ở đĩa thấp. Quan sát tranh rồi trả lời câu hỏi.",
@@ -244,7 +249,7 @@
         "right": [
           "Chó nặng nhất, thỏ nhẹ nhất, mèo đứng giữa vẫy đuôi!",
           "Cháu nối hai chiếc cân lại với nhau giỏi lắm.",
-          "Heo Ủn vỗ tay: tớ còn tưởng mèo nặng nhất cơ!"
+          "Mèo Quýt vỗ tay: tớ còn tưởng mèo nặng nhất cơ!"
         ],
         "wrong": [
           "Ở cân thứ hai, đĩa của chó đang nằm thấp đấy.",
@@ -264,7 +269,8 @@
     {
       "id": "cam-tao-buoi-va-chanh",
       "title": "Bao nhiêu quả chanh cho đủ?",
-      "target": "chim-canh-cut-pin",
+      "goTo": "Ghé quầy trái cây, Cáo Chanh đưa rổ chanh cho Pin cân thử",
+      "target": "toan2-cd3-b15-cao-chanh",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "prompt": "Pin dùng chanh làm \"quả cân tí hon\". Cân thăng bằng khi: 1 quả cam với 4 quả chanh; 1 quả táo với 3 quả chanh; 1 quả bưởi với 1 quả cam cùng 1 quả táo. Quan sát tranh rồi trả lời câu hỏi.",
@@ -362,6 +368,7 @@
     {
       "id": "dung-sai-mot-ki-lo-gam",
       "title": "So với quả cân 1 kg",
+      "goTo": "Về quầy cân hàng, Pin đã đặt ba chiếc cân cạnh nhau",
       "target": "chim-canh-cut-pin",
       "kind": "challenge",
       "mechanic": "multi-select",
@@ -546,7 +553,7 @@
         "right": [
           "Năm chiếc nhãn dán ngay ngắn, quầy hàng đẹp hẳn lên!",
           "Pin khen: chữ số viết rõ ràng, không lẫn vào đâu được.",
-          "Heo Ủn hít hà bao gạo 10 kg: đủ nấu cơm cả tuần!"
+          "Heo Lúc Lắc hít hà bao gạo 10 kg: đủ nấu cơm cả tuần!"
         ],
         "wrong": [
           "Nghe lại nhãn Pin đọc rồi đổi sang chữ số nhé.",
@@ -567,8 +574,9 @@
     {
       "id": "phieu-doc-nhan-o-nha",
       "title": "Đọc nhãn ở nhà",
+      "goTo": "Theo Pin sang bàn sổ sách, chú rút ra một phiếu bài tập",
       "kind": "worksheet",
-      "target": "chim-canh-cut-pin",
+      "target": "canh-cut-pin",
       "lessonId": "toan2-t1-b15",
       "text": "Pin đưa {name} một phiếu: về nhà nhìn tranh trong phiếu, đọc cân nặng của bí ngô, lọ đường, quả mít, bao gạo, túi bột mì rồi ghi vào ô. Nếu được, cùng bố mẹ tìm nhãn \"kg\" trên túi gạo, túi đường trong bếp.",
       "curriculumRef": [
@@ -581,17 +589,18 @@
     },
     {
       "id": "heo-un-mang-hop",
-      "title": "Ba chiếc hộp của Heo Ủn",
+      "title": "Ba chiếc hộp của Heo Lúc Lắc",
+      "goTo": "Ra bàn bánh ngọt, Heo Lúc Lắc đang ôm ba hộp bánh A, B, C",
       "kind": "dialogue",
-      "target": "heo-un",
+      "target": "toan2-cd3-b15-heo-mum",
       "lines": [
         {
-          "speaker": "Heo Ủn",
+          "speaker": "Heo Lúc Lắc",
           "text": "Ủn ỉn! Tớ mang tới ba hộp bánh A, B, C. Tớ muốn ôm hộp nặng nhất về bếp, vì nặng nhất chắc chắn nhiều bánh nhất!"
         },
         {
           "speaker": "Cánh Cụt Pin",
-          "text": "Lí lẽ kiểu Heo Ủn đấy. Được, cứ đặt lên cân. {name} muốn cân từng hộp, hay đếm quả cân trước?"
+          "text": "Lí lẽ kiểu Heo Lúc Lắc đấy. Được, cứ đặt lên cân. {name} muốn cân từng hộp, hay đếm quả cân trước?"
         }
       ],
       "choices": [
@@ -601,14 +610,14 @@
         },
         {
           "text": "Cộng các quả cân ở mỗi đĩa",
-          "reply": "Heo Ủn: Cộng nhanh lên, bụng tớ réo rồi!"
+          "reply": "Heo Lúc Lắc: Cộng nhanh lên, bụng tớ réo rồi!"
         }
       ]
     },
     {
       "id": "hop-banh-a-b-c",
       "title": "Hộp bánh nào nặng nhất?",
-      "target": "heo-un",
+      "target": "toan2-cd3-b15-heo-mum",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "prompt": "Cân thăng bằng khi: hộp A với quả cân 1 kg và 2 kg; hộp B với hai quả cân 2 kg; hộp C với quả cân 5 kg. Quan sát tranh rồi trả lời.",
@@ -718,7 +727,7 @@
       },
       "feedback": {
         "right": [
-          "Hộp C nặng nhất, Heo Ủn ôm chầm lấy nó ngay!",
+          "Hộp C nặng nhất, Heo Lúc Lắc ôm chầm lấy nó ngay!",
           "Cộng quả cân chuẩn từng ki-lô-gam, giỏi thật.",
           "Ba hộp đã có nhãn, Pin cho phép mở quầy bán bánh."
         ],
@@ -741,10 +750,11 @@
     {
       "id": "cong-tru-ki-lo-gam",
       "title": "Sổ cân của Pin",
-      "target": "chim-canh-cut-pin",
+      "goTo": "Quay lại bàn sổ sách, sổ cân của Pin đang dính mấy vết mực",
+      "target": "canh-cut-pin",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Pin ghi sổ cân, nhưng mực bị Heo Ủn làm đổ mất vài chỗ.",
+      "prompt": "Pin ghi sổ cân, nhưng mực bị Heo Lúc Lắc làm đổ mất vài chỗ.",
       "template": "Tính (theo mẫu). Mẫu: 5 kg + 4 kg = 9 kg; 10 kg – 3 kg = 7 kg\na) 12 kg + 23 kg = {{b1}} kg\na) 45 kg + 20 kg = {{b2}} kg\na) 9 kg + 7 kg = {{b3}} kg\nb) 42 kg – 30 kg = {{b4}} kg\nb) 13 kg – 9 kg = {{b5}} kg\nb) 60 kg – 40 kg = {{b6}} kg",
       "blanks": [
         {
@@ -896,10 +906,11 @@
     {
       "id": "ngong-va-ga-len-can",
       "title": "Ngỗng và gà lên cân",
-      "target": "chim-canh-cut-pin",
+      "goTo": "Ra cửa kho thóc, Bê Mầm vừa dắt ngỗng và gà từ trang trại tới",
+      "target": "toan2-cd3-b15-be-lua",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Bò Sữa Mơ dắt ngỗng và gà từ trang trại sang cân. Ngỗng thăng bằng với quả cân 5 kg và 2 kg; gà thăng bằng với quả cân 2 kg và 1 kg. Số ?",
+      "prompt": "Bê Mầm dắt ngỗng và gà từ trang trại sang cân. Ngỗng thăng bằng với quả cân 5 kg và 2 kg; gà thăng bằng với quả cân 2 kg và 1 kg. Số ?",
       "template": "a) Con ngỗng cân nặng {{b1}} kg.\nb) Con gà cân nặng {{b2}} kg.",
       "blanks": [
         {
@@ -957,7 +968,7 @@
         "right": [
           "Ngỗng kêu quác quác tự hào về số cân của mình!",
           "Gà mái gật gù: 3 kg, đúng như ở trang trại cân.",
-          "Cộng quả cân gọn gàng, Bò Sữa Mơ cảm ơn {name}."
+          "Cộng quả cân gọn gàng, Bê Mầm cảm ơn {name}."
         ],
         "wrong": [
           "Nhớ cộng cả hai quả cân ở đĩa bên kia nhé.",
@@ -975,7 +986,7 @@
     {
       "id": "hai-bao-thoc",
       "title": "Hai bao thóc ở cửa kho",
-      "target": "chim-canh-cut-pin",
+      "target": "toan2-cd3-b15-be-lua",
       "kind": "riddle",
       "question": "Bác nông dân gửi căng tin hai bao thóc: một bao 30 kg, một bao 50 kg. Tìm tổng số ki-lô-gam thóc của hai bao thóc.",
       "skill": "bai-toan-loi-van",
@@ -996,7 +1007,7 @@
       "feedback": {
         "right": [
           "Tám chục ki-lô-gam thóc, đủ nấu cháo cả học kì!",
-          "Pin ghi ngay vào sổ: thóc 80 kg, chính xác.",
+          "Bê Mầm ghi ngay vào sổ: thóc 80 kg, chính xác.",
           "Gộp hai bao nhanh gọn, bác nông dân cười tươi."
         ],
         "wrong": [
@@ -1012,10 +1023,11 @@
     {
       "id": "ba-chu-ro-bot-di-can",
       "title": "Ba chú rô-bốt xếp hàng lên cân",
-      "target": "heo-un",
+      "goTo": "Chạy về bàn bánh ngọt, ba chú rô-bốt đang xếp hàng chờ Heo Lúc Lắc",
+      "target": "toan2-cd3-b15-heo-mum",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Màn chót: ba chú rô-bốt kêu bíp bíp đòi lên cân, Heo Ủn làm người đọc số. Ba chú rô-bốt rủ nhau đi cân. Rô-bốt A cân nặng 32 kg, rô-bốt B nặng hơn rô-bốt A là 2 kg, rô-bốt C nhẹ hơn rô-bốt A là 2 kg. Hỏi:",
+      "prompt": "Màn chót: ba chú rô-bốt kêu bíp bíp đòi lên cân, Heo Lúc Lắc làm người đọc số. Ba chú rô-bốt rủ nhau đi cân. Rô-bốt A cân nặng 32 kg, rô-bốt B nặng hơn rô-bốt A là 2 kg, rô-bốt C nhẹ hơn rô-bốt A là 2 kg. Hỏi:",
       "template": "a) Rô-bốt B cân nặng bao nhiêu ki-lô-gam? {{b1}} kg\nb) Rô-bốt C cân nặng bao nhiêu ki-lô-gam? {{b2}} kg",
       "blanks": [
         {
@@ -1073,7 +1085,7 @@
         "right": [
           "Bíp bíp! Hai chú rô-bốt nháy đèn xanh cảm ơn {name}.",
           "Nặng hơn thì cộng, nhẹ hơn thì trừ, cháu nắm chắc rồi.",
-          "Heo Ủn đọc số to tướng: ba mươi tư và ba mươi!"
+          "Heo Lúc Lắc đọc số to tướng: ba mươi tư và ba mươi!"
         ],
         "wrong": [
           "Rô-bốt B nặng hơn A, vậy phải thêm 2 kg vào.",
@@ -1093,7 +1105,7 @@
       "title": "Tạp dề thợ cân",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Chiếc cân đĩa lại thăng bằng tăm tắp. Pin trao cho {name} chiếc tạp dề \"Thợ cân tí hon\", còn Heo Ủn được thưởng… đúng một múi bưởi."
+      "text": "Chiếc cân đĩa lại thăng bằng tăm tắp. Pin trao cho {name} chiếc tạp dề \"Thợ cân tí hon\", còn Heo Lúc Lắc được thưởng… đúng một múi bưởi."
     },
     {
       "id": "be-ca-can-nuoc",

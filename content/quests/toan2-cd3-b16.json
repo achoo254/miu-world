@@ -5,11 +5,11 @@
   "title": "Cá Bống và bể nước vơi",
   "status": "active",
   "lesson": "toan2-t1-b16",
-  "summary": "Bể cá ở căng tin vơi mất nửa, Cá Bống lo sốt vó; {name} học đơn vị lít, đong ca, rót chai, tính lít nước và đổ đầy bể cho Cá Bống tung tăng.",
+  "summary": "Bể cá ở căng tin vơi mất nửa, Cá Bống lo sốt vó; {name} học đơn vị lít với Cô Thoa, đọc nhãn ở kệ của Gấu Sồi, đong ở bàn của Cáo Bạc, tính lít nước và đổ đầy bể cho Cá Bống tung tăng.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Cá Bống, Cánh Cụt Pin",
-    "where": "Căng tin: bể cá căng tin",
+    "who": "Cá Bống, Cô Thoa, Gấu Sồi, Cáo Bạc",
+    "where": "Căng tin: bể cá căng tin, quầy nước uống, kệ đồ đựng nước, bảng đen quầy nước, bàn đong nước",
     "goal": "Đổ đủ lít nước để bể cá đầy trở lại",
     "play": "Tìm ca, chai, cốc; chọn câu đúng; điền số lít; tính với lít; xếp đồ vật theo lượng nước; đố can nước mắm",
     "learn": "Toán 2 Bài 16: lít, đơn vị l; cộng, trừ với đơn vị l",
@@ -30,7 +30,9 @@
   "places": {
     "ca-bong": "bể cá căng tin",
     "tim-do-dong-nuoc": "quầy nước uống",
-    "canh-cut-pin": "bể cá căng tin"
+    "toan2-cd3-b16-gau-soi": "kệ đồ đựng nước",
+    "toan2-cd3-b16-co-ngan": "bảng đen quầy nước",
+    "toan2-cd3-b16-cao-bac": "bàn đong nước"
   },
   "steps": [
     {
@@ -77,17 +79,17 @@
     },
     {
       "id": "ca-mot-lit",
-      "title": "Lít là gì hả Pin?",
+      "title": "Lít là gì hả Cô Thoa?",
       "goTo": "Mang ca, chai, cốc về bể cá căng tin",
       "kind": "dialogue",
-      "target": "canh-cut-pin",
+      "target": "ca-bong",
       "lines": [
         {
-          "speaker": "Cánh Cụt Pin",
+          "speaker": "Cô Thoa",
           "text": "Lít là đơn vị đo lượng nước, sữa, dầu… đựng trong ca, chai, can. Lít viết tắt là l."
         },
         {
-          "speaker": "Cánh Cụt Pin",
+          "speaker": "Cô Thoa",
           "text": "Chiếc ca này đựng đầy được đúng 1 l nước. Cốc nhỏ thì đựng ít hơn, cái can to đựng nhiều hơn."
         },
         {
@@ -95,7 +97,7 @@
           "text": "Vậy bể của tớ chắc phải đựng… một nghìn tỉ lít!"
         },
         {
-          "speaker": "Cánh Cụt Pin",
+          "speaker": "Cô Thoa",
           "text": "Không đến mức đó đâu, Bống ạ. Ta đong từ từ."
         }
       ],
@@ -109,10 +111,10 @@
     {
       "id": "chai-va-ca-mot-lit",
       "title": "Chai đựng bao nhiêu nước?",
-      "target": "canh-cut-pin",
+      "target": "ca-bong",
       "kind": "challenge",
       "mechanic": "quiz",
-      "prompt": "Pin rót hết ca 1 l: nước đầy một chai, phần còn lại vừa đầy một chiếc cốc. Quan sát tranh rồi chọn câu đúng. Đổ hết nước từ ca 1 l được đầy một chai và một cốc (như hình vẽ).",
+      "prompt": "Cô Thoa rót hết ca 1 l: nước đầy một chai, phần còn lại vừa đầy một chiếc cốc. Quan sát tranh rồi chọn câu đúng. Đổ hết nước từ ca 1 l được đầy một chai và một cốc (như hình vẽ).",
       "choices": [
         {
           "id": "a-chai-dung-1-l-nuoc",
@@ -145,7 +147,7 @@
       "feedback": {
         "right": [
           "Phần nước dư chạy sang cốc, nên chai chưa tới 1 lít!",
-          "Pin búng cánh: suy luận gọn như rót nước không rớt giọt.",
+          "Cô Thoa búng tay tách một cái: suy luận gọn như rót nước không rớt giọt.",
           "Cá Bống ngoi lên: chai nhỏ hơn ca, tớ nhìn thấy rồi!"
         ],
         "wrong": [
@@ -161,10 +163,11 @@
     {
       "id": "doc-nhan-lit",
       "title": "Nhãn lít trên bình, ca, xô, thùng",
-      "target": "canh-cut-pin",
+      "goTo": "Sang kệ đồ đựng nước, Gấu Sồi đang lau từng chiếc bình, ca, xô",
+      "target": "toan2-cd3-b16-gau-soi",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Mỗi đồ đựng nước có nhãn viết bằng chữ, Pin muốn đổi sang chữ số cho dễ đọc. Mẫu: Mười lít viết là 10 l. Số ?",
+      "prompt": "Mỗi đồ đựng nước có nhãn viết bằng chữ, Cô Thoa muốn đổi sang chữ số cho dễ đọc. Mẫu: Mười lít viết là 10 l. Số ?",
       "template": "Ba lít {{b1}} l\nHai lít {{b2}} l\nNăm lít {{b3}} l\nHai mươi lít {{b4}} l",
       "blanks": [
         {
@@ -257,7 +260,7 @@
       "feedback": {
         "right": [
           "Bốn chiếc nhãn mới dán thẳng hàng như đội xếp hình!",
-          "Pin chép vào sổ: chữ số rõ ràng, khỏi nhầm lẫn.",
+          "Cô Thoa chép vào sổ: chữ số rõ ràng, khỏi nhầm lẫn.",
           "Cá Bống đếm theo: ba, hai, năm, hai mươi… lít lít lít!"
         ],
         "wrong": [
@@ -278,7 +281,7 @@
     {
       "id": "binh-a-binh-b-rot-coc",
       "title": "Hai bình rót ra mấy cốc?",
-      "target": "canh-cut-pin",
+      "target": "toan2-cd3-b16-gau-soi",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "prompt": "Bình A rót được 4 cốc đầy, bình B rót được 6 cốc đầy. Số ? Rót hết nước từ bình A và bình B được các cốc nước (như hình vẽ).",
@@ -356,7 +359,7 @@
         "right": [
           "Mười chiếc cốc xếp hàng, không cốc nào bị bỏ sót!",
           "Bình B hơn đúng hai cốc, Cá Bống tròn mắt thán phục.",
-          "Pin gật gù: đếm cốc kĩ y như chú kiểm kho."
+          "Gấu Sồi gật gù: đếm cốc kĩ y như thủ kho lâu năm."
         ],
         "wrong": [
           "Đếm lại số cốc đặt cạnh từng bình xem.",
@@ -375,10 +378,11 @@
     {
       "id": "cong-tru-lit",
       "title": "Bảng tính lít ở quầy nước",
-      "target": "canh-cut-pin",
+      "goTo": "Ra bảng đen quầy nước, Cô Thoa đã viết sẵn mẫu bằng phấn trắng",
+      "target": "toan2-cd3-b16-co-ngan",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Trên bảng đen của quầy nước, Pin viết sẵn mẫu rồi để trống kết quả.",
+      "prompt": "Trên bảng đen của quầy nước, Cô Thoa viết sẵn mẫu rồi để trống kết quả.",
       "template": "Tính (theo mẫu). Mẫu: 8 l + 6 l = 14 l ; 12 l – 7 l = 5 l\na) 5 l + 4 l = {{b1}} l\na) 12 l + 20 l = {{b2}} l\na) 7 l + 6 l = {{b3}} l\nb) 9 l – 3 l = {{b4}} l\nb) 19 l – 10 l = {{b5}} l\nb) 11 l – 2 l = {{b6}} l",
       "blanks": [
         {
@@ -507,7 +511,7 @@
       "feedback": {
         "right": [
           "Bảng đen đầy kết quả, phấn còn chưa kịp nguội!",
-          "Sáu phép tính lít đều trúng, Pin vỗ cánh lạch bạch.",
+          "Sáu phép tính lít đều trúng, Cô Thoa vỗ tay đôm đốp.",
           "Cá Bống hét vọng lên: tớ nghe thấy tiếng \"đúng\" rồi!"
         ],
         "wrong": [
@@ -529,13 +533,13 @@
     },
     {
       "id": "pin-ra-luat-dong",
-      "title": "Luật đong nước của Pin",
+      "title": "Luật đong nước của Cô Thoa",
       "kind": "dialogue",
-      "target": "canh-cut-pin",
+      "target": "toan2-cd3-b16-co-ngan",
       "lines": [
         {
-          "speaker": "Cánh Cụt Pin",
-          "text": "Giờ mới đến phần đổ bể. Luật của chú: không được đổ ào ào, đổ ào là tràn ra sàn, trượt chân như chơi."
+          "speaker": "Cô Thoa",
+          "text": "Giờ mới đến phần đổ bể. Luật của cô: không được đổ ào ào, đổ ào là tràn ra sàn, trượt chân như chơi."
         },
         {
           "speaker": "Cá Bống",
@@ -545,7 +549,7 @@
       "choices": [
         {
           "text": "Cộng hết số lít rồi mới đổ",
-          "reply": "Pin: Tính trước, đổ sau. Chuẩn kiểu kĩ tính!"
+          "reply": "Cô Thoa: Tính trước, đổ sau. Chuẩn kiểu kĩ tính!"
         },
         {
           "text": "Đổ từng can, vừa đổ vừa đếm",
@@ -556,10 +560,11 @@
     {
       "id": "gop-can-xo-ca",
       "title": "Gộp can, xô và ca",
-      "target": "canh-cut-pin",
+      "goTo": "Xách can, xô về bể cá căng tin, Cá Bống đang há miệng chờ",
+      "target": "ca-bong",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Pin xếp các đồ đựng thành từng nhóm, mỗi nhóm đổ chung vào một thùng. Số ?",
+      "prompt": "Cô Thoa xếp các đồ đựng thành từng nhóm, mỗi nhóm đổ chung vào một thùng. Số ?",
       "template": "Can 3 l và can 5 l: a) {{b1}} l\nXô 5 l và xô 8 l: a) {{b2}} l\nCa 1 l, ca 2 l và ca 5 l: b) {{b3}} l",
       "blanks": [
         {
@@ -633,7 +638,7 @@
       },
       "feedback": {
         "right": [
-          "Ba thùng đầy ắp, Pin không để rơi giọt nào!",
+          "Ba thùng đầy ắp, Cô Thoa không để rơi giọt nào!",
           "Gộp can, gộp xô, gộp ca đều trúng phóc.",
           "Cá Bống nhìn mực nước dâng lên mà mừng rơn."
         ],
@@ -654,10 +659,10 @@
     {
       "id": "can-con-lai-bao-nhieu",
       "title": "Can còn lại bao nhiêu lít?",
-      "target": "canh-cut-pin",
+      "target": "ca-bong",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Pin rót từ can sang ca, sang xô, để biết trong can còn bao nhiêu. Số ?",
+      "prompt": "Cô Thoa rót từ can sang ca, sang xô, để biết trong can còn bao nhiêu. Số ?",
       "template": "Can 10 l, rót ra ca 4 l. Trong can còn lại bao nhiêu lít nước? {{b1}} l\nCan 15 l, rót ra xô 5 l. Trong can còn lại bao nhiêu lít nước? {{b2}} l",
       "blanks": [
         {
@@ -715,7 +720,7 @@
         "right": [
           "Hai can còn bao nhiêu, cháu tính ra ngay tắp lự!",
           "Rót ra là bớt đi, cháu nhớ bài thật tốt.",
-          "Pin lắc lắc chiếc can: đúng là còn ngần ấy nước."
+          "Cô Thoa lắc lắc chiếc can: đúng là còn ngần ấy nước."
         ],
         "wrong": [
           "Rót bớt ra thì nước trong can ít đi chứ.",
@@ -733,7 +738,8 @@
     {
       "id": "binh-am-xo-can",
       "title": "Bình, ấm, xô, can đựng mấy lít?",
-      "target": "canh-cut-pin",
+      "goTo": "Sang bàn đong nước, Cáo Bạc bày bình, ấm, xô, can cạnh các ca",
+      "target": "toan2-cd3-b16-cao-bac",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "prompt": "Cạnh mỗi đồ vật có các ca: bình với hai ca 1 l; ấm với ba ca 1 l; xô với ca 2 l, 2 l, 1 l; can với ca 3 l, 2 l, 2 l. Mỗi đồ vật đựng số lít nước bằng tổng số lít nước ở các ca bên cạnh (như hình vẽ).",
@@ -810,7 +816,7 @@
       },
       "feedback": {
         "right": [
-          "Bảng số lít đầy đủ, Pin treo lên tường căng tin!",
+          "Bảng số lít đầy đủ, Cáo Bạc treo ngay lên tường căng tin!",
           "Ấm, xô, can đều đúng số lít, giỏi hết chỗ chê.",
           "Cộng ba ca liền một mạch mà không vấp chút nào."
         ],
@@ -831,7 +837,7 @@
     {
       "id": "nhieu-nuoc-it-nuoc",
       "title": "Đồ vật nào nhiều nước nhất?",
-      "target": "canh-cut-pin",
+      "target": "toan2-cd3-b16-cao-bac",
       "kind": "challenge",
       "mechanic": "classify",
       "prompt": "Dựa vào bảng vừa điền: bình 2 l, ấm 3 l, xô 5 l, can 7 l. Mỗi đồ vật đựng số lít nước bằng tổng số lít nước ở các ca bên cạnh (như hình vẽ). b) Đồ vật nào đựng nhiều nước nhất? Đồ vật nào đựng ít nước nhất?",
@@ -886,7 +892,7 @@
         "right": [
           "Can 7 l giành ngôi vô địch đựng nước!",
           "Bình bé xíu đứng cuối, cháu phân loại chuẩn quá.",
-          "Pin đặt can lên bục cao nhất cho cả căng tin xem."
+          "Cáo Bạc đặt can lên bục cao nhất cho cả căng tin xem."
         ],
         "wrong": [
           "So lại bốn số lít trong bảng xem số nào lớn nhất.",
@@ -906,6 +912,7 @@
     {
       "id": "can-nuoc-mam-cua-me",
       "title": "Can nước mắm của mẹ",
+      "goTo": "Về bể cá căng tin, Cá Bống ngoi lên đố câu cuối cùng",
       "target": "ca-bong",
       "kind": "riddle",
       "question": "Câu đố cuối của Cá Bống, giải xong là bể đầy! Trong can có 15 l nước mắm. Mẹ đã rót 7 l nước mắm vào các chai. Hỏi trong can còn lại bao nhiêu lít nước mắm?",

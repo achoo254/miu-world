@@ -5,11 +5,11 @@
   "title": "Đốm và hộp linh kiện đổ",
   "status": "active",
   "lesson": "toan2-t1-b19",
-  "summary": "Lợn Rừng Đốm vụng về làm đổ cả hộp linh kiện ra bàn lắp ráp; {name} giúp Đốm gom ốc vít thành từng chục, cộng có nhớ số có hai chữ số với số có một chữ số, sửa phép tính Gà Con Chíp bới mất và thi cộng hạt dẻ với Đốm.",
+  "summary": "Lợn Rừng Đốm vụng về làm đổ cả hộp linh kiện ra bàn lắp ráp; {name} giúp Đốm gom ốc vít thành từng chục, chạy khắp xưởng cộng có nhớ số có hai chữ số với số có một chữ số cùng Bác thợ sơn Thắm, Cánh Cụt Sò, Bê Rơm, sửa phép tính Gà Con Líu bới mất và thi cộng hạt dẻ với Đốm.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Lợn Rừng Đốm, Gà Con Chíp",
-    "where": "Xưởng đồ chơi: bàn lắp ráp",
+    "who": "Lợn Rừng Đốm, Bác thợ sơn Thắm, Cánh Cụt Sò, Gà Con Líu, Bê Rơm",
+    "where": "Xưởng đồ chơi: bàn lắp ráp, góc pha sơn, mô hình hải đăng, bãi đất sau xưởng, kệ máy gặt đồ chơi",
     "goal": "Đếm lại linh kiện theo chục và rời để lắp xong đồ chơi",
     "play": "Tìm linh kiện, điền kết quả phép cộng có nhớ, chọn chum, nối quả với lá, đố vỏ ốc, xây tháp đá, chọn kết quả, thi cộng hạt dẻ",
     "learn": "Toán 2 Bài 19: phép cộng (có nhớ) số có hai chữ số với số có một chữ số",
@@ -30,7 +30,10 @@
   "places": {
     "lon-rung-dom": "bàn lắp ráp",
     "tim-linh-kien": "bàn lắp ráp",
-    "ga-con-chip": "bãi đất sau xưởng"
+    "toan2-cd4-b19-bac-tho-son-tham": "góc pha sơn",
+    "toan2-cd4-b19-canh-cut-so": "mô hình hải đăng",
+    "toan2-cd4-b19-ga-con-liu": "bãi đất sau xưởng",
+    "toan2-cd4-b19-be-rom": "kệ máy gặt đồ chơi"
   },
   "steps": [
     {
@@ -297,7 +300,7 @@
     {
       "id": "chum-son-mau",
       "title": "Ba chum nước pha sơn",
-      "target": "lon-rung-dom",
+      "target": "toan2-cd4-b19-bac-tho-son-tham",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "prompt": "Đốm pha sơn trong ba chum: chum A ghi 59 l + 9 l, chum B ghi 61 l + 9 l, chum C ghi 57 l + 4 l.",
@@ -352,12 +355,13 @@
         "fills": {
           "b1": "b"
         }
-      }
+      },
+      "goTo": "Chạy sang góc pha sơn, Bác thợ sơn Thắm vẫy cọ gọi cậu xem ba chum sơn của Đốm"
     },
     {
       "id": "toa-tau-va-dat-tinh",
       "title": "Toa tàu chở linh kiện",
-      "target": "lon-rung-dom",
+      "target": "toan2-cd4-b19-bac-tho-son-tham",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "prompt": "Đốm lắp một đoàn tàu nhỏ, mỗi toa dán một phép tính, rồi còn bốn phép tính viết dọc trên bàn.",
@@ -621,12 +625,13 @@
           "qua-89-3": "nhom-la-92",
           "qua-69-1": "nhom-la-70"
         }
-      }
+      },
+      "goTo": "Về lại bàn lắp ráp, Đốm đang kiễng chân treo quả gỗ lên cây đồ chơi"
     },
     {
       "id": "vo-oc-trang-xanh",
       "title": "Vỏ ốc làm còi tàu",
-      "target": "lon-rung-dom",
+      "target": "toan2-cd4-b19-canh-cut-so",
       "kind": "riddle",
       "question": "Đốm dùng vỏ ốc làm còi cho đồ chơi. Trên bàn có 18 vỏ ốc màu trắng và 5 vỏ ốc màu xanh. Hỏi trên bàn có tất cả bao nhiêu vỏ ốc?",
       "skill": "bai-toan-loi-van",
@@ -658,12 +663,13 @@
       },
       "answer": {
         "value": 23
-      }
+      },
+      "goTo": "Ra mô hình hải đăng, Cánh Cụt Sò lạch bạch ôm cả rổ vỏ ốc tới khoe"
     },
     {
       "id": "thap-da-hai-dang",
       "title": "Tháp đá cạnh ngọn hải đăng",
-      "target": "lon-rung-dom",
+      "target": "toan2-cd4-b19-canh-cut-so",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "prompt": "Đốm xếp tháp đá đồ chơi cạnh ngọn hải đăng: mỗi viên đá bằng tổng hai viên ngay dưới nó. Số ?",
@@ -760,14 +766,14 @@
     },
     {
       "id": "chip-boi-dat",
-      "title": "Chíp bới mất kết quả",
-      "goTo": "Chạy ra bãi đất sau xưởng, nghe tiếng Gà Con Chíp kêu chiếp chiếp",
+      "title": "Líu bới mất kết quả",
+      "goTo": "Chạy ra bãi đất sau xưởng, Gà Con Líu nhảy tưng tưng chỉ chỗ đất bị bới",
       "kind": "dialogue",
-      "target": "ga-con-chip",
+      "target": "toan2-cd4-b19-ga-con-liu",
       "lines": [
         {
-          "speaker": "Gà Con Chíp",
-          "text": "Chiếp chiếp! Tớ đang tìm giun thôi mà, ai ngờ bới mất hết kết quả phép tính Đốm viết dưới đất!"
+          "speaker": "Gà Con Líu",
+          "text": "Chiếp chiếp! Tớ là Líu. Tớ mải tìm giun thôi mà, ai ngờ bới tung hết kết quả phép tính Đốm viết dưới đất!"
         },
         {
           "speaker": "Lợn Rừng Đốm",
@@ -781,17 +787,17 @@
         },
         {
           "text": "Đặt tính cho chắc",
-          "reply": "Gà Con Chíp: Thẳng cột như hàng gà con đi học!"
+          "reply": "Gà Con Líu: Thẳng cột như hàng gà con đi học!"
         }
       ]
     },
     {
       "id": "ket-qua-ga-boi-mat",
       "title": "Viết lại kết quả bị bới",
-      "target": "ga-con-chip",
+      "target": "toan2-cd4-b19-ga-con-liu",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Chú gà bới đất làm mất kết quả của các phép tính mà Việt vừa viết. Hãy tìm lại kết quả giúp bạn Việt nhé! (Ở xưởng này, chú gà ấy chính là Chíp.)",
+      "prompt": "Chú gà bới đất làm mất kết quả của các phép tính mà Việt vừa viết. Hãy tìm lại kết quả giúp bạn Việt nhé! (Ở xưởng này, chú gà ấy chính là Líu.)",
       "template": "47 + 8 = {{b1}}\n84 + 9 = {{b2}}\n23 + 7 = {{b3}}\n15 + 5 = {{b4}}",
       "blanks": [
         {
@@ -883,9 +889,9 @@
       },
       "feedback": {
         "right": [
-          "Kết quả hiện lại trên đất, Chíp hứa từ nay bới chỗ khác!",
+          "Kết quả hiện lại trên đất, Líu hứa từ nay bới chỗ khác!",
           "Bốn phép tính được cứu, Việt chắc cảm ơn cậu lắm.",
-          "Chíp cúi đầu xin lỗi rồi… lại thấy một con giun."
+          "Líu cúi đầu xin lỗi rồi… lại thấy một con giun."
         ],
         "wrong": [
           "Một kết quả quên cộng số 1 nhớ ở hàng chục.",
@@ -905,7 +911,7 @@
     {
       "id": "dat-tinh-don-xuong",
       "title": "Bốn phép tính dọn xưởng",
-      "target": "ga-con-chip",
+      "target": "lon-rung-dom",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "prompt": "Dọn xong bãi đất, Đốm nhờ tính nốt bốn phép trên bảng gỗ. Đặt tính rồi tính.",
@@ -1017,14 +1023,15 @@
           "b3": "o70",
           "b4": "o44"
         }
-      }
+      },
+      "goTo": "Quay về bàn lắp ráp, Đốm đã dựng sẵn tấm bảng gỗ ghi bốn phép tính"
     },
     {
       "id": "thoc-bac-manh",
       "title": "Máy gặt của bác Mạnh",
-      "target": "ga-con-chip",
+      "target": "toan2-cd4-b19-be-rom",
       "kind": "riddle",
-      "question": "Đốm vừa lắp xong chiếc máy gặt đồ chơi, Chíp đọc to bài toán trên hộp: Buổi sáng, bác Mạnh thu hoạch được 87 bao thóc. Buổi chiều, bác Mạnh thu hoạch được nhiều hơn buổi sáng 6 bao thóc. Hỏi buổi chiều bác Mạnh thu hoạch được bao nhiêu bao thóc?",
+      "question": "Đốm vừa lắp xong chiếc máy gặt đồ chơi, Bê Rơm đọc to bài toán trên hộp: Buổi sáng, bác Mạnh thu hoạch được 87 bao thóc. Buổi chiều, bác Mạnh thu hoạch được nhiều hơn buổi sáng 6 bao thóc. Hỏi buổi chiều bác Mạnh thu hoạch được bao nhiêu bao thóc?",
       "skill": "bai-toan-loi-van",
       "curriculumRef": [
         "toan2-t1-b19-luyen-tap-2-2"
@@ -1044,7 +1051,7 @@
         "right": [
           "Chín mươi ba bao thóc, máy gặt đồ chơi kêu rè rè vui vẻ!",
           "Nhiều hơn thì cộng, cháu nắm chắc rồi.",
-          "Chíp nhặt một hạt thóc đồ chơi… và định ăn thật."
+          "Bê Rơm nhặt một hạt thóc đồ chơi… và định ăn thật."
         ],
         "wrong": [
           "Buổi chiều nhiều hơn buổi sáng, vậy phải cộng thêm.",
@@ -1054,15 +1061,16 @@
       },
       "answer": {
         "value": 93
-      }
+      },
+      "goTo": "Sang kệ máy gặt đồ chơi, Bê Rơm đang nghển cổ đọc chữ trên chiếc hộp mới"
     },
     {
       "id": "chon-ket-qua-ba-so-a",
       "title": "Ba số cộng liền tay",
-      "target": "ga-con-chip",
+      "target": "toan2-cd4-b19-ga-con-liu",
       "kind": "challenge",
       "mechanic": "quiz",
-      "prompt": "Chíp đố liền hai câu. Chọn kết quả đúng. a) 28 + 9 + 2 = ? A. 37 B. 39 C. 30",
+      "prompt": "Líu đố liền hai câu. Chọn kết quả đúng. a) 28 + 9 + 2 = ? A. 37 B. 39 C. 30",
       "choices": [
         {
           "id": "a-37",
@@ -1094,27 +1102,28 @@
       },
       "feedback": {
         "right": [
-          "Ba mươi chín, Chíp kêu chiếp một tiếng đồng ý!",
+          "Ba mươi chín, Líu kêu chiếp một tiếng đồng ý!",
           "Cộng hai lần liền mà không vấp, giỏi quá.",
           "Đúng rồi, 37 chỉ là kết quả của bước đầu thôi."
         ],
         "wrong": [
           "Nhớ cộng thêm số 2 ở cuối nhé.",
           "28 + 9 được 37, rồi còn bước nữa đấy.",
-          "Đáp án tròn chục kia là bẫy của Chíp đó."
+          "Đáp án tròn chục kia là bẫy của Líu đó."
         ]
       },
       "answer": {
         "choice": "b-39"
-      }
+      },
+      "goTo": "Ra lại bãi đất sau xưởng, Gà Con Líu chống cánh chờ đố cậu hai câu"
     },
     {
       "id": "chon-ket-qua-ba-so-b",
       "title": "Bốn mươi lăm cộng năm cộng tám",
-      "target": "ga-con-chip",
+      "target": "toan2-cd4-b19-ga-con-liu",
       "kind": "challenge",
       "mechanic": "quiz",
-      "prompt": "Câu đố thứ hai của Chíp. Chọn kết quả đúng. b) 45 + 5 + 8 = ? A. 58 B. 48 C. 68",
+      "prompt": "Câu đố thứ hai của Líu. Chọn kết quả đúng. b) 45 + 5 + 8 = ? A. 58 B. 48 C. 68",
       "choices": [
         {
           "id": "a-58",
@@ -1147,8 +1156,8 @@
       "feedback": {
         "right": [
           "Năm mươi tám! Tròn chục rồi cộng thêm, mẹo hay quá.",
-          "Chíp phục sát đất, à không, sát… vỏ trứng.",
-          "Hai câu đố của Chíp đều bị cháu hạ gục."
+          "Líu phục sát đất, à không, sát… vỏ trứng.",
+          "Hai câu đố của Líu đều bị cháu hạ gục."
         ],
         "wrong": [
           "45 + 5 bằng 50, rồi thêm 8 nữa nhé.",

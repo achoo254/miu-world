@@ -5,11 +5,11 @@
   "title": "Phòng tranh treo ngược của Cua Kềnh",
   "status": "active",
   "lesson": "toan2-t1-b28",
-  "summary": "Cua Kềnh treo bức tranh hình khối nào cũng ngược, nói câu nào cũng ngược; {name} cùng Hươu Cao soi từng bức tranh tìm đoạn thẳng, đường thẳng, hình tứ giác, ba bạn đứng thẳng hàng và đo đường ốc sên bò.",
+  "summary": "Cua Kềnh treo bức tranh hình khối nào cũng ngược, nói câu nào cũng ngược; {name} cùng cô Hằng dạy vẽ, Thỏ Bông Lau và Mèo Mướp soi từng bức tranh tìm đoạn thẳng, đường thẳng, hình tứ giác, ba bạn đứng thẳng hàng và đo đường ốc sên bò.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Cua Kềnh, Hươu Cao",
-    "where": "Phòng mĩ thuật: phòng trưng bày tranh và giá vẽ lớn",
+    "who": "Cua Kềnh, cô Hằng dạy vẽ, Thỏ Bông Lau, Mèo Mướp",
+    "where": "Phòng mĩ thuật: phòng trưng bày tranh, giá vẽ lớn, bàn cắt dán giấy màu, bậu cửa sổ phòng tranh",
     "goal": "Treo xuôi lại các bức tranh hình khối trước giờ mở cửa phòng tranh",
     "play": "Tìm đinh và khung tranh, chọn câu đúng, chọn đoạn thẳng, đếm hình tứ giác, chọn nhóm thẳng hàng, nối đường ốc sên, tính quãng đường",
     "learn": "Toán 2 Bài 28: luyện tập chung về điểm, đoạn thẳng, đường thẳng, đường cong, ba điểm thẳng hàng, hình tứ giác, đường gấp khúc",
@@ -30,7 +30,9 @@
   "places": {
     "cua-kenh": "phòng trưng bày tranh",
     "tim-dinh-khung": "góc phòng tranh",
-    "huou-cao": "giá vẽ lớn"
+    "toan2-cd5-b28-co-hang": "giá vẽ lớn",
+    "toan2-cd5-b28-tho-bong-lau": "bàn cắt dán giấy màu",
+    "toan2-cd5-b28-meo-muop": "bậu cửa sổ phòng tranh"
   },
   "steps": [
     {
@@ -45,8 +47,8 @@
           "text": "Tạm biệt {name}! À nhầm, tớ nói ngược quen rồi: chào {name}! Phòng tranh của tớ đẹp… xấu… à, đẹp lắm đấy."
         },
         {
-          "speaker": "Hươu Cao",
-          "text": "Đẹp gì mà đẹp! Cậu treo bức nào cũng lộn đầu xuống đất, ốc sên trong tranh bò ngược lên trời kìa."
+          "speaker": "Cô Hằng",
+          "text": "Cô Hằng gọi vọng từ giá vẽ: Cua ơi, bức nào cũng chổng đầu xuống đất, ốc sên trong tranh đang bò lên trời kìa!"
         },
         {
           "speaker": "Cua Kềnh",
@@ -77,17 +79,17 @@
     },
     {
       "id": "huou-nhac-bai",
-      "title": "Hươu Cao nhắc bài",
-      "goTo": "Mang đồ về phòng trưng bày tranh, Hươu Cao vừa ghé qua",
+      "title": "Cô Hằng nhắc bài",
+      "goTo": "Mang đồ sang giá vẽ lớn, cô Hằng đang pha màu chờ cả hai",
       "kind": "dialogue",
-      "target": "cua-kenh",
+      "target": "toan2-cd5-b28-co-hang",
       "lines": [
         {
-          "speaker": "Hươu Cao",
-          "text": "Trước khi treo lại, mình ôn nhanh nhé: đoạn thẳng có hai đầu mút, còn đường thẳng kéo dài mãi về hai phía."
+          "speaker": "Cô Hằng",
+          "text": "Trước khi treo lại, cô trò mình ôn nhanh nhé: đoạn thẳng có hai đầu mút, còn đường thẳng kéo dài mãi về hai phía."
         },
         {
-          "speaker": "Hươu Cao",
+          "speaker": "Cô Hằng",
           "text": "Ba điểm cùng nằm trên một đường thẳng thì gọi là ba điểm thẳng hàng. Hình có bốn cạnh là hình tứ giác."
         },
         {
@@ -98,13 +100,14 @@
       "choices": [
         {
           "text": "Tớ nhớ rồi, soi tranh thôi!",
-          "reply": "Hươu Cao vươn cổ nhìn bao quát: Bức đầu tiên ở ngay trên tường kia."
+          "reply": "Cô Hằng giơ cây bút lông chỉ về phía Cua: Bức đầu tiên Cua đang ôm đấy, chạy lại xem nào!"
         }
       ]
     },
     {
       "id": "cau-dung-cau-sai",
       "title": "Cua nói thật hay nói ngược?",
+      "goTo": "Chạy về phòng trưng bày tranh, Cua Kềnh giơ càng đọc bốn câu",
       "target": "cua-kenh",
       "kind": "challenge",
       "mechanic": "multi-select",
@@ -217,7 +220,7 @@
         "right": [
           "Ba đoạn thẳng, không sót đoạn dài nào, tranh thứ hai lên tường!",
           "Cậu nhớ cả đoạn MP chạy suốt từ đầu này sang đầu kia.",
-          "Hươu Cao gật gù: mắt cậu tinh hơn cả mắt hươu."
+          "Cua Kềnh khen ngược: mắt cậu kém… à nhầm, tinh quá trời!"
         ],
         "wrong": [
           "Trong tranh làm gì có điểm Q hay điểm A, B đâu.",
@@ -236,7 +239,8 @@
     {
       "id": "dem-hinh-tu-giac",
       "title": "Đếm hình tứ giác trong khung",
-      "target": "cua-kenh",
+      "goTo": "Ghé bàn cắt dán giấy màu, Thỏ Bông Lau đang ôm hai khung tranh",
+      "target": "toan2-cd5-b28-tho-bong-lau",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "prompt": "Hai bức tranh hình khối: bức a là một hình năm cạnh, từ đỉnh dưới bên trái kẻ hai đoạn thẳng chia thành một hình tam giác ở giữa và hai hình tứ giác; bức b là một hình chữ nhật có một đoạn thẳng kẻ xiên từ cạnh trên xuống cạnh dưới. Số ?",
@@ -315,23 +319,23 @@
     {
       "id": "tro-dung-thang-hang",
       "title": "Trò đứng thẳng hàng",
-      "goTo": "Sang giá vẽ lớn, Hươu Cao đang treo bức tranh sân chơi",
+      "goTo": "Quay lại giá vẽ lớn, cô Hằng đang treo bức tranh sân chơi",
       "kind": "dialogue",
-      "target": "huou-cao",
+      "target": "toan2-cd5-b28-co-hang",
       "lines": [
         {
-          "speaker": "Hươu Cao",
+          "speaker": "Cô Hằng",
           "text": "Bức tranh này vẽ năm bạn đứng trên sân kẻ ô. Cua Kềnh bảo chẳng ai đứng thẳng hàng với ai cả."
         },
         {
           "speaker": "Cua Kềnh",
-          "text": "Ý tớ là… có nhiều bạn thẳng hàng lắm! Cậu muốn soi bằng mắt hươu hay áp thước kẻ vào tranh?"
+          "text": "Ý tớ là… có nhiều bạn thẳng hàng lắm! Cậu muốn trèo lên ghế nhìn từ trên cao hay áp thước kẻ vào tranh?"
         }
       ],
       "choices": [
         {
-          "text": "Mượn mắt Hươu Cao nhìn từ trên cao",
-          "reply": "Hươu Cao vươn cổ: Từ trên này nhìn xuống, hàng nào thẳng là thấy liền!"
+          "text": "Trèo lên ghế nhìn từ trên cao",
+          "reply": "Cô Hằng giữ chặt chân ghế: Đứng trên này nhìn xuống, hàng nào thẳng là thấy ngay con ạ!"
         },
         {
           "text": "Áp thước kẻ dài vào từng hàng",
@@ -342,7 +346,7 @@
     {
       "id": "nhom-ba-ban-thang-hang",
       "title": "Ba bạn nào thẳng hàng?",
-      "target": "huou-cao",
+      "target": "toan2-cd5-b28-co-hang",
       "kind": "challenge",
       "mechanic": "multi-select",
       "prompt": "Trên sân kẻ ô: Nam, Việt và Mi đứng trên cùng một đường dọc, còn Rô-bốt, Mi và Mai đứng trên cùng một hàng ngang. Kể tên các nhóm ba bạn đứng thẳng hàng trong hình vẽ dưới đây. Chọn tất cả các nhóm đúng.",
@@ -381,7 +385,7 @@
       },
       "feedback": {
         "right": [
-          "Hai nhóm thẳng tắp như hai cây thước, Hươu Cao vỗ móng tán thưởng!",
+          "Hai nhóm thẳng tắp như hai cây thước, cô Hằng vỗ tay tán thưởng!",
           "Bạn Mi đứng đúng chỗ hai hàng giao nhau, cậu tinh thật.",
           "Cua Kềnh giữ thước mỏi càng, nhưng ai cũng thẳng hàng rồi."
         ],
@@ -401,10 +405,11 @@
     {
       "id": "duong-oc-sen-bo",
       "title": "Vẽ đường ốc sên bò",
-      "target": "huou-cao",
+      "goTo": "Ra bậu cửa sổ phòng tranh, Mèo Mướp vừa vẽ xong một chú ốc sên",
+      "target": "toan2-cd5-b28-meo-muop",
       "kind": "challenge",
       "mechanic": "connect",
-      "prompt": "Hươu Cao vẽ thêm một chú ốc sên nhỏ xíu ở góc tranh. Hôm nay, chú ốc sên bò từ trường học đến sân bóng, rồi ghé qua thư viện và trở về nhà. Tính độ dài quãng đường mà ốc sên đã bò. Trước khi tính, nối các điểm theo đúng đường ốc sên đã bò.",
+      "prompt": "Mèo Mướp vẽ thêm một chú ốc sên nhỏ xíu ở góc tranh. Hôm nay, chú ốc sên bò từ trường học đến sân bóng, rồi ghé qua thư viện và trở về nhà. Tính độ dài quãng đường mà ốc sên đã bò. Trước khi tính, nối các điểm theo đúng đường ốc sên đã bò.",
       "points": [
         {
           "id": "truong-hoc",
@@ -478,7 +483,7 @@
     {
       "id": "quang-duong-oc-sen",
       "title": "Ốc sên bò bao xa?",
-      "target": "huou-cao",
+      "target": "toan2-cd5-b28-meo-muop",
       "kind": "riddle",
       "question": "Trên tranh ghi: trường học – sân bóng 10 cm, sân bóng – thư viện 30 cm, thư viện – nhà 20 cm. Hôm nay, chú ốc sên bò từ trường học đến sân bóng, rồi ghé qua thư viện và trở về nhà. Tính độ dài quãng đường mà ốc sên đã bò. (Viết số xăng-ti-mét.)",
       "skill": "bai-toan-loi-van",
@@ -499,7 +504,7 @@
       "feedback": {
         "right": [
           "Sáu mươi xăng-ti-mét, ốc sên bò cả ngày mới tới nhà!",
-          "Cộng ba chặng gọn gàng, Hươu Cao ghi số lên khung tranh.",
+          "Cộng ba chặng gọn gàng, Mèo Mướp lấy đuôi chấm màu ghi số lên khung.",
           "Cua Kềnh hét: sai rồi… à không, đúng rồi, đúng quá rồi!"
         ],
         "wrong": [
@@ -524,7 +529,7 @@
       "title": "Tiếng ngáy dưới tháp đồng hồ",
       "kind": "unlock",
       "trigger": "auto",
-      "text": "Dưới chân tháp đồng hồ vọng lên tiếng ngáy khò khò: Koala Na ngủ quên, kim đồng hồ tháp chạy lung tung, cả trường không biết mấy giờ rồi!"
+      "text": "Dưới chân tháp đồng hồ vọng lên tiếng ngáy khò khò: Gấu Trúc Khò ngủ quên, kim đồng hồ tháp chạy lung tung, cả trường không biết mấy giờ rồi!"
     }
   ],
   "reward": {

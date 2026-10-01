@@ -1,0 +1,151 @@
+{
+ "batch": 3,
+ "quests": {
+  "tv2-t10-b18": {
+   "region": "khu-rung-bi-mat",
+   "file": "content/quests/tv2-t10-b18.json",
+   "keeps": [
+    "gau-tuyet-bong"
+   ],
+   "replace": [
+    "cho-muc"
+   ],
+   "names": {
+    "cho-muc": "Chó Mực",
+    "gau-tuyet-bong": "Gấu Tuyết Bông"
+   }
+  },
+  "tv2-t11-b19": {
+   "region": "khu-rung-bi-mat",
+   "file": "content/quests/tv2-t11-b19.json",
+   "keeps": [],
+   "replace": [],
+   "names": {}
+  },
+  "tv2-t11-b20": {
+   "region": "khu-rung-bi-mat",
+   "file": "content/quests/tv2-t11-b20.json",
+   "keeps": [],
+   "replace": [
+    "ga-con-chip",
+    "ho-van"
+   ],
+   "names": {
+    "ga-con-chip": "Gà Con Chíp",
+    "ho-van": "Hổ Vằn"
+   }
+  },
+  "tv2-t12-b21": {
+   "region": "khu-rung-bi-mat",
+   "file": "content/quests/tv2-t12-b21.json",
+   "keeps": [
+    "khi-lanh"
+   ],
+   "replace": [],
+   "names": {
+    "khi-lanh": "Khỉ Lanh"
+   }
+  },
+  "tv2-t12-b22": {
+   "region": "khu-rung-bi-mat",
+   "file": "content/quests/tv2-t12-b22.json",
+   "keeps": [
+    "lon-rung-dom"
+   ],
+   "replace": [],
+   "names": {
+    "lon-rung-dom": "Lợn Rừng Đốm"
+   }
+  },
+  "tv2-t13-b23": {
+   "region": "khu-rung-bi-mat",
+   "file": "content/quests/tv2-t13-b23.json",
+   "keeps": [],
+   "replace": [
+    "cao-lem",
+    "tho-ti"
+   ],
+   "names": {
+    "tho-ti": "Thỏ Tí",
+    "cao-lem": "Cáo Lém"
+   }
+  },
+  "tv2-t13-b24": {
+   "region": "khu-rung-bi-mat",
+   "file": "content/quests/tv2-t13-b24.json",
+   "keeps": [
+    "hai-ly-can"
+   ],
+   "replace": [],
+   "names": {
+    "hai-ly-can": "Hải Ly Cần"
+   }
+  },
+  "tv2-t14-b25": {
+   "region": "khu-rung-bi-mat",
+   "file": "content/quests/tv2-t14-b25.json",
+   "keeps": [
+    "ong-hong",
+    "ong-nu"
+   ],
+   "replace": [
+    "ong-vang"
+   ],
+   "names": {
+    "ong-vang": "Ong Vàng",
+    "ong-hong": "Ong Hồng",
+    "ong-nu": "Ong Nụ"
+   }
+  }
+ },
+ "looks": {
+  "animal-beaver": 1,
+  "animal-bunny": 1,
+  "animal-caterpillar": 1,
+  "animal-cow": 1,
+  "animal-crab": 1,
+  "animal-dog": 1,
+  "animal-fish": 1,
+  "animal-giraffe": 1,
+  "animal-hog": 1,
+  "animal-lion": 1,
+  "animal-monkey": 1,
+  "animal-parrot": 1,
+  "animal-pig": 1,
+  "animal-polar": 1,
+  "calf": 1,
+  "calf-tan": 1,
+  "chibi-bear-den-vest-shorts-green": 1,
+  "chibi-bear-mat-ong-dress-blue": 1,
+  "chibi-bear-mat-ong-jacket": 1,
+  "chibi-bear-nau-vest-shorts": 1,
+  "chibi-cat-cam-overalls": 1,
+  "chibi-cat-cam-vest-shorts-navy": 1,
+  "chibi-cat-trang-jacket-red": 1,
+  "chibi-cat-xam-dress-mint": 1,
+  "chibi-cat-xam-jacket-green": 1,
+  "chibi-fox-cam-jacket-red": 1,
+  "chibi-fox-do-dress-mint": 1,
+  "chibi-fox-do-jacket-green": 1,
+  "chibi-fox-tuyet-vest-shorts-navy": 1,
+  "chibi-rabbit-nau-dress-blue": 1,
+  "chibi-rabbit-nau-jacket": 1,
+  "chibi-rabbit-trang-vest-shorts": 1,
+  "chibi-rabbit-xam-overalls-red": 1,
+  "chibi-rabbit-xam-vest-shorts-green": 1,
+  "person-a": 1,
+  "person-b": 1,
+  "person-d": 1,
+  "person-e": 1,
+  "person-f": 1,
+  "person-h": 1,
+  "person-i": 1,
+  "person-j": 1,
+  "person-l": 1,
+  "person-m": 1,
+  "person-n": 1,
+  "person-p": 1,
+  "person-q": 1,
+  "person-r": 1
+ }
+}

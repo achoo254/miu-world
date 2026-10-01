@@ -8,8 +8,8 @@
   "summary": "Cua Kềnh bò ngang về căn chòi cũ bên bờ, tìm lại những vạch khắc chiều cao bà đánh dấu năm nào. {name} cùng Cua đọc bài thơ Cánh cửa nhớ bà, tìm từ chỉ hoạt động, rồi nghe và kể chuyện Bà cháu.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Cua Kềnh (đi ngang, hay nói ngược, đang nhớ bà), Hải Ly Cần ghé qua tìm ván làm cầu",
-    "where": "Căn chòi cũ bên bờ: bãi cát quanh chòi, cánh cửa gỗ có hai then, vách đá gắn vỏ sò sau chòi",
+    "who": "Cua Kềnh (đi ngang, hay nói ngược, đang nhớ bà), Chú chài Khơi vớt tranh và mê nghe chuyện, Hải Ly Cần ghé qua tìm ván làm cầu",
+    "where": "Căn chòi cũ bên bờ: bãi cát quanh chòi, cánh cửa gỗ có hai then, bãi đá mép sóng, vách đá gắn vỏ sò sau chòi",
     "goal": "Tìm lại các vạch khắc chiều cao bà Cua đánh dấu trên cánh cửa và khắc thêm vạch mới",
     "play": "Lục tìm đồ cũ, nói, đọc thơ, chọn đáp án, xếp tranh, chọn nhiều từ, phân loại, chọn cách làm, nghe và kể chuyện, phiếu viết",
     "learn": "Tiếng Việt 2 Bài 29: đọc hiểu bài thơ \"Cánh cửa nhớ bà\", từ chỉ hoạt động, nghe và kể chuyện \"Bà cháu\", viết chữ hoa Ô, Ơ",
@@ -44,7 +44,8 @@
     "cua-kenh": "căn chòi cũ bên bờ",
     "tim-quanh-choi": "bãi cát cạnh căn chòi",
     "tv2-t16-canh-cua-go": "cánh cửa gỗ của chòi",
-    "tv2-t16-vach-vo-so": "vách đá gắn vỏ sò"
+    "tv2-t16-vach-vo-so": "vách đá gắn vỏ sò",
+    "tv2-t16-b29-chu-chai-khoi": "bãi đá mép sóng"
   },
   "steps": [
     {
@@ -218,9 +219,10 @@
     {
       "id": "xep-tranh-ba-kho-tho",
       "title": "Ba tấm tranh treo cạnh cửa",
+      "goTo": "Tranh bay ra bãi đá mép sóng, Chú chài Khơi vừa vớt được cả ba tấm",
       "kind": "challenge",
       "mechanic": "sort",
-      "target": "tv2-t16-canh-cua-go",
+      "target": "tv2-t16-b29-chu-chai-khoi",
       "prompt": "Gió biển thổi ba tấm tranh bà treo cạnh cửa rơi lộn xộn. Cua Kềnh định xếp từ cuối lên đầu… À không, phải xuôi chứ! Sắp xếp các bức tranh sau theo thứ tự của 3 khổ thơ trong bài.",
       "items": [
         {
@@ -298,6 +300,7 @@
     {
       "id": "cau-tho-nho-ba",
       "title": "Câu thơ nhớ bà ở nhà mới",
+      "goTo": "Ôm tranh về cánh cửa gỗ của chòi, đọc lại khổ thơ cuối",
       "kind": "read",
       "target": "tv2-t16-canh-cua-go",
       "textRef": "canh-cua-nho-ba",
@@ -423,9 +426,10 @@
     {
       "id": "viec-lam-voi-cua",
       "title": "Hai giỏ chữ của cánh cửa",
+      "goTo": "Cua Kềnh bò tới cánh cửa gỗ của chòi, gõ cốc cốc vào khung",
       "kind": "challenge",
       "mechanic": "classify",
-      "target": "cua-kenh",
+      "target": "tv2-t16-canh-cua-go",
       "prompt": "Cua Kềnh gõ cốc cốc vào khung cửa: cửa ơi, cho tớ hỏi một câu! Tìm những từ ngữ chỉ hoạt động có thể kết hợp với từ “cửa”. M: đẩy cửa",
       "groups": [
         {
@@ -509,9 +513,9 @@
     {
       "id": "tim-thay-vet-khac",
       "title": "Những vạch khắc dưới lớp bụi",
-      "goTo": "Trở lại cánh cửa gỗ của chòi, dưới lớp bụi lấp ló vạch khắc",
+      "goTo": "Cua Kềnh vẫy càng gọi từ căn chòi cũ bên bờ: tìm thấy vạch khắc rồi!",
       "kind": "dialogue",
-      "target": "tv2-t16-canh-cua-go",
+      "target": "cua-kenh",
       "lines": [
         {
           "speaker": "Cua Kềnh",
@@ -663,8 +667,9 @@
     {
       "id": "ke-chuyen-ba-chau",
       "title": "Đến lượt {name} kể chuyện",
+      "goTo": "Ra bãi đá mép sóng kể chuyện Bà cháu cho Chú chài Khơi nghe",
       "kind": "speak",
-      "target": "tv2-t16-vach-vo-so",
+      "target": "tv2-t16-b29-chu-chai-khoi",
       "prompt": "Cua Kềnh lau mắt bằng càng: tớ kể xong rồi, cậu có nhớ không? Nghe kể chuyện. Chọn kể 1 – 2 đoạn của câu chuyện theo tranh.",
       "hints": [
         "Đoạn 1: túp lều tranh nghèo và hạt đào của cô tiên.",
@@ -778,7 +783,7 @@
       "title": "Tiếng gâu gâu trên con dốc",
       "kind": "unlock",
       "trigger": "auto",
-      "text": "Từ con dốc gập ghềnh phía xa vọng lại tiếng \"Gâu! Gâu!\". Chó Mực đang cuống quýt: ông Vện đau chân, chẳng bước lên dốc được."
+      "text": "Từ con dốc gập ghềnh phía xa vọng lại tiếng \"Gâu! Gâu!\". Cún Vừng đang cuống quýt: ông Vện đau chân, chẳng bước lên dốc được."
     }
   ],
   "reward": {

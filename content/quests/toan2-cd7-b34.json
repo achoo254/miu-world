@@ -5,11 +5,11 @@
   "title": "Phông nền bằng hình phẳng",
   "status": "active",
   "lesson": "toan2-t1-b34",
-  "summary": "Lợn Rừng Đốm vấp ngã làm đổ tung phông nền sân khấu ghép từ các hình phẳng; {name} cùng Hươu Cao đếm đoạn thẳng, đo, tìm hình tứ giác, ba điểm thẳng hàng và dựng lại phông cho buổi văn nghệ cuối kì.",
+  "summary": "Gấu Bum vấp ngã làm đổ tung phông nền sân khấu ghép từ các hình phẳng; {name} cùng Hươu Cao, Mèo Cam Xíu và chú Phong đếm đoạn thẳng, đo, tìm hình tứ giác, ba điểm thẳng hàng và dựng lại phông cho buổi văn nghệ cuối kì.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Hươu Cao, Lợn Rừng Đốm",
-    "where": "Hội trường: phông nền sân khấu, cánh gà sân khấu",
+    "who": "Hươu Cao, Gấu Bum, Mèo Cam Xíu, chú Phong phụ trách đèn",
+    "where": "Hội trường: phông nền sân khấu, cánh gà sân khấu, đống thanh gỗ khung phông, giàn đèn sân khấu, bậc lên sân khấu",
     "goal": "Dựng lại phông nền sân khấu trước buổi tổng duyệt",
     "play": "Tìm mảnh phông, điền số đoạn thẳng và độ dài, chọn đoạn bằng nhau, phân loại hình, chọn ba điểm thẳng hàng, nối điểm vẽ đoạn thẳng, giải đố, phiếu vẽ hình",
     "learn": "Toán 2 Bài 34: ôn tập hình phẳng (đoạn thẳng, đường gấp khúc, hình tứ giác, ba điểm thẳng hàng, đo và vẽ đoạn thẳng)",
@@ -30,7 +30,9 @@
   "places": {
     "huou-cao": "phông nền sân khấu",
     "nhat-manh-phong": "cánh gà sân khấu",
-    "lon-rung-dom": "bậc lên sân khấu"
+    "toan2-cd7-b33-gau-bum": "bậc lên sân khấu",
+    "toan2-cd7-b34-meo-cam-xiu": "đống thanh gỗ khung phông",
+    "toan2-cd7-b34-chu-phong": "giàn đèn sân khấu"
   },
   "steps": [
     {
@@ -45,8 +47,8 @@
           "text": "{name} ơi, nguy to! Tớ ghép cả tuần mới xong tấm phông bằng hình tam giác, hình tứ giác, đường gấp khúc…"
         },
         {
-          "speaker": "Lợn Rừng Đốm",
-          "text": "Ụt ịt… tớ chỉ định mang hộ cái thang thôi, ai ngờ vấp chân mình, thế là RẦM! Mảnh phông văng ra tận cánh gà."
+          "speaker": "Gấu Bum",
+          "text": "Bum… tớ chỉ định mang hộ cái thang thôi, ai ngờ vấp chân mình, thế là RẦM! Mảnh phông văng ra tận cánh gà."
         },
         {
           "speaker": "Hươu Cao",
@@ -59,8 +61,8 @@
           "reply": "Hươu Cao vươn cổ chỉ: Một mảnh tam giác, một mảnh tứ giác, cả cái thước kẻ của tớ nữa!"
         },
         {
-          "text": "Đốm có đau không?",
-          "reply": "Lợn Rừng Đốm xoa mũi: Không sao, mũi tớ dày lắm! Cậu đi nhặt mảnh phông giúp Hươu nha."
+          "text": "Gấu Bum có đau không?",
+          "reply": "Gấu Bum xoa mũi: Không sao, lông tớ dày lắm! Cậu đi nhặt mảnh phông giúp Hươu nha."
         }
       ]
     },
@@ -91,14 +93,14 @@
           "text": "Hình có 4 cạnh, 4 đỉnh là hình tứ giác. Ba điểm cùng nằm trên một đường thẳng gọi là ba điểm thẳng hàng."
         },
         {
-          "speaker": "Lợn Rừng Đốm",
+          "speaker": "Gấu Bum",
           "text": "Còn bốn điểm thẳng hàng thì gọi là… bốn điểm xếp hàng chờ ăn trưa à?"
         }
       ],
       "choices": [
         {
           "text": "Haha, ôn tiếp thôi!",
-          "reply": "Hươu Cao lắc cái cổ dài: Đốm ơi là Đốm! {name} bắt đầu đếm đoạn thẳng giúp tớ nhé."
+          "reply": "Hươu Cao lắc cái cổ dài: Bum ơi là Bum! {name} bắt đầu đếm đoạn thẳng giúp tớ nhé."
         }
       ]
     },
@@ -222,7 +224,8 @@
     {
       "id": "do-bon-doan-thang",
       "title": "Thước kẻ đo bốn thanh gỗ",
-      "target": "huou-cao",
+      "goTo": "Sang đống thanh gỗ khung phông, Mèo Cam Xíu kéo thước kẻ chờ đo",
+      "target": "toan2-cd7-b34-meo-cam-xiu",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "prompt": "Bốn thanh gỗ khung phông được đặt dọc theo thước kẻ, vạch 0 trùng đầu bên trái mỗi thanh. Cho các đoạn thẳng sau: a) Đo độ dài mỗi đoạn thẳng.",
@@ -317,7 +320,7 @@
       },
       "feedback": {
         "right": [
-          "Bốn thanh gỗ đo xong, Lợn Rừng Đốm ghi số bằng phấn!",
+          "Bốn thanh gỗ đo xong, Mèo Cam Xíu ghi số bằng phấn!",
           "Cậu đặt thước chuẩn vạch 0, số đo không lệch tí nào.",
           "Đo đạc kĩ thế này thì phông dựng thẳng tắp."
         ],
@@ -339,6 +342,7 @@
     {
       "id": "hai-doan-bang-nhau",
       "title": "Hai thanh dài bằng nhau",
+      "goTo": "Về phông nền sân khấu, Hươu Cao chờ dựng hai cột",
       "target": "huou-cao",
       "kind": "challenge",
       "mechanic": "multi-select",
@@ -398,7 +402,8 @@
     {
       "id": "doan-dai-nhat-ngan-nhat",
       "title": "Thanh dài nhất, thanh ngắn nhất",
-      "target": "huou-cao",
+      "goTo": "Lại đống thanh gỗ khung phông, Mèo Cam Xíu xếp các thanh thành hàng",
+      "target": "toan2-cd7-b34-meo-cam-xiu",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "prompt": "Thanh dài nhất làm xà ngang, thanh ngắn nhất làm chân đỡ. Cho các đoạn thẳng sau:",
@@ -466,7 +471,7 @@
         "right": [
           "Xà ngang MN, chân đỡ AB, phông nền đứng thẳng tắp!",
           "So số đo nhanh như chớp, cậu giỏi quá.",
-          "Lợn Rừng Đốm reo: tớ không cầm nhầm thanh nữa rồi!"
+          "Mèo Cam Xíu reo: lần này chẳng ai cầm nhầm thanh nữa!"
         ],
         "wrong": [
           "Thanh dài nhất có số đo lớn nhất đấy.",
@@ -484,7 +489,8 @@
     {
       "id": "tim-hinh-tu-giac",
       "title": "Mảnh nào là hình tứ giác",
-      "target": "huou-cao",
+      "goTo": "Leo lên giàn đèn sân khấu, chú Phong soi đèn vào bốn mảnh phông màu",
+      "target": "toan2-cd7-b34-chu-phong",
       "kind": "challenge",
       "mechanic": "classify",
       "prompt": "Bốn mảnh phông màu sắc nằm chồng lên nhau. Những hình nào dưới đây là hình tứ giác?",
@@ -619,6 +625,7 @@
     {
       "id": "ba-diem-thang-hang",
       "title": "Ba điểm thẳng hàng trên khung",
+      "goTo": "Quay về phông nền sân khấu, Hươu Cao chỉ khung MNPQ",
       "target": "huou-cao",
       "kind": "challenge",
       "mechanic": "multi-select",
@@ -691,28 +698,28 @@
     },
     {
       "id": "dom-muon-ve",
-      "title": "Đốm muốn vẽ đoạn thẳng",
-      "goTo": "Ra bậc lên sân khấu, Lợn Rừng Đốm đang cầm bút chì to tướng",
+      "title": "Gấu Bum muốn vẽ đoạn thẳng",
+      "goTo": "Ra bậc lên sân khấu, Gấu Bum đang cầm bút chì to tướng",
       "kind": "dialogue",
-      "target": "lon-rung-dom",
+      "target": "toan2-cd7-b33-gau-bum",
       "lines": [
         {
-          "speaker": "Lợn Rừng Đốm",
-          "text": "Để chuộc lỗi, tớ sẽ vẽ đường viền cho phông! Tớ vẽ tay cho nhanh, ụt ịt, chắc là thẳng thôi…"
+          "speaker": "Gấu Bum",
+          "text": "Để chuộc lỗi, tớ sẽ vẽ đường viền cho phông! Tớ vẽ tay cho nhanh, bum bum, chắc là thẳng thôi…"
         },
         {
           "speaker": "Hươu Cao",
-          "text": "Đốm ơi, lần trước cậu vẽ tay, đường thẳng thành… con giun bò!"
+          "text": "Bum ơi, lần trước cậu vẽ tay, đường thẳng thành… con giun bò!"
         },
         {
-          "speaker": "Lợn Rừng Đốm",
+          "speaker": "Gấu Bum",
           "text": "{name} bảo tớ nên vẽ thế nào?"
         }
       ],
       "choices": [
         {
           "text": "Dùng thước kẻ, chấm hai đầu trước",
-          "reply": "Lợn Rừng Đốm: À, chấm điểm A ở vạch 0, rồi chấm điểm ở vạch cần đo. Thông minh!"
+          "reply": "Gấu Bum: À, chấm điểm A ở vạch 0, rồi chấm điểm ở vạch cần đo. Thông minh!"
         },
         {
           "text": "Cứ vẽ tay, sai thì tẩy",
@@ -723,10 +730,10 @@
     {
       "id": "ve-doan-ab",
       "title": "Kẻ đoạn AB dài 5 cm",
-      "target": "lon-rung-dom",
+      "target": "toan2-cd7-b33-gau-bum",
       "kind": "challenge",
       "mechanic": "connect",
-      "prompt": "Đốm đặt điểm A ở vạch 0 của thước, các vạch 3, 5, 7 đã được chấm sẵn. Nối A với đúng vạch để được đoạn thẳng AB. a) Vẽ đoạn thẳng AB dài 5 cm.",
+      "prompt": "Gấu Bum đặt điểm A ở vạch 0 của thước, các vạch 3, 5, 7 đã được chấm sẵn. Nối A với đúng vạch để được đoạn thẳng AB. a) Vẽ đoạn thẳng AB dài 5 cm.",
       "points": [
         {
           "id": "diem-a",
@@ -772,7 +779,7 @@
       "feedback": {
         "right": [
           "Đoạn AB thẳng tắp đúng 5 cm, chẳng còn con giun nào!",
-          "Lợn Rừng Đốm há hốc: dùng thước dễ thế à?",
+          "Gấu Bum há hốc: dùng thước dễ thế à?",
           "Đường viền đầu tiên của phông đã xong."
         ],
         "wrong": [
@@ -793,7 +800,8 @@
     {
       "id": "do-dai-doan-bc",
       "title": "Đoạn BC dài bao nhiêu",
-      "target": "lon-rung-dom",
+      "goTo": "Lên giàn đèn sân khấu, chú Phong cầm sợi dây đèn AC",
+      "target": "toan2-cd7-b34-chu-phong",
       "kind": "riddle",
       "question": "Sợi dây đèn AC dài 13 cm, điểm B nằm trên AC, đoạn AB dài 6 cm. a) Tính độ dài đoạn thẳng BC.",
       "skill": "hinh-phang",
@@ -830,7 +838,8 @@
     {
       "id": "duong-vien-gap-khuc",
       "title": "Đường viền gấp khúc MNPQ",
-      "target": "lon-rung-dom",
+      "goTo": "Xuống bậc lên sân khấu, Gấu Bum ôm cuộn ruy băng",
+      "target": "toan2-cd7-b33-gau-bum",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "prompt": "Hươu Cao đo đường viền gấp khúc trên phông: MN dài 5 cm, NP dài 3 cm, PQ dài 6 cm.",
@@ -871,7 +880,7 @@
       },
       "feedback": {
         "right": [
-          "Mười bốn xăng-ti-mét đường viền, Đốm cắt ruy băng vừa đủ!",
+          "Mười bốn xăng-ti-mét đường viền, Gấu Bum cắt ruy băng vừa đủ!",
           "Cộng ba khúc liền một mạch, giỏi ghê.",
           "Đường viền gấp khúc lượn quanh phông thật xinh."
         ],
@@ -947,7 +956,8 @@
     {
       "id": "ghep-nua-o-vuong",
       "title": "Bao nhiêu mảnh tam giác nhỏ",
-      "target": "huou-cao",
+      "goTo": "Ghé giàn đèn sân khấu, chú Phong xếp mảnh tam giác thành cây thông",
+      "target": "toan2-cd7-b34-chu-phong",
       "kind": "riddle",
       "question": "Hình A là một mảnh tam giác bằng nửa ô vuông. Hình B gồm hai ô vuông (một trên, một dưới) và hai nửa ô vuông ở hai bên ô trên. Dùng bao nhiêu hình A để xếp thành hình B?",
       "skill": "hinh-phang",
@@ -969,7 +979,7 @@
         "right": [
           "Sáu mảnh tam giác ghép thành cây thông trang trí!",
           "Cậu tính cả nửa ô vuông, chuẩn không cần chỉnh.",
-          "Lợn Rừng Đốm xếp thử: đúng sáu mảnh thật!"
+          "Chú Phong xếp thử: đúng sáu mảnh thật!"
         ],
         "wrong": [
           "Một ô vuông cần hai mảnh tam giác nhỏ đấy.",
@@ -984,6 +994,7 @@
     {
       "id": "phieu-ve-hinh",
       "title": "Phiếu vẽ và đo hình",
+      "goTo": "Về phông nền sân khấu, Hươu Cao cầm sẵn phiếu vẽ hình",
       "kind": "worksheet",
       "target": "huou-cao",
       "lessonId": "toan2-t1-b34",
@@ -1004,11 +1015,12 @@
     },
     {
       "id": "dem-tam-giac-thi-tai",
-      "title": "Thi đếm tam giác với Đốm",
-      "target": "huou-cao",
+      "title": "Thi đếm tam giác với Gấu Bum",
+      "goTo": "Ra bậc lên sân khấu, Gấu Bum thách {name} đếm tam giác",
+      "target": "toan2-cd7-b33-gau-bum",
       "kind": "challenge",
       "mechanic": "quiz",
-      "prompt": "Thử thách cuối: Lợn Rừng Đốm thách {name} đếm hình tam giác trên đỉnh phông, ai đúng được kéo màn! Hình tam giác lớn có hai đoạn thẳng đi từ đỉnh trên xuống cạnh đáy. Chọn câu trả lời đúng. Số hình tam giác có trong hình sau là: A. 3 B. 4 C. 5 D. 6",
+      "prompt": "Thử thách cuối: Gấu Bum thách {name} đếm hình tam giác trên đỉnh phông, ai đúng được kéo màn! Hình tam giác lớn có hai đoạn thẳng đi từ đỉnh trên xuống cạnh đáy. Chọn câu trả lời đúng. Số hình tam giác có trong hình sau là: A. 3 B. 4 C. 5 D. 6",
       "choices": [
         {
           "id": "a-3",
@@ -1045,13 +1057,13 @@
       "feedback": {
         "right": [
           "Sáu tam giác! {name} thắng, màn nhung kéo lên rộn ràng!",
-          "Đốm đếm được có 3 thôi, cậu thắng đẹp.",
+          "Gấu Bum đếm được có 3 thôi, cậu thắng đẹp.",
           "Đếm cả tam giác ghép, cậu đúng là cao thủ hình học."
         ],
         "wrong": [
           "Còn tam giác ghép từ hai hình nhỏ nữa đấy.",
           "Đừng quên hình tam giác lớn bao quanh tất cả.",
-          "Đốm cũng đếm thiếu như thế, đếm lại nào!"
+          "Gấu Bum cũng đếm thiếu như thế, đếm lại nào!"
         ]
       },
       "answer": {
@@ -1063,7 +1075,7 @@
       "title": "Huy hiệu dựng phông",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Phông nền sáng rực dưới đèn sân khấu. Hươu Cao cúi cái cổ thật dài để gắn cho {name} huy hiệu \"Kiến trúc sư hình phẳng\", còn Lợn Rừng Đốm hứa từ nay đi đứng cẩn thận."
+      "text": "Phông nền sáng rực dưới đèn sân khấu. Hươu Cao cúi cái cổ thật dài để gắn cho {name} huy hiệu \"Kiến trúc sư hình phẳng\", còn Gấu Bum hứa từ nay đi đứng cẩn thận."
     },
     {
       "id": "nuoc-banh-hau-truong",

@@ -8,8 +8,8 @@
   "summary": "Hoàng hôn, mẹ của Cá Bống đau bụng mà hang tối om, Bác sĩ Rùa chẳng nhìn thấy gì. {name} đọc chuyện cậu bé Ê-đi-xơn dùng gương cứu mẹ, rồi cùng đàn đom đóm và những chiếc vỏ trai sáng bóng thắp sáng cả hang.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Cá Bống hay ấc bong bóng khi lo, mẹ Bống, Bác sĩ Rùa chậm rãi, Đom Đóm Nhí cố phát sáng to nhất",
-    "where": "Hồ nước cuối rừng lúc hoàng hôn: mép hồ, bãi sỏi ven hồ, lá sen giữa hồ và hang mẹ Bống",
+    "who": "Cá Bống hay ấc bong bóng khi lo, mẹ Bống, Bác sĩ Rùa chậm rãi, Đom Đóm Nhí cố phát sáng to nhất, Bác lái đò Ngọ chèo đò cuối hồ",
+    "where": "Hồ nước cuối rừng lúc hoàng hôn: mép hồ, bãi sỏi ven hồ, lá sen giữa hồ, bến đò cuối hồ và hang mẹ Bống",
     "goal": "Tìm đồ sáng bóng, hắt ánh đom đóm vào hang để Bác sĩ Rùa chữa cho mẹ Bống",
     "play": "Tìm đồ, nói, đọc truyện, trắc nghiệm, chọn nhiều đáp án, điền từ, xếp tranh, kể chuyện, lựa chọn trong hội thoại, phiếu viết",
     "learn": "Tiếng Việt 2 Bài 31: đọc hiểu \"Ánh sáng của yêu thương\", từ ngữ trong bài, tình cảm với mẹ, kể chuyện theo tranh, viết chữ hoa P",
@@ -52,7 +52,8 @@
     "ca-bong": "mép hồ",
     "tim-do-sang-bong": "bãi sỏi ven hồ",
     "tv2-t17-la-sen": "lá sen giữa hồ",
-    "tv2-t17-hang-me-bong": "hang mẹ Bống"
+    "tv2-t17-hang-me-bong": "hang mẹ Bống",
+    "tv2-t17-b31-bac-lai-do-ngo": "bến đò cuối hồ"
   },
   "steps": [
     {
@@ -226,9 +227,10 @@
     {
       "id": "chi-tiet-lo-cho-me",
       "title": "Cậu bé lo cho mẹ",
+      "goTo": "Bơi về mép hồ, Cá Bống ấc liền ba quả bong bóng",
       "kind": "challenge",
       "mechanic": "multi-select",
-      "target": "tv2-t17-la-sen",
+      "target": "ca-bong",
       "prompt": "Cá Bống ấc liền ba quả bong bóng: \"Cậu ấy lo cho mẹ y như tớ!\". Chọn tất cả các câu cho thấy điều đó nhé.\nNhững chi tiết nào cho thấy Ê-đi-xơn rất lo cho sức khoẻ của mẹ?",
       "choices": [
         {
@@ -295,6 +297,7 @@
     {
       "id": "cau-van-voi-tranh",
       "title": "Câu văn hợp với bức tranh",
+      "goTo": "Trở ra lá sen giữa hồ, Bác sĩ Rùa giơ lên một bức tranh",
       "kind": "read",
       "target": "tv2-t17-la-sen",
       "textRef": "anh-sang-cua-yeu-thuong",
@@ -422,9 +425,10 @@
     {
       "id": "tinh-cam-cua-cau-be",
       "title": "Tình cảm của cậu bé",
+      "goTo": "Về mép hồ, Cá Bống nghe tiếng mẹ rên khẽ vọng ra từ hang",
       "kind": "challenge",
       "mechanic": "quiz",
-      "target": "tv2-t17-la-sen",
+      "target": "ca-bong",
       "prompt": "Mẹ Bống rên khẽ trong hang. Cá Bống nắm vây {name}: \"Tớ cũng thương mẹ như cậu bé ấy\".\nNhững việc làm của Ê-đi-xơn cho thấy tình cảm của cậu dành cho mẹ như thế nào?",
       "choices": [
         {
@@ -474,8 +478,9 @@
     {
       "id": "nhan-vat-em-thich",
       "title": "Nhân vật em thích nhất",
+      "goTo": "Ghé bến đò cuối hồ, Bác lái đò Ngọ hỏi cả bọn thích nhân vật nào",
       "kind": "speak",
-      "target": "tv2-t17-la-sen",
+      "target": "tv2-t17-b31-bac-lai-do-ngo",
       "prompt": "Đom Đóm Nhí bảo thích nhất tấm gương \"vì nó sáng\". Bác sĩ Rùa cười: \"Tấm gương đâu phải nhân vật, cháu ạ\".\nTrong câu chuyện trên, em thích nhân vật nào nhất? Vì sao?",
       "hints": [
         "Câu chuyện có những nhân vật nào?",
@@ -520,9 +525,10 @@
     {
       "id": "xep-tranh-e-di-xon",
       "title": "Xếp tranh chuyện Ê-đi-xơn",
+      "goTo": "Tranh trôi tới bến đò cuối hồ, Bác lái đò Ngọ vớt lên giúp",
       "kind": "challenge",
       "mechanic": "sort",
-      "target": "tv2-t17-hang-me-bong",
+      "target": "tv2-t17-b31-bac-lai-do-ngo",
       "prompt": "Mẹ Bống khỏi đau, đòi nghe lại chuyện cậu bé có tấm gương. Cá Bống lấy bốn bức tranh ra, nhưng đuôi quẫy mạnh quá nên tranh xáo trộn hết.\nQuan sát các tranh minh hoạ câu chuyện Ánh sáng của yêu thương, nói về sự việc trong từng tranh.\nSắp xếp các tranh theo trình tự của câu chuyện.\nChọn kể 1 – 2 đoạn của câu chuyện theo tranh vừa sắp xếp.",
       "items": [
         {
@@ -618,6 +624,7 @@
     {
       "id": "ke-theo-tranh",
       "title": "Kể chuyện cho mẹ Bống nghe",
+      "goTo": "Mang tranh về hang mẹ Bống, mẹ đã tựa vỏ trai chờ nghe",
       "kind": "speak",
       "target": "tv2-t17-hang-me-bong",
       "prompt": "Mẹ Bống tựa vào chiếc vỏ trai, chờ nghe. {name} nói về từng tranh, rồi kể một hai đoạn em thích nhất.\nQuan sát các tranh minh hoạ câu chuyện Ánh sáng của yêu thương, nói về sự việc trong từng tranh.\nChọn kể 1 – 2 đoạn của câu chuyện theo tranh vừa sắp xếp.",
@@ -671,8 +678,9 @@
     {
       "id": "ke-cho-nguoi-than",
       "title": "Kể về cậu bé cho cả nhà",
+      "goTo": "Ra mép hồ, Cá Bống vẫy vây dặn dò trước lúc chia tay",
       "kind": "speak",
-      "target": "tv2-t17-hang-me-bong",
+      "target": "ca-bong",
       "prompt": "Cá Bống dặn: tối nay về nhà, {name} nhớ kể lại cho mọi người nhé, kể cả chuyện tớ ấc bong bóng cũng được.\nKể về cậu bé Ê-đi-xơn trong câu chuyện Ánh sáng của yêu thương cho người thân nghe.",
       "hints": [
         "Cậu bé Ê-đi-xơn đã làm gì khi mẹ ốm?",

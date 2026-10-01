@@ -5,11 +5,11 @@
   "title": "Hội chợ số của Cáo Lém",
   "status": "active",
   "lesson": "toan2-t1-b06",
-  "summary": "Cáo Lém hứa không bày trò nghịch nữa và mở hẳn một hội chợ số ở góc trò chơi dân gian; {name} đi qua từng gian đố, rồi thi \"Đưa ong về tổ\" với Cáo Lém và Ong Vàng.",
+  "summary": "Cáo Lém hứa không bày trò nghịch nữa và mở hẳn một hội chợ số ở góc trò chơi dân gian; {name} đi qua từng gian đố, ghé xe kẹo kéo của chú Phúc, giàn chuông gió của Cáo Rung Rinh, rồi thi \"Đưa ong về tổ\" với Cáo Lém và Gấu Mật Nhi.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Cáo Lém, Ong Vàng",
-    "where": "Sân trường: góc trò chơi dân gian và các gian của hội chợ số",
+    "who": "Cáo Lém, Cáo Rung Rinh (em họ Cáo Lém), chú kẹo kéo Phúc, Gấu Mật Nhi",
+    "where": "Sân trường: góc trò chơi dân gian, các gian của hội chợ số, xe kẹo kéo, giàn chuông gió, bàn cờ con ong",
     "goal": "Qua hết các gian đố để được chơi trò \"Đưa ong về tổ\"",
     "play": "Nhặt vé, điền tia số và bảng số liền nhau, tách số, xếp xe đua, mở bốn cửa trắc nghiệm, ghép thẻ số, điền dấu, đưa ong về tổ",
     "learn": "Toán 2 Bài 6: luyện tập chung về số đến 100, cộng trừ, so sánh, bài toán",
@@ -35,7 +35,9 @@
     "gian-xe-dua": "gian xe đua",
     "gian-bon-cua": "gian bốn cửa",
     "gian-the-so": "gian thẻ số",
-    "ong-vang": "bàn cờ con ong"
+    "toan2-cd1-b06-chu-phuc": "xe kẹo kéo",
+    "toan2-cd1-b06-cao-leng-keng": "giàn chuông gió",
+    "toan2-cd1-b06-gau-mat-nhi": "bàn cờ con ong"
   },
   "steps": [
     {
@@ -84,7 +86,7 @@
       "lines": [
         {
           "speaker": "Cáo Lém",
-          "text": "Hội chợ có các gian: số liền nhau, tách số, xe đua, bốn cửa và thẻ số. Qua hết thì được thi với Ong Vàng."
+          "text": "Hội chợ có các gian: số liền nhau, tách số, xe đua, bốn cửa và thẻ số. Qua hết thì được thi với Gấu Mật Nhi."
         },
         {
           "speaker": "Cáo Lém",
@@ -746,7 +748,8 @@
     {
       "id": "tong-xe-dua",
       "title": "Tổng hai chiếc xe",
-      "target": "gian-xe-dua",
+      "goTo": "Ghé xe kẹo kéo, chú Phúc đố tổng hai chiếc xe đua",
+      "target": "toan2-cd1-b06-chu-phuc",
       "kind": "riddle",
       "question": "Bốn xe đua ghi số 37, 45, 42, 24. b) Tính tổng của số lớn nhất và số bé nhất trong các số trên xe đua.",
       "skill": "phep-cong",
@@ -783,6 +786,7 @@
     {
       "id": "cay-hai-lop",
       "title": "Giải thưởng cây xanh",
+      "goTo": "Quay lại gian xe đua, tấm bảng giải thưởng cây xanh vừa dựng lên",
       "target": "gian-xe-dua",
       "kind": "riddle",
       "question": "Giải thưởng của gian xe đua là cây giống cho hai lớp. Lớp 2A trồng được 29 cây, lớp 2B trồng được 25 cây. Hỏi lớp 2A trồng được hơn lớp 2B bao nhiêu cây?",
@@ -826,7 +830,7 @@
       "lines": [
         {
           "speaker": "Cáo Lém",
-          "text": "Gian này có bốn cánh cửa, sau mỗi cửa là một câu trắc nghiệm. Đoán bừa là cửa đóng sập trước mũi đấy nhé!"
+          "text": "Gian này có bốn cánh cửa, sau mỗi cửa là một câu trắc nghiệm. Chìa khóa cửa hai, cửa ba thì em họ tớ, Cáo Rung Rinh, giữ ở giàn chuông gió!"
         },
         {
           "speaker": "Cáo Lém",
@@ -899,7 +903,8 @@
     {
       "id": "cua-thu-hai",
       "title": "Cửa thứ hai",
-      "target": "gian-bon-cua",
+      "goTo": "Sang giàn chuông gió, Cáo Rung Rinh giữ chìa khóa cửa thứ hai",
+      "target": "toan2-cd1-b06-cao-leng-keng",
       "kind": "challenge",
       "mechanic": "quiz",
       "prompt": "Cửa thứ hai có treo chuông gió. Chọn câu trả lời đúng. b) Hiệu của 47 và 22 là: A. 69 B. 24 C. 25",
@@ -936,7 +941,7 @@
         "right": [
           "Leng keng! Chuông gió reo mừng hiệu 25.",
           "Hiệu là trừ, cậu không bị phương án 69 lừa.",
-          "Cửa hai mở, Cáo Lém bắt đầu lo lo."
+          "Cửa hai mở, Cáo Rung Rinh rung chuông khen cậu."
         ],
         "wrong": [
           "Hiệu là trừ, đừng cộng hai số lại nhé.",
@@ -951,7 +956,7 @@
     {
       "id": "cua-thu-ba",
       "title": "Cửa thứ ba",
-      "target": "gian-bon-cua",
+      "target": "toan2-cd1-b06-cao-leng-keng",
       "kind": "challenge",
       "mechanic": "quiz",
       "prompt": "Cửa thứ ba sơn màu tím, viết chữ to tướng. Chọn câu trả lời đúng. c) Số liền trước của số bé nhất có hai chữ số là: A. 9 B. 10 C. 11",
@@ -988,7 +993,7 @@
         "right": [
           "Số 9! Cửa tím mở ra một chùm bóng bay.",
           "Hai bước suy luận mà cậu đi một mạch.",
-          "Cáo Lém gãi đầu: câu này tớ nghĩ mãi đấy."
+          "Cáo Rung Rinh gãi đầu: câu này anh Lém nghĩ mãi đấy."
         ],
         "wrong": [
           "Trước hết tìm số bé nhất có hai chữ số nhé.",
@@ -1003,6 +1008,7 @@
     {
       "id": "cua-thu-tu",
       "title": "Cửa thứ tư",
+      "goTo": "Về gian bốn cửa, Cáo Lém đứng chắn trước cánh cửa sao vàng",
       "target": "gian-bon-cua",
       "kind": "challenge",
       "mechanic": "quiz",
@@ -1137,7 +1143,8 @@
     {
       "id": "hieu-the-so",
       "title": "Hiệu của các số vừa ghép",
-      "target": "gian-the-so",
+      "goTo": "Mang bốn số vừa ghép ra xe kẹo kéo cho chú Phúc",
+      "target": "toan2-cd1-b06-chu-phuc",
       "kind": "riddle",
       "question": "Cậu vừa ghép được bốn số từ ba thẻ 0, 3, 5. b) Tính hiệu của số lớn nhất và số bé nhất trong các số vừa ghép được.",
       "skill": "phep-tru",
@@ -1174,6 +1181,7 @@
     {
       "id": "dau-so-sanh-hoi-cho",
       "title": "Dấu nào hợp lí?",
+      "goTo": "Quay về gian thẻ số, túi áo Cáo Lém còn giấu mấy cái dấu",
       "target": "gian-the-so",
       "kind": "challenge",
       "mechanic": "fill-blank",
@@ -1291,8 +1299,8 @@
     {
       "id": "dua-ong-ve-to",
       "title": "Đưa ong về tổ",
-      "goTo": "Tới bàn cờ con ong, Ong Vàng và Cáo Lém đã đứng ở ô xuất phát",
-      "target": "ong-vang",
+      "goTo": "Tới bàn cờ con ong, Gấu Mật Nhi và Cáo Lém đã đứng ở ô xuất phát",
+      "target": "toan2-cd1-b06-gau-mat-nhi",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "prompt": "Trò chơi ĐƯA ONG VỀ TỔ. Cách chơi: • Chơi theo nhóm. • Người chơi bắt đầu từ ô xuất phát. Khi đến lượt, người chơi gieo xúc xắc. Đếm số chấm ở mặt trên xúc xắc rồi di chuyển số ô bằng số chấm đó. Nêu kết quả phép tính tại ô đi đến, nếu nêu sai kết quả thì phải quay về ô xuất phát trước đó. Nếu đến được ô may mắn thì chú ong được bay ngay về tổ. • Trò chơi kết thúc khi đưa được ong về tổ. {name} và Cáo Lém thay nhau gieo xúc xắc; ở mỗi ô Cáo Lém hay \"nhắc bài\" sai để lừa, hãy chọn phép tính có kết quả đúng.",
@@ -1537,9 +1545,9 @@
       },
       "feedback": {
         "right": [
-          "Vù vù! Ong Vàng bay thẳng về tổ, cậu thắng ván cờ!",
+          "Vù vù! Chú ong gỗ bay thẳng về tổ, cậu thắng ván cờ!",
           "Không ô nào bị lừa, Cáo Lém đành giơ cờ trắng.",
-          "Ong Vàng tặng cậu một giọt mật ngọt lịm."
+          "Gấu Mật Nhi tặng cậu một thìa mật ngọt lịm."
         ],
         "wrong": [
           "Ối, ô này nêu sai rồi, ong phải quay về ô xuất phát!",
@@ -1577,7 +1585,7 @@
       "title": "Hoa hướng dương gọi",
       "kind": "unlock",
       "trigger": "auto",
-      "text": "Ong Vàng rủ {name} ra luống hoa hướng dương ở vườn trường: tổ mới cần đủ chục bông hoa mà ong đếm mãi vẫn bị lố!"
+      "text": "Gấu Mật Nhi chỉ tay về vườn trường: Ong Vàng đang chờ {name} ở luống hoa hướng dương, tổ mới cần đủ chục bông hoa mà ong đếm mãi vẫn bị lố!"
     }
   ],
   "reward": {

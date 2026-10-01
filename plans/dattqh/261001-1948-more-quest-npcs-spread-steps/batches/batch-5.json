@@ -1,0 +1,183 @@
+{
+ "batch": 5,
+ "quests": {
+  "toan2-cd1-b01": {
+   "region": "truong-hoc",
+   "file": "content/quests/toan2-cd1-b01.json",
+   "keeps": [
+    "su-tu-vang"
+   ],
+   "replace": [
+    "khi-lanh"
+   ],
+   "names": {
+    "khi-lanh": "Khỉ Lanh",
+    "su-tu-vang": "Sư Tử Vàng"
+   }
+  },
+  "toan2-cd1-b02": {
+   "region": "truong-hoc",
+   "file": "content/quests/toan2-cd1-b02.json",
+   "keeps": [
+    "ga-con-chip"
+   ],
+   "replace": [
+    "cao-lem"
+   ],
+   "names": {
+    "ga-con-chip": "Gà Con Chíp",
+    "cao-lem": "Cáo Lém"
+   }
+  },
+  "toan2-cd1-b03": {
+   "region": "truong-hoc",
+   "file": "content/quests/toan2-cd1-b03.json",
+   "keeps": [
+    "meo-mun",
+    "vet-xanh"
+   ],
+   "replace": [],
+   "names": {
+    "meo-mun": "Mèo Mun",
+    "vet-xanh": "Vẹt Xanh"
+   }
+  },
+  "toan2-cd1-b04": {
+   "region": "truong-hoc",
+   "file": "content/quests/toan2-cd1-b04.json",
+   "keeps": [],
+   "replace": [
+    "ho-van",
+    "khi-lanh"
+   ],
+   "names": {
+    "khi-lanh": "Khỉ Lanh",
+    "ho-van": "Hổ Vằn"
+   }
+  },
+  "toan2-cd1-b05": {
+   "region": "truong-hoc",
+   "file": "content/quests/toan2-cd1-b05.json",
+   "keeps": [
+    "cho-muc"
+   ],
+   "replace": [
+    "gau-tuyet-bong"
+   ],
+   "names": {
+    "cho-muc": "Chó Mực",
+    "gau-tuyet-bong": "Gấu Tuyết Bông"
+   }
+  },
+  "toan2-cd1-b06": {
+   "region": "truong-hoc",
+   "file": "content/quests/toan2-cd1-b06.json",
+   "keeps": [
+    "cao-lem"
+   ],
+   "replace": [
+    "ong-vang"
+   ],
+   "names": {
+    "ong-vang": "Ong Vàng",
+    "cao-lem": "Cáo Lém"
+   }
+  },
+  "toan2-cd2-b07": {
+   "region": "truong-hoc",
+   "file": "content/quests/toan2-cd2-b07.json",
+   "keeps": [
+    "ong-vang"
+   ],
+   "replace": [
+    "bo-sua-mo"
+   ],
+   "names": {
+    "ong-vang": "Ong Vàng",
+    "bo-sua-mo": "Bò Sữa Mơ"
+   }
+  },
+  "toan2-cd2-b08": {
+   "region": "truong-hoc",
+   "file": "content/quests/toan2-cd2-b08.json",
+   "keeps": [
+    "sau-xanh"
+   ],
+   "replace": [
+    "heo-un"
+   ],
+   "names": {
+    "sau-xanh": "Sâu Xanh",
+    "heo-un": "Heo Ủn"
+   }
+  },
+  "toan2-cd2-b09": {
+   "region": "truong-hoc",
+   "file": "content/quests/toan2-cd2-b09.json",
+   "keeps": [
+    "be-bong-mang-nuoc",
+    "bo-sua-mo",
+    "toan2-cd2-be-con-dom",
+    "toan2-cd2-be-con-khoang",
+    "toan2-cd2-be-con-nau"
+   ],
+   "replace": [],
+   "names": {
+    "toan2-cd2-be-con-khoang": "Bê con Khoang",
+    "bo-sua-mo": "Bò Sữa Mơ",
+    "toan2-cd2-be-con-dom": "Bê con Đốm",
+    "toan2-cd2-be-con-nau": "Bê con Nâu",
+    "be-bong-mang-nuoc": "Bê Bông"
+   }
+  }
+ },
+ "looks": {
+  "animal-beaver": 1,
+  "animal-cat": 1,
+  "animal-caterpillar": 1,
+  "animal-cow": 1,
+  "animal-deer": 1,
+  "animal-dog": 1,
+  "animal-fish": 1,
+  "animal-giraffe": 1,
+  "animal-koala": 1,
+  "animal-lion": 1,
+  "animal-panda": 1,
+  "animal-parrot": 1,
+  "animal-pig": 1,
+  "animal-tiger": 1,
+  "calf": 1,
+  "calf-tan": 1,
+  "chibi-bear-den-overalls-red": 1,
+  "chibi-bear-den-vest-shorts-green": 1,
+  "chibi-bear-mat-ong-dress-blue": 1,
+  "chibi-bear-nau-overalls-green": 1,
+  "chibi-bear-nau-vest-shorts": 1,
+  "chibi-cat-cam-overalls": 1,
+  "chibi-cat-trang-dress": 1,
+  "chibi-cat-trang-jacket-red": 1,
+  "chibi-cat-xam-dress-mint": 1,
+  "chibi-fox-cam-dress": 1,
+  "chibi-fox-cam-jacket-red": 1,
+  "chibi-fox-do-dress-mint": 1,
+  "chibi-fox-tuyet-overalls": 1,
+  "chibi-fox-tuyet-vest-shorts-navy": 1,
+  "chibi-rabbit-nau-dress-blue": 1,
+  "chibi-rabbit-trang-overalls-green": 1,
+  "chibi-rabbit-trang-vest-shorts": 1,
+  "chibi-rabbit-xam-overalls-red": 1,
+  "person-a": 1,
+  "person-c": 1,
+  "person-d": 1,
+  "person-e": 1,
+  "person-g": 1,
+  "person-h": 1,
+  "person-i": 1,
+  "person-k": 1,
+  "person-l": 1,
+  "person-m": 1,
+  "person-o": 1,
+  "person-p": 1,
+  "person-q": 1
+ }
+}

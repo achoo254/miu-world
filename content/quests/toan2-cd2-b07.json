@@ -5,11 +5,11 @@
   "title": "Ong Vàng gom đủ chục hoa",
   "status": "active",
   "lesson": "toan2-t1-b07",
-  "summary": "Ong Vàng cần đủ mười bông hoa hướng dương cho mỗi ngăn tổ mới nhưng cứ đếm lố; {name} cùng Ong Vàng và Bò Sữa Mơ học cách gom cho đủ 10 rồi cộng tiếp phần còn lại.",
+  "summary": "Ong Vàng cần đủ mười bông hoa hướng dương cho mỗi ngăn tổ mới nhưng cứ đếm lố; {name} bay theo Ong Vàng khắp vườn, gặp bác Cẩn, cô Thơm, Sâu Đo Nhích và bác Mạnh để học cách gom cho đủ 10 rồi cộng tiếp phần còn lại.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Ong Vàng, Bò Sữa Mơ, Mèo Mun",
-    "where": "Vườn trường: luống hoa hướng dương, hàng rào hoa bí, tổ ong mới",
+    "who": "Ong Vàng, cô Thơm dạy lớp Một, bác làm vườn Cẩn, Sâu Đo Nhích, bác bảo vệ Mạnh, Mèo Mun",
+    "where": "Vườn trường: luống hoa hướng dương, luống mới, hàng rào hoa bí, gốc mướp, nhà sàn cạnh vườn, tổ ong mới",
     "goal": "Đếm đủ hoa cho từng ngăn của tổ ong mới bằng phép cộng qua 10",
     "play": "Tìm que tính, tách số để gom đủ chục, điền bảng cộng, thả cá cho mèo, giải toán, đưa ong về đúng bông hoa",
     "learn": "Toán 2 Bài 7: phép cộng (qua 10) trong phạm vi 20",
@@ -30,7 +30,10 @@
   "places": {
     "ong-vang": "luống hoa hướng dương",
     "tim-que-tinh-vuon": "quanh luống hoa",
-    "bo-sua-mo-rao": "hàng rào hoa bí",
+    "toan2-cd2-b07-bac-can": "luống mới",
+    "toan2-cd2-b07-co-thom": "hàng rào hoa bí",
+    "toan2-cd2-b07-sau-do-nhich": "gốc mướp",
+    "toan2-cd2-b07-bac-manh": "nhà sàn cạnh vườn",
     "ong-vang-to-moi": "tổ ong mới"
   },
   "steps": [
@@ -50,8 +53,8 @@
           "text": "Mà tớ bay nhanh quá nên đếm 9 bông, thêm 6 bông… rồi quên luôn mình đang đếm tới đâu. Chóng mặt quá đi!"
         },
         {
-          "speaker": "Bò Sữa Mơ",
-          "text": "Ụm bò… Ong Vàng ơi, chậm lại thôi. Gom cho đủ 10 trước, phần dư cộng sau. Vườn có sẵn que tính để thử đấy."
+          "speaker": "Ong Vàng",
+          "text": "Cô Thơm dạy lớp Một dặn tớ: gom cho đủ 10 trước, phần dư cộng sau. Vườn có sẵn que tính để thử đấy."
         }
       ],
       "choices": [
@@ -60,8 +63,8 @@
           "reply": "Ong Vàng xoay một vòng: Nhanh nhanh, que tính nằm rải quanh luống hoa đấy!"
         },
         {
-          "text": "Gom đủ 10 là sao hả Bò Mơ?",
-          "reply": "Bò Sữa Mơ cười hiền: Cứ tìm que tính về đây, cô chỉ cho bằng mắt luôn."
+          "text": "Gom đủ 10 là sao hả Ong Vàng?",
+          "reply": "Ong Vàng chúm chím: Cứ tìm que tính về đây, tớ bày cho cậu xem tận mắt."
         }
       ]
     },
@@ -83,7 +86,7 @@
       "target": "ong-vang",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Bò Sữa Mơ xếp que tính lên lá hướng dương: lấy bớt vài que của số sau bù cho số trước đủ 10.",
+      "prompt": "Ong Vàng xếp que tính lên lá hướng dương: lấy bớt vài que của số sau bù cho số trước đủ 10.",
       "template": "a) Tính 9 + 6.\n• Tách: 6 = 1 + 5\n• 9 + {{b1}} = {{b2}}\n• 10 + {{b3}} = {{b4}}\n9 + 6 = {{b5}}\nb) Tính 8 + 6.\n• Tách: 6 = 2 + {{b6}}\n• 8 + {{b7}} = {{b8}}\n• 10 + {{b9}} = {{b10}}\n8 + 6 = {{b11}}",
       "blanks": [
         {
@@ -294,7 +297,7 @@
         "right": [
           "Một ngăn tổ đủ chục hoa rồi, Ong Vàng nhảy điệu vù vù mừng rỡ!",
           "Gom đủ 10 rồi cộng nốt, gọn như ong xếp sáp!",
-          "Bò Sữa Mơ gật gù: đúng cách tách số luôn rồi đó."
+          "Ong Vàng gật gù: đúng cách tách số luôn rồi đó."
         ],
         "wrong": [
           "Hỏi thử: 9 còn thiếu mấy để thành 10 nhỉ?",
@@ -617,7 +620,8 @@
     {
       "id": "tinh-hoa-luong-moi",
       "title": "Tính hoa cho luống mới",
-      "target": "ong-vang",
+      "goTo": "Ra luống mới, bác làm vườn Cẩn đang cắm thẻ phép tính lên lá",
+      "target": "toan2-cd2-b07-bac-can",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "prompt": "Mèo Mun đi ngang, tò mò đọc to từng phép tính trên lá. Còn cả đàn sếu ngoài đồng đang chờ đếm nữa.",
@@ -901,6 +905,7 @@
     {
       "id": "hai-bang-cong-hoa",
       "title": "Hai bảng cộng trên cánh hoa",
+      "goTo": "Quay về luống hoa hướng dương, Ong Vàng rắc phấn vẽ bảng cộng",
       "target": "ong-vang",
       "kind": "challenge",
       "mechanic": "fill-blank",
@@ -1132,7 +1137,8 @@
     {
       "id": "meo-mun-tim-ca",
       "title": "Mèo Mun chọn cá",
-      "target": "ong-vang",
+      "goTo": "Ra luống mới, ba bạn mèo con đang vây quanh rổ cá của bác Cẩn",
+      "target": "toan2-cd2-b07-bac-can",
       "kind": "challenge",
       "mechanic": "classify",
       "prompt": "Mèo Mun đói meo, ba bạn mèo con mỗi bạn đeo một phép tính. Tìm cá cho mèo.",
@@ -1207,39 +1213,39 @@
     },
     {
       "id": "bo-mo-goi-sang",
-      "title": "Bò Sữa Mơ gọi sang",
-      "goTo": "Sang hàng rào hoa bí, Bò Sữa Mơ đang vẫy đuôi gọi",
+      "title": "Cô Thơm gọi sang",
+      "goTo": "Sang hàng rào hoa bí, cô Thơm đang vẫy tay gọi",
       "kind": "dialogue",
-      "target": "bo-sua-mo-rao",
+      "target": "toan2-cd2-b07-co-thom",
       "lines": [
         {
-          "speaker": "Bò Sữa Mơ",
-          "text": "Ụm bò! Cô xếp que tính cho các em lớp Một mà bị gió thổi tung, giờ toàn sơ đồ tách số chưa điền."
+          "speaker": "Cô Thơm",
+          "text": "Ơ, {name} đây rồi! Cô xếp que tính cho các em lớp Một mà bị gió thổi tung, giờ toàn sơ đồ tách số chưa điền."
         },
         {
           "speaker": "Ong Vàng",
           "text": "Để tớ bay lại đếm cho! Ơ… mà tớ lại quên tách số nào trước rồi."
         },
         {
-          "speaker": "Bò Sữa Mơ",
+          "speaker": "Cô Thơm",
           "text": "{name} chọn giúp cô: tách số thứ hai cho đủ chục, hay nhẩm đếm tiếp từ số lớn?"
         }
       ],
       "choices": [
         {
           "text": "Tách số thứ hai cho đủ chục",
-          "reply": "Bò Sữa Mơ: Cách chắc chắn nhất đấy, mình làm từng sơ đồ nhé."
+          "reply": "Cô Thơm: Cách chắc chắn nhất đấy, mình làm từng sơ đồ nhé."
         },
         {
           "text": "Đếm tiếp từ số lớn",
-          "reply": "Bò Sữa Mơ: Cũng được, nhưng sơ đồ thì vẫn phải điền tách số đấy nha!"
+          "reply": "Cô Thơm: Cũng được, nhưng sơ đồ thì vẫn phải điền tách số đấy nha!"
         }
       ]
     },
     {
       "id": "so-do-tach-cua-bo",
-      "title": "Sơ đồ tách số của Bò Mơ",
-      "target": "bo-sua-mo-rao",
+      "title": "Sơ đồ tách số của cô Thơm",
+      "target": "toan2-cd2-b07-co-thom",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "prompt": "Que tính rơi đầy hàng rào, sơ đồ tách số còn trống. Mai cũng đang chia que tính bên cạnh.",
@@ -1454,7 +1460,7 @@
       },
       "feedback": {
         "right": [
-          "Sơ đồ nào cũng kín số, Bò Mơ thở phào \"ụm bò\" một tiếng thật dài.",
+          "Sơ đồ nào cũng kín số, cô Thơm thở phào một hơi thật dài.",
           "Bốn nhóm que tính chia chuẩn mười bốn que, không thừa không thiếu!",
           "Mai mà thấy chắc phải học cách chia của {name}."
         ],
@@ -1483,10 +1489,11 @@
     {
       "id": "tach-so-qua-cam",
       "title": "Tách số trên giỏ bí",
-      "target": "bo-sua-mo-rao",
+      "goTo": "Ra gốc mướp, Sâu Đo Nhích đang nhích từng quả bí lên giàn",
+      "target": "toan2-cd2-b07-sau-do-nhich",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Bò Sữa Mơ treo bốn quả bí, mỗi quả có một phép cộng và một sơ đồ tách.",
+      "prompt": "Sâu Đo Nhích treo bốn quả bí, mỗi quả có một phép cộng và một sơ đồ tách.",
       "template": "a) Tính 8 + 7.\n8 + 7 = {{b1}}\nSơ đồ: 7 = 2 + {{b2}}\nb) Tính 8 + 5.\n8 + 5 = {{b3}}\nSơ đồ: 5 = 2 + {{b4}}\nc) Tính 8 + 8.\n8 + 8 = {{b5}}\nSơ đồ: 8 = {{b6}} + {{b7}}\nd) Tính 6 + 5.\n6 + 5 = {{b8}}\nSơ đồ: 5 = {{b9}} + {{b10}}",
       "blanks": [
         {
@@ -1681,7 +1688,7 @@
       "feedback": {
         "right": [
           "Bốn quả bí kêu \"bụp\" một tiếng, lăn vào giỏ ngon lành!",
-          "Tách số khéo như Bò Mơ chia cỏ cho đàn bê.",
+          "Tách số khéo như Sâu Đo Nhích đo từng gang lá.",
           "Sơ đồ nào cũng bù đúng phần thiếu cho đủ 10."
         ],
         "wrong": [
@@ -1708,7 +1715,7 @@
     {
       "id": "bang-so-hang-tong-vuon",
       "title": "Bảng số hạng, tổng ở vườn",
-      "target": "bo-sua-mo-rao",
+      "target": "toan2-cd2-b07-sau-do-nhich",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "prompt": "Trên hàng rào còn ba tấm bảng số hạng, tổng bị nắng làm mờ chữ.",
@@ -1967,7 +1974,7 @@
         "right": [
           "Ba tấm bảng sáng rõ lại, nắng có chiếu cũng không mờ nữa!",
           "Số hạng cộng số hạng ra tổng, {name} nhớ chắc lắm.",
-          "Bò Mơ treo bảng lên rào cho các em lớp Một học theo."
+          "Sâu Đo Nhích treo bảng lên giàn mướp cho các em lớp Một học theo."
         ],
         "wrong": [
           "Tổng là kết quả của phép cộng hai số hạng nhé.",
@@ -1996,9 +2003,10 @@
     {
       "id": "thung-quyen-gop",
       "title": "Những thùng quà quyên góp",
-      "target": "bo-sua-mo-rao",
+      "goTo": "Về hàng rào hoa bí, cô Thơm chỉ chồng thùng quà quyên góp",
+      "target": "toan2-cd2-b07-co-thom",
       "kind": "riddle",
-      "question": "Bò Sữa Mơ chỉ chồng thùng giấy cạnh chuồng: quà của lớp gửi các bạn vùng xa. Để giúp đỡ các bạn học sinh ở vùng khó khăn, lớp em đã quyên góp được 8 thùng quần áo và 5 thùng sách vở. Hỏi cả quần áo và sách vở, lớp em đã quyên góp được bao nhiêu thùng?",
+      "question": "Cô Thơm chỉ chồng thùng giấy cạnh rào: quà của lớp gửi các bạn vùng xa. Để giúp đỡ các bạn học sinh ở vùng khó khăn, lớp em đã quyên góp được 8 thùng quần áo và 5 thùng sách vở. Hỏi cả quần áo và sách vở, lớp em đã quyên góp được bao nhiêu thùng?",
       "skill": "bai-toan-loi-van",
       "curriculumRef": [
         "toan2-t1-b07-luyen-tap-2-5"
@@ -2018,7 +2026,7 @@
         "right": [
           "Mười ba thùng quà lên xe, các bạn vùng xa sắp vui lắm!",
           "Gộp lại thì cộng, {name} chọn phép tính quá chuẩn.",
-          "Bò Mơ buộc nơ đỏ lên thùng quà thứ mười ba."
+          "Cô Thơm buộc nơ đỏ lên thùng quà thứ mười ba."
         ],
         "wrong": [
           "Hỏi \"cả quần áo và sách vở\" là gộp lại đó nha.",
@@ -2033,7 +2041,8 @@
     {
       "id": "thap-tron-va-hat-mam",
       "title": "Tháp tròn và hạt nảy mầm",
-      "target": "bo-sua-mo-rao",
+      "goTo": "Bay về luống hoa hướng dương, Ong Vàng đang xếp tháp sỏi tròn",
+      "target": "ong-vang",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "prompt": "Ong Vàng xếp tháp sỏi tròn, mỗi viên bằng tổng hai viên ngay dưới. Bên cạnh, một hạt giống lớn dần và một chú sâu đang thành bướm. Số ?",
@@ -2258,9 +2267,10 @@
     {
       "id": "tau-chui-ham",
       "title": "Đoàn tàu chui hầm",
-      "target": "bo-sua-mo-rao",
+      "goTo": "Trở lại hàng rào hoa bí, tiếng còi tàu vọng qua đồi",
+      "target": "toan2-cd2-b07-co-thom",
       "kind": "riddle",
-      "question": "Tu… tu… tiếng còi tàu vang qua đồi sau vườn, Bò Sữa Mơ giật mình đánh rơi cọng cỏ. Đoàn tàu chở hàng có 4 toa đã ra khỏi đường hầm, còn 7 toa ở trong đường hầm. Hỏi đoàn tàu đó có tất cả bao nhiêu toa?",
+      "question": "Tu… tu… tiếng còi tàu vang qua đồi sau vườn, cô Thơm giật mình đánh rơi bó que tính. Đoàn tàu chở hàng có 4 toa đã ra khỏi đường hầm, còn 7 toa ở trong đường hầm. Hỏi đoàn tàu đó có tất cả bao nhiêu toa?",
       "skill": "bai-toan-loi-van",
       "curriculumRef": [
         "toan2-t1-b07-luyen-tap-3-4"
@@ -2279,7 +2289,7 @@
       "feedback": {
         "right": [
           "Mười một toa tàu chui ra khỏi hầm, xình xịch vui ghê!",
-          "Bò Mơ nhặt lại cọng cỏ: đếm cả toa trong hầm, giỏi thật.",
+          "Cô Thơm nhặt lại bó que tính: đếm cả toa trong hầm, giỏi thật.",
           "Tàu dài thế mà {name} không sót toa nào."
         ],
         "wrong": [
@@ -2295,7 +2305,8 @@
     {
       "id": "cau-thang-nha-san",
       "title": "Cầu thang nhà sàn",
-      "target": "bo-sua-mo-rao",
+      "goTo": "Sang nhà sàn cạnh vườn, bác bảo vệ Mạnh đang quét bậc thang",
+      "target": "toan2-cd2-b07-bac-manh",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "prompt": "Cạnh vườn có ngôi nhà sàn của bác bảo vệ, mỗi bậc thang ghi một phép tính.",
@@ -2410,7 +2421,7 @@
         "right": [
           "Năm bậc thang sáng đèn, bước lên không trượt chân!",
           "Leo cầu thang mà tính nhẩm vèo vèo, {name} siêu ghê.",
-          "Bác bảo vệ ló đầu ra khen: bậc nào cũng đúng."
+          "Bác Mạnh ló đầu ra khen: bậc nào cũng đúng."
         ],
         "wrong": [
           "Có một bậc thang tính hụt mất 1 rồi.",
@@ -2431,7 +2442,7 @@
     {
       "id": "bac-thang-bang-nhau",
       "title": "Hai bậc thang song sinh",
-      "target": "bo-sua-mo-rao",
+      "target": "toan2-cd2-b07-bac-manh",
       "kind": "challenge",
       "mechanic": "multi-select",
       "prompt": "Bác bảo vệ bảo có hai bậc \"song sinh\". b) Những phép tính nào có kết quả bằng nhau?",
@@ -2494,7 +2505,8 @@
     {
       "id": "nam-cua-ban-sao",
       "title": "Gùi nấm của bạn Sao",
-      "target": "bo-sua-mo-rao",
+      "goTo": "Quay ra gốc mướp, Sâu Đo Nhích đang đếm nấm mọc sau vườn",
+      "target": "toan2-cd2-b07-sau-do-nhich",
       "kind": "riddle",
       "question": "Các cây nấm sau vườn ghi 5 + 8, 6 + 6, 9 + 3, 7 + 3, 8 + 4, 7 + 5, 10 + 4. Bạn Sao hái những cây nấm ghi phép tính có kết quả bằng 12. Hỏi bạn Sao hái được bao nhiêu cây nấm?",
       "skill": "phep-cong",
@@ -2531,10 +2543,11 @@
     {
       "id": "xuc-xac-muoi-mot",
       "title": "Xúc xắc may mắn",
-      "target": "bo-sua-mo-rao",
+      "goTo": "Về hàng rào hoa bí, cô Thơm vừa thả bốn con xúc xắc lên cỏ",
+      "target": "toan2-cd2-b07-co-thom",
       "kind": "challenge",
       "mechanic": "multi-select",
-      "prompt": "Bò Mơ thả bốn con xúc xắc lên cỏ: A 6 chấm, B 4 chấm, C 5 chấm, D 3 chấm. Hai con xúc xắc nào dưới đây có tổng số chấm ở các mặt trên bằng 11?",
+      "prompt": "Cô Thơm thả bốn con xúc xắc lên cỏ: A 6 chấm, B 4 chấm, C 5 chấm, D 3 chấm. Hai con xúc xắc nào dưới đây có tổng số chấm ở các mặt trên bằng 11?",
       "choices": [
         {
           "id": "a",
@@ -2571,7 +2584,7 @@
       "feedback": {
         "right": [
           "Sáu chấm với năm chấm, mười một tròn trĩnh!",
-          "Bò Mơ reo \"ụm bò\" vì {name} đoán trúng ngay.",
+          "Cô Thơm reo lên vì {name} đoán trúng ngay.",
           "Cặp xúc xắc may mắn đã lộ diện rồi."
         ],
         "wrong": [
@@ -2679,7 +2692,7 @@
       "title": "Huy hiệu gom chục",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Ong Vàng tặng {name} một hũ mật nhỏ có dán nhãn \"Bậc thầy gom đủ chục\". Bò Sữa Mơ thì tặng thêm một bông hướng dương to bằng cái mũ."
+      "text": "Ong Vàng tặng {name} một hũ mật nhỏ có dán nhãn \"Bậc thầy gom đủ chục\". Cô Thơm thì tặng thêm một bông hướng dương to bằng cái mũ."
     },
     {
       "id": "qua-bau-roi-lop-bop",

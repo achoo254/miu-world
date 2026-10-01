@@ -2,15 +2,15 @@
   "id": "tv2-t13-b23",
   "region": "khu-rung-bi-mat",
   "chapter": 14,
-  "title": "Cáo Lém quên luật rồng rắn",
+  "title": "Cáo Tũn quên luật rồng rắn",
   "status": "active",
   "lesson": "tv2-t1-b23",
-  "summary": "Cáo Lém rủ cả rừng chơi Rồng rắn lên mây nhưng quên sạch luật, tờ lá chép luật lại bị gió xé làm ba. {name} nhặt lại luật, đọc cách chơi, chia vai cho cả đàn rồi sang hang Thỏ Tí nghe chuyện con búp bê biết khóc.",
+  "summary": "Cáo Tũn rủ cả rừng chơi Rồng rắn lên mây nhưng quên sạch luật, tờ lá chép luật lại bị gió xé làm ba. {name} nhặt lại luật, đọc cách chơi, hỏi chuyện Bác lang Bảy, khoe trò với Bê Nhún, chia vai cho cả đàn rồi sang hang Thỏ Bơ nghe chuyện con búp bê biết khóc, kể cho Gấu Thóc nghe.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Cáo Lém tinh nghịch hay bày trò, Hổ Vằn ra vẻ dữ mà nhút nhát, Gà Con Chíp tò mò, Thỏ Tí hay quên",
-    "where": "Bãi đất trống giữa Khu rừng bí mật, bụi cây quanh bãi, cây núc nác treo bản luật và hang Thỏ Tí",
-    "goal": "Tìm lại luật chơi Rồng rắn lên mây để cả rừng chơi được, rồi giúp Thỏ Tí nhớ ra con búp bê bị bỏ quên",
+    "who": "Cáo Tũn tinh nghịch hay bày trò, Sư Tử Xù ra vẻ dữ mà nhút nhát, Thỏ Xíu tò mò, Thỏ Bơ hay quên, Bác lang Bảy (thầy thuốc thật của rừng), Bê Nhún (mê nhảy lò cò), Gấu Thóc (mê nghe kể chuyện)",
+    "where": "Bãi đất trống giữa Khu rừng bí mật, bụi cây quanh bãi, cây núc nác treo bản luật, vườn thuốc ven bãi, gò đất đầu bãi, hang Thỏ Bơ và gốc đa đầu hang",
+    "goal": "Tìm lại luật chơi Rồng rắn lên mây để cả rừng chơi được, rồi giúp Thỏ Bơ nhớ ra con búp bê bị bỏ quên",
     "play": "Tìm đồ, nói, đọc bài, trắc nghiệm, ghép nửa câu, điền từ, lựa chọn trong hội thoại, xếp tranh, kể chuyện, phiếu viết",
     "learn": "Tiếng Việt 2 Bài 23: đọc hiểu \"Rồng rắn lên mây\", nói tiếp câu \"Nếu… thì…\", câu về trò chơi, chữ hoa M, kể chuyện Búp bê biết khóc",
     "reward": "80 XP, 15 xu, Đọc hiểu +2, Câu +1, Từ ngữ +1, Kể chuyện +1",
@@ -45,33 +45,36 @@
     }
   },
   "places": {
-    "cao-lem": "bãi đất trống",
     "nhat-manh-luat": "bụi cây quanh bãi",
     "tv2-t13-cay-nuc-nac": "cây núc nác",
-    "tho-ti": "hang Thỏ Tí"
+    "tv2-t13-b23-cao-tun": "bãi đất trống",
+    "tv2-t13-b23-tho-bo": "hang Thỏ Bơ",
+    "tv2-t13-b23-bac-lang-bay": "vườn thuốc ven bãi",
+    "tv2-t13-b23-be-nhun": "gò đất đầu bãi",
+    "tv2-t13-b23-gau-thoc": "gốc đa đầu hang"
   },
   "steps": [
     {
       "id": "gap-cao-lem",
-      "title": "Cáo Lém mời cả rừng đi chơi",
-      "goTo": "Tới bãi đất trống giữa rừng, Cáo Lém đang vẫy cái đuôi xù như chổi lông gà",
+      "title": "Cáo Tũn mời cả rừng đi chơi",
+      "goTo": "Tới bãi đất trống giữa rừng, Cáo Tũn đang vẫy cái đuôi xù như chổi lông gà",
       "kind": "dialogue",
-      "target": "cao-lem",
+      "target": "tv2-t13-b23-cao-tun",
       "lines": [
         {
-          "speaker": "Cáo Lém",
+          "speaker": "Cáo Tũn",
           "text": "{name} tới đúng lúc quá! Tớ vừa mời cả rừng chơi Rồng rắn lên mây, mà… tớ quên sạch luật rồi!"
         },
         {
-          "speaker": "Hổ Vằn",
+          "speaker": "Sư Tử Xù",
           "text": "Grừ… tớ đứng xem thôi. Tớ mà nhập hàng, rồng rắn sợ quá đứt làm mười khúc mất."
         },
         {
-          "speaker": "Cáo Lém",
+          "speaker": "Cáo Tũn",
           "text": "Hôm qua tớ chép luật lên một tờ lá bàng to. Gió thổi phù một cái, xé làm ba mảnh bay vào bụi cây!"
         },
         {
-          "speaker": "Cáo Lém",
+          "speaker": "Cáo Tũn",
           "text": "Không có luật thì con rồng rắn của chúng mình chỉ là… một hàng giun đất đi dạo thôi."
         }
       ],
@@ -82,7 +85,7 @@
         },
         {
           "text": "Sao cậu không khắc luật lên đá cho chắc?",
-          "reply": "Vì khắc đá mỏi móng lắm! Lần sau tớ chép lên lưng Hổ Vằn, gió nào dám thổi bay."
+          "reply": "Vì khắc đá mỏi móng lắm! Lần sau tớ chép lên lưng Sư Tử Xù, gió nào dám thổi bay."
         }
       ]
     },
@@ -100,10 +103,10 @@
     {
       "id": "khoi-dong",
       "title": "Kể về trò rồng rắn",
-      "goTo": "Mang ba mảnh lá về bãi đất trống cho Cáo Lém",
+      "goTo": "Mang ba mảnh lá về bãi đất trống cho Cáo Tũn",
       "kind": "speak",
-      "target": "cao-lem",
-      "prompt": "Cáo Lém ghép ba mảnh lá lại, chữ vẫn nhoè vì sương đêm, bèn quay sang hỏi {name}: Em biết gì về trò chơi Rồng rắn lên mây?",
+      "target": "tv2-t13-b23-cao-tun",
+      "prompt": "Cáo Tũn ghép ba mảnh lá lại, chữ vẫn nhoè vì sương đêm, bèn quay sang hỏi {name}: Em biết gì về trò chơi Rồng rắn lên mây?",
       "hints": [
         "Trò chơi có mấy bạn cùng chơi?",
         "Các bạn đứng thành hàng như thế nào?",
@@ -125,7 +128,7 @@
     {
       "id": "doc-luat-choi",
       "title": "Bản luật trên cây núc nác",
-      "goTo": "Theo Cáo Lém tới cây núc nác, nơi treo bản luật chép đủ",
+      "goTo": "Theo Cáo Tũn tới cây núc nác, nơi treo bản luật chép đủ",
       "kind": "read",
       "target": "tv2-t13-cay-nuc-nac",
       "textRef": "rong-ran-len-may",
@@ -166,8 +169,8 @@
       "feedback": {
         "right": [
           "Chuẩn! Túm áo nhau là thành ngay một con rồng rắn dài ngoằng.",
-          "Cáo Lém túm luôn đuôi mình cho đủ hàng: hiểu rồi, hiểu rồi!",
-          "{name} đọc còn nhanh hơn Cáo Lém chạy trốn bác Gấu nữa."
+          "Cáo Tũn túm luôn đuôi mình cho đủ hàng: hiểu rồi, hiểu rồi!",
+          "{name} đọc còn nhanh hơn Cáo Tũn chạy trốn bác Gấu nữa."
         ],
         "wrong": [
           "Hụt rồi! Rồng rắn mà đứng vòng tròn thì cắn phải đuôi mình mất.",
@@ -178,11 +181,12 @@
     },
     {
       "id": "xin-thuoc",
+      "goTo": "Sang vườn thuốc ven bãi, Bác lang Bảy làm thầy thuốc thật đang phơi lá",
       "title": "Rồng rắn đi tìm thầy thuốc",
       "kind": "challenge",
       "mechanic": "quiz",
-      "target": "tv2-t13-cay-nuc-nac",
-      "prompt": "Gà Con Chíp kiễng chân hỏi: chiếp, tại sao rồng rắn lại hát ầm ĩ đi tìm thầy? Rồng rắn đến gặp thầy thuốc để làm gì?",
+      "target": "tv2-t13-b23-bac-lang-bay",
+      "prompt": "Thỏ Xíu kiễng chân hỏi: tại sao rồng rắn lại hát ầm ĩ đi tìm thầy? Rồng rắn đến gặp thầy thuốc để làm gì?",
       "choices": [
         {
           "id": "hoi-duong",
@@ -218,7 +222,7 @@
       "feedback": {
         "right": [
           "Đúng rồi! Rồng rắn đi xin thuốc, chứ đâu phải đi dạo chơi.",
-          "Chíp gật gù: à, thì ra vì thế mà phải hỏi thầy có nhà không!",
+          "Xíu gật gù: à, thì ra vì thế mà phải hỏi thầy có nhà không!",
           "Giỏi ghê! Cây núc nác cũng rung lá khen {name} đấy."
         ],
         "wrong": [
@@ -230,6 +234,7 @@
     },
     {
       "id": "bat-khuc-duoi",
+      "goTo": "Quay lại cây núc nác, bản luật còn hai dòng chưa đọc",
       "title": "Khi khúc đuôi bị bắt",
       "kind": "read",
       "target": "tv2-t13-cay-nuc-nac",
@@ -270,7 +275,7 @@
       "feedback": {
         "right": [
           "Chính xác! Bị bắt thì lên làm thầy thuốc, chẳng ai phải ngồi buồn.",
-          "Hổ Vằn mừng thầm: thế thì tớ cứ làm đuôi, bị bắt là được làm thầy!",
+          "Sư Tử Xù mừng thầm: thế thì tớ cứ làm đuôi, bị bắt là được làm thầy!",
           "Đọc kĩ thật đấy, đúng từng chữ trong luật."
         ],
         "wrong": [
@@ -286,7 +291,7 @@
       "kind": "challenge",
       "mechanic": "quiz",
       "target": "tv2-t13-cay-nuc-nac",
-      "prompt": "Thỏ Tí lo lắng vểnh tai: lỡ tớ đứng giữa mà tuột tay thì sao? Nếu bạn khúc giữa bị đứt thì bạn đó phải làm gì?",
+      "prompt": "Thỏ Bơ lo lắng vểnh tai: lỡ tớ đứng giữa mà tuột tay thì sao? Nếu bạn khúc giữa bị đứt thì bạn đó phải làm gì?",
       "choices": [
         {
           "id": "lam-dau",
@@ -321,8 +326,8 @@
       },
       "feedback": {
         "right": [
-          "Đúng luật rồi! Tuột tay thì xuống làm đuôi, Thỏ Tí thở phào.",
-          "Thỏ Tí ghi vội lên tai: đứt giữa thì làm đuôi, đứt giữa thì làm đuôi…",
+          "Đúng luật rồi! Tuột tay thì xuống làm đuôi, Thỏ Bơ thở phào.",
+          "Thỏ Bơ ghi vội lên tai: đứt giữa thì làm đuôi, đứt giữa thì làm đuôi…",
           "Tuyệt cú mèo, à không, tuyệt cú cáo!"
         ],
         "wrong": [
@@ -338,8 +343,8 @@
       "goTo": "Quay lại bãi đất trống, cả đàn rồng rắn đang xếp hàng chờ",
       "kind": "challenge",
       "mechanic": "classify",
-      "target": "cao-lem",
-      "prompt": "Cáo Lém chép lại luật lên bốn tấm thẻ. Hổ Vằn hắt xì một cái thật to, nửa sau của các câu bay tán loạn! Nói tiếp để hoàn thành câu:\nKéo mỗi nửa câu về đúng tấm thẻ của nó.",
+      "target": "tv2-t13-b23-cao-tun",
+      "prompt": "Cáo Tũn chép lại luật lên bốn tấm thẻ. Sư Tử Xù hắt xì một cái thật to, nửa sau của các câu bay tán loạn! Nói tiếp để hoàn thành câu:\nKéo mỗi nửa câu về đúng tấm thẻ của nó.",
       "groups": [
         {
           "id": "a",
@@ -404,8 +409,8 @@
       },
       "feedback": {
         "right": [
-          "Bốn thẻ luật lành lặn như mới! Cáo Lém thổi kèn lá toe toe.",
-          "Hổ Vằn xin lỗi vì cái hắt xì, rồi khen {name} ghép nhanh như chớp.",
+          "Bốn thẻ luật lành lặn như mới! Cáo Tũn thổi kèn lá toe toe.",
+          "Sư Tử Xù xin lỗi vì cái hắt xì, rồi khen {name} ghép nhanh như chớp.",
           "Luật đủ rồi, con rồng rắn sắp lên mây thật rồi!"
         ],
         "wrong": [
@@ -417,11 +422,11 @@
     },
     {
       "id": "tu-kho-cua-cao",
-      "title": "Hai từ khó của Cáo Lém",
+      "title": "Hai từ khó của Cáo Tũn",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "target": "cao-lem",
-      "prompt": "Cáo Lém khoe vừa thuộc hai từ khó trong ô Từ ngữ: núc nác là cây làm thuốc, cản là ngăn lại. Cậu ấy đố {name} đặt mỗi từ về đúng chỗ trong bài.",
+      "target": "tv2-t13-b23-cao-tun",
+      "prompt": "Cáo Tũn khoe vừa thuộc hai từ khó trong ô Từ ngữ: núc nác là cây làm thuốc, cản là ngăn lại. Cậu ấy đố {name} đặt mỗi từ về đúng chỗ trong bài.",
       "template": "Rồng rắn lên mây\nThấy cây {{cay}}\nBạn làm đầu dang tay {{tay}} thầy thuốc.",
       "blanks": [
         {
@@ -479,8 +484,8 @@
       },
       "feedback": {
         "right": [
-          "Hai từ khó về đúng nhà! Cáo Lém phải đi tìm từ khó hơn để đố tiếp.",
-          "Núc nác, cản… {name} nói trơn tru hơn cả Cáo Lém.",
+          "Hai từ khó về đúng nhà! Cáo Tũn phải đi tìm từ khó hơn để đố tiếp.",
+          "Núc nác, cản… {name} nói trơn tru hơn cả Cáo Tũn.",
           "Điền chuẩn từng chữ, cây núc nác cũng gật gù."
         ],
         "wrong": [
@@ -492,10 +497,11 @@
     },
     {
       "id": "cau-tro-choi",
+      "goTo": "Cùng Cáo Tũn ra gò đất đầu bãi, Bê Nhún đang nhảy lò cò chờ khoe trò",
       "title": "Một câu về trò em thích",
       "kind": "speak",
-      "target": "cao-lem",
-      "prompt": "Cáo Lém ôm bụng cười: tớ mê trò này nhất rừng! Còn {name} thích trò gì? Đặt một câu nói về trò chơi em thích. M: Rồng rắn lên mây là một trò chơi vui nhộn.",
+      "target": "tv2-t13-b23-be-nhun",
+      "prompt": "Cáo Tũn ôm bụng cười: tớ mê trò này nhất rừng! Còn {name} thích trò gì? Đặt một câu nói về trò chơi em thích. M: Rồng rắn lên mây là một trò chơi vui nhộn.",
       "hints": [
         "Trò chơi em thích tên là gì?",
         "Em hay chơi trò đó với ai?",
@@ -507,45 +513,46 @@
     },
     {
       "id": "chia-vai",
+      "goTo": "Về bãi đất trống, cả đàn đã đứng thành hàng chờ chia vai",
       "title": "Chia vai cho đàn rồng rắn",
       "kind": "dialogue",
-      "target": "cao-lem",
+      "target": "tv2-t13-b23-cao-tun",
       "lines": [
         {
-          "speaker": "Cáo Lém",
+          "speaker": "Cáo Tũn",
           "text": "Luật đủ rồi, giờ chia vai! Ai làm thầy thuốc, ai làm đầu, ai làm khúc đuôi ngoằn ngoèo?"
         },
         {
-          "speaker": "Hổ Vằn",
+          "speaker": "Sư Tử Xù",
           "text": "Tớ… tớ làm thầy thuốc được không? Nhưng lỡ tớ gầm một tiếng, cả đàn bỏ chạy thì sao?"
         },
         {
-          "speaker": "Gà Con Chíp",
-          "text": "Chiếp! Tại sao khúc đuôi lại phải chạy nhiều nhất? Tại sao đầu lại phải dang tay?"
+          "speaker": "Thỏ Xíu",
+          "text": "Ơ kìa! Tại sao khúc đuôi lại phải chạy nhiều nhất? Tại sao đầu lại phải dang tay?"
         }
       ],
       "choices": [
         {
           "text": "Mình làm đầu, dang tay che cho cả đàn!",
-          "reply": "Cáo Lém reo: cái đầu dũng cảm nhất rừng! Chíp nấp ngay sau lưng {name}."
+          "reply": "Cáo Tũn reo: cái đầu dũng cảm nhất rừng! Xíu nấp ngay sau lưng {name}."
         },
         {
-          "text": "Hổ Vằn làm thầy thuốc đi, cậu chỉ cần cười thật hiền!",
-          "reply": "Hổ Vằn nhe răng cười, cả đàn hét lên rồi cười lăn. Thầy thuốc Hổ hoá ra dễ thương ghê."
+          "text": "Sư Tử Xù làm thầy thuốc đi, cậu chỉ cần cười thật hiền!",
+          "reply": "Sư Tử Xù nhe răng cười, cả đàn hét lên rồi cười lăn. Thầy thuốc Sư Tử hoá ra dễ thương ghê."
         },
         {
           "text": "Mình xin làm khúc đuôi, mình né giỏi lắm!",
-          "reply": "Khúc đuôi {name} uốn éo né thầy, Cáo Lém cười đến rụng cả lông đuôi."
+          "reply": "Khúc đuôi {name} uốn éo né thầy, Cáo Tũn cười đến rụng cả lông đuôi."
         }
       ]
     },
     {
       "id": "doan-tranh-hoa",
-      "title": "Thỏ Tí sực nhớ con búp bê",
-      "goTo": "Ghé hang Thỏ Tí, bạn ấy vừa sực nhớ ra một chuyện lớn",
+      "title": "Thỏ Bơ sực nhớ con búp bê",
+      "goTo": "Ghé hang Thỏ Bơ, bạn ấy vừa sực nhớ ra một chuyện lớn",
       "kind": "speak",
-      "target": "tho-ti",
-      "prompt": "Chơi xong, Thỏ Tí bỗng ôm hai tai kêu: thôi chết, tớ để quên con búp bê vải dưới gầm giường từ mùa xuân! Đêm qua tớ còn mơ thấy nó khóc. Thỏ Tí bày ra bốn bức tranh câu chuyện Búp bê biết khóc. Dựa vào câu hỏi gợi ý, đoán nội dung của từng tranh.",
+      "target": "tv2-t13-b23-tho-bo",
+      "prompt": "Chơi xong, Thỏ Bơ bỗng ôm hai tai kêu: thôi chết, tớ để quên con búp bê vải dưới gầm giường từ mùa xuân! Đêm qua tớ còn mơ thấy nó khóc. Thỏ Bơ bày ra bốn bức tranh câu chuyện Búp bê biết khóc. Dựa vào câu hỏi gợi ý, đoán nội dung của từng tranh.",
       "hints": [
         "Khi tròn 6 tuổi, Hoa được tặng quà gì? Hoa yêu thích món quà đó thế nào?",
         "Khi tròn 7 tuổi, Hoa được tặng quà gì? Hoa đã làm gì với món quà cũ?",
@@ -598,8 +605,8 @@
       "title": "Bốn tranh rơi lộn xộn",
       "kind": "challenge",
       "mechanic": "sort",
-      "target": "tho-ti",
-      "prompt": "Thỏ Tí ôm tranh nhảy tưng tưng, rơi cả bốn bức, nhặt lên thì lộn tùng phèo, đúng kiểu Thỏ Tí. Nghe kể chuyện.\nXếp các tranh theo đúng thứ tự câu chuyện.",
+      "target": "tv2-t13-b23-tho-bo",
+      "prompt": "Thỏ Bơ ôm tranh nhảy tưng tưng, rơi cả bốn bức, nhặt lên thì lộn tùng phèo, đúng kiểu Thỏ Bơ. Nghe kể chuyện.\nXếp các tranh theo đúng thứ tự câu chuyện.",
       "items": [
         {
           "id": "tranh-3",
@@ -675,9 +682,9 @@
       },
       "feedback": {
         "right": [
-          "Bốn tranh thẳng hàng! Thỏ Tí hứa từ nay không bỏ quên đồ chơi nào nữa… cố gắng.",
+          "Bốn tranh thẳng hàng! Thỏ Bơ hứa từ nay không bỏ quên đồ chơi nào nữa… cố gắng.",
           "Đúng thứ tự rồi, câu chuyện chảy êm như suối.",
-          "Thỏ Tí vỗ tay bép bép: {name} nhớ giỏi hơn tớ cả trăm lần!"
+          "Thỏ Bơ vỗ tay bép bép: {name} nhớ giỏi hơn tớ cả trăm lần!"
         ],
         "wrong": [
           "Hoa phải có búp bê trước rồi mới bỏ quên nó chứ.",
@@ -688,10 +695,11 @@
     },
     {
       "id": "ke-chuyen-bup-be",
-      "title": "Kể cho Thỏ Tí nghe",
+      "goTo": "Theo Thỏ Bơ ra gốc đa đầu hang, Gấu Thóc trải sẵn chiếu ngồi nghe kể",
+      "title": "Kể cho Thỏ Bơ nghe",
       "kind": "speak",
-      "target": "tho-ti",
-      "prompt": "Thỏ Tí ôm khư khư con búp bê vải vừa lôi ra từ gầm giường: kể cho tớ với, kể đoạn búp bê khóc thật chậm nhé! Nghe kể chuyện.\nChọn kể 1 – 2 đoạn của câu chuyện theo tranh.",
+      "target": "tv2-t13-b23-gau-thoc",
+      "prompt": "Thỏ Bơ ôm khư khư con búp bê vải vừa lôi ra từ gầm giường: kể cho tớ với, kể đoạn búp bê khóc thật chậm nhé! Nghe kể chuyện.\nChọn kể 1 – 2 đoạn của câu chuyện theo tranh.",
       "hints": [
         "Tranh 1: Ngày sinh nhật, Hoa ôm món quà nào thật chặt?",
         "Tranh 2: Có chó bông rồi, Hoa để búp bê ở đâu?",
@@ -735,10 +743,11 @@
     },
     {
       "id": "ke-cho-nguoi-than",
+      "goTo": "Đưa bạn thỏ về hang Thỏ Bơ, bạn ấy còn dặn với theo một câu",
       "title": "Mang chuyện bạn Hoa về nhà",
       "kind": "speak",
-      "target": "tho-ti",
-      "prompt": "Thỏ Tí dặn với theo: tối nay {name} kể cho cả nhà nghe nhé, nhớ giả giọng búp bê khóc hu hu! Kể về bạn Hoa trong câu chuyện Búp bê biết khóc cho người thân nghe.",
+      "target": "tv2-t13-b23-tho-bo",
+      "prompt": "Thỏ Bơ dặn với theo: tối nay {name} kể cho cả nhà nghe nhé, nhớ giả giọng búp bê khóc hu hu! Kể về bạn Hoa trong câu chuyện Búp bê biết khóc cho người thân nghe.",
       "hints": [
         "Bạn Hoa đã làm gì với con búp bê cũ?",
         "Vì sao Hoa thấy có lỗi?",
@@ -754,7 +763,7 @@
       "kind": "worksheet",
       "trigger": "auto",
       "lessonId": "tv2-t1-b23",
-      "text": "Nhờ bố mẹ in phiếu Bài 23 ở khu phụ huynh: tập viết chữ hoa M và câu ứng dụng về con ngựa đau. Cáo Lém bảo chữ M trông như hai ngọn núi, rồng rắn bò qua là tới mây!",
+      "text": "Nhờ bố mẹ in phiếu Bài 23 ở khu phụ huynh: tập viết chữ hoa M và câu ứng dụng về con ngựa đau. Cáo Tũn bảo chữ M trông như hai ngọn núi, rồng rắn bò qua là tới mây!",
       "curriculumRef": [
         "tv2-t1-b23-viet-chu-hoa-1",
         "tv2-t1-b23-viet-ung-dung-2"
@@ -762,10 +771,10 @@
     },
     {
       "id": "qua-cua-cao-lem",
-      "title": "Quà của Cáo Lém",
+      "title": "Quà của Cáo Tũn",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Cáo Lém trao cho {name} chiếc huy hiệu lá bàng khắc chữ \"Người giữ luật rồng rắn\", còn Hổ Vằn ngượng ngùng tặng thêm một cái vuốt… bằng gỗ, không nhọn tí nào."
+      "text": "Cáo Tũn trao cho {name} chiếc huy hiệu lá bàng khắc chữ \"Người giữ luật rồng rắn\", còn Sư Tử Xù ngượng ngùng tặng thêm một cái vuốt… bằng gỗ, không nhọn tí nào."
     },
     {
       "id": "mo-bai-24",

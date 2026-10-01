@@ -5,11 +5,11 @@
   "title": "Lễ tổng kết bảy khu trường",
   "status": "active",
   "lesson": "toan2-t1-b36",
-  "summary": "Lễ tổng kết học kì một: mỗi khu của Trường học gửi một câu đố cuối, từ tia số của Gà Con Chíp tới đường bay của Ong Vàng; {name} giải hết để nhận huy hiệu học kì từ tay thầy Sư Tử Vàng.",
+  "summary": "Lễ tổng kết học kì một: mỗi khu của Trường học gửi một câu đố cuối, từ tia số của Gà Lóc Cóc tới đường bay của Ong Rù Rì; {name} giải hết để nhận huy hiệu học kì từ tay thầy Quang.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Thầy Sư Tử Vàng cùng cả trường: Gà Con Chíp, Voi Bảo, Koala Na, Lợn Rừng Đốm, Khỉ Lanh, Hươu Cao, Cánh Cụt Pin, Bò Sữa Mơ, Ong Vàng",
-    "where": "Hội trường trong lễ tổng kết: bục huy hiệu và các gian của bảy khu",
+    "who": "Thầy Quang cùng các bạn giữ gian: Gà Lóc Cóc, ông Lộc, Gấu Trắng Ú, Mèo Cam Xíu, chị Thảo, cô Hằng, Mèo Mướp, Thỏ Gòn, bác Thuận, Ong Rù Rì",
+    "where": "Hội trường trong lễ tổng kết: bục huy hiệu, khán phòng và các gian của bảy khu (sân trường, đồng hồ và bàn lịch, đồ chơi, thể thao, mĩ thuật và giá ghim tranh, căng tin, vườn và giàn hoa giấy)",
     "goal": "Giải câu đố cuối của từng khu để nhận huy hiệu học kì một",
     "play": "Tìm hộp huy hiệu, chọn đáp án, ghép tranh với đồng hồ, đặt tính, giải toán, điền đường đi và sơ đồ mũi tên",
     "learn": "Toán 2 Bài 36: ôn tập chung (số, lịch, đồng hồ, cộng trừ có nhớ, độ dài, khối lượng, dung tích, hình tứ giác)",
@@ -28,47 +28,48 @@
   },
   "texts": {},
   "places": {
-    "su-tu-vang": "bục huy hiệu",
+    "toan2-cd7-b33-thay-quang": "bục huy hiệu",
     "tim-hop-huy-hieu": "khán phòng",
-    "ga-con-chip": "gian sân trường",
-    "voi-bao": "gian đồng hồ",
-    "koala-na": "gian đồng hồ",
-    "lon-rung-dom": "gian đồ chơi",
-    "khi-lanh": "gian thể thao",
-    "huou-cao": "gian mĩ thuật",
-    "chim-canh-cut-pin": "gian căng tin",
-    "bo-sua-mo": "gian vườn",
-    "ong-vang": "gian vườn"
+    "toan2-cd7-b33-ga-loc-coc": "gian sân trường",
+    "toan2-cd6-b32-ong-loc": "bàn lịch cạnh gian đồng hồ",
+    "toan2-cd6-b31-gau-trang-u": "gian đồng hồ",
+    "toan2-cd7-b34-meo-cam-xiu": "gian đồ chơi",
+    "toan2-cd6-b32-chi-thao": "gian thể thao",
+    "toan2-cd5-b28-co-hang": "gian mĩ thuật",
+    "toan2-cd5-b28-meo-muop": "giá ghim tranh",
+    "toan2-cd7-b35-tho-gon": "gian căng tin",
+    "toan2-cd7-b33-bac-thuan": "gian vườn",
+    "toan2-cd7-b36-ong-ru-ri": "giàn hoa giấy"
   },
   "steps": [
     {
       "id": "mo-man-tong-ket",
       "title": "Mở màn lễ tổng kết",
-      "goTo": "Đến bục huy hiệu giữa hội trường, thầy Sư Tử Vàng sắp khai mạc",
+      "goTo": "Đến bục huy hiệu giữa hội trường, thầy Quang sắp khai mạc",
       "kind": "dialogue",
-      "target": "su-tu-vang",
+      "target": "toan2-cd7-b33-thay-quang",
       "lines": [
         {
-          "speaker": "Sư Tử Vàng",
+          "speaker": "Thầy Quang",
           "text": "Kính thưa toàn trường… hắt xì! Bụi kim tuyến bay vào mũi thầy rồi. Xin khai mạc lễ tổng kết học kì một!"
         },
         {
-          "speaker": "Sư Tử Vàng",
+          "speaker": "Thầy Quang",
           "text": "Năm nay mỗi khu gửi một câu đố cuối. Ai giải hết sẽ nhận huy hiệu học kì, to bằng cái bánh rán luôn!"
         },
         {
-          "speaker": "Gà Con Chíp",
+          "speaker": "Gà Lóc Cóc",
           "text": "Mà thầy ơi, ba hộp huy hiệu bị pháo giấy phủ kín, không ai thấy đâu cả!"
         }
       ],
       "choices": [
         {
           "text": "Cháu đi tìm hộp huy hiệu!",
-          "reply": "Sư Tử Vàng: Tìm thấy thì gõ hai cái vào nắp, thầy nghe là biết."
+          "reply": "Thầy Quang: Tìm thấy thì gõ hai cái vào nắp, thầy nghe là biết."
         },
         {
           "text": "Huy hiệu to bằng bánh rán thật ạ?",
-          "reply": "Sư Tử Vàng cười khà khà: Hơi nhỏ hơn một chút, nhưng sáng hơn nhiều!"
+          "reply": "Thầy Quang cười khà khà: Hơi nhỏ hơn một chút, nhưng sáng hơn nhiều!"
         }
       ]
     },
@@ -86,16 +87,16 @@
     {
       "id": "luat-bay-cau-do",
       "title": "Luật chơi bảy khu",
-      "goTo": "Mang hộp về bục huy hiệu cho thầy Sư Tử Vàng",
+      "goTo": "Mang hộp về bục huy hiệu cho thầy Quang",
       "kind": "dialogue",
-      "target": "su-tu-vang",
+      "target": "toan2-cd7-b33-thay-quang",
       "lines": [
         {
-          "speaker": "Sư Tử Vàng",
+          "speaker": "Thầy Quang",
           "text": "Đủ ba hộp rồi! Luật chơi thế này: đi một vòng các gian, khu nào cũng có bạn chờ sẵn với câu đố của cả học kì."
         },
         {
-          "speaker": "Sư Tử Vàng",
+          "speaker": "Thầy Quang",
           "text": "Số, lịch, đồng hồ, cộng trừ có nhớ, cân, đong, hình… món nào cũng có. Bí thì cứ hỏi bạn giữ gian, các bạn ấy thích được nhờ lắm."
         }
       ],
@@ -108,12 +109,12 @@
     },
     {
       "id": "tia-so-cua-chip",
-      "title": "Câu đố của Gà Con Chíp",
-      "goTo": "Ghé gian sân trường, Gà Con Chíp kẻ sẵn tia số",
-      "target": "ga-con-chip",
+      "title": "Câu đố của Gà Lóc Cóc",
+      "goTo": "Ghé gian sân trường, Gà Lóc Cóc kẻ sẵn tia số",
+      "target": "toan2-cd7-b33-ga-loc-coc",
       "kind": "challenge",
       "mechanic": "quiz",
-      "prompt": "Chíp kẻ một tia số chia vạch đều, ghi từ 34 đến 44, rồi đặt dấu ? ở vạch thứ tám tính từ vạch 34. \"Lần này tớ không nhảy nhầm đâu nhé!\" Chọn câu trả lời đúng. a) Số thích hợp với ? là: A. 39 B. 40 C. 41",
+      "prompt": "Lóc Cóc kẻ một tia số chia vạch đều, ghi từ 34 đến 44, rồi đặt dấu ? ở vạch thứ tám tính từ vạch 34. \"Lần này tớ không nhảy nhầm đâu nhé!\" Chọn câu trả lời đúng. a) Số thích hợp với ? là: A. 39 B. 40 C. 41",
       "choices": [
         {
           "id": "a-39",
@@ -145,14 +146,14 @@
       },
       "feedback": {
         "right": [
-          "Chíp nhảy lò cò tới đúng vạch 41, không trượt chân lần nào!",
+          "Lóc Cóc nhảy lò cò tới đúng vạch 41, không trượt chân lần nào!",
           "Cả gian sân trường vỗ cánh khen {name}.",
           "Đếm vạch chuẩn như thước kẻ, tuyệt vời!"
         ],
         "wrong": [
           "Nhớ tính cả vạch 34 là vạch thứ nhất nhé.",
           "Đếm chậm từng vạch một, tới vạch thứ tám thì dừng.",
-          "Chíp lắc đầu: tớ từng nhảy nhầm y như vậy đấy!"
+          "Lóc Cóc lắc đầu: tớ từng nhảy nhầm y như vậy đấy!"
         ]
       },
       "answer": {
@@ -161,12 +162,12 @@
     },
     {
       "id": "lich-cua-voi-bao",
-      "title": "Câu đố của Voi Bảo",
-      "goTo": "Sang gian đồng hồ, Voi Bảo giơ cuốn lịch tháng Mười hai",
-      "target": "voi-bao",
+      "title": "Câu đố của ông Lộc",
+      "goTo": "Sang bàn lịch cạnh gian đồng hồ, ông Lộc giơ cuốn lịch tháng Mười hai",
+      "target": "toan2-cd6-b32-ong-loc",
       "kind": "challenge",
       "mechanic": "quiz",
-      "prompt": "Voi Bảo phe phẩy tờ lịch bằng vòi: \"Câu này tớ nhớ mãi từ hồi học kì!\" Chọn câu trả lời đúng. b) Nếu ngày 19 tháng 12 là thứ Hai thì ngày 22 tháng 12 là: A. Thứ Tư B. Thứ Năm C. Thứ Sáu",
+      "prompt": "Ông Lộc phe phẩy tờ lịch: \"Câu này ông nhớ mãi từ hồi học kì!\" Chọn câu trả lời đúng. b) Nếu ngày 19 tháng 12 là thứ Hai thì ngày 22 tháng 12 là: A. Thứ Tư B. Thứ Năm C. Thứ Sáu",
       "choices": [
         {
           "id": "a-thu-tu",
@@ -198,7 +199,7 @@
       },
       "feedback": {
         "right": [
-          "Voi Bảo vẫy tai phành phạch: đúng thứ Năm, giỏi lắm!",
+          "Ông Lộc đẩy gọng kính cười: đúng thứ Năm, giỏi lắm!",
           "Đếm ngày nối thứ không lệch nhịp nào.",
           "Tờ lịch tháng Mười hai được đánh dấu bằng một chiếc lá vàng."
         ],
@@ -215,10 +216,11 @@
     {
       "id": "mot-ngay-cua-nam",
       "title": "Một ngày của Nam",
-      "target": "koala-na",
+      "goTo": "Bước vào gian đồng hồ, Gấu Trắng Ú dụi mắt bày bốn bức tranh",
+      "target": "toan2-cd6-b31-gau-trang-u",
       "kind": "challenge",
       "mechanic": "classify",
-      "prompt": "Koala Na dụi mắt, bày bốn bức tranh về một ngày của bạn Nam: \"Tớ ngủ quên nên xếp lộn hết rồi.\" Tìm đồng hồ chỉ thời gian thích hợp với mỗi bức tranh.",
+      "prompt": "Gấu Trắng Ú dụi mắt, bày bốn bức tranh về một ngày của bạn Nam: \"Tớ ngủ quên nên xếp lộn hết rồi.\" Tìm đồng hồ chỉ thời gian thích hợp với mỗi bức tranh.",
       "groups": [
         {
           "id": "nhom-dong-ho-07-15",
@@ -275,9 +277,9 @@
       },
       "feedback": {
         "right": [
-          "Một ngày của Nam xếp gọn gàng, Koala Na tỉnh cả ngủ!",
+          "Một ngày của Nam xếp gọn gàng, Gấu Trắng Ú tỉnh cả ngủ!",
           "Giờ chiều, giờ tối đổi sang đồng hồ điện tử đều đúng.",
-          "Na ngáp một cái thật dài: cảm ơn, giờ tớ đi ngủ tiếp được rồi."
+          "Ú ngáp một cái thật dài: cảm ơn, giờ tớ đi ngủ tiếp được rồi."
         ],
         "wrong": [
           "Buổi chiều thì đồng hồ điện tử chỉ số lớn hơn 12 đấy.",
@@ -297,10 +299,10 @@
     {
       "id": "dong-ho-cung-gio",
       "title": "Hai đồng hồ cùng giờ",
-      "target": "koala-na",
+      "target": "toan2-cd6-b31-gau-trang-u",
       "kind": "challenge",
       "mechanic": "quiz",
-      "prompt": "Trên bàn Na có bốn đồng hồ: M có kim giờ ở giữa số 3 và số 4, kim phút chỉ số 6; N có kim giờ chỉ số 4, kim phút chỉ số 12; đồng hồ điện tử E chỉ 15:30; đồng hồ điện tử G chỉ 17:00. Chọn câu trả lời đúng. a) Hai đồng hồ chỉ cùng giờ vào buổi chiều là: A. M và E B. M và G C. N và G",
+      "prompt": "Trên bàn Ú có bốn đồng hồ: M có kim giờ ở giữa số 3 và số 4, kim phút chỉ số 6; N có kim giờ chỉ số 4, kim phút chỉ số 12; đồng hồ điện tử E chỉ 15:30; đồng hồ điện tử G chỉ 17:00. Chọn câu trả lời đúng. a) Hai đồng hồ chỉ cùng giờ vào buổi chiều là: A. M và E B. M và G C. N và G",
       "choices": [
         {
           "id": "a-m-va-e",
@@ -332,7 +334,7 @@
       },
       "feedback": {
         "right": [
-          "M và E sinh đôi rồi! Koala Na gật gù rồi… ngủ gật luôn.",
+          "M và E sinh đôi rồi! Gấu Trắng Ú gật gù rồi… ngủ gật luôn.",
           "Kim phút ở số 6 là 30 phút, cậu đọc chuẩn quá.",
           "Hai đồng hồ cùng reo \"tích tắc\" mừng cho {name}."
         ],
@@ -348,12 +350,12 @@
     },
     {
       "id": "dat-tinh-cua-dom",
-      "title": "Câu đố của Lợn Rừng Đốm",
-      "goTo": "Qua gian đồ chơi, Lợn Rừng Đốm đang lắp hộp nhạc",
-      "target": "lon-rung-dom",
+      "title": "Câu đố của Mèo Cam Xíu",
+      "goTo": "Qua gian đồ chơi, Mèo Cam Xíu đang lắp hộp nhạc",
+      "target": "toan2-cd7-b34-meo-cam-xiu",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Đốm làm hộp nhạc có sáu phím, phím nào tính đúng mới kêu \"ting\". Đặt tính rồi tính.",
+      "prompt": "Mèo Cam Xíu làm hộp nhạc có sáu phím, phím nào tính đúng mới kêu \"ting\". Đặt tính rồi tính.",
       "template": "a) 36 + 7 = {{b1}}\na) 5 + 48 = {{b2}}\na) 29 + 64 = {{b3}}\nb) 73 – 6 = {{b4}}\nb) 82 – 57 = {{b5}}\nb) 91 – 85 = {{b6}}",
       "blanks": [
         {
@@ -482,7 +484,7 @@
       "feedback": {
         "right": [
           "Ting ting ting! Sáu phím hộp nhạc ngân lên một bài hát.",
-          "Đốm sung sướng nhảy điệu lợn rừng lắc lư.",
+          "Mèo Cam Xíu sung sướng ngoáy đuôi lắc lư.",
           "Đặt tính thẳng cột, nhớ không sót, chuẩn quá."
         ],
         "wrong": [
@@ -504,11 +506,11 @@
     },
     {
       "id": "chieu-cao-cua-mi",
-      "title": "Câu đố của Khỉ Lanh",
-      "goTo": "Đi sang gian thể thao, Khỉ Lanh dựng sẵn thước đo chiều cao",
-      "target": "khi-lanh",
+      "title": "Câu đố của chị Thảo",
+      "goTo": "Đi sang gian thể thao, chị Thảo dựng sẵn thước đo chiều cao",
+      "target": "toan2-cd6-b32-chi-thao",
       "kind": "riddle",
-      "question": "Khỉ Lanh đu lên thước đo, nheo mắt đọc số: Rô-bốt cao 89 cm, Mi cao hơn Rô-bốt 9 cm. Hỏi Mi cao bao nhiêu xăng-ti-mét?",
+      "question": "Chị Thảo kéo thước đo, nheo mắt đọc số: Rô-bốt cao 89 cm, Mi cao hơn Rô-bốt 9 cm. Hỏi Mi cao bao nhiêu xăng-ti-mét?",
       "skill": "bai-toan-loi-van",
       "curriculumRef": [
         "toan2-t1-b36-luyen-tap-4"
@@ -526,9 +528,9 @@
       },
       "feedback": {
         "right": [
-          "Khỉ Lanh thổi còi \"toét\": Mi cao 98 cm, chính xác!",
+          "Chị Thảo thổi còi \"toét\": Mi cao 98 cm, chính xác!",
           "Cao hơn thì cộng thêm, cậu nhớ bài kĩ thật.",
-          "Gần một mét rồi, Mi chắc cao hơn cả Khỉ Lanh mất!"
+          "Gần một mét rồi, Mi sắp với tới rổ bóng của chị Thảo!"
         ],
         "wrong": [
           "Mi cao hơn nên phải lớn hơn 89 cm chứ.",
@@ -543,34 +545,34 @@
     {
       "id": "hai-loi-mi-thuat",
       "title": "Hai lối vào gian mĩ thuật",
-      "goTo": "Đến gian mĩ thuật, Hươu Cao vẫy từ trên cao",
+      "goTo": "Đến gian mĩ thuật, cô Hằng vẫy cây cọ gọi",
       "kind": "dialogue",
-      "target": "huou-cao",
+      "target": "toan2-cd5-b28-co-hang",
       "lines": [
         {
-          "speaker": "Hươu Cao",
-          "text": "Ê {name}! Cổ tớ dài nên nhìn thấy hết: một chú kiến đang bò tìm miếng bánh trên bức tranh của tớ kìa."
+          "speaker": "Cô Hằng",
+          "text": "{name} ơi, lại đây! Trên bức tranh của cô có một chú kiến đang bò tìm miếng bánh kìa."
         },
         {
-          "speaker": "Hươu Cao",
-          "text": "Chú ấy có hai đường để đi, một đường gãy hai khúc, một đường gãy ba khúc. Cậu đoán thử xem chú ấy nên đi đường nào?"
+          "speaker": "Cô Hằng",
+          "text": "Chú ấy có hai đường để đi, một đường gãy hai khúc, một đường gãy ba khúc. Con đoán thử xem chú ấy nên đi đường nào?"
         }
       ],
       "choices": [
         {
           "text": "Đường ít khúc chắc ngắn hơn",
-          "reply": "Hươu Cao: Đoán thì dễ, đo mới chắc. Mình cộng độ dài từng khúc nhé!"
+          "reply": "Cô Hằng: Đoán thì dễ, đo mới chắc. Mình cộng độ dài từng khúc nhé!"
         },
         {
           "text": "Phải cộng độ dài mới biết",
-          "reply": "Hươu Cao: Chuẩn tinh thần nhà toán học! Cộng thôi!"
+          "reply": "Cô Hằng: Chuẩn tinh thần nhà toán học! Cộng thôi!"
         }
       ]
     },
     {
       "id": "kien-tim-banh",
       "title": "Kiến tìm miếng bánh",
-      "target": "huou-cao",
+      "target": "toan2-cd5-b28-co-hang",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "prompt": "Trên tranh, đường ABC có AB dài 52 cm, BC dài 38 cm; đường MNPQ có MN dài 39 cm, NP dài 23 cm, PQ dài 35 cm. Có hai đường đi để kiến đến chỗ miếng bánh như hình dưới đây. a) Số ?",
@@ -645,7 +647,7 @@
         "right": [
           "Chú kiến chọn đường ABC, tới miếng bánh trước cả lũ bạn!",
           "Đường ít khúc lần này ngắn hơn thật, nhưng cậu đã cộng để chắc chắn.",
-          "Hươu Cao vẽ thêm một chiếc vương miện nhỏ cho chú kiến."
+          "Cô Hằng vẽ thêm một chiếc vương miện nhỏ cho chú kiến."
         ],
         "wrong": [
           "Cộng đủ tất cả các khúc của mỗi đường nhé.",
@@ -664,10 +666,11 @@
     {
       "id": "gap-khuc-abcd",
       "title": "Đường gấp khúc ABCD",
-      "target": "huou-cao",
+      "goTo": "Bước sang giá ghim tranh, Mèo Mướp chỉ đường gấp khúc ABCD",
+      "target": "toan2-cd5-b28-meo-muop",
       "kind": "challenge",
       "mechanic": "quiz",
-      "prompt": "Hươu Cao chỉ tiếp một đường gấp khúc ABCD trên phông: AB dài 4 cm, BC dài 3 cm, CD dài 6 cm. Chọn câu trả lời đúng. b) Độ dài đường gấp khúc ABCD là: A. 7 cm B. 12 cm C. 13 cm",
+      "prompt": "Mèo Mướp chỉ tiếp một đường gấp khúc ABCD trên phông: AB dài 4 cm, BC dài 3 cm, CD dài 6 cm. Chọn câu trả lời đúng. b) Độ dài đường gấp khúc ABCD là: A. 7 cm B. 12 cm C. 13 cm",
       "choices": [
         {
           "id": "a-7-cm",
@@ -699,7 +702,7 @@
       },
       "feedback": {
         "right": [
-          "Mười ba xăng-ti-mét, Hươu Cao gật đầu từ tít trên cao.",
+          "Mười ba xăng-ti-mét, Mèo Mướp vẫy đuôi gật gù.",
           "Ba đoạn cộng lại không sót đoạn nào.",
           "Đường gấp khúc ngoằn ngoèo mà cậu đo gọn ơ."
         ],
@@ -716,10 +719,11 @@
     {
       "id": "dem-hinh-tu-giac",
       "title": "Đếm hình tứ giác",
-      "target": "huou-cao",
+      "goTo": "Quay lại gian mĩ thuật, cô Hằng vừa vẽ xong một hình thang",
+      "target": "toan2-cd5-b28-co-hang",
       "kind": "challenge",
       "mechanic": "quiz",
-      "prompt": "Câu cuối của gian mĩ thuật: Hươu Cao vẽ một hình thang rồi kẻ hai nét, chia nó thành một hình tứ giác ở giữa và hai hình tam giác hai bên. Chọn câu trả lời đúng. Số hình tứ giác có trong hình sau là: A. 2 B. 3 C. 4 D. 5",
+      "prompt": "Câu cuối của gian mĩ thuật: cô Hằng vẽ một hình thang rồi kẻ hai nét, chia nó thành một hình tứ giác ở giữa và hai hình tam giác hai bên. Chọn câu trả lời đúng. Số hình tứ giác có trong hình sau là: A. 2 B. 3 C. 4 D. 5",
       "choices": [
         {
           "id": "a-2",
@@ -756,7 +760,7 @@
       "feedback": {
         "right": [
           "Bốn hình tứ giác, kể cả những hình ghép trốn kĩ!",
-          "Hươu Cao vỗ móng lốc cốc: mắt cậu tinh hơn cả tớ.",
+          "Cô Hằng gõ cán cọ lốc cốc: mắt con tinh hơn cả cô.",
           "Không bỏ sót cả hình thang lớn bao ngoài, giỏi quá."
         ],
         "wrong": [
@@ -771,12 +775,12 @@
     },
     {
       "id": "mit-va-can-nuoc",
-      "title": "Câu đố của Cánh Cụt Pin",
-      "goTo": "Về gian căng tin, Cánh Cụt Pin đặt sẵn cân và can",
-      "target": "chim-canh-cut-pin",
+      "title": "Câu đố của Thỏ Gòn",
+      "goTo": "Về gian căng tin, Thỏ Gòn đặt sẵn cân và can",
+      "target": "toan2-cd7-b35-tho-gon",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Pin chỉ vào cân đĩa thăng bằng: một đĩa có quả cân 2 kg và quả cân 5 kg, đĩa kia có quả mít. Bên cạnh là một can 10 l đầy nước và hai ca 2 l. Số ?",
+      "prompt": "Thỏ Gòn chỉ vào cân đĩa thăng bằng: một đĩa có quả cân 2 kg và quả cân 5 kg, đĩa kia có quả mít. Bên cạnh là một can 10 l đầy nước và hai ca 2 l. Số ?",
       "template": "a) Quả mít cân nặng {{b1}} kg.\nb) Rót đầy hai ca từ một can chứa đầy nước. Trong can còn lại {{b2}} l nước.",
       "blanks": [
         {
@@ -832,7 +836,7 @@
       },
       "feedback": {
         "right": [
-          "Pin chấm sổ \"tích\" một cái: mít 7 kg, can còn 6 l.",
+          "Thỏ Gòn chấm sổ \"tích\" một cái: mít 7 kg, can còn 6 l.",
           "Cân và đong đều chuẩn, xứng danh thanh tra căng tin.",
           "Quả mít thơm phức được bổ ra mời cả hội trường!"
         ],
@@ -851,11 +855,11 @@
     },
     {
       "id": "sach-cho-vung-lu",
-      "title": "Câu đố của Bò Sữa Mơ",
-      "goTo": "Sang gian vườn, Bò Sữa Mơ đang buộc chồng sách",
-      "target": "bo-sua-mo",
+      "title": "Câu đố của bác Thuận",
+      "goTo": "Sang gian vườn, bác Thuận đang buộc chồng sách",
+      "target": "toan2-cd7-b33-bac-thuan",
       "kind": "riddle",
-      "question": "Bò Sữa Mơ hiền hậu xếp từng chồng sách gửi các bạn nhỏ: Để ủng hộ các bạn vùng lũ lụt, lớp 2A quyên góp được 83 quyển sách, lớp 2B quyên góp được ít hơn lớp 2A là 18 quyển sách. Hỏi lớp 2B quyên góp được bao nhiêu quyển sách?",
+      "question": "Bác Thuận hiền hậu xếp từng chồng sách gửi các bạn nhỏ: Để ủng hộ các bạn vùng lũ lụt, lớp 2A quyên góp được 83 quyển sách, lớp 2B quyên góp được ít hơn lớp 2A là 18 quyển sách. Hỏi lớp 2B quyên góp được bao nhiêu quyển sách?",
       "skill": "bai-toan-loi-van",
       "curriculumRef": [
         "toan2-t1-b36-luyen-tap-2-3"
@@ -873,7 +877,7 @@
       },
       "feedback": {
         "right": [
-          "Sáu mươi lăm quyển sách lên đường, Bò Sữa Mơ rơm rớm nước mắt vui.",
+          "Sáu mươi lăm quyển sách lên đường, bác Thuận rơm rớm nước mắt vui.",
           "Ít hơn thì trừ, lại còn nhớ mượn chục, giỏi quá!",
           "Các bạn vùng lũ sắp có sách mới để đọc rồi."
         ],
@@ -889,11 +893,12 @@
     },
     {
       "id": "duong-bay-ong-vang",
-      "title": "Đường bay của Ong Vàng",
-      "target": "ong-vang",
+      "title": "Đường bay của Ong Rù Rì",
+      "goTo": "Tới giàn hoa giấy, Ong Rù Rì bay vo ve chờ {name}",
+      "target": "toan2-cd7-b36-ong-ru-ri",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Câu đố khép lại lễ tổng kết: Ong Vàng bay vo ve theo hai đường mũi tên, cuối đường là chiếc huy hiệu học kì sáng lấp lánh. Số ?",
+      "prompt": "Câu đố khép lại lễ tổng kết: Ong Rù Rì bay vo ve theo hai đường mũi tên, cuối đường là chiếc huy hiệu học kì sáng lấp lánh. Số ?",
       "template": "a) 62 → – 6 → {{b1}} → + 27 → {{b2}} → – 40 → {{b3}}\nb) 27 → + 5 → {{b4}} → – 19 → {{b5}} → + 30 → {{b6}}",
       "blanks": [
         {
@@ -1022,11 +1027,11 @@
       "feedback": {
         "right": [
           "Vo ve… hai đường bay gặp nhau ở số 43, huy hiệu bừng sáng!",
-          "Ong Vàng múa một vòng hình số tám để mừng {name}.",
+          "Ong Rù Rì múa một vòng hình số tám để mừng {name}.",
           "Sáu ô mũi tên đều đúng, không một cú bay chệch."
         ],
         "wrong": [
-          "Ong Vàng bay lạc rồi, kiểm tra lại một ô mũi tên nhé.",
+          "Ong Rù Rì bay lạc rồi, kiểm tra lại một ô mũi tên nhé.",
           "Trừ có nhớ: 32 – 19 cần mượn 1 chục đấy.",
           "Lấy kết quả ô trước để tính tiếp ô sau."
         ]
@@ -1047,14 +1052,14 @@
       "title": "Huy hiệu học kì một",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Thầy Sư Tử Vàng trao cho {name} huy hiệu học kì một, cả bảy khu cùng tung pháo giấy. Lần này thầy không hắt xì nữa, chỉ gầm lên một tiếng thật vui: HOAN HÔ!"
+      "text": "Thầy Quang trao cho {name} huy hiệu học kì một, cả bảy khu cùng tung pháo giấy. Lần này thầy không hắt xì nữa, chỉ hô vang qua micro thật vui: HOAN HÔ!"
     },
     {
       "id": "hen-gap-hoc-ki-hai",
       "title": "Hẹn gặp học kì hai",
       "kind": "unlock",
       "trigger": "auto",
-      "text": "Khi pháo giấy còn bay, Voi Bảo lật sang tờ lịch mới và thì thầm: học kì hai sắp tới, Toán 2 tập hai đang chờ những câu đố lớn hơn!"
+      "text": "Khi pháo giấy còn bay, ông Lộc lật sang tờ lịch mới và thì thầm: học kì hai sắp tới, Toán 2 tập hai đang chờ những câu đố lớn hơn!"
     }
   ],
   "reward": {

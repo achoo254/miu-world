@@ -5,11 +5,11 @@
   "title": "Bài thơ Nai Mơ tặng cô",
   "status": "active",
   "lesson": "tv2-t1-b09",
-  "summary": "Nai Mơ muốn viết bài thơ tặng cô giáo nhưng bí vần. {name} cùng Nai Mơ tìm ý thơ ở vườn nhài, đọc bài “Cô giáo lớp em” trên khung cửa sổ lá, nói câu ngạc nhiên với Vẹt Xanh và kể chuyện cậu bé Vũ Duệ ham học.",
+  "summary": "Nai Mơ muốn viết bài thơ tặng cô giáo nhưng bí vần. {name} cùng Nai Mơ tìm ý thơ ở vườn nhài, đọc bài “Cô giáo lớp em” trên khung cửa sổ lá, nhờ Mèo Sữa nhặt lại dòng thơ bị gió thổi, nói câu ngạc nhiên với Vẹt Xanh và nghe cô Gấu Mật kể chuyện cậu bé Vũ Duệ ham học.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Nai Mơ (mơ mộng, cái gì cũng muốn làm thơ), Vẹt Xanh ghé hát",
-    "where": "Lớp học có cửa sổ lá, vườn nhài sau lớp và góc kể chuyện",
+    "who": "Nai Mơ (mơ mộng, cái gì cũng muốn làm thơ), Vẹt Xanh ghé hát, Mèo Sữa lớp trưởng nhanh tay, cô giáo Gấu Mật",
+    "where": "Lớp học có cửa sổ lá, khung cửa sổ lá, vườn nhài sau lớp, hiên lớp, cành phượng trước lớp, ghế mây của cô và góc kể chuyện",
     "goal": "Giúp Nai Mơ tìm ý và hoàn thành bài thơ tặng cô giáo",
     "play": "Tìm đồ trong vườn, hát khởi động, đọc thơ, chọn nhiều đáp án, xếp thẻ vào giỏ, chọn một đáp án, xếp dòng thơ, ghép câu ngạc nhiên, xếp thẻ thành câu, xếp tranh, nói và kể, phiếu viết",
     "learn": "Tiếng Việt 2 Bài 9: đọc hiểu và học thuộc bài thơ “Cô giáo lớp em”, câu thể hiện sự ngạc nhiên, câu nói tình cảm với thầy cô, kể chuyện “Cậu bé ham học”, viết chữ hoa D",
@@ -36,9 +36,11 @@
   },
   "places": {
     "nai-mo": "lớp cửa sổ lá",
-    "vet-xanh": "lớp cửa sổ lá",
-    "tv2-t05-khung-cua-so-la": "lớp cửa sổ lá",
     "tim-y-tho-vuon-nhai": "vườn nhài sau lớp",
+    "tv2-t05-khung-cua-so-la": "khung cửa sổ lá",
+    "tv2-t05-b09-meo-sua": "hiên lớp",
+    "vet-xanh": "cành phượng trước lớp",
+    "tv2-t01-b01-co-gau-mat": "ghế mây của cô",
     "tv2-t05-tranh-cau-be-ham-hoc": "góc kể chuyện trong lớp"
   },
   "steps": [
@@ -106,6 +108,7 @@
     {
       "id": "doc-bai-tho-cua-so",
       "title": "Bài thơ trên khung cửa sổ lá",
+      "goTo": "Ngó lên khung cửa sổ lá, bài thơ Cô giáo lớp em hiện ra",
       "kind": "read",
       "target": "tv2-t05-khung-cua-so-la",
       "textRef": "co-giao-lop-em",
@@ -227,6 +230,7 @@
     {
       "id": "ban-nho-ke-ve-co",
       "title": "Những điều về cô",
+      "goTo": "Về lớp cửa sổ lá, Nai Mơ ôm sổ lá phồng như bánh bao",
       "kind": "challenge",
       "mechanic": "classify",
       "target": "nai-mo",
@@ -370,9 +374,10 @@
     {
       "id": "gio-thoi-dong-tho",
       "title": "Gió thổi bay dòng thơ",
+      "goTo": "Gió thổi bốn dòng thơ bay ra hiên lớp, Mèo Sữa nhảy lên chụp hộ",
       "kind": "challenge",
       "mechanic": "sort",
-      "target": "tv2-t05-khung-cua-so-la",
+      "target": "tv2-t05-b09-meo-sua",
       "prompt": "Phù! Một cơn gió tinh nghịch lùa qua cửa sổ lá, thổi tung bốn dòng thơ Nai Mơ vừa chép. Xếp lại khổ thơ thứ hai cho đúng thứ tự nhé.\nHọc thuộc lòng 2 khổ thơ em thích.",
       "items": [
         {
@@ -431,6 +436,7 @@
     {
       "id": "doc-thuoc-long",
       "title": "Đọc thuộc lòng cho Nai Mơ nghe",
+      "goTo": "Quay vào lớp cửa sổ lá, Nai Mơ vểnh tai chờ nghe đọc",
       "kind": "speak",
       "target": "nai-mo",
       "prompt": "Học thuộc lòng 2 khổ thơ em thích.\nNai Mơ nhắm mắt nghe, đọc tới đâu đôi tai cụp xuống vểnh lên tới đó. {name} đọc cho bạn ấy nghe nhé.",
@@ -445,6 +451,7 @@
     {
       "id": "vet-xanh-hat-bat-ngo",
       "title": "Vẹt Xanh hát bất ngờ",
+      "goTo": "Vẹt Xanh hót vang trên cành phượng trước lớp, chạy ra xem nào",
       "kind": "challenge",
       "mechanic": "classify",
       "target": "vet-xanh",
@@ -533,9 +540,10 @@
     {
       "id": "cau-ket-bai-tho",
       "title": "Câu kết bài thơ",
+      "goTo": "Mèo Sữa vẫy {name} ra hiên lớp, tay ôm mấy thẻ chữ lộn xộn",
       "kind": "challenge",
       "mechanic": "sort",
-      "target": "nai-mo",
+      "target": "tv2-t05-b09-meo-sua",
       "prompt": "Nai Mơ muốn kết bài thơ bằng một câu thật ấm áp, nhưng các thẻ chữ lại nằm lộn tùng phèo.\nNói câu thể hiện tình cảm của em đối với thầy cô giáo của mình.\nXếp thẻ thành câu rồi đọc to lên nhé.",
       "items": [
         {
@@ -594,6 +602,7 @@
     {
       "id": "tang-tho-the-nao",
       "title": "Tặng thơ thế nào đây?",
+      "goTo": "Về lớp cửa sổ lá, Nai Mơ ôm bài thơ vừa viết xong",
       "kind": "dialogue",
       "target": "nai-mo",
       "lines": [
@@ -624,9 +633,9 @@
     {
       "id": "nghe-chuyen-vu-due",
       "title": "Chuyện cậu bé ham học",
-      "goTo": "Sang góc kể chuyện trong lớp, nơi treo bốn bức tranh",
+      "goTo": "Ghé ghế mây của cô, cô Gấu Mật đang ôm chồng tranh truyện",
       "kind": "speak",
-      "target": "tv2-t05-tranh-cau-be-ham-hoc",
+      "target": "tv2-t01-b01-co-gau-mat",
       "prompt": "Nai Mơ thì thầm: hôm qua cô kể chuyện một cậu bé ham học, nghe xong tớ thương cậu ấy quá.\nNghe kể chuyện.\nNhờ bố mẹ hoặc thầy cô kể câu chuyện “Cậu bé ham học”, rồi trả lời từng câu hỏi nhé.",
       "hints": [
         "Vì sao cậu bé Vũ Duệ không được đi học?",
@@ -641,6 +650,7 @@
     {
       "id": "xep-tranh-vu-due",
       "title": "Xếp tranh Vũ Duệ",
+      "goTo": "Sang góc kể chuyện trong lớp, treo lại bốn bức tranh bị gió thổi",
       "kind": "challenge",
       "mechanic": "sort",
       "target": "tv2-t05-tranh-cau-be-ham-hoc",
@@ -690,7 +700,7 @@
         "right": [
           "Bốn tranh thẳng hàng! Câu chuyện chạy từ đầu tới cuối, không vấp chỗ nào.",
           "Đúng rồi! Nai Mơ lấy bốn cái gai mềm ghim tranh thật chặt.",
-          "Giỏi quá, {name} nhớ chuyện còn hơn cả Voi Bảo."
+          "Giỏi quá, {name} nhớ chuyện còn kĩ hơn cả sổ lá của Nai Mơ."
         ],
         "wrong": [
           "Vũ Duệ được ngồi học là chuyện cuối cùng, để tranh ấy về sau nhé.",
@@ -702,8 +712,9 @@
     {
       "id": "ke-cho-nguoi-than",
       "title": "Kể chuyện Vũ Duệ",
+      "goTo": "Chạy về lớp cửa sổ lá, Nai Mơ đang tìm vần cho chữ Duệ",
       "kind": "speak",
-      "target": "tv2-t05-tranh-cau-be-ham-hoc",
+      "target": "nai-mo",
       "prompt": "Chọn kể 1 – 2 đoạn của câu chuyện theo tranh.\nKể cho người thân về cậu bé Vũ Duệ trong câu chuyện Cậu bé ham học.\nNai Mơ hứa sẽ viết thêm một bài thơ về Vũ Duệ, chỉ cần tìm được chữ nào vần với “Duệ”.",
       "hints": [
         "Chọn một hai bức tranh em thích nhất rồi kể theo tranh.",
@@ -766,7 +777,7 @@
       "title": "Trang sổ lá thơm nhài",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Nai Mơ tặng {name} một trang sổ lá chép bài thơ “Cô giáo lớp em”, ép kèm một bông nhài. Vẹt Xanh đòi ký tên bằng một chiếc lông xanh, còn Hải Ly Cần hứa lát nhịp cầu mới cho cả lớp sang thăm cô."
+      "text": "Nai Mơ tặng {name} một trang sổ lá chép bài thơ “Cô giáo lớp em”, ép kèm một bông nhài. Vẹt Xanh đòi ký tên bằng một chiếc lông xanh, còn Mèo Sữa hứa chép bài thơ lên bảng cho cả lớp cùng đọc."
     },
     {
       "id": "mo-bai-10",

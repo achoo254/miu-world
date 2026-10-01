@@ -5,12 +5,12 @@
   "title": "Hơn kém trên đường chạy",
   "status": "active",
   "lesson": "toan2-t1-b04",
-  "summary": "Hai đội nhặt bóng thi xong mà chẳng ai biết đội nào hơn bao nhiêu quả; {name} cùng thầy Khỉ Lanh và đội trưởng Hổ Vằn so chim trên cành, băng giấy, bút, rô-bốt và đua thuyền giấy để học cách tìm hơn, kém nhau bao nhiêu.",
+  "summary": "Hai đội nhặt bóng thi xong mà chẳng ai biết đội nào hơn bao nhiêu quả; {name} cùng trọng tài Hươu Lêu Nghêu, đội trưởng Gấu Sún và các bạn quanh sân so chim trên cành, băng giấy, bút, rô-bốt và đua thuyền giấy để học cách tìm hơn, kém nhau bao nhiêu.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Thầy thể dục Khỉ Lanh, Hổ Vằn",
-    "where": "Sân trường: đường chạy, vạch đích, rãnh nước cuối sân",
-    "goal": "Tìm ra mỗi bên hơn, kém nhau bao nhiêu để thầy Khỉ Lanh công bố kết quả",
+    "who": "Trọng tài Hươu Lêu Nghêu, đội trưởng Gấu Sún, cô y tế Lụa, cô lao công Thắm, Mèo Mây, Cá Vàng Mũm",
+    "where": "Sân trường: đường chạy, lều y tế, góc thùng rác, vạch đích, khán đài, rãnh nước cuối sân",
+    "goal": "Tìm ra mỗi bên hơn, kém nhau bao nhiêu để trọng tài Hươu Lêu Nghêu công bố kết quả",
     "play": "Tìm bóng lăn, điền bài giải, đố tuổi, chọn bút ngắn nhất, điền số đo, đua thuyền giấy",
     "learn": "Toán 2 Bài 4: hơn, kém nhau bao nhiêu (lấy số lớn trừ số bé)",
     "reward": "70 XP, 12 xu, Hơn kém +2, Bài toán có lời văn +1",
@@ -28,40 +28,43 @@
   },
   "texts": {},
   "places": {
-    "khi-lanh": "đường chạy",
+    "toan2-cd1-b04-huou-tit": "đường chạy",
     "tim-bong-lan": "đường chạy",
-    "ho-van": "vạch đích",
-    "dua-thuyen": "rãnh nước cuối sân"
+    "toan2-cd1-b04-co-lua": "lều y tế",
+    "toan2-cd1-b01-co-tham": "góc thùng rác",
+    "toan2-cd1-b04-gau-sun": "vạch đích",
+    "toan2-cd1-b04-meo-may": "khán đài",
+    "toan2-cd1-b04-ca-vang-mum": "rãnh nước cuối sân"
   },
   "steps": [
     {
       "id": "ket-qua-chua-ro",
       "title": "Kết quả chưa rõ",
-      "goTo": "Ra đường chạy, thầy Khỉ Lanh đang thổi còi toe toe",
+      "goTo": "Ra đường chạy, trọng tài Hươu Lêu Nghêu đang thổi còi toe toe",
       "kind": "dialogue",
-      "target": "khi-lanh",
+      "target": "toan2-cd1-b04-huou-tit",
       "lines": [
         {
-          "speaker": "Khỉ Lanh",
-          "text": "Toe toe! Đội Vằn nhặt được 6 quả bóng, đội Khỉ nhặt được 4 quả. Nhưng ai hơn ai bao nhiêu quả thì… thầy quên học bài này mất rồi!"
+          "speaker": "Hươu Lêu Nghêu",
+          "text": "Toe toe! Đội Gấu nhặt được 6 quả bóng, đội Mèo nhặt được 4 quả. Nhưng ai hơn ai bao nhiêu quả thì… tớ cao thế này mà vẫn nghĩ không ra!"
         },
         {
-          "speaker": "Hổ Vằn",
-          "text": "GỪỪ! Đội tớ thắng chắc rồi! Mà… ba quả bóng lăn vào bụi rậm kìa, tớ hơi ngại vào đó lấy."
+          "speaker": "Gấu Sún",
+          "text": "Đội tớ thắng chắc rồi! Mà… ba quả bóng lăn vào bụi rậm kìa, tớ hơi ngại chui vào đó."
         },
         {
-          "speaker": "Khỉ Lanh",
-          "text": "Hổ mà sợ bụi rậm à? Thôi, {name} đi tìm bóng giúp hai thầy trò nhé."
+          "speaker": "Hươu Lêu Nghêu",
+          "text": "Gấu mà sợ bụi rậm à? Cổ tớ thì dài quá, chui không lọt. {name} đi tìm bóng giúp bọn tớ nhé."
         }
       ],
       "choices": [
         {
           "text": "Tớ đi nhặt bóng ngay!",
-          "reply": "Hổ Vằn thở phào: Phù, cảm ơn cậu, tớ canh vạch đích cho."
+          "reply": "Gấu Sún thở phào: Phù, cảm ơn cậu, tớ ra canh vạch đích đây."
         },
         {
-          "text": "Hổ Vằn sợ bụi rậm thật à?",
-          "reply": "Hổ Vằn đỏ mặt: Đâu có! Tớ chỉ… sợ làm bẩn bộ lông vằn thôi."
+          "text": "Gấu Sún sợ bụi rậm thật à?",
+          "reply": "Gấu Sún đỏ mặt: Đâu có! Tớ chỉ… sợ gai móc rách áo thôi."
         }
       ]
     },
@@ -80,35 +83,35 @@
       "id": "hon-bao-nhieu-qua",
       "title": "Hơn bao nhiêu quả?",
       "kind": "dialogue",
-      "target": "khi-lanh",
+      "target": "toan2-cd1-b04-huou-tit",
       "lines": [
         {
-          "speaker": "Khỉ Lanh",
-          "text": "Đủ bóng rồi! Xếp 6 quả của đội Vằn thành một hàng, 4 quả của đội Khỉ thành hàng dưới, mỗi quả một cặp."
+          "speaker": "Hươu Lêu Nghêu",
+          "text": "Đủ bóng rồi! Xếp 6 quả của đội Gấu thành một hàng, 4 quả của đội Mèo thành hàng dưới, mỗi quả một cặp."
         },
         {
-          "speaker": "Khỉ Lanh",
-          "text": "Hàng trên thừa ra 2 quả không có cặp. Vậy 6 – 4 = 2: đội Vằn hơn đội Khỉ 2 quả, đội Khỉ kém đội Vằn 2 quả."
+          "speaker": "Hươu Lêu Nghêu",
+          "text": "Hàng trên thừa ra 2 quả không có cặp. Vậy 6 – 4 = 2: đội Gấu hơn đội Mèo 2 quả, đội Mèo kém đội Gấu 2 quả."
         },
         {
-          "speaker": "Hổ Vằn",
-          "text": "Hơn 2 quả! GỪ… à không, yeah! Muốn biết hơn bao nhiêu thì lấy số lớn trừ số bé, tớ nhớ rồi."
+          "speaker": "Gấu Sún",
+          "text": "Hơn 2 quả! Hé hé, cười lộ cả răng sún! Muốn biết hơn bao nhiêu thì lấy số lớn trừ số bé, tớ nhớ rồi."
         }
       ],
       "choices": [
         {
           "text": "Lấy số lớn trừ số bé!",
-          "reply": "Khỉ Lanh nhảy tót lên cây: Chuẩn! Giờ ta thử với bầy chim nào."
+          "reply": "Hươu Lêu Nghêu vươn cổ ngó lên cây: Chuẩn! Giờ ta thử với bầy chim nào."
         }
       ]
     },
     {
       "id": "chim-tren-canh",
       "title": "Chim trên hai cành",
-      "target": "khi-lanh",
+      "target": "toan2-cd1-b04-huou-tit",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Thầy Khỉ Lanh vừa đu lên cây, chim hai cành nhao nhao: cành trên có 6 con, cành dưới có 4 con.",
+      "prompt": "Hươu Lêu Nghêu vừa ngó cổ lên cây, chim hai cành nhao nhao: cành trên có 6 con, cành dưới có 4 con.",
       "template": "Số chim cành trên hơn số chim cành dưới mấy con?\nBài giải\nSố chim cành trên hơn số chim cành dưới là:\n{{b1}} – {{b2}} = {{b3}} (con)\nĐáp số: {{b4}} con chim.",
       "blanks": [
         {
@@ -198,7 +201,7 @@
       "feedback": {
         "right": [
           "Bài giải đẹp như vở mẫu, bầy chim hót líu lo khen cậu!",
-          "Đúng 2 con, thầy Khỉ treo ngược cành vỗ tay.",
+          "Đúng 2 con, Hươu Lêu Nghêu gật gù cái cổ dài ngoẵng.",
           "Phép tính, đơn vị, đáp số đủ cả, không chê vào đâu được."
         ],
         "wrong": [
@@ -219,10 +222,11 @@
     {
       "id": "hoa-chua-to-mau",
       "title": "Bông hoa chưa tô màu",
-      "target": "khi-lanh",
+      "goTo": "Ghé lều y tế cạnh đường chạy, cô y tế Lụa đang kể chuyện bạn Việt",
+      "target": "toan2-cd1-b04-co-lua",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Hổ Vằn mượn hộp màu vẽ hoa lên vạch xuất phát, rồi kể cho cả lớp nghe chuyện của bạn Việt.",
+      "prompt": "Cô Lụa mượn hộp màu vẽ hoa lên vạch xuất phát, rồi kể cho cả lớp nghe chuyện của bạn Việt.",
       "template": "Việt đã tô màu 6 bông hoa, còn 4 bông hoa chưa tô màu. Hỏi số bông hoa chưa tô màu kém số bông hoa đã tô màu mấy bông?\nBài giải\nSố bông hoa chưa tô màu kém số bông hoa đã tô màu là:\n{{b1}} – {{b2}} = {{b3}} (bông)\nĐáp số: {{b4}} bông hoa.",
       "blanks": [
         {
@@ -312,7 +316,7 @@
       "feedback": {
         "right": [
           "Kém 2 bông, cậu không bị chữ \"kém\" đánh lừa!",
-          "Hổ Vằn tô nốt hai bông cuối cho vườn hoa thêm rực.",
+          "Cô Lụa tô nốt hai bông cuối cho vườn hoa thêm rực.",
           "Lời giải gọn gàng, đáp số rõ ràng, tuyệt vời."
         ],
         "wrong": [
@@ -333,9 +337,9 @@
     {
       "id": "tuoi-bo-cua-mai",
       "title": "Bố hơn Mai mấy tuổi?",
-      "target": "khi-lanh",
+      "target": "toan2-cd1-b04-co-lua",
       "kind": "riddle",
-      "question": "Thầy Khỉ Lanh nháy mắt: thầy không khai tuổi đâu, nhưng nhà bạn Mai thì có. Mai 7 tuổi, bố 38 tuổi. Hỏi bố hơn Mai bao nhiêu tuổi?",
+      "question": "Cô Lụa nháy mắt: cô không khai tuổi đâu, nhưng nhà bạn Mai thì có. Mai 7 tuổi, bố 38 tuổi. Hỏi bố hơn Mai bao nhiêu tuổi?",
       "skill": "hon-kem",
       "curriculumRef": [
         "toan2-t1-b04-hoat-dong-3"
@@ -354,7 +358,7 @@
       "feedback": {
         "right": [
           "Bố hơn Mai 31 tuổi, chính xác tới từng năm!",
-          "Thầy Khỉ gãi đầu: thầy còn trẻ hơn bố bạn Mai đấy nhé.",
+          "Cô Lụa che miệng cười: cô còn trẻ hơn bố bạn Mai đấy nhé.",
           "Trừ số có hai chữ số cho số một chữ số ngon ơ."
         ],
         "wrong": [
@@ -370,7 +374,8 @@
     {
       "id": "thung-rac-hai-mau",
       "title": "Hai loại thùng rác",
-      "target": "khi-lanh",
+      "goTo": "Ra góc thùng rác, cô lao công Thắm đang xếp hai dãy thùng xanh",
+      "target": "toan2-cd1-b01-co-tham",
       "kind": "riddle",
       "question": "Cạnh đường chạy có thùng rác tái chế màu xanh lá và thùng rác khác màu xanh dương. Một trường học có 5 thùng đựng rác tái chế và 10 thùng đựng rác khác. Hỏi số thùng đựng rác khác hơn số thùng đựng rác tái chế mấy thùng?",
       "skill": "bai-toan-loi-van",
@@ -392,7 +397,7 @@
         "right": [
           "Hơn 5 thùng, cậu tính nhanh hơn cả xe rác chạy!",
           "Phân loại rác giỏi, tính hơn kém càng giỏi.",
-          "Hổ Vằn nhặt vỏ chai bỏ đúng thùng xanh lá để mừng cậu."
+          "Cô Thắm nhặt vỏ chai bỏ đúng thùng xanh lá để mừng cậu."
         ],
         "wrong": [
           "Số thùng rác khác là 10, số thùng tái chế là 5.",
@@ -407,34 +412,34 @@
     {
       "id": "bang-giay-vach-dich",
       "title": "Băng giấy ở vạch đích",
-      "goTo": "Chạy tới vạch đích, Hổ Vằn đang cầm ba băng giấy",
+      "goTo": "Chạy tới vạch đích, Gấu Sún đang cầm ba băng giấy",
       "kind": "dialogue",
-      "target": "ho-van",
+      "target": "toan2-cd1-b04-gau-sun",
       "lines": [
         {
-          "speaker": "Hổ Vằn",
-          "text": "Thầy Khỉ bảo tớ dán băng giấy làm vạch đích. Băng đỏ dài 7 cm, băng vàng 4 cm, băng xanh 6 cm. Băng nào dài hơn băng nào bao nhiêu nhỉ?"
+          "speaker": "Gấu Sún",
+          "text": "Trọng tài Hươu Lêu Nghêu bảo tớ dán băng giấy làm vạch đích. Băng đỏ dài 7 cm, băng vàng 4 cm, băng xanh 6 cm. Băng nào dài hơn băng nào bao nhiêu nhỉ?"
         },
         {
-          "speaker": "Khỉ Lanh",
-          "text": "Hổ Vằn mà cũng biết hỏi kìa! {name} chọn cách so đi."
+          "speaker": "Gấu Sún",
+          "text": "Tớ mà so một mình là toàn nhầm. {name} chọn cách so giúp tớ đi."
         }
       ],
       "choices": [
         {
           "text": "Đặt các băng giấy sát nhau rồi so",
-          "reply": "Hổ Vằn: Phần thò ra chính là phần dài hơn, hay quá!"
+          "reply": "Gấu Sún: Phần thò ra chính là phần dài hơn, hay quá!"
         },
         {
           "text": "Đọc số xăng-ti-mét rồi trừ",
-          "reply": "Hổ Vằn: Nhanh gọn, tớ thích kiểu này!"
+          "reply": "Gấu Sún: Nhanh gọn, tớ thích kiểu này!"
         }
       ]
     },
     {
       "id": "bang-giay-ba-mau",
       "title": "So ba băng giấy",
-      "target": "ho-van",
+      "target": "toan2-cd1-b04-gau-sun",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "prompt": "Băng đỏ dài 7 cm, băng vàng dài 4 cm, băng xanh dài 6 cm. Số ?",
@@ -528,7 +533,7 @@
       "feedback": {
         "right": [
           "Vạch đích dán xong, ba băng giấy so đâu ra đấy!",
-          "Hổ Vằn gầm khẽ: gừ… đúng quá đi mất!",
+          "Gấu Sún cười toe lộ cái răng sún: đúng quá đi mất!",
           "Ngắn hơn hay dài hơn, cậu đều trừ đúng chiều."
         ],
         "wrong": [
@@ -549,10 +554,11 @@
     {
       "id": "but-ngan-nhat",
       "title": "Cây bút ngắn nhất",
-      "target": "ho-van",
+      "goTo": "Lên khán đài, Mèo Mây đang lúng túng nhặt ba cây bút rơi",
+      "target": "toan2-cd1-b04-meo-may",
       "kind": "challenge",
       "mechanic": "multi-select",
-      "prompt": "Hổ Vằn đánh rơi ba cây bút ở vạch đích: bút chì dài 25 cm, bút mực dài 20 cm, bút sáp dài 10 cm. a) Bút nào ngắn nhất?",
+      "prompt": "Mèo Mây đánh rơi ba cây bút trên khán đài: bút chì dài 25 cm, bút mực dài 20 cm, bút sáp dài 10 cm. a) Bút nào ngắn nhất?",
       "choices": [
         {
           "id": "but-chi",
@@ -585,7 +591,7 @@
       "feedback": {
         "right": [
           "Bút sáp bé tí mà được cậu tìm ra ngay!",
-          "Ngắn nhất là bút sáp, Hổ Vằn cất vào túi áo.",
+          "Ngắn nhất là bút sáp, Mèo Mây cất vào túi áo.",
           "So số đo nhanh thoăn thoắt, giỏi lắm."
         ],
         "wrong": [
@@ -603,7 +609,7 @@
     {
       "id": "but-hon-kem-cm",
       "title": "Bút dài hơn bao nhiêu?",
-      "target": "ho-van",
+      "target": "toan2-cd1-b04-meo-may",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "prompt": "Bút chì 25 cm, bút mực 20 cm, bút sáp 10 cm.",
@@ -663,7 +669,7 @@
       "feedback": {
         "right": [
           "Năm xăng-ti-mét và mười lăm xăng-ti-mét, chuẩn!",
-          "Hộp bút của Hổ Vằn giờ xếp theo độ dài luôn.",
+          "Hộp bút của Mèo Mây giờ xếp theo độ dài luôn.",
           "Tính dài hơn, ngắn hơn đều trúng, quá đỉnh."
         ],
         "wrong": [
@@ -682,7 +688,8 @@
     {
       "id": "ro-bot-do-chieu-cao",
       "title": "Ba bạn rô-bốt đo chiều cao",
-      "target": "ho-van",
+      "goTo": "Quay về vạch đích, ba bạn rô-bốt vừa chạy tới chỗ Gấu Sún",
+      "target": "toan2-cd1-b04-gau-sun",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "prompt": "Ba bạn rô-bốt chạy tới vạch đích: rô-bốt A cao 56 cm, rô-bốt B cao 54 cm, rô-bốt C cao 59 cm. Ba bạn rô-bốt rủ nhau đo chiều cao.",
@@ -780,11 +787,11 @@
     {
       "id": "dua-thuyen-giay",
       "title": "Đua thuyền giấy",
-      "goTo": "Ra rãnh nước cuối sân, thầy Khỉ Lanh tổ chức đua thuyền giấy",
-      "target": "dua-thuyen",
+      "goTo": "Ra rãnh nước cuối sân, Cá Vàng Mũm ngoi lên xem đua thuyền giấy",
+      "target": "toan2-cd1-b04-ca-vang-mum",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Mai và Nam gấp được các thuyền giấy như hình dưới đây. Trên bàn Mai có 7 thuyền hồng và Mai đang đặt thêm 1 chiếc; trên bàn Nam có 5 thuyền xanh và Nam cầm thêm 1 chiếc. Thầy Khỉ Lanh hô: ai trả lời đúng trước thì được thả thuyền trước!",
+      "prompt": "Mai và Nam gấp được các thuyền giấy như hình dưới đây. Trên bàn Mai có 7 thuyền hồng và Mai đang đặt thêm 1 chiếc; trên bàn Nam có 5 thuyền xanh và Nam cầm thêm 1 chiếc. Cá Vàng Mũm hô: ai trả lời đúng trước thì được thả thuyền trước!",
       "template": "a) Mai gấp được hơn Nam mấy cái thuyền? {{b1}}\nb) Nam gấp được kém Mai mấy cái thuyền? {{b2}}",
       "blanks": [
         {
@@ -842,7 +849,7 @@
         "right": [
           "Thuyền của cậu rẽ nước về nhất, cả sân reo hò!",
           "Hơn 2 chiếc, kém 2 chiếc, hai câu cùng một phép trừ, thông minh!",
-          "Thầy Khỉ Lanh tung mũ: nhà vô địch hơn kém đây rồi!"
+          "Cá Vàng Mũm quẫy đuôi té nước: nhà vô địch hơn kém đây rồi!"
         ],
         "wrong": [
           "Đừng quên chiếc thuyền đang ở trên tay mỗi bạn.",
@@ -862,7 +869,7 @@
       "title": "Huy chương hơn kém",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Thầy Khỉ Lanh đeo cho {name} chiếc huy chương \"Trọng tài hơn kém\". Hổ Vằn gầm một tiếng thật to… rồi ngượng ngùng xin chụp ảnh chung."
+      "text": "Trọng tài Hươu Lêu Nghêu cúi cổ đeo cho {name} chiếc huy chương \"Trọng tài hơn kém\". Gấu Sún reo một tiếng thật to… rồi ngượng ngùng xin chụp ảnh chung."
     },
     {
       "id": "tui-thu-nham-lop",

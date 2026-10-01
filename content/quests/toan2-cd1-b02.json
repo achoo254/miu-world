@@ -5,11 +5,11 @@
   "title": "Chíp nhảy lò cò trên tia số",
   "status": "active",
   "lesson": "toan2-t1-b02",
-  "summary": "Cáo Lém mượn phấn xóa mất số trên vạch lò cò, Gà Con Chíp cứ nhảy nhầm ô; {name} kẻ lại tia số, tìm số liền trước, liền sau và làm trọng tài cuộc chạy thi của bốn bạn thỏ.",
+  "summary": "Cáo Lém lấy phấn xóa mất số trên vạch lò cò rồi trốn biệt, Gà Con Chíp cứ nhảy nhầm ô; {name} chạy quanh sân cùng Mèo Xoài, Thỏ Bắp, Gấu Bin và chị Hà để kẻ lại tia số, tìm số liền trước, liền sau.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Gà Con Chíp, Cáo Lém",
-    "where": "Sân trường: sân nhảy lò cò, bậc thềm có đoàn tàu đồ chơi, đường chạy",
+    "who": "Gà Con Chíp, Mèo Xoài, Thỏ Bắp, Gấu Bin, chị Hà lớp Năm (Cáo Lém chỉ để lại trò nghịch)",
+    "where": "Sân trường: sân nhảy lò cò, giỏ bóng cạnh sân, gốc phượng, bậc thềm có đoàn tàu đồ chơi, đường chạy",
     "goal": "Kẻ lại tia số để Chíp nhảy lò cò không lạc ô nữa",
     "play": "Tìm phấn, điền tia số, thả bóng vào vạch, chọn câu đúng, chọn số, điền toa tàu, đố số làn chạy",
     "learn": "Toán 2 Bài 2: tia số, số liền trước, số liền sau",
@@ -30,8 +30,10 @@
   "places": {
     "ga-con-chip": "sân nhảy lò cò",
     "tim-phan": "sân nhảy lò cò",
-    "cao-lem": "bậc thềm lớp học",
-    "trong-tai-cao-lem": "đường chạy"
+    "toan2-cd1-b02-meo-xoai": "giỏ bóng cạnh sân",
+    "toan2-cd1-b02-tho-mit": "gốc phượng",
+    "toan2-cd1-b02-gau-bin": "bậc thềm lớp học",
+    "toan2-cd1-b02-chi-ha": "đường chạy"
   },
   "steps": [
     {
@@ -50,8 +52,8 @@
           "text": "Tại mấy con số trên vạch kẻ biến đâu mất. Tớ là gà con chứ có phải thầy bói đâu mà đoán được."
         },
         {
-          "speaker": "Cáo Lém",
-          "text": "Hì hì… phấn của tớ thì tớ mượn lại tí thôi mà. Ai tìm được ba cục phấn tớ giấu thì tớ trả số!"
+          "speaker": "Gà Con Chíp",
+          "text": "Mà Cáo Lém còn ôm ba cục phấn chạy mất, hét vọng lại: ai tìm thấy thì tớ mới trả số!"
         }
       ],
       "choices": [
@@ -61,7 +63,7 @@
         },
         {
           "text": "Cáo Lém nghịch quá đi!",
-          "reply": "Cáo Lém nháy mắt: Nghịch thì mới có trò vui chứ! Phấn ở ngay quanh đây thôi."
+          "reply": "Chíp dậm chân: Nghịch thật! Nhưng tớ thấy Cáo Lém chỉ chạy vòng quanh sân thôi."
         }
       ]
     },
@@ -91,8 +93,8 @@
           "text": "Số đứng ngay trước một số gọi là số liền trước, kém nó 1. Số đứng ngay sau gọi là số liền sau, hơn nó 1."
         },
         {
-          "speaker": "Cáo Lém",
-          "text": "Ví dụ nhé: liền trước của 10 là 9, liền sau của 10 là 11. Dễ ợt như Cáo Lém giấu phấn!"
+          "speaker": "Gà Con Chíp",
+          "text": "Ví dụ nhé: liền trước của 10 là 9, liền sau của 10 là 11. Dễ như tớ mổ hạt thóc!"
         }
       ],
       "choices": [
@@ -328,10 +330,11 @@
     {
       "id": "bong-roi-vach",
       "title": "Bóng lăn về vạch nào?",
-      "target": "ga-con-chip",
+      "goTo": "Ra giỏ bóng cạnh sân, Mèo Xoài đang ôm rổ bóng định tung lên",
+      "target": "toan2-cd1-b02-meo-xoai",
       "kind": "challenge",
       "mechanic": "classify",
-      "prompt": "Cáo Lém tung một rổ bóng lên trời, bóng rơi lộp bộp khắp tia số. Mỗi quả bóng ứng với vạch nào trên tia số?",
+      "prompt": "Mèo Xoài tung một rổ bóng lên trời, bóng rơi lộp bộp khắp tia số. Mỗi quả bóng ứng với vạch nào trên tia số?",
       "groups": [
         {
           "id": "nhom-vach-1",
@@ -402,7 +405,7 @@
       "feedback": {
         "right": [
           "Bóng nào cũng nằm gọn trên vạch của mình, không quả nào lăn lung tung!",
-          "Cáo Lém há mồm: tớ tung loạn thế mà cậu vẫn xếp được à?",
+          "Mèo Xoài há mồm: tớ tung loạn thế mà cậu vẫn xếp được à?",
           "Năm quả bóng, năm vạch, chuẩn không cần chỉnh."
         ],
         "wrong": [
@@ -424,7 +427,7 @@
     {
       "id": "dung-sai-lien-truoc-sau",
       "title": "Câu nào nói đúng?",
-      "target": "ga-con-chip",
+      "target": "toan2-cd1-b02-meo-xoai",
       "kind": "challenge",
       "mechanic": "multi-select",
       "prompt": "Cáo Lém viết sáu câu lên nền sân, có câu thật có câu \"lừa\". Đ, S ? Chọn tất cả các câu đúng (Đ); câu không chọn là sai (S).",
@@ -478,7 +481,7 @@
         "right": [
           "Bắt bài Cáo Lém gọn gàng, câu lừa nào cũng bị lộ!",
           "Cậu tinh mắt hơn cả cú mèo canh đêm đấy.",
-          "Đúng hết! Cáo Lém lí nhí: lần sau tớ lừa khó hơn."
+          "Đúng hết! Mèo Xoài cười: Cáo Lém mà biết chắc tiếc lắm."
         ],
         "wrong": [
           "Có một câu \"lừa\" vẫn đang lọt lưới kìa.",
@@ -498,6 +501,7 @@
     {
       "id": "so-be-hon-5",
       "title": "Ô lò cò bé hơn 5",
+      "goTo": "Quay lại sân nhảy lò cò, Gà Con Chíp đang xoa cái chân mỏi",
       "target": "ga-con-chip",
       "kind": "challenge",
       "mechanic": "multi-select",
@@ -675,10 +679,11 @@
     {
       "id": "ghep-the-so",
       "title": "Ghép ba thẻ số",
-      "target": "ga-con-chip",
+      "goTo": "Ra gốc phượng, Thỏ Bắp vừa nhặt được ba thẻ số Cáo Lém đánh rơi",
+      "target": "toan2-cd1-b02-tho-mit",
       "kind": "challenge",
       "mechanic": "quiz",
-      "prompt": "Cáo Lém chìa ra ba thẻ số 4, 5, 0 và cười tủm tỉm. Chọn câu trả lời đúng. Ghép hai trong ba thẻ số bên được tất cả bao nhiêu số có hai chữ số? A. 6 B. 5 C. 4",
+      "prompt": "Thỏ Bắp chìa ra ba thẻ số 4, 5, 0 và cười tủm tỉm. Chọn câu trả lời đúng. Ghép hai trong ba thẻ số bên được tất cả bao nhiêu số có hai chữ số? A. 6 B. 5 C. 4",
       "choices": [
         {
           "id": "a-6",
@@ -712,7 +717,7 @@
         "right": [
           "Bốn số tròn trịa, mẹo của Cáo Lém hết linh rồi!",
           "Cậu không mắc bẫy số 0 đứng đầu, siêu thật.",
-          "Cáo Lém gãi tai: tớ tưởng cậu sẽ đếm cả 04 chứ."
+          "Thỏ Bắp gãi tai: tớ tưởng cậu sẽ đếm cả 04 chứ."
         ],
         "wrong": [
           "Số 0 đứng đầu thì không tạo thành số có hai chữ số đâu.",
@@ -726,39 +731,39 @@
     },
     {
       "id": "tau-hoa-cua-cao",
-      "title": "Đoàn tàu của Cáo Lém",
-      "goTo": "Sang bậc thềm lớp học, Cáo Lém đang kéo đoàn tàu đồ chơi",
+      "title": "Đoàn tàu của Gấu Bin",
+      "goTo": "Sang bậc thềm lớp học, Gấu Bin đang kéo đoàn tàu đồ chơi",
       "kind": "dialogue",
-      "target": "cao-lem",
+      "target": "toan2-cd1-b02-gau-bin",
       "lines": [
         {
-          "speaker": "Cáo Lém",
+          "speaker": "Gấu Bin",
           "text": "Tu tu xình xịch! Đoàn tàu này có toa 48 đến toa 53, nhưng tớ lỡ… quên mất toa nào nối sau toa nào."
         },
         {
           "speaker": "Gà Con Chíp",
-          "text": "Cậu quên hay cậu lại định lừa bọn tớ đấy?"
+          "text": "Hay lại tại Cáo Lém tháo toa ra trêu cậu đấy?"
         },
         {
-          "speaker": "Cáo Lém",
-          "text": "Lần này thật mà! {name} muốn dò từ đầu tàu, hay nhìn toa bên cạnh mà đoán?"
+          "speaker": "Gấu Bin",
+          "text": "Chắc vậy rồi! {name} muốn dò từ đầu tàu, hay nhìn toa bên cạnh mà đoán?"
         }
       ],
       "choices": [
         {
           "text": "Dò từ đầu tàu, đếm từng toa",
-          "reply": "Cáo Lém: Chắc ăn đấy, cứ mỗi toa thêm 1."
+          "reply": "Gấu Bin: Chắc ăn đấy, cứ mỗi toa thêm 1."
         },
         {
           "text": "Nhìn toa bên cạnh rồi thêm, bớt 1",
-          "reply": "Cáo Lém: Nhanh như tàu tốc hành luôn!"
+          "reply": "Gấu Bin: Nhanh như tàu tốc hành luôn!"
         }
       ]
     },
     {
       "id": "toa-lien-truoc-lien-sau",
       "title": "Toa nào đứng cạnh toa nào?",
-      "target": "cao-lem",
+      "target": "toan2-cd1-b02-gau-bin",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "prompt": "Đoàn tàu có các toa 48, 49, 50, 51, 52, 53. Số ?",
@@ -904,7 +909,7 @@
       "feedback": {
         "right": [
           "Đoàn tàu nối toa ngay ngắn, còi kêu tu tu mừng rỡ!",
-          "Toa nào về toa nấy, Cáo Lém hết đường đổ tại quên.",
+          "Toa nào về toa nấy, Gấu Bin hết lo quên rồi.",
           "Tàu tốc hành {name} chạy chuẩn từng ga!"
         ],
         "wrong": [
@@ -928,10 +933,11 @@
     {
       "id": "bang-lien-truoc-lien-sau",
       "title": "Bảng số hàng xóm",
-      "target": "cao-lem",
+      "goTo": "Chạy ra đường chạy, chị Hà lớp Năm đang dán bảng đố lên cột mốc",
+      "target": "toan2-cd1-b02-chi-ha",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Cáo Lém đố thêm một bảng \"hàng xóm của số\". Số ?",
+      "prompt": "Chị Hà đố thêm một bảng \"hàng xóm của số\". Số ?",
       "template": "Số liền trước | Số đã cho | Số liền sau:\n59 | 60 | 61\n{{b1}} | 53 | {{b2}}\n{{b3}} | 86 | {{b4}}\n{{b5}} | 69 | {{b6}}\n{{b7}} | 72 | {{b8}}",
       "blanks": [
         {
@@ -1093,7 +1099,7 @@
         "right": [
           "Hàng xóm nhà số nào cũng đủ mặt, vui như họp tổ!",
           "Số 69 qua nhà 70 mà cậu không vấp, tuyệt cú mèo.",
-          "Bảng hàng xóm kín chỗ, Cáo Lém vỗ tay bôm bốp."
+          "Bảng hàng xóm kín chỗ, chị Hà vỗ tay bôm bốp."
         ],
         "wrong": [
           "Cột liền trước phải bé hơn số đã cho 1 đấy.",
@@ -1117,8 +1123,8 @@
     {
       "id": "lan-chay-tho-trang",
       "title": "Thỏ trắng ở làn nào?",
-      "goTo": "Chạy ra đường chạy, Cáo Lém làm trọng tài cuộc thi",
-      "target": "trong-tai-cao-lem",
+      "goTo": "Bốn bạn thỏ đã vào vạch, chị Hà trao còi trọng tài cho cậu",
+      "target": "toan2-cd1-b02-chi-ha",
       "kind": "riddle",
       "question": "Bốn bạn thỏ xếp từ làn trên cùng xuống: thỏ đen, thỏ nâu, thỏ trắng, thỏ xám. Thỏ đen, thỏ nâu, thỏ trắng và thỏ xám đang chuẩn bị chạy thi. Các làn chạy được đánh số lần lượt từ bé đến lớn. Thỏ trắng chạy ở làn số nào?",
       "skill": "so-den-100",

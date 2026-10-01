@@ -8,8 +8,8 @@
   "summary": "Sư tử con giận dỗi vì bố Sư Tử Vàng bận cả ngày. Bố bày ngay trò chơi \"ăn cỗ\" trong hang đá ấm, {name} dọn mâm bát, đọc chuyện Trò chơi của bố, tập nói lời lịch sự với khách Heo Ủn và giúp hai bố con làm lành.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Sư Tử Vàng làm bố bận rộn, sư tử con hay dỗi, Heo Ủn ham ăn đến làm khách",
-    "where": "Hang đá ấm, bãi đá trước hang và vách đá khắc chữ",
+    "who": "Sư Tử Vàng làm bố bận rộn, Sư Tử Con Tũn hay dỗi, Cáo Mận chủ trò dọn cỗ, Heo Ủn ham ăn đến làm khách",
+    "where": "Hang đá ấm, bãi đá trước hang, vách đá khắc chữ, mỏm đá cửa hang và mâm cỗ giữa hang",
     "goal": "Giúp sư tử con hết dỗi và chơi trò \"ăn cỗ\" thật lễ phép cùng bố",
     "play": "Tìm đồ, nói, đọc truyện, trắc nghiệm, chọn nhiều đáp án, đóng vai, điền từ, điền vần, xếp nhóm, điền dấu câu, lựa chọn trong hội thoại, phiếu viết",
     "learn": "Tiếng Việt 2 Bài 28: đọc hiểu \"Trò chơi của bố\", lời nói lịch sự, l/n, ao/au, từ chỉ tình cảm gia đình, từ chỉ tính cách, dấu chấm, dấu chấm hỏi, dấu chấm than, đọc đoạn văn về mẹ",
@@ -43,7 +43,9 @@
   "places": {
     "su-tu-vang": "hang đá ấm",
     "tim-mam-bat": "bãi đá trước hang",
-    "tv2-t15-vach-da": "vách đá khắc chữ"
+    "tv2-t15-vach-da": "vách đá khắc chữ",
+    "tv2-t15-b28-su-tu-con-tun": "mỏm đá cửa hang",
+    "tv2-t15-b28-cao-man": "mâm cỗ giữa hang"
   },
   "steps": [
     {
@@ -54,7 +56,7 @@
       "target": "su-tu-vang",
       "lines": [
         {
-          "speaker": "Sư tử con",
+          "speaker": "Sư Tử Con Tũn",
           "text": "Hừm! Bố bận họp, bận đi tuần, bận mở khu trường mới… chẳng ai chơi với con cả!"
         },
         {
@@ -91,9 +93,9 @@
     {
       "id": "khoi-dong",
       "title": "Trò chơi em thích cùng bố mẹ",
-      "goTo": "Bưng mâm bát về hang đá ấm",
+      "goTo": "Bưng mâm bát lên mỏm đá cửa hang, Sư Tử Con Tũn đang ngồi ngóng",
       "kind": "speak",
-      "target": "su-tu-vang",
+      "target": "tv2-t15-b28-su-tu-con-tun",
       "prompt": "Trong lúc bố bày mâm, sư tử con lí nhí hỏi {name}: ở nhà cậu có được chơi với bố mẹ không? Em thích chơi trò chơi gì cùng bố mẹ?",
       "hints": [
         "Em hay chơi trò gì với bố, với mẹ?",
@@ -161,9 +163,10 @@
     {
       "id": "xung-ho",
       "title": "Bố gọi Hường là gì",
+      "goTo": "Chạy ra mỏm đá cửa hang, Sư Tử Con Tũn đang ôm bụng cười",
       "kind": "challenge",
       "mechanic": "quiz",
-      "target": "tv2-t15-vach-da",
+      "target": "tv2-t15-b28-su-tu-con-tun",
       "prompt": "Sư tử con bật cười khúc khích: bố mà lại gọi con là \"bác\" á? Khi chơi, hai bố con xưng hô với nhau như thế nào?",
       "choices": [
         {
@@ -213,6 +216,7 @@
     {
       "id": "me-nho-lai",
       "title": "Bát cơm làm mẹ nhớ",
+      "goTo": "Quay lại vách đá khắc chữ, đọc tiếp đoạn mẹ nhìn Hường đón bát",
       "kind": "read",
       "target": "tv2-t15-vach-da",
       "textRef": "tro-choi-cua-bo",
@@ -265,9 +269,10 @@
     {
       "id": "net-ngoan",
       "title": "Nết ngoan bố dạy",
+      "goTo": "Vào hang đá ấm, Sư Tử Vàng vừa vuốt bờm vừa chờ {name}",
       "kind": "challenge",
       "mechanic": "quiz",
-      "target": "tv2-t15-vach-da",
+      "target": "su-tu-vang",
       "prompt": "Sư Tử Vàng vuốt bờm, nháy mắt với {name}: chơi mà vẫn học được đấy. Khi chơi cùng bố, Hường đã được bố dạy nết ngoan nào?",
       "choices": [
         {
@@ -317,10 +322,10 @@
     {
       "id": "loi-noi-lich-su",
       "title": "Ba câu xin bát miến",
-      "goTo": "Vào hang đá ấm, khách Heo Ủn đã ngồi chờ bên mâm cỗ",
+      "goTo": "Ra mâm cỗ giữa hang, Cáo Mận dẫn khách Heo Ủn vào chỗ ngồi",
       "kind": "challenge",
       "mechanic": "multi-select",
-      "target": "su-tu-vang",
+      "target": "tv2-t15-b28-cao-man",
       "prompt": "Khách quý Heo Ủn tới dự cỗ! Sư tử con tập làm chủ quán, nghe khách gọi món ba kiểu khác nhau. Những câu nói nào dưới đây thể hiện thái độ lịch sự?",
       "choices": [
         {
@@ -374,7 +379,7 @@
       "id": "dong-vai-goi-mon",
       "title": "Đóng vai gọi món phở gà",
       "kind": "speak",
-      "target": "su-tu-vang",
+      "target": "tv2-t15-b28-cao-man",
       "prompt": "Heo Ủn đòi đóng vai thật: tôi là khách, cậu là chủ quán nhé! Cùng bạn đóng vai nói và đáp lời yêu cầu, đề nghị. M: – Bác cho tôi một bát phở gà. – Xin lỗi, ở đây không có phở gà. – Vậy bác cho tôi xin bát miến. – Vâng ạ! Bác chờ một chút.",
       "hints": [
         "Khách nói lời đề nghị lịch sự.",
@@ -388,9 +393,10 @@
     {
       "id": "ten-do-l-n",
       "title": "Bàn là, nón lá và vần ao au",
+      "goTo": "Sư Tử Con Tũn khuân ba món đồ lên mỏm đá cửa hang để khoe",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "target": "su-tu-vang",
+      "target": "tv2-t15-b28-su-tu-con-tun",
       "prompt": "Sư tử con mang ra ba món đồ trong hang và hai câu đố của bố. Chọn a hoặc b. a. Tìm từ ngữ có tiếng bắt đầu bằng l hoặc n gọi tên sự vật trong từng hình. b. Chọn ao hoặc au thay cho ô vuông.\nỞ đây, em làm cả a và b nhé.",
       "template": "Hình 1 (đồ dùng làm phẳng quần áo): {{h1}}\nHình 2 (đồ đội đầu che nắng che mưa): {{h2}}\nHình 3 (giỏ cắm đầy hoa hồng đỏ): {{h3}}\n– Hàng c{{c1}} trước cổng c{{c2}} vút.\n– Cây bưởi s{{s1}} nhà sai trĩu quả.",
       "blanks": [
@@ -516,9 +522,10 @@
     {
       "id": "tu-chi-tinh-cam",
       "title": "Từ chỉ tình cảm gia đình",
+      "goTo": "Theo Sư Tử Vàng tới vách đá khắc chữ, chỗ còn trống để khắc từ",
       "kind": "challenge",
       "mechanic": "multi-select",
-      "target": "su-tu-vang",
+      "target": "tv2-t15-vach-da",
       "prompt": "Sư Tử Vàng muốn khắc lên vách hang những từ nói về tình cảm cả nhà sư tử. Những từ nào dưới đây chỉ tình cảm của người thân trong gia đình? chăm sóc, chăm chỉ, quan tâm, yêu thương, kính trọng, vui chơi",
       "choices": [
         {
@@ -585,9 +592,10 @@
     {
       "id": "tinh-cach-cua-bo",
       "title": "Bố là người thế nào",
+      "goTo": "Về mâm cỗ giữa hang, Heo Ủn vừa nhai vừa ra câu đố",
       "kind": "challenge",
       "mechanic": "classify",
-      "target": "su-tu-vang",
+      "target": "tv2-t15-b28-cao-man",
       "prompt": "Sư tử con được Heo Ủn đố: bố cậu là người thế nào? Cậu ấy liền đọc đoạn văn của một bạn nhỏ viết về bố. Tìm từ ngữ bạn nhỏ nói về tính cách của bố mình trong đoạn văn sau: Khi dạy em học, bố rất kiên nhẫn. Khi chơi cùng em, bố rất vui vẻ và hài hước. Mỗi khi em mắc lỗi, bố nghiêm khắc dạy bảo nhưng cũng dễ tha thứ.\nKéo mỗi thẻ vào đúng giỏ.",
       "groups": [
         {
@@ -678,7 +686,7 @@
       "title": "Từ đường trong cốc cà phê",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "target": "su-tu-vang",
+      "target": "tv2-t15-b28-cao-man",
       "prompt": "Heo Ủn kể một truyện cười, kể xong tự cười trước, mấy dấu câu rơi đâu mất. Chọn dấu chấm, dấu chấm hỏi hoặc dấu chấm than thay cho ô vuông. Đặt câu",
       "template": "Bố: – Nam ơi{{d1}} Con hãy đặt một câu có từ “đường” nhé{{d2}}\nCon: – Bố em đang uống cà phê{{d3}}\nBố: – Thế từ “đường” đâu{{d4}}\nCon: – Dạ, đường có ở trong cốc cà phê rồi ạ.\n(Theo Truyện cười thông minh dí dỏm)",
       "blanks": [
@@ -790,11 +798,12 @@
     {
       "id": "bo-con-lam-lanh",
       "title": "Hai bố con sư tử làm lành",
+      "goTo": "Vào hang đá ấm, hai bố con sư tử đã ngồi sát lại bên nhau",
       "kind": "dialogue",
       "target": "su-tu-vang",
       "lines": [
         {
-          "speaker": "Sư tử con",
+          "speaker": "Sư Tử Con Tũn",
           "text": "Bố ơi… con hết dỗi rồi. Nhưng mai bố lại bận nữa thì sao?"
         },
         {
@@ -824,9 +833,10 @@
     {
       "id": "ke-ve-ai",
       "title": "Đoạn văn kể về ai",
+      "goTo": "Sư Tử Con Tũn trèo lên mỏm đá cửa hang ngóng mẹ đi săn về",
       "kind": "challenge",
       "mechanic": "quiz",
-      "target": "su-tu-vang",
+      "target": "tv2-t15-b28-su-tu-con-tun",
       "prompt": "Sư tử con nhớ mẹ đi săn chưa về, bèn đọc một đoạn văn bạn nhỏ viết về mẹ. Đọc đoạn văn và trả lời câu hỏi. Trong nhà, mẹ là người luôn ở bên tôi. Mỗi khi tôi ốm hay mệt, mẹ thức thâu đêm chăm sóc tôi. Mỗi khi gặp bài học khó, mẹ là người động viên, giúp đỡ tôi. Được ai khen, tôi nghĩ ngay đến mẹ. Tôi biết mẹ sẽ rất vui khi tôi làm được việc tốt. Tôi rất yêu mẹ tôi. a. Trong đoạn văn trên, bạn nhỏ kể về ai?",
       "choices": [
         {
@@ -876,6 +886,7 @@
     {
       "id": "cau-tinh-cam-voi-me",
       "title": "Câu nói tình cảm, câu kể việc mẹ làm",
+      "goTo": "Quay vào hang đá ấm, Sư Tử Vàng còn hai câu đố nữa",
       "kind": "challenge",
       "mechanic": "classify",
       "target": "su-tu-vang",

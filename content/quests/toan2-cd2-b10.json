@@ -5,11 +5,11 @@
   "title": "Con đập đá của Hải Ly Cần",
   "status": "active",
   "lesson": "toan2-t1-b10",
-  "summary": "Hải Ly Cần xây đập nhỏ giữ nước cho ao cá vườn trường, mỗi viên đá khắc một phép tính; {name} tính giúp từng viên, cắm quạt cho lán gỗ rồi đấu trò Bắt vịt với Hải Ly.",
+  "summary": "Hải Ly Cần xây đập nhỏ giữ nước cho ao cá vườn trường, mỗi viên đá khắc một phép tính; {name} tính giúp từng viên, cắm quạt cho lán gỗ, chọn toa tàu với Voi Mít, đếm bạn chơi bóng rổ cùng Hươu Vươn rồi đấu trò Bắt vịt với Hải Ly.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Hải Ly Cần, Cá Bống",
-    "where": "Vườn trường: bờ ao cá, lòng suối cạn, lán gỗ ven ao, bãi cỏ bắt vịt",
+    "who": "Hải Ly Cần, Cá Bống, Voi Mít, Hươu Vươn",
+    "where": "Vườn trường: bờ ao cá, lòng suối cạn, lán gỗ ven ao, đường ray đồ chơi ven luống rau, sân bóng rổ mini ven ao, bãi cỏ bắt vịt",
     "goal": "Xếp xong con đập đá để ao cá không bị cạn nước",
     "play": "Nhặt đá cuội, điền bảng, cắm quạt đúng ổ, chọn toa tàu, đếm khối gỗ, giải toán, đấu trò Bắt vịt",
     "learn": "Toán 2 Bài 10: luyện tập chung phép cộng qua 10, bài toán thêm, bớt",
@@ -31,6 +31,8 @@
     "hai-ly-can": "bờ ao cá",
     "tim-da-cuoi": "lòng suối cạn",
     "hai-ly-lan-go": "lán gỗ ven ao",
+    "toan2-cd2-b10-voi-mit": "đường ray đồ chơi ven luống rau",
+    "toan2-cd2-b10-huou-tit": "sân bóng rổ mini ven ao",
     "hai-ly-bai-co": "bãi cỏ bắt vịt"
   },
   "steps": [
@@ -352,7 +354,8 @@
     {
       "id": "toa-cho-go-lon-nhat",
       "title": "Toa chở gỗ nặng nhất",
-      "target": "hai-ly-lan-go",
+      "goTo": "Chạy ra đường ray đồ chơi ven luống rau, Voi Mít đang dùng vòi đẩy tàu gỗ",
+      "target": "toan2-cd2-b10-voi-mit",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "prompt": "Đoàn tàu đồ chơi chở gỗ của Hải Ly có bốn toa ghi 8 + 6, 7 + 6, 9 + 3, 6 + 9. a) Toa tàu nào dưới đây ghi phép tính có kết quả lớn nhất?",
@@ -399,7 +402,7 @@
         "right": [
           "Toa mười lăm chở được nhiều gỗ nhất, tàu chạy xình xịch!",
           "So bốn toa không nhầm toa nào, {name} giỏi thật.",
-          "Hải Ly chất khúc gỗ to nhất lên toa 6 + 9."
+          "Voi Mít lấy vòi nhấc khúc gỗ to nhất đặt lên toa 6 + 9."
         ],
         "wrong": [
           "Toa đó chưa phải lớn nhất, còn toa khác hơn nữa.",
@@ -416,7 +419,7 @@
     {
       "id": "toa-nhe-hon-15",
       "title": "Toa nhẹ hơn mười lăm",
-      "target": "hai-ly-lan-go",
+      "target": "toan2-cd2-b10-voi-mit",
       "kind": "challenge",
       "mechanic": "multi-select",
       "prompt": "Đoàn tàu thứ hai có bốn toa ghi 6 + 5, 7 + 8, 9 + 4, 8 + 8. b) Những toa tàu nào dưới đây ghi phép tính có kết quả bé hơn 15?",
@@ -457,7 +460,7 @@
         "right": [
           "Hai toa nhẹ tênh được móc vào đầu tàu nhỏ, chuẩn!",
           "Toa 7 + 8 bằng đúng 15, cậu không bị lừa.",
-          "Đoàn tàu thứ hai lăn bánh nhẹ nhàng ra bờ ao."
+          "Voi Mít rống một tiếng, đoàn tàu thứ hai lăn bánh nhẹ tênh."
         ],
         "wrong": [
           "Bằng 15 thì chưa bé hơn 15 đâu nha.",
@@ -475,6 +478,7 @@
     {
       "id": "hai-ly-hoi-cach-xep",
       "title": "Hải Ly hỏi cách xếp",
+      "goTo": "Quay vào lán gỗ ven ao, Hải Ly Cần đang đứng bên ba chồng khối gỗ",
       "kind": "dialogue",
       "target": "hai-ly-lan-go",
       "lines": [
@@ -584,8 +588,8 @@
     {
       "id": "san-bong-ro-ven-ao",
       "title": "Sân bóng rổ ven ao",
-      "goTo": "Ra lại bờ ao cá, nghe tiếng bóng nảy bình bịch",
-      "target": "hai-ly-can",
+      "goTo": "Ra sân bóng rổ mini ven ao, Hươu Vươn đang ngẩng cổ ném bóng bình bịch",
+      "target": "toan2-cd2-b10-huou-tit",
       "kind": "riddle",
       "question": "Bình bịch! Cạnh bờ ao có sân bóng rổ mini. Có 6 bạn đang chơi bóng rổ, sau đó thêm 3 bạn chạy đến cùng chơi. Hỏi lúc đó có tất cả bao nhiêu bạn chơi bóng rổ?",
       "skill": "bai-toan-loi-van",
@@ -607,7 +611,7 @@
         "right": [
           "Chín bạn ném bóng vào rổ, tiếng reo vang cả ao!",
           "Thêm bạn là cộng, {name} nhẩm nhanh như chớp.",
-          "Hải Ly cũng xin vào đội làm bạn thứ mười."
+          "Hươu Vươn chẳng cần nhảy, ngóng cổ thả bóng vào rổ mừng cậu."
         ],
         "wrong": [
           "Có thêm bạn chạy đến thì đông hơn, không ít đi.",
@@ -622,6 +626,7 @@
     {
       "id": "bang-cong-tren-van",
       "title": "Bảng cộng trên tấm ván",
+      "goTo": "Về bờ ao cá, Hải Ly Cần đang khắc số lên tấm ván cửa cống",
       "target": "hai-ly-can",
       "kind": "challenge",
       "mechanic": "fill-blank",

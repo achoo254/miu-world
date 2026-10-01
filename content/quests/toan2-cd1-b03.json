@@ -8,8 +8,8 @@
   "summary": "Gió thổi tung các tấm biển \"Số hạng\", \"Tổng\", \"Số bị trừ\", \"Hiệu\" trên bảng tin; {name} cùng Mèo Mun gọi đúng tên từng thành phần của phép cộng, phép trừ, mặc cho Vẹt Xanh cứ đọc nhầm lung tung.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Mèo Mun, Vẹt Xanh",
-    "where": "Sân trường: bảng tin, sân chơi có đoàn tàu gỗ",
+    "who": "Mèo Mun, Vẹt Xanh, Thỏ Tiêu, cô Duyên, Koala Bơ",
+    "where": "Sân trường: bảng tin, bồn cát, bàn trực nhật, sân chơi có đoàn tàu gỗ, cầu trượt",
     "goal": "Treo lại biển tên đúng chỗ trên bảng tin trước giờ chào cờ",
     "play": "Nhặt biển tên, điền bảng tổng và hiệu, ghép phép tính từ vỏ sò, đếm dây sao, xếp toa tàu, đố hiệu",
     "learn": "Toán 2 Bài 3: số hạng, tổng; số bị trừ, số trừ, hiệu",
@@ -30,7 +30,10 @@
   "places": {
     "meo-mun": "bảng tin",
     "nhat-bien-ten": "bảng tin",
-    "vet-xanh": "sân chơi có đoàn tàu gỗ"
+    "vet-xanh": "sân chơi có đoàn tàu gỗ",
+    "toan2-cd1-b03-tho-tieu": "bồn cát",
+    "toan2-cd1-b03-co-duyen": "bàn trực nhật",
+    "toan2-cd1-b03-koala-bo": "cầu trượt"
   },
   "steps": [
     {
@@ -202,7 +205,8 @@
     {
       "id": "dat-tinh-tong",
       "title": "Đặt tính tìm tổng",
-      "target": "meo-mun",
+      "goTo": "Ra bồn cát, Thỏ Tiêu đang giữ tấm bìa phép cộng của Mèo Mun",
+      "target": "toan2-cd1-b03-tho-tieu",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "prompt": "Mèo Mun kẻ ba phép cộng trên tấm bìa, mẫu là 42 và 35 có tổng 77. Đặt tính rồi tính tổng, biết các số hạng là:",
@@ -279,7 +283,7 @@
       },
       "feedback": {
         "right": [
-          "Đặt tính thẳng cột tăm tắp, Mèo Mun phục sát đất.",
+          "Đặt tính thẳng cột tăm tắp, Thỏ Tiêu phục sát đất.",
           "Ba tổng đều chuẩn, bìa của Mèo Mun kín số rồi.",
           "Hàng đơn vị, hàng chục đứng đúng chỗ, tuyệt!"
         ],
@@ -300,7 +304,7 @@
     {
       "id": "vo-so-sao-bien",
       "title": "Vỏ sò và sao biển",
-      "target": "meo-mun",
+      "target": "toan2-cd1-b03-tho-tieu",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "prompt": "Vẹt Xanh tha về hai vỏ sò xanh ghi 32 và 23, hai vỏ sò vàng ghi 21 và 4 (đều là số hạng), cùng hai sao biển đỏ ghi 36 và 44 (là tổng). Từ các số hạng và tổng, em hãy lập các phép cộng thích hợp.",
@@ -360,7 +364,7 @@
         "right": [
           "Vỏ sò nào gặp đúng sao biển nấy, đẹp như tranh!",
           "Vẹt Xanh cắp sao biển treo lên bảng tin ngay.",
-          "Hai phép cộng ghép khéo quá, Mèo Mun chấm mười điểm."
+          "Hai phép cộng ghép khéo quá, Thỏ Tiêu chấm mười điểm."
         ],
         "wrong": [
           "Cộng thử hai số hạng xem có ra số trên sao biển không.",
@@ -378,6 +382,7 @@
     {
       "id": "so-bi-tru-goi-ten",
       "title": "Ba cái tên của phép trừ",
+      "goTo": "Mang vỏ sò về bảng tin, Mèo Mun đang chờ treo biển phép trừ",
       "kind": "dialogue",
       "target": "meo-mun",
       "lines": [
@@ -550,10 +555,11 @@
     {
       "id": "bang-hieu",
       "title": "Bảng số bị trừ và hiệu",
-      "target": "meo-mun",
+      "goTo": "Sang bàn trực nhật, cô Duyên đang chép bảng phép trừ của Mèo Mun",
+      "target": "toan2-cd1-b03-co-duyen",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Mèo Mun dán thêm bảng phép trừ, ô hiệu còn để trống. Số ?",
+      "prompt": "Cô Duyên dán thêm bảng phép trừ, ô hiệu còn để trống. Số ?",
       "template": "Số bị trừ | 57 | 68 | 90 | 73\nSố trừ | 24 | 45 | 40 | 31\nHiệu | 33 | {{b1}} | {{b2}} | {{b3}}",
       "blanks": [
         {
@@ -628,7 +634,7 @@
       "feedback": {
         "right": [
           "Cột nào cũng ra hiệu đúng, Mèo Mun kêu meo khoái chí.",
-          "Bảng hiệu xong rồi, chẳng ô nào bỏ trống.",
+          "Cột nào cũng ra hiệu đúng, cô Duyên gật đầu khoái chí.",
           "Cậu trừ nhanh như mèo vồ chuột đồ chơi."
         ],
         "wrong": [
@@ -648,7 +654,7 @@
     {
       "id": "dat-tinh-hieu",
       "title": "Đặt tính tìm hiệu",
-      "target": "meo-mun",
+      "target": "toan2-cd1-b03-co-duyen",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "prompt": "Mẫu của Mèo Mun: 68 – 25 = 43.",
@@ -727,7 +733,7 @@
         "right": [
           "Ba phép trừ đặt tính ngay ngắn như hàng ghế chào cờ.",
           "Hai hiệu đầu cùng bằng 33, cậu không bị lừa mắt!",
-          "Mèo Mun chép ngay lời giải của cậu lên bảng tin."
+          "Cô Duyên chép ngay lời giải của cậu vào sổ trực nhật."
         ],
         "wrong": [
           "Số bị trừ viết ở trên, số trừ viết ở dưới nhé.",
@@ -746,6 +752,7 @@
     {
       "id": "ben-xe-do-choi",
       "title": "Bến xe đồ chơi",
+      "goTo": "Về chân bảng tin, bến xe đồ chơi đang vắng tanh",
       "target": "meo-mun",
       "kind": "challenge",
       "mechanic": "fill-blank",
@@ -866,7 +873,7 @@
       "lines": [
         {
           "speaker": "Vẹt Xanh",
-          "text": "Bảng tin xong rồi thì sang đây chơi với tớ! Tớ có dây sao, có hai đoàn tàu và một hộp thẻ số bí mật."
+          "text": "Bảng tin xong rồi thì sang đây chơi với tớ! Tớ có hai đoàn tàu, còn dây sao với hộp thẻ số bí mật thì Koala Bơ giữ ở cầu trượt."
         },
         {
           "speaker": "Mèo Mun",
@@ -1043,7 +1050,8 @@
     {
       "id": "day-ngoi-sao",
       "title": "Dây sao lấp lánh",
-      "target": "vet-xanh",
+      "goTo": "Ra cầu trượt, Koala Bơ đang ôm dây sao Vẹt Xanh giăng dở",
+      "target": "toan2-cd1-b03-koala-bo",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "prompt": "Vẹt Xanh giăng dây sao quanh sân chơi, mỗi chấm tròn màu là một ngôi sao: 🔴🟡🔵🔴🟡🔵🔴🟡🔵🔴🟡🔵🔴🟡🔵🔴🟡🔵🔴🟡🔵🔴🟡🔵🔴🔵🔴🔵🔴",
@@ -1156,7 +1164,7 @@
         "right": [
           "Đếm sao không sót ngôi nào, mắt cậu sáng như sao luôn!",
           "Tổng và hiệu của dây sao đều trúng phóc.",
-          "Vẹt Xanh treo dây sao lên cao: đẹp nhất sân trường!"
+          "Koala Bơ treo dây sao lên cầu trượt: đẹp nhất sân trường!"
         ],
         "wrong": [
           "Đếm lại từng màu một, đừng trộn đỏ với vàng nhé.",
@@ -1177,6 +1185,7 @@
     {
       "id": "doi-cho-toa-tau-a",
       "title": "Đoàn tàu A xếp lại",
+      "goTo": "Quay lại sân chơi có đoàn tàu gỗ, Vẹt Xanh đứng trên toa đầu",
       "target": "vet-xanh",
       "kind": "challenge",
       "mechanic": "sort",
@@ -1275,10 +1284,11 @@
     {
       "id": "lap-phep-tru-the-so",
       "title": "Hộp thẻ số bí mật",
-      "target": "vet-xanh",
+      "goTo": "Chạy ra cầu trượt, Koala Bơ đang ôm khư khư hộp thẻ số bí mật",
+      "target": "toan2-cd1-b03-koala-bo",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Vẹt Xanh mở hộp thẻ bí mật: thẻ số bị trừ 45 và 54, thẻ số trừ 32 và 2, thẻ hiệu 43 và 22. Ai lập đúng trước thì thắng! Từ các số bị trừ, số trừ và hiệu, em hãy lập các phép trừ thích hợp.",
+      "prompt": "Koala Bơ mở hộp thẻ bí mật: thẻ số bị trừ 45 và 54, thẻ số trừ 32 và 2, thẻ hiệu 43 và 22. Ai lập đúng trước thì thắng! Từ các số bị trừ, số trừ và hiệu, em hãy lập các phép trừ thích hợp.",
       "template": "Phép trừ có hiệu 43: {{b1}}\nPhép trừ có hiệu 22: {{b2}}",
       "blanks": [
         {
@@ -1333,7 +1343,7 @@
       },
       "feedback": {
         "right": [
-          "Cậu thắng hộp thẻ bí mật! Vẹt Xanh đành chịu thua.",
+          "Cậu thắng hộp thẻ bí mật! Koala Bơ ôm hộp cười khì.",
           "Hai phép trừ khớp từng thẻ, không thừa thẻ nào.",
           "Mèo Mun mỉm cười: đúng là cao thủ thành phần phép tính."
         ],
@@ -1362,7 +1372,7 @@
       "title": "Tiếng còi ở đường chạy",
       "kind": "unlock",
       "trigger": "auto",
-      "text": "Ngoài đường chạy, thầy Khỉ Lanh thổi còi toe toe: hai đội nhặt bóng vừa thi xong mà chẳng ai biết đội nào hơn bao nhiêu quả!"
+      "text": "Ngoài đường chạy, trọng tài Hươu Lêu Nghêu thổi còi toe toe: hai đội nhặt bóng vừa thi xong mà chẳng ai biết đội nào hơn bao nhiêu quả!"
     }
   ],
   "reward": {

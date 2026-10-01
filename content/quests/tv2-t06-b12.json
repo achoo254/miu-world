@@ -5,11 +5,11 @@
   "title": "Gấu Trúc Tròn và tờ danh sách nhoè mưa",
   "status": "active",
   "lesson": "tv2-t1-b12",
-  "summary": "Mưa rào làm nhoè tờ danh sách câu lạc bộ đọc truyện của Gấu Trúc Tròn, mấy trang giấy còn bị gió cuốn đi. {name} nhặt giấy, đọc bản danh sách của tổ 2 lớp 2C, giải câu đố cùng Vẹt Xanh và giúp thầy thủ thư chép lại danh sách theo thứ tự bảng chữ cái.",
+  "summary": "Mưa rào làm nhoè tờ danh sách câu lạc bộ đọc truyện của Gấu Trúc Tròn, mấy trang giấy còn bị gió cuốn đi. {name} nhặt giấy, đọc bản danh sách của tổ 2 lớp 2C trên bàn đọc sách, giải câu đố cùng Vẹt Xanh, ghé hốc cây rỗng của Thỏ Đậu và giúp thầy thủ thư chép lại danh sách theo thứ tự bảng chữ cái.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Gấu Trúc Tròn (thủ thư chậm mà chắc, nói gì cũng \"từ… từ…\"), Vẹt Xanh lắm lời, Thỏ Tí hay quên",
-    "where": "Gốc cây thư viện của Khu rừng bí mật sau cơn mưa rào, và cành sồi già nơi Vẹt Xanh treo câu đố",
+    "who": "Gấu Trúc Tròn (thủ thư chậm mà chắc, nói gì cũng \"từ… từ…\"), Vẹt Xanh lắm lời, Thỏ Đậu tò mò sống trong hốc cây rỗng",
+    "where": "Gốc cây thư viện của Khu rừng bí mật sau cơn mưa rào, bàn đọc sách dưới tán cây, hốc cây rỗng nhà Thỏ Đậu và cành sồi già nơi Vẹt Xanh treo câu đố",
     "goal": "Chép lại tờ danh sách câu lạc bộ đọc truyện bị mưa làm nhoè, để thứ Bảy cả rừng chia nhóm đọc truyện",
     "play": "Tìm đồ, nói, đọc danh sách, trắc nghiệm, chọn nhiều đáp án, xếp tên theo bảng chữ cái, điền chữ, giải câu đố, xếp thẻ thành câu, phân nhóm, lựa chọn trong hội thoại, phiếu viết",
     "learn": "Tiếng Việt 2 Bài 12: đọc hiểu \"Danh sách học sinh\", thứ tự bảng chữ cái, chính tả g/gh, s/x, dấu hỏi/dấu ngã, từ chỉ sự vật và đặc điểm, câu nêu đặc điểm, đọc và lập danh sách",
@@ -35,9 +35,10 @@
   },
   "places": {
     "gau-truc": "gốc thư viện",
-    "ban-doc-sach": "gốc thư viện",
-    "nhat-giay-uot": "bãi cỏ ướt quanh thư viện",
-    "vet-xanh": "cành sồi già"
+    "ban-doc-sach": "bàn đọc sách",
+    "tv2-t06-b12-tho-dau": "hốc cây rỗng",
+    "vet-xanh": "cành sồi già",
+    "nhat-giay-uot": "bãi cỏ ướt quanh thư viện"
   },
   "steps": [
     {
@@ -106,6 +107,7 @@
     {
       "id": "doc-danh-sach",
       "title": "Đọc bản danh sách của tổ 2",
+      "goTo": "Ra bàn đọc sách dưới tán cây, bản danh sách tổ 2 trải sẵn",
       "kind": "read",
       "target": "ban-doc-sach",
       "textRef": "danh-sach-hoc-sinh",
@@ -211,9 +213,10 @@
     {
       "id": "ban-cung-truyen",
       "title": "Ai đọc cùng truyện với Cúc?",
+      "goTo": "Quay lại gốc thư viện, Gấu Trúc Tròn đang kê mấy gốc cây ngồi",
       "kind": "challenge",
       "mechanic": "multi-select",
-      "target": "ban-doc-sach",
+      "target": "gau-truc",
       "prompt": "Gấu Trúc Tròn muốn xếp các bạn cùng truyện ngồi chung một gốc cây cho… đỡ phải đi lại.\nNhững bạn nào đăng kí đọc cùng truyện với bạn ở vị trí số 6?",
       "choices": [
         {
@@ -274,10 +277,11 @@
     {
       "id": "tac-dung-danh-sach",
       "title": "Danh sách để làm gì nhỉ?",
+      "goTo": "Thỏ Đậu ló đầu ra từ hốc cây rỗng, tò mò hỏi",
       "kind": "challenge",
       "mechanic": "quiz",
-      "target": "ban-doc-sach",
-      "prompt": "Thỏ Tí ló đầu ra từ hốc cây, hỏi tỉnh bơ: \"Viết tên ra giấy làm gì, nhớ trong đầu là được mà?\" Gấu Trúc Tròn suýt đánh rơi kính.\nBản danh sách có tác dụng gì?",
+      "target": "tv2-t06-b12-tho-dau",
+      "prompt": "Thỏ Đậu ló đầu ra từ hốc cây, hỏi tỉnh bơ: \"Viết tên ra giấy làm gì, nhớ trong đầu là được mà?\" Gấu Trúc Tròn suýt đánh rơi kính.\nBản danh sách có tác dụng gì?",
       "choices": [
         {
           "id": "chia-nhom",
@@ -312,7 +316,7 @@
       },
       "feedback": {
         "right": [
-          "Đúng thế! Thỏ Tí gãi tai: thì ra viết ra giấy để khỏi quên, như tớ.",
+          "Đúng thế! Thỏ Đậu gãi tai: thì ra viết ra giấy để khỏi quên, hay ghê.",
           "Chính xác, có danh sách là cô chia nhóm trong nháy mắt.",
           "Gấu Trúc Tròn chậm rãi giơ ngón cái: chuẩn… không… cần… chỉnh."
         ],
@@ -326,6 +330,7 @@
     {
       "id": "xep-ten-the-nao",
       "title": "Tên được xếp theo cách nào?",
+      "goTo": "Chạy ra bàn đọc sách, Vẹt Xanh đang đọc to chữ đầu tên",
       "kind": "challenge",
       "mechanic": "quiz",
       "target": "ban-doc-sach",
@@ -378,6 +383,7 @@
     {
       "id": "chep-lai-danh-sach-rung",
       "title": "Chép lại danh sách của rừng",
+      "goTo": "Về gốc thư viện, Gấu Trúc Tròn đã gọt xong bút chì tre",
       "kind": "challenge",
       "mechanic": "sort",
       "target": "gau-truc",
@@ -433,7 +439,7 @@
         ],
         "wrong": [
           "Ơ, chữ G đứng trước chữ H trong bảng chữ cái đấy {name} ạ.",
-          "Thỏ Tí ngơ ngác: sao tớ lại đứng đầu? Chữ T ở gần cuối bảng cơ mà.",
+          "Thẻ tên Thỏ Tí mà đứng đầu thì lạ quá: chữ T ở gần cuối bảng cơ mà.",
           "Đọc nhẩm bảng chữ cái từ đầu, gặp chữ nào thì đặt tên ấy vào hàng."
         ]
       }
@@ -446,7 +452,7 @@
       "prompt": "Gấu Trúc Tròn bảo: muốn xếp danh sách nhanh thì phải thuộc lòng bảng chữ cái. Tớ thuộc rồi, nhưng đọc… hơi… lâu. {name} đọc giúp tớ nhé!\nHọc thuộc bảng chữ cái tiếng Việt.",
       "hints": [
         "Đọc từ chữ a cho tới chữ y, rõ ràng từng chữ.",
-        "Đọc chậm như Gấu Trúc Tròn một lần, rồi đọc nhanh như Thỏ Tí một lần.",
+        "Đọc chậm như Gấu Trúc Tròn một lần, rồi đọc nhanh như Thỏ Đậu một lần.",
         "Thử đọc thầm rồi đọc to mà không nhìn bảng."
       ],
       "curriculumRef": [
@@ -692,9 +698,10 @@
     {
       "id": "mat-cua-ngoi-nha",
       "title": "Mắt của ngôi nhà",
+      "goTo": "Vẹt Xanh bay sang hốc cây rỗng nhà Thỏ Đậu, ngâm thơ về ngôi nhà",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "target": "vet-xanh",
+      "target": "tv2-t06-b12-tho-dau",
       "prompt": "Vẹt Xanh ngâm một bài thơ về ngôi nhà, nhưng mấy chữ in đậm bị mưa xoá mất dấu thanh.\nChọn a hoặc b.\nb. Chọn dấu hỏi hoặc dấu ngã cho chữ in đậm.\nMắt cua ngôi nhà\nLà nhưng ô cưa\nHai cánh khép mơ\nNhư hai hàng mi\n\nMôi khi người đi\nMắt buồn ngủ miết\nNgười về mắt vui\nThức không biết mệt.\n(Theo Đặng Vương Hưng)",
       "template": "Mắt {{c1}} ngôi nhà\nLà {{c2}} ô {{c3}}\nHai cánh khép {{c4}}\nNhư hai hàng mi\n\n{{c5}} khi người đi\nMắt buồn ngủ miết\nNgười về mắt vui\nThức không biết mệt.",
       "blanks": [
@@ -804,9 +811,10 @@
     {
       "id": "doan-do-vat",
       "title": "Đồ vật nấp trong câu đố",
+      "goTo": "Ra bàn đọc sách, Vẹt Xanh đố tìm ba đồ vật đang nấp",
       "kind": "challenge",
       "mechanic": "classify",
-      "target": "vet-xanh",
+      "target": "ban-doc-sach",
       "prompt": "Vẹt Xanh vẫn chưa hết câu đố: ba đồ vật trên bàn học của Gấu Trúc Tròn trốn vào ba câu thơ rồi!\nGiải câu đố để tìm từ ngữ chỉ sự vật.\nKéo mỗi câu đố về đúng đồ vật.",
       "groups": [
         {
@@ -876,6 +884,7 @@
     {
       "id": "tu-chi-dac-diem",
       "title": "Săn từ chỉ đặc điểm",
+      "goTo": "Lên cành sồi già, Vẹt Xanh mở túi sưu tầm từ",
       "kind": "challenge",
       "mechanic": "multi-select",
       "target": "vet-xanh",
@@ -1015,12 +1024,12 @@
     {
       "id": "ten-tho-ti-nhoe",
       "title": "Cái tên nhoè nhất",
-      "goTo": "Quay về gốc thư viện, Thỏ Tí đang dí mũi vào tờ danh sách",
+      "goTo": "Quay về gốc thư viện, Thỏ Đậu đang dí mũi vào tờ danh sách",
       "kind": "dialogue",
       "target": "gau-truc",
       "lines": [
         {
-          "speaker": "Thỏ Tí",
+          "speaker": "Thỏ Đậu",
           "text": "Ơ kìa, còn một vệt mực to tướng! Đây là tên ai? Hay là… tên tớ? Tớ quên mất tớ đăng kí truyện gì rồi."
         },
         {
@@ -1038,8 +1047,8 @@
       ],
       "choices": [
         {
-          "text": "Mình hỏi lại Thỏ Tí rồi mới ghi vào danh sách.",
-          "reply": "Thỏ Tí nhắm mắt nghĩ thật lâu… À, tớ chọn Ếch xanh đi học! Lần này tớ tự viết tên mình luôn."
+          "text": "Mình hỏi lại Thỏ Đậu rồi mới ghi vào danh sách.",
+          "reply": "Thỏ Đậu nhắm mắt nghĩ thật lâu… À, tớ chọn Ếch xanh đi học! Lần này tớ tự viết tên mình luôn."
         },
         {
           "text": "Mình chép danh sách ra tờ mới, cất vào hốc cây cho khỏi ướt.",
@@ -1106,9 +1115,10 @@
     {
       "id": "chia-nhom-tham-quan",
       "title": "Ai đi đâu tham quan?",
+      "goTo": "Trải tám tấm thẻ tên lên bàn đọc sách rồi chia nhóm",
       "kind": "challenge",
       "mechanic": "classify",
-      "target": "gau-truc",
+      "target": "ban-doc-sach",
       "prompt": "Đọc danh sách dưới đây và trả lời câu hỏi.\nDanh sách học sinh tổ 1 lớp 2A đăng kí đi tham quan\nSố thứ tự | Họ và tên | Địa điểm tham quan\n1 | Nguyễn Hải Anh | Bảo tàng Dân tộc học\n2 | Đỗ Thị Thanh Bình | Lăng Bác\n3 | Nguyễn Văn Cường | Bảo tàng Dân tộc học\n4 | Trần Minh Đức | Bảo tàng Dân tộc học\n5 | Lê Hương Giang | Bảo tàng Dân tộc học\n6 | Nguyễn Thị Thanh Hương | Lăng Bác\n7 | Trịnh Cao Khải | Lăng Bác\n8 | Trần Hải Phong | Lăng Bác\nb. Có mấy bạn đăng kí đi tham quan Lăng Bác?\nc. Có mấy bạn đăng kí đi tham quan Bảo tàng Dân tộc học?\nGấu Trúc Tròn đưa cho {name} tám tấm thẻ tên. Kéo mỗi bạn vào đúng nơi tham quan, rồi đếm mỗi nhóm có mấy bạn.",
       "groups": [
         {
@@ -1198,6 +1208,7 @@
     {
       "id": "tim-doc-ve-thay-co",
       "title": "Kể về một bài viết về thầy cô",
+      "goTo": "Về gốc thư viện, Gấu Trúc Tròn lật cuốn sổ mượn sách",
       "kind": "speak",
       "target": "gau-truc",
       "prompt": "Gấu Trúc Tròn lật cuốn sổ mượn sách: thứ Bảy này câu lạc bộ đọc về thầy cô. {name} góp một bài nhé!\nTìm đọc bài thơ, câu chuyện, bài báo viết về thầy cô.",
@@ -1238,7 +1249,7 @@
       "title": "Tiếng khóc giờ ra chơi",
       "kind": "unlock",
       "trigger": "auto",
-      "text": "Trống ra chơi vừa điểm, sân trường rừng ồn ào như chợ, vậy mà Gà Con Chíp lại ngồi một góc sụt sịt: tớ nhớ nhà, tớ chưa thấy yêu trường chút nào…"
+      "text": "Trống ra chơi vừa điểm, sân trường rừng ồn ào như chợ, vậy mà Gà Con Ri lại ngồi một góc sụt sịt: tớ nhớ nhà, tớ chưa thấy yêu trường chút nào…"
     }
   ],
   "reward": {

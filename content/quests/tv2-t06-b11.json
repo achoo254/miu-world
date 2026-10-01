@@ -5,11 +5,11 @@
   "title": "Đánh thức trống trường",
   "status": "active",
   "lesson": "tv2-t1-b11",
-  "summary": "Cái trống trường bên suối im tiếng suốt mùa hè. {name} cùng Chó Mực tìm lại dùi trống, đọc bài thơ “Cái trống trường em” khắc trên giá, tìm từ nói về trống như nói về người và gõ vang tiếng trống đón năm học mới.",
+  "summary": "Cái trống trường bên suối im tiếng suốt mùa hè. {name} cùng Chó Lu tìm lại dùi trống, đọc bài thơ “Cái trống trường em” khắc trên giá, sang nhịp cầu gỗ cùng Hải Ly Mộc tìm từ nói về trống như nói về người, rồi gõ vang tiếng trống đón năm học mới cho cả Cá Chép Hồng dưới suối nghe.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Chó Mực (trung thành, “Gâu!” vẫy đuôi tít), Hải Ly Cần đóng cầu bên chòi",
-    "where": "Chòi trống bên suối và bờ suối quanh chòi",
+    "who": "Chó Lu (canh chòi trống, “Gâu!” vẫy đuôi tít), Hải Ly Mộc đóng cầu bên chòi, Cá Chép Hồng tò mò dưới suối",
+    "where": "Chòi trống bên suối, hiên chòi, nhịp cầu gỗ, khúc suối trong và bờ suối quanh chòi",
     "goal": "Đánh thức cái trống trường đã im tiếng cả mùa hè",
     "play": "Tìm đồ dọc bờ suối, nói về tiếng trống, đọc thơ, xếp dòng thơ vào giỏ, chọn một đáp án, chọn nhiều đáp án, xếp lời tạm biệt, nói và đáp, điền chữ vào khổ thơ, nói về trường em, phiếu viết",
     "learn": "Tiếng Việt 2 Bài 11: đọc hiểu bài thơ “Cái trống trường em”, từ ngữ nói về vật như nói về người, nói và đáp lời tạm biệt, nói về ngôi trường của em, viết chữ hoa Đ",
@@ -41,32 +41,34 @@
     }
   },
   "places": {
-    "cho-muc": "chòi trống",
+    "tv2-t06-b11-cho-lu": "hiên chòi",
     "tv2-t06-trong-truong": "chòi trống",
+    "tv2-t06-b11-hai-ly-moc": "nhịp cầu gỗ",
+    "tv2-t06-b11-ca-chep-hong": "khúc suối trong",
     "tim-do-cua-trong": "bờ suối quanh chòi"
   },
   "steps": [
     {
       "id": "trong-ngu-ca-he",
       "title": "Cái trống ngủ cả hè",
-      "goTo": "Xuống chòi trống bên suối, Chó Mực đang vẫy đuôi gọi",
+      "goTo": "Xuống chòi trống bên suối, Chó Lu đang vẫy đuôi gọi ở hiên chòi",
       "kind": "dialogue",
-      "target": "cho-muc",
+      "target": "tv2-t06-b11-cho-lu",
       "lines": [
         {
-          "speaker": "Chó Mực",
+          "speaker": "Chó Lu",
           "text": "Gâu! Gâu! {name} tới rồi! Mai khai giảng mà cái trống trường cứ im thin thít."
         },
         {
-          "speaker": "Chó Mực",
+          "speaker": "Chó Lu",
           "text": "Tớ thử gõ bằng đuôi rồi, chỉ nghe “bịch” một cái. Đuôi tớ thì ê ẩm, trống vẫn ngủ khì."
         },
         {
-          "speaker": "Hải Ly Cần",
+          "speaker": "Hải Ly Mộc",
           "text": "Tớ đóng nhịp cầu mới ngay cạnh chòi cả hè, chưa nghe trống kêu lần nào. Chắc dùi trống trôi đâu mất rồi."
         },
         {
-          "speaker": "Chó Mực",
+          "speaker": "Chó Lu",
           "text": "Không có dùi thì gọi trống dậy kiểu gì? Gâu… tớ lo đến cụp cả hai tai."
         }
       ],
@@ -95,10 +97,10 @@
     {
       "id": "trong-bao-dieu-gi",
       "title": "Tiếng trống báo gì?",
-      "goTo": "Mang dùi, khăn và chốt về chòi trống cho Chó Mực",
+      "goTo": "Mang dùi, khăn và chốt ra hiên chòi cho Chó Lu",
       "kind": "speak",
-      "target": "cho-muc",
-      "prompt": "Chó Mực cầm khăn lau bụi cho trống, vừa lau vừa hắt xì: “Hắt xì! Bụi của cả một mùa hè đấy!”\nTiếng trống trường báo cho em biết điều gì?",
+      "target": "tv2-t06-b11-cho-lu",
+      "prompt": "Chó Lu cầm khăn lau bụi cho trống, vừa lau vừa hắt xì: “Hắt xì! Bụi của cả một mùa hè đấy!”\nTiếng trống trường báo cho em biết điều gì?",
       "hints": [
         "Sáng sớm nghe “tùng… tùng…”, em biết đã tới giờ gì?",
         "Giữa buổi, trống giục giã thì các bạn ùa ra đâu?"
@@ -128,11 +130,12 @@
     {
       "id": "bai-tho-tren-gia-trong",
       "title": "Bài thơ khắc trên giá trống",
+      "goTo": "Vào chòi trống, bài thơ khắc ngay trên giá trống",
       "kind": "read",
       "target": "tv2-t06-trong-truong",
       "textRef": "cai-trong-truong-em",
       "audio": true,
-      "question": "Chó Mực ghé sát mũi vào giá trống, hít hít: bài thơ khắc ở đây này, đọc to lên cho trống nghe với!\nTiếng trống trường trong khổ thơ cuối báo hiệu điều gì?",
+      "question": "Chó Lu ghé sát mũi vào giá trống, hít hít: bài thơ khắc ở đây này, đọc to lên cho trống nghe với!\nTiếng trống trường trong khổ thơ cuối báo hiệu điều gì?",
       "choices": [
         {
           "id": "ra-choi",
@@ -167,7 +170,7 @@
       },
       "feedback": {
         "right": [
-          "Đúng rồi! Chó Mực vẫy đuôi tít mù, quất cả vào giá trống kêu “bộp”.",
+          "Đúng rồi! Chó Lu vẫy đuôi tít mù, quất cả vào giá trống kêu “bộp”.",
           "Chuẩn! Năm học mới tới, trống lại có việc để làm rồi.",
           "Giỏi quá! Gâu một tiếng thật to mừng {name} nào!"
         ],
@@ -184,7 +187,7 @@
       "kind": "challenge",
       "mechanic": "classify",
       "target": "tv2-t06-trong-truong",
-      "prompt": "Chó Mực muốn biết cái trống đã sống thế nào lúc vắng các bạn, và vui ra sao khi các bạn quay lại.\nBạn học sinh kể gì về trống trường trong những ngày hè?\nKéo mỗi dòng thơ vào đúng giỏ.",
+      "prompt": "Chó Lu muốn biết cái trống đã sống thế nào lúc vắng các bạn, và vui ra sao khi các bạn quay lại.\nBạn học sinh kể gì về trống trường trong những ngày hè?\nKéo mỗi dòng thơ vào đúng giỏ.",
       "groups": [
         {
           "id": "ngay-he",
@@ -248,9 +251,9 @@
       },
       "feedback": {
         "right": [
-          "Hai giỏ chuẩn chỉnh! Chó Mực gật gù như ông cụ non.",
+          "Hai giỏ chuẩn chỉnh! Chó Lu gật gù như ông cụ non.",
           "Đúng hết! Hè thì trống nằm im, khai giảng thì trống gọi vang.",
-          "Tuyệt! Chó Mực bảo {name} hiểu trống còn hơn cả tớ."
+          "Tuyệt! Chó Lu bảo {name} hiểu trống còn hơn cả tớ."
         ],
         "wrong": [
           "Dòng có tiếng “Tùng!” là lúc trống đã thức dậy rồi đấy.",
@@ -262,10 +265,11 @@
     {
       "id": "kho-tho-tro-chuyen",
       "title": "Trò chuyện với trống",
+      "goTo": "Ra hiên chòi, Chó Lu cụp tai có chuyện muốn thú thật",
       "kind": "challenge",
       "mechanic": "quiz",
-      "target": "cho-muc",
-      "prompt": "Chó Mực thú thật: tớ vẫn hay rủ trống nói chuyện như bạn thân, mà trống chưa trả lời câu nào. Hoá ra trong thơ cũng có người giống tớ!\nKhổ thơ nào cho thấy bạn học sinh trò chuyện với trống trường như với một người bạn?",
+      "target": "tv2-t06-b11-cho-lu",
+      "prompt": "Chó Lu thú thật: tớ vẫn hay rủ trống nói chuyện như bạn thân, mà trống chưa trả lời câu nào. Hoá ra trong thơ cũng có người giống tớ!\nKhổ thơ nào cho thấy bạn học sinh trò chuyện với trống trường như với một người bạn?",
       "choices": [
         {
           "id": "kho-1",
@@ -305,8 +309,8 @@
       "feedback": {
         "right": [
           "Đúng! “Buồn không hả trống” nghe thân như hỏi bạn cùng bàn.",
-          "Chuẩn rồi! Chó Mực vui quá, ôm trống một cái thật chặt.",
-          "Giỏi ghê! Bạn ấy hỏi han trống y như Chó Mực vẫn làm."
+          "Chuẩn rồi! Chó Lu vui quá, chạy vào chòi ôm trống một cái thật chặt.",
+          "Giỏi ghê! Bạn ấy hỏi han trống y như Chó Lu vẫn làm."
         ],
         "wrong": [
           "Tìm khổ thơ có câu hỏi han trống nhé, có dấu chấm hỏi đấy.",
@@ -320,8 +324,8 @@
       "title": "Bạn nhỏ thương trống",
       "kind": "challenge",
       "mechanic": "multi-select",
-      "target": "cho-muc",
-      "prompt": "Em thấy tình cảm của bạn học sinh với trống trường như thế nào?\nChó Mực vẫy đuôi tít mù: chọn hết những ý đúng giúp tớ nhé, đuôi tớ đếm không xuể đâu!",
+      "target": "tv2-t06-b11-cho-lu",
+      "prompt": "Em thấy tình cảm của bạn học sinh với trống trường như thế nào?\nChó Lu vẫy đuôi tít mù: chọn hết những ý đúng giúp tớ nhé, đuôi tớ đếm không xuể đâu!",
       "choices": [
         {
           "id": "yeu-quy",
@@ -368,7 +372,7 @@
       },
       "feedback": {
         "right": [
-          "Đúng cả ba! Chó Mực sung sướng lăn một vòng trên cỏ.",
+          "Đúng cả ba! Chó Lu sung sướng lăn một vòng trên cỏ.",
           "Chuẩn! Thương trống như thương bạn thân vậy đó.",
           "Tuyệt vời, không chọn thừa ý nào! Gâu gâu!"
         ],
@@ -382,10 +386,11 @@
     {
       "id": "ngam-nghi-la-gi",
       "title": "Ngẫm nghĩ là gì?",
+      "goTo": "Qua nhịp cầu gỗ, Hải Ly Mộc đang gặm dở một khúc gỗ",
       "kind": "challenge",
       "mechanic": "quiz",
-      "target": "cho-muc",
-      "prompt": "Chó Mực nghiêng đầu y hệt cái trống trong thơ: “Ngẫm nghĩ là làm gì nhỉ? Tớ chỉ quen gặm xương thôi.”\nĐọc phần Từ ngữ dưới bài thơ rồi chọn nghĩa đúng của “ngẫm nghĩ”.",
+      "target": "tv2-t06-b11-hai-ly-moc",
+      "prompt": "Hải Ly Mộc nghiêng đầu y hệt cái trống trong thơ: “Ngẫm nghĩ là làm gì nhỉ? Tớ chỉ quen gặm gỗ thôi.”\nĐọc phần Từ ngữ dưới bài thơ rồi chọn nghĩa đúng của “ngẫm nghĩ”.",
       "choices": [
         {
           "id": "ngu-say",
@@ -417,9 +422,9 @@
       },
       "feedback": {
         "right": [
-          "Đúng rồi! Chó Mực thử ngẫm nghĩ, mặt nhăn như quả táo khô.",
+          "Đúng rồi! Hải Ly Mộc thử ngẫm nghĩ, mặt nhăn như quả táo khô.",
           "Chuẩn! Nghĩ đi nghĩ lại, chứ không phải gặm đi gặm lại đâu.",
-          "Hay quá! Chó Mực ghi nhớ từ mới, vẫy đuôi hai cái."
+          "Hay quá! Hải Ly Mộc ghi nhớ từ mới, đập đuôi dẹt xuống ván cầu hai cái."
         ],
         "wrong": [
           "Ngủ say thì đâu có nghĩ gì! Xem lại ô Từ ngữ nhé.",
@@ -433,8 +438,8 @@
       "title": "Trống cũng như người",
       "kind": "challenge",
       "mechanic": "multi-select",
-      "target": "cho-muc",
-      "prompt": "Chó Mực khoái chí: người ta cũng nói về tớ như nói về con người đấy, “Chó Mực ngẫm nghĩ” nghe oai ra phết!\nNhững từ ngữ nào dưới đây nói về trống trường như nói về con người?",
+      "target": "tv2-t06-b11-hai-ly-moc",
+      "prompt": "Hải Ly Mộc khoái chí: người ta cũng nói về tớ như nói về con người đấy, “Hải Ly Mộc ngẫm nghĩ” nghe oai ra phết!\nNhững từ ngữ nào dưới đây nói về trống trường như nói về con người?",
       "choices": [
         {
           "id": "tu-0",
@@ -478,7 +483,7 @@
       "feedback": {
         "right": [
           "Đúng ba từ! Trống biết nghĩ, biết buồn, biết vui y như người.",
-          "Chuẩn! Chó Mực vỗ chân lên giá trống: bạn ơi, cậu giống tớ ghê.",
+          "Chuẩn! Hải Ly Mộc gõ đuôi lên ván cầu: trống ơi, cậu giống tớ ghê.",
           "Giỏi quá! Không bị chữ “đi vắng” lừa chút nào."
         ],
         "wrong": [
@@ -491,10 +496,11 @@
     {
       "id": "loi-tam-biet-trong",
       "title": "Lời tạm biệt trống",
+      "goTo": "Về chòi trống, lời chào bị gió thổi rơi quanh giá trống",
       "kind": "challenge",
       "mechanic": "sort",
       "target": "tv2-t06-trong-truong",
-      "prompt": "Chó Mực kể: hôm bắt đầu nghỉ hè, một bạn nhỏ chạy lại ôm trống chào. Tiếc là lời chào bị gió thổi rơi lộn xộn mất rồi.\nNói và đáp: a. Lời tạm biệt của bạn học sinh với trống trường\nXếp lại lời chào cho đúng nhé.",
+      "prompt": "Chó Lu kể: hôm bắt đầu nghỉ hè, một bạn nhỏ chạy lại ôm trống chào. Tiếc là lời chào bị gió thổi rơi lộn xộn mất rồi.\nNói và đáp: a. Lời tạm biệt của bạn học sinh với trống trường\nXếp lại lời chào cho đúng nhé.",
       "items": [
         {
           "id": "hen-gap-lai",
@@ -535,7 +541,7 @@
         "right": [
           "Lời chào tròn trịa! Trống như khẽ rung lên đáp lại.",
           "Đúng rồi! Chào trước, hẹn gặp lại sau, nghe thật lễ phép.",
-          "Hay quá! Chó Mực đọc theo mà mắt rưng rưng."
+          "Hay quá! Chó Lu đọc theo mà mắt rưng rưng."
         ],
         "wrong": [
           "Thẻ viết hoa phải đứng đầu, đó là lời chào.",
@@ -547,9 +553,10 @@
     {
       "id": "noi-va-dap-tam-biet",
       "title": "Nói và đáp lời tạm biệt",
+      "goTo": "Ra hiên chòi, Chó Lu đã ngồi chờ tập nói lời tạm biệt",
       "kind": "speak",
-      "target": "cho-muc",
-      "prompt": "Nói và đáp: a. Lời tạm biệt của bạn học sinh với trống trường\nb. Lời tạm biệt bạn bè khi bắt đầu nghỉ hè\n{name} nói lời tạm biệt, Chó Mực đáp lại (xen vài tiếng “Gâu!” cho tình cảm), rồi hai bạn đổi vai.",
+      "target": "tv2-t06-b11-cho-lu",
+      "prompt": "Nói và đáp: a. Lời tạm biệt của bạn học sinh với trống trường\nb. Lời tạm biệt bạn bè khi bắt đầu nghỉ hè\n{name} nói lời tạm biệt, Chó Lu đáp lại (xen vài tiếng “Gâu!” cho tình cảm), rồi hai bạn đổi vai.",
       "hints": [
         "Lời tạm biệt: Tạm biệt…, hẹn gặp lại…",
         "Người đáp nói lại: Tạm biệt cậu, nghỉ hè vui vẻ nhé!",
@@ -564,18 +571,18 @@
       "id": "danh-thuc-trong-the-nao",
       "title": "Đánh thức trống thế nào?",
       "kind": "dialogue",
-      "target": "cho-muc",
+      "target": "tv2-t06-b11-cho-lu",
       "lines": [
         {
-          "speaker": "Chó Mực",
+          "speaker": "Chó Lu",
           "text": "Đủ dùi, đủ khăn, đủ chốt rồi! Giờ đánh thức trống sao cho nó khỏi giật mình đây?"
         },
         {
-          "speaker": "Hải Ly Cần",
+          "speaker": "Hải Ly Mộc",
           "text": "Gõ nhẹ trước rồi mạnh dần, giống tớ đóng đinh cho nhịp cầu ấy."
         },
         {
-          "speaker": "Chó Mực",
+          "speaker": "Chó Lu",
           "text": "Gâu! {name} quyết đi, tớ giữ giá trống cho thật vững."
         }
       ],
@@ -593,6 +600,7 @@
     {
       "id": "trong-thuc-day",
       "title": "Tùng! Tùng! Trống thức dậy",
+      "goTo": "Vào chòi trống, cầm dùi lên đánh thức trống nào",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "target": "tv2-t06-trong-truong",
@@ -660,8 +668,8 @@
       },
       "feedback": {
         "right": [
-          "TÙNG! TÙNG! Trống thức dậy rồi! Chó Mực nhảy cẫng ba vòng quanh chòi.",
-          "Đúng hết! Tiếng trống vang tới tận nhịp cầu của Hải Ly.",
+          "TÙNG! TÙNG! Trống thức dậy rồi! Chó Lu nhảy cẫng ba vòng quanh chòi.",
+          "Đúng hết! Tiếng trống vang tới tận nhịp cầu của Hải Ly Mộc.",
           "Tuyệt vời! Cả rừng nghe trống gọi, chim chóc bay lên chào."
         ],
         "wrong": [
@@ -674,9 +682,10 @@
     {
       "id": "truong-em-co-gi-vui",
       "title": "Trường em có gì vui?",
+      "goTo": "Ra khúc suối trong, Cá Chép Hồng nhảy vọt lên chào",
       "kind": "speak",
-      "target": "cho-muc",
-      "prompt": "Trống vừa thức dậy, Chó Mực đã vểnh tai hỏi ngay về trường của {name}, đuôi vẫy không ngừng.\nNói những điều em thích về trường của em.",
+      "target": "tv2-t06-b11-ca-chep-hong",
+      "prompt": "Trống vừa thức dậy, Cá Chép Hồng đã ngoi lên hỏi ngay về trường của {name}, đuôi quẫy không ngừng.\nNói những điều em thích về trường của em.",
       "hints": [
         "Trường em tên là gì? Ở đâu?",
         "Điều gì khiến em cảm thấy yêu thích, muốn đến trường hằng ngày?"
@@ -697,9 +706,10 @@
     {
       "id": "uoc-truong-thay-doi",
       "title": "Ước trường mình đổi khác",
+      "goTo": "Quay lên hiên chòi, Chó Lu đang nằm canh cổng chòi",
       "kind": "speak",
-      "target": "cho-muc",
-      "prompt": "Em muốn trường mình có những thay đổi gì?\nNói với người thân những điều em muốn trường mình thay đổi.\nChó Mực thì chỉ ước cổng trường có thêm một bát nước mát và một cái đệm êm để nằm canh.",
+      "target": "tv2-t06-b11-cho-lu",
+      "prompt": "Em muốn trường mình có những thay đổi gì?\nNói với người thân những điều em muốn trường mình thay đổi.\nChó Lu thì chỉ ước cổng trường có thêm một bát nước mát và một cái đệm êm để nằm canh.",
       "hints": [
         "Em muốn trường có thêm cây xanh, góc đọc sách hay sân chơi?",
         "Vì sao em muốn trường thay đổi như thế?",
@@ -727,7 +737,7 @@
       "title": "Chiếc dùi trống tí hon",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Chó Mực tặng {name} một chiếc dùi trống tí hon khắc chữ “Tùng!”, còn Hải Ly Cần mời {name} bước thử đầu tiên lên nhịp cầu gỗ vừa đóng xong bên chòi."
+      "text": "Chó Lu tặng {name} một chiếc dùi trống tí hon khắc chữ “Tùng!”, còn Hải Ly Mộc mời {name} bước thử đầu tiên lên nhịp cầu gỗ vừa đóng xong bên chòi."
     },
     {
       "id": "mo-bai-12",

@@ -5,11 +5,11 @@
   "title": "Vé ghế tổng duyệt văn nghệ",
   "status": "active",
   "lesson": "toan2-t1-b33",
-  "summary": "Tổng duyệt văn nghệ cuối kì, vé ghế nào cũng in một phép tính; {name} cùng thầy Sư Tử Vàng, Gà Con Chíp, Heo Ủn và Lợn Rừng Đốm tính nhẩm, đặt tính và xây tháp số trước giờ mở màn.",
+  "summary": "Tổng duyệt văn nghệ cuối kì, vé ghế nào cũng in một phép tính; {name} cùng thầy Quang, Gà Lóc Cóc, Heo Mũm Mĩm, Gấu Bum, bác Thuận, chú Toàn và bác Hùng tính nhẩm, đặt tính và xây tháp số trước giờ mở màn.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Thầy hiệu trưởng Sư Tử Vàng, Gà Con Chíp, Heo Ủn, Lợn Rừng Đốm",
-    "where": "Hội trường: sân khấu, hàng ghế khán giả, cánh gà, cửa hội trường",
+    "who": "Thầy Quang dẫn chương trình, Gà Lóc Cóc, Heo Mũm Mĩm, Gấu Bum, bác Thuận làm vườn, chú Toàn thợ mộc, bác Hùng bảo vệ",
+    "where": "Hội trường: sân khấu, hàng ghế khán giả, lối đi kết hoa, cánh gà, cửa hội trường, góc dựng bục gỗ, bãi xe trước hội trường",
     "goal": "Xếp chỗ cho cả trường và dựng tháp số để buổi tổng duyệt kịp mở màn",
     "play": "Tìm vé, tính nhẩm, điền dấu, chia bánh, chọn túi gạo, phân loại toa tàu và ô tô, đặt tính, giải toán, xây tháp số",
     "learn": "Toán 2 Bài 33: ôn tập phép cộng, phép trừ trong phạm vi 20, 100",
@@ -28,45 +28,48 @@
   },
   "texts": {},
   "places": {
-    "su-tu-vang": "sân khấu",
+    "toan2-cd7-b33-thay-quang": "sân khấu",
     "tim-xap-ve": "hàng ghế",
-    "ga-con-chip": "hàng ghế",
-    "heo-un": "cánh gà",
-    "lon-rung-dom": "cửa hội trường"
+    "toan2-cd7-b33-ga-loc-coc": "hàng ghế",
+    "toan2-cd7-b33-bac-thuan": "lối đi kết hoa",
+    "toan2-cd7-b33-heo-mum-mim": "cánh gà",
+    "toan2-cd7-b33-gau-bum": "cửa hội trường",
+    "toan2-cd7-b33-chu-toan": "góc dựng bục gỗ",
+    "toan2-cd7-b33-bac-hung": "bãi xe trước hội trường"
   },
   "steps": [
     {
       "id": "ve-ghe-la-phep-tinh",
       "title": "Vé ghế toàn phép tính",
-      "goTo": "Lên sân khấu hội trường, thầy Sư Tử Vàng đang thử micro",
+      "goTo": "Lên sân khấu hội trường, thầy Quang đang thử micro",
       "kind": "dialogue",
-      "target": "su-tu-vang",
+      "target": "toan2-cd7-b33-thay-quang",
       "lines": [
         {
-          "speaker": "Sư Tử Vàng",
-          "text": "A lô, a lô… GÀOOO! Ối, thầy thử micro hơi to, mấy tấm rèm rung rinh cả rồi."
+          "speaker": "Thầy Quang",
+          "text": "A lô, a lô… È È È! Ối, micro rít to quá, mấy tấm rèm rung rinh cả rồi."
         },
         {
-          "speaker": "Sư Tử Vàng",
+          "speaker": "Thầy Quang",
           "text": "Chiều nay cả trường tổng duyệt văn nghệ cuối kì. Thầy in vé ghế bằng phép tính cho vui, ai tính đúng mới biết mình ngồi ghế số mấy."
         },
         {
-          "speaker": "Gà Con Chíp",
-          "text": "Nhưng thầy ơi, cơn gió lúc nãy thổi bay ba xấp vé xuống gầm ghế rồi! Chíp chui vào thì bị kẹt mào."
+          "speaker": "Gà Lóc Cóc",
+          "text": "Nhưng thầy ơi, cơn gió lúc nãy thổi bay ba xấp vé xuống gầm ghế rồi! Lóc Cóc chui vào thì bị kẹt mào."
         },
         {
-          "speaker": "Sư Tử Vàng",
+          "speaker": "Thầy Quang",
           "text": "{name} nhặt vé giúp thầy nhé. Hôm nay là buổi ôn lớn nhất học kì, cộng trừ trong phạm vi 20 rồi tới 100!"
         }
       ],
       "choices": [
         {
           "text": "Cháu nhặt vé ngay ạ!",
-          "reply": "Sư Tử Vàng gầm nhẹ một tiếng \"Tuyệt!\", nghe vẫn to như sấm."
+          "reply": "Thầy Quang giơ ngón cái, micro lại rít lên một tiếng è è."
         },
         {
-          "text": "Chíp có sao không?",
-          "reply": "Chíp rút mào ra kêu \"bụp\": Không sao, chỉ hơi méo một tí thôi!"
+          "text": "Lóc Cóc có sao không?",
+          "reply": "Lóc Cóc rút mào ra kêu \"bụp\": Không sao, chỉ hơi méo một tí thôi!"
         }
       ]
     },
@@ -84,10 +87,11 @@
     {
       "id": "so-ghe-tinh-nham",
       "title": "Số ghế tính nhẩm",
-      "target": "ga-con-chip",
+      "goTo": "Ra hàng ghế, Gà Lóc Cóc đứng soát vé đỏ",
+      "target": "toan2-cd7-b33-ga-loc-coc",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Xấp vé đỏ ghi toàn phép tính trong phạm vi 20. Chíp đứng soát vé, ai đưa vé thì {name} đọc số ghế. Tính nhẩm.",
+      "prompt": "Xấp vé đỏ ghi toàn phép tính trong phạm vi 20. Lóc Cóc đứng soát vé, ai đưa vé thì {name} đọc số ghế. Tính nhẩm.",
       "template": "7 + 7 = {{b1}}   9 + 6 = {{b2}}   8 + 4 = {{b3}}   5 + 7 = {{b4}}   6 + 9 = {{b5}}   4 + 8 = {{b6}}\n14 – 5 = {{b7}}   15 – 6 = {{b8}}   12 – 4 = {{b9}}   11 – 7 = {{b10}}   15 – 9 = {{b11}}   13 – 8 = {{b12}}",
       "blanks": [
         {
@@ -324,7 +328,7 @@
       "feedback": {
         "right": [
           "Mười hai tấm vé, mười hai ghế, khán giả ngồi vào tíu tít!",
-          "Chíp soát vé không kịp vì {name} tính nhanh quá trời.",
+          "Lóc Cóc soát vé không kịp vì {name} tính nhanh quá trời.",
           "Hàng ghế đỏ kín chỗ mà chẳng ai ngồi nhầm ai."
         ],
         "wrong": [
@@ -353,10 +357,10 @@
     {
       "id": "dau-tren-ve",
       "title": "Dấu so sánh trên vé xanh",
-      "target": "ga-con-chip",
+      "target": "toan2-cd7-b33-ga-loc-coc",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Xấp vé xanh in dấu bị nhòe, Chíp nheo mắt mãi không đọc ra. >; <; = ?",
+      "prompt": "Xấp vé xanh in dấu bị nhòe, Lóc Cóc nheo mắt mãi không đọc ra. >; <; = ?",
       "template": "a) 5 + 7 {{b1}} 12\na) 6 + 7 {{b2}} 12\na) 4 + 7 {{b3}} 12\nb) 8 + 3 {{b4}} 3 + 8\nb) 6 + 5 {{b5}} 6 + 6",
       "blanks": [
         {
@@ -467,7 +471,7 @@
       "feedback": {
         "right": [
           "Dấu nào cũng rõ nét, vé xanh sáng bóng như mới in!",
-          "Chíp dụi mắt: hóa ra không phải mắt tớ kém, tại dấu bị nhòe.",
+          "Lóc Cóc dụi mắt: hóa ra không phải mắt tớ kém, tại dấu bị nhòe.",
           "So sánh chuẩn từng vé, không vé nào lạc hàng."
         ],
         "wrong": [
@@ -489,7 +493,8 @@
     {
       "id": "duong-hoa-toi-ghe",
       "title": "Đường hoa dẫn tới ghế",
-      "target": "ga-con-chip",
+      "goTo": "Theo lối đi kết hoa, bác Thuận đang tưới vòng hoa phép tính",
+      "target": "toan2-cd7-b33-bac-thuan",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "prompt": "Lối đi giữa hàng ghế kết hoa thành một vòng phép tính. Bắt đầu ở bông hoa 8. Số ?",
@@ -604,7 +609,7 @@
         "right": [
           "Hai con đường hoa gặp nhau đúng một bông, đẹp như phép màu!",
           "Đi hết vòng hoa không lạc bước nào, giỏi quá.",
-          "Chíp cài một bông lên mào: thưởng cho người tính giỏi!"
+          "Bác Thuận cài một bông lên mũ cho {name}: thưởng người tính giỏi!"
         ],
         "wrong": [
           "Lấy kết quả ô vừa rồi để làm tiếp ô sau nhé.",
@@ -625,9 +630,10 @@
     {
       "id": "may-tinh-buoi-chieu",
       "title": "Máy tính bán buổi chiều",
-      "target": "ga-con-chip",
+      "goTo": "Quay lại hàng ghế, Gà Lóc Cóc chỉ tờ quảng cáo sau lưng ghế",
+      "target": "toan2-cd7-b33-ga-loc-coc",
       "kind": "riddle",
-      "question": "Sau lưng ghế có dán tờ quảng cáo, Chíp đọc to: Một cửa hàng điện máy, buổi sáng bán được 11 máy tính, buổi chiều bán được ít hơn buổi sáng 3 máy tính. Hỏi buổi chiều cửa hàng bán được bao nhiêu máy tính?",
+      "question": "Sau lưng ghế có dán tờ quảng cáo, Lóc Cóc đọc to: Một cửa hàng điện máy, buổi sáng bán được 11 máy tính, buổi chiều bán được ít hơn buổi sáng 3 máy tính. Hỏi buổi chiều cửa hàng bán được bao nhiêu máy tính?",
       "skill": "bai-toan-loi-van",
       "curriculumRef": [
         "toan2-t1-b33-luyen-tap-2-4"
@@ -645,7 +651,7 @@
       },
       "feedback": {
         "right": [
-          "Chíp gật gù như chuyên gia bán hàng: đúng tám chiếc!",
+          "Lóc Cóc gật gù như chuyên gia bán hàng: đúng tám chiếc!",
           "Ít hơn thì trừ, {name} nhớ bài vững ghê.",
           "Tờ quảng cáo đã được giải mã xong xuôi."
         ],
@@ -662,11 +668,11 @@
     {
       "id": "banh-quy-giua-gio",
       "title": "Đĩa bánh quy giờ nghỉ",
-      "goTo": "Vào cánh gà, Heo Ủn đang canh mâm bánh quy",
-      "target": "heo-un",
+      "goTo": "Vào cánh gà, Heo Mũm Mĩm đang canh mâm bánh quy",
+      "target": "toan2-cd7-b33-heo-mum-mim",
       "kind": "challenge",
       "mechanic": "classify",
-      "prompt": "Heo Ủn bày bốn đĩa bánh ghi 5, 7, 11, 13, nhưng bánh quy thì ghi phép tính. \"Xếp xong tớ mới được ăn thử một chiếc!\" Mỗi số 7, 5, 11, 13 là kết quả của những phép tính nào?",
+      "prompt": "Heo Mũm Mĩm bày bốn đĩa bánh ghi 5, 7, 11, 13, nhưng bánh quy thì ghi phép tính. \"Xếp xong tớ mới được ăn thử một chiếc!\" Mỗi số 7, 5, 11, 13 là kết quả của những phép tính nào?",
       "groups": [
         {
           "id": "nhom-so-5",
@@ -738,12 +744,12 @@
       },
       "feedback": {
         "right": [
-          "Bánh về đúng đĩa, Heo Ủn được thưởng một chiếc, nhai rôm rốp!",
+          "Bánh về đúng đĩa, Heo Mũm Mĩm được thưởng một chiếc, nhai rôm rốp!",
           "Bốn đĩa bánh tròn trịa, chẳng chiếc nào lạc đĩa.",
-          "Heo Ủn sụt sịt cảm động: lần đầu tớ thấy bánh xếp ngăn nắp thế."
+          "Heo Mũm Mĩm sụt sịt cảm động: lần đầu tớ thấy bánh xếp ngăn nắp thế."
         ],
         "wrong": [
-          "Có chiếc bánh đang nằm nhầm đĩa, Heo Ủn chưa dám ăn.",
+          "Có chiếc bánh đang nằm nhầm đĩa, Heo Mũm Mĩm chưa dám ăn.",
           "Tính phép trên bánh quy trước rồi mới đặt vào đĩa.",
           "Đĩa số 13 cần hai chiếc bánh đấy, tìm thêm đi."
         ]
@@ -763,10 +769,11 @@
     {
       "id": "sot-buoi-sau-buoi-dien",
       "title": "Bưởi vào sọt",
-      "target": "heo-un",
+      "goTo": "Ra lối đi kết hoa, bác Thuận gánh mười hai quả bưởi tới",
+      "target": "toan2-cd7-b33-bac-thuan",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Heo Ủn hái 12 quả bưởi ghi số 11, 15, 13, 12, 13, 13, 12, 11, 12, 15, 15, 13 để mời khách. Sọt A ghi 8 + 7, sọt B ghi 6 + 5, sọt C ghi 7 + 5, sọt D ghi 9 + 4. Mỗi sọt sẽ đựng những quả bưởi có ghi số là kết quả của phép tính ghi trên sọt đó. Số ?",
+      "prompt": "Bác Thuận hái 12 quả bưởi ghi số 11, 15, 13, 12, 13, 13, 12, 11, 12, 15, 15, 13 để mời khách. Sọt A ghi 8 + 7, sọt B ghi 6 + 5, sọt C ghi 7 + 5, sọt D ghi 9 + 4. Mỗi sọt sẽ đựng những quả bưởi có ghi số là kết quả của phép tính ghi trên sọt đó. Số ?",
       "template": "Sọt | A | B | C | D\nSố quả bưởi | 3 | {{b1}} | {{b2}} | {{b3}}",
       "blanks": [
         {
@@ -840,7 +847,7 @@
       },
       "feedback": {
         "right": [
-          "Bốn sọt bưởi thơm lừng, Heo Ủn hít hà mãi không thôi.",
+          "Bốn sọt bưởi thơm lừng, bác Thuận hít hà mãi không thôi.",
           "Đếm bưởi chuẩn từng quả, khách ăn tha hồ!",
           "Không quả bưởi nào chui nhầm sọt hàng xóm."
         ],
@@ -861,10 +868,11 @@
     {
       "id": "can-gao-nau-che",
       "title": "Cân túi gạo nấu chè",
-      "target": "heo-un",
+      "goTo": "Vào lại cánh gà, Heo Mũm Mĩm khệ nệ bê túi gạo nấu chè",
+      "target": "toan2-cd7-b33-heo-mum-mim",
       "kind": "challenge",
       "mechanic": "multi-select",
-      "prompt": "Heo Ủn đặt túi 3 kg và túi 9 kg lên đĩa bên trái của cân đĩa. Ba túi gạo còn lại nặng ① 5 kg, ② 6 kg, ③ 7 kg. Lấy hai trong ba túi gạo nào đặt lên đĩa bên phải để cân thăng bằng?",
+      "prompt": "Heo Mũm Mĩm đặt túi 3 kg và túi 9 kg lên đĩa bên trái của cân đĩa. Ba túi gạo còn lại nặng ① 5 kg, ② 6 kg, ③ 7 kg. Lấy hai trong ba túi gạo nào đặt lên đĩa bên phải để cân thăng bằng?",
       "choices": [
         {
           "id": "5-kg",
@@ -896,7 +904,7 @@
       },
       "feedback": {
         "right": [
-          "Hai đĩa cân bằng phẳng lì, Heo Ủn reo: đủ gạo nấu chè rồi!",
+          "Hai đĩa cân bằng phẳng lì, Heo Mũm Mĩm reo: đủ gạo nấu chè rồi!",
           "Mười hai bên trái, mười hai bên phải, chuẩn không lệch.",
           "Cậu chọn túi gạo khéo như đầu bếp lão luyện."
         ],
@@ -916,10 +924,10 @@
     {
       "id": "hoc-hat-hoc-vo",
       "title": "Tiết mục hát và võ",
-      "goTo": "Trở lại sân khấu hội trường, thầy Sư Tử Vàng đang điểm danh tiết mục",
-      "target": "su-tu-vang",
+      "goTo": "Trở lại sân khấu hội trường, thầy Quang đang điểm danh tiết mục",
+      "target": "toan2-cd7-b33-thay-quang",
       "kind": "riddle",
-      "question": "Thầy Sư Tử Vàng cầm danh sách, giọng vang như kèn: Lớp 2A có 8 bạn học hát. Số bạn học võ nhiều hơn số bạn học hát là 5 bạn. Hỏi lớp 2A có bao nhiêu bạn học võ?",
+      "question": "Thầy Quang cầm danh sách, giọng vang như kèn: Lớp 2A có 8 bạn học hát. Số bạn học võ nhiều hơn số bạn học hát là 5 bạn. Hỏi lớp 2A có bao nhiêu bạn học võ?",
       "skill": "bai-toan-loi-van",
       "curriculumRef": [
         "toan2-t1-b33-luyen-tap-4-a"
@@ -938,7 +946,7 @@
       "feedback": {
         "right": [
           "Mười ba võ sĩ nhí cùng hô \"Hây-a!\", sân khấu rung rinh.",
-          "Thầy Sư Tử gầm khen một tiếng, rèm lại bay phấp phới.",
+          "Thầy Quang hô khen qua micro, rèm lại bay phấp phới.",
           "Nhiều hơn thì cộng, {name} trả lời gọn như võ sĩ ra đòn."
         ],
         "wrong": [
@@ -954,38 +962,38 @@
     {
       "id": "doan-tau-dao-cu",
       "title": "Đoàn tàu đạo cụ",
-      "goTo": "Ra cửa hội trường, Lợn Rừng Đốm đang đẩy đoàn tàu đạo cụ",
+      "goTo": "Ra cửa hội trường, Gấu Bum đang đẩy đoàn tàu đạo cụ",
       "kind": "dialogue",
-      "target": "lon-rung-dom",
+      "target": "toan2-cd7-b33-gau-bum",
       "lines": [
         {
-          "speaker": "Lợn Rừng Đốm",
-          "text": "Ụt ịt! Tớ làm đoàn tàu đạo cụ năm toa cho tiết mục kết, mà lỡ tay dán phép tính lên hết các toa rồi."
+          "speaker": "Gấu Bum",
+          "text": "Bum bum! Tớ làm đoàn tàu đạo cụ năm toa cho tiết mục kết, mà lỡ tay dán phép tính lên hết các toa rồi."
         },
         {
-          "speaker": "Lợn Rừng Đốm",
+          "speaker": "Gấu Bum",
           "text": "Ngoài sân còn bãi xe của khán giả, ô tô nào cũng ghi phép tính nốt. Tớ vụng quá, tính tới đâu rối tới đó!"
         },
         {
-          "speaker": "Sư Tử Vàng",
+          "speaker": "Thầy Quang",
           "text": "Phép tính trong phạm vi 100 rồi đấy. {name} muốn nhẩm theo chục, hay đặt tính cho chắc ăn?"
         }
       ],
       "choices": [
         {
           "text": "Nhẩm theo chục cho nhanh",
-          "reply": "Lợn Rừng Đốm: 80 – 20 là 8 chục bớt 2 chục, ồ dễ thật!"
+          "reply": "Gấu Bum: 80 – 20 là 8 chục bớt 2 chục, ồ dễ thật!"
         },
         {
           "text": "Đặt tính thẳng hàng cho chắc",
-          "reply": "Lợn Rừng Đốm: Đơn vị thẳng đơn vị, chục thẳng chục, tớ ghi nhớ rồi!"
+          "reply": "Gấu Bum: Đơn vị thẳng đơn vị, chục thẳng chục, tớ ghi nhớ rồi!"
         }
       ]
     },
     {
       "id": "ket-qua-cac-toa",
       "title": "Kết quả trên từng toa",
-      "target": "lon-rung-dom",
+      "target": "toan2-cd7-b33-gau-bum",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "prompt": "Toa A ghi 80 – 20, toa B ghi 50 + 10, toa C ghi 60 + 40, toa D ghi 60 – 30, toa E ghi 70 – 20. a) Số ?",
@@ -1082,7 +1090,7 @@
         "right": [
           "Năm toa sáng đèn, đoàn tàu kêu \"xình xịch\" đầy tự hào!",
           "Cộng trừ số tròn chục nhanh như tàu tốc hành.",
-          "Lợn Rừng Đốm reo: toa C chở tận 100 cơ à!"
+          "Gấu Bum reo: toa C chở tận 100 cơ à!"
         ],
         "wrong": [
           "Đếm theo chục thử xem: 6 chục cộng 4 chục là mấy chục?",
@@ -1102,10 +1110,11 @@
     {
       "id": "xep-toa-theo-ket-qua",
       "title": "Toa nào bé, toa nào lớn",
-      "target": "lon-rung-dom",
+      "goTo": "Sang góc dựng bục gỗ, chú Toàn ôm bó cờ đỏ cờ xanh",
+      "target": "toan2-cd7-b33-chu-toan",
       "kind": "challenge",
       "mechanic": "classify",
-      "prompt": "Lợn Rừng Đốm muốn treo cờ cho đúng toa. b) Những toa nào ghi phép tính có kết quả bé hơn 60? c) Những toa nào ghi phép tính có kết quả lớn hơn 50 và bé hơn 100?",
+      "prompt": "Chú Toàn muốn treo cờ cho đúng toa. b) Những toa nào ghi phép tính có kết quả bé hơn 60? c) Những toa nào ghi phép tính có kết quả lớn hơn 50 và bé hơn 100?",
       "groups": [
         {
           "id": "nhom-be-hon-60",
@@ -1162,7 +1171,7 @@
         "right": [
           "Cờ đỏ, cờ xanh cắm đúng toa, đoàn tàu rực rỡ hẳn lên.",
           "Toa C chở 100 đứng riêng một mình, cậu tinh thật.",
-          "Đốm nhảy cẫng: tàu của tớ chưa bao giờ gọn gàng thế!"
+          "Chú Toàn cười khà: đoàn tàu của Gấu Bum chưa bao giờ gọn thế!"
         ],
         "wrong": [
           "Số 50 có lớn hơn 50 không? Xem lại toa E nhé.",
@@ -1183,10 +1192,11 @@
     {
       "id": "bai-do-o-to",
       "title": "Bãi đỗ xe khán giả",
-      "target": "lon-rung-dom",
+      "goTo": "Chạy ra bãi xe trước hội trường, bác Hùng bảo vệ vẫy cờ điều khiển",
+      "target": "toan2-cd7-b33-bac-hung",
       "kind": "challenge",
       "mechanic": "classify",
-      "prompt": "Xe của phụ huynh tới đông nghịt, Đốm vẫy cờ điều khiển mà quay mòng mòng. Tìm chỗ đỗ cho ô tô.",
+      "prompt": "Xe của phụ huynh tới đông nghịt, bác Hùng vẫy cờ điều khiển mà quay mòng mòng. Tìm chỗ đỗ cho ô tô.",
       "groups": [
         {
           "id": "nhom-cho-do-27",
@@ -1248,7 +1258,7 @@
       "feedback": {
         "right": [
           "Bíp bíp! Bốn chiếc ô tô đỗ thẳng hàng, không xe nào quẹt nhau.",
-          "Đốm thôi quay mòng mòng, bãi xe đã gọn tăm tắp.",
+          "Bác Hùng thôi quay mòng mòng, bãi xe đã gọn tăm tắp.",
           "Cậu điều khiển giao thông còn giỏi hơn chú cảnh sát."
         ],
         "wrong": [
@@ -1269,7 +1279,8 @@
     {
       "id": "dat-tinh-ve-vang",
       "title": "Đặt tính trên vé vàng",
-      "target": "lon-rung-dom",
+      "goTo": "Về hàng ghế, Gà Lóc Cóc giữ xấp vé vàng cho khách mời",
+      "target": "toan2-cd7-b33-ga-loc-coc",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "prompt": "Xấp vé vàng dành cho khách mời, phép tính dài hơn hẳn. Đặt tính rồi tính.",
@@ -1424,7 +1435,8 @@
     {
       "id": "doi-dong-dien",
       "title": "Đội đồng diễn áo đỏ áo vàng",
-      "target": "lon-rung-dom",
+      "goTo": "Ra cửa hội trường, Gấu Bum chỉ đội đồng diễn đang tập",
+      "target": "toan2-cd7-b33-gau-bum",
       "kind": "riddle",
       "question": "Ngoài cửa, đội đồng diễn tập xếp hình, áo đỏ áo vàng rực cả sân. Một đội đồng diễn thể dục thể thao gồm có 56 người mặc áo đỏ và 28 người mặc áo vàng. Hỏi đội đồng diễn đó có tất cả bao nhiêu người?",
       "skill": "bai-toan-loi-van",
@@ -1461,10 +1473,10 @@
     {
       "id": "so-do-mui-ten-tong",
       "title": "Mũi tên và tổng bằng nhau",
-      "target": "lon-rung-dom",
+      "target": "toan2-cd7-b33-gau-bum",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Trên cánh cửa hội trường, Đốm vẽ hai đường mũi tên và hai hộp quà. a) Số ?",
+      "prompt": "Trên cánh cửa hội trường, Gấu Bum vẽ hai đường mũi tên và hai hộp quà. a) Số ?",
       "template": "18 → + 17 → {{b1}} → – 9 → {{b2}}\n24 → – 8 → {{b3}} → + 15 → {{b4}}\nb) Tính tổng các số hạng bằng nhau.\n24 + 24 + 24 = {{b5}}\n2 + 2 + 2 + 2 + 2 = {{b6}}",
       "blanks": [
         {
@@ -1594,7 +1606,7 @@
         "right": [
           "Hai đường mũi tên tới đích, hai hộp quà bật nắp \"póc\"!",
           "Cộng dần từng số hạng mà không sót cái nào, chuẩn!",
-          "Đốm vỗ đùi đen đét: cửa hội trường thành bảng toán rồi!"
+          "Gấu Bum vỗ đùi đen đét: cửa hội trường thành bảng toán rồi!"
         ],
         "wrong": [
           "Ô sau dùng kết quả của ô trước đấy.",
@@ -1616,10 +1628,11 @@
     {
       "id": "bang-so-tren-cua",
       "title": "Bảng số dán ở cửa",
-      "target": "lon-rung-dom",
+      "goTo": "Ghé góc dựng bục gỗ, chú Toàn đang dán tấm bảng số",
+      "target": "toan2-cd7-b33-chu-toan",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Cạnh cửa có tấm bảng số từ 11 đến 45, Đốm dán để khán giả xếp hàng. Cho bảng sau:",
+      "prompt": "Cạnh cửa có tấm bảng số từ 11 đến 45, chú Toàn dán để khán giả xếp hàng. Cho bảng sau:",
       "template": "11 | 12 | 13 | 14 | 15 | 16 | 17\n18 | 19 | 20 | 21 | 22 | 23 | 24\n25 | 26 | 27 | 28 | 29 | 30 | 31\n32 | 33 | 34 | 35 | 36 | 37 | 38\n39 | 40 | 41 | 42 | 43 | 44 | 45\na) Tính tổng của ba số tròn chục có trong bảng. {{b1}}\nb) Hai số nào trong bảng có tổng là 23? {{b2}} và {{b3}}\nc) Hai số nào trong bảng có tổng lớn nhất? {{b4}} và {{b5}}",
       "blanks": [
         {
@@ -1750,9 +1763,9 @@
     {
       "id": "thanh-go-cua-dom",
       "title": "Thanh gỗ làm bục",
-      "target": "lon-rung-dom",
+      "target": "toan2-cd7-b33-chu-toan",
       "kind": "riddle",
-      "question": "Đốm cầm cưa xoèn xoẹt làm bục đứng cho ca sĩ nhí. Một thanh gỗ dài 92 cm. Bác thợ mộc đã cưa đi một đoạn dài 27 cm. Hỏi thanh gỗ còn lại dài bao nhiêu xăng-ti-mét?",
+      "question": "Chú Toàn cầm cưa xoèn xoẹt làm bục đứng cho ca sĩ nhí. Một thanh gỗ dài 92 cm. Bác thợ mộc đã cưa đi một đoạn dài 27 cm. Hỏi thanh gỗ còn lại dài bao nhiêu xăng-ti-mét?",
       "skill": "bai-toan-loi-van",
       "curriculumRef": [
         "toan2-t1-b33-luyen-tap-4-3"
@@ -1771,7 +1784,7 @@
       "feedback": {
         "right": [
           "Bục gỗ đứng vững, ca sĩ nhí bước lên hát vang!",
-          "Đốm hết vụng nhờ có {name} tính giúp từng xăng-ti-mét.",
+          "Chú Toàn cưa chuẩn nhờ có {name} tính giúp từng xăng-ti-mét.",
           "Trừ có nhớ gọn gàng như nhát cưa thẳng tắp."
         ],
         "wrong": [
@@ -1787,11 +1800,11 @@
     {
       "id": "thap-so-san-khau",
       "title": "Tháp số khai màn",
-      "goTo": "Lên lại sân khấu hội trường, thầy Sư Tử Vàng chờ dựng tháp khai màn",
-      "target": "su-tu-vang",
+      "goTo": "Lên lại sân khấu hội trường, thầy Quang chờ dựng tháp khai màn",
+      "target": "toan2-cd7-b33-thay-quang",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Màn cuối tổng duyệt: cả trường xếp tháp gạch số, mỗi viên bằng tổng hai viên ngay dưới. Thầy Sư Tử nín thở, sợ gầm một cái là tháp đổ. Số ?",
+      "prompt": "Màn cuối tổng duyệt: cả trường xếp tháp gạch số, mỗi viên bằng tổng hai viên ngay dưới. Thầy Quang nín thở, sợ nói to một câu là tháp đổ. Số ?",
       "template": "Đỉnh tháp: {{b1}}\nHàng bốn: 24 | {{b2}}\nHàng ba: 11 | {{b3}} | {{b4}}\nHàng hai: 5 | 6 | {{b5}} | {{b6}}\nHàng dưới: 2 | 3 | 3 | 4 | 4",
       "blanks": [
         {
@@ -1920,7 +1933,7 @@
       "feedback": {
         "right": [
           "Tháp số đứng sừng sững, đèn sân khấu bật sáng rực!",
-          "Thầy Sư Tử cuối cùng cũng gầm thật to: TUYỆT VỜI! Tháp vẫn vững.",
+          "Thầy Quang cuối cùng cũng hô thật to: TUYỆT VỜI! Tháp vẫn vững.",
           "Từ hàng dưới lên tận đỉnh, không viên nào sai."
         ],
         "wrong": [
@@ -1945,7 +1958,7 @@
       "title": "Huy hiệu tổng duyệt",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Màn nhung kéo lên, cả hội trường vỗ tay rào rào. Thầy Sư Tử Vàng cài cho {name} huy hiệu \"Người giữ vé vàng\" và thì thầm: lần sau thầy sẽ thử micro nhỏ tiếng hơn."
+      "text": "Màn nhung kéo lên, cả hội trường vỗ tay rào rào. Thầy Quang cài cho {name} huy hiệu \"Người giữ vé vàng\" và thì thầm: lần sau thầy sẽ thử micro nhỏ tiếng hơn."
     },
     {
       "id": "phong-nen-hinh-khoi",

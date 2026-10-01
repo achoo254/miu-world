@@ -2,15 +2,15 @@
   "id": "tv2-t01-b01",
   "region": "khu-rung-bi-mat",
   "chapter": 2,
-  "title": "Sâu Xanh vào lớp Hai",
+  "title": "Thỏ Hạt Tiêu vào lớp Hai",
   "status": "active",
   "lesson": "tv2-t1-b01",
-  "summary": "Sáng khai giảng, Sâu Xanh chạy vội tới cổng rừng, rơi cả giày lẫn cặp. {name} nhặt đồ giúp bạn, đọc chuyện một bạn nhỏ háo hức đến trường, rồi cùng Sâu Xanh tập nói lời chào.",
+  "summary": "Sáng khai giảng, Thỏ Hạt Tiêu nhảy vội tới cổng rừng, rơi cả giày lẫn cặp. {name} nhặt đồ giúp bạn, đọc chuyện một bạn nhỏ háo hức đến trường, gặp bác Khải quét lá, Gà Con Tíu, cô Gấu Mật rồi cùng Thỏ Hạt Tiêu tập nói lời chào.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Sâu Xanh (mười sáu cái chân, lần đầu vào lớp Hai của rừng), Vẹt Xanh lắm lời, Gà Con Chíp mới vào lớp Một",
-    "where": "Cổng Khu rừng bí mật lúc bình minh, lối mòn trước cổng và bảng gỗ lớp Hai",
-    "goal": "Nhặt lại đồ Sâu Xanh đánh rơi và giúp bạn ấy bớt run trong ngày khai giảng",
+    "who": "Thỏ Hạt Tiêu (đôi tai dài hay run, lần đầu vào lớp Hai của rừng), Vẹt Xanh lắm lời, bác Khải quét lá bên bụi tre, Gà Con Tíu mới vào lớp Một, cô giáo Gấu Mật",
+    "where": "Cổng Khu rừng bí mật lúc bình minh, lối mòn trước cổng, bảng gỗ lớp Hai, cành sấu của Vẹt Xanh, bụi tre đầu dốc, gốc gạo cạnh cổng và cửa lớp Hai",
+    "goal": "Nhặt lại đồ Thỏ Hạt Tiêu đánh rơi và giúp bạn ấy bớt run trong ngày khai giảng",
     "play": "Tìm đồ, nói, đọc bài, chọn nhiều đáp án, ghép tranh với đoạn, xếp thứ tự, điền từ, trắc nghiệm, lựa chọn trong hội thoại, phiếu viết",
     "learn": "Tiếng Việt 2 Bài 1: đọc hiểu \"Tôi là học sinh lớp 2\", từ ngữ trong bài, lời chào, kể về kì nghỉ hè, viết chữ hoa A",
     "reward": "80 XP, 15 xu, Đọc hiểu +2, Từ ngữ +1",
@@ -49,50 +49,54 @@
     }
   },
   "places": {
-    "sau-xanh": "cổng rừng",
+    "tv2-t01-b01-tho-hat-tieu": "cổng rừng",
     "nhat-do-sau-xanh": "lối mòn trước cổng rừng",
-    "bang-go-lop-hai": "bảng gỗ lớp Hai"
+    "bang-go-lop-hai": "bảng gỗ lớp Hai",
+    "vet-xanh": "cành sấu",
+    "tv2-t01-b01-bac-gac-rung-khai": "bụi tre đầu dốc",
+    "tv2-t01-b01-ga-con-tiu": "gốc gạo cạnh cổng rừng",
+    "tv2-t01-b01-co-gau-mat": "cửa lớp Hai"
   },
   "steps": [
     {
       "id": "gap-sau-xanh",
-      "title": "Gặp Sâu Xanh ở cổng rừng",
-      "goTo": "Ra cổng rừng, Sâu Xanh đứng đợi từ lúc gà chưa gáy",
+      "title": "Gặp Thỏ Hạt Tiêu ở cổng rừng",
+      "goTo": "Ra cổng rừng, Thỏ Hạt Tiêu đang nhảy lò cò chờ {name}",
       "kind": "dialogue",
-      "target": "sau-xanh",
+      "target": "tv2-t01-b01-tho-hat-tieu",
       "lines": [
         {
-          "speaker": "Sâu Xanh",
-          "text": "{name} ơi! Hôm nay tớ vào lớp Hai của rừng, mà mười sáu cái chân cứ run cầm cập thế này!"
+          "speaker": "Thỏ Hạt Tiêu",
+          "text": "{name} ơi! Hôm nay tớ vào lớp Hai của rừng, mà hai cái tai dài cứ run cầm cập thế này!"
         },
         {
           "speaker": "Vẹt Xanh",
-          "text": "Sâu Xanh dậy từ lúc ông mặt trời còn ngái ngủ đấy! Sớm sớm! Sớm sớm!"
+          "text": "Thỏ Hạt Tiêu dậy từ lúc ông mặt trời còn ngái ngủ đấy! Sớm sớm! Sớm sớm!"
         },
         {
-          "speaker": "Sâu Xanh",
-          "text": "Tớ bò vội quá, rơi mất một chiếc giày, cái cặp lá và hộp bút dọc lối mòn rồi."
+          "speaker": "Thỏ Hạt Tiêu",
+          "text": "Tớ nhảy vội quá, rơi mất một chiếc giày, cái cặp lá và hộp bút dọc lối mòn rồi."
         },
         {
-          "speaker": "Sâu Xanh",
-          "text": "Cậu ở lại với tớ nhé? Có cậu, chắc chân tớ đỡ run được… tám cái."
+          "speaker": "Thỏ Hạt Tiêu",
+          "text": "Cậu ở lại với tớ nhé? Có cậu, chắc tai tớ đỡ run được… một bên."
         }
       ],
       "choices": [
         {
           "text": "Được chứ, mình đi nhặt đồ cùng cậu!",
-          "reply": "Hoan hô! Mười sáu cái chân của tớ thôi run rồi… à, vẫn còn hai cái hơi run."
+          "reply": "Hoan hô! Hai cái tai của tớ thôi run rồi… à, chóp tai vẫn còn hơi rung rinh."
         },
         {
-          "text": "Để mình đếm chân giúp cậu trước nhé!",
-          "reply": "Một, hai, ba… mười sáu! Đủ cả. Giờ chỉ thiếu mỗi chiếc giày thôi."
+          "text": "Để mình vuốt tai giúp cậu trước nhé!",
+          "reply": "Một bên, hai bên… phẳng phiu rồi! Giờ chỉ thiếu mỗi chiếc giày thôi."
         }
       ]
     },
     {
       "id": "nhat-do-sau-xanh",
-      "title": "Nhặt đồ Sâu Xanh đánh rơi",
-      "goTo": "Nhặt đồ Sâu Xanh đánh rơi dọc lối mòn trước cổng rừng",
+      "title": "Nhặt đồ Thỏ Hạt Tiêu đánh rơi",
+      "goTo": "Nhặt đồ Thỏ Hạt Tiêu đánh rơi dọc lối mòn trước cổng rừng",
       "kind": "search",
       "targets": [
         "tv2-t01-giay-sau-xanh",
@@ -103,14 +107,14 @@
     {
       "id": "chuan-bi-khai-giang",
       "title": "Kể chuyện chuẩn bị khai giảng",
-      "goTo": "Mang đồ về cổng rừng trả cho Sâu Xanh",
+      "goTo": "Mang đồ về cổng rừng trả cho Thỏ Hạt Tiêu",
       "kind": "speak",
-      "target": "sau-xanh",
-      "prompt": "Sâu Xanh xỏ lại chiếc giày thứ mười sáu, ôm chặt cặp lá rồi hỏi {name}: Em đã chuẩn bị những gì để đón ngày khai giảng?",
+      "target": "tv2-t01-b01-tho-hat-tieu",
+      "prompt": "Thỏ Hạt Tiêu xỏ lại chiếc giày còn thiếu, ôm chặt cặp lá rồi hỏi {name}: Em đã chuẩn bị những gì để đón ngày khai giảng?",
       "hints": [
         "Trong cặp sách của em có những đồ dùng gì?",
         "Em mặc bộ quần áo nào để đi khai giảng?",
-        "Sâu Xanh chuẩn bị mười sáu chiếc giày, còn em chuẩn bị gì đặc biệt?"
+        "Thỏ Hạt Tiêu chuẩn bị cả một củ cà rốt ăn sáng, còn em chuẩn bị gì đặc biệt?"
       ],
       "pictureRefs": [
         {
@@ -128,7 +132,7 @@
     {
       "id": "doc-bai",
       "title": "Đọc bài trên bảng gỗ",
-      "goTo": "Bò theo mũi tên tới bảng gỗ lớp Hai đọc bài",
+      "goTo": "Theo mũi tên tới bảng gỗ lớp Hai đọc bài",
       "kind": "read",
       "target": "bang-go-lop-hai",
       "textRef": "toi-la-hoc-sinh-lop-2",
@@ -169,13 +173,13 @@
       "feedback": {
         "right": [
           "Chuẩn! Các bạn đã ríu rít trong sân từ trước rồi. Vẹt Xanh vỗ cánh: đúng đúng!",
-          "Sâu Xanh gật gù đến rụng cả giọt sương trên đầu: {name} đọc kĩ ghê!",
-          "Giỏi quá! Hoá ra ai cũng muốn đến sớm, y như Sâu Xanh sáng nay."
+          "Thỏ Hạt Tiêu gật gù đến rung rinh cả đôi tai: {name} đọc kĩ ghê!",
+          "Giỏi quá! Hoá ra ai cũng muốn đến sớm, y như Thỏ Hạt Tiêu sáng nay."
         ],
         "wrong": [
           "Hụt mất rồi! Dò lại đoạn hai, chỗ bạn nhỏ vừa tới cổng trường nhé.",
           "Bạn nhỏ vùng dậy ngay từ tiếng gọi đầu tiên, đâu có ngủ quên! Thử lại xem.",
-          "Trong sân có ai đang ríu rít nói cười nhỉ? Sâu Xanh bò đi tìm cùng {name} đây."
+          "Trong sân có ai đang ríu rít nói cười nhỉ? Thỏ Hạt Tiêu nhảy đi tìm cùng {name} đây."
         ]
       }
     },
@@ -185,7 +189,7 @@
       "kind": "challenge",
       "mechanic": "multi-select",
       "target": "bang-go-lop-hai",
-      "prompt": "Sâu Xanh thì thầm: bạn nhỏ này còn nôn nao hơn cả tớ! Những chi tiết nào cho thấy bạn nhỏ rất háo hức đến trường vào ngày khai giảng?",
+      "prompt": "Thỏ Hạt Tiêu thì thầm: bạn nhỏ này còn nôn nao hơn cả tớ! Những chi tiết nào cho thấy bạn nhỏ rất háo hức đến trường vào ngày khai giảng?",
       "choices": [
         {
           "id": "vung-day",
@@ -228,7 +232,7 @@
       },
       "feedback": {
         "right": [
-          "Đủ cả ba chi tiết háo hức! Sâu Xanh vỗ mười sáu bàn chân lộp độp.",
+          "Đủ cả ba chi tiết háo hức! Thỏ Hạt Tiêu giậm chân sau thình thịch.",
           "Vẹt Xanh khoe ngay từ mới học: nôn nao! nôn nao! Đúng y như {name} chọn.",
           "Chọn chuẩn, không thừa không thiếu một chi tiết nào."
         ],
@@ -242,9 +246,10 @@
     {
       "id": "doan-va-tranh",
       "title": "Ghép tranh với đoạn",
+      "goTo": "Vẹt Xanh ngậm ba bức tranh đậu trên cành sấu, chạy lại đỡ giúp nào",
       "kind": "challenge",
       "mechanic": "classify",
-      "target": "bang-go-lop-hai",
+      "target": "vet-xanh",
       "prompt": "Gió thổi ba bức tranh rơi khỏi bảng gỗ, Vẹt Xanh ngậm lên trả nhưng quên chỗ treo. Tìm tranh thích hợp với mỗi đoạn trong bài đọc.",
       "groups": [
         {
@@ -328,7 +333,7 @@
         ],
         "wrong": [
           "Đoạn nào kể chuyện ở nhà, có cả bố mẹ đứng nhìn nhỉ?",
-          "Một bức tranh đang đi lạc sang đoạn khác, giống chiếc giày của Sâu Xanh sáng nay.",
+          "Một bức tranh đang đi lạc sang đoạn khác, giống chiếc giày của Thỏ Hạt Tiêu sáng nay.",
           "Tranh nào có em nhỏ rụt rè nắm tay mẹ? Đó là đoạn cuối đấy."
         ]
       }
@@ -336,6 +341,7 @@
     {
       "id": "lon-hon-mot-chut",
       "title": "Bạn nhỏ thay đổi thế nào",
+      "goTo": "Quay về bảng gỗ lớp Hai, dò lại đoạn cuối bài đọc",
       "kind": "read",
       "target": "bang-go-lop-hai",
       "textRef": "toi-la-hoc-sinh-lop-2",
@@ -375,7 +381,7 @@
       "feedback": {
         "right": [
           "Đúng thế, bạn nhỏ thấy mình lớn bổng lên!",
-          "Sâu Xanh kiễng cả mười sáu chân: tớ cũng muốn lớn bổng như thế!",
+          "Thỏ Hạt Tiêu kiễng cao hai chân sau: tớ cũng muốn lớn bổng như thế!",
           "Chính xác, câu cuối bài nói rõ điều đó."
         ],
         "wrong": [
@@ -388,10 +394,11 @@
     {
       "id": "xep-buoi-sang",
       "title": "Xếp lại buổi sáng của bạn nhỏ",
+      "goTo": "Gió cuốn bốn chiếc lá chép bài tới bụi tre đầu dốc, bác Khải đang gom hộ",
       "kind": "challenge",
       "mechanic": "sort",
-      "target": "bang-go-lop-hai",
-      "prompt": "Sâu Xanh chép bốn câu trong bài lên bốn chiếc lá, ai ngờ gió trộn tung cả lên. Xếp các câu theo đúng thứ tự trong bài đọc nhé.",
+      "target": "tv2-t01-b01-bac-gac-rung-khai",
+      "prompt": "Thỏ Hạt Tiêu chép bốn câu trong bài lên bốn chiếc lá, ai ngờ gió trộn tung cả lên. Xếp các câu theo đúng thứ tự trong bài đọc nhé.",
       "items": [
         {
           "id": "chao-me",
@@ -432,7 +439,7 @@
       },
       "feedback": {
         "right": [
-          "Bốn chiếc lá xếp hàng thẳng tắp, Sâu Xanh định ăn thử một chiếc mà tiếc quá!",
+          "Bốn chiếc lá xếp hàng thẳng tắp, bác Khải chống chổi cười: khỏi phải quét nữa rồi!",
           "Đúng thứ tự rồi! Buổi sáng của bạn nhỏ chạy vèo vèo như phim.",
           "Vẹt Xanh reo: trật tự! trật tự! {name} xếp chuẩn từng câu."
         ],
@@ -446,9 +453,10 @@
     {
       "id": "tu-moi-cua-vet",
       "title": "Ba từ lạ của Vẹt Xanh",
+      "goTo": "Vẹt Xanh lại réo trên cành sấu: từ lạ! từ lạ! Mau tới nghe",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "target": "bang-go-lop-hai",
+      "target": "vet-xanh",
       "prompt": "Vẹt Xanh sưu tầm được ba từ lạ trong bài: loáng, níu, lớn bổng. Lạ lạ! Hay hay! Đặt mỗi từ về đúng chỗ của nó trong bài đọc nhé.",
       "template": "{{loang}} một cái, tôi đã chuẩn bị xong mọi thứ.\nMấy em lớp 1 đang rụt rè {{niu}} chặt tay bố mẹ.\nTrước các em, tôi cảm thấy mình {{lon}} lên.",
       "blanks": [
@@ -539,11 +547,11 @@
     {
       "id": "tu-chi-lop-mot",
       "title": "Chọn từ tả các em lớp 1",
-      "goTo": "Trở lại cổng rừng, trống sắp vào học rồi",
+      "goTo": "Trở lại cổng rừng, Thỏ Hạt Tiêu chỉ về phía các em lớp Một",
       "kind": "challenge",
       "mechanic": "quiz",
-      "target": "sau-xanh",
-      "prompt": "Ở cổng rừng, Sâu Xanh chỉ về phía mấy bạn nhỏ xíu đang nấp sau lưng mẹ. Từ nào dưới đây nói về các em lớp 1 trong ngày khai trường?",
+      "target": "tv2-t01-b01-tho-hat-tieu",
+      "prompt": "Ở cổng rừng, Thỏ Hạt Tiêu chỉ về phía mấy bạn nhỏ xíu đang nấp sau lưng mẹ. Từ nào dưới đây nói về các em lớp 1 trong ngày khai trường?",
       "choices": [
         {
           "id": "ngac-nhien",
@@ -579,7 +587,7 @@
       "feedback": {
         "right": [
           "Đúng rồi, các em còn rụt rè lắm!",
-          "Sâu Xanh đỏ mặt thú nhận: năm ngoái tớ còn rụt rè gấp mười sáu lần.",
+          "Thỏ Hạt Tiêu đỏ cả chóp tai thú nhận: năm ngoái tớ còn rụt rè gấp mười lần.",
           "Chọn trúng ngay từ có trong bài luôn!"
         ],
         "wrong": [
@@ -591,44 +599,46 @@
     },
     {
       "id": "chip-rut-re",
-      "title": "Gà Con Chíp không dám vào lớp",
+      "title": "Gà Con Tíu không dám vào lớp",
+      "goTo": "Sang gốc gạo cạnh cổng rừng, Gà Con Tíu đang rúc sau cánh mẹ",
       "kind": "dialogue",
-      "target": "sau-xanh",
+      "target": "tv2-t01-b01-ga-con-tiu",
       "lines": [
         {
-          "speaker": "Gà Con Chíp",
+          "speaker": "Gà Con Tíu",
           "text": "Chiếp… Tại sao lớp Một lại đông thế? Tại sao chân tớ cứ muốn chạy về nhà?"
         },
         {
-          "speaker": "Sâu Xanh",
-          "text": "Chíp mới vào lớp Một, cứ níu chặt cánh mẹ y như các em trong bài đọc ấy."
+          "speaker": "Thỏ Hạt Tiêu",
+          "text": "Tíu mới vào lớp Một, cứ níu chặt cánh mẹ y như các em trong bài đọc ấy."
         },
         {
-          "speaker": "Sâu Xanh",
-          "text": "{name} ơi, mình nói gì cho Chíp đỡ sợ bây giờ?"
+          "speaker": "Thỏ Hạt Tiêu",
+          "text": "{name} ơi, mình nói gì cho Tíu đỡ sợ bây giờ?"
         }
       ],
       "choices": [
         {
-          "text": "Chào Chíp! Năm ngoái mình cũng run y như cậu đấy.",
-          "reply": "Chíp ló đầu ra khỏi cánh mẹ: Thật á? Thế tại sao bây giờ cậu hết run?"
+          "text": "Chào Tíu! Năm ngoái mình cũng run y như cậu đấy.",
+          "reply": "Tíu ló đầu ra khỏi cánh mẹ: Thật á? Thế tại sao bây giờ cậu hết run?"
         },
         {
-          "text": "Chíp ơi, vào lớp vui lắm, có cả trống trường nữa!",
-          "reply": "Chíp nghiêng đầu: Tại sao trống lại kêu tùng tùng? Thôi, tớ vào xem thử!"
+          "text": "Tíu ơi, vào lớp vui lắm, có cả trống trường nữa!",
+          "reply": "Tíu nghiêng đầu: Tại sao trống lại kêu tùng tùng? Thôi, tớ vào xem thử!"
         },
         {
-          "text": "Sâu Xanh và mình sẽ dắt cậu tới tận cửa lớp.",
-          "reply": "Sâu Xanh chìa ra… bốn cái chân một lúc. Chíp bật cười, thôi không níu mẹ nữa."
+          "text": "Thỏ Hạt Tiêu và mình sẽ dắt cậu tới tận cửa lớp.",
+          "reply": "Thỏ Hạt Tiêu chìa ra bàn tay lông xù mềm mại. Tíu bật cười, thôi không níu mẹ nữa."
         }
       ]
     },
     {
       "id": "tap-noi-loi-chao",
       "title": "Tập nói lời chào",
+      "goTo": "Dắt Tíu tới cửa lớp Hai, cô Gấu Mật đang đứng đón học trò",
       "kind": "speak",
-      "target": "sau-xanh",
-      "prompt": "Tùng! Tùng! Trống vào học rồi, Sâu Xanh luống cuống chào nhầm cả cái cây. {name} làm mẫu giúp bạn nhé! Thực hiện các yêu cầu sau: a. Nói lời chào tạm biệt mẹ trước khi đến trường. b. Nói lời chào thầy, cô giáo khi đến lớp. c. Cùng bạn nói và đáp lời chào khi gặp nhau ở trường.",
+      "target": "tv2-t01-b01-co-gau-mat",
+      "prompt": "Tùng! Tùng! Trống vào học rồi, Thỏ Hạt Tiêu luống cuống chào nhầm cả cái cây. {name} làm mẫu giúp bạn nhé! Thực hiện các yêu cầu sau: a. Nói lời chào tạm biệt mẹ trước khi đến trường. b. Nói lời chào thầy, cô giáo khi đến lớp. c. Cùng bạn nói và đáp lời chào khi gặp nhau ở trường.",
       "hints": [
         "Vẫy tay chào mẹ thật tươi trước khi vào cổng.",
         "Khoanh tay, lễ phép chào thầy cô khi bước vào lớp.",
@@ -643,9 +653,10 @@
     {
       "id": "ke-he",
       "title": "Kể về những ngày hè",
+      "goTo": "Ra chơi rồi! Chạy ra bụi tre đầu dốc, bác Khải nghỉ tay nghe kể chuyện hè",
       "kind": "speak",
-      "target": "sau-xanh",
-      "prompt": "Giờ ra chơi, Sâu Xanh kể cả hè chỉ ăn lá với ngủ, rồi rủ {name} kể chuyện của mình: Kể về điều đáng nhớ nhất trong kì nghỉ hè của em. Em cảm thấy thế nào khi trở lại trường sau kì nghỉ hè?",
+      "target": "tv2-t01-b01-bac-gac-rung-khai",
+      "prompt": "Giờ ra chơi, Thỏ Hạt Tiêu kể cả hè chỉ gặm cà rốt với ngủ, rồi rủ {name} kể chuyện của mình: Kể về điều đáng nhớ nhất trong kì nghỉ hè của em. Em cảm thấy thế nào khi trở lại trường sau kì nghỉ hè?",
       "hints": [
         "Nghỉ hè, em được đi những đâu?",
         "Em được tham gia những hoạt động nào?",
@@ -685,7 +696,7 @@
       "kind": "worksheet",
       "trigger": "auto",
       "lessonId": "tv2-t1-b01",
-      "text": "Nhờ bố mẹ in phiếu Bài 1 ở khu phụ huynh nhé: tập viết chữ hoa A, câu ứng dụng và vài câu về ngày hè. Sâu Xanh cầm bút bằng cả mười sáu chân mà vẫn chưa viết đẹp bằng em đâu!",
+      "text": "Nhờ bố mẹ in phiếu Bài 1 ở khu phụ huynh nhé: tập viết chữ hoa A, câu ứng dụng và vài câu về ngày hè. Thỏ Hạt Tiêu cầm bút bằng cả hai tay mà vẫn chưa viết đẹp bằng em đâu!",
       "curriculumRef": [
         "tv2-t1-b01-viet-chu-hoa-1",
         "tv2-t1-b01-viet-ung-dung-2",
@@ -694,10 +705,10 @@
     },
     {
       "id": "phan-thuong",
-      "title": "Quà của Sâu Xanh",
+      "title": "Quà của Thỏ Hạt Tiêu",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Sâu Xanh tặng {name} một chiếc lá dâu non in mười sáu dấu chân bé xíu, rồi hứa sẽ ăn thật nhiều lá để mau lớn bổng như bạn nhỏ trong bài."
+      "text": "Thỏ Hạt Tiêu tặng {name} một củ cà rốt non buộc nơ cỏ may, rồi hứa sẽ ăn thật nhiều rau để mau lớn bổng như bạn nhỏ trong bài."
     },
     {
       "id": "mo-bai-2",

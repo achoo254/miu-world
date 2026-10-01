@@ -8,8 +8,8 @@
   "summary": "Trên cánh đồng gió, Thỏ Tí và bé Tẹo giằng nhau một chiếc chong chóng đến nỗi gió giật tung cả bốn cánh. {name} nhặt lại từng mảnh, đọc chuyện hai anh em An và Mai, rồi giúp hai anh em thỏ tìm cách chơi chung thật vui.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Thỏ Tí (nhanh nhảu, hay quên) và em trai là bé Tẹo",
-    "where": "Cánh đồng gió và gò đất lộng gió ven Khu rừng bí mật",
+    "who": "Thỏ Tí (nhanh nhảu, hay quên) và em trai là bé Tẹo, Bà Thỏ Nhài thuộc nhiều tục ngữ, Thỏ Ổi nhà bên hay viết thư",
+    "where": "Cánh đồng gió, gò đất lộng gió, ruộng ngô giữa đồng, luống cà rốt nhà bà, hàng rào nhà bên và gốc cây dẻ ven Khu rừng bí mật",
     "goal": "Ráp lại chiếc chong chóng bị gió thổi tung và giúp hai anh em thỏ chơi chung, không giành nhau nữa",
     "play": "Nhặt mảnh chong chóng, nói và kể, đọc truyện, trắc nghiệm, điền chữ, chọn nhiều đáp án, xếp từ vào nhóm, đặt dấu phẩy, đọc tin nhắn, phiếu viết",
     "learn": "Tiếng Việt 2 Bài 32: đọc hiểu Chơi chong chóng, từ ngữ tả đồ vật, chính tả iu/ưu và ăt/ăc/ât/âc, từ ngữ về tình cảm gia đình, câu nói về anh chị em, dấu phẩy, đọc và viết tin nhắn",
@@ -44,8 +44,10 @@
     "tho-ti": "cánh đồng gió",
     "nhat-manh-chong-chong": "gò đất lộng gió",
     "tho-teo": "cánh đồng gió",
-    "tv2-t17-bu-nhin": "cánh đồng gió",
-    "tv2-t17-goc-cay-de": "gốc cây dẻ"
+    "tv2-t17-bu-nhin": "ruộng ngô giữa đồng",
+    "tv2-t17-goc-cay-de": "gốc cây dẻ",
+    "tv2-t17-b32-ba-tho-nhai": "luống cà rốt nhà bà",
+    "tv2-t17-b32-tho-oi": "hàng rào nhà bên"
   },
   "steps": [
     {
@@ -143,7 +145,7 @@
     {
       "id": "doc-choi-chong-chong",
       "title": "Trang truyện trên áo bù nhìn",
-      "goTo": "Tới chỗ chú bù nhìn rơm giữa cánh đồng gió",
+      "goTo": "Tới ruộng ngô giữa đồng, chú bù nhìn rơm có ghim một trang truyện",
       "kind": "read",
       "target": "tv2-t17-bu-nhin",
       "textRef": "choi-chong-chong",
@@ -197,6 +199,7 @@
     {
       "id": "vi-sao-an-luon-thang",
       "title": "Bí quyết thắng của An",
+      "goTo": "Quay ra cánh đồng gió, Thỏ Tí đang ngẩn người gãi tai",
       "kind": "challenge",
       "mechanic": "quiz",
       "target": "tho-ti",
@@ -249,6 +252,7 @@
     {
       "id": "cach-an-lam-em-vui",
       "title": "Cách An làm em vui",
+      "goTo": "Bé Tẹo kéo {name} lại ruộng ngô giữa đồng đọc tiếp trang truyện",
       "kind": "read",
       "target": "tv2-t17-bu-nhin",
       "textRef": "choi-chong-chong",
@@ -302,6 +306,7 @@
     {
       "id": "tinh-cam-an-va-mai",
       "title": "Anh em An và Mai",
+      "goTo": "Về cánh đồng gió, bé Tẹo ngước lên hỏi anh Tí",
       "kind": "challenge",
       "mechanic": "quiz",
       "target": "tho-teo",
@@ -450,9 +455,10 @@
     {
       "id": "sieu-va-phung-phiu",
       "title": "Hết phụng phịu nào",
+      "goTo": "Ra ruộng ngô giữa đồng, bé Tẹo ngồi phụng phịu dưới chân bù nhìn",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "target": "tho-teo",
+      "target": "tv2-t17-bu-nhin",
       "prompt": "Bé Tẹo lại phụng phịu vì cánh chong chóng chưa dán xong. Thỏ Tí dỗ: “Điền xong mấy chữ này là em hết phụng phịu nhé!”\nChọn a hoặc b.\na. Chọn iu hoặc ưu thay cho ô vuông.",
       "template": "s{{b1}} tầm\nphụng ph{{b2}}̣\nd{{b3}}̣ dàng\nt{{b4}}̣ trường",
       "blanks": [
@@ -551,6 +557,7 @@
     {
       "id": "do-choi-van-at-ac",
       "title": "Giỏ đồ chơi của Thỏ Tí",
+      "goTo": "Chạy về cánh đồng gió, Thỏ Tí đang lục tung giỏ đồ chơi",
       "kind": "challenge",
       "mechanic": "multi-select",
       "target": "tho-ti",
@@ -715,9 +722,10 @@
     {
       "id": "cau-noi-anh-chi-em",
       "title": "Câu bà Thỏ hay đọc",
+      "goTo": "Chạy tới luống cà rốt nhà bà, hỏi Bà Thỏ Nhài nửa sau câu tục ngữ",
       "kind": "challenge",
       "mechanic": "multi-select",
-      "target": "tho-ti",
+      "target": "tv2-t17-b32-ba-tho-nhai",
       "prompt": "Thỏ Tí nhớ bà Thỏ hay đọc mấy câu tục ngữ, nhưng nhớ được nửa câu là… quên sạch nửa sau.\nNhững câu nào dưới đây nói về tình cảm anh chị em?\nChị ngã em nâng. / Lá lành đùm lá rách. / Anh thuận em hoà là nhà có phúc. / Anh em như thể chân tay\nRách lành đùm bọc, dở hay đỡ đần.",
       "choices": [
         {
@@ -775,6 +783,7 @@
     {
       "id": "dau-phay-nha-soc",
       "title": "Lá thư hạt dẻ của sóc",
+      "goTo": "Về cánh đồng gió, Thỏ Tí vừa nhận lá thư của bạn sóc",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "target": "tho-ti",
@@ -887,9 +896,10 @@
     {
       "id": "dau-phay-loi-khen-chi",
       "title": "Lá thư khen chị gái",
+      "goTo": "Ra hàng rào nhà bên, Thỏ Ổi chìa lá thư khen chị gái cho bé Tẹo",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "target": "tho-teo",
+      "target": "tv2-t17-b32-tho-oi",
       "prompt": "Bé Tẹo đọc lá thư bạn thỏ nhà bên viết khen chị gái, cũng thiếu dấu phẩy nốt. Hôm nay dấu phẩy rủ nhau đi chơi xa hết à?\nCó thể đặt dấu phẩy vào chỗ nào trong các đoạn văn sau?\nb. Chị tớ rất yêu thương chăm sóc tớ. Chị thường hướng dẫn tớ làm bài tập chơi với tớ cùng tớ làm việc nhà. Tớ yêu chị lắm!\nÔ nào cần thì đặt “,”, ô nào không thì để “không dấu”.",
       "template": "Chị tớ{{q1}} rất yêu thương{{q2}} chăm sóc tớ. Chị thường hướng dẫn tớ làm bài tập{{q3}} chơi với tớ{{q4}} cùng tớ làm việc nhà. Tớ yêu chị lắm!",
       "blanks": [
@@ -985,6 +995,7 @@
     {
       "id": "chia-chong-chong",
       "title": "Chơi chung thế nào?",
+      "goTo": "Quay lại cánh đồng gió, chong chóng đã ráp xong tinh tươm",
       "kind": "dialogue",
       "target": "tho-ti",
       "lines": [

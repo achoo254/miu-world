@@ -5,10 +5,10 @@
   "title": "Lễ hội lá vàng giữa học kì",
   "status": "active",
   "lesson": "tv2-t1-on-giua-ki",
-  "summary": "Lá vàng rụng đầy rừng, Vẹt Xanh mở hội thi giữa kì: mỗi trạm do một người bạn cũ giữ, mỗi trạm một thử thách ôn lại nửa học kì. {name} đi khắp lễ hội, gom đủ lá vàng để cùng cả lớp thắp chiếc đèn lá lớn nhất rừng.",
+  "summary": "Lá vàng rụng đầy rừng, Vẹt Xanh mở hội thi giữa kì: mỗi trạm do một cư dân mới của rừng giữ, mỗi trạm một thử thách ôn lại nửa học kì. {name} đi khắp lễ hội làm quen bạn mới, gom đủ lá vàng để cùng cả lớp thắp chiếc đèn lá lớn nhất rừng.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Vẹt Xanh dẫn chương trình, Ong Vàng, Gấu Trúc Tròn, Cáo Lém, Thỏ Tí, Mèo Mun, Cá Bống, Nai Mơ và Voi Bảo giữ các trạm",
+    "who": "Vẹt Xanh dẫn chương trình; Mèo Gừng, Cáo Ớt, Khỉ Nhót, Gấu Bùi, Gấu Trắng Kem, Mèo Muối, Hải Ly Mộc, Cá Chép Hồng, Bà Tư, Bác tiều phu Lâm, Cô giáo Thu và Sư Tử Kẹo giữ các trạm",
     "where": "Lễ hội lá vàng trải khắp sân lễ hội của Khu rừng bí mật, mỗi góc rừng là một trạm thi",
     "goal": "Vượt qua tất cả các trạm để góp lá vàng thắp chiếc đèn lá của cả lớp",
     "play": "Tìm đồ, ghép bài đọc với nội dung, nói, đoán từ, điền chữ, xếp thẻ thành câu, phân nhóm, đóng vai, đọc truyện, điền dấu câu, trắc nghiệm, kể chuyện, lựa chọn trong hội thoại, phiếu viết",
@@ -43,14 +43,18 @@
   "places": {
     "vet-xanh": "sân lễ hội",
     "nhat-ve-la-vang": "đường lá vàng",
-    "ong-vang": "trạm bông hoa",
-    "gau-truc": "trạm thẻ màu",
-    "cao-lem": "trạm đoán từ",
-    "tho-ti": "trạm đồ vật",
-    "meo-mun": "trạm đóng vai",
-    "ca-bong": "trạm bờ sông",
-    "nai-mo": "trạm kể chuyện",
-    "voi-bao": "trạm bó đũa"
+    "tv2-t09-on-giua-ki-meo-gung": "trạm bông hoa",
+    "tv2-t09-on-giua-ki-cao-ot": "trạm thẻ màu",
+    "tv2-t09-on-giua-ki-khi-nhot": "trạm đoán từ",
+    "tv2-t09-on-giua-ki-gau-bui": "trạm đồ vật",
+    "tv2-t09-on-giua-ki-gau-trang-kem": "cây treo mây",
+    "tv2-t09-on-giua-ki-meo-muoi": "trạm đóng vai",
+    "tv2-t06-b11-hai-ly-moc": "trạm bờ sông",
+    "tv2-t06-b11-ca-chep-hong": "khúc sông lặng",
+    "tv2-t09-on-giua-ki-ba-tu": "trạm kể chuyện",
+    "tv2-t09-on-giua-ki-bac-tieu-phu-lam": "trạm bó đũa",
+    "tv2-t09-on-giua-ki-co-giao-thu": "bàn đá dưới tán",
+    "tv2-t09-on-giua-ki-su-tu-keo": "quầy kẹo lá"
   },
   "steps": [
     {
@@ -66,21 +70,21 @@
         },
         {
           "speaker": "Vẹt Xanh",
-          "text": "Mỗi trạm do một người bạn cũ của {name} giữ, ai cũng mang một câu đố từ nửa học kì vừa qua."
+          "text": "Mỗi trạm do một người bạn mới toanh giữ, ai cũng mang một câu đố từ nửa học kì vừa qua! Làm quen đi! Làm quen đi!"
         },
         {
-          "speaker": "Thỏ Tí",
-          "text": "Còn tớ thì… lỡ làm rơi hết vé lá vàng dọc đường rồi. Hì hì. Lại là tớ."
+          "speaker": "Gấu Bùi",
+          "text": "Chào {name}, tớ là Gấu Bùi giữ trạm đồ vật… mà tớ lỡ làm rơi hết vé lá vàng dọc đường rồi. Hì hì."
         },
         {
           "speaker": "Vẹt Xanh",
-          "text": "Không có vé thì không vào trạm được đâu! Đâu được! {name} đi nhặt giúp Thỏ Tí nhé!"
+          "text": "Không có vé thì không vào trạm được đâu! Đâu được! {name} đi nhặt giúp Gấu Bùi nhé!"
         }
       ],
       "choices": [
         {
-          "text": "Để mình nhặt vé, Thỏ Tí đứng yên đây nhé!",
-          "reply": "Thỏ Tí đứng nghiêm… được đúng ba giây rồi lại nhảy tưng tưng."
+          "text": "Để mình nhặt vé, Gấu Bùi đứng yên đây nhé!",
+          "reply": "Gấu Bùi đứng nghiêm… được đúng ba giây rồi lại quay đi tìm hũ mật ong."
         },
         {
           "text": "Vẹt Xanh ơi, trạm nào khó nhất thế?",
@@ -91,7 +95,7 @@
     {
       "id": "nhat-ve-la-vang",
       "title": "Nhặt vé lá vàng",
-      "goTo": "Nhặt vé lá vàng Thỏ Tí đánh rơi dọc đường lá vàng",
+      "goTo": "Nhặt vé lá vàng Gấu Bùi đánh rơi dọc đường lá vàng",
       "kind": "search",
       "targets": [
         "tv2-t09-ve-la-vang-1",
@@ -102,11 +106,11 @@
     {
       "id": "bong-hoa-bai-doc",
       "title": "Bông hoa năm cánh",
-      "goTo": "Đến trạm bông hoa, Ong Vàng đang bay vo ve quanh một bông hoa giấy",
+      "goTo": "Đến trạm bông hoa, Mèo Gừng đang xoay quanh một bông hoa giấy",
       "kind": "challenge",
       "mechanic": "classify",
-      "target": "ong-vang",
-      "prompt": "Ong Vàng vẫy cánh: bông hoa năm cánh vàng ghi tên năm bài đọc, năm cánh hồng ghi nội dung, mà gió thổi rời hết cánh hồng rồi!\nTìm tên bài đọc tương ứng với nội dung của bài.\nKéo mỗi cánh hồng về đúng tên bài.",
+      "target": "tv2-t09-on-giua-ki-meo-gung",
+      "prompt": "Mèo Gừng vẫy đuôi: bông hoa năm cánh vàng ghi tên năm bài đọc, năm cánh hồng ghi nội dung, mà gió thổi rời hết cánh hồng rồi!\nTìm tên bài đọc tương ứng với nội dung của bài.\nKéo mỗi cánh hồng về đúng tên bài.",
       "groups": [
         {
           "id": "bai-1",
@@ -181,9 +185,9 @@
       },
       "feedback": {
         "right": [
-          "Bông hoa nở đủ năm cánh hồng! Ong Vàng bay một vòng số tám ăn mừng.",
+          "Bông hoa nở đủ năm cánh hồng! Mèo Gừng nhảy một vòng số tám ăn mừng.",
           "Năm bài đọc, năm nội dung, không lạc cánh nào cả.",
-          "Ong Vàng tặng {name} chiếc lá vàng đầu tiên, thơm mùi mật."
+          "Mèo Gừng tặng {name} chiếc lá vàng đầu tiên, thơm mùi gừng ấm."
         ],
         "wrong": [
           "Cậu bé Quang là nhân vật của bài \"Một giờ học\" đấy.",
@@ -195,10 +199,10 @@
     {
       "id": "the-mau-cau-hoi",
       "title": "Sáu tấm thẻ màu",
-      "goTo": "Sang trạm thẻ màu, Gấu Trúc Tròn đang xoè sáu tấm thẻ",
+      "goTo": "Sang trạm thẻ màu, Cáo Ớt đang xoè sáu tấm thẻ",
       "kind": "speak",
-      "target": "gau-truc",
-      "prompt": "Gấu Trúc Tròn chậm rãi xoè sáu tấm thẻ màu, mỗi thẻ ghi tên một bài đọc và một câu hỏi. Rút một thẻ… nào… từ… từ… thôi.\nChọn đọc một bài và trả lời câu hỏi.",
+      "target": "tv2-t09-on-giua-ki-cao-ot",
+      "prompt": "Cáo Ớt nhanh tay xoè sáu tấm thẻ màu, mỗi thẻ ghi tên một bài đọc và một câu hỏi. Rút một thẻ nào, nhanh lên kẻo gió thổi bay!\nChọn đọc một bài và trả lời câu hỏi.",
       "hints": [
         "TÔI LÀ HỌC SINH LỚP 2\nTheo em, vì sao vào ngày khai trường, các bạn thường muốn đến trường sớm?",
         "EM CÓ XINH KHÔNG?\nCuối cùng, voi em nhận thấy mình xinh nhất khi nào?",
@@ -218,12 +222,12 @@
     },
     {
       "id": "doan-tu-cung-cao",
-      "title": "Cáo Lém đố bốn từ",
-      "goTo": "Ghé trạm đoán từ, Cáo Lém đang vẫy đuôi gọi khách",
+      "title": "Khỉ Nhót đố bốn từ",
+      "goTo": "Ghé trạm đoán từ, Khỉ Nhót đang đu cành gọi khách",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "target": "cao-lem",
-      "prompt": "Cáo Lém nháy mắt: trò này tớ bày, bốn từ tớ giấu, đoán sai là phải nhảy lò cò một vòng nhé!\nTrò chơi: Đoán từ",
+      "target": "tv2-t09-on-giua-ki-khi-nhot",
+      "prompt": "Khỉ Nhót nháy mắt: trò này tớ bày, bốn từ tớ giấu, đoán sai là phải nhảy lò cò một vòng nhé!\nTrò chơi: Đoán từ",
       "template": "a. Bắt đầu bằng tr; Đồ vật ở trường; Dùng để báo giờ học → {{a}}\nb. Bắt đầu bằng ch; Đồ vật trong nhà; Dùng để quét nhà → {{b}}\nc. Chứa vần ang; Đồ vật trong lớp; Dùng để viết → {{c}}\nd. Chứa vần an; Đồ vật ở góc học tập; Dùng để bày sách vở → {{d}}",
       "blanks": [
         {
@@ -323,8 +327,8 @@
       },
       "feedback": {
         "right": [
-          "Đoán trúng cả bốn! Cáo Lém phải tự nhảy lò cò một vòng vì thua cuộc.",
-          "Cáo Lém cụp tai: cậu đoán nhanh hơn tớ nghĩ ra câu đố!",
+          "Đoán trúng cả bốn! Khỉ Nhót phải tự nhảy lò cò một vòng vì thua cuộc.",
+          "Khỉ Nhót gãi đầu: cậu đoán nhanh hơn tớ nghĩ ra câu đố!",
           "Trống, chổi, bảng, bàn, không sót từ nào, xuất sắc."
         ],
         "wrong": [
@@ -336,12 +340,12 @@
     },
     {
       "id": "ten-do-vat",
-      "title": "Thỏ Tí làm rơi sáu đồ vật",
-      "goTo": "Chạy tới trạm đồ vật, Thỏ Tí lại làm đổ cả giỏ",
+      "title": "Gấu Bùi làm rơi sáu đồ vật",
+      "goTo": "Chạy tới trạm đồ vật, Gấu Bùi lại làm đổ cả giỏ",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "target": "tho-ti",
-      "prompt": "Thỏ Tí ôm giỏ đồ vật chạy vội, thế là… rơi tung toé. Giúp bạn ấy dán lại tên cho từng món nhé.\nViết tên đồ vật trong mỗi hình.",
+      "target": "tv2-t09-on-giua-ki-gau-bui",
+      "prompt": "Gấu Bùi ôm giỏ đồ vật chạy vội, thế là… rơi tung toé. Giúp bạn ấy dán lại tên cho từng món nhé.\nViết tên đồ vật trong mỗi hình.",
       "template": "Cán xanh, hai lưỡi sắc: {{h1}}\nVắt trên giá, màu hồng: {{h2}}\nTreo tường, viền đỏ, kêu tích tắc: {{h3}}\nNhựa xanh lá, để xúc cơm: {{h4}}\nCả hộp đủ màu, để tô tranh: {{h5}}\nViền xanh, để đựng thức ăn: {{h6}}",
       "blanks": [
         {
@@ -455,9 +459,9 @@
       },
       "feedback": {
         "right": [
-          "Sáu món đồ có tên đầy đủ! Thỏ Tí ôm giỏ chặt hơn, hứa không làm rơi nữa.",
-          "Viết đúng cả k lẫn kh, Thỏ Tí phục lăn.",
-          "Giỏ đồ ngăn nắp rồi, Thỏ Tí trao {name} thêm một lá vàng."
+          "Sáu món đồ có tên đầy đủ! Gấu Bùi ôm giỏ chặt hơn, hứa không làm rơi nữa.",
+          "Viết đúng cả k lẫn kh, Gấu Bùi phục lăn.",
+          "Giỏ đồ ngăn nắp rồi, Gấu Bùi trao {name} thêm một lá vàng."
         ],
         "wrong": [
           "Âm cờ đứng trước e phải viết k: kéo chứ không phải céo.",
@@ -471,8 +475,8 @@
       "title": "Chiếc khăn dùng để làm gì?",
       "kind": "challenge",
       "mechanic": "sort",
-      "target": "tho-ti",
-      "prompt": "Thỏ Tí vắt chiếc khăn mặt hồng lên tai, hỏi tỉnh bơ: cái này để làm mũ hả? {name} trả lời giúp bằng một câu nhé.\nHỏi – đáp về công dụng của từng đồ vật ở bài tập 5.\nM:\n– Kéo dùng để làm gì?\n– Kéo dùng để cắt giấy, cắt vải.",
+      "target": "tv2-t09-on-giua-ki-gau-bui",
+      "prompt": "Gấu Bùi vắt chiếc khăn mặt hồng lên tai, hỏi tỉnh bơ: cái này để làm mũ hả? {name} trả lời giúp bằng một câu nhé.\nHỏi – đáp về công dụng của từng đồ vật ở bài tập 5.\nM:\n– Kéo dùng để làm gì?\n– Kéo dùng để cắt giấy, cắt vải.",
       "items": [
         {
           "id": "lau-mat",
@@ -511,7 +515,7 @@
       },
       "feedback": {
         "right": [
-          "Thỏ Tí gỡ khăn khỏi tai, lau mặt cái phốc: à, ra là thế!",
+          "Gấu Bùi gỡ khăn khỏi tai, lau mặt cái phốc: à, ra là thế!",
           "Câu nói công dụng gọn gàng như câu mẫu cái kéo.",
           "Tên đồ vật trước, công dụng sau, {name} làm chuẩn."
         ],
@@ -525,10 +529,11 @@
     {
       "id": "ghep-may-dac-diem",
       "title": "Tám đám mây ghép đôi",
+      "goTo": "Ra cây treo mây cạnh trạm đồ vật, Gấu Trắng Kem giữ tám sợi dây",
       "kind": "challenge",
       "mechanic": "classify",
-      "target": "tho-ti",
-      "prompt": "Trên trời trạm đồ vật treo tám đám mây giấy, bốn đám hàng trên, bốn đám hàng dưới. Thỏ Tí nhảy mãi không với tới, nhờ {name} ghép giúp.\nGhép các từ ngữ để tạo 4 câu nêu đặc điểm.\nđôi mắt của bé; những vì sao; cầu vồng; tóc bà; lấp lánh trong đêm; to tròn, đen láy; đã bạc; rực rỡ sau cơn mưa",
+      "target": "tv2-t09-on-giua-ki-gau-trang-kem",
+      "prompt": "Trên trời trạm đồ vật treo tám đám mây giấy, bốn đám hàng trên, bốn đám hàng dưới. Gấu Bùi nhảy mãi không với tới, nhờ {name} ghép giúp.\nGhép các từ ngữ để tạo 4 câu nêu đặc điểm.\nđôi mắt của bé; những vì sao; cầu vồng; tóc bà; lấp lánh trong đêm; to tròn, đen láy; đã bạc; rực rỡ sau cơn mưa",
       "groups": [
         {
           "id": "mat-be",
@@ -591,7 +596,7 @@
       "feedback": {
         "right": [
           "Bốn cặp mây ghép thành bốn câu đẹp như thơ!",
-          "Thỏ Tí ngửa cổ nhìn trời: cầu vồng rực rỡ thật kìa!",
+          "Gấu Trắng Kem ngửa cổ nhìn trời: cầu vồng rực rỡ thật kìa!",
           "Ghép chuẩn hết, đám mây nào cũng có đôi."
         ],
         "wrong": [
@@ -603,11 +608,11 @@
     },
     {
       "id": "dong-vai-cung-meo",
-      "title": "Đóng vai cùng Mèo Mun",
-      "goTo": "Đến trạm đóng vai, Mèo Mun đã hết run và đang chờ bạn diễn",
+      "title": "Đóng vai cùng Mèo Muối",
+      "goTo": "Đến trạm đóng vai, Mèo Muối vẫy tay chờ bạn diễn",
       "kind": "speak",
-      "target": "meo-mun",
-      "prompt": "Mèo Mun ngày trước run râu khi nói trước lớp, giờ lại xung phong làm bạn diễn của {name}! Hai bạn thay nhau nói và đáp nhé.\nĐóng vai, nói và đáp lời trong các tình huống sau:\na. Nhờ bạn nhặt giúp cái bút bị rơi.\nb. Khen bạn viết chữ đẹp.\nc. An ủi bạn khi bạn bị ốm nên phải nghỉ học.\nd. Chúc mừng sinh nhật bạn.",
+      "target": "tv2-t09-on-giua-ki-meo-muoi",
+      "prompt": "Mèo Muối mới chuyển tới rừng, nói trước đám đông còn run râu, vậy mà xung phong làm bạn diễn của {name}! Hai bạn thay nhau nói và đáp nhé.\nĐóng vai, nói và đáp lời trong các tình huống sau:\na. Nhờ bạn nhặt giúp cái bút bị rơi.\nb. Khen bạn viết chữ đẹp.\nc. An ủi bạn khi bạn bị ốm nên phải nghỉ học.\nd. Chúc mừng sinh nhật bạn.",
       "hints": [
         "Nhờ bạn thì nói \"giúp mình với\" và nhớ cảm ơn.",
         "Khen bạn thật lòng, bạn đáp lại bằng lời cảm ơn.",
@@ -624,11 +629,11 @@
     {
       "id": "kieu-cau-1",
       "title": "Tấm ván trôi số 1",
-      "goTo": "Xuống trạm bờ sông, Cá Bống đang đẩy mấy tấm ván trôi",
+      "goTo": "Xuống trạm bờ sông, Hải Ly Mộc đang đẩy mấy tấm ván trôi",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "target": "ca-bong",
-      "prompt": "Cá Bống búng nước tung toé, đọc câu đầu tiên trên tấm ván trôi:\nMỗi câu ở cột A thuộc kiểu câu nào ở cột B?\nA: Bác An là nông dân.; Bác đang gặt lúa.; Bác rất chăm chỉ và cẩn thận.\nB: Câu giới thiệu; Câu nêu hoạt động; Câu nêu đặc điểm\nBác An là nông dân.",
+      "target": "tv2-t06-b11-hai-ly-moc",
+      "prompt": "Hải Ly Mộc đập đuôi tung toé, đọc câu đầu tiên trên tấm ván trôi:\nMỗi câu ở cột A thuộc kiểu câu nào ở cột B?\nA: Bác An là nông dân.; Bác đang gặt lúa.; Bác rất chăm chỉ và cẩn thận.\nB: Câu giới thiệu; Câu nêu hoạt động; Câu nêu đặc điểm\nBác An là nông dân.",
       "template": "Bác An là nông dân. → {{kieu}}",
       "blanks": [
         {
@@ -671,7 +676,7 @@
       },
       "feedback": {
         "right": [
-          "Câu giới thiệu, trúng phóc! Cá Bống quẫy đuôi tạo cầu vồng nước.",
+          "Câu giới thiệu, trúng phóc! Hải Ly Mộc quẫy đuôi tạo cầu vồng nước.",
           "Bác An là ai? Là nông dân! Câu này giới thiệu bác rồi.",
           "Đúng rồi, câu có chữ \"là\" để giới thiệu người."
         ],
@@ -687,7 +692,7 @@
       "title": "Tấm ván trôi số 2",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "target": "ca-bong",
+      "target": "tv2-t06-b11-hai-ly-moc",
       "prompt": "Tấm ván thứ hai trôi tới, dính cả một bông lúa vàng:\nMỗi câu ở cột A thuộc kiểu câu nào ở cột B?\nA: Bác An là nông dân.; Bác đang gặt lúa.; Bác rất chăm chỉ và cẩn thận.\nB: Câu giới thiệu; Câu nêu hoạt động; Câu nêu đặc điểm\nBác đang gặt lúa.",
       "template": "Bác đang gặt lúa. → {{kieu}}",
       "blanks": [
@@ -732,7 +737,7 @@
       "feedback": {
         "right": [
           "Câu nêu hoạt động, chuẩn! Gặt lúa là việc bác đang làm.",
-          "Cá Bống lặn một vòng ăn mừng: hoạt động! hoạt động!",
+          "Hải Ly Mộc lặn một vòng ăn mừng: hoạt động! hoạt động!",
           "Chữ \"đang gặt\" lộ ngay đây là việc làm, giỏi quá."
         ],
         "wrong": [
@@ -745,10 +750,11 @@
     {
       "id": "kieu-cau-3",
       "title": "Tấm ván trôi số 3",
+      "goTo": "Sang khúc sông lặng, Cá Chép Hồng đẩy tấm ván cuối cùng",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "target": "ca-bong",
-      "prompt": "Tấm ván cuối cùng to nhất, Cá Bống phải đẩy bằng cả hai vây:\nMỗi câu ở cột A thuộc kiểu câu nào ở cột B?\nA: Bác An là nông dân.; Bác đang gặt lúa.; Bác rất chăm chỉ và cẩn thận.\nB: Câu giới thiệu; Câu nêu hoạt động; Câu nêu đặc điểm\nBác rất chăm chỉ và cẩn thận.",
+      "target": "tv2-t06-b11-ca-chep-hong",
+      "prompt": "Tấm ván cuối cùng to nhất, Cá Chép Hồng phải đẩy bằng cả hai vây:\nMỗi câu ở cột A thuộc kiểu câu nào ở cột B?\nA: Bác An là nông dân.; Bác đang gặt lúa.; Bác rất chăm chỉ và cẩn thận.\nB: Câu giới thiệu; Câu nêu hoạt động; Câu nêu đặc điểm\nBác rất chăm chỉ và cẩn thận.",
       "template": "Bác rất chăm chỉ và cẩn thận. → {{kieu}}",
       "blanks": [
         {
@@ -792,7 +798,7 @@
       "feedback": {
         "right": [
           "Câu nêu đặc điểm! Chăm chỉ, cẩn thận là tính nết của bác.",
-          "Đủ ba tấm ván, Cá Bống thổi bong bóng chúc mừng.",
+          "Đủ ba tấm ván, Cá Chép Hồng thổi bong bóng chúc mừng.",
           "Câu \"Ai thế nào?\" đây rồi, {name} phân biệt tài ghê."
         ],
         "wrong": [
@@ -806,10 +812,10 @@
       "id": "doc-vit-boi",
       "title": "Truyện cười bên bờ sông",
       "kind": "read",
-      "target": "ca-bong",
+      "target": "tv2-t06-b11-ca-chep-hong",
       "textRef": "vit-boi-duoc-ma",
       "audio": true,
-      "question": "Cá Bống cười sặc nước: truyện này buồn cười lắm! Vì sao cậu bé chăn vịt bảo sông nông lắm?",
+      "question": "Cá Chép Hồng cười sặc nước: truyện này buồn cười lắm! Vì sao cậu bé chăn vịt bảo sông nông lắm?",
       "choices": [
         {
           "id": "loi-nhieu-lan",
@@ -842,7 +848,7 @@
       "feedback": {
         "right": [
           "Ha ha! Vịt bơi chứ đâu có lội, cậu bé nhầm to rồi!",
-          "Cá Bống cười tới mức sủi cả bong bóng: đúng rồi, con vịt!",
+          "Cá Chép Hồng cười tới mức sủi cả bong bóng: đúng rồi, con vịt!",
           "Chuẩn! Hiểu được truyện cười là đọc kĩ lắm đấy."
         ],
         "wrong": [
@@ -855,10 +861,11 @@
     {
       "id": "dau-cau-vit-boi",
       "title": "Năm ô vuông bị bỏ trống",
+      "goTo": "Quay về trạm bờ sông, Hải Ly Mộc chép truyện lên tấm ván",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "target": "ca-bong",
-      "prompt": "Cá Bống chép lại truyện lên tấm ván, nhưng quên mất năm dấu câu. Dòng khó nhất bạn ấy khoanh tròn ngay đầu ván:\nVịt bơi được mà\nBác ta liền lội sang sông, mới lội một đoạn đã gần ngập đầu◻ Quay lại, bác ta hỏi cậu bé:\nChọn dấu chấm hoặc dấu chấm hỏi thay cho ô vuông.",
+      "target": "tv2-t06-b11-hai-ly-moc",
+      "prompt": "Hải Ly Mộc chép lại truyện lên tấm ván, nhưng quên mất năm dấu câu. Dòng khó nhất bạn ấy khoanh tròn ngay đầu ván:\nVịt bơi được mà\nBác ta liền lội sang sông, mới lội một đoạn đã gần ngập đầu◻ Quay lại, bác ta hỏi cậu bé:\nChọn dấu chấm hoặc dấu chấm hỏi thay cho ô vuông.",
       "template": "Vịt bơi được mà\n\nNgười đàn ông nọ muốn lội qua sông. Gặp cậu bé chăn vịt, bác ta liền hỏi:\n\n– Sông này có sâu không cháu{{d1}}\n\nCậu bé trả lời:\n\n– Nông lắm bác ạ{{d2}}\n\nBác ta liền lội sang sông, mới lội một đoạn đã gần ngập đầu{{d3}} Quay lại, bác ta hỏi cậu bé:\n\n– Sao cháu bảo sông này nông lắm{{d4}}\n\n– Cháu thấy con vịt chân ngắn thế mà nó cũng lội sang được ạ{{d5}}\n(Trung Nguyên sưu tầm)",
       "blanks": [
         {
@@ -959,7 +966,7 @@
         "right": [
           "Năm dấu câu về đúng chỗ, truyện đọc lên mới ra giọng cười!",
           "Hỏi thì chấm hỏi, kể thì chấm, {name} phân biệt rõ ràng.",
-          "Cá Bống đọc lại cả truyện, lần này không bị sặc nước nữa."
+          "Hải Ly Mộc đọc lại cả truyện, cười rung cả hai chiếc răng cửa."
         ],
         "wrong": [
           "\"Sông này có sâu không cháu\" là câu hỏi, cần dấu chấm hỏi.",
@@ -971,11 +978,11 @@
     {
       "id": "tranh-ten-truyen",
       "title": "Bốn bức tranh, bốn câu chuyện",
-      "goTo": "Sang trạm kể chuyện, Nai Mơ treo bốn bức tranh trên cành",
+      "goTo": "Sang trạm kể chuyện, Bà Tư treo bốn bức tranh trên cành",
       "kind": "challenge",
       "mechanic": "classify",
-      "target": "nai-mo",
-      "prompt": "Nai Mơ treo bốn bức tranh của bốn câu chuyện đã nghe trong nửa học kì, nhưng quên dán tên.\nNhìn tranh và nói tên câu chuyện. Chọn kể một câu chuyện em thích.\nTrước tiên, kéo mỗi tranh về đúng tên câu chuyện.",
+      "target": "tv2-t09-on-giua-ki-ba-tu",
+      "prompt": "Bà Tư treo bốn bức tranh của bốn câu chuyện đã nghe trong nửa học kì, nhưng quên dán tên.\nNhìn tranh và nói tên câu chuyện. Chọn kể một câu chuyện em thích.\nTrước tiên, kéo mỗi tranh về đúng tên câu chuyện.",
       "groups": [
         {
           "id": "do-con",
@@ -1069,9 +1076,9 @@
       },
       "feedback": {
         "right": [
-          "Bốn tranh có tên rồi! Nai Mơ chép ngay vào cuốn sổ lá.",
+          "Bốn tranh có tên rồi! Bà Tư chép ngay vào cuốn sổ lá.",
           "Nhớ truyện giỏi ghê, chuyện từ hồi tuần ba mà vẫn nhớ.",
-          "Nai Mơ ngâm nga: tranh nào cũng gặp lại người quen."
+          "Bà Tư ngâm nga: tranh nào cũng gặp lại người quen."
         ],
         "wrong": [
           "Chú voi đứng với con dê là truyện voi em hỏi \"Em có xinh không?\" đấy.",
@@ -1084,8 +1091,8 @@
       "id": "ke-chuyen-em-thich",
       "title": "Kể câu chuyện em thích",
       "kind": "speak",
-      "target": "nai-mo",
-      "prompt": "Giờ đến lượt {name} kể, Nai Mơ sẽ hỏi lại như một khán giả thật.\nNhìn tranh và nói tên câu chuyện. Chọn kể một câu chuyện em thích.\nCùng bạn hỏi – đáp về những câu chuyện em vừa kể.\nM: – Câu chuyện có mấy nhân vật?\n– Bạn thích nhân vật nào?",
+      "target": "tv2-t09-on-giua-ki-ba-tu",
+      "prompt": "Giờ đến lượt {name} kể, Bà Tư sẽ hỏi lại như một khán giả thật.\nNhìn tranh và nói tên câu chuyện. Chọn kể một câu chuyện em thích.\nCùng bạn hỏi – đáp về những câu chuyện em vừa kể.\nM: – Câu chuyện có mấy nhân vật?\n– Bạn thích nhân vật nào?",
       "hints": [
         "Em chọn kể câu chuyện nào? Câu chuyện có những ai?",
         "Chuyện gì xảy ra đầu tiên, tiếp theo, và cuối cùng?",
@@ -1104,11 +1111,11 @@
       "target": "vet-xanh",
       "lines": [
         {
-          "speaker": "Thỏ Tí",
+          "speaker": "Gấu Bùi",
           "text": "Tớ nhặt được nhiều lá vàng nhất! À không, {name} nhặt, nhưng tớ là người làm rơi!"
         },
         {
-          "speaker": "Cáo Lém",
+          "speaker": "Khỉ Nhót",
           "text": "Trạm của tớ khó nhất, nên đèn lá phải treo ở chỗ tớ!"
         },
         {
@@ -1119,23 +1126,23 @@
       "choices": [
         {
           "text": "Mỗi bạn góp một chiếc lá, mình cùng thắp đèn chung!",
-          "reply": "Cả lớp im lặng một giây, rồi cùng gật đầu. Thỏ Tí góp lá đầu tiên, lần này không làm rơi."
+          "reply": "Cả lớp im lặng một giây, rồi cùng gật đầu. Gấu Bùi góp lá đầu tiên, lần này không làm rơi."
         },
         {
           "text": "Treo đèn giữa sân, chỗ ai cũng nhìn thấy được.",
-          "reply": "Cáo Lém gãi tai: ừ nhỉ, đèn ở giữa thì cả rừng cùng sáng. Tớ đồng ý!"
+          "reply": "Khỉ Nhót gãi tai: ừ nhỉ, đèn ở giữa thì cả rừng cùng sáng. Tớ đồng ý!"
         }
       ]
     },
     {
       "id": "doc-bo-dua",
       "title": "Bó đũa không ai bẻ được",
-      "goTo": "Đến trạm bó đũa, Voi Bảo đặt một bó đũa lên bàn đá",
+      "goTo": "Đến trạm bó đũa, Bác tiều phu Lâm đặt một bó đũa lên bàn đá",
       "kind": "read",
-      "target": "voi-bao",
+      "target": "tv2-t09-on-giua-ki-bac-tieu-phu-lam",
       "textRef": "cau-chuyen-bo-dua",
       "audio": true,
-      "question": "Đọc câu chuyện sau:\nVoi Bảo hỏi trước một câu khởi động: lúc nhỏ, anh em trong gia đình ấy sống với nhau thế nào?",
+      "question": "Đọc câu chuyện sau:\nBác tiều phu Lâm hỏi trước một câu khởi động: lúc nhỏ, anh em trong gia đình ấy sống với nhau thế nào?",
       "choices": [
         {
           "id": "hay-cai",
@@ -1170,8 +1177,8 @@
       },
       "feedback": {
         "right": [
-          "Đúng rồi, lúc nhỏ hai anh em rất hoà thuận. Voi Bảo nhớ y như sách.",
-          "Đọc kĩ ngay từ câu đầu, {name} làm Voi Bảo hài lòng lắm.",
+          "Đúng rồi, lúc nhỏ hai anh em rất hoà thuận. Bác Lâm gật gù: nhớ y như sách.",
+          "Đọc kĩ ngay từ câu đầu, {name} làm Bác Lâm hài lòng lắm.",
           "Chuẩn! Câu chuyện bắt đầu êm ấm như vậy đấy."
         ],
         "wrong": [
@@ -1186,8 +1193,8 @@
       "title": "Lớn lên thì sao?",
       "kind": "challenge",
       "mechanic": "quiz",
-      "target": "voi-bao",
-      "prompt": "Voi Bảo khẽ thở dài: lớn lên thì mọi chuyện đổi khác.\nTrả lời câu hỏi và thực hiện yêu cầu.\na. Khi lớn lên, tình cảm giữa anh và em như thế nào?\n◻ hoà thuận\t◻ không thay đổi\t◻ không hoà thuận",
+      "target": "tv2-t09-on-giua-ki-bac-tieu-phu-lam",
+      "prompt": "Bác Lâm khẽ thở dài: lớn lên thì mọi chuyện đổi khác.\nTrả lời câu hỏi và thực hiện yêu cầu.\na. Khi lớn lên, tình cảm giữa anh và em như thế nào?\n◻ hoà thuận\t◻ không thay đổi\t◻ không hoà thuận",
       "choices": [
         {
           "id": "hoa-thuan",
@@ -1223,7 +1230,7 @@
       "feedback": {
         "right": [
           "Đúng thế, lớn lên các con hay va chạm, không hoà thuận nữa.",
-          "Voi Bảo gật đầu buồn buồn: vì vậy người cha mới lo.",
+          "Bác Lâm gật đầu buồn buồn: vì vậy người cha mới lo.",
           "{name} đọc ra ngay chữ \"va chạm\", tinh ý thật."
         ],
         "wrong": [
@@ -1236,10 +1243,11 @@
     {
       "id": "hoi-dap-bo-dua",
       "title": "Bốn câu hỏi về bó đũa",
+      "goTo": "Sang bàn đá dưới tán, Cô giáo Thu xếp bốn câu hỏi",
       "kind": "challenge",
       "mechanic": "classify",
-      "target": "voi-bao",
-      "prompt": "Voi Bảo nhớ cả câu chuyện, nhưng bốn câu trả lời lại lẫn vào nhau. Kéo mỗi câu trả lời về đúng câu hỏi.\nTrả lời câu hỏi và thực hiện yêu cầu.",
+      "target": "tv2-t09-on-giua-ki-co-giao-thu",
+      "prompt": "Cô giáo Thu nhớ cả câu chuyện, nhưng bốn câu trả lời lại lẫn vào nhau. Kéo mỗi câu trả lời về đúng câu hỏi.\nTrả lời câu hỏi và thực hiện yêu cầu.",
       "groups": [
         {
           "id": "cach-khuyen",
@@ -1305,7 +1313,7 @@
       "feedback": {
         "right": [
           "Bốn câu hỏi gặp đúng bốn câu trả lời, gọn như một bó đũa!",
-          "Voi Bảo vẫy tai rối rít: chia lẻ thì yếu, hợp lại thì mạnh!",
+          "Cô giáo Thu mỉm cười: chia lẻ thì yếu, hợp lại thì mạnh!",
           "Hiểu câu chuyện đến tận lời khuyên cuối cùng, giỏi quá."
         ],
         "wrong": [
@@ -1320,8 +1328,8 @@
       "title": "Nghĩa của từ hoà thuận",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "target": "voi-bao",
-      "prompt": "Voi Bảo rút từ vòi ra tấm thẻ thứ nhất:\nTrả lời câu hỏi và thực hiện yêu cầu.\ng. Tìm từ ngữ ở cột A phù hợp với nghĩa ở cột B.\nA: hoà thuận; yêu thương; buồn phiền\nB: buồn và lo nghĩ, không yên lòng; êm ấm, không có xích mích, mâu thuẫn; có tình cảm gắn bó tha thiết, quan tâm, chăm sóc hết lòng\nhoà thuận",
+      "target": "tv2-t09-on-giua-ki-co-giao-thu",
+      "prompt": "Cô giáo Thu rút từ túi áo ra tấm thẻ thứ nhất:\nTrả lời câu hỏi và thực hiện yêu cầu.\ng. Tìm từ ngữ ở cột A phù hợp với nghĩa ở cột B.\nA: hoà thuận; yêu thương; buồn phiền\nB: buồn và lo nghĩ, không yên lòng; êm ấm, không có xích mích, mâu thuẫn; có tình cảm gắn bó tha thiết, quan tâm, chăm sóc hết lòng\nhoà thuận",
       "template": "hoà thuận: {{nghia}}",
       "blanks": [
         {
@@ -1365,7 +1373,7 @@
       "feedback": {
         "right": [
           "Hoà thuận là êm ấm, không xích mích, đúng rồi!",
-          "Voi Bảo gật gù: lúc nhỏ anh em trong truyện hoà thuận đúng như thế.",
+          "Cô giáo Thu gật gù: lúc nhỏ anh em trong truyện hoà thuận đúng như thế.",
           "Chuẩn! Nhà nào hoà thuận là nhà ấy êm ấm."
         ],
         "wrong": [
@@ -1378,10 +1386,11 @@
     {
       "id": "nghia-tu-2",
       "title": "Nghĩa của từ yêu thương",
+      "goTo": "Về trạm bó đũa, Bác tiều phu Lâm cầm tấm thẻ thứ hai",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "target": "voi-bao",
-      "prompt": "Tấm thẻ thứ hai Voi Bảo cầm nhẹ như cầm một bông hoa:\nTrả lời câu hỏi và thực hiện yêu cầu.\ng. Tìm từ ngữ ở cột A phù hợp với nghĩa ở cột B.\nA: hoà thuận; yêu thương; buồn phiền\nB: buồn và lo nghĩ, không yên lòng; êm ấm, không có xích mích, mâu thuẫn; có tình cảm gắn bó tha thiết, quan tâm, chăm sóc hết lòng\nyêu thương",
+      "target": "tv2-t09-on-giua-ki-bac-tieu-phu-lam",
+      "prompt": "Tấm thẻ thứ hai Bác Lâm cầm nhẹ như cầm một bông hoa:\nTrả lời câu hỏi và thực hiện yêu cầu.\ng. Tìm từ ngữ ở cột A phù hợp với nghĩa ở cột B.\nA: hoà thuận; yêu thương; buồn phiền\nB: buồn và lo nghĩ, không yên lòng; êm ấm, không có xích mích, mâu thuẫn; có tình cảm gắn bó tha thiết, quan tâm, chăm sóc hết lòng\nyêu thương",
       "template": "yêu thương: {{nghia}}",
       "blanks": [
         {
@@ -1425,7 +1434,7 @@
       "feedback": {
         "right": [
           "Yêu thương là gắn bó tha thiết, quan tâm, chăm sóc hết lòng. Chuẩn!",
-          "Voi Bảo vòng vòi ôm {name} một cái thật nhẹ.",
+          "Bác Lâm xoa đầu {name} bằng bàn tay chai sần.",
           "Đúng nghĩa rồi, người cha mong các con biết yêu thương nhau như thế."
         ],
         "wrong": [
@@ -1438,10 +1447,11 @@
     {
       "id": "nghia-tu-3",
       "title": "Nghĩa của từ buồn phiền",
+      "goTo": "Ra quầy kẹo lá, Sư Tử Kẹo vuốt phẳng tấm thẻ cuối cùng",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "target": "voi-bao",
-      "prompt": "Tấm thẻ cuối cùng hơi nhàu, Voi Bảo vuốt mãi mới phẳng:\nTrả lời câu hỏi và thực hiện yêu cầu.\ng. Tìm từ ngữ ở cột A phù hợp với nghĩa ở cột B.\nA: hoà thuận; yêu thương; buồn phiền\nB: buồn và lo nghĩ, không yên lòng; êm ấm, không có xích mích, mâu thuẫn; có tình cảm gắn bó tha thiết, quan tâm, chăm sóc hết lòng\nbuồn phiền",
+      "target": "tv2-t09-on-giua-ki-su-tu-keo",
+      "prompt": "Tấm thẻ cuối cùng hơi nhàu, Sư Tử Kẹo vuốt mãi mới phẳng:\nTrả lời câu hỏi và thực hiện yêu cầu.\ng. Tìm từ ngữ ở cột A phù hợp với nghĩa ở cột B.\nA: hoà thuận; yêu thương; buồn phiền\nB: buồn và lo nghĩ, không yên lòng; êm ấm, không có xích mích, mâu thuẫn; có tình cảm gắn bó tha thiết, quan tâm, chăm sóc hết lòng\nbuồn phiền",
       "template": "buồn phiền: {{nghia}}",
       "blanks": [
         {
@@ -1486,7 +1496,7 @@
         "right": [
           "Buồn phiền là buồn và lo nghĩ, không yên lòng, đúng thế!",
           "Người cha trong truyện buồn phiền vì các con, {name} hiểu rồi.",
-          "Ba tấm thẻ đều có nghĩa, Voi Bảo cất vào trí nhớ siêu bền."
+          "Ba tấm thẻ đều có nghĩa, Sư Tử Kẹo cất vào chiếc bờm siêu dày."
         ],
         "wrong": [
           "Buồn phiền không êm ấm chút nào, chọn lại nhé.",
@@ -1500,8 +1510,8 @@
       "title": "Bảy viên kẹo, hai túi xách",
       "kind": "challenge",
       "mechanic": "classify",
-      "target": "voi-bao",
-      "prompt": "Voi Bảo mang ra bảy viên kẹo bọc giấy, mỗi viên ghi một từ, và hai túi xách. Voi Bảo đọc túi thứ nhất:\nTrả lời câu hỏi và thực hiện yêu cầu.\nh. Xếp các từ ngữ dưới đây vào nhóm thích hợp.\ngọi; nhà; đặt; bẻ; bó đũa; nói; túi\nTừ chỉ sự vật\nRồi Voi Bảo đọc lại bảy viên kẹo cho túi thứ hai: gọi; nhà; đặt; bẻ; bó đũa; nói; túi\nTừ chỉ hoạt động",
+      "target": "tv2-t09-on-giua-ki-su-tu-keo",
+      "prompt": "Sư Tử Kẹo mang ra bảy viên kẹo bọc giấy, mỗi viên ghi một từ, và hai túi xách. Sư Tử Kẹo đọc túi thứ nhất:\nTrả lời câu hỏi và thực hiện yêu cầu.\nh. Xếp các từ ngữ dưới đây vào nhóm thích hợp.\ngọi; nhà; đặt; bẻ; bó đũa; nói; túi\nTừ chỉ sự vật\nRồi Sư Tử Kẹo đọc lại bảy viên kẹo cho túi thứ hai: gọi; nhà; đặt; bẻ; bó đũa; nói; túi\nTừ chỉ hoạt động",
       "groups": [
         {
           "id": "su-vat",
@@ -1571,9 +1581,9 @@
       },
       "feedback": {
         "right": [
-          "Hai túi xách đầy kẹo đúng chỗ! Voi Bảo thưởng {name} chiếc lá vàng cuối cùng.",
+          "Hai túi xách đầy kẹo đúng chỗ! Sư Tử Kẹo thưởng {name} chiếc lá vàng cuối cùng.",
           "Sự vật một túi, hoạt động một túi, phân loại siêu chuẩn.",
-          "Bảy viên kẹo không viên nào lạc, Thỏ Tí đứng xem phục sát đất."
+          "Bảy viên kẹo không viên nào lạc, Gấu Bùi đứng xem phục sát đất."
         ],
         "wrong": [
           "Thử nói \"đang bó đũa\" xem, nghe kì không? Nó là sự vật đấy.",
@@ -1599,7 +1609,7 @@
       "title": "Thắp đèn lá vàng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Cả lớp góp lá vàng vào chiếc đèn lá khổng lồ. Đèn bừng sáng giữa sân lễ hội, Vẹt Xanh hô vang tên {name}, còn Thỏ Tí ôm chặt chiếc huy hiệu lá vàng của mình, lần này nhất định không làm rơi."
+      "text": "Cả lớp góp lá vàng vào chiếc đèn lá khổng lồ. Đèn bừng sáng giữa sân lễ hội, Vẹt Xanh hô vang tên {name}, còn Gấu Bùi ôm chặt chiếc huy hiệu lá vàng của mình, lần này nhất định không làm rơi."
     },
     {
       "id": "mo-bai-17",

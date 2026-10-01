@@ -5,12 +5,12 @@
   "title": "Voi Út soi bóng bên suối",
   "status": "active",
   "lesson": "tv2-t1-b05",
-  "summary": "Voi Út, em gái bé nhất của Voi Bảo, gài cành cây lên đầu cho giống bạn Hươu để \"xinh hơn\", còn Voi Bảo thì lạc mất kính nên chẳng nhìn rõ em. {name} tìm kính, đọc chuyện voi em đi hỏi khắp nơi và giúp Út hiểu mình xinh nhất khi là chính mình.",
+  "summary": "Voi Út, em gái bé nhất của Voi Tùng, gài cành cây lên đầu cho giống bạn Hươu để \"xinh hơn\", còn Voi Tùng thì lạc mất kính nên chẳng nhìn rõ em. {name} tìm kính, đọc chuyện voi em đi hỏi khắp nơi và giúp Út hiểu mình xinh nhất khi là chính mình.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Voi Út (em gái nhỏ của Voi Bảo, thích bắt chước bạn), Voi Bảo (nhớ mọi thứ trừ chỗ để kính), Hươu Cao hay cụng đầu vào cành, Vẹt Xanh",
-    "where": "Suối soi bóng trong Khu rừng bí mật, bờ suối đầy sỏi, tảng đá bên suối và vũng nước trong",
-    "goal": "Tìm kính cho Voi Bảo và giúp Voi Út thôi bắt chước các bạn để \"xinh hơn\"",
+    "who": "Voi Út (em gái nhỏ của Voi Tùng, thích bắt chước bạn), Voi Tùng (anh cả hiền lành, hay để quên kính), Hươu Sừng Non hay cụng đầu vào cành, Vẹt Xanh",
+    "where": "Suối soi bóng trong Khu rừng bí mật, bờ suối đầy sỏi, gốc sung bên suối, tảng đá bên suối, lùm cây thấp và vũng nước trong",
+    "goal": "Tìm kính cho Voi Tùng và giúp Voi Út thôi bắt chước các bạn để \"xinh hơn\"",
     "play": "Tìm đồ, nói, đọc truyện, phân loại lời nói, trắc nghiệm, điền từ, chọn nhiều đáp án, lựa chọn trong hội thoại, xếp tranh, kể chuyện, phiếu viết",
     "learn": "Tiếng Việt 2 Bài 5: đọc hiểu \"Em có xinh không?\", từ ngữ chỉ hoạt động, nói lời của nhân vật, kể chuyện theo tranh, viết chữ hoa B",
     "reward": "80 XP, 15 xu, Đọc hiểu +2, Kể chuyện +2, Từ ngữ +1",
@@ -36,9 +36,10 @@
   },
   "places": {
     "voi-ut": "suối soi bóng",
-    "voi-bao": "suối soi bóng",
+    "tv2-t03-b05-voi-tung": "gốc sung bên suối",
     "tim-kinh-voi-bao": "bờ suối đầy sỏi",
     "tv2-t03-tang-da-ben-suoi": "tảng đá bên suối",
+    "tv2-t03-b05-huou-sung-non": "lùm cây thấp",
     "tv2-t03-vung-nuoc-trong": "vũng nước trong"
   },
   "steps": [
@@ -54,11 +55,11 @@
           "text": "{name}! {name}! Em có xinh không? Em vừa gài hai cành cây lên đầu cho giống sừng bạn Hươu đấy!"
         },
         {
-          "speaker": "Voi Bảo",
+          "speaker": "Voi Tùng",
           "text": "Út ơi, đứng yên cho anh ngắm nào… ơ, kính của anh đâu rồi? Anh chỉ thấy một cục xám xám có cành cây."
         },
         {
-          "speaker": "Hươu Cao",
+          "speaker": "Hươu Sừng Non",
           "text": "Cộp! Ui da, tớ lại cụng đầu vào cành rồi. Út ơi, sừng của tớ đâu có làm bằng cành khô!"
         },
         {
@@ -69,18 +70,18 @@
       "choices": [
         {
           "text": "Út ơi, không có cành cây em vẫn xinh mà!",
-          "reply": "Thật không? Anh Bảo chưa tìm thấy kính nên chưa ai khen em cả!"
+          "reply": "Thật không? Anh Tùng chưa tìm thấy kính nên chưa ai khen em cả!"
         },
         {
-          "text": "Để mình tìm kính cho anh Bảo trước đã!",
-          "reply": "Voi Bảo mừng rỡ: anh nhớ rõ mình đặt kính ở bờ suối… hay trên ngọn cây nhỉ?"
+          "text": "Để mình tìm kính cho anh Tùng trước đã!",
+          "reply": "Voi Tùng mừng rỡ: anh nhớ rõ mình đặt kính ở bờ suối… hay trên ngọn cây nhỉ?"
         }
       ]
     },
     {
       "id": "tim-kinh-voi-bao",
-      "title": "Tìm kính của Voi Bảo",
-      "goTo": "Tìm kính của Voi Bảo dọc bờ suối đầy sỏi",
+      "title": "Tìm kính của Voi Tùng",
+      "goTo": "Tìm kính của Voi Tùng dọc bờ suối đầy sỏi",
       "kind": "search",
       "targets": [
         "tv2-t03-kinh-voi-bao",
@@ -91,10 +92,10 @@
     {
       "id": "khoi-dong",
       "title": "Em thích được khen điều gì",
-      "goTo": "Mang kính về suối soi bóng cho Voi Bảo",
+      "goTo": "Mang kính tới gốc sung bên suối, Voi Tùng đang nheo mắt chờ",
       "kind": "speak",
-      "target": "voi-bao",
-      "prompt": "Voi Bảo đeo kính vào, nhìn em gái rồi phì cười. Út phụng phịu quay sang hỏi {name}: Em thích được khen về điều gì?",
+      "target": "tv2-t03-b05-voi-tung",
+      "prompt": "Voi Tùng đeo kính vào, nhìn em gái rồi phì cười. Út phụng phịu quay sang hỏi {name}: Em thích được khen về điều gì?",
       "hints": [
         "Em thích được khen xinh, khen giỏi hay khen ngoan?",
         "Ai hay khen em nhất? Người đó thường khen em điều gì?",
@@ -179,7 +180,7 @@
         "right": [
           "Đúng rồi! Voi Út nghe xong đỏ mặt: hoá ra em hỏi y hệt voi em.",
           "Chuẩn, câu hỏi ấy chính là tên bài đọc luôn!",
-          "Voi Bảo đẩy kính lên mũi khen: {name} đọc kĩ hơn anh nhớ nữa."
+          "Voi Tùng đẩy kính lên mũi khen: {name} đọc kĩ hơn anh nhớ nữa."
         ],
         "wrong": [
           "Voi em không hỏi chuyện khoẻ yếu đâu, đọc lại lời voi em nói với hươu nhé.",
@@ -251,7 +252,7 @@
         "right": [
           "Ba chiếc lá về đúng chủ! Voi Út gật gù: ai cũng muốn voi giống mình cả.",
           "Chuẩn! Hươu khoe sừng, dê khoe râu, còn anh voi thì chỉ khen em.",
-          "Hươu Cao giật mình cụng đầu vào cành: {name} đọc nhanh quá!"
+          "Hươu Sừng Non giật mình cụng đầu vào cành: {name} đọc nhanh quá!"
         ],
         "wrong": [
           "Ai có đôi sừng nhỉ? Câu nói về sừng phải là của hươu đấy.",
@@ -263,10 +264,11 @@
     {
       "id": "loi-khuyen-cua-ai",
       "title": "Voi em nghe lời ai",
+      "goTo": "Chạy về gốc sung bên suối, Voi Tùng muốn nghe đoạn cuối truyện",
       "kind": "challenge",
       "mechanic": "quiz",
-      "target": "tv2-t03-tang-da-ben-suoi",
-      "prompt": "Voi Bảo đẩy kính lên tận trán, chăm chú chờ câu trả lời. Cuối cùng, voi em đã làm theo lời khuyên của ai? Kết quả như thế nào?",
+      "target": "tv2-t03-b05-voi-tung",
+      "prompt": "Voi Tùng đẩy kính lên tận trán, chăm chú chờ câu trả lời. Cuối cùng, voi em đã làm theo lời khuyên của ai? Kết quả như thế nào?",
       "choices": [
         {
           "id": "huou",
@@ -302,7 +304,7 @@
       "feedback": {
         "right": [
           "Đúng thế! Nghe lời anh, voi em lại xinh đẹp hẳn lên.",
-          "Voi Bảo ưỡn ngực tự hào: anh voi nào cũng nói đúng cả!",
+          "Voi Tùng ưỡn ngực tự hào: anh voi nào cũng nói đúng cả!",
           "Chính xác, {name} tìm đúng đoạn cuối của bài rồi."
         ],
         "wrong": [
@@ -315,9 +317,10 @@
     {
       "id": "sung-rau-gia",
       "title": "Đôi sừng và bộ râu giả",
+      "goTo": "Ra suối soi bóng, Voi Út đang lúi húi gỡ cành cây",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "target": "tv2-t03-tang-da-ben-suoi",
+      "target": "voi-ut",
       "prompt": "Voi Út tháo cành cây trên đầu xuống, đọc lại chỗ voi em bắt chước bạn mà thấy giống mình ghê. Chọn từ ngữ đúng như trong bài đọc.",
       "template": "Nghe vậy, voi nhặt vài {{gai-dau}}, gài lên đầu rồi đi tiếp.\nVoi liền nhổ một {{gan-cam}} bên đường, gắn vào cằm rồi về nhà.",
       "blanks": [
@@ -378,7 +381,7 @@
         "right": [
           "Điền chuẩn! Voi Út ném luôn cành cây khô xuống suối: tõm!",
           "Đúng như trong bài, sừng cành cây và râu cỏ dại.",
-          "{name} nhớ bài giỏi ghê, Voi Bảo phải lau kính nhìn lại cho kĩ."
+          "{name} nhớ bài giỏi ghê, Voi Tùng phải lau kính nhìn lại cho kĩ."
         ],
         "wrong": [
           "Bông hoa đỏ thì xinh thật, nhưng voi em gài cái khác cơ.",
@@ -390,6 +393,7 @@
     {
       "id": "hoat-dong-voi-em",
       "title": "Voi em đã làm những gì",
+      "goTo": "Vẹt Xanh gọi {name} quay lại tảng đá bên suối đố tiếp",
       "kind": "challenge",
       "mechanic": "multi-select",
       "target": "tv2-t03-tang-da-ben-suoi",
@@ -463,7 +467,7 @@
           "text": "Em bỏ hết cành cây với cỏ rồi. Giờ em chẳng giống ai cả… Em có xinh không?"
         },
         {
-          "speaker": "Voi Bảo",
+          "speaker": "Voi Tùng",
           "text": "Anh đeo kính rồi, nhìn rõ lắm: em xinh nhất khi là chính em đấy, Út ạ."
         },
         {
@@ -478,20 +482,21 @@
         },
         {
           "text": "Út phun nước giỏi nhất suối đấy!",
-          "reply": "Voi Út hút đầy vòi nước, phun lên thành một chiếc cầu vồng tí hon. Hươu Cao vỗ tay, lại cụng đầu vào cành."
+          "reply": "Voi Út hút đầy vòi nước, phun lên thành một chiếc cầu vồng tí hon. Hươu Sừng Non vỗ tay, lại cụng đầu vào cành."
         },
         {
           "text": "Út là chính Út, thế là xinh nhất rồi!",
-          "reply": "Voi Út cười tít mắt, quấn vòi ôm anh Bảo một cái thật chặt."
+          "reply": "Voi Út cười tít mắt, quấn vòi ôm anh Tùng một cái thật chặt."
         }
       ]
     },
     {
       "id": "bai-hoc-cua-voi-em",
       "title": "Điều học được từ voi em",
+      "goTo": "Ghé lùm cây thấp, Hươu Sừng Non vừa cụng đầu vào cành",
       "kind": "speak",
-      "target": "voi-ut",
-      "prompt": "Hươu Cao xoa cục u trên đầu, hỏi {name} một câu thật nghiêm túc: Em học được điều gì từ câu chuyện của voi em?",
+      "target": "tv2-t03-b05-huou-sung-non",
+      "prompt": "Hươu Sừng Non xoa cục u trên đầu, hỏi {name} một câu thật nghiêm túc: Em học được điều gì từ câu chuyện của voi em?",
       "hints": [
         "Voi em có cần giống hươu, giống dê mới xinh không?",
         "Vì sao bỏ sừng và râu đi, voi em lại thấy mình xinh hơn?",
@@ -504,9 +509,10 @@
     {
       "id": "neu-la-voi-anh",
       "title": "Nếu em là voi anh",
+      "goTo": "Sang gốc sung bên suối, Voi Tùng nhường vai anh cả cho {name}",
       "kind": "speak",
-      "target": "voi-bao",
-      "prompt": "Voi Bảo hắng giọng, nhường vai anh cả cho {name} một lát. Nếu là voi anh, em sẽ nói gì sau khi voi em bỏ sừng và râu?",
+      "target": "tv2-t03-b05-voi-tung",
+      "prompt": "Voi Tùng hắng giọng, nhường vai anh cả cho {name} một lát. Nếu là voi anh, em sẽ nói gì sau khi voi em bỏ sừng và râu?",
       "hints": [
         "Em sẽ khen voi em thế nào?",
         "Em có dặn voi em điều gì không?",
@@ -597,7 +603,7 @@
         "right": [
           "Bốn chiếc lá tranh nằm im theo đúng thứ tự, mặt nước cũng hết gợn!",
           "Xếp chuẩn! Voi Út soi xuống thấy cả câu chuyện của voi em.",
-          "Hươu Cao cúi xuống ngắm, lần này không cụng đầu vào đâu cả!"
+          "Hươu Sừng Non cúi xuống ngắm, lần này không cụng đầu vào đâu cả!"
         ],
         "wrong": [
           "Voi em phải gặp hươu trước mới có sừng cành cây chứ.",
@@ -655,7 +661,7 @@
     {
       "id": "ke-ve-voi-em",
       "title": "Kể cho người thân về voi em",
-      "goTo": "Về suối soi bóng tạm biệt hai anh em voi",
+      "goTo": "Về suối soi bóng tạm biệt Voi Út, anh Tùng vẫy vòi theo",
       "kind": "speak",
       "target": "voi-ut",
       "prompt": "Voi Út dặn với theo: kể cho cả nhà nghe về voi em nhé, nhớ bảo voi em xinh nhất khi đúng là voi! Kể cho người thân về nhân vật voi em trong câu chuyện.",
@@ -685,14 +691,14 @@
       "title": "Chiếc gương lá sen",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Voi Út tặng {name} một chiếc gương lá sen để soi bóng. Voi Bảo thì buộc luôn một sợi dây vào kính, thề từ nay không làm rơi kính nữa."
+      "text": "Voi Út tặng {name} một chiếc gương lá sen để soi bóng. Voi Tùng thì buộc luôn một sợi dây vào kính, thề từ nay không làm rơi kính nữa."
     },
     {
       "id": "mo-bai-6",
       "title": "Lớp học dưới tán cây",
       "kind": "unlock",
       "trigger": "auto",
-      "text": "Dưới tán cây lớn, lớp học của rừng sắp vào giờ. Mèo Mun ngồi im thin thít ở bàn cuối, cứ nghĩ tới chuyện phải nói trước lớp là râu lại run run."
+      "text": "Dưới tán cây lớn, lớp học của rừng sắp vào giờ. Mèo Nghệ ngồi im thin thít ở bàn cuối, cứ nghĩ tới chuyện phải nói trước lớp là râu lại run run."
     }
   ],
   "reward": {

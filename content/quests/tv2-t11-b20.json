@@ -2,15 +2,15 @@
   "id": "tv2-t11-b20",
   "region": "khu-rung-bi-mat",
   "chapter": 12,
-  "title": "Hổ Vằn muốn có bạn",
+  "title": "Sư Tử Xù muốn có bạn",
   "status": "active",
   "lesson": "tv2-t1-b20",
-  "summary": "Hổ Vằn gầm “Grừ!” cho oai nhưng thật ra rất nhút nhát, muốn làm quen mà ai cũng chạy mất. {name} cùng Hổ Vằn đọc truyện Nhím nâu kết bạn, học từ chỉ việc tốt và lời xin lỗi để làm quen với Gà Con Chíp.",
+  "summary": "Sư Tử Xù gầm “Grừ!” cho oai nhưng thật ra rất nhút nhát, muốn làm quen mà ai cũng chạy mất. {name} cùng Sư Tử Xù đọc truyện Nhím nâu kết bạn, học từ chỉ việc tốt và lời xin lỗi để làm quen với Thỏ Xíu.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Hổ Vằn (ra vẻ dữ, thật ra nhút nhát), Gà Con Chíp (hỏi “Tại sao?” liên tục)",
-    "where": "Bụi gai cuối rừng, lối mòn sau bụi gai, cái hang nhỏ và gốc sồi đầu lối mòn",
-    "goal": "Giúp Hổ Vằn kết bạn với Gà Con Chíp",
+    "who": "Sư Tử Xù (bờm xù, ra vẻ dữ, thật ra nhút nhát), Thỏ Xíu (hỏi “Tại sao?” liên tục), Sâu Róm Tơ (lông tua tủa mà hiền khô), Bác hái nấm Năm (kể chuyện về Hải và Xuân)",
+    "where": "Bụi gai cuối rừng, lối mòn sau bụi gai, cái hang nhỏ, tảng đá cửa hang, bãi nấm ven lối mòn và gốc sồi đầu lối mòn",
+    "goal": "Giúp Sư Tử Xù kết bạn với Thỏ Xíu",
     "play": "Tìm đồ trên lối mòn, nói, đọc truyện, xếp nhóm, trắc nghiệm, điền chữ, đóng vai, chọn cách làm quen, phiếu viết",
     "learn": "Tiếng Việt 2 Bài 20: đọc hiểu truyện “Nhím nâu kết bạn”, nói và đáp lời xin lỗi, chính tả g/gh, iu/ưu, iên/iêng, từ chỉ hoạt động và đặc điểm, đặt câu về hoạt động",
     "reward": "90 XP, 15 xu, Đọc hiểu +2, Chính tả +2, Từ ngữ +2",
@@ -45,34 +45,36 @@
     }
   },
   "places": {
-    "ho-van": "bụi gai cuối rừng",
     "do-vat-loi-mon": "lối mòn sau bụi gai",
     "tv2-t11-hang-da-nho": "cái hang nhỏ",
-    "ga-con-chip": "gốc sồi đầu lối mòn"
+    "tv2-t11-b20-su-tu-xu": "bụi gai cuối rừng",
+    "tv2-t11-b20-tho-xiu": "gốc sồi đầu lối mòn",
+    "tv2-t11-b20-sau-rom-to": "tảng đá cửa hang",
+    "tv2-t11-b20-bac-nam": "bãi nấm ven lối mòn"
   },
   "steps": [
     {
       "id": "gap-ho-van",
-      "title": "Hổ Vằn nấp trong bụi gai",
+      "title": "Sư Tử Xù nấp trong bụi gai",
       "goTo": "Đến bụi gai cuối rừng, chỗ vừa vang lên tiếng Grừ!",
       "kind": "dialogue",
-      "target": "ho-van",
+      "target": "tv2-t11-b20-su-tu-xu",
       "lines": [
         {
-          "speaker": "Hổ Vằn",
+          "speaker": "Sư Tử Xù",
           "text": "Grừ! Ai đó? À… {name} à. Đừng sợ nhé, tớ gầm cho oai thôi, chứ chân tớ đang run cầm cập."
         },
         {
-          "speaker": "Hổ Vằn",
+          "speaker": "Sư Tử Xù",
           "text": "Tớ muốn làm quen với các bạn lắm. Mà hễ tớ chào là cả đám chạy biến, chỉ còn mỗi chiếc lá rơi."
         },
         {
-          "speaker": "Gà Con Chíp",
-          "text": "Tại sao bạn ấy nhiều vằn thế? Tại sao răng to thế? Tại sao… á, tớ trốn đây!"
+          "speaker": "Thỏ Xíu",
+          "text": "Tại sao bạn ấy bờm xù thế? Tại sao răng to thế? Tại sao… á, tớ trốn đây!"
         },
         {
-          "speaker": "Hổ Vằn",
-          "text": "Thấy chưa, Chíp chui tọt ra sau gốc sồi rồi. Grừ… à không, hu hu."
+          "speaker": "Sư Tử Xù",
+          "text": "Thấy chưa, Xíu chui tọt ra sau gốc sồi rồi. Grừ… à không, hu hu."
         }
       ],
       "choices": [
@@ -96,10 +98,10 @@
     {
       "id": "duc-tinh-ban-tot",
       "title": "Bạn tốt là bạn thế nào",
-      "goTo": "Mang cuốn truyện về bụi gai cuối rừng cho Hổ Vằn",
+      "goTo": "Mang cuốn truyện về bụi gai cuối rừng cho Sư Tử Xù",
       "kind": "speak",
-      "target": "ho-van",
-      "prompt": "Hổ Vằn nằm bẹp sau bụi gai, chỉ thò mỗi cái đuôi vằn ra ngoài: thế bạn tốt thì phải như thế nào hả cậu?\nHãy kể những đức tính tốt của bạn em.\nEm muốn học tập những đức tính nào của bạn?",
+      "target": "tv2-t11-b20-su-tu-xu",
+      "prompt": "Sư Tử Xù nằm bẹp sau bụi gai, chỉ thò mỗi chùm lông đuôi ra ngoài: thế bạn tốt thì phải như thế nào hả cậu?\nHãy kể những đức tính tốt của bạn em.\nEm muốn học tập những đức tính nào của bạn?",
       "hints": [
         "Bạn em hiền lành, vui vẻ hay hay giúp đỡ người khác?",
         "Bạn ấy đã làm gì khiến em quý?",
@@ -127,7 +129,7 @@
       "target": "tv2-t11-hang-da-nho",
       "textRef": "nhim-nau",
       "audio": true,
-      "question": "Hổ Vằn chui theo, đầu vào được mà mông kẹt ngoài cửa hang. Nghe xong đoạn đầu, bạn ấy thì thào: giống tớ quá! Chi tiết nào cho thấy nhím nâu rất nhút nhát?",
+      "question": "Sư Tử Xù chui theo, đầu vào được mà mông kẹt ngoài cửa hang. Nghe xong đoạn đầu, bạn ấy thì thào: giống tớ quá! Chi tiết nào cho thấy nhím nâu rất nhút nhát?",
       "choices": [
         {
           "id": "nhim-trang-von-va",
@@ -162,8 +164,8 @@
       },
       "feedback": {
         "right": [
-          "Đúng rồi! Hổ Vằn gật đầu lia lịa, cụng cả vào trần hang: cộp!",
-          "Chuẩn! Nói lí nhí rồi nấp đi, đúng là nhút nhát y như Hổ Vằn.",
+          "Đúng rồi! Sư Tử Xù gật đầu lia lịa, cụng cả vào trần hang: cộp!",
+          "Chuẩn! Nói lí nhí rồi nấp đi, đúng là nhút nhát y như Sư Tử Xù.",
           "{name} tìm chi tiết giỏi như mũi Chó Mực đánh hơi."
         ],
         "wrong": [
@@ -179,7 +181,7 @@
       "kind": "challenge",
       "mechanic": "classify",
       "target": "tv2-t11-hang-da-nho",
-      "prompt": "Hổ Vằn đếm trên móng vuốt: một lần, hai lần… ối, đếm lẫn sang móng chân rồi! Kể về những lần nhím trắng và nhím nâu gặp nhau. Xếp mỗi việc vào đúng lần gặp.",
+      "prompt": "Sư Tử Xù đếm trên móng vuốt: một lần, hai lần… ối, đếm lẫn sang móng chân rồi! Kể về những lần nhím trắng và nhím nâu gặp nhau. Xếp mỗi việc vào đúng lần gặp.",
       "groups": [
         {
           "id": "lan-dau",
@@ -243,9 +245,9 @@
       },
       "feedback": {
         "right": [
-          "Hai lần gặp rõ ràng rành mạch! Hổ Vằn đếm lại, lần này không lẫn móng nào.",
+          "Hai lần gặp rõ ràng rành mạch! Sư Tử Xù đếm lại, lần này không lẫn móng nào.",
           "Đúng rồi, buổi sáng thì trốn, mùa đông thì được mời ở lại.",
-          "Giỏi quá, Hổ Vằn vẫy đuôi đập vào vách hang bồm bộp."
+          "Giỏi quá, Sư Tử Xù vẫy đuôi đập vào vách hang bồm bộp."
         ],
         "wrong": [
           "Chuyện trú mưa trong hang là lần gặp lại vào mùa đông đấy.",
@@ -256,9 +258,10 @@
     },
     {
       "id": "vi-sao-nhan-loi",
+      "goTo": "Ra tảng đá cửa hang, Sâu Róm Tơ đang xù lông chờ nghe kể tiếp",
       "title": "Vì sao nhím nâu nhận lời",
       "kind": "read",
-      "target": "tv2-t11-hang-da-nho",
+      "target": "tv2-t11-b20-sau-rom-to",
       "textRef": "nhim-nau",
       "question": "Theo em, vì sao nhím nâu nhận lời kết bạn cùng nhím trắng?",
       "choices": [
@@ -295,9 +298,9 @@
       },
       "feedback": {
         "right": [
-          "Đúng rồi! Hổ Vằn lẩm bẩm: không có bạn thì buồn thật, tớ biết mà.",
+          "Đúng rồi! Sư Tử Xù lẩm bẩm: không có bạn thì buồn thật, tớ biết mà.",
           "Chuẩn, tấm lòng tốt bụng của nhím trắng đã làm nhím nâu mạnh dạn.",
-          "{name} hiểu bạn nhím nâu ghê, Hổ Vằn chớp chớp mắt cảm động."
+          "{name} hiểu bạn nhím nâu ghê, Sư Tử Xù chớp chớp mắt cảm động."
         ],
         "wrong": [
           "Truyện không nói gì về quả cây trong hang đâu, đọc đoạn ba nhé.",
@@ -308,11 +311,12 @@
     },
     {
       "id": "mua-dong-am-ap",
+      "goTo": "Chui lại vào cái hang nhỏ, đoạn cuối truyện vẫn đang chờ",
       "title": "Mùa đông ấm áp của hai bạn",
       "kind": "challenge",
       "mechanic": "quiz",
       "target": "tv2-t11-hang-da-nho",
-      "prompt": "Hổ Vằn ôm má mơ màng: một mùa đông ấm áp… nghe thích quá, tớ cũng muốn có một mùa đông như thế. Nhờ đâu nhím trắng và nhím nâu có những ngày mùa đông vui vẻ, ấm áp?",
+      "prompt": "Sư Tử Xù ôm má mơ màng: một mùa đông ấm áp… nghe thích quá, tớ cũng muốn có một mùa đông như thế. Nhờ đâu nhím trắng và nhím nâu có những ngày mùa đông vui vẻ, ấm áp?",
       "choices": [
         {
           "id": "lo-suoi",
@@ -348,7 +352,7 @@
       "feedback": {
         "right": [
           "Đúng rồi, có bạn bên cạnh là ấm hơn cả chăn bông!",
-          "Chính xác! Hổ Vằn quyết tâm: mùa đông này tớ cũng phải có bạn.",
+          "Chính xác! Sư Tử Xù quyết tâm: mùa đông này tớ cũng phải có bạn.",
           "Giỏi lắm, câu cuối truyện đã được {name} tìm ra."
         ],
         "wrong": [
@@ -363,8 +367,8 @@
       "title": "Đóng vai lần gặp lại",
       "goTo": "Ra khỏi hang, về bụi gai cuối rừng tập đóng vai",
       "kind": "speak",
-      "target": "ho-van",
-      "prompt": "Hổ Vằn xin làm nhím nâu vì bạn ấy cuộn tròn giỏi lắm… nhưng cuộn mãi vẫn thò cái đuôi vằn ra ngoài. Đóng vai nhím trắng, nhím nâu trong lần gặp lại để nói tiếp các câu: Xin lỗi,... Đừng ngại,...",
+      "target": "tv2-t11-b20-su-tu-xu",
+      "prompt": "Sư Tử Xù xin làm nhím nâu vì bạn ấy cuộn tròn giỏi lắm… nhưng cuộn mãi vẫn thò cái bờm xù ra ngoài. Đóng vai nhím trắng, nhím nâu trong lần gặp lại để nói tiếp các câu: Xin lỗi,... Đừng ngại,...",
       "hints": [
         "Nhím nâu run run: Xin lỗi, …",
         "Nhím trắng tươi cười: Đừng ngại, …",
@@ -387,8 +391,8 @@
       "id": "noi-loi-xin-loi",
       "title": "Lời xin lỗi khi va phải bạn",
       "kind": "speak",
-      "target": "ho-van",
-      "prompt": "Hổ Vằn gãi đầu: hôm qua tớ chạy vội, va trúng Chíp làm Chíp lăn một vòng. Thảo nào Chíp sợ tớ! Đóng vai Bình và An để nói và đáp lời xin lỗi trong tình huống: Bình vô tình va vào An, làm An ngã.",
+      "target": "tv2-t11-b20-su-tu-xu",
+      "prompt": "Sư Tử Xù gãi đầu: hôm qua tớ chạy vội, va trúng Xíu làm Xíu lăn một vòng. Thảo nào Xíu sợ tớ! Đóng vai Bình và An để nói và đáp lời xin lỗi trong tình huống: Bình vô tình va vào An, làm An ngã.",
       "hints": [
         "Bình: Ôi, …",
         "An: …",
@@ -401,11 +405,11 @@
     {
       "id": "gio-van-iu-uu",
       "title": "Bốn cái giỏ vần",
-      "goTo": "Sang gốc sồi đầu lối mòn, Chíp đang ló đầu ra nhìn",
+      "goTo": "Sang gốc sồi đầu lối mòn, Xíu đang ló đôi tai dài ra nhìn",
       "kind": "challenge",
       "mechanic": "classify",
-      "target": "ga-con-chip",
-      "prompt": "Chíp hết sợ rồi, lại hỏi: tại sao iu với ưu trông giống nhau thế? Tại sao iên với iêng lại khác nhau? Cùng chia các từ vào đúng giỏ nào!\nChọn a hoặc b. a. Tìm từ có tiếng chứa iu hoặc ưu. M: iu: líu lo; ưu: lưu luyến\nChọn a hoặc b. b. Tìm từ có tiếng chứa iên hoặc iêng. M: iên: hiền lành; iêng: siêng năng",
+      "target": "tv2-t11-b20-tho-xiu",
+      "prompt": "Xíu hết sợ rồi, lại hỏi: tại sao iu với ưu trông giống nhau thế? Tại sao iên với iêng lại khác nhau? Cùng chia các từ vào đúng giỏ nào!\nChọn a hoặc b. a. Tìm từ có tiếng chứa iu hoặc ưu. M: iu: líu lo; ưu: lưu luyến\nChọn a hoặc b. b. Tìm từ có tiếng chứa iên hoặc iêng. M: iên: hiền lành; iêng: siêng năng",
       "groups": [
         {
           "id": "iu",
@@ -488,9 +492,9 @@
       },
       "feedback": {
         "right": [
-          "Bốn giỏ đầy đủ! Chíp vỗ cánh: à, ra là thế, ra là thế!",
-          "Đúng hết rồi, Chíp quên luôn câu “tại sao” tiếp theo.",
-          "Chíp nhảy tưng tưng: {name} phân biệt vần tài quá!"
+          "Bốn giỏ đầy đủ! Xíu vỗ tay: à, ra là thế, ra là thế!",
+          "Đúng hết rồi, Xíu quên luôn câu “tại sao” tiếp theo.",
+          "Xíu nhảy tưng tưng: {name} phân biệt vần tài quá!"
         ],
         "wrong": [
           "Quả lựu có vần ưu, cái rìu mới là iu đấy.",
@@ -504,8 +508,8 @@
       "title": "Ba mẩu thơ g hay gh",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "target": "ga-con-chip",
-      "prompt": "Chíp chìa ra ba mẩu thơ nhặt dưới gốc sồi: tại sao chỗ này viết g, chỗ kia lại viết gh? Chọn g hoặc gh thay cho ô vuông.",
+      "target": "tv2-t11-b20-tho-xiu",
+      "prompt": "Xíu chìa ra ba mẩu thơ nhặt dưới gốc sồi: tại sao chỗ này viết g, chỗ kia lại viết gh? Chọn g hoặc gh thay cho ô vuông.",
       "template": "– Suối {{a1}}ặp bạn rồi\n{{a2}}óp thành sông lớn.\nSông đi ra biển\nBiển thành mênh mông.\n(Theo Nguyễn Bao)\n– Quả {{b1}}ấc nào mà chín\nCũng {{b2}}ặp được mặt trời.\n(Theo Nguyễn Đức Quang)\n– Nắng {{c1}}é vào cửa lớp\nXem chúng em học bài.\n(Theo Nguyễn Xuân Sanh)",
       "blanks": [
         {
@@ -602,9 +606,9 @@
       },
       "feedback": {
         "right": [
-          "Năm ô đều đúng! Chíp gật gù, lần đầu tiên quên hỏi “tại sao”.",
+          "Năm ô đều đúng! Xíu gật gù, lần đầu tiên quên hỏi “tại sao”.",
           "Chuẩn rồi, gh chỉ đi với e, ê, i thôi, {name} nhớ chắc ghê.",
-          "Ba mẩu thơ liền mạch, Chíp đọc to đến mức Hổ Vằn cũng vỗ tay."
+          "Ba mẩu thơ liền mạch, Xíu đọc to đến mức Sư Tử Xù cũng vỗ tay."
         ],
         "wrong": [
           "Ô trước chữ é thì cần thêm h đấy.",
@@ -615,12 +619,12 @@
     },
     {
       "id": "la-tu-ngu-ho-van",
-      "title": "Sáu chiếc lá của Hổ Vằn",
-      "goTo": "Về bụi gai cuối rừng, Hổ Vằn có việc nhờ",
+      "title": "Sáu chiếc lá của Sư Tử Xù",
+      "goTo": "Về bụi gai cuối rừng, Sư Tử Xù có việc nhờ",
       "kind": "challenge",
       "mechanic": "classify",
-      "target": "ho-van",
-      "prompt": "Hổ Vằn viết sáu từ lên sáu chiếc lá để tập làm bạn tốt, nhưng gió thổi lẫn hết cả. Grừ… à không, nhờ cậu nhé! Xếp các từ ngữ dưới đây vào nhóm thích hợp: nhường bạn, hiền lành, giúp đỡ, chia sẻ, chăm chỉ, tươi cười.",
+      "target": "tv2-t11-b20-su-tu-xu",
+      "prompt": "Sư Tử Xù viết sáu từ lên sáu chiếc lá để tập làm bạn tốt, nhưng gió thổi lẫn hết cả. Grừ… à không, nhờ cậu nhé! Xếp các từ ngữ dưới đây vào nhóm thích hợp: nhường bạn, hiền lành, giúp đỡ, chia sẻ, chăm chỉ, tươi cười.",
       "groups": [
         {
           "id": "hoat-dong",
@@ -685,9 +689,9 @@
       },
       "feedback": {
         "right": [
-          "Hai nhóm gọn gàng! Hổ Vằn dán sáu chiếc lá lên ngực như huân chương.",
+          "Hai nhóm gọn gàng! Sư Tử Xù dán sáu chiếc lá lên ngực như huân chương.",
           "Đúng rồi, việc làm một bên, tính nết một bên.",
-          "Hổ Vằn hứa sẽ “tươi cười” thay cho “gầm grừ” từ hôm nay."
+          "Sư Tử Xù hứa sẽ “tươi cười” thay cho “gầm grừ” từ hôm nay."
         ],
         "wrong": [
           "Giúp đỡ là việc mình làm, nên nó thuộc nhóm hoạt động.",
@@ -698,11 +702,12 @@
     },
     {
       "id": "chuyen-hai-xuan-ha",
+      "goTo": "Đến bãi nấm ven lối mòn, Bác hái nấm Năm có ba mẩu chuyện muốn kể",
       "title": "Chuyện của Hải và Xuân",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "target": "ho-van",
-      "prompt": "Hổ Vằn đọc ba mẩu chuyện về Hải và Xuân, gật gù: tớ cũng muốn được khen như thế! Chọn từ ngữ chỉ hoạt động đã tìm được ở bài tập 1 thay cho ô vuông.",
+      "target": "tv2-t11-b20-bac-nam",
+      "prompt": "Sư Tử Xù đọc ba mẩu chuyện về Hải và Xuân, gật gù: tớ cũng muốn được khen như thế! Chọn từ ngữ chỉ hoạt động đã tìm được ở bài tập 1 thay cho ô vuông.",
       "template": "a. Mẹ cho Hải cái bánh rất ngon. Hải mang đến cho Hà và Xuân cùng ăn. Mẹ khen: “Con biết {{o-a}} cùng bạn bè rồi đấy”.\nb. Biết Hải ốm, phải nghỉ học, Xuân mang sách vở sang, giảng bài cho bạn. Hải xúc động vì bạn đã {{o-b}} khi mình bị ốm.\nc. Hải và Xuân đều muốn ngồi bàn đầu. Nhưng ở đó chỉ còn một chỗ. Xuân xin cô cho Hải được ngồi chỗ mới. Cô khen Xuân đã biết {{o-c}}.",
       "blanks": [
         {
@@ -783,9 +788,9 @@
       },
       "feedback": {
         "right": [
-          "Ba mẩu chuyện tròn trịa! Hổ Vằn xoa bụng: nghe chuyện bánh mà đói ghê.",
+          "Ba mẩu chuyện tròn trịa! Sư Tử Xù xoa bụng: nghe chuyện bánh mà đói ghê.",
           "Đúng cả ba, chia sẻ, giúp đỡ, nhường bạn đều đúng chỗ.",
-          "Hổ Vằn reo: tớ sẽ thử cả ba việc tốt này với Chíp!"
+          "Sư Tử Xù reo: tớ sẽ thử cả ba việc tốt này với Xíu!"
         ],
         "wrong": [
           "Mang bánh mời bạn cùng ăn là biết làm gì với bạn nhỉ?",
@@ -796,10 +801,11 @@
     },
     {
       "id": "tranh-tren-bui-gai",
+      "goTo": "Quay về bụi gai cuối rừng, Sư Tử Xù đang treo tranh lên cành gai",
       "title": "Bốn bức tranh trên bụi gai",
       "kind": "speak",
-      "target": "ho-van",
-      "prompt": "Hổ Vằn treo bốn bức tranh lên bụi gai, gai nhọn giữ tranh chắc ra phết! Đặt một câu về hoạt động của các bạn trong tranh. M: Bạn Lan cho bạn Hải mượn bút.",
+      "target": "tv2-t11-b20-su-tu-xu",
+      "prompt": "Sư Tử Xù treo bốn bức tranh lên bụi gai, gai nhọn giữ tranh chắc ra phết! Đặt một câu về hoạt động của các bạn trong tranh. M: Bạn Lan cho bạn Hải mượn bút.",
       "hints": [
         "Tranh 2: Cô giáo và các bạn đến nhà ai? Để làm gì?",
         "Tranh 3: Hai bạn đang lau những gì trong lớp?",
@@ -847,41 +853,41 @@
     },
     {
       "id": "ho-van-lam-quen",
-      "title": "Hổ Vằn chọn cách làm quen",
+      "title": "Sư Tử Xù chọn cách làm quen",
       "kind": "dialogue",
-      "target": "ho-van",
+      "target": "tv2-t11-b20-su-tu-xu",
       "lines": [
         {
-          "speaker": "Hổ Vằn",
+          "speaker": "Sư Tử Xù",
           "text": "Tớ hiểu rồi! Nhím trắng đâu có gầm, nhím trắng tươi cười và chào thật vồn vã."
         },
         {
-          "speaker": "Hổ Vằn",
-          "text": "Vậy lần này tớ làm quen với Chíp thế nào đây, {name}? Đuôi tớ lại bắt đầu run rồi…"
+          "speaker": "Sư Tử Xù",
+          "text": "Vậy lần này tớ làm quen với Xíu thế nào đây, {name}? Đuôi tớ lại bắt đầu run rồi…"
         }
       ],
       "choices": [
         {
           "text": "Cậu cười thật tươi rồi chào: Chào bạn, rất vui được gặp bạn!",
-          "reply": "Grừ… à nhầm, chào bạn! Ôi, Chíp vẫy cánh chào lại tớ kìa!"
+          "reply": "Grừ… à nhầm, chào bạn! Ôi, Xíu vẫy tai chào lại tớ kìa!"
         },
         {
-          "text": "Cậu mời Chíp ăn chung mấy quả dại vừa hái.",
-          "reply": "Chíp mổ một quả rồi hỏi: tại sao quả này ngọt thế? Tớ chẳng biết, nhưng vui quá!"
+          "text": "Cậu mời Xíu ăn chung mấy quả dại vừa hái.",
+          "reply": "Xíu gặm một quả rồi hỏi: tại sao quả này ngọt thế? Tớ chẳng biết, nhưng vui quá!"
         },
         {
-          "text": "Cậu rủ Chíp chơi trốn tìm, cậu làm người đi tìm.",
-          "reply": "Ý hay! Lần này tớ đi tìm, khỏi lo cái đuôi vằn thò ra ngoài nữa."
+          "text": "Cậu rủ Xíu chơi trốn tìm, cậu làm người đi tìm.",
+          "reply": "Ý hay! Lần này tớ đi tìm, khỏi lo cái bờm xù thò ra ngoài nữa."
         }
       ]
     },
     {
       "id": "hoat-dong-yeu-thich",
       "title": "Kể về trò em thích",
-      "goTo": "Cùng Hổ Vằn sang gốc sồi đầu lối mòn ngồi với Chíp",
+      "goTo": "Cùng Sư Tử Xù sang gốc sồi đầu lối mòn ngồi với Xíu",
       "kind": "speak",
-      "target": "ga-con-chip",
-      "prompt": "Chíp kéo Hổ Vằn ngồi xuống cạnh mình, chẳng ai trốn nữa. Chíp hỏi: tại sao cậu thích trò đó? Tìm đọc các bài viết về hoạt động của học sinh ở trường. Nói với bạn về hoạt động em yêu thích.",
+      "target": "tv2-t11-b20-tho-xiu",
+      "prompt": "Xíu kéo Sư Tử Xù ngồi xuống cạnh mình, chẳng ai trốn nữa. Xíu hỏi: tại sao cậu thích trò đó? Tìm đọc các bài viết về hoạt động của học sinh ở trường. Nói với bạn về hoạt động em yêu thích.",
       "hints": [
         "Tên của hoạt động là gì?",
         "Những ai đã tham gia hoạt động đó?",
@@ -907,7 +913,7 @@
       "kind": "worksheet",
       "trigger": "auto",
       "lessonId": "tv2-t1-b20",
-      "text": "Nhờ bố mẹ in phiếu Bài 20 ở khu phụ huynh: nghe – viết đoạn Nhím nâu kết bạn, kể tên các hoạt động giờ ra chơi và viết 3 – 4 câu về giờ ra chơi ở trường em. Hổ Vằn hứa ngồi cạnh, không gầm làm em giật mình.",
+      "text": "Nhờ bố mẹ in phiếu Bài 20 ở khu phụ huynh: nghe – viết đoạn Nhím nâu kết bạn, kể tên các hoạt động giờ ra chơi và viết 3 – 4 câu về giờ ra chơi ở trường em. Sư Tử Xù hứa ngồi cạnh, không gầm làm em giật mình.",
       "curriculumRef": [
         "tv2-t1-b20-nghe-viet-1",
         "tv2-t1-b20-viet-doan-1",
@@ -919,7 +925,7 @@
       "title": "Huy hiệu nhím cuộn tròn",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Hổ Vằn tặng {name} chiếc huy hiệu hình chú nhím cuộn tròn, khắc dòng chữ “Bạn đầu tiên của Hổ Vằn”. Lần này bạn ấy chỉ gầm khẽ: grừ… cảm ơn nhé!"
+      "text": "Sư Tử Xù tặng {name} chiếc huy hiệu hình chú nhím cuộn tròn, khắc dòng chữ “Bạn đầu tiên của Sư Tử Xù”. Lần này bạn ấy chỉ gầm khẽ: grừ… cảm ơn nhé!"
     },
     {
       "id": "mo-bai-21",

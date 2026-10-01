@@ -5,11 +5,11 @@
   "title": "Lợn Rừng Đốm và chú lê-gô biết nói",
   "status": "active",
   "lesson": "tv2-t1-b22",
-  "summary": "Lợn Rừng Đốm xếp khối gỗ mãi chẳng ra hình gì, đổ cái oạch cả đống. Từ đống khối ấy, một chú lê-gô tí hon đứng dậy tự giới thiệu. {name} đọc bài \"Tớ là lê-gô\", tìm từ chỉ đặc điểm, điền chữ ng/ngh, ch/tr, uôn/uông và giúp Đốm ghép câu, giới thiệu đồ chơi.",
+  "summary": "Lợn Rừng Đốm xếp khối gỗ mãi chẳng ra hình gì, đổ cái oạch cả đống. Từ đống khối ấy, một chú lê-gô tí hon đứng dậy tự giới thiệu. {name} đọc bài \"Tớ là lê-gô\", tìm từ chỉ đặc điểm, điền chữ ng/ngh, ch/tr, uôn/uông và giúp Đốm ghép câu, giới thiệu đồ chơi, chạy khắp xưởng gặp Cáo Bin, Bác thợ mộc Sáu, Gấu Hạt Dẻ, Thỏ Trăng và Mèo Cuộn.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Lợn Rừng Đốm vụng về mê làm đồ chơi, chú lê-gô Tí Hon tự giới thiệu bằng giọng của bài đọc",
-    "where": "Xưởng đồ chơi gỗ dưới chân đồi và khoảng sân trước xưởng đầy khối gỗ lăn lóc",
+    "who": "Lợn Rừng Đốm vụng về mê làm đồ chơi, chú lê-gô Tí Hon tự giới thiệu bằng giọng của bài đọc, Cáo Bin (mê lắp tháp), Bác thợ mộc Sáu (treo biển xưởng), Gấu Hạt Dẻ (thích gấu bông), Thỏ Trăng (treo đèn trung thu), Mèo Cuộn (mê cuộn chỉ, giữ hiên xưởng)",
+    "where": "Xưởng đồ chơi gỗ dưới chân đồi: bàn lắp ráp, sân trước xưởng đầy khối gỗ lăn lóc, thềm đá sau xưởng, cổng rào tre, gốc thông góc sân, gốc bàng treo đèn và hiên cửa xưởng",
     "goal": "Giúp Lợn Rừng Đốm hiểu cách chơi lắp ráp để ghép được một món đồ chơi ra hình ra dáng",
     "play": "Tìm đồ, nói, đọc bài, trắc nghiệm, chọn nhiều đáp án, ghép nội dung với đoạn, điền chữ, xếp thẻ thành câu, lựa chọn trong hội thoại, phiếu viết",
     "learn": "Tiếng Việt 2 Bài 22: đọc hiểu \"Tớ là lê-gô\", từ chỉ đặc điểm, chính tả ng/ngh, ch/tr, uôn/uông, từ gọi tên đồ chơi, sắp xếp từ ngữ thành câu, giới thiệu đồ chơi",
@@ -42,8 +42,13 @@
   },
   "places": {
     "dom": "xưởng gỗ",
-    "ban-lap-rap": "xưởng gỗ",
-    "nhat-khoi-lan": "sân trước xưởng"
+    "ban-lap-rap": "bàn lắp ráp",
+    "nhat-khoi-lan": "sân trước xưởng",
+    "tv2-t12-b22-cao-bin": "thềm đá sau xưởng",
+    "tv2-t12-b22-bac-tho-moc-sau": "cổng rào tre",
+    "tv2-t12-b22-gau-hat-de": "gốc thông góc sân",
+    "tv2-t12-b22-tho-trang": "gốc bàng treo đèn",
+    "tv2-t12-b22-meo-cuon": "hiên cửa xưởng"
   },
   "steps": [
     {
@@ -95,7 +100,7 @@
     {
       "id": "do-choi-cua-em",
       "title": "Đồ chơi {name} thích nhất",
-      "goTo": "Mang khối lê-gô về bàn lắp ráp trong xưởng gỗ",
+      "goTo": "Ôm khối lê-gô về xưởng gỗ, Đốm đang ngồi bệt giữa sàn chờ",
       "kind": "speak",
       "target": "dom",
       "prompt": "Đốm xếp mấy khối vừa nhặt thành một hàng ngay ngắn, rồi tò mò hỏi {name}:\nNói tên một số đồ chơi của em. Em thích đồ chơi nào nhất?",
@@ -119,6 +124,7 @@
     },
     {
       "id": "doc-to-la-le-go",
+      "goTo": "Sang bàn lắp ráp, Tí Hon đã trèo lên đứng giữa bàn chờ kể",
       "title": "Tí Hon tự giới thiệu",
       "kind": "read",
       "target": "ban-lap-rap",
@@ -224,10 +230,11 @@
     },
     {
       "id": "loi-ich-le-go",
+      "goTo": "Ra thềm đá sau xưởng, Cáo Bin đang lắp một tòa tháp cao vút",
       "title": "Chơi lê-gô được gì?",
       "kind": "challenge",
       "mechanic": "multi-select",
-      "target": "ban-lap-rap",
+      "target": "tv2-t12-b22-cao-bin",
       "prompt": "Tí Hon chống nạnh: chơi với tớ không chỉ vui đâu nhé, còn được nhiều thứ lắm!\nTrò chơi lê-gô đem lại lợi ích gì?\nChọn tất cả những điều bài đọc nhắc tới.",
       "choices": [
         {
@@ -288,6 +295,7 @@
     },
     {
       "id": "noi-dung-tung-doan",
+      "goTo": "Quay vào bàn lắp ráp, Tí Hon đang xé bài giới thiệu làm bốn",
       "title": "Mỗi đoạn nói gì?",
       "kind": "challenge",
       "mechanic": "classify",
@@ -439,10 +447,11 @@
     },
     {
       "id": "ngang-hay-nghieng",
+      "goTo": "Chạy ra cổng rào tre, Bác thợ mộc Sáu đang đỡ ba tấm ván Đốm khắc",
       "title": "Ba câu thiếu chữ ng",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "target": "ban-lap-rap",
+      "target": "tv2-t12-b22-bac-tho-moc-sau",
       "prompt": "Đốm khắc ba câu lên ba tấm ván làm biển xưởng, nhưng tay vụng quá, khắc sót mất chữ đầu.\nChọn ng hoặc ngh thay cho ô vuông.",
       "template": "a. Dù ai nói {{a1}}ả nói {{a2}}iêng\nLòng ta vẫn vững như kiềng ba chân.\nb. Vào những {{b1}}ày {{b2}}ỉ, chúng tôi thường chơi đá bóng.\nc. Mấy cậu bạn đang {{c1}}ó {{c2}}iêng tìm chỗ chơi đá cầu.",
       "blanks": [
@@ -567,10 +576,11 @@
     },
     {
       "id": "do-choi-trong-tranh",
+      "goTo": "Vào lại xưởng gỗ, Đốm đang ngắm bức tranh treo trên vách",
       "title": "Kệ đồ chơi của hai bạn nhỏ",
       "kind": "challenge",
       "mechanic": "multi-select",
-      "target": "ban-lap-rap",
+      "target": "dom",
       "prompt": "Tí Hon chỉ lên bức tranh treo trong xưởng: hai bạn nhỏ chơi xếp hình trước một cái kệ đầy ắp, dưới sàn còn dây nhảy và khối lê-gô. Đốm nhìn mà thèm rỏ dãi.\nTìm từ ngữ gọi tên các đồ chơi có trong bức tranh sau:",
       "choices": [
         {
@@ -649,7 +659,7 @@
       "title": "Câu đầu tiên của Đốm",
       "kind": "challenge",
       "mechanic": "sort",
-      "target": "ban-lap-rap",
+      "target": "dom",
       "prompt": "Đốm muốn đặt một câu thật hay về Tí Hon, dùng cả tên đồ chơi lẫn từ chỉ đặc điểm vừa tìm được.\nĐặt một câu với từ ngữ vừa tìm được.\nGhép bốn thẻ thành câu giúp Đốm nhé.",
       "items": [
         {
@@ -708,10 +718,11 @@
     },
     {
       "id": "cau-gau-bong",
+      "goTo": "Ra gốc thông góc sân, Gấu Hạt Dẻ đòi xem chú gấu bông mới may",
       "title": "Chú gấu bông của xưởng",
       "kind": "challenge",
       "mechanic": "sort",
-      "target": "ban-lap-rap",
+      "target": "tv2-t12-b22-gau-hat-de",
       "prompt": "Đốm vừa may xong một chú gấu bông, ôm vào lòng không chịu buông. Ba tấm thẻ chữ trên bàn thì lộn tùng phèo.\nSắp xếp từ ngữ thành câu và viết câu vào vở. a. rất, mềm mại, chú gấu bông",
       "items": [
         {
@@ -764,10 +775,11 @@
     },
     {
       "id": "chung-suc-trung-thu",
+      "goTo": "Sang gốc bàng treo đèn, Thỏ Trăng đang loay hoay buộc dây đèn",
       "title": "Biển treo đêm trung thu",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "target": "ban-lap-rap",
+      "target": "tv2-t12-b22-tho-trang",
       "prompt": "Sắp tới đêm hội, Đốm làm bốn tấm biển treo đèn, mà đục gỗ trượt tay mất chữ đầu.\nChọn a hoặc b. a. Chọn ch hoặc tr thay cho ô vuông.",
       "template": "{{x1}}ung thu\n{{x2}}ung sức\n{{x3}}ong {{x4}}óng\n{{x5}}ong xanh",
       "blanks": [
@@ -879,6 +891,7 @@
     },
     {
       "id": "cau-le-go-sac-so",
+      "goTo": "Về bàn lắp ráp, cả nhà lê-gô đã xếp hàng chờ ra mắt",
       "title": "Câu khoe hộp lê-gô",
       "kind": "challenge",
       "mechanic": "sort",
@@ -935,6 +948,7 @@
     },
     {
       "id": "dan-keo-hay-thao",
+      "goTo": "Chạy vào xưởng gỗ, Đốm đang ôm một lọ keo to tướng",
       "title": "Đốm muốn dán keo cả lâu đài",
       "kind": "dialogue",
       "target": "dom",
@@ -965,10 +979,11 @@
     },
     {
       "id": "chuong-gio-chuon-chuon",
+      "goTo": "Ra hiên cửa xưởng, Mèo Cuộn đang vồ theo cuộn chỉ xanh",
       "title": "Chuông gió và chuồn chuồn",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "target": "ban-lap-rap",
+      "target": "tv2-t12-b22-meo-cuon",
       "prompt": "Ngoài cửa xưởng, chiếc chuông gió leng keng, một chú chuồn chuồn đậu trên ngọn cỏ, còn cuộn chỉ xanh của Đốm lăn lông lốc. Sách in bài này như sau:\nChọn a hoặc b.\nb. Chọn uôn hoặc uông thay cho ô vuông.\nch■ gió   ch■̀ ch■̀   c■̣ chỉ\nTrong game, vần đã ghi sẵn dấu thanh của tiếng.",
       "template": "Treo trước xưởng: ch{{b1}} gió\nĐậu trên ngọn cỏ: ch{{b2}} ch{{b3}}\nLăn dưới chân bàn: c{{b4}} chỉ",
       "blanks": [
@@ -1065,6 +1080,7 @@
     },
     {
       "id": "cau-bup-be",
+      "goTo": "Quay lại bàn lắp ráp, Tí Hon chỉ lên chiếc kệ cao nhất",
       "title": "Cô búp bê trên kệ",
       "kind": "challenge",
       "mechanic": "sort",
@@ -1121,9 +1137,10 @@
     },
     {
       "id": "gioi-thieu-do-choi",
+      "goTo": "Trở ra hiên cửa xưởng, Mèo Cuộn đã kê sẵn bàn bày hội chợ",
       "title": "Hội chợ đồ chơi của Đốm",
       "kind": "speak",
-      "target": "dom",
+      "target": "tv2-t12-b22-meo-cuon",
       "prompt": "Đốm bày một hội chợ đồ chơi tí hon trước cửa xưởng và mời {name} làm người dẫn chương trình.\nGiới thiệu các đồ chơi mà trẻ em yêu thích.",
       "hints": [
         "Đồ chơi này tên là gì?",
@@ -1186,6 +1203,7 @@
     },
     {
       "id": "tim-bai-huong-dan",
+      "goTo": "Về xưởng gỗ, Đốm ngồi chờ nghe kể một bài hướng dẫn trò chơi",
       "title": "Tìm bài hướng dẫn trò chơi",
       "kind": "speak",
       "target": "dom",
@@ -1225,7 +1243,7 @@
       "title": "Trò chơi thiếu luật",
       "kind": "unlock",
       "trigger": "auto",
-      "text": "Trên bãi đất trống giữa rừng, Cáo Lém rủ cả bọn chơi rồng rắn lên mây, nhưng vừa xếp hàng xong thì Cáo gãi đầu: ơ… luật chơi thế nào nhỉ?"
+      "text": "Trên bãi đất trống giữa rừng, Cáo Tũn rủ cả bọn chơi rồng rắn lên mây, nhưng vừa xếp hàng xong thì Cáo Tũn gãi đầu: ơ… luật chơi thế nào nhỉ?"
     }
   ],
   "reward": {

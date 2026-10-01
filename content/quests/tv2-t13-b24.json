@@ -5,11 +5,11 @@
   "title": "Hải Ly Cần nặn quà bên suối",
   "status": "active",
   "lesson": "tv2-t1-b24",
-  "summary": "Đất sét bên suối khô cứng, Hải Ly Cần gặm thử suýt mẻ răng. {name} tìm nước và lá chuối ủ đất, đọc bài thơ Nặn đồ chơi bên phiến đá rêu, giúp Lợn Rừng Đốm tả đồ chơi trên giá rồi cùng Hải Ly chia quà nặn cho cả rừng.",
+  "summary": "Đất sét bên suối khô cứng, Hải Ly Cần gặm thử suýt mẻ răng. {name} tìm nước và lá chuối ủ đất, đọc bài thơ Nặn đồ chơi bên phiến đá rêu, giúp Lợn Rừng Đốm tả đồ chơi trên giá rồi cùng Hải Ly chia quà nặn cho cả rừng. Dọc suối còn có Bác thợ gốm Hai, Khỉ Toe, Mèo Nơ và Cá Chép Kim chờ góp vui.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Hải Ly Cần chăm chỉ cẩn thận, Mèo Mun điềm tĩnh mê nắm đất hình chuột, Lợn Rừng Đốm vụng về làm đồ chơi",
-    "where": "Bờ suối đất sét, bãi lau ven suối, phiến đá rêu chép bài thơ và giá đồ chơi gỗ",
+    "who": "Hải Ly Cần chăm chỉ cẩn thận, Mèo Mun điềm tĩnh mê nắm đất hình chuột, Lợn Rừng Đốm vụng về làm đồ chơi, Bác thợ gốm Hai (nặn bình bên lò gốm), Khỉ Toe (cười suốt ngày), Mèo Nơ (khéo gói quà), Cá Chép Kim (mê nghe đồng dao)",
+    "where": "Bờ suối đất sét, bãi lau ven suối, phiến đá rêu chép bài thơ, giá đồ chơi gỗ, lò gốm ven suối, cành ổi bên suối, bụi hồng ven suối và vũng suối trong",
     "goal": "Làm mềm đất sét để Hải Ly nặn quà tặng cả nhà và các bạn",
     "play": "Tìm đồ, nói, đọc thơ, xếp nhóm, chọn nhiều đáp án, trắc nghiệm, điền từ, điền vần, đặt dấu phẩy, lựa chọn trong hội thoại, phiếu viết",
     "learn": "Tiếng Việt 2 Bài 24: đọc hiểu bài thơ \"Nặn đồ chơi\", từ chỉ cảm xúc, da/gia, s/x, ươn/ương, từ chỉ đặc điểm của đồ chơi, dấu phẩy, tả đồ chơi",
@@ -48,7 +48,11 @@
     "hai-ly-can": "bờ suối đất sét",
     "tim-do-u-dat": "bãi lau ven suối",
     "tv2-t13-phien-da-reu": "phiến đá rêu",
-    "tv2-t13-gia-do-choi": "giá đồ chơi gỗ"
+    "tv2-t13-gia-do-choi": "giá đồ chơi gỗ",
+    "tv2-t13-b24-bac-tho-gom-hai": "lò gốm ven suối",
+    "tv2-t13-b24-khi-toe": "cành ổi bên suối",
+    "tv2-t13-b24-meo-no": "bụi hồng ven suối",
+    "tv2-t13-b24-ca-chep-kim": "vũng suối trong"
   },
   "steps": [
     {
@@ -175,10 +179,11 @@
     },
     {
       "id": "do-be-da-nan",
+      "goTo": "Chạy về bờ suối đất sét, Hải Ly vừa bày xong một mẹt đồ nặn",
       "title": "Mẹt đồ nặn lẫn lộn",
       "kind": "challenge",
       "mechanic": "classify",
-      "target": "tv2-t13-phien-da-reu",
+      "target": "hai-ly-can",
       "prompt": "Hải Ly Cần bày ra một mẹt đồ nặn: có món bé trong bài nặn, có món Hải Ly nặn thêm cho vui. Kể tên những đồ chơi bé đã nặn.\nKéo mỗi món vào đúng rổ.",
       "groups": [
         {
@@ -256,6 +261,7 @@
     },
     {
       "id": "tang-cho-ai",
+      "goTo": "Quay ra phiến đá rêu, Mèo Mun đang cuộn tròn ngủ trên đó",
       "title": "Những người được bé tặng quà",
       "kind": "challenge",
       "mechanic": "multi-select",
@@ -325,10 +331,11 @@
     },
     {
       "id": "tam-long-cua-be",
+      "goTo": "Ôm đất sang lò gốm ven suối, Bác thợ gốm Hai đang nặn dở chiếc bình",
       "title": "Món quà nói lên điều gì",
       "kind": "challenge",
       "mechanic": "quiz",
-      "target": "tv2-t13-phien-da-reu",
+      "target": "tv2-t13-b24-bac-tho-gom-hai",
       "prompt": "Hải Ly Cần ngẫm nghĩ, tay vẫn nhào đất: tớ cũng muốn nặn quà như bé. Việc bé nặn đồ chơi tặng mọi người thể hiện điều gì?",
       "choices": [
         {
@@ -377,9 +384,10 @@
     },
     {
       "id": "em-thich-nan-gi",
+      "goTo": "Về bờ suối đất sét, Hải Ly đã nhào xong mấy nắm đất mềm",
       "title": "Em muốn nặn món gì",
       "kind": "speak",
-      "target": "tv2-t13-phien-da-reu",
+      "target": "hai-ly-can",
       "prompt": "Hải Ly Cần dúi vào tay {name} một nắm đất sét đã mềm, còn ấm nắng: Em thích nặn đồ chơi gì? Để tặng cho ai?",
       "hints": [
         "Em muốn nặn con vật, đồ vật hay loại quả nào?",
@@ -392,6 +400,7 @@
     },
     {
       "id": "meo-thich-chi",
+      "goTo": "Mang chú chuột đất ra phiến đá rêu tặng Mèo Mun",
       "title": "Chú mèo vui ra sao",
       "kind": "challenge",
       "mechanic": "fill-blank",
@@ -452,10 +461,11 @@
     },
     {
       "id": "tu-vui-mung",
+      "goTo": "Leo lên cành ổi bên suối, Khỉ Toe cười toe toét chờ đọc từ vui",
       "title": "Trang sổ toàn từ vui",
       "kind": "challenge",
       "mechanic": "multi-select",
-      "target": "tv2-t13-phien-da-reu",
+      "target": "tv2-t13-b24-khi-toe",
       "prompt": "Hải Ly Cần lật sổ sang trang mới, muốn ghi kín một trang toàn những từ vui. Tìm thêm từ ngữ chỉ cảm xúc vui mừng.\nChọn tất cả những từ chỉ cảm xúc vui mừng.",
       "choices": [
         {
@@ -1006,10 +1016,11 @@
     },
     {
       "id": "qua-sinh-nhat-chi",
+      "goTo": "Ra bụi hồng ven suối, Mèo Nơ đang thắt nơ gói quà sinh nhật",
       "title": "Những món quà sinh nhật của Chi",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "target": "tv2-t13-gia-do-choi",
+      "target": "tv2-t13-b24-meo-no",
       "prompt": "Đốm sắp sang dự sinh nhật bạn Chi, cầm tấm thiệp mà đọc mãi không ra hơi. Cần đặt dấu phẩy vào vị trí nào trong câu in nghiêng? Hôm nay là sinh nhật của Chi. Chi nhận được bao nhiêu là quà: búp bê hộp đựng bút đồng hồ báo thức và chiếc nơ hồng. Chi rất vui và cảm động.",
       "template": "Chi nhận được bao nhiêu là quà: búp bê{{d1}} hộp đựng bút{{d2}} đồng hồ báo thức{{d3}} và chiếc nơ hồng.",
       "blanks": [
@@ -1144,9 +1155,10 @@
     },
     {
       "id": "doc-mo-rong",
+      "goTo": "Chiều xuống, cả bọn ra vũng suối trong, Cá Chép Kim ngoi lên nghe đồng dao",
       "title": "Bài đồng dao về trò chơi",
       "kind": "speak",
-      "target": "hai-ly-can",
+      "target": "tv2-t13-b24-ca-chep-kim",
       "prompt": "Chiều xuống, cả bọn ngồi bên suối đọc đồng dao, Đốm hát sai lời mà vẫn to nhất. Tìm đọc một bài thơ hoặc một bài đồng dao về một đồ chơi, trò chơi.\nNói với bạn: – Tên của đồ chơi, trò chơi – Cách chơi đồ chơi, trò chơi đó",
       "hints": [
         "Bài em tìm được tên là gì?",
@@ -1183,7 +1195,7 @@
       "title": "Hai chị em ong giận nhau",
       "kind": "unlock",
       "trigger": "auto",
-      "text": "Bên bụi hoa tỉ muội vang lên tiếng vo ve cãi cọ: hai chị em nhà Ong Vàng giành nhau một bông hoa, chẳng ai chịu ai. Ai sẽ làm lành cho hai chị em đây?"
+      "text": "Bên bụi hoa tỉ muội vang lên tiếng vo ve cãi cọ: hai chị em ong Hồng và Nụ giành nhau một bông hoa, chẳng ai chịu ai. Ai sẽ làm lành cho hai chị em đây?"
     }
   ],
   "reward": {

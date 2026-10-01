@@ -5,11 +5,11 @@
   "title": "Koala Na thao thức đêm hè",
   "status": "active",
   "lesson": "tv2-t1-b27",
-  "summary": "Đêm hè nóng nực, Koala Na, con koala ngủ giỏi nhất rừng, lại thao thức vì nhớ mẹ quạt cho mình. {name} tìm quạt nan, đọc bài thơ Mẹ trên tàu lá, rồi nghe Voi Bảo kể chuyện cây vú sữa dưới trăng.",
+  "summary": "Đêm hè nóng nực, Koala Na, con koala ngủ giỏi nhất rừng, lại thao thức vì nhớ mẹ quạt cho mình. {name} tìm quạt nan, đọc bài thơ Mẹ trên tàu lá, rồi nghe Hươu Nắng kể chuyện cây vú sữa dưới trăng.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Koala Na mê ngủ mà đêm nay mất ngủ, Gấu Tuyết Bông từ xứ lạnh đang chết nóng, Voi Bảo hiền lành nhớ giỏi",
-    "where": "Võng lá dưới trăng, lối mòn ánh trăng, tàu lá chép thơ và gốc cây vú sữa",
+    "who": "Koala Na mê ngủ mà đêm nay mất ngủ, Gấu Tuyết Bông từ xứ lạnh đang chết nóng, Mèo Tro mê đố chữ, Hươu Nắng cổ cao kể chuyện hay, Gấu Nâu Thóc thích nghe chuyện",
+    "where": "Võng lá dưới trăng, lối mòn ánh trăng, tàu lá chép thơ, gốc khế đầu lối, gốc cây vú sữa và chõng tre dưới trăng",
     "goal": "Giúp Koala Na ngủ ngon dù mẹ vắng nhà, và gửi tới mẹ một lời biết ơn",
     "play": "Tìm đồ, nói, đọc thơ, chọn nhiều đáp án, trắc nghiệm, điền từ, xếp nhóm, xếp dòng thơ, lựa chọn trong hội thoại, xếp tranh, kể chuyện, phiếu viết",
     "learn": "Tiếng Việt 2 Bài 27: đọc hiểu và học thuộc bài thơ \"Mẹ\", từ chỉ hoạt động, câu nói lời biết ơn, chữ hoa O, kể chuyện Sự tích cây vú sữa",
@@ -48,7 +48,9 @@
     "koala-na": "võng lá",
     "tim-quat-nan": "lối mòn ánh trăng",
     "tv2-t15-la-chep-tho": "tàu lá chép thơ",
-    "voi-bao": "cây vú sữa"
+    "tv2-t15-b27-huou-nang": "cây vú sữa",
+    "tv2-t15-b27-meo-tro": "gốc khế đầu lối",
+    "tv2-t15-b27-gau-nau-thoc": "chõng tre dưới trăng"
   },
   "steps": [
     {
@@ -260,9 +262,10 @@
     {
       "id": "cau-tho-cuoi",
       "title": "Ngọn gió của con",
+      "goTo": "Na ôm quạt nan chạy về võng lá, muốn đọc to câu thơ cuối",
       "kind": "challenge",
       "mechanic": "quiz",
-      "target": "tv2-t15-la-chep-tho",
+      "target": "koala-na",
       "prompt": "Na đọc to câu cuối rồi ôm chặt chiếc quạt nan. Theo em, câu thơ cuối bài muốn nói điều gì?",
       "choices": [
         {
@@ -312,6 +315,7 @@
     {
       "id": "tu-kho-dem-he",
       "title": "Hai từ trong ô Từ ngữ",
+      "goTo": "Gấu Tuyết Bông kéo {name} lại tàu lá chép thơ, chỉ vào hai từ lạ",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "target": "tv2-t15-la-chep-tho",
@@ -387,10 +391,11 @@
     {
       "id": "tu-chi-hoat-dong",
       "title": "Tìm từ chỉ hoạt động",
+      "goTo": "Ra gốc khế đầu lối, Mèo Tro vẫy đuôi rủ cả bọn chơi đố chữ",
       "kind": "challenge",
       "mechanic": "classify",
-      "target": "tv2-t15-la-chep-tho",
-      "prompt": "Voi Bảo lững thững đi qua, phe phẩy đôi tai to như hai cái quạt, rồi đố cả bọn: Tìm từ ngữ chỉ hoạt động có trong bài thơ.\nKéo mỗi thẻ vào đúng giỏ.",
+      "target": "tv2-t15-b27-meo-tro",
+      "prompt": "Mèo Tro lững thững đi qua, phe phẩy cái đuôi dài như chiếc quạt, rồi đố cả bọn: Tìm từ ngữ chỉ hoạt động có trong bài thơ.\nKéo mỗi thẻ vào đúng giỏ.",
       "groups": [
         {
           "id": "hoat-dong",
@@ -464,9 +469,9 @@
       },
       "feedback": {
         "right": [
-          "Voi Bảo vẫy tai rộng tới mức thổi bay cả mũ của Bông!",
+          "Mèo Tro quẫy đuôi mạnh tới mức hất bay cả mũ của Bông!",
           "Năm hoạt động về đúng giỏ, chuẩn không lệch thẻ nào.",
-          "{name} giỏi quá, đến Voi Bảo nhớ giỏi cũng phải khen."
+          "{name} giỏi quá, đến Mèo Tro tinh mắt cũng phải khen."
         ],
         "wrong": [
           "Thử nói \"đang con ve\" xem, nghe có kì không?",
@@ -479,8 +484,8 @@
       "id": "dat-cau-hoat-dong",
       "title": "Một câu với từ vừa tìm",
       "kind": "speak",
-      "target": "tv2-t15-la-chep-tho",
-      "prompt": "Voi Bảo nháy mắt: tìm được từ rồi thì dùng nó ngay cho khỏi quên. Đặt một câu với từ ngữ vừa tìm được.",
+      "target": "tv2-t15-b27-meo-tro",
+      "prompt": "Mèo Tro nháy mắt: tìm được từ rồi thì dùng nó ngay cho khỏi quên. Đặt một câu với từ ngữ vừa tìm được.",
       "hints": [
         "Chọn một từ: ru, quạt, thức, ngủ hay ngồi.",
         "Ai làm việc ấy? Làm khi nào?",
@@ -493,6 +498,7 @@
     {
       "id": "xep-sau-dong-tho",
       "title": "Sáu dòng thơ bị gió thổi",
+      "goTo": "Gió ào qua tàu lá chép thơ, mau chạy lại nhặt các dòng thơ",
       "kind": "challenge",
       "mechanic": "sort",
       "target": "tv2-t15-la-chep-tho",
@@ -611,8 +617,9 @@
     {
       "id": "loi-biet-on",
       "title": "Câu cảm ơn cha mẹ",
+      "goTo": "Rón rén ra tàu lá chép thơ cho Na ngủ yên, Bông nhón chân theo sau",
       "kind": "speak",
-      "target": "koala-na",
+      "target": "tv2-t15-la-chep-tho",
       "prompt": "Na ngủ rồi, Gấu Tuyết Bông thì thầm với {name}: còn cậu, cậu muốn cảm ơn bố mẹ điều gì? Nói một câu thể hiện lòng biết ơn của em đối với cha mẹ.",
       "hints": [
         "Bố mẹ đã làm gì cho em hôm nay?",
@@ -626,10 +633,10 @@
     {
       "id": "doan-tranh-vu-sua",
       "title": "Chuyện dưới gốc vú sữa",
-      "goTo": "Theo Voi Bảo ra gốc cây vú sữa trĩu quả dưới trăng",
+      "goTo": "Theo Hươu Nắng tới cây vú sữa trĩu quả, cổ bạn ấy cao chạm ánh trăng",
       "kind": "speak",
-      "target": "voi-bao",
-      "prompt": "Voi Bảo nhặt một quả vú sữa tròn căng, nói khẽ: cây này có cả một sự tích, để tớ kể. Nhưng trước tiên, cùng xem tranh câu chuyện Sự tích cây vú sữa. Dựa vào câu hỏi gợi ý, đoán nội dung của từng tranh.",
+      "target": "tv2-t15-b27-huou-nang",
+      "prompt": "Hươu Nắng vươn cổ hái một quả vú sữa tròn căng, nói khẽ: cây này có cả một sự tích, để tớ kể. Nhưng trước tiên, cùng xem tranh câu chuyện Sự tích cây vú sữa. Dựa vào câu hỏi gợi ý, đoán nội dung của từng tranh.",
       "hints": [
         "Bị mẹ mắng, cậu bé làm gì?",
         "Cậu bé làm gì khi quay về nhà?",
@@ -682,8 +689,8 @@
       "title": "Bốn tranh cây vú sữa",
       "kind": "challenge",
       "mechanic": "sort",
-      "target": "voi-bao",
-      "prompt": "Voi Bảo vô ý quạt tai mạnh quá, bốn bức tranh bay lộn tùng phèo. Nghe kể chuyện.\nXếp các tranh theo đúng thứ tự câu chuyện.",
+      "target": "tv2-t15-b27-huou-nang",
+      "prompt": "Hươu Nắng vô ý ngoảnh cổ mạnh quá, bốn bức tranh bay lộn tùng phèo. Nghe kể chuyện.\nXếp các tranh theo đúng thứ tự câu chuyện.",
       "items": [
         {
           "id": "tranh-2",
@@ -759,7 +766,7 @@
       },
       "feedback": {
         "right": [
-          "Bốn tranh đã về chỗ, Voi Bảo cẩn thận gấp tai lại cho khỏi quạt nữa.",
+          "Bốn tranh đã về chỗ, Hươu Nắng đứng thật im cho cổ khỏi quệt nữa.",
           "Đúng trình tự rồi, câu chuyện buồn mà đẹp quá.",
           "Bông lau nước mắt: {name} xếp giỏi thật, tớ thì chỉ biết khóc."
         ],
@@ -772,10 +779,11 @@
     },
     {
       "id": "ke-chuyen-vu-sua",
-      "title": "Kể chuyện cho Voi Bảo",
+      "title": "Kể chuyện cho Gấu Nâu Thóc",
+      "goTo": "Ra chõng tre dưới trăng, Gấu Nâu Thóc đã ngồi chờ nghe kể chuyện",
       "kind": "speak",
-      "target": "voi-bao",
-      "prompt": "Voi Bảo cuộn vòi, ngồi chăm chú như học sinh ngoan nhất lớp. Nghe kể chuyện.\nChọn kể 1 – 2 đoạn của câu chuyện theo tranh.",
+      "target": "tv2-t15-b27-gau-nau-thoc",
+      "prompt": "Gấu Nâu Thóc khoanh tay, ngồi chăm chú như học sinh ngoan nhất lớp. Nghe kể chuyện.\nChọn kể 1 – 2 đoạn của câu chuyện theo tranh.",
       "hints": [
         "Tranh 1: Vì sao cậu bé bỏ nhà đi?",
         "Tranh 2: Về nhà không thấy mẹ, cậu bé làm gì?",
@@ -820,9 +828,10 @@
     {
       "id": "cau-be-noi-gi",
       "title": "Nếu cậu bé gặp lại mẹ",
+      "goTo": "Quay lại cây vú sữa, Hươu Nắng đang ngước nhìn tán lá",
       "kind": "speak",
-      "target": "voi-bao",
-      "prompt": "Voi Bảo trầm ngâm, ngón chân gõ nhẹ xuống đất: tớ cứ nghĩ mãi một điều. Theo em, nếu được gặp lại mẹ, cậu bé trong câu chuyện sẽ nói gì?",
+      "target": "tv2-t15-b27-huou-nang",
+      "prompt": "Hươu Nắng trầm ngâm, móng chân gõ nhẹ xuống đất: tớ cứ nghĩ mãi một điều. Theo em, nếu được gặp lại mẹ, cậu bé trong câu chuyện sẽ nói gì?",
       "hints": [
         "Cậu bé sẽ xin lỗi mẹ điều gì?",
         "Cậu bé hứa với mẹ những gì?",

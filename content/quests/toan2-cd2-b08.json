@@ -5,11 +5,11 @@
   "title": "Sâu Xanh và những quả bầu bảng cộng",
   "status": "active",
   "lesson": "toan2-t1-b08",
-  "summary": "Gió làm rụng những quả bầu Sâu Xanh khắc bảng cộng, Heo Ủn lại suýt đem nấu canh; {name} giúp Sâu Xanh khắc lại bảng cộng (qua 10) và giải đố trước khi nồi canh sôi.",
+  "summary": "Gió làm rụng những quả bầu Sâu Xanh khắc bảng cộng, bác cấp dưỡng Lành lại suýt đem nấu canh; {name} chạy khắp vườn cùng Mèo Mướp Ú, Thỏ Kem, Gấu Tiêu giúp Sâu Xanh khắc lại bảng cộng (qua 10) và giải đố trước khi nồi canh sôi.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Sâu Xanh, Heo Ủn, Gấu Trúc Tròn",
-    "where": "Vườn trường: giàn bầu, gốc giàn bầu, bếp nhỏ cuối vườn",
+    "who": "Sâu Xanh, bác cấp dưỡng Lành, Mèo Mướp Ú, Thỏ Kem, Gấu Tiêu, Gấu Trúc Tròn",
+    "where": "Vườn trường: giàn bầu, gốc giàn bầu, chòi lá, giàn đèn lồng, bếp nhỏ cuối vườn, chum nước sau bếp",
     "goal": "Khắc lại bảng cộng (qua 10) lên những quả bầu bị rụng",
     "play": "Nhặt bầu, điền bảng cộng, chọn đèn lồng, thả cá, so sánh, đưa gấu về tổ ong, đố cáp treo",
     "learn": "Toán 2 Bài 8: bảng cộng (qua 10)",
@@ -30,7 +30,10 @@
   "places": {
     "sau-xanh": "giàn bầu",
     "nhat-bau-rung": "gốc giàn bầu",
-    "heo-un-bep-vuon": "bếp nhỏ cuối vườn"
+    "toan2-cd2-b08-meo-muop-u": "chòi lá",
+    "toan2-cd2-b08-tho-kem": "giàn đèn lồng",
+    "toan2-cd2-b08-bac-lanh": "bếp nhỏ cuối vườn",
+    "toan2-cd2-b08-gau-tieu": "chum nước sau bếp"
   },
   "steps": [
     {
@@ -45,12 +48,12 @@
           "text": "Hu hu {name} ơi… Tớ mất cả mùa hè khắc bảng cộng lên từng quả bầu, đêm qua gió thổi rụng hết rồi."
         },
         {
-          "speaker": "Heo Ủn",
-          "text": "Ủn ỉn! Bầu rụng à? Thế thì tớ xin mấy quả nấu canh nhé, canh bầu ngon tuyệt cú mèo!"
+          "speaker": "Bác Lành",
+          "text": "Ơi, bầu rụng hả? Bác ở bếp nghe thấy rồi, cho bác xin mấy quả nấu canh trưa nhé!"
         },
         {
           "speaker": "Sâu Xanh",
-          "text": "Không được! Trên đó có bảng cộng đấy. Tớ bò chậm lắm, {name} nhặt giúp tớ trước khi Heo Ủn ôm đi hết nhé."
+          "text": "Không được! Trên đó có bảng cộng đấy. Tớ bò chậm lắm, {name} nhặt giúp tớ trước khi bác Lành mang đi hết nhé."
         }
       ],
       "choices": [
@@ -59,8 +62,8 @@
           "reply": "Sâu Xanh rưng rưng: Cảm ơn cậu, tớ mà bò thì tới tối mới nhặt xong một quả."
         },
         {
-          "text": "Heo Ủn chờ chút nha!",
-          "reply": "Heo Ủn xoa bụng: Được thôi, nhưng bụng tớ đang réo ục ục rồi đấy."
+          "text": "Bác Lành chờ chút nha!",
+          "reply": "Bác Lành cười khà khà từ bếp: Được thôi, nhưng nồi nước sắp sôi rồi đấy."
         }
       ]
     },
@@ -78,8 +81,8 @@
     {
       "id": "qua-bau-dau-tien",
       "title": "Quả bầu tròn đầu tiên",
-      "goTo": "Mang bầu về giàn bầu cho Sâu Xanh",
-      "target": "sau-xanh",
+      "goTo": "Quả bầu tròn lăn tới chòi lá, Mèo Mướp Ú đang giữ hộ",
+      "target": "toan2-cd2-b08-meo-muop-u",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "prompt": "Trên quả bầu tròn còn dòng chữ Sâu Xanh khắc: \"Mình và Rô-bốt cùng hoàn thành các phép cộng này nhé!\"",
@@ -156,9 +159,9 @@
       },
       "feedback": {
         "right": [
-          "Quả bầu tròn sáng bóng, Sâu Xanh ôm chặt không rời!",
+          "Quả bầu tròn sáng bóng, Mèo Mướp Ú ôm chặt không rời!",
           "Ba phép cộng qua 10 đầu tiên đã về chỗ cũ.",
-          "Sâu Xanh gật gù: cậu tính còn nhanh hơn tớ khắc."
+          "Mèo Mướp Ú meo khen: cậu tính còn nhanh hơn Sâu Xanh khắc."
         ],
         "wrong": [
           "Mượn của số sau cho số trước đủ 10 rồi cộng tiếp nha.",
@@ -177,6 +180,7 @@
     {
       "id": "bang-cong-tren-bau",
       "title": "Bảng cộng khắc trên bầu hồ lô",
+      "goTo": "Mang quả bầu hồ lô về giàn bầu, Sâu Xanh đang thả tơ chờ",
       "target": "sau-xanh",
       "kind": "challenge",
       "mechanic": "fill-blank",
@@ -449,7 +453,8 @@
     {
       "id": "meo-con-duoi-gian",
       "title": "Mèo con dưới giàn bầu",
-      "target": "sau-xanh",
+      "goTo": "Về chòi lá, hai chú mèo con của Mèo Mướp Ú đang đòi cá",
+      "target": "toan2-cd2-b08-meo-muop-u",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "prompt": "Hai chú mèo con nằm dưới giàn bầu kêu meo meo đòi cá. Tìm cá cho mèo.",
@@ -528,10 +533,11 @@
     {
       "id": "den-long-giong-nhau",
       "title": "Đèn lồng giống nhau",
-      "target": "sau-xanh",
+      "goTo": "Sang giàn đèn lồng, Thỏ Kem đang kiễng chân treo đèn",
+      "target": "toan2-cd2-b08-tho-kem",
       "kind": "challenge",
       "mechanic": "multi-select",
-      "prompt": "Heo Ủn treo sáu đèn lồng lên giàn bầu, từ trái sang: đỏ 7 + 5, vàng 9 + 5, đỏ 4 + 8, đỏ 6 + 5, hồng 9 + 3, đỏ 8 + 7. a) Những đèn lồng nào ghi phép tính có kết quả bằng nhau?",
+      "prompt": "Thỏ Kem treo sáu đèn lồng lên giàn bầu, từ trái sang: đỏ 7 + 5, vàng 9 + 5, đỏ 4 + 8, đỏ 6 + 5, hồng 9 + 3, đỏ 8 + 7. a) Những đèn lồng nào ghi phép tính có kết quả bằng nhau?",
       "choices": [
         {
           "id": "7-5",
@@ -576,7 +582,7 @@
       "feedback": {
         "right": [
           "Ba đèn lồng mười hai sáng lên cùng lúc, lung linh quá!",
-          "Heo Ủn há mồm: ba đèn khác màu mà cùng kết quả cơ à?",
+          "Thỏ Kem há mồm: ba đèn khác màu mà cùng kết quả cơ à?",
           "Chọn đủ ba, không sót đèn nào, tinh mắt ghê."
         ],
         "wrong": [
@@ -596,10 +602,10 @@
     {
       "id": "den-do-lon-be",
       "title": "Đèn đỏ lớn nhất, bé nhất",
-      "target": "sau-xanh",
+      "target": "toan2-cd2-b08-tho-kem",
       "kind": "challenge",
       "mechanic": "classify",
-      "prompt": "Heo Ủn tháo bốn đèn đỏ xuống bàn để so. b) Trong bốn đèn lồng màu đỏ, đèn lồng nào ghi phép tính có kết quả lớn nhất, đèn lồng nào ghi phép tính có kết quả bé nhất?",
+      "prompt": "Thỏ Kem tháo bốn đèn đỏ xuống bàn để so. b) Trong bốn đèn lồng màu đỏ, đèn lồng nào ghi phép tính có kết quả lớn nhất, đèn lồng nào ghi phép tính có kết quả bé nhất?",
       "groups": [
         {
           "id": "nhom-ket-qua-lon-nhat",
@@ -651,7 +657,7 @@
         "right": [
           "Đèn 8 + 7 sáng nhất, đèn 6 + 5 hiền nhất, chuẩn rồi!",
           "So bốn đèn đỏ mà không bị đèn vàng, đèn hồng làm rối.",
-          "Heo Ủn phục lăn: cậu so sánh nhanh hơn tớ ăn bánh."
+          "Thỏ Kem phục lăn: cậu so sánh nhanh hơn tớ gặm cà rốt."
         ],
         "wrong": [
           "Chỉ so bốn đèn màu đỏ thôi, đèn vàng không tính.",
@@ -670,42 +676,42 @@
     },
     {
       "id": "heo-un-doi-nau-canh",
-      "title": "Heo Ủn đòi nấu canh",
-      "goTo": "Theo mùi khói sang bếp nhỏ cuối vườn, Heo Ủn đã nhóm lửa",
+      "title": "Bác Lành đòi nấu canh",
+      "goTo": "Theo mùi khói sang bếp nhỏ cuối vườn, bác cấp dưỡng Lành đã nhóm lửa",
       "kind": "dialogue",
-      "target": "heo-un-bep-vuon",
+      "target": "toan2-cd2-b08-bac-lanh",
       "lines": [
         {
-          "speaker": "Heo Ủn",
-          "text": "Lửa cháy tí tách rồi! Quả bầu nào không có chữ thì cho tớ nấu canh nhé, nhé, nhé?"
+          "speaker": "Bác Lành",
+          "text": "Lửa cháy tí tách rồi! Quả bầu nào không có chữ thì cho bác nấu canh nhé, nhé, nhé?"
         },
         {
           "speaker": "Sâu Xanh",
-          "text": "Quả nào cũng có bài tập đấy Heo Ủn ơi! Phải giải hết thì tớ mới chép lại được."
+          "text": "Quả nào cũng có bài tập đấy bác Lành ơi! Phải giải hết thì cháu mới chép lại được."
         },
         {
-          "speaker": "Heo Ủn",
-          "text": "Thế {name} giải giúp đi, tớ đứng canh nồi. Cậu muốn làm bài bảng trước hay bài so sánh trước?"
+          "speaker": "Bác Lành",
+          "text": "Thế {name} giải giúp đi, bác đứng canh nồi. Cháu muốn làm bài bảng trước hay bài so sánh trước?"
         }
       ],
       "choices": [
         {
           "text": "Làm bài bảng trước",
-          "reply": "Heo Ủn: Được, bảng số hạng ở ngay trên nắp nồi đây."
+          "reply": "Bác Lành: Được, bảng số hạng ở ngay trên nắp nồi đây."
         },
         {
-          "text": "Giải nhanh rồi cho Heo nấu canh",
-          "reply": "Heo Ủn reo lên: Bạn tốt quá! Tớ sẽ nấu canh bằng quả bầu trơn, không khắc chữ."
+          "text": "Giải nhanh rồi cho bác nấu canh",
+          "reply": "Bác Lành reo lên: Cháu ngoan quá! Bác sẽ nấu canh bằng quả bầu trơn, không khắc chữ."
         }
       ]
     },
     {
       "id": "bang-tren-nap-noi",
       "title": "Bảng trên nắp nồi",
-      "target": "heo-un-bep-vuon",
+      "target": "toan2-cd2-b08-bac-lanh",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Nắp nồi và cái thớt của Heo Ủn cũng bị Sâu Xanh khắc số lên từ bao giờ. Số ?",
+      "prompt": "Nắp nồi và cái thớt của bác Lành cũng bị Sâu Xanh khắc số lên từ bao giờ. Số ?",
       "template": "Số hạng | 7 | 9 | 4 | 8 | 9\nSố hạng | 5 | 3 | 8 | 4 | 8\nTổng | 12 | {{b1}} | {{b2}} | {{b3}} | {{b4}}\na) Ô vuông 8 → + 6 → hình tròn {{b5}} → – 4 → ngôi sao {{b6}}\nb) Hình tròn 5 → + 9 → ô vuông {{b7}} → + 4 → tam giác {{b8}} → – 8 → ngôi sao {{b9}}",
       "blanks": [
         {
@@ -886,7 +892,7 @@
         "right": [
           "Nắp nồi kêu lạch cạch như vỗ tay khen {name}!",
           "Đi theo mũi tên không lạc bước nào cả.",
-          "Heo Ủn ngạc nhiên: hai dãy mũi tên đều về đích 10!"
+          "Bác Lành ngạc nhiên: hai dãy mũi tên đều về đích 10!"
         ],
         "wrong": [
           "Mũi tên có dấu trừ thì bớt đi, đừng cộng nhé.",
@@ -911,7 +917,8 @@
     {
       "id": "gau-tim-to-ong",
       "title": "Gấu Trúc tìm tổ ong",
-      "target": "heo-un-bep-vuon",
+      "goTo": "Ra chum nước sau bếp, Gấu Tiêu cùng em gấu nhỏ đang tìm tổ ong",
+      "target": "toan2-cd2-b08-gau-tieu",
       "kind": "challenge",
       "mechanic": "classify",
       "prompt": "Gấu Trúc Tròn ghé bếp xin mật ong pha nước bầu, mang theo hai bạn gấu nhỏ. Tìm tổ ong cho gấu.",
@@ -977,10 +984,11 @@
     {
       "id": "can-dau-ben-noi",
       "title": "Cân đấu bên nồi canh",
-      "target": "heo-un-bep-vuon",
+      "goTo": "Quay vào bếp nhỏ cuối vườn, bác Lành bày bốn cặp phép tính lên bàn",
+      "target": "toan2-cd2-b08-bac-lanh",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Heo Ủn bày bốn cặp phép tính lên mặt bàn, cặp nào cũng cãi nhau xem ai lớn hơn. >; <; = ?",
+      "prompt": "Bác Lành bày bốn cặp phép tính lên mặt bàn, cặp nào cũng cãi nhau xem ai lớn hơn. >; <; = ?",
       "template": "a) 6 + 6 {{b1}} 11\na) 7 + 5 {{b2}} 12\nb) 9 + 3 {{b3}} 3 + 9\nb) 9 + 2 {{b4}} 7 + 7",
       "blanks": [
         {
@@ -1073,7 +1081,7 @@
       "feedback": {
         "right": [
           "Bốn cặp phép tính hết cãi nhau, bắt tay làm hòa!",
-          "Dấu nào cũng đặt đúng chỗ, Heo Ủn quên cả nồi canh.",
+          "Dấu nào cũng đặt đúng chỗ, bác Lành quên cả nồi canh.",
           "Cân đấu công bằng, {name} làm trọng tài giỏi thật."
         ],
         "wrong": [
@@ -1134,7 +1142,7 @@
       "title": "Huy hiệu bảng cộng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Sâu Xanh tặng {name} một quả bầu tí hon khắc chữ \"Bạn thuộc bảng cộng\". Heo Ủn cũng múc mời một bát canh bầu nấu từ quả bầu trơn, thơm phưng phức."
+      "text": "Sâu Xanh tặng {name} một quả bầu tí hon khắc chữ \"Bạn thuộc bảng cộng\". Bác Lành cũng múc mời một bát canh bầu nấu từ quả bầu trơn, thơm phưng phức."
     },
     {
       "id": "be-con-chay-tung-tang",

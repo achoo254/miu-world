@@ -5,11 +5,11 @@
   "title": "Tủ kính của Mèo Mun",
   "status": "active",
   "lesson": "toan2-t1-b24",
-  "summary": "Đồ chơi Xưởng làm xong chất đầy sàn mà tủ kính đánh số lung tung; {name} giúp Mèo Mun ôn cộng trừ có nhớ để xếp từng món vào đúng ngăn, rồi thắng Mèo Mun trò Cặp tấm thẻ anh em.",
+  "summary": "Đồ chơi Xưởng làm xong chất đầy sàn mà tủ kính đánh số lung tung; {name} giúp Mèo Mun ôn cộng trừ có nhớ để xếp từng món vào đúng ngăn, chạy ra băng chuyền của Bê Phính, thang dây nhà sóc của Bác Sáu, kệ nhãn vở của Gấu Keo, rồi thắng Mèo Mun trò Cặp tấm thẻ anh em.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Mèo Mun, Lợn Rừng Đốm",
-    "where": "Xưởng đồ chơi: tủ kính trưng bày",
+    "who": "Mèo Mun, Bê Phính, Bác Sáu, Gấu Keo",
+    "where": "Xưởng đồ chơi: tủ kính trưng bày, trạm băng chuyền, thang dây nhà sóc, kệ nhãn vở",
     "goal": "Xếp đồ chơi đã làm xong vào tủ kính theo đúng số thứ tự",
     "play": "Gom đồ chơi, đặt tính, đi băng chuyền số, giải toán, chọn nhãn vở, xếp số ngăn tủ, tìm chữ số, chơi Cặp tấm thẻ anh em",
     "learn": "Toán 2 Bài 24: luyện tập chung cộng, trừ có nhớ trong phạm vi 100",
@@ -30,7 +30,9 @@
   "places": {
     "meo-mun": "tủ kính",
     "gom-do-choi": "tủ kính",
-    "lon-rung-dom": "tủ kính"
+    "toan2-cd4-b24-be-com": "trạm băng chuyền",
+    "toan2-cd4-b24-bac-sau": "thang dây nhà sóc",
+    "toan2-cd4-b24-gau-bo": "kệ nhãn vở"
   },
   "steps": [
     {
@@ -45,8 +47,8 @@
           "text": "Chào {name}. Tớ lau tủ kính ba lần rồi mà vẫn chưa xếp được món nào, vì số ngăn tủ cứ nhảy lung tung."
         },
         {
-          "speaker": "Lợn Rừng Đốm",
-          "text": "Lỗi tại tớ! Tớ dán số ngăn lúc đang… ăn bánh, thế là dán ngược hết. Mà đồ chơi làm xong thì lăn khắp sàn rồi."
+          "speaker": "Bê Phính",
+          "text": "Lỗi tại tớ! Tớ dán số ngăn lúc đang… nhai bánh cốm, thế là dán ngược hết. Mà đồ chơi làm xong thì lăn khắp sàn rồi."
         },
         {
           "speaker": "Mèo Mun",
@@ -59,8 +61,8 @@
           "reply": "Mèo Mun gật đầu chậm rãi: Đúng thứ tự rồi đấy, giống xếp tủ vậy."
         },
         {
-          "text": "Đốm ăn bánh mà không mời à?",
-          "reply": "Lợn Rừng Đốm phủi vụn bánh trên mũi: Hì, còn đúng một miếng, tớ để dành cho cậu!"
+          "text": "Bê Phính ăn bánh mà không mời à?",
+          "reply": "Bê Phính phủi vụn bánh trên mõm: Hì, còn đúng một miếng, tớ để dành cho cậu!"
         }
       ]
     },
@@ -90,14 +92,14 @@
           "text": "Phép tính dài thì cứ làm từ trái sang phải, từng bước một, như mèo bước trên bờ tường."
         },
         {
-          "speaker": "Lợn Rừng Đốm",
+          "speaker": "Bê Phính",
           "text": "Như mèo bước trên bờ tường… còn tớ thì bước trên vỏ chuối. Oạch!"
         }
       ],
       "choices": [
         {
           "text": "Từng bước một, rõ rồi!",
-          "reply": "Mèo Mun đỡ Đốm dậy: Thấy chưa, vội là ngã ngay."
+          "reply": "Mèo Mun đỡ Bê Phính dậy: Thấy chưa, vội là ngã ngay."
         }
       ]
     },
@@ -221,10 +223,10 @@
     {
       "id": "bang-chuyen-so",
       "title": "Băng chuyền đồ chơi",
-      "target": "lon-rung-dom",
+      "target": "toan2-cd4-b24-be-com",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Lợn Rừng Đốm bật băng chuyền, mỗi trạm thêm hoặc bớt đồ chơi. Số ?",
+      "prompt": "Bê Phính bật băng chuyền, mỗi trạm thêm hoặc bớt đồ chơi. Số ?",
       "template": "88 → + 4 → {{b1}} → – 7 → {{b2}} → – 26 → {{b3}}",
       "blanks": [
         {
@@ -300,7 +302,7 @@
         "right": [
           "Băng chuyền chạy ro ro, đồ chơi tới cuối đúng 59 món.",
           "Ba trạm, ba con số, không trạm nào kẹt cả.",
-          "Lợn Rừng Đốm reo: lần đầu băng chuyền chạy không kêu cà rịch!"
+          "Bê Phính reo: lần đầu băng chuyền chạy không kêu cà rịch!"
         ],
         "wrong": [
           "Băng chuyền khựng lại rồi, trạm nào đang tính lệch?",
@@ -314,12 +316,13 @@
           "b2": "o85",
           "b3": "o59"
         }
-      }
+      },
+      "goTo": "Sang trạm băng chuyền, Bê Phính vừa bật công tắc chạy ro ro"
     },
     {
       "id": "thang-len-nha-soc",
       "title": "Sóc gỗ leo thang",
-      "target": "lon-rung-dom",
+      "target": "toan2-cd4-b24-bac-sau",
       "kind": "riddle",
       "question": "Một món đồ chơi là chú sóc gỗ biết leo thang dây. Cầu thang lên nhà sóc có tất cả 32 bậc thang. Sóc đã leo được 9 bậc thang. Hỏi sóc cần leo thêm bao nhiêu bậc thang nữa để vào nhà?",
       "skill": "bai-toan-loi-van",
@@ -351,12 +354,13 @@
       },
       "answer": {
         "value": 23
-      }
+      },
+      "goTo": "Tới thang dây nhà sóc, Bác Sáu thợ già đang lên dây cót cho sóc gỗ"
     },
     {
       "id": "nhan-vo-ba-ban",
       "title": "Nhãn vở dán ngăn tủ",
-      "target": "meo-mun",
+      "target": "toan2-cd4-b24-gau-bo",
       "kind": "challenge",
       "mechanic": "quiz",
       "prompt": "Mỗi ngăn tủ cần một cái nhãn vở. Mai, Nam và Rô-bốt lần lượt nói. Chọn câu trả lời đúng. Tớ có 20 cái nhãn vở. Tớ có 15 cái nhãn vở. Số nhãn vở của tớ nhiều hơn của Nam nhưng ít hơn của Mai. Kết quả của phép tính nào sau đây là số nhãn vở của Rô-bốt? A. 32 – 17 B. 62 – 42 C. 51 – 33",
@@ -403,7 +407,8 @@
       },
       "answer": {
         "choice": "c-51-33"
-      }
+      },
+      "goTo": "Ra kệ nhãn vở, Gấu Keo đang ôm chồng nhãn chờ dán ngăn tủ"
     },
     {
       "id": "so-ngan-tu-tu-the",
@@ -445,7 +450,7 @@
         "right": [
           "Ba ngăn tủ có số thẳng hàng, nhìn sướng mắt ghê.",
           "Hai thẻ 3 cũng ghép được số, {name} không bỏ sót.",
-          "Lợn Rừng Đốm dán lại số, lần này không ăn bánh nữa."
+          "Bê Phính dán lại số, lần này không ăn bánh nữa."
         ],
         "wrong": [
           "Số có hàng chục bé hơn phải đứng trước.",
@@ -459,7 +464,8 @@
           "ngan-38",
           "ngan-83"
         ]
-      }
+      },
+      "goTo": "Về tủ kính, Mèo Mun xếp ba thẻ số 3, 3, 8 lên mặt kính"
     },
     {
       "id": "so-be-nhat-lon-nhat",
@@ -543,14 +549,14 @@
       "id": "meo-mun-chon-ngan",
       "title": "Ngăn nào cho con quay?",
       "kind": "dialogue",
-      "target": "meo-mun",
+      "target": "toan2-cd4-b24-be-com",
       "lines": [
         {
           "speaker": "Mèo Mun",
-          "text": "Còn chiếc con quay và mấy món nhỏ. Tớ thích đặt con quay ở ngăn giữa, nhưng Đốm cứ đòi ngăn trên cùng."
+          "text": "Còn chiếc con quay và mấy món nhỏ. Tớ thích đặt con quay ở ngăn giữa, nhưng Bê Phính cứ đòi ngăn trên cùng."
         },
         {
-          "speaker": "Lợn Rừng Đốm",
+          "speaker": "Bê Phính",
           "text": "Ngăn trên cùng cho oai! Con quay xoay vù vù thì phải đứng chỗ cao nhất chứ."
         },
         {
@@ -565,9 +571,10 @@
         },
         {
           "text": "Đặt ở ngăn trên cùng cho oai",
-          "reply": "Lợn Rừng Đốm nhảy cẫng lên, suýt húc vào tủ kính."
+          "reply": "Bê Phính nhảy cẫng lên, suýt húc đổ cả băng chuyền."
         }
-      ]
+      ],
+      "goTo": "Ra trạm băng chuyền, Bê Phính ôm khư khư chiếc con quay, Mèo Mun theo sau"
     },
     {
       "id": "tinh-day-phep-tinh",
@@ -665,14 +672,15 @@
           "b2": "o24",
           "b3": "o74"
         }
-      }
+      },
+      "goTo": "Quay lại tủ kính, Mèo Mun chỉ hai phép tính dài trên cánh cửa"
     },
     {
       "id": "cay-tre-tram-dot",
       "title": "Cây tre trong truyện cổ",
-      "target": "lon-rung-dom",
+      "target": "toan2-cd4-b24-bac-sau",
       "kind": "riddle",
-      "question": "Lợn Rừng Đốm làm xong đồ chơi cây tre trăm đốt và kể lại truyện cổ. Anh Khoai đốn được hai cây tre. Cây thứ nhất có 43 đốt, cây thứ hai có 50 đốt. Hỏi hai cây tre có tất cả bao nhiêu đốt tre?",
+      "question": "Bác Sáu làm xong đồ chơi cây tre trăm đốt và kể lại truyện cổ. Anh Khoai đốn được hai cây tre. Cây thứ nhất có 43 đốt, cây thứ hai có 50 đốt. Hỏi hai cây tre có tất cả bao nhiêu đốt tre?",
       "skill": "bai-toan-loi-van",
       "curriculumRef": [
         "toan2-t1-b24-luyen-tap-2-3"
@@ -692,7 +700,7 @@
         "right": [
           "Khắc nhập, khắc nhập! Chín mươi ba đốt tre nối liền một mạch.",
           "Ông Bụt mà ở đây chắc cũng khen {name} nhanh trí.",
-          "Đồ chơi cây tre của Đốm được đặt vào tủ trang trọng."
+          "Đồ chơi cây tre của Bác Sáu được đặt vào tủ trang trọng."
         ],
         "wrong": [
           "Gộp hai cây tre thì cộng số đốt lại nhé.",
@@ -702,7 +710,8 @@
       },
       "answer": {
         "value": 93
-      }
+      },
+      "goTo": "Lên thang dây nhà sóc, Bác Sáu bày đồ chơi cây tre trăm đốt"
     },
     {
       "id": "chu-so-tron-kinh",
@@ -710,7 +719,7 @@
       "target": "meo-mun",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Hơi thở của Đốm làm mờ kính, che mất hai chữ số trên nhãn ngăn tủ.",
+      "prompt": "Hơi thở của Bê Phính làm mờ kính, che mất hai chữ số trên nhãn ngăn tủ.",
       "template": "Tìm chữ số thích hợp.\na) 60 – 9 > 5{{b1}}\nb) 42 – 4 < 3{{b2}}",
       "blanks": [
         {
@@ -781,7 +790,8 @@
           "b1": "o0",
           "b2": "o9"
         }
-      }
+      },
+      "goTo": "Về tủ kính, Mèo Mun hà hơi lau ô kính mờ"
     },
     {
       "id": "cap-the-anh-em",
@@ -876,7 +886,7 @@
       "title": "Tủ kính lung linh",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Tủ kính sáng đèn, món nào cũng đúng ngăn. Mèo Mun tặng {name} chiếc con quay nhỏ sơn đen bóng, còn Lợn Rừng Đốm mang ra miếng bánh để dành… đã bị chính Đốm cắn mất một nửa."
+      "text": "Tủ kính sáng đèn, món nào cũng đúng ngăn. Mèo Mun tặng {name} chiếc con quay nhỏ sơn đen bóng, còn Bê Phính mang ra miếng bánh để dành… đã bị chính Bê Phính cắn mất một nửa."
     },
     {
       "id": "chom-sao-cua-huou",

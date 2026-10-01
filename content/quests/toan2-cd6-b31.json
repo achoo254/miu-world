@@ -8,8 +8,8 @@
   "summary": "Cả tuần tới chưa ai trực chuông trên tháp; {name} cùng Chó Mực quay kim đồng hồ, đọc giờ, xem ai đến lớp muộn và xem lịch tháng 5, tháng 6 để lên lịch trực đánh chuông cho cả trường.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Chó Mực, Koala Na",
-    "where": "Tháp đồng hồ: đỉnh tháp có chuông, gác chuông, chân tháp đồng hồ",
+    "who": "Chó Mực, Gấu Trắng Ú, Mèo Trắng Sữa, Cáo Leng Keng, Thỏ Tách Tách",
+    "where": "Tháp đồng hồ: đỉnh tháp có chuông, gác chuông, lan can đỉnh tháp, dưới quả chuông lớn, chân tháp, góc treo album ảnh",
     "goal": "Lên lịch trực đánh chuông cho cả tuần mà không ai trễ giờ",
     "play": "Tìm đồng hồ mô hình và tờ lịch, quay kim, đọc giờ, kể giờ giấc của em, chạm ngày và thứ trên lịch, điền ngày",
     "learn": "Toán 2 Bài 31: thực hành xem đồng hồ, xem lịch",
@@ -30,7 +30,10 @@
   "places": {
     "cho-muc": "đỉnh tháp có chuông",
     "tim-do-truc-chuong": "gác chuông trên tháp",
-    "koala-na": "chân tháp đồng hồ"
+    "toan2-cd6-b31-gau-trang-u": "chân tháp đồng hồ",
+    "toan2-cd6-b31-meo-trang-sua": "lan can đỉnh tháp",
+    "toan2-cd6-b31-cao-leng-keng": "dưới quả chuông lớn",
+    "toan2-cd6-b31-tho-tach-tach": "góc treo album ảnh"
   },
   "steps": [
     {
@@ -161,7 +164,8 @@
     {
       "id": "quay-kim-bay-gio-muoi-lam",
       "title": "Quay kim chỉ 7 giờ 15 phút",
-      "target": "cho-muc",
+      "goTo": "Bước ra lan can đỉnh tháp, Mèo Trắng Sữa ôm đồng hồ mô hình chờ",
+      "target": "toan2-cd6-b31-meo-trang-sua",
       "kind": "challenge",
       "mechanic": "clock",
       "prompt": "Chuông vào học buổi sáng thì sớm hơn nữa. Quay kim đồng hồ để đồng hồ chỉ: c) 7 giờ 15 phút.",
@@ -185,7 +189,7 @@
       "feedback": {
         "right": [
           "Bảy giờ mười lăm, chuông vào học sẵn sàng!",
-          "Một phần tư vòng chuẩn xác, Chó Mực tròn mắt.",
+          "Một phần tư vòng chuẩn xác, Mèo Trắng Sữa tròn xoe mắt.",
           "Cậu quay kim còn khéo hơn bác thợ đồng hồ."
         ],
         "wrong": [
@@ -202,6 +206,7 @@
     {
       "id": "doc-dong-ho-a",
       "title": "Đồng hồ A chỉ mấy giờ",
+      "goTo": "Quay vào đỉnh tháp có chuông, Chó Mực giơ chiếc đồng hồ thứ nhất",
       "target": "cho-muc",
       "kind": "challenge",
       "mechanic": "clock",
@@ -292,7 +297,8 @@
     {
       "id": "doc-dong-ho-c",
       "title": "Đồng hồ C chỉ mấy giờ",
-      "target": "cho-muc",
+      "goTo": "Ra lan can đỉnh tháp, Mèo Trắng Sữa chỉ chiếc đồng hồ treo trên móc",
+      "target": "toan2-cd6-b31-meo-trang-sua",
       "kind": "challenge",
       "mechanic": "clock",
       "prompt": "Chiếc thứ ba treo trên móc chuông, kêu tích tắc tích tắc. Đồng hồ chỉ mấy giờ? C",
@@ -337,7 +343,8 @@
     {
       "id": "doc-dong-ho-d",
       "title": "Đồng hồ D chỉ mấy giờ",
-      "target": "cho-muc",
+      "goTo": "Chui xuống dưới quả chuông lớn, Cáo Leng Keng vừa nhặt được chiếc đồng hồ cuối",
+      "target": "toan2-cd6-b31-cao-leng-keng",
       "kind": "challenge",
       "mechanic": "clock",
       "prompt": "Chiếc cuối cùng nằm lăn lóc dưới quả chuông to. Đồng hồ chỉ mấy giờ? D",
@@ -381,28 +388,28 @@
     },
     {
       "id": "koala-chay-toi",
-      "title": "Koala Na hớt hải chạy tới",
-      "goTo": "Xuống chân tháp đồng hồ, Koala Na vừa chạy tới, tóc rối bù",
+      "title": "Gấu Trắng Ú hớt hải chạy tới",
+      "goTo": "Xuống chân tháp đồng hồ, Gấu Trắng Ú vừa chạy tới, lông rối bù",
       "kind": "dialogue",
-      "target": "koala-na",
+      "target": "toan2-cd6-b31-gau-trang-u",
       "lines": [
         {
-          "speaker": "Koala Na",
+          "speaker": "Gấu Trắng Ú",
           "text": "Hộc hộc… tớ có muộn không? Tớ đặt báo thức rồi mà cái đồng hồ… cũng ngủ quên theo tớ."
         },
         {
           "speaker": "Chó Mực",
-          "text": "Lớp học bắt đầu lúc 2 giờ chiều. Na xem ảnh này: có bạn cũng đến muộn giống Na đấy."
+          "text": "Lớp học bắt đầu lúc 2 giờ chiều. Ú xem ảnh này: có bạn cũng đến muộn giống Ú đấy."
         },
         {
-          "speaker": "Koala Na",
+          "speaker": "Gấu Trắng Ú",
           "text": "{name} soi giúp tớ với, hay mình để Chó Mực đánh chuông thật to cho ai cũng tỉnh?"
         }
       ],
       "choices": [
         {
           "text": "Mình soi giờ trong ảnh trước đã",
-          "reply": "Koala Na gật gù: Ừ, soi kĩ thì mới biết ai muộn."
+          "reply": "Gấu Trắng Ú gật gù: Ừ, soi kĩ thì mới biết ai muộn."
         },
         {
           "text": "Đánh chuông to cho cả trường tỉnh!",
@@ -413,7 +420,7 @@
     {
       "id": "ai-den-lop-muon",
       "title": "Ai đến lớp muộn?",
-      "target": "koala-na",
+      "target": "toan2-cd6-b31-gau-trang-u",
       "kind": "challenge",
       "mechanic": "clock",
       "prompt": "Ba bức ảnh: hai bạn đã ngồi viết bài trong lớp lúc 14:00; một bạn gái đeo cặp đứng ở cửa lớp 2A lúc 14:15; một bạn trai đi vào cổng trường lúc 13:30. Đồng hồ trong hình vẽ cho biết thời gian đến lớp học của mỗi bạn. Biết lớp học bắt đầu lúc 2 giờ chiều. Hỏi bạn nào đi học muộn? Đặt đồng hồ điện tử chỉ đúng giờ bạn đi học muộn đến lớp.",
@@ -436,7 +443,7 @@
       },
       "feedback": {
         "right": [
-          "Bạn gái lúc 14:15 đến muộn, Koala Na thở phào vì không chỉ mình tớ.",
+          "Bạn gái lúc 14:15 đến muộn, Gấu Trắng Ú thở phào vì không chỉ mình tớ.",
           "Cậu so giờ như thám tử, bắt trúng ngay.",
           "Đúng rồi, muộn mười lăm phút đấy!"
         ],
@@ -454,10 +461,11 @@
     {
       "id": "ngay-nghi-cua-nam-1",
       "title": "Nam xếp hình khối lúc mấy giờ",
-      "target": "koala-na",
+      "goTo": "Sang góc treo album ảnh, Thỏ Tách Tách lật cuốn album ngày nghỉ",
+      "target": "toan2-cd6-b31-tho-tach-tach",
       "kind": "challenge",
       "mechanic": "clock",
-      "prompt": "Koala Na mở cuốn album ảnh ngày nghỉ của bạn Nam. Ảnh 1: Nam ngồi xếp hình khối. a) Vào ngày nghỉ cuối tuần, Nam làm gì lúc mấy giờ?",
+      "prompt": "Thỏ Tách Tách mở cuốn album ảnh ngày nghỉ của bạn Nam. Ảnh 1: Nam ngồi xếp hình khối. a) Vào ngày nghỉ cuối tuần, Nam làm gì lúc mấy giờ?",
       "mode": "read",
       "display": "analog",
       "time": {
@@ -482,7 +490,7 @@
       "feedback": {
         "right": [
           "Mười giờ rưỡi, Nam xếp xong cả tòa lâu đài khối!",
-          "Đọc giờ rưỡi ngon lành, Koala Na lật trang tiếp.",
+          "Đọc giờ rưỡi ngon lành, Thỏ Tách Tách lật trang tiếp.",
           "Đúng 10 giờ 30 phút, giờ chơi xếp hình của Nam."
         ],
         "wrong": [
@@ -499,7 +507,7 @@
     {
       "id": "ngay-nghi-cua-nam-2",
       "title": "Nam ăn cơm trưa lúc mấy giờ",
-      "target": "koala-na",
+      "target": "toan2-cd6-b31-tho-tach-tach",
       "kind": "challenge",
       "mechanic": "clock",
       "prompt": "Ảnh 2: Nam ngồi ăn cơm. a) Vào ngày nghỉ cuối tuần, Nam làm gì lúc mấy giờ?",
@@ -527,7 +535,7 @@
       "feedback": {
         "right": [
           "Mười một giờ rưỡi, bữa trưa thơm phức của Nam!",
-          "Koala Na xoa bụng: nhìn ảnh này đói ghê.",
+          "Thỏ Tách Tách xoa bụng: nhìn ảnh này đói ghê.",
           "Chuẩn giờ cơm trưa rồi, cậu đọc giỏi quá."
         ],
         "wrong": [
@@ -544,7 +552,8 @@
     {
       "id": "ngay-nghi-cua-nam-3",
       "title": "Nam đạp xe lúc mấy giờ",
-      "target": "koala-na",
+      "goTo": "Chạy xuống chân tháp đồng hồ, Gấu Trắng Ú giữ tấm ảnh Nam đạp xe",
+      "target": "toan2-cd6-b31-gau-trang-u",
       "kind": "challenge",
       "mechanic": "clock",
       "prompt": "Ảnh 3: Nam đạp xe ngoài sân, trời còn sáng. a) Vào ngày nghỉ cuối tuần, Nam làm gì lúc mấy giờ?",
@@ -589,7 +598,7 @@
     {
       "id": "ngay-nghi-cua-nam-4",
       "title": "Nam nhặt rau lúc mấy giờ",
-      "target": "koala-na",
+      "target": "toan2-cd6-b31-gau-trang-u",
       "kind": "challenge",
       "mechanic": "clock",
       "prompt": "Ảnh 4: Nam nhặt rau giúp mẹ. a) Vào ngày nghỉ cuối tuần, Nam làm gì lúc mấy giờ?",
@@ -617,7 +626,7 @@
       "feedback": {
         "right": [
           "Năm rưỡi chiều, Nam nhặt rau đỡ mẹ, ngoan ghê!",
-          "Chuẩn 17 giờ 30 phút, Koala Na giơ ngón cái.",
+          "Chuẩn 17 giờ 30 phút, Gấu Trắng Ú giơ bàn chân to tướng.",
           "Cậu đọc giờ nhanh như mẹ Nam nhặt rau vậy."
         ],
         "wrong": [
@@ -634,7 +643,8 @@
     {
       "id": "ngay-nghi-cua-nam-5",
       "title": "Nam đọc sách lúc mấy giờ",
-      "target": "koala-na",
+      "goTo": "Trở lại dưới quả chuông lớn, Cáo Leng Keng soi ảnh dưới ngọn đèn",
+      "target": "toan2-cd6-b31-cao-leng-keng",
       "kind": "challenge",
       "mechanic": "clock",
       "prompt": "Ảnh 5: Nam ngồi đọc sách dưới đèn. a) Vào ngày nghỉ cuối tuần, Nam làm gì lúc mấy giờ?",
@@ -663,7 +673,7 @@
         "right": [
           "Bảy rưỡi tối, giờ đọc truyện của Nam đây rồi!",
           "Đọc giờ tối không vấp chút nào, hay quá.",
-          "Koala Na ngáp một cái: giờ này tớ cũng hay đọc truyện."
+          "Cáo Leng Keng vẫy đuôi: giờ này tớ cũng hay đọc truyện."
         ],
         "wrong": [
           "Kim giờ đã qua số 7 rồi, chưa tới số 8.",
@@ -679,7 +689,7 @@
     {
       "id": "ngay-nghi-cua-nam-6",
       "title": "Nam đi ngủ lúc mấy giờ",
-      "target": "koala-na",
+      "target": "toan2-cd6-b31-cao-leng-keng",
       "kind": "challenge",
       "mechanic": "clock",
       "prompt": "Ảnh 6: Nam đã nằm ngủ trên giường. a) Vào ngày nghỉ cuối tuần, Nam làm gì lúc mấy giờ?",
@@ -707,7 +717,7 @@
       "feedback": {
         "right": [
           "Chín rưỡi tối, Nam ngủ say, chúc ngủ ngon nhé!",
-          "Ảnh cuối cùng cũng đúng nốt, Koala Na vỗ tay khẽ khàng.",
+          "Ảnh cuối cùng cũng đúng nốt, Cáo Leng Keng vỗ tay khẽ khàng.",
           "Cậu đọc trọn một ngày cuối tuần của Nam rồi đó."
         ],
         "wrong": [
@@ -724,9 +734,10 @@
     {
       "id": "gio-giac-cua-em",
       "title": "Kể giờ giấc của em",
+      "goTo": "Về chân tháp đồng hồ, Gấu Trắng Ú ngồi chờ nghe chuyện của em",
       "kind": "speak",
-      "target": "koala-na",
-      "prompt": "Koala Na tò mò lắm: còn {name} thì sao? Xem thời khoá biểu hôm nay của em rồi trả lời câu hỏi.",
+      "target": "toan2-cd6-b31-gau-trang-u",
+      "prompt": "Gấu Trắng Ú tò mò lắm: còn {name} thì sao? Xem thời khoá biểu hôm nay của em rồi trả lời câu hỏi.",
       "hints": [
         "a) Lúc 9 giờ 15 phút, em học môn gì?",
         "b) Em học môn gì vào lúc 15 giờ 15 phút?",
@@ -801,7 +812,8 @@
     {
       "id": "thu-ba-dau-thang-nam",
       "title": "Thứ Ba đầu tiên của tháng 5",
-      "target": "cho-muc",
+      "goTo": "Ra lan can đỉnh tháp, Mèo Trắng Sữa cầm bút chờ khoanh thứ Ba",
+      "target": "toan2-cd6-b31-meo-trang-sua",
       "kind": "challenge",
       "mechanic": "calendar",
       "prompt": "Xem tờ lịch tháng 5 dưới đây rồi trả lời câu hỏi.",
@@ -828,7 +840,7 @@
         "right": [
           "Ngày 3! Phiên trực đầu tiên của Chó Mực đã có chỗ.",
           "Cột thứ Ba dò chuẩn ghê, giỏi lắm.",
-          "Chó Mực đánh dấu ngày 3 bằng dấu chân xinh xinh."
+          "Mèo Trắng Sữa đánh dấu ngày 3 bằng dấu chân xinh xinh."
         ],
         "wrong": [
           "Ngày 1 là Chủ nhật, đếm tiếp xem thứ Ba là ngày mấy.",
@@ -843,7 +855,7 @@
     {
       "id": "cac-thu-ba-thang-nam",
       "title": "Đủ các ngày thứ Ba tháng 5",
-      "target": "cho-muc",
+      "target": "toan2-cd6-b31-meo-trang-sua",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "prompt": "Xem tờ lịch tháng 5 dưới đây rồi trả lời câu hỏi.",
@@ -970,7 +982,7 @@
       "feedback": {
         "right": [
           "Năm phiên trực thứ Ba, đủ cả ngày 31 cuối tháng!",
-          "Cậu cộng 7 đều tăm tắp, Chó Mực phục lăn.",
+          "Cậu cộng 7 đều tăm tắp, Mèo Trắng Sữa phục lăn.",
           "Lịch trực thứ Ba của tháng 5 xong rồi."
         ],
         "wrong": [
@@ -993,6 +1005,7 @@
     {
       "id": "sinh-nhat-bac-ho",
       "title": "Ngày sinh nhật Bác Hồ",
+      "goTo": "Vào đỉnh tháp có chuông, Chó Mực đang lau quả chuông thật sáng",
       "target": "cho-muc",
       "kind": "challenge",
       "mechanic": "calendar",
@@ -1035,13 +1048,14 @@
     {
       "id": "o-trong-thang-sau",
       "title": "Ô trống trên tờ tháng 6",
-      "target": "cho-muc",
+      "goTo": "Ghé góc treo album ảnh, Thỏ Tách Tách cầm tờ tháng 6 bị mất số",
+      "target": "toan2-cd6-b31-tho-tach-tach",
       "kind": "challenge",
       "mechanic": "calendar",
       "prompt": "a) Nêu các ngày còn thiếu trong tờ lịch tháng 6 ở bên.",
       "month": 6,
       "year": 2022,
-      "question": "Tờ tháng 6 bị Koala Na lấy làm quạt nên mất mấy số. Chạm vào ô trống đầu tiên của tờ lịch.",
+      "question": "Tờ tháng 6 bị Gấu Trắng Ú lấy làm quạt nên mất mấy số. Chạm vào ô trống đầu tiên của tờ lịch.",
       "ask": "day",
       "skill": "xem-lich",
       "curriculumRef": [
@@ -1062,7 +1076,7 @@
         "right": [
           "Ngày 1 bị mất số mà cậu vẫn tìm ra, hay quá!",
           "Ô mở đầu tháng 6 đã được vá.",
-          "Chó Mực sủa vui: gâu, ngày đầu tháng đây rồi!"
+          "Thỏ Tách Tách reo lên: tách, ngày đầu tháng đây rồi!"
         ],
         "wrong": [
           "Ô trống đầu tiên nằm ngay trước ngày 2.",
@@ -1077,7 +1091,7 @@
     {
       "id": "quoc-te-thieu-nhi",
       "title": "Ngày Quốc tế Thiếu nhi",
-      "target": "cho-muc",
+      "target": "toan2-cd6-b31-tho-tach-tach",
       "kind": "challenge",
       "mechanic": "calendar",
       "prompt": "b) Xem tờ lịch bên rồi trả lời câu hỏi.",
@@ -1119,6 +1133,7 @@
     {
       "id": "thu-nam-tuan-truoc",
       "title": "Thứ Năm tuần trước",
+      "goTo": "Lên lại đỉnh tháp có chuông, Chó Mực mở sổ trực chờ sẵn",
       "target": "cho-muc",
       "kind": "challenge",
       "mechanic": "calendar",
@@ -1350,7 +1365,7 @@
       "title": "Huy hiệu trực chuông",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Chó Mực treo bảng lịch trực lên cột chuông, rồi đeo cho {name} huy hiệu \"Người giữ giờ tháp chuông\". Koala Na hứa từ nay đặt hai cái báo thức."
+      "text": "Chó Mực treo bảng lịch trực lên cột chuông, rồi đeo cho {name} huy hiệu \"Người giữ giờ tháp chuông\". Gấu Trắng Ú hứa từ nay đặt hai cái báo thức."
     },
     {
       "id": "sau-xanh-dem-ngay",

@@ -5,11 +5,11 @@
   "title": "Ong Vàng bay qua ô kính màu",
   "status": "active",
   "lesson": "toan2-t1-b26",
-  "summary": "Ong Vàng bay qua cửa sổ kính màu theo lối gãy khúc tới hoa cả mắt; {name} cùng Ong và Hươu Cao gọi tên đường gấp khúc, tính độ dài đường bay và săn hình tứ giác khắp phòng mĩ thuật.",
+  "summary": "Ong Vàng bay qua cửa sổ kính màu theo lối gãy khúc tới hoa cả mắt; {name} cùng Ong, Bác Tâm thợ kính và họa sĩ Gấu Mực gọi tên đường gấp khúc, tính độ dài đường bay, săn hình tứ giác với Mèo Tuyết ở bàn ghép tranh và cùng Bò Cỏ Non soi đường chạy thi khắp phòng mĩ thuật.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Ong Vàng, Hươu Cao",
-    "where": "Phòng mĩ thuật: cửa sổ kính màu, góc bàn vẽ",
+    "who": "Ong Vàng, Bác Tâm, Gấu Mực, Mèo Tuyết, Bò Cỏ Non",
+    "where": "Phòng mĩ thuật: cửa sổ kính màu, giá để kính màu, góc bàn vẽ, bàn ghép tranh, hiên nhìn bãi cỏ",
     "goal": "Vẽ lại lối bay của Ong Vàng và tìm đủ các ô kính hình tứ giác",
     "play": "Tìm mảnh kính, nối đường bay, chọn tên, phân loại ô kính, đếm, điền phép tính, nói đồ vật, thi đường bay dài hơn",
     "learn": "Toán 2 Bài 26: đường gấp khúc, độ dài đường gấp khúc, hình tứ giác",
@@ -30,7 +30,10 @@
   "places": {
     "ong-vang": "cửa sổ kính màu",
     "nhat-manh-kinh": "cửa sổ kính màu",
-    "huou-cao": "góc bàn vẽ"
+    "toan2-cd5-b26-bac-tam": "giá để kính màu",
+    "toan2-cd5-b26-gau-muc": "góc bàn vẽ",
+    "toan2-cd5-b26-meo-tuyet": "bàn ghép tranh",
+    "toan2-cd5-b26-bo-co-non": "hiên nhìn bãi cỏ"
   },
   "steps": [
     {
@@ -45,8 +48,8 @@
           "text": "Vo ve… cộp! Lại đâm vào kính rồi. Lối bay qua mấy ô kính màu này gãy khúc liên tục, tớ chóng mặt quá {name} ơi!"
         },
         {
-          "speaker": "Hươu Cao",
-          "text": "Tớ đã bảo cậu bay thẳng thôi mà. À quên, bay thẳng thì đâm vào ô kính đỏ mất."
+          "speaker": "Gấu Mực",
+          "text": "Tớ đã bảo cậu bay thẳng thôi mà. À quên, bay thẳng thì đâm vào ô kính đỏ mất, hơ hơ."
         },
         {
           "speaker": "Ong Vàng",
@@ -60,7 +63,7 @@
         },
         {
           "text": "Ong ơi, đậu nghỉ một chút đi!",
-          "reply": "Ong Vàng đậu lên mũi Hươu Cao: Đậu rồi nè. Còn mảnh kính thì nhờ cậu đó!"
+          "reply": "Ong Vàng đậu lên mũi đen bóng của Gấu Mực: Đậu rồi nè. Còn mảnh kính thì nhờ cậu đó!"
         }
       ]
     },
@@ -86,7 +89,7 @@
           "text": "Lối bay của tớ là mấy đoạn thẳng nối tiếp nhau, gãy ở chỗ nối. Người ta gọi là đường gấp khúc!"
         },
         {
-          "speaker": "Hươu Cao",
+          "speaker": "Gấu Mực",
           "text": "Đi qua A, B, C thì gọi là đường gấp khúc ABC. Muốn biết nó dài bao nhiêu, cộng độ dài các đoạn thẳng lại."
         },
         {
@@ -181,7 +184,7 @@
     {
       "id": "ten-loi-bay-a",
       "title": "Tên lối bay thứ nhất",
-      "target": "ong-vang",
+      "target": "toan2-cd5-b26-bac-tam",
       "kind": "challenge",
       "mechanic": "quiz",
       "prompt": "Lối bay thứ nhất gồm hai đoạn thẳng AB và BC nối tiếp nhau. Kể tên các đường gấp khúc trong mỗi hình vẽ sau: a)",
@@ -228,12 +231,13 @@
       },
       "answer": {
         "choice": "abc"
-      }
+      },
+      "goTo": "Sang giá để kính màu, Bác Tâm thợ kính đang chép lại lối bay lên giấy"
     },
     {
       "id": "ten-loi-bay-b",
       "title": "Tên lối bay vừa nối",
-      "target": "ong-vang",
+      "target": "toan2-cd5-b26-bac-tam",
       "kind": "challenge",
       "mechanic": "quiz",
       "prompt": "Nhìn lại lối bay vừa nối. Kể tên các đường gấp khúc trong mỗi hình vẽ sau: b)",
@@ -270,7 +274,7 @@
         "right": [
           "DEGH! Đọc trơn tru như Ong hát.",
           "Bốn điểm đúng thứ tự, không đảo chữ nào.",
-          "Hươu Cao chép tên DEGH vào sổ vẽ ngay."
+          "Bác Tâm chép tên DEGH vào sổ vẽ ngay."
         ],
         "wrong": [
           "Ong bay qua E trước rồi mới tới G nhé.",
@@ -479,7 +483,8 @@
           "kinh-o-kinh-5": "nhom-khong-phai-hinh-tu-giac",
           "kinh-o-kinh-6": "nhom-hinh-tu-giac"
         }
-      }
+      },
+      "goTo": "Về cửa sổ kính màu, Ong Vàng đang lắp sáu ô kính vào khung"
     },
     {
       "id": "dem-o-kinh-tu-giac",
@@ -520,7 +525,7 @@
     {
       "id": "do-duong-bay-abcd",
       "title": "Lối bay ABCD dài bao nhiêu?",
-      "target": "ong-vang",
+      "target": "toan2-cd5-b26-bac-tam",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "prompt": "Ong Vàng bay một lối mới qua A, B, C, D: đoạn AB dài 5 cm, đoạn BC dài 4 cm, đoạn CD dài 4 cm. Tính độ dài đường gấp khúc ABCD.",
@@ -647,32 +652,33 @@
           "b4": "o13",
           "b5": "o13"
         }
-      }
+      },
+      "goTo": "Ra giá để kính màu, Bác Tâm thợ kính căng thước đo lối bay mới"
     },
     {
       "id": "hai-loi-di-tiep",
       "title": "Đi đâu tiếp đây?",
-      "goTo": "Bay sang góc bàn vẽ, Hươu Cao đang treo tranh phòng học",
+      "goTo": "Bay sang góc bàn vẽ, Gấu Mực đang treo bức tranh phòng học còn ướt",
       "kind": "dialogue",
-      "target": "huou-cao",
+      "target": "toan2-cd5-b26-gau-muc",
       "lines": [
         {
-          "speaker": "Hươu Cao",
-          "text": "Lại đây xem! Tớ vừa vẽ xong bức tranh phòng học, trong đó giấu đủ thứ hình gấp khúc với tứ giác."
+          "speaker": "Gấu Mực",
+          "text": "Lại đây xem! Tớ là Gấu Mực, vừa vẽ xong bức tranh phòng học, trong đó giấu đủ thứ hình gấp khúc với tứ giác."
         },
         {
           "speaker": "Ong Vàng",
           "text": "Tớ còn ghi lại đường chạy của Rô-bốt, Việt và Mai qua bãi cỏ nữa. Chạy gì mà ngoằn ngoèo như tớ bay!"
         },
         {
-          "speaker": "Hươu Cao",
+          "speaker": "Gấu Mực",
           "text": "{name} muốn soi tranh phòng học trước, hay xem ba bạn chạy thi trước?"
         }
       ],
       "choices": [
         {
           "text": "Soi tranh phòng học trước",
-          "reply": "Hươu Cao rướn cổ chỉ lên tường: Bắt đầu từ mấy cái giá sách nhé!"
+          "reply": "Gấu Mực giơ cây bút lông chỉ lên tường: Bắt đầu từ mấy cái giá sách nhé!"
         },
         {
           "text": "Xem ba bạn chạy thi trước",
@@ -684,8 +690,8 @@
       "id": "soi-tranh-phong-hoc",
       "title": "Soi tranh phòng học",
       "kind": "speak",
-      "target": "huou-cao",
-      "prompt": "Trong tranh phòng học có bức tranh treo tường, đồng hồ, hai giá sách treo tường, cửa sổ có rèm, bàn học, ghế xoay và hai tủ ngăn kéo. a) Tìm hai đồ vật có dạng đường gấp khúc. b) Tìm hai đồ vật có dạng hình tứ giác. Nói cho Hươu Cao nghe.",
+      "target": "toan2-cd5-b26-gau-muc",
+      "prompt": "Trong tranh phòng học có bức tranh treo tường, đồng hồ, hai giá sách treo tường, cửa sổ có rèm, bàn học, ghế xoay và hai tủ ngăn kéo. a) Tìm hai đồ vật có dạng đường gấp khúc. b) Tìm hai đồ vật có dạng hình tứ giác. Nói cho Gấu Mực nghe.",
       "hints": [
         "Giá sách treo tường gãy khúc như bậc thang.",
         "Mặt tủ ngăn kéo, ô cửa sổ có mấy cạnh?"
@@ -698,10 +704,10 @@
     {
       "id": "tu-giac-trong-tranh-ghep",
       "title": "Tứ giác trốn trong tranh ghép",
-      "target": "huou-cao",
+      "target": "toan2-cd5-b26-meo-tuyet",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Hươu Cao ghép ba bức tranh từ các mảnh hình. Trong mỗi hình dưới đây có mấy hình tứ giác?",
+      "prompt": "Mèo Tuyết ghép ba bức tranh từ các mảnh hình. Trong mỗi hình dưới đây có mấy hình tứ giác?",
       "template": "a) Thuyền buồm: hai cánh buồm hình tam giác, thân thuyền hình thang. Có {{b1}} hình tứ giác.\nb) Xe tải: thùng trước, ca-bin, thùng sau đều có bốn cạnh, thêm bốn bánh xe tròn. Có {{b2}} hình tứ giác.\nc) Cái cây: một hình tam giác trên ngọn, hai hình thang xếp chồng, hai hình tam giác ở gốc. Có {{b3}} hình tứ giác.",
       "blanks": [
         {
@@ -777,7 +783,7 @@
         "right": [
           "Thuyền, xe, cây đều được soi kĩ, không sót mảnh nào!",
           "Hình thang cũng là tứ giác, cậu nhớ rất chắc.",
-          "Hươu Cao treo ba bức tranh lên, chỗ nào cũng khen."
+          "Mèo Tuyết treo ba bức tranh lên, chỗ nào cũng khen."
         ],
         "wrong": [
           "Bánh xe tròn không phải hình tứ giác nhé.",
@@ -791,12 +797,13 @@
           "b2": "o3",
           "b3": "o2"
         }
-      }
+      },
+      "goTo": "Sang bàn ghép tranh, Mèo Tuyết đang xếp ba bức tranh mảnh hình"
     },
     {
       "id": "doc-ten-duong-chay",
       "title": "Đường chạy của ai?",
-      "target": "huou-cao",
+      "target": "toan2-cd5-b26-bo-co-non",
       "kind": "challenge",
       "mechanic": "classify",
       "prompt": "Rô-bốt, Việt và Mai chạy qua một bãi cỏ theo ba đường như hình vẽ. Rô-bốt chạy thẳng từ A lên B; Việt chạy qua C, D, E rồi tới G; Mai chạy qua H, I rồi tới K. a) Đọc tên đường chạy của mỗi bạn.",
@@ -861,12 +868,13 @@
           "duong-chay-ab": "nhom-ro-bot",
           "duong-chay-cdeg": "nhom-viet"
         }
-      }
+      },
+      "goTo": "Ra hiên nhìn bãi cỏ, Bò Cỏ Non đang làm trọng tài cuộc chạy thi"
     },
     {
       "id": "ai-chay-gap-khuc",
       "title": "Ai chạy đường gấp khúc?",
-      "target": "huou-cao",
+      "target": "toan2-cd5-b26-bo-co-non",
       "kind": "challenge",
       "mechanic": "multi-select",
       "prompt": "Rô-bốt, Việt và Mai chạy qua một bãi cỏ theo ba đường như hình vẽ. b) Bạn nào chạy qua bãi cỏ theo đường gấp khúc? Chọn tất cả các bạn đó.",
@@ -903,7 +911,7 @@
         "right": [
           "Việt và Mai rẽ ngoắt ngoéo, chuẩn đường gấp khúc!",
           "Rô-bốt chạy thẳng băng nên không được chọn, đúng rồi.",
-          "Hươu Cao vẽ thêm hai lá cờ cho Việt và Mai."
+          "Bò Cỏ Non vẽ thêm hai lá cờ cho Việt và Mai."
         ],
         "wrong": [
           "Đường của Rô-bốt có chỗ nào gãy không nhỉ?",
@@ -921,7 +929,7 @@
     {
       "id": "dem-doan-duong-chay",
       "title": "Mỗi đường mấy đoạn?",
-      "target": "huou-cao",
+      "target": "toan2-cd5-b26-gau-muc",
       "kind": "challenge",
       "mechanic": "classify",
       "prompt": "Rô-bốt, Việt và Mai chạy qua một bãi cỏ theo ba đường như hình vẽ. c) Đường chạy của bạn nào gồm hai đoạn thẳng? c) Đường chạy của bạn nào gồm ba đoạn thẳng? Xếp mỗi bạn vào đúng nhóm.",
@@ -987,15 +995,16 @@
           "ban-ro-bot": "nhom-mot-doan-thang",
           "ban-mai": "nhom-hai-doan-thang"
         }
-      }
+      },
+      "goTo": "Về góc bàn vẽ, Gấu Mực chấm bút lông đếm từng khúc đường chạy"
     },
     {
       "id": "tinh-hai-loi-bay",
       "title": "Hai lối bay dài bao nhiêu?",
-      "target": "huou-cao",
+      "target": "toan2-cd5-b26-gau-muc",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Hươu Cao vẽ hai lối bay mới: đường ABC có AB dài 3 cm, BC dài 6 cm; đường MNPQ có MN, NP, PQ đều dài 4 cm. Tính độ dài đường gấp khúc ABC và MNPQ.",
+      "prompt": "Gấu Mực vẽ hai lối bay mới: đường ABC có AB dài 3 cm, BC dài 6 cm; đường MNPQ có MN, NP, PQ đều dài 4 cm. Tính độ dài đường gấp khúc ABC và MNPQ.",
       "template": "a) {{b1}} + {{b2}} = {{b3}} (cm)\nb) {{b4}} + {{b5}} + {{b6}} = {{b7}} (cm)",
       "blanks": [
         {
@@ -1256,7 +1265,7 @@
       "title": "Huy hiệu cánh ong",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Cửa sổ ghép kính lấp lánh trở lại, Ong Vàng bay một vòng đúng lối không đâm vào đâu. Ong gắn lên áo {name} huy hiệu \"Phi công đường gấp khúc\", Hươu Cao vỗ tay rung cả giá vẽ."
+      "text": "Cửa sổ ghép kính lấp lánh trở lại, Ong Vàng bay một vòng đúng lối không đâm vào đâu. Ong gắn lên áo {name} huy hiệu \"Phi công đường gấp khúc\", Gấu Mực vỗ tay rung cả giá vẽ."
     },
     {
       "id": "thiep-cua-chip",

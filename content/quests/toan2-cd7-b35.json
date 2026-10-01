@@ -5,11 +5,11 @@
   "title": "Hậu trường của cô Pin kĩ tính",
   "status": "active",
   "lesson": "toan2-t1-b35",
-  "summary": "Trước giờ diễn, Chim Cánh Cụt Pin kiểm từng ki-lô-gam bánh, từng lít nước ở hậu trường; {name} cân thú bông, tính cân nặng, đưa dê qua sông trong vở múa rối của Cáo Lém và chọn can rót đủ 15 l nước.",
+  "summary": "Trước giờ diễn, Chim Cánh Cụt Pin kiểm từng ki-lô-gam bánh, từng lít nước ở hậu trường; {name} cân thú bông, tính cân nặng, đưa dê qua sông trong vở múa rối của chị Ngân và chọn can rót đủ 15 l nước.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Chim Cánh Cụt Pin, Heo Ủn, Cáo Lém",
-    "where": "Hội trường: hậu trường, góc bánh, bục múa rối",
+    "who": "Chim Cánh Cụt Pin, Heo Mũm Mĩm, Thỏ Gòn giữ kho thú bông, chị Ngân múa rối",
+    "where": "Hội trường: hậu trường, kho thú bông, góc bánh, bục múa rối",
     "goal": "Chuẩn bị đủ nước và bánh, đúng cân, đúng lít cho buổi diễn cuối kì",
     "play": "Tìm đồ đo, chọn câu đúng, điền cân nặng và số lít, giải toán, chọn can",
     "learn": "Toán 2 Bài 35: ôn tập đo lường (ki-lô-gam, lít)",
@@ -29,9 +29,10 @@
   "texts": {},
   "places": {
     "chim-canh-cut-pin": "hậu trường",
-    "tim-do-do-luong": "hậu trường",
-    "heo-un": "góc bánh",
-    "cao-lem": "bục múa rối"
+    "tim-do-do-luong": "quanh hậu trường",
+    "toan2-cd7-b33-heo-mum-mim": "góc bánh",
+    "toan2-cd7-b35-tho-gon": "kho thú bông",
+    "toan2-cd7-b35-chi-ngan": "bục múa rối"
   },
   "steps": [
     {
@@ -46,7 +47,7 @@
           "text": "Một, hai, ba… sai! Lại đếm lại! {name} đấy à? Tớ đang kiểm hậu trường, thiếu một mẩu bánh hay một giọt nước là không được diễn đâu."
         },
         {
-          "speaker": "Heo Ủn",
+          "speaker": "Heo Mũm Mĩm",
           "text": "Pin ơi, một giọt thôi mà… với lại tớ mới chỉ nếm thử có ba cái bánh."
         },
         {
@@ -60,8 +61,8 @@
           "reply": "Pin chỉnh lại nơ cổ: Cảm ơn, nhớ mang về đúng ba món, không thừa không thiếu."
         },
         {
-          "text": "Heo Ủn lại ăn vụng rồi!",
-          "reply": "Heo Ủn đỏ mặt: Tớ nếm thử chứ có ăn đâu… mà thôi, tớ giúp tìm đồ chuộc lỗi."
+          "text": "Heo Mũm Mĩm lại ăn vụng rồi!",
+          "reply": "Heo Mũm Mĩm đỏ mặt: Tớ nếm thử chứ có ăn đâu… mà thôi, tớ giúp tìm đồ chuộc lỗi."
         }
       ]
     },
@@ -79,6 +80,7 @@
     {
       "id": "kg-va-lit-la-gi",
       "title": "Ki-lô-gam và lít",
+      "goTo": "Mang đồ về hậu trường, Pin mở cuốn sổ kiểm đếm",
       "kind": "dialogue",
       "target": "chim-canh-cut-pin",
       "lines": [
@@ -91,7 +93,7 @@
           "text": "Cộng trừ kg hay l cũng như cộng trừ số thường, chỉ nhớ viết tên đơn vị phía sau thôi."
         },
         {
-          "speaker": "Heo Ủn",
+          "speaker": "Heo Mũm Mĩm",
           "text": "Vậy ba cái bánh tớ nếm nặng bao nhiêu kg nhỉ? À thôi, đừng cân tớ nhé!"
         }
       ],
@@ -105,7 +107,8 @@
     {
       "id": "bap-benh-thu-bong",
       "title": "Bập bênh thú bông",
-      "target": "chim-canh-cut-pin",
+      "goTo": "Sang kho thú bông, Thỏ Gòn đang ôm gấu bông với thỏ bông",
+      "target": "toan2-cd7-b35-tho-gon",
       "kind": "challenge",
       "mechanic": "multi-select",
       "prompt": "Đạo cụ có hai chiếc bập bênh. Bập bênh thứ nhất: gấu bông ở đầu thấp, thỏ bông ở đầu cao. Bập bênh thứ hai: sóc bông ở đầu cao, thỏ bông ở đầu thấp. Đ, S ? Chọn các câu đúng (Đ); câu không chọn là sai (S).",
@@ -162,6 +165,7 @@
     {
       "id": "can-tho-va-tui-gao",
       "title": "Cân thỏ và túi gạo",
+      "goTo": "Về hậu trường, Pin đã đặt sẵn cân đĩa",
       "target": "chim-canh-cut-pin",
       "kind": "challenge",
       "mechanic": "fill-blank",
@@ -482,7 +486,7 @@
         "right": [
           "Sổ cân hàng khớp từng ki-lô-gam, Pin vỗ cánh phành phạch!",
           "Phép cộng và phép trừ \"soi gương\" nhau, cậu nhận ra rồi chứ?",
-          "Thùng bánh nào cũng đủ cân, Heo Ủn thở phào nhẹ nhõm."
+          "Thùng bánh nào cũng đủ cân, Heo Mũm Mĩm thở phào nhẹ nhõm."
         ],
         "wrong": [
           "Hàng đơn vị có nhớ không? Kiểm tra lại nhé.",
@@ -504,10 +508,10 @@
     {
       "id": "con-lon-tang-can",
       "title": "Con lợn tăng cân",
-      "goTo": "Sang góc bánh, Heo Ủn đang đọc truyện tranh",
-      "target": "heo-un",
+      "goTo": "Sang góc bánh, Heo Mũm Mĩm đang đọc truyện tranh",
+      "target": "toan2-cd7-b33-heo-mum-mim",
       "kind": "riddle",
-      "question": "Heo Ủn đọc to một bài toán rồi giãy nảy: \"Không phải tớ đâu nhé!\" Mẹ mua con lợn cân nặng 25 kg về nuôi. Sau một thời gian, con lợn tăng thêm 18 kg. Hỏi lúc này, con lợn cân nặng bao nhiêu ki-lô-gam?",
+      "question": "Heo Mũm Mĩm đọc to một bài toán rồi giãy nảy: \"Không phải tớ đâu nhé!\" Mẹ mua con lợn cân nặng 25 kg về nuôi. Sau một thời gian, con lợn tăng thêm 18 kg. Hỏi lúc này, con lợn cân nặng bao nhiêu ki-lô-gam?",
       "skill": "bai-toan-loi-van",
       "curriculumRef": [
         "toan2-t1-b35-luyen-tap-4"
@@ -525,7 +529,7 @@
       },
       "feedback": {
         "right": [
-          "Heo Ủn ôm bụng cười: 43 kg, vẫn nhẹ hơn tớ nhiều!",
+          "Heo Mũm Mĩm ôm bụng cười: 43 kg, vẫn nhẹ hơn tớ nhiều!",
           "Tăng thêm thì cộng, cậu giải gọn như ăn bánh.",
           "Nhớ 1 sang hàng chục chuẩn chỉnh, tuyệt quá."
         ],
@@ -542,17 +546,17 @@
     {
       "id": "vo-roi-ba-chu-de",
       "title": "Vở múa rối ba chú dê",
-      "goTo": "Ra bục múa rối, Cáo Lém đang tập vở \"Dê qua sông\"",
+      "goTo": "Ra bục múa rối, chị Ngân đang tập vở \"Dê qua sông\"",
       "kind": "dialogue",
-      "target": "cao-lem",
+      "target": "toan2-cd7-b35-chi-ngan",
       "lines": [
         {
-          "speaker": "Cáo Lém",
-          "text": "Kính thưa quý vị! Vở múa rối hôm nay có ba chú dê muốn qua sông ăn cỏ, và tớ đóng vai… Rô-bốt lái thuyền, bíp bíp!"
+          "speaker": "Chị Ngân",
+          "text": "Kính thưa quý vị! Vở múa rối hôm nay có ba chú dê muốn qua sông ăn cỏ, và chị đóng vai… Rô-bốt lái thuyền, bíp bíp!"
         },
         {
-          "speaker": "Cáo Lém",
-          "text": "Khổ nỗi thuyền nhỏ, chở quá nặng là chìm. Tớ thử cho cả ba chú dê lên rồi, rối dê ướt sũng luôn."
+          "speaker": "Chị Ngân",
+          "text": "Khổ nỗi thuyền nhỏ, chở quá nặng là chìm. Chị thử cho cả ba chú dê lên rồi, rối dê ướt sũng luôn."
         },
         {
           "speaker": "Cánh Cụt Pin",
@@ -562,18 +566,18 @@
       "choices": [
         {
           "text": "Thử từng cặp dê một",
-          "reply": "Cáo Lém: Cặp nào nhẹ nhất thì lên trước, hay đấy!"
+          "reply": "Chị Ngân: Cặp nào nhẹ nhất thì lên trước, hay đấy!"
         },
         {
           "text": "Tìm hai chú dê nhẹ nhất",
-          "reply": "Cáo Lém: Thông minh, đỡ phải thử đi thử lại!"
+          "reply": "Chị Ngân: Thông minh, đỡ phải thử đi thử lại!"
         }
       ]
     },
     {
       "id": "de-qua-song",
       "title": "Hai chú dê lên thuyền",
-      "target": "cao-lem",
+      "target": "toan2-cd7-b35-chi-ngan",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "prompt": "Có ba con dê cân nặng 14 kg, 18 kg, 16 kg muốn sang sông để ăn cỏ. Rô-bốt nói: \"Thuyền chỉ chở thêm được nhiều nhất là 31 kg”. Hỏi hai con dê nào có thể cùng nhau sang sông?",
@@ -633,7 +637,7 @@
         "right": [
           "Thuyền chở hai chú dê lướt qua sông, không ướt sợi lông nào!",
           "Ba mươi ki-lô-gam, vẫn còn dư chỗ cho một bó cỏ.",
-          "Cáo Lém cúi chào khán giả: cảm ơn kĩ sư thuyền {name}!"
+          "Chị Ngân cúi chào khán giả: cảm ơn kĩ sư thuyền {name}!"
         ],
         "wrong": [
           "Ối, thuyền chìm rồi! Tổng hai chú dê đã quá 31 kg.",
@@ -750,7 +754,8 @@
     {
       "id": "cong-tru-lit",
       "title": "Sổ nước của Pin",
-      "target": "chim-canh-cut-pin",
+      "goTo": "Ghé kho thú bông, Thỏ Gòn bày các thùng nước chanh, nước cam",
+      "target": "toan2-cd7-b35-tho-gon",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "prompt": "Trang tiếp theo trong sổ ghi các thùng nước chanh, nước cam. Tính.",
@@ -943,6 +948,7 @@
     {
       "id": "thung-nuoc-mam-bep",
       "title": "Thùng nước mắm nhà bếp",
+      "goTo": "Về hậu trường, Pin cầm phiếu giao hàng chờ sẵn",
       "target": "chim-canh-cut-pin",
       "kind": "riddle",
       "question": "Xe hàng chở đồ cho bếp trường vừa tới, Pin cầm phiếu giao hàng. Giải bài toán theo tóm tắt sau: Tóm tắt Có: 18 thùng nước mắm Thêm: 4 thùng nước mắm Có tất cả: ... thùng nước mắm?",
@@ -1034,7 +1040,7 @@
       "title": "Huy hiệu hậu trường",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Pin đóng cuốn sổ kiểm đếm cái \"bộp\" và gắn cho {name} huy hiệu \"Thanh tra cân đong\". Heo Ủn được thưởng một chiếc bánh, đã cân trước hẳn hoi."
+      "text": "Pin đóng cuốn sổ kiểm đếm cái \"bộp\" và gắn cho {name} huy hiệu \"Thanh tra cân đong\". Heo Mũm Mĩm được thưởng một chiếc bánh, đã cân trước hẳn hoi."
     },
     {
       "id": "le-tong-ket-sap-mo",

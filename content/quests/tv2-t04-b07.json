@@ -5,12 +5,12 @@
   "title": "Bụi xấu hổ cứ nhắm mắt",
   "status": "active",
   "lesson": "tv2-t1-b07",
-  "summary": "Nai Mơ đang làm thơ tặng bụi cỏ xấu hổ ven đầm thì cứ có tiếng động lạ là lá lại cụp hết. {name} tìm thủ phạm tiếng động, đọc bài Cây xấu hổ, nhặt từ chỉ đặc điểm cho bài thơ và kể chuyện chú đỗ con ru Sâu Xanh vào kén.",
+  "summary": "Cáo Vần đang làm thơ tặng bụi cỏ xấu hổ ven đầm thì cứ có tiếng động lạ là lá lại cụp hết. {name} tìm thủ phạm tiếng động, đọc bài Cây xấu hổ, nhặt từ chỉ đặc điểm cho bài thơ và kể chuyện chú đỗ con ru Gấu Ngáp ngủ.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Nai Mơ (cái gì cũng muốn làm thơ), Lợn Rừng Đốm vụng về hay ngã “Oạch!”, Hải Ly Cần đóng cầu, Sâu Xanh sắp làm kén",
-    "where": "Bụi cỏ xấu hổ ven đầm và gốc cây thanh mai bên bờ",
-    "goal": "Giúp Nai Mơ làm xong bài thơ mà bụi xấu hổ không phải giật mình cụp lá",
+    "who": "Cáo Vần (cáo con mê làm thơ, cái gì cũng muốn gieo vần), Lợn Rừng Lấm vụng về hay ngã “Oạch!”, Hải Ly Đinh đóng cầu, Gấu Ngáp buồn ngủ díp mắt",
+    "where": "Bụi cỏ xấu hổ ven đầm, gốc liễu ven đầm, phiến đá phẳng, vũng bùn ven đầm, nhịp cầu mới qua suối và gốc cây thanh mai bên bờ",
+    "goal": "Giúp Cáo Vần làm xong bài thơ mà bụi xấu hổ không phải giật mình cụp lá",
     "play": "Tìm thứ gây tiếng động, nói khởi động, đọc bài hai lượt, trắc nghiệm, chọn nhiều đáp án, điền từ, chọn cách giúp bạn, xếp tranh, kể chuyện, phiếu viết",
     "learn": "Tiếng Việt 2 Bài 7: đọc Cây xấu hổ, từ chỉ đặc điểm, nói tiếp lời nhân vật, chữ hoa C, kể chuyện Chú đỗ con theo tranh",
     "reward": "80 XP, 15 xu, Đọc hiểu +2, Từ ngữ +2, Kể chuyện +1",
@@ -53,46 +53,47 @@
     }
   },
   "places": {
-    "nai-mo": "bụi xấu hổ",
-    "lon-rung-dom": "bụi xấu hổ",
-    "tv2-t04-bui-xau-ho": "bụi xấu hổ",
-    "tv2-t04-phien-da": "bụi xấu hổ",
+    "tv2-t04-b07-cao-van": "gốc liễu ven đầm",
     "tim-tieng-dong-la": "bờ đầm",
-    "sau-xanh": "gốc thanh mai"
+    "tv2-t04-bui-xau-ho": "bụi xấu hổ",
+    "tv2-t04-phien-da": "phiến đá phẳng",
+    "tv2-t04-b07-lon-rung-lam": "vũng bùn ven đầm",
+    "tv2-t02-b03-hai-ly-dinh": "nhịp cầu mới qua suối",
+    "tv2-t04-b07-gau-ngap": "gốc thanh mai"
   },
   "steps": [
     {
       "id": "nai-mo-lam-tho",
       "title": "Bài thơ dở dang",
-      "goTo": "Tới bụi xấu hổ ven đầm, Nai Mơ đang cắn bút lá",
+      "goTo": "Tới gốc liễu ven đầm, Cáo Vần đang cắn bút lá làm thơ",
       "kind": "dialogue",
-      "target": "nai-mo",
+      "target": "tv2-t04-b07-cao-van",
       "lines": [
         {
-          "speaker": "Nai Mơ",
+          "speaker": "Cáo Vần",
           "text": "{name} ơi, tớ đang làm thơ tặng bụi cỏ này: “Lá xanh lá biếc, lá…” Ơ kìa, nó lại nhắm tịt mắt rồi!"
         },
         {
-          "speaker": "Lợn Rừng Đốm",
+          "speaker": "Lợn Rừng Lấm",
           "text": "Không phải tại tớ đâu nhé! Tớ chỉ… Oạch! …vấp có một cái thôi."
         },
         {
-          "speaker": "Nai Mơ",
+          "speaker": "Cáo Vần",
           "text": "Hễ có tiếng động lạ là lá cụp hết lại. Bài thơ của tớ đứng hình, vần cũng chạy mất."
         },
         {
-          "speaker": "Lợn Rừng Đốm",
+          "speaker": "Lợn Rừng Lấm",
           "text": "Dọc bờ đầm còn mấy thứ kêu to hơn cái mông tớ nhiều. {name} đi tìm thử xem!"
         }
       ],
       "choices": [
         {
           "text": "Mình đi tìm thủ phạm tiếng động!",
-          "reply": "Nai Mơ ngâm luôn: “Bạn đi tìm tiếng động, tớ ngồi chờ… ờ… rung rinh.” Vần này chưa hay, tớ sửa sau."
+          "reply": "Cáo Vần ngâm luôn: “Bạn đi tìm tiếng động, tớ ngồi chờ… ờ… rung rinh.” Vần này chưa hay, tớ sửa sau."
         },
         {
-          "text": "Đốm ơi, cậu bước nhẹ thôi nhé!",
-          "reply": "Đốm gật đầu lia lịa, rón rén một bước rồi… Oạch! Bụi xấu hổ lại cụp lá."
+          "text": "Lấm ơi, cậu bước nhẹ thôi nhé!",
+          "reply": "Lấm gật đầu lia lịa, rón rén một bước rồi… Oạch! Bụi xấu hổ lại cụp lá."
         }
       ]
     },
@@ -110,10 +111,10 @@
     {
       "id": "doan-loai-cay",
       "title": "Loài cây biết nhắm mắt",
-      "goTo": "Quay lại bụi xấu hổ, lá đã he hé mở",
+      "goTo": "Rón rén lại gần bụi xấu hổ, lá đã he hé mở",
       "kind": "speak",
       "target": "tv2-t04-bui-xau-ho",
-      "prompt": "Nai Mơ cúi sát xuống, nói thì thầm cho bụi cỏ khỏi giật mình: đống lá khô, cây búa gỗ, cả chiếc lông chim nữa, toàn thứ làm nó hết hồn.\nEm biết gì về loài cây trong tranh?\nDựa vào tên bài đọc và tranh minh hoạ, em thử đoán xem loài cây này có gì đặc biệt.",
+      "prompt": "Cáo Vần cúi sát xuống, nói thì thầm cho bụi cỏ khỏi giật mình: đống lá khô, cây búa gỗ, cả chiếc lông chim nữa, toàn thứ làm nó hết hồn.\nEm biết gì về loài cây trong tranh?\nDựa vào tên bài đọc và tranh minh hoạ, em thử đoán xem loài cây này có gì đặc biệt.",
       "hints": [
         "Lá của cây nhỏ hay to? Hoa có màu gì?",
         "Thử đoán: khi bị chạm vào, lá cây sẽ làm gì?",
@@ -136,11 +137,12 @@
     {
       "id": "doc-cay-xau-ho",
       "title": "Đọc bài Cây xấu hổ",
+      "goTo": "Sang phiến đá phẳng, Cáo Vần đã chép sẵn cả bài đọc",
       "kind": "read",
       "target": "tv2-t04-phien-da",
       "textRef": "cay-xau-ho",
       "audio": true,
-      "question": "Nai Mơ đã chép cả bài đọc lên phiến đá phẳng, nét chữ uốn lượn như cành liễu.\nNghe tiếng động lạ, cây xấu hổ đã làm gì?",
+      "question": "Cáo Vần đã chép cả bài đọc lên phiến đá phẳng, nét chữ uốn lượn như cành liễu.\nNghe tiếng động lạ, cây xấu hổ đã làm gì?",
       "choices": [
         {
           "id": "no-hoa",
@@ -175,8 +177,8 @@
       },
       "feedback": {
         "right": [
-          "Đúng! Co rúm lại y như lúc Đốm kêu “Oạch!” ấy.",
-          "Nai Mơ ghi ngay vào sổ lá: “co rúm mình lại”, hay quá!",
+          "Đúng! Co rúm lại y như lúc Lấm kêu “Oạch!” ấy.",
+          "Cáo Vần ghi ngay vào sổ lá: “co rúm mình lại”, hay quá!",
           "Bụi xấu hổ he hé một mắt lá, như muốn nói: đúng là tớ đấy."
         ],
         "wrong": [
@@ -193,7 +195,7 @@
       "target": "tv2-t04-phien-da",
       "textRef": "cay-xau-ho",
       "audio": true,
-      "question": "Lợn Rừng Đốm ghé tai vào phiến đá, nghe mãi chẳng thấy gì vì… đá không biết nói.\nCây cỏ xung quanh xôn xao về chuyện gì?",
+      "question": "Lợn Rừng Lấm ghé tai vào phiến đá, nghe mãi chẳng thấy gì vì… đá không biết nói.\nCây cỏ xung quanh xôn xao về chuyện gì?",
       "choices": [
         {
           "id": "gay-canh",
@@ -229,8 +231,8 @@
       "feedback": {
         "right": [
           "Chính là chú chim xanh biếc! Chiếc lông {name} nhặt được là của chú đấy.",
-          "Đốm há mồm: chim gì mà lóng lánh như tự toả sáng vậy!",
-          "Nai Mơ ngâm: “Chim xanh bay tới, cỏ cây xôn xao.” Lần này có vần rồi!"
+          "Lấm há mồm: chim gì mà lóng lánh như tự toả sáng vậy!",
+          "Cáo Vần ngâm: “Chim xanh bay tới, cỏ cây xôn xao.” Lần này có vần rồi!"
         ],
         "wrong": [
           "Bài không kể cành thanh mai bị gãy đâu. Tìm câu có chữ “Thì ra” nhé.",
@@ -242,10 +244,11 @@
     {
       "id": "cay-xau-ho-tiec-gi",
       "title": "Cây xấu hổ tiếc điều gì?",
+      "goTo": "Về gốc liễu ven đầm, Cáo Vần chống cằm chờ {name}",
       "kind": "challenge",
       "mechanic": "quiz",
-      "target": "nai-mo",
-      "prompt": "Nai Mơ chống cằm, mắt long lanh như sắp làm một bài thơ buồn.\nCây xấu hổ nuối tiếc điều gì?",
+      "target": "tv2-t04-b07-cao-van",
+      "prompt": "Cáo Vần chống cằm, mắt long lanh như sắp làm một bài thơ buồn.\nCây xấu hổ nuối tiếc điều gì?",
       "choices": [
         {
           "id": "qua-thanh-mai",
@@ -281,7 +284,7 @@
       "feedback": {
         "right": [
           "Đúng rồi, nhắm mắt đúng lúc chim đẹp nhất bay qua thì tiếc thật!",
-          "Nai Mơ sụt sịt: tội nghiệp bụi cỏ, tớ sẽ làm một bài thơ an ủi nó.",
+          "Cáo Vần sụt sịt: tội nghiệp bụi cỏ, tớ sẽ làm một bài thơ an ủi nó.",
           "Chuẩn! {name} hiểu lòng cây xấu hổ ghê."
         ],
         "wrong": [
@@ -294,6 +297,7 @@
     {
       "id": "cau-van-mong-chim",
       "title": "Câu văn mong chim trở lại",
+      "goTo": "Ghé bụi xấu hổ, lá đang khẽ rung rinh ngóng trời",
       "kind": "challenge",
       "mechanic": "quiz",
       "target": "tv2-t04-bui-xau-ho",
@@ -333,8 +337,8 @@
       "feedback": {
         "right": [
           "Đúng câu cuối bài rồi! Bụi xấu hổ ngóng lên trời, mắt lá mở to.",
-          "Câu hỏi ấy nghe da diết quá, Nai Mơ chép ngay vào sổ.",
-          "Đốm reo to quá… Oạch, lỡ mồm! Nhưng {name} chọn đúng thật mà."
+          "Câu hỏi ấy nghe da diết quá, Cáo Vần chép ngay vào sổ.",
+          "Lấm reo to quá… Oạch, lỡ mồm! Nhưng {name} chọn đúng thật mà."
         ],
         "wrong": [
           "Câu này kể chim bay đi, chưa nói tới chuyện mong chim trở lại. Đọc câu cuối bài nhé.",
@@ -346,10 +350,11 @@
     {
       "id": "tu-ngu-cho-bai-tho",
       "title": "Từ ngữ cho bài thơ",
+      "goTo": "Cáo Vần vẫy sổ lá gọi {name} về gốc liễu ven đầm",
       "kind": "challenge",
       "mechanic": "multi-select",
-      "target": "nai-mo",
-      "prompt": "Nai Mơ lật sổ lá: bài thơ tặng bụi cỏ còn thiếu những từ tả cho thật đẹp, không cần từ chỉ việc làm.\nNhững từ ngữ nào dưới đây chỉ đặc điểm?",
+      "target": "tv2-t04-b07-cao-van",
+      "prompt": "Cáo Vần lật sổ lá: bài thơ tặng bụi cỏ còn thiếu những từ tả cho thật đẹp, không cần từ chỉ việc làm.\nNhững từ ngữ nào dưới đây chỉ đặc điểm?",
       "choices": [
         {
           "id": "tu-1",
@@ -396,9 +401,9 @@
       },
       "feedback": {
         "right": [
-          "Đẹp, lóng lánh, xanh biếc: Nai Mơ nhét cả ba từ vào bài thơ!",
+          "Đẹp, lóng lánh, xanh biếc: Cáo Vần nhét cả ba từ vào bài thơ!",
           "Không chọn nhầm từ chỉ việc làm nào. Mắt {name} tinh như mắt chim.",
-          "Lợn Rừng Đốm vỗ tay đôm đốp, may mà lần này không ngã."
+          "Lợn Rừng Lấm vỗ tay đôm đốp, may mà lần này không ngã."
         ],
         "wrong": [
           "Bay đi là việc chim làm, chưa phải đặc điểm đâu nhé.",
@@ -410,9 +415,10 @@
     {
       "id": "loi-cua-cay-xau-ho",
       "title": "Nói thay cây xấu hổ",
+      "goTo": "Ngồi xuống cạnh bụi xấu hổ, nói hộ nỗi lòng của nó",
       "kind": "speak",
       "target": "tv2-t04-bui-xau-ho",
-      "prompt": "Bụi xấu hổ không biết nói, nên Nai Mơ nhờ {name} nói hộ nỗi lòng của nó.\nNói tiếp lời của cây xấu hổ: Mình rất tiếc (…).",
+      "prompt": "Bụi xấu hổ không biết nói, nên Cáo Vần nhờ {name} nói hộ nỗi lòng của nó.\nNói tiếp lời của cây xấu hổ: Mình rất tiếc (…).",
       "hints": [
         "Cây xấu hổ tiếc vì đã nhắm mắt lúc nào?",
         "Nó tiếc vì không được thấy ai?",
@@ -434,10 +440,11 @@
     {
       "id": "so-la-bi-nhoe",
       "title": "Sổ lá bị nhoè",
+      "goTo": "Oạch! Chạy ra vũng bùn ven đầm, Lợn Rừng Lấm vừa ngã sóng soài",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "target": "lon-rung-dom",
-      "prompt": "Oạch! Đốm vấp ngã, ống nước tre đổ ụp lên sổ lá của Nai Mơ, nhoè mất ba từ khó trong bài. Chọn từ đúng điền lại giúp hai bạn.",
+      "target": "tv2-t04-b07-lon-rung-lam",
+      "prompt": "Oạch! Lấm vấp ngã, ống nước tre đổ ụp lên sổ lá của Cáo Vần, nhoè mất ba từ khó trong bài. Chọn từ đúng điền lại giúp hai bạn.",
       "template": "Những chiếc lá khô {{b1}} lướt trên cỏ.\nNó bỗng thấy xung quanh {{b2}}.\nCác cây cỏ {{b3}}: biết bao nhiêu con chim đã bay qua đây, chưa có con nào đẹp đến thế.",
       "blanks": [
         {
@@ -513,9 +520,9 @@
       },
       "feedback": {
         "right": [
-          "Sổ lá sạch bong như mới! Nai Mơ ôm chầm lấy {name}.",
+          "Sổ lá sạch bong như mới! Cáo Vần ôm chầm lấy {name}.",
           "Lạt xạt, xôn xao, xuýt xoa: ba từ về đúng chỗ của mình.",
-          "Đốm lí nhí xin lỗi, rồi tự hứa lần sau đi chậm… như rùa."
+          "Lấm lí nhí xin lỗi, rồi tự hứa lần sau đi chậm… như rùa."
         ],
         "wrong": [
           "Lá khô lướt trên cỏ thì kêu thế nào? Tiếng ấy có trong mục Từ ngữ đấy.",
@@ -527,19 +534,20 @@
     {
       "id": "nhip-cau-cua-hai-ly",
       "title": "Tiếng búa của Hải Ly",
+      "goTo": "Theo tiếng cộc cộc tới nhịp cầu mới qua suối, Hải Ly Đinh đang đóng đinh",
       "kind": "dialogue",
-      "target": "nai-mo",
+      "target": "tv2-t02-b03-hai-ly-dinh",
       "lines": [
         {
-          "speaker": "Hải Ly Cần",
+          "speaker": "Hải Ly Đinh",
           "text": "Xin lỗi các cậu, tớ phải đóng nốt một nhịp cầu mới qua suối, mà búa cứ kêu cộc cộc."
         },
         {
-          "speaker": "Nai Mơ",
+          "speaker": "Cáo Vần",
           "text": "Mỗi tiếng cộc là bụi cỏ nhắm mắt một lần. Cộc, nhắm. Cộc, nhắm. Nghe cũng thành thơ đấy chứ!"
         },
         {
-          "speaker": "Lợn Rừng Đốm",
+          "speaker": "Lợn Rừng Lấm",
           "text": "{name} nghĩ cách đi, để cầu vẫn xong mà bụi xấu hổ không phải sợ."
         }
       ],
@@ -550,22 +558,22 @@
         },
         {
           "text": "Báo trước cho bụi cỏ rồi hẵng gõ.",
-          "reply": "Nai Mơ ngâm: “Cỏ ơi đừng sợ, búa gõ cầu thôi.” Lá cụp lại, nhưng mở ra nhanh hơn hẳn."
+          "reply": "Cáo Vần ngâm: “Cỏ ơi đừng sợ, búa gõ cầu thôi.” Lá cụp lại, nhưng mở ra nhanh hơn hẳn."
         },
         {
           "text": "Gõ thật nhẹ, đếm từng nhịp một.",
-          "reply": "Hải Ly gõ khẽ: cốc… cốc… Đốm đếm theo, đếm tới ba thì… Oạch!"
+          "reply": "Hải Ly gõ khẽ: cốc… cốc… Lấm đếm theo, đếm tới ba thì… Oạch!"
         }
       ]
     },
     {
       "id": "xep-tranh-do-con",
       "title": "Bốn tranh chú đỗ con",
-      "goTo": "Sang gốc thanh mai, Sâu Xanh đang treo mình làm kén",
+      "goTo": "Gấu Ngáp đòi nghe chuyện, chạy về gốc liễu ven đầm lấy tranh của Cáo Vần",
       "kind": "challenge",
       "mechanic": "sort",
-      "target": "sau-xanh",
-      "prompt": "Sâu Xanh đã quấn tơ kín tới cổ, chỉ còn thò cái đầu ra: kể tớ nghe chuyện chú đỗ con rồi tớ ngủ một giấc thật dài. Nhưng bốn bức tranh của Nai Mơ bị gió thổi lộn xộn.\nDựa vào câu hỏi gợi ý, đoán nội dung của từng tranh.\nCuộc gặp gỡ của đỗ con và cô mưa xuân diễn ra thế nào?\nCuộc gặp gỡ của đỗ con và chị gió xuân diễn ra thế nào?\nCuộc gặp gỡ của đỗ con và bác mặt trời diễn ra thế nào?\nCuối cùng, đỗ con làm gì?\nXếp tranh theo thứ tự câu chuyện.",
+      "target": "tv2-t04-b07-cao-van",
+      "prompt": "Gấu Ngáp đã quấn chăn lá kín tới cổ, chỉ còn thò cái đầu ra: kể tớ nghe chuyện chú đỗ con rồi tớ ngủ một giấc thật dài. Nhưng bốn bức tranh của Cáo Vần bị gió thổi lộn xộn.\nDựa vào câu hỏi gợi ý, đoán nội dung của từng tranh.\nCuộc gặp gỡ của đỗ con và cô mưa xuân diễn ra thế nào?\nCuộc gặp gỡ của đỗ con và chị gió xuân diễn ra thế nào?\nCuộc gặp gỡ của đỗ con và bác mặt trời diễn ra thế nào?\nCuối cùng, đỗ con làm gì?\nXếp tranh theo thứ tự câu chuyện.",
       "items": [
         {
           "id": "gio-xuan",
@@ -640,9 +648,9 @@
       },
       "feedback": {
         "right": [
-          "Sâu Xanh gật gù: mưa, gió, nắng, rồi lớn. Giống tớ quá!",
+          "Gấu Ngáp gật gù: mưa, gió, nắng, rồi lớn. Giống tớ quá!",
           "Bốn tranh nối nhau thành một hành trình xanh mướt.",
-          "Nai Mơ khen: {name} xếp tranh có vần có điệu như thơ!"
+          "Cáo Vần khen: {name} xếp tranh có vần có điệu như thơ!"
         ],
         "wrong": [
           "Hạt đỗ chưa uống giọt mưa nào mà đã vươn cao rồi sao? Xếp lại nhé.",
@@ -654,9 +662,10 @@
     {
       "id": "doan-va-nghe-ke",
       "title": "Đoán tranh, nghe kể",
+      "goTo": "Ôm tranh sang gốc thanh mai, Gấu Ngáp đang ngáp dài trong ổ lá",
       "kind": "speak",
-      "target": "sau-xanh",
-      "prompt": "Sâu Xanh ngáp một cái, cả chục cái chân cùng duỗi ra một lượt.\nDựa vào câu hỏi gợi ý, đoán nội dung của từng tranh.\nNghe kể câu chuyện.\nĐoán xong, nhờ bố mẹ hoặc thầy cô kể chuyện Chú đỗ con để xem {name} đoán có trúng không.",
+      "target": "tv2-t04-b07-gau-ngap",
+      "prompt": "Gấu Ngáp há miệng ngáp to, bốn cái chân mũm mĩm cùng duỗi ra một lượt.\nDựa vào câu hỏi gợi ý, đoán nội dung của từng tranh.\nNghe kể câu chuyện.\nĐoán xong, nhờ bố mẹ hoặc thầy cô kể chuyện Chú đỗ con để xem {name} đoán có trúng không.",
       "hints": [
         "Cuộc gặp gỡ của đỗ con và cô mưa xuân diễn ra thế nào?",
         "Cuộc gặp gỡ của đỗ con và chị gió xuân diễn ra thế nào?",
@@ -707,14 +716,14 @@
     },
     {
       "id": "ke-cho-sau-xanh-ngu",
-      "title": "Kể chuyện ru Sâu Xanh",
+      "title": "Kể chuyện ru Gấu Ngáp",
       "kind": "speak",
-      "target": "sau-xanh",
-      "prompt": "Giọng Sâu Xanh lí nhí sau lớp tơ: kể tiếp đi, tớ chưa ngủ… khò… chưa ngủ thật mà.\nChọn kể 1 – 2 đoạn của câu chuyện theo tranh.",
+      "target": "tv2-t04-b07-gau-ngap",
+      "prompt": "Giọng Gấu Ngáp lí nhí sau lớp chăn lá: kể tiếp đi, tớ chưa ngủ… khò… chưa ngủ thật mà.\nChọn kể 1 – 2 đoạn của câu chuyện theo tranh.",
       "hints": [
         "Chọn một hoặc hai bức tranh em nhớ rõ nhất.",
         "Đỗ con gặp ai? Người ấy đã giúp đỗ con thế nào?",
-        "Kể chậm, giọng nhỏ dần như đang ru Sâu Xanh ngủ."
+        "Kể chậm, giọng nhỏ dần như đang ru Gấu Ngáp ngủ."
       ],
       "curriculumRef": [
         "tv2-t1-b07-ke-chuyen-3"
@@ -723,9 +732,10 @@
     {
       "id": "ke-voi-nguoi-than",
       "title": "Hành trình của hạt đỗ",
+      "goTo": "Rón rén về gốc liễu ven đầm, Cáo Vần có lời dặn nhỏ",
       "kind": "speak",
-      "target": "sau-xanh",
-      "prompt": "Chiếc kén khép lại, chỉ còn tiếng ngáy khò khò. Nai Mơ dặn nhỏ: về nhà {name} kể tiếp nhé.\nNói với người thân về hành trình hạt đỗ con trở thành cây đỗ.",
+      "target": "tv2-t04-b07-cao-van",
+      "prompt": "Tấm chăn lá kéo kín đầu, chỉ còn tiếng ngáy khò khò. Cáo Vần dặn nhỏ: về nhà {name} kể tiếp nhé.\nNói với người thân về hành trình hạt đỗ con trở thành cây đỗ.",
       "hints": [
         "Lúc đầu, hạt đỗ nằm ở đâu?",
         "Ai đã giúp hạt đỗ nhú mầm, nảy lá?",
@@ -741,7 +751,7 @@
       "kind": "worksheet",
       "trigger": "auto",
       "lessonId": "tv2-t1-b07",
-      "text": "Hải Ly Cần đóng xong nhịp cầu thì nhắc: nhờ bố mẹ in phiếu Bài 7 ở khu phụ huynh. Trên phiếu có chữ hoa C uốn cong như đuôi Sâu Xanh và câu “Có công mài sắt, có ngày nên kim.” để em tập viết.",
+      "text": "Hải Ly Đinh đóng xong nhịp cầu thì nhắc: nhờ bố mẹ in phiếu Bài 7 ở khu phụ huynh. Trên phiếu có chữ hoa C uốn cong như lưng Gấu Ngáp lúc cuộn tròn và câu “Có công mài sắt, có ngày nên kim.” để em tập viết.",
       "curriculumRef": [
         "tv2-t1-b07-viet-chu-hoa-1",
         "tv2-t1-b07-viet-ung-dung-2"
@@ -752,14 +762,14 @@
       "title": "Bài thơ Lá cụp lá xoè",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Nai Mơ tặng {name} trang sổ lá chép bài thơ “Lá cụp lá xoè” vừa làm xong. Đốm thì tặng đôi dép rơm đi êm ru để khỏi làm bụi cỏ giật mình. Đi được ba bước thì… Oạch! Đốm vẫn ngã."
+      "text": "Cáo Vần tặng {name} trang sổ lá chép bài thơ “Lá cụp lá xoè” vừa làm xong. Lấm thì tặng đôi dép rơm đi êm ru để khỏi làm bụi cỏ giật mình. Đi được ba bước thì… Oạch! Lấm vẫn ngã."
     },
     {
       "id": "mo-bai-8",
       "title": "Tiếng gầm ở sân bóng",
       "kind": "unlock",
       "trigger": "auto",
-      "text": "Từ sân bóng giữa rừng vọng lại một tiếng “Grừ!” rõ to, rồi im bặt. Hổ Vằn đang một mình sút bóng vào gôn, vì chưa đội nào chịu nhận cậu vào chơi."
+      "text": "Từ sân bóng giữa rừng vọng lại một tiếng “Grừ!” rõ to, rồi im bặt. Hổ Sọc đang một mình sút bóng vào gôn, vì chưa đội nào chịu nhận cậu vào chơi."
     }
   ],
   "reward": {

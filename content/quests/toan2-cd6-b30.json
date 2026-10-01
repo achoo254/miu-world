@@ -8,8 +8,8 @@
   "summary": "Voi Bảo hắt xì một cái, các tờ lịch trên tháp bay tán loạn và rách mất mấy ngày; {name} nhặt lại mảnh lịch, ghép ngày sinh, điền ngày còn thiếu và trả lời mọi câu đố lịch của Voi Bảo.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Voi Bảo, Koala Na",
-    "where": "Tháp đồng hồ: phòng lịch trên tháp, cầu thang tháp, ban công tháp",
+    "who": "Voi Bảo, Gấu Trúc Khò, Thỏ Kim Chỉ, Gấu Nâu Cốm, Bê Lúc Lắc",
+    "where": "Tháp đồng hồ: phòng lịch trên tháp, cầu thang tháp, bàn vá lịch, giá treo lịch, ban công tháp, cửa sổ hướng đông",
     "goal": "Ghép lại các tờ lịch tháng cho phòng lịch của trường",
     "play": "Tìm mảnh lịch, ghép thẻ ngày sinh, chạm ngày và thứ trên tờ lịch, điền ngày còn thiếu, nối tranh ngày lễ với ô chữ",
     "learn": "Toán 2 Bài 30: ngày – tháng, đọc và xem tờ lịch tháng",
@@ -30,7 +30,10 @@
   "places": {
     "voi-bao": "phòng lịch trên tháp",
     "nhat-manh-lich": "cầu thang tháp đồng hồ",
-    "koala-na": "ban công tháp"
+    "toan2-cd6-b29-gau-truc-kho": "ban công tháp",
+    "toan2-cd6-b30-tho-kim-chi": "bàn vá lịch",
+    "toan2-cd6-b30-gau-nau-com": "giá treo lịch",
+    "toan2-cd6-b30-be-luc-lac": "cửa sổ hướng đông"
   },
   "steps": [
     {
@@ -49,14 +52,14 @@
           "text": "Tờ lịch tháng Mười Hai rách mất mấy ô, tờ tháng Hai cũng thủng lỗ chỗ. Tớ nhớ giỏi lắm, nhưng nhớ… hơi chậm."
         },
         {
-          "speaker": "Koala Na",
+          "speaker": "Gấu Trúc Khò",
           "text": "(ngáp dài từ ngoài ban công) Lịch bay ra đây mấy tờ này, mềm như chăn ấy… khò…"
         }
       ],
       "choices": [
         {
           "text": "Tớ đi nhặt lịch ngay!",
-          "reply": "Voi Bảo vẫy vòi: Nhanh lên kẻo Koala Na đắp hết làm chăn mất!"
+          "reply": "Voi Bảo vẫy vòi: Nhanh lên kẻo Gấu Trúc Khò đắp hết làm chăn mất!"
         },
         {
           "text": "Voi Bảo bị cảm à?",
@@ -177,7 +180,8 @@
     {
       "id": "o-trong-thang-muoi-hai",
       "title": "Ô trống đầu tiên tháng 12",
-      "target": "voi-bao",
+      "goTo": "Sang bàn vá lịch, Thỏ Kim Chỉ xâu kim chờ vá tờ tháng 12",
+      "target": "toan2-cd6-b30-tho-kim-chi",
       "kind": "challenge",
       "mechanic": "calendar",
       "prompt": "a) Nêu các ngày còn thiếu trong tờ lịch tháng 12 dưới đây.",
@@ -204,7 +208,7 @@
         "right": [
           "Ô ngày 10 sáng lên, tờ lịch bớt một lỗ thủng rồi!",
           "Đếm liền mạch sau ngày 9, cậu tìm ra ngay.",
-          "Voi Bảo dán miếng vá đầu tiên lên ô ngày 10."
+          "Thỏ Kim Chỉ khâu miếng vá đầu tiên lên ô ngày 10."
         ],
         "wrong": [
           "Ô đó có số rồi mà, tìm ô trống ngay sau ngày 9 nhé.",
@@ -219,7 +223,7 @@
     {
       "id": "va-lich-thang-muoi-hai",
       "title": "Vá kín tờ lịch tháng 12",
-      "target": "voi-bao",
+      "target": "toan2-cd6-b30-tho-kim-chi",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "prompt": "a) Nêu các ngày còn thiếu trong tờ lịch tháng 12 dưới đây.",
@@ -363,7 +367,7 @@
       "feedback": {
         "right": [
           "Bảy miếng vá nằm ngay ngắn, tờ tháng 12 lành lặn như mới!",
-          "Voi Bảo vỗ tai phành phạch: không sót ô nào luôn.",
+          "Thỏ Kim Chỉ vẫy đôi tai dài: không sót ô nào luôn.",
           "Tháng 12 đủ ngày rồi, Tết Dương lịch sắp tới nơi đấy."
         ],
         "wrong": [
@@ -387,6 +391,7 @@
     {
       "id": "thang-muoi-hai-may-ngay",
       "title": "Tháng 12 dài bao nhiêu?",
+      "goTo": "Mang tờ tháng 12 về phòng lịch trên tháp, Voi Bảo giơ vòi chờ",
       "target": "voi-bao",
       "kind": "challenge",
       "mechanic": "calendar",
@@ -429,7 +434,8 @@
     {
       "id": "mung-mot-thang-muoi-hai",
       "title": "Ngày 1 tháng 12 là thứ mấy",
-      "target": "voi-bao",
+      "goTo": "Tới giá treo lịch, Gấu Nâu Cốm đang dò từng cột thứ",
+      "target": "toan2-cd6-b30-gau-nau-com",
       "kind": "challenge",
       "mechanic": "calendar",
       "prompt": "b) Xem tờ lịch tháng 12 rồi trả lời câu hỏi.",
@@ -455,7 +461,7 @@
       "feedback": {
         "right": [
           "Thứ Tư! Tháng 12 khởi động giữa tuần cho đỡ vội.",
-          "Dò cột chuẩn như thước kẻ, Voi Bảo khen nức nở.",
+          "Dò cột chuẩn như thước kẻ, Gấu Nâu Cốm khen nức nở.",
           "Đúng rồi, cột của ngày 1 có chữ thứ Tư trên đầu."
         ],
         "wrong": [
@@ -471,7 +477,7 @@
     {
       "id": "ngay-cuoi-thang-muoi-hai",
       "title": "Ngày 31 tháng 12 là thứ mấy",
-      "target": "voi-bao",
+      "target": "toan2-cd6-b30-gau-nau-com",
       "kind": "challenge",
       "mechanic": "calendar",
       "prompt": "b) Xem tờ lịch tháng 12 rồi trả lời câu hỏi.",
@@ -498,7 +504,7 @@
         "right": [
           "Thứ Sáu cuối năm, cả trường được nghỉ đón năm mới!",
           "Ô 31 dưới cột thứ Sáu, cậu tìm chẳng chệch li nào.",
-          "Voi Bảo đánh dấu ngày 31 bằng một ngôi sao vàng."
+          "Gấu Nâu Cốm đánh dấu ngày 31 bằng một ngôi sao vàng."
         ],
         "wrong": [
           "Hãy tìm ô số 31 ở hàng dưới cùng trước đã.",
@@ -512,45 +518,45 @@
     },
     {
       "id": "koala-dap-lich",
-      "title": "Koala Na đắp lịch ngủ",
-      "goTo": "Ra ban công tháp, Koala Na đang đắp tờ lịch tháng 1 ngủ ngon lành",
+      "title": "Gấu Trúc Khò đắp lịch ngủ",
+      "goTo": "Ra ban công tháp, Gấu Trúc Khò đang đắp tờ lịch tháng 1 ngủ ngon lành",
       "kind": "dialogue",
-      "target": "koala-na",
+      "target": "toan2-cd6-b29-gau-truc-kho",
       "lines": [
         {
-          "speaker": "Koala Na",
+          "speaker": "Gấu Trúc Khò",
           "text": "Khò… khò… tháng Một ấm ghê… thêm năm phút nữa thôi…"
         },
         {
           "speaker": "Voi Bảo",
-          "text": "Na ơi, đó là tờ lịch tháng 1 của trường chứ có phải chăn đâu!"
+          "text": "Khò ơi, đó là tờ lịch tháng 1 của trường chứ có phải chăn đâu!"
         },
         {
-          "speaker": "Koala Na",
+          "speaker": "Gấu Trúc Khò",
           "text": "(dụi mắt) Ờ… thế ai trả lời được câu đố lịch của tớ thì tớ trả tờ lịch, được chưa?"
         }
       ],
       "choices": [
         {
           "text": "Đố đi, tớ trả lời hết!",
-          "reply": "Koala Na ngồi dậy, mắt vẫn díp lại: Được, nhưng hỏi nhỏ nhỏ thôi nhé."
+          "reply": "Gấu Trúc Khò ngồi dậy, mắt vẫn díp lại: Được, nhưng hỏi nhỏ nhỏ thôi nhé."
         },
         {
-          "text": "Tớ đắp cho Na cái chăn thật nhé",
-          "reply": "Koala Na cười tít: Tốt bụng thế! Vậy tớ đố cậu luôn cho tỉnh ngủ."
+          "text": "Tớ đắp cho Khò cái chăn thật nhé",
+          "reply": "Gấu Trúc Khò cười tít: Tốt bụng thế! Vậy tớ đố cậu luôn cho tỉnh ngủ."
         }
       ]
     },
     {
       "id": "thang-mot-may-ngay",
       "title": "Tháng 1 có mấy ngày",
-      "target": "koala-na",
+      "target": "toan2-cd6-b29-gau-truc-kho",
       "kind": "challenge",
       "mechanic": "calendar",
       "prompt": "Xem tờ lịch tháng 1 dưới đây rồi trả lời câu hỏi.",
       "month": 1,
       "year": 2022,
-      "question": "Tháng 1 có bao nhiêu ngày? Koala Na lim dim: chạm vào ô ngày cuối cùng giúp tớ.",
+      "question": "Tháng 1 có bao nhiêu ngày? Gấu Trúc Khò lim dim: chạm vào ô ngày cuối cùng giúp tớ.",
       "ask": "day",
       "skill": "xem-lich",
       "curriculumRef": [
@@ -570,11 +576,11 @@
       "feedback": {
         "right": [
           "Ba mươi mốt ngày để ngủ… à không, để học chứ!",
-          "Koala Na mở một mắt: ừ, đúng là 31 thật.",
+          "Gấu Trúc Khò hé một mắt: ừ, đúng là 31 thật.",
           "Ô cuối của tháng 1 đây rồi, cậu nhanh tay ghê."
         ],
         "wrong": [
-          "Koala Na lắc đầu: ô đó còn ngày khác đứng sau cơ.",
+          "Gấu Trúc Khò lắc đầu: ô đó còn ngày khác đứng sau cơ.",
           "Ngày cuối của tháng 1 nằm ở hàng dưới cùng đấy.",
           "Tìm con số lớn nhất trên tờ lịch tháng 1 nhé."
         ]
@@ -586,7 +592,8 @@
     {
       "id": "tet-duong-lich-thu-may",
       "title": "Tết Dương lịch vào thứ mấy",
-      "target": "koala-na",
+      "goTo": "Chạy tới cửa sổ hướng đông, Bê Lúc Lắc rung chuông đón năm mới",
+      "target": "toan2-cd6-b30-be-luc-lac",
       "kind": "challenge",
       "mechanic": "calendar",
       "prompt": "Xem tờ lịch tháng 1 dưới đây rồi trả lời câu hỏi.",
@@ -611,7 +618,7 @@
       },
       "feedback": {
         "right": [
-          "Thứ Bảy đón năm mới, Koala Na được ngủ nướng hai ngày liền!",
+          "Thứ Bảy đón năm mới, Gấu Trúc Khò được ngủ nướng hai ngày liền!",
           "Đúng cột thứ Bảy, cậu đọc lịch thạo ghê.",
           "Pháo hoa tưởng tượng nổ lộp bộp: chúc mừng năm mới!"
         ],
@@ -628,13 +635,14 @@
     {
       "id": "mung-mot-thang-hai-thu-may",
       "title": "Sang tháng 2 là thứ mấy",
-      "target": "koala-na",
+      "goTo": "Quay ra ban công tháp, Gấu Trúc Khò vẫy tờ lịch tháng 1",
+      "target": "toan2-cd6-b29-gau-truc-kho",
       "kind": "challenge",
       "mechanic": "calendar",
       "prompt": "Xem tờ lịch tháng 1 dưới đây rồi trả lời câu hỏi.",
       "month": 1,
       "year": 2022,
-      "question": "Ngày 1 tháng 2 cùng năm là thứ mấy? Gợi ý của Na: nó đến ngay sau ngày cuối của tháng 1.",
+      "question": "Ngày 1 tháng 2 cùng năm là thứ mấy? Gợi ý của Khò: nó đến ngay sau ngày cuối của tháng 1.",
       "ask": "weekday",
       "skill": "xem-lich",
       "curriculumRef": [
@@ -653,9 +661,9 @@
       },
       "feedback": {
         "right": [
-          "Thứ Ba! Cậu nhìn xuyên sang cả tháng sau, Na phục sát đất.",
+          "Thứ Ba! Cậu nhìn xuyên sang cả tháng sau, Khò phục sát đất.",
           "Ngày 31 là thứ Hai, vậy hôm sau là thứ Ba, chuẩn rồi.",
-          "Koala Na tỉnh hẳn ngủ vì câu trả lời quá thông minh."
+          "Gấu Trúc Khò tỉnh hẳn ngủ vì câu trả lời quá thông minh."
         ],
         "wrong": [
           "Ngày 1 tháng 2 không có trên tờ này, hãy nhìn ngày 31 trước.",
@@ -670,10 +678,10 @@
     {
       "id": "tranh-ngay-le",
       "title": "Tranh ngày lễ tìm ô chữ",
-      "target": "koala-na",
+      "target": "toan2-cd6-b29-gau-truc-kho",
       "kind": "challenge",
       "mechanic": "classify",
-      "prompt": "Koala Na trả tờ lịch, kèm ba bức tranh ngày lễ dính trên lưng. Mỗi hình dưới đây ứng với ô chữ nào?",
+      "prompt": "Gấu Trúc Khò trả tờ lịch, kèm ba bức tranh ngày lễ dính trên lưng. Mỗi hình dưới đây ứng với ô chữ nào?",
       "groups": [
         {
           "id": "nhom-ngay-hai-muoi-thang-muoi-mot",
@@ -725,7 +733,7 @@
       },
       "feedback": {
         "right": [
-          "Ba bức tranh về đúng ô chữ, Na treo lên tường cho đẹp.",
+          "Ba bức tranh về đúng ô chữ, Khò treo lên tường cho đẹp.",
           "Ngày Nhà giáo, Quốc khánh, Tết Dương lịch: cậu nhớ cả ba!",
           "Đọc số thành chữ trơn tru, Voi Bảo gật gù."
         ],
@@ -746,8 +754,8 @@
     {
       "id": "o-trong-thang-hai",
       "title": "Lỗ thủng trên tờ tháng 2",
-      "goTo": "Quay vào phòng lịch trên tháp, tờ tháng 2 đang chờ vá",
-      "target": "voi-bao",
+      "goTo": "Sang bàn vá lịch, Thỏ Kim Chỉ trải tờ tháng 2 thủng lỗ chỗ",
+      "target": "toan2-cd6-b30-tho-kim-chi",
       "kind": "challenge",
       "mechanic": "calendar",
       "prompt": "a) Nêu các ngày còn thiếu trong tờ lịch tháng 2 dưới đây.",
@@ -772,7 +780,7 @@
       },
       "feedback": {
         "right": [
-          "Ô ngày 19 được vá đầu tiên, Voi Bảo thở phào.",
+          "Ô ngày 19 được vá đầu tiên, Thỏ Kim Chỉ thở phào.",
           "Cậu tìm lỗ thủng nhanh hơn cả chuột nhắt.",
           "Ngày 19 về chỗ cũ rồi, còn hai ô nữa thôi."
         ],
@@ -789,7 +797,7 @@
     {
       "id": "va-lich-thang-hai",
       "title": "Vá ba ô của tháng 2",
-      "target": "voi-bao",
+      "target": "toan2-cd6-b30-tho-kim-chi",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "prompt": "a) Nêu các ngày còn thiếu trong tờ lịch tháng 2 dưới đây.",
@@ -866,7 +874,7 @@
         "right": [
           "Tờ lịch tháng 2 kín mít, gió thổi cũng không lọt!",
           "Hai ô liền nhau mà cậu không nhầm thứ tự, giỏi lắm.",
-          "Voi Bảo treo tờ tháng 2 lên tường, phẳng phiu."
+          "Thỏ Kim Chỉ vuốt phẳng tờ tháng 2 rồi treo lên tường."
         ],
         "wrong": [
           "Hai ô liền nhau thì số cũng liền nhau, xem lại nhé.",
@@ -885,6 +893,7 @@
     {
       "id": "thang-hai-may-ngay",
       "title": "Tháng 2 ngắn ngủn",
+      "goTo": "Quay vào phòng lịch trên tháp, Voi Bảo chờ đếm ngày tháng 2",
       "target": "voi-bao",
       "kind": "challenge",
       "mechanic": "calendar",
@@ -969,7 +978,8 @@
     {
       "id": "thang-ba-may-ngay",
       "title": "Tháng 3 có mấy ngày",
-      "target": "voi-bao",
+      "goTo": "Lại giá treo lịch, Gấu Nâu Cốm lật sang tờ tháng 3",
+      "target": "toan2-cd6-b30-gau-nau-com",
       "kind": "challenge",
       "mechanic": "calendar",
       "prompt": "Xem tờ lịch tháng 3 dưới đây rồi trả lời câu hỏi.",
@@ -1011,7 +1021,7 @@
     {
       "id": "thu-hai-dau-thang-ba",
       "title": "Thứ Hai đầu tiên tháng 3",
-      "target": "voi-bao",
+      "target": "toan2-cd6-b30-gau-nau-com",
       "kind": "challenge",
       "mechanic": "calendar",
       "prompt": "Xem tờ lịch tháng 3 dưới đây rồi trả lời câu hỏi.",
@@ -1038,7 +1048,7 @@
         "right": [
           "Ngày 7! Cậu không bị ô trống ở hàng đầu đánh lừa.",
           "Thứ Hai đầu tiên tìm ra rồi, chào cờ thôi!",
-          "Voi Bảo khoanh ngày 7 bằng bút đỏ thật to."
+          "Gấu Nâu Cốm khoanh ngày 7 bằng bút đỏ thật to."
         ],
         "wrong": [
           "Ô thứ Hai ở hàng đầu còn trống, nhìn xuống hàng dưới nhé.",
@@ -1053,6 +1063,7 @@
     {
       "id": "ngay-quoc-te-phu-nu",
       "title": "Ngày Quốc tế Phụ nữ",
+      "goTo": "Về phòng lịch trên tháp, Voi Bảo đang ôm bó hoa sen",
       "target": "voi-bao",
       "kind": "challenge",
       "mechanic": "calendar",
@@ -1095,7 +1106,8 @@
     {
       "id": "thang-tu-may-ngay",
       "title": "Tháng 4 có mấy ngày",
-      "target": "voi-bao",
+      "goTo": "Ghé cửa sổ hướng đông, Bê Lúc Lắc giữ tờ lịch cuối cùng",
+      "target": "toan2-cd6-b30-be-luc-lac",
       "kind": "challenge",
       "mechanic": "calendar",
       "prompt": "Xem tờ lịch tháng 4 dưới đây rồi trả lời câu hỏi.",
@@ -1122,7 +1134,7 @@
         "right": [
           "Ba mươi ngày tròn trịa, tháng 4 gọn gàng ghê.",
           "Cậu không nhầm với tháng 31 ngày, chuẩn luôn.",
-          "Ô ngày 30 sáng lên, Voi Bảo gật gù."
+          "Ô ngày 30 sáng lên, Bê Lúc Lắc lắc chuông leng keng."
         ],
         "wrong": [
           "Tháng 4 không có ngày 31 đâu nhé.",
@@ -1137,6 +1149,7 @@
     {
       "id": "thu-bay-tuan-truoc",
       "title": "Thứ Bảy tuần trước là ngày nào",
+      "goTo": "Chạy về phòng lịch trên tháp, Voi Bảo chờ ra câu đố cuối",
       "target": "voi-bao",
       "kind": "challenge",
       "mechanic": "calendar",
@@ -1164,7 +1177,7 @@
         "right": [
           "Ngày 23! Boong boong, chuông tháp reo mừng {name}!",
           "Lùi đúng một tuần, cậu là nhà du hành thời gian rồi.",
-          "Voi Bảo và Koala Na cùng vỗ tay rầm rầm."
+          "Voi Bảo và Gấu Trúc Khò cùng vỗ tay rầm rầm."
         ],
         "wrong": [
           "Thứ Bảy tuần trước cùng cột thứ Bảy, nhưng ở hàng trên.",

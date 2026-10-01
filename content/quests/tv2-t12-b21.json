@@ -5,11 +5,11 @@
   "title": "Cánh diều trên đỉnh đồi gió",
   "status": "active",
   "lesson": "tv2-t1-b21",
-  "summary": "Diều của Khỉ Lanh mắc trên ngọn cây gạo. {name} nhặt lại cuộn dây và cây sáo, đọc bài thơ Thả diều trên phiến đá, gỡ diều xuống và kể chuyện ba người bạn trên bốn lá cờ đuôi diều.",
+  "summary": "Diều của Khỉ Lanh mắc trên ngọn cây gạo. {name} nhặt lại cuộn dây và cây sáo, đọc bài thơ Thả diều trên phiến đá, gỡ diều xuống và kể chuyện ba người bạn trên bốn lá cờ đuôi diều. Dọc đường còn gặp Bê Mây mê ngắm mây, Cáo Cam bắt giấy bay và Bò Nhài gỡ cờ rối.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Khỉ Lanh (giáo viên thể dục, mê thả diều, việc gì cũng đếm nhịp), Vẹt Xanh",
-    "where": "Đỉnh đồi gió có cây gạo cao, sườn đồi cỏ và phiến đá khắc thơ",
+    "who": "Khỉ Lanh (giáo viên thể dục, mê thả diều, việc gì cũng đếm nhịp), Vẹt Xanh, Bê Mây (nằm ngửa ngắm mây), Cáo Cam (nhanh tay bắt giấy bay), Bò Nhài (kiên nhẫn gỡ cờ rối)",
+    "where": "Đỉnh đồi gió có cây gạo cao, sườn đồi cỏ, phiến đá khắc thơ, bãi cỏ lưng đồi, bụi sim cuối dốc và lũy tre chân dốc",
     "goal": "Gỡ cánh diều của Khỉ Lanh khỏi ngọn cây gạo và cho diều bay lại",
     "play": "Tìm đồ rơi, nói, đọc thơ, trắc nghiệm, chọn nhiều đáp án, điền từ, xếp câu, xếp cờ tranh, kể chuyện, phiếu viết",
     "learn": "Tiếng Việt 2 Bài 21: đọc hiểu và học thuộc bài thơ \"Thả diều\", từ ngữ chỉ âm thanh, nói câu tả cánh diều, kể chuyện Chúng mình là bạn, viết chữ hoa L",
@@ -48,7 +48,10 @@
     "khi-lanh": "đỉnh đồi gió",
     "tv2-t12-cay-gao-cao": "gốc cây gạo cao",
     "nhat-do-cua-dieu": "sườn đồi cỏ",
-    "tv2-t12-phien-da-tho": "phiến đá khắc thơ"
+    "tv2-t12-phien-da-tho": "phiến đá khắc thơ",
+    "tv2-t12-b21-be-may": "bãi cỏ lưng đồi",
+    "tv2-t12-b21-cao-cam": "bụi sim cuối dốc",
+    "tv2-t12-b21-bo-nhai": "lũy tre chân dốc"
   },
   "steps": [
     {
@@ -231,10 +234,11 @@
     },
     {
       "id": "dieu-bien-hinh",
+      "goTo": "Xuống bãi cỏ lưng đồi, Bê Mây nằm ngửa ngắm mây biến hình",
       "title": "Cánh diều biến hình",
       "kind": "challenge",
       "mechanic": "multi-select",
-      "target": "tv2-t12-phien-da-tho",
+      "target": "tv2-t12-b21-be-may",
       "prompt": "Vẹt Xanh khoe: tớ thấy cánh diều biến hình mấy lần liền, như ảo thuật ấy! Kể tên những sự vật giống cánh diều được nhắc tới trong bài thơ.",
       "choices": [
         {
@@ -304,6 +308,7 @@
     },
     {
       "id": "kho-tho-cuoi",
+      "goTo": "Trở lại phiến đá khắc thơ, còn khổ cuối chưa ai đọc",
       "title": "Khổ thơ cuối nói gì",
       "kind": "challenge",
       "mechanic": "quiz",
@@ -433,10 +438,11 @@
     },
     {
       "id": "xep-cau-ta-dieu",
+      "goTo": "Đuổi theo giấy bay tới bụi sim cuối dốc, Cáo Cam đã chộp được mấy mẩu",
       "title": "Mẩu giấy câu tả diều",
       "kind": "challenge",
       "mechanic": "sort",
-      "target": "khi-lanh",
+      "target": "tv2-t12-b21-cao-cam",
       "prompt": "Gió giật một cái, mấy mẩu giấy ghi câu của Khỉ Lanh bay lộn tùng phèo. Dựa theo khổ thơ thứ tư, nói một câu tả cánh diều. Xếp các mẩu giấy thành câu nhé.",
       "items": [
         {
@@ -494,6 +500,7 @@
     },
     {
       "id": "cau-ta-dieu-cua-em",
+      "goTo": "Chạy về đỉnh đồi gió, Khỉ Lanh đu sẵn ba cành chờ vỗ tay",
       "title": "Câu tả diều của em",
       "kind": "speak",
       "target": "khi-lanh",
@@ -544,10 +551,11 @@
     },
     {
       "id": "co-duoi-dieu",
+      "goTo": "Ôm diều ra lũy tre chân dốc, Bò Nhài đang ngậm cỏ chờ gỡ cờ rối",
       "title": "Bốn lá cờ đuôi diều",
       "kind": "challenge",
       "mechanic": "sort",
-      "target": "tv2-t12-cay-gao-cao",
+      "target": "tv2-t12-b21-bo-nhai",
       "prompt": "Diều về tay rồi! Đuôi diều có bốn lá cờ nhỏ vẽ chuyện ba người bạn, nhưng mắc cây nên rối tung. Nghe kể chuyện. Chúng mình là bạn (Theo Tuyển tập truyện, thơ, câu đố cho trẻ Mầm non) (1) Ếch ộp, sơn ca và nai vàng chơi với nhau như thế nào? (2) Ba bạn thường kể cho nhau nghe những gì? (3) Ba bạn nghĩ ra cách gì để tận mắt thấy những điều đã nghe? (4) Ếch ộp, sơn ca và nai vàng đã rút ra được bài học gì? Nghe xong, {name} xếp bốn lá cờ theo đúng thứ tự câu chuyện nhé.",
       "items": [
         {
@@ -633,6 +641,7 @@
     },
     {
       "id": "ke-chuyen-ba-ban",
+      "goTo": "Quay lại gốc cây gạo cao, Khỉ Lanh vắt vẻo trên cành chờ nghe kể",
       "title": "Kể chuyện ba người bạn",
       "kind": "speak",
       "target": "tv2-t12-cay-gao-cao",

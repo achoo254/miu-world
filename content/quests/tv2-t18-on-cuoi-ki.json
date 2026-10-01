@@ -5,11 +5,11 @@
   "title": "Khánh thành cây cầu gỗ",
   "status": "active",
   "lesson": "tv2-t1-on-cuoi-ki",
-  "summary": "Cả học kì, Hải Ly Cần xây mỗi tuần một nhịp cầu qua suối. Hôm nay cầu xong! Muốn cắt băng khánh thành, {name} phải vượt từng nhịp cầu bằng một thử thách ôn tập, rồi làm bài đánh giá cuối kì ngay giữa cầu trước mặt cả rừng.",
+  "summary": "Cả học kì, Hải Ly Mầm phụ anh Hải Ly Cần xây mỗi tuần một nhịp cầu qua suối. Hôm nay cầu xong, anh Cần ngược suối chở gỗ nên Mầm lo lễ khánh thành! Muốn cắt băng, {name} phải vượt từng nhịp cầu bằng một thử thách ôn tập, rồi làm bài đánh giá cuối kì ngay giữa cầu trước mặt cả rừng.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Hải Ly Cần chăm chỉ, cẩn thận; Vẹt Xanh lắm lời làm người dẫn chương trình; khách mời Hải Âu và các bạn trong rừng",
-    "where": "Cây cầu gỗ bắc qua suối Khu rừng bí mật: đầu cầu, gầm cầu, nhịp cầu đầu, nhịp cầu giữa, nhịp cầu cuối và giữa cầu",
+    "who": "Hải Ly Mầm chăm chỉ, cẩn thận, em gái người xây cầu; Vẹt Xanh lắm lời làm người dẫn chương trình; khách mời Hải Âu; Cáo Linh, Mèo Kem, Gấu Than, Bác nông dân Tám và các bạn trong rừng",
+    "where": "Cây cầu gỗ bắc qua suối Khu rừng bí mật: đầu cầu, gầm cầu, nhịp cầu đầu, nhịp cầu giữa, bãi sỏi dưới nhịp giữa, nhịp cầu cuối, bờ cát cuối cầu, giữa cầu, gốc liễu và ruộng lúa bên suối",
     "goal": "Đóng tấm ván cuối, vượt ba nhịp cầu ôn tập và làm bài đánh giá để khánh thành cây cầu",
     "play": "Tìm đồ, điền chữ, xếp từ vào nhóm, nói, trắc nghiệm, đọc bài, xếp tranh, chọn nhiều đáp án, lựa chọn trong hội thoại, phiếu viết",
     "learn": "Tiếng Việt 2 Ôn tập và Đánh giá cuối học kì 1: tên bài đã học, từ chỉ người, vật, hoạt động, dấu câu, iên/yên, nói theo tình huống, kể chuyện theo tranh, đọc hiểu \"Đàn mưa con\" và \"Cỏ và lúa\", nghe – viết, viết đoạn",
@@ -47,12 +47,16 @@
     }
   },
   "places": {
-    "hai-ly-can": "đầu cầu gỗ",
     "tim-van-cuoi": "gầm cầu",
     "tv2-t18-nhip-cau-dau": "nhịp cầu đầu",
     "tv2-t18-nhip-cau-giua": "nhịp cầu giữa",
     "tv2-t18-nhip-cau-cuoi": "nhịp cầu cuối",
-    "tv2-t18-giua-cau": "giữa cầu"
+    "tv2-t18-giua-cau": "giữa cầu",
+    "tv2-t18-on-cuoi-ki-hai-ly-mam": "đầu cầu gỗ",
+    "tv2-t18-on-cuoi-ki-cao-linh": "bãi sỏi dưới nhịp giữa",
+    "tv2-t18-on-cuoi-ki-meo-kem": "bờ cát cuối cầu",
+    "tv2-t18-on-cuoi-ki-gau-than": "gốc liễu bờ suối",
+    "tv2-t18-on-cuoi-ki-bac-nong-dan-tam": "ruộng lúa đầu suối"
   },
   "steps": [
     {
@@ -60,19 +64,19 @@
       "title": "Cây cầu cả học kì cùng xây",
       "goTo": "Tới đầu cầu gỗ, cả rừng đang chờ khánh thành",
       "kind": "dialogue",
-      "target": "hai-ly-can",
+      "target": "tv2-t18-on-cuoi-ki-hai-ly-mam",
       "lines": [
         {
-          "speaker": "Hải Ly Cần",
-          "text": "{name} tới rồi! Mười tám tuần, mười tám nhịp cầu, tấm ván nào tớ cũng đo ba lần mới dám đóng."
+          "speaker": "Hải Ly Mầm",
+          "text": "{name} tới rồi! Tớ là Hải Ly Mầm, em gái anh Cần. Mười tám nhịp cầu, tấm ván nào tớ cũng đo ba lần cho anh đóng."
         },
         {
           "speaker": "Vẹt Xanh",
           "text": "Kính thưa cả rừng! Kính thưa… ơ, kính thưa cả cái cầu! Lễ khánh thành chuẩn bị bắt đầu! Bắt đầu!"
         },
         {
-          "speaker": "Hải Ly Cần",
-          "text": "Khoan đã Vẹt Xanh ơi, còn thiếu tấm ván cuối cùng. Sáng nay nó trôi xuống gầm cầu cùng dải lụa đỏ và cái búa của tớ rồi."
+          "speaker": "Hải Ly Mầm",
+          "text": "Khoan đã Vẹt Xanh ơi! Anh Cần ngược suối chở gỗ cho học kì hai, dặn tớ đóng nốt tấm ván cuối. Mà sáng nay nó trôi xuống gầm cầu cùng dải lụa đỏ và cái búa rồi."
         },
         {
           "speaker": "Vẹt Xanh",
@@ -82,7 +86,7 @@
       "choices": [
         {
           "text": "Mình xuống gầm cầu nhặt ván ngay đây!",
-          "reply": "Hải Ly Cần vỗ đuôi đánh bộp: nhớ cầm tấm ván cho thẳng nhé, tớ vừa đánh bóng nó bằng đuôi đấy."
+          "reply": "Hải Ly Mầm vỗ đuôi đánh bộp: nhớ cầm tấm ván cho thẳng nhé, tớ vừa đánh bóng nó bằng đuôi đấy."
         },
         {
           "text": "Vẹt Xanh ơi, câu đố có khó không?",
@@ -104,11 +108,11 @@
     {
       "id": "ten-cac-bai-da-hoc",
       "title": "Tám bức tranh trên nhịp đầu",
-      "goTo": "Lên nhịp cầu đầu, nơi Hải Ly Cần khắc tranh các bài đã học",
+      "goTo": "Lên nhịp cầu đầu, nơi Hải Ly Mầm khắc tranh các bài đã học",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "target": "tv2-t18-nhip-cau-dau",
-      "prompt": "Trên lan can nhịp cầu đầu, Hải Ly Cần khắc tám bức tranh, mỗi bức nhớ về một bài đã học. Gắn đúng tên bài cho từng tranh nhé.\nNhìn tranh, nói tên các bài đã học. 1. Gọi bạn 2. Tớ nhớ cậu 3. Chữ A và những người bạn 4. Nhím nâu kết bạn 5. Thả diều 6. Sự tích hoa tỉ muội 7. Cánh cửa nhớ bà 8. Thương ông",
+      "prompt": "Trên lan can nhịp cầu đầu, Hải Ly Mầm khắc tám bức tranh, mỗi bức nhớ về một bài đã học. Gắn đúng tên bài cho từng tranh nhé.\nNhìn tranh, nói tên các bài đã học. 1. Gọi bạn 2. Tớ nhớ cậu 3. Chữ A và những người bạn 4. Nhím nâu kết bạn 5. Thả diều 6. Sự tích hoa tỉ muội 7. Cánh cửa nhớ bà 8. Thương ông",
       "template": "Tranh bê vàng và dê trắng bên dòng suối dưới gốc cây: {{t1}}\nTranh kiến ngồi viết thư trên cây nấm, sóc trên cành cây bên hồ: {{t2}}\nTranh người chị cõng em trước ngôi nhà sàn: {{t3}}\nTranh các bạn nhỏ thả diều trên cánh đồng: {{t4}}\nTranh bà và cháu cài then cánh cửa gỗ: {{t5}}\nTranh hai chú nhím gặp nhau trong rừng: {{t6}}\nTranh các chữ cái A, B, C, D, E đứng trên quyển sách mở: {{t7}}\nTranh ông chống gậy và cháu trai đứng bên sân: {{t8}}",
       "blanks": [
         {
@@ -277,7 +281,7 @@
       },
       "feedback": {
         "right": [
-          "Tám tranh, tám tên bài, không nhầm bức nào! Hải Ly Cần đóng ngay một chiếc đinh mừng.",
+          "Tám tranh, tám tên bài, không nhầm bức nào! Hải Ly Mầm đóng ngay một chiếc đinh mừng.",
           "Vẹt Xanh đọc to cả tám tên bài, mỗi tên một lần, hiếm khi Vẹt nói ít như thế.",
           "{name} nhớ bài như Voi Bảo nhớ lịch vậy!"
         ],
@@ -393,9 +397,10 @@
     {
       "id": "bai-doc-em-nho-nhat",
       "title": "Bài đọc em nhớ nhất",
+      "goTo": "Chạy về đầu cầu gỗ, Hải Ly Mầm đang kể bài đọc bạn ấy nhớ nhất",
       "kind": "speak",
-      "target": "tv2-t18-nhip-cau-dau",
-      "prompt": "Hải Ly Cần kể: \"Tớ nhớ nhất bài Thả diều, vì cánh diều to bằng cái đuôi tớ\". Còn {name}?\nĐọc lại một bài đọc em thích, nêu chi tiết, nhân vật hoặc hình ảnh trong bài khiến em nhớ nhất.",
+      "target": "tv2-t18-on-cuoi-ki-hai-ly-mam",
+      "prompt": "Hải Ly Mầm kể: \"Tớ nhớ nhất bài Thả diều, vì cánh diều to bằng cái đuôi tớ\". Còn {name}?\nĐọc lại một bài đọc em thích, nêu chi tiết, nhân vật hoặc hình ảnh trong bài khiến em nhớ nhất.",
       "hints": [
         "Em thích bài đọc nào trong học kì này?",
         "Chi tiết, nhân vật hay hình ảnh nào làm em nhớ nhất?",
@@ -476,9 +481,10 @@
     {
       "id": "noi-theo-tinh-huong",
       "title": "Bạn mới đến lớp",
+      "goTo": "Xuống bãi sỏi dưới nhịp giữa, Cáo Linh đang nghĩ lời chào bạn mới",
       "kind": "speak",
-      "target": "tv2-t18-nhip-cau-giua",
-      "prompt": "Hải Âu bảo sang năm sẽ chuyển tới học ở rừng. Hải Ly Cần lo: \"Mình nói gì để bạn ấy thấy thân thiện nhỉ?\".\nThực hành luyện nói theo tình huống. a. Tình huống 1: Nếu em chuyển lớp hoặc chuyển trường, em sẽ giới thiệu về mình như thế nào với các bạn trong lớp mới?\nb. Tình huống 2: Lớp em có một bạn ở trường khác chuyển đến. Em sẽ nói gì với bạn để thể hiện sự thân thiện?",
+      "target": "tv2-t18-on-cuoi-ki-cao-linh",
+      "prompt": "Hải Âu bảo sang năm sẽ chuyển tới học ở rừng. Cáo Linh lo: \"Mình nói gì để bạn ấy thấy thân thiện nhỉ?\".\nThực hành luyện nói theo tình huống. a. Tình huống 1: Nếu em chuyển lớp hoặc chuyển trường, em sẽ giới thiệu về mình như thế nào với các bạn trong lớp mới?\nb. Tình huống 2: Lớp em có một bạn ở trường khác chuyển đến. Em sẽ nói gì với bạn để thể hiện sự thân thiện?",
       "hints": [
         "Chào cả lớp, nói tên, tuổi và điều em thích.",
         "Chào bạn mới, hỏi tên bạn và rủ bạn cùng chơi.",
@@ -492,6 +498,7 @@
     {
       "id": "cho-hoa-ngay-tet",
       "title": "Chợ hoa ngày Tết",
+      "goTo": "Leo lại lên nhịp cầu giữa, Hải Âu kể chuyện bay qua làng",
       "kind": "challenge",
       "mechanic": "classify",
       "target": "tv2-t18-nhip-cau-giua",
@@ -627,9 +634,10 @@
     {
       "id": "dau-cau-thu-cho-em",
       "title": "Lá thư gửi cho chính mình",
+      "goTo": "Ra bãi sỏi dưới nhịp giữa, Cáo Linh và Vẹt Xanh đang cười nghiêng ngả",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "target": "tv2-t18-nhip-cau-giua",
+      "target": "tv2-t18-on-cuoi-ki-cao-linh",
       "prompt": "Vẹt Xanh cười lăn trên lan can: \"Viết thư cho mình mà mai mới biết thư nói gì! Ha ha!\". Nhưng câu chuyện cười còn thiếu dấu câu.\nChọn dấu chấm, dấu chấm hỏi hoặc dấu chấm than thay cho ô vuông.",
       "template": "Chị: – Em đang viết gì đấy{{d1}}\nEm: – Em đang viết thư cho em{{d2}}\nChị: – Hay đấy{{d3}} Trong thư nói gì{{d4}}\nEm: – Ngày mai, nhận được thư em mới biết{{d5}}\n(Theo Tiếng cười học trò)",
       "blanks": [
@@ -813,7 +821,7 @@
       "kind": "challenge",
       "mechanic": "fill-blank",
       "target": "tv2-t18-nhip-cau-cuoi",
-      "prompt": "Ba tấm biển chỉ đường ở cuối cầu bị mất chữ đầu: một biển chỉ ra biển, một chỉ về làng, một chỉ lên núi. Hải Ly Cần nhờ {name} khắc lại.\nTìm tiếng chứa iên hoặc yên thay cho ô vuông.",
+      "prompt": "Ba tấm biển chỉ đường ở cuối cầu bị mất chữ đầu: một biển chỉ ra biển, một chỉ về làng, một chỉ lên núi. Hải Ly Mầm nhờ {name} khắc lại.\nTìm tiếng chứa iên hoặc yên thay cho ô vuông.",
       "template": "{{t1}} rộng mênh mông.\nXóm làng bình {{t2}}.\n{{t3}} núi có ruộng bậc thang.",
       "blanks": [
         {
@@ -882,7 +890,7 @@
       },
       "feedback": {
         "right": [
-          "Ba tấm biển sáng chữ! Hải Ly Cần treo ngay lên cột.",
+          "Ba tấm biển sáng chữ! Hải Ly Mầm treo ngay lên cột.",
           "Biển, yên, Miền: đúng luật iên và yên.",
           "Vẹt Xanh đọc vang: Biển! Yên! Miền! Ba lần cho chắc."
         ],
@@ -896,9 +904,10 @@
     {
       "id": "xep-tranh-ga-me",
       "title": "Một ngày của gà mẹ",
+      "goTo": "Tranh rơi xuống bờ cát cuối cầu, Mèo Kem đang gom lại giúp đàn gà",
       "kind": "challenge",
       "mechanic": "sort",
-      "target": "tv2-t18-nhip-cau-cuoi",
+      "target": "tv2-t18-on-cuoi-ki-meo-kem",
       "prompt": "Mẹ Gà dắt đàn con đi qua cầu, đàn con chạy lung tung làm rơi bốn bức tranh vẽ một ngày của nhà gà. Xếp lại cho đúng từ sáng đến trưa.\nNói tiếp câu kể lại sự việc trong tranh.",
       "items": [
         {
@@ -992,6 +1001,7 @@
     {
       "id": "ke-tiep-chuyen-ga",
       "title": "Nói tiếp chuyện nhà gà",
+      "goTo": "Mang tranh lên nhịp cầu cuối, đàn gà con đã ngồi chờ nghe kể",
       "kind": "speak",
       "target": "tv2-t18-nhip-cau-cuoi",
       "prompt": "Đàn gà con đòi nghe kể chuyện của chính mình. {name} nói tiếp từng câu theo tranh nhé.\nNói tiếp câu kể lại sự việc trong tranh.",
@@ -1054,7 +1064,7 @@
           "text": "Tớ cắt băng! Tớ có mỏ sắc nhất rừng! Sắc sắc!"
         },
         {
-          "speaker": "Hải Ly Cần",
+          "speaker": "Hải Ly Mầm",
           "text": "Nhưng răng tớ gặm gỗ cả học kì, cắt dải lụa này chỉ một phát là xong."
         },
         {
@@ -1068,8 +1078,8 @@
           "reply": "Xoẹt! Dải lụa đứt làm đôi, cả rừng vỗ tay rào rào như mưa rơi trên lá."
         },
         {
-          "text": "Mời Hải Ly Cần cắt, vì cậu ấy xây cả cây cầu!",
-          "reply": "Hải Ly Cần đỏ mặt cắt băng, còn Vẹt Xanh thì… được hô \"Khánh thành!\" to nhất."
+          "text": "Mời Hải Ly Mầm cắt, vì cậu ấy cùng anh xây cả cây cầu!",
+          "reply": "Hải Ly Mầm đỏ mặt cắt băng, còn Vẹt Xanh thì… được hô \"Khánh thành!\" to nhất."
         },
         {
           "text": "Cả rừng cùng đếm một, hai, ba rồi mình cắt chung!",
@@ -1119,7 +1129,7 @@
       },
       "feedback": {
         "right": [
-          "Đúng rồi, đàn mưa con! Giọt mưa đậu lên mũi Hải Ly Cần như để chào.",
+          "Đúng rồi, đàn mưa con! Giọt mưa đậu lên mũi Hải Ly Mầm như để chào.",
           "Chuẩn, tên bài thơ đã nói sẵn rồi.",
           "Vẹt Xanh giang cánh hứng mưa: chào đàn mưa con!"
         ],
@@ -1133,10 +1143,11 @@
     {
       "id": "giot-mua-roi-dau",
       "title": "Giọt mưa rơi về đâu",
+      "goTo": "Chạy ra gốc liễu bờ suối, Gấu Than đang chìa tay hứng mưa",
       "kind": "challenge",
       "mechanic": "multi-select",
-      "target": "tv2-t18-giua-cau",
-      "prompt": "Hải Ly Cần chìa tay hứng một giọt mưa, ngẫm nghĩ: giọt này định đi đâu nhỉ?\nĐọc thành tiếng và trả lời câu hỏi. b. Giọt mưa rơi xuống những đâu?",
+      "target": "tv2-t18-on-cuoi-ki-gau-than",
+      "prompt": "Gấu Than chìa tay hứng một giọt mưa, ngẫm nghĩ: giọt này định đi đâu nhỉ?\nĐọc thành tiếng và trả lời câu hỏi. b. Giọt mưa rơi xuống những đâu?",
       "choices": [
         {
           "id": "canh-khe",
@@ -1202,11 +1213,12 @@
     {
       "id": "chuyen-co-va-lua",
       "title": "Hải Ly kể chuyện cỏ và lúa",
+      "goTo": "Về giữa cầu, Hải Ly Mầm kể câu chuyện bạn ấy thích nhất",
       "kind": "read",
       "target": "tv2-t18-giua-cau",
       "textRef": "co-va-lua",
       "audio": true,
-      "question": "Hải Ly Cần bảo đây là câu chuyện nó thích nhất, vì nó cũng chăm chỉ như lúa. Nghe xong, Vẹt Xanh hỏi trước: ngày xưa, cỏ và lúa có dáng dấp thế nào?",
+      "question": "Hải Ly Mầm bảo đây là câu chuyện nó thích nhất, vì nó cũng chăm chỉ như lúa. Nghe xong, Vẹt Xanh hỏi trước: ngày xưa, cỏ và lúa có dáng dấp thế nào?",
       "choices": [
         {
           "id": "giong-het",
@@ -1240,7 +1252,7 @@
         "right": [
           "Đúng, ngày xưa hai chị em trông y hệt nhau!",
           "Chuẩn, câu đầu chuyện nói rõ điều ấy.",
-          "Hải Ly Cần gật đầu: nghe kĩ thế là sẵn sàng làm bài rồi."
+          "Hải Ly Mầm gật đầu: nghe kĩ thế là sẵn sàng làm bài rồi."
         ],
         "wrong": [
           "Chuyện không kể ai cao gấp đôi ai.",
@@ -1304,10 +1316,11 @@
     {
       "id": "co-khac-lua",
       "title": "Cỏ khác lúa thế nào",
+      "goTo": "Sang ruộng lúa đầu suối, Bác nông dân Tám đã chia sẵn hai bên bờ",
       "kind": "challenge",
       "mechanic": "classify",
-      "target": "tv2-t18-giua-cau",
-      "prompt": "Hải Ly Cần chia mặt cầu làm hai bên, một bên cỏ, một bên lúa. Thẻ nào không đúng với ai thì để vào giỏ riêng.\nTrả lời câu hỏi và thực hiện yêu cầu. b. Sau một thời gian ra ở riêng, cỏ và lúa khác nhau như thế nào? cỏ; lúa\nlàm ra những hạt thóc vàng; ốm o gầy còm, chẳng làm ra sản phẩm gì; chỉ chơi với ngô, khoai, sắn",
+      "target": "tv2-t18-on-cuoi-ki-bac-nong-dan-tam",
+      "prompt": "Bác nông dân Tám chia bờ ruộng làm hai bên, một bên cỏ, một bên lúa. Thẻ nào không đúng với ai thì để vào giỏ riêng.\nTrả lời câu hỏi và thực hiện yêu cầu. b. Sau một thời gian ra ở riêng, cỏ và lúa khác nhau như thế nào? cỏ; lúa\nlàm ra những hạt thóc vàng; ốm o gầy còm, chẳng làm ra sản phẩm gì; chỉ chơi với ngô, khoai, sắn",
       "groups": [
         {
           "id": "co",
@@ -1362,7 +1375,7 @@
         "right": [
           "Chia chuẩn! Bên lúa vàng óng, bên cỏ lơ thơ.",
           "Thẻ ngô, khoai, sắn vào đúng giỏ riêng, {name} không bị lừa!",
-          "Hải Ly Cần ghi điểm vào tấm ván bằng răng: một vạch, rất đẹp."
+          "Bác nông dân Tám vạch điểm lên cán cuốc: một vạch, rất đẹp."
         ],
         "wrong": [
           "Thóc vàng là của người chăm chỉ hứng nắng, đón gió.",
@@ -1376,8 +1389,8 @@
       "title": "Vì sao lúa có ích",
       "kind": "challenge",
       "mechanic": "quiz",
-      "target": "tv2-t18-giua-cau",
-      "prompt": "Hải Ly Cần chống cằm: \"Tớ biết câu này! Nhưng nhường {name} trả lời\".\nTrả lời câu hỏi và thực hiện yêu cầu. c. Vì sao lúa làm ra được sản phẩm có ích?",
+      "target": "tv2-t18-on-cuoi-ki-bac-nong-dan-tam",
+      "prompt": "Bác nông dân Tám chống cằm: \"Tớ biết câu này! Nhưng nhường {name} trả lời\".\nTrả lời câu hỏi và thực hiện yêu cầu. c. Vì sao lúa làm ra được sản phẩm có ích?",
       "choices": [
         {
           "id": "cham-chi",
@@ -1412,7 +1425,7 @@
       },
       "feedback": {
         "right": [
-          "Đúng, vì lúa chăm chỉ! Hải Ly Cần sướng rơn vì nó cũng chăm như lúa.",
+          "Đúng, vì lúa chăm chỉ! Bác nông dân Tám cười khà, chỉ ra ruộng lúa vàng.",
           "Chuẩn, chăm chỉ làm ra hạt thóc vàng.",
           "Vẹt Xanh khen: chăm chăm! chỉ chỉ! đúng đúng!"
         ],
@@ -1426,6 +1439,7 @@
     {
       "id": "vi-sao-khong-ai-ua-co",
       "title": "Vì sao chẳng ai ưa cỏ",
+      "goTo": "Quay lại giữa cầu, Vẹt Xanh đọc câu hỏi tiếp theo",
       "kind": "read",
       "target": "tv2-t18-giua-cau",
       "textRef": "co-va-lua",
@@ -1466,7 +1480,7 @@
         "right": [
           "Đúng rồi, vì cỏ lười nhác! Cả rừng nhìn nhau rồi xắn tay áo làm việc.",
           "Chuẩn, câu kết của chuyện đã nói rõ.",
-          "Hải Ly Cần thì thầm: may mà tớ không lười như cỏ."
+          "Hải Ly Mầm thì thầm: may mà tớ không lười như cỏ."
         ],
         "wrong": [
           "Gầy gò là hậu quả của việc mải chơi, chưa phải lí do.",
@@ -1577,7 +1591,7 @@
       "kind": "worksheet",
       "trigger": "auto",
       "lessonId": "tv2-t1-on-cuoi-ki",
-      "text": "Nhờ bố mẹ in phiếu Ôn tập cuối học kì 1 ở khu phụ huynh: nghe – viết \"Niềm vui là gì?\" và đoạn \"Cỏ và lúa\", rồi viết vài câu kể một việc tốt em đã làm. Hải Ly Cần dặn: viết chậm và chắc như đóng từng tấm ván.",
+      "text": "Nhờ bố mẹ in phiếu Ôn tập cuối học kì 1 ở khu phụ huynh: nghe – viết \"Niềm vui là gì?\" và đoạn \"Cỏ và lúa\", rồi viết vài câu kể một việc tốt em đã làm. Hải Ly Mầm dặn: viết chậm và chắc như đóng từng tấm ván.",
       "curriculumRef": [
         "tv2-t1-on-cuoi-ki-danh-gia-2-9",
         "tv2-t1-on-cuoi-ki-nghe-viet-1",
@@ -1589,7 +1603,7 @@
       "title": "Tấm ván khắc tên",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Hải Ly Cần khắc tên {name} lên tấm ván cuối cùng của cây cầu, ngay cạnh dấu răng của mình. Vẹt Xanh tặng thêm một chiếc lông xanh \"để làm bút viết học kì hai\"."
+      "text": "Hải Ly Mầm khắc tên {name} lên tấm ván cuối cùng của cây cầu, ngay cạnh dấu răng của mình. Vẹt Xanh tặng thêm một chiếc lông xanh \"để làm bút viết học kì hai\"."
     },
     {
       "id": "hen-hoc-ki-hai",

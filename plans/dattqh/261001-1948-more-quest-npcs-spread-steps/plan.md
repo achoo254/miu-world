@@ -33,12 +33,12 @@ Bé than phiền phải đứng một chỗ làm nhiệm vụ quá lâu. Sau đ�
 
 1. [x] Quy tắc và số đo: `tools/content/quest-spread.ts` (giới hạn NPC, chuỗi liền, số chỗ), `pnpm content:spread` báo từng bài; test. (S)
 2. [x] NPC chibi (24 nhân vật: 4 loài × trang phục × màu lông, mỗi nhân vật 1 draw call, ~180 KB; NPC chibi chào bằng `wave`, nhảy múa bằng `cheer`): thêm nhân vật chibi (4 loài × trang phục × màu) làm ngoại hình NPC mới (`content/characters.json`, `pnpm assets:character`, `looks.json`). (M)
-3. [ ] Phân vai: bảng gán NPC cho từng bài thỏa giới hạn; thêm NPC mới vào `targets.json`; viết lại bài (chia bước cho NPC/vật khác, lời dẫn `goTo`, hội thoại, `places`), giữ lời SGK. Chia lô cho subagent theo file. (XL)
-4. [ ] Đặt chỗ: các chỗ của một bài cách xa hơn (thử rộng trước), sinh lại hai map, bật quy tắc trong `content:check`. (M)
+3. [x] Phân vai (8 lô song song, 224 NPC mới; ngoại hình người robot/hình nộm/zombie đổi sang người thật; 4 đồ vật đổi tên theo chủ mới): bảng gán NPC cho từng bài thỏa giới hạn; thêm NPC mới vào `targets.json`; viết lại bài (chia bước cho NPC/vật khác, lời dẫn `goTo`, hội thoại, `places`), giữ lời SGK. Chia lô cho subagent theo file. (XL)
+4. [x] Đặt chỗ (khoảng cách 14/10/7 khối, trong 36 khối quanh chỗ đầu; chỉ `toan2-cd1-b06` có một chỗ 7 khối vì 9 chỗ trong sân trường, chưa cần mở rộng map): các chỗ của một bài cách xa hơn (thử rộng trước), sinh lại hai map, bật quy tắc trong `content:check`. (M)
 5. [ ] Test, E2E, gate, journal; deploy staging (production hỏi người). (M)
 
 ## Nghiệm thu
 
-- [ ] `content:check` xanh với quy tắc mới; `pnpm content:spread` = 0 vi phạm.
-- [ ] Không câu SGK nào đổi (kiểm bằng kiểm kê `content:check` hiện có).
+- [x] `content:check` xanh với quy tắc mới; `pnpm content:spread` = 0 vi phạm, 0 nhân vật quá 2 bài.
+- [x] Không câu SGK nào đổi (kiểm bằng kiểm kê `content:check` hiện có).
 - [ ] Gate 5 lệnh + web build + `e2e:ci` xanh; draw call ≤ 150 ở các mẫu E2E.

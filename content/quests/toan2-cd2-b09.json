@@ -5,11 +5,11 @@
   "title": "Đàn bê con chạy ra chạy vào",
   "status": "active",
   "lesson": "toan2-t1-b09",
-  "summary": "Đàn bê con nghịch ngợm cứ chạy ra chạy vào chuồng rơm làm Bò Sữa Mơ đếm hoa cả mắt; {name} giúp cô viết tóm tắt, bài giải cho các bài toán thêm, bớt.",
+  "summary": "Đàn bê con nghịch ngợm cứ chạy ra chạy vào chuồng rơm làm Bò Sữa Mơ đếm hoa cả mắt; {name} chạy từ bãi kéo co tới bờ rào hàng xóm, giúp cô viết tóm tắt, bài giải cho các bài toán thêm, bớt.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Bò Sữa Mơ, Bê Bông (bê con nghịch nhất đàn)",
-    "where": "Vườn trường: chuồng rơm, đống rơm sau chuồng, máng nước, cổng trang trại",
+    "who": "Bò Sữa Mơ, Bê Bông (bê con nghịch nhất đàn), Bê Vàng Lúa, bác Lợn Ụt Ịt hàng xóm",
+    "where": "Vườn trường: chuồng rơm, đống rơm sau chuồng, bãi kéo co, bờ rào hàng xóm, máng nước, cổng trang trại",
     "goal": "Giúp Bò Sữa Mơ biết lúc nào thêm, lúc nào bớt để đếm đúng",
     "play": "Tìm bê con trốn, điền tóm tắt và bài giải, kéo thuyền lá vào bến, đố số bạn trên xe",
     "learn": "Toán 2 Bài 9: bài toán về thêm, bớt một số đơn vị",
@@ -30,6 +30,8 @@
   "places": {
     "bo-sua-mo": "chuồng rơm",
     "tim-be-con": "đống rơm sau chuồng",
+    "toan2-cd2-b09-be-vang-lua": "bãi kéo co",
+    "toan2-cd2-b09-lon-ut-it": "bờ rào hàng xóm",
     "be-bong-mang-nuoc": "máng nước",
     "bo-sua-mo-cong": "cổng trang trại"
   },
@@ -256,7 +258,8 @@
     {
       "id": "keo-co-them-ban",
       "title": "Kéo co thêm bạn",
-      "target": "bo-sua-mo",
+      "goTo": "Ra bãi kéo co, Bê Vàng Lúa đang nắm chặt đầu dây",
+      "target": "toan2-cd2-b09-be-vang-lua",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "prompt": "Ngoài sân, Bê Bông rủ các bạn chơi kéo co: \"Dô ta, dô ta!\" Có 8 bạn đang chơi kéo co, có thêm 4 bạn chạy đến cùng chơi. Hỏi lúc đó có tất cả bao nhiêu bạn chơi kéo co?",
@@ -397,7 +400,7 @@
         "right": [
           "Dô ta! Mười hai bạn kéo một hơi, sợi dây căng như dây đàn!",
           "Chọn đúng dấu cộng ngay, không bị lừa chút nào.",
-          "Bê Bông reo: đội tớ đông hẳn lên rồi!"
+          "Bê Vàng Lúa reo: đội tớ đông hẳn lên rồi!"
         ],
         "wrong": [
           "Có thêm bạn chạy đến thì không phải dấu trừ đâu.",
@@ -420,6 +423,7 @@
     {
       "id": "be-bong-ru-di-choi",
       "title": "Bê Bông rủ đi chơi",
+      "goTo": "Về chuồng rơm, Bê Bông đang níu đuôi Bò Sữa Mơ đòi đi chơi",
       "kind": "dialogue",
       "target": "bo-sua-mo",
       "lines": [
@@ -429,7 +433,7 @@
         },
         {
           "speaker": "Bò Sữa Mơ",
-          "text": "Khoan đã, chú lợn hàng xóm vừa nhờ cô tính một bài bớt. {name} muốn tính xong rồi đi, hay vừa đi vừa tính?"
+          "text": "Khoan đã, bác Lợn Ụt Ịt hàng xóm vừa nhờ cô tính một bài bớt. {name} muốn tính xong rồi đi, hay vừa đi vừa tính?"
         }
       ],
       "choices": [
@@ -446,7 +450,8 @@
     {
       "id": "dan-lon-nha-an",
       "title": "Đàn lợn nhà An",
-      "target": "bo-sua-mo",
+      "goTo": "Ra bờ rào hàng xóm, bác Lợn Ụt Ịt đang kể chuyện đàn lợn nhà An",
+      "target": "toan2-cd2-b09-lon-ut-it",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "prompt": "Bác hàng xóm kể chuyện đàn lợn nhà An bên kia đồi. Đàn lợn nhà An có 15 con, mẹ đã bán 5 con. Hỏi đàn lợn nhà An còn lại bao nhiêu con?",
@@ -574,7 +579,7 @@
         "right": [
           "Mười con lợn còn lại kêu ủn ỉn chào {name}!",
           "Bớt thì trừ, {name} chọn phép tính không chút do dự.",
-          "Bò Mơ khen: lần này là bớt, cậu không nhầm sang cộng."
+          "Bác Ụt Ịt khen: lần này là bớt, cậu không nhầm sang cộng."
         ],
         "wrong": [
           "Bán đi thì còn ít hơn lúc đầu đấy.",

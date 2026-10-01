@@ -5,11 +5,11 @@
   "title": "Lá thư từ xứ băng",
   "status": "active",
   "lesson": "tv2-t1-b18",
-  "summary": "Gấu Tuyết Bông nhận thư của Hải Cẩu Bạc ở xứ băng: “Bông ơi, tớ nhớ cậu!”. Bông muốn trả lời mà viết mãi không xong. {name} cùng Bông đọc truyện Tớ nhớ cậu, giúp Chó Mực ghi tên phong bì và chọn từ thật ấm cho lá thư hồi âm.",
+  "summary": "Gấu Tuyết Bông nhận thư của Hải Cẩu Bạc ở xứ băng: “Bông ơi, tớ nhớ cậu!”. Bông muốn trả lời mà viết mãi không xong. {name} cùng Bông đọc truyện Tớ nhớ cậu, giúp Chó Ki ghi tên phong bì, chia chữ với Cua Gạch, xếp câu cùng Thỏ Sương và chọn từ thật ấm cho lá thư hồi âm.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Gấu Tuyết Bông (từ xứ băng tới, lúc nào cũng thấy rừng nóng), Chó Mực (đưa thư), Thỏ Tí (mang thư tới)",
-    "where": "Bến thư bên hồ, bờ hồ lau sậy, thuyền thư neo bên hồ và hòm thư đầu bến",
+    "who": "Gấu Tuyết Bông (từ xứ băng tới, lúc nào cũng thấy rừng nóng), Chó Ki (chú chó đưa thư, mang thư tới), Cua Gạch (giữ túi chữ ở mỏm đá), Thỏ Sương (chép câu dưới gốc liễu)",
+    "where": "Bến thư bên hồ, bờ hồ lau sậy, thuyền thư neo bên hồ, gốc liễu ven hồ, mỏm đá ven hồ và hòm thư đầu bến",
     "goal": "Giúp Gấu Tuyết Bông viết thư trả lời người bạn ở phương xa",
     "play": "Tìm giấy bút, nói, đọc truyện, điền chữ, xếp nhóm, chọn nhiều đáp án, chọn lời viết thư, phiếu viết",
     "learn": "Tiếng Việt 2 Bài 18: đọc hiểu truyện “Tớ nhớ cậu”, nói lời chia tay, chính tả c/k, iêu/ươu, en/eng, từ ngữ chỉ tình cảm bạn bè, câu kể – câu hỏi – câu cảm và dấu câu",
@@ -48,7 +48,9 @@
     "gau-tuyet-bong": "bến thư bên hồ",
     "tim-giay-but": "bờ hồ lau sậy",
     "tv2-t10-thuyen-thu": "thuyền thư",
-    "cho-muc": "hòm thư đầu bến"
+    "tv2-t10-b18-cho-ki": "hòm thư đầu bến",
+    "tv2-t10-b18-cua-gach": "mỏm đá ven hồ",
+    "tv2-t10-b18-tho-suong": "gốc liễu ven hồ"
   },
   "steps": [
     {
@@ -63,8 +65,8 @@
           "text": "Phù phù… {name} ơi, rừng mình nóng quá, tớ phải ngồi thò chân xuống hồ cho mát."
         },
         {
-          "speaker": "Thỏ Tí",
-          "text": "Thư của cậu đây, tem bông tuyết hẳn hoi! Mà… tớ nhặt nó ở chỗ nào ấy nhỉ?"
+          "speaker": "Chó Ki",
+          "text": "Gâu! Thư từ xứ băng đây, tem bông tuyết hẳn hoi! Tớ chạy một mạch mà phong bì vẫn còn lạnh."
         },
         {
           "speaker": "Gấu Tuyết Bông",
@@ -218,9 +220,10 @@
     },
     {
       "id": "kien-viet-di-viet-lai",
+      "goTo": "Chạy về bến thư bên hồ, Bông đang vò đầu bên đống giấy nháp",
       "title": "Kiến viết đi viết lại",
       "kind": "read",
-      "target": "tv2-t10-thuyen-thu",
+      "target": "gau-tuyet-bong",
       "textRef": "to-nho-cau",
       "question": "Bông nhìn đống giấy nháp của mình, ngượng ngùng: tớ cũng viết lại mấy lần rồi. Vì sao kiến phải viết lại nhiều lần lá thư gửi sóc?",
       "choices": [
@@ -270,6 +273,7 @@
     },
     {
       "id": "neu-khong-co-thu",
+      "goTo": "Quay lại thuyền thư, gió đang lật phần phật trang cuối truyện",
       "title": "Nếu thư không tới thì sao",
       "kind": "speak",
       "target": "tv2-t10-thuyen-thu",
@@ -326,11 +330,11 @@
     {
       "id": "phong-bi-con-vat",
       "title": "Bốn phong bì chưa ghi tên",
-      "goTo": "Ra hòm thư đầu bến, Chó Mực đang chờ",
+      "goTo": "Ra hòm thư đầu bến, Chó Ki đeo túi thư đang vẫy đuôi chờ",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "target": "cho-muc",
-      "prompt": "Gâu! Chó Mực vẫy đuôi tít, túi thư rơi bịch xuống cỏ. Bốn phong bì có vẽ con vật nhận thư mà chưa ghi tên. Tìm từ ngữ có tiếng bắt đầu bằng c hoặc k gọi tên mỗi con vật trong hình.",
+      "target": "tv2-t10-b18-cho-ki",
+      "prompt": "Gâu! Chó Ki vẫy đuôi tít, túi thư rơi bịch xuống cỏ. Bốn phong bì có vẽ con vật nhận thư mà chưa ghi tên. Tìm từ ngữ có tiếng bắt đầu bằng c hoặc k gọi tên mỗi con vật trong hình.",
       "template": "Hình 1 – con vật có hai càng, bò ngang: {{hinh-1}}\nHình 2 – con chim đang xoè đuôi rực rỡ: {{hinh-2}}\nHình 3 – con vật bốn chân, da sần, đuôi dài, thè lưỡi: {{hinh-3}}\nHình 4 – con vật bé xíu, chăm chỉ tha mồi: {{hinh-4}}",
       "blanks": [
         {
@@ -414,9 +418,9 @@
       },
       "feedback": {
         "right": [
-          "Gâu gâu! Bốn phong bì đủ tên, Chó Mực chạy đi phát thư ngay!",
+          "Gâu gâu! Bốn phong bì đủ tên, Chó Ki chạy đi phát thư ngay!",
           "Đúng hết rồi, chữ k với chữ c đứng ngay ngắn như hàng rào.",
-          "Chó Mực vẫy đuôi mạnh đến mức túi thư quay tròn một vòng."
+          "Chó Ki vẫy đuôi mạnh đến mức túi thư quay tròn một vòng."
         ],
         "wrong": [
           "Ối, có con vật bị ghi nhầm chữ rồi, thư mà đến nhầm nhà thì gay!",
@@ -430,8 +434,8 @@
       "title": "Tấm bưu thiếp nhoè chữ",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "target": "cho-muc",
-      "prompt": "Chó Mực khụt khịt: tấm bưu thiếp của sóc bị mưa làm nhoè ba chữ, gâu, phải cứu nó thôi! Bông bảo làm cả hai phần cho vui.\nChọn a hoặc b. a. Chọn tiếng chứa iêu hoặc ươu thay cho ô vuông. (hươu, nhiều, khướu)",
+      "target": "tv2-t10-b18-cho-ki",
+      "prompt": "Chó Ki khụt khịt: tấm bưu thiếp của sóc bị mưa làm nhoè ba chữ, gâu, phải cứu nó thôi! Mình làm cả hai phần cho vui nhé.\nChọn a hoặc b. a. Chọn tiếng chứa iêu hoặc ươu thay cho ô vuông. (hươu, nhiều, khướu)",
       "template": "Sóc hái rất {{b1}} hoa để tặng bạn bè. Nó tặng {{b2}} cao cổ một bó hoa thiên điểu rực rỡ. Còn chim {{b3}} và chim liếu điếu được sóc tặng một bó hoa bồ công anh nhẹ như bông.",
       "blanks": [
         {
@@ -510,7 +514,7 @@
       },
       "feedback": {
         "right": [
-          "Bưu thiếp sáng bừng trở lại! Chó Mực sủa hai tiếng cảm ơn.",
+          "Bưu thiếp sáng bừng trở lại! Chó Ki sủa hai tiếng cảm ơn.",
           "Đúng cả ba chữ, vần iêu và ươu không lẫn chút nào.",
           "Bông vỗ tay bộp bộp, tuyết trên lông rơi lả tả."
         ],
@@ -523,11 +527,12 @@
     },
     {
       "id": "ngan-chu-en-eng",
+      "goTo": "Men theo mỏm đá ven hồ, Cua Gạch đang kéo lê một túi chữ kêu leng keng",
       "title": "Túi chữ en và eng",
       "kind": "challenge",
       "mechanic": "classify",
-      "target": "cho-muc",
-      "prompt": "Chó Mực đánh hơi ra một túi chữ lộn xộn, chữ nào cũng kêu leng keng. Gâu, chia giúp vào hai ngăn nhé!\nChọn a hoặc b. b. Tìm từ ngữ có tiếng chứa en hoặc eng.\nM:\nen | M: dế mèn\neng | M: cái xẻng",
+      "target": "tv2-t10-b18-cua-gach",
+      "prompt": "Cua Gạch lôi từ khe đá ra một túi chữ lộn xộn, chữ nào cũng kêu leng keng. Cậu chia giúp tớ vào hai ngăn nhé!\nChọn a hoặc b. b. Tìm từ ngữ có tiếng chứa en hoặc eng.\nM:\nen | M: dế mèn\neng | M: cái xẻng",
       "groups": [
         {
           "id": "en",
@@ -591,9 +596,9 @@
       },
       "feedback": {
         "right": [
-          "Hai ngăn gọn gàng! Chó Mực khoác túi đi, kêu leng keng vui tai.",
+          "Hai ngăn gọn gàng! Cua Gạch kẹp túi bò ngang, chữ kêu leng keng vui tai.",
           "Đúng rồi, en với eng chẳng lẫn được {name} đâu.",
-          "Bông thử đọc “xà beng” ba lần liền mà không vấp, nhờ cậu đấy!"
+          "Cua Gạch thử đọc “xà beng” ba lần liền mà không vấp, nhờ cậu đấy!"
         ],
         "wrong": [
           "Có từ đang nằm nhầm ngăn, đọc to lên nghe cuối tiếng nhé.",
@@ -782,11 +787,12 @@
     },
     {
       "id": "cau-nao-de-lam-gi",
+      "goTo": "Sang gốc liễu ven hồ, Thỏ Sương vẫy tai: tớ chép được ba câu rồi!",
       "title": "Câu nào để làm gì",
       "kind": "challenge",
       "mechanic": "classify",
-      "target": "gau-tuyet-bong",
-      "prompt": "Bông chép ba câu trong truyện vào giấy nháp rồi gãi đầu sột soạt: câu nào để làm gì nhỉ?\nChọn câu ở cột A phù hợp với ý ở cột B. Nói tên dấu câu đặt cuối mỗi câu. B: Hỏi điều chưa biết; Kể lại sự việc; Bộc lộ cảm xúc.",
+      "target": "tv2-t10-b18-tho-suong",
+      "prompt": "Thỏ Sương chép ba câu trong truyện lên lá sen rồi gãi tai sột soạt: câu nào để làm gì nhỉ?\nChọn câu ở cột A phù hợp với ý ở cột B. Nói tên dấu câu đặt cuối mỗi câu. B: Hỏi điều chưa biết; Kể lại sự việc; Bộc lộ cảm xúc.",
       "groups": [
         {
           "id": "hoi",
@@ -841,9 +847,9 @@
       },
       "feedback": {
         "right": [
-          "Ba câu về đúng nhà! Bông xếp giấy nháp thẳng tăm.",
+          "Ba câu về đúng nhà! Thỏ Sương xếp lá sen thẳng tăm.",
           "Chuẩn rồi, câu hỏi thì hỏi, câu kể thì kể, câu nhớ thì reo lên.",
-          "Bông khen: {name} chia câu còn giỏi hơn Chó Mực chia thư!"
+          "Thỏ Sương khen: {name} chia câu còn giỏi hơn Chó Ki chia thư!"
         ],
         "wrong": [
           "Câu có chữ “Vì sao” đang muốn biết điều gì đó đấy.",
@@ -854,6 +860,7 @@
     },
     {
       "id": "ten-dau-cuoi-cau",
+      "goTo": "Trở về bến thư bên hồ, Bông đang ngậm bút nghĩ tên các dấu câu",
       "title": "Gọi tên dấu cuối câu",
       "kind": "challenge",
       "mechanic": "fill-blank",
@@ -982,9 +989,10 @@
     },
     {
       "id": "bai-tho-gui-kem",
+      "goTo": "Cầm thư ra hòm thư đầu bến, Chó Ki đang chờ đóng dấu gửi đi",
       "title": "Bài thơ gửi kèm lá thư",
       "kind": "speak",
-      "target": "gau-tuyet-bong",
+      "target": "tv2-t10-b18-cho-ki",
       "prompt": "Bông muốn kẹp thêm một bài thơ vào phong bì cho Bạc đọc đỡ nhớ. Tìm đọc một bài thơ về tình bạn. Khi đọc, chú ý những thông tin sau: – Tên của bài thơ. – Tên của tác giả. Nói về những điều em thích trong bài thơ đó.",
       "hints": [
         "Bài thơ em đọc có tên là gì? Ai viết bài thơ ấy?",
@@ -1030,7 +1038,7 @@
       "title": "Ồn ào trên đường chữ cái",
       "kind": "unlock",
       "trigger": "auto",
-      "text": "Chó Mực chạy về báo tin: trên con đường chữ cái, chữ A và các bạn đang cãi nhau ầm ĩ xem ai quan trọng nhất. Vẹt Xanh đã bay tới… và cãi to nhất!"
+      "text": "Chó Ki chạy về báo tin: trên con đường chữ cái, chữ A và các bạn đang cãi nhau ầm ĩ xem ai quan trọng nhất. Vẹt Xanh đã bay tới… và cãi to nhất!"
     }
   ],
   "reward": {

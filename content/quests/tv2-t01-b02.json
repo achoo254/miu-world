@@ -5,11 +5,11 @@
   "title": "Voi Bảo tìm ngày hôm qua",
   "status": "active",
   "lesson": "tv2-t1-b02",
-  "summary": "Gió sớm thổi tung xấp lịch lá của Voi Bảo, chú voi nhớ hết mọi chuyện trên đời, trừ chỗ để kính. {name} nhặt lại từng tờ lịch, đọc bài thơ về ngày hôm qua và giúp Voi khắc lại bảng chữ cái bị mưa làm mờ.",
+  "summary": "Gió sớm thổi tung xấp lịch lá của Voi Bảo, chú voi nhớ hết mọi chuyện trên đời, trừ chỗ để kính. {name} nhặt lại từng tờ lịch, đọc bài thơ về ngày hôm qua, ghé Mèo Tíc Tắc bên phiến đá rêu, Khỉ Mít trên cây mít chín và giúp Voi khắc lại bảng chữ cái bị mưa làm mờ.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Voi Bảo (giữ lịch và đồng hồ của rừng, nhớ mọi thứ trừ chỗ để kính), Vẹt Xanh lắm lời",
-    "where": "Gốc cây treo xấp lịch lá trong Khu rừng bí mật, bụi hồng, ruộng lúa và bàn học bên hốc cây",
+    "who": "Voi Bảo (giữ lịch và đồng hồ của rừng, nhớ mọi thứ trừ chỗ để kính), Vẹt Xanh lắm lời, Mèo Tíc Tắc xem giờ bằng bóng nắng, Khỉ Mít mê nghe câu hay",
+    "where": "Gốc cây treo xấp lịch lá trong Khu rừng bí mật, bụi hồng, ruộng lúa, bàn học bên hốc cây, phiến đá rêu, cây mít chín và bảng chữ cái cạnh ruộng lúa",
     "goal": "Nhặt lại những tờ lịch lá bị gió thổi bay và giúp Voi Bảo hiểu ngày hôm qua đi đâu",
     "play": "Tìm đồ, nói, đọc thơ, chọn nhiều đáp án, trắc nghiệm, phân loại từ, điền chữ cái, xếp thứ tự, lựa chọn trong hội thoại, phiếu viết",
     "learn": "Tiếng Việt 2 Bài 2: đọc hiểu bài thơ \"Ngày hôm qua đâu rồi?\", học thuộc lòng, bảng chữ cái (â, c, d, e), từ chỉ sự vật và hoạt động, câu giới thiệu, nghe – viết, viết đoạn tự giới thiệu, đọc mở rộng",
@@ -40,7 +40,9 @@
     "nhat-to-lich": "bụi hồng, ruộng lúa và bàn học",
     "tv2-t01-to-lich-ban-hoc": "bàn học bên hốc cây",
     "tv2-t01-bang-chu-cai": "bảng chữ cái cạnh ruộng lúa",
-    "tv2-t01-hoc-cay": "hốc cây"
+    "tv2-t01-hoc-cay": "hốc cây",
+    "tv2-t01-b02-meo-tic-tac": "phiến đá rêu",
+    "tv2-t01-b02-khi-mit": "cây mít chín"
   },
   "steps": [
     {
@@ -161,9 +163,10 @@
     {
       "id": "ngay-hom-qua-o-lai",
       "title": "Ngày hôm qua ở đâu",
+      "goTo": "Theo Voi Bảo ra phiến đá rêu, Mèo Tíc Tắc đang ngắm bóng nắng đoán giờ",
       "kind": "challenge",
       "mechanic": "multi-select",
-      "target": "goc-cay-lich-la",
+      "target": "tv2-t01-b02-meo-tic-tac",
       "prompt": "Voi Bảo xếp ba tờ lịch lên phiến đá, mũi vòi chỉ lần lượt từng tờ. Theo lời bố, ngày hôm qua ở lại những đâu?",
       "choices": [
         {
@@ -385,8 +388,9 @@
     {
       "id": "dat-cau-tu-tranh",
       "title": "Nói câu với từ vừa tìm",
+      "goTo": "Voi Bảo dắt {name} tới cây mít chín, Khỉ Mít đu cành chờ nghe câu",
       "kind": "speak",
-      "target": "voi-bao",
+      "target": "tv2-t01-b02-khi-mit",
       "prompt": "Voi Bảo mê những câu tròn trịa như quả mít chín. Đặt 2 câu với từ ngữ tìm được ở bài tập 1. M: Cánh đồng rộng mênh mông.",
       "hints": [
         "Chọn một từ chỉ người, chẳng hạn: mẹ.",
@@ -803,8 +807,9 @@
     {
       "id": "the-cua-minh",
       "title": "Tấm thẻ của {name}",
+      "goTo": "Cầm thẻ lá trắng ra phiến đá rêu, Mèo Tíc Tắc cho mượn bút than",
       "kind": "speak",
-      "target": "voi-bao",
+      "target": "tv2-t01-b02-meo-tic-tac",
       "prompt": "Voi Bảo đưa cho {name} một tấm thẻ lá còn trắng tinh, chưa ai viết gì. Đặt một câu giới thiệu theo mẫu ở bài tập 2.",
       "hints": [
         "Bắt đầu bằng một người hoặc một nơi em biết rõ.",
@@ -818,6 +823,7 @@
     {
       "id": "dem-tho-quanh-goc-cay",
       "title": "Đêm thơ quanh gốc cây",
+      "goTo": "Đom đóm lập lòe rồi, chạy về gốc cây lịch lá kẻo lỡ đêm thơ",
       "kind": "speak",
       "target": "goc-cay-lich-la",
       "prompt": "Trời tối dần, đom đóm thắp đèn, Voi Bảo mời cả rừng ngồi quanh gốc cây nghe đọc thơ. Tìm đọc một bài thơ hoặc câu chuyện viết về thiếu nhi. Nói với các bạn tên bài thơ, câu chuyện và tên tác giả. Đọc một số câu thơ hay cho các bạn nghe.",
@@ -857,7 +863,7 @@
       "title": "Cầu vồng sau mưa",
       "kind": "unlock",
       "trigger": "auto",
-      "text": "Mưa rào vừa tạnh, bãi cỏ bỗng hiện lên một chiếc cầu vồng bảy màu. Thỏ Tí đứng đó định ước… ước… ơ, bạn ấy quên mất mình định ước gì rồi!"
+      "text": "Mưa rào vừa tạnh, bãi cỏ bỗng hiện lên một chiếc cầu vồng bảy màu. Thỏ Bồng Bềnh đứng đó định ước… ước… ơ, bạn ấy quên mất mình định ước gì rồi!"
     }
   ],
   "reward": {

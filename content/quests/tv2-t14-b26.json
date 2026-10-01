@@ -8,8 +8,8 @@
   "summary": "Nhà Gà Con Chíp sắp đón em bé từ quả trứng, Chíp lo bị quên; {name} cùng Chíp đọc bài thơ \"Em mang về yêu thương\" và chờ em chào đời.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Gà Con Chíp, Mẹ Gà, Bố Gà Trống và em gà con trong quả trứng",
-    "where": "Tổ rơm của nhà Chíp, sân rơm quanh tổ, chiếc võng dưới hiên",
+    "who": "Gà Con Chíp, Mẹ Gà, Bố Gà Trống, em gà con trong quả trứng và bốn hàng xóm: Cáo Hạt Dẻ, Gấu Trúc Bánh Bao, Cá Rô Bọt, Chị hái nấm Thơm",
+    "where": "Tổ rơm của nhà Chíp, sân rơm quanh tổ, bụi tre đầu ngõ, bãi đất trống bên rào, vũng nước cạnh ao bèo, gốc sung ven đường, chiếc võng dưới hiên",
     "goal": "Giúp Chíp hết lo bị quên và sẵn sàng làm anh",
     "play": "Tìm đầu mối, nói, đọc thơ, ghép mảnh thơ, chọn nhiều đáp án, chọn đáp án, ghép câu, chọn vần, đọc thơ cho em, phiếu viết",
     "learn": "Tiếng Việt 2 Bài 26: đọc hiểu \"Em mang về yêu thương\", từ tả em bé, họ nội họ ngoại, iên/yên/uyên, d/r, gi/r, ai/ay, ghép câu, nghe – viết, viết đoạn",
@@ -41,11 +41,14 @@
     }
   },
   "places": {
-    "ga-chip": "tổ rơm nhà Chíp",
     "me-ga": "tổ rơm nhà Chíp",
     "tv2-t14-qua-trung": "tổ rơm nhà Chíp",
     "tim-dau-moi": "sân rơm quanh tổ",
-    "tv2-t14-vong-hien": "chiếc võng dưới hiên nhà Chíp"
+    "tv2-t14-vong-hien": "chiếc võng dưới hiên nhà Chíp",
+    "tv2-t14-b26-cao-hat-de": "bụi tre đầu ngõ",
+    "tv2-t14-b26-gau-truc-banh-bao": "bãi đất trống bên rào",
+    "tv2-t14-b26-ca-ro-bot": "vũng nước cạnh ao bèo",
+    "tv2-t14-b26-chi-hai-nam-thom": "gốc sung ven đường"
   },
   "steps": [
     {
@@ -53,7 +56,7 @@
       "title": "Chíp và quả trứng bí ẩn",
       "goTo": "Tới tổ rơm nhà Chíp, nơi tiếng chiêm chiếp đang rộn ràng",
       "kind": "dialogue",
-      "target": "ga-chip",
+      "target": "me-ga",
       "lines": [
         {
           "speaker": "Gà Con Chíp",
@@ -170,9 +173,10 @@
     {
       "id": "ta-em-be",
       "title": "Khổ thơ bị gáy đè mất chữ",
+      "goTo": "Gió cuốn mảnh thơ ra bụi tre đầu ngõ, Cáo Hạt Dẻ đang cúi nhặt giúp",
       "kind": "challenge",
       "mechanic": "classify",
-      "target": "tv2-t14-qua-trung",
+      "target": "tv2-t14-b26-cao-hat-de",
       "prompt": "Bố Gà Trống đọc lại khổ thơ đầu cho Chíp nghe, nhưng hồi hộp quá, cứ \"Ò ó o!\" làm các mảnh thơ rơi lả tả. Đặt mỗi mảnh về đúng chỗ. Trong khổ thơ đầu, bạn nhỏ tả em của mình như thế nào?",
       "groups": [
         {
@@ -251,7 +255,7 @@
       "title": "Đầu mối nào đúng nhỉ?",
       "kind": "challenge",
       "mechanic": "multi-select",
-      "target": "ga-chip",
+      "target": "tv2-t14-b26-cao-hat-de",
       "prompt": "Chíp giơ ngôi sao giấy, vỏ ốc và chùm nhãn lên cao: \"Tại sao bạn ấy đoán nhiều thế?\" Trong khổ thơ thứ hai và thứ ba, bạn nhỏ đoán em bé từ đâu đến?",
       "choices": [
         {
@@ -314,6 +318,7 @@
     {
       "id": "em-mang-den-gi",
       "title": "Chíp sợ bị quên",
+      "goTo": "Chíp chạy ù về tổ rơm nhà Chíp, ôm chặt lấy quả trứng",
       "kind": "challenge",
       "mechanic": "quiz",
       "target": "me-ga",
@@ -366,9 +371,10 @@
     {
       "id": "tu-ta-em-be",
       "title": "Kho từ khen em bé",
+      "goTo": "Ra bãi đất trống bên rào, Gấu Trúc Bánh Bao giữ cả túi từ khen em bé",
       "kind": "challenge",
       "mechanic": "multi-select",
-      "target": "ga-chip",
+      "target": "tv2-t14-b26-gau-truc-banh-bao",
       "prompt": "Chíp muốn gom thật nhiều từ để khen em ngay khi em chui ra khỏi vỏ. Tìm thêm các từ ngữ tả em bé. M: bụ bẫm",
       "choices": [
         {
@@ -439,8 +445,9 @@
     {
       "id": "cau-khen-em",
       "title": "Tập khen em trước vũng nước",
+      "goTo": "Tới vũng nước cạnh ao bèo, Cá Rô Bọt ngoi lên xem Chíp tập khen em",
       "kind": "speak",
-      "target": "ga-chip",
+      "target": "tv2-t14-b26-ca-ro-bot",
       "prompt": "Chíp soi vũng nước tập khen em, khen nhiều đến nỗi cái bóng trong nước cũng phải đỏ mặt. Đặt một câu với từ ngữ em tìm được ở bài tập 1. M: Bé Hà rất bụ bẫm.",
       "hints": [
         "Chọn một từ vừa tìm được: mũm mĩm, xinh xắn, đáng yêu, hồng hào…",
@@ -453,6 +460,7 @@
     {
       "id": "ho-noi-ho-ngoai",
       "title": "Họ hàng kéo đến thăm em",
+      "goTo": "Về tổ rơm nhà Chíp, họ hàng hai bên đã kéo đến chật sân",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "target": "me-ga",
@@ -583,9 +591,10 @@
     {
       "id": "ghep-cau-thiep-moi",
       "title": "Tấm thiệp bị gió thổi rời",
+      "goTo": "Đuổi theo mảnh thiệp tới gốc sung ven đường, Chị hái nấm Thơm chụp được rồi",
       "kind": "challenge",
       "mechanic": "classify",
-      "target": "me-ga",
+      "target": "tv2-t14-b26-chi-hai-nam-thom",
       "prompt": "Bố Gà Trống viết thiệp mời họ hàng, nhưng vỗ cánh mạnh quá, các mảnh chữ bay tứ tung. Kết hợp từ ngữ ở cột A với từ ngữ ở cột B để tạo câu. Chọn viết 2 câu vào vở.",
       "groups": [
         {
@@ -653,6 +662,7 @@
     {
       "id": "van-ien-yen-uyen",
       "title": "Bài hát ru quả trứng",
+      "goTo": "Quay về tổ rơm nhà Chíp, Mẹ Gà đang khe khẽ hát ru quả trứng",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "target": "tv2-t14-qua-trung",
@@ -871,9 +881,10 @@
     {
       "id": "ai-hay-ay",
       "title": "Bức tranh đố của Chíp",
+      "goTo": "Ra bãi đất trống bên rào, Gấu Trúc Bánh Bao nhường chỗ cho Chíp vẽ tranh đố",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "target": "ga-chip",
+      "target": "tv2-t14-b26-gau-truc-banh-bao",
       "prompt": "Chíp lấy mỏ vẽ một bạn gái lên nền đất, đánh số 1, 2, 3, 4 vào tranh rồi đố {name}. Chọn a hoặc b. b. Nhìn tranh, tìm từ ngữ chứa ai hoặc ay. Viết các từ em tìm được vào vở.",
       "template": "Số 1, chỗ bạn gái dùng để vẫy chào: {{b1}}\nSố 2, chỗ để nghe Chíp hỏi \"Tại sao?\": {{b2}}\nSố 3, chỗ đeo quai cặp sách: {{b3}}\nSố 4, thứ màu đỏ bạn gái mặc, xoay một vòng là xoè ra: {{b4}}",
       "blanks": [
@@ -969,8 +980,9 @@
     {
       "id": "qua-trung-nut",
       "title": "Quả trứng nứt rồi!",
+      "goTo": "Cốc cốc! Chạy vội về tổ rơm nhà Chíp, quả trứng đang rung rinh",
       "kind": "dialogue",
-      "target": "ga-chip",
+      "target": "me-ga",
       "lines": [
         {
           "speaker": "Quả trứng",

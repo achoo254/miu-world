@@ -1,0 +1,199 @@
+{
+ "batch": 8,
+ "quests": {
+  "toan2-cd5-b28": {
+   "region": "truong-hoc",
+   "file": "content/quests/toan2-cd5-b28.json",
+   "keeps": [
+    "cua-kenh"
+   ],
+   "replace": [
+    "huou-cao"
+   ],
+   "names": {
+    "cua-kenh": "Cua Kềnh",
+    "huou-cao": "Hươu Cao"
+   }
+  },
+  "toan2-cd6-b29": {
+   "region": "truong-hoc",
+   "file": "content/quests/toan2-cd6-b29.json",
+   "keeps": [],
+   "replace": [
+    "koala-na",
+    "voi-bao"
+   ],
+   "names": {
+    "voi-bao": "Voi Bảo",
+    "koala-na": "Koala Na"
+   }
+  },
+  "toan2-cd6-b30": {
+   "region": "truong-hoc",
+   "file": "content/quests/toan2-cd6-b30.json",
+   "keeps": [
+    "voi-bao"
+   ],
+   "replace": [
+    "koala-na"
+   ],
+   "names": {
+    "voi-bao": "Voi Bảo",
+    "koala-na": "Koala Na"
+   }
+  },
+  "toan2-cd6-b31": {
+   "region": "truong-hoc",
+   "file": "content/quests/toan2-cd6-b31.json",
+   "keeps": [
+    "cho-muc"
+   ],
+   "replace": [
+    "koala-na"
+   ],
+   "names": {
+    "cho-muc": "Chó Mực",
+    "koala-na": "Koala Na"
+   }
+  },
+  "toan2-cd6-b32": {
+   "region": "truong-hoc",
+   "file": "content/quests/toan2-cd6-b32.json",
+   "keeps": [
+    "sau-xanh"
+   ],
+   "replace": [
+    "voi-bao"
+   ],
+   "names": {
+    "voi-bao": "Voi Bảo",
+    "sau-xanh": "Sâu Xanh"
+   }
+  },
+  "toan2-cd7-b33": {
+   "region": "truong-hoc",
+   "file": "content/quests/toan2-cd7-b33.json",
+   "keeps": [],
+   "replace": [
+    "ga-con-chip",
+    "heo-un",
+    "lon-rung-dom",
+    "su-tu-vang"
+   ],
+   "names": {
+    "ga-con-chip": "Gà Con Chíp",
+    "su-tu-vang": "Sư Tử Vàng",
+    "heo-un": "Heo Ủn",
+    "lon-rung-dom": "Lợn Rừng Đốm"
+   }
+  },
+  "toan2-cd7-b34": {
+   "region": "truong-hoc",
+   "file": "content/quests/toan2-cd7-b34.json",
+   "keeps": [
+    "huou-cao"
+   ],
+   "replace": [
+    "lon-rung-dom"
+   ],
+   "names": {
+    "huou-cao": "Hươu Cao",
+    "lon-rung-dom": "Lợn Rừng Đốm"
+   }
+  },
+  "toan2-cd7-b35": {
+   "region": "truong-hoc",
+   "file": "content/quests/toan2-cd7-b35.json",
+   "keeps": [
+    "chim-canh-cut-pin"
+   ],
+   "replace": [
+    "cao-lem",
+    "heo-un"
+   ],
+   "names": {
+    "cao-lem": "Cáo Lém",
+    "chim-canh-cut-pin": "Cánh Cụt Pin",
+    "heo-un": "Heo Ủn"
+   }
+  },
+  "toan2-cd7-b36": {
+   "region": "truong-hoc",
+   "file": "content/quests/toan2-cd7-b36.json",
+   "keeps": [],
+   "replace": [
+    "bo-sua-mo",
+    "chim-canh-cut-pin",
+    "ga-con-chip",
+    "huou-cao",
+    "khi-lanh",
+    "koala-na",
+    "lon-rung-dom",
+    "ong-vang",
+    "su-tu-vang",
+    "voi-bao"
+   ],
+   "names": {
+    "huou-cao": "Hươu Cao",
+    "su-tu-vang": "Sư Tử Vàng",
+    "koala-na": "Koala Na",
+    "chim-canh-cut-pin": "Cánh Cụt Pin",
+    "ga-con-chip": "Gà Con Chíp",
+    "khi-lanh": "Khỉ Lanh",
+    "bo-sua-mo": "Bò Sữa Mơ",
+    "lon-rung-dom": "Lợn Rừng Đốm",
+    "ong-vang": "Ong Vàng",
+    "voi-bao": "Voi Bảo"
+   }
+  }
+ },
+ "looks": {
+  "animal-bee": 1,
+  "animal-cat": 1,
+  "animal-chick": 1,
+  "animal-crab": 1,
+  "animal-deer": 1,
+  "animal-elephant": 1,
+  "animal-fox": 1,
+  "animal-hog": 1,
+  "animal-koala": 1,
+  "animal-monkey": 1,
+  "animal-panda": 1,
+  "animal-penguin": 1,
+  "animal-polar": 1,
+  "animal-tiger": 1,
+  "calf-brown": 1,
+  "chibi-bear-den-overalls-red": 1,
+  "chibi-bear-mat-ong-dress-blue": 1,
+  "chibi-bear-mat-ong-jacket": 1,
+  "chibi-bear-nau-overalls-green": 1,
+  "chibi-cat-cam-overalls": 1,
+  "chibi-cat-cam-vest-shorts-navy": 1,
+  "chibi-cat-trang-dress": 1,
+  "chibi-cat-xam-dress-mint": 1,
+  "chibi-cat-xam-jacket-green": 1,
+  "chibi-fox-cam-dress": 1,
+  "chibi-fox-do-dress-mint": 1,
+  "chibi-fox-do-jacket-green": 1,
+  "chibi-fox-tuyet-overalls": 1,
+  "chibi-rabbit-nau-dress-blue": 1,
+  "chibi-rabbit-nau-jacket": 1,
+  "chibi-rabbit-trang-overalls-green": 1,
+  "chibi-rabbit-xam-overalls-red": 1,
+  "chibi-rabbit-xam-vest-shorts-green": 1,
+  "person-a": 1,
+  "person-b": 1,
+  "person-c": 1,
+  "person-e": 1,
+  "person-f": 1,
+  "person-g": 1,
+  "person-i": 1,
+  "person-j": 1,
+  "person-k": 1,
+  "person-m": 1,
+  "person-n": 1,
+  "person-o": 1,
+  "person-q": 1,
+  "person-r": 1
+ }
+}

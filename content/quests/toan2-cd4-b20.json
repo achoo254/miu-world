@@ -5,11 +5,11 @@
   "title": "Khỉ Lanh ghép đoàn tàu",
   "status": "active",
   "lesson": "toan2-t1-b20",
-  "summary": "Khỉ Lanh ghép đoàn tàu đồ chơi mà toa nào cũng đòi đi trước; {name} cộng có nhớ số có hai chữ số với số có hai chữ số để xếp hàng lên toa, đưa tàu ngầm về bến, chỉ đường cho kiến và sửa phép tính que diêm của Khỉ.",
+  "summary": "Khỉ Lanh ghép đoàn tàu đồ chơi mà toa nào cũng đòi đi trước; {name} cộng có nhớ số có hai chữ số với số có hai chữ số để xếp hàng lên toa cùng Bác tài Khải, đưa tàu ngầm của Voi Bọt và Gấu Trúc Măng về bến, chỉ đường cho kiến với Thỏ Cỏ May và sửa phép tính que diêm của Khỉ.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Khỉ Lanh, Mèo Mun",
-    "where": "Xưởng đồ chơi: đường ray tàu",
+    "who": "Khỉ Lanh, Bác tài Khải, Voi Bọt, Gấu Trúc Măng, Thỏ Cỏ May",
+    "where": "Xưởng đồ chơi: đường ray tàu, trạm gác ghi, bể bơi đồ chơi, bến tàu ngầm, bụi cỏ cạnh xưởng",
     "goal": "Ghép đủ toa và chất đúng hàng để đoàn tàu chạy",
     "play": "Tìm toa tàu, điền kết quả cộng có nhớ, chọn tàu đúng, nối hàng với máy bay, xếp tàu ngầm, chọn đường cho kiến, chọn câu đúng, đố que tính",
     "learn": "Toán 2 Bài 20: phép cộng (có nhớ) số có hai chữ số với số có hai chữ số",
@@ -30,7 +30,10 @@
   "places": {
     "khi-lanh": "đường ray tàu",
     "tim-toa-tau": "đường ray tàu",
-    "meo-mun": "bể bơi đồ chơi"
+    "toan2-cd4-b20-bac-lai-tau-khai": "trạm gác ghi",
+    "toan2-cd4-b20-voi-bot": "bể bơi đồ chơi",
+    "toan2-cd4-b20-gau-truc-mang": "bến tàu ngầm",
+    "toan2-cd4-b20-tho-co-may": "bụi cỏ cạnh xưởng"
   },
   "steps": [
     {
@@ -49,8 +52,8 @@
           "text": "Nhưng mấy cái toa nghịch lắm, toa nào cũng đòi đi trước, lại còn trốn biệt khỏi đường ray."
         },
         {
-          "speaker": "Mèo Mun",
-          "text": "Thầy Khỉ treo ngược người thế kia thì tìm được toa nào ạ?"
+          "speaker": "Bác tài Khải",
+          "text": "Thầy Khỉ cứ treo ngược thế kia, tôi đội mũ lái tàu chờ mãi chưa thấy toa nào đây!"
         },
         {
           "speaker": "Khỉ Lanh",
@@ -94,12 +97,12 @@
           "text": "Hàng đơn vị: 7 + 4 = 11, viết 1, nhớ 1. Hàng chục: 1 + 2 = 3, thêm 1 nhớ là 4. Vậy 17 + 24 = 41."
         },
         {
-          "speaker": "Mèo Mun",
-          "text": "Số 1 nhớ giống em khỉ con bám lưng mẹ, nhảy sang hàng chục ạ?"
+          "speaker": "Bác tài Khải",
+          "text": "Số 1 nhớ cứ như hành khách nhảy sang toa hàng chục, phải không thầy?"
         },
         {
           "speaker": "Khỉ Lanh",
-          "text": "Chuẩn! Đừng để em khỉ con rơi mất là được."
+          "text": "Chuẩn! Đừng để vị khách nhỏ nào rơi khỏi toa là được."
         }
       ],
       "choices": [
@@ -305,7 +308,7 @@
     {
       "id": "con-tau-ghi-dung",
       "title": "Toa nào ghi phép tính đúng?",
-      "target": "khi-lanh",
+      "target": "toan2-cd4-b20-bac-lai-tau-khai",
       "kind": "challenge",
       "mechanic": "quiz",
       "prompt": "Khỉ Lanh viết vội lên ba con tàu, có tàu ghi sai. Con tàu nào ghi phép tính đúng?",
@@ -352,12 +355,13 @@
       },
       "answer": {
         "choice": "23-18-41"
-      }
+      },
+      "goTo": "Chạy tới trạm gác ghi, Bác tài Khải đang soi ba con tàu ghi số"
     },
     {
       "id": "may-bay-cho-hang",
       "title": "Máy bay nhỏ chở hàng",
-      "target": "khi-lanh",
+      "target": "toan2-cd4-b20-bac-lai-tau-khai",
       "kind": "challenge",
       "mechanic": "classify",
       "prompt": "Ba chiếc máy bay không người lái vù vù bay tới, mỗi chiếc mang một phép tính. Tính rồi tìm thùng hoặc bao hàng thích hợp.",
@@ -414,7 +418,7 @@
         "right": [
           "Vù vù! Ba máy bay gắp đúng hàng, bay về ga tàu!",
           "Cộng ki-lô-gam có nhớ mà không trượt phát nào.",
-          "Mèo Mun chụp ảnh lưu niệm đội máy bay chở hàng."
+          "Bác tài Khải chụp ảnh lưu niệm đội máy bay chở hàng."
         ],
         "wrong": [
           "Có một máy bay đang định gắp nhầm bao hàng.",
@@ -465,28 +469,29 @@
       },
       "answer": {
         "value": 60
-      }
+      },
+      "goTo": "Quay về đường ray tàu, Khỉ Lanh vẫy xấp bưu thiếp hồng cho toa cuối"
     },
     {
       "id": "meo-mun-goi-tau-ngam",
-      "title": "Mèo Mun gọi tàu ngầm",
-      "goTo": "Sang bể bơi đồ chơi, Mèo Mun đang cầm cần điều khiển tàu ngầm",
+      "title": "Voi Bọt gọi tàu ngầm",
+      "goTo": "Sang bể bơi đồ chơi, Voi Bọt đang thò vòi khua nước tìm tàu ngầm",
       "kind": "dialogue",
-      "target": "meo-mun",
+      "target": "toan2-cd4-b20-voi-bot",
       "lines": [
         {
-          "speaker": "Mèo Mun",
-          "text": "Meo! Ở bể bơi đồ chơi có bốn chiếc tàu ngầm chở hàng, nhưng tớ sợ nước nên chẳng dám thò chân xuống."
+          "speaker": "Voi Bọt",
+          "text": "Phì phò! Tớ là Voi Bọt, canh bể bơi đồ chơi. Bốn chiếc tàu ngầm chở hàng lặn mất tăm, tớ khua vòi mãi chẳng chiếc nào chịu nổi!"
         },
         {
           "speaker": "Khỉ Lanh",
-          "text": "Không cần thò chân! Cứ tính phép cộng trên mỗi tàu là biết tàu nào nổi lên trước. {name} muốn tính hết rồi xếp, hay so từng đôi?"
+          "text": "Khỏi khua nữa! Cứ tính phép cộng trên mỗi tàu là biết tàu nào nổi lên trước. {name} muốn tính hết rồi xếp, hay so từng đôi?"
         }
       ],
       "choices": [
         {
           "text": "Tính hết rồi mới xếp",
-          "reply": "Mèo Mun: Chắc ăn như cá nằm trên thớt… à không, cá bơi trong bể!"
+          "reply": "Voi Bọt phun một vòi nước lên trời: Chắc ăn như cá bơi trong bể!"
         },
         {
           "text": "So từng đôi tàu một",
@@ -497,10 +502,10 @@
     {
       "id": "doi-cho-so-hang",
       "title": "Đổi chỗ hai số hạng",
-      "target": "meo-mun",
+      "target": "toan2-cd4-b20-voi-bot",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Mèo Mun viết hai cặp phép tính giống giống nhau, nghi có phép thuật. Đặt tính rồi tính.",
+      "prompt": "Voi Bọt viết hai cặp phép tính giống giống nhau, nghi có phép thuật. Đặt tính rồi tính.",
       "template": "47 + 43 = {{b1}}\n43 + 47 = {{b2}}\n65 + 28 = {{b3}}\n28 + 65 = {{b4}}",
       "blanks": [
         {
@@ -594,7 +599,7 @@
         "right": [
           "Phép thuật lộ diện: đổi chỗ số hạng, tổng vẫn y nguyên!",
           "Hai cặp phép tính, kết quả giống nhau như hai giọt nước.",
-          "Mèo Mun kêu meo meo khoái chí: hóa ra không phải ma thuật."
+          "Voi Bọt rống một hồi khoái chí: hóa ra không phải ma thuật."
         ],
         "wrong": [
           "Tính kĩ cả hai phép rồi so kết quả nhé.",
@@ -614,7 +619,7 @@
     {
       "id": "tau-ngam-noi-len",
       "title": "Tàu ngầm nào nổi lên trước?",
-      "target": "meo-mun",
+      "target": "toan2-cd4-b20-gau-truc-mang",
       "kind": "challenge",
       "mechanic": "sort",
       "prompt": "Tàu có kết quả bé nhất nổi lên đầu tiên. Nêu tên các tàu ngầm theo thứ tự kết quả của phép tính từ bé đến lớn.",
@@ -655,7 +660,7 @@
         "right": [
           "Bốn tàu ngầm lần lượt nổi lên, bọt nước lăn tăn!",
           "Tàu B dẫn đầu, tàu A về cuối, cháu xếp chuẩn.",
-          "Mèo Mun vỗ tay nhưng vẫn lùi xa mép nước."
+          "Gấu Trúc Măng vỗ tay nhưng vẫn lùi xa mép nước."
         ],
         "wrong": [
           "Tính hết bốn tàu rồi hãy xếp nhé.",
@@ -670,12 +675,13 @@
           "tau-ngam-tau-ngam-c-6-90",
           "tau-ngam-tau-ngam-a-15-82"
         ]
-      }
+      },
+      "goTo": "Ra bến tàu ngầm, Gấu Trúc Măng ôm phao ngồi chờ tàu nổi lên"
     },
     {
       "id": "duong-ngan-cho-kien-vang",
       "title": "Đường tắt cho kiến vàng",
-      "target": "meo-mun",
+      "target": "toan2-cd4-b20-tho-co-may",
       "kind": "challenge",
       "mechanic": "quiz",
       "prompt": "Ba con đường dẫn tới hạt gạo: đường màu đỏ gồm 48 cm và 32 cm; đường màu xanh gồm 34 cm và 34 cm; đường màu đen gồm 32 cm và 48 cm. Chọn câu trả lời đúng. Con đường nào ngắn nhất để kiến vàng bò đến hạt gạo? A. Đường màu đỏ B. Đường màu xanh C. Đường màu đen",
@@ -722,12 +728,13 @@
       },
       "answer": {
         "choice": "b-duong-mau-xanh"
-      }
+      },
+      "goTo": "Ra bụi cỏ cạnh xưởng, Thỏ Cỏ May đang nằm bò xem đàn kiến"
     },
     {
       "id": "kien-do-qua-bui-co",
       "title": "Kiến đỏ đi tìm kẹo",
-      "target": "meo-mun",
+      "target": "toan2-cd4-b20-tho-co-may",
       "kind": "riddle",
       "question": "Kiến đỏ cũng muốn lên tàu, nhưng phải bò qua bụi cỏ: một đoạn 37 cm rồi một đoạn 54 cm. Số ? Kiến đỏ phải bò qua bụi cỏ để đến cái kẹo. Kiến đỏ phải bò ? cm.",
       "skill": "phep-cong",
@@ -749,7 +756,7 @@
         "right": [
           "Kiến đỏ bò tới kẹo, rủ cả đàn lên toa ăn chung!",
           "Chín mươi mốt xăng-ti-mét, dài ơi là dài!",
-          "Mèo Mun thì thầm: tớ thà nhảy một phát là tới."
+          "Thỏ Cỏ May thì thầm: tớ thà nhảy một phát là tới."
         ],
         "wrong": [
           "Con đường gồm hai đoạn, cộng cả hai nhé.",
@@ -1075,7 +1082,7 @@
     {
       "id": "khinh-khi-cau-noi-so",
       "title": "Khinh khí cầu trên tia số",
-      "target": "khi-lanh",
+      "target": "toan2-cd4-b20-bac-lai-tau-khai",
       "kind": "challenge",
       "mechanic": "multi-select",
       "prompt": "Trên trời xưởng bay lơ lửng ba khinh khí cầu, mỗi chiếc buộc dây vào một số trên tia số 64, 67, 70, …, 100. Đ, S ? Chọn những khinh khí cầu nối đúng (Đ); chiếc không chọn là nối sai (S).",
@@ -1126,12 +1133,13 @@
         "choices": [
           "khinh-khi-cau-49-48-noi-voi-so-97"
         ]
-      }
+      },
+      "goTo": "Lên trạm gác ghi, Bác tài Khải chỉ ba khinh khí cầu lơ lửng"
     },
     {
       "id": "dan-cuu-qua-cau",
       "title": "Đàn cừu đi qua hai cây cầu",
-      "target": "khi-lanh",
+      "target": "toan2-cd4-b20-bac-lai-tau-khai",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "prompt": "Đàn cừu đồ chơi lên tàu theo từng nhóm: lúc đầu có 45 con, mỗi cây cầu lại có thêm cừu nhập đàn. Số ?",
@@ -1278,7 +1286,8 @@
       },
       "answer": {
         "value": 72
-      }
+      },
+      "goTo": "Về đường ray tàu, Khỉ Lanh mời cậu lên toa khách xem chơi bi"
     },
     {
       "id": "que-tinh-dat-sai",
@@ -1364,7 +1373,7 @@
       "title": "Còi trưởng ga",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Đoàn tàu đồ chơi chạy một vòng quanh Xưởng đồ chơi, kéo theo cả đàn kiến, đàn cừu và Mèo Mun. Khỉ Lanh trao cho {name} chiếc còi \"Trưởng ga nhớ một\" kêu toét toét."
+      "text": "Đoàn tàu đồ chơi chạy một vòng quanh Xưởng đồ chơi, kéo theo cả đàn kiến, đàn cừu và Voi Bọt. Khỉ Lanh trao cho {name} chiếc còi \"Trưởng ga nhớ một\" kêu toét toét."
     },
     {
       "id": "hop-qua-bi-mat",

@@ -1,0 +1,177 @@
+{
+ "batch": 7,
+ "quests": {
+  "toan2-cd4-b19": {
+   "region": "truong-hoc",
+   "file": "content/quests/toan2-cd4-b19.json",
+   "keeps": [
+    "lon-rung-dom"
+   ],
+   "replace": [
+    "ga-con-chip"
+   ],
+   "names": {
+    "ga-con-chip": "Gà Con Chíp",
+    "lon-rung-dom": "Lợn Rừng Đốm"
+   }
+  },
+  "toan2-cd4-b20": {
+   "region": "truong-hoc",
+   "file": "content/quests/toan2-cd4-b20.json",
+   "keeps": [
+    "khi-lanh"
+   ],
+   "replace": [
+    "meo-mun"
+   ],
+   "names": {
+    "meo-mun": "Mèo Mun",
+    "khi-lanh": "Khỉ Lanh"
+   }
+  },
+  "toan2-cd4-b21": {
+   "region": "truong-hoc",
+   "file": "content/quests/toan2-cd4-b21.json",
+   "keeps": [
+    "cao-lem"
+   ],
+   "replace": [
+    "lon-rung-dom"
+   ],
+   "names": {
+    "cao-lem": "Cáo Lém",
+    "lon-rung-dom": "Lợn Rừng Đốm"
+   }
+  },
+  "toan2-cd4-b22": {
+   "region": "truong-hoc",
+   "file": "content/quests/toan2-cd4-b22.json",
+   "keeps": [
+    "koala-na"
+   ],
+   "replace": [
+    "lon-rung-dom"
+   ],
+   "names": {
+    "koala-na": "Koala Na",
+    "lon-rung-dom": "Lợn Rừng Đốm"
+   }
+  },
+  "toan2-cd4-b23": {
+   "region": "truong-hoc",
+   "file": "content/quests/toan2-cd4-b23.json",
+   "keeps": [
+    "ho-van"
+   ],
+   "replace": [
+    "khi-lanh"
+   ],
+   "names": {
+    "khi-lanh": "Khỉ Lanh",
+    "ho-van": "Hổ Vằn"
+   }
+  },
+  "toan2-cd4-b24": {
+   "region": "truong-hoc",
+   "file": "content/quests/toan2-cd4-b24.json",
+   "keeps": [
+    "meo-mun"
+   ],
+   "replace": [
+    "lon-rung-dom"
+   ],
+   "names": {
+    "meo-mun": "Mèo Mun",
+    "lon-rung-dom": "Lợn Rừng Đốm"
+   }
+  },
+  "toan2-cd5-b25": {
+   "region": "truong-hoc",
+   "file": "content/quests/toan2-cd5-b25.json",
+   "keeps": [
+    "huou-cao"
+   ],
+   "replace": [
+    "khi-lanh"
+   ],
+   "names": {
+    "khi-lanh": "Khỉ Lanh",
+    "huou-cao": "Hươu Cao"
+   }
+  },
+  "toan2-cd5-b26": {
+   "region": "truong-hoc",
+   "file": "content/quests/toan2-cd5-b26.json",
+   "keeps": [
+    "ong-vang"
+   ],
+   "replace": [
+    "huou-cao"
+   ],
+   "names": {
+    "ong-vang": "Ong Vàng",
+    "huou-cao": "Hươu Cao"
+   }
+  },
+  "toan2-cd5-b27": {
+   "region": "truong-hoc",
+   "file": "content/quests/toan2-cd5-b27.json",
+   "keeps": [
+    "ga-con-chip"
+   ],
+   "replace": [],
+   "names": {
+    "ga-con-chip": "Gà Con Chíp"
+   }
+  }
+ },
+ "looks": {
+  "animal-bee": 1,
+  "animal-cat": 1,
+  "animal-chick": 1,
+  "animal-cow": 1,
+  "animal-deer": 1,
+  "animal-elephant": 1,
+  "animal-fox": 1,
+  "animal-giraffe": 1,
+  "animal-koala": 1,
+  "animal-monkey": 1,
+  "animal-panda": 1,
+  "animal-penguin": 1,
+  "animal-pig": 1,
+  "animal-tiger": 1,
+  "calf-brown": 1,
+  "calf-tan": 1,
+  "chibi-bear-den-overalls-red": 1,
+  "chibi-bear-den-vest-shorts-green": 1,
+  "chibi-bear-mat-ong-jacket": 1,
+  "chibi-bear-nau-overalls-green": 1,
+  "chibi-bear-nau-vest-shorts": 1,
+  "chibi-cat-cam-vest-shorts-navy": 1,
+  "chibi-cat-trang-dress": 1,
+  "chibi-cat-trang-jacket-red": 1,
+  "chibi-cat-xam-jacket-green": 1,
+  "chibi-fox-cam-dress": 1,
+  "chibi-fox-cam-jacket-red": 1,
+  "chibi-fox-do-jacket-green": 1,
+  "chibi-fox-tuyet-overalls": 1,
+  "chibi-fox-tuyet-vest-shorts-navy": 1,
+  "chibi-rabbit-nau-jacket": 1,
+  "chibi-rabbit-trang-overalls-green": 1,
+  "chibi-rabbit-trang-vest-shorts": 1,
+  "chibi-rabbit-xam-vest-shorts-green": 1,
+  "person-b": 1,
+  "person-c": 1,
+  "person-d": 1,
+  "person-f": 1,
+  "person-g": 1,
+  "person-h": 1,
+  "person-j": 1,
+  "person-k": 1,
+  "person-l": 1,
+  "person-n": 1,
+  "person-o": 1,
+  "person-p": 1,
+  "person-r": 1
+ }
+}

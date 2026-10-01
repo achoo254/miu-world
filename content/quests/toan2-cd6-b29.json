@@ -2,14 +2,14 @@
   "id": "toan2-cd6-b29",
   "region": "truong-hoc",
   "chapter": 6,
-  "title": "Koala Na và đồng hồ tháp ngủ quên",
+  "title": "Gấu Trúc Khò và đồng hồ tháp ngủ quên",
   "status": "active",
   "lesson": "toan2-t1-b29",
-  "summary": "Koala Na ngủ quên lên dây cót, đồng hồ tháp chỉ giờ lung tung làm gà gáy giữa đêm; {name} cùng Voi Bảo tìm lại kim đồng hồ, đọc giờ sáng, chiều, tối, đêm, ghép đồng hồ kim với đồng hồ điện tử và đưa tháp về đúng giờ.",
+  "summary": "Gấu Trúc Khò ngủ quên lên dây cót, đồng hồ tháp chỉ giờ lung tung làm gà gáy giữa đêm; {name} cùng ông Khuê thợ đồng hồ và các bạn trên tháp tìm lại kim đồng hồ, đọc giờ sáng, chiều, tối, đêm, ghép đồng hồ kim với đồng hồ điện tử và đưa tháp về đúng giờ.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Koala Na, Voi Bảo",
-    "where": "Tháp đồng hồ: dưới chân tháp, bãi cỏ quanh tháp, phòng máy đồng hồ",
+    "who": "Gấu Trúc Khò, ông Khuê thợ đồng hồ, Cáo Tuyết Bíp, Mèo Xám Mây, Gấu Cơm Nắm, Khỉ Đu Dây",
+    "where": "Tháp đồng hồ: dưới chân tháp, bãi cỏ quanh tháp, phòng máy, kệ đồng hồ điện tử, ô cửa sổ tròn, chiếu nghỉ cầu thang, ban công mặt đồng hồ",
     "goal": "Đưa đồng hồ tháp chạy đúng giờ trở lại",
     "play": "Tìm kim đồng hồ, đọc giờ trên đồng hồ kim, ghép tranh với đồng hồ điện tử, quay giờ, ghép đồng hồ cùng thời gian",
     "learn": "Toán 2 Bài 29: ngày – giờ (một ngày có 24 giờ, giờ buổi chiều, tối, đêm), giờ – phút (1 giờ = 60 phút, 15 phút, 30 phút)",
@@ -28,39 +28,43 @@
   },
   "texts": {},
   "places": {
-    "koala-na": "dưới chân tháp đồng hồ",
+    "toan2-cd6-b29-gau-truc-kho": "dưới chân tháp đồng hồ",
     "tim-kim-dong-ho": "bãi cỏ quanh tháp",
-    "voi-bao": "phòng máy đồng hồ"
+    "toan2-cd6-b29-ong-khue": "phòng máy đồng hồ",
+    "toan2-cd6-b29-cao-tuyet-bip": "kệ đồng hồ điện tử",
+    "toan2-cd6-b29-meo-xam-may": "ô cửa sổ tròn trên tháp",
+    "toan2-cd6-b29-gau-com-nam": "chiếu nghỉ cầu thang tháp",
+    "toan2-cd6-b29-khi-du-day": "ban công mặt đồng hồ"
   },
   "steps": [
     {
       "id": "na-ngu-quen",
       "title": "Ai làm đồng hồ ngủ gật?",
-      "goTo": "Tới dưới chân tháp đồng hồ, Koala Na đang ngáy khò khò",
+      "goTo": "Tới dưới chân tháp đồng hồ, Gấu Trúc Khò đang ngáy khò khò",
       "kind": "dialogue",
-      "target": "koala-na",
+      "target": "toan2-cd6-b29-gau-truc-kho",
       "lines": [
         {
-          "speaker": "Koala Na",
+          "speaker": "Gấu Trúc Khò",
           "text": "Khò… khò… Ơ, {name} đấy à? Mấy giờ rồi nhỉ? Tớ mới chợp mắt có… ba ngày thôi mà."
         },
         {
-          "speaker": "Voi Bảo",
-          "text": "Ba tiếng thôi Na ơi! Nhưng cậu ngủ quên lên dây cót, đồng hồ tháp chỉ giờ lung tung, gà trống gáy ò ó o lúc nửa đêm luôn."
+          "speaker": "Ông Khuê",
+          "text": "Ba tiếng thôi Khò ơi! Nhưng cháu ngủ quên lên dây cót, đồng hồ tháp chỉ giờ lung tung, gà trống gáy ò ó o lúc nửa đêm luôn."
         },
         {
-          "speaker": "Koala Na",
+          "speaker": "Gấu Trúc Khò",
           "text": "Thế thì phải sửa… ngáp… sửa ngay. Mà hai cái kim đồng hồ rơi xuống bãi cỏ mất rồi ấy."
         }
       ],
       "choices": [
         {
-          "text": "Na cứ ngồi đó, tớ đi tìm kim cho!",
-          "reply": "Koala Na ôm gốc cây gật gù: Cảm ơn nhé, tớ ngồi… trông cây cho."
+          "text": "Khò cứ ngồi đó, tớ đi tìm kim cho!",
+          "reply": "Gấu Trúc Khò ôm khóm tre gật gù: Cảm ơn nhé, tớ ngồi… trông tre cho."
         },
         {
-          "text": "Na dậy đi tìm cùng tớ nào!",
-          "reply": "Koala Na lồm cồm bò dậy: Được, nhưng đi chậm thôi nhé, chân tớ còn đang ngủ."
+          "text": "Khò dậy đi tìm cùng tớ nào!",
+          "reply": "Gấu Trúc Khò lồm cồm bò dậy: Được, nhưng đi chậm thôi nhé, chân tớ còn đang ngủ."
         }
       ]
     },
@@ -78,34 +82,34 @@
     {
       "id": "mot-ngay-hai-tu-gio",
       "title": "Một ngày có bao nhiêu giờ?",
-      "goTo": "Mang kim lên phòng máy đồng hồ, Voi Bảo đang lau bánh răng",
+      "goTo": "Mang kim lên phòng máy đồng hồ, ông Khuê đang lau bánh răng",
       "kind": "dialogue",
-      "target": "voi-bao",
+      "target": "toan2-cd6-b29-ong-khue",
       "lines": [
         {
-          "speaker": "Voi Bảo",
+          "speaker": "Ông Khuê",
           "text": "Kim ngắn là kim giờ, kim dài là kim phút. Một ngày có 24 giờ, kim giờ chạy đủ hai vòng mặt đồng hồ."
         },
         {
-          "speaker": "Voi Bảo",
+          "speaker": "Ông Khuê",
           "text": "Buổi chiều người ta còn gọi theo cách khác: 1 giờ chiều là 13 giờ, 4 giờ chiều là 16 giờ, 8 giờ tối là 20 giờ."
         },
         {
-          "speaker": "Koala Na",
-          "text": "Hai mươi bốn giờ một ngày à? Vậy tớ ngủ hai mươi giờ thì vẫn còn bốn giờ để… ăn lá!"
+          "speaker": "Gấu Trúc Khò",
+          "text": "Hai mươi bốn giờ một ngày à? Vậy tớ ngủ hai mươi giờ thì vẫn còn bốn giờ để… gặm măng!"
         }
       ],
       "choices": [
         {
           "text": "Lắp kim rồi đọc giờ thôi!",
-          "reply": "Voi Bảo vòi một cái lắp kim vào trục: Xong! Giờ nhìn mấy bức tranh trên tường nhé."
+          "reply": "Ông Khuê vặn cờ lê lắp kim vào trục: Xong! Giờ nhìn mấy bức tranh trên tường nhé, cháu."
         }
       ]
     },
     {
       "id": "cau-ca-buoi-chieu",
       "title": "Nam câu cá lúc mấy giờ?",
-      "target": "voi-bao",
+      "target": "toan2-cd6-b29-ong-khue",
       "kind": "challenge",
       "mechanic": "clock",
       "prompt": "Bức tranh thứ nhất trên tường phòng máy: Nam và bố ngồi câu cá bên hồ, đồng hồ bên cạnh chỉ giờ như hình. Số ? Nam làm gì lúc mấy giờ? Nam và bố đi câu cá lúc ? giờ chiều.",
@@ -133,8 +137,8 @@
       "feedback": {
         "right": [
           "Bốn giờ chiều, cá cắn câu đúng lúc luôn!",
-          "Voi Bảo vẫy tai: đọc giờ chuẩn như chuông nhà thờ.",
-          "Koala Na mở một mắt: cậu đọc nhanh hơn tớ thức dậy nhiều."
+          "Ông Khuê vuốt chòm râu bạc: đọc giờ chuẩn như chuông nhà thờ.",
+          "Gấu Trúc Khò mở một mắt: cậu đọc nhanh hơn tớ thức dậy nhiều."
         ],
         "wrong": [
           "Nhìn kim ngắn trước, nó chỉ vào số nào nhỉ?",
@@ -150,7 +154,8 @@
     {
       "id": "tranh-va-dong-ho-dien-tu",
       "title": "Tranh nào ứng với đồng hồ nào?",
-      "target": "voi-bao",
+      "goTo": "Sang kệ đồng hồ điện tử, Cáo Tuyết Bíp bấm nút cho đèn số sáng lên",
+      "target": "toan2-cd6-b29-cao-tuyet-bip",
       "kind": "challenge",
       "mechanic": "classify",
       "prompt": "Ba đồng hồ điện tử trong phòng máy đang hiện 19:00, 14:00 và 07:00. Tìm đồng hồ chỉ thời gian thích hợp với mỗi bức tranh.",
@@ -203,7 +208,7 @@
         "right": [
           "Ba bức tranh tìm đúng đồng hồ, phòng máy sáng đèn xanh!",
           "Cậu không bị lừa bởi hai số 7 sáng và tối, giỏi thật.",
-          "Koala Na lẩm bẩm: 19 giờ… là giờ tớ đi ngủ lần thứ hai."
+          "Cáo Tuyết Bíp vẫy đuôi trắng: 19 giờ là lúc tớ tắt đèn kệ đấy."
         ],
         "wrong": [
           "7 giờ sáng và 7 giờ tối khác nhau đấy, soi lại nhé.",
@@ -222,7 +227,7 @@
     {
       "id": "doc-sach-buoi-toi",
       "title": "Nam đọc sách lúc mấy giờ?",
-      "target": "voi-bao",
+      "target": "toan2-cd6-b29-cao-tuyet-bip",
       "kind": "challenge",
       "mechanic": "clock",
       "prompt": "Bức tranh thứ hai: Nam và bố ngồi ghế đọc sách, ngoài cửa sổ trời đã tối. Số ? Nam làm gì lúc mấy giờ? Nam và bố đọc sách lúc ? giờ tối.",
@@ -250,7 +255,7 @@
       "feedback": {
         "right": [
           "Tám giờ tối, giờ đọc truyện ấm áp của hai bố con!",
-          "Voi Bảo đọc to: 8 giờ tối, tức là 20 giờ, chính xác!",
+          "Cáo Tuyết Bíp đọc to: 8 giờ tối, tức là 20 giờ, chính xác!",
           "Đồng hồ tháp vừa điểm tám tiếng boong theo lời cậu."
         ],
         "wrong": [
@@ -267,7 +272,8 @@
     {
       "id": "nam-ngu-luc-dem",
       "title": "Nam đi ngủ lúc mấy giờ?",
-      "target": "voi-bao",
+      "goTo": "Chạy xuống dưới chân tháp đồng hồ, Gấu Trúc Khò ôm bức tranh thứ ba ngủ say",
+      "target": "toan2-cd6-b29-gau-truc-kho",
       "kind": "challenge",
       "mechanic": "clock",
       "prompt": "Bức tranh thứ ba: Nam nằm ngủ ngon lành trên giường. Số ? Nam làm gì lúc mấy giờ? Lúc ? giờ đêm, Nam đang ngủ.",
@@ -294,9 +300,9 @@
       },
       "feedback": {
         "right": [
-          "Mười giờ đêm, Nam ngủ say, Koala Na ghen tị ra mặt!",
+          "Mười giờ đêm, Nam ngủ say, Gấu Trúc Khò ghen tị ra mặt!",
           "Cậu đọc giờ đêm mà mắt vẫn tỉnh như sáo.",
-          "Suỵt… Voi Bảo thì thầm: đúng 10 giờ đêm rồi."
+          "Suỵt… Gấu Trúc Khò thì thầm: đúng 10 giờ đêm rồi."
         ],
         "wrong": [
           "Kim ngắn đang chỉ số lớn hơn 9 một chút đấy.",
@@ -312,7 +318,8 @@
     {
       "id": "ban-gai-ngu-luc-23-gio",
       "title": "Đồng hồ A hay đồng hồ B?",
-      "target": "voi-bao",
+      "goTo": "Leo lên ô cửa sổ tròn trên tháp, Mèo Xám Mây đang đếm sao trong tranh",
+      "target": "toan2-cd6-b29-meo-xam-may",
       "kind": "challenge",
       "mechanic": "clock",
       "prompt": "Tranh bên cửa sổ: bạn gái ngủ trên giường, ngoài trời tối có sao, đồng hồ kim chỉ 11 giờ. Chọn đồng hồ chỉ thời gian thích hợp với mỗi bức tranh. a) A 11:00 B 23:00 Quay đồng hồ điện tử về đúng giờ em chọn.",
@@ -337,7 +344,7 @@
         "right": [
           "Đồng hồ B, 23 giờ đêm, chuẩn cả sao trên trời!",
           "Quay về 23:00 khéo ghê, không lệch một giờ nào.",
-          "Koala Na ngáp dài: 23 giờ là giờ ngủ ngon nhất đấy."
+          "Mèo Xám Mây ngáp dài: 23 giờ là giờ cuộn tròn ngủ ngon nhất đấy."
         ],
         "wrong": [
           "11:00 là giữa trưa, mà ngoài trời đang tối om kìa.",
@@ -353,7 +360,7 @@
     {
       "id": "da-bong-luc-15-gio",
       "title": "Giờ đá bóng ban ngày",
-      "target": "voi-bao",
+      "target": "toan2-cd6-b29-meo-xam-may",
       "kind": "challenge",
       "mechanic": "clock",
       "prompt": "Tranh thứ hai bên cửa sổ: hai bạn và Rô-bốt đá bóng trên bãi cỏ giữa ban ngày, đồng hồ kim chỉ 3 giờ. Chọn đồng hồ chỉ thời gian thích hợp với mỗi bức tranh. b) A 03:00 B 15:00 Quay đồng hồ điện tử về đúng giờ em chọn.",
@@ -378,7 +385,7 @@
         "right": [
           "Mười lăm giờ, trận bóng giữa chiều nắng đẹp!",
           "Rô-bốt trong tranh sút một quả ăn mừng cậu đấy.",
-          "Hai câu chọn đồng hồ đều trúng, Voi Bảo vỗ tai bành bạch."
+          "Hai câu chọn đồng hồ đều trúng, Mèo Xám Mây vẫy đuôi tít mù."
         ],
         "wrong": [
           "03:00 là ba giờ sáng, ai lại đi đá bóng lúc ấy.",
@@ -394,33 +401,34 @@
     {
       "id": "len-day-cot",
       "title": "Lên dây cót kiểu gì?",
+      "goTo": "Về phòng máy đồng hồ, ông Khuê đưa chìa khoá lên dây cót",
       "kind": "dialogue",
-      "target": "voi-bao",
+      "target": "toan2-cd6-b29-ong-khue",
       "lines": [
         {
-          "speaker": "Voi Bảo",
+          "speaker": "Ông Khuê",
           "text": "Giờ đến phần phút. Kim dài đi hết một vòng là 60 phút, tức là 1 giờ. Kim dài chỉ số 3 là 15 phút, chỉ số 6 là 30 phút."
         },
         {
-          "speaker": "Koala Na",
+          "speaker": "Gấu Trúc Khò",
           "text": "Tớ lên dây cót nhé! Cậu muốn tớ vặn thật nhanh cho kịp giờ, hay vặn từ từ cho đồng hồ khỏi giật mình?"
         }
       ],
       "choices": [
         {
-          "text": "Vặn nhanh lên Na ơi!",
-          "reply": "Koala Na vặn tít mù, rồi ngồi phịch xuống: Phù, nhanh nhất đời tớ đấy!"
+          "text": "Vặn nhanh lên Khò ơi!",
+          "reply": "Gấu Trúc Khò vặn tít mù, rồi ngồi phịch xuống: Phù, nhanh nhất đời tớ đấy!"
         },
         {
           "text": "Vặn từ từ thôi cho chắc",
-          "reply": "Koala Na vặn từng nấc một, đếm khe khẽ: một, hai, ba… ơ, ngáp…"
+          "reply": "Gấu Trúc Khò vặn từng nấc một, đếm khe khẽ: một, hai, ba… ơ, ngáp…"
         }
       ]
     },
     {
       "id": "viet-hoc-bai-buoi-sang",
       "title": "Việt học bài mấy giờ?",
-      "target": "voi-bao",
+      "target": "toan2-cd6-b29-ong-khue",
       "kind": "challenge",
       "mechanic": "clock",
       "prompt": "Dây cót đã căng, bức tranh lớp Hai hiện lên: Việt ngồi viết bài. Số ? Mỗi bạn làm gì lúc mấy giờ? Việt học bài lúc ? giờ ? phút sáng.",
@@ -465,7 +473,8 @@
     {
       "id": "nam-lam-bai-buoi-chieu",
       "title": "Nam làm bài tập lúc nào?",
-      "target": "voi-bao",
+      "goTo": "Xuống chiếu nghỉ cầu thang tháp, Gấu Cơm Nắm đang mở hộp cơm",
+      "target": "toan2-cd6-b29-gau-com-nam",
       "kind": "challenge",
       "mechanic": "clock",
       "prompt": "Bức tranh tiếp theo: Nam ngồi làm bài tập. Số ? Mỗi bạn làm gì lúc mấy giờ? Nam làm bài tập lúc ? giờ ? phút chiều.",
@@ -494,7 +503,7 @@
         "right": [
           "Hai giờ ba mươi chiều, bài tập của Nam xong veo!",
           "Kim ngắn nằm giữa 2 và 3 mà cậu vẫn đọc đúng.",
-          "Voi Bảo ghi ngay vào sổ: 14 giờ 30 phút."
+          "Gấu Cơm Nắm ghi ngay vào sổ: 14 giờ 30 phút."
         ],
         "wrong": [
           "Kim ngắn ở giữa hai số thì lấy số bé hơn làm giờ.",
@@ -510,7 +519,7 @@
     {
       "id": "mi-an-toi",
       "title": "Mi ăn tối lúc mấy giờ?",
-      "target": "voi-bao",
+      "target": "toan2-cd6-b29-gau-com-nam",
       "kind": "challenge",
       "mechanic": "clock",
       "prompt": "Mùi cơm thơm phức từ bức tranh thứ ba: Mi đang ăn cơm. Số ? Mỗi bạn làm gì lúc mấy giờ? Mi ăn tối lúc ? giờ ? phút.",
@@ -538,7 +547,7 @@
       "feedback": {
         "right": [
           "Sáu giờ mười lăm, giờ cơm tối đây rồi, chúc Mi ngon miệng!",
-          "Koala Na xoa bụng: nghe ăn tối là tớ tỉnh hẳn.",
+          "Gấu Cơm Nắm xoa bụng: nghe ăn tối là bụng tớ réo ùng ục.",
           "Đọc giờ ăn tối chuẩn không cần chỉnh luôn."
         ],
         "wrong": [
@@ -555,7 +564,8 @@
     {
       "id": "ro-bot-ngu-dem",
       "title": "Rô-bốt ngủ lúc mấy giờ?",
-      "target": "voi-bao",
+      "goTo": "Ghé lại dưới chân tháp đồng hồ, Gấu Trúc Khò giơ bức tranh cuối hàng",
+      "target": "toan2-cd6-b29-gau-truc-kho",
       "kind": "challenge",
       "mechanic": "clock",
       "prompt": "Bức tranh cuối hàng: Rô-bốt cũng biết đi ngủ. Số ? Mỗi bạn làm gì lúc mấy giờ? Lúc ? giờ ? phút đêm, Rô-bốt đang ngủ.",
@@ -584,7 +594,7 @@
         "right": [
           "Mười giờ rưỡi đêm, Rô-bốt tắt đèn bíp bíp đi ngủ!",
           "Cậu đọc được cả giờ của rô-bốt, siêu thật đấy.",
-          "Voi Bảo khen: bốn bức tranh, bốn giờ đúng."
+          "Gấu Trúc Khò khen: bốn bức tranh, bốn giờ đúng."
         ],
         "wrong": [
           "Kim ngắn chưa chạm số 11 đâu, còn ở giữa mà.",
@@ -600,7 +610,8 @@
     {
       "id": "ghep-dong-ho-cung-gio",
       "title": "Đồng hồ kim và đồng hồ điện tử",
-      "target": "voi-bao",
+      "goTo": "Quay lên kệ đồng hồ điện tử, Cáo Tuyết Bíp bày bốn cặp đồng hồ",
+      "target": "toan2-cd6-b29-cao-tuyet-bip",
       "kind": "challenge",
       "mechanic": "classify",
       "prompt": "Trên bàn phòng máy có bốn đồng hồ kim và bốn đồng hồ điện tử 18:15, 22:30, 19:00, 14:30; đồng hồ kim mẫu chỉ 10 giờ 30 phút đã ghép sẵn với 22:30. Tìm hai đồng hồ chỉ cùng thời gian vào buổi chiều, tối hoặc đêm.",
@@ -693,7 +704,7 @@
         "right": [
           "Bốn cặp đồng hồ nắm tay nhau, kêu tích tắc cùng nhịp!",
           "Cậu đổi giờ chiều tối sang đồng hồ điện tử nhanh như máy.",
-          "Koala Na tròn mắt: ơ, hai đồng hồ trông khác mà cùng giờ à?"
+          "Cáo Tuyết Bíp kêu bíp bíp: hai đồng hồ trông khác mà cùng giờ đấy!"
         ],
         "wrong": [
           "Một đồng hồ kim đang ghép nhầm bạn rồi.",
@@ -713,7 +724,8 @@
     {
       "id": "thap-ve-dung-gio-hoc-bai",
       "title": "Quay tháp về 9 giờ 30 phút",
-      "target": "voi-bao",
+      "goTo": "Lên phòng máy đồng hồ, ông Khuê nắm cần quay kim tháp",
+      "target": "toan2-cd6-b29-ong-khue",
       "kind": "challenge",
       "mechanic": "clock",
       "prompt": "Giờ là lúc đưa đồng hồ tháp về đúng giờ! Mỗi bức tranh của Nam có một đồng hồ điện tử, đây là 09:30. Nam học bài. Số ? Nam làm gì lúc mấy giờ? Nam học bài lúc ? giờ ? phút sáng. Quay kim đồng hồ tháp chỉ đúng giờ đó.",
@@ -754,7 +766,7 @@
     {
       "id": "thap-gio-thu-vien",
       "title": "Giờ Nam ở thư viện",
-      "target": "voi-bao",
+      "target": "toan2-cd6-b29-ong-khue",
       "kind": "challenge",
       "mechanic": "clock",
       "prompt": "Đồng hồ điện tử trong tranh thứ hai hiện 15:15. Nam đọc sách. Số ? Nam làm gì lúc mấy giờ? Nam ở thư viện lúc ? giờ ? phút chiều. Quay kim đồng hồ tháp chỉ đúng giờ đó.",
@@ -795,7 +807,8 @@
     {
       "id": "thap-gio-tan-hoc",
       "title": "Giờ tan học của Nam",
-      "target": "voi-bao",
+      "goTo": "Ra ban công mặt đồng hồ, Khỉ Đu Dây đu trên kim tháp chờ quay",
+      "target": "toan2-cd6-b29-khi-du-day",
       "kind": "challenge",
       "mechanic": "clock",
       "prompt": "Tranh thứ ba: Nam chạy ra cổng Trường Tiểu học, đồng hồ điện tử hiện 16:00. Số ? Nam làm gì lúc mấy giờ? Nam tan học lúc ? giờ chiều. Quay kim đồng hồ tháp chỉ đúng giờ đó.",
@@ -820,7 +833,7 @@
         "right": [
           "Bốn giờ chiều, trống tan trường tùng tùng tùng!",
           "Nam chạy ào ra cổng đúng giờ cậu quay.",
-          "Voi Bảo đánh dấu: giờ tan học đã đúng."
+          "Khỉ Đu Dây đánh dấu: giờ tan học đã đúng."
         ],
         "wrong": [
           "Giờ đúng thì kim phút nằm ở số 12.",
@@ -836,7 +849,7 @@
     {
       "id": "thap-gio-rua-bat",
       "title": "Giờ Nam rửa bát",
-      "target": "voi-bao",
+      "target": "toan2-cd6-b29-khi-du-day",
       "kind": "challenge",
       "mechanic": "clock",
       "prompt": "Tranh cuối cùng: Nam rửa bát, đồng hồ điện tử hiện 19:15. Số ? Nam làm gì lúc mấy giờ? Nam rửa bát lúc ? giờ ? phút tối. Quay kim đồng hồ tháp chỉ đúng giờ đó lần cuối.",
@@ -861,7 +874,7 @@
         "right": [
           "Bảy giờ mười lăm tối, bát đĩa sạch bong, tháp chạy đúng giờ rồi!",
           "Lần quay cuối hoàn hảo, đồng hồ tháp hết ngủ gật.",
-          "Koala Na vỗ tay rồi… ngủ tiếp, nhưng lần này đồng hồ vẫn chạy."
+          "Gấu Trúc Khò vỗ tay rồi… ngủ tiếp, nhưng lần này đồng hồ vẫn chạy."
         ],
         "wrong": [
           "19 giờ là 7 giờ tối, kim ngắn ở gần số 7.",
@@ -879,7 +892,7 @@
       "title": "Người giữ giờ của tháp",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Tháp đồng hồ ngân vang mười hai tiếng boong. Voi Bảo trao cho {name} huy hiệu \"Người giữ giờ\", còn Koala Na hứa từ nay đặt báo thức… ba cái liền."
+      "text": "Tháp đồng hồ ngân vang mười hai tiếng boong. Ông Khuê trao cho {name} huy hiệu \"Người giữ giờ\", còn Gấu Trúc Khò hứa từ nay đặt báo thức… ba cái liền."
     },
     {
       "id": "to-lich-bi-xe",

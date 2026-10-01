@@ -5,11 +5,11 @@
   "title": "Heo Ủn và cây táo rụng",
   "status": "active",
   "lesson": "toan2-t1-b11",
-  "summary": "Cây táo vườn trường rụng quả lộp độp, Heo Ủn vừa nhặt vừa… ăn; {name} giúp Heo tính còn lại bao nhiêu quả bằng cách trừ qua 10, rồi đi khắp vườn giải đố của Ong Vàng và Bò Sữa Mơ.",
+  "summary": "Cây táo vườn trường rụng quả lộp độp, Heo Ủn vừa nhặt vừa… ăn; {name} giúp Heo tính còn lại bao nhiêu quả bằng cách trừ qua 10, rồi đi khắp vườn giải đố cùng Thỏ Sữa, Ong Chăm, Mèo Nhung, Sâu Bim, Cáo Gió, Bò Kem và Thầy Dũng.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Heo Ủn, Ong Vàng, Bò Sữa Mơ",
-    "where": "Vườn trường: gốc cây táo, bờ rào hoa dâm bụt, bãi cỏ sau vườn, cổng sau vườn trường",
+    "who": "Heo Ủn, Thỏ Sữa, Ong Chăm, Mèo Nhung, Sâu Bim, Cáo Gió, Bò Kem, Thầy Dũng",
+    "where": "Vườn trường: gốc cây táo, chuồng thỏ cạnh luống rau, bờ rào hoa dâm bụt, góc treo tranh cuối bờ rào, giàn bí ngô, lối đi lát sỏi, bãi cỏ sau vườn, cổng sau vườn trường, chân cầu hình rồng",
     "goal": "Giúp Heo Ủn đếm số táo còn lại để đủ làm bánh táo cho cả trường",
     "play": "Nhặt táo, điền phép tách, tính nhẩm, đưa thỏ về chuồng, đưa ong về hoa, chọn máy bay, phân loại cánh diều, giải bài toán",
     "learn": "Toán 2 Bài 11: phép trừ (qua 10) trong phạm vi 20",
@@ -30,9 +30,14 @@
   "places": {
     "heo-un": "gốc cây táo",
     "nhat-tao-rung": "gốc cây táo",
-    "ong-vang": "bờ rào hoa dâm bụt",
-    "bo-sua-mo": "bãi cỏ sau vườn",
-    "heo-un-cong-sau": "cổng sau vườn trường"
+    "toan2-cd2-b11-tho-may": "chuồng thỏ cạnh luống rau",
+    "toan2-cd2-b11-ong-cham": "bờ rào hoa dâm bụt",
+    "toan2-cd2-b11-meo-nhung": "góc treo tranh cuối bờ rào",
+    "toan2-cd2-b11-sau-bim": "giàn bí ngô",
+    "toan2-cd2-b11-cao-gio": "lối đi lát sỏi",
+    "toan2-cd2-b11-bo-kem": "bãi cỏ sau vườn",
+    "heo-un-cong-sau": "cổng sau vườn trường",
+    "toan2-cd2-b11-thay-dung": "chân cầu hình rồng"
   },
   "steps": [
     {
@@ -442,7 +447,8 @@
     {
       "id": "tho-ve-chuong",
       "title": "Thỏ con về chuồng",
-      "target": "heo-un",
+      "goTo": "Đuổi theo đàn thỏ tới chuồng thỏ cạnh luống rau, Thỏ Sữa đang mở cửa chuồng",
+      "target": "toan2-cd2-b11-tho-may",
       "kind": "challenge",
       "mechanic": "classify",
       "prompt": "Năm chú thỏ ngửi mùi táo chạy ào tới, Heo Ủn phải lùa về chuồng. Tìm chuồng cho mỗi chú thỏ.",
@@ -516,7 +522,7 @@
       "feedback": {
         "right": [
           "Năm chú thỏ chui tọt vào chuồng, chỉ còn tai vẫy vẫy ra ngoài.",
-          "Thỏ nào cũng về đúng nhà, Heo Ủn khỏi phải đuổi nữa.",
+          "Thỏ nào cũng về đúng nhà, Thỏ Sữa cài then cửa chuồng cạch một cái.",
           "Không chuồng nào chật, không chú thỏ nào lạc, hay quá!"
         ],
         "wrong": [
@@ -538,6 +544,7 @@
     {
       "id": "tach-12-va-13",
       "title": "Tách số lần nữa",
+      "goTo": "Về gốc cây táo, Heo Ủn vẫy tay đòi làm thêm phép tách",
       "target": "heo-un",
       "kind": "challenge",
       "mechanic": "fill-blank",
@@ -1067,11 +1074,11 @@
     {
       "id": "ong-tim-hoa",
       "title": "Ong về đúng hoa",
-      "goTo": "Sang bờ rào hoa dâm bụt, Ong Vàng đang bay vòng vòng",
-      "target": "ong-vang",
+      "goTo": "Sang bờ rào hoa dâm bụt, Ong Chăm vo ve tìm hoa cho cả đàn",
+      "target": "toan2-cd2-b11-ong-cham",
       "kind": "challenge",
       "mechanic": "classify",
-      "prompt": "Ong Vàng: \"Vo ve, cả đàn tớ quên mất hoa của mình rồi!\" Tìm bông hoa cho ong đậu.",
+      "prompt": "Ong Chăm: \"Vo ve, cả đàn tớ quên mất hoa của mình rồi!\" Tìm bông hoa cho ong đậu.",
       "groups": [
         {
           "id": "nhom-bong-hoa-5",
@@ -1130,7 +1137,7 @@
       "feedback": {
         "right": [
           "Vo ve vo ve! Cả đàn ong hạ cánh êm ru trên hoa.",
-          "Ong Vàng múa một vòng số 8 để cảm ơn cậu đấy.",
+          "Ong Chăm múa một vòng số 8 để cảm ơn cậu đấy.",
           "Không chú ong nào bị lạc, mật ngọt sắp về tổ rồi!"
         ],
         "wrong": [
@@ -1152,7 +1159,7 @@
     {
       "id": "hoa-dong-ong-nhat",
       "title": "Bông hoa đông khách nhất",
-      "target": "ong-vang",
+      "target": "toan2-cd2-b11-ong-cham",
       "kind": "riddle",
       "question": "Đàn ong đã đậu hết, kể cả chú ong mẫu 13 – 8 ở bông hoa 5. Bông hoa nào có nhiều ong đậu nhất? Gõ số ghi trên bông hoa đó.",
       "skill": "phep-tru",
@@ -1173,7 +1180,7 @@
       "feedback": {
         "right": [
           "Bông hoa 6 đông vui như hội chợ, chuẩn luôn!",
-          "Ong Vàng tặng cậu một giọt mật bé xíu ngọt lịm.",
+          "Ong Chăm tặng cậu một giọt mật bé xíu ngọt lịm.",
           "Đếm ong mà không bị đốt phát nào, giỏi thật đấy."
         ],
         "wrong": [
@@ -1189,9 +1196,10 @@
     {
       "id": "giay-mau-cua-mai",
       "title": "Giấy màu cắt hoa",
-      "target": "ong-vang",
+      "goTo": "Đi tới góc treo tranh cuối bờ rào, Mèo Nhung đang ghim tranh hoa giấy",
+      "target": "toan2-cd2-b11-meo-nhung",
       "kind": "riddle",
-      "question": "Ong Vàng chỉ bức tranh hoa cắt dán treo trên bờ rào. Mai có 13 tờ giấy màu, Mai đã dùng 5 tờ giấy màu để cắt dán bức tranh. Hỏi Mai còn lại bao nhiêu tờ giấy màu?",
+      "question": "Ong Chăm chỉ bức tranh hoa cắt dán treo trên bờ rào. Mai có 13 tờ giấy màu, Mai đã dùng 5 tờ giấy màu để cắt dán bức tranh. Hỏi Mai còn lại bao nhiêu tờ giấy màu?",
       "skill": "bai-toan-loi-van",
       "curriculumRef": [
         "toan2-t1-b11-luyen-tap-5"
@@ -1211,7 +1219,7 @@
         "right": [
           "Tám tờ giấy màu còn lại, đủ cắt thêm cả vườn hoa giấy!",
           "Bài toán gọn gàng như nếp gấp giấy thẳng tắp.",
-          "Ong Vàng ngỡ hoa giấy là hoa thật, bay tới ngửi thử."
+          "Mèo Nhung ngoe nguẩy đuôi, khoe tranh hoa giấy với cả vườn."
         ],
         "wrong": [
           "Dùng mất thì còn ít đi, cậu thử phép trừ nhé.",
@@ -1494,7 +1502,8 @@
     {
       "id": "nham-15-bang-14",
       "title": "Mười lăm quả và bảng trừ 14",
-      "target": "heo-un",
+      "goTo": "Ôm rổ táo sang giàn bí ngô, Sâu Bim nhổm dậy xin đếm giúp",
+      "target": "toan2-cd2-b11-sau-bim",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "prompt": "Táo trong rổ giờ là 15 quả. Tính nhẩm. Rồi bảng trừ cho 14 quả: Số ?",
@@ -1704,7 +1713,7 @@
         "wrong": [
           "Dòng 15 – 10 bớt cả một chục đấy, còn mấy nào?",
           "Ở bảng 14, mỗi ô sau kém ô trước đúng 1.",
-          "Hình như có một ô bị Heo Ủn làm rơi vụn bánh lên, tính lại nhé."
+          "Sâu Bim bò ngang một ô làm nhòe số rồi, tính lại nhé."
         ]
       },
       "answer": {
@@ -1725,7 +1734,8 @@
     {
       "id": "may-bay-hieu-7",
       "title": "Máy bay giấy số 7",
-      "target": "heo-un",
+      "goTo": "Chạy ra lối đi lát sỏi, Cáo Gió đang ngắm hướng gió phóng máy bay",
+      "target": "toan2-cd2-b11-cao-gio",
       "kind": "challenge",
       "mechanic": "multi-select",
       "prompt": "Heo Ủn gấp sáu chiếc máy bay giấy để phóng táo lên… à không, để chơi! Những máy bay nào ghi phép trừ có hiệu bằng 7?",
@@ -1774,7 +1784,7 @@
         "right": [
           "Vèo vèo vèo! Ba chiếc máy bay số 7 cất cánh cùng lúc.",
           "Chọn đủ ba chiếc, không thừa không thiếu, phi công giỏi!",
-          "Heo Ủn chạy theo máy bay, ngã lăn ra cỏ mà vẫn cười."
+          "Cáo Gió chạy theo máy bay, đuôi xù tung bay phấp phới."
         ],
         "wrong": [
           "Còn một chiếc máy bay số 7 đang nấp ở cuối hàng.",
@@ -1793,7 +1803,7 @@
     {
       "id": "may-bay-hieu-9",
       "title": "Máy bay giấy số 9",
-      "target": "heo-un",
+      "target": "toan2-cd2-b11-cao-gio",
       "kind": "challenge",
       "mechanic": "multi-select",
       "prompt": "Lượt hai, Heo Ủn đòi phóng nhóm máy bay còn lại. Những máy bay nào ghi phép trừ có hiệu bằng 9?",
@@ -1861,6 +1871,7 @@
     {
       "id": "oi-cua-ba",
       "title": "Ổi của bà",
+      "goTo": "Quay lại gốc cây táo, Heo Ủn ngồi kể chuyện bà của mình",
       "target": "heo-un",
       "kind": "riddle",
       "question": "Heo Ủn kể chuyện nhà mình. Bà có 14 quả ổi, bà cho cháu 6 quả. Hỏi bà còn lại bao nhiêu quả ổi?",
@@ -1897,12 +1908,12 @@
     },
     {
       "id": "dieu-bang-hieu",
-      "title": "Bảng của Bò Sữa Mơ",
-      "goTo": "Ra bãi cỏ sau vườn, Bò Sữa Mơ đang thả diều",
-      "target": "bo-sua-mo",
+      "title": "Bảng của Bò Kem",
+      "goTo": "Ra bãi cỏ sau vườn, Bò Kem đang kéo con diều đỏ chạy lon ton",
+      "target": "toan2-cd2-b11-bo-kem",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Bò Sữa Mơ ghi phép tính lên đuôi diều để nhớ. Tính nhẩm. Rồi điền bảng: Số ? Cuối cùng so sánh: >; <; = ?",
+      "prompt": "Bò Kem ghi phép tính lên đuôi diều để nhớ. Tính nhẩm. Rồi điền bảng: Số ? Cuối cùng so sánh: >; <; = ?",
       "template": "16 – 7 = {{b1}}\n16 – 8 = {{b2}}\n16 – 9 = {{b3}}\n17 – 8 = {{b4}}\n17 – 9 = {{b5}}\n18 – 9 = {{b6}}\nSố bị trừ | 16 | 17 | 16 | 18 | 17 | 16\nSố trừ | 9 | 9 | 8 | 9 | 8 | 7\nHiệu | {{b7}} | {{b8}} | {{b9}} | {{b10}} | {{b11}} | {{b12}}\na) 16 – 8 {{b13}} 8\na) 15 – 9 {{b14}} 7\nb) 17 – 9 {{b15}} 13 – 7\nb) 18 – 9 {{b16}} 15 – 6",
       "blanks": [
         {
@@ -2210,8 +2221,8 @@
       },
       "feedback": {
         "right": [
-          "Diều của Bò Sữa Mơ bay vút lên, đuôi diều toàn số đúng!",
-          "Ò ó… à nhầm, ò ò! Bò Sữa Mơ mừng quá kêu lạc giọng.",
+          "Diều của Bò Kem bay vút lên, đuôi diều toàn số đúng!",
+          "Ò ó… à nhầm, ò ò! Bò Kem mừng quá kêu lạc giọng.",
           "Cả bảng hiệu lẫn dấu so sánh đều chính xác."
         ],
         "wrong": [
@@ -2244,7 +2255,7 @@
     {
       "id": "canh-dieu-lon-be",
       "title": "Cánh diều nào nổi bật?",
-      "target": "bo-sua-mo",
+      "target": "toan2-cd2-b11-bo-kem",
       "kind": "challenge",
       "mechanic": "classify",
       "prompt": "Năm cánh diều ghi phép trừ đang lượn trên trời. Cánh diều nào ghi phép trừ có hiệu lớn nhất? Cánh diều nào ghi phép trừ có hiệu bé nhất?",
@@ -2303,7 +2314,7 @@
       "feedback": {
         "right": [
           "Cánh diều 18 – 9 bay cao nhất trời, đúng chóc!",
-          "Bò Sữa Mơ buộc nơ đỏ cho diều lớn nhất, nơ xanh cho diều bé nhất.",
+          "Bò Kem buộc nơ đỏ cho diều lớn nhất, nơ xanh cho diều bé nhất.",
           "Ba cánh diều hiệu 8 bay song song, cậu xếp chuẩn rồi."
         ],
         "wrong": [
@@ -2325,9 +2336,10 @@
     {
       "id": "hoa-cua-mai-mi",
       "title": "Ai hái nhiều hoa hơn?",
-      "target": "bo-sua-mo",
+      "goTo": "Ghé lại chuồng thỏ cạnh luống rau, Thỏ Sữa vừa hái hoa về",
+      "target": "toan2-cd2-b11-tho-may",
       "kind": "riddle",
-      "question": "Bò Sữa Mơ cài hoa lên sừng rồi đố: Mai hái được 16 bông hoa, Mi hái được 9 bông hoa. Hỏi Mai hái được hơn Mi bao nhiêu bông hoa?",
+      "question": "Thỏ Sữa cài hoa lên tai rồi đố: Mai hái được 16 bông hoa, Mi hái được 9 bông hoa. Hỏi Mai hái được hơn Mi bao nhiêu bông hoa?",
       "skill": "bai-toan-loi-van",
       "curriculumRef": [
         "toan2-t1-b11-luyen-tap-3-4"
@@ -2345,9 +2357,9 @@
       },
       "feedback": {
         "right": [
-          "Mai hơn Mi 7 bông, Bò Sữa Mơ thưởng cậu một vòng hoa.",
+          "Mai hơn Mi 7 bông, Thỏ Sữa kết tặng cậu một vòng hoa.",
           "Hơn bao nhiêu thì lấy lớn trừ bé, cậu nhớ chuẩn rồi.",
-          "Sừng của Bò Sữa Mơ giờ thơm phức mùi hoa!"
+          "Đôi tai dài của Thỏ Sữa giờ thơm phức mùi hoa!"
         ],
         "wrong": [
           "Hơn bao nhiêu thì lấy số lớn trừ số bé nhé.",
@@ -2996,7 +3008,8 @@
     {
       "id": "dua-xe-qua-cau",
       "title": "Đoàn đua xe qua cầu",
-      "target": "heo-un-cong-sau",
+      "goTo": "Chạy tới chân cầu hình rồng, Thầy Dũng đang phất cờ cho đoàn đua",
+      "target": "toan2-cd2-b11-thay-dung",
       "kind": "riddle",
       "question": "Đoàn đua xe đạp phóng qua cây cầu hình rồng ngoài cổng, Heo Ủn đứng cổ vũ ầm ĩ. Có 15 vận động viên đua xe đạp, 6 vận động viên đã qua cầu. Hỏi còn bao nhiêu vận động viên chưa qua cầu?",
       "skill": "bai-toan-loi-van",
@@ -3017,7 +3030,7 @@
       "feedback": {
         "right": [
           "Kính coong! Chín tay đua còn lại phóng vút qua cầu rồng.",
-          "Heo Ủn hò reo to tới mức cả vườn trường nghe thấy.",
+          "Thầy Dũng thổi còi tuýt dài, Heo Ủn hò reo vang cả vườn.",
           "Câu đố cuối cùng hạ gục gọn gàng, nhà vô địch đây rồi!"
         ],
         "wrong": [

@@ -5,11 +5,11 @@
   "title": "Bảng số bay trong gió",
   "status": "active",
   "lesson": "toan2-t1-b01",
-  "summary": "Gió khai trường thổi bay bảng số của lớp, bờm thầy Sư Tử Vàng rối tung; {name} đếm que tính, tìm cà rốt cho thỏ, xếp áo đội bóng để ghép lại các số đến 100.",
+  "summary": "Gió khai trường thổi bay bảng số của lớp, bờm thầy Sư Tử Vàng rối tung; {name} chạy khắp sân trường đếm que tính, tìm cà rốt cùng Thỏ Lúm, xếp áo cho đội bóng của thầy Nai Phi để ghép lại các số đến 100.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Thầy hiệu trưởng Sư Tử Vàng, Gà Con Chíp, thầy thể dục Khỉ Lanh",
-    "where": "Sân trường, quanh cột cờ",
+    "who": "Thầy hiệu trưởng Sư Tử Vàng, Gà Con Chíp, Thỏ Lúm, cô Nguyệt, thầy thể dục Nai Phi, đội trưởng Gấu Đô, cô lao công Thắm",
+    "where": "Sân trường: cột cờ, ghế đá, cửa lớp 2A, sân bóng, khung thành, góc sân",
     "goal": "Ghép lại bảng số của lớp trước giờ vào học",
     "play": "Điền bảng, phân loại, xếp thứ tự, chọn nhiều số, ước lượng rồi đếm",
     "learn": "Toán 2 Bài 1: ôn tập các số đến 100 (chục, đơn vị, đọc viết số, so sánh, cấu tạo số)",
@@ -29,7 +29,11 @@
   "texts": {},
   "places": {
     "su-tu-vang": "cột cờ",
-    "khi-lanh": "sân bóng"
+    "toan2-cd1-b01-tho-lum": "ghế đá sân trường",
+    "toan2-cd1-b01-co-ngan": "cửa lớp 2A",
+    "toan2-cd1-b01-nai-phi": "sân bóng",
+    "toan2-cd1-b01-gau-do": "khung thành",
+    "toan2-cd1-b01-co-tham": "góc sân"
   },
   "steps": [
     {
@@ -278,9 +282,10 @@
     {
       "id": "ca-rot-cho-tho",
       "title": "Tìm cà rốt cho thỏ",
+      "goTo": "Ra ghế đá sân trường, Thỏ Lúm đang ôm một bó cà rốt ghi số",
       "kind": "challenge",
       "mechanic": "classify",
-      "target": "su-tu-vang",
+      "target": "toan2-cd1-b01-tho-lum",
       "prompt": "Tìm cà rốt cho thỏ.",
       "groups": [
         {
@@ -342,7 +347,7 @@
         "right": [
           "Ba bạn thỏ ôm cà rốt nhảy tưng tưng!",
           "Thỏ nào cũng đúng củ, chẳng bạn nào phải khóc nhè.",
-          "Gà Con Chíp vỗ cánh: cà rốt về đủ, không ai bị gặm khuyết!"
+          "Thỏ Lúm vẫy tai: cà rốt về đủ, chẳng củ nào bị gặm khuyết!"
         ],
         "wrong": [
           "Có bạn thỏ đang cầm nhầm củ, mặt ngơ ngác lắm kìa.",
@@ -356,7 +361,7 @@
       "title": "Số gồm mấy chục",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "target": "su-tu-vang",
+      "target": "toan2-cd1-b01-tho-lum",
       "prompt": "Hoàn thành bảng sau (theo mẫu).",
       "template": "Số gồm | Viết số | Đọc số:\n5 chục và 7 đơn vị | 57 | Năm mươi bảy\n7 chục và 5 đơn vị | {{a}} | Bảy mươi lăm\n6 chục và 4 đơn vị | {{b1}} | {{b2}}\n{{c1}} chục và {{c2}} đơn vị | 91 | {{c3}}",
       "blanks": [
@@ -486,7 +491,7 @@
         "right": [
           "Đọc số chuẩn y như cô giáo luôn!",
           "Hàng chục, hàng đơn vị ngồi đúng ghế của mình.",
-          "Bảng thứ hai xong, thầy Sư Tử nhún nhảy mừng rỡ!"
+          "Bảng thứ hai xong, Thỏ Lúm nhảy tưng tưng quanh ghế đá!"
         ],
         "wrong": [
           "Nhớ nhé: số 4 ở cuối đọc là \"tư\".",
@@ -498,9 +503,10 @@
     {
       "id": "binh-hoa-huong-duong",
       "title": "Bình hoa hướng dương",
+      "goTo": "Chạy tới cửa lớp 2A, cô Nguyệt đang dựng lại bình hoa bị gió hắt đổ",
       "kind": "challenge",
       "mechanic": "classify",
-      "target": "su-tu-vang",
+      "target": "toan2-cd1-b01-co-ngan",
       "prompt": "Gió hắt xì một cái, bình hoa ở cửa lớp đổ nghiêng, hoa nằm lăn lóc. a) Tìm những bông hoa ghi số lớn hơn 60. b) Tìm những bông hoa ghi số bé hơn 50. c) Tìm những bông hoa ghi số vừa lớn hơn 50 vừa bé hơn 60.",
       "groups": [
         {
@@ -596,7 +602,7 @@
       "title": "Tách số thành chục và đơn vị",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "target": "su-tu-vang",
+      "target": "toan2-cd1-b01-co-ngan",
       "prompt": "Số ? 35 = 30 + 5 | 67 = 60 + ?",
       "template": "35 = 30 + 5\n67 = 60 + {{a}}\n59 = {{b}} + 9\n55 = {{c1}} + {{c2}}",
       "blanks": [
@@ -702,23 +708,23 @@
     {
       "id": "doi-bong-xep-hang",
       "title": "Đội bóng xếp hàng",
-      "goTo": "Chạy ra sân bóng, Khỉ Lanh gọi cả đội xếp hàng",
+      "goTo": "Chạy ra sân bóng, thầy Nai Phi đang gọi cả đội xếp hàng",
       "kind": "dialogue",
-      "target": "khi-lanh",
+      "target": "toan2-cd1-b01-nai-phi",
       "lines": [
         {
-          "speaker": "Khỉ Lanh",
+          "speaker": "Nai Phi",
           "text": "Píp píp! Đội bóng lớp Hai sắp chào cờ mà bốn bạn cứ chen nhau như đàn vịt giành bánh mì!"
         },
         {
-          "speaker": "Khỉ Lanh",
-          "text": "Thầy thổi còi đến hụt hơi rồi. {name} xếp giúp thầy hai lượt nhé: lượt đầu một chiều, lượt sau quay ngược lại."
+          "speaker": "Nai Phi",
+          "text": "Thầy thổi còi đến hụt hơi rồi. {name} xếp giúp thầy lượt đầu nhé, lượt sau đội trưởng Gấu Đô chờ ở khung thành."
         }
       ],
       "choices": [
         {
           "text": "Để cháu xếp!",
-          "reply": "Khỉ Lanh treo ngược trên xà đơn hô: Nhìn kĩ số trên áo nhé, đừng nhìn mặt!"
+          "reply": "Thầy Nai Phi nhún chân trên vạch vôi: Nhìn kĩ số trên áo nhé, đừng nhìn mặt!"
         },
         {
           "text": "Cháu thổi còi giúp thầy luôn ạ!",
@@ -731,7 +737,7 @@
       "title": "Xếp áo từ bé đến lớn",
       "kind": "challenge",
       "mechanic": "sort",
-      "target": "khi-lanh",
+      "target": "toan2-cd1-b01-nai-phi",
       "prompt": "Sắp xếp các số ghi trên các áo theo thứ tự: a) Từ bé đến lớn.",
       "items": [
         {
@@ -777,7 +783,7 @@
       "feedback": {
         "right": [
           "Hàng thẳng tắp, bé trước lớn sau!",
-          "Khỉ Lanh thổi còi: xếp chuẩn!",
+          "Thầy Nai Phi thổi còi: xếp chuẩn!",
           "Bốn chiếc áo đã vào đúng chỗ."
         ],
         "wrong": [
@@ -790,9 +796,10 @@
     {
       "id": "ao-lon-den-be",
       "title": "Xếp áo từ lớn đến bé",
+      "goTo": "Sang khung thành, đội trưởng Gấu Đô muốn xếp áo theo chiều ngược lại",
       "kind": "challenge",
       "mechanic": "sort",
-      "target": "khi-lanh",
+      "target": "toan2-cd1-b01-gau-do",
       "prompt": "Sắp xếp các số ghi trên các áo theo thứ tự: b) Từ lớn đến bé.",
       "items": [
         {
@@ -839,7 +846,7 @@
         "right": [
           "Đổi chiều mà vẫn không nhầm, tuyệt!",
           "Áo 22 dẫn đầu, đội bóng sẵn sàng!",
-          "{name} xếp hàng nhanh hơn cả Khỉ Lanh."
+          "Gấu Đô ôm bóng gật gù: {name} xếp hàng nhanh hơn cả tớ."
         ],
         "wrong": [
           "Lượt này số lớn đứng trước cơ.",
@@ -1092,9 +1099,10 @@
     {
       "id": "uoc-luong-dem",
       "title": "Ước lượng rồi đếm",
+      "goTo": "Ra góc sân, cô lao công Thắm đang trông hũ bi và rổ cà chua",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "target": "su-tu-vang",
+      "target": "toan2-cd1-b01-co-tham",
       "prompt": "Bác Heo Ủn bếp trưởng để quên hũ bi và rổ cà chua ở góc sân, còn dặn: đếm hộ bác, đừng ăn vụng cà chua nhé!",
       "template": "Em ước lượng xem trong hình có khoảng mấy chục viên bi rồi đếm số viên bi trong hình đó (theo mẫu). a) Mẫu: – Em ước lượng: Khoảng 3 chục viên bi. – Em đếm được: 32 viên bi.\nb) – Em ước lượng: Khoảng {{bi1}} chục viên bi. – Em đếm được: {{bi2}} viên bi.\nEm ước lượng xem trong hình có khoảng mấy chục quả cà chua rồi đếm số cà chua trong hình đó.\n– Em ước lượng: Khoảng {{ca1}} chục quả cà chua. – Em đếm được: {{ca2}} quả cà chua.",
       "blanks": [
@@ -1209,7 +1217,7 @@
       "title": "Viết số thành tổng",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "target": "su-tu-vang",
+      "target": "toan2-cd1-b01-co-tham",
       "prompt": "Số ?",
       "template": "a) Số 87 gồm 8 chục và 7 đơn vị, viết là: 87 = 80 + 7. \nb) Số 45 gồm {{b1}} chục và {{b2}} đơn vị, viết là: 45 = {{b3}} + {{b4}}.\nc) Số 63 gồm {{c1}} chục và {{c2}} đơn vị, viết là: {{c3}} = {{c4}} + {{c5}}.",
       "blanks": [
@@ -1380,6 +1388,7 @@
     {
       "id": "mieng-bia-bang-so",
       "title": "Lắp miếng bìa vào bảng số",
+      "goTo": "Về lại cột cờ, thầy Sư Tử Vàng giơ tấm bảng số thủng bốn lỗ",
       "kind": "challenge",
       "mechanic": "classify",
       "target": "su-tu-vang",

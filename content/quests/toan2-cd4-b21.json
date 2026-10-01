@@ -5,11 +5,11 @@
   "title": "Hộp quà bí mật của Cáo Lém",
   "status": "active",
   "lesson": "toan2-t1-b21",
-  "summary": "Cáo Lém giấu ba hộp quà quanh quầy trao giải của Xưởng đồ chơi, mỗi hộp khoá bằng một phép tính; {name} đặt tính, giải bài toán và đo mực nước bể cá để mở hết quà.",
+  "summary": "Cáo Lém giấu ba hộp quà quanh quầy trao giải của Xưởng đồ chơi, mỗi hộp khoá bằng một phép tính; {name} học bí kíp đặt tính của Bác thợ Tùng, cân đồ chơi với Heo Mũm, thi nhảy xa cùng Nai Lộc và đo mực nước bể cá để mở hết quà.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Cáo Lém, Lợn Rừng Đốm",
-    "where": "Xưởng đồ chơi: quầy trao giải và góc bể cá",
+    "who": "Cáo Lém, Bác thợ Tùng, Heo Mũm, Nai Lộc",
+    "where": "Xưởng đồ chơi: quầy trao giải, bàn bào gỗ, góc cân đĩa, đường đá nhảy xa và góc bể cá",
     "goal": "Mở cả ba hộp quà bí mật trước giờ trao giải",
     "play": "Tìm hộp quà, điền số mở khoá, giải đố, chọn đường bay dài nhất, đo mực nước, làm phiếu ở nhà",
     "learn": "Toán 2 Bài 21: luyện tập cộng có nhớ trong phạm vi 100, bài toán có lời văn",
@@ -30,7 +30,9 @@
   "places": {
     "cao-lem": "quầy trao giải",
     "tim-hop-qua": "quầy trao giải",
-    "lon-rung-dom": "quầy trao giải",
+    "toan2-cd4-b21-bac-tho-tung": "bàn bào gỗ",
+    "toan2-cd4-b21-heo-mum": "góc cân đĩa",
+    "toan2-cd4-b21-nai-loc": "đường đá nhảy xa",
     "toan2-cd4-be-ca": "góc bể cá"
   },
   "steps": [
@@ -46,8 +48,8 @@
           "text": "A lô a lô! Hôm nay tớ không giấu phấn nữa đâu, tớ giấu… quà! Ba hộp quà bí mật, khoá bằng ổ khoá số hẳn hoi."
         },
         {
-          "speaker": "Lợn Rừng Đốm",
-          "text": "Ơ kìa, quà đó là để trao giải cho cả xưởng mà! Tớ thử vặn khoá mười lần, lần nào cũng kêu \"cạch\" rồi đứng im."
+          "speaker": "Bác thợ Tùng",
+          "text": "Ơ kìa, quà ấy để trao giải cho cả xưởng mà! Bác vặn khoá mười lần, lần nào cũng kêu \"cạch\" rồi đứng im."
         },
         {
           "speaker": "Cáo Lém",
@@ -80,14 +82,14 @@
       "id": "khoa-so-dat-tinh",
       "title": "Bí kíp đặt tính",
       "kind": "dialogue",
-      "target": "lon-rung-dom",
+      "target": "toan2-cd4-b21-bac-tho-tung",
       "lines": [
         {
-          "speaker": "Lợn Rừng Đốm",
-          "text": "Đủ ba hộp rồi! Bí kíp của thợ xưởng là đặt tính: hàng đơn vị thẳng hàng đơn vị, hàng chục thẳng hàng chục."
+          "speaker": "Bác thợ Tùng",
+          "text": "Đủ ba hộp rồi! Bí kíp của thợ cả là đặt tính: hàng đơn vị thẳng hàng đơn vị, hàng chục thẳng hàng chục."
         },
         {
-          "speaker": "Lợn Rừng Đốm",
+          "speaker": "Bác thợ Tùng",
           "text": "Cộng từ phải sang trái. Hàng đơn vị được 10 trở lên thì viết chữ số đơn vị, nhớ 1 sang hàng chục."
         },
         {
@@ -98,14 +100,15 @@
       "choices": [
         {
           "text": "Thẳng hàng, nhớ 1, rõ rồi!",
-          "reply": "Lợn Rừng Đốm giơ ngón cái dính đầy mùn cưa: Chuẩn thợ cả!"
+          "reply": "Bác thợ Tùng giơ ngón cái dính đầy mùn cưa: Chuẩn thợ cả!"
         }
-      ]
+      ],
+      "goTo": "Ôm hộp sang bàn bào gỗ, Bác thợ Tùng phủi mùn cưa chờ dạy bí kíp"
     },
     {
       "id": "khoa-hop-do",
       "title": "Mở khoá hộp quà đỏ",
-      "target": "cao-lem",
+      "target": "toan2-cd4-b21-bac-tho-tung",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "prompt": "Ổ khoá hộp quà đỏ có ba vòng số. Đặt tính rồi tính.",
@@ -235,14 +238,15 @@
       },
       "answer": {
         "value": 65
-      }
+      },
+      "goTo": "Mang hộp đỏ về quầy trao giải, Cáo Lém đã đặt sẵn chiếc cân"
     },
     {
       "id": "can-con-lon-dat",
       "title": "Cân con lợn đất",
-      "target": "lon-rung-dom",
+      "target": "toan2-cd4-b21-heo-mum",
       "kind": "riddle",
-      "question": "Lợn Rừng Đốm bày một chiếc cân đĩa đang thăng bằng: một bên là con lợn, bên kia là con ngỗng 5 kg và con dê 28 kg. Con lợn cân nặng bao nhiêu ki-lô-gam?",
+      "question": "Heo Mũm bày một chiếc cân đĩa đang thăng bằng: một bên là con lợn, bên kia là con ngỗng 5 kg và con dê 28 kg. Con lợn cân nặng bao nhiêu ki-lô-gam?",
       "skill": "khoi-luong",
       "curriculumRef": [
         "toan2-t1-b21-luyen-tap-3"
@@ -261,7 +265,7 @@
       "feedback": {
         "right": [
           "Đĩa cân đứng im phăng phắc, con lợn nặng đúng 33 ki-lô-gam!",
-          "Lợn Rừng Đốm reo: hoá ra họ hàng nhà tớ nặng thế này à!",
+          "Heo Mũm reo: hoá ra họ hàng nhà tớ nặng thế này à!",
           "Cân thăng bằng, phép cộng cũng thăng bằng luôn."
         ],
         "wrong": [
@@ -272,12 +276,13 @@
       },
       "answer": {
         "value": 33
-      }
+      },
+      "goTo": "Ra góc cân đĩa, Heo Mũm đang hì hục giữ cho hai đĩa cân thăng bằng"
     },
     {
       "id": "xo-nuoc-hai-ban",
       "title": "Ai xách nhiều nước?",
-      "target": "lon-rung-dom",
+      "target": "toan2-cd4-b21-heo-mum",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "prompt": "Hộp quà xanh mở ra hai búp bê gỗ: bạn gấu xách hai xô nước, chàng cao bồi xách hai thùng nước. Số ? Mỗi bạn xách bao nhiêu lít nước?",
@@ -357,36 +362,37 @@
       "id": "chuot-tui-len-day-cot",
       "title": "Chuột túi lên dây cót",
       "kind": "dialogue",
-      "target": "lon-rung-dom",
+      "target": "toan2-cd4-b21-nai-loc",
       "lines": [
         {
-          "speaker": "Lợn Rừng Đốm",
-          "text": "Hộp vàng có con chuột túi lên dây cót! Nó đòi thi nhảy xa trên hàng tảng đá ghi 5, 10, 15… tới 50."
+          "speaker": "Nai Lộc",
+          "text": "Hộp vàng có con chuột túi lên dây cót! Nó rủ tớ thi nhảy xa trên hàng tảng đá ghi 5, 10, 15… tới 50."
         },
         {
           "speaker": "Cáo Lém",
           "text": "Cứ mỗi tảng đá là thêm 5 điểm. Tớ cá là {name} không đoán nổi lần nhảy thứ hai đâu!"
         },
         {
-          "speaker": "Lợn Rừng Đốm",
-          "text": "Đừng nghe Cáo. {name} muốn đếm từng tảng hay đếm thêm 5 cho nhanh?"
+          "speaker": "Nai Lộc",
+          "text": "Kệ Cáo trêu. {name} muốn đếm từng tảng hay đếm thêm 5 cho nhanh?"
         }
       ],
       "choices": [
         {
           "text": "Đếm từng tảng đá một",
-          "reply": "Lợn Rừng Đốm: Chậm mà chắc, giống tớ lắp bánh xe vậy."
+          "reply": "Nai Lộc: Chậm mà chắc, như tớ dò từng bước qua suối vậy."
         },
         {
           "text": "Đếm thêm 5 mỗi bước",
           "reply": "Cáo Lém: Hừm, nhảy cóc nhanh ghê, nhưng nhớ đừng đếm lố!"
         }
-      ]
+      ],
+      "goTo": "Chạy tới đường đá nhảy xa, Nai Lộc đang lên dây cót cho chú chuột túi"
     },
     {
       "id": "chuot-tui-nhay-xa",
       "title": "Chuột túi nhảy được mấy điểm?",
-      "target": "lon-rung-dom",
+      "target": "toan2-cd4-b21-nai-loc",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "prompt": "Hàng tảng đá ghi 5, 10, 15, 20, 25, 30, 35, 40, 45, 50. Số ? Chuột túi tham gia một cuộc thi nhảy xa. Lần thứ nhất, từ tảng đá màu đỏ, chuột túi nhảy qua 4 tảng đá và được 25 điểm (như hình vẽ). Lần thứ hai, từ tảng đá màu đỏ, chuột túi nhảy qua 6 tảng đá.",
@@ -558,7 +564,8 @@
           "b2": "o70",
           "b3": "o90"
         }
-      }
+      },
+      "goTo": "Về quầy trao giải, Cáo Lém đang nắn nót viết phép tính lên tấm biển"
     },
     {
       "id": "duong-bay-dai-nhat",
@@ -600,7 +607,7 @@
         "right": [
           "Vù vù! Chuồn chuồn gỗ nhận cờ quán quân đường dài.",
           "Hơn nhau có 2 xăng-ti-mét mà cậu vẫn phân biệt được, tinh thật!",
-          "Lợn Rừng Đốm treo huy chương lên cánh chuồn chuồn rồi."
+          "Bác thợ Tùng treo huy chương lên cánh chuồn chuồn rồi."
         ],
         "wrong": [
           "Ong và chuồn chuồn bay hai chặng, cộng cả hai chặng đã.",
@@ -617,7 +624,7 @@
     {
       "id": "bi-cua-nam-va-robot",
       "title": "Hũ bi trao giải",
-      "target": "cao-lem",
+      "target": "toan2-cd4-b21-bac-tho-tung",
       "kind": "riddle",
       "question": "Giải thưởng tiếp theo là một hũ bi thật to. Nam có 38 viên bi. Rô-bốt có 34 viên bi. Hỏi Nam và Rô-bốt có tất cả bao nhiêu viên bi?",
       "skill": "bai-toan-loi-van",
@@ -649,7 +656,8 @@
       },
       "answer": {
         "value": 72
-      }
+      },
+      "goTo": "Sang bàn bào gỗ, Bác thợ Tùng bê ra một hũ bi thật to"
     },
     {
       "id": "muc-nuoc-ba-be",
@@ -767,7 +775,7 @@
       "title": "Cúp thợ mở khoá",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Ba hộp quà đều mở tung! Lợn Rừng Đốm trao cho {name} chiếc cúp gỗ \"Thợ mở khoá số\", còn Cáo Lém phải hứa từ nay chỉ khoá quà bằng nơ."
+      "text": "Ba hộp quà đều mở tung! Bác thợ Tùng trao cho {name} chiếc cúp gỗ \"Thợ mở khoá số\", còn Cáo Lém phải hứa từ nay chỉ khoá quà bằng nơ."
     },
     {
       "id": "ke-gau-bong-day-ap",

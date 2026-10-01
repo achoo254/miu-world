@@ -8,8 +8,8 @@
   "summary": "Sâu Xanh nằm trên ban công tháp đồng hồ đếm từng ngày chờ hóa bướm; {name} giúp Sâu Xanh đọc đồng hồ, tìm ngày trên lịch theo bưu ảnh của Rô-bốt, xem giờ mở cửa bảo tàng và sắp lịch học năng khiếu.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Sâu Xanh, Voi Bảo",
-    "where": "Tháp đồng hồ: ban công ngắm trời, mái hiên tháp",
+    "who": "Sâu Xanh, ông Lộc, Cáo Đỏ Tem, chị Thảo dạy bóng rổ",
+    "where": "Tháp đồng hồ: ban công ngắm trời, mái hiên tháp, hộp thư trên tháp, góc kính viễn vọng, chân cầu thang xoắn",
     "goal": "Giúp Sâu Xanh không còn đếm nhầm ngày, giờ trước khi hóa bướm",
     "play": "Tìm bưu ảnh, chọn giờ đúng, chạm ngày trên lịch, xếp nhóm theo đồng hồ, đặt giờ, sắp xếp lịch học, chọn nhiều đáp án",
     "learn": "Toán 2 Bài 32: luyện tập chung xem đồng hồ, xem lịch",
@@ -30,7 +30,9 @@
   "places": {
     "sau-xanh": "ban công ngắm trời",
     "nhat-buu-anh": "mái hiên tháp",
-    "voi-bao": "góc kính viễn vọng"
+    "toan2-cd6-b32-ong-loc": "góc kính viễn vọng",
+    "toan2-cd6-b32-cao-do-tem": "hộp thư trên tháp",
+    "toan2-cd6-b32-chi-thao": "chân cầu thang xoắn"
   },
   "steps": [
     {
@@ -87,7 +89,7 @@
           "text": "Tớ thích nhìn kim dài chạy trên mặt đồng hồ tháp lắm. Nó bò nhanh hơn tớ nhiều!"
         },
         {
-          "speaker": "Voi Bảo",
+          "speaker": "Ông Lộc",
           "text": "Kim dài đi từ số này sang số kế bên là 5 phút. Từ số 12 tới số 3 là 15 phút, tới số 6 là 30 phút."
         },
         {
@@ -98,7 +100,7 @@
       "choices": [
         {
           "text": "Tớ nhìn đồng hồ đã!",
-          "reply": "Voi Bảo: Phải rồi, nhìn kim ngắn đang ở đâu trước nhé."
+          "reply": "Ông Lộc đẩy gọng kính: Phải rồi, nhìn kim ngắn đang ở đâu trước nhé."
         }
       ]
     },
@@ -157,7 +159,8 @@
     {
       "id": "ruong-bac-thang",
       "title": "Ngày đến Mù Cang Chải",
-      "target": "sau-xanh",
+      "goTo": "Ra hộp thư trên tháp, Cáo Đỏ Tem đang đóng dấu bưu ảnh của Rô-bốt",
+      "target": "toan2-cd6-b32-cao-do-tem",
       "kind": "challenge",
       "mechanic": "calendar",
       "prompt": "Xem tờ lịch và các ảnh chụp của Rô-bốt rồi trả lời câu hỏi (theo mẫu). Mẫu: Rô-bốt ghé thăm Tây Nguyên vào ngày 2 tháng 8. – Rô-bốt ghé thăm Mù Cang Chải vào ngày nào? Trên tờ lịch tháng 8, Rô-bốt khoanh các ngày 2, 13, 21, 30; bốn bưu ảnh xếp đúng thứ tự chuyến đi: Tây Nguyên, Huế, chợ nổi Năm Căn, Mù Cang Chải.",
@@ -199,7 +202,7 @@
     {
       "id": "cho-noi-nam-can",
       "title": "Ngày đi chợ nổi Năm Căn",
-      "target": "sau-xanh",
+      "target": "toan2-cd6-b32-cao-do-tem",
       "kind": "challenge",
       "mechanic": "calendar",
       "prompt": "Xem tờ lịch và các ảnh chụp của Rô-bốt rồi trả lời câu hỏi (theo mẫu). – Rô-bốt ghé thăm chợ nổi Năm Căn vào ngày nào?",
@@ -225,7 +228,7 @@
       "feedback": {
         "right": [
           "Ngày 21, thuyền ghe tấp nập trên chợ nổi!",
-          "Đếm đúng ngày khoanh thứ ba rồi, Sâu Xanh gật gù.",
+          "Đếm đúng ngày khoanh thứ ba rồi, Cáo Đỏ Tem gật gù.",
           "Bưu ảnh chợ nổi đã có ngày, hay quá."
         ],
         "wrong": [
@@ -241,6 +244,7 @@
     {
       "id": "co-do-hue",
       "title": "Ngày ghé thăm cố đô Huế",
+      "goTo": "Mang lịch về ban công ngắm trời, Sâu Xanh chờ dán bưu ảnh Huế",
       "target": "sau-xanh",
       "kind": "challenge",
       "mechanic": "calendar",
@@ -283,27 +287,27 @@
     {
       "id": "di-bao-tang-khong",
       "title": "Đi bảo tàng không?",
-      "goTo": "Sang góc kính viễn vọng, Voi Bảo đang ngắm phố",
+      "goTo": "Sang góc kính viễn vọng, ông Lộc đang ngắm phố",
       "kind": "dialogue",
-      "target": "voi-bao",
+      "target": "toan2-cd6-b32-ong-loc",
       "lines": [
         {
-          "speaker": "Voi Bảo",
-          "text": "Mấy bạn nhỏ hẹn nhau đi Bảo tàng Lịch sử Quân sự Việt Nam, mỗi bạn đến một giờ khác nhau."
+          "speaker": "Ông Lộc",
+          "text": "Hồi trẻ ông dẫn khách ở Bảo tàng Lịch sử Quân sự Việt Nam đấy. Nay mấy bạn nhỏ hẹn nhau đi, mỗi bạn đến một giờ khác nhau."
         },
         {
           "speaker": "Sâu Xanh",
           "text": "Bảo tàng mở cửa từ 8 giờ đến 16 giờ 30 phút. Ai đến muộn quá là đứng ngoài cổng ngắm trực thăng thôi!"
         },
         {
-          "speaker": "Voi Bảo",
+          "speaker": "Ông Lộc",
           "text": "{name} muốn xem đồng hồ từng bạn trước, hay chỉnh giờ đóng cửa trước?"
         }
       ],
       "choices": [
         {
           "text": "Xem đồng hồ từng bạn trước",
-          "reply": "Voi Bảo xòe bốn tấm ảnh: Đây, mỗi bạn một chiếc đồng hồ."
+          "reply": "Ông Lộc xòe bốn tấm ảnh: Đây, mỗi bạn một chiếc đồng hồ."
         },
         {
           "text": "Nhớ giờ mở cửa, đóng cửa trước",
@@ -314,7 +318,7 @@
     {
       "id": "ai-vao-bao-tang",
       "title": "Bạn nào vào được bảo tàng",
-      "target": "voi-bao",
+      "target": "toan2-cd6-b32-ong-loc",
       "kind": "challenge",
       "mechanic": "classify",
       "prompt": "Cho biết thời gian đến thăm Bảo tàng Lịch sử Quân sự Việt Nam của mỗi bạn như sau: Biết bảo tàng mở cửa từ 8 giờ đến 16 giờ 30 phút. Hỏi những bạn nào được vào thăm bảo tàng? Xếp mỗi bạn vào đúng nhóm theo đồng hồ của bạn ấy.",
@@ -417,10 +421,11 @@
     {
       "id": "gio-dong-cua-bao-tang",
       "title": "Giờ bảo tàng đóng cửa",
-      "target": "voi-bao",
+      "goTo": "Xuống chân cầu thang xoắn, chị Thảo đứng cạnh chiếc đồng hồ điện tử",
+      "target": "toan2-cd6-b32-chi-thao",
       "kind": "challenge",
       "mechanic": "clock",
-      "prompt": "Voi Bảo dặn: chỉnh chiếc đồng hồ điện tử ở cổng để ai cũng biết giờ về. Cho biết thời gian đến thăm Bảo tàng Lịch sử Quân sự Việt Nam của mỗi bạn như sau: Biết bảo tàng mở cửa từ 8 giờ đến 16 giờ 30 phút. Hỏi những bạn nào được vào thăm bảo tàng? Đặt đồng hồ chỉ giờ bảo tàng đóng cửa.",
+      "prompt": "Chị Thảo dặn: chỉnh chiếc đồng hồ điện tử ở cổng để ai cũng biết giờ về. Cho biết thời gian đến thăm Bảo tàng Lịch sử Quân sự Việt Nam của mỗi bạn như sau: Biết bảo tàng mở cửa từ 8 giờ đến 16 giờ 30 phút. Hỏi những bạn nào được vào thăm bảo tàng? Đặt đồng hồ chỉ giờ bảo tàng đóng cửa.",
       "mode": "set",
       "display": "digital",
       "skill": "xem-dong-ho",
@@ -442,7 +447,7 @@
         "right": [
           "Đồng hồ cổng sáng chữ 16:30, chẳng ai về trễ nữa!",
           "Giờ trước phút sau, cậu đặt gọn gàng ghê.",
-          "Voi Bảo vỗ vòi: bảng giờ cổng bảo tàng xong rồi."
+          "Chị Thảo giơ ngón cái: bảng giờ cổng bảo tàng xong rồi."
         ],
         "wrong": [
           "Giờ đóng cửa là giờ thứ hai trong đề bài đấy.",
@@ -552,7 +557,8 @@
     {
       "id": "gio-hoc-bong-ro",
       "title": "Giờ học bóng rổ",
-      "target": "sau-xanh",
+      "goTo": "Chạy xuống chân cầu thang xoắn, chị Thảo đập bóng rổ bịch bịch",
+      "target": "toan2-cd6-b32-chi-thao",
       "kind": "challenge",
       "mechanic": "clock",
       "prompt": "Cho biết giờ học các môn năng khiếu vào sáng ngày thứ Bảy của Rô-bốt như sau: Rô-bốt học bóng rổ. Rô-bốt học vẽ. Rô-bốt học hát. Rô-bốt học võ. Trước giờ học bóng rổ, Rô-bốt đã học những môn nào? Đồng hồ học bóng rổ đây: đọc xem đó là mấy giờ.",
@@ -597,6 +603,7 @@
     {
       "id": "truoc-gio-bong-ro",
       "title": "Học gì trước bóng rổ",
+      "goTo": "Lên ban công ngắm trời, Sâu Xanh chờ câu hỏi cuối",
       "target": "sau-xanh",
       "kind": "challenge",
       "mechanic": "multi-select",
@@ -661,7 +668,7 @@
       "title": "Vé ghế là phép tính",
       "kind": "unlock",
       "trigger": "auto",
-      "text": "Từ hội trường vang lên tiếng gầm của thầy Sư Tử Vàng: \"Tổng duyệt văn nghệ cuối kì! Vé ghế nào cũng là một phép tính, ai tính đúng mới tìm được chỗ ngồi!\""
+      "text": "Từ hội trường vang lên giọng micro rổn rảng của thầy Quang: \"Tổng duyệt văn nghệ cuối kì! Vé ghế nào cũng là một phép tính, ai tính đúng mới tìm được chỗ ngồi!\""
     }
   ],
   "reward": {

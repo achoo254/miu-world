@@ -2,15 +2,15 @@
   "id": "toan2-cd2-b13",
   "region": "truong-hoc",
   "chapter": 2,
-  "title": "Hổ Vằn so cà rốt với Thỏ Tí",
+  "title": "Hổ Vằn so cà rốt với Thỏ Cốm",
   "status": "active",
   "lesson": "toan2-t1-b13",
-  "summary": "Hổ Vằn và Thỏ Tí cãi nhau ai trồng nhiều cà rốt hơn; {name} giúp hai bạn hiểu \"nhiều hơn\" thì cộng, \"ít hơn\" thì trừ, rồi cùng giải các bài toán ở luống cà rốt và máng nước tưới.",
+  "summary": "Hổ Vằn và Thỏ Cốm cãi nhau ai trồng nhiều cà rốt hơn; {name} giúp hai bạn hiểu \"nhiều hơn\" thì cộng, \"ít hơn\" thì trừ, rồi giải bài toán ở luống cà rốt, bảng phấn của Koala Phấn, giàn mướp của Bê Hồng và máng nước tưới.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Hổ Vằn, Thỏ Tí",
-    "where": "Vườn trường: luống cà rốt, máng nước tưới cây",
-    "goal": "Giúp Hổ Vằn và Thỏ Tí làm hòa nhờ giải đúng các bài toán nhiều hơn, ít hơn",
+    "who": "Hổ Vằn, Thỏ Cốm, Koala Phấn, Bê Hồng",
+    "where": "Vườn trường: luống cà rốt, bảng phấn dưới gốc ổi, máng nước tưới cây, giàn mướp",
+    "goal": "Giúp Hổ Vằn và Thỏ Cốm làm hòa nhờ giải đúng các bài toán nhiều hơn, ít hơn",
     "play": "Tìm đồ làm vườn, điền bài giải, chọn dấu phép tính, xếp thùng hàng lên tàu, chọn nhận định đúng, giải đố",
     "learn": "Toán 2 Bài 13: bài toán về nhiều hơn, ít hơn một số đơn vị",
     "reward": "70 XP, 12 xu, Bài toán có lời văn +2, Phép cộng +1",
@@ -30,13 +30,15 @@
   "places": {
     "ho-van": "luống cà rốt",
     "do-lam-vuon": "luống cà rốt",
-    "tho-ti": "máng nước tưới cây"
+    "toan2-cd2-b13-koala-phan": "bảng phấn dưới gốc ổi",
+    "toan2-cd2-b13-tho-com": "máng nước tưới cây",
+    "toan2-cd2-b13-be-hong": "giàn mướp"
   },
   "steps": [
     {
       "id": "ho-gam-tho-cuoi",
       "title": "Gừ… ai nhiều cà rốt hơn?",
-      "goTo": "Tới luống cà rốt, Hổ Vằn và Thỏ Tí đang cãi nhau",
+      "goTo": "Tới luống cà rốt, Hổ Vằn và Thỏ Cốm đang cãi nhau",
       "kind": "dialogue",
       "target": "ho-van",
       "lines": [
@@ -45,7 +47,7 @@
           "text": "GỪ… ỪỪ! Luống của tớ nhiều cà rốt nhất vườn! …À mà, {name} đừng sợ nhé, tớ gầm cho oai thôi."
         },
         {
-          "speaker": "Thỏ Tí",
+          "speaker": "Thỏ Cốm",
           "text": "Xì, tớ trồng nhiều hơn cậu những 2 củ! À khoan… hay là 3 củ? Tớ quên mất rồi."
         },
         {
@@ -56,7 +58,7 @@
       "choices": [
         {
           "text": "Hai bạn đừng cãi, để tớ tính!",
-          "reply": "Thỏ Tí vểnh tai: Hay quá! Nhưng tớ làm rơi bình tưới đâu mất rồi."
+          "reply": "Thỏ Cốm vểnh tai: Hay quá! Nhưng tớ làm rơi bình tưới đâu mất rồi."
         },
         {
           "text": "Hổ Vằn gầm to quá đó!",
@@ -82,7 +84,7 @@
       "target": "ho-van",
       "lines": [
         {
-          "speaker": "Thỏ Tí",
+          "speaker": "Thỏ Cốm",
           "text": "Cô giáo dạy: nếu tớ nhiều hơn Hổ 2 củ, thì số củ của tớ bằng số củ của Hổ thêm 2. Thêm vào là phép cộng!"
         },
         {
@@ -90,7 +92,7 @@
           "text": "Còn nếu tớ ít hơn Thỏ 2 củ thì… bớt đi 2. Bớt đi là phép trừ, đúng không?"
         },
         {
-          "speaker": "Thỏ Tí",
+          "speaker": "Thỏ Cốm",
           "text": "Chuẩn! Nhưng bài giải phải có tóm tắt, phép tính và đáp số đàng hoàng nhé. {name} làm mẫu đi!"
         }
       ],
@@ -104,7 +106,8 @@
     {
       "id": "lop-hoc-boi",
       "title": "Lớp học bơi",
-      "target": "ho-van",
+      "goTo": "Tới bảng phấn dưới gốc ổi, Koala Phấn đã chép sẵn đề bơi cho Hổ Vằn",
+      "target": "toan2-cd2-b13-koala-phan",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "prompt": "Hổ Vằn mê bơi lắm nên chọn bài này trước. Đọc đề, xem tóm tắt rồi điền bài giải.",
@@ -197,7 +200,7 @@
       "feedback": {
         "right": [
           "Mười một bạn nữ bơi tung tăng, Hổ Vằn vỗ nước tóe tung!",
-          "Bài giải đủ phép tính và đáp số, đúng chuẩn cô dặn.",
+          "Koala Phấn gật gù: bài giải đủ phép tính và đáp số, đúng chuẩn cô dặn.",
           "Hổ Vằn thì thầm: hóa ra nhiều hơn là cộng thêm, dễ thật."
         ],
         "wrong": [
@@ -218,10 +221,11 @@
     {
       "id": "ga-vit-tren-san",
       "title": "Gà và vịt trên sân",
-      "target": "ho-van",
+      "goTo": "Thỏ Cốm kéo tay {name} ra máng nước tưới cây để đố bài khó hơn",
+      "target": "toan2-cd2-b13-tho-com",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Thỏ Tí đố khó hơn: lần này {name} tự chọn cả dấu phép tính.",
+      "prompt": "Thỏ Cốm đố khó hơn: lần này {name} tự chọn cả dấu phép tính.",
       "template": "Trên sân có 14 con gà, số vịt nhiều hơn số gà là 5 con. Hỏi trên sân có bao nhiêu con vịt?\nTóm tắt Gà: 14 con Vịt nhiều hơn gà: 5 con Vịt: ... con?\nBài giải Số con vịt trên sân là: {{b1}} {{b2}} {{b3}} = {{b4}} (con)\nĐáp số: {{b5}} con vịt.",
       "blanks": [
         {
@@ -325,7 +329,7 @@
         "right": [
           "Dấu cộng đúng chỗ, mười chín chú vịt kêu cạp cạp cảm ơn!",
           "Cậu tự chọn dấu mà không lăn tăn chút nào, giỏi quá.",
-          "Thỏ Tí phục lăn: lần này tớ đố mà cậu vẫn thắng."
+          "Thỏ Cốm phục lăn: lần này tớ đố mà cậu vẫn thắng."
         ],
         "wrong": [
           "Vịt nhiều hơn gà, vậy mình thêm vào hay bớt đi?",
@@ -346,15 +350,16 @@
     {
       "id": "ho-muon-it-hon",
       "title": "Hổ muốn biết về \"ít hơn\"",
+      "goTo": "Quay lại luống cà rốt, Hổ Vằn ngồi buồn thiu đếm từng củ",
       "kind": "dialogue",
       "target": "ho-van",
       "lines": [
         {
           "speaker": "Hổ Vằn",
-          "text": "Tớ đếm lại rồi: tớ ít cà rốt hơn Thỏ Tí. Buồn ghê… nhưng thôi, tớ muốn học bài \"ít hơn\" cho biết."
+          "text": "Tớ đếm lại rồi: tớ ít cà rốt hơn Thỏ Cốm. Buồn ghê… nhưng thôi, tớ muốn học bài \"ít hơn\" cho biết."
         },
         {
-          "speaker": "Thỏ Tí",
+          "speaker": "Thỏ Cốm",
           "text": "Học xong thì đi tưới cây với tớ nhé, máng nước có mấy chiếc thuyền đồ chơi vui lắm!"
         }
       ],
@@ -372,10 +377,11 @@
     {
       "id": "hat-quan-ho",
       "title": "Hội thi hát quan họ",
-      "target": "ho-van",
+      "goTo": "Theo tiếng hát sang giàn mướp, Bê Hồng đang gõ nhịp cho Thỏ Cốm",
+      "target": "toan2-cd2-b13-be-hong",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Thỏ Tí ngân nga một câu quan họ, Hổ Vằn lắc lư theo. Đọc đề rồi điền bài giải.",
+      "prompt": "Thỏ Cốm ngân nga một câu quan họ, Hổ Vằn lắc lư theo. Đọc đề rồi điền bài giải.",
       "template": "Trong hội thi hát quan họ, thôn Thượng tham gia 9 tiết mục, thôn Hạ tham gia ít hơn thôn Thượng 3 tiết mục. Hỏi thôn Hạ tham gia bao nhiêu tiết mục?\nTóm tắt Thôn Thượng: 9 tiết mục Thôn Hạ ít hơn thôn Thượng: 3 tiết mục Thôn Hạ: ... tiết mục?\nBài giải Số tiết mục thôn Hạ tham gia là: {{b1}} – {{b2}} = {{b3}} (tiết mục)\nĐáp số: {{b4}} tiết mục.",
       "blanks": [
         {
@@ -464,8 +470,8 @@
       },
       "feedback": {
         "right": [
-          "Thôn Hạ có 6 tiết mục, Thỏ Tí hát luôn tiết mục thứ bảy tặng cậu!",
-          "Ít hơn thì bớt đi, cậu không nhầm sang phép cộng.",
+          "Thôn Hạ có 6 tiết mục, Thỏ Cốm hát luôn tiết mục thứ bảy tặng cậu!",
+          "Bê Hồng rung chuông cổ leng keng: ít hơn thì bớt đi, cậu không nhầm sang phép cộng.",
           "Hổ Vằn hát theo \"người ơi người ở đừng về\", lạc giọng mà vui."
         ],
         "wrong": [
@@ -486,11 +492,11 @@
     {
       "id": "xep-thung-len-tau",
       "title": "Xếp hàng lên tàu thứ hai",
-      "goTo": "Sang máng nước tưới cây, Thỏ Tí đang thả thuyền chở hàng",
-      "target": "tho-ti",
+      "goTo": "Sang máng nước tưới cây, Thỏ Cốm đang thả thuyền chở hàng",
+      "target": "toan2-cd2-b13-tho-com",
       "kind": "challenge",
       "mechanic": "drag-drop",
-      "prompt": "Thỏ Tí thả hai con tàu đồ chơi xuống máng nước. Giải bài toán theo tóm tắt sau: Tóm tắt Tàu thứ nhất: 20 thùng hàng Tàu thứ hai nhiều hơn tàu thứ nhất: 8 thùng hàng Tàu thứ hai: ... thùng hàng? Kéo các kiện hàng lên tàu thứ hai cho vừa đủ số thùng.",
+      "prompt": "Thỏ Cốm thả hai con tàu đồ chơi xuống máng nước. Giải bài toán theo tóm tắt sau: Tóm tắt Tàu thứ nhất: 20 thùng hàng Tàu thứ hai nhiều hơn tàu thứ nhất: 8 thùng hàng Tàu thứ hai: ... thùng hàng? Kéo các kiện hàng lên tàu thứ hai cho vừa đủ số thùng.",
       "container": "Tàu thứ hai",
       "pieces": [
         {
@@ -532,7 +538,7 @@
       "feedback": {
         "right": [
           "Tàu thứ hai chở vừa khít, nước trong máng gợn sóng lăn tăn!",
-          "Thỏ Tí thổi còi \"tu… u\", tàu hàng lên đường!",
+          "Thỏ Cốm thổi còi \"tu… u\", tàu hàng lên đường!",
           "Không thừa một thùng, không thiếu một thùng, tuyệt!"
         ],
         "wrong": [
@@ -548,7 +554,7 @@
     {
       "id": "tau-thu-hai-cho-gi",
       "title": "Tàu thứ hai chở bao nhiêu?",
-      "target": "tho-ti",
+      "target": "toan2-cd2-b13-tho-com",
       "kind": "riddle",
       "question": "Giải bài toán theo tóm tắt sau: Tóm tắt Tàu thứ nhất: 20 thùng hàng Tàu thứ hai nhiều hơn tàu thứ nhất: 8 thùng hàng Tàu thứ hai: ... thùng hàng? Gõ số thùng hàng của tàu thứ hai.",
       "skill": "bai-toan-loi-van",
@@ -570,7 +576,7 @@
         "right": [
           "Hai mươi tám thùng, đúng như cậu vừa xếp lên tàu!",
           "Giải theo tóm tắt mà gọn gàng như sách mẫu.",
-          "Thỏ Tí ghi đáp số vào sổ, lần này không quên nữa."
+          "Thỏ Cốm ghi đáp số vào sổ, lần này không quên nữa."
         ],
         "wrong": [
           "Nhiều hơn thì cộng thêm 8 vào số thùng tàu thứ nhất.",
@@ -672,7 +678,7 @@
         "right": [
           "BOONG! Hổ Vằn đánh chiêng vang cả vườn, chẳng còn nhút nhát chút nào!",
           "Bảy người đội Hai nhảy múa quanh cây nêu, vui như hội thật.",
-          "Thỏ Tí ôm Hổ Vằn: từ nay mình chung một luống nhé!"
+          "Thỏ Cốm ôm Hổ Vằn: từ nay mình chung một luống nhé!"
         ],
         "wrong": [
           "Đội Hai ít hơn, vậy số người phải bé hơn 11.",
@@ -689,7 +695,7 @@
       "title": "Huy hiệu cà rốt",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Hổ Vằn và Thỏ Tí làm hòa, cùng nhổ củ cà rốt to nhất tặng {name} kèm huy hiệu \"Giải toán nhiều hơn, ít hơn\". Hổ còn gầm một tiếng thật nhỏ: \"Gừ… cảm ơn!\""
+      "text": "Hổ Vằn và Thỏ Cốm làm hòa, cùng nhổ củ cà rốt to nhất tặng {name} kèm huy hiệu \"Giải toán nhiều hơn, ít hơn\". Hổ còn gầm một tiếng thật nhỏ: \"Gừ… cảm ơn!\""
     },
     {
       "id": "cua-nha-kinh",

@@ -5,11 +5,11 @@
   "title": "Trang sách mở ra quanh tảng đá",
   "status": "active",
   "lesson": "tv2-t1-b16",
-  "summary": "Nai Mơ mở cuốn sách mượn của Gấu Trúc Tròn, thế là cỏ dại, cánh chim, cánh buồm bay ra khỏi trang giấy. {name} cùng Nai Mơ và Vẹt Xanh đọc bài thơ, đi theo những cảnh hiện ra bên suối rồi làm phiếu đọc sách trước khi trả sách.",
+  "summary": "Nai Mơ mở cuốn sách mượn của cô thủ thư Gấu Me, thế là cỏ dại, cánh chim, cánh buồm bay ra khỏi trang giấy, cả một chú cánh cụt cũng lạch bạch bước ra. {name} cùng Nai Mơ và Vẹt Xanh đọc bài thơ, đi theo những cảnh hiện ra bên suối rồi làm phiếu đọc sách trước khi trả sách.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Nai Mơ (mơ mộng, cái gì cũng muốn làm thơ), Vẹt Xanh sưu tầm từ lạ, Gấu Trúc Tròn thủ thư chậm mà chắc",
-    "where": "Tảng đá phẳng bên bãi cỏ dại, bến suối hoá thành biển nhỏ và cửa thư viện gốc cây",
+    "who": "Nai Mơ (mơ mộng, cái gì cũng muốn làm thơ), Vẹt Xanh sưu tầm từ lạ, Cánh Cụt Phao bước ra từ trang sách, Gấu Me cô thủ thư nói khẽ",
+    "where": "Tảng đá phẳng bên bãi cỏ dại, gốc sim tím của Nai Mơ, mỏm đá rêu, bến suối hoá thành biển nhỏ với bãi cát, và cửa thư viện gốc cây",
     "goal": "Nhặt lại những thứ bay ra từ trang sách, đọc hiểu bài thơ và giúp Nai Mơ trả sách đúng hẹn",
     "play": "Nhặt đồ, đọc thơ, xếp thứ tự, chọn nhiều đáp án, xếp thẻ vào giỏ, trắc nghiệm, điền vần, điền chữ, ghép câu, điền dấu câu, nói và kể, phiếu viết",
     "learn": "Tiếng Việt 2 Bài 16: đọc hiểu bài thơ Khi trang sách mở ra, vần cuối dòng thơ, chính tả l/n và các tiếng có vần an/ang, ăn/ăng, ân/âng, từ chỉ đặc điểm, câu nêu đặc điểm, dấu chấm và dấu chấm hỏi, phiếu đọc sách",
@@ -45,25 +45,26 @@
     }
   },
   "places": {
-    "nai-mo": "tảng đá phẳng",
-    "vet-xanh": "tảng đá phẳng",
+    "nai-mo": "gốc sim tím",
+    "vet-xanh": "mỏm đá rêu",
     "tv2-t08-tang-da-phang": "tảng đá phẳng",
     "tv2-t08-hop-but-nai-mo": "tảng đá phẳng",
     "nhat-do-bay-khoi-trang": "bãi cỏ dại quanh tảng đá",
     "tv2-t08-canh-buom-hien-ra": "bến suối sau tảng đá",
-    "gau-truc-tron": "cửa thư viện gốc cây"
+    "tv2-t08-b16-canh-cut-phao": "bãi cát nhỏ",
+    "tv2-t08-b15-gau-me": "cửa thư viện gốc cây"
   },
   "steps": [
     {
       "id": "nai-mo-om-sach",
       "title": "Cuốn sách biết mọc cỏ",
-      "goTo": "Ra tảng đá phẳng bên bãi cỏ, Nai Mơ đang ôm sách",
+      "goTo": "Ra gốc sim tím cạnh tảng đá phẳng, Nai Mơ đang ôm sách",
       "kind": "dialogue",
       "target": "nai-mo",
       "lines": [
         {
           "speaker": "Nai Mơ",
-          "text": "{name} ơi! Tớ vừa mở cuốn sách Gấu Trúc Tròn cho mượn, thế là… phụt! Một nhánh cỏ dại mọc vọt lên giữa trang!"
+          "text": "{name} ơi! Tớ vừa mở cuốn sách Gấu Me cho mượn, thế là… phụt! Một nhánh cỏ dại mọc vọt lên giữa trang!"
         },
         {
           "speaker": "Vẹt Xanh",
@@ -103,7 +104,7 @@
     {
       "id": "ke-sach-da-doc",
       "title": "Những cuốn sách {name} đã đọc",
-      "goTo": "Mang đồ về tảng đá phẳng cho Nai Mơ",
+      "goTo": "Mang đồ về gốc sim tím cho Nai Mơ",
       "kind": "speak",
       "target": "nai-mo",
       "prompt": "Nai Mơ kẹp nhánh cỏ dại vào sổ lá, mắt lấp lánh: tớ đọc chín cuốn thơ rồi, đang đọc dở cuốn thứ mười. Còn cậu?\nNói tên những cuốn sách mà em đã đọc. Giới thiệu về một cuốn sách em thích nhất.",
@@ -119,6 +120,7 @@
     {
       "id": "doc-tho-tren-tang-da",
       "title": "Đọc bài thơ trên tảng đá phẳng",
+      "goTo": "Sang tảng đá phẳng, bài thơ hiện lên trên mặt đá",
       "kind": "read",
       "target": "tv2-t08-tang-da-phang",
       "textRef": "khi-trang-sach-mo-ra",
@@ -169,6 +171,7 @@
     {
       "id": "xep-hang-buoc-ra",
       "title": "Ai bước ra khỏi trang sách trước?",
+      "goTo": "Về gốc sim tím, Nai Mơ đang đọc khổ thơ đầu",
       "kind": "challenge",
       "mechanic": "sort",
       "target": "nai-mo",
@@ -420,9 +423,10 @@
     {
       "id": "song-vo-kho-cuoi",
       "title": "Khổ thơ cuối dạt dào như sóng",
+      "goTo": "Ra bãi cát nhỏ, Cánh Cụt Phao vừa lạch bạch bước ra từ trang sách",
       "kind": "challenge",
       "mechanic": "quiz",
-      "target": "tv2-t08-canh-buom-hien-ra",
+      "target": "tv2-t08-b16-canh-cut-phao",
       "prompt": "Một con sóng nhỏ vỗ vào chân {name}, mát rượi mà áo chẳng ướt tí nào. Nai Mơ thì thầm đọc khổ cuối.\nTheo em, khổ thơ cuối ý nói gì?",
       "choices": [
         {
@@ -472,7 +476,7 @@
     {
       "id": "vet-xanh-suu-tam-van",
       "title": "Vẹt Xanh sưu tầm vần",
-      "goTo": "Quay về tảng đá phẳng, Vẹt Xanh đang lẩm nhẩm vần",
+      "goTo": "Leo lên mỏm đá rêu, Vẹt Xanh đang lẩm nhẩm vần",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "target": "vet-xanh",
@@ -569,6 +573,7 @@
     {
       "id": "cau-ve-cuon-truyen",
       "title": "Một câu về cuốn truyện",
+      "goTo": "Về gốc sim tím, Nai Mơ mở sổ lá ra trang mới",
       "kind": "speak",
       "target": "nai-mo",
       "prompt": "Nai Mơ mở sổ lá ra trang mới tinh: mỗi bạn tặng tớ một câu về cuốn truyện mình đọc, tớ sẽ chép bằng mực hoa sim.\nĐặt một câu về một cuốn truyện.\nM: Truyện Tích Chu nói về tình cảm bà cháu.",
@@ -698,6 +703,7 @@
     {
       "id": "tang-tu-cho-do-dung",
       "title": "Tặng từ đẹp cho đồ dùng học tập",
+      "goTo": "Ra tảng đá phẳng, Nai Mơ vừa dốc hộp bút lên mặt đá",
       "kind": "challenge",
       "mechanic": "classify",
       "target": "tv2-t08-hop-but-nai-mo",
@@ -812,6 +818,7 @@
     {
       "id": "tieng-sinh-doi",
       "title": "Bộ sưu tập tiếng sinh đôi",
+      "goTo": "Lên mỏm đá rêu xem bộ sưu tập tiếng sinh đôi của Vẹt Xanh",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "target": "vet-xanh",
@@ -1025,6 +1032,7 @@
     {
       "id": "goc-hoc-tap-cua-bong",
       "title": "Góc học tập của Bống",
+      "goTo": "Về gốc sim tím, Nai Mơ lật tiếp một trang sách",
       "kind": "challenge",
       "mechanic": "classify",
       "target": "nai-mo",
@@ -1097,6 +1105,7 @@
     {
       "id": "danh-thuc-hop-but",
       "title": "Đánh thức hộp bút ngủ quên",
+      "goTo": "Ra tảng đá phẳng, cả hộp bút đang ngủ khì",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "target": "tv2-t08-hop-but-nai-mo",
@@ -1183,6 +1192,7 @@
     {
       "id": "nai-mo-luyen-tiec-sach",
       "title": "Nai Mơ không nỡ trả sách",
+      "goTo": "Quay lại gốc sim tím, Nai Mơ ôm sách không nỡ rời",
       "kind": "dialogue",
       "target": "nai-mo",
       "lines": [
@@ -1192,7 +1202,7 @@
         },
         {
           "speaker": "Vẹt Xanh",
-          "text": "Nhưng hẹn trả Gấu Trúc Tròn hôm nay rồi! Hôm nay rồi!"
+          "text": "Nhưng hẹn trả Gấu Me hôm nay rồi! Hôm nay rồi!"
         },
         {
           "speaker": "Nai Mơ",
@@ -1206,18 +1216,18 @@
         },
         {
           "text": "Trả đúng hẹn rồi mượn cuốn khác, cũng thần kì không kém!",
-          "reply": "Đúng thế, kệ của Gấu Trúc còn bao nhiêu trang sách đang chờ mở ra."
+          "reply": "Đúng thế, kệ của Gấu Me còn bao nhiêu trang sách đang chờ mở ra."
         }
       ]
     },
     {
       "id": "phieu-doc-sach-cua-nam",
       "title": "Tấm phiếu kẹp trong sách",
-      "goTo": "Ôm sách tới cửa thư viện gốc cây trả Gấu Trúc Tròn",
+      "goTo": "Ôm sách tới cửa thư viện gốc cây trả Gấu Me",
       "kind": "challenge",
       "mechanic": "multi-select",
-      "target": "gau-truc-tron",
-      "prompt": "Gấu Trúc Tròn từ… từ… rút ra một tấm phiếu ai đó kẹp quên trong sách. “À, phiếu của bạn Nam đây mà.”\nCho biết phiếu đọc sách dưới đây của bạn Nam có những nội dung gì.\nPHIẾU ĐỌC SÁCH\nNgày: 19/10/2021\nTên sách: Cái Tết của mèo con\nTên tác giả: Nguyễn Đình Thi\nĐiều em thích nhất: Mèo con rất dũng cảm.\nChọn tất cả các nội dung có trong phiếu.",
+      "target": "tv2-t08-b15-gau-me",
+      "prompt": "Gấu Me nhẹ tay rút ra một tấm phiếu ai đó kẹp quên trong sách. “À, phiếu của bạn Nam đây mà.”\nCho biết phiếu đọc sách dưới đây của bạn Nam có những nội dung gì.\nPHIẾU ĐỌC SÁCH\nNgày: 19/10/2021\nTên sách: Cái Tết của mèo con\nTên tác giả: Nguyễn Đình Thi\nĐiều em thích nhất: Mèo con rất dũng cảm.\nChọn tất cả các nội dung có trong phiếu.",
       "choices": [
         {
           "id": "ngay",
@@ -1273,7 +1283,7 @@
       },
       "feedback": {
         "right": [
-          "Đủ bốn nội dung! Gấu Trúc Tròn chậm rãi giơ ngón cái lên.",
+          "Đủ bốn nội dung! Gấu Me khẽ giơ ngón cái lên.",
           "Ngày, tên sách, tác giả, điều thích nhất: phiếu gọn mà đầy đủ ghê.",
           "Nai Mơ reo lên: tớ cũng sẽ làm một tấm y như thế!"
         ],
@@ -1288,10 +1298,10 @@
       "id": "ke-dieu-thich-nhat",
       "title": "Kể điều thích nhất trong sách",
       "kind": "speak",
-      "target": "gau-truc-tron",
-      "prompt": "Gấu Trúc Tròn ngồi phịch xuống gốc cây, chống cằm: cứ kể từ… từ… thôi, tớ có cả buổi chiều để nghe.\nNói về điều em thích nhất trong cuốn sách em đã đọc.",
+      "target": "tv2-t08-b15-gau-me",
+      "prompt": "Gấu Me ngồi xuống gốc cây, chống cằm: cứ kể thong thả thôi, tớ có cả buổi chiều để nghe.\nNói về điều em thích nhất trong cuốn sách em đã đọc.",
       "hints": [
-        "Cuốn sách {name} muốn kể cho Gấu Trúc Tròn tên là gì?",
+        "Cuốn sách {name} muốn kể cho Gấu Me tên là gì?",
         "Em thích nhân vật, đoạn truyện hay bức tranh nào nhất trong đó?",
         "Vì sao điều ấy làm em thích thú?"
       ],
@@ -1328,7 +1338,7 @@
       "title": "Kẹp sách lá phong",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Nai Mơ tặng {name} một chiếc kẹp sách bằng lá phong có chép bài thơ tí hon, còn Gấu Trúc Tròn đóng lên phiếu đọc sách một dấu móng gấu tròn xoe."
+      "text": "Nai Mơ tặng {name} một chiếc kẹp sách bằng lá phong có chép bài thơ tí hon, còn Gấu Me đóng lên phiếu đọc sách một dấu móng gấu thơm mùi me. Cánh Cụt Phao vẫy cánh chào rồi lạch bạch trở về trang sách."
     },
     {
       "id": "nhu-le-hoi-la-vang",

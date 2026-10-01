@@ -5,11 +5,11 @@
   "title": "Koala Na tặng gấu bông",
   "status": "active",
   "lesson": "toan2-t1-b22",
-  "summary": "Koala Na muốn tặng bớt gấu bông cho các em lớp Một nhưng cứ ngủ gật giữa chừng; {name} học trừ có nhớ để biết mỗi lần tặng xong kệ còn bao nhiêu gấu, rồi dắt Rô-bốt tìm đường tới món đồ chơi bí ẩn.",
+  "summary": "Koala Na muốn tặng bớt gấu bông cho các em lớp Một nhưng cứ ngủ gật giữa chừng; {name} chạy khắp xưởng học trừ có nhớ cùng Thỏ Ruy Băng ở bàn gói quà, Bác Huệ ở bậu cửa sổ hoa, Bác thủ kho Lâm ở tủ ba cánh cửa, rồi cùng Gấu Rô dắt Rô-bốt tìm đường tới món đồ chơi bí ẩn.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Koala Na, Lợn Rừng Đốm, Rô-bốt",
-    "where": "Xưởng đồ chơi: kệ gấu bông",
+    "who": "Koala Na, Thỏ Ruy Băng, Bác Huệ, Bác thủ kho Lâm, Gấu Rô, Rô-bốt",
+    "where": "Xưởng đồ chơi: kệ gấu bông, bàn gói quà, bậu cửa sổ hoa, tủ ba cánh cửa, bàn lưới số",
     "goal": "Gói xong quà gấu bông tặng các em lớp Một trước khi Na ngủ quên",
     "play": "Tính trừ có nhớ, giải bài toán, cắm hoa vào lọ, tìm đường cho sóc, xếp ghế cho chú lùn, chọn kết quả đúng, dẫn Rô-bốt qua lưới số",
     "learn": "Toán 2 Bài 22: phép trừ có nhớ số có hai chữ số cho số có một chữ số",
@@ -29,7 +29,10 @@
   "texts": {},
   "places": {
     "koala-na": "kệ gấu bông",
-    "lon-rung-dom": "kệ gấu bông"
+    "toan2-cd4-b22-tho-ruy-bang": "bàn gói quà",
+    "toan2-cd4-b22-bac-hue": "bậu cửa sổ hoa",
+    "toan2-cd4-b22-bac-thu-kho-lam": "tủ ba cánh cửa",
+    "toan2-cd4-b22-gau-mat": "bàn lưới số"
   },
   "steps": [
     {
@@ -44,8 +47,8 @@
           "text": "Ôi {name} đến rồi… Tớ định tặng bớt gấu bông cho các em lớp Một, mà vừa đếm tới 42 thì… khò…"
         },
         {
-          "speaker": "Lợn Rừng Đốm",
-          "text": "Na ơi tỉnh dậy! Cậu ngủ gật lên đúng con gấu thứ 43, nó bẹp như cái bánh đa rồi kìa."
+          "speaker": "Thỏ Ruy Băng",
+          "text": "Na ơi tỉnh dậy! Cậu gục đầu lên đúng con gấu thứ 43, nó bẹp dí như cái bánh đa rồi kìa."
         },
         {
           "speaker": "Koala Na",
@@ -70,7 +73,7 @@
       "target": "koala-na",
       "lines": [
         {
-          "speaker": "Lợn Rừng Đốm",
+          "speaker": "Thỏ Ruy Băng",
           "text": "Kệ trên có 4 túi, mỗi túi 10 con gấu, thêm 2 con lẻ: 42 con. Na muốn tặng 8 con."
         },
         {
@@ -81,7 +84,7 @@
       "choices": [
         {
           "text": "Mở một túi chục ra là được!",
-          "reply": "Lợn Rừng Đốm: Đúng rồi, tháo một túi 10 con ra cho đủ chỗ lấy."
+          "reply": "Thỏ Ruy Băng: Đúng rồi, tháo một túi 10 con ra cho đủ chỗ lấy."
         }
       ]
     },
@@ -89,19 +92,19 @@
       "id": "tru-co-nho-la-gi",
       "title": "Mở túi chục để trừ",
       "kind": "dialogue",
-      "target": "lon-rung-dom",
+      "target": "toan2-cd4-b22-tho-ruy-bang",
       "lines": [
         {
-          "speaker": "Lợn Rừng Đốm",
+          "speaker": "Thỏ Ruy Băng",
           "text": "Đặt tính 42 – 8: hàng đơn vị 2 không trừ được 8, mượn một chục thành 12. 12 trừ 8 bằng 4, viết 4, nhớ 1."
         },
         {
-          "speaker": "Lợn Rừng Đốm",
+          "speaker": "Thỏ Ruy Băng",
           "text": "Hàng chục: 4 trừ 1 đã mượn còn 3, viết 3. Vậy 42 – 8 = 34."
         },
         {
           "speaker": "Koala Na",
-          "text": "Mượn rồi phải trả, giống tớ mượn gối của Đốm vậy. Hì hì."
+          "text": "Mượn rồi phải trả, giống tớ mượn gối bông của Thỏ vậy. Hì hì."
         }
       ],
       "choices": [
@@ -109,12 +112,13 @@
           "text": "Mượn một chục, nhớ trả lại!",
           "reply": "Koala Na ôm gấu gật gù: Câu thần chú hay ghê, tớ thuộc rồi."
         }
-      ]
+      ],
+      "goTo": "Sang bàn gói quà, Thỏ Ruy Băng đang tháo một túi chục gấu bông"
     },
     {
       "id": "goi-qua-dot-mot",
       "title": "Gói quà đợt một",
-      "target": "koala-na",
+      "target": "toan2-cd4-b22-tho-ruy-bang",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "prompt": "Mỗi phép trừ là một lần Na lấy gấu ra khỏi kệ.",
@@ -283,7 +287,7 @@
         "right": [
           "Tám túi quà buộc nơ xong, Na chưa kịp ngáp lần nào!",
           "Mượn một chục, trả một chục, {name} làm đều tay quá.",
-          "Lợn Rừng Đốm dán nhãn từng túi: đúng hết, không sót con gấu nào."
+          "Thỏ Ruy Băng dán nhãn từng túi: đúng hết, không sót con gấu nào."
         ],
         "wrong": [
           "Có phép trừ quên trả 1 ở hàng chục rồi kìa.",
@@ -339,15 +343,16 @@
       },
       "answer": {
         "value": 27
-      }
+      },
+      "goTo": "Về kệ gấu bông, Koala Na ôm gối kể chuyện bà kể trước giờ ngủ"
     },
     {
       "id": "goi-qua-dot-hai",
       "title": "Gói quà đợt hai",
-      "target": "lon-rung-dom",
+      "target": "toan2-cd4-b22-tho-ruy-bang",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Lợn Rừng Đốm bê thêm hai thùng gấu nữa ra. Đặt tính rồi tính.",
+      "prompt": "Thỏ Ruy Băng bê thêm hai thùng gấu nữa ra. Đặt tính rồi tính.",
       "template": "42 – 5 = {{b1}}   51 – 9 = {{b2}}   63 – 7 = {{b3}}   86 – 8 = {{b4}}\n63 – 8 = {{b5}}   38 – 9 = {{b6}}   40 – 2 = {{b7}}   92 – 4 = {{b8}}",
       "blanks": [
         {
@@ -511,7 +516,7 @@
       },
       "feedback": {
         "right": [
-          "Hai thùng gấu đã chia xong, Đốm mừng quá vấp cả vào thùng rỗng.",
+          "Hai thùng gấu đã chia xong, Thỏ Ruy Băng mừng quá vấp cả vào thùng rỗng.",
           "Tám phép trừ, tám lần nhớ 1, không trật nhịp nào!",
           "Koala Na vỗ tay bộp bộp, lần này Na thức suốt luôn."
         ],
@@ -532,12 +537,13 @@
           "b7": "o38",
           "b8": "o88"
         }
-      }
+      },
+      "goTo": "Chạy ra bàn gói quà, Thỏ Ruy Băng vừa bê thêm hai thùng gấu"
     },
     {
       "id": "cam-hoa-lo-gau",
       "title": "Cắm hoa trang trí",
-      "target": "koala-na",
+      "target": "toan2-cd4-b22-bac-hue",
       "kind": "challenge",
       "mechanic": "classify",
       "prompt": "Na muốn mỗi túi quà có một lọ hoa xinh. Cắm hoa vào lọ thích hợp.",
@@ -590,7 +596,7 @@
         "right": [
           "Ba lọ hoa thơm phức, Na hít hà rồi… suýt ngủ tiếp.",
           "Lọ nào cũng đúng hoa, đẹp như tiệm hoa thật.",
-          "Lợn Rừng Đốm buộc nơ quanh lọ: quá chuẩn luôn!"
+          "Bác Huệ buộc nơ quanh lọ: quá chuẩn luôn!"
         ],
         "wrong": [
           "Có một bông hoa đang lạc sang lọ hàng xóm.",
@@ -604,7 +610,8 @@
           "hoa-hoa-48": "nhom-lo-50-2",
           "hoa-hoa-39": "nhom-lo-46-7"
         }
-      }
+      },
+      "goTo": "Ra bậu cửa sổ hoa, Bác Huệ trồng hoa đang tỉa từng bông thật xinh"
     },
     {
       "id": "duong-ve-nha-soc",
@@ -794,12 +801,13 @@
           "b7": "o57",
           "b8": "nha-mai-xanh"
         }
-      }
+      },
+      "goTo": "Quay về kệ gấu bông, Koala Na ôm chú sóc nhồi bông đang đòi về nhà"
     },
     {
       "id": "hong-va-cuc",
       "title": "Vườn hoa sau xưởng",
-      "target": "koala-na",
+      "target": "toan2-cd4-b22-bac-hue",
       "kind": "riddle",
       "question": "Na ngó qua cửa sổ xưởng. Trong vườn có 30 cây hoa hồng và hoa cúc. Mi đếm được có 9 cây hoa cúc. Hỏi trong vườn có bao nhiêu cây hoa hồng?",
       "skill": "bai-toan-loi-van",
@@ -831,7 +839,8 @@
       },
       "answer": {
         "value": 21
-      }
+      },
+      "goTo": "Lại ra bậu cửa sổ hoa, Bác Huệ chỉ vườn hồng và cúc bên ngoài"
     },
     {
       "id": "na-chon-cach-goi",
@@ -844,7 +853,7 @@
           "text": "Còn mấy câu đố của các em lớp Một gửi lên nữa. {name} ơi, mình gói nhanh cho kịp, hay gói thật đẹp?"
         },
         {
-          "speaker": "Lợn Rừng Đốm",
+          "speaker": "Thỏ Ruy Băng",
           "text": "Gói nhanh thì Na khỏi ngủ gật. Gói đẹp thì các em vui hơn. Khó chọn ghê!"
         }
       ],
@@ -855,9 +864,10 @@
         },
         {
           "text": "Gói thật đẹp, có cả nơ!",
-          "reply": "Lợn Rừng Đốm lôi ra cuộn ruy băng dài ngoằng: Để tớ lo phần nơ!"
+          "reply": "Thỏ Ruy Băng lôi ra cuộn ruy băng dài ngoằng: Để tớ lo phần nơ!"
         }
-      ]
+      ],
+      "goTo": "Về kệ gấu bông, Koala Na dụi mắt chờ cậu bàn cách gói quà"
     },
     {
       "id": "chuoi-so-va-o-to",
@@ -1033,7 +1043,7 @@
     {
       "id": "meo-nap-sau-cua",
       "title": "Mèo trốn sau cửa nào?",
-      "target": "lon-rung-dom",
+      "target": "toan2-cd4-b22-bac-thu-kho-lam",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "prompt": "Con mèo của xưởng chui tọt vào ba cánh cửa tủ: cửa A ghi 40 – 7, cửa B ghi 53 – 9, cửa C ghi 50 – 4.",
@@ -1074,7 +1084,7 @@
       },
       "feedback": {
         "right": [
-          "Meo! Mèo nhảy ra từ cửa C, làm Đốm giật mình đánh rơi búa.",
+          "Meo! Mèo nhảy ra từ cửa C, làm bác Lâm giật mình đánh rơi búa.",
           "Đúng cửa C, kết quả lớn nhất là 46.",
           "Trốn kĩ mấy cũng không thoát được phép trừ của {name}."
         ],
@@ -1088,12 +1098,13 @@
         "fills": {
           "b1": "c"
         }
-      }
+      },
+      "goTo": "Tới tủ ba cánh cửa, Bác thủ kho Lâm nghe tiếng meo meo trong tủ"
     },
     {
       "id": "can-mai-va-mi",
-      "title": "Chiếc cân ở góc kệ",
-      "target": "lon-rung-dom",
+      "title": "Chiếc cân cạnh tủ",
+      "target": "toan2-cd4-b22-bac-thu-kho-lam",
       "kind": "riddle",
       "question": "Hai chị em đến nhận quà và đứng lên cân thử. Mai cân nặng 23 kg. Mi nhẹ hơn Mai 5 kg. Hỏi Mi cân nặng bao nhiêu ki-lô-gam?",
       "skill": "bai-toan-loi-van",
@@ -1129,11 +1140,11 @@
     },
     {
       "id": "bang-hieu-gau",
-      "title": "Bảng sổ sách của Đốm",
-      "target": "lon-rung-dom",
+      "title": "Bảng sổ sách của Thỏ",
+      "target": "toan2-cd4-b22-tho-ruy-bang",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Lợn Rừng Đốm ghi sổ: có bao nhiêu gấu, tặng đi bao nhiêu, còn lại bao nhiêu. Số ?",
+      "prompt": "Thỏ Ruy Băng ghi sổ: có bao nhiêu gấu, tặng đi bao nhiêu, còn lại bao nhiêu. Số ?",
       "template": "Số bị trừ | 57 | 70 | 25 | 53 | 60\nSố trừ | 8 | 7 | 9 | 4 | 30\nHiệu | 49 | {{b1}} | {{b2}} | {{b3}} | {{b4}}",
       "blanks": [
         {
@@ -1214,7 +1225,7 @@
       ],
       "support": {
         "guide": [
-          "Trong sổ của Đốm, hiệu bằng số bị trừ bớt đi số trừ.",
+          "Trong sổ của Thỏ, hiệu bằng số bị trừ bớt đi số trừ.",
           "Cột mẫu: 57 – 8 = 49."
         ],
         "hint": "70 – 7: 10 – 7 = 3, viết 3 nhớ 1.",
@@ -1225,7 +1236,7 @@
       },
       "feedback": {
         "right": [
-          "Sổ sách gọn gàng, Đốm hứa từ nay ghi bằng bút chứ không bằng mùn cưa.",
+          "Sổ sách gọn gàng, Thỏ Ruy Băng hứa từ nay ghi bằng bút chứ không bằng mùn cưa.",
           "Hiệu nào cũng đúng, cột mẫu chắc cũng phải nể.",
           "Na đọc sổ to: không thiếu, không thừa con gấu nào!"
         ],
@@ -1242,12 +1253,13 @@
           "b3": "o49",
           "b4": "o30"
         }
-      }
+      },
+      "goTo": "Sang bàn gói quà, Thỏ Ruy Băng giở cuốn sổ ghi số gấu"
     },
     {
       "id": "ghe-cho-chu-lun",
       "title": "Ghế cho chú lùn",
-      "target": "lon-rung-dom",
+      "target": "toan2-cd4-b22-bac-thu-kho-lam",
       "kind": "challenge",
       "mechanic": "classify",
       "prompt": "Ba chú lùn gỗ đòi ngồi ghế ghi phép tính 31 – 8, 50 – 3, 82 – 7. Mỗi chú lùn sẽ ngồi lên chiếc ghế ghi phép tính có kết quả là số trên áo của mình. Tìm ghế cho các chú lùn.",
@@ -1314,7 +1326,8 @@
           "lun-chu-lun-ao-xanh-la-so-23": "nhom-ghe-31-8",
           "lun-chu-lun-ao-vang-so-75": "nhom-ghe-82-7"
         }
-      }
+      },
+      "goTo": "Quay lại tủ ba cánh cửa, Bác thủ kho Lâm kê ba chiếc ghế cho chú lùn"
     },
     {
       "id": "chon-ket-qua-dung",
@@ -1382,7 +1395,8 @@
           "a-b-54",
           "b-c-52"
         ]
-      }
+      },
+      "goTo": "Chạy về kệ gấu bông, Koala Na tỉnh như sáo giơ bảng đố"
     },
     {
       "id": "buc-tranh-dinh-muc",
@@ -1424,7 +1438,7 @@
     {
       "id": "robot-tim-do-choi",
       "title": "Dẫn Rô-bốt qua lưới số",
-      "target": "koala-na",
+      "target": "toan2-cd4-b22-gau-mat",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "prompt": "Trò chơi cuối: Na đọc phép tính, {name} tính và dẫn Rô-bốt đi; ai dẫn tới nơi trước thì thắng. Lưới số: hàng 1: 17, 28, 28, 34, 28 tới tàu hoả; hàng 2: 23, 34, 17, 23, 34 tới ô tô; hàng 3: 34, 17, 17, 23, 28 tới máy bay. Rô-bốt đi theo thứ tự các số là kết quả của các phép tính dưới đây. Rô-bốt sẽ đến được tàu hoả, ô tô hay máy bay?",
@@ -1569,7 +1583,8 @@
           "b5": "o28",
           "b6": "may-bay"
         }
-      }
+      },
+      "goTo": "Ra bàn lưới số, Gấu Rô bật Rô-bốt, Na ôm gấu theo đọc phép tính"
     },
     {
       "id": "gau-bong-cam-on",

@@ -5,11 +5,11 @@
   "title": "Câu đố trước cửa nhà kính",
   "status": "active",
   "lesson": "toan2-t1-b14",
-  "summary": "Vẹt Xanh giữ chìa khóa nhà kính và chỉ chịu mở cửa khi cả vườn giải hết câu đố cộng, trừ qua 10 của nó; {name} trổ tài tính nhẩm rồi đấu với Vẹt một ván Cầu thang – cầu trượt.",
+  "summary": "Vẹt Xanh giữ chìa khóa nhà kính và chỉ chịu mở cửa khi cả vườn giải hết câu đố cộng, trừ qua 10 của nó; {name} chạy quanh nhà kính giúp Ông Sáu lùa bồ câu, cùng Gấu Bơ nhìn qua ô kính, xem tranh với Cáo Hoa rồi đấu với Vẹt một ván Cầu thang – cầu trượt.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Vẹt Xanh",
-    "where": "Vườn trường: cửa nhà kính, sân gạch trước nhà kính",
+    "who": "Vẹt Xanh, Ông Sáu, Gấu Bơ, Cáo Hoa",
+    "where": "Vườn trường: cửa nhà kính, chuồng bồ câu sau nhà kính, ô cửa kính bên hông, lối giữa nhà kính, sân gạch trước nhà kính",
     "goal": "Giải hết câu đố của Vẹt Xanh để nhà kính được mở cửa",
     "play": "Tìm chìa khóa, tính nhẩm, đưa chim về chuồng, điền theo mũi tên, chọn câu đúng, tìm thức ăn cho con vật, chọn phép tính, chơi Cầu thang – cầu trượt",
     "learn": "Toán 2 Bài 14: luyện tập chung phép cộng, phép trừ (qua 10) trong phạm vi 20",
@@ -30,6 +30,9 @@
   "places": {
     "vet-xanh": "cửa nhà kính",
     "tim-chia-khoa": "cửa nhà kính",
+    "toan2-cd2-b14-ong-sau": "chuồng bồ câu sau nhà kính",
+    "toan2-cd2-b14-gau-mat": "ô cửa kính bên hông",
+    "toan2-cd2-b14-cao-hoa": "lối giữa nhà kính",
     "vet-xanh-san-gach": "sân gạch trước nhà kính"
   },
   "steps": [
@@ -369,7 +372,8 @@
     {
       "id": "chim-bo-cau-ve-chuong",
       "title": "Bồ câu về chuồng",
-      "target": "vet-xanh",
+      "goTo": "Vòng ra chuồng bồ câu sau nhà kính, Ông Sáu đang rắc thóc gọi chim",
+      "target": "toan2-cd2-b14-ong-sau",
       "kind": "challenge",
       "mechanic": "classify",
       "prompt": "Đàn bồ câu bạn của Vẹt bay ngang mái kính, con nào cũng đeo một phép tính. Tìm chuồng cho mỗi con chim.",
@@ -431,7 +435,7 @@
       "feedback": {
         "right": [
           "Gù gù gù! Cả đàn bồ câu chui vào chuồng ấm áp.",
-          "Không chú chim nào đậu nhầm mái, Vẹt Xanh vỗ cánh khen.",
+          "Không chú chim nào đậu nhầm mái, Ông Sáu vuốt râu cười khà khà.",
           "Phép cộng hay phép trừ cậu đều tính chuẩn cả."
         ],
         "wrong": [
@@ -453,7 +457,8 @@
     {
       "id": "gia-sach-vo",
       "title": "Giá sách trong nhà kính",
-      "target": "vet-xanh",
+      "goTo": "Sang ô cửa kính bên hông, Gấu Bơ đang áp mũi nhìn vào trong",
+      "target": "toan2-cd2-b14-gau-mat",
       "kind": "riddle",
       "question": "Vẹt Xanh ghé mắt qua ô kính, nhìn thấy giá sách của lớp học vườn. Trên giá có 9 quyển sách và 8 quyển vở. Hỏi trên giá có tất cả bao nhiêu quyển sách và vở?",
       "skill": "bai-toan-loi-van",
@@ -473,7 +478,7 @@
       },
       "feedback": {
         "right": [
-          "Mười bảy quyển, Vẹt Xanh đếm lại bằng mỏ: chuẩn!",
+          "Mười bảy quyển, Gấu Bơ đếm lại bằng ngón tay mũm mĩm: chuẩn!",
           "Gộp sách với vở gọn gàng như xếp lên giá.",
           "Cậu giải nhanh hơn Vẹt kịp hỏi \"đố! đố!\"."
         ],
@@ -490,7 +495,7 @@
     {
       "id": "mui-ten-quanh-chau",
       "title": "Mũi tên quanh chậu cây",
-      "target": "vet-xanh",
+      "target": "toan2-cd2-b14-gau-mat",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "prompt": "Vẹt Xanh vẽ mũi tên nối các chậu cây trong nhà kính: bắt đầu từ chậu số 7, cộng 9, trừ 8, cộng 5. Số ?",
@@ -588,6 +593,7 @@
     {
       "id": "de-truoc-kho-sau",
       "title": "Đố dễ hay đố khó?",
+      "goTo": "Về cửa nhà kính, Vẹt Xanh đang lắc chùm chìa khóa leng keng",
       "kind": "dialogue",
       "target": "vet-xanh",
       "lines": [
@@ -883,7 +889,8 @@
     {
       "id": "cau-bay-dung-sai",
       "title": "Câu bẫy của Vẹt",
-      "target": "vet-xanh",
+      "goTo": "Ra sân gạch trước nhà kính, Vẹt Xanh nhảy lò cò chờ đố câu bẫy",
+      "target": "vet-xanh-san-gach",
       "kind": "challenge",
       "mechanic": "multi-select",
       "prompt": "Vẹt Xanh cười ranh mãnh: có câu thật, có câu bẫy. Đ, S ? Chọn tất cả các câu đúng (Đ); câu không chọn là sai (S).",
@@ -945,7 +952,8 @@
     {
       "id": "tranh-trai-he",
       "title": "Tranh vẽ trại hè",
-      "target": "vet-xanh",
+      "goTo": "Lách qua nửa cửa vừa hé vào lối giữa nhà kính, Cáo Hoa đang treo tranh",
+      "target": "toan2-cd2-b14-cao-hoa",
       "kind": "riddle",
       "question": "Vẹt Xanh khoe bức tranh treo trong nhà kính. Trong đợt đi trại hè, Nam vẽ được 11 bức tranh, Mai vẽ được ít hơn Nam 3 bức tranh. Hỏi Mai vẽ được bao nhiêu bức tranh?",
       "skill": "bai-toan-loi-van",
@@ -965,9 +973,9 @@
       },
       "feedback": {
         "right": [
-          "Tám bức tranh của Mai được Vẹt treo kín một vách kính!",
+          "Tám bức tranh của Mai được Cáo Hoa treo kín một vách kính!",
           "Ít hơn thì bớt đi, cậu nhớ bài hôm trước rồi.",
-          "Bức tranh thứ chín Vẹt vẽ thêm… hình chính cậu đấy!"
+          "Bức tranh thứ chín Cáo Hoa vẽ thêm… hình chính cậu đấy!"
         ],
         "wrong": [
           "Mai vẽ ít hơn Nam, vậy kết quả phải bé hơn 11.",
@@ -982,7 +990,7 @@
     {
       "id": "thuc-an-cho-thu",
       "title": "Bữa trưa của các con vật",
-      "target": "vet-xanh",
+      "target": "toan2-cd2-b14-cao-hoa",
       "kind": "challenge",
       "mechanic": "classify",
       "prompt": "Đến giờ trưa, các con vật trong vườn kéo đến cửa nhà kính đòi ăn. Tính rồi tìm thức ăn cho mỗi con vật.",
@@ -1068,7 +1076,8 @@
     {
       "id": "phep-tinh-be-nhat",
       "title": "Phép tính bé nhất",
-      "target": "vet-xanh",
+      "goTo": "Chạy ra sân gạch trước nhà kính, Vẹt Xanh giơ ba tấm thẻ chờ cậu",
+      "target": "vet-xanh-san-gach",
       "kind": "challenge",
       "mechanic": "quiz",
       "prompt": "Vẹt Xanh giơ ba tấm thẻ. Chọn câu trả lời đúng. a) Phép tính nào dưới đây có kết quả bé nhất? A. 15 – 9 B. 13 – 8 C. 12 – 5",
@@ -1120,7 +1129,7 @@
     {
       "id": "phep-tinh-lon-nhat",
       "title": "Phép tính lớn nhất",
-      "target": "vet-xanh",
+      "target": "vet-xanh-san-gach",
       "kind": "challenge",
       "mechanic": "quiz",
       "prompt": "Vẹt Xanh đổi sang ba thẻ phép cộng. Chọn câu trả lời đúng. b) Phép tính nào dưới đây có kết quả lớn nhất? A. 7 + 8 B. 9 + 5 C. 8 + 9",
@@ -1172,6 +1181,7 @@
     {
       "id": "tinh-ba-so",
       "title": "Ba số liền một hàng",
+      "goTo": "Quay lại cửa nhà kính, chỉ còn đúng một ổ khóa chưa mở",
       "target": "vet-xanh",
       "kind": "challenge",
       "mechanic": "fill-blank",

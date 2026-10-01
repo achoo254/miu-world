@@ -5,11 +5,11 @@
   "title": "Túi thư của Chó Mực",
   "status": "active",
   "lesson": "toan2-t1-b05",
-  "summary": "Thư gửi các lớp ghi phép tính thay cho tên lớp, lại thêm chồng bưu thiếp Gấu Tuyết Bông gửi từ phương xa; {name} giúp Chó Mực tính nhẩm, đặt tính, tìm chữ số bị nhòe để không lá thư nào đưa nhầm.",
+  "summary": "Thư gửi các lớp ghi phép tính thay cho tên lớp, lại thêm chồng bưu thiếp Cáo Tuyết Mi gửi từ phương xa; {name} chạy khắp cổng trường giúp Chó Mực, bác Lộc, cô bưu tá Yến tính nhẩm, đặt tính, tìm chữ số bị nhòe để không lá thư nào đưa nhầm.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Chó Mực, Gấu Tuyết Bông",
-    "where": "Sân trường: cổng trường, hộp thư lớp 2",
+    "who": "Chó Mực, bác bảo vệ Lộc, cô bưu tá Yến, Mèo Bạc Hà, Cáo Tuyết Mi, chú hề Tò Te",
+    "where": "Sân trường: cổng trường, bốt bảo vệ, chỗ dựng xe đạp thư, gốc bàng, hộp thư lớp 2, sân khấu nhỏ",
     "goal": "Đưa đúng mọi lá thư và bưu thiếp tới tay người nhận",
     "play": "Nhặt phong bì, tính nhẩm, đặt tính, xếp mây, chọn câu đúng, chia ô dù, tìm chữ số nhòe, đố bưu thiếp",
     "learn": "Toán 2 Bài 5: ôn tập phép cộng, phép trừ (không nhớ) trong phạm vi 100",
@@ -30,7 +30,11 @@
   "places": {
     "cho-muc": "cổng trường",
     "nhat-phong-bi": "cổng trường",
-    "gau-tuyet-bong": "hộp thư lớp 2"
+    "toan2-cd1-b05-bac-loc": "bốt bảo vệ",
+    "toan2-cd1-b05-co-yen": "xe đạp thư",
+    "toan2-cd1-b05-meo-bac-ha": "gốc bàng",
+    "toan2-cd1-b05-cao-tuyet-mi": "hộp thư lớp 2",
+    "toan2-cd1-b05-chu-he-to-te": "sân khấu nhỏ"
   },
   "steps": [
     {
@@ -259,7 +263,8 @@
     {
       "id": "dat-tinh-phong-bi",
       "title": "Bốn phong bì đặt tính",
-      "target": "cho-muc",
+      "goTo": "Sang bốt bảo vệ, bác Lộc đang giữ hộ bốn phong bì dày cộp",
+      "target": "toan2-cd1-b05-bac-loc",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "prompt": "Bốn phong bì dày hơn, phải viết ra mới tính được. Đặt tính rồi tính.",
@@ -355,7 +360,7 @@
       "feedback": {
         "right": [
           "Bốn phép tính thẳng cột, phong bì nào cũng tìm được chủ.",
-          "Chó Mực đóng dấu \"Đã tính đúng\" kêu cộp cộp.",
+          "Bác Lộc đóng dấu \"Đã tính đúng\" kêu cộp cộp.",
           "Cộng trừ không nhớ mà cậu làm như múa."
         ],
         "wrong": [
@@ -376,10 +381,10 @@
     {
       "id": "may-cung-ket-qua",
       "title": "Bưu thiếp bầu trời",
-      "target": "cho-muc",
+      "target": "toan2-cd1-b05-bac-loc",
       "kind": "challenge",
       "mechanic": "classify",
-      "prompt": "Trong túi có tấm bưu thiếp Gấu Tuyết Bông gửi: một rô-bốt nhảy dù chào \"Xin chào!\" giữa sáu đám mây ghi phép tính. Hai phép tính nào dưới đây có cùng kết quả? Kéo mỗi đám mây vào đám mây bạn của nó.",
+      "prompt": "Trong túi có tấm bưu thiếp Cáo Tuyết Mi gửi: một rô-bốt nhảy dù chào \"Xin chào!\" giữa sáu đám mây ghi phép tính. Hai phép tính nào dưới đây có cùng kết quả? Kéo mỗi đám mây vào đám mây bạn của nó.",
       "groups": [
         {
           "id": "nhom-20-40",
@@ -429,7 +434,7 @@
         "right": [
           "Ba cặp mây ôm nhau bay, rô-bốt nhảy dù hạ cánh êm ru.",
           "Đổi chỗ số hạng, tổng không đổi, cậu nhận ra ngay!",
-          "Bưu thiếp của Bông giờ là bức tranh mây xếp đôi."
+          "Bưu thiếp của Mi giờ là bức tranh mây xếp đôi."
         ],
         "wrong": [
           "Tính ra kết quả của từng đám mây trước nhé.",
@@ -448,7 +453,8 @@
     {
       "id": "so-do-con-tem",
       "title": "Con tem chạy vòng",
-      "target": "cho-muc",
+      "goTo": "Ra chỗ dựng xe đạp thư, cô bưu tá Yến đang dò đường cho con tem",
+      "target": "toan2-cd1-b05-co-yen",
       "kind": "challenge",
       "mechanic": "fill-blank",
       "prompt": "Một con tem phải chạy qua ba trạm bưu điện, mỗi trạm cộng hoặc trừ đi một số. Số ?",
@@ -546,9 +552,9 @@
     {
       "id": "thuyen-cho-khach",
       "title": "Bưu thiếp trên sông",
-      "target": "cho-muc",
+      "target": "toan2-cd1-b05-co-yen",
       "kind": "riddle",
-      "question": "Bưu thiếp thứ hai của Bông vẽ một chiếc thuyền trên sông. Trên thuyền có 12 hành khách, đến bến có 3 hành khách lên thuyền. Hỏi lúc đó trên thuyền có tất cả bao nhiêu hành khách?",
+      "question": "Bưu thiếp thứ hai của Mi vẽ một chiếc thuyền trên sông. Trên thuyền có 12 hành khách, đến bến có 3 hành khách lên thuyền. Hỏi lúc đó trên thuyền có tất cả bao nhiêu hành khách?",
       "skill": "bai-toan-loi-van",
       "curriculumRef": [
         "toan2-t1-b05-luyen-tap-5"
@@ -566,9 +572,9 @@
       },
       "feedback": {
         "right": [
-          "Thuyền chở đủ 15 người, Bông vẫy tay từ mũi thuyền!",
+          "Thuyền chở đủ 15 người, Mi vẫy tay từ mũi thuyền!",
           "Thêm khách là cộng, cậu hiểu bài ngay.",
-          "Chó Mực ghim bưu thiếp lên tường: lời giải chuẩn!"
+          "Cô Yến ghim bưu thiếp lên giỏ xe: lời giải chuẩn!"
         ],
         "wrong": [
           "Khách lên thuyền thêm thì số người nhiều lên đấy.",
@@ -583,6 +589,7 @@
     {
       "id": "dung-sai-dat-tinh",
       "title": "Phong bì ai tính hộ?",
+      "goTo": "Chạy về cổng trường, Chó Mực đang hít hà ba phong bì lạ",
       "target": "cho-muc",
       "kind": "challenge",
       "mechanic": "multi-select",
@@ -833,7 +840,8 @@
     {
       "id": "o-du-bai-bien",
       "title": "Bưu thiếp bãi biển",
-      "target": "cho-muc",
+      "goTo": "Ra gốc bàng, Mèo Bạc Hà đang ngắm tấm bưu thiếp bãi biển",
+      "target": "toan2-cd1-b05-meo-bac-ha",
       "kind": "challenge",
       "mechanic": "classify",
       "prompt": "Bưu thiếp thứ ba: sáu chiếc ô che nắng trên bãi biển, mỗi chiếc ghi một phép tính. Những phép tính nào dưới đây có kết quả bé hơn 50? Những phép tính nào dưới đây có kết quả lớn hơn 50?",
@@ -891,7 +899,7 @@
       },
       "feedback": {
         "right": [
-          "Bãi biển chia hai phe ô gọn gàng, Bông chắc vui lắm!",
+          "Bãi biển chia hai phe ô gọn gàng, Mi chắc vui lắm!",
           "So với 50 chuẩn từng chiếc ô, nắng cũng phải khen.",
           "Ô bé ô lớn về đúng chỗ, sóng vỗ rì rào tán thưởng."
         ],
@@ -915,6 +923,7 @@
     {
       "id": "chu-so-bi-nhoe",
       "title": "Chữ số bị nhòe",
+      "goTo": "Quay lại cổng trường, Chó Mực đang dí mũi vào phong bì ướt",
       "target": "cho-muc",
       "kind": "challenge",
       "mechanic": "fill-blank",
@@ -1143,7 +1152,8 @@
     {
       "id": "trau-bo-bac-binh",
       "title": "Thư của bác Bình",
-      "target": "cho-muc",
+      "goTo": "Ra gốc bàng, Mèo Bạc Hà vừa bóc lá thư gửi từ trang trại",
+      "target": "toan2-cd1-b05-meo-bac-ha",
       "kind": "riddle",
       "question": "Có một lá thư từ trang trại gửi Bò Sữa Mơ. Đàn trâu và bò của nhà bác Bình có 28 con, trong đó có 12 con trâu. Hỏi nhà bác Bình có bao nhiêu con bò?",
       "skill": "bai-toan-loi-van",
@@ -1179,39 +1189,39 @@
     },
     {
       "id": "bong-ghe-tham",
-      "title": "Gấu Tuyết Bông ghé thăm",
-      "goTo": "Mang bưu thiếp tới hộp thư lớp 2, Gấu Tuyết Bông vừa tới",
+      "title": "Cáo Tuyết Mi ghé thăm",
+      "goTo": "Mang bưu thiếp tới hộp thư lớp 2, Cáo Tuyết Mi vừa tới",
       "kind": "dialogue",
-      "target": "gau-tuyet-bong",
+      "target": "toan2-cd1-b05-cao-tuyet-mi",
       "lines": [
         {
-          "speaker": "Gấu Tuyết Bông",
+          "speaker": "Cáo Tuyết Mi",
           "text": "Ơ kìa, bưu thiếp của tớ về tới đây rồi! Tớ đi xa quá nên đành gửi kèm mấy câu đố cho đỡ nhớ trường."
         },
         {
           "speaker": "Chó Mực",
-          "text": "Bông ơi, thùng quà cậu gửi còn có hai giỏ trái cây và một bức tranh tam giác nữa đấy."
+          "text": "Mi ơi, thùng quà cậu gửi còn có hai giỏ trái cây và một bức tranh tam giác nữa đấy."
         },
         {
-          "speaker": "Gấu Tuyết Bông",
+          "speaker": "Cáo Tuyết Mi",
           "text": "{name} mở giỏ cam trước hay giỏ táo trước? Giỏ nào cũng có câu đố cả!"
         }
       ],
       "choices": [
         {
           "text": "Mở giỏ cam trước!",
-          "reply": "Gấu Tuyết Bông: Cam phương Bắc mọng nước lắm, đố đây!"
+          "reply": "Cáo Tuyết Mi: Cam phương Bắc mọng nước lắm, đố đây!"
         },
         {
           "text": "Mở giỏ táo trước!",
-          "reply": "Gấu Tuyết Bông: Táo để sau cho giòn, cứ đố giỏ cam đã nhé!"
+          "reply": "Cáo Tuyết Mi: Giỏ táo thì chú hề Tò Te đang giữ, cứ đố giỏ cam đã nhé!"
         }
       ]
     },
     {
       "id": "gio-cam-phuong-xa",
       "title": "Giỏ cam phương xa",
-      "target": "gau-tuyet-bong",
+      "target": "toan2-cd1-b05-cao-tuyet-mi",
       "kind": "challenge",
       "mechanic": "multi-select",
       "prompt": "Ba quả cam trong giỏ ghi phép tính. a) Những phép tính nào dưới đây có cùng kết quả?",
@@ -1246,7 +1256,7 @@
       },
       "feedback": {
         "right": [
-          "Hai quả cam cùng 95, Bông thưởng cậu một múi cam!",
+          "Hai quả cam cùng 95, Mi thưởng cậu một múi cam!",
           "Chọn đúng cặp sinh đôi trong giỏ cam rồi.",
           "Tính nhẩm siêu nhanh, cam còn chưa kịp lăn."
         ],
@@ -1266,7 +1276,8 @@
     {
       "id": "gio-tao-be-nhat",
       "title": "Quả táo nhỏ nhất",
-      "target": "gau-tuyet-bong",
+      "goTo": "Sang sân khấu nhỏ, chú hề Tò Te đang tung hứng giỏ táo của Mi",
+      "target": "toan2-cd1-b05-chu-he-to-te",
       "kind": "challenge",
       "mechanic": "quiz",
       "prompt": "Ba quả táo trong giỏ cũng ghi phép tính. b) Phép tính nào dưới đây có kết quả bé nhất?",
@@ -1301,7 +1312,7 @@
       },
       "feedback": {
         "right": [
-          "Táo 34 bé nhất, Bông cắn rộp một miếng mừng cậu!",
+          "Táo 34 bé nhất, chú hề Tò Te cắn rộp một miếng mừng cậu!",
           "Ba quả táo, một lần chọn trúng, xuất sắc.",
           "So kết quả gọn như gọt táo vậy."
         ],
@@ -1318,9 +1329,9 @@
     {
       "id": "rap-xiec-ghe-trong",
       "title": "Vé xem xiếc",
-      "target": "gau-tuyet-bong",
+      "target": "toan2-cd1-b05-chu-he-to-te",
       "kind": "riddle",
-      "question": "Bông kể: tớ vừa đi xem xiếc ở phương Bắc, ba chú hề tung bóng vui lắm. Một rạp xiếc có 96 ghế, trong đó 62 ghế đã có khán giả ngồi. Hỏi trong rạp xiếc còn bao nhiêu ghế trống?",
+      "question": "Chú hề Tò Te kể: chú vừa diễn xiếc ở phương Bắc, ba chú hề tung bóng vui lắm. Một rạp xiếc có 96 ghế, trong đó 62 ghế đã có khán giả ngồi. Hỏi trong rạp xiếc còn bao nhiêu ghế trống?",
       "skill": "bai-toan-loi-van",
       "curriculumRef": [
         "toan2-t1-b05-luyen-tap-3-4"
@@ -1339,8 +1350,8 @@
       "feedback": {
         "right": [
           "Còn 34 ghế trống, cả lớp mình đi xem được rồi!",
-          "Chú hề tung cho cậu một quả bóng khen thưởng.",
-          "Bông vỗ tay bộp bộp: đúng như rạp xiếc tớ đếm!"
+          "Chú hề Tò Te tung cho cậu một quả bóng khen thưởng.",
+          "Tò Te bóp còi pin pin: đúng như rạp xiếc chú đếm!"
         ],
         "wrong": [
           "Lấy tổng số ghế trừ đi số ghế có người ngồi.",
@@ -1355,10 +1366,11 @@
     {
       "id": "tem-tam-giac",
       "title": "Bức tranh tam giác",
-      "target": "gau-tuyet-bong",
+      "goTo": "Về hộp thư lớp 2, Cáo Tuyết Mi đang mở bức tranh tam giác",
+      "target": "toan2-cd1-b05-cao-tuyet-mi",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Món quà cuối của Bông là bức tranh ba tam giác, mỗi tam giác có ba số ở ba góc và một số ở giữa. Ai điền được số cuối thì được mở hộp quà! Số ?",
+      "prompt": "Món quà cuối của Mi là bức tranh ba tam giác, mỗi tam giác có ba số ở ba góc và một số ở giữa. Ai điền được số cuối thì được mở hộp quà! Số ?",
       "template": "Tam giác vàng: góc 12, 4, 3 — ở giữa 19\nTam giác xanh dương: góc 10, 13, 5 — ở giữa 28\nTam giác xanh lá: góc 33, 6, 20 — ở giữa {{b1}}",
       "blanks": [
         {
@@ -1396,9 +1408,9 @@
       },
       "feedback": {
         "right": [
-          "Hộp quà bật mở: một quả cầu tuyết tí hon từ nhà Bông!",
+          "Hộp quà bật mở: một quả cầu tuyết tí hon từ nhà Mi!",
           "Tìm ra quy luật cộng ba góc, cậu đúng là nhà thám hiểm.",
-          "59! Cả Chó Mực lẫn Bông cùng nhảy cẫng lên."
+          "59! Cả Chó Mực lẫn Mi cùng nhảy cẫng lên."
         ],
         "wrong": [
           "Thử cộng ba số ở góc tam giác vàng xem có ra 19 không.",
@@ -1417,7 +1429,7 @@
       "title": "Huy hiệu bưu tá",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Chó Mực đội lên đầu {name} chiếc mũ bưu tá và gắn huy hiệu \"Bưu tá phép tính\". Gấu Tuyết Bông hứa lần sau gửi bưu thiếp khó hơn nữa."
+      "text": "Chó Mực đội lên đầu {name} chiếc mũ bưu tá và gắn huy hiệu \"Bưu tá phép tính\". Cáo Tuyết Mi hứa lần sau gửi bưu thiếp khó hơn nữa."
     },
     {
       "id": "hoi-cho-so",

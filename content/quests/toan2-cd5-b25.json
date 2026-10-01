@@ -5,11 +5,11 @@
   "title": "Hươu Cao vẽ chòm sao",
   "status": "active",
   "lesson": "toan2-t1-b25",
-  "summary": "Hươu Cao muốn vẽ một chòm sao thật to trên giá vẽ nhưng cổ dài quá nên cứ chấm lệch; {name} cùng Hươu Cao và thầy Khỉ Lanh gọi tên điểm, đoạn thẳng, đường thẳng, đường cong và tìm ba điểm thẳng hàng.",
+  "summary": "Hươu Cao muốn vẽ một chòm sao thật to trên giá vẽ nhưng cổ dài quá nên cứ chấm lệch; {name} cùng Hươu Cao, Cáo Bạch ở bàn thước kẻ và Bác Ngân ở góc bản đồ sao gọi tên điểm, đoạn thẳng, đường thẳng, đường cong, tìm ba điểm thẳng hàng, rồi ra cửa sổ cùng Thỏ Bi ngắm sân trường.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Hươu Cao, thầy thể dục Khỉ Lanh",
-    "where": "Phòng mĩ thuật: giá vẽ lớn, cửa sổ nhìn ra sân",
+    "who": "Hươu Cao, Cáo Bạch, Bác Ngân, Thỏ Bi",
+    "where": "Phòng mĩ thuật: giá vẽ lớn, góc bản đồ sao, bàn thước kẻ, cửa sổ nhìn ra sân",
     "goal": "Giúp Hươu Cao vẽ xong bức tranh chòm sao trên giá vẽ",
     "play": "Tìm đồ vẽ, phân loại điểm và đoạn thẳng, chọn nhiều, nối chòm sao, đọc thước, phân loại đường thẳng và đường cong, nói điều nhìn thấy",
     "learn": "Toán 2 Bài 25: điểm, đoạn thẳng, đường thẳng, đường cong, ba điểm thẳng hàng",
@@ -30,7 +30,9 @@
   "places": {
     "huou-cao": "giá vẽ lớn",
     "tim-do-ve": "giá vẽ lớn",
-    "khi-lanh": "cửa sổ nhìn ra sân"
+    "toan2-cd5-b25-bac-ngan": "góc bản đồ sao",
+    "toan2-cd5-b25-cao-bach": "bàn thước kẻ",
+    "toan2-cd5-b25-tho-bi": "cửa sổ nhìn ra sân"
   },
   "steps": [
     {
@@ -45,12 +47,12 @@
           "text": "Ô kìa {name}! Tớ định vẽ chòm sao lên giá vẽ, mà cổ tớ dài quá, chấm cái nào cũng lệch tít lên trần nhà."
         },
         {
-          "speaker": "Khỉ Lanh",
-          "text": "Hôm qua cậu còn chấm nhầm một ngôi sao lên đầu thầy đấy. Thầy gội mãi chưa sạch!"
+          "speaker": "Cáo Bạch",
+          "text": "Hôm qua cậu còn chấm nhầm một ngôi sao lên đuôi tớ đấy. Tớ chải mãi chưa sạch!"
         },
         {
           "speaker": "Hươu Cao",
-          "text": "Hì hì, xin lỗi thầy. Hộp sao giấy với thước kẻ của tớ cũng lăn đi đâu mất rồi."
+          "text": "Hì hì, xin lỗi Cáo Bạch nhé. Hộp sao giấy với thước kẻ của tớ cũng lăn đi đâu mất rồi."
         }
       ],
       "choices": [
@@ -59,8 +61,8 @@
           "reply": "Hươu Cao ngó nghiêng từ trên cao: Tớ nhìn thấy xa mà lại chẳng thấy gần, nhờ cậu nhé!"
         },
         {
-          "text": "Thầy Khỉ ơi, thầy còn sao trên đầu kìa!",
-          "reply": "Khỉ Lanh vò đầu: Ối! Thôi, đi tìm đồ vẽ đi rồi thầy tính sổ với chú hươu này sau."
+          "text": "Cáo Bạch ơi, đuôi cậu còn dính sao kìa!",
+          "reply": "Cáo Bạch ngoe nguẩy đuôi: Ối! Thôi, đi tìm đồ vẽ đi rồi tớ tính sổ với chú hươu này sau."
         }
       ]
     },
@@ -86,7 +88,7 @@
           "text": "Đủ đồ rồi! Mỗi lần tớ chấm bút một cái là được một điểm. Điểm thì đặt tên bằng chữ in hoa: A, B, C…"
         },
         {
-          "speaker": "Khỉ Lanh",
+          "speaker": "Cáo Bạch",
           "text": "Đặt thước nối điểm A với điểm B, kẻ một nét là có đoạn thẳng AB. Hai đầu đoạn thẳng chính là hai điểm."
         },
         {
@@ -215,7 +217,7 @@
     {
       "id": "canh-chom-sao-tam-giac",
       "title": "Chòm sao ba cạnh",
-      "target": "huou-cao",
+      "target": "toan2-cd5-b25-bac-ngan",
       "kind": "challenge",
       "mechanic": "multi-select",
       "prompt": "Hươu Cao vẽ chòm sao đầu tiên hình tam giác có ba đỉnh M, N, P. Kể tên các đoạn thẳng trong mỗi hình vẽ sau: a) Chọn tất cả các đoạn thẳng.",
@@ -270,12 +272,13 @@
           "np",
           "mp"
         ]
-      }
+      },
+      "goTo": "Sang góc bản đồ sao, Bác Ngân trải bản đồ, Hươu Cao thò cổ dài theo"
     },
     {
       "id": "noi-chom-sao-gau",
       "title": "Nối chòm sao thứ hai",
-      "target": "huou-cao",
+      "target": "toan2-cd5-b25-bac-ngan",
       "kind": "challenge",
       "mechanic": "connect",
       "prompt": "Chòm sao thứ hai có bốn ngôi sao A, B, C, D xếp như một con đường ngoằn ngoèo. Kể tên các đoạn thẳng trong mỗi hình vẽ sau: b) Trước hết, hãy nối A với B, B với C, C với D như hình trong sách.",
@@ -324,7 +327,7 @@
         "right": [
           "Chòm sao ngoằn ngoèo hiện lên, Hươu Cao reo: giống con rắn sao trời!",
           "Ba nét kẻ thẳng tắp, không nét nào nối lung tung.",
-          "Thầy Khỉ Lanh huýt sáo: nối sao còn khéo hơn thầy nối dây nhảy."
+          "Bác Ngân huýt sáo: nối sao còn khéo hơn bác nối dây nhảy."
         ],
         "wrong": [
           "Có một nét đang nối nhảy cóc qua một ngôi sao rồi.",
@@ -411,15 +414,16 @@
           "bc",
           "cd"
         ]
-      }
+      },
+      "goTo": "Về giá vẽ lớn, Hươu Cao cúi cổ ngắm chòm sao vừa nối"
     },
     {
       "id": "doc-thuoc-cua-khi",
       "title": "Đọc số trên thước kẻ",
-      "target": "huou-cao",
+      "target": "toan2-cd5-b25-cao-bach",
       "kind": "challenge",
       "mechanic": "fill-blank",
-      "prompt": "Thầy Khỉ Lanh đặt thước dưới từng đoạn thẳng, vạch 0 trùng điểm đầu. Đầu N chạm vạch đứng ngay sau vạch 6; đầu Q chạm vạch đứng ngay trước vạch 10. Số ? Dùng thước đo độ dài đoạn thẳng (theo mẫu).",
+      "prompt": "Cáo Bạch đặt thước dưới từng đoạn thẳng, vạch 0 trùng điểm đầu. Đầu N chạm vạch đứng ngay sau vạch 6; đầu Q chạm vạch đứng ngay trước vạch 10. Số ? Dùng thước đo độ dài đoạn thẳng (theo mẫu).",
       "template": "a) Mẫu: Đoạn thẳng AB dài 5 cm.\nb) Đoạn thẳng MN dài {{b1}} cm.\nb) Đoạn thẳng PQ dài {{b2}} cm.",
       "blanks": [
         {
@@ -475,7 +479,7 @@
       },
       "feedback": {
         "right": [
-          "Đọc thước chuẩn từng xăng-ti-mét, thầy Khỉ giơ ngón cái!",
+          "Đọc thước chuẩn từng xăng-ti-mét, Cáo Bạch giơ ngón cái!",
           "Bảy và chín, không lệch một li nào.",
           "Hươu Cao xin học cậu cách đọc thước luôn đấy."
         ],
@@ -490,13 +494,14 @@
           "b1": "o7",
           "b2": "o9"
         }
-      }
+      },
+      "goTo": "Ra bàn thước kẻ, Cáo Bạch đặt sẵn thước dưới từng đoạn thẳng"
     },
     {
       "id": "phieu-do-doan-thang",
       "title": "Phiếu đo đoạn thẳng",
       "kind": "worksheet",
-      "target": "huou-cao",
+      "target": "toan2-cd5-b25-cao-bach",
       "lessonId": "toan2-t1-b25",
       "text": "Về nhà lấy thước kẻ của mình, đặt vạch 0 trùng đầu đoạn thẳng rồi đo đoạn thẳng MN và PQ in trên phiếu, viết số đo vào ô trống.",
       "curriculumRef": [
@@ -515,7 +520,7 @@
           "text": "Giờ tớ muốn vẽ thêm hai dải sao băng. Kéo thước kẻ dài mãi về hai phía thì được đường thẳng, không có điểm cuối!"
         },
         {
-          "speaker": "Khỉ Lanh",
+          "speaker": "Cáo Bạch",
           "text": "Còn nét uốn lượn như sợi dây nhảy thì gọi là đường cong. Tớ đặt tên hai đường cong là x và y."
         },
         {
@@ -530,9 +535,10 @@
         },
         {
           "text": "Dải uốn lượn như con sóng!",
-          "reply": "Khỉ Lanh múa tay: Lượn trái, lượn phải, đúng điệu đường cong rồi!"
+          "reply": "Cáo Bạch vẫy cái đuôi trắng muốt: Lượn trái, lượn phải, đúng điệu đường cong rồi!"
         }
-      ]
+      ],
+      "goTo": "Quay lại giá vẽ lớn, Hươu Cao đang pha màu vẽ sao băng"
     },
     {
       "id": "duong-thang-duong-cong",
@@ -609,10 +615,10 @@
     {
       "id": "dung-sai-thang-hang",
       "title": "Ba điểm trên mép thước",
-      "target": "huou-cao",
+      "target": "toan2-cd5-b25-cao-bach",
       "kind": "challenge",
       "mechanic": "multi-select",
-      "prompt": "Thầy Khỉ Lanh đặt hai cây thước: dọc mép thước thứ nhất có ba điểm A, B, C; dọc mép thước thứ hai có hai điểm E, G, còn điểm D nằm lệch ra ngoài. Đ, S ? Trong hình vẽ trên: Chọn câu đúng (Đ); câu không chọn là sai (S).",
+      "prompt": "Cáo Bạch đặt hai cây thước: dọc mép thước thứ nhất có ba điểm A, B, C; dọc mép thước thứ hai có hai điểm E, G, còn điểm D nằm lệch ra ngoài. Đ, S ? Trong hình vẽ trên: Chọn câu đúng (Đ); câu không chọn là sai (S).",
       "choices": [
         {
           "id": "a-ba-diem-a-b-c-thang-hang",
@@ -643,7 +649,7 @@
         "right": [
           "Đúng rồi, điểm D lạc đàn bị cậu phát hiện ngay!",
           "Ba điểm thẳng hàng như ba bạn xếp hàng chào cờ.",
-          "Thầy Khỉ cất thước: bài này cậu nắm chắc rồi."
+          "Cáo Bạch cất thước: bài này cậu nắm chắc rồi."
         ],
         "wrong": [
           "Điểm D có nằm trên mép thước thứ hai không?",
@@ -655,7 +661,8 @@
         "choices": [
           "a-ba-diem-a-b-c-thang-hang"
         ]
-      }
+      },
+      "goTo": "Chạy sang bàn thước kẻ, Cáo Bạch đang xếp hai cây thước song song"
     },
     {
       "id": "bo-ba-thang-hang",
@@ -718,15 +725,16 @@
           "a-h-m",
           "b-m-c"
         ]
-      }
+      },
+      "goTo": "Về giá vẽ lớn, Hươu Cao vừa vẽ xong một hình tam giác to"
     },
     {
       "id": "nhin-ra-san-truong",
       "title": "Ngắm sân trường qua cửa sổ",
-      "goTo": "Ra cửa sổ nhìn ra sân, thầy Khỉ Lanh đang chỉ xuống sân trường",
+      "goTo": "Ra cửa sổ nhìn ra sân, Thỏ Bi kiễng chân chỉ xuống sân trường",
       "kind": "speak",
-      "target": "khi-lanh",
-      "prompt": "Dưới sân, ba bạn nhỏ đang nhảy dây, phía sau là hàng cây và dãy lớp học có cửa sổ. Tìm một đường thẳng, một đường cong và ba cây thẳng hàng có trong hình dưới đây. Nói to cho thầy Khỉ Lanh nghe nhé.",
+      "target": "toan2-cd5-b25-tho-bi",
+      "prompt": "Dưới sân, ba bạn nhỏ đang nhảy dây, phía sau là hàng cây và dãy lớp học có cửa sổ. Tìm một đường thẳng, một đường cong và ba cây thẳng hàng có trong hình dưới đây. Nói to cho Thỏ Bi nghe nhé.",
       "hints": [
         "Mép viên gạch lát sân hay mép cửa sổ trông như đường gì?",
         "Sợi dây nhảy đang uốn cong kìa.",
@@ -741,7 +749,7 @@
       "title": "Huy hiệu chòm sao",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Bức tranh chòm sao treo giữa phòng mĩ thuật, sáng nhất là ba ngôi sao thẳng hàng. Hươu Cao cúi thật thấp để cài cho {name} huy hiệu \"Họa sĩ đường thẳng\", thầy Khỉ Lanh thì vẫn đang gỡ ngôi sao trên đầu."
+      "text": "Bức tranh chòm sao treo giữa phòng mĩ thuật, sáng nhất là ba ngôi sao thẳng hàng. Hươu Cao cúi thật thấp để cài cho {name} huy hiệu \"Họa sĩ đường thẳng\", Cáo Bạch thì vẫn đang gỡ ngôi sao trên đuôi."
     },
     {
       "id": "o-kinh-ong-vang",

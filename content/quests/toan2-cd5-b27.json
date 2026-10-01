@@ -5,11 +5,11 @@
   "title": "Tấm thiệp tặng cô của Chíp",
   "status": "active",
   "lesson": "toan2-t1-b27",
-  "summary": "Gà Con Chíp muốn gấp thiệp chúc mừng cô giáo nhưng tờ giấy cứ méo xệch; {name} cùng Chíp và Mèo Mun ghép hình, kẻ viền, đo que trang trí, rồi mang phiếu về nhà gấp cắt thật.",
+  "summary": "Gà Con Chíp muốn gấp thiệp chúc mừng cô giáo nhưng tờ giấy cứ méo xệch; {name} cùng Chíp học gấp cắt với Gấu Nút, ghép hình với Thỏ Mây, kẻ viền bằng thước thần của Bác Thìn, đo que trang trí, rồi mang phiếu về nhà gấp cắt thật.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "Gà Con Chíp, Mèo Mun",
-    "where": "Phòng mĩ thuật: bàn thủ công",
+    "who": "Gà Con Chíp, Gấu Nút, Thỏ Mây, Bác Thìn",
+    "where": "Phòng mĩ thuật: bàn thủ công, kệ giấy màu, góc ghép hình, bàn thước thần",
     "goal": "Làm xong tấm thiệp chúc mừng cô giáo",
     "play": "Tìm đồ thủ công, nhận phiếu gấp cắt, ghép hình, kẻ đoạn thẳng, đo bằng thước, xếp que từ ngắn đến dài",
     "learn": "Toán 2 Bài 27: gấp, cắt, ghép, xếp hình; vẽ và đo đoạn thẳng",
@@ -29,7 +29,10 @@
   "texts": {},
   "places": {
     "ga-con-chip": "bàn thủ công",
-    "tim-do-thu-cong": "bàn thủ công"
+    "tim-do-thu-cong": "bàn thủ công",
+    "toan2-cd5-b27-gau-nut": "kệ giấy màu",
+    "toan2-cd5-b27-tho-may": "góc ghép hình",
+    "toan2-cd5-b27-bac-thin": "bàn thước thần"
   },
   "steps": [
     {
@@ -44,7 +47,7 @@
           "text": "{name} ơi, tớ muốn gấp thiệp chúc mừng cô giáo, mà gấp kiểu gì tờ giấy cũng méo như cái bánh đa nhúng nước!"
         },
         {
-          "speaker": "Mèo Mun",
+          "speaker": "Gấu Nút",
           "text": "Tại cậu gấp bằng… mỏ đấy Chíp. Lại còn làm rơi kéo với hồ dán khắp nơi nữa."
         },
         {
@@ -59,7 +62,7 @@
         },
         {
           "text": "Mình cùng làm thiệp thật đẹp!",
-          "reply": "Mèo Mun cười híp mắt: Ừ, nhưng trước tiên phải tìm đủ đồ đã."
+          "reply": "Gấu Nút cười híp cả hai mắt: Ừ, nhưng trước tiên phải tìm đủ đồ đã."
         }
       ]
     },
@@ -76,16 +79,16 @@
     },
     {
       "id": "meo-mun-chi-cach",
-      "title": "Mèo Mun chỉ cách",
+      "title": "Gấu Nút chỉ cách",
       "kind": "dialogue",
-      "target": "ga-con-chip",
+      "target": "toan2-cd5-b27-gau-nut",
       "lines": [
         {
-          "speaker": "Mèo Mun",
+          "speaker": "Gấu Nút",
           "text": "Gấp chéo một góc tờ giấy chữ nhật cho hai mép trùng nhau, cắt phần thừa là được hình vuông. Phẳng phiu luôn!"
         },
         {
-          "speaker": "Mèo Mun",
+          "speaker": "Gấu Nút",
           "text": "Còn muốn vẽ đoạn thẳng dài 5 cm thì chấm một điểm ở vạch 0 của thước, chấm điểm nữa ở vạch 5, rồi nối lại."
         },
         {
@@ -98,13 +101,14 @@
           "text": "Bắt tay vào làm thôi!",
           "reply": "Chíp xòe cánh: Phần gấp cắt giấy thật thì mình mang phiếu về nhà làm cùng bố mẹ nhé."
         }
-      ]
+      ],
+      "goTo": "Sang kệ giấy màu, Gấu Nút đang gấp thử một tờ giấy chữ nhật"
     },
     {
       "id": "phieu-gap-cat-ghep",
       "title": "Phiếu gấp, cắt, ghép hình",
       "kind": "worksheet",
-      "target": "ga-con-chip",
+      "target": "toan2-cd5-b27-gau-nut",
       "lessonId": "toan2-t1-b27",
       "text": "Ở nhà, có người lớn ngồi cạnh khi dùng kéo: gấp tờ giấy chữ nhật rồi cắt thành một hình vuông và một hình chữ nhật; cắt hình vuông thành bốn hình tam giác để xếp bốn hình theo phiếu; cắt hai hình trên lưới ô thành hai phần rồi ghép lại thành hình vuông.",
       "curriculumRef": [
@@ -225,12 +229,13 @@
           "manh-a-hinh-2": "nhom-de-rieng-ra",
           "manh-a-hinh-3": "nhom-ghep-vao-hinh-ben-phai"
         }
-      }
+      },
+      "goTo": "Về bàn thủ công, Gà Con Chíp đã trải sẵn mặt thiệp chờ dán"
     },
     {
       "id": "ghep-thanh-hinh-vuong",
       "title": "Hai mảnh ghép hình vuông",
-      "target": "ga-con-chip",
+      "target": "toan2-cd5-b27-tho-may",
       "kind": "challenge",
       "mechanic": "classify",
       "prompt": "Mặt sau tấm thiệp cần một hình vuông 6 × 6 ô. Hai hình nào ở cột bên trái ghép được hình ở cột bên phải? b) Xếp hai hình ghép được vào một nhóm, hình còn lại để riêng.",
@@ -321,7 +326,7 @@
         "right": [
           "Vuông vức như cái bánh chưng, mặt sau thiệp đẹp rồi!",
           "Hai mảnh lắp vào nhau không hở một khe nào.",
-          "Mèo Mun gật gù: mắt ghép hình của cậu xịn thật."
+          "Thỏ Mây gật gù: mắt ghép hình của cậu xịn thật."
         ],
         "wrong": [
           "Tam giác cạnh 2 ô thì nhỏ quá, phần trống rộng 3 ô cơ.",
@@ -335,24 +340,25 @@
           "manh-b-hinh-2": "nhom-de-rieng-ra",
           "manh-b-hinh-3": "nhom-ghep-thanh-hinh-vuong"
         }
-      }
+      },
+      "goTo": "Ra góc ghép hình, Thỏ Mây xếp các mảnh hình thành một hàng dài"
     },
     {
       "id": "ke-hay-do-truoc",
       "title": "Kẻ viền hay đo que?",
       "kind": "dialogue",
-      "target": "ga-con-chip",
+      "target": "toan2-cd5-b27-bac-thin",
       "lines": [
         {
-          "speaker": "Mèo Mun",
-          "text": "Thiệp có hình rồi, giờ cần kẻ viền và dán mấy que trang trí. Thước thần của lớp mình còn hiện số đo nữa cơ!"
+          "speaker": "Bác Thìn",
+          "text": "Thiệp có hình rồi, giờ cần kẻ viền và dán mấy que trang trí. Thước thần của bác còn hiện cả số đo nữa cơ!"
         },
         {
           "speaker": "Gà Con Chíp",
           "text": "Thước thần á? Tớ tưởng chỉ có đũa thần thôi chứ."
         },
         {
-          "speaker": "Mèo Mun",
+          "speaker": "Bác Thìn",
           "text": "{name} muốn kẻ viền thiệp trước, hay đo que trang trí trước?"
         }
       ],
@@ -363,14 +369,15 @@
         },
         {
           "text": "Đo que trang trí trước",
-          "reply": "Mèo Mun: Que nào cũng phải đo xong mới dán được, nhưng kẻ viền nhanh lắm, làm trước đi!"
+          "reply": "Bác Thìn: Que nào cũng phải đo xong mới dán được, nhưng kẻ viền nhanh lắm, làm trước đi!"
         }
-      ]
+      ],
+      "goTo": "Sang bàn thước thần, Bác Thìn lau cây thước biết hiện số đo"
     },
     {
       "id": "ke-vien-thiep",
       "title": "Kẻ viền thiệp đúng số đo",
-      "target": "ga-con-chip",
+      "target": "toan2-cd5-b27-bac-thin",
       "kind": "challenge",
       "mechanic": "connect",
       "prompt": "Vẽ đoạn thẳng: a) AB có độ dài 9 cm. b) CD có độ dài 12 cm. Chạm điểm A rồi chạm một trong các chấm X, Y, Z; chạm điểm C rồi chạm một trong các chấm U, V, W. Thước thần hiện số đo mỗi nét em kẻ, nét nào sai thì xóa kẻ lại.",
@@ -469,7 +476,7 @@
     {
       "id": "thuoc-than-do-que",
       "title": "Thước thần đo que",
-      "target": "ga-con-chip",
+      "target": "toan2-cd5-b27-tho-may",
       "kind": "challenge",
       "mechanic": "connect",
       "prompt": "Ba que trang trí AB, CD, MN nằm trên bàn. Đo độ dài mỗi đoạn thẳng dưới đây. Kẻ lại từng que bằng thước thần để thước hiện số đo.",
@@ -533,7 +540,7 @@
         "right": [
           "Ba que hiện số đo sáng rực, đo xong trong nháy mắt!",
           "Que đứng dọc MN cũng không làm khó được cậu.",
-          "Mèo Mun ghi số đo vào sổ, nét chữ tròn xoe."
+          "Thỏ Mây ghi số đo vào sổ, nét chữ tròn xoe."
         ],
         "wrong": [
           "Mỗi que nối hai điểm cùng tên của nó, như A với B.",
@@ -556,7 +563,8 @@
             "n"
           ]
         ]
-      }
+      },
+      "goTo": "Ôm que sang góc ghép hình, Thỏ Mây đã bày sẵn ba que trang trí"
     },
     {
       "id": "ghi-so-do-que",
@@ -640,7 +648,7 @@
         "right": [
           "Ba số đo ghi gọn gàng, Chíp dán que lên thiệp liền!",
           "Đọc thước thần không sai số nào.",
-          "Sổ ghi chép của Mèo Mun có thêm ba dòng đẹp."
+          "Sổ ghi chép của Thỏ Mây có thêm ba dòng đẹp."
         ],
         "wrong": [
           "Que nằm dọc MN ngắn hơn hai que kia nhiều.",
@@ -654,7 +662,8 @@
           "b2": "o12",
           "b3": "o4"
         }
-      }
+      },
+      "goTo": "Quay về bàn thủ công, Gà Con Chíp cầm thước thần chờ đọc số"
     },
     {
       "id": "que-trang-tri-ngan-dai",
@@ -805,7 +814,7 @@
       "id": "phieu-ve-va-do",
       "title": "Phiếu vẽ và đo đoạn thẳng",
       "kind": "worksheet",
-      "target": "ga-con-chip",
+      "target": "toan2-cd5-b27-bac-thin",
       "lessonId": "toan2-t1-b27",
       "text": "Về nhà dùng thước kẻ: vẽ đoạn thẳng AB dài 9 cm và CD dài 12 cm vào vở; đo ba đoạn thẳng AB, CD, MN và các cạnh của hình ngôi nhà trên phiếu, rồi vẽ lại các đoạn thẳng có độ dài như vậy.",
       "curriculumRef": [
@@ -819,14 +828,15 @@
         "toan2-t1-b27-hoat-dong-2-3-c",
         "toan2-t1-b27-hoat-dong-2-3-d",
         "toan2-t1-b27-hoat-dong-2-3-e"
-      ]
+      ],
+      "goTo": "Ghé bàn thước thần, Bác Thìn đưa phiếu vẽ và đo mang về nhà"
     },
     {
       "id": "huy-hieu-thu-cong",
       "title": "Huy hiệu thủ công",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Tấm thiệp có tam giác lớn, hình vuông vức và năm que trang trí thẳng tắp. Chíp ôm thiệp chạy đi tặng cô giáo, còn Mèo Mun cài cho {name} huy hiệu \"Đôi tay khéo léo\"."
+      "text": "Tấm thiệp có tam giác lớn, hình vuông vức và năm que trang trí thẳng tắp. Chíp ôm thiệp chạy đi tặng cô giáo, còn Gấu Nút cài cho {name} huy hiệu \"Đôi tay khéo léo\"."
     },
     {
       "id": "tranh-treo-nguoc",
