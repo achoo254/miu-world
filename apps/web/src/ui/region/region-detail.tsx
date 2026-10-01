@@ -64,6 +64,12 @@ export function RegionIntro({ region, quests, data }: { region: Region; quests: 
         </div>
         <img className="region-chest" src={assetUrl(REGION_CHEST)} alt="" width={96} height={96} />
       </div>
+      {/* Which lessons of the books the region plays, so a parent finds the one taught in class this week. */}
+      {region.book ? (
+        <p className="region-book" data-id="region-book">
+          Bài trong sách: {region.book}
+        </p>
+      ) : null}
       {next ? (
         <Link to={playPath(next)} className={buttonClass('primary', { block: true })} data-id="region-explore">
           {next.state === 'completed' ? 'Chơi lại' : 'Khám phá ngay'} →
