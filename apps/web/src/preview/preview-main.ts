@@ -1,7 +1,7 @@
 // Headless render target for tools/assets/render-preview.ts (no account needed: tooling only).
-// Map shots: ?shot=top|iso|bridge|tree|npc&quality=… runs the game with a fixed review camera.
+// Map shots: ?shot=top|iso|bridge|tree|npc|view:…&quality=…&region=… runs the game with a fixed review camera.
 // Model shots: ?model=<manifest path>&anim=<clip>&t=<seconds>&yaw=<deg>&pitch=<deg>&size=<px>
-//        &acc=<id[:variant],id[:variant]>&accScale=<node:scale,...>
+//        &acc=<id[:variant],id[:variant]>&accScale=<node:scale,...>&bg=<css colour | transparent>
 // Sets document.body.dataset.ready = '1' once the frame is drawn (or data-error on failure).
 import {
   AnimationMixer,
@@ -29,14 +29,17 @@ const size = Number(params.get('size') ?? 512);
 async function render(): Promise<void> {
   const registry = await AssetRegistry.load();
   const loader = new GuardedGltfLoader(registry);
-  const renderer = new WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
+  // `bg=transparent`: an icon for the UI, cut out on its own (body and page stay see-through too).
+  const transparent = params.get('bg') === 'transparent';
+  if (transparent) for (const el of [document.documentElement, document.body]) el.style.background = 'transparent';
+  const renderer = new WebGLRenderer({ antialias: true, preserveDrawingBuffer: true, alpha: transparent });
   renderer.setPixelRatio(1);
   renderer.setSize(size, size);
   renderer.outputColorSpace = SRGBColorSpace;
   document.body.appendChild(renderer.domElement);
 
   const scene = new Scene();
-  scene.background = new Color(params.get('bg') ?? '#eaf3ff');
+  scene.background = transparent ? null : new Color(params.get('bg') ?? '#eaf3ff');
   scene.add(new HemisphereLight('#ffffff', '#b9c6d8', 2.2));
   const sun = new DirectionalLight('#ffffff', 1.6);
   sun.position.set(3, 6, 5);
@@ -97,7 +100,9 @@ function renderMapShot(): void {
     const error = store.getSnapshot().error;
     if (error) document.body.dataset.error = error.message;
   });
-  void new Game(document.body, { store, search: window.location.search, outfit: ['hat-witch-pink', 'backpack-brown'] }).start();
+  // `region` picks the map, as on /play (the forest when left out).
+  const region = params.get('region') ?? undefined;
+  void new Game(document.body, { store, search: window.location.search, outfit: ['hat-witch-pink', 'backpack-brown'], region }).start();
 }
 
 const worldMap = params.get('world');

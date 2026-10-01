@@ -1,19 +1,6 @@
 /* Map and region screens: values from tokens.css only. */
 .region-page { width: min(100%, 60rem); display: flex; flex-direction: column; gap: var(--space-md); }
 .region-top { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-sm); }
-.chapter { display: flex; flex-direction: column; gap: var(--space-sm); }
-.quest-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-sm); }
-.quest-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-md);
-  padding: var(--space-md);
-  border-radius: var(--radius-field);
-  background: var(--color-field);
-}
-.quest-row-text { display: flex; flex-direction: column; gap: var(--space-xs); }
-.quest-row--locked { opacity: 0.85; }
 /* World map (M1.4): the island takes the page width, like the mock. */
 .region-page--wide { width: min(100%, 76rem); }
 .world-map { display: flex; flex-direction: column; gap: var(--space-sm); }
@@ -25,3 +12,121 @@
 @supports (height: 100dvh) {
   .world-map .world-stage { width: min(100%, calc((100dvh - 15rem) * 1.6)); }
 }
+
+/*
+ * Region detail (M2.1): the region's map fills the screen; the sign, bubble, progress and button on the
+ * left, the quest board on the right. Held upright (iPad portrait, phones) the two stack.
+ */
+.region-scene {
+  min-height: 100dvh;
+  box-sizing: border-box;
+  padding: var(--space-lg) clamp(var(--space-md), 4vw, var(--space-2xl));
+  display: grid;
+  place-items: start center;
+  background: var(--region-backdrop) center / cover no-repeat, var(--color-sky-mid);
+}
+.region-page--detail { width: min(100%, 72rem); }
+.region-detail {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+  grid-template-areas: 'intro board' 'map board';
+  align-items: start;
+  gap: var(--space-md) var(--space-xl);
+}
+.region-detail > .region-intro { grid-area: intro; }
+.region-detail > .quest-board { grid-area: board; }
+.region-detail > [data-id='region-map'] { grid-area: map; justify-self: start; }
+@media (max-width: 860px) {
+  .region-detail { grid-template-columns: minmax(0, 1fr); grid-template-areas: 'intro' 'board' 'map'; }
+}
+
+.region-intro { display: flex; flex-direction: column; align-items: stretch; gap: var(--space-md); }
+.region-sign {
+  justify-self: start;
+  align-self: flex-start;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--space-sm) var(--space-xl);
+  font-size: var(--text-title);
+}
+.region-sign-subject { font-family: var(--font-body); font-size: var(--text-body); font-weight: 700; text-shadow: none; }
+.region-bubble {
+  position: relative;
+  margin: 0;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-field);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-material);
+  color: var(--color-ink);
+  font-weight: 700;
+}
+/* The tail points up at the sign, as if the sign speaks. */
+.region-bubble::before {
+  content: '';
+  position: absolute;
+  left: var(--space-xl);
+  top: -0.6rem;
+  border-width: 0 0.6rem 0.7rem;
+  border-style: solid;
+  border-color: transparent transparent var(--color-surface);
+}
+.region-progress-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-field);
+  background: var(--color-surface-glass);
+  box-shadow: var(--shadow-material);
+}
+.region-progress-text { flex: 1; display: flex; flex-direction: column; gap: var(--space-xs); }
+.region-progress-card .progress-fill { background: linear-gradient(180deg, var(--color-grass) 0%, var(--color-leaf) 100%); }
+.region-chest { width: 4.5rem; height: 4.5rem; margin-block: calc(-1 * var(--space-sm)); filter: drop-shadow(0 6px 6px var(--color-island-shadow)); }
+
+/* The quest board: parchment in a wooden frame, one row per quest, grouped by chapter. */
+.quest-board {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  padding: var(--space-md);
+  border: 6px solid var(--color-wood);
+  border-radius: var(--radius-panel);
+  max-height: calc(100dvh - 9rem);
+  overflow-y: auto;
+}
+.quest-board-title { margin: 0; font-size: var(--text-lg); color: var(--color-parchment-ink); }
+.board-chapter { display: flex; flex-direction: column; gap: var(--space-xs); }
+.board-chapter-title { margin: 0; font-size: var(--text-sm); color: var(--color-wood-edge); }
+.board-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-sm); }
+.board-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  border: 3px solid var(--color-parchment-edge);
+  border-radius: var(--radius-field);
+  background: var(--color-surface-glass);
+  color: var(--color-parchment-ink);
+}
+.board-row--locked { background: transparent; }
+.board-row--locked .board-row-title { color: var(--color-ink-soft); font-weight: 700; }
+.board-row-text { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-xs); min-width: 0; }
+.board-row-status { display: flex; align-items: center; flex-wrap: wrap; gap: var(--space-xs) var(--space-sm); }
+.board-row-progress { font-size: var(--text-sm); }
+/* The blue round "›" of the mock: the whole quest opens from it (48px touch target). */
+.board-row-go {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: linear-gradient(180deg, var(--color-secondary-top), var(--color-secondary));
+  box-shadow: var(--shadow-secondary);
+  color: var(--color-surface);
+  text-decoration: none;
+}
+.board-row-go:focus-visible { box-shadow: var(--focus-ring); outline: none; }
+.board-row-go:active { transform: translateY(3px); box-shadow: none; }

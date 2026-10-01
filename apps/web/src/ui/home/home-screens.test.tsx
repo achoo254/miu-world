@@ -134,15 +134,27 @@ describe('Map and region', () => {
     expect(await screen.findByRole('heading', { name: 'Chương 1' })).toBeTruthy();
   });
 
-  it('shows chapters with progress: chapter 1 playable, chapter 2 coming soon until chapter 1 is done', async () => {
+  it('shows the region as in the mock: its sign, words, progress with the chest, and the quest under way', async () => {
+    stubServer(1);
+    renderAt('/region/khu-rung-bi-mat');
+    expect(await screen.findByRole('heading', { name: /Khu rừng bí mật/ })).toBeTruthy();
+    expect(document.querySelector('[data-id="region-backdrop"]')).toBeTruthy();
+    expect(document.querySelector('[data-id="region-description"]')?.textContent).toBe('Một khu rừng đầy những câu chuyện thú vị đang chờ Mochi khám phá!');
+    // Chapter 2 is still a stub: only chapter 1 counts, and it is not finished yet.
+    expect(document.querySelector('[data-id="region-progress"]')?.textContent).toContain('Hoàn thành: 0/1');
+    fireEvent.click(screen.getByRole('link', { name: 'Khám phá ngay →' }));
+    expect(await screen.findByText('Trong game')).toBeTruthy();
+  });
+
+  it('lists every chapter and quest on the board: progress or stars, the way in, or the lock', async () => {
     stubServer(1);
     renderAt('/region/khu-rung-bi-mat');
     expect(await screen.findByRole('heading', { name: 'Chương 1' })).toBeTruthy();
+    expect(screen.getByRole('heading', { name: 'Các nhiệm vụ trong khu vực' })).toBeTruthy();
     expect(screen.getByText('Đang làm · Hoàn thành 1/2')).toBeTruthy();
-    expect(screen.getByRole('link', { name: 'Khám phá ngay' }).getAttribute('href')).toBe('/play?region=khu-rung-bi-mat&quest=forest-ch1');
+    expect(screen.getByRole('link', { name: 'Khám phá Chương 1: Cứu cây cổ thụ' }).getAttribute('href')).toBe('/play?region=khu-rung-bi-mat&quest=forest-ch1');
     expect(document.querySelector('[data-id="region-quest-forest-ch2"]')?.textContent).toContain('Sắp có');
-    fireEvent.click(screen.getByRole('link', { name: 'Khám phá ngay' }));
-    expect(await screen.findByText('Trong game')).toBeTruthy();
+    expect(document.querySelector('[data-id="region-play-forest-ch2"]')).toBeNull();
   });
 
   it('names the book, lesson and printed pages of a textbook quest, open from the start', async () => {

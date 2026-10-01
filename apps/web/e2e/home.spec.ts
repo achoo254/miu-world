@@ -1,4 +1,6 @@
 // Home (M1.1) → region (M1.4/M2.1) → chapter 1 → /play with the HUD (M3.2); chapter 2 stays locked.
+import { mkdirSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import { expect, test } from '@playwright/test';
 import { readStats, waitReady } from './stats';
 
@@ -115,5 +117,36 @@ for (const viewport of [
         });
       });
     }
+  });
+}
+
+// Region detail (M2.1) on the reference iPad both ways and on a phone: the region's map behind, every part
+// of the mock on screen, nothing wider than the screen, and (held sideways) the board beside the sign.
+const REGION_SHOTS = fileURLToPath(new URL('../../../.data/region/review-shots/', import.meta.url));
+for (const [name, viewport] of [
+  ['ipad-ngang', { width: 1180, height: 820 }],
+  ['ipad-doc', { width: 820, height: 1180 }],
+  ['phone', { width: 390, height: 844 }],
+] as const) {
+  test.describe(`region detail on ${name}`, () => {
+    test.use({ viewport, hasTouch: true });
+
+    test('shows the sign, words, progress, button and quest board over the region map', async ({ page }) => {
+      await page.goto('/region/khu-rung-bi-mat');
+      for (const id of ['region-backdrop', 'region-description', 'region-progress', 'region-explore', 'region-board']) {
+        await expect(page.locator(`[data-id="${id}"]`)).toBeVisible();
+      }
+      await expect(page.locator('#region-title')).toContainText('Khu rừng bí mật');
+      await expect(page.locator('.region-chest')).toHaveJSProperty('complete', true);
+      expect(await page.locator('.region-chest').evaluate((img: HTMLImageElement) => img.naturalWidth)).toBeGreaterThan(0);
+      expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(viewport.width);
+      if (viewport.width > viewport.height) {
+        const intro = await page.locator('.region-intro').boundingBox();
+        const board = await page.locator('[data-id="region-board"]').boundingBox();
+        expect(intro && board && intro.x + intro.width <= board.x).toBe(true);
+      }
+      mkdirSync(REGION_SHOTS, { recursive: true });
+      await page.screenshot({ path: `${REGION_SHOTS}region-${name}.png`, animations: 'disabled' });
+    });
   });
 }

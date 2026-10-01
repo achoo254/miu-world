@@ -114,6 +114,7 @@ test('one child plays the whole MVP loop by touch, from Google sign-in to the LÃ
   await expect(page.locator('[data-id="player-level"]')).toHaveText('Lv.1');
   await shot(page, '02-home');
   await tap(page, '[data-id="home-region-khu-rung-bi-mat"]');
+  await expect(page.locator('.region-chest')).toHaveJSProperty('complete', true);
   await shot(page, '03-region');
   await tap(page, '[data-id="region-play-forest-ch1"]');
   await expect(page).toHaveURL(/\/play\?/);

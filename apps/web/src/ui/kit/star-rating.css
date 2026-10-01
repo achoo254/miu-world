@@ -1,0 +1,3 @@
+/* Stars earned out of three: values from tokens.css only. */
+.star-rating { display: inline-flex; gap: 0.125rem; }
+.star-rating-star--off { filter: grayscale(1); opacity: 0.35; }

@@ -1,0 +1,138 @@
+// The region screen's parts (mock M2.1 "Khu vực chi tiết"), driven by the region's data and the server's
+// quest list only, so a new region needs a `regions.json` entry, not new components:
+// - RegionBackdrop: the region's own map behind everything (`pnpm assets:regions`), or the sky.
+// - RegionIntro: the wooden sign (name, subject), the speech bubble, progress with the chest, the button.
+// - QuestBoard: the parchment board listing every chapter and every quest (contract D6), with stars.
+import type { CSSProperties, ReactNode } from 'react';
+import { Link } from 'react-router';
+import type { QuestSummary } from '@miu/schema/game';
+import type { Region } from '@miu/schema/region';
+import { Icon } from '../kit/art';
+import { buttonClass } from '../kit/button';
+import { ProgressBar } from '../kit/progress-bar';
+import { SkyScene } from '../kit/sky-scene';
+import { StarRating } from '../kit/star-rating';
+import { assetUrl, REGION_BACKDROPS, REGION_CHEST } from '../kit/ui-art';
+import { chapters, playPath, say, stepProgress, type PlayerData } from '../player/player-data';
+import { TextbookRef, textbookOf } from '../player/textbook-ref';
+import { isPlayable, recommendedQuest, regionProgress } from './region-board';
+
+/** The region's map as the backdrop (no image yet: the sky scene, so a new region still works). */
+export function RegionBackdrop({ regionId, children }: { regionId: string; children: ReactNode }) {
+  const image = REGION_BACKDROPS[regionId];
+  if (!image) return <SkyScene>{children}</SkyScene>;
+  return (
+    <div className="region-scene" style={{ '--region-backdrop': `url("${assetUrl(image)}")` } as CSSProperties} data-id="region-backdrop">
+      {children}
+    </div>
+  );
+}
+
+const STATE_TEXT: Record<QuestSummary['state'], string> = {
+  locked: 'Chưa mở',
+  open: 'Đang mở',
+  'in-progress': 'Đang làm',
+  completed: 'Đã xong',
+};
+
+/** Quest titles repeat their region ("Khu rừng bí mật – Chương 1: Lá thần"); on the region's own board the chapter part is enough. */
+export function boardTitle(title: string, regionName: string): string {
+  const prefix = `${regionName} – `;
+  return title.startsWith(prefix) ? title.slice(prefix.length) : title;
+}
+
+export function RegionIntro({ region, quests, data }: { region: Region; quests: readonly QuestSummary[]; data: PlayerData }) {
+  const { done, total } = regionProgress(quests);
+  const next = recommendedQuest(quests);
+  const fill = (text: string) => say(text, data.character);
+  return (
+    <div className="region-intro">
+      <h1 id="region-title" className="ribbon region-sign">
+        {fill(region.name)}
+        {region.subject ? <span className="region-sign-subject">{region.subject}</span> : null}
+      </h1>
+      <p className="region-bubble" data-id="region-description">
+        {fill(region.description ?? region.tagline)}
+      </p>
+      <div className="region-progress-card" data-id="region-progress">
+        <div className="region-progress-text">
+          <strong>
+            Hoàn thành: {done}/{total}
+          </strong>
+          <ProgressBar done={done} total={total} label={`Hoàn thành ${done} trên ${total} nhiệm vụ`} />
+        </div>
+        <img className="region-chest" src={assetUrl(REGION_CHEST)} alt="" width={96} height={96} />
+      </div>
+      {next ? (
+        <Link to={playPath(next)} className={buttonClass('primary', { block: true })} data-id="region-explore">
+          {next.state === 'completed' ? 'Chơi lại' : 'Khám phá ngay'} →
+        </Link>
+      ) : null}
+    </div>
+  );
+}
+
+function BoardRow({ summary, region, data }: { summary: QuestSummary; region: Region; data: PlayerData }) {
+  const { done, total } = stepProgress(summary);
+  const title = boardTitle(say(summary.quest.title, data.character), say(region.name, data.character));
+  const stub = summary.quest.status === 'stub';
+  const playable = isPlayable(summary);
+  const textbook = textbookOf(summary);
+  return (
+    <li className={`board-row${playable ? '' : ' board-row--locked'}`} data-id={`region-quest-${summary.quest.id}`} data-state={summary.state}>
+      <div className="board-row-text">
+        {textbook ? <TextbookRef textbook={textbook} dataId={`region-quest-textbook-${summary.quest.id}`} /> : null}
+        <strong className="board-row-title">{title}</strong>
+        {stub ? (
+          <span className="badge">Sắp có</span>
+        ) : summary.state === 'locked' ? (
+          <span className="badge">Hoàn thành chương trước để mở</span>
+        ) : (
+          <span className="board-row-status">
+            <StarRating stars={summary.progress.stars ?? 0} size={24} dataId={`region-quest-stars-${summary.quest.id}`} />
+            {summary.state === 'completed' ? null : (
+              <span className="board-row-progress" data-id={`region-quest-progress-${summary.quest.id}`}>
+                {STATE_TEXT[summary.state]} · Hoàn thành {done}/{total}
+              </span>
+            )}
+          </span>
+        )}
+      </div>
+      {playable ? (
+        <Link to={playPath(summary)} className="board-row-go" aria-label={`Khám phá ${title}`} data-id={`region-play-${summary.quest.id}`}>
+          <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
+            <path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </Link>
+      ) : (
+        <Icon name="locked" size={32} label="Khóa" />
+      )}
+    </li>
+  );
+}
+
+function chapterNamedByQuest(list: readonly QuestSummary[], chapter: number, region: Region, data: PlayerData): boolean {
+  const [only] = list;
+  return list.length === 1 && only !== undefined && boardTitle(say(only.quest.title, data.character), say(region.name, data.character)).startsWith(`Chương ${chapter}`);
+}
+
+export function QuestBoard({ region, quests, data }: { region: Region; quests: readonly QuestSummary[]; data: PlayerData }) {
+  return (
+    <section className="parchment quest-board" aria-labelledby="quest-board-title" data-id="region-board">
+      <h2 id="quest-board-title" className="quest-board-title">
+        Các nhiệm vụ trong khu vực
+      </h2>
+      {chapters([...quests], region.id).map(({ chapter, quests: list }) => (
+        <section key={chapter} className="board-chapter" aria-label={`Chương ${chapter}`} data-id={`region-chapter-${chapter}`}>
+          {/* A chapter of one quest titled "Chương N…" needs no caption on screen (screen readers keep it). */}
+          <h3 className={chapterNamedByQuest(list, chapter, region, data) ? 'visually-hidden' : 'board-chapter-title'}>Chương {chapter}</h3>
+          <ul className="board-list">
+            {list.map((q) => (
+              <BoardRow key={q.quest.id} summary={q} region={region} data={data} />
+            ))}
+          </ul>
+        </section>
+      ))}
+    </section>
+  );
+}

@@ -2,6 +2,8 @@
 // runtime set) into dist/, so a path that leaves the manifest fails the build instead of a 404.
 // Plain data on purpose: vite.config imports it.
 import characters from '../../../../../content/characters.json';
+import regions from '../../../../../content/world/regions.json';
+import { REGION_CHEST_ICON, regionBackdropPath } from '../../../../../packages/schema/src/region-art';
 
 const FLUENT = 'packs/fluent-emoji/1ffb34c752ec/icons';
 
@@ -66,12 +68,21 @@ export const SPECIES_ART: Readonly<Record<string, Readonly<Record<MiuPose, strin
 /** Home and world-map background: the world overview, one floating island per region (`pnpm assets:home`). */
 export const HOME_ISLAND = 'generated/home/world.png';
 
+/** Region screen art (`pnpm assets:regions`): each region's backdrop, rendered from its map, and the chest. */
+// The catalogue itself is validated by `pnpm content:check`; here only ids and the backdrop flag matter.
+export const REGION_BACKDROPS: Readonly<Record<string, string>> = Object.fromEntries(
+  (regions as { regions: Array<{ id: string; backdrop?: unknown }> }).regions.filter((r) => r.backdrop).map((r) => [r.id, regionBackdropPath(r.id)]),
+);
+export const REGION_CHEST = REGION_CHEST_ICON;
+
 export type UiIcon = keyof typeof UI_ICONS;
 
 export const UI_ART_PATHS: readonly string[] = [
   ...Object.values(UI_ICONS),
   ...new Set([...Object.values(MIU_ART), ...Object.values(SPECIES_ART).flatMap((art) => Object.values(art))]),
   HOME_ISLAND,
+  ...Object.values(REGION_BACKDROPS),
+  REGION_CHEST,
 ];
 
 export const assetUrl = (manifestPath: string): string => `/game-assets/${manifestPath}`;

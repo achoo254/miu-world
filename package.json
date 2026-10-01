@@ -23,6 +23,7 @@
     "assets:character": "tsx tools/assets/kitbash-character.ts",
     "assets:preview": "tsx tools/assets/render-preview.ts",
     "assets:home": "tsx tools/assets/render-home-island.ts",
+    "assets:regions": "tsx tools/assets/render-region-art.ts",
     "security:dist": "tsx tools/security/scan-dist.ts",
     "assets:atlas": "tsx tools/assets/build-atlas.ts",
     "assets:sounds": "tsx tools/assets/build-sounds.ts",

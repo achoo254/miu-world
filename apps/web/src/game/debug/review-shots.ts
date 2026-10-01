@@ -1,6 +1,7 @@
-// Fixed cameras for review screenshots (?shot=top|iso|island|bridge|tree|npc|life:<ambient id>):
+// Fixed cameras for review screenshots (?shot=top|iso|island|bridge|tree|npc|life:<ambient id>|view:…):
 // overrides the follow camera, lifts view-distance limits, and flags document.body.dataset.ready after
-// a few frames. A `life:` shot frames one villager or animal and keeps time running (for videos).
+// a few frames. A `life:` shot frames one villager or animal and keeps time running (for videos). A
+// `view:ex,ey,ez:tx,ty,tz:fov` shot is any camera on any map, without the player (region backdrops).
 import { Vector3, type PerspectiveCamera, type Scene } from 'three';
 import type { WorldEntities } from '@miu/voxel/world-entities';
 
@@ -13,6 +14,21 @@ export interface ReviewShot {
   readonly backdrop: boolean;
   /** Time keeps running (ambient life at work) and the player is hidden. */
   readonly live: boolean;
+  /** The player stays out of the picture. */
+  readonly hidesPlayer: boolean;
+}
+
+/** `view:ex,ey,ez:tx,ty,tz:fov` → the camera it names, or null when the name is not a well-formed view. */
+export function parseViewShot(name: string): { eye: Vector3; target: Vector3; fov: number } | null {
+  const [kind, eye, target, fov] = name.split(':');
+  const point = (text = ''): Vector3 | null => {
+    const n = text.split(',').map(Number);
+    return n.length === 3 && n.every(Number.isFinite) ? new Vector3(n[0], n[1], n[2]) : null;
+  };
+  const e = point(eye);
+  const t = point(target);
+  const f = Number(fov);
+  return kind === 'view' && e && t && Number.isFinite(f) && f > 0 ? { eye: e, target: t, fov: f } : null;
 }
 
 const SETTLE_FRAMES = 20;
@@ -64,7 +80,7 @@ export function createReviewShot(
     const eye = LIFE_ANGLES.map(around).find(clear) ?? around(LIFE_ANGLES[0] ?? 225);
     views[name] = { eye, target, fov: 50 };
   }
-  const view = views[name];
+  const view = name.startsWith('view:') ? parseViewShot(name) : views[name];
   if (!view) throw new Error(`unknown review shot ${name}`);
   scene.fog = null;
   let frames = 0;
@@ -82,6 +98,7 @@ export function createReviewShot(
     },
     backdrop: name === 'island',
     live: ambient !== undefined,
+    hidesPlayer: ambient !== undefined || name.startsWith('view:'),
     get settled() {
       return frames >= SETTLE_FRAMES;
     },

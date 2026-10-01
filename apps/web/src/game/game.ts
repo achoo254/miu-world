@@ -394,7 +394,7 @@ export class Game {
       character.update(dt, controller.speed, controller.onGround);
       rig.update(dt, controller.position);
       // With the camera inside Miu (nowhere left to back off to), hide her rather than show her insides.
-      if (!reviewShot?.backdrop) character.root.visible = rig.viewDistance > 0.9 && !reviewShot?.live;
+      if (!reviewShot?.backdrop) character.root.visible = rig.viewDistance > 0.9 && !reviewShot?.hidesPlayer;
       reviewShot?.apply(camera);
       sky.position.copy(camera.position);
       sun.position.set(controller.position.x + 18, controller.position.y + 30, controller.position.z + 12);

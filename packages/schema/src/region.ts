@@ -3,11 +3,21 @@
 import { z } from 'zod';
 import { ContentId } from './content';
 
+export { REGION_CHEST_ICON, REGION_CHEST_MODEL, regionBackdropPath } from './region-art';
+
 /** `open`: playable; `v1`: planned after the MVP; `soon`: next content drop; `level`: opens at a level. */
 export const RegionStatus = z.enum(['open', 'v1', 'soon', 'level']);
 export type RegionStatus = z.infer<typeof RegionStatus>;
 
 const percent = z.number().min(0).max(100);
+const point = z.tuple([z.number(), z.number(), z.number()]);
+
+/**
+ * Camera on the region's map for its backdrop image (the region screen's background), rendered by
+ * `pnpm assets:regions` into `generated/regions/<id>.png`. Map coordinates, in blocks.
+ */
+export const RegionBackdrop = z.strictObject({ eye: point, target: point, fov: z.number().min(20).max(90) });
+export type RegionBackdrop = z.infer<typeof RegionBackdrop>;
 
 export const Region = z
   .strictObject({
@@ -17,6 +27,9 @@ export const Region = z
     tagline: z.string().min(1),
     /** Short line under the name on the Home island and the world map: the subject or activity (mock M1.1). */
     subject: z.string().min(1).optional(),
+    /** What the region holds, said in the speech bubble of the region screen. May use `{name}`. */
+    description: z.string().min(1).optional(),
+    backdrop: RegionBackdrop.optional(),
     status: RegionStatus,
     /** Level that opens a `level` region. */
     level: z.number().int().min(2).optional(),

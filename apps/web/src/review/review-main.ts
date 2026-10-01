@@ -46,7 +46,7 @@ const DECISIONS = [
 const MVP_STEPS: Record<string, string> = {
   '01-creator': 'Tạo nhân vật: đổi mũ thấy ngay trên nhân vật voxel, chọn tên (M1.3)',
   '02-home': 'Home: đảo, khu vực mở/khóa, nhiệm vụ hôm nay, Lv/XP/Xu (M1.1)',
-  '03-region': 'Khu rừng bí mật: chương, tiến độ, Khám phá ngay (M1.4, M2.1)',
+  '03-region': 'Khu rừng bí mật: biển gỗ, tiến độ có rương, bảng nhiệm vụ theo chương trên nền map của khu (M2.1)',
   '04-dialogue': 'Hội thoại với Vẹt, gọi bé bằng tên nhân vật (M3.3)',
   '05-letter': 'Đọc lá thư: câu hỏi đọc hiểu',
   '06-drag-drop': 'Kéo 10 quả táo vào giỏ bằng tay (M2.4)',
@@ -60,12 +60,16 @@ const MVP_STEPS: Record<string, string> = {
 const UI_STEPS: Record<string, string> = {
   '01-login': 'Đăng nhập phụ huynh: chỉ nút Google',
   '02-set-pin': 'Sau khi đăng nhập Google lần đầu: đặt PIN phụ huynh',
-  '03-consent': 'Đồng ý của phụ huynh (bản nháp)',
+  '03-consent': 'Đồng ý của phụ huynh',
   '04-parent-area': 'Khu phụ huynh: tạo hồ sơ từ danh sách tên',
-  '05-profiles': 'Bé chọn hồ sơ',
-  '05b-creator': 'Hồ sơ mới: tạo nhân vật, chọn tên trước khi chơi',
-  '06-play-parrot': 'Vào game, đứng gần Vẹt: nhãn React',
-  '07-parent-gate': 'Bé mở khu phụ huynh: cần PIN',
+  '05-profiles': 'Đưa máy cho bé: bé chọn hồ sơ',
+  '06-creator': 'Hồ sơ mới: tạo nhân vật (loài, tên) trước khi chơi',
+  '07-home': 'Home: đảo nổi mỗi vùng một đảo, nhiệm vụ hôm nay (M1.1)',
+  '08-world-map': 'Bản đồ thế giới: chọn khu vực (M1.4)',
+  '09-region': 'Khu rừng bí mật: biển gỗ, tiến độ, bảng nhiệm vụ trên nền chính map của khu (M2.1)',
+  '10-play-parrot': 'Vào game, đứng gần Vẹt: nhãn tương tác',
+  '11-parent-gate': 'Bé mở khu phụ huynh: cần PIN',
+  '12-delete-account': 'Phụ huynh tải dữ liệu, rồi xóa hẳn tài khoản',
 };
 const STORAGE_KEY = 'miu-review-decisions';
 
