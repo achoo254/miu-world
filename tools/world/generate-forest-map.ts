@@ -6,7 +6,7 @@
 import { VoxelWorld } from '../../packages/voxel/src/chunk-format';
 import type { WorldEntities } from '../../packages/voxel/src/world-entities';
 import { LIFE_MODEL_ANIMATION, LIFE_MODEL_HEIGHT, QUEST_CLEARANCE, placeForestLife } from './forest-life';
-import { columnsOf, fillColumn, heightField, loadBlocks, MAP_CHUNKS, mapModels, PACK, placeRegionTargets, rollingHeight, runIfMain, scatterTrees, smoothstep, standHeight } from './map-kit';
+import { columnsOf, fillColumn, heightField, loadBlocks, mapModels, PACK, placeRegionTargets, rollingHeight, runIfMain, scatterTrees, smoothstep, standHeight, WIDE_MAP_SIDE } from './map-kit';
 import { createRng, hashSeed } from './noise';
 import { placeBridge } from './structures/bridge';
 import { distanceToPath, pathColumns, type Point } from './structures/path';
@@ -54,7 +54,20 @@ export function riverHalfWidth(x: number): number {
   return 2.3 + 0.8 * Math.sin(x / 9);
 }
 
-/** Meadows in the forest beyond chapter 1's corner (open ground for the lessons' places and the wild life). */
+/**
+ * The glades of chapters 2–5 (each chapter's places go in its own), deep in the wide forest north of the
+ * stream (owner, 01/10/2026: maps ten times wider).
+ */
+export const DISTRICTS: ReadonlyArray<{ chapter: number; x: number; z: number; hx: number; hz: number }> = [
+  { chapter: 2, x: 220, z: 240, hx: 44, hz: 38 },
+  { chapter: 3, x: 500, z: 260, hx: 44, hz: 38 },
+  { chapter: 4, x: 240, z: 540, hx: 44, hz: 38 },
+  { chapter: 5, x: 540, z: 560, hx: 44, hz: 38 },
+];
+/** The waterfall cliff of the mock (designs/khu-rung-bi-mat/): a rocky hill with water falling down its face. */
+const CLIFF = { x: 690, z: 720, r: 90, rise: 18 };
+
+/** Meadows of the forest beyond chapter 1's corner (open ground for the wild life, round the glades too). */
 export const MEADOWS: ReadonlyArray<{ x: number; z: number }> = [
   { x: 140, z: 28 },
   { x: 164, z: 84 },
@@ -62,6 +75,8 @@ export const MEADOWS: ReadonlyArray<{ x: number; z: number }> = [
   { x: 60, z: 150 },
   { x: 166, z: 164 },
   { x: 100, z: 116 },
+  { x: 340, z: 140 }, { x: 620, z: 140 }, { x: 720, z: 300 }, { x: 360, z: 380 }, { x: 640, z: 420 }, { x: 100, z: 380 },
+  { x: 120, z: 660 }, { x: 380, z: 700 }, { x: 420, z: 520 }, { x: 700, z: 560 }, { x: 300, z: 640 }, { x: 560, z: 720 },
 ];
 
 interface Clearing {
@@ -80,8 +95,8 @@ export async function generateForest(): Promise<{ world: VoxelWorld; entities: W
   };
   const seed = hashSeed(SEED_TEXT);
   const rng = createRng(seed);
-  // Chapter 1 keeps its corner of the map.
-  const world = new VoxelWorld(MAP_CHUNKS);
+  // Chapter 1 keeps its corner of the map; the forest runs on 800 blocks each way.
+  const world = new VoxelWorld([WIDE_MAP_SIDE / 16, 3, WIDE_MAP_SIDE / 16]);
   const [sx, sy, sz] = world.size;
 
   // Landmarks and the bridge crossing (river runs along x, so the bridge deck runs along z).
@@ -105,8 +120,9 @@ export async function generateForest(): Promise<{ world: VoxelWorld; entities: W
     { x: stonesX, z: stonesZ1 + 4, radius: 4 },
     { x: ancient.x, z: ancient.z, radius: 10 },
     ...MEADOWS.map((m) => ({ x: m.x, z: m.z, radius: 9 })),
+    ...DISTRICTS.map((d) => ({ x: d.x, z: d.z, radius: 30 })),
   ];
-  const route: Point[] = [
+  const ch1Route: Point[] = [
     [spawn.x, spawn.z],
     [parrot.x - 3, parrot.z - 3],
     [36, bridgeZ0 - 6],
@@ -116,6 +132,17 @@ export async function generateForest(): Promise<{ world: VoxelWorld; entities: W
     [62, 70],
     [ancient.x - 6, ancient.z - 6],
   ];
+  // Trails from the ancient tree up into the forest to every glade, and between them.
+  const routes: Point[][] = [
+    ch1Route,
+    [[ancient.x, ancient.z + 8], [ancient.x, 180], [220, 240]],
+    [[220, 240], [500, 260]],
+    [[220, 240], [240, 540]],
+    [[500, 260], [540, 560]],
+    [[240, 540], [540, 560]],
+    [[540, 560], [CLIFF.x - 40, CLIFF.z - 60]],
+  ];
+  const pathDistance = (x: number, z: number): number => Math.min(...routes.map((r) => distanceToPath(r, x, z)));
 
   // 1. Height field: rolling ground, levelled at the clearings and along the path, sunk at the stream.
   const surface = heightField(world, (x, z) => {
@@ -124,7 +151,9 @@ export async function generateForest(): Promise<{ world: VoxelWorld; entities: W
       const k = smoothstep(c.radius, c.radius + 5, Math.hypot(x - c.x, z - c.z));
       h = 12 * (1 - k) + h * k;
     }
-    const pathDist = distanceToPath(route, x, z);
+    const cliff = Math.hypot(x - CLIFF.x, z - CLIFF.z) / CLIFF.r;
+    if (cliff < 1) h += CLIFF.rise * Math.min(1, (1 - cliff) * 2.2);
+    const pathDist = pathDistance(x, z);
     h = h * smoothstep(1, 5, pathDist) + Math.min(h, 13) * (1 - smoothstep(1, 5, pathDist));
     const dr = Math.abs(z - riverCenter(x));
     const hw = riverHalfWidth(x);
@@ -151,7 +180,7 @@ export async function generateForest(): Promise<{ world: VoxelWorld; entities: W
   }
 
   // 3. Stone path on the surface (bridge deck replaces it over the water).
-  const pathCells = pathColumns(route, 1.3);
+  const pathCells = new Set(routes.flatMap((r) => [...pathColumns(r, 1.3)]));
   for (const cell of pathCells) {
     const [x = 0, z = 0] = cell.split(',').map(Number);
     if (x < 0 || z < 0 || x >= sx || z >= sz) continue;
@@ -172,13 +201,21 @@ export async function generateForest(): Promise<{ world: VoxelWorld; entities: W
   const ancientBase = surface(ancient.x, ancient.z) + 1;
   placeAncientTree(world, ancient.x, ancientBase, ancient.z, { log: B.treeLog, leaves: B.leaves, core: B.log }, rng);
 
+  // 5b. The waterfall: water down the cliff's south face into a pool at its foot, mossy rocks beside it.
+  const fallX = CLIFF.x;
+  let fallZ = CLIFF.z;
+  while (fallZ > CLIFF.z - CLIFF.r && surface(fallX, fallZ - 1) >= surface(fallX, fallZ) - 1) fallZ--;
+  for (let z = fallZ; z <= fallZ + 4; z++) for (let dx = -1; dx <= 1; dx++) for (let y = surface(fallX, fallZ - 2) + 1; y <= surface(fallX + dx, z); y++) world.set(fallX + dx, y, z, B.water);
+  for (let dx = -4; dx <= 4; dx++) for (let dz = -6; dz <= -1; dz++) if (Math.hypot(dx, dz + 3) < 3.6) world.set(fallX + dx, surface(fallX + dx, fallZ + dz), fallZ + dz, B.water);
+  for (const dx of [-3, 3]) world.set(fallX + dx, surface(fallX + dx, fallZ + 1) + 1, fallZ + 1, B.rock);
+
   // 6. Scattered trees (jittered grid, rejecting path, stream, clearings and rim).
   const occupied = scatterTrees({
     world,
     rng,
     surface,
     rejects: (x, z) =>
-      distanceToPath(route, x, z) < 3.5 ||
+      pathDistance(x, z) < 3.5 ||
       Math.abs(z - riverCenter(x)) < riverHalfWidth(x) + 3 ||
       clearings.some((c) => Math.hypot(x - c.x, z - c.z) < c.radius + 1),
     skip: 0.18,
@@ -189,7 +226,7 @@ export async function generateForest(): Promise<{ world: VoxelWorld; entities: W
   for (let i = 0; i < Math.round((14 * sx * sz) / (96 * 96)); i++) {
     const x = 6 + Math.floor(rng() * (sx - 12));
     const z = 6 + Math.floor(rng() * (sz - 12));
-    if (distanceToPath(route, x, z) < 3 || Math.abs(z - riverCenter(x)) < riverHalfWidth(x) + 1) continue;
+    if (pathDistance(x, z) < 3 || Math.abs(z - riverCenter(x)) < riverHalfWidth(x) + 1) continue;
     const y = surface(x, z) + 1;
     world.set(x, y, z, B.rock);
     if (rng() < 0.5 && x + 1 < sx) world.set(x + 1, surface(x + 1, z) + 1, z, B.rock);
@@ -273,6 +310,12 @@ export async function generateForest(): Promise<{ world: VoxelWorld; entities: W
     },
   ];
 
+  // The gate back to the hub, beside the spawn (every theme map has one: zone-map.ts HUB_REGION).
+  interactables.push({
+    id: 'cong-truong-hoc', kind: 'gate', name: 'Cổng sang Trường học', label: 'Đi qua cổng',
+    position: place(spawn.x + 7, spawn.z - 4), yaw: 0, radius: 3, ...modelled(`${PACK.castle}/gate.glb`), travel: 'truong-hoc',
+  });
+
   // Villagers and animals going about their day, clear of every chapter's quest targets.
   const ambients = placeForestLife({
     world,
@@ -296,12 +339,13 @@ export async function generateForest(): Promise<{ world: VoxelWorld; entities: W
   const propCells = columnsOf(props);
   const canStand = (x: number, z: number): boolean => {
     const y = surface(x, z);
-    if (y <= WATER_LEVEL || Math.abs(z - riverCenter(x)) < riverHalfWidth(x) + 2 || distanceToPath(route, x, z) < 2) return false;
+    if (y <= WATER_LEVEL || Math.abs(z - riverCenter(x)) < riverHalfWidth(x) + 2 || pathDistance(x, z) < 2) return false;
     if (world.get(x, y + 1, z) !== 0 || world.get(x, y + 2, z) !== 0) return false; // a boulder or a trunk
     if ([[1, 0], [-1, 0], [0, 1], [0, -1]].some(([dx, dz]) => Math.abs(surface(x + (dx ?? 0), z + (dz ?? 0)) - y) > 1)) return false;
     return !occupied.some(([tx, tz]) => Math.hypot(tx - x, tz - z) < 2.2) && !propCells.some(([px, pz]) => Math.hypot(px - x, pz - z) < 1.5);
   };
-  const forestCells = cellsIn(6, 6, sx - 7, sz - 7);
+  const gladeCells = new Map(DISTRICTS.map((d) => [d.chapter, cellsIn(d.x - d.hx, d.z - d.hz, d.x + d.hx, d.z + d.hz)]));
+  const allGlades = [...gladeCells.values()].flat();
   const villagerSpots = ambients.flatMap((a) => [a.position, ...Object.values(a.spots)].map((p) => [Math.floor(p[0]), Math.floor(p[2])] as const));
   const allInteractables = await placeRegionTargets({
     mapId: MAP_ID,
@@ -310,8 +354,8 @@ export async function generateForest(): Promise<{ world: VoxelWorld; entities: W
     map: {
       canStand,
       stand: place,
-      chapterCells: () => forestCells,
-      residentCells: forestCells,
+      chapterCells: (chapter) => gladeCells.get(chapter) ?? allGlades,
+      residentCells: allGlades,
       // Villagers keep this far from every quest target (forest-life.ts): so do the targets from them.
       clearance: QUEST_CLEARANCE,
       keepClear: [...columnsOf(interactables.filter((t) => t.chapter === undefined)), ...villagerSpots, [spawn.x, spawn.z]],
