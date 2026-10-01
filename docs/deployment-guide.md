@@ -112,7 +112,7 @@ tools/deploy/staging/deploy.sh release   # mỗi lần deploy
 
 - `curl -s https://miu-staging.hoandat.com/api/health` trả `{"status":"ok"}`.
 - Revision đang chạy nằm ở `/opt/miu/current/apps/server/dist/server/REVISION` trên 176.
-- File dưới `/game-assets/` không có hash trong tên, và Cloudflare giữ chúng tới 4 giờ (`cache-control: max-age=14400`). Release có đổi asset ở đường dẫn cũ (nhân vật, ảnh review) thì xoá cache đúng các URL đó theo §4 (tối đa 30 URL một lần gọi), rồi so sha256 của bản trên staging với file local. Danh sách file đổi: `git show --name-only --format= <commit> | grep '^assets/'`.
+- File dưới `/game-assets/` không có hash trong tên, và Cloudflare giữ chúng ở edge tới 4 giờ (`s-maxage=14400` từ nginx lab; tunelo không cache chúng, xem §6). Release có đổi asset ở đường dẫn cũ (nhân vật, ảnh review) thì xoá cache đúng các URL đó theo §4 (tối đa 30 URL một lần gọi), rồi so sha256 của bản trên staging với file local. Danh sách file đổi: `git show --name-only --format= <commit> | grep '^assets/'`.
 
 **Log:**
 
@@ -136,6 +136,10 @@ tools/deploy/staging/deploy.sh release   # mỗi lần deploy
 - **Google OAuth:** `GOOGLE_REDIRECT_URI` phải khớp đúng một URI đã đăng ký trên Google client, dạng `https://<domain>/api/auth/google/callback`. Consent screen đang ở chế độ Testing, nên chỉ test user mới đăng nhập được.
 - **tunelo dưới systemd:** phải truyền `TUNELO_KEY` qua env, vì tunelo không đọc `~/.tunelo/config.json` khi chạy như dịch vụ. Nó cũng cần `$HOME` ghi được để lưu run record. Cả hai đã cấu hình trong `miu-tunnel.service`.
 - **Cloudflare cache tệp tĩnh ở edge khoảng 4 giờ**, kể cả phản hồi sai. Tệp `.js` không tồn tại mà từng trả 200 sẽ bị giữ lại cho tới khi purge (§4). HTML không bị cache, nên sau deploy `index.html` mới trỏ tới chunk mới.
+- **tunelo server trên .65 cũng có cache riêng** (Redis, khoá theo subdomain, đường dẫn và `Accept-Encoding`; header `x-tunelo-cache`). Nó cache file tĩnh 24 giờ khi tên file trông giống có hash, ví dụ `forest-ch1-tree.png`, kể cả khi origin không gửi `Cache-Control`. Purge Cloudflare không xoá được cache này: Cloudflare tải lại và lại nhận bản cũ. Đã đo ngày 01/10/2026: bản cũ chỉ xuất hiện khi request có `gzip, br`, đúng header Cloudflare luôn gửi.
+  - Vì vậy `nginx-lab.conf` gửi `Cache-Control: max-age=0, s-maxage=14400` cho `/game-assets/`. tunelo bỏ qua file có `max-age=0`; Cloudflare vẫn giữ ở edge 4 giờ theo `s-maxage`, và trình duyệt vẫn nhận `max-age=14400` theo Browser Cache TTL của zone.
+  - tunelo chỉ xoá cache của subdomain khi tunnel đăng ký lại từ đầu. Nối lại trong 5 giây grace thì cache được giữ, nên `setup` dừng tunnel, chờ 7 giây rồi mới chạy lại.
+  - Nghi một tầng giữ bản cũ thì so sha256 lần lượt ở nginx lab (`127.0.0.1:8090`), tunnel (`https://miu-staging.tunnel.inetdev.io.vn`, gửi kèm `-H 'Accept-Encoding: gzip, br'`), rồi Cloudflare.
 - **Cổng 8787 trên .65 đã có dịch vụ khác giữ** (loopback). Production phải đặt `PORT` khác; kiểm bằng `ss -ltnp`. Quy tắc "cổng cố định 8787" trong `CLAUDE.md` chỉ áp cho máy dev.
 - **Nginx trên .65 (CentOS) đọc cấu hình từ `/etc/nginx/conf.d/`**, không có `sites-enabled`. `setup` chỉ ghi tệp `miu-staging.conf` và gỡ nó ra nếu `nginx -t` báo lỗi.
 - **Server chỉ nghe trên `127.0.0.1`** và chỉ tin `X-Forwarded-For` từ loopback (`app.set('trust proxy', …)` trong `apps/server/src/app.ts`). Reverse proxy ngay trước server vì vậy phải chạy trên cùng máy với server.

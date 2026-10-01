@@ -61,7 +61,9 @@ setup() {
   } | lab 'install -m 640 -o root -g miu /dev/stdin /etc/miu/staging.env'
   echo "TUNELO_KEY=$(secret '.tokens[] | select(.account == "miu-staging-176") | .token')" \
     | lab 'install -m 640 -o root -g miu /dev/stdin /etc/miu/tunnel.env'
-  lab 'systemctl restart miu-tunnel && sleep 3 && systemctl is-active miu-tunnel'
+  # Stop, then start after tunelo's 5 s reconnect grace: a fresh registration makes the tunelo server
+  # drop this subdomain's response cache, while a quick restart reconnects and keeps stale files.
+  lab 'systemctl stop miu-tunnel && sleep 7 && systemctl start miu-tunnel && sleep 3 && systemctl is-active miu-tunnel'
 
   echo "== edge nginx (.65)"
   edge 'cat > /etc/nginx/conf.d/miu-staging.conf.new' < "$HERE/nginx-edge.conf"
