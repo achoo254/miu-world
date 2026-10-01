@@ -47,8 +47,8 @@ Chi tiết Jev: `plans/dattqh/reports/jev-260930-sgk-plan-decisions.md`.
 | 1 | [Kiểm kê SGK thành dữ liệu](./phase-01-textbook-inventory.md) | L | — | Done (2 sách complete, 1.768 mục; report `reports/sgk-inventory-260930.md`) |
 | 2 | [Schema + runtime cho cơ chế mới](./phase-02-quest-schema-new-mechanics.md) | L | — (VS phase 3 đã commit) | Done (trên `main` từ 6db35d6) |
 | 3 | [Kỹ năng, quy tắc cơ chế, cổng phủ nội dung](./phase-03-skills-mapping-completeness-gate.md) | M | 1, 2 | Done (2 quest mẫu + công cụ phủ/nguyên văn/không lặp) |
-| 4 | [Kịch bản Tiếng Việt — 18 tuần](./phase-04-tieng-viet-quests.md) | XL | 3 | Chờ nghiệm thu mẫu (D10): 5/34 quest mẫu xong |
-| 5 | [Kịch bản Toán — 7 chủ đề](./phase-05-toan-quests.md) | XL | 3 | Chờ nghiệm thu mẫu (D10): 1/36 quest mẫu xong |
+| 4 | [Kịch bản Tiếng Việt — 18 tuần](./phase-04-tieng-viet-quests.md) | XL | 3 | Mẫu đã nghiệm thu (D10, Jev 01/10/2026: chấp nhận kèm chỉnh sửa); 5/34 quest mẫu xong, viết tiếp |
+| 5 | [Kịch bản Toán — 7 chủ đề](./phase-05-toan-quests.md) | XL | 3 | Mẫu đã nghiệm thu (D10, Jev 01/10/2026: chấp nhận kèm chỉnh sửa); 1/36 quest mẫu xong, viết tiếp |
 | 6 | [Phiếu viết ngoài game](./phase-06-writing-worksheets.md) | M | 1; UI sau VS phase 1 | Done (API + trang Phiếu viết trong khu phụ huynh, in A4; E2E `worksheets` in 2 PDF mẫu) |
 | 7 | [Thu âm trên máy](./phase-07-on-device-voice.md) | M | 2; sau VS phase 1, 8 | Done (thu/nghe lại trên máy, CSP `media-src blob:`; E2E `speak`) |
 | 8 | [UI cơ chế mới](./phase-08-new-mechanic-ui.md) | L | 2; sau VS phase 8 | Done (màn cơ chế, minh họa, E2E `sgk-mechanics`); chờ nghiệm thu UI |
@@ -187,3 +187,18 @@ Người sở hữu giao TypeSafe Jev quyết (`jev-1.13.0`, Choice, `tools/deci
 
 ### Câu hỏi mở
 Không còn câu chặn.
+
+### Session 2 — 2026-10-01 (nghiệm thu mẫu D10)
+Người sở hữu giao các mục cần quyết trên trang review cho Jev, tiêu chí duy nhất: game sinh động, trẻ không chán. Report: `plans/dattqh/reports/jev-261001-0941-review-decisions.md`.
+
+| Câu | Jev chọn | Áp vào |
+| --- | --- | --- |
+| Nghiệm thu 6 mẫu | accept_with_changes (0.56) | D10 qua; phase 4, 5 viết tiếp |
+| Giọng thoại | more_playful (0.51) | Lời dẫn của NPC vui nhộn, hài hước hơn ở mẫu và quest mới (chữ SGK giữ nguyên) |
+| Độ dài | keep_one_quest (0.93) | Một quest mỗi bài |
+| Phương án sai do AI đặt | keep (0.74) | Giữ |
+| Đáp án AI tự chọn | keep_and_flag (0.52) | Giữ, đánh dấu cho giáo viên |
+| Bước ôn thêm | keep (0.83) | Giữ |
+| Điều chỉnh trình bày | keep (0.99) | Giữ |
+| Dẫn đường | clear (0.71) | Giữ |
+| Phiếu viết | keep (0.93) | Giữ |

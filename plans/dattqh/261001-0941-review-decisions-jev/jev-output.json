@@ -1,0 +1,215 @@
+{
+  "model": "jev-1.13.0",
+  "usage": {
+    "input_tokens": 3759,
+    "output_tokens": 796
+  },
+  "results": {
+    "loop_verdict": {
+      "stakes": "medium",
+      "choice": "adjust",
+      "confidence": 0.69,
+      "probabilities": {
+        "fallback": 0.01,
+        "adjust": 0.79,
+        "keep": 0.2
+      },
+      "decision": "escalate"
+    },
+    "loop_adjustment": {
+      "stakes": "low",
+      "choice": "surprise_events",
+      "confidence": 0.91,
+      "probabilities": {
+        "villager_errands": 0.01,
+        "surprise_events": 0.93,
+        "shorter_chapter": 0.0,
+        "hidden_collectibles": 0.06
+      },
+      "decision": "auto"
+    },
+    "creator_verdict": {
+      "stakes": "low",
+      "choice": "adjust",
+      "confidence": 0.94,
+      "probabilities": {
+        "fallback": 0.01,
+        "adjust": 0.96,
+        "keep": 0.03
+      },
+      "decision": "auto"
+    },
+    "creator_adjustment": {
+      "stakes": "low",
+      "choice": "pets",
+      "confidence": 0.33,
+      "probabilities": {
+        "more_outfits": 0.22,
+        "emotes": 0.27,
+        "pets": 0.49,
+        "more_species": 0.02
+      },
+      "decision": "escalate"
+    },
+    "home_verdict": {
+      "stakes": "medium",
+      "choice": "adjust",
+      "confidence": 0.75,
+      "probabilities": {
+        "fallback": 0.03,
+        "adjust": 0.83,
+        "keep": 0.14
+      },
+      "decision": "escalate"
+    },
+    "home_adjustment": {
+      "stakes": "low",
+      "choice": "animated_life",
+      "confidence": 0.68,
+      "probabilities": {
+        "daily_surprise": 0.17,
+        "region_previews": 0.05,
+        "animated_life": 0.78
+      },
+      "decision": "auto"
+    },
+    "challenges_verdict": {
+      "stakes": "medium",
+      "choice": "adjust",
+      "confidence": 0.92,
+      "probabilities": {
+        "fallback": 0.0,
+        "adjust": 0.95,
+        "keep": 0.05
+      },
+      "decision": "auto"
+    },
+    "challenges_adjustment": {
+      "stakes": "low",
+      "choice": "playful_objects",
+      "confidence": 0.06,
+      "probabilities": {
+        "variety_rotation": 0.26,
+        "playful_objects": 0.37,
+        "story_framing": 0.37
+      },
+      "decision": "escalate"
+    },
+    "rewards_verdict": {
+      "stakes": "medium",
+      "choice": "adjust",
+      "confidence": 0.78,
+      "probabilities": {
+        "fallback": 0.01,
+        "adjust": 0.86,
+        "keep": 0.13
+      },
+      "decision": "escalate"
+    },
+    "rewards_adjustment": {
+      "stakes": "low",
+      "choice": "world_celebration",
+      "confidence": 0.89,
+      "probabilities": {
+        "world_celebration": 0.92,
+        "sticker_collection": 0.02,
+        "chest_opening": 0.06
+      },
+      "decision": "auto"
+    },
+    "sgk_samples_verdict": {
+      "stakes": "medium",
+      "choice": "accept_with_changes",
+      "confidence": 0.34,
+      "probabilities": {
+        "accept_with_changes": 0.56,
+        "accept": 0.38,
+        "reject": 0.05
+      },
+      "decision": "escalate"
+    },
+    "sgk_story_voice": {
+      "stakes": "low",
+      "choice": "more_playful",
+      "confidence": 0.27,
+      "probabilities": {
+        "more_playful": 0.51,
+        "simpler": 0.02,
+        "suitable": 0.47
+      },
+      "decision": "escalate"
+    },
+    "sgk_quest_length": {
+      "stakes": "low",
+      "choice": "keep_one_quest",
+      "confidence": 0.86,
+      "probabilities": {
+        "keep_one_quest": 0.93,
+        "split_in_two": 0.07
+      },
+      "decision": "auto"
+    },
+    "sgk_author_distractors": {
+      "stakes": "low",
+      "choice": "keep",
+      "confidence": 0.48,
+      "probabilities": {
+        "drop": 0.26,
+        "keep": 0.74
+      },
+      "decision": "escalate"
+    },
+    "sgk_author_answer_keys": {
+      "stakes": "low",
+      "choice": "keep_and_flag",
+      "confidence": 0.27,
+      "probabilities": {
+        "keep_and_flag": 0.52,
+        "drop": 0.01,
+        "keep": 0.47
+      },
+      "decision": "escalate"
+    },
+    "sgk_author_extra_steps": {
+      "stakes": "low",
+      "choice": "keep",
+      "confidence": 0.65,
+      "probabilities": {
+        "drop": 0.17,
+        "keep": 0.83
+      },
+      "decision": "auto"
+    },
+    "sgk_presentation_changes": {
+      "stakes": "low",
+      "choice": "keep",
+      "confidence": 0.99,
+      "probabilities": {
+        "keep": 0.99,
+        "revert": 0.01
+      },
+      "decision": "auto"
+    },
+    "sgk_wayfinding": {
+      "stakes": "low",
+      "choice": "clear",
+      "confidence": 0.42,
+      "probabilities": {
+        "clear": 0.71,
+        "add_voice_and_trail": 0.29
+      },
+      "decision": "escalate"
+    },
+    "sgk_worksheets": {
+      "stakes": "low",
+      "choice": "keep",
+      "confidence": 0.89,
+      "probabilities": {
+        "more_lines": 0.03,
+        "keep": 0.93,
+        "decorate": 0.04
+      },
+      "decision": "auto"
+    }
+  }
+}

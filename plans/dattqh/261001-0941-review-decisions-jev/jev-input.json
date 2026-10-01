@@ -1,0 +1,142 @@
+{
+  "state": {
+    "product": "Miu World: a voxel learning adventure for Vietnamese grade-2 children (age 7–8) on iPad Gen 10 and the web. Built 100% by AI; the owner only states wishes and delegates every review decision to this model.",
+    "owner_wish": "The one thing that matters: the game must be truly lively, so children never get bored while playing. Judge every decision by whether it makes play livelier and more varied for a 7–8 year old.",
+    "constraints": "Free CC0/MIT assets only (no paid AI images, nothing from Minecraft); rewards, XP and unlocks computed by the server; iPad draw-call budget 150; textbook (SGK) wording enters the game unchanged, variety lives in the story, characters, scenes and feedback around it; every loop (feedback lines, NPC lines, scenes) rotates fresh content and never repeats back to back.",
+    "mvp_review": {
+      "loop": "Forest chapter 1, 11 steps: meet the parrot, follow the arrow to find 3 clues, read a letter (reading question), drag 10 apples into a basket (addition), share candy with the beaver (multiple choice, subtraction), order river stones from small to large (sorting), solve the ancient tree's riddle 8 + 5 on a number pad, open the chest. Around it the forest now has 5 villagers doing varied chores and about 12 animals (parrots fly, bees buzz, deer, fox, bunny…), they greet the child by name and chat when tapped, without rewards. Quest scenes have sounds, NPC reactions, sparkles on right answers, gentle shake on wrong ones, a leaf trail of progress.",
+      "creator": "Character Creator: 4 species (cat, rabbit, fox, bear), name from a pick list, hat and backpack with colour variants; some unlock by level or by finishing a quest (server checks); 3D voxel preview with 4 animations (wave, jump, yawn, cheer). Shirts, shoes and wings are planned for later.",
+      "home": "Home and the world map are a React screen over a pre-rendered image of 7 floating voxel islands (one per region) with drifting clouds and bobbing decorations; regions are tappable cards with lock badges; today's quests listed. The fallback is a real 3D island scene, which costs GPU on the iPad and loading time before every play session.",
+      "challenges": "3 math challenges (drag and drop, sorting, multiple choice) plus reading and a riddle, playable by touch and tap-to-select; three support layers: Guide always available, Hint after the first wrong try, Answer after two wrong tries; support never blocks progress. Not yet tried on a real iPad.",
+      "rewards": "Completion screen reveals rewards in order: the NPC and the child's character cheer, earned stars light one by one with a ting, XP and coins count up, item and skill XP rows slide in; then Level Up and Unlock screens, each skippable with one tap. Seeing the Answer layer gives 90 XP instead of 100, said kindly."
+    },
+    "sgk_samples": {
+      "what": "6 sample textbook quests (Vietnamese and Math, grade 2 volume 1), each a real lesson wrapped in its own story: 'Sâu Xanh vào lớp Hai', 'Voi Bảo tìm ngày hôm qua', 'Thỏ Tí mang nhầm sách vở', 'Tiếng gọi trên đồng cỏ khô', 'Ong Vàng và bụi hoa tỉ muội', 'Bảng số bay trong gió'. Each mixes several mechanics (dialogue, search, speak, read, multi-select, classify, fill blank, clock, calendar, sort). 15–21 steps per lesson. Lessons are never locked. Writing parts become printed worksheets on Vietnamese 'vở ô li' grid with HP001 tracing font. Bulk writing of the remaining ~64 quests waits for this acceptance.",
+      "author_distractors": "Where the book asks a free answer or a choice among options the book does not print, the AI author wrote the wrong options (e.g. 2 wrong answers for reading questions; 3 wrong numbers 33, 77, 375 among 9 for building numbers from cards; 2 wrong ideas quoted from the passage).",
+      "author_answer_keys": "Where the book prints no answer, the AI author chose the key (which words name people vs things; extra action words read from pictures; a model sentence; one calendar question phrased after the book's pattern).",
+      "author_extra_steps": "Extra practice the author added (ordering 8 lines of a poem before reciting it).",
+      "presentation_changes": "Small adaptations of presentation: the book's clock example says 7:30 but its picture shows 7:00, so the game keeps the book's words and uses another picture (9:30) for the clock step; a 'belongs to no group' bin for one flower in a classify task; number tables shown row by row.",
+      "wayfinding": "Each step that changes place names where to go, an arrow points the way and a gem marks the spot; a 'Quay lại' button rescues a stuck child.",
+      "worksheets": "Printed A4 worksheets: vở ô li grid with margin line, HP001 tracing letters, blank lines to write."
+    }
+  },
+  "questions": {
+    "loop_verdict": {
+      "stakes": "medium",
+      "instructions": "Using `mvp_review.loop` and `owner_wish`, decide what to do with the chapter 1 play loop.",
+      "criteria": { "keep": "Keep it as it is.", "adjust": "Keep the story and steps but add more liveliness and variety around them.", "fallback": "Rework the chapter's story and step order." }
+    },
+    "loop_adjustment": {
+      "stakes": "low",
+      "instructions": "Suppose the chapter 1 loop is adjusted to be livelier. Using `mvp_review.loop` and `owner_wish`, pick the single change that would most keep a 7–8 year old from getting bored.",
+      "criteria": {
+        "hidden_collectibles": "Hidden collectibles to find while exploring (stickers, shiny leaves, small chests) that fill a collection page, no learning required.",
+        "surprise_events": "Small surprise events in the world between steps (a bunny steals a clue and must be chased, rain then a rainbow, fireflies at dusk).",
+        "villager_errands": "Optional tiny errands from villagers (bring firewood to the cook, catch a fish) with a thank-you scene.",
+        "shorter_chapter": "Fewer steps per chapter so each session ends sooner."
+      }
+    },
+    "creator_verdict": {
+      "stakes": "low",
+      "instructions": "Using `mvp_review.creator` and `owner_wish`, decide what to do with the Character Creator.",
+      "criteria": { "keep": "Keep it as it is.", "adjust": "Keep it and add something more to choose or play with.", "fallback": "Simplify it to species and name only." }
+    },
+    "creator_adjustment": {
+      "stakes": "low",
+      "instructions": "Suppose the Character Creator is extended. Using `mvp_review.creator` and `owner_wish`, pick the single addition children would enjoy most.",
+      "criteria": {
+        "more_outfits": "More outfit slots now (shirt, shoes, wings) with colour variants.",
+        "emotes": "Emotes and dances the character can do in the world (wave, dance, cheer) chosen in the creator.",
+        "pets": "A small pet companion that follows the character.",
+        "more_species": "More animal species to pick from."
+      }
+    },
+    "home_verdict": {
+      "stakes": "medium",
+      "instructions": "Using `mvp_review.home`, `constraints` and `owner_wish`, decide what to do with Home and the world map.",
+      "criteria": { "keep": "Keep the screen over the pre-rendered islands.", "adjust": "Keep the pre-rendered islands and add more motion and life on top.", "fallback": "Replace it with a real 3D island scene." }
+    },
+    "home_adjustment": {
+      "stakes": "low",
+      "instructions": "Suppose Home stays on the pre-rendered islands and gets livelier. Using `mvp_review.home` and `owner_wish`, pick the single addition with the most effect.",
+      "criteria": {
+        "animated_life": "Animated life on the islands: waterfalls flowing, birds and butterflies flying across, the child's character waving on its island.",
+        "daily_surprise": "A daily surprise on Home (a gift balloon to tap, a visiting animal with a greeting).",
+        "region_previews": "Tapping a region shows a short animated preview of what is inside before entering."
+      }
+    },
+    "challenges_verdict": {
+      "stakes": "medium",
+      "instructions": "Using `mvp_review.challenges` and `owner_wish`, decide what to do with the challenges and their three support layers.",
+      "criteria": { "keep": "Keep them as they are.", "adjust": "Keep the mechanics and support but make the challenges more playful.", "fallback": "Change the support layers (for example remove the Answer layer)." }
+    },
+    "challenges_adjustment": {
+      "stakes": "low",
+      "instructions": "Suppose the challenges are made more playful. Using `mvp_review.challenges` and `owner_wish`, pick the single change with the most effect.",
+      "criteria": {
+        "playful_objects": "Objects react while playing (apples bounce into the basket, stones wobble, candy jars giggle), each answer step animated.",
+        "story_framing": "Each challenge framed by a mini story beat before and after (why the beaver needs the candy shared, what happens once crossed).",
+        "variety_rotation": "Rotate the challenge's numbers, objects and scenes on replay so the same chapter never plays the same twice."
+      }
+    },
+    "rewards_verdict": {
+      "stakes": "medium",
+      "instructions": "Using `mvp_review.rewards` and `owner_wish`, decide what to do with the completion, Level Up and Unlock screens and the 90 XP after seeing the answer.",
+      "criteria": { "keep": "Keep them as they are, including 90 XP after the Answer layer.", "adjust": "Keep them but make the reward moment more exciting.", "fallback": "Change the XP rule after the Answer layer." }
+    },
+    "rewards_adjustment": {
+      "stakes": "low",
+      "instructions": "Suppose the reward moment is made more exciting. Using `mvp_review.rewards` and `owner_wish`, pick the single change with the most effect.",
+      "criteria": {
+        "chest_opening": "The child taps a treasure chest that shakes and bursts open to reveal the rewards.",
+        "sticker_collection": "Each finished quest gives a unique sticker for a sticker album.",
+        "world_celebration": "The world itself celebrates back in the 3D scene (villagers and animals cheer, confetti, the parrot sings)."
+      }
+    },
+    "sgk_samples_verdict": {
+      "stakes": "medium",
+      "instructions": "Using `sgk_samples` and `owner_wish`, decide whether the 6 sample textbook quests are accepted so the remaining quests can be written the same way.",
+      "criteria": { "accept": "Accept the samples; write the remaining quests in the same way.", "accept_with_changes": "Accept, but apply changes to the samples and the way the rest are written.", "reject": "Do not accept; redo the samples." }
+    },
+    "sgk_story_voice": {
+      "stakes": "low",
+      "instructions": "Using `sgk_samples.what` and `owner_wish`, are each sample's own story, characters and dialogue voice suitable for grade-2 children?",
+      "criteria": { "suitable": "Suitable as they are.", "more_playful": "Suitable, but make the characters and dialogue more playful and funny.", "simpler": "Too much text; simplify the dialogue." }
+    },
+    "sgk_quest_length": {
+      "stakes": "low",
+      "instructions": "Using `sgk_samples.what` and `owner_wish`, decide how long one textbook quest should be (15–21 steps for one lesson now).",
+      "criteria": { "keep_one_quest": "Keep one quest per lesson at 15–21 steps.", "split_in_two": "Split each lesson into two shorter quests (reading part and practice part)." }
+    },
+    "sgk_author_distractors": {
+      "stakes": "low",
+      "instructions": "Using `sgk_samples.author_distractors` and `constraints`, decide what to do with wrong options written by the AI author where the book prints none.",
+      "criteria": { "keep": "Keep them (the correct answer stays the book's own words).", "drop": "Drop such steps and keep only questions whose options the book prints." }
+    },
+    "sgk_author_answer_keys": {
+      "stakes": "low",
+      "instructions": "Using `sgk_samples.author_answer_keys`, decide what to do with answer keys the AI author chose where the book prints none.",
+      "criteria": { "keep": "Keep them as chosen.", "keep_and_flag": "Keep them and mark them for the teacher review that happens before children use the content.", "drop": "Drop those steps." }
+    },
+    "sgk_author_extra_steps": {
+      "stakes": "low",
+      "instructions": "Using `sgk_samples.author_extra_steps` and `owner_wish`, decide what to do with extra practice steps the author added beyond the book.",
+      "criteria": { "keep": "Keep them; they add variety.", "drop": "Drop them; keep only the book's own exercises." }
+    },
+    "sgk_presentation_changes": {
+      "stakes": "low",
+      "instructions": "Using `sgk_samples.presentation_changes` and `constraints`, decide what to do with the small presentation adaptations.",
+      "criteria": { "keep": "Keep them; the book's words stay unchanged.", "revert": "Revert to the book's exact layout even where it does not fit the screen." }
+    },
+    "sgk_wayfinding": {
+      "stakes": "low",
+      "instructions": "Using `sgk_samples.wayfinding`, is the wayfinding clear enough for a 7–8 year old to go alone?",
+      "criteria": { "clear": "Clear enough.", "add_voice_and_trail": "Add more: a glowing footprint trail on the ground and the NPC calling out where to go." }
+    },
+    "sgk_worksheets": {
+      "stakes": "low",
+      "instructions": "Using `sgk_samples.worksheets`, decide on the printed worksheets.",
+      "criteria": { "keep": "Keep them as they are.", "more_lines": "Add more blank practice lines per letter.", "decorate": "Add the quest's characters as small pictures to make the sheet fun." }
+    }
+  }
+}

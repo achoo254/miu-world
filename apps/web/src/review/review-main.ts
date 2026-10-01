@@ -1,5 +1,5 @@
 // Final review page: renders the preview gallery, perf table vs budget and license table from the
-// manifest, and collects the reviewer's keep / adjust / fallback decisions as copyable text.
+// manifest, and lists the review decisions TypeSafe Jev took on the owner's behalf.
 import { ASSET_PREFIX } from '../game/asset-loader';
 import palette from '../../../../content/palette.json';
 import '../ui/fonts.css';
@@ -36,12 +36,17 @@ interface PerfReport {
 
 const EXTRA_CLIPS = ['wave', 'jump', 'yawn', 'cheer'];
 const CLIP_LABEL: Record<string, string> = { wave: 'Vẫy tay', jump: 'Nhảy', yawn: 'Ngáp', cheer: 'Vui mừng', walk: 'Đi', sprint: 'Chạy' };
+/**
+ * Review decisions, taken by TypeSafe Jev on the owner's behalf (plans/dattqh/reports/jev-261001-0941-review-decisions.md).
+ * The owner's one criterion: a game built 100% by AI that is lively, so children never get bored.
+ */
 const DECISIONS = [
-  { id: 'loop', label: 'Vòng chơi chương 1 (câu chuyện, thứ tự bước, độ dài)', fallback: 'Ghi chỗ cần đổi ở ghi chú' },
-  { id: 'creator', label: 'Tạo nhân vật: đồ mới, biến thể màu, đồ mở theo level/quest', fallback: 'Ghi món cần đổi ở ghi chú' },
-  { id: 'home', label: 'Home là màn trên ảnh đảo render sẵn (không phải cảnh 3D)', fallback: 'Cần cảnh đảo 3D sớm hơn' },
-  { id: 'challenges', label: '3 thử thách Toán và ba lớp hỗ trợ trên iPad', fallback: 'Ghi thử thách khó dùng ở ghi chú' },
-  { id: 'rewards', label: 'Màn thưởng, lên cấp, mở khóa; xem Đáp án còn 90 XP', fallback: 'Đổi mức giảm XP (ghi rõ)' },
+  { label: 'Vòng chơi chương 1', verdict: 'Chỉnh', direction: 'sự kiện bất ngờ trong rừng giữa các bước (thỏ cuỗm manh mối, mưa rồi cầu vồng, đom đóm)' },
+  { label: 'Tạo nhân vật', verdict: 'Chỉnh', direction: 'thú cưng đi theo nhân vật' },
+  { label: 'Home trên ảnh đảo render sẵn', verdict: 'Chỉnh (giữ ảnh đảo)', direction: 'sự sống trên đảo: thác chảy, chim và bướm bay, nhân vật vẫy tay' },
+  { label: '3 thử thách Toán và ba lớp hỗ trợ', verdict: 'Chỉnh (giữ ba lớp hỗ trợ)', direction: 'đồ vật phản ứng khi chơi (táo nảy, đá lắc lư, hũ kẹo cười)' },
+  { label: 'Màn thưởng, lên cấp, mở khóa; 90 XP sau Đáp án', verdict: 'Chỉnh (giữ 90 XP)', direction: 'cả thế giới 3D ăn mừng khi xong quest' },
+  { label: 'Quest mẫu SGK', verdict: 'Chấp nhận kèm chỉnh sửa', direction: 'lời thoại vui nhộn hơn; đáp án AI tự chọn được đánh dấu cho giáo viên; mở viết các quest còn lại' },
 ];
 const MVP_STEPS: Record<string, string> = {
   '01-creator': 'Tạo nhân vật: đổi mũ thấy ngay trên nhân vật voxel, chọn tên (M1.3)',
@@ -71,7 +76,6 @@ const UI_STEPS: Record<string, string> = {
   '11-parent-gate': 'Bé mở khu phụ huynh: cần PIN',
   '12-delete-account': 'Phụ huynh tải dữ liệu, rồi xóa hẳn tài khoản',
 };
-const STORAGE_KEY = 'miu-review-decisions';
 
 /** Block palette shipped with the POC (before the warm pastel pass), for the before/after table. */
 const POC_PALETTE: Record<string, string> = {"grass": "#7cc453", "leaf": "#4fa94a", "autumn": "#f09a3e", "dirt": "#a8703f", "stone": "#9aa3ad", "sand": "#f1d49a", "wood": "#a56d3b", "bark": "#7a5230", "birch": "#ece6d8", "path": "#bfb6a5", "water": "#4aa8e8", "moss": "#6f9a58"};
@@ -200,56 +204,12 @@ function renderLicenses(manifest: ManifestJson): void {
   table.append(body);
 }
 
-function readSaved(): Record<string, string> {
-  try {
-    return JSON.parse(localStorage.getItem(STORAGE_KEY) ?? '{}') as Record<string, string>;
-  } catch {
-    return {};
-  }
-}
-
 function renderDecisions(): void {
-  const saved = readSaved();
-  const container = byId('decisions');
+  const list = el('ul', { className: 'decisions' });
   for (const d of DECISIONS) {
-    const options = [
-      ['keep', 'Giữ'],
-      ['adjust', 'Chỉnh'],
-      ['fallback', `Chuyển phương án dự phòng (${d.fallback})`],
-    ];
-    const fieldset = el('fieldset', {}, [el('legend', { textContent: d.label })]);
-    for (const [value, text] of options) {
-      const input = el('input', { type: 'radio', name: d.id, value: value ?? '', checked: saved[d.id] === value });
-      input.dataset.id = `review-decision-${d.id}-${value ?? ''}`;
-      input.addEventListener('change', () => {
-        const next = { ...readSaved(), [d.id]: value ?? '' };
-        try {
-          localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
-        } catch {
-          // Private mode: the choice still lives in the form until the page closes.
-        }
-      });
-      fieldset.append(el('label', {}, [input, text ?? '']));
-    }
-    container.append(el('div', { className: 'decision' }, [fieldset]));
+    list.append(el('li', {}, [el('strong', { textContent: `${d.label}: ${d.verdict}` }), ` — ${d.direction}`]));
   }
-  byId('copy-decision').addEventListener('click', () => {
-    const lines = [
-      ...DECISIONS.map((d) => {
-        const picked = document.querySelector<HTMLInputElement>(`input[name="${d.id}"]:checked`);
-        return `- ${d.label}: ${picked?.parentElement?.textContent ?? 'chưa chọn'}`;
-      }),
-    ];
-    const fps = (byId('ipad-fps') as HTMLInputElement).value.trim();
-    lines.push(`- FPS iPad Gen 10 (mức Vừa): ${fps || 'chưa đo'}`);
-    const note = (byId('decision-note') as HTMLTextAreaElement).value.trim();
-    const text = `Kết quả duyệt đợt Foundation Miu World\n${lines.join('\n')}${note ? `\nGhi chú: ${note}` : ''}`;
-    const status = byId('copy-status');
-    navigator.clipboard.writeText(text).then(
-      () => (status.textContent = 'Đã sao chép — dán vào cuộc trò chuyện với AI.'),
-      () => (status.textContent = text),
-    );
-  });
+  byId('decisions').append(list);
 }
 
 async function main(): Promise<void> {
