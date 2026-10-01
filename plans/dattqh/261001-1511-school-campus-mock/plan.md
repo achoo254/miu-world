@@ -43,3 +43,4 @@ Ràng buộc: ≤ 150 draw call, ≤ 150k tam giác; asset chỉ từ pack có l
 - Placer nhanh hơn ~20 lần (tra ô theo bảng băm), cần cho map lớn.
 - Test generator đi bộ từ cổng tới 7 khu, vào lớp tầng 1 và lên cầu thang tới lớp tầng 2.
 - Trang review: mục "Trường học theo mock", mỗi khung mock cạnh cùng góc nhìn trong game (17 cặp).
+- Làm đẹp đồ vật (người sở hữu, 01/10/2026): nội thất lớp học từ Kenney Furniture Kit (bàn, ghế, bàn giáo viên, tủ sách, đèn trần, chậu cây, thùng rác), đèn đường và đèn sân từ City Kit Roads, nhà dân từ City Kit Suburban trên bậc đất cao 2 khối sau tường rào (bé không trèo lên được); xích đu, cột bóng rổ, cột cờ đỏ sao vàng, ghế công viên dựng từ hộp mảnh (`content/world/box-props.json`, `pnpm assets:box-props`). Ba pack mới đều CC0, có trong bảng license của trang review.
