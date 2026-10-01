@@ -62,6 +62,21 @@
     "license": "CC0-1.0"
   },
   {
+    "glob": "generated/review/props/*.png",
+    "generator": "apps/web/e2e/sgk-content.spec.ts",
+    "derivedFrom": [
+      "kenney-blocky-characters",
+      "kenney-cube-pets",
+      "kenney-voxel-pack",
+      "kenney-nature-kit",
+      "kenney-survival-kit",
+      "kenney-food-kit",
+      "kenney-castle-kit",
+      "fluent-emoji"
+    ],
+    "license": "CC0-1.0"
+  },
+  {
     "glob": "generated/home/*.png",
     "generator": "tools/assets/render-home-island.ts",
     "derivedFrom": [
@@ -130,5 +145,13 @@
     "generator": "tools/content/content-gaps.ts",
     "derivedFrom": [],
     "license": "CC0-1.0"
+  },
+  {
+    "glob": "generated/props/*.glb",
+    "generator": "tools/assets/build-emoji-props.ts",
+    "derivedFrom": [
+      "fluent-emoji"
+    ],
+    "license": "MIT"
   }
 ]

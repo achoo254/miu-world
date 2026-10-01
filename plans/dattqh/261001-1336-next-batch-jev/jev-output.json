@@ -1,0 +1,31 @@
+{
+  "model": "jev-1.13.0",
+  "usage": {
+    "input_tokens": 1169,
+    "output_tokens": 86
+  },
+  "results": {
+    "next_batch": {
+      "stakes": "medium",
+      "choice": "world_variety",
+      "confidence": 1.0,
+      "probabilities": {
+        "progress_album": 0.0,
+        "world_variety": 1.0,
+        "ktx2_atlas": 0.0,
+        "new_region_library": 0.0
+      },
+      "decision": "auto"
+    },
+    "album_after": {
+      "stakes": "low",
+      "choice": "no",
+      "confidence": 0.52,
+      "probabilities": {
+        "yes": 0.24,
+        "no": 0.76
+      },
+      "decision": "escalate"
+    }
+  }
+}

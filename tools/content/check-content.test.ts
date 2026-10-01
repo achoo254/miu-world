@@ -4,7 +4,7 @@ import path from 'node:path';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { CONTENT_DIR, loadContentCatalog } from '../../apps/server/src/content/content-catalog';
 import { ASSETS_DIR } from '../assets/asset-lib';
-import { checkContent, checkQuestTargets } from './check-content';
+import { LOOK_CAP, checkContent, checkEmojiProps, checkLessonLooks, checkQuestTargets, checkTargetCatalogues } from './check-content';
 
 let dir: string;
 beforeEach(() => {
@@ -103,6 +103,15 @@ describe('content:check', () => {
       ]);
     });
 
+    it('flags a character standing in the world twice while one lesson is played', () => {
+      const worldDir = writeMap((e) => {
+        for (const t of e.interactables as Array<{ id: string; character?: string }>) if (t.id === 'gau-truc-tron') delete t.character;
+      });
+      expect(checkQuestTargets(quests().values(), worldDir).issues).toContain(
+        'quest tv2-t08-b15: Gấu Trúc Tròn stands in the world twice (gau-truc, gau-truc-tron); name one as the other\'s "character" in content/world/targets.json',
+      );
+    });
+
     it('notes, without failing, an active quest whose map is not generated yet; stubs are skipped', () => {
       const report = checkQuestTargets(quests().values(), path.join(dir, 'no-maps'));
       expect(report.issues).toEqual([]);
@@ -127,5 +136,48 @@ describe('content:check', () => {
     writeFileSync(ch1, JSON.stringify({ ...(JSON.parse(readFileSync(ch1, 'utf8')) as object), unlock: ['forest-ch9'] }));
     writeFileSync(path.join(dir, 'quests/forest-ch2.json'), JSON.stringify({ id: 'forest-ch2', region: 'r', chapter: 2, title: 't', status: 'stub' }));
     expect(checkContent(dir).issues.join('\n')).toMatch(/quest forest-ch1 unlocks unknown quest forest-ch9/);
+  });
+});
+
+describe('quest looks', () => {
+  const read = (rel: string) => JSON.parse(readFileSync(path.join(CONTENT_DIR, rel), 'utf8')) as Record<string, Record<string, Record<string, unknown>>>;
+  const object = { model: 'packs/p/box.glb', height: 0.7, kind: 'object', label: 'Xem' };
+  const npc = { model: 'packs/p/fox.glb', height: 1.2, kind: 'npc', label: 'Nói chuyện' };
+  const models = new Set(['packs/p/box.glb', 'packs/p/fox.glb']);
+  const catalogue = (targets: Record<string, unknown>) => ({ version: 1, targets });
+
+  it('lets one look draw at most LOOK_CAP different things; a series of one name counts once', () => {
+    const looks = { version: 1, looks: { box: object } };
+    const many = Object.fromEntries(Array.from({ length: LOOK_CAP + 1 }, (_, i) => [`thing-${i}`, { name: `Hộp ${i}`, look: 'box' }]));
+    const series = Object.fromEntries(Array.from({ length: LOOK_CAP + 1 }, (_, i) => [`ve-${i}`, { name: 'Vé lá vàng', look: 'box' }]));
+    expect(checkTargetCatalogues(looks, catalogue(many), models)).toEqual([`look box draws ${LOOK_CAP + 1} different things (at most ${LOOK_CAP}): give some of them a look of their own`]);
+    expect(checkTargetCatalogues(looks, catalogue(series), models)).toEqual([]);
+  });
+
+  it('counts the places one character is met at as one character, and checks what `character` names', () => {
+    const looks = { version: 1, looks: { fox: npc, box: object } };
+    const cast = Object.fromEntries(Array.from({ length: LOOK_CAP + 1 }, (_, i) => [`cao-lem-${i}`, { name: 'Cáo Lém', look: 'fox', ...(i > 0 ? { character: 'cao-lem-0' } : {}) }]));
+    expect(checkTargetCatalogues(looks, catalogue(cast), models)).toEqual([]);
+    const wrong = { 'cao-lem': { name: 'Cáo Lém', look: 'fox' }, 'trong-tai': { name: 'Thỏ Tí', look: 'fox', character: 'cao-lem' } };
+    expect(checkTargetCatalogues(looks, catalogue(wrong), models)).toEqual(['target trong-tai: character cao-lem must be another entry named "Thỏ Tí", drawn as a character, with no character of its own']);
+  });
+
+  it('flags things of one lesson that the child tells apart by name but that look alike', () => {
+    const targets = read('world/targets.json');
+    const looks = read('world/looks.json');
+    const quests = [...loadContentCatalog().quests.values()];
+    expect(checkLessonLooks(quests, looks, targets)).toEqual([]);
+    const red = targets.targets?.['toan2-cd1-phong-bi-do'];
+    if (red) red.look = 'envelope-yellow';
+    expect(checkLessonLooks(quests, looks, targets)).toEqual(['quest toan2-cd1-b05: Phong bì đỏ, Phong bì vàng all look like envelope-yellow']);
+  });
+
+  it('needs a picture for every emoji prop, and a prop for every look built from one', () => {
+    const looks = { version: 1, looks: { envelope: { ...object, model: 'generated/props/envelope.glb' }, ticket: { ...object, model: 'generated/props/ticket.glb' } } };
+    const props = { version: 1, props: { envelope: { emoji: 'envelope' }, kite: { emoji: 'kite' } } };
+    expect(checkEmojiProps(props, looks, new Set(['envelope']))).toEqual([
+      'emoji prop kite: no picture props/kite.png in the fluent-emoji pack (sources.json)',
+      'look ticket: generated/props/ticket.glb has no entry in content/world/emoji-props.json',
+    ]);
   });
 });

@@ -7,6 +7,7 @@ import {
   Box3,
   BoxGeometry,
   CanvasTexture,
+  Color,
   Group,
   LoopOnce,
   Mesh,
@@ -16,8 +17,10 @@ import {
   type AnimationAction,
   type AnimationClip,
   type Camera,
+  type Material,
   type Object3D,
 } from 'three';
+import { clone as cloneModel } from 'three/examples/jsm/utils/SkeletonUtils.js';
 import type { Interactable, WorldEntities } from '@miu/voxel/world-entities';
 import type { TargetState } from '../../game-bridge/game-store';
 import type { GuardedGltfLoader } from '../asset-loader';
@@ -31,9 +34,11 @@ export interface InteractableObject {
   readonly root: Object3D;
   /** False while hidden: a hidden target never gets a prompt. */
   readonly available: boolean;
-  /** `player`: Miu's position, which animal NPCs watch. */
-  update(dt: number, player: { readonly x: number; readonly z: number }): void;
+  /** `player`: Miu's position, which animal NPCs watch; `viewer`: the camera, which emoji props turn to. */
+  update(dt: number, player: { readonly x: number; readonly z: number }, viewer?: { readonly x: number; readonly z: number }): void;
   setState(state: TargetState | undefined): void;
+  /** False while the same character stands at another place of the story (castHidden). */
+  setPresent(present: boolean): void;
   /** Screen position (CSS px) of the point above the target, for the prompt anchor. */
   screenAnchor(camera: Camera, viewport: { width: number; height: number }): { x: number; y: number };
 }
@@ -136,7 +141,9 @@ async function buildVisual(
 ): Promise<{ root: Object3D; mixer: AnimationMixer | null; clips: readonly AnimationClip[]; open: AnimationAction | null }> {
   if (def.model) {
     const gltf = await loader.load(def.model);
-    const root = gltf.scene;
+    // The loader shares one scene per model: each target gets its own copy, or a second calf or box of a
+    // lesson would take the first one's model away (an object has one parent).
+    const root = cloneModel(gltf.scene);
     root.scale.setScalar(def.scale ?? 1);
     // Every shadow caster is one more draw call (Master Plan §12): small clues cast none, and a
     // multi-part model (a Cube Pet has 6–7 parts) casts only from its largest part.
@@ -153,6 +160,7 @@ async function buildVisual(
     const merged = mergeParts(root, shadows && def.kind !== 'object');
     const largest = merged.length > 0 ? null : parts.reduce<Mesh | null>((best, mesh) => (!best || radius(mesh) > radius(best) ? mesh : best), null);
     if (largest) largest.castShadow = shadows && def.kind !== 'object';
+    if (def.tint) tint(root, new Color(def.tint));
     if (gltf.animations.length === 0) return { root, mixer: null, clips: [], open: null };
     const mixer = new AnimationMixer(root);
     // Animal NPCs get their clips from npc-behavior; everything else loops its one clip.
@@ -167,6 +175,19 @@ async function buildVisual(
   if (def.shape === 'letter') root.add(createLetter());
   if (def.board) root.add(await createRiddleBoard(def.board, shadows));
   return { root, mixer: null, clips: [], open: null };
+}
+
+/** Multiplies the model's own materials (copies: the loader shares them between targets) by `color`. */
+function tint(root: Object3D, color: Color): void {
+  root.traverse((o) => {
+    if (!(o instanceof Mesh)) return;
+    const recolor = (m: Material): Material => {
+      const copy = m.clone();
+      if ('color' in copy && copy.color instanceof Color) copy.color.multiply(color);
+      return copy;
+    };
+    o.material = Array.isArray(o.material) ? o.material.map(recolor) : recolor(o.material);
+  });
 }
 
 export async function loadInteractables(
@@ -188,6 +209,8 @@ export async function loadInteractables(
       const labelHeight = bounds.isEmpty() ? 1.5 : bounds.max.y - def.position[1] + 0.3;
 
       const bobs = def.kind === 'object' && (def.model !== undefined || def.shape !== undefined);
+      // A prop built from an emoji is a thick picture: it turns its face to the camera, so it reads from anywhere.
+      const facesViewer = def.model?.startsWith('generated/props/') ?? false;
       let npc: { behavior: NpcBehavior; play(clip: NpcClip): void } | null = null;
       if (def.kind === 'npc' && mixer) {
         const random = seededRandom(def.id);
@@ -202,6 +225,10 @@ export async function loadInteractables(
         npc = { behavior, play: animator.play };
       }
       let state: TargetState | undefined;
+      let present = true;
+      const show = (): void => {
+        holder.visible = present && state !== 'hidden';
+      };
       let time = 0;
       let gateSink = 0;
       const anchor = new Vector3();
@@ -209,10 +236,11 @@ export async function loadInteractables(
         def,
         root: holder,
         get available() {
-          return state !== 'hidden';
+          return present && state !== 'hidden';
         },
-        update(dt, player) {
+        update(dt, player, viewer) {
           time += dt;
+          if (facesViewer && viewer) holder.rotation.y = Math.atan2(viewer.x - holder.position.x, viewer.z - holder.position.z);
           if (npc && holder.visible) {
             const frame = npc.behavior.step(dt, { dx: player.x - holder.position.x, dz: player.z - holder.position.z });
             holder.rotation.y = frame.yaw;
@@ -228,8 +256,12 @@ export async function loadInteractables(
         setState(next) {
           if (next === state) return;
           state = next;
-          holder.visible = next !== 'hidden';
+          show();
           if (next === 'open') open?.reset().play();
+        },
+        setPresent(next) {
+          present = next;
+          show();
         },
         screenAnchor(camera, viewport) {
           anchor.copy(holder.position).setY(holder.position.y + labelHeight).project(camera);

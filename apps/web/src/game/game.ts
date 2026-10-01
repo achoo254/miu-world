@@ -16,7 +16,7 @@ import {
 } from 'three';
 import { blockLookup } from '@miu/voxel/block-table';
 import type { SolidAt } from '@miu/voxel/grid-collision';
-import { entitiesForChapter, mapForRegion } from '@miu/voxel/world-entities';
+import { castHidden, entitiesForChapter, mapForRegion } from '@miu/voxel/world-entities';
 import { PETS, UI_ICONS, assetUrl } from '../ui/kit/ui-art';
 import type { GameStore } from '../game-bridge/game-store';
 import { loadAmbientLife, type AmbientTarget } from './ambient/ambient-life';
@@ -368,12 +368,26 @@ export class Game {
     const arrow = createTargetArrow();
     scene.add(arrow.root);
     let hint: InteractableObject | null = null;
+    // A character met at several places of the story stands at one of them: where the steps last pointed.
+    const pointedAt: string[] = spawnTarget ? [spawnTarget.id] : [];
+    const placeCast = (): void => {
+      const hidden = castHidden(entities.interactables, pointedAt);
+      for (const target of targets) target.setPresent(!hidden.has(target.def.id));
+      overlay.stats.castHidden = [...hidden].sort();
+    };
+    placeCast();
     this.cleanups.push(
       store.onCommand((command) => {
         if (command.type === 'interact') interactRequested = true;
         if (command.type === 'rescue') rescueRequested = true;
         if (command.type === 'celebrate') celebrateRequested = true;
-        if (command.type === 'set-target-hint') hint = command.targetId ? (byId.get(command.targetId) ?? null) : null;
+        if (command.type === 'set-target-hint') {
+          hint = command.targetId ? (byId.get(command.targetId) ?? null) : null;
+          if (command.targetId && command.targetId !== pointedAt.at(-1)) {
+            pointedAt.push(command.targetId);
+            placeCast();
+          }
+        }
         // Server-backed target states; a target missing from the map returns to its initial look.
         if (command.type === 'set-world-state') for (const [id, target] of byId) target.setState(command.state[id]);
       }),
@@ -452,7 +466,7 @@ export class Game {
       world.water.uTime.value += dt;
       world.update(camera);
 
-      for (const target of targets) target.update(dt, controller.position);
+      for (const target of targets) target.update(dt, controller.position, camera.position);
       arrow.update(dt, controller.position, hint?.available ? hint.def : null);
       overlay.stats.hintTarget = arrow.showing ? (hint?.def.id ?? null) : null;
       const nearest = pickNearest(targets, controller.position);

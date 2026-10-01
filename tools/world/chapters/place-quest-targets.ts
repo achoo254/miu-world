@@ -5,6 +5,8 @@
 // needs catalogue entries, not code here.
 // - A target several quests use (a recurring character) is a resident: placed once, tagged with every
 //   chapter it plays in (or the one chapter), shown in each of them.
+// - The same character met at a lesson's own place (`character` in targets.json) is placed there like any
+//   target of that lesson; the game shows one entry of a character at a time (castHidden).
 // - A target one quest uses is placed with the other targets of the same place (`places` of the quest),
 //   tagged with the chapter and the quest, so it shows only while that quest is played. Quests of the same
 //   chapter may reuse the same ground: only one of them is in the world at a time.
@@ -91,16 +93,18 @@ export async function placeQuestTargets(options: {
   const { uses, map, existing, seed } = options;
   const { looks, targets } = await readTargetCatalogues();
   const rng = createRng(seed);
-  const lookOf = (id: string): { look: TargetLook; name: string; label: string } => {
+  const lookOf = (id: string): { look: TargetLook; name: string; label: string; character?: string } => {
     const entry = targets[id];
     if (!entry) throw new Error(`target ${id} is not in content/world/targets.json`);
     const look = looks[entry.look];
     if (!look) throw new Error(`target ${id}: look ${entry.look} is not in content/world/looks.json`);
-    return { look, name: entry.name, label: entry.label ?? look.label };
+    return { look, name: entry.name, label: entry.label ?? look.label, ...(entry.character ? { character: entry.character } : {}) };
   };
   const heights = Object.fromEntries([...uses.keys()].flatMap((id) => (targets[id] && looks[targets[id].look]?.model ? [[looks[targets[id].look]?.model ?? '', looks[targets[id].look]?.height ?? 1]] : [])));
   const clips = Object.fromEntries(Object.values(looks).flatMap((l) => (l.model && l.animation && heights[l.model] !== undefined ? [[l.model, l.animation]] : [])));
   const scales = await modelScales(heights, clips);
+  // Scales are measured once per model; a look of another height on the same model (a calf on the cow) scales from it.
+  const scaleOf = (model: string, height: number): number => Math.round((scales.get(model) ?? 1) * (height / (heights[model] ?? height)) * 10_000) / 10_000;
 
   /** Chapter tags of a target: one chapter, or all of them for a recurring character. */
   const chapterTags = (list: readonly TargetUse[]): Pick<Interactable, 'chapter' | 'chapters' | 'quest'> => {
@@ -109,17 +113,19 @@ export async function placeQuestTargets(options: {
     return { ...(chapters.length === 1 ? { chapter: chapters[0] } : { chapters }), ...(quest ? { quest } : {}) };
   };
   const build = (id: string, at: [number, number, number], yaw: number, list: readonly TargetUse[]): Interactable => {
-    const { look, name, label } = lookOf(id);
+    const { look, name, label, character } = lookOf(id);
     return {
       id,
+      ...(character ? { character } : {}),
       kind: look.kind,
       name,
       label,
       position: at,
       yaw,
       radius: look.kind === 'npc' ? 3 : 2,
-      ...(look.model ? { model: look.model, scale: scales.get(look.model) ?? 1 } : { shape: look.shape }),
+      ...(look.model ? { model: look.model, scale: scaleOf(look.model, look.height) } : { shape: look.shape }),
       ...(look.model && look.animation ? { animation: look.animation } : {}),
+      ...(look.tint ? { tint: look.tint } : {}),
       ...chapterTags(list),
     };
   };

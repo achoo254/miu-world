@@ -2,7 +2,7 @@
 // start, its places stand on its region's map for its chapter and quest, and a lesson plays through to its
 // reward. Two lessons are played whole (one per book); every chapter of both regions shows its first
 // target in the world.
-import { readFileSync, readdirSync } from 'node:fs';
+import { mkdirSync, readFileSync, readdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { expect, test, type Page } from '@playwright/test';
 import { QuestDefinition, stepTargets, type ActiveQuest } from '@miu/schema/content';
@@ -11,6 +11,13 @@ import { freshChild } from './quest-api';
 import { readStats, waitReady } from './stats';
 
 const QUEST_DIR = fileURLToPath(new URL('../../../content/quests/', import.meta.url));
+/** Review material, only with REVIEW_SHOTS=1 (docs/code-standards.md, test time budget). */
+const REVIEW_SHOTS = process.env.REVIEW_SHOTS === '1';
+const PROPS_SHOTS = fileURLToPath(new URL('../../../assets/generated/review/props/', import.meta.url));
+const mapEntities = (region: string): { interactables: Array<{ id: string; position: number[] }> } =>
+  JSON.parse(readFileSync(fileURLToPath(new URL(`../../../assets/generated/world/${region === 'truong-hoc' ? 'truong-hoc' : 'forest-ch1'}/entities.json`, import.meta.url)), 'utf8')) as {
+    interactables: Array<{ id: string; position: number[] }>;
+  };
 const textbook = readdirSync(QUEST_DIR)
   .filter((f) => /^(tv2|toan2)-.+\.json$/.test(f))
   .sort()
@@ -71,5 +78,56 @@ test('the first and the last chapter of each region show their lesson\'s first p
     await meets(page, quest, target);
     // Within the draw-call budget with the chapter's places in the world.
     expect((await readStats(page)).calls, quest.id).toBeLessThanOrEqual(150);
+  }
+});
+
+// One character in one place at a time: Hải Ly Cần is met at the pond, the shed and the meadow in
+// toan2-cd2-b10, and stands only where the current step sends the child.
+test('a character met at several places of a lesson stands only where the story is', async ({ page, baseURL }) => {
+  const id = 'toan2-cd2-b10';
+  const quest = textbook.find((q) => q.id === id);
+  if (!quest) throw new Error(`${id} is not an active quest`);
+  await freshChild(page, baseURL ?? '');
+  const castAt = async (target: string): Promise<void> => {
+    await page.goto(playAt(quest, target));
+    await waitReady(page);
+    await expect.poll(async () => (await readStats(page)).nearTarget, { message: target }).toBe(target);
+  };
+  await castAt('hai-ly-can');
+  expect((await readStats(page)).castHidden).toEqual(['hai-ly-bai-co', 'hai-ly-lan-go']);
+  // Up to the shed: the step there points at the beaver of the shed, and the pond is empty.
+  const headers = { Origin: new URL(baseURL ?? '').origin };
+  const steps = solution(quest);
+  const shed = steps.findIndex(([step]) => step === 'quat-chung-o-cam');
+  for (const [step, body] of steps.slice(0, shed)) {
+    const res = await page.context().request.post(`/api/quests/${id}/steps/${step}/complete`, { headers, data: body });
+    expect(res.status(), `${step}: ${await res.text()}`).toBe(200);
+  }
+  await castAt('hai-ly-lan-go');
+  await expect.poll(async () => (await readStats(page)).castHidden).toEqual(['hai-ly-bai-co', 'hai-ly-can']);
+});
+
+// For the owner: things of a lesson told apart by colour or number, as the child sees them in the world.
+test('review shots: lesson things drawn as what they are', async ({ page, baseURL }) => {
+  test.skip(!REVIEW_SHOTS, 'review material: REVIEW_SHOTS=1');
+  test.setTimeout(120_000);
+  await freshChild(page, baseURL ?? '');
+  mkdirSync(PROPS_SHOTS, { recursive: true });
+  // Lesson, one of its things, and the side the camera looks from (clear of hills).
+  const shots = [
+    ['toan2-cd1-b05', 'toan2-cd1-phong-bi-do', 1, 1],
+    ['toan2-cd4-b20', 'toan2-cd4-toa-hang-do', 1, 1],
+    ['toan2-cd7-b36', 'toan2-cd7-hop-huy-hieu-vang', 1, 1],
+    ['toan2-cd2-b09', 'toan2-cd2-be-con-dom', 1, 1],
+    ['tv2-t08-b15', 'tv2-t08-sach-de-men', 1, -1],
+    ['tv2-t18-on-cuoi-ki', 'tv2-t18-nhip-cau-dau', 1, 1],
+  ] as const;
+  for (const [id, target, sx, sz] of shots) {
+    const quest = textbook.find((q) => q.id === id);
+    if (!quest) throw new Error(`${id} is not an active quest`);
+    const [x = 0, y = 0, z = 0] = mapEntities(quest.region).interactables.find((t) => t.id === target)?.position ?? [];
+    await page.goto(`/play?quality=high&region=${quest.region}&quest=${id}&shot=view:${x + 3.5 * sx},${y + 3.2},${z + 3.5 * sz}:${x},${y + 0.4},${z}:55`);
+    await page.waitForFunction(() => document.body.dataset.ready === '1', null, { timeout: 60_000 });
+    await page.screenshot({ path: `${PROPS_SHOTS}${id}.png` });
   }
 });

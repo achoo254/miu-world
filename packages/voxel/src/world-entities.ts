@@ -27,6 +27,8 @@ const interactableSchema = z
     scale: z.number().positive().optional(),
     /** Looping clip of an animated model (NPCs). */
     animation: z.string().optional(),
+    /** Colour the model is multiplied by. */
+    tint: z.string().regex(/^#[0-9a-f]{6}$/).optional(),
     shape: z.enum(BUILT_SHAPES).optional(),
     /** Text painted on a board beside the target at runtime (the ancient tree's riddle). */
     board: z.string().min(1).optional(),
@@ -36,6 +38,8 @@ const interactableSchema = z
     chapters: z.array(z.number().int().min(1)).min(1).optional(),
     /** Something only one quest uses: shown only while that quest is played (with its chapter). */
     quest: z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/).optional(),
+    /** The character's own id when this is the same character met at another place (see `castHidden`). */
+    character: z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/).optional(),
   })
   .refine((t) => !(t.chapter !== undefined && t.chapters !== undefined), { message: 'a target has one chapter or a list of chapters, not both' })
   .refine((t) => (t.model === undefined) === (t.scale === undefined), { message: 'model and scale go together' })
@@ -126,6 +130,33 @@ export function entitiesForChapter(entities: WorldEntities, chapter: number, que
     return inChapter && (e.quest === undefined || e.quest === quest);
   };
   return { ...entities, interactables: entities.interactables.filter(shown), props: entities.props.filter(shown), ...(entities.ambients ? { ambients: entities.ambients.filter(shown) } : {}) };
+}
+
+/**
+ * Ids to hide so that each character stands in one place at a time. Entries of the same character (its own
+ * id, or `character` naming it) form a cast; the one shown is, in order: the last of `pointedAt` (the
+ * targets the quest's steps pointed at, oldest first), a copy of the quest's own place, the character's own
+ * entry, then the first by id. Pass what `entitiesForChapter` kept.
+ */
+export function castHidden(interactables: readonly Interactable[], pointedAt: readonly string[]): Set<string> {
+  const casts = new Map<string, Interactable[]>();
+  for (const target of interactables) {
+    if (target.kind !== 'npc') continue;
+    const key = target.character ?? target.id;
+    casts.set(key, [...(casts.get(key) ?? []), target]);
+  }
+  const hidden = new Set<string>();
+  for (const [key, members] of casts) {
+    if (members.length < 2) continue;
+    const ids = members.map((m) => m.id).sort();
+    const shown =
+      [...pointedAt].reverse().find((id) => ids.includes(id)) ??
+      members.filter((m) => m.quest !== undefined).map((m) => m.id).sort()[0] ??
+      ids.find((id) => id === key) ??
+      ids[0];
+    for (const id of ids) if (id !== shown) hidden.add(id);
+  }
+  return hidden;
 }
 
 /** Generated map of each region (assets/generated/world/<map>); a region without its own map plays in the forest. */

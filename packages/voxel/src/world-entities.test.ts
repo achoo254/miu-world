@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { entitiesForChapter, worldEntitiesSchema } from './world-entities';
+import { castHidden, entitiesForChapter, worldEntitiesSchema, type Interactable } from './world-entities';
 
 const base = {
   version: 2,
@@ -82,5 +82,27 @@ describe('entities for the chapter being played', () => {
     expect(ids(6)).toEqual(['tho-ti']);
     expect(ids(4)).toEqual([]);
     expect(worldEntitiesSchema.safeParse({ ...base, interactables: [{ ...target('x', 2), chapters: [2] }], props: [] }).success).toBe(false);
+  });
+});
+
+describe('one character in one place at a time', () => {
+  const npc = (id: string, extra: Partial<Interactable> = {}): Interactable => ({ ...parrot, kind: 'npc', id, name: 'Hải Ly Cần', ...extra }) as Interactable;
+  // A resident beaver, and two places of one lesson where the same beaver meets the child.
+  const cast = [npc('hai-ly-can', { chapters: [2, 5] }), npc('hai-ly-lan-go', { chapter: 2, quest: 'toan2-cd2-b10', character: 'hai-ly-can' }), npc('hai-ly-bai-co', { chapter: 2, quest: 'toan2-cd2-b10', character: 'hai-ly-can' })];
+
+  it('shows the entry the current step points at, and keeps the last one pointed at in between', () => {
+    expect([...castHidden(cast, ['hai-ly-lan-go'])].sort()).toEqual(['hai-ly-bai-co', 'hai-ly-can']);
+    expect([...castHidden(cast, ['hai-ly-lan-go', 'hai-ly-can'])].sort()).toEqual(['hai-ly-bai-co', 'hai-ly-lan-go']);
+    expect([...castHidden(cast, ['hai-ly-lan-go', 'toan2-cd2-da-cuoi-tron'])].sort()).toEqual(['hai-ly-bai-co', 'hai-ly-can']);
+  });
+
+  it('before any step points at it: the lesson\'s own place first, else the character\'s own entry', () => {
+    expect([...castHidden(cast, [])].sort()).toEqual(['hai-ly-can', 'hai-ly-lan-go']);
+    expect([...castHidden([cast[0] as Interactable, npc('vet', { character: 'hai-ly-can' })], [])]).toEqual(['vet']);
+  });
+
+  it('leaves alone characters met once and things that are not characters', () => {
+    const letter = { ...npc('thu', { character: 'hai-ly-can' }), kind: 'object' } as Interactable;
+    expect(castHidden([cast[0] as Interactable, letter, npc('tho-ti')], []).size).toBe(0);
   });
 });

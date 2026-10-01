@@ -9,7 +9,7 @@ import { playerTextIssues } from '../../packages/quest/src/player-name';
 import { PrivacyDocument, stepTargets, type QuestDefinition } from '../../packages/schema/src/content';
 import { Item } from '../../packages/schema/src/item';
 import { PetCatalog } from '../../packages/schema/src/pet';
-import { LookCatalog, QuestTargetCatalog } from '../../packages/schema/src/world-target';
+import { EmojiPropCatalog, LookCatalog, QuestTargetCatalog } from '../../packages/schema/src/world-target';
 import { RegionCatalog } from '../../packages/schema/src/region';
 import { UI_ICONS } from '../../apps/web/src/ui/kit/ui-art';
 import { entitiesForChapter, mapForRegion, worldEntitiesSchema } from '../../packages/voxel/src/world-entities';
@@ -37,6 +37,7 @@ const ASSET_TOOL_FILES = ['blocks.json', 'characters.json', 'palette.json', 'spe
 const REGIONS_FILE = 'world/regions.json';
 const LOOKS_FILE = 'world/looks.json';
 const TARGETS_FILE = 'world/targets.json';
+const EMOJI_PROPS_FILE = 'world/emoji-props.json';
 const PRIVACY_FILE = 'legal/privacy-vi.json';
 const ITEMS_FOLDER = 'items/';
 
@@ -67,6 +68,15 @@ export function checkQuestTargets(
     }
     const everywhere = new Set(parsed.data.interactables.map((t) => t.id));
     const onMap = new Map(entitiesForChapter(parsed.data, quest.chapter, quest.id).interactables.map((t) => [t.id, t]));
+    // One character in one place at a time: entries that share a name must be one character (`character`).
+    const castOf = new Map<string, string>();
+    for (const t of onMap.values()) {
+      if (t.kind !== 'npc') continue;
+      const cast = t.character ?? t.id;
+      const other = castOf.get(t.name);
+      if (other === undefined) castOf.set(t.name, cast);
+      else if (other !== cast) issues.push(`quest ${quest.id}: ${t.name} stands in the world twice (${other}, ${t.id}); name one as the other's "character" in content/${TARGETS_FILE}`);
+    }
     for (const step of quest.steps) {
       for (const target of stepTargets(step)) {
         if (!everywhere.has(target)) issues.push(`quest ${quest.id} step ${step.id} targets ${target}, which map ${mapId} does not place`);
@@ -117,7 +127,7 @@ const readByCatalogue = (rel: string) =>
   CATALOGUE_FILES.some((o) => (o.endsWith('/') ? inFolder(rel, o) && rel.endsWith('.json') : rel === o));
 const readByAssetTools = (rel: string) => ASSET_TOOL_FILES.some((o) => (o.endsWith('/') ? inFolder(rel, o) : rel === o));
 const readByCurriculum = (rel: string) => CURRICULUM_FOLDERS.some((o) => inFolder(rel, o) && rel.endsWith('.json'));
-const readByWeb = (rel: string) => rel === REGIONS_FILE || rel === LOOKS_FILE || rel === TARGETS_FILE || rel === PRIVACY_FILE || (inFolder(rel, ITEMS_FOLDER) && rel.endsWith('.json'));
+const readByWeb = (rel: string) => rel === REGIONS_FILE || rel === LOOKS_FILE || rel === EMOJI_PROPS_FILE || rel === TARGETS_FILE || rel === PRIVACY_FILE || (inFolder(rel, ITEMS_FOLDER) && rel.endsWith('.json'));
 
 /** Items parse, use a shipped UI icon, file name = id, and every item a quest rewards exists. */
 export function checkItems(dir: string, files: readonly string[], quests: Iterable<QuestDefinition>): string[] {
@@ -142,15 +152,72 @@ export function checkItems(dir: string, files: readonly string[], quests: Iterab
   return issues;
 }
 
-/** Map target catalogues (read by the map generators): they parse, every target's look exists, every look's model is licensed. */
+/** How many different things (characters, or objects by name) one look may draw across all lessons. */
+export const LOOK_CAP = 6;
+
+/**
+ * Map target catalogues (read by the map generators): they parse, every target's look exists, every look's
+ * model is licensed; a `character` names another entry of the same name drawn as a character; no look draws
+ * more than LOOK_CAP different things, so lesson after lesson the child meets new things.
+ */
 export function checkTargetCatalogues(looksRaw: unknown, targetsRaw: unknown, manifestPaths: ReadonlySet<string>): string[] {
   const looks = LookCatalog.safeParse(looksRaw);
   if (!looks.success) return [`content/${LOOKS_FILE}: ${looks.error.message}`];
   const targets = QuestTargetCatalog.safeParse(targetsRaw);
   if (!targets.success) return [`content/${TARGETS_FILE}: ${targets.error.message}`];
   const issues: string[] = [];
+  const all = targets.data.targets;
   for (const [id, look] of Object.entries(looks.data.looks)) if (look.model && !manifestPaths.has(look.model)) issues.push(`look ${id}: model ${look.model} is not in assets/manifest.json`);
-  for (const [id, target] of Object.entries(targets.data.targets)) if (!looks.data.looks[target.look]) issues.push(`target ${id}: look ${target.look} is not in content/${LOOKS_FILE}`);
+  const drawn = new Map<string, Set<string>>();
+  for (const [id, target] of Object.entries(all)) {
+    const look = looks.data.looks[target.look];
+    if (!look) {
+      issues.push(`target ${id}: look ${target.look} is not in content/${LOOKS_FILE}`);
+      continue;
+    }
+    if (target.character !== undefined) {
+      const own = all[target.character];
+      if (!own || own.character !== undefined || own.name !== target.name || looks.data.looks[own.look]?.kind !== 'npc') {
+        issues.push(`target ${id}: character ${target.character} must be another entry named "${target.name}", drawn as a character, with no character of its own`);
+      }
+    }
+    const thing = look.kind === 'npc' ? `npc:${target.character ?? id}` : `object:${target.name}`;
+    drawn.set(target.look, (drawn.get(target.look) ?? new Set()).add(thing));
+  }
+  for (const [look, things] of drawn) if (things.size > LOOK_CAP) issues.push(`look ${look} draws ${things.size} different things (at most ${LOOK_CAP}): give some of them a look of their own`);
+  return issues;
+}
+
+/** Emoji props (built by tools/assets/build-emoji-props.ts): each has its picture, and each prop look has its prop. */
+export function checkEmojiProps(raw: unknown, looksRaw: unknown, pictures: ReadonlySet<string>): string[] {
+  const props = EmojiPropCatalog.safeParse(raw);
+  if (!props.success) return [`content/${EMOJI_PROPS_FILE}: ${props.error.message}`];
+  const issues: string[] = [];
+  for (const [id, prop] of Object.entries(props.data.props)) if (!pictures.has(prop.emoji)) issues.push(`emoji prop ${id}: no picture props/${prop.emoji}.png in the fluent-emoji pack (sources.json)`);
+  const looks = LookCatalog.safeParse(looksRaw);
+  for (const [id, look] of Object.entries(looks.success ? looks.data.looks : {})) {
+    const prop = look.model?.match(/^generated\/props\/(.+)\.glb$/)?.[1];
+    if (prop && !props.data.props[prop]) issues.push(`look ${id}: ${look.model} has no entry in content/${EMOJI_PROPS_FILE}`);
+  }
+  return issues;
+}
+
+/** Things of one lesson that the child tells apart by name (red, yellow, blue envelope) must not look alike. */
+export function checkLessonLooks(quests: Iterable<QuestDefinition>, looksRaw: unknown, targetsRaw: unknown): string[] {
+  const looks = LookCatalog.safeParse(looksRaw);
+  const targets = QuestTargetCatalog.safeParse(targetsRaw);
+  if (!looks.success || !targets.success) return [];
+  const issues: string[] = [];
+  for (const quest of quests) {
+    if (quest.status === 'stub') continue;
+    const names = new Map<string, Set<string>>();
+    for (const id of new Set(quest.steps.flatMap((step) => stepTargets(step)))) {
+      const target = targets.data.targets[id];
+      if (!target || looks.data.looks[target.look]?.kind !== 'object') continue;
+      names.set(target.look, (names.get(target.look) ?? new Set()).add(target.name));
+    }
+    for (const [look, set] of names) if (set.size > 1) issues.push(`quest ${quest.id}: ${[...set].join(', ')} all look like ${look}`);
+  }
   return issues;
 }
 
@@ -208,11 +275,15 @@ export function checkContent(dir: string = CONTENT_DIR): ContentReport {
     issues.push(...checkPlayerText(readQuestDefinitions(path.join(dir, 'quests'))));
     issues.push(...checkItems(dir, files, catalog.quests.values()));
     issues.push(...checkRegions(JSON.parse(readFileSync(path.join(dir, REGIONS_FILE), 'utf8')), catalog.quests.values()));
-    const manifest = JSON.parse(readFileSync(path.join(ASSETS_DIR, 'manifest.json'), 'utf8')) as { files: Array<{ path: string }> };
+    const manifest = JSON.parse(readFileSync(path.join(ASSETS_DIR, 'manifest.json'), 'utf8')) as { files: Array<{ path: string }>; generated: Array<{ path: string }> };
     issues.push(...checkPets(JSON.parse(readFileSync(path.join(dir, 'pets.json'), 'utf8')), new Set(manifest.files.map((f) => f.path))));
     const read = (rel: string): unknown => JSON.parse(readFileSync(path.join(dir, rel), 'utf8'));
-    if (existsSync(path.join(dir, TARGETS_FILE))) issues.push(...checkTargetCatalogues(read(LOOKS_FILE), read(TARGETS_FILE), new Set(manifest.files.map((f) => f.path))));
-    else issues.push(`content/${TARGETS_FILE} is missing: the map generators place quest targets from it`);
+    if (existsSync(path.join(dir, TARGETS_FILE))) {
+      issues.push(...checkTargetCatalogues(read(LOOKS_FILE), read(TARGETS_FILE), new Set([...manifest.files, ...manifest.generated].map((f) => f.path))));
+      issues.push(...checkLessonLooks(readQuestDefinitions(path.join(dir, 'quests')), read(LOOKS_FILE), read(TARGETS_FILE)));
+      const pictures = new Set(manifest.files.flatMap((f) => f.path.match(/^packs\/fluent-emoji\/[^/]+\/props\/(.+)\.png$/)?.[1] ?? []));
+      issues.push(...checkEmojiProps(read(EMOJI_PROPS_FILE), read(LOOKS_FILE), pictures));
+    } else issues.push(`content/${TARGETS_FILE} is missing: the map generators place quest targets from it`);
     const privacy: unknown = JSON.parse(readFileSync(path.join(dir, PRIVACY_FILE), 'utf8'));
     issues.push(...checkPrivacy(privacy, catalog.consent.version));
     if (PrivacyDocument.safeParse(privacy).data?.contactEmail === null) warnings.push(`content/${PRIVACY_FILE} has no contact email yet`);

@@ -126,6 +126,15 @@ function renderGallery(generated: string[]): void {
     return `Trọn bộ · ${CLIP_LABEL[clip] ?? clip}`;
   };
   for (const p of reviewPaths.filter((x) => x.includes('/accessories/'))) byId('accessories').append(figure(p, accessoryCaption(name(p))));
+  const propsCaption: Record<string, string> = {
+    'toan2-cd1-b05': 'Phong bì đỏ, vàng, xanh (Toán bài 5)',
+    'toan2-cd4-b20': 'Toa hàng ba màu (Toán bài 20)',
+    'toan2-cd7-b36': 'Hộp huy hiệu vàng, bạc, đồng (Toán bài 36)',
+    'toan2-cd2-b09': 'Bê con: nhỏ hơn bò, mỗi con một màu (Toán bài 9)',
+    'tv2-t08-b15': 'Sách Dế Mèn, sách Thế giới quanh em (Tiếng Việt bài 15)',
+    'tv2-t18-on-cuoi-ki': 'Nhịp cầu đầu, giữa, cuối (Tiếng Việt ôn cuối kì)',
+  };
+  for (const p of reviewPaths.filter((x) => x.includes('/review/props/')).sort()) byId('sgk-props').append(figure(p, propsCaption[name(p)] ?? name(p)));
   const mapCaption: Record<string, string> = { top: 'Nhìn từ trên', iso: 'Toàn cảnh', bridge: 'Cầu gỗ qua suối', tree: 'Cây cổ thụ', npc: 'Vẹt và lối đá' };
   for (const p of reviewPaths.filter((x) => x.includes('/map/'))) {
     const key = name(p).replace('forest-ch1-', '');

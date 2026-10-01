@@ -28,6 +28,7 @@
     "security:dist": "tsx tools/security/scan-dist.ts",
     "assets:atlas": "tsx tools/assets/build-atlas.ts",
     "assets:sounds": "tsx tools/assets/build-sounds.ts",
+    "assets:props": "tsx tools/assets/build-emoji-props.ts",
     "world:forest": "tsx tools/world/generate-forest-map.ts",
     "world:school": "tsx tools/world/generate-school-map.ts",
     "world:overview": "tsx tools/world/generate-world-overview.ts"

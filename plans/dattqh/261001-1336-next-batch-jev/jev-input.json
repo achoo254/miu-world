@@ -1,0 +1,37 @@
+{
+  "state": {
+    "project": "Miu World: a voxel learning game for Vietnamese grade-2 children (web, iPad Gen 10 target), built 100% by AI. The owner's single wish: the game must be truly lively so children never get bored. AI executes everything; the owner only reviews finished results on staging or the review page.",
+    "today": "2026-10-01",
+    "done": "Vertical slice MVP (10 phases) and all 70 textbook lessons (Tiếng Việt 2 and Toán 2, volume 1) are active and playable from the start, placed on two maps (Khu rừng bí mật, Trường học) from a data catalogue of 312 quest places drawn with 95 looks. Forest has villagers and animals with daily chores, world events (rain then rainbow, fireflies), pets, celebration confetti. Staging is up to date. E2E now holds a fixed time budget.",
+    "measured_issues": {
+      "repeated_looks": "Quest places reuse few models: 47 of them look like the same letter, 25 the same box, 21 the same log, 20 the same rock, 19 the same sign. A child playing many lessons keeps seeing identical objects.",
+      "duplicate_cast": "In 19 quest views the same named character stands at two places at once (5 in the forest, 14 at the school), e.g. the resident fox Cáo Lém plus a quest-only copy 'referee Cáo Lém'. Calves use the cow model. One talking door is drawn as a plain object."
+    },
+    "candidates": {
+      "world_variety": "Make each lesson's world feel fresh: one character appears once per view (quests reuse the resident instead of cloning it), quest objects get distinct looks from the already licensed packs plus palette tints so no single model covers more than a handful of places, calves and the talking door get proper looks; content:check fails if a view shows a character twice or one look exceeds a cap. Visible to the child in every lesson. Tier M.",
+      "ktx2_atlas": "Compress textures to KTX2 (backlog task #21) for memory and load time on iPad. No visible change; benefit unmeasured until the owner tests on a real iPad.",
+      "progress_album": "A sticker album / collection page that fills as the child finishes each of the 70 lessons, with per-chapter stickers shown on Home, giving a visible long-term goal. New product surface (UI + server-side award).",
+      "new_region_library": "Build a third region (Thư viện) with the reusable region system; there is no textbook content assigned to it yet, so it would open empty or with filler."
+    }
+  },
+  "questions": {
+    "next_batch": {
+      "stakes": "medium",
+      "instructions": "Pick the one batch the AI should build next so the game becomes more lively and children do not get bored, given what is already done and the measured issues. Prefer work whose effect the child sees directly and that fixes a measured problem, over work with unmeasured or invisible benefit or that opens an empty area.",
+      "criteria": {
+        "world_variety": "Fix repeated looks and duplicate characters across all 70 lessons, with checks that keep it fixed.",
+        "ktx2_atlas": "Compress textures to KTX2 for iPad memory and load time.",
+        "progress_album": "Build a sticker album that fills as lessons are finished.",
+        "new_region_library": "Build an empty third region, the library."
+      }
+    },
+    "album_after": {
+      "stakes": "low",
+      "instructions": "After the chosen batch, should the sticker album (a collection that fills as each of the 70 lessons is finished) be queued as the following batch?",
+      "criteria": {
+        "yes": "Queue the sticker album as the following batch.",
+        "no": "Do not queue it now; decide later."
+      }
+    }
+  }
+}

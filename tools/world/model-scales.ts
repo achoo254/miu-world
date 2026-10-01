@@ -1,4 +1,4 @@
-// Scale for each pack model a map places, from the height (in blocks) it should stand at, checked
+// Scale for each model a map places (a pack's, or one generated from them), from the height (in blocks) it should stand at, checked
 // against the asset manifest; animated models must carry the clip the runtime plays.
 import path from 'node:path';
 import { NodeIO, getBounds } from '@gltf-transform/core';
@@ -7,7 +7,7 @@ import { ASSETS_DIR, MANIFEST_NAME, manifestSchema, readJson } from '../assets/a
 
 export async function modelScales(heights: Readonly<Record<string, number>>, clips: Readonly<Record<string, string>>): Promise<Map<string, number>> {
   const manifest = await readJson(path.join(ASSETS_DIR, MANIFEST_NAME), manifestSchema);
-  const listed = new Set(manifest.files.map((f) => f.path));
+  const listed = new Set([...manifest.files, ...manifest.generated].map((f) => f.path));
   const io = new NodeIO().registerExtensions(ALL_EXTENSIONS);
   const scales = new Map<string, number>();
   for (const [model, height] of Object.entries(heights)) {

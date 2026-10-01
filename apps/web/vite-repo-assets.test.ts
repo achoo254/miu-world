@@ -41,7 +41,9 @@ describe('runtime asset selection for the web build', async () => {
   });
 
   it('leaves the rest of the licensed packs out of dist', () => {
-    expect(shipped.length).toBeLessThan(manifest.length / 4);
+    // Pack files only: generated files (maps, props built for quests) are made for the runtime and all ship.
+    const packFiles = (paths: readonly string[]) => paths.filter((p) => p.startsWith('packs/'));
+    expect(packFiles(shipped).length).toBeLessThan(packFiles(manifest).length / 4);
     expect(shipped).not.toContain('packs/kenney-castle-kit/2.0/siege-catapult.glb');
     expect(shipped.every((p) => manifest.includes(p))).toBe(true);
   });

@@ -612,6 +612,1028 @@
    "height": 0.6,
    "kind": "object",
    "label": "Đọc thư"
+  },
+  "rock-yellow": {
+   "model": "packs/kenney-nature-kit/2.1/rock_smallA.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#f4c430"
+  },
+  "rock-flat": {
+   "model": "packs/kenney-survival-kit/2.0/rock-flat.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "rock-large": {
+   "model": "packs/kenney-nature-kit/2.1/rock_largeA.glb",
+   "height": 1.2,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "rock-large-b": {
+   "model": "packs/kenney-nature-kit/2.1/rock_largeB.glb",
+   "height": 1.4,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "rock-flat-small": {
+   "model": "packs/kenney-nature-kit/2.1/rock_smallFlatA.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "stone-flat": {
+   "model": "packs/kenney-nature-kit/2.1/stone_smallFlatA.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Đọc"
+  },
+  "stone-flat-b": {
+   "model": "packs/kenney-nature-kit/2.1/stone_smallFlatB.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "rock-tall": {
+   "model": "packs/kenney-nature-kit/2.1/rock_tallA.glb",
+   "height": 1.8,
+   "kind": "object",
+   "label": "Xem tranh"
+  },
+  "stone-tall": {
+   "model": "packs/kenney-nature-kit/2.1/stone_tallA.glb",
+   "height": 1.8,
+   "kind": "object",
+   "label": "Đọc"
+  },
+  "cave": {
+   "model": "packs/kenney-nature-kit/2.1/cliff_cave_rock.glb",
+   "height": 2.5,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "rock-mossy": {
+   "model": "packs/kenney-survival-kit/2.0/rock-flat-grass.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "bridge-wood": {
+   "model": "packs/kenney-nature-kit/2.1/bridge_wood.glb",
+   "height": 0.8,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "bridge-narrow": {
+   "model": "packs/kenney-nature-kit/2.1/bridge_woodNarrow.glb",
+   "height": 0.8,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "bridge-round": {
+   "model": "packs/kenney-nature-kit/2.1/bridge_woodRound.glb",
+   "height": 0.8,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "planks": {
+   "model": "packs/kenney-survival-kit/2.0/resource-planks.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "bamboo-short": {
+   "model": "packs/kenney-nature-kit/2.1/crops_bambooStageA.glb",
+   "height": 1.2,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "bamboo-yellow": {
+   "model": "packs/kenney-nature-kit/2.1/crops_bambooStageB.glb",
+   "height": 1.8,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#f4c430"
+  },
+  "log-stack-red": {
+   "model": "packs/kenney-nature-kit/2.1/log_stack.glb",
+   "height": 1,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#e2483f"
+  },
+  "log-stack-blue": {
+   "model": "packs/kenney-nature-kit/2.1/log_stack.glb",
+   "height": 1,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#3d8fe0"
+  },
+  "pot-grey": {
+   "model": "packs/kenney-nature-kit/2.1/pot_small.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#9aa4ad"
+  },
+  "pot-brass": {
+   "model": "packs/kenney-nature-kit/2.1/pot_small.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#d9b13b"
+  },
+  "pot-bronze": {
+   "model": "packs/kenney-nature-kit/2.1/pot_small.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#b06a3b"
+  },
+  "mug": {
+   "model": "packs/kenney-food-kit/2.0/mug.glb",
+   "height": 0.4,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "glass": {
+   "model": "packs/kenney-food-kit/2.0/glass.glb",
+   "height": 0.4,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "signpost-single": {
+   "model": "packs/kenney-survival-kit/2.0/signpost-single.glb",
+   "height": 1.6,
+   "kind": "object",
+   "label": "Đọc bảng"
+  },
+  "sign-yellow": {
+   "model": "packs/kenney-nature-kit/2.1/sign.glb",
+   "height": 1.4,
+   "kind": "object",
+   "label": "Đọc bảng",
+   "tint": "#f4c430"
+  },
+  "sign-green": {
+   "model": "packs/kenney-nature-kit/2.1/sign.glb",
+   "height": 1.4,
+   "kind": "object",
+   "label": "Đọc bảng",
+   "tint": "#4caf50"
+  },
+  "canoe": {
+   "model": "packs/kenney-nature-kit/2.1/canoe.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "bedroll-packed": {
+   "model": "packs/kenney-survival-kit/2.0/bedroll-packed.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "bottle-large": {
+   "model": "packs/kenney-survival-kit/2.0/bottle-large.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "calf": {
+   "model": "packs/kenney-cube-pets/2.0/animal-cow.glb",
+   "height": 0.9,
+   "kind": "npc",
+   "label": "Nói chuyện",
+   "animation": "idle"
+  },
+  "calf-tan": {
+   "model": "packs/kenney-cube-pets/2.0/animal-cow.glb",
+   "height": 0.9,
+   "kind": "npc",
+   "label": "Nói chuyện",
+   "tint": "#e3c48a",
+   "animation": "idle"
+  },
+  "calf-brown": {
+   "model": "packs/kenney-cube-pets/2.0/animal-cow.glb",
+   "height": 0.9,
+   "kind": "npc",
+   "label": "Nói chuyện",
+   "tint": "#a8743f",
+   "animation": "idle"
+  },
+  "lily-small": {
+   "model": "packs/kenney-nature-kit/2.1/lily_small.glb",
+   "height": 0.2,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "envelope": {
+   "model": "generated/props/envelope.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Mở thư"
+  },
+  "envelope-red": {
+   "model": "generated/props/envelope-red.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Mở thư"
+  },
+  "envelope-yellow": {
+   "model": "generated/props/envelope-yellow.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Mở thư"
+  },
+  "envelope-blue": {
+   "model": "generated/props/envelope-blue.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Mở thư"
+  },
+  "tickets": {
+   "model": "generated/props/tickets.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "tickets-red": {
+   "model": "generated/props/tickets-red.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "tickets-purple": {
+   "model": "generated/props/tickets-purple.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "ticket-red": {
+   "model": "generated/props/ticket-red.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "ticket-yellow": {
+   "model": "generated/props/ticket-yellow.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "ticket-blue": {
+   "model": "generated/props/ticket-blue.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "airplane-red": {
+   "model": "generated/props/airplane-red.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "airplane-yellow": {
+   "model": "generated/props/airplane-yellow.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "airplane-blue": {
+   "model": "generated/props/airplane-blue.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "page-pink": {
+   "model": "generated/props/page-pink.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "page-red": {
+   "model": "generated/props/page-red.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "page-curl": {
+   "model": "generated/props/page-curl.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "page-blue": {
+   "model": "generated/props/page-blue.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "postcard-hue": {
+   "model": "generated/props/postcard-hue.glb",
+   "height": 0.8,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "postcard-mountains": {
+   "model": "generated/props/postcard-mountains.glb",
+   "height": 0.8,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "postcard-island": {
+   "model": "generated/props/postcard-island.glb",
+   "height": 0.8,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "birthday-cake": {
+   "model": "generated/props/birthday-cake.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "calendar": {
+   "model": "generated/props/calendar.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Xem lịch"
+  },
+  "calendar-blue": {
+   "model": "generated/props/calendar-blue.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Xem lịch"
+  },
+  "spiral-calendar": {
+   "model": "generated/props/spiral-calendar.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Xem lịch"
+  },
+  "tear-off-calendar": {
+   "model": "generated/props/tear-off-calendar.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Xem lịch"
+  },
+  "triangle-ruler": {
+   "model": "generated/props/triangle-ruler.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "orange-diamond": {
+   "model": "generated/props/orange-diamond.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "scroll": {
+   "model": "generated/props/scroll.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "notebook": {
+   "model": "generated/props/notebook.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "memo": {
+   "model": "generated/props/memo.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Đọc"
+  },
+  "bookmark-tabs": {
+   "model": "generated/props/bookmark-tabs.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Đọc"
+  },
+  "green-book": {
+   "model": "generated/props/green-book.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Đọc sách"
+  },
+  "blue-book": {
+   "model": "generated/props/blue-book.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Đọc sách"
+  },
+  "orange-book": {
+   "model": "generated/props/orange-book.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Đọc sách"
+  },
+  "open-book": {
+   "model": "generated/props/open-book.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Đọc sách"
+  },
+  "sailboat": {
+   "model": "generated/props/sailboat.glb",
+   "height": 0.8,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "skateboard": {
+   "model": "generated/props/skateboard.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "glowing-star": {
+   "model": "generated/props/glowing-star.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "hand-fan": {
+   "model": "generated/props/hand-fan.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "ribbon": {
+   "model": "generated/props/ribbon.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "package-red": {
+   "model": "generated/props/package-red.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Mở thùng"
+  },
+  "package-yellow": {
+   "model": "generated/props/package-yellow.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Mở thùng"
+  },
+  "package-blue": {
+   "model": "generated/props/package-blue.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Mở thùng"
+  },
+  "gift-red": {
+   "model": "generated/props/gift-red.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Mở quà"
+  },
+  "gift-yellow": {
+   "model": "generated/props/gift-yellow.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Mở quà"
+  },
+  "gift-blue": {
+   "model": "generated/props/gift-blue.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Mở quà"
+  },
+  "nut-and-bolt": {
+   "model": "generated/props/nut-and-bolt.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "automobile": {
+   "model": "generated/props/automobile.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "railway-red": {
+   "model": "generated/props/railway-red.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "railway-yellow": {
+   "model": "generated/props/railway-yellow.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "railway-blue": {
+   "model": "generated/props/railway-blue.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "pushpin": {
+   "model": "generated/props/pushpin.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "round-pushpin": {
+   "model": "generated/props/round-pushpin.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "scissors": {
+   "model": "generated/props/scissors.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "mantelpiece-clock": {
+   "model": "generated/props/mantelpiece-clock.glb",
+   "height": 0.8,
+   "kind": "object",
+   "label": "Xem đồng hồ"
+  },
+  "medal-gold": {
+   "model": "generated/props/medal-gold.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "medal-silver": {
+   "model": "generated/props/medal-silver.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "medal-bronze": {
+   "model": "generated/props/medal-bronze.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "crayon": {
+   "model": "generated/props/crayon.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "crayon-pink": {
+   "model": "generated/props/crayon-pink.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "crayon-white": {
+   "model": "generated/props/crayon-white.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "crayon-yellow": {
+   "model": "generated/props/crayon-yellow.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "fountain-pen": {
+   "model": "generated/props/fountain-pen.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "wheel": {
+   "model": "generated/props/wheel.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "puzzle-red": {
+   "model": "generated/props/puzzle-red.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "puzzle-yellow": {
+   "model": "generated/props/puzzle-yellow.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "paperclip": {
+   "model": "generated/props/paperclip.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "pencil": {
+   "model": "generated/props/pencil.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "pencil-green": {
+   "model": "generated/props/pencil-green.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "ruler": {
+   "model": "generated/props/ruler.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "ruler-blue": {
+   "model": "generated/props/ruler-blue.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "alarm-clock": {
+   "model": "generated/props/alarm-clock.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "watch": {
+   "model": "generated/props/watch.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "toothbrush": {
+   "model": "generated/props/toothbrush.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "kite": {
+   "model": "generated/props/kite.glb",
+   "height": 0.9,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "paintbrush": {
+   "model": "generated/props/paintbrush.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "chopsticks": {
+   "model": "generated/props/chopsticks.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "paw-prints": {
+   "model": "generated/props/paw-prints.glb",
+   "height": 0.4,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "spiral-shell": {
+   "model": "generated/props/spiral-shell.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "shell-pink": {
+   "model": "generated/props/shell-pink.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "oyster": {
+   "model": "generated/props/oyster.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "placard": {
+   "model": "generated/props/placard.glb",
+   "height": 1.2,
+   "kind": "object",
+   "label": "Đọc bảng"
+  },
+  "placard-blue": {
+   "model": "generated/props/placard-blue.glb",
+   "height": 1.2,
+   "kind": "object",
+   "label": "Đọc bảng"
+  },
+  "framed-picture": {
+   "model": "generated/props/framed-picture.glb",
+   "height": 1.0,
+   "kind": "object",
+   "label": "Xem tranh"
+  },
+  "framed-picture-yellow": {
+   "model": "generated/props/framed-picture-yellow.glb",
+   "height": 1.0,
+   "kind": "object",
+   "label": "Xem tranh"
+  },
+  "t-shirt": {
+   "model": "generated/props/t-shirt.glb",
+   "height": 0.8,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "window": {
+   "model": "generated/props/window.glb",
+   "height": 1.2,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "window-green": {
+   "model": "generated/props/window-green.glb",
+   "height": 1.2,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "artist-palette": {
+   "model": "generated/props/artist-palette.glb",
+   "height": 0.8,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "door": {
+   "model": "generated/props/door.glb",
+   "height": 2.0,
+   "kind": "object",
+   "label": "Gõ cửa"
+  },
+  "nesting-dolls": {
+   "model": "generated/props/nesting-dolls.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "gem-red": {
+   "model": "generated/props/gem-red.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "gem-purple": {
+   "model": "generated/props/gem-purple.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "gem-blue": {
+   "model": "generated/props/gem-blue.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "glasses": {
+   "model": "generated/props/glasses.glb",
+   "height": 0.4,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "magnifier": {
+   "model": "generated/props/magnifier.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "mirror": {
+   "model": "generated/props/mirror.glb",
+   "height": 0.8,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "salt": {
+   "model": "generated/props/salt.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "backpack": {
+   "model": "generated/props/backpack.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "backpack-green": {
+   "model": "generated/props/backpack-green.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "backpack-dark": {
+   "model": "generated/props/backpack-dark.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "shoe-green": {
+   "model": "generated/props/shoe-green.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "scarf": {
+   "model": "generated/props/scarf.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "knot": {
+   "model": "generated/props/knot.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "droplet": {
+   "model": "generated/props/droplet.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "seedling": {
+   "model": "generated/props/seedling.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "lotus": {
+   "model": "generated/props/lotus.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "leafy-green": {
+   "model": "generated/props/leafy-green.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "herb": {
+   "model": "generated/props/herb.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "wind-chime": {
+   "model": "generated/props/wind-chime.glb",
+   "height": 1.0,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "flute": {
+   "model": "generated/props/flute.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "feather": {
+   "model": "generated/props/feather.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "feather-red": {
+   "model": "generated/props/feather-red.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "feather-blue": {
+   "model": "generated/props/feather-blue.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "badminton": {
+   "model": "generated/props/badminton.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "fallen-leaf": {
+   "model": "generated/props/fallen-leaf.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "key": {
+   "model": "generated/props/key.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "key-red": {
+   "model": "generated/props/key-red.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "key-blue": {
+   "model": "generated/props/key-blue.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "old-key": {
+   "model": "generated/props/old-key.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "balance-scale": {
+   "model": "generated/props/balance-scale.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "balloon": {
+   "model": "generated/props/balloon.glb",
+   "height": 1.0,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "balloon-blue": {
+   "model": "generated/props/balloon-blue.glb",
+   "height": 1.0,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "balloon-yellow": {
+   "model": "generated/props/balloon-yellow.glb",
+   "height": 1.0,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "soccer-ball": {
+   "model": "generated/props/soccer-ball.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "volleyball": {
+   "model": "generated/props/volleyball.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "basketball": {
+   "model": "generated/props/basketball.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "basket": {
+   "model": "generated/props/basket.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "cherries": {
+   "model": "generated/props/cherries.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "card-index": {
+   "model": "generated/props/card-index.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "tropical-fish": {
+   "model": "generated/props/tropical-fish.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "cucumber": {
+   "model": "generated/props/cucumber.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "womans-hat": {
+   "model": "generated/props/womans-hat.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "stump-old": {
+   "model": "packs/kenney-nature-kit/2.1/stump_oldTall.glb",
+   "height": 1,
+   "kind": "object",
+   "label": "Xem"
   }
  }
 }
