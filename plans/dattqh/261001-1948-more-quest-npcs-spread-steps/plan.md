@@ -31,8 +31,8 @@ Bé than phiền phải đứng một chỗ làm nhiệm vụ quá lâu. Sau đ�
 
 ## Phase
 
-1. [ ] Quy tắc và số đo: `tools/content/quest-spread.ts` (giới hạn NPC, chuỗi liền, số chỗ), `pnpm content:spread` báo từng bài; test. (S)
-2. [ ] NPC chibi: thêm nhân vật chibi (4 loài × trang phục × màu) làm ngoại hình NPC mới (`content/characters.json`, `pnpm assets:character`, `looks.json`). (M)
+1. [x] Quy tắc và số đo: `tools/content/quest-spread.ts` (giới hạn NPC, chuỗi liền, số chỗ), `pnpm content:spread` báo từng bài; test. (S)
+2. [x] NPC chibi (24 nhân vật: 4 loài × trang phục × màu lông, mỗi nhân vật 1 draw call, ~180 KB; NPC chibi chào bằng `wave`, nhảy múa bằng `cheer`): thêm nhân vật chibi (4 loài × trang phục × màu) làm ngoại hình NPC mới (`content/characters.json`, `pnpm assets:character`, `looks.json`). (M)
 3. [ ] Phân vai: bảng gán NPC cho từng bài thỏa giới hạn; thêm NPC mới vào `targets.json`; viết lại bài (chia bước cho NPC/vật khác, lời dẫn `goTo`, hội thoại, `places`), giữ lời SGK. Chia lô cho subagent theo file. (XL)
 4. [ ] Đặt chỗ: các chỗ của một bài cách xa hơn (thử rộng trước), sinh lại hai map, bật quy tắc trong `content:check`. (M)
 5. [ ] Test, E2E, gate, journal; deploy staging (production hỏi người). (M)

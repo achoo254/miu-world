@@ -74,5 +74,591 @@
       "yawn",
       "cheer"
     ]
+  },
+  "npc-cat-trang-dress": {
+    "output": "generated/characters/npc-cat-trang-dress.glb",
+    "rig": "packs/kenney-blocky-characters/2.0/character-a.glb",
+    "recipe": {
+      "species": "cat",
+      "outfit": "dress"
+    },
+    "torsoScale": 0.8333,
+    "limbScale": 0.5,
+    "accessoryScale": {
+      "head": 1.3,
+      "torso": 0.8
+    },
+    "extraAnimations": [
+      "wave",
+      "jump",
+      "yawn",
+      "cheer"
+    ]
+  },
+  "npc-cat-trang-jacket-red": {
+    "output": "generated/characters/npc-cat-trang-jacket-red.glb",
+    "rig": "packs/kenney-blocky-characters/2.0/character-a.glb",
+    "recipe": {
+      "species": "cat",
+      "outfit": "jacket:red"
+    },
+    "torsoScale": 0.8333,
+    "limbScale": 0.5,
+    "accessoryScale": {
+      "head": 1.3,
+      "torso": 0.8
+    },
+    "extraAnimations": [
+      "wave",
+      "jump",
+      "yawn",
+      "cheer"
+    ]
+  },
+  "npc-cat-cam-overalls": {
+    "output": "generated/characters/npc-cat-cam-overalls.glb",
+    "rig": "packs/kenney-blocky-characters/2.0/character-a.glb",
+    "recipe": {
+      "species": "cat",
+      "outfit": "overalls",
+      "palette": {
+        "fur": "#f4b46c",
+        "fur-shade": "#d98f45",
+        "paw": "#f4b46c",
+        "foot": "#f4b46c",
+        "ear-tip": "#f4b46c"
+      }
+    },
+    "torsoScale": 0.8333,
+    "limbScale": 0.5,
+    "accessoryScale": {
+      "head": 1.3,
+      "torso": 0.8
+    },
+    "extraAnimations": [
+      "wave",
+      "jump",
+      "yawn",
+      "cheer"
+    ]
+  },
+  "npc-cat-cam-vest-shorts-navy": {
+    "output": "generated/characters/npc-cat-cam-vest-shorts-navy.glb",
+    "rig": "packs/kenney-blocky-characters/2.0/character-a.glb",
+    "recipe": {
+      "species": "cat",
+      "outfit": "vest-shorts:navy",
+      "palette": {
+        "fur": "#f4b46c",
+        "fur-shade": "#d98f45",
+        "paw": "#f4b46c",
+        "foot": "#f4b46c",
+        "ear-tip": "#f4b46c"
+      }
+    },
+    "torsoScale": 0.8333,
+    "limbScale": 0.5,
+    "accessoryScale": {
+      "head": 1.3,
+      "torso": 0.8
+    },
+    "extraAnimations": [
+      "wave",
+      "jump",
+      "yawn",
+      "cheer"
+    ]
+  },
+  "npc-cat-xam-dress-mint": {
+    "output": "generated/characters/npc-cat-xam-dress-mint.glb",
+    "rig": "packs/kenney-blocky-characters/2.0/character-a.glb",
+    "recipe": {
+      "species": "cat",
+      "outfit": "dress:mint",
+      "palette": {
+        "fur": "#bdb7c6",
+        "fur-shade": "#9b94a6",
+        "paw": "#bdb7c6",
+        "foot": "#bdb7c6",
+        "ear-tip": "#bdb7c6"
+      }
+    },
+    "torsoScale": 0.8333,
+    "limbScale": 0.5,
+    "accessoryScale": {
+      "head": 1.3,
+      "torso": 0.8
+    },
+    "extraAnimations": [
+      "wave",
+      "jump",
+      "yawn",
+      "cheer"
+    ]
+  },
+  "npc-cat-xam-jacket-green": {
+    "output": "generated/characters/npc-cat-xam-jacket-green.glb",
+    "rig": "packs/kenney-blocky-characters/2.0/character-a.glb",
+    "recipe": {
+      "species": "cat",
+      "outfit": "jacket:green",
+      "palette": {
+        "fur": "#bdb7c6",
+        "fur-shade": "#9b94a6",
+        "paw": "#bdb7c6",
+        "foot": "#bdb7c6",
+        "ear-tip": "#bdb7c6"
+      }
+    },
+    "torsoScale": 0.8333,
+    "limbScale": 0.5,
+    "accessoryScale": {
+      "head": 1.3,
+      "torso": 0.8
+    },
+    "extraAnimations": [
+      "wave",
+      "jump",
+      "yawn",
+      "cheer"
+    ]
+  },
+  "npc-rabbit-trang-overalls-green": {
+    "output": "generated/characters/npc-rabbit-trang-overalls-green.glb",
+    "rig": "packs/kenney-blocky-characters/2.0/character-a.glb",
+    "recipe": {
+      "species": "rabbit",
+      "outfit": "overalls:green"
+    },
+    "torsoScale": 0.8333,
+    "limbScale": 0.5,
+    "accessoryScale": {
+      "head": 1.3,
+      "torso": 0.8
+    },
+    "extraAnimations": [
+      "wave",
+      "jump",
+      "yawn",
+      "cheer"
+    ]
+  },
+  "npc-rabbit-trang-vest-shorts": {
+    "output": "generated/characters/npc-rabbit-trang-vest-shorts.glb",
+    "rig": "packs/kenney-blocky-characters/2.0/character-a.glb",
+    "recipe": {
+      "species": "rabbit",
+      "outfit": "vest-shorts"
+    },
+    "torsoScale": 0.8333,
+    "limbScale": 0.5,
+    "accessoryScale": {
+      "head": 1.3,
+      "torso": 0.8
+    },
+    "extraAnimations": [
+      "wave",
+      "jump",
+      "yawn",
+      "cheer"
+    ]
+  },
+  "npc-rabbit-nau-dress-blue": {
+    "output": "generated/characters/npc-rabbit-nau-dress-blue.glb",
+    "rig": "packs/kenney-blocky-characters/2.0/character-a.glb",
+    "recipe": {
+      "species": "rabbit",
+      "outfit": "dress:blue",
+      "palette": {
+        "fur": "#c99c74",
+        "fur-shade": "#a77c55",
+        "paw": "#c99c74",
+        "foot": "#c99c74",
+        "ear-tip": "#c99c74"
+      }
+    },
+    "torsoScale": 0.8333,
+    "limbScale": 0.5,
+    "accessoryScale": {
+      "head": 1.3,
+      "torso": 0.8
+    },
+    "extraAnimations": [
+      "wave",
+      "jump",
+      "yawn",
+      "cheer"
+    ]
+  },
+  "npc-rabbit-nau-jacket": {
+    "output": "generated/characters/npc-rabbit-nau-jacket.glb",
+    "rig": "packs/kenney-blocky-characters/2.0/character-a.glb",
+    "recipe": {
+      "species": "rabbit",
+      "outfit": "jacket",
+      "palette": {
+        "fur": "#c99c74",
+        "fur-shade": "#a77c55",
+        "paw": "#c99c74",
+        "foot": "#c99c74",
+        "ear-tip": "#c99c74"
+      }
+    },
+    "torsoScale": 0.8333,
+    "limbScale": 0.5,
+    "accessoryScale": {
+      "head": 1.3,
+      "torso": 0.8
+    },
+    "extraAnimations": [
+      "wave",
+      "jump",
+      "yawn",
+      "cheer"
+    ]
+  },
+  "npc-rabbit-xam-overalls-red": {
+    "output": "generated/characters/npc-rabbit-xam-overalls-red.glb",
+    "rig": "packs/kenney-blocky-characters/2.0/character-a.glb",
+    "recipe": {
+      "species": "rabbit",
+      "outfit": "overalls:red",
+      "palette": {
+        "fur": "#cbc5cf",
+        "fur-shade": "#aaa3b0",
+        "paw": "#cbc5cf",
+        "foot": "#cbc5cf",
+        "ear-tip": "#cbc5cf"
+      }
+    },
+    "torsoScale": 0.8333,
+    "limbScale": 0.5,
+    "accessoryScale": {
+      "head": 1.3,
+      "torso": 0.8
+    },
+    "extraAnimations": [
+      "wave",
+      "jump",
+      "yawn",
+      "cheer"
+    ]
+  },
+  "npc-rabbit-xam-vest-shorts-green": {
+    "output": "generated/characters/npc-rabbit-xam-vest-shorts-green.glb",
+    "rig": "packs/kenney-blocky-characters/2.0/character-a.glb",
+    "recipe": {
+      "species": "rabbit",
+      "outfit": "vest-shorts:green",
+      "palette": {
+        "fur": "#cbc5cf",
+        "fur-shade": "#aaa3b0",
+        "paw": "#cbc5cf",
+        "foot": "#cbc5cf",
+        "ear-tip": "#cbc5cf"
+      }
+    },
+    "torsoScale": 0.8333,
+    "limbScale": 0.5,
+    "accessoryScale": {
+      "head": 1.3,
+      "torso": 0.8
+    },
+    "extraAnimations": [
+      "wave",
+      "jump",
+      "yawn",
+      "cheer"
+    ]
+  },
+  "npc-fox-cam-dress": {
+    "output": "generated/characters/npc-fox-cam-dress.glb",
+    "rig": "packs/kenney-blocky-characters/2.0/character-a.glb",
+    "recipe": {
+      "species": "fox",
+      "outfit": "dress"
+    },
+    "torsoScale": 0.8333,
+    "limbScale": 0.5,
+    "accessoryScale": {
+      "head": 1.3,
+      "torso": 0.8
+    },
+    "extraAnimations": [
+      "wave",
+      "jump",
+      "yawn",
+      "cheer"
+    ]
+  },
+  "npc-fox-cam-jacket-red": {
+    "output": "generated/characters/npc-fox-cam-jacket-red.glb",
+    "rig": "packs/kenney-blocky-characters/2.0/character-a.glb",
+    "recipe": {
+      "species": "fox",
+      "outfit": "jacket:red"
+    },
+    "torsoScale": 0.8333,
+    "limbScale": 0.5,
+    "accessoryScale": {
+      "head": 1.3,
+      "torso": 0.8
+    },
+    "extraAnimations": [
+      "wave",
+      "jump",
+      "yawn",
+      "cheer"
+    ]
+  },
+  "npc-fox-tuyet-overalls": {
+    "output": "generated/characters/npc-fox-tuyet-overalls.glb",
+    "rig": "packs/kenney-blocky-characters/2.0/character-a.glb",
+    "recipe": {
+      "species": "fox",
+      "outfit": "overalls",
+      "palette": {
+        "fur": "#f4f1ec",
+        "fur-shade": "#d9d3ca",
+        "paw": "#f4f1ec",
+        "foot": "#f4f1ec",
+        "ear-tip": "#f4f1ec"
+      }
+    },
+    "torsoScale": 0.8333,
+    "limbScale": 0.5,
+    "accessoryScale": {
+      "head": 1.3,
+      "torso": 0.8
+    },
+    "extraAnimations": [
+      "wave",
+      "jump",
+      "yawn",
+      "cheer"
+    ]
+  },
+  "npc-fox-tuyet-vest-shorts-navy": {
+    "output": "generated/characters/npc-fox-tuyet-vest-shorts-navy.glb",
+    "rig": "packs/kenney-blocky-characters/2.0/character-a.glb",
+    "recipe": {
+      "species": "fox",
+      "outfit": "vest-shorts:navy",
+      "palette": {
+        "fur": "#f4f1ec",
+        "fur-shade": "#d9d3ca",
+        "paw": "#f4f1ec",
+        "foot": "#f4f1ec",
+        "ear-tip": "#f4f1ec"
+      }
+    },
+    "torsoScale": 0.8333,
+    "limbScale": 0.5,
+    "accessoryScale": {
+      "head": 1.3,
+      "torso": 0.8
+    },
+    "extraAnimations": [
+      "wave",
+      "jump",
+      "yawn",
+      "cheer"
+    ]
+  },
+  "npc-fox-do-dress-mint": {
+    "output": "generated/characters/npc-fox-do-dress-mint.glb",
+    "rig": "packs/kenney-blocky-characters/2.0/character-a.glb",
+    "recipe": {
+      "species": "fox",
+      "outfit": "dress:mint",
+      "palette": {
+        "fur": "#c85a3c",
+        "fur-shade": "#a1452a",
+        "paw": "#c85a3c",
+        "foot": "#c85a3c"
+      }
+    },
+    "torsoScale": 0.8333,
+    "limbScale": 0.5,
+    "accessoryScale": {
+      "head": 1.3,
+      "torso": 0.8
+    },
+    "extraAnimations": [
+      "wave",
+      "jump",
+      "yawn",
+      "cheer"
+    ]
+  },
+  "npc-fox-do-jacket-green": {
+    "output": "generated/characters/npc-fox-do-jacket-green.glb",
+    "rig": "packs/kenney-blocky-characters/2.0/character-a.glb",
+    "recipe": {
+      "species": "fox",
+      "outfit": "jacket:green",
+      "palette": {
+        "fur": "#c85a3c",
+        "fur-shade": "#a1452a",
+        "paw": "#c85a3c",
+        "foot": "#c85a3c"
+      }
+    },
+    "torsoScale": 0.8333,
+    "limbScale": 0.5,
+    "accessoryScale": {
+      "head": 1.3,
+      "torso": 0.8
+    },
+    "extraAnimations": [
+      "wave",
+      "jump",
+      "yawn",
+      "cheer"
+    ]
+  },
+  "npc-bear-nau-overalls-green": {
+    "output": "generated/characters/npc-bear-nau-overalls-green.glb",
+    "rig": "packs/kenney-blocky-characters/2.0/character-a.glb",
+    "recipe": {
+      "species": "bear",
+      "outfit": "overalls:green"
+    },
+    "torsoScale": 0.8333,
+    "limbScale": 0.5,
+    "accessoryScale": {
+      "head": 1.3,
+      "torso": 0.8
+    },
+    "extraAnimations": [
+      "wave",
+      "jump",
+      "yawn",
+      "cheer"
+    ]
+  },
+  "npc-bear-nau-vest-shorts": {
+    "output": "generated/characters/npc-bear-nau-vest-shorts.glb",
+    "rig": "packs/kenney-blocky-characters/2.0/character-a.glb",
+    "recipe": {
+      "species": "bear",
+      "outfit": "vest-shorts"
+    },
+    "torsoScale": 0.8333,
+    "limbScale": 0.5,
+    "accessoryScale": {
+      "head": 1.3,
+      "torso": 0.8
+    },
+    "extraAnimations": [
+      "wave",
+      "jump",
+      "yawn",
+      "cheer"
+    ]
+  },
+  "npc-bear-mat-ong-dress-blue": {
+    "output": "generated/characters/npc-bear-mat-ong-dress-blue.glb",
+    "rig": "packs/kenney-blocky-characters/2.0/character-a.glb",
+    "recipe": {
+      "species": "bear",
+      "outfit": "dress:blue",
+      "palette": {
+        "fur": "#dba660",
+        "fur-shade": "#b9853f",
+        "paw": "#dba660",
+        "foot": "#dba660"
+      }
+    },
+    "torsoScale": 0.8333,
+    "limbScale": 0.5,
+    "accessoryScale": {
+      "head": 1.3,
+      "torso": 0.8
+    },
+    "extraAnimations": [
+      "wave",
+      "jump",
+      "yawn",
+      "cheer"
+    ]
+  },
+  "npc-bear-mat-ong-jacket": {
+    "output": "generated/characters/npc-bear-mat-ong-jacket.glb",
+    "rig": "packs/kenney-blocky-characters/2.0/character-a.glb",
+    "recipe": {
+      "species": "bear",
+      "outfit": "jacket",
+      "palette": {
+        "fur": "#dba660",
+        "fur-shade": "#b9853f",
+        "paw": "#dba660",
+        "foot": "#dba660"
+      }
+    },
+    "torsoScale": 0.8333,
+    "limbScale": 0.5,
+    "accessoryScale": {
+      "head": 1.3,
+      "torso": 0.8
+    },
+    "extraAnimations": [
+      "wave",
+      "jump",
+      "yawn",
+      "cheer"
+    ]
+  },
+  "npc-bear-den-overalls-red": {
+    "output": "generated/characters/npc-bear-den-overalls-red.glb",
+    "rig": "packs/kenney-blocky-characters/2.0/character-a.glb",
+    "recipe": {
+      "species": "bear",
+      "outfit": "overalls:red",
+      "palette": {
+        "fur": "#6f5647",
+        "fur-shade": "#574335",
+        "paw": "#6f5647",
+        "foot": "#6f5647"
+      }
+    },
+    "torsoScale": 0.8333,
+    "limbScale": 0.5,
+    "accessoryScale": {
+      "head": 1.3,
+      "torso": 0.8
+    },
+    "extraAnimations": [
+      "wave",
+      "jump",
+      "yawn",
+      "cheer"
+    ]
+  },
+  "npc-bear-den-vest-shorts-green": {
+    "output": "generated/characters/npc-bear-den-vest-shorts-green.glb",
+    "rig": "packs/kenney-blocky-characters/2.0/character-a.glb",
+    "recipe": {
+      "species": "bear",
+      "outfit": "vest-shorts:green",
+      "palette": {
+        "fur": "#6f5647",
+        "fur-shade": "#574335",
+        "paw": "#6f5647",
+        "foot": "#6f5647"
+      }
+    },
+    "torsoScale": 0.8333,
+    "limbScale": 0.5,
+    "accessoryScale": {
+      "head": 1.3,
+      "torso": 0.8
+    },
+    "extraAnimations": [
+      "wave",
+      "jump",
+      "yawn",
+      "cheer"
+    ]
   }
 }

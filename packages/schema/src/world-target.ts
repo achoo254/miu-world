@@ -8,8 +8,11 @@ import { ContentId } from './content';
 
 export const TargetLook = z
   .strictObject({
-    /** Manifest path of a pack model, or of a prop built from an emoji (content/world/emoji-props.json). */
-    model: z.string().regex(/^(packs|generated\/props)\/.+\.glb$/).optional(),
+    /**
+     * Manifest path of a pack model, of a prop built from an emoji (content/world/emoji-props.json), or of a
+     * chibi character built from the character library (content/characters.json, `pnpm assets:character`).
+     */
+    model: z.string().regex(/^(packs|generated\/props|generated\/characters)\/.+\.glb$/).optional(),
     /** Colour the model is multiplied by (a red and a blue box from one box model). */
     tint: z.string().regex(/^#[0-9a-f]{6}$/).optional(),
     /** A shape the runtime builds in code (no pack has it). */

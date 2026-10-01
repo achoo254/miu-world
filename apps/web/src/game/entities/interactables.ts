@@ -56,11 +56,23 @@ const NPC_CLIPS: readonly NpcClip[] = ['idle', 'walk', 'eat', 'dance', 'gesture-
  * Plays the behaviour's clip on the model: each clip change cross-fades, and the idle loop starts at
  * a random phase and speed so two animals never move in step.
  */
+/**
+ * Model clips that play each NPC action: a Cube Pet animal has them under these names; a chibi character
+ * from the character library (the player's rig) waves to greet, cheers for a dance and picks up to eat.
+ */
+const NPC_CLIP_NAMES: Readonly<Record<NpcClip, readonly string[]>> = {
+  idle: ['idle'],
+  walk: ['walk'],
+  eat: ['eat', 'pick-up'],
+  dance: ['dance', 'cheer'],
+  'gesture-positive': ['gesture-positive', 'wave'],
+};
+
 function npcAnimator(mixer: AnimationMixer, clips: readonly AnimationClip[], random: () => number): { seconds: Partial<Record<NpcClip, number>>; play(clip: NpcClip): void } {
   const actions = new Map<NpcClip, AnimationAction>();
   const seconds: Partial<Record<NpcClip, number>> = {};
   for (const name of NPC_CLIPS) {
-    const clip = clips.find((c) => c.name === name);
+    const clip = NPC_CLIP_NAMES[name].map((n) => clips.find((c) => c.name === n)).find((c) => c !== undefined);
     if (!clip) continue;
     actions.set(name, mixer.clipAction(clip));
     seconds[name] = clip.duration;
