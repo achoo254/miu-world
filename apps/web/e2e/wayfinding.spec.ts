@@ -1,7 +1,8 @@
 // Wayfinding on the forest map, with the first Tiếng Việt lesson (tv2-t01-b01): the tracker says where to
 // walk (the step's goTo line), the arrow points at that place, and standing there offers the step; once
 // done, the tracker and the arrow move on to the next place. The review shot shows the tracker next to
-// Sâu Xanh at the forest gate.
+// the lesson's first character at the forest gate. Characters and lines are read from the lesson, so a
+// rewritten story keeps the test.
 import { mkdirSync, readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { expect, test } from '@playwright/test';
@@ -15,30 +16,36 @@ mkdirSync(SHOTS, { recursive: true });
 const QUEST = '/play?quality=low&region=khu-rung-bi-mat&quest=tv2-t01-b01';
 /** The lesson's own wayfinding lines and targets (read as data, not imported: quest files hold answers). */
 const lesson = JSON.parse(readFileSync(fileURLToPath(new URL('../../../content/quests/tv2-t01-b01.json', import.meta.url)), 'utf8')) as {
-  steps: Array<{ id: string; goTo?: string; target?: string; targets?: string[]; lines?: unknown[] }>;
+  steps: Array<{ id: string; goTo?: string; target?: string; targets?: string[]; lines?: Array<{ speaker: string }> }>;
 };
+const catalogue = JSON.parse(readFileSync(fileURLToPath(new URL('../../../content/world/targets.json', import.meta.url)), 'utf8')) as {
+  targets: Record<string, { name: string }>;
+};
+/** A goTo line as the tracker shows it: `{name}` becomes the child's character name. */
+const shown = (line: string): RegExp => new RegExp(`^${line.split('{name}').map((part) => part.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('.+')}$`);
 const [meet, search] = lesson.steps;
 const meetGoTo = meet?.goTo;
 const meetTarget = meet?.target;
 const searchGoTo = search?.goTo;
 const searchTargets = search?.targets;
-if (!meetGoTo || !meetTarget || !searchGoTo || !searchTargets) throw new Error('tv2-t01-b01 starts with a dialogue, then a search');
+const firstSpeaker = meet?.lines?.[0]?.speaker;
+if (!meetGoTo || !meetTarget || !searchGoTo || !searchTargets || !firstSpeaker) throw new Error('tv2-t01-b01 starts with a dialogue, then a search');
 const tracker = '[data-id="hud-tracker-step"]';
 
 test('the tracker says where to go, the arrow points there, and both move on when the step is done', async ({ page, baseURL }) => {
   await freshChild(page, baseURL ?? '');
   await page.goto(QUEST);
   await waitReady(page);
-  await expect(page.locator(tracker)).toHaveText(meetGoTo);
+  await expect(page.locator(tracker)).toHaveText(shown(meetGoTo));
   await expect.poll(async () => (await readStats(page)).hintTarget).toBe(meetTarget);
 
-  await page.goto(`${QUEST}&spawnAt=sau-xanh`);
+  await page.goto(`${QUEST}&spawnAt=${meetTarget}`);
   await waitReady(page);
-  const label = page.locator('.npc-label[data-target="sau-xanh"]');
-  await expect(label).toContainText('Sâu Xanh');
-  await page.screenshot({ path: `${SHOTS}wayfinding-sau-xanh.png`, animations: 'disabled' });
+  const label = page.locator(`.npc-label[data-target="${meetTarget}"]`);
+  await expect(label).toContainText(catalogue.targets[meetTarget]?.name ?? meetTarget);
+  await page.screenshot({ path: `${SHOTS}wayfinding-first-character.png`, animations: 'disabled' });
   await page.keyboard.press('KeyE');
-  const dialog = page.getByRole('dialog', { name: 'Sâu Xanh' });
+  const dialog = page.getByRole('dialog', { name: firstSpeaker });
   await expect(dialog).toBeVisible();
   // Through the lines (answering a choice when one comes) to the end of the talk.
   const done = page.locator('[data-id="dialogue-done"]');
@@ -50,7 +57,7 @@ test('the tracker says where to go, the arrow points there, and both move on whe
   await done.click();
   await expect(dialog).toHaveCount(0);
 
-  await expect(page.locator(tracker)).toContainText(searchGoTo); // followed by the count found so far
+  await expect(page.locator(tracker)).toContainText(searchGoTo.split('{name}')[0] ?? searchGoTo); // followed by the count found so far
   await expect.poll(async () => (await readStats(page)).hintTarget).toMatch(new RegExp(`^(${searchTargets.join('|')})$`));
 });
 
