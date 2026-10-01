@@ -35,6 +35,12 @@
     "assets:box-props": "tsx tools/assets/build-box-props.ts",
     "world:forest": "tsx tools/world/generate-forest-map.ts",
     "world:school": "tsx tools/world/generate-school-map.ts",
+    "world:lang-ven-song": "tsx tools/world/generate-lang-ven-song-map.ts",
+    "world:xom-mai-am": "tsx tools/world/generate-xom-mai-am-map.ts",
+    "world:cho-phien": "tsx tools/world/generate-cho-phien-map.ts",
+    "world:nong-trai": "tsx tools/world/generate-nong-trai-map.ts",
+    "world:thu-vien": "tsx tools/world/generate-thu-vien-map.ts",
+    "world:lau-dai": "tsx tools/world/generate-lau-dai-map.ts",
     "world:overview": "tsx tools/world/generate-world-overview.ts"
   },
   "devDependencies": {

@@ -82,24 +82,28 @@ Thế giới → Khám phá → Tương tác → Quest → Kỹ năng học → 
 
 ## 4. Thế giới: đảo nổi và các khu vực
 
-Thế giới là một đảo nổi gồm 6 khu vực, mở dần theo level và kỹ năng; Home Base và World Map là cùng một cảnh 3D.
+Thế giới là một đảo nổi gồm 11 khu vực, 8 khu chơi được và mở từ đầu (quyết định 33, 34); Home Base và World Map là cùng một cảnh (ảnh đảo render sẵn, quyết định `home_scene`). Trường học là map trung tâm, có cổng sang 7 map chủ điểm, mỗi map có cổng về.
 
-| Khu vực (theo mock) | Nội dung | Vào được | Giai đoạn |
+| Khu vực (theo mock) | Nội dung (bài SGK lớp 2 tập 1) | Vào được | Giai đoạn |
 | --- | --- | --- | --- |
 | Nhà của Miu | Trang trí, bộ sưu tập, ba lô, điểm xuất phát | Khi dựng xong | MVP |
-| Khu rừng bí mật | Tiếng Việt, đọc hiểu; 12 chương; rương thưởng; NPC Vẹt (thay Cú mèo trong mock), Hải ly (thay Sóc) | Từ đầu | MVP |
-| Trường học | Toán, Tiếng Anh | Từ đầu | V1 |
-| Thư viện | Đọc sách, manh mối | Từ đầu khi dựng xong | V1 |
-| Lâu đài | Thử thách nâng cao, sự kiện đặc biệt, boss | Từ đầu khi dựng xong | V1 |
+| Trường học (trung tâm) | Tiếng Việt bài 9–14, Toán chủ đề 1; cổng sang 7 map | Từ đầu | MVP (làm sớm) |
+| Làng Ven Sông | Tiếng Việt chủ điểm 1 (bài 1–8); sông, đò, bến tàu, hải đăng | Từ đầu | MVP (làm sớm) |
+| Khu rừng bí mật | Chương 1 hướng dẫn + Tiếng Việt chủ điểm 3 (bài 17–24); NPC Vẹt (thay Cú mèo trong mock), Hải ly (thay Sóc) | Từ đầu | MVP |
+| Thư viện | Tiếng Việt bài 15–16 và ôn giữa kì, Toán chủ đề 6 (ngày giờ, lịch) | Từ đầu | V1 (làm sớm) |
+| Xóm Mái Ấm | Tiếng Việt chủ điểm 4 (bài 25–32) | Từ đầu | V1 (làm sớm) |
+| Chợ phiên | Toán chủ đề 2 và 3 (cộng trừ qua 10, kg, lít) | Từ đầu | V1 (làm sớm) |
+| Nông trại | Toán chủ đề 4 (cộng trừ có nhớ) | Từ đầu | V1 (làm sớm) |
+| Lâu đài | Toán chủ đề 5 và 7 (hình phẳng, ôn học kì), Tiếng Việt ôn cuối kì; thử thách | Từ đầu | V1 (làm sớm) |
 | Núi tuyết | Chưa dựng (Sắp mở) | Từ đầu khi dựng xong | Sau V1 |
 | Đảo bí ẩn | Chưa dựng (Sắp mở) | Từ đầu khi dựng xong | Sau V1 |
 | Khu sự kiện (cổng TIMO) | Sự kiện có thời hạn, hiện đếm ngược "Còn 12 ngày" | Lịch sự kiện | Live World |
 
 **Mỗi khu vực bắt buộc có:** NPC, quest, tương tác, bộ sưu tập. Khu vực chỉ để trang trí thì không đạt. Không khu nào khóa theo level, kỹ năng hay nhiệm vụ (quyết định 33).
 
-MVP chỉ dựng **một khu vực nhỏ** (Khu rừng bí mật, chương 1) cộng với Home Base, đúng nguyên tắc vertical slice.
+MVP chỉ dựng **một khu vực nhỏ** (Khu rừng bí mật, chương 1) cộng với Home Base, đúng nguyên tắc vertical slice. Từ 01/10/2026 người sở hữu cho làm sớm cả 8 map để chứa 70 bài SGK đã có (quyết định 34).
 
-Mỗi khu vực là một bản đồ voxel thiết kế sẵn (mục 10 và 11), không sinh ngẫu nhiên vô hạn; đảo nổi trong mock sẽ được dựng bằng block.
+Mỗi khu vực là một bản đồ voxel thiết kế sẵn (mục 10 và 11), không sinh ngẫu nhiên vô hạn; đảo nổi trong mock sẽ được dựng bằng block. Mỗi map chơi được rộng 800 × 48 × 800 khối (đủ chỗ cho nhiều bé chơi cùng nhau sau này, mục 8), chia vùng 128 × 128 tải lười, cảnh xa là một lưới chân trời thô; mỗi quận có người làm nghề thật và vật nuôi sinh hoạt.
 
 ## 5. Hệ thống gameplay
 
@@ -483,6 +487,7 @@ Mọi quyết định của đợt POC và Foundation đã chốt (2026-09-29).
 | 31 | Phụ kiện nhân vật mở rộng (2026-10-01, người sở hữu) | 7 loại phụ kiện: Mũ, Kính, Khăn, Balo, Cánh, Giày, Cầm tay; mỗi loại ít nhất 20 món mở ngay từ Lv.1, ô chọn có ảnh từng món; Áo vẫn "Sắp có" vì áo nướng sẵn trong mô hình nhân vật | Thay mục 22 (chỉ Mũ + Balo); `content:check` chặn loại nào dưới 20 món mở từ Lv.1 hoặc thiếu ảnh; đồ khóa theo level/quest vẫn được thêm ngoài 20 món |
 | 32 | Nhạc nền (2026-10-01, người sở hữu; nguồn nhạc do Jev chọn) | 32 bài thu sẵn CC0 của Komiku, phát ngẫu nhiên không lặp liền theo cảnh: nhà/menu, đi dạo rừng, đi dạo trường, đang làm nhiệm vụ, bài học, hoàn thành nhiệm vụ; nén AAC 96 kbps | Jev chọn nhạc thu sẵn (66%) thay vì nhạc sinh bằng code; pack gốc 77 MB (tổng packs 108/150 MB), bản phát 23 MB; nhạc theo nút Âm thanh, tắt khi ghi âm, nhỏ lại khi đọc to |
 | 33 | Không có mở khóa (2026-10-01, người sở hữu) | Bỏ hẳn khái niệm hoàn thành nhiệm vụ để mở chương hay khu tiếp: bé vào được mọi map đã dựng và làm được mọi nhiệm vụ ngay từ đầu; map chưa dựng hiện "Sắp có", không khóa theo level | Thay mục 4 (cột mở khóa), mục 5 (pha Unlock thành Next, câu "mở khóa gì" thành "tiếp theo đi đâu") và tiêu chí 8 của mục 16; schema quest không còn `unlock`, server không còn trạng thái `locked`, màn hoàn thành không còn màn "Mở khóa!"; trang phục mở theo level/quest vẫn giữ vì là phần thưởng |
+| 34 | Tám map rộng (2026-10-01, người sở hữu; chi tiết do Jev quyết) | 70 bài SGK chia trên 8 map theo chủ điểm của sách, mỗi map 6–12 bài; Trường học là map trung tâm có cổng sang 7 map; mỗi map 800 × 800 khối, tải lười theo vùng; mỗi map đông người và vật nuôi sinh hoạt như đời thật, dựng theo mock của người sở hữu (`designs/the-gioi/`, `designs/<map>/`) | Thay câu "MVP chỉ dựng một khu vực" ở mục 4 cho phần nội dung đã có; id quest giữ nguyên nên tiến độ của bé không mất; plan `plans/dattqh/261001-2106-more-maps-lesson-regroup/`, Jev: `plans/dattqh/reports/jev-261001-2315-map-mocks.md`, `jev-261001-2345-wide-maps.md` |
 
 ### Còn cần bạn chốt
 
@@ -517,7 +522,7 @@ MVP đạt khi một bé chơi trọn một quest trong Khu rừng bí mật và
 - [x] Một kiến thức học được dùng để giải một vấn đề trong game (ví dụ đố 8 + 5 = ? trên cây cổ thụ) — E2E `mvp-loop`
 - [x] Hướng dẫn, gợi ý, đáp án hoạt động và không khóa tiến trình — E2E `challenges`
 - [x] XP, xu, skill, mở khóa do server tính; sửa dữ liệu ở client không đổi được kết quả — test server `quest-routes`, `endpoint-table`
-- [x] Bé vào được mọi map đã dựng và làm được mọi nhiệm vụ ngay từ đầu, không nhiệm vụ nào chờ nhiệm vụ khác (thay tiêu chí "hoàn thành quest mở khóa chương tiếp", quyết định 33) — test server `quest-routes`, `content-catalog`
+- [x] Bé vào được mọi map đã dựng và làm được mọi nhiệm vụ ngay từ đầu, không nhiệm vụ nào chờ nhiệm vụ khác (thay tiêu chí "hoàn thành quest mở khóa chương tiếp", quyết định 33) — test server `quest-routes`, `content-catalog`; E2E `maps` (vào 7 map chủ điểm, đi cổng trung tâm ↔ Chợ phiên)
 - [x] Test IDOR và CSP đạt; không có script hay analytics bên thứ ba — test server `quest-routes` (IDOR), E2E `mvp-loop` (CSP, không request ngoài origin)
 - [ ] Đạt mục tiêu khung hình đã chốt sau POC trên máy chuẩn iPad Gen 10 — chờ DEVICE-01
 - [ ] Giao diện đúng luồng và chức năng theo mock voxel mới nhất của các màn hình MVP — đã dựng theo mock, chờ designer duyệt
