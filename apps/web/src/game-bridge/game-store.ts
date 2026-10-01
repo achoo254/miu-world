@@ -33,6 +33,8 @@ export type GameEvent =
   | { type: 'loading-progress'; done: number; total: number }
   | { type: 'interaction-prompt'; prompt: InteractionPrompt | null }
   | { type: 'interaction'; targetId: string }
+  /** The child went through a gate to another map (its region). */
+  | { type: 'travel'; region: string }
   /** Miu cannot get out on her own (stuck in water, or the stick gets her nowhere). */
   | { type: 'stuck'; stuck: boolean };
 
@@ -45,6 +47,8 @@ export interface GameSnapshot {
   lastInteraction: { targetId: string; count: number } | null;
   /** The HUD offers "Quay lại" while this is true. */
   stuck: boolean;
+  /** Last gate gone through: the region it leads to, and how many gates so far (the play screen moves maps). */
+  travel: { region: string; count: number } | null;
 }
 
 /** Commands from React to the game. The game ignores commands it does not handle yet. */
@@ -81,6 +85,7 @@ export const INITIAL_SNAPSHOT: GameSnapshot = {
   prompt: null,
   lastInteraction: null,
   stuck: false,
+  travel: null,
 };
 
 function samePrompt(a: InteractionPrompt | null, b: InteractionPrompt | null): boolean {
@@ -110,6 +115,8 @@ export function reduce(state: GameSnapshot, event: GameEvent): GameSnapshot {
       };
     case 'stuck':
       return state.stuck === event.stuck ? state : { ...state, stuck: event.stuck };
+    case 'travel':
+      return { ...state, travel: { region: event.region, count: (state.travel?.count ?? 0) + 1 } };
   }
 }
 

@@ -11,7 +11,7 @@ import { ApiError, errorMessage } from '../api-client';
 import { useAccount } from '../account/account-context';
 import { Hud } from '../hud/hud';
 import type { QuestSummary, StepCompleteResponse } from '@miu/schema/game';
-import { currentQuest, loadPlayer, say, type PlayerData } from '../player/player-data';
+import { currentQuest, loadPlayer, questForRegion, say, type PlayerData } from '../player/player-data';
 import { QuestLayer } from '../quest/quest-layer';
 import { BackpackPanel } from '../backpack/backpack-panel';
 import { buttonClass } from '../kit/button';
@@ -252,6 +252,18 @@ export function PlayScreen() {
     url.searchParams.set('quest', next.quest.id);
     window.history.replaceState(window.history.state, '', url);
   }
+  // Through a gate (the hub's to each map, each map's back to the hub): that region's lesson takes over.
+  const travelled = useRef(0);
+  useEffect(
+    () =>
+      store.subscribe(() => {
+        const travel = store.getSnapshot().travel;
+        if (!travel || travel.count === travelled.current || !data) return;
+        travelled.current = travel.count;
+        const next = questForRegion(data.quests, travel.region);
+        if (next) switchQuest(next);
+      }),
+  );
   const boardRegion = findRegion(region);
   const regionTitle = findRegion(quest?.quest.region ?? '')?.name ?? 'Khu rừng bí mật';
   const regionName = data ? say(regionTitle, data.character) : regionTitle;

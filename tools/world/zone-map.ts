@@ -3,8 +3,11 @@
 // water (river, pond, moat) with plank decks wherever a path crosses it, the map's own structures and props
 // (its `build`), trees round the rest, and the quest targets of each chapter placed in its zone. A map file
 // gives the zones, the water and what to build; this file does the rest the same way for every such map.
+import path from 'node:path';
+import { RegionCatalog } from '../../packages/schema/src/region';
 import { VoxelWorld } from '../../packages/voxel/src/chunk-format';
 import type { Interactable, WorldEntities } from '../../packages/voxel/src/world-entities';
+import { REPO_ROOT, readJson } from '../assets/asset-lib';
 import { cellsIn } from './chapters/place-quest-targets';
 import { columnsOf, fillColumn, heightField, loadBlocks, mapModels, PACK, placeRegionTargets, rollingHeight, scatterTrees, smoothstep, standHeight, WIDE_MAP_SIDE } from './map-kit';
 import { SCENERY_MODELS } from './scenery';
@@ -85,6 +88,11 @@ export interface ZoneMapSpec {
    * The map's everyday life: its people at their trades and its animals (village-life.ts), placed once the
    * quest targets stand, clear of them. Gets the zones and the landmarks to anchor the cast on.
    */
+  /**
+   * Gates to other maps (going through one plays that region's next lesson). Default: one beside the spawn
+   * back to the hub, Trường học (Jev, 01/10/2026: the school is the hub, every theme map is reached from it).
+   */
+  gates?: ReadonlyArray<{ to: string; at: readonly [number, number] }>;
   life?: (map: { zone: (chapter: number) => Zone; landmark: (id: string) => readonly [number, number] }) => readonly Resident[];
 }
 
@@ -94,6 +102,9 @@ const DEFAULT_DRESSING = {
 };
 
 const SIGNPOST = `${PACK.survival}/signpost.glb`;
+const GATE = `${PACK.castle}/gate.glb`;
+/** The hub every theme map has a gate back to. */
+export const HUB_REGION = 'truong-hoc';
 const DRESSING_HEIGHTS: Readonly<Record<string, number>> = { [`${PACK.nature}/grass_large.glb`]: 0.6, [`${PACK.nature}/rock_smallA.glb`]: 0.5 };
 
 export async function generateZoneMap(spec: ZoneMapSpec): Promise<{ world: VoxelWorld; entities: WorldEntities }> {
@@ -222,7 +233,7 @@ export async function generateZoneMap(spec: ZoneMapSpec): Promise<{ world: Voxel
 
   // 5. Props, now that the ground is final.
   const standY = standHeight(world, surface);
-  const models = await mapModels({ heights: { [SIGNPOST]: 1.6, ...SCENERY_MODELS, ...DRESSING_HEIGHTS, ...(spec.life ? LIFE_HEIGHTS : {}), ...spec.models.heights }, clips: { ...(spec.life ? LIFE_CLIPS : {}), ...(spec.models.clips ?? {}) }, standY, centred: spec.models.centred });
+  const models = await mapModels({ heights: { [SIGNPOST]: 1.6, [GATE]: 5, ...SCENERY_MODELS, ...DRESSING_HEIGHTS, ...(spec.life ? LIFE_HEIGHTS : {}), ...spec.models.heights }, clips: { ...(spec.life ? LIFE_CLIPS : {}), ...(spec.models.clips ?? {}) }, standY, centred: spec.models.centred });
   for (const q of queued) {
     if (q.kind === 'at') models.addPropAt(q.model, q.at, q.yaw);
     else if (q.kind === 'centred') models.addCentred(q.model, models.place(q.x, q.z), q.yaw);
@@ -248,11 +259,28 @@ export async function generateZoneMap(spec: ZoneMapSpec): Promise<{ world: Voxel
     const zn = zone(chapter);
     return cellsIn(zn.x - zn.hx + 1, zn.z - zn.hz + 1, zn.x + zn.hx - 1, zn.z + zn.hz - 1);
   };
+  const regionNames = new Map((await readJson(path.join(REPO_ROOT, 'content/world/regions.json'), RegionCatalog)).regions.map((r) => [r.id, r.name]));
+  const gateList = spec.gates ?? (spec.region === HUB_REGION ? [] : [{ to: HUB_REGION, at: [spec.spawn.x + 7, spec.spawn.z + 3] as const }]);
+  const gates: Interactable[] = gateList.map((g) => {
+    const name = regionNames.get(g.to);
+    if (!name) throw new Error(`${spec.mapId}: a gate leads to ${g.to}, which is not in content/world/regions.json`);
+    return {
+      id: `cong-${g.to}`,
+      kind: 'gate' as const,
+      name: `Cổng sang ${name}`,
+      label: 'Đi qua cổng',
+      position: models.place(g.at[0], g.at[1]),
+      yaw: 0,
+      radius: 3,
+      ...models.modelled(GATE),
+      travel: g.to,
+    };
+  });
   const interactables: Interactable[] = await placeRegionTargets({
     mapId: spec.mapId,
     region: spec.region,
     map: { canStand, stand: models.place, chapterCells: zoneCells, residentCells: zones.flatMap((zn) => zoneCells(zn.chapter)), keepClear: [[spec.spawn.x, spec.spawn.z]] },
-    interactables: [],
+    interactables: gates,
     seed: seed + 11,
   });
 

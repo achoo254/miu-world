@@ -60,6 +60,12 @@ export function currentQuest(quests: readonly QuestSummary[]): QuestSummary | nu
   return playable.find((q) => q.state === 'in-progress') ?? playable.find((q) => q.state === 'open') ?? null;
 }
 
+/** The lesson a gate into `region` leads to: the one under way there, else its first not finished, else its first. */
+export function questForRegion(quests: readonly QuestSummary[], region: string): QuestSummary | null {
+  const here = quests.filter((q) => q.quest.status === 'active' && q.quest.region === region);
+  return currentQuest(here) ?? here[0] ?? null;
+}
+
 /**
  * Chapters of a region in order, each with its quests in catalogue order. A chapter can hold
  * several quests (textbook content); the forest has one per chapter today.

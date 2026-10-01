@@ -40,6 +40,8 @@ const interactableSchema = z
     quest: z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/).optional(),
     /** The character's own id when this is the same character met at another place (see `castHidden`). */
     character: z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/).optional(),
+    /** A gate to another map: the region it leads to (going through plays that region's next lesson). */
+    travel: z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/).optional(),
   })
   .refine((t) => !(t.chapter !== undefined && t.chapters !== undefined), { message: 'a target has one chapter or a list of chapters, not both' })
   .refine((t) => (t.model === undefined) === (t.scale === undefined), { message: 'model and scale go together' })

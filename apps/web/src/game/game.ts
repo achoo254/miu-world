@@ -581,7 +581,10 @@ export class Game {
           anchor.style.visibility = 'visible'; // hidden until first positioned: no flash at 0,0
         }
       }
-      if (interact && promptTarget) {
+      if (interact && promptTarget?.def.travel) {
+        store.emit({ type: 'travel', region: promptTarget.def.travel });
+        overlay.stats.lastInteraction = promptTarget.def.id;
+      } else if (interact && promptTarget) {
         store.emit({ type: 'interaction', targetId: promptTarget.def.id });
         overlay.stats.lastInteraction = promptTarget.def.id;
       } else if (interact && promptAmbient) {
