@@ -1,6 +1,6 @@
 # Trường học theo mock: khuôn viên, tòa nhà chính, lớp học
 
-**Trạng thái:** đang làm · **Tier:** XL · **Nhánh:** `main` · Quyết định bởi Jev (`jev-input.json`, `jev-output.json`)
+**Trạng thái:** xong (01/10/2026) · **Tier:** XL · **Nhánh:** `main` · Quyết định bởi Jev (`jev-input.json`, `jev-output.json`)
 
 ## Kết quả mong muốn
 
@@ -26,15 +26,15 @@ Ràng buộc: ≤ 150 draw call, ≤ 150k tam giác; asset chỉ từ pack có l
 3b. [x] Kích thước map 192×48×192 cho cả hai map; sửa mọi chỗ trong runtime, review, E2E còn giả định 96. (M)
 4. [x] Bố cục mới trong `generate-school-map.ts`: khu chủ đề theo bảng trên, lối đi nối các khu qua tòa nhà chính, prop, NPC chương 1; placer đặt lại mục tiêu quest. (L)
 4b. [x] Khu rừng 192×192: giữ nguyên chương 1 làm lõi, thêm vùng mới cho các chương 2–19 (34 bài Tiếng Việt), đời sống rừng trải khắp. (L)
-5. [ ] Ảnh nền vùng, ảnh review chụp theo góc của từng khung mock; gate + build + E2E trong ngân sách thời gian; deploy staging. (M)
+5. [x] Ảnh nền vùng, ảnh review chụp theo góc của từng khung mock; gate + build + E2E trong ngân sách thời gian; deploy staging. (M)
 
 ## Nghiệm thu
 
 - [x] `content:check` xanh: mọi mục tiêu của 36 bài Toán đứng trong khu chủ đề của nó và hiện đúng chương.
 - [x] Đi được: cổng → sân → qua tòa nhà chính → sân sau, vườn, nhà đa năng, sân vẽ; vào lớp học tầng 1, lên cầu thang tới lớp học tầng 2 (test generator kiểm lối đi và bậc).
-- [ ] Draw call ≤ 150 ở các mẫu E2E của Trường học.
+- [x] Draw call ≤ 150 ở các mẫu E2E của Trường học (`school.spec.ts`, `sgk-content.spec.ts`).
 - [x] Ảnh review đặt cạnh khung mock tương ứng trên trang review.
-- [ ] Gate 5 lệnh + web build + `e2e:ci` xanh trong ngân sách 480 s; staging chạy bản mới.
+- [x] Gate 5 lệnh + web build + `e2e:ci` xanh trong ngân sách 480 s; staging chạy bản mới.
 
 ## Kết quả (01/10/2026)
 
@@ -44,3 +44,10 @@ Ràng buộc: ≤ 150 draw call, ≤ 150k tam giác; asset chỉ từ pack có l
 - Test generator đi bộ từ cổng tới 7 khu, vào lớp tầng 1 và lên cầu thang tới lớp tầng 2.
 - Trang review: mục "Trường học theo mock", mỗi khung mock cạnh cùng góc nhìn trong game (17 cặp).
 - Làm đẹp đồ vật (người sở hữu, 01/10/2026): nội thất lớp học từ Kenney Furniture Kit (bàn, ghế, bàn giáo viên, tủ sách, đèn trần, chậu cây, thùng rác), đèn đường và đèn sân từ City Kit Roads, nhà dân từ City Kit Suburban trên bậc đất cao 2 khối sau tường rào (bé không trèo lên được); xích đu, cột bóng rổ, cột cờ đỏ sao vàng, ghế công viên dựng từ hộp mảnh (`content/world/box-props.json`, `pnpm assets:box-props`). Ba pack mới đều CC0, có trong bảng license của trang review.
+
+## Kiểm tra cuối (01/10/2026, trên fbd2c9f)
+
+- `assets:check` 15 pack, 1730 file; `content:check` 129 file; `pnpm test` 731/731 (lần đầu 1 test đỏ thoáng qua ở `google-auth-routes.test.ts`, chạy lại 6 lần đều xanh, không liên quan Trường học); `typecheck`, `lint` (0 cảnh báo) xanh.
+- `pnpm --filter @miu/web build` xanh; `security:dist` không có đáp án trong bundle.
+- `e2e:ci`: 65 xanh, 2 bỏ qua (quay video và chụp ảnh review, chỉ chạy khi yêu cầu), 4,7 phút (ngân sách 480 s).
+- Ảnh nền vùng của hai map đã chụp lại sau khi trang bị nội thất (3ec012e). Staging: `/api/health` ok, `manifest.json` và `regions/truong-hoc.png` trùng sha256 với bản local.
