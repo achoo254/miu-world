@@ -12,7 +12,7 @@
       "music": "forest",
       "guide": "vet-xanh",
       "book": "Tiếng Việt 2, tập một: bài 17–24",
-      "hotspot": { "x": 50, "y": 54 },
+      "hotspot": { "x": 83, "y": 44 },
       "backdrop": { "eye": [14, 17, 12], "target": [40, 13, 44], "fov": 55 },
       "events": ["rain-rainbow", "fireflies", "animal-visit"]
     },
@@ -27,10 +27,10 @@
       "music": "forest",
       "guide": "cun-lua",
       "book": "Tiếng Việt 2, tập một: bài 1–8",
-      "hotspot": { "x": 19, "y": 73 },
+      "hotspot": { "x": 17, "y": 65 },
       "events": ["rain-rainbow", "fireflies", "animal-visit"]
     },
-    { "id": "nha-cua-be", "name": "Nhà của {name}", "tagline": "Trang trí ngôi nhà nhỏ", "subject": "Trang trí · Bộ sưu tập", "status": "soon", "hotspot": { "x": 32, "y": 84 } },
+    { "id": "nha-cua-be", "name": "Nhà của {name}", "tagline": "Trang trí ngôi nhà nhỏ", "subject": "Trang trí · Bộ sưu tập", "status": "soon", "hotspot": { "x": 50, "y": 86 } },
     {
       "id": "truong-hoc",
       "name": "Trường học",
@@ -42,7 +42,7 @@
       "music": "school",
       "guide": "su-tu-vang",
       "book": "Toán 2, tập một: bài 1–6 · Tiếng Việt 2, tập một: bài 9–14",
-      "hotspot": { "x": 19, "y": 54 },
+      "hotspot": { "x": 50, "y": 44 },
       "backdrop": { "eye": [400, 22, 328], "target": [400, 18, 372], "fov": 64 },
       "events": ["rain-rainbow", "fireflies"]
     },
@@ -57,7 +57,7 @@
       "music": "puzzle",
       "guide": "gau-truc",
       "book": "Tiếng Việt 2, tập một: bài 15–16, ôn giữa học kì · Toán 2, tập một: bài 29–32",
-      "hotspot": { "x": 32, "y": 29 },
+      "hotspot": { "x": 24, "y": 22 },
       "events": ["rain-rainbow", "fireflies", "animal-visit"]
     },
     {
@@ -71,7 +71,7 @@
       "music": "quest",
       "guide": "huou-cao",
       "book": "Toán 2, tập một: bài 25–28, 33–36 · Tiếng Việt 2, tập một: ôn cuối học kì",
-      "hotspot": { "x": 70, "y": 30 },
+      "hotspot": { "x": 52, "y": 22 },
       "events": ["rain-rainbow", "fireflies", "animal-visit"]
     },
     {
@@ -85,7 +85,7 @@
       "music": "home",
       "guide": "ba-gau-nau",
       "book": "Tiếng Việt 2, tập một: bài 25–32",
-      "hotspot": { "x": 17, "y": 40 },
+      "hotspot": { "x": 17, "y": 44 },
       "events": ["rain-rainbow", "fireflies", "animal-visit"]
     },
     {
@@ -99,7 +99,7 @@
       "music": "school",
       "guide": "chim-canh-cut-pin",
       "book": "Toán 2, tập một: bài 7–18",
-      "hotspot": { "x": 55, "y": 81 },
+      "hotspot": { "x": 50, "y": 65 },
       "events": ["rain-rainbow", "fireflies", "animal-visit"]
     },
     {
@@ -113,10 +113,10 @@
       "music": "forest",
       "guide": "bo-sua-mo",
       "book": "Toán 2, tập một: bài 19–24",
-      "hotspot": { "x": 52, "y": 25 },
+      "hotspot": { "x": 83, "y": 65 },
       "events": ["rain-rainbow", "fireflies", "animal-visit"]
     },
-    { "id": "nui-tuyet", "name": "Núi tuyết", "tagline": "Hành trình lên đỉnh băng", "status": "soon", "hotspot": { "x": 82, "y": 54 } },
-    { "id": "dao-bi-an", "name": "Đảo bí ẩn", "tagline": "Hòn đảo lơ lửng xa xa", "status": "soon", "hotspot": { "x": 75, "y": 80 } }
+    { "id": "nui-tuyet", "name": "Núi tuyết", "tagline": "Hành trình lên đỉnh băng", "status": "soon", "hotspot": { "x": 76, "y": 23 } },
+    { "id": "dao-bi-an", "name": "Đảo bí ẩn", "tagline": "Hòn đảo lơ lửng xa xa", "status": "soon", "hotspot": { "x": 74, "y": 86 } }
   ]
 }

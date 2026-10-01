@@ -63,7 +63,7 @@ test('the tracker says where to go, the arrow points there, and both move on whe
 
 test('the region list names each lesson with its printed pages, and every lesson is open from the start', async ({ page, baseURL }) => {
   await freshChild(page, baseURL ?? '');
-  await page.goto('/region/khu-rung-bi-mat');
+  await page.goto('/region/lang-ven-song');
   const row = page.locator('[data-id="region-quest-tv2-t01-b01"]');
   await expect(row.locator('[data-id="region-quest-textbook-tv2-t01-b01"]')).toHaveText('Tiếng Việt 2, tập một · Bài 1. Tôi là học sinh lớp 2Trang 10–12');
   await expect(row).toHaveAttribute('data-state', 'open');

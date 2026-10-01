@@ -1,6 +1,6 @@
 // Generates the world overview (mock M1.1 / M1.4) from a fixed seed: one floating island per region of
-// content/world/regions.json, each with its landmark — the forest and its ancient tree in the middle, the
-// school with its flag, the library, the castle, the snowy mountain, the child's house, the village, the
+// content/world/regions.json, each with its landmark — the school with its flag in the middle (the hub), the
+// forest and its ancient tree, the library, the castle, the snowy mountain, the child's house, the village, the
 // hamlet, the market, the farm and the far-off mystery island — joined by plank sky bridges. It is only
 // rendered into the Home / world-map image (`pnpm assets:home`), never played. Each region gets a landmark where its label goes; the label's place
 // on the image comes from the shared camera (packages/voxel/src/world-overview.ts) and is written into
@@ -57,17 +57,21 @@ const MODEL_HEIGHT: Record<string, number> = {
  * back (256) — because the camera looks from the −x/−z corner: x = (away − across) / 2, z = (away + across) / 2.
  */
 const ISLANDS = [
-  { region: 'khu-rung-bi-mat', across: 0, away: 128, radius: 22, top: 22, depth: 20 },
-  { region: 'truong-hoc', across: -62, away: 118, radius: 11, top: 20, depth: 13 },
-  { region: 'thu-vien', across: -44, away: 182, radius: 10, top: 26, depth: 12 },
-  { region: 'lau-dai', across: 46, away: 176, radius: 12, top: 27, depth: 14 },
-  { region: 'nui-tuyet', across: 64, away: 120, radius: 12, top: 20, depth: 13 },
-  { region: 'nha-cua-be', across: -30, away: 60, radius: 9, top: 17, depth: 10 },
-  { region: 'dao-bi-an', across: 44, away: 72, radius: 7, top: 13, depth: 9 },
-  { region: 'lang-ven-song', across: -56, away: 80, radius: 8, top: 16, depth: 10 },
-  { region: 'cho-phien', across: 8, away: 68, radius: 8, top: 15, depth: 10 },
-  { region: 'xom-mai-am', across: -76, away: 156, radius: 8, top: 21, depth: 10 },
-  { region: 'nong-trai', across: 4, away: 204, radius: 8, top: 24, depth: 10 },
+  // The school is the hub in the middle (owner's overview mock, designs/the-gioi/); the theme maps round it.
+  // Their labels fall on a grid of three columns about a third of the island apart and rows a fifth of its
+  // height apart, so no card covers another on a phone or an iPad; `lift` raises a label above its island
+  // (over a roof, at the snowy peak) where the diamond-shaped world has no room further out.
+  { region: 'truong-hoc', across: 0, away: 146, radius: 16, top: 23, depth: 16, lift: 0 },
+  { region: 'khu-rung-bi-mat', across: 68, away: 134, radius: 14, top: 24, depth: 16, lift: 2 },
+  { region: 'cho-phien', across: 0, away: 102, radius: 9, top: 15, depth: 10, lift: 0 },
+  { region: 'lau-dai', across: 5, away: 213, radius: 12, top: 27, depth: 14, lift: 0 },
+  { region: 'thu-vien', across: -56, away: 154, radius: 10, top: 28, depth: 12, lift: 13 },
+  { region: 'xom-mai-am', across: -65, away: 119, radius: 9, top: 23, depth: 10, lift: 6 },
+  { region: 'lang-ven-song', across: -59, away: 85, radius: 9, top: 18, depth: 10, lift: 4 },
+  { region: 'nong-trai', across: 56, away: 76, radius: 9, top: 24, depth: 10, lift: 2 },
+  { region: 'nui-tuyet', across: 60, away: 168, radius: 8, top: 22, depth: 10, lift: 14 },
+  { region: 'nha-cua-be', across: 0, away: 38, radius: 8, top: 19, depth: 10, lift: 7 },
+  { region: 'dao-bi-an', across: 39, away: 53, radius: 6, top: 15, depth: 8, lift: 2 },
 ].map((island) => ({ ...island, x: Math.round((island.away - island.across) / 2), z: Math.round((island.away + island.across) / 2) }));
 
 /** Things on the overview the Home stage animates on top of the render: each waterfall's top and foot (world blocks). */
@@ -199,32 +203,34 @@ export async function generateWorldOverview(): Promise<{ world: VoxelWorld; enti
   placeWindmill(world, farm.x - 2, farm.z + 1, farm.top + 1, { planks: B.planks, log: B.log, roof: B.brickRed, sail: B.snow });
   for (let x = farm.x + 2; x <= farm.x + 6; x += 2) addProp(`${PACK.nature}/fence_simple.glb`, x, farm.top + 1, farm.z - 4);
 
-  // Sky bridges from the forest's rim to the school, the house and the mountain.
+  // Sky bridges from the hub's rim (the school) to every theme map's island.
+  const hub = island('truong-hoc');
+  const insideHub = tops.get(hub.region) ?? (() => false);
   const rim = (to: (typeof ISLANDS)[number]): [number, number, number] => {
-    const dx = to.x - forest.x;
-    const dz = to.z - forest.z;
+    const dx = to.x - hub.x;
+    const dz = to.z - hub.z;
     const len = Math.hypot(dx, dz);
     let r = 0;
-    while (insideForest(Math.round(forest.x + (dx / len) * (r + 1)), Math.round(forest.z + (dz / len) * (r + 1)))) r++;
-    return [forest.x + (dx / len) * (r - 1), forest.top, forest.z + (dz / len) * (r - 1)];
+    while (insideHub(Math.round(hub.x + (dx / len) * (r + 1)), Math.round(hub.z + (dz / len) * (r + 1)))) r++;
+    return [hub.x + (dx / len) * (r - 1), hub.top, hub.z + (dz / len) * (r - 1)];
   };
   const shore = (to: (typeof ISLANDS)[number]): [number, number, number] => {
-    const dx = forest.x - to.x;
-    const dz = forest.z - to.z;
+    const dx = hub.x - to.x;
+    const dz = hub.z - to.z;
     const len = Math.hypot(dx, dz);
     const inside = tops.get(to.region) ?? (() => false);
     let r = 0;
     while (inside(Math.round(to.x + (dx / len) * (r + 1)), Math.round(to.z + (dz / len) * (r + 1)))) r++;
     return [to.x + (dx / len) * (r - 1), to.top, to.z + (dz / len) * (r - 1)];
   };
-  for (const region of ['truong-hoc', 'nha-cua-be', 'nui-tuyet']) {
+  for (const region of ['lang-ven-song', 'khu-rung-bi-mat', 'cho-phien', 'nong-trai', 'xom-mai-am', 'thu-vien', 'lau-dai', 'nha-cua-be']) {
     const to = island(region);
     placeSkyBridge(world, rim(to), shore(to), { planks: B.planks, log: B.log }, onIsland);
   }
 
   // Labels hang at each island's near rim, just under its top, like the mock's captions: they leave the
   // landmark on top in view.
-  const anchor = (spec: (typeof ISLANDS)[number]): Vec3 => [spec.x - spec.radius * 0.6 + 0.5, spec.top - 3, spec.z - spec.radius * 0.6 + 0.5];
+  const anchor = (spec: (typeof ISLANDS)[number]): Vec3 => [spec.x - spec.radius * 0.6 + 0.5, spec.top - 3 + spec.lift, spec.z - spec.radius * 0.6 + 0.5];
   const entities: WorldEntities = {
     version: 2,
     id: MAP_ID,

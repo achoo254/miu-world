@@ -48,10 +48,28 @@ function topColours(data: WorldData): Map<number, Color> {
   return out;
 }
 
+/** Horizon cells merged per mesh cell along each axis: 8-block cells, some 20k triangles for an 800-block map. */
+const MERGE = 2;
+
 export async function createHorizonMesh(data: WorldData, sky: ColorRepresentation): Promise<HorizonMesh> {
-  const { cell, cells, heights, tops } = data.horizon;
-  const [cx, cz] = cells;
+  const source = data.horizon;
   const colours = topColours(data);
+  // Coarser cells: the highest of each MERGE x MERGE group, with that block on top.
+  const [sx, sz] = source.cells;
+  const cell = source.cell * MERGE;
+  const [cx, cz] = [Math.ceil(sx / MERGE), Math.ceil(sz / MERGE)];
+  const heights = new Uint8Array(cx * cz);
+  const tops = new Uint8Array(cx * cz);
+  for (let z = 0; z < sz; z++) {
+    for (let x = 0; x < sx; x++) {
+      const i = Math.floor(x / MERGE) + cx * Math.floor(z / MERGE);
+      const h = source.heights[x + sx * z] ?? 0;
+      if (h >= (heights[i] ?? 0)) {
+        heights[i] = h;
+        tops[i] = source.tops[x + sx * z] ?? 0;
+      }
+    }
+  }
   const at = (x: number, z: number): number => Math.min(cx - 1, Math.max(0, x)) + cx * Math.min(cz - 1, Math.max(0, z));
   // A vertex at each cell corner: the highest of the cells round it (just under the block tops), their mean colour.
   const positions = new Float32Array((cx + 1) * (cz + 1) * 3);

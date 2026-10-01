@@ -71,7 +71,8 @@ test('the first and the last chapter of each region show their lesson\'s first p
     const inRegion = textbook.filter((q) => q.region === region).sort((a, b) => a.chapter - b.chapter);
     for (const q of [inRegion[0], inRegion.at(-1)]) if (q) sample.set(`${q.region}:${q.chapter}`, q);
   }
-  expect(sample.size).toBe(4);
+  // The first and the last chapter of each of the eight maps (one when a map has a single chapter).
+  expect(sample.size).toBeGreaterThanOrEqual(new Set(textbook.map((q) => q.region)).size);
   for (const quest of sample.values()) {
     const target = firstTarget(quest);
     if (!target) throw new Error(`${quest.id} names no target`);
@@ -81,8 +82,8 @@ test('the first and the last chapter of each region show their lesson\'s first p
   }
 });
 
-// One character in one place at a time: Hải Ly Cần is met at the pond, the shed and the meadow in
-// toan2-cd2-b10, and stands only where the current step sends the child.
+// One character in one place at a time: Hải Ly Sậy is met by the canal, at the shed and at the duck pond
+// in toan2-cd2-b10, and stands only where the current step sends the child.
 test('a character met at several places of a lesson stands only where the story is', async ({ page, baseURL }) => {
   const id = 'toan2-cd2-b10';
   const quest = textbook.find((q) => q.id === id);
@@ -93,8 +94,8 @@ test('a character met at several places of a lesson stands only where the story 
     await waitReady(page);
     await expect.poll(async () => (await readStats(page)).nearTarget, { message: target }).toBe(target);
   };
-  await castAt('hai-ly-can');
-  expect((await readStats(page)).castHidden).toEqual(['hai-ly-bai-co', 'hai-ly-lan-go']);
+  await castAt('toan2-cd2-b10-hai-ly-say');
+  expect((await readStats(page)).castHidden).toEqual(['toan2-cd2-b10-hai-ly-say-ao-vit', 'toan2-cd2-b10-hai-ly-say-lan-go']);
   // Up to the shed: the step there points at the beaver of the shed, and the pond is empty.
   const headers = { Origin: new URL(baseURL ?? '').origin };
   const steps = solution(quest);
@@ -103,8 +104,8 @@ test('a character met at several places of a lesson stands only where the story 
     const res = await page.context().request.post(`/api/quests/${id}/steps/${step}/complete`, { headers, data: body });
     expect(res.status(), `${step}: ${await res.text()}`).toBe(200);
   }
-  await castAt('hai-ly-lan-go');
-  await expect.poll(async () => (await readStats(page)).castHidden).toEqual(['hai-ly-bai-co', 'hai-ly-can']);
+  await castAt('toan2-cd2-b10-hai-ly-say-lan-go');
+  await expect.poll(async () => (await readStats(page)).castHidden).toEqual(['toan2-cd2-b10-hai-ly-say', 'toan2-cd2-b10-hai-ly-say-ao-vit']);
 });
 
 // For the owner: things of a lesson told apart by colour or number, as the child sees them in the world.

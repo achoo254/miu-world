@@ -25,14 +25,19 @@ const firstLesson = (region: string) => quests.find((q) => q.region === region &
 const THEME_MAPS = ['lang-ven-song', 'xom-mai-am', 'cho-phien', 'nong-trai', 'thu-vien', 'lau-dai'];
 
 for (const id of THEME_MAPS) {
-  test(`${id} opens beside its guide within the draw-call budget`, async ({ page, baseURL }) => {
+  test(`${id} opens beside its guide (or its first character) within the draw-call budget`, async ({ page, baseURL }) => {
+    // The guide where a lesson has the child meet it (on the farm Bò Sữa Mơ only speaks: its first lesson's first character).
     const guide = regions.find((r) => r.id === id)?.guide;
-    const lesson = guide ? lessonWithGuide(id, guide) : undefined;
-    if (!guide || !lesson) throw new Error(`${id} has no guide met in a lesson`);
+    const withGuide = guide ? lessonWithGuide(id, guide) : undefined;
+    const lesson = withGuide ?? firstLesson(id);
+    const meet = withGuide ? guide : lesson?.steps?.find((s) => s.target)?.target;
+    if (!lesson || !meet) throw new Error(`${id} has no lesson with a character to meet`);
     await freshChild(page, baseURL ?? '');
-    await page.goto(`/play?quality=low&region=${id}&quest=${lesson.id}&spawnAt=${guide}`);
+    await page.goto(`/play?quality=low&region=${id}&quest=${lesson.id}&spawnAt=${meet}`);
     await waitReady(page);
-    await expect(page.locator(`.npc-label[data-target="${guide}"]`)).toContainText(targets[guide]?.name ?? guide);
+    // Standing there offers a lesson target (the character, or a thing of its place right beside it).
+    await expect.poll(async () => (await readStats(page)).nearTarget).not.toBeNull();
+    if (withGuide && guide) await expect(page.locator(`.npc-label[data-target="${guide}"]`)).toContainText(targets[guide]?.name ?? guide);
     expect((await readStats(page)).calls).toBeLessThanOrEqual(DRAW_CALL_BUDGET);
   });
 }

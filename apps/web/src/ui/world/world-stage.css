@@ -75,7 +75,8 @@
 /* A narrow island with several open regions: their names wrap onto two short lines, so neighbouring
    cards stay apart; on a phone-sized island the sparkle goes too. */
 @container (max-width: 40rem) {
-  .world-marker--open { white-space: normal; max-width: 6.5rem; text-align: center; justify-content: center; }
+  /* max-content: inside its zero-width anchor the card would otherwise shrink to its longest word. */
+  .world-marker--open { white-space: normal; width: max-content; max-width: 6.5rem; text-align: center; justify-content: center; }
 }
 @container (max-width: 30rem) {
   .world-marker--open .icon { display: none; }
