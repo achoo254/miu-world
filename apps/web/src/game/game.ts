@@ -352,7 +352,10 @@ export class Game {
         return { x: lookAhead.x / flat, z: lookAhead.z / flat };
       },
     });
-    scene.add(character.root, props, life.group, confetti.mesh, ...targets.map((t) => t.root));
+    props.setViewDistance(quality.viewDistance);
+    props.buildAround(start[0] ?? 0, start[2] ?? 0);
+    this.cleanups.push(() => props.dispose());
+    scene.add(character.root, props.group, life.group, confetti.mesh, ...targets.map((t) => t.root));
     overlay.stats.outfit = character.outfit;
 
     const liquid = (x: number, y: number, z: number): boolean => blocks(data.world.get(x, y, z))?.liquid ?? false;
@@ -405,7 +408,11 @@ export class Game {
     if (reviewShot) {
       // Still pictures show the whole map; a live shot frames one character and keeps the frame's budget.
       world.setViewDistance(reviewShot.live ? quality.viewDistance : Infinity);
-      if (!reviewShot.live) await world.settle(0, 0);
+      props.setViewDistance(reviewShot.live ? quality.viewDistance : Infinity);
+      if (!reviewShot.live) {
+        await world.settle(0, 0);
+        props.buildAround(0, 0);
+      }
       if (this.disposed) return;
       sky.scale.setScalar(3);
       for (const el of [dom.stats, dom.joystick, dom.run.parentElement]) if (el) el.hidden = true;
@@ -537,6 +544,7 @@ export class Game {
       world.water.uTime.value += dt;
       // Trees between the camera and the child fade; review shots have no child to keep in view.
       world.update(camera, reviewShot ? undefined : seeFocus.copy(controller.position).setY(controller.position.y + SEE_FOCUS_HEIGHT));
+      props.update(camera.position);
 
       for (const target of targets) target.update(dt, controller.position, camera.position);
       arrow.update(dt, controller.position, hint?.available ? hint.def : null);

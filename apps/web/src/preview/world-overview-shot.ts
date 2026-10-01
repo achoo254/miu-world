@@ -30,6 +30,8 @@ export async function renderWorldOverview(mapId: string): Promise<void> {
     o.receiveShadow = true;
   });
   const props = await loadProps(new GuardedGltfLoader(registry), data.entities, true);
+  props.setViewDistance(Infinity);
+  props.buildAround(0, 0);
 
   // Same light as the game (game.ts), with the sun over the whole map instead of over the player.
   const scene = new Scene();
@@ -41,7 +43,7 @@ export async function renderWorldOverview(mapId: string): Promise<void> {
   sun.castShadow = true;
   sun.shadow.mapSize.set(4096, 4096);
   Object.assign(sun.shadow.camera, { left: -110, right: 110, top: 110, bottom: -110, near: 1, far: 320 });
-  scene.add(sun, sun.target, world.group, props);
+  scene.add(sun, sun.target, world.group, props.group);
 
   const { eye, target, fov } = WORLD_OVERVIEW_CAMERA;
   const camera = new PerspectiveCamera(fov, width / height, 1, 600);
