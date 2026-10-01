@@ -1,0 +1,871 @@
+{
+  "id": "tv2-t15-b27",
+  "region": "khu-rung-bi-mat",
+  "chapter": 16,
+  "title": "Koala Na thao thức đêm hè",
+  "status": "draft",
+  "lesson": "tv2-t1-b27",
+  "summary": "Đêm hè nóng nực, Koala Na, con koala ngủ giỏi nhất rừng, lại thao thức vì nhớ mẹ quạt cho mình. {name} tìm quạt nan, đọc bài thơ Mẹ trên tàu lá, rồi nghe Voi Bảo kể chuyện cây vú sữa dưới trăng.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "Koala Na mê ngủ mà đêm nay mất ngủ, Gấu Tuyết Bông từ xứ lạnh đang chết nóng, Voi Bảo hiền lành nhớ giỏi",
+    "where": "Võng lá dưới trăng, lối mòn ánh trăng, tàu lá chép thơ và gốc cây vú sữa",
+    "goal": "Giúp Koala Na ngủ ngon dù mẹ vắng nhà, và gửi tới mẹ một lời biết ơn",
+    "play": "Tìm đồ, nói, đọc thơ, chọn nhiều đáp án, trắc nghiệm, điền từ, xếp nhóm, xếp dòng thơ, lựa chọn trong hội thoại, xếp tranh, kể chuyện, phiếu viết",
+    "learn": "Tiếng Việt 2 Bài 27: đọc hiểu và học thuộc bài thơ \"Mẹ\", từ chỉ hoạt động, câu nói lời biết ơn, chữ hoa O, kể chuyện Sự tích cây vú sữa",
+    "reward": "80 XP, 15 xu, Đọc hiểu +2, Từ ngữ +1, Kể chuyện +1",
+    "unlock": "Bài 28 \"Trò chơi của bố\""
+  },
+  "phases": {
+    "hook": "na-mat-ngu",
+    "explore": "tim-quat-nan",
+    "learn": "doc-bai-tho",
+    "challenge": "tu-chi-hoat-dong",
+    "decision": "loi-nhan-cho-me",
+    "finale": "doan-tranh-vu-sua",
+    "reward": "qua-cua-koala-na",
+    "unlock": "mo-bai-28"
+  },
+  "texts": {
+    "me": {
+      "title": "Mẹ",
+      "author": "Trần Quốc Minh",
+      "body": "Lặng rồi cả tiếng con ve\nCon ve cũng mệt vì hè nắng oi.\nNhà em vẫn tiếng ạ ời\nKẽo cà tiếng võng mẹ ngồi mẹ ru.\nLời ru có gió mùa thu\nBàn tay mẹ quạt mẹ đưa gió về.\nNhững ngôi sao thức ngoài kia\nChẳng bằng mẹ đã thức vì chúng con.\nĐêm nay con ngủ giấc tròn\nMẹ là ngọn gió của con suốt đời.",
+      "glossary": [
+        {
+          "term": "Nắng oi",
+          "meaning": "nắng nóng và không có gió, gây khó chịu."
+        },
+        {
+          "term": "Giấc tròn",
+          "meaning": "giấc ngủ ngon (ngủ say), không thức giấc."
+        }
+      ],
+      "section": "tv2-t1-b27-doc"
+    }
+  },
+  "places": {
+    "koala-na": "võng lá",
+    "tim-quat-nan": "lối mòn ánh trăng",
+    "tv2-t15-la-chep-tho": "tàu lá chép thơ",
+    "voi-bao": "cây vú sữa"
+  },
+  "steps": [
+    {
+      "id": "na-mat-ngu",
+      "title": "Con koala mất ngủ",
+      "goTo": "Tới võng lá dưới trăng, Koala Na trằn trọc mãi chưa ngủ",
+      "kind": "dialogue",
+      "target": "koala-na",
+      "lines": [
+        {
+          "speaker": "Koala Na",
+          "text": "{name} ơi… tớ là con koala ngủ giỏi nhất rừng, thế mà đêm nay mắt cứ mở thao láo như hai hòn bi."
+        },
+        {
+          "speaker": "Gấu Tuyết Bông",
+          "text": "Nóng quá trời ơi! Lông tớ dày thế này, chắc tớ sắp tan thành một vũng nước mất thôi!"
+        },
+        {
+          "speaker": "Koala Na",
+          "text": "Mọi đêm mẹ tớ ngồi quạt, vừa quạt vừa ru. Mẹ sang trông bà ngoại ốm rồi, tớ nhớ mẹ ghê…"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Mình đi tìm cái quạt cho cậu nhé!",
+          "reply": "Na dụi mắt gật gù: quạt nan của mẹ ở đâu đó trên lối mòn, tớ làm rơi lúc chiều."
+        },
+        {
+          "text": "Hay để mình hát ru cậu ngủ?",
+          "reply": "Na bịt tai cười khúc khích: cậu hát… y hệt tiếng ve! Thôi, đi tìm quạt đã."
+        }
+      ]
+    },
+    {
+      "id": "tim-quat-nan",
+      "title": "Quạt nan dưới trăng",
+      "goTo": "Men theo lối mòn ánh trăng tìm quạt nan, gối bông lau và ống nước mát",
+      "kind": "search",
+      "targets": [
+        "tv2-t15-quat-nan",
+        "tv2-t15-goi-bong-lau",
+        "tv2-t15-ong-nuoc-mat"
+      ]
+    },
+    {
+      "id": "khoi-dong",
+      "title": "Người thân chăm em ra sao",
+      "goTo": "Mang đồ về võng lá cho Koala Na",
+      "kind": "speak",
+      "target": "koala-na",
+      "prompt": "Na ôm gối bông lau, nằm nghiêng nhìn {name}: ở nhà cậu, ai hay chăm cậu nhất? Hãy kể cho bạn nghe một việc mà mẹ hoặc người thân đã làm để chăm sóc em.",
+      "hints": [
+        "Khi em ốm, ai ở bên em?",
+        "Ai hay đưa em đi học, kể chuyện hay ru em ngủ?",
+        "Em thấy thế nào khi được chăm sóc như vậy?"
+      ],
+      "pictureRefs": [
+        {
+          "kind": "diagram",
+          "type": "picture-card",
+          "params": {
+            "caption": "mẹ quàng khăn cho con gái"
+          }
+        },
+        {
+          "kind": "diagram",
+          "type": "picture-card",
+          "params": {
+            "caption": "ông ngồi chơi ô tô đồ chơi với cháu trai"
+          }
+        },
+        {
+          "kind": "diagram",
+          "type": "picture-card",
+          "params": {
+            "caption": "bà ngồi quạt cho cháu nằm ngủ ngoài hiên"
+          }
+        },
+        {
+          "kind": "diagram",
+          "type": "picture-card",
+          "params": {
+            "caption": "bố hướng dẫn con trai đọc sách"
+          }
+        }
+      ],
+      "curriculumRef": [
+        "tv2-t1-b27-doc-kd"
+      ]
+    },
+    {
+      "id": "doc-bai-tho",
+      "title": "Bài thơ trên tàu lá",
+      "goTo": "Lại gần tàu lá chép thơ treo cạnh võng",
+      "kind": "read",
+      "target": "tv2-t15-la-chep-tho",
+      "textRef": "me",
+      "audio": true,
+      "question": "Những dòng thơ nào cho thấy mẹ đã thức rất nhiều vì con?",
+      "choices": [
+        {
+          "id": "ve-lang",
+          "text": "Lặng rồi cả tiếng con ve\nCon ve cũng mệt vì hè nắng oi."
+        },
+        {
+          "id": "sao-thuc",
+          "text": "Những ngôi sao thức ngoài kia\nChẳng bằng mẹ đã thức vì chúng con."
+        },
+        {
+          "id": "giac-tron",
+          "text": "Đêm nay con ngủ giấc tròn\nMẹ là ngọn gió của con suốt đời."
+        }
+      ],
+      "skill": "doc-hieu",
+      "answer": {
+        "choice": "sao-thuc"
+      },
+      "curriculumRef": [
+        "tv2-t1-b27-doc-2"
+      ],
+      "support": {
+        "guide": [
+          "Tìm những dòng thơ có chữ \"thức\".",
+          "Mẹ được so với cái gì cũng thức suốt đêm?"
+        ],
+        "hint": "Ngoài kia có những thứ lấp lánh thức cả đêm, nhưng vẫn chẳng bằng mẹ.",
+        "answer": {
+          "text": "Những ngôi sao thức ngoài kia / Chẳng bằng mẹ đã thức vì chúng con.",
+          "explanation": "Sao thức suốt đêm trên trời, vậy mà mẹ còn thức nhiều hơn cả sao để chăm con ngủ."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đúng rồi, mẹ thức còn nhiều hơn cả những ngôi sao!",
+          "Na ngước nhìn trời đầy sao, thì thầm: mẹ tớ cũng thức nhiều thế đấy.",
+          "Chọn chuẩn! {name} tìm ra chữ \"thức\" nhanh như đom đóm loé."
+        ],
+        "wrong": [
+          "Hai dòng ấy nói về con ve mệt vì nắng, chưa nói tới mẹ thức đâu.",
+          "Dòng ấy nói con ngủ ngon, còn mẹ thức thì ở chỗ khác cơ.",
+          "Tìm hai dòng có chữ \"thức\" xem nào."
+        ]
+      }
+    },
+    {
+      "id": "me-lam-gi",
+      "title": "Mẹ làm gì cho con ngủ",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "target": "tv2-t15-la-chep-tho",
+      "prompt": "Gấu Tuyết Bông phe phẩy cái lá to như chiếc ô, hỏi giọng mếu máo: Trong đêm hè oi bức, mẹ đã làm gì để con ngủ ngon?\nChọn tất cả việc mẹ làm.",
+      "choices": [
+        {
+          "id": "ru",
+          "text": "ngồi ru con"
+        },
+        {
+          "id": "dap-chan",
+          "text": "đắp chăn bông dày"
+        },
+        {
+          "id": "quat",
+          "text": "quạt cho con"
+        },
+        {
+          "id": "ke-chuyen",
+          "text": "kể chuyện cổ tích"
+        },
+        {
+          "id": "dua-vong",
+          "text": "đưa võng kẽo cà"
+        }
+      ],
+      "skill": "doc-hieu",
+      "answer": {
+        "choices": [
+          "ru",
+          "quat",
+          "dua-vong"
+        ]
+      },
+      "curriculumRef": [
+        "tv2-t1-b27-doc-1"
+      ],
+      "support": {
+        "guide": [
+          "Đọc dòng thơ thứ tư, thứ năm và thứ sáu.",
+          "Tìm tiếng võng, lời ru và bàn tay mẹ."
+        ],
+        "hint": "Mẹ làm ba việc: một việc bằng giọng hát, một việc bằng bàn tay, một việc với cái võng.",
+        "answer": {
+          "text": "Mẹ ngồi đưa võng kẽo cà, hát ru và quạt cho con.",
+          "explanation": "Bài thơ kể: kẽo cà tiếng võng mẹ ngồi mẹ ru, bàn tay mẹ quạt mẹ đưa gió về."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đủ ba việc của mẹ! Gấu Tuyết Bông mát lòng hẳn đi.",
+          "Ru, quạt, đưa võng… nghe thôi đã thấy buồn ngủ rồi, oáp!",
+          "Na mỉm cười: đúng y như mẹ tớ làm mỗi đêm."
+        ],
+        "wrong": [
+          "Đêm hè nóng thế, mẹ nào lại đắp chăn bông dày cho con nhỉ?",
+          "Bài thơ không kể chuyện cổ tích đâu, chỉ có lời ru thôi.",
+          "Còn thiếu một việc có tiếng kẽo cà đấy."
+        ]
+      }
+    },
+    {
+      "id": "cau-tho-cuoi",
+      "title": "Ngọn gió của con",
+      "kind": "challenge",
+      "mechanic": "quiz",
+      "target": "tv2-t15-la-chep-tho",
+      "prompt": "Na đọc to câu cuối rồi ôm chặt chiếc quạt nan. Theo em, câu thơ cuối bài muốn nói điều gì?",
+      "choices": [
+        {
+          "id": "quat-mat",
+          "text": "Có mẹ quạt mát, con ngủ ngon lành."
+        },
+        {
+          "id": "mat-hon-gio",
+          "text": "Tay mẹ quạt mát hơn cả gió trời."
+        },
+        {
+          "id": "hanh-phuc",
+          "text": "Mẹ là niềm hạnh phúc của cuộc đời con."
+        }
+      ],
+      "skill": "doc-hieu",
+      "answer": {
+        "choice": "hanh-phuc"
+      },
+      "curriculumRef": [
+        "tv2-t1-b27-doc-3"
+      ],
+      "support": {
+        "guide": [
+          "Đọc dòng cuối: \"Mẹ là ngọn gió của con suốt đời.\"",
+          "Chữ \"suốt đời\" nghĩa là không chỉ đêm nay."
+        ],
+        "hint": "Câu thơ nói về cả cuộc đời con, chứ không chỉ một đêm hè.",
+        "answer": {
+          "text": "c. Mẹ là niềm hạnh phúc của cuộc đời con.",
+          "explanation": "\"Ngọn gió của con suốt đời\" là cách nói mẹ luôn mang lại điều tốt đẹp, mẹ là hạnh phúc của cả cuộc đời con."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đúng thế, mẹ là hạnh phúc của cả cuộc đời mình.",
+          "Na rưng rưng: suốt đời cơ đấy, chứ đâu chỉ đêm nay.",
+          "Hiểu sâu ghê, {name} đọc thơ như một nhà thơ nhí."
+        ],
+        "wrong": [
+          "Ý ấy đúng với đêm nay thôi, còn câu thơ nói \"suốt đời\" cơ.",
+          "Gió trời có trong bài đâu, thử nghĩ tới chữ \"suốt đời\" xem.",
+          "Câu cuối muốn nói mẹ quan trọng thế nào với cả cuộc đời con."
+        ]
+      }
+    },
+    {
+      "id": "tu-kho-dem-he",
+      "title": "Hai từ trong ô Từ ngữ",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "target": "tv2-t15-la-chep-tho",
+      "prompt": "Gấu Tuyết Bông chưa từng nghe hai từ \"nắng oi\" và \"giấc tròn\" ở xứ tuyết. {name} giúp Bông đặt mỗi từ về đúng dòng thơ nhé.",
+      "template": "Con ve cũng mệt vì hè {{nang}}.\nĐêm nay con ngủ {{giac}}",
+      "blanks": [
+        {
+          "id": "nang",
+          "options": [
+            {
+              "id": "mua-phun",
+              "text": "mưa phùn"
+            },
+            {
+              "id": "nang-oi",
+              "text": "nắng oi"
+            },
+            {
+              "id": "gio-lanh",
+              "text": "gió lạnh"
+            }
+          ]
+        },
+        {
+          "id": "giac",
+          "options": [
+            {
+              "id": "chap-chon",
+              "text": "chập chờn"
+            },
+            {
+              "id": "thao-thuc",
+              "text": "thao thức"
+            },
+            {
+              "id": "giac-tron",
+              "text": "giấc tròn"
+            }
+          ]
+        }
+      ],
+      "skill": "tu-ngu",
+      "answer": {
+        "fills": {
+          "nang": "nang-oi",
+          "giac": "giac-tron"
+        }
+      },
+      "support": {
+        "guide": [
+          "Nắng oi là nắng nóng, không có gió.",
+          "Giấc tròn là giấc ngủ say, không thức giấc."
+        ],
+        "hint": "Con ve mệt vì trời nóng; con được mẹ quạt nên ngủ thật say.",
+        "answer": {
+          "text": "hè nắng oi; ngủ giấc tròn",
+          "explanation": "Ô Từ ngữ giải nghĩa: nắng oi là nắng nóng, không có gió; giấc tròn là giấc ngủ ngon, không thức giấc."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bông ghi vội vào sổ: nắng oi là thứ đáng sợ nhất với gấu tuyết!",
+          "Hai từ về đúng chỗ, dòng thơ đọc lên êm ru.",
+          "Giấc tròn! Na nghe xong đã ngáp một cái thật dài."
+        ],
+        "wrong": [
+          "Mưa phùn với gió lạnh thì ve đâu có mệt, mà Bông thì sướng quá!",
+          "Có mẹ quạt thì con ngủ say, đâu có chập chờn hay thao thức.",
+          "Nhớ ô Từ ngữ dưới bài thơ nhé, thử lại nào."
+        ]
+      }
+    },
+    {
+      "id": "tu-chi-hoat-dong",
+      "title": "Tìm từ chỉ hoạt động",
+      "kind": "challenge",
+      "mechanic": "classify",
+      "target": "tv2-t15-la-chep-tho",
+      "prompt": "Voi Bảo lững thững đi qua, phe phẩy đôi tai to như hai cái quạt, rồi đố cả bọn: Tìm từ ngữ chỉ hoạt động có trong bài thơ.\nKéo mỗi thẻ vào đúng giỏ.",
+      "groups": [
+        {
+          "id": "hoat-dong",
+          "label": "Từ chỉ hoạt động"
+        },
+        {
+          "id": "khac",
+          "label": "Không chỉ hoạt động"
+        }
+      ],
+      "items": [
+        {
+          "id": "ngoi-sao",
+          "label": "ngôi sao"
+        },
+        {
+          "id": "ru",
+          "label": "ru"
+        },
+        {
+          "id": "mua-thu",
+          "label": "mùa thu"
+        },
+        {
+          "id": "quat",
+          "label": "quạt"
+        },
+        {
+          "id": "con-ve",
+          "label": "con ve"
+        },
+        {
+          "id": "thuc",
+          "label": "thức"
+        },
+        {
+          "id": "ngoi",
+          "label": "ngồi"
+        },
+        {
+          "id": "ngu",
+          "label": "ngủ"
+        }
+      ],
+      "skill": "tu-ngu",
+      "answer": {
+        "assignment": {
+          "ru": "hoat-dong",
+          "quat": "hoat-dong",
+          "thuc": "hoat-dong",
+          "ngoi": "hoat-dong",
+          "ngu": "hoat-dong",
+          "ngoi-sao": "khac",
+          "mua-thu": "khac",
+          "con-ve": "khac"
+        }
+      },
+      "curriculumRef": [
+        "tv2-t1-b27-doc-lt1"
+      ],
+      "support": {
+        "guide": [
+          "Từ chỉ hoạt động là việc mình làm được: chạy, nhảy, hát…",
+          "Thử đặt \"đang\" trước mỗi từ: \"đang ru\" nghe được, \"đang ngôi sao\" thì không."
+        ],
+        "hint": "Có năm từ chỉ hoạt động, ba từ còn lại là tên sự vật.",
+        "answer": {
+          "text": "Hoạt động: ngồi, ru, quạt, thức, ngủ; không chỉ hoạt động: ngôi sao, mùa thu, con ve.",
+          "explanation": "Ngồi, ru, quạt, thức, ngủ là những việc người ta làm; ngôi sao, mùa thu, con ve là tên sự vật, thời gian, con vật."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Voi Bảo vẫy tai rộng tới mức thổi bay cả mũ của Bông!",
+          "Năm hoạt động về đúng giỏ, chuẩn không lệch thẻ nào.",
+          "{name} giỏi quá, đến Voi Bảo nhớ giỏi cũng phải khen."
+        ],
+        "wrong": [
+          "Thử nói \"đang con ve\" xem, nghe có kì không?",
+          "Quạt là việc bàn tay mẹ làm đấy, xếp lại nhé.",
+          "Còn một thẻ đứng nhầm giỏ, đặt chữ \"đang\" phía trước để thử."
+        ]
+      }
+    },
+    {
+      "id": "dat-cau-hoat-dong",
+      "title": "Một câu với từ vừa tìm",
+      "kind": "speak",
+      "target": "tv2-t15-la-chep-tho",
+      "prompt": "Voi Bảo nháy mắt: tìm được từ rồi thì dùng nó ngay cho khỏi quên. Đặt một câu với từ ngữ vừa tìm được.",
+      "hints": [
+        "Chọn một từ: ru, quạt, thức, ngủ hay ngồi.",
+        "Ai làm việc ấy? Làm khi nào?",
+        "Nói thành một câu trọn vẹn."
+      ],
+      "curriculumRef": [
+        "tv2-t1-b27-doc-lt2"
+      ]
+    },
+    {
+      "id": "xep-sau-dong-tho",
+      "title": "Sáu dòng thơ bị gió thổi",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "tv2-t15-la-chep-tho",
+      "prompt": "Một cơn gió hiếm hoi thổi qua, mát thì mát thật, nhưng sáu dòng thơ cuối trên tàu lá rơi lả tả. Xếp lại cho đúng thứ tự để Na học thuộc nhé.",
+      "items": [
+        {
+          "id": "dong-9",
+          "label": "Đêm nay con ngủ giấc tròn"
+        },
+        {
+          "id": "dong-6",
+          "label": "Bàn tay mẹ quạt mẹ đưa gió về."
+        },
+        {
+          "id": "dong-8",
+          "label": "Chẳng bằng mẹ đã thức vì chúng con."
+        },
+        {
+          "id": "dong-5",
+          "label": "Lời ru có gió mùa thu"
+        },
+        {
+          "id": "dong-10",
+          "label": "Mẹ là ngọn gió của con suốt đời."
+        },
+        {
+          "id": "dong-7",
+          "label": "Những ngôi sao thức ngoài kia"
+        }
+      ],
+      "skill": "doc-hieu",
+      "answer": {
+        "order": [
+          "dong-5",
+          "dong-6",
+          "dong-7",
+          "dong-8",
+          "dong-9",
+          "dong-10"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Bắt đầu từ dòng nói về lời ru có gió mùa thu.",
+          "Dòng có ngôi sao đứng trước dòng có chữ \"Chẳng bằng\"."
+        ],
+        "hint": "Dòng \"Mẹ là ngọn gió của con suốt đời\" là dòng kết.",
+        "answer": {
+          "text": "Lời ru có gió mùa thu → Bàn tay mẹ quạt… → Những ngôi sao… → Chẳng bằng mẹ… → Đêm nay con ngủ… → Mẹ là ngọn gió…",
+          "explanation": "Sáu dòng cuối đi từ lời ru, bàn tay mẹ quạt, tới mẹ thức vì con và con ngủ ngon có mẹ là ngọn gió."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Sáu dòng thơ thẳng hàng! Na đọc thầm theo, môi mấp máy.",
+          "Chuẩn từng dòng, tàu lá lại nguyên vẹn như cũ.",
+          "Gió ơi đừng thổi nữa nhé, {name} xếp xong rồi!"
+        ],
+        "wrong": [
+          "Dòng có ngôi sao phải đứng trước dòng \"Chẳng bằng mẹ…\" đấy.",
+          "Câu kết của bài là câu có ngọn gió suốt đời, để nó cuối cùng.",
+          "Lời ru có gió mùa thu mở đầu sáu dòng này, thử lại xem."
+        ]
+      }
+    },
+    {
+      "id": "hoc-thuoc-long",
+      "title": "Đọc thuộc cho Na nghe",
+      "goTo": "Về bên võng lá, Na đã nằm sẵn chờ nghe đọc thơ",
+      "kind": "speak",
+      "target": "koala-na",
+      "prompt": "Na kéo gối bông lau lên tận cằm: cậu đọc thuộc lòng cho tớ nghe nhé, giống mẹ ru ấy. Học thuộc lòng 6 dòng thơ cuối.",
+      "hints": [
+        "Đọc chậm, nhẹ nhàng như đang ru.",
+        "Nhớ dòng mở đầu: Lời ru có gió mùa thu.",
+        "Ngắt hơi sau mỗi dòng thơ."
+      ],
+      "curriculumRef": [
+        "tv2-t1-b27-doc-htl"
+      ]
+    },
+    {
+      "id": "loi-nhan-cho-me",
+      "title": "Lời nhắn gửi mẹ Koala",
+      "kind": "dialogue",
+      "target": "koala-na",
+      "lines": [
+        {
+          "speaker": "Koala Na",
+          "text": "Oáp… mắt tớ díp lại rồi. Nhưng tớ muốn gửi mẹ một lời trước khi ngủ."
+        },
+        {
+          "speaker": "Gấu Tuyết Bông",
+          "text": "Nhờ gió mang đi! Ở xứ tớ, gió chở thư nhanh hơn cả chim đưa thư."
+        },
+        {
+          "speaker": "Koala Na",
+          "text": "{name} ơi, mình nhắn mẹ điều gì bây giờ?"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Con cảm ơn mẹ đã thức quạt cho con mọi đêm.",
+          "reply": "Gió hây hẩy thổi về phía nhà bà ngoại. Na mỉm cười, lim dim mắt."
+        },
+        {
+          "text": "Mẹ ơi, con ngủ ngoan, mẹ yên tâm chăm bà nhé.",
+          "reply": "Na gật gù: mẹ nghe thấy chắc vui lắm. Rồi Na ngáy khò một tiếng bé xíu."
+        },
+        {
+          "text": "Mai con với bạn sang thăm bà và mẹ nhé!",
+          "reply": "Na reo khẽ: hay quá! Mai tớ dậy sớm… à, dậy được thì dậy sớm."
+        }
+      ]
+    },
+    {
+      "id": "loi-biet-on",
+      "title": "Câu cảm ơn cha mẹ",
+      "kind": "speak",
+      "target": "koala-na",
+      "prompt": "Na ngủ rồi, Gấu Tuyết Bông thì thầm với {name}: còn cậu, cậu muốn cảm ơn bố mẹ điều gì? Nói một câu thể hiện lòng biết ơn của em đối với cha mẹ.",
+      "hints": [
+        "Bố mẹ đã làm gì cho em hôm nay?",
+        "Bắt đầu bằng: Con cảm ơn bố, con cảm ơn mẹ…",
+        "Nói thật lòng, nhẹ nhàng."
+      ],
+      "curriculumRef": [
+        "tv2-t1-b27-doc-4"
+      ]
+    },
+    {
+      "id": "doan-tranh-vu-sua",
+      "title": "Chuyện dưới gốc vú sữa",
+      "goTo": "Theo Voi Bảo ra gốc cây vú sữa trĩu quả dưới trăng",
+      "kind": "speak",
+      "target": "voi-bao",
+      "prompt": "Voi Bảo nhặt một quả vú sữa tròn căng, nói khẽ: cây này có cả một sự tích, để tớ kể. Nhưng trước tiên, cùng xem tranh câu chuyện Sự tích cây vú sữa. Dựa vào câu hỏi gợi ý, đoán nội dung của từng tranh.",
+      "hints": [
+        "Bị mẹ mắng, cậu bé làm gì?",
+        "Cậu bé làm gì khi quay về nhà?",
+        "Thấy cậu bé khóc, cây xanh đã biến đổi thế nào?",
+        "Nhìn lên tán lá, cậu bé nghĩ đến điều gì?"
+      ],
+      "pictureRefs": [
+        {
+          "kind": "diagram",
+          "type": "picture-card",
+          "params": {
+            "caption": "tranh 1: cậu bé ôm đầu bỏ đi khỏi ngôi nhà mái rạ",
+            "n": 1
+          }
+        },
+        {
+          "kind": "diagram",
+          "type": "picture-card",
+          "params": {
+            "caption": "tranh 2: cậu bé khóc, ôm lấy thân cây xanh trước nhà",
+            "n": 2
+          }
+        },
+        {
+          "kind": "diagram",
+          "type": "picture-card",
+          "params": {
+            "caption": "tranh 3: cây trĩu quả, cậu bé cầm một quả trên tay",
+            "n": 3
+          }
+        },
+        {
+          "kind": "diagram",
+          "type": "picture-card",
+          "params": {
+            "caption": "tranh 4: cậu bé ôm gốc cây, ngước nhìn lên tán lá đầy quả",
+            "n": 4
+          }
+        }
+      ],
+      "curriculumRef": [
+        "tv2-t1-b27-ke-chuyen-1-a",
+        "tv2-t1-b27-ke-chuyen-1-b",
+        "tv2-t1-b27-ke-chuyen-1-c",
+        "tv2-t1-b27-ke-chuyen-1-d"
+      ]
+    },
+    {
+      "id": "xep-tranh-vu-sua",
+      "title": "Bốn tranh cây vú sữa",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "voi-bao",
+      "prompt": "Voi Bảo vô ý quạt tai mạnh quá, bốn bức tranh bay lộn tùng phèo. Nghe kể chuyện.\nXếp các tranh theo đúng thứ tự câu chuyện.",
+      "items": [
+        {
+          "id": "tranh-2",
+          "label": "Cậu bé ôm cây khóc",
+          "image": {
+            "kind": "diagram",
+            "type": "picture-card",
+            "params": {
+              "caption": "cậu bé nức nở ôm thân cây xanh mọc trước cửa nhà",
+              "n": 2
+            }
+          }
+        },
+        {
+          "id": "tranh-4",
+          "label": "Cậu bé ngước nhìn tán lá",
+          "image": {
+            "kind": "diagram",
+            "type": "picture-card",
+            "params": {
+              "caption": "cậu bé tựa gốc cây, ngẩng lên tán lá chi chít quả",
+              "n": 4
+            }
+          }
+        },
+        {
+          "id": "tranh-1",
+          "label": "Cậu bé bỏ nhà ra đi",
+          "image": {
+            "kind": "diagram",
+            "type": "picture-card",
+            "params": {
+              "caption": "cậu bé ôm đầu, quay lưng rời ngôi nhà mái rạ",
+              "n": 1
+            }
+          }
+        },
+        {
+          "id": "tranh-3",
+          "label": "Cây ra quả cho cậu bé",
+          "image": {
+            "kind": "diagram",
+            "type": "picture-card",
+            "params": {
+              "caption": "cây sai trĩu quả, cậu bé đỡ một quả trong tay",
+              "n": 3
+            }
+          }
+        }
+      ],
+      "skill": "ke-chuyen",
+      "answer": {
+        "order": [
+          "tranh-1",
+          "tranh-2",
+          "tranh-3",
+          "tranh-4"
+        ]
+      },
+      "curriculumRef": [
+        "tv2-t1-b27-ke-chuyen-2"
+      ],
+      "support": {
+        "guide": [
+          "Chuyện bắt đầu khi cậu bé bị mẹ mắng.",
+          "Cậu bé đi xa rồi mới quay về nhà."
+        ],
+        "hint": "Cây chỉ ra quả sau khi cậu bé khóc bên gốc.",
+        "answer": {
+          "text": "Bỏ nhà ra đi → về ôm cây khóc → cây ra quả → ngước nhìn tán lá nhớ mẹ",
+          "explanation": "Cậu bé giận mẹ bỏ đi, khi về không thấy mẹ chỉ thấy cây, cây ra quả ngọt như sữa mẹ, cậu bé nhìn tán lá mà nhớ mẹ."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bốn tranh đã về chỗ, Voi Bảo cẩn thận gấp tai lại cho khỏi quạt nữa.",
+          "Đúng trình tự rồi, câu chuyện buồn mà đẹp quá.",
+          "Bông lau nước mắt: {name} xếp giỏi thật, tớ thì chỉ biết khóc."
+        ],
+        "wrong": [
+          "Cậu bé phải bỏ đi trước thì mới có lúc quay về chứ.",
+          "Cây chưa ra quả khi cậu bé chưa về khóc bên gốc đâu.",
+          "Tranh cậu bé ngước nhìn tán lá là đoạn kết đấy."
+        ]
+      }
+    },
+    {
+      "id": "ke-chuyen-vu-sua",
+      "title": "Kể chuyện cho Voi Bảo",
+      "kind": "speak",
+      "target": "voi-bao",
+      "prompt": "Voi Bảo cuộn vòi, ngồi chăm chú như học sinh ngoan nhất lớp. Nghe kể chuyện.\nChọn kể 1 – 2 đoạn của câu chuyện theo tranh.",
+      "hints": [
+        "Tranh 1: Vì sao cậu bé bỏ nhà đi?",
+        "Tranh 2: Về nhà không thấy mẹ, cậu bé làm gì?",
+        "Tranh 3: Cây xanh cho cậu bé thứ quả như thế nào?",
+        "Tranh 4: Tán lá làm cậu bé nhớ tới ai?"
+      ],
+      "pictureRefs": [
+        {
+          "kind": "diagram",
+          "type": "picture-card",
+          "params": {
+            "n": 1
+          }
+        },
+        {
+          "kind": "diagram",
+          "type": "picture-card",
+          "params": {
+            "n": 2
+          }
+        },
+        {
+          "kind": "diagram",
+          "type": "picture-card",
+          "params": {
+            "n": 3
+          }
+        },
+        {
+          "kind": "diagram",
+          "type": "picture-card",
+          "params": {
+            "n": 4
+          }
+        }
+      ],
+      "curriculumRef": [
+        "tv2-t1-b27-ke-chuyen-2",
+        "tv2-t1-b27-ke-chuyen-3"
+      ]
+    },
+    {
+      "id": "cau-be-noi-gi",
+      "title": "Nếu cậu bé gặp lại mẹ",
+      "kind": "speak",
+      "target": "voi-bao",
+      "prompt": "Voi Bảo trầm ngâm, ngón chân gõ nhẹ xuống đất: tớ cứ nghĩ mãi một điều. Theo em, nếu được gặp lại mẹ, cậu bé trong câu chuyện sẽ nói gì?",
+      "hints": [
+        "Cậu bé sẽ xin lỗi mẹ điều gì?",
+        "Cậu bé hứa với mẹ những gì?",
+        "Cậu bé nói mình thương mẹ thế nào?"
+      ],
+      "curriculumRef": [
+        "tv2-t1-b27-van-dung-1"
+      ]
+    },
+    {
+      "id": "phieu-viet-bai-27",
+      "title": "Phiếu viết bài 27",
+      "kind": "worksheet",
+      "trigger": "auto",
+      "lessonId": "tv2-t1-b27",
+      "text": "Nhờ bố mẹ in phiếu Bài 27 ở khu phụ huynh: tập viết chữ hoa O và câu ứng dụng về chú ong chăm chỉ. Koala Na bảo chữ O tròn như cái miệng ngáp của bạn ấy!",
+      "curriculumRef": [
+        "tv2-t1-b27-viet-chu-hoa-1",
+        "tv2-t1-b27-viet-ung-dung-2"
+      ]
+    },
+    {
+      "id": "qua-cua-koala-na",
+      "title": "Quạt nan nhỏ của Koala Na",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Sáng hôm sau, Na tặng {name} một chiếc quạt nan bé xíu tự đan, trên cán khắc dòng chữ: \"Ngọn gió nhỏ của bạn tốt\". Gấu Tuyết Bông xin mượn ngay, vì trời vẫn nóng!"
+    },
+    {
+      "id": "mo-bai-28",
+      "title": "Sư tử con dỗi bố",
+      "kind": "unlock",
+      "trigger": "auto",
+      "text": "Từ hang đá ấm vọng ra tiếng gầm… bé tí: sư tử con đang dỗi vì bố Sư Tử Vàng bận suốt ngày. Hình như bố đang nghĩ ra một trò chơi bí mật thì phải?"
+    }
+  ],
+  "reward": {
+    "xp": 80,
+    "coin": 15,
+    "skillXp": {
+      "doc-hieu": 2,
+      "tu-ngu": 1,
+      "ke-chuyen": 1
+    }
+  }
+}
