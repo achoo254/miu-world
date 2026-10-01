@@ -14,7 +14,7 @@
     "play": "Nhặt đá cuội, điền bảng, cắm quạt đúng ổ, chọn toa tàu, đếm khối gỗ, giải toán, đấu trò Bắt vịt",
     "learn": "Toán 2 Bài 10: luyện tập chung phép cộng qua 10, bài toán thêm, bớt",
     "reward": "80 XP, 15 xu, Phép cộng +2, Bài toán có lời văn +1",
-    "unlock": "Bài 11 \"Phép trừ (qua 10) trong phạm vi 20\""
+    "next": "Bài 11 \"Phép trừ (qua 10) trong phạm vi 20\""
   },
   "phases": {
     "hook": "dap-dang-ro-nuoc",
@@ -24,7 +24,7 @@
     "decision": "hai-ly-hoi-cach-xep",
     "finale": "dau-bat-vit",
     "reward": "huy-hieu-ky-su-dap",
-    "unlock": "tao-rung-lop-dop"
+    "next": "tao-rung-lop-dop"
   },
   "texts": {},
   "places": {
@@ -933,7 +933,7 @@
     {
       "id": "tao-rung-lop-dop",
       "title": "Gốc táo đầu vườn gọi",
-      "kind": "unlock",
+      "kind": "next",
       "trigger": "auto",
       "text": "Lộp độp, lộp độp! Ở gốc táo đầu vườn, táo chín rụng xuống liên tục. Heo Ủn vừa nhặt vừa ăn, giờ chẳng biết trên cây còn lại bao nhiêu quả nữa."
     }

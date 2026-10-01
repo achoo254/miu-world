@@ -106,7 +106,7 @@ export function useQuestController({ store, data, questId, onResponse, onOverlay
   const activeQuest = useCallback((): { quest: ActiveQuestView; progress: PlayerData['quests'][number]['progress'] } | null => {
     const { data: player, questId: id } = latest.current;
     const summary = player.quests.find((q) => q.quest.id === id);
-    if (!summary || summary.quest.status !== 'active' || summary.state === 'locked') return null;
+    if (!summary || summary.quest.status !== 'active') return null;
     return { quest: summary.quest, progress: summary.progress };
   }, []);
 
@@ -175,7 +175,7 @@ export function useQuestController({ store, data, questId, onResponse, onOverlay
   const startStep = useCallback(
     (step: QuestStepPublic): void => {
       const player = latest.current.data;
-      if (step.kind === 'reward' || step.kind === 'unlock') {
+      if (step.kind === 'reward' || step.kind === 'next') {
         setToast(say(step.text, player.character));
         void submit(step);
         return;

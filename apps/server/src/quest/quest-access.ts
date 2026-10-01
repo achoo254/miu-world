@@ -27,24 +27,17 @@ export async function completedQuestIds(db: Db | Tx, childId: string): Promise<S
   return new Set(rows.map((r) => r.questId));
 }
 
-/** A quest opens when nobody unlocks it, or when ANY quest that unlocks it is finished. */
-export function isUnlocked(content: ContentCatalog, questId: string, completed: ReadonlySet<string>): boolean {
-  const unlockers = content.unlockedBy.get(questId) ?? [];
-  return unlockers.length === 0 || unlockers.some((id) => completed.has(id));
-}
-
-export function questState(unlocked: boolean, row: ProgressRow | undefined): QuestState {
+/** Every quest is open from the start: nothing is locked behind another quest. */
+export function questState(row: ProgressRow | undefined): QuestState {
   if (row?.completedAt) return 'completed';
-  if (!unlocked) return 'locked';
   const started = row !== undefined && (row.completedSteps.length > 0 || Object.keys(row.found).length > 0);
   return started ? 'in-progress' : 'open';
 }
 
-/** The quest a child may act on now: known, unlocked, and not a "coming soon" stub. */
-export async function playableQuest(db: Db, content: ContentCatalog, childId: string, questId: string): Promise<ActiveQuest> {
+/** The quest a child may act on now: known and not a "coming soon" stub (every quest is open, none is locked). */
+export function playableQuest(content: ContentCatalog, questId: string): ActiveQuest {
   const quest = content.quests.get(questId);
   if (!quest) throw new HttpError(404, 'quest-not-found');
-  if (!isUnlocked(content, questId, await completedQuestIds(db, childId))) throw new HttpError(409, 'quest-locked');
   if (quest.status !== 'active') throw new HttpError(409, 'quest-coming-soon');
   return quest;
 }

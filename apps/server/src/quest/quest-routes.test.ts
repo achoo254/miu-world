@@ -129,19 +129,13 @@ describe('quest progress and rewards (server is the source of truth)', () => {
     expect((await agent.get('/api/progress').expect(200)).body.xp).toBe(0);
   });
 
-  it('rejects a locked quest with 409 until its prerequisite is finished', async () => {
+  it('plays any quest from the start: none waits for another to be finished', async () => {
     const { agent } = await playingChild();
-    await step(agent, 'quest-b', 'open-gate', { target: 'gate-ch2' }).expect(409, { error: 'quest-locked' });
-    await step(agent, 'quest-a', 'meet-vet').expect(200);
-    await step(agent, 'quest-b', 'open-gate', { target: 'gate-ch2' }).expect(409, { error: 'quest-locked' });
-    await finish(agent, 'quest-a');
     await step(agent, 'quest-b', 'open-gate', { target: 'gate-ch2' }).expect(200);
   });
 
-  it('shows a stub quest as coming soon once unlocked, and never lets it be played', async () => {
+  it('shows a stub quest as coming soon, and never lets it be played', async () => {
     const { agent } = await playingChild();
-    await step(agent, 'quest-soon', 'anything').expect(409, { error: 'quest-locked' });
-    await finish(agent, 'quest-c');
     await step(agent, 'quest-soon', 'anything').expect(409, { error: 'quest-coming-soon' });
   });
 
@@ -216,7 +210,7 @@ describe('quest progress and rewards (server is the source of truth)', () => {
   it('plays a quest that was added only as a JSON file', async () => {
     const dir = mkdtempSync(path.join(tmpdir(), 'miu-new-quest-'));
     const fixture = JSON.parse(readFileSync(new URL('../../test/fixtures/quests/quest-c.json', import.meta.url), 'utf8')) as object;
-    writeFileSync(path.join(dir, 'lake.json'), JSON.stringify({ ...fixture, id: 'lake-walk', title: 'Dạo hồ', unlock: [], reward: { xp: 7, coin: 3 } }));
+    writeFileSync(path.join(dir, 'lake.json'), JSON.stringify({ ...fixture, id: 'lake-walk', title: 'Dạo hồ', reward: { xp: 7, coin: 3 } }));
     const content = loadContentCatalog({ questDir: dir });
     const { parent, childId } = await parentWithChild(app);
     const agent = request.agent(createApp({ config: app.config, db: app.db, content })).set('Origin', ORIGIN);
@@ -247,17 +241,16 @@ describe('scoring a finished quest', () => {
   const support = (agent: Agent, quest: string, stepId: string, layer: string) =>
     agent.post(`/api/quests/${quest}/steps/${stepId}/support`).send({ layer });
 
-  it('pays full XP with 3 stars, reports Level Up, Skill Up and what opened', async () => {
+  it('pays full XP with 3 stars, reports Level Up and Skill Up', async () => {
     const { agent } = await playingChild();
     const a = await finish(agent, 'quest-a');
-    expect(a.body.completion).toEqual({ stars: 3, xpAwarded: 60, levelBefore: 1, levelAfter: 1, unlocked: ['quest-b'], skillLevels: [{ skillId: 'doc-hieu', levelBefore: 1, levelAfter: 1 }] });
+    expect(a.body.completion).toEqual({ stars: 3, xpAwarded: 60, levelBefore: 1, levelAfter: 1, skillLevels: [{ skillId: 'doc-hieu', levelBefore: 1, levelAfter: 1 }] });
     const b = await finish(agent, 'quest-b');
     expect(b.body.completion).toEqual({
       stars: 3,
       xpAwarded: 100,
       levelBefore: 1,
       levelAfter: 2,
-      unlocked: [],
       skillLevels: [
         { skillId: 'doc-hieu', levelBefore: 1, levelAfter: 2 },
         { skillId: 'phep-cong', levelBefore: 1, levelAfter: 2 },
@@ -323,12 +316,11 @@ describe('learning support', () => {
     expect(await app.db.select().from(t.stepAttempts).where(eq(t.stepAttempts.childId, childId))).toEqual([]);
   });
 
-  it('refuses unknown layers, steps without support, steps ahead and locked quests', async () => {
+  it('refuses unknown layers, steps without support and steps ahead', async () => {
     const { agent } = await playingChild();
     await support(agent, 'quest-c', 'add-flowers', { layer: 'everything' }).expect(400, { error: 'invalid-support-layer' });
     await support(agent, 'quest-c', 'say-hello', { layer: 'hint' }).expect(404, { error: 'support-not-found' });
     await support(agent, 'quest-c', 'add-flowers', { layer: 'answer' }).expect(409, { error: 'out-of-order' });
-    await support(agent, 'quest-b', 'solve-tree', { layer: 'answer' }).expect(409, { error: 'quest-locked' });
     await support(agent, 'quest-c', 'fly-away', { layer: 'hint' }).expect(404, { error: 'step-not-found' });
   });
 
@@ -433,10 +425,10 @@ describe('quest list and detail', () => {
     const { agent } = await playingChild();
     const states = async () =>
       Object.fromEntries(((await agent.get('/api/quests').expect(200)).body.quests as Array<{ quest: { id: string }; state: string }>).map((q) => [q.quest.id, q.state]));
-    expect(await states()).toEqual({ 'quest-a': 'open', 'quest-b': 'locked', 'quest-c': 'open', 'quest-sgk': 'open', 'quest-soon': 'locked' });
+    expect(await states()).toEqual({ 'quest-a': 'open', 'quest-b': 'open', 'quest-c': 'open', 'quest-sgk': 'open', 'quest-soon': 'open' });
     await step(agent, 'quest-c', 'say-hello').expect(200);
     await finish(agent, 'quest-a');
-    expect(await states()).toEqual({ 'quest-a': 'completed', 'quest-b': 'open', 'quest-c': 'in-progress', 'quest-sgk': 'open', 'quest-soon': 'locked' });
+    expect(await states()).toEqual({ 'quest-a': 'completed', 'quest-b': 'open', 'quest-c': 'in-progress', 'quest-sgk': 'open', 'quest-soon': 'open' });
     const detail = (await agent.get('/api/quests/quest-a').expect(200)).body;
     expect(detail).toMatchObject({ state: 'completed', progress: { stars: 3, completed: true }, quest: { id: 'quest-a', status: 'active' } });
     expect(detail.quest.steps.map((s: { id: string }) => s.id)).toEqual(['meet-vet', 'find-letter', 'solve-tree']);
@@ -494,7 +486,7 @@ describe('the shipped forest chapter 1', () => {
     expect((await agent.get('/api/quests/tv2-t01-b01').expect(200)).body).toMatchObject({ state: 'open', quest: { status: 'active' } });
     let last: request.Response | undefined;
     for (const [stepId, body] of solution(ch1)) last = await step(agent, 'forest-ch1', stepId, body).expect(200);
-    expect(last?.body.completion).toMatchObject({ stars: 3, xpAwarded: 100, levelBefore: 1, levelAfter: 2, unlocked: [] });
+    expect(last?.body.completion).toMatchObject({ stars: 3, xpAwarded: 100, levelBefore: 1, levelAfter: 2 });
     expect(last?.body.reward).toMatchObject({ xp: 100, coin: 20, items: { 'la-than': 1 } });
     expect((await agent.get('/api/quests/toan2-cd1-b01').expect(200)).body).toMatchObject({ state: 'open' });
   });

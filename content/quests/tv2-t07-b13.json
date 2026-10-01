@@ -14,7 +14,7 @@
     "play": "Tìm đồ, hát, đọc thơ, ghép khổ thơ với tranh, chọn nhiều đáp án, điền từ, ghép câu, xếp tranh, kể chuyện, phiếu viết",
     "learn": "Tiếng Việt 2 Bài 13: đọc bài thơ Yêu lắm trường ơi!, từ chỉ tình cảm, câu nêu đặc điểm, chữ hoa E, Ê, kể chuyện Bữa ăn trưa",
     "reward": "80 XP, 15 xu, Đọc hiểu +2, Từ ngữ +1, Câu +1, Kể chuyện +1",
-    "unlock": "Bài 14 \"Em học vẽ\""
+    "next": "Bài 14 \"Em học vẽ\""
   },
   "phases": {
     "hook": "chip-nho-nha",
@@ -24,7 +24,7 @@
     "decision": "heo-un-goi-an-trua",
     "finale": "xep-tranh-bua-trua",
     "reward": "phieu-viet-bai-13",
-    "unlock": "mo-bai-14"
+    "next": "mo-bai-14"
   },
   "texts": {
     "yeu-lam-truong-oi": {
@@ -732,7 +732,7 @@
     {
       "id": "mo-bai-14",
       "title": "Tiếng cộp trên đồi cỏ",
-      "kind": "unlock",
+      "kind": "next",
       "trigger": "auto",
       "text": "Từ đồi cỏ ven biển vọng xuống một tiếng \"ối!\": Cáo Cọ lại nhúng nhầm đuôi vào chậu nước rửa cọ. Lần này bạn ấy còn kêu ầm lên rằng hộp màu vẽ trống trơn rồi!"
     }

@@ -37,7 +37,7 @@ describe('QuestView', () => {
   });
 
   it('shows a stub as coming soon with no content', () => {
-    const stub = { id: 'forest-ch2', region: 'khu-rung-bi-mat', chapter: 2, title: 'Khu rừng bí mật – Chương 2', status: 'stub', unlock: [] };
+    const stub = { id: 'forest-ch2', region: 'khu-rung-bi-mat', chapter: 2, title: 'Khu rừng bí mật – Chương 2', status: 'stub' };
     expect(QuestView.parse(stub)).toEqual({
       id: 'forest-ch2',
       region: 'khu-rung-bi-mat',

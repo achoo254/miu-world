@@ -14,7 +14,7 @@
     "play": "Tìm thứ gây tiếng động, nói khởi động, đọc bài hai lượt, trắc nghiệm, chọn nhiều đáp án, điền từ, chọn cách giúp bạn, xếp tranh, kể chuyện, phiếu viết",
     "learn": "Tiếng Việt 2 Bài 7: đọc Cây xấu hổ, từ chỉ đặc điểm, nói tiếp lời nhân vật, chữ hoa C, kể chuyện Chú đỗ con theo tranh",
     "reward": "80 XP, 15 xu, Đọc hiểu +2, Từ ngữ +2, Kể chuyện +1",
-    "unlock": "Bài 8 \"Cầu thủ dự bị\""
+    "next": "Bài 8 \"Cầu thủ dự bị\""
   },
   "phases": {
     "hook": "nai-mo-lam-tho",
@@ -24,7 +24,7 @@
     "decision": "nhip-cau-cua-hai-ly",
     "finale": "xep-tranh-do-con",
     "reward": "phieu-viet-bai-7",
-    "unlock": "mo-bai-8"
+    "next": "mo-bai-8"
   },
   "texts": {
     "cay-xau-ho": {
@@ -767,7 +767,7 @@
     {
       "id": "mo-bai-8",
       "title": "Tiếng gầm ở sân bóng",
-      "kind": "unlock",
+      "kind": "next",
       "trigger": "auto",
       "text": "Từ sân bóng giữa rừng vọng lại một tiếng “Grừ!” rõ to, rồi im bặt. Hổ Sọc đang một mình sút bóng vào gôn, vì chưa đội nào chịu nhận cậu vào chơi."
     }

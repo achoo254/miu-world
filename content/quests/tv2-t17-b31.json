@@ -14,7 +14,7 @@
     "play": "Tìm đồ, nói, đọc truyện, trắc nghiệm, chọn nhiều đáp án, điền từ, xếp tranh, kể chuyện, lựa chọn trong hội thoại, phiếu viết",
     "learn": "Tiếng Việt 2 Bài 31: đọc hiểu \"Ánh sáng của yêu thương\", từ ngữ trong bài, tình cảm với mẹ, kể chuyện theo tranh, viết chữ hoa P",
     "reward": "80 XP, 15 xu, Đọc hiểu +2, Kể chuyện +2, Từ ngữ +1",
-    "unlock": "Bài 32 \"Chơi chong chóng\""
+    "next": "Bài 32 \"Chơi chong chóng\""
   },
   "phases": {
     "hook": "gap-ca-bong",
@@ -24,7 +24,7 @@
     "decision": "thap-sang-hang",
     "finale": "xep-tranh-e-di-xon",
     "reward": "qua-cua-me-bong",
-    "unlock": "mo-bai-32"
+    "next": "mo-bai-32"
   },
   "texts": {
     "anh-sang-cua-yeu-thuong": {
@@ -713,7 +713,7 @@
     {
       "id": "mo-bai-32",
       "title": "Chong chóng trên đồng gió",
-      "kind": "unlock",
+      "kind": "next",
       "trigger": "auto",
       "text": "Sáng hôm sau, gió từ cánh đồng thổi về mang theo tiếng cãi nhau chí chóe. Thỏ Tí và em gái đang giành nhau một chiếc chong chóng, chưa ai chịu nhường ai."
     }

@@ -14,7 +14,7 @@
     "play": "Tìm que tính, tách số để gom đủ chục, điền bảng cộng, thả cá cho mèo, giải toán, đưa ong về đúng bông hoa",
     "learn": "Toán 2 Bài 7: phép cộng (qua 10) trong phạm vi 20",
     "reward": "90 XP, 15 xu, Phép cộng +2, Bài toán có lời văn +1",
-    "unlock": "Bài 8 \"Bảng cộng (qua 10)\""
+    "next": "Bài 8 \"Bảng cộng (qua 10)\""
   },
   "phases": {
     "hook": "ong-dem-lo-hoa",
@@ -24,7 +24,7 @@
     "decision": "bo-mo-goi-sang",
     "finale": "ong-ve-dung-hoa",
     "reward": "huy-hieu-gom-chuc",
-    "unlock": "qua-bau-roi-lop-bop"
+    "next": "qua-bau-roi-lop-bop"
   },
   "texts": {},
   "places": {
@@ -2697,7 +2697,7 @@
     {
       "id": "qua-bau-roi-lop-bop",
       "title": "Quả bầu rơi lộp bộp",
-      "kind": "unlock",
+      "kind": "next",
       "trigger": "auto",
       "text": "Lộp bộp! Ở giàn bầu bên kia vườn, mấy quả bầu khắc bảng cộng rụng xuống đất. Sâu Xanh bò ra, mặt mếu máo: \"Bảng cộng của tớ lăn mất rồi!\""
     }

@@ -14,7 +14,7 @@
     "play": "Nhặt đồ, đọc thời khoá biểu, xếp môn học vào giỏ, chọn nhiều đáp án, chọn thứ trên lịch, điền chữ, xếp thẻ từ thành câu, xem đồng hồ, nói và kể, phiếu viết",
     "learn": "Tiếng Việt 2 Bài 10: đọc thời khoá biểu, hỏi – đáp về môn học, chính tả c/k, ch/tr, v/d, từ chỉ sự vật và hoạt động, câu nêu hoạt động, kể hoạt động theo giờ, thời gian biểu",
     "reward": "90 XP, 15 xu, Đọc hiểu +2, Chính tả +2, Từ ngữ +1, Câu +1",
-    "unlock": "Bài 11 \"Cái trống trường em\""
+    "next": "Bài 11 \"Cái trống trường em\""
   },
   "phases": {
     "hook": "tho-ti-hot-hoang",
@@ -24,7 +24,7 @@
     "decision": "hua-voi-voi-bao",
     "finale": "dong-ho-gio-ra-choi",
     "reward": "phieu-viet-bai-10",
-    "unlock": "mo-bai-11"
+    "next": "mo-bai-11"
   },
   "texts": {
     "thoi-khoa-bieu": {
@@ -1044,7 +1044,7 @@
     {
       "id": "mo-bai-11",
       "title": "Tiếng trống bên suối",
-      "kind": "unlock",
+      "kind": "next",
       "trigger": "auto",
       "text": "Từ chòi trống bên suối vọng lại tiếng Chó Lu gọi í ới: “Dậy đi trống ơi, hết hè rồi!”. Chiếc trống trường ngủ say suốt mùa hè, liệu hôm nay có chịu cất tiếng không?"
     }

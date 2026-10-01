@@ -14,7 +14,7 @@
     "play": "Gom đồ chơi, đặt tính, đi băng chuyền số, giải toán, chọn nhãn vở, xếp số ngăn tủ, tìm chữ số, chơi Cặp tấm thẻ anh em",
     "learn": "Toán 2 Bài 24: luyện tập chung cộng, trừ có nhớ trong phạm vi 100",
     "reward": "80 XP, 15 xu, Phép trừ +2, Logic +1",
-    "unlock": "Bài 25 \"Điểm, đoạn thẳng, đường thẳng, đường cong, ba điểm thẳng hàng\""
+    "next": "Bài 25 \"Điểm, đoạn thẳng, đường thẳng, đường cong, ba điểm thẳng hàng\""
   },
   "phases": {
     "hook": "meo-mun-thu-dai",
@@ -24,7 +24,7 @@
     "decision": "meo-mun-chon-ngan",
     "finale": "cap-the-anh-em",
     "reward": "tu-kinh-lung-linh",
-    "unlock": "chom-sao-cua-huou"
+    "next": "chom-sao-cua-huou"
   },
   "texts": {},
   "places": {
@@ -891,7 +891,7 @@
     {
       "id": "chom-sao-cua-huou",
       "title": "Những chấm sao trên giá vẽ",
-      "kind": "unlock",
+      "kind": "next",
       "trigger": "auto",
       "text": "Từ phòng mĩ thuật, Hươu Cao thò cái cổ dài qua cửa sổ: \"Tớ chấm đầy sao lên giá vẽ lớn rồi mà chưa nối được thành chòm sao nào cả!\""
     }

@@ -14,7 +14,7 @@
     "play": "Tìm đồ, nói, đọc bài, chọn nhiều đáp án, ghép tranh với đoạn, xếp thứ tự, điền từ, trắc nghiệm, lựa chọn trong hội thoại, phiếu viết",
     "learn": "Tiếng Việt 2 Bài 1: đọc hiểu \"Tôi là học sinh lớp 2\", từ ngữ trong bài, lời chào, kể về kì nghỉ hè, viết chữ hoa A",
     "reward": "80 XP, 15 xu, Đọc hiểu +2, Từ ngữ +1",
-    "unlock": "Bài 2 \"Ngày hôm qua đâu rồi?\""
+    "next": "Bài 2 \"Ngày hôm qua đâu rồi?\""
   },
   "phases": {
     "hook": "gap-sau-xanh",
@@ -24,7 +24,7 @@
     "decision": "chip-rut-re",
     "finale": "tap-noi-loi-chao",
     "reward": "phan-thuong",
-    "unlock": "mo-bai-2"
+    "next": "mo-bai-2"
   },
   "texts": {
     "toi-la-hoc-sinh-lop-2": {
@@ -713,7 +713,7 @@
     {
       "id": "mo-bai-2",
       "title": "Tờ lịch bay đi",
-      "kind": "unlock",
+      "kind": "next",
       "trigger": "auto",
       "text": "Vù… một cơn gió thổi tờ lịch lá bay về phía gốc cây của Voi Bảo. Voi Bảo nhớ mọi thứ trên đời, vậy mà hôm nay lại hỏi: ngày hôm qua đâu rồi?"
     }

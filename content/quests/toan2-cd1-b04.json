@@ -14,7 +14,7 @@
     "play": "Tìm bóng lăn, điền bài giải, đố tuổi, chọn bút ngắn nhất, điền số đo, đua thuyền giấy",
     "learn": "Toán 2 Bài 4: hơn, kém nhau bao nhiêu (lấy số lớn trừ số bé)",
     "reward": "70 XP, 12 xu, Hơn kém +2, Bài toán có lời văn +1",
-    "unlock": "Bài 5 \"Ôn tập phép cộng, phép trừ (không nhớ) trong phạm vi 100\""
+    "next": "Bài 5 \"Ôn tập phép cộng, phép trừ (không nhớ) trong phạm vi 100\""
   },
   "phases": {
     "hook": "ket-qua-chua-ro",
@@ -24,7 +24,7 @@
     "decision": "bang-giay-vach-dich",
     "finale": "dua-thuyen-giay",
     "reward": "huy-chuong-hon-kem",
-    "unlock": "tui-thu-nham-lop"
+    "next": "tui-thu-nham-lop"
   },
   "texts": {},
   "places": {
@@ -874,7 +874,7 @@
     {
       "id": "tui-thu-nham-lop",
       "title": "Túi thư ở cổng trường",
-      "kind": "unlock",
+      "kind": "next",
       "trigger": "auto",
       "text": "Ở cổng trường, Chó Mực ôm túi thư rối rít: phong bì nào cũng ghi một phép tính thay cho tên lớp, thư sắp đưa nhầm hết rồi!"
     }

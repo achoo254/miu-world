@@ -14,7 +14,7 @@ export type RewardSpec = z.infer<typeof RewardSpec>;
 const Text = z.string().trim().min(1);
 
 /** The eight beats every quest walks through (Master Plan §11), in story order. */
-export const QUEST_PHASES = ['hook', 'explore', 'learn', 'challenge', 'decision', 'finale', 'reward', 'unlock'] as const;
+export const QUEST_PHASES = ['hook', 'explore', 'learn', 'challenge', 'decision', 'finale', 'reward', 'next'] as const;
 
 /** Where the step happens on the map: an entity id the player interacts with or walks into. */
 const StepTrigger = z.enum(['interact', 'enter-zone', 'auto']);
@@ -159,7 +159,8 @@ const connectShape = {
 };
 
 const rewardShape = { ...stepBase, kind: z.literal('reward'), text: Text };
-const unlockShape = { ...stepBase, kind: z.literal('unlock'), text: Text };
+/** The story beat after the reward: where the adventure goes next. Nothing is locked: every map and quest is open. */
+const nextShape = { ...stepBase, kind: z.literal('next'), text: Text };
 
 /** Talk about something (recorded on the device only, never sent); done once the child moves on. */
 const speakShape = {
@@ -201,7 +202,7 @@ export const QuestStepPublic = z.discriminatedUnion('kind', [
     z.object(connectShape),
   ]),
   z.object(rewardShape),
-  z.object(unlockShape),
+  z.object(nextShape),
   z.object(speakShape),
   z.object(worksheetShape),
 ]);
@@ -232,7 +233,7 @@ export const QuestStep = z.discriminatedUnion('kind', [
     }),
   ]),
   z.strictObject(rewardShape),
-  z.strictObject(unlockShape),
+  z.strictObject(nextShape),
   z.strictObject({ ...speakShape, ...curriculumRef }),
   z.strictObject({ ...worksheetShape, ...curriculumRef }),
 ]);
@@ -376,8 +377,6 @@ const StubQuest = z.strictObject({
   title: Text,
   /** Announced but not written yet: players see it as "coming soon" and cannot start it. */
   status: z.literal('stub'),
-  /** A stub can never be finished, so anything it unlocked would stay locked forever. */
-  unlock: z.array(ContentId).max(0, 'a stub quest cannot unlock other quests').default([]),
 });
 
 /** Long passage shared by several steps (a textbook reading); `section` names its inventory section. */
@@ -407,7 +406,7 @@ const questFields = {
     play: Text,
     learn: Text,
     reward: Text,
-    unlock: Text,
+    next: Text,
   }),
   /** Step id where each phase begins; phases appear in story order (a step may open several). */
   phases: z.strictObject({
@@ -418,7 +417,7 @@ const questFields = {
     decision: ContentId,
     finale: ContentId,
     reward: ContentId,
-    unlock: ContentId,
+    next: ContentId,
   }),
   /**
    * Textbook lesson the quest plays (`tv2-t1-b01`): the quest list shows its title and printed pages,
@@ -433,11 +432,6 @@ const questFields = {
   places: z.record(ContentId, Text).default({}),
   steps: z.array(QuestStep).min(1),
   reward: RewardSpec,
-  /**
-   * Quest ids this quest unlocks once finished. A quest opens when ANY quest listing it is finished;
-   * a quest no one lists is open from the start. Textbook quests never lock: homework comes in any order.
-   */
-  unlock: z.array(ContentId).default([]),
 };
 
 /**
@@ -469,7 +463,6 @@ function wayfindingIssues(steps: readonly QuestStep[], places: Readonly<Record<s
 function questIssues(q: {
   id: string;
   lesson?: string | undefined;
-  unlock: string[];
   phases: Record<(typeof QUEST_PHASES)[number], string>;
   steps: QuestStep[];
   texts: Record<string, QuestText>;
@@ -494,8 +487,6 @@ function questIssues(q: {
   }
   if (isTextbookQuest(q.id)) {
     if (!q.lesson) issues.push('a textbook quest names its lesson ("lesson"), shown with its pages in the quest list');
-    // A teacher sets page 25 today and page 12 tomorrow: every lesson is open, none unlocks another.
-    if (q.unlock.length > 0) issues.push('a textbook quest unlocks nothing: lessons open in any order');
     for (const step of q.steps) if ('support' in step && !step.feedback) issues.push(`step ${step.id}: a textbook quest step needs feedback lines`);
     issues.push(...wayfindingIssues(q.steps, q.places));
     const interactive = new Set(q.steps.map(mechanicOf).filter((m) => m !== null && INTERACTIVE_MECHANICS.has(m)));

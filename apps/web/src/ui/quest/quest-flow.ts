@@ -48,7 +48,7 @@ export function worldState(quest: ActiveQuestView, progress: QuestProgressDto): 
   for (const step of quest.steps) {
     if (step.kind === 'search') for (const t of progress.found[step.id] ?? []) state[t] = 'found';
     const target = stepTarget(step);
-    if ((step.kind === 'reward' || step.kind === 'unlock') && target && done.has(step.id)) state[target] = 'open';
+    if ((step.kind === 'reward' || step.kind === 'next') && target && done.has(step.id)) state[target] = 'open';
   }
   return state;
 }

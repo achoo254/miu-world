@@ -14,7 +14,7 @@
     "play": "Tìm đồ, nói, đọc truyện, trắc nghiệm, chọn nhiều đáp án, đóng vai, điền từ, điền vần, xếp nhóm, điền dấu câu, lựa chọn trong hội thoại, phiếu viết",
     "learn": "Tiếng Việt 2 Bài 28: đọc hiểu \"Trò chơi của bố\", lời nói lịch sự, l/n, ao/au, từ chỉ tình cảm gia đình, từ chỉ tính cách, dấu chấm, dấu chấm hỏi, dấu chấm than, đọc đoạn văn về mẹ",
     "reward": "85 XP, 15 xu, Đọc hiểu +2, Từ ngữ +1, Chính tả +1, Dấu câu +1",
-    "unlock": "Bài 29 \"Cánh cửa nhớ bà\""
+    "next": "Bài 29 \"Cánh cửa nhớ bà\""
   },
   "phases": {
     "hook": "su-tu-con-doi",
@@ -24,7 +24,7 @@
     "decision": "bo-con-lam-lanh",
     "finale": "chia-se-bai-doc",
     "reward": "qua-cua-su-tu",
-    "unlock": "mo-bai-29"
+    "next": "mo-bai-29"
   },
   "texts": {
     "tro-choi-cua-bo": {
@@ -1003,7 +1003,7 @@
     {
       "id": "mo-bai-29",
       "title": "Vết khắc trên cánh cửa",
-      "kind": "unlock",
+      "kind": "next",
       "trigger": "auto",
       "text": "Bên căn chòi cũ ven bờ, Cua Kềnh bò ngang bò dọc tìm vết khắc chiều cao bà đã đánh dấu năm nào. Cánh cửa cũ ấy còn giữ bao nhiêu kỉ niệm về bà nhỉ?"
     }

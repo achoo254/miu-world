@@ -14,7 +14,7 @@
     "play": "Tìm lóng tre, điền bảng trừ, tính nhẩm, chọn đèn ông sao, điền số trên phong bì, so sánh, giải bài toán chia bóng",
     "learn": "Toán 2 Bài 12: bảng trừ (qua 10)",
     "reward": "80 XP, 15 xu, Phép trừ +2, So sánh số +1",
-    "unlock": "Bài 13 \"Bài toán về nhiều hơn, ít hơn một số đơn vị\""
+    "next": "Bài 13 \"Bài toán về nhiều hơn, ít hơn một số đơn vị\""
   },
   "phases": {
     "hook": "gau-truc-lan-mot-vong",
@@ -24,7 +24,7 @@
     "decision": "hoc-thuoc-hay-tach",
     "finale": "chia-bong-tren-co",
     "reward": "huy-hieu-long-tre",
-    "unlock": "luong-ca-rot"
+    "next": "luong-ca-rot"
   },
   "texts": {},
   "places": {
@@ -1176,7 +1176,7 @@
     {
       "id": "luong-ca-rot",
       "title": "Cuộc thi ở luống cà rốt",
-      "kind": "unlock",
+      "kind": "next",
       "trigger": "auto",
       "text": "Phía luống cà rốt vang lên tiếng gầm \"Gừ… ừ\" rồi tiếng cười khúc khích: Hổ Vằn và Thỏ đang cãi nhau xem ai trồng được nhiều cà rốt hơn."
     }

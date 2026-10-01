@@ -14,7 +14,7 @@
     "play": "Tìm thùng hàng, điền kết quả kg và l, đố cầu thăng bằng, chọn túi gạo, đố số lít xăng",
     "learn": "Toán 2 Bài 18: luyện tập chung về ki-lô-gam, lít",
     "reward": "80 XP, 15 xu, Khối lượng +1, Dung tích +1, Phép cộng +1",
-    "unlock": "Bài 19 \"Phép cộng (có nhớ) số có hai chữ số với số có một chữ số\""
+    "next": "Bài 19 \"Phép cộng (có nhớ) số có hai chữ số với số có một chữ số\""
   },
   "phases": {
     "hook": "bong-dong-thung-qua",
@@ -24,7 +24,7 @@
     "decision": "tui-gao-cho-ba-noi",
     "finale": "xang-cho-xe-cho-hang",
     "reward": "khan-len-tuyet-trang",
-    "unlock": "linh-kien-lach-cach"
+    "next": "linh-kien-lach-cach"
   },
   "texts": {},
   "places": {
@@ -698,7 +698,7 @@
     {
       "id": "linh-kien-lach-cach",
       "title": "Tiếng lách cách ở xưởng",
-      "kind": "unlock",
+      "kind": "next",
       "trigger": "auto",
       "text": "Ở Xưởng đồ chơi vang lên tiếng lách cách: Lợn Rừng Đốm làm đổ cả hộp linh kiện ra bàn lắp ráp, đang cuống cuồng đếm theo chục và rời."
     }

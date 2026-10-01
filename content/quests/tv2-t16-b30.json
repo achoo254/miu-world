@@ -14,7 +14,7 @@
     "play": "Tìm đồ, nói, đọc thơ, trắc nghiệm, chọn nhiều đáp án, điền chữ, xếp từ vào nhóm, ghép câu trả lời với câu hỏi, lựa chọn trong hội thoại, phiếu viết",
     "learn": "Tiếng Việt 2 Bài 30: đọc hiểu bài thơ \"Thương ông\", từ chỉ dáng vẻ, chính tả ch/tr và ac/at, từ chỉ sự vật, hoạt động, câu nêu hoạt động, kể việc làm cùng người thân",
     "reward": "80 XP, 15 xu, Đọc hiểu +2, Chính tả +1, Từ ngữ +1, Câu +1",
-    "unlock": "Bài 31 \"Ánh sáng của yêu thương\""
+    "next": "Bài 31 \"Ánh sáng của yêu thương\""
   },
   "phases": {
     "hook": "gap-cho-muc",
@@ -24,7 +24,7 @@
     "decision": "buoc-len-them",
     "finale": "ke-viec-cung-nguoi-than",
     "reward": "qua-cua-ong-ven",
-    "unlock": "mo-bai-31"
+    "next": "mo-bai-31"
   },
   "texts": {
     "thuong-ong": {
@@ -1074,7 +1074,7 @@
     {
       "id": "mo-bai-31",
       "title": "Đom đóm bay về hồ",
-      "kind": "unlock",
+      "kind": "next",
       "trigger": "auto",
       "text": "Hoàng hôn buông xuống hồ nước cuối rừng. Một đàn đom đóm bay ngang, rủ nhau đi soi đường cho Cá Bống: mẹ của Bống ốm rồi, cần tìm thuốc gấp."
     }

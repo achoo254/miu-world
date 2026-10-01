@@ -1,7 +1,7 @@
 // The whole MVP loop through the real UI on the reference iPad viewport with touch (Master Plan §13,
 // §16): Google sign-in (local fake) → PIN → consent → profile → Character Creator (change the hat) →
 // Home → Khu rừng bí mật ch1 → parrot → three clues → the letter → three Math challenges (no answer
-// layer) → the ancient tree → 100 XP, Level Up 1 → 2, chapter 2 unlocked → the Lá thần in the Backpack.
+// layer) → the ancient tree → 100 XP, Level Up 1 → 2 → the Lá thần in the Backpack.
 // Along the way: nothing leaves the origin, CSP is on every page, and no API response except the
 // support endpoint carries answer text.
 import { execFileSync } from 'node:child_process';

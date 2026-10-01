@@ -14,7 +14,7 @@
     "play": "Tìm đồ, nói, đọc truyện, phân loại lời nói, trắc nghiệm, điền từ, chọn nhiều đáp án, lựa chọn trong hội thoại, xếp tranh, kể chuyện, phiếu viết",
     "learn": "Tiếng Việt 2 Bài 5: đọc hiểu \"Em có xinh không?\", từ ngữ chỉ hoạt động, nói lời của nhân vật, kể chuyện theo tranh, viết chữ hoa B",
     "reward": "80 XP, 15 xu, Đọc hiểu +2, Kể chuyện +2, Từ ngữ +1",
-    "unlock": "Bài 6 \"Một giờ học\""
+    "next": "Bài 6 \"Một giờ học\""
   },
   "phases": {
     "hook": "gap-voi-ut",
@@ -24,7 +24,7 @@
     "decision": "khen-voi-ut",
     "finale": "xep-tranh-mat-nuoc",
     "reward": "qua-cua-hai-anh-em",
-    "unlock": "mo-bai-6"
+    "next": "mo-bai-6"
   },
   "texts": {
     "em-co-xinh-khong": {
@@ -696,7 +696,7 @@
     {
       "id": "mo-bai-6",
       "title": "Lớp học dưới tán cây",
-      "kind": "unlock",
+      "kind": "next",
       "trigger": "auto",
       "text": "Dưới tán cây lớn, lớp học của rừng sắp vào giờ. Mèo Nghệ ngồi im thin thít ở bàn cuối, cứ nghĩ tới chuyện phải nói trước lớp là râu lại run run."
     }

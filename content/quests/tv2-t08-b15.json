@@ -14,7 +14,7 @@
     "play": "Tìm đồ, nói về bìa sách, đọc bài, nối thông tin, xếp thứ tự, chọn nhiều đáp án, trắc nghiệm, phân nhóm từ, lựa chọn trong hội thoại, xếp tranh, kể chuyện, phiếu viết",
     "learn": "Tiếng Việt 2 Bài 15: đọc hiểu \"Cuốn sách của em\", tên sách, tác giả, nhà xuất bản, mục lục, từ chỉ người, vật, hoạt động, viết chữ hoa G, kể chuyện \"Hoạ mi, vẹt và quạ\"",
     "reward": "80 XP, 15 xu, Đọc hiểu +2, Từ ngữ +1, Kể chuyện +1",
-    "unlock": "Bài 16 \"Khi trang sách mở ra\""
+    "next": "Bài 16 \"Khi trang sách mở ra\""
   },
   "phases": {
     "hook": "ke-sach-do-ram",
@@ -24,7 +24,7 @@
     "decision": "chat-cua-vet",
     "finale": "xep-tranh-hoa-mi",
     "reward": "phieu-viet-bai-15",
-    "unlock": "mo-bai-16"
+    "next": "mo-bai-16"
   },
   "texts": {
     "cuon-sach-cua-em": {
@@ -978,7 +978,7 @@
     {
       "id": "mo-bai-16",
       "title": "Trang sách hoá thành cảnh thật",
-      "kind": "unlock",
+      "kind": "next",
       "trigger": "auto",
       "text": "Trên tảng đá phẳng ven rừng, Nai Mơ vừa lật một trang sách thì lá cây, cánh chim, giọt mưa trong sách bỗng bay ra lượn quanh. Cảnh gì mà kì lạ thế này?"
     }

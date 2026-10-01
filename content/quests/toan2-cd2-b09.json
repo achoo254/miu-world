@@ -14,7 +14,7 @@
     "play": "Tìm bê con trốn, điền tóm tắt và bài giải, kéo thuyền lá vào bến, đố số bạn trên xe",
     "learn": "Toán 2 Bài 9: bài toán về thêm, bớt một số đơn vị",
     "reward": "75 XP, 12 xu, Bài toán có lời văn +2, Phép trừ +1",
-    "unlock": "Bài 10 \"Luyện tập chung\""
+    "next": "Bài 10 \"Luyện tập chung\""
   },
   "phases": {
     "hook": "bo-mo-dem-hoa-mat",
@@ -24,7 +24,7 @@
     "decision": "be-bong-ru-di-choi",
     "finale": "xe-cho-ban-ve-truong",
     "reward": "huy-hieu-them-bot",
-    "unlock": "dap-da-cua-hai-ly"
+    "next": "dap-da-cua-hai-ly"
   },
   "texts": {},
   "places": {
@@ -817,7 +817,7 @@
     {
       "id": "dap-da-cua-hai-ly",
       "title": "Con đập đá ở ao cá",
-      "kind": "unlock",
+      "kind": "next",
       "trigger": "auto",
       "text": "Ở ao cá vườn trường, Hải Ly Cần đang xếp một con đập nhỏ, mỗi viên đá khắc một phép tính. Hải Ly ngoắc đuôi gọi: \"Thiếu người tính giúp tớ rồi!\""
     }

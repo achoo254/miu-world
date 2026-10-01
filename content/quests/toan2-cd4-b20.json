@@ -14,7 +14,7 @@
     "play": "Tìm toa tàu, điền kết quả cộng có nhớ, chọn tàu đúng, nối hàng với máy bay, xếp tàu ngầm, chọn đường cho kiến, chọn câu đúng, đố que tính",
     "learn": "Toán 2 Bài 20: phép cộng (có nhớ) số có hai chữ số với số có hai chữ số",
     "reward": "90 XP, 15 xu, Phép cộng +2, Logic +1",
-    "unlock": "Bài 21 \"Luyện tập chung\""
+    "next": "Bài 21 \"Luyện tập chung\""
   },
   "phases": {
     "hook": "toa-nao-cung-doi-di-truoc",
@@ -24,7 +24,7 @@
     "decision": "meo-mun-goi-tau-ngam",
     "finale": "que-tinh-dat-sai",
     "reward": "coi-tau-truong-ga",
-    "unlock": "hop-qua-bi-mat"
+    "next": "hop-qua-bi-mat"
   },
   "texts": {},
   "places": {
@@ -1378,7 +1378,7 @@
     {
       "id": "hop-qua-bi-mat",
       "title": "Hộp quà khóa bằng phép tính",
-      "kind": "unlock",
+      "kind": "next",
       "trigger": "auto",
       "text": "Cáo Lém thò đầu ra từ quầy trao giải: \"Tớ làm xong một hộp quà bí mật, nhưng ổ khóa chỉ mở khi giải đúng phép tính. Ai dám thử nào?\""
     }

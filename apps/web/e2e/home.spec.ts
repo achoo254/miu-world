@@ -1,4 +1,4 @@
-// Home (M1.1) → region (M1.4/M2.1) → chapter 1 → /play with the HUD (M3.2); chapter 2 stays locked.
+// Home (M1.1) → region (M1.4/M2.1) → chapter 1 → /play with the HUD (M3.2); every chapter is open.
 import { mkdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { expect, test } from '@playwright/test';
@@ -15,7 +15,7 @@ test('Home shows the child and the island, the forest lists its chapters, and ch
   await expect(page.locator('.world-island-image')).toBeVisible();
   // The island image is shipped with the build and actually loads.
   expect(await page.locator('.world-island-image').evaluate((img: HTMLImageElement) => img.naturalWidth)).toBeGreaterThan(0);
-  // A locked region only names itself (its card on a wide island); it does not open.
+  // A region whose map is not built yet only names itself (its card on a wide island); it does not open.
   await expect(page.locator('[data-id="home-region-lau-dai"]')).toHaveText(/Lâu đài\s*Sắp có/);
   await page.locator('[data-id="home-region-lau-dai"]').click();
   await expect(page).toHaveURL(/\/home$/);

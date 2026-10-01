@@ -14,7 +14,7 @@
     "play": "Tìm đồ làm vườn, điền bài giải, chọn dấu phép tính, xếp thùng hàng lên tàu, chọn nhận định đúng, giải đố",
     "learn": "Toán 2 Bài 13: bài toán về nhiều hơn, ít hơn một số đơn vị",
     "reward": "70 XP, 12 xu, Bài toán có lời văn +2, Phép cộng +1",
-    "unlock": "Bài 14 \"Luyện tập chung\""
+    "next": "Bài 14 \"Luyện tập chung\""
   },
   "phases": {
     "hook": "ho-gam-tho-cuoi",
@@ -24,7 +24,7 @@
     "decision": "ho-muon-it-hon",
     "finale": "cong-chieng-cua-ho",
     "reward": "huy-hieu-ca-rot",
-    "unlock": "cua-nha-kinh"
+    "next": "cua-nha-kinh"
   },
   "texts": {},
   "places": {
@@ -700,7 +700,7 @@
     {
       "id": "cua-nha-kinh",
       "title": "Cửa nhà kính còn khóa",
-      "kind": "unlock",
+      "kind": "next",
       "trigger": "auto",
       "text": "Vẹt Xanh đậu trên nóc nhà kính, rung chùm chìa khóa leng keng: \"Muốn vào nhà kính thì phải qua hết câu đố của tớ nhé!\""
     }

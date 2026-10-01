@@ -14,7 +14,7 @@
     "play": "Nhặt phong bì, tính nhẩm, đặt tính, xếp mây, chọn câu đúng, chia ô dù, tìm chữ số nhòe, đố bưu thiếp",
     "learn": "Toán 2 Bài 5: ôn tập phép cộng, phép trừ (không nhớ) trong phạm vi 100",
     "reward": "120 XP, 18 xu, Phép cộng +2, Phép trừ +2, Bài toán có lời văn +1",
-    "unlock": "Bài 6 \"Luyện tập chung\""
+    "next": "Bài 6 \"Luyện tập chung\""
   },
   "phases": {
     "hook": "thu-dua-nham",
@@ -24,7 +24,7 @@
     "decision": "bong-ghe-tham",
     "finale": "tem-tam-giac",
     "reward": "huy-hieu-buu-ta",
-    "unlock": "hoi-cho-so"
+    "next": "hoi-cho-so"
   },
   "texts": {},
   "places": {
@@ -1434,7 +1434,7 @@
     {
       "id": "hoi-cho-so",
       "title": "Lời mời đi hội chợ",
-      "kind": "unlock",
+      "kind": "next",
       "trigger": "auto",
       "text": "Lá thư cuối cùng ghi: \"Mời {name} tới góc trò chơi dân gian, hội chợ số có năm gian đố đang chờ! Kí tên: Cáo Lém (lần này không giấu phấn đâu)\"."
     }

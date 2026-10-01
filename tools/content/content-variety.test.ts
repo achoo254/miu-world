@@ -14,8 +14,8 @@ function quest(id: string, tag: string, extra: Record<string, unknown> = {}) {
     status: 'active',
     summary: `Câu chuyện riêng của ${tag}`,
     review: 'teacher-pending',
-    sevenQuestions: { who: 'Vẹt', where: 'Rừng', goal: 'Giúp', play: 'Tìm', learn: 'Cộng', reward: 'XP', unlock: 'Tiếp' },
-    phases: { hook: 'hi', explore: 'find', learn: 'find', challenge: 'add', decision: 'add', finale: 'add', reward: 'add', unlock: 'add' },
+    sevenQuestions: { who: 'Vẹt', where: 'Rừng', goal: 'Giúp', play: 'Tìm', learn: 'Cộng', reward: 'XP', next: 'Tiếp' },
+    phases: { hook: 'hi', explore: 'find', learn: 'find', challenge: 'add', decision: 'add', finale: 'add', reward: 'add', next: 'add' },
     steps: [
       { id: 'hi', title: 'Chào', kind: 'dialogue', trigger: 'auto', lines: [{ speaker: 'Vẹt', text: `Xin chào, hôm nay ${tag} thật vui!` }] },
       { id: 'find', title: 'Tìm', kind: 'search', targets: ['box'] },
@@ -59,7 +59,7 @@ describe('varietyIssues', () => {
         status: 'draft',
         lesson: 'toan2-t1-b01',
         steps,
-        phases: { hook: first?.id, explore: first?.id, learn: first?.id, challenge: second?.id, decision: second?.id, finale: second?.id, reward: second?.id, unlock: second?.id },
+        phases: { hook: first?.id, explore: first?.id, learn: first?.id, challenge: second?.id, decision: second?.id, finale: second?.id, reward: second?.id, next: second?.id },
       });
     };
     const a = textbook('toan2-cd1-b01', 'buổi sáng', 'sort-first');

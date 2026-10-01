@@ -14,7 +14,7 @@
     "play": "Tìm đầu mối, nói, đọc thơ, ghép mảnh thơ, chọn nhiều đáp án, chọn đáp án, ghép câu, chọn vần, đọc thơ cho em, phiếu viết",
     "learn": "Tiếng Việt 2 Bài 26: đọc hiểu \"Em mang về yêu thương\", từ tả em bé, họ nội họ ngoại, iên/yên/uyên, d/r, gi/r, ai/ay, ghép câu, nghe – viết, viết đoạn",
     "reward": "85 XP, 15 xu, Đọc hiểu +2, Chính tả +2, Từ ngữ +1, Câu +1",
-    "unlock": "Bài 27 \"Mẹ\""
+    "next": "Bài 27 \"Mẹ\""
   },
   "phases": {
     "hook": "gap-ga-con-chip",
@@ -24,7 +24,7 @@
     "decision": "qua-trung-nut",
     "finale": "em-be-mat-den-lay",
     "reward": "phieu-viet-bai-26",
-    "unlock": "mo-bai-27"
+    "next": "mo-bai-27"
   },
   "texts": {
     "em-mang-ve-yeu-thuong": {
@@ -1154,7 +1154,7 @@
     {
       "id": "mo-bai-27",
       "title": "Tiếng ngáp dưới trăng",
-      "kind": "unlock",
+      "kind": "next",
       "trigger": "auto",
       "text": "Đêm xuống, từ chiếc võng lá dưới trăng vọng lại một tiếng \"Oáp…\" dài thật dài. Trời nóng quá, Koala Na không ngủ được, đang nhớ bàn tay mẹ quạt."
     }

@@ -14,7 +14,7 @@
     "play": "Tìm đồ trong vườn, hát khởi động, đọc thơ, chọn nhiều đáp án, xếp thẻ vào giỏ, chọn một đáp án, xếp dòng thơ, ghép câu ngạc nhiên, xếp thẻ thành câu, xếp tranh, nói và kể, phiếu viết",
     "learn": "Tiếng Việt 2 Bài 9: đọc hiểu và học thuộc bài thơ “Cô giáo lớp em”, câu thể hiện sự ngạc nhiên, câu nói tình cảm với thầy cô, kể chuyện “Cậu bé ham học”, viết chữ hoa D",
     "reward": "80 XP, 15 xu, Đọc hiểu +2, Câu +1, Kể chuyện +1",
-    "unlock": "Bài 10 \"Thời khoá biểu\""
+    "next": "Bài 10 \"Thời khoá biểu\""
   },
   "phases": {
     "hook": "nai-mo-bi-van",
@@ -24,7 +24,7 @@
     "decision": "tang-tho-the-nao",
     "finale": "nghe-chuyen-vu-due",
     "reward": "phieu-viet-bai-9",
-    "unlock": "mo-bai-10"
+    "next": "mo-bai-10"
   },
   "texts": {
     "co-giao-lop-em": {
@@ -782,7 +782,7 @@
     {
       "id": "mo-bai-10",
       "title": "Ai lục cặp ở gốc sồi?",
-      "kind": "unlock",
+      "kind": "next",
       "trigger": "auto",
       "text": "Ở gốc sồi đầu lối mòn có tiếng lục cặp loạt xoạt. Hình như Thỏ Tí lại mang nhầm sách, mà hôm nay là thứ mấy ấy nhỉ?"
     }

@@ -51,7 +51,8 @@ describe('content:check', () => {
     expect(issues).toContain('quest tv2-t01-b01 is in region khu-rung-bi-mat, which is not an open region');
     expect(issues.filter((i) => i.includes('not an open region')).every((i) => i.includes('khu-rung-bi-mat'))).toBe(true);
     writeFileSync(file, JSON.stringify({ version: 1, regions: [{ ...forest, status: 'level' }] }));
-    expect(checkContent(dir).issues.join('\n')).toMatch(/level goes with status/);
+    // No region is locked behind a level any more: the old "level" status is refused.
+    expect(checkContent(dir).issues.join('\n')).toMatch(/regions\.json/);
   });
 
   it('flags a privacy page that does not match the consent parents accept', () => {
@@ -144,9 +145,10 @@ describe('content:check', () => {
     writeFileSync(path.join(dir, 'quests/forest-ch2.json'), JSON.stringify({ id: 'forest-ch2', region: 'r', chapter: 2, status: 'stub' }));
     expect(checkContent(dir).issues.join('\n')).toMatch(/invalid content file forest-ch2\.json/);
     const ch1 = path.join(dir, 'quests/forest-ch1.json');
-    writeFileSync(ch1, JSON.stringify({ ...(JSON.parse(readFileSync(ch1, 'utf8')) as object), unlock: ['forest-ch9'] }));
+    const quest = JSON.parse(readFileSync(ch1, 'utf8')) as { reward: object };
+    writeFileSync(ch1, JSON.stringify({ ...quest, reward: { ...quest.reward, skillXp: { bay: 1 } } }));
     writeFileSync(path.join(dir, 'quests/forest-ch2.json'), JSON.stringify({ id: 'forest-ch2', region: 'r', chapter: 2, title: 't', status: 'stub' }));
-    expect(checkContent(dir).issues.join('\n')).toMatch(/quest forest-ch1 unlocks unknown quest forest-ch9/);
+    expect(checkContent(dir).issues.join('\n')).toMatch(/quest forest-ch1 rewards unknown skill bay/);
   });
 });
 

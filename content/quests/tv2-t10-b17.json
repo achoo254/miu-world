@@ -14,7 +14,7 @@
     "play": "Lần dấu chân, nói, đọc thơ, chọn nhiều đáp án, điền từ, xếp dòng thơ, xếp tranh, kể chuyện, phiếu viết",
     "learn": "Tiếng Việt 2 Bài 17: đọc hiểu và học thuộc bài thơ \"Gọi bạn\", nói lời an ủi, kể chuyện theo tranh, viết chữ hoa H",
     "reward": "85 XP, 15 xu, Đọc hiểu +2, Kể chuyện +2, Từ ngữ +1",
-    "unlock": "Bài 18 \"Tớ nhớ cậu\""
+    "next": "Bài 18 \"Tớ nhớ cậu\""
   },
   "phases": {
     "hook": "gap-bo-sua-mo",
@@ -24,7 +24,7 @@
     "decision": "bo-buon-ben-suoi",
     "finale": "xep-tranh-goi-ban",
     "reward": "phieu-viet-bai-17",
-    "unlock": "mo-bai-18"
+    "next": "mo-bai-18"
   },
   "texts": {
     "goi-ban": {
@@ -719,7 +719,7 @@
     {
       "id": "mo-bai-18",
       "title": "Lá thư bên bến hồ",
-      "kind": "unlock",
+      "kind": "next",
       "trigger": "auto",
       "text": "Trên đường về, Thỏ Lúa nhặt được một lá thư lạnh buốt như vừa lấy ra từ tủ đá, dán tem hình bông tuyết, đề gửi Gấu Tuyết Bông ở bến thư bên hồ. Ai ở phương xa gửi thư thế nhỉ?"
     }

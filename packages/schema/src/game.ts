@@ -73,14 +73,12 @@ export const GrantedReward = z.object({
   items: Counts,
 });
 
-/** What finishing a quest changed; the client shows it as is (stars, Level Up, Skill Up, unlocks). */
+/** What finishing a quest changed; the client shows it as is (stars, Level Up, Skill Up). */
 export const QuestCompletion = z.object({
   stars: z.number().int().min(1).max(3),
   xpAwarded: z.number().int().min(0),
   levelBefore: z.number().int().min(1),
   levelAfter: z.number().int().min(1),
-  /** Quests that became playable (or visible as coming soon) because this one finished. */
-  unlocked: z.array(ContentId),
   /** Skills this quest rewarded, with their level before and after. */
   skillLevels: z.array(z.object({ skillId: ContentId, levelBefore: z.number().int().min(1), levelAfter: z.number().int().min(1) })),
 });
@@ -167,14 +165,14 @@ export const QuestView = z.discriminatedUnion('status', [
     ),
     steps: z.array(QuestStepPublic),
     reward: RewardSpec,
-    unlock: z.array(ContentId),
     textbook: QuestTextbook.optional(),
   }),
   z.object({ id: ContentId, region: ContentId, chapter: z.number().int().min(1), title: z.string(), status: z.literal('stub') }),
 ]);
 export type QuestView = z.infer<typeof QuestView>;
 
-export const QuestState = z.enum(['locked', 'open', 'in-progress', 'completed']);
+/** Every quest is open from the start: no quest or map is ever locked behind another. */
+export const QuestState = z.enum(['open', 'in-progress', 'completed']);
 export type QuestState = z.infer<typeof QuestState>;
 
 export const QuestSummary = z.object({ quest: QuestView, state: QuestState, progress: QuestProgressDto });

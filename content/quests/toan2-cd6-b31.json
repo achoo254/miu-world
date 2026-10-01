@@ -14,7 +14,7 @@
     "play": "Tìm đồng hồ mô hình và tờ lịch, quay kim, đọc giờ, kể giờ giấc của em, chạm ngày và thứ trên lịch, điền ngày",
     "learn": "Toán 2 Bài 31: thực hành xem đồng hồ, xem lịch",
     "reward": "90 XP, 15 xu, Xem đồng hồ +2, Xem lịch +1",
-    "unlock": "Bài 32 \"Luyện tập chung\""
+    "next": "Bài 32 \"Luyện tập chung\""
   },
   "phases": {
     "hook": "chuong-chua-ai-truc",
@@ -24,7 +24,7 @@
     "decision": "koala-chay-toi",
     "finale": "lich-truc-thang-sau",
     "reward": "huy-hieu-truc-chuong",
-    "unlock": "sau-xanh-dem-ngay"
+    "next": "sau-xanh-dem-ngay"
   },
   "texts": {},
   "places": {
@@ -1370,7 +1370,7 @@
     {
       "id": "sau-xanh-dem-ngay",
       "title": "Sâu Xanh đếm ngày",
-      "kind": "unlock",
+      "kind": "next",
       "trigger": "auto",
       "text": "Trên ban công tháp, Sâu Xanh nằm ngắm trời, đếm từng ngày chờ hóa bướm: \"Còn bao nhiêu ngày nữa nhỉ? Tớ đếm mãi mà cứ quên mất!\""
     }

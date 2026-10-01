@@ -18,15 +18,14 @@ const quest = activeQuest({
   status: 'active',
   summary: 'Tìm lá thần',
   review: 'teacher-pending',
-  sevenQuestions: { who: 'Miu', where: 'Rừng', goal: 'Chữa cây', play: 'Tìm, đố', learn: 'Phép cộng', reward: 'Lá thần', unlock: 'Chương 2' },
-  phases: { hook: 'meet-vet', explore: 'find-clues', learn: 'find-clues', challenge: 'solve-tree', decision: 'solve-tree', finale: 'solve-tree', reward: 'solve-tree', unlock: 'solve-tree' },
+  sevenQuestions: { who: 'Miu', where: 'Rừng', goal: 'Chữa cây', play: 'Tìm, đố', learn: 'Phép cộng', reward: 'Lá thần', next: 'Chương 2' },
+  phases: { hook: 'meet-vet', explore: 'find-clues', learn: 'find-clues', challenge: 'solve-tree', decision: 'solve-tree', finale: 'solve-tree', reward: 'solve-tree', next: 'solve-tree' },
   steps: [
     { id: 'meet-vet', title: 'Gặp Vẹt', kind: 'dialogue', target: 'parrot-guide', lines: [{ speaker: 'Vẹt', text: 'Chào Miu!' }] },
     { id: 'find-clues', title: 'Tìm manh mối', kind: 'search', targets: ['box', 'letter', 'mushroom'] },
     { id: 'solve-tree', title: 'Giải đố', kind: 'riddle', target: 'ancient-tree', question: '8 + 5 = ?', skill: 'phep-cong', answer: { value: 13 }, support },
   ],
   reward: { xp: 100, coin: 20, skillXp: { 'doc-hieu': 1 }, items: { 'la-than': 1 } },
-  unlock: ['forest-ch2'],
 });
 
 function advance(progress: QuestProgress, stepId: string, input = {}): QuestProgress {

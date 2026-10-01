@@ -14,7 +14,7 @@
     "play": "Tìm kim đồng hồ, đọc giờ trên đồng hồ kim, ghép tranh với đồng hồ điện tử, quay giờ, ghép đồng hồ cùng thời gian",
     "learn": "Toán 2 Bài 29: ngày – giờ (một ngày có 24 giờ, giờ buổi chiều, tối, đêm), giờ – phút (1 giờ = 60 phút, 15 phút, 30 phút)",
     "reward": "90 XP, 15 xu, Xem đồng hồ +2",
-    "unlock": "Bài 30 \"Ngày – tháng\""
+    "next": "Bài 30 \"Ngày – tháng\""
   },
   "phases": {
     "hook": "na-ngu-quen",
@@ -24,7 +24,7 @@
     "decision": "len-day-cot",
     "finale": "thap-ve-dung-gio-hoc-bai",
     "reward": "huy-hieu-giu-gio",
-    "unlock": "to-lich-bi-xe"
+    "next": "to-lich-bi-xe"
   },
   "texts": {},
   "places": {
@@ -897,7 +897,7 @@
     {
       "id": "to-lich-bi-xe",
       "title": "Tờ lịch thiếu ngày",
-      "kind": "unlock",
+      "kind": "next",
       "trigger": "auto",
       "text": "Từ phòng lịch trên tháp, Voi Bảo kêu lên: tờ lịch tháng treo tường bị ai xé mất mấy ngày rồi, thế này thì biết hôm nay ngày bao nhiêu!"
     }

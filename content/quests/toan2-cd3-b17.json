@@ -14,7 +14,7 @@
     "play": "Tìm túi gạo, túi muối, ca 1 lít; phân loại nặng nhẹ; điền số cân, số cốc; đố múc nước; phiếu tập cân và đong ở nhà",
     "learn": "Toán 2 Bài 17: thực hành và trải nghiệm với ki-lô-gam, lít",
     "reward": "90 XP, 15 xu, Khối lượng +1, Dung tích +1, Bài toán có lời văn +1",
-    "unlock": "Bài 18 \"Luyện tập chung\""
+    "next": "Bài 18 \"Luyện tập chung\""
   },
   "phases": {
     "hook": "cong-thuc-che-heo-un",
@@ -24,7 +24,7 @@
     "decision": "chip-hoi-cach-dong",
     "finale": "hai-xo-nuoc-vang-do",
     "reward": "muong-go-dau-bep",
-    "unlock": "kho-lanh-tuyet-roi"
+    "next": "kho-lanh-tuyet-roi"
   },
   "texts": {},
   "places": {
@@ -771,7 +771,7 @@
     {
       "id": "kho-lanh-tuyet-roi",
       "title": "Tuyết rơi trong kho lạnh",
-      "kind": "unlock",
+      "kind": "next",
       "trigger": "auto",
       "text": "Cửa kho lạnh mở ra, hơi lạnh phả mù mịt: Gấu Tuyết Bông đang đóng thùng hàng gửi về phương xa, nhưng nhãn cân nặng thì chưa ghi gì cả!"
     }

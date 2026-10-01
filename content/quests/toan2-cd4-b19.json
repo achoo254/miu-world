@@ -14,7 +14,7 @@
     "play": "Tìm linh kiện, điền kết quả phép cộng có nhớ, chọn chum, nối quả với lá, đố vỏ ốc, xây tháp đá, chọn kết quả, thi cộng hạt dẻ",
     "learn": "Toán 2 Bài 19: phép cộng (có nhớ) số có hai chữ số với số có một chữ số",
     "reward": "80 XP, 15 xu, Phép cộng +2, Bài toán có lời văn +1",
-    "unlock": "Bài 20 \"Phép cộng (có nhớ) số có hai chữ số với số có hai chữ số\""
+    "next": "Bài 20 \"Phép cộng (có nhớ) số có hai chữ số với số có hai chữ số\""
   },
   "phases": {
     "hook": "dom-lam-do-hop",
@@ -24,7 +24,7 @@
     "decision": "chip-boi-dat",
     "finale": "thi-cong-hat-de",
     "reward": "co-le-tho-lap-rap",
-    "unlock": "toa-tau-roi-ray"
+    "next": "toa-tau-roi-ray"
   },
   "texts": {},
   "places": {
@@ -1240,7 +1240,7 @@
     {
       "id": "toa-tau-roi-ray",
       "title": "Toa tàu rời đường ray",
-      "kind": "unlock",
+      "kind": "next",
       "trigger": "auto",
       "text": "Ở góc xưởng, Khỉ Lanh ôm một chồng toa tàu đồ chơi: mỗi toa chở một số hàng, ghép mãi chẳng khớp, toa nào cũng đòi đi trước!"
     }

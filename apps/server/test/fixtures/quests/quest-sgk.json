@@ -14,7 +14,7 @@
     "play": "Phân loại, điền, chọn, đồng hồ, lịch, nối, xếp, nói, viết",
     "learn": "Tiếng Việt, Toán",
     "reward": "XP",
-    "unlock": "Không"
+    "next": "Không"
   },
   "phases": {
     "hook": "hello",
@@ -24,7 +24,7 @@
     "decision": "pick-even",
     "finale": "read-clock",
     "reward": "talk",
-    "unlock": "write"
+    "next": "write"
   },
   "texts": {
     "bai-doc": {
@@ -399,6 +399,5 @@
   ],
   "reward": {
     "xp": 20
-  },
-  "unlock": []
+  }
 }

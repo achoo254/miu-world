@@ -14,7 +14,7 @@
     "play": "Tìm đồ, nói, đọc bài, trắc nghiệm, chọn nhiều đáp án, ghép nội dung với đoạn, điền chữ, xếp thẻ thành câu, lựa chọn trong hội thoại, phiếu viết",
     "learn": "Tiếng Việt 2 Bài 22: đọc hiểu \"Tớ là lê-gô\", từ chỉ đặc điểm, chính tả ng/ngh, ch/tr, uôn/uông, từ gọi tên đồ chơi, sắp xếp từ ngữ thành câu, giới thiệu đồ chơi",
     "reward": "90 XP, 15 xu, Đọc hiểu +2, Chính tả +2, Từ ngữ +1, Câu +1",
-    "unlock": "Bài 23 \"Rồng rắn lên mây\""
+    "next": "Bài 23 \"Rồng rắn lên mây\""
   },
   "phases": {
     "hook": "tieng-oach",
@@ -24,7 +24,7 @@
     "decision": "dan-keo-hay-thao",
     "finale": "gioi-thieu-do-choi",
     "reward": "phieu-viet-bai-22",
-    "unlock": "mo-bai-23"
+    "next": "mo-bai-23"
   },
   "texts": {
     "to-la-le-go": {
@@ -1241,7 +1241,7 @@
     {
       "id": "mo-bai-23",
       "title": "Trò chơi thiếu luật",
-      "kind": "unlock",
+      "kind": "next",
       "trigger": "auto",
       "text": "Trên bãi đất trống giữa rừng, Cáo Tũn rủ cả bọn chơi rồng rắn lên mây, nhưng vừa xếp hàng xong thì Cáo Tũn gãi đầu: ơ… luật chơi thế nào nhỉ?"
     }

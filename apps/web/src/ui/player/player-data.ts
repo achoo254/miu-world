@@ -61,7 +61,7 @@ export function currentQuest(quests: readonly QuestSummary[]): QuestSummary | nu
 }
 
 /**
- * Chapters of a region in order, each with its quests in catalogue (unlock) order. A chapter can hold
+ * Chapters of a region in order, each with its quests in catalogue order. A chapter can hold
  * several quests (textbook content); the forest has one per chapter today.
  */
 export function chapters(quests: readonly QuestSummary[], region: string): Array<{ chapter: number; quests: QuestSummary[] }> {

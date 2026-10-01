@@ -14,7 +14,7 @@
     "play": "Tìm đồ, nói, đọc bài, trắc nghiệm, ghép nửa câu, điền từ, lựa chọn trong hội thoại, xếp tranh, kể chuyện, phiếu viết",
     "learn": "Tiếng Việt 2 Bài 23: đọc hiểu \"Rồng rắn lên mây\", nói tiếp câu \"Nếu… thì…\", câu về trò chơi, chữ hoa M, kể chuyện Búp bê biết khóc",
     "reward": "80 XP, 15 xu, Đọc hiểu +2, Câu +1, Từ ngữ +1, Kể chuyện +1",
-    "unlock": "Bài 24 \"Nặn đồ chơi\""
+    "next": "Bài 24 \"Nặn đồ chơi\""
   },
   "phases": {
     "hook": "gap-cao-lem",
@@ -24,7 +24,7 @@
     "decision": "chia-vai",
     "finale": "doan-tranh-hoa",
     "reward": "qua-cua-cao-lem",
-    "unlock": "mo-bai-24"
+    "next": "mo-bai-24"
   },
   "texts": {
     "rong-ran-len-may": {
@@ -779,7 +779,7 @@
     {
       "id": "mo-bai-24",
       "title": "Đất sét bên suối khô cong",
-      "kind": "unlock",
+      "kind": "next",
       "trigger": "auto",
       "text": "Từ bờ suối vọng lên tiếng \"cốc, cốc\": Hải Ly Cần đang gõ răng vào cục đất sét cứng như đá. Bạn ấy muốn nặn quà tặng cả nhà, mà đất cứ khô cong mất rồi!"
     }

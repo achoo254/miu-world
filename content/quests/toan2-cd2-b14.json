@@ -14,7 +14,7 @@
     "play": "Tìm chìa khóa, tính nhẩm, đưa chim về chuồng, điền theo mũi tên, chọn câu đúng, tìm thức ăn cho con vật, chọn phép tính, chơi Cầu thang – cầu trượt",
     "learn": "Toán 2 Bài 14: luyện tập chung phép cộng, phép trừ (qua 10) trong phạm vi 20",
     "reward": "80 XP, 15 xu, Phép cộng +1, Phép trừ +1, Bài toán có lời văn +1",
-    "unlock": "Bài 15 \"Ki-lô-gam\""
+    "next": "Bài 15 \"Ki-lô-gam\""
   },
   "phases": {
     "hook": "vet-khoa-cua",
@@ -24,7 +24,7 @@
     "decision": "de-truoc-kho-sau",
     "finale": "cau-thang-cau-truot",
     "reward": "huy-hieu-nha-kinh",
-    "unlock": "can-dia-lech"
+    "next": "can-dia-lech"
   },
   "texts": {},
   "places": {
@@ -1547,7 +1547,7 @@
     {
       "id": "can-dia-lech",
       "title": "Chiếc cân đĩa lệch",
-      "kind": "unlock",
+      "kind": "next",
       "trigger": "auto",
       "text": "Từ căng tin vọng sang tiếng kêu: Chim Cánh Cụt Pin đứng nhìn chiếc cân đĩa lệch hẳn một bên, chưa biết cân lại các túi hàng thế nào."
     }

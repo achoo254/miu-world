@@ -14,7 +14,7 @@
     "play": "Nhặt đồ, đọc thơ, xếp thứ tự, chọn nhiều đáp án, xếp thẻ vào giỏ, trắc nghiệm, điền vần, điền chữ, ghép câu, điền dấu câu, nói và kể, phiếu viết",
     "learn": "Tiếng Việt 2 Bài 16: đọc hiểu bài thơ Khi trang sách mở ra, vần cuối dòng thơ, chính tả l/n và các tiếng có vần an/ang, ăn/ăng, ân/âng, từ chỉ đặc điểm, câu nêu đặc điểm, dấu chấm và dấu chấm hỏi, phiếu đọc sách",
     "reward": "90 XP, 15 xu, Đọc hiểu +2, Chính tả +2, Từ ngữ +1, Câu +1, Dấu câu +1",
-    "unlock": "Ôn tập giữa học kì 1: lễ hội lá vàng"
+    "next": "Ôn tập giữa học kì 1: lễ hội lá vàng"
   },
   "phases": {
     "hook": "nai-mo-om-sach",
@@ -24,7 +24,7 @@
     "decision": "nai-mo-luyen-tiec-sach",
     "finale": "phieu-doc-sach-cua-nam",
     "reward": "phieu-viet-bai-16",
-    "unlock": "nhu-le-hoi-la-vang"
+    "next": "nhu-le-hoi-la-vang"
   },
   "texts": {
     "khi-trang-sach-mo-ra": {
@@ -1343,7 +1343,7 @@
     {
       "id": "nhu-le-hoi-la-vang",
       "title": "Lá vàng rơi đầy lối",
-      "kind": "unlock",
+      "kind": "next",
       "trigger": "auto",
       "text": "Vẹt Xanh bay vụt qua, rải lá vàng khắp lối: sắp có hội thi giữa kì của cả khu rừng, mỗi trạm một thử thách! Ai dám chơi nào, ai dám chơi nào?"
     }

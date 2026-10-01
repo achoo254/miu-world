@@ -14,7 +14,7 @@
     "play": "Nhặt mảnh chong chóng, nói và kể, đọc truyện, trắc nghiệm, điền chữ, chọn nhiều đáp án, xếp từ vào nhóm, đặt dấu phẩy, đọc tin nhắn, phiếu viết",
     "learn": "Tiếng Việt 2 Bài 32: đọc hiểu Chơi chong chóng, từ ngữ tả đồ vật, chính tả iu/ưu và ăt/ăc/ât/âc, từ ngữ về tình cảm gia đình, câu nói về anh chị em, dấu phẩy, đọc và viết tin nhắn",
     "reward": "90 XP, 15 xu, Đọc hiểu +2, Chính tả +2, Từ ngữ +1, Dấu câu +1",
-    "unlock": "Ôn tập và Đánh giá cuối học kì 1: ngày khánh thành cây cầu gỗ"
+    "next": "Ôn tập và Đánh giá cuối học kì 1: ngày khánh thành cây cầu gỗ"
   },
   "phases": {
     "hook": "tho-ti-va-be-teo",
@@ -24,7 +24,7 @@
     "decision": "chia-chong-chong",
     "finale": "tin-nhan-cua-soc-nau",
     "reward": "phieu-viet-bai-32",
-    "unlock": "mo-on-cuoi-ki"
+    "next": "mo-on-cuoi-ki"
   },
   "texts": {
     "choi-chong-chong": {
@@ -1133,7 +1133,7 @@
     {
       "id": "mo-on-cuoi-ki",
       "title": "Tiếng reo ở cây cầu gỗ",
-      "kind": "unlock",
+      "kind": "next",
       "trigger": "auto",
       "text": "Từ phía suối vọng lại tiếng Vẹt Xanh oang oang: “Khánh thành! Khánh thành!” Cây cầu gỗ Hải Ly Cần xây suốt học kì đã xong nhịp cuối, cả khu rừng sắp mở hội đấy."
     }

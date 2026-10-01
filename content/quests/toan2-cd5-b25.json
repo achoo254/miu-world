@@ -14,7 +14,7 @@
     "play": "Tìm đồ vẽ, phân loại điểm và đoạn thẳng, chọn nhiều, nối chòm sao, đọc thước, phân loại đường thẳng và đường cong, nói điều nhìn thấy",
     "learn": "Toán 2 Bài 25: điểm, đoạn thẳng, đường thẳng, đường cong, ba điểm thẳng hàng",
     "reward": "80 XP, 15 xu, Hình phẳng +2",
-    "unlock": "Bài 26 \"Đường gấp khúc. Hình tứ giác\""
+    "next": "Bài 26 \"Đường gấp khúc. Hình tứ giác\""
   },
   "phases": {
     "hook": "huou-cham-lech",
@@ -24,7 +24,7 @@
     "decision": "thang-tap-hay-uon-luon",
     "finale": "nhin-ra-san-truong",
     "reward": "huy-hieu-chom-sao",
-    "unlock": "o-kinh-ong-vang"
+    "next": "o-kinh-ong-vang"
   },
   "texts": {},
   "places": {
@@ -754,7 +754,7 @@
     {
       "id": "o-kinh-ong-vang",
       "title": "Ô kính màu vo ve",
-      "kind": "unlock",
+      "kind": "next",
       "trigger": "auto",
       "text": "Ong Vàng bay vo ve quanh cửa sổ ghép kính: lối bay qua các ô kính màu cứ gãy khúc liên tục, Ong hoa cả mắt rồi, ai bay cùng Ong với!"
     }

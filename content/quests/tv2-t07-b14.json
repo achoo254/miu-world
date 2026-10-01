@@ -14,7 +14,7 @@
     "play": "Hái màu, đọc thơ, chọn đáp án, chọn nhiều dòng thơ, ghép cặp vần, phân loại từ, điền chữ, xếp câu, điền dấu câu, nói và kể, phiếu viết",
     "learn": "Tiếng Việt 2 Bài 14: đọc bài thơ Em học vẽ, tiếng cùng vần, từ chỉ sự vật, câu nêu đặc điểm, chính tả ng/ngh, r/d/gi, an/ang, câu nêu công dụng, dấu chấm, dấu chấm hỏi",
     "reward": "90 XP, 15 xu, Đọc hiểu +2, Chính tả +2, Từ ngữ +1, Câu +1, Dấu câu +1",
-    "unlock": "Bài 15 \"Cuốn sách của em\""
+    "next": "Bài 15 \"Cuốn sách của em\""
   },
   "phases": {
     "hook": "huou-cao-het-mau",
@@ -24,7 +24,7 @@
     "decision": "chon-tranh-du-hoi",
     "finale": "ke-chuyen-truong-hoc",
     "reward": "phieu-viet-bai-14",
-    "unlock": "mo-bai-15"
+    "next": "mo-bai-15"
   },
   "texts": {
     "em-hoc-ve": {
@@ -1035,7 +1035,7 @@
     {
       "id": "mo-bai-15",
       "title": "Tiếng rầm trong hốc cây",
-      "kind": "unlock",
+      "kind": "next",
       "trigger": "auto",
       "text": "Từ kệ sách trong hốc cây vọng ra một tiếng \"rầm\" thật to, rồi giọng Gấu Trúc Tròn chậm rãi: từ… từ… thôi… sách… đổ… hết… rồi…"
     }

@@ -14,7 +14,7 @@
     "play": "Tìm đồ rơi, nói, đọc thơ, trắc nghiệm, chọn nhiều đáp án, điền từ, xếp câu, xếp cờ tranh, kể chuyện, phiếu viết",
     "learn": "Tiếng Việt 2 Bài 21: đọc hiểu và học thuộc bài thơ \"Thả diều\", từ ngữ chỉ âm thanh, nói câu tả cánh diều, kể chuyện Chúng mình là bạn, viết chữ hoa L",
     "reward": "80 XP, 15 xu, Đọc hiểu +2, Kể chuyện +2, Từ ngữ +1, Câu +1",
-    "unlock": "Lời nhử sang Bài 22 \"Tớ là lê-gô\""
+    "next": "Lời nhử sang Bài 22 \"Tớ là lê-gô\""
   },
   "phases": {
     "hook": "khi-lanh-mac-dieu",
@@ -24,7 +24,7 @@
     "decision": "go-dieu-khoi-cay",
     "finale": "co-duoi-dieu",
     "reward": "phieu-viet-bai-21",
-    "unlock": "mo-bai-22"
+    "next": "mo-bai-22"
   },
   "texts": {
     "tha-dieu": {
@@ -736,7 +736,7 @@
     {
       "id": "mo-bai-22",
       "title": "Tiếng oạch dưới chân đồi",
-      "kind": "unlock",
+      "kind": "next",
       "trigger": "auto",
       "text": "Từ xưởng đồ chơi gỗ dưới chân đồi vọng lên một tiếng \"Oạch!\" rõ to, rồi tiếng khối gỗ đổ lộp cộp. Lợn Rừng Đốm lại làm sao thế nhỉ?"
     }

@@ -36,7 +36,7 @@ export function reviewCopy(quest: Extract<QuestDefinition, { status: 'draft' }>,
   });
   // A walked copy keeps its chapter, whose stand-ins the map shows; the others sit after the real quests.
   const chapter = walked ? quest.chapter : 90 + index;
-  return { ...quest, id: `nghiem-thu-${quest.id}`, status: 'active', chapter, title: `[Nghiệm thu] ${quest.title}`, steps, unlock: [] };
+  return { ...quest, id: `nghiem-thu-${quest.id}`, status: 'active', chapter, title: `[Nghiệm thu] ${quest.title}`, steps };
 }
 
 function main(): void {

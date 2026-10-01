@@ -33,8 +33,6 @@ export interface ContentCatalog {
   quests: ReadonlyMap<string, PlayableQuest>;
   /** Quest id → the textbook lesson it plays, with its printed pages (quests naming a `lesson`). */
   textbooks: ReadonlyMap<string, QuestTextbook>;
-  /** Quest id → quests whose completion unlocks it. A quest nobody unlocks is open from the start. */
-  unlockedBy: ReadonlyMap<string, readonly string[]>;
 }
 
 export interface ContentOptions {
@@ -95,10 +93,6 @@ export function loadContentCatalog({ dir = CONTENT_DIR, questDir, extraQuestDir 
   const catalog = readContentJson(SkillCatalog, path.join(dir, 'learning/skills.json'));
   const skillIds = new Set(catalog.subjects.flatMap((s) => s.skills.map((k) => k.id)));
   const quests = loadQuests(questDir ?? path.join(dir, 'quests'), skillIds, extraQuestDir);
-  const unlockedBy = new Map<string, string[]>();
-  for (const quest of quests.values()) {
-    for (const target of quest.unlock) unlockedBy.set(target, [...(unlockedBy.get(target) ?? []), quest.id]);
-  }
   const accessories = buildAccessoryCatalog(jsonFiles(path.join(dir, 'accessories')).map((file) => JSON.parse(readFileSync(file, 'utf8')) as unknown));
   return {
     childDisplayNames: new Set(readContentJson(NameList, path.join(dir, 'names/child-display-names.json')).names),
@@ -113,6 +107,5 @@ export function loadContentCatalog({ dir = CONTENT_DIR, questDir, extraQuestDir 
     skillIds,
     quests,
     textbooks: questTextbooks(quests.values(), path.join(dir, 'curriculum')),
-    unlockedBy,
   };
 }

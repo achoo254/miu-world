@@ -14,7 +14,7 @@
     "play": "Tính trừ có nhớ, giải bài toán, cắm hoa vào lọ, tìm đường cho sóc, xếp ghế cho chú lùn, chọn kết quả đúng, dẫn Rô-bốt qua lưới số",
     "learn": "Toán 2 Bài 22: phép trừ có nhớ số có hai chữ số cho số có một chữ số",
     "reward": "90 XP, 15 xu, Phép trừ +2, Bài toán có lời văn +1",
-    "unlock": "Bài 23 \"Phép trừ (có nhớ) số có hai chữ số cho số có hai chữ số\""
+    "next": "Bài 23 \"Phép trừ (có nhớ) số có hai chữ số cho số có hai chữ số\""
   },
   "phases": {
     "hook": "na-ngap-ngu",
@@ -24,7 +24,7 @@
     "decision": "na-chon-cach-goi",
     "finale": "robot-tim-do-choi",
     "reward": "gau-bong-cam-on",
-    "unlock": "may-bay-giay-cua-ho"
+    "next": "may-bay-giay-cua-ho"
   },
   "texts": {},
   "places": {
@@ -1596,7 +1596,7 @@
     {
       "id": "may-bay-giay-cua-ho",
       "title": "Máy bay giấy của Hổ Vằn",
-      "kind": "unlock",
+      "kind": "next",
       "trigger": "auto",
       "text": "Ngoài sân thử, Hổ Vằn gầm lên một tiếng: \"Grừ! Máy bay giấy của tớ bay xa thế mà sao về gần thế này?\" rồi lén chui ra sau gốc cây vì sợ bị cười."
     }

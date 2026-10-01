@@ -14,7 +14,7 @@
     "play": "Tìm hộp quà, điền số mở khoá, giải đố, chọn đường bay dài nhất, đo mực nước, làm phiếu ở nhà",
     "learn": "Toán 2 Bài 21: luyện tập cộng có nhớ trong phạm vi 100, bài toán có lời văn",
     "reward": "80 XP, 15 xu, Phép cộng +2, Bài toán có lời văn +1",
-    "unlock": "Bài 22 \"Phép trừ (có nhớ) số có hai chữ số cho số có một chữ số\""
+    "next": "Bài 22 \"Phép trừ (có nhớ) số có hai chữ số cho số có một chữ số\""
   },
   "phases": {
     "hook": "cao-lem-khoa-qua",
@@ -24,7 +24,7 @@
     "decision": "chuot-tui-len-day-cot",
     "finale": "muc-nuoc-ba-be",
     "reward": "cup-mo-qua",
-    "unlock": "ke-gau-bong-day-ap"
+    "next": "ke-gau-bong-day-ap"
   },
   "texts": {},
   "places": {
@@ -780,7 +780,7 @@
     {
       "id": "ke-gau-bong-day-ap",
       "title": "Kệ gấu bông đầy ắp",
-      "kind": "unlock",
+      "kind": "next",
       "trigger": "auto",
       "text": "Ở kệ gấu bông, Koala Na ngáp một cái thật dài: \"Tớ có nhiều gấu bông quá, muốn tặng bớt cho các em lớp Một… mà tặng bớt thì còn lại bao nhiêu nhỉ? Zzz…\""
     }

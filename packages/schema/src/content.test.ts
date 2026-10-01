@@ -33,8 +33,8 @@ function validQuest() {
     status: 'active',
     summary: 'Một quest thử',
     review: 'teacher-pending',
-    sevenQuestions: { who: 'Miu', where: 'Rừng', goal: 'Giúp Vẹt', play: 'Tìm, đố', learn: 'Phép cộng', reward: 'XP', unlock: 'Chương 2' },
-    phases: { hook: 'hi', explore: 'find', learn: 'find', challenge: 'riddle', decision: 'riddle', finale: 'riddle', reward: 'riddle', unlock: 'riddle' },
+    sevenQuestions: { who: 'Miu', where: 'Rừng', goal: 'Giúp Vẹt', play: 'Tìm, đố', learn: 'Phép cộng', reward: 'XP', next: 'Chương 2' },
+    phases: { hook: 'hi', explore: 'find', learn: 'find', challenge: 'riddle', decision: 'riddle', finale: 'riddle', reward: 'riddle', next: 'riddle' },
     steps: [
       { id: 'hi', title: 'Chào Vẹt', kind: 'dialogue', target: 'parrot', lines: [{ speaker: 'Vẹt', text: 'Chào!' }] },
       { id: 'find', title: 'Tìm hộp', kind: 'search', targets: ['box'] },
@@ -62,7 +62,6 @@ describe('quest definition', () => {
     const quest = QuestDefinition.parse(validQuest());
     if (quest.status !== 'active') throw new Error('expected an active quest');
     expect(quest.reward).toEqual({ xp: 10, coin: 0, skillXp: {}, items: {} });
-    expect(quest.unlock).toEqual([]);
     expect(quest.steps[0]).toMatchObject({ trigger: 'interact', choices: [] });
   });
 
@@ -172,9 +171,9 @@ describe('quest definition', () => {
 
   it('accepts a stub with only its identity and skips the content rules', () => {
     const stub = QuestDefinition.parse({ id: 'forest-ch2', region: 'khu-rung-bi-mat', chapter: 2, title: 'Chương 2', status: 'stub' });
-    expect(stub).toEqual({ id: 'forest-ch2', region: 'khu-rung-bi-mat', chapter: 2, title: 'Chương 2', status: 'stub', unlock: [] });
+    expect(stub).toEqual({ id: 'forest-ch2', region: 'khu-rung-bi-mat', chapter: 2, title: 'Chương 2', status: 'stub' });
     expect(QuestDefinition.safeParse({ id: 'x', region: 'r', chapter: 2, status: 'stub' }).success).toBe(false);
-    // A stub can never be finished, so it must not be the only way into another quest.
+    // Nothing locks a quest behind another: the old "unlock" list is refused.
     expect(QuestDefinition.safeParse({ id: 'x', region: 'r', chapter: 2, title: 't', status: 'stub', unlock: ['y'] }).success).toBe(false);
   });
 });
@@ -299,9 +298,8 @@ describe('textbook lessons', () => {
     expect(issues(quest).filter(noMechanicRule)).toEqual(['a textbook quest names its lesson ("lesson"), shown with its pages in the quest list']);
   });
 
-  it('never unlocks another lesson: homework comes in any page order', () => {
-    expect(issues({ ...textbookQuest(), unlock: ['toan2-cd1-b02'] }).filter(noMechanicRule)).toEqual(['a textbook quest unlocks nothing: lessons open in any order']);
-    expect(issues({ ...validQuest(), unlock: ['forest-ch2'] })).toEqual([]);
+  it('has no way to lock a quest behind another: every quest is open from the start', () => {
+    expect(QuestDefinition.safeParse({ ...validQuest(), unlock: ['forest-ch2'] }).success).toBe(false);
   });
 });
 

@@ -14,7 +14,7 @@
     "play": "Tìm đồ, nói, đọc thơ, chọn nhiều đáp án, trắc nghiệm, phân loại từ, điền chữ cái, xếp thứ tự, lựa chọn trong hội thoại, phiếu viết",
     "learn": "Tiếng Việt 2 Bài 2: đọc hiểu bài thơ \"Ngày hôm qua đâu rồi?\", học thuộc lòng, bảng chữ cái (â, c, d, e), từ chỉ sự vật và hoạt động, câu giới thiệu, nghe – viết, viết đoạn tự giới thiệu, đọc mở rộng",
     "reward": "85 XP, 15 xu, Đọc hiểu +2, Bảng chữ cái +2, Từ ngữ +1, Câu +1",
-    "unlock": "Bài 3 \"Niềm vui của Bi và Bống\""
+    "next": "Bài 3 \"Niềm vui của Bi và Bống\""
   },
   "phases": {
     "hook": "gap-voi-bao",
@@ -24,7 +24,7 @@
     "decision": "the-gioi-thieu-ban-be",
     "finale": "dem-tho-quanh-goc-cay",
     "reward": "phieu-viet-bai-2",
-    "unlock": "mo-bai-3"
+    "next": "mo-bai-3"
   },
   "texts": {
     "ngay-hom-qua-dau-roi": {
@@ -861,7 +861,7 @@
     {
       "id": "mo-bai-3",
       "title": "Cầu vồng sau mưa",
-      "kind": "unlock",
+      "kind": "next",
       "trigger": "auto",
       "text": "Mưa rào vừa tạnh, bãi cỏ bỗng hiện lên một chiếc cầu vồng bảy màu. Thỏ Bồng Bềnh đứng đó định ước… ước… ơ, bạn ấy quên mất mình định ước gì rồi!"
     }

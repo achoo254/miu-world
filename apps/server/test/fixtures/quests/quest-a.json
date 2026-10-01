@@ -13,7 +13,7 @@
     "play": "Tìm và giải đố",
     "learn": "Phép cộng",
     "reward": "XP",
-    "unlock": "Quest tiếp theo"
+    "next": "Quest tiếp theo"
   },
   "phases": {
     "hook": "meet-vet",
@@ -23,7 +23,7 @@
     "decision": "solve-tree",
     "finale": "solve-tree",
     "reward": "solve-tree",
-    "unlock": "solve-tree"
+    "next": "solve-tree"
   },
   "steps": [
     {
@@ -77,8 +77,5 @@
     "items": {
       "la-than": 1
     }
-  },
-  "unlock": [
-    "quest-b"
-  ]
+  }
 }

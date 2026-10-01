@@ -14,7 +14,7 @@
     "play": "Tìm bưu ảnh, chọn giờ đúng, chạm ngày trên lịch, xếp nhóm theo đồng hồ, đặt giờ, sắp xếp lịch học, chọn nhiều đáp án",
     "learn": "Toán 2 Bài 32: luyện tập chung xem đồng hồ, xem lịch",
     "reward": "80 XP, 15 xu, Xem đồng hồ +2, Xem lịch +1",
-    "unlock": "Bài 33 \"Ôn tập phép cộng, phép trừ trong phạm vi 20, 100\""
+    "next": "Bài 33 \"Ôn tập phép cộng, phép trừ trong phạm vi 20, 100\""
   },
   "phases": {
     "hook": "sau-xanh-ngam-troi",
@@ -24,7 +24,7 @@
     "decision": "di-bao-tang-khong",
     "finale": "truoc-gio-bong-ro",
     "reward": "huy-hieu-dem-ngay",
-    "unlock": "ve-ghe-la-phep-tinh"
+    "next": "ve-ghe-la-phep-tinh"
   },
   "texts": {},
   "places": {
@@ -666,7 +666,7 @@
     {
       "id": "ve-ghe-la-phep-tinh",
       "title": "Vé ghế là phép tính",
-      "kind": "unlock",
+      "kind": "next",
       "trigger": "auto",
       "text": "Từ hội trường vang lên giọng micro rổn rảng của thầy Quang: \"Tổng duyệt văn nghệ cuối kì! Vé ghế nào cũng là một phép tính, ai tính đúng mới tìm được chỗ ngồi!\""
     }

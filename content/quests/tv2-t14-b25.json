@@ -14,7 +14,7 @@
     "play": "Tìm chùm hoa, nói, đọc truyện, chọn đáp án, chọn nhiều chi tiết, xếp từ vào hai giỏ, đoán tranh, xếp tranh, kể chuyện, phiếu viết",
     "learn": "Tiếng Việt 2 Bài 25: đọc hiểu \"Sự tích hoa tỉ muội\", từ chỉ hoạt động và đặc điểm, đặt câu, kể chuyện \"Hai anh em\", viết chữ hoa N",
     "reward": "80 XP, 15 xu, Đọc hiểu +2, Từ ngữ +1, Kể chuyện +1",
-    "unlock": "Bài 26 \"Em mang về yêu thương\""
+    "next": "Bài 26 \"Em mang về yêu thương\""
   },
   "phases": {
     "hook": "gap-ong-vang",
@@ -24,7 +24,7 @@
     "decision": "chia-chum-hoa",
     "finale": "doan-tranh-hai-anh-em",
     "reward": "phieu-viet-bai-25",
-    "unlock": "mo-bai-26"
+    "next": "mo-bai-26"
   },
   "texts": {
     "su-tich-hoa-ti-muoi": {
@@ -676,7 +676,7 @@
     {
       "id": "mo-bai-26",
       "title": "Tiếng chiêm chiếp ở tổ rơm",
-      "kind": "unlock",
+      "kind": "next",
       "trigger": "auto",
       "text": "Từ tổ rơm cuối vườn vọng lại tiếng chiêm chiếp rộn ràng, xen lẫn một câu hỏi \"Tại sao?\" thật to: nhà Gà Con Chíp sắp có chuyện vui!"
     }

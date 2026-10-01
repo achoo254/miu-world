@@ -14,7 +14,7 @@
     "play": "Tìm đồ, nói, đọc truyện, phân loại, trắc nghiệm, chọn nhiều đáp án, lựa chọn trong hội thoại, xếp tranh, điền từ, kể chuyện, phiếu viết",
     "learn": "Tiếng Việt 2 Bài 3: đọc hiểu \"Niềm vui của Bi và Bống\", từ ngữ chỉ người và chỉ vật, câu thể hiện sự ngạc nhiên, kể chuyện theo tranh, viết chữ hoa Ă, Â",
     "reward": "80 XP, 15 xu, Đọc hiểu +2, Kể chuyện +2, Từ ngữ +1",
-    "unlock": "Bài 4 \"Làm việc thật là vui\""
+    "next": "Bài 4 \"Làm việc thật là vui\""
   },
   "phases": {
     "hook": "gap-tho-ti",
@@ -24,7 +24,7 @@
     "decision": "ve-tang-ai",
     "finale": "xep-tranh-phoi",
     "reward": "qua-cua-tho-ti",
-    "unlock": "mo-bai-4"
+    "next": "mo-bai-4"
   },
   "texts": {
     "niem-vui-cua-bi-va-bong": {
@@ -821,7 +821,7 @@
     {
       "id": "mo-bai-4",
       "title": "Tiếng vo ve trong vườn hoa",
-      "kind": "unlock",
+      "kind": "next",
       "trigger": "auto",
       "text": "Vo ve… vo ve… Từ vườn hoa tổ ong vọng ra tiếng đếm: một nghìn lẻ một, một nghìn lẻ hai… Gấu Nhẩm đang cần người phụ một việc nhỏ đấy!"
     }

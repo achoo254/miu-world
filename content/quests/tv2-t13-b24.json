@@ -14,7 +14,7 @@
     "play": "Tìm đồ, nói, đọc thơ, xếp nhóm, chọn nhiều đáp án, trắc nghiệm, điền từ, điền vần, đặt dấu phẩy, lựa chọn trong hội thoại, phiếu viết",
     "learn": "Tiếng Việt 2 Bài 24: đọc hiểu bài thơ \"Nặn đồ chơi\", từ chỉ cảm xúc, da/gia, s/x, ươn/ương, từ chỉ đặc điểm của đồ chơi, dấu phẩy, tả đồ chơi",
     "reward": "85 XP, 15 xu, Từ ngữ +2, Đọc hiểu +1, Chính tả +1, Dấu câu +1",
-    "unlock": "Bài 25 \"Sự tích hoa tỉ muội\""
+    "next": "Bài 25 \"Sự tích hoa tỉ muội\""
   },
   "phases": {
     "hook": "gap-hai-ly",
@@ -24,7 +24,7 @@
     "decision": "chia-qua-dat-set",
     "finale": "do-choi-cua-em",
     "reward": "qua-cua-hai-ly",
-    "unlock": "mo-bai-25"
+    "next": "mo-bai-25"
   },
   "texts": {
     "nan-do-choi": {
@@ -1193,7 +1193,7 @@
     {
       "id": "mo-bai-25",
       "title": "Hai chị em ong giận nhau",
-      "kind": "unlock",
+      "kind": "next",
       "trigger": "auto",
       "text": "Bên bụi hoa tỉ muội vang lên tiếng vo ve cãi cọ: hai chị em ong Hồng và Nụ giành nhau một bông hoa, chẳng ai chịu ai. Ai sẽ làm lành cho hai chị em đây?"
     }

@@ -11,8 +11,8 @@ function questDir(quests: unknown[]): string {
 }
 
 const skills = new Set(['doc-hieu', 'phep-cong']);
-/** A valid fixture quest without unlocks; each test changes its id and links. */
-const { unlock: _unlock, ...base } = JSON.parse(
+/** A valid fixture quest; each test changes its id. */
+const base = JSON.parse(
   readFileSync(new URL('../../test/fixtures/quests/quest-c.json', import.meta.url), 'utf8'),
 ) as Record<string, unknown>;
 
@@ -24,8 +24,6 @@ describe('content catalogue', () => {
     expect(ids.filter((id) => id.startsWith('tv2-'))).toHaveLength(34);
     expect(ids.filter((id) => id.startsWith('toan2-'))).toHaveLength(36);
     for (const quest of catalog.quests.values()) expect(quest.status, quest.id).toBe('active');
-    // Nothing locks a textbook lesson, and chapter 1 unlocks nothing any more.
-    expect([...catalog.unlockedBy.keys()]).toEqual([]);
     expect(catalog.accessories.get('hat-witch-pink')?.slot).toBe('hat');
     expect(catalog.accessories.get('backpack-brown')?.slot).toBe('back');
     expect(catalog.accessories.get('hat-witch-night')).toMatchObject({ slot: 'hat', variant: 'night', unlock: { level: 2 } });
@@ -34,12 +32,10 @@ describe('content catalogue', () => {
     expect(catalog.characterNames.has('Miu')).toBe(true);
   });
 
-  it('refuses quests that reward unknown skills or unlock unknown quests', () => {
+  it('refuses quests that reward unknown skills, duplicates, and the old "unlock" list (nothing is locked)', () => {
     expect(() => loadQuests(questDir([{ ...base, id: 'a', reward: { skillXp: { bay: 1 } } }]), skills)).toThrow(/unknown skill/);
-    expect(() => loadQuests(questDir([{ ...base, id: 'a', unlock: ['ghost'] }]), skills)).toThrow(/unknown quest/);
     expect(() => loadQuests(questDir([{ ...base, id: 'a' }, { ...base, id: 'a' }]), skills)).toThrow(/duplicate/);
-    const cycle = [{ ...base, id: 'root' }, { ...base, id: 'a', unlock: ['b'] }, { ...base, id: 'b', unlock: ['a'] }];
-    expect(() => loadQuests(questDir(cycle), skills)).toThrow(/locked forever.*a, b/);
+    expect(() => loadQuests(questDir([{ ...base, id: 'a', unlock: ['b'] }, { ...base, id: 'b' }]), skills)).toThrow(/invalid content file/);
   });
 
   it('refuses a quest file that breaks the schema', () => {
@@ -58,8 +54,6 @@ describe('content catalogue', () => {
     const draft = { ...sgk, id: 'tv2-t01-b01', status: 'draft', lesson: 'tv2-t1-b01', steps: walked, places };
     const loaded = loadQuests(questDir([{ ...base, id: 'a' }, draft]), new Set([...skills, 'phep-cong']));
     expect([...loaded.keys()]).toEqual(['a']);
-    // Textbook lessons open in any order: nothing may lock one, not even another lesson.
-    expect(() => loadQuests(questDir([{ ...draft, unlock: ['tv2-t01-b02'] }]), skills)).toThrow(/unlocks nothing/);
     expect(() => loadQuests(questDir([{ ...draft, phases: {} }]), skills)).toThrow(/invalid content file/);
   });
 
@@ -69,12 +63,5 @@ describe('content catalogue', () => {
     expect(Object.fromEntries(textbooks)).toEqual({ a: { book: 'Tiếng Việt 2, tập một', lesson: 'Bài 2. Ngày hôm qua đâu rồi?', pages: [13, 16] } });
     const ghost = loadQuests(questDir([{ ...base, id: 'a', lesson: 'tv2-t1-b99' }]), skills);
     expect(() => questTextbooks(ghost.values(), path.join(CONTENT_DIR, 'curriculum'))).toThrow('quest a plays unknown textbook lesson tv2-t1-b99');
-  });
-
-  it('records which quests unlock which', () => {
-    const dir = questDir([{ ...base, id: 'a', unlock: ['b'] }, { ...base, id: 'b' }]);
-    const catalog = loadContentCatalog({ questDir: dir });
-    expect(catalog.unlockedBy.get('b')).toEqual(['a']);
-    expect(catalog.unlockedBy.has('a')).toBe(false);
   });
 });

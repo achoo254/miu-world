@@ -14,7 +14,7 @@
     "play": "Tìm đinh và khung tranh, chọn câu đúng, chọn đoạn thẳng, đếm hình tứ giác, chọn nhóm thẳng hàng, nối đường ốc sên, tính quãng đường",
     "learn": "Toán 2 Bài 28: luyện tập chung về điểm, đoạn thẳng, đường thẳng, đường cong, ba điểm thẳng hàng, hình tứ giác, đường gấp khúc",
     "reward": "80 XP, 15 xu, Hình phẳng +2, Bài toán có lời văn +1",
-    "unlock": "Bài 29 \"Ngày – giờ, giờ – phút\""
+    "next": "Bài 29 \"Ngày – giờ, giờ – phút\""
   },
   "phases": {
     "hook": "cua-treo-nguoc",
@@ -24,7 +24,7 @@
     "decision": "tro-dung-thang-hang",
     "finale": "duong-oc-sen-bo",
     "reward": "huy-hieu-phong-tranh",
-    "unlock": "dong-ho-thap-ngu-quen"
+    "next": "dong-ho-thap-ngu-quen"
   },
   "texts": {},
   "places": {
@@ -527,7 +527,7 @@
     {
       "id": "dong-ho-thap-ngu-quen",
       "title": "Tiếng ngáy dưới tháp đồng hồ",
-      "kind": "unlock",
+      "kind": "next",
       "trigger": "auto",
       "text": "Dưới chân tháp đồng hồ vọng lên tiếng ngáy khò khò: Gấu Trúc Khò ngủ quên, kim đồng hồ tháp chạy lung tung, cả trường không biết mấy giờ rồi!"
     }

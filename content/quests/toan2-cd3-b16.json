@@ -14,7 +14,7 @@
     "play": "Tìm ca, chai, cốc; chọn câu đúng; điền số lít; tính với lít; xếp đồ vật theo lượng nước; đố can nước mắm",
     "learn": "Toán 2 Bài 16: lít, đơn vị l; cộng, trừ với đơn vị l",
     "reward": "80 XP, 15 xu, Dung tích +2, Phép trừ +1",
-    "unlock": "Bài 17 \"Thực hành và trải nghiệm với các đơn vị ki-lô-gam, lít\""
+    "next": "Bài 17 \"Thực hành và trải nghiệm với các đơn vị ki-lô-gam, lít\""
   },
   "phases": {
     "hook": "be-ca-voi-nua",
@@ -24,7 +24,7 @@
     "decision": "pin-ra-luat-dong",
     "finale": "can-nuoc-mam-cua-me",
     "reward": "vay-bac-ca-bong",
-    "unlock": "mui-che-thom-phuc"
+    "next": "mui-che-thom-phuc"
   },
   "texts": {},
   "places": {
@@ -957,7 +957,7 @@
     {
       "id": "mui-che-thom-phuc",
       "title": "Mùi chè thơm phức",
-      "kind": "unlock",
+      "kind": "next",
       "trigger": "auto",
       "text": "Từ bếp lớn bay ra mùi đậu xanh thơm lừng. Heo Ủn đội mũ đầu bếp gọi ầm lên: nồi chè cho cả trường cần đúng ki-lô-gam đường, đúng lít nước, ai phụ tớ với!"
     }

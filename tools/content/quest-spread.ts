@@ -61,7 +61,7 @@ export function questSpread(quests: Iterable<QuestDefinition>, targetsRaw: unkno
     let previous: string | null = null;
     for (const step of quest.steps) {
       const ids = stepTargets(step);
-      if (ids.length === 0) continue; // a reward or an unlock happens wherever the child is
+      if (ids.length === 0) continue; // a reward or the closing "next" beat happens wherever the child is
       for (const id of ids) {
         visited.add(placeOf(step, id));
         if (isCharacter(id)) {

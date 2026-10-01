@@ -14,7 +14,7 @@
     "play": "Nhặt máy bay, điền phép trừ, chọn rô-bốt đúng, điền dấu, ghép quần áo, ghép mèo với cá, mở hòm, dẫn nhím",
     "learn": "Toán 2 Bài 23: phép trừ có nhớ số có hai chữ số cho số có hai chữ số",
     "reward": "100 XP, 20 xu, Phép trừ +2, So sánh số +1",
-    "unlock": "Bài 24 \"Luyện tập chung\""
+    "next": "Bài 24 \"Luyện tập chung\""
   },
   "phases": {
     "hook": "ho-van-gam-gu",
@@ -24,7 +24,7 @@
     "decision": "ho-van-ru-thi",
     "finale": "nhim-tim-mon-an",
     "reward": "canh-bay-dung-cam",
-    "unlock": "tu-kinh-con-trong"
+    "next": "tu-kinh-con-trong"
   },
   "texts": {},
   "places": {
@@ -1731,7 +1731,7 @@
     {
       "id": "tu-kinh-con-trong",
       "title": "Tủ kính còn trống",
-      "kind": "unlock",
+      "kind": "next",
       "trigger": "auto",
       "text": "Mèo Mun vẫy gọi từ tủ kính trưng bày: \"Đồ chơi làm xong nhiều quá mà tủ kính thì đánh số lung tung, xếp sao cho đúng thứ tự đây?\""
     }

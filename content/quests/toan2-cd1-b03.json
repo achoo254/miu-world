@@ -14,7 +14,7 @@
     "play": "Nhặt biển tên, điền bảng tổng và hiệu, ghép phép tính từ vỏ sò, đếm dây sao, xếp toa tàu, đố hiệu",
     "learn": "Toán 2 Bài 3: số hạng, tổng; số bị trừ, số trừ, hiệu",
     "reward": "80 XP, 15 xu, Thành phần phép tính +2, Phép cộng +1, Phép trừ +1",
-    "unlock": "Bài 4 \"Hơn, kém nhau bao nhiêu\""
+    "next": "Bài 4 \"Hơn, kém nhau bao nhiêu\""
   },
   "phases": {
     "hook": "bien-ten-bay-tung",
@@ -24,7 +24,7 @@
     "decision": "vet-xanh-thach-do",
     "finale": "lap-phep-tru-the-so",
     "reward": "huy-hieu-bang-tin",
-    "unlock": "bong-dem-tren-duong-chay"
+    "next": "bong-dem-tren-duong-chay"
   },
   "texts": {},
   "places": {
@@ -1370,7 +1370,7 @@
     {
       "id": "bong-dem-tren-duong-chay",
       "title": "Tiếng còi ở đường chạy",
-      "kind": "unlock",
+      "kind": "next",
       "trigger": "auto",
       "text": "Ngoài đường chạy, trọng tài Hươu Lêu Nghêu thổi còi toe toe: hai đội nhặt bóng vừa thi xong mà chẳng ai biết đội nào hơn bao nhiêu quả!"
     }

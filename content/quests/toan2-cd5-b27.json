@@ -14,7 +14,7 @@
     "play": "Tìm đồ thủ công, nhận phiếu gấp cắt, ghép hình, kẻ đoạn thẳng, đo bằng thước, xếp que từ ngắn đến dài",
     "learn": "Toán 2 Bài 27: gấp, cắt, ghép, xếp hình; vẽ và đo đoạn thẳng",
     "reward": "70 XP, 15 xu, Hình phẳng +2",
-    "unlock": "Bài 28 \"Luyện tập chung\""
+    "next": "Bài 28 \"Luyện tập chung\""
   },
   "phases": {
     "hook": "chip-giay-meo-xech",
@@ -24,7 +24,7 @@
     "decision": "ke-hay-do-truoc",
     "finale": "que-trang-tri-ngan-dai",
     "reward": "huy-hieu-thu-cong",
-    "unlock": "tranh-treo-nguoc"
+    "next": "tranh-treo-nguoc"
   },
   "texts": {},
   "places": {
@@ -841,7 +841,7 @@
     {
       "id": "tranh-treo-nguoc",
       "title": "Phòng tranh lộn ngược",
-      "kind": "unlock",
+      "kind": "next",
       "trigger": "auto",
       "text": "Từ phòng trưng bày tranh vọng ra tiếng Cua Kềnh: \"Tranh này đẹp quá, treo xuôi mới đúng!\" — ấy thế mà bức nào Cua cũng treo ngược cả."
     }

@@ -14,7 +14,7 @@
     "play": "Tìm mảnh phông, điền số đoạn thẳng và độ dài, chọn đoạn bằng nhau, phân loại hình, chọn ba điểm thẳng hàng, nối điểm vẽ đoạn thẳng, giải đố, phiếu vẽ hình",
     "learn": "Toán 2 Bài 34: ôn tập hình phẳng (đoạn thẳng, đường gấp khúc, hình tứ giác, ba điểm thẳng hàng, đo và vẽ đoạn thẳng)",
     "reward": "120 XP, 20 xu, Hình phẳng +2, Logic +1",
-    "unlock": "Bài 35 \"Ôn tập đo lường\""
+    "next": "Bài 35 \"Ôn tập đo lường\""
   },
   "phases": {
     "hook": "phong-nen-do-sap",
@@ -24,7 +24,7 @@
     "decision": "dom-muon-ve",
     "finale": "dem-tam-giac-thi-tai",
     "reward": "huy-hieu-dung-phong",
-    "unlock": "nuoc-banh-hau-truong"
+    "next": "nuoc-banh-hau-truong"
   },
   "texts": {},
   "places": {
@@ -1080,7 +1080,7 @@
     {
       "id": "nuoc-banh-hau-truong",
       "title": "Hậu trường bận rộn",
-      "kind": "unlock",
+      "kind": "next",
       "trigger": "auto",
       "text": "Từ hậu trường, Chim Cánh Cụt Pin lạch bạch chạy ra, tay ôm can nước và khay bánh: \"Ai giúp tớ cân bánh, đong nước cho buổi diễn với? Phải chuẩn từng lít, từng ki-lô-gam đấy!\""
     }

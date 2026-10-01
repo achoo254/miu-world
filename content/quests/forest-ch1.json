@@ -13,7 +13,7 @@
     "play": "Tìm manh mối, đọc thư, kéo thả táo, trả lời câu hỏi, xếp đá qua suối, giải câu đố",
     "learn": "Đếm và phép cộng trong phạm vi 20, phép trừ trong phạm vi 10, so sánh số có hai chữ số, đọc hiểu một lá thư ngắn",
     "reward": "100 XP, 20 Xu, Skill XP và vật phẩm Lá thần",
-    "unlock": "Cổng đá dẫn tới Khu rừng bí mật – Chương 2"
+    "next": "Cổng đá sau cây cổ thụ mở lối vào sâu trong rừng"
   },
   "phases": {
     "hook": "meet-parrot",
@@ -23,7 +23,7 @@
     "decision": "tree-decision",
     "finale": "tree-riddle",
     "reward": "open-chest",
-    "unlock": "open-gate"
+    "next": "open-gate"
   },
   "steps": [
     {
@@ -425,10 +425,10 @@
     {
       "id": "open-gate",
       "title": "Đường tới chương 2",
-      "kind": "unlock",
+      "kind": "next",
       "target": "gate-ch2",
       "trigger": "auto",
-      "text": "Cổng đá sau cây cổ thụ mở ra: đường tới Chương 2 đã thông!"
+      "text": "Cổng đá sau cây cổ thụ mở ra: lối vào sâu trong rừng hiện ra, bao bạn mới đang chờ {name} ghé thăm!"
     }
   ],
   "reward": {
@@ -443,6 +443,5 @@
     "items": {
       "la-than": 1
     }
-  },
-  "unlock": []
+  }
 }

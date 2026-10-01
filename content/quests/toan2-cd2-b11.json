@@ -14,7 +14,7 @@
     "play": "Nhặt táo, điền phép tách, tính nhẩm, đưa thỏ về chuồng, đưa ong về hoa, chọn máy bay, phân loại cánh diều, giải bài toán",
     "learn": "Toán 2 Bài 11: phép trừ (qua 10) trong phạm vi 20",
     "reward": "90 XP, 15 xu, Phép trừ +2, Bài toán có lời văn +1",
-    "unlock": "Bài 12 \"Bảng trừ (qua 10)\""
+    "next": "Bài 12 \"Bảng trừ (qua 10)\""
   },
   "phases": {
     "hook": "tao-rung-lop-dop",
@@ -24,7 +24,7 @@
     "decision": "heo-chon-cach",
     "finale": "dua-xe-qua-cau",
     "reward": "huy-hieu-banh-tao",
-    "unlock": "long-tre-lon-xon"
+    "next": "long-tre-lon-xon"
   },
   "texts": {},
   "places": {
@@ -3053,7 +3053,7 @@
     {
       "id": "long-tre-lon-xon",
       "title": "Lóng tre lộn xộn",
-      "kind": "unlock",
+      "kind": "next",
       "trigger": "auto",
       "text": "Từ vườn tre vọng sang tiếng thở dài: Gấu Trúc Tròn khắc bảng trừ lên từng lóng tre, mà ai đó xếp lộn xộn hết cả rồi."
     }

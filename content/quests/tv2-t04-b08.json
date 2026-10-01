@@ -14,7 +14,7 @@
     "play": "Nhặt bóng lạc, nói khởi động, đọc bài hai lượt, trắc nghiệm, chọn nhiều đáp án, xếp tên theo bảng chữ cái, kéo dụng cụ vào tranh, điền tên trò chơi, xếp thẻ thành câu, nói và kể, phiếu viết",
     "learn": "Tiếng Việt 2 Bài 8: đọc Cầu thủ dự bị, lời khen và lời chúc mừng, viết hoa tên riêng, sắp xếp họ tên theo bảng chữ cái, từ ngữ về dụng cụ thể thao và trò chơi dân gian, câu nêu hoạt động, kể về hoạt động thể thao",
     "reward": "90 XP, 15 xu, Đọc hiểu +2, Chính tả +2, Từ ngữ +1, Câu +1",
-    "unlock": "Bài 9 \"Cô giáo lớp em\""
+    "next": "Bài 9 \"Cô giáo lớp em\""
   },
   "phases": {
     "hook": "ho-van-tap-mot-minh",
@@ -24,7 +24,7 @@
     "decision": "lam-du-bi-nhe",
     "finale": "hoi-the-thao-giua-hiep",
     "reward": "phieu-viet-bai-8",
-    "unlock": "mo-bai-9"
+    "next": "mo-bai-9"
   },
   "texts": {
     "cau-thu-du-bi": {
@@ -952,7 +952,7 @@
     {
       "id": "mo-bai-9",
       "title": "Bài thơ tặng cô giáo",
-      "kind": "unlock",
+      "kind": "next",
       "trigger": "auto",
       "text": "Bên khung cửa sổ lá của lớp học, Nai Mơ đang cắn bút lá suy nghĩ: tớ muốn viết một bài thơ tặng cô giáo, mà chưa tìm được câu mở đầu nào đủ đẹp. {name} có muốn giúp không?"
     }

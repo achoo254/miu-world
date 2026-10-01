@@ -14,7 +14,7 @@
     "play": "Gom chữ lạc, nói, đọc bài, xếp hàng chữ cái, chọn nhiều đáp án, trắc nghiệm, chọn cách vui cùng nhau, phiếu viết",
     "learn": "Tiếng Việt 2 Bài 19: đọc hiểu bài “Chữ A và những người bạn”, từ chỉ cảm xúc, nói lời cảm ơn, nói về niềm vui, viết chữ hoa I, K",
     "reward": "75 XP, 15 xu, Đọc hiểu +2, Từ ngữ +1, Bảng chữ cái +1",
-    "unlock": "Bài 20 \"Nhím nâu kết bạn\""
+    "next": "Bài 20 \"Nhím nâu kết bạn\""
   },
   "phases": {
     "hook": "gap-vet-xanh",
@@ -24,7 +24,7 @@
     "decision": "cac-chu-lam-lanh",
     "finale": "niem-vui-trong-tranh",
     "reward": "phieu-viet-bai-19",
-    "unlock": "mo-bai-20"
+    "next": "mo-bai-20"
   },
   "texts": {
     "chu-a": {
@@ -611,7 +611,7 @@
     {
       "id": "mo-bai-20",
       "title": "Tiếng gầm sau bụi gai",
-      "kind": "unlock",
+      "kind": "next",
       "trigger": "auto",
       "text": "Đang vui thì “Grừ!” vang lên từ bụi gai cuối rừng. Sư Tử Xù ló cái bờm ra rồi thụt ngay vào. Hình như bạn ấy muốn làm quen, mà ai cũng chạy mất?"
     }

@@ -42,10 +42,10 @@ const NOTES: Record<string, string[]> = {
 };
 
 const MECHANIC_NAMES: Record<string, string> = {
-  dialogue: 'Hội thoại', search: 'Tìm đồ', read: 'Đọc bài', riddle: 'Câu đố', speak: 'Nói', worksheet: 'Phiếu viết', reward: 'Phần thưởng', unlock: 'Mở bài sau',
+  dialogue: 'Hội thoại', search: 'Tìm đồ', read: 'Đọc bài', riddle: 'Câu đố', speak: 'Nói', worksheet: 'Phiếu viết', reward: 'Phần thưởng', next: 'Tiếp nối',
   quiz: 'Trắc nghiệm', 'multi-select': 'Chọn nhiều', classify: 'Phân loại', 'fill-blank': 'Điền chỗ trống', sort: 'Sắp xếp', clock: 'Đồng hồ', calendar: 'Lịch', connect: 'Nối điểm', 'drag-drop': 'Kéo thả',
 };
-const GAME_ONLY = new Set(['dialogue', 'search', 'reward', 'unlock']);
+const GAME_ONLY = new Set(['dialogue', 'search', 'reward', 'next']);
 
 const esc = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 /** `{name}` shown as the child's character name placeholder. */
@@ -106,7 +106,7 @@ function stepCard(step: QuestStep, index: number, quest: Extract<QuestDefinition
     if (step.mechanic === 'classify') parts.push(`<p class="muted">Nhóm: ${step.groups.map((g) => m(g.label)).join(' · ')}</p>`);
   }
   if (step.kind === 'speak' && step.hints.length) parts.push(`<ul class="hints">${step.hints.map((h) => `<li>${m(h)}</li>`).join('')}</ul>`);
-  if (step.kind === 'worksheet' || step.kind === 'reward' || step.kind === 'unlock') parts.push(`<p>${withName(esc(step.text))}</p>`);
+  if (step.kind === 'worksheet' || step.kind === 'reward' || step.kind === 'next') parts.push(`<p>${withName(esc(step.text))}</p>`);
   if ('support' in step) {
     parts.push(`<p class="muted"><b>Gợi ý:</b> ${withName(esc(step.support.hint))} · <b>Đáp án:</b> ${withName(esc(step.support.answer.text))}</p>`);
     if (step.feedback) {

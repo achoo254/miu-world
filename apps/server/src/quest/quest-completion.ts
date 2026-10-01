@@ -6,7 +6,6 @@ import { questScore } from '@miu/quest/quest-score';
 import type { ContentCatalog } from '../content/content-catalog';
 import { questProgress, skillProgress } from '../db/schema';
 import { grantReward, questSource, totalXp, type Tx } from '../reward/reward-ledger';
-import { completedQuestIds } from './quest-access';
 import { clearAttempts, questEffort } from './step-attempts';
 
 export interface FinishedQuest {
@@ -35,8 +34,6 @@ export async function finishQuest(tx: Tx, content: ContentCatalog, childId: stri
   const skillIds = Object.keys(reward.skillXp).sort();
   const xpBefore = await totalXp(tx, childId);
   const skillsBefore = await skillXpOf(tx, childId, skillIds);
-  const finishedBefore = await completedQuestIds(tx, childId);
-  finishedBefore.delete(quest.id);
 
   const granted = await grantReward(tx, childId, questSource(quest.id), reward, now);
   await tx
@@ -47,11 +44,6 @@ export async function finishQuest(tx: Tx, content: ContentCatalog, childId: stri
   const paid = granted ? reward : null;
   const level = (xp: number) => levelFromXp(xp, content.levelCurve).level;
   const skillLevel = (xp: number) => levelFromXp(xp, content.skillCurve).level;
-  // Newly opened: no other quest that unlocks it had been finished before this one.
-  const unlocked = quest.unlock.filter((id) => {
-    const unlockers = content.unlockedBy.get(id) ?? [];
-    return !unlockers.some((u) => finishedBefore.has(u));
-  });
   const skillLevels = skillIds.map((skillId) => {
     const before = skillsBefore.get(skillId) ?? 0;
     const after = before + (paid?.skillXp[skillId] ?? 0);
@@ -64,7 +56,6 @@ export async function finishQuest(tx: Tx, content: ContentCatalog, childId: stri
       xpAwarded: score.xpAwarded,
       levelBefore: level(xpBefore),
       levelAfter: level(xpBefore + (paid?.xp ?? 0)),
-      unlocked,
       skillLevels,
     },
   };

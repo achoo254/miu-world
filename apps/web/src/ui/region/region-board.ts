@@ -2,8 +2,8 @@
 // "Khám phá ngay" opens. Pure functions over the server's quest list, the same for every region.
 import type { QuestSummary } from '@miu/schema/game';
 
-/** A quest the child can open now: real content (not a "coming soon" stub) that is not locked. */
-export const isPlayable = (summary: QuestSummary): boolean => summary.quest.status !== 'stub' && summary.state !== 'locked';
+/** A quest the child can open now: real content, not a "coming soon" stub (no quest is ever locked). */
+export const isPlayable = (summary: QuestSummary): boolean => summary.quest.status !== 'stub';
 
 /** Finished quests out of the region's real ones ("Hoàn thành: 4/12"); stubs are not counted. */
 export function regionProgress(quests: readonly QuestSummary[]): { done: number; total: number } {

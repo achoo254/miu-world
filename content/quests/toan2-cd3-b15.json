@@ -14,7 +14,7 @@
     "play": "Tìm quả cân, chọn câu đúng, điền con nào nặng hơn, đọc cân nặng, tính với ki-lô-gam, đố bài toán thóc và rô-bốt",
     "learn": "Toán 2 Bài 15: nặng hơn, nhẹ hơn; ki-lô-gam; cộng, trừ với đơn vị kg",
     "reward": "80 XP, 15 xu, Khối lượng +2, Phép cộng +1",
-    "unlock": "Bài 16 \"Lít\""
+    "next": "Bài 16 \"Lít\""
   },
   "phases": {
     "hook": "can-dia-nghieng",
@@ -24,7 +24,7 @@
     "decision": "heo-un-mang-hop",
     "finale": "ba-chu-ro-bot-di-can",
     "reward": "tap-de-can-vang",
-    "unlock": "be-ca-can-nuoc"
+    "next": "be-ca-can-nuoc"
   },
   "texts": {},
   "places": {
@@ -1110,7 +1110,7 @@
     {
       "id": "be-ca-can-nuoc",
       "title": "Tiếng bì bõm ở bể nước",
-      "kind": "unlock",
+      "kind": "next",
       "trigger": "auto",
       "text": "Từ phía bể nước căng tin vọng lại tiếng bì bõm: Cá Bống kêu bể cá vơi mất nửa, phải đổ thêm cho đủ lít nước mới bơi được!"
     }

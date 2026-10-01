@@ -20,12 +20,12 @@ import './rewards.css';
 const STAR_GAP_MS = 400;
 const COUNT_MS = 900;
 
-type Screen = 'reward' | 'level' | 'unlock';
+type Screen = 'reward' | 'level';
 /** What the finishing step paid (server). */
 export type GrantedReward = NonNullable<StepCompleteResponse['reward']>;
 
 export function completionScreens(completion: QuestCompletion): Screen[] {
-  return ['reward', ...(completion.levelAfter > completion.levelBefore ? (['level'] as const) : []), ...(completion.unlocked.length > 0 ? (['unlock'] as const) : [])];
+  return ['reward', ...(completion.levelAfter > completion.levelBefore ? (['level'] as const) : [])];
 }
 
 /** The counter's value `elapsedMs` into a count-up of `durationMs`: from 0, easing out, ending exactly on `target`. */
@@ -153,35 +153,19 @@ export function CompletionSequence({
   const [index, setIndex] = useState(0);
   const screen = screens[index] ?? 'reward';
   const last = index === screens.length - 1;
-  const fill = (text: string) => say(text, data.character);
-  const title = screen === 'reward' ? 'Hoàn thành nhiệm vụ!' : screen === 'level' ? 'Lên cấp!' : 'Mở khóa!';
+  const title = screen === 'reward' ? 'Hoàn thành nhiệm vụ!' : 'Lên cấp!';
 
   return (
     <Modal title={title} onClose={last ? onExplore : () => setIndex(index + 1)} dataId={`completion-${screen}`} variant="scene">
       {screen === 'reward' ? (
         <RewardScreen completion={completion} reward={reward} quest={quest} data={data} />
-      ) : screen === 'level' ? (
+      ) : (
         <div className="reward-body" data-id="level-up">
           <MiuPortrait pose="cheer" size="9rem" species={data.character.species} />
           <p className="reward-level">
             Lv.{completion.levelBefore} → Lv.{completion.levelAfter}
           </p>
           <p>{data.character.name} mạnh hơn rồi! Đồ mới có thể đã mở trong tủ đồ.</p>
-        </div>
-      ) : (
-        <div className="reward-body" data-id="unlock">
-          <Icon name="unlocked" size={72} />
-          <ul className="reward-list">
-            {completion.unlocked.map((id) => {
-              const next = data.quests.find((q) => q.quest.id === id);
-              return (
-                <li key={id} data-id={`unlock-${id}`}>
-                  {next ? fill(next.quest.title) : id}
-                  {next?.quest.status === 'stub' ? <span className="badge">Sắp có</span> : null}
-                </li>
-              );
-            })}
-          </ul>
         </div>
       )}
       <div className="modal-actions">

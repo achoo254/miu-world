@@ -14,7 +14,7 @@
     "play": "Tìm đồ, nói, đọc thơ, chọn nhiều đáp án, trắc nghiệm, điền từ, xếp nhóm, xếp dòng thơ, lựa chọn trong hội thoại, xếp tranh, kể chuyện, phiếu viết",
     "learn": "Tiếng Việt 2 Bài 27: đọc hiểu và học thuộc bài thơ \"Mẹ\", từ chỉ hoạt động, câu nói lời biết ơn, chữ hoa O, kể chuyện Sự tích cây vú sữa",
     "reward": "80 XP, 15 xu, Đọc hiểu +2, Từ ngữ +1, Kể chuyện +1",
-    "unlock": "Bài 28 \"Trò chơi của bố\""
+    "next": "Bài 28 \"Trò chơi của bố\""
   },
   "phases": {
     "hook": "na-mat-ngu",
@@ -24,7 +24,7 @@
     "decision": "loi-nhan-cho-me",
     "finale": "doan-tranh-vu-sua",
     "reward": "qua-cua-koala-na",
-    "unlock": "mo-bai-28"
+    "next": "mo-bai-28"
   },
   "texts": {
     "me": {
@@ -863,7 +863,7 @@
     {
       "id": "mo-bai-28",
       "title": "Sư tử con dỗi bố",
-      "kind": "unlock",
+      "kind": "next",
       "trigger": "auto",
       "text": "Từ hang đá ấm vọng ra tiếng gầm… bé tí: sư tử con đang dỗi vì bố Sư Tử Vàng bận suốt ngày. Hình như bố đang nghĩ ra một trò chơi bí mật thì phải?"
     }

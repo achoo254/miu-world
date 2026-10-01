@@ -14,7 +14,7 @@
     "play": "Điền bảng, phân loại, xếp thứ tự, chọn nhiều số, ước lượng rồi đếm",
     "learn": "Toán 2 Bài 1: ôn tập các số đến 100 (chục, đơn vị, đọc viết số, so sánh, cấu tạo số)",
     "reward": "80 XP, 15 xu, Số đến 100 +2, So sánh số +1",
-    "unlock": "Bài 2 \"Tia số. Số liền trước, số liền sau\""
+    "next": "Bài 2 \"Tia số. Số liền trước, số liền sau\""
   },
   "phases": {
     "hook": "bang-so-bay-mat",
@@ -24,7 +24,7 @@
     "decision": "doi-bong-xep-hang",
     "finale": "mieng-bia-bang-so",
     "reward": "huy-hieu-bang-so",
-    "unlock": "mo-tia-so"
+    "next": "mo-tia-so"
   },
   "texts": {},
   "places": {
@@ -1536,7 +1536,7 @@
     {
       "id": "mo-tia-so",
       "title": "Vạch kẻ trên sân",
-      "kind": "unlock",
+      "kind": "next",
       "trigger": "auto",
       "text": "Từ sân nhảy lò cò vọng sang tiếng Gà Con Chíp: \"Ối, ối! Các vạch kẻ mất hết số rồi, tớ lại nhảy nhầm ô!\""
     }

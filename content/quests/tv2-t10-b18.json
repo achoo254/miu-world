@@ -14,7 +14,7 @@
     "play": "Tìm giấy bút, nói, đọc truyện, điền chữ, xếp nhóm, chọn nhiều đáp án, chọn lời viết thư, phiếu viết",
     "learn": "Tiếng Việt 2 Bài 18: đọc hiểu truyện “Tớ nhớ cậu”, nói lời chia tay, chính tả c/k, iêu/ươu, en/eng, từ ngữ chỉ tình cảm bạn bè, câu kể – câu hỏi – câu cảm và dấu câu",
     "reward": "90 XP, 15 xu, Đọc hiểu +2, Chính tả +2, Từ ngữ +1, Câu +1, Dấu câu +1",
-    "unlock": "Bài 19 \"Chữ A và những người bạn\""
+    "next": "Bài 19 \"Chữ A và những người bạn\""
   },
   "phases": {
     "hook": "gap-gau-tuyet-bong",
@@ -24,7 +24,7 @@
     "decision": "bong-viet-thu",
     "finale": "bai-tho-gui-kem",
     "reward": "phieu-viet-bai-18",
-    "unlock": "mo-bai-19"
+    "next": "mo-bai-19"
   },
   "texts": {
     "to-nho-cau": {
@@ -1036,7 +1036,7 @@
     {
       "id": "mo-bai-19",
       "title": "Ồn ào trên đường chữ cái",
-      "kind": "unlock",
+      "kind": "next",
       "trigger": "auto",
       "text": "Chó Ki chạy về báo tin: trên con đường chữ cái, chữ A và các bạn đang cãi nhau ầm ĩ xem ai quan trọng nhất. Vẹt Xanh đã bay tới… và cãi to nhất!"
     }

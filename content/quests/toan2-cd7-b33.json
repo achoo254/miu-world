@@ -14,7 +14,7 @@
     "play": "Tìm vé, tính nhẩm, điền dấu, chia bánh, chọn túi gạo, phân loại toa tàu và ô tô, đặt tính, giải toán, xây tháp số",
     "learn": "Toán 2 Bài 33: ôn tập phép cộng, phép trừ trong phạm vi 20, 100",
     "reward": "120 XP, 20 xu, Phép cộng +2, Phép trừ +2, Bài toán có lời văn +1",
-    "unlock": "Bài 34 \"Ôn tập hình phẳng\""
+    "next": "Bài 34 \"Ôn tập hình phẳng\""
   },
   "phases": {
     "hook": "ve-ghe-la-phep-tinh",
@@ -24,7 +24,7 @@
     "decision": "doan-tau-dao-cu",
     "finale": "thap-so-san-khau",
     "reward": "huy-hieu-tong-duyet",
-    "unlock": "phong-nen-hinh-khoi"
+    "next": "phong-nen-hinh-khoi"
   },
   "texts": {},
   "places": {
@@ -1963,7 +1963,7 @@
     {
       "id": "phong-nen-hinh-khoi",
       "title": "Phông nền còn trống",
-      "kind": "unlock",
+      "kind": "next",
       "trigger": "auto",
       "text": "Hươu Cao ló đầu qua tấm phông trắng toát sau sân khấu: hình tròn, hình vuông, hình tứ giác bay tứ tung cả rồi, ai dựng phông với tớ đây?"
     }

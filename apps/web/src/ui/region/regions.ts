@@ -8,9 +8,8 @@ export function findRegion(id: string): Region | undefined {
   return REGIONS.find((r) => r.id === id);
 }
 
-/** Badge text for a region that is not open yet. */
+/** Badge text for a region whose map is not built yet; a built map is always open (nothing is locked). */
 export function regionLockText(region: Region): string | null {
   if (region.status === 'open') return null;
-  if (region.status === 'level') return `Cần Lv.${region.level ?? ''}`;
   return region.status === 'v1' ? 'Sắp có' : 'Sắp mở';
 }

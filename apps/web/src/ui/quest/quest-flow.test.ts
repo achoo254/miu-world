@@ -21,7 +21,7 @@ const steps = [
     ],
   },
   { id: 'open-chest', title: 'Mở rương', kind: 'reward', target: 'chest', text: 'Rương mở' },
-  { id: 'open-gate', title: 'Mở cổng', kind: 'unlock', target: 'gate-ch2', trigger: 'auto', text: 'Cổng mở' },
+  { id: 'open-gate', title: 'Mở cổng', kind: 'next', target: 'gate-ch2', trigger: 'auto', text: 'Cổng mở' },
 ].map((s) => QuestStepPublic.parse(s));
 const quest = {
   id: 'q',
@@ -33,7 +33,6 @@ const quest = {
   texts: {},
   steps,
   reward: { xp: 100, coin: 0, skillXp: {}, items: {} },
-  unlock: [],
 } as ActiveQuestView;
 const progress = (completedSteps: string[], found: Record<string, string[]> = {}): QuestProgressDto => ({
   questId: 'q',

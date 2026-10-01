@@ -37,7 +37,7 @@ Cách làm: single-player vertical slice trước (Home Base + Khu rừng bí m�
 | Vertical slice | Một vòng lặp chơi trọn vẹn trong một khu vực nhỏ |
 | MVP / V1 / Live World / MP | Các giai đoạn phát hành (xem `project-roadmap.md`) |
 | Subject / Skill | Môn (Toán, Tiếng Việt, English) / kỹ năng cụ thể (Đọc hiểu, Phép cộng…); level Subject tổng hợp từ Skill; Skill XP là phần thưởng MVP (§15 #5) |
-| Quest 8 pha | Hook, Explore, Learn, Challenge, Decision, Finale, Reward, Unlock; quest phải trả lời đủ 7 câu (đóng vai ai, ở đâu, mục tiêu, chơi gì, kiến thức nào, nhận gì, mở khóa gì) |
+| Quest 8 pha | Hook, Explore, Learn, Challenge, Decision, Finale, Reward, Next (tiếp nối, không mở khóa gì); quest phải trả lời đủ 7 câu (đóng vai ai, ở đâu, mục tiêu, chơi gì, kiến thức nào, nhận gì, tiếp theo đi đâu) |
 | Ba lớp hỗ trợ | Hướng dẫn, Gợi ý, Đáp án kèm giải thích; xem đáp án không khóa tiến trình |
 | NPC Vẹt, Hải ly | Thay Cú mèo và Sóc trong mock (Cube Pets không có hai loài đó) |
 | Pack | Bộ asset bên ngoài khai báo trong `tools/assets/sources.json` |

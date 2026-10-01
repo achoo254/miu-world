@@ -96,7 +96,7 @@ test('the riddle with the Answer layer still finishes the chapter, for 90 XP ins
   await expect(page.locator('[data-id="reward-xp"] .visually-hidden')).toHaveText('+90 XP');
   await expect(page.locator('[data-id="reward-stars"]')).toHaveAttribute('data-stars', '2');
   await expect(page.locator('[data-id="reward-encourage"]')).toBeVisible();
-  // No Level Up (90 XP stays below the 100 XP of level 2) and nothing to unlock: the reward is the last screen.
+  // No Level Up (90 XP stays below the 100 XP of level 2) so the reward is the last screen (nothing is ever unlocked).
   await expect(page.locator('[data-id="completion-next"]')).toHaveCount(0);
   await expect(page.locator('[data-id="completion-map"]')).toBeVisible();
   expect(((await (await page.context().request.get('/api/progress')).json()) as { xp: number; level: number })).toMatchObject({ xp: 90, level: 1 });

@@ -31,7 +31,6 @@ export function RegionBackdrop({ regionId, children }: { regionId: string; child
 }
 
 const STATE_TEXT: Record<QuestSummary['state'], string> = {
-  locked: 'Chưa mở',
   open: 'Đang mở',
   'in-progress': 'Đang làm',
   completed: 'Đã xong',
@@ -99,8 +98,6 @@ function BoardRow({ summary, region, data, pick }: { summary: QuestSummary; regi
         <strong className="board-row-title">{title}</strong>
         {stub ? (
           <span className="badge">Sắp có</span>
-        ) : summary.state === 'locked' ? (
-          <span className="badge">Hoàn thành chương trước để mở</span>
         ) : (
           <span className="board-row-status">
             <StarRating stars={summary.progress.stars ?? 0} size={24} dataId={`region-quest-stars-${summary.quest.id}`} />
@@ -122,7 +119,7 @@ function BoardRow({ summary, region, data, pick }: { summary: QuestSummary; regi
           {goArrow}
         </Link>
       ) : (
-        <Icon name="locked" size={32} label="Khóa" />
+        <Icon name="locked" size={32} label="Sắp có" />
       )}
     </li>
   );

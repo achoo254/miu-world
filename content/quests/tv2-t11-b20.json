@@ -14,7 +14,7 @@
     "play": "Tìm đồ trên lối mòn, nói, đọc truyện, xếp nhóm, trắc nghiệm, điền chữ, đóng vai, chọn cách làm quen, phiếu viết",
     "learn": "Tiếng Việt 2 Bài 20: đọc hiểu truyện “Nhím nâu kết bạn”, nói và đáp lời xin lỗi, chính tả g/gh, iu/ưu, iên/iêng, từ chỉ hoạt động và đặc điểm, đặt câu về hoạt động",
     "reward": "90 XP, 15 xu, Đọc hiểu +2, Chính tả +2, Từ ngữ +2",
-    "unlock": "Bài 21 \"Thả diều\""
+    "next": "Bài 21 \"Thả diều\""
   },
   "phases": {
     "hook": "gap-ho-van",
@@ -24,7 +24,7 @@
     "decision": "ho-van-lam-quen",
     "finale": "hoat-dong-yeu-thich",
     "reward": "phieu-viet-bai-20",
-    "unlock": "mo-bai-21"
+    "next": "mo-bai-21"
   },
   "texts": {
     "nhim-nau": {
@@ -930,7 +930,7 @@
     {
       "id": "mo-bai-21",
       "title": "Con diều trên ngọn cây",
-      "kind": "unlock",
+      "kind": "next",
       "trigger": "auto",
       "text": "Từ đỉnh đồi lộng gió, Khỉ Lanh đu cành kêu ầm: con diều mới tinh vướng trên ngọn cây cao vút rồi! Một, hai, ba… ai lên giúp tớ với?"
     }

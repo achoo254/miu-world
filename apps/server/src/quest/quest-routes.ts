@@ -20,7 +20,7 @@ import { inventoryItems, questProgress } from '../db/schema';
 import { HttpError } from '../http-error';
 import { ipKey, limiter } from '../rate-limit';
 import { progressSummary, questSource, recordedReward } from '../reward/reward-ledger';
-import { completedQuestIds, isUnlocked, playableQuest, progressDto, questState } from './quest-access';
+import { playableQuest, progressDto, questState } from './quest-access';
 import { finishQuest } from './quest-completion';
 import { countAttempt, wrongAnswers } from './step-attempts';
 
@@ -87,13 +87,12 @@ export function questRoutes({ db, content, clock }: QuestRouteDeps): Router {
   async function summaries(childId: string): Promise<Map<string, QuestSummary>> {
     const rows = await db.select().from(questProgress).where(eq(questProgress.childId, childId));
     const byQuest = new Map(rows.map((r) => [r.questId, r]));
-    const completed = await completedQuestIds(db, childId);
     return new Map(
       [...content.quests.values()].map((quest) => {
         const row = byQuest.get(quest.id);
         const summary = {
           quest: QuestView.parse({ ...quest, textbook: content.textbooks.get(quest.id) }),
-          state: questState(isUnlocked(content, quest.id, completed), row),
+          state: questState(row),
           progress: progressDto(quest.id, row),
         };
         return [quest.id, summary];
@@ -136,7 +135,7 @@ export function questRoutes({ db, content, clock }: QuestRouteDeps): Router {
     const stepId = contentId(req.params.stepId, 'step-not-found');
     const input = StepCompleteRequest.safeParse(req.body ?? {});
     if (!input.success) throw new HttpError(400, 'invalid-step-input');
-    const quest = await playableQuest(db, content, childId, questId);
+    const quest = playableQuest(content, questId);
     const stepDef = quest.steps.find((s) => s.id === stepId);
 
     const now = clock();
@@ -199,7 +198,7 @@ export function questRoutes({ db, content, clock }: QuestRouteDeps): Router {
     const stepId = contentId(req.params.stepId, 'step-not-found');
     const body = SupportRequest.safeParse(req.body ?? {});
     if (!body.success) throw new HttpError(400, 'invalid-support-layer');
-    const quest = await playableQuest(db, content, childId, questId);
+    const quest = playableQuest(content, questId);
     const index = quest.steps.findIndex((s) => s.id === stepId);
     const step = quest.steps[index];
     if (!step) throw new HttpError(404, 'step-not-found');

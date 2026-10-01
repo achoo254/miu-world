@@ -14,7 +14,7 @@
     "play": "Tìm phấn, điền tia số, thả bóng vào vạch, chọn câu đúng, chọn số, điền toa tàu, đố số làn chạy",
     "learn": "Toán 2 Bài 2: tia số, số liền trước, số liền sau",
     "reward": "80 XP, 15 xu, Tia số +2, So sánh số +1",
-    "unlock": "Bài 3 \"Các thành phần của phép cộng, phép trừ\""
+    "next": "Bài 3 \"Các thành phần của phép cộng, phép trừ\""
   },
   "phases": {
     "hook": "chip-nhay-nham-o",
@@ -24,7 +24,7 @@
     "decision": "tau-hoa-cua-cao",
     "finale": "lan-chay-tho-trang",
     "reward": "huy-hieu-lo-co",
-    "unlock": "bien-ten-gio-gio"
+    "next": "bien-ten-gio-gio"
   },
   "texts": {},
   "places": {
@@ -1168,7 +1168,7 @@
     {
       "id": "bien-ten-gio-gio",
       "title": "Tấm biển bay lung tung",
-      "kind": "unlock",
+      "kind": "next",
       "trigger": "auto",
       "text": "Mèo Mun chạy tới, tay ôm một xấp biển tên: \"Số hạng\", \"Tổng\", \"Hiệu\"… gió thổi lẫn hết lên bảng tin rồi, ai giúp tớ với!"
     }

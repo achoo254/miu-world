@@ -13,7 +13,7 @@
     "play": "Tìm và giải đố",
     "learn": "Phép cộng",
     "reward": "XP",
-    "unlock": "Quest tiếp theo"
+    "next": "Quest tiếp theo"
   },
   "phases": {
     "hook": "say-hello",
@@ -23,7 +23,7 @@
     "decision": "add-flowers",
     "finale": "add-flowers",
     "reward": "add-flowers",
-    "unlock": "add-flowers"
+    "next": "add-flowers"
   },
   "steps": [
     {
@@ -71,8 +71,5 @@
   ],
   "reward": {
     "xp": 5
-  },
-  "unlock": [
-    "quest-soon"
-  ]
+  }
 }

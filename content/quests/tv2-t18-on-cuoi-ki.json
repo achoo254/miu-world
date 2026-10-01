@@ -14,7 +14,7 @@
     "play": "Tìm đồ, điền chữ, xếp từ vào nhóm, nói, trắc nghiệm, đọc bài, xếp tranh, chọn nhiều đáp án, lựa chọn trong hội thoại, phiếu viết",
     "learn": "Tiếng Việt 2 Ôn tập và Đánh giá cuối học kì 1: tên bài đã học, từ chỉ người, vật, hoạt động, dấu câu, iên/yên, nói theo tình huống, kể chuyện theo tranh, đọc hiểu \"Đàn mưa con\" và \"Cỏ và lúa\", nghe – viết, viết đoạn",
     "reward": "120 XP, 20 xu, Đọc hiểu +2, Từ ngữ +2, Dấu câu +2, Chính tả +1, Kể chuyện +1",
-    "unlock": "Lời hẹn học kì 2 bên kia cây cầu"
+    "next": "Lời hẹn học kì 2 bên kia cây cầu"
   },
   "phases": {
     "hook": "khai-mac-cay-cau",
@@ -24,7 +24,7 @@
     "decision": "ai-cat-bang",
     "finale": "doc-dan-mua-con",
     "reward": "qua-khanh-thanh",
-    "unlock": "hen-hoc-ki-hai"
+    "next": "hen-hoc-ki-hai"
   },
   "texts": {
     "niem-vui-la-gi": {
@@ -1608,7 +1608,7 @@
     {
       "id": "hen-hoc-ki-hai",
       "title": "Bên kia cây cầu",
-      "kind": "unlock",
+      "kind": "next",
       "trigger": "auto",
       "text": "Bên kia cây cầu, sương sớm tan dần, lộ ra một khu rừng chưa ai đặt chân tới. Vẹt Xanh thì thầm: học kì hai, mình sang đó khám phá nhé!"
     }

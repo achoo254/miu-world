@@ -14,7 +14,7 @@
     "play": "Nhặt bầu, điền bảng cộng, chọn đèn lồng, thả cá, so sánh, đưa gấu về tổ ong, đố cáp treo",
     "learn": "Toán 2 Bài 8: bảng cộng (qua 10)",
     "reward": "85 XP, 15 xu, Phép cộng +2, So sánh số +1",
-    "unlock": "Bài 9 \"Bài toán về thêm, bớt một số đơn vị\""
+    "next": "Bài 9 \"Bài toán về thêm, bớt một số đơn vị\""
   },
   "phases": {
     "hook": "bau-rung-mat-bang",
@@ -24,7 +24,7 @@
     "decision": "heo-un-doi-nau-canh",
     "finale": "cap-treo-cua-sau",
     "reward": "huy-hieu-bang-cong",
-    "unlock": "be-con-chay-tung-tang"
+    "next": "be-con-chay-tung-tang"
   },
   "texts": {},
   "places": {
@@ -1147,7 +1147,7 @@
     {
       "id": "be-con-chay-tung-tang",
       "title": "Bê con chạy tung tăng",
-      "kind": "unlock",
+      "kind": "next",
       "trigger": "auto",
       "text": "Từ chuồng rơm vọng ra tiếng \"ụm bò\" hớt hải: đàn bê con của Bò Sữa Mơ cứ chạy ra chạy vào, cô đếm mãi không biết còn bao nhiêu con trong chuồng!"
     }

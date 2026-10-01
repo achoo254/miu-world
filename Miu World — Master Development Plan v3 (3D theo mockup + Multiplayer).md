@@ -67,7 +67,7 @@ Phong cách hình ảnh đã chốt là voxel 3D kiểu Minecraft; 3 ảnh mock 
 Miu World là game phiêu lưu nơi kiến thức là công cụ để tiến lên, không phải LMS có thêm avatar.
 
 ```
-Thế giới → Khám phá → Tương tác → Quest → Kỹ năng học → Thử thách → Phần thưởng → Nhân vật phát triển → Mở khóa thế giới → Khám phá tiếp
+Thế giới → Khám phá → Tương tác → Quest → Kỹ năng học → Thử thách → Phần thưởng → Nhân vật phát triển → Khám phá tiếp (mọi khu, mọi nhiệm vụ mở từ đầu, quyết định 33)
 ```
 
 | Nguyên tắc | Ý nghĩa | Bằng chứng trong mock |
@@ -84,18 +84,18 @@ Thế giới → Khám phá → Tương tác → Quest → Kỹ năng học → 
 
 Thế giới là một đảo nổi gồm 6 khu vực, mở dần theo level và kỹ năng; Home Base và World Map là cùng một cảnh 3D.
 
-| Khu vực (theo mock) | Nội dung | Mở khóa | Giai đoạn |
+| Khu vực (theo mock) | Nội dung | Vào được | Giai đoạn |
 | --- | --- | --- | --- |
-| Nhà của Miu | Trang trí, bộ sưu tập, ba lô, điểm xuất phát | Mặc định | MVP |
-| Khu rừng bí mật | Tiếng Việt, đọc hiểu; 12 chương; rương thưởng; NPC Vẹt (thay Cú mèo trong mock), Hải ly (thay Sóc) | Mặc định | MVP |
-| Trường học | Toán, Tiếng Anh | Level hoặc skill | V1 |
-| Thư viện | Đọc sách, manh mối | Reading skill | V1 |
-| Lâu đài | Thử thách nâng cao, sự kiện đặc biệt, boss | Level và skill | V1 |
-| Núi tuyết | Chưa mở (Sắp mở) | Chưa xác định | Sau V1 |
-| Đảo bí ẩn | Cần Lv.15 | Level 15 | Sau V1 |
+| Nhà của Miu | Trang trí, bộ sưu tập, ba lô, điểm xuất phát | Khi dựng xong | MVP |
+| Khu rừng bí mật | Tiếng Việt, đọc hiểu; 12 chương; rương thưởng; NPC Vẹt (thay Cú mèo trong mock), Hải ly (thay Sóc) | Từ đầu | MVP |
+| Trường học | Toán, Tiếng Anh | Từ đầu | V1 |
+| Thư viện | Đọc sách, manh mối | Từ đầu khi dựng xong | V1 |
+| Lâu đài | Thử thách nâng cao, sự kiện đặc biệt, boss | Từ đầu khi dựng xong | V1 |
+| Núi tuyết | Chưa dựng (Sắp mở) | Từ đầu khi dựng xong | Sau V1 |
+| Đảo bí ẩn | Chưa dựng (Sắp mở) | Từ đầu khi dựng xong | Sau V1 |
 | Khu sự kiện (cổng TIMO) | Sự kiện có thời hạn, hiện đếm ngược "Còn 12 ngày" | Lịch sự kiện | Live World |
 
-**Mỗi khu vực bắt buộc có:** NPC, quest, tương tác, bộ sưu tập hoặc điều kiện mở khóa. Khu vực chỉ để trang trí thì không đạt.
+**Mỗi khu vực bắt buộc có:** NPC, quest, tương tác, bộ sưu tập. Khu vực chỉ để trang trí thì không đạt. Không khu nào khóa theo level, kỹ năng hay nhiệm vụ (quyết định 33).
 
 MVP chỉ dựng **một khu vực nhỏ** (Khu rừng bí mật, chương 1) cộng với Home Base, đúng nguyên tắc vertical slice.
 
@@ -128,7 +128,7 @@ Level của Subject là tổng hợp từ các Skill bên dưới. Skill XP là 
 
 ### Quest
 
-Một quest theo 8 pha: Hook, Explore, Learn, Challenge, Decision, Finale, Reward, Unlock. Quest bị coi là chưa đạt nếu chỉ có "đọc, trả lời, đúng sai, tiếp tục". Mọi quest phải trả lời 7 câu: đóng vai ai, ở đâu, mục tiêu gì, chơi gì, dùng kiến thức nào, nhận gì, mở khóa gì.
+Một quest theo 8 pha: Hook, Explore, Learn, Challenge, Decision, Finale, Reward, Next (tiếp nối: chuyện kể tiếp đi đâu, không mở khóa gì). Quest bị coi là chưa đạt nếu chỉ có "đọc, trả lời, đúng sai, tiếp tục". Mọi quest phải trả lời 7 câu: đóng vai ai, ở đâu, mục tiêu gì, chơi gì, dùng kiến thức nào, nhận gì, tiếp theo đi đâu.
 
 ### Cơ chế tương tác (có trong mock)
 
@@ -209,7 +209,7 @@ Mock hiện tại là bản art mượt và sẽ được thay bằng mock voxel
 | Core | Hành trình (Journey), Thành tích | Có trong menu M1.7 nhưng không có nội dung | V1 |
 | Core | Cửa hàng | Xu cần nơi tiêu | V1 |
 | Gameplay | English Challenge, Logic puzzle, Tìm đồ vật | Có trong spec, không có mock | V1 |
-| Tiến bộ | Level Up, Skill Up, Mở khóa khu vực | Khoảnh khắc thưởng quan trọng | MVP (Level Up, Mở khóa), V1 |
+| Tiến bộ | Level Up, Skill Up | Khoảnh khắc thưởng quan trọng | MVP (Level Up), V1 |
 | Hỗ trợ | Pause, Cài đặt, Hộp thư | Có biểu tượng trong mock nhưng không có màn | MVP (Pause), V1 |
 | Live | Event Quest, Event Reward | Hoàn thiện luồng sự kiện | Live World |
 | Tài khoản | Đăng nhập, chọn hồ sơ trẻ, cổng phụ huynh, đồng ý của phụ huynh, khu vực phụ huynh | Bắt buộc với sản phẩm trẻ em (mục 9) | MVP |
@@ -348,7 +348,7 @@ Quest và nội dung được mô tả bằng dữ liệu, kiểm tra bằng sch
 | Miền | Quan hệ | Ghi chú |
 | --- | --- | --- |
 | Tài khoản | Phụ huynh → Hồ sơ trẻ → Nhân vật | Mọi dữ liệu game gắn với hồ sơ, không gắn với phụ huynh |
-| Thế giới | World → Region → Location; mỗi Region là một bản đồ voxel chia thành chunk | Region có điều kiện mở khóa; vật thể tương tác (NPC, rương, cổng) là entity, không phải block |
+| Thế giới | World → Region → Location; mỗi Region là một bản đồ voxel chia thành chunk | Region không khóa (quyết định 33); vật thể tương tác (NPC, rương, cổng) là entity, không phải block |
 | Nhân vật | Nhân vật → Kỹ năng, Trang bị, Túi đồ, Bộ sưu tập | Loài (Mèo, Thỏ, Cáo, Gấu) là thuộc tính |
 | Quest | Quest → Step → Interaction → Challenge | Mỗi Step có trigger và điều kiện |
 | Học tập | Subject → Skill → Learning Activity → Skill XP | Tách Subject và Skill như mục 5 |
@@ -365,8 +365,7 @@ Quest và nội dung được mô tả bằng dữ liệu, kiểm tra bằng sch
   "interaction": { "type": "search", "targets": ["chiec-hop", "la-thu", "cay-nam", "bui-cay"] },
   "learning": { "skill": "doc-hieu", "activity": "find-clue" },
   "support": ["guide", "hint", "answer"],
-  "reward": { "xp": 100, "coin": 20, "skillXp": { "doc-hieu": 1 } },
-  "unlock": ["forest-ch2"]
+  "reward": { "xp": 100, "coin": 20, "skillXp": { "doc-hieu": 1 } }
 }
 ```
 
@@ -407,7 +406,7 @@ Các con số dưới đây là **giả định khởi điểm** để POC kiể
 MVP chứng minh một vòng lặp trọn vẹn trong một khu vực nhỏ, không dựng cả thế giới.
 
 ```
-Mở game → Home → Tạo nhân vật → Vào Khu rừng bí mật → Di chuyển → Khám phá → Gặp NPC → Nhận quest → Tương tác → Thử thách Toán → Thưởng → XP và kỹ năng → Mở khóa chương tiếp
+Mở game → Home → Tạo nhân vật → Vào Khu rừng bí mật → Di chuyển → Khám phá → Gặp NPC → Nhận quest → Tương tác → Thử thách Toán → Thưởng → XP và kỹ năng → Khám phá tiếp
 ```
 
 &#91;embedded content: lộ trình 6 phase · 4 gate\]
@@ -483,6 +482,7 @@ Mọi quyết định của đợt POC và Foundation đã chốt (2026-09-29).
 | 30 | Nội dung không lặp (2026-09-30, người sở hữu) | Không dùng lại nội dung/cảnh giữa các quest; mọi thứ lặp (phản hồi, lời NPC, lời mời thử lại) xoay vòng từ pool, không lặp ngay | Pool phản hồi đúng/sai trong nội dung, server trả câu luân phiên; `content:check` chặn câu dài lặp giữa các quest |
 | 31 | Phụ kiện nhân vật mở rộng (2026-10-01, người sở hữu) | 7 loại phụ kiện: Mũ, Kính, Khăn, Balo, Cánh, Giày, Cầm tay; mỗi loại ít nhất 20 món mở ngay từ Lv.1, ô chọn có ảnh từng món; Áo vẫn "Sắp có" vì áo nướng sẵn trong mô hình nhân vật | Thay mục 22 (chỉ Mũ + Balo); `content:check` chặn loại nào dưới 20 món mở từ Lv.1 hoặc thiếu ảnh; đồ khóa theo level/quest vẫn được thêm ngoài 20 món |
 | 32 | Nhạc nền (2026-10-01, người sở hữu; nguồn nhạc do Jev chọn) | 32 bài thu sẵn CC0 của Komiku, phát ngẫu nhiên không lặp liền theo cảnh: nhà/menu, đi dạo rừng, đi dạo trường, đang làm nhiệm vụ, bài học, hoàn thành nhiệm vụ; nén AAC 96 kbps | Jev chọn nhạc thu sẵn (66%) thay vì nhạc sinh bằng code; pack gốc 77 MB (tổng packs 108/150 MB), bản phát 23 MB; nhạc theo nút Âm thanh, tắt khi ghi âm, nhỏ lại khi đọc to |
+| 33 | Không có mở khóa (2026-10-01, người sở hữu) | Bỏ hẳn khái niệm hoàn thành nhiệm vụ để mở chương hay khu tiếp: bé vào được mọi map đã dựng và làm được mọi nhiệm vụ ngay từ đầu; map chưa dựng hiện "Sắp có", không khóa theo level | Thay mục 4 (cột mở khóa), mục 5 (pha Unlock thành Next, câu "mở khóa gì" thành "tiếp theo đi đâu") và tiêu chí 8 của mục 16; schema quest không còn `unlock`, server không còn trạng thái `locked`, màn hoàn thành không còn màn "Mở khóa!"; trang phục mở theo level/quest vẫn giữ vì là phần thưởng |
 
 ### Còn cần bạn chốt
 
@@ -508,19 +508,21 @@ Không còn.
 
 MVP đạt khi một bé chơi trọn một quest trong Khu rừng bí mật và thấy việc học làm nhân vật mạnh lên, trên điện thoại thật.
 
-- [ ] Chọn Mèo, đặt tên, đổi trang phục và thấy thay đổi ngay trên nhân vật voxel, rồi vào thế giới
-- [ ] Di chuyển tự do bằng joystick và bàn phím, va chạm đúng, camera không xuyên khối
-- [ ] Tương tác được với NPC và ít nhất 3 vật thể
-- [ ] Quest có câu chuyện và vòng lặp đầy đủ, dùng ít nhất 2 cơ chế khác trắc nghiệm
-- [ ] Một kiến thức học được dùng để giải một vấn đề trong game (ví dụ đố 8 + 5 = ? trên cây cổ thụ)
-- [ ] Hướng dẫn, gợi ý, đáp án hoạt động và không khóa tiến trình
-- [ ] XP, xu, skill, mở khóa do server tính; sửa dữ liệu ở client không đổi được kết quả
-- [ ] Hoàn thành quest mở khóa chương hoặc khu vực tiếp theo
-- [ ] Test IDOR và CSP đạt; không có script hay analytics bên thứ ba
-- [ ] Đạt mục tiêu khung hình đã chốt sau POC trên máy chuẩn iPad Gen 10
-- [ ] Giao diện đúng luồng và chức năng theo mock voxel mới nhất của các màn hình MVP
-- [ ] Một bé chơi thử hoàn thành một quest (có phụ huynh đồng ý)
-- [ ] Thêm quest mới chỉ bằng dữ liệu, không sửa code
+Ô đã đánh dấu có bằng chứng tự động trên CI (cập nhật 2026-10-01); ô còn trống chờ người hoặc chờ quyết định.
+
+- [x] Chọn Mèo, đặt tên, đổi trang phục và thấy thay đổi ngay trên nhân vật voxel, rồi vào thế giới — E2E `creator`, `mvp-loop`
+- [x] Di chuyển tự do bằng joystick và bàn phím, va chạm đúng, camera không xuyên khối — E2E `play`, `hud-layout`
+- [x] Tương tác được với NPC và ít nhất 3 vật thể — E2E `mvp-loop`, `play`
+- [x] Quest có câu chuyện và vòng lặp đầy đủ, dùng ít nhất 2 cơ chế khác trắc nghiệm — E2E `mvp-loop`, `challenges` (kéo thả, sắp xếp)
+- [x] Một kiến thức học được dùng để giải một vấn đề trong game (ví dụ đố 8 + 5 = ? trên cây cổ thụ) — E2E `mvp-loop`
+- [x] Hướng dẫn, gợi ý, đáp án hoạt động và không khóa tiến trình — E2E `challenges`
+- [x] XP, xu, skill, mở khóa do server tính; sửa dữ liệu ở client không đổi được kết quả — test server `quest-routes`, `endpoint-table`
+- [x] Bé vào được mọi map đã dựng và làm được mọi nhiệm vụ ngay từ đầu, không nhiệm vụ nào chờ nhiệm vụ khác (thay tiêu chí "hoàn thành quest mở khóa chương tiếp", quyết định 33) — test server `quest-routes`, `content-catalog`
+- [x] Test IDOR và CSP đạt; không có script hay analytics bên thứ ba — test server `quest-routes` (IDOR), E2E `mvp-loop` (CSP, không request ngoài origin)
+- [ ] Đạt mục tiêu khung hình đã chốt sau POC trên máy chuẩn iPad Gen 10 — chờ DEVICE-01
+- [ ] Giao diện đúng luồng và chức năng theo mock voxel mới nhất của các màn hình MVP — đã dựng theo mock, chờ designer duyệt
+- [ ] Một bé chơi thử hoàn thành một quest (có phụ huynh đồng ý) — việc của người (task #24)
+- [x] Thêm quest mới chỉ bằng dữ liệu, không sửa code — 70 bài SGK thêm bằng `content/quests/` + `content/world/targets.json`, `pnpm content:check`
 
 ## 17. Phân vai Claude Code và quy trình
 

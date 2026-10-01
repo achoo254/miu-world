@@ -14,7 +14,7 @@
     "play": "Tìm mảnh kính, nối đường bay, chọn tên, phân loại ô kính, đếm, điền phép tính, nói đồ vật, thi đường bay dài hơn",
     "learn": "Toán 2 Bài 26: đường gấp khúc, độ dài đường gấp khúc, hình tứ giác",
     "reward": "80 XP, 15 xu, Hình phẳng +2, Phép cộng +1",
-    "unlock": "Bài 27 \"Thực hành gấp, cắt, ghép, xếp hình. Vẽ đoạn thẳng\""
+    "next": "Bài 27 \"Thực hành gấp, cắt, ghép, xếp hình. Vẽ đoạn thẳng\""
   },
   "phases": {
     "hook": "ong-hoa-mat",
@@ -24,7 +24,7 @@
     "decision": "hai-loi-di-tiep",
     "finale": "thi-bay-ai-xa-hon",
     "reward": "huy-hieu-canh-ong",
-    "unlock": "thiep-cua-chip"
+    "next": "thiep-cua-chip"
   },
   "texts": {},
   "places": {
@@ -1270,7 +1270,7 @@
     {
       "id": "thiep-cua-chip",
       "title": "Tấm thiệp của Chíp",
-      "kind": "unlock",
+      "kind": "next",
       "trigger": "auto",
       "text": "Ở bàn thủ công, Gà Con Chíp ôm một xấp giấy màu và cây kéo nhỏ: Chíp muốn gấp thiệp chúc mừng cô giáo mà gấp mãi tờ giấy vẫn méo xệch!"
     }

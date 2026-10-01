@@ -14,7 +14,7 @@
     "play": "Tìm đồ đo, chọn câu đúng, điền cân nặng và số lít, giải toán, chọn can",
     "learn": "Toán 2 Bài 35: ôn tập đo lường (ki-lô-gam, lít)",
     "reward": "120 XP, 18 xu, Khối lượng +2, Dung tích +2, Bài toán có lời văn +1",
-    "unlock": "Bài 36 \"Ôn tập chung\""
+    "next": "Bài 36 \"Ôn tập chung\""
   },
   "phases": {
     "hook": "pin-so-kiem-dem",
@@ -24,7 +24,7 @@
     "decision": "vo-roi-ba-chu-de",
     "finale": "ba-can-muoi-lam-lit",
     "reward": "huy-hieu-hau-truong",
-    "unlock": "le-tong-ket-sap-mo"
+    "next": "le-tong-ket-sap-mo"
   },
   "texts": {},
   "places": {
@@ -1045,7 +1045,7 @@
     {
       "id": "le-tong-ket-sap-mo",
       "title": "Lễ tổng kết sắp mở",
-      "kind": "unlock",
+      "kind": "next",
       "trigger": "auto",
       "text": "Tiếng trống vang từ bục trao huy hiệu: cả trường đang kéo về hội trường, mỗi khu mang theo một câu đố cuối cùng của học kì!"
     }

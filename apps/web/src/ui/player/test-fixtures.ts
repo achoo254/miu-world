@@ -33,21 +33,20 @@ export function questList(done: number = 0): QuestListResponse {
           texts: {},
           steps: [hello, find],
           reward: { xp: 100, coin: 20, skillXp: {}, items: {} },
-          unlock: ['forest-ch2'],
         },
         state: done === 0 ? 'open' : done === 2 ? 'completed' : 'in-progress',
         progress: { questId: 'forest-ch1', completedSteps, completed: done === 2, found: {}, stars: done === 2 ? 3 : null },
       },
       {
         quest: { id: 'forest-ch2', region: 'khu-rung-bi-mat', chapter: 2, title: 'Chương 2', status: 'stub' },
-        state: done === 2 ? 'open' : 'locked',
+        state: 'open',
         progress: { questId: 'forest-ch2', completedSteps: [], completed: false, found: {}, stars: null },
       },
     ],
   };
 }
 
-/** `questList` plus an open textbook lesson in chapter 2 of the forest (no quest unlocks it). */
+/** `questList` plus an open textbook lesson in chapter 2 of the forest. */
 export function questListWithLesson(done: number = 0): QuestListResponse {
   const { quests } = questList(done);
   const lesson = {
@@ -61,7 +60,6 @@ export function questListWithLesson(done: number = 0): QuestListResponse {
       texts: {},
       steps: [hello],
       reward: { xp: 80, coin: 15, skillXp: {}, items: {} },
-      unlock: [],
       textbook: { book: 'Tiếng Việt 2, tập một', lesson: 'Bài 1. Tôi là học sinh lớp 2', pages: [10, 12] as [number, number] },
     },
     state: 'open' as const,

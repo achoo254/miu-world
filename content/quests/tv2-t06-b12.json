@@ -14,7 +14,7 @@
     "play": "Tìm đồ, nói, đọc danh sách, trắc nghiệm, chọn nhiều đáp án, xếp tên theo bảng chữ cái, điền chữ, giải câu đố, xếp thẻ thành câu, phân nhóm, lựa chọn trong hội thoại, phiếu viết",
     "learn": "Tiếng Việt 2 Bài 12: đọc hiểu \"Danh sách học sinh\", thứ tự bảng chữ cái, chính tả g/gh, s/x, dấu hỏi/dấu ngã, từ chỉ sự vật và đặc điểm, câu nêu đặc điểm, đọc và lập danh sách",
     "reward": "90 XP, 15 xu, Đọc hiểu +2, Chính tả +2, Bảng chữ cái +1, Từ ngữ +1",
-    "unlock": "Bài 13 \"Yêu lắm trường ơi!\""
+    "next": "Bài 13 \"Yêu lắm trường ơi!\""
   },
   "phases": {
     "hook": "gap-gau-truc",
@@ -24,7 +24,7 @@
     "decision": "ten-tho-ti-nhoe",
     "finale": "to-1-lop-2a",
     "reward": "phieu-viet-bai-12",
-    "unlock": "mo-bai-13"
+    "next": "mo-bai-13"
   },
   "texts": {
     "danh-sach-hoc-sinh": {
@@ -1247,7 +1247,7 @@
     {
       "id": "mo-bai-13",
       "title": "Tiếng khóc giờ ra chơi",
-      "kind": "unlock",
+      "kind": "next",
       "trigger": "auto",
       "text": "Trống ra chơi vừa điểm, sân trường rừng ồn ào như chợ, vậy mà Gà Con Ri lại ngồi một góc sụt sịt: tớ nhớ nhà, tớ chưa thấy yêu trường chút nào…"
     }

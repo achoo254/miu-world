@@ -67,7 +67,6 @@ const quest = {
   texts: {},
   steps: Object.values(steps),
   reward: { xp: 100, coin: 20, skillXp: {}, items: {} },
-  unlock: [],
 } as ActiveQuestView;
 
 function answerResponse(correct: boolean, feedback: string | null): StepCompleteResponse {

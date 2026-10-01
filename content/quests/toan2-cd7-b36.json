@@ -14,7 +14,7 @@
     "play": "Tìm hộp huy hiệu, chọn đáp án, ghép tranh với đồng hồ, đặt tính, giải toán, điền đường đi và sơ đồ mũi tên",
     "learn": "Toán 2 Bài 36: ôn tập chung (số, lịch, đồng hồ, cộng trừ có nhớ, độ dài, khối lượng, dung tích, hình tứ giác)",
     "reward": "120 XP, 20 xu, Phép cộng +1, Phép trừ +1, Xem đồng hồ +1, Hình phẳng +1, Bài toán có lời văn +1",
-    "unlock": "Học kì hai: Toán 2 tập hai"
+    "next": "Học kì hai: Toán 2 tập hai"
   },
   "phases": {
     "hook": "mo-man-tong-ket",
@@ -24,7 +24,7 @@
     "decision": "hai-loi-mi-thuat",
     "finale": "duong-bay-ong-vang",
     "reward": "huy-hieu-hoc-ki-mot",
-    "unlock": "hen-gap-hoc-ki-hai"
+    "next": "hen-gap-hoc-ki-hai"
   },
   "texts": {},
   "places": {
@@ -1057,7 +1057,7 @@
     {
       "id": "hen-gap-hoc-ki-hai",
       "title": "Hẹn gặp học kì hai",
-      "kind": "unlock",
+      "kind": "next",
       "trigger": "auto",
       "text": "Khi pháo giấy còn bay, ông Lộc lật sang tờ lịch mới và thì thầm: học kì hai sắp tới, Toán 2 tập hai đang chờ những câu đố lớn hơn!"
     }

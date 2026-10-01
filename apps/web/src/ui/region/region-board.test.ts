@@ -18,11 +18,10 @@ describe('region board', () => {
     const done = as(ch1, 'done', 'completed');
     const open = as(ch1, 'open', 'open');
     const going = as(ch1, 'going', 'in-progress');
-    const locked = as(ch1, 'locked', 'locked');
     expect(recommendedQuest([done, open, going])?.quest.id).toBe('going');
-    expect(recommendedQuest([done, locked, open])?.quest.id).toBe('open');
-    expect(recommendedQuest([done, locked, ch2])?.quest.id).toBe('done');
-    expect(recommendedQuest([locked, ch2])).toBeNull();
+    expect(recommendedQuest([done, open])?.quest.id).toBe('open');
+    expect(recommendedQuest([done, ch2])?.quest.id).toBe('done');
+    expect(recommendedQuest([ch2])).toBeNull();
   });
 
   it('drops the region from a quest title on that region\'s own board', () => {

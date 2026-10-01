@@ -14,7 +14,7 @@
     "play": "Tìm đồ, ghép bài đọc với nội dung, nói, đoán từ, điền chữ, xếp thẻ thành câu, phân nhóm, đóng vai, đọc truyện, điền dấu câu, trắc nghiệm, kể chuyện, lựa chọn trong hội thoại, phiếu viết",
     "learn": "Tiếng Việt 2 Ôn tập giữa học kì 1: các bài đọc đã học, đoán từ, tên đồ vật và công dụng, câu nêu đặc điểm, nói và đáp lời, kiểu câu, dấu chấm và dấu chấm hỏi, kể chuyện, đọc hiểu \"Câu chuyện bó đũa\", nghĩa từ, từ chỉ sự vật và hoạt động",
     "reward": "120 XP, 20 xu, Đọc hiểu +2, Từ ngữ +2, Câu +2, Dấu câu +1, Kể chuyện +1, Chính tả +1",
-    "unlock": "Bài 17 \"Gọi bạn\""
+    "next": "Bài 17 \"Gọi bạn\""
   },
   "phases": {
     "hook": "mo-hoi-la-vang",
@@ -24,7 +24,7 @@
     "decision": "chia-la-vang",
     "finale": "doc-bo-dua",
     "reward": "phieu-viet-giua-ki",
-    "unlock": "mo-bai-17"
+    "next": "mo-bai-17"
   },
   "texts": {
     "vit-boi-duoc-ma": {
@@ -1614,7 +1614,7 @@
     {
       "id": "mo-bai-17",
       "title": "Tiếng gọi giữa đồng khô",
-      "kind": "unlock",
+      "kind": "next",
       "trigger": "auto",
       "text": "Lễ hội vừa tan, từ đồng cỏ khô hạn xa xa vọng lại tiếng gọi khàn khàn của Bò Sữa Mơ: bạn ơi, bạn ở đâu? Gọi mãi mà chẳng thấy ai thưa."
     }

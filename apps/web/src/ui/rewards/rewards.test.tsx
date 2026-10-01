@@ -30,7 +30,6 @@ const completion = (over: Partial<QuestCompletion> = {}): QuestCompletion => ({
   xpAwarded: 100,
   levelBefore: 1,
   levelAfter: 2,
-  unlocked: ['forest-ch2'],
   skillLevels: [{ skillId: 'phep-cong', levelBefore: 1, levelAfter: 1 }],
   ...over,
 });
@@ -41,13 +40,12 @@ afterEach(() => {
 });
 
 describe('completion screens', () => {
-  it('shows Level Up only when the level went up, Unlock only when something opened, and at most three screens', () => {
-    expect(completionScreens(completion())).toEqual(['reward', 'level', 'unlock']);
-    expect(completionScreens(completion({ xpAwarded: 90, levelAfter: 1 }))).toEqual(['reward', 'unlock']);
-    expect(completionScreens(completion({ levelAfter: 1, unlocked: [] }))).toEqual(['reward']);
+  it('shows Level Up only when the level went up; nothing is ever unlocked', () => {
+    expect(completionScreens(completion())).toEqual(['reward', 'level']);
+    expect(completionScreens(completion({ levelAfter: 1 }))).toEqual(['reward']);
   });
 
-  it('shows the server\'s numbers, then Level Up and the unlocked chapter, each skippable with one tap', () => {
+  it('shows the server\'s numbers, then Level Up, each skippable with one tap', () => {
     const onMap = vi.fn();
     render(<CompletionSequence completion={completion({ stars: 2 })} reward={REWARD} quest={QUEST} data={DATA} onMap={onMap} onExplore={() => undefined} />);
     expect(document.querySelector('[data-id="reward-stars"]')?.getAttribute('data-stars')).toBe('2');
@@ -58,15 +56,13 @@ describe('completion screens', () => {
     expect(document.querySelector('[data-id="reward-encourage"]')).toBeNull();
     fireEvent.click(screen.getByRole('button', { name: 'Tiếp' }));
     expect(screen.getByText('Lv.1 → Lv.2')).toBeTruthy();
-    fireEvent.keyDown(screen.getByRole('dialog'), { key: 'Escape' }); // one tap (or Esc) skips on
-    expect(document.querySelector('[data-id="unlock-forest-ch2"]')?.textContent).toContain('Sắp có');
     fireEvent.click(screen.getByRole('button', { name: /Về bản đồ/ }));
     expect(onMap).toHaveBeenCalledTimes(1);
     expect(document.body.textContent).not.toMatch(/phạt|Kim cương/i);
   });
 
   it('after seeing an answer: 90 XP with a kind word, and no Level Up', () => {
-    render(<CompletionSequence completion={completion({ xpAwarded: 90, levelAfter: 1, unlocked: [] })} reward={REWARD} quest={QUEST} data={DATA} onMap={() => undefined} onExplore={() => undefined} />);
+    render(<CompletionSequence completion={completion({ xpAwarded: 90, levelAfter: 1 })} reward={REWARD} quest={QUEST} data={DATA} onMap={() => undefined} onExplore={() => undefined} />);
     expect(rowText('reward-xp')).toBe('+90 XP');
     expect(screen.getByText(/Mochi tự giải hết để nhận trọn 100 XP/)).toBeTruthy();
     expect(screen.queryByRole('button', { name: 'Tiếp' })).toBeNull();
@@ -106,7 +102,7 @@ describe('the reward moment unfolds in order', () => {
   it('lets the child\'s character cheer, and leaves out rewards worth nothing', () => {
     reduceMotion();
     const nothing = { xp: 0, coin: 0, skillXp: { 'phep-cong': 0 }, items: { 'la-than': 0 } };
-    render(<CompletionSequence completion={completion({ xpAwarded: 0, levelAfter: 1, unlocked: [] })} reward={nothing} quest={QUEST} data={DATA} onMap={() => undefined} onExplore={() => undefined} />);
+    render(<CompletionSequence completion={completion({ xpAwarded: 0, levelAfter: 1 })} reward={nothing} quest={QUEST} data={DATA} onMap={() => undefined} onExplore={() => undefined} />);
     expect(document.querySelector('[data-id="reward-cheer"] .miu-portrait')).toBeTruthy();
     for (const id of ['reward-xp', 'reward-coin', 'reward-item-la-than', 'reward-skill-phep-cong']) expect(document.querySelector(`[data-id="${id}"]`), id).toBeNull();
   });

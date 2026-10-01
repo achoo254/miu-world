@@ -14,7 +14,7 @@
     "play": "Tìm mảnh lịch, ghép thẻ ngày sinh, chạm ngày và thứ trên tờ lịch, điền ngày còn thiếu, nối tranh ngày lễ với ô chữ",
     "learn": "Toán 2 Bài 30: ngày – tháng, đọc và xem tờ lịch tháng",
     "reward": "90 XP, 15 xu, Xem lịch +2",
-    "unlock": "Bài 31 \"Thực hành và trải nghiệm xem đồng hồ, xem lịch\""
+    "next": "Bài 31 \"Thực hành và trải nghiệm xem đồng hồ, xem lịch\""
   },
   "phases": {
     "hook": "hat-xi-bay-lich",
@@ -24,7 +24,7 @@
     "decision": "koala-dap-lich",
     "finale": "thu-bay-tuan-truoc",
     "reward": "huy-hieu-giu-lich",
-    "unlock": "chuong-thap-im-lim"
+    "next": "chuong-thap-im-lim"
   },
   "texts": {},
   "places": {
@@ -1199,7 +1199,7 @@
     {
       "id": "chuong-thap-im-lim",
       "title": "Chuông tháp im lìm",
-      "kind": "unlock",
+      "kind": "next",
       "trigger": "auto",
       "text": "Chó Mực chạy lên đỉnh tháp, thở hồng hộc: \"Cả tuần tới chưa ai trực đánh chuông! Phải xem đồng hồ, xem lịch để lên lịch trực ngay thôi!\""
     }

@@ -73,7 +73,7 @@ describe('Home', () => {
     // Region cards: the open forest with its subject; locked regions named with their state for screen readers.
     expect(screen.getByRole('button', { name: /Khu rừng bí mật/ }).textContent).toBe('Khu rừng bí mậtTiếng Việt');
     expect(screen.getByRole('button', { name: 'Nhà của Mochi: Sắp mở' })).toBeTruthy();
-    expect(screen.getByRole('button', { name: 'Đảo bí ẩn: Cần Lv.15' })).toBeTruthy();
+    expect(screen.getByRole('button', { name: 'Đảo bí ẩn: Sắp mở' })).toBeTruthy();
     // The rail of the mock, without the MVP's missing pieces (events, diamonds, streak).
     for (const name of ['Nhiệm vụ', 'Bản đồ', 'Ba lô']) expect(screen.getByRole('link', { name })).toBeTruthy();
     expect(document.body.textContent).not.toMatch(/Kim cương|chuỗi ngày|Sự kiện|TIMO/i);
@@ -116,8 +116,8 @@ describe("today's quests", () => {
     return { ...base, state, quest: status === 'active' ? { ...base.quest, id } : { id, region: base.quest.region, chapter: 9, title: id, status: 'stub' } };
   };
 
-  it('lists the quest in progress first, then open ones in catalogue order, at most three, never locked, done or stub', () => {
-    const quests = [summary('a', 'open'), summary('b', 'completed'), summary('c', 'in-progress'), summary('d', 'locked'), summary('e', 'open', 'stub'), summary('f', 'open'), summary('g', 'open')];
+  it('lists the quest in progress first, then open ones in catalogue order, at most three, never done or stub', () => {
+    const quests = [summary('a', 'open'), summary('b', 'completed'), summary('c', 'in-progress'), summary('e', 'open', 'stub'), summary('f', 'open'), summary('g', 'open')];
     expect(todayQuests(quests).map((q) => q.quest.id)).toEqual(['c', 'a', 'f']);
     expect(todayQuests([summary('b', 'completed')])).toEqual([]);
   });

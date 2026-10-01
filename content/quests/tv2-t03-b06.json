@@ -14,7 +14,7 @@
     "play": "Tìm đồ Mèo Nghệ giấu, nói khởi động, đọc bài, trắc nghiệm, chọn nhiều đáp án, kéo câu vào nhóm, điền chữ cái, xếp tên theo bảng chữ cái, ghép từ chỉ đặc điểm, xếp tranh, nói và kể, phiếu viết",
     "learn": "Tiếng Việt 2 Bài 6: đọc Một giờ học, câu hỏi trong bài, nói và đáp lời khen, bảng chữ cái (t, u, v, y), sắp xếp tên theo bảng chữ cái, từ chỉ đặc điểm, câu nêu đặc điểm, kể việc làm trước khi đi học",
     "reward": "85 XP, 15 xu, Đọc hiểu +2, Bảng chữ cái +1, Từ ngữ +1, Câu +1, Kể chuyện +1",
-    "unlock": "Bài 7 \"Cây xấu hổ\""
+    "next": "Bài 7 \"Cây xấu hổ\""
   },
   "phases": {
     "hook": "meo-mun-run-rau",
@@ -24,7 +24,7 @@
     "decision": "meo-mun-quyet-dinh",
     "finale": "xep-tranh-buoi-sang",
     "reward": "phieu-viet-bai-6",
-    "unlock": "mo-bai-7"
+    "next": "mo-bai-7"
   },
   "texts": {
     "mot-gio-hoc": {
@@ -1002,7 +1002,7 @@
     {
       "id": "mo-bai-7",
       "title": "Bụi cỏ nhắm mắt",
-      "kind": "unlock",
+      "kind": "next",
       "trigger": "auto",
       "text": "Ven đầm vọng lại tiếng Cáo Vần ngâm nga: lá ơi sao cụp, lá ơi sao xoè? Vừa có một tiếng động lạ, bụi cỏ xấu hổ đã nhắm tịt cả trăm con mắt lá. Tiếng động ấy là của ai nhỉ?"
     }

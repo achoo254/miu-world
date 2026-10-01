@@ -14,7 +14,7 @@
     "play": "Tìm đồ dọc bờ suối, nói về tiếng trống, đọc thơ, xếp dòng thơ vào giỏ, chọn một đáp án, chọn nhiều đáp án, xếp lời tạm biệt, nói và đáp, điền chữ vào khổ thơ, nói về trường em, phiếu viết",
     "learn": "Tiếng Việt 2 Bài 11: đọc hiểu bài thơ “Cái trống trường em”, từ ngữ nói về vật như nói về người, nói và đáp lời tạm biệt, nói về ngôi trường của em, viết chữ hoa Đ",
     "reward": "80 XP, 15 xu, Đọc hiểu +2, Từ ngữ +1, Câu +1",
-    "unlock": "Bài 12 \"Danh sách học sinh\""
+    "next": "Bài 12 \"Danh sách học sinh\""
   },
   "phases": {
     "hook": "trong-ngu-ca-he",
@@ -24,7 +24,7 @@
     "decision": "danh-thuc-trong-the-nao",
     "finale": "trong-thuc-day",
     "reward": "phieu-viet-bai-11",
-    "unlock": "mo-bai-12"
+    "next": "mo-bai-12"
   },
   "texts": {
     "cai-trong-truong-em": {
@@ -742,7 +742,7 @@
     {
       "id": "mo-bai-12",
       "title": "Danh sách ướt sũng",
-      "kind": "unlock",
+      "kind": "next",
       "trigger": "auto",
       "text": "Mưa rào đổ xuống gốc cây thư viện. Gấu Trúc Tròn ôm tờ danh sách ướt sũng, tên các bạn nhoè hết. Ai giúp cậu ấy từ… từ… đọc lại đây?"
     }

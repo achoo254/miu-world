@@ -14,7 +14,7 @@
     "play": "Tìm đồ, nói, đọc bài, chọn nhiều đáp án, phân loại, đóng vai, ghép câu, điền chữ cái, xếp thứ tự sách, lựa chọn trong hội thoại, phiếu viết",
     "learn": "Tiếng Việt 2 Bài 4: đọc hiểu \"Làm việc thật là vui\", câu nêu hoạt động, bảng chữ cái (h, i, l, n, o, ơ), từ ngữ chỉ vật và hoạt động, nghe – viết, viết đoạn về việc ở nhà, đọc mở rộng",
     "reward": "85 XP, 15 xu, Đọc hiểu +2, Bảng chữ cái +2, Từ ngữ +1, Câu +1",
-    "unlock": "Bài 5 \"Em có xinh không?\""
+    "next": "Bài 5 \"Em có xinh không?\""
   },
   "phases": {
     "hook": "gap-ong-vang",
@@ -24,7 +24,7 @@
     "decision": "viec-cuoi-ngay",
     "finale": "doc-mo-rong",
     "reward": "qua-cua-ong-vang",
-    "unlock": "mo-bai-5"
+    "next": "mo-bai-5"
   },
   "texts": {
     "lam-viec-that-la-vui": {
@@ -968,7 +968,7 @@
     {
       "id": "mo-bai-5",
       "title": "Ai đó soi bóng bên suối",
-      "kind": "unlock",
+      "kind": "next",
       "trigger": "auto",
       "text": "Bên suối soi bóng, Voi Út, cô em gái bé nhất của Voi Tùng, đang lén gài cành cây khô lên đầu cho giống bạn Hươu. Chuyện gì thế nhỉ?"
     }

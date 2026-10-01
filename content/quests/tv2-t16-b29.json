@@ -14,7 +14,7 @@
     "play": "Lục tìm đồ cũ, nói, đọc thơ, chọn đáp án, xếp tranh, chọn nhiều từ, phân loại, chọn cách làm, nghe và kể chuyện, phiếu viết",
     "learn": "Tiếng Việt 2 Bài 29: đọc hiểu bài thơ \"Cánh cửa nhớ bà\", từ chỉ hoạt động, nghe và kể chuyện \"Bà cháu\", viết chữ hoa Ô, Ơ",
     "reward": "80 XP, 15 xu, Đọc hiểu +2, Kể chuyện +2, Từ ngữ +1, mẩu then cửa khắc vạch",
-    "unlock": "Lời nhử sang Bài 30 \"Thương ông\" (không khóa bài nào)"
+    "next": "Lời nhử sang Bài 30 \"Thương ông\""
   },
   "phases": {
     "hook": "gap-cua-kenh",
@@ -24,7 +24,7 @@
     "decision": "tim-thay-vet-khac",
     "finale": "doan-tranh-ba-chau",
     "reward": "phieu-viet-bai-29",
-    "unlock": "mo-bai-30"
+    "next": "mo-bai-30"
   },
   "texts": {
     "canh-cua-nho-ba": {
@@ -781,7 +781,7 @@
     {
       "id": "mo-bai-30",
       "title": "Tiếng gâu gâu trên con dốc",
-      "kind": "unlock",
+      "kind": "next",
       "trigger": "auto",
       "text": "Từ con dốc gập ghềnh phía xa vọng lại tiếng \"Gâu! Gâu!\". Cún Vừng đang cuống quýt: ông Vện đau chân, chẳng bước lên dốc được."
     }
