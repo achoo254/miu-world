@@ -21,7 +21,7 @@ Allowed licenses: CC0-1.0, MIT, OFL-1.1. Files built from these packs are listed
 | Furniture Kit (`kenney-furniture-kit`) | Kenney | 2.0 | CC0-1.0 | https://kenney.nl/assets/furniture-kit |
 | City Kit (Roads) (`kenney-city-kit-roads`) | Kenney | 2.1 | CC0-1.0 | https://kenney.nl/assets/city-kit-roads |
 | City Kit (Suburban) (`kenney-city-kit-suburban`) | Kenney | 2.0 | CC0-1.0 | https://kenney.nl/assets/city-kit-suburban |
-| Poupi's Incredible Adventures (32 tracks) (`komiku-poupi`) | Komiku (Loyalty Freak Music) | 1.0 | CC0-1.0 | https://opengameart.org/content/poupis-incredible-adventures-full-album |
+| Poupi's Incredible Adventures (45 tracks) (`komiku-poupi`) | Komiku (Loyalty Freak Music) | 1.0 | CC0-1.0 | https://opengameart.org/content/poupis-incredible-adventures-full-album |
 
 Credits: art by Kenney (www.kenney.nl), emoji by Microsoft Fluent Emoji, fonts Baloo 2 and Nunito (SIL Open Font License).
 
@@ -593,7 +593,7 @@ City Kit Suburban (2.0)
 	• Instagram: instagram.com/kenney_nl
 ```
 
-## Poupi's Incredible Adventures (32 tracks) — CC0-1.0
+## Poupi's Incredible Adventures (45 tracks) — CC0-1.0
 
 ```text
 Creative Commons Legal Code
