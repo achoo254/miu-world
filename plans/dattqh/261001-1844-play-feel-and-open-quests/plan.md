@@ -31,4 +31,11 @@
 - [x] `generate-school-map.test.ts`: đi được tới mọi khu, lớp tầng 1 và tầng 2; không chỗ nào trên bờ đất ngoài tường đứng được (kiểm ngược: với tường 2 khối thì có 9.580 chỗ).
 - [x] `character-routes.test.ts`: đổi mèo sang cáo, `/api/progress` và `/api/quests` giữ nguyên.
 - [x] `home.spec.ts`: ba lô đóng bằng ✕ và "Đóng"; bảng nhiệm vụ đánh dấu bài đang chơi, chọn bài khác thì đổi tại chỗ.
-- [ ] Gate 5 lệnh + web build + `e2e:ci`; commit, push, deploy production (người sở hữu cho phép lần này).
+- [x] Gate 5 lệnh + web build + `e2e:ci`; commit, push, deploy production (người sở hữu cho phép lần này).
+
+## Kiểm tra cuối (01/10/2026)
+
+- `assets:check` 1730 file, `content:check` 129 file, `pnpm test` 738/738, `typecheck`, `lint` 0 cảnh báo; web build và `security:dist` xanh.
+- `e2e:ci` 65 xanh, 2 bỏ qua (quay video, chụp ảnh review), 4,8 phút.
+- Staging và production chạy `d82ffbc` (bản `261001-185648-d82ffbc`), database được backup trước khi chuyển; `atlas.json`, map Trường học và `manifest.json` trùng sha256 với local.
+- Chưa chụp lại ảnh review của Trường học: tường rào cao thêm 1 khối nên vài cặp ảnh so mock lệch nhẹ.
