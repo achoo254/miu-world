@@ -9,7 +9,8 @@
       "description": "Một khu rừng đầy những câu chuyện thú vị đang chờ {name} khám phá!",
       "status": "open",
       "hotspot": { "x": 50, "y": 54 },
-      "backdrop": { "eye": [14, 17, 12], "target": [40, 13, 44], "fov": 55 }
+      "backdrop": { "eye": [14, 17, 12], "target": [40, 13, 44], "fov": 55 },
+      "events": ["rain-rainbow", "fireflies", "animal-visit"]
     },
     { "id": "nha-cua-be", "name": "Nhà của {name}", "tagline": "Trang trí ngôi nhà nhỏ", "subject": "Trang trí · Bộ sưu tập", "status": "soon", "hotspot": { "x": 32, "y": 84 } },
     { "id": "truong-hoc", "name": "Trường học", "tagline": "Lớp học vui của muôn loài", "subject": "Toán", "status": "v1", "hotspot": { "x": 19, "y": 54 } },

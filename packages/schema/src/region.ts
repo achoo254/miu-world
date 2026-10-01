@@ -16,6 +16,10 @@ const point = z.tuple([z.number(), z.number(), z.number()]);
  * Camera on the region's map for its backdrop image (the region screen's background), rendered by
  * `pnpm assets:regions` into `generated/regions/<id>.png`. Map coordinates, in blocks.
  */
+/** Surprise world events the game can play on any map: rain then a rainbow, fireflies at dusk, an animal coming to say hello. */
+export const WorldEventKind = z.enum(['rain-rainbow', 'fireflies', 'animal-visit']);
+export type WorldEventKind = z.infer<typeof WorldEventKind>;
+
 export const RegionBackdrop = z.strictObject({ eye: point, target: point, fov: z.number().min(20).max(90) });
 export type RegionBackdrop = z.infer<typeof RegionBackdrop>;
 
@@ -30,6 +34,8 @@ export const Region = z
     /** What the region holds, said in the speech bubble of the region screen. May use `{name}`. */
     description: z.string().min(1).optional(),
     backdrop: RegionBackdrop.optional(),
+    /** Surprises the world plays now and then while the child explores this region (rotating, never twice in a row). */
+    events: z.array(WorldEventKind).min(1).optional(),
     status: RegionStatus,
     /** Level that opens a `level` region. */
     level: z.number().int().min(2).optional(),

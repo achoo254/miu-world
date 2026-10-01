@@ -31,6 +31,10 @@ const HEAR_RADIUS = 16;
 /** A villager within this distance may answer another; the answer comes after a short pause. */
 const ANSWER_RADIUS = 7;
 const ANSWER_DELAY = 1.6;
+/** An animal visit picks an animal this close (blocks), and stops this far from the child. */
+const VISIT_RADIUS = 14;
+const VISIT_STOP = 1.6;
+const VISIT_SECONDS = 6;
 /** How long cheering bubbles may show even beside a quest target (seconds). */
 const CHEER_SECONDS = 4;
 const CLIP_FADE = 0.25;
@@ -64,6 +68,8 @@ export interface AmbientLife {
   nearest(player: { x: number; y: number; z: number }): AmbientTarget | null;
   /** The child tapped it: it chats or does a trick. */
   react(id: string): boolean;
+  /** Surprise: the nearest drawn animal runs over to the child, says hello and runs home. Returns its name, or null when none can. */
+  visit(player: { x: number; y: number; z: number }): string | null;
   /** The child finished a quest: everyone near them cheers (their bubbles show even next to a quest target). Returns how many joined in. */
   celebrate(player: { x: number; y: number; z: number }): number;
   /** Screen position (CSS px) above the character, for the prompt anchor. */
@@ -155,7 +161,8 @@ export async function loadAmbientLife(loader: GuardedGltfLoader, ambients: reado
       const spec = ROUTINES[def.routine];
       const random = seededRandom(def.id);
       const visual = await buildVisual(loader, def, options.shadows);
-      const actor = new AmbientActor(def.id, spec, def.position, (def.yaw * Math.PI) / 180, def.spots, random);
+      // Its own copy of the spots: a visit adds one next to the child.
+      const actor = new AmbientActor(def.id, spec, def.position, (def.yaw * Math.PI) / 180, { ...def.spots }, random);
       const bubble = createSpeechBubble();
       bubble.sprite.position.y = visual.labelHeight;
       visual.root.add(bubble.sprite);
@@ -313,6 +320,21 @@ export async function loadAmbientLife(loader: GuardedGltfLoader, ambients: reado
       if (!member?.actor.react()) return false;
       stats.reactions++;
       return true;
+    },
+    visit(player) {
+      const animal = members
+        .filter((m) => m.active && m.spec.kind === 'animal')
+        .map((m) => ({ m, d: Math.hypot(player.x - m.actor.position[0], player.z - m.actor.position[2]) }))
+        .filter(({ d }) => d > VISIT_STOP && d <= VISIT_RADIUS)
+        .sort((a, b) => a.d - b.d)[0];
+      if (!animal) return null;
+      // Stop a little short of the child, on its side.
+      const [ax, , az] = animal.m.actor.position;
+      const k = VISIT_STOP / animal.d;
+      const at: Vec3 = [player.x + (ax - player.x) * k, player.y, player.z + (az - player.z) * k];
+      if (!animal.m.actor.visit(at)) return null;
+      cheering = Math.max(cheering, VISIT_SECONDS); // its hello shows even beside a quest target
+      return animal.m.def.name;
     },
     celebrate(player) {
       let joined = 0;

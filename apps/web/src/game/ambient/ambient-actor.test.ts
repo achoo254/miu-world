@@ -165,6 +165,21 @@ describe('AmbientActor', () => {
     }
   });
 
+  it('runs over to the child for a visit, says hello, and runs back home; people and fish never visit', () => {
+    const bunny = actorFor('bunny', 11);
+    live(bunny, 2);
+    expect(bunny.visit([8, 10, 6])).toBe(true);
+    const { frames, speech } = live(bunny, 12);
+    const nearest = Math.min(...frames.map((f) => Math.hypot(f.position[0] - 8, f.position[2] - 6)));
+    expect(nearest).toBeLessThan(0.5);
+    expect(frames.some((f) => f.clip === 'run')).toBe(true);
+    expect(speech[0]?.pool).toBe('bunny-sound');
+    live(bunny, 10);
+    expect(Math.hypot(bunny.position[0], bunny.position[2])).toBeLessThan(0.5);
+    expect(actorFor('cook').visit([8, 10, 6])).toBe(false);
+    expect(actorFor('fish').visit([8, 10, 6])).toBe(false);
+  });
+
   it('answers a neighbour on the next frame, turned towards them', () => {
     const actor = actorFor('cook', 6);
     actor.step(1 / 30, ctx());

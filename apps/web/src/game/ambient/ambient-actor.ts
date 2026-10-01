@@ -68,6 +68,9 @@ export function pickChore(chores: readonly Chore[], last: Chore | null, random: 
   return pool.at(-1) ?? null;
 }
 
+/** The spot an animal visit runs to (set next to the child just before the visit). */
+const VISIT_SPOT = '__visit';
+
 export class AmbientActor {
   private readonly pos: [number, number, number];
   private yaw: number;
@@ -100,7 +103,7 @@ export class AmbientActor {
     readonly spec: RoutineSpec,
     private readonly home: Vec3,
     homeYaw: number,
-    private readonly spots: Readonly<Record<string, Vec3>>,
+    private readonly spots: Record<string, Vec3>,
     private readonly random: () => number,
   ) {
     this.pos = [...home];
@@ -136,6 +139,27 @@ export class AmbientActor {
   celebrate(reduced: boolean): boolean {
     if (this.mode === 'react' || this.airborne) return false;
     return this.interrupt(reduced ? this.spec.celebrate.filter((c) => !c.lively) : this.spec.celebrate);
+  }
+
+  /**
+   * Runs over to `at` (beside the child), says hello with its greeting, dances, and runs back home: the
+   * "animal visit" surprise. Only animals on the ground, and not while busy or in the air.
+   */
+  visit(at: Vec3): boolean {
+    if (this.spec.kind !== 'animal' || this.mode === 'react' || this.airborne) return false;
+    this.spots[VISIT_SPOT] = at;
+    return this.interrupt([
+      {
+        id: 'visit',
+        weight: 1,
+        beats: [
+          { do: 'walk', to: VISIT_SPOT, clip: 'run', speed: this.spec.walkSpeed * 2.5 },
+          { do: 'say', pool: this.spec.greet.pool },
+          { do: 'act', clip: 'dance', loops: [2, 2] },
+          { do: 'walk', to: 'home', clip: 'run', speed: this.spec.walkSpeed * 2.5 },
+        ],
+      },
+    ]);
   }
 
   private interrupt(chores: readonly Chore[]): boolean {

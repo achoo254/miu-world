@@ -136,3 +136,28 @@ test('records short videos of the camp, the woodcutter and the stream for the ow
     await video?.saveAs(`${SHOTS}life-${place}.webm`);
   }
 });
+
+// Surprises (content/world/regions.json `events`): rain that clears into a rainbow, fireflies at dusk, an
+// animal running over to say hello. `?event=` plays one right away; each stays within the draw-call budget.
+for (const [kind, near, quality] of [
+  ['rain-rainbow', 'bac-nau-an', 'high'],
+  ['fireflies', 'co-lam-vuon', 'high'],
+  ['animal-visit', 'tho-trang', 'mid'],
+] as const) {
+  test(`plays the ${kind} surprise within the draw-call budget`, async ({ page, baseURL }) => {
+    await freshChild(page, baseURL ?? '');
+    await page.goto(`${play(behind(near, 4), quality)}&event=${kind}`);
+    await waitReady(page);
+    await expect.poll(async () => (await readStats(page)).worldEvent).toBe(kind);
+    await page.waitForTimeout(kind === 'rain-rainbow' ? 6_000 : 4_000);
+    const stats = await readStats(page);
+    expect(stats.calls).toBeLessThanOrEqual(DRAW_CALL_BUDGET);
+    if (kind === 'animal-visit') expect(stats.ambientLine ?? '').toMatch(/./);
+    await page.screenshot({ path: `${SHOTS}event-${kind}.png` });
+    if (kind === 'rain-rainbow') {
+      // The rain stops and the rainbow shows.
+      await page.waitForTimeout(10_000);
+      await page.screenshot({ path: `${SHOTS}event-rainbow.png` });
+    }
+  });
+}

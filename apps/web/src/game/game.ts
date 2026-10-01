@@ -11,6 +11,7 @@ import {
   Scene,
   SRGBColorSpace,
   Timer,
+  Vector3,
   WebGLRenderer,
 } from 'three';
 import { blockLookup } from '@miu/voxel/block-table';
@@ -20,6 +21,8 @@ import { UI_ICONS, assetUrl } from '../ui/kit/ui-art';
 import type { GameStore } from '../game-bridge/game-store';
 import { loadAmbientLife, type AmbientTarget } from './ambient/ambient-life';
 import { createConfetti } from './scene/confetti';
+import { RegionCatalog, WorldEventKind } from '@miu/schema/region';
+import regionsJson from '../../../../content/world/regions.json';
 import { AssetRegistry, GuardedGltfLoader } from './asset-loader';
 import { createReviewShot } from './debug/review-shots';
 import { StatsOverlay } from './debug/stats-overlay';
@@ -35,7 +38,8 @@ import { PlayerController, type MoveIntent } from './player/player-controller';
 import { RescueWatch } from './player/rescue';
 import { readQuality } from './quality';
 import { disposeSceneGraph } from './scene/dispose-scene';
-import { SKY_HORIZON, createSky } from './scene/sky';
+import { SKY_HORIZON, createSky, skyColours } from './scene/sky';
+import { createWorldEvents } from './scene/world-events';
 import { loadWorldData } from './world/world-data';
 import { createWorldRenderer } from './world/world-renderer';
 import './game.css';
@@ -106,6 +110,11 @@ function buildDom(host: HTMLElement) {
   root.append(stats, joystick, actions);
   host.append(root);
   return { root, stats, joystick, run, jump };
+}
+
+/** The surprises a region plays (content/world/regions.json `events`); none for a region without any. */
+function regionEvents(region: string | undefined): readonly WorldEventKind[] {
+  return RegionCatalog.parse(regionsJson).regions.find((r) => r.id === region)?.events ?? [];
 }
 
 export class Game {
@@ -214,11 +223,13 @@ export class Game {
     const scene = new Scene();
     this.scene = scene;
     // Fog starts late so distant trees keep their colour instead of washing out to white.
-    scene.fog = new Fog(SKY_HORIZON, quality.viewDistance * 0.75, quality.viewDistance);
+    const fog = new Fog(SKY_HORIZON, quality.viewDistance * 0.75, quality.viewDistance);
+    scene.fog = fog;
     const camera = new PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, quality.viewDistance + 40);
     const sky = createSky(quality.viewDistance + 20);
     scene.add(sky);
-    scene.add(new HemisphereLight('#ffffff', '#8fa37a', 1.9));
+    const hemisphere = new HemisphereLight('#ffffff', '#8fa37a', 1.9);
+    scene.add(hemisphere);
     const sun = new DirectionalLight('#fff6e0', 1.7);
     sun.castShadow = quality.shadows;
     sun.shadow.mapSize.set(1024, 1024);
@@ -274,6 +285,24 @@ export class Game {
     if (this.disposed) return;
     stepLoaded();
     const confetti = createConfetti();
+    const lookAhead = new Vector3();
+    // Surprises this region plays now and then (none in review shots, which must be the same every run).
+    const surprise = WorldEventKind.safeParse(params.get('event'));
+    const events = createWorldEvents(params.get('shot') ? [] : regionEvents(this.options.region), {
+      scene,
+      skyColours: skyColours(sky),
+      fog,
+      hemisphere,
+      sun,
+      life,
+      reduced: reducedMotion,
+      lite: quality.level === 'low',
+      ahead: () => {
+        camera.getWorldDirection(lookAhead);
+        const flat = Math.hypot(lookAhead.x, lookAhead.z) || 1;
+        return { x: lookAhead.x / flat, z: lookAhead.z / flat };
+      },
+    });
     scene.add(character.root, props, life.group, confetti.mesh, ...targets.map((t) => t.root));
     overlay.stats.outfit = character.outfit;
 
@@ -450,6 +479,11 @@ export class Game {
         if (!reducedMotion) confetti.burst(controller.position);
       }
       confetti.update(dt);
+      // `?event=` (review/E2E switch): that surprise right away, once.
+      if (surprise.success && events.played === 0 && !events.active) events.start(surprise.data, controller.position);
+      events.update(dt, controller.position, nearest !== null);
+      overlay.stats.worldEvent = events.active;
+      overlay.stats.worldEvents = events.played;
       overlay.stats.ambientCelebrations = life.stats.celebrations;
       overlay.stats.confetti = confetti.active;
       overlay.stats.ambientVisible = life.stats.visible;
