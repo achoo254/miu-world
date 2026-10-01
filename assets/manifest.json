@@ -8394,8 +8394,8 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "649e9e152e04b77a5b15350eeef551e37dc5cd5737d9864f3c4fcc6f40632971",
-      "bytes": 602892
+      "sha256": "c5a6c4306ec0c03ca62b8647dd071be0df074995c6ac708373cb31bbf3e9894b",
+      "bytes": 607540
     },
     {
       "path": "generated/regions/chest.png",
@@ -10002,8 +10002,8 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "3c2b3a358238b69b516a0102a4a3964db0fdf3701a816abcbf8f3d736fe1f2be",
-      "bytes": 173685
+      "sha256": "eae9e3718fc5fda100949154e0cb4cd82fbc948d8b5f76a46e9e0ba69598dd14",
+      "bytes": 173748
     },
     {
       "path": "generated/review/ui/02-set-pin.png",
@@ -10082,8 +10082,8 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "c62f57307fc869f4bdd31a04a105ed6c30ee3496e26b361bd979d6e2eccf938d",
-      "bytes": 147999
+      "sha256": "670cd14f1ae14bf8e9be4be6fb273ea7da51475f18c218fab7f1e114fd0fdeed",
+      "bytes": 147879
     },
     {
       "path": "generated/review/ui/07-home.png",
@@ -10098,8 +10098,8 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "697860cce47e40c3eda41c9fdd0a1da25b08cbbddab3f6ff54b87596d98af524",
-      "bytes": 377086
+      "sha256": "0908555ca7f28fafd767705f98546bf999cbdcbdcdb5181b043c9874e60193cb",
+      "bytes": 376212
     },
     {
       "path": "generated/review/ui/08-world-map.png",
@@ -10114,8 +10114,8 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "697860cce47e40c3eda41c9fdd0a1da25b08cbbddab3f6ff54b87596d98af524",
-      "bytes": 377086
+      "sha256": "0908555ca7f28fafd767705f98546bf999cbdcbdcdb5181b043c9874e60193cb",
+      "bytes": 376212
     },
     {
       "path": "generated/review/ui/09-region.png",
@@ -10130,8 +10130,8 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "b6a42f31d6a83e05fec062ee0ff64ab0c1464fb6da3d7eb784cc64909231bf4b",
-      "bytes": 311764
+      "sha256": "731e59c988e62d058d6858f9243fd2c526ef192f15b72eb62e196070c006da30",
+      "bytes": 349308
     },
     {
       "path": "generated/review/ui/10-play-parrot.png",
@@ -10146,8 +10146,8 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "de6b0de82238c3a8acb7d3642793e07f35a6c9163b30caccf32a957935968402",
-      "bytes": 454617
+      "sha256": "78bffb2424c6a641b3d698ec982f4b68c8bf407811a3a4427eb2314bc395a162",
+      "bytes": 468289
     },
     {
       "path": "generated/review/ui/11-parent-gate.png",
@@ -10392,8 +10392,8 @@
       "license": "CC0-1.0",
       "generator": "tools/world/generate-world-overview.ts",
       "derivedFrom": [],
-      "sha256": "05d0127d586962295fd0980088b86ac5c704e603c448962c950d84e2647e56f4",
-      "bytes": 19655
+      "sha256": "a58fd9f499b7a239c01ca72f6431b6802d37d7b007efe8b12d99cd9901d3da5c",
+      "bytes": 19859
     },
     {
       "path": "generated/world/the-gioi/entities.json",
@@ -10402,6 +10402,14 @@
       "derivedFrom": [],
       "sha256": "1f17d71e20e291f2246f5f70ea05b390e6bcdb8a00e435664e5d235012a56065",
       "bytes": 6199
+    },
+    {
+      "path": "generated/world/the-gioi/stage-decor.json",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-world-overview.ts",
+      "derivedFrom": [],
+      "sha256": "f82552808fefad703da8ac069e532521206ae0629fad0bd964ce54b25aba842f",
+      "bytes": 95
     },
     {
       "path": "generated/world/truong-hoc/chunks.bin",

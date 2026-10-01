@@ -25,6 +25,8 @@ export const MAP_ID = WORLD_OVERVIEW_MAP;
 export const SEED_TEXT = 'miu-the-gioi';
 const CHUNKS = [8, 3, 8] as const; // 128 x 48 x 128 blocks
 const OUT_DIR = path.join(ASSETS_DIR, 'generated/world', MAP_ID);
+/** Next to the map (only `pnpm world:overview` writes this folder); the web app bundles it at build time. */
+const DECOR_PATH = path.join(OUT_DIR, 'stage-decor.json');
 
 const PACK = {
   castle: 'packs/kenney-castle-kit/2.0',
@@ -62,7 +64,13 @@ const ISLANDS = [
   { region: 'dao-bi-an', across: 44, away: 72, radius: 7, top: 13, depth: 9 },
 ].map((island) => ({ ...island, x: Math.round((island.away - island.across) / 2), z: Math.round((island.away + island.across) / 2) }));
 
-export async function generateWorldOverview(): Promise<{ world: VoxelWorld; entities: WorldEntities }> {
+/** Things on the overview the Home stage animates on top of the render: each waterfall's top and foot (world blocks). */
+export interface OverviewDecor {
+  waterfalls: Array<{ top: Vec3; bottom: Vec3 }>;
+}
+
+export async function generateWorldOverview(): Promise<{ world: VoxelWorld; entities: WorldEntities; decor: OverviewDecor }> {
+  const decor: OverviewDecor = { waterfalls: [] };
   const table = await readJson(path.join(REPO_ROOT, 'content/blocks.json'), blockTableSchema);
   const { regions } = await readJson(path.join(REPO_ROOT, 'content/world/regions.json'), RegionCatalog);
   const missing = regions.filter((r) => !ISLANDS.some((i) => i.region === r.id)).map((r) => r.id);
@@ -127,6 +135,7 @@ export async function generateWorldOverview(): Promise<{ world: VoxelWorld; enti
     const pz = forest.z - 6 - edge + 3;
     for (let dx = -2; dx <= 1; dx++) for (let dz = -1; dz <= 2; dz++) if (insideForest(px + dx, pz + dz)) world.set(px + dx, forest.top, pz + dz, B.water);
     for (let y = forest.top; y >= forest.top - 16; y--) for (const [dx, dz] of [[2, -2], [3, -3], [2, -3]] as const) if (world.get(px + dx, y, pz + dz) === 0) world.set(px + dx, y, pz + dz, B.water);
+    decor.waterfalls.push({ top: [px + 3, forest.top + 1, pz - 2], bottom: [px + 3, forest.top - 16, pz - 2] });
   }
   addProp(`${PACK.survival}/tent.glb`, forest.x - 9, forest.top + 1, forest.z + 4, 40);
 
@@ -208,7 +217,19 @@ export async function generateWorldOverview(): Promise<{ world: VoxelWorld; enti
     props,
     landmarks: ISLANDS.map((spec) => ({ id: spec.region, name: regions.find((r) => r.id === spec.region)?.name ?? spec.region, position: [...anchor(spec)] as [number, number, number] })),
   };
-  return { world, entities };
+  return { world, entities, decor };
+}
+
+/** Where the Home stage draws its moving water, in percent of the rendered image (assets/generated/world/the-gioi/stage-decor.json). */
+export function stageDecor(decor: OverviewDecor): { waterfalls: Array<{ x: number; top: number; bottom: number }> } {
+  const round = (n: number): number => Math.round(n * 10) / 10;
+  return {
+    waterfalls: decor.waterfalls.map(({ top, bottom }) => {
+      const a = projectToImage(top);
+      const b = projectToImage(bottom);
+      return { x: round((a.x + b.x) / 2), top: round(a.y), bottom: round(b.y) };
+    }),
+  };
 }
 
 /** Each region's label position on the rendered image, in percent (what content/world/regions.json must hold). */
@@ -225,7 +246,8 @@ export function regionHotspots(entities: WorldEntities): Record<string, { x: num
 export function withHotspots(regionsJson: string, hotspots: Record<string, { x: number; y: number }>): string {
   let out = regionsJson;
   for (const [id, { x, y }] of Object.entries(hotspots)) {
-    const line = new RegExp(`("id": "${id}".*?"hotspot": \\{ "x": )\\d+(, "y": )\\d+`);
+    // A region may span several lines (a backdrop, events): search on from its id to its own hotspot.
+    const line = new RegExp(`("id": "${id}"[\\s\\S]*?"hotspot": \\{ "x": )\\d+(, "y": )\\d+`);
     if (!line.test(out)) throw new Error(`region ${id}: hotspot not found in regions.json`);
     out = out.replace(line, `$1${x}$2${y}`);
   }
@@ -233,11 +255,12 @@ export function withHotspots(regionsJson: string, hotspots: Record<string, { x: 
 }
 
 async function main(): Promise<void> {
-  const { world, entities } = await generateWorldOverview();
+  const { world, entities, decor } = await generateWorldOverview();
   const bin = encodeWorld(world);
   await mkdir(OUT_DIR, { recursive: true });
   await writeFile(path.join(OUT_DIR, 'chunks.bin'), bin);
   await writeFile(path.join(OUT_DIR, 'entities.json'), `${JSON.stringify(entities, null, 2)}\n`);
+  await writeFile(DECOR_PATH, `${JSON.stringify(stageDecor(decor), null, 2)}\n`);
   const regionsPath = path.join(REPO_ROOT, 'content/world/regions.json');
   await writeFile(regionsPath, withHotspots(await readFile(regionsPath, 'utf8'), regionHotspots(entities)));
   console.log(`${MAP_ID}: ${world.size.join('x')} blocks, chunks.bin ${bin.byteLength} bytes, ${entities.props.length} props; region labels updated in content/world/regions.json`);

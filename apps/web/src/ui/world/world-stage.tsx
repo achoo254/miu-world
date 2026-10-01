@@ -10,6 +10,7 @@ import { Icon } from '../kit/art';
 import { assetUrl, HOME_ISLAND } from '../kit/ui-art';
 import { say } from '../player/player-data';
 import { REGIONS, regionLockText } from '../region/regions';
+import { StageLife } from './stage-life';
 import './world-stage.css';
 
 /** How long a locked region's name stays up after a tap. */
@@ -74,6 +75,7 @@ export function WorldStage({ character, idPrefix, children }: { character: Chara
     <div className="world-stage" data-id={`${idPrefix}s`}>
       <div className="world-island" data-id={`${idPrefix}-island`}>
         <img className="world-island-image" src={assetUrl(HOME_ISLAND)} alt="" draggable={false} />
+        <StageLife character={character} />
         {REGIONS.map((region) => (
           <RegionMarker key={region.id} region={region} character={character} idPrefix={idPrefix} peek={peek === region.id} onPeek={(open) => setPeek(open ? region.id : null)} />
         ))}
