@@ -8,6 +8,7 @@ import type { Interactable, WorldEntities } from '../../packages/voxel/src/world
 import { cellsIn } from './chapters/place-quest-targets';
 import { columnsOf, fillColumn, heightField, loadBlocks, mapModels, PACK, placeRegionTargets, rollingHeight, scatterTrees, smoothstep, standHeight, WIDE_MAP_SIDE } from './map-kit';
 import { SCENERY_MODELS } from './scenery';
+import { LIFE_CLIPS, LIFE_HEIGHTS, placeVillageLife, type Resident } from './village-life';
 import { createRng, hashSeed } from './noise';
 import { distanceToPath, pathColumns, type Point } from './structures/path';
 
@@ -80,6 +81,11 @@ export interface ZoneMapSpec {
    * one every `spacing` blocks, clear of the paths and what the map built; quest places still find room.
    */
   dressing?: { models: readonly string[]; spacing: number };
+  /**
+   * The map's everyday life: its people at their trades and its animals (village-life.ts), placed once the
+   * quest targets stand, clear of them. Gets the zones and the landmarks to anchor the cast on.
+   */
+  life?: (map: { zone: (chapter: number) => Zone; landmark: (id: string) => readonly [number, number] }) => readonly Resident[];
 }
 
 const DEFAULT_DRESSING = {
@@ -216,7 +222,7 @@ export async function generateZoneMap(spec: ZoneMapSpec): Promise<{ world: Voxel
 
   // 5. Props, now that the ground is final.
   const standY = standHeight(world, surface);
-  const models = await mapModels({ heights: { [SIGNPOST]: 1.6, ...SCENERY_MODELS, ...DRESSING_HEIGHTS, ...spec.models.heights }, clips: spec.models.clips ?? {}, standY, centred: spec.models.centred });
+  const models = await mapModels({ heights: { [SIGNPOST]: 1.6, ...SCENERY_MODELS, ...DRESSING_HEIGHTS, ...(spec.life ? LIFE_HEIGHTS : {}), ...spec.models.heights }, clips: { ...(spec.life ? LIFE_CLIPS : {}), ...(spec.models.clips ?? {}) }, standY, centred: spec.models.centred });
   for (const q of queued) {
     if (q.kind === 'at') models.addPropAt(q.model, q.at, q.yaw);
     else if (q.kind === 'centred') models.addCentred(q.model, models.place(q.x, q.z), q.yaw);
@@ -250,6 +256,20 @@ export async function generateZoneMap(spec: ZoneMapSpec): Promise<{ world: Voxel
     seed: seed + 11,
   });
 
+  // 7. Everyday life round the districts, clear of every quest target.
+  const landmarkAt = (id: string): readonly [number, number] => {
+    const lm = landmarks.find((l) => l.id === id);
+    if (!lm) throw new Error(`${spec.mapId}: no landmark ${id} for the cast`);
+    return [Math.floor(lm.position[0]), Math.floor(lm.position[2])];
+  };
+  const ambients = spec.life
+    ? placeVillageLife(
+        { world, surface, standY, onPath, inWater, questSpots: columnsOf(interactables), scaleOf: models.scaleOf },
+        spec.life({ zone, landmark: landmarkAt }),
+        seed + 23,
+      )
+    : [];
+
   const entities: WorldEntities = {
     version: 2,
     id: spec.mapId,
@@ -260,6 +280,7 @@ export async function generateZoneMap(spec: ZoneMapSpec): Promise<{ world: Voxel
     interactables,
     props: models.props,
     landmarks: [...zones.map((zn) => ({ id: zn.id, name: zn.name, position: [zn.x + 0.5, level + 1, zn.z + 0.5] as [number, number, number] })), ...landmarks],
+    ...(ambients.length > 0 ? { ambients } : {}),
   };
   return { world, entities };
 }

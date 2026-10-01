@@ -10,6 +10,7 @@
 // Output: assets/generated/world/lang-ven-song/{regions/, horizon.bin, entities.json}
 import { PACK, runIfMain } from './map-kit';
 import { bambooHedge, cottageRow, flowerBed, hamlet, jetty, lampRow } from './scenery';
+import { animal, crowd, person } from './village-life';
 import { placeHouse } from './structures/buildings';
 import { placeLighthouse, placeWell } from './structures/countryside';
 import type { Point } from './structures/path';
@@ -72,6 +73,22 @@ const M = {
   rock: `${N}/rock_largeB.glb`,
 };
 
+/** What the village's people hold at their work. */
+const L = {
+  basket: `${PACK.props}/basket.glb`,
+  book: `${PACK.props}/open-book.glb`,
+  spoon: `${PACK.food}/cooking-spoon.glb`,
+  shirt: `${PACK.props}/t-shirt.glb`,
+  bucket: `${PACK.survival}/bucket.glb`,
+  carrot: `${PACK.food}/carrot.glb`,
+  kite: `${PACK.props}/kite.glb`,
+  flower: `${N}/flower_redA.glb`,
+  paddle: `${N}/canoe_paddle.glb`,
+  fish: `${PACK.survival}/fish.glb`,
+  crate: `${PACK.survival}/box.glb`,
+  cup: `${PACK.food}/cup-tea.glb`,
+};
+
 const inWater = (x: number, z: number): boolean =>
   (x < LAKE.x && Math.abs(z - riverCenter(x)) < RIVER_HALF + 2 * Math.sin(x / 31)) ||
   ((x - LAKE.x) / LAKE.rx) ** 2 + ((z - LAKE.z) / LAKE.rz) ** 2 < 1 ||
@@ -91,6 +108,44 @@ export async function generateLangVenSong() {
     trees: { skip: 0.8, blocks: (roll, block) => ({ log: block('tree-log'), leaves: block(roll < 0.12 ? 'leaves-autumn' : roll < 0.3 ? 'leaves-pink' : 'leaves') }) },
     models: {
       heights: { [M.rice]: 0.7, [M.riceRipe]: 1, [M.lily]: 0.1, [M.lilySmall]: 0.08, [M.fence]: 1, [M.logs]: 0.9, [M.box]: 0.9, [M.workbench]: 0.9, [M.rock]: 2 },
+    },
+    life: ({ zone, landmark }) => {
+      const [gate, meadow, landing, marsh] = [1, 2, 3, 4].map(zone) as [Zone, Zone, Zone, Zone];
+      const c = (zn: Zone, dx: number, dz: number): readonly [number, number] => [zn.x + dx, zn.z + dz];
+      return [
+        // Chapter 1: the village gate, the school, the paddies beside it.
+        ...crowd('rice-planter', ['Cô cấy lúa', 'Bác cấy lúa', 'Chị cấy lúa'], [person('e'), person('i'), person('m')], [300, 150], 40, 5, [L.basket]),
+        ...crowd('pupil', ['Bạn nhỏ'], [person('f'), person('n'), person('o')], c(gate, 18, -32), 8, 3, [L.book]),
+        ...crowd('teacher', ['Thầy giáo làng'], [person('a')], c(gate, 14, -26), 2, 1, [L.book]),
+        ...crowd('home-cook', ['Bà nấu cơm', 'Mẹ nấu cơm'], [person('i'), person('l')], [90, 130], 30, 3, [L.spoon, L.basket]),
+        ...crowd('laundry', ['Cô phơi đồ', 'Chị phơi áo'], [person('e'), person('h')], [100, 330], 24, 3, [L.basket, L.shirt]),
+        ...crowd('waterer', ['Ông tưới cây'], [person('a'), person('j')], c(gate, -40, 30), 12, 2, [L.bucket, L.carrot]),
+        ...crowd('chick', ['Gà con'], [animal('chick')], c(gate, -46, -10), 6, 8),
+        ...crowd('dog', ['Chó Vàng', 'Chó Mực con'], [animal('dog')], c(gate, 30, 20), 14, 3),
+        ...crowd('cow', ['Trâu bò'], [animal('cow')], [380, 280], 40, 5),
+        // Chapter 2: the meadow by the river, the flower garden, kites in the wind.
+        ...crowd('kite-flyer', ['Bạn thả diều'], [person('f'), person('n'), person('o'), person('p')], c(meadow, -10, 34), 14, 4, [L.kite]),
+        ...crowd('waterer', ['Cô làm vườn'], [person('e')], landmark('vuon-hoa-to-ong'), 10, 2, [L.bucket, L.flower]),
+        ...crowd('laundry', ['Mẹ phơi chăn'], [person('l')], [500, 330], 20, 2, [L.basket, L.shirt]),
+        ...crowd('cow', ['Bò vàng'], [animal('cow')], c(meadow, 40, 30), 18, 6),
+        ...crowd('pig', ['Lợn con'], [animal('pig')], [520, 140], 16, 4),
+        ...crowd('cat', ['Mèo mướp'], [animal('cat')], [540, 320], 20, 3),
+        // Chapter 3: the landing, the ferry, the class under the banyan.
+        ...crowd('ferryman', ['Bác lái đò', 'Chú chèo đò'], [person('a'), person('m')], landmark('ben-do'), 6, 2, [L.paddle, L.fish]),
+        ...crowd('porter', ['Chú gánh hàng'], [person('j'), person('k')], c(landing, 30, -20), 12, 2, [L.crate]),
+        ...crowd('pupil', ['Học trò gốc đa'], [person('f'), person('o')], landmark('lop-hoc-goc-da'), 10, 3, [L.book]),
+        ...crowd('home-cook', ['Bà bán nước chè'], [person('i')], c(landing, -36, -24), 4, 1, [L.cup]),
+        ...crowd('chick', ['Gà con'], [animal('chick')], c(landing, -40, 30), 6, 8),
+        ...crowd('dog', ['Cún bến sông'], [animal('dog')], c(landing, 20, 30), 10, 2),
+        // Chapter 4: the marsh, the football field; the harbour's fishers and sailors.
+        ...crowd('pupil', ['Cầu thủ nhí'], [person('f'), person('n'), person('o'), person('p'), person('q')], landmark('san-bong-lang'), 9, 6),
+        ...crowd('rice-planter', ['Cô hái sen'], [person('e'), person('h')], landmark('dam-sen'), 20, 3, [L.basket]),
+        ...crowd('ferryman', ['Ngư dân'], [person('m'), person('k'), person('j')], landmark('ben-tau'), 12, 4, [L.paddle, L.fish]),
+        ...crowd('porter', ['Người khuân cá'], [person('b'), person('c')], landmark('ben-tau'), 18, 3, [L.crate]),
+        ...crowd('pig', ['Lợn ỉ'], [animal('pig')], c(marsh, -50, 30), 10, 4),
+        ...crowd('cow', ['Bò ven đê'], [animal('cow')], [640, 640], 30, 5),
+        ...crowd('cat', ['Mèo tam thể'], [animal('cat')], c(marsh, 40, -30), 12, 3),
+      ];
     },
     build: (ctx) => {
       const { world, block, rng, ground, zone } = ctx;

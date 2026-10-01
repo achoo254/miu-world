@@ -1,6 +1,7 @@
 // What villagers and animals say in their speech bubbles. Short lines (a child reads them while
 // walking), each pool rotating without repeating a line back to back. `{name}` is the child's
 // character name. Nothing here teaches or grades: learning lives in quests.
+import { EVERYDAY_LINES } from './everyday-routines';
 
 export const AMBIENT_LINES: Readonly<Record<string, readonly string[]>> = {
   'woodcutter-greet': ['Chào {name}! Đi đâu đấy cháu?', 'Ơ kìa, {name} đấy à!', 'Cẩn thận dăm gỗ nhé {name}!'],
@@ -50,4 +51,5 @@ export const AMBIENT_LINES: Readonly<Record<string, readonly string[]>> = {
   'fish-splash': ['Tõm!', 'Bõm!', 'Ào!'],
   'caterpillar-greet': ['Sâu nhỏ chào {name}.', 'Sâu đang ăn lá.', 'Sâu bò chầm chậm.'],
   'caterpillar-trick': ['Sâu uốn mình cười!', 'Sâu vẫy vẫy!', 'Nhột quá!'],
+  ...EVERYDAY_LINES,
 };

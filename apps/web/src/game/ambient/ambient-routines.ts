@@ -5,6 +5,7 @@
 // Clips: people use Kenney Blocky Characters clips, animals Kenney Cube Pets clips.
 import type { AmbientRoutine } from '@miu/voxel/world-entities';
 import type { Beat, Chore, RoutineSpec } from './ambient-types';
+import { EVERYDAY_ROUTINES } from './everyday-routines';
 
 const PERSON = { kind: 'person', walkSpeed: 1.3, noticeRadius: 4, reach: 2.6, label: 'Trò chuyện' } as const;
 const personGreet = (pool: string) => ({ clip: 'emote-yes', pool });
@@ -420,6 +421,7 @@ export const ROUTINES: Readonly<Record<AmbientRoutine, RoutineSpec>> = {
       { id: 'munch', weight: 2, beats: [{ do: 'act', clip: 'eat', loops: [2, 4] }] },
     ],
   },
+  ...EVERYDAY_ROUTINES,
 };
 
 function beatSpots(beat: Beat): string[] {

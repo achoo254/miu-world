@@ -55,7 +55,7 @@ async function main(): Promise<void> {
     for (let z = 0; z < sz; z++) {
       let y = sy - 1;
       while (y > 0 && world.get(x, y, z) === 0) y--;
-      const [r, g, b] = colourOf.get(world.get(x, y, z)) ?? [0, 0, 0];
+      const [r = 0, g = 0, b = 0] = colourOf.get(world.get(x, y, z)) ?? [];
       const shade = 0.75 + 0.5 * (y / sy);
       paint(x, z, [Math.min(255, r * shade), Math.min(255, g * shade), Math.min(255, b * shade)]);
     }
