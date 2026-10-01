@@ -1,0 +1,22 @@
+{
+  "state": {
+    "project": "Miu World: a voxel learning game for Vietnamese grade-2 children (web, iPad Gen 10 target), built 100% by AI. The owner's single wish: the game must be truly lively so children never get bored.",
+    "today": "2026-10-01",
+    "owner_feedback": "Owner, after watching their child play: 'the quests can be replayed, and there is no unlocking of quests within one map: every quest can be taken.'",
+    "facts": [
+      "No quest has a prerequisite: all 70 textbook quests are open from the start on the region screen, and finished ones already show 'Chơi lại' (replay). Replay grants no new reward (the server returns the first reward; rewards are server-side).",
+      "In the game (/play) exactly one quest is active per visit, chosen on the region screen. The map then draws only that quest's chapter and its own characters; to take another quest the child must leave the game: the HUD 'Nhiệm vụ' button goes back to the region screen.",
+      "Most map entities belong to one quest: 175 of the forest's 200 interactables and 124 of the school's 143. Drawing every quest's characters at once would exceed the 150 draw-call budget on iPad (each character costs 1-2 draw calls, 61 ambient animals already), and the same character (e.g. a rabbit teacher) stands in different places in different quests, so placement per chapter would need a redesign."
+    ]
+  },
+  "questions": {
+    "open_quests_in_map": {
+      "stakes": "medium",
+      "instructions": "How should 'every quest can be taken within one map, no unlocking' be delivered in this batch?",
+      "criteria": {
+        "in_game_quest_board": "Inside the game, the HUD 'Nhiệm vụ' button opens a quest board over the paused map listing every quest of this map (all open; finished ones marked and replayable); tapping one switches to it right there (the map reloads that quest's characters in a moment) without going back to the region screen. Fits the draw-call budget and ships today.",
+        "open_world_all_characters": "Redesign the maps so every quest's characters stand on the map at once and talking to any of them starts its quest. Needs a placement redesign and goes over the draw-call budget on iPad; would not ship in this batch."
+      }
+    }
+  }
+}

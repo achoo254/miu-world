@@ -1,0 +1,19 @@
+{
+  "model": "jev-1.13.0",
+  "usage": {
+    "input_tokens": 805,
+    "output_tokens": 48
+  },
+  "results": {
+    "open_quests_in_map": {
+      "stakes": "medium",
+      "choice": "in_game_quest_board",
+      "confidence": 0.99,
+      "probabilities": {
+        "in_game_quest_board": 1.0,
+        "open_world_all_characters": 0.0
+      },
+      "decision": "auto"
+    }
+  }
+}
