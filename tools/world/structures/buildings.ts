@@ -45,6 +45,18 @@ export function placeHouse(world: WorldWriter, x0: number, z0: number, w: number
   return { roofTop };
 }
 
+/**
+ * A school's veranda along the -z front of a `placeHouse` box: the eaves run on as a flat roof one row
+ * further out, on white posts every other block (the gaps between posts are the way in).
+ */
+export function placeVeranda(world: WorldWriter, x0: number, z0: number, w: number, wallHeight: number, baseY: number, blocks: { roof: number; post: number }): void {
+  const z = z0 - 2;
+  for (let x = x0 - 1; x <= x0 + w; x++) {
+    put(world, x, baseY + wallHeight, z, blocks.roof);
+    if ((x - x0 + 1) % 2 === 0) for (let y = baseY; y < baseY + wallHeight; y++) put(world, x, y, z, blocks.post);
+  }
+}
+
 export interface CastleBlocks {
   wall: number;
   roof: number;

@@ -15,7 +15,7 @@ import { modelScales } from './model-scales';
 import { createRng, fbm, hashSeed } from './noise';
 import { distanceToPath, pathColumns, type Point } from './structures/path';
 import { cellsIn, placeQuestTargets, readQuests, targetUses } from './chapters/place-quest-targets';
-import { placeHouse } from './structures/buildings';
+import { placeHouse, placeVeranda } from './structures/buildings';
 import { placeTree, treeHeight } from './structures/tree';
 
 export const MAP_ID = 'truong-hoc';
@@ -67,8 +67,8 @@ const WALL_HALF = 18;
 const LAWN = { x0: 28, z0: 4, x1: 68, z1: 32 };
 /** Classroom wings (x0, z0, width, depth) behind the yard, either side of the path to the hall; doors face the yard (-z). */
 export const CLASSROOMS: ReadonlyArray<{ x0: number; z0: number; w: number; d: number }> = [
-  { x0: 36, z0: 65, w: 7, d: 6 },
-  { x0: 52, z0: 65, w: 6, d: 6 },
+  { x0: 36, z0: 66, w: 7, d: 5 },
+  { x0: 52, z0: 66, w: 6, d: 5 },
 ];
 const WALL_HEIGHT = 4;
 
@@ -95,9 +95,10 @@ export async function generateSchool(): Promise<{ world: VoxelWorld; entities: W
   const pathCells = new Set(routes.flatMap((r) => [...pathColumns(r, 1.3)]));
   const nearPath = (x: number, z: number) => routes.some((r) => distanceToPath(r, x, z) < 3);
   /** Inside a classroom wing, eaves and `pad` included. */
-  const inClassroom = (x: number, z: number, pad = 0) => CLASSROOMS.some((c) => x >= c.x0 - 1 - pad && x <= c.x0 + c.w + pad && z >= c.z0 - 1 - pad && z <= c.z0 + c.d + pad);
+  // Footprint with the eaves and, in front, the veranda (two rows out).
+  const inClassroom = (x: number, z: number, pad = 0) => CLASSROOMS.some((c) => x >= c.x0 - 1 - pad && x <= c.x0 + c.w + pad && z >= c.z0 - 2 - pad && z <= c.z0 + c.d + pad);
   for (const c of CLASSROOMS) {
-    for (let x = c.x0 - 1; x <= c.x0 + c.w; x++) for (let z = c.z0 - 1; z <= c.z0 + c.d; z++) {
+    for (let x = c.x0 - 1; x <= c.x0 + c.w; x++) for (let z = c.z0 - 2; z <= c.z0 + c.d; z++) {
       if (nearPath(x, z) || inZone(x, z, 2)) throw new Error(`classroom at ${c.x0},${c.z0} would stand on a path or in a zone at ${x},${z}`);
     }
   }
@@ -127,7 +128,7 @@ export async function generateSchool(): Promise<{ world: VoxelWorld; entities: W
   // 2. Landmarks built from blocks: the flagpole, the clock tower, the hall's stage, the pitch lines.
   const flag = { x: yard.x, z: yard.z };
   for (let y = GROUND + 1; y <= GROUND + 8; y++) world.set(flag.x, y, flag.z, B.birch);
-  for (let dz = 1; dz <= 3; dz++) for (let y = GROUND + 6; y <= GROUND + 8; y++) world.set(flag.x, y, flag.z + dz, B.autumn);
+  for (let dz = 1; dz <= 3; dz++) for (let y = GROUND + 6; y <= GROUND + 8; y++) world.set(flag.x, y, flag.z + dz, B.woodRed); // the red flag
   const pitch = { x: yard.x - 8, z: yard.z };
   for (let dx = -4; dx <= 4; dx++) for (let dz = -6; dz <= 6; dz++) if (Math.abs(dx) === 4 || Math.abs(dz) === 6 || dz === 0) world.set(pitch.x + dx, GROUND, pitch.z + dz, B.sand);
   const tower = ZONES.find((zn) => zn.id === 'thap-dong-ho');
@@ -136,8 +137,12 @@ export async function generateSchool(): Promise<{ world: VoxelWorld; entities: W
       if (Math.abs(dx) === 2 || Math.abs(dz) === 2) world.set(tower.x + dx, y, tower.z - 2 + dz, y >= GROUND + 9 && dz === 2 && Math.abs(dx) < 2 ? B.planks : B.stone);
     }
   }
-  // The classrooms, red-roofed like the school on the world map, and the gate in the school's low wall.
-  for (const c of CLASSROOMS) placeHouse(world, c.x0, c.z0, c.w, c.d, WALL_HEIGHT, GROUND + 1, { wall: B.planks, roof: B.brickRed, trim: B.log });
+  // The classrooms as a Vietnamese school: yellow walls, white posts, red tiles and a veranda facing the
+  // yard; then the gate in the school's low wall.
+  for (const c of CLASSROOMS) {
+    placeHouse(world, c.x0, c.z0, c.w, c.d, WALL_HEIGHT, GROUND + 1, { wall: B.sand, roof: B.brickRed, trim: B.birch });
+    placeVeranda(world, c.x0, c.z0, c.w, WALL_HEIGHT, GROUND + 1, { roof: B.brickRed, post: B.birch });
+  }
   for (const side of [-1, 1]) {
     for (let y = GROUND + 1; y <= GROUND + 5; y++) world.set(GATE.x + side * GATE_HALF, y, GATE.z, B.brickGrey);
     for (let x = GATE.x + side * (GATE_HALF + 1); Math.abs(x - GATE.x) <= WALL_HALF; x += side) {
