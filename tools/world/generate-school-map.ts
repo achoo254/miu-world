@@ -6,39 +6,18 @@
 // workshop, the courtyard under the clock tower, the science garden with its greenhouse, the art yard, the
 // sports hall with the basketball court. Houses and a river lie outside the wall. Quest characters stand in
 // their topic's zone. Output: assets/generated/world/truong-hoc/{chunks.bin, entities.json}
-import { mkdir, writeFile } from 'node:fs/promises';
-import path from 'node:path';
-import { pathToFileURL } from 'node:url';
-import { blockTableSchema } from '../../packages/voxel/src/block-table';
-import { VoxelWorld, encodeWorld } from '../../packages/voxel/src/chunk-format';
+import { VoxelWorld } from '../../packages/voxel/src/chunk-format';
 import type { WorldEntities } from '../../packages/voxel/src/world-entities';
-import { ASSETS_DIR, REPO_ROOT, readJson } from '../assets/asset-lib';
-import { modelCentres, modelScales } from './model-scales';
-import { createRng, fbm, hashSeed } from './noise';
+import { columnsOf, fillColumn, heightField, loadBlocks, MAP_CHUNKS, mapModels, PACK, placeRegionTargets, rollingHeight, runIfMain, scatterTrees, standHeight } from './map-kit';
+import { createRng, hashSeed } from './noise';
 import { distanceToPath, pathColumns, type Point } from './structures/path';
-import { cellsIn, placeQuestTargets, WALK_GAP, readQuests, targetUses } from './chapters/place-quest-targets';
+import { cellsIn } from './chapters/place-quest-targets';
 import { placeHouse } from './structures/buildings';
 import { placeBed, placeCampusWall, placeCourt, placeGreenhouse, placeMainBuilding, placeSportsHall, placeStreet, type FurnitureKind, type SchoolPalette } from './structures/school';
-import { placeTree, treeHeight } from './structures/tree';
 
 export const MAP_ID = 'truong-hoc';
 export const SEED_TEXT = 'miu-truong-hoc';
-/** 192 x 48 x 192 blocks (Jev, 01/10/2026: the owner found the maps small). */
-const CHUNKS = [12, 3, 12] as const;
 const GROUND = 12;
-const OUT_DIR = path.join(ASSETS_DIR, 'generated/world', MAP_ID);
-
-const PACK = {
-  pets: 'packs/kenney-cube-pets/2.0',
-  survival: 'packs/kenney-survival-kit/2.0',
-  nature: 'packs/kenney-nature-kit/2.1',
-  castle: 'packs/kenney-castle-kit/2.0',
-  props: 'generated/props',
-  box: 'generated/box-props',
-  furniture: 'packs/kenney-furniture-kit/2.0',
-  roads: 'packs/kenney-city-kit-roads/2.1',
-  suburb: 'packs/kenney-city-kit-suburban/2.0',
-};
 /** Houses of the neighbourhood around the school (City Kit Suburban), each its own design. */
 const HOUSES = 'abcdefghijklmnopqrstu'.split('').map((k) => `${PACK.suburb}/building-type-${k}.glb`);
 /** Classroom furniture (Furniture Kit): the model of each kind. */
@@ -120,12 +99,7 @@ const RIVER = { x0: 180, x1: 187 };
 export const MAIN_BUILDING = { x0: 52, x1: 140, zFront: 66, zBack: 79, floorY: GROUND + 1 } as const;
 
 export async function generateSchool(): Promise<{ world: VoxelWorld; entities: WorldEntities }> {
-  const table = await readJson(path.join(REPO_ROOT, 'content/blocks.json'), blockTableSchema);
-  const id = (name: string): number => {
-    const block = table.blocks.find((b) => b.name === name);
-    if (!block) throw new Error(`block ${name} missing from content/blocks.json`);
-    return block.id;
-  };
+  const id = await loadBlocks();
   const B = {
     grass: id('grass'), dirt: id('dirt'), stone: id('stone'), sand: id('sand'), log: id('log'), leaves: id('leaves'), planks: id('planks'), path: id('path'),
     autumn: id('leaves-autumn'), pink: id('leaves-pink'), birch: id('birch-log'), treeLog: id('tree-log'), brickRed: id('brick-red'), brickGrey: id('brick-grey'), woodRed: id('wood-red'),
@@ -135,16 +109,12 @@ export async function generateSchool(): Promise<{ world: VoxelWorld; entities: W
     wall: B.sand, trim: B.birch, roof: B.brickRed, floor: B.planks, glass: B.glass, board: B.board, light: B.snow, stone: B.brickGrey, brick: B.brickGrey,
     asphalt: B.asphalt, line: B.snow, court: B.woodRed, roofBlue: B.roofBlue, log: B.log, door: B.woodRed, grass: B.grass, dirt: B.dirt, sand: B.sand,
   };
-  const scales = await modelScales(MODEL_HEIGHT, MODEL_ANIMATION);
-  const scaleOf = (model: string): number => scales.get(model) ?? 1;
-  // Pack models whose pivot is a corner stand by their middle (furniture, houses).
-  const centres = await modelCentres([...Object.values(FURNITURE).filter((m) => m.startsWith('packs/')), ...HOUSES]);
   /** Props placed while the blocks go down, added once the ground is final: model, x, z, yaw (or a fixed y). */
   const queued: Array<{ model: string; x: number; z: number; yaw: number; y?: number }> = [];
 
   const seed = hashSeed(SEED_TEXT);
   const rng = createRng(seed);
-  const world = new VoxelWorld(CHUNKS);
+  const world = new VoxelWorld(MAP_CHUNKS);
   const [sx, sy, sz] = world.size;
   const zone = (topic: number) => {
     const zn = ZONES.find((z) => z.topic === topic);
@@ -175,30 +145,23 @@ export async function generateSchool(): Promise<{ world: VoxelWorld; entities: W
   const nearPath = (x: number, z: number) => routes.some((r) => distanceToPath(r, x, z) < 3);
 
   // 1. Terrain: level campus and street, gentle rolls outside, hills at the rim, the river bed.
-  const heights: number[][] = [];
-  for (let x = 0; x < sx; x++) {
-    heights[x] = [];
-    for (let z = 0; z < sz; z++) {
-      let h = GROUND + fbm(seed, x / 26, z / 26) * 2.5;
-      const edge = Math.min(x, z, sx - 1 - x, sz - 1 - z);
-      if (edge < 10) h += (10 - edge) * 1.1;
-      // Behind the wall the neighbourhood stands on a bank three blocks up, level with the wall's top: seen
-      // from the school, out of reach (the child climbs two blocks at most). South of the street the verge
-      // stays low.
-      if (!inCampus(x, z) && !onStreet(z) && z > STREET.z1) h = Math.max(h, GROUND + 3);
-      if (z < STREET.z0) h = GROUND + 1;
-      if (inCampus(x, z) || x === CAMPUS.x0 || x === CAMPUS.x1 || z === CAMPUS.z0 || z === CAMPUS.z1 || onStreet(z)) h = GROUND;
-      if (inRiver(x) && z > STREET.z1 + 4) h = GROUND - 3;
-      (heights[x] as number[])[z] = Math.round(Math.min(h, sy - 20));
-    }
-  }
-  const surface = (x: number, z: number): number => heights[x]?.[z] ?? GROUND;
+  const surface = heightField(world, (x, z) => {
+    let h = rollingHeight(seed, x, z, world.size, { ground: GROUND, roll: 2.5, rim: 10 });
+    // Behind the wall the neighbourhood stands on a bank three blocks up, level with the wall's top: seen
+    // from the school, out of reach (the child climbs two blocks at most). South of the street the verge
+    // stays low.
+    if (!inCampus(x, z) && !onStreet(z) && z > STREET.z1) h = Math.max(h, GROUND + 3);
+    if (z < STREET.z0) h = GROUND + 1;
+    if (inCampus(x, z) || x === CAMPUS.x0 || x === CAMPUS.x1 || z === CAMPUS.z0 || z === CAMPUS.z1 || onStreet(z)) h = GROUND;
+    if (inRiver(x) && z > STREET.z1 + 4) h = GROUND - 3;
+    return Math.round(Math.min(h, sy - 20));
+  }, GROUND);
   for (let x = 0; x < sx; x++) {
     for (let z = 0; z < sz; z++) {
       const h = surface(x, z);
       const zn = inZone(x, z);
       const top = pathCells.has(`${x},${z}`) ? B.path : zn ? B[zn.floor] : inRiver(x) && h < GROUND ? B.riverbed : B.grass;
-      for (let y = 0; y <= h; y++) world.set(x, y, z, y < h - 3 ? B.stone : y < h ? B.dirt : top);
+      fillColumn(world, x, z, h, { stone: B.stone, under: B.dirt, top });
       if (inRiver(x) && h < GROUND) for (let y = h + 1; y < GROUND; y++) world.set(x, y, z, B.water);
     }
   }
@@ -251,33 +214,27 @@ export async function generateSchool(): Promise<{ world: VoxelWorld; entities: W
   for (let x = 32; x < RIVER.x0 - 8; x += 20) addHouse(x, CAMPUS.z1 + 30, 180);
   for (let z = CAMPUS.z0 + 16; z < CAMPUS.z1; z += 18) addHouse(7, z, 90);
   const nearHouse = (x: number, z: number) => houses.some(([hx, hz]) => Math.abs(x - hx) < 8 && Math.abs(z - hz) < 8);
-  for (let gx = 4; gx < sx - 4; gx += 7) {
-    for (let gz = 4; gz < sz - 4; gz += 7) {
-      const x = Math.round(gx + (rng() - 0.5) * 5);
-      const z = Math.round(gz + (rng() - 0.5) * 5);
+  scatterTrees({
+    world,
+    rng,
+    surface,
+    rejects: (x, z) => {
       const wall = Math.abs(x - CAMPUS.x0) < 3 || Math.abs(x - CAMPUS.x1) < 3 || Math.abs(z - CAMPUS.z0) < 3 || Math.abs(z - CAMPUS.z1) < 3;
-      if (x < 3 || z < 3 || x >= sx - 3 || z >= sz - 3 || inZone(x, z, 3) || nearPath(x, z) || inBuilding(x, z, 3) || onStreet(z) || inRiver(x) || Math.abs(x - RIVER.x0) < 3 || Math.abs(x - RIVER.x1) < 3 || wall || nearHouse(x, z)) continue;
-      if (inCampus(x, z) && z < CAMPUS.z0 + 4) continue;
-      if (rng() < 0.3) continue;
-      const kind = rng();
-      placeTree(world, x, surface(x, z) + 1, z, treeHeight(rng), { log: B.treeLog, leaves: kind < 0.25 ? B.pink : kind < 0.4 ? B.autumn : B.leaves }, rng);
-    }
-  }
+      if (inZone(x, z, 3) || nearPath(x, z) || inBuilding(x, z, 3) || onStreet(z) || inRiver(x) || Math.abs(x - RIVER.x0) < 3 || Math.abs(x - RIVER.x1) < 3 || wall || nearHouse(x, z)) return true;
+      return inCampus(x, z) && z < CAMPUS.z0 + 4;
+    },
+    skip: 0.3,
+    blocks: (kind) => ({ log: B.treeLog, leaves: kind < 0.25 ? B.pink : kind < 0.4 ? B.autumn : B.leaves }),
+  });
 
   // 7. Entities.
-  const standY = (x: number, z: number): number => {
-    let y = surface(x, z) + 1;
-    while (y < sy && world.get(x, y, z) !== 0) y++;
-    return y;
-  };
-  const place = (x: number, z: number): [number, number, number] => [x + 0.5, standY(x, z), z + 0.5];
-  const props: WorldEntities['props'] = [];
-  const addProp = (model: string, x: number, z: number, yaw = 0): void => {
-    props.push({ model, position: place(x, z), yaw, scale: scaleOf(model) });
-  };
-  const addPropAt = (model: string, at: readonly [number, number, number], yaw = 0): void => {
-    props.push({ model, position: [at[0], at[1], at[2]], yaw, scale: scaleOf(model) });
-  };
+  const { props, place, addProp, addPropAt, addCentred, animated } = await mapModels({
+    heights: MODEL_HEIGHT,
+    clips: MODEL_ANIMATION,
+    standY: standHeight(world, surface),
+    // Pack models whose pivot is a corner stand by their middle (furniture, houses).
+    centred: [...Object.values(FURNITURE).filter((m) => m.startsWith('packs/')), ...HOUSES],
+  });
   for (const zn of ZONES) addProp(`${PACK.survival}/signpost.glb`, zn.x - zn.hx + 1, zn.z - zn.hz + 1, 45);
   const flowerModels = [`${PACK.nature}/flower_redA.glb`, `${PACK.nature}/flower_yellowB.glb`, `${PACK.nature}/flower_purpleA.glb`];
   flowers.forEach(([x, z], i) => addProp(flowerModels[i % 3] ?? '', x, z, i * 37));
@@ -288,14 +245,6 @@ export async function generateSchool(): Promise<{ world: VoxelWorld; entities: W
   addPropAt(`${PACK.props}/clock-face.glb`, main.clock, 180);
   addPropAt(`${PACK.props}/school-bus.glb`, [mid + 28.5, GROUND + 1, (STREET.z0 + STREET.z1) / 2 + 2], 90);
   for (const side of [-1, 1]) addPropAt(`${PACK.castle}/metal-gate.glb`, [side < 0 ? GATE[0] - 0.5 : GATE[1] + 1.5, GROUND + 1, CAMPUS.z0 + 2.5], side < 0 ? 90 : 270);
-  /** A pack model by its middle: its pivot is a corner, so the offset turns with it. */
-  const addCentred = (model: string, at: readonly [number, number, number], yaw: number): void => {
-    const [cx, cz] = centres.get(model) ?? [0, 0];
-    const s = scaleOf(model);
-    const t = (yaw * Math.PI) / 180;
-    const [ox, oz] = [-cx * s, -cz * s];
-    addPropAt(model, [at[0] + ox * Math.cos(t) + oz * Math.sin(t), at[1], at[2] - ox * Math.sin(t) + oz * Math.cos(t)], yaw);
-  };
   for (const piece of main.furniture) addCentred(FURNITURE[piece.kind], piece.at, piece.yaw);
   for (const piece of main.furniture.filter((f) => f.kind === 'bookcase')) addPropAt(`${PACK.props}/books.glb`, [piece.at[0], piece.at[1] + 2, piece.at[2]]);
   addPropAt(`${PACK.props}/potted-plant.glb`, main.plant);
@@ -314,7 +263,6 @@ export async function generateSchool(): Promise<{ world: VoxelWorld; entities: W
   for (const [x, z] of [[courtyard.x - 20, courtyard.z - 6], [courtyard.x + 20, courtyard.z - 6]] as const) addProp(`${PACK.props}/potted-plant.glb`, x, z, 0);
   for (const [x, z] of [[mid - 16, CAMPUS.z0 + 4], [mid + 16, CAMPUS.z0 + 4], [mid - 22, yard.z + 18], [mid + 22, yard.z + 18]] as const) addProp(`${PACK.nature}/plant_bush.glb`, x, z, 0);
 
-  const animated = (model: string) => ({ model, scale: scaleOf(model), animation: MODEL_ANIMATION[model] ?? 'idle' });
   // Topic 1 characters (toan2-cd1-*): Sư Tử Vàng by the flagpole, Khỉ Lanh on the pitch.
   const interactables: WorldEntities['interactables'] = [
     { id: 'su-tu-vang', kind: 'npc', name: 'Sư Tử Vàng', label: 'Nói chuyện', position: place(flag.x + 3, flag.z - 2), yaw: 200, radius: 3, ...animated(`${PACK.pets}/animal-lion.glb`), chapter: 1 },
@@ -323,7 +271,7 @@ export async function generateSchool(): Promise<{ world: VoxelWorld; entities: W
 
   // Every Toán topic's targets in its own zone; characters who come back in several topics live in any
   // zone. Placed from the catalogues on open floor, off the paths and clear of props, beds and buildings.
-  const propCells = props.map((p) => [Math.floor(p.position[0] ?? 0), Math.floor(p.position[2] ?? 0)] as const);
+  const propCells = columnsOf(props);
   const canStand = (x: number, z: number): boolean => {
     if (pathCells.has(`${x},${z}`) || !inZone(x, z)) return false;
     const y = surface(x, z) + 1;
@@ -335,16 +283,13 @@ export async function generateSchool(): Promise<{ world: VoxelWorld; entities: W
     return cellsIn(zn.x - zn.hx + 1, zn.z - zn.hz + 1, zn.x + zn.hx - 1, zn.z + zn.hz - 1);
   };
   const spawnAt: [number, number] = [mid, CAMPUS.z0 + 3];
-  const { placed: topicTargets, retagged, narrow } = await placeQuestTargets({
-    uses: targetUses(await readQuests(), 'truong-hoc'),
-    map: { canStand, stand: place, chapterCells: zoneCells, residentCells: ZONES.flatMap((zn) => zoneCells(zn.topic)), keepClear: [spawnAt, ...interactables.map((t) => [Math.floor(t.position[0] ?? 0), Math.floor(t.position[2] ?? 0)] as const)] },
-    existing: interactables,
+  const allInteractables = await placeRegionTargets({
+    mapId: MAP_ID,
+    region: 'truong-hoc',
+    map: { canStand, stand: place, chapterCells: zoneCells, residentCells: ZONES.flatMap((zn) => zoneCells(zn.topic)), keepClear: [spawnAt, ...columnsOf(interactables)] },
+    interactables,
     seed: seed + 7,
   });
-  // Places that could not keep a walk apart: the sign that this map is crowded and should grow.
-  for (const n of narrow) console.warn(`${MAP_ID}: quest ${n.quest} place "${n.place}" only ${n.gap} blocks from its other places (aim ${WALK_GAP})`);
-  const retaggedById = new Map(retagged.map((t) => [t.id, t]));
-  interactables.splice(0, interactables.length, ...interactables.map((t) => retaggedById.get(t.id) ?? t), ...topicTargets);
 
   const showcase = main.classrooms[0];
   const entities: WorldEntities = {
@@ -354,7 +299,7 @@ export async function generateSchool(): Promise<{ world: VoxelWorld; entities: W
     size: [sx, sy, sz],
     waterLevel: GROUND - 1,
     spawn: { position: place(spawnAt[0], spawnAt[1]), yaw: 0 },
-    interactables,
+    interactables: allInteractables,
     props,
     landmarks: [
       ...ZONES.map((zn) => ({ id: zn.id, name: zn.name, position: [zn.x + 0.5, GROUND + 1, zn.z + 0.5] as [number, number, number] })),
@@ -368,15 +313,4 @@ export async function generateSchool(): Promise<{ world: VoxelWorld; entities: W
   return { world, entities };
 }
 
-async function main(): Promise<void> {
-  const { world, entities } = await generateSchool();
-  const bin = encodeWorld(world);
-  await mkdir(OUT_DIR, { recursive: true });
-  await writeFile(path.join(OUT_DIR, 'chunks.bin'), bin);
-  await writeFile(path.join(OUT_DIR, 'entities.json'), `${JSON.stringify(entities, null, 2)}\n`);
-  console.log(`${MAP_ID}: ${world.size.join('x')} blocks, chunks.bin ${bin.byteLength} bytes, ${entities.props.length} props, ${entities.interactables.length} interactables`);
-}
-
-if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
-  await main();
-}
+await runIfMain(import.meta.url, generateSchool);

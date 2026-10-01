@@ -3,35 +3,19 @@
 // interactables (ids match the `target`s in content/quests/forest-ch1.json) and decorative props, and
 // for now the places of the first two Tiếng Việt quests (`chapter2Preview`).
 // Output: assets/generated/world/forest-ch1/{chunks.bin, entities.json}
-import { mkdir, writeFile } from 'node:fs/promises';
-import path from 'node:path';
-import { pathToFileURL } from 'node:url';
-import { blockTableSchema } from '../../packages/voxel/src/block-table';
-import { VoxelWorld, encodeWorld } from '../../packages/voxel/src/chunk-format';
+import { VoxelWorld } from '../../packages/voxel/src/chunk-format';
 import type { WorldEntities } from '../../packages/voxel/src/world-entities';
-import { ASSETS_DIR, REPO_ROOT, readJson } from '../assets/asset-lib';
 import { LIFE_MODEL_ANIMATION, LIFE_MODEL_HEIGHT, QUEST_CLEARANCE, placeForestLife } from './forest-life';
-import { modelScales } from './model-scales';
-import { createRng, fbm, hashSeed } from './noise';
+import { columnsOf, fillColumn, heightField, loadBlocks, MAP_CHUNKS, mapModels, PACK, placeRegionTargets, rollingHeight, runIfMain, scatterTrees, smoothstep, standHeight } from './map-kit';
+import { createRng, hashSeed } from './noise';
 import { placeBridge } from './structures/bridge';
 import { distanceToPath, pathColumns, type Point } from './structures/path';
-import { cellsIn, placeQuestTargets, WALK_GAP, readQuests, targetUses } from './chapters/place-quest-targets';
-import { placeAncientTree, placeTree, treeHeight } from './structures/tree';
+import { cellsIn } from './chapters/place-quest-targets';
+import { placeAncientTree } from './structures/tree';
 
 export const MAP_ID = 'forest-ch1';
 export const SEED_TEXT = 'miu-forest-ch1';
-/** 192 x 48 x 192 blocks (Jev, 01/10/2026: the owner found the maps small); chapter 1 keeps its corner. */
-const CHUNKS = [12, 3, 12] as const;
 const WATER_LEVEL = 9;
-const OUT_DIR = path.join(ASSETS_DIR, 'generated/world', MAP_ID);
-
-const PACK = {
-  pets: 'packs/kenney-cube-pets/2.0',
-  survival: 'packs/kenney-survival-kit/2.0',
-  nature: 'packs/kenney-nature-kit/2.1',
-  food: 'packs/kenney-food-kit/2.0',
-  castle: 'packs/kenney-castle-kit/2.0',
-};
 
 /** Models and the height (in blocks) each should stand at; scale is derived from its bounds. */
 const MODEL_HEIGHT: Record<string, number> = {
@@ -96,30 +80,18 @@ interface Clearing {
   radius: number;
 }
 
-const smoothstep = (e0: number, e1: number, v: number): number => {
-  const t = Math.max(0, Math.min(1, (v - e0) / (e1 - e0)));
-  return t * t * (3 - 2 * t);
-};
-
 export async function generateForest(): Promise<{ world: VoxelWorld; entities: WorldEntities }> {
-  const table = await readJson(path.join(REPO_ROOT, 'content/blocks.json'), blockTableSchema);
-  const id = (name: string): number => {
-    const block = table.blocks.find((b) => b.name === name);
-    if (!block) throw new Error(`block ${name} missing from content/blocks.json`);
-    return block.id;
-  };
+  const id = await loadBlocks();
   const B = {
     grass: id('grass'), dirt: id('dirt'), stone: id('stone'), sand: id('sand'), log: id('log'), leaves: id('leaves'),
     planks: id('planks'), path: id('path'), water: id('water'), rock: id('rock-moss'), birch: id('birch-log'),
     treeLog: id('tree-log'), treeBirch: id('tree-birch-log'),
     autumn: id('leaves-autumn'), bed: id('riverbed'),
   };
-  const scales = await modelScales({ ...MODEL_HEIGHT, ...LIFE_MODEL_HEIGHT }, { ...MODEL_ANIMATION, ...LIFE_MODEL_ANIMATION });
-  const scaleOf = (model: string): number => scales.get(model) ?? 1;
-
   const seed = hashSeed(SEED_TEXT);
   const rng = createRng(seed);
-  const world = new VoxelWorld(CHUNKS);
+  // Chapter 1 keeps its corner of the map.
+  const world = new VoxelWorld(MAP_CHUNKS);
   const [sx, sy, sz] = world.size;
 
   // Landmarks and the bridge crossing (river runs along x, so the bridge deck runs along z).
@@ -155,28 +127,21 @@ export async function generateForest(): Promise<{ world: VoxelWorld; entities: W
     [ancient.x - 6, ancient.z - 6],
   ];
 
-  // 1. Height field.
-  const heights: number[][] = [];
-  for (let x = 0; x < sx; x++) {
-    heights[x] = [];
-    for (let z = 0; z < sz; z++) {
-      let h = 12 + fbm(seed, x / 26, z / 26) * 3.5;
-      const edge = Math.min(x, z, sx - 1 - x, sz - 1 - z);
-      if (edge < 9) h += (9 - edge) * 1.1; // rim hills keep the player inside the chapter
-      for (const c of clearings) {
-        const k = smoothstep(c.radius, c.radius + 5, Math.hypot(x - c.x, z - c.z));
-        h = 12 * (1 - k) + h * k;
-      }
-      const pathDist = distanceToPath(route, x, z);
-      h = h * smoothstep(1, 5, pathDist) + Math.min(h, 13) * (1 - smoothstep(1, 5, pathDist));
-      const dr = Math.abs(z - riverCenter(x));
-      const hw = riverHalfWidth(x);
-      if (dr < hw + 4) h = WATER_LEVEL + 1 + (h - WATER_LEVEL - 1) * smoothstep(hw + 1, hw + 4, dr);
-      if (x >= bridgeX - 1 && x <= bridgeX + 1 && dr >= hw && dr < hw + 6) h = Math.max(h, deckY - 1);
-      (heights[x] as number[])[z] = Math.round(Math.min(h, sy - 12));
+  // 1. Height field: rolling ground, levelled at the clearings and along the path, sunk at the stream.
+  const surface = heightField(world, (x, z) => {
+    let h = rollingHeight(seed, x, z, world.size, { ground: 12, roll: 3.5, rim: 9 });
+    for (const c of clearings) {
+      const k = smoothstep(c.radius, c.radius + 5, Math.hypot(x - c.x, z - c.z));
+      h = 12 * (1 - k) + h * k;
     }
-  }
-  const surface = (x: number, z: number): number => heights[x]?.[z] ?? 0;
+    const pathDist = distanceToPath(route, x, z);
+    h = h * smoothstep(1, 5, pathDist) + Math.min(h, 13) * (1 - smoothstep(1, 5, pathDist));
+    const dr = Math.abs(z - riverCenter(x));
+    const hw = riverHalfWidth(x);
+    if (dr < hw + 4) h = WATER_LEVEL + 1 + (h - WATER_LEVEL - 1) * smoothstep(hw + 1, hw + 4, dr);
+    if (x >= bridgeX - 1 && x <= bridgeX + 1 && dr >= hw && dr < hw + 6) h = Math.max(h, deckY - 1);
+    return Math.round(Math.min(h, sy - 12));
+  }, 0);
 
   // 2. Terrain columns + stream.
   for (let x = 0; x < sx; x++) {
@@ -191,10 +156,7 @@ export async function generateForest(): Promise<{ world: VoxelWorld; entities: W
       }
       const h = surface(x, z);
       const beach = dr < hw + 2 && h <= WATER_LEVEL + 1;
-      for (let y = 0; y <= h; y++) {
-        const idHere = y < h - 3 ? B.stone : y < h ? (beach ? B.sand : B.dirt) : beach ? B.sand : B.grass;
-        world.set(x, y, z, idHere);
-      }
+      fillColumn(world, x, z, h, { stone: B.stone, under: beach ? B.sand : B.dirt, top: beach ? B.sand : B.grass });
     }
   }
 
@@ -221,22 +183,17 @@ export async function generateForest(): Promise<{ world: VoxelWorld; entities: W
   placeAncientTree(world, ancient.x, ancientBase, ancient.z, { log: B.treeLog, leaves: B.leaves, core: B.log }, rng);
 
   // 6. Scattered trees (jittered grid, rejecting path, stream, clearings and rim).
-  const occupied: Array<[number, number]> = [];
-  for (let gx = 4; gx < sx - 4; gx += 7) {
-    for (let gz = 4; gz < sz - 4; gz += 7) {
-      const x = Math.round(gx + (rng() - 0.5) * 5);
-      const z = Math.round(gz + (rng() - 0.5) * 5);
-      if (x < 3 || z < 3 || x >= sx - 3 || z >= sz - 3) continue;
-      if (distanceToPath(route, x, z) < 3.5) continue;
-      if (Math.abs(z - riverCenter(x)) < riverHalfWidth(x) + 3) continue;
-      if (clearings.some((c) => Math.hypot(x - c.x, z - c.z) < c.radius + 1)) continue;
-      if (rng() < 0.18) continue;
-      const roll = rng();
-      const blocks = roll < 0.15 ? { log: B.treeBirch, leaves: B.leaves } : roll < 0.3 ? { log: B.treeLog, leaves: B.autumn } : { log: B.treeLog, leaves: B.leaves };
-      placeTree(world, x, surface(x, z) + 1, z, treeHeight(rng), blocks, rng);
-      occupied.push([x, z]);
-    }
-  }
+  const occupied = scatterTrees({
+    world,
+    rng,
+    surface,
+    rejects: (x, z) =>
+      distanceToPath(route, x, z) < 3.5 ||
+      Math.abs(z - riverCenter(x)) < riverHalfWidth(x) + 3 ||
+      clearings.some((c) => Math.hypot(x - c.x, z - c.z) < c.radius + 1),
+    skip: 0.18,
+    blocks: (roll) => (roll < 0.15 ? { log: B.treeBirch, leaves: B.leaves } : roll < 0.3 ? { log: B.treeLog, leaves: B.autumn } : { log: B.treeLog, leaves: B.leaves }),
+  });
 
   // 7. Mossy boulders.
   for (let i = 0; i < Math.round((14 * sx * sz) / (96 * 96)); i++) {
@@ -250,18 +207,12 @@ export async function generateForest(): Promise<{ world: VoxelWorld; entities: W
   }
 
   // 8. Entities.
-  // First air cell above the terrain surface (not the tree-top: canopies overhang the ground).
-  const standY = (x: number, z: number): number => {
-    const bx = Math.floor(x);
-    const bz = Math.floor(z);
-    let y = surface(bx, bz) + 1;
-    while (y < sy && world.get(bx, y, bz) !== 0) y++;
-    return y;
-  };
-  const props: WorldEntities['props'] = [];
-  const addProp = (model: string, x: number, z: number, yaw = 0, chapter?: number): void => {
-    props.push({ model, position: [x + 0.5, standY(x, z), z + 0.5], yaw, scale: scaleOf(model), ...(chapter ? { chapter } : {}) });
-  };
+  const standY = standHeight(world, surface);
+  const { props, scaleOf, place, addProp, addPropAt, modelled, animated } = await mapModels({
+    heights: { ...MODEL_HEIGHT, ...LIFE_MODEL_HEIGHT },
+    clips: { ...MODEL_ANIMATION, ...LIFE_MODEL_ANIMATION },
+    standY,
+  });
   addProp(`${PACK.survival}/signpost.glb`, spawn.x + 3, spawn.z + 3, 225);
   addProp(`${PACK.survival}/campfire-pit.glb`, spawn.x - 3, spawn.z + 1);
   addProp(`${PACK.survival}/barrel.glb`, spawn.x - 5, spawn.z - 3, 20);
@@ -288,12 +239,9 @@ export async function generateForest(): Promise<{ world: VoxelWorld; entities: W
   for (let i = 0; i < 4; i++) {
     const x = 20 + i * 17;
     const z = Math.round(riverCenter(x));
-    props.push({ model: `${PACK.nature}/lily_large.glb`, position: [x + 0.5, WATER_LEVEL + 1.02, z + 0.5], yaw: i * 70, scale: scaleOf(`${PACK.nature}/lily_large.glb`) });
+    addPropAt(`${PACK.nature}/lily_large.glb`, [x + 0.5, WATER_LEVEL + 1.02, z + 0.5], i * 70);
   }
 
-  const place = (x: number, z: number): [number, number, number] => [x + 0.5, standY(x, z), z + 0.5];
-  const modelled = (model: string) => ({ model, scale: scaleOf(model) });
-  const animated = (model: string) => ({ ...modelled(model), animation: MODEL_ANIMATION[model] ?? 'idle' });
   const riddleAt = { x: ancient.x - 4, z: ancient.z - 4 };
   const interactables: WorldEntities['interactables'] = [
     {
@@ -426,7 +374,7 @@ export async function generateForest(): Promise<{ world: VoxelWorld; entities: W
 
   // Chapters 2–19 (the Tiếng Việt quests): every target they name, placed from the catalogues, on firm
   // open ground off the path and the stream, clear of trees, props, chapter 1 and the villagers' places.
-  const propCells = props.map((p) => [Math.floor(p.position[0] ?? 0), Math.floor(p.position[2] ?? 0)] as const);
+  const propCells = columnsOf(props);
   const canStand = (x: number, z: number): boolean => {
     const y = surface(x, z);
     if (y <= WATER_LEVEL || Math.abs(z - riverCenter(x)) < riverHalfWidth(x) + 2 || distanceToPath(route, x, z) < 2) return false;
@@ -436,24 +384,22 @@ export async function generateForest(): Promise<{ world: VoxelWorld; entities: W
   };
   const forestCells = cellsIn(6, 6, sx - 7, sz - 7);
   const villagerSpots = ambients.flatMap((a) => [a.position, ...Object.values(a.spots)].map((p) => [Math.floor(p[0]), Math.floor(p[2])] as const));
-  const { placed: chapterTargets, retagged, narrow } = await placeQuestTargets({
-    uses: targetUses(await readQuests(), 'khu-rung-bi-mat', 1),
+  const allInteractables = await placeRegionTargets({
+    mapId: MAP_ID,
+    region: 'khu-rung-bi-mat',
+    ownChapter: 1,
     map: {
       canStand,
-      stand: (x, z) => [x + 0.5, standY(x, z), z + 0.5],
+      stand: place,
       chapterCells: () => forestCells,
       residentCells: forestCells,
       // Villagers keep this far from every quest target (forest-life.ts): so do the targets from them.
       clearance: QUEST_CLEARANCE,
-      keepClear: [...interactables.filter((t) => t.chapter === undefined).map((t) => [Math.floor(t.position[0] ?? 0), Math.floor(t.position[2] ?? 0)] as const), ...villagerSpots, [spawn.x, spawn.z]],
+      keepClear: [...columnsOf(interactables.filter((t) => t.chapter === undefined)), ...villagerSpots, [spawn.x, spawn.z]],
     },
-    existing: interactables,
+    interactables,
     seed: seed + 19,
   });
-  // Places that could not keep a walk apart: the sign that this map is crowded and should grow.
-  for (const n of narrow) console.warn(`${MAP_ID}: quest ${n.quest} place "${n.place}" only ${n.gap} blocks from its other places (aim ${WALK_GAP})`);
-  const retaggedById = new Map(retagged.map((t) => [t.id, t]));
-  interactables.splice(0, interactables.length, ...interactables.map((t) => retaggedById.get(t.id) ?? t), ...chapterTargets);
 
   const entities: WorldEntities = {
     version: 2,
@@ -462,7 +408,7 @@ export async function generateForest(): Promise<{ world: VoxelWorld; entities: W
     size: [sx, sy, sz],
     waterLevel: WATER_LEVEL,
     spawn: { position: [spawn.x + 0.5, standY(spawn.x, spawn.z), spawn.z + 0.5], yaw: 45 },
-    interactables,
+    interactables: allInteractables,
     props,
     landmarks: [
       { id: 'ancient-tree', name: 'Cây cổ thụ', position: [ancient.x + 0.5, ancientBase, ancient.z + 0.5] },
@@ -475,19 +421,4 @@ export async function generateForest(): Promise<{ world: VoxelWorld; entities: W
   return { world, entities };
 }
 
-async function main(): Promise<void> {
-  const { world, entities } = await generateForest();
-  const bin = encodeWorld(world);
-  await mkdir(OUT_DIR, { recursive: true });
-  await writeFile(path.join(OUT_DIR, 'chunks.bin'), bin);
-  await writeFile(path.join(OUT_DIR, 'entities.json'), `${JSON.stringify(entities, null, 2)}\n`);
-  const solid = world.data.reduce((n, id) => n + (id === 0 ? 0 : 1), 0);
-  console.log(
-    `${MAP_ID}: ${world.size.join('x')} blocks, ${solid} non-air, chunks.bin ${bin.byteLength} bytes, ` +
-      `${entities.props.length} props, ${entities.interactables.length} interactables, ${entities.ambients?.length ?? 0} ambients`,
-  );
-}
-
-if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
-  await main();
-}
+await runIfMain(import.meta.url, generateForest);

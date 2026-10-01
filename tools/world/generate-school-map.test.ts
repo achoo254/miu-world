@@ -1,22 +1,14 @@
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { describe, expect, it } from 'vitest';
-import { encodeWorld } from '../../packages/voxel/src/chunk-format';
 import { worldEntitiesSchema } from '../../packages/voxel/src/world-entities';
 import { ASSETS_DIR } from '../assets/asset-lib';
-import { CAMPUS, MAIN_BUILDING, MAP_ID, ZONES, generateSchool } from './generate-school-map';
-import { reachable, walkSolid } from './walkable';
-
-const OUT = path.join(ASSETS_DIR, 'generated/world', MAP_ID);
+import { CAMPUS, MAIN_BUILDING, ZONES, generateSchool } from './generate-school-map';
+import { expectCommittedOutput, expectStandsOnGround, expectTargetsReachable, walkFromSpawn } from './map-checks';
 
 describe('school map generator', () => {
-  it('is deterministic and matches the committed output', async () => {
-    const first = await generateSchool();
-    const second = await generateSchool();
-    const bytes = encodeWorld(first.world);
-    expect(Buffer.from(encodeWorld(second.world)).equals(Buffer.from(bytes))).toBe(true);
-    expect(Buffer.from(bytes).equals(await readFile(path.join(OUT, 'chunks.bin')))).toBe(true);
-    expect(JSON.parse(await readFile(path.join(OUT, 'entities.json'), 'utf8'))).toEqual(first.entities);
+  it('is deterministic and matches the committed output (run `pnpm world:school` after changing it)', async () => {
+    await expectCommittedOutput(generateSchool);
   }, 60_000);
 
   it('names a zone for each of the seven Toán topics, and places the first topic\'s characters in theirs', async () => {
@@ -32,23 +24,13 @@ describe('school map generator', () => {
       const t = parsed.interactables.find((i) => i.id === target);
       expect(t?.chapter === 1 || t?.chapters?.includes(1), target).toBe(true);
     }
-    for (const t of parsed.interactables) {
-      const [x, y, z] = t.position.map(Math.floor) as [number, number, number];
-      expect(world.get(x, y, z), `${t.id} is buried`).toBe(0);
-      expect(world.get(x, y - 1, z), `${t.id} floats`).not.toBe(0);
-    }
-    // The spawn stands on the ground at the gate, free to walk.
-    const [sx, sy, sz] = parsed.spawn.position.map(Math.floor) as [number, number, number];
-    expect(world.get(sx, sy, sz)).toBe(0);
+    expectStandsOnGround(world, entities);
   }, 60_000);
 
-  it('can be walked from the gate to every zone, into the classroom and up the stairs to the one upstairs', async () => {
+  it('can be walked from the gate to every zone and quest target, into the classroom and up the stairs to the one upstairs', async () => {
     const { world, entities } = await generateSchool();
-    const spots = reachable(world, entities.spawn.position as [number, number, number], await walkSolid());
-    const at = (x: number, z: number, y?: number) => [...spots].some((key) => {
-      const [kx, ky, kz] = key.split(',').map(Number) as [number, number, number];
-      return Math.abs(kx - x) <= 1 && Math.abs(kz - z) <= 1 && (y === undefined || ky === y);
-    });
+    const { spots, reaches: at } = await walkFromSpawn(world, entities);
+    await expectTargetsReachable(world, entities);
     for (const zone of ZONES) expect(at(zone.x, zone.z), zone.name).toBe(true);
     const lop = entities.landmarks.find((l) => l.id === 'lop-hoc');
     const [lx = 0, ly = 0, lz = 0] = lop?.position ?? [];
