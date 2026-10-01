@@ -23,7 +23,12 @@ export interface CharacterModel {
 
 const Characters = z.record(
   z.string(),
-  z.object({ output: z.string(), recipe: z.object({ species: z.string() }).optional(), accessoryScale: z.record(z.string(), z.number()).default({}) }),
+  z.object({
+    output: z.string(),
+    role: z.enum(['player', 'npc']).default('player'),
+    recipe: z.object({ species: z.string() }).optional(),
+    accessoryScale: z.record(z.string(), z.number()).default({}),
+  }),
 );
 
 /** In content order: the Character Creator shows them in this order. */
@@ -38,7 +43,8 @@ export const DEFAULT_SPECIES = 'cat';
 
 const bySpecies = new Map<string, CharacterModel>();
 for (const [id, spec] of Object.entries(Characters.parse(charactersJson))) {
-  if (spec.recipe) bySpecies.set(spec.recipe.species, { id, output: spec.output, accessoryScale: spec.accessoryScale });
+  // Quest NPCs (`role: npc`) share the species' recipe but are never what a child plays as.
+  if (spec.recipe && spec.role === 'player') bySpecies.set(spec.recipe.species, { id, output: spec.output, accessoryScale: spec.accessoryScale });
 }
 for (const s of SPECIES) if (!bySpecies.has(s.id)) throw new Error(`content/characters.json has no character for species ${s.id}`);
 

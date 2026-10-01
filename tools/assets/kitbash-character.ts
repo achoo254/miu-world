@@ -45,6 +45,8 @@ const nodeName = z.string().regex(/^[a-z0-9-]+$/);
 export const characterSpecSchema = z
   .object({
     output: z.string().regex(/^generated\/characters\/[a-z0-9-]+\.glb$/),
+    /** `player`: a species the child plays as (one per species, with UI portraits); `npc`: a quest character's look. */
+    role: z.enum(['player', 'npc']).default('player'),
     rig: z.string().min(1),
     /** Voxel body composed from the character library; replaces the rig meshes and the Cube Pets head and tail. */
     recipe: characterRecipeSchema.optional(),

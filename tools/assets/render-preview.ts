@@ -42,6 +42,7 @@ const UI_CLIPS = ['idle', 'wave', 'cheer'];
 async function characterShots(): Promise<Shot[]> {
   const shots: Shot[] = [];
   for (const [id, spec] of Object.entries(await readCharacterSpecs())) {
+    if (spec.role === 'npc') continue; // quest characters need no portraits or turnarounds
     for (const yaw of [0, 90, 180, 315]) {
       shots.push({ file: `${id}-turn-${yaw}.png`, query: { model: spec.output, anim: 'idle', t: 0, yaw } });
     }

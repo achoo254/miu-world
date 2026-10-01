@@ -63,9 +63,11 @@ const artFor = (characterId: string): Readonly<Record<MiuPose, string>> =>
 /** Miu, the game's mascot (brand column, loading screens). */
 export const MIU_ART = artFor('miu-cat');
 
-/** Portraits of each species' character, for every character built from a recipe. */
+/** Portraits of each species' character, for every playable character built from a recipe (not quest NPCs). */
 export const SPECIES_ART: Readonly<Record<string, Readonly<Record<MiuPose, string>>>> = Object.fromEntries(
-  Object.entries(characters as Record<string, { recipe?: { species: string } }>).flatMap(([id, spec]) => (spec.recipe ? [[spec.recipe.species, artFor(id)]] : [])),
+  Object.entries(characters as Record<string, { role?: string; recipe?: { species: string } }>).flatMap(([id, spec]) =>
+    spec.recipe && spec.role !== 'npc' ? [[spec.recipe.species, artFor(id)]] : [],
+  ),
 );
 
 /** Home and world-map background: the world overview, one floating island per region (`pnpm assets:home`). */
