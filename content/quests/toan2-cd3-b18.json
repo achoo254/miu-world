@@ -1,0 +1,709 @@
+{
+  "id": "toan2-cd3-b18",
+  "region": "truong-hoc",
+  "chapter": 3,
+  "title": "Thùng hàng gửi phương xa",
+  "status": "draft",
+  "lesson": "toan2-t1-b18",
+  "summary": "Gấu Tuyết Bông đóng thùng quà gửi về phương Bắc lạnh giá, nhưng nhãn ki-lô-gam, lít còn trống trơn; {name} tính nhãn từng thùng, cân thú bông trên cầu thăng bằng, chọn túi gạo cho vừa và tính xăng cho xe chở hàng của Chó Mực.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "Gấu Tuyết Bông, Cánh Cụt Pin, Chó Mực",
+    "where": "Căng tin: kho lạnh và cổng sau căng tin",
+    "goal": "Ghi đúng cân nặng, số lít trên mọi thùng quà trước khi xe chở hàng tới",
+    "play": "Tìm thùng hàng, điền kết quả kg và l, đố cầu thăng bằng, chọn túi gạo, đố số lít xăng",
+    "learn": "Toán 2 Bài 18: luyện tập chung về ki-lô-gam, lít",
+    "reward": "80 XP, 15 xu, Khối lượng +1, Dung tích +1, Phép cộng +1",
+    "unlock": "Bài 19 \"Phép cộng (có nhớ) số có hai chữ số với số có một chữ số\""
+  },
+  "phases": {
+    "hook": "bong-dong-thung-qua",
+    "explore": "tim-thung-qua",
+    "learn": "kg-di-voi-kg",
+    "challenge": "nhan-thung-ki-lo-gam",
+    "decision": "tui-gao-cho-ba-noi",
+    "finale": "xang-cho-xe-cho-hang",
+    "reward": "khan-len-tuyet-trang",
+    "unlock": "linh-kien-lach-cach"
+  },
+  "texts": {},
+  "places": {
+    "gau-tuyet-bong": "kho lạnh",
+    "tim-thung-qua": "kho lạnh",
+    "canh-cut-pin": "kho lạnh",
+    "cho-muc": "cổng sau căng tin"
+  },
+  "steps": [
+    {
+      "id": "bong-dong-thung-qua",
+      "title": "Gấu Tuyết Bông đóng thùng",
+      "goTo": "Vào kho lạnh, Gấu Tuyết Bông đang hắt xì vì… quá ấm",
+      "kind": "dialogue",
+      "target": "gau-tuyet-bong",
+      "lines": [
+        {
+          "speaker": "Gấu Tuyết Bông",
+          "text": "Hắt xììì! Ở trường nóng quá, chỉ có kho lạnh là dễ chịu. Tớ đang gói quà gửi về nhà ở phương Bắc đây."
+        },
+        {
+          "speaker": "Gấu Tuyết Bông",
+          "text": "Nhưng bác đưa thư bảo: thùng nào không ghi cân nặng thì không nhận. Mà tớ quên sạch cách cộng ki-lô-gam rồi!"
+        },
+        {
+          "speaker": "Cánh Cụt Pin",
+          "text": "Kho của chú, luật của chú: mọi thùng phải có nhãn đúng. {name}, cháu giúp Bông nhé, chú… ngồi canh cho lạnh."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Mình giúp cậu ghi nhãn!",
+          "reply": "Gấu Tuyết Bông ôm chầm lấy {name}: Ôi, cái ôm này hơi lạnh, cậu chịu khó nhé!"
+        },
+        {
+          "text": "Phương Bắc có xa không Bông?",
+          "reply": "Gấu Tuyết Bông: Xa lắm! Xa đến nỗi tuyết ở đó dày bằng… ba con Heo Ủn chồng lên nhau."
+        }
+      ]
+    },
+    {
+      "id": "tim-thung-qua",
+      "title": "Ba thùng quà lạc trong sương",
+      "goTo": "Tìm ba thùng quà lẫn trong hơi lạnh của kho lạnh",
+      "kind": "search",
+      "targets": [
+        "toan2-cd3-thung-qua-xanh",
+        "toan2-cd3-thung-qua-do",
+        "toan2-cd3-thung-qua-vang"
+      ]
+    },
+    {
+      "id": "kg-di-voi-kg",
+      "title": "Ki-lô-gam đi với ki-lô-gam",
+      "kind": "dialogue",
+      "target": "canh-cut-pin",
+      "lines": [
+        {
+          "speaker": "Cánh Cụt Pin",
+          "text": "Nhớ kĩ: cộng, trừ ki-lô-gam thì tính như số rồi giữ nguyên chữ kg. Lít cũng thế, giữ nguyên chữ l."
+        },
+        {
+          "speaker": "Gấu Tuyết Bông",
+          "text": "Thế cộng 3 kg với 2 l thì sao ạ?"
+        },
+        {
+          "speaker": "Cánh Cụt Pin",
+          "text": "Thì ra… món canh lẫn lộn! Kg đi với kg, lít đi với lít, không trộn vào nhau."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Kg với kg, lít với lít!",
+          "reply": "Pin gật đầu cái rụp: Câu thần chú của kho lạnh đấy."
+        }
+      ]
+    },
+    {
+      "id": "nhan-thung-ki-lo-gam",
+      "title": "Nhãn ki-lô-gam cho thùng quà",
+      "target": "gau-tuyet-bong",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Mỗi thùng quà dán một phép tính, Bông cần kết quả để ghi nhãn.",
+      "template": "Tính.\na) 40 kg + 20 kg = {{b1}} kg\na) 8 kg + 5 kg = {{b2}} kg\na) 25 kg + 31 kg = {{b3}} kg\na) 60 kg – 40 kg = {{b4}} kg\na) 13 kg – 8 kg = {{b5}} kg\na) 56 kg – 31 kg = {{b6}} kg",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o60",
+              "text": "60"
+            },
+            {
+              "id": "o61",
+              "text": "61"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o11",
+              "text": "11"
+            },
+            {
+              "id": "o12",
+              "text": "12"
+            },
+            {
+              "id": "o13",
+              "text": "13"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o46",
+              "text": "46"
+            },
+            {
+              "id": "o55",
+              "text": "55"
+            },
+            {
+              "id": "o56",
+              "text": "56"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "o10",
+              "text": "10"
+            },
+            {
+              "id": "o19",
+              "text": "19"
+            },
+            {
+              "id": "o20",
+              "text": "20"
+            }
+          ]
+        },
+        {
+          "id": "b5",
+          "options": [
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o5",
+              "text": "5"
+            },
+            {
+              "id": "o15",
+              "text": "15"
+            }
+          ]
+        },
+        {
+          "id": "b6",
+          "options": [
+            {
+              "id": "o25",
+              "text": "25"
+            },
+            {
+              "id": "o27",
+              "text": "27"
+            },
+            {
+              "id": "o52",
+              "text": "52"
+            }
+          ]
+        }
+      ],
+      "skill": "khoi-luong",
+      "curriculumRef": [
+        "toan2-t1-b18-luyen-tap-1-a1",
+        "toan2-t1-b18-luyen-tap-1-a2",
+        "toan2-t1-b18-luyen-tap-1-a3",
+        "toan2-t1-b18-luyen-tap-1-a4",
+        "toan2-t1-b18-luyen-tap-1-a5",
+        "toan2-t1-b18-luyen-tap-1-a6"
+      ],
+      "support": {
+        "guide": [
+          "Tính phần số, giữ nguyên đơn vị kg.",
+          "Cộng, trừ số tròn chục thì tính theo chục."
+        ],
+        "hint": "13 – 8: tách 8 = 3 + 5; 13 – 3 = 10, 10 – 5 = 5.",
+        "answer": {
+          "text": "Tính.; a) 40 kg + 20 kg = 60 kg; a) 8 kg + 5 kg = 13 kg; a) 25 kg + 31 kg = 56 kg; a) 60 kg – 40 kg = 20 kg; a) 13 kg – 8 kg = 5 kg; a) 56 kg – 31 kg = 25 kg",
+          "explanation": "40 + 20 = 60, 8 + 5 = 13, 25 + 31 = 56, 60 – 40 = 20, 13 – 8 = 5, 56 – 31 = 25; tất cả kèm kg."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Sáu thùng quà có nhãn, bác đưa thư chắc chắn nhận!",
+          "Bông nhảy cẫng lên, tuyết trên lông rơi lả tả.",
+          "Cộng trừ ki-lô-gam đều tay, chuẩn từng con số."
+        ],
+        "wrong": [
+          "Phép 8 kg + 5 kg qua 10, tách số cho dễ nhé.",
+          "Dòng trừ có hai chữ số thì trừ chục trước, đơn vị sau.",
+          "Một nhãn đang ghi lệch, Bông chưa dám dán đâu."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o60",
+          "b2": "o13",
+          "b3": "o56",
+          "b4": "o20",
+          "b5": "o5",
+          "b6": "o25"
+        }
+      }
+    },
+    {
+      "id": "nhan-binh-lit",
+      "title": "Nhãn lít cho bình sữa, bình dầu",
+      "target": "gau-tuyet-bong",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Bông còn gửi mấy bình sữa, bình dầu ăn cho cả nhà. Mỗi bình lại một phép tính lít.",
+      "template": "Tính.\nb) 30 l + 10 l = {{b1}} l\nb) 7 l + 6 l = {{b2}} l\nb) 45 l + 23 l = {{b3}} l\nb) 40 l – 10 l = {{b4}} l\nb) 13 l – 7 l = {{b5}} l\nb) 68 l – 23 l = {{b6}} l",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o40",
+              "text": "40"
+            },
+            {
+              "id": "o42",
+              "text": "42"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o11",
+              "text": "11"
+            },
+            {
+              "id": "o13",
+              "text": "13"
+            },
+            {
+              "id": "o15",
+              "text": "15"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o67",
+              "text": "67"
+            },
+            {
+              "id": "o68",
+              "text": "68"
+            },
+            {
+              "id": "o69",
+              "text": "69"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "o20",
+              "text": "20"
+            },
+            {
+              "id": "o29",
+              "text": "29"
+            },
+            {
+              "id": "o30",
+              "text": "30"
+            }
+          ]
+        },
+        {
+          "id": "b5",
+          "options": [
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o7",
+              "text": "7"
+            },
+            {
+              "id": "o16",
+              "text": "16"
+            }
+          ]
+        },
+        {
+          "id": "b6",
+          "options": [
+            {
+              "id": "o35",
+              "text": "35"
+            },
+            {
+              "id": "o45",
+              "text": "45"
+            },
+            {
+              "id": "o46",
+              "text": "46"
+            }
+          ]
+        }
+      ],
+      "skill": "dung-tich",
+      "curriculumRef": [
+        "toan2-t1-b18-luyen-tap-1-b1",
+        "toan2-t1-b18-luyen-tap-1-b2",
+        "toan2-t1-b18-luyen-tap-1-b3",
+        "toan2-t1-b18-luyen-tap-1-b4",
+        "toan2-t1-b18-luyen-tap-1-b5",
+        "toan2-t1-b18-luyen-tap-1-b6"
+      ],
+      "support": {
+        "guide": [
+          "Tính phần số rồi viết thêm đơn vị l.",
+          "Phép trừ có thể thử lại bằng phép cộng."
+        ],
+        "hint": "68 – 23: 8 – 3 = 5, 6 – 2 = 4.",
+        "answer": {
+          "text": "Tính.; b) 30 l + 10 l = 40 l; b) 7 l + 6 l = 13 l; b) 45 l + 23 l = 68 l; b) 40 l – 10 l = 30 l; b) 13 l – 7 l = 6 l; b) 68 l – 23 l = 45 l",
+          "explanation": "30 + 10 = 40, 7 + 6 = 13, 45 + 23 = 68, 40 – 10 = 30, 13 – 7 = 6, 68 – 23 = 45; tất cả kèm l."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bình sữa, bình dầu đều có nhãn lít sáng choang!",
+          "Cháu thấy không, 45 l + 23 l rồi 68 l – 23 l quay về 45 l.",
+          "Pin lắc cánh rung rinh: không chệch một lít nào."
+        ],
+        "wrong": [
+          "Nhớ đơn vị lít giữ nguyên, chỉ tính phần số thôi.",
+          "Phép 13 l – 7 l là trừ qua 10 đấy.",
+          "Thử cộng ngược lại để kiểm tra phép trừ xem."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o40",
+          "b2": "o13",
+          "b3": "o68",
+          "b4": "o30",
+          "b5": "o6",
+          "b6": "o45"
+        }
+      }
+    },
+    {
+      "id": "cau-thang-bang-thu-bong",
+      "title": "Thú bông trên cầu thăng bằng",
+      "target": "gau-tuyet-bong",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Bông có ba thú bông gửi tặng em: thỏ, gà, chó. Lần một, 1 con thỏ ngồi cân với 2 con gà; lần hai, 1 con chó ngồi cân với 2 con thỏ. Số ? Thỏ, gà, chó chơi cầu thăng bằng. Biết cả hai trường hợp dưới đây cầu đều thăng bằng.",
+      "template": "a) Con thỏ nặng bằng {{b1}} con gà.\nb) Con chó nặng bằng {{b2}} con gà.",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o0",
+              "text": "0"
+            },
+            {
+              "id": "o2",
+              "text": "2"
+            },
+            {
+              "id": "o12",
+              "text": "12"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o14",
+              "text": "14"
+            }
+          ]
+        }
+      ],
+      "skill": "logic",
+      "curriculumRef": [
+        "toan2-t1-b18-luyen-tap-2-a",
+        "toan2-t1-b18-luyen-tap-2-b"
+      ],
+      "support": {
+        "guide": [
+          "Cầu thăng bằng thì hai bên nặng bằng nhau.",
+          "Mỗi con thỏ nặng bằng 2 con gà, con chó bằng 2 con thỏ."
+        ],
+        "hint": "Hai con thỏ là 2 + 2 con gà.",
+        "answer": {
+          "text": "a) Con thỏ nặng bằng 2 con gà.; b) Con chó nặng bằng 4 con gà.",
+          "explanation": "Con thỏ nặng bằng 2 con gà; con chó nặng bằng 2 con thỏ, tức là 2 + 2 = 4 con gà."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Cầu đứng yên phăng phắc, ba thú bông cười toe!",
+          "Một chú chó bằng bốn chú gà, cháu đổi nhanh quá.",
+          "Bông thốt lên: đầu óc cậu còn lạnh lùng hơn kho lạnh!"
+        ],
+        "wrong": [
+          "Con chó cân với 2 con thỏ, mỗi con thỏ lại bằng mấy con gà?",
+          "Cầu thăng bằng nghĩa là hai bên nặng như nhau đó.",
+          "Đổi từng con thỏ ra gà rồi cộng lại nhé."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o2",
+          "b2": "o4"
+        }
+      }
+    },
+    {
+      "id": "tui-gao-cho-ba-noi",
+      "title": "Gạo gửi bà nội",
+      "kind": "dialogue",
+      "target": "gau-tuyet-bong",
+      "lines": [
+        {
+          "speaker": "Gấu Tuyết Bông",
+          "text": "Bà nội tớ dặn: gửi đúng 13 kg gạo cho nhà bác, 9 kg cho nhà cô. Trong kho có năm túi 2 kg, 4 kg, 6 kg, 3 kg, 7 kg."
+        },
+        {
+          "speaker": "Cánh Cụt Pin",
+          "text": "Không được bóc túi ra chia đâu đấy, kho chú cấm làm rơi gạo! {name} định thử từng cặp, hay chọn túi to trước?"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Thử ghép từng cặp túi",
+          "reply": "Bông: Chậm mà chắc, giống bà nội tớ hay nói."
+        },
+        {
+          "text": "Chọn túi to trước rồi bù thêm",
+          "reply": "Pin: Mẹo hay! Nhưng nhớ cộng lại cho chắc."
+        }
+      ]
+    },
+    {
+      "id": "hai-tui-muoi-ba-kg",
+      "title": "Hai túi đủ 13 kg",
+      "target": "gau-tuyet-bong",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "prompt": "Có năm túi gạo sau: 2 kg, 4 kg, 6 kg, 3 kg, 7 kg. a) Muốn lấy hai túi để được 13 kg gạo thì phải lấy ra hai túi gạo nào?",
+      "choices": [
+        {
+          "id": "2-kg",
+          "text": "2 kg"
+        },
+        {
+          "id": "4-kg",
+          "text": "4 kg"
+        },
+        {
+          "id": "6-kg",
+          "text": "6 kg"
+        },
+        {
+          "id": "3-kg",
+          "text": "3 kg"
+        },
+        {
+          "id": "7-kg",
+          "text": "7 kg"
+        }
+      ],
+      "skill": "phep-cong",
+      "curriculumRef": [
+        "toan2-t1-b18-luyen-tap-4-a"
+      ],
+      "support": {
+        "guide": [
+          "Chọn đúng hai túi.",
+          "Hai túi cộng lại phải bằng 13 kg."
+        ],
+        "hint": "Túi 7 kg cần thêm mấy ki-lô-gam nữa để thành 13 kg?",
+        "answer": {
+          "text": "6 kg và 7 kg",
+          "explanation": "Túi 6 kg và túi 7 kg: 6 kg + 7 kg = 13 kg."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Sáu cộng bảy, mười ba ki-lô-gam tròn trĩnh cho nhà bác!",
+          "Hai túi chọn chuẩn, không phải bóc túi nào ra.",
+          "Bông buộc nơ lên hai túi gạo, xinh ơi là xinh."
+        ],
+        "wrong": [
+          "Chỉ được lấy đúng hai túi thôi nhé.",
+          "Cộng thử hai túi đã chọn xem có ra 13 kg không.",
+          "Túi 7 kg đi với túi nào thì vừa 13 kg?"
+        ]
+      },
+      "answer": {
+        "choices": [
+          "6-kg",
+          "7-kg"
+        ]
+      }
+    },
+    {
+      "id": "ba-tui-chin-kg",
+      "title": "Ba túi đủ 9 kg",
+      "target": "gau-tuyet-bong",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "prompt": "Giờ đến phần gạo cho nhà cô. Có năm túi gạo sau: 2 kg, 4 kg, 6 kg, 3 kg, 7 kg. b) Muốn lấy ba túi để được 9 kg gạo thì phải lấy ra ba túi gạo nào?",
+      "choices": [
+        {
+          "id": "2-kg",
+          "text": "2 kg"
+        },
+        {
+          "id": "4-kg",
+          "text": "4 kg"
+        },
+        {
+          "id": "6-kg",
+          "text": "6 kg"
+        },
+        {
+          "id": "3-kg",
+          "text": "3 kg"
+        },
+        {
+          "id": "7-kg",
+          "text": "7 kg"
+        }
+      ],
+      "skill": "phep-cong",
+      "curriculumRef": [
+        "toan2-t1-b18-luyen-tap-4-b"
+      ],
+      "support": {
+        "guide": [
+          "Lần này lấy đúng ba túi.",
+          "Ba túi nhỏ cộng lại bằng 9 kg."
+        ],
+        "hint": "Thử ba túi nhỏ nhất xem tổng là bao nhiêu.",
+        "answer": {
+          "text": "2 kg, 3 kg và 4 kg",
+          "explanation": "Túi 2 kg, 3 kg và 4 kg: 2 kg + 3 kg + 4 kg = 9 kg."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ba túi nhỏ xíu gộp lại vừa khít chín ki-lô-gam!",
+          "Nhà cô nhận đủ gạo, bà nội Bông chắc vui lắm.",
+          "Cháu chọn túi khéo như xếp hình khối vậy."
+        ],
+        "wrong": [
+          "Phải đủ ba túi, không hơn không kém.",
+          "Túi 6 kg với túi 7 kg đã vượt quá 9 kg rồi.",
+          "Cộng lần lượt ba túi đã chọn để kiểm tra nhé."
+        ]
+      },
+      "answer": {
+        "choices": [
+          "2-kg",
+          "3-kg",
+          "4-kg"
+        ]
+      }
+    },
+    {
+      "id": "xang-cho-xe-cho-hang",
+      "title": "Xăng cho xe chở hàng",
+      "goTo": "Ôm thùng quà ra cổng sau căng tin, Chó Mực đang chờ với xe chở hàng",
+      "target": "cho-muc",
+      "kind": "riddle",
+      "question": "Chó Mực bấm còi bim bim: \"Muốn chạy tới phương Bắc thì xe phải đổ xăng đã! Đố {name} câu này.\" Tại cửa hàng xăng dầu, một người đi ô tô vào mua 25 l xăng, một người đi xe máy vào mua 3 l xăng. Hỏi cả hai người mua bao nhiêu lít xăng?",
+      "skill": "bai-toan-loi-van",
+      "curriculumRef": [
+        "toan2-t1-b18-luyen-tap-3"
+      ],
+      "support": {
+        "guide": [
+          "Cả hai người thì gộp lại: phép cộng.",
+          "Cộng 25 với 3: chỉ cộng hàng đơn vị."
+        ],
+        "hint": "25 l + 3 l = ? l",
+        "answer": {
+          "text": "28 l",
+          "explanation": "Cả hai người mua 25 l + 3 l = 28 l xăng."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bim bim! Xe chở hàng nổ máy, quà lên đường về phương Bắc!",
+          "Hai mươi tám lít, Chó Mực vẫy đuôi tít mù.",
+          "Bông vẫy tay chào thùng quà, mắt rưng rưng hạnh phúc."
+        ],
+        "wrong": [
+          "Cả hai người mua thì phải cộng lại chứ.",
+          "25 cộng 3, hàng chục vẫn giữ nguyên số 2.",
+          "Xe máy mua ít thôi, chỉ có 3 l xăng."
+        ]
+      },
+      "answer": {
+        "value": 28
+      }
+    },
+    {
+      "id": "khan-len-tuyet-trang",
+      "title": "Khăn len tuyết trắng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Gấu Tuyết Bông quàng cho {name} chiếc khăn len trắng muốt đan ở phương Bắc. \"Lần sau tớ gửi thư kể chuyện tuyết cho cậu nhé!\""
+    },
+    {
+      "id": "linh-kien-lach-cach",
+      "title": "Tiếng lách cách ở xưởng",
+      "kind": "unlock",
+      "trigger": "auto",
+      "text": "Ở Xưởng đồ chơi vang lên tiếng lách cách: Lợn Rừng Đốm làm đổ cả hộp linh kiện ra bàn lắp ráp, đang cuống cuồng đếm theo chục và rời."
+    }
+  ],
+  "reward": {
+    "xp": 80,
+    "coin": 15,
+    "skillXp": {
+      "khoi-luong": 1,
+      "dung-tich": 1,
+      "phep-cong": 1
+    }
+  }
+}

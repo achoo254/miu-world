@@ -1,0 +1,781 @@
+{
+  "id": "toan2-cd3-b17",
+  "region": "truong-hoc",
+  "chapter": 3,
+  "title": "Nồi chè to nhất trường",
+  "status": "draft",
+  "lesson": "toan2-t1-b17",
+  "summary": "Heo Ủn muốn nấu một nồi chè đậu xanh cho cả trường, nhưng công thức ghi toàn ki-lô-gam với lít; {name} cùng Gà Con Chíp đoán nặng nhẹ, đọc cân, đếm cốc nước rồi mang phiếu về nhà tập cân, tập đong thật.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "Heo Ủn, Gà Con Chíp",
+    "where": "Căng tin: bếp lớn và kho gạo",
+    "goal": "Đong đủ đường, gạo, nước theo công thức nồi chè",
+    "play": "Tìm túi gạo, túi muối, ca 1 lít; phân loại nặng nhẹ; điền số cân, số cốc; đố múc nước; phiếu tập cân và đong ở nhà",
+    "learn": "Toán 2 Bài 17: thực hành và trải nghiệm với ki-lô-gam, lít",
+    "reward": "90 XP, 15 xu, Khối lượng +1, Dung tích +1, Bài toán có lời văn +1",
+    "unlock": "Bài 18 \"Luyện tập chung\""
+  },
+  "phases": {
+    "hook": "cong-thuc-che-heo-un",
+    "explore": "tim-nguyen-lieu-che",
+    "learn": "doan-truoc-can-sau",
+    "challenge": "nang-hon-nhe-hon-doan-nhanh",
+    "decision": "chip-hoi-cach-dong",
+    "finale": "hai-xo-nuoc-vang-do",
+    "reward": "muong-go-dau-bep",
+    "unlock": "kho-lanh-tuyet-roi"
+  },
+  "texts": {},
+  "places": {
+    "heo-un": "bếp lớn",
+    "tim-nguyen-lieu-che": "kho gạo",
+    "ga-con-chip": "bếp lớn"
+  },
+  "steps": [
+    {
+      "id": "cong-thuc-che-heo-un",
+      "title": "Công thức nấu chè của Heo",
+      "goTo": "Vào bếp lớn, Heo Ủn đang đội mũ đầu bếp cao ngất",
+      "kind": "dialogue",
+      "target": "heo-un",
+      "lines": [
+        {
+          "speaker": "Heo Ủn",
+          "text": "Ủn ỉn! Hôm nay tớ nấu nồi chè to nhất lịch sử trường! Công thức đây: đậu xanh, đường, nước… ghi toàn \"kg\" với \"l\"."
+        },
+        {
+          "speaker": "Gà Con Chíp",
+          "text": "Kg là kẹo gừng ạ? Còn l là… là… lá chuối?"
+        },
+        {
+          "speaker": "Heo Ủn",
+          "text": "Không phải đâu Chíp ơi! Kg là ki-lô-gam để cân, l là lít để đong. Mà tớ cũng… hơi quên cách cân. {name} giúp bọn tớ nhé!"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Mình cùng nấu chè nào!",
+          "reply": "Heo Ủn reo: Tuyệt! Người phụ bếp được nếm chè đầu tiên!"
+        },
+        {
+          "text": "Kg không phải kẹo gừng đâu Chíp!",
+          "reply": "Gà Con Chíp đỏ mặt: Ơ, vậy mà tớ định ăn thử…"
+        }
+      ]
+    },
+    {
+      "id": "tim-nguyen-lieu-che",
+      "title": "Lục kho tìm nguyên liệu",
+      "goTo": "Vào kho gạo tìm túi gạo, túi muối và ca 1 lít",
+      "kind": "search",
+      "targets": [
+        "toan2-cd3-tui-gao",
+        "toan2-cd3-tui-muoi",
+        "toan2-cd3-ca-dong-nuoc"
+      ]
+    },
+    {
+      "id": "doan-truoc-can-sau",
+      "title": "Đoán trước, cân sau",
+      "goTo": "Ôm nguyên liệu về bếp lớn",
+      "kind": "dialogue",
+      "target": "heo-un",
+      "lines": [
+        {
+          "speaker": "Heo Ủn",
+          "text": "Bí kíp đầu bếp: cầm thử hai thứ trên tay, đoán xem thứ nào nặng hơn, rồi mới đặt lên cân để kiểm tra."
+        },
+        {
+          "speaker": "Gà Con Chíp",
+          "text": "Thế cân đồng hồ thì sao ạ? Cái kim cứ quay vòng vòng như chong chóng!"
+        },
+        {
+          "speaker": "Heo Ủn",
+          "text": "Kim dừng ở số nào thì vật nặng bấy nhiêu ki-lô-gam. Còn nước thì đong bằng ca 1 l hoặc đếm số cốc."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Để mình đoán thử!",
+          "reply": "Heo Ủn chìa hai tay ra: Mời thầy bói nặng nhẹ!"
+        }
+      ]
+    },
+    {
+      "id": "nang-hon-nhe-hon-doan-nhanh",
+      "title": "Đoán nhanh nặng nhẹ",
+      "target": "heo-un",
+      "kind": "challenge",
+      "mechanic": "classify",
+      "prompt": "Heo Ủn đặt từng cặp đồ vật lên bàn bếp. Em đoán xem đồ vật nào nặng hơn, đồ vật nào nhẹ hơn. a) Quyển vở; Cái bút chì b) Quả bóng bay; Quả bóng đá",
+      "groups": [
+        {
+          "id": "nhom-nang-hon",
+          "label": "Nặng hơn"
+        },
+        {
+          "id": "nhom-nhe-hon",
+          "label": "Nhẹ hơn"
+        }
+      ],
+      "items": [
+        {
+          "id": "do-vat-quyen-vo",
+          "label": "Quyển vở"
+        },
+        {
+          "id": "do-vat-qua-bong-bay",
+          "label": "Quả bóng bay"
+        },
+        {
+          "id": "do-vat-cai-but-chi",
+          "label": "Cái bút chì"
+        },
+        {
+          "id": "do-vat-qua-bong-da",
+          "label": "Quả bóng đá"
+        }
+      ],
+      "skill": "khoi-luong",
+      "curriculumRef": [
+        "toan2-t1-b17-hoat-dong-1-a",
+        "toan2-t1-b17-hoat-dong-1-b"
+      ],
+      "support": {
+        "guide": [
+          "So từng cặp: quyển vở với bút chì, bóng bay với bóng đá.",
+          "Nghĩ xem cầm thứ nào thấy nặng tay hơn."
+        ],
+        "hint": "Quả bóng bay nhẹ đến mức bay lơ lửng được.",
+        "answer": {
+          "text": "Nặng hơn: Quyển vở, Quả bóng đá; nhẹ hơn: Cái bút chì, Quả bóng bay",
+          "explanation": "Quyển vở nặng hơn cái bút chì; quả bóng đá nặng hơn quả bóng bay."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đoán trúng cả hai cặp, đúng là thầy bói nặng nhẹ!",
+          "Bóng bay suýt bay mất, may mà cháu xếp kịp vào nhóm nhẹ.",
+          "Heo Ủn ước lượng theo: vở nặng, bút nhẹ, chuẩn luôn."
+        ],
+        "wrong": [
+          "Thử tưởng tượng cầm quả bóng đá trên tay xem.",
+          "Mỗi cặp chỉ có một thứ nặng hơn và một thứ nhẹ hơn.",
+          "Bút chì nhỏ xíu, nó có nặng hơn quyển vở không?"
+        ]
+      },
+      "answer": {
+        "assignment": {
+          "do-vat-quyen-vo": "nhom-nang-hon",
+          "do-vat-qua-bong-bay": "nhom-nhe-hon",
+          "do-vat-cai-but-chi": "nhom-nhe-hon",
+          "do-vat-qua-bong-da": "nhom-nang-hon"
+        }
+      }
+    },
+    {
+      "id": "buoi-va-cam-tren-can",
+      "title": "Quả bưởi, quả cam và quả cân",
+      "target": "heo-un",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Trên cân đĩa: quả bưởi thăng bằng với quả cân 1 kg; bên cạnh là một quả cam nhỏ hơn quả bưởi. Quan sát tranh rồi trả lời.",
+      "template": "a) Em đoán xem quả bưởi và quả cam, quả nào nặng hơn. {{b1}}\nb) Quả bưởi cân nặng mấy ki-lô-gam? {{b2}} kg\nc) Quả cam nặng hơn hay nhẹ hơn 1 kg? {{b3}}",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "qua-buoi",
+              "text": "quả bưởi"
+            },
+            {
+              "id": "qua-cam",
+              "text": "quả cam"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o1",
+              "text": "1"
+            },
+            {
+              "id": "o2",
+              "text": "2"
+            },
+            {
+              "id": "o3",
+              "text": "3"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "nang-hon",
+              "text": "nặng hơn"
+            },
+            {
+              "id": "nhe-hon",
+              "text": "nhẹ hơn"
+            }
+          ]
+        }
+      ],
+      "skill": "khoi-luong",
+      "curriculumRef": [
+        "toan2-t1-b17-hoat-dong-2-a",
+        "toan2-t1-b17-hoat-dong-2-b",
+        "toan2-t1-b17-hoat-dong-2-c"
+      ],
+      "support": {
+        "guide": [
+          "Cân thăng bằng với quả cân 1 kg nghĩa là nặng đúng 1 kg.",
+          "Quả cam nhẹ hơn quả bưởi."
+        ],
+        "hint": "Quả bưởi nặng 1 kg, quả cam nhẹ hơn quả bưởi.",
+        "answer": {
+          "text": "a) Em đoán xem quả bưởi và quả cam, quả nào nặng hơn. quả bưởi; b) Quả bưởi cân nặng mấy ki-lô-gam? 1 kg; c) Quả cam nặng hơn hay nhẹ hơn 1 kg? nhẹ hơn",
+          "explanation": "Quả bưởi nặng hơn, cân nặng 1 kg; quả cam nhẹ hơn quả bưởi nên nhẹ hơn 1 kg."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bưởi một ki-lô-gam tròn trịa, cam thì nhẹ hơn, đúng hết!",
+          "Gà Con Chíp ghi vào sổ bếp: bưởi 1 kg, cam nhẹ hơn.",
+          "Cháu suy luận từ cân đĩa sắc như dao thái hành."
+        ],
+        "wrong": [
+          "Hai đĩa thăng bằng thì quả bưởi nặng bằng quả cân đó.",
+          "Quả cam bé hơn quả bưởi, vậy nó so với 1 kg thế nào?",
+          "Một ô đang chọn ngược, đọc lại câu hỏi nhé."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "qua-buoi",
+          "b2": "o1",
+          "b3": "nhe-hon"
+        }
+      }
+    },
+    {
+      "id": "kim-can-dong-ho",
+      "title": "Kim cân đồng hồ chỉ số mấy?",
+      "target": "heo-un",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Heo Ủn đặt túi muối lên cân đồng hồ, kim chỉ số 2; đặt túi gạo lên, kim chỉ số 5. Quan sát tranh rồi trả lời câu hỏi.",
+      "template": "a) Mỗi túi cân nặng bao nhiêu ki-lô-gam? Túi muối: {{b1}} kg; túi gạo: {{b2}} kg.\nb) Túi gạo nặng hơn túi muối mấy ki-lô-gam? {{b3}} kg",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o2",
+              "text": "2"
+            },
+            {
+              "id": "o3",
+              "text": "3"
+            },
+            {
+              "id": "o4",
+              "text": "4"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o5",
+              "text": "5"
+            },
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o7",
+              "text": "7"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o1",
+              "text": "1"
+            },
+            {
+              "id": "o2",
+              "text": "2"
+            },
+            {
+              "id": "o3",
+              "text": "3"
+            }
+          ]
+        }
+      ],
+      "skill": "khoi-luong",
+      "curriculumRef": [
+        "toan2-t1-b17-hoat-dong-3-a",
+        "toan2-t1-b17-hoat-dong-3-b"
+      ],
+      "support": {
+        "guide": [
+          "Kim dừng ở số nào thì túi nặng bấy nhiêu kg.",
+          "Nặng hơn mấy ki-lô-gam thì lấy số lớn trừ số bé."
+        ],
+        "hint": "Túi gạo 5 kg, túi muối 2 kg: 5 – 2.",
+        "answer": {
+          "text": "a) Mỗi túi cân nặng bao nhiêu ki-lô-gam? Túi muối: 2 kg; túi gạo: 5 kg.; b) Túi gạo nặng hơn túi muối mấy ki-lô-gam? 3 kg",
+          "explanation": "Túi muối nặng 2 kg, túi gạo nặng 5 kg; túi gạo nặng hơn 5 kg – 2 kg = 3 kg."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Kim cân ngừng quay, cháu đọc số nhanh như chớp!",
+          "Gạo hơn muối ba ki-lô-gam, Heo Ủn ghi ngay vào công thức.",
+          "Chíp hết sợ kim cân quay vòng vòng rồi."
+        ],
+        "wrong": [
+          "Nhìn số mà kim cân đang chỉ vào nhé.",
+          "Hơn mấy ki-lô-gam là phải làm phép trừ đó.",
+          "Túi gạo kim chỉ số 5, còn túi muối chỉ số mấy?"
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o2",
+          "b2": "o5",
+          "b3": "o3"
+        }
+      }
+    },
+    {
+      "id": "so-tay-can-suc-khoe",
+      "title": "Sổ cân sức khoẻ bốn bạn",
+      "target": "heo-un",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Trên tường bếp dán tờ kết quả: Mai đứng cân, kim chỉ 23 kg; Nam 25 kg; Việt 24 kg; Rô-bốt 20 kg. Heo Ủn cần biết để chia chè cho vừa sức. Bốn bạn Mai, Nam, Việt và Rô-bốt cân kiểm tra sức khoẻ được kết quả như sau:",
+      "template": "a) Số ?\nTên | Việt | Rô-bốt | Nam | Mai\nCân nặng | 24 kg | {{b1}} kg | {{b2}} kg | {{b3}} kg\nb) Bạn nào cân nặng nhất? {{b4}} Bạn nào cân nhẹ nhất? {{b5}}",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o18",
+              "text": "18"
+            },
+            {
+              "id": "o19",
+              "text": "19"
+            },
+            {
+              "id": "o20",
+              "text": "20"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o25",
+              "text": "25"
+            },
+            {
+              "id": "o27",
+              "text": "27"
+            },
+            {
+              "id": "o52",
+              "text": "52"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o13",
+              "text": "13"
+            },
+            {
+              "id": "o23",
+              "text": "23"
+            },
+            {
+              "id": "o32",
+              "text": "32"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "mai",
+              "text": "Mai"
+            },
+            {
+              "id": "nam",
+              "text": "Nam"
+            },
+            {
+              "id": "viet",
+              "text": "Việt"
+            }
+          ]
+        },
+        {
+          "id": "b5",
+          "options": [
+            {
+              "id": "mai",
+              "text": "Mai"
+            },
+            {
+              "id": "ro-bot",
+              "text": "Rô-bốt"
+            },
+            {
+              "id": "viet",
+              "text": "Việt"
+            }
+          ]
+        }
+      ],
+      "skill": "khoi-luong",
+      "curriculumRef": [
+        "toan2-t1-b17-hoat-dong-2-1-a1",
+        "toan2-t1-b17-hoat-dong-2-1-a2",
+        "toan2-t1-b17-hoat-dong-2-1-a3",
+        "toan2-t1-b17-hoat-dong-2-1-b"
+      ],
+      "support": {
+        "guide": [
+          "Chép số kim cân chỉ của từng bạn vào bảng.",
+          "So bốn số: 24, 20, 25, 23."
+        ],
+        "hint": "Số lớn nhất trong bảng là 25, số bé nhất là 20.",
+        "answer": {
+          "text": "a) Số ?; Tên | Việt | Rô-bốt | Nam | Mai; Cân nặng | 24 kg | 20 kg | 25 kg | 23 kg; b) Bạn nào cân nặng nhất? Nam Bạn nào cân nhẹ nhất? Rô-bốt",
+          "explanation": "Rô-bốt 20 kg, Nam 25 kg, Mai 23 kg; Nam nặng nhất, Rô-bốt nhẹ nhất."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bảng cân sức khoẻ đầy đủ, ai cũng khỏe mạnh!",
+          "Nam nặng nhất, Rô-bốt nhẹ nhất, cháu đọc bảng giỏi thật.",
+          "Heo Ủn chia chè: bát to cho Nam, bát vừa cho Rô-bốt."
+        ],
+        "wrong": [
+          "Dò lại số cân của từng bạn trên tờ kết quả nhé.",
+          "Bạn nặng nhất có số ki-lô-gam lớn nhất cơ.",
+          "Rô-bốt chỉ có 20 kg thôi, so với các bạn thế nào?"
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o20",
+          "b2": "o25",
+          "b3": "o23",
+          "b4": "nam",
+          "b5": "ro-bot"
+        }
+      }
+    },
+    {
+      "id": "phieu-tap-can-o-nha",
+      "title": "Phiếu tập cân ở nhà",
+      "kind": "worksheet",
+      "target": "heo-un",
+      "lessonId": "toan2-t1-b17",
+      "text": "Heo Ủn đưa {name} phiếu \"Tập cân ở nhà\": đọc cân trong tranh rồi ghi số; nhờ bố mẹ cho tập cân vài đồ vật quanh em bằng cân đĩa, cân đồng hồ hoặc cân bàn đồng hồ, ghi lại cân nặng vào phiếu.",
+      "curriculumRef": [
+        "toan2-t1-b17-hoat-dong-2-b",
+        "toan2-t1-b17-hoat-dong-3-a",
+        "toan2-t1-b17-hoat-dong-2-1-a1",
+        "toan2-t1-b17-hoat-dong-2-1-a2",
+        "toan2-t1-b17-hoat-dong-2-1-a3",
+        "toan2-t1-b17-hoat-dong-2-2"
+      ]
+    },
+    {
+      "id": "chip-hoi-cach-dong",
+      "title": "Đong nước bằng gì đây?",
+      "goTo": "Gà Con Chíp vẫy gọi ở chậu nước trong bếp lớn",
+      "kind": "dialogue",
+      "target": "ga-con-chip",
+      "lines": [
+        {
+          "speaker": "Gà Con Chíp",
+          "text": "Đến lượt nước nấu chè! Nhưng tớ chỉ có mấy cái cốc nhỏ xíu, đong đến mùa sau mất."
+        },
+        {
+          "speaker": "Heo Ủn",
+          "text": "Đếm cốc cũng được mà Chíp! {name} chọn đi: đếm cốc từng bình, hay đong bằng ca 1 l?"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Đếm cốc từng bình",
+          "reply": "Gà Con Chíp: Một cốc, hai cốc… tớ đếm theo nhé!"
+        },
+        {
+          "text": "Dùng ca 1 l cho nhanh",
+          "reply": "Heo Ủn: Nhanh gọn! Nhưng bài này cứ đếm cốc trước đã."
+        }
+      ]
+    },
+    {
+      "id": "binh-cua-viet-va-mai",
+      "title": "Bình của Việt hay của Mai?",
+      "target": "ga-con-chip",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Việt rót bình của mình được 8 cốc nước, Mai rót bình của mình được 7 cốc nước. Rót hết nước từ bình của Việt và Mai được các cốc nước (như hình vẽ).",
+      "template": "Bình nước của bạn nào chứa được nhiều nước hơn và nhiều hơn mấy cốc? Bình của {{b1}}, nhiều hơn {{b2}} cốc.",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "mai",
+              "text": "Mai"
+            },
+            {
+              "id": "viet",
+              "text": "Việt"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o0",
+              "text": "0"
+            },
+            {
+              "id": "o1",
+              "text": "1"
+            },
+            {
+              "id": "o11",
+              "text": "11"
+            }
+          ]
+        }
+      ],
+      "skill": "dung-tich",
+      "curriculumRef": [
+        "toan2-t1-b17-hoat-dong-2-3"
+      ],
+      "support": {
+        "guide": [
+          "Bình rót được nhiều cốc hơn thì chứa nhiều nước hơn.",
+          "Nhiều hơn mấy cốc: 8 – 7."
+        ],
+        "hint": "8 cốc so với 7 cốc.",
+        "answer": {
+          "text": "Bình nước của bạn nào chứa được nhiều nước hơn và nhiều hơn mấy cốc? Bình của Việt, nhiều hơn 1 cốc.",
+          "explanation": "Bình của Việt rót được 8 cốc, của Mai 7 cốc; bình của Việt nhiều hơn 8 – 7 = 1 cốc."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Việt thắng sát nút đúng một cốc nước!",
+          "Gà Con Chíp vỗ cánh: tám hơn bảy một, tớ hiểu rồi!",
+          "Hai bình nước so tài, cháu làm trọng tài công bằng ghê."
+        ],
+        "wrong": [
+          "Bạn nào rót được nhiều cốc hơn nhỉ?",
+          "Nhiều hơn mấy cốc thì trừ hai số cốc cho nhau.",
+          "Đếm lại: Việt 8 cốc, Mai 7 cốc."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "viet",
+          "b2": "o1"
+        }
+      }
+    },
+    {
+      "id": "binh-a-chin-binh-b-bay",
+      "title": "Bình A chín cốc, bình B bảy cốc",
+      "target": "ga-con-chip",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Lượng nước ở bình A bằng 9 cốc. Lượng nước ở bình B bằng 7 cốc.",
+      "template": "a) Lượng nước ở cả hai bình bằng bao nhiêu cốc? {{b1}} cốc\nb) Lượng nước ở bình nào ít hơn và ít hơn bao nhiêu cốc? Bình {{b2}}, ít hơn {{b3}} cốc",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o16",
+              "text": "16"
+            },
+            {
+              "id": "o18",
+              "text": "18"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "a",
+              "text": "A"
+            },
+            {
+              "id": "b",
+              "text": "B"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o0",
+              "text": "0"
+            },
+            {
+              "id": "o2",
+              "text": "2"
+            },
+            {
+              "id": "o4",
+              "text": "4"
+            }
+          ]
+        }
+      ],
+      "skill": "bai-toan-loi-van",
+      "curriculumRef": [
+        "toan2-t1-b17-hoat-dong-2-4-a",
+        "toan2-t1-b17-hoat-dong-2-4-b"
+      ],
+      "support": {
+        "guide": [
+          "Cả hai bình: cộng số cốc.",
+          "Ít hơn bao nhiêu: lấy số lớn trừ số bé."
+        ],
+        "hint": "9 + 7 qua 10: tách 7 = 1 + 6.",
+        "answer": {
+          "text": "a) Lượng nước ở cả hai bình bằng bao nhiêu cốc? 16 cốc; b) Lượng nước ở bình nào ít hơn và ít hơn bao nhiêu cốc? Bình B, ít hơn 2 cốc",
+          "explanation": "Cả hai bình bằng 9 + 7 = 16 cốc; bình B ít hơn, ít hơn 9 – 7 = 2 cốc."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Mười sáu cốc nước, đủ cho nồi chè sôi lăn tăn!",
+          "Bình B kém hai cốc, cháu tìm ra trong nháy mắt.",
+          "Cộng rồi trừ liền tay, đúng phong cách phụ bếp xịn."
+        ],
+        "wrong": [
+          "Cả hai bình thì phải cộng số cốc lại.",
+          "Bình có 7 cốc ít hơn bình có 9 cốc đó.",
+          "Phép 9 + 7 qua 10, tách số cho dễ nhé."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o16",
+          "b2": "b",
+          "b3": "o2"
+        }
+      }
+    },
+    {
+      "id": "phieu-tap-dong-nuoc",
+      "title": "Phiếu tập đong nước",
+      "kind": "worksheet",
+      "target": "ga-con-chip",
+      "lessonId": "toan2-t1-b17",
+      "text": "Gà Con Chíp gửi {name} phiếu \"Tập đong nước\": ở nhà, dùng ca 1 l, chai 1 l hoặc các cốc nhỏ để đong nước, nhờ người lớn giúp, rồi ghi lại đong được mấy ca, mấy cốc.",
+      "curriculumRef": [
+        "toan2-t1-b17-kham-pha-b"
+      ]
+    },
+    {
+      "id": "hai-xo-nuoc-vang-do",
+      "title": "Hai chiếc xô vàng và đỏ",
+      "target": "heo-un",
+      "kind": "riddle",
+      "question": "Thử thách cuối: Heo Ủn và {name} thi múc nước, mỗi người một xô. Dùng ca 1 l, múc nước ở trong thùng đổ 3 ca đầy vào xô màu vàng và 5 ca đầy vào xô màu đỏ. Hỏi cả hai xô có bao nhiêu lít nước?",
+      "skill": "bai-toan-loi-van",
+      "curriculumRef": [
+        "toan2-t1-b17-hoat-dong-2-5"
+      ],
+      "support": {
+        "guide": [
+          "Mỗi ca đầy là 1 l nước.",
+          "Cả hai xô thì cộng số ca của hai xô."
+        ],
+        "hint": "3 ca và 5 ca là 3 l và 5 l.",
+        "answer": {
+          "text": "8 l",
+          "explanation": "Xô vàng có 3 l, xô đỏ có 5 l; cả hai xô có 3 l + 5 l = 8 l nước."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Tám lít nước vào nồi, chè bắt đầu sôi sùng sục!",
+          "Heo Ủn nếm thử: ngọt vừa, nước vừa, tuyệt hảo!",
+          "Cháu múc nước giỏi hơn cả bếp trưởng rồi đấy."
+        ],
+        "wrong": [
+          "Mỗi ca đầy là đúng một lít nước nhé.",
+          "Cả hai xô thì gộp số lít của xô vàng và xô đỏ.",
+          "Đếm lại: xô vàng 3 ca, xô đỏ 5 ca."
+        ]
+      },
+      "answer": {
+        "value": 8
+      }
+    },
+    {
+      "id": "muong-go-dau-bep",
+      "title": "Chiếc muôi gỗ phụ bếp",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Nồi chè đậu xanh thơm lừng cả căng tin. Heo Ủn trao cho {name} chiếc muôi gỗ \"Phụ bếp siêu đong\", còn Gà Con Chíp được múc bát chè đầu tiên… và làm đổ một nửa."
+    },
+    {
+      "id": "kho-lanh-tuyet-roi",
+      "title": "Tuyết rơi trong kho lạnh",
+      "kind": "unlock",
+      "trigger": "auto",
+      "text": "Cửa kho lạnh mở ra, hơi lạnh phả mù mịt: Gấu Tuyết Bông đang đóng thùng hàng gửi về phương xa, nhưng nhãn cân nặng thì chưa ghi gì cả!"
+    }
+  ],
+  "reward": {
+    "xp": 90,
+    "coin": 15,
+    "skillXp": {
+      "khoi-luong": 1,
+      "dung-tich": 1,
+      "bai-toan-loi-van": 1
+    }
+  }
+}

@@ -1,0 +1,966 @@
+{
+  "id": "toan2-cd3-b16",
+  "region": "truong-hoc",
+  "chapter": 3,
+  "title": "Cá Bống và bể nước vơi",
+  "status": "draft",
+  "lesson": "toan2-t1-b16",
+  "summary": "Bể cá ở căng tin vơi mất nửa, Cá Bống lo sốt vó; {name} học đơn vị lít, đong ca, rót chai, tính lít nước và đổ đầy bể cho Cá Bống tung tăng.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "Cá Bống, Cánh Cụt Pin",
+    "where": "Căng tin: bể cá căng tin",
+    "goal": "Đổ đủ lít nước để bể cá đầy trở lại",
+    "play": "Tìm ca, chai, cốc; chọn câu đúng; điền số lít; tính với lít; xếp đồ vật theo lượng nước; đố can nước mắm",
+    "learn": "Toán 2 Bài 16: lít, đơn vị l; cộng, trừ với đơn vị l",
+    "reward": "80 XP, 15 xu, Dung tích +2, Phép trừ +1",
+    "unlock": "Bài 17 \"Thực hành và trải nghiệm với các đơn vị ki-lô-gam, lít\""
+  },
+  "phases": {
+    "hook": "be-ca-voi-nua",
+    "explore": "tim-do-dong-nuoc",
+    "learn": "ca-mot-lit",
+    "challenge": "chai-va-ca-mot-lit",
+    "decision": "pin-ra-luat-dong",
+    "finale": "can-nuoc-mam-cua-me",
+    "reward": "vay-bac-ca-bong",
+    "unlock": "mui-che-thom-phuc"
+  },
+  "texts": {},
+  "places": {
+    "ca-bong": "bể cá căng tin",
+    "tim-do-dong-nuoc": "quầy nước uống",
+    "canh-cut-pin": "bể cá căng tin"
+  },
+  "steps": [
+    {
+      "id": "be-ca-voi-nua",
+      "title": "Bể cá vơi mất nửa",
+      "goTo": "Đến bể cá căng tin, Cá Bống đang ngoi lên thở phì phò",
+      "kind": "dialogue",
+      "target": "ca-bong",
+      "lines": [
+        {
+          "speaker": "Cá Bống",
+          "text": "Bóp bóp! {name} ơi, nước trong bể tớ vơi mất nửa rồi! Tớ bơi một vòng là cạ bụng xuống đáy."
+        },
+        {
+          "speaker": "Cá Bống",
+          "text": "Hôm qua Heo Ủn múc nước nấu canh, múc mãi múc mãi… mà chẳng ai đếm xem múc bao nhiêu."
+        },
+        {
+          "speaker": "Cá Bống",
+          "text": "Phải đổ lại cho đủ lít nước. Mà \"lít\" là gì nhỉ? Tớ chỉ biết bơi thôi!"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Để tớ đi tìm ca múc nước!",
+          "reply": "Cá Bống quẫy đuôi té nước lên mặt {name}: Ối, xin lỗi, tại tớ mừng quá!"
+        },
+        {
+          "text": "Cậu cứ bơi chậm thôi nhé!",
+          "reply": "Cá Bống: Chậm thì tớ ngủ quên mất. Nhanh lên giùm tớ với!"
+        }
+      ]
+    },
+    {
+      "id": "tim-do-dong-nuoc",
+      "title": "Ca, chai và cốc",
+      "goTo": "Tìm ca 1 lít, chai và cốc ở quầy nước uống",
+      "kind": "search",
+      "targets": [
+        "toan2-cd3-ca-mot-lit",
+        "toan2-cd3-chai-nuoc",
+        "toan2-cd3-coc-thuy-tinh"
+      ]
+    },
+    {
+      "id": "ca-mot-lit",
+      "title": "Lít là gì hả Pin?",
+      "goTo": "Mang ca, chai, cốc về bể cá căng tin",
+      "kind": "dialogue",
+      "target": "canh-cut-pin",
+      "lines": [
+        {
+          "speaker": "Cánh Cụt Pin",
+          "text": "Lít là đơn vị đo lượng nước, sữa, dầu… đựng trong ca, chai, can. Lít viết tắt là l."
+        },
+        {
+          "speaker": "Cánh Cụt Pin",
+          "text": "Chiếc ca này đựng đầy được đúng 1 l nước. Cốc nhỏ thì đựng ít hơn, cái can to đựng nhiều hơn."
+        },
+        {
+          "speaker": "Cá Bống",
+          "text": "Vậy bể của tớ chắc phải đựng… một nghìn tỉ lít!"
+        },
+        {
+          "speaker": "Cánh Cụt Pin",
+          "text": "Không đến mức đó đâu, Bống ạ. Ta đong từ từ."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Bắt đầu đong thôi!",
+          "reply": "Cá Bống há miệng chờ sẵn: Rót vào đây, rót vào đây!"
+        }
+      ]
+    },
+    {
+      "id": "chai-va-ca-mot-lit",
+      "title": "Chai đựng bao nhiêu nước?",
+      "target": "canh-cut-pin",
+      "kind": "challenge",
+      "mechanic": "quiz",
+      "prompt": "Pin rót hết ca 1 l: nước đầy một chai, phần còn lại vừa đầy một chiếc cốc. Quan sát tranh rồi chọn câu đúng. Đổ hết nước từ ca 1 l được đầy một chai và một cốc (như hình vẽ).",
+      "choices": [
+        {
+          "id": "a-chai-dung-1-l-nuoc",
+          "text": "A. Chai đựng 1 l nước."
+        },
+        {
+          "id": "b-chai-dung-it-hon-1-l-nuoc",
+          "text": "B. Chai đựng ít hơn 1 l nước."
+        },
+        {
+          "id": "c-chai-dung-nhieu-hon-1-l-nuoc",
+          "text": "C. Chai đựng nhiều hơn 1 l nước."
+        }
+      ],
+      "skill": "dung-tich",
+      "curriculumRef": [
+        "toan2-t1-b16-hoat-dong-1"
+      ],
+      "support": {
+        "guide": [
+          "Ca 1 l đổ ra được cả chai lẫn cốc.",
+          "Chai chỉ nhận một phần của 1 l."
+        ],
+        "hint": "Nếu chai đựng đủ 1 l thì cốc còn nước để rót không?",
+        "answer": {
+          "text": "B. Chai đựng ít hơn 1 l nước.",
+          "explanation": "1 l nước chia ra đầy một chai và một cốc, nên chai đựng ít hơn 1 l nước."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Phần nước dư chạy sang cốc, nên chai chưa tới 1 lít!",
+          "Pin búng cánh: suy luận gọn như rót nước không rớt giọt.",
+          "Cá Bống ngoi lên: chai nhỏ hơn ca, tớ nhìn thấy rồi!"
+        ],
+        "wrong": [
+          "Ca 1 l còn đổ thêm được một cốc nữa đấy.",
+          "Nếu chai lớn hơn 1 l thì đâu còn nước sang cốc.",
+          "Xem nước của ca chia làm mấy phần nhé."
+        ]
+      },
+      "answer": {
+        "choice": "b-chai-dung-it-hon-1-l-nuoc"
+      }
+    },
+    {
+      "id": "doc-nhan-lit",
+      "title": "Nhãn lít trên bình, ca, xô, thùng",
+      "target": "canh-cut-pin",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Mỗi đồ đựng nước có nhãn viết bằng chữ, Pin muốn đổi sang chữ số cho dễ đọc. Mẫu: Mười lít viết là 10 l. Số ?",
+      "template": "Ba lít {{b1}} l\nHai lít {{b2}} l\nNăm lít {{b3}} l\nHai mươi lít {{b4}} l",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o1",
+              "text": "1"
+            },
+            {
+              "id": "o3",
+              "text": "3"
+            },
+            {
+              "id": "o4",
+              "text": "4"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o2",
+              "text": "2"
+            },
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o12",
+              "text": "12"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o5",
+              "text": "5"
+            },
+            {
+              "id": "o15",
+              "text": "15"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "o18",
+              "text": "18"
+            },
+            {
+              "id": "o20",
+              "text": "20"
+            },
+            {
+              "id": "o30",
+              "text": "30"
+            }
+          ]
+        }
+      ],
+      "skill": "dung-tich",
+      "curriculumRef": [
+        "toan2-t1-b16-hoat-dong-2-a",
+        "toan2-t1-b16-hoat-dong-2-b",
+        "toan2-t1-b16-hoat-dong-2-c",
+        "toan2-t1-b16-hoat-dong-2-d"
+      ],
+      "support": {
+        "guide": [
+          "Lít viết tắt là l.",
+          "Đọc số trong nhãn rồi viết bằng chữ số."
+        ],
+        "hint": "Hai mươi lít viết là 20 l.",
+        "answer": {
+          "text": "Ba lít 3 l; Hai lít 2 l; Năm lít 5 l; Hai mươi lít 20 l",
+          "explanation": "Ba lít là 3 l, hai lít là 2 l, năm lít là 5 l, hai mươi lít là 20 l."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bốn chiếc nhãn mới dán thẳng hàng như đội xếp hình!",
+          "Pin chép vào sổ: chữ số rõ ràng, khỏi nhầm lẫn.",
+          "Cá Bống đếm theo: ba, hai, năm, hai mươi… lít lít lít!"
+        ],
+        "wrong": [
+          "Hai mươi lít có hai chữ số đấy nhé.",
+          "Đọc lại chữ trên nhãn rồi viết số tương ứng.",
+          "Một nhãn đang ghi lệch số, dò lại từng dòng."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o3",
+          "b2": "o2",
+          "b3": "o5",
+          "b4": "o20"
+        }
+      }
+    },
+    {
+      "id": "binh-a-binh-b-rot-coc",
+      "title": "Hai bình rót ra mấy cốc?",
+      "target": "canh-cut-pin",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Bình A rót được 4 cốc đầy, bình B rót được 6 cốc đầy. Số ? Rót hết nước từ bình A và bình B được các cốc nước (như hình vẽ).",
+      "template": "a) Lượng nước ở bình A là {{b1}} cốc. Lượng nước ở bình B là {{b2}} cốc.\nb) Lượng nước ở bình B nhiều hơn lượng nước ở bình A là {{b3}} cốc.",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o3",
+              "text": "3"
+            },
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o5",
+              "text": "5"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o8",
+              "text": "8"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o2",
+              "text": "2"
+            },
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o12",
+              "text": "12"
+            }
+          ]
+        }
+      ],
+      "skill": "dung-tich",
+      "curriculumRef": [
+        "toan2-t1-b16-hoat-dong-3-a",
+        "toan2-t1-b16-hoat-dong-3-b"
+      ],
+      "support": {
+        "guide": [
+          "Đếm số cốc rót ra từ mỗi bình.",
+          "Nhiều hơn mấy cốc thì lấy số lớn trừ số bé."
+        ],
+        "hint": "6 cốc so với 4 cốc thì hơn 6 – 4 cốc.",
+        "answer": {
+          "text": "a) Lượng nước ở bình A là 4 cốc. Lượng nước ở bình B là 6 cốc.; b) Lượng nước ở bình B nhiều hơn lượng nước ở bình A là 2 cốc.",
+          "explanation": "Bình A có 4 cốc, bình B có 6 cốc; bình B nhiều hơn 6 – 4 = 2 cốc."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Mười chiếc cốc xếp hàng, không cốc nào bị bỏ sót!",
+          "Bình B hơn đúng hai cốc, Cá Bống tròn mắt thán phục.",
+          "Pin gật gù: đếm cốc kĩ y như chú kiểm kho."
+        ],
+        "wrong": [
+          "Đếm lại số cốc đặt cạnh từng bình xem.",
+          "Hơn bao nhiêu thì làm phép trừ nhé.",
+          "Bình nào rót được nhiều cốc hơn nào?"
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o4",
+          "b2": "o6",
+          "b3": "o2"
+        }
+      }
+    },
+    {
+      "id": "cong-tru-lit",
+      "title": "Bảng tính lít ở quầy nước",
+      "target": "canh-cut-pin",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Trên bảng đen của quầy nước, Pin viết sẵn mẫu rồi để trống kết quả.",
+      "template": "Tính (theo mẫu). Mẫu: 8 l + 6 l = 14 l ; 12 l – 7 l = 5 l\na) 5 l + 4 l = {{b1}} l\na) 12 l + 20 l = {{b2}} l\na) 7 l + 6 l = {{b3}} l\nb) 9 l – 3 l = {{b4}} l\nb) 19 l – 10 l = {{b5}} l\nb) 11 l – 2 l = {{b6}} l",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o8",
+              "text": "8"
+            },
+            {
+              "id": "o9",
+              "text": "9"
+            },
+            {
+              "id": "o10",
+              "text": "10"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o30",
+              "text": "30"
+            },
+            {
+              "id": "o32",
+              "text": "32"
+            },
+            {
+              "id": "o34",
+              "text": "34"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o12",
+              "text": "12"
+            },
+            {
+              "id": "o13",
+              "text": "13"
+            },
+            {
+              "id": "o14",
+              "text": "14"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "o5",
+              "text": "5"
+            },
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o7",
+              "text": "7"
+            }
+          ]
+        },
+        {
+          "id": "b5",
+          "options": [
+            {
+              "id": "o8",
+              "text": "8"
+            },
+            {
+              "id": "o9",
+              "text": "9"
+            },
+            {
+              "id": "o19",
+              "text": "19"
+            }
+          ]
+        },
+        {
+          "id": "b6",
+          "options": [
+            {
+              "id": "o9",
+              "text": "9"
+            },
+            {
+              "id": "o11",
+              "text": "11"
+            },
+            {
+              "id": "o19",
+              "text": "19"
+            }
+          ]
+        }
+      ],
+      "skill": "dung-tich",
+      "curriculumRef": [
+        "toan2-t1-b16-luyen-tap-1-a1",
+        "toan2-t1-b16-luyen-tap-1-a2",
+        "toan2-t1-b16-luyen-tap-1-a3",
+        "toan2-t1-b16-luyen-tap-1-b1",
+        "toan2-t1-b16-luyen-tap-1-b2",
+        "toan2-t1-b16-luyen-tap-1-b3"
+      ],
+      "support": {
+        "guide": [
+          "Tính phần số như bình thường.",
+          "Kết quả nhớ viết kèm đơn vị l."
+        ],
+        "hint": "7 + 6: tách 6 = 3 + 3, 7 + 3 = 10, 10 + 3 = 13.",
+        "answer": {
+          "text": "Tính (theo mẫu). Mẫu: 8 l + 6 l = 14 l ; 12 l – 7 l = 5 l; a) 5 l + 4 l = 9 l; a) 12 l + 20 l = 32 l; a) 7 l + 6 l = 13 l; b) 9 l – 3 l = 6 l; b) 19 l – 10 l = 9 l; b) 11 l – 2 l = 9 l",
+          "explanation": "5 + 4 = 9, 12 + 20 = 32, 7 + 6 = 13, 9 – 3 = 6, 19 – 10 = 9, 11 – 2 = 9; mỗi kết quả kèm đơn vị l."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bảng đen đầy kết quả, phấn còn chưa kịp nguội!",
+          "Sáu phép tính lít đều trúng, Pin vỗ cánh lạch bạch.",
+          "Cá Bống hét vọng lên: tớ nghe thấy tiếng \"đúng\" rồi!"
+        ],
+        "wrong": [
+          "Coi lại phép cộng qua 10 ở dòng 7 l + 6 l nhé.",
+          "Phép trừ thì kết quả nhỏ hơn số bị trừ đó.",
+          "Một kết quả lít đang bị đổ lệch, kiểm lại nào."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o9",
+          "b2": "o32",
+          "b3": "o13",
+          "b4": "o6",
+          "b5": "o9",
+          "b6": "o9"
+        }
+      }
+    },
+    {
+      "id": "pin-ra-luat-dong",
+      "title": "Luật đong nước của Pin",
+      "kind": "dialogue",
+      "target": "canh-cut-pin",
+      "lines": [
+        {
+          "speaker": "Cánh Cụt Pin",
+          "text": "Giờ mới đến phần đổ bể. Luật của chú: không được đổ ào ào, đổ ào là tràn ra sàn, trượt chân như chơi."
+        },
+        {
+          "speaker": "Cá Bống",
+          "text": "Nhưng đổ chậm thì tớ khô mất! {name} chọn cách nào đi!"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cộng hết số lít rồi mới đổ",
+          "reply": "Pin: Tính trước, đổ sau. Chuẩn kiểu kĩ tính!"
+        },
+        {
+          "text": "Đổ từng can, vừa đổ vừa đếm",
+          "reply": "Cá Bống: Đếm to lên nhé, tớ đếm theo bằng bong bóng."
+        }
+      ]
+    },
+    {
+      "id": "gop-can-xo-ca",
+      "title": "Gộp can, xô và ca",
+      "target": "canh-cut-pin",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Pin xếp các đồ đựng thành từng nhóm, mỗi nhóm đổ chung vào một thùng. Số ?",
+      "template": "Can 3 l và can 5 l: a) {{b1}} l\nXô 5 l và xô 8 l: a) {{b2}} l\nCa 1 l, ca 2 l và ca 5 l: b) {{b3}} l",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o7",
+              "text": "7"
+            },
+            {
+              "id": "o8",
+              "text": "8"
+            },
+            {
+              "id": "o10",
+              "text": "10"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o13",
+              "text": "13"
+            },
+            {
+              "id": "o23",
+              "text": "23"
+            },
+            {
+              "id": "o31",
+              "text": "31"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o8",
+              "text": "8"
+            },
+            {
+              "id": "o9",
+              "text": "9"
+            }
+          ]
+        }
+      ],
+      "skill": "dung-tich",
+      "curriculumRef": [
+        "toan2-t1-b16-luyen-tap-2-a1",
+        "toan2-t1-b16-luyen-tap-2-a2",
+        "toan2-t1-b16-luyen-tap-2-b"
+      ],
+      "support": {
+        "guide": [
+          "Gộp nhiều đồ đựng thì cộng số lít của chúng.",
+          "Ba ca thì cộng lần lượt từ trái sang phải."
+        ],
+        "hint": "1 l + 2 l = 3 l, cộng tiếp 5 l.",
+        "answer": {
+          "text": "Can 3 l và can 5 l: a) 8 l; Xô 5 l và xô 8 l: a) 13 l; Ca 1 l, ca 2 l và ca 5 l: b) 8 l",
+          "explanation": "3 l + 5 l = 8 l; 5 l + 8 l = 13 l; 1 l + 2 l + 5 l = 8 l."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ba thùng đầy ắp, Pin không để rơi giọt nào!",
+          "Gộp can, gộp xô, gộp ca đều trúng phóc.",
+          "Cá Bống nhìn mực nước dâng lên mà mừng rơn."
+        ],
+        "wrong": [
+          "Gộp lại thì cộng tất cả số lít trong nhóm.",
+          "Xô 5 l với xô 8 l là phép cộng qua 10 đấy.",
+          "Nhóm ba chiếc ca, đừng quên chiếc ca 5 l nhé."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o8",
+          "b2": "o13",
+          "b3": "o8"
+        }
+      }
+    },
+    {
+      "id": "can-con-lai-bao-nhieu",
+      "title": "Can còn lại bao nhiêu lít?",
+      "target": "canh-cut-pin",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Pin rót từ can sang ca, sang xô, để biết trong can còn bao nhiêu. Số ?",
+      "template": "Can 10 l, rót ra ca 4 l. Trong can còn lại bao nhiêu lít nước? {{b1}} l\nCan 15 l, rót ra xô 5 l. Trong can còn lại bao nhiêu lít nước? {{b2}} l",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o5",
+              "text": "5"
+            },
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o16",
+              "text": "16"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o8",
+              "text": "8"
+            },
+            {
+              "id": "o10",
+              "text": "10"
+            },
+            {
+              "id": "o11",
+              "text": "11"
+            }
+          ]
+        }
+      ],
+      "skill": "dung-tich",
+      "curriculumRef": [
+        "toan2-t1-b16-luyen-tap-3-a",
+        "toan2-t1-b16-luyen-tap-3-b"
+      ],
+      "support": {
+        "guide": [
+          "Rót bớt ra thì làm phép trừ.",
+          "Lấy số lít của can trừ số lít đã rót."
+        ],
+        "hint": "10 l – 4 l và 15 l – 5 l.",
+        "answer": {
+          "text": "Can 10 l, rót ra ca 4 l. Trong can còn lại bao nhiêu lít nước? 6 l; Can 15 l, rót ra xô 5 l. Trong can còn lại bao nhiêu lít nước? 10 l",
+          "explanation": "Can 10 l rót ra 4 l còn 6 l; can 15 l rót ra 5 l còn 10 l."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Hai can còn bao nhiêu, cháu tính ra ngay tắp lự!",
+          "Rót ra là bớt đi, cháu nhớ bài thật tốt.",
+          "Pin lắc lắc chiếc can: đúng là còn ngần ấy nước."
+        ],
+        "wrong": [
+          "Rót bớt ra thì nước trong can ít đi chứ.",
+          "Lấy số lít của can trừ đi số lít đã rót ra.",
+          "Can 15 l bớt 5 l, đếm lùi năm bước thử xem."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o6",
+          "b2": "o10"
+        }
+      }
+    },
+    {
+      "id": "binh-am-xo-can",
+      "title": "Bình, ấm, xô, can đựng mấy lít?",
+      "target": "canh-cut-pin",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Cạnh mỗi đồ vật có các ca: bình với hai ca 1 l; ấm với ba ca 1 l; xô với ca 2 l, 2 l, 1 l; can với ca 3 l, 2 l, 2 l. Mỗi đồ vật đựng số lít nước bằng tổng số lít nước ở các ca bên cạnh (như hình vẽ).",
+      "template": "a) Số ?\nĐồ vật | Bình | Ấm | Xô | Can\nSố lít nước | 2 | {{b1}} | {{b2}} | {{b3}}",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o1",
+              "text": "1"
+            },
+            {
+              "id": "o3",
+              "text": "3"
+            },
+            {
+              "id": "o5",
+              "text": "5"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o5",
+              "text": "5"
+            },
+            {
+              "id": "o6",
+              "text": "6"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o7",
+              "text": "7"
+            },
+            {
+              "id": "o17",
+              "text": "17"
+            }
+          ]
+        }
+      ],
+      "skill": "dung-tich",
+      "curriculumRef": [
+        "toan2-t1-b16-luyen-tap-4-a1",
+        "toan2-t1-b16-luyen-tap-4-a2",
+        "toan2-t1-b16-luyen-tap-4-a3"
+      ],
+      "support": {
+        "guide": [
+          "Cộng số lít của các ca đứng cạnh đồ vật.",
+          "Bình đã có sẵn: 1 l + 1 l = 2 l."
+        ],
+        "hint": "Xô: 2 + 2 + 1; can: 3 + 2 + 2.",
+        "answer": {
+          "text": "a) Số ?; Đồ vật | Bình | Ấm | Xô | Can; Số lít nước | 2 | 3 | 5 | 7",
+          "explanation": "Ấm: 1 + 1 + 1 = 3 l; xô: 2 + 2 + 1 = 5 l; can: 3 + 2 + 2 = 7 l."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bảng số lít đầy đủ, Pin treo lên tường căng tin!",
+          "Ấm, xô, can đều đúng số lít, giỏi hết chỗ chê.",
+          "Cộng ba ca liền một mạch mà không vấp chút nào."
+        ],
+        "wrong": [
+          "Đếm đủ các ca cạnh mỗi đồ vật rồi hẵng cộng.",
+          "Can có ba ca: 3 l, 2 l và 2 l đấy.",
+          "Có một ô số lít đang thiếu một ca, cộng lại nhé."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o3",
+          "b2": "o5",
+          "b3": "o7"
+        }
+      }
+    },
+    {
+      "id": "nhieu-nuoc-it-nuoc",
+      "title": "Đồ vật nào nhiều nước nhất?",
+      "target": "canh-cut-pin",
+      "kind": "challenge",
+      "mechanic": "classify",
+      "prompt": "Dựa vào bảng vừa điền: bình 2 l, ấm 3 l, xô 5 l, can 7 l. Mỗi đồ vật đựng số lít nước bằng tổng số lít nước ở các ca bên cạnh (như hình vẽ). b) Đồ vật nào đựng nhiều nước nhất? Đồ vật nào đựng ít nước nhất?",
+      "groups": [
+        {
+          "id": "nhom-dung-nhieu-nuoc-nhat",
+          "label": "Đựng nhiều nước nhất"
+        },
+        {
+          "id": "nhom-dung-it-nuoc-nhat",
+          "label": "Đựng ít nước nhất"
+        },
+        {
+          "id": "nhom-o-giua-hai-do-vat-kia",
+          "label": "Ở giữa hai đồ vật kia"
+        }
+      ],
+      "items": [
+        {
+          "id": "do-vat-am",
+          "label": "Ấm"
+        },
+        {
+          "id": "do-vat-binh",
+          "label": "Bình"
+        },
+        {
+          "id": "do-vat-can",
+          "label": "Can"
+        },
+        {
+          "id": "do-vat-xo",
+          "label": "Xô"
+        }
+      ],
+      "skill": "so-sanh-so",
+      "curriculumRef": [
+        "toan2-t1-b16-luyen-tap-4-b"
+      ],
+      "support": {
+        "guide": [
+          "So bốn số lít: 2, 3, 5, 7.",
+          "Số lớn nhất là nhiều nước nhất, số bé nhất là ít nước nhất."
+        ],
+        "hint": "Can đựng 7 l, bình chỉ đựng 2 l.",
+        "answer": {
+          "text": "Nhiều nước nhất: Can; ít nước nhất: Bình; ở giữa: Ấm, Xô",
+          "explanation": "Can 7 l nhiều nước nhất, bình 2 l ít nước nhất; ấm 3 l và xô 5 l ở giữa."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Can 7 l giành ngôi vô địch đựng nước!",
+          "Bình bé xíu đứng cuối, cháu phân loại chuẩn quá.",
+          "Pin đặt can lên bục cao nhất cho cả căng tin xem."
+        ],
+        "wrong": [
+          "So lại bốn số lít trong bảng xem số nào lớn nhất.",
+          "Ấm và xô không lớn nhất cũng chẳng bé nhất đâu.",
+          "Đồ vật ít nước nhất chỉ có 2 l thôi đấy."
+        ]
+      },
+      "answer": {
+        "assignment": {
+          "do-vat-am": "nhom-o-giua-hai-do-vat-kia",
+          "do-vat-binh": "nhom-dung-it-nuoc-nhat",
+          "do-vat-can": "nhom-dung-nhieu-nuoc-nhat",
+          "do-vat-xo": "nhom-o-giua-hai-do-vat-kia"
+        }
+      }
+    },
+    {
+      "id": "can-nuoc-mam-cua-me",
+      "title": "Can nước mắm của mẹ",
+      "target": "ca-bong",
+      "kind": "riddle",
+      "question": "Câu đố cuối của Cá Bống, giải xong là bể đầy! Trong can có 15 l nước mắm. Mẹ đã rót 7 l nước mắm vào các chai. Hỏi trong can còn lại bao nhiêu lít nước mắm?",
+      "skill": "bai-toan-loi-van",
+      "curriculumRef": [
+        "toan2-t1-b16-luyen-tap-5"
+      ],
+      "support": {
+        "guide": [
+          "Rót bớt ra các chai thì trong can còn ít đi.",
+          "Làm phép trừ: 15 trừ 7."
+        ],
+        "hint": "15 – 7: tách 7 = 5 + 2; 15 – 5 = 10, 10 – 2 = 8.",
+        "answer": {
+          "text": "8 l",
+          "explanation": "Trong can còn lại 15 l – 7 l = 8 l nước mắm."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ào ào! Bể đầy nước, Cá Bống nhào lộn ba vòng liền!",
+          "Đúng 8 lít, cháu là thợ đong số một của căng tin.",
+          "Cá Bống thổi một chuỗi bong bóng hình trái tim."
+        ],
+        "wrong": [
+          "Mẹ rót bớt đi, vậy số lít trong can giảm xuống.",
+          "Trừ qua 10 thì tách 7 thành 5 và 2 cho dễ.",
+          "Can 15 lít mà còn nhiều hơn 15 thì lạ quá nhỉ."
+        ]
+      },
+      "answer": {
+        "value": 8
+      }
+    },
+    {
+      "id": "vay-bac-ca-bong",
+      "title": "Chiếc vảy bạc của Cá Bống",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Bể nước trong veo, đầy tới miệng. Cá Bống tặng {name} một chiếc vảy bạc lấp lánh và hứa từ nay sẽ đếm từng lít Heo Ủn múc đi."
+    },
+    {
+      "id": "mui-che-thom-phuc",
+      "title": "Mùi chè thơm phức",
+      "kind": "unlock",
+      "trigger": "auto",
+      "text": "Từ bếp lớn bay ra mùi đậu xanh thơm lừng. Heo Ủn đội mũ đầu bếp gọi ầm lên: nồi chè cho cả trường cần đúng ki-lô-gam đường, đúng lít nước, ai phụ tớ với!"
+    }
+  ],
+  "reward": {
+    "xp": 80,
+    "coin": 15,
+    "skillXp": {
+      "dung-tich": 2,
+      "phep-tru": 1
+    }
+  }
+}

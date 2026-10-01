@@ -1,0 +1,1731 @@
+{
+  "id": "toan2-cd4-b23",
+  "region": "truong-hoc",
+  "chapter": 4,
+  "title": "Hổ Vằn và đường bay giấy",
+  "status": "draft",
+  "lesson": "toan2-t1-b23",
+  "summary": "Hổ Vằn gầm gừ vì máy bay giấy bay xa mà về gần, thật ra là sợ bị cười; {name} cùng thầy Khỉ Lanh dùng phép trừ có nhớ để đo từng chuyến bay, rồi đấu trò dẫn nhím tìm món ăn với Hổ.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "Hổ Vằn, thầy thể dục Khỉ Lanh",
+    "where": "Xưởng đồ chơi: sân thử máy bay",
+    "goal": "Giúp Hổ Vằn hiểu máy bay giấy bay xa, về gần bao nhiêu để tự tin thi với các bạn",
+    "play": "Nhặt máy bay, điền phép trừ, chọn rô-bốt đúng, điền dấu, ghép quần áo, ghép mèo với cá, mở hòm, dẫn nhím",
+    "learn": "Toán 2 Bài 23: phép trừ có nhớ số có hai chữ số cho số có hai chữ số",
+    "reward": "100 XP, 20 xu, Phép trừ +2, So sánh số +1",
+    "unlock": "Bài 24 \"Luyện tập chung\""
+  },
+  "phases": {
+    "hook": "ho-van-gam-gu",
+    "explore": "tim-may-bay-giay",
+    "learn": "khi-lanh-dat-tinh",
+    "challenge": "do-chuyen-bay-dau",
+    "decision": "ho-van-ru-thi",
+    "finale": "nhim-tim-mon-an",
+    "reward": "canh-bay-dung-cam",
+    "unlock": "tu-kinh-con-trong"
+  },
+  "texts": {},
+  "places": {
+    "ho-van": "sân thử máy bay",
+    "tim-may-bay-giay": "sân thử máy bay",
+    "khi-lanh": "sân thử máy bay"
+  },
+  "steps": [
+    {
+      "id": "ho-van-gam-gu",
+      "title": "Grừ! Máy bay hư rồi!",
+      "goTo": "Ra sân thử máy bay, Hổ Vằn đang gầm gừ bên đống máy bay giấy",
+      "kind": "dialogue",
+      "target": "ho-van",
+      "lines": [
+        {
+          "speaker": "Hổ Vằn",
+          "text": "Grừ! Máy bay của ta bay xa 72 bước, thế mà gió thổi ngược, nó quay về gần hơn 19 bước. Thật là… thật là…"
+        },
+        {
+          "speaker": "Khỉ Lanh",
+          "text": "Thật là gì cơ Hổ? Sao cậu nói xong lại chui ra sau gốc cây thế?"
+        },
+        {
+          "speaker": "Hổ Vằn",
+          "text": "Tại… tại tớ sợ các bạn cười tớ tính sai. {name} ơi, cậu tính giúp tớ nhé, tớ chỉ ra vẻ dữ thôi."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Không ai cười đâu, mình cùng tính!",
+          "reply": "Hổ Vằn ló đầu ra, cười toe: Thật hả? Vậy… grừ nhẹ một cái cho oai nhé."
+        },
+        {
+          "text": "Hổ gầm to vậy mà nhát ghê!",
+          "reply": "Hổ Vằn đỏ mặt: Suỵt! Bí mật của tớ đó, đừng kể cho Cáo Lém nha."
+        }
+      ]
+    },
+    {
+      "id": "tim-may-bay-giay",
+      "title": "Ba chiếc máy bay lạc",
+      "goTo": "Nhặt ba chiếc máy bay giấy rơi quanh sân thử máy bay",
+      "kind": "search",
+      "targets": [
+        "toan2-cd4-may-bay-do",
+        "toan2-cd4-may-bay-xanh",
+        "toan2-cd4-may-bay-vang"
+      ]
+    },
+    {
+      "id": "khi-lanh-dat-tinh",
+      "title": "Thầy Khỉ chỉ cách trừ",
+      "kind": "dialogue",
+      "target": "khi-lanh",
+      "lines": [
+        {
+          "speaker": "Khỉ Lanh",
+          "text": "Bay xa 72 bước, về gần 19 bước: ta đặt tính 72 – 19. Hàng đơn vị 2 không trừ được 9, mượn một chục: 12 – 9 = 3, viết 3, nhớ 1."
+        },
+        {
+          "speaker": "Khỉ Lanh",
+          "text": "Hàng chục: 1 thêm 1 đã nhớ là 2; 7 – 2 = 5, viết 5. Vậy 72 – 19 = 53."
+        },
+        {
+          "speaker": "Hổ Vằn",
+          "text": "Nhớ 1 cộng vào số trừ… giống tớ đeo thêm cái khăn quàng cho ấm. Hiểu rồi, grừ!"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Mượn một chục, nhớ cộng vào số trừ!",
+          "reply": "Khỉ Lanh tung một cú lộn nhào: Tuyệt! Giờ đo chuyến bay thôi."
+        }
+      ]
+    },
+    {
+      "id": "do-chuyen-bay-dau",
+      "title": "Đo tám chuyến bay",
+      "target": "khi-lanh",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Khỉ Lanh ghi tám chuyến bay của Hổ Vằn lên bảng.",
+      "template": "Tính.\n72 – 19 = {{b1}}   60 – 28 = {{b2}}   93 – 46 = {{b3}}   41 – 32 = {{b4}}\nĐặt tính rồi tính.\n63 – 36 = {{b5}}   72 – 27 = {{b6}}   54 – 16 = {{b7}}   80 – 43 = {{b8}}",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o53",
+              "text": "53"
+            },
+            {
+              "id": "o55",
+              "text": "55"
+            },
+            {
+              "id": "o63",
+              "text": "63"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o23",
+              "text": "23"
+            },
+            {
+              "id": "o32",
+              "text": "32"
+            },
+            {
+              "id": "o33",
+              "text": "33"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o47",
+              "text": "47"
+            },
+            {
+              "id": "o49",
+              "text": "49"
+            },
+            {
+              "id": "o57",
+              "text": "57"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "o7",
+              "text": "7"
+            },
+            {
+              "id": "o9",
+              "text": "9"
+            },
+            {
+              "id": "o19",
+              "text": "19"
+            }
+          ]
+        },
+        {
+          "id": "b5",
+          "options": [
+            {
+              "id": "o17",
+              "text": "17"
+            },
+            {
+              "id": "o26",
+              "text": "26"
+            },
+            {
+              "id": "o27",
+              "text": "27"
+            }
+          ]
+        },
+        {
+          "id": "b6",
+          "options": [
+            {
+              "id": "o44",
+              "text": "44"
+            },
+            {
+              "id": "o45",
+              "text": "45"
+            },
+            {
+              "id": "o46",
+              "text": "46"
+            }
+          ]
+        },
+        {
+          "id": "b7",
+          "options": [
+            {
+              "id": "o36",
+              "text": "36"
+            },
+            {
+              "id": "o38",
+              "text": "38"
+            },
+            {
+              "id": "o40",
+              "text": "40"
+            }
+          ]
+        },
+        {
+          "id": "b8",
+          "options": [
+            {
+              "id": "o37",
+              "text": "37"
+            },
+            {
+              "id": "o39",
+              "text": "39"
+            },
+            {
+              "id": "o47",
+              "text": "47"
+            }
+          ]
+        }
+      ],
+      "skill": "phep-tru",
+      "curriculumRef": [
+        "toan2-t1-b23-hoat-dong-1-a",
+        "toan2-t1-b23-hoat-dong-1-b",
+        "toan2-t1-b23-hoat-dong-1-c",
+        "toan2-t1-b23-hoat-dong-1-d",
+        "toan2-t1-b23-hoat-dong-2-a",
+        "toan2-t1-b23-hoat-dong-2-b",
+        "toan2-t1-b23-hoat-dong-2-c",
+        "toan2-t1-b23-hoat-dong-2-d"
+      ],
+      "support": {
+        "guide": [
+          "Hàng đơn vị không trừ được thì mượn một chục.",
+          "Đã mượn thì nhớ 1 cộng vào chữ số hàng chục của số trừ."
+        ],
+        "hint": "41 – 32: 11 – 2 = 9, hàng chục 3 thêm 1 là 4, 4 – 4 = 0.",
+        "answer": {
+          "text": "Tính.; 72 – 19 = 53   60 – 28 = 32   93 – 46 = 47   41 – 32 = 9; Đặt tính rồi tính.; 63 – 36 = 27   72 – 27 = 45   54 – 16 = 38   80 – 43 = 37",
+          "explanation": "72 – 19 = 53; 60 – 28 = 32; 93 – 46 = 47; 41 – 32 = 9; 63 – 36 = 27; 72 – 27 = 45; 54 – 16 = 38; 80 – 43 = 37."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Tám chuyến bay đo chuẩn, Hổ Vằn gầm khẽ một tiếng sung sướng.",
+          "Mượn rồi nhớ, nhớ rồi trừ, {name} đều như máy.",
+          "Khỉ Lanh treo bảng lên cột: không sai một bước chân!"
+        ],
+        "wrong": [
+          "Hàng chục quên cộng 1 đã nhớ vào số trừ rồi kìa.",
+          "41 – 32 ra số có một chữ số thôi đấy.",
+          "Một chuyến bay bị đo dài quá, kiểm tra lại phép mượn."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o53",
+          "b2": "o32",
+          "b3": "o47",
+          "b4": "o9",
+          "b5": "o27",
+          "b6": "o45",
+          "b7": "o38",
+          "b8": "o37"
+        }
+      }
+    },
+    {
+      "id": "cay-khe-chim-than",
+      "title": "Máy bay đậu cây khế",
+      "target": "ho-van",
+      "kind": "riddle",
+      "question": "Một chiếc máy bay mắc lên cây khế, Hổ Vằn nhớ ngay câu chuyện cổ tích. Trên cây khế có 90 quả. Chim thần đã ăn mất 24 quả. Hỏi trên cây còn lại bao nhiêu quả khế?",
+      "skill": "bai-toan-loi-van",
+      "curriculumRef": [
+        "toan2-t1-b23-hoat-dong-3"
+      ],
+      "support": {
+        "guide": [
+          "\"Ăn mất\" là bớt đi, làm phép trừ.",
+          "Phép tính: 90 – 24."
+        ],
+        "hint": "10 – 4 = 6, viết 6 nhớ 1; 9 – 3 = 6.",
+        "answer": {
+          "text": "66 quả khế",
+          "explanation": "Trên cây còn lại: 90 – 24 = 66 (quả khế)."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Còn 66 quả khế vàng ươm, chim thần ăn no rồi bay đi.",
+          "Hổ Vằn gỡ được máy bay mà không làm rụng quả nào!",
+          "Bớt đi thì trừ, câu chuyện cổ tích cũng phải gật đầu."
+        ],
+        "wrong": [
+          "Chim thần ăn mất thì số khế phải ít đi chứ.",
+          "90 là số tròn chục, mượn 10 ở hàng đơn vị nhé.",
+          "Thử lại: hàng chục 9 trừ 2 rồi trừ thêm 1 đã nhớ."
+        ]
+      },
+      "answer": {
+        "value": 66
+      }
+    },
+    {
+      "id": "bang-bay-thu-hai",
+      "title": "Bảng bay thứ hai",
+      "target": "khi-lanh",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Lượt bay thứ hai, Hổ phóng máy bay mạnh tay hơn. Đặt tính rồi tính.",
+      "template": "35 – 28 = {{b1}}   53 – 34 = {{b2}}   80 – 27 = {{b3}}   90 – 52 = {{b4}}\n54 – 27 = {{b5}}   72 – 36 = {{b6}}   50 – 25 = {{b7}}   95 – 48 = {{b8}}",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o7",
+              "text": "7"
+            },
+            {
+              "id": "o17",
+              "text": "17"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o19",
+              "text": "19"
+            },
+            {
+              "id": "o21",
+              "text": "21"
+            },
+            {
+              "id": "o91",
+              "text": "91"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o43",
+              "text": "43"
+            },
+            {
+              "id": "o53",
+              "text": "53"
+            },
+            {
+              "id": "o55",
+              "text": "55"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "o28",
+              "text": "28"
+            },
+            {
+              "id": "o38",
+              "text": "38"
+            },
+            {
+              "id": "o40",
+              "text": "40"
+            }
+          ]
+        },
+        {
+          "id": "b5",
+          "options": [
+            {
+              "id": "o26",
+              "text": "26"
+            },
+            {
+              "id": "o27",
+              "text": "27"
+            },
+            {
+              "id": "o72",
+              "text": "72"
+            }
+          ]
+        },
+        {
+          "id": "b6",
+          "options": [
+            {
+              "id": "o34",
+              "text": "34"
+            },
+            {
+              "id": "o36",
+              "text": "36"
+            },
+            {
+              "id": "o46",
+              "text": "46"
+            }
+          ]
+        },
+        {
+          "id": "b7",
+          "options": [
+            {
+              "id": "o24",
+              "text": "24"
+            },
+            {
+              "id": "o25",
+              "text": "25"
+            },
+            {
+              "id": "o52",
+              "text": "52"
+            }
+          ]
+        },
+        {
+          "id": "b8",
+          "options": [
+            {
+              "id": "o45",
+              "text": "45"
+            },
+            {
+              "id": "o47",
+              "text": "47"
+            },
+            {
+              "id": "o48",
+              "text": "48"
+            }
+          ]
+        }
+      ],
+      "skill": "phep-tru",
+      "curriculumRef": [
+        "toan2-t1-b23-luyen-tap-1-a",
+        "toan2-t1-b23-luyen-tap-1-b",
+        "toan2-t1-b23-luyen-tap-1-c",
+        "toan2-t1-b23-luyen-tap-1-d",
+        "toan2-t1-b23-luyen-tap-3-1-a",
+        "toan2-t1-b23-luyen-tap-3-1-b",
+        "toan2-t1-b23-luyen-tap-3-1-c",
+        "toan2-t1-b23-luyen-tap-3-1-d"
+      ],
+      "support": {
+        "guide": [
+          "Viết số trừ thẳng cột với số bị trừ.",
+          "Trừ từ hàng đơn vị, có mượn thì nhớ."
+        ],
+        "hint": "95 – 48: 15 – 8 = 7, nhớ 1; 9 – 5 = 4.",
+        "answer": {
+          "text": "35 – 28 = 7   53 – 34 = 19   80 – 27 = 53   90 – 52 = 38; 54 – 27 = 27   72 – 36 = 36   50 – 25 = 25   95 – 48 = 47",
+          "explanation": "35 – 28 = 7; 53 – 34 = 19; 80 – 27 = 53; 90 – 52 = 38; 54 – 27 = 27; 72 – 36 = 36; 50 – 25 = 25; 95 – 48 = 47."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Vèo vèo! Lượt hai còn chuẩn hơn lượt một.",
+          "Hổ Vằn quên cả gầm vì mải xem {name} tính.",
+          "Tám ô kết quả xếp thẳng như đường băng sân bay."
+        ],
+        "wrong": [
+          "Một ô đang bay lệch đường băng, tính lại xem.",
+          "35 – 28 nhỏ lắm, chỉ có một chữ số thôi.",
+          "Đừng quên nhớ 1 sang hàng chục của số trừ."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o7",
+          "b2": "o19",
+          "b3": "o53",
+          "b4": "o38",
+          "b5": "o27",
+          "b6": "o36",
+          "b7": "o25",
+          "b8": "o47"
+        }
+      }
+    },
+    {
+      "id": "robot-cam-bang-dung",
+      "title": "Rô-bốt nào giơ bảng đúng?",
+      "target": "khi-lanh",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "prompt": "Bốn rô-bốt cổ vũ giơ bảng phép tính: rô-bốt A cầm bảng 40 – 4 = 36, rô-bốt B cầm bảng 51 – 8 = 33, rô-bốt C cầm bảng 71 – 17 = 54, rô-bốt D cầm bảng 60 – 22 = 48. Bạn rô-bốt nào cầm bảng ghi phép tính đúng?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "A"
+        },
+        {
+          "id": "b",
+          "text": "B"
+        },
+        {
+          "id": "c",
+          "text": "C"
+        },
+        {
+          "id": "d",
+          "text": "D"
+        }
+      ],
+      "skill": "phep-tru",
+      "curriculumRef": [
+        "toan2-t1-b23-luyen-tap-2-a"
+      ],
+      "support": {
+        "guide": [
+          "Tự tính lại từng phép trừ trên bảng.",
+          "Bảng nào ghi đúng kết quả thì chọn."
+        ],
+        "hint": "51 – 8 = 43, không phải 33.",
+        "answer": {
+          "text": "A, C",
+          "explanation": "40 – 4 = 36 đúng; 51 – 8 = 43 nên bảng B sai; 71 – 17 = 54 đúng; 60 – 22 = 38 nên bảng D sai. Chọn A và C."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Rô-bốt A và C nhảy cẫng lên, đèn mắt nhấp nháy xanh.",
+          "Bắt lỗi rô-bốt B và D ngay tắp lự, giỏi quá!",
+          "Hổ Vằn thì thầm: tớ suýt tin bảng D đấy."
+        ],
+        "wrong": [
+          "Có một rô-bốt giơ bảng sai mà cậu vẫn chọn kìa.",
+          "Tính lại 60 – 22 xem có phải 48 không.",
+          "Còn một bảng đúng chưa được chọn đâu."
+        ]
+      },
+      "answer": {
+        "choices": [
+          "a",
+          "c"
+        ]
+      }
+    },
+    {
+      "id": "dau-so-sanh-duong-bay",
+      "title": "So hai đường bay",
+      "target": "khi-lanh",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": ">; <; = ? Khỉ Lanh đặt dấu so sánh giữa các đường bay.",
+      "template": "a) 42 – 13 {{b1}} 30\na) 70 – 25 {{b2}} 45\nb) 52 – 15 {{b3}} 60 – 15\nb) 54 – 17 {{b4}} 45 – 17",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "lon-hon",
+              "text": ">"
+            },
+            {
+              "id": "be-hon",
+              "text": "<"
+            },
+            {
+              "id": "bang",
+              "text": "="
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "lon-hon",
+              "text": ">"
+            },
+            {
+              "id": "be-hon",
+              "text": "<"
+            },
+            {
+              "id": "bang",
+              "text": "="
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "lon-hon",
+              "text": ">"
+            },
+            {
+              "id": "be-hon",
+              "text": "<"
+            },
+            {
+              "id": "bang",
+              "text": "="
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "lon-hon",
+              "text": ">"
+            },
+            {
+              "id": "be-hon",
+              "text": "<"
+            },
+            {
+              "id": "bang",
+              "text": "="
+            }
+          ]
+        }
+      ],
+      "skill": "so-sanh-so",
+      "curriculumRef": [
+        "toan2-t1-b23-luyen-tap-4-a1",
+        "toan2-t1-b23-luyen-tap-4-a2",
+        "toan2-t1-b23-luyen-tap-4-b1",
+        "toan2-t1-b23-luyen-tap-4-b2"
+      ],
+      "support": {
+        "guide": [
+          "Tính phép trừ trước rồi mới so sánh.",
+          "Câu b: hai bên cùng trừ một số, số bị trừ nào lớn hơn thì hiệu lớn hơn."
+        ],
+        "hint": "42 – 13 = 29, so với 30.",
+        "answer": {
+          "text": "a) 42 – 13 < 30; a) 70 – 25 = 45; b) 52 – 15 < 60 – 15; b) 54 – 17 > 45 – 17",
+          "explanation": "42 – 13 = 29 < 30; 70 – 25 = 45 = 45; 52 – 15 = 37 < 45 = 60 – 15; 54 – 17 = 37 > 28 = 45 – 17."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Dấu nào cũng mở đúng miệng về phía số lớn!",
+          "Câu b cậu nhìn ra mẹo cùng trừ 15 với 17, tinh ý thật.",
+          "Khỉ Lanh vỗ tay bép bép trên cành cây."
+        ],
+        "wrong": [
+          "Tính kết quả phép trừ trước khi chọn dấu nhé.",
+          "70 – 25 và 45, hai bên có bằng nhau không?",
+          "Miệng dấu luôn há về phía số lớn hơn."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "be-hon",
+          "b2": "bang",
+          "b3": "be-hon",
+          "b4": "lon-hon"
+        }
+      }
+    },
+    {
+      "id": "tinh-nham-va-robot-hop",
+      "title": "Tính nhẩm trên đường băng",
+      "target": "ho-van",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Ba rô-bốt xếp hàng trên đường băng: rô-bốt xanh thân khối lập phương ghi 46 – 28, rô-bốt vàng thân tròn ghi 50 – 14, rô-bốt cam thân khối hộp chữ nhật ghi 52 – 15. Trước đó, Hổ đọc nhanh mấy phép tính nhẩm.",
+      "template": "Tính nhẩm.\n100 – 40 = {{b1}}   100 – 70 = {{b2}}   100 – 90 = {{b3}}\na) Rô-bốt có thân dạng khối lập phương ghi phép tính có kết quả bằng bao nhiêu? {{b4}}\nb) Rô-bốt nào ghi phép tính có kết quả lớn nhất? {{b5}}",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o60",
+              "text": "60"
+            },
+            {
+              "id": "o62",
+              "text": "62"
+            },
+            {
+              "id": "o70",
+              "text": "70"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o3",
+              "text": "3"
+            },
+            {
+              "id": "o28",
+              "text": "28"
+            },
+            {
+              "id": "o30",
+              "text": "30"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o8",
+              "text": "8"
+            },
+            {
+              "id": "o10",
+              "text": "10"
+            },
+            {
+              "id": "o11",
+              "text": "11"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "o16",
+              "text": "16"
+            },
+            {
+              "id": "o18",
+              "text": "18"
+            },
+            {
+              "id": "o19",
+              "text": "19"
+            }
+          ]
+        },
+        {
+          "id": "b5",
+          "options": [
+            {
+              "id": "ro-bot-ghi-46-28",
+              "text": "Rô-bốt ghi 46 – 28"
+            },
+            {
+              "id": "ro-bot-ghi-50-14",
+              "text": "Rô-bốt ghi 50 – 14"
+            },
+            {
+              "id": "ro-bot-ghi-52-15",
+              "text": "Rô-bốt ghi 52 – 15"
+            }
+          ]
+        }
+      ],
+      "skill": "phep-tru",
+      "curriculumRef": [
+        "toan2-t1-b23-luyen-tap-2-1-a",
+        "toan2-t1-b23-luyen-tap-2-1-b",
+        "toan2-t1-b23-luyen-tap-2-1-c",
+        "toan2-t1-b23-luyen-tap-2-3-a",
+        "toan2-t1-b23-luyen-tap-2-3-b"
+      ],
+      "support": {
+        "guide": [
+          "100 là 10 chục: 10 chục bớt 4 chục còn 6 chục.",
+          "Tính kết quả của ba rô-bốt rồi so sánh."
+        ],
+        "hint": "46 – 28 = 18, 50 – 14 = 36, 52 – 15 = 37.",
+        "answer": {
+          "text": "Tính nhẩm.; 100 – 40 = 60   100 – 70 = 30   100 – 90 = 10; a) Rô-bốt có thân dạng khối lập phương ghi phép tính có kết quả bằng bao nhiêu? 18; b) Rô-bốt nào ghi phép tính có kết quả lớn nhất? Rô-bốt ghi 52 – 15",
+          "explanation": "100 – 40 = 60; 100 – 70 = 30; 100 – 90 = 10. Rô-bốt khối lập phương: 46 – 28 = 18. Lớn nhất là 52 – 15 = 37."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ba rô-bốt cúi chào, rô-bốt cam được đội mũ phi công.",
+          "Tính nhẩm số tròn chục nhanh như máy bay phản lực!",
+          "Hổ Vằn gầm khe khẽ: cậu nhẩm còn nhanh hơn tớ chạy."
+        ],
+        "wrong": [
+          "100 trừ số tròn chục: nghĩ theo số chục cho dễ nhé.",
+          "Rô-bốt khối lập phương là rô-bốt xanh, ghi 46 – 28.",
+          "36 và 37 sát nhau lắm, so cẩn thận nào."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o60",
+          "b2": "o30",
+          "b3": "o10",
+          "b4": "o18",
+          "b5": "ro-bot-ghi-52-15"
+        }
+      }
+    },
+    {
+      "id": "quan-ao-phi-cong",
+      "title": "Bộ đồ phi công",
+      "target": "ho-van",
+      "kind": "challenge",
+      "mechanic": "classify",
+      "prompt": "Hổ Vằn muốn mặc đồ phi công cho thật oai, mỗi áo ghi một phép trừ, mỗi quần ghi một số. Tìm quần phù hợp với áo.",
+      "groups": [
+        {
+          "id": "nhom-quan-13",
+          "label": "Quần 13"
+        },
+        {
+          "id": "nhom-quan-14",
+          "label": "Quần 14"
+        },
+        {
+          "id": "nhom-quan-15",
+          "label": "Quần 15"
+        }
+      ],
+      "items": [
+        {
+          "id": "ao-ao-vang-40-27",
+          "label": "Áo vàng 40 – 27"
+        },
+        {
+          "id": "ao-ao-trang-32-18",
+          "label": "Áo trắng 32 – 18"
+        }
+      ],
+      "skill": "phep-tru",
+      "curriculumRef": [
+        "toan2-t1-b23-luyen-tap-2-4-a",
+        "toan2-t1-b23-luyen-tap-2-4-b"
+      ],
+      "support": {
+        "guide": [
+          "Tính phép trừ ghi trên áo.",
+          "Quần ghi đúng kết quả là quần phù hợp; quần 15 đã ghép mẫu với áo 51 – 36."
+        ],
+        "hint": "40 – 27 = 13.",
+        "answer": {
+          "text": "Áo vàng 40 – 27 – quần 13; áo trắng 32 – 18 – quần 14",
+          "explanation": "40 – 27 = 13 nên áo vàng hợp quần 13; 32 – 18 = 14 nên áo trắng hợp quần 14."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Hổ Vằn mặc đồ phi công, đứng tạo dáng như siêu sao.",
+          "Áo nào quần nấy, khớp như may đo!",
+          "Khỉ Lanh huýt sáo: phi công Hổ trông oai phết."
+        ],
+        "wrong": [
+          "Quần này hơi cộc so với áo rồi, tính lại phép trừ nhé.",
+          "32 – 18 bằng mấy? Tìm quần có số đó.",
+          "Quần 15 đã có áo mẫu mặc rồi đấy."
+        ]
+      },
+      "answer": {
+        "assignment": {
+          "ao-ao-vang-40-27": "nhom-quan-13",
+          "ao-ao-trang-32-18": "nhom-quan-14"
+        }
+      }
+    },
+    {
+      "id": "ho-van-ru-thi",
+      "title": "Hổ rủ thi đấu",
+      "kind": "dialogue",
+      "target": "ho-van",
+      "lines": [
+        {
+          "speaker": "Hổ Vằn",
+          "text": "Grừ… ý tớ là, {name} ơi! Tớ hết sợ rồi. Mình chia nhau giải nốt đống thử thách rồi thi trò dẫn nhím nhé?"
+        },
+        {
+          "speaker": "Khỉ Lanh",
+          "text": "Hay đấy. {name} muốn đi chậm mà chắc, hay thử tốc độ với Hổ?"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Chậm mà chắc, tính kĩ từng bài",
+          "reply": "Hổ Vằn gật gù: Đúng kiểu thợ đo máy bay chuyên nghiệp."
+        },
+        {
+          "text": "Thử tốc độ, ai nhanh hơn nào!",
+          "reply": "Hổ Vằn xắn tay áo: Grừ! Lần này tớ không trốn nữa đâu."
+        }
+      ]
+    },
+    {
+      "id": "chon-ket-qua-hai-dong",
+      "title": "Bảng chọn kết quả",
+      "target": "khi-lanh",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "prompt": "Khỉ Lanh giơ bảng đố hai dòng. Chọn kết quả đúng. a) 32 + 48 – 16 = ? A. 54 B. 64 C. 74 b) 33 – 16 + 53 = ? A. 70 B. 60 C. 50 Chọn đúng một kết quả cho mỗi câu a và b.",
+      "choices": [
+        {
+          "id": "a-a-54",
+          "text": "a) A. 54"
+        },
+        {
+          "id": "a-b-64",
+          "text": "a) B. 64"
+        },
+        {
+          "id": "a-c-74",
+          "text": "a) C. 74"
+        },
+        {
+          "id": "b-a-70",
+          "text": "b) A. 70"
+        },
+        {
+          "id": "b-b-60",
+          "text": "b) B. 60"
+        },
+        {
+          "id": "b-c-50",
+          "text": "b) C. 50"
+        }
+      ],
+      "skill": "phep-tru",
+      "curriculumRef": [
+        "toan2-t1-b23-luyen-tap-3-4-a",
+        "toan2-t1-b23-luyen-tap-3-4-b"
+      ],
+      "support": {
+        "guide": [
+          "Làm lần lượt từ trái sang phải.",
+          "Mỗi câu chọn đúng một kết quả."
+        ],
+        "hint": "32 + 48 = 80, sau đó 80 – 16.",
+        "answer": {
+          "text": "a) B. 64; b) A. 70",
+          "explanation": "a) 32 + 48 – 16 = 80 – 16 = 64 (B). b) 33 – 16 + 53 = 17 + 53 = 70 (A)."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Hai dòng hai kết quả, Khỉ Lanh tặng cậu một quả chuối danh dự.",
+          "Làm từ trái sang phải đâu ra đấy, tuyệt!",
+          "Hổ Vằn lẩm bẩm: 33 trừ 16 ra 17, nhớ rồi nhé."
+        ],
+        "wrong": [
+          "Câu a cộng 32 với 48 trước rồi mới trừ 16.",
+          "Câu b: 33 – 16 bằng mấy trước đã?",
+          "Mỗi câu chỉ được chọn một kết quả thôi."
+        ]
+      },
+      "answer": {
+        "choices": [
+          "a-b-64",
+          "b-a-70"
+        ]
+      }
+    },
+    {
+      "id": "meo-cau-ca-ben-ao",
+      "title": "Ba chú mèo câu cá",
+      "target": "ho-van",
+      "kind": "challenge",
+      "mechanic": "classify",
+      "prompt": "Một chiếc máy bay đáp xuống bờ ao, nơi ba chú mèo đang ngồi câu. Ba con cá ghi 72 – 27, 81 – 16, 90 – 35. Mỗi con mèo sẽ câu con cá ghi phép tính có kết quả là số ghi trên xô. Tìm cá cho mỗi con mèo.",
+      "groups": [
+        {
+          "id": "nhom-ca-72-27",
+          "label": "Cá 72 – 27"
+        },
+        {
+          "id": "nhom-ca-81-16",
+          "label": "Cá 81 – 16"
+        },
+        {
+          "id": "nhom-ca-90-35",
+          "label": "Cá 90 – 35"
+        }
+      ],
+      "items": [
+        {
+          "id": "meo-xo-45",
+          "label": "Xô 45"
+        },
+        {
+          "id": "meo-xo-55",
+          "label": "Xô 55"
+        },
+        {
+          "id": "meo-xo-65",
+          "label": "Xô 65"
+        }
+      ],
+      "skill": "phep-tru",
+      "curriculumRef": [
+        "toan2-t1-b23-luyen-tap-3-5-a",
+        "toan2-t1-b23-luyen-tap-3-5-b",
+        "toan2-t1-b23-luyen-tap-3-5-c"
+      ],
+      "support": {
+        "guide": [
+          "Tính phép trừ ghi trên mỗi con cá.",
+          "Cá có kết quả bằng số trên xô là cá của chú mèo đó."
+        ],
+        "hint": "90 – 35 = 55.",
+        "answer": {
+          "text": "Xô 45 – cá 72 – 27; xô 55 – cá 90 – 35; xô 65 – cá 81 – 16",
+          "explanation": "72 – 27 = 45, 90 – 35 = 55, 81 – 16 = 65: xô 45 nhận cá 72 – 27, xô 55 nhận cá 90 – 35, xô 65 nhận cá 81 – 16."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Tõm tõm tõm! Ba con cá nhảy đúng vào ba cái xô.",
+          "Ba chú mèo meo meo cảm ơn rối rít.",
+          "Hổ Vằn tròn mắt: cá cũng biết làm toán à?"
+        ],
+        "wrong": [
+          "Có chú mèo đang câu nhầm cá của bạn bên cạnh.",
+          "Tính phép trừ trên cá trước rồi nhìn số trên xô.",
+          "81 – 16 bằng 65 hay 75 nhỉ? Thử lại xem."
+        ]
+      },
+      "answer": {
+        "assignment": {
+          "meo-xo-45": "nhom-ca-72-27",
+          "meo-xo-55": "nhom-ca-90-35",
+          "meo-xo-65": "nhom-ca-81-16"
+        }
+      }
+    },
+    {
+      "id": "so-ghi-chuyen-bay",
+      "title": "Sổ ghi chuyến bay",
+      "target": "khi-lanh",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Khỉ Lanh ghi sổ: bay xa bao nhiêu, về gần bao nhiêu, còn cách bao nhiêu. Số ?",
+      "template": "Số bị trừ | 83 | 70 | 47 | 80 | 50\nSố trừ | 38 | 25 | 28 | 52 | 30\nHiệu | 45 | {{b1}} | {{b2}} | {{b3}} | {{b4}}",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o35",
+              "text": "35"
+            },
+            {
+              "id": "o45",
+              "text": "45"
+            },
+            {
+              "id": "o55",
+              "text": "55"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o9",
+              "text": "9"
+            },
+            {
+              "id": "o19",
+              "text": "19"
+            },
+            {
+              "id": "o91",
+              "text": "91"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o26",
+              "text": "26"
+            },
+            {
+              "id": "o28",
+              "text": "28"
+            },
+            {
+              "id": "o82",
+              "text": "82"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "o2",
+              "text": "2"
+            },
+            {
+              "id": "o18",
+              "text": "18"
+            },
+            {
+              "id": "o20",
+              "text": "20"
+            }
+          ]
+        }
+      ],
+      "skill": "thanh-phan-phep-tinh",
+      "curriculumRef": [
+        "toan2-t1-b23-luyen-tap-4-1-a",
+        "toan2-t1-b23-luyen-tap-4-1-b",
+        "toan2-t1-b23-luyen-tap-4-1-c",
+        "toan2-t1-b23-luyen-tap-4-1-d"
+      ],
+      "support": {
+        "guide": [
+          "Muốn tìm hiệu, lấy số bị trừ trừ đi số trừ.",
+          "Cột mẫu: 83 – 38 = 45."
+        ],
+        "hint": "47 – 28: 17 – 8 = 9, nhớ 1; 4 – 3 = 1.",
+        "answer": {
+          "text": "Số bị trừ | 83 | 70 | 47 | 80 | 50; Số trừ | 38 | 25 | 28 | 52 | 30; Hiệu | 45 | 45 | 19 | 28 | 20",
+          "explanation": "70 – 25 = 45; 47 – 28 = 19; 80 – 52 = 28; 50 – 30 = 20."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Sổ ghi kín bốn cột, Khỉ Lanh đóng dấu \"đã kiểm tra\".",
+          "Hiệu nào cũng chuẩn, không cột nào bị bỏ trống.",
+          "Hổ Vằn chép lại sổ để mang về khoe mẹ."
+        ],
+        "wrong": [
+          "Lấy số ở hàng trên trừ số ở hàng giữa nhé.",
+          "80 – 52 có mượn ở hàng đơn vị đấy.",
+          "Cột 50 và 30 là phép trừ số tròn chục, dễ thôi."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o45",
+          "b2": "o19",
+          "b3": "o28",
+          "b4": "o20"
+        }
+      }
+    },
+    {
+      "id": "chu-so-va-hop-qua",
+      "title": "Chữ số trốn và hộp quà",
+      "target": "khi-lanh",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Gió thổi bay mất mấy chữ số trên bảng, còn bốn hộp quà phần thưởng thì ghi: hộp A 30 – 14, hộp B 40 – 20, hộp C 52 – 31, hộp D 34 – 16.",
+      "template": "Tìm chữ số thích hợp.\n4{{b1}} – 17 = 24\n83 – {{b2}}9 = 2{{b3}}\n{{b4}}1 – 25 = 4{{b5}}\nBiết: – Hộp quà đựng vở là hộp quà ghi phép tính có kết quả lớn nhất. – Hộp quà đựng bút là hộp quà ghi phép tính có kết quả bé nhất. Hỏi hộp quà nào đựng vở, hộp quà nào đựng bút?\nHộp quà đựng vở: hộp {{b6}}. Hộp quà đựng bút: hộp {{b7}}.",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o0",
+              "text": "0"
+            },
+            {
+              "id": "o1",
+              "text": "1"
+            },
+            {
+              "id": "o2",
+              "text": "2"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o5",
+              "text": "5"
+            },
+            {
+              "id": "o6",
+              "text": "6"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o3",
+              "text": "3"
+            },
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o5",
+              "text": "5"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o7",
+              "text": "7"
+            },
+            {
+              "id": "o8",
+              "text": "8"
+            }
+          ]
+        },
+        {
+          "id": "b5",
+          "options": [
+            {
+              "id": "o5",
+              "text": "5"
+            },
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o7",
+              "text": "7"
+            }
+          ]
+        },
+        {
+          "id": "b6",
+          "options": [
+            {
+              "id": "a",
+              "text": "A"
+            },
+            {
+              "id": "b",
+              "text": "B"
+            },
+            {
+              "id": "c",
+              "text": "C"
+            },
+            {
+              "id": "d",
+              "text": "D"
+            }
+          ]
+        },
+        {
+          "id": "b7",
+          "options": [
+            {
+              "id": "a",
+              "text": "A"
+            },
+            {
+              "id": "b",
+              "text": "B"
+            },
+            {
+              "id": "c",
+              "text": "C"
+            },
+            {
+              "id": "d",
+              "text": "D"
+            }
+          ]
+        }
+      ],
+      "skill": "phep-tru",
+      "curriculumRef": [
+        "toan2-t1-b23-luyen-tap-3-2-a",
+        "toan2-t1-b23-luyen-tap-3-2-b",
+        "toan2-t1-b23-luyen-tap-3-2-c",
+        "toan2-t1-b23-luyen-tap-4-2"
+      ],
+      "support": {
+        "guide": [
+          "Thử thay chữ số vào chỗ trống rồi tính lại phép trừ.",
+          "Hộp quà: tính kết quả cả bốn hộp rồi tìm lớn nhất, bé nhất."
+        ],
+        "hint": "Hộp A: 30 – 14 = 16, hộp D: 34 – 16 = 18.",
+        "answer": {
+          "text": "Tìm chữ số thích hợp.; 41 – 17 = 24; 83 – 59 = 24; 71 – 25 = 46; Biết: – Hộp quà đựng vở là hộp quà ghi phép tính có kết quả lớn nhất. – Hộp quà đựng bút là hộp quà ghi phép tính có kết quả bé nhất. Hỏi hộp quà nào đựng vở, hộp quà nào đựng bút?; Hộp quà đựng vở: hộp C. Hộp quà đựng bút: hộp A.",
+          "explanation": "41 – 17 = 24; 83 – 59 = 24; 71 – 25 = 46. Hộp A 16, hộp B 20, hộp C 21, hộp D 18: hộp C đựng vở, hộp A đựng bút."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Chữ số về đúng chỗ, hộp quà cũng mở đúng hộp!",
+          "Hổ Vằn ôm hộp vở, Khỉ Lanh cầm hộp bút, ai cũng vui.",
+          "Thử chữ số rồi kiểm tra lại, đúng là thám tử số."
+        ],
+        "wrong": [
+          "Thay chữ số vào rồi tính lại xem phép trừ có đúng không.",
+          "Hộp đựng vở có kết quả LỚN nhất đấy.",
+          "Hộp A và hộp D chênh nhau ít, tính kĩ lại nhé."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o1",
+          "b2": "o5",
+          "b3": "o4",
+          "b4": "o7",
+          "b5": "o6",
+          "b6": "c",
+          "b7": "a"
+        }
+      }
+    },
+    {
+      "id": "chia-khoa-mo-hom",
+      "title": "Chìa khoá kho máy bay",
+      "target": "khi-lanh",
+      "kind": "challenge",
+      "mechanic": "quiz",
+      "prompt": "Kho máy bay có ba chiếc hòm: hòm vàng A ghi 31 – 16 = 5, hòm đỏ B ghi 43 – 24 = 19, hòm xanh C ghi 55 – 39 = 16. Chìa khoá mở được chiếc hòm ghi phép tính đúng nhưng không mở được chiếc hòm màu xanh. Chìa khoá mở được chiếc hòm nào?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "A"
+        },
+        {
+          "id": "b",
+          "text": "B"
+        },
+        {
+          "id": "c",
+          "text": "C"
+        }
+      ],
+      "skill": "logic",
+      "curriculumRef": [
+        "toan2-t1-b23-luyen-tap-4-3"
+      ],
+      "support": {
+        "guide": [
+          "Kiểm tra phép tính trên từng hòm.",
+          "Loại bỏ hòm màu xanh."
+        ],
+        "hint": "Hòm A sai vì 31 – 16 = 15.",
+        "answer": {
+          "text": "B",
+          "explanation": "Hòm A ghi sai (31 – 16 = 15); hòm B ghi đúng 43 – 24 = 19; hòm C cũng đúng nhưng là hòm màu xanh. Chìa khoá mở hòm B."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Cạch! Hòm đỏ mở ra, bên trong toàn giấy màu gấp máy bay.",
+          "Không bị hòm xanh đánh lừa, {name} đọc đề kĩ thật.",
+          "Khỉ Lanh tung chìa khoá lên trời rồi bắt gọn: chuẩn!"
+        ],
+        "wrong": [
+          "Hòm đó ghi phép tính sai rồi, chìa không vừa đâu.",
+          "Phép tính đúng mà hòm màu xanh thì cũng không mở được.",
+          "Tính lại 31 – 16 xem có ra 5 không."
+        ]
+      },
+      "answer": {
+        "choice": "b"
+      }
+    },
+    {
+      "id": "bon-bai-toan-cua-ho",
+      "title": "Bốn câu đố của Hổ",
+      "target": "ho-van",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Hổ Vằn tự tin đọc to bốn bài toán nhặt được trong hòm.",
+      "template": "Rô-bốt A cân nặng 33 kg. Rô-bốt D nhẹ hơn rô-bốt A 16 kg. Hỏi rô-bốt D cân nặng bao nhiêu ki-lô-gam? Rô-bốt D cân nặng {{b1}} kg.\nBình xăng của một ô tô có 42 l xăng. Ô tô đã đi một quãng đường hết 15 l xăng. Hỏi bình xăng của ô tô còn lại bao nhiêu lít xăng? Còn lại {{b2}} l xăng.\nToà nhà có 60 căn phòng. Có 35 căn phòng đã bật đèn. Hỏi còn bao nhiêu căn phòng chưa bật đèn? Còn {{b3}} căn phòng chưa bật đèn.\nMột đàn gà có 32 con gồm gà trống và gà mái, trong đó có 26 con gà mái. Hỏi đàn gà có bao nhiêu con gà trống? Có {{b4}} con gà trống.",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o15",
+              "text": "15"
+            },
+            {
+              "id": "o17",
+              "text": "17"
+            },
+            {
+              "id": "o18",
+              "text": "18"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o17",
+              "text": "17"
+            },
+            {
+              "id": "o27",
+              "text": "27"
+            },
+            {
+              "id": "o37",
+              "text": "37"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o15",
+              "text": "15"
+            },
+            {
+              "id": "o25",
+              "text": "25"
+            },
+            {
+              "id": "o27",
+              "text": "27"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "o5",
+              "text": "5"
+            },
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o7",
+              "text": "7"
+            }
+          ]
+        }
+      ],
+      "skill": "bai-toan-loi-van",
+      "curriculumRef": [
+        "toan2-t1-b23-luyen-tap-3-a",
+        "toan2-t1-b23-luyen-tap-2-2",
+        "toan2-t1-b23-luyen-tap-3-3",
+        "toan2-t1-b23-luyen-tap-4-4"
+      ],
+      "support": {
+        "guide": [
+          "\"Nhẹ hơn\", \"đã đi hết\", \"đã bật đèn\", \"trong đó có\" đều dẫn tới phép trừ.",
+          "Lấy số lớn trừ đi phần đã biết."
+        ],
+        "hint": "33 – 16, 42 – 15, 60 – 35, 32 – 26.",
+        "answer": {
+          "text": "Rô-bốt A cân nặng 33 kg. Rô-bốt D nhẹ hơn rô-bốt A 16 kg. Hỏi rô-bốt D cân nặng bao nhiêu ki-lô-gam? Rô-bốt D cân nặng 17 kg.; Bình xăng của một ô tô có 42 l xăng. Ô tô đã đi một quãng đường hết 15 l xăng. Hỏi bình xăng của ô tô còn lại bao nhiêu lít xăng? Còn lại 27 l xăng.; Toà nhà có 60 căn phòng. Có 35 căn phòng đã bật đèn. Hỏi còn bao nhiêu căn phòng chưa bật đèn? Còn 25 căn phòng chưa bật đèn.; Một đàn gà có 32 con gồm gà trống và gà mái, trong đó có 26 con gà mái. Hỏi đàn gà có bao nhiêu con gà trống? Có 6 con gà trống.",
+          "explanation": "Rô-bốt D: 33 – 16 = 17 (kg); xăng còn: 42 – 15 = 27 (l); phòng chưa bật đèn: 60 – 35 = 25 (phòng); gà trống: 32 – 26 = 6 (con)."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bốn bài toán, bốn đáp số, Hổ Vằn đọc to không run chút nào!",
+          "Cậu giải gọn như máy bay hạ cánh êm ru.",
+          "Khỉ Lanh dán ngôi sao vàng lên trán Hổ và {name}."
+        ],
+        "wrong": [
+          "Mỗi bài đều lấy tổng trừ đi phần đã biết nhé.",
+          "Bài con gà: 32 con có 26 con gà mái, còn lại là gà trống.",
+          "Xem lại bài bình xăng, 42 – 15 có mượn đấy."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o17",
+          "b2": "o27",
+          "b3": "o25",
+          "b4": "o6"
+        }
+      }
+    },
+    {
+      "id": "nhim-tim-mon-an",
+      "title": "Thi dẫn nhím tìm món ăn",
+      "target": "ho-van",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Trò chơi cuối: Hổ Vằn và {name} thi xem ai dẫn nhím tới món ăn trước. Ngã rẽ đầu có đường trên ghi 30 – 5 và đường dưới ghi 30 – 9; sau 30 – 5 có đường 41 – 17 tới củ khoai lang và đường 35 – 17 tới bắp cải; sau 30 – 9 có đường 50 – 35 tới cà rốt và đường 52 – 35 tới khoai tây.",
+      "template": "Tại mỗi ngã rẽ, bạn nhím sẽ đi theo con đường ghi phép tính có kết quả lớn hơn. Bạn nhím sẽ đến chỗ món ăn nào?\n30 – 5 = {{b1}}   30 – 9 = {{b2}}   41 – 17 = {{b3}}   35 – 17 = {{b4}}   50 – 35 = {{b5}}   52 – 35 = {{b6}}\nBạn nhím đến chỗ: {{b7}}",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o25",
+              "text": "25"
+            },
+            {
+              "id": "o35",
+              "text": "35"
+            },
+            {
+              "id": "o52",
+              "text": "52"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o11",
+              "text": "11"
+            },
+            {
+              "id": "o21",
+              "text": "21"
+            },
+            {
+              "id": "o22",
+              "text": "22"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o23",
+              "text": "23"
+            },
+            {
+              "id": "o24",
+              "text": "24"
+            },
+            {
+              "id": "o26",
+              "text": "26"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "o16",
+              "text": "16"
+            },
+            {
+              "id": "o18",
+              "text": "18"
+            },
+            {
+              "id": "o81",
+              "text": "81"
+            }
+          ]
+        },
+        {
+          "id": "b5",
+          "options": [
+            {
+              "id": "o5",
+              "text": "5"
+            },
+            {
+              "id": "o15",
+              "text": "15"
+            },
+            {
+              "id": "o51",
+              "text": "51"
+            }
+          ]
+        },
+        {
+          "id": "b6",
+          "options": [
+            {
+              "id": "o7",
+              "text": "7"
+            },
+            {
+              "id": "o17",
+              "text": "17"
+            },
+            {
+              "id": "o27",
+              "text": "27"
+            }
+          ]
+        },
+        {
+          "id": "b7",
+          "options": [
+            {
+              "id": "bap-cai",
+              "text": "bắp cải"
+            },
+            {
+              "id": "ca-rot",
+              "text": "cà rốt"
+            },
+            {
+              "id": "khoai-lang",
+              "text": "khoai lang"
+            },
+            {
+              "id": "khoai-tay",
+              "text": "khoai tây"
+            }
+          ]
+        }
+      ],
+      "skill": "so-sanh-so",
+      "curriculumRef": [
+        "toan2-t1-b23-luyen-tap-5"
+      ],
+      "support": {
+        "guide": [
+          "Ở mỗi ngã rẽ, tính hai đường rồi chọn đường lớn hơn.",
+          "Chỉ đi tiếp từ đường vừa chọn."
+        ],
+        "hint": "30 – 5 = 25 lớn hơn 30 – 9 = 21, nên nhím rẽ lên đường trên.",
+        "answer": {
+          "text": "Tại mỗi ngã rẽ, bạn nhím sẽ đi theo con đường ghi phép tính có kết quả lớn hơn. Bạn nhím sẽ đến chỗ món ăn nào?; 30 – 5 = 25   30 – 9 = 21   41 – 17 = 24   35 – 17 = 18   50 – 35 = 15   52 – 35 = 17; Bạn nhím đến chỗ: khoai lang",
+          "explanation": "30 – 5 = 25 > 21 nên đi đường trên; 41 – 17 = 24 > 35 – 17 = 18 nên tới củ khoai lang. (Đường dưới: 50 – 35 = 15, 52 – 35 = 17.)"
+        }
+      },
+      "feedback": {
+        "right": [
+          "Nhím ôm củ khoai lang lăn tròn, {name} về đích trước Hổ!",
+          "Hổ Vằn thua mà cười khà khà: lần sau tớ phục thù nhé.",
+          "Mỗi ngã rẽ chọn đúng số lớn hơn, nhím no căng bụng."
+        ],
+        "wrong": [
+          "Nhím đi lạc vào bụi gai rồi, so lại hai đường ở ngã rẽ.",
+          "Nhớ chọn đường có kết quả LỚN hơn nhé.",
+          "Sau khi rẽ lên trên thì chỉ xét hai đường phía trên thôi."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o25",
+          "b2": "o21",
+          "b3": "o24",
+          "b4": "o18",
+          "b5": "o15",
+          "b6": "o17",
+          "b7": "khoai-lang"
+        }
+      }
+    },
+    {
+      "id": "canh-bay-dung-cam",
+      "title": "Đôi cánh dũng cảm",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Hổ Vằn gỡ chiếc máy bay đẹp nhất tặng {name}, trên cánh có dòng chữ ngoằn ngoèo: \"Cảm ơn bạn đã không cười tớ\". Khỉ Lanh trao thêm huy hiệu \"Kĩ sư đường bay\"."
+    },
+    {
+      "id": "tu-kinh-con-trong",
+      "title": "Tủ kính còn trống",
+      "kind": "unlock",
+      "trigger": "auto",
+      "text": "Mèo Mun vẫy gọi từ tủ kính trưng bày: \"Đồ chơi làm xong nhiều quá mà tủ kính thì đánh số lung tung, xếp sao cho đúng thứ tự đây?\""
+    }
+  ],
+  "reward": {
+    "xp": 100,
+    "coin": 20,
+    "skillXp": {
+      "phep-tru": 2,
+      "so-sanh-so": 1
+    }
+  }
+}

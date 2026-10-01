@@ -1,0 +1,1385 @@
+{
+  "id": "toan2-cd4-b20",
+  "region": "truong-hoc",
+  "chapter": 4,
+  "title": "Khỉ Lanh ghép đoàn tàu",
+  "status": "draft",
+  "lesson": "toan2-t1-b20",
+  "summary": "Khỉ Lanh ghép đoàn tàu đồ chơi mà toa nào cũng đòi đi trước; {name} cộng có nhớ số có hai chữ số với số có hai chữ số để xếp hàng lên toa, đưa tàu ngầm về bến, chỉ đường cho kiến và sửa phép tính que diêm của Khỉ.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "Khỉ Lanh, Mèo Mun",
+    "where": "Xưởng đồ chơi: đường ray tàu",
+    "goal": "Ghép đủ toa và chất đúng hàng để đoàn tàu chạy",
+    "play": "Tìm toa tàu, điền kết quả cộng có nhớ, chọn tàu đúng, nối hàng với máy bay, xếp tàu ngầm, chọn đường cho kiến, chọn câu đúng, đố que tính",
+    "learn": "Toán 2 Bài 20: phép cộng (có nhớ) số có hai chữ số với số có hai chữ số",
+    "reward": "90 XP, 15 xu, Phép cộng +2, Logic +1",
+    "unlock": "Bài 21 \"Luyện tập chung\""
+  },
+  "phases": {
+    "hook": "toa-nao-cung-doi-di-truoc",
+    "explore": "tim-toa-tau",
+    "learn": "nho-mot-hai-chu-so",
+    "challenge": "hang-len-toa-dau-tien",
+    "decision": "meo-mun-goi-tau-ngam",
+    "finale": "que-tinh-dat-sai",
+    "reward": "coi-tau-truong-ga",
+    "unlock": "hop-qua-bi-mat"
+  },
+  "texts": {},
+  "places": {
+    "khi-lanh": "đường ray tàu",
+    "tim-toa-tau": "đường ray tàu",
+    "meo-mun": "bể bơi đồ chơi"
+  },
+  "steps": [
+    {
+      "id": "toa-nao-cung-doi-di-truoc",
+      "title": "Toa nào cũng đòi đi trước",
+      "goTo": "Đến đường ray tàu trong Xưởng đồ chơi, Khỉ Lanh đang đu trên móc treo",
+      "kind": "dialogue",
+      "target": "khi-lanh",
+      "lines": [
+        {
+          "speaker": "Khỉ Lanh",
+          "text": "Ê a! {name} tới đúng lúc! Thầy đang ghép đoàn tàu đồ chơi chở hàng đi khắp trường."
+        },
+        {
+          "speaker": "Khỉ Lanh",
+          "text": "Nhưng mấy cái toa nghịch lắm, toa nào cũng đòi đi trước, lại còn trốn biệt khỏi đường ray."
+        },
+        {
+          "speaker": "Mèo Mun",
+          "text": "Thầy Khỉ treo ngược người thế kia thì tìm được toa nào ạ?"
+        },
+        {
+          "speaker": "Khỉ Lanh",
+          "text": "Treo ngược mới thấy rõ gầm bàn chứ! Thôi, xuống đây, mình đi tìm toa."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu tìm toa giúp thầy!",
+          "reply": "Khỉ Lanh nhảy xuống đánh bịch: Đi nào, nhanh như khỉ!"
+        },
+        {
+          "text": "Thầy xuống đi kẻo ngã ạ!",
+          "reply": "Khỉ Lanh lộn một vòng đáp đất: Ngã sao được, thầy dạy thể dục mà!"
+        }
+      ]
+    },
+    {
+      "id": "tim-toa-tau",
+      "title": "Ba toa tàu đi trốn",
+      "goTo": "Tìm ba toa tàu trốn quanh đường ray tàu",
+      "kind": "search",
+      "targets": [
+        "toan2-cd4-toa-hang-do",
+        "toan2-cd4-toa-hang-xanh",
+        "toan2-cd4-toa-hang-vang"
+      ]
+    },
+    {
+      "id": "nho-mot-hai-chu-so",
+      "title": "Cộng hai số có hai chữ số",
+      "kind": "dialogue",
+      "target": "khi-lanh",
+      "lines": [
+        {
+          "speaker": "Khỉ Lanh",
+          "text": "Mỗi toa chở một số kiện hàng. Ghép hai toa thì cộng hai số có hai chữ số, ví dụ 17 + 24."
+        },
+        {
+          "speaker": "Khỉ Lanh",
+          "text": "Hàng đơn vị: 7 + 4 = 11, viết 1, nhớ 1. Hàng chục: 1 + 2 = 3, thêm 1 nhớ là 4. Vậy 17 + 24 = 41."
+        },
+        {
+          "speaker": "Mèo Mun",
+          "text": "Số 1 nhớ giống em khỉ con bám lưng mẹ, nhảy sang hàng chục ạ?"
+        },
+        {
+          "speaker": "Khỉ Lanh",
+          "text": "Chuẩn! Đừng để em khỉ con rơi mất là được."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Không để rơi số nhớ!",
+          "reply": "Khỉ Lanh giơ ngón cái: Tàu xuất phát!"
+        }
+      ]
+    },
+    {
+      "id": "hang-len-toa-dau-tien",
+      "title": "Chất hàng lên toa đầu tiên",
+      "target": "khi-lanh",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Mỗi toa tàu dán một phép cộng, kết quả là số kiện hàng phải chất lên. Tính.",
+      "template": "17 + 24 = {{b1}}\n37 + 36 = {{b2}}\n42 + 48 = {{b3}}\n59 + 25 = {{b4}}\nĐặt tính rồi tính.\n23 + 67 = {{b5}}\n46 + 18 = {{b6}}\n59 + 21 = {{b7}}\n64 + 19 = {{b8}}",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o14",
+              "text": "14"
+            },
+            {
+              "id": "o31",
+              "text": "31"
+            },
+            {
+              "id": "o41",
+              "text": "41"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o37",
+              "text": "37"
+            },
+            {
+              "id": "o73",
+              "text": "73"
+            },
+            {
+              "id": "o75",
+              "text": "75"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o88",
+              "text": "88"
+            },
+            {
+              "id": "o90",
+              "text": "90"
+            },
+            {
+              "id": "o91",
+              "text": "91"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "o82",
+              "text": "82"
+            },
+            {
+              "id": "o84",
+              "text": "84"
+            },
+            {
+              "id": "o85",
+              "text": "85"
+            }
+          ]
+        },
+        {
+          "id": "b5",
+          "options": [
+            {
+              "id": "o90",
+              "text": "90"
+            },
+            {
+              "id": "o91",
+              "text": "91"
+            },
+            {
+              "id": "o100",
+              "text": "100"
+            }
+          ]
+        },
+        {
+          "id": "b6",
+          "options": [
+            {
+              "id": "o46",
+              "text": "46"
+            },
+            {
+              "id": "o63",
+              "text": "63"
+            },
+            {
+              "id": "o64",
+              "text": "64"
+            }
+          ]
+        },
+        {
+          "id": "b7",
+          "options": [
+            {
+              "id": "o78",
+              "text": "78"
+            },
+            {
+              "id": "o79",
+              "text": "79"
+            },
+            {
+              "id": "o80",
+              "text": "80"
+            }
+          ]
+        },
+        {
+          "id": "b8",
+          "options": [
+            {
+              "id": "o38",
+              "text": "38"
+            },
+            {
+              "id": "o73",
+              "text": "73"
+            },
+            {
+              "id": "o83",
+              "text": "83"
+            }
+          ]
+        }
+      ],
+      "skill": "phep-cong",
+      "curriculumRef": [
+        "toan2-t1-b20-hoat-dong-1-a",
+        "toan2-t1-b20-hoat-dong-1-b",
+        "toan2-t1-b20-hoat-dong-1-c",
+        "toan2-t1-b20-hoat-dong-1-d",
+        "toan2-t1-b20-hoat-dong-2-a",
+        "toan2-t1-b20-hoat-dong-2-b",
+        "toan2-t1-b20-hoat-dong-2-c",
+        "toan2-t1-b20-hoat-dong-2-d"
+      ],
+      "support": {
+        "guide": [
+          "Cộng hàng đơn vị trước; đủ 10 thì viết đơn vị, nhớ 1.",
+          "Cộng hàng chục rồi thêm số 1 đã nhớ."
+        ],
+        "hint": "37 + 36: 7 + 6 = 13, viết 3 nhớ 1; 3 + 3 = 6, thêm 1 là 7.",
+        "answer": {
+          "text": "17 + 24 = 41; 37 + 36 = 73; 42 + 48 = 90; 59 + 25 = 84; Đặt tính rồi tính.; 23 + 67 = 90; 46 + 18 = 64; 59 + 21 = 80; 64 + 19 = 83",
+          "explanation": "17 + 24 = 41, 37 + 36 = 73, 42 + 48 = 90, 59 + 25 = 84, 23 + 67 = 90, 46 + 18 = 64, 59 + 21 = 80, 64 + 19 = 83."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Tám toa đầy ắp hàng, đầu tàu kêu tu tu sốt ruột!",
+          "Không rơi số nhớ nào, Khỉ Lanh nhảy cẫng lên.",
+          "Cộng hai chữ số với hai chữ số mà nhẹ tênh!"
+        ],
+        "wrong": [
+          "Có một toa quên số 1 nhớ ở hàng chục rồi.",
+          "Hàng đơn vị cộng đủ 10 thì viết 0 và nhớ 1 nhé.",
+          "Thử tính lại 64 + 19 cẩn thận từng hàng."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o41",
+          "b2": "o73",
+          "b3": "o90",
+          "b4": "o84",
+          "b5": "o90",
+          "b6": "o64",
+          "b7": "o80",
+          "b8": "o83"
+        }
+      }
+    },
+    {
+      "id": "con-tau-ghi-dung",
+      "title": "Toa nào ghi phép tính đúng?",
+      "target": "khi-lanh",
+      "kind": "challenge",
+      "mechanic": "quiz",
+      "prompt": "Khỉ Lanh viết vội lên ba con tàu, có tàu ghi sai. Con tàu nào ghi phép tính đúng?",
+      "choices": [
+        {
+          "id": "65-5-71",
+          "text": "65 + 5 = 71"
+        },
+        {
+          "id": "23-18-41",
+          "text": "23 + 18 = 41"
+        },
+        {
+          "id": "5-41-47",
+          "text": "5 + 41 = 47"
+        }
+      ],
+      "skill": "phep-cong",
+      "curriculumRef": [
+        "toan2-t1-b20-luyen-tap-2-a"
+      ],
+      "support": {
+        "guide": [
+          "Tự tính lại phép tính trên từng con tàu.",
+          "So kết quả của em với số ghi trên tàu."
+        ],
+        "hint": "65 + 5 = 70, còn 5 + 41 = 46.",
+        "answer": {
+          "text": "23 + 18 = 41",
+          "explanation": "Chỉ có 23 + 18 = 41 đúng; 65 + 5 = 70 chứ không phải 71; 5 + 41 = 46 chứ không phải 47."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Tàu xanh lá chạy trước, phép tính chuẩn không cần chỉnh!",
+          "Khỉ Lanh gãi đầu: thầy viết vội quá, cảm ơn cháu.",
+          "Bắt được hai con tàu ghi sai, cháu tinh mắt ghê."
+        ],
+        "wrong": [
+          "Tính lại từng tàu đi, có tàu lệch đúng 1 đơn vị.",
+          "65 + 5 tròn chục đấy, có phải 71 không?",
+          "Thử tính 23 + 18 xem có ra 41 không."
+        ]
+      },
+      "answer": {
+        "choice": "23-18-41"
+      }
+    },
+    {
+      "id": "may-bay-cho-hang",
+      "title": "Máy bay nhỏ chở hàng",
+      "target": "khi-lanh",
+      "kind": "challenge",
+      "mechanic": "classify",
+      "prompt": "Ba chiếc máy bay không người lái vù vù bay tới, mỗi chiếc mang một phép tính. Tính rồi tìm thùng hoặc bao hàng thích hợp.",
+      "groups": [
+        {
+          "id": "nhom-thung-60-kg",
+          "label": "Thùng 60 kg"
+        },
+        {
+          "id": "nhom-bao-56-kg",
+          "label": "Bao 56 kg"
+        },
+        {
+          "id": "nhom-thung-50-kg",
+          "label": "Thùng 50 kg"
+        },
+        {
+          "id": "nhom-bao-93-kg",
+          "label": "Bao 93 kg"
+        }
+      ],
+      "items": [
+        {
+          "id": "may-bay-76-kg-17-kg",
+          "label": "76 kg + 17 kg"
+        },
+        {
+          "id": "may-bay-21-kg-39-kg",
+          "label": "21 kg + 39 kg"
+        },
+        {
+          "id": "may-bay-28-kg-28-kg",
+          "label": "28 kg + 28 kg"
+        }
+      ],
+      "skill": "phep-cong",
+      "curriculumRef": [
+        "toan2-t1-b20-luyen-tap-3-a",
+        "toan2-t1-b20-luyen-tap-3-b",
+        "toan2-t1-b20-luyen-tap-3-c"
+      ],
+      "support": {
+        "guide": [
+          "Tính phép cộng của mỗi máy bay trước.",
+          "Thùng 50 kg là của máy bay mẫu 15 kg + 35 kg."
+        ],
+        "hint": "28 kg + 28 kg: 8 + 8 = 16, viết 6 nhớ 1.",
+        "answer": {
+          "text": "76 kg + 17 kg – Bao 93 kg; 21 kg + 39 kg – Thùng 60 kg; 28 kg + 28 kg – Bao 56 kg",
+          "explanation": "76 kg + 17 kg = 93 kg, 21 kg + 39 kg = 60 kg, 28 kg + 28 kg = 56 kg."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Vù vù! Ba máy bay gắp đúng hàng, bay về ga tàu!",
+          "Cộng ki-lô-gam có nhớ mà không trượt phát nào.",
+          "Mèo Mun chụp ảnh lưu niệm đội máy bay chở hàng."
+        ],
+        "wrong": [
+          "Có một máy bay đang định gắp nhầm bao hàng.",
+          "Thùng 50 kg là của máy bay mẫu rồi nhé.",
+          "Tính lại 76 kg + 17 kg, nhớ số 1 sang hàng chục."
+        ]
+      },
+      "answer": {
+        "assignment": {
+          "may-bay-76-kg-17-kg": "nhom-bao-93-kg",
+          "may-bay-21-kg-39-kg": "nhom-thung-60-kg",
+          "may-bay-28-kg-28-kg": "nhom-bao-56-kg"
+        }
+      }
+    },
+    {
+      "id": "buu-thiep-cua-mai",
+      "title": "Bưu thiếp cành hoa đào",
+      "target": "khi-lanh",
+      "kind": "riddle",
+      "question": "Toa cuối chở bưu thiếp gửi khắp trường. Ngày thứ nhất, Mai làm được 29 tấm bưu thiếp. Ngày thứ hai, Mai làm được 31 tấm bưu thiếp. Hỏi cả hai ngày Mai làm được bao nhiêu tấm bưu thiếp?",
+      "skill": "bai-toan-loi-van",
+      "curriculumRef": [
+        "toan2-t1-b20-luyen-tap-4"
+      ],
+      "support": {
+        "guide": [
+          "Cả hai ngày thì cộng lại.",
+          "29 + 31: 9 + 1 = 10, viết 0 nhớ 1."
+        ],
+        "hint": "2 + 3 = 5, thêm 1 nhớ là 6 chục.",
+        "answer": {
+          "text": "60 tấm bưu thiếp",
+          "explanation": "Cả hai ngày Mai làm được 29 + 31 = 60 tấm bưu thiếp."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Sáu mươi tấm bưu thiếp hồng rực lên toa!",
+          "Tròn sáu chục, đẹp như cành hoa đào trên thiếp.",
+          "Khỉ Lanh gửi một tấm cho cháu, ghi \"Thợ cộng siêu nhanh\"."
+        ],
+        "wrong": [
+          "Cả hai ngày thì gộp số bưu thiếp lại nhé.",
+          "9 + 1 đủ mười, nhớ 1 sang hàng chục.",
+          "Kết quả là số tròn chục đấy."
+        ]
+      },
+      "answer": {
+        "value": 60
+      }
+    },
+    {
+      "id": "meo-mun-goi-tau-ngam",
+      "title": "Mèo Mun gọi tàu ngầm",
+      "goTo": "Sang bể bơi đồ chơi, Mèo Mun đang cầm cần điều khiển tàu ngầm",
+      "kind": "dialogue",
+      "target": "meo-mun",
+      "lines": [
+        {
+          "speaker": "Mèo Mun",
+          "text": "Meo! Ở bể bơi đồ chơi có bốn chiếc tàu ngầm chở hàng, nhưng tớ sợ nước nên chẳng dám thò chân xuống."
+        },
+        {
+          "speaker": "Khỉ Lanh",
+          "text": "Không cần thò chân! Cứ tính phép cộng trên mỗi tàu là biết tàu nào nổi lên trước. {name} muốn tính hết rồi xếp, hay so từng đôi?"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tính hết rồi mới xếp",
+          "reply": "Mèo Mun: Chắc ăn như cá nằm trên thớt… à không, cá bơi trong bể!"
+        },
+        {
+          "text": "So từng đôi tàu một",
+          "reply": "Khỉ Lanh: Cũng được, miễn là cuối cùng xếp đúng."
+        }
+      ]
+    },
+    {
+      "id": "doi-cho-so-hang",
+      "title": "Đổi chỗ hai số hạng",
+      "target": "meo-mun",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Mèo Mun viết hai cặp phép tính giống giống nhau, nghi có phép thuật. Đặt tính rồi tính.",
+      "template": "47 + 43 = {{b1}}\n43 + 47 = {{b2}}\n65 + 28 = {{b3}}\n28 + 65 = {{b4}}",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o89",
+              "text": "89"
+            },
+            {
+              "id": "o90",
+              "text": "90"
+            },
+            {
+              "id": "o100",
+              "text": "100"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o80",
+              "text": "80"
+            },
+            {
+              "id": "o90",
+              "text": "90"
+            },
+            {
+              "id": "o92",
+              "text": "92"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o91",
+              "text": "91"
+            },
+            {
+              "id": "o93",
+              "text": "93"
+            },
+            {
+              "id": "o95",
+              "text": "95"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "o39",
+              "text": "39"
+            },
+            {
+              "id": "o92",
+              "text": "92"
+            },
+            {
+              "id": "o93",
+              "text": "93"
+            }
+          ]
+        }
+      ],
+      "skill": "thanh-phan-phep-tinh",
+      "curriculumRef": [
+        "toan2-t1-b20-luyen-tap-2-1-a",
+        "toan2-t1-b20-luyen-tap-2-1-b",
+        "toan2-t1-b20-luyen-tap-2-1-c",
+        "toan2-t1-b20-luyen-tap-2-1-d"
+      ],
+      "support": {
+        "guide": [
+          "Tính từng phép như bình thường.",
+          "So kết quả của hai phép trong mỗi cặp."
+        ],
+        "hint": "Tính xong cặp đầu rồi nhìn cặp sau: hai số vẫn thế, chỉ đổi chỗ cho nhau.",
+        "answer": {
+          "text": "47 + 43 = 90; 43 + 47 = 90; 65 + 28 = 93; 28 + 65 = 93",
+          "explanation": "47 + 43 = 43 + 47 = 90; 65 + 28 = 28 + 65 = 93. Đổi chỗ các số hạng thì tổng không thay đổi."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Phép thuật lộ diện: đổi chỗ số hạng, tổng vẫn y nguyên!",
+          "Hai cặp phép tính, kết quả giống nhau như hai giọt nước.",
+          "Mèo Mun kêu meo meo khoái chí: hóa ra không phải ma thuật."
+        ],
+        "wrong": [
+          "Tính kĩ cả hai phép rồi so kết quả nhé.",
+          "Hai phép đổi chỗ số hạng thì tổng có đổi không?",
+          "65 + 28: 5 + 8 = 13, nhớ 1 sang hàng chục."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o90",
+          "b2": "o90",
+          "b3": "o93",
+          "b4": "o93"
+        }
+      }
+    },
+    {
+      "id": "tau-ngam-noi-len",
+      "title": "Tàu ngầm nào nổi lên trước?",
+      "target": "meo-mun",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "prompt": "Tàu có kết quả bé nhất nổi lên đầu tiên. Nêu tên các tàu ngầm theo thứ tự kết quả của phép tính từ bé đến lớn.",
+      "items": [
+        {
+          "id": "tau-ngam-tau-ngam-a-15-82",
+          "label": "Tàu ngầm A: 15 + 82"
+        },
+        {
+          "id": "tau-ngam-tau-ngam-b-40-50",
+          "label": "Tàu ngầm B: 40 + 50"
+        },
+        {
+          "id": "tau-ngam-tau-ngam-c-6-90",
+          "label": "Tàu ngầm C: 6 + 90"
+        },
+        {
+          "id": "tau-ngam-tau-ngam-d-34-57",
+          "label": "Tàu ngầm D: 34 + 57"
+        }
+      ],
+      "skill": "so-sanh-so",
+      "curriculumRef": [
+        "toan2-t1-b20-luyen-tap-2-2"
+      ],
+      "support": {
+        "guide": [
+          "Tính kết quả trên từng tàu ngầm.",
+          "Xếp từ kết quả bé nhất đến lớn nhất."
+        ],
+        "hint": "Tàu B: 90; tàu D: 91.",
+        "answer": {
+          "text": "B, D, C, A",
+          "explanation": "A: 15 + 82 = 97; B: 40 + 50 = 90; C: 6 + 90 = 96; D: 34 + 57 = 91. Từ bé đến lớn: B, D, C, A."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bốn tàu ngầm lần lượt nổi lên, bọt nước lăn tăn!",
+          "Tàu B dẫn đầu, tàu A về cuối, cháu xếp chuẩn.",
+          "Mèo Mun vỗ tay nhưng vẫn lùi xa mép nước."
+        ],
+        "wrong": [
+          "Tính hết bốn tàu rồi hãy xếp nhé.",
+          "Tàu D là 91, đứng ngay sau tàu B đấy.",
+          "Tàu có kết quả lớn nhất phải nổi lên sau cùng."
+        ]
+      },
+      "answer": {
+        "order": [
+          "tau-ngam-tau-ngam-b-40-50",
+          "tau-ngam-tau-ngam-d-34-57",
+          "tau-ngam-tau-ngam-c-6-90",
+          "tau-ngam-tau-ngam-a-15-82"
+        ]
+      }
+    },
+    {
+      "id": "duong-ngan-cho-kien-vang",
+      "title": "Đường tắt cho kiến vàng",
+      "target": "meo-mun",
+      "kind": "challenge",
+      "mechanic": "quiz",
+      "prompt": "Ba con đường dẫn tới hạt gạo: đường màu đỏ gồm 48 cm và 32 cm; đường màu xanh gồm 34 cm và 34 cm; đường màu đen gồm 32 cm và 48 cm. Chọn câu trả lời đúng. Con đường nào ngắn nhất để kiến vàng bò đến hạt gạo? A. Đường màu đỏ B. Đường màu xanh C. Đường màu đen",
+      "choices": [
+        {
+          "id": "a-duong-mau-do",
+          "text": "A. Đường màu đỏ"
+        },
+        {
+          "id": "b-duong-mau-xanh",
+          "text": "B. Đường màu xanh"
+        },
+        {
+          "id": "c-duong-mau-den",
+          "text": "C. Đường màu đen"
+        }
+      ],
+      "skill": "so-sanh-so",
+      "curriculumRef": [
+        "toan2-t1-b20-luyen-tap-2-3"
+      ],
+      "support": {
+        "guide": [
+          "Cộng độ dài hai đoạn của mỗi đường.",
+          "Đường có tổng bé nhất là ngắn nhất."
+        ],
+        "hint": "Đường đỏ và đường đen đều dài 80 cm.",
+        "answer": {
+          "text": "B. Đường màu xanh",
+          "explanation": "Đường đỏ: 48 + 32 = 80 cm; đường xanh: 34 + 34 = 68 cm; đường đen: 32 + 48 = 80 cm. Đường xanh ngắn nhất."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Kiến vàng bò đường xanh, tới hạt gạo trước tiên!",
+          "Sáu mươi tám xăng-ti-mét, ngắn nhất rồi đó.",
+          "Cháu không bị lừa bởi hai đường dài bằng nhau."
+        ],
+        "wrong": [
+          "Cộng độ dài từng đường rồi so nhé.",
+          "Đường đỏ với đường đen dài bằng nhau đấy.",
+          "34 + 34 bằng bao nhiêu? So với 80 xem."
+        ]
+      },
+      "answer": {
+        "choice": "b-duong-mau-xanh"
+      }
+    },
+    {
+      "id": "kien-do-qua-bui-co",
+      "title": "Kiến đỏ đi tìm kẹo",
+      "target": "meo-mun",
+      "kind": "riddle",
+      "question": "Kiến đỏ cũng muốn lên tàu, nhưng phải bò qua bụi cỏ: một đoạn 37 cm rồi một đoạn 54 cm. Số ? Kiến đỏ phải bò qua bụi cỏ để đến cái kẹo. Kiến đỏ phải bò ? cm.",
+      "skill": "phep-cong",
+      "curriculumRef": [
+        "toan2-t1-b20-luyen-tap-5"
+      ],
+      "support": {
+        "guide": [
+          "Cộng độ dài hai đoạn đường.",
+          "7 + 4 = 11, viết 1 nhớ 1."
+        ],
+        "hint": "37 + 54 = ? cm",
+        "answer": {
+          "text": "91 cm",
+          "explanation": "Kiến đỏ phải bò 37 cm + 54 cm = 91 cm."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Kiến đỏ bò tới kẹo, rủ cả đàn lên toa ăn chung!",
+          "Chín mươi mốt xăng-ti-mét, dài ơi là dài!",
+          "Mèo Mun thì thầm: tớ thà nhảy một phát là tới."
+        ],
+        "wrong": [
+          "Con đường gồm hai đoạn, cộng cả hai nhé.",
+          "Nhớ số 1 khi cộng hàng chục.",
+          "Kết quả phải dài hơn đoạn 54 cm chứ."
+        ]
+      },
+      "answer": {
+        "value": 91
+      }
+    },
+    {
+      "id": "ba-so-cong-lien",
+      "title": "Ba số cộng liền mạch",
+      "goTo": "Quay về đường ray tàu, Khỉ Lanh đang đếm kiện hàng trên ba toa cuối",
+      "target": "khi-lanh",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Mỗi toa cuối chở ba loại hàng, Khỉ Lanh cộng một lèo. Tính.",
+      "template": "23 + 27 + 1 = {{b1}}\n45 + 45 + 2 = {{b2}}\n58 + 12 + 3 = {{b3}}\n69 + 11 + 4 = {{b4}}",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o50",
+              "text": "50"
+            },
+            {
+              "id": "o51",
+              "text": "51"
+            },
+            {
+              "id": "o61",
+              "text": "61"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o82",
+              "text": "82"
+            },
+            {
+              "id": "o92",
+              "text": "92"
+            },
+            {
+              "id": "o102",
+              "text": "102"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o63",
+              "text": "63"
+            },
+            {
+              "id": "o73",
+              "text": "73"
+            },
+            {
+              "id": "o75",
+              "text": "75"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "o74",
+              "text": "74"
+            },
+            {
+              "id": "o84",
+              "text": "84"
+            },
+            {
+              "id": "o86",
+              "text": "86"
+            }
+          ]
+        }
+      ],
+      "skill": "phep-cong",
+      "curriculumRef": [
+        "toan2-t1-b20-luyen-tap-2-4-a",
+        "toan2-t1-b20-luyen-tap-2-4-b",
+        "toan2-t1-b20-luyen-tap-2-4-c",
+        "toan2-t1-b20-luyen-tap-2-4-d"
+      ],
+      "support": {
+        "guide": [
+          "Cộng hai số đầu trước, được số tròn chục.",
+          "Rồi cộng thêm số cuối."
+        ],
+        "hint": "23 + 27 = 50, 45 + 45 = 90.",
+        "answer": {
+          "text": "23 + 27 + 1 = 51; 45 + 45 + 2 = 92; 58 + 12 + 3 = 73; 69 + 11 + 4 = 84",
+          "explanation": "23 + 27 + 1 = 51, 45 + 45 + 2 = 92, 58 + 12 + 3 = 73, 69 + 11 + 4 = 84."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Tròn chục rồi cộng thêm, Khỉ Lanh tấm tắc khen mẹo hay!",
+          "Bốn toa cuối đã đủ hàng, chuẩn bị lăn bánh.",
+          "Cộng ba số mà nhanh như khỉ đu cành."
+        ],
+        "wrong": [
+          "Hai số đầu cộng ra số tròn chục, thử lại xem.",
+          "Đừng quên cộng thêm số cuối cùng nhé.",
+          "58 + 12: 8 + 2 = 10, nhớ 1 sang hàng chục."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o51",
+          "b2": "o92",
+          "b3": "o73",
+          "b4": "o84"
+        }
+      }
+    },
+    {
+      "id": "dat-tinh-toa-hang",
+      "title": "Bảng đặt tính của ga tàu",
+      "target": "khi-lanh",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Trên bảng ga, Khỉ Lanh dán hai lượt phép tính viết dọc. Đặt tính rồi tính.",
+      "template": "36 + 36 = {{b1}}\n73 + 17 = {{b2}}\n28 + 53 = {{b3}}\n25 + 35 = {{b4}}\n38 + 52 = {{b5}}\n15 + 15 = {{b6}}\n67 + 17 = {{b7}}\n72 + 19 = {{b8}}",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o70",
+              "text": "70"
+            },
+            {
+              "id": "o72",
+              "text": "72"
+            },
+            {
+              "id": "o74",
+              "text": "74"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o88",
+              "text": "88"
+            },
+            {
+              "id": "o89",
+              "text": "89"
+            },
+            {
+              "id": "o90",
+              "text": "90"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o71",
+              "text": "71"
+            },
+            {
+              "id": "o81",
+              "text": "81"
+            },
+            {
+              "id": "o82",
+              "text": "82"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "o59",
+              "text": "59"
+            },
+            {
+              "id": "o60",
+              "text": "60"
+            },
+            {
+              "id": "o62",
+              "text": "62"
+            }
+          ]
+        },
+        {
+          "id": "b5",
+          "options": [
+            {
+              "id": "o80",
+              "text": "80"
+            },
+            {
+              "id": "o90",
+              "text": "90"
+            },
+            {
+              "id": "o91",
+              "text": "91"
+            }
+          ]
+        },
+        {
+          "id": "b6",
+          "options": [
+            {
+              "id": "o3",
+              "text": "3"
+            },
+            {
+              "id": "o30",
+              "text": "30"
+            },
+            {
+              "id": "o40",
+              "text": "40"
+            }
+          ]
+        },
+        {
+          "id": "b7",
+          "options": [
+            {
+              "id": "o48",
+              "text": "48"
+            },
+            {
+              "id": "o84",
+              "text": "84"
+            },
+            {
+              "id": "o86",
+              "text": "86"
+            }
+          ]
+        },
+        {
+          "id": "b8",
+          "options": [
+            {
+              "id": "o89",
+              "text": "89"
+            },
+            {
+              "id": "o91",
+              "text": "91"
+            },
+            {
+              "id": "o93",
+              "text": "93"
+            }
+          ]
+        }
+      ],
+      "skill": "phep-cong",
+      "curriculumRef": [
+        "toan2-t1-b20-luyen-tap-1-a",
+        "toan2-t1-b20-luyen-tap-1-b",
+        "toan2-t1-b20-luyen-tap-1-c",
+        "toan2-t1-b20-luyen-tap-1-d",
+        "toan2-t1-b20-luyen-tap-3-1-a",
+        "toan2-t1-b20-luyen-tap-3-1-b",
+        "toan2-t1-b20-luyen-tap-3-1-c",
+        "toan2-t1-b20-luyen-tap-3-1-d"
+      ],
+      "support": {
+        "guide": [
+          "Viết hai số thẳng cột: chục dưới chục, đơn vị dưới đơn vị.",
+          "Cộng từ hàng đơn vị, có nhớ thì thêm 1 vào hàng chục."
+        ],
+        "hint": "72 + 19: 2 + 9 = 11, viết 1 nhớ 1; 7 + 1 = 8, thêm 1 là 9.",
+        "answer": {
+          "text": "36 + 36 = 72; 73 + 17 = 90; 28 + 53 = 81; 25 + 35 = 60; 38 + 52 = 90; 15 + 15 = 30; 67 + 17 = 84; 72 + 19 = 91",
+          "explanation": "36 + 36 = 72, 73 + 17 = 90, 28 + 53 = 81, 25 + 35 = 60, 38 + 52 = 90, 15 + 15 = 30, 67 + 17 = 84, 72 + 19 = 91."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bảng ga sạch sẽ, tám phép tính đều đúng!",
+          "Cột thẳng, nhớ đủ, đoàn tàu sẵn sàng khởi hành.",
+          "Khỉ Lanh thổi còi: toét toét, cháu xuất sắc!"
+        ],
+        "wrong": [
+          "Một phép tính quên cộng số nhớ rồi.",
+          "Đơn vị cộng ra 10 thì viết 0, nhớ 1 nhé.",
+          "Thử tính lại 28 + 53 từng hàng một."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o72",
+          "b2": "o90",
+          "b3": "o81",
+          "b4": "o60",
+          "b5": "o90",
+          "b6": "o30",
+          "b7": "o84",
+          "b8": "o91"
+        }
+      }
+    },
+    {
+      "id": "khinh-khi-cau-noi-so",
+      "title": "Khinh khí cầu trên tia số",
+      "target": "khi-lanh",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "prompt": "Trên trời xưởng bay lơ lửng ba khinh khí cầu, mỗi chiếc buộc dây vào một số trên tia số 64, 67, 70, …, 100. Đ, S ? Chọn những khinh khí cầu nối đúng (Đ); chiếc không chọn là nối sai (S).",
+      "choices": [
+        {
+          "id": "khinh-khi-cau-58-19-noi-voi-so-76",
+          "text": "Khinh khí cầu 58 + 19 nối với số 76"
+        },
+        {
+          "id": "khinh-khi-cau-67-14-noi-voi-so-85",
+          "text": "Khinh khí cầu 67 + 14 nối với số 85"
+        },
+        {
+          "id": "khinh-khi-cau-49-48-noi-voi-so-97",
+          "text": "Khinh khí cầu 49 + 48 nối với số 97"
+        }
+      ],
+      "skill": "phep-cong",
+      "curriculumRef": [
+        "toan2-t1-b20-luyen-tap-3-2-a",
+        "toan2-t1-b20-luyen-tap-3-2-b",
+        "toan2-t1-b20-luyen-tap-3-2-c"
+      ],
+      "support": {
+        "guide": [
+          "Tính phép cộng trên khinh khí cầu.",
+          "So kết quả với số mà dây đang nối tới."
+        ],
+        "hint": "58 + 19 = 77, 67 + 14 = 81.",
+        "answer": {
+          "text": "Đ: 49 + 48 nối với 97; S: 58 + 19 nối với 76, 67 + 14 nối với 85",
+          "explanation": "58 + 19 = 77 nên nối với 76 là sai; 67 + 14 = 81 nên nối với 85 là sai; 49 + 48 = 97 nên nối với 97 là đúng."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Chỉ một khinh khí cầu buộc đúng dây, cháu tìm ra liền!",
+          "Hai chiếc buộc nhầm đã bị cắt dây, bay về chỗ đúng.",
+          "Khỉ Lanh đu lên dây kiểm tra: chuẩn không cần chỉnh!"
+        ],
+        "wrong": [
+          "Tính lại từng khinh khí cầu, có chiếc lệch 1 đơn vị.",
+          "67 + 14 có ra 85 không nhỉ?",
+          "Chọn những chiếc nối đúng thôi nhé."
+        ]
+      },
+      "answer": {
+        "choices": [
+          "khinh-khi-cau-49-48-noi-voi-so-97"
+        ]
+      }
+    },
+    {
+      "id": "dan-cuu-qua-cau",
+      "title": "Đàn cừu đi qua hai cây cầu",
+      "target": "khi-lanh",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Đàn cừu đồ chơi lên tàu theo từng nhóm: lúc đầu có 45 con, mỗi cây cầu lại có thêm cừu nhập đàn. Số ?",
+      "template": "a) 45 → + 27 → {{b1}} → + 19 → {{b2}}\nb) 45 → + 19 → {{b3}} → + 27 → {{b4}}",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o70",
+              "text": "70"
+            },
+            {
+              "id": "o72",
+              "text": "72"
+            },
+            {
+              "id": "o73",
+              "text": "73"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o90",
+              "text": "90"
+            },
+            {
+              "id": "o91",
+              "text": "91"
+            },
+            {
+              "id": "o92",
+              "text": "92"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o54",
+              "text": "54"
+            },
+            {
+              "id": "o63",
+              "text": "63"
+            },
+            {
+              "id": "o64",
+              "text": "64"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "o91",
+              "text": "91"
+            },
+            {
+              "id": "o93",
+              "text": "93"
+            },
+            {
+              "id": "o101",
+              "text": "101"
+            }
+          ]
+        }
+      ],
+      "skill": "phep-cong",
+      "curriculumRef": [
+        "toan2-t1-b20-luyen-tap-3-3-a",
+        "toan2-t1-b20-luyen-tap-3-3-b"
+      ],
+      "support": {
+        "guide": [
+          "Làm lần lượt theo mũi tên.",
+          "Kết quả bước trước là số bắt đầu của bước sau."
+        ],
+        "hint": "45 + 27 = 72; 45 + 19 = 64.",
+        "answer": {
+          "text": "a) 45 → + 27 → 72 → + 19 → 91; b) 45 → + 19 → 64 → + 27 → 91",
+          "explanation": "a) 45 + 27 = 72, 72 + 19 = 91. b) 45 + 19 = 64, 64 + 27 = 91. Hai đường đều ra 91."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Be be! Hai nhóm cừu cùng về đích 91 con!",
+          "Đổi thứ tự cộng mà kết quả cuối vẫn như nhau, hay quá.",
+          "Cừu nào cũng lên tàu, không con nào lạc đàn."
+        ],
+        "wrong": [
+          "Kết quả ở ô đầu là số bắt đầu cho mũi tên tiếp theo.",
+          "45 + 27: 5 + 7 = 12, nhớ 1 nhé.",
+          "Hai cách đi cuối cùng có cùng số cừu đấy."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o72",
+          "b2": "o91",
+          "b3": "o64",
+          "b4": "o91"
+        }
+      }
+    },
+    {
+      "id": "bi-cua-nam",
+      "title": "Túi bi của Nam",
+      "target": "khi-lanh",
+      "kind": "riddle",
+      "question": "Trên toa khách có Nam, Mai và Rô-bốt ngồi chơi bi. Nam có 57 viên bi. Mai cho Nam thêm 15 viên bi. Hỏi lúc này Nam có bao nhiêu viên bi?",
+      "skill": "bai-toan-loi-van",
+      "curriculumRef": [
+        "toan2-t1-b20-luyen-tap-3-4"
+      ],
+      "support": {
+        "guide": [
+          "Cho thêm thì làm phép cộng.",
+          "57 + 15: 7 + 5 = 12, viết 2 nhớ 1."
+        ],
+        "hint": "5 + 1 = 6, thêm 1 nhớ là 7 chục.",
+        "answer": {
+          "text": "72 viên bi",
+          "explanation": "Lúc này Nam có 57 + 15 = 72 viên bi."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bảy mươi hai viên bi lăn lách cách trên toa!",
+          "Cho thêm là cộng, cháu không nhầm chút nào.",
+          "Rô-bốt nháy đèn: tính toán chính xác!"
+        ],
+        "wrong": [
+          "Mai cho thêm, vậy số bi của Nam tăng lên.",
+          "Nhớ số 1 khi cộng hàng chục nhé.",
+          "Thử cộng 57 với 15 lại từng hàng."
+        ]
+      },
+      "answer": {
+        "value": 72
+      }
+    },
+    {
+      "id": "que-tinh-dat-sai",
+      "title": "Trò que tính đặt sai",
+      "target": "khi-lanh",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Trò chơi cuối: Khỉ Lanh lén dời một que tính trên mỗi phép tính xếp bằng que, ai sửa đúng trước thì được lái đầu tàu! Mỗi hình có 1 que tính đặt sai vị trí. Em hãy đặt lại cho đúng. Biết rằng:",
+      "template": "a) Que tính ở kết quả đặt sai. 36 + 45 = 97 → sửa lại: 36 + 45 = {{b1}}\nb) Que tính ở số hạng thứ hai đặt sai. 74 + 16 = 84 → sửa lại: 74 + {{b2}} = 84",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o18",
+              "text": "18"
+            },
+            {
+              "id": "o81",
+              "text": "81"
+            },
+            {
+              "id": "o83",
+              "text": "83"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o8",
+              "text": "8"
+            },
+            {
+              "id": "o9",
+              "text": "9"
+            },
+            {
+              "id": "o10",
+              "text": "10"
+            }
+          ]
+        }
+      ],
+      "skill": "logic",
+      "curriculumRef": [
+        "toan2-t1-b20-hoat-dong-3-a",
+        "toan2-t1-b20-hoat-dong-3-b"
+      ],
+      "support": {
+        "guide": [
+          "Tính lại phép cộng để biết số đúng.",
+          "Dời một que: chữ số 7 thành 1, chữ số 6 thành 0, chữ số 9 thành 8."
+        ],
+        "hint": "36 + 45 = 81; 84 – 74 = 10.",
+        "answer": {
+          "text": "a) Que tính ở kết quả đặt sai. 36 + 45 = 97 → sửa lại: 36 + 45 = 81; b) Que tính ở số hạng thứ hai đặt sai. 74 + 16 = 84 → sửa lại: 74 + 10 = 84",
+          "explanation": "a) 36 + 45 = 81: lấy một que của số 7 đặt vào số 9, được 81. b) 74 + 10 = 84: dời một que của số 6 thành số 0."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Cháu thắng! Mời bác lái tàu {name} lên buồng lái!",
+          "Hai que tính về đúng chỗ, phép tính hết \"lệch pha\".",
+          "Khỉ Lanh lộn ba vòng chúc mừng nhà vô địch que tính."
+        ],
+        "wrong": [
+          "Tính lại 36 + 45 trước, rồi nghĩ cách dời que.",
+          "Số hạng thứ hai phải là số cộng với 74 ra 84.",
+          "Chỉ được dời đúng một que thôi nhé."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o81",
+          "b2": "o10"
+        }
+      }
+    },
+    {
+      "id": "coi-tau-truong-ga",
+      "title": "Còi trưởng ga",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Đoàn tàu đồ chơi chạy một vòng quanh Xưởng đồ chơi, kéo theo cả đàn kiến, đàn cừu và Mèo Mun. Khỉ Lanh trao cho {name} chiếc còi \"Trưởng ga nhớ một\" kêu toét toét."
+    },
+    {
+      "id": "hop-qua-bi-mat",
+      "title": "Hộp quà khóa bằng phép tính",
+      "kind": "unlock",
+      "trigger": "auto",
+      "text": "Cáo Lém thò đầu ra từ quầy trao giải: \"Tớ làm xong một hộp quà bí mật, nhưng ổ khóa chỉ mở khi giải đúng phép tính. Ai dám thử nào?\""
+    }
+  ],
+  "reward": {
+    "xp": 90,
+    "coin": 15,
+    "skillXp": {
+      "phep-cong": 2,
+      "logic": 1
+    }
+  }
+}

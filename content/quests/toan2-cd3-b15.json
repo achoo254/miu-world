@@ -1,0 +1,1114 @@
+{
+  "id": "toan2-cd3-b15",
+  "region": "truong-hoc",
+  "chapter": 3,
+  "title": "Chiếc cân đĩa lệch của Pin",
+  "status": "draft",
+  "lesson": "toan2-t1-b15",
+  "summary": "Chiếc cân đĩa ở quầy căng tin bị lệch, Chim Cánh Cụt Pin kĩ tính không chịu bán hàng khi chưa cân lại; {name} tìm quả cân, so nặng nhẹ, đọc ki-lô-gam và giúp Pin cân từng túi hàng, còn Heo Ủn thì cứ lăm le ăn vụng quả để cân.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "Chim Cánh Cụt Pin, Heo Ủn",
+    "where": "Căng tin: quầy cân hàng",
+    "goal": "Cân lại từng túi hàng cho đúng trước giờ ăn trưa",
+    "play": "Tìm quả cân, chọn câu đúng, điền con nào nặng hơn, đọc cân nặng, tính với ki-lô-gam, đố bài toán thóc và rô-bốt",
+    "learn": "Toán 2 Bài 15: nặng hơn, nhẹ hơn; ki-lô-gam; cộng, trừ với đơn vị kg",
+    "reward": "80 XP, 15 xu, Khối lượng +2, Phép cộng +1",
+    "unlock": "Bài 16 \"Lít\""
+  },
+  "phases": {
+    "hook": "can-dia-nghieng",
+    "explore": "tim-qua-can",
+    "learn": "nang-hon-nhe-hon",
+    "challenge": "gau-va-ba-chu-cho",
+    "decision": "heo-un-mang-hop",
+    "finale": "ba-chu-ro-bot-di-can",
+    "reward": "tap-de-can-vang",
+    "unlock": "be-ca-can-nuoc"
+  },
+  "texts": {},
+  "places": {
+    "chim-canh-cut-pin": "quầy cân hàng",
+    "tim-qua-can": "quầy cân hàng",
+    "heo-un": "quầy cân hàng"
+  },
+  "steps": [
+    {
+      "id": "can-dia-nghieng",
+      "title": "Cân đĩa nghiêng ngả",
+      "goTo": "Vào căng tin, tới quầy cân hàng nơi Chim Cánh Cụt Pin đang cau mày",
+      "kind": "dialogue",
+      "target": "chim-canh-cut-pin",
+      "lines": [
+        {
+          "speaker": "Cánh Cụt Pin",
+          "text": "Dừng lại! Hôm nay quầy cân hàng chưa bán gì cả. Cái cân đĩa này nghiêng như con thuyền gặp sóng!"
+        },
+        {
+          "speaker": "Heo Ủn",
+          "text": "Ủn ỉn… tớ chỉ đặt lên đó một quả bưởi, à không, ba quả bưởi, thì nó nghiêng thôi mà."
+        },
+        {
+          "speaker": "Cánh Cụt Pin",
+          "text": "Ba quả bưởi mà dám gọi là \"chỉ\"! {name}, cháu giúp chú cân lại từng túi hàng nhé. Chú kĩ tính lắm đấy."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu giúp chú cân ngay ạ!",
+          "reply": "Pin chỉnh lại cặp kính: Tốt. Trước hết phải có quả cân, mà quả cân thì… lăn đi đâu mất rồi."
+        },
+        {
+          "text": "Heo Ủn đừng ăn bưởi nữa nhé!",
+          "reply": "Heo Ủn giấu vội quả bưởi ra sau lưng: Ủn… tớ chỉ ngửi thôi mà."
+        }
+      ]
+    },
+    {
+      "id": "tim-qua-can",
+      "title": "Ba quả cân lăn mất",
+      "goTo": "Tìm ba quả cân lăn quanh quầy cân hàng",
+      "kind": "search",
+      "targets": [
+        "toan2-cd3-qua-can-1kg",
+        "toan2-cd3-qua-can-2kg",
+        "toan2-cd3-qua-can-5kg"
+      ]
+    },
+    {
+      "id": "nang-hon-nhe-hon",
+      "title": "Đĩa nào thấp, vật đó nặng",
+      "kind": "dialogue",
+      "target": "chim-canh-cut-pin",
+      "lines": [
+        {
+          "speaker": "Cánh Cụt Pin",
+          "text": "Đủ quả cân rồi. Nghe kĩ này: trên cân đĩa, bên nào nặng hơn thì đĩa bên đó tụt xuống thấp hơn."
+        },
+        {
+          "speaker": "Heo Ủn",
+          "text": "Giống tớ ngồi bập bênh với Khỉ Lanh, tớ ngồi xuống là Khỉ Lanh bay vèo lên trời!"
+        },
+        {
+          "speaker": "Cánh Cụt Pin",
+          "text": "Hai đĩa ngang bằng thì hai bên nặng bằng nhau. Còn đơn vị đo nặng nhẹ là ki-lô-gam, viết tắt là kg. Quả cân này nặng đúng 1 kg."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu nhớ rồi: đĩa thấp là vật nặng hơn!",
+          "reply": "Pin gật gù: Chính xác. Giờ thì thử mắt cháu xem nào."
+        }
+      ]
+    },
+    {
+      "id": "gau-va-ba-chu-cho",
+      "title": "Gấu đọ cân với ba chú chó",
+      "target": "chim-canh-cut-pin",
+      "kind": "challenge",
+      "mechanic": "quiz",
+      "prompt": "Pin bày ra bức tranh vui: một bên đĩa có 3 con chó, bên kia có con gấu; đĩa bên con gấu tụt xuống thấp hơn. Quan sát tranh rồi chọn câu đúng.",
+      "choices": [
+        {
+          "id": "a-con-gau-nang-hon-3-con-cho",
+          "text": "A. Con gấu nặng hơn 3 con chó."
+        },
+        {
+          "id": "b-con-gau-nhe-hon-3-con-cho",
+          "text": "B. Con gấu nhẹ hơn 3 con chó."
+        },
+        {
+          "id": "c-con-gau-nang-bang-3-con-cho",
+          "text": "C. Con gấu nặng bằng 3 con chó."
+        }
+      ],
+      "skill": "khoi-luong",
+      "curriculumRef": [
+        "toan2-t1-b15-hoat-dong-1"
+      ],
+      "support": {
+        "guide": [
+          "Đĩa nào thấp hơn thì vật trên đĩa đó nặng hơn.",
+          "Xem đĩa bên con gấu nằm cao hay thấp."
+        ],
+        "hint": "Đĩa bên con gấu tụt xuống thấp hơn đĩa ba con chó.",
+        "answer": {
+          "text": "A. Con gấu nặng hơn 3 con chó.",
+          "explanation": "Đĩa của con gấu thấp hơn nên con gấu nặng hơn 3 con chó."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Gấu nặng quá, ba chú chó bị nhấc bổng lên luôn!",
+          "Pin đẩy kính: Mắt cháu tinh như mắt chim cánh cụt.",
+          "Đúng rồi, đĩa thấp là phần thắng của bác gấu."
+        ],
+        "wrong": [
+          "Nhìn lại xem đĩa bên nào đang tụt xuống thấp hơn.",
+          "Hai đĩa đâu có ngang nhau, nên không nặng bằng được.",
+          "Đĩa bên chó đang ở trên cao, nghĩa là bên chó nhẹ hơn đấy."
+        ]
+      },
+      "answer": {
+        "choice": "a-con-gau-nang-hon-3-con-cho"
+      }
+    },
+    {
+      "id": "meo-cho-tho-len-can",
+      "title": "Mèo, chó, thỏ thay nhau lên cân",
+      "target": "chim-canh-cut-pin",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Cân thứ nhất: mèo ở đĩa thấp, thỏ ở đĩa cao. Cân thứ hai: mèo ở đĩa cao, chó ở đĩa thấp. Quan sát tranh rồi trả lời câu hỏi.",
+      "template": "a) Mèo và chó, con nào nặng hơn? {{b1}}\nb) Mèo và thỏ, con nào nặng hơn? {{b2}}\nc) Mèo, chó và thỏ, con nào nặng nhất, con nào nhẹ nhất? Nặng nhất: {{b3}}; nhẹ nhất: {{b4}}",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "cho",
+              "text": "chó"
+            },
+            {
+              "id": "meo",
+              "text": "mèo"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "meo",
+              "text": "mèo"
+            },
+            {
+              "id": "tho",
+              "text": "thỏ"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "cho",
+              "text": "chó"
+            },
+            {
+              "id": "meo",
+              "text": "mèo"
+            },
+            {
+              "id": "tho",
+              "text": "thỏ"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "cho",
+              "text": "chó"
+            },
+            {
+              "id": "meo",
+              "text": "mèo"
+            },
+            {
+              "id": "tho",
+              "text": "thỏ"
+            }
+          ]
+        }
+      ],
+      "skill": "khoi-luong",
+      "curriculumRef": [
+        "toan2-t1-b15-hoat-dong-2-a",
+        "toan2-t1-b15-hoat-dong-2-b",
+        "toan2-t1-b15-hoat-dong-2-c"
+      ],
+      "support": {
+        "guide": [
+          "Mỗi cân, con ở đĩa thấp hơn là con nặng hơn.",
+          "Chó nặng hơn mèo, mèo lại nặng hơn thỏ."
+        ],
+        "hint": "Mèo đứng giữa: nặng hơn thỏ nhưng nhẹ hơn chó.",
+        "answer": {
+          "text": "a) Mèo và chó, con nào nặng hơn? chó; b) Mèo và thỏ, con nào nặng hơn? mèo; c) Mèo, chó và thỏ, con nào nặng nhất, con nào nhẹ nhất? Nặng nhất: chó; nhẹ nhất: thỏ",
+          "explanation": "Chó nặng hơn mèo, mèo nặng hơn thỏ, nên chó nặng nhất và thỏ nhẹ nhất."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Chó nặng nhất, thỏ nhẹ nhất, mèo đứng giữa vẫy đuôi!",
+          "Cháu nối hai chiếc cân lại với nhau giỏi lắm.",
+          "Heo Ủn vỗ tay: tớ còn tưởng mèo nặng nhất cơ!"
+        ],
+        "wrong": [
+          "Ở cân thứ hai, đĩa của chó đang nằm thấp đấy.",
+          "Con nhẹ nhất là con nhẹ hơn cả mèo.",
+          "So từng cặp trước, rồi mới tìm con nặng nhất nhé."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "cho",
+          "b2": "meo",
+          "b3": "cho",
+          "b4": "tho"
+        }
+      }
+    },
+    {
+      "id": "cam-tao-buoi-va-chanh",
+      "title": "Bao nhiêu quả chanh cho đủ?",
+      "target": "chim-canh-cut-pin",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Pin dùng chanh làm \"quả cân tí hon\". Cân thăng bằng khi: 1 quả cam với 4 quả chanh; 1 quả táo với 3 quả chanh; 1 quả bưởi với 1 quả cam cùng 1 quả táo. Quan sát tranh rồi trả lời câu hỏi.",
+      "template": "a) Quả cam nặng bằng mấy quả chanh? {{b1}} quả chanh\nb) Quả táo nặng bằng mấy quả chanh? {{b2}} quả chanh\nc) Quả bưởi nặng bằng mấy quả chanh? {{b3}} quả chanh",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o3",
+              "text": "3"
+            },
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o6",
+              "text": "6"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o1",
+              "text": "1"
+            },
+            {
+              "id": "o2",
+              "text": "2"
+            },
+            {
+              "id": "o3",
+              "text": "3"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o7",
+              "text": "7"
+            },
+            {
+              "id": "o8",
+              "text": "8"
+            },
+            {
+              "id": "o9",
+              "text": "9"
+            }
+          ]
+        }
+      ],
+      "skill": "khoi-luong",
+      "curriculumRef": [
+        "toan2-t1-b15-hoat-dong-3-a",
+        "toan2-t1-b15-hoat-dong-3-b",
+        "toan2-t1-b15-hoat-dong-3-c"
+      ],
+      "support": {
+        "guide": [
+          "Hai đĩa ngang nhau thì quả bên này nặng đúng bằng số chanh bên kia.",
+          "Bưởi nặng bằng cam và táo gộp lại."
+        ],
+        "hint": "Cam bằng 4 quả chanh, táo bằng 3 quả chanh; bưởi bằng cả hai cộng lại.",
+        "answer": {
+          "text": "a) Quả cam nặng bằng mấy quả chanh? 4 quả chanh; b) Quả táo nặng bằng mấy quả chanh? 3 quả chanh; c) Quả bưởi nặng bằng mấy quả chanh? 7 quả chanh",
+          "explanation": "Quả bưởi nặng bằng quả cam và quả táo, tức là 4 + 3 = 7 quả chanh."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Chua lè nhưng chuẩn: bưởi bằng đúng 7 quả chanh!",
+          "Cháu cộng chanh còn nhanh hơn Pin đếm vảy cá.",
+          "Ba cân thăng bằng tăm tắp, không lệch li nào."
+        ],
+        "wrong": [
+          "Cân thăng bằng nghĩa là hai bên nặng như nhau đó.",
+          "Quả bưởi ngang bằng cả quả cam lẫn quả táo cơ.",
+          "Thử cộng số chanh của cam với số chanh của táo xem."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o4",
+          "b2": "o3",
+          "b3": "o7"
+        }
+      }
+    },
+    {
+      "id": "dung-sai-mot-ki-lo-gam",
+      "title": "So với quả cân 1 kg",
+      "target": "chim-canh-cut-pin",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "prompt": "Ba chiếc cân đặt cạnh nhau: quả bóng ở đĩa cao hơn quả cân 1 kg; nải chuối ở đĩa thấp hơn quả cân 1 kg; quả bưởi thăng bằng với quả cân 1 kg. Đ, S ? Chọn tất cả các câu đúng (Đ); câu không chọn là sai (S).",
+      "choices": [
+        {
+          "id": "a-qua-bong-nhe-hon-1-kg",
+          "text": "a) Quả bóng nhẹ hơn 1 kg."
+        },
+        {
+          "id": "b-nai-chuoi-nang-hon-1-kg",
+          "text": "b) Nải chuối nặng hơn 1 kg."
+        },
+        {
+          "id": "c-qua-buoi-can-nang-1-kg",
+          "text": "c) Quả bưởi cân nặng 1 kg."
+        },
+        {
+          "id": "d-qua-bong-nang-bang-qua-buoi",
+          "text": "d) Quả bóng nặng bằng quả bưởi."
+        },
+        {
+          "id": "e-nai-chuoi-nang-hon-qua-buoi",
+          "text": "e) Nải chuối nặng hơn quả bưởi."
+        }
+      ],
+      "skill": "khoi-luong",
+      "curriculumRef": [
+        "toan2-t1-b15-hoat-dong-2-1-a",
+        "toan2-t1-b15-hoat-dong-2-1-b",
+        "toan2-t1-b15-hoat-dong-2-1-c",
+        "toan2-t1-b15-hoat-dong-2-1-d",
+        "toan2-t1-b15-hoat-dong-2-1-e"
+      ],
+      "support": {
+        "guide": [
+          "So từng vật với quả cân 1 kg trước.",
+          "Bóng nhẹ hơn 1 kg, bưởi đúng 1 kg, chuối nặng hơn 1 kg."
+        ],
+        "hint": "Quả bóng nhẹ hơn 1 kg, còn quả bưởi nặng đúng 1 kg: hai vật này có nặng bằng nhau không?",
+        "answer": {
+          "text": "Đ: a, b, c, e; S: d",
+          "explanation": "Câu a, b, c, e đúng. Câu d sai vì quả bóng nhẹ hơn 1 kg còn quả bưởi nặng 1 kg."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bắt trúng câu sai duy nhất, Pin gật gù hài lòng!",
+          "Bóng nhẹ, chuối nặng, bưởi vừa khít một ki-lô-gam.",
+          "Cháu so với quả cân 1 kg khéo như thợ cân lâu năm."
+        ],
+        "wrong": [
+          "Quả bóng và quả bưởi có thật sự nặng bằng nhau không?",
+          "Còn một câu đúng về nải chuối chưa được chọn đấy.",
+          "Hãy so mỗi vật với quả cân 1 kg rồi mới so hai vật với nhau."
+        ]
+      },
+      "answer": {
+        "choices": [
+          "a-qua-bong-nhe-hon-1-kg",
+          "b-nai-chuoi-nang-hon-1-kg",
+          "c-qua-buoi-can-nang-1-kg",
+          "e-nai-chuoi-nang-hon-qua-buoi"
+        ]
+      }
+    },
+    {
+      "id": "doc-nhan-can-nang",
+      "title": "Đọc nhãn cân nặng",
+      "target": "chim-canh-cut-pin",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Pin đọc to từng nhãn: bí ngô hai ki-lô-gam, lọ đường một ki-lô-gam, quả mít ba ki-lô-gam, bao gạo mười ki-lô-gam, túi bột mì năm ki-lô-gam. Đọc cân nặng của mỗi quả hoặc đồ vật dưới đây.",
+      "template": "Quả bí ngô: {{b1}} kg\nLọ đường: {{b2}} kg\nQuả mít: {{b3}} kg\nBao gạo: {{b4}} kg\nTúi bột mì: {{b5}} kg",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o0",
+              "text": "0"
+            },
+            {
+              "id": "o2",
+              "text": "2"
+            },
+            {
+              "id": "o3",
+              "text": "3"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o1",
+              "text": "1"
+            },
+            {
+              "id": "o2",
+              "text": "2"
+            },
+            {
+              "id": "o11",
+              "text": "11"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o3",
+              "text": "3"
+            },
+            {
+              "id": "o5",
+              "text": "5"
+            },
+            {
+              "id": "o13",
+              "text": "13"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "o8",
+              "text": "8"
+            },
+            {
+              "id": "o10",
+              "text": "10"
+            },
+            {
+              "id": "o11",
+              "text": "11"
+            }
+          ]
+        },
+        {
+          "id": "b5",
+          "options": [
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o5",
+              "text": "5"
+            },
+            {
+              "id": "o6",
+              "text": "6"
+            }
+          ]
+        }
+      ],
+      "skill": "khoi-luong",
+      "curriculumRef": [
+        "toan2-t1-b15-hoat-dong-2-2-a",
+        "toan2-t1-b15-hoat-dong-2-2-b",
+        "toan2-t1-b15-hoat-dong-2-2-c",
+        "toan2-t1-b15-hoat-dong-2-2-d",
+        "toan2-t1-b15-hoat-dong-2-2-e"
+      ],
+      "support": {
+        "guide": [
+          "Ki-lô-gam viết tắt là kg.",
+          "Nghe số Pin đọc rồi viết bằng chữ số."
+        ],
+        "hint": "Mười ki-lô-gam viết là 10 kg.",
+        "answer": {
+          "text": "Quả bí ngô: 2 kg; Lọ đường: 1 kg; Quả mít: 3 kg; Bao gạo: 10 kg; Túi bột mì: 5 kg",
+          "explanation": "Bí ngô 2 kg, lọ đường 1 kg, quả mít 3 kg, bao gạo 10 kg, túi bột mì 5 kg."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Năm chiếc nhãn dán ngay ngắn, quầy hàng đẹp hẳn lên!",
+          "Pin khen: chữ số viết rõ ràng, không lẫn vào đâu được.",
+          "Heo Ủn hít hà bao gạo 10 kg: đủ nấu cơm cả tuần!"
+        ],
+        "wrong": [
+          "Nghe lại nhãn Pin đọc rồi đổi sang chữ số nhé.",
+          "Bao gạo là mười ki-lô-gam, viết bằng hai chữ số đấy.",
+          "Một nhãn đang dán nhầm số, dò lại từng món xem."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o2",
+          "b2": "o1",
+          "b3": "o3",
+          "b4": "o10",
+          "b5": "o5"
+        }
+      }
+    },
+    {
+      "id": "phieu-doc-nhan-o-nha",
+      "title": "Đọc nhãn ở nhà",
+      "kind": "worksheet",
+      "target": "chim-canh-cut-pin",
+      "lessonId": "toan2-t1-b15",
+      "text": "Pin đưa {name} một phiếu: về nhà nhìn tranh trong phiếu, đọc cân nặng của bí ngô, lọ đường, quả mít, bao gạo, túi bột mì rồi ghi vào ô. Nếu được, cùng bố mẹ tìm nhãn \"kg\" trên túi gạo, túi đường trong bếp.",
+      "curriculumRef": [
+        "toan2-t1-b15-hoat-dong-2-2-a",
+        "toan2-t1-b15-hoat-dong-2-2-b",
+        "toan2-t1-b15-hoat-dong-2-2-c",
+        "toan2-t1-b15-hoat-dong-2-2-d",
+        "toan2-t1-b15-hoat-dong-2-2-e"
+      ]
+    },
+    {
+      "id": "heo-un-mang-hop",
+      "title": "Ba chiếc hộp của Heo Ủn",
+      "kind": "dialogue",
+      "target": "heo-un",
+      "lines": [
+        {
+          "speaker": "Heo Ủn",
+          "text": "Ủn ỉn! Tớ mang tới ba hộp bánh A, B, C. Tớ muốn ôm hộp nặng nhất về bếp, vì nặng nhất chắc chắn nhiều bánh nhất!"
+        },
+        {
+          "speaker": "Cánh Cụt Pin",
+          "text": "Lí lẽ kiểu Heo Ủn đấy. Được, cứ đặt lên cân. {name} muốn cân từng hộp, hay đếm quả cân trước?"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cân lần lượt từng hộp",
+          "reply": "Pin: Cẩn thận, chắc chắn, đúng kiểu chú thích."
+        },
+        {
+          "text": "Cộng các quả cân ở mỗi đĩa",
+          "reply": "Heo Ủn: Cộng nhanh lên, bụng tớ réo rồi!"
+        }
+      ]
+    },
+    {
+      "id": "hop-banh-a-b-c",
+      "title": "Hộp bánh nào nặng nhất?",
+      "target": "heo-un",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Cân thăng bằng khi: hộp A với quả cân 1 kg và 2 kg; hộp B với hai quả cân 2 kg; hộp C với quả cân 5 kg. Quan sát tranh rồi trả lời.",
+      "template": "a) Số ? Hộp A cân nặng {{b1}} kg. Hộp B cân nặng {{b2}} kg. Hộp C cân nặng {{b3}} kg.\nb) Hộp nào nặng nhất? {{b4}} Hộp nào nhẹ nhất? {{b5}}",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o3",
+              "text": "3"
+            },
+            {
+              "id": "o5",
+              "text": "5"
+            },
+            {
+              "id": "o13",
+              "text": "13"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o3",
+              "text": "3"
+            },
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o14",
+              "text": "14"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o5",
+              "text": "5"
+            },
+            {
+              "id": "o6",
+              "text": "6"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "hop-a",
+              "text": "Hộp A"
+            },
+            {
+              "id": "hop-b",
+              "text": "Hộp B"
+            },
+            {
+              "id": "hop-c",
+              "text": "Hộp C"
+            }
+          ]
+        },
+        {
+          "id": "b5",
+          "options": [
+            {
+              "id": "hop-a",
+              "text": "Hộp A"
+            },
+            {
+              "id": "hop-b",
+              "text": "Hộp B"
+            },
+            {
+              "id": "hop-c",
+              "text": "Hộp C"
+            }
+          ]
+        }
+      ],
+      "skill": "khoi-luong",
+      "curriculumRef": [
+        "toan2-t1-b15-hoat-dong-2-3-a",
+        "toan2-t1-b15-hoat-dong-2-3-b"
+      ],
+      "support": {
+        "guide": [
+          "Cộng các quả cân ở đĩa bên kia để biết hộp nặng mấy kg.",
+          "So ba số kg để tìm hộp nặng nhất, nhẹ nhất."
+        ],
+        "hint": "Hộp A: 1 kg + 2 kg; hộp B: 2 kg + 2 kg.",
+        "answer": {
+          "text": "a) Số ? Hộp A cân nặng 3 kg. Hộp B cân nặng 4 kg. Hộp C cân nặng 5 kg.; b) Hộp nào nặng nhất? Hộp C Hộp nào nhẹ nhất? Hộp A",
+          "explanation": "Hộp A nặng 3 kg, hộp B nặng 4 kg, hộp C nặng 5 kg; hộp C nặng nhất, hộp A nhẹ nhất."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Hộp C nặng nhất, Heo Ủn ôm chầm lấy nó ngay!",
+          "Cộng quả cân chuẩn từng ki-lô-gam, giỏi thật.",
+          "Ba hộp đã có nhãn, Pin cho phép mở quầy bán bánh."
+        ],
+        "wrong": [
+          "Hộp A thăng bằng với cả quả 1 kg lẫn quả 2 kg đấy.",
+          "Hai quả cân 2 kg gộp lại là bao nhiêu nhỉ?",
+          "Số kg lớn nhất là hộp nặng nhất, xem lại nào."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o3",
+          "b2": "o4",
+          "b3": "o5",
+          "b4": "hop-c",
+          "b5": "hop-a"
+        }
+      }
+    },
+    {
+      "id": "cong-tru-ki-lo-gam",
+      "title": "Sổ cân của Pin",
+      "target": "chim-canh-cut-pin",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Pin ghi sổ cân, nhưng mực bị Heo Ủn làm đổ mất vài chỗ.",
+      "template": "Tính (theo mẫu). Mẫu: 5 kg + 4 kg = 9 kg; 10 kg – 3 kg = 7 kg\na) 12 kg + 23 kg = {{b1}} kg\na) 45 kg + 20 kg = {{b2}} kg\na) 9 kg + 7 kg = {{b3}} kg\nb) 42 kg – 30 kg = {{b4}} kg\nb) 13 kg – 9 kg = {{b5}} kg\nb) 60 kg – 40 kg = {{b6}} kg",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o34",
+              "text": "34"
+            },
+            {
+              "id": "o35",
+              "text": "35"
+            },
+            {
+              "id": "o37",
+              "text": "37"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o65",
+              "text": "65"
+            },
+            {
+              "id": "o66",
+              "text": "66"
+            },
+            {
+              "id": "o75",
+              "text": "75"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o16",
+              "text": "16"
+            },
+            {
+              "id": "o17",
+              "text": "17"
+            },
+            {
+              "id": "o18",
+              "text": "18"
+            }
+          ]
+        },
+        {
+          "id": "b4",
+          "options": [
+            {
+              "id": "o12",
+              "text": "12"
+            },
+            {
+              "id": "o21",
+              "text": "21"
+            },
+            {
+              "id": "o22",
+              "text": "22"
+            }
+          ]
+        },
+        {
+          "id": "b5",
+          "options": [
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o5",
+              "text": "5"
+            },
+            {
+              "id": "o14",
+              "text": "14"
+            }
+          ]
+        },
+        {
+          "id": "b6",
+          "options": [
+            {
+              "id": "o19",
+              "text": "19"
+            },
+            {
+              "id": "o20",
+              "text": "20"
+            },
+            {
+              "id": "o22",
+              "text": "22"
+            }
+          ]
+        }
+      ],
+      "skill": "khoi-luong",
+      "curriculumRef": [
+        "toan2-t1-b15-luyen-tap-1-a1",
+        "toan2-t1-b15-luyen-tap-1-a2",
+        "toan2-t1-b15-luyen-tap-1-a3",
+        "toan2-t1-b15-luyen-tap-1-b1",
+        "toan2-t1-b15-luyen-tap-1-b2",
+        "toan2-t1-b15-luyen-tap-1-b3"
+      ],
+      "support": {
+        "guide": [
+          "Tính như với số rồi viết thêm \"kg\" vào kết quả.",
+          "Xem mẫu: 5 kg + 4 kg = 9 kg."
+        ],
+        "hint": "13 – 9: tách 9 = 3 + 6; 13 – 3 = 10, rồi 10 – 6 = 4.",
+        "answer": {
+          "text": "Tính (theo mẫu). Mẫu: 5 kg + 4 kg = 9 kg; 10 kg – 3 kg = 7 kg; a) 12 kg + 23 kg = 35 kg; a) 45 kg + 20 kg = 65 kg; a) 9 kg + 7 kg = 16 kg; b) 42 kg – 30 kg = 12 kg; b) 13 kg – 9 kg = 4 kg; b) 60 kg – 40 kg = 20 kg",
+          "explanation": "12 + 23 = 35, 45 + 20 = 65, 9 + 7 = 16, 42 – 30 = 12, 13 – 9 = 4, 60 – 40 = 20; mỗi kết quả kèm đơn vị kg."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Sổ cân sạch như mới, không còn vết mực nào!",
+          "Sáu phép tính với ki-lô-gam, phép nào cũng đúng.",
+          "Pin đóng dấu \"Đã kiểm\" kêu cộp một tiếng thật to."
+        ],
+        "wrong": [
+          "Tính phần số trước, đơn vị kg cứ để nguyên.",
+          "Phép trừ có nhớ 13 kg – 9 kg cần tách cẩn thận nhé.",
+          "Có một dòng cộng chưa đúng, dò lại từng dòng a)."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o35",
+          "b2": "o65",
+          "b3": "o16",
+          "b4": "o12",
+          "b5": "o4",
+          "b6": "o20"
+        }
+      }
+    },
+    {
+      "id": "ngong-va-ga-len-can",
+      "title": "Ngỗng và gà lên cân",
+      "target": "chim-canh-cut-pin",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Bò Sữa Mơ dắt ngỗng và gà từ trang trại sang cân. Ngỗng thăng bằng với quả cân 5 kg và 2 kg; gà thăng bằng với quả cân 2 kg và 1 kg. Số ?",
+      "template": "a) Con ngỗng cân nặng {{b1}} kg.\nb) Con gà cân nặng {{b2}} kg.",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o5",
+              "text": "5"
+            },
+            {
+              "id": "o7",
+              "text": "7"
+            },
+            {
+              "id": "o17",
+              "text": "17"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o3",
+              "text": "3"
+            },
+            {
+              "id": "o4",
+              "text": "4"
+            },
+            {
+              "id": "o5",
+              "text": "5"
+            }
+          ]
+        }
+      ],
+      "skill": "khoi-luong",
+      "curriculumRef": [
+        "toan2-t1-b15-luyen-tap-2-a",
+        "toan2-t1-b15-luyen-tap-2-b"
+      ],
+      "support": {
+        "guide": [
+          "Con vật nặng bằng tổng các quả cân ở đĩa bên kia.",
+          "Cộng 5 kg với 2 kg, rồi 2 kg với 1 kg."
+        ],
+        "hint": "Ngỗng: 5 + 2; gà: 2 + 1.",
+        "answer": {
+          "text": "a) Con ngỗng cân nặng 7 kg.; b) Con gà cân nặng 3 kg.",
+          "explanation": "Con ngỗng nặng 5 kg + 2 kg = 7 kg; con gà nặng 2 kg + 1 kg = 3 kg."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ngỗng kêu quác quác tự hào về số cân của mình!",
+          "Gà mái gật gù: 3 kg, đúng như ở trang trại cân.",
+          "Cộng quả cân gọn gàng, Bò Sữa Mơ cảm ơn {name}."
+        ],
+        "wrong": [
+          "Nhớ cộng cả hai quả cân ở đĩa bên kia nhé.",
+          "Con ngỗng thăng bằng với 5 kg và còn thêm 2 kg nữa.",
+          "Gà nhẹ hơn ngỗng nhiều, xem lại phép cộng của gà."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o7",
+          "b2": "o3"
+        }
+      }
+    },
+    {
+      "id": "hai-bao-thoc",
+      "title": "Hai bao thóc ở cửa kho",
+      "target": "chim-canh-cut-pin",
+      "kind": "riddle",
+      "question": "Bác nông dân gửi căng tin hai bao thóc: một bao 30 kg, một bao 50 kg. Tìm tổng số ki-lô-gam thóc của hai bao thóc.",
+      "skill": "bai-toan-loi-van",
+      "curriculumRef": [
+        "toan2-t1-b15-luyen-tap-3"
+      ],
+      "support": {
+        "guide": [
+          "Tổng là gộp hai bao lại, nên làm phép cộng.",
+          "Ba chục cộng năm chục được mấy chục?"
+        ],
+        "hint": "30 kg + 50 kg = ? kg",
+        "answer": {
+          "text": "80 kg",
+          "explanation": "Hai bao thóc nặng 30 kg + 50 kg = 80 kg."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Tám chục ki-lô-gam thóc, đủ nấu cháo cả học kì!",
+          "Pin ghi ngay vào sổ: thóc 80 kg, chính xác.",
+          "Gộp hai bao nhanh gọn, bác nông dân cười tươi."
+        ],
+        "wrong": [
+          "Tổng số thóc là cộng hai bao lại với nhau.",
+          "Ba chục cộng năm chục, đếm chục thử xem.",
+          "Kết quả phải lớn hơn bao 50 kg chứ nhỉ."
+        ]
+      },
+      "answer": {
+        "value": 80
+      }
+    },
+    {
+      "id": "ba-chu-ro-bot-di-can",
+      "title": "Ba chú rô-bốt xếp hàng lên cân",
+      "target": "heo-un",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Màn chót: ba chú rô-bốt kêu bíp bíp đòi lên cân, Heo Ủn làm người đọc số. Ba chú rô-bốt rủ nhau đi cân. Rô-bốt A cân nặng 32 kg, rô-bốt B nặng hơn rô-bốt A là 2 kg, rô-bốt C nhẹ hơn rô-bốt A là 2 kg. Hỏi:",
+      "template": "a) Rô-bốt B cân nặng bao nhiêu ki-lô-gam? {{b1}} kg\nb) Rô-bốt C cân nặng bao nhiêu ki-lô-gam? {{b2}} kg",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o34",
+              "text": "34"
+            },
+            {
+              "id": "o35",
+              "text": "35"
+            },
+            {
+              "id": "o36",
+              "text": "36"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o30",
+              "text": "30"
+            },
+            {
+              "id": "o31",
+              "text": "31"
+            },
+            {
+              "id": "o40",
+              "text": "40"
+            }
+          ]
+        }
+      ],
+      "skill": "bai-toan-loi-van",
+      "curriculumRef": [
+        "toan2-t1-b15-luyen-tap-4-a",
+        "toan2-t1-b15-luyen-tap-4-b"
+      ],
+      "support": {
+        "guide": [
+          "Nặng hơn thì cộng thêm, nhẹ hơn thì bớt đi.",
+          "Lấy cân nặng của rô-bốt A làm mốc."
+        ],
+        "hint": "Rô-bốt B: 32 + 2; rô-bốt C: 32 – 2.",
+        "answer": {
+          "text": "a) Rô-bốt B cân nặng bao nhiêu ki-lô-gam? 34 kg; b) Rô-bốt C cân nặng bao nhiêu ki-lô-gam? 30 kg",
+          "explanation": "Rô-bốt B nặng 32 kg + 2 kg = 34 kg; rô-bốt C nặng 32 kg – 2 kg = 30 kg."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bíp bíp! Hai chú rô-bốt nháy đèn xanh cảm ơn {name}.",
+          "Nặng hơn thì cộng, nhẹ hơn thì trừ, cháu nắm chắc rồi.",
+          "Heo Ủn đọc số to tướng: ba mươi tư và ba mươi!"
+        ],
+        "wrong": [
+          "Rô-bốt B nặng hơn A, vậy phải thêm 2 kg vào.",
+          "Rô-bốt C nhẹ hơn, nên lấy 32 kg bớt đi 2 kg.",
+          "Một chú rô-bốt đang báo đèn đỏ, tính lại nhé."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o34",
+          "b2": "o30"
+        }
+      }
+    },
+    {
+      "id": "tap-de-can-vang",
+      "title": "Tạp dề thợ cân",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Chiếc cân đĩa lại thăng bằng tăm tắp. Pin trao cho {name} chiếc tạp dề \"Thợ cân tí hon\", còn Heo Ủn được thưởng… đúng một múi bưởi."
+    },
+    {
+      "id": "be-ca-can-nuoc",
+      "title": "Tiếng bì bõm ở bể nước",
+      "kind": "unlock",
+      "trigger": "auto",
+      "text": "Từ phía bể nước căng tin vọng lại tiếng bì bõm: Cá Bống kêu bể cá vơi mất nửa, phải đổ thêm cho đủ lít nước mới bơi được!"
+    }
+  ],
+  "reward": {
+    "xp": 80,
+    "coin": 15,
+    "skillXp": {
+      "khoi-luong": 2,
+      "phep-cong": 1
+    }
+  }
+}

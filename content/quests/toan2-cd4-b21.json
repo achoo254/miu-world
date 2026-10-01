@@ -1,0 +1,788 @@
+{
+  "id": "toan2-cd4-b21",
+  "region": "truong-hoc",
+  "chapter": 4,
+  "title": "Hộp quà bí mật của Cáo Lém",
+  "status": "draft",
+  "lesson": "toan2-t1-b21",
+  "summary": "Cáo Lém giấu ba hộp quà quanh quầy trao giải của Xưởng đồ chơi, mỗi hộp khoá bằng một phép tính; {name} đặt tính, giải bài toán và đo mực nước bể cá để mở hết quà.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "Cáo Lém, Lợn Rừng Đốm",
+    "where": "Xưởng đồ chơi: quầy trao giải và góc bể cá",
+    "goal": "Mở cả ba hộp quà bí mật trước giờ trao giải",
+    "play": "Tìm hộp quà, điền số mở khoá, giải đố, chọn đường bay dài nhất, đo mực nước, làm phiếu ở nhà",
+    "learn": "Toán 2 Bài 21: luyện tập cộng có nhớ trong phạm vi 100, bài toán có lời văn",
+    "reward": "80 XP, 15 xu, Phép cộng +2, Bài toán có lời văn +1",
+    "unlock": "Bài 22 \"Phép trừ (có nhớ) số có hai chữ số cho số có một chữ số\""
+  },
+  "phases": {
+    "hook": "cao-lem-khoa-qua",
+    "explore": "tim-hop-qua",
+    "learn": "khoa-so-dat-tinh",
+    "challenge": "khoa-hop-do",
+    "decision": "chuot-tui-len-day-cot",
+    "finale": "muc-nuoc-ba-be",
+    "reward": "cup-mo-qua",
+    "unlock": "ke-gau-bong-day-ap"
+  },
+  "texts": {},
+  "places": {
+    "cao-lem": "quầy trao giải",
+    "tim-hop-qua": "quầy trao giải",
+    "lon-rung-dom": "quầy trao giải",
+    "toan2-cd4-be-ca": "góc bể cá"
+  },
+  "steps": [
+    {
+      "id": "cao-lem-khoa-qua",
+      "title": "Quà bị khoá hết rồi!",
+      "goTo": "Đến quầy trao giải của Xưởng đồ chơi, Cáo Lém đang huýt sáo",
+      "kind": "dialogue",
+      "target": "cao-lem",
+      "lines": [
+        {
+          "speaker": "Cáo Lém",
+          "text": "A lô a lô! Hôm nay tớ không giấu phấn nữa đâu, tớ giấu… quà! Ba hộp quà bí mật, khoá bằng ổ khoá số hẳn hoi."
+        },
+        {
+          "speaker": "Lợn Rừng Đốm",
+          "text": "Ơ kìa, quà đó là để trao giải cho cả xưởng mà! Tớ thử vặn khoá mười lần, lần nào cũng kêu \"cạch\" rồi đứng im."
+        },
+        {
+          "speaker": "Cáo Lém",
+          "text": "Muốn mở thì phải tính đúng. Tính sai là khoá hắt xì một cái, phì phì, hì hì!"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ mở hết cho xem!",
+          "reply": "Cáo Lém nhướn mày: Tự tin ghê nhỉ! Thế thì đi tìm hộp trước đã."
+        },
+        {
+          "text": "Khoá mà cũng biết hắt xì à?",
+          "reply": "Cáo Lém cười lăn: Khoá của tớ là khoá có cảm xúc đấy nhé!"
+        }
+      ]
+    },
+    {
+      "id": "tim-hop-qua",
+      "title": "Ba hộp quà biến đâu?",
+      "goTo": "Lục tìm ba hộp quà Cáo Lém giấu quanh quầy trao giải",
+      "kind": "search",
+      "targets": [
+        "toan2-cd4-hop-qua-do",
+        "toan2-cd4-hop-qua-xanh",
+        "toan2-cd4-hop-qua-vang"
+      ]
+    },
+    {
+      "id": "khoa-so-dat-tinh",
+      "title": "Bí kíp đặt tính",
+      "kind": "dialogue",
+      "target": "lon-rung-dom",
+      "lines": [
+        {
+          "speaker": "Lợn Rừng Đốm",
+          "text": "Đủ ba hộp rồi! Bí kíp của thợ xưởng là đặt tính: hàng đơn vị thẳng hàng đơn vị, hàng chục thẳng hàng chục."
+        },
+        {
+          "speaker": "Lợn Rừng Đốm",
+          "text": "Cộng từ phải sang trái. Hàng đơn vị được 10 trở lên thì viết chữ số đơn vị, nhớ 1 sang hàng chục."
+        },
+        {
+          "speaker": "Cáo Lém",
+          "text": "Nhớ 1 chứ đừng quên 1 nhé, quên là khoá hắt xì liền!"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Thẳng hàng, nhớ 1, rõ rồi!",
+          "reply": "Lợn Rừng Đốm giơ ngón cái dính đầy mùn cưa: Chuẩn thợ cả!"
+        }
+      ]
+    },
+    {
+      "id": "khoa-hop-do",
+      "title": "Mở khoá hộp quà đỏ",
+      "target": "cao-lem",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Ổ khoá hộp quà đỏ có ba vòng số. Đặt tính rồi tính.",
+      "template": "45 + 6 = {{b1}}\n81 + 9 = {{b2}}\n26 + 66 = {{b3}}",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o41",
+              "text": "41"
+            },
+            {
+              "id": "o51",
+              "text": "51"
+            },
+            {
+              "id": "o61",
+              "text": "61"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o80",
+              "text": "80"
+            },
+            {
+              "id": "o90",
+              "text": "90"
+            },
+            {
+              "id": "o91",
+              "text": "91"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o92",
+              "text": "92"
+            },
+            {
+              "id": "o93",
+              "text": "93"
+            },
+            {
+              "id": "o94",
+              "text": "94"
+            }
+          ]
+        }
+      ],
+      "skill": "phep-cong",
+      "curriculumRef": [
+        "toan2-t1-b21-luyen-tap-1-a",
+        "toan2-t1-b21-luyen-tap-1-b",
+        "toan2-t1-b21-luyen-tap-1-c"
+      ],
+      "support": {
+        "guide": [
+          "Viết số có một chữ số thẳng cột với hàng đơn vị.",
+          "Cộng hàng đơn vị trước; được 10 trở lên thì nhớ 1 sang hàng chục."
+        ],
+        "hint": "5 + 6 = 11, viết 1 nhớ 1; 4 thêm 1 là 5.",
+        "answer": {
+          "text": "45 + 6 = 51; 81 + 9 = 90; 26 + 66 = 92",
+          "explanation": "45 + 6 = 51; 81 + 9 = 90 (1 + 9 = 10, viết 0 nhớ 1); 26 + 66 = 92 (6 + 6 = 12, viết 2 nhớ 1, 2 + 6 + 1 = 9)."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Cạch cạch cạch! Ba vòng số khớp, nắp hộp đỏ bật tung.",
+          "Nhớ 1 không sót lần nào, ổ khoá chịu thua rồi.",
+          "Trong hộp đỏ là hai chú bê gỗ đang ngơ ngác chào {name}."
+        ],
+        "wrong": [
+          "Phì phì! Khoá hắt xì rồi, có chỗ quên nhớ 1 kìa.",
+          "Thử đặt tính thẳng cột rồi cộng lại từ hàng đơn vị nhé.",
+          "Một vòng số lệch, xem lại phép tính có hàng đơn vị cộng quá 10."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o51",
+          "b2": "o90",
+          "b3": "o92"
+        }
+      }
+    },
+    {
+      "id": "be-va-nghe-go",
+      "title": "Con nghé nặng bao nhiêu?",
+      "target": "cao-lem",
+      "kind": "riddle",
+      "question": "Trong hộp đỏ có một chú bê gỗ và một chú nghé gỗ, Cáo Lém đặt cả hai lên cân. Con bê cân nặng 47 kg. Con nghé nặng hơn con bê 18 kg. Hỏi con nghé cân nặng bao nhiêu ki-lô-gam?",
+      "skill": "bai-toan-loi-van",
+      "curriculumRef": [
+        "toan2-t1-b21-luyen-tap-2-a"
+      ],
+      "support": {
+        "guide": [
+          "\"Nặng hơn\" thì lấy cân nặng con bê cộng thêm phần hơn.",
+          "Phép tính: 47 + 18."
+        ],
+        "hint": "7 + 8 = 15, viết 5 nhớ 1; 4 + 1 + 1 = 6.",
+        "answer": {
+          "text": "65 kg",
+          "explanation": "Con nghé cân nặng: 47 + 18 = 65 (kg)."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Nghé gỗ nặng hẳn 65 ki-lô-gam, Cáo Lém suýt không nhấc nổi!",
+          "Nặng hơn thì cộng thêm, {name} làm đúng bài rồi.",
+          "Chú nghé gỗ gật gù: đúng cân nặng của tớ đó."
+        ],
+        "wrong": [
+          "Con nghé nặng HƠN con bê, vậy phải cộng thêm chứ.",
+          "Kiểm tra phép cộng 47 + 18, hàng đơn vị có nhớ đấy.",
+          "Gần đúng rồi, cộng lại hàng chục nhớ thêm 1 xem."
+        ]
+      },
+      "answer": {
+        "value": 65
+      }
+    },
+    {
+      "id": "can-con-lon-dat",
+      "title": "Cân con lợn đất",
+      "target": "lon-rung-dom",
+      "kind": "riddle",
+      "question": "Lợn Rừng Đốm bày một chiếc cân đĩa đang thăng bằng: một bên là con lợn, bên kia là con ngỗng 5 kg và con dê 28 kg. Con lợn cân nặng bao nhiêu ki-lô-gam?",
+      "skill": "khoi-luong",
+      "curriculumRef": [
+        "toan2-t1-b21-luyen-tap-3"
+      ],
+      "support": {
+        "guide": [
+          "Cân thăng bằng thì hai bên nặng bằng nhau.",
+          "Cộng cân nặng con ngỗng và con dê."
+        ],
+        "hint": "5 + 28 = ?",
+        "answer": {
+          "text": "33 kg",
+          "explanation": "Con lợn nặng bằng con ngỗng và con dê cộng lại: 5 + 28 = 33 (kg)."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đĩa cân đứng im phăng phắc, con lợn nặng đúng 33 ki-lô-gam!",
+          "Lợn Rừng Đốm reo: hoá ra họ hàng nhà tớ nặng thế này à!",
+          "Cân thăng bằng, phép cộng cũng thăng bằng luôn."
+        ],
+        "wrong": [
+          "Hai đĩa cân bằng nhau, cộng cả ngỗng và dê nhé.",
+          "Đừng quên con ngỗng 5 ki-lô-gam đứng cạnh con dê.",
+          "Thử lại 5 + 28, hàng đơn vị là 8 + 5 đấy."
+        ]
+      },
+      "answer": {
+        "value": 33
+      }
+    },
+    {
+      "id": "xo-nuoc-hai-ban",
+      "title": "Ai xách nhiều nước?",
+      "target": "lon-rung-dom",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Hộp quà xanh mở ra hai búp bê gỗ: bạn gấu xách hai xô nước, chàng cao bồi xách hai thùng nước. Số ? Mỗi bạn xách bao nhiêu lít nước?",
+      "template": "Bạn gấu xách hai xô 28 l và 28 l: {{b1}} l\nChàng cao bồi xách hai thùng 27 l và 27 l: {{b2}} l",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o55",
+              "text": "55"
+            },
+            {
+              "id": "o56",
+              "text": "56"
+            },
+            {
+              "id": "o58",
+              "text": "58"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o44",
+              "text": "44"
+            },
+            {
+              "id": "o52",
+              "text": "52"
+            },
+            {
+              "id": "o54",
+              "text": "54"
+            }
+          ]
+        }
+      ],
+      "skill": "dung-tich",
+      "curriculumRef": [
+        "toan2-t1-b21-luyen-tap-4-a",
+        "toan2-t1-b21-luyen-tap-4-b"
+      ],
+      "support": {
+        "guide": [
+          "Mỗi bạn xách hai xô, cộng số lít của hai xô.",
+          "Mẫu: 26 l và 26 l là 52 l."
+        ],
+        "hint": "28 + 28: 8 + 8 = 16, viết 6 nhớ 1.",
+        "answer": {
+          "text": "Bạn gấu xách hai xô 28 l và 28 l: 56 l; Chàng cao bồi xách hai thùng 27 l và 27 l: 54 l",
+          "explanation": "Bạn gấu: 28 + 28 = 56 (l). Chàng cao bồi: 27 + 27 = 54 (l)."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Nước sóng sánh mà không đổ giọt nào, tính chuẩn quá!",
+          "Gấu với cao bồi đứng cạnh nhau so xô, cả hai đều đúng số lít.",
+          "Cáo Lém huýt sáo: hộp xanh cũng mở được rồi à?"
+        ],
+        "wrong": [
+          "Mỗi bạn xách HAI xô, nhớ cộng cả hai nhé.",
+          "Hàng đơn vị 8 + 8 vượt 10 rồi, đừng quên nhớ.",
+          "Xem lại mẫu 26 l và 26 l thành 52 l nào."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o56",
+          "b2": "o54"
+        }
+      }
+    },
+    {
+      "id": "chuot-tui-len-day-cot",
+      "title": "Chuột túi lên dây cót",
+      "kind": "dialogue",
+      "target": "lon-rung-dom",
+      "lines": [
+        {
+          "speaker": "Lợn Rừng Đốm",
+          "text": "Hộp vàng có con chuột túi lên dây cót! Nó đòi thi nhảy xa trên hàng tảng đá ghi 5, 10, 15… tới 50."
+        },
+        {
+          "speaker": "Cáo Lém",
+          "text": "Cứ mỗi tảng đá là thêm 5 điểm. Tớ cá là {name} không đoán nổi lần nhảy thứ hai đâu!"
+        },
+        {
+          "speaker": "Lợn Rừng Đốm",
+          "text": "Đừng nghe Cáo. {name} muốn đếm từng tảng hay đếm thêm 5 cho nhanh?"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Đếm từng tảng đá một",
+          "reply": "Lợn Rừng Đốm: Chậm mà chắc, giống tớ lắp bánh xe vậy."
+        },
+        {
+          "text": "Đếm thêm 5 mỗi bước",
+          "reply": "Cáo Lém: Hừm, nhảy cóc nhanh ghê, nhưng nhớ đừng đếm lố!"
+        }
+      ]
+    },
+    {
+      "id": "chuot-tui-nhay-xa",
+      "title": "Chuột túi nhảy được mấy điểm?",
+      "target": "lon-rung-dom",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Hàng tảng đá ghi 5, 10, 15, 20, 25, 30, 35, 40, 45, 50. Số ? Chuột túi tham gia một cuộc thi nhảy xa. Lần thứ nhất, từ tảng đá màu đỏ, chuột túi nhảy qua 4 tảng đá và được 25 điểm (như hình vẽ). Lần thứ hai, từ tảng đá màu đỏ, chuột túi nhảy qua 6 tảng đá.",
+      "template": "a) Lần thứ hai, chuột túi được {{b1}} điểm.\nb) Cả hai lần nhảy, chuột túi được {{b2}} điểm.",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o25",
+              "text": "25"
+            },
+            {
+              "id": "o33",
+              "text": "33"
+            },
+            {
+              "id": "o35",
+              "text": "35"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o60",
+              "text": "60"
+            },
+            {
+              "id": "o61",
+              "text": "61"
+            },
+            {
+              "id": "o62",
+              "text": "62"
+            }
+          ]
+        }
+      ],
+      "skill": "phep-cong",
+      "curriculumRef": [
+        "toan2-t1-b21-luyen-tap-5-a",
+        "toan2-t1-b21-luyen-tap-5-b"
+      ],
+      "support": {
+        "guide": [
+          "Nhảy qua 4 tảng được 25 điểm, mỗi tảng đá thêm 5 điểm.",
+          "Cả hai lần thì cộng điểm hai lần lại."
+        ],
+        "hint": "Nhảy qua 6 tảng thì tới tảng đá ghi 35.",
+        "answer": {
+          "text": "a) Lần thứ hai, chuột túi được 35 điểm.; b) Cả hai lần nhảy, chuột túi được 60 điểm.",
+          "explanation": "Lần thứ hai chuột túi tới tảng 35 nên được 35 điểm; cả hai lần: 25 + 35 = 60 (điểm)."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Boing boing! Chuột túi nhảy tới đâu {name} tính tới đó.",
+          "Sáu mươi điểm tròn trĩnh, chuột túi đòi lên bục nhận giải.",
+          "Cáo Lém thua cược, phải lau sạch quầy trao giải rồi nhé."
+        ],
+        "wrong": [
+          "Lần hai nhảy qua 6 tảng đá, đếm tới tảng thứ sáu xem.",
+          "Cả hai lần nhảy thì phải cộng điểm lần một và lần hai.",
+          "Mỗi tảng đá cách nhau 5 điểm, đếm thêm 5 thử nào."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o35",
+          "b2": "o60"
+        }
+      }
+    },
+    {
+      "id": "tinh-nhanh-quay-giai",
+      "title": "Ba phép cộng ở quầy",
+      "target": "cao-lem",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Cáo Lém viết ba phép tính lên tấm biển quầy trao giải. Tính.",
+      "template": "41 + 19 = {{b1}}\n67 + 3 = {{b2}}\n76 + 14 = {{b3}}",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o58",
+              "text": "58"
+            },
+            {
+              "id": "o59",
+              "text": "59"
+            },
+            {
+              "id": "o60",
+              "text": "60"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o60",
+              "text": "60"
+            },
+            {
+              "id": "o70",
+              "text": "70"
+            },
+            {
+              "id": "o80",
+              "text": "80"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o9",
+              "text": "9"
+            },
+            {
+              "id": "o80",
+              "text": "80"
+            },
+            {
+              "id": "o90",
+              "text": "90"
+            }
+          ]
+        }
+      ],
+      "skill": "phep-cong",
+      "curriculumRef": [
+        "toan2-t1-b21-luyen-tap-2-1-a",
+        "toan2-t1-b21-luyen-tap-2-1-b",
+        "toan2-t1-b21-luyen-tap-2-1-c"
+      ],
+      "support": {
+        "guide": [
+          "Cộng hàng đơn vị trước, được 10 thì viết 0 nhớ 1.",
+          "Cả ba phép tính đều ra số tròn chục."
+        ],
+        "hint": "1 + 9 = 10, viết 0 nhớ 1 sang hàng chục.",
+        "answer": {
+          "text": "41 + 19 = 60; 67 + 3 = 70; 76 + 14 = 90",
+          "explanation": "41 + 19 = 60; 67 + 3 = 70; 76 + 14 = 90."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ba số tròn chục xếp hàng trên biển, đẹp như tranh.",
+          "Cáo Lém lẩm bẩm: sao cậu tính nhanh hơn tớ viết thế?",
+          "Biển quầy trao giải sáng bừng đèn nhấp nháy!"
+        ],
+        "wrong": [
+          "Hàng đơn vị cộng ra 10 thì viết 0 và nhớ 1 nhé.",
+          "Kết quả cả ba phép đều tròn chục, xem lại ô đang lệch.",
+          "Nhớ 1 rồi thì hàng chục phải tăng thêm 1 đấy."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o60",
+          "b2": "o70",
+          "b3": "o90"
+        }
+      }
+    },
+    {
+      "id": "duong-bay-dai-nhat",
+      "title": "Đường bay dài nhất",
+      "target": "cao-lem",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "prompt": "Ba chiếc máy bay côn trùng bằng gỗ thi bay: ong bay 23 cm đến bông hoa đỏ rồi 38 cm đến bông hoa vàng; chuồn chuồn bay 39 cm đến hàng rào rồi 24 cm đến ao; châu chấu bay 51 cm đến khóm lúa. Đường bay của bạn nào dài nhất? Chọn bạn đó.",
+      "choices": [
+        {
+          "id": "ong",
+          "text": "ong"
+        },
+        {
+          "id": "chuon-chuon",
+          "text": "chuồn chuồn"
+        },
+        {
+          "id": "chau-chau",
+          "text": "châu chấu"
+        }
+      ],
+      "skill": "so-sanh-so",
+      "curriculumRef": [
+        "toan2-t1-b21-luyen-tap-2-2"
+      ],
+      "support": {
+        "guide": [
+          "Cộng hai đoạn bay của ong, rồi của chuồn chuồn.",
+          "So sánh ba độ dài với nhau."
+        ],
+        "hint": "Ong: 23 + 38; chuồn chuồn: 39 + 24; châu chấu: 51.",
+        "answer": {
+          "text": "chuồn chuồn (63 cm)",
+          "explanation": "Ong bay 61 cm, chuồn chuồn bay 63 cm, châu chấu bay 51 cm; 63 lớn nhất nên đường bay của chuồn chuồn dài nhất."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Vù vù! Chuồn chuồn gỗ nhận cờ quán quân đường dài.",
+          "Hơn nhau có 2 xăng-ti-mét mà cậu vẫn phân biệt được, tinh thật!",
+          "Lợn Rừng Đốm treo huy chương lên cánh chuồn chuồn rồi."
+        ],
+        "wrong": [
+          "Ong và chuồn chuồn bay hai chặng, cộng cả hai chặng đã.",
+          "Châu chấu bay một lèo 51 cm thôi, so lại xem.",
+          "61 và 63, số nào lớn hơn nhỉ?"
+        ]
+      },
+      "answer": {
+        "choices": [
+          "chuon-chuon"
+        ]
+      }
+    },
+    {
+      "id": "bi-cua-nam-va-robot",
+      "title": "Hũ bi trao giải",
+      "target": "cao-lem",
+      "kind": "riddle",
+      "question": "Giải thưởng tiếp theo là một hũ bi thật to. Nam có 38 viên bi. Rô-bốt có 34 viên bi. Hỏi Nam và Rô-bốt có tất cả bao nhiêu viên bi?",
+      "skill": "bai-toan-loi-van",
+      "curriculumRef": [
+        "toan2-t1-b21-luyen-tap-2-3"
+      ],
+      "support": {
+        "guide": [
+          "\"Có tất cả\" thì làm phép cộng.",
+          "Phép tính: 38 + 34."
+        ],
+        "hint": "8 + 4 = 12, viết 2 nhớ 1.",
+        "answer": {
+          "text": "72 viên bi",
+          "explanation": "Nam và Rô-bốt có tất cả: 38 + 34 = 72 (viên bi)."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bi lăn lóc cóc đầy hũ, đếm đủ 72 viên!",
+          "Nam và Rô-bốt cùng reo: đúng số bi của tụi tớ!",
+          "Gộp lại thì cộng, {name} nắm bài chắc như đinh đóng cột."
+        ],
+        "wrong": [
+          "Có tất cả nghĩa là gộp hai phần lại với nhau.",
+          "Phép cộng 38 + 34 có nhớ ở hàng đơn vị đấy.",
+          "Hàng chục nhớ thêm 1: 3 + 3 + 1 bằng mấy?"
+        ]
+      },
+      "answer": {
+        "value": 72
+      }
+    },
+    {
+      "id": "muc-nuoc-ba-be",
+      "title": "Ba bể cá dưới đáy xưởng",
+      "goTo": "Sang góc bể cá, món quà cuối cùng nằm dưới đáy bể",
+      "target": "toan2-cd4-be-ca",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "prompt": "Thước dán trên thành bể cho thấy: mực nước bể A ở vạch 10 cm, bể B ở vạch 16 cm, bể C ở vạch 25 cm. Ba bể cá A, B, C có mực nước khác nhau như hình vẽ dưới đây:",
+      "template": "a) Mực nước ở bể B cao hơn mực nước ở bể A bao nhiêu xăng-ti-mét? {{b1}} cm\nb) Mực nước ở bể C cao hơn mực nước ở bể A bao nhiêu xăng-ti-mét? {{b2}} cm\nc) Sau khi bạn Nam bỏ thêm một số hòn đá cảnh vào bể B thì mực nước ở bể B tăng thêm 5 cm. Hỏi lúc này mực nước ở bể B cao hơn mực nước ở bể A bao nhiêu xăng-ti-mét? {{b3}} cm",
+      "blanks": [
+        {
+          "id": "b1",
+          "options": [
+            {
+              "id": "o6",
+              "text": "6"
+            },
+            {
+              "id": "o7",
+              "text": "7"
+            },
+            {
+              "id": "o16",
+              "text": "16"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "options": [
+            {
+              "id": "o15",
+              "text": "15"
+            },
+            {
+              "id": "o17",
+              "text": "17"
+            },
+            {
+              "id": "o25",
+              "text": "25"
+            }
+          ]
+        },
+        {
+          "id": "b3",
+          "options": [
+            {
+              "id": "o11",
+              "text": "11"
+            },
+            {
+              "id": "o12",
+              "text": "12"
+            },
+            {
+              "id": "o21",
+              "text": "21"
+            }
+          ]
+        }
+      ],
+      "skill": "hon-kem",
+      "curriculumRef": [
+        "toan2-t1-b21-luyen-tap-2-4-a",
+        "toan2-t1-b21-luyen-tap-2-4-b",
+        "toan2-t1-b21-luyen-tap-2-4-c"
+      ],
+      "support": {
+        "guide": [
+          "Cao hơn bao nhiêu thì lấy vạch cao trừ vạch thấp.",
+          "Câu c: bể B dâng thêm 5 cm, cộng thêm 5 vào phần cao hơn."
+        ],
+        "hint": "Bể B cao hơn bể A 6 cm, thêm 5 cm nữa.",
+        "answer": {
+          "text": "a) Mực nước ở bể B cao hơn mực nước ở bể A bao nhiêu xăng-ti-mét? 6 cm; b) Mực nước ở bể C cao hơn mực nước ở bể A bao nhiêu xăng-ti-mét? 15 cm; c) Sau khi bạn Nam bỏ thêm một số hòn đá cảnh vào bể B thì mực nước ở bể B tăng thêm 5 cm. Hỏi lúc này mực nước ở bể B cao hơn mực nước ở bể A bao nhiêu xăng-ti-mét? 11 cm",
+          "explanation": "B cao hơn A: 16 – 10 = 6 (cm); C cao hơn A: 25 – 10 = 15 (cm); sau khi thả đá: 6 + 5 = 11 (cm)."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Tõm! Hòn đá cảnh rơi xuống, mực nước dâng đúng như cậu tính.",
+          "Cá vàng quẫy đuôi tặng {name} một vòng bong bóng.",
+          "Ba bể ba mực nước, không lẫn bể nào luôn."
+        ],
+        "wrong": [
+          "So với bể A thì lấy vạch của bể kia trừ đi 10 nhé.",
+          "Câu c: nước bể B dâng thêm 5 cm, cộng vào phần đã cao hơn.",
+          "Đọc lại vạch thước của bể C xem ở số mấy."
+        ]
+      },
+      "answer": {
+        "fills": {
+          "b1": "o6",
+          "b2": "o15",
+          "b3": "o11"
+        }
+      }
+    },
+    {
+      "id": "do-be-ca-o-nha",
+      "title": "Phiếu đo mực nước",
+      "kind": "worksheet",
+      "target": "toan2-cd4-be-ca",
+      "lessonId": "toan2-t1-b21",
+      "text": "Về nhà, cùng bố mẹ lấy thước đo mực nước ba bể cá trên phiếu Bài 21 rồi ghi số xăng-ti-mét vào ô trống.",
+      "curriculumRef": [
+        "toan2-t1-b21-luyen-tap-2-4-a",
+        "toan2-t1-b21-luyen-tap-2-4-b"
+      ]
+    },
+    {
+      "id": "cup-mo-qua",
+      "title": "Cúp thợ mở khoá",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Ba hộp quà đều mở tung! Lợn Rừng Đốm trao cho {name} chiếc cúp gỗ \"Thợ mở khoá số\", còn Cáo Lém phải hứa từ nay chỉ khoá quà bằng nơ."
+    },
+    {
+      "id": "ke-gau-bong-day-ap",
+      "title": "Kệ gấu bông đầy ắp",
+      "kind": "unlock",
+      "trigger": "auto",
+      "text": "Ở kệ gấu bông, Koala Na ngáp một cái thật dài: \"Tớ có nhiều gấu bông quá, muốn tặng bớt cho các em lớp Một… mà tặng bớt thì còn lại bao nhiêu nhỉ? Zzz…\""
+    }
+  ],
+  "reward": {
+    "xp": 80,
+    "coin": 15,
+    "skillXp": {
+      "phep-cong": 2,
+      "bai-toan-loi-van": 1
+    }
+  }
+}
