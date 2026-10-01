@@ -4,6 +4,14 @@
 .reward-star--off { filter: grayscale(1); opacity: 0.35; }
 .reward-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-xs); align-items: flex-start; font-weight: 700; font-size: var(--text-lg); }
 .reward-list li { display: flex; align-items: center; gap: var(--space-xs); flex-wrap: wrap; }
+.reward-cheer { display: flex; align-items: flex-end; justify-content: center; gap: var(--space-md); }
+/* The stars light one by one (400ms apart, matching the star sound), then the other rewards slide in. */
+@media (prefers-reduced-motion: no-preference) {
+  .reward-star { animation: reward-star-pop 480ms cubic-bezier(0.3, 1.6, 0.5, 1) backwards; animation-delay: calc(var(--star, 1) * 400ms); }
+  .reward-reveal { animation: reward-reveal 360ms ease-out backwards; animation-delay: calc(2000ms + var(--reveal, 0) * 200ms); }
+}
+@keyframes reward-star-pop { from { transform: scale(0.2) rotate(-30deg); opacity: 0; } 70% { transform: scale(1.2) rotate(6deg); opacity: 1; } to { transform: none; } }
+@keyframes reward-reveal { from { transform: translateY(0.75rem); opacity: 0; } to { transform: none; opacity: 1; } }
 .reward-level { font-family: var(--font-display); font-weight: 800; font-size: var(--text-hero); }
 
 .item-grid-backpack { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(6.5rem, 1fr)); gap: var(--space-sm); }

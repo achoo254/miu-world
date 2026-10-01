@@ -7,7 +7,7 @@ import type { PlayerData } from '../player/player-data';
 import { PROGRESS, questList } from '../player/test-fixtures';
 import { ProfileScreen } from '../profile/profile-screens';
 import type { ActiveQuestView } from '../quest/quest-flow';
-import { CompletionSequence, completionScreens } from './completion-sequence';
+import { CompletionSequence, completionScreens, countUpValue } from './completion-sequence';
 
 const CHARACTER: CharacterDto = { species: 'cat', name: 'Mochi', equipped: [] };
 const QUEST = questList(2).quests[0]?.quest as ActiveQuestView;
@@ -21,6 +21,9 @@ const DATA: PlayerData = {
   quests: questList(2).quests,
 };
 const REWARD = { xp: 100, coin: 20, skillXp: { 'phep-cong': 2 }, items: { 'la-than': 1 } };
+/** Reduced motion: the counters show their final number at once. */
+const reduceMotion = () => vi.stubGlobal('matchMedia', (query: string) => ({ matches: query.includes('reduce'), media: query }));
+const rowText = (id: string) => document.querySelector(`[data-id="${id}"] .visually-hidden`)?.textContent;
 const completion = (over: Partial<QuestCompletion> = {}): QuestCompletion => ({
   stars: 3,
   xpAwarded: 100,
@@ -47,8 +50,8 @@ describe('completion screens', () => {
     const onMap = vi.fn();
     render(<CompletionSequence completion={completion({ stars: 2 })} reward={REWARD} quest={QUEST} data={DATA} onMap={onMap} onExplore={() => undefined} />);
     expect(document.querySelector('[data-id="reward-stars"]')?.getAttribute('data-stars')).toBe('2');
-    expect(screen.getByText(/\+100 XP/)).toBeTruthy();
-    expect(screen.getByText(/\+20 Xu/)).toBeTruthy();
+    expect(rowText('reward-xp')).toBe('+100 XP');
+    expect(rowText('reward-coin')).toBe('+20 Xu');
     expect(screen.getByText(/Lá thần ×1/)).toBeTruthy();
     expect(screen.getByText(/Phép cộng \+2/)).toBeTruthy();
     expect(document.querySelector('[data-id="reward-encourage"]')).toBeNull();
@@ -63,10 +66,41 @@ describe('completion screens', () => {
 
   it('after seeing an answer: 90 XP with a kind word, and no Level Up', () => {
     render(<CompletionSequence completion={completion({ xpAwarded: 90, levelAfter: 1, unlocked: [] })} reward={REWARD} quest={QUEST} data={DATA} onMap={() => undefined} onExplore={() => undefined} />);
-    expect(screen.getByText(/\+90 XP/)).toBeTruthy();
+    expect(rowText('reward-xp')).toBe('+90 XP');
     expect(screen.getByText(/Mochi tự giải hết để nhận trọn 100 XP/)).toBeTruthy();
     expect(screen.queryByRole('button', { name: 'Tiếp' })).toBeNull();
     expect(screen.getByRole('button', { name: /Tiếp tục khám phá/ })).toBeTruthy();
+  });
+});
+
+describe('the reward moment unfolds in order', () => {
+  it('counts up from zero, easing out, and lands exactly on the server\'s number', () => {
+    expect(countUpValue(100, 0, 900)).toBe(0);
+    expect(countUpValue(100, 450, 900)).toBeGreaterThan(50);
+    expect(countUpValue(100, 450, 900)).toBeLessThan(100);
+    expect(countUpValue(100, 900, 900)).toBe(100);
+    expect(countUpValue(7, 5_000, 900)).toBe(7);
+  });
+
+  it('starts the counters at zero on screen while screen readers get the final number', () => {
+    render(<CompletionSequence completion={completion()} reward={REWARD} quest={QUEST} data={DATA} onMap={() => undefined} onExplore={() => undefined} />);
+    expect(document.querySelector('[data-id="reward-xp"] [aria-hidden="true"]')?.textContent).toBe('+0 XP');
+    expect(rowText('reward-xp')).toBe('+100 XP');
+  });
+
+  it('shows the final numbers at once under reduced motion', () => {
+    reduceMotion();
+    render(<CompletionSequence completion={completion()} reward={REWARD} quest={QUEST} data={DATA} onMap={() => undefined} onExplore={() => undefined} />);
+    expect(document.querySelector('[data-id="reward-xp"] [aria-hidden="true"]')?.textContent).toBe('+100 XP');
+    expect(document.querySelector('[data-id="reward-coin"] [aria-hidden="true"]')?.textContent).toBe('+20 Xu');
+  });
+
+  it('lets the child\'s character cheer, and leaves out rewards worth nothing', () => {
+    reduceMotion();
+    const nothing = { xp: 0, coin: 0, skillXp: { 'phep-cong': 0 }, items: { 'la-than': 0 } };
+    render(<CompletionSequence completion={completion({ xpAwarded: 0, levelAfter: 1, unlocked: [] })} reward={nothing} quest={QUEST} data={DATA} onMap={() => undefined} onExplore={() => undefined} />);
+    expect(document.querySelector('[data-id="reward-cheer"] .miu-portrait')).toBeTruthy();
+    for (const id of ['reward-xp', 'reward-coin', 'reward-item-la-than', 'reward-skill-phep-cong']) expect(document.querySelector(`[data-id="${id}"]`), id).toBeNull();
   });
 });
 

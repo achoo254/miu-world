@@ -44,7 +44,15 @@ export function NpcPortrait({
 
 /** Who asks a challenge: the last character who spoke before it in the quest, if any. */
 export function presenterOf(steps: readonly QuestStepPublic[], stepId: string): { name: string; target?: string } | null {
-  const index = steps.findIndex((s) => s.id === stepId);
+  return speakerBefore(steps, steps.findIndex((s) => s.id === stepId));
+}
+
+/** Who cheers when the quest is done: the last character who spoke in it, if any. */
+export function lastSpeakerOf(steps: readonly QuestStepPublic[]): { name: string; target?: string } | null {
+  return speakerBefore(steps, steps.length);
+}
+
+function speakerBefore(steps: readonly QuestStepPublic[], index: number): { name: string; target?: string } | null {
   for (let i = index - 1; i >= 0; i -= 1) {
     const step = steps[i];
     if (step?.kind !== 'dialogue') continue;

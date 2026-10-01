@@ -181,6 +181,8 @@ test('one child plays the whole MVP loop by touch, from Google sign-in to the LÃ
   await tap(page, '[data-id="hud-interact"]');
   await expect(page.locator('[data-id="reward-stars"]')).toHaveAttribute('data-stars', '3');
   await expect(page.locator('[data-id="reward-xp"]')).toHaveText(/\+100 XP/);
+  // The counters count up (script, not CSS, so `animations: 'disabled'` does not settle them).
+  await expect(page.locator('[data-id="reward-xp"] [aria-hidden="true"]')).toHaveText('+100 XP');
   await shot(page, '10-reward');
   await tap(page, '[data-id="completion-next"]');
   await expect(page.locator('[data-id="level-up"]')).toContainText('Lv.1 â†’ Lv.2');

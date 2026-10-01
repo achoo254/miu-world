@@ -1,6 +1,6 @@
 ---
 title: Màn chơi phù hợp và phong phú hơn
-status: in-progress
+status: completed
 created: 2026-09-30
 ---
 
@@ -16,6 +16,6 @@ Quyết định: Jev, `../reports/jev-260930-1645-scene-ui-richness.md`. Áp cho
 | 4 | Chữ to hơn (bài ~22 px, đề ~20 px, nhãn ≥ 20 px), bảng vừa nội dung, khối mềm dày, ô ≥ 64 px | M | `ui/kit/scene.css`, `ui/challenge/**/*.css` | Done |
 | 5 | Hàng tiến độ trên băng rôn | S | `ui/challenge/challenge-frame.tsx` | Done |
 | 6 | Nút hỗ trợ theo lượt sai (Gợi ý sau lần sai đầu, Đáp án sau 2 lần sai; ẩn ở giao diện, server giữ nguyên cách tính sao) | S | `ui/challenge/support-panel.tsx` | Done |
-| 7 | Màn hoàn thành theo trình tự (sau khi phiên kia xong file này) | S | `ui/rewards/**` | Pending |
+| 7 | Màn hoàn thành theo trình tự: NPC nói cuối và nhân vật của bé ăn mừng, sao sáng lần lượt (400 ms, kèm tiếng), XP và xu đếm lên, ẩn thưởng bằng 0; giảm chuyển động thì hiện ngay | S | `ui/rewards/**` | Done (01/10; ảnh `assets/generated/review/mvp/10-reward.png`) |
 
 Kiểm: test đơn vị từng phần, E2E `sgk-mechanics` (ảnh mới), `hud-layout`, full gate + e2e:ci. Tôn trọng `prefers-reduced-motion`.
