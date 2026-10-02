@@ -307,17 +307,35 @@ export async function generateSchool() {
     trees: { skip: 0.5, blocks: (roll, block) => ({ log: block('tree-log'), leaves: block(roll < 0.25 ? 'leaves-pink' : roll < 0.38 ? 'leaves-autumn' : 'leaves') }) },
     dressing: { models: [`${N}/flower_redA.glb`, `${N}/flower_yellowB.glb`, `${N}/plant_bush.glb`, `${PACK.props}/potted-plant.glb`], spacing: 9 },
     life: ({ landmark }) => [
-      // The school: the guard at the gate, parents at it, the sweepers, teachers, pupils at play.
-      ...crowd('school-guard', ['Bác bảo vệ'], [person('d')], [MID + 8, CAMPUS.z0 + 6], 2, 1),
+      // 0. Street, bus terminals, and front school gate (x: MID=400, z: STREET.z1 ~ 315-325).
+      ...crowd('school-guard', ['Bác bảo vệ cổng trường'], [person('d')], [MID + 8, CAMPUS.z0 + 6], 2, 1),
+      { routine: 'teacher', name: 'Cô giáo đón học sinh', model: person('i'), held: [HELD.book], at: [MID + 4, CAMPUS.z0 + 4] as const },
+      { routine: 'vendor', name: 'Bác tài xế xe buýt', model: person('m'), at: [MID - 20, STREET.z1 + 2] as const },
+      { routine: 'pupil', name: 'Bạn nhỏ đợi xe buýt', model: person('f'), held: [HELD.balloon], at: [MID - 28, STREET.z1 + 2] as const },
+      { routine: 'dog', name: 'Cún gác cổng trường', model: animal('dog'), at: [MID + 10, CAMPUS.z0 + 4] as const },
       ...crowd('shopper', ['Mẹ đón con', 'Bố đưa con đi học', 'Bà đón cháu'], [person('l'), person('c'), person('i')], [MID - 14, STREET.z1 + 3], 6, 3, [HELD.basket]),
+
+      // 1. Chapter 1: Sân trường (sân bóng, lễ chào cờ, cột cờ).
       ...crowd('sweeper', ['Cô lao công', 'Chú lao công'], [person('e'), person('j')], landmark('cot-co'), 10, 2, [HELD.shovel, HELD.basket]),
-      ...crowd('teacher', ['Thầy giáo', 'Cô giáo'], [person('a'), person('i')], [MID, MAIN_BUILDING.zFront - 7], 8, 3, [HELD.book]),
-      ...crowd('pupil', ['Bạn cùng trường'], [person('f'), person('n'), person('o'), person('p'), person('q'), person('r')], landmark('san-bong'), 10, 8, [HELD.book]),
-      ...crowd('pupil', ['Bạn ở sân chơi'], [person('f'), person('o'), person('q')], [area('xuong-do-choi').x, area('xuong-do-choi').z], 14, 5, [HELD.balloon]),
+      ...crowd('teacher', ['Thầy giáo', 'Cô giáo', 'Thầy tổng phụ trách'], [person('a'), person('i'), person('m')], [MID, MAIN_BUILDING.zFront - 7], 8, 3, [HELD.book]),
+      ...crowd('pupil', ['Bạn cùng trường', 'Bạn tập thể dục giữa giờ'], [person('f'), person('n'), person('o'), person('p'), person('q'), person('r')], landmark('san-bong'), 10, 8, [HELD.book]),
+      ...crowd('pupil', ['Đội nghi thức chào cờ', 'Bạn nhỏ kéo cờ'], [person('f'), person('o'), person('n')], landmark('cot-co'), 6, 3, [HELD.book]),
+
+      // 2. Chapter 2: Sân sau dãy lớp & Tháp đồng hồ.
+      ...crowd('reader', ['Bạn đọc sách', 'Học sinh ôn bài'], [person('n'), person('p'), person('r')], [area('phong-mi-thuat').x, area('phong-mi-thuat').z], 10, 4, [HELD.book]),
+      ...crowd('pupil', ['Bạn nhỏ ngắm tháp đồng hồ', 'Học sinh đếm tiếng chuông'], [person('f'), person('q')], [area('thap-dong-ho').x, area('thap-dong-ho').z], 8, 3, [HELD.book]),
+      ...crowd('teacher', ['Thầy phụ trách phòng thí nghiệm'], [person('a')], [area('thap-dong-ho').x - 8, area('thap-dong-ho').z], 4, 1, [HELD.book]),
+
+      // 3. Chapter 3: Vườn trường & Khu thực nghiệm sinh học.
+      ...crowd('waterer', ['Thầy làm vườn', 'Bạn trồng cây', 'Bác tỉa cây cảnh'], [person('m'), person('q'), person('a')], [area('vuon-truong').x, area('vuon-truong').z - 10], 8, 3, [HELD.bucket]),
+      ...crowd('teacher', ['Cô giáo dạy môn sinh học'], [person('i')], [area('vuon-truong').x + 6, area('vuon-truong').z - 5], 4, 1, [HELD.book]),
+      ...crowd('pupil', ['Bạn nhỏ chăm sóc luống hoa', 'Bạn nhỏ tưới rau mầm', 'Bạn quan sát bướm'], [person('f'), person('o'), person('r')], [area('vuon-truong').x - 4, area('vuon-truong').z - 12], 8, 4, [HELD.bucket]),
+
+      // 4. Chapter 4: Sân chơi & Xưởng đồ chơi.
+      ...crowd('pupil', ['Bạn ở sân chơi', 'Bé chơi cầu trượt', 'Bạn leo xà đơn'], [person('f'), person('o'), person('q'), person('n')], [area('xuong-do-choi').x, area('xuong-do-choi').z], 14, 6, [HELD.balloon]),
       ...crowd('pupil', ['Bạn chơi bóng rổ'], [person('n'), person('p'), person('r'), person('o')], landmark('san-bong-ro'), 6, 4, [TH.ball]),
+      ...crowd('porter', ['Bác thợ mộc xưởng đồ chơi'], [person('b')], [area('xuong-do-choi').x - 8, area('xuong-do-choi').z + 6], 4, 1, [HELD.crate]),
       ...crowd('home-cook', ['Cô nấu bếp'], [person('l')], [area('cang-tin').x, area('cang-tin').z], 8, 2, [HELD.basket]),
-      ...crowd('reader', ['Bạn đọc sách'], [person('n'), person('p')], [area('phong-mi-thuat').x, area('phong-mi-thuat').z], 10, 3, [HELD.book]),
-      ...crowd('waterer', ['Thầy làm vườn', 'Bạn trồng cây'], [person('m'), person('q')], [area('vuon-truong').x, area('vuon-truong').z - 10], 8, 2, [HELD.bucket]),
       // The square: the shopkeepers, the traders, the children by the quest board, at the gazebo and the stage.
       ...crowd('vendor', ['Cô bán hàng', 'Chú bán đồ chơi'], [person('h'), person('k')], landmark('cua-hang'), 3, 2, [HELD.basket]).map((r, i) => ({ ...r, visits: [SHOP_KEEPERS[i % 2] ?? r.at, SHOP_KEEPERS[(i + 1) % 2] ?? r.at, r.at] })),
       ...crowd('vendor', ['Bác đổi đồ', 'Chị bán quà'], [person('b'), person('e')], landmark('cho-giao-dich'), 4, 2, [HELD.crate]).map((r, i) => {

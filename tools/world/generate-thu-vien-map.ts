@@ -221,7 +221,19 @@ export async function generateThuVien() {
     // The library town: the librarians, readers young and old, the children's corner, parents and the
     // gardeners outside; the festival crowd, the tower's keepers, the streets.
     life: ({ landmark }) => [
-      // Indoors each works round its own place: the desk and the counter, the stacks, the tables.
+      // 0. Spawn & arrival terminal: guards, welcome guides, bus riders and shoppers (x: ~186, z: ~430).
+      { routine: 'school-guard', name: 'Chú bảo vệ cổng thư viện', model: person('d'), at: [SPAWN.x + 3, SPAWN.z + 1] as const },
+      { routine: 'librarian', name: 'Cô hướng dẫn mượn thẻ sách', model: person('i'), held: [LIFE_HELD.book], at: [SPAWN.x - 2, SPAWN.z - 3] as const },
+      { routine: 'shopper', name: 'Khách mua sách tới bến xe', model: person('k'), held: [LIFE_HELD.basket], at: [SPAWN.x + 2, SPAWN.z - 4] as const },
+      { routine: 'pupil', name: 'Bạn nhỏ cầm truyện vừa mượn', model: person('f'), held: [LIFE_HELD.book], at: [SPAWN.x - 4, SPAWN.z + 2] as const },
+      { routine: 'dog', name: 'Cún gác bến xe thư viện', model: animal('dog'), at: [SPAWN.x + 5, SPAWN.z - 2] as const },
+
+      // Way along the central avenue (x: 320-440, z: 420): townspeople strolling and working.
+      { routine: 'sweeper', name: 'Chú bảo trì đèn đường', model: person('l'), at: [320, 420] as const },
+      { routine: 'shopper', name: 'Người đi dạo đọc báo ven hồ', model: person('c'), held: [LIFE_HELD.book], at: [380, 420] as const },
+      { routine: 'vendor', name: 'Bác đẩy xe sách lưu động', model: person('j'), held: [LIFE_HELD.crate], at: [440, 420] as const },
+
+      // 1. Chapter 1: Indoors each works round its own place: the desk and the counter, the stacks, the tables.
       ...visiting(crowd('librarian', ['Cô thủ thư'], [person('i')], landmark('ban-thu-thu'), 2, 1, [LIFE_HELD.book]), [[220, 510], [240, 510], [262, 512]]),
       ...visiting(crowd('librarian', ['Chú xếp sách'], [person('j')], landmark('loi-giua-cac-ke-sach'), 3, 1, [LIFE_HELD.book]), [[251, 512], [257, 516], [262, 518]]),
       ...visiting(crowd('reader', ['Bạn đọc sách', 'Bác đọc báo', 'Chị đọc truyện'], [person('n'), person('a'), person('h'), person('p')], landmark('ban-doc'), 5, 4, [LIFE_HELD.book]), [[200, 512], [205, 516], [210, 508]]),
@@ -233,13 +245,40 @@ export async function generateThuVien() {
       ...crowd('sweeper', ['Chú quét lối đi'], [person('d')], landmark('thu-vien'), 10, 1),
       ...crowd('shopper', ['Mẹ đưa con đến thư viện', 'Bố dắt con đi đọc sách', 'Bà dẫn cháu đi mượn sách'], [person('l'), person('k'), person('i')], landmark('quang-truong-dai-phun'), 11, 4, [LIFE_HELD.book]),
       ...crowd('waterer', ['Bác làm vườn sau'], [person('b')], landmark('vuon-doc-sach'), 12, 1, [LIFE_HELD.bucket]),
+      ...crowd('reader', ['Bác đọc sách bên hiên thư viện'], [person('a')], landmark('thu-vien'), 8, 2, [LIFE_HELD.book]),
+      ...crowd('reader', ['Bạn nhỏ vẽ bìa sách yêu thích'], [person('p')], landmark('vuon-doc-sach'), 7, 2, [LIFE_HELD.palette]),
+
+      // 2. Chapter 2: Sân lễ hội lá vàng & các trạm hoạt động.
       ...crowd('pupil', ['Bạn dự hội'], [person('f'), person('n'), person('o'), person('q'), person('r')], landmark('san-khau-la-vang'), 12, 8, [LIFE_HELD.balloon]),
       ...crowd('vendor', ['Cô bán kẹo lá', 'Bác bán bóng bay'], [person('e'), person('b')], landmark('quay-keo-la'), 5, 2, [LIFE_HELD.apple]),
       ...crowd('shopper', ['Mẹ đưa con đi hội', 'Bố dắt con'], [person('l'), person('k')], landmark('duong-la-vang'), 14, 4, [LIFE_HELD.basket]),
       ...crowd('trumpeter', ['Chú thổi kèn hội'], [person('c')], landmark('san-khau-la-vang'), 6, 1, [LIFE_HELD.flute]),
-      ...crowd('school-guard', ['Bác giữ tháp'], [person('d')], landmark('chan-thap-dong-ho'), 4, 1),
-      ...crowd('teacher', ['Ông thợ đồng hồ'], [person('a')], landmark('phong-may-dong-ho'), 4, 1, [LIFE_HELD.book]),
       ...crowd('sweeper', ['Cô quét lá vàng'], [person('e'), person('h')], landmark('cay-la-vang'), 12, 2, [LIFE_HELD.basket]),
+      ...crowd('reader', ['Bạn nghe kể chuyện sự tích', 'Bé lắng nghe cô đọc sách'], [person('f'), person('o'), person('r')], landmark('tram-ke-chuyen'), 6, 3, [LIFE_HELD.book]),
+      ...crowd('pupil', ['Bạn nhỏ thi đố vui bó đũa', 'Bạn đếm que tính'], [person('n'), person('q')], landmark('tram-bo-dua'), 5, 2, [LIFE_HELD.book]),
+      ...crowd('pupil', ['Bạn múc nước thả thuyền lá', 'Bé vớt thuyền'], [person('o'), person('f')], landmark('tram-be-nuoc'), 6, 2, [LIFE_HELD.bucket]),
+      ...crowd('shopper', ['Bác ngắm cây lá vàng', 'Người thưởng ngoạn mùa thu'], [person('c'), person('p')], landmark('cay-la-vang'), 8, 2),
+      ...crowd('pupil', ['Bạn nhỏ reo hò xem kịch lá'], [person('n'), person('r')], landmark('san-khau-la-vang'), 8, 2, [LIFE_HELD.balloon]),
+
+      // 3. Chapter 3: Tháp đồng hồ, xưởng đồng hồ, phòng lịch & đài thiên văn (đầy đủ sinh hoạt thường nhật).
+      ...crowd('school-guard', ['Bác giữ tháp'], [person('d')], landmark('chan-thap-dong-ho'), 4, 1),
+      ...crowd('sweeper', ['Chú quét dọn chân tháp'], [person('l')], landmark('mai-hien-thap'), 6, 1),
+      ...crowd('teacher', ['Ông thợ đồng hồ'], [person('a')], landmark('phong-may-dong-ho'), 4, 1, [LIFE_HELD.book]),
+      ...crowd('porter', ['Thợ phụ lau bánh răng', 'Học việc chỉnh kim đồng hồ'], [person('k'), person('j')], landmark('ke-dong-ho'), 4, 2, [LIFE_HELD.axe]),
+      ...crowd('pupil', ['Bạn nhỏ học cách xem giờ', 'Bạn quan sát con lắc'], [person('f'), person('n')], landmark('phong-may-dong-ho'), 5, 2, [LIFE_HELD.book]),
+      ...crowd('librarian', ['Cô quản lý lịch mùa', 'Chuyên viên lưu trữ tờ lịch'], [person('i'), person('e')], landmark('phong-lich'), 4, 2, [LIFE_HELD.book]),
+      ...crowd('librarian', ['Bác thợ vá lịch cũ'], [person('b')], landmark('ban-va-lich'), 3, 1, [LIFE_HELD.book]),
+      ...crowd('pupil', ['Bạn nhỏ học 12 tháng', 'Bạn tìm ngày sinh nhật trên lịch'], [person('o'), person('q')], landmark('gia-treo-lich'), 4, 2, [LIFE_HELD.book]),
+      ...crowd('reader', ['Người xem album ảnh bốn mùa'], [person('p')], landmark('goc-treo-album-anh'), 4, 1, [LIFE_HELD.book]),
+      ...crowd('shopper', ['Bác bưu tá phát thư', 'Người gửi bưu thiếp qua khe thư'], [person('m'), person('h')], landmark('hop-thu'), 4, 2, [LIFE_HELD.book]),
+      ...crowd('reader', ['Nhà thiên văn nghiệp dư', 'Người ngắm mây trời qua kính'], [person('d'), person('c')], landmark('goc-kinh-vien-vong'), 5, 2),
+      ...crowd('pupil', ['Bạn nhỏ ngắm đường chân trời'], [person('r')], landmark('ban-cong-ngam-troi'), 4, 1),
+      ...crowd('shopper', ['Khách ngồi hóng mát ngắm tháp', 'Bác đọc sách trên ghế đá'], [person('a'), person('k')], landmark('bai-co-quanh-thap'), 8, 3, [LIFE_HELD.book]),
+      ...crowd('pupil', ['Nhóm bạn xếp hàng lên tham quan tháp'], [person('f'), person('o'), person('q')], landmark('chan-cau-thang-xoan'), 5, 3, [LIFE_HELD.book]),
+      ...crowd('sentry', ['Người giữ chuông đỉnh tháp'], [person('j')], landmark('gac-chuong'), 3, 1),
+      ...crowd('reader', ['Khách ngắm toàn cảnh thị trấn'], [person('p')], landmark('ban-cong-mat-dong-ho'), 3, 1),
+
+      // Animals around the library, gardens, festival, and clock tower.
       ...crowd('dog', ['Cún phố sách'], [animal('dog')], landmark('quang-truong-dai-phun'), 20, 3),
       ...crowd('cat', ['Mèo thư viện'], [animal('cat')], landmark('goc-doc-co-goi'), 5, 2),
       ...crowd('chick', ['Gà nhà bác làm vườn'], [animal('chick')], landmark('vuon-doc-sach'), 12, 8),

@@ -239,6 +239,15 @@ export async function generateChoPhien() {
     // The cast is drawn once the map is built (zone-map.ts calls `life` after `build`).
     life: ({ landmark }) => shopperRounds(kit ?? fail('the market was not built before its cast'), [
       ...cast,
+      // 0. Spawn & bến xe chợ phiên (x: 220, z: 262).
+      { routine: 'school-guard', name: 'Chú bảo vệ trạm bến xe chợ', model: person('d'), at: [SPAWN.x + 4, SPAWN.z + 2] as const },
+      { routine: 'vendor', name: 'Cô hướng dẫn vào chợ phiên', model: person('e'), held: [HELD.basket], at: [SPAWN.x - 3, SPAWN.z - 3] as const },
+      { routine: 'shopper', name: 'Khách đi chợ xách làn xuống bến', model: person('k'), held: [HELD.basket], at: [SPAWN.x + 3, SPAWN.z - 4] as const },
+      { routine: 'pupil', name: 'Bạn nhỏ đợi xe cùng mẹ', model: person('f'), held: [HELD.flower], at: [SPAWN.x - 4, SPAWN.z + 3] as const },
+      { routine: 'dog', name: 'Cún giữ trạm đón chợ', model: M.pets.dog, at: [SPAWN.x + 5, SPAWN.z - 2] as const },
+      { routine: 'porter', name: 'Bác kéo xe hàng vào chợ', model: person('m'), held: [HELD.crate], at: [220, 290] as const },
+      { routine: 'shopper', name: 'Người đi dạo phố chợ sớm', model: person('l'), held: [HELD.basket], at: [220, 310] as const },
+
       // Shoppers and children round the squares and along the lanes, porters at the gate and the harbour.
       ...crowd('shopper', ['Cô đi chợ', 'Bác đi chợ', 'Mẹ đi chợ', 'Bà đi chợ sớm', 'Chị xách làn'], [person('c'), person('g'), person('l'), person('e'), person('i')], landmark('quang-truong-cho'), 13, 10, [HELD.basket]),
       ...crowd('shopper', ['Bé đi chợ cùng mẹ', 'Bạn nhỏ xách giỏ', 'Bé cầm hoa'], [person('f'), person('n'), person('o')], landmark('quang-truong-cho'), 9, 5, [HELD.flower]),

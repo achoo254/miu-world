@@ -579,24 +579,33 @@ export async function generateForest(): Promise<{ world: VoxelWorld; entities: W
     scaleOf,
   });
 
-  // Forest folk at the glades of chapters 2–5, each glade its own: a ranger, mushroom pickers, campers and
-  // a bird watcher (placed like the villagers of the wide maps, village-life.ts).
+  // Forest folk at the glades of chapters 2–5, each glade its own: rangers, mushroom pickers,
+  // campers, woodcutters, botanists, landscape painters, anglers and scouts.
   const basket = `${PACK.props}/basket.glb`;
   const book = `${PACK.props}/open-book.glb`;
   const axe = `${PACK.survival}/tool-axe.glb`;
-  const FOLK: ReadonlyArray<{ ranger: string; pickers: readonly string[]; campers: string; watcher: string }> = [
-    { ranger: 'Chú kiểm lâm', pickers: ['Cô hái nấm', 'Bà hái rau rừng'], campers: 'Bạn cắm trại', watcher: 'Bác ngắm chim' },
-    { ranger: 'Cô kiểm lâm', pickers: ['Chị nhặt hạt dẻ', 'Bác hái quả sim'], campers: 'Bạn dựng lều', watcher: 'Ông vẽ cây' },
-    { ranger: 'Bác giữ rừng', pickers: ['Cô nhặt lá khô', 'Bà hái chè rừng'], campers: 'Bạn đi dã ngoại', watcher: 'Cô chụp ảnh chim' },
-    { ranger: 'Anh kiểm lâm trẻ', pickers: ['Chú lấy mật ong', 'Chị hái hoa dại'], campers: 'Bạn chơi trốn tìm', watcher: 'Bác đọc sách dưới cây' },
-  ];
-  // The scene's folk: the ranger at his cabin, a mushroom picker along the trail, three children exploring
-  // before the falls and a grandfather watching it with his book.
   const magnifier = `${PACK.props}/magnifier.glb`;
+  const palette = `${PACK.props}/artist-palette.glb`;
+  const kite = `${PACK.props}/kite.glb`;
+  const fish = `${PACK.survival}/fish.glb`;
+  const FOLK: ReadonlyArray<{ ranger: string; pickers: readonly string[]; campers: readonly string[]; watcher: string }> = [
+    { ranger: 'Chú kiểm lâm', pickers: ['Cô hái nấm', 'Bà hái rau rừng', 'Chị hái mộc nhĩ', 'Bác tìm thảo dược'], campers: ['Bạn cắm trại', 'Bạn dựng lều', 'Bé nhặt nón thông', 'Bạn quan sát kiến'], watcher: 'Bác ngắm chim' },
+    { ranger: 'Cô kiểm lâm', pickers: ['Chị nhặt hạt dẻ', 'Bác hái quả sim', 'Cô hái dâu rừng', 'Bà nhặt nấm hương'], campers: ['Bạn dựng lều', 'Bạn thổi sáo rừng', 'Bé tìm tổ chim', 'Bạn làm tiêu bản lá'], watcher: 'Ông vẽ cây' },
+    { ranger: 'Bác giữ rừng', pickers: ['Cô nhặt lá khô', 'Bà hái chè rừng', 'Chị hái hoa dại', 'Chú đào rễ cây'], campers: ['Bạn đi dã ngoại', 'Bạn chụp ảnh bướm', 'Bé gom củi khô', 'Bạn ngắm mây trời'], watcher: 'Cô chụp ảnh chim' },
+    { ranger: 'Anh kiểm lâm trẻ', pickers: ['Chú lấy mật ong', 'Chị hái hoa dại', 'Cô hái nấm mối', 'Bác tìm măng non'], campers: ['Bạn chơi trốn tìm', 'Bạn hát bên suối', 'Bé xếp lá vàng', 'Bạn ngắm thác'], watcher: 'Bác đọc sách dưới cây' },
+  ];
+  // The scene's folk: the ranger at his cabin, mushroom pickers, explorers, anglers, and spawn guides.
   const explorer = (name: string, letter: string, at: readonly [number, number]): Resident => ({ routine: 'pupil', name, model: person(letter), at, scale: 0.72, held: [magnifier] });
   const sceneFolk: Resident[] = [
+    // Welcome and arrival at spawn (x: 16, z: 16).
+    { routine: 'sentry', name: 'Bác kiểm lâm đón tiếp', model: person('d'), at: [spawn.x + 3, spawn.z + 1] as const, held: [axe] },
+    { routine: 'pupil', name: 'Bạn nhỏ hướng dẫn đường rừng', model: person('f'), at: [spawn.x + 1, spawn.z - 2] as const, held: [magnifier] },
+    { routine: 'reader', name: 'Khách tham quan bìa rừng', model: person('k'), at: [spawn.x - 2, spawn.z + 2] as const, held: [book] },
+
+    // Waterfall and cabin scene.
     { routine: 'sentry', name: 'Bác Kiểm lâm Sơn', model: person('d'), at: [cabin.door[0] - 3, cabin.door[1] + 3] },
     { routine: 'waterer', name: 'Chị Hái nấm Mai', model: person('h'), at: [100, 72], held: [basket] },
+    { routine: 'porter', name: 'Chú gánh củi về lều', model: person('b'), at: [camp.x + 4, camp.z - 2], held: [axe] },
     explorer('Bé Na thám hiểm', 'o', [pool0.x - 12, pool0.z - 3]),
     explorer('Bé Bin thám hiểm', 'q', [pool0.x - 10, pool0.z + 2]),
     explorer('Bé Su thám hiểm', 'f', [pool0.x - 15, pool0.z]),
@@ -617,10 +626,14 @@ export async function generateForest(): Promise<{ world: VoxelWorld; entities: W
         const folk = FOLK[i % FOLK.length] ?? FOLK[0];
         if (!folk) return [];
         return [
-          ...crowd('sentry', [folk.ranger], [person('d')], [d.x, d.z - 18], 6, 1, [axe]),
-          ...crowd('waterer', folk.pickers, [person('e'), person('i')], [d.x - 20, d.z], 8, 2, [basket]),
-          ...crowd('pupil', [folk.campers], [person('f'), person('o'), person('q')], [d.x + 18, d.z + 6], 6, 3),
-          ...crowd('reader', [folk.watcher], [person('a')], [d.x, d.z + 22], 4, 1, [book]),
+          ...crowd('sentry', [folk.ranger, 'Anh tuần rừng'], [person('d'), person('m')], [d.x, d.z - 18], 8, 2, [axe]),
+          ...crowd('waterer', folk.pickers, [person('e'), person('i'), person('h'), person('p')], [d.x - 20, d.z], 10, 4, [basket]),
+          ...crowd('porter', ['Bác tiều phu đốn củi', 'Chú gom cành khô'], [person('b'), person('j')], [d.x + 15, d.z - 15], 8, 2, [axe]),
+          ...crowd('pupil', folk.campers, [person('f'), person('o'), person('q'), person('r')], [d.x + 18, d.z + 6], 8, 5, [magnifier]),
+          ...crowd('reader', [folk.watcher, 'Nhà thực vật học'], [person('a'), person('c')], [d.x, d.z + 22], 6, 2, [book]),
+          ...crowd('reader', ['Bạn vẽ tranh cây cổ thụ', 'Người phác thảo hoa dại'], [person('n'), person('p')], [d.x - 12, d.z + 18], 6, 2, [palette]),
+          ...crowd('ferryman', ['Bác câu cá ven suối rừng'], [person('k')], [d.x - 18, d.z - 12], 6, 1, [fish]),
+          ...crowd('pupil', ['Bạn nhỏ thả diều ven trảng cỏ'], [person('f'), person('o')], [d.x + 8, d.z + 24], 8, 2, [kite]),
         ];
       }).concat(sceneFolk),
       seed + 23,

@@ -89,6 +89,7 @@ const LIFE_HELD = {
   kite: `${PACK.props}/kite.glb`,
   paddle: `${PACK.nature}/canoe_paddle.glb`,
   shirt: `${PACK.props}/t-shirt.glb`,
+  balloon: `${PACK.props}/balloon.glb`,
 };
 
 export const ZONES: readonly Zone[] = [
@@ -261,6 +262,39 @@ export async function generateLauDai() {
     // The castle's people: guards at the gate, in the hall and on the training ground, the servants of the
     // dining hall and the bedchamber, the librarian, the gardeners, children, craftsmen; the town below.
     life: ({ landmark }) => [
+      // 0. The spawn & arrival terminal: guards, travelers, bus passengers and welcome vendor (x: ~60, z: ~345).
+      { routine: 'sentry', name: 'Chú lính gác bến xe', model: person('d'), held: [LIFE_HELD.axe], at: [SPAWN.x + 4, SPAWN.z + 1] as const },
+      { routine: 'vendor', name: 'Bác bán bánh trạm đón', model: person('h'), held: [LIFE_HELD.apple], at: [SPAWN.x - 2, SPAWN.z - 3] as const },
+      { routine: 'shopper', name: 'Khách lữ hành tới thăm', model: person('k'), held: [LIFE_HELD.basket], at: [SPAWN.x + 2, SPAWN.z - 5] as const },
+      { routine: 'pupil', name: 'Bạn nhỏ đợi xe vào thành', model: person('f'), held: [LIFE_HELD.balloon], at: [SPAWN.x - 6, SPAWN.z + 1] as const },
+      { routine: 'dog', name: 'Cún trông bến đón', model: animal('dog'), at: [SPAWN.x + 6, SPAWN.z - 1] as const },
+
+      // Way from spawn to castle (along the west-east road): villagers at everyday life.
+      { routine: 'sweeper', name: 'Chú quét lối đá', model: person('l'), at: [160, 345] as const },
+      { routine: 'waterer', name: 'Bác làm vườn ven đường', model: person('a'), held: [LIFE_HELD.flower], at: [220, 345] as const },
+      { routine: 'shopper', name: 'Người đi dạo ngắm thành', model: person('c'), held: [LIFE_HELD.book], at: [280, 345] as const },
+      { routine: 'pupil', name: 'Bạn nhỏ dạo đường làng', model: person('o'), held: [LIFE_HELD.kite], at: [200, 348] as const },
+
+      // 1. Chapter 1: Sân hình khối & Painters' Court (x: 110-215, z: 215-300): artists, teachers, geometry students, woodworkers.
+      ...crowd('teacher', ['Thầy dạy vẽ'], [person('a')], landmark('phong-ve'), 6, 1, [LIFE_HELD.palette]),
+      ...crowd('teacher', ['Cô giáo hướng dẫn hình học'], [person('i')], landmark('ban-thuoc-ke'), 5, 1, [LIFE_HELD.book]),
+      ...crowd('reader', ['Bạn vẽ tranh'], [person('f'), person('o'), person('p')], landmark('phong-tranh'), 8, 3, [LIFE_HELD.palette]),
+      ...crowd('reader', ['Bạn ghép tranh hình học'], [person('n'), person('q')], landmark('ban-ghep-tranh'), 6, 2, [LIFE_HELD.palette]),
+      ...crowd('reader', ['Bạn cắt dán giấy màu'], [person('f'), person('r')], landmark('ban-cat-dan'), 6, 2, [LIFE_HELD.palette]),
+      ...crowd('pupil', ['Bạn nhỏ đo khối lập phương'], [person('n'), person('q')], landmark('khoi-lap-phuong'), 8, 2, [LIFE_HELD.book]),
+      ...crowd('pupil', ['Bạn nhỏ khám phá khối hộp'], [person('o'), person('r')], landmark('khoi-hop-chu-nhat'), 8, 2, [LIFE_HELD.book]),
+      ...crowd('pupil', ['Bạn nhỏ tìm hiểu khối trụ'], [person('p'), person('f')], landmark('khoi-tru'), 8, 2, [LIFE_HELD.book]),
+      ...crowd('pupil', ['Bạn nhỏ ngắm khối cầu'], [person('q'), person('n')], landmark('khoi-cau'), 8, 2, [LIFE_HELD.balloon]),
+      ...crowd('pupil', ['Bạn nhỏ quanh khối chóp'], [person('r'), person('o')], landmark('khoi-chop'), 8, 2, [LIFE_HELD.balloon]),
+      ...crowd('pupil', ['Bạn nhỏ dạo hiên đá'], [person('f'), person('p')], landmark('hien-da'), 8, 2, [LIFE_HELD.book]),
+      ...crowd('porter', ['Bác thợ mộc đẽo khối gỗ'], [person('m'), person('j')], landmark('ban-thu-cong'), 6, 2, [LIFE_HELD.axe, LIFE_HELD.crate]),
+      ...crowd('shopper', ['Khách thưởng lãm tranh'], [person('l'), person('k')], landmark('gia-ve-lon'), 10, 2, [LIFE_HELD.basket]),
+      ...crowd('sweeper', ['Chú quét sân hình khối'], [person('b')], landmark('khoi-hinh'), 6, 1),
+      ...crowd('waterer', ['Cô tưới hoa phòng vẽ'], [person('e')], landmark('o-cua-phong-ve'), 6, 1, [LIFE_HELD.bucket]),
+      ...crowd('cat', ['Mèo sưởi nắng thềm khối'], [animal('cat')], landmark('bac-thang-khoi'), 8, 2),
+      ...crowd('dog', ['Cún chạy chơi trên cỏ'], [animal('dog')], landmark('bai-co'), 12, 2),
+
+      // 2. Chapter 2: Đại sảnh ôn tập & Courtyard (x: 400-510, z: 180-300).
       // The gate's guards stand either side of the way in, on the landing before the bridge (d-02).
       ...([-1, 1] as const).map((side, i) => ({
         routine: 'sentry' as const,
@@ -285,6 +319,7 @@ export async function generateLauDai() {
       ...crowd('cook', ['Bác đầu bếp'], [person('h')], landmark('phong-an'), 6, 1, [LIFE_HELD.spoon]),
       // The maid walks the aisle between the long tables of the dining hall (d-08).
       { routine: 'cook', name: 'Cô hầu bàn', model: person('e'), held: [LIFE_HELD.spoon], at: [493, 222] as const, visits: [[493, 230], [493, 240], [493, 250]] as const },
+      ...crowd('porter', ['Thị nữ mang khay tiệc'], [person('l'), person('e')], landmark('phong-an'), 8, 2, [LIFE_HELD.basket]),
       ...crowd('sweeper', ['Chị hầu phòng'], [person('l')], landmark('phong-nghi'), 4, 1),
       ...crowd('sentry', ['Chú lính canh tháp'], [person('j')], landmark('thap-canh'), 2, 1, [LIFE_HELD.axe]),
       ...crowd('sentry', ['Chú cai ngục'], [person('b')], landmark('ham-nguc'), 6, 1),
@@ -294,24 +329,38 @@ export async function generateLauDai() {
       ...crowd('waterer', ['Ông tưới hoa'], [person('m')], landmark('vom-hoa-hong'), 6, 1, [LIFE_HELD.bucket]),
       ...crowd('pupil', ['Bạn nhỏ dạo vườn'], [person('n'), person('q')], landmark('vuon-hoang-gia'), 16, 2),
       ...crowd('pupil', ['Bạn nhỏ trong sân', 'Bạn chơi quanh đài phun'], [person('f'), person('n'), person('q'), person('r')], landmark('dai-phun-nuoc'), 18, 5),
+      ...crowd('pupil', ['Bạn thảo luận toán ôn tập'], [person('o'), person('p')], landmark('dai-phun-nuoc'), 14, 2, [LIFE_HELD.book]),
       ...crowd('teacher', ['Cô giáo dẫn đoàn'], [person('i')], landmark('dai-phun-nuoc'), 20, 1, [LIFE_HELD.book]),
       ...crowd('vendor', ['Bác bán bánh', 'Cô bán hoa'], [person('h'), person('e')], landmark('cho-trong-thanh'), 6, 2, [LIFE_HELD.apple]),
       ...crowd('porter', ['Chú khuân hàng'], [person('b'), person('k')], landmark('cho-trong-thanh'), 10, 2, [LIFE_HELD.crate]),
       ...crowd('milker', ['Chú giữ chuồng'], [person('j')], landmark('chuong-bo'), 4, 1, [LIFE_HELD.bucket]),
       ...crowd('laundry', ['Cô giặt áo choàng'], [person('l')], landmark('nha-nguoi-hau'), 8, 1, [LIFE_HELD.basket, LIFE_HELD.shirt]),
-      ...crowd('teacher', ['Thầy dạy vẽ'], [person('a')], landmark('phong-ve'), 6, 1, [LIFE_HELD.palette]),
-      ...crowd('reader', ['Bạn vẽ tranh'], [person('f'), person('o'), person('p')], landmark('phong-tranh'), 8, 3, [LIFE_HELD.palette]),
+
+      // 3. Chapter 3: Cầu treo trước cổng thành & Bờ hào (x: 390-490, z: 340-420).
+      ...crowd('sentry', ['Lính tuần tra trên cầu'], [person('k'), person('c')], landmark('nhip-cau-giua'), 6, 2, [LIFE_HELD.axe]),
+      ...crowd('sentry', ['Lính canh đầu cầu'], [person('d')], landmark('dau-cau-treo'), 4, 1, [LIFE_HELD.axe]),
+      ...crowd('shopper', ['Khách qua cầu vào thành'], [person('i'), person('g'), person('l')], landmark('cau-da'), 12, 3, [LIFE_HELD.basket]),
+      ...crowd('vendor', ['Bác bán bánh mì đầu cầu'], [person('h')], landmark('dau-cau-treo'), 6, 1, [LIFE_HELD.apple]),
+      ...crowd('vendor', ['Cô bán quà lưu niệm'], [person('e')], landmark('nha-gac'), 8, 1, [LIFE_HELD.crate]),
       ...crowd('kite-flyer', ['Bạn thả diều trước cổng'], [person('o'), person('r')], landmark('bai-co-truoc-cong'), 10, 2, [LIFE_HELD.kite]),
+      ...crowd('pupil', ['Bạn nhỏ chơi ven hào'], [person('f'), person('q'), person('n')], landmark('bai-co-truoc-cong'), 14, 3, [LIFE_HELD.balloon]),
       ...crowd('ferryman', ['Ông câu cá hào'], [person('m')], landmark('goc-lieu'), 4, 1, [LIFE_HELD.paddle]),
+      ...crowd('ferryman', ['Ngư dân câu cá bờ hào'], [person('k')], landmark('gam-cau'), 4, 1, [LIFE_HELD.paddle]),
+      ...crowd('sweeper', ['Chú quét dọn cầu đá'], [person('b')], landmark('nhip-cau-dau'), 5, 1),
       ...crowd('sentry', ['Bác gác nhà cổng'], [person('a')], landmark('nha-gac'), 4, 1),
+
+      // Town below & fields
       ...crowd('vendor', ['Bác bán rau thị trấn', 'Cô bán trái cây'], [person('b'), person('h')], landmark('cho-nho'), 10, 3, [LIFE_HELD.apple]),
       ...crowd('shopper', ['Người đi chợ', 'Bà đi chợ sớm'], [person('l'), person('k'), person('i')], landmark('cho-nho'), 16, 5, [LIFE_HELD.basket]),
       ...crowd('home-cook', ['Mẹ nấu cơm'], [person('i'), person('l')], landmark('thi-tran'), 20, 2, [LIFE_HELD.spoon]),
       ...crowd('ploughman', ['Bác nông dân'], [person('m'), person('a')], landmark('canh-dong'), 20, 4, [LIFE_HELD.hoe]),
       ...crowd('rice-planter', ['Cô cấy lúa chân đồi', 'Chị gặt lúa mì'], [person('e'), person('h')], landmark('ruong-lua'), 20, 4, [LIFE_HELD.basket]),
+
+      // Animals
       ...crowd('cow', ['Bò kéo xe'], [animal('cow')], landmark('chuong-bo'), 6, 3),
       ...crowd('cow', ['Bò vàng'], [animal('cow')], landmark('canh-dong'), 30, 5),
       ...crowd('dog', ['Chó canh thành'], [animal('dog')], landmark('bai-co-truoc-cong'), 12, 3),
+      ...crowd('dog', ['Chó gác bờ hào'], [animal('dog')], landmark('dau-cau-treo'), 8, 2),
       ...crowd('dog', ['Cún của lính'], [animal('dog')], landmark('khu-luyen-tap'), 12, 2),
       ...crowd('cat', ['Mèo trong sân'], [animal('cat')], landmark('dai-phun-nuoc'), 16, 3),
       ...crowd('cat', ['Mèo nằm vườn'], [animal('cat')], landmark('vuon-hoang-gia'), 12, 2),

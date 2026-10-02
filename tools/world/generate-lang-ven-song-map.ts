@@ -147,48 +147,71 @@ export async function generateLangVenSong() {
     rides: { vehicle: { name: 'Đò', label: 'Lên đò', model: `${N}/canoe.glb` } },
     trees: { skip: 0.8, blocks: (roll, block) => ({ log: block('tree-log'), leaves: block(roll < 0.12 ? 'leaves-autumn' : roll < 0.3 ? 'leaves-pink' : 'leaves') }) },
     life: ({ zone, landmark }) => {
-      const [gate, meadow, landing, marsh] = [1, 2, 3, 4].map(zone) as [Zone, Zone, Zone, Zone];
+      const [gate, meadow, landing, _marsh] = [1, 2, 3, 4].map(zone) as [Zone, Zone, Zone, Zone];
       const c = (zn: Zone, dx: number, dz: number): readonly [number, number] => [zn.x + dx, zn.z + dz];
       return [
-        // The gate's guard, the square's sellers and shoppers, the miller and the reapers in the wheat.
-        ...crowd('sentry', ['Bác gác cổng làng'], [person('a')], [GATE.x + 7, GATE.z - 2], 2, 1),
-        ...crowd('vendor', ['Cô bán rau', 'Bác bán hoa quả', 'Chị bán bí'], [person('e'), person('j'), person('h')], landmark('cho-nho'), 4, 3, [L.basket]),
-        ...crowd('shopper', ['Bà đi chợ', 'Cô đi chợ', 'Bạn nhỏ đi chợ'], [person('i'), person('l'), person('n')], landmark('quang-truong-lang'), 10, 5, [L.basket]),
-        ...crowd('sweeper', ['Cô quét sân'], [person('m')], landmark('cay-hoa-sinh-hoat'), 6, 1),
+        // 0. Spawn & Cổng làng (x: 60, z: 70 & GATE x: 60, z: 84).
+        { routine: 'sentry', name: 'Bác gác cổng làng', model: person('a'), held: [`${PACK.survival}/tool-axe.glb`], at: [GATE.x + 3, GATE.z - 4] as const },
+        { routine: 'ferryman', name: 'Bác lái đò đón khách bến vào', model: person('m'), held: [L.paddle], at: [56, 72] as const },
+        { routine: 'shopper', name: 'Khách du lịch về thăm quê', model: person('k'), held: [L.basket], at: [63, 68] as const },
+        { routine: 'pupil', name: 'Bạn nhỏ tung tăng vào làng', model: person('f'), held: [L.kite], at: [58, 76] as const },
+        { routine: 'dog', name: 'Cún gác cổng làng', model: animal('dog'), at: [65, 80] as const },
+
+        // Village Square & Chợ nhỏ (x: 100, z: 235).
+        ...crowd('vendor', ['Cô bán rau', 'Bác bán hoa quả', 'Chị bán bí', 'Chú bán cá tươi'], [person('e'), person('j'), person('h'), person('m')], landmark('cho-nho'), 4, 4, [L.basket]),
+        ...crowd('shopper', ['Bà đi chợ', 'Cô đi chợ', 'Bác mua rau', 'Chị dẫn em đi chợ'], [person('i'), person('l'), person('n'), person('p')], landmark('quang-truong-lang'), 8, 5, [L.basket]),
+        ...crowd('sweeper', ['Cô quét sân quảng trường'], [person('m')], landmark('cay-hoa-sinh-hoat'), 6, 1),
         { routine: 'porter', name: 'Bác thợ mộc', model: person('b'), held: [`${PACK.survival}/tool-axe.glb`], at: landmark('xuong-thu-cong'), visits: [[WORKSHOP.x0 + 3, WORKSHOP.z0 + 3], [WORKSHOP.x0 + 6, WORKSHOP.z0 + 5], [WORKSHOP.x0 + 8, WORKSHOP.z0 + 3]] },
-        ...crowd('rice-planter', ['Bác gặt lúa mì', 'Chú bó lúa'], [person('k'), person('b')], landmark('coi-xay-gio'), 18, 3, [L.basket]),
-        // Chapter 1: the village gate, the school, the paddies beside it.
-        ...crowd('rice-planter', ['Cô cấy lúa', 'Bác cấy lúa', 'Chị cấy lúa'], [person('e'), person('i'), person('m')], [300, 150], 40, 5, [L.basket]),
-        ...crowd('pupil', ['Bạn nhỏ'], [person('f'), person('n'), person('o')], c(gate, 18, -32), 8, 3, [L.book]),
-        ...crowd('teacher', ['Thầy giáo làng'], [person('a')], c(gate, 14, -26), 2, 1, [L.book]),
-        ...crowd('home-cook', ['Bà nấu cơm', 'Mẹ nấu cơm'], [person('i'), person('l')], [90, 130], 30, 3, [L.spoon, L.basket]),
-        ...crowd('laundry', ['Cô phơi đồ', 'Chị phơi áo'], [person('e'), person('h')], [100, 330], 24, 3, [L.basket, L.shirt]),
-        ...crowd('waterer', ['Ông tưới cây'], [person('a'), person('j')], c(gate, -40, 30), 12, 2, [L.bucket, L.carrot]),
-        ...crowd('chick', ['Gà con'], [animal('chick')], c(gate, -46, -10), 6, 8),
-        ...crowd('dog', ['Chó Vàng', 'Chó Mực con'], [animal('dog')], c(gate, 30, 20), 14, 3),
-        ...crowd('cow', ['Trâu bò'], [animal('cow')], [380, 280], 40, 5),
-        // Chapter 2: the meadow by the river, the flower garden, kites in the wind.
-        ...crowd('kite-flyer', ['Bạn thả diều'], [person('f'), person('n'), person('o'), person('p')], c(meadow, -10, 34), 14, 4, [L.kite]),
-        ...crowd('waterer', ['Cô làm vườn'], [person('e')], landmark('vuon-hoa-to-ong'), 10, 2, [L.bucket, L.flower]),
-        ...crowd('laundry', ['Mẹ phơi chăn'], [person('l')], [500, 330], 20, 2, [L.basket, L.shirt]),
-        ...crowd('cow', ['Bò vàng'], [animal('cow')], c(meadow, 40, 30), 18, 6),
-        ...crowd('pig', ['Lợn con'], [animal('pig')], [520, 140], 16, 4),
-        ...crowd('cat', ['Mèo mướp'], [animal('cat')], [540, 320], 20, 3),
-        // Chapter 3: the landing, the ferry, the class under the banyan.
-        ...crowd('ferryman', ['Bác lái đò', 'Chú chèo đò'], [person('a'), person('m')], landmark('ben-do'), 6, 2, [L.paddle, L.fish]),
-        ...crowd('porter', ['Chú gánh hàng'], [person('j'), person('k')], c(landing, 30, -20), 12, 2, [L.crate]),
-        ...crowd('pupil', ['Học trò gốc đa'], [person('f'), person('o')], landmark('lop-hoc-goc-da'), 10, 3, [L.book]),
-        ...crowd('home-cook', ['Bà bán nước chè'], [person('i')], c(landing, -36, -24), 4, 1, [L.cup]),
-        ...crowd('chick', ['Gà con'], [animal('chick')], c(landing, -40, 30), 6, 8),
-        ...crowd('dog', ['Cún bến sông'], [animal('dog')], c(landing, 20, 30), 10, 2),
-        // Chapter 4: the marsh, the football field; the harbour's fishers and sailors.
-        ...crowd('pupil', ['Cầu thủ nhí'], [person('f'), person('n'), person('o'), person('p'), person('q')], landmark('san-bong-lang'), 9, 6),
-        ...crowd('rice-planter', ['Cô hái sen'], [person('e'), person('h')], landmark('dam-sen'), 20, 3, [L.basket]),
-        ...crowd('ferryman', ['Ngư dân'], [person('m'), person('k'), person('j')], landmark('ben-tau'), 12, 4, [L.paddle, L.fish]),
-        ...crowd('porter', ['Người khuân cá'], [person('b'), person('c')], landmark('ben-tau'), 18, 3, [L.crate]),
-        ...crowd('pig', ['Lợn ỉ'], [animal('pig')], c(marsh, -50, 30), 10, 4),
-        ...crowd('cow', ['Bò ven đê'], [animal('cow')], [640, 640], 30, 5),
-        ...crowd('cat', ['Mèo tam thể'], [animal('cat')], c(marsh, 40, -30), 12, 3),
+        ...crowd('porter', ['Thợ phụ cưa gỗ'], [person('k')], landmark('xuong-thu-cong'), 3, 1, [`${PACK.survival}/tool-axe.glb`]),
+        ...crowd('sentry', ['Bác trông tháp chuông'], [person('d')], landmark('thap-chuong'), 3, 1),
+        ...crowd('reader', ['Người đọc bảng tin làng'], [person('c')], landmark('bang-tin'), 3, 1, [L.book]),
+        ...crowd('dog', ['Cún quảng trường'], [animal('dog')], landmark('quang-truong-lang'), 10, 2),
+
+        // Chapter 1: Đầu làng (trường học, giếng làng, cây đa, cối xay gió).
+        ...crowd('teacher', ['Thầy giáo làng'], [person('a')], landmark('lop-hoc-nho'), 2, 1, [L.book]),
+        ...crowd('pupil', ['Bạn nhỏ đọc bài', 'Bạn nhỏ tập viết bảng', 'Bạn làm toán'], [person('f'), person('n'), person('o'), person('q')], landmark('lop-hoc-nho'), 5, 5, [L.book]),
+        ...crowd('reader', ['Cụ già hóng mát gốc đa', 'Bác uống nước chè'], [person('b'), person('i')], landmark('cay-da-dau-lang'), 4, 2, [L.cup]),
+        ...crowd('pupil', ['Bạn nhỏ chơi ô ăn quan', 'Bạn đố chữ'], [person('r'), person('p')], landmark('cay-da-dau-lang'), 4, 3, [L.book]),
+        ...crowd('waterer', ['Cô gánh nước giếng', 'Chị rửa rau giếng làng'], [person('e'), person('h')], landmark('gieng-lang'), 4, 3, [L.bucket]),
+        ...crowd('rice-planter', ['Bác gặt lúa mì', 'Chú bó lúa', 'Cô gánh lúa'], [person('k'), person('b'), person('l')], landmark('coi-xay-gio'), 12, 3, [L.basket]),
+        ...crowd('home-cook', ['Bà nấu cơm trưa'], [person('i')], c(gate, 10, 25), 8, 2, [L.spoon]),
+        ...crowd('laundry', ['Cô phơi đồ bờ giậu'], [person('e')], c(gate, -15, 20), 8, 2, [L.shirt]),
+        ...crowd('chick', ['Gà con'], [animal('chick')], landmark('cay-da-dau-lang'), 8, 6),
+        ...crowd('dog', ['Chó Vàng đầu làng'], [animal('dog')], landmark('gieng-lang'), 8, 2),
+
+        // Chapter 2: Bãi cỏ ven sông (vườn hoa tổ ong, thả diều, dã ngoại ven sông).
+        ...crowd('waterer', ['Cô làm vườn hoa', 'Bác tỉa cành hoa', 'Chú lấy mật ong'], [person('e'), person('j'), person('p')], landmark('vuon-hoa-to-ong'), 8, 3, [L.bucket, L.flower]),
+        ...crowd('kite-flyer', ['Bạn thả diều', 'Bạn nhỏ đón gió', 'Bạn chạy theo cánh diều'], [person('f'), person('n'), person('o'), person('p'), person('q')], c(meadow, 0, 10), 12, 6, [L.kite]),
+        ...crowd('shopper', ['Gia đình dã ngoại ven sông', 'Người ngồi hóng mát bờ cỏ'], [person('l'), person('c')], c(meadow, -12, 16), 8, 3, [L.basket]),
+        ...crowd('reader', ['Bác đọc sách dưới bóng cây'], [person('a')], c(meadow, 15, -10), 6, 2, [L.book]),
+        ...crowd('ferryman', ['Chú câu cá ngắm mây'], [person('m')], c(meadow, -18, 24), 6, 2, [L.fish]),
+        ...crowd('laundry', ['Mẹ phơi chăn ven bãi'], [person('l')], c(meadow, 12, -22), 8, 2, [L.shirt]),
+        ...crowd('cow', ['Bò vàng gặm cỏ', 'Bê con'], [animal('cow')], c(meadow, 25, 20), 16, 6),
+        ...crowd('cat', ['Mèo mướp nằm nắng'], [animal('cat')], c(meadow, -5, 12), 8, 2),
+
+        // Chapter 3: Bến sông (bến đò ngang, lớp học dưới gốc đa, quán nước, xóm chài).
+        ...crowd('ferryman', ['Bác lái đò', 'Chú chèo đò'], [person('a'), person('m')], landmark('ben-do'), 4, 3, [L.paddle]),
+        ...crowd('shopper', ['Khách đợi đò qua sông', 'Bà gánh hàng sang bến', 'Bác đi chợ về'], [person('k'), person('l'), person('i')], landmark('ben-do'), 5, 4, [L.basket]),
+        ...crowd('teacher', ['Thầy giáo dạy học gốc đa'], [person('a')], landmark('lop-hoc-goc-da'), 3, 1, [L.book]),
+        ...crowd('pupil', ['Học trò gốc đa', 'Bạn nhỏ ghép vần', 'Bạn giơ tay phát biểu', 'Bạn ngồi lắng nghe'], [person('f'), person('o'), person('n'), person('r'), person('q')], landmark('lop-hoc-goc-da'), 6, 8, [L.book]),
+        ...crowd('home-cook', ['Bà bán nước chè tươi'], [person('i')], c(landing, -12, -8), 4, 1, [L.cup]),
+        ...crowd('shopper', ['Bác uống nước chè bên sông', 'Chú thợ hàn nghỉ chân'], [person('b'), person('d'), person('h')], c(landing, -10, -10), 4, 3, [L.cup]),
+        ...crowd('ferryman', ['Ngư dân vá lưới cá', 'Chú gỡ cá tươi', 'Bác câu cá bờ sông'], [person('j'), person('k'), person('c')], c(landing, 8, -6), 6, 3, [L.fish]),
+        ...crowd('porter', ['Chú gánh sọt cá lên bến', 'Anh chuyển đồ lên thuyền'], [person('m'), person('p')], c(landing, 12, 4), 6, 2, [L.crate]),
+        ...crowd('dog', ['Cún bến sông'], [animal('dog')], landmark('ben-do'), 8, 2),
+        ...crowd('chick', ['Đàn gà xóm chài'], [animal('chick')], c(landing, -15, 10), 6, 6),
+
+        // Chapter 4: Đầm sen và sân bóng (sân bóng đá làng, hái hoa sen, bến tàu & hải đăng).
+        ...crowd('pupil', ['Cầu thủ nhí', 'Thủ môn bắt bóng', 'Tiền đạo sút bóng'], [person('f'), person('n'), person('o'), person('p'), person('q'), person('r')], landmark('san-bong-lang'), 7, 8),
+        ...crowd('shopper', ['Khán giả cổ vũ bóng đá', 'Bác huấn luyện viên', 'Phụ huynh xem đá bóng'], [person('c'), person('j'), person('l'), person('a')], landmark('san-bong-lang'), 8, 5),
+        ...crowd('vendor', ['Bác bán nước giải khát sân bóng'], [person('h')], landmark('san-bong-lang'), 6, 1, [L.cup]),
+        ...crowd('pupil', ['Bạn nhỏ reo hò cổ vũ'], [person('d'), person('k')], landmark('san-bong-lang'), 6, 2, [L.kite]),
+        ...crowd('rice-planter', ['Cô hái sen', 'Chị bó hoa sen', 'Bác ướp trà sen'], [person('e'), person('h'), person('i')], landmark('dam-sen'), 12, 4, [L.basket, L.flower]),
+        ...crowd('ferryman', ['Ngư dân bến tàu', 'Thuyền trưởng kéo neo'], [person('m'), person('k')], landmark('ben-tau'), 8, 3, [L.paddle]),
+        ...crowd('porter', ['Người khuân cá về làng'], [person('b'), person('c')], landmark('ben-tau'), 10, 3, [L.crate]),
+        ...crowd('sentry', ['Người giữ đèn hải đăng'], [person('d')], landmark('hai-dang'), 3, 1),
+        ...crowd('cow', ['Bò ven đê'], [animal('cow')], [640, 640], 25, 4),
+        ...crowd('cat', ['Mèo đầm sen'], [animal('cat')], landmark('dam-sen'), 10, 2),
       ];
     },
     build: (ctx) => {

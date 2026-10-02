@@ -19,7 +19,7 @@ import { createSpeechBubble } from './speech-bubble';
  * Drawn and running at once, by quality level (the rest wait, hidden, until the child comes closer). A
  * market or a square holds a crowd (owner, 02/10/2026: sellers at every stall, shoppers going round them).
  */
-export const AMBIENT_LIMIT: Readonly<Record<string, number>> = { low: 8, mid: 16, high: 24 };
+export const AMBIENT_LIMIT: Readonly<Record<string, number>> = { low: 8, mid: 16, high: 30 };
 /**
  * Whatever the quality, the frame stays under the draw-call budget (Master Plan §12: 150): when the
  * last frame came close, the farthest characters leave first, and come back once there is room; the nearest
@@ -30,10 +30,10 @@ const CALL_CEILING = 144;
 const TRIANGLE_CEILING = 140_000;
 const CHARACTER_TRIANGLES = 2_000;
 /** Beyond this distance nobody is drawn, however few are near. */
-const DRAW_RADIUS = 36;
+const DRAW_RADIUS = 48;
 /** Models of those further than this are let go (built again on return); those this near the start are built before the first frame. */
 const RELEASE_RADIUS = 120;
-const PRELOAD_RADIUS = 80;
+const PRELOAD_RADIUS = 96;
 /** Where the tap prompt floats over a character whose model is not built yet. */
 const DEFAULT_LABEL_HEIGHT = 2.4;
 /** How often the nearest set is chosen again (s). */

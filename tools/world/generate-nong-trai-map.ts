@@ -242,25 +242,48 @@ export async function generateNongTrai() {
     dressing: { models: [...FLOWERS, `${N}/plant_bush.glb`, `${N}/grass_large.glb`], spacing: 7 },
     trees: { skip: 0.55, blocks: (roll, block) => ({ log: block('tree-log'), leaves: block(roll < 0.18 ? 'leaves-pink' : roll < 0.26 ? 'leaves-autumn' : 'leaves') }) },
     life: ({ landmark }) => [
+      // 0. Spawn & arrival terminal (x: 402, z: 328): guards, farm greeters, visitors and bus riders.
+      { routine: 'school-guard', name: 'Chú bảo vệ trạm đón nông trại', model: person('d'), at: [405, 328] as const },
+      { routine: 'vendor', name: 'Bác đón khách vào trang trại', model: person('h'), held: [HELD.apple], at: [398, 326] as const },
+      { routine: 'shopper', name: 'Khách du lịch tham quan nông trại', model: person('k'), held: [HELD.basket], at: [404, 324] as const },
+      { routine: 'pupil', name: 'Bạn nhỏ đợi xe vào nông trang', model: person('f'), held: [HELD.carrot], at: [399, 330] as const },
+      { routine: 'dog', name: 'Cún trông trạm đón nông trại', model: animal('dog'), at: [406, 325] as const },
+
+      // Way from spawn gate to the farm yard (z: 345 - 390).
+      { routine: 'porter', name: 'Bác kéo xe cỏ khô', model: person('m'), held: [HELD.crate], at: [402, 350] as const },
+      { routine: 'shopper', name: 'Người đi dạo ven đường hoa hướng dương', model: person('c'), held: [HELD.basket], at: [402, 375] as const },
+
       // The barn and the paddock (d-04): milkers with their pails, cows in the stalls and out, sheep's keepers.
       ...crowd('milker', ['Cô vắt sữa', 'Chú vắt sữa'], [person('e'), person('m')], landmark('chuong-bo'), 4, 2, [HELD.bucket, HELD.bucket]),
+      ...crowd('pupil', ['Bạn nhỏ cho bê con ăn cỏ'], [person('f'), person('o')], landmark('chuong-bo'), 5, 2, [HELD.basket]),
       ...crowd('cow', ['Bò sữa', 'Bò Đốm'], [animal('cow')], landmark('chuong-bo'), 6, 4),
       ...crowd('cow', ['Bò sữa', 'Bê con'], [animal('cow')], landmark('khu-chan-nuoi'), 9, 6),
       ...crowd('hen-keeper', ['Bà cho gà ăn', 'Cô nhặt trứng'], [person('i'), person('h')], landmark('chuong-ga'), 5, 2, [HELD.basket, HELD.basket]),
       ...crowd('chick', ['Gà con', 'Gà mái'], [animal('chick')], landmark('chuong-ga'), 6, 12),
       ...crowd('pig', ['Lợn con', 'Lợn mẹ'], [animal('pig')], landmark('chuong-lon'), 4, 6),
+
       // The crop beds and the fields (d-03): farmers with their hoes, reapers in the wheat.
       ...crowd('ploughman', ['Bác nông dân', 'Chú trồng bí'], [person('a'), person('j')], landmark('khu-trong-trot'), 10, 3, [HELD.hoe, HELD.carrot]),
+      ...crowd('rice-planter', ['Cô hái đậu cô ve', 'Chị tỉa cành cà chua'], [person('i'), person('l')], landmark('khu-trong-trot'), 8, 2, [HELD.basket]),
       ...crowd('rice-planter', ['Cô gặt lúa mì', 'Chú bó lúa'], [person('k'), person('b')], landmark('ruong-lua-mi'), 14, 4, [HELD.basket]),
       ...crowd('ploughman', ['Bác trồng ngô'], [person('m'), person('e')], landmark('ruong-ngo'), 16, 3, [HELD.hoe]),
+
+      // The windmill and bread oven (d-13).
+      ...crowd('home-cook', ['Bác thợ xay bột mì'], [person('a')], landmark('coi-xay-gio'), 5, 1, [HELD.bread]),
+      ...crowd('pupil', ['Bạn nhỏ ngắm cánh quạt cối xay'], [person('q')], landmark('coi-xay-gio'), 4, 1, [HELD.apple]),
+      ...crowd('porter', ['Chú khuân bao bột', 'Anh chở nông sản'], [person('k'), person('c')], landmark('lo-banh'), 7, 2, [HELD.crate]),
+
       // The orchard (d-06): apple pickers with their baskets.
       ...crowd('rice-planter', ['Cô hái táo', 'Bác hái táo', 'Anh hái cam'], [person('l'), person('a'), person('k')], landmark('vuon-cay'), 8, 3, [HELD.basket, HELD.apple]),
-      // The pond (d-07): an angler on the jetty with his rod.
+
+      // The pond (d-07): an angler on the jetty with his rod, fish watchers.
       ...crowd('ferryman', ['Chú câu cá', 'Ông câu cá'], [person('m'), person('b')], landmark('ao-ca'), 3, 2, [HELD.rod, HELD.fish]),
+      ...crowd('pupil', ['Bạn nhỏ xem đàn cá bơi'], [person('o'), person('r')], landmark('ao-ca'), 4, 2, [HELD.bucket]),
+
       // The glasshouse (d-05) and the storehouse kitchen (d-08).
-      ...crowd('waterer', ['Cô chăm vườn kính'], [person('h')], landmark('nha-kinh'), 3, 2, [HELD.bucket]),
+      ...crowd('waterer', ['Cô chăm vườn kính', 'Bác nhân giống dâu tây'], [person('h'), person('p')], landmark('nha-kinh'), 4, 2, [HELD.bucket]),
       ...crowd('home-cook', ['Bà làm bánh', 'Chú làm mứt'], [person('i'), person('j')], landmark('nha-kho'), 3, 2, [HELD.bread]),
-      ...crowd('porter', ['Chú khuân bao bột', 'Anh chở nông sản'], [person('k'), person('c')], landmark('lo-banh'), 7, 2, [HELD.crate]),
+
       // The yard and its market (d-09), the farmhouse (d-12).
       // Each seller behind the counter of a stall.
       ...crowd('vendor', ['Cô bán bí'], [person('e')], landmark('sap-1'), 0, 1, [HELD.basket]),
@@ -269,20 +292,30 @@ export async function generateNongTrai() {
       ...crowd('shopper', ['Bà đi chợ', 'Chú mua rau', 'Bạn nhỏ đi chợ'], [person('i'), person('m'), person('n')], landmark('san-nong-trai'), 7, 3, [HELD.basket]),
       ...crowd('home-cook', ['Mẹ nấu cơm trưa'], [person('l')], landmark('nha-nong-trai'), 5, 1, [HELD.basket]),
       ...crowd('sweeper', ['Ông quét sân'], [person('a')], landmark('san-nong-trai'), 6, 1),
+      ...crowd('pupil', ['Bạn nhỏ xem bảng nhiệm vụ'], [person('r')], landmark('bang-nhiem-vu'), 3, 1, [HELD.book]),
+
       // The rest under the great tree (d-11) and the meadow by the river: the children.
       ...crowd('pupil', ['Bạn Thỏ', 'Bạn Sóc', 'Bạn Cáo'], [person('f'), person('n'), person('o')], landmark('khu-nghi'), 6, 3, [HELD.book]),
+      ...crowd('shopper', ['Gia đình nghỉ chân bên gốc cây'], [person('p')], landmark('khu-nghi'), 6, 1, [HELD.basket]),
       ...crowd('kite-flyer', ['Bạn thả diều'], [person('p'), person('q'), person('f')], landmark('bai-co-ven-song'), 14, 4, [HELD.kite]),
       ...crowd('dog', ['Chó chăn cừu', 'Cún nông trại'], [animal('dog')], landmark('cong-nong-trai'), 10, 3),
       ...crowd('cat', ['Mèo kho thóc', 'Mèo mướp'], [animal('cat')], landmark('nha-kho'), 6, 3),
+
       // Round the farm: the farmsteads' herds and hands, the hamlet's pets.
       ...crowd('cow', ['Bò vàng', 'Bò sữa'], [animal('cow')], landmark('dong-co-bo-sua'), 22, 10),
       ...crowd('cow', ['Bò ăn cỏ'], [animal('cow')], landmark('trang-trai-a'), 20, 6),
       ...crowd('milker', ['Cô chăn bò'], [person('h')], landmark('trang-trai-a'), 12, 1, [HELD.bucket]),
+      ...crowd('ploughman', ['Bác nông dân xới đất'], [person('m')], landmark('trang-trai-a'), 10, 1, [HELD.hoe]),
       ...crowd('ploughman', ['Chú làm đất'], [person('j')], landmark('trang-trai-b'), 16, 2, [HELD.hoe]),
+      ...crowd('rice-planter', ['Cô thu hoạch bắp ngô'], [person('e')], landmark('trang-trai-b'), 10, 1, [HELD.basket]),
+      ...crowd('porter', ['Bác quản lý kho thóc'], [person('a')], landmark('trang-trai-c'), 8, 1, [HELD.crate]),
+      ...crowd('ploughman', ['Chú cho lợn ăn'], [person('k')], landmark('trang-trai-c'), 8, 1, [HELD.bucket]),
       ...crowd('pig', ['Lợn ỉ'], [animal('pig')], landmark('trang-trai-c'), 14, 5),
       ...crowd('chick', ['Gà con'], [animal('chick')], landmark('trang-trai-b'), 10, 8),
       ...crowd('dog', ['Chó Vàng'], [animal('dog')], landmark('xom-nong-dan'), 12, 2),
       ...crowd('laundry', ['Cô phơi áo'], [person('e')], landmark('xom-nong-dan'), 10, 2, [HELD.basket]),
+      ...crowd('sweeper', ['Cụ già quét sân xóm'], [person('a')], landmark('xom-nong-dan'), 8, 1),
+      ...crowd('pupil', ['Bạn nhỏ xóm nông dân'], [person('q'), person('f')], landmark('xom-nong-dan'), 8, 2, [HELD.kite]),
     ],
     build: (ctx) => buildFarm(ctx),
   });
