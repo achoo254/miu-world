@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { inCore, OUTLAND_MODEL_HEIGHTS, type OutlandSpec, type OutlandTheme } from './outland';
+import { inCore, OUTLAND_MODELS, type OutlandSpec, type OutlandTheme } from './outland';
 import { outlandGround, outlandSkyline, planOutland, ROAD, sampleColumn, structureExtent, WATER, type ColumnSample, type OutlandPlan } from './outland-plan';
 
 const SIZE = [800, 48, 800] as const;
@@ -19,7 +19,7 @@ function testSpec(theme: OutlandTheme = 'river', seed = 1234): { spec: OutlandSp
       theme,
       ground,
       edge: { north: edge((i) => i >= 300 && i < 330), south: edge((i) => i >= 300 && i < 330), west: edge((i) => i >= 600 && i < 612), east: edge(() => false) },
-      models: Object.fromEntries(Object.entries(OUTLAND_MODEL_HEIGHTS).map(([m, h]) => [m, +(1 / h).toFixed(4)])),
+      models: Object.fromEntries(OUTLAND_MODELS.map((m) => [m, 1])),
     },
   };
 }

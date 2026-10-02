@@ -23,7 +23,7 @@ const PETS = 'packs/kenney-cube-pets/2.0';
 const NATURE = 'packs/kenney-nature-kit/2.1';
 const SURVIVAL = 'packs/kenney-survival-kit/2.0';
 const PROPS = 'generated/props';
-/** The models life places (all listed in OUTLAND_MODEL_HEIGHTS, outland.ts). */
+/** The models life places (all listed in OUTLAND_MODELS, outland.ts). */
 const MODEL = {
   car: `${PROPS}/automobile.glb`,
   basket: `${PROPS}/basket.glb`,

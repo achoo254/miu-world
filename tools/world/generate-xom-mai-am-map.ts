@@ -348,16 +348,6 @@ export async function generateXomMaiAm() {
     pathsFromSpawn: false,
     routes: ROUTES,
     trees: { skip: 0.72, blocks: (roll, block) => ({ log: block('tree-log'), leaves: block(roll < 0.1 ? 'leaves-autumn' : roll < 0.32 ? 'leaves-pink' : 'leaves') }) },
-    models: {
-      heights: {
-        [M.bamboo]: 5, [M.fatTree]: 4.5, [M.palm]: 7, [M.banana]: 3.2, [M.oak]: 5, [M.flowerRed]: 0.5, [M.flowerYellow]: 0.5, [M.flowerPurple]: 0.5,
-        [M.bush]: 1.2, [M.pebble]: 0.5, [M.fence]: 1, [M.lily]: 0.1, [M.lilySmall]: 0.08, [M.canoe]: 0.6, [M.corn]: 1.6, [M.carrot]: 0.45,
-        [M.dirtRow]: 0.25, [M.cabbage]: 0.5, [M.rice]: 0.7, [M.riceRipe]: 1, [M.rock]: 2.2, [M.logs]: 0.9, [M.jar]: 0.9, [M.bucket]: 0.6,
-        [M.barrel]: 1, [M.hammock]: 0.3, [M.bench]: 0.96, [M.lamp]: 4.8, [M.chair]: 1, [M.table]: 0.8, [M.bowl]: 0.3, [M.egg]: 0.25, [M.lotus]: 0.7,
-        [M.loofah]: 0.7, [M.door]: 2, [M.shell]: 0.4, [M.hat]: 0.5, [M.kite]: 1.2,
-      },
-      centred: [M.chair, M.table],
-    },
     dressing: { models: [M.flowerRed, M.flowerYellow, M.flowerPurple, M.bush, M.pebble], spacing: 7 },
     // Family life round every house: cooking, washing, watering, kites on the windy mound, pets and hens.
     life: ({ landmark }) => [

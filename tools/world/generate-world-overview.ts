@@ -16,6 +16,7 @@ import { WORLD_OVERVIEW_MAP, projectToImage, type Vec3 } from '../../packages/vo
 import { RegionCatalog } from '../../packages/schema/src/region';
 import { ASSETS_DIR, REPO_ROOT, readJson } from '../assets/asset-lib';
 import { writeMap } from './map-kit';
+import { catalogModels } from './model-catalog';
 import { modelScales } from './model-scales';
 import { createRng, hashSeed } from './noise';
 import { placeCastle, placeHouse, placeMountain, placeSkyBridge } from './structures/buildings';
@@ -35,21 +36,14 @@ const PACK = {
   nature: 'packs/kenney-nature-kit/2.1',
   survival: 'packs/kenney-survival-kit/2.0',
 };
-const MODEL_HEIGHT: Record<string, number> = {
-  [`${PACK.castle}/flag.glb`]: 3,
-  [`${PACK.castle}/flag-pennant.glb`]: 2.5,
+/** Sizes of the island's own for the far view of the Home picture (content/world/models.json has the usual ones). */
+const OVERVIEW_SIZES: Record<string, number> = {
   [`${PACK.nature}/tree_pineTallA.glb`]: 5,
   [`${PACK.nature}/tree_pineRoundC.glb`]: 3.5,
-  [`${PACK.nature}/rock_tallA.glb`]: 4,
-  [`${PACK.nature}/rock_tallF.glb`]: 3,
-  [`${PACK.nature}/mushroom_redTall.glb`]: 1.4,
   [`${PACK.nature}/mushroom_redGroup.glb`]: 0.9,
   [`${PACK.nature}/flower_redA.glb`]: 0.6,
   [`${PACK.nature}/flower_yellowB.glb`]: 0.6,
   [`${PACK.nature}/flower_purpleA.glb`]: 0.6,
-  [`${PACK.nature}/fence_simple.glb`]: 1,
-  [`${PACK.nature}/plant_bushLarge.glb`]: 1.2,
-  [`${PACK.survival}/tent.glb`]: 2,
 };
 
 /**
@@ -95,7 +89,8 @@ export async function generateWorldOverview(): Promise<{ world: VoxelWorld; enti
     path: id('path'), water: id('water'), moss: id('rock-moss'), autumn: id('leaves-autumn'), birch: id('birch-log'),
     snow: id('snow'), brickRed: id('brick-red'), brickGrey: id('brick-grey'), woodRed: id('wood-red'),
   };
-  const scales = await modelScales(MODEL_HEIGHT, {});
+  const { heights } = await catalogModels(OVERVIEW_SIZES);
+  const scales = await modelScales(heights, {});
   const seed = hashSeed(SEED_TEXT);
   const rng = createRng(seed);
   const world = new VoxelWorld(CHUNKS);

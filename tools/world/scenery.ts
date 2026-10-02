@@ -9,24 +9,6 @@ import type { Point } from './structures/path';
 import type { ZoneMapContext } from './zone-map';
 
 const N = PACK.nature;
-/** Models the scenery places, with their standing heights (merged into a map's `models.heights`). */
-export const SCENERY_MODELS: Readonly<Record<string, number>> = {
-  [`${N}/fence_simple.glb`]: 1,
-  [`${N}/tree_fat.glb`]: 4.5,
-  [`${N}/tree_palmTall.glb`]: 7,
-  [`${N}/tree_palmShort.glb`]: 3.2,
-  [`${N}/crops_bambooStageB.glb`]: 5,
-  [`${N}/flower_redA.glb`]: 0.5,
-  [`${N}/flower_yellowB.glb`]: 0.5,
-  [`${N}/flower_purpleA.glb`]: 0.5,
-  [`${N}/plant_bushLarge.glb`]: 1.2,
-  [`${N}/canoe.glb`]: 0.6,
-  [`${PACK.survival}/bucket.glb`]: 0.6,
-  [`${PACK.survival}/barrel.glb`]: 1,
-  [`${PACK.roads}/light-curved.glb`]: 4.8,
-  [`${PACK.box}/park-bench.glb`]: 0.96,
-  [`${PACK.props}/sailboat.glb`]: 2.4,
-};
 const FLOWERS = [`${N}/flower_redA.glb`, `${N}/flower_yellowB.glb`, `${N}/flower_purpleA.glb`];
 const YARD_TREES = [`${N}/tree_fat.glb`, `${N}/tree_palmTall.glb`, `${N}/tree_palmShort.glb`];
 

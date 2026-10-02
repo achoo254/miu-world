@@ -60,34 +60,34 @@ const SURVIVAL = 'packs/kenney-survival-kit/2.0';
 const PROPS = 'generated/props';
 
 /**
- * Every model the outer land may place, with the height it stands (blocks): the tools measure each one's
- * scale from this (`spec.models`), so the game needs no model bounds to place them.
+ * Every model the outer land may place. Their heights are in content/world/models.json with every other
+ * model's; the tools measure each one's scale from there into `spec.models`, so the game needs no model bounds.
  */
-export const OUTLAND_MODEL_HEIGHTS: Readonly<Record<string, number>> = {
-  ...Object.fromEntries('abcdefghijklmnopqr'.split('').map((k) => [`${PEOPLE}/character-${k}.glb`, 1.75])),
-  [`${PETS}/animal-cow.glb`]: 1.5,
-  [`${PETS}/animal-pig.glb`]: 0.9,
-  [`${PETS}/animal-dog.glb`]: 0.9,
-  [`${PETS}/animal-cat.glb`]: 0.7,
-  [`${PETS}/animal-chick.glb`]: 0.5,
-  [`${PROPS}/automobile.glb`]: 1.6,
-  [`${PROPS}/basket.glb`]: 0.5,
-  [`${PROPS}/open-book.glb`]: 0.3,
-  [`${PROPS}/sailboat.glb`]: 2.4,
-  [`${SURVIVAL}/signpost.glb`]: 1.6,
-  [`${SURVIVAL}/bucket.glb`]: 0.6,
-  [`${SURVIVAL}/barrel.glb`]: 1,
-  [`${SURVIVAL}/tool-hoe.glb`]: 1.2,
-  [`${SURVIVAL}/tool-axe.glb`]: 0.9,
-  [`${SURVIVAL}/campfire-pit.glb`]: 0.6,
-  [`${SURVIVAL}/tent.glb`]: 2,
-  [`${NATURE}/canoe.glb`]: 0.6,
-  [`${NATURE}/canoe_paddle.glb`]: 1.2,
-  [`${NATURE}/fence_simple.glb`]: 1,
-  [`${NATURE}/flower_redA.glb`]: 0.5,
-  [`${NATURE}/flower_yellowB.glb`]: 0.5,
-  [`${NATURE}/flower_purpleA.glb`]: 0.5,
-  [`${NATURE}/plant_bushLarge.glb`]: 1.2,
-  [`${NATURE}/crops_bambooStageB.glb`]: 5,
-  [`${NATURE}/log_stack.glb`]: 1,
-};
+export const OUTLAND_MODELS: readonly string[] = [
+  ...'abcdefghijklmnopqr'.split('').map((k) => `${PEOPLE}/character-${k}.glb`),
+  `${PETS}/animal-cow.glb`,
+  `${PETS}/animal-pig.glb`,
+  `${PETS}/animal-dog.glb`,
+  `${PETS}/animal-cat.glb`,
+  `${PETS}/animal-chick.glb`,
+  `${PROPS}/automobile.glb`,
+  `${PROPS}/basket.glb`,
+  `${PROPS}/open-book.glb`,
+  `${PROPS}/sailboat.glb`,
+  `${SURVIVAL}/signpost.glb`,
+  `${SURVIVAL}/bucket.glb`,
+  `${SURVIVAL}/barrel.glb`,
+  `${SURVIVAL}/tool-hoe.glb`,
+  `${SURVIVAL}/tool-axe.glb`,
+  `${SURVIVAL}/campfire-pit.glb`,
+  `${SURVIVAL}/tent.glb`,
+  `${NATURE}/canoe.glb`,
+  `${NATURE}/canoe_paddle.glb`,
+  `${NATURE}/fence_simple.glb`,
+  `${NATURE}/flower_redA.glb`,
+  `${NATURE}/flower_yellowB.glb`,
+  `${NATURE}/flower_purpleA.glb`,
+  `${NATURE}/plant_bushLarge.glb`,
+  `${NATURE}/crops_bambooStageB.glb`,
+  `${NATURE}/log_stack.glb`,
+];

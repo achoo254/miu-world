@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import table from '../../../content/blocks.json';
 import { VoxelWorld } from './chunk-format';
-import { inCore, OUTLAND_MODEL_HEIGHTS, outlandBlocks, type OutlandSpec, type OutlandTheme } from './outland';
+import { inCore, OUTLAND_MODELS, outlandBlocks, type OutlandSpec, type OutlandTheme } from './outland';
 import { drawTree, forEachTree, outlandSkyline, planOutland, ROAD, sampleColumn, type ColumnSample, type OutlandPlan, type Tree } from './outland-plan';
 import { fillOutlandRegion } from './outland-region';
 import { REGION_BLOCKS, REGION_CHUNKS } from './region-format';
@@ -22,7 +22,7 @@ function testSpec(theme: OutlandTheme = 'river', seed = 1234): { spec: OutlandSp
       theme,
       ground,
       edge: { north: edge((i) => i >= 300 && i < 330), south: edge((i) => i >= 300 && i < 330), west: edge((i) => i >= 600 && i < 612), east: edge(() => false) },
-      models: Object.fromEntries(Object.entries(OUTLAND_MODEL_HEIGHTS).map(([m, h]) => [m, +(1 / h).toFixed(4)])),
+      models: Object.fromEntries(OUTLAND_MODELS.map((m) => [m, 1])),
     },
   };
 }

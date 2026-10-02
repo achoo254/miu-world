@@ -147,7 +147,6 @@ const M = {
   workbench: `${PACK.survival}/workbench.glb`,
   bucket: `${PACK.survival}/bucket.glb`,
 };
-const CENTRED = [M.bookcase, M.bookcaseLow, M.table, M.chair, M.rug, M.pillow, M.plant, M.floorLamp];
 const FLOWERS = [M.flowerRed, M.flowerYellow, M.flowerPurple];
 
 const outsideRect = (r: Rect, x: number, z: number): number => Math.hypot(Math.max(0, r.x0 - x, x - r.x1), Math.max(0, r.z0 - z, z - r.z1));
@@ -173,15 +172,8 @@ export async function generateThuVien() {
       skip: 0.45,
       blocks: (roll, block) => ({ log: block('tree-log'), leaves: block(roll < 0.3 ? 'leaves-autumn' : roll < 0.5 ? 'leaves-pink' : 'leaves') }),
     },
-    models: {
-      heights: {
-        [M.bookcase]: 2.4, [M.bookcaseLow]: 1.2, [M.table]: 0.8, [M.chair]: 1, [M.rug]: 0.05, [M.pillow]: 0.35, [M.plant]: 1.3, [M.floorLamp]: 1.8,
-        [M.books]: 0.6, [M.openBook]: 0.45, [M.rock]: 1.4, [M.grass]: 0.6, [M.autumnTree]: 6, [M.leaf]: 0.35, [M.balloon]: 1.4, [M.gift]: 0.6,
-        [M.ticket]: 0.4, [M.chopsticks]: 0.5, [M.clock]: 3, [M.alarm]: 0.5, [M.calendar]: 0.9, [M.picture]: 0.9, [M.envelope]: 0.4, [M.wheel]: 0.8,
-        [M.workbench]: 0.9,
-      },
-      centred: CENTRED,
-    },
+    // The reading room's tall shelves and the tower's clock face (content/world/models.json has the usual sizes).
+    sizes: { [M.bookcase]: 2.4, [M.clock]: 3 },
     // The districts are dressed below (clear of the rooms indoors), not by the builder.
     dressing: { models: [], spacing: SIZE },
     // The library town: readers and the librarian, the festival crowd, the tower's keepers, the streets.

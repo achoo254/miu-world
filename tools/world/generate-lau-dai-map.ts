@@ -196,15 +196,8 @@ export async function generateLauDai() {
     pathsFromSpawn: false,
     routes: ROUTES,
     trees: { skip: 0.78, blocks: (roll, block) => ({ log: block('tree-log'), leaves: block(roll < 0.1 ? 'leaves-autumn' : roll < 0.32 ? 'leaves-pink' : 'leaves') }) },
-    models: {
-      heights: {
-        [M.flag]: 3, [M.flagWide]: 2.5, [M.pine]: 9, [M.pineRound]: 6, [M.rice]: 1, [M.corn]: 1.4, [M.pumpkin]: 0.7,
-        [M.picture]: 1.2, [M.pictureYellow]: 1.2, [M.palette]: 0.8, [M.star]: 0.9, [M.ruler]: 0.6, [M.triangle]: 0.6, [M.scissors]: 0.6,
-        [M.puzzle]: 0.6, [M.teddy]: 0.8, [M.medal]: 0.8, [M.cake]: 0.8, [M.scale]: 0.9, [M.clock]: 1, [M.abacus]: 0.8, [M.dolls]: 0.8,
-        [M.car]: 1.6, [M.bus]: 2.6, [M.table]: TABLE_TOP, [M.bench]: 0.96, [M.barrel]: 1, [M.bucket]: 0.6, [M.fence]: 1,
-      },
-      centred: [M.table],
-    },
+    // A wall clock, the bigger frames and star of the drawing room, the toy bus (content/world/models.json has the usual sizes).
+    sizes: { [M.picture]: 1.2, [M.star]: 0.9, [M.clock]: 1, [M.bus]: 2.6 },
     // The castle town: sentries on the walls, the trumpeter, painters, the hall's stagehands, the town below.
     life: ({ landmark }) => [
       ...crowd('sentry', ['Chú lính gác', 'Cô lính gác'], [person('d'), person('g'), person('c')], landmark('cong-thanh'), 10, 4, [LIFE_HELD.axe]),

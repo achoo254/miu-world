@@ -2,8 +2,9 @@
 // theme, the ground the core's edge stands on (so the outer land meets it without a step) and the scale of
 // every model the outer land may place (measured here, so the game needs no model bounds).
 import type { VoxelWorld } from '../../packages/voxel/src/chunk-format';
-import { OUTLAND_MODEL_HEIGHTS, type OutlandSpec, type OutlandTheme } from '../../packages/voxel/src/outland';
+import { OUTLAND_MODELS, type OutlandSpec, type OutlandTheme } from '../../packages/voxel/src/outland';
 import { loadBlocks } from './map-kit';
+import { catalogModels } from './model-catalog';
 import { modelScales } from './model-scales';
 
 /** What the core's edge stands on: never a tree, a roof or a fence, but water counts (its bed is the height). */
@@ -19,7 +20,8 @@ export async function outlandSpecOf(world: VoxelWorld, seed: number, theme: Outl
     return ground;
   };
   const along = (n: number, column: (i: number) => number): number[] => Array.from({ length: n }, (_, i) => column(i));
-  const scales = await modelScales(OUTLAND_MODEL_HEIGHTS, {});
+  const { heights } = await catalogModels();
+  const scales = await modelScales(Object.fromEntries(OUTLAND_MODELS.map((model) => [model, heights[model] ?? 1])), {});
   return {
     seed,
     theme,

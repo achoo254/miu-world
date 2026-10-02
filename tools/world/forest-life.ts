@@ -16,37 +16,15 @@ export const LIFE_PACK = {
   food: 'packs/kenney-food-kit/2.0',
 };
 
-/** Heights (blocks) of the models forest life adds; merged into the generator's MODEL_HEIGHT. */
-export const LIFE_MODEL_HEIGHT: Readonly<Record<string, number>> = {
-  // Looks chosen for the roles: a grey-bearded woodsman (a), a gardener (e), a young helper (f),
-  // a grandmother in glasses (i), an outdoorsy fisher (m). No robots, zombies or costumes.
+/**
+ * The forest's own cast, sized for their roles (content/world/models.json has everyone else's): a
+ * grey-bearded woodsman (a), a young helper (f), a grandmother in glasses (i).
+ */
+export const FOREST_CAST_SIZES: Readonly<Record<string, number>> = {
   [`${LIFE_PACK.people}/character-a.glb`]: 1.8,
-  [`${LIFE_PACK.people}/character-e.glb`]: 1.75,
   [`${LIFE_PACK.people}/character-f.glb`]: 1.3,
   [`${LIFE_PACK.people}/character-i.glb`]: 1.65,
-  [`${LIFE_PACK.people}/character-m.glb`]: 1.75,
-  [`${LIFE_PACK.pets}/animal-bee.glb`]: 0.32,
-  [`${LIFE_PACK.pets}/animal-bunny.glb`]: 0.8,
-  [`${LIFE_PACK.pets}/animal-deer.glb`]: 1.5,
-  [`${LIFE_PACK.pets}/animal-fox.glb`]: 0.9,
-  [`${LIFE_PACK.pets}/animal-hog.glb`]: 0.9,
-  [`${LIFE_PACK.pets}/animal-chick.glb`]: 0.5,
-  [`${LIFE_PACK.pets}/animal-crab.glb`]: 0.45,
-  [`${LIFE_PACK.pets}/animal-fish.glb`]: 0.7,
-  [`${LIFE_PACK.survival}/tree-log.glb`]: 0.5,
-  [`${LIFE_PACK.survival}/campfire-stand.glb`]: 1.1,
-  [`${LIFE_PACK.nature}/stump_round.glb`]: 0.5,
-  [`${LIFE_PACK.nature}/crops_dirtRow.glb`]: 0.25,
-  [`${LIFE_PACK.nature}/crop_carrot.glb`]: 0.45,
-  [`${LIFE_PACK.nature}/flower_yellowA.glb`]: 0.5,
-  [`${LIFE_PACK.nature}/flower_purpleB.glb`]: 0.5,
 };
-/** Clips the animated models must carry (checked when scales are computed). */
-export const LIFE_MODEL_ANIMATION: Readonly<Record<string, string>> = Object.fromEntries(
-  Object.keys(LIFE_MODEL_HEIGHT)
-    .filter((m) => m.includes('/character-') || m.includes('/animal-'))
-    .map((m) => [m, 'idle']),
-);
 
 export interface ForestLifeMap {
   world: VoxelWorld;
@@ -192,7 +170,7 @@ export function placeForestLife(map: ForestLifeMap): Ambient[] {
   const logStart = spot(woodHome.x - 2, woodHome.z + 3);
   const logEnd = spot(logStart.x + 2, logStart.z, { from: logStart });
   map.addProp(`${P.survival}/tree-log.glb`, logStart.x + 1, logStart.z + 1, 90);
-  add('sau-bo-go', 'caterpillar', 'Sâu con', `${P.pets}/animal-caterpillar.glb`, logStart, 90, { 'log-end': at(logEnd) }, { scale: 0.6 });
+  add('sau-bo-go', 'caterpillar', 'Sâu con', `${P.pets}/animal-caterpillar.glb`, logStart, 90, { 'log-end': at(logEnd) });
 
   // Garden: three rows of carrots, a gardener, two chicks, a bee and flowers.
   const bed = spot(map.spawn.x + 12, map.spawn.z - 3);

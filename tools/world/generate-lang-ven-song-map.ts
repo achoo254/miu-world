@@ -106,11 +106,8 @@ export async function generateLangVenSong() {
     water: { level: WATER_LEVEL, covers: inWater },
     pathsFromSpawn: false,
     routes: ROUTES,
-    rides: { vehicle: { name: 'Đò', label: 'Lên đò', model: `${N}/canoe.glb`, height: 0.6 } },
+    rides: { vehicle: { name: 'Đò', label: 'Lên đò', model: `${N}/canoe.glb` } },
     trees: { skip: 0.8, blocks: (roll, block) => ({ log: block('tree-log'), leaves: block(roll < 0.12 ? 'leaves-autumn' : roll < 0.3 ? 'leaves-pink' : 'leaves') }) },
-    models: {
-      heights: { [M.rice]: 0.7, [M.riceRipe]: 1, [M.lily]: 0.1, [M.lilySmall]: 0.08, [M.fence]: 1, [M.logs]: 0.9, [M.box]: 0.9, [M.workbench]: 0.9, [M.rock]: 2 },
-    },
     life: ({ zone, landmark }) => {
       const [gate, meadow, landing, marsh] = [1, 2, 3, 4].map(zone) as [Zone, Zone, Zone, Zone];
       const c = (zn: Zone, dx: number, dz: number): readonly [number, number] => [zn.x + dx, zn.z + dz];

@@ -12,16 +12,6 @@ import { createRng } from './noise';
 export const LIFE_CLEARANCE = 5;
 
 const PEOPLE = 'packs/kenney-blocky-characters/2.0';
-/** Standing heights of the models life uses (merged into a map's model heights). */
-export const LIFE_HEIGHTS: Readonly<Record<string, number>> = {
-  ...Object.fromEntries('abcdefghijklmnopqr'.split('').map((k) => [`${PEOPLE}/character-${k}.glb`, 1.75])),
-  [`${PACK.pets}/animal-cow.glb`]: 1.5,
-  [`${PACK.pets}/animal-pig.glb`]: 0.9,
-  [`${PACK.pets}/animal-dog.glb`]: 0.9,
-  [`${PACK.pets}/animal-cat.glb`]: 0.7,
-  [`${PACK.pets}/animal-chick.glb`]: 0.5,
-};
-export const LIFE_CLIPS: Readonly<Record<string, string>> = Object.fromEntries(Object.keys(LIFE_HEIGHTS).map((m) => [m, 'idle']));
 
 /** A person model by letter (Kenney Blocky Characters), for a cast list. */
 export const person = (letter: string): string => `${PEOPLE}/character-${letter}.glb`;

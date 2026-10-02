@@ -12,8 +12,7 @@ import { cellsIn } from './chapters/place-quest-targets';
 import type { OutlandTheme } from '../../packages/voxel/src/outland';
 import { outlandSpecOf } from './outland-spec';
 import { columnsOf, fillColumn, heightField, loadBlocks, mapModels, PACK, placeRegionTargets, rollingHeight, scatterTrees, smoothstep, standHeight, WIDE_MAP_SIDE } from './map-kit';
-import { SCENERY_MODELS } from './scenery';
-import { LIFE_CLIPS, LIFE_HEIGHTS, placeVillageLife, type Resident } from './village-life';
+import { placeVillageLife, type Resident } from './village-life';
 import { createRng, hashSeed } from './noise';
 import { distanceToPath, pathColumns, type Point } from './structures/path';
 
@@ -83,7 +82,8 @@ export interface ZoneMapSpec {
   /** Share of tree spots left empty, and a tree's trunk and leaves from a roll in [0, 1). */
   trees: { skip: number; blocks: (roll: number, block: (name: string) => number) => { log: number; leaves: number } };
   /** Every model the map places with its standing height in blocks; clips of the animated ones; corner-pivot models. */
-  models: { heights: Readonly<Record<string, number>>; clips?: Readonly<Record<string, string>>; centred?: readonly string[] };
+  /** Models this map means as something else than the catalog's (content/world/models.json): model → height. */
+  sizes?: Readonly<Record<string, number>>;
   build: (ctx: ZoneMapContext) => void;
   /**
    * Small things dotted through every zone so it never reads as an empty lawn (flowers, bushes, stones), about
@@ -104,7 +104,7 @@ export interface ZoneMapSpec {
    * and a stop at each zone back to the spawn. `vehicle` names them ("Xe buýt", "Đò") and gives their look;
    * `stops` replaces the default with the map's own (from, to, name); false: none.
    */
-  rides?: false | { vehicle?: { name: string; label: string; model: string; height: number }; stops?: ReadonlyArray<{ name: string; at: readonly [number, number]; to: readonly [number, number] }> };
+  rides?: false | { vehicle?: { name: string; label: string; model: string }; stops?: ReadonlyArray<{ name: string; at: readonly [number, number]; to: readonly [number, number] }> };
   life?: (map: { zone: (chapter: number) => Zone; landmark: (id: string) => readonly [number, number] }) => readonly Resident[];
 }
 
@@ -118,7 +118,6 @@ const GATE = `${PACK.castle}/gate.glb`;
 const RIDE_MODEL = `${PACK.props}/automobile.glb`;
 /** The hub every theme map has a gate back to. */
 export const HUB_REGION = 'truong-hoc';
-const DRESSING_HEIGHTS: Readonly<Record<string, number>> = { [`${PACK.nature}/grass_large.glb`]: 0.6, [`${PACK.nature}/rock_smallA.glb`]: 0.5 };
 
 export async function generateZoneMap(spec: ZoneMapSpec): Promise<{ world: VoxelWorld; entities: WorldEntities }> {
   const block = await loadBlocks();
@@ -249,7 +248,7 @@ export async function generateZoneMap(spec: ZoneMapSpec): Promise<{ world: Voxel
 
   // 5. Props, now that the ground is final.
   const standY = standHeight(world, surface);
-  const models = await mapModels({ heights: { [SIGNPOST]: 1.6, [GATE]: 5, [RIDE_MODEL]: 1.6, ...(spec.rides && spec.rides.vehicle ? { [spec.rides.vehicle.model]: spec.rides.vehicle.height } : {}), ...SCENERY_MODELS, ...DRESSING_HEIGHTS, ...(spec.life ? LIFE_HEIGHTS : {}), ...spec.models.heights }, clips: { ...(spec.life ? LIFE_CLIPS : {}), ...(spec.models.clips ?? {}) }, standY, centred: spec.models.centred });
+  const models = await mapModels({ standY, sizes: spec.sizes });
   for (const q of queued) {
     if (q.kind === 'at') models.addPropAt(q.model, q.at, q.yaw);
     else if (q.kind === 'centred-at') models.addCentred(q.model, q.at, q.yaw);
@@ -309,7 +308,7 @@ export async function generateZoneMap(spec: ZoneMapSpec): Promise<{ world: Voxel
     return [Math.round(x), Math.round(z)];
   };
   const chapterStart = new Map(zones.map((zn) => [zn.chapter, openNear(zn.x, zn.z + zn.hz - 3)] as const));
-  const vehicle = (spec.rides !== false && spec.rides?.vehicle) || { name: 'Xe buýt', label: 'Lên xe', model: RIDE_MODEL, height: 1.6 };
+  const vehicle = (spec.rides !== false && spec.rides?.vehicle) || { name: 'Xe buýt', label: 'Lên xe', model: RIDE_MODEL };
   const rideStops =
     spec.rides === false
       ? []

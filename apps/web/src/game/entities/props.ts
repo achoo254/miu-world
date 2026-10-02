@@ -7,7 +7,12 @@ import { BufferGeometry, Euler, Group, Matrix4, Mesh, Quaternion, Vector3, type 
 import { mergeGeometries } from 'three/examples/jsm/utils/BufferGeometryUtils.js';
 import type { WorldEntities } from '@miu/voxel/world-entities';
 import type { GuardedGltfLoader } from '../asset-loader';
+import { modelCatalogSchema, modelFades } from '@miu/voxel/model-catalog';
+import modelCatalogJson from '../../../../../content/world/models.json';
 import { seeThroughCopy, type SeeThroughUniforms } from '../world/block-material';
+
+/** Each model's catalog entry: whether it fades in front of the child (content/world/models.json). */
+const CATALOG = modelCatalogSchema.parse(modelCatalogJson);
 
 /** Side of a prop tile in blocks: a region's, so at most 3 x 3 tiles are in view (draw calls stay low). */
 export const PROP_TILE = 128;
@@ -54,7 +59,9 @@ export async function loadProps(loader: GuardedGltfLoader, entities: WorldEntiti
       if (!(node instanceof Mesh) || Array.isArray(node.material)) return;
       const material = node.material as Material;
       const attributes = Object.keys(node.geometry.attributes).sort().join(',');
-      parts.push({ geometry: node.geometry, material, matrix: node.matrixWorld.clone(), key: materialKey(material, attributes) });
+      // A model the catalog keeps solid batches apart from the fading ones of the same material.
+      const fades = modelFades(CATALOG, model);
+      parts.push({ geometry: node.geometry, material, matrix: node.matrixWorld.clone(), key: `${materialKey(material, attributes)}|${fades ? 'fade' : 'solid'}` });
     });
     models.set(model, parts);
   }
@@ -71,7 +78,7 @@ export async function loadProps(loader: GuardedGltfLoader, entities: WorldEntiti
   /** One fading copy per batch material, shared by every tile. */
   const faded = new Map<string, Material>();
   const fadingOf = (batchKey: string, material: Material): Material => {
-    if (!seeThrough) return material;
+    if (!seeThrough || batchKey.endsWith('|solid')) return material;
     let copy = faded.get(batchKey);
     if (!copy) faded.set(batchKey, (copy = seeThroughCopy(material, seeThrough)));
     return copy;

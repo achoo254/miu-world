@@ -5,49 +5,20 @@
 // Output: assets/generated/world/forest-ch1/{regions/, horizon.bin, entities.json}
 import { VoxelWorld } from '../../packages/voxel/src/chunk-format';
 import type { WorldEntities } from '../../packages/voxel/src/world-entities';
-import { LIFE_MODEL_ANIMATION, LIFE_MODEL_HEIGHT, QUEST_CLEARANCE, placeForestLife } from './forest-life';
+import { FOREST_CAST_SIZES, QUEST_CLEARANCE, placeForestLife } from './forest-life';
 import { columnsOf, fillColumn, heightField, loadBlocks, mapModels, PACK, placeRegionTargets, rollingHeight, runIfMain, scatterTrees, smoothstep, standHeight, WIDE_MAP_SIDE } from './map-kit';
 import { createRng, hashSeed } from './noise';
 import { placeBridge } from './structures/bridge';
 import { distanceToPath, pathColumns, type Point } from './structures/path';
 import { cellsIn } from './chapters/place-quest-targets';
 import { placeAncientTree } from './structures/tree';
-import { LIFE_CLIPS, LIFE_HEIGHTS, crowd, person, placeVillageLife } from './village-life';
+import { crowd, person, placeVillageLife } from './village-life';
 import { outlandSpecOf } from './outland-spec';
 
 export const MAP_ID = 'forest-ch1';
 export const SEED_TEXT = 'miu-forest-ch1';
 const WATER_LEVEL = 9;
 
-/** Models and the height (in blocks) each should stand at; scale is derived from its bounds. */
-const MODEL_HEIGHT: Record<string, number> = {
-  [`${PACK.props}/railway-red.glb`]: 1.2,
-  [`${PACK.survival}/chest.glb`]: 0.8,
-  [`${PACK.survival}/box.glb`]: 0.6,
-  [`${PACK.nature}/mushroom_red.glb`]: 0.8,
-  [`${PACK.nature}/plant_bush.glb`]: 1.0,
-  [`${PACK.survival}/signpost.glb`]: 1.6,
-  [`${PACK.survival}/campfire-pit.glb`]: 0.5,
-  [`${PACK.survival}/barrel.glb`]: 1.0,
-  [`${PACK.survival}/box-large.glb`]: 0.9,
-  [`${PACK.survival}/fence.glb`]: 1.0,
-  [`${PACK.nature}/mushroom_redGroup.glb`]: 0.6,
-  [`${PACK.nature}/mushroom_tanGroup.glb`]: 0.6,
-  [`${PACK.nature}/flower_redA.glb`]: 0.5,
-  [`${PACK.nature}/flower_yellowB.glb`]: 0.5,
-  [`${PACK.nature}/flower_purpleA.glb`]: 0.5,
-  [`${PACK.nature}/log_stack.glb`]: 0.9,
-  [`${PACK.nature}/lily_large.glb`]: 0.1,
-  [`${PACK.food}/apple.glb`]: 0.35,
-  [`${PACK.castle}/gate.glb`]: 5,
-  [`${PACK.pets}/animal-parrot.glb`]: 1.1,
-  [`${PACK.pets}/animal-beaver.glb`]: 1.0,
-};
-/** Clips the animated models must contain. */
-const MODEL_ANIMATION: Record<string, string> = {
-  [`${PACK.pets}/animal-parrot.glb`]: 'idle',
-  [`${PACK.pets}/animal-beaver.glb`]: 'idle',
-};
 
 export function riverCenter(x: number): number {
   return 50 + 6 * Math.sin(x / 14) + 2.5 * Math.sin(x / 6.3 + 1.3);
@@ -239,8 +210,7 @@ export async function generateForest(): Promise<{ world: VoxelWorld; entities: W
   // 8. Entities.
   const standY = standHeight(world, surface);
   const { props, scaleOf, place, addProp, addPropAt, modelled, animated } = await mapModels({
-    heights: { ...MODEL_HEIGHT, ...LIFE_HEIGHTS, ...LIFE_MODEL_HEIGHT },
-    clips: { ...MODEL_ANIMATION, ...LIFE_CLIPS, ...LIFE_MODEL_ANIMATION },
+    sizes: FOREST_CAST_SIZES,
     standY,
   });
   addProp(`${PACK.survival}/signpost.glb`, spawn.x + 3, spawn.z + 3, 225);

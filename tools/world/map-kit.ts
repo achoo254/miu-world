@@ -12,6 +12,7 @@ import { buildHorizon, encodeHorizon, encodeRegions, regionFile } from '../../pa
 import type { Interactable, WorldEntities } from '../../packages/voxel/src/world-entities';
 import { ASSETS_DIR, REPO_ROOT, readJson } from '../assets/asset-lib';
 import { placeQuestTargets, readQuests, targetUses, WALK_GAP, type PlacementMap } from './chapters/place-quest-targets';
+import { catalogModels } from './model-catalog';
 import { modelCentres, modelScales } from './model-scales';
 import { fbm } from './noise';
 import { placeTree, treeHeight } from './structures/tree';
@@ -123,20 +124,21 @@ export function standHeight(world: VoxelWorld, surface: (x: number, z: number) =
 }
 
 /**
- * Props and model looks for one map: every model it places with the height (in blocks) it stands at,
- * and the clip each animated model plays. Scales are measured from the models, checked against the
- * manifest; `centred` lists pack models whose pivot is a corner (furniture, houses), placed by their middle.
+ * Props and model looks for one map: every model it places stands at its height in the catalog
+ * (content/world/models.json, model-catalog.ts), or at the map's own `sizes` for the few it means as
+ * something else; animated models play their catalog clip, corner-pivot models are placed by their middle.
+ * Scales are measured from the models, checked against the manifest.
  */
-export async function mapModels(options: {
-  heights: Readonly<Record<string, number>>;
-  clips: Readonly<Record<string, string>>;
-  standY: (x: number, z: number) => number;
-  centred?: readonly string[];
-}) {
-  const { heights, clips, standY } = options;
+export async function mapModels(options: { standY: (x: number, z: number) => number; sizes?: Readonly<Record<string, number>> }) {
+  const { standY } = options;
+  const { heights, clips, centred } = await catalogModels(options.sizes);
   const scales = await modelScales(heights, clips);
-  const centres = await modelCentres(options.centred ?? []);
-  const scaleOf = (model: string): number => scales.get(model) ?? 1;
+  const centres = await modelCentres(centred);
+  const scaleOf = (model: string): number => {
+    const scale = scales.get(model);
+    if (scale === undefined) throw new Error(`${model} is not in content/world/models.json: add a line for it`);
+    return scale;
+  };
   const place = (x: number, z: number): Position => [x + 0.5, standY(x, z), z + 0.5];
   const props: WorldEntities['props'] = [];
   const addPropAt = (model: string, at: readonly [number, number, number], yaw = 0, chapter?: number): void => {

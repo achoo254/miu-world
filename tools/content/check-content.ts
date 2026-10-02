@@ -15,6 +15,7 @@ import { RegionCatalog, mapForRegion, regionGuides } from '../../packages/schema
 import { UI_ICONS } from '../../apps/web/src/ui/kit/ui-art';
 import { MUSIC_MOODS } from '../../apps/web/src/ui/sound/music';
 import { ACCESSORY_SLOTS, MIN_OPEN_ITEMS_PER_SLOT, openItemsInSlot, type AccessoryItem } from '../../packages/voxel/src/accessory-schema';
+import { modelCatalogSchema } from '../../packages/voxel/src/model-catalog';
 import { entitiesForChapter, worldEntitiesSchema } from '../../packages/voxel/src/world-entities';
 import { ASSETS_DIR } from '../assets/asset-lib';
 import { CURRICULUM_FOLDERS, checkCurriculum } from './check-curriculum';
@@ -43,6 +44,8 @@ const LOOKS_FILE = 'world/looks.json';
 const TARGETS_FILE = 'world/targets.json';
 const EMOJI_PROPS_FILE = 'world/emoji-props.json';
 const BOX_PROPS_FILE = 'world/box-props.json';
+/** Every model the maps place: height, clip, placing, fading (the map generators and the game read it). */
+const MODELS_FILE = 'world/models.json';
 const PRIVACY_FILE = 'legal/privacy-vi.json';
 const ITEMS_FOLDER = 'items/';
 
@@ -133,7 +136,7 @@ const readByCatalogue = (rel: string) =>
   CATALOGUE_FILES.some((o) => (o.endsWith('/') ? inFolder(rel, o) && rel.endsWith('.json') : rel === o));
 const readByAssetTools = (rel: string) => ASSET_TOOL_FILES.some((o) => (o.endsWith('/') ? inFolder(rel, o) : rel === o));
 const readByCurriculum = (rel: string) => CURRICULUM_FOLDERS.some((o) => inFolder(rel, o) && rel.endsWith('.json'));
-const readByWeb = (rel: string) => rel === REGIONS_FILE || rel === LOOKS_FILE || rel === EMOJI_PROPS_FILE || rel === BOX_PROPS_FILE || rel === TARGETS_FILE || rel === PRIVACY_FILE || (inFolder(rel, ITEMS_FOLDER) && rel.endsWith('.json'));
+const readByWeb = (rel: string) => rel === REGIONS_FILE || rel === MODELS_FILE || rel === LOOKS_FILE || rel === EMOJI_PROPS_FILE || rel === BOX_PROPS_FILE || rel === TARGETS_FILE || rel === PRIVACY_FILE || (inFolder(rel, ITEMS_FOLDER) && rel.endsWith('.json'));
 
 /** Items parse, use a shipped UI icon, file name = id, and every item a quest rewards exists. */
 export function checkItems(dir: string, files: readonly string[], quests: Iterable<QuestDefinition>): string[] {
@@ -362,6 +365,10 @@ export function checkContent(dir: string = CONTENT_DIR): ContentReport {
       issues.push(...questSpread(readQuestDefinitions(path.join(dir, 'quests')), read(TARGETS_FILE), read(LOOKS_FILE), guides).issues);
       const pictures = new Set(manifest.files.flatMap((f) => f.path.match(/^packs\/fluent-emoji\/[^/]+\/props\/(.+)\.png$/)?.[1] ?? []));
       issues.push(...checkEmojiProps(read(EMOJI_PROPS_FILE), read(LOOKS_FILE), pictures));
+      if (existsSync(path.join(dir, MODELS_FILE))) {
+        const models = modelCatalogSchema.safeParse(read(MODELS_FILE));
+        if (!models.success) issues.push(`content/${MODELS_FILE}: ${models.error.message}`);
+      }
       const boxProps = BoxPropCatalog.safeParse(read(BOX_PROPS_FILE));
       if (!boxProps.success) issues.push(`content/${BOX_PROPS_FILE}: ${boxProps.error.message}`);
     } else issues.push(`content/${TARGETS_FILE} is missing: the map generators place quest targets from it`);

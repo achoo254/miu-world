@@ -81,7 +81,6 @@ const FLAT = [
 ];
 const flatness = (x: number, z: number): number =>
   Math.max(...FLAT.map((r) => 1 - smoothstep(0, 8, Math.hypot(Math.max(0, r.x0 - x, x - r.x1), Math.max(0, r.z0 - z, z - r.z1)))));
-
 const F = PACK.food;
 const N = PACK.nature;
 const P = PACK.props;
@@ -118,13 +117,6 @@ const M = {
   pot: `${F}/pot-stew.glb`,
   bag: `${F}/bag.glb`,
   cake: `${F}/cake.glb`,
-};
-const HEIGHTS: Readonly<Record<string, number>> = {
-  [M.flowerRed]: 0.5, [M.flowerYellow]: 0.5, [M.flowerPurple]: 0.5, [M.bamboo]: 5, [M.lily]: 0.1, [M.canoe]: 0.6, [M.pumpkin]: 0.7,
-  [M.fence]: 1, [M.lamp]: 4.8, [M.barrel]: 1, [M.crate]: 0.9, [M.bucket]: 0.6, [M.campfire]: 1.1, [M.bench]: 0.96, [M.hoop]: 3.85,
-  [M.scale]: 0.8, [M.basket]: 0.6, [M.star]: 0.5, [M.picture]: 0.6, [M.toyBoat]: 0.6, [M.seedling]: 0.4, [M.fish]: 0.35,
-  [M.cucumber]: 0.45, [M.cabbage]: 0.45, [M.carrot]: 0.45, [M.apple]: 0.4, [M.banana]: 0.4, [M.pear]: 0.45, [M.soda]: 0.45,
-  [M.pot]: 0.6, [M.bag]: 0.5, [M.cake]: 0.45,
 };
 /** What each kind of stall piles on its counter and in the crates before it. */
 const GOODS = {
@@ -301,7 +293,8 @@ export async function generateChoPhien() {
     routes: ROUTES,
     trees: { skip: 0.55, blocks: (roll, block) => ({ log: block('tree-log'), leaves: block(roll < 0.32 ? 'leaves-pink' : roll < 0.4 ? 'leaves-autumn' : 'leaves') }) },
     dressing: { models: [M.basket, M.crate, M.barrel, M.bucket, M.flowerRed, M.flowerYellow, M.flowerPurple, M.pumpkin, M.cabbage], spacing: 6 },
-    models: { heights: HEIGHTS },
+    // Toy boats and small frames on the stalls (content/world/models.json has the usual sizes).
+    sizes: { [M.toyBoat]: 0.6, [M.picture]: 0.6 },
     // Market day: sellers calling at every row, shoppers answering, porters carrying loads, the canal's
     // boatmen, the animals for sale, children at the games.
     life: ({ landmark }) => [

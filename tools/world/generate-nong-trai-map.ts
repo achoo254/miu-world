@@ -195,14 +195,6 @@ export async function generateNongTrai() {
     pathsFromSpawn: false,
     routes: ROUTES,
     trees: { skip: 0.45, blocks: (roll, block) => ({ log: block('tree-log'), leaves: block(roll < 0.35 ? 'leaves-pink' : roll < 0.42 ? 'leaves-autumn' : 'leaves') }) },
-    models: {
-      heights: {
-        [M.corn]: 1.6, [M.pumpkin]: 0.6, [M.carrot]: 0.6, [M.greens]: 0.6, [M.wheat]: 1, [M.melon]: 0.6,
-        [M.fence]: 1, [M.fruitTree]: 4.5, [M.bush]: 1.2, [M.hay]: 0.9, [M.barrel]: 1, [M.bucket]: 0.6, [M.workbench]: 0.9, [M.anvil]: 0.9,
-        [M.cartRed]: 1.2, [M.cartBlue]: 1.2, [M.cartYellow]: 1.2, [M.wheel]: 0.8, [M.brush]: 0.6, [M.gift]: 0.6, [M.sack]: 0.7,
-        [M.lily]: 0.1, [M.logs]: 0.9, [M.bench]: 0.96, [M.cow]: 1.4, [M.pig]: 0.9, [M.chick]: 0.5,
-      },
-    },
     // The farm at work: milking, feeding hens, ploughing, carting the harvest; herds in the pastures.
     life: ({ landmark }) => [
       ...crowd('milker', ['Cô vắt sữa', 'Chú vắt sữa'], [person('e'), person('m')], landmark('chuong-bo'), 8, 3, [LIFE_HELD.bucket, LIFE_HELD.bucket]),
