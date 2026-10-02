@@ -13,6 +13,9 @@ export const accessoryScaler =
 const LOCOMOTION = ['idle', 'walk', 'sprint'] as const;
 type Locomotion = (typeof LOCOMOTION)[number];
 
+/** Scale of the child's character model so she reads as a child relative to adult NPCs. */
+export const PLAYER_SCALE = 0.82;
+
 export interface PlayerCharacter {
   root: Object3D;
   /** Accessory entries actually attached (bad entries are skipped). */
@@ -29,6 +32,8 @@ export async function loadPlayerCharacter(loader: GuardedGltfLoader, species: st
     o.frustumCulled = false; // skinned bounds lag the animated pose
   });
   const worn = dressCharacter(root, outfit, accessoryScaler(model), true);
+  // Scale the character and all attached accessories proportionally.
+  root.scale.setScalar(PLAYER_SCALE);
   // A bad ?outfit= must not block the game.
   for (const { entry, error } of worn.skipped) console.warn(`skipping outfit entry "${entry}"`, error);
   const mixer = new AnimationMixer(root);

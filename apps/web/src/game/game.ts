@@ -36,7 +36,7 @@ import { loadProps } from './entities/props';
 import { Autopilot } from './player/autopilot';
 import { CameraRig } from './player/camera-rig';
 import { PlayerInput } from './player/input';
-import { PlayerController, type MoveIntent } from './player/player-controller';
+import { PlayerController, WALK_SPEED, type MoveIntent } from './player/player-controller';
 import { RescueWatch } from './player/rescue';
 import { usableSpot } from './player/saved-spot';
 import { readQuality } from './quality';
@@ -53,7 +53,7 @@ import './game.css';
 /** Boot steps reported as `loading-progress`: renderer, asset registry, map data, world mesh, models. */
 const LOADING_STEPS = 5;
 /** Middle of the child's body: the end of the line of sight that trees fade along. */
-const SEE_FOCUS_HEIGHT = 0.9;
+const SEE_FOCUS_HEIGHT = 0.74;
 /** A solid block this many blocks over the child's feet (up to ROOF_REACH) means she is under a roof. */
 const ROOF_FROM = 3;
 const ROOF_REACH = 14;
@@ -61,8 +61,12 @@ const ROOF_REACH = 14;
 const INDOOR_EASE = 4;
 /** After the child drags the view, the camera keeps her angle this long before settling behind her again. */
 const LOOK_HOLD_S = 1;
-/** Share of the autopilot's turning pace used while the child walks: the view swings round behind her. */
-const FOLLOW_STRENGTH = 0.8;
+/**
+ * Camera follow pace (owner, 02/10/2026: when turning sideways/around the camera holds still;
+ * only when she actively runs does it turn to follow behind her; walking turns lazily).
+ */
+const FOLLOW_STRENGTH_RUN = 0.9;
+const FOLLOW_STRENGTH_WALK = 0.2;
 /** Turning the stick further than this (radians) takes a new walking direction from the view as it is now. */
 const STICK_TURN = 0.45;
 
@@ -546,9 +550,15 @@ export class Game {
         const stick = Math.atan2(state.moveX, state.moveY);
         if (!moving) heading = null;
         else if (!heading || sinceLook === 0 || Math.abs(Math.atan2(Math.sin(stick - heading.stick), Math.cos(stick - heading.stick))) > STICK_TURN) heading = { yaw: rig.yaw, stick };
+        const isRunning = state.run && controller.speed > (WALK_SPEED + 0.4);
+        const followStrength = isRunning
+          ? FOLLOW_STRENGTH_RUN
+          : controller.speed > 0.8
+            ? FOLLOW_STRENGTH_WALK * Math.min(1, controller.speed / WALK_SPEED)
+            : 0;
         if (sinceLook > LOOK_HOLD_S && moving) {
           rig.recenter(dt);
-          rig.follow(controller.facing, dt, FOLLOW_STRENGTH);
+          if (followStrength > 0) rig.follow(controller.facing, dt, followStrength);
         }
         const { right, forward } = rig.basis(heading?.yaw);
         intent = {

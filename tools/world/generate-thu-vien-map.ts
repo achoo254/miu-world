@@ -223,7 +223,7 @@ export async function generateThuVien() {
     life: ({ landmark }) => [
       // 0. Spawn & arrival terminal: guards, welcome guides, bus riders and shoppers (x: ~186, z: ~430).
       { routine: 'school-guard', name: 'Chú bảo vệ cổng thư viện', model: person('d'), at: [SPAWN.x + 3, SPAWN.z + 1] as const },
-      { routine: 'librarian', name: 'Cô hướng dẫn mượn thẻ sách', model: person('i'), held: [LIFE_HELD.book], at: [SPAWN.x - 2, SPAWN.z - 3] as const },
+      { routine: 'librarian', name: 'Cô hướng dẫn mượn thẻ sách', model: person('e'), held: [LIFE_HELD.book], at: [SPAWN.x - 2, SPAWN.z - 3] as const },
       { routine: 'shopper', name: 'Khách mua sách tới bến xe', model: person('k'), held: [LIFE_HELD.basket], at: [SPAWN.x + 2, SPAWN.z - 4] as const },
       { routine: 'pupil', name: 'Bạn nhỏ cầm truyện vừa mượn', model: person('f'), held: [LIFE_HELD.book], at: [SPAWN.x - 4, SPAWN.z + 2] as const },
       { routine: 'dog', name: 'Cún gác bến xe thư viện', model: animal('dog'), at: [SPAWN.x + 5, SPAWN.z - 2] as const },
@@ -234,7 +234,7 @@ export async function generateThuVien() {
       { routine: 'vendor', name: 'Bác đẩy xe sách lưu động', model: person('j'), held: [LIFE_HELD.crate], at: [440, 420] as const },
 
       // 1. Chapter 1: Indoors each works round its own place: the desk and the counter, the stacks, the tables.
-      ...visiting(crowd('librarian', ['Cô thủ thư'], [person('i')], landmark('ban-thu-thu'), 2, 1, [LIFE_HELD.book]), [[220, 510], [240, 510], [262, 512]]),
+      ...visiting(crowd('librarian', ['Cô thủ thư'], [person('e')], landmark('ban-thu-thu'), 2, 1, [LIFE_HELD.book]), [[220, 510], [240, 510], [262, 512]]),
       ...visiting(crowd('librarian', ['Chú xếp sách'], [person('j')], landmark('loi-giua-cac-ke-sach'), 3, 1, [LIFE_HELD.book]), [[251, 512], [257, 516], [262, 518]]),
       ...visiting(crowd('reader', ['Bạn đọc sách', 'Bác đọc báo', 'Chị đọc truyện'], [person('n'), person('a'), person('h'), person('p')], landmark('ban-doc'), 5, 4, [LIFE_HELD.book]), [[200, 512], [205, 516], [210, 508]]),
       ...visiting(crowd('pupil', ['Bạn nhỏ nghe kể chuyện', 'Em bé xem tranh'], [person('f'), person('o'), person('q')], landmark('goc-doc-co-goi'), 4, 3, [LIFE_HELD.book]), [[207, 525], [199, 534], [211, 535]]),
@@ -266,7 +266,7 @@ export async function generateThuVien() {
       ...crowd('teacher', ['Ông thợ đồng hồ'], [person('a')], landmark('phong-may-dong-ho'), 4, 1, [LIFE_HELD.book]),
       ...crowd('porter', ['Thợ phụ lau bánh răng', 'Học việc chỉnh kim đồng hồ'], [person('k'), person('j')], landmark('ke-dong-ho'), 4, 2, [LIFE_HELD.axe]),
       ...crowd('pupil', ['Bạn nhỏ học cách xem giờ', 'Bạn quan sát con lắc'], [person('f'), person('n')], landmark('phong-may-dong-ho'), 5, 2, [LIFE_HELD.book]),
-      ...crowd('librarian', ['Cô quản lý lịch mùa', 'Chuyên viên lưu trữ tờ lịch'], [person('i'), person('e')], landmark('phong-lich'), 4, 2, [LIFE_HELD.book]),
+      ...crowd('librarian', ['Cô quản lý lịch mùa', 'Chuyên viên lưu trữ tờ lịch'], [person('h'), person('e')], landmark('phong-lich'), 4, 2, [LIFE_HELD.book]),
       ...crowd('librarian', ['Bác thợ vá lịch cũ'], [person('b')], landmark('ban-va-lich'), 3, 1, [LIFE_HELD.book]),
       ...crowd('pupil', ['Bạn nhỏ học 12 tháng', 'Bạn tìm ngày sinh nhật trên lịch'], [person('o'), person('q')], landmark('gia-treo-lich'), 4, 2, [LIFE_HELD.book]),
       ...crowd('reader', ['Người xem album ảnh bốn mùa'], [person('p')], landmark('goc-treo-album-anh'), 4, 1, [LIFE_HELD.book]),

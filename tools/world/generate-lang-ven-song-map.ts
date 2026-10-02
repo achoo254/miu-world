@@ -160,7 +160,7 @@ export async function generateLangVenSong() {
         // Village Square & Chợ nhỏ (x: 100, z: 235).
         ...crowd('vendor', ['Cô bán rau', 'Bác bán hoa quả', 'Chị bán bí', 'Chú bán cá tươi'], [person('e'), person('j'), person('h'), person('m')], landmark('cho-nho'), 4, 4, [L.basket]),
         ...crowd('shopper', ['Bà đi chợ', 'Cô đi chợ', 'Bác mua rau', 'Chị dẫn em đi chợ'], [person('i'), person('l'), person('n'), person('p')], landmark('quang-truong-lang'), 8, 5, [L.basket]),
-        ...crowd('sweeper', ['Cô quét sân quảng trường'], [person('m')], landmark('cay-hoa-sinh-hoat'), 6, 1),
+        ...crowd('sweeper', ['Cô quét sân quảng trường'], [person('e')], landmark('cay-hoa-sinh-hoat'), 6, 1),
         { routine: 'porter', name: 'Bác thợ mộc', model: person('b'), held: [`${PACK.survival}/tool-axe.glb`], at: landmark('xuong-thu-cong'), visits: [[WORKSHOP.x0 + 3, WORKSHOP.z0 + 3], [WORKSHOP.x0 + 6, WORKSHOP.z0 + 5], [WORKSHOP.x0 + 8, WORKSHOP.z0 + 3]] },
         ...crowd('porter', ['Thợ phụ cưa gỗ'], [person('k')], landmark('xuong-thu-cong'), 3, 1, [`${PACK.survival}/tool-axe.glb`]),
         ...crowd('sentry', ['Bác trông tháp chuông'], [person('d')], landmark('thap-chuong'), 3, 1),

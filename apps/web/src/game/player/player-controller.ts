@@ -7,9 +7,9 @@ import { bodyFits, moveAndCollide, type Body, type SolidAt } from '@miu/voxel/gr
 export const WALK_SPEED = 3.4;
 export const RUN_SPEED = 6.2;
 const GRAVITY = 26;
-const JUMP_SPEED = 8.6;
+const JUMP_SPEED = 8.8; // clears ~1.49 blocks: effortless leap onto 1-block steps and ledges
 const TURN_RATE = 12; // rad/s toward the move direction
-const BODY: Body = { halfWidth: 0.28, height: 1.75 };
+const BODY: Body = { halfWidth: 0.24, height: 1.45 };
 /**
  * In water Miu sinks slowly, and holding Jump lifts her at jump speed: enough to leave the water with
  * a leap that clears a 2-block bank (a plain jump clears about 1.4), so a stream is never a trap.

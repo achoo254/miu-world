@@ -24,14 +24,50 @@ export interface BlockReader {
   readonly height: number;
 }
 
+export const PURE_GROUND_BLOCK_NAMES = new Set([
+  'grass',
+  'dirt',
+  'stone',
+  'path',
+  'rock-moss',
+  'riverbed',
+  'snow',
+  'asphalt',
+  'grass-forest',
+  'grass-village',
+  'grass-hamlet',
+  'grass-farm',
+  'grass-library',
+  'grass-castle',
+  'grass-market',
+  'cobble',
+  'cobble-grey',
+  'paver',
+  'trail',
+  'farmland',
+]);
+
+export function isPureGround(name: string): boolean {
+  return PURE_GROUND_BLOCK_NAMES.has(name) || name.startsWith('grass-') || name.startsWith('cobble-');
+}
+
 export function createChunkMesher(world: BlockReader, blocks: readonly AtlasBlock[], atlasSize: number): ChunkMesher {
   const lookup = blockLookup(blocks);
   const isLiquid = (id: number): boolean => lookup(id)?.liquid ?? false;
   const isTransparent = (id: number): boolean => lookup(id)?.transparent ?? false;
-  /** What the child walks through (leaves, tree wood) also fades when it hides her from the camera. */
+  /**
+   * 0.0: Ground and walking floors (grass, dirt, roads, paver, plank decks) NEVER fade (owner 02/10/2026: "nền đất ko bao giờ bị mờ cả").
+   * 0.5: Solid obstacles (walls, roofs, tree trunks) fade when occluding or near the camera, while what she stands on stays solid.
+   * 1.0: Walk-through obstacles (leaves, crops) fade anywhere they hide her.
+   */
   const seeThrough = (q: Quad): number[] => {
     const block = lookup(q.id);
-    return [block && !block.solid && !block.liquid ? 1 : 0];
+    if (!block) return [0];
+    const name = block.name;
+    if (isPureGround(name)) return [0];
+    if ((name === 'planks' || name === 'sand') && q.axis === 1 && q.dir > 0) return [0];
+    if (!block.solid && !block.liquid) return [1];
+    return [0.5];
   };
   /** Lanterns and lit windows shine at their own colour. */
   const glow = (q: Quad): number[] => [lookup(q.id)?.glow ? 1 : 0];

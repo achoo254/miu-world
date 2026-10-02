@@ -24,7 +24,7 @@ import { AssetRegistry, GuardedGltfLoader } from '../asset-loader';
 import { dressCharacter, undressCharacter, type WornOutfit } from '../character/character-accessories';
 import { characterForSpecies } from '../content/characters';
 import { loadPetCompanion, type PetCompanion } from '../entities/pet-companion';
-import { accessoryScaler } from '../entities/player-character';
+import { accessoryScaler, PLAYER_SCALE } from '../entities/player-character';
 import { PETS } from '../../ui/kit/ui-art';
 import { disposeSceneGraph } from '../scene/dispose-scene';
 
@@ -152,6 +152,7 @@ export class CharacterPreview {
     const model: Object3D = gltf.scene;
     model.traverse((o) => (o.frustumCulled = false)); // skinned bounds lag the animated pose
     model.rotation.y = START_YAW;
+    model.scale.setScalar(PLAYER_SCALE);
     scene.add(model);
 
     // Frame the bind pose with room above the head for hats and jumps.

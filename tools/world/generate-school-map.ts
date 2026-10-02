@@ -309,7 +309,7 @@ export async function generateSchool() {
     life: ({ landmark }) => [
       // 0. Street, bus terminals, and front school gate (x: MID=400, z: STREET.z1 ~ 315-325).
       ...crowd('school-guard', ['Bác bảo vệ cổng trường'], [person('d')], [MID + 8, CAMPUS.z0 + 6], 2, 1),
-      { routine: 'teacher', name: 'Cô giáo đón học sinh', model: person('i'), held: [HELD.book], at: [MID + 4, CAMPUS.z0 + 4] as const },
+      { routine: 'teacher', name: 'Cô giáo đón học sinh', model: person('e'), held: [HELD.book], at: [MID + 4, CAMPUS.z0 + 4] as const },
       { routine: 'vendor', name: 'Bác tài xế xe buýt', model: person('m'), at: [MID - 20, STREET.z1 + 2] as const },
       { routine: 'pupil', name: 'Bạn nhỏ đợi xe buýt', model: person('f'), held: [HELD.balloon], at: [MID - 28, STREET.z1 + 2] as const },
       { routine: 'dog', name: 'Cún gác cổng trường', model: animal('dog'), at: [MID + 10, CAMPUS.z0 + 4] as const },
@@ -317,7 +317,7 @@ export async function generateSchool() {
 
       // 1. Chapter 1: Sân trường (sân bóng, lễ chào cờ, cột cờ).
       ...crowd('sweeper', ['Cô lao công', 'Chú lao công'], [person('e'), person('j')], landmark('cot-co'), 10, 2, [HELD.shovel, HELD.basket]),
-      ...crowd('teacher', ['Thầy giáo', 'Cô giáo', 'Thầy tổng phụ trách'], [person('a'), person('i'), person('m')], [MID, MAIN_BUILDING.zFront - 7], 8, 3, [HELD.book]),
+      ...crowd('teacher', ['Thầy giáo', 'Cô giáo', 'Thầy tổng phụ trách'], [person('a'), person('e'), person('m')], [MID, MAIN_BUILDING.zFront - 7], 8, 3, [HELD.book]),
       ...crowd('pupil', ['Bạn cùng trường', 'Bạn tập thể dục giữa giờ'], [person('f'), person('n'), person('o'), person('p'), person('q'), person('r')], landmark('san-bong'), 10, 8, [HELD.book]),
       ...crowd('pupil', ['Đội nghi thức chào cờ', 'Bạn nhỏ kéo cờ'], [person('f'), person('o'), person('n')], landmark('cot-co'), 6, 3, [HELD.book]),
 
@@ -328,7 +328,7 @@ export async function generateSchool() {
 
       // 3. Chapter 3: Vườn trường & Khu thực nghiệm sinh học.
       ...crowd('waterer', ['Thầy làm vườn', 'Bạn trồng cây', 'Bác tỉa cây cảnh'], [person('m'), person('q'), person('a')], [area('vuon-truong').x, area('vuon-truong').z - 10], 8, 3, [HELD.bucket]),
-      ...crowd('teacher', ['Cô giáo dạy môn sinh học'], [person('i')], [area('vuon-truong').x + 6, area('vuon-truong').z - 5], 4, 1, [HELD.book]),
+      ...crowd('teacher', ['Cô giáo dạy môn sinh học'], [person('e')], [area('vuon-truong').x + 6, area('vuon-truong').z - 5], 4, 1, [HELD.book]),
       ...crowd('pupil', ['Bạn nhỏ chăm sóc luống hoa', 'Bạn nhỏ tưới rau mầm', 'Bạn quan sát bướm'], [person('f'), person('o'), person('r')], [area('vuon-truong').x - 4, area('vuon-truong').z - 12], 8, 4, [HELD.bucket]),
 
       // 4. Chapter 4: Sân chơi & Xưởng đồ chơi.
@@ -361,13 +361,13 @@ export async function generateSchool() {
       ...crowd('cow', ['Bò sữa'], [animal('cow')], [DISTRICT.farm.x - 40, DISTRICT.farm.z + 30], 16, 6),
       ...crowd('pig', ['Lợn con'], [animal('pig')], [DISTRICT.farm.x + 30, DISTRICT.farm.z + 40], 10, 4),
       ...crowd('chick', ['Gà con'], [animal('chick')], [DISTRICT.farm.x + 40, DISTRICT.farm.z - 20], 6, 10),
-      ...crowd('rice-planter', ['Cô cấy lúa'], [person('h'), person('i')], [DISTRICT.village.x - 40, DISTRICT.village.z + 110], 26, 4, [HELD.basket]),
+      ...crowd('rice-planter', ['Cô cấy lúa'], [person('h'), person('e')], [DISTRICT.village.x - 40, DISTRICT.village.z + 110], 26, 4, [HELD.basket]),
       ...crowd('laundry', ['Mẹ phơi đồ'], [person('l'), person('e')], [DISTRICT.village.x, DISTRICT.village.z - 40], 20, 3, [HELD.basket]),
       ...crowd('home-cook', ['Bà nấu cơm'], [person('i')], [DISTRICT.hamlet.x, DISTRICT.hamlet.z - 30], 20, 3, [HELD.basket]),
       ...crowd('waterer', ['Ông tưới cây'], [person('a')], [DISTRICT.hamlet.x + 40, DISTRICT.hamlet.z + 20], 14, 2, [HELD.bucket]),
       ...crowd('kite-flyer', ['Bạn thả diều'], [person('f'), person('o'), person('q')], [DISTRICT.hamlet.x + 60, DISTRICT.hamlet.z - 60], 20, 4, [`${PACK.props}/kite.glb`]),
       ...crowd('ferryman', ['Bác ngư dân', 'Chú chèo thuyền'], [person('m'), person('k')], landmark('ben-tau'), 12, 4, [HELD.paddle]),
-      ...crowd('librarian', ['Cô thủ thư'], [person('i')], [DISTRICT.library.x, DISTRICT.library.z + 14], 6, 1, [HELD.book]),
+      ...crowd('librarian', ['Cô thủ thư'], [person('e')], [DISTRICT.library.x, DISTRICT.library.z + 14], 6, 1, [HELD.book]),
       ...crowd('reader', ['Bạn mượn sách'], [person('n'), person('f')], [DISTRICT.library.x, DISTRICT.library.z - 10], 12, 3, [HELD.book]),
       ...crowd('sentry', ['Chú lính gác'], [person('d'), person('g')], [DISTRICT.castle.x, DISTRICT.castle.z - 10], 12, 2, [`${PACK.survival}/tool-axe.glb`]),
       ...crowd('trumpeter', ['Chú thổi kèn'], [person('c')], [DISTRICT.castle.x + 14, DISTRICT.castle.z - 14], 3, 1, [HELD.flute]),

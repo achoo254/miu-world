@@ -80,10 +80,12 @@ bool miuSeeDrop(vec3 p) {
 }`;
 const SEE_FRAGMENT_DECLS = `${SEE_FUNCTIONS}\nvarying float vSeeThrough;`;
 /**
- * Any block in the way fades (walls, roofs, a bank), except what she stands on: a solid surface at or below
- * her feet stays, so the floor never opens under her. What she walks through (leaves, trunks) fades anywhere.
+ * Obstacles in the way fade (leaves, trunks, walls, roofs, overhead ceilings), except ground terrain and
+ * floors she walks on (vSeeThrough <= 0.25): ground never fades (owner, 02/10/2026: "nền đất ko bao giờ bị mờ cả").
+ * Solid obstacles (vSeeThrough <= 0.75) stay solid at or below her feet, while walk-through foliage
+ * (vSeeThrough > 0.75) fades anywhere.
  */
-const SEE_FRAGMENT = 'if (uSeeOn > 0.5 && (vSeeThrough > 0.5 || vSeeWorld.y > uSeeFeet + 0.05) && miuSeeDrop(vSeeWorld)) discard;';
+const SEE_FRAGMENT = 'if (uSeeOn > 0.5 && vSeeThrough > 0.25 && (vSeeThrough > 0.75 || vSeeWorld.y > uSeeFeet + 0.05) && miuSeeDrop(vSeeWorld)) discard;';
 
 /**
  * A copy of a model's material whose every surface fades like the trees (props: bamboo, palms, fences): a

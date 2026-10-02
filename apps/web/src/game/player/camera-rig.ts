@@ -4,7 +4,7 @@
 import { MathUtils, Vector3, type PerspectiveCamera } from 'three';
 import type { SolidAt } from '@miu/voxel/grid-collision';
 
-const TARGET_HEIGHT = 1.9;
+const TARGET_HEIGHT = 1.55;
 /**
  * The child's drag tilts only within a comfortable band: never below the head looking up at the sky,
  * never so steep that the screen is all ground. The view rests at DEFAULT_PITCH.

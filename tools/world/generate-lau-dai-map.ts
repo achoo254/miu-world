@@ -277,7 +277,7 @@ export async function generateLauDai() {
 
       // 1. Chapter 1: Sân hình khối & Painters' Court (x: 110-215, z: 215-300): artists, teachers, geometry students, woodworkers.
       ...crowd('teacher', ['Thầy dạy vẽ'], [person('a')], landmark('phong-ve'), 6, 1, [LIFE_HELD.palette]),
-      ...crowd('teacher', ['Cô giáo hướng dẫn hình học'], [person('i')], landmark('ban-thuoc-ke'), 5, 1, [LIFE_HELD.book]),
+      ...crowd('teacher', ['Cô giáo hướng dẫn hình học'], [person('e')], landmark('ban-thuoc-ke'), 5, 1, [LIFE_HELD.book]),
       ...crowd('reader', ['Bạn vẽ tranh'], [person('f'), person('o'), person('p')], landmark('phong-tranh'), 8, 3, [LIFE_HELD.palette]),
       ...crowd('reader', ['Bạn ghép tranh hình học'], [person('n'), person('q')], landmark('ban-ghep-tranh'), 6, 2, [LIFE_HELD.palette]),
       ...crowd('reader', ['Bạn cắt dán giấy màu'], [person('f'), person('r')], landmark('ban-cat-dan'), 6, 2, [LIFE_HELD.palette]),
@@ -330,7 +330,7 @@ export async function generateLauDai() {
       ...crowd('pupil', ['Bạn nhỏ dạo vườn'], [person('n'), person('q')], landmark('vuon-hoang-gia'), 16, 2),
       ...crowd('pupil', ['Bạn nhỏ trong sân', 'Bạn chơi quanh đài phun'], [person('f'), person('n'), person('q'), person('r')], landmark('dai-phun-nuoc'), 18, 5),
       ...crowd('pupil', ['Bạn thảo luận toán ôn tập'], [person('o'), person('p')], landmark('dai-phun-nuoc'), 14, 2, [LIFE_HELD.book]),
-      ...crowd('teacher', ['Cô giáo dẫn đoàn'], [person('i')], landmark('dai-phun-nuoc'), 20, 1, [LIFE_HELD.book]),
+      ...crowd('teacher', ['Cô giáo dẫn đoàn'], [person('e')], landmark('dai-phun-nuoc'), 20, 1, [LIFE_HELD.book]),
       ...crowd('vendor', ['Bác bán bánh', 'Cô bán hoa'], [person('h'), person('e')], landmark('cho-trong-thanh'), 6, 2, [LIFE_HELD.apple]),
       ...crowd('porter', ['Chú khuân hàng'], [person('b'), person('k')], landmark('cho-trong-thanh'), 10, 2, [LIFE_HELD.crate]),
       ...crowd('milker', ['Chú giữ chuồng'], [person('j')], landmark('chuong-bo'), 4, 1, [LIFE_HELD.bucket]),

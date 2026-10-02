@@ -264,8 +264,8 @@ export async function generateNongTrai() {
 
       // The crop beds and the fields (d-03): farmers with their hoes, reapers in the wheat.
       ...crowd('ploughman', ['Bác nông dân', 'Chú trồng bí'], [person('a'), person('j')], landmark('khu-trong-trot'), 10, 3, [HELD.hoe, HELD.carrot]),
-      ...crowd('rice-planter', ['Cô hái đậu cô ve', 'Chị tỉa cành cà chua'], [person('i'), person('l')], landmark('khu-trong-trot'), 8, 2, [HELD.basket]),
-      ...crowd('rice-planter', ['Cô gặt lúa mì', 'Chú bó lúa'], [person('k'), person('b')], landmark('ruong-lua-mi'), 14, 4, [HELD.basket]),
+      ...crowd('rice-planter', ['Cô hái đậu cô ve', 'Chị tỉa cành cà chua'], [person('e'), person('l')], landmark('khu-trong-trot'), 8, 2, [HELD.basket]),
+      ...crowd('rice-planter', ['Cô gặt lúa mì', 'Chú bó lúa'], [person('h'), person('b')], landmark('ruong-lua-mi'), 14, 4, [HELD.basket]),
       ...crowd('ploughman', ['Bác trồng ngô'], [person('m'), person('e')], landmark('ruong-ngo'), 16, 3, [HELD.hoe]),
 
       // The windmill and bread oven (d-13).
