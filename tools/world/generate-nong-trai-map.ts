@@ -13,11 +13,11 @@
 // and sunflower fields, orchards, pastures, hamlets of cottages, the river and its lake.
 // Output: assets/generated/world/nong-trai/{regions/, horizon.bin, entities.json}
 import { PACK, runIfMain } from './map-kit';
-import { cottagePalette, jetty, laneVerge, STREET_LANTERN, streetHouses } from './scenery';
+import { cottagePalette, jetty, joinWalks, laneVerge, STREET_LANTERN, streetHouses } from './scenery';
 import { placeHouse, type HouseFront } from './structures/buildings';
 import { placeStall, placeWell, placeWindmill } from './structures/countryside';
-import { placeArchBridge, placePlaza } from './structures/landmarks';
-import { placeBreadOven, placeFarmGate, placeFruitTree, placeGlasshouse, placeRedBarn, placeShadeTree, placeSilo, placeStorehouse, placeTallFall, widenRoundDoor } from './structures/nong-trai-farm';
+import { placeArchBridge, placePlaza, widenRoundDoor } from './structures/landmarks';
+import { placeBreadOven, placeFarmGate, placeFruitTree, placeGlasshouse, placeRedBarn, placeShadeTree, placeSilo, placeStorehouse, placeTallFall } from './structures/nong-trai-farm';
 import type { Point } from './structures/path';
 import { facingWriter, FRAME, frameCell, put, type Facing } from './structures/world-writer';
 import { animal, crowd, person } from './village-life';
@@ -619,46 +619,6 @@ function buildFarm(ctx: ZoneMapContext): void {
   const verge: ZoneMapContext = { ...ctx, prop: (model, x, z, a) => (ctx.onPath(x, z) ? undefined : ctx.prop(model, x, z, a)) };
   for (const route of [R.north, R.lane, R.south, R.riverWest, R.riverEast]) laneVerge(verge, route, { spacing: 4, lampEvery: 18 });
   for (const route of [R.westNorth, R.eastNorth, R.west, R.east, R.barnA, R.falls, R.hamletN, R.hamletW]) laneVerge(verge, route, { spacing: 7, lampEvery: 28 });
-}
-
-/**
- * Joins each cottage's garden walk (streetHouses) to its lane across the verge between them, so every front
- * door is on the ways: looking out from the lane on both sides, a run of open ground ending at a walk is laid
- * with the lane's own earth.
- */
-function joinWalks(ctx: ZoneMapContext, lanes: readonly Point[][]): void {
-  for (const lane of lanes) {
-    for (let i = 1; i < lane.length; i++) {
-      const [ax = 0, az = 0] = lane[i - 1] ?? [];
-      const [bx = 0, bz = 0] = lane[i] ?? [];
-      const len = Math.hypot(bx - ax, bz - az);
-      if (len === 0) continue;
-      const [ux, uz] = [(bx - ax) / len, (bz - az) / len];
-      for (let t = 0; t <= len; t += 0.5) {
-        for (const side of [-1, 1]) {
-          let gap: Array<[number, number]> = [];
-          for (let d = 1; d <= 6; d++) {
-            const x = Math.round(ax + ux * t - uz * side * d);
-            const z = Math.round(az + uz * t + ux * side * d);
-            if (ctx.onPath(x, z)) {
-              gap = [];
-              continue;
-            }
-            const y = ctx.surface(x, z);
-            if (ctx.world.get(x, y, z) === ctx.soil.path) {
-              for (const [gx, gz] of gap) {
-                ctx.world.set(gx, ctx.surface(gx, gz), gz, ctx.soil.path);
-                ctx.keepOut(gx, gz, gx, gz);
-              }
-              break;
-            }
-            if (ctx.world.get(x, y + 1, z) !== 0 || ctx.inWater(x, z)) break;
-            gap.push([x, z]);
-          }
-        }
-      }
-    }
-  }
 }
 
 interface FarmTools {

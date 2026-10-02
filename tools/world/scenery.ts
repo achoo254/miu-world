@@ -250,6 +250,20 @@ export function streetHouses(ctx: ZoneMapContext, route: readonly Point[], optio
           const [x, z] = cell(u, v);
           ctx.world.set(x, ctx.surface(x, z), z, ctx.soil.path);
         }
+        // On past the gate to the lane itself: the house stands a set distance from the route's middle, so a
+        // narrow lane leaves a strip of grass before the walk would reach it (the door must lie on the ways).
+        for (const u of doorCols) {
+          const strip: Array<[number, number]> = [];
+          for (let v = -4; v >= -(setback + 4); v--) {
+            const [x, z] = cell(u, v);
+            if (ctx.onPath(x, z)) {
+              for (const [sx, sz] of strip) ctx.world.set(sx, ctx.surface(sx, sz), sz, ctx.soil.path);
+              break;
+            }
+            if (ctx.inWater(x, z)) break;
+            strip.push([x, z]);
+          }
+        }
         for (const u of doorCols) {
           for (let k = 1; k <= 4; k++) {
             const [x, z] = cell(u, -k);
@@ -286,4 +300,44 @@ export function streetHouses(ctx: ZoneMapContext, route: readonly Point[], optio
     }
   }
   return built;
+}
+
+/**
+ * Paves the grass left between a lane and the garden walks off it, so every door's walk joins its lane:
+ * looking out from each lane on both sides, a run of open ground (no water, nothing standing on it) that ends
+ * at a walk of the map's lane earth is laid with that earth and kept clear.
+ */
+export function joinWalks(ctx: ZoneMapContext, lanes: readonly (readonly Point[])[]): void {
+  for (const lane of lanes) {
+    for (let i = 1; i < lane.length; i++) {
+      const [ax = 0, az = 0] = lane[i - 1] ?? [];
+      const [bx = 0, bz = 0] = lane[i] ?? [];
+      const len = Math.hypot(bx - ax, bz - az);
+      if (len === 0) continue;
+      const [ux, uz] = [(bx - ax) / len, (bz - az) / len];
+      for (let t = 0; t <= len; t += 0.5) {
+        for (const side of [-1, 1]) {
+          let gap: Array<[number, number]> = [];
+          for (let d = 1; d <= 6; d++) {
+            const x = Math.round(ax + ux * t - uz * side * d);
+            const z = Math.round(az + uz * t + ux * side * d);
+            if (ctx.onPath(x, z)) {
+              gap = [];
+              continue;
+            }
+            const y = ctx.surface(x, z);
+            if (ctx.world.get(x, y, z) === ctx.soil.path) {
+              for (const [gx, gz] of gap) {
+                ctx.world.set(gx, ctx.surface(gx, gz), gz, ctx.soil.path);
+                ctx.keepOut(gx, gz, gx, gz);
+              }
+              break;
+            }
+            if (ctx.world.get(x, y + 1, z) !== 0 || ctx.inWater(x, z)) break;
+            gap.push([x, z]);
+          }
+        }
+      }
+    }
+  }
 }

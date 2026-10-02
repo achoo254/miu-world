@@ -112,21 +112,6 @@ export function gableRoofAlongZ(world: WorldWriter, r: Rect, y: number, b: { roo
   return peak;
 }
 
-/**
- * Fills the hollow shaft of a doorless round tower (landmarks.ts `placeTower`) solid from `baseY` for
- * `height` rows: a tower on a curtain wall or a roof is a mass of stone, not a sealed room.
- */
-export function fillTowerShaft(world: WorldWriter, cx: number, cz: number, baseY: number, radius: number, height: number, id: number): void {
-  for (let y = baseY; y < baseY + height; y++) {
-    for (let dx = -radius; dx <= radius; dx++) for (let dz = -radius; dz <= radius; dz++) if (Math.hypot(dx, dz) <= radius - 0.9) put(world, cx + dx, y, cz + dz, id);
-  }
-}
-
-/** Opens the one-block door a round building cuts on its -z side (a windmill's foot) to three across and `height` high. */
-export function widenRoundDoor(world: WorldWriter, cx: number, cz: number, baseY: number, radius: number, height = 3): void {
-  for (let y = baseY; y < baseY + height; y++) for (let dx = -1; dx <= 1; dx++) for (let dz = -radius - 1; dz < 0; dz++) put(world, cx + dx, y, cz + dz, 0);
-}
-
 export interface RoundRoomBlocks {
   wall: number;
   trim: number;

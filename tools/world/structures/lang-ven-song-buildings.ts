@@ -63,17 +63,3 @@ export function placeHall(
   };
 }
 
-/**
- * Opens a round tower's doorway (the windmill's, the lighthouse's) to three wide and three high: clears the
- * columns either side of its -z axis from its centre out to `radius` + 1, the bottom three rows from `baseY`.
- */
-export function widenRoundDoor(world: WorldWriter, cx: number, cz: number, baseY: number, radius: number): void {
-  for (let y = baseY; y < baseY + 3; y++) for (let dx = -1; dx <= 1; dx++) for (let dz = -radius - 1; dz < 0; dz++) put(world, cx + dx, y, cz + dz, 0);
-}
-
-/** Fills the hollow shaft of a doorless round tower (landmarks.ts `placeTower`) solid, so no sealed room stands in it. */
-export function fillTowerShaft(world: WorldWriter, cx: number, cz: number, baseY: number, radius: number, height: number, block: number): void {
-  for (let y = baseY; y < baseY + height; y++) {
-    for (let dx = -radius; dx <= radius; dx++) for (let dz = -radius; dz <= radius; dz++) if (Math.hypot(dx, dz) <= radius - 0.9) put(world, cx + dx, y, cz + dz, block);
-  }
-}

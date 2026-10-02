@@ -18,10 +18,10 @@
 // Output: assets/generated/world/lau-dai/{regions/, horizon.bin, entities.json}
 import { PACK, runIfMain, smoothstep } from './map-kit';
 import { fbm, hashSeed } from './noise';
-import { cottageRow, fieldPlot, flowerBed, hamlet, laneVerge, STREET_LANTERN, streetHouses } from './scenery';
+import { cottageRow, fieldPlot, flowerBed, hamlet, joinWalks, laneVerge, STREET_LANTERN, streetHouses } from './scenery';
 import { placeCatStatue, placeFountain, placeStall, placeWell, placeWindmill } from './structures/countryside';
-import { archWindow, archway, battlements, castleRoom, fillBox, fillTowerShaft, gableRoofAlongZ, ironBars, type Rect, reviewBooth, roundRoom, widenRoundDoor } from './structures/lau-dai-castle';
-import { placeArchBridge, placeBanner, placePlaza, placeTower, type TowerBlocks } from './structures/landmarks';
+import { archWindow, archway, battlements, castleRoom, fillBox, gableRoofAlongZ, ironBars, type Rect, reviewBooth, roundRoom } from './structures/lau-dai-castle';
+import { fillTowerShaft, placeArchBridge, placeBanner, placePlaza, placeTower, type TowerBlocks, widenRoundDoor } from './structures/landmarks';
 import { distanceToPath, pathColumns, type Point } from './structures/path';
 import { placeTree } from './structures/tree';
 import { facingWriter, FRAME, put } from './structures/world-writer';
@@ -220,45 +220,6 @@ const inMoat = (x: number, z: number): boolean => {
   return x <= WALLS.x0 - 3 || x >= WALLS.x1 + 3 || z <= WALLS.z0 - 3 || z >= MOAT_S.z0;
 };
 const inWater = (x: number, z: number): boolean => inMoat(x, z) || Math.hypot(x - POND.x, z - POND.z) < POND.r || Math.hypot(x - FOREST_POND.x, z - FOREST_POND.z) < FOREST_POND.r;
-
-/**
- * Paves the grass left between a lane and the garden walks off it (a street's houses stand back from the
- * lane, so a walk can stop a block or two short of the way), so every door's walk joins its lane.
- */
-function joinWalks(ctx: ZoneMapContext, lanes: readonly Point[][]): void {
-  for (const lane of lanes) {
-    for (let i = 1; i < lane.length; i++) {
-      const [ax = 0, az = 0] = lane[i - 1] ?? [];
-      const [bx = 0, bz = 0] = lane[i] ?? [];
-      const len = Math.hypot(bx - ax, bz - az);
-      if (len === 0) continue;
-      const [ux, uz] = [(bx - ax) / len, (bz - az) / len];
-      for (let t = 0; t <= len; t += 0.5) {
-        for (const side of [-1, 1]) {
-          let gap: Array<[number, number]> = [];
-          for (let d = 1; d <= 6; d++) {
-            const x = Math.round(ax + ux * t - uz * side * d);
-            const z = Math.round(az + uz * t + ux * side * d);
-            if (ctx.onPath(x, z)) {
-              gap = [];
-              continue;
-            }
-            const y = ctx.surface(x, z);
-            if (ctx.world.get(x, y, z) === ctx.soil.path) {
-              for (const [gx, gz] of gap) {
-                ctx.world.set(gx, ctx.surface(gx, gz), gz, ctx.soil.path);
-                ctx.keepOut(gx, gz, gx, gz);
-              }
-              break;
-            }
-            if (ctx.world.get(x, y + 1, z) !== 0 || ctx.inWater(x, z)) break;
-            gap.push([x, z]);
-          }
-        }
-      }
-    }
-  }
-}
 
 /**
  * A route cut into the stretches between its junctions, each ending `clear` blocks short of every other way:

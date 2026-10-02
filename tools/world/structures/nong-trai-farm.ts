@@ -314,15 +314,6 @@ export function placeSilo(world: WorldWriter, cx: number, cz: number, baseY: num
 }
 
 /**
- * Opens a round tower's doorway (the windmill's, countryside.ts) to three wide and three high, so the child walks
- * in without a squeeze: clears the columns either side of its -z axis from its centre out to `radius` + 1, the
- * bottom three rows from `baseY`.
- */
-export function widenRoundDoor(world: WorldWriter, cx: number, cz: number, baseY: number, radius: number): void {
-  for (let y = baseY; y < baseY + 3; y++) for (let dx = -1; dx <= 1; dx++) for (let dz = -radius - 1; dz < 0; dz++) put(world, cx + dx, y, cz + dz, 0);
-}
-
-/**
  * A round fruit tree of blocks (d-06): a short trunk, a wide round crown. Returns cells on the crown's surface
  * (for its apples or oranges), every `every`-th.
  */

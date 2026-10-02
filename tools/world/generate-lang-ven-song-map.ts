@@ -13,11 +13,11 @@
 // field, humped stone bridges over the river, cobbled lanes with flowers along their verges.
 // Output: assets/generated/world/lang-ven-song/{regions/, horizon.bin, entities.json}
 import { PACK, runIfMain } from './map-kit';
-import { bambooHedge, cottagePalette, flowerBed, jetty, laneVerge, STREET_LANTERN, streetHouses } from './scenery';
+import { bambooHedge, cottagePalette, flowerBed, jetty, joinWalks, laneVerge, STREET_LANTERN, streetHouses } from './scenery';
 import { animal, crowd, person } from './village-life';
 import { placeCatStatue, placeFountain, placeLighthouse, placeStall, placeWell, placeWindmill } from './structures/countryside';
-import { placeArchBridge, placeGateArch, placePlaza, placeTower } from './structures/landmarks';
-import { fillTowerShaft, placeHall, widenRoundDoor } from './structures/lang-ven-song-buildings';
+import { fillTowerShaft, placeArchBridge, placeGateArch, placePlaza, placeTower, widenRoundDoor } from './structures/landmarks';
+import { placeHall } from './structures/lang-ven-song-buildings';
 import { facingWriter, FRAME, frameCell } from './structures/world-writer';
 import { pathColumns, type Point } from './structures/path';
 import { placeAncientTree } from './structures/tree';
@@ -207,45 +207,6 @@ function stepWays(ctx: ZoneMapContext, routes: readonly Point[][], block: number
     }
   }
   for (const [x, z] of cells) for (let y = (ground.get(key(x, z)) ?? 0) + 1; y <= (top.get(key(x, z)) ?? 0); y++) ctx.world.set(x, y, z, block);
-}
-
-/**
- * Paves the grass left between a lane and the garden walks off it (a street's houses stand back from a bending
- * lane, so a walk can stop a block or two short of the way), so every door's walk joins its lane.
- */
-function joinWalks(ctx: ZoneMapContext, lanes: readonly Point[][]): void {
-  for (const lane of lanes) {
-    for (let i = 1; i < lane.length; i++) {
-      const [ax = 0, az = 0] = lane[i - 1] ?? [];
-      const [bx = 0, bz = 0] = lane[i] ?? [];
-      const len = Math.hypot(bx - ax, bz - az);
-      if (len === 0) continue;
-      const [ux, uz] = [(bx - ax) / len, (bz - az) / len];
-      for (let t = 0; t <= len; t += 0.5) {
-        for (const side of [-1, 1]) {
-          let gap: Array<[number, number]> = [];
-          for (let d = 1; d <= 6; d++) {
-            const x = Math.round(ax + ux * t - uz * side * d);
-            const z = Math.round(az + uz * t + ux * side * d);
-            if (ctx.onPath(x, z)) {
-              gap = [];
-              continue;
-            }
-            const y = ctx.surface(x, z);
-            if (ctx.world.get(x, y, z) === ctx.soil.path) {
-              for (const [gx, gz] of gap) {
-                ctx.world.set(gx, ctx.surface(gx, gz), gz, ctx.soil.path);
-                ctx.keepOut(gx, gz, gx, gz);
-              }
-              break;
-            }
-            if (ctx.world.get(x, y + 1, z) !== 0 || ctx.inWater(x, z)) break;
-            gap.push([x, z]);
-          }
-        }
-      }
-    }
-  }
 }
 
 const inWater = (x: number, z: number): boolean =>
