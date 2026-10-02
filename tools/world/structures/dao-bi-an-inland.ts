@@ -201,8 +201,9 @@ export function buildCave(k: IslandKit): void {
   for (let x = lake.x - lake.rx; x <= lake.x + lake.rx; x++) {
     for (let z = lake.z - lake.rz; z <= lake.z + lake.rz; z++) {
       if (((x - lake.x) / lake.rx) ** 2 + ((z - lake.z) / lake.rz) ** 2 > 1 || !ceilAt.has(`${x},${z}`)) continue;
-      k.put(x, LEVEL - 3, z, b.stone);
-      for (let y = LEVEL - 2; y <= LEVEL; y++) k.put(x, y, z, b.water);
+      // Shallow: a child who steps in wades out a block up from anywhere on its shore.
+      k.put(x, LEVEL - 1, z, b.stone);
+      k.put(x, LEVEL, z, b.water);
     }
   }
   const bridgeZ = Math.round(lake.z);
@@ -248,6 +249,8 @@ export function buildCave(k: IslandKit): void {
   for (const x of [vault.x0 + 2, vault.x1 - 2]) {
     for (let z = vault.z0 + 3; z <= vault.z1 - 4; z += 6) {
       for (let y = TOP; y <= TOP + 8; y++) for (const dx of [0, 1]) k.put(x + dx - (x > cx ? 1 : 0), y, z, y === TOP + 4 ? b.lantern : b.cobble);
+      // Torches, gold and crystals of the vault stand on glowing tiles, like its heaps of coins.
+      k.put(x + (x > cx ? -2 : 2), LEVEL, z, b.lantern);
       k.propOn(M.torch, x + (x > cx ? -2 : 2), LEVEL, z, 0);
     }
   }
@@ -268,7 +271,10 @@ export function buildCave(k: IslandKit): void {
   }
   // Chests and heaps along both walls.
   for (let z = vault.z0 + 2; z <= vault.z1 - 9; z += 3) {
-    for (const x of [vault.x0 + 1, vault.x1 - 1]) k.propOn(roll(x, z, 23) < 0.5 ? M.goldHeap : M.goldChest, x, LEVEL, z, x < midVault ? 90 : 270);
+    for (const x of [vault.x0 + 1, vault.x1 - 1]) {
+      k.put(x, LEVEL, z, b.lantern);
+      k.propOn(roll(x, z, 23) < 0.5 ? M.goldHeap : M.goldChest, x, LEVEL, z, x < midVault ? 90 : 270);
+    }
   }
   // Coins strewn over the floor either side of the walk to the dais.
   for (let x = vault.x0 + 1; x <= vault.x1 - 1; x += 2) {
@@ -278,9 +284,20 @@ export function buildCave(k: IslandKit): void {
       k.propOn(M.goldPile, x, LEVEL, z, Math.floor(roll(z, x, 21) * 360));
     }
   }
-  for (const [dx, dz] of [[-13, 7], [13, 7], [-13, 15], [13, 15]] as const) k.propOn(M.crystalPurple, midVault + dx, LEVEL, vault.z0 + dz, dx * 11);
+  for (const [dx, dz] of [[-13, 7], [13, 7], [-13, 15], [13, 15]] as const) {
+    k.put(midVault + dx, LEVEL, vault.z0 + dz, b.lantern);
+    k.propOn(M.crystalPurple, midVault + dx, LEVEL, vault.z0 + dz, dx * 11);
+  }
   ctx.landmark('kho-bau', 'Kho báu bí mật', midVault, vault.z0 + 4, TOP);
   ctx.keepOut(hall.x0, hall.z0, vault.x1, vault.z1);
+  // Over the way through the cave (tunnel, boardwalk, passage) the mountain's top is bare stone and moss,
+  // never the grey of a paved way, so the walk inside reads as the island's way under it.
+  for (let x = tunnel.x0 - 1; x <= tunnel.x1 + 1; x++) {
+    for (let z = mouthZ; z <= vault.z0; z++) {
+      const y = k.topAt(x, z);
+      if (y > TOP + 5 && ctx.world.get(x, y, z) === b.rock) k.put(x, y, z, roll(x, z, 27) < 0.65 ? b.stone : b.moss);
+    }
+  }
 }
 
 /** Moss and old paving over a zone's floor: pavers, mossy stone and grass mixed (the ruins, d-06). */
@@ -290,7 +307,7 @@ export function paveRuins(k: IslandKit, chapter: number): void {
   if (!zn) return;
   for (let x = zn.x - zn.hx; x <= zn.x + zn.hx; x++) {
     for (let z = zn.z - zn.hz; z <= zn.z + zn.hz; z++) {
-      if (ctx.onPath(x, z) || ctx.inWater(x, z)) continue;
+      if (ctx.onPath(x, z) || ctx.inWater(x, z) || ctx.keptOut(x, z)) continue;
       const avenue = Math.abs(x - zn.x) <= 4;
       const r = roll(x, z, 21);
       if (avenue) k.put(x, LEVEL, z, r < 0.12 ? b.moss : b.paver);
@@ -368,6 +385,9 @@ export function buildTemple(k: IslandKit): void {
   }
   // The door and the steps up to it; the gate of glowing signs over them (d-06).
   archway(ctx.world, 'x', t.z1, mid - 3, mid + 3, floorY + 1, 8);
+  // The doorway's sill paved level with the floor, and the ground from the steps through the gate to the avenue.
+  for (let x = mid - 3; x <= mid + 3; x++) k.put(x, floorY, t.z1, b.rock);
+  k.fill(mid - 4, LEVEL, t.z1 + 3, mid + 4, LEVEL, t.z1 + 5, b.paver);
   for (let x = mid - 6; x <= mid + 6; x++) {
     k.fill(x, LEVEL, t.z1 + 1, x, floorY, t.z1 + 1, b.rock);
     k.fill(x, LEVEL, t.z1 + 2, x, floorY - 1, t.z1 + 2, b.rock);
@@ -423,7 +443,13 @@ export function buildTemple(k: IslandKit): void {
     for (let y = LEVEL; y <= roofY; y++) for (const dz of [1, 2]) k.put(x, y, t.z1 + dz, dz === 2 && y > roofY - 3 ? b.moss : b.rock);
     if (roll(x, t.z1, 30) < 0.6) hangVines(k, x + 1, roofY - 1, t.z1 + 1, 0);
   }
-  for (const dx of [-14, 14, -22, 22]) ctx.prop(Math.abs(dx) > 18 ? M.palmTall : M.palmDetailed, mid + dx, t.z1 + 6, dx * 9);
+  // Palms either side of the gate, each in a bed of earth the paving keeps clear of.
+  for (const dx of [-14, 14, -22, 22]) {
+    const [x, z] = [mid + dx, t.z1 + 6];
+    k.fill(x - 1, LEVEL, z - 1, x + 1, LEVEL, z + 1, b.grass);
+    ctx.keepOut(x - 1, z - 1, x + 1, z + 1);
+    ctx.prop(Math.abs(dx) > 18 ? M.palmTall : M.palmDetailed, x, z, dx * 9);
+  }
   for (const dx of [-12, 12]) ctx.prop(M.bush, mid + dx, t.z1 + 4, 0);
   ctx.keepOut(t.x0 - 1, t.z0 - 1, t.x1 + 1, t.z1 + 2);
   ctx.landmark('den-tho', 'Đền thờ bí ẩn', mid, t.z0 + 22, floorY + 1);
@@ -498,7 +524,12 @@ export function buildJungle(k: IslandKit): void {
   stairDown(k, west + 2, west + 4, bridgeZ + 3, deckY);
   stairDown(k, east + 2, east + 4, bridgeZ + 3, deckY);
   ctx.keepOut(west - 1, bridgeZ - 4, east + 8, bridgeZ + 12);
-  for (const x of [west + 1, east + 5]) placeBigTree(ctx.world, x, ctx.surface(x, bridgeZ - 7) + 1, bridgeZ - 7, 15, { log: b.log, leaves: b.leaves });
+  for (const x of [west + 1, east + 5]) {
+    const [z, y] = [bridgeZ - 7, ctx.surface(x, bridgeZ - 7) + 1];
+    // Its roots in earth, not on the rock of the highland's foot.
+    k.fill(x, y - 1, z, x + 1, y - 1, z + 1, b.grass);
+    placeBigTree(ctx.world, x, y, z, 15, { log: b.log, leaves: b.leaves });
+  }
   ctx.landmark('cau-treo', 'Cầu treo gỗ', JUNGLE_POOL.x, bridgeZ, deckY + 1);
   ctx.landmark('thac-rung', 'Thác nước trong rừng', JUNGLE_POOL.x - 4, JUNGLE_POOL.z + JUNGLE_POOL.r + 6);
   for (let i = 0; i < 6; i++) ctx.propAt(M.lily, [JUNGLE_POOL.x - 5 + i * 2 + 0.5, LEVEL - 1 + 0.05, JUNGLE_POOL.z + (i % 3) * 2 - 1 + 0.5], i * 40);

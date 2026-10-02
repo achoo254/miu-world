@@ -2,16 +2,21 @@
 // colours (white sand beaches, rock faces of grey stone and moss, the volcano's dark rock and its lava), the
 // palms along every shore, the harbour's long pier with its hanging lanterns, crates and the sailing ships
 // (d-02), the beach of the welcome quest with its buried chest, the captain's tent, the leaning palm and the
-// rock pool (d-03), the fishing huts on stilts, the pirates' cove under its cliff with their ship and jetty
+// rock pool (d-03), the fishers' big houses on stilts, the pirates' cove under its cliff with their ship and jetty
 // (d-12), the volcano with its streams of lava and its plume (d-11), the challenge court of glyph pillars over
 // lava at its foot (d-10), plank causeways between the islands, and the islets with their rock arch.
 import { placeStall } from './countryside';
 import { CHALLENGE, coastDistance, COVE, COVE_JETTY, inArea, inPool, inZoneRect, ISLETS, isLand, LEDGE, LEVEL, PIER, SIZE, TIDE_POOL, VOLCANO, volcanoRise, WATER } from './dao-bi-an-land';
+import { captainTent, fishingHouse, type IslandHouse } from './dao-bi-an-houses';
 import { hangVines, type IslandKit, M, roll } from './dao-bi-an-kit';
 import type { Point } from './path';
 
 const TOP = LEVEL + 1;
 const FLOAT = WATER + 0.6;
+/** The fruit stall at the west end of the fishing village's lane (its corner; seven wide, four deep, counter north). */
+export const STALL = { x: 446, z: 593 };
+/** The captain's tent behind the beach, its door east toward the pier. */
+const CAPTAIN_TENT: IslandHouse = { x0: 371, z0: 584, x1: 381, z1: 596, facing: 'east' };
 
 /** Lava streams down the volcano (angle in degrees from +x toward +z) and the fields they spread into. */
 const LAVA_STREAMS = [118, 162, 205, 248, 300, 35];
@@ -73,7 +78,8 @@ export function paintLand(k: IslandKit): void {
  * on what was built. Returns where they stand and how tall (the parrots perch on them).
  */
 export function palmShores(k: IslandKit): Array<{ x: number; z: number; height: number }> {
-  const { ctx } = k;
+  const { ctx, b } = k;
+  const bare = new Set([b.basalt, b.rock, b.cobble, b.paver, b.trail]);
   const palms: Array<{ x: number; z: number; height: number }> = [];
   for (let gx = 4; gx < SIZE - 4; gx += 6) {
     for (let gz = 4; gz < SIZE - 4; gz += 6) {
@@ -83,6 +89,8 @@ export function palmShores(k: IslandKit): Array<{ x: number; z: number; height: 
       if (coast < 2 || roll(x, z, 64) > (coast <= 12 ? 0.5 : 0.1)) continue;
       const y = ctx.surface(x, z);
       if (ctx.inWater(x, z) || ctx.inZone(x, z, 1) || ctx.nearPath(x, z, 3) || ctx.keptOut(x, z, 1) || y > LEVEL + 2 || ctx.world.get(x, y + 1, z) !== 0 || volcanoRise(x, z) > 0) continue;
+      // Palms grow out of sand and earth, never out of the bare rock round the volcano or a paved way.
+      if (bare.has(ctx.world.get(x, y, z))) continue;
       const r = roll(x, z, 65);
       const [model, height] = r < 0.45 ? [M.palmTall, 7] : r < 0.65 ? [M.palmDetailed, 8] : r < 0.88 ? [M.palmShort, 3.2] : [M.palmBend, 6];
       ctx.prop(model, x, z, Math.floor(roll(x, z, 66) * 360));
@@ -169,20 +177,17 @@ export function buildHarbour(k: IslandKit): void {
     if (!ctx.keptOut(x, z, 2)) ctx.prop(M.shell, x, z, i * 47);
   }
   ctx.prop(M.driftwood, 362, 622, 70);
-  ctx.prop(M.driftwood, 432, 604, 20);
+  ctx.prop(M.driftwood, 436, 610, 20);
   // The chest buried in the sand, gold spilling round it.
   k.ctx.propAt(M.goldChest, [423.5, LEVEL + 0.65, 607.5], 200);
   for (const [dx, dz] of [[2, 1], [-1, 2]] as const) ctx.prop(M.goldPile, 423 + dx, 607 + dz, dx * 40);
   ctx.prop(M.rockLarge, 426, 605, 30);
-  for (const [x, z, model, yaw] of [[430, 599, M.palmTall, 40], [437, 603, M.palmDetailed, 160], [433, 596, M.bush, 0], [428, 601, M.fern, 70]] as const) ctx.prop(model, x, z, yaw);
-  // The captain's tent: the tent, the map table before it, the flag, barrels and a lamp.
-  ctx.prop(M.tent, 381, 593, 200);
-  ctx.prop(M.mapTable, 389, 594, 0);
-  ctx.prop(M.flagpole, 377, 597, 0);
-  ctx.prop(M.barrel, 384, 591, 0);
-  ctx.prop(M.crate, 378, 591, 15);
-  ctx.prop(M.lamp, 391, 597, 0);
-  ctx.keepOut(378, 590, 384, 595);
+  for (const [x, z, model, yaw] of [[430, 599, M.palmTall, 40], [438, 598, M.palmDetailed, 160], [433, 596, M.bush, 0], [428, 601, M.fern, 70]] as const) ctx.prop(model, x, z, yaw);
+  // The captain's tent, his flag and a lamp at its door.
+  captainTent(k, CAPTAIN_TENT);
+  ctx.prop(M.flagpole, CAPTAIN_TENT.x1 + 3, CAPTAIN_TENT.z0 + 1, 0);
+  ctx.prop(M.lamp, CAPTAIN_TENT.x1 + 3, CAPTAIN_TENT.z1 - 1, 0);
+  ctx.prop(M.barrel, CAPTAIN_TENT.x1 + 2, CAPTAIN_TENT.z0 - 1, 0);
   // The leaning palm with coconuts under it.
   ctx.prop(M.palmBend, 413, 597, 300);
   for (const [dx, dz] of [[1, 2], [2, 1], [-1, 2]] as const) ctx.prop(M.coconut, 413 + dx, 597 + dz, dx * 60);
@@ -204,44 +209,32 @@ export function buildHarbour(k: IslandKit): void {
   ctx.propAt(M.wreck, [446.5, WATER - 0.4, 650.5], 30);
 }
 
-/** A hut of planks on log stilts, its floor two over the sand, steps up to its door (the fishing village). */
-function stiltHut(k: IslandKit, x0: number, z0: number, roofId: number): void {
-  const { ctx, b } = k;
-  const [x1, z1] = [x0 + 5, z0 + 5];
-  const floorY = LEVEL + 2;
-  for (const [x, z] of [[x0, z0], [x1, z0], [x0, z1], [x1, z1]] as const) for (let y = ctx.surface(x, z) + 1; y < floorY; y++) k.put(x, y, z, b.log);
-  for (let x = x0; x <= x1; x++) {
-    for (let z = z0; z <= z1; z++) {
-      k.put(x, floorY, z, b.planks);
-      const wall = x === x0 || x === x1 || z === z0 || z === z1;
-      for (let y = floorY + 1; y <= floorY + 3; y++) {
-        const window = y === floorY + 2 && (x === x0 + 2 || z === z0 + 2) && wall;
-        k.put(x, y, z, !wall ? 0 : window ? 0 : (x + z) % 2 === 0 ? b.planks : b.log);
-      }
-    }
-  }
-  // The door on the south, steps up to it.
-  for (let y = floorY + 1; y <= floorY + 2; y++) k.put(x0 + 2, y, z1, 0);
-  k.put(x0 + 2, LEVEL + 1, z1 + 1, b.planks);
-  for (let y = LEVEL + 2; y <= LEVEL + 4; y++) k.put(x0 + 2, y, z1 + 1, 0);
-  // A hipped roof of thatch over the eaves.
-  for (let tier = 0; tier < 3; tier++) for (let x = x0 - 1 + tier; x <= x1 + 1 - tier; x++) for (let z = z0 - 1 + tier; z <= z1 + 1 - tier; z++) k.put(x, floorY + 4 + tier, z, tier === 2 ? b.trail : roofId);
-  k.put(x0 + 1, floorY + 2, z0 + 1, b.lantern);
-  ctx.keepOut(x0 - 1, z0 - 1, x1 + 1, z1 + 2);
-}
+/** The fishers' houses: a row facing south over the village lane, two across it facing north. */
+const FISHING_HOUSES: readonly IslandHouse[] = [
+  { x0: 452, z0: 573, x1: 464, z1: 583, facing: 'south' },
+  { x0: 470, z0: 573, x1: 484, z1: 583, facing: 'south' },
+  { x0: 490, z0: 573, x1: 502, z1: 583, facing: 'south' },
+  { x0: 508, z0: 573, x1: 520, z1: 583, facing: 'south' },
+  { x0: 459, z0: 591, x1: 471, z1: 601, facing: 'north' },
+  { x0: 487, z0: 591, x1: 499, z1: 601, facing: 'north' },
+];
 
-/** The fishing village east of the harbour: huts on stilts, nets drying, canoes on the sand, a fruit stall. */
+/**
+ * The fishing village east of the harbour: big houses on stilts either side of a lane, a small square with
+ * its fire beside the lane down to the shore between the two across it, nets drying between the houses, canoes on the sand, a fruit stall at
+ * the lane's west end.
+ */
 export function buildFishingVillage(k: IslandKit): void {
   const { ctx, b } = k;
-  const huts: ReadonlyArray<readonly [number, number]> = [[462, 568], [478, 566], [494, 572], [466, 586], [484, 588], [500, 590]];
-  huts.forEach(([x, z], i) => stiltHut(k, x, z, i % 2 === 0 ? b.sand : b.wood));
-  for (const [x, z, yaw] of [[458, 580, 0], [474, 580, 90], [492, 584, 0], [508, 582, 90]] as const) ctx.prop(M.netRack, x, z, yaw);
-  for (const [x, z, yaw] of [[466, 604, 80], [480, 606, 100], [496, 604, 70]] as const) ctx.prop(M.canoe, x, z, yaw);
-  for (const [x, z, model] of [[470, 597, M.campfire], [473, 598, M.barrel], [486, 600, M.bucket], [460, 596, M.crate], [502, 600, M.logStack]] as const) ctx.prop(model, x, z, x * 7);
-  const stall = placeStall(ctx.world, 450, 594, 5, 3, TOP, { log: b.log, planks: b.planks, stripes: [b.wood, b.white] });
-  [M.coconut, M.pineapple, M.banana, M.coconut].forEach((model, i) => ctx.propAt(model, [stall.counter[0] - 1.5 + i, stall.counter[1] + 0.2, stall.counter[2]], i * 40));
-  for (const at of stall.crates) ctx.propAt(M.crate, at, 0);
-  ctx.keepOut(449, 593, 455, 597);
+  FISHING_HOUSES.forEach((house, i) => fishingHouse(k, house, i));
+  for (const [x, z, yaw] of [[467, 578, 90], [487, 578, 90], [505, 578, 90], [474, 594, 0]] as const) ctx.prop(M.netRack, x, z, yaw);
+  for (const [x, z, yaw] of [[466, 605, 80], [480, 606, 100], [496, 604, 70]] as const) ctx.prop(M.canoe, x, z, yaw);
+  for (const [x, z, model] of [[475, 595, M.campfire], [485, 595, M.barrel], [474, 598, M.bucket], [474, 601, M.crate], [485, 601, M.logStack]] as const) ctx.prop(model, x, z, x * 7);
+  const stall = placeStall(ctx.world, STALL.x, STALL.z, 7, 4, TOP, { log: b.log, planks: b.planks, stripes: [b.wood, b.white] });
+  [M.coconut, M.pineapple, M.banana, M.coconut, M.pineapple].forEach((model, i) => ctx.propAt(model, [stall.counter[0] - 2 + i, stall.counter[1] + 0.2, stall.counter[2]], i * 40));
+  // Its crates of fruit wait behind it, out from under the awning, so the floor under it stays open.
+  for (const dx of [1, 5]) ctx.prop(M.crate, STALL.x + dx, STALL.z + 5, dx * 9);
+  ctx.keepOut(STALL.x - 1, STALL.z - 1, STALL.x + 7, STALL.z + 4);
   ctx.landmark('lang-chai', 'Làng chài', 480, 598);
 }
 
@@ -309,6 +302,8 @@ export function buildCove(k: IslandKit): void {
 export function buildVolcano(k: IslandKit): void {
   const { ctx, b } = k;
   ctx.propAt(M.smoke, [VOLCANO.x + 0.5, VOLCANO.peak - 4, VOLCANO.z + 0.5], 0);
+  // No tree takes root on the bare dark rock round the volcano.
+  ctx.keepOut(VOLCANO.x - VOLCANO.r - 14, VOLCANO.z - VOLCANO.r - 14, VOLCANO.x + VOLCANO.r + 14, VOLCANO.z + VOLCANO.r + 14);
   ctx.keepOut(VOLCANO.x - VOLCANO.r, VOLCANO.z - VOLCANO.r, VOLCANO.x + VOLCANO.r, CHALLENGE.z0 - 4);
   // The ledge: a block of dark rock, its top four over the ground, steps up its south side.
   const ledgeTop = LEVEL + 4;

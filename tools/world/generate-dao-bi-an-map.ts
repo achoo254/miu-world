@@ -15,7 +15,7 @@
 // Output: assets/generated/world/dao-bi-an/{regions/, horizon.bin, entities.json}
 import { loadBlocks, PACK, runIfMain } from './map-kit';
 import { buildCave, buildGreatFalls, buildJungle, buildMesa, buildNightForest, buildTemple, paveRuins, STREAKS_HEIGHT } from './structures/dao-bi-an-inland';
-import { buildCove, buildFishingVillage, buildHarbour, buildIslets, buildVolcano, dressCauseways, paintLand, palmShores } from './structures/dao-bi-an-coast';
+import { buildCove, buildFishingVillage, buildHarbour, buildIslets, buildVolcano, dressCauseways, paintLand, palmShores, STALL } from './structures/dao-bi-an-coast';
 import { islandKit, M } from './structures/dao-bi-an-kit';
 import { CAVE, HIGHLAND, inWater, isLand, LEVEL, NIGHT_POOL, PIER, shapeIsland, SPAWN, TEMPLE, WATER, ZONES } from './structures/dao-bi-an-land';
 import { placeSeaLife } from './structures/dao-bi-an-life';
@@ -75,19 +75,48 @@ function rideStops(): Array<{ name: string; at: readonly [number, number]; to: r
   ];
 }
 
-/** The ways: round the mesa from district to district, spurs to the places, causeways over the sea. */
+/**
+ * The ways, one network from the spawn to every place (owner, 02/10/2026: a clear way wherever the child starts
+ * and wherever she goes): round the mesa from district to district, spurs to the places, the landings and the
+ * house doors, causeways over the sea; the boats join the islands' landings to it.
+ */
 const ROUTES: Point[][] = [
-  [[SPAWN.x, SPAWN.z], [400, 600], [400, 556], [400, 446]],
-  [[330, 572], [300, 524], [244, 470], [222, 449]],
-  [[262, 361], [296, 332], [296, 262], [300, 212], [344, 198]],
-  [[296, 252], [NIGHT_POOL.x + 6, NIGHT_POOL.z - 21]],
-  [[400, 222], [400, 256]],
-  [[456, 200], [520, 244], [550, 300], [552, 366]],
+  // The harbour: the spine north to the great fall, the pier, the beach and its promenade past the boat stops.
+  [[SPAWN.x, SPAWN.z], [400, 600], [400, 556], [400, 441]],
+  [[SPAWN.x, SPAWN.z], [399, 615], [400, 626]],
+  [[SPAWN.x, SPAWN.z], [372, 614], [350, 626]],
+  [[348, 628], [386, 628], [392, 622], [398, 620]],
+  [[400, 600], [444, 604]],
+  [[420, 603], [416, 612], [426, 616]],
+  [[400, 590], [383, 590]],
+  // To the jungle, its trail past the pool to the rope bridge's stairs, its landing.
+  [[400, 578], [360, 576], [330, 572], [300, 524], [244, 470], [222, 449]],
+  [[222, 449], [218, 405], [235, 365], [262, 361]],
+  [[235, 365], [235, 352]],
+  [[235, 365], [216, 340]],
+  [[235, 365], [254, 340]],
+  [[222, 449], [196, 456], [172, 456]],
+  [[196, 456], [190, 451]],
+  [[283, 508], [306, 494]],
+  // North past the night forest to the cave's district; the night forest's boardwalk and landing.
+  [[262, 361], [296, 332], [296, 262], [300, 212], [344, 198], [400, 190], [456, 200]],
+  [[296, 252], [276, 229], [240, 227]],
+  [[400, 190], [400, 266]],
+  [[400, 190], [424, 156], [434, 155]],
+  // East to the ruins and the temple, over the sea to the volcano, round its court to the ledge.
+  [[456, 200], [520, 244], [550, 300], [556, 350], [562, 372], [588, 375]],
+  [[456, 200], [456, 210], [560, 214], [628, 206], [652, 212]],
+  [[655, 151], [676, 168], [676, 206], [652, 212]],
+  [[596, 433], [648, 433]],
+  [[648, 422], [648, 440]],
+  // South from the ruins to the fishing village, its lane and square; over the sea to the pirates' beach.
   [[592, 454], [540, 510], [444, 574]],
-  [[235, 361], [235, 352]],
-  [[310, 500], [306, 486]],
-  [[444, 604], [548, 614], [606, 662]],
-  [[456, 210], [560, 214], [628, 206]],
+  [[444, 574], [449, 587], [524, 587]],
+  [[480, 587], [480, 606]],
+  [[444, 604], [548, 614], [606, 662], [650, 672], [702, 670]],
+  [[650, 672], [648, 700], [630, 706], [614, 706]],
+  [[630, 706], [626, 700]],
+  [[648, 700], [672, 708]],
 ];
 
 /** The island's people: sailors and fishers, explorers, the pirates of the cove, children everywhere. */
@@ -108,13 +137,13 @@ function islandCast(landmark: (id: string) => readonly [number, number]): Reside
     ...crowd('pupil', ['Bạn nhỏ nhặt vỏ ốc', 'Bạn nhỏ xây lâu đài cát', 'Bạn nhỏ đuổi sóng', 'Bạn nhỏ tìm kho báu'], [person('n'), person('o'), person('p'), person('q')], at('bai-bien', 10, -6), 14, 4, [HELD.shell]),
     ...crowd('kite-flyer', ['Bạn thả diều trên cát', 'Em bé thả diều'], [person('f'), person('r')], at('ben-tau-bai-bien', -30, -10), 10, 2, [HELD.kite]),
     ...crowd('pupil', ['Bạn nhỏ cầm bóng bay'], [person('n')], at('cay-dua-nghieng', 4, -8), 6, 1, [HELD.balloon]),
-    { routine: 'vendor', name: 'Cô bán dừa', model: person('e'), held: [HELD.coconut], at: [452, 597] },
-    ...crowd('home-cook', ['Cô nướng cá', 'Bà nấu canh chua'], [person('i'), person('l')], at('lang-chai', -4, 2), 6, 2, [HELD.spoon]),
-    ...crowd('laundry', ['Cô vá lưới'], [person('h')], at('lang-chai', -16, -14), 4, 1, [HELD.basket]),
-    ...crowd('porter', ['Chú phơi cá'], [person('m')], at('lang-chai', 10, -8), 5, 1, [HELD.bucket]),
-    ...crowd('cat', ['Mèo làng chài'], [animal('cat')], at('lang-chai'), 8, 3),
+    { routine: 'vendor', name: 'Cô bán dừa', model: person('e'), held: [HELD.coconut], at: [STALL.x + 3, STALL.z + 1] },
+    ...crowd('home-cook', ['Cô nướng cá', 'Bà nấu canh chua'], [person('i'), person('l')], at('lang-chai', -2, -1), 4, 2, [HELD.spoon]),
+    ...crowd('laundry', ['Cô vá lưới'], [person('h')], at('lang-chai', -6, -11), 3, 1, [HELD.basket]),
+    ...crowd('porter', ['Chú phơi cá'], [person('m')], at('lang-chai', 8, -11), 3, 1, [HELD.bucket]),
+    ...crowd('cat', ['Mèo làng chài'], [animal('cat')], at('lang-chai', 0, -2), 5, 3),
     ...crowd('dog', ['Cún bãi biển'], [animal('dog')], at('bai-bien', -8, -6), 10, 2),
-    ...crowd('chick', ['Gà làng chài'], [animal('chick')], at('lang-chai', 6, 4), 6, 4),
+    ...crowd('chick', ['Gà làng chài'], [animal('chick')], at('lang-chai', 0, 5), 4, 4),
     // The great fall.
     ...crowd('reader', ['Nhà thám hiểm Minh', 'Cô thám hiểm Lan'], [person('a'), person('e')], at('thac-nuoc', 0, 4), 6, 2, [HELD.book]),
     ...crowd('pupil', ['Bạn nhỏ ngắm thác', 'Bạn nhỏ đếm cầu vồng'], [person('o'), person('r')], at('thac-nuoc', 0, 8), 8, 2),
@@ -169,7 +198,8 @@ export async function generateDaoBiAn() {
     pathsFromSpawn: false,
     routes: ROUTES,
     rides: { vehicle: { name: 'Thuyền', label: 'Lên thuyền', model: M.rowboat }, stops: rideStops() },
-    dressing: { models: [M.flowers[0] ?? M.bush, M.flowers[1] ?? M.bush, M.bush, M.grass, M.fern, M.rockSmall], spacing: 8 },
+    // Only things one walks through (no small rocks): the ruins' zone is paved, and a way keeps its middle clear.
+    dressing: { models: [M.flowers[0] ?? M.bush, M.flowers[1] ?? M.bush, M.bush, M.grass, M.fern, M.flowers[2] ?? M.bush], spacing: 8 },
     trees: { skip: 0.95, blocks: (r, block) => ({ log: block('tree-log'), leaves: block(r < 0.08 ? 'leaves-pink' : 'leaves') }) },
     sizes: { [M.fallsStreaks]: STREAKS_HEIGHT, [M.smoke]: 26, [M.moon]: 20, [M.bigCrystal]: 10, [M.goldStatue]: 5.2 },
     life: ({ landmark }) => islandCast(landmark),
