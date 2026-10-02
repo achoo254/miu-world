@@ -1,6 +1,7 @@
 // Overlay + window.__miuStats: draw calls, triangles, FPS average over 1 s and the 5th-percentile
 // FPS (the slow frames players feel), for humans on-device and for the Playwright perf run.
 import type { WebGLRenderer } from 'three';
+import type { AutowalkState } from '../../game-bridge/game-store';
 
 export interface MiuStats {
   quality: string;
@@ -22,6 +23,8 @@ export interface MiuStats {
   lastInteraction: string | null;
   /** Target the direction arrow points at while it shows. */
   hintTarget: string | null;
+  /** Walking to the quest target on her own (the quest card): idle, finding, walking, arrived or failed. */
+  autowalk: AutowalkState;
   /** Characters standing at another place of the story right now (castHidden), sorted. */
   castHidden: string[];
   /** True when the camera sits inside a solid block (must never happen). */
@@ -59,7 +62,7 @@ export class StatsOverlay {
   readonly stats: MiuStats;
 
   constructor(private readonly el: HTMLElement, quality: string) {
-    this.stats = { quality, fpsAvg: 0, fpsP5: 0, calls: 0, triangles: 0, frames: 0, loadMs: 0, meshMs: 0, worker: true, firstAreaBytes: 0, ready: false, player: [0, 0, 0], onGround: false, nearTarget: null, lastInteraction: null, hintTarget: null, castHidden: [], cameraInsideBlock: false, cameraYaw: 0, outfit: [], ambientVisible: 0, ambientReactions: 0, ambientCelebrations: 0, confetti: false, worldEvent: null, worldEvents: 0, pet: null, petClip: null, ambientLine: null };
+    this.stats = { quality, fpsAvg: 0, fpsP5: 0, calls: 0, triangles: 0, frames: 0, loadMs: 0, meshMs: 0, worker: true, firstAreaBytes: 0, ready: false, player: [0, 0, 0], onGround: false, nearTarget: null, lastInteraction: null, hintTarget: null, autowalk: 'idle', castHidden: [], cameraInsideBlock: false, cameraYaw: 0, outfit: [], ambientVisible: 0, ambientReactions: 0, ambientCelebrations: 0, confetti: false, worldEvent: null, worldEvents: 0, pet: null, petClip: null, ambientLine: null };
     window.__miuStats = this.stats;
   }
 

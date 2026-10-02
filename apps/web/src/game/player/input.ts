@@ -50,6 +50,10 @@ export class PlayerInput implements InputSource {
       if (held) this.jumpQueued = true;
     });
     this.bindLook(root);
+    // iOS WebKit still runs its long-press gesture after pointerdown's preventDefault: holding the
+    // joystick or a button selects the nearest page text (the HUD) and opens the copy menu.
+    // Cancelling touchstart stops that gesture; pointer events keep firing.
+    root.addEventListener('touchstart', (e) => e.preventDefault(), { passive: false, signal });
   }
 
   /**

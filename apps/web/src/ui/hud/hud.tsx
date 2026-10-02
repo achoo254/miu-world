@@ -2,7 +2,9 @@
 // the Quests / Map / Backpack / Menu buttons, and the Interact button next to Run and Jump. Nothing
 // here changes per frame: the prompt arrives as a discrete bridge event.
 import { Link } from 'react-router';
+import type { KeyboardEvent } from 'react';
 import type { QuestSummary } from '@miu/schema/game';
+import type { AutowalkState } from '../../game-bridge/game-store';
 import { useGameState, useGameStore } from '../../game-bridge/use-game-state';
 import { Icon } from '../kit/art';
 import { buttonClass } from '../kit/button';
@@ -11,15 +13,46 @@ import { nextStep, say, stepProgress, type PlayerData } from '../player/player-d
 import { TextbookRef, textbookOf } from '../player/textbook-ref';
 import { searchCount } from '../quest/quest-flow';
 import './hud.css';
+import './autowalk.css';
 
+/** What the quest card's walk line says in each state of the walk. */
+const AUTOWALK_LINE: Record<AutowalkState, string> = {
+  idle: 'Chạm để tự đi tới',
+  finding: 'Đang tìm đường…',
+  walking: 'Đang đi tới · chạm để dừng',
+  arrived: 'Đến nơi rồi!',
+  failed: 'Chưa tìm được đường, bạn tự đi nhé',
+};
+
+/**
+ * The quest card. While the step's target stands on this map, tapping the card walks the character there
+ * along the ways (the game finds the route), and tapping it again stops her.
+ */
 export function QuestTracker({ quest, data }: { quest: QuestSummary | null; data: PlayerData }) {
+  const store = useGameStore();
+  const available = useGameState((s) => s.autowalkAvailable);
+  const autowalk = useGameState((s) => s.autowalk);
   if (!quest) return null;
   const step = nextStep(quest);
   const { done, total } = stepProgress(quest);
   const clues = step ? searchCount(step, quest.progress) : null;
   const textbook = textbookOf(quest);
+  const going = autowalk === 'finding' || autowalk === 'walking';
+  const tappable = Boolean(step) && (available || going);
+  const toggle = (): void => store.send({ type: going ? 'autowalk-stop' : 'autowalk-start' });
+  const onKey = (event: KeyboardEvent): void => {
+    if (event.key !== 'Enter' && event.key !== ' ') return;
+    event.preventDefault();
+    toggle();
+  };
   return (
-    <section className="hud-tracker" aria-label="Nhiệm vụ hiện tại" data-id="hud-tracker">
+    <section
+      className="hud-tracker"
+      aria-label="Nhiệm vụ hiện tại"
+      data-id="hud-tracker"
+      data-autowalk={tappable ? autowalk : undefined}
+      {...(tappable ? { role: 'button', tabIndex: 0, 'aria-pressed': going, onClick: toggle, onKeyDown: onKey } : {})}
+    >
       <p className="hud-tracker-kicker">
         <Icon name="scroll" size={24} />
         Nhiệm vụ hiện tại
@@ -41,6 +74,12 @@ export function QuestTracker({ quest, data }: { quest: QuestSummary | null; data
       <p className="hint" data-id="hud-tracker-progress">
         {done}/{total}
       </p>
+      {tappable || autowalk === 'arrived' || autowalk === 'failed' ? (
+        <p className="hud-autowalk" data-id="hud-autowalk" data-state={autowalk} aria-live="polite">
+          <Icon name={autowalk === 'arrived' ? 'glowingStar' : autowalk === 'failed' ? 'map' : 'runningShoe'} size={20} />
+          {AUTOWALK_LINE[autowalk]}
+        </p>
+      ) : null}
     </section>
   );
 }

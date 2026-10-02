@@ -74,10 +74,46 @@ describe('player controller at ledges', () => {
   it('shows the climb as a short hop, not a jump to the top', () => {
     const ground: SolidAt = (x, y) => (x >= 5 ? y < 3 : y < 1);
     const player = new PlayerController(ground, [4.7, 1, 2.5], 90);
-    player.update(1 / 60, { dirX: 1, dirZ: 0, run: false, jump: false });
+    // From rest she speeds up over a few frames before touching the face.
+    for (let i = 0; i < 10 && !player.climbing; i++) player.update(1 / 60, { dirX: 1, dirZ: 0, run: false, jump: false });
     player.update(1 / 60, { dirX: 1, dirZ: 0, run: false, jump: false });
     expect(player.climbing).toBe(true);
     expect(player.onGround).toBe(false);
     expect(player.position.y).toBeLessThan(3);
+  });
+});
+
+describe('player controller steering', () => {
+  const flat: SolidAt = (_x, y) => y < 1;
+  const step = (player: PlayerController, dirX: number, dirZ: number): void => player.update(1 / 60, { dirX, dirZ, run: false, jump: false });
+
+  it('eases round to a diagonal push instead of snapping to it', () => {
+    const player = new PlayerController(flat, [10.5, 1, 10.5], 0);
+    for (let i = 0; i < 30; i++) step(player, 0, 1);
+    const diagonal = Math.PI / 4;
+    const turns: number[] = [];
+    for (let i = 0; i < 30; i++) {
+      const before = player.facing;
+      step(player, Math.SQRT1_2, Math.SQRT1_2);
+      turns.push(player.facing - before);
+    }
+    // Faster at first, slower as she lines up, and done within half a second.
+    const [first = 0, , , , , sixth = 0] = turns;
+    const sixteenth = turns[15] ?? 0;
+    expect(first).toBeGreaterThan(sixth);
+    expect(sixth).toBeGreaterThan(sixteenth);
+    expect(first).toBeLessThan(diagonal / 4);
+    expect(Math.abs(player.facing - diagonal)).toBeLessThan(0.02);
+  });
+
+  it('bends the path into a curve when the push changes direction', () => {
+    const player = new PlayerController(flat, [10.5, 1, 10.5], 0);
+    for (let i = 0; i < 30; i++) step(player, 0, 1);
+    const start = player.position.clone();
+    step(player, 1, 0);
+    // One frame after pushing sideways she still carries most of her forward motion.
+    expect(player.position.z - start.z).toBeGreaterThan(player.position.x - start.x);
+    for (let i = 0; i < 30; i++) step(player, 1, 0);
+    expect(player.speed).toBeCloseTo(3.4, 1);
   });
 });

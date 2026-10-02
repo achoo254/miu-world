@@ -42,7 +42,7 @@ export interface PropField {
   /** Tiles built now. */
   tileCount(): number;
   /** Grid cells the solid props fill (`cellKey`s, prop-collision.ts) with their traversal: she collides with them like blocks. */
-  blocked: ReadonlyMap<string, Traversal>;
+  blocked: ReadonlyMap<string, Exclude<Traversal, 'walk-through'>>;
   dispose(): void;
 }
 

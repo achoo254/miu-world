@@ -22,6 +22,12 @@ export interface InteractionPrompt {
 /** Why the game stopped; `context-lost` means the GPU dropped the WebGL context (low memory, background tab). */
 export type GameErrorCode = 'load-failed' | 'context-lost';
 
+/**
+ * Walking to the quest target on her own (tapping the quest card): `finding` the way, `walking` it, then
+ * `arrived` or `failed` for a moment before `idle` again.
+ */
+export type AutowalkState = 'idle' | 'finding' | 'walking' | 'arrived' | 'failed';
+
 /** Server-backed state of region targets, pushed by React after each quest response. */
 export type TargetState = 'found' | 'open' | 'hidden';
 export type WorldState = Readonly<Record<string, TargetState>>;
@@ -36,7 +42,10 @@ export type GameEvent =
   /** The child went through a gate to another map (its region). */
   | { type: 'travel'; region: string }
   /** Miu cannot get out on her own (stuck in water, or the stick gets her nowhere). */
-  | { type: 'stuck'; stuck: boolean };
+  | { type: 'stuck'; stuck: boolean }
+  /** Whether the quest's target stands on this map, so the quest card can walk her there. */
+  | { type: 'autowalk-available'; available: boolean }
+  | { type: 'autowalk'; state: AutowalkState };
 
 export interface GameSnapshot {
   status: 'loading' | 'ready' | 'error';
@@ -49,6 +58,9 @@ export interface GameSnapshot {
   stuck: boolean;
   /** Last gate gone through: the region it leads to, and how many gates so far (the play screen moves maps). */
   travel: { region: string; count: number } | null;
+  /** The quest card offers to walk her to the target while this is true. */
+  autowalkAvailable: boolean;
+  autowalk: AutowalkState;
 }
 
 /** Commands from React to the game. The game ignores commands it does not handle yet. */
@@ -65,7 +77,11 @@ export type GameCommand =
   /** Put Miu back where she last stood safely (the "Quay lại" button, the pause menu). */
   | { type: 'rescue' }
   /** A quest was just finished: the world around Miu cheers (villagers, animals, confetti). */
-  | { type: 'celebrate' };
+  | { type: 'celebrate' }
+  /** Walk Miu to the target the tracker points at, along the ways (tapping the quest card). */
+  | { type: 'autowalk-start' }
+  /** Stop that walk where she is (tapping the card again). */
+  | { type: 'autowalk-stop' };
 
 export interface GameStore {
   subscribe(listener: () => void): () => void;
@@ -86,6 +102,8 @@ export const INITIAL_SNAPSHOT: GameSnapshot = {
   lastInteraction: null,
   stuck: false,
   travel: null,
+  autowalkAvailable: false,
+  autowalk: 'idle',
 };
 
 function samePrompt(a: InteractionPrompt | null, b: InteractionPrompt | null): boolean {
@@ -117,6 +135,10 @@ export function reduce(state: GameSnapshot, event: GameEvent): GameSnapshot {
       return state.stuck === event.stuck ? state : { ...state, stuck: event.stuck };
     case 'travel':
       return { ...state, travel: { region: event.region, count: (state.travel?.count ?? 0) + 1 } };
+    case 'autowalk-available':
+      return state.autowalkAvailable === event.available ? state : { ...state, autowalkAvailable: event.available };
+    case 'autowalk':
+      return state.autowalk === event.state ? state : { ...state, autowalk: event.state };
   }
 }
 

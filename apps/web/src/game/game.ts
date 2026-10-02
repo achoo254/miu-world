@@ -35,6 +35,8 @@ import { loadPlayerCharacter } from './entities/player-character';
 import { loadPetCompanion } from './entities/pet-companion';
 import { loadProps } from './entities/props';
 import { cellKey } from '@miu/voxel/prop-collision';
+import { createRouteFinder, type RouteFinder } from './nav/route-finder';
+import { RouteWalker } from './nav/route-walker';
 import { Autopilot } from './player/autopilot';
 import { CameraRig } from './player/camera-rig';
 import { PlayerInput } from './player/input';
@@ -490,12 +492,31 @@ export class Game {
       overlay.stats.castHidden = [...hidden].sort();
     };
     placeCast();
+    // Tapping the quest card walks Miu to the hinted target along the ways. The route worker starts on the
+    // first walk: most visits never ask for one.
+    let routes: RouteFinder | null = null;
+    this.cleanups.push(() => routes?.dispose());
+    const walker = new RouteWalker(
+      // Round the solid props (crates, stalls, fences) as well as the blocks.
+      (query) => (routes ??= createRouteFinder({ ...data.route, propCells: [...props.blocked] })).find(query),
+      (state) => {
+        store.emit({ type: 'autowalk', state });
+        overlay.stats.autowalk = state;
+      },
+      (x, z) => data.regions.loadedAt(x, z),
+    );
+    this.cleanups.push(() => store.emit({ type: 'autowalk', state: 'idle' }));
+    this.cleanups.push(() => store.emit({ type: 'autowalk-available', available: false }));
     this.cleanups.push(
       store.onCommand((command) => {
         if (command.type === 'interact') interactRequested = true;
         if (command.type === 'rescue') rescueRequested = true;
         if (command.type === 'celebrate') celebrateRequested = true;
+        if (command.type === 'autowalk-start' && hint?.available) walker.go(controller.position, hint.def);
+        if (command.type === 'autowalk-stop') walker.stop();
         if (command.type === 'set-target-hint') {
+          // A new step points somewhere else: a walk to the old place ends where she is.
+          if (command.targetId !== (hint?.def.id ?? null)) walker.stop();
           hint = command.targetId ? (byId.get(command.targetId) ?? null) : null;
           if (command.targetId && command.targetId !== pointedAt.at(-1)) {
             pointedAt.push(command.targetId);
@@ -572,10 +593,22 @@ export class Game {
           run: state.run,
           jump: state.jump,
         };
+        // Walking to the quest target on her own: a touch of the stick hands Miu back to the child. The view
+        // follows behind her, unless the child has just dragged it.
+        const walked = walker.update(dt, controller.position);
+        if (walked && moving) walker.stop();
+        else if (walked) {
+          intent = walked;
+          if (sinceLook > LOOK_HOLD_S) {
+            rig.recenter(dt);
+            rig.follow(controller.facing, dt, FOLLOW_STRENGTH_RUN);
+          }
+        }
       }
       controller.update(dt, intent);
       if (rescueRequested) {
         rescueRequested = false;
+        walker.stop();
         controller.teleport(rescue.spot() ?? rescueFallback());
         rescue.reset();
       }
@@ -609,6 +642,7 @@ export class Game {
 
       for (const target of targets) target.update(dt, controller.position, camera.position);
       arrow.update(dt, controller.position, hint?.available ? hint.def : null);
+      store.emit({ type: 'autowalk-available', available: hint?.available === true });
       overlay.stats.hintTarget = arrow.showing ? (hint?.def.id ?? null) : null;
       const nearest = pickNearest(targets, controller.position);
       // Quest targets always win the prompt; ambient life goes quiet next to them.

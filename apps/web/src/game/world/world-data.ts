@@ -14,6 +14,7 @@ import { REGION_BLOCKS, REGION_CHUNKS, decodeHorizon, regionFile, type Horizon }
 import { SparseWorld } from '@miu/voxel/sparse-world';
 import { worldEntitiesSchema, type WorldEntities } from '@miu/voxel/world-entities';
 import type { AssetRegistry } from '../asset-loader';
+import type { RouteServiceInit } from '../nav/route-service';
 import { createRegionBuilder, type RegionBuilderInit } from './region-builder';
 import type { RegionReply, RegionRequest } from './region.worker';
 
@@ -52,6 +53,8 @@ export interface WorldData {
   atlasTexture: Texture;
   horizon: Horizon;
   regions: RegionStream;
+  /** What the route finder needs to read the map's regions on its own (nav/route-service.ts). */
+  route: RouteServiceInit;
   /** Bytes fetched for the world files so far (for the first-area download budget). */
   bytes(): number;
 }
@@ -258,5 +261,11 @@ export async function loadWorldData(registry: AssetRegistry, mapId: string, opti
       source.dispose();
     },
   };
-  return { world, core, bounds, entities, outland, atlas, atlasTexture, horizon: decodeHorizon(horizonBytes), regions, bytes: () => bytes };
+  // The core's region files by manifest URL (absolute: the route worker resolves URLs against its own script).
+  const regionUrls: Record<string, string> = {};
+  for (let rz = 0; rz < coreRz; rz++) {
+    for (let rx = 0; rx < coreRx; rx++) regionUrls[`${rx},${rz}`] = new URL(registry.url(`${base}/${regionFile(rx, rz)}`), location.href).href;
+  }
+  const route: RouteServiceInit = { builder: init, bounds, regionUrls, blocks: atlas.blocks };
+  return { world, core, bounds, entities, outland, atlas, atlasTexture, horizon: decodeHorizon(horizonBytes), regions, route, bytes: () => bytes };
 }

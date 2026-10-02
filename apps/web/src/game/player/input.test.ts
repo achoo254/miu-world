@@ -6,15 +6,16 @@ afterEach(() => {
   for (const input of inputs.splice(0)) input.dispose();
 });
 
-function create(): PlayerInput {
-  const el = () => {
-    const div = document.createElement('div');
-    document.body.append(div);
-    return div;
-  };
-  const input = new PlayerInput(el(), el(), el(), el());
+function create(root: HTMLElement = el()): PlayerInput {
+  const input = new PlayerInput(root, el(), el(), el());
   inputs.push(input);
   return input;
+}
+
+function el(): HTMLDivElement {
+  const div = document.createElement('div');
+  document.body.append(div);
+  return div;
 }
 
 describe('PlayerInput', () => {
@@ -33,5 +34,15 @@ describe('PlayerInput', () => {
     input.clear();
     window.dispatchEvent(new KeyboardEvent('keydown', { code: 'KeyE' }));
     expect(input.read().interact).toBe(true);
+  });
+
+  it('cancels touchstart on the game layer, so holding a control never selects page text', () => {
+    const root = el();
+    const joystick = el();
+    root.append(joystick);
+    create(root);
+    const touch = new Event('touchstart', { bubbles: true, cancelable: true });
+    joystick.dispatchEvent(touch);
+    expect(touch.defaultPrevented).toBe(true);
   });
 });

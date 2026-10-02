@@ -9,7 +9,18 @@ export const WALK_SPEED = 3.4;
 export const RUN_SPEED = 6.2;
 const GRAVITY = 26;
 const JUMP_SPEED = 8.8; // clears ~1.49 blocks: effortless leap onto 1-block steps and ledges
-const TURN_RATE = 12; // rad/s toward the move direction
+/**
+ * Turning eases out toward the move direction (share of the remaining angle closed per second, as an
+ * exponential rate), capped at TURN_RATE: a diagonal push swings her round smoothly instead of snapping.
+ */
+const TURN_EASE = 10;
+const TURN_RATE = 12; // rad/s
+/**
+ * Horizontal velocity eases toward what the stick asks for, so a change of direction bends the path into
+ * a short curve rather than a corner. Stopping eases faster, so she never slides off a ledge.
+ */
+const MOVE_EASE = 12;
+const STOP_EASE = 20;
 const BODY: Body = { halfWidth: 0.24, height: 1.45 };
 /**
  * In water Miu sinks slowly, and holding Jump lifts her at jump speed: enough to leave the water with
@@ -55,6 +66,8 @@ export class PlayerController {
   /** Horizontal speed of the last update (drives idle/walk/sprint). */
   speed = 0;
   private velocityY = 0;
+  private velocityX = 0;
+  private velocityZ = 0;
   private climb: Climb | null = null;
 
   constructor(
@@ -79,6 +92,8 @@ export class PlayerController {
   teleport(position: readonly [number, number, number]): void {
     this.position.set(...position);
     this.velocityY = 0;
+    this.velocityX = 0;
+    this.velocityZ = 0;
     this.climb = null;
     this.onGround = false;
     this.speed = 0;
@@ -96,8 +111,13 @@ export class PlayerController {
     }
     const len = Math.min(1, Math.hypot(intent.dirX, intent.dirZ));
     const speed = (intent.run ? RUN_SPEED : WALK_SPEED) * len;
-    const vx = len > 0.01 ? (intent.dirX / Math.max(len, 1e-6)) * speed : 0;
-    const vz = len > 0.01 ? (intent.dirZ / Math.max(len, 1e-6)) * speed : 0;
+    const wantX = len > 0.01 ? (intent.dirX / Math.max(len, 1e-6)) * speed : 0;
+    const wantZ = len > 0.01 ? (intent.dirZ / Math.max(len, 1e-6)) * speed : 0;
+    const ease = 1 - Math.exp(-(len > 0.01 ? MOVE_EASE : STOP_EASE) * dt);
+    this.velocityX += (wantX - this.velocityX) * ease;
+    this.velocityZ += (wantZ - this.velocityZ) * ease;
+    const vx = this.velocityX;
+    const vz = this.velocityZ;
 
     if (this.inWater) {
       this.velocityY = intent.jump ? SWIM_UP_SPEED : Math.max(this.velocityY - WATER_GRAVITY * dt, -SINK_SPEED);
@@ -122,10 +142,11 @@ export class PlayerController {
     if (result.onGround && len >= CLIMB_MIN_INPUT && (result.blocked[0] || result.blocked[2])) this.startClimb(vx, vz, result.blocked[0]);
 
     if (len > 0.05) {
-      const target = Math.atan2(vx, vz);
-      let diff = target - this.facing;
-      diff = Math.atan2(Math.sin(diff), Math.cos(diff));
-      this.facing += Math.sign(diff) * Math.min(Math.abs(diff), TURN_RATE * dt);
+      // Toward where the stick points, not the eased velocity: a U-turn still turns her round, not flips.
+      const target = Math.atan2(wantX, wantZ);
+      const diff = Math.atan2(Math.sin(target - this.facing), Math.cos(target - this.facing));
+      const step = diff * (1 - Math.exp(-TURN_EASE * dt));
+      this.facing += Math.sign(step) * Math.min(Math.abs(step), TURN_RATE * dt);
     }
   }
 

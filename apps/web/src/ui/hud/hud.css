@@ -135,3 +135,5 @@
   .hud-interact { min-height: 3.25rem; padding: var(--space-xs) var(--space-md); font-size: var(--text-body); bottom: calc(8.25rem + env(safe-area-inset-bottom, 0px)); right: calc(0.75rem + env(safe-area-inset-right, 0px)); }
 }
 
+/* HUD text is never for copying: a long press near the game controls must not select it (iOS). */
+.hud-top-left, .hud-top-right, .hud-interact { user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; }
