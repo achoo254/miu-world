@@ -28,6 +28,7 @@ import {
 } from 'three';
 import type { WorldEventKind } from '@miu/schema/region';
 import { freshPicker } from '@miu/quest/pick-fresh';
+import type { PlaceMood } from '@miu/voxel/world-entities';
 import type { AmbientLife } from '../ambient/ambient-life';
 
 type Player = { x: number; y: number; z: number };
@@ -45,6 +46,8 @@ export interface WorldEventContext {
   lite: boolean;
   /** Where the camera looks, flat on the ground (unit x, z): the rainbow rises ahead of the child. */
   ahead(): { x: number; z: number };
+  /** The map's places with a light of their own (`moods` in entities.json). */
+  places?: ReadonlyArray<{ mood: PlaceMood; x0: number; z0: number; x1: number; z1: number }>;
 }
 
 export interface WorldEvents {
@@ -54,8 +57,11 @@ export interface WorldEvents {
   readonly active: WorldEventKind | null;
   /** Events played so far. */
   readonly played: number;
-  /** Holds the evening light (review shots of the mocks' night frames, `?mood=dusk`): lanterns glow against it. */
-  holdDusk(): void;
+  /**
+   * Holds a light for review shots of the mocks' evening, night and cave frames (`?mood=dusk|night|cave`):
+   * lanterns, crystals and lava glow against it.
+   */
+  holdMood(mood: 'dusk' | PlaceMood): void;
 }
 
 /** First surprise after this much play, then one every so often (seconds). */
@@ -79,6 +85,13 @@ const envelope = (t: number, from: number, to: number, fade: number): number =>
 
 const RAIN_MOOD = { top: new Color('#8ea3b8'), horizon: new Color('#cfd6de'), hemisphere: 0.75, sun: 0.45 };
 const DUSK_MOOD = { top: new Color('#3f4386'), horizon: new Color('#ffad7a'), hemisphere: 0.45, sun: 0.3 };
+/** A moonlit night (the island's night forest, d-13) and the dim inside of a cave or a temple (d-08, d-09). */
+const PLACE_MOOD: Readonly<Record<PlaceMood, Mood>> = {
+  night: { top: new Color('#0d1440'), horizon: new Color('#28366e'), hemisphere: 0.32, sun: 0.1 },
+  cave: { top: new Color('#1b2233'), horizon: new Color('#2b3346'), hemisphere: 0.3, sun: 0.12 },
+};
+/** How fast a place's light eases in and out as the child walks in or out (weight per second). */
+const PLACE_EASE = 1.2;
 
 function createRain(): { mesh: InstancedMesh; place(player: Player, random: () => number): void; fall(dt: number, player: Player, random: () => number): void } {
   const DROPS = 420;
@@ -224,9 +237,24 @@ export function createWorldEvents(kinds: readonly WorldEventKind[], ctx: WorldEv
     wait = between(GAP, random);
   };
 
+  // The light of the place the child stands in, eased in and out; surprises wait while it shows.
+  let held = false;
+  let place: PlaceMood | null = null;
+  let placeWeight = 0;
+  const placeAt = (player: Player): PlaceMood | null =>
+    ctx.places?.find((p) => player.x >= p.x0 && player.x <= p.x1 + 1 && player.z >= p.z0 && player.z <= p.z1 + 1)?.mood ?? null;
+  const updatePlace = (dt: number, player: Player): void => {
+    const here = placeAt(player);
+    if (here) place = here;
+    placeWeight = Math.min(1, Math.max(0, placeWeight + (here ? 1 : -1) * PLACE_EASE * dt));
+    if (place) tint(PLACE_MOOD[place], placeWeight);
+    if (placeWeight === 0) place = null;
+  };
+
   const events: WorldEvents = {
-    holdDusk() {
-      tint(DUSK_MOOD, 1);
+    holdMood(mood) {
+      held = true;
+      tint(mood === 'dusk' ? DUSK_MOOD : PLACE_MOOD[mood], 1);
     },
     get active() {
       return active;
@@ -256,6 +284,11 @@ export function createWorldEvents(kinds: readonly WorldEventKind[], ctx: WorldEv
       return true;
     },
     update(dt, player, questPrompt) {
+      if (held) return;
+      if (!active && (place || placeAt(player))) {
+        updatePlace(dt, player);
+        return;
+      }
       if (!active) {
         if (!picker) return;
         wait -= dt;

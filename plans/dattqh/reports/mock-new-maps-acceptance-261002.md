@@ -33,10 +33,13 @@ Plan: `plans/dattqh/261002-1619-nui-tuyet-dao-bi-an-maps/`. Quyết định: `je
 - Ba cư dân đón khách ở chỗ xuất hiện Khu rừng (thêm ở `f948881`) đứng cách 2–3 khối làm nút nói chuyện hiện ngay khi vào rừng (E2E `home` đỏ); dời ra 6–7 khối.
 - Ảnh chọn map: 12 nhãn xếp lại không chồng nhau trên điện thoại và iPad hai chiều, không che ảnh chân dung (E2E `home` 12/12).
 
-## Hạn chế còn lại
+## Hạn chế đã sửa (02/10/2026 tối)
 
-- Ảnh d-03, d-08 của Trung tâm không có người: nhân vật xa chỗ xuất hiện chỉ dựng sau khung hình đầu nên lúc chụp chưa hiện (map có 30–40 bạn nhỏ ở đó).
-- Lâu đài phông nền Trung tâm thấp hơn mock: thế giới cao 48 khối.
-- Chim cánh cụt, gấu trắng Núi tuyết mượn routine `chick`/`fox` (lời làm trò chưa đúng loài); khỉ Đảo là prop tĩnh. Cần routine riêng ở `apps/web/src/game/ambient/`.
-- Khung tối của Đảo (d-08, d-09, d-13) sáng hơn mock: chưa có chế độ đêm, không gian kín không tối đi.
-- Chưa đo `perf` (chỉ chạy khi người sở hữu yêu cầu).
+- Ảnh d-03, d-08 Trung tâm thiếu người: khi chụp một góc xa (`shot=view:…`), game dựng sẵn cư dân quanh điểm camera nhìn thay vì quanh chỗ xuất hiện; ảnh mới có người.
+- Lâu đài Trung tâm thấp: ba tháp cao nhất (tháp chính, hai tháp sảnh) có thêm tầng đỉnh dựng bằng prop hộp (`tt-tower-crown-3`, `tt-tower-crown-4`: thân tháp có cửa sổ sáng, gờ, mái nhọn đỏ, cờ) vượt trần 48 khối, đỉnh khoảng y 58.
+- Con vật đúng loài: thêm routine `penguin` (lạch bạch ra băng bắt cá, trượt bụng), `polar-bear` (bắt cá, ngủ trên tuyết, lăn tròn), `monkey` (nhảy giữa gốc dừa hái quả, nhào lộn), mỗi loài một kho lời riêng; Núi tuyết dùng hai routine đầu; Đảo có thêm 14 chú khỉ đi lại (khỉ ngồi trên ngọn cây vẫn giữ làm cảnh).
+- Không gian tối: entities có `moods` (vùng `night`, `cave`); bé bước vào thì ánh sáng dịu dần (đèn, pha lê, dung nham, vàng nổi lên), bước ra sáng lại. Đảo: hang và kho báu, đền thờ (`cave`), rừng đêm (`night`); Núi tuyết: hang băng (`cave`). Góc chụp mock tương ứng dùng `mood` mới.
+
+Không chạy E2E và cả bộ test theo yêu cầu người sở hữu (chỉ test khi được yêu cầu); đã chạy typecheck, lint các tệp sửa, test ambient/scene/voxel/catalog (274/274), `assets:check`, `content:check`.
+
+Còn lại: chưa đo `perf` (chỉ chạy khi người sở hữu yêu cầu).

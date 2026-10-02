@@ -75,6 +75,21 @@ function grazer(sound: string, walkSpeed = 0.8): RoutineSpec {
   };
 }
 
+/** Snow and island animals: each with its own sounds and ways (owner, 02/10/2026: no penguin says "chíp"). */
+function wildAnimal(sound: string, trick: string, walkSpeed: number, chores: RoutineSpec['chores']): RoutineSpec {
+  return {
+    ...ANIMAL,
+    walkSpeed,
+    greet: { clip: 'gesture-positive', pool: sound },
+    react: [{ id: 'trick', weight: 1, beats: [{ do: 'say', pool: trick }, { do: 'act', clip: 'dance', loops: [1, 2] }] }],
+    celebrate: [
+      { id: 'cheer', weight: 2, beats: [{ do: 'say', pool: sound }, { do: 'act', clip: 'dance', loops: [1, 2] }] },
+      { id: 'cheer-bounce', weight: 1, lively: true, beats: [{ do: 'say', pool: trick }, { do: 'hop', to: 'wander', hops: [2, 3], radius: 1 }] },
+    ],
+    chores,
+  };
+}
+
 const work = (spot: Job['spot'], clip: string, item: number | null, loops: Range = [2, 4], pose?: Pose): Job => ({ spot, clip, loops, item, ...(pose ? { pose } : {}) });
 
 /** Every everyday routine, keyed by the routine id the maps write in `ambients`. */
@@ -111,6 +126,26 @@ export const EVERYDAY_ROUTINES = {
   pig: grazer('pig-sound', 0.8),
   dog: grazer('dog-sound', 1.4),
   cat: grazer('cat-sound', 1.1),
+  // The snow mountain: penguins waddle to the ice to fish and belly-slide; polar bears fish, nap and roll.
+  penguin: wildAnimal('penguin-sound', 'penguin-trick', 0.6, [
+    { id: 'fish', weight: 3, beats: [{ do: 'walk', to: 'graze-a' }, { do: 'act', clip: 'eat', loops: [2, 4] }, { do: 'say', pool: 'penguin-sound' }] },
+    { id: 'slide', weight: 2, lively: true, beats: [{ do: 'wander', radius: 4, speed: 2.6, clip: 'run' }, { do: 'act', clip: 'gesture-positive', loops: [1, 1] }] },
+    { id: 'huddle', weight: 2, beats: [{ do: 'walk', to: 'home' }, { do: 'act', clip: 'idle', seconds: [3, 5], pose: 'look-around' }] },
+    { id: 'flap', weight: 1, beats: [{ do: 'walk', to: 'graze-b' }, { do: 'act', clip: 'dance', loops: [1, 1] }, { do: 'say', pool: 'penguin-sound' }] },
+  ]),
+  'polar-bear': wildAnimal('polar-bear-sound', 'polar-bear-trick', 0.7, [
+    { id: 'fish', weight: 3, beats: [{ do: 'walk', to: 'graze-a' }, { do: 'act', clip: 'eat', loops: [3, 5] }] },
+    { id: 'nap', weight: 2, beats: [{ do: 'walk', to: 'home' }, { do: 'act', clip: 'idle', seconds: [6, 10], speed: 0.4, pose: 'sleepy' }, { do: 'say', pool: 'polar-bear-snore' }] },
+    { id: 'roll', weight: 1, lively: true, beats: [{ do: 'act', clip: 'dance', loops: [1, 2] }, { do: 'say', pool: 'polar-bear-sound' }] },
+    { id: 'sniff', weight: 2, beats: [{ do: 'walk', to: 'graze-b' }, { do: 'act', clip: 'idle', seconds: [2, 3], pose: 'look-around' }] },
+  ]),
+  // The island: monkeys hop between trees for fruit, chatter and swing about.
+  monkey: wildAnimal('monkey-sound', 'monkey-trick', 1.5, [
+    { id: 'fruit', weight: 3, lively: true, beats: [{ do: 'hop', to: 'graze-a', hops: [3, 5] }, { do: 'act', clip: 'eat', loops: [2, 3] }, { do: 'say', pool: 'monkey-sound' }] },
+    { id: 'swing', weight: 2, lively: true, beats: [{ do: 'hop', to: 'graze-b', hops: [4, 6] }, { do: 'act', clip: 'dance', loops: [1, 1] }] },
+    { id: 'chatter', weight: 2, beats: [{ do: 'act', clip: 'gesture-positive', loops: [1, 2] }, { do: 'say', pool: 'monkey-sound' }] },
+    { id: 'scamper', weight: 1, lively: true, beats: [{ do: 'wander', radius: 4, speed: 2.8, clip: 'run' }, { do: 'hop', to: 'home', hops: [2, 4] }] },
+  ]),
 } as const satisfies Record<string, RoutineSpec>;
 
 /** Speech bubbles of the everyday routines: short (a child reads them walking), `{name}` is the child. */
@@ -202,4 +237,11 @@ export const EVERYDAY_LINES: Readonly<Record<string, readonly string[]>> = {
   'pig-sound': ['Ụt ịt, ụt ịt!', 'Lợn ủn mũi vào đất.', 'Lợn con lăn tròn.'],
   'dog-sound': ['Gâu gâu! Chào {name}!', 'Cún vẫy đuôi tít mù.', 'Cún nhảy quanh chân.'],
   'cat-sound': ['Meo meo!', 'Mèo dụi đầu vào {name}.', 'Mèo duỗi người lười biếng.'],
+  'penguin-sound': ['Quác quác!', 'Cánh cụt lạch bạch chào {name}.', 'Cánh cụt vỗ vỗ đôi cánh nhỏ.'],
+  'penguin-trick': ['Cánh cụt trượt bụng trên băng!', 'Cánh cụt xoay một vòng!', 'Quác! Xem tớ nhảy nè!'],
+  'polar-bear-sound': ['Gừ... chào {name} nhé.', 'Gấu trắng vẫy bàn chân to.', 'Gấu trắng hít hít mùi cá.'],
+  'polar-bear-trick': ['Gấu trắng lăn tròn trên tuyết!', 'Gấu trắng đứng hai chân chào!', 'Gấu trắng lắc mình rũ tuyết!'],
+  'polar-bear-snore': ['Khò... khò...', 'Gấu ngủ trên tuyết êm.', 'Zzz... cá ngon quá...'],
+  'monkey-sound': ['Khẹc khẹc!', 'Khỉ gãi đầu nhìn {name}.', 'Khỉ chìa quả chuối mời {name}.'],
+  'monkey-trick': ['Khỉ nhào lộn một vòng!', 'Khỉ đu tay vẫy {name}!', 'Khẹc! Khỉ múa nè!'],
 };

@@ -263,7 +263,7 @@ async function zoneMapShots(map: string, region: string): Promise<Shot[]> {
     const landmark = entities.landmarks.find((l) => l.id === v.at);
     if (!landmark) throw new Error(`${map}: mock view ${v.frame} stands at ${v.at}, which is not a landmark of the map`);
     const at = (o: readonly number[]): number[] => landmark.position.map((p, i) => p + (o[i] ?? 0));
-    shots.push({ file: mockShotFile(v.frame), query: { shot: view(at(v.eye), at(v.look), v.fov), quality: 'high', region, view: v.reach, ...(v.mood === 'dusk' ? { mood: 'dusk' } : {}) }, viewport: wide });
+    shots.push({ file: mockShotFile(v.frame), query: { shot: view(at(v.eye), at(v.look), v.fov), quality: 'high', region, view: v.reach, ...(v.mood !== 'day' ? { mood: v.mood } : {}) }, viewport: wide });
   }
   return shots;
 }

@@ -22,8 +22,8 @@ export const mockViewsSchema = z.object({
       fov: z.number().min(20).max(100).default(60),
       /** How far round the landmark the map is loaded, in blocks: an overview reaches its far hills and falls. */
       reach: z.number().int().min(60).max(900).default(140),
-      /** `dusk` for the mocks' evening and night frames: the evening sky, lanterns aglow. */
-      mood: z.enum(['day', 'dusk']).default('day'),
+      /** `dusk` for the mocks' evening frames, `night` for their night ones, `cave` inside caves and temples: lanterns aglow. */
+      mood: z.enum(['day', 'dusk', 'night', 'cave']).default('day'),
     }),
   ),
 });

@@ -15,10 +15,10 @@ const PEOPLE = 'packs/kenney-blocky-characters/2.0';
 
 /** A person model by letter (Kenney Blocky Characters), for a cast list. */
 export const person = (letter: string): string => `${PEOPLE}/character-${letter}.glb`;
-export const animal = (kind: 'cow' | 'pig' | 'dog' | 'cat' | 'chick'): string => `${PACK.pets}/animal-${kind}.glb`;
+export const animal = (kind: 'cow' | 'pig' | 'dog' | 'cat' | 'chick' | 'penguin' | 'polar' | 'monkey'): string => `${PACK.pets}/animal-${kind}.glb`;
 
-/** Animals graze between two spots (chicks only peck round home and need none). */
-const ANIMALS = new Set<AmbientRoutine>(['cow', 'pig', 'dog', 'cat', 'chick']);
+/** Animals go between two spots (chicks only peck round home and need none). */
+const ANIMALS = new Set<AmbientRoutine>(['cow', 'pig', 'dog', 'cat', 'chick', 'penguin', 'polar-bear', 'monkey']);
 
 export interface Resident {
   routine: AmbientRoutine;

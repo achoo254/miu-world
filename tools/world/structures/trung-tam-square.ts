@@ -200,6 +200,8 @@ export interface HubCastle {
   /** The hall behind the gate: its room and where its chandeliers hang. */
   hall: Rect;
   lights: Array<[number, number, number]>;
+  /** The tallest towers' cornices (the keep's and the hall's), where their upper stages (box props) stand. */
+  crowns: Array<{ at: [number, number, number]; radius: 3 | 4 }>;
 }
 
 /**
@@ -255,18 +257,23 @@ export function placeHubCastle(world: WorldWriter, spec: { x0: number; x1: numbe
   for (const s of [-1, 1]) placeBanner(world, gateX + s * 5 - (s > 0 ? 1 : 0), top + 1, gh.z1 + 1, 'x', { cloth: b.cloth, emblem: b.emblem }, 4);
   // Towers: the four corners, two along the front, two over the hall, the keep's tall one in the middle.
   const towers: TowerBlocks = { wall: b.wall, trim: b.trim, roof: b.roof, glass: b.glass, flag: b.cloth, pole: b.pole };
-  for (const [tx, tz, r, h] of [
-    [x0, front, 4, 12],
-    [x1, front, 4, 12],
-    [x0, back, 3, 11],
-    [x1, back, 3, 11],
-    [x0 + Math.round((gateX - x0) / 2), front, 3, 11],
-    [x1 - Math.round((x1 - gateX) / 2), front, 3, 11],
-    [gateX - 20, hall.z0 - 2, 3, 15],
-    [gateX + 20, hall.z0 - 2, 3, 15],
-    [gateX, hall.z0 - 4, 4, 13],
+  const crowns: HubCastle['crowns'] = [];
+  for (const [tx, tz, r, h, crowned] of [
+    [x0, front, 4, 12, false],
+    [x1, front, 4, 12, false],
+    [x0, back, 3, 11, false],
+    [x1, back, 3, 11, false],
+    [x0 + Math.round((gateX - x0) / 2), front, 3, 11, false],
+    [x1 - Math.round((x1 - gateX) / 2), front, 3, 11, false],
+    [gateX - 20, hall.z0 - 2, 3, 15, true],
+    [gateX + 20, hall.z0 - 2, 3, 15, true],
+    [gateX, hall.z0 - 4, 4, 13, true],
   ] as const) {
-    placeTower(world, tx, tz, baseY, r, h, towers, false);
+    const { cornice, tip } = placeTower(world, tx, tz, baseY, r, h, towers, false);
+    if (!crowned) continue;
+    // The world is 48 blocks tall: the tallest towers go on as a box-prop upper stage from their cornice.
+    for (let y = cornice + 1; y <= tip + 3; y++) for (let dx = -r - 3; dx <= r + 3; dx++) for (let dz = -r - 3; dz <= r + 3; dz++) put(world, tx + dx, y, tz + dz, 0);
+    crowns.push({ at: [tx + 0.5, cornice + 1, tz + 0.5], radius: r });
   }
   // The keep over the hall: its walls rising above the curtain with rows of lit windows, a red gable roof
   // along x over it, so the castle stands tall behind the square (d-01).
@@ -293,5 +300,5 @@ export function placeHubCastle(world: WorldWriter, spec: { x0: number; x1: numbe
   }
   const lights: Array<[number, number, number]> = [];
   for (let z = hall.z0 + 6; z < hall.z1 - 3; z += 10) lights.push([gateX + 0.5, baseY + 5.8, z + 0.5]);
-  return { front: gh.z1, gate: { x: gateX, z: gh.z1, pane: [gateX + 0.5, baseY, gh.z1 + 1.12] }, hall, lights };
+  return { front: gh.z1, gate: { x: gateX, z: gh.z1, pane: [gateX + 0.5, baseY, gh.z1 + 1.12] }, hall, lights, crowns };
 }

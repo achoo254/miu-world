@@ -25,7 +25,7 @@ import type { PlayerPosition } from '@miu/schema/player-position';
 import { RegionCatalog, WorldEventKind, mapForRegion } from '@miu/schema/region';
 import regionsJson from '../../../../content/world/regions.json';
 import { AssetRegistry, GuardedGltfLoader } from './asset-loader';
-import { createReviewShot } from './debug/review-shots';
+import { createReviewShot, parseViewShot } from './debug/review-shots';
 import { StatsOverlay } from './debug/stats-overlay';
 import { loadInteractables, pickNearest, type InteractableObject } from './entities/interactables';
 import { createTargetArrow } from './entities/target-arrow';
@@ -329,6 +329,8 @@ export class Game {
       return nearY;
     };
     const reducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
+    const shotView = parseViewShot(params.get('shot') ?? '');
+    const lifeStart: [number, number] = shotView ? [shotView.target.x, shotView.target.z] : [start[0] ?? 0, start[2] ?? 0];
     const [character, targets, props, life] = await Promise.all([
       loadPlayerCharacter(loader, this.options.species ?? DEFAULT_SPECIES, outfit),
       loadInteractables(loader, entities, quality.shadows),
@@ -340,7 +342,9 @@ export class Game {
         reduced: reducedMotion,
         playerName: this.options.playerName ?? 'bạn',
         ground,
-        start: [start[0] ?? 0, start[2] ?? 0],
+        // A review shot of a far view (the mock frames) gets the people round what it looks at ready
+        // before its first frame, as the child's start does in play.
+        start: lifeStart,
       }),
     ]);
     if (this.disposed) return;
@@ -368,8 +372,10 @@ export class Game {
         const flat = Math.hypot(lookAhead.x, lookAhead.z) || 1;
         return { x: lookAhead.x / flat, z: lookAhead.z / flat };
       },
+      places: entities.moods ?? [],
     });
-    if (params.get('mood') === 'dusk') events.holdDusk();
+    const heldMood = params.get('mood');
+    if (heldMood === 'dusk' || heldMood === 'night' || heldMood === 'cave') events.holdMood(heldMood);
     props.setViewDistance(quality.viewDistance);
     props.buildAround(start[0] ?? 0, start[2] ?? 0);
     this.cleanups.push(() => props.dispose());

@@ -17,7 +17,7 @@ import { loadBlocks, PACK, runIfMain } from './map-kit';
 import { buildCave, buildGreatFalls, buildJungle, buildMesa, buildNightForest, buildTemple, paveRuins, STREAKS_HEIGHT } from './structures/dao-bi-an-inland';
 import { buildCove, buildFishingVillage, buildHarbour, buildIslets, buildVolcano, dressCauseways, paintLand, palmShores } from './structures/dao-bi-an-coast';
 import { islandKit, M } from './structures/dao-bi-an-kit';
-import { inWater, isLand, LEVEL, NIGHT_POOL, PIER, shapeIsland, SPAWN, WATER, ZONES } from './structures/dao-bi-an-land';
+import { CAVE, HIGHLAND, inWater, isLand, LEVEL, NIGHT_POOL, PIER, shapeIsland, SPAWN, TEMPLE, WATER, ZONES } from './structures/dao-bi-an-land';
 import { placeSeaLife } from './structures/dao-bi-an-life';
 import type { Point } from './structures/path';
 import { animal, crowd, person, type Resident } from './village-life';
@@ -223,6 +223,13 @@ export async function generateDaoBiAn() {
     ],
   });
   map.entities.ambients = [...(map.entities.ambients ?? []), ...ambients];
+  // Light of its own (d-08, d-09, d-13, d-14): dim inside the cave, its treasure vault and the temple, a
+  // moonlit night in the night forest, so crystals, torches and gold glow as in the mocks.
+  map.entities.moods = [
+    { mood: 'cave', x0: CAVE.hall.x0, z0: CAVE.mouthZ + 2, x1: CAVE.hall.x1, z1: CAVE.vault.z1 },
+    { mood: 'cave', ...TEMPLE },
+    { mood: 'night', x0: NIGHT_POOL.x - 38, z0: NIGHT_POOL.z - 44, x1: NIGHT_POOL.x + 38, z1: HIGHLAND.z0 - 2 },
+  ];
   return map;
 }
 

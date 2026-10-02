@@ -299,7 +299,7 @@ export async function generateNuiTuyet(): Promise<{ world: VoxelWorld; entities:
     life: ({ landmark }) => cast(landmark),
     build: (ctx) => buildSnowMountain(ctx),
   });
-  // Foxes, deer, bunnies (and the polar bears, who doze like foxes) go to their own routines' places.
+  // Foxes, deer and bunnies go to their own routines' places.
   const ambients = map.entities.ambients?.map((a) => {
     const names = SPOT_NAMES[a.routine];
     if (!names) return a;
@@ -307,7 +307,9 @@ export async function generateNuiTuyet(): Promise<{ world: VoxelWorld; entities:
     const spots = Object.fromEntries(names.flatMap((name, i) => (work[i] ? [[name, work[i]]] : [])));
     return { ...a, spots };
   });
-  return { world: map.world, entities: { ...map.entities, ...(ambients ? { ambients } : {}) } };
+  // Inside the ice cave the light dims, so its crystals glow as in d-09.
+  const moods = [{ mood: 'cave' as const, ...CAVE }];
+  return { world: map.world, entities: { ...map.entities, ...(ambients ? { ambients } : {}), moods } };
 }
 
 function cast(landmark: (id: string) => readonly [number, number]): Resident[] {
@@ -356,8 +358,8 @@ function cast(landmark: (id: string) => readonly [number, number]): Resident[] {
     // The frozen lake: ice fishers, skaters, penguins on the ice, walkers on the shore.
     ...crowd('fisher', ['Ông câu cá trên băng', 'Bác câu cá lỗ băng'], [person('m'), person('a')], at('giua-ho-bang', 0, 30), 10, 3, [HELD.paddle]),
     ...crowd('pupil', ['Bạn trượt băng', 'Bạn tập trượt băng'], [person('f'), person('q'), person('o'), person('r')], at('giua-ho-bang', 0, 40), 12, 4),
-    ...crowd('chick', ['Chim cánh cụt', 'Chim cánh cụt con'], [pet('penguin')], at('giua-ho-bang', 0, 44), 14, 12),
-    ...crowd('chick', ['Chim cánh cụt bên thác'], [pet('penguin')], at('chan-thac-bang', 10, 8), 8, 5),
+    ...crowd('penguin', ['Chim cánh cụt', 'Chim cánh cụt con'], [pet('penguin')], at('giua-ho-bang', 0, 44), 14, 12),
+    ...crowd('penguin', ['Chim cánh cụt bên thác'], [pet('penguin')], at('chan-thac-bang', 10, 8), 8, 5),
     ...crowd('shopper', ['Cô dạo bờ hồ', 'Chú ngắm thác băng'], [person('i'), person('k')], at('bo-ho-bang'), 10, 2),
     ...crowd('sweeper', ['Chú quét tuyết bờ hồ'], [person('b')], at('bo-ho-bang', 20, 0), 6, 1),
     ...crowd('deer', ['Nai tuyết bên vực'], [pet('deer')], at('vuc-thac-bang', -10, -14), 10, 3),
@@ -368,9 +370,9 @@ function cast(landmark: (id: string) => readonly [number, number]): Resident[] {
     ...crowd('teacher', ['Bác trưởng trạm thám hiểm'], [person('a')], at('tram-tham-hiem', -6, 6), 3, 1, [HELD.book]),
     ...crowd('sentry', ['Chú dẫn đường vào hang'], [person('d')], at('cua-hang-bang'), 3, 1),
     ...crowd('dog', ['Chó kéo xe trượt'], [animal('dog')], at('tram-tham-hiem', -18, 10), 6, 4),
-    ...crowd('fox', ['Gấu trắng', 'Gấu trắng con'], [pet('polar')], at('cua-hang-bang', 26, 20), 10, 4),
+    ...crowd('polar-bear', ['Gấu trắng', 'Gấu trắng con'], [pet('polar')], at('cua-hang-bang', 26, 20), 10, 4),
     ...crowd('fox', ['Cáo tuyết'], [pet('fox')], at('tram-tham-hiem', 34, 26), 12, 3),
-    ...crowd('chick', ['Chim cánh cụt lạc đàn'], [pet('penguin')], at('tram-tham-hiem', 20, 30), 6, 3),
+    ...crowd('penguin', ['Chim cánh cụt lạc đàn'], [pet('penguin')], at('tram-tham-hiem', 20, 30), 6, 3),
 
     // The summit: the astronomer, children at the rail, deer and foxes on the plateau.
     ...crowd('reader', ['Nhà thiên văn'], [person('c')], at('dai-quan-sat'), 3, 1, [HELD.book]),

@@ -98,6 +98,10 @@ export const AMBIENT_ROUTINES = [
   'pig',
   'dog',
   'cat',
+  // Snow and island animals (Núi tuyết, Đảo bí ẩn).
+  'penguin',
+  'polar-bear',
+  'monkey',
 ] as const;
 export type AmbientRoutine = (typeof AMBIENT_ROUTINES)[number];
 
@@ -118,6 +122,10 @@ const ambientSchema = z.object({
   chapter: z.number().int().min(1).optional(),
 });
 export type Ambient = z.infer<typeof ambientSchema>;
+
+/** Light of a place that is not the day's (`moods` of a map). */
+export const PLACE_MOODS = ['night', 'cave'] as const;
+export type PlaceMood = (typeof PLACE_MOODS)[number];
 
 export const worldEntitiesSchema = z
   .object({
@@ -141,6 +149,11 @@ export const worldEntitiesSchema = z
     ambients: z.array(ambientSchema).optional(),
     /** The land round the map, generated while playing (outland.ts); absent on maps that end at their edge. */
     outland: outlandSpecSchema.optional(),
+    /**
+     * Places whose light is not the day's (owner, 02/10/2026: caves, temples and the night forest look as in the
+     * mocks): walking into one, the light eases to `night` (a moonlit sky) or `cave` (dim, lamps glowing).
+     */
+    moods: z.array(z.object({ mood: z.enum(PLACE_MOODS), x0: z.number(), z0: z.number(), x1: z.number(), z1: z.number() })).optional(),
   })
   .superRefine((entities, ctx) => {
     const seen = new Set<string>();

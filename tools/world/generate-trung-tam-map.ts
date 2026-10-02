@@ -664,6 +664,7 @@ function buildHub(ctx: ZoneMapContext): void {
   });
   ctx.propAt(TT.portal('ice'), castle.gate.pane, 180);
   for (const at of castle.lights) ctx.propAt(TT.chandelier, at, 0);
+  for (const crown of castle.crowns) ctx.propAt(`${BX}/tt-tower-crown-${crown.radius}.glb`, crown.at, 0);
   for (const s of [-1, 1]) {
     for (const dz of [4, 10]) ctx.propAt(STREET_LANTERN, [CASTLE.gateX + s * 7 + 0.5, TERRACE.y + 1, castle.front + dz + 0.5], 0);
     ctx.propAt(TT.banner, [CASTLE.gateX + s * 12 + 0.5, TERRACE.y + 1, TERRACE.z1 - 3 + 0.5], 0);

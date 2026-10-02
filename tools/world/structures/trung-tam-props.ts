@@ -3,7 +3,8 @@
 // over its portal (d-06), the shop's sign with its bag (d-02), the quest board with its gold "!" (d-04), the
 // team boards of the gazebo (d-05), the signposts at the central bridge (d-07), the airship and balloons
 // over the square, the clock face of the tower (d-01), the traders' tables and goods (d-02, d-03), the stage
-// trusses and lantern strings of the event ground (d-08), the shop's red carpet. Signs are lettered in a
+// trusses and lantern strings of the event ground (d-08), the shop's red carpet, the upper stages of the
+// castle's tallest towers (d-01). Signs are lettered in a
 // pixel font of 5-row capitals with the Vietnamese marks above (and the dot below), so every name keeps
 // its diacritics. Writes content/world/box-props/trung-tam.json; run it after changing a prop:
 //   pnpm exec tsx tools/world/structures/trung-tam-props.ts
@@ -356,6 +357,35 @@ function balloon(bands: readonly string[]): Box[] {
   return out;
 }
 
+/**
+ * The upper stage of the castle's tallest towers (d-01), above the 48-block world: a stone shaft as wide as
+ * the tower with rows of lit windows, a cornice, a tall stepped red roof and a flag, so the castle rises over
+ * the square as high as in the mock. Its foot sits on the tower's cornice.
+ */
+function towerCrown(radius: number): Box[] {
+  const stone = '#b4b8bf';
+  const dark = '#8f949c';
+  const w = radius + 0.4;
+  const shaft = 10;
+  const out: Box[] = [box([-w, 0, -w * 0.72], [w, shaft, w * 0.72], stone), box([-w * 0.72, 0, -w], [w * 0.72, shaft, w], stone)];
+  for (let y = 2; y < shaft - 1; y += 3) {
+    for (const [x, z, sx, sz] of [[0, -w, 0.35, 0.06], [0, w, 0.35, 0.06], [-w, 0, 0.06, 0.35], [w, 0, 0.06, 0.35]] as const) {
+      out.push(box([x - sx - 0.02, y, z - sz - 0.02], [x + sx + 0.02, y + 1.2, z + sz + 0.02], '#ffd36b', true));
+    }
+  }
+  const c = w + 1;
+  out.push(box([-c, shaft, -c * 0.72], [c, shaft + 0.8, c * 0.72], dark), box([-c * 0.72, shaft, -c], [c * 0.72, shaft + 0.8, c], dark));
+  const roof = Math.round(c * 2.3);
+  for (let k = 0; k < roof; k++) {
+    const r = c * (1 - k / roof) + 0.15;
+    const y0 = shaft + 0.8 + k;
+    out.push(box([-r, y0, -r * 0.72], [r, y0 + 1, r * 0.72], '#c0402f'), box([-r * 0.72, y0, -r], [r * 0.72, y0 + 1, r], '#c0402f'));
+  }
+  const tip = shaft + 0.8 + roof;
+  out.push(box([-0.08, tip, -0.08], [0.08, tip + 3, 0.08], '#6b4423'), box([0.08, tip + 1.8, -0.04], [1.6, tip + 2.9, 0.04], '#d9434a'));
+  return out;
+}
+
 /** The clock tower's face (d-01): a cream dial in a dark frame, hour marks and two hands; front -z. */
 function clockFace(): Box[] {
   const out: Box[] = [box([-1.3, 0, -0.06], [1.3, 2.6, 0.06], '#3b3b45'), box([-1.12, 0.18, -0.09], [1.12, 2.42, -0.06], '#f6efd9'), box([-1.0, 0.3, -0.1], [1.0, 2.3, -0.09], '#fbf6e8')];
@@ -443,6 +473,8 @@ export function trungTamProps(regionNames: Readonly<Record<string, string>>): Re
   props['tt-truss'] = { boxes: truss() };
   props['tt-lantern-string'] = { boxes: lanternString() };
   props['tt-carpet'] = { boxes: carpet() };
+  props['tt-tower-crown-3'] = { boxes: towerCrown(3) };
+  props['tt-tower-crown-4'] = { boxes: towerCrown(4) };
   return props;
 }
 

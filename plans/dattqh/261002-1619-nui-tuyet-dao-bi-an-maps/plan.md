@@ -52,4 +52,4 @@ Cả bốn pha xong. Báo cáo nghiệm thu: `plans/dattqh/reports/mock-new-maps
 - Commit `afcaadd` (420 tệp, chỉ của plan này; 22 tệp chưa commit của hai phiên khác — autowalk, điều khiển cảm ứng, HUD — để nguyên), đã push.
 - Production (người sở hữu cho phép lần này): release từ bản export của `afcaadd` (`MIU_RELEASE_REV=afcaadd`), backup DB trước release, `/api/health` ok; ba map mới và ảnh chọn map mới phục vụ từ `https://miu.hoandat.com`.
 
-Hạn chế ghi nhận: ảnh d-03/d-08 Trung tâm thiếu người (runtime chưa dựng nhân vật xa lúc chụp); lâu đài Trung tâm thấp hơn mock (trần 48 khối); chim cánh cụt/gấu trắng Núi tuyết mượn routine `chick`/`fox`, khỉ Đảo là prop tĩnh (cần routine riêng ở web); khung tối d-08, d-09, d-13 của Đảo sáng hơn mock (chưa có chế độ đêm).
+Hạn chế ghi nhận lúc nghiệm thu đã sửa cùng ngày (ảnh có người, đỉnh tháp lâu đài, routine chim cánh cụt/gấu trắng/khỉ, vùng tối `night`/`cave`): xem báo cáo nghiệm thu.
