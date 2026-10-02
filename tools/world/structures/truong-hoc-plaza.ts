@@ -88,7 +88,7 @@ export interface ShopBlocks {
 
 /**
  * A shop's size: its depth, its walls' height, a walk-in three wide between its counters instead of the
- * middle post, a ceiling of timbers over the hall at the top of its walls.
+ * middle post, a ceiling of timbers over the hall at the top of its walls, the loft over it filled.
  */
 export interface ShopSize {
   depth?: number;
@@ -119,7 +119,12 @@ export function placeShop(world: WorldWriter, x0: number, z0: number, w: number,
       for (let y = baseY; y <= wallTop; y++) put(world, x, y, z, post ? b.post : b.wall);
     }
   }
-  if (size.ceiling) fill(world, x0 + 1, wallTop, z0 + 1, x1 - 1, wallTop, z1 - 1, b.post);
+  // The ceiling, and the loft over it filled up to the roof (no shut hollow under the gable).
+  if (size.ceiling) {
+    fill(world, x0 + 1, wallTop, z0 + 1, x1 - 1, wallTop, z1 - 1, b.post);
+    // Each level k up is under the roof's row k - 1 (z0 + k - 2): filled from the row inside it.
+    for (let k = 1; z0 + k - 1 <= z1 - k + 1; k++) fill(world, x0 + 1, wallTop + k, z0 + k - 1, x1 - 1, wallTop + k, z1 - k + 1, b.post);
+  }
   // Front posts between the two counters (none over a walk-in), a beam along the front.
   const midX = Math.floor((x0 + x1) / 2);
   if (!size.walkIn) for (let y = baseY; y <= wallTop; y++) put(world, midX, y, z0, b.post);

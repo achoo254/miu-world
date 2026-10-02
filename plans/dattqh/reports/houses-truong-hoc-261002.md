@@ -69,3 +69,34 @@ Nhà dời/bỏ:
 ## Còn mở
 
 - Tầng lớp học vẫn cao 4 khối (trống 3 khối) vì test `generate-school-map.test.ts` khóa "tầng trên cao hơn 4"; muốn trần cao hơn cần đổi test đó (ngoài phạm vi tệp được giao).
+
+## Bổ sung 03/10/2026: cửa mọi nhà nằm trên mạng đường
+
+Phép đo mới (`scenery-audit`, commit b90db34) coi mọi không gian có mái ≥ 60 ô sàn là một ngôi nhà và đòi ô ngoài cửa của nó cách một ô đường nối về mạng của chỗ xuất hiện không quá 4 khối.
+
+| `scenery-audit truong-hoc` | Trước (sinh lại ở 214e82b) | Sau |
+| --- | --- | --- |
+| cây trên đường / đồ giữa lối | 0 / 0 | 0 / 0 |
+| nơi xa đường | 14 (cửa nhà) | 0 |
+| nơi bị tách khỏi mạng | 175 (cửa nhà) | 0 |
+
+Đã làm:
+
+- **Cụm nhà thành ngõ có nhà hai bên.** Bỏ `levelHamlet` (các hàng nhà quay sân ra cỏ, không có lối nào tới cửa). Mỗi khu phố nay là vài ngõ cách nhau 40 ô (`TOWN_LANES`), mỗi bên có một dãy nhà dựng bằng `streetHouses`: vườn trước, lối lát từ cửa ra ngõ, chân đá và bậc nơi đất gồ lên. Hai dãy nhà đứng lưng vào nhau.
+- **Ngõ nối về đường lớn.** Ngõ ở khu phía đông và dọc đại lộ tây bắt đầu ngay trên đại lộ. Ở làng, xóm tây bắc và hai khu bên kia phố, một đường xương (`TOWN_SPINES`) nối các ngõ về đường của quận hoặc về phố chính.
+- **Các khu và vị trí ngõ:** làng (z 344, 412, hai bên đường làng), xóm tây bắc (z 610, 670, hai bên đường tới xóm), phía đông trường và bên hồ (z 352, 446, 530), bên kia phố (z 40, 100), dọc đại lộ tây (7 ngõ).
+- **Ngõ đông bắc dừng trước ruộng ngô của nông trại**, không cho hàng rào ruộng cắt ngang cuối ngõ.
+- **Đường tới cửa kho nông trại.**
+- **Tầng gác cửa hàng quảng trường.** Phần dưới mái trên trần cửa hàng được lấp đặc; trước đây nó là một khoảng kín ≥ 60 ô mà phép đo coi là nhà.
+- **Đất gồ không còn chôn cửa.** Một lần thử dùng hàng nhà cũ kèm lối từ cửa đã cho 3 nhà bị đất gồ chôn cửa. Cách dùng `streetHouses` tự kê chân đá nên không còn chỗ thiếu này.
+
+Số đo cuối, sau `pnpm world:school`:
+
+- `room-audit`: 248 không gian có mái, 0 thiếu.
+- `reach-audit`: mọi mục tới được, chỗ bắt đầu trống.
+- `scenery-audit`: 0 / 0 / 0 / 0.
+- tsc: 0 lỗi trong tệp của map. eslint `--max-warnings=0` trên 3 tệp: sạch.
+- `pnpm vitest run tools/world/generate-school-map.test.ts`: 5/5 đạt.
+- Đã chụp lại 12 khung mock. Khung toàn cảnh c-01 nay thấy các dãy nhà theo ngõ; khung đường chính c-13 gần như không đổi.
+
+Tệp đã sửa: `tools/world/generate-school-map.ts`, `tools/world/structures/truong-hoc-plaza.ts`. Phần lấp gác chỉ chạy khi gọi với `ceiling`, nên map Trung tâm không đổi.

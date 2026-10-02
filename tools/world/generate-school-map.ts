@@ -18,7 +18,7 @@
 // the street lined with lanterns and houses. The school's four chapters are zones of the campus.
 // Output: assets/generated/world/truong-hoc/{regions/, horizon.bin, entities.json}
 import { PACK, runIfMain } from './map-kit';
-import { bambooHedge, cottageRow, fieldPlot, flowerBed, jetty, laneVerge, STREET_LANTERN, streetHouses } from './scenery';
+import { bambooHedge, fieldPlot, flowerBed, jetty, laneVerge, STREET_LANTERN, streetHouses } from './scenery';
 import { placeHouse } from './structures/buildings';
 import { placeCatStatue, placeFountain, placeLighthouse, placeStall, placeWindmill } from './structures/countryside';
 import { placeArchBridge, placeBanner, placePlaza, placeTower } from './structures/landmarks';
@@ -28,7 +28,7 @@ import { placeTree, treeHeight } from './structures/tree';
 import { placeGazebo, placeGrandFountain, placePlayhouse, placePortal, placeShop, placeStage } from './structures/truong-hoc-plaza';
 import { facingWriter, FRAME, frameCell, turnCell, type Facing } from './structures/world-writer';
 import { animal, crowd, person } from './village-life';
-import { generateZoneMap, HUB_REGION, type Zone, type ZoneMapContext } from './zone-map';
+import { generateZoneMap, HUB_REGION, type Zone } from './zone-map';
 
 export const MAP_ID = 'truong-hoc';
 const SIZE = 800;
@@ -174,8 +174,34 @@ const TOWN_ROUTES: Point[][] = [
   [[DISTRICT.village.x, DISTRICT.village.z], [PADDY_BUND, DISTRICT.village.z + 60], [PADDY_BUND, DISTRICT.village.z + 150]],
   [[DISTRICT.forest.x, DISTRICT.forest.z], [CLIFF.x - 26, CLIFF.z - 30]],
   [[LAKE.x - 44, STREET.z1 + 2], [LAKE.x - 44, LAKE.z - LAKE.rz - 3]],
+  // From the farm's way to its barn's door.
+  [[DISTRICT.farm.x, DISTRICT.farm.z], [DISTRICT.farm.x - 43, DISTRICT.farm.z + 7]],
 ];
-const ROUTES: Point[][] = [...CAMPUS_ROUTES, MAIN_STREET, ...TOWN_ROUTES];
+/**
+ * The town's cottage quarters, each a few lanes lined with houses on both sides (`streetHouses`: a front
+ * garden, a walk from the door to the lane, a stone foot and steps where the land swells), the lanes forty
+ * apart so the houses stand back to back, joined to the town's roads where they do not start on one.
+ */
+const TOWN_LANES: Point[][] = [
+  // The village (west), either side of its road; the hamlet (north-west), either side of its road.
+  ...[344, 412].map((z): Point[] => [[30, z], [250, z]]),
+  ...[610, 670].map((z): Point[] => [[30, z], [250, z]]),
+  // East of the school and by the lake, off the east avenue.
+  ...[352, 446, 530].map((z): Point[] => [[CAMPUS.x1 + 18, z], [z < 500 ? LAKE.x - LAKE.rx - 10 : 560, z]]),
+  // Beyond the street, north-east (short of the farm's fields) and north-west.
+  ...[40, 100].flatMap((z): Point[][] => [[[480, z], [DISTRICT.farm.x - 84, z]], [[60, z], [300, z]]]),
+  // Along the west avenue, off it.
+  ...[350, 420, 460, 500, 540, 580, 620].map((z): Point[] => [[CAMPUS.x0 - 58, z], [CAMPUS.x0 - 12, z]]),
+];
+/** Ways joining the quarters' lanes to the roads: down the village and the hamlet to their roads, the two beyond the street to it. */
+const TOWN_SPINES: Point[][] = [
+  [[DISTRICT.village.x, 344], [DISTRICT.village.x, 412]],
+  [[DISTRICT.hamlet.x, 610], [DISTRICT.hamlet.x, 670]],
+  [[520, 40], [520, STREET.z0]],
+  [[180, 40], [180, STREET.z0]],
+];
+
+const ROUTES: Point[][] = [...CAMPUS_ROUTES, MAIN_STREET, ...TOWN_ROUTES, ...TOWN_LANES, ...TOWN_SPINES];
 
 /**
  * Gates: the square's portals into the theme maps, and one inside the school gate back to the hub, Trung tâm
@@ -302,24 +328,6 @@ function keepOutExcept(ctx: { keepOut: (x0: number, z0: number, x1: number, z1: 
 
 /** What the hills add to the land at (x, z): the castle's, the mountain's and the waterfall cliff's. */
 const rise = (x: number, z: number): number => hill(CASTLE_HILL, x, z) + hill(MOUNTAIN, x, z) + hill(CLIFF, x, z);
-
-/**
- * Rows of cottages over a rectangle as `hamlet` (scenery.ts) lays them, each only where its house and yard
- * stand clear of every way, the water, the zones, what is kept out and the hills' slopes (a house set on
- * the level ground sinks into a slope, its door buried): the hamlet under the mountain's skirt.
- */
-function levelHamlet(ctx: ZoneMapContext, x0: number, z0: number, x1: number, z1: number, rowEvery = 22): void {
-  const clear = (x: number, z: number): boolean => {
-    for (let cx = x - 1; cx <= x + 17; cx++) {
-      for (let cz = z - 7; cz <= z + 13; cz++) if (ctx.onPath(cx, cz) || ctx.inWater(cx, cz) || ctx.inZone(cx, cz, 2) || ctx.keptOut(cx, cz, 0) || rise(cx, cz) > 0) return false;
-    }
-    return true;
-  };
-  for (let z = z0 + 8; z + 9 <= z1; z += rowEvery) {
-    let x = x0;
-    while (x + 17 <= x1) x = clear(x, z) ? cottageRow(ctx, x, z, 1).x1 + 2 : x + 3;
-  }
-}
 
 export async function generateSchool() {
   return generateZoneMap({
@@ -842,15 +850,8 @@ export async function generateSchool() {
       ctx.prop(TH.signpostEast, MID + 6, CANAL.z0 - 3, 0);
       ctx.landmark('cau-trung-tam', 'Cầu trung tâm', MID, Math.round((CANAL.z0 + CANAL.z1) / 2), WATER_LEVEL + 3);
 
-      // 6. The town: houses facing the main street on its far side, cottages along the west avenue.
-      // A row (its yard in front, the houses behind) is left out where a way to a district crosses it.
-      for (let z = STREET.z1 + 24; z < 640; z += 20) {
-        let crossed = false;
-        for (let x = CAMPUS.x0 - 55; x <= CAMPUS.x0 - 15 && !crossed; x++) for (let rz = z - 7; rz <= z + 13 && !crossed; rz++) crossed = ctx.onPath(x, rz);
-        if (!crossed) cottageRow(ctx, CAMPUS.x0 - 54, z, 2);
-      }
-      // The village (west): hamlets and a paddy; the hamlet (north-west): cottages round yards.
-      levelHamlet(ctx, 30, DISTRICT.village.z - 70, 250, DISTRICT.village.z + 40);
+      // 6. The town: its cottage quarters, lanes lined with houses; the paddy south of the village.
+      for (const lane of TOWN_LANES) streetHouses(ctx, lane);
       for (let x = 40; x <= 250; x++) {
         for (let z = DISTRICT.village.z + 70; z <= DISTRICT.village.z + 150; z++) {
           if ((x - 40) % 12 === 0 || (z - DISTRICT.village.z - 70) % 9 === 0 || ctx.onPath(x, z)) continue;
@@ -860,13 +861,7 @@ export async function generateSchool() {
       }
       ctx.keepOut(40, DISTRICT.village.z + 70, 250, DISTRICT.village.z + 150);
       ctx.landmark('ruong-lua', 'Ruộng lúa', 145, DISTRICT.village.z + 110);
-      levelHamlet(ctx, 30, DISTRICT.hamlet.z - 60, 250, DISTRICT.hamlet.z + 50);
       bambooHedge(ctx, [[20, STREET.z1 + 6], [20, DISTRICT.hamlet.z + 60]]);
-      // Neighbourhoods east of the school, by the lake, and along the road to the farm.
-      levelHamlet(ctx, CAMPUS.x1 + 26, STREET.z1 + 20, LAKE.x - LAKE.rx - 10, CAMPUS.z1 + 30);
-      levelHamlet(ctx, CAMPUS.x1 + 26, CAMPUS.z1 + 50, 560, 560);
-      levelHamlet(ctx, 480, 20, 560, 120);
-      levelHamlet(ctx, 60, 20, 300, 120);
 
       // The library (north, behind the square): a reading hall; the castle on its hill beyond.
       const lib = DISTRICT.library;
