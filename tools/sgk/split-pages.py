@@ -1,4 +1,4 @@
-"""Split the two scanned textbooks into one-page PDFs for reading.
+"""Split the scanned textbooks (tập 1 and tập 2 of both books) into one-page PDFs for reading.
 
 Run with the skills venv (it has pypdf): ~/.claude/skills/.venv/bin/python3 tools/sgk/split-pages.py
 
@@ -15,6 +15,8 @@ from pypdf import PdfReader, PdfWriter
 BOOKS = {
     "toan2-t1": ("toan", 141),
     "tv2-t1": ("tv", 145),
+    "toan2-t2": ("toan-t2", 142),
+    "tv2-t2": ("tv-t2", 145),
 }
 ROOT = Path(__file__).resolve().parents[2] / ".data" / "sgk"
 SRC = ROOT / "src"
