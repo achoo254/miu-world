@@ -1156,9 +1156,13 @@ function buildSnowMountain(ctx: ZoneMapContext): void {
           const writer = facingWriter(world, origin, facing);
           const c = placeChalet(writer, FRAME, FRAME, w, depth, tall ? 8 : 7, baseY, chaletBlocks(n), tall ? 2 : 1);
           const door = Math.floor(w / 2);
-          for (let v = -setback + 2; v <= -1; v++) for (let u = door - 1; u <= door + 1; u++) {
-            const [x, z] = cell(u, v);
-            put(world, x, surface(x, z), z, B.path);
+          // The walk runs from the door until it meets the road, however the road slants past the front.
+          for (let u = door - 1; u <= door + 1; u++) {
+            for (let v = -1; v >= -setback - 4; v--) {
+              const [x, z] = cell(u, v);
+              if (ctx.onPath(x, z)) break;
+              put(world, x, surface(x, z), z, B.path);
+            }
           }
           chaletSteps(writer, origin, facing, c, baseY);
           for (const [u, v] of [[door - 2, -1], [door + 2, -1]] as const) {
@@ -1196,7 +1200,7 @@ function buildSnowMountain(ctx: ZoneMapContext): void {
   chaletStreet([[400, 458], [400, 566]]);
   chaletStreet([[392, 588], [236, 588]], { zone: 1 });
   chaletStreet([[408, 588], [544, 588]], { zone: 1 });
-  chaletStreet([[226, 470], [336, 430]]);
+  chaletStreet([[222, 470], [340, 428]]);
   chaletStreet([[470, 430], [536, 430]]);
   chaletStreet([[580, 430], [600, 430], [618, 482]]);
   chaletStreet([[576, 588], [636, 588]]);

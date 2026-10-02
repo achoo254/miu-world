@@ -67,3 +67,13 @@ Chụp lại cả 17 khung `mock__` (thông đổi dáng trên toàn map, nhà �
 ## Câu hỏi còn mở
 
 Không có.
+
+## Bổ sung (03/10/2026): cửa nhà nối vào mạng đường
+
+`scenery-audit` mới (kiểm cửa từng nhà nằm trên mạng đường) báo 4 cửa bị cắt khỏi mạng: bốn nhà gỗ dọc đường trượt tuyết (cửa ở 233,16,473 / 256,16,465 / 276,18,458 / 295,17,451). Nguyên nhân: dãy nhà dựng theo đường thẳng (226,470)→(336,430), lệch với tuyến đường thật (222,470)→(340,428), và lối lát từ cửa chỉ đi đúng 5 ô nên dừng trước mép đường xiên.
+
+Sửa trong `generate-nui-tuyet-map.ts`:
+- Dãy nhà đường trượt tuyết dựng theo đúng tuyến đường.
+- Lối lát từ cửa mỗi nhà gỗ đi tới khi gặp đường (tối đa setback + 4 ô), không cố định 5 ô.
+
+Sau `world:nui-tuyet`: `scenery-audit` 0 / 0 / 0 / 0 (cả cửa nhà), `room-audit` 65 không gian có mái, 0 thiếu chuẩn; `reach-audit` mọi mục tới được, chỗ xuất phát trống. tsc 0 lỗi ở tệp của map; eslint `--max-warnings=0` sạch; `pnpm vitest run tools/world/zone-maps.test.ts -t "nui-tuyet"` 4/4 đạt. Không chụp lại ảnh (khung d-04 có thể thấy dãy nhà này ở xa); đã chạy `assets:manifest` qua khóa.
