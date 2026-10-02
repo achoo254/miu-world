@@ -1,6 +1,6 @@
 # Nhà to, cửa rộng, trong nhà đủ chỗ đi lại
 
-Trạng thái: đang làm · Tier tổng: XL · Nhánh: `main` · Ngày: 02/10/2026
+Trạng thái: xong phần tự động (03/10/2026), chờ người sở hữu duyệt và cho deploy · Tier tổng: XL · Nhánh: `main` · Ngày: 02/10/2026
 
 Người sở hữu (02/10/2026): "soát lại các nhà đã render phải thật rộng lối vào và không gian bên trong đủ cho nhân vật di chuyển"; "các căn nhà trong game tôi cảm giác hơi bé, ko phù hợp kích thước với nhân vật, đúng ra 1 căn nhà bình thường thì phải to gấp mấy chục lần nhân vật rồi".
 
@@ -20,6 +20,22 @@ Jev (`plans/dattqh/reports/jev-261002-2216-house-scale.md`): dựng lại nhà t
 ## Số đo trước khi sửa (02/10/2026 22:30, cả 11 map)
 
 104 không gian có mái không có lối vào ở mặt sàn, 84 cửa rộng 2, 5 cửa rộng 1, 66 cửa phải trèo 2 khối, 4 cửa trèo 3 khối, 9 phòng đồ đạc chiếm hơn 30% sàn.
+
+## Kết quả (03/10/2026, cả 11 map sinh lại)
+
+Thêm theo yêu cầu người sở hữu cùng đợt: cảnh vật như ngoài đời (không cây trên đường, đồ đứng mép lối) và một mạng đường liền nối chỗ xuất hiện với mọi nơi bé đi tới, kể cả cửa từng ngôi nhà. Luật: `.claude/rules/world-scenery.md`; đo bằng `tools/world/scenery-audit.ts` cùng hai công cụ trên.
+
+| Đo | Trước | Sau |
+| --- | --- | --- |
+| `room-audit` (nhà thiếu chuẩn) | 104 không lối vào, 89 cửa hẹp, 70 cửa phải trèo, 9 phòng chật | 0 trên cả 11 map |
+| `scenery-audit` (cây trên đường / đồ giữa lối / nơi xa đường / nơi bị cắt, gồm cửa nhà) | hàng chục tới hàng trăm mỗi map | 0 / 0 / 0 / 0 trên cả 11 map |
+| `reach-audit` | đạt | đạt: mọi mục quest, cổng, bến xe tới được; chỗ xuất hiện, điểm xuống xe trống |
+
+Kiểm: `assets:check`, `content:check`, typecheck, lint sạch; test riêng của từng map đạt. Không chạy `pnpm test` cả bộ và E2E (người sở hữu: chỉ test khi được yêu cầu). Báo cáo từng map: `plans/dattqh/reports/houses-<map>-261002.md`.
+
+Phép đo được siết trong đợt (mỗi lần đo lại cả các map đã xong): mái tìm tới 24 khối; vòng hiên không tính là trong nhà; cột tường gỗ không phải thân cây, đá liền sâu không phải mặt lát; mạng đường đọc mọi tầng; xà, đòn nóc lẻ không phải mái; đỉnh vách cao 3 khối và chỗ đứng dưới nước không phải lối vào hay sàn. Bộ dựng chung: lối vườn `streetHouses` chạy tới tận đường; `joinWalks`, `widenRoundDoor`, `fillTowerShaft` gom về `scenery.ts`, `landmarks.ts`. Ảnh địa danh chọn góc nhìn không bị mái chắn.
+
+Còn lại: deploy production (hỏi người sở hữu); xem ảnh trên trang review; vài khung so mock chưa chụp lại sau lần nối cửa nhà (chỉ đổi lối nhỏ ngoài khung).
 
 ## Pha
 
