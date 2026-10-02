@@ -5,7 +5,10 @@
 // corner the forest follows the owner's detail mocks (designs/khu-rung-bi-mat/, 02/10/2026): the stream
 // widens, a grey cliff in tiers drops a waterfall into a pool that runs into it, a second wooden bridge with
 // lanterns crosses it, the trails are edged with flowers, mushrooms and leaf bushes, blossom trees stand among
-// the green, and the forest folk keep a camp with tents, a fire, an open shelter and a ranger's cabin.
+// the green, and the forest folk keep a camp with walk-in tents, a fire, an open shelter and a ranger's cabin,
+// every one big enough for the child to walk round inside through a three-wide door (owner, 02/10/2026). One
+// network of trodden trails and plank bridges joins the spawn, its gate and train stops, every chapter's
+// start, the landmarks and every door.
 // Output: assets/generated/world/forest-ch1/{regions/, horizon.bin, entities.json}
 import { VoxelWorld } from '../../packages/voxel/src/chunk-format';
 import type { WorldEntities } from '../../packages/voxel/src/world-entities';
@@ -13,10 +16,11 @@ import { FOREST_CAST_SIZES, QUEST_CLEARANCE, placeForestLife } from './forest-li
 import { columnsOf, fillColumn, heightField, loadBlocks, mapModels, PACK, placeRegionTargets, rollingHeight, runIfMain, scatterTrees, smoothstep, standHeight, WIDE_MAP_SIDE } from './map-kit';
 import { createRng, hashSeed } from './noise';
 import { placeBridge } from './structures/bridge';
-import { CLIFF_BASE, cellRoll, type Cliff, cliffColumn, cliffRise, fallsOf, placeBigTree, placeCabin, placeFalls, placeShelter, trailVerge } from './structures/forest-scene';
+import { CLIFF_BASE, cellRoll, type Cliff, cliffColumn, cliffRise, fallsOf, placeBigTree, placeCabin, placeFalls, placeShelter, placeTent, TENT, trailVerge } from './structures/forest-scene';
 import { distanceToPath, pathColumns, type Point } from './structures/path';
 import { cellsIn } from './chapters/place-quest-targets';
 import { placeAncientTree } from './structures/tree';
+import { type Facing, turnCell } from './structures/world-writer';
 import { crowd, person, placeVillageLife, type Resident } from './village-life';
 import { outlandSpecOf } from './outland-spec';
 import { HUB_REGION } from './zone-map';
@@ -57,7 +61,35 @@ export const CLIFFS: readonly Cliff[] = [
 ];
 const FALLS = CLIFFS.map(fallsOf);
 /** The second wooden bridge, over the wide stream, and the forest folk's camp south of it. */
-const SCENE = { bridgeX: 112, camp: { x: 110, z: 24 } };
+const SCENE = { bridgeX: 112, camp: { x: 114, z: 24 } };
+
+/** A walk-in structure's place: its front-left corner, which way its door looks, and its frame's size. */
+interface Site {
+  origin: [number, number];
+  facing: Facing;
+  w: number;
+  d: number;
+}
+/** The ranger's cabin (a house of 13 x 11 with walls of seven), its door to the camp's fire. */
+const CABIN: Site = { origin: [SCENE.camp.x + 8, SCENE.camp.z + 6], facing: 'west', w: 13, d: 11 };
+const CABIN_WALL = 7;
+/** The camp's two tents either side of its west end, their doors to the fire; the open shelter south-east. */
+const CAMP_TENTS: readonly Site[] = [
+  { origin: [SCENE.camp.x - 18, SCENE.camp.z + 7], facing: 'north', w: TENT.w, d: TENT.d },
+  { origin: [SCENE.camp.x - 10, SCENE.camp.z - 7], facing: 'south', w: TENT.w, d: TENT.d },
+];
+const SHELTER = { x: SCENE.camp.x + 11, z: SCENE.camp.z - 15, half: 4 };
+
+/** A site's footprint in the world with its eaves (x0, z0, x1, z1). */
+function siteBox(s: Site): [number, number, number, number] {
+  const [ax, az] = turnCell(s.origin, s.facing, -1, -1);
+  const [bx, bz] = turnCell(s.origin, s.facing, s.w, s.d);
+  return [Math.min(ax, bx), Math.min(az, bz), Math.max(ax, bx), Math.max(az, bz)];
+}
+/** The world cell before the middle of a site's door (its front's middle, one out). */
+const siteDoor = (s: Site): [number, number] => turnCell(s.origin, s.facing, Math.floor(s.w / 2), -1);
+/** The tent of each glade's camp, east of the glade's middle, its door west to the camp's fire. */
+const gladeTent = (d: { x: number; z: number }): Site => ({ origin: [d.x + 18, d.z + 14], facing: 'west', w: TENT.w, d: TENT.d });
 
 /**
  * The glades of chapters 2–5 (each chapter's places go in its own), deep in the wide forest north of the
@@ -94,7 +126,7 @@ export async function generateForest(): Promise<{ world: VoxelWorld; entities: W
     planks: id('planks'), path: id(SOIL.path), water: id('water'), rock: id('rock-moss'), birch: id('birch-log'),
     treeLog: id('tree-log'), treeBirch: id('tree-birch-log'),
     autumn: id('leaves-autumn'), bed: id('riverbed'), blossom: id('leaves-pink'), lantern: id('lantern'),
-    cobbleGrey: id('cobble-grey'), woodRed: id('wood-red'), glass: id('glass'),
+    cobbleGrey: id('cobble-grey'), woodRed: id('wood-red'), glass: id('glass'), board: id('board'), roofBlue: id('roof-blue'),
   };
   const seed = hashSeed(SEED_TEXT);
   const rng = createRng(seed);
@@ -167,14 +199,49 @@ export async function generateForest(): Promise<{ world: VoxelWorld; entities: W
   ];
   const poolSpur: Point[] = [[bridge2.x, bridge2.z1 + 4], [Math.round(pool0.x - pool0.r - 3), pool0.z + 1]];
   const sceneRoutes = [sceneTrail, poolSpur];
-  const routes: Point[][] = [...baseRoutes, ...sceneRoutes];
+  // One network of trails (owner, 02/10/2026: from wherever the child starts a way leads where she goes): the
+  // spawn through its gate to the train's stops, the near bank to the stepping stones, the ancient tree's two
+  // trails joined, the deep forest's trail on to the second falls, every glade's middle out to where its lessons
+  // start and to its tent's door, and in the camp from the trail's end to the cabin's door, both tents' doors
+  // and the shelter's deck.
+  const pool1 = FALLS[1]?.pool;
+  if (!pool1) throw new Error('the forest has no second waterfall');
+  const campTrailEnd: Point = [camp.x + 2, camp.z + 6];
+  const campWest: Point = [camp.x - 7, camp.z + 5];
+  const campSouth: Point = [camp.x - 7, camp.z - 5];
+  const [tentDoorA, tentDoorB] = CAMP_TENTS.map(siteDoor);
+  const cabinDoor = siteDoor(CABIN);
+  const gladeStartNear = (d: (typeof DISTRICTS)[number]): Point => [d.x, d.z + d.hz - 4];
+  const links: Point[][] = [
+    [[spawn.x, spawn.z], [spawn.x + 7, spawn.z - 1], [spawn.x + 7, spawn.z - 10]],
+    [[bridgeX, bridgeZ0 - 2], [stonesX - 9, stonesZ0 + 1], [stonesX - 1, stonesZ0 - 1]],
+    [[ancient.x, ancient.z + 8], [ancient.x + 6, ancient.z + 8]],
+    [[650, 660], [Math.round(pool1.x - pool1.r - 3), pool1.z]],
+    ...DISTRICTS.filter((d) => Math.min(...baseRoutes.map((r) => distanceToPath(r, ...gladeStartNear(d)))) > 3).map((d): Point[] => [[d.x, d.z], [d.x, d.z + d.hz]]),
+    ...DISTRICTS.map((d): Point[] => [[d.x, d.z], siteDoor(gladeTent(d))]),
+    [campTrailEnd, [cabinDoor[0] - 2, cabinDoor[1] + 1], cabinDoor],
+    ...(tentDoorA && tentDoorB ? [[campTrailEnd, campWest, tentDoorA], [campWest, campSouth, tentDoorB]] : []),
+    [campSouth, [SHELTER.x - SHELTER.half - 2, SHELTER.z + 2]],
+  ];
+  const routes: Point[][] = [...baseRoutes, ...sceneRoutes, ...links];
   const pathDistance = (x: number, z: number): number => Math.min(...routes.map((r) => distanceToPath(r, x, z)));
+  const linkDistance = (x: number, z: number): number => Math.min(...links.map((r) => distanceToPath(r, x, z)));
+  // The walk-in structures: the camp's cabin and tents, each glade's tent; the shelter as a site of its own size.
+  const sites: Site[] = [CABIN, ...CAMP_TENTS, ...DISTRICTS.map(gladeTent)];
+  const siteBoxes = [
+    ...sites.map(siteBox),
+    [SHELTER.x - SHELTER.half - 1, SHELTER.z - SHELTER.half - 1, SHELTER.x + SHELTER.half + 1, SHELTER.z + SHELTER.half + 1] as [number, number, number, number],
+  ];
+  /** Within `pad` blocks of a walk-in structure (its eaves included). */
+  const nearSite = (x: number, z: number, pad: number): boolean => siteBoxes.some(([x0, z0, x1, z1]) => x >= x0 - pad && x <= x1 + pad && z >= z0 - pad && z <= z1 + pad);
   // Where chapter 1's corner had its trees and rocks: the trails and the stream as they were.
   const basePathDistance = (x: number, z: number): number => Math.min(...baseRoutes.map((r) => distanceToPath(r, x, z)));
   // Open ground of the scene: the camp, and the bank before the pool so the falls show from the bridge.
   const sceneClearings: Clearing[] = [
     { x: camp.x, z: camp.z, radius: 12 },
     { x: pool0.x - 12, z: pool0.z - 2, radius: 6 },
+    // Level ground under every walk-in structure.
+    ...siteBoxes.map(([x0, z0, x1, z1]) => ({ x: (x0 + x1) / 2, z: (z0 + z1) / 2, radius: Math.hypot(x1 - x0, z1 - z0) / 2 + 1 })),
   ];
   const allClearings = [...clearings, ...sceneClearings];
   /** Blocks from the nearest water (the stream, a pool, the creek from the first pool to the stream): < 0 in it. */
@@ -267,6 +334,13 @@ export async function generateForest(): Promise<{ world: VoxelWorld; entities: W
 
   // 5b. The waterfalls: a spring on each cliff's top, its stream to the lip and the sheet down to the pool.
   const fallsFeet = CLIFFS.map((c) => placeFalls(world, c, WATER_LEVEL, { water: B.water, moss: B.rock, stone: B.stone, tuft: B.leaves }));
+  // A plank viewing deck two wide from the pool spur's end out over the first pool's edge, towards its falls.
+  for (let x = Math.round(pool0.x - pool0.r - 2); x <= pool0.x - 3; x++) {
+    for (const z of [pool0.z + 1, pool0.z + 2]) {
+      world.set(x, WATER_LEVEL + 1, z, B.planks);
+      for (let y = WATER_LEVEL + 2; y <= WATER_LEVEL + 4; y++) world.set(x, y, z, 0);
+    }
+  }
 
   // 6. Scattered trees (jittered grid, rejecting path, stream and clearings). Chapter 1's corner is placed as
   // it always was (its trees come first on the grid); trees there that the scene's trail or camp needs gone
@@ -320,18 +394,28 @@ export async function generateForest(): Promise<{ world: VoxelWorld; entities: W
     else if (crown === B.leaves && roll < 0.11) recolour(x, z, B.leaves, B.blossom);
   }
 
-  // 6b. The camp: the ranger's cabin (its door to the fire), the open shelter over the table; big blocky trees
-  // along the scene's trail, round the camp and the pool; grey stones on the wide stream's banks.
-  const cabinOrigin: [number, number] = [camp.x + 7, camp.z];
-  const cabinBase = Math.max(...[0, 1, 2, 3, 4, 5, 6].flatMap((dx) => [0, 1, 2, 3, 4, 5, 6, 7].map((dz) => surface(cabinOrigin[0] + dx, cabinOrigin[1] - dz)))) + 1;
-  const cabin = placeCabin(world, cabinOrigin, 'west', 8, 7, cabinBase, surface, {
+  // 6b. The walk-in structures: the ranger's cabin (its door to the fire), the camp's tents and the open
+  // shelter over the table, a tent at each glade's camp; no tree's crown over or in them. Big blocky trees along
+  // the scene's trail, round the camp and the pool; grey stones on the wide stream's banks.
+  for (const [x, z] of grid) if (!felled.has(`${x},${z}`) && nearSite(x, z, 4)) fell(x, z);
+  /** The floor's height over a box of the ground: one over its highest column. */
+  const baseOver = ([x0, z0, x1, z1]: readonly number[]): number => {
+    let top = 0;
+    for (let x = x0 ?? 0; x <= (x1 ?? 0); x++) for (let z = z0 ?? 0; z <= (z1 ?? 0); z++) top = Math.max(top, surface(x, z));
+    return top + 1;
+  };
+  const cabin = placeCabin(world, CABIN.origin, CABIN.facing, CABIN.w, CABIN.d, CABIN_WALL, baseOver(siteBox(CABIN)), surface, {
     wall: B.planks, roof: B.woodRed, trim: B.log, floor: B.planks, foot: B.cobbleGrey,
     plinth: B.cobbleGrey, beam: B.log, glass: B.glass, sill: B.blossom, ridge: B.log, gable: B.planks, chimney: B.cobbleGrey, lantern: B.lantern,
   });
-  const shelter = { x: camp.x - 9, z: camp.z };
-  placeShelter(world, shelter.x, shelter.z, surface(shelter.x, shelter.z) + 1, { post: B.log, roof: B.planks, ridge: B.woodRed });
-  const built = (x: number, z: number): boolean =>
-    (x >= cabinOrigin[0] - 2 && x <= cabinOrigin[0] + 8 && z >= cabinOrigin[1] - 9 && z <= cabinOrigin[1] + 2) || (Math.abs(x - shelter.x) <= 4 && Math.abs(z - shelter.z) <= 4);
+  // Canvas green and blue by turns: the camp's two tents, then the glades'.
+  const tentSites = [...CAMP_TENTS, ...DISTRICTS.map(gladeTent)];
+  const tents = tentSites.map((t, i) =>
+    placeTent(world, t.origin, t.facing, baseOver(siteBox(t)), surface, { canvas: i % 2 === 0 ? B.board : B.roofBlue, pole: B.log, floor: B.planks, foot: B.dirt }),
+  );
+  const shelterY = baseOver([SHELTER.x - SHELTER.half, SHELTER.z - SHELTER.half, SHELTER.x + SHELTER.half, SHELTER.z + SHELTER.half]);
+  placeShelter(world, SHELTER.x, SHELTER.z, SHELTER.half, shelterY, surface, { post: B.log, roof: B.woodRed, ridge: B.log, floor: B.planks, foot: B.cobbleGrey });
+  const built = (x: number, z: number): boolean => nearSite(x, z, 1);
   const bigTrees: Array<[number, number]> = [];
   const bigTreeSpots: Point[] = [];
   let walked = 0;
@@ -352,7 +436,7 @@ export async function generateForest(): Promise<{ world: VoxelWorld; entities: W
   }
   for (const [x, z] of bigTreeSpots) {
     const level = [[0, 0], [1, 0], [0, 1], [1, 1]].every(([dx, dz]) => surface(x + (dx ?? 0), z + (dz ?? 0)) === surface(x, z) && !cliffCells.has((x + (dx ?? 0)) * sz + z + (dz ?? 0)));
-    if (inCorner(x, z) || !level || x < 4 || z < 4 || pathDistance(x, z) < 4.5 || wetDistance(x, z) < 3 || built(x, z) || sceneClearings.some((c) => Math.hypot(x - c.x, z - c.z) < c.radius + 2)) continue;
+    if (inCorner(x, z) || !level || x < 4 || z < 4 || pathDistance(x, z) < 4.5 || wetDistance(x, z) < 3 || nearSite(x, z, 6) || sceneClearings.some((c) => Math.hypot(x - c.x, z - c.z) < c.radius + 2)) continue;
     if (bigTrees.some(([tx, tz]) => Math.hypot(tx - x, tz - z) < 7)) continue;
     for (const [tx, tz] of grid) if (!felled.has(`${tx},${tz}`) && Math.hypot(tx - x, tz - z) < 6) fell(tx, tz);
     placeBigTree(world, x, surface(x, z) + 1, z, 8 + (bigTrees.length % 3), { log: B.treeLog, leaves: bigTrees.length % 4 === 2 ? B.blossom : B.leaves });
@@ -377,7 +461,7 @@ export async function generateForest(): Promise<{ world: VoxelWorld; entities: W
     const y = surface(x, z) + 1;
     const wide = rng() < 0.5 && x + 1 < sx;
     const tall = rng() < 0.3;
-    if (!inCorner(x, z) && (pathDistance(x, z) < 3 || wetDistance(x, z) < 1 || built(x, z) || nearFalls(x, z))) continue;
+    if (linkDistance(x, z) < 3 || (!inCorner(x, z) && (pathDistance(x, z) < 3 || wetDistance(x, z) < 1 || built(x, z) || nearFalls(x, z)))) continue;
     world.set(x, y, z, B.rock);
     if (wide) world.set(x + 1, surface(x + 1, z) + 1, z, B.rock);
     if (tall) world.set(x, y + 1, z, B.rock);
@@ -389,7 +473,8 @@ export async function generateForest(): Promise<{ world: VoxelWorld; entities: W
     sizes: FOREST_CAST_SIZES,
     standY,
   });
-  addProp(`${PACK.survival}/signpost.glb`, spawn.x + 3, spawn.z + 3, 225);
+  // The signpost at the fork by the spawn, off both trails (the train brings the child back to the trail there).
+  addProp(`${PACK.survival}/signpost.glb`, spawn.x + 3, spawn.z - 3, 225);
   addProp(`${PACK.survival}/campfire-pit.glb`, spawn.x - 3, spawn.z + 1);
   addProp(`${PACK.survival}/barrel.glb`, spawn.x - 5, spawn.z - 3, 20);
   addProp(`${PACK.survival}/box-large.glb`, spawn.x - 4, spawn.z - 4, 40);
@@ -442,28 +527,27 @@ export async function generateForest(): Promise<{ world: VoxelWorld; entities: W
   for (const route of sceneRoutes) trailVerge(vergeGround, route, { verge, bushes, lamp: LANTERN_POLE, spacing: 2, lampEvery: 12 });
   for (const route of baseRoutes.slice(1)) trailVerge(vergeGround, route, { verge, bushes, spacing: 5 });
 
-  // The camp: the fire with log benches round it, tents, the shelter's table under a hanging lantern,
-  // lantern posts at its edge, the woodpile and tool rack by the cabin, a signpost where the trail comes in.
+  // The camp: the fire with log benches round it, the shelter's table under a hanging lantern, lantern posts at
+  // its edge, the woodpile by the cabin, a signpost where the trail comes in.
   const campFire = { x: camp.x - 1, z: camp.z };
   addProp(`${PACK.survival}/campfire-pit.glb`, campFire.x, campFire.z);
   addProp(`${PACK.survival}/campfire-stand.glb`, campFire.x, campFire.z, 90);
   for (const [dx, dz, yaw] of [[0, -3, 0], [-3, 0, 90], [0, 3, 0], [3, 0, 90]] as const) addProp(`${BOX}/kr-log-bench.glb`, campFire.x + dx, campFire.z + dz, yaw);
-  addProp(`${PACK.survival}/tent.glb`, camp.x - 4, camp.z - 8, 200);
-  addProp(`${PACK.survival}/tent.glb`, camp.x + 2, camp.z - 9, 160);
-  addProp(`${PACK.survival}/bedroll.glb`, camp.x - 1, camp.z - 7, 20);
-  const shelterY = surface(shelter.x, shelter.z) + 1;
-  addCentred(`${PACK.furniture}/table.glb`, place(shelter.x, shelter.z), 90);
-  for (const dz of [-2, 2]) addProp(`${BOX}/kr-log-bench.glb`, shelter.x, shelter.z + dz, 0);
-  addPropAt(`${BOX}/kr-hanging-lantern.glb`, [shelter.x + 0.5, shelterY + 4.3, shelter.z + 0.5]);
-  addProp(`${BOX}/kr-mushroom-basket.glb`, shelter.x - 2, shelter.z + 1, 30);
-  addProp(`${PACK.survival}/barrel.glb`, shelter.x + 2, shelter.z + 3, 10);
-  for (const [dx, dz] of [[-6, 7], [5, 7], [-6, -8], [6, -10]] as const) addProp(LANTERN_POLE, camp.x + dx, camp.z + dz, dx < 0 ? 270 : 90);
-  addProp(`${N}/log_stack.glb`, cabinOrigin[0] - 1, cabinOrigin[1] + 2, 0);
-  addProp(`${BOX}/kr-tool-rack.glb`, cabinOrigin[0] - 1, cabinOrigin[1] - 8, 90);
-  addProp(`${PACK.survival}/signpost.glb`, camp.x + 5, camp.z + 9, 200);
+  addCentred(`${PACK.furniture}/table.glb`, [SHELTER.x + 0.5, shelterY, SHELTER.z + 0.5], 90);
+  for (const dz of [-2, 2]) addPropAt(`${BOX}/kr-log-bench.glb`, [SHELTER.x + 0.5, shelterY, SHELTER.z + dz + 0.5], 0);
+  addPropAt(`${BOX}/kr-hanging-lantern.glb`, [SHELTER.x + 0.5, shelterY + 6.3, SHELTER.z + 0.5]);
+  addPropAt(`${BOX}/kr-mushroom-basket.glb`, [SHELTER.x - 3 + 0.5, shelterY, SHELTER.z + 3 + 0.5], 30);
+  addPropAt(`${PACK.survival}/barrel.glb`, [SHELTER.x + 3 + 0.5, shelterY, SHELTER.z - 3 + 0.5], 10);
+  addPropAt(`${BOX}/kr-tool-rack.glb`, [SHELTER.x + 3 + 0.5, shelterY, SHELTER.z + 3 + 0.5], 0);
+  for (const [dx, dz] of [[-4, 8], [5, 9], [-8, -9], [4, -7]] as const) addProp(LANTERN_POLE, camp.x + dx, camp.z + dz, dx < 0 ? 270 : 90);
+  const [cabinX0, cabinZ0, , cabinZ1] = siteBox(CABIN);
+  addProp(`${N}/log_stack.glb`, cabinX0 + 4, cabinZ1 + 1, 0);
+  addProp(`${N}/log_stack.glb`, cabinX0 + 7, cabinZ0 - 1, 0);
+  addProp(`${PACK.survival}/signpost.glb`, camp.x + 3, camp.z + 9, 200);
 
-  // The ranger's cabin, set out as a ranger's room: the forest map and a shelf of jars on the back wall, a
-  // bedroll along the side, a table with a book under a hanging lantern, the tool rack, a barrel and a plant.
+  // The ranger's cabin, set out as a ranger's room round a clear way from the door to the back wall: the forest
+  // map and a shelf of jars on the back wall, a bedroll along one side, a table with a book under a hanging
+  // lantern on the other, the tool rack, a barrel, a bucket and a plant in the corners.
   const room = (u: number, v: number): [number, number, number] => {
     const [x, z] = cabin.cell(u, v);
     return [x + 0.5, cabin.floorY, z + 0.5];
@@ -472,20 +556,41 @@ export async function generateForest(): Promise<{ world: VoxelWorld; entities: W
     const [x, y, z] = room(u, v);
     addPropAt(model, [x, y + lift, z], yaw);
   };
-  inRoom(`${BOX}/kr-map-board.glb`, 1, 4, 90);
-  inRoom(`${BOX}/kr-jar-shelf.glb`, 4, 4, 90);
-  inRoom(`${PACK.survival}/bedroll.glb`, 0, 2, 0);
-  addCentred(`${PACK.furniture}/table.glb`, room(3, 3), 90);
-  addCentred(`${PACK.furniture}/chair.glb`, room(2, 3), 270);
-  addCentred(`${PACK.furniture}/chair.glb`, room(4, 3), 90);
-  inRoom(`${PACK.props}/open-book.glb`, 3, 3, 30, 0.8);
-  inRoom(`${BOX}/kr-hanging-lantern.glb`, 3, 3, 0, 3.25);
-  inRoom(`${BOX}/kr-tool-rack.glb`, 5, 2, 180);
-  inRoom(`${PACK.survival}/barrel.glb`, 5, 0, 0);
+  const back = cabin.inside.v - 1;
+  const side = cabin.inside.u - 1;
+  inRoom(`${BOX}/kr-map-board.glb`, 2, back, 90);
+  inRoom(`${BOX}/kr-jar-shelf.glb`, side - 2, back, 90);
+  inRoom(`${BOX}/kr-mushroom-basket.glb`, side, back, 0);
+  addCentred(`${PACK.furniture}/pottedPlant.glb`, room(0, back), 0);
+  inRoom(`${PACK.survival}/bedroll.glb`, 0, 4, 0);
+  addCentred(`${PACK.furniture}/table.glb`, room(side - 2, 4), 90);
+  addCentred(`${PACK.furniture}/chair.glb`, room(side - 3, 4), 270);
+  addCentred(`${PACK.furniture}/chair.glb`, room(side - 1, 4), 90);
+  inRoom(`${PACK.props}/open-book.glb`, side - 2, 4, 30, 0.8);
+  for (const u of [side - 2, Math.floor(side / 2)]) inRoom(`${BOX}/kr-hanging-lantern.glb`, u, 4, 0, 4.25);
+  inRoom(`${BOX}/kr-tool-rack.glb`, side, 1, 180);
+  inRoom(`${PACK.survival}/barrel.glb`, side, 0, 0);
   inRoom(`${PACK.survival}/bucket.glb`, 0, 0, 0);
-  inRoom(`${BOX}/kr-mushroom-basket.glb`, 5, 4, 0);
-  addCentred(`${PACK.furniture}/pottedPlant.glb`, room(0, 4), 0);
-  addCentred(`${PACK.furniture}/rugRectangle.glb`, room(2, 1), 90);
+  addCentred(`${PACK.furniture}/rugRectangle.glb`, room(Math.floor(side / 2), 2), 90);
+
+  // Inside each tent: two bedrolls along the low sides, a rug between them, a lantern from the ridge pole, a
+  // basket and a box at the back.
+  for (const [i, t] of tents.entries()) {
+    const at = (u: number, v: number, lift = 0): [number, number, number] => {
+      const [x, z] = t.cell(u, v);
+      return [x + 0.5, t.floorY + lift, z + 0.5];
+    };
+    for (const u of [0, t.inside.u - 1]) addPropAt(`${PACK.survival}/bedroll.glb`, at(u, t.inside.v - 3), 0);
+    addPropAt(`${BOX}/kr-hanging-lantern.glb`, at(Math.floor(t.inside.u / 2), Math.floor(t.inside.v / 2), 5.2), 0);
+    addPropAt(`${BOX}/kr-mushroom-basket.glb`, at(t.inside.u - 1, t.inside.v - 1), i * 40);
+    addPropAt(`${PACK.survival}/box.glb`, at(0, t.inside.v - 1), i * 25);
+    const alongX = tentSites[i]?.facing === 'east' || tentSites[i]?.facing === 'west';
+    addCentred(`${PACK.furniture}/rugRectangle.glb`, at(Math.floor(t.inside.u / 2), Math.floor(t.inside.v / 2)), alongX ? 90 : 0);
+  }
+  const [campTent] = tents;
+  if (!campTent) throw new Error('the camp has no tent');
+  const campTentAt = campTent.cell(Math.floor(campTent.inside.u / 2), Math.floor(campTent.inside.v / 2) - 1);
+  const campTentFloor = campTent.floorY;
 
   // A lantern on each end post of the second bridge.
   for (const [x, z] of bridgeLamps) addPropAt(`${BOX}/kr-hanging-lantern.glb`, [x + 0.5, deckY + 3, z + 0.5]);
@@ -508,10 +613,9 @@ export async function generateForest(): Promise<{ world: VoxelWorld; entities: W
 
   // Each glade of chapters 2–5 gets lantern posts round it and a tent by a campfire with a log bench.
   for (const d of DISTRICTS) {
-    for (const [dx, dz] of [[-16, -14], [16, -14], [-16, 14], [16, 14]] as const) addProp(LANTERN_POLE, d.x + dx, d.z + dz, dx < 0 ? 270 : 90);
-    addProp(`${PACK.survival}/tent.glb`, d.x + 26, d.z + 12, 230);
-    addProp(`${PACK.survival}/campfire-pit.glb`, d.x + 22, d.z + 12);
-    addProp(`${BOX}/kr-log-bench.glb`, d.x + 22, d.z + 15, 0);
+    for (const [dx, dz] of [[-16, -14], [16, -14], [-16, 14], [16, 16]] as const) addProp(LANTERN_POLE, d.x + dx, d.z + dz, dx < 0 ? 270 : 90);
+    addProp(`${PACK.survival}/campfire-pit.glb`, d.x + 13, d.z + 15);
+    addProp(`${BOX}/kr-log-bench.glb`, d.x + 13, d.z + 18, 0);
   }
 
   const riddleAt = { x: ancient.x - 4, z: ancient.z - 4 };
@@ -570,7 +674,7 @@ export async function generateForest(): Promise<{ world: VoxelWorld; entities: W
     blocks: { grass: B.grass, sand: B.sand },
     questSpots: interactables.map((t) => [t.position[0] ?? 0, t.position[2] ?? 0] as const),
     trees: occupied,
-    scene: { pool: pool0, camp, fire: campFire },
+    scene: { pool: pool0, camp, fire: campFire, table: SHELTER },
     spawn,
     meadows: MEADOWS,
     waterLevel: WATER_LEVEL,
@@ -648,7 +752,7 @@ export async function generateForest(): Promise<{ world: VoxelWorld; entities: W
   const canStand = (x: number, z: number): boolean => {
     const y = surface(x, z);
     if (y <= WATER_LEVEL || wetDistance(x, z) < 2 || pathDistance(x, z) < 2) return false;
-    if (world.get(x, y + 1, z) !== 0 || world.get(x, y + 2, z) !== 0) return false; // a boulder or a trunk
+    if (world.get(x, y + 1, z) !== 0 || world.get(x, y + 2, z) !== 0 || nearSite(x, z, 1)) return false; // a boulder, a trunk, a tent
     if ([[1, 0], [-1, 0], [0, 1], [0, -1]].some(([dx, dz]) => Math.abs(surface(x + (dx ?? 0), z + (dz ?? 0)) - y) > 1)) return false;
     return !occupied.some(([tx, tz]) => Math.hypot(tx - x, tz - z) < 2.2) && !propCells.some(([px, pz]) => Math.hypot(px - x, pz - z) < 1.5);
   };
@@ -656,23 +760,35 @@ export async function generateForest(): Promise<{ world: VoxelWorld; entities: W
   // Each glade's lessons start at its edge; the forest train runs from the spawn to every glade and back,
   // its stops clear of the villagers' places like every target.
   const clearOfLife = (x: number, z: number): boolean => villagerSpots.every(([vx, vz]) => Math.hypot(vx - x, vz - z) >= QUEST_CLEARANCE + 1);
+  // Open ground nearest (x, z), three blocks or more from the stops already set (each train stands on its own).
+  const taken: Array<[number, number]> = [];
   const openNear = (x: number, z: number): [number, number] => {
     for (let r = 0; r <= 14; r++) {
       for (let dx = -r; dx <= r; dx++) {
         for (let dz = -r; dz <= r; dz++) {
-          if (Math.max(Math.abs(dx), Math.abs(dz)) === r && canStand(x + dx, z + dz) && clearOfLife(x + dx, z + dz)) return [x + dx, z + dz];
+          const [cx, cz] = [x + dx, z + dz];
+          if (Math.max(Math.abs(dx), Math.abs(dz)) !== r || !canStand(cx, cz) || !clearOfLife(cx, cz)) continue;
+          if (taken.some(([tx, tz]) => Math.hypot(tx - cx, tz - cz) < 3)) continue;
+          return [cx, cz];
         }
       }
     }
     return [x, z];
   };
-  const gladeStart = new Map(DISTRICTS.map((d) => [d.chapter, openNear(d.x, d.z + d.hz - 4)] as const));
+  /** A train's stop: open ground near (x, z), kept from the next stops. */
+  const stopNear = (x: number, z: number): [number, number] => {
+    const at = openNear(x, z);
+    taken.push(at);
+    return at;
+  };
+  const gladeStart = new Map(DISTRICTS.map((d) => [d.chapter, openNear(...gladeStartNear(d))] as const));
   const trainModel = `${PACK.props}/railway-red.glb`;
   const stops = [
-    ...DISTRICTS.map((d, i) => ({ name: `Tàu rừng tới bãi rừng ${i + 1}`, at: openNear(spawn.x + 2 + i * 3, spawn.z - 5), to: gladeStart.get(d.chapter) ?? [d.x, d.z] })),
+    ...DISTRICTS.map((d, i) => ({ name: `Tàu rừng tới bãi rừng ${i + 1}`, at: stopNear(spawn.x + 2 + i * 3, spawn.z - 5), to: gladeStart.get(d.chapter) ?? [d.x, d.z] })),
     ...DISTRICTS.map((d) => {
       const [gx, gz] = gladeStart.get(d.chapter) ?? [d.x, d.z];
-      return { name: 'Tàu rừng về bìa rừng', at: openNear(gx + 4, gz), to: [spawn.x + 2, spawn.z + 2] as const };
+      // The way home leaves beside the glade's start, by the same trail.
+      return { name: 'Tàu rừng về bìa rừng', at: stopNear(gx, gz + 3), to: [spawn.x + 2, spawn.z + 2] as const };
     }),
   ];
   stops.forEach((stop, i) =>
@@ -719,7 +835,8 @@ export async function generateForest(): Promise<{ world: VoxelWorld; entities: W
       { id: 'cau-go-qua-suoi', name: 'Cầu gỗ qua suối', position: [bridge2.x + 0.5, deckY + 1, (bridge2.z0 + bridge2.z1) / 2] },
       { id: 'loi-mon-hoa', name: 'Lối mòn hoa', position: place(bridge2.x - 2, bridge2.z0 - 6) },
       { id: 'trai-nguoi-rung', name: 'Trại người rừng', position: place(campFire.x, campFire.z) },
-      { id: 'choi-kiem-lam', name: 'Chòi kiểm lâm', position: room(2, 2) },
+      { id: 'choi-kiem-lam', name: 'Chòi kiểm lâm', position: room(Math.floor(side / 2), 4) },
+      { id: 'leu-trai', name: 'Lều trại', position: [campTentAt[0] + 0.5, campTentFloor, campTentAt[1] + 0.5] },
       { id: 'thac-rung-sau', name: 'Thác rừng sâu', position: fallsFeet[1] ?? place(CLIFFS[1]?.x ?? 0, CLIFFS[1]?.z ?? 0) },
     ],
     ambients,

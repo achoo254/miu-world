@@ -48,10 +48,10 @@ export interface ForestLifeMap {
   scaleOf(model: string): number;
   /**
    * The mocks' scene east of chapter 1 (designs/khu-rung-bi-mat/): the waterfall's pool and the forest folk's
-   * camp round its fire. An old man fishes the pool, a cook and a woodcutter keep the camp, a sika deer and
-   * her fawn, a fox, a bunny and a parrot live round about.
+   * camp round its fire and the table under its shelter. An old man fishes the pool, a cook and a woodcutter
+   * keep the camp, a sika deer and her fawn, a fox, a bunny and a parrot live round about.
    */
-  scene?: { pool: { x: number; z: number; r: number }; camp: { x: number; z: number }; fire: { x: number; z: number } };
+  scene?: { pool: { x: number; z: number; r: number }; camp: { x: number; z: number }; fire: { x: number; z: number }; table: { x: number; z: number } };
 }
 
 /** Quest targets stay this far from any ambient home or spot, so their prompts and the arrow stay clear. */
@@ -288,7 +288,7 @@ export function placeForestLife(map: ForestLifeMap): Ambient[] {
   });
 
   if (map.scene) {
-    const { pool, camp, fire } = map.scene;
+    const { pool, camp, fire, table } = map.scene;
     const anglerBank = spot(Math.round(pool.x - pool.r - 1), pool.z, { maxRing: 5 });
     const anglerHome = spot(anglerBank.x - 3, anglerBank.z - 1, { from: anglerBank });
     add('ong-cau-ca-thac', 'fisher', 'Ông Câu cá', `${P.people}/character-n.glb`, anglerHome, 90, {
@@ -301,7 +301,7 @@ export function placeForestLife(map: ForestLifeMap): Ambient[] {
     add('co-nau-bep-trai', 'cook', 'Cô Nấu bếp trại', `${P.people}/character-l.glb`, campCookHome, 0, {
       fire: at(campCookAt),
       pot: at(fire),
-      table: at(spot(camp.x - 8, camp.z - 3, { from: campCookAt })),
+      table: at(spot(table.x, table.z, { from: campCookAt })),
       seat: at(spot(fire.x - 3, fire.z - 1, { from: campCookAt })),
     }, { held: [`${P.food}/cooking-spoon.glb`] });
 
