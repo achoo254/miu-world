@@ -35,3 +35,20 @@ Hai ảnh toàn cảnh vẽ một vùng 256 × 256: Trường học ở giữa, 
 | Núi tuyết (sau) | `designs/nui-tuyet/b-11-nui-toan-canh.png` | Núi đá nhiều tầng, thác, cầu treo gỗ: phông nền ở rìa map trung tâm. |
 
 Thư viện, Xóm Mái Ấm, Lâu đài chưa có khung riêng: dựng theo phong cách chung ở trên (mái nhiều màu, hoa, hàng rào, đèn), phòng đọc Thư viện theo `v2-a-12-thu-vien-trong-truong.png`.
+
+## Mock chi tiết từng khu (02/10/2026)
+
+Chín tấm mock chi tiết, mỗi tấm 8–19 khung (toàn cảnh, cận cảnh, nội thất, cảnh đêm), cắt theo lề trắng thành `designs/<thư mục>/{c,d}-NN-<tên>.png`; ảnh gốc giữ cạnh khung (`mock-d-chi-tiet.png`, riêng tấm các khu quanh trường ở `the-gioi/mock-c-chi-tiet-cac-khu.png`). Quyết định dùng thế nào: `plans/dattqh/reports/jev-261002-0802-detail-mocks.md`.
+
+| Tấm | Khung | Map dùng |
+| --- | --- | --- |
+| Các khu quanh trường | `truong-hoc/c-*` (trường, sân, nhà đa năng, vườn khoa học, khu vui chơi, đường chính, lớp, thư viện, hành lang, cầu thang, phòng chức năng); `lang-ven-song/c-07, c-11, c-12`; `cho-phien/c-08`; `nong-trai/c-09`; `khu-rung-bi-mat/c-10`; `nui-tuyet/c-14` | Trường học và map của từng khu |
+| Trung tâm | `trung-tam/d-*` | Quảng trường giữa map Trường học: đài phun tượng mèo, cổng vòm có tên sang từng map, bảng nhiệm vụ "!", cửa hàng, chòi chờ |
+| Làng | `lang-ven-song/d-*` | Làng Ven Sông theo khung ngoài trời (cổng, đường làng, chợ nhỏ, cầu, cối xay, cây sinh hoạt chung, xưởng); Xóm Mái Ấm theo khung nhà (`d-03, 05, 07, 13, 14`) |
+| Chợ | `cho-phien/d-*` | Chợ phiên |
+| Nông trại | `nong-trai/d-*` | Nông trại |
+| Thư viện | `thu-vien/d-*` | Thư viện |
+| Lâu đài | `lau-dai/d-*` | Lâu đài |
+| Đảo bí ẩn, Núi tuyết | `dao-bi-an/d-*`, `nui-tuyet/d-*` | Chưa có map (tham chiếu cho map sau) |
+
+Mỗi map một nền riêng (khối cỏ theo map, đá lát, đường đất; `soil` trong generator, vùng đất ngoài map theo nó). Góc chụp đặt cạnh từng khung: `content/world/mock-views/<map>.json` (camera tính từ một landmark của map, `mood: dusk` cho khung đêm); `pnpm assets:preview <map>` chụp thành `assets/generated/review/<map>/mock__<thư mục>__<khung>.png`, trang review đặt cạnh khung mock. Đồ chi tiết pack không có dựng bằng hộp màu trong `content/world/box-props/<map>.json` (`glow` cho phần tự sáng).
