@@ -5,7 +5,7 @@
 // districts, one per chapter: the village gate under the banyan with the little school and the well
 // (chapter 1), the meadow by the river with the flower garden and its beehives (chapter 2), the landing and
 // the class under the banyan on the north bank (chapter 3), the lotus marsh and the village football field
-// (chapter 4). Between them: rice paddies inside earth dykes, hamlets of tiled-roof cottages round shared
+// (chapter 4). Between them: rice paddies inside earth dykes, hamlets of tiled-roof cottages along their own
 // yards, lamp-lit lanes, bamboo hedges, fruit trees. After the detail mock of the village (02/10/2026,
 // designs/lang-ven-song/d-*, the outdoor frames; the home frames are Xóm Mái Ấm's): a gate arch with its
 // banner and lamps on the way in from the spawn, the village square with its fountain, market stalls, the
@@ -13,15 +13,15 @@
 // field, humped stone bridges over the river, cobbled lanes with flowers along their verges.
 // Output: assets/generated/world/lang-ven-song/{regions/, horizon.bin, entities.json}
 import { PACK, runIfMain } from './map-kit';
-import { bambooHedge, cottagePalette, cottageRow, flowerBed, hamlet, jetty, laneVerge, STREET_LANTERN, streetHouses } from './scenery';
+import { bambooHedge, cottagePalette, flowerBed, jetty, laneVerge, STREET_LANTERN, streetHouses } from './scenery';
 import { animal, crowd, person } from './village-life';
-import { placeHouse } from './structures/buildings';
 import { placeCatStatue, placeFountain, placeLighthouse, placeStall, placeWell, placeWindmill } from './structures/countryside';
 import { placeArchBridge, placeGateArch, placePlaza, placeTower } from './structures/landmarks';
-import { facingWriter, FRAME } from './structures/world-writer';
-import type { Point } from './structures/path';
+import { fillTowerShaft, placeHall, widenRoundDoor } from './structures/lang-ven-song-buildings';
+import { facingWriter, FRAME, frameCell } from './structures/world-writer';
+import { pathColumns, type Point } from './structures/path';
 import { placeAncientTree } from './structures/tree';
-import { generateZoneMap, type Zone } from './zone-map';
+import { generateZoneMap, type Zone, type ZoneMapContext } from './zone-map';
 
 export const MAP_ID = 'lang-ven-song';
 const SIZE = 800;
@@ -51,24 +51,83 @@ const LANE_NORTH: Point[] = [[30, 500], [250, 500], [470, 510], [600, 520]];
 const SQUARE = { x: 100, z: 235, r: 13 };
 const TOWER = { x: 100, z: 212 };
 const MILL = { x: 205, z: 130 };
-/** The craft workshop's footprint corner (11 x 9), east of the square. */
-const WORKSHOP = { x0: 126, z0: 204 };
+/** The craft workshop's footprint (17 x 13), east of the square, its door on the square's lane. */
+const WORKSHOP = { x0: 124, z0: 214, w: 17, d: 13 };
 const WHEAT = { x0: 172, z0: 98, x1: 238, z1: 164 };
 /** Where the way from the spawn passes under the village gate. */
 const GATE = { x: 60, z: 84 };
 /** The stone bridges: where the two crossings meet the river. */
 const BRIDGES = [120, 360];
+/** The landing's jetty on the north bank of the river (chapter 3), its root on the bank. */
+const JETTY = { x: 218, bank: Math.ceil(riverCenter(218) + RIVER_HALF + 2) };
+/** The little school's footprint in the gate district (21 x 15), and the cell before its door (on its -z side). */
+const SCHOOL = { x0: 196, z0: 190, w: 21, d: 15 };
+const SCHOOL_DOOR = { x: SCHOOL.x0 + Math.floor(SCHOOL.w / 2), z: SCHOOL.z0 - 2 };
+/** The z of a lane (a polyline along x) at `x`, so a branch meets it without a gap or a stub beyond it. */
+function laneZ(lane: readonly Point[], x: number): number {
+  for (let i = 1; i < lane.length; i++) {
+    const [ax = 0, az = 0] = lane[i - 1] ?? [];
+    const [bx = 0, bz = 0] = lane[i] ?? [];
+    if (x >= ax && x <= bx) return Math.round(az + ((bz - az) * (x - ax)) / Math.max(1, bx - ax));
+  }
+  return lane[lane.length - 1]?.[1] ?? 0;
+}
+/** The hamlets' streets: west of the wheat on to the field track, north of the meadow, the harbour's, south of the landing. */
+const HAMLET_STREETS: Point[][] = [
+  [[604, 222], [664, 222]],
+  [[60, 140], [170, 140]],
+  [[450, 100], [600, 100]],
+  [[450, 160], [600, 160]],
+  [[100, 600], [100, 750]],
+];
+/**
+ * The ways down to the water (the marsh's boardwalk, the landing's jetty, the harbour's shore walk and its
+ * piers): their banks fall two blocks to the deck, so they get steps.
+ */
+const WATER_WAYS: Point[][] = [
+  [[520, 622], [MARSH.x - 6, MARSH.z - 3]],
+  [[JETTY.x, laneZ(LANE_NORTH, JETTY.x)], [JETTY.x, JETTY.bank]],
+  [[600, 280], [606, 310], [606, 500], [600, 520]],
+  [[606, 371], [614, 371]],
+  [[606, 411], [616, 411]],
+  [[606, 451], [618, 451]],
+];
+/**
+ * One network of ways (owner, 02/10/2026: a way from wherever the child starts to wherever she goes): the
+ * spawn's lane with stubs to the ride stops and the gate, the square's lane, the two lanes along the banks and
+ * the bridges between them, a branch through each district from the nearer lane, the school's walk and the
+ * field track on to the windmill, the class under the banyan, the football field, a boardwalk into the lotus
+ * marsh, the way down to the landing's jetty, the harbour's shore walk joining both lanes past the piers, the
+ * lighthouse's way, the hamlets' lanes, and the dykes through the paddies with one out to the middle of the
+ * rice field.
+ */
 const ROUTES: Point[][] = [
   [[60, 60], [60, 300]],
+  [[42, 64], [60, 64]],
+  [[60, 73], [68, 73]],
   [[60, SQUARE.z], [156, SQUARE.z]],
   LANE_SOUTH,
   LANE_NORTH,
-  [[120, 296], [120, 500]],
-  [[360, 296], [360, 505]],
-  ...ZONES.map((zn): Point[] => [[zn.x, zn.z < 400 ? 296 : 505], [zn.x, zn.z]]),
+  [[120, laneZ(LANE_SOUTH, 120)], [120, laneZ(LANE_NORTH, 120)]],
+  [[360, laneZ(LANE_SOUTH, 360)], [360, laneZ(LANE_NORTH, 360)]],
+  ...ZONES.map((zn): Point[] => (zn.z < 400 ? [[zn.x, laneZ(LANE_SOUTH, zn.x)], [zn.x, zn.z]] : [[zn.x, laneZ(LANE_NORTH, zn.x)], [zn.x, zn.z + zn.hz]])),
+  [[190, 210], [190, SCHOOL_DOOR.z - 3], [SCHOOL_DOOR.x, SCHOOL_DOOR.z - 3], [SCHOOL_DOOR.x, SCHOOL_DOOR.z]],
+  [[190, SCHOOL_DOOR.z - 3], [190, MILL.z - 10], [MILL.x, MILL.z - 10], [MILL.x, MILL.z - 6]],
+  [[200, 572], [192, 572]],
+  [[520, 592], [513, 592]],
+  ...WATER_WAYS,
+  [[606, 294], [640, 294], [640, 296]],
+  // The hamlets' lanes: on from their streets to the field track, the dyke road up from the south lane, the
+  // harbour's street on from the south lane's end, the lane south from the north lane.
+  [[60, 140], [190, 140]],
+  [[450, laneZ(LANE_SOUTH, 450)], [450, 100], [600, 100]],
+  [[450, 160], [600, 160]],
+  [[600, 280], [600, 222], [664, 222]],
+  [[100, laneZ(LANE_NORTH, 100)], [100, 750]],
   // Dykes through the paddies.
   [[330, 60], [330, 296]],
   [[330, 505], [330, 760]],
+  [[330, 160], [350, 160]],
 ];
 /** Rice paddies (inclusive) between the districts. */
 const PADDIES = [
@@ -126,6 +185,69 @@ const SQ = {
   crateSmall: `${PACK.survival}/box.glb`,
 };
 
+/**
+ * Steps along `routes`' ways (3 wide, as the map draws them): wherever a way cell stands more than a block
+ * below its neighbour on the way (a bank falling to a plank deck over the water), it is raised with `block`
+ * until every step is one block, so the child walks down to the water a step at a time.
+ */
+function stepWays(ctx: ZoneMapContext, routes: readonly Point[][], block: number): void {
+  const cells = [...new Set(routes.flatMap((r) => [...pathColumns(r, 1.4)]))].map((k) => k.split(',').map(Number) as [number, number]);
+  const key = (x: number, z: number): string => `${x},${z}`;
+  const ground = new Map(cells.map(([x, z]) => [key(x, z), ctx.inWater(x, z) ? WATER_LEVEL + 1 : ctx.surface(x, z)]));
+  const top = new Map(ground);
+  for (let changed = true; changed; ) {
+    changed = false;
+    for (const [x, z] of cells) {
+      const here = top.get(key(x, z)) ?? 0;
+      const need = Math.max(...[[1, 0], [-1, 0], [0, 1], [0, -1]].map(([dx = 0, dz = 0]) => (top.get(key(x + dx, z + dz)) ?? -Infinity) - 1));
+      if (need > here) {
+        top.set(key(x, z), need);
+        changed = true;
+      }
+    }
+  }
+  for (const [x, z] of cells) for (let y = (ground.get(key(x, z)) ?? 0) + 1; y <= (top.get(key(x, z)) ?? 0); y++) ctx.world.set(x, y, z, block);
+}
+
+/**
+ * Paves the grass left between a lane and the garden walks off it (a street's houses stand back from a bending
+ * lane, so a walk can stop a block or two short of the way), so every door's walk joins its lane.
+ */
+function joinWalks(ctx: ZoneMapContext, lanes: readonly Point[][]): void {
+  for (const lane of lanes) {
+    for (let i = 1; i < lane.length; i++) {
+      const [ax = 0, az = 0] = lane[i - 1] ?? [];
+      const [bx = 0, bz = 0] = lane[i] ?? [];
+      const len = Math.hypot(bx - ax, bz - az);
+      if (len === 0) continue;
+      const [ux, uz] = [(bx - ax) / len, (bz - az) / len];
+      for (let t = 0; t <= len; t += 0.5) {
+        for (const side of [-1, 1]) {
+          let gap: Array<[number, number]> = [];
+          for (let d = 1; d <= 6; d++) {
+            const x = Math.round(ax + ux * t - uz * side * d);
+            const z = Math.round(az + uz * t + ux * side * d);
+            if (ctx.onPath(x, z)) {
+              gap = [];
+              continue;
+            }
+            const y = ctx.surface(x, z);
+            if (ctx.world.get(x, y, z) === ctx.soil.path) {
+              for (const [gx, gz] of gap) {
+                ctx.world.set(gx, ctx.surface(gx, gz), gz, ctx.soil.path);
+                ctx.keepOut(gx, gz, gx, gz);
+              }
+              break;
+            }
+            if (ctx.world.get(x, y + 1, z) !== 0 || ctx.inWater(x, z)) break;
+            gap.push([x, z]);
+          }
+        }
+      }
+    }
+  }
+}
+
 const inWater = (x: number, z: number): boolean =>
   (x < LAKE.x && Math.abs(z - riverCenter(x)) < RIVER_HALF + 2 * Math.sin(x / 31)) ||
   ((x - LAKE.x) / LAKE.rx) ** 2 + ((z - LAKE.z) / LAKE.rz) ** 2 < 1 ||
@@ -161,7 +283,7 @@ export async function generateLangVenSong() {
         ...crowd('vendor', ['Cô bán rau', 'Bác bán hoa quả', 'Chị bán bí', 'Chú bán cá tươi'], [person('e'), person('j'), person('h'), person('m')], landmark('cho-nho'), 4, 4, [L.basket]),
         ...crowd('shopper', ['Bà đi chợ', 'Cô đi chợ', 'Bác mua rau', 'Chị dẫn em đi chợ'], [person('i'), person('l'), person('n'), person('p')], landmark('quang-truong-lang'), 8, 5, [L.basket]),
         ...crowd('sweeper', ['Cô quét sân quảng trường'], [person('e')], landmark('cay-hoa-sinh-hoat'), 6, 1),
-        { routine: 'porter', name: 'Bác thợ mộc', model: person('b'), held: [`${PACK.survival}/tool-axe.glb`], at: landmark('xuong-thu-cong'), visits: [[WORKSHOP.x0 + 3, WORKSHOP.z0 + 3], [WORKSHOP.x0 + 6, WORKSHOP.z0 + 5], [WORKSHOP.x0 + 8, WORKSHOP.z0 + 3]] },
+        { routine: 'porter', name: 'Bác thợ mộc', model: person('b'), held: [`${PACK.survival}/tool-axe.glb`], at: landmark('xuong-thu-cong'), visits: [[WORKSHOP.x0 + 7, WORKSHOP.z0 + 3], [WORKSHOP.x0 + 9, WORKSHOP.z0 + 7], [WORKSHOP.x0 + 4, WORKSHOP.z0 + 6]] },
         ...crowd('porter', ['Thợ phụ cưa gỗ'], [person('k')], landmark('xuong-thu-cong'), 3, 1, [`${PACK.survival}/tool-axe.glb`]),
         ...crowd('sentry', ['Bác trông tháp chuông'], [person('d')], landmark('thap-chuong'), 3, 1),
         ...crowd('reader', ['Người đọc bảng tin làng'], [person('c')], landmark('bang-tin'), 3, 1, [L.book]),
@@ -241,14 +363,14 @@ export async function generateLangVenSong() {
         for (const [x, z] of cells) ctx.prop(STREET_LANTERN, x, z, 0);
       };
       // Everything that stands on a fixed spot first (the square, the gate, the mill, the bridges); then the
-      // streets of cottages along both lanes, facing them (d-10, c-07); hamlets round shared yards beyond the
-      // districts; and last the verges of every way, so they keep clear of the gardens.
+      // streets of cottages along both lanes, facing them (d-10, c-07); the hamlets beyond the districts along
+      // their own lanes, every door with its walk to the way; and last the verges of every way, so they keep
+      // clear of the gardens.
       const streets = (): void => {
         for (const lane of [LANE_SOUTH, LANE_NORTH]) streetHouses(ctx, lane);
         streetHouses(ctx, [[60, 110], [60, 290]], { sides: [1] });
-        hamlet(ctx, 68, 100, 140, 170);
-        hamlet(ctx, 460, 60, 600, 200);
-        hamlet(ctx, 60, 640, 160, 760);
+        for (const lane of HAMLET_STREETS) streetHouses(ctx, lane);
+        joinWalks(ctx, [LANE_SOUTH, LANE_NORTH, [[60, 110], [60, 290]], ...HAMLET_STREETS]);
         for (const route of ROUTES) laneVerge(ctx, route);
       };
       ctx.landmark('duong-lang', 'Đường làng', 150, Math.round((290 + 293) / 2));
@@ -283,40 +405,62 @@ export async function generateLangVenSong() {
       ctx.keepOut(SQUARE.x - 30, SQUARE.z - 14, SQUARE.x - 18, SQUARE.z - 2);
       for (const dz of [-3, 3]) ctx.prop(SQ.bench, SQUARE.x - 16, SQUARE.z - 8 + dz, 90);
       ctx.landmark('cay-hoa-sinh-hoat', 'Cây hoa nơi sinh hoạt chung', SQUARE.x - 20, SQUARE.z - 8);
-      // The notice board: a board on two posts under a little plank roof.
+      // The notice board: a board on two posts under a little tiled roof.
       const board = { x: SQUARE.x + 16, z: SQUARE.z - 6 };
       for (let y = top + 1; y <= top + 4; y++) for (const dx of [-2, 2]) world.set(board.x + dx, y, board.z, block('log'));
       for (let dx = -1; dx <= 1; dx++) for (let y = top + 2; y <= top + 3; y++) world.set(board.x + dx, y, board.z, block('board'));
-      for (let dx = -3; dx <= 3; dx++) world.set(board.x + dx, top + 5, board.z, block('planks'));
+      for (let dx = -3; dx <= 3; dx++) world.set(board.x + dx, top + 5, board.z, block('wood-red'));
       ctx.keepOut(board.x - 3, board.z - 1, board.x + 3, board.z + 1);
       ctx.landmark('bang-tin', 'Bảng tin làng', board.x, board.z - 2);
-      // The craft workshop east of the square (d-12), its door on the square's side: work benches, an anvil,
-      // barrels and crates, shelves of pots under warm lanterns, a craftsman at work.
-      const shop = { x0: WORKSHOP.x0, z0: WORKSHOP.z0, x1: WORKSHOP.x0 + 10, z1: WORKSHOP.z0 + 8 };
-      placeHouse(facingWriter(world, [shop.x1, shop.z1], 'south'), FRAME, FRAME, 11, 9, 5, top + 1, { ...finish, wall: block('planks'), roof: block('wood-red'), trim: block('log') });
+      // The craft workshop east of the square (d-12), a hall with its wide door on the square's lane: shelves of
+      // pots between posts along the back wall under warm lanterns, work benches and an anvil either side of an
+      // aisle as wide as the door, barrels and crates in the corners, a rack of tools on the east wall.
+      const shop = { x0: WORKSHOP.x0, z0: WORKSHOP.z0, x1: WORKSHOP.x0 + WORKSHOP.w - 1, z1: WORKSHOP.z0 + WORKSHOP.d - 1 };
+      const shopOrigin = [shop.x1, shop.z1] as const;
+      const shopCell = (u: number, v: number): [number, number] => frameCell(shopOrigin, 'south', u, v);
+      const hall = placeHall(facingWriter(world, shopOrigin, 'south'), FRAME, FRAME, WORKSHOP.w, WORKSHOP.d, 7, (u, v) => ctx.surface(...shopCell(u, v)), {
+        ...finish,
+        wall: block('planks'),
+        roof: block('wood-red'),
+        trim: block('log'),
+        foot: block('cobble-grey'),
+      });
+      const floor = hall.room.floorY;
+      // A cobbled walk from the doorway down to the lane.
+      const doorXs = Array.from({ length: hall.doorway.width }, (_, i) => shopCell(hall.doorway.x0 + i, FRAME)[0]);
+      for (const x of doorXs) for (let z = shop.z1 + 1; z < SQUARE.z && !ctx.onPath(x, z); z++) world.set(x, ctx.surface(x, z), z, ctx.soil.path);
+      // Shelves along the back wall in bays of four or five between log posts (each bay's top too small to read as
+      // a room), a lantern in the wall over every fourth column.
+      const back = shop.z0 + 1;
       for (let x = shop.x0 + 1; x < shop.x1; x++) {
-        world.set(x, top + 3, shop.z0 + 1, block('planks'));
-        if ((x - shop.x0) % 4 === 1) world.set(x, top + 4, shop.z0, block('lantern'));
+        if ((x - shop.x0) % 6 === 5) for (let y = floor; y <= floor + 5; y++) world.set(x, y, back, block('log'));
+        else for (const y of [floor + 1, floor + 3]) world.set(x, y, back, block('planks'));
+        if ((x - shop.x0) % 4 === 1) world.set(x, floor + 4, shop.z0, block('lantern'));
       }
-      const floor = top + 1;
-      ctx.propAt(SQ.workbench, [shop.x0 + 2.5, floor, shop.z0 + 2.5], 0);
-      ctx.propAt(SQ.workbench, [shop.x0 + 5.5, floor, shop.z0 + 4.5], 90);
-      ctx.propAt(SQ.anvil, [shop.x1 - 2.5, floor, shop.z0 + 2.5], 0);
-      for (const [dx, dz] of [[1, 6], [1, 7], [9, 7]] as const) ctx.propAt(SQ.barrel, [shop.x0 + dx + 0.5, floor, shop.z0 + dz + 0.5], dx * 30);
-      ctx.propAt(SQ.crate, [shop.x1 - 1.5, floor, shop.z0 + 5.5], 15);
-      for (const [i, model] of [SQ.bucket, SQ.basket, SQ.bucket].entries()) ctx.propAt(model, [shop.x0 + 3.5 + i * 2, top + 4, shop.z0 + 1.5], i * 40);
-      ctx.propAt(SQ.axe, [shop.x0 + 2.5, floor + 0.9, shop.z0 + 2.5], 70);
-      // A second shelf under the first, a rack of tools on the east wall, more crates and baskets by the door.
-      for (let x = shop.x0 + 1; x < shop.x1; x++) world.set(x, top + 2, shop.z0 + 1, block('planks'));
-      for (const [i, model] of [SQ.basket, SQ.crateSmall, SQ.basket, SQ.crateSmall].entries()) ctx.propAt(model, [shop.x0 + 2.5 + i * 2, top + 3, shop.z0 + 1.5], i * 25);
-      for (let z = shop.z0 + 2; z <= shop.z0 + 5; z++) world.set(shop.x1 - 1, top + 4, z, block('log'));
-      for (const [i, model] of [SQ.axe, SQ.hoe, SQ.axe].entries()) ctx.propAt(model, [shop.x1 - 1.5, top + 2, shop.z0 + 2.5 + i * 1.2], 90);
-      for (const [dx, dz] of [[3, 7], [4, 7]] as const) ctx.propAt(SQ.crateSmall, [shop.x0 + dx + 0.5, floor, shop.z0 + dz + 0.5], dx * 20);
-      ctx.propAt(SQ.basket, [shop.x0 + 5.5, floor + 0.9, shop.z0 + 4.5], 0);
+      const shelfX = [2, 4, 7, 9, 11, 13, 15].map((dx) => shop.x0 + dx);
+      for (const [i, x] of shelfX.entries()) {
+        ctx.propAt([SQ.basket, SQ.crateSmall, SQ.bucket][i % 3] ?? SQ.basket, [x + 0.5, floor + 2, back + 0.5], i * 25);
+        ctx.propAt([SQ.bucket, SQ.basket, SQ.crateSmall][i % 3] ?? SQ.bucket, [x + 0.5, floor + 4, back + 0.5], i * 40);
+      }
+      // Benches and the anvil in the bays either side of the aisle (shop.x0 + 6 … + 10), a walk along each wall.
+      ctx.propAt(SQ.workbench, [shop.x0 + 4.5, floor, shop.z0 + 4.5], 0);
+      ctx.propAt(SQ.workbench, [shop.x0 + 4.5, floor, shop.z0 + 8.5], 90);
+      ctx.propAt(SQ.anvil, [shop.x1 - 3.5, floor, shop.z0 + 4.5], 0);
+      ctx.propAt(SQ.workbench, [shop.x1 - 3.5, floor, shop.z0 + 8.5], 90);
+      ctx.propAt(SQ.axe, [shop.x0 + 4.5, floor + 0.9, shop.z0 + 4.5], 70);
+      ctx.propAt(SQ.basket, [shop.x0 + 4.5, floor + 0.9, shop.z0 + 8.5], 0);
+      for (const [dx, dz] of [[1, 11], [15, 11], [15, 2]] as const) ctx.propAt(SQ.barrel, [shop.x0 + dx + 0.5, floor, shop.z0 + dz + 0.5], dx * 30);
+      ctx.propAt(SQ.crate, [shop.x0 + 1.5, floor, shop.z0 + 2.5], 15);
+      for (const dx of [2, 3]) ctx.propAt(SQ.crateSmall, [shop.x0 + dx + 0.5, floor, shop.z0 + 11.5], dx * 20);
+      // The tool rack: a log rail high on the east wall, tools hanging under it.
+      for (let z = shop.z0 + 5; z <= shop.z0 + 9; z++) world.set(shop.x1 - 1, floor + 4, z, block('log'));
+      for (const [i, model] of [SQ.axe, SQ.hoe, SQ.axe, SQ.hoe].entries()) ctx.propAt(model, [shop.x1 - 1.5, floor + 2, shop.z0 + 5.5 + i * 1.2], 90);
       ctx.prop(SQ.sign, shop.x1 + 2, shop.z1 + 2, 200);
-      ctx.keepOut(shop.x0 - 1, shop.z0 - 1, shop.x1 + 1, shop.z1 + 3);
-      ctx.landmark('xuong-thu-cong', 'Xưởng thủ công', shop.x0 + 5, shop.z0 + 4, floor);
+      ctx.keepOut(shop.x0 - 1, shop.z0 - 1, shop.x1 + 1, shop.z1 + 4);
+      ctx.keepOut(Math.min(...doorXs), shop.z1, Math.max(...doorXs), SQUARE.z - 2);
+      ctx.landmark('xuong-thu-cong', 'Xưởng thủ công', shop.x0 + 8, shop.z0 + 6, floor);
       placeTower(world, TOWER.x, TOWER.z, top + 1, 3, 13, { wall: block('sand'), trim: block('cobble-grey'), roof: block('brick-red'), glass: block('glass'), flag: block('wood-red'), pole: block('log') }, false);
+      fillTowerShaft(world, TOWER.x, TOWER.z, top + 1, 3, 13, block('sand'));
       ctx.keepOut(TOWER.x - 5, TOWER.z - 5, TOWER.x + 5, TOWER.z + 5);
       ctx.landmark('thap-chuong', 'Tháp chuông', TOWER.x, TOWER.z + 6);
 
@@ -330,7 +474,9 @@ export async function generateLangVenSong() {
         }
       }
       ctx.keepOut(WHEAT.x0, WHEAT.z0, WHEAT.x1, WHEAT.z1);
-      placeWindmill(world, MILL.x, MILL.z, ctx.surface(MILL.x, MILL.z) + 1, { planks: block('planks'), log: block('log'), roof: block('wood-red'), sail: block('snow'), stone: block('cobble-grey'), glass: block('glass') });
+      const millBase = ctx.surface(MILL.x, MILL.z) + 1;
+      placeWindmill(world, MILL.x, MILL.z, millBase, { planks: block('planks'), log: block('log'), roof: block('wood-red'), sail: block('snow'), stone: block('cobble-grey'), glass: block('glass') });
+      widenRoundDoor(world, MILL.x, MILL.z, millBase, 4);
       ctx.landmark('coi-xay-gio', 'Cối xay gió', MILL.x, MILL.z - 5);
 
       // Humped stone bridges where the two crossings meet the river (d-09), lamps at their ends.
@@ -345,16 +491,32 @@ export async function generateLangVenSong() {
       bambooHedge(ctx, [[20, 780], [600, 780]]);
       bambooHedge(ctx, [[20, 20], [20, 780]]);
 
-      // Chapter 1: the banyan at the village gate, the little school, the well, a flower bed by the school.
+      // Chapter 1: the banyan at the village gate, the little school, the well, flower beds by the school.
       banyan(gate.x - 22, gate.z + 12, 'cay-da-dau-lang', 'Cây đa đầu làng');
-      const school = { x0: gate.x + 6, z0: gate.z - 20, w: 17, d: 9 };
-      placeHouse(world, school.x0, school.z0, school.w, school.d, 4, ground + 1, { ...finish, wall: block('birch-log'), roof: block('brick-red'), trim: block('log') });
-      // Inside: a green board on the back wall, two rows of desks facing it, a bookcase by the door.
-      for (let x = school.x0 + 5; x <= school.x0 + 11; x++) for (let y = ground + 2; y <= ground + 3; y++) world.set(x, y, school.z0 + school.d - 1, block('board'));
-      for (const row of [3, 5]) for (const col of [3, 7, 11]) ctx.centredAt(SQ.desk, [school.x0 + col + 0.5, ground + 1, school.z0 + row + 0.5], 180);
-      ctx.centredAt(SQ.bookcase, [school.x0 + 1.5, ground + 1, school.z0 + 2.5], 90);
-      ctx.keepOut(school.x0 - 1, school.z0 - 2, school.x0 + school.w, school.z0 + school.d);
-      flowerBed(ctx, school.x0, school.z0 - 4, 12, 2);
+      // The school: a hall with a wide door to the north, inside a green board on the back wall, three rows of
+      // desks with their chairs facing it either side of an aisle from the door, the teacher's desk by the board,
+      // bookcases along the west wall.
+      const school = SCHOOL;
+      const classroom = placeHall(world, school.x0, school.z0, school.w, school.d, 7, ctx.surface, {
+        ...finish,
+        wall: block('birch-log'),
+        roof: block('brick-red'),
+        trim: block('log'),
+        foot: block('cobble-grey'),
+      }).room;
+      const doorX = SCHOOL_DOOR.x;
+      const boardZ = school.z0 + school.d - 1;
+      for (let x = doorX - 5; x <= doorX + 5; x++) for (let y = classroom.floorY + 1; y <= classroom.floorY + 3; y++) world.set(x, y, boardZ, block('board'));
+      for (const dz of [5, 8, 11]) {
+        for (const dx of [-7, -4, 4, 7]) {
+          ctx.centredAt(SQ.desk, [doorX + dx + 0.5, classroom.floorY, school.z0 + dz + 0.5], 180);
+          ctx.centredAt(SQ.chair, [doorX + dx + 0.5, classroom.floorY, school.z0 + dz - 0.5], 180);
+        }
+      }
+      ctx.centredAt(SQ.desk, [doorX + 6.5, classroom.floorY, boardZ - 1.5], 0);
+      for (const dz of [3, 6]) ctx.centredAt(SQ.bookcase, [classroom.x0 + 0.5, classroom.floorY, school.z0 + dz + 0.5], 90);
+      ctx.keepOut(school.x0 - 1, school.z0 - 4, school.x0 + school.w, school.z0 + school.d);
+      for (const x0 of [school.x0, doorX + 4]) flowerBed(ctx, x0, school.z0 - 2, 6, 1);
       ctx.landmark('lop-hoc-nho', 'Lớp học nhỏ', school.x0 + school.w / 2, school.z0 - 2);
       const well = { x: gate.x - 6, z: gate.z - 12 };
       placeWell(world, well.x, well.z, ground, { stone: block('brick-grey'), water: block('water') });
@@ -368,8 +530,7 @@ export async function generateLangVenSong() {
       ctx.landmark('vuon-hoa-to-ong', 'Vườn hoa tổ ong', garden.x, garden.z);
 
       // Chapter 3: the landing on the north bank with its jetty and boats, the class under the banyan.
-      const jettyX = landing.x + 18;
-      const bank = Math.ceil(riverCenter(jettyX) + RIVER_HALF + 2);
+      const [jettyX, bank] = [JETTY.x, JETTY.bank];
       jetty(ctx, jettyX, bank, 9, -1, WATER_LEVEL);
       for (let i = 0; i < 3; i++) ctx.prop(M.logs, jettyX + 7 + i * 3, bank + 6, 90);
       ctx.landmark('ben-do', 'Bến đò', jettyX, bank);
@@ -388,14 +549,16 @@ export async function generateLangVenSong() {
       for (const dz of [-14, 14]) for (const dx of [-1, 1]) ctx.prop(M.fence, pitch.x + dx, pitch.z + dz, 90);
       ctx.landmark('san-bong-lang', 'Sân bóng làng', pitch.x, pitch.z);
 
-      // The lake: the harbour's piers with sailboats, the lighthouse on its spit, the harbour's cottages.
+      // The lake: the harbour's piers with sailboats, the lighthouse on its spit (the harbour's cottages line their street).
       for (const [i, z] of [370, 410, 450].entries()) jetty(ctx, LAKE.x - LAKE.rx + 4 + i * 2, z, 16, 1, WATER_LEVEL, true);
       placeLighthouse(world, SPIT.x, SPIT.z, ground + 1, { red: block('wood-red'), white: block('snow'), glass: block('glass'), cap: block('roof-blue') });
+      // The spit stands a block over the village's ground: the doorway opens from the spit's own ground up.
+      widenRoundDoor(world, SPIT.x, SPIT.z, ctx.surface(SPIT.x, SPIT.z - 4) + 1, 3);
       ctx.keepOut(SPIT.x - 4, SPIT.z - 4, SPIT.x + 4, SPIT.z + 4);
       ctx.landmark('hai-dang', 'Hải đăng', SPIT.x, SPIT.z);
       ctx.landmark('ben-tau', 'Bến tàu', LAKE.x - LAKE.rx + 10, 410);
-      cottageRow(ctx, 600, 230, 3);
       for (const [x, z] of [[620, 560], [650, 580]] as const) ctx.prop(M.rock, x, z, x);
+      stepWays(ctx, WATER_WAYS, ctx.soil.path);
       streets();
     },
   });
