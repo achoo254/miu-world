@@ -127,10 +127,28 @@ const FIELD_TRACK: Point[] = [[160, 470], [700, 470]];
 const WHEAT_MILL_SPUR: Point[] = [[600, 470], [600, 484]];
 const POND_TRAIL: Point[] = [[660, 400], [660, 344]];
 const LOOKOUT_TRAIL: Point[] = [[700, 197], [749, 197]];
-const CAMP_TRAIL: Point[] = [[700, 244], [632, 244]];
+const CAMP_TRAIL_Z = 244;
+const CAMP_TRAIL: Point[] = [[700, CAMP_TRAIL_Z], [632, CAMP_TRAIL_Z]];
 const ORCHARD_TRACK: Point[] = [[700, 520], [780, 520]];
 const MILL_TRACK: Point[] = [[700, 660], [730, 660], [730, 632], [745, 632], [745, 635]];
 const TRACKS: Point[][] = [FIELD_TRACK, WHEAT_MILL_SPUR, POND_TRAIL, LOOKOUT_TRAIL, CAMP_TRAIL, ORCHARD_TRACK, MILL_TRACK];
+/** The two hamlets' rows of cottages (their front walls; doors on -z, yards seven deep before them). */
+const HAMLET_WEST = { x0: 18, z0: 380, x1: 140, z1: 446 };
+const HAMLET_NORTH = { x0: 250, z0: 150, x1: 286, z1: 240 };
+const hamletRows = (h: { z0: number; z1: number }): number[] => {
+  const rows: number[] = [];
+  for (let z = h.z0 + 8; z + 9 <= h.z1; z += 22) rows.push(z);
+  return rows;
+};
+/**
+ * Paved lanes along the hamlets, just outside each row's yard fence (nine blocks before its doors): the west
+ * hamlet's out to the lowland road, the north hamlet's off a spine down to the postern lane.
+ */
+const HAMLET_LANES: Point[][] = [
+  ...hamletRows(HAMLET_WEST).map((z): Point[] => [[HAMLET_WEST.x0, z - 9], [160, z - 9]]),
+  [[244, 260], [244, HAMLET_NORTH.z0 - 1]],
+  ...hamletRows(HAMLET_NORTH).map((z): Point[] => [[244, z - 9], [HAMLET_NORTH.x1, z - 9]]),
+];
 const TOWN_STREETS: Point[][] = [
   [[240, 660], [700, 660]],
   [[240, 750], [700, 750]],
@@ -139,7 +157,7 @@ const TOWN_STREETS: Point[][] = [
   [[560, 560], [560, 750]],
   [[160, 480], [60, 480], [60, 776]],
 ];
-const ROUTES: Point[][] = [AVENUE, HALL_WALK, COURT_ROAD, POSTERN_LANE, LOWLAND_ROAD, FOREST_ROAD, TOWER_LANE, MEADOW_LANE, BANK_WALK, NORTH_LANE, WEST_LANE, ...TOWN_STREETS, ...TRACKS];
+const ROUTES: Point[][] = [AVENUE, HALL_WALK, COURT_ROAD, POSTERN_LANE, LOWLAND_ROAD, FOREST_ROAD, TOWER_LANE, MEADOW_LANE, BANK_WALK, NORTH_LANE, WEST_LANE, ...TOWN_STREETS, ...TRACKS, ...HAMLET_LANES];
 
 /** Terraced rice paddies (inclusive) on the slope below the castle, and the golden wheat field beside them. */
 const PADDY = { x0: 250, z0: 446, x1: 428, z1: 540 };
@@ -447,6 +465,17 @@ export async function generateLauDai() {
             const [cx, cz] = [x + dx * k + (dz !== 0 ? s : 0), z + dz * k + (dx !== 0 ? s : 0)];
             for (let y = ctx.surface(cx, cz) + 1; y <= stepTop; y++) put(world, cx, y, cz, id);
           }
+        }
+      };
+      /**
+       * A walk paved from every door in a row of cottages facing -z (their front wall along `wallZ`, doors three
+       * high in it) out through the yard's fence gap to `toZ`, where the lane or the paving runs.
+       */
+      const doorWalks = (x0: number, x1: number, wallZ: number, toZ: number): void => {
+        for (let x = x0; x <= x1; x++) {
+          const doorway = world.get(x, top, wallZ) === 0 && world.get(x, top + 2, wallZ) === 0 && world.get(x, top + 4, wallZ) !== 0;
+          if (!doorway) continue;
+          for (let z = wallZ - 1; z >= toZ; z--) put(world, x, ctx.surface(x, z), z, B.path);
         }
       };
       const onTable = (model: string, x: number, z: number, y = top, yaw = 0): void => ctx.propAt(model, [x + 0.5, y + TABLE_TOP, z + 0.5], yaw);
@@ -1117,6 +1146,7 @@ export async function generateLauDai() {
       // The west ward: the servants' houses, the cowshed (the castle has no horses: its oxen pull the carts).
       // Their houses face a yard of grass with its fruit tree, behind a fence (the one green ward but the garden).
       const servants = cottageRow(ctx, 330, 222, 2);
+      doorWalks(330, servants.x1, 222, 215);
       beds.push({ x0: 329, z0: 222 - 7, x1: servants.x1, z1: 221 });
       ctx.landmark('nha-nguoi-hau', 'Nhà người hầu', 345, 214);
       const shed = { x0: 310, z0: 186, x1: 326, z1: 200 };
@@ -1424,7 +1454,8 @@ export async function generateLauDai() {
       ctx.landmark('canh-dong', 'Cánh đồng', 745, 520, LOW + 1);
 
       // The woodcutters' camp in a clearing of the forest: huts, log piles, barrels; a lookout tower on the hill.
-      cottageRow(ctx, CAMP.x0 + 4, CAMP.z0 + 26, 3);
+      const huts = cottageRow(ctx, CAMP.x0 + 4, CAMP.z0 + 26, 3);
+      doorWalks(CAMP.x0 + 4, huts.x1, CAMP.z0 + 26, CAMP_TRAIL_Z + 2);
       for (const [x, z] of [[632, 238], [640, 240], [650, 236], [664, 240]] as const) {
         box(x, top, z, x + 3, top + 1, z + 1, B.log);
         ctx.keepOut(x - 1, z - 1, x + 4, z + 2);
@@ -1455,11 +1486,15 @@ export async function generateLauDai() {
       }
       for (const route of [COURT_ROAD, NORTH_LANE, WEST_LANE, MEADOW_LANE, LOWLAND_ROAD, FOREST_ROAD, ...TOWN_STREETS]) streetHouses(ctx, route);
       streetHouses(ctx, POSTERN_LANE.slice(2), { sides: [1] });
-      hamlet(ctx, 18, 380, 140, 446);
-      hamlet(ctx, 250, 150, 286, 240);
-      joinWalks(ctx, ROUTES);
+      for (const h of [HAMLET_WEST, HAMLET_NORTH]) {
+        hamlet(ctx, h.x0, h.z0, h.x1, h.z1);
+        // A row's last cottage starts at most thirteen short of the hamlet's edge and is at most seventeen wide.
+        for (const z of hamletRows(h)) doorWalks(h.x0, h.x1 + 3, z, z - 7);
+      }
+      // The hamlets' lanes have their own walks to every door (above); the streets' garden walks join theirs.
+      joinWalks(ctx, ROUTES.filter((r) => !HAMLET_LANES.includes(r)));
       for (const route of ROUTES) {
-        if (route === HALL_WALK) continue;
+        if (route === HALL_WALK || HAMLET_LANES.includes(route)) continue;
         for (const stretch of vergeStretches(route, ROUTES.filter((r) => r !== route))) laneVerge(ctx, stretch);
       }
       ctx.landmark('duong-len-thanh', 'Đường lên thành', GATE_X, 470, ctx.surface(GATE_X, 470) + 1);

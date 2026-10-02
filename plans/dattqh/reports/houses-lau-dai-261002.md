@@ -87,3 +87,27 @@ Chưa chụp đủ bộ ảnh map (không `PREVIEW_ONLY`): brief pha này chỉ 
 Status: DONE
 Summary: Lâu đài đạt chuẩn: room-audit 0 thiếu, scenery-audit 0/0/0/0, reach-audit mọi mục tới được; các phòng lâu đài cửa 5–11 rộng, tháp canh, nhà gác, chòi gác dựng lại to và có lối vào, mạng đường liền từ chỗ xuất hiện qua cầu vào mọi cửa sảnh.
 Concerns: Ba mốc không phải quest được dời chỗ (ghi ở trên); vài đề xuất cho bộ dựng chung.
+
+## Bổ sung 03/10: cửa mọi nhà nằm trên mạng đường
+
+`scenery-audit` (b90db34) kiểm thêm: cửa mỗi không gian có mái ≥ 60 ô sàn phải cách ≤ 4 khối một ô đường nối về mạng của chỗ xuất hiện. Sinh lại ở HEAD 214e82b: **31 cửa bị cắt**, gồm 18 nhà xóm phía tây (x 18–143, z 388/410/432), 8 nhà xóm phía bắc (x 250–289, z 158–224), 2 nhà người hầu và 3 lán trại tiều phu. Tất cả là nhà `hamlet`/`cottageRow` quay cửa ra sân cỏ có rào, không có lối nào.
+
+Sửa trong `generate-lau-dai-map.ts`:
+
+- **Ngõ lát sau rào sân** mỗi dãy nhà (`HAMLET_LANES`), chín khối trước cửa. Ngõ xóm tây chạy ra đường đất thấp (x = 160). Ngõ xóm bắc đi ra một trục dọc x = 244, nối xuống lối cổng tây. Các ngõ này không đặt đèn/bụi ven đường vì hai bên là sân và tường sau nhà.
+- **`doorWalks`**: lối lát rộng bằng cửa (3) đi từ mỗi cửa (nhận ra ở tường trước: trống 3 khối, có tường bên trên), qua khe cổng rào, tới ngõ. Áp cho cả hai xóm, sân nhà người hầu (ra nền lát trong thành) và trại tiều phu (ra đường đất của trại).
+- `joinWalks` không chạy trên ngõ xóm (đã có lối riêng). Lần đầu chạy, nó lát một dải chạm đèn cổng của nhà phố bên cạnh; vùng dò cửa cũng được giới hạn trong phạm vi thật của xóm, không cắt lối xuyên nhà phố kế bên.
+
+Kết quả sau `pnpm world:lau-dai`:
+
+- `scenery-audit`: 0 / 0 / 0 / 0 (gồm 0 cửa nhà bị cắt).
+- `room-audit`: 370 không gian có mái, 0 thiếu.
+- `reach-audit`: mọi mục tới được, chỗ xuất phát trống.
+- tsc: 0 lỗi. eslint `--max-warnings=0` trên 2 tệp: sạch.
+- `pnpm vitest run tools/world/zone-maps.test.ts -t "lau-dai"`: 4 đạt.
+
+Không chụp lại ảnh mock: các khung đặt ở lâu đài và nội thất, hai xóm nằm ngoài khung hoặc ở rìa xa của toàn cảnh, nên không đổi rõ.
+
+Status: DONE
+Summary: Mọi cửa nhà ở Lâu đài nay nằm trên mạng đường: có ngõ lát sau rào mỗi dãy nhà xóm, lối lát từ từng cửa ra ngõ; ba audit sạch, tsc, eslint và test map xanh.
+Concerns: Không có.
