@@ -28,6 +28,8 @@ const LEAF_BLOCKS = ['leaves', 'leaves-autumn', 'leaves-pink'];
 const LANE_WIDTH = 7;
 /** A trunk is a tree's when leaves hang this close above or round its top. */
 const CROWN_REACH = 3;
+/** A way's block running this deep under the surface is rock, not paving. */
+const ROCK_DEPTH = 4;
 
 export interface SceneryFinding {
   kind: 'tree-on-way' | 'prop-in-way' | 'off-the-ways' | 'cut-off';
@@ -51,11 +53,28 @@ export async function auditScenery(map: string): Promise<SceneryFinding[]> {
   const inside = (x: number, z: number): boolean => x >= 0 && z >= 0 && x < SX && z < SZ;
   const findings: SceneryFinding[] = [];
 
-  // Block trees: a trunk standing straight on a way block, with a crown of leaves over it.
+  // Paving is a surface laid on the ground; the same stone running deep under it is a rock face (a cliff, a
+  // lava field) built from a way's block, where trees and boulders belong.
+  const paved = (x: number, y: number, z: number): boolean => {
+    const id = world.get(x, y, z);
+    if (!way.has(id)) return false;
+    for (let d = 1; d <= ROCK_DEPTH; d++) if (y - d < 0 || world.get(x, y - d, z) !== id) return true;
+    return false;
+  };
+  // A log in a wall: logs on both sides in a line, or a built block beside it (a tree stands clear, its only
+  // neighbours air, leaves or the other trunks of a thick tree).
+  const inWall = (x: number, y: number, z: number): boolean => {
+    const at = (dx: number, dz: number): number => (inside(x + dx, z + dz) ? world.get(x + dx, y, z + dz) : 0);
+    const [w, east, n, s] = [at(-1, 0), at(1, 0), at(0, -1), at(0, 1)];
+    if ((trunk.has(w) && trunk.has(east)) || (trunk.has(n) && trunk.has(s))) return true;
+    return [w, east, n, s].some((id) => id !== 0 && !trunk.has(id) && !leaf.has(id));
+  };
+
+  // Block trees: a trunk standing straight on paving, with a crown of leaves over it.
   for (let x = 0; x < SX; x++) {
     for (let z = 0; z < SZ; z++) {
       for (let y = 1; y < SY - 1; y++) {
-        if (!trunk.has(world.get(x, y, z)) || !way.has(world.get(x, y - 1, z))) continue;
+        if (!trunk.has(world.get(x, y, z)) || !paved(x, y - 1, z) || inWall(x, y, z)) continue;
         let top = y;
         while (top + 1 < SY && trunk.has(world.get(x, top + 1, z))) top++;
         let crowned = false;
@@ -69,17 +88,15 @@ export async function auditScenery(map: string): Promise<SceneryFinding[]> {
 
   // Props: tree models on a way, and solid props on a way's middle (way cells on both sides along x or z).
   const catalog = modelCatalogSchema.parse(JSON.parse(await readFile(path.join(REPO_ROOT, 'content/world/models.json'), 'utf8')));
-  const groundUnder = (x: number, y: number, z: number): number => {
-    for (let gy = Math.min(SY - 1, y); gy >= Math.max(0, y - 2); gy--) {
-      const id = world.get(x, gy, z);
-      if (id !== 0) return id;
-    }
-    return 0;
+  // Whether the first block at most two under (x, y, z) is paving.
+  const pavedUnder = (x: number, y: number, z: number): boolean => {
+    for (let gy = Math.min(SY - 1, y); gy >= Math.max(0, y - 2); gy--) if (world.get(x, gy, z) !== 0) return paved(x, gy, z);
+    return false;
   };
   for (const p of e.props) {
     const [x, z] = [Math.floor(p.position[0]), Math.floor(p.position[2])];
     const y = Math.floor(p.position[1]);
-    if (!inside(x, z) || !way.has(groundUnder(x, y - 1, z))) continue;
+    if (!inside(x, z) || !pavedUnder(x, y - 1, z)) continue;
     const file = p.model.split('/').pop() ?? p.model;
     if (/^tree|_tree|palm|bamboo|pine/i.test(file) && !/street/i.test(file)) {
       findings.push({ kind: 'tree-on-way', at: [x, y, z], what: file });
@@ -88,7 +105,7 @@ export async function auditScenery(map: string): Promise<SceneryFinding[]> {
     if (modelTraversal(catalog, p.model) === 'walk-through') continue;
     // A lane (way at most LANE_WIDTH across one way) is for walking: a solid prop stands at its edge, not in
     // its middle. Squares, yards and market floors are wider and keep their benches, stalls and fountains.
-    const wayAt = (dx: number, dz: number): boolean => inside(x + dx, z + dz) && way.has(groundUnder(x + dx, y - 1, z + dz));
+    const wayAt = (dx: number, dz: number): boolean => inside(x + dx, z + dz) && pavedUnder(x + dx, y - 1, z + dz);
     const run = (dx: number, dz: number): number => {
       let n = 0;
       while (n < LANE_WIDTH && wayAt(dx * (n + 1), dz * (n + 1))) n++;
@@ -114,49 +131,57 @@ export async function auditScenery(map: string): Promise<SceneryFinding[]> {
  */
 function wayNetwork(world: VoxelWorld, e: WorldEntities, network: ReadonlySet<number>): SceneryFinding[] {
   const [SX, SY, SZ] = e.size;
-  // The way cell under each column's highest standing spot that is on a way (block coordinates of the way block).
-  const wayTop = new Int16Array(SX * SZ).fill(-1);
-  for (let x = 0; x < SX; x++) {
-    for (let z = 0; z < SZ; z++) {
-      for (let y = SY - 2; y >= 1; y--) {
-        if (network.has(world.get(x, y, z)) && world.get(x, y + 1, z) === 0) {
-          wayTop[x + z * SX] = y;
-          break;
-        }
-      }
-    }
+  // Every way cell with room to stand on it, floor over floor (a ground floor under an upper one counts too):
+  // column x + z * SX holds its cells' heights from `first[c]` to `first[c + 1]` in `ys`.
+  const first = new Int32Array(SX * SZ + 1);
+  const ys: number[] = [];
+  for (let c = 0; c < SX * SZ; c++) {
+    first[c] = ys.length;
+    const [x, z] = [c % SX, Math.floor(c / SX)];
+    for (let y = 1; y < SY - 1; y++) if (network.has(world.get(x, y, z)) && world.get(x, y + 1, z) === 0) ys.push(y);
   }
+  first[SX * SZ] = ys.length;
   // Components of way cells, 4-connected, at most one block up or down.
-  const comp = new Int32Array(SX * SZ).fill(-1);
+  const comp = new Int32Array(ys.length).fill(-1);
+  const columnOf = new Int32Array(ys.length);
+  for (let c = 0; c < SX * SZ; c++) for (let i = first[c] ?? 0; i < (first[c + 1] ?? 0); i++) columnOf[i] = c;
   let count = 0;
-  for (let i = 0; i < SX * SZ; i++) {
-    if (wayTop[i] === -1 || comp[i] !== -1) continue;
+  for (let i = 0; i < ys.length; i++) {
+    if (comp[i] !== -1) continue;
     const stack = [i];
     comp[i] = count;
     while (stack.length > 0) {
-      const c = stack.pop() as number;
-      const [x, z] = [c % SX, Math.floor(c / SX)];
+      const cell = stack.pop() as number;
+      const c = columnOf[cell] ?? 0;
+      const [x, z, y] = [c % SX, Math.floor(c / SX), ys[cell] ?? 0];
       for (const [dx, dz] of [[1, 0], [-1, 0], [0, 1], [0, -1]] as const) {
         const [nx, nz] = [x + dx, z + dz];
         if (nx < 0 || nz < 0 || nx >= SX || nz >= SZ) continue;
-        const n = nx + nz * SX;
-        if (wayTop[n] === -1 || comp[n] !== -1 || Math.abs((wayTop[n] ?? 0) - (wayTop[c] ?? 0)) > 1) continue;
-        comp[n] = count;
-        stack.push(n);
+        const nc = nx + nz * SX;
+        for (let n = first[nc] ?? 0; n < (first[nc + 1] ?? 0); n++) {
+          if (comp[n] !== -1 || Math.abs((ys[n] ?? 0) - y) > 1) continue;
+          comp[n] = count;
+          stack.push(n);
+        }
       }
     }
     count++;
   }
-  const nearest = (px: number, pz: number, reach: number): number => {
+  // The network nearest a place: the way cell in the closest ring of columns whose height is nearest its own.
+  const nearest = (px: number, py: number, pz: number, reach: number): number => {
     const [cx, cz] = [Math.floor(px), Math.floor(pz)];
     for (let r = 0; r <= reach; r++) {
+      let best = -1;
       for (let dx = -r; dx <= r; dx++) {
         for (let dz = -r; dz <= r; dz++) {
           if (Math.max(Math.abs(dx), Math.abs(dz)) !== r) continue;
           const [x, z] = [cx + dx, cz + dz];
-          if (x >= 0 && z >= 0 && x < SX && z < SZ && (comp[x + z * SX] ?? -1) !== -1) return comp[x + z * SX] ?? -1;
+          if (x < 0 || z < 0 || x >= SX || z >= SZ) continue;
+          const c = x + z * SX;
+          for (let i = first[c] ?? 0; i < (first[c + 1] ?? 0); i++) if (best === -1 || Math.abs((ys[i] ?? 0) - py) < Math.abs((ys[best] ?? 0) - py)) best = i;
         }
       }
+      if (best !== -1) return comp[best] ?? -1;
     }
     return -1;
   };
@@ -172,7 +197,7 @@ function wayNetwork(world: VoxelWorld, e: WorldEntities, network: ReadonlySet<nu
   const findings: SceneryFinding[] = [];
   const compOf = new Map<string, number>();
   for (const p of places) {
-    const c = nearest(p.at[0] ?? 0, p.at[2] ?? 0, p.reach);
+    const c = nearest(p.at[0] ?? 0, p.at[1] ?? 0, p.at[2] ?? 0, p.reach);
     if (c === -1) findings.push({ kind: 'off-the-ways', at: [Math.floor(p.at[0] ?? 0), Math.floor(p.at[1] ?? 0), Math.floor(p.at[2] ?? 0)], what: p.name });
     else compOf.set(p.name, c);
   }
