@@ -58,6 +58,19 @@ Chụp lại cả 6 khung `mock__` (nhà to ra nên chỉnh 4 góc): d-03 lùi x
 3. `laneVerge` (`scenery.ts`): đoạn rào 3 khúc chỉ kiểm ô đầu, các khúc sau có thể nằm trên chỗ giao đường; `bambooHedge` chỉ tránh tuyến (`onPath`), không biết lối map tự lát — map này bọc `ctx.prop` để tránh.
 4. `placeHouse` có `floor` nhưng ngưỡng cửa (hàng tường) vẫn là đất: nên lát ngưỡng bằng `floor` để sàn trong nối với lối ngoài.
 
+## Bổ sung 03/10/2026: gờ dưới mái chuồng bò
+
+`room-audit` bản 90dc2ef báo 2 chỗ thiếu `[638,22,483]`, `[657,22,483]` (4 × 25, "doorway 2 wide"): dải đứng được trên đỉnh tường và lớp ván lót hai bên chuồng, dưới mái gambrel, hở ở hai đầu hồi. Không phải phòng. Sửa trong `placeRedBarn` (`structures/xom-mai-am-home.ts`): mái hạ xuống tường. Ván đỏ lấp khe từ đỉnh tường tới chân mái trên cột tường và cột lót mỗi bên, suốt chiều dài chuồng; nhìn từ ngoài không đổi, bên trong thấy thành ván tới mái.
+
+Sau `pnpm world:xom-mai-am`:
+- `room-audit`: 174 không gian có mái, **0 thiếu**.
+- `reach-audit`: mọi mục tới được; chỗ xuất hiện trống.
+- `scenery-audit`: **0 / 0 / 0 / 0**.
+- `pnpm vitest run tools/world/zone-maps.test.ts -t "xom-mai-am"`: 4 test đạt (32 test của map khác bị bỏ qua theo bộ lọc).
+- `tsc`: 0 lỗi; `eslint --max-warnings=0` trên hai tệp của map: sạch.
+
+Không chụp lại ảnh; đã chạy `pnpm assets:manifest` qua khóa.
+
 Status: DONE
 Summary: Mọi nhà của Xóm Mái Ấm đạt chuẩn (nhà dân 13–17 × 11–12 tường 7, nhà Mẩy 21 × 15 với 87% sàn trống, chuồng 25 × 27 cửa 7 ô 85% trống, chòi và nhà ông 13–15 rộng, cửa 3 × 3); room-audit 0 thiếu, reach-audit đạt, scenery-audit 0/0/0/0, tsc/eslint sạch.
-Concerns: room-audit chung không thấy cửa hẹp vì vòng mái hiên (đề xuất 1); cảnh báo khoảng cách quest tv2-t14-b25 có từ trước; chưa chạy test của map theo yêu cầu.
+Concerns: cảnh báo khoảng cách quest tv2-t14-b25 có từ trước (địa danh vách tổ ong và luống cải cách nhau 2,8 ô); ảnh review chưa chụp lại sau lần lấp khe mái chuồng (thay đổi chỉ thấy từ trong chuồng).

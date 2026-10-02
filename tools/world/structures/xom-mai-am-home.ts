@@ -175,12 +175,19 @@ export function placeRedBarn(
   const half = (w + 1) / 2;
   const rise = (k: number): number => (k <= 3 ? 2 * k : 6 + Math.ceil((k - 3) * 0.67));
   const roofAt = new Map<number, number>();
+  const roofFrom = new Map<number, number>();
   for (let x = x0 - 1; x <= x1 + 1; x++) {
     const k = Math.min(x - (x0 - 1), x1 + 1 - x, half);
     const y = baseY + H + rise(k);
     const from = k > 0 ? baseY + H + rise(k - 1) + 1 : y;
     roofAt.set(x, y);
+    roofFrom.set(x, from);
     for (let z = z0 - 1; z <= z1 + 1; z++) for (let yy = from; yy <= y; yy++) put(world, x, yy, z, b.roof);
+  }
+  // The roof sits down on the side walls and their lining: red boards fill the gap under its lowest slope, so
+  // no ledge is left along the wall tops under the eaves.
+  for (const x of [x0, x0 + 1, x1 - 1, x1]) {
+    for (let z = z0; z <= z1; z++) for (let y = baseY + H; y < (roofFrom.get(x) ?? baseY + H); y++) put(world, x, y, z, b.wall);
   }
   // Gables: red boards under the roof, a white trim along its edge, the loft window with its X.
   for (const z of [z0, z1]) {
