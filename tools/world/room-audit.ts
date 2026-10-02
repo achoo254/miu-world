@@ -1,5 +1,5 @@
 // `pnpm exec tsx tools/world/room-audit.ts <map>…`: every roofed space of a generated map (floor cells with a
-// block roof 2–24 above) as a room, with what the owner asks of a house (02/10/2026: a really wide way in,
+// block roof 2–24 above, and no open sky beside it: the ring under the eaves is outside) as a room, with what the owner asks of a house (02/10/2026: a really wide way in,
 // room enough inside, houses many times the child's size). Per room: its doorways (width in blocks, and the
 // climb from the ground outside onto its floor), its floor area, the share of floor left free by solid props
 // (prop-collision.ts), the share of that free floor reached from a doorway, and the cells of 1-wide pinches.
@@ -14,8 +14,12 @@ import { ASSETS_DIR } from '../assets/asset-lib';
 import { propCells } from './prop-cells';
 import { walkSolid } from './walkable';
 
-/** What a house should give the child (blocks): a doorway this wide, a climb onto the floor this low, this share of its floor free and reached. */
-export const ROOM_RULES = { doorWidth: 3, doorClimb: 1, freeShare: 0.7, reachShare: 0.95, minArea: 12 } as const;
+/**
+ * What a house should give the child (blocks): a doorway this wide, a climb onto the floor this low, this share
+ * of its floor free and reached. A roofed space narrower than `minSpan` (an alley under two houses' eaves, a
+ * covered walk) is a passage, not a room.
+ */
+export const ROOM_RULES = { doorWidth: 3, doorClimb: 1, freeShare: 0.7, reachShare: 0.95, minArea: 12, minSpan: 3 } as const;
 /** How far over a floor a block still makes it a roofed space (blocks). */
 const ROOF_REACH = 24;
 
@@ -52,8 +56,12 @@ export async function auditRooms(map: string): Promise<RoomReport[]> {
     for (let d = 2; d <= ROOF_REACH; d++) if (B(x, y + d, z)) return true;
     return false;
   };
+  // Under the eaves is outside: a roofed spot with open sky beside it at the child's head (no wall, no roof,
+  // whatever the ground does there) is the ring under a roof's overhang or a doorway's sill, and counting it as
+  // the room would join the whole ring to the doorway.
+  const underEaves = (x: number, y: number, z: number): boolean => SIDES.some(([dx, dz]) => !B(x + dx, y + 1, z + dz) && !B(x + dx, y + 2, z + dz) && !roofed(x + dx, y + 1, z + dz));
   const indoor = new Set<string>();
-  for (let x = 1; x < SX - 1; x++) for (let z = 1; z < SZ - 1; z++) for (let y = 1; y < SY - 3; y++) if (spot(x, y, z) && roofed(x, y, z)) indoor.add(`${x},${y},${z}`);
+  for (let x = 1; x < SX - 1; x++) for (let z = 1; z < SZ - 1; z++) for (let y = 1; y < SY - 3; y++) if (spot(x, y, z) && roofed(x, y, z) && !underEaves(x, y, z)) indoor.add(`${x},${y},${z}`);
   const parse = (k: string): [number, number, number] => k.split(',').map(Number) as [number, number, number];
   const free = ([x, y, z]: readonly number[]): boolean => !props.has(cellKey(x ?? 0, y ?? 0, z ?? 0)) && !props.has(cellKey(x ?? 0, (y ?? 0) + 1, z ?? 0));
   const seen = new Set<string>();
@@ -150,6 +158,7 @@ export async function auditRooms(map: string): Promise<RoomReport[]> {
     const xs = cells.map((c) => c[0]);
     const zs = cells.map((c) => c[2]);
     const box: [number, number, number, number] = [Math.min(...xs), Math.min(...zs), Math.max(...xs), Math.max(...zs)];
+    if (Math.min(box[2] - box[0], box[3] - box[1]) + 1 < ROOM_RULES.minSpan) continue;
     const report: RoomReport = {
       at: [Math.round((box[0] + box[2]) / 2), cells[0]?.[1] ?? 0, Math.round((box[1] + box[3]) / 2)],
       box,
