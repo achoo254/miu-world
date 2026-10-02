@@ -2,6 +2,14 @@
 
 Người sở hữu (02/10/2026): "cây lại mọc giữa đường… khung cảnh phải giống như ngoài đời thật chứ đừng render lung tung không quy tắc"; "nhà phải thật rộng lối vào, không gian bên trong đủ cho nhân vật di chuyển, to gấp nhiều lần nhân vật". Áp cho mọi generator map (`tools/world/generate-*-map.ts`, `tools/world/structures/**`) và vùng ngoài (`packages/voxel/src/outland-*.ts`).
 
+## Mạng đường
+
+Người sở hữu (02/10/2026): "mỗi map tùy bối cảnh mà tạo làn đường rõ ràng, nối dài liền nhau giữa các điểm hợp lý… điểm xuất phát ở đâu thì điểm kết thúc phải có đường đi".
+
+- Mỗi map có một mạng đường liền mạch theo bối cảnh: đường nhựa/đá trong phố, ngõ lát trong làng, đường đất giữa ruộng, lối mòn trong rừng, đường lát đá và bậc trong lâu đài, cầu ván qua nước, lối ván trên đảo.
+- Mọi điểm bé bắt đầu hay đi tới đều nằm cạnh đường và cùng một mạng: chỗ xuất hiện, điểm đầu mỗi chương, cổng, bến xe và điểm xuống xe, khu bài học, các địa danh, cửa từng ngôi nhà. Nơi cách bởi nước hay vực thì nối bằng cầu, hoặc tuyến thuyền/cáp treo có bến ở hai đầu đường.
+- Đường bám địa hình (dốc thoai thoải, bậc mỗi bậc 1 khối), rẽ nhánh hợp lý (đường chính rộng 3–5 khối, nhánh 2–3 khối), không đứt đoạn, không cụt giữa đồng trừ khi dẫn tới một nơi.
+
 ## Đường và lối đi
 
 - Đường, ngõ, lối mòn, sân lát, quảng trường (`path`, `trail`, `cobble`, `cobble-grey`, `paver`, `asphalt`) là chỗ đi: không cây nào mọc ra từ mặt lát. Cây đứng bên mép đường, trên đất/cỏ, hoặc trong bồn cây có viền (trồng trong ô đất chừa sẵn trên sân).
@@ -25,6 +33,6 @@ Mỗi vật có `traversal` trong danh mục (`content/world/models.json`, `cont
 
 ## Kiểm tra (chạy sau mỗi lần `pnpm world:<map>`)
 
-- `pnpm exec tsx tools/world/scenery-audit.ts <map>`: 0 cây trên đường/sân lát, 0 đồ chắn giữa lối hẹp.
+- `pnpm exec tsx tools/world/scenery-audit.ts <map>`: 0 cây trên đường/sân lát, 0 đồ chắn giữa lối hẹp, 0 nơi không cạnh đường, 0 nơi trên đường không nối về mạng của chỗ xuất hiện (tuyến xe/thuyền/cáp treo nối hai đầu).
 - `pnpm exec tsx tools/world/room-audit.ts <map>`: không nhà nào thiếu chuẩn (không gian có mái không phải nhà — gầm cầu, mái hiên, vách đá — ghi lý do).
 - `pnpm exec tsx tools/world/reach-audit.ts <map>`: mọi mục quest, cổng, bến xe tới được; chỗ xuất hiện, điểm xuống xe trống.
