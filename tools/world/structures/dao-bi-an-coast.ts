@@ -253,7 +253,8 @@ export function buildCove(k: IslandKit): void {
       const e = ((z - midZ) / halfZ) ** 2 + ((x - cave.x0) / (cave.x1 - cave.x0)) ** 6;
       if (e > 1) continue;
       const ceil = Math.min(TOP + Math.round((x < cave.x0 + 4 ? 6 : 8) * Math.sqrt(1 - Math.min(1, e))), ctx.surface(x, z) - 3);
-      k.put(x, LEVEL, z, x < cave.x0 + 4 ? b.sand : b.planks);
+      // The beach's trail runs in over the mouth to their plank floor.
+      k.put(x, LEVEL, z, x < cave.x0 + 4 ? b.trail : b.planks);
       for (let y = TOP; y <= ceil; y++) k.put(x, y, z, 0);
       for (const [dx, dz] of [[1, 0], [0, 1], [0, -1]] as const) {
         for (let y = TOP; y <= ceil + 1; y++) if (ctx.world.get(x + dx, y, z + dz) !== 0) k.put(x + dx, y, z + dz, roll(x + dx, y, 71) < 0.06 ? b.lantern : k.darkAt(x + dx, y, z + dz));

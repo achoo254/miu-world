@@ -113,3 +113,24 @@ Status: DONE_WITH_CONCERNS
 Summary: Đảo bí ẩn có 6 nhà chài trên cột 13–15 × 11 tường 7, lều thuyền trưởng 11 × 13 bằng khối, sạp 7 × 4, cửa 3 × 3 với bậc 1 khối, ≥ 86% sàn trống; room/reach/scenery audit đều 0 (room-audit tầm mái 24; gồm mạng đường liền từ chỗ xuất hiện tới mọi nơi).
 Concerns: ảnh review mốc làng chài bị mái che do góc chụp chung của render-preview (đề xuất trong báo cáo).
 ```
+
+## Bổ sung 03/10/2026: cửa nhà nối vào mạng đường
+
+`scenery-audit` nay kiểm cả cửa mỗi nhà (commit b90db34; `room-audit` chỉnh ở 90dc2ef). Trên map trước khi sửa: 1 cửa bị đứt, ô ngoài cửa [700,13,664] của hang hải tặc (713,13,670). Đường bãi biển đi tới miệng hang, nhưng 4 cột miệng hang lát cát (`sand`, không phải khối đường), nên sàn ván trong hang tách khỏi mạng.
+
+Sửa (`structures/dao-bi-an-coast.ts`, `buildCove`): miệng hang lát đường đất (`trail`) thay cát, nối đường bãi biển với sàn ván. Không đổi cỡ, độ cao hay đồ đạc.
+
+Sau `pnpm world:dao-bi-an`:
+
+- `scenery-audit`: 0 cây trên đường, 0 đồ chắn lối, 0 nơi xa đường, 0 nơi (kể cả cửa nhà) đứt khỏi mạng.
+- `room-audit` (bản mới): 13 không gian có mái, 0 thiếu.
+- `reach-audit`: mọi mục tới được, chỗ xuất hiện trống.
+- `pnpm vitest run tools/world/zone-maps.test.ts -t "dao-bi-an"`: 4 đạt, 32 bỏ qua (test của map khác).
+- eslint `--max-warnings=0` trên 4 tệp của map: 0 lỗi, 0 cảnh báo. `tsc --noEmit`: 0 lỗi.
+- Không chụp lại ảnh: thay đổi chỉ là 4 cột nền ở miệng hang. Khung d-12 vẫn là ảnh trước đó (miệng hang lúc ấy lát cát). Đã chạy `assets:manifest` qua khóa chụp.
+
+```
+Status: DONE
+Summary: Cửa hang hải tặc đã nối vào mạng đường (miệng hang lát đường đất); scenery 0/0/0/0, room 0 thiếu, reach đủ, test map 4/4, tsc và eslint sạch.
+Concerns: không
+```
