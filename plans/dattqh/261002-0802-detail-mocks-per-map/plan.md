@@ -63,8 +63,9 @@ Map ở pha 4 và tấm mock của nó:
 
 Thêm theo yêu cầu người sở hữu trong lúc làm: camera khi chơi không bị cảnh vật đẩy, vật che mờ đi, trần mái quanh bé mờ trong nhà; chợ có người bán mọi sạp và người mua đi giữa các gian; game hiện tối đa 24 người, luôn giữ nhóm gần nhất, thưa bớt khi vượt ngân sách lệnh vẽ hoặc tam giác; vật thấp không đổ bóng; bộ xếp quest đặt mục quanh landmark cùng tên.
 
-Câu hỏi chờ người sở hữu: cầu thang trường (c-18) cần nới giếng thang; nhà Mẩy to hơn tỉ lệ mock để phòng rộng; ảnh toàn cảnh Lâu đài, Thư viện chưa ôm hết cảnh nếu không đổi khu bài học. Đề xuất: giữ nguyên cả ba.
+Ba câu còn mở đã qua Jev (13:17, report `jev-261002-0802-detail-mocks.md`): giữ mặt bằng nhà chính (cầu thang c-18 ở mức gần), giữ nhà Mẩy rộng, giữ khu bài học Lâu đài và Thư viện (khung toàn cảnh ở mức gần; câu này Jev escalate 0,61, dùng lựa chọn của Jev).
 
 ## Validation log
 
 - 02/10/2026: bảy câu qua Jev (report trên); câu Đảo/Núi tuyết escalate, dùng lựa chọn của Jev.
+- 02/10/2026 13:17: ba câu còn mở qua Jev, giữ nguyên cả ba.

@@ -49,3 +49,15 @@ Nghĩa:
 7. **Cảnh đêm:** đèn, lồng đèn, cửa sổ sáng ấm lúc chiều tối với bầu trời buổi tối có sẵn; không làm chu kỳ ngày đêm.
 
 Ghi vào plan `plans/dattqh/261002-0802-detail-mocks-per-map/plan.md`.
+
+## Ba câu còn mở sau khi làm lại 8 map (02/10/2026 13:17, jev-1.13.0)
+
+Người sở hữu giao Jev quyết.
+
+| Câu | Mức | Jev chọn | Độ tin cậy | Xác suất | Quyết |
+| --- | --- | --- | --- | --- | --- |
+| Cầu thang trường (khung c-18) | low | keep-plan | 0,88 | 0,94 · nới giếng thang 0,06 | auto |
+| Tỉ lệ nhà Mẩy (khung d-03) | low | keep-roomy | 0,95 | 0,98 · thu nhỏ 0,02 | auto |
+| Khung toàn cảnh Lâu đài, Thư viện (d-01) | medium | keep-zones | 0,22 | 0,61 · dồn khu bài học 0,39 | escalate → dùng lựa chọn của Jev |
+
+Nghĩa: giữ mặt bằng nhà chính đã duyệt (khung cầu thang ở mức "gần"); giữ nhà Mẩy rộng để phòng nhìn rõ từ camera bám bé; giữ nguyên các khu bài học của Lâu đài và Thư viện (hai khung toàn cảnh ở mức "gần").
