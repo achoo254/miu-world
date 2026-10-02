@@ -1,4 +1,4 @@
-// Generates chapter 1 "Khu rừng bí mật" from a fixed seed: rolling terrain with rim hills, a stream,
+// Generates chapter 1 "Khu rừng bí mật" from a fixed seed: rolling terrain, a stream,
 // a wooden bridge, stepping stones, a stone path, scattered trees, the ancient tree, plus the quest's
 // interactables (ids match the `target`s in content/quests/forest-ch1.json) and decorative props; the
 // places of the forest's Tiếng Việt lessons (chapters 2–5) are placed from the catalogues.
@@ -13,6 +13,7 @@ import { distanceToPath, pathColumns, type Point } from './structures/path';
 import { cellsIn } from './chapters/place-quest-targets';
 import { placeAncientTree } from './structures/tree';
 import { LIFE_CLIPS, LIFE_HEIGHTS, crowd, person, placeVillageLife } from './village-life';
+import { outlandSpecOf } from './outland-spec';
 
 export const MAP_ID = 'forest-ch1';
 export const SEED_TEXT = 'miu-forest-ch1';
@@ -148,7 +149,7 @@ export async function generateForest(): Promise<{ world: VoxelWorld; entities: W
 
   // 1. Height field: rolling ground, levelled at the clearings and along the path, sunk at the stream.
   const surface = heightField(world, (x, z) => {
-    let h = rollingHeight(seed, x, z, world.size, { ground: 12, roll: 3.5, rim: 9 });
+    let h = rollingHeight(seed, x, z, { ground: 12, roll: 3.5 });
     for (const c of clearings) {
       const k = smoothstep(c.radius, c.radius + 5, Math.hypot(x - c.x, z - c.z));
       h = 12 * (1 - k) + h * k;
@@ -211,7 +212,7 @@ export async function generateForest(): Promise<{ world: VoxelWorld; entities: W
   for (let dx = -4; dx <= 4; dx++) for (let dz = -6; dz <= -1; dz++) if (Math.hypot(dx, dz + 3) < 3.6) world.set(fallX + dx, surface(fallX + dx, fallZ + dz), fallZ + dz, B.water);
   for (const dx of [-3, 3]) world.set(fallX + dx, surface(fallX + dx, fallZ + 1) + 1, fallZ + 1, B.rock);
 
-  // 6. Scattered trees (jittered grid, rejecting path, stream, clearings and rim).
+  // 6. Scattered trees (jittered grid, rejecting path, stream and clearings).
   const occupied = scatterTrees({
     world,
     rng,
@@ -447,6 +448,7 @@ export async function generateForest(): Promise<{ world: VoxelWorld; entities: W
       { id: 'chest', name: 'Rương', position: place(ancient.x - 5, ancient.z + 3) },
     ],
     ambients,
+    outland: await outlandSpecOf(world, seed, 'forest', 12),
   };
   return { world, entities };
 }

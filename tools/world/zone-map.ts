@@ -1,5 +1,5 @@
 // A region map laid out as one zone per chapter (map-kit.ts has the parts every map shares): level ground
-// in each zone, rolling hills between them and at the rim, a path from the spawn to every zone, optional
+// in each zone, rolling hills between them (the land round the map carries on past its edge), a path from the spawn to every zone, optional
 // water (river, pond, moat) with plank decks wherever a path crosses it, the map's own structures and props
 // (its `build`), trees round the rest, and the quest targets of each chapter placed in its zone. A map file
 // gives the zones, the water and what to build; this file does the rest the same way for every such map.
@@ -9,6 +9,8 @@ import { VoxelWorld } from '../../packages/voxel/src/chunk-format';
 import type { Interactable, WorldEntities } from '../../packages/voxel/src/world-entities';
 import { REPO_ROOT, readJson } from '../assets/asset-lib';
 import { cellsIn } from './chapters/place-quest-targets';
+import type { OutlandTheme } from '../../packages/voxel/src/outland';
+import { outlandSpecOf } from './outland-spec';
 import { columnsOf, fillColumn, heightField, loadBlocks, mapModels, PACK, placeRegionTargets, rollingHeight, scatterTrees, smoothstep, standHeight, WIDE_MAP_SIDE } from './map-kit';
 import { SCENERY_MODELS } from './scenery';
 import { LIFE_CLIPS, LIFE_HEIGHTS, placeVillageLife, type Resident } from './village-life';
@@ -63,9 +65,11 @@ export interface ZoneMapSpec {
   mapId: string;
   region: string;
   seedText: string;
+  /** What the land round the map looks like most (packages/voxel outland.ts): its villages' trades and land. */
+  outland: OutlandTheme;
   /** Side of the map in blocks, a multiple of 16 (default 800: owner, 01/10/2026, ten times the area of 256). */
   size?: number;
-  ground?: { ground: number; roll: number; rim: number };
+  ground?: { ground: number; roll: number };
   zones: readonly Zone[];
   spawn: { x: number; z: number; yaw: number };
   /** The map's own landforms (a hill, a slope), from the shaped height of a column (before the water sinks it). */
@@ -123,7 +127,7 @@ export async function generateZoneMap(spec: ZoneMapSpec): Promise<{ world: Voxel
   const side = (spec.size ?? WIDE_MAP_SIDE) / 16;
   const world = new VoxelWorld([side, 3, side]);
   const [sx, sy, sz] = world.size;
-  const ground = spec.ground ?? { ground: 12, roll: 3, rim: 10 };
+  const ground = spec.ground ?? { ground: 12, roll: 3 };
   const level = ground.ground;
   const zones = spec.zones;
   const zone = (chapter: number): Zone => {
@@ -150,7 +154,7 @@ export async function generateZoneMap(spec: ZoneMapSpec): Promise<{ world: Voxel
   // 1. Ground: level in the zones and round the spawn, low along the paths, sunk under the water.
   const spawnZone: Zone = { chapter: 0, id: 'spawn', name: '', x: spec.spawn.x, z: spec.spawn.z, hx: 4, hz: 4 };
   const surface = heightField(world, (x, z) => {
-    let h = rollingHeight(seed, x, z, world.size, ground);
+    let h = rollingHeight(seed, x, z, ground);
     for (const zn of [...zones, spawnZone]) {
       const k = smoothstep(0, 6, outside(zn, x, z));
       h = level * (1 - k) + h * k;
@@ -371,6 +375,7 @@ export async function generateZoneMap(spec: ZoneMapSpec): Promise<{ world: Voxel
     props: models.props,
     landmarks: [...zones.map((zn) => ({ id: zn.id, name: zn.name, position: [zn.x + 0.5, level + 1, zn.z + 0.5] as [number, number, number] })), ...landmarks],
     ...(ambients.length > 0 ? { ambients } : {}),
+    outland: await outlandSpecOf(world, seed, spec.outland, level),
   };
   return { world, entities };
 }

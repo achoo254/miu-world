@@ -53,7 +53,7 @@ interface Rect {
 /** Farm roads: a grid across the whole map, lamps along them; the farm sits in the middle cell. */
 const ROAD_X = [150, 270, 400, 530, 650];
 const ROAD_Z = [150, 300, 430, 570, 690];
-/** Cell edges of the road grid, the map's rim (hills) at both ends. */
+/** Cell edges of the road grid, the map's edge at both ends. */
 const EDGES_X = [12, ...ROAD_X, 788];
 const EDGES_Z = [12, ...ROAD_Z, 788];
 /** Blocks between a road's centre line and the land beside it (lamps stand 3 from the line). */
@@ -181,12 +181,13 @@ export async function generateNongTrai() {
     mapId: MAP_ID,
     region: 'nong-trai',
     seedText: 'miu-nong-trai',
+    outland: 'farm',
     zones: ZONES,
     // Beside the farm road, facing the gate, the fields of the mock either side; room to its east for the gate home.
     spawn: { x: 402, z: 328, yaw: 0 },
-    // Farmland is flat inside every cell of the road grid; the strips between roll gently, the rim stays hilly.
+    // Farmland is flat inside every cell of the road grid; the strips between and the edge roll gently.
     shape: (x, z, h) => {
-      if (Math.min(x, z, SIZE - 1 - x, SIZE - 1 - z) < 14) return h;
+      if (Math.min(x, z, SIZE - 1 - x, SIZE - 1 - z) < 14) return LEVEL + (h - LEVEL) * 0.5;
       if (PARCELS.some((p) => inRect(p.rect, x, z, 1))) return LEVEL;
       return LEVEL + (h - LEVEL) * 0.5;
     },

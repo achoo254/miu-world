@@ -340,6 +340,7 @@ export async function generateXomMaiAm() {
     mapId: MAP_ID,
     region: 'xom-mai-am',
     seedText: 'miu-xom-mai-am',
+    outland: 'hamlet',
     zones: ZONES,
     spawn: { x: SPAWN.x, z: SPAWN.z, yaw: 0 },
     water: { level: WATER_LEVEL, covers: inWater },

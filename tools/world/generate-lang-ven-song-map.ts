@@ -99,6 +99,7 @@ export async function generateLangVenSong() {
     mapId: MAP_ID,
     region: 'lang-ven-song',
     seedText: 'miu-lang-ven-song',
+    outland: 'river',
     size: SIZE,
     zones: ZONES,
     spawn: { x: 60, z: 70, yaw: 0 },

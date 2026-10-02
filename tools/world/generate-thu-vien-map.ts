@@ -158,6 +158,7 @@ export async function generateThuVien() {
     mapId: MAP_ID,
     region: 'thu-vien',
     seedText: 'miu-thu-vien',
+    outland: 'library',
     zones: ZONES,
     spawn: { x: SPAWN.x, z: SPAWN.z, yaw: 0 },
     shape: (x, z, h) => {

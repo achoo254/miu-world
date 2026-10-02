@@ -289,6 +289,7 @@ export async function generateChoPhien() {
     mapId: MAP_ID,
     region: 'cho-phien',
     seedText: 'miu-cho-phien',
+    outland: 'market',
     zones: ZONES,
     spawn: { x: SPAWN.x, z: SPAWN.z, yaw: 0 },
     shape: (x, z, h) => {

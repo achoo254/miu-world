@@ -19128,6 +19128,134 @@
       "bytes": 1041279
     },
     {
+      "path": "generated/review/outland/cho-phien-ngoai.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "6cc96ef4af3be01825153658126922d460fe5e6e64eaad279a0899bda7e04a59",
+      "bytes": 783520
+    },
+    {
+      "path": "generated/review/outland/forest-ch1-ngoai.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "7e8b2803bfcfd6efcfffd2b111d46eb109c4af2f15e8d81a64f5e65a1b2be4ac",
+      "bytes": 990538
+    },
+    {
+      "path": "generated/review/outland/lang-ven-song-ngoai.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "51378e39ef234cee7480e420bd4e81daa8f547de4ea82a9d4a430f66a325f314",
+      "bytes": 717659
+    },
+    {
+      "path": "generated/review/outland/lau-dai-ngoai.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "d2bc576ace0d21b4048f2ce721f3e0f5b75b02fbde7310892111caa6078ea3e8",
+      "bytes": 965607
+    },
+    {
+      "path": "generated/review/outland/nong-trai-ngoai.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "4fd45ad3ea30dd8fd89e8c4a434649f99c0e20d5351e84619a640c2f3d8deb19",
+      "bytes": 850907
+    },
+    {
+      "path": "generated/review/outland/thu-vien-ngoai.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "d7c068ba29f99137d00585e8629d372d6d97cf5b4ae4969924816d20283eb6fd",
+      "bytes": 911064
+    },
+    {
+      "path": "generated/review/outland/truong-hoc-ngoai.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "ad503773624576685d702c167e71d0dbac048f2565010c676a77c44c877cf8ff",
+      "bytes": 858701
+    },
+    {
+      "path": "generated/review/outland/xom-mai-am-ngoai.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "5879268ac382db5f9d409a325cd3a41e50c10fd66084a6a1eff8f4112721cd69",
+      "bytes": 823567
+    },
+    {
       "path": "generated/review/perf.json",
       "license": "CC0-1.0",
       "generator": "apps/web/e2e/perf.spec.ts",
@@ -20672,80 +20800,80 @@
       "license": "CC0-1.0",
       "generator": "tools/world/generate-cho-phien-map.ts",
       "derivedFrom": [],
-      "sha256": "abb1206ce89abeee309334a10f9ff4e280672c35ec043cf129a7cec0a9e1572c",
-      "bytes": 1507041
+      "sha256": "af2c21dc6fe1fb86b90dc2d32743bb05312c8280b8ab9f7d8cc8f1a92bf46d6b",
+      "bytes": 1519089
     },
     {
       "path": "generated/world/cho-phien/horizon.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-cho-phien-map.ts",
       "derivedFrom": [],
-      "sha256": "4991d1a95ce8afbf7c422ba23664e4f6f6588ab261b11c480a1965bc42683e95",
-      "bytes": 56464
+      "sha256": "81d12a4dc87faecb160716aab57cbeef77ed2e7cdf2f22b71ace9e667cb5993f",
+      "bytes": 55714
     },
     {
       "path": "generated/world/cho-phien/regions/r0-0.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-cho-phien-map.ts",
       "derivedFrom": [],
-      "sha256": "89dfb6e8211b89673148bf000aedd6735805657026ac9446c8b37bb61fc96260",
-      "bytes": 38334
+      "sha256": "9b16948094ef5df3243d453628a9b085338f02d9fd46bc4effa27d265188be14",
+      "bytes": 28323
     },
     {
       "path": "generated/world/cho-phien/regions/r0-1.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-cho-phien-map.ts",
       "derivedFrom": [],
-      "sha256": "6a2fcf04fac0764627c81d4252f373922d0a98dec6e8283bd57f1108730651c1",
-      "bytes": 30427
+      "sha256": "dbe453153e6c489f083a084656542a7160a548e864d2bbda1350bcfc0824c171",
+      "bytes": 20535
     },
     {
       "path": "generated/world/cho-phien/regions/r0-2.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-cho-phien-map.ts",
       "derivedFrom": [],
-      "sha256": "62ee7d3e816b55aa9094d307fcbab7e9c729eae8ce314a67a877ae6c0324ab94",
-      "bytes": 50300
+      "sha256": "ccc6271f42b6b8e5168b26f10a0cf311e86687805cab3e8523e4cfe19a65f013",
+      "bytes": 39428
     },
     {
       "path": "generated/world/cho-phien/regions/r0-3.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-cho-phien-map.ts",
       "derivedFrom": [],
-      "sha256": "5ea28871da16e1d55508f0d079036fff7bec4c4f507e4d03d1a3797836a8715c",
-      "bytes": 35590
+      "sha256": "2384d622a21f49ee7d5dc8a9fec5f4ad806a1da74a55c80eb99118eae7749fef",
+      "bytes": 24350
     },
     {
       "path": "generated/world/cho-phien/regions/r0-4.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-cho-phien-map.ts",
       "derivedFrom": [],
-      "sha256": "2cea5c88918cce5baffe7fdba464516bb5b110a50c8b69147b3cebda73f41d4c",
-      "bytes": 29938
+      "sha256": "631763afd45e079190f13e84ce9888668c8ab36a45e057ae323703f99e68f8b1",
+      "bytes": 19035
     },
     {
       "path": "generated/world/cho-phien/regions/r0-5.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-cho-phien-map.ts",
       "derivedFrom": [],
-      "sha256": "c3bd008ead4539ef0303e96c9a1f3b8f1c32dbea9dea7a98725e3317f0fa0cf3",
-      "bytes": 36460
+      "sha256": "7c596cad758afb9459ddaef697b15b965d981af76e4a2ea3fbf75f990fe87e79",
+      "bytes": 26712
     },
     {
       "path": "generated/world/cho-phien/regions/r0-6.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-cho-phien-map.ts",
       "derivedFrom": [],
-      "sha256": "b7a308b62a80917abe94e9d141cae29446a94301ac498d85ecfa2159fb172cc0",
-      "bytes": 8826
+      "sha256": "91ff2048b47a9d6354960ef0f840efe2419b02c1e8f2d3fb4565f6459f2f4f62",
+      "bytes": 6033
     },
     {
       "path": "generated/world/cho-phien/regions/r1-0.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-cho-phien-map.ts",
       "derivedFrom": [],
-      "sha256": "156a3fedea01e9586047409e1ff907a582d45d75e4fd51808f036813866ed30b",
-      "bytes": 32756
+      "sha256": "bb1dc5624cae01464d344d3f609bc4fc4269db0e921bfa07f988c4c9752c5a16",
+      "bytes": 32412
     },
     {
       "path": "generated/world/cho-phien/regions/r1-1.bin",
@@ -20792,16 +20920,16 @@
       "license": "CC0-1.0",
       "generator": "tools/world/generate-cho-phien-map.ts",
       "derivedFrom": [],
-      "sha256": "18b632215db4259875f119b3da7e4e1618ba96356453e8a7aac91bc41472c9e2",
-      "bytes": 8428
+      "sha256": "65525ca8bdf72d865b6b50a8210529b8dc96f6ccf755be1d1228d59eeaf57c6a",
+      "bytes": 8030
     },
     {
       "path": "generated/world/cho-phien/regions/r2-0.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-cho-phien-map.ts",
       "derivedFrom": [],
-      "sha256": "c49ef21b1773c51154ecd6b2b9f6e88688a84bb06894fe0041a474e602691c23",
-      "bytes": 28169
+      "sha256": "3c42a15fc89cc4c4b9f147d98104af2bf716dc74ed6867e0b66b407734a4288c",
+      "bytes": 27701
     },
     {
       "path": "generated/world/cho-phien/regions/r2-1.bin",
@@ -20848,16 +20976,16 @@
       "license": "CC0-1.0",
       "generator": "tools/world/generate-cho-phien-map.ts",
       "derivedFrom": [],
-      "sha256": "14bd33d41af1d7866cef1b3f2f484392e7c76e82315bdc122a2e8a69d7f13fb9",
-      "bytes": 8101
+      "sha256": "f89aa29f2bca7a6e493b26ca198d15445ddca52deb1dc9d1b891c1195213feac",
+      "bytes": 7511
     },
     {
       "path": "generated/world/cho-phien/regions/r3-0.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-cho-phien-map.ts",
       "derivedFrom": [],
-      "sha256": "bf343883656893ec45471aa90b679afb885ac992f440d1d060eb8da343ade0e4",
-      "bytes": 30175
+      "sha256": "c69c15a3f75d8ef9ebe60f3035238790c37d25703a5a98ebfb4a223f1b2736f8",
+      "bytes": 29888
     },
     {
       "path": "generated/world/cho-phien/regions/r3-1.bin",
@@ -20904,16 +21032,16 @@
       "license": "CC0-1.0",
       "generator": "tools/world/generate-cho-phien-map.ts",
       "derivedFrom": [],
-      "sha256": "ee3b3ecc34342bafb3b5a8aaed237e421b49d295ce7711379c16f6d1f91dd7e0",
-      "bytes": 7746
+      "sha256": "00ca3b0ce4ef83bfb08f6aa0aa29b3d91ec395e4fc560e9049d9510e3043aae6",
+      "bytes": 7454
     },
     {
       "path": "generated/world/cho-phien/regions/r4-0.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-cho-phien-map.ts",
       "derivedFrom": [],
-      "sha256": "f746fdfb9a1da9d000f1d5f17b941bbb1a0613225945a5c93d79b6555f6561a1",
-      "bytes": 29518
+      "sha256": "8993dcd5030b8dc3d997e160aba36553e2e5f1d734f80edbb32d9962e91bb175",
+      "bytes": 29021
     },
     {
       "path": "generated/world/cho-phien/regions/r4-1.bin",
@@ -20960,16 +21088,16 @@
       "license": "CC0-1.0",
       "generator": "tools/world/generate-cho-phien-map.ts",
       "derivedFrom": [],
-      "sha256": "c3b97152e42458945bfb34176bf52af3e731db0e69cb7e9bb11928023e63943f",
-      "bytes": 7508
+      "sha256": "f611c13ff8900f2aa35b49df37e6c6726992dd3ee388b8abe292659a223c4259",
+      "bytes": 6972
     },
     {
       "path": "generated/world/cho-phien/regions/r5-0.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-cho-phien-map.ts",
       "derivedFrom": [],
-      "sha256": "49c8f88465eb76b78a57dfeea835ba0e55e515ee96507b64a791d47ae76ea705",
-      "bytes": 29976
+      "sha256": "0445d7aba5da759acd3eb9128916fc3a336cec458728c982c653122a750e15ac",
+      "bytes": 29620
     },
     {
       "path": "generated/world/cho-phien/regions/r5-1.bin",
@@ -21016,144 +21144,144 @@
       "license": "CC0-1.0",
       "generator": "tools/world/generate-cho-phien-map.ts",
       "derivedFrom": [],
-      "sha256": "0469f29de38b3cded22916d691341c65f257636f20288aa273a9d8a37fdfbdcd",
-      "bytes": 7765
+      "sha256": "722a7b5cb5932944e5fecd1df4c3fb62b0ae87215c7729809ba8305534ee944f",
+      "bytes": 7328
     },
     {
       "path": "generated/world/cho-phien/regions/r6-0.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-cho-phien-map.ts",
       "derivedFrom": [],
-      "sha256": "4b00f0fb810ec8f032e59890b4f165a7fb7683750d8b090e04858771167af542",
-      "bytes": 16694
+      "sha256": "98c60bb449116bbe33e7c23e4f58f3198224a8663fcb1ee29948bce9d8764efa",
+      "bytes": 6257
     },
     {
       "path": "generated/world/cho-phien/regions/r6-1.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-cho-phien-map.ts",
       "derivedFrom": [],
-      "sha256": "f71ed5f9082849d14c92bd3283c0b9cc86c4ea0fa2454eb965bb6bbd960f5fac",
-      "bytes": 16343
+      "sha256": "539a955667f75f405410da195b6b0668ec02abf6ff2b35fd65cf850f79b29d59",
+      "bytes": 5936
     },
     {
       "path": "generated/world/cho-phien/regions/r6-2.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-cho-phien-map.ts",
       "derivedFrom": [],
-      "sha256": "32ad36ba8c1c2e7678d22faa62bc283980ecd660ceb928d2072f7af1f1583355",
-      "bytes": 18273
+      "sha256": "5cf8fa409411438c68a4283be1a52325e6c2aa366562e9e7d81b1dd429336430",
+      "bytes": 8363
     },
     {
       "path": "generated/world/cho-phien/regions/r6-3.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-cho-phien-map.ts",
       "derivedFrom": [],
-      "sha256": "3caabd092cadcae1a848f176ff77fb42915e6a671a9cde584ed3031ea5d9ec86",
-      "bytes": 17058
+      "sha256": "371761b0479718459442ea5a0749af907dacf28b2b4b90c83cf4b19547a41f02",
+      "bytes": 6641
     },
     {
       "path": "generated/world/cho-phien/regions/r6-4.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-cho-phien-map.ts",
       "derivedFrom": [],
-      "sha256": "05ceb76a4c0e111fb97ee4277b9411ccd0cf7d81d8f07331b45af9eb736ab4af",
-      "bytes": 17795
+      "sha256": "82e64f199e029abe211a7b3eaeffa6a31f259e2e8ea0c7ef5ee4d76a837ca8d8",
+      "bytes": 6995
     },
     {
       "path": "generated/world/cho-phien/regions/r6-5.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-cho-phien-map.ts",
       "derivedFrom": [],
-      "sha256": "f6325aef5d938cd8a6acef5e7f6ddb8b3950d2580c7878f1a346664a35788379",
-      "bytes": 16841
+      "sha256": "e9728bf4f1f18efd677f015298a06234efc6dede3bee034683705d83ae68594e",
+      "bytes": 6225
     },
     {
       "path": "generated/world/cho-phien/regions/r6-6.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-cho-phien-map.ts",
       "derivedFrom": [],
-      "sha256": "2be965a90402acb85c7eb6b2d478f796dd80bf523729911a0f8bc4f90c123d94",
-      "bytes": 3967
+      "sha256": "77542ce21a64ad5815e2ce50f8d5f48e37a1601960e7a4a1b825383153fc0a7d",
+      "bytes": 1467
     },
     {
       "path": "generated/world/forest-ch1/entities.json",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-forest-map.ts",
       "derivedFrom": [],
-      "sha256": "99b55cbeaaed92eb6c3d7214df1283bf8c2f342811984a816d44efd40c926102",
-      "bytes": 380985
+      "sha256": "b562660a3bd0962606529a3b91629e73da5596bf7a4cd4d09fc5d41e29468391",
+      "bytes": 393015
     },
     {
       "path": "generated/world/forest-ch1/horizon.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-forest-map.ts",
       "derivedFrom": [],
-      "sha256": "ef9e2e50e7d278145f2d158f5465e9c9323829d63d3eba8d0f9916b702623fef",
-      "bytes": 83388
+      "sha256": "a727b17f75b1384b006b9e4d8afe3841f31f55adf54043b2d149720f3438a57c",
+      "bytes": 83170
     },
     {
       "path": "generated/world/forest-ch1/regions/r0-0.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-forest-map.ts",
       "derivedFrom": [],
-      "sha256": "287becd41ff16d08a5d6d7f37485c058e532780bec02a1d051f1d13fb495a79c",
-      "bytes": 48970
+      "sha256": "32b31978ead5c5ce1249d2bd8879d4cb4346b777b9407da5f5238a516438bc07",
+      "bytes": 40392
     },
     {
       "path": "generated/world/forest-ch1/regions/r0-1.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-forest-map.ts",
       "derivedFrom": [],
-      "sha256": "49429e5ac917cb23aebb84230016feaaa4e1ff8833abcca2f48f00591f04969f",
-      "bytes": 54367
+      "sha256": "cf8d053e1f5701141ca88ea2d0c4c070cba2c22d14cbdeeaee5f802f7dffb8da",
+      "bytes": 44697
     },
     {
       "path": "generated/world/forest-ch1/regions/r0-2.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-forest-map.ts",
       "derivedFrom": [],
-      "sha256": "0c65d44723bd6b47af2dc1d65b435853fa221e5b8a22c953cf967b439e731182",
-      "bytes": 53001
+      "sha256": "d60acd429ca46488474833ddbeff092bb7d278be65edbf7ac92796a49f007ab8",
+      "bytes": 44309
     },
     {
       "path": "generated/world/forest-ch1/regions/r0-3.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-forest-map.ts",
       "derivedFrom": [],
-      "sha256": "5e1848a66205c30f1b72e76f18ecde8059ac314053d99ba4b03fa3f91e4ce912",
-      "bytes": 55139
+      "sha256": "f81408ed8214ade2f5fb2d5dd6387b0073eed23849c5fa91d8ce6e8892b20f3f",
+      "bytes": 45930
     },
     {
       "path": "generated/world/forest-ch1/regions/r0-4.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-forest-map.ts",
       "derivedFrom": [],
-      "sha256": "7218a6adcb02e2b0e85ad18f16ed62f5e3bcd24a85bff8f3cca47822a565d743",
-      "bytes": 53376
+      "sha256": "34a5b28f18b46cdfd16f75bc6ebff41443df0c21ad1210a9a39bd565b8240f27",
+      "bytes": 43762
     },
     {
       "path": "generated/world/forest-ch1/regions/r0-5.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-forest-map.ts",
       "derivedFrom": [],
-      "sha256": "37597355c0b4706d5b3ab4937203e2219ad267817a7bd4e4407d4c7aec2731b6",
-      "bytes": 56791
+      "sha256": "89344436daaf617c9738666620dc92a7328dae6a6e97822f1f6230c654711fed",
+      "bytes": 47221
     },
     {
       "path": "generated/world/forest-ch1/regions/r0-6.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-forest-map.ts",
       "derivedFrom": [],
-      "sha256": "a301ba1723ccdb2500ab7b637b3343f16853e061e73b80461b4945da7387b6af",
-      "bytes": 13921
+      "sha256": "4df379546a657227c8b00d5bdb2d31fd8bd10751ca639de47b3314cde4fe1e8b",
+      "bytes": 11469
     },
     {
       "path": "generated/world/forest-ch1/regions/r1-0.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-forest-map.ts",
       "derivedFrom": [],
-      "sha256": "955507273f654e4c0f031a52497d677d47ac6a1cb1aa6c4880e6dfa9a3bd39aa",
-      "bytes": 44526
+      "sha256": "2758c14e71d51aeec7e092f253f7282e2106a7a109e3738cc4c85f1ad1f8c3c3",
+      "bytes": 44343
     },
     {
       "path": "generated/world/forest-ch1/regions/r1-1.bin",
@@ -21200,16 +21328,16 @@
       "license": "CC0-1.0",
       "generator": "tools/world/generate-forest-map.ts",
       "derivedFrom": [],
-      "sha256": "760d99bc5b5dbbd3e8cf360155eea357d12c1673b90aaed034c593e689113ec2",
-      "bytes": 12290
+      "sha256": "0df0164d3c038e1de45a6c02987041328f002ce36a1867e8dedca6197702530b",
+      "bytes": 11979
     },
     {
       "path": "generated/world/forest-ch1/regions/r2-0.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-forest-map.ts",
       "derivedFrom": [],
-      "sha256": "55025d19ddaf5607ec0a8140a59aa146e36735407fd17f73feccc83c91b57424",
-      "bytes": 47033
+      "sha256": "37d6ba0d377c08186f0ada695c17efe8e6fc413bdbfd92e8d5b5354d76d95789",
+      "bytes": 46568
     },
     {
       "path": "generated/world/forest-ch1/regions/r2-1.bin",
@@ -21256,16 +21384,16 @@
       "license": "CC0-1.0",
       "generator": "tools/world/generate-forest-map.ts",
       "derivedFrom": [],
-      "sha256": "2867ff86987ed21eaa5cb942618d8b9468b5dfe159d1a02aad4a298c3c3948d0",
-      "bytes": 10957
+      "sha256": "eadafe59d80ac4766f6c6cfecb80be765be01969281a3579054755755f37b397",
+      "bytes": 10724
     },
     {
       "path": "generated/world/forest-ch1/regions/r3-0.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-forest-map.ts",
       "derivedFrom": [],
-      "sha256": "3e87fc350bf8158bd8b96d819a34ea6a96ddaf09845309ef059ca3e4a85c5ae7",
-      "bytes": 45408
+      "sha256": "a7a19bd5a26dcc67947ea7fd4b9c6a67aff5b74ab20e3b32a6d270940f626ba8",
+      "bytes": 45223
     },
     {
       "path": "generated/world/forest-ch1/regions/r3-1.bin",
@@ -21312,16 +21440,16 @@
       "license": "CC0-1.0",
       "generator": "tools/world/generate-forest-map.ts",
       "derivedFrom": [],
-      "sha256": "8003ef844afe540770a56a26ea55e2440ccd471ce8524d6f7d9b9ccb9d2971e4",
-      "bytes": 11327
+      "sha256": "5a60116619a2d307de35679666ecbccb0c1938605728e5cd40e8b2db696fd05f",
+      "bytes": 11018
     },
     {
       "path": "generated/world/forest-ch1/regions/r4-0.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-forest-map.ts",
       "derivedFrom": [],
-      "sha256": "5dbc3913444914a0e7a5467bbc44002d558074871f0c5d1e149b72457f9c55cd",
-      "bytes": 45606
+      "sha256": "475844cc61511eb1ee47fbb3d40befa9347e5af2721b311bb8c51101a7acf343",
+      "bytes": 45437
     },
     {
       "path": "generated/world/forest-ch1/regions/r4-1.bin",
@@ -21368,16 +21496,16 @@
       "license": "CC0-1.0",
       "generator": "tools/world/generate-forest-map.ts",
       "derivedFrom": [],
-      "sha256": "19d4f0b2ea599f8a4a9af2505656d2beeac7080d69f4e8f9926341a260fc46c1",
-      "bytes": 11061
+      "sha256": "3e50eaead3f0dda3fa3525d231d4ec13aca575ec578223ab8ef6b215e83c2b54",
+      "bytes": 10743
     },
     {
       "path": "generated/world/forest-ch1/regions/r5-0.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-forest-map.ts",
       "derivedFrom": [],
-      "sha256": "b2bfba8c232bec1b97d98a33a55158528ff4696a27937c083ba9f17f9eb2fda2",
-      "bytes": 44840
+      "sha256": "1016eaacf6b9187dbebe69f712f72df8e0eb0834fa9d5fc20f83987a13bbad27",
+      "bytes": 44379
     },
     {
       "path": "generated/world/forest-ch1/regions/r5-1.bin",
@@ -21424,144 +21552,144 @@
       "license": "CC0-1.0",
       "generator": "tools/world/generate-forest-map.ts",
       "derivedFrom": [],
-      "sha256": "10ffe9cbb42289753ca2d19a3814785d623b0578958f7d3e6efcd19bf7b9e656",
-      "bytes": 15601
+      "sha256": "f99d6d49e226dce0e56548eb0cb53a8d9244fccc1661c03a5acfa72f0cf7b0d0",
+      "bytes": 15628
     },
     {
       "path": "generated/world/forest-ch1/regions/r6-0.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-forest-map.ts",
       "derivedFrom": [],
-      "sha256": "4d2017709ea46c335875470dfdca024dc554184730135ed7d87f1ee36636e944",
-      "bytes": 19690
+      "sha256": "45ef7c8383ab3ddec84761dfbea6151895eebbaa69d3386814e0d8c41c9e0705",
+      "bytes": 11325
     },
     {
       "path": "generated/world/forest-ch1/regions/r6-1.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-forest-map.ts",
       "derivedFrom": [],
-      "sha256": "2962bc95a2833cf45b244911ea3b0eee6ffb8463061e5e13aa0adb8bbc4cc1a8",
-      "bytes": 18573
+      "sha256": "a3fc0edce1eca48239e8e75ce610325e7447760cecae35139810b0ba33c585df",
+      "bytes": 9700
     },
     {
       "path": "generated/world/forest-ch1/regions/r6-2.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-forest-map.ts",
       "derivedFrom": [],
-      "sha256": "75f69d8147584a76dc43afab4f07ab9d279905bb118b1d8bf3940f7b5756923d",
-      "bytes": 20394
+      "sha256": "3001b086e58203b7513ed362079e961e97ea29aef333a725d0fa591efb29fee7",
+      "bytes": 11114
     },
     {
       "path": "generated/world/forest-ch1/regions/r6-3.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-forest-map.ts",
       "derivedFrom": [],
-      "sha256": "9d00c52d0173a5bc0d2d51409a0cc72ce9c2e1a9a66d5ff8331269c2152da6d7",
-      "bytes": 20789
+      "sha256": "4780954584843d512f3be09c8e981fccc6d7fdc43249144dc09ddac52213a87c",
+      "bytes": 11334
     },
     {
       "path": "generated/world/forest-ch1/regions/r6-4.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-forest-map.ts",
       "derivedFrom": [],
-      "sha256": "d21446904f3efb44d016f2319c56e50695890c342cd5922e45e8011edff32e28",
-      "bytes": 20057
+      "sha256": "35af08fae0874f06f5622e12c4730a5609fbd174413c20be4b4a08ed04a9465c",
+      "bytes": 10427
     },
     {
       "path": "generated/world/forest-ch1/regions/r6-5.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-forest-map.ts",
       "derivedFrom": [],
-      "sha256": "1364022ebb9fd54e36e42d8f63ca7c470d1485914db7e59948251915ab49ffb7",
-      "bytes": 23191
+      "sha256": "b7c1bd694bdb249b65490b00755c3e5bf697c0e5a253e01f22b399891e3271d1",
+      "bytes": 13271
     },
     {
       "path": "generated/world/forest-ch1/regions/r6-6.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-forest-map.ts",
       "derivedFrom": [],
-      "sha256": "9e0ad60e383d72083a32fa760a08cb261ddd438b6bbaaf758bf87ef0641a31b2",
-      "bytes": 4842
+      "sha256": "ab266f55b3884ca66f9781fa1bfce570ba7777755ea36b7b0599b0cacc6268ba",
+      "bytes": 2712
     },
     {
       "path": "generated/world/lang-ven-song/entities.json",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-lang-ven-song-map.ts",
       "derivedFrom": [],
-      "sha256": "5f18ccaf134854c07976ad774f3616d5ac7e6f5b80c5c2d918c082069f7d84a6",
-      "bytes": 1344577
+      "sha256": "cbf9a7663ca9374b7fbf291547e751d584f032a91d4219f9dffef371aa04edf5",
+      "bytes": 1356606
     },
     {
       "path": "generated/world/lang-ven-song/horizon.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-lang-ven-song-map.ts",
       "derivedFrom": [],
-      "sha256": "d24fb41fdc474ce26da547fd20609bff184dcc7087880c438494ece44188d0bc",
-      "bytes": 49716
+      "sha256": "f3e50eae1373090b22c59e5e6b20aae3f26a40d2db4bf1deb8eb540547ade285",
+      "bytes": 48530
     },
     {
       "path": "generated/world/lang-ven-song/regions/r0-0.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-lang-ven-song-map.ts",
       "derivedFrom": [],
-      "sha256": "4afe1d525c88f27966e011d3c1a2f5323e83ffd07b2b728a4ca0855bf06f275a",
-      "bytes": 34087
+      "sha256": "ff10f4fcc0ebdfa6457e510d368bc74812e0b8ccc4406c073ac1510b25f5bfad",
+      "bytes": 24018
     },
     {
       "path": "generated/world/lang-ven-song/regions/r0-1.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-lang-ven-song-map.ts",
       "derivedFrom": [],
-      "sha256": "a1a19a8e5cef1938def34ea394fade92deb1facf5e48e3e494663ef04cd24a46",
-      "bytes": 34770
+      "sha256": "9e7f11165a6899609de7718fee19cff2c50644a724fe1d4bbb31ab99c388c38c",
+      "bytes": 23955
     },
     {
       "path": "generated/world/lang-ven-song/regions/r0-2.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-lang-ven-song-map.ts",
       "derivedFrom": [],
-      "sha256": "fec0e96a24ff684f160bfa983f7855175444fcf6e723cd084ce1c49dda5cb9c8",
-      "bytes": 32066
+      "sha256": "06e213c902422f29546761a8f99eebc84385f1ea46a0a4923737ffe6f1553ccd",
+      "bytes": 21316
     },
     {
       "path": "generated/world/lang-ven-song/regions/r0-3.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-lang-ven-song-map.ts",
       "derivedFrom": [],
-      "sha256": "d11895a0c16f7867a547ccd6550ecacf838b5b7949fb9f2f775bcb1938fb97b2",
-      "bytes": 30856
+      "sha256": "856a0a8243adb0b767fb35801f3aaa619dc296cb5fbee55824965d56a28f71d4",
+      "bytes": 22165
     },
     {
       "path": "generated/world/lang-ven-song/regions/r0-4.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-lang-ven-song-map.ts",
       "derivedFrom": [],
-      "sha256": "05186fade44d32fe6fb14c2fa720218ac36bf7353ea086ca02548c5b01079677",
-      "bytes": 33701
+      "sha256": "ba462c9c4548929dcb1ea69c3a33c08ab6a2611f9e2dcca01c770bffd94057fb",
+      "bytes": 22908
     },
     {
       "path": "generated/world/lang-ven-song/regions/r0-5.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-lang-ven-song-map.ts",
       "derivedFrom": [],
-      "sha256": "13b8240da09048c1f152d5c3a2865f88d8d3d655b572c6e8d1a3b6d8c6531fc1",
-      "bytes": 38388
+      "sha256": "54915d7bda0525f535864b9ac0d065f32223c41a6ff40fc9afc0f9a4f745bf1e",
+      "bytes": 27596
     },
     {
       "path": "generated/world/lang-ven-song/regions/r0-6.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-lang-ven-song-map.ts",
       "derivedFrom": [],
-      "sha256": "06ab7ea45a9213577c6c83a34d47ad394b245d87338cd439573fe44b982b32e0",
-      "bytes": 6853
+      "sha256": "ebfc70782144e6fedd6e246a3751778e81ec06cfb5ff43769b7e9007e193a885",
+      "bytes": 4455
     },
     {
       "path": "generated/world/lang-ven-song/regions/r1-0.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-lang-ven-song-map.ts",
       "derivedFrom": [],
-      "sha256": "faaa13b368e0aeb57b9a6a012a9658bc1b5894311739d665098d59ff03b75d52",
-      "bytes": 21474
+      "sha256": "e7396f434e3824c335ad645f3f875ee465b3943daae487138b0c2d096cbd4436",
+      "bytes": 21058
     },
     {
       "path": "generated/world/lang-ven-song/regions/r1-1.bin",
@@ -21608,16 +21736,16 @@
       "license": "CC0-1.0",
       "generator": "tools/world/generate-lang-ven-song-map.ts",
       "derivedFrom": [],
-      "sha256": "24e3d5c0f344ef805fcc4c23872f527fd0d17d1c8394aae5b3ca4ae72cb69aad",
-      "bytes": 5123
+      "sha256": "8f47180261d3a4a53bcb300628d9a234e236406297e3f0f71a956de30ee9e517",
+      "bytes": 4641
     },
     {
       "path": "generated/world/lang-ven-song/regions/r2-0.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-lang-ven-song-map.ts",
       "derivedFrom": [],
-      "sha256": "3675c9235db9ddf5c327a792eb578f948a92e8547525f75c8e5a2ceb97720b6c",
-      "bytes": 21083
+      "sha256": "b9385eeddfea231224b56d6bab8afb2e2687b3f003d06c40c115a7f17880f72f",
+      "bytes": 20948
     },
     {
       "path": "generated/world/lang-ven-song/regions/r2-1.bin",
@@ -21664,16 +21792,16 @@
       "license": "CC0-1.0",
       "generator": "tools/world/generate-lang-ven-song-map.ts",
       "derivedFrom": [],
-      "sha256": "b91d25b3fc807c0bdd33db35ca117cdfec56fcf89ba30a61038d54752fb286d7",
-      "bytes": 5819
+      "sha256": "aa37bf2cf175a66e3300d60d3d0b5f18751afd3ca1a06cf74569a9d26e9c7f10",
+      "bytes": 5159
     },
     {
       "path": "generated/world/lang-ven-song/regions/r3-0.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-lang-ven-song-map.ts",
       "derivedFrom": [],
-      "sha256": "5a03dca1416ccf3758c329472758e5bf223fef96841c99685b80c4d2f8acf8c2",
-      "bytes": 21351
+      "sha256": "5687856d9591810b0c1c91e2e8d3491d438c07083cf956d9fef780e229e1d334",
+      "bytes": 21049
     },
     {
       "path": "generated/world/lang-ven-song/regions/r3-1.bin",
@@ -21720,16 +21848,16 @@
       "license": "CC0-1.0",
       "generator": "tools/world/generate-lang-ven-song-map.ts",
       "derivedFrom": [],
-      "sha256": "c605de24b78be4be1e6c0205f6874236de772c957730e3afa34218ceccf2b02f",
-      "bytes": 5164
+      "sha256": "2263aa943a511dc1dbbd7d0976a86c5a80938af1ad7329490034931d12e60347",
+      "bytes": 4818
     },
     {
       "path": "generated/world/lang-ven-song/regions/r4-0.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-lang-ven-song-map.ts",
       "derivedFrom": [],
-      "sha256": "aa15f8d6311277112ba768b24b53699847b7675f331d7b45f7a69f6ddffabb83",
-      "bytes": 26838
+      "sha256": "6e3f960fab66130dc38728c8ab25bb092757c2b75c9dd48d334a8f5bb16d56bd",
+      "bytes": 26400
     },
     {
       "path": "generated/world/lang-ven-song/regions/r4-1.bin",
@@ -21776,16 +21904,16 @@
       "license": "CC0-1.0",
       "generator": "tools/world/generate-lang-ven-song-map.ts",
       "derivedFrom": [],
-      "sha256": "5c23ec0bd1bbfeb4ae0d389f89487fa55b7dff78b1d31b62ca9e66f5976409ab",
-      "bytes": 5581
+      "sha256": "a8525053df22727ab56435789ed51565d90325fe04da3ea1221d5ac9b66ec951",
+      "bytes": 5111
     },
     {
       "path": "generated/world/lang-ven-song/regions/r5-0.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-lang-ven-song-map.ts",
       "derivedFrom": [],
-      "sha256": "c97dfce877bbd344fbdaba586ea24fd568df13e88e39119bb73fe7b80f8a43b8",
-      "bytes": 22722
+      "sha256": "b49fdd2b6c2f933257967df300c17f92e1cc52291cf083f6027d283ba8d73092",
+      "bytes": 22142
     },
     {
       "path": "generated/world/lang-ven-song/regions/r5-1.bin",
@@ -21832,112 +21960,112 @@
       "license": "CC0-1.0",
       "generator": "tools/world/generate-lang-ven-song-map.ts",
       "derivedFrom": [],
-      "sha256": "d32b403b675c87a5235d412ebc331dcec46238790c8785f2a82648c107baf6f2",
-      "bytes": 5614
+      "sha256": "ae0fdeea8b1c9a7b9c61774eba9cf1fb0a6a7db994d877edb35c258e75626c2f",
+      "bytes": 5158
     },
     {
       "path": "generated/world/lang-ven-song/regions/r6-0.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-lang-ven-song-map.ts",
       "derivedFrom": [],
-      "sha256": "28527d7e0c10fd841f3ffb267d9369768b7a0146a52b4469fb77a014b67e85ea",
-      "bytes": 15904
+      "sha256": "828cdd2505d252ca56de47ad14019852346425b81c60e664b9218e8e700c4959",
+      "bytes": 5311
     },
     {
       "path": "generated/world/lang-ven-song/regions/r6-1.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-lang-ven-song-map.ts",
       "derivedFrom": [],
-      "sha256": "242213d4f50b0b35728ac7ba96f5911a9174450e6d71480fbf94c6794e3a9231",
-      "bytes": 16315
+      "sha256": "90ebad87944e294136adf647fc39f7f1b389b1f52f637c1c81453aa08cca8828",
+      "bytes": 5251
     },
     {
       "path": "generated/world/lang-ven-song/regions/r6-2.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-lang-ven-song-map.ts",
       "derivedFrom": [],
-      "sha256": "7c6515f82c55d74fefd195e5ffb03ac10c63f17cfff925d7e41c56710fc71fc0",
-      "bytes": 18101
+      "sha256": "6a52d34a8b5bae7cae0d813708b7931e3c80b8bf2a08caa0de03160371d7c7d9",
+      "bytes": 7307
     },
     {
       "path": "generated/world/lang-ven-song/regions/r6-3.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-lang-ven-song-map.ts",
       "derivedFrom": [],
-      "sha256": "1d07ad8bf6803c06267f531e4b3a3cb321310d8a4af43b30202c2e1337ae0263",
-      "bytes": 16895
+      "sha256": "65dc278dd851deacda050105677d21da9bbd5234e6eca77067edfbb6ec0b2124",
+      "bytes": 6555
     },
     {
       "path": "generated/world/lang-ven-song/regions/r6-4.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-lang-ven-song-map.ts",
       "derivedFrom": [],
-      "sha256": "87460882c3a394980e464de06ceb285e20985669a44cbbaa23abba3c4e7a1045",
-      "bytes": 15859
+      "sha256": "da661eabec47411ee4432c612ee072043f6fff412ef1511cbc96a779e77bb31d",
+      "bytes": 4878
     },
     {
       "path": "generated/world/lang-ven-song/regions/r6-5.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-lang-ven-song-map.ts",
       "derivedFrom": [],
-      "sha256": "e5704454d19489d008f55819d0cee492a2cefa4c765f76e27203f2663300d7f8",
-      "bytes": 16312
+      "sha256": "5cfd7b53298cb952bf2d6618ece8ffe5e47f1cb6cb5b9b22396e7ac82e1395e9",
+      "bytes": 5160
     },
     {
       "path": "generated/world/lang-ven-song/regions/r6-6.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-lang-ven-song-map.ts",
       "derivedFrom": [],
-      "sha256": "754b51d8d57f1868dcccb2b468891486412ef570c0bb8fbbeb875cdee3f39186",
-      "bytes": 3360
+      "sha256": "80f402888ccf18fd3c735b637e4567f6c30def9d2fce81c94fcc61cab943aea5",
+      "bytes": 1028
     },
     {
       "path": "generated/world/lau-dai/entities.json",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-lau-dai-map.ts",
       "derivedFrom": [],
-      "sha256": "0654a04da753f1fa811ab5d26b01f58175625091e7bc750c654416f9e0191cf4",
-      "bytes": 1440475
+      "sha256": "65acc2bd82d9d72234250fde9682aa3c02efb814b5a1a267aade5893527c2dc6",
+      "bytes": 1452523
     },
     {
       "path": "generated/world/lau-dai/horizon.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-lau-dai-map.ts",
       "derivedFrom": [],
-      "sha256": "6fa96c64e6f10b57bda86c4cd3f424c6b2ab2ebf69eeb7d877e85801307e1073",
-      "bytes": 50998
+      "sha256": "b5fd57219b3329632036ac1dc30f29454d39e309d1111f7b6045e565728c4fb0",
+      "bytes": 50788
     },
     {
       "path": "generated/world/lau-dai/regions/r0-0.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-lau-dai-map.ts",
       "derivedFrom": [],
-      "sha256": "79060b3566475ed7a435a083886553b7ab41d23d7b909bf72e718d19a8c4557d",
-      "bytes": 45229
+      "sha256": "fb1d364626e044211b521578a14bbac721067ba1d113284639e0279424bfe0c3",
+      "bytes": 40161
     },
     {
       "path": "generated/world/lau-dai/regions/r0-1.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-lau-dai-map.ts",
       "derivedFrom": [],
-      "sha256": "8dd8b126bd3c7640be3cf28298bbff627e812bff355ce30c0a141d8acd82eb9a",
-      "bytes": 37960
+      "sha256": "e4938f4ee9098e60a1a9b42bdbe5e8abbe8434330b29b2d33ee1be95e1393da4",
+      "bytes": 27926
     },
     {
       "path": "generated/world/lau-dai/regions/r0-2.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-lau-dai-map.ts",
       "derivedFrom": [],
-      "sha256": "eb4208054cde9366ddd7ad2d8554628d98412372e64dc6690742555465800dba",
-      "bytes": 27251
+      "sha256": "28c0e18377932c575109bd012089ef99ea9334b137a1f5bcdf7ac94cbb4fca02",
+      "bytes": 16469
     },
     {
       "path": "generated/world/lau-dai/regions/r0-3.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-lau-dai-map.ts",
       "derivedFrom": [],
-      "sha256": "24ab97d0f219218939df2d714f4675018a81d3a0306ff598b2d646b6c04cef15",
-      "bytes": 28751
+      "sha256": "575ae2d9899ca3e8466ef2b2e702d90b26ad1fb7f1e3c387b9ab8870213b03b6",
+      "bytes": 20960
     },
     {
       "path": "generated/world/lau-dai/regions/r0-4.bin",
@@ -21968,8 +22096,8 @@
       "license": "CC0-1.0",
       "generator": "tools/world/generate-lau-dai-map.ts",
       "derivedFrom": [],
-      "sha256": "c63be85467485efdbf419be6f03777cb53fb5476c0869663676c7c4730962c0c",
-      "bytes": 33717
+      "sha256": "fd2ed4d7cd396da6746c496958163bc20e32917ed6d8c1cd0382a8b0abe77e9c",
+      "bytes": 34233
     },
     {
       "path": "generated/world/lau-dai/regions/r1-1.bin",
@@ -22024,8 +22152,8 @@
       "license": "CC0-1.0",
       "generator": "tools/world/generate-lau-dai-map.ts",
       "derivedFrom": [],
-      "sha256": "a6981ff58bc1b485cf08d7c1364866beb8ec9e082b87a841b191659a12eeac0e",
-      "bytes": 37986
+      "sha256": "de0f63da745f64dba1c5d2bfe560b642710ee5c5d20adbb95b45969515cf5f6d",
+      "bytes": 38517
     },
     {
       "path": "generated/world/lau-dai/regions/r2-1.bin",
@@ -22080,8 +22208,8 @@
       "license": "CC0-1.0",
       "generator": "tools/world/generate-lau-dai-map.ts",
       "derivedFrom": [],
-      "sha256": "e095a327ba7a89d4025fc6a1fec77495595dd011fb3cb2de214c756270579b87",
-      "bytes": 36958
+      "sha256": "7a37bedc2a01fb8e8726441bf8f29f5e5ecf58757b497e9febaa45d1528d053a",
+      "bytes": 37474
     },
     {
       "path": "generated/world/lau-dai/regions/r3-1.bin",
@@ -22136,8 +22264,8 @@
       "license": "CC0-1.0",
       "generator": "tools/world/generate-lau-dai-map.ts",
       "derivedFrom": [],
-      "sha256": "468cf4fb61d5a9b5db2396ae46ed2b1a1303beabc1b9efaa451d140534f18e03",
-      "bytes": 40944
+      "sha256": "5c91738fd0d34cd6f7fd67c8ed47ca3b17110a14a63deedd954b0b7d94435a33",
+      "bytes": 41240
     },
     {
       "path": "generated/world/lau-dai/regions/r4-1.bin",
@@ -22192,8 +22320,8 @@
       "license": "CC0-1.0",
       "generator": "tools/world/generate-lau-dai-map.ts",
       "derivedFrom": [],
-      "sha256": "b33c45d4023bb67d5bc86d750db0acb0e5fcce57e36c42846f239e637384bd64",
-      "bytes": 45377
+      "sha256": "855ae99342667d7095aeefc291d36a28e725ea5f5212f4c8f6113f717531462d",
+      "bytes": 45934
     },
     {
       "path": "generated/world/lau-dai/regions/r5-1.bin",
@@ -22248,32 +22376,32 @@
       "license": "CC0-1.0",
       "generator": "tools/world/generate-lau-dai-map.ts",
       "derivedFrom": [],
-      "sha256": "4c5097fff75b4215dbb85ed6b0b29c0043d1d5f7d717551419b7ccb0a0eab74a",
-      "bytes": 14900
+      "sha256": "f7e8b13d354d5400b86733ae0747d37d36b7325c0532c5e6790143759f5eadbf",
+      "bytes": 10144
     },
     {
       "path": "generated/world/lau-dai/regions/r6-1.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-lau-dai-map.ts",
       "derivedFrom": [],
-      "sha256": "d6665f14e2138dc97cd0716ea0686ebd9b3643e352360a12cc1ea3a43f3e33ea",
-      "bytes": 20697
+      "sha256": "de93d7f9c38e32d8880d0fd0dc4834f0d17c66c2e56d3a9f237028d8ef68af01",
+      "bytes": 11474
     },
     {
       "path": "generated/world/lau-dai/regions/r6-2.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-lau-dai-map.ts",
       "derivedFrom": [],
-      "sha256": "9acd8ece824dd5feb797d430945ff394a3c2e5a4d80cd3099c874bc704de8cd7",
-      "bytes": 20511
+      "sha256": "979cbe95eb38358358818daa9ba80b532b918df80ec14f67ba51324288e4d972",
+      "bytes": 10716
     },
     {
       "path": "generated/world/lau-dai/regions/r6-3.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-lau-dai-map.ts",
       "derivedFrom": [],
-      "sha256": "651080e6d9eb0ecbfc6a455bef239174d8a171ae47ad850aa01a4042abd5c3da",
-      "bytes": 19893
+      "sha256": "0aeb23d62a5f101d5a7e31bfa4db4edb41c2014d6dd509abc3e16a04a35b0020",
+      "bytes": 12740
     },
     {
       "path": "generated/world/lau-dai/regions/r6-4.bin",
@@ -22304,80 +22432,80 @@
       "license": "CC0-1.0",
       "generator": "tools/world/generate-nong-trai-map.ts",
       "derivedFrom": [],
-      "sha256": "b532dbf573ed1275235f4bbd845ace4c5e34595df9ab37a13263ae5cb62ceb2a",
-      "bytes": 1033452
+      "sha256": "8f72b128c0bf8bee0c98768c8ac6c5e413817e60b1f8852ede8eac77a2482561",
+      "bytes": 1045498
     },
     {
       "path": "generated/world/nong-trai/horizon.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-nong-trai-map.ts",
       "derivedFrom": [],
-      "sha256": "5a735cd74fe21ee09f86cc2bf860702ddfef4d43b056e0f3a287bf55c3d88dfe",
-      "bytes": 49742
+      "sha256": "5712d1cf11011364e18eae11311b7ac38b1f93da05fa5ce8fdb6528bcd1c27b2",
+      "bytes": 48898
     },
     {
       "path": "generated/world/nong-trai/regions/r0-0.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-nong-trai-map.ts",
       "derivedFrom": [],
-      "sha256": "4a98487a53355a57bce3ad2d7ae06d932142fea57eccc2827420acc21035338a",
-      "bytes": 38936
+      "sha256": "c25bd4eb8a3cb6dbfa407d1d1e94ca6c1e54fa9631f6521d552302a606c06193",
+      "bytes": 26695
     },
     {
       "path": "generated/world/nong-trai/regions/r0-1.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-nong-trai-map.ts",
       "derivedFrom": [],
-      "sha256": "897a715b9d9fdbe8f0cd30b28fc0a16b17833ffde74c526e8a5b74e6eadb5ce7",
-      "bytes": 30129
+      "sha256": "fcd6f1e865979e5e039a6d5d8aa2346d0753eae10a5f3081a5eac211d9a05992",
+      "bytes": 18606
     },
     {
       "path": "generated/world/nong-trai/regions/r0-2.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-nong-trai-map.ts",
       "derivedFrom": [],
-      "sha256": "4040c5c502c2291cd904a17098e5f0e5e28a43c1ef5419029eb1b3b4a78305ae",
-      "bytes": 30884
+      "sha256": "7038e5851bc4dc1a2e56d079132acb466296c7570f255c42cd462be6a97be0e1",
+      "bytes": 19088
     },
     {
       "path": "generated/world/nong-trai/regions/r0-3.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-nong-trai-map.ts",
       "derivedFrom": [],
-      "sha256": "4ce53db4cb9f826c03fcf3e0e7d045e295efb215e82e82030d3110bbe30d0745",
-      "bytes": 26163
+      "sha256": "1453c8b5e87c2fe2359e25660acd2836cce548a15441a2cc0f6176bff365aff1",
+      "bytes": 14253
     },
     {
       "path": "generated/world/nong-trai/regions/r0-4.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-nong-trai-map.ts",
       "derivedFrom": [],
-      "sha256": "db9d98c6088682f8b075769dcac59446598d7d94e9773990646b2a1a508c750a",
-      "bytes": 24448
+      "sha256": "a3e34092a235af88dc6646fbbaff8a411b8060ded72c9db73f07c2ae72e24c18",
+      "bytes": 13035
     },
     {
       "path": "generated/world/nong-trai/regions/r0-5.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-nong-trai-map.ts",
       "derivedFrom": [],
-      "sha256": "6cda11929146f6b9f0a4ae1adc3e142313127085cd1100405bebb2a6e84fad44",
-      "bytes": 30488
+      "sha256": "0e8923ce5e6556c935c30db0ed49f8b7e7dd000fb8bda89a502e849cf78f2746",
+      "bytes": 18490
     },
     {
       "path": "generated/world/nong-trai/regions/r0-6.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-nong-trai-map.ts",
       "derivedFrom": [],
-      "sha256": "f7fa35d7116a8a9b5d07bd255ffcd15c0bde647d17bdab764470b0fe7bd0caa4",
-      "bytes": 9514
+      "sha256": "23bca313d41ed8f58dc06a6aeeec2fd66f7e69129a9b88a94a8b7903c0b078f8",
+      "bytes": 6373
     },
     {
       "path": "generated/world/nong-trai/regions/r1-0.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-nong-trai-map.ts",
       "derivedFrom": [],
-      "sha256": "2162e678e9b79aa0579242d01f3cc6bae32261938b62cf3da4d9a0e66e24f8da",
-      "bytes": 21080
+      "sha256": "a3f079d9efce5535f398464a60117a4b9beb98cba9b491028076e1814c9e80ec",
+      "bytes": 20174
     },
     {
       "path": "generated/world/nong-trai/regions/r1-1.bin",
@@ -22424,16 +22552,16 @@
       "license": "CC0-1.0",
       "generator": "tools/world/generate-nong-trai-map.ts",
       "derivedFrom": [],
-      "sha256": "968feefb5185028c86bebc10f92ecbce23622b406811e78a12f9a5594c7f41c4",
-      "bytes": 5987
+      "sha256": "eb8e942a00d6fc2b7ca853b46b131c0221708c730414311e328d24c3d607b4a1",
+      "bytes": 5053
     },
     {
       "path": "generated/world/nong-trai/regions/r2-0.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-nong-trai-map.ts",
       "derivedFrom": [],
-      "sha256": "c8a0108899ac59c5c910a58e2a872d40a80d3090a603399bd9560a46eadb12ea",
-      "bytes": 19685
+      "sha256": "c0aee4e40f2bd86e62f8302f31dc5c66322c143663956e9cd640b478422c2b8a",
+      "bytes": 18655
     },
     {
       "path": "generated/world/nong-trai/regions/r2-1.bin",
@@ -22480,16 +22608,16 @@
       "license": "CC0-1.0",
       "generator": "tools/world/generate-nong-trai-map.ts",
       "derivedFrom": [],
-      "sha256": "b3e7d07d042068f9a499fa275caf2de07105854582a003db3b422a652b88424a",
-      "bytes": 6245
+      "sha256": "5d7dc853a9d4fbd09bb2b099e35f65988297afdd709e5002e692f884974ffca7",
+      "bytes": 5339
     },
     {
       "path": "generated/world/nong-trai/regions/r3-0.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-nong-trai-map.ts",
       "derivedFrom": [],
-      "sha256": "e1b47ae8a1382189f9d9d192c0d3fd241da9116a281658cc6ee1cfb1c2d292a6",
-      "bytes": 15971
+      "sha256": "330cc42ec9cc3d982eac2e287285ec5c9f775a6b5ec1c20a1261fbfd6ef9f250",
+      "bytes": 15162
     },
     {
       "path": "generated/world/nong-trai/regions/r3-1.bin",
@@ -22536,16 +22664,16 @@
       "license": "CC0-1.0",
       "generator": "tools/world/generate-nong-trai-map.ts",
       "derivedFrom": [],
-      "sha256": "81063752fe8db15ce125833d5146d29db33344f21ed3ad7edefae962cf1714d7",
-      "bytes": 6994
+      "sha256": "f4cc07e9fb03f99e533cba13380d37dbea6194e2cd7f1ea3d61f1280c4655a38",
+      "bytes": 6061
     },
     {
       "path": "generated/world/nong-trai/regions/r4-0.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-nong-trai-map.ts",
       "derivedFrom": [],
-      "sha256": "c1eae6c791dc2def6428610434220dcef325367a8e93652f4dc4e45087b737d9",
-      "bytes": 23952
+      "sha256": "c63f605974f82ea3cc6ac83bcadc7ed63e7a5df13931de26f07a886c8d6a2249",
+      "bytes": 23014
     },
     {
       "path": "generated/world/nong-trai/regions/r4-1.bin",
@@ -22592,16 +22720,16 @@
       "license": "CC0-1.0",
       "generator": "tools/world/generate-nong-trai-map.ts",
       "derivedFrom": [],
-      "sha256": "0edd243982eb9a8f1917839788510b18a5fa68e672937ef4191b173d0d06a45c",
-      "bytes": 7351
+      "sha256": "56137550cd921e96ed14a4ddb6e95d6f12b8f0f25637036a1a4ba2582cb601c5",
+      "bytes": 6330
     },
     {
       "path": "generated/world/nong-trai/regions/r5-0.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-nong-trai-map.ts",
       "derivedFrom": [],
-      "sha256": "914eef6feb08f8ba6b6e5abfc29fae0bfb0243ddf1e37ec9b4ebc4d090ebdc47",
-      "bytes": 13312
+      "sha256": "8d8a91d716eea71ddc7f233c3e365136c305922168219c7b7b390db2aa15f349",
+      "bytes": 12356
     },
     {
       "path": "generated/world/nong-trai/regions/r5-1.bin",
@@ -22648,64 +22776,64 @@
       "license": "CC0-1.0",
       "generator": "tools/world/generate-nong-trai-map.ts",
       "derivedFrom": [],
-      "sha256": "7a29f88f9880eb25d9b772568412012552e272e9022488597af24e8f52ebdeb6",
-      "bytes": 7039
+      "sha256": "34a33e3e67c5a9ad10c5168a2aa99a60e6a73110c20fdba34dfdd426ed43128d",
+      "bytes": 6100
     },
     {
       "path": "generated/world/nong-trai/regions/r6-0.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-nong-trai-map.ts",
       "derivedFrom": [],
-      "sha256": "289d25034665c7c3a0c829c286d7fc5013a10e7857095ed410b19253fbd30293",
-      "bytes": 14908
+      "sha256": "9b2d315956fc53399e1894bd6858908cb324efa80375d6d2b4c63e09409ce0e7",
+      "bytes": 3315
     },
     {
       "path": "generated/world/nong-trai/regions/r6-1.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-nong-trai-map.ts",
       "derivedFrom": [],
-      "sha256": "2bf838ff3d30ce7456c46e3a430d3451c3c92ff82df6037655b570df7671e57a",
-      "bytes": 16465
+      "sha256": "b158b51ed49b74a989860ac140fee81afaafd7b4c7dabbb60f276b7b065cace7",
+      "bytes": 4837
     },
     {
       "path": "generated/world/nong-trai/regions/r6-2.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-nong-trai-map.ts",
       "derivedFrom": [],
-      "sha256": "274c073d7b879ca83d8dcc2d15046eadf284726a0ee7426603333f058ee19c73",
-      "bytes": 17400
+      "sha256": "0879477f7c2a9cdec5dd69657fef016e976d435ab20856ad9b55e870c86c051e",
+      "bytes": 5728
     },
     {
       "path": "generated/world/nong-trai/regions/r6-3.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-nong-trai-map.ts",
       "derivedFrom": [],
-      "sha256": "0a00d5081437b56659c997074df77eaffc6199f6108133dbf56bf52f962b6322",
-      "bytes": 18505
+      "sha256": "0a5dabd9a46b330ae8279acda0177d3e1d40940d44cee0a3a3f8bcd235404f6e",
+      "bytes": 6853
     },
     {
       "path": "generated/world/nong-trai/regions/r6-4.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-nong-trai-map.ts",
       "derivedFrom": [],
-      "sha256": "2275ace9529a174d9deffb4de40c444031484d091bb2c61f2d61aef68d31dcc9",
-      "bytes": 18421
+      "sha256": "89a9502ec9e2f341b68481b017905d83320ccbf0d8ff5ea7a70e2584ed058bbe",
+      "bytes": 6979
     },
     {
       "path": "generated/world/nong-trai/regions/r6-5.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-nong-trai-map.ts",
       "derivedFrom": [],
-      "sha256": "b839570e22f31d92b88d28b9af71681bc8c6dfd3d8b48a6fa094262bee1bd58e",
-      "bytes": 18150
+      "sha256": "8c5ee70fbc5f805462bc906631a6897b07855a12413807ce04907e99caf788b5",
+      "bytes": 6580
     },
     {
       "path": "generated/world/nong-trai/regions/r6-6.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-nong-trai-map.ts",
       "derivedFrom": [],
-      "sha256": "b60f5c545d9042c0a16bdfd67ec20cd67ed0f54fd08a8921896cb65be0cffb74",
-      "bytes": 4063
+      "sha256": "eb3f2496f4e20c3adcecd1dd9e62b3d5851d39cecebcf302633593151df99eef",
+      "bytes": 1577
     },
     {
       "path": "generated/world/the-gioi/entities.json",
@@ -22744,80 +22872,80 @@
       "license": "CC0-1.0",
       "generator": "tools/world/generate-thu-vien-map.ts",
       "derivedFrom": [],
-      "sha256": "47cdfb4b3af34e6fede3eb2933f2fc2ce6e764bc9013641a3d71c30ba25b2f84",
-      "bytes": 1266370
+      "sha256": "bc3c6eefa091d0a780f2137686171a75e3d5cd05172e58e3bd59f24d08173a3b",
+      "bytes": 1278419
     },
     {
       "path": "generated/world/thu-vien/horizon.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-thu-vien-map.ts",
       "derivedFrom": [],
-      "sha256": "e925fd84ed125dac65629018b166dde15ab8714ef6bc3643eaa3ebdda749e8cb",
-      "bytes": 63346
+      "sha256": "2c7ccb38ab8b16a30e761effb5a7ba922560908d7ee59613a648ace299bee082",
+      "bytes": 62660
     },
     {
       "path": "generated/world/thu-vien/regions/r0-0.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-thu-vien-map.ts",
       "derivedFrom": [],
-      "sha256": "7c2f3a63c81fa8c0ae89b7418ce8866e2395da108874856e736fe821087a93ea",
-      "bytes": 39389
+      "sha256": "e88092b7f5979f539620f47fab6c95215bd548580da90188de63ba15529d8810",
+      "bytes": 28758
     },
     {
       "path": "generated/world/thu-vien/regions/r0-1.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-thu-vien-map.ts",
       "derivedFrom": [],
-      "sha256": "07a30bf43cfbdae270aacd239f0a8e184f7e95167b8c9c387826fc178e559f64",
-      "bytes": 36745
+      "sha256": "da1c94c0f71d62da55eaca691cd8ed1353bef1cd74940fab1b52820823338a11",
+      "bytes": 25479
     },
     {
       "path": "generated/world/thu-vien/regions/r0-2.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-thu-vien-map.ts",
       "derivedFrom": [],
-      "sha256": "d3e88d4edc0806fbe05471872433fffcb726aa4baf830ac5b037801165b42951",
-      "bytes": 36919
+      "sha256": "3ab8055378dc28ded53adf2674785956366a9c3ab9c28bdfd169e420fa2d8283",
+      "bytes": 26044
     },
     {
       "path": "generated/world/thu-vien/regions/r0-3.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-thu-vien-map.ts",
       "derivedFrom": [],
-      "sha256": "a0f3f78dd2671f4510664ac762d97c124a34b004c02453500e736a9b68798ef6",
-      "bytes": 37428
+      "sha256": "2a96dca146ada457d06fc6865313e93b0dfba52a966761856979d0971ba4f30d",
+      "bytes": 26346
     },
     {
       "path": "generated/world/thu-vien/regions/r0-4.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-thu-vien-map.ts",
       "derivedFrom": [],
-      "sha256": "651822dbfa2dced9cf4c7308e2ffa527ff0acee54f6db7212b42ed3d079de264",
-      "bytes": 38780
+      "sha256": "81d31ac08a17c830e8beb373011d482b9a2be2d44183c5e9204c9386cc3132b3",
+      "bytes": 28111
     },
     {
       "path": "generated/world/thu-vien/regions/r0-5.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-thu-vien-map.ts",
       "derivedFrom": [],
-      "sha256": "1b3852e63cfaa3405b63827bda565bd14867e1ebeea1644e9f796dfbff9d169b",
-      "bytes": 39464
+      "sha256": "5f1be0347bace36019eea15ae8a3ba6e5fbed33d33094c12b5a57d8bfef2bdaf",
+      "bytes": 28756
     },
     {
       "path": "generated/world/thu-vien/regions/r0-6.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-thu-vien-map.ts",
       "derivedFrom": [],
-      "sha256": "942230fbcab0b7fca86560391b422a48d328fac9cfdec6e2f215643a2eb380e2",
-      "bytes": 10871
+      "sha256": "9c4a4b7e8d51926fc9f51dd7430a18f430bc67f77d588d234f81cac75e7656d6",
+      "bytes": 8157
     },
     {
       "path": "generated/world/thu-vien/regions/r1-0.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-thu-vien-map.ts",
       "derivedFrom": [],
-      "sha256": "536dc28aa403957b7beec50cd654a53f546fc1713f0e0466feaf3e0ce9e8bc56",
-      "bytes": 21649
+      "sha256": "0873672c00b91eaa281d380e076a522c31b0da5c04ad97aa0a231fe4fb5ab40d",
+      "bytes": 21309
     },
     {
       "path": "generated/world/thu-vien/regions/r1-1.bin",
@@ -22864,16 +22992,16 @@
       "license": "CC0-1.0",
       "generator": "tools/world/generate-thu-vien-map.ts",
       "derivedFrom": [],
-      "sha256": "7dab8f38e6c644d3d497196413f7caf75ec9b276bcd487127696b57f86f01d16",
-      "bytes": 7985
+      "sha256": "3ac0229d8481195f6be88241eeae06c5e9b56159190b409b7cc49350de71dda5",
+      "bytes": 7437
     },
     {
       "path": "generated/world/thu-vien/regions/r2-0.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-thu-vien-map.ts",
       "derivedFrom": [],
-      "sha256": "08c022b0f8e6cd886b73d64903e4bccafbb137c6d9fa861779a5bd0cd48bacf4",
-      "bytes": 22150
+      "sha256": "a56864a8a7f887bae8050c65e05a3ff2b76581d32cbbf782e56a48cc19c7cce3",
+      "bytes": 21896
     },
     {
       "path": "generated/world/thu-vien/regions/r2-1.bin",
@@ -22920,16 +23048,16 @@
       "license": "CC0-1.0",
       "generator": "tools/world/generate-thu-vien-map.ts",
       "derivedFrom": [],
-      "sha256": "34bae4f1d537ee0fb6c8ace939bfa4c98103525eca98e8d3d3f70cf2f36770af",
-      "bytes": 8079
+      "sha256": "d1a236673d89c26343af83ab6ece8afd29947002af468d196ad73e46b7c7bbc0",
+      "bytes": 8050
     },
     {
       "path": "generated/world/thu-vien/regions/r3-0.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-thu-vien-map.ts",
       "derivedFrom": [],
-      "sha256": "5753a8204d1c0284da5b9c177f0142ef16b0f820d2b6353f811420c6a676d278",
-      "bytes": 36154
+      "sha256": "4cd594bd978968ff9ffe6a4cefc6d79f007c5a31748644155def5e64244d8354",
+      "bytes": 35667
     },
     {
       "path": "generated/world/thu-vien/regions/r3-1.bin",
@@ -22976,16 +23104,16 @@
       "license": "CC0-1.0",
       "generator": "tools/world/generate-thu-vien-map.ts",
       "derivedFrom": [],
-      "sha256": "bca2bc1047cfa0cb4c4f65e48bd06ab451168771baf1171b8b2f2addac48ad11",
-      "bytes": 8976
+      "sha256": "4ec49b78ccba842369757e2d73e50bb61e8c46160c502c97edc3faf6b8813e16",
+      "bytes": 8497
     },
     {
       "path": "generated/world/thu-vien/regions/r4-0.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-thu-vien-map.ts",
       "derivedFrom": [],
-      "sha256": "735232d4ab9bb7ee74864b2b49a68bd35a86ce1b56a3ae38a24e6c2e7822f7c7",
-      "bytes": 33210
+      "sha256": "df184430e6a92bca7f8149788d109578d833f15b1286a4af56439a989abfee31",
+      "bytes": 32660
     },
     {
       "path": "generated/world/thu-vien/regions/r4-1.bin",
@@ -23032,16 +23160,16 @@
       "license": "CC0-1.0",
       "generator": "tools/world/generate-thu-vien-map.ts",
       "derivedFrom": [],
-      "sha256": "6c23afcc83c9b80c0923f84cfb6d62bf38abe55761f17418f7a0de454194bd54",
-      "bytes": 9853
+      "sha256": "532baf09ab145259438e4cadd1396ce7f4c30e996558abab4b1054a2d40b7776",
+      "bytes": 9325
     },
     {
       "path": "generated/world/thu-vien/regions/r5-0.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-thu-vien-map.ts",
       "derivedFrom": [],
-      "sha256": "43694df0de0f2243c94c87c5539e8bac29dbf3e0fb032dd97677186160d623d2",
-      "bytes": 33009
+      "sha256": "0391a767ca83216cefcee866e1e24b68ee6baef41963b4bbe82f030441ecc02b",
+      "bytes": 32562
     },
     {
       "path": "generated/world/thu-vien/regions/r5-1.bin",
@@ -23088,144 +23216,144 @@
       "license": "CC0-1.0",
       "generator": "tools/world/generate-thu-vien-map.ts",
       "derivedFrom": [],
-      "sha256": "4752a1efd70904957e69f9134954e2f6d4c596f5d7d358d1c8d12b27b734476f",
-      "bytes": 9457
+      "sha256": "fb53dec38d5145a160f869b0ea5d44dab703c8c94886ef4805aaa174331db945",
+      "bytes": 8910
     },
     {
       "path": "generated/world/thu-vien/regions/r6-0.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-thu-vien-map.ts",
       "derivedFrom": [],
-      "sha256": "371ad65adc84fe243729e265fe955be3db0741eb63780a524ce16abe0d803ae8",
-      "bytes": 18997
+      "sha256": "082a290c57cccd2956c81854bac5543cd1ed5add8e0a85cce524daa86c4041fc",
+      "bytes": 8581
     },
     {
       "path": "generated/world/thu-vien/regions/r6-1.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-thu-vien-map.ts",
       "derivedFrom": [],
-      "sha256": "836504b0703f65c469828adcaae68ea04ad5bfab18f3da5127eca1b8c4394a34",
-      "bytes": 18085
+      "sha256": "914edf189b44a68d6792137806cdda0e53a3e0908580452adb25a4765e349752",
+      "bytes": 7783
     },
     {
       "path": "generated/world/thu-vien/regions/r6-2.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-thu-vien-map.ts",
       "derivedFrom": [],
-      "sha256": "aef4882f00e8a5e13d2f83a842154320fc3ae059efdb052020824aab43e32faa",
-      "bytes": 19289
+      "sha256": "4c3511278fba06b76446f2c93d167b7fee1865d4b092e0da7743f234dd4728c8",
+      "bytes": 8730
     },
     {
       "path": "generated/world/thu-vien/regions/r6-3.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-thu-vien-map.ts",
       "derivedFrom": [],
-      "sha256": "c13e310fa342a18317a03b5d0eac5c911e6b5053f51c8b72875a0758c3ac3edd",
-      "bytes": 19191
+      "sha256": "011be916c85e508bb0ecbd887f46e301d9bb55e5a82483b3b9d3bb50df9a1ec0",
+      "bytes": 8186
     },
     {
       "path": "generated/world/thu-vien/regions/r6-4.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-thu-vien-map.ts",
       "derivedFrom": [],
-      "sha256": "8bc16cb3deee9a13281f73eace103912ae8b86a625e2b2d21dea01d1fa487df8",
-      "bytes": 17542
+      "sha256": "cdc2cdca959927346e5389f405a4e169caf9e0f98a1882cf7b805459389e6694",
+      "bytes": 6751
     },
     {
       "path": "generated/world/thu-vien/regions/r6-5.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-thu-vien-map.ts",
       "derivedFrom": [],
-      "sha256": "1d7a7465557c94491dcc7ea7d129287eb856872b5e739ac1c382a414062d7980",
-      "bytes": 18309
+      "sha256": "5cfebb5d6c3bea47c078b411447751f0aa799446028d2c78436975026e69b957",
+      "bytes": 7956
     },
     {
       "path": "generated/world/thu-vien/regions/r6-6.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-thu-vien-map.ts",
       "derivedFrom": [],
-      "sha256": "95643fafdafbba91829e3a7f9c9d65fa8f3389003a913e4283a6d02956c2b1c6",
-      "bytes": 4055
+      "sha256": "ed2a2152cbc644503dbd8159860ca98b570a9f088c7d36bc43f8ba40e31be4b1",
+      "bytes": 2072
     },
     {
       "path": "generated/world/truong-hoc/entities.json",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-school-map.ts",
       "derivedFrom": [],
-      "sha256": "4f3f5176b7d4c2276197c2cf261feb8ed16fb8f0c70a98b8153ffd8a5950594e",
-      "bytes": 760214
+      "sha256": "8e42003c17801c86177c7314961d40e9abc485f9c156700cc23580eec5de8066",
+      "bytes": 772262
     },
     {
       "path": "generated/world/truong-hoc/horizon.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-school-map.ts",
       "derivedFrom": [],
-      "sha256": "53231fa7e8bbb2be00929173a6490953522bb63389a12c9dfb69cfff43877378",
-      "bytes": 69274
+      "sha256": "5181e773b274204db817ca1a579c72ee53589bcb6963273c223298145424f5ab",
+      "bytes": 68706
     },
     {
       "path": "generated/world/truong-hoc/regions/r0-0.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-school-map.ts",
       "derivedFrom": [],
-      "sha256": "d205c21a7933a3ad79c3ddab804e2c910d06d7394fdc618f2db90e75fa27dd11",
-      "bytes": 42790
+      "sha256": "6be9f3586fb2db65d889265b243c993c27841a5d8549778cb113185d18c9b621",
+      "bytes": 32792
     },
     {
       "path": "generated/world/truong-hoc/regions/r0-1.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-school-map.ts",
       "derivedFrom": [],
-      "sha256": "35993de0ace362869df293b85377ebc15055c0922905d45ba95d9fc094bb2163",
-      "bytes": 41118
+      "sha256": "b1eb95533d04800c50152d527e147d6ef4a274d6debdeff21e9f060d628f9616",
+      "bytes": 30061
     },
     {
       "path": "generated/world/truong-hoc/regions/r0-2.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-school-map.ts",
       "derivedFrom": [],
-      "sha256": "d8727067479b290f501ad04317eb01d2b4c7113757f2c2a71f78b549d1726799",
-      "bytes": 36722
+      "sha256": "1cf07391919d54f4ead546cb7f862f20ac8e41b813b6535008bb9cf45f9136ef",
+      "bytes": 27236
     },
     {
       "path": "generated/world/truong-hoc/regions/r0-3.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-school-map.ts",
       "derivedFrom": [],
-      "sha256": "b30614e182ba250086a7b2d1561efef6fcfea0a06cbad54c63e8f640bab3a4c5",
-      "bytes": 37294
+      "sha256": "e0257f01ef88e0f6e8675db1eb0f1303d2ce2131b83c591d11f4f7263a671fe8",
+      "bytes": 26850
     },
     {
       "path": "generated/world/truong-hoc/regions/r0-4.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-school-map.ts",
       "derivedFrom": [],
-      "sha256": "6d19c2be5f00d77b01a1ace28d1311558a4d8ddd5ca0970c1c88a7d4a3f0aee0",
-      "bytes": 39963
+      "sha256": "bc66525eb41bf26618d96291887a47561e6ff24208958bc211ffefaa280e5ddd",
+      "bytes": 28888
     },
     {
       "path": "generated/world/truong-hoc/regions/r0-5.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-school-map.ts",
       "derivedFrom": [],
-      "sha256": "03bc5802cb48b225c69ab83f60473a12987064d4bbd6f2969b3f58718c17dd18",
-      "bytes": 43610
+      "sha256": "e9dc700f17d45b56e0bb7f90103b0bc01ec9cd6af9486e2947463c68a496762d",
+      "bytes": 38718
     },
     {
       "path": "generated/world/truong-hoc/regions/r0-6.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-school-map.ts",
       "derivedFrom": [],
-      "sha256": "4970322bb05681a36782ee92c412ee92beb6189e898e469ffcfdf155fc7e415f",
-      "bytes": 6984
+      "sha256": "65c536bed1b347b4d6fba884076e64d56a7b9a31841fdb944e4ea92b6fae4ab7",
+      "bytes": 7285
     },
     {
       "path": "generated/world/truong-hoc/regions/r1-0.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-school-map.ts",
       "derivedFrom": [],
-      "sha256": "ca85ca173b19871d768db1172bee285694672880863d9aa109bab3e6638844cb",
-      "bytes": 34527
+      "sha256": "eb7f274c35ed35a5a4ad7b73c5060b86adcd6b6ecfbec02545d16b916eb562a1",
+      "bytes": 34265
     },
     {
       "path": "generated/world/truong-hoc/regions/r1-1.bin",
@@ -23272,16 +23400,16 @@
       "license": "CC0-1.0",
       "generator": "tools/world/generate-school-map.ts",
       "derivedFrom": [],
-      "sha256": "7be6e744ba74418b4182d20c090eac63d13692c54802cd4deb6955b85291db2c",
-      "bytes": 10695
+      "sha256": "81a69dc0a6f7d7d5480e90e91ae2b5c36f6269b5e8f92293ecdebdcef4d24cbd",
+      "bytes": 10568
     },
     {
       "path": "generated/world/truong-hoc/regions/r2-0.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-school-map.ts",
       "derivedFrom": [],
-      "sha256": "435f65296b8b13d71170bedc8412fd1177ce3f1ce220ed3d4f428ac30b811fe2",
-      "bytes": 32018
+      "sha256": "6d0d5f47fe518c08d8cb26a59e5c4dcf4e75a4258d1ce15ec4c7cbc09adf8ffe",
+      "bytes": 31694
     },
     {
       "path": "generated/world/truong-hoc/regions/r2-1.bin",
@@ -23328,16 +23456,16 @@
       "license": "CC0-1.0",
       "generator": "tools/world/generate-school-map.ts",
       "derivedFrom": [],
-      "sha256": "1b67af5a0d2d5578b5627e15ea0fec4ad87e2a8bbdd0b3d4be2d7af73c1deec5",
-      "bytes": 8014
+      "sha256": "d3aa0e8363db36a03a778acd77bf47abd669bd9196d50256c764fd23a17f6cf1",
+      "bytes": 7703
     },
     {
       "path": "generated/world/truong-hoc/regions/r3-0.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-school-map.ts",
       "derivedFrom": [],
-      "sha256": "c0ada2a2c0817618ebe3e3151b82b96cfc8b4418cec232422bd12df2341e03ed",
-      "bytes": 30766
+      "sha256": "6b92c9a9149dfdb6354b91f63ef025c3b6dc749ecfb2db835a3cee22608bd872",
+      "bytes": 30424
     },
     {
       "path": "generated/world/truong-hoc/regions/r3-1.bin",
@@ -23384,16 +23512,16 @@
       "license": "CC0-1.0",
       "generator": "tools/world/generate-school-map.ts",
       "derivedFrom": [],
-      "sha256": "f20c50655fbb4a5f5161f7fca15a38d4f6cc749ea2ec3e96238e169da170c4ec",
-      "bytes": 7797
+      "sha256": "2d2662df829a099b7e2694b062d6fd7b4e50fb3d1cb4803c431aef6d3f7bd011",
+      "bytes": 7415
     },
     {
       "path": "generated/world/truong-hoc/regions/r4-0.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-school-map.ts",
       "derivedFrom": [],
-      "sha256": "e91a74af9ccc0894142b1c183fda530a7160fcdd35d829e0e250ff72bba4689d",
-      "bytes": 28797
+      "sha256": "124b9755be8587703b4a013ae822c94ccc36506edfdcdfc8394fc0443bce642e",
+      "bytes": 28391
     },
     {
       "path": "generated/world/truong-hoc/regions/r4-1.bin",
@@ -23440,16 +23568,16 @@
       "license": "CC0-1.0",
       "generator": "tools/world/generate-school-map.ts",
       "derivedFrom": [],
-      "sha256": "f9c69dcc43165302613fb7e9988c6bce2c0137ffcf36b8dd2bf001d436f1b64c",
-      "bytes": 7953
+      "sha256": "f3dca2b250321fa58b03c030295ed9526066672532c55aafee338ac15c25e2de",
+      "bytes": 7512
     },
     {
       "path": "generated/world/truong-hoc/regions/r5-0.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-school-map.ts",
       "derivedFrom": [],
-      "sha256": "f85a3396deea0cce73dbfc06dcc35faefc3440bccce57247e1249a13e3c3d444",
-      "bytes": 27355
+      "sha256": "e4d87c23b69afe145eef5c0cbf2486e7d939230bf6f696038bd4d9a4e3266d94",
+      "bytes": 26971
     },
     {
       "path": "generated/world/truong-hoc/regions/r5-1.bin",
@@ -23496,144 +23624,144 @@
       "license": "CC0-1.0",
       "generator": "tools/world/generate-school-map.ts",
       "derivedFrom": [],
-      "sha256": "2647711bf4237e89ccbf800166e2a35ec2bd2b5f2c314532dd2777f5f1acb7ef",
-      "bytes": 11518
+      "sha256": "98a9272d6130a81ed5509dbae2789ccfacd9ce6360709b00ab286621971f14c7",
+      "bytes": 11251
     },
     {
       "path": "generated/world/truong-hoc/regions/r6-0.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-school-map.ts",
       "derivedFrom": [],
-      "sha256": "3a0cbacb78216d6c4f43f7da86ffe39398bc2a4f65b6a3aa2d0d77f1bc82626d",
-      "bytes": 17964
+      "sha256": "1365b2583903edbf6549df1a94f850888658a1ec1fdc852f40ad09175418f566",
+      "bytes": 7198
     },
     {
       "path": "generated/world/truong-hoc/regions/r6-1.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-school-map.ts",
       "derivedFrom": [],
-      "sha256": "362bcf7af1f4cdf0fdb25c1cd7c315c4d60be3e7d36f45a734c8152c0cd32ffa",
-      "bytes": 18550
+      "sha256": "97b6c0de7f0b1dfe520ba3e857c5c678969995df7c917a8f5d8a23b0045f4b79",
+      "bytes": 7678
     },
     {
       "path": "generated/world/truong-hoc/regions/r6-2.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-school-map.ts",
       "derivedFrom": [],
-      "sha256": "f8c8ae869f9ea2a53e81f0609540e9e93bd5a8002d22133f2bb49e0abd8a8bb1",
-      "bytes": 17373
+      "sha256": "9b3166434c36d6a9a91f25c36248a1e046a00f81f6218dc55745554eb7831981",
+      "bytes": 7397
     },
     {
       "path": "generated/world/truong-hoc/regions/r6-3.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-school-map.ts",
       "derivedFrom": [],
-      "sha256": "c7c2ccaace71477d2332903f32c3f38e4e59d3eec20ac132e8d681957c4283ac",
-      "bytes": 19647
+      "sha256": "459b2587e10ea9da2f8a4fd80d6a88bcde69b3ed5ba3bc0594fa3aa7aef2d176",
+      "bytes": 8670
     },
     {
       "path": "generated/world/truong-hoc/regions/r6-4.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-school-map.ts",
       "derivedFrom": [],
-      "sha256": "521c6123ba651307b8f693ee93cbc0c4afef42bfa541189302dc05b95184553f",
-      "bytes": 19172
+      "sha256": "c5310d9b9c4356baf8daafc7f874f88a7c60b88d56be9266809d4461c77ad626",
+      "bytes": 8753
     },
     {
       "path": "generated/world/truong-hoc/regions/r6-5.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-school-map.ts",
       "derivedFrom": [],
-      "sha256": "c14b3e6a1ceb011e80fab5f68f41401667454ca8a1e7a611a71dcca969757ef1",
-      "bytes": 20534
+      "sha256": "179d1570f8f63a60448d82da8be31f3b7c69ac5cce4ae2d9c83180163f67daf2",
+      "bytes": 10008
     },
     {
       "path": "generated/world/truong-hoc/regions/r6-6.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-school-map.ts",
       "derivedFrom": [],
-      "sha256": "9154e8fb09546bf2687b11b209f13ded2993ac290c92b162fd268d5ffa4eed0f",
-      "bytes": 4479
+      "sha256": "38683a7ec4a571020f613a7192178a93708ee29848ccbe7fb2c044f3aec6af8b",
+      "bytes": 1997
     },
     {
       "path": "generated/world/xom-mai-am/entities.json",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-xom-mai-am-map.ts",
       "derivedFrom": [],
-      "sha256": "0b7e3fd7c22e54be813790ff090a01ffa7fae96c6b4ad0a359ea3084156eaf60",
-      "bytes": 1747736
+      "sha256": "b18486618ab9062feded24b05c4cb3e3484d4759a143125c4060ace9257a22af",
+      "bytes": 1759784
     },
     {
       "path": "generated/world/xom-mai-am/horizon.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-xom-mai-am-map.ts",
       "derivedFrom": [],
-      "sha256": "7c478419a315c787fcfd9080ef706d55a94ae6f38409b8b89dae48483a9f9fcf",
-      "bytes": 54912
+      "sha256": "c1cd52e3a72d402346520d785ae66dd34a52244fba13e89955cd5a516d2d9a28",
+      "bytes": 53978
     },
     {
       "path": "generated/world/xom-mai-am/regions/r0-0.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-xom-mai-am-map.ts",
       "derivedFrom": [],
-      "sha256": "49e3197ae01442262d3d93a9c48f7cec8b4d6692f7dc2887c75e38ea883600ad",
-      "bytes": 35385
+      "sha256": "da5b051d77e7f74e0dbb55c6c389e5e561db36329b0c63adb7c43a475678b9c6",
+      "bytes": 24860
     },
     {
       "path": "generated/world/xom-mai-am/regions/r0-1.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-xom-mai-am-map.ts",
       "derivedFrom": [],
-      "sha256": "22d5e144da0e84d8aafa475e6339b0f86c9c7a944c1bb230fea0b6033f994bc5",
-      "bytes": 36358
+      "sha256": "bc65c34832d66df643461a9b800d057604d684e02b0014fac15595ced2de0b72",
+      "bytes": 25985
     },
     {
       "path": "generated/world/xom-mai-am/regions/r0-2.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-xom-mai-am-map.ts",
       "derivedFrom": [],
-      "sha256": "8565734363bf9292782e0365eedee61c0a2b91b55bdcacb1240d74eb7e8cb6d9",
-      "bytes": 32161
+      "sha256": "ef8dffb317a40aef483b33333c7b12520b869c0954cef1fd6950756550e068ef",
+      "bytes": 21524
     },
     {
       "path": "generated/world/xom-mai-am/regions/r0-3.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-xom-mai-am-map.ts",
       "derivedFrom": [],
-      "sha256": "9e26d7e9143284dcbcf880a4a7b0a58da78acc33fd9af00168c8f8cb0e5f78e2",
-      "bytes": 40288
+      "sha256": "b7ef96875b8fb1599be7a64719617e30e299cbf18b679d084fe78e005eb085e9",
+      "bytes": 29877
     },
     {
       "path": "generated/world/xom-mai-am/regions/r0-4.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-xom-mai-am-map.ts",
       "derivedFrom": [],
-      "sha256": "be77526cfcb5fd00dc533d42ccb11fcea7477bce606a2727a88693f6a057a9ad",
-      "bytes": 47649
+      "sha256": "ceb9b0a7fa646d29b0ed4168ffc7305e75ddde544b28b6490da23ffa9eda735e",
+      "bytes": 36978
     },
     {
       "path": "generated/world/xom-mai-am/regions/r0-5.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-xom-mai-am-map.ts",
       "derivedFrom": [],
-      "sha256": "34ef75b87d1682573d7d21a2ec34c13dc1b1ddc3f04274c645c50dab5150dea9",
-      "bytes": 39473
+      "sha256": "09795c06ece5dc5d83833d15ce1870b99e8d9b518f2aac801825086cb458dfee",
+      "bytes": 28136
     },
     {
       "path": "generated/world/xom-mai-am/regions/r0-6.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-xom-mai-am-map.ts",
       "derivedFrom": [],
-      "sha256": "5f934ba767f8b108e2d3fc2e433a54dc2693b6655364fe213fd0ad5a2bf52331",
-      "bytes": 8751
+      "sha256": "acaf9efa0ebee2c5a1c917b37bf04474db871b810679d2a7dfd3a80715571181",
+      "bytes": 5923
     },
     {
       "path": "generated/world/xom-mai-am/regions/r1-0.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-xom-mai-am-map.ts",
       "derivedFrom": [],
-      "sha256": "b9d9d67f28ae072bf93ccac05b642fed63138b3a330fef23ff9625ca73186518",
-      "bytes": 21080
+      "sha256": "2b1ab248d5d1d91c87f75edf0ae3d4c42a2c3e3e29f103390580ba2b89ce124e",
+      "bytes": 20710
     },
     {
       "path": "generated/world/xom-mai-am/regions/r1-1.bin",
@@ -23680,16 +23808,16 @@
       "license": "CC0-1.0",
       "generator": "tools/world/generate-xom-mai-am-map.ts",
       "derivedFrom": [],
-      "sha256": "98d4a60d06332870ce17e56ff203d8ca7161bb325bf075113f19ad58da35b039",
-      "bytes": 5156
+      "sha256": "dcec392858e3d2ab3f18bcd63568a9735cf6263983339c6c14dd7db8730caee2",
+      "bytes": 4855
     },
     {
       "path": "generated/world/xom-mai-am/regions/r2-0.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-xom-mai-am-map.ts",
       "derivedFrom": [],
-      "sha256": "e9055f7e44db791ac25b34c291c4ad0260f9212a1dc58e57d4960f4861d708c5",
-      "bytes": 30862
+      "sha256": "ce9a9f9832c759a962aa3c4375d40e9cf7ed528a6e5bcb67b3498923cf046698",
+      "bytes": 30564
     },
     {
       "path": "generated/world/xom-mai-am/regions/r2-1.bin",
@@ -23736,16 +23864,16 @@
       "license": "CC0-1.0",
       "generator": "tools/world/generate-xom-mai-am-map.ts",
       "derivedFrom": [],
-      "sha256": "e70f2ac5218985aebe59cc102f3b2ac2e69b2f444db5abcbc0c5bb039bd9b0df",
-      "bytes": 6492
+      "sha256": "34156f14b2af6e93c978ac0d2f16cd7ea18db5c7e8560bc89b454bc848a7d5c6",
+      "bytes": 6094
     },
     {
       "path": "generated/world/xom-mai-am/regions/r3-0.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-xom-mai-am-map.ts",
       "derivedFrom": [],
-      "sha256": "39e1043fc9ef16b6eda9c0bf290be72678a62ce1a15464bf56dec5cdb74eaf9d",
-      "bytes": 28441
+      "sha256": "985b2df5b57e4ce62d6a6050785913dac1d1b149a21fb0b026cd41f0fd843310",
+      "bytes": 27970
     },
     {
       "path": "generated/world/xom-mai-am/regions/r3-1.bin",
@@ -23792,16 +23920,16 @@
       "license": "CC0-1.0",
       "generator": "tools/world/generate-xom-mai-am-map.ts",
       "derivedFrom": [],
-      "sha256": "b61a44e2a5bbd2e2df048915435b329baa1fd66307a876b99b13af3ee972bfc7",
-      "bytes": 5664
+      "sha256": "805a68e014d29bdc15bb1656279604ebe24b5912e800d7c54caccbfcaab1ae7c",
+      "bytes": 5117
     },
     {
       "path": "generated/world/xom-mai-am/regions/r4-0.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-xom-mai-am-map.ts",
       "derivedFrom": [],
-      "sha256": "6c2f10d8c0301d9a3f7587a2a90154876ac99cc2dd296d5bef95a1fd59f21689",
-      "bytes": 26887
+      "sha256": "e45ef1e51dd2edc7fbb65fa877c036a94540c16b7c4ff08d31c6a18fc9426bdf",
+      "bytes": 26725
     },
     {
       "path": "generated/world/xom-mai-am/regions/r4-1.bin",
@@ -23848,16 +23976,16 @@
       "license": "CC0-1.0",
       "generator": "tools/world/generate-xom-mai-am-map.ts",
       "derivedFrom": [],
-      "sha256": "1ae29989debfd806605dd8640fb7e8e8110ec38f46bea58ea86521c0d6dfccb4",
-      "bytes": 5492
+      "sha256": "06fa2ecf606a9412770a5963aab24e93b76c89eb834008fa89545fc8dab7057a",
+      "bytes": 5111
     },
     {
       "path": "generated/world/xom-mai-am/regions/r5-0.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-xom-mai-am-map.ts",
       "derivedFrom": [],
-      "sha256": "bb2210d71d5968382fbceed1502db51204cd42df80af69c9bca0c13c18c1a002",
-      "bytes": 31424
+      "sha256": "c9ad88100651c1b795e56c16b9dedd77a99c145a2dd3349cceefffe6d8d5cef3",
+      "bytes": 31004
     },
     {
       "path": "generated/world/xom-mai-am/regions/r5-1.bin",
@@ -23904,64 +24032,64 @@
       "license": "CC0-1.0",
       "generator": "tools/world/generate-xom-mai-am-map.ts",
       "derivedFrom": [],
-      "sha256": "37939a45cac27ad2be4781c39f5e0f6b2a58eaa93da4515c5c499e0b3da8e2bb",
-      "bytes": 3882
+      "sha256": "eb9a3abf016edd358dfcd9eed1ba933bd821af555767e75742c0d752d21a2e22",
+      "bytes": 3560
     },
     {
       "path": "generated/world/xom-mai-am/regions/r6-0.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-xom-mai-am-map.ts",
       "derivedFrom": [],
-      "sha256": "ca9cfc1f9cdedc68df24d33a92b2dc051ec46c4b9daaf2a32310c0bce9f637ea",
-      "bytes": 17219
+      "sha256": "19bd7d22ddc4c392f4893cf4b094d739451f93a60dd0f16b0def4d6b86519c33",
+      "bytes": 7048
     },
     {
       "path": "generated/world/xom-mai-am/regions/r6-1.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-xom-mai-am-map.ts",
       "derivedFrom": [],
-      "sha256": "b034291cd5876457d0ef23d2cc19cf20687a4dc349caa4a92d857fbb60e081e7",
-      "bytes": 20886
+      "sha256": "5e8ac4d997ddeabeade3bb68e9716f5da75bfaadc07e45efedaa37e2cb23d737",
+      "bytes": 9661
     },
     {
       "path": "generated/world/xom-mai-am/regions/r6-2.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-xom-mai-am-map.ts",
       "derivedFrom": [],
-      "sha256": "1536f46e74a6e5351efbb127e681cc1b2d840d3a1728316303d3fb5f9b046438",
-      "bytes": 16275
+      "sha256": "7d1e4f12c6cc93129b6881787b3b30950b6653a246d0ed2ba99bf5d732175797",
+      "bytes": 5655
     },
     {
       "path": "generated/world/xom-mai-am/regions/r6-3.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-xom-mai-am-map.ts",
       "derivedFrom": [],
-      "sha256": "ff13341791d7ad1f09cb22954a463bbc33c744fddb85e87bda8629603f2d9548",
-      "bytes": 16334
+      "sha256": "a5ab225712f6ec5c30e208aa61ec22ef57d411b116c8626ae8a13a794684adc4",
+      "bytes": 5466
     },
     {
       "path": "generated/world/xom-mai-am/regions/r6-4.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-xom-mai-am-map.ts",
       "derivedFrom": [],
-      "sha256": "a07c3acf62729163168b0e7fba20a26b5c8df1d24d05775918970814a242bbba",
-      "bytes": 16836
+      "sha256": "21328cb7d95105dbde9d5e5caaa5e2accfccbb8e54af1e8b4a654a4f03354fca",
+      "bytes": 5812
     },
     {
       "path": "generated/world/xom-mai-am/regions/r6-5.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-xom-mai-am-map.ts",
       "derivedFrom": [],
-      "sha256": "29d9212ad3a74dfb9a1bc3b609bdf881010f9cc1885e703064d9be295d374efe",
-      "bytes": 15418
+      "sha256": "a411819d2e677bfce9391c360bdf1081eec82290010d4d87d3e19a05f617754c",
+      "bytes": 4287
     },
     {
       "path": "generated/world/xom-mai-am/regions/r6-6.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-xom-mai-am-map.ts",
       "derivedFrom": [],
-      "sha256": "8813e6e67c4e229c1ad53e2c9866fa55a11e1e6ed167c6685cb7e5d9f314d92c",
-      "bytes": 3333
+      "sha256": "a86f01399c3b3c6aae57e43f4695c77104862a0a391f09d271c7a360c6ed08e3",
+      "bytes": 1044
     }
   ]
 }

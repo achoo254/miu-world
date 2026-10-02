@@ -1,5 +1,5 @@
 // What every region map generator shares, so a new map is a small file that lays out its scene, its
-// places and its buildings: block ids from content/blocks.json, the rolling ground with rim hills, soil
+// places and its buildings: block ids from content/blocks.json, the rolling ground, soil
 // columns, scattered trees, standing heights, props and model scales, the quest targets placed from the
 // catalogues (place-quest-targets.ts), and writing the map's region files, horizon and entities.json.
 // Output of a map: assets/generated/world/<map id>/{regions/r<x>-<z>.bin, horizon.bin, entities.json}
@@ -57,15 +57,11 @@ export const smoothstep = (e0: number, e1: number, v: number): number => {
 };
 
 /**
- * Natural ground height before a map shapes it: `ground` plus gentle rolls of `roll` blocks, rising
- * 1.1 blocks a step over the last `rim` columns at the edge, so hills keep the child inside the map.
+ * Ground of rolling hills about `ground` (±`roll`). The map ends in no hills of its own: the outer land
+ * (packages/voxel outland-*.ts) carries on from its edge.
  */
-export function rollingHeight(seed: number, x: number, z: number, size: readonly [number, number, number], ground: { ground: number; roll: number; rim: number }): number {
-  const [sx, , sz] = size;
-  let h = ground.ground + fbm(seed, x / 26, z / 26) * ground.roll;
-  const edge = Math.min(x, z, sx - 1 - x, sz - 1 - z);
-  if (edge < ground.rim) h += (ground.rim - edge) * 1.1;
-  return h;
+export function rollingHeight(seed: number, x: number, z: number, ground: { ground: number; roll: number }): number {
+  return ground.ground + fbm(seed, x / 26, z / 26) * ground.roll;
 }
 
 /** A height for every column, from a map's own shaping of the ground; `surface` reads it back. */
