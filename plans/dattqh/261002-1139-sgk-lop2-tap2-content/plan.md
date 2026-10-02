@@ -52,18 +52,18 @@ Mỗi trò chơi là một loại bước quest mới (schema `packages/quest`, 
 
 ## Phases
 
-| # | Phase | Tier | Phụ thuộc |
-|---|-------|------|-----------|
-| 1 | Kiểm kê SGK tập 2 thành dữ liệu (`content/curriculum/toan2-t2`, `tv2-t2`): bài, mục, nguyên văn, đáp án, trang in | L | — |
-| 2 | Chốt bản đồ bài: bài → map → khu (chương) → phòng; kịch bản chủ điểm và dàn nhân vật mỗi map ([`story-map.md`](story-map.md)) | M | 1 |
-| 3 | Schema + runtime + UI cho trò chơi mới (bảng trên), test và E2E mỗi cơ chế | XL | — (song song 1) |
-| 4 | Map Đảo bí ẩn theo `designs/dao-bi-an/` (800 × 800, bộ dựng chung, góc chụp từng khung, đời sống, cổng về trung tâm, khu bài học) | L | 2 |
-| 5 | Khu bài học mới trên 8 map có sẵn: `ZONES` thêm chương cho tập 2, chỗ quest (landmark trùng tên) trong các phòng vừa dựng | L | 2; sau pha 4 của plan mock chi tiết |
-| 6 | 4–6 quest mẫu đa dạng + trang nghiệm thu, Jev duyệt | M | 1, 3 |
-| 7 | Kịch bản Toán tập 2 (39 bài) | XL | 6 |
-| 8 | Kịch bản Tiếng Việt tập 2 (30 bài + 2 ôn tập) | XL | 6 |
-| 9 | Phiếu viết tập 2 (chữ hoa, nghe–viết, viết hoa tên riêng, viết đoạn, thư, thiệp) | M | 1 |
-| 10 | Kích hoạt, cổng phủ 100% tập 1 + tập 2, trang review, E2E `sgk-content`, roadmap | M | 4–9 |
+| # | Phase | Tier | Phụ thuộc | Status |
+|---|-------|------|-----------|--------|
+| 1 | [Kiểm kê SGK tập 2 thành dữ liệu](./phase-01-textbook-inventory.md) (`content/curriculum/toan2-t2`, `tv2-t2`): bài, mục, nguyên văn, đáp án, trang in | L | — | Chưa bắt đầu |
+| 2 | [Chốt bản đồ bài](./phase-02-story-map-lock.md): bài → map → khu (chương) → phòng; kịch bản chủ điểm và dàn nhân vật mỗi map ([`story-map.md`](story-map.md)) | M | 1 | Chưa bắt đầu |
+| 3 | [Schema + runtime + UI cho trò chơi mới](./phase-03-world-mini-games.md) (bảng trên), test và E2E mỗi cơ chế | XL | — (song song 1) | Chưa bắt đầu |
+| 4 | [Map Đảo bí ẩn theo `designs/dao-bi-an/`](./phase-04-dao-bi-an-map.md) (800 × 800, bộ dựng chung, góc chụp từng khung, đời sống, cổng về trung tâm, khu bài học) | L | 2 | Chưa bắt đầu |
+| 5 | [Khu bài học mới trên 8 map có sẵn](./phase-05-zones-on-existing-maps.md): `ZONES` thêm chương cho tập 2, chỗ quest (landmark trùng tên) trong các phòng vừa dựng | L | 2; sau pha 4 của plan mock chi tiết | Chưa bắt đầu |
+| 6 | [4–6 quest mẫu đa dạng + trang nghiệm thu, Jev duyệt](./phase-06-sample-quests-acceptance.md) | M | 1, 3 | Chưa bắt đầu |
+| 7 | [Kịch bản Toán tập 2](./phase-07-toan-quests.md) (39 bài) | XL | 6 | Chưa bắt đầu |
+| 8 | [Kịch bản Tiếng Việt tập 2](./phase-08-tieng-viet-quests.md) (30 bài + 2 ôn tập) | XL | 6 | Chưa bắt đầu |
+| 9 | [Phiếu viết tập 2](./phase-09-writing-worksheets.md) (chữ hoa, nghe–viết, viết hoa tên riêng, viết đoạn, thư, thiệp) | M | 1 | Chưa bắt đầu |
+| 10 | [Kích hoạt, cổng phủ 100% tập 1 + tập 2, trang review, E2E `sgk-content`, roadmap](./phase-10-activation-coverage-review.md) | M | 4–9 | Chưa bắt đầu |
 
 Song song: 1 ‖ 3 ngay từ đầu; sau 2: 4 ‖ 5 ‖ 9; sau 6: 7 ‖ 8. Phiên làm map (plan `261002-0802-detail-mocks-per-map`) đang chạy trên `main`: pha 4, 5 bắt đầu sau khi map nào xong việc của nó.
 

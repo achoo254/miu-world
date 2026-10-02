@@ -1,6 +1,6 @@
 # Map theo mock chi tiết từng khu
 
-Trạng thái: đang làm · Tier tổng: XL · Nhánh: `main`
+Trạng thái: pha 1–5 xong, pha 6 phần lớn xong (02/10/2026, commit `a3a9e9f`, đủ gate) · Tier tổng: XL · Nhánh: `main`
 
 Người sở hữu (02/10/2026) gửi chín tấm mock chi tiết; quyết định: `plans/dattqh/reports/jev-261002-0802-detail-mocks.md`. Khung đã cắt ở `designs/<map>/{c,d}-*.png`.
 
@@ -49,6 +49,21 @@ Map ở pha 4 và tấm mock của nó:
 - Mỗi khung mock có ảnh cùng góc trong game trên trang review; báo cáo đối chiếu ghi từng khung đạt, gần, chưa.
 - Nhìn từ trên, tám map khác màu nền rõ.
 - Gate: `pnpm assets:check` → `content:check` → `test` → `typecheck` → `lint`, `pnpm --filter @miu/web build`, `pnpm security:dist`, `pnpm --filter @miu/web e2e:ci`.
+
+## Tiến độ (02/10/2026)
+
+| Pha | Trạng thái |
+| --- | --- |
+| 1 Nền theo map | Xong |
+| 2 Bộ dựng chung | Xong (nhà có sàn, dãy nhà hai bên đường, tháp, cổng, cầu đá, thác, quảng trường, đèn lồng phát sáng, tượng mèo, thuyền buồm, prop hộp theo map) |
+| 3 Góc chụp theo khung mock | Xong (`content/world/mock-views/`, `reach`, `mood: dusk`; ảnh chơi thật `shot=play`; ảnh mốc trong nhà chụp từ trong phòng) |
+| 4 Làm lại 8 map | Xong một lượt; báo cáo từng map `plans/dattqh/reports/map-*-261002-detail-mocks.md` |
+| 5 Đèn sáng ấm | Xong (khối và prop hộp `glow`) |
+| 6 Nghiệm thu | Gate xanh (969 test, E2E 74/74); còn: chụp lại ảnh review cả 8 map sau sửa chung cuối (nước, sàn, cầu tàu), báo cáo đối chiếu tổng, trang review |
+
+Thêm theo yêu cầu người sở hữu trong lúc làm: camera khi chơi không bị cảnh vật đẩy, vật che mờ đi, trần mái quanh bé mờ trong nhà; chợ có người bán mọi sạp và người mua đi giữa các gian; game hiện tối đa 24 người, luôn giữ nhóm gần nhất, thưa bớt khi vượt ngân sách lệnh vẽ hoặc tam giác; vật thấp không đổ bóng; bộ xếp quest đặt mục quanh landmark cùng tên.
+
+Câu hỏi chờ người sở hữu: cầu thang trường (c-18) cần nới giếng thang; nhà Mẩy to hơn tỉ lệ mock để phòng rộng; ảnh toàn cảnh Lâu đài, Thư viện chưa ôm hết cảnh nếu không đổi khu bài học. Đề xuất: giữ nguyên cả ba.
 
 ## Validation log
 
