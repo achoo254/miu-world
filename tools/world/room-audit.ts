@@ -1,5 +1,5 @@
 // `pnpm exec tsx tools/world/room-audit.ts <map>…`: every roofed space of a generated map (floor cells with a
-// block roof 2–9 above) as a room, with what the owner asks of a house (02/10/2026: a really wide way in,
+// block roof 2–24 above) as a room, with what the owner asks of a house (02/10/2026: a really wide way in,
 // room enough inside, houses many times the child's size). Per room: its doorways (width in blocks, and the
 // climb from the ground outside onto its floor), its floor area, the share of floor left free by solid props
 // (prop-collision.ts), the share of that free floor reached from a doorway, and the cells of 1-wide pinches.
@@ -16,6 +16,8 @@ import { walkSolid } from './walkable';
 
 /** What a house should give the child (blocks): a doorway this wide, a climb onto the floor this low, this share of its floor free and reached. */
 export const ROOM_RULES = { doorWidth: 3, doorClimb: 1, freeShare: 0.7, reachShare: 0.95, minArea: 12 } as const;
+/** How far over a floor a block still makes it a roofed space (blocks). */
+const ROOF_REACH = 24;
 
 export interface RoomReport {
   at: [number, number, number];
@@ -45,8 +47,9 @@ export async function auditRooms(map: string): Promise<RoomReport[]> {
   const props = await propCells(e.props);
   const B = (x: number, y: number, z: number): boolean => x >= 0 && z >= 0 && x < SX && z < SZ && y >= 0 && y < SY && isSolid(world.get(x, y, z));
   const spot = (x: number, y: number, z: number): boolean => !B(x, y, z) && !B(x, y + 1, z) && B(x, y - 1, z);
+  // Up to ROOF_REACH: a big house's ceiling stands seven to nine blocks over its floor, its roof higher still.
   const roofed = (x: number, y: number, z: number): boolean => {
-    for (let d = 2; d <= 9; d++) if (B(x, y + d, z)) return true;
+    for (let d = 2; d <= ROOF_REACH; d++) if (B(x, y + d, z)) return true;
     return false;
   };
   const indoor = new Set<string>();

@@ -29,7 +29,8 @@ import { placeFountain, placeLighthouse, placeStall } from './structures/country
 import { placeArchBridge, placeBanner, placePlaza } from './structures/landmarks';
 import type { Point } from './structures/path';
 import { placeTree, treeHeight } from './structures/tree';
-import { placeGazebo, placeShop, placeStage } from './structures/truong-hoc-plaza';
+import { placeStage } from './structures/truong-hoc-plaza';
+import { placeHubShop, placeTeamGazebo } from './structures/trung-tam-buildings';
 import { framePoint, placeBigCat, placeClockTower, placeHubCastle, placePortalFacingSouth, placeTieredFountain } from './structures/trung-tam-square';
 import type { PortalColour } from './structures/trung-tam-props';
 import { facingWriter, FRAME, type Facing } from './structures/world-writer';
@@ -53,8 +54,8 @@ const STEPS = { x0: 386, x1: 414 } as const;
 const CASTLE = { x0: 336, x1: 464, front: 312, back: 226, gateX: 400, wallH: 12 } as const;
 /** The clock tower over the canal's north-east, the library, the learning quarter's school, the harbour. */
 const CLOCK = { x: 484, z: 416 } as const;
-const LIBRARY = { x0: 572, z0: 300, w: 40, d: 18 } as const;
-const SCHOOL = { x0: 190, z0: 640, w: 36, d: 14 } as const;
+const LIBRARY = { x0: 572, z0: 300, w: 40, d: 18, wallH: 9 } as const;
+const SCHOOL = { x0: 190, z0: 638, w: 40, d: 18, wallH: 8 } as const;
 const HARBOUR = { z0: 372, z1: 700, shore: 688 } as const;
 
 export const ZONES: readonly Zone[] = [
@@ -90,10 +91,13 @@ const portalAt = (i: number): [number, number] => {
   return [F.x + side * (12 + k * 10), 414 + k * 2];
 };
 
-/** The shop (d-02) on the square's west side, its front to the fountain; the quest board on the east side; the gazebo south-east. */
-const SHOP = { origin: [370, 434] as const, facing: 'east' as Facing, width: 16 };
+/**
+ * The shop (d-02) on the square's west side, its front to the fountain, a hall the child walks into; the quest
+ * board on the east side; the gazebo south-east. `origin` is the shop's front left corner (its frame's corner).
+ */
+const SHOP = { origin: [370, 431] as const, facing: 'east' as Facing, width: 22, depth: 14 };
 const BOARD = { x: 430, z: 441 } as const;
-const GAZEBO = { x: 419, z: 466 } as const;
+const GAZEBO = { x: 422, z: 470 } as const;
 
 /** The landmarks the welcome quest stands round (all in the square, on its paving). */
 const LANDMARKS = {
@@ -101,7 +105,7 @@ const LANDMARKS = {
   portals: [404, 421],
   shop: [375, 441],
   board: [424, 441],
-  gazebo: [411, 459],
+  gazebo: [421, 461],
   beds: [389, 457],
 } as const;
 
@@ -122,7 +126,13 @@ const TOWN_ROUTES: Point[][] = [
   [[548, 416], [548, 360], [LIBRARY.x0 + LIBRARY.w / 2, 360], [LIBRARY.x0 + LIBRARY.w / 2, LIBRARY.z0 + LIBRARY.d + 2]],
   [[640, 120], [640, 786]],
 ];
-const ROUTES: Point[][] = [SQUARE_IN, TO_CASTLE, WEST_WAY, EAST_WAY, ...SIDE_BRIDGES, ...TOWN_ROUTES];
+/**
+ * Lanes without houses along them: from the town's street down to the learning quarter's school door, and the
+ * quay along the harbour from the end of the east way past the jetties to the lighthouse.
+ */
+const SCHOOL_LANE: Point[] = [[SCHOOL.x0 + SCHOOL.w / 2, 600], [SCHOOL.x0 + SCHOOL.w / 2, SCHOOL.z0 - 1]];
+const QUAY: Point[] = [[672, 450], [672, 600], [680, 640], [674, 680]];
+const ROUTES: Point[][] = [SQUARE_IN, TO_CASTLE, WEST_WAY, EAST_WAY, ...SIDE_BRIDGES, ...TOWN_ROUTES, SCHOOL_LANE, QUAY];
 
 /** Signed distance from the canal's inner edge (negative inside the square). */
 const canalDistance = (x: number, z: number): number => {
@@ -204,7 +214,7 @@ const TT = {
   box: `${PACK.survival}/box-large.glb`,
   bush: `${N}/plant_bush.glb`,
   flowers: [`${N}/flower_redA.glb`, `${N}/flower_yellowB.glb`, `${N}/flower_purpleA.glb`],
-  food: [`${PACK.food}/apple.glb`, `${PACK.food}/cupcake.glb`, `${PACK.food}/pear.glb`, `${PACK.food}/bread.glb`, `${PACK.food}/cake.glb`, `${PACK.food}/watermelon.glb`],
+  food: [`${PACK.food}/apple.glb`, `${PACK.food}/cupcake.glb`, `${PACK.food}/pear.glb`, `${PACK.food}/grapes.glb`, `${PACK.food}/cake.glb`, `${PACK.food}/watermelon.glb`],
   gifts: [`${P}/gift-red.glb`, `${P}/teddy-bear.glb`, `${P}/package-yellow.glb`, `${P}/nesting-dolls.glb`, `${P}/puzzle-red.glb`, `${P}/birthday-cake.glb`],
 };
 
@@ -268,7 +278,8 @@ function hubLife(map: { zone: (chapter: number) => Zone; landmark: (id: string) 
       return { routine: kind, name: names[pet++ % names.length] ?? 'Mèo', model: animal(kind), at: [Math.round(at[0] + Math.cos(a) * radius), Math.round(at[1] + Math.sin(a) * radius)] as const };
     });
   const [z1, z2, z3, z4] = [map.zone(1), map.zone(2), map.zone(3), map.zone(4)];
-  const shopKeepers = [FRAME + 3, FRAME + 11].map((u) => framePoint(SHOP.origin, SHOP.facing, u + 0.5, FRAME + 3.5));
+  // Behind the shop's two counters, either side of its door (placeHubShop's keepers).
+  const shopKeepers = [FRAME + 4, FRAME + SHOP.width - 5].map((u) => framePoint(SHOP.origin, SHOP.facing, u + 0.5, FRAME + 3.5));
   return [
     // The square: groups round the fountain, before the portals, at the board and the gazebo, by the shop.
     ...kids([F.x - 14, F.z + 18], 3, 4, 'pupil', [HELD.balloon]),
@@ -278,16 +289,16 @@ function hubLife(map: { zone: (chapter: number) => Zone; landmark: (id: string) 
     ...kids([F.x - 30, 424], 3, 4, 'pupil', [HELD.book]),
     ...kids([F.x + 30, 426], 3, 4, 'pupil', [HELD.gem]),
     ...kids([BOARD.x - 9, BOARD.z + 6], 2, 3, 'reader', [HELD.book]),
-    ...kids([GAZEBO.x + 7, GAZEBO.z + 2], 3, 5, 'pupil', [HELD.ball]),
+    ...kids([GAZEBO.x, GAZEBO.z], 2, 5, 'pupil', [HELD.ball]),
     ...kids([F.x - 22, F.z + 26], 3, 3, 'shopper', [HELD.gift]),
-    ...kids([F.x + 26, F.z + 26], 3, 3, 'kite-flyer', [HELD.kite]),
+    ...kids([F.x + 34, F.z + 38], 3, 3, 'kite-flyer', [HELD.kite]),
     ...kids([z1.x, z1.z + z1.hz - 6], 4, 4, 'pupil', [HELD.balloonYellow]),
     ...shopKeepers.map(([x, z], i) => ({ routine: 'vendor' as const, name: i === 0 ? 'Cô chủ cửa hàng' : 'Chú bán đồ chơi', model: person(i === 0 ? 'e' : 'h'), held: [HELD.basket], at: [Math.floor(x), Math.floor(z)] as const, visits: [[Math.floor(x), Math.floor(z) - 2], [Math.floor(x), Math.floor(z) + 2]] as const, facing: [Math.floor(x) + 3, Math.floor(z)] as const })),
-    ...kids([SHOP.origin[0] + 8, SHOP.origin[1] + 4], 2, 3, 'shopper', [HELD.basket]),
+    ...kids([SHOP.origin[0] + 8, SHOP.origin[1] + 7], 2, 3, 'shopper', [HELD.basket]),
     { routine: 'sweeper', name: 'Chú quét quảng trường', model: person('l'), at: [F.x + 22, F.z + 14] as const },
     { routine: 'gardener', name: 'Cô chăm bồn hoa', model: person('a'), held: [HELD.flower], at: [F.x - 14, F.z - 10] as const },
     ...pets([F.x, F.z + 20], 9, 4),
-    ...pets([F.x - 26, 432], 5, 2),
+    ...pets([F.x - 22, 426], 4, 2),
     // The way in: children just arrived at the bridge, the balloon man.
     ...kids([SPAWN.x - 10, SPAWN.z + 4], 3, 4, 'pupil', [HELD.balloon]),
     { routine: 'vendor', name: 'Chú bán bóng bay', model: person('c'), held: [HELD.balloonYellow], at: [SPAWN.x - 16, SPAWN.z - 2] as const },
@@ -344,8 +355,8 @@ export async function generateTrungTam() {
     { name: 'Khu sự kiện', to: [548, 474] },
     { name: 'Sân trước lâu đài', to: [400, 364] },
     { name: 'Cảng biển', to: [HARBOUR.shore - 20, 520] },
-    { name: 'Khu sống', to: [126, 470] },
-    { name: 'Thư viện', to: [LIBRARY.x0 + LIBRARY.w / 2 + 6, LIBRARY.z0 + LIBRARY.d + 6] },
+    { name: 'Khu sống', to: [121, 466] },
+    { name: 'Thư viện', to: [LIBRARY.x0 + LIBRARY.w / 2 - 6, LIBRARY.z0 + LIBRARY.d + 12] },
   ];
   return generateZoneMap({
     mapId: MAP_ID,
@@ -409,9 +420,17 @@ function buildHub(ctx: ZoneMapContext): void {
   };
   const set = (x: number, y: number, z: number, id: number): void => world.set(x, y, z, id);
   const top = (x: number, z: number, id: number): void => set(x, ctx.surface(x, z), z, id);
+  /** A tree on the paving grows in a bed (earth three across inside a stone kerb a block high), never out of the stones. */
   const tree = (x: number, z: number, leaves: number): void => {
-    placeTree(world, x, ctx.surface(x, z) + 1, z, treeHeight(rng), { log: B.treeLog, leaves }, rng);
-    ctx.keepOut(x - 1, z - 1, x + 1, z + 1);
+    const s = ctx.surface(x, z);
+    for (let dx = -2; dx <= 2; dx++) {
+      for (let dz = -2; dz <= 2; dz++) {
+        if (Math.max(Math.abs(dx), Math.abs(dz)) === 2) set(x + dx, s + 1, z + dz, B.brickGrey);
+        else set(x + dx, s, z + dz, ctx.soil.grass);
+      }
+    }
+    placeTree(world, x, s + 1, z, treeHeight(rng), { log: B.treeLog, leaves }, rng);
+    ctx.keepOut(x - 2, z - 2, x + 2, z + 2);
   };
   const y0 = ground + 1;
   const yawToward = (dx: number, dz: number): number => Math.round(((Math.atan2(-dx, -dz) * 180) / Math.PI + 720) % 360);
@@ -444,14 +463,27 @@ function buildHub(ctx: ZoneMapContext): void {
   // The arrival square at the central bridge's south foot, paved, its corners planted.
   for (let x = SPAWN.x - 28; x <= SPAWN.x + 28; x++) for (let z = 505; z <= SPAWN.z + 16; z++) if (!inWater(x, z)) top(x, z, (x + z) % 11 === 0 ? B.cobbleGrey : B.paver);
   ctx.keepOut(SPAWN.x - 28, 505, SPAWN.x + 28, SPAWN.z + 16);
-  // No wild trees inside the canal outside the square, nor on its kerbs.
+  // No wild trees on the paving round the canal (trees there stand in beds; the lesson districts keep theirs
+  // clear already, and keep their room for the quests), inside it outside the square, nor on its kerbs.
+  const [pave0, pave1] = [[CANAL.x - CANAL.hx - 20, CANAL.z - CANAL.hz - 14], [CANAL.x + CANAL.hx + 20, CANAL.z + CANAL.hz + 14]] as const;
+  const [square, fore4] = [ZONES[0], ZONES[3]];
+  if (square && fore4) {
+    const [sx0, sx1, sz0, sz1] = [square.x - square.hx - 3, square.x + square.hx + 3, square.z - square.hz - 3, square.z + square.hz + 3];
+    const foreEnd = fore4.z + fore4.hz;
+    ctx.keepOut(pave0[0], foreEnd + 1, pave1[0], sz0);
+    ctx.keepOut(pave0[0], pave0[1], fore4.x - fore4.hx - 3, foreEnd);
+    ctx.keepOut(fore4.x + fore4.hx + 3, pave0[1], pave1[0], foreEnd);
+    ctx.keepOut(pave0[0], sz1, pave1[0], pave1[1]);
+    ctx.keepOut(pave0[0], sz0, sx0, sz1);
+    ctx.keepOut(sx1, sz0, pave1[0], sz1);
+  }
   ctx.keepOut(CANAL.x - CANAL.hx - 8, CANAL.z - CANAL.hz - 8, CANAL.x + CANAL.hx + 8, CANAL.z - 37);
   ctx.keepOut(CANAL.x - CANAL.hx - 8, CANAL.z + 37, CANAL.x + CANAL.hx + 8, CANAL.z + CANAL.hz + 8);
   ctx.keepOut(CANAL.x - CANAL.hx - 8, CANAL.z - 36, CANAL.x - 48, CANAL.z + 36);
   ctx.keepOut(CANAL.x + 48, CANAL.z - 36, CANAL.x + CANAL.hx + 8, CANAL.z + 36);
 
   // 2. The fountain (d-01): three tiers of water under the great white cat with its book.
-  const fountain = placeTieredFountain(world, F.x, F.z, y0, { stone: B.brickGrey, rim: B.cobbleGrey, water: B.water });
+  const fountain = placeTieredFountain(world, F.x, F.z, y0, { stone: B.brickGrey, rim: B.cobbleGrey, tier: B.stone, water: B.water });
   placeBigCat(world, fountain.statue[0], fountain.statue[1], fountain.statue[2], { fur: B.snow, eye: B.iron, coat: B.roofBlue, trim: B.lantern, book: B.woodRed, page: B.snow });
   ctx.keepOut(F.x - 10, F.z - 10, F.x + 10, F.z + 10);
   ctx.landmark('dai-phun-nuoc', 'Đài phun nước tượng mèo', LANDMARKS.fountain[0], LANDMARKS.fountain[1]);
@@ -509,44 +541,57 @@ function buildHub(ctx: ZoneMapContext): void {
     ctx.prop(STREET_LANTERN, F.x + s * 5, 423, 0);
   }
 
-  // 4. The shop (d-02) on the west side facing the fountain: the timber hall with its two striped awnings,
-  // a timber front over them with the big sign between lanterns, goods heaped on the counters, shelves
-  // inside, crates and flower pots before it, the red carpet, a red cat banner either side.
+  // 4. The shop (d-02) on the west side facing the fountain: a timber hall the child walks into through a door
+  // four wide between its two counters under their striped awnings, the big sign over them between lanterns;
+  // goods heaped on the counters, shelves round the walls, display tables either side of the red carpet up
+  // the aisle under a chandelier; crates and flower pots before it, a red cat banner either side.
   const shopWriter = facingWriter(world, SHOP.origin, SHOP.facing);
-  const shop = placeShop(shopWriter, FRAME, FRAME, SHOP.width, y0, {
-    wall: B.planks, post: B.log, roof: B.roofBlue, floor: B.planks, counter: B.log, stripes: [[B.roofBlue, B.snow], [B.woodRed, B.snow]],
+  const shop = placeHubShop(shopWriter, FRAME, FRAME, SHOP.width, SHOP.depth, y0, {
+    wall: B.planks, post: B.log, roof: B.roofBlue, floor: B.planks, counter: B.log, glass: B.glass, lantern: B.lantern, stripes: [[B.roofBlue, B.snow], [B.woodRed, B.snow]],
   });
   const shopAt = (u: number, v: number): [number, number] => framePoint(SHOP.origin, SHOP.facing, u, v);
-  for (let u = FRAME + 2; u <= FRAME + SHOP.width - 3; u++) {
-    for (let y = y0 + 5; y <= y0 + 8; y++) {
-      const edge = u === FRAME + 2 || u === FRAME + SHOP.width - 3 || y === y0 + 8;
-      shopWriter.set(u, y, FRAME - 1, edge ? B.log : B.planks);
-    }
-  }
+  /** A yaw in the shop's frame (0 toward its front) turned to the world: the front looks east (yaw 270). */
+  const shopYaw = (yaw: number): number => (yaw + 270) % 360;
   for (const u of [FRAME + 1, FRAME + SHOP.width - 2]) shopWriter.set(u, y0 + 6, FRAME - 1, B.lantern);
-  const [signX, signZ] = shopAt(FRAME + SHOP.width / 2, FRAME - 1.15);
-  ctx.propAt(TT.shopSign, [signX, y0 + 5.15, signZ], 270);
+  const [signX, signZ] = shopAt(shop.sign[0], shop.sign[2]);
+  ctx.propAt(TT.shopSign, [signX, shop.sign[1], signZ], shopYaw(0));
   shop.counters.forEach(([u, y, v], i) => {
     for (let k = -2; k <= 2; k++) {
       const [x, z] = shopAt(u + k * 1.3, v);
       ctx.propAt(k % 2 === 0 ? TT.goods : TT.gifts[(i * 3 + k + 2) % TT.gifts.length] ?? TT.goods, [x, y, z], k * 40);
     }
   });
-  for (const [u, y, v] of shop.shelves) {
-    const [x, z] = shopAt(u, v);
-    ctx.propAt(TT.shelf, [x, y, z], 270);
+  for (const { at, yaw } of shop.shelves) {
+    const [x, z] = shopAt(at[0], at[2]);
+    ctx.propAt(TT.shelf, [x, at[1], z], shopYaw(yaw));
   }
+  shop.tables.forEach(([u, y, v], i) => {
+    const [x, z] = shopAt(u, v);
+    ctx.centredAt(TT.table, [x, y, z], 0);
+    ctx.propAt(TT.goods, [x, y + 0.8, z], i * 90);
+  });
+  const [lightX, lightZ] = shopAt(shop.light[0], shop.light[2]);
+  ctx.propAt(TT.chandelier, [lightX, shop.light[1], lightZ], 0);
   for (const [u, v, model] of [[FRAME - 2, FRAME - 1.5, TT.crate], [FRAME + SHOP.width + 1, FRAME - 1.5, TT.crate], [FRAME - 2, FRAME + 1.5, TT.appleCrate], [FRAME + SHOP.width + 1, FRAME + 1.5, TT.appleCrate], [FRAME + 1, FRAME - 3.5, TT.pot], [FRAME + SHOP.width - 1, FRAME - 3.5, TT.pot]] as const) {
     const [x, z] = shopAt(u, v);
     ctx.propAt(model, [x, y0, z], u * 17);
   }
-  const [carpetX, carpetZ] = shopAt(FRAME + SHOP.width / 2, FRAME - 3.6);
-  ctx.propAt(TT.carpet, [carpetX, y0, carpetZ], 90);
+  // The red carpet out from the door and on up the aisle inside.
+  for (const v of [FRAME - 3.5, FRAME + 4.5]) {
+    const [carpetX, carpetZ] = shopAt(shop.door.mid, v);
+    ctx.propAt(TT.carpet, [carpetX, y0, carpetZ], 90);
+  }
   for (const u of [FRAME - 3, FRAME + SHOP.width + 2]) {
     const [x, z] = shopAt(u, FRAME - 3);
     ctx.prop(TT.banner, Math.floor(x), Math.floor(z), 0);
   }
-  ctx.keepOut(SHOP.origin[0] - 6, SHOP.origin[1] - 3, SHOP.origin[0] + 2, SHOP.origin[1] + SHOP.width + 2);
+  const shopCorners = [shopAt(FRAME - 4, FRAME - 5), shopAt(FRAME + SHOP.width + 3, FRAME + SHOP.depth)];
+  ctx.keepOut(
+    Math.floor(Math.min(...shopCorners.map((c) => c[0]))),
+    Math.floor(Math.min(...shopCorners.map((c) => c[1]))),
+    Math.floor(Math.max(...shopCorners.map((c) => c[0]))),
+    Math.floor(Math.max(...shopCorners.map((c) => c[1]))),
+  );
   ctx.landmark('truoc-cua-hang', 'Trước cửa hàng', LANDMARKS.shop[0], LANDMARKS.shop[1]);
 
   // 5. The quest board (d-04) against a stone wall under a tiled hood, a red banner with its crest over it,
@@ -569,24 +614,24 @@ function buildHub(ctx: ZoneMapContext): void {
   ctx.keepOut(BOARD.x - 1, BOARD.z - 8, BOARD.x + 3, BOARD.z + 6);
   ctx.landmark('bang-nhiem-vu', 'Bảng nhiệm vụ', LANDMARKS.board[0], LANDMARKS.board[1]);
 
-  // 6. The team gazebo (d-05): its blue roof over benches and a table, "TEAM" boards hung from its beams,
-  // log rails between its posts (open in the middle of each side), lanterns and flower pots round it.
-  const gazebo = placeGazebo(world, GAZEBO.x, GAZEBO.z, y0, { post: B.log, floor: B.planks, rail: B.log, roof: B.roofBlue, lantern: B.lantern });
-  for (const s of [-3, 3]) for (const k of [-2, 2]) {
-    set(GAZEBO.x + s, y0, GAZEBO.z + k, B.log);
-    set(GAZEBO.x + k, y0, GAZEBO.z + s, B.log);
-  }
-  for (const [x, y, z] of gazebo.benches) ctx.propAt(TT.bench, [x, y, z], 0);
+  // 6. The team gazebo (d-05): its blue roof high over benches and a table, "TEAM" boards hung from its
+  // beams, log rails between its posts (open five wide in the middle of each side), lanterns and flower pots
+  // round it.
+  const gazebo = placeTeamGazebo(world, GAZEBO.x, GAZEBO.z, y0, { post: B.log, floor: B.planks, rail: B.log, roof: B.roofBlue, lantern: B.lantern });
+  const gr = gazebo.radius;
+  for (const { at, yaw } of gazebo.benches) ctx.propAt(TT.bench, at, yaw);
   ctx.centredAt(TT.table, [GAZEBO.x + 0.5, y0, GAZEBO.z + 0.5], 0);
   ctx.propAt(TT.goods, [GAZEBO.x + 0.5, y0 + 0.8, GAZEBO.z + 0.5], 0);
-  ctx.propAt(TT.team1, [GAZEBO.x - 1, y0 + 3.1, GAZEBO.z + 3.5], 180);
-  ctx.propAt(TT.team2, [GAZEBO.x + 2, y0 + 3.1, GAZEBO.z + 3.5], 180);
-  ctx.propAt(TT.team1, [GAZEBO.x - 2.5, y0 + 3.1, GAZEBO.z - 1], 90);
-  ctx.propAt(TT.team2, [GAZEBO.x + 3.5, y0 + 3.1, GAZEBO.z + 1], 270);
-  for (const [dx, dz] of [[-6, -2], [6, 4]] as const) ctx.prop(STREET_LANTERN, GAZEBO.x + dx, GAZEBO.z + dz, 0);
-  for (const [dx, dz] of [[-4, 5], [5, -4], [5, 5]] as const) ctx.prop(TT.pot, GAZEBO.x + dx, GAZEBO.z + dz, 0);
-  for (const [dx, dz, yaw] of [[-1, 6, 0], [6, -3, 90]] as const) ctx.prop(TT.bench, GAZEBO.x + dx, GAZEBO.z + dz, yaw);
-  ctx.keepOut(GAZEBO.x - 4, GAZEBO.z - 4, GAZEBO.x + 4, GAZEBO.z + 4);
+  const boardY = gazebo.beam - 0.9;
+  ctx.propAt(TT.team1, [GAZEBO.x - 1, boardY, GAZEBO.z + gr + 0.5], 180);
+  ctx.propAt(TT.team2, [GAZEBO.x + 2, boardY, GAZEBO.z + gr + 0.5], 180);
+  ctx.propAt(TT.team1, [GAZEBO.x - gr + 0.5, boardY, GAZEBO.z - 1], 90);
+  ctx.propAt(TT.team2, [GAZEBO.x + gr + 0.5, boardY, GAZEBO.z + 1], 270);
+  ctx.propAt(TT.team2, [GAZEBO.x + 1, boardY, GAZEBO.z - gr + 0.5], 0);
+  for (const [dx, dz] of [[-gr - 3, -2], [gr + 3, 4]] as const) ctx.prop(STREET_LANTERN, GAZEBO.x + dx, GAZEBO.z + dz, 0);
+  for (const [dx, dz] of [[-gr - 1, gr + 2], [gr + 2, -gr - 1], [gr + 2, gr + 2]] as const) ctx.prop(TT.pot, GAZEBO.x + dx, GAZEBO.z + dz, 0);
+  for (const [dx, dz, yaw] of [[-1, gr + 3, 0], [gr + 3, -3, 90]] as const) ctx.prop(TT.bench, GAZEBO.x + dx, GAZEBO.z + dz, yaw);
+  ctx.keepOut(GAZEBO.x - gr - 1, GAZEBO.z - gr - 1, GAZEBO.x + gr + 1, GAZEBO.z + gr + 1);
   ctx.landmark('cho-to-doi', 'Chòi chờ tổ đội', LANDMARKS.gazebo[0], LANDMARKS.gazebo[1]);
   // Blossom and green trees in the square's corners behind the portals and by the canal (d-01).
   for (const [x, z] of [[344, 404], [456, 404], [372, 402], [428, 402], [348, 490], [452, 490]] as const) tree(x, z, (x + z) % 2 === 0 ? B.pink : B.leaves);
@@ -623,8 +668,8 @@ function buildHub(ctx: ZoneMapContext): void {
   ctx.propAt(TT.signpostWest, [394.5, ground + 1, southFoot + 3.5], 180);
   ctx.propAt(TT.signpostEast, [406.5, ground + 1, southFoot + 3.5], 180);
   ctx.landmark('cau-trung-tam', 'Cầu trung tâm', 400, southFoot + 2);
-  // Flower boxes along the canal's outer bank either side of the central bridge.
-  for (let x = 362; x <= 438; x += 6) if (Math.abs(x - 400) > 10 && Math.abs(x - 356) > 4 && Math.abs(x - 444) > 4) ctx.prop(TT.planter, x, 508, 0);
+  // Flower boxes along the canal's outer bank either side of the central bridge, on the arrival square.
+  for (let x = 374; x <= 428; x += 6) if (Math.abs(x - 400) > 10) ctx.prop(TT.planter, x, 508, 0);
 
   // 8. The clock tower (d-01) over the canal's north-east, a clock on every face.
   const clock = placeClockTower(world, CLOCK.x, CLOCK.z, ctx.surface(CLOCK.x, CLOCK.z) + 1, 22, { wall: B.cobbleGrey, corner: B.brickGrey, glass: B.glass, roof: B.woodRed, pole: B.log, flag: B.woodRed, lantern: B.lantern });
@@ -657,12 +702,11 @@ function buildHub(ctx: ZoneMapContext): void {
       else if (h === TERRACE.y) set(x, h, z, (x + z * 3) % 13 === 0 ? B.cobbleGrey : B.paver);
     }
   }
-  for (let x = TERRACE.x0 + 4; x <= TERRACE.x1 - 4; x += 10) if (x < STEPS.x0 - 2 || x > STEPS.x1 + 2) ctx.prop(TT.planter, x, TERRACE.z1 + 2, 0);
+  for (let x = TERRACE.x0 + 4; x <= TERRACE.x1 - 4; x += 10) if (x < STEPS.x0 - 2 || x > STEPS.x1 + 2) ctx.prop(TT.planter, x, TERRACE.z1 + 1, 0);
   for (const s of [-1, 1]) ctx.prop(TT.banner, 400 + s * 16, TERRACE.z1 + 2, 0);
   const castle = placeHubCastle(world, { ...CASTLE, baseY: TERRACE.y + 1 }, {
     wall: B.cobbleGrey, trim: B.brickGrey, roof: B.woodRed, glass: B.glass, lantern: B.lantern, floor: B.paver, carpet: B.woodRed, beam: B.log, cloth: B.woodRed, emblem: B.wheat, pole: B.log,
   });
-  ctx.propAt(TT.portal('ice'), castle.gate.pane, 180);
   for (const at of castle.lights) ctx.propAt(TT.chandelier, at, 0);
   for (const crown of castle.crowns) ctx.propAt(`${BX}/tt-tower-crown-${crown.radius}.glb`, crown.at, 0);
   for (const s of [-1, 1]) {
@@ -671,6 +715,9 @@ function buildHub(ctx: ZoneMapContext): void {
   }
   ctx.keepOut(CASTLE.x0 - 6, CASTLE.back - 6, CASTLE.x1 + 6, castle.front + 1);
   ctx.keepOut(TERRACE.x0, TERRACE.z1 - 1, TERRACE.x1, TERRACE.z1 + 5);
+  // The terrace is paved: no wild trees on it, but rows of trees in beds down its sides either side of the castle.
+  ctx.keepOut(TERRACE.x0, TERRACE.z0, TERRACE.x1, TERRACE.z1);
+  for (const x of [TERRACE.x0 + 10, TERRACE.x0 + 24, TERRACE.x1 - 24, TERRACE.x1 - 10]) for (let z = 198; z <= TERRACE.z1 - 20; z += 16) tree(x, z, (x + z) % 3 === 0 ? B.leaves : B.pink);
   ctx.landmark('cong-lau-dai', 'Cổng lâu đài', CASTLE.gateX, castle.front + 4, TERRACE.y + 1);
   ctx.landmark('sanh-lau-dai', 'Sảnh lâu đài', CASTLE.gateX, castle.hall.z1 - 10, TERRACE.y + 1);
 
@@ -713,7 +760,7 @@ function buildHub(ctx: ZoneMapContext): void {
     ctx.keepOut(origin[0] - 4, zNorth - 1, origin[0] + 2, zNorth + 6);
   }
   for (let x = trade.x - 36; x <= trade.x + 36; x += 12) for (const dz of [-10, 18]) ctx.prop(STREET_LANTERN, x + 3, trade.z + dz, 0);
-  for (const s of [-1, 1]) ctx.prop(TT.banner, trade.x + s * 42, trade.z + 14, 0);
+  for (const s of [-1, 1]) ctx.prop(TT.banner, trade.x + s * 42, trade.z + 9, 0);
   ctx.landmark('cho-giao-dich', 'Chợ giao dịch', trade.x, trade.z + 2);
 
   // 11. The event ground (d-08): the stage at its north end facing south, the screen between lit trusses,
@@ -776,14 +823,14 @@ function buildHub(ctx: ZoneMapContext): void {
   // 13. The library (north-east) and the learning quarter's school (south-west), lawns and flowers before them.
   const finish = { plinth: B.cobbleGrey, beam: B.log, glass: B.glass, sill: B.planks, ridge: B.brickGrey, gable: B.planks, lantern: B.lantern, floor: B.planks };
   // The library's front looks south, down its lane: built in its own frame turned about its south-east corner.
-  placeHouse(facingWriter(world, [LIBRARY.x0 + LIBRARY.w - 1, LIBRARY.z0 + LIBRARY.d - 1], 'south'), FRAME, FRAME, LIBRARY.w, LIBRARY.d, 7, y0, { ...finish, wall: B.sand, roof: B.roofBlue, trim: block('birch-log') });
+  placeHouse(facingWriter(world, [LIBRARY.x0 + LIBRARY.w - 1, LIBRARY.z0 + LIBRARY.d - 1], 'south'), FRAME, FRAME, LIBRARY.w, LIBRARY.d, LIBRARY.wallH, y0, { ...finish, wall: B.sand, roof: B.roofBlue, trim: block('birch-log') });
   ctx.keepOut(LIBRARY.x0 - 2, LIBRARY.z0 - 2, LIBRARY.x0 + LIBRARY.w + 1, LIBRARY.z0 + LIBRARY.d + 2);
   flowerBed(ctx, LIBRARY.x0 + 2, LIBRARY.z0 + LIBRARY.d + 3, 12, 4);
   flowerBed(ctx, LIBRARY.x0 + LIBRARY.w - 14, LIBRARY.z0 + LIBRARY.d + 3, 12, 4);
   ctx.landmark('thu-vien', 'Thư viện', LIBRARY.x0 + LIBRARY.w / 2, LIBRARY.z0 + LIBRARY.d + 4);
-  placeHouse(world, SCHOOL.x0, SCHOOL.z0, SCHOOL.w, SCHOOL.d, 6, y0, { ...finish, wall: block('birch-log'), roof: B.woodRed, trim: B.log });
+  placeHouse(world, SCHOOL.x0, SCHOOL.z0, SCHOOL.w, SCHOOL.d, SCHOOL.wallH, y0, { ...finish, wall: block('birch-log'), roof: B.woodRed, trim: B.log });
   ctx.keepOut(SCHOOL.x0 - 2, SCHOOL.z0 - 4, SCHOOL.x0 + SCHOOL.w + 1, SCHOOL.z0 + SCHOOL.d + 1);
-  ctx.prop(`${BX}/flagpole.glb`, SCHOOL.x0 + SCHOOL.w / 2, SCHOOL.z0 - 8, 0);
+  ctx.prop(`${BX}/flagpole.glb`, SCHOOL.x0 + SCHOOL.w / 2 + 5, SCHOOL.z0 - 8, 0);
   ctx.landmark('khu-hoc-tap', 'Khu học tập', SCHOOL.x0 + SCHOOL.w / 2, SCHOOL.z0 - 6);
 
   // 14. The sky (d-01): the airship and hot-air balloons over the square.
@@ -806,9 +853,11 @@ function buildHub(ctx: ZoneMapContext): void {
 
   // 16. The town: houses facing its streets (their roofs red, blue and dark red), blossom trees in the
   // square's corners outside the canal, and the verges of every way.
+  // No houses at the library lane's corners, where their gardens' fences would stand out into the way.
+  for (const [x, z] of [[548, 360], [LIBRARY.x0 + LIBRARY.w / 2, 360]] as const) ctx.keepOut(x - 8, z - 8, x + 8, z + 8);
   for (const route of [WEST_WAY.slice(0), ...TOWN_ROUTES]) streetHouses(ctx, route);
-  for (const [x, z] of [[316, 380], [484, 380], [314, 516], [486, 516], [300, 440], [500, 470]] as const) tree(x, z, (x + z) % 3 === 0 ? B.leaves : B.pink);
-  for (const route of [WEST_WAY, EAST_WAY, ...TOWN_ROUTES]) laneVerge(ctx, route);
+  for (const [x, z] of [[316, 380], [484, 380], [300, 440], [500, 470]] as const) tree(x, z, (x + z) % 3 === 0 ? B.leaves : B.pink);
+  for (const route of [WEST_WAY, EAST_WAY, ...TOWN_ROUTES, SCHOOL_LANE, QUAY]) laneVerge(ctx, route);
 }
 
 await runIfMain(import.meta.url, generateTrungTam);

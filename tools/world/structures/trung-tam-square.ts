@@ -20,6 +20,8 @@ export interface FountainBlocks {
   stone: number;
   rim: number;
   water: number;
+  /** The upper tiers' rims and the pedestal (`rim` by default): not paving, so no one takes them for a way. */
+  tier?: number;
 }
 
 /**
@@ -44,12 +46,12 @@ export function placeTieredFountain(world: WorldWriter, cx: number, cz: number, 
       // The middle tier: a stone drum up to baseY + 1, its rim and water a block over it.
       if (d <= 5.4) {
         for (let y = baseY - 1; y <= baseY + 1; y++) put(world, x, y, z, b.stone);
-        put(world, x, baseY + 2, z, d > 4.4 ? b.rim : b.water);
+        put(world, x, baseY + 2, z, d > 4.4 ? (b.tier ?? b.rim) : b.water);
       }
       // The top tier on its column: rim and water at baseY + 4.
       if (d <= 2.9) {
         for (let y = baseY + 2; y <= baseY + 3; y++) put(world, x, y, z, b.stone);
-        put(world, x, baseY + 4, z, d > 1.9 ? b.rim : b.water);
+        put(world, x, baseY + 4, z, d > 1.9 ? (b.tier ?? b.rim) : b.water);
       }
     }
   }
@@ -64,7 +66,7 @@ export function placeTieredFountain(world: WorldWriter, cx: number, cz: number, 
     }
   }
   // The pedestal the cat sits on.
-  for (let dx = -1; dx <= 1; dx++) for (let dz = -1; dz <= 1; dz++) for (let y = baseY + 4; y <= baseY + 5; y++) put(world, cx + dx, y, cz + dz, b.rim);
+  for (let dx = -1; dx <= 1; dx++) for (let dz = -1; dz <= 1; dz++) for (let y = baseY + 4; y <= baseY + 5; y++) put(world, cx + dx, y, cz + dz, b.tier ?? b.rim);
   return { statue: [cx, baseY + 6, cz], radius };
 }
 
@@ -195,8 +197,8 @@ export interface CastleBlocks {
 export interface HubCastle {
   /** The curtain wall's outer face (front, z) and its ends (x). */
   front: number;
-  /** The gate's opening (its middle column, its front row) and the glowing pane's foot. */
-  gate: { x: number; z: number; pane: [number, number, number] };
+  /** The gate's opening (its middle column, its front row). */
+  gate: { x: number; z: number };
   /** The hall behind the gate: its room and where its chandeliers hang. */
   hall: Rect;
   lights: Array<[number, number, number]>;
@@ -233,13 +235,15 @@ export function placeHubCastle(world: WorldWriter, spec: { x0: number; x1: numbe
   for (let x = x0; x <= x1; x++) put(world, x, top - 1, front + 1, b.trim);
   // The gatehouse: jutting four blocks in front of the wall, four higher, its opening five wide and six high.
   const gh: Rect = { x0: gateX - 8, x1: gateX + 8, z0: front - 1, z1: front + 4 };
-  fillBox(world, gh.x0, baseY, gh.z0, gh.x1, top + 3, gh.z1, b.wall);
+  // Its top course and crenels in the darker trim, as the hall's ceiling below: walls, not paving, over the way in.
+  fillBox(world, gh.x0, baseY, gh.z0, gh.x1, top + 2, gh.z1, b.wall);
+  fillBox(world, gh.x0, top + 3, gh.z0, gh.x1, top + 3, gh.z1, b.trim);
   fillBox(world, gh.x0, baseY, gh.z1, gh.x1, baseY, gh.z1, b.trim);
-  battlements(world, { ...gh, z0: gh.z0 - 1 }, top + 4, b.wall);
+  battlements(world, { ...gh, z0: gh.z0 - 1 }, top + 4, b.trim);
   for (let x = gh.x0; x <= gh.x1; x++) put(world, x, top + 3, gh.z1 + 1, b.trim);
   // The hall behind the gate.
   const hall: Rect = { x0: gateX - 16, x1: gateX + 16, z0: back + 30, z1: front - 2 };
-  castleRoom(world, hall, baseY, 9, { wall: b.wall, plinth: b.trim, floor: b.floor, ceiling: b.wall, beam: b.beam });
+  castleRoom(world, hall, baseY, 9, { wall: b.wall, plinth: b.trim, floor: b.floor, ceiling: b.trim, beam: b.beam });
   for (let z = hall.z0 + 1; z < hall.z1; z++) for (let x = gateX - 1; x <= gateX + 1; x++) put(world, x, baseY - 1, z, b.carpet);
   for (let z = hall.z0 + 4; z < hall.z1 - 2; z += 6) {
     for (const x of [hall.x0, hall.x1]) for (const y of [baseY + 3, baseY + 4, baseY + 5]) put(world, x, y, z, y === baseY + 5 ? b.glass : b.lantern);
@@ -251,7 +255,10 @@ export function placeHubCastle(world: WorldWriter, spec: { x0: number; x1: numbe
     for (let dx = -2; dx <= 2; dx++) for (let y = baseY; y < baseY + (Math.abs(dx) === 2 ? 5 : 6); y++) put(world, gateX + dx, y, z, 0);
     if (z === gh.z1) for (let dx = -3; dx <= 3; dx++) put(world, gateX + dx, baseY + 6, z, b.trim);
   }
-  for (let z = hall.z1 - 1; z <= gh.z1; z++) for (let dx = -2; dx <= 2; dx++) put(world, gateX + dx, baseY - 1, z, b.carpet);
+  // The gate glows (d-01) from lanterns set up its jambs: the opening itself stays open into the hall.
+  for (const dx of [-3, 3]) for (let y = baseY + 1; y <= baseY + 4; y++) put(world, gateX + dx, y, gh.z1, b.lantern);
+  // The carpet on through the gate, three wide like the hall's, the paving either side of it.
+  for (let z = hall.z1 - 1; z <= gh.z1; z++) for (let dx = -1; dx <= 1; dx++) put(world, gateX + dx, baseY - 1, z, b.carpet);
   // Banners down the front between the towers, and two on the gatehouse either side of the gate.
   for (let x = x0 + 12; x < x1 - 10; x += 16) if (Math.abs(x - gateX) > 14) placeBanner(world, x, top - 2, front + 1, 'x', { cloth: b.cloth, emblem: b.emblem }, 5);
   for (const s of [-1, 1]) placeBanner(world, gateX + s * 5 - (s > 0 ? 1 : 0), top + 1, gh.z1 + 1, 'x', { cloth: b.cloth, emblem: b.emblem }, 4);
@@ -270,6 +277,10 @@ export function placeHubCastle(world: WorldWriter, spec: { x0: number; x1: numbe
     [gateX, hall.z0 - 4, 4, 13, true],
   ] as const) {
     const { cornice, tip } = placeTower(world, tx, tz, baseY, r, h, towers, false);
+    // The keep's tower stands against the hall's back wall: a round room off the hall, through a doorway
+    // three wide and three high. The others have no way in: solid, not sealed hollows.
+    if (tx === gateX && tz + r === hall.z0) fillBox(world, gateX - 1, baseY, hall.z0, gateX + 1, baseY + 2, hall.z0, 0);
+    else for (let dx = -r; dx <= r; dx++) for (let dz = -r; dz <= r; dz++) if (Math.hypot(dx, dz) <= r - 0.9) fillBox(world, tx + dx, baseY, tz + dz, tx + dx, cornice - 1, tz + dz, b.wall);
     if (!crowned) continue;
     // The world is 48 blocks tall: the tallest towers go on as a box-prop upper stage from their cornice.
     for (let y = cornice + 1; y <= tip + 3; y++) for (let dx = -r - 3; dx <= r + 3; dx++) for (let dz = -r - 3; dz <= r + 3; dz++) put(world, tx + dx, y, tz + dz, 0);
@@ -296,9 +307,12 @@ export function placeHubCastle(world: WorldWriter, spec: { x0: number; x1: numbe
     for (let x = keep.x0 - 1; x <= keep.x1 + 1; x++) {
       put(world, x, keepTop + step, z, b.roof);
       if ((x === keep.x0 || x === keep.x1) && step > 0 && step < half) for (let y = keepTop; y < keepTop + step; y++) put(world, x, y, z, b.wall);
+      // No way up into the keep over the hall's ceiling: solid under its roof, not a sealed hollow.
+      const inside = x > keep.x0 && x < keep.x1 && z > keep.z0 && z < keep.z1;
+      if (inside) for (let y = baseY + 10; y < keepTop + step; y++) put(world, x, y, z, b.wall);
     }
   }
   const lights: Array<[number, number, number]> = [];
   for (let z = hall.z0 + 6; z < hall.z1 - 3; z += 10) lights.push([gateX + 0.5, baseY + 5.8, z + 0.5]);
-  return { front: gh.z1, gate: { x: gateX, z: gh.z1, pane: [gateX + 0.5, baseY, gh.z1 + 1.12] }, hall, lights, crowns };
+  return { front: gh.z1, gate: { x: gateX, z: gh.z1 }, hall, lights, crowns };
 }
