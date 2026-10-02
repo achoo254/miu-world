@@ -61,3 +61,28 @@ Không có.
 Status: DONE
 Summary: Nhà phố 13–16 × 11–12 cửa 3 × 3, nhà lồng 43 × 24 thành chợ có mái với lối đi ≥ 3 (7 ở lối chính), lán gỗ 12 × 8, tháp đặc; room-audit 0 thiếu, reach-audit đủ, scenery-audit 0/0/0/0, tsc và eslint sạch.
 Concerns: Không chạy `pnpm test`/E2E theo yêu cầu.
+
+## Bổ sung 03/10/2026: cửa mọi nhà nằm trên mạng đường
+
+`scenery-audit` (b90db34) đo thêm: mọi không gian có mái từ 60 ô sàn là nhà, chỗ đứng ngay ngoài cửa phải cách ≤ 4 khối một ô đường nối về mạng của chỗ xuất hiện.
+
+| Kiểm tra | Trước | Sau |
+| --- | --- | --- |
+| `scenery-audit` | 0 / 0 / 0 / 348 cửa bị cắt khỏi mạng | **0 / 0 / 0 / 0** |
+| `room-audit` (bản 90dc2ef) | 0 thiếu | 350 không gian có mái, **0 thiếu** |
+| `reach-audit` | đủ | mọi mục tới được, chỗ xuất phát trống |
+| `pnpm vitest run tools/world/zone-maps.test.ts -t "cho-phien"` | — | 4 đạt, 32 bỏ qua (map khác) |
+| `tsc --noEmit` / `eslint --max-warnings=0` (2 tệp) | — | 0 lỗi / 0 lỗi, 0 cảnh báo |
+
+Đã sửa:
+
+- **Nhà phố** (`shophouse`): lát lối đá cuội rộng bằng cửa từ bậc cửa ra tới mặt đường (tối đa 8 hàng, dừng khi gặp đường lát). Phố phía bắc trước đây có 3 ô cỏ giữa cửa và đường. Phần trước cửa giữ trống rộng thêm 5 ô mỗi bên, để hàng rào ven đường (3 đoạn, bộ dựng chung chỉ kiểm ô đầu) không chắn ngang lối vào cửa.
+- **Nhà tranh các xóm**: thay `hamlet` chung bằng `hamletRows` của map. Cách xếp nhà giữ như cũ (hàng cách 22, `cottageRow` chung). Mỗi hàng có một ngõ lát rộng 2 ngay sau hàng trước, nối tiếp tới đường dọc gần nhất (xa nhất 40 ô). Mỗi cửa có lối lát rộng 3 qua khe hàng rào, qua sân vào tới lòng cửa. Hàng nào không gặp đường thì generator báo lỗi.
+- **Đường dọc kéo dài** để mọi dải xóm có đường ở ít nhất một đầu ngõ: đường giữa (x = 410) từ đường phía bắc tới bờ kênh; đường cầu rồng (x = 320) từ đường phía bắc tới mép nam; hai đường ngoài (x = 60, 740) và cầu ván (x = 480) tới mép nam.
+- **Lán gỗ bên kênh**: đổi mái ván sang mái gỗ đỏ (`wood-red`, cùng màu mái chợ). Mạng đường coi ván là sàn đi được, nên mái ván phủ lên chỗ đứng trước lán làm lán bị tính như nằm ngoài mạng.
+
+Không chụp lại khung mock: lối cửa nhà phố ở lối cổng chợ và Phố chợ vốn đã nằm trên nền lát; ngõ xóm và lối phố phía bắc không lọt vào khung nào. Manifest đã sinh lại qua khóa (`assets:manifest`).
+
+Status: DONE
+Summary: Cửa mọi nhà của Chợ phiên đều nằm trên mạng đường (scenery-audit 0/0/0/0); room-audit 0 thiếu, reach-audit đủ, test map cho-phien đạt, tsc và eslint sạch.
+Concerns: Đề xuất cho bộ dựng chung: `laneVerge` nên kiểm từng đoạn rào, `hamlet` nên lát ngõ và lối cửa như `hamletRows`.

@@ -293,9 +293,23 @@ export function shophouse(ctx: ZoneMapContext, x0: number, z0: number, w: number
   const [ox, oz] = framePoint(origin, facing, door + 3.5, -0.7);
   ctx.propAt(other, [ox, base, oz], yaw + 10);
   ctx.keepOut(x0 - 1, z0 - 1, x0 + w, z0 + d);
-  // Nothing stands in the two rows before the doorway (lanterns, verges and dressing go round it).
+  // A walk of the street's cobbles as wide as the door, from the doorstep out to the street's paving (at
+  // most eight rows), so every door is on the ways; nothing stands on it or in the two rows before the door.
   const u0 = front.doorway.x0 - FRAME;
-  const [ax0, az0, ax1, az1] = frameRect(origin, facing, u0, -2, u0 + front.doorway.width - 1, -1);
+  const u1 = u0 + front.doorway.width - 1;
+  const paving = new Set([ctx.soil.path, block('cobble-grey')]);
+  const paved = (x: number, z: number): boolean => ctx.onPath(x, z) || paving.has(world.get(x, ctx.surface(x, z), z));
+  let reach = -2;
+  for (let v = -1; v >= -8; v--) {
+    const cells = [];
+    for (let u = u0; u <= u1; u++) cells.push(frameCell(origin, facing, FRAME + u, FRAME + v));
+    if (cells.every(([x, z]) => paved(x, z))) break;
+    if (cells.some(([x, z]) => ctx.inWater(x, z) || world.get(x, ctx.surface(x, z) + 1, z) !== 0)) break;
+    for (const [x, z] of cells) world.set(x, ctx.surface(x, z), z, ctx.soil.path);
+    reach = Math.min(reach, v);
+  }
+  // Kept clear five to either side too: a verge's fence runs three lengths on from where it starts.
+  const [ax0, az0, ax1, az1] = frameRect(origin, facing, u0 - 5, reach, u1 + 5, -1);
   ctx.keepOut(ax0, az0, ax1, az1);
   const step = framePoint(origin, facing, door, -1.5);
   return [Math.floor(step[0]), Math.floor(step[1])];

@@ -15,7 +15,7 @@
 // footbridge over the canal; every place on one network of ways from the bus station.
 // Output: assets/generated/world/cho-phien/{regions/, horizon.bin, entities.json}
 import { PACK, runIfMain, smoothstep } from './map-kit';
-import { bambooHedge, cottagePalette, flowerBed, hamlet, jetty, laneVerge } from './scenery';
+import { bambooHedge, cottagePalette, cottageRow, flowerBed, jetty, laneVerge } from './scenery';
 import { placeHouse } from './structures/buildings';
 import { bunting, marketStall, originFor, shophouse, STALL, streetLamp, type Awning, type Goods, type StallPlace } from './structures/cho-phien-market';
 import { placeCatStatue, placeFountain, placeLighthouse } from './structures/countryside';
@@ -94,14 +94,16 @@ const ROUTES: Point[][] = [
   [[24, ROAD_Z.north], [776, ROAD_Z.north]],
   [[24, ROAD_Z.south], [776, ROAD_Z.south]],
   [[ROAD_X.east, 30], [ROAD_X.east, 770]],
-  [[ROAD_X.mid, ROAD_Z.street], [ROAD_X.mid, ROAD_Z.bank]],
-  [[ROAD_X.bridge, ROAD_Z.market], [ROAD_X.bridge, 770]],
-  [[ROAD_X.outerW, ROAD_Z.north], [ROAD_X.outerW, ROAD_Z.south]],
-  [[ROAD_X.outerE, ROAD_Z.north], [ROAD_X.outerE, ROAD_Z.south]],
+  // The middle lane, the dragon bridge's road and the outer lanes run through every band of cottages, so
+  // each row's lane meets a north-south way at one end at least.
+  [[ROAD_X.mid, ROAD_Z.north], [ROAD_X.mid, ROAD_Z.bank]],
+  [[ROAD_X.bridge, ROAD_Z.north], [ROAD_X.bridge, 770]],
+  [[ROAD_X.outerW, ROAD_Z.north], [ROAD_X.outerW, 770]],
+  [[ROAD_X.outerE, ROAD_Z.north], [ROAD_X.outerE, 770]],
   // From the market hall's back door down to the canal bank (the first chapter's bus stop is on it).
   [[ROAD_X.gate, HALL.z0 + HALL.d], [ROAD_X.gate, ROAD_Z.bank]],
   // The footbridge over the canal from the bank road to the south lane (its plank deck over the water).
-  [[ROAD_X.foot, ROAD_Z.bank], [ROAD_X.foot, ROAD_Z.south]],
+  [[ROAD_X.foot, ROAD_Z.bank], [ROAD_X.foot, 770]],
   // From the bank road past the fish stalls onto the boardwalk out to the lighthouse's islet.
   [[ROAD_X.light, ROAD_Z.bank], [ROAD_X.light, ISLET.z - 1]],
 ];
@@ -962,13 +964,13 @@ function buildCanal(ctx: ZoneMapContext, kit: Kit): void {
   }
   ctx.keepOut(250, ROAD_Z.bank + 3, 300, ROAD_Z.bank + 20);
   ctx.landmark('bai-soi-ven-kenh', 'Bãi sỏi ven kênh', 275, ROAD_Z.bank + 5);
-  // The shed: open on three sides under a plank roof four blocks up, 12 x 8, its back a plank wall with
-  // crates and barrels along it.
+  // The shed: open on three sides under a red timber roof four blocks up, 12 x 8, its back a plank wall
+  // with crates and barrels along it.
   const shed = { x0: 232, z0: ROAD_Z.bank + 4, w: 12, d: 8 };
   const [sx1, sz1] = [shed.x0 + shed.w - 1, shed.z0 + shed.d - 1];
   box(shed.x0 + 1, base, sz1, sx1 - 1, base + 3, sz1, B.planks);
   for (const x of [shed.x0, shed.x0 + 6, sx1]) for (const z of [shed.z0, sz1]) box(x, base, z, x, base + 3, z, B.log);
-  box(shed.x0 - 1, base + 4, shed.z0 - 1, sx1 + 1, base + 4, sz1 + 1, B.planks);
+  box(shed.x0 - 1, base + 4, shed.z0 - 1, sx1 + 1, base + 4, sz1 + 1, B.wood);
   for (let i = 0; i < 5; i++) ctx.prop(i % 2 ? M.crate : M.barrel, shed.x0 + 2 + i * 2, sz1 - 1, i * 40);
   ctx.keepOut(shed.x0 - 1, shed.z0 - 1, sx1 + 1, sz1 + 1);
   ctx.landmark('lan-go-ben-kenh', 'Lán gỗ bên kênh', shed.x0 + 4, shed.z0 - 2);
@@ -990,6 +992,56 @@ function buildCanal(ctx: ZoneMapContext, kit: Kit): void {
     ctx.propAt(M.canoe, [x + 0.5, WATER_LEVEL + 0.9, canalCentre(x) + 2.5], 90);
   }
   ctx.landmark('con-kenh', 'Con kênh', 480, Math.round(canalCentre(480)));
+}
+
+/**
+ * Rows of cottages filling a band (inclusive), one every 22 blocks, as the shared hamlet lays them, with every
+ * door on the ways (owner, 02/10/2026): each row's doors open on a cobbled lane two wide behind the row before
+ * it, the lane running on past the row's ends to the nearest north-south way, and a walk as wide as the door
+ * joins each door to it through the gap in its yard fence.
+ */
+function hamletRows(ctx: ZoneMapContext, x0: number, z0: number, x1: number, z1: number): void {
+  // How far a row's lane may run on from its end doors to meet a way (a band's last cottage may stand well
+  // short of the way past it).
+  const reach = 40;
+  for (let z = z0 + 8; z + 9 <= z1; z += 22) {
+    const doors: Array<[number, number]> = [];
+    let x = x0;
+    while (x + 13 <= x1) {
+      let clear = !ctx.inZone(x + 6, z, 4) && !ctx.inWater(x + 6, z) && !ctx.inWater(x + 6, z - 7);
+      for (let cx = x - 1; cx <= x + 18 && clear; cx++) for (let cz = z - 9; cz <= z + 12 && clear; cz++) if (ctx.onPath(cx, cz)) clear = false;
+      if (!clear) {
+        x += 6;
+        continue;
+      }
+      // cottageRow returns the cottage's east eave plus three; the doorway is three wide round x + w / 2.
+      const next = cottageRow(ctx, x, z, 1).x1;
+      const w = next - 3 - x;
+      const doorX = x + Math.floor(w / 2);
+      doors.push([doorX - 1, doorX + 1]);
+      x = next + 2;
+    }
+    const first = doors[0];
+    const last = doors[doors.length - 1];
+    if (!first || !last) continue;
+    const lane = [z - 9, z - 8];
+    const wayAt = (lx: number): boolean => lane.every((lz) => ctx.onPath(lx, lz));
+    const toWay = (from: number, dir: 1 | -1): number | undefined => {
+      for (let k = 0; k <= reach; k++) if (wayAt(from + dir * k)) return from + dir * k;
+      return undefined;
+    };
+    const west = toWay(first[0], -1);
+    const east = toWay(last[1], 1);
+    if (west === undefined && east === undefined) fail(`the cottage lane at z ${lane[0]} from x ${first[0]} meets no way`);
+    const pave = (px: number, pz: number): void => {
+      if (ctx.onPath(px, pz) || ctx.inWater(px, pz)) return;
+      ctx.world.set(px, ctx.surface(px, pz), pz, ctx.soil.path);
+      ctx.keepOut(px, pz, px, pz);
+    };
+    for (let lx = (west ?? first[0]) + 1; lx < (east ?? last[1]); lx++) for (const lz of lane) pave(lx, lz);
+    // The walks: from the lane through the fence's gap and the yard into the doorway.
+    for (const [dx0, dx1] of doors) for (let wx = dx0; wx <= dx1; wx++) for (let wz = z - 7; wz <= z; wz++) pave(wx, wz);
+  }
 }
 
 /** The rectangle (inclusive) a straight way runs over. */
@@ -1028,18 +1080,18 @@ function buildOutskirts(ctx: ZoneMapContext, kit: Kit): void {
   // its yard tree stay off the way.
   const SEGMENTS: ReadonlyArray<readonly [number, number]> = [[26, 52], [67, 212], [228, 313], [327, 402], [417, 472], [488, 582], [597, 732], [747, 774]];
   for (const [x0, x1] of SEGMENTS) {
-    hamlet(ctx, x0, ROAD_Z.north + 4, x1, 186);
-    hamlet(ctx, x0, 494, x1, 540);
-    hamlet(ctx, x0, ROAD_Z.south + 6, x1, 668);
+    hamletRows(ctx, x0, ROAD_Z.north + 4, x1, 186);
+    hamletRows(ctx, x0, 494, x1, 540);
+    hamletRows(ctx, x0, ROAD_Z.south + 6, x1, 668);
   }
   // Behind the shophouses of the north street and the market street (their yards clear of the shops' backs).
   for (const [x0, x1] of [[26, 52], [67, 126], [668, 732], [747, 774]] as const) {
-    hamlet(ctx, x0, 308, x1, 358);
-    hamlet(ctx, x0, 388, x1, 444);
+    hamletRows(ctx, x0, 308, x1, 358);
+    hamletRows(ctx, x0, 388, x1, 444);
   }
   for (const [x0, x1] of [[327, 402], [417, 512]] as const) {
-    hamlet(ctx, x0, 308, x1, 352);
-    hamlet(ctx, x0, 392, x1, 444);
+    hamletRows(ctx, x0, 308, x1, 352);
+    hamletRows(ctx, x0, 392, x1, 444);
   }
 
   // Vegetable plots in the outer bands, a fence along the road side of each.
