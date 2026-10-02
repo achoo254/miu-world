@@ -20,9 +20,9 @@ import { PACK, runIfMain, smoothstep } from './map-kit';
 import { fbm, hashSeed } from './noise';
 import { cottageRow, fieldPlot, flowerBed, hamlet, laneVerge, STREET_LANTERN, streetHouses } from './scenery';
 import { placeCatStatue, placeFountain, placeStall, placeWell, placeWindmill } from './structures/countryside';
-import { archWindow, archway, battlements, castleRoom, fillBox, gableRoofAlongZ, ironBars, type Rect } from './structures/lau-dai-castle';
+import { archWindow, archway, battlements, castleRoom, fillBox, fillTowerShaft, gableRoofAlongZ, ironBars, type Rect, reviewBooth, roundRoom, widenRoundDoor } from './structures/lau-dai-castle';
 import { placeArchBridge, placeBanner, placePlaza, placeTower, type TowerBlocks } from './structures/landmarks';
-import type { Point } from './structures/path';
+import { distanceToPath, pathColumns, type Point } from './structures/path';
 import { placeTree } from './structures/tree';
 import { facingWriter, FRAME, put } from './structures/world-writer';
 import { animal, crowd, person } from './village-life';
@@ -65,7 +65,7 @@ const KEEP: Rect = { x0: 432, z0: 178, x1: 448, z1: 195 };
 /** The bedchamber, the watchtower room, the training ground, the dungeon and the royal garden. */
 const BEDROOM: Rect = { x0: 500, z0: 110, x1: 524, z1: 134 };
 /** The watchtower stands on the pine hill east of the castle, looking back over it to the mountains. */
-const WATCH = { x: 640, z: 150, r: 6 };
+const WATCH = { x: 640, z: 150, r: 8 };
 const TRAINING: Rect = { x0: 516, z0: 186, x1: 576, z1: 250 };
 const DUNGEON: Rect = { x0: 306, z0: 252, x1: 364, z1: 274 };
 const GARDEN: Rect = { x0: 306, z0: 106, x1: 426, z1: 176 };
@@ -107,14 +107,30 @@ const HALL_WALK: Point[] = [[440, PLAZA.z - PLAZA.r - 1], [440, HALL.z1]];
 const COURT_ROAD: Point[] = [[SPAWN.x, SPAWN.z], [160, 345], [160, 260]];
 const POSTERN_LANE: Point[] = [[160, 260], [250, 260], [250, POSTERN_Z], [546, POSTERN_Z], [546, 252]];
 /** Up the pine hill from the forest road to the watchtower's door. */
-const TOWER_LANE: Point[] = [[700, 150], [WATCH.x + 7, 150]];
+const TOWER_LANE: Point[] = [[700, 150], [WATCH.x + WATCH.r + 2, 150]];
 /** Down the slope from the court to the town's main street, along it and north up the forest road. */
 const LOWLAND_ROAD: Point[] = [[160, 345], [160, 480], [240, 560], [700, 560], [700, 140]];
 const FOREST_ROAD: Point[] = [[440, 400], [700, 400]];
-/** The farm lane west of the gate meadow. */
-const MEADOW_LANE: Point[] = [[160, 414], [368, 414]];
-const NORTH_LANE: Point[] = [[160, 260], [160, 116]];
+/** The farm lane west of the gate meadow, on past the gatekeeper's lodge to the avenue. */
+const MEADOW_LANE: Point[] = [[160, 414], [378, 414], [378, 404], [436, 404]];
+/** Along the moat's south bank under the willows, crossing the bridgehead square. */
+const BANK_WALK: Point[] = [[372, 371], [508, 371]];
+/** North from the court to the pond under the western fall. */
+const NORTH_LANE: Point[] = [[160, 260], [160, 114], [134, 114]];
 const WEST_LANE: Point[] = [[60, 345], [60, 190], [150, 190]];
+/**
+ * Earth tracks to the places off the roads: across the paddies and the wheat (with a spur to the windmill's
+ * door), to the forest pond, the forest lookout and the woodcutters' camp, through the eastern orchards, and
+ * to the town windmill's door.
+ */
+const FIELD_TRACK: Point[] = [[160, 470], [700, 470]];
+const WHEAT_MILL_SPUR: Point[] = [[600, 470], [600, 484]];
+const POND_TRAIL: Point[] = [[660, 400], [660, 344]];
+const LOOKOUT_TRAIL: Point[] = [[700, 197], [749, 197]];
+const CAMP_TRAIL: Point[] = [[700, 244], [632, 244]];
+const ORCHARD_TRACK: Point[] = [[700, 520], [780, 520]];
+const MILL_TRACK: Point[] = [[700, 660], [730, 660], [730, 632], [745, 632], [745, 635]];
+const TRACKS: Point[][] = [FIELD_TRACK, WHEAT_MILL_SPUR, POND_TRAIL, LOOKOUT_TRAIL, CAMP_TRAIL, ORCHARD_TRACK, MILL_TRACK];
 const TOWN_STREETS: Point[][] = [
   [[240, 660], [700, 660]],
   [[240, 750], [700, 750]],
@@ -123,7 +139,7 @@ const TOWN_STREETS: Point[][] = [
   [[560, 560], [560, 750]],
   [[160, 480], [60, 480], [60, 776]],
 ];
-const ROUTES: Point[][] = [AVENUE, HALL_WALK, COURT_ROAD, POSTERN_LANE, LOWLAND_ROAD, FOREST_ROAD, TOWER_LANE, MEADOW_LANE, NORTH_LANE, WEST_LANE, ...TOWN_STREETS];
+const ROUTES: Point[][] = [AVENUE, HALL_WALK, COURT_ROAD, POSTERN_LANE, LOWLAND_ROAD, FOREST_ROAD, TOWER_LANE, MEADOW_LANE, BANK_WALK, NORTH_LANE, WEST_LANE, ...TOWN_STREETS, ...TRACKS];
 
 /** Terraced rice paddies (inclusive) on the slope below the castle, and the golden wheat field beside them. */
 const PADDY = { x0: 250, z0: 446, x1: 428, z1: 540 };
@@ -204,6 +220,74 @@ const inMoat = (x: number, z: number): boolean => {
   return x <= WALLS.x0 - 3 || x >= WALLS.x1 + 3 || z <= WALLS.z0 - 3 || z >= MOAT_S.z0;
 };
 const inWater = (x: number, z: number): boolean => inMoat(x, z) || Math.hypot(x - POND.x, z - POND.z) < POND.r || Math.hypot(x - FOREST_POND.x, z - FOREST_POND.z) < FOREST_POND.r;
+
+/**
+ * Paves the grass left between a lane and the garden walks off it (a street's houses stand back from the
+ * lane, so a walk can stop a block or two short of the way), so every door's walk joins its lane.
+ */
+function joinWalks(ctx: ZoneMapContext, lanes: readonly Point[][]): void {
+  for (const lane of lanes) {
+    for (let i = 1; i < lane.length; i++) {
+      const [ax = 0, az = 0] = lane[i - 1] ?? [];
+      const [bx = 0, bz = 0] = lane[i] ?? [];
+      const len = Math.hypot(bx - ax, bz - az);
+      if (len === 0) continue;
+      const [ux, uz] = [(bx - ax) / len, (bz - az) / len];
+      for (let t = 0; t <= len; t += 0.5) {
+        for (const side of [-1, 1]) {
+          let gap: Array<[number, number]> = [];
+          for (let d = 1; d <= 6; d++) {
+            const x = Math.round(ax + ux * t - uz * side * d);
+            const z = Math.round(az + uz * t + ux * side * d);
+            if (ctx.onPath(x, z)) {
+              gap = [];
+              continue;
+            }
+            const y = ctx.surface(x, z);
+            if (ctx.world.get(x, y, z) === ctx.soil.path) {
+              for (const [gx, gz] of gap) {
+                ctx.world.set(gx, ctx.surface(gx, gz), gz, ctx.soil.path);
+                ctx.keepOut(gx, gz, gx, gz);
+              }
+              break;
+            }
+            if (ctx.world.get(x, y + 1, z) !== 0 || ctx.inWater(x, z)) break;
+            gap.push([x, z]);
+          }
+        }
+      }
+    }
+  }
+}
+
+/**
+ * A route cut into the stretches between its junctions, each ending `clear` blocks short of every other way:
+ * the verges' lamps, bushes and fence lengths stand along a lane, never across the mouth of a side street.
+ */
+function vergeStretches(route: readonly Point[], others: readonly (readonly Point[])[], clear = 6): Point[][] {
+  const out: Point[][] = [];
+  for (let i = 0; i + 1 < route.length; i++) {
+    const [ax = 0, az = 0] = route[i] ?? [];
+    const [bx = 0, bz = 0] = route[i + 1] ?? [];
+    const len = Math.hypot(bx - ax, bz - az);
+    let start: Point | undefined;
+    let last: Point | undefined;
+    const close = (): void => {
+      if (start && last && Math.hypot(last[0] - start[0], last[1] - start[1]) >= 4) out.push([start, last]);
+      start = undefined;
+      last = undefined;
+    };
+    for (let d = 0; d <= len; d++) {
+      const p: Point = [ax + ((bx - ax) * d) / Math.max(1, len), az + ((bz - az) * d) / Math.max(1, len)];
+      if (others.every((o) => distanceToPath(o, p[0], p[1]) >= clear)) {
+        start ??= p;
+        last = p;
+      } else close();
+    }
+    close();
+  }
+  return out;
+}
 
 /** 1 inside a rectangle, fading to 0 over `fade` blocks outside it. */
 const rectWeight = (x: number, z: number, x0: number, z0: number, x1: number, z1: number, fade: number): number => {
@@ -390,6 +474,20 @@ export async function generateLauDai() {
         for (let y = world.size[1] - 1; y > 0; y--) if (world.get(x, y, z) !== 0) return y + 1;
         return 0;
       };
+      /** Paves the walking face of a stone bridge (the top block of each column in the rectangle, where it is `from`). */
+      const paveDeck = (x0: number, z0: number, x1: number, z1: number, from: number, to: number): void => {
+        for (let x = x0; x <= x1; x++) for (let z = z0; z <= z1; z++) if (world.get(x, roofOf(x, z) - 1, z) === from) put(world, x, roofOf(x, z) - 1, z, to);
+      };
+      /** Steps one block a step from the ground up to `floorTop` (the top block of a raised floor), out from (x, z) toward (dx, dz), `w` wide across. */
+      const stepsDown = (x: number, z: number, dx: number, dz: number, floorTop: number, w: number, id: number): void => {
+        for (let k = 1; k <= 6; k++) {
+          const stepTop = floorTop - k;
+          for (let s = -Math.floor(w / 2); s <= Math.floor(w / 2); s++) {
+            const [cx, cz] = [x + dx * k + (dz !== 0 ? s : 0), z + dz * k + (dx !== 0 ? s : 0)];
+            for (let y = ctx.surface(cx, cz) + 1; y <= stepTop; y++) put(world, cx, y, cz, id);
+          }
+        }
+      };
       const onTable = (model: string, x: number, z: number, y = top, yaw = 0): void => ctx.propAt(model, [x + 0.5, y + TABLE_TOP, z + 0.5], yaw);
       const table = (x: number, z: number, items: readonly string[], yaw = 0, y = top): void => {
         ctx.centred(M.table, x, z, yaw);
@@ -436,7 +534,9 @@ export async function generateLauDai() {
         }
         ctx.keepOut(fx - 4, crest, fx + 4, zWater - 1);
       }
-      ctx.landmark('thac-nuoc', 'Thác nước sau lâu đài', 440, WALLS.z0 - 14, ctx.surface(440, WALLS.z0 - 14) + 1);
+      // Seen from the paved north ward inside the walls, where the child can stand: the falls pour down the range
+      // over the wall's battlements either side.
+      ctx.landmark('thac-nuoc', 'Thác nước sau lâu đài', 440, WALLS.z0 + 5);
 
       // The moat's banks faced with stone up to the high ground: the castle rises from the water (d-01, d-05).
       for (let x = WALLS.x0 - 13; x <= WALLS.x1 + 13; x++) {
@@ -489,8 +589,13 @@ export async function generateLauDai() {
         if (!nearTower(WALLS.x0, z) && Math.abs(z - POSTERN_Z) > 8) placeBanner(world, WALLS.x0 - 1, WALL_TOP - 1, z, 'z', banner, 5);
         if (!nearTower(WALLS.x1, z)) placeBanner(world, WALLS.x1 + 1, WALL_TOP - 1, z, 'z', banner, 5);
       }
+      // The towers are solid stone under their roofs: lookouts on the wall, not rooms with no way in.
+      const tower = (tx: number, tz: number, baseY: number, r: number, h: number, b: TowerBlocks = towerBlocks): void => {
+        placeTower(world, tx, tz, baseY, r, h, b, false);
+        fillTowerShaft(world, tx, tz, baseY, r, h, b.wall);
+      };
       for (const [tx, tz] of towerAt) {
-        placeTower(world, tx, tz, top, 4, 14, towerBlocks, false);
+        tower(tx, tz, top, 4, 14);
         ctx.keepOut(tx - 6, tz - 6, tx + 6, tz + 6);
       }
       ctx.landmark('thap-goc-thanh', 'Tháp góc thành', WALLS.x1 - 8, WALLS.z1 - 8);
@@ -508,7 +613,7 @@ export async function generateLauDai() {
       placeBanner(world, GATE_X - 7, LEVEL + 13, gate.z1 + 1, 'x', banner, 6);
       placeBanner(world, GATE_X + 6, LEVEL + 13, gate.z1 + 1, 'x', banner, 6);
       for (const dx of [-11, 11]) {
-        placeTower(world, GATE_X + dx, WALLS.z1 + 1, top, 4, 14, towerBlocks, false);
+        tower(GATE_X + dx, WALLS.z1 + 1, top, 4, 14);
         placeBanner(world, GATE_X + dx, LEVEL + 12, WALLS.z1 + 6, 'x', banner, 6);
       }
       ctx.keepOut(GATE_X - 16, gate.z0, GATE_X + 16, WALLS.z1 + 6);
@@ -540,6 +645,8 @@ export async function generateLauDai() {
         put(world, GATE_X + side * (half + 2), LEVEL + 6, BRIDGE.z1 - 2, B.stone);
       }
       for (let z = BRIDGE.z0; z <= BRIDGE.z0 + 3; z++) for (let x = GATE_X - half + 1; x <= GATE_X + half - 1; x++) put(world, x, deckAt(z), z, B.planks);
+      // The deck between the parapets is paved like the avenue it carries.
+      paveDeck(GATE_X - half + 1, BRIDGE.z0 + 4, GATE_X + half - 1, BRIDGE.z1, B.stone, B.path);
       for (let z = BRIDGE.z0 + 6; z < BRIDGE.z1 - 2; z += 6) {
         if (Math.abs(z - pierZ) < 3) continue;
         for (const side of [-1, 1]) ctx.propAt(STREET_LANTERN, [GATE_X + side * half + 0.5, roofOf(GATE_X + side * half, z), z + 0.5], 0);
@@ -553,7 +660,8 @@ export async function generateLauDai() {
 
       // The postern: a little arch bridge over the west moat, two turrets and a lamp either side.
       placeArchBridge(world, [WALLS.x0 - 13, POSTERN_Z], [WALLS.x0 - 1, POSTERN_Z], LEVEL, WATER_LEVEL, { stone: B.stone, rail: B.grey }, 5, 2);
-      for (const dz of [-6, 6]) placeTower(world, WALLS.x0, POSTERN_Z + dz, top, 2, 12, towerBlocks, false);
+      paveDeck(WALLS.x0 - 13, POSTERN_Z - 1, WALLS.x0 - 1, POSTERN_Z + 1, B.stone, B.path);
+      for (const dz of [-6, 6]) tower(WALLS.x0, POSTERN_Z + dz, top, 2, 12);
       ctx.keepOut(WALLS.x0 - 3, POSTERN_Z - 9, WALLS.x0 + 3, POSTERN_Z + 9);
       ctx.landmark('cong-tay', 'Cổng tây', WALLS.x0, POSTERN_Z);
 
@@ -570,12 +678,13 @@ export async function generateLauDai() {
       const hallRoofTop = gableRoofAlongZ(world, HALL, top + HALL_HEIGHT, { roof: B.red, ridge: B.wood, gable: B.sand });
       const libX = (LIBRARY.x0 + LIBRARY.x1) >> 1;
       const dinX = (DINING.x0 + DINING.x1) >> 1;
-      // Doors: the great door up from the fountain, each wing's own door beside it.
-      archway(world, 'x', HALL.z1, GATE_X - 3, GATE_X + 3, top, 8);
-      archway(world, 'x', LIBRARY.z1, libX - 1, libX + 1, top, 4);
-      archway(world, 'x', DINING.z1, dinX - 1, dinX + 1, top, 4);
+      // Doors: the great door up from the fountain, eleven wide (the carpet and the paving either side of it run
+      // in through it), each wing's own door beside it, five wide.
+      archway(world, 'x', HALL.z1, GATE_X - 5, GATE_X + 5, top, 8);
+      archway(world, 'x', LIBRARY.z1, libX - 2, libX + 2, top, 6);
+      archway(world, 'x', DINING.z1, dinX - 2, dinX + 2, top, 6);
       // The facade: lanterns by the doors, tall windows, a rose window of coloured glass over the great door.
-      for (const x of [GATE_X - 5, GATE_X + 5, libX - 3, libX + 3, dinX - 3, dinX + 3]) put(world, x, top + 3, HALL.z1 + 1, B.lantern);
+      for (const x of [GATE_X - 7, GATE_X + 7, libX - 4, libX + 4, dinX - 4, dinX + 4]) put(world, x, top + 3, HALL.z1 + 1, B.lantern);
       for (const x of [418, 426, 453, 461]) archWindow(world, 'x', HALL.z1, x, top + 4, 7, { glass: B.lantern, sill: B.paver });
       const rose = [B.blue, B.wood, B.sand, B.glass, B.lantern];
       for (let dx = -3; dx <= 3; dx++) for (let dy = -3; dy <= 3; dy++) {
@@ -586,13 +695,13 @@ export async function generateLauDai() {
       for (const x of [GATE_X - 9, GATE_X + 8, 412, 467]) placeBanner(world, x, top + 11, HALL.z1 + 1, 'x', banner, 7);
       // Towers at the wings' corners and the hall's front corners, the keep behind with its turrets.
       for (const [tx, tz] of [[LIBRARY.x0, LIBRARY.z0], [DINING.x1, DINING.z0], [LIBRARY.x0, LIBRARY.z1], [DINING.x1, DINING.z1], [HALL.x0, HALL.z1], [HALL.x1, HALL.z1]] as const) {
-        placeTower(world, tx, tz, top, 4, 14, towerBlocks, false);
+        tower(tx, tz, top, 4, 14);
       }
       box(KEEP.x0, top, KEEP.z0, KEEP.x1, LEVEL + 12, KEEP.z1, B.stone);
       for (let y = top + 2; y <= LEVEL + 11; y += 4) for (let x = KEEP.x0 + 3; x < KEEP.x1; x += 4) put(world, x, y, KEEP.z0, B.lantern);
       battlements(world, KEEP, LEVEL + 13, B.stone);
-      placeTower(world, GATE_X, (KEEP.z0 + KEEP.z1) >> 1, LEVEL + 13, 3, 4, towerBlocks, false);
-      for (const [tx, tz] of [[KEEP.x0 + 1, KEEP.z0 + 1], [KEEP.x1 - 1, KEEP.z0 + 1]] as const) placeTower(world, tx, tz, LEVEL + 13, 2, 3, towerBlocks, false);
+      tower(GATE_X, (KEEP.z0 + KEEP.z1) >> 1, LEVEL + 13, 3, 4);
+      for (const [tx, tz] of [[KEEP.x0 + 1, KEEP.z0 + 1], [KEEP.x1 - 1, KEEP.z0 + 1]] as const) tower(tx, tz, LEVEL + 13, 2, 3);
       // The palace keeps quests and trees out of its wings, its keep and its walls; the great hall's floor
       // is chapter 2's ground.
       for (const r of [LIBRARY, DINING, KEEP]) ctx.keepOut(r.x0 - 5, r.z0 - 5, r.x1 + 5, r.z1 + 1);
@@ -671,7 +780,9 @@ export async function generateLauDai() {
         box(HALL.x0 + 8 + dx - 1, top, HALL.z1 - 12, HALL.x0 + 8 + dx + 1, top + hgt - 1, HALL.z1 - 10, id);
         ctx.prop(M.medal, HALL.x0 + 8 + dx, HALL.z1 - 11, 0);
       }
-      ctx.keepOut(HALL.x0 + 3, HALL.z1 - 13, HALL.x0 + 13, HALL.z1 - 9);
+      // A step along its front, so every place on it is one block up from the next.
+      box(HALL.x0 + 4, top, HALL.z1 - 9, HALL.x0 + 12, top, HALL.z1 - 9, B.paver);
+      ctx.keepOut(HALL.x0 + 3, HALL.z1 - 13, HALL.x0 + 13, HALL.z1 - 8);
       ctx.landmark('buc-huy-hieu', 'Bục huy hiệu', HALL.x0 + 8, HALL.z1 - 7);
       box(HALL.x1 - 1, top + 1, HALL.z1 - 16, HALL.x1 - 1, top + 3, HALL.z1 - 10, B.green);
       for (let i = 0; i < 3; i++) ctx.propAt(i % 2 ? M.picture : M.pictureYellow, [HALL.x1 - 1.6, top + 1.5, HALL.z1 - 14.5 + i * 2], 90);
@@ -693,7 +804,7 @@ export async function generateLauDai() {
       ];
       const awnings = [[B.wood, B.white], [B.blue, B.white], [B.sand, B.wood], [B.green, B.white]] as const;
       stalls.forEach((st, i) => {
-        placeStall(world, st.x0, st.z0, 7, 4, top, { log: B.log, planks: B.planks, stripes: awnings[i % awnings.length] ?? [B.wood] });
+        reviewBooth(world, st.x0, st.z0, 7, 4, top, { log: B.log, planks: B.planks, stripes: awnings[i % awnings.length] ?? [B.wood] });
         st.items.forEach((m, k) => ctx.prop(m, st.x0 + 2 + k * 2, st.z0, 180));
         ctx.keepOut(st.x0 - 1, st.z0 - 1, st.x0 + 7, st.z0 + 4);
         ctx.landmark(st.id, st.name, st.x0 + 3, st.z0 - 3);
@@ -701,7 +812,7 @@ export async function generateLauDai() {
       table(HALL.x0 + 13, HALL.z0 + 30, [M.clock]);
       ctx.landmark('ban-lich', 'Bàn lịch cạnh gian đồng hồ', HALL.x0 + 13, HALL.z0 + 33);
       // The paper-flower arch over the carpet inside the door, cakes, the teddy store and the puppet booth.
-      for (const x of [nave.x0 - 2, nave.x1 + 2]) box(x, top, HALL.z1 - 6, x, top + 5, HALL.z1 - 6, B.log);
+      for (const x of [nave.x0 - 2, nave.x1 + 2]) box(x, top, HALL.z1 - 6, x, top + 5, HALL.z1 - 6, B.planks);
       for (let x = nave.x0 - 2; x <= nave.x1 + 2; x++) put(world, x, top + 6, HALL.z1 - 6, x % 2 === 0 ? B.pink : B.leaves);
       ctx.landmark('gian-hoa-giay', 'Giàn hoa giấy', GATE_X, HALL.z1 - 8);
       table(HALL.x1 - 12, HALL.z0 + 52, [M.cake, M.cake]);
@@ -732,7 +843,10 @@ export async function generateLauDai() {
       ];
       for (const [id, name, x, z] of named) ctx.landmark(id, name, x, z);
       // Planks and frame bars stacked where the wooden platforms are built; benches for the audience.
-      for (const [dx, dz, h] of [[-6, -10, 2], [-3, -10, 1], [-6, -6, 1]] as const) box(HALL.x1 + dx, top, HALL.z1 + dz, HALL.x1 + dx + 1, top + h - 1, HALL.z1 + dz + 1, B.planks);
+      for (const [dx, dz, bars] of [[-6, -10, true], [-3, -10, false], [-6, -6, false]] as const) {
+        box(HALL.x1 + dx, top, HALL.z1 + dz, HALL.x1 + dx + 1, top, HALL.z1 + dz + 1, B.planks);
+        if (bars) box(HALL.x1 + dx, top + 1, HALL.z1 + dz, HALL.x1 + dx + 1, top + 1, HALL.z1 + dz, B.log);
+      }
       ctx.keepOut(HALL.x1 - 7, HALL.z1 - 11, HALL.x1 - 1, HALL.z1 - 4);
       for (const z of [HALL.z0 + 30, HALL.z0 + 34, HALL.z0 + 38]) for (const dx of [-8, 8]) ctx.propAt(M.longBench, [GATE_X + dx + 0.5, top, z + 0.5], 90);
       ctx.landmark('dai-sanh', 'Đại sảnh', GATE_X, (HALL.z0 + HALL.z1) >> 1);
@@ -800,7 +914,7 @@ export async function generateLauDai() {
       castleRoom(world, BEDROOM, top, 9, warm);
       gableRoofAlongZ(world, BEDROOM, top + 9, { roof: B.red, ridge: B.wood, gable: B.sand });
       const bedX = (BEDROOM.x0 + BEDROOM.x1) >> 1;
-      archway(world, 'x', BEDROOM.z1, bedX - 1, bedX + 1, top, 4);
+      archway(world, 'x', BEDROOM.z1, bedX - 2, bedX + 2, top, 5);
       archWindow(world, 'x', BEDROOM.z0, bedX - 1, top + 1, 6, { glass: B.glass, sill: B.planks });
       archWindow(world, 'x', BEDROOM.z0, bedX + 1, top + 1, 6, { glass: B.glass, sill: B.planks });
       for (const dx of [-2, 3]) box(bedX + dx, top, BEDROOM.z0 + 1, bedX + dx, top + 6, BEDROOM.z0 + 1, B.wood);
@@ -822,44 +936,35 @@ export async function generateLauDai() {
       ctx.keepOut(BEDROOM.x0 - 1, BEDROOM.z0 - 1, BEDROOM.x1 + 1, BEDROOM.z1 + 2);
       ctx.landmark('phong-nghi', 'Phòng nghỉ', bedX, 122);
 
-      // The watchtower (d-10): a round stone tower on the hill whose room has a wooden floor and wide windows
-      // on three sides, the map table by one, the telescope at another, barrels, a chest and a lamp.
+      // The watchtower (d-10): a round stone room on the hill, fifteen across inside, its plank floor on a stone
+      // footing, the door three wide on the east with steps down to the lane, wide windows on the other three
+      // sides; the map table by the south-west window, the telescope at the west one, barrels, a chest, the
+      // weapon rack, a lamp. Under a red cone that stays inside the world's height.
       const watchY = ctx.surface(WATCH.x, WATCH.z) + 1;
-      placeTower(facingWriter(world, [WATCH.x, WATCH.z], 'east'), FRAME, FRAME, watchY, WATCH.r, 9, { ...towerBlocks, flag: undefined }, true);
-      for (let dx = -WATCH.r - 1; dx <= WATCH.r + 1; dx++) {
-        for (let dz = -WATCH.r - 1; dz <= WATCH.r + 1; dz++) {
-          const d = Math.hypot(dx, dz);
-          if (d < WATCH.r - 0.9) {
-            put(world, WATCH.x + dx, watchY - 1, WATCH.z + dz, B.planks);
-            for (let y = watchY; y < watchY + 8; y++) put(world, WATCH.x + dx, y, WATCH.z + dz, 0);
-          }
-          const window = d > WATCH.r - 1.5 && d < WATCH.r + 0.6 && ((dx < 0 && Math.abs(dz) <= 3) || (dz !== 0 && Math.abs(dx) <= 2 && Math.abs(dz) > 3));
-          if (window) {
-            for (let y = watchY + 2; y <= watchY + 6; y++) put(world, WATCH.x + dx, y, WATCH.z + dz, 0);
-            put(world, WATCH.x + dx, watchY + 1, WATCH.z + dz, B.planks);
-          }
-        }
-      }
-      for (let dx = -4; dx <= 4; dx++) for (const dz of [-2, 2]) put(world, WATCH.x + dx, watchY + 8, WATCH.z + dz, B.log);
-      ctx.propAt(M.flag, [WATCH.x + 0.5, roofOf(WATCH.x, WATCH.z), WATCH.z + 0.5], 0);
-      ctx.propAt(M.mapTable, [WATCH.x + 0.5, watchY, WATCH.z + 3.5], 0);
-      ctx.propAt(M.telescope, [WATCH.x - 2.5, watchY, WATCH.z - 2.5], 90);
-      ctx.propAt(M.barrel, [WATCH.x + 4, watchY, WATCH.z + 2.5], 0);
-      ctx.propAt(M.barrel, [WATCH.x + 3.2, watchY, WATCH.z + 3.6], 40);
-      ctx.propAt(M.chest, [WATCH.x + 4, watchY, WATCH.z - 2.5], 270);
-      ctx.propAt(M.rack, [WATCH.x + 0.5, watchY, WATCH.z - 4.2], 0);
-      ctx.propAt(M.candleStand, [WATCH.x + 2.5, watchY, WATCH.z + 4], 0);
-      ctx.propAt(M.torch, [WATCH.x + 4.6, watchY + 2.5, WATCH.z + 0.5], 0);
-      ctx.centredAt(M.plant, [WATCH.x - 2, watchY, WATCH.z + 4], 0);
+      const watch = roundRoom(world, WATCH.x, WATCH.z, watchY, WATCH.r, 9, { wall: B.stone, trim: B.grey, floor: B.planks, roof: B.red, beam: B.log, footing: B.cobble });
+      stepsDown(WATCH.x + WATCH.r, WATCH.z, 1, 0, watchY - 1, 3, B.grey);
+      ctx.propAt(M.flag, [WATCH.x + 0.5, watch.tip + 1, WATCH.z + 0.5], 0);
+      ctx.propAt(M.mapTable, [WATCH.x - 3.5, watchY, WATCH.z + 4.5], 0);
+      ctx.propAt(M.telescope, [WATCH.x - 5.5, watchY, WATCH.z - 0.5], 90);
+      ctx.propAt(M.barrel, [WATCH.x + 4, watchY, WATCH.z + 5.5], 0);
+      ctx.propAt(M.barrel, [WATCH.x + 2.8, watchY, WATCH.z + 6.4], 40);
+      ctx.propAt(M.chest, [WATCH.x + 4, watchY, WATCH.z - 5.5], 270);
+      ctx.propAt(M.rack, [WATCH.x + 0.5, watchY, WATCH.z - 6.6], 0);
+      ctx.propAt(M.candleStand, [WATCH.x + 5.5, watchY, WATCH.z + 3.5], 0);
+      ctx.propAt(M.torch, [WATCH.x + 6.4, watchY + 2.5, WATCH.z + 3.5], 0);
+      ctx.centredAt(M.plant, [WATCH.x - 4, watchY, WATCH.z - 4], 0);
       ctx.keepOut(WATCH.x - 24, WATCH.z - 24, WATCH.x + 24, WATCH.z + 24);
       ctx.landmark('thap-canh', 'Tháp canh', WATCH.x, WATCH.z, watchY);
 
       // The training ground (d-04): trodden earth inside a wooden fence, a row of archery targets, straw
       // dummies, weapon racks, banners, a wooden lookout on its legs, the smithy in its corner.
+      // A verge of grass two wide inside the fence carries the fence, the racks and the poles along it; the
+      // trodden earth runs out through the two gates (south to the postern lane, west to the ward).
+      const trainingGate = (x: number, z: number): boolean => (Math.abs(x - 546) <= 3 && z >= TRAINING.z1 - 2) || (Math.abs(z - 218) <= 4 && x <= TRAINING.x0 + 2);
       for (let x = TRAINING.x0; x <= TRAINING.x1; x++) for (let z = TRAINING.z0; z <= TRAINING.z1; z++) {
         if (ctx.onPath(x, z)) continue;
-        const patch = fbm(SEED + 7, x / 9, z / 9);
-        put(world, x, LEVEL, z, patch > 0.6 ? B.grass : (x * 3 + z * 5) % 17 === 0 ? B.sand : B.trail);
+        const verge = Math.min(x - TRAINING.x0, TRAINING.x1 - x, z - TRAINING.z0, TRAINING.z1 - z) <= 2;
+        put(world, x, LEVEL, z, verge && !trainingGate(x, z) ? B.grass : B.trail);
       }
       for (let x = TRAINING.x0; x <= TRAINING.x1; x += 2) for (const z of [TRAINING.z0, TRAINING.z1]) if (Math.abs(x - 546) > 3) ctx.prop(M.fence, x, z, 0);
       for (let z = TRAINING.z0 + 2; z < TRAINING.z1; z += 2) for (const x of [TRAINING.x0, TRAINING.x1]) if (x !== TRAINING.x0 || Math.abs(z - 218) > 4) ctx.prop(M.fence, x, z, 90);
@@ -881,9 +986,11 @@ export async function generateLauDai() {
       box(lookout.x - 4, top + 7, lookout.z - 4, lookout.x + 4, top + 7, lookout.z + 4, B.planks);
       for (let dx = -4; dx <= 4; dx++) for (let dz = -4; dz <= 4; dz++) if ((Math.abs(dx) === 4 || Math.abs(dz) === 4) && (dx + dz) % 2 === 0) put(world, lookout.x + dx, top + 8, lookout.z + dz, B.log);
       for (let k = 0; k <= 4; k++) box(lookout.x - 5 + k, top + 10 + k, lookout.z - 5 + k, lookout.x + 5 - k, top + 10 + k, lookout.z + 5 - k, k % 2 === 0 ? B.wood : B.planks);
-      for (let y = top; y < top + 7; y++) put(world, lookout.x, y, lookout.z - 4, B.log);
+      // A plank stair three wide up the east side to the platform, a block a step, through a gap in its rail.
+      for (let k = 0; k <= 6; k++) box(lookout.x + 11 - k, top, lookout.z - 1, lookout.x + 11 - k, top + k, lookout.z + 1, B.planks);
+      for (let dz = -1; dz <= 1; dz++) put(world, lookout.x + 4, top + 8, lookout.z + dz, 0);
       ctx.propAt(M.flag, [lookout.x + 0.5, top + 15, lookout.z + 0.5], 0);
-      ctx.keepOut(lookout.x - 5, lookout.z - 5, lookout.x + 5, lookout.z + 5);
+      ctx.keepOut(lookout.x - 5, lookout.z - 5, lookout.x + 13, lookout.z + 5);
       ctx.landmark('choi-gac-go', 'Chòi gác gỗ', lookout.x, lookout.z - 7);
       const smithy = { x: 530, z: 270 };
       ctx.prop(M.anvil, smithy.x, smithy.z, 0);
@@ -909,6 +1016,8 @@ export async function generateLauDai() {
       for (let x0 = DUNGEON.x0 + 1; x0 < DUNGEON.x1 - 1; x0 += 8) {
         ironBars(world, 'x', hall.z0 - 1, x0, x0 + 6, top, 5, B.iron);
         ironBars(world, 'x', hall.z1 + 1, x0, x0 + 6, top, 5, B.iron);
+        // Each cell's barred door stands open, three wide, under the top rail.
+        for (const z of [hall.z0 - 1, hall.z1 + 1]) box(x0 + 2, top, z, x0 + 4, top + 3, z, 0);
         for (const z of [hall.z0 - 1, hall.z1 + 1]) box(x0, top + 5, z, x0 + 6, top + 6, z, B.sand);
         // Straw in a cell's corner, a barrel or a crate in another.
         put(world, x0 + 1, top, DUNGEON.z0 + 1, B.wheat);
@@ -924,7 +1033,8 @@ export async function generateLauDai() {
       // A lamp high on the back wall of every cell, so the bars stand dark against it.
       for (let x0 = DUNGEON.x0 + 4; x0 < DUNGEON.x1; x0 += 8) for (const z of [DUNGEON.z0, DUNGEON.z1]) put(world, x0, top + 3, z, B.lantern);
       for (let x = DUNGEON.x0 + 8; x < DUNGEON.x1; x += 8) for (const z of [hall.z0 + 0.15, hall.z1 + 0.85]) ctx.propAt(M.torch, [x + 0.5, top + 2.5, z], 0);
-      for (const [x, z] of [[311, 260], [312, 261], [326, 266], [334, 260], [343, 266], [350, 260], [351, 261], [358, 266]] as const) ctx.prop(z === 261 || z === 266 ? M.crate : M.barrel, x, z, x * 7);
+      // Barrels and crates down the corridor, against the bars between the cells' doors.
+      for (const [x, z] of [[313, 260], [321, 266], [329, 260], [337, 266], [345, 260], [353, 266]] as const) ctx.prop(z === 266 ? M.crate : M.barrel, x, z, x * 7);
       archway(world, 'z', DUNGEON.x1, hall.z0 + 1, hall.z1 - 1, top, 4);
       for (const dz of [-3, 3]) put(world, DUNGEON.x1 + 1, top + 3, 263 + dz, B.lantern);
       ctx.keepOut(DUNGEON.x0 - 1, DUNGEON.z0 - 1, DUNGEON.x1 + 2, DUNGEON.z1 + 1);
@@ -947,6 +1057,16 @@ export async function generateLauDai() {
       for (const z of [112, 120, 128, 154, 162, 170]) ctx.propAt(M.roseArch, [gx + 0.5, top, z + 0.5], 0);
       /** Beds inside hedges (their grass stays when the wards are paved). */
       const beds: Rect[] = [];
+      /** A tree planted on the paving in a square bed of earth inside a stone kerb, as courtyard trees are. */
+      const plantedTree = (x: number, z: number, leaves: number, height: number): void => {
+        for (let dx = -2; dx <= 2; dx++) for (let dz = -2; dz <= 2; dz++) {
+          if (Math.max(Math.abs(dx), Math.abs(dz)) === 2) put(world, x + dx, top, z + dz, B.stone);
+          else put(world, x + dx, LEVEL, z + dz, B.grass);
+        }
+        beds.push({ x0: x - 1, z0: z - 1, x1: x + 1, z1: z + 1 });
+        placeTree(world, x, top, z, height, { log: B.trunk, leaves }, rng);
+        ctx.keepOut(x - 2, z - 2, x + 2, z + 2);
+      };
       const hedge = (x0: number, z0: number, x1: number, z1: number): void => {
         beds.push({ x0, z0, x1, z1 });
         for (let x = x0; x <= x1; x++) for (let z = z0; z <= z1; z++) {
@@ -1015,10 +1135,7 @@ export async function generateLauDai() {
         return [Math.round(PLAZA.x + Math.cos(a) * (PLAZA.r - 1)), Math.round(PLAZA.z + Math.sin(a) * (PLAZA.r - 1))] as const;
       }));
       for (const x0 of [PLAZA.x - 25, PLAZA.x + 12]) hedge(x0, PLAZA.z - 7, x0 + 13, PLAZA.z + 7);
-      for (const x of [PLAZA.x - 30, PLAZA.x + 30]) {
-        placeTree(world, x, top, PLAZA.z, 5, { log: B.trunk, leaves: B.leaves }, rng);
-        ctx.keepOut(x - 1, PLAZA.z - 1, x + 1, PLAZA.z + 1);
-      }
+      for (const x of [PLAZA.x - 30, PLAZA.x + 30]) plantedTree(x, PLAZA.z, B.leaves, 5);
       for (let z = PLAZA.z + PLAZA.r + 4; z <= WALLS.z1 - 8; z += 8) for (const dx of [-5, 5]) ctx.propAt(M.bannerPole, [GATE_X + dx + 0.5, top, z + 0.5], 90);
 
       const awningsBazaar = [[B.wood, B.white], [B.blue, B.white], [B.sand, B.wood], [B.green, B.white]] as const;
@@ -1037,7 +1154,9 @@ export async function generateLauDai() {
       ctx.landmark('cho-trong-thanh', 'Chợ trong thành', 476, 296);
 
       // The west ward: the servants' houses, the cowshed (the castle has no horses: its oxen pull the carts).
-      cottageRow(ctx, 330, 222, 2);
+      // Their houses face a yard of grass with its fruit tree, behind a fence (the one green ward but the garden).
+      const servants = cottageRow(ctx, 330, 222, 2);
+      beds.push({ x0: 329, z0: 222 - 7, x1: servants.x1, z1: 221 });
       ctx.landmark('nha-nguoi-hau', 'Nhà người hầu', 345, 214);
       const shed = { x0: 310, z0: 186, x1: 326, z1: 200 };
       for (const [x, z] of [[shed.x0, shed.z0], [shed.x1, shed.z0], [shed.x0, shed.z1], [shed.x1, shed.z1], [318, shed.z0], [318, shed.z1]] as const) box(x, top, z, x, top + 3, z, B.log);
@@ -1049,10 +1168,7 @@ export async function generateLauDai() {
       ctx.keepOut(shed.x0 - 1, shed.z0 - 1, shed.x1 + 1, shed.z0 + 2);
       ctx.keepOut(338, 194, 342, 198);
       ctx.landmark('chuong-bo', 'Chuồng bò kéo xe', 318, 206);
-      for (const [x, z] of [[372, 300], [400, 308], [506, 310], [540, 300]] as const) {
-        placeTree(world, x, top, z, 6, { log: B.trunk, leaves: B.pink }, rng);
-        ctx.keepOut(x - 1, z - 1, x + 1, z + 1);
-      }
+      for (const [x, z] of [[372, 300], [400, 308], [506, 310], [540, 300]] as const) plantedTree(x, z, B.pink, 6);
 
       // ---------------------------------------------------------------------------------------------------
       // Chapter 3: the bridgehead square before the gate, the meadow, willows on the moat bank.
@@ -1076,19 +1192,26 @@ export async function generateLauDai() {
       };
       for (const x of [380, 404, 476, 500]) willow(x, BRIDGE.z1 + 4 + (x % 3));
       ctx.landmark('goc-lieu', 'Gốc liễu bên hào nước', 404, BRIDGE.z1 + 7);
-      for (const [x, z] of [[392, 400], [418, 424], [470, 412], [500, 392], [380, 430]] as const) flowerBed(ctx, x, z, 6, 4);
+      for (const [x, z] of [[392, 394], [418, 424], [470, 412], [500, 392], [380, 430]] as const) flowerBed(ctx, x, z, 6, 4);
       ctx.landmark('bai-co-truoc-cong', 'Bãi cỏ trước cổng thành', 480, 404);
       // The meadow's people: the gatekeeper's lodge, a ticket booth, picnic tables, blossom trees, a rail on the bank.
-      const lodge = { x0: 392, z0: 414 };
-      castleRoom(world, { x0: lodge.x0, z0: lodge.z0, x1: lodge.x0 + 8, z1: lodge.z0 + 6 }, top, 4, { ...room, floor: B.planks });
-      gableRoofAlongZ(world, { x0: lodge.x0, z0: lodge.z0, x1: lodge.x0 + 8, z1: lodge.z0 + 6 }, top + 4, { roof: B.red, ridge: B.wood, gable: B.stone });
-      archway(world, 'x', lodge.z0, lodge.x0 + 4, lodge.x0 + 4, top, 3);
-      ctx.keepOut(lodge.x0 - 1, lodge.z0 - 2, lodge.x0 + 9, lodge.z0 + 7);
-      ctx.landmark('nha-gac', 'Nhà gác cổng', lodge.x0 + 4, lodge.z0 - 2);
+      // The gatekeeper's lodge: a stone house fifteen by eleven, walls seven high, a door three wide facing the
+      // lane, a walk to it, a window either side, a bench and a lamp before it.
+      const lodge: Rect = { x0: 386, z0: 410, x1: 400, z1: 420 };
+      const lodgeDoor = (lodge.x0 + lodge.x1) >> 1;
+      castleRoom(world, lodge, top, 7, { ...room, floor: B.planks });
+      gableRoofAlongZ(world, lodge, top + 7, { roof: B.red, ridge: B.wood, gable: B.stone });
+      archway(world, 'x', lodge.z0, lodgeDoor - 1, lodgeDoor + 1, top, 4);
+      for (const x of [lodge.x0 + 3, lodge.x1 - 4]) archWindow(world, 'x', lodge.z0, x, top + 2, 4, { glass: B.glass, sill: B.planks });
+      for (let z = 406; z < lodge.z0; z++) for (let x = lodgeDoor - 1; x <= lodgeDoor + 1; x++) put(world, x, LEVEL, z, B.path);
+      put(world, lodgeDoor - 3, top + 3, lodge.z0 - 1, B.lantern);
+      ctx.prop(M.bench, lodge.x1 - 3, lodge.z0 - 2, 0);
+      ctx.keepOut(lodge.x0 - 1, lodge.z0 - 2, lodge.x1 + 1, lodge.z1 + 1);
+      ctx.landmark('nha-gac', 'Nhà gác cổng', lodgeDoor, lodge.z0 - 2);
       placeStall(world, 460, 378, 6, 4, top, { log: B.log, planks: B.planks, stripes: [B.wood, B.white] });
       ctx.keepOut(459, 376, 466, 382);
-      for (const [x, z] of [[488, 420], [500, 426], [372, 392]] as const) table(x, z, [M.food[0] ?? M.plate]);
-      for (const [x, z] of [[376, 410], [508, 380], [430, 430], [462, 432], [508, 432]] as const) {
+      for (const [x, z] of [[496, 420], [504, 428], [372, 392]] as const) table(x, z, [M.food[0] ?? M.plate]);
+      for (const [x, z] of [[370, 408], [508, 382], [430, 430], [462, 432], [508, 432]] as const) {
         placeTree(world, x, top, z, 6, { log: B.trunk, leaves: B.pink }, rng);
         ctx.keepOut(x - 1, z - 1, x + 1, z + 1);
       }
@@ -1097,9 +1220,9 @@ export async function generateLauDai() {
       for (let z = BRIDGE.z1 + 19; z <= 434; z++) for (const x of [GATE_X - 5, GATE_X + 5]) if (!ctx.onPath(x, z) && (z - BRIDGE.z1) % 9 !== 0) put(world, x, top, z, z % 3 === 0 ? B.pink : B.leaves);
       for (let a = 0; a < 40; a++) {
         const t = (a / 40) * Math.PI * 2;
-        put(world, Math.round(484 + Math.cos(t) * 7), top, Math.round(406 + Math.sin(t) * 7), a % 4 === 0 ? B.pink : B.leaves);
+        put(world, Math.round(484 + Math.cos(t) * 7), top, Math.round(414 + Math.sin(t) * 7), a % 4 === 0 ? B.pink : B.leaves);
       }
-      flowerBed(ctx, 481, 403, 6, 6);
+      flowerBed(ctx, 481, 411, 6, 6);
 
       // The terraced rice paddies down the slope, and the golden wheat field beside them.
       for (let x = PADDY.x0; x <= PADDY.x1; x++) {
@@ -1121,11 +1244,16 @@ export async function generateLauDai() {
       }
       ctx.keepOut(WHEAT.x0, WHEAT.z0, WHEAT.x1, WHEAT.z1);
       placeWindmill(world, 600, 490, ctx.surface(600, 490) + 1, { planks: B.planks, log: B.log, roof: B.red, sail: B.white, stone: B.grey, glass: B.glass });
+      widenRoundDoor(world, 600, 490, ctx.surface(600, 490) + 1, 4, 4);
       ctx.landmark('canh-dong-lua-mi', 'Cánh đồng lúa mì', 560, 470, ctx.surface(560, 470) + 1);
 
       // ---------------------------------------------------------------------------------------------------
-      // Chapter 1: the painters' court. A paved court of giant coloured shapes in the middle of the lawns.
-      for (let x = 128; x <= 204; x++) for (let z = 234; z <= 288; z++) if (!ctx.onPath(x, z)) put(world, x, LEVEL, z, B.paver);
+      // Chapter 1: the painters' court. A paved court of giant coloured shapes before the drawing room, from its
+      // door to the gallery's arcade, its flower beds left in earth; the lawn and the veranda lie east of it.
+      const court: Rect = { x0: 100, z0: 212, x1: 206, z1: 292 };
+      const courtBeds: ReadonlyArray<readonly [number, number, number, number]> = [[102, 246, 6, 4], [102, 270, 6, 4], [206, 236, 8, 3], [166, 296, 10, 3], [204, 298, 8, 4]];
+      const inCourtBed = (x: number, z: number): boolean => courtBeds.some(([bx, bz, w, d]) => x >= bx && x < bx + w && z >= bz && z < bz + d);
+      for (let x = court.x0; x <= court.x1; x++) for (let z = court.z0; z <= court.z1; z++) if (!ctx.onPath(x, z) && !inCourtBed(x, z)) put(world, x, LEVEL, z, B.paver);
       const shapes: Array<{ id: string; name: string; at: readonly [number, number] }> = [];
       const cube = (x0: number, z0: number, s: number, id: number): void => box(x0, top, z0, x0 + s - 1, top + s - 1, z0 + s - 1, id);
       cube(134, 240, 4, B.wood);
@@ -1153,7 +1281,7 @@ export async function generateLauDai() {
        * A hall of stone (or any walls) with its door on the south (+z), tall windows of stained glass along
        * both long sides and a gable roof along x rising `rise` a row. Returns the door's column.
        */
-      const hallHouse = (x0: number, z0: number, w: number, d: number, wallH: number, baseY: number, b: { wall: number; roof: number; trim: number }, rise: number, doorW = 2): { doorX: number } => {
+      const hallHouse = (x0: number, z0: number, w: number, d: number, wallH: number, baseY: number, b: { wall: number; roof: number; trim: number; floor: number }, rise: number, doorW = 2, doorH = 3): { doorX: number } => {
         const [x1, z1] = [x0 + w - 1, z0 + d - 1];
         const doorX = x0 + Math.floor(w / 2);
         const stained = [B.blue, B.wood, B.sand, B.glass];
@@ -1164,13 +1292,14 @@ export async function generateLauDai() {
               const ez = z === z0 || z === z1;
               if (!ex && !ez) continue;
               const corner = ex && ez;
-              const door = z === z1 && Math.abs(x - doorX) <= doorW - 1 && y < baseY + 3;
+              const door = z === z1 && Math.abs(x - doorX) <= doorW - 1 && y < baseY + doorH;
               const win = !corner && !door && y >= baseY + 2 && y <= baseY + Math.min(4, wallH - 2) && (ez ? (x - x0) % 4 === 2 : (z - z0) % 4 === 2);
               if (door) continue;
               put(world, x, y, z, win ? (stained[(x + z + y) % stained.length] ?? B.glass) : corner ? b.trim : b.wall);
             }
           }
         }
+        for (let x = x0 + 1; x < x1; x++) for (let z = z0 + 1; z < z1; z++) put(world, x, baseY - 1, z, b.floor);
         const roofHalf = Math.ceil((d + 2) / 2);
         for (let z = z0 - 1; z <= z1 + 1; z++) {
           const step = Math.min(z - (z0 - 1), z1 + 1 - z);
@@ -1186,7 +1315,7 @@ export async function generateLauDai() {
 
       // The drawing room on the north side, its door and stained glass facing the court.
       const studio = { x0: 100, z0: 211, w: 30, d: 14 };
-      const { doorX: studioDoor } = hallHouse(studio.x0, studio.z0, studio.w, studio.d, 5, top, { wall: B.sand, roof: B.red, trim: B.log }, 1);
+      const { doorX: studioDoor } = hallHouse(studio.x0, studio.z0, studio.w, studio.d, 7, top, { wall: B.sand, roof: B.red, trim: B.log, floor: B.planks }, 1, 3, 4);
       const yard = studio.z0 + studio.d + 2;
       ctx.landmark('phong-ve', 'Phòng vẽ', studio.x0 + studio.w / 2, studio.z0 + studio.d / 2);
       ctx.landmark('o-cua-phong-ve', 'Ô cửa phòng vẽ', studioDoor, yard);
@@ -1248,7 +1377,7 @@ export async function generateLauDai() {
       ctx.keepOut(veranda.x0 - 1, veranda.z0 - 1, veranda.x1 + 1, veranda.z1 + 1);
       ctx.landmark('hien-da', 'Hiên đá nhìn ra bãi cỏ', veranda.x0 - 2, 278);
       ctx.landmark('bai-co', 'Bãi cỏ', 196, 300);
-      for (const [x, z, w, d] of [[102, 246, 6, 4], [102, 270, 6, 4], [206, 236, 8, 3], [166, 296, 10, 3], [204, 298, 8, 4]] as const) flowerBed(ctx, x, z, w, d);
+      for (const [x, z, w, d] of courtBeds) flowerBed(ctx, x, z, w, d);
 
       // The picture gallery on the south side: an arcade open to the court, pictures hung from a rail on its
       // back wall, window sills with flowers in its end walls, the teacher's easel and the cutting table inside.
@@ -1264,12 +1393,13 @@ export async function generateLauDai() {
           }
         }
         put(world, x, top + 6, z, B.blue);
+        if (!back && !end) put(world, x, LEVEL, z, B.planks);
       }
       for (let x = gallery.x0 - 1; x <= gallery.x1 + 1; x++) for (const z of [gallery.z0 - 1, gallery.z1 + 1]) put(world, x, top + 6, z, B.blue);
       for (let x = gallery.x0 + 1; x < gallery.x1; x++) put(world, x, top + 4, gallery.z1 - 1, B.log);
       for (let x = gallery.x0 + 3; x < gallery.x1 - 1; x += 4) ctx.propAt(x % 8 < 4 ? M.picture : M.pictureYellow, [x + 0.5, top + 2.2, gallery.z1 - 0.4], 180);
       for (const z of [296, 300, 304]) ctx.propAt(M.flowers[z % 3] ?? M.fence, [gallery.x1 + 1.4, top + 2, z + 0.5], 0);
-      box(gallery.x1 + 1, top + 1, 295, gallery.x1 + 1, top + 1, 305, B.planks);
+      box(gallery.x1 + 1, top + 1, 295, gallery.x1 + 1, top + 1, 305, B.log);
       box(118, top, 300, 118, top + 3, 300, B.log);
       box(122, top, 300, 122, top + 3, 300, B.log);
       box(119, top + 1, 300, 121, top + 3, 300, B.white);
@@ -1286,7 +1416,8 @@ export async function generateLauDai() {
       // ---------------------------------------------------------------------------------------------------
       // The town at the foot of the hill: the little market by the avenue (a paved square, striped stalls
       // with produce, the fountain), fields, orchards and the windmill round it.
-      const market = { x0: 450, z0: 568, x1: 550, z1: 652 };
+      // Its paving runs out to the avenue and the main street, so it opens on both.
+      const market = { x0: 442, z0: 562, x1: 550, z1: 652 };
       for (let x = market.x0; x <= market.x1; x++) for (let z = market.z0; z <= market.z1; z++) if (!ctx.onPath(x, z)) put(world, x, LOW, z, B.path);
       const townFountain = placeFountain(world, 500, 610, LOW + 1, { stone: B.stone, water: B.water });
       ctx.propAt(M.flagWide, townFountain.plinth, 0);
@@ -1304,7 +1435,7 @@ export async function generateLauDai() {
       }
       ctx.keepOut(market.x0 - 2, market.z0 - 2, market.x1 + 2, market.z1 + 2);
       ctx.landmark('cho-nho', 'Chợ nhỏ dưới chân thành', 500, 600, LOW + 1);
-      ctx.landmark('thi-tran', 'Thị trấn dưới chân thành', 380, 610, LOW + 1);
+      ctx.landmark('thi-tran', 'Thị trấn dưới chân thành', 380, 660, LOW + 1);
       // Fields round the town: fenced plots of corn and pumpkins, a windmill over them.
       for (let z = 590; z + 14 <= 786; z += 20) fieldPlot(low, 172, z, 190, z + 14, z % 3 === 0 ? M.pumpkin : M.corn);
       for (const x of [708, 760]) for (let z = 600; z + 14 <= 786; z += 20) {
@@ -1320,13 +1451,15 @@ export async function generateLauDai() {
           ctx.keepOut(x, z, x, z);
         }
       };
+      // The windmill's ground is kept before the orchards are planted round it.
+      ctx.keepOut(739, 634, 751, 646);
       orchard(200, 592, 232, 784);
       orchard(732, 600, 754, 784);
       orchard(708, 470, 784, 590);
       orchard(656, 450, 690, 552);
       placeWindmill(world, 745, 640, LOW + 1, { planks: B.planks, log: B.log, roof: B.red, sail: B.white, stone: B.grey, glass: B.glass });
-      ctx.keepOut(741, 636, 749, 644);
-      ctx.landmark('coi-xay-gio', 'Cối xay gió', 745, 646, LOW + 1);
+      widenRoundDoor(world, 745, 640, LOW + 1, 4, 4);
+      ctx.landmark('coi-xay-gio', 'Cối xay gió', 745, 632, LOW + 1);
       ctx.landmark('canh-dong', 'Cánh đồng', 745, 520, LOW + 1);
 
       // The woodcutters' camp in a clearing of the forest: huts, log piles, barrels; a lookout tower on the hill.
@@ -1337,7 +1470,7 @@ export async function generateLauDai() {
       }
       for (const [x, z] of [[672, 236], [674, 239]] as const) ctx.prop(M.barrel, x, z, 0);
       ctx.landmark('trai-tieu-phu', 'Trại tiều phu', 655, 248);
-      placeTower(world, 745, 190, ctx.surface(745, 190) + 1, 3, 12, { ...towerBlocks, wall: B.planks, trim: B.log }, false);
+      tower(745, 190, ctx.surface(745, 190) + 1, 3, 12, { ...towerBlocks, wall: B.planks, trim: B.log });
       ctx.keepOut(740, 185, 750, 195);
       ctx.landmark('thap-canh-rung', 'Tháp canh trong rừng', 745, 197, ctx.surface(745, 197) + 1);
       ctx.landmark('ho-trong-rung', 'Hồ trong rừng thông', FOREST_POND.x, FOREST_POND.z + FOREST_POND.r + 2);
@@ -1345,11 +1478,29 @@ export async function generateLauDai() {
       // The streets of the districts: cottages facing every road outside the walls, a few hamlets round
       // shared yards, then the verges (lanterns, bushes, flowers) of every way.
       ctx.keepOut(SPAWN.x - 14, SPAWN.z - 14, SPAWN.x + 14, SPAWN.z + 14);
+      // The arrival terminal: a paved bay beside the lane where the buses wait.
+      for (let x = 36; x <= 58; x++) for (let z = 329; z <= 343; z++) put(world, x, LEVEL, z, B.paver);
+      ctx.keepOut(36, 329, 58, 343);
+      // The tracks to the fields, the forest and the windmills are trodden earth, not cobbles (the roads they
+      // leave keep theirs).
+      const roads = ROUTES.filter((r) => !TRACKS.includes(r));
+      for (const track of TRACKS) {
+        for (const cell of pathColumns(track, 1.4)) {
+          const [x = 0, z = 0] = cell.split(',').map(Number);
+          if (roads.some((r) => distanceToPath(r, x, z) < 2.5)) continue;
+          const y = ctx.surface(x, z);
+          if (world.get(x, y, z) === B.path) put(world, x, y, z, B.trail);
+        }
+      }
       for (const route of [COURT_ROAD, NORTH_LANE, WEST_LANE, MEADOW_LANE, LOWLAND_ROAD, FOREST_ROAD, ...TOWN_STREETS]) streetHouses(ctx, route);
       streetHouses(ctx, POSTERN_LANE.slice(2), { sides: [1] });
       hamlet(ctx, 18, 380, 140, 446);
       hamlet(ctx, 250, 150, 286, 240);
-      for (const route of ROUTES) if (route !== HALL_WALK) laneVerge(ctx, route);
+      joinWalks(ctx, ROUTES);
+      for (const route of ROUTES) {
+        if (route === HALL_WALK) continue;
+        for (const stretch of vergeStretches(route, ROUTES.filter((r) => r !== route))) laneVerge(ctx, stretch);
+      }
       ctx.landmark('duong-len-thanh', 'Đường lên thành', GATE_X, 470, ctx.surface(GATE_X, 470) + 1);
 
       // Pines: the forest on the eastern hills, the wood north of the court, a few up the range.
@@ -1396,7 +1547,7 @@ export async function generateLauDai() {
       // Inside the walls the ground is paved (d-03): only the beds and the royal garden keep their grass.
       for (let x = WALLS.x0 + 2; x <= WALLS.x1 - 2; x++) {
         for (let z = WALLS.z0 + 2; z <= WALLS.z1 - 2; z++) {
-          if (world.get(x, LEVEL, z) !== B.grass || inRect(x, z, GARDEN) || beds.some((r) => inRect(x, z, r))) continue;
+          if (world.get(x, LEVEL, z) !== B.grass || inRect(x, z, GARDEN) || inRect(x, z, TRAINING) || beds.some((r) => inRect(x, z, r))) continue;
           put(world, x, LEVEL, z, (x * 3 + z * 7) % 23 === 0 ? B.paver : B.tile);
         }
       }

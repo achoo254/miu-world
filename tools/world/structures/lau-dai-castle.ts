@@ -94,7 +94,8 @@ export function battlements(world: WorldWriter, r: Rect, y: number, id: number):
 
 /**
  * A gable roof over `r` whose ridge runs along z through the middle of x: from `y` at the eaves (one block
- * past the walls) rising one block every two, the gable ends (z0 and z1) filled with `gable`.
+ * past the walls) rising one block every two, the gable ends (z0 and z1) filled with `gable`, and the loft
+ * between the ceiling at `y` and the roof filled with it too, so no hollow space hides under the roof.
  */
 export function gableRoofAlongZ(world: WorldWriter, r: Rect, y: number, b: { roof: number; ridge: number; gable: number }): number {
   const mid = (r.x0 + r.x1) / 2;
@@ -105,9 +106,103 @@ export function gableRoofAlongZ(world: WorldWriter, r: Rect, y: number, b: { roo
     peak = Math.max(peak, yy);
     const ridge = Math.abs(x - mid) < 1;
     for (let z = r.z0 - 1; z <= r.z1 + 1; z++) put(world, x, yy, z, ridge ? b.ridge : b.roof);
-    if (x >= r.x0 && x <= r.x1) for (const z of [r.z0, r.z1]) for (let fy = y; fy < yy; fy++) put(world, x, fy, z, b.gable);
+    if (x >= r.x0 && x <= r.x1) for (let z = r.z0; z <= r.z1; z++) for (let fy = y + 1; fy < yy; fy++) put(world, x, fy, z, b.gable);
+    if (x >= r.x0 && x <= r.x1) for (const z of [r.z0, r.z1]) put(world, x, y, z, b.gable);
   }
   return peak;
+}
+
+/**
+ * Fills the hollow shaft of a doorless round tower (landmarks.ts `placeTower`) solid from `baseY` for
+ * `height` rows: a tower on a curtain wall or a roof is a mass of stone, not a sealed room.
+ */
+export function fillTowerShaft(world: WorldWriter, cx: number, cz: number, baseY: number, radius: number, height: number, id: number): void {
+  for (let y = baseY; y < baseY + height; y++) {
+    for (let dx = -radius; dx <= radius; dx++) for (let dz = -radius; dz <= radius; dz++) if (Math.hypot(dx, dz) <= radius - 0.9) put(world, cx + dx, y, cz + dz, id);
+  }
+}
+
+/** Opens the one-block door a round building cuts on its -z side (a windmill's foot) to three across and `height` high. */
+export function widenRoundDoor(world: WorldWriter, cx: number, cz: number, baseY: number, radius: number, height = 3): void {
+  for (let y = baseY; y < baseY + height; y++) for (let dx = -1; dx <= 1; dx++) for (let dz = -radius - 1; dz < 0; dz++) put(world, cx + dx, y, cz + dz, 0);
+}
+
+export interface RoundRoomBlocks {
+  wall: number;
+  trim: number;
+  floor: number;
+  roof: number;
+  beam: number;
+  /** Below the floor down to the hill's foot. */
+  footing: number;
+}
+
+/**
+ * A round stone room (the watchtower of d-10): a wall `radius` round and `height` high on `baseY`, a plank
+ * floor on a stone footing four deep (the tower stands on a slope), an arched door three wide and four high
+ * on the +x side, wide open windows on the other three sides with sills three high (the child looks out,
+ * she does not climb out), beams under a plank ceiling, and a red cone stepped one block a row over a
+ * cornice. Returns the ceiling's height and the cone's tip.
+ */
+export function roundRoom(world: WorldWriter, cx: number, cz: number, baseY: number, radius: number, height: number, b: RoundRoomBlocks): { ceiling: number; tip: number } {
+  const span = radius + 2;
+  const ceiling = baseY + height;
+  for (let dx = -span; dx <= span; dx++) {
+    for (let dz = -span; dz <= span; dz++) {
+      const d = Math.hypot(dx, dz);
+      const [x, z] = [cx + dx, cz + dz];
+      if (d > radius + 0.4) {
+        if (d <= radius + 1.4) put(world, x, ceiling, z, b.trim);
+        continue;
+      }
+      for (let y = baseY - 4; y < baseY - 1; y++) put(world, x, y, z, b.footing);
+      put(world, x, baseY - 1, z, d > radius - 0.9 ? b.trim : b.floor);
+      put(world, x, ceiling, z, b.trim);
+      if (d <= radius - 0.9) {
+        for (let y = baseY; y < ceiling; y++) put(world, x, y, z, 0);
+        put(world, x, ceiling - 1, z, Math.abs(dz) === 3 || dx === 0 ? b.beam : 0);
+        put(world, x, ceiling, z, b.floor);
+        continue;
+      }
+      const door = dx > 0 && Math.abs(dz) <= 1;
+      // The windows: west, north and south, five across, from three blocks over the floor to under the beams.
+      const across = Math.abs(dx) > Math.abs(dz) ? Math.abs(dz) : Math.abs(dx);
+      const window = !door && across <= 2 && !(dx > 0 && Math.abs(dx) > Math.abs(dz));
+      for (let y = baseY; y < ceiling; y++) {
+        const open = (door && y < baseY + 4) || (window && y >= baseY + 3 && y < ceiling - 2);
+        put(world, x, y, z, open ? 0 : y === baseY || across === 3 ? b.trim : b.wall);
+      }
+    }
+  }
+  // The cone: from one block past the cornice, in a block a row, to a single cap.
+  let r = radius + 1.6;
+  let y = ceiling + 1;
+  while (r > 0.5) {
+    for (let dx = -span; dx <= span; dx++) for (let dz = -span; dz <= span; dz++) if (Math.hypot(dx, dz) <= r + 0.35) put(world, cx + dx, y, cz + dz, b.roof);
+    r -= 1;
+    y++;
+  }
+  put(world, cx, y, cz, b.trim);
+  return { ceiling, tip: y };
+}
+
+/**
+ * A booth for the review show inside the great hall: corner posts three high, a counter one high along its
+ * front (z0) and a shelf two high along its back, and striped cloth valances across the top of front and back
+ * (no roof: the hall's ceiling is over it, and nothing flat up there for the child to be stuck on).
+ */
+export function reviewBooth(world: WorldWriter, x0: number, z0: number, w: number, d: number, baseY: number, b: { log: number; planks: number; stripes: readonly number[] }): void {
+  const [x1, z1] = [x0 + w - 1, z0 + d - 1];
+  for (const [x, z] of [[x0, z0], [x1, z0], [x0, z1], [x1, z1]] as const) for (let y = baseY; y < baseY + 3; y++) put(world, x, y, z, b.log);
+  for (let x = x0 + 1; x < x1; x++) {
+    put(world, x, baseY, z0, b.planks);
+    put(world, x, baseY, z1, b.planks);
+    put(world, x, baseY + 1, z1, b.planks);
+  }
+  for (let x = x0; x <= x1; x++) {
+    const stripe = b.stripes[(x - x0) % b.stripes.length] ?? b.planks;
+    for (const z of [z0, z1]) put(world, x, baseY + 3, z, stripe);
+  }
 }
 
 /** Iron bars across an opening: a bar every other block from `a` to `b`, a rail along the top. */
