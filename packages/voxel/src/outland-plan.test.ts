@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { inCore, OUTLAND_MODELS, type OutlandSpec, type OutlandTheme } from './outland';
-import { outlandGround, outlandSkyline, planOutland, ROAD, sampleColumn, structureExtent, WATER, type ColumnSample, type OutlandPlan } from './outland-plan';
+import { outlandGround, outlandSkyline, planOutland, ROAD, sampleColumn, structureExtent, WATER, type ColumnSample, type OutlandPlan, VILLAGE } from './outland-plan';
 
 const SIZE = [800, 48, 800] as const;
 
@@ -151,7 +151,8 @@ describe('outland plan', () => {
         for (let x = x0; x <= x1; x++) {
           for (let z = z0; z <= z1; z++) {
             sampleColumn(p, x, z, s);
-            expect(s.flags, `${v.name} ${st.kind} at ${x},${z}`).toBe(0);
+            // Village ground only: no road, water, shore or bridge under a building.
+            expect(s.flags & ~VILLAGE, `${v.name} ${st.kind} at ${x},${z}`).toBe(0);
             expect(s.ground, `${v.name} ${st.kind} floor at ${x},${z}`).toBe(st.base - 1);
           }
         }

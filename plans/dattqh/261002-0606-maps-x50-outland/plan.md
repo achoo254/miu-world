@@ -38,7 +38,7 @@ Ngoài phạm vi: bài học mới ở vùng ngoài; phần thưởng khi tìm t
 - Game: `SparseWorld` giữ vùng gần bé, `region.worker.ts` dựng vùng (sinh + file lõi phủ lên), bỏ vùng xa ở cả hai worker; người và vật dựng dần theo khoảng cách; chân trời vùng ngoài ô 64 block, mờ hẳn ở 1.800 block.
 - Lõi bỏ đồi viền, ghi `outland` (seed, chủ đề, độ cao mép, tỉ lệ model); server nhận vị trí −2.560…3.456.
 - E2E: 74 đạt (thêm đi ngang giữ thẳng và camera ra sau; đi từ lõi ra vùng ngoài; mép thế giới); unit 958.
-- Còn chỉnh: sân làng có mảng xám lổn nhổn, vài làng ít nhà; danh mục model một chỗ (phase 7).
+- Sân làng và làng ít nhà (02/10 07:4x): mặt đất trong và quanh sân làng luôn là cỏ (trước đó làng trên đồi bị rắc đá và rêu đá thành mảng xám); mỗi làng muốn 8–16 nhà, sân rộng theo, trung bình 11–12 nhà mỗi làng, 97% nhà đặt vừa, 34–38 làng mỗi map.
 
 ## Nghiệm thu
 

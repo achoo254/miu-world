@@ -474,6 +474,8 @@ interface PreRoad {
   seamWater: boolean;
   /** On a village's level pad (roads do not reshape it). */
   pad: boolean;
+  /** On a village's pad or the slope round it: its yards and lanes are grass, never rock. */
+  village: boolean;
 }
 
 /** The land with its water, village pads and the seam with the core, before the roads are laid on it. */
@@ -485,11 +487,13 @@ function preRoad(plan: OutlandPlan, cx: number, cz: number, out: PreRoad): PreRo
   else if (wd < 1) h = Math.min(h, wl);
   else h = Math.min(h, wl + 1 + Math.max(0, wd - 2.5) * VALLEY_SLOPE);
   out.pad = false;
+  out.village = false;
   for (const id of plan.grid.villages.at(cx, cz)) {
     const v = plan.villages[id];
     if (!v) continue;
     const dv = Math.hypot(cx - v.x, cz - v.z) - v.radius;
     if (dv <= 0) out.pad = true;
+    if (dv < PAD_BLEND) out.village = true;
     if (dv < PAD_BLEND) {
       const k = smoothstep(0, PAD_BLEND, dv);
       h = v.pad * (1 - k) + h * k;
@@ -542,6 +546,8 @@ export const ROAD = 2;
 export const SHORE = 4;
 /** A bridge's railing (on water beside a deck). */
 export const RAIL = 8;
+/** A village's ground: grass, whatever the height (trees may still stand there). */
+export const VILLAGE = 16;
 
 export interface ColumnSample {
   /** y of the top ground block (the bed under water). */
@@ -551,7 +557,7 @@ export interface ColumnSample {
   flags: number;
 }
 
-const prScratch: PreRoad = { h: 0, wd: 0, seamWater: false, pad: false };
+const prScratch: PreRoad = { h: 0, wd: 0, seamWater: false, pad: false, village: false };
 
 /** Everything the blocks of a column follow: its ground, whether it is water, road, shore or bridge. */
 export function sampleColumn(plan: OutlandPlan, x: number, z: number, out: ColumnSample): ColumnSample {
@@ -586,6 +592,7 @@ export function sampleColumn(plan: OutlandPlan, x: number, z: number, out: Colum
       out.deck = Math.round(Math.max(road.h, wl + 1));
     }
   } else if (out.ground <= wl + 1 && (pre.wd < 3.5 || pre.seamWater)) out.flags = SHORE;
+  else if (pre.village) out.flags = VILLAGE;
   return out;
 }
 
@@ -614,6 +621,7 @@ export function fieldAt(plan: OutlandPlan, x: number, z: number): number {
 export function surfaceBlock(plan: OutlandPlan, x: number, z: number, s: ColumnSample): OutlandBlockName {
   if (s.flags & ROAD) return 'path';
   if (s.flags & SHORE) return 'sand';
+  if (s.flags & VILLAGE) return 'grass';
   const f = plan.fields[fieldAt(plan, x, z)];
   if (f) {
     if (f.kind === 'paddy') return (x - f.x0) % 6 === 0 || (z - f.z0) % 6 === 0 || x === f.x1 || z === f.z1 ? 'dirt' : 'grass';
@@ -777,7 +785,7 @@ function forestTree(plan: OutlandPlan, ci: number, cj: number, out: Tree, cache?
   if (hash01(seed, ci, cj, 0) >= treeDensity(plan, x, z)) return false;
   if (!treeRoom(plan, x, z)) return false;
   const s = cache?.(x, z) ?? sampleColumn(plan, x, z, treeSample);
-  if (s.flags !== 0 || s.ground <= plan.waterLevel || s.ground > OUTLAND_MAX_GROUND) return false;
+  if ((s.flags & ~VILLAGE) !== 0 || s.ground <= plan.waterLevel || s.ground > OUTLAND_MAX_GROUND) return false;
   out.x = x;
   out.z = z;
   out.ground = s.ground;
@@ -795,7 +803,7 @@ function orchardTrees(plan: OutlandPlan, f: Field, each: (t: Tree) => void, cach
   for (let x = f.x0 + 2; x <= f.x1 - 2; x += 5) {
     for (let z = f.z0 + 2; z <= f.z1 - 2; z += 5) {
       const s = cache?.(x, z) ?? sampleColumn(plan, x, z, treeSample);
-      if (s.flags !== 0) continue;
+      if ((s.flags & ~VILLAGE) !== 0) continue;
       t.x = x;
       t.z = z;
       t.ground = s.ground;
@@ -1129,8 +1137,9 @@ function siteVillages(plan: OutlandPlan, rng: () => number, coarse: Coarse, vill
       if (coreDistance(plan, x, z) < 190) continue;
       if (villages.some((v) => Math.hypot(v.x - x, v.z - z) < spacing)) continue;
       if (coarseRange(coarse, i, j) > 5) continue;
-      const homes = 4 + Math.floor(rng() * 9);
-      const radius = Math.round(24 + homes * 2);
+      // Eight to sixteen homes round a pad wide enough for their yards (owner, 02/10/2026: villages felt empty).
+      const homes = 8 + Math.floor(rng() * 9);
+      const radius = Math.round(26 + homes * 2);
       const wd = waterDistanceFar(plan, x, z, radius + 160);
       if (wd < radius + PAD_BLEND + 10) continue;
       if (look.nearWater && villages.length < look.villages / 2 && wd > radius + 140) continue;
@@ -1219,7 +1228,7 @@ function roadLine(head: readonly number[], bx: number, bz: number, seed: number,
 function roadProfile(plan: OutlandPlan, pts: Float64Array): Float64Array {
   const n = pts.length / 2;
   const land = new Float64Array(n);
-  const pre: PreRoad = { h: 0, wd: 0, seamWater: false, pad: false };
+  const pre: PreRoad = { h: 0, wd: 0, seamWater: false, pad: false, village: false };
   const wl = plan.waterLevel;
   for (let i = 0; i < n; i++) {
     const h = preRoad(plan, pts[2 * i] ?? 0, pts[2 * i + 1] ?? 0, pre).h;
@@ -1447,7 +1456,7 @@ function buildVillages(plan: OutlandPlan, rng: () => number, structures: Structu
 function layFields(plan: OutlandPlan, rng: () => number, fields: Field[]): void {
   const look = plan.look;
   const b = plan.bounds;
-  const pre: PreRoad = { h: 0, wd: 0, seamWater: false, pad: false };
+  const pre: PreRoad = { h: 0, wd: 0, seamWater: false, pad: false, village: false };
   const orchardLeaves: readonly OutlandBlockName[] = look.leaves.pink > 1 ? ['leaves-pink', 'leaves', 'leaves-pink'] : ['leaves', 'leaves-pink', 'leaves-autumn'];
   for (const v of plan.villages) {
     const count = look.fields[0] + Math.floor(rng() * (look.fields[1] - look.fields[0] + 1));
@@ -1489,7 +1498,7 @@ function layFields(plan: OutlandPlan, rng: () => number, fields: Field[]): void 
 function layClearings(plan: OutlandPlan, rng: () => number, coarse: Coarse, clearings: Clearing[]): void {
   const look = plan.look;
   const b = plan.bounds;
-  const pre: PreRoad = { h: 0, wd: 0, seamWater: false, pad: false };
+  const pre: PreRoad = { h: 0, wd: 0, seamWater: false, pad: false, village: false };
   const add = (c: Clearing): void => {
     clearings.push(c);
     plan.grid.clearings.add(c.x - c.r, c.z - c.r, c.x + c.r, c.z + c.r, clearings.length - 1);
