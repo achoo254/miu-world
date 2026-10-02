@@ -67,3 +67,30 @@ Không đổi `models.json`, `box-props/trung-tam.json`, tệp dựng chung, `ZO
 Status: DONE_WITH_CONCERNS
 Summary: Trung tâm có cửa hàng, chòi, trường, thư viện to hơn và sảnh lâu đài vào được. Cả ba audit đạt (room chỉ còn mái bảng nhiệm vụ là ngoại lệ có lý do; scenery 0/0/0/0; reach đủ), eslint sạch.
 Concerns: `tsc` toàn repo đỏ vì lỗi cú pháp ở `generate-nui-tuyet-map.ts` (map khác). Các khung mock đã chụp lại, nhưng bộ ảnh đầy đủ của map chưa chụp lại.
+
+## Bổ sung 03/10/2026: cửa nhà nối vào mạng đường
+
+`scenery-audit` mới (b90db34) kiểm thêm cửa từng nhà có nằm trên mạng đường không. Sinh lại map với các công cụ mới (90dc2ef, 214e82b) thì còn 3 cửa bị cắt khỏi mạng của chỗ xuất hiện:
+
+- **Thư viện, cửa ở (590,318):** ngõ dừng cách cửa 2 khối, giữa là bậc thềm cỏ. Ván sàn thư viện thành một mạng đường riêng, không nối ra ngoài. Tôi kéo ngõ thư viện tới tận hàng tường trước (`LIBRARY.z0 + d - 1`).
+- **Hai nhà phố trên đường x = 640 trong đồi, (629,136) và (651,136):** có hai lỗi.
+  - Mục 15 phủ đá, rêu, tuyết lên mặt đồi và phủ cả lên đường. Tôi cho mục 15 bỏ qua ô đường.
+  - Đồi lên theo bậc 3 khối (`floor(…/3)*3`), nên chính ngõ cũng có vách 3 khối (z 125→126, 153→154). Trong `shapeLand`, đồi sát đường nay lên liền một khối mỗi bậc. Đất hai bên chuyển dần sang bậc 3 khối trong khoảng 2 tới 10 khối cách đường, nên lối vườn gặp ngõ không còn gờ. Ngõ x = 120 trong đồi cũng được làm êm theo cách này.
+
+Sau khi sửa: lối vào trong đồi đổi nên số nhà trên dốc giảm, và số prop giảm từ 3828 xuống 3788.
+
+| Lệnh | Kết quả |
+| --- | --- |
+| `scenery-audit trung-tam` | 0 cây trên đường, 0 đồ giữa lối, 0 điểm xa đường, 0 điểm hay cửa bị cắt khỏi mạng (trước: 3 cửa) |
+| `room-audit trung-tam` | 284 không gian có mái, 0 thiếu. Bản audit mới (90dc2ef) đã bỏ mái bảng nhiệm vụ khỏi danh sách nhà, nên ngoại lệ cũ không còn. |
+| `reach-audit trung-tam` | mọi mục tới được, chỗ xuất hiện trống |
+| `pnpm vitest run tools/world/zone-maps.test.ts -t "trung-tam"` | 4 đạt, 32 bỏ qua (test của map khác) |
+| `tsc` riêng 3 tệp của map | 0 lỗi |
+| `eslint --max-warnings=0` trên 3 tệp | 0 lỗi, 0 cảnh báo |
+| `assets:manifest` (qua khóa) | 1455 tệp pack, 1783 tệp sinh |
+
+Lượt này không chụp lại ảnh. Đổi chỉ chạm ngõ thư viện và đồi phía bắc, không nằm trong khung mock nào trừ phần núi xa ở d-01.
+
+Status: DONE
+Summary: Ba cửa bị cắt nay nối vào mạng: ngõ thư viện tới tận cửa, đường trong đồi không bị phủ đá và lên liền từng khối. Cả ba audit đều 0 thiếu, test của map đạt, tsc và eslint sạch trên tệp của map.
+Concerns: không

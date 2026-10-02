@@ -27,7 +27,7 @@ import { flowerBed, laneVerge, SAILING_SHIP, STREET_LANTERN, streetHouses } from
 import { placeHouse } from './structures/buildings';
 import { placeFountain, placeLighthouse, placeStall } from './structures/countryside';
 import { placeArchBridge, placeBanner, placePlaza } from './structures/landmarks';
-import type { Point } from './structures/path';
+import { distanceToPath, type Point } from './structures/path';
 import { placeTree, treeHeight } from './structures/tree';
 import { placeStage } from './structures/truong-hoc-plaza';
 import { placeHubShop, placeTeamGazebo } from './structures/trung-tam-buildings';
@@ -123,7 +123,7 @@ const TOWN_ROUTES: Point[][] = [
   [[24, 600], [672, 600]],
   [[120, 120], [120, 786]],
   [[24, 700], [672, 700]],
-  [[548, 416], [548, 360], [LIBRARY.x0 + LIBRARY.w / 2, 360], [LIBRARY.x0 + LIBRARY.w / 2, LIBRARY.z0 + LIBRARY.d + 2]],
+  [[548, 416], [548, 360], [LIBRARY.x0 + LIBRARY.w / 2, 360], [LIBRARY.x0 + LIBRARY.w / 2, LIBRARY.z0 + LIBRARY.d - 1]],
   [[640, 120], [640, 786]],
 ];
 /**
@@ -166,8 +166,11 @@ function shapeLand(x: number, z: number, h: number): number {
   );
   let out = h * (1 - flat) + GROUND * flat;
   if (z < 190) {
-    const m = smoothstep(190, 50, z);
-    out += Math.floor((m * (17 + 9 * fbm(SEED, x / 41, z / 33))) / 3) * 3;
+    // Rocky steps three blocks high, but the lanes climbing into the hills rise smoothly, a block at a time,
+    // the ground either side easing into the steps so the garden walks meet the lane without a ledge.
+    const rise = smoothstep(190, 50, z) * (17 + 9 * fbm(SEED, x / 41, z / 33));
+    const lane = 1 - smoothstep(2, 10, Math.min(...ROUTES.map((r) => distanceToPath(r, x, z))));
+    out += rise * lane + Math.floor(rise / 3) * 3 * (1 - lane);
   }
   if (x >= TERRACE.x0 && x <= TERRACE.x1 && z >= TERRACE.z0 && z <= TERRACE.z1) out = Math.max(out, TERRACE.y);
   if (x >= STEPS.x0 && x <= STEPS.x1 && z > TERRACE.z1 && z <= TERRACE.z1 + 4) out = TERRACE.y - (z - TERRACE.z1);
@@ -846,7 +849,7 @@ function buildHub(ctx: ZoneMapContext): void {
     for (let z = 0; z < TERRACE.z0 + 40; z++) {
       if (x >= TERRACE.x0 && x <= TERRACE.x1 && z >= TERRACE.z0) continue;
       const h = ctx.surface(x, z);
-      if (h < ground + 6) continue;
+      if (h < ground + 6 || ctx.onPath(x, z)) continue; // the lanes up into the hills stay lanes
       set(x, h, z, h >= ground + 17 ? B.snow : (x * 3 + z) % 4 === 0 ? B.moss : B.stone);
     }
   }
