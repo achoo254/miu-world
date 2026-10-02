@@ -1,6 +1,7 @@
 // entities.json written by the map generator and read by the runtime: spawn, interactables (NPCs and
 // the things quests point at), decorative props, landmarks.
 import { z } from 'zod';
+import { outlandSpecSchema } from './outland';
 
 const vec3 = z.tuple([z.number(), z.number(), z.number()]);
 
@@ -138,6 +139,8 @@ export const worldEntitiesSchema = z
     landmarks: z.array(z.object({ id: z.string(), name: z.string(), position: vec3 })),
     /** Absent on maps without ambient life yet. */
     ambients: z.array(ambientSchema).optional(),
+    /** The land round the map, generated while playing (outland.ts); absent on maps that end at their edge. */
+    outland: outlandSpecSchema.optional(),
   })
   .superRefine((entities, ctx) => {
     const seen = new Set<string>();

@@ -1,4 +1,4 @@
-// Deterministic randomness for world generation: same seed → byte-identical map.
+// Deterministic randomness for world generation (tools and the game worker): same seed → same blocks.
 
 /** FNV-1a hash of a string to a uint32 seed. */
 export function hashSeed(text: string): number {
