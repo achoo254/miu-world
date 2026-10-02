@@ -103,7 +103,7 @@ Thế giới là một đảo nổi gồm 11 khu vực, 8 khu chơi được và
 
 MVP chỉ dựng **một khu vực nhỏ** (Khu rừng bí mật, chương 1) cộng với Home Base, đúng nguyên tắc vertical slice. Từ 01/10/2026 người sở hữu cho làm sớm cả 8 map để chứa 70 bài SGK đã có (quyết định 34).
 
-Mỗi khu vực là một bản đồ voxel thiết kế sẵn (mục 10 và 11), không sinh ngẫu nhiên vô hạn; đảo nổi trong mock sẽ được dựng bằng block. Mỗi map chơi được rộng 800 × 48 × 800 khối (đủ chỗ cho nhiều bé chơi cùng nhau sau này, mục 8), chia vùng 128 × 128 tải lười, cảnh xa là một lưới chân trời thô; mỗi quận có người làm nghề thật và vật nuôi sinh hoạt.
+Mỗi khu vực là một bản đồ voxel thiết kế sẵn (mục 10 và 11), không sinh ngẫu nhiên vô hạn; đảo nổi trong mock sẽ được dựng bằng block. Mỗi map chơi được rộng 5.760 × 5.760 khối (gấp ~52 diện tích lõi; đủ chỗ cho nhiều bé chơi cùng nhau sau này, mục 8): lõi 800 × 800 dựng sẵn (bài học, cổng, xe) và vùng ngoài sinh theo seed của map lúc chơi (làng, ruộng, rừng, sông, đường, bến xe về lõi; quyết định 35); chỉ giữ các vùng gần bé, cảnh xa là một lưới chân trời thô; mỗi quận và mỗi làng có người làm nghề thật và vật nuôi sinh hoạt.
 
 ## 5. Hệ thống gameplay
 
@@ -488,6 +488,7 @@ Mọi quyết định của đợt POC và Foundation đã chốt (2026-09-29).
 | 32 | Nhạc nền (2026-10-01, người sở hữu; nguồn nhạc do Jev chọn) | 32 bài thu sẵn CC0 của Komiku, phát ngẫu nhiên không lặp liền theo cảnh: nhà/menu, đi dạo rừng, đi dạo trường, đang làm nhiệm vụ, bài học, hoàn thành nhiệm vụ; nén AAC 96 kbps | Jev chọn nhạc thu sẵn (66%) thay vì nhạc sinh bằng code; pack gốc 77 MB (tổng packs 108/150 MB), bản phát 23 MB; nhạc theo nút Âm thanh, tắt khi ghi âm, nhỏ lại khi đọc to |
 | 33 | Không có mở khóa (2026-10-01, người sở hữu) | Bỏ hẳn khái niệm hoàn thành nhiệm vụ để mở chương hay khu tiếp: bé vào được mọi map đã dựng và làm được mọi nhiệm vụ ngay từ đầu; map chưa dựng hiện "Sắp có", không khóa theo level | Thay mục 4 (cột mở khóa), mục 5 (pha Unlock thành Next, câu "mở khóa gì" thành "tiếp theo đi đâu") và tiêu chí 8 của mục 16; schema quest không còn `unlock`, server không còn trạng thái `locked`, màn hoàn thành không còn màn "Mở khóa!"; trang phục mở theo level/quest vẫn giữ vì là phần thưởng |
 | 34 | Tám map rộng (2026-10-01, người sở hữu; chi tiết do Jev quyết) | 70 bài SGK chia trên 8 map theo chủ điểm của sách, mỗi map 6–12 bài; Trường học là map trung tâm có cổng sang 7 map; mỗi map 800 × 800 khối, tải lười theo vùng; mỗi map đông người và vật nuôi sinh hoạt như đời thật, dựng theo mock của người sở hữu (`designs/the-gioi/`, `designs/<map>/`) | Thay câu "MVP chỉ dựng một khu vực" ở mục 4 cho phần nội dung đã có; id quest giữ nguyên nên tiến độ của bé không mất; plan `plans/dattqh/261001-2106-more-maps-lesson-regroup/`, Jev: `plans/dattqh/reports/jev-261001-2315-map-mocks.md`, `jev-261001-2345-wide-maps.md` |
+| 35 | Map gấp 50 (2026-10-02, người sở hữu; cách làm do Jev quyết) | Mỗi map gấp ~50 diện tích (5.760 × 5.760): lõi 800 × 800 giữ nguyên tọa độ, vùng ngoài sinh lúc chơi theo seed (không file trong git), bài học vẫn ở lõi; vùng ngoài có làng, người, vật nuôi, ruộng, sông, đường và bến xe | Jev: `plans/dattqh/reports/jev-261002-0606-maps-x50.md`; plan `plans/dattqh/261002-0606-maps-x50-outland/` |
 
 ### Còn cần bạn chốt
 

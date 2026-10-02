@@ -4,6 +4,10 @@
 import { mkdir, readFile, readdir, rm } from 'node:fs/promises';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
+import { inCore } from '../../packages/voxel/src/outland';
+import { outlandEntities } from '../../packages/voxel/src/outland-life';
+import { planOutland } from '../../packages/voxel/src/outland-plan';
+import { worldEntitiesSchema } from '../../packages/voxel/src/world-entities';
 import { chromium, type Browser } from '@playwright/test';
 import { createServer, type ViteDevServer } from 'vite';
 import { ASSETS_DIR, REPO_ROOT } from './asset-lib';
@@ -176,7 +180,29 @@ async function zoneMapShots(map: string, region: string): Promise<Shot[]> {
   return shots;
 }
 
+/**
+ * The land round each map (generated while playing, packages/voxel outland-*.ts): the village nearest the
+ * core seen from above, so the owner sees what the child finds once she walks out.
+ */
+async function outlandShots(): Promise<Shot[]> {
+  const shots: Shot[] = [];
+  for (const [map, region] of Object.entries(ZONE_MAPS)) {
+    const entities = worldEntitiesSchema.parse(JSON.parse(await readFile(path.join(ASSETS_DIR, 'generated/world', map, 'entities.json'), 'utf8')));
+    if (!entities.outland) continue;
+    const plan = planOutland(entities.outland, entities.size, entities.waterLevel);
+    const [cx, cz] = [entities.size[0] / 2, entities.size[2] / 2];
+    const village = outlandEntities(plan)
+      .landmarks.filter((l) => !inCore(entities.size, l.position[0], l.position[2]))
+      .sort((a, b) => Math.hypot(a.position[0] - cx, a.position[2] - cz) - Math.hypot(b.position[0] - cx, b.position[2] - cz))[0];
+    if (!village) continue;
+    const [x, y, z] = village.position.map(Math.round) as [number, number, number];
+    shots.push({ file: `${map}-ngoai.png`, query: { shot: `view:${x - 30},${y + 20},${z + 44}:${x},${y},${z}:60`, quality: 'high', region, view: 140 }, viewport: { width: 1280, height: 720 } });
+  }
+  return shots;
+}
+
 export const SHOT_GROUPS: Record<string, () => Promise<Shot[]>> = {
+  outland: outlandShots,
   character: characterShots,
   accessories: accessoryShots,
   map: mapShots,
