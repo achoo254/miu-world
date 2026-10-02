@@ -8,11 +8,12 @@ import { ChallengeFrame, type ChallengeContext } from '../challenge-frame';
 import { Illustration } from '../illustrations/illustration';
 import { DROP_ZONE_ATTR, usePointerDrag } from '../use-pointer-drag';
 import './mechanics.css';
+import { isStringRecord, useDraftState } from '../../quest/step-draft';
 
 type ClassifyStep = Extract<QuestStepPublic, { kind: 'challenge'; mechanic: 'classify' }>;
 
 export function ClassifyChallenge({ step, context, onAnswer }: { step: ClassifyStep; context: ChallengeContext; onAnswer: (answer: StepAnswer) => void }) {
-  const [assignment, setAssignment] = useState<Record<string, string>>({});
+  const [assignment, setAssignment] = useDraftState<Record<string, string>>('assignment', {}, isStringRecord);
   const [selected, setSelected] = useState<string | null>(null);
 
   const place = useCallback((itemId: string, groupId: string | null) => {
@@ -23,7 +24,7 @@ export function ClassifyChallenge({ step, context, onAnswer }: { step: ClassifyS
       return next;
     });
     setSelected(null);
-  }, []);
+  }, [setAssignment]);
   const onDrop = useCallback(
     (itemId: string, zone: string | null) => {
       if (zone?.startsWith('group-')) place(itemId, zone.slice(6));

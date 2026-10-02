@@ -7,17 +7,18 @@ import type { StepAnswer } from '@miu/schema/game';
 import { Icon } from '../kit/art';
 import { ChallengeFrame, type ChallengeContext } from './challenge-frame';
 import { DROP_ZONE_ATTR, usePointerDrag } from './use-pointer-drag';
+import { isStringList, useDraftState } from '../quest/step-draft';
 
 type DragDropStep = Extract<QuestStepPublic, { kind: 'challenge'; mechanic: 'drag-drop' }>;
 
 export function DragDropChallenge({ step, context, onAnswer }: { step: DragDropStep; context: ChallengeContext; onAnswer: (answer: StepAnswer) => void }) {
-  const [placed, setPlaced] = useState<string[]>([]);
+  const [placed, setPlaced] = useDraftState<string[]>('placed', [], isStringList);
   const [selected, setSelected] = useState<string | null>(null);
 
   const move = useCallback((id: string, into: boolean) => {
     setPlaced((prev) => (into ? (prev.includes(id) ? prev : [...prev, id]) : prev.filter((p) => p !== id)));
     setSelected(null);
-  }, []);
+  }, [setPlaced]);
   const onDrop = useCallback((id: string, zone: string | null) => {
     if (zone === 'container') move(id, true);
     else if (zone === 'source') move(id, false);

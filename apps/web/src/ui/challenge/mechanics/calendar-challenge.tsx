@@ -1,10 +1,10 @@
 // Xem lịch: a month page (Monday first, as Vietnamese calendars print it). The step says whether the
 // question wants a day of the month (tap a date) or a weekday (tap a weekday name).
-import { useState } from 'react';
 import { WEEKDAYS, daysInMonth, type QuestStepPublic } from '@miu/schema/content';
 import type { StepAnswer } from '@miu/schema/game';
 import { ChallengeFrame, type ChallengeContext } from '../challenge-frame';
 import './mechanics.css';
+import { isNumberOrNull, useDraftState } from '../../quest/step-draft';
 
 type CalendarStep = Extract<QuestStepPublic, { kind: 'challenge'; mechanic: 'calendar' }>;
 type Weekday = (typeof WEEKDAYS)[number];
@@ -28,8 +28,8 @@ export function monthGrid(month: number, year: number): Array<Array<number | nul
 }
 
 export function CalendarChallenge({ step, context, onAnswer }: { step: CalendarStep; context: ChallengeContext; onAnswer: (answer: StepAnswer) => void }) {
-  const [day, setDay] = useState<number | null>(null);
-  const [weekday, setWeekday] = useState<Weekday | null>(null);
+  const [day, setDay] = useDraftState<number | null>('day', null, isNumberOrNull);
+  const [weekday, setWeekday] = useDraftState<Weekday | null>('weekday', null, (v): v is Weekday | null => v === null || (WEEKDAYS as readonly unknown[]).includes(v));
   const answer: StepAnswer | null = step.ask === 'day' ? (day ? { day } : null) : weekday ? { weekday } : null;
 
   return (

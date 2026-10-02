@@ -5,6 +5,7 @@ import { templateBlanks, type QuestStepPublic } from '@miu/schema/content';
 import type { StepAnswer } from '@miu/schema/game';
 import { ChallengeFrame, type ChallengeContext } from '../challenge-frame';
 import './mechanics.css';
+import { isStringRecord, useDraftState } from '../../quest/step-draft';
 
 type FillBlankStep = Extract<QuestStepPublic, { kind: 'challenge'; mechanic: 'fill-blank' }>;
 
@@ -25,7 +26,7 @@ export function templateParts(template: string): Array<{ text: string } | { blan
 
 export function FillBlankChallenge({ step, context, onAnswer }: { step: FillBlankStep; context: ChallengeContext; onAnswer: (answer: StepAnswer) => void }) {
   const order = templateBlanks(step.template);
-  const [fills, setFills] = useState<Record<string, string>>({});
+  const [fills, setFills] = useDraftState<Record<string, string>>('fills', {}, isStringRecord);
   const [active, setActive] = useState<string | null>(order[0] ?? null);
   const blank = step.blanks.find((b) => b.id === active);
   const optionText = (blankId: string, optionId: string | undefined) =>

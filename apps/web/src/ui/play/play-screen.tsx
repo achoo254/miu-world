@@ -146,7 +146,8 @@ function GameView({
 }
 
 export function PlayScreen() {
-  const { refresh } = useAccount();
+  const { refresh, state: account } = useAccount();
+  const draftOwner = account.status === 'signed-in' ? account.me.activeChildId : null;
   const [store] = useState(createGameStore);
   const [params] = useSearchParams();
   const [data, setData] = useState<PlayerData | null>(null);
@@ -306,7 +307,7 @@ export function PlayScreen() {
             </button>
           </Modal>
         ) : null}
-        {data ? <QuestLayer key={questId ?? 'none'} store={store} data={data} questId={quest?.quest.id ?? null} region={region} onResponse={onResponse} onOverlayChange={setQuestOpen} /> : null}
+        {data ? <QuestLayer key={questId ?? 'none'} store={store} data={data} questId={quest?.quest.id ?? null} region={region} onResponse={onResponse} onOverlayChange={setQuestOpen} draftOwner={draftOwner} /> : null}
         {paused ? (
           <PauseScreen
             onResume={() => setPaused(false)}

@@ -25,6 +25,7 @@ import { FillBlankChallenge } from './mechanics/fill-blank-challenge';
 import { MultiSelectChallenge } from './mechanics/multi-select-challenge';
 import { SpeakStepScreen } from './mechanics/speak-step';
 import { WorksheetStepScreen } from './mechanics/worksheet-step';
+import { isCount, useDraftState } from '../quest/step-draft';
 
 export function hasLearningScreen(step: QuestStepPublic): boolean {
   return step.kind === 'read' || step.kind === 'riddle' || step.kind === 'challenge' || step.kind === 'speak' || step.kind === 'worksheet';
@@ -47,7 +48,7 @@ export function LearningStep({
 }): ReactElement | null {
   const [tryAgain, setTryAgain] = useState<string | null>(null);
   /** Wrong answers on this screen: the hint opens after the first, the answer after the second. */
-  const [wrongTries, setWrongTries] = useState(0);
+  const [wrongTries, setWrongTries] = useDraftState('wrong-tries', 0, isCount);
   const fallback = useRef(freshPicker(TRY_AGAIN_LINES));
   const fill = (text: string): string => say(text, data.character);
 

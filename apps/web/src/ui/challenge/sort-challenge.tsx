@@ -7,18 +7,19 @@ import type { StepAnswer } from '@miu/schema/game';
 import { ChallengeFrame, type ChallengeContext } from './challenge-frame';
 import { Illustration } from './illustrations/illustration';
 import { DROP_ZONE_ATTR, usePointerDrag } from './use-pointer-drag';
+import { isSlotList, useDraftState } from '../quest/step-draft';
 
 type SortStep = Extract<QuestStepPublic, { kind: 'challenge'; mechanic: 'sort' }>;
 
 export function SortChallenge({ step, context, onAnswer }: { step: SortStep; context: ChallengeContext; onAnswer: (answer: StepAnswer) => void }) {
-  const [slots, setSlots] = useState<Array<string | null>>(() => step.items.map(() => null));
+  const [slots, setSlots] = useDraftState<Array<string | null>>('slots', () => step.items.map(() => null), (v): v is Array<string | null> => isSlotList(v) && v.length === step.items.length);
   const [selected, setSelected] = useState<string | null>(null);
   const label = (id: string) => context.fill(step.items.find((i) => i.id === id)?.label ?? id);
 
   const put = useCallback((id: string, slot: number) => {
     setSlots((prev) => prev.map((current, i) => (i === slot ? id : current === id ? null : current)));
     setSelected(null);
-  }, []);
+  }, [setSlots]);
   const onDrop = useCallback(
     (id: string, zone: string | null) => {
       const slot = zone?.startsWith('slot-') ? Number(zone.slice(5)) : NaN;

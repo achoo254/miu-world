@@ -1,6 +1,5 @@
 // Đọc hiểu (skill `doc-hieu`): the passage (the letter, or a textbook text by `textRef`), "Nghe lại"
 // with an on-device voice, then the comprehension question as big choices.
-import { useState } from 'react';
 import type { QuestStepPublic } from '@miu/schema/content';
 import type { StepAnswer } from '@miu/schema/game';
 import { speak, useLocalVoice } from '../dialogue/speech';
@@ -9,6 +8,7 @@ import { buttonClass } from '../kit/button';
 import { ChallengeFrame, type ChallengeContext } from './challenge-frame';
 import { ChoiceList } from './choice-list';
 import './mechanics/mechanics.css';
+import { isStringOrNull, useDraftState } from '../quest/step-draft';
 
 type ReadStep = Extract<QuestStepPublic, { kind: 'read' }>;
 
@@ -24,7 +24,7 @@ export function ReadStepScreen({
   texts: Readonly<Record<string, { title: string; body: string; author?: string; glossary?: ReadonlyArray<{ term: string; meaning: string }> }>>;
   onAnswer: (answer: StepAnswer) => void;
 }) {
-  const [choice, setChoice] = useState<string | null>(null);
+  const [choice, setChoice] = useDraftState<string | null>('choice', null, isStringOrNull);
   const voice = useLocalVoice();
   const ref = step.textRef ? texts[step.textRef] : undefined;
   const passage = context.fill(step.text ?? ref?.body ?? '');

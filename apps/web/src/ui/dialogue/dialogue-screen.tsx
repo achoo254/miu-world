@@ -14,6 +14,7 @@ import { say } from '../player/player-data';
 import { NpcPortrait } from './npc-portrait';
 import { speak, useLocalVoice } from './speech';
 import './dialogue.css';
+import { isCount, useDraftState } from '../quest/step-draft';
 
 type DialogueStep = Extract<QuestStepPublic, { kind: 'dialogue' }>;
 
@@ -43,7 +44,7 @@ export function DialogueScreen({
 }) {
   const voice = useLocalVoice();
   const lines: Line[] = step.lines.map((l) => ({ speaker: say(l.speaker, character), text: say(l.text, character) }));
-  const [index, setIndex] = useState(0);
+  const [index, setIndex] = useDraftState('line', 0, (v): v is number => isCount(v) && v < Math.max(1, step.lines.length));
   const [reply, setReply] = useState<Line | null>(null);
   const [showQuest, setShowQuest] = useState(false);
   const speaker = lines[0]?.speaker ?? '';

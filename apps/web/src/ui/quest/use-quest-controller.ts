@@ -10,6 +10,7 @@ import { ApiError, api, errorMessage } from '../api-client';
 import { say, type PlayerData } from '../player/player-data';
 import { DONE_LINES, FOUND_LINES, NOT_NOW_LINES, fillLine } from './loop-lines';
 import { autoStep, currentStep, hintTarget, stepForTarget, worldState, type ActiveQuestView } from './quest-flow';
+import { clearDraft, readDraft, updateDraft } from './step-draft';
 
 /** How long the world cheers a finished quest before the reward screens (shorter under reduced motion: no confetti, no hops). */
 export const CELEBRATION_MS = 2600;
@@ -50,9 +51,11 @@ interface Options {
   onResponse: (response: StepCompleteResponse) => void;
   /** True while a dialogue or step screen covers the game. */
   onOverlayChange?: (open: boolean) => void;
+  /** The child whose step drafts are kept (step-draft.tsx); none: a reload starts the step afresh. */
+  draftOwner?: string | null;
 }
 
-export function useQuestController({ store, data, questId, onResponse, onOverlayChange }: Options): QuestController {
+export function useQuestController({ store, data, questId, onResponse, onOverlayChange, draftOwner = null }: Options): QuestController {
   const [overlay, setOverlayState] = useState<QuestOverlay>(null);
   const [finished, setFinished] = useState<FinishedQuest | null>(null);
   const [busy, setBusy] = useState(false);
@@ -63,9 +66,9 @@ export function useQuestController({ store, data, questId, onResponse, onOverlay
   const [error, setError] = useState<string | null>(null);
 
   // Latest values for store callbacks, which outlive a render.
-  const latest = useRef({ data, questId, overlay, busy, onResponse, onOverlayChange });
+  const latest = useRef({ data, questId, overlay, busy, onResponse, onOverlayChange, draftOwner });
   useEffect(() => {
-    latest.current = { data, questId, overlay, busy, onResponse, onOverlayChange };
+    latest.current = { data, questId, overlay, busy, onResponse, onOverlayChange, draftOwner };
   });
   /** The pending switch from the world's cheer to the reward screens. */
   const celebration = useRef<number | null>(null);
@@ -84,6 +87,10 @@ export function useQuestController({ store, data, questId, onResponse, onOverlay
   }, []);
   const setOverlay = useCallback(
     (next: QuestOverlay): void => {
+      // The draft remembers whether the step's screen is open, so a reload opens it again.
+      const { draftOwner: owner, questId: id, overlay: was } = latest.current;
+      const marked = next?.step ?? was?.step;
+      if (owner && id && marked) updateDraft(owner, id, marked.id, (d) => ({ ...d, open: next !== null }));
       latest.current.overlay = next;
       setOverlayState(next);
       cover('overlay', next !== null);
@@ -149,6 +156,8 @@ export function useQuestController({ store, data, questId, onResponse, onOverlay
         if (response.correct && (step.kind === 'read' || step.kind === 'riddle' || step.kind === 'challenge')) setCheers((n) => n + 1);
         if (response.correct) {
           if (latest.current.overlay?.step.id === step.id) setOverlay(null);
+          // Done: what was kept of the step is no longer needed.
+          if (latest.current.draftOwner) clearDraft(latest.current.draftOwner, active.quest.id);
           // The next step may start by itself (read the letter, open the gate after the chest).
           const next = autoStep(active.quest, response.quest);
           if (next) window.setTimeout(() => startRef.current(next), 0);
@@ -224,7 +233,14 @@ export function useQuestController({ store, data, questId, onResponse, onOverlay
       if (!active) return;
       syncWorld(active.quest, active.progress);
       const next = autoStep(active.quest, active.progress);
-      if (next) startStep(next);
+      if (next) {
+        startStep(next);
+        return;
+      }
+      // A reload while a step's screen was open opens it again where the child was (step-draft.tsx).
+      const owner = latest.current.draftOwner;
+      const on = currentStep(active.quest, active.progress);
+      if (owner && on && on.kind !== 'search' && readDraft(owner, active.quest.id, on.id)?.open) startStep(on);
     };
     if (ready) onReady();
     return store.subscribe(() => {

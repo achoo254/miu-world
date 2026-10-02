@@ -6,6 +6,7 @@ import type { QuestStepPublic } from '@miu/schema/content';
 import type { StepAnswer } from '@miu/schema/game';
 import { ChallengeFrame, type ChallengeContext } from '../challenge-frame';
 import './mechanics.css';
+import { isPairList, useDraftState } from '../../quest/step-draft';
 
 type ConnectStep = Extract<QuestStepPublic, { kind: 'challenge'; mechanic: 'connect' }>;
 type Edge = [string, string];
@@ -18,7 +19,7 @@ export function toggleEdge(edges: readonly Edge[], edge: Edge): Edge[] {
 }
 
 export function ConnectChallenge({ step, context, onAnswer }: { step: ConnectStep; context: ChallengeContext; onAnswer: (answer: StepAnswer) => void }) {
-  const [edges, setEdges] = useState<Edge[]>([]);
+  const [edges, setEdges] = useDraftState<Edge[]>('edges', [], isPairList);
   const [from, setFrom] = useState<string | null>(null);
   const xs = step.points.map((p) => p.x);
   const ys = step.points.map((p) => p.y);
