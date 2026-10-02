@@ -48,9 +48,9 @@ export class CameraRig {
     this.yaw = yaw;
   }
 
-  /** Right/forward basis on the ground plane for camera-relative movement. */
-  basis(): { right: [number, number]; forward: [number, number] } {
-    return { right: [Math.cos(this.yaw), -Math.sin(this.yaw)], forward: [-Math.sin(this.yaw), -Math.cos(this.yaw)] };
+  /** Right/forward basis on the ground plane for camera-relative movement (of the view at `yaw`, default now). */
+  basis(yaw = this.yaw): { right: [number, number]; forward: [number, number] } {
+    return { right: [Math.cos(yaw), -Math.sin(yaw)], forward: [-Math.sin(yaw), -Math.cos(yaw)] };
   }
 
   orbit(dx: number, dy: number): void {

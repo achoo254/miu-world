@@ -4,6 +4,7 @@
 // fetched ahead of the camera. Beyond the patches, a coarse horizon mesh (horizon-mesh.ts) keeps the world
 // looking wide. An infinite view distance (still review shots) loads and meshes the whole map.
 import { BufferAttribute, BufferGeometry, Group, Mesh, Vector3, type Camera, type ColorRepresentation, type Material } from 'three';
+import type { VoxelWorld } from '@miu/voxel/chunk-format';
 import type { QuadGeometry } from '@miu/voxel/greedy-mesher';
 import { REGION_BLOCKS } from '@miu/voxel/region-format';
 import { createBlockMaterial, createWaterMaterial, type SeeThroughUniforms, type WaterUniforms } from './block-material';
@@ -78,13 +79,14 @@ function workerSource(data: WorldData, onPatch: (patch: PatchGeometry) => void, 
     onPatch(event.data.patch);
   };
   const post = (request: MesherRequest, transfer: Transferable[] = []): void => worker.postMessage(request, transfer);
-  post({ type: 'init', chunks: data.world.chunks, blocks: data.atlas.blocks, atlasSize: data.atlas.size });
-  const sendRegion = (rx: number, rz: number, bytes: Uint8Array): void => {
-    const copy = bytes.slice();
-    post({ type: 'region', rx, rz, bytes: copy }, [copy.buffer]);
+  post({ type: 'init', bounds: data.bounds, height: data.world.height, blocks: data.atlas.blocks, atlasSize: data.atlas.size });
+  const sendRegion = (rx: number, rz: number, region: VoxelWorld): void => {
+    const copy = region.data.slice();
+    post({ type: 'region', rx, rz, data: copy }, [copy.buffer]);
   };
-  // Regions load only once the renderer exists (it starts the fetching), so the worker sees every one.
+  // Regions load only once the renderer exists (it starts the loading), so the worker sees every one.
   data.regions.onRegion(sendRegion);
+  data.regions.onDrop((rx, rz) => post({ type: 'drop', rx, rz }));
   return {
     usedWorker: true,
     request: (px, pz) => post({ type: 'patch', px, pz }),
@@ -122,9 +124,15 @@ export async function createWorldRenderer(data: WorldData, options: { sky: Color
   const horizon: HorizonMesh | null = options.horizon ? await createHorizonMesh(data, options.sky) : null;
   if (horizon) group.add(horizon.mesh);
 
-  const [sx, , sz] = data.world.size;
-  const patchesX = Math.ceil(sx / PATCH_BLOCKS);
-  const patchesZ = Math.ceil(sz / PATCH_BLOCKS);
+  // Patches of the whole world, and of the core alone (an infinite view, still shots, draws only the core).
+  const patchRange = (b: { x0: number; z0: number; x1: number; z1: number }): [number, number, number, number] => [
+    Math.floor(b.x0 / PATCH_BLOCKS),
+    Math.floor(b.z0 / PATCH_BLOCKS),
+    Math.ceil(b.x1 / PATCH_BLOCKS) - 1,
+    Math.ceil(b.z1 / PATCH_BLOCKS) - 1,
+  ];
+  const worldPatches = patchRange(data.bounds);
+  const corePatches = patchRange(data.core);
   const patches = new Map<string, Patch>();
   const inFlight = new Set<string>();
   const sentAt = new Map<string, number>();
@@ -186,11 +194,14 @@ export async function createWorldRenderer(data: WorldData, options: { sky: Color
     const reach = viewDistance + KEEP_MARGIN;
     const wanted: Array<{ px: number; pz: number; d: number }> = [];
     let complete = true;
-    const r = Number.isFinite(reach) ? Math.ceil(reach / PATCH_BLOCKS) + 1 : Math.max(patchesX, patchesZ);
+    const r = Number.isFinite(reach) ? Math.ceil(reach / PATCH_BLOCKS) + 1 : 0;
     const cpx = Math.floor(x / PATCH_BLOCKS);
     const cpz = Math.floor(z / PATCH_BLOCKS);
-    for (let pz = Math.max(0, cpz - r); pz <= Math.min(patchesZ - 1, cpz + r); pz++) {
-      for (let px = Math.max(0, cpx - r); px <= Math.min(patchesX - 1, cpx + r); px++) {
+    const [ax, az, bx, bz] = Number.isFinite(reach)
+      ? [Math.max(worldPatches[0], cpx - r), Math.max(worldPatches[1], cpz - r), Math.min(worldPatches[2], cpx + r), Math.min(worldPatches[3], cpz + r)]
+      : corePatches;
+    for (let pz = az; pz <= bz; pz++) {
+      for (let px = ax; px <= bx; px++) {
         const d = distanceTo(px, pz, x, z);
         if (d > reach) continue;
         const patch = patches.get(`${px},${pz}`);
@@ -227,6 +238,8 @@ export async function createWorldRenderer(data: WorldData, options: { sky: Color
     if (lastFetch && Math.hypot(lastFetch[0] - x, lastFetch[1] - z) < PATCH_BLOCKS) return;
     lastFetch = [x, z];
     void data.regions.loadAround(x, z, Number.isFinite(viewDistance) ? viewDistance + PREFETCH : Infinity);
+    // Regions well behind are dropped (their patches went already): the blocks held stay a few dozen MB.
+    if (Number.isFinite(viewDistance)) data.regions.dropBeyond(x, z, viewDistance + PREFETCH + REGION_BLOCKS);
   };
 
   return {

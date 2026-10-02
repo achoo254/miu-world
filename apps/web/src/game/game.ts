@@ -43,6 +43,7 @@ import { readQuality } from './quality';
 import { disposeSceneGraph } from './scene/dispose-scene';
 import { SKY_HORIZON, createSky, skyColours } from './scene/sky';
 import { createWorldEvents } from './scene/world-events';
+import { HORIZON_REACH } from './world/horizon-mesh';
 import { loadWorldData } from './world/world-data';
 import { createWorldRenderer } from './world/world-renderer';
 import './game.css';
@@ -55,8 +56,10 @@ const LOADING_STEPS = 5;
 const SEE_FOCUS_HEIGHT = 0.9;
 /** After the child drags the view, the camera keeps her angle this long before settling behind her again. */
 const LOOK_HOLD_S = 1;
-/** Share of the autopilot's turning pace used while the child walks: a calm swing, not a snap. */
-const FOLLOW_STRENGTH = 0.5;
+/** Share of the autopilot's turning pace used while the child walks: the view swings round behind her. */
+const FOLLOW_STRENGTH = 0.8;
+/** Turning the stick further than this (radians) takes a new walking direction from the view as it is now. */
+const STICK_TURN = 0.45;
 
 export interface GameOptions {
   store: GameStore;
@@ -263,7 +266,10 @@ export class Game {
     stepLoaded();
     const loader = new GuardedGltfLoader(registry);
     const mapId = mapForRegion(REGION_CATALOG, this.options.region ?? '');
-    const data = await loadWorldData(registry, mapId);
+    // A still picture of the whole core (a review shot without `view=`) needs no outer land round it.
+    const wholeCoreShot = params.has('shot') && !(Number(params.get('view')) > 0);
+    const data = await loadWorldData(registry, mapId, { withOutland: !wholeCoreShot });
+    this.cleanups.push(() => data.regions.dispose());
     if (this.disposed) return;
     stepLoaded();
     const world = await createWorldRenderer(data, { sky: SKY_HORIZON, horizon: quality.horizon });
@@ -273,16 +279,17 @@ export class Game {
     scene.add(world.group);
     this.cleanups.push(() => world.dispose());
     // The horizon reaches across the whole map: the camera sees that far, the sky dome stands beyond it.
-    const [sx, , sz] = data.world.size;
+    const [sx, , sz] = data.entities.size;
     if (quality.horizon) {
-      camera.far = Math.max(camera.far, Math.hypot(sx, sz) + 40);
+      // As far as the horizon is drawn: across the core, or out over the land round it until it is all sky.
+      camera.far = Math.max(camera.far, (data.outland ? HORIZON_REACH : Math.hypot(sx, sz)) + 40);
       camera.updateProjectionMatrix();
       sky.scale.setScalar(camera.far / (quality.viewDistance + 20) * 0.95);
     }
 
     const blocks = blockLookup(data.atlas.blocks);
     const solid: SolidAt = (x, y, z) => {
-      if (x < 0 || z < 0 || x >= sx || z >= sz || y < 0) return true; // invisible walls at the map edge
+      if (y < 0 || !data.world.contains(x, z)) return true; // invisible walls at the world's edge
       // A region still on its way is a wall too: the child never walks off into blocks not there yet.
       if (!data.regions.loadedAt(x, z)) return true;
       return blocks(data.world.get(x, y, z))?.solid ?? false;
@@ -324,6 +331,7 @@ export class Game {
         reduced: reducedMotion,
         playerName: this.options.playerName ?? 'bạn',
         ground,
+        start: [start[0] ?? 0, start[2] ?? 0],
       }),
     ]);
     if (this.disposed) return;
@@ -373,7 +381,7 @@ export class Game {
       controller.position.set(x - offset, y, z - offset);
     } else if (spawnAt === null && this.options.savedSpot) {
       // Back where the child left off; any `spawnAt` (even `spawn`) starts where the URL says instead.
-      const at = usableSpot(this.options.savedSpot.position, solid, liquid, data.world.size);
+      const at = usableSpot(this.options.savedSpot.position, solid, liquid, data.bounds, data.world.height);
       if (at) {
         controller.teleport(at);
         controller.facing = this.options.savedSpot.facing;
@@ -486,6 +494,8 @@ export class Game {
     let firstFrame = true;
     /** Seconds since the child last dragged the view. */
     let sinceLook = Infinity;
+    /** The view's yaw and the stick's angle when the child set her direction: she keeps walking that way while the view swings round behind her. */
+    let heading: { yaw: number; stick: number } | null = null;
     const seeFocus = new Vector3();
 
     this.loop = () => {
@@ -507,11 +517,18 @@ export class Game {
         // turns toward where she goes. Only walking forward turns it (a sideways or backward step would make
         // the camera chase her round in circles), and not within a moment of her own drag.
         sinceLook = state.lookX !== 0 || state.lookY !== 0 ? 0 : sinceLook + dt;
-        if (sinceLook > LOOK_HOLD_S && Math.hypot(state.moveX, state.moveY) > 0.1) {
+        const moving = Math.hypot(state.moveX, state.moveY) > 0.1;
+        // The stick sets a direction relative to the view at that moment, and she keeps it while the view
+        // turns to sit behind her (owner, 02/10/2026: the camera faces the way she goes, whichever way she
+        // pushes); turning the stick, or the child's own drag, takes a new direction from the view as it is.
+        const stick = Math.atan2(state.moveX, state.moveY);
+        if (!moving) heading = null;
+        else if (!heading || sinceLook === 0 || Math.abs(Math.atan2(Math.sin(stick - heading.stick), Math.cos(stick - heading.stick))) > STICK_TURN) heading = { yaw: rig.yaw, stick };
+        if (sinceLook > LOOK_HOLD_S && moving) {
           rig.recenter(dt);
-          if (state.moveY > 0.1) rig.follow(controller.facing, dt, FOLLOW_STRENGTH * state.moveY);
+          rig.follow(controller.facing, dt, FOLLOW_STRENGTH);
         }
-        const { right, forward } = rig.basis();
+        const { right, forward } = rig.basis(heading?.yaw);
         intent = {
           dirX: right[0] * state.moveX + forward[0] * state.moveY,
           dirZ: right[1] * state.moveX + forward[1] * state.moveY,

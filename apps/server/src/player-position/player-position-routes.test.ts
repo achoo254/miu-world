@@ -49,6 +49,12 @@ describe('player positions', () => {
     await agent.put('/api/player-positions').send({ ...forest, extra: true }).expect(400);
   });
 
+  it('keeps a spot out on the land round the map (negative and far coordinates)', async () => {
+    const { agent } = await playingChild();
+    for (const position of [[-2400.5, 14, 3300.25], [3200, 15, -2000]]) await agent.put('/api/player-positions').send({ ...forest, position }).expect(204);
+    await agent.put('/api/player-positions').send({ ...forest, position: [-4000, 14, 10] }).expect(400);
+  });
+
   it('needs a signed-in parent with a selected child', async () => {
     await app.agent().get('/api/player-positions').expect(401);
     const { agent } = await parentWithChild(app);

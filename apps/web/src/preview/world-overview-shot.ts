@@ -21,7 +21,7 @@ export async function renderWorldOverview(mapId: string): Promise<void> {
   document.body.appendChild(renderer.domElement);
 
   const registry = await AssetRegistry.load();
-  const data = await loadWorldData(registry, mapId);
+  const data = await loadWorldData(registry, mapId, { withOutland: false });
   const world = await createWorldRenderer(data, { sky: '#dff2ff', horizon: false });
   world.setViewDistance(Infinity);
   await world.settle(0, 0);
@@ -36,7 +36,7 @@ export async function renderWorldOverview(mapId: string): Promise<void> {
   // Same light as the game (game.ts), with the sun over the whole map instead of over the player.
   const scene = new Scene();
   scene.add(new HemisphereLight('#ffffff', '#8fa37a', 1.9));
-  const [sx, sy, sz] = data.world.size;
+  const [sx, sy, sz] = data.entities.size;
   const sun = new DirectionalLight('#fff6e0', 1.7);
   sun.position.set(sx / 2 + 54, sy + 60, sz / 2 + 36);
   sun.target.position.set(sx / 2, 0, sz / 2);

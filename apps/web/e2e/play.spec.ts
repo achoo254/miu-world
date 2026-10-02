@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { expect, test, type Page } from '@playwright/test';
 import { freshChild } from './quest-api';
 import { readStats, waitReady } from './stats';
 
@@ -34,7 +34,33 @@ test('loads /play cleanly within the desktop budget and only talks to its own or
   await expect(page.locator('canvas')).toHaveCount(1);
 });
 
-test('walks, runs and stays on the ground; the rim keeps the player inside the map', async ({ page }) => {
+test('walking sideways, the child keeps a straight way while the view swings round behind her', async ({ page }) => {
+  await page.goto('/play?quality=low&spawnAt=spawn');
+  await waitReady(page);
+  const at = async (): Promise<[number, number]> => {
+    const { player } = await readStats(page);
+    return [player[0] ?? 0, player[2] ?? 0];
+  };
+  const startYaw = (await readStats(page)).cameraYaw;
+  await page.keyboard.down('KeyD');
+  await page.waitForTimeout(1200);
+  const a = await at();
+  await page.waitForTimeout(1500);
+  const b = await at();
+  await page.waitForTimeout(1500);
+  const c = await at();
+  const { cameraYaw } = await readStats(page);
+  await page.keyboard.up('KeyD');
+  const heading = (p: [number, number], q: [number, number]): number => Math.atan2(q[0] - p[0], q[1] - p[1]);
+  const turn = (x: number, y: number): number => Math.abs(Math.atan2(Math.sin(x - y), Math.cos(x - y)));
+  // A straight way, not a circle, and a quarter turn of the view.
+  expect(turn(heading(a, b), heading(b, c))).toBeLessThan(0.35);
+  expect(turn(cameraYaw, startYaw)).toBeGreaterThan(1);
+  // The camera looks the way she walks (its forward is (-sin yaw, -cos yaw)).
+  expect(turn(Math.atan2(-Math.sin(cameraYaw), -Math.cos(cameraYaw)), heading(b, c))).toBeLessThan(0.5);
+});
+
+test('walks, runs and stays on the ground', async ({ page }) => {
   await page.goto('/play?quality=low&spawnAt=spawn');
   await waitReady(page);
   const start = (await readStats(page)).player;
@@ -54,16 +80,33 @@ test('walks, runs and stays on the ground; the rim keeps the player inside the m
   const after = await readStats(page);
   expect(after.onGround).toBe(true);
   expect(after.player[1]).toBeGreaterThan(5);
+});
 
-  // Hold "back" long enough to reach the map edge: the invisible wall must stop the player.
-  await page.keyboard.down('KeyS');
-  await page.waitForTimeout(6000);
-  await page.keyboard.up('KeyS');
-  const edge = await readStats(page);
-  for (const axis of [0, 2] as const) {
-    expect(edge.player[axis]).toBeGreaterThanOrEqual(0);
-    expect(edge.player[axis]).toBeLessThanOrEqual(192); // the forest is 192 blocks across
-  }
+/** Holds the movement key that points most along (dx, dz) on the ground, judged from the camera's yaw. */
+async function walkToward(page: Page, dx: number, dz: number, ms: number): Promise<void> {
+  const yaw = (await readStats(page)).cameraYaw;
+  const keys = { KeyW: [-Math.sin(yaw), -Math.cos(yaw)], KeyS: [Math.sin(yaw), Math.cos(yaw)], KeyD: [Math.cos(yaw), -Math.sin(yaw)], KeyA: [-Math.cos(yaw), Math.sin(yaw)] } as const;
+  const [key] = Object.entries(keys).sort((p, q) => q[1][0] * dx + q[1][1] * dz - (p[1][0] * dx + p[1][1] * dz))[0] ?? ['KeyW'];
+  await page.keyboard.down(key);
+  await page.waitForTimeout(ms);
+  await page.keyboard.up(key);
+  await page.waitForTimeout(300);
+}
+
+test('walks off the map onto the land round it without a wall, and the edge of the world holds', async ({ page }) => {
+  // On the forest's west edge: the outer land carries on, ground under her feet.
+  await page.goto('/play?quality=low&spawnAt=3,32,400');
+  await waitReady(page);
+  await walkToward(page, -1, 0, 4000);
+  const out = await readStats(page);
+  expect(out.player[0]).toBeLessThan(-3);
+  expect(out.onGround).toBe(true);
+  expect(out.player[1]).toBeGreaterThan(5);
+  // Near the far edge of the outer land, the invisible wall stops her.
+  await page.goto('/play?quality=low&spawnAt=-2424,40,400');
+  await waitReady(page);
+  await walkToward(page, -1, 0, 4000);
+  expect((await readStats(page)).player[0]).toBeGreaterThanOrEqual(-2432);
 });
 
 test.describe('a child of its own', () => {

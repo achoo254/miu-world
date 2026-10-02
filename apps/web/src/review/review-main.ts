@@ -193,13 +193,14 @@ function renderGallery(generated: string[]): void {
   const previewGroup = (map: string): string => (map === 'khu-rung-bi-mat' ? 'forest-ch1' : map);
   for (const m of WORLD_MAPS) {
     const mocks = Object.entries(MAP_MOCKS).filter(([key]) => m.mocks.some((prefix) => key.includes(`/designs/${prefix}`))).map(([, url]) => url);
-    const shots = reviewPaths.filter((x) => x.includes(`/review/${previewGroup(m.map)}/`)).sort();
+    // The map's own pictures, then the village nearest it on the land round it (the outer land).
+    const shots = [...reviewPaths.filter((x) => x.includes(`/review/${previewGroup(m.map)}/`)).sort(), ...reviewPaths.filter((x) => x.endsWith(`/review/outland/${previewGroup(m.map)}-ngoai.png`))];
     const block = el('div', { className: 'map-block' }, [
       el('h3', { textContent: m.name }),
       el('p', { className: 'sub', textContent: m.note }),
       el('div', { className: 'grid grid-4' }, [
         ...mocks.map((url) => el('figure', {}, [el('img', { src: url, alt: `Mock ${m.name}`, loading: 'lazy', decoding: 'async' }), el('figcaption', { textContent: 'Mock' })])),
-        ...shots.map((p) => figure(p, `Trong game · ${name(p).replace(`${previewGroup(m.map)}-`, '')}`)),
+        ...shots.map((p) => figure(p, `Trong game · ${name(p).replace(`${previewGroup(m.map)}-`, '').replace(/^ngoai$/, 'làng ở vùng ngoài')}`)),
       ]),
     ]);
     byId('world-maps').append(block);

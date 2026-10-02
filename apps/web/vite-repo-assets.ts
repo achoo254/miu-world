@@ -91,6 +91,9 @@ export async function runtimeAssetPaths(
         if (Array.isArray(held)) for (const h of held) if (typeof h === 'string' && !h.startsWith('built:')) models.add(h);
       }
     }
+    // The land round a map is placed while playing, from the models its spec lists (packages/voxel outland.ts).
+    const outland = entities.outland as { models?: Record<string, unknown> } | undefined;
+    for (const model of Object.keys(outland?.models ?? {})) models.add(model);
   }
   for (const model of models) {
     wanted.add(model);

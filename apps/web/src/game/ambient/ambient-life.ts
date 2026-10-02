@@ -2,7 +2,7 @@
 // about their day, each driven by an AmbientActor. Only the nearest few are drawn and run (the rest
 // are hidden and frozen) so the draw-call budget holds; villagers answer each other; the child can
 // tap one to chat or pet it. Nothing here talks to the server: ambient life never rewards anything.
-import { AnimationMixer, Box3, BoxGeometry, Group, Mesh, MeshLambertMaterial, Vector3, type AnimationAction, type AnimationClip, type Camera, type Object3D } from 'three';
+import { AnimationMixer, Box3, BoxGeometry, Group, Mesh, MeshLambertMaterial, Vector3, type AnimationAction, type AnimationClip, type Camera, type Object3D, type SkinnedMesh } from 'three';
 import { freshPicker, type FreshPicker } from '@miu/quest/pick-fresh';
 import type { Ambient } from '@miu/voxel/world-entities';
 import type { GuardedGltfLoader } from '../asset-loader';
@@ -24,6 +24,11 @@ export const AMBIENT_LIMIT: Readonly<Record<string, number>> = { low: 6, mid: 9,
 const CALL_CEILING = 144;
 /** Beyond this distance nobody is drawn, however few are near. */
 const DRAW_RADIUS = 36;
+/** Models of those further than this are let go (built again on return); those this near the start are built before the first frame. */
+const RELEASE_RADIUS = 120;
+const PRELOAD_RADIUS = 80;
+/** Where the tap prompt floats over a character whose model is not built yet. */
+const DEFAULT_LABEL_HEIGHT = 2.4;
 /** How often the nearest set is chosen again (s). */
 const RESELECT_SECONDS = 0.5;
 /** Bubbles only show when the child is this close: nobody talks to an empty forest. */
@@ -84,6 +89,8 @@ export interface AmbientOptions {
   playerName: string;
   /** Standing height over a column, searched near `nearY` so a walker never lands on a canopy. */
   ground(x: number, z: number, nearY: number): number;
+  /** Where the child starts (x, z): the characters round it are built before the first frame. */
+  start?: readonly [number, number];
 }
 
 interface Visual {
@@ -156,47 +163,91 @@ export async function loadAmbientLife(loader: GuardedGltfLoader, ambients: reado
   /** Seconds the celebration still lets bubbles show next to a quest target. */
   let cheering = 0;
 
-  const members = await Promise.all(
-    ambients.map(async (def) => {
-      const spec = ROUTINES[def.routine];
-      const random = seededRandom(def.id);
-      const visual = await buildVisual(loader, def, options.shadows);
-      // Its own copy of the spots: a visit adds one next to the child.
-      const actor = new AmbientActor(def.id, spec, def.position, (def.yaw * Math.PI) / 180, { ...def.spots }, random);
-      const bubble = createSpeechBubble();
-      bubble.sprite.position.y = visual.labelHeight;
-      visual.root.add(bubble.sprite);
-      visual.root.visible = false;
-      group.add(visual.root);
-      const pickers = new Map<string, FreshPicker<string>>();
-      const line = (pool: string): string | null => {
-        const lines = AMBIENT_LINES[pool];
-        if (!lines?.length) return null;
-        let picker = pickers.get(pool);
-        if (!picker) pickers.set(pool, (picker = freshPicker(lines, random)));
-        return picker.next().replaceAll('{name}', options.playerName);
-      };
-      const context: { -readonly [K in keyof ActorContext]: ActorContext[K] } = {
-        player: null,
-        reduced: options.reduced,
-        groundY: (x, z) => options.ground(x, z, actor.position[1]),
-        clipSeconds: (clip) => visual.clips.get(clip)?.getClip().duration ?? 0,
-      };
-      const target: AmbientTarget & { position: number[]; available: boolean } = {
-        id: def.id,
-        name: def.name,
-        label: spec.label,
-        position: [...def.position],
-        radius: spec.reach,
-        available: false,
-        labelHeight: visual.labelHeight + 0.9, // above the speech bubble's tail
-      };
-      return { def, spec, actor, visual, bubble, line, context, target, current: '', time: random() * 10, active: false };
-    }),
-  );
+  // Every villager and animal has its actor from the start (cheap); its model is built only once the child
+  // comes near (the nearest few draw at a time anyway) and let go again when far behind, so a map with
+  // hundreds of them round its outer land costs no more than the few in view.
+  const members = ambients.map((def) => {
+    const spec = ROUTINES[def.routine];
+    const random = seededRandom(def.id);
+    // Its own copy of the spots: a visit adds one next to the child.
+    const actor = new AmbientActor(def.id, spec, def.position, (def.yaw * Math.PI) / 180, { ...def.spots }, random);
+    const bubble = createSpeechBubble();
+    const pickers = new Map<string, FreshPicker<string>>();
+    const line = (pool: string): string | null => {
+      const lines = AMBIENT_LINES[pool];
+      if (!lines?.length) return null;
+      let picker = pickers.get(pool);
+      if (!picker) pickers.set(pool, (picker = freshPicker(lines, random)));
+      return picker.next().replaceAll('{name}', options.playerName);
+    };
+    const target: AmbientTarget & { position: number[]; available: boolean; labelHeight: number } = {
+      id: def.id,
+      name: def.name,
+      label: spec.label,
+      position: [...def.position],
+      radius: spec.reach,
+      available: false,
+      labelHeight: DEFAULT_LABEL_HEIGHT,
+    };
+    const member = {
+      def,
+      spec,
+      actor,
+      visual: null as Visual | null,
+      building: null as Promise<void> | null,
+      bubble,
+      line,
+      context: null as unknown as { -readonly [K in keyof ActorContext]: ActorContext[K] },
+      target,
+      current: '',
+      time: random() * 10,
+      active: false,
+    };
+    member.context = {
+      player: null,
+      reduced: options.reduced,
+      groundY: (x, z) => options.ground(x, z, actor.position[1]),
+      clipSeconds: (clip) => member.visual?.clips.get(clip)?.getClip().duration ?? 0,
+    };
+    return member;
+  });
   type Member = (typeof members)[number];
 
+  /** Builds a member's model (once at a time); it joins the scene hidden, the next selection shows it. */
+  const ensureVisual = (member: Member): Promise<void> => {
+    if (member.visual) return Promise.resolve();
+    member.building ??= buildVisual(loader, member.def, options.shadows).then((visual) => {
+      member.building = null;
+      visual.root.visible = false;
+      member.bubble.sprite.position.y = visual.labelHeight;
+      visual.root.add(member.bubble.sprite);
+      member.target.labelHeight = visual.labelHeight + 0.9; // above the speech bubble's tail
+      member.current = '';
+      group.add(visual.root);
+      member.visual = visual;
+    });
+    return member.building;
+  };
+  /** Lets a far member's model go (its merged skin is its own; the pack's meshes stay cached). */
+  const releaseVisual = (member: Member): void => {
+    const visual = member.visual;
+    if (!visual) return;
+    member.visual = null;
+    visual.root.remove(member.bubble.sprite);
+    group.remove(visual.root);
+    visual.mixer?.stopAllAction();
+    visual.root.traverse((o) => {
+      if ((o as SkinnedMesh).isSkinnedMesh) (o as SkinnedMesh).geometry.dispose();
+    });
+  };
+  // Those round the child at the start are ready before the first frame.
+  if (options.start) {
+    const [sx, sz] = options.start;
+    await Promise.all(members.filter((m) => Math.hypot(m.def.position[0] - sx, m.def.position[2] - sz) <= PRELOAD_RADIUS).map(ensureVisual));
+  }
+
   const play = (member: Member, clip: string, speed: number): void => {
+    if (!member.visual) return;
     const { clips } = member.visual;
     const next = clips.get(clip) ?? clips.get('idle');
     if (!next) return;
@@ -234,16 +285,24 @@ export async function loadAmbientLife(loader: GuardedGltfLoader, ambients: reado
         reselect = RESELECT_SECONDS;
         if (lastFrameCalls > CALL_CEILING) allowed = Math.max(0, stats.visible - Math.ceil((lastFrameCalls - CALL_CEILING) / 2));
         else if (lastFrameCalls < CALL_CEILING - 6) allowed = Math.min(limit, allowed + 1);
-        const ranked = members
-          .map((m) => ({ m, d: Math.hypot(player.x - m.actor.position[0], player.z - m.actor.position[2]) }))
-          .filter(({ d }) => d <= DRAW_RADIUS)
-          .sort((a, b) => a.d - b.d)
-          .slice(0, allowed);
-        const chosen = new Set(ranked.map(({ m }) => m));
+        const near: Array<{ m: Member; d: number }> = [];
+        for (const m of members) {
+          const d = Math.hypot(player.x - m.actor.position[0], player.z - m.actor.position[2]);
+          if (d <= DRAW_RADIUS) near.push({ m, d });
+          // Far behind: its model goes; it is built again if the child comes back.
+          else if (d > RELEASE_RADIUS && m.visual) releaseVisual(m);
+        }
+        const ranked = near.sort((a, b) => a.d - b.d).slice(0, allowed);
+        const chosen = new Set<Member>();
+        for (const { m } of ranked) {
+          // A model still on its way joins at the next selection.
+          if (m.visual) chosen.add(m);
+          else void ensureVisual(m);
+        }
         for (const m of members) {
           m.active = chosen.has(m);
           if (!m.active) {
-            m.visual.root.visible = false;
+            if (m.visual) m.visual.root.visible = false;
             m.target.available = false;
           }
         }
@@ -252,7 +311,7 @@ export async function loadAmbientLife(loader: GuardedGltfLoader, ambients: reado
       if (quiet) for (const m of members) m.bubble.hide();
 
       for (const m of members) {
-        if (!m.active) continue;
+        if (!m.active || !m.visual) continue;
         m.time += dt;
         m.context.player = player;
         const { frame, speech } = m.actor.step(dt, m.context);

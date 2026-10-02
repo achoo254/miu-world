@@ -3,6 +3,7 @@
 // the patches round the child are real blocks. Near the camera it is cut away (the real patches are there);
 // further off it fades towards the sky. One draw call.
 import { BufferAttribute, BufferGeometry, Color, Mesh, MeshLambertMaterial, Vector3, type ColorRepresentation } from 'three';
+import { outlandSkyline, type OutlandPlan } from '@miu/voxel/outland-plan';
 import type { WorldData } from './world-data';
 
 export interface HorizonMesh {
@@ -50,6 +51,64 @@ function topColours(data: WorldData): Map<number, Color> {
 
 /** Horizon cells merged per mesh cell along each axis: 8-block cells, some 20k triangles for an 800-block map. */
 const MERGE = 2;
+
+/** The outer land's horizon: one vertex every OUTLAND_CELL blocks, faded into the sky by HORIZON_REACH. */
+const OUTLAND_CELL = 64;
+export const HORIZON_REACH = 1800;
+
+function concat(a: Float32Array, b: Float32Array): Float32Array {
+  const out = new Float32Array(a.length + b.length);
+  out.set(a);
+  out.set(b, a.length);
+  return out;
+}
+
+/**
+ * A coarse grid over the whole outer land from its skyline (tree tops, roofs, water, ground), each vertex
+ * the mean of a few samples round it, its quads left out where the core's own horizon is. It sits a block
+ * lower than the core's so the two never fight where they meet.
+ */
+function outlandHorizon(plan: OutlandPlan, data: WorldData, colours: Map<number, Color>): { positions: Float32Array; colours: Float32Array; indices: Uint32Array } {
+  const { x0, z0, x1, z1 } = data.bounds;
+  const [nx, nz] = [Math.ceil((x1 - x0) / OUTLAND_CELL), Math.ceil((z1 - z0) / OUTLAND_CELL)];
+  const idOf = new Map(data.atlas.blocks.map((b) => [b.name, b.id] as const));
+  const grass = new Color('#7cae5a');
+  const positions = new Float32Array((nx + 1) * (nz + 1) * 3);
+  const colourAttr = new Float32Array((nx + 1) * (nz + 1) * 3);
+  const offsets = [[0, 0], [-16, -16], [16, -16], [-16, 16], [16, 16]] as const;
+  for (let j = 0; j <= nz; j++) {
+    for (let i = 0; i <= nx; i++) {
+      const x = x0 + i * OUTLAND_CELL;
+      const z = z0 + j * OUTLAND_CELL;
+      let height = 0;
+      const mean = new Color(0, 0, 0);
+      for (const [dx, dz] of offsets) {
+        const top = outlandSkyline(plan, Math.min(x1 - 1, Math.max(x0, x + dx)), Math.min(z1 - 1, Math.max(z0, z + dz)));
+        height += top.y + 1;
+        mean.add(colours.get(idOf.get(top.block) ?? -1) ?? grass);
+      }
+      mean.multiplyScalar(1 / offsets.length);
+      const v = i + (nx + 1) * j;
+      positions.set([x, height / offsets.length - 1.6, z], v * 3);
+      colourAttr.set([mean.r, mean.g, mean.b], v * 3);
+    }
+  }
+  const [sx, , sz] = data.entities.size;
+  const quads: number[] = [];
+  for (let j = 0; j < nz; j++) {
+    for (let i = 0; i < nx; i++) {
+      const x = x0 + i * OUTLAND_CELL;
+      const z = z0 + j * OUTLAND_CELL;
+      if (x >= 0 && z >= 0 && x + OUTLAND_CELL <= sx && z + OUTLAND_CELL <= sz) continue;
+      const a = i + (nx + 1) * j;
+      const b = a + 1;
+      const c = a + (nx + 1);
+      const d = c + 1;
+      quads.push(a, c, b, b, c, d);
+    }
+  }
+  return { positions, colours: colourAttr, indices: Uint32Array.from(quads) };
+}
 
 export async function createHorizonMesh(data: WorldData, sky: ColorRepresentation): Promise<HorizonMesh> {
   const source = data.horizon;
@@ -108,10 +167,22 @@ export async function createHorizonMesh(data: WorldData, sky: ColorRepresentatio
       k += 6;
     }
   }
+  const outer = data.outland ? outlandHorizon(data.outland, data, colours) : null;
   const geometry = new BufferGeometry();
-  geometry.setAttribute('position', new BufferAttribute(positions, 3));
-  geometry.setAttribute('color', new BufferAttribute(colourAttr, 3));
-  geometry.setIndex(new BufferAttribute(indices, 1));
+  if (outer) {
+    // One mesh, one draw call: the outer land's grid follows the core's vertices.
+    const base = positions.length / 3;
+    geometry.setAttribute('position', new BufferAttribute(concat(positions, outer.positions), 3));
+    geometry.setAttribute('color', new BufferAttribute(concat(colourAttr, outer.colours), 3));
+    const all = new Uint32Array(indices.length + outer.indices.length);
+    all.set(indices);
+    all.set(outer.indices.map((i) => i + base), indices.length);
+    geometry.setIndex(new BufferAttribute(all, 1));
+  } else {
+    geometry.setAttribute('position', new BufferAttribute(positions, 3));
+    geometry.setAttribute('color', new BufferAttribute(colourAttr, 3));
+    geometry.setIndex(new BufferAttribute(indices, 1));
+  }
   geometry.computeVertexNormals();
   geometry.computeBoundingSphere();
 
@@ -125,7 +196,7 @@ export async function createHorizonMesh(data: WorldData, sky: ColorRepresentatio
     shader.fragmentShader = shader.fragmentShader
       .replace('#include <common>', '#include <common>\nuniform vec3 uCam;\nuniform float uNear;\nuniform float uFar;\nuniform vec3 uSky;\nvarying vec3 vHorizonWorld;')
       .replace('#include <clipping_planes_fragment>', '#include <clipping_planes_fragment>\nfloat horizonD = distance(vHorizonWorld.xz, uCam.xz);\nif (horizonD < uNear) discard;')
-      .replace('#include <dithering_fragment>', '#include <dithering_fragment>\ngl_FragColor.rgb = mix(gl_FragColor.rgb, uSky, 0.2 + 0.7 * smoothstep(uNear, uFar, horizonD));');
+      .replace('#include <dithering_fragment>', '#include <dithering_fragment>\ngl_FragColor.rgb = mix(gl_FragColor.rgb, uSky, 0.2 + 0.8 * smoothstep(uNear, uFar, horizonD));');
   };
   const mesh = new Mesh(geometry, material);
   mesh.name = 'horizon';
@@ -137,7 +208,9 @@ export async function createHorizonMesh(data: WorldData, sky: ColorRepresentatio
       // Infinite view (still shots): every patch is real, the horizon is not needed.
       mesh.visible = Number.isFinite(distance);
       uniforms.uNear.value = Number.isFinite(distance) ? distance * 0.92 : 0;
-      uniforms.uFar.value = Math.max(uniforms.uNear.value + 50, Math.hypot(data.world.size[0], data.world.size[2]));
+      // Across the core, or as far as the outer land is drawn before it is all sky.
+      const reach = data.outland ? HORIZON_REACH : Math.hypot(data.entities.size[0], data.entities.size[2]);
+      uniforms.uFar.value = Math.max(uniforms.uNear.value + 50, reach);
     },
     update(camera) {
       uniforms.uCam.value.copy(camera);

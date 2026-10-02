@@ -2,7 +2,7 @@
 // (2 x 2 chunk columns) into one of each. Pure data in/out so it runs identically in the Web Worker and on
 // the main thread.
 import { blockLookup, type AtlasBlock } from '@miu/voxel/block-table';
-import { CHUNK_SIZE, VoxelWorld } from '@miu/voxel/chunk-format';
+import { CHUNK_SIZE } from '@miu/voxel/chunk-format';
 import { greedyQuads, mergeQuads, quadsToGeometry, type Quad, type QuadGeometry } from '@miu/voxel/greedy-mesher';
 
 export interface ChunkGeometry {
@@ -17,7 +17,14 @@ const DIMS = [CHUNK_SIZE, CHUNK_SIZE, CHUNK_SIZE] as const;
 
 export type ChunkMesher = (cx: number, cy: number, cz: number) => ChunkGeometry;
 
-export function createChunkMesher(world: VoxelWorld, blocks: readonly AtlasBlock[], atlasSize: number): ChunkMesher {
+/** Where blocks are read from: the regions held round the child (sparse-world.ts), any coordinates. */
+export interface BlockReader {
+  get(x: number, y: number, z: number): number;
+  /** World height in blocks. */
+  readonly height: number;
+}
+
+export function createChunkMesher(world: BlockReader, blocks: readonly AtlasBlock[], atlasSize: number): ChunkMesher {
   const lookup = blockLookup(blocks);
   const isLiquid = (id: number): boolean => lookup(id)?.liquid ?? false;
   const isTransparent = (id: number): boolean => lookup(id)?.transparent ?? false;
@@ -80,14 +87,14 @@ export interface PatchGeometry {
 export type PatchMesher = (px: number, pz: number) => PatchGeometry;
 
 /** Meshes every chunk of a patch (2 x 2 chunk columns, the whole height) into one opaque and one water geometry. */
-export function createPatchMesher(world: VoxelWorld, blocks: readonly AtlasBlock[], atlasSize: number): PatchMesher {
+export function createPatchMesher(world: BlockReader, blocks: readonly AtlasBlock[], atlasSize: number): PatchMesher {
   const meshChunk = createChunkMesher(world, blocks, atlasSize);
-  const [nx, ny, nz] = world.chunks;
+  const ny = world.height / CHUNK_SIZE;
   return (px, pz) => {
     const opaque: QuadGeometry[] = [];
     const water: QuadGeometry[] = [];
-    for (let cx = px * PATCH_CHUNKS; cx < Math.min(nx, (px + 1) * PATCH_CHUNKS); cx++) {
-      for (let cz = pz * PATCH_CHUNKS; cz < Math.min(nz, (pz + 1) * PATCH_CHUNKS); cz++) {
+    for (let cx = px * PATCH_CHUNKS; cx < (px + 1) * PATCH_CHUNKS; cx++) {
+      for (let cz = pz * PATCH_CHUNKS; cz < (pz + 1) * PATCH_CHUNKS; cz++) {
         for (let cy = 0; cy < ny; cy++) {
           const chunk = meshChunk(cx, cy, cz);
           if (chunk.opaque) opaque.push(chunk.opaque);
