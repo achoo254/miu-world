@@ -1,6 +1,6 @@
 # Map gấp 50: lõi giữ nguyên, vùng ngoài sinh lúc chạy
 
-**Trạng thái:** xong phần tự động (02/10/2026), đã gửi lên production cho người sở hữu duyệt; còn phase 7 (danh mục model) · **Tier:** XL · **Nhánh:** `main` · Quyết định: Jev (`plans/dattqh/reports/jev-261002-0606-maps-x50.md`)
+**Trạng thái:** xong phần tự động (02/10/2026), đã gửi lên production cho người sở hữu duyệt; danh mục model xong · **Tier:** XL · **Nhánh:** `main` · Quyết định: Jev (`plans/dattqh/reports/jev-261002-0606-maps-x50.md`)
 
 ## Kết quả mong muốn
 
@@ -29,7 +29,7 @@ Ngoài phạm vi: bài học mới ở vùng ngoài; phần thưởng khi tìm t
 5. **Chân trời vùng ngoài (M).** Lưới thô theo ô 64 block từ hàm địa hình; camera far và màu trời theo tầm mới.
 6. **Server, kiểm, docs, review, deploy (M).** Nới biên vị trí; E2E (đi ra vùng ngoài, viền thế giới, draw call); ảnh review vùng ngoài; docs; deploy production (người sở hữu đã cho deploy đợt trước một lần; đợt này hỏi lại).
 
-7. **Đồ vật đổi hàng loạt (M).** Người sở hữu (02/10/2026 06:2x): "sau này còn bổ sung nhiều đồ vật nữa nên code tối ưu 1 chút nếu có yêu cầu thay đổi nào thì đổi hàng loạt". Đã có: mọi prop đi qua một chỗ (`PropField`) nên làm mờ khi che bé áp cho mọi đồ vật, kể cả đồ thêm sau. Còn: gom chiều cao, clip và thuộc tính của mọi model (đang rải ở `SCENERY_MODELS`, `DRESSING_HEIGHTS`, `LIFE_HEIGHTS`, `OUTLAND_MODEL_HEIGHTS` và từng generator) về một danh mục dữ liệu `content/world/models.json` (Zod), generator và runtime đọc từ đó; thêm đồ mới = thêm một dòng.
+7. [x] **Đồ vật đổi hàng loạt (M).** Người sở hữu (02/10/2026 06:2x): "sau này còn bổ sung nhiều đồ vật nữa nên code tối ưu 1 chút nếu có yêu cầu thay đổi nào thì đổi hàng loạt". Đã có: mọi prop đi qua một chỗ (`PropField`) nên làm mờ khi che bé áp cho mọi đồ vật, kể cả đồ thêm sau. Còn: gom chiều cao, clip và thuộc tính của mọi model (đang rải ở `SCENERY_MODELS`, `DRESSING_HEIGHTS`, `LIFE_HEIGHTS`, `OUTLAND_MODEL_HEIGHTS` và từng generator) về một danh mục dữ liệu `content/world/models.json` (Zod), generator và runtime đọc từ đó; thêm đồ mới = thêm một dòng.
 8. **Camera theo sau lưng (S).** Người sở hữu (06:21, ảnh): camera chưa quay ra sau khi bé đi ngang. Đã làm: camera luôn dần xoay ra sau lưng theo hướng đi; hướng đi chốt theo góc cần lúc đặt, nên giữ cần sang ngang không đi vòng tròn.
 
 ## Kết quả (02/10/2026)
@@ -47,5 +47,5 @@ Ngoài phạm vi: bài học mới ở vùng ngoài; phần thưởng khi tìm t
 - [x] Bộ nhớ block giới hạn (vùng xa bị bỏ), draw call ≤ 150 ở E2E vùng ngoài.
 - [x] Gate 5 lệnh + web build + `e2e:ci` xanh trong 480 s; `security:dist`.
 - [x] Ảnh review vùng ngoài từng map.
-- [ ] Mọi prop mờ khi che bé hoặc sát ống kính (đã làm); danh mục model một chỗ.
+- [x] Mọi prop mờ khi che bé hoặc sát ống kính; danh mục model một chỗ (`content/world/models.json`, 198 model; cỡ riêng cố ý khai `sizes` ở Khu rừng, Chợ, Thư viện, Lâu đài, ảnh Home).
 - [x] Đi ngang: camera ra sau lưng, bé đi thẳng (E2E `play`).
