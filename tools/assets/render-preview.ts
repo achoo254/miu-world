@@ -232,6 +232,30 @@ async function roomView(blockAt: (x: number, y: number, z: number) => Promise<nu
 }
 
 /**
+ * Where to stand to see a landmark in the open: from its south-west, twenty blocks up and some thirty-seven
+ * off as before, unless something solid (a big house's roof, a hill) stands on the line to it; then the
+ * other quarters, then higher, the first with a clear line. Falls back to the first view.
+ */
+async function openView(blockAt: (x: number, y: number, z: number) => Promise<number>, [x, y, z]: readonly number[]): Promise<number[]> {
+  const [lx, ly, lz] = [x ?? 0, y ?? 0, z ?? 0];
+  const solid = await solidBlocks();
+  const look = [lx, ly + 1, lz];
+  const first = [lx - 22, ly + 20, lz - 30];
+  for (const up of [20, 28, 36]) {
+    for (const [dx, dz] of [[-22, -30], [22, -30], [-30, 22], [30, 22], [0, -36], [-36, 0], [36, 0], [0, 36]] as const) {
+      const eye = [lx + dx, ly + up, lz + dz];
+      let clear = true;
+      for (let t = 0.04; t < 0.96 && clear; t += 0.02) {
+        const p = eye.map((e, i) => (e ?? 0) + ((look[i] ?? 0) - (e ?? 0)) * t);
+        if (solid.has(await blockAt(Math.floor(p[0] ?? 0), Math.floor(p[1] ?? 0), Math.floor(p[2] ?? 0)))) clear = false;
+      }
+      if (clear) return eye;
+    }
+  }
+  return first;
+}
+
+/**
  * A zone map for the owner to judge: the whole map from the south and from above, then each zone (its
  * landmark is at the zone's centre) from its south-west, high enough to see the zone's places.
  */
@@ -255,7 +279,7 @@ async function zoneMapShots(map: string, region: string): Promise<Shot[]> {
     // A close view loads only the map round its landmark: meshing all of a wide map for each picture is slow.
     // A landmark under a roof (a room) is seen from inside it, at a child's eye height; others from above.
     const inside = await roomView(blockAt, [x, y, z]);
-    const shot = inside ? view(inside.eye, inside.look, 74) : view([x - 22, y + 20, z - 30], [x, y, z], 60);
+    const shot = inside ? view(inside.eye, inside.look, 74) : view(await openView(blockAt, [x, y, z]), [x, y, z], 60);
     shots.push({ file: `${map}-${landmark.id}.png`, query: { shot, quality: 'high', region, view: 140 }, viewport: wide });
   }
   // The same view as each frame of the owner's detail mocks (content/world/mock-views/<map>.json).
