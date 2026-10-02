@@ -54,6 +54,8 @@ export interface WorldEvents {
   readonly active: WorldEventKind | null;
   /** Events played so far. */
   readonly played: number;
+  /** Holds the evening light (review shots of the mocks' night frames, `?mood=dusk`): lanterns glow against it. */
+  holdDusk(): void;
 }
 
 /** First surprise after this much play, then one every so often (seconds). */
@@ -223,6 +225,9 @@ export function createWorldEvents(kinds: readonly WorldEventKind[], ctx: WorldEv
   };
 
   const events: WorldEvents = {
+    holdDusk() {
+      tint(DUSK_MOOD, 1);
+    },
     get active() {
       return active;
     },

@@ -14,14 +14,14 @@ function settle(rig: CameraRig): void {
 }
 
 describe('camera rig', () => {
-  it('rises and looks down over a wall at Miu\'s back instead of squeezing into her head', () => {
+  it('keeps its distance and tilt with a wall at Miu\'s back: the scenery never pushes it (the wall fades instead)', () => {
     const camera = new PerspectiveCamera();
-    // yaw 0 puts the camera toward +z: straight into the wall.
+    // yaw 0 puts the camera toward +z: straight through the wall.
     const rig = new CameraRig(camera, solid, 0);
     settle(rig);
-    expect(rig.viewDistance).toBeGreaterThan(2.5);
-    expect(camera.position.y).toBeGreaterThan(4);
-    expect(solid(Math.floor(camera.position.x), Math.floor(camera.position.y), Math.floor(camera.position.z))).toBe(false);
+    expect(rig.viewDistance).toBeCloseTo(rig.distance, 5);
+    expect(rig.pitch).toBeCloseTo(DEFAULT_PITCH, 5);
+    expect(camera.position.z).toBeGreaterThan(WALL_Z);
   });
 
   it('keeps its normal distance and tilt in the open', () => {

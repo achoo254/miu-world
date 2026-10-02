@@ -3,6 +3,7 @@
 // the patches round the child are real blocks. Near the camera it is cut away (the real patches are there);
 // further off it fades towards the sky. One draw call.
 import { BufferAttribute, BufferGeometry, Color, Mesh, MeshLambertMaterial, Vector3, type ColorRepresentation } from 'three';
+import { soilBlockName } from '@miu/voxel/outland';
 import { outlandSkyline, type OutlandPlan } from '@miu/voxel/outland-plan';
 import type { WorldData } from './world-data';
 
@@ -85,7 +86,7 @@ function outlandHorizon(plan: OutlandPlan, data: WorldData, colours: Map<number,
       for (const [dx, dz] of offsets) {
         const top = outlandSkyline(plan, Math.min(x1 - 1, Math.max(x0, x + dx)), Math.min(z1 - 1, Math.max(z0, z + dz)));
         height += top.y + 1;
-        mean.add(colours.get(idOf.get(top.block) ?? -1) ?? grass);
+        mean.add(colours.get(idOf.get(soilBlockName(plan.spec.soil, top.block)) ?? -1) ?? grass);
       }
       mean.multiplyScalar(1 / offsets.length);
       const v = i + (nx + 1) * j;

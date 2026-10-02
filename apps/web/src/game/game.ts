@@ -54,6 +54,11 @@ import './game.css';
 const LOADING_STEPS = 5;
 /** Middle of the child's body: the end of the line of sight that trees fade along. */
 const SEE_FOCUS_HEIGHT = 0.9;
+/** A solid block this many blocks over the child's feet (up to ROOF_REACH) means she is under a roof. */
+const ROOF_FROM = 3;
+const ROOF_REACH = 14;
+/** How fast the ceilings round her fade in and out as she goes under a roof or out again (per second). */
+const INDOOR_EASE = 4;
 /** After the child drags the view, the camera keeps her angle this long before settling behind her again. */
 const LOOK_HOLD_S = 1;
 /** Share of the autopilot's turning pace used while the child walks: the view swings round behind her. */
@@ -63,7 +68,7 @@ const STICK_TURN = 0.45;
 
 export interface GameOptions {
   store: GameStore;
-  /** Query string with dev/review switches: quality, stats, autopilot, spawnAt (`npc`, a target id, `x,y,z`, or `spawn` for the map's spawn point), shot, outfit, life (`0`: no villagers or animals). */
+  /** Query string with dev/review switches: quality, stats, autopilot, spawnAt (`npc`, a target id, `x,y,z`, or `spawn` for the map's spawn point), face (camera yaw in degrees), shot, outfit, life (`0`: no villagers or animals). */
   search: string;
   /** Equipped accessory ids (`id` or `id:variant`), normally from `GET /api/character`. */
   outfit: string[];
@@ -360,6 +365,7 @@ export class Game {
         return { x: lookAhead.x / flat, z: lookAhead.z / flat };
       },
     });
+    if (params.get('mood') === 'dusk') events.holdDusk();
     props.setViewDistance(quality.viewDistance);
     props.buildAround(start[0] ?? 0, start[2] ?? 0);
     this.cleanups.push(() => props.dispose());
@@ -388,6 +394,9 @@ export class Game {
       }
     }
     const rig = new CameraRig(camera, solid, controller.facing + Math.PI);
+    // Dev/review switch: `face=<degrees>` turns the camera to look that way at the start (a `play` shot).
+    const face = Number(params.get('face') ?? Number.NaN);
+    if (Number.isFinite(face)) rig.yaw = (face * Math.PI) / 180;
     const input = new PlayerInput(dom.root, dom.joystick, dom.run, dom.jump);
     this.input = input;
     this.cleanups.push(() => input.dispose());
@@ -412,7 +421,7 @@ export class Game {
     window.addEventListener('resize', onResize);
     this.cleanups.push(() => window.removeEventListener('resize', onResize));
 
-    const reviewShot = createReviewShot(params.get('shot'), entities, scene, solid);
+    const reviewShot = createReviewShot(params.get('shot'), entities, scene, solid, controller.position);
     if (reviewShot) {
       // Still pictures show the whole map; a live shot frames one character and keeps the frame's budget.
       // Still pictures show the whole map, or (`view=<blocks>`, close views of a wide map) the part round what
@@ -497,6 +506,12 @@ export class Game {
     /** The view's yaw and the stick's angle when the child set her direction: she keeps walking that way while the view swings round behind her. */
     let heading: { yaw: number; stick: number } | null = null;
     const seeFocus = new Vector3();
+    /** How far the child is under a roof (0–1), eased: the ceilings round her fade in and out without popping. */
+    let indoor = 0;
+    const underRoof = (p: Vector3): boolean => {
+      for (let dy = ROOF_FROM; dy <= ROOF_REACH; dy++) if (solid(Math.floor(p.x), Math.floor(p.y + dy), Math.floor(p.z))) return true;
+      return false;
+    };
 
     this.loop = () => {
       timer.update();
@@ -567,7 +582,8 @@ export class Game {
       sun.target.position.copy(controller.position);
       world.water.uTime.value += dt;
       // Trees between the camera and the child fade; review shots have no child to keep in view.
-      world.update(camera, reviewShot ? undefined : seeFocus.copy(controller.position).setY(controller.position.y + SEE_FOCUS_HEIGHT));
+      indoor += ((underRoof(controller.position) ? 1 : 0) - indoor) * Math.min(1, dt * INDOOR_EASE);
+      world.update(camera, reviewShot && !reviewShot.play ? undefined : { focus: seeFocus.copy(controller.position).setY(controller.position.y + SEE_FOCUS_HEIGHT), feet: controller.position.y, indoor });
       props.update(camera.position);
 
       for (const target of targets) target.update(dt, controller.position, camera.position);
@@ -576,7 +592,8 @@ export class Game {
       const nearest = pickNearest(targets, controller.position);
       // Quest targets always win the prompt; ambient life goes quiet next to them.
       const nearAmbient = nearest ? null : life.nearest(controller.position);
-      life.update(dt, controller.position, nearest !== null, renderer.info.render.calls);
+      // A still review shot gathers the nearest people and animals round what it looks at, not round the child.
+      life.update(dt, reviewShot && !reviewShot.live ? reviewShot.target : controller.position, nearest !== null, renderer.info.render.calls);
       if (nearest !== promptTarget || nearAmbient !== promptAmbient) {
         promptTarget = nearest;
         promptAmbient = nearAmbient;

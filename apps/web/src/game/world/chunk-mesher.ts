@@ -33,6 +33,8 @@ export function createChunkMesher(world: BlockReader, blocks: readonly AtlasBloc
     const block = lookup(q.id);
     return [block && !block.solid && !block.liquid ? 1 : 0];
   };
+  /** Lanterns and lit windows shine at their own colour. */
+  const glow = (q: Quad): number[] => [lookup(q.id)?.glow ? 1 : 0];
 
   /** Tile rect (normalised x, y, w, h) for the face a quad represents. */
   const tileRect = (q: Quad): number[] => {
@@ -68,7 +70,7 @@ export function createChunkMesher(world: BlockReader, blocks: readonly AtlasBloc
     const build = (quads: Quad[]): QuadGeometry | null =>
       quads.length === 0
         ? null
-        : quadsToGeometry(quads, { offset: [ox, oy, oz], attributes: { tileRect: { size: 4, value: tileRect }, seeThrough: { size: 1, value: seeThrough } } });
+        : quadsToGeometry(quads, { offset: [ox, oy, oz], attributes: { tileRect: { size: 4, value: tileRect }, seeThrough: { size: 1, value: seeThrough }, glow: { size: 1, value: glow } } });
     return { key: `${cx},${cy},${cz}`, origin: [ox, oy, oz], opaque: build(opaqueQuads), water: build(waterQuads) };
   };
 }

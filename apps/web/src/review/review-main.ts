@@ -37,16 +37,18 @@ const SCHOOL_CAPTIONS: Record<string, string> = {
 
 /** The owner's mocks of the world and its maps (designs/the-gioi/, designs/<map>/; docs/design-cac-map.md). */
 const MAP_MOCKS = import.meta.glob<string>('../../../../designs/{the-gioi,lang-ven-song,cho-phien,nong-trai,khu-rung-bi-mat,nui-tuyet}/{a,b}-*.png', { eager: true, query: '?url', import: 'default' });
+/** The frames of the owner's detail mocks (02/10/2026, designs/<folder>/{c,d}-*.png), set beside the same view in the game. */
+const DETAIL_MOCKS = import.meta.glob<string>('../../../../designs/*/{c,d}-*.png', { eager: true, query: '?url', import: 'default' });
 /** The eight maps (owner, 01/10/2026: each ten times the area, alive like real life), their mock folders and preview group. */
 const WORLD_MAPS: ReadonlyArray<{ map: string; name: string; mocks: readonly string[]; note: string }> = [
-  { map: 'truong-hoc', name: 'Trường học (trung tâm)', mocks: ['the-gioi/a-01-', 'the-gioi/b-01-', 'the-gioi/b-10-'], note: 'Trường ở giữa như mock toàn cảnh, phố chính, các quận có cổng sang 7 map.' },
-  { map: 'lang-ven-song', name: 'Làng Ven Sông', mocks: ['lang-ven-song/', 'the-gioi/b-04-', 'the-gioi/b-09-'], note: 'Sông lớn, cầu tre, ruộng lúa, hồ có bến tàu và hải đăng.' },
-  { map: 'khu-rung-bi-mat', name: 'Khu rừng bí mật', mocks: ['khu-rung-bi-mat/'], note: 'Góc chương 1 giữ nguyên, rừng rậm 800 × 800, bốn bãi rừng, vách đá có thác.' },
-  { map: 'cho-phien', name: 'Chợ phiên', mocks: ['cho-phien/'], note: 'Sạp mái sọc, phố chợ bên kênh, cầu rồng.' },
-  { map: 'nong-trai', name: 'Nông trại', mocks: ['nong-trai/'], note: 'Trang trại, chuồng đỏ, cối xay gió, đồng cỏ bò sữa.' },
-  { map: 'xom-mai-am', name: 'Xóm Mái Ấm', mocks: [], note: 'Không có mock riêng: theo phong cách chung (mái nhiều màu, hoa, hàng rào).' },
-  { map: 'thu-vien', name: 'Thư viện', mocks: [], note: 'Phòng đọc theo khung "Thư viện" trong mock Trường học.' },
-  { map: 'lau-dai', name: 'Lâu đài', mocks: ['nui-tuyet/'], note: 'Không có mock riêng; núi đá có thác làm phông.' },
+  { map: 'truong-hoc', name: 'Trường học (trung tâm)', mocks: ['the-gioi/a-01-', 'the-gioi/b-01-', 'the-gioi/b-10-'], note: 'Trường ở giữa như mock toàn cảnh, phố chính, quảng trường trung tâm có cổng vòm sang 7 map (tấm Trung tâm); lớp học, thư viện, phòng chức năng đi vào được. Mỗi cặp: khung mock chi tiết bên trái, cùng góc trong game bên phải.' },
+  { map: 'lang-ven-song', name: 'Làng Ven Sông', mocks: ['lang-ven-song/a-', 'lang-ven-song/b-', 'the-gioi/b-04-', 'the-gioi/b-09-'], note: 'Theo các khung ngoài trời của tấm Làng: cổng làng, quảng trường có đài phun tượng mèo, chợ nhỏ, tháp chuông, cối xay giữa ruộng lúa, cầu đá, đường làng có nhà hai bên; hồ có bến tàu và hải đăng.' },
+  { map: 'khu-rung-bi-mat', name: 'Khu rừng bí mật', mocks: ['khu-rung-bi-mat/a-', 'khu-rung-bi-mat/b-'], note: 'Góc chương 1 giữ nguyên; rừng xanh đậm, suối có cầu gỗ, vách đá có thác, lối mòn viền hoa.' },
+  { map: 'cho-phien', name: 'Chợ phiên', mocks: ['cho-phien/a-', 'cho-phien/b-'], note: 'Theo tấm Chợ: quảng trường đài phun tượng mèo, cổng chợ, các gian theo loại hàng, nhà lồng chợ đi vào được; người bán ở mọi sạp, người mua đi giữa các gian.' },
+  { map: 'nong-trai', name: 'Nông trại', mocks: ['nong-trai/a-', 'nong-trai/b-'], note: 'Theo tấm Nông trại: ruộng lúa vàng, chuồng đỏ, nhà kính và nhà kho đi vào được, vườn táo, ao cá, bảng nhiệm vụ.' },
+  { map: 'xom-mai-am', name: 'Xóm Mái Ấm', mocks: [], note: 'Theo các khung nhà của tấm Làng: nhà dân có vườn, giếng có mái, vườn rau, chuồng; nội thất nhà dân và chuồng đi vào được.' },
+  { map: 'thu-vien', name: 'Thư viện', mocks: [], note: 'Theo tấm Thư viện: tòa thư viện đi vào được (sảnh có quả địa cầu, phòng đọc, góc thiếu nhi, khu máy tính, phòng sách quý, ban công tầng 2), vườn, hồ, cầu đá.' },
+  { map: 'lau-dai', name: 'Lâu đài', mocks: [], note: 'Theo tấm Lâu đài: tháp mái nhọn có cờ, cổng có lính gác, hào và cầu đá vòm, sân lát đá có đài phun; đại sảnh, phòng ăn, thư viện, phòng nghỉ, tháp canh, hầm ngục đi vào được.' },
 ];
 
 /** Content versions of the review material (asset-versions.ts), read from the manifest on load. */
@@ -195,12 +197,27 @@ function renderGallery(generated: string[]): void {
     const mocks = Object.entries(MAP_MOCKS).filter(([key]) => m.mocks.some((prefix) => key.includes(`/designs/${prefix}`))).map(([, url]) => url);
     // The map's own pictures, then the village nearest it on the land round it (the outer land).
     const shots = [...reviewPaths.filter((x) => x.includes(`/review/${previewGroup(m.map)}/`)).sort(), ...reviewPaths.filter((x) => x.endsWith(`/review/outland/${previewGroup(m.map)}-ngoai.png`))];
+    // Pictures named mock__<folder>__<frame> stand beside that frame of the detail mocks.
+    const isPair = (p: string): boolean => name(p).startsWith('mock__');
+    const pairs = shots.filter(isPair).flatMap((p) => {
+      const frame = name(p).replace('mock__', '').replace('__', '/');
+      const mock = DETAIL_MOCKS[`../../../../designs/${frame}.png`];
+      if (!mock) return [];
+      const caption = frame.split('/')[1]?.replace(/^[a-z]-\d+-/, '').replaceAll('-', ' ') ?? frame;
+      return [
+        el('div', { className: 'pair' }, [
+          el('figure', {}, [el('img', { src: mock, alt: `Mock: ${caption}`, loading: 'lazy', decoding: 'async' }), el('figcaption', { textContent: `Mock · ${frame}` })]),
+          figure(p, `Trong game · ${caption}`),
+        ]),
+      ];
+    });
     const block = el('div', { className: 'map-block' }, [
       el('h3', { textContent: m.name }),
       el('p', { className: 'sub', textContent: m.note }),
+      ...(pairs.length > 0 ? [el('div', { className: 'pairs' }, pairs)] : []),
       el('div', { className: 'grid grid-4' }, [
         ...mocks.map((url) => el('figure', {}, [el('img', { src: url, alt: `Mock ${m.name}`, loading: 'lazy', decoding: 'async' }), el('figcaption', { textContent: 'Mock' })])),
-        ...shots.map((p) => figure(p, `Trong game · ${name(p).replace(`${previewGroup(m.map)}-`, '').replace(/^ngoai$/, 'làng ở vùng ngoài')}`)),
+        ...shots.filter((p) => !isPair(p)).map((p) => figure(p, `Trong game · ${name(p).replace(`${previewGroup(m.map)}-`, '').replace(/^ngoai$/, 'làng ở vùng ngoài')}`)),
       ]),
     ]);
     byId('world-maps').append(block);

@@ -1,7 +1,8 @@
 // Fixed cameras for review screenshots (?shot=top|iso|island|bridge|tree|npc|life:<ambient id>|view:…):
 // overrides the follow camera, lifts view-distance limits, and flags document.body.dataset.ready after
 // a few frames. A `life:` shot frames one villager or animal and keeps time running (for videos). A
-// `view:ex,ey,ez:tx,ty,tz:fov` shot is any camera on any map, without the player (region backdrops).
+// `view:ex,ey,ez:tx,ty,tz:fov` shot is any camera on any map, without the player (region backdrops). A `play`
+// shot is a still frame of play where `spawnAt` puts the child: the game's own follow camera and fading.
 import { Vector3, type PerspectiveCamera, type Scene } from 'three';
 import type { WorldEntities } from '@miu/voxel/world-entities';
 
@@ -18,6 +19,8 @@ export interface ReviewShot {
   readonly hidesPlayer: boolean;
   /** Where the camera looks: a still shot with a limited view (`view=` in the URL) loads the map round it. */
   readonly target: Vector3;
+  /** The game's own camera and fading stay on (`play`): nothing is overridden. */
+  readonly play: boolean;
 }
 
 /** `view:ex,ey,ez:tx,ty,tz:fov` → the camera it names, or null when the name is not a well-formed view. */
@@ -34,6 +37,8 @@ export function parseViewShot(name: string): { eye: Vector3; target: Vector3; fo
 }
 
 const SETTLE_FRAMES = 20;
+/** A frame of play waits longer: the follow camera eases in and the roofs over the child fade in. */
+const PLAY_SETTLE_FRAMES = 90;
 
 /** Eye positions tried around a `life:` subject, first clear line of sight wins. */
 const LIFE_ANGLES = [225, 180, 270, 135, 315, 90, 0, 45];
@@ -43,8 +48,27 @@ export function createReviewShot(
   entities: WorldEntities,
   scene: Scene,
   solidAt: (x: number, y: number, z: number) => boolean = () => false,
+  playAt: Vector3 = new Vector3(),
 ): ReviewShot | null {
   if (!name) return null;
+  if (name === 'play') {
+    let played = 0;
+    return {
+      apply() {},
+      frameDone() {
+        played++;
+        if (played === PLAY_SETTLE_FRAMES) document.body.dataset.ready = '1';
+      },
+      get settled() {
+        return played >= PLAY_SETTLE_FRAMES;
+      },
+      backdrop: false,
+      live: false,
+      hidesPlayer: false,
+      target: playAt.clone(),
+      play: true,
+    };
+  }
   const [sx, , sz] = entities.size;
   const center = new Vector3(sx / 2, 10, sz / 2);
   const landmark = (id: string): Vector3 => {
@@ -103,6 +127,7 @@ export function createReviewShot(
     live: ambient !== undefined,
     hidesPlayer: ambient !== undefined || name.startsWith('view:'),
     target: view.target.clone(),
+    play: false,
     get settled() {
       return frames >= SETTLE_FRAMES;
     },

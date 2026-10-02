@@ -71,7 +71,17 @@ const BoxVec = z.tuple([z.number(), z.number(), z.number()]);
  * generated/box-props/<id>.glb.
  */
 export const BoxProp = z.strictObject({
-  boxes: z.array(z.strictObject({ from: BoxVec, to: BoxVec, color: z.string().regex(/^#[0-9a-f]{6}$/) })).min(1),
+  boxes: z
+    .array(
+      z.strictObject({
+        from: BoxVec,
+        to: BoxVec,
+        color: z.string().regex(/^#[0-9a-f]{6}$/),
+        /** Lit from within at its own colour (a lantern's glass, a lit window): bright by day, aglow at dusk. */
+        glow: z.boolean().optional(),
+      }),
+    )
+    .min(1),
 });
 export type BoxProp = z.infer<typeof BoxProp>;
 

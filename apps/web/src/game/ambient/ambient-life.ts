@@ -15,11 +15,15 @@ import { mergeParts } from './merge-parts';
 import type { Vec3 } from './ambient-types';
 import { createSpeechBubble } from './speech-bubble';
 
-/** Drawn and running at once, by quality level (the rest wait, hidden, until the child comes closer). */
-export const AMBIENT_LIMIT: Readonly<Record<string, number>> = { low: 6, mid: 9, high: 12 };
+/**
+ * Drawn and running at once, by quality level (the rest wait, hidden, until the child comes closer). A
+ * market or a square holds a crowd (owner, 02/10/2026: sellers at every stall, shoppers going round them).
+ */
+export const AMBIENT_LIMIT: Readonly<Record<string, number>> = { low: 8, mid: 16, high: 24 };
 /**
  * Whatever the quality, the frame stays under the draw-call budget (Master Plan §12: 150): when the
- * last frame came close, the farthest characters leave first, and come back once there is room.
+ * last frame came close, the farthest characters leave first, and come back once there is room; the nearest
+ * third of the limit always stays.
  */
 const CALL_CEILING = 144;
 /** Beyond this distance nobody is drawn, however few are near. */
@@ -263,6 +267,11 @@ export async function loadAmbientLife(loader: GuardedGltfLoader, ambients: reado
   let reselect = 0;
   /** How many may be drawn now: the quality's limit, less whatever the budget cannot afford. */
   let allowed = limit;
+  /**
+   * However heavy the frame, the nearest few stay (owner, 02/10/2026: a market keeps its sellers and shoppers):
+   * a busy scene thins the crowd, never empties it.
+   */
+  const alwaysDrawn = Math.ceil(limit / 3);
   const anchor = new Vector3();
 
   const say = (member: Member, pool: string, player: { x: number; y: number; z: number }, quiet: boolean): void => {
@@ -283,7 +292,7 @@ export async function loadAmbientLife(loader: GuardedGltfLoader, ambients: reado
       reselect -= dt;
       if (reselect <= 0) {
         reselect = RESELECT_SECONDS;
-        if (lastFrameCalls > CALL_CEILING) allowed = Math.max(0, stats.visible - Math.ceil((lastFrameCalls - CALL_CEILING) / 2));
+        if (lastFrameCalls > CALL_CEILING) allowed = Math.max(alwaysDrawn, stats.visible - Math.ceil((lastFrameCalls - CALL_CEILING) / 2));
         else if (lastFrameCalls < CALL_CEILING - 6) allowed = Math.min(limit, allowed + 1);
         const near: Array<{ m: Member; d: number }> = [];
         for (const m of members) {

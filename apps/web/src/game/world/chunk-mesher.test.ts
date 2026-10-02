@@ -6,7 +6,7 @@ import { PATCH_BLOCKS, createChunkMesher, createPatchMesher } from './chunk-mesh
 const rect: [number, number, number, number] = [0, 0, 16, 16];
 /** The mesher reads any block source: a dense test world here. */
 const reader = (world: VoxelWorld) => ({ get: (x: number, y: number, z: number) => world.get(x, y, z), height: world.size[1] });
-const block = (id: number, name: string, solid: boolean): AtlasBlock => ({ id, name, top: rect, side: rect, bottom: rect, solid, transparent: false, liquid: false });
+const block = (id: number, name: string, solid: boolean, glow = false): AtlasBlock => ({ id, name, top: rect, side: rect, bottom: rect, solid, transparent: false, liquid: false, glow });
 
 describe('chunk mesher', () => {
   it('marks the faces of what the child walks through (a leaf), so trees in the way can fade, and nothing else', () => {
@@ -16,6 +16,16 @@ describe('chunk mesher', () => {
     const geo = createChunkMesher(reader(world), [block(1, 'grass', true), block(6, 'leaves', false)], 256)(0, 0, 0).opaque;
     const flags = [...(geo?.extra.seeThrough ?? [])];
     // Two cubes, six faces of four vertices each: one cube flagged, one not.
+    expect(flags).toHaveLength(48);
+    expect(flags.filter((f) => f === 1)).toHaveLength(24);
+  });
+
+  it('marks the faces of a glowing block (a lantern) and nothing else', () => {
+    const world = new VoxelWorld([16, 16, 16]);
+    world.set(2, 0, 2, 1); // grass
+    world.set(8, 0, 8, 38); // lantern
+    const geo = createChunkMesher(reader(world), [block(1, 'grass', true), block(38, 'lantern', true, true)], 256)(0, 0, 0).opaque;
+    const flags = [...(geo?.extra.glow ?? [])];
     expect(flags).toHaveLength(48);
     expect(flags.filter((f) => f === 1)).toHaveLength(24);
   });

@@ -26,6 +26,8 @@ export const outlandSpecSchema = z.object({
   edge: z.object({ north: z.array(z.number().int()), south: z.array(z.number().int()), west: z.array(z.number().int()), east: z.array(z.number().int()) }),
   /** Scale of each model the outer land may place (manifest path → scale), measured by the tools. */
   models: z.record(z.string(), z.number().positive()),
+  /** The core's own grass and lane blocks (block names), so the land round a map wears its colours; default grass and path. */
+  soil: z.object({ grass: z.string(), path: z.string() }).optional(),
 });
 export type OutlandSpec = z.infer<typeof outlandSpecSchema>;
 
@@ -37,11 +39,18 @@ export const OUTLAND_BLOCK_NAMES = [
 export type OutlandBlockName = (typeof OUTLAND_BLOCK_NAMES)[number];
 export type OutlandBlocks = Readonly<Record<OutlandBlockName, number>>;
 
-/** The ids of `OUTLAND_BLOCK_NAMES` in a block table (anything with `id` and `name`). */
-export function outlandBlocks(table: ReadonlyArray<{ id: number; name: string }>): OutlandBlocks {
+/** The block the outer land lays for one of its names: the map's own grass and lanes (`soil`), else the name itself. */
+export function soilBlockName(soil: OutlandSpec['soil'], name: string): string {
+  if (name === 'grass') return soil?.grass ?? name;
+  if (name === 'path') return soil?.path ?? name;
+  return name;
+}
+
+/** The ids of `OUTLAND_BLOCK_NAMES` in a block table (anything with `id` and `name`), grass and path as the map's `soil`. */
+export function outlandBlocks(table: ReadonlyArray<{ id: number; name: string }>, soil?: OutlandSpec['soil']): OutlandBlocks {
   const out: Partial<Record<OutlandBlockName, number>> = {};
   for (const name of OUTLAND_BLOCK_NAMES) {
-    const block = table.find((b) => b.name === name);
+    const block = table.find((b) => b.name === soilBlockName(soil, name));
     if (!block) throw new Error(`block ${name} missing from the block table`);
     out[name] = block.id;
   }

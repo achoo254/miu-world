@@ -22,7 +22,7 @@ export type RegionBuilder = (rx: number, rz: number, core: Uint8Array | null) =>
 
 export function createRegionBuilder(init: RegionBuilderInit): { build: RegionBuilder; plan: OutlandPlan | null } {
   const plan = init.outland ? planOutland(init.outland, init.size, init.waterLevel) : null;
-  const ids = plan ? outlandBlocks(init.blocks) : null;
+  const ids = plan ? outlandBlocks(init.blocks, init.outland?.soil) : null;
   const shape = [REGION_CHUNKS, init.size[1] / 16, REGION_CHUNKS] as const;
   const build: RegionBuilder = (rx, rz, core) => {
     const out = new VoxelWorld(shape);

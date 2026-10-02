@@ -13,6 +13,13 @@ import { createHorizonMesh, type HorizonMesh } from './horizon-mesh';
 import type { MesherMessage, MesherRequest } from './mesher.worker';
 import type { WorldData } from './world-data';
 
+/** The child as the fading sees her: her body, the height of her feet, how far she is under a roof (0–1). */
+export interface SeeLine {
+  focus: Vector3;
+  feet: number;
+  indoor: number;
+}
+
 export interface WorldRenderer {
   group: Group;
   water: WaterUniforms;
@@ -24,8 +31,8 @@ export interface WorldRenderer {
   /** Patches drawn now. */
   patchCount(): number;
   setViewDistance(distance: number): void;
-  /** `focus`: the child's body, kept in view by fading the trees in front of it; none in review shots. */
-  update(camera: Camera, focus?: Vector3): void;
+  /** `see`: the child to keep in view by fading what stands in front of her (world-renderer SeeLine); none in review shots. */
+  update(camera: Camera, see?: SeeLine): void;
   /** Resolves once every region and patch within the view distance of (x, z) is in (the whole map when infinite). */
   settle(x: number, z: number): Promise<void>;
   dispose(): void;
@@ -47,6 +54,7 @@ function toGeometry(geo: QuadGeometry): BufferGeometry {
   out.setAttribute('uv', new BufferAttribute(geo.uvs, 2));
   out.setAttribute('tileRect', new BufferAttribute(geo.extra.tileRect ?? new Float32Array(0), 4));
   out.setAttribute('seeThrough', new BufferAttribute(geo.extra.seeThrough ?? new Float32Array(geo.positions.length / 3), 1));
+  out.setAttribute('glow', new BufferAttribute(geo.extra.glow ?? new Float32Array(geo.positions.length / 3), 1));
   const vertexCount = geo.positions.length / 3;
   out.setIndex(new BufferAttribute(vertexCount > 65535 ? geo.indices : Uint16Array.from(geo.indices), 1));
   out.computeBoundingSphere();
@@ -256,12 +264,14 @@ export async function createWorldRenderer(data: WorldData, options: { sky: Color
       horizon?.setNear(distance);
       lastFetch = null;
     },
-    update(camera, focus) {
+    update(camera, see) {
       camera.getWorldPosition(camPos);
-      seeThrough.uSeeOn.value = focus ? 1 : 0;
-      if (focus) {
+      seeThrough.uSeeOn.value = see ? 1 : 0;
+      if (see) {
         seeThrough.uSeeFrom.value.copy(camPos);
-        seeThrough.uSeeTo.value.copy(focus);
+        seeThrough.uSeeTo.value.copy(see.focus);
+        seeThrough.uSeeFeet.value = see.feet;
+        seeThrough.uSeeIndoor.value = see.indoor;
       }
       fetchAround(camPos.x, camPos.z);
       step(camPos.x, camPos.z);

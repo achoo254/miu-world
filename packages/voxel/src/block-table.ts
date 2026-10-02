@@ -16,6 +16,8 @@ const blockSchema = z.object({
   transparent: z.boolean().default(false),
   /** Rendered by the water pass instead of the opaque chunk mesh. */
   liquid: z.boolean().default(false),
+  /** Lit from within (a lantern, a lit window): drawn at its own colour whatever the light, aglow at dusk. */
+  glow: z.boolean().default(false),
 });
 export type BlockDef = z.infer<typeof blockSchema>;
 
