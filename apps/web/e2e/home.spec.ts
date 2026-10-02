@@ -16,8 +16,8 @@ test('Home shows the child and the island, the forest lists its chapters, and ch
   // The island image is shipped with the build and actually loads.
   expect(await page.locator('.world-island-image').evaluate((img: HTMLImageElement) => img.naturalWidth)).toBeGreaterThan(0);
   // A region whose map is not built yet only names itself (its card on a wide island); it does not open.
-  await expect(page.locator('[data-id="home-region-nui-tuyet"]')).toHaveText(/Núi tuyết\s*Sắp mở/);
-  await page.locator('[data-id="home-region-nui-tuyet"]').click();
+  await expect(page.locator('[data-id="home-region-nha-cua-be"]')).toHaveText(/Nhà của .+\s*Sắp mở/);
+  await page.locator('[data-id="home-region-nha-cua-be"]').click();
   await expect(page).toHaveURL(/\/home$/);
   await expect(page.locator('[data-id="home-today"]')).toContainText('Hoàn thành');
 
@@ -71,8 +71,8 @@ test.describe('on a phone', () => {
     await page.goto('/home');
     await expect(page.locator('.world-island-image')).toBeVisible();
     const pins = page.locator('.world-marker--locked');
-    // Eleven regions, eight of them open (the school hub and the seven theme maps).
-    await expect(pins).toHaveCount(3);
+    // Twelve regions, eleven of them open (the hub, Trung tâm, and the ten theme maps).
+    await expect(pins).toHaveCount(1);
     for (const id of await pins.evaluateAll((els) => els.map((el) => el.getAttribute('data-id')?.replace('home-region-', '') ?? ''))) {
       // tap() refuses when another element sits on top of the pin's centre.
       await page.locator(`[data-id="home-region-${id}"]`).tap();
@@ -94,7 +94,7 @@ test.describe('on a phone', () => {
       await page.goto(path);
       await expect(page.locator('.world-island-image')).toBeVisible();
       const markers = page.locator(`[data-id^="${prefix}-"].world-marker`);
-      await expect(markers).toHaveCount(11);
+      await expect(markers).toHaveCount(12);
       const boxes = (await markers.evaluateAll((els) => els.map((el) => ({ ...el.getBoundingClientRect().toJSON(), id: el.getAttribute('data-id') ?? '' })))) as Array<Box & { id: string }>;
       expect(boxes.flatMap((a, i) => boxes.slice(i + 1).filter((b) => overlaps(a, b)).map((b) => `${a.id} × ${b.id}`))).toEqual([]);
     });
@@ -119,7 +119,7 @@ for (const viewport of [
         await page.goto(path);
         await expect(page.locator('.world-island-image')).toBeVisible();
         const markers = page.locator(`[data-id^="${prefix}-"].world-marker`);
-        await expect(markers).toHaveCount(11);
+        await expect(markers).toHaveCount(12);
         const boxes = (await markers.evaluateAll((els) => els.map((el) => ({ ...el.getBoundingClientRect().toJSON(), id: el.getAttribute('data-id') ?? '' })))) as Array<Box & { id: string }>;
         // Cards, not pins: a locked region shows its name next to the lock.
         await expect(page.locator(`[data-id="${prefix}-nui-tuyet"]`)).toContainText('Núi tuyết');

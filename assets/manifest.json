@@ -13052,8 +13052,8 @@
       "derivedFrom": [
         "kenney-voxel-pack"
       ],
-      "sha256": "c2863d452702f85a5fb5f644482e0822350713539dede14777714622e40cdda6",
-      "bytes": 17619
+      "sha256": "32b3cea16f883a1940b20590305d16c1fa0aae1a863be4b74cbf0100b87aaa0e",
+      "bytes": 20356
     },
     {
       "path": "generated/atlas/atlas.png",
@@ -13062,8 +13062,8 @@
       "derivedFrom": [
         "kenney-voxel-pack"
       ],
-      "sha256": "a2feda651c712fd2136f343231907b5d0ba0cc5ced280193a0fff61b1bd32087",
-      "bytes": 110608
+      "sha256": "f82bd0389ad1f1359882008b077e3f6a73d947f02dd7cc43b15ccf59cdbc7a16",
+      "bytes": 131847
     },
     {
       "path": "generated/box-props/basketball-hoop.glb",
@@ -13570,6 +13570,198 @@
       "bytes": 12952
     },
     {
+      "path": "generated/box-props/dba-big-crystal.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "d4e54d6b00109ea90bf3b797f7806f5af9ad7f195bfe8463dd4adbe4fb8c922f",
+      "bytes": 10080
+    },
+    {
+      "path": "generated/box-props/dba-cannon.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "4b59f18eee5f81e0ceadd03decb8b9444dd6da4d875ed49f6aca7c68e2e3d960",
+      "bytes": 6232
+    },
+    {
+      "path": "generated/box-props/dba-crystal-blue.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "c52e4f569c5ef4b6a8c9eb1177e76d989e6b69a9f761fde91613578cde668242",
+      "bytes": 7776
+    },
+    {
+      "path": "generated/box-props/dba-crystal-purple.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "e4cbe8f441fbadedc92bd6e60a7d80f09654437d1675f873e856357972c46c0a",
+      "bytes": 7780
+    },
+    {
+      "path": "generated/box-props/dba-dock-lantern.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "2029c7c431159cabd10501c1a180e231fcc2480cb3722e1b741f87dbb7cd5d98",
+      "bytes": 10668
+    },
+    {
+      "path": "generated/box-props/dba-fireflies.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "95a9c379a7357db723b9fb3b655eb516ff4e0949b8fc87716d6608a23527393c",
+      "bytes": 9228
+    },
+    {
+      "path": "generated/box-props/dba-glow-mushroom-pink.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "74c706d24062027ca18761650dc0a8f5ddd977679754ea6ca90f3440de845829",
+      "bytes": 7776
+    },
+    {
+      "path": "generated/box-props/dba-glow-mushroom.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "6bd4ec8d674a35bce09da387e51bbb9a97001a662b4193a2135526a39b1582ea",
+      "bytes": 7776
+    },
+    {
+      "path": "generated/box-props/dba-glyph-panel.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "69751bf6cdc043ae7057b4f1f3f97077690ebbef392c807718203bbf5f90ebf9",
+      "bytes": 8524
+    },
+    {
+      "path": "generated/box-props/dba-gold-chest.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "94400c9d0f401ab203403bdf5a6330c0b63897dc7d7bdfb923b2997855bde06d",
+      "bytes": 9984
+    },
+    {
+      "path": "generated/box-props/dba-gold-heap.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "00ff80b5617c3b138a78a98b751bc8e4721dc6709208158da36e3a144c9a7222",
+      "bytes": 14568
+    },
+    {
+      "path": "generated/box-props/dba-gold-pile.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "16ce6c4c915b3333bd675f7b5c1bd0d41cf21fdde5bb5c59a2d3ff14be0e2346",
+      "bytes": 6252
+    },
+    {
+      "path": "generated/box-props/dba-gold-statue.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "d323f07b89332650994d9c4a4302f343026a2a2077b6366be0848cbeda5a3013",
+      "bytes": 13620
+    },
+    {
+      "path": "generated/box-props/dba-light-shaft.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "3887d80b4d92f2915c1ad51d816e0d58867917864487b370465d42cba7227cb4",
+      "bytes": 5528
+    },
+    {
+      "path": "generated/box-props/dba-map-table.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "cf010e7032a5eab628ac18141686256205a95727417fda2ce40d55c44b30772f",
+      "bytes": 12920
+    },
+    {
+      "path": "generated/box-props/dba-moon.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "6125248a8a9ac4c8a6061985f40e6f35d71bfba5ec793bce33344c60c6f51a03",
+      "bytes": 5596
+    },
+    {
+      "path": "generated/box-props/dba-net-rack.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "9baaceccb023cb91c70abecce4d1a1de49eb682df0698a2950c6818117bfa5a2",
+      "bytes": 14436
+    },
+    {
+      "path": "generated/box-props/dba-pirate-ship.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "e9af60502d9e29a888cb63d5f9562a09b07f06b055992738e901c1039b399d1f",
+      "bytes": 38960
+    },
+    {
+      "path": "generated/box-props/dba-rowboat.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "cf65703681254a4df06a5c45a9c71b18f9105b4424ecc7c1ca1d101c4b6cbd00",
+      "bytes": 12204
+    },
+    {
+      "path": "generated/box-props/dba-skull-flag.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "9e53b4e74968611ee455fabb86be19af32b442ad51e75270331f708de003cfdb",
+      "bytes": 6996
+    },
+    {
+      "path": "generated/box-props/dba-smoke.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "04b2d8f5047080df4a0e0d7314579a2d178c96606be16f1eb2c5b64b12673509",
+      "bytes": 12928
+    },
+    {
+      "path": "generated/box-props/dba-torch.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "17ff9b697727077b7db1b3ecab2946cdf8e58cbb85b8000656fa342caba84f88",
+      "bytes": 6292
+    },
+    {
+      "path": "generated/box-props/dba-vines.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "f0bc3ca26ad15caa85555624b8e48b628fc04cabd1adbb4d40e0ecc93221ca0d",
+      "bytes": 11440
+    },
+    {
+      "path": "generated/box-props/dba-wreck.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "c33e10e8265c8c0aa4381e4576c3675d357014d83ae6b56a6682b40f239abbd8",
+      "bytes": 6248
+    },
+    {
       "path": "generated/box-props/flagpole.glb",
       "license": "CC0-1.0",
       "generator": "tools/assets/build-box-props.ts",
@@ -14026,6 +14218,254 @@
       "bytes": 24852
     },
     {
+      "path": "generated/box-props/ntu-armchair.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "414557dd640961e85b9c356233aaec43110668c32c3a3045903a87d41c9b5cda",
+      "bytes": 5472
+    },
+    {
+      "path": "generated/box-props/ntu-banner-pole.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "7f2d3c7f3bc0a7d1b64c55f477f879ee3dad4e85f32143303e9dc64239ca4c1b",
+      "bytes": 16672
+    },
+    {
+      "path": "generated/box-props/ntu-boots.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "6c36b9d862bc573da6fbe83e6e5242d18ba301c4b0ddc1acdaac2a4d13034765",
+      "bytes": 6992
+    },
+    {
+      "path": "generated/box-props/ntu-bull-wheel.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "c659d7bca093c637b85f4cd42d42f06a543f4d7460713b65e09f4a8266138308",
+      "bytes": 6180
+    },
+    {
+      "path": "generated/box-props/ntu-cable-bit.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "b599286505d4cd83446d75176aa410035aee6db425f4e8c9a8d8d3d7159e7e8c",
+      "bytes": 1780
+    },
+    {
+      "path": "generated/box-props/ntu-cable-cabin.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "d6d4c5c8365d018105c28607d22975ef9e692035b654f6137c4fe399558c200b",
+      "bytes": 24108
+    },
+    {
+      "path": "generated/box-props/ntu-clock-face.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "4854d93eb63bdb25a0387497b9440e810a3b8edb6cd18f5824c3b4ea88a4ec01",
+      "bytes": 8468
+    },
+    {
+      "path": "generated/box-props/ntu-crystal.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "d0870af3132c9e5357208bb17ab179eebd4f7537dae0c25c8b527398d085aa2b",
+      "bytes": 10004
+    },
+    {
+      "path": "generated/box-props/ntu-dome-telescope.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "f87c70825781c128e22c7fd7ce48560938529a6a1f5da2ac4168b785105db324",
+      "bytes": 7740
+    },
+    {
+      "path": "generated/box-props/ntu-explorer-sign.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "1de9e33a0795c30e8ba7eedd9c49230508bce574e7965c7da6bdaa49172cad8d",
+      "bytes": 6992
+    },
+    {
+      "path": "generated/box-props/ntu-gate-emblem.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "49bc97e6c3539d3a09897e21f363979280a2d478d8d767dc53353f421e1785f7",
+      "bytes": 18156
+    },
+    {
+      "path": "generated/box-props/ntu-hearth-fire.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "aefe1cc57f502ff61fde112a55214e969b4fba5ee163851e70d8df1c2ab2e145",
+      "bytes": 6988
+    },
+    {
+      "path": "generated/box-props/ntu-icicles.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "73318152f3c8b138934e473375c597e2f77d03404c4d3592be6197b6ad4c61fc",
+      "bytes": 13660
+    },
+    {
+      "path": "generated/box-props/ntu-inn-sign.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "03067a11a6f086682caf4d1854496706b27809098e433e4e33b26bb117972eea",
+      "bytes": 9244
+    },
+    {
+      "path": "generated/box-props/ntu-jacket-rail.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "838d8e1ea272ef463001def2af0c212c031ffbdd6c1cfaae30f2464a4cc36c69",
+      "bytes": 22624
+    },
+    {
+      "path": "generated/box-props/ntu-knit-shelf.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "d8933b4b8abbfee4c445b2d7a78591f481769bb98b96fb57433c65eabe0a51b7",
+      "bytes": 24048
+    },
+    {
+      "path": "generated/box-props/ntu-map-poster.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "63ea83af33657570c0530f1ed9c4da08e7409d4c68229feb6c267eb80f01391e",
+      "bytes": 9224
+    },
+    {
+      "path": "generated/box-props/ntu-radar-dish.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "3265eef7f753609441f5b3bba35ce8b2ebf156a1e530a9bef58a0e62b013573c",
+      "bytes": 23360
+    },
+    {
+      "path": "generated/box-props/ntu-red-flag.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "87e77ff724f4b537c3fd9911c6b279c53f1ec1d181ea9c4de16c13d6fe5edcb1",
+      "bytes": 4016
+    },
+    {
+      "path": "generated/box-props/ntu-red-flagpole.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "5166f27a0982e9c446d9240166f3b16936c1313c7266f2f1f0c9232a3a03e712",
+      "bytes": 16672
+    },
+    {
+      "path": "generated/box-props/ntu-ski-poles.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "d084355ed20c1cd0addc34c627ea6a89c13c3e1691da8aa258caffd6b76506d2",
+      "bytes": 5508
+    },
+    {
+      "path": "generated/box-props/ntu-ski-rack.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "493ee364cb4bbfe4b41bc5335363d8c1bdae39590bb0a9c113a8f22c8f2fa3b2",
+      "bytes": 12936
+    },
+    {
+      "path": "generated/box-props/ntu-sled.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "31180cd972c9c9289346a1ca354f60860fa523e25f131490d719b6d2345f09ac",
+      "bytes": 8484
+    },
+    {
+      "path": "generated/box-props/ntu-snow-crate.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "35818308ce17627161c6c390a11143824cf696a992cef45babe16965b4ff5179",
+      "bytes": 6252
+    },
+    {
+      "path": "generated/box-props/ntu-snow-mound.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "353b2860917f6bd8e9e4f473479efc99ffce37404fc01244e299612ff1497ce8",
+      "bytes": 3252
+    },
+    {
+      "path": "generated/box-props/ntu-snow-pine.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "41e9628e695752f73a32ba2639ed587157c692c94c980417757971b79584f285",
+      "bytes": 7732
+    },
+    {
+      "path": "generated/box-props/ntu-snowboard.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "6ef9cb298bc5e95ccc4b872a6470b3b014e62b250d0e3d37df710b74a89991dc",
+      "bytes": 5508
+    },
+    {
+      "path": "generated/box-props/ntu-snowflake-banner.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "b6dd1bfa2ae3dcaa09a0edda80c7ad7da332246267214d376793381364deb5f5",
+      "bytes": 18884
+    },
+    {
+      "path": "generated/box-props/ntu-snowflake-shield.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "fd37b1590f95e181e36ee0f00ddcd9155f3728a63e2685378a804c56fabfc42b",
+      "bytes": 17412
+    },
+    {
+      "path": "generated/box-props/ntu-snowman.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "dcf9756f9a53fa752f5d4e543ebaabc77a6ee7ec430727bde8cf0b0f928b2c7d",
+      "bytes": 16656
+    },
+    {
+      "path": "generated/box-props/ntu-wall-lantern.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "f3ddcc20f1403c57012c9e9c4201ec99d441f1db26fcb476189c0c4a866dde39",
+      "bytes": 9268
+    },
+    {
       "path": "generated/box-props/park-bench.glb",
       "license": "CC0-1.0",
       "generator": "tools/assets/build-box-props.ts",
@@ -14376,6 +14816,302 @@
       "derivedFrom": [],
       "sha256": "3e5f92455181d38cc22a3789b24aecaa2a02a8b31b02c030a259d89f36434645",
       "bytes": 4696
+    },
+    {
+      "path": "generated/box-props/tt-airship.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "da61bfde7a5a0202e78c10c2610a1c3bd9be855183ae36abb23015c101f05881",
+      "bytes": 47136
+    },
+    {
+      "path": "generated/box-props/tt-balloon-blue.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "18fddae164139fdc94e0cf6e4048c369cef6b3a19ddb31a75d753706206f7112",
+      "bytes": 21876
+    },
+    {
+      "path": "generated/box-props/tt-balloon-rainbow.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "b4f8777a1d47ae81e074f5a9f856bcdefbdb8c505a10f5b68dfd6d2f57c619c4",
+      "bytes": 21876
+    },
+    {
+      "path": "generated/box-props/tt-carpet.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "389bcb7e4069e015f1f5b44c71b2a4fdb46e44d1025800f488a58ddf06633278",
+      "bytes": 2464
+    },
+    {
+      "path": "generated/box-props/tt-clock-face.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "080b8638aa9a6cdaed66e8d58aada6a829ea99f6796517324de7bdbad4fc0b51",
+      "bytes": 14440
+    },
+    {
+      "path": "generated/box-props/tt-goods-pile.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "22d3fa7a23e7b46af60913a71a8c7b1fbfa21f1afe9ad6f045a38abd9576743b",
+      "bytes": 6996
+    },
+    {
+      "path": "generated/box-props/tt-lantern-string.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "4477d033b86ed8eba16288118bed8b9dfd8e543b2c5e7e8aaf7d840d87bac462",
+      "bytes": 21176
+    },
+    {
+      "path": "generated/box-props/tt-portal-blue.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "03ff74b5955bd5ee9bad946445aa8c06e5ba3783b3e7e6a258356b3e4af90ec8",
+      "bytes": 29424
+    },
+    {
+      "path": "generated/box-props/tt-portal-green.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "c880c57639500792c925360cd3c81e88e732bd3c064ca2e0afc14d10f3656060",
+      "bytes": 29464
+    },
+    {
+      "path": "generated/box-props/tt-portal-ice.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "eed6926c8d371f4a6c823f497e5d7acbe621f4539d2137f883b5dadad1701696",
+      "bytes": 28672
+    },
+    {
+      "path": "generated/box-props/tt-portal-lime.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "934dac7a99ed37881a6a752604b44e9fa9154fac93d95c2ccfea587c38f1aa1c",
+      "bytes": 29460
+    },
+    {
+      "path": "generated/box-props/tt-portal-orange.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "1eb31c22fe1dadb793148de2be90cf2b4595999bce769a0f2ac409c4ad70452c",
+      "bytes": 29408
+    },
+    {
+      "path": "generated/box-props/tt-portal-pink.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "edc2cd6210cf545415422e42b2ba18093046e72b36ec3269d816669b0e8d91ea",
+      "bytes": 29424
+    },
+    {
+      "path": "generated/box-props/tt-portal-red.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "763ebc292b7ca3247e1643293a4bbe26b15a5a4d9ea896f61968d376704a7086",
+      "bytes": 29424
+    },
+    {
+      "path": "generated/box-props/tt-portal-teal.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "785dd60b14dc662e0d5b961f58b01f9275eaf4fa7783980b990d246d21c493c6",
+      "bytes": 29456
+    },
+    {
+      "path": "generated/box-props/tt-portal-violet.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "980171f5a9e308390e32c30da6f716295b1f01ff8498fb4547f0be9131ec68b1",
+      "bytes": 29424
+    },
+    {
+      "path": "generated/box-props/tt-portal-yellow.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "5c4fda9e3f50203ec90027608ab8fee82f415b4eb5175e03c74bc7bbdb3788a0",
+      "bytes": 29428
+    },
+    {
+      "path": "generated/box-props/tt-quest-board.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "992e8b0cae873c4ecca103f79a210172786bc8ca52043dea38926825ee539f42",
+      "bytes": 108980
+    },
+    {
+      "path": "generated/box-props/tt-sign-cho-phien.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "54719c3e0f34b4f3b4bb448da4ae6926f09ec0fd791714efb949d8f1c1362ab1",
+      "bytes": 50156
+    },
+    {
+      "path": "generated/box-props/tt-sign-dao-bi-an.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "4f98043d836935ef82ea2d0754958579471aae422680b60a01aa587c2e2339cd",
+      "bytes": 50896
+    },
+    {
+      "path": "generated/box-props/tt-sign-khu-rung-bi-mat.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "a34bca906ed7b1e307ee79d2aa2f54aee5de402d7e23e650e30e58af03a672c5",
+      "bytes": 82148
+    },
+    {
+      "path": "generated/box-props/tt-sign-lang-ven-song.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "46d335fdc3dc7d96d82e75eee26d6793405268441e6d5d9aafd65c1463bf47e2",
+      "bytes": 70244
+    },
+    {
+      "path": "generated/box-props/tt-sign-lau-dai.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "6b9d2745daeaccd317d0c5cd569751245e60675300ec30625e86588a2f5d303a",
+      "bytes": 39740
+    },
+    {
+      "path": "generated/box-props/tt-sign-nong-trai.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "9754d837e88b4f845c3757e275970d23ef48e37473c8b27c8626be272d1c5208",
+      "bytes": 52388
+    },
+    {
+      "path": "generated/box-props/tt-sign-nui-tuyet.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "6a17d3e0d587449493bd7c2d2e37bff9490828d39e81d9e8276cd5378686c64c",
+      "bytes": 50156
+    },
+    {
+      "path": "generated/box-props/tt-sign-shop.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "540e4db50f513b3f0548e65fafe59423ea7a07b4e7f3d427aed0f8ebe7bdb1ba",
+      "bytes": 52384
+    },
+    {
+      "path": "generated/box-props/tt-sign-team-1.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "9632d20226508b445b51246ca3ad52bcc3d58428704de4d6c359b753bb65ac82",
+      "bytes": 29320
+    },
+    {
+      "path": "generated/box-props/tt-sign-team-2.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "48e5105029efcaf7546847f59843e21a727e61387d1f631e651f8ec01b2fd77e",
+      "bytes": 29316
+    },
+    {
+      "path": "generated/box-props/tt-sign-thu-vien.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "6e4c9049872405c12720a6415336c7090e4e6be3d4c1a2179f39a2686e904a5e",
+      "bytes": 45692
+    },
+    {
+      "path": "generated/box-props/tt-sign-truong-hoc.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "5f0774271ce05225f8837da6c475b38006dccb432eef51a1669ea2cbc301e2fb",
+      "bytes": 58336
+    },
+    {
+      "path": "generated/box-props/tt-sign-xom-mai-am.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "9290b2d926cc6ad83a5e3219c6eec8b0b56281fabf382c7119cb9ef437e7572c",
+      "bytes": 63548
+    },
+    {
+      "path": "generated/box-props/tt-signpost-east.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "ccfb83e06bba8196c56a6edcf53f329cab799b5bec285d51e7a5d88c5ee68679",
+      "bytes": 151360
+    },
+    {
+      "path": "generated/box-props/tt-signpost-west.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "20ef3348089eea206782c06250e4265e5cda91d0ea93369f6f8cbfa358c6b277",
+      "bytes": 187816
+    },
+    {
+      "path": "generated/box-props/tt-trade-table-gems.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "0b19619e7367665ad694f8e3e2578e7c802bfbf18e1142cc62e5fadde171ebb1",
+      "bytes": 12272
+    },
+    {
+      "path": "generated/box-props/tt-trade-table-potions.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "4f5ca172d4b650b16fbec5cecf18098fb653e3b8a65bb375e99701ddb3e65d49",
+      "bytes": 11544
+    },
+    {
+      "path": "generated/box-props/tt-trade-table-toys.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "f695cd9c9c01eec7832f0bd4194f582435b87a718ab200df0f4da5855e7396f6",
+      "bytes": 9224
+    },
+    {
+      "path": "generated/box-props/tt-truss.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "d276fd939588b6847bfaf852fc319b37fd385a05967223df11d778a57177b45f",
+      "bytes": 37544
     },
     {
       "path": "generated/box-props/tv-book-banner.glb",
@@ -15046,8 +15782,8 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "74c64100f19ac64d4b049aac70fdb1fc47fabc449d9dc34cd0a7a303a011447a",
-      "bytes": 781204
+      "sha256": "e6bad47bf095865ed61f361b54d5ec7714d0e77c3af8e38105e9b0af65446f33",
+      "bytes": 918616
     },
     {
       "path": "generated/music/a-maze-that-smells-fruits.m4a",
@@ -16988,8 +17724,24 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "d4377f57f38cd0059ddc585e1b1ae85a89db3f70cd344d99f54ee36a90fef93e",
-      "bytes": 867250
+      "sha256": "83b07f557a1139dabc261e385504400990efdb4c213c421c7eba911ab10df269",
+      "bytes": 653837
+    },
+    {
+      "path": "generated/regions/dao-bi-an.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-region-art.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "99d28e5928c22b0c866c4f9cb2ed155f0584b5c3916bd96e61dcbcda579c6864",
+      "bytes": 818892
     },
     {
       "path": "generated/regions/khu-rung-bi-mat.png",
@@ -17004,8 +17756,8 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "049c05633cb8f4dc3a456000885a846baa61069b20bff84447c7bdfa8ad87684",
-      "bytes": 799443
+      "sha256": "3472c9f722d05f8acd546577166b068c3829b698cd6b44119a2cfda2e6e953f2",
+      "bytes": 752680
     },
     {
       "path": "generated/regions/lang-ven-song.png",
@@ -17020,8 +17772,8 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "a7f3d186e0013a068c261b88f0bef4df4901100a74e901e0fdd7ebcfa45c5c80",
-      "bytes": 811096
+      "sha256": "a9fd6893b088b0fa4c2961064ce82b44e854bb26af7592901808103035e9514b",
+      "bytes": 796710
     },
     {
       "path": "generated/regions/lau-dai.png",
@@ -17036,8 +17788,8 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "ada8445445209ee881ff72cea69c427cf02c2a4552e41bab17c61b17d6bb711a",
-      "bytes": 669959
+      "sha256": "f17666b1aff0b296ec866f0c3822992b7ad3b1b2c7bfe3f8c02566a113eef6d8",
+      "bytes": 684475
     },
     {
       "path": "generated/regions/nong-trai.png",
@@ -17052,8 +17804,24 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "7d3a14d2ceec148c8a0f8caa42f8b67b8b14139f45f9f79cc7ebd979adeae6da",
-      "bytes": 672721
+      "sha256": "02aca39bd70ce17309d66eff7096cfcf4549134c38d00badb9dae776fc797b7a",
+      "bytes": 550359
+    },
+    {
+      "path": "generated/regions/nui-tuyet.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-region-art.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "3601b2501f99f2e46b4ab0a136d74cd1693578800f7ff7977ca324194012b317",
+      "bytes": 620526
     },
     {
       "path": "generated/regions/thu-vien.png",
@@ -17068,8 +17836,24 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "5543d0c67233c0fce6f81cd75e86bb562273b330c2d60d98a202c352e52ae70b",
-      "bytes": 720522
+      "sha256": "bad14d1d4f038d03f2844406fb3ea53c541af50653402a8a6bce8d7e941ce5bc",
+      "bytes": 663204
+    },
+    {
+      "path": "generated/regions/trung-tam.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-region-art.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "a9ec8871fd0266cac954872729297f38a0a321a03f09f95817c6bd60bb8eaecc",
+      "bytes": 937936
     },
     {
       "path": "generated/regions/truong-hoc.png",
@@ -17084,8 +17868,8 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "9e6d0894a12031d12e5b8dda4e0565690aad6bc6caf98720736a792e60f1d637",
-      "bytes": 844218
+      "sha256": "16a8711631e204515a76dedda2f5a26e27c00669084a7cf98f804739e0bcdcac",
+      "bytes": 755173
     },
     {
       "path": "generated/regions/xom-mai-am.png",
@@ -17100,8 +17884,8 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "518b6a5e4dd58fb9653a80c8bb3bb02b129f3add359c8949a5e654de8fef3255",
-      "bytes": 631604
+      "sha256": "b87d1d9bc1a7a98b0af36aeb81c64fff30824475afd7de1040731d2c8dd073e4",
+      "bytes": 730178
     },
     {
       "path": "generated/review/accessories/item-back-dino.png",
@@ -19824,6 +20608,486 @@
       "bytes": 329067
     },
     {
+      "path": "generated/review/dao-bi-an/dao-bi-an-bai-bien.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "c6eb7696ea6ee5b1ec049d320c366e3fae9b813f6b87c8a477f90787aab9c7b5",
+      "bytes": 926544
+    },
+    {
+      "path": "generated/review/dao-bi-an/dao-bi-an-be-thac.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "75e5e8065f0f33191ce67d18cee375a8987df46934ffa20689ef1c64226b5e52",
+      "bytes": 277647
+    },
+    {
+      "path": "generated/review/dao-bi-an/dao-bi-an-ben-tau-bai-bien.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "0125abf5852f61ed90756a8531e7488ed54dc8ab0f75e2e7c0dbf0c62504109c",
+      "bytes": 871732
+    },
+    {
+      "path": "generated/review/dao-bi-an/dao-bi-an-ben-tau.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "afee3f832f017c6cb862e8cd0f612eaa9657422b8c2e4d1c18663118d9503dab",
+      "bytes": 950807
+    },
+    {
+      "path": "generated/review/dao-bi-an/dao-bi-an-bo-da-hai-tac.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "568de5b87d6e7c03edf50ff468d4c7876a7d5fdf7ba3f5be3fe85d84e31ab49b",
+      "bytes": 897946
+    },
+    {
+      "path": "generated/review/dao-bi-an/dao-bi-an-cay-dua-nghieng.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "319c688869a81a9eef8b6f6eed04999ce980ef1dbbe00292a0aaa4f17cf5c69b",
+      "bytes": 933208
+    },
+    {
+      "path": "generated/review/dao-bi-an/dao-bi-an-di-tich-den-tho.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "e8a9812b679be005188dff4a84a3cb54917121cddf1512e041d2ed130a751f55",
+      "bytes": 1012067
+    },
+    {
+      "path": "generated/review/dao-bi-an/dao-bi-an-hang-dong-kho-bau.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "bcfd4ee0fd0ecc7d753664c14e5821ba81fe80cbb1d81574bf0141d8d0ad27b0",
+      "bytes": 801846
+    },
+    {
+      "path": "generated/review/dao-bi-an/dao-bi-an-lang-chai.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "2b7b0a8d0071a30636ab9e7000f48800b233e343f01f9ca71cada4fbfe3ae849",
+      "bytes": 963976
+    },
+    {
+      "path": "generated/review/dao-bi-an/dao-bi-an-leu-thuyen-truong.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "6fc5ce6498d1720d72aebea8817d7c3eb566c9e29679e8cbc689a83bbb15e0f8",
+      "bytes": 912764
+    },
+    {
+      "path": "generated/review/dao-bi-an/dao-bi-an-rung-nhiet-doi.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "d27def81cd5dfbad581f6b1f3bed43ccb843cd4a1e9de2be4753e62d6ce7db42",
+      "bytes": 815381
+    },
+    {
+      "path": "generated/review/dao-bi-an/dao-bi-an-ruong-cat.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "db27846e185491a26961cdcc17de357f9cb00ad8e3bd6cfa7ec0b92e65b4e13d",
+      "bytes": 942176
+    },
+    {
+      "path": "generated/review/dao-bi-an/dao-bi-an-thac-nuoc.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "0db05e567bb1a0fa831754987903ca27638c1907938362a72c7ca8d15ebd64b6",
+      "bytes": 903148
+    },
+    {
+      "path": "generated/review/dao-bi-an/dao-bi-an-toan-canh.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "66b23feb760c6e28bbf5b2215df4605920d6fe43408a29aef29b033c17a7000f",
+      "bytes": 626729
+    },
+    {
+      "path": "generated/review/dao-bi-an/dao-bi-an-tren-cao.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "5cf354283c53be1358af108fa778917a0c05af7c86bf31079a0ae38449e881dd",
+      "bytes": 623306
+    },
+    {
+      "path": "generated/review/dao-bi-an/dao-bi-an-vung-nuoc-trieu.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "a860250b8f62ab52ad110de949850a8295c03abf5fa8bc3951495d7d727d6355",
+      "bytes": 940945
+    },
+    {
+      "path": "generated/review/dao-bi-an/mock__dao-bi-an__d-01-toan-canh-dao.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "700b3be14daf713541c467dcdf7d711cb81ebcd7128b0f41c96ed5448e7d83bc",
+      "bytes": 767066
+    },
+    {
+      "path": "generated/review/dao-bi-an/mock__dao-bi-an__d-02-ben-tau-den-dao.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "51d0dce787e6b40caf4f7b76915005132ca3e2d904c05a1c546492ff1dafd930",
+      "bytes": 440147
+    },
+    {
+      "path": "generated/review/dao-bi-an/mock__dao-bi-an__d-03-bai-bien.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "f10027b110b72171c82b90ba926e066aebbbccc7d89036a1a1dc11beae3d107a",
+      "bytes": 343719
+    },
+    {
+      "path": "generated/review/dao-bi-an/mock__dao-bi-an__d-04-rung-nhiet-doi.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "43e9e6197a8486c38e1cfe7fe65b5badb1fa277cf3c4985694dc1003e96ecd8b",
+      "bytes": 666916
+    },
+    {
+      "path": "generated/review/dao-bi-an/mock__dao-bi-an__d-05-thac-nuoc.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "5948e91f9c5e66b7dedc698c9a6c9cb7b0ad27088449e2a64d086a37d531bfd2",
+      "bytes": 670357
+    },
+    {
+      "path": "generated/review/dao-bi-an/mock__dao-bi-an__d-06-khu-di-tich-co.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "42e567856b43490f42577e813abf831de373f173eec4418d399ab46e81e9a7d7",
+      "bytes": 725186
+    },
+    {
+      "path": "generated/review/dao-bi-an/mock__dao-bi-an__d-07-hang-dong-loi-vao.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "464c5e49bf92eede87f98baff286499d648bbe89135f61301a7e4679de393acb",
+      "bytes": 545486
+    },
+    {
+      "path": "generated/review/dao-bi-an/mock__dao-bi-an__d-08-trong-hang-dong.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "d93a4ef5fe93cea9eb0022dda9d9735d44879e9890164dbfda7a66ccf1d117f5",
+      "bytes": 795165
+    },
+    {
+      "path": "generated/review/dao-bi-an/mock__dao-bi-an__d-09-den-tho-bi-an.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "8d5592ea422f7eb8be0c8f02b2770e826b0abcda7796e7edfdb8782aa24073db",
+      "bytes": 737858
+    },
+    {
+      "path": "generated/review/dao-bi-an/mock__dao-bi-an__d-10-khu-thu-thach.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "5491b8f0a31ac256aa6465c5ed9dc20c96d9669cd9352cfcf359a18f6916dbae",
+      "bytes": 396630
+    },
+    {
+      "path": "generated/review/dao-bi-an/mock__dao-bi-an__d-11-dinh-nui-lua.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "bcbfea317132fc27049c06eac6861f8dedf6cab0f2c1fbc997570f6a59303359",
+      "bytes": 469580
+    },
+    {
+      "path": "generated/review/dao-bi-an/mock__dao-bi-an__d-12-bo-da-hang-hai-tac.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "94cbf0d67b23881f4d2d3d69e80d4394a54830575648c2b6be77f2ced141bfa3",
+      "bytes": 523569
+    },
+    {
+      "path": "generated/review/dao-bi-an/mock__dao-bi-an__d-13-rung-dem.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "b40d1b94fafa4ce8776f2ef72c4803427f5a0e702b201660275891e461d64e94",
+      "bytes": 600224
+    },
+    {
+      "path": "generated/review/dao-bi-an/mock__dao-bi-an__d-14-kho-bau.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "2910d97e19eb1d9492aa6184ef8a064e576e5eb35885747ec4c0cd3e71ed99f2",
+      "bytes": 599982
+    },
+    {
       "path": "generated/review/forest-ch1/forest-ch1-ancient-tree.png",
       "license": "CC0-1.0",
       "generator": "tools/assets/render-preview.ts",
@@ -21728,6 +22992,534 @@
       "bytes": 757189
     },
     {
+      "path": "generated/review/nui-tuyet/mock__nui-tuyet__b-11-nui-toan-canh.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "30e4d23a7ef2f4d1ad6b76bbc75fdb6c663989677bc01bcdd0df47840179acdd",
+      "bytes": 933056
+    },
+    {
+      "path": "generated/review/nui-tuyet/mock__nui-tuyet__c-14-nui.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "ad3bc3186d3150a9891aec16a0075c373d854d0f294804d271f80b282bc6dbc1",
+      "bytes": 463603
+    },
+    {
+      "path": "generated/review/nui-tuyet/mock__nui-tuyet__d-01-toan-canh-nui-tuyet.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "2e121ca288f4d3d97947cd780565d835e9c25b1eb7c596928fd3ebdd17b9b855",
+      "bytes": 572054
+    },
+    {
+      "path": "generated/review/nui-tuyet/mock__nui-tuyet__d-02-lang-nui-tuyet.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "5da8072b15e6289a8a41f3b7c977a93499d3fc570b5b094374fdf3aa205106b5",
+      "bytes": 552483
+    },
+    {
+      "path": "generated/review/nui-tuyet/mock__nui-tuyet__d-03-cong-vao.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "7a446e8c9fa33b377c6869a02569d93b733e7a952402f0a88d49ad4da0882ca5",
+      "bytes": 445324
+    },
+    {
+      "path": "generated/review/nui-tuyet/mock__nui-tuyet__d-04-khu-truot-tuyet.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "1e80d31d0497c07b81b0383206c5d2365a5e41c497d1eacfbe7961c9eba662d5",
+      "bytes": 427782
+    },
+    {
+      "path": "generated/review/nui-tuyet/mock__nui-tuyet__d-05-cap-treo.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "3b52112d5b0fcd0a2a127b93c001683087d7de3554466b8e0c9a0fbe8caaea2d",
+      "bytes": 543110
+    },
+    {
+      "path": "generated/review/nui-tuyet/mock__nui-tuyet__d-06-dinh-nui-dai-quan-sat.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "c84d480f581a4449d47a8233187d3e16594aa063e614ac0b0883182568f1b256",
+      "bytes": 382507
+    },
+    {
+      "path": "generated/review/nui-tuyet/mock__nui-tuyet__d-07-ho-bang.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "58dc9dda5e08ae48ae5767839d9de9819b506275bc29236111a588cc14b33857",
+      "bytes": 469800
+    },
+    {
+      "path": "generated/review/nui-tuyet/mock__nui-tuyet__d-08-thac-bang.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "373d6ef0092c5b60e3ba77461740fccd76ebe2fd507c172c8f973765ee3f0dab",
+      "bytes": 663118
+    },
+    {
+      "path": "generated/review/nui-tuyet/mock__nui-tuyet__d-09-hang-dong-bang.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "c17460ca58a28aa325fc4e4e5c74bb11291ec98b4c362fa753ec856d250a8202",
+      "bytes": 729741
+    },
+    {
+      "path": "generated/review/nui-tuyet/mock__nui-tuyet__d-10-tram-tham-hiem.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "1a5ae55a228ef2022d6a11e5a178234e1a5afb0bd7c930adf6a3eb4742351491",
+      "bytes": 485164
+    },
+    {
+      "path": "generated/review/nui-tuyet/mock__nui-tuyet__d-11-nha-dan-ben-trong.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "e87567851ccc1ded23ad7788a748dd5a1126f845dbf19c5d3b2045aeee59cbde",
+      "bytes": 368300
+    },
+    {
+      "path": "generated/review/nui-tuyet/mock__nui-tuyet__d-12-cua-hang-do-am.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "bda5765d5de109c2ec8acb6de202a814f39227a06f04dfcae0504803a5a16320",
+      "bytes": 302188
+    },
+    {
+      "path": "generated/review/nui-tuyet/mock__nui-tuyet__d-13-nha-nghi.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "4777bd6f89c8a36e2ee8926ad14249f93b59447e1176fe61125ba0e716b38a8e",
+      "bytes": 444486
+    },
+    {
+      "path": "generated/review/nui-tuyet/mock__nui-tuyet__d-14-tram-nhiem-vu.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "deafb6773f9902b0d2e67b99f653c0c93827c335e9fd1bb9a08a1cf2b091bc0b",
+      "bytes": 258214
+    },
+    {
+      "path": "generated/review/nui-tuyet/mock__nui-tuyet__d-15-hoang-hon.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "2347d8c460b41787347cae10d3c36123a01443f77834d1b7ab18b8a291814f22",
+      "bytes": 645236
+    },
+    {
+      "path": "generated/review/nui-tuyet/nui-tuyet-cong-vao.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "5e0ad7c41a9cb3c832fef9d8e0c5c371c13e7ae651266538da2e8876d252c1c1",
+      "bytes": 971007
+    },
+    {
+      "path": "generated/review/nui-tuyet/nui-tuyet-dinh-nui.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "a3fa47f22e46e808cb5c730a784a9555cf58a80617f162e6c160f8f42a41a4f9",
+      "bytes": 916623
+    },
+    {
+      "path": "generated/review/nui-tuyet/nui-tuyet-doc-truot-nho.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "365dff8b8c16685a18d929754bdcc51a6c2e6f122045a800510421ddd04235aa",
+      "bytes": 889770
+    },
+    {
+      "path": "generated/review/nui-tuyet/nui-tuyet-hang-bang-tram-tham-hiem.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "5ce794e1113d8842fe1175a7eb3c49453e670bc917145614a6c11572163edc40",
+      "bytes": 823068
+    },
+    {
+      "path": "generated/review/nui-tuyet/nui-tuyet-ho-bang.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "e749dcacb10d3d1005906890cd41eaa215d0c7ee18a8becce7756beda8631210",
+      "bytes": 928885
+    },
+    {
+      "path": "generated/review/nui-tuyet/nui-tuyet-khu-truot-tuyet.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "df058cb3d476072f0486d905cc4985ec6f2f9471eac25ffd3e56076a6213ac8f",
+      "bytes": 845681
+    },
+    {
+      "path": "generated/review/nui-tuyet/nui-tuyet-lang-nui-tuyet.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "f12d2f681c71c1bcc50cd486e6f58b1e815a30c241fe3ef8762e39b7e68e8445",
+      "bytes": 983359
+    },
+    {
+      "path": "generated/review/nui-tuyet/nui-tuyet-nguoi-tuyet.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "c25f88f6e4e91e9a1327d73300b66f2a1eb9dd96d08db3017c3d9459d8a3c5bc",
+      "bytes": 973642
+    },
+    {
+      "path": "generated/review/nui-tuyet/nui-tuyet-quang-truong-lang.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "50365e6b17b4434a3b4962292bb41f0c24e7049ee5504063b86e0966402f840b",
+      "bytes": 935287
+    },
+    {
+      "path": "generated/review/nui-tuyet/nui-tuyet-thap-dong-ho.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "d0bdf2b8913f434d04629ecb99901fcb09ac08629bd0fed72738b567982502bc",
+      "bytes": 986100
+    },
+    {
+      "path": "generated/review/nui-tuyet/nui-tuyet-toan-canh.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "c381faf708ef9eea954e5d8827835b5bd52fb09e4ba16108c89dc3b4d631f2a4",
+      "bytes": 875499
+    },
+    {
+      "path": "generated/review/nui-tuyet/nui-tuyet-tram-nhiem-vu.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "e66eb19ee4f141337c31faabd15deb9202820b678e8c861c2ea5d2bc0584f4a0",
+      "bytes": 871538
+    },
+    {
+      "path": "generated/review/nui-tuyet/nui-tuyet-tren-cao.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "e65da84fd48c06c7e25f012bd6a6d43dc921a51944c6f402cf76df16e1d944fb",
+      "bytes": 937341
+    },
+    {
+      "path": "generated/review/nui-tuyet/nui-tuyet-trong-cua-hang.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "d6fd0f3c98a529e69ec4e37156a9db8ab8c60b83cb470ff37e143cb242e0f29e",
+      "bytes": 487216
+    },
+    {
+      "path": "generated/review/nui-tuyet/nui-tuyet-trong-tram-nhiem-vu.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "8e65363eca9101a7d929aa16672f53ac5e3130c5156030e6c3f8ff4ad849ebca",
+      "bytes": 475966
+    },
+    {
+      "path": "generated/review/nui-tuyet/nui-tuyet-truoc-cua-hang-do-am.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "89cdc5f40d031535246ede87dc445f43128929d53e422476f998514989305246",
+      "bytes": 990033
+    },
+    {
       "path": "generated/review/outland/cho-phien-ngoai.png",
       "license": "CC0-1.0",
       "generator": "tools/assets/render-preview.ts",
@@ -22742,7 +24534,7 @@
       "bytes": 895550
     },
     {
-      "path": "generated/review/truong-hoc/mock__trung-tam__d-01-toan-canh-trung-tam.png",
+      "path": "generated/review/trung-tam/mock__trung-tam__d-01-toan-canh-trung-tam.png",
       "license": "CC0-1.0",
       "generator": "tools/assets/render-preview.ts",
       "derivedFrom": [
@@ -22754,11 +24546,11 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "e35d69fb4092b69770c6049511e4b4c6340f86db186786a8d9824626e2f137f9",
-      "bytes": 761225
+      "sha256": "ce7b6de96ed0d43f1cefeb0261feaa24c08fd5f55e5fc10f7de5f4f7612f7df4",
+      "bytes": 716870
     },
     {
-      "path": "generated/review/truong-hoc/mock__trung-tam__d-02-cua-hang.png",
+      "path": "generated/review/trung-tam/mock__trung-tam__d-02-cua-hang.png",
       "license": "CC0-1.0",
       "generator": "tools/assets/render-preview.ts",
       "derivedFrom": [
@@ -22770,11 +24562,11 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "bb76bcab1a38891dc1cf737dedb3a582c44e4719b4984e511a3090025807d0cc",
-      "bytes": 544091
+      "sha256": "88271873c2d54c810eeebcab7c72392fd297edf8f39040a34e8d53ae428b93f2",
+      "bytes": 503492
     },
     {
-      "path": "generated/review/truong-hoc/mock__trung-tam__d-03-giao-dich.png",
+      "path": "generated/review/trung-tam/mock__trung-tam__d-03-giao-dich.png",
       "license": "CC0-1.0",
       "generator": "tools/assets/render-preview.ts",
       "derivedFrom": [
@@ -22786,11 +24578,11 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "5ba8665077234e02bbacc7c6bf0cccb11191299370e3e8c870cdae4136b8736b",
-      "bytes": 432737
+      "sha256": "3eaa0c24aaa536084a966e5646fd23661526b98f1fa3c8ad1eecb9986168b281",
+      "bytes": 447691
     },
     {
-      "path": "generated/review/truong-hoc/mock__trung-tam__d-04-bang-nhiem-vu-su-kien.png",
+      "path": "generated/review/trung-tam/mock__trung-tam__d-04-bang-nhiem-vu-su-kien.png",
       "license": "CC0-1.0",
       "generator": "tools/assets/render-preview.ts",
       "derivedFrom": [
@@ -22802,11 +24594,11 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "914d0e8526e89176e6932cd18792e40daf76db09e60ff6717e6f8bbf8f10ad91",
-      "bytes": 435361
+      "sha256": "7e264e5de699f58659bb8f3d8bc9189d25ff93dc46256fe9f5dc4ac4c14c0025",
+      "bytes": 486795
     },
     {
-      "path": "generated/review/truong-hoc/mock__trung-tam__d-05-khu-cho-to-doi.png",
+      "path": "generated/review/trung-tam/mock__trung-tam__d-05-khu-cho-to-doi.png",
       "license": "CC0-1.0",
       "generator": "tools/assets/render-preview.ts",
       "derivedFrom": [
@@ -22818,11 +24610,11 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "fa4de972316620f3436308f408ffebef2e25aad083b5eff18257ee580de25180",
-      "bytes": 542456
+      "sha256": "dfe4262886015d12a32a6a1764022b55fcdeabde72748e2568677903565b7a69",
+      "bytes": 576509
     },
     {
-      "path": "generated/review/truong-hoc/mock__trung-tam__d-06-cong-dich-chuyen.png",
+      "path": "generated/review/trung-tam/mock__trung-tam__d-06-cong-dich-chuyen.png",
       "license": "CC0-1.0",
       "generator": "tools/assets/render-preview.ts",
       "derivedFrom": [
@@ -22834,11 +24626,11 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "d506c384ba9579a2f3fc37424ef910bff5a8514d8aef1f91d409ff86c71e8988",
-      "bytes": 408181
+      "sha256": "93031873cab6cafbc410aaed0bf0c5b30642c04583b65dd9741e67a9182155ff",
+      "bytes": 483879
     },
     {
-      "path": "generated/review/truong-hoc/mock__trung-tam__d-07-cau-trung-tam-loi-di.png",
+      "path": "generated/review/trung-tam/mock__trung-tam__d-07-cau-trung-tam-loi-di.png",
       "license": "CC0-1.0",
       "generator": "tools/assets/render-preview.ts",
       "derivedFrom": [
@@ -22850,11 +24642,11 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "c69a6e745615b671857e9f08d74e6fbe02fa3297e990adfe9452af82670362ba",
-      "bytes": 398421
+      "sha256": "7206f348e75bf671c85c7e64eca428b5ada76a564576a96103eb8142f8d1a651",
+      "bytes": 437956
     },
     {
-      "path": "generated/review/truong-hoc/mock__trung-tam__d-08-khu-su-kien-theo-mua.png",
+      "path": "generated/review/trung-tam/mock__trung-tam__d-08-khu-su-kien-theo-mua.png",
       "license": "CC0-1.0",
       "generator": "tools/assets/render-preview.ts",
       "derivedFrom": [
@@ -22866,8 +24658,264 @@
         "kenney-food-kit",
         "kenney-castle-kit"
       ],
-      "sha256": "6475cffc8c8197115e57037494b91c4f98da343bde2a1a163757f17606b30c61",
-      "bytes": 509842
+      "sha256": "6eaa4c55519e42f1cf3810090dd325495defc5464cbca7e35f8c0a0a87ea9c8c",
+      "bytes": 465806
+    },
+    {
+      "path": "generated/review/trung-tam/trung-tam-bang-nhiem-vu.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "6690774e6a11992ba0af7ab1aae2a4a2bcf1a2f919db90eb1fee7461a06fc35d",
+      "bytes": 1187614
+    },
+    {
+      "path": "generated/review/trung-tam/trung-tam-bon-hoa-quang-truong.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "ed370d74c63f8872b2af0d8dc7526ba3ba18f4f50b649ae5e50381e494d01cf8",
+      "bytes": 1185081
+    },
+    {
+      "path": "generated/review/trung-tam/trung-tam-cau-trung-tam.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "8422373317f6257473d45616ba985c501ea10016dfe4d94012575b54fb324633",
+      "bytes": 1190161
+    },
+    {
+      "path": "generated/review/trung-tam/trung-tam-cho-to-doi.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "c09bee25f2fa31f88a9c72438cacabfc3626485df805e57742d4630732d8adf4",
+      "bytes": 1159000
+    },
+    {
+      "path": "generated/review/trung-tam/trung-tam-cong-dich-chuyen.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "d211cfad418aeead5bec6f30ed0742486a3613634d1e7b744356dbb696eb81df",
+      "bytes": 1216005
+    },
+    {
+      "path": "generated/review/trung-tam/trung-tam-cong-lau-dai.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "3974a925fee6a4b4f886e2dfeb6bbef2cc96953db991c4364388e06f3129bb1c",
+      "bytes": 935094
+    },
+    {
+      "path": "generated/review/trung-tam/trung-tam-dai-phun-nuoc.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "0e9fcd3fdb7f5244098f6d6bc749ee3fe9c5cdf8a7c23f83b89eb03c39c240d6",
+      "bytes": 1205115
+    },
+    {
+      "path": "generated/review/trung-tam/trung-tam-dai-phun-san-truoc.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "145d3c9677d6bf81f29e7184c32561da6aa920046aec032624a8d6eb3ff1ef31",
+      "bytes": 1083111
+    },
+    {
+      "path": "generated/review/trung-tam/trung-tam-khu-giao-dich.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "2f6af0db71afc055fd11d2120b49b0ea3a0fe72a12dcc2da0661b23429694afe",
+      "bytes": 1110405
+    },
+    {
+      "path": "generated/review/trung-tam/trung-tam-khu-su-kien.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "97e0e765c9317b47d35ff5a3ce30cbffdf91a234d69f7ec8f07ef36511e9b0d5",
+      "bytes": 1199875
+    },
+    {
+      "path": "generated/review/trung-tam/trung-tam-quang-truong-trung-tam.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "3ccbf3d0f6a8fa32ca73109a6100fbc3d2ea9a60772dfa94832bd655d003e2d3",
+      "bytes": 1197292
+    },
+    {
+      "path": "generated/review/trung-tam/trung-tam-san-truoc-lau-dai.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "2acb23597c40209d9f94f075fb68df6c8520c1fc5ea262cc41e7ebf4637db345",
+      "bytes": 1096175
+    },
+    {
+      "path": "generated/review/trung-tam/trung-tam-thap-dong-ho.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "fa7c381af26bfe7fa67552a7fc1384e8f49ae7903a47f39b1b26d113af6be794",
+      "bytes": 1107081
+    },
+    {
+      "path": "generated/review/trung-tam/trung-tam-toan-canh.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "35f408ca8bf38c934c21f20003b99f2843d0544829c99dabe2b3954834624eb4",
+      "bytes": 879079
+    },
+    {
+      "path": "generated/review/trung-tam/trung-tam-tren-cao.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "d910d8161351872ba1ed9ce1d678aec7a85fb255d2b98f1cc28974307feb73ab",
+      "bytes": 851087
+    },
+    {
+      "path": "generated/review/trung-tam/trung-tam-truoc-cua-hang.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "1a0fd1fa4b337de2261b47091ee3bad561f72e4bb29988a7999acd5dbfcadc7d",
+      "bytes": 1210819
     },
     {
       "path": "generated/review/truong-hoc/mock__truong-hoc__c-01-toan-canh-khu-truong.png",
@@ -24056,8 +26104,8 @@
       "license": "CC0-1.0",
       "generator": "tools/world/generate-cho-phien-map.ts",
       "derivedFrom": [],
-      "sha256": "268011b68c5af33ea6d577fe6c8a946ad39f1193ce2a6df93ff1b283e51c96cb",
-      "bytes": 2004079
+      "sha256": "093abdec8578a7dd99fcf4c5fae4d70bfeadecbeac57b3621b9cf8e535d9fd87",
+      "bytes": 2004072
     },
     {
       "path": "generated/world/cho-phien/horizon.bin",
@@ -24460,12 +26508,420 @@
       "bytes": 1836
     },
     {
+      "path": "generated/world/dao-bi-an/entities.json",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-dao-bi-an-map.ts",
+      "derivedFrom": [],
+      "sha256": "165b9ad13975f99bbc6d381ecf966bc8816ef1acdbf4d9785429d8735fde605e",
+      "bytes": 486878
+    },
+    {
+      "path": "generated/world/dao-bi-an/horizon.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-dao-bi-an-map.ts",
+      "derivedFrom": [],
+      "sha256": "e6b354f8ab4df6562986cafaea897a3f5ae85bc4f577ed02f8723ca049af90dd",
+      "bytes": 24820
+    },
+    {
+      "path": "generated/world/dao-bi-an/regions/r0-0.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-dao-bi-an-map.ts",
+      "derivedFrom": [],
+      "sha256": "282a42abb82ed1fb64fce963bf042888e08545877fd5d633d01ac5a343673f8a",
+      "bytes": 3027
+    },
+    {
+      "path": "generated/world/dao-bi-an/regions/r0-1.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-dao-bi-an-map.ts",
+      "derivedFrom": [],
+      "sha256": "c8567334bd5e546942ee22bd7973b5e49eb5752afd97c65b3aae3e3b0cb3a98d",
+      "bytes": 4436
+    },
+    {
+      "path": "generated/world/dao-bi-an/regions/r0-2.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-dao-bi-an-map.ts",
+      "derivedFrom": [],
+      "sha256": "f00ef36375863a8539c45ad3f6a252d874a1ffc27591ba9c921259741f8e6373",
+      "bytes": 5074
+    },
+    {
+      "path": "generated/world/dao-bi-an/regions/r0-3.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-dao-bi-an-map.ts",
+      "derivedFrom": [],
+      "sha256": "039ef5cdc8e4e66de1fdfb705a6a9dc17ef8d1f30fa348c5a552ac8dfeed36ef",
+      "bytes": 4830
+    },
+    {
+      "path": "generated/world/dao-bi-an/regions/r0-4.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-dao-bi-an-map.ts",
+      "derivedFrom": [],
+      "sha256": "d06d48ec7b71592a3a36b3cd8ced102c8b48fa22274ce88436615e255b6a6601",
+      "bytes": 7212
+    },
+    {
+      "path": "generated/world/dao-bi-an/regions/r0-5.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-dao-bi-an-map.ts",
+      "derivedFrom": [],
+      "sha256": "b0cd97d912a86eed9307c42446feecb4eb4612c289f95bb8109056449772dda5",
+      "bytes": 4833
+    },
+    {
+      "path": "generated/world/dao-bi-an/regions/r0-6.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-dao-bi-an-map.ts",
+      "derivedFrom": [],
+      "sha256": "9b0eb27f2752d959dfad5d1f39044f86a5eb327b54cca0ef0e0b27d03bdf669b",
+      "bytes": 1358
+    },
+    {
+      "path": "generated/world/dao-bi-an/regions/r1-0.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-dao-bi-an-map.ts",
+      "derivedFrom": [],
+      "sha256": "4445d7686294687c1c3bcd0797d884155f9f2b7e60fd7031bb29b18ba0f4b97f",
+      "bytes": 6354
+    },
+    {
+      "path": "generated/world/dao-bi-an/regions/r1-1.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-dao-bi-an-map.ts",
+      "derivedFrom": [],
+      "sha256": "c8956da3459277668ba0db10c9209ede7edabd83fc5b865f91430193ba22a21a",
+      "bytes": 8908
+    },
+    {
+      "path": "generated/world/dao-bi-an/regions/r1-2.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-dao-bi-an-map.ts",
+      "derivedFrom": [],
+      "sha256": "f4f646fa8d370301e0e91ec1a6222b1d180b5a82c3ebc2d46e2915e7beb0d7ac",
+      "bytes": 41197
+    },
+    {
+      "path": "generated/world/dao-bi-an/regions/r1-3.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-dao-bi-an-map.ts",
+      "derivedFrom": [],
+      "sha256": "4ab7644423a1a8419641f93349f3bda80de46970054fd661c31ad0736a8852e2",
+      "bytes": 21385
+    },
+    {
+      "path": "generated/world/dao-bi-an/regions/r1-4.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-dao-bi-an-map.ts",
+      "derivedFrom": [],
+      "sha256": "465deff4596851f79a1277e054daf7518ce6dc10a66a613289e4ce580ef36a4c",
+      "bytes": 7561
+    },
+    {
+      "path": "generated/world/dao-bi-an/regions/r1-5.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-dao-bi-an-map.ts",
+      "derivedFrom": [],
+      "sha256": "b9eca50b15413476ad0404566dcfffa6a84bdc7086a3dc773cf77cefeb8ba526",
+      "bytes": 5425
+    },
+    {
+      "path": "generated/world/dao-bi-an/regions/r1-6.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-dao-bi-an-map.ts",
+      "derivedFrom": [],
+      "sha256": "21d5697360ac19d505318d61e3af26c2c8e72e0be42ff5d8df020ad5474b2d4c",
+      "bytes": 540
+    },
+    {
+      "path": "generated/world/dao-bi-an/regions/r2-0.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-dao-bi-an-map.ts",
+      "derivedFrom": [],
+      "sha256": "804b9c6d21a1c48d129a5ea39d2d395919cc63cbfd47c20ffd6bae6564c2958d",
+      "bytes": 5053
+    },
+    {
+      "path": "generated/world/dao-bi-an/regions/r2-1.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-dao-bi-an-map.ts",
+      "derivedFrom": [],
+      "sha256": "c9ec4df1d96dc790204ddcb79451b655b4ffe8b0da5d28df69feda2e57a72a50",
+      "bytes": 12134
+    },
+    {
+      "path": "generated/world/dao-bi-an/regions/r2-2.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-dao-bi-an-map.ts",
+      "derivedFrom": [],
+      "sha256": "3ad4c49aaf058acbb2171687126e781a5fc12d3c91c81e320bbdc30bb5b6367b",
+      "bytes": 96855
+    },
+    {
+      "path": "generated/world/dao-bi-an/regions/r2-3.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-dao-bi-an-map.ts",
+      "derivedFrom": [],
+      "sha256": "1a270f3fd514a738caca007c38572db374cf5a004f37313a12b017da115590cb",
+      "bytes": 38914
+    },
+    {
+      "path": "generated/world/dao-bi-an/regions/r2-4.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-dao-bi-an-map.ts",
+      "derivedFrom": [],
+      "sha256": "9233d97e1a06cdc91a6fee34bb9e7c56b41f6829abfa3957031dfb882d309e3a",
+      "bytes": 13029
+    },
+    {
+      "path": "generated/world/dao-bi-an/regions/r2-5.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-dao-bi-an-map.ts",
+      "derivedFrom": [],
+      "sha256": "e27d14621a5e71476fbfc54f8caaa6c06759bc13efab26ace2c0567cc4b0b4bf",
+      "bytes": 5744
+    },
+    {
+      "path": "generated/world/dao-bi-an/regions/r2-6.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-dao-bi-an-map.ts",
+      "derivedFrom": [],
+      "sha256": "21d5697360ac19d505318d61e3af26c2c8e72e0be42ff5d8df020ad5474b2d4c",
+      "bytes": 540
+    },
+    {
+      "path": "generated/world/dao-bi-an/regions/r3-0.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-dao-bi-an-map.ts",
+      "derivedFrom": [],
+      "sha256": "4e2d1b87a9c19b18165a9f7fbdc8d3b13ae903a08c5f465a54b7a9b62ade7bbf",
+      "bytes": 2843
+    },
+    {
+      "path": "generated/world/dao-bi-an/regions/r3-1.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-dao-bi-an-map.ts",
+      "derivedFrom": [],
+      "sha256": "a35033a1af1d2fb6173d66186b4289e92f7c7dbb747acd8c2a8738c4fefe4c3c",
+      "bytes": 9935
+    },
+    {
+      "path": "generated/world/dao-bi-an/regions/r3-2.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-dao-bi-an-map.ts",
+      "derivedFrom": [],
+      "sha256": "27a30464cee8f9d3f39bc88ceaf315ac8755cfd88251be8a7d6f4f270a9ec557",
+      "bytes": 149761
+    },
+    {
+      "path": "generated/world/dao-bi-an/regions/r3-3.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-dao-bi-an-map.ts",
+      "derivedFrom": [],
+      "sha256": "2a1022c3b704b017b3764fdff919564dbf76d30b54906a872bd79f64c0ca189d",
+      "bytes": 46661
+    },
+    {
+      "path": "generated/world/dao-bi-an/regions/r3-4.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-dao-bi-an-map.ts",
+      "derivedFrom": [],
+      "sha256": "f30b2df7c6e0cad1ae4d2f27a74694bee842d5770d1484619a2289550fd3bd3f",
+      "bytes": 14550
+    },
+    {
+      "path": "generated/world/dao-bi-an/regions/r3-5.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-dao-bi-an-map.ts",
+      "derivedFrom": [],
+      "sha256": "20a5440afc331dd1c888482927570bbf7bec1767246850303c63f69af7b7bd97",
+      "bytes": 6658
+    },
+    {
+      "path": "generated/world/dao-bi-an/regions/r3-6.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-dao-bi-an-map.ts",
+      "derivedFrom": [],
+      "sha256": "21d5697360ac19d505318d61e3af26c2c8e72e0be42ff5d8df020ad5474b2d4c",
+      "bytes": 540
+    },
+    {
+      "path": "generated/world/dao-bi-an/regions/r4-0.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-dao-bi-an-map.ts",
+      "derivedFrom": [],
+      "sha256": "64960be7f285b963b35a27dad2ba830ae57ec7089c3fb92157f73ca9b5bba599",
+      "bytes": 12312
+    },
+    {
+      "path": "generated/world/dao-bi-an/regions/r4-1.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-dao-bi-an-map.ts",
+      "derivedFrom": [],
+      "sha256": "afeb2cd2b1f0755f37d7fb8512f0ca5af62e0e0d728e6bb323deb677079ad039",
+      "bytes": 16341
+    },
+    {
+      "path": "generated/world/dao-bi-an/regions/r4-2.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-dao-bi-an-map.ts",
+      "derivedFrom": [],
+      "sha256": "d324f447c17be6e31b3200086e3ce8f19e5b7523557ec65e86d539a1d1c98c8e",
+      "bytes": 42001
+    },
+    {
+      "path": "generated/world/dao-bi-an/regions/r4-3.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-dao-bi-an-map.ts",
+      "derivedFrom": [],
+      "sha256": "89be07cb6851a420a5d0844602a1405f101353d63c14f226c04deeb54938080f",
+      "bytes": 17968
+    },
+    {
+      "path": "generated/world/dao-bi-an/regions/r4-4.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-dao-bi-an-map.ts",
+      "derivedFrom": [],
+      "sha256": "29a6a90f04f522846fd65977b0221e5c246786da4a184f419049dc1d9cd0dd53",
+      "bytes": 11557
+    },
+    {
+      "path": "generated/world/dao-bi-an/regions/r4-5.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-dao-bi-an-map.ts",
+      "derivedFrom": [],
+      "sha256": "3e6a86bd077b415ce743d52357ccfff979435d877fb187745e59441e73ca3451",
+      "bytes": 7838
+    },
+    {
+      "path": "generated/world/dao-bi-an/regions/r4-6.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-dao-bi-an-map.ts",
+      "derivedFrom": [],
+      "sha256": "80e469aa153eaa6c260ae22b4930f022879ca4c2ac6a123cdf0e5bf4c08b001f",
+      "bytes": 1568
+    },
+    {
+      "path": "generated/world/dao-bi-an/regions/r5-0.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-dao-bi-an-map.ts",
+      "derivedFrom": [],
+      "sha256": "7e134c909ebac8720a10a179c23a70ac452b565b8e187b31370c9a57463fa2be",
+      "bytes": 82587
+    },
+    {
+      "path": "generated/world/dao-bi-an/regions/r5-1.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-dao-bi-an-map.ts",
+      "derivedFrom": [],
+      "sha256": "8287005b6aadc7cacca1b688db10b8762dec06d44819a450e81bbedcbdc021f8",
+      "bytes": 48790
+    },
+    {
+      "path": "generated/world/dao-bi-an/regions/r5-2.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-dao-bi-an-map.ts",
+      "derivedFrom": [],
+      "sha256": "7aee988a462341da12de00cd6a9572f31e5b15f0f3b0026c0b614e0ed91d33af",
+      "bytes": 7661
+    },
+    {
+      "path": "generated/world/dao-bi-an/regions/r5-3.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-dao-bi-an-map.ts",
+      "derivedFrom": [],
+      "sha256": "f71c21f5c9d55588a7fb61ce71233e8a1105a3819ab02ee92b3d58fe0799ec37",
+      "bytes": 9829
+    },
+    {
+      "path": "generated/world/dao-bi-an/regions/r5-4.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-dao-bi-an-map.ts",
+      "derivedFrom": [],
+      "sha256": "62fc062418c749469f71624544ca42439c04762e2b72e01250f95f3b1ade77cd",
+      "bytes": 11618
+    },
+    {
+      "path": "generated/world/dao-bi-an/regions/r5-5.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-dao-bi-an-map.ts",
+      "derivedFrom": [],
+      "sha256": "5ef706eb6cbab1afbafef409f06b5229d44fd13eb63666d5741c32e9b4481dff",
+      "bytes": 37598
+    },
+    {
+      "path": "generated/world/dao-bi-an/regions/r5-6.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-dao-bi-an-map.ts",
+      "derivedFrom": [],
+      "sha256": "110f8477290f33062b602b50e356864db494b973a946f24db2337f2df6fc9da4",
+      "bytes": 1495
+    },
+    {
+      "path": "generated/world/dao-bi-an/regions/r6-0.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-dao-bi-an-map.ts",
+      "derivedFrom": [],
+      "sha256": "939de5e5f5ea776c59a38bab66a816bf70a3df7ca3362df422e4ba65b39e122e",
+      "bytes": 9626
+    },
+    {
+      "path": "generated/world/dao-bi-an/regions/r6-1.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-dao-bi-an-map.ts",
+      "derivedFrom": [],
+      "sha256": "71238c77c63fea06c0c91993da314f4dbb1ebb5e024301e9fd16f75ee6eb0ef0",
+      "bytes": 6077
+    },
+    {
+      "path": "generated/world/dao-bi-an/regions/r6-2.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-dao-bi-an-map.ts",
+      "derivedFrom": [],
+      "sha256": "7a6a2f0a05d12f983710d9320e90119e1e329acd0d4080992125a97342b3660b",
+      "bytes": 540
+    },
+    {
+      "path": "generated/world/dao-bi-an/regions/r6-3.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-dao-bi-an-map.ts",
+      "derivedFrom": [],
+      "sha256": "95e518896f7a9a65f0116309f135e9a0715afba361ee740d2a07a9007ff360c8",
+      "bytes": 3432
+    },
+    {
+      "path": "generated/world/dao-bi-an/regions/r6-4.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-dao-bi-an-map.ts",
+      "derivedFrom": [],
+      "sha256": "7a6a2f0a05d12f983710d9320e90119e1e329acd0d4080992125a97342b3660b",
+      "bytes": 540
+    },
+    {
+      "path": "generated/world/dao-bi-an/regions/r6-5.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-dao-bi-an-map.ts",
+      "derivedFrom": [],
+      "sha256": "508652bec9b0516b293219c2ee54129150145c48f8f5886108f708203f26d185",
+      "bytes": 1202
+    },
+    {
+      "path": "generated/world/dao-bi-an/regions/r6-6.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-dao-bi-an-map.ts",
+      "derivedFrom": [],
+      "sha256": "3ed8c20fa8c47e32cacf8b6a0df254b2f157e08b2c5c2eb15099462f95152ce8",
+      "bytes": 1225
+    },
+    {
       "path": "generated/world/forest-ch1/entities.json",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-forest-map.ts",
       "derivedFrom": [],
-      "sha256": "fea07e6e1b77f32d7aa8dfbe2c07f0ab0d94080a4e6221ed1dd95f7df9e8250b",
-      "bytes": 514144
+      "sha256": "f526f08713756bd4897ac73be8ae11248c33654c3fd5a1f23882662c252b8634",
+      "bytes": 514137
     },
     {
       "path": "generated/world/forest-ch1/horizon.bin",
@@ -24872,8 +27328,8 @@
       "license": "CC0-1.0",
       "generator": "tools/world/generate-lang-ven-song-map.ts",
       "derivedFrom": [],
-      "sha256": "f8fa7c62048e5394aff495633521d840d5c19a6acee16890d985f163b6dd6d5b",
-      "bytes": 1515493
+      "sha256": "8ba2ef6f6532b47643f23860c3067fd719ffd7a432ca7fcfd9c792a960cb7ad4",
+      "bytes": 1515486
     },
     {
       "path": "generated/world/lang-ven-song/horizon.bin",
@@ -25280,8 +27736,8 @@
       "license": "CC0-1.0",
       "generator": "tools/world/generate-lau-dai-map.ts",
       "derivedFrom": [],
-      "sha256": "e03c018872237f961ddc1b66eedee410295c7f69e5b96a3e92ea844f139c896f",
-      "bytes": 1252474
+      "sha256": "ec12868fb6433f0acd27a64cec4d5a310ff6e4e750e577cee2a09e437122f778",
+      "bytes": 1252467
     },
     {
       "path": "generated/world/lau-dai/horizon.bin",
@@ -25688,8 +28144,8 @@
       "license": "CC0-1.0",
       "generator": "tools/world/generate-nong-trai-map.ts",
       "derivedFrom": [],
-      "sha256": "e6cc651a8f76afb16f1a067592d44d8bd72cd89a819e7118a53a970c4d819fc8",
-      "bytes": 1831380
+      "sha256": "975b6c583dd2bcbac7367b9797250c57adfaae69254c9ff7a66dd381740a498b",
+      "bytes": 1831373
     },
     {
       "path": "generated/world/nong-trai/horizon.bin",
@@ -26092,28 +28548,436 @@
       "bytes": 2815
     },
     {
+      "path": "generated/world/nui-tuyet/entities.json",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-nui-tuyet-map.ts",
+      "derivedFrom": [],
+      "sha256": "a3c3049fe5dbb851fba36ac9b9913f81f544fa29c007887d00a4efbc5901fdb4",
+      "bytes": 252101
+    },
+    {
+      "path": "generated/world/nui-tuyet/horizon.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-nui-tuyet-map.ts",
+      "derivedFrom": [],
+      "sha256": "2b104ea1d8524e32875e7025d478db5b8718f7deb5ed47c04d12b24223569ec5",
+      "bytes": 57206
+    },
+    {
+      "path": "generated/world/nui-tuyet/regions/r0-0.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-nui-tuyet-map.ts",
+      "derivedFrom": [],
+      "sha256": "33c20072c8ecf7af7d8971597ba9c576de4890fab1d0b85809731ab26d5dff4e",
+      "bytes": 81625
+    },
+    {
+      "path": "generated/world/nui-tuyet/regions/r0-1.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-nui-tuyet-map.ts",
+      "derivedFrom": [],
+      "sha256": "990bd4d4348c02bfda57fa41ece4e037a4ea03437b7ba8c9829b74ad8cddf05f",
+      "bytes": 92568
+    },
+    {
+      "path": "generated/world/nui-tuyet/regions/r0-2.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-nui-tuyet-map.ts",
+      "derivedFrom": [],
+      "sha256": "ff9b5a2c23a47b8c0a09bb92559885d54990b2779449ebddb95d8770f6d8cb84",
+      "bytes": 75631
+    },
+    {
+      "path": "generated/world/nui-tuyet/regions/r0-3.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-nui-tuyet-map.ts",
+      "derivedFrom": [],
+      "sha256": "750777dc0f38bb556b03a16b5bfacbbd4525d7241ed65e9cd1220f1ae4479ca9",
+      "bytes": 75798
+    },
+    {
+      "path": "generated/world/nui-tuyet/regions/r0-4.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-nui-tuyet-map.ts",
+      "derivedFrom": [],
+      "sha256": "75e2943db65e341ccd9b90760f99a2715f95f844ec744c7988f396fa97727c7b",
+      "bytes": 86206
+    },
+    {
+      "path": "generated/world/nui-tuyet/regions/r0-5.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-nui-tuyet-map.ts",
+      "derivedFrom": [],
+      "sha256": "3ba4ea74626ff8a663f842d36f73db55447329e08b865a3ef5eeef28e818af33",
+      "bytes": 82867
+    },
+    {
+      "path": "generated/world/nui-tuyet/regions/r0-6.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-nui-tuyet-map.ts",
+      "derivedFrom": [],
+      "sha256": "d7e81c87492577265dd8e8fa82c881f3340f8c1948616d62986e462e0b5f7fa1",
+      "bytes": 18206
+    },
+    {
+      "path": "generated/world/nui-tuyet/regions/r1-0.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-nui-tuyet-map.ts",
+      "derivedFrom": [],
+      "sha256": "adb790cdbcc9e7d0ad09d62478e71bba8fa6fcfd7755cfdf661f3351196d5240",
+      "bytes": 94011
+    },
+    {
+      "path": "generated/world/nui-tuyet/regions/r1-1.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-nui-tuyet-map.ts",
+      "derivedFrom": [],
+      "sha256": "cddc675deb8959ca14e94c11ed1bdac8f57391f94f3faea60a93b35a7b8f034c",
+      "bytes": 30872
+    },
+    {
+      "path": "generated/world/nui-tuyet/regions/r1-2.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-nui-tuyet-map.ts",
+      "derivedFrom": [],
+      "sha256": "e5cdc13e5bfbaa1ce9a4645e3db8a66af37020732e13e35477db79322914acfe",
+      "bytes": 21109
+    },
+    {
+      "path": "generated/world/nui-tuyet/regions/r1-3.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-nui-tuyet-map.ts",
+      "derivedFrom": [],
+      "sha256": "aadf6398f340f638ee8934844dbd16d3a10e05dda4083454cd9ffffe511e4e68",
+      "bytes": 18612
+    },
+    {
+      "path": "generated/world/nui-tuyet/regions/r1-4.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-nui-tuyet-map.ts",
+      "derivedFrom": [],
+      "sha256": "3d6beec5136c588ec7ffabfa05995182a134f6fd4c3947ca3221a2030578f73f",
+      "bytes": 54261
+    },
+    {
+      "path": "generated/world/nui-tuyet/regions/r1-5.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-nui-tuyet-map.ts",
+      "derivedFrom": [],
+      "sha256": "881b185de77e92fc91e77bc0178aa1dba7aa56698212c9e91140800b75650d37",
+      "bytes": 36848
+    },
+    {
+      "path": "generated/world/nui-tuyet/regions/r1-6.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-nui-tuyet-map.ts",
+      "derivedFrom": [],
+      "sha256": "6f4610924112274adee1375953dd20c5c55e6309073960121537621bc2d03601",
+      "bytes": 10155
+    },
+    {
+      "path": "generated/world/nui-tuyet/regions/r2-0.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-nui-tuyet-map.ts",
+      "derivedFrom": [],
+      "sha256": "e9d078a95aa0fcb3fe5ed441a34ba491db1aec973b5e2ac9133e7d9de4f04949",
+      "bytes": 84630
+    },
+    {
+      "path": "generated/world/nui-tuyet/regions/r2-1.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-nui-tuyet-map.ts",
+      "derivedFrom": [],
+      "sha256": "af89ca02bf28962ae3e08d9747489fbe4f302af06b09e7638630c220b3b0882e",
+      "bytes": 59121
+    },
+    {
+      "path": "generated/world/nui-tuyet/regions/r2-2.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-nui-tuyet-map.ts",
+      "derivedFrom": [],
+      "sha256": "52ebe8b023c6ac350c449c37e9264618475905f8da5f6f3bf37659d98b47174e",
+      "bytes": 51986
+    },
+    {
+      "path": "generated/world/nui-tuyet/regions/r2-3.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-nui-tuyet-map.ts",
+      "derivedFrom": [],
+      "sha256": "b4fd4d15e2df3bfeceebaf10a40eded08954b21ab5df2d263a3ae88bcb111e4b",
+      "bytes": 28525
+    },
+    {
+      "path": "generated/world/nui-tuyet/regions/r2-4.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-nui-tuyet-map.ts",
+      "derivedFrom": [],
+      "sha256": "7187a2f36929e5f069b270211e713a551efaf2913d098061e49025698c030728",
+      "bytes": 59837
+    },
+    {
+      "path": "generated/world/nui-tuyet/regions/r2-5.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-nui-tuyet-map.ts",
+      "derivedFrom": [],
+      "sha256": "b1c26a79ac3d7fda3cbaf2a5b6a6793239b4179bc623ff0e1bb23e55b841180b",
+      "bytes": 26622
+    },
+    {
+      "path": "generated/world/nui-tuyet/regions/r2-6.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-nui-tuyet-map.ts",
+      "derivedFrom": [],
+      "sha256": "14b61823fcf1b3c37a104795d9348eb1fabca7ea33846fb01a6c42a3aa02554b",
+      "bytes": 9526
+    },
+    {
+      "path": "generated/world/nui-tuyet/regions/r3-0.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-nui-tuyet-map.ts",
+      "derivedFrom": [],
+      "sha256": "74b90d58a58d4ecc6f47dea1c387fe9f8a1e591ac0c75c505fa0db95c90c4845",
+      "bytes": 44771
+    },
+    {
+      "path": "generated/world/nui-tuyet/regions/r3-1.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-nui-tuyet-map.ts",
+      "derivedFrom": [],
+      "sha256": "1f16951a7524855f49a16e91a36838d90af2e444183a6deada7afe521d323085",
+      "bytes": 35889
+    },
+    {
+      "path": "generated/world/nui-tuyet/regions/r3-2.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-nui-tuyet-map.ts",
+      "derivedFrom": [],
+      "sha256": "b575faedaa58e9136c1fb1f5e325a292b79d5cb000aa93d300e5d14ca570c68e",
+      "bytes": 27764
+    },
+    {
+      "path": "generated/world/nui-tuyet/regions/r3-3.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-nui-tuyet-map.ts",
+      "derivedFrom": [],
+      "sha256": "eb258d2b500e347181f19d1701c52bb369d35ad69825bffe8810864d41a43bc0",
+      "bytes": 42158
+    },
+    {
+      "path": "generated/world/nui-tuyet/regions/r3-4.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-nui-tuyet-map.ts",
+      "derivedFrom": [],
+      "sha256": "2b75df095030b1416404b9e0509eba3d845e475c0b1161f6836a36f9c3a3a547",
+      "bytes": 54771
+    },
+    {
+      "path": "generated/world/nui-tuyet/regions/r3-5.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-nui-tuyet-map.ts",
+      "derivedFrom": [],
+      "sha256": "373eb21301a577842663914179ead1bd253f0375ee7ee7438afe710f1a5990f7",
+      "bytes": 44482
+    },
+    {
+      "path": "generated/world/nui-tuyet/regions/r3-6.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-nui-tuyet-map.ts",
+      "derivedFrom": [],
+      "sha256": "0cb0b154917d25eefcabbf7fbc3b09aeef7d5a99f3c249f2b835e97721298983",
+      "bytes": 15083
+    },
+    {
+      "path": "generated/world/nui-tuyet/regions/r4-0.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-nui-tuyet-map.ts",
+      "derivedFrom": [],
+      "sha256": "5b1578ca42287277025b46ebc366e38ec9b6635980aed614d9dda485db6a48fd",
+      "bytes": 24236
+    },
+    {
+      "path": "generated/world/nui-tuyet/regions/r4-1.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-nui-tuyet-map.ts",
+      "derivedFrom": [],
+      "sha256": "b378ccc9cf35c567d0d2b2192d4eb24e2ea632a6989d5b68398e4b2ea96151e6",
+      "bytes": 43003
+    },
+    {
+      "path": "generated/world/nui-tuyet/regions/r4-2.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-nui-tuyet-map.ts",
+      "derivedFrom": [],
+      "sha256": "04a4e6fc3d8b77535e813ed8095a0e7aabcd6737820406667bca1304ffd29f2f",
+      "bytes": 36371
+    },
+    {
+      "path": "generated/world/nui-tuyet/regions/r4-3.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-nui-tuyet-map.ts",
+      "derivedFrom": [],
+      "sha256": "f0ea04fdb3095e35a87b9bc1d17f17fec68d9c6dd8281ab82ad8467ec10df894",
+      "bytes": 56176
+    },
+    {
+      "path": "generated/world/nui-tuyet/regions/r4-4.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-nui-tuyet-map.ts",
+      "derivedFrom": [],
+      "sha256": "235ac72319e32da6a0e7622919bca315c261f5d233ef0a5217a01285e7097745",
+      "bytes": 42983
+    },
+    {
+      "path": "generated/world/nui-tuyet/regions/r4-5.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-nui-tuyet-map.ts",
+      "derivedFrom": [],
+      "sha256": "8f89ba095f5f76da9aa2085a6b740aed9fd5e108f1ef850b79e3b31a9ea06d7c",
+      "bytes": 52442
+    },
+    {
+      "path": "generated/world/nui-tuyet/regions/r4-6.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-nui-tuyet-map.ts",
+      "derivedFrom": [],
+      "sha256": "81c7e5d504e3697860adcd9c30cd6f1b733bb4d48482cecd0d61f6ffc9808b87",
+      "bytes": 14550
+    },
+    {
+      "path": "generated/world/nui-tuyet/regions/r5-0.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-nui-tuyet-map.ts",
+      "derivedFrom": [],
+      "sha256": "ca2596c7f8b885d0e2edf65cbb39214ac4b1fe441be62340ceec6a7ebc5e7a81",
+      "bytes": 38377
+    },
+    {
+      "path": "generated/world/nui-tuyet/regions/r5-1.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-nui-tuyet-map.ts",
+      "derivedFrom": [],
+      "sha256": "28bcadc3da638910d659e7ddcbdbe03a57f82e002c2bb81fdef8dd3ddf136b87",
+      "bytes": 24760
+    },
+    {
+      "path": "generated/world/nui-tuyet/regions/r5-2.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-nui-tuyet-map.ts",
+      "derivedFrom": [],
+      "sha256": "b853ebfb74056d042a8738826cb67402906ad1e79dabfc59b06c84a2bb256477",
+      "bytes": 38108
+    },
+    {
+      "path": "generated/world/nui-tuyet/regions/r5-3.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-nui-tuyet-map.ts",
+      "derivedFrom": [],
+      "sha256": "c998122c6e6b7a686ddc67b9563469df97edadec25c0f2b9f242f39045d6c016",
+      "bytes": 71701
+    },
+    {
+      "path": "generated/world/nui-tuyet/regions/r5-4.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-nui-tuyet-map.ts",
+      "derivedFrom": [],
+      "sha256": "52af3e178f13cfb95893e8478f53dea66001982e7efcb4d509d59dc68c9ae22c",
+      "bytes": 24783
+    },
+    {
+      "path": "generated/world/nui-tuyet/regions/r5-5.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-nui-tuyet-map.ts",
+      "derivedFrom": [],
+      "sha256": "14106b42959f68d887f44499397060b434c6e6ad6563b3525ff090ffac6c8e09",
+      "bytes": 55390
+    },
+    {
+      "path": "generated/world/nui-tuyet/regions/r5-6.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-nui-tuyet-map.ts",
+      "derivedFrom": [],
+      "sha256": "4a0ad899a1bb38bd30cd7882c52f0387c2926f0139b38bfd1298f5f957f127b5",
+      "bytes": 9717
+    },
+    {
+      "path": "generated/world/nui-tuyet/regions/r6-0.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-nui-tuyet-map.ts",
+      "derivedFrom": [],
+      "sha256": "7c2c76acbac48d08b94427f89976d3ceafe86214d7a7b8df061ea28874c274a8",
+      "bytes": 14963
+    },
+    {
+      "path": "generated/world/nui-tuyet/regions/r6-1.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-nui-tuyet-map.ts",
+      "derivedFrom": [],
+      "sha256": "c5a6a5ed956c216697b3d9e686c223e780ca791b0e675f32a38a752d1c3fc23e",
+      "bytes": 14680
+    },
+    {
+      "path": "generated/world/nui-tuyet/regions/r6-2.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-nui-tuyet-map.ts",
+      "derivedFrom": [],
+      "sha256": "ab558cd56f5663d947fab6e5ae430193c82213c2b2bf5d1bf3ad15dd3fcc5ad6",
+      "bytes": 11402
+    },
+    {
+      "path": "generated/world/nui-tuyet/regions/r6-3.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-nui-tuyet-map.ts",
+      "derivedFrom": [],
+      "sha256": "3b7da4b36b93413d3afd78638a6b090cccb44873293659759c3f4ca53c3827a7",
+      "bytes": 14066
+    },
+    {
+      "path": "generated/world/nui-tuyet/regions/r6-4.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-nui-tuyet-map.ts",
+      "derivedFrom": [],
+      "sha256": "6073fc854ef40ab48f1e1345a2a8726c2d531df480d65f5306a0c30faa691b02",
+      "bytes": 6122
+    },
+    {
+      "path": "generated/world/nui-tuyet/regions/r6-5.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-nui-tuyet-map.ts",
+      "derivedFrom": [],
+      "sha256": "96cb7dd4fea9bbafb739a1d2b480c5ca13b48d771708bb3e6aaf14fe1d13cc87",
+      "bytes": 10322
+    },
+    {
+      "path": "generated/world/nui-tuyet/regions/r6-6.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-nui-tuyet-map.ts",
+      "derivedFrom": [],
+      "sha256": "d8a5663cef35f2d3d4d9ca15213d7b018cee5fbb661530547aa801b8e94d8744",
+      "bytes": 3163
+    },
+    {
       "path": "generated/world/the-gioi/entities.json",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-world-overview.ts",
       "derivedFrom": [],
-      "sha256": "dedfe8dc0de7d8cfa1347acb371d867de4bc6ddc45709d8c3cd28ff7ef038a2c",
-      "bytes": 3864
+      "sha256": "487a0d89bef13bc0fdad9e6d59b6395e478d306e6c52521aac297ab704475621",
+      "bytes": 3931
     },
     {
       "path": "generated/world/the-gioi/horizon.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-world-overview.ts",
       "derivedFrom": [],
-      "sha256": "7460b88c2d55956e16d80454c3e82ec0f0286de88f3c8c8b4fc61696689046be",
-      "bytes": 1026
+      "sha256": "112f1fd9a5c61fd6c4dc4917114722bfdb211ec9c5fb5d433c6fe5ff4bc2d384",
+      "bytes": 1204
     },
     {
       "path": "generated/world/the-gioi/regions/r0-0.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-world-overview.ts",
       "derivedFrom": [],
-      "sha256": "8037510c2038687077bdc148ae6571f86ae2edb043757c3fe200d2bdb2bf207c",
-      "bytes": 20200
+      "sha256": "1e8be3532327da535ac1746295979543b1c816ded18194910b14fd27521c24d7",
+      "bytes": 24019
     },
     {
       "path": "generated/world/the-gioi/stage-decor.json",
@@ -26128,8 +28992,8 @@
       "license": "CC0-1.0",
       "generator": "tools/world/generate-thu-vien-map.ts",
       "derivedFrom": [],
-      "sha256": "44da87aff8c2e876a990aec982c7c12e6ec32f3f0a48d2adb6f652a48d1d6ec2",
-      "bytes": 1297515
+      "sha256": "58fa5714bea09f396340de0619f1b47b25cc4b2fe17445f27b2c3fcbc5f0d851",
+      "bytes": 1297508
     },
     {
       "path": "generated/world/thu-vien/horizon.bin",
@@ -26532,12 +29396,420 @@
       "bytes": 1916
     },
     {
+      "path": "generated/world/trung-tam/entities.json",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-trung-tam-map.ts",
+      "derivedFrom": [],
+      "sha256": "bc43d35b2c693a6bcd26b54c7ff4368ab20a103e14816a14e918c6e2187453ca",
+      "bytes": 474660
+    },
+    {
+      "path": "generated/world/trung-tam/horizon.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-trung-tam-map.ts",
+      "derivedFrom": [],
+      "sha256": "31099fd3a68a002413c25ed3737c192b09fd265eccec5d9f89969594dda44913",
+      "bytes": 66162
+    },
+    {
+      "path": "generated/world/trung-tam/regions/r0-0.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-trung-tam-map.ts",
+      "derivedFrom": [],
+      "sha256": "76a8fffc919967db706c345a5d0d104f7fb61e72744bb6d9816a2d10a7046d30",
+      "bytes": 47845
+    },
+    {
+      "path": "generated/world/trung-tam/regions/r0-1.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-trung-tam-map.ts",
+      "derivedFrom": [],
+      "sha256": "bc89969c4d5a2c6c4b7fefbeb2001a7987959571fbd64d024ab3ff4f3cd09770",
+      "bytes": 33447
+    },
+    {
+      "path": "generated/world/trung-tam/regions/r0-2.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-trung-tam-map.ts",
+      "derivedFrom": [],
+      "sha256": "94c70f4129a5ee2b55f3350c63d4fd8ef8eaa9b158587964da0897c9e355effd",
+      "bytes": 33237
+    },
+    {
+      "path": "generated/world/trung-tam/regions/r0-3.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-trung-tam-map.ts",
+      "derivedFrom": [],
+      "sha256": "e77eb5eed896f4828e25e3fec7a35c467764956766c7512ccf0ea96ba6e54bbd",
+      "bytes": 35947
+    },
+    {
+      "path": "generated/world/trung-tam/regions/r0-4.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-trung-tam-map.ts",
+      "derivedFrom": [],
+      "sha256": "2898ba58b2b21002658a07a9a5301067c189019a5ea8f363ec9f6d0fd6b94b22",
+      "bytes": 34141
+    },
+    {
+      "path": "generated/world/trung-tam/regions/r0-5.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-trung-tam-map.ts",
+      "derivedFrom": [],
+      "sha256": "91df799b159de03d044dee0395ae05dd91e8ec6f07b78a143963a9b6dc5bca31",
+      "bytes": 35799
+    },
+    {
+      "path": "generated/world/trung-tam/regions/r0-6.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-trung-tam-map.ts",
+      "derivedFrom": [],
+      "sha256": "3b4752a4ac3935dd145fb9dce02f8f978e0cc46e7dd4b89fb374f1107268d61f",
+      "bytes": 7523
+    },
+    {
+      "path": "generated/world/trung-tam/regions/r1-0.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-trung-tam-map.ts",
+      "derivedFrom": [],
+      "sha256": "6fd3296078e334cc47ad8078cc3a4bf22e2cb98e175cbef12ed6882ccb87231c",
+      "bytes": 44381
+    },
+    {
+      "path": "generated/world/trung-tam/regions/r1-1.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-trung-tam-map.ts",
+      "derivedFrom": [],
+      "sha256": "0e5856a96b70b5b075ec408631c77b6f045a30fa73223882c7df27952c0223d3",
+      "bytes": 30869
+    },
+    {
+      "path": "generated/world/trung-tam/regions/r1-2.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-trung-tam-map.ts",
+      "derivedFrom": [],
+      "sha256": "7c69a8ba1fa6775bacd6d1347173b88535f199404f21aacb7f10d40ecab93db4",
+      "bytes": 27286
+    },
+    {
+      "path": "generated/world/trung-tam/regions/r1-3.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-trung-tam-map.ts",
+      "derivedFrom": [],
+      "sha256": "dc4b75dae1d03c799d579e8611265aa133a1b23d6435335135136fecdac5cf4f",
+      "bytes": 27738
+    },
+    {
+      "path": "generated/world/trung-tam/regions/r1-4.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-trung-tam-map.ts",
+      "derivedFrom": [],
+      "sha256": "45b96052d8d92df40936243dcfeae8c507cf4cbd90b579eb56b0228b1bbc3a03",
+      "bytes": 30909
+    },
+    {
+      "path": "generated/world/trung-tam/regions/r1-5.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-trung-tam-map.ts",
+      "derivedFrom": [],
+      "sha256": "7e04377bc996c19aed85789523b487d01408170f1af99dba590b51cbde7747ce",
+      "bytes": 35512
+    },
+    {
+      "path": "generated/world/trung-tam/regions/r1-6.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-trung-tam-map.ts",
+      "derivedFrom": [],
+      "sha256": "c7401a428978c5c5abbe8486385426da425e32c1844a33d030a99f5a78cbf34c",
+      "bytes": 5739
+    },
+    {
+      "path": "generated/world/trung-tam/regions/r2-0.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-trung-tam-map.ts",
+      "derivedFrom": [],
+      "sha256": "b01dfb561bb6b7b5a52c4d09b2cf9b2863c182704d73a8229a2f5265206ccbf1",
+      "bytes": 44582
+    },
+    {
+      "path": "generated/world/trung-tam/regions/r2-1.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-trung-tam-map.ts",
+      "derivedFrom": [],
+      "sha256": "f72f844be5d932d3021aac3024a6f1967fdcee006a9f233ecd814f88b40478eb",
+      "bytes": 29564
+    },
+    {
+      "path": "generated/world/trung-tam/regions/r2-2.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-trung-tam-map.ts",
+      "derivedFrom": [],
+      "sha256": "cca6948b2425c381b7cd9a72088bdfe7467fd43bc60aae1cf15739deefd28613",
+      "bytes": 24493
+    },
+    {
+      "path": "generated/world/trung-tam/regions/r2-3.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-trung-tam-map.ts",
+      "derivedFrom": [],
+      "sha256": "7db1405b4edbe7487d9ee14e16f91fd4a4f969d0ed68d23aba4dc32983d0605e",
+      "bytes": 23233
+    },
+    {
+      "path": "generated/world/trung-tam/regions/r2-4.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-trung-tam-map.ts",
+      "derivedFrom": [],
+      "sha256": "cd93b6f306beb4499cbcd5767b66acdf9cd95d95e070d2b18a5faac4064ddf50",
+      "bytes": 28285
+    },
+    {
+      "path": "generated/world/trung-tam/regions/r2-5.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-trung-tam-map.ts",
+      "derivedFrom": [],
+      "sha256": "7fc78e3210b84dd1bb13a4beb82cfb4f6c7b05a6ba302647d19f0b2dff6d7295",
+      "bytes": 31351
+    },
+    {
+      "path": "generated/world/trung-tam/regions/r2-6.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-trung-tam-map.ts",
+      "derivedFrom": [],
+      "sha256": "34adeffbc96aaf574873f2a686503435612dc5caf152a58c5b612f384b8950c4",
+      "bytes": 5655
+    },
+    {
+      "path": "generated/world/trung-tam/regions/r3-0.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-trung-tam-map.ts",
+      "derivedFrom": [],
+      "sha256": "a91b5395a491ce80eeae5e5653876d4eff3676a4947eeb0dabbe79d3cc877d74",
+      "bytes": 46074
+    },
+    {
+      "path": "generated/world/trung-tam/regions/r3-1.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-trung-tam-map.ts",
+      "derivedFrom": [],
+      "sha256": "b108615f0311279ef5e9d36886818ec94f3de02584972c81d7429076d76cf9ec",
+      "bytes": 33272
+    },
+    {
+      "path": "generated/world/trung-tam/regions/r3-2.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-trung-tam-map.ts",
+      "derivedFrom": [],
+      "sha256": "4ac34330ffb28f355c7b2e2d946abee01d447b00b9f8c259077fc5e8f4ffffc9",
+      "bytes": 34801
+    },
+    {
+      "path": "generated/world/trung-tam/regions/r3-3.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-trung-tam-map.ts",
+      "derivedFrom": [],
+      "sha256": "869eb7737554a022fd8db26a0f6f05c6eee29681e0a01359ec93d9abe25f9d41",
+      "bytes": 25469
+    },
+    {
+      "path": "generated/world/trung-tam/regions/r3-4.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-trung-tam-map.ts",
+      "derivedFrom": [],
+      "sha256": "cd33b7ababe3844ba335205521cfdd116bd647f223be4df632a4361310a3f54d",
+      "bytes": 35592
+    },
+    {
+      "path": "generated/world/trung-tam/regions/r3-5.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-trung-tam-map.ts",
+      "derivedFrom": [],
+      "sha256": "05025c217cc537ece33584d3f6fa8b162fc25d2ecf768c0ea3ed0c7f5618a7ec",
+      "bytes": 41123
+    },
+    {
+      "path": "generated/world/trung-tam/regions/r3-6.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-trung-tam-map.ts",
+      "derivedFrom": [],
+      "sha256": "e12062d467487dacc95ef17cf79ccc5999052feb0092d6dfc22a13f1b6505bc5",
+      "bytes": 7305
+    },
+    {
+      "path": "generated/world/trung-tam/regions/r4-0.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-trung-tam-map.ts",
+      "derivedFrom": [],
+      "sha256": "fdafdce771fec6323a3ddc16609f6e7cb770f59061cd716113a52ba6b8840852",
+      "bytes": 45585
+    },
+    {
+      "path": "generated/world/trung-tam/regions/r4-1.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-trung-tam-map.ts",
+      "derivedFrom": [],
+      "sha256": "2537f074ae29e76d3e5afc99d701dddadeb014a7a6a4e7cfe5dad3342fd2ebce",
+      "bytes": 31627
+    },
+    {
+      "path": "generated/world/trung-tam/regions/r4-2.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-trung-tam-map.ts",
+      "derivedFrom": [],
+      "sha256": "6d30302a1a73d642c0e83f26a4695d7a68a85d1c84084af2e1f6231f4210b11d",
+      "bytes": 34419
+    },
+    {
+      "path": "generated/world/trung-tam/regions/r4-3.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-trung-tam-map.ts",
+      "derivedFrom": [],
+      "sha256": "ab2797cd1ac7b6b514b221a76bf5e840f1dbbfba922ca6728f148eb95980583e",
+      "bytes": 24013
+    },
+    {
+      "path": "generated/world/trung-tam/regions/r4-4.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-trung-tam-map.ts",
+      "derivedFrom": [],
+      "sha256": "434cc3e600cc1ad2b48091f933885d88137f860c638209e43d2ab95f7a8518f7",
+      "bytes": 32068
+    },
+    {
+      "path": "generated/world/trung-tam/regions/r4-5.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-trung-tam-map.ts",
+      "derivedFrom": [],
+      "sha256": "1015c5617321bf5f2e17c3a39c652fef1ad3324f4f2499ac3f5d83ccb3a893ae",
+      "bytes": 35071
+    },
+    {
+      "path": "generated/world/trung-tam/regions/r4-6.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-trung-tam-map.ts",
+      "derivedFrom": [],
+      "sha256": "7d3afbe378750e6114d214be3da786166a297b2990fabfaf0ad7975eb5caf7d2",
+      "bytes": 5814
+    },
+    {
+      "path": "generated/world/trung-tam/regions/r5-0.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-trung-tam-map.ts",
+      "derivedFrom": [],
+      "sha256": "07b0ec75a4e0cbf168e88b426a9d15d4da9f9b8c176508cdacbc4acc58ad49b9",
+      "bytes": 44519
+    },
+    {
+      "path": "generated/world/trung-tam/regions/r5-1.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-trung-tam-map.ts",
+      "derivedFrom": [],
+      "sha256": "668051ed8593e5002a2d9948c53a978c109ae3e2fb8ed378b6fb779cb6f759ee",
+      "bytes": 32025
+    },
+    {
+      "path": "generated/world/trung-tam/regions/r5-2.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-trung-tam-map.ts",
+      "derivedFrom": [],
+      "sha256": "b79533c3475d7fe46835373ac6d0ab262d1a0de0d1d97e60b98103ea6986ca86",
+      "bytes": 29626
+    },
+    {
+      "path": "generated/world/trung-tam/regions/r5-3.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-trung-tam-map.ts",
+      "derivedFrom": [],
+      "sha256": "7b974df6c25d6d66ed0c0b38cc281a697e8e3d391424b6dd3a38973187e7e593",
+      "bytes": 19090
+    },
+    {
+      "path": "generated/world/trung-tam/regions/r5-4.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-trung-tam-map.ts",
+      "derivedFrom": [],
+      "sha256": "4b064798afa3454c490f16c0bfe5fa50de6a695e32b6dca185e34688232ca9ad",
+      "bytes": 20009
+    },
+    {
+      "path": "generated/world/trung-tam/regions/r5-5.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-trung-tam-map.ts",
+      "derivedFrom": [],
+      "sha256": "1c50787c8c21afe2edd0257495eb45eea2788d9aa90bfeb18e0573990e16b195",
+      "bytes": 25892
+    },
+    {
+      "path": "generated/world/trung-tam/regions/r5-6.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-trung-tam-map.ts",
+      "derivedFrom": [],
+      "sha256": "01c35107579f8e7c725a285fc96c9c16cdaad8e3f132f5bf7c2ac13496b81627",
+      "bytes": 6040
+    },
+    {
+      "path": "generated/world/trung-tam/regions/r6-0.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-trung-tam-map.ts",
+      "derivedFrom": [],
+      "sha256": "5b90aca0b167273f1a3a22ca0c0421ab9ccc4ce4fef0c9c394ee485e1a33f263",
+      "bytes": 12479
+    },
+    {
+      "path": "generated/world/trung-tam/regions/r6-1.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-trung-tam-map.ts",
+      "derivedFrom": [],
+      "sha256": "7b40f3f8ba24c9571699e5b212df2054d1a549b0598f0facde460b190c4cf1bf",
+      "bytes": 7396
+    },
+    {
+      "path": "generated/world/trung-tam/regions/r6-2.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-trung-tam-map.ts",
+      "derivedFrom": [],
+      "sha256": "1ab8cec5fc1cbba61f1337b78beda26e9912507cc48869a9755c9bf359fa6822",
+      "bytes": 4912
+    },
+    {
+      "path": "generated/world/trung-tam/regions/r6-3.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-trung-tam-map.ts",
+      "derivedFrom": [],
+      "sha256": "8a9eec57a331cdc17aef51c4507cf18b22b2b9ceb0f0819e3f5146d034a5f723",
+      "bytes": 540
+    },
+    {
+      "path": "generated/world/trung-tam/regions/r6-4.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-trung-tam-map.ts",
+      "derivedFrom": [],
+      "sha256": "8a9eec57a331cdc17aef51c4507cf18b22b2b9ceb0f0819e3f5146d034a5f723",
+      "bytes": 540
+    },
+    {
+      "path": "generated/world/trung-tam/regions/r6-5.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-trung-tam-map.ts",
+      "derivedFrom": [],
+      "sha256": "5e4a182da09c3fa77581f50f41796e4d4a18903d8f1d5316b74f0edf0524729b",
+      "bytes": 3187
+    },
+    {
+      "path": "generated/world/trung-tam/regions/r6-6.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-trung-tam-map.ts",
+      "derivedFrom": [],
+      "sha256": "3b2d111687daca6d1399ebde10182079fa47739af7427e2044a605abe8add4e8",
+      "bytes": 1131
+    },
+    {
       "path": "generated/world/truong-hoc/entities.json",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-school-map.ts",
       "derivedFrom": [],
-      "sha256": "044121f3af29cf315de93c7d65bb75aef51f984e1205c6d231cfb82db430ec98",
-      "bytes": 1058756
+      "sha256": "990a49e57cc4a46dcd2cc77157b1856b35154c970993e4e3c9c3669c2ed40a2e",
+      "bytes": 1058989
     },
     {
       "path": "generated/world/truong-hoc/horizon.bin",
@@ -26944,8 +30216,8 @@
       "license": "CC0-1.0",
       "generator": "tools/world/generate-xom-mai-am-map.ts",
       "derivedFrom": [],
-      "sha256": "b365835755e6527c0eb171e65597ba7da6b8ab4013e212856e9c4059b6bf6ea3",
-      "bytes": 2024001
+      "sha256": "adaa21054848fc5ccbcd77744b7a3a5962a5c69d9c1bd7346ca94d2275a1df5d",
+      "bytes": 2023994
     },
     {
       "path": "generated/world/xom-mai-am/horizon.bin",

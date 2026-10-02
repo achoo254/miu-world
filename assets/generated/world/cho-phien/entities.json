@@ -7,7 +7,7 @@
   "spawn": {"position":[220.5,13,262.5],"yaw":0},
   "chapterSpawns": {"1":{"position":[220.5,13,437.5],"yaw":180},"2":{"position":[590.5,13,429.5],"yaw":180}},
   "interactables": [
-    {"id":"cong-truong-hoc","kind":"gate","name":"Cổng sang Trường học","label":"Đi qua cổng","position":[227.5,13,265.5],"yaw":0,"radius":3,"model":"packs/kenney-castle-kit/2.0/gate.glb","scale":5.4925,"travel":"truong-hoc"},
+    {"id":"cong-trung-tam","kind":"gate","name":"Cổng sang Trung tâm","label":"Đi qua cổng","position":[227.5,13,265.5],"yaw":0,"radius":3,"model":"packs/kenney-castle-kit/2.0/gate.glb","scale":5.4925,"travel":"trung-tam"},
     {"id":"ben-xe-1","kind":"object","name":"Xe buýt tới Chợ rau hoa","label":"Lên xe","position":[213.5,13,253.5],"yaw":0,"radius":2.5,"model":"generated/props/automobile.glb","scale":0.1455,"ride":[222.5,13,439.5]},
     {"id":"ben-xe-2","kind":"object","name":"Xe buýt tới Dãy hàng cân đong","label":"Lên xe","position":[209.5,13,253.5],"yaw":0,"radius":2.5,"model":"generated/props/automobile.glb","scale":0.1455,"ride":[592.5,13,431.5]},
     {"id":"ben-xe-3","kind":"object","name":"Xe buýt về cổng","label":"Lên xe","position":[224.5,13,437.5],"yaw":0,"radius":2.5,"model":"generated/props/automobile.glb","scale":0.1455,"ride":[224.5,13,266.5]},

@@ -1,0 +1,348 @@
+{
+  "id": "trung-tam-ch1",
+  "region": "trung-tam",
+  "chapter": 1,
+  "title": "Trung tâm – Chương 1: Ngày hội gặp gỡ",
+  "status": "active",
+  "summary": "Quảng trường sắp mở Ngày hội gặp gỡ mà dãy cổng dịch chuyển còn chưa sáng hết. {name} cùng Mèo Đại Sứ gom đồ trang trí, xếp hàng cho tổ đội, mua đèn và thắp sáng các cổng.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Mèo Đại Sứ, Thỏ Đội Trưởng Bông, cô Cáo Bán Hàng Lúm, chú Tròn gác cổng",
+    "where": "Trung tâm, quảng trường đài phun nước: bồn hoa, bảng nhiệm vụ, chòi chờ tổ đội, trước cửa hàng, dãy cổng dịch chuyển",
+    "goal": "Chuẩn bị Ngày hội gặp gỡ và thắp sáng dãy cổng dịch chuyển",
+    "play": "Tìm đồ trang trí, đọc thông báo, xếp số áo, trả xu mua đèn, giải câu đố thắp cổng",
+    "learn": "Ôn đọc hiểu một thông báo ngắn, so sánh số có hai chữ số, cộng và trừ trong phạm vi 100",
+    "reward": "80 XP, 20 Xu, Skill XP",
+    "next": "Các cổng dịch chuyển đã sáng: {name} chọn một cổng và lên đường khám phá"
+  },
+  "phases": {
+    "hook": "gap-meo-dai-su",
+    "explore": "tim-do-trang-tri",
+    "learn": "doc-thong-bao",
+    "challenge": "xep-hang-to-doi",
+    "decision": "gap-chu-gac-cong",
+    "finale": "thap-cong",
+    "reward": "qua-ngay-hoi",
+    "next": "len-duong"
+  },
+  "places": {
+    "meo-dai-su": "Đài phun nước tượng mèo",
+    "tim-do-trang-tri": "Bồn hoa quanh đài phun",
+    "tt-bang-ngay-hoi": "Bảng nhiệm vụ",
+    "tt-tho-doi-truong": "Chòi chờ tổ đội",
+    "tt-co-cao-ban-hang": "Trước cửa hàng",
+    "tt-chu-gau-gac-cong": "Dãy cổng dịch chuyển"
+  },
+  "steps": [
+    {
+      "id": "gap-meo-dai-su",
+      "title": "Gặp Mèo Đại Sứ",
+      "goTo": "Đi tới đài phun nước tượng mèo giữa quảng trường",
+      "kind": "dialogue",
+      "target": "meo-dai-su",
+      "lines": [
+        {
+          "speaker": "Mèo Đại Sứ",
+          "text": "Meo meo, chào mừng {name} tới Trung tâm! Đây là nơi các bạn nhỏ khắp nơi gặp nhau đấy."
+        },
+        {
+          "speaker": "Mèo Đại Sứ",
+          "text": "Chiều nay quảng trường mở Ngày hội gặp gỡ, mà đồ trang trí bị gió thổi tung quanh đài phun nước rồi."
+        },
+        {
+          "speaker": "Mèo Đại Sứ",
+          "text": "Bạn nhặt giúp tớ một chiếc vé, một quả bóng bay và một hộp quà nhé!"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Để tớ nhặt ngay!",
+          "reply": "Cảm ơn {name}, bạn đúng là khách quý của ngày hội."
+        },
+        {
+          "text": "Ngày hội gặp gỡ có gì vui?",
+          "reply": "Có sân khấu, có tổ đội, có quà, và có thật nhiều bạn mới!"
+        }
+      ]
+    },
+    {
+      "id": "tim-do-trang-tri",
+      "title": "Nhặt 3 món đồ trang trí",
+      "goTo": "Tìm ở bồn hoa quanh đài phun: vé, bóng bay, hộp quà",
+      "kind": "search",
+      "targets": [
+        "tt-ve-ngay-hoi",
+        "tt-bong-bay-xanh",
+        "tt-hop-qua-do"
+      ]
+    },
+    {
+      "id": "doc-thong-bao",
+      "title": "Đọc thông báo ngày hội",
+      "goTo": "Mang đồ tới bảng nhiệm vụ có dấu chấm than vàng",
+      "kind": "read",
+      "target": "tt-bang-ngay-hoi",
+      "skill": "doc-hieu",
+      "text": "THÔNG BÁO NGÀY HỘI GẶP GỠ\nBa giờ chiều: các tổ đội xếp hàng ở chòi chờ.\nBốn giờ chiều: cửa hàng bán đèn lồng cho ai muốn thắp cổng.\nNăm giờ chiều: mọi người cùng thắp sáng dãy cổng dịch chuyển.\nMèo Đại Sứ",
+      "question": "Theo thông báo, các tổ đội xếp hàng ở đâu?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Ở cửa hàng"
+        },
+        {
+          "id": "b",
+          "text": "Ở chòi chờ"
+        },
+        {
+          "id": "c",
+          "text": "Ở dãy cổng dịch chuyển"
+        }
+      ],
+      "answer": {
+        "choice": "b"
+      },
+      "support": {
+        "guide": [
+          "Đọc dòng đầu tiên sau tên thông báo.",
+          "Tìm hai chữ \"xếp hàng\".",
+          "Xem việc đó diễn ra ở đâu."
+        ],
+        "hint": "Dòng ghi giờ sớm nhất nói về các tổ đội.",
+        "answer": {
+          "text": "Ở chòi chờ",
+          "explanation": "Thông báo viết: \"Ba giờ chiều: các tổ đội xếp hàng ở chòi chờ.\""
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đúng rồi, chòi chờ là chỗ các tổ đội tụ họp!",
+          "{name} đọc thông báo nhanh như một đại sứ nhí.",
+          "Chuẩn! Ba giờ chiều ra chòi chờ xếp hàng nào."
+        ],
+        "wrong": [
+          "{name} dò lại dòng có chữ \"xếp hàng\" nhé.",
+          "Cửa hàng bán đèn lồng cơ, còn tổ đội thì ở chỗ khác.",
+          "Đọc chậm dòng đầu của thông báo thêm lần nữa xem."
+        ]
+      }
+    },
+    {
+      "id": "xep-hang-to-doi",
+      "title": "Xếp hàng cho tổ đội",
+      "goTo": "Tới chòi chờ tổ đội mái xanh, Thỏ Đội Trưởng Bông đang gọi",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "tt-tho-doi-truong",
+      "skill": "so-sanh-so",
+      "prompt": "Các bạn trong tổ đứng theo số áo từ bé đến lớn. Xếp giúp Thỏ Đội Trưởng Bông bốn số áo này.",
+      "items": [
+        {
+          "id": "ao-45",
+          "label": "45"
+        },
+        {
+          "id": "ao-12",
+          "label": "12"
+        },
+        {
+          "id": "ao-70",
+          "label": "70"
+        },
+        {
+          "id": "ao-38",
+          "label": "38"
+        }
+      ],
+      "answer": {
+        "order": [
+          "ao-12",
+          "ao-38",
+          "ao-45",
+          "ao-70"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Tìm số áo bé nhất.",
+          "So chữ số hàng chục: hàng chục bé hơn thì số bé hơn.",
+          "Xếp tiếp các số còn lại."
+        ],
+        "hint": "Số 12 có 1 chục, là số bé nhất.",
+        "answer": {
+          "text": "12, 38, 45, 70",
+          "explanation": "1 chục < 3 chục < 4 chục < 7 chục, nên 12 < 38 < 45 < 70."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Cả tổ đứng thẳng tắp theo số áo, Thỏ Bông vỗ tay rộn ràng!",
+          "Từ mười hai tới bảy mươi, không ai lạc chỗ!",
+          "Hàng ngũ chỉnh tề rồi, tổ đội sẵn sàng!"
+        ],
+        "wrong": [
+          "Thỏ Bông nghiêng tai: {name} so hàng chục trước nhé.",
+          "Có bạn đứng nhầm chỗ, thử tìm số bé nhất lại xem.",
+          "Số có ít chục hơn thì đứng lên trước nè."
+        ]
+      }
+    },
+    {
+      "id": "mua-den-long",
+      "title": "Mua đèn lồng thắp cổng",
+      "goTo": "Ghé trước cửa hàng mái sọc, cô Cáo Bán Hàng Lúm có đèn lồng",
+      "kind": "challenge",
+      "mechanic": "drag-drop",
+      "target": "tt-co-cao-ban-hang",
+      "skill": "phep-cong",
+      "prompt": "Một chiếc đèn lồng giá 50 xu. Kéo các đồng xu vào khay cho đủ đúng 50 xu.",
+      "container": "Khay trả tiền của cô Lúm",
+      "pieces": [
+        {
+          "id": "xu-20-a",
+          "label": "20 xu",
+          "value": 20
+        },
+        {
+          "id": "xu-20-b",
+          "label": "20 xu",
+          "value": 20
+        },
+        {
+          "id": "xu-10-a",
+          "label": "10 xu",
+          "value": 10
+        },
+        {
+          "id": "xu-5-a",
+          "label": "5 xu",
+          "value": 5
+        },
+        {
+          "id": "xu-5-b",
+          "label": "5 xu",
+          "value": 5
+        },
+        {
+          "id": "xu-10-b",
+          "label": "10 xu",
+          "value": 10
+        }
+      ],
+      "answer": {
+        "total": 50
+      },
+      "support": {
+        "guide": [
+          "Đặt đồng xu lớn trước.",
+          "Mỗi lần đặt, cộng dồn số xu trong khay.",
+          "Dừng lại khi khay vừa đủ 50 xu."
+        ],
+        "hint": "20 + 20 = 40, cần thêm 10 xu nữa.",
+        "answer": {
+          "text": "Đủ 50 xu, ví dụ 20 + 20 + 10",
+          "explanation": "20 + 20 + 10 = 50. Cũng có thể trả 20 + 10 + 10 + 5 + 5 = 50."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Vừa khít năm mươi xu, cô Lúm trao đèn lồng cho {name}!",
+          "Tiền trao cháo múc, đèn lồng sáng trưng đây rồi!",
+          "Cộng dồn giỏi quá, khay không thừa không thiếu!"
+        ],
+        "wrong": [
+          "Khay chưa đúng năm mươi xu, {name} đếm lại tổng nhé.",
+          "Thừa hay thiếu rồi nè, cộng dồn từng đồng xem.",
+          "Thử bắt đầu từ hai đồng hai mươi xu nào."
+        ]
+      }
+    },
+    {
+      "id": "gap-chu-gac-cong",
+      "title": "Gặp chú Tròn gác cổng",
+      "goTo": "Mang đèn lồng tới dãy cổng dịch chuyển",
+      "kind": "dialogue",
+      "target": "tt-chu-gau-gac-cong",
+      "lines": [
+        {
+          "speaker": "Chú Tròn",
+          "text": "A, {name} mang đèn lồng tới rồi! Mỗi cổng dẫn tới một vùng đất riêng đấy."
+        },
+        {
+          "speaker": "Chú Tròn",
+          "text": "Muốn thắp hết các cổng, cháu phải tính xem còn bao nhiêu cổng đang tối."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu tính được ạ!",
+          "reply": "Giỏi lắm, chú đứng đây cổ vũ cháu."
+        },
+        {
+          "text": "Cổng nào đẹp nhất hả chú?",
+          "reply": "Cổng nào cũng đẹp, mỗi cổng một màu như cầu vồng!"
+        }
+      ]
+    },
+    {
+      "id": "thap-cong",
+      "title": "Thắp sáng dãy cổng",
+      "kind": "riddle",
+      "target": "tt-chu-gau-gac-cong",
+      "skill": "phep-tru",
+      "question": "Dãy có 10 cổng dịch chuyển, 4 cổng đã sáng. Còn mấy cổng chưa sáng? (10 − 4 = ?)",
+      "answer": {
+        "value": 6
+      },
+      "support": {
+        "guide": [
+          "Có tất cả 10 cổng.",
+          "Bớt đi 4 cổng đã sáng.",
+          "Tính 10 − 4."
+        ],
+        "hint": "Đếm lùi 4 bước từ 10: 9, 8, 7, 6.",
+        "answer": {
+          "text": "6",
+          "explanation": "10 − 4 = 6. Còn 6 cổng chưa sáng."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Sáu cổng bừng sáng cùng lúc, quảng trường reo hò!",
+          "Mười bớt bốn còn sáu, {name} tính chuẩn quá!",
+          "Cả dãy cổng rực rỡ bảy sắc rồi kìa!"
+        ],
+        "wrong": [
+          "Chú Tròn gãi đầu: cổng đã sáng thì không cần thắp nữa đâu.",
+          "Bớt đi số cổng đã sáng, {name} thử lại nhé.",
+          "Đếm lùi từ mười, bốn bước thôi nào."
+        ]
+      }
+    },
+    {
+      "id": "qua-ngay-hoi",
+      "title": "Quà Ngày hội gặp gỡ",
+      "kind": "reward",
+      "target": "meo-dai-su",
+      "text": "Dãy cổng dịch chuyển sáng rực, nhạc ngày hội vang khắp quảng trường! Mèo Đại Sứ gắn lên áo {name} huy hiệu Bạn của Trung tâm.",
+      "goTo": "Quay về đài phun nước tượng mèo nhận quà"
+    },
+    {
+      "id": "len-duong",
+      "title": "Chọn một cổng để lên đường",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Mỗi cổng sáng một màu đang mời gọi. {name} chọn một cổng và bước qua, bao bạn mới đang chờ ở phía bên kia!"
+    }
+  ],
+  "reward": {
+    "xp": 80,
+    "coin": 20,
+    "skillXp": {
+      "doc-hieu": 1,
+      "so-sanh-so": 1,
+      "phep-cong": 1,
+      "phep-tru": 1
+    }
+  }
+}

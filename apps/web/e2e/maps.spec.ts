@@ -1,6 +1,6 @@
 // The wide maps (800 x 800, loaded region by region) on the production build: each theme map opens next to
-// its guide within the draw-call budget, and the gates carry the child from the school hub into a theme map
-// and back. Guides, lessons and gates are read from the content and the maps' entities as data.
+// its guide within the draw-call budget, and the gates carry the child from the hub, Trung tâm, into a theme
+// map and back (and from the school's square into a theme map). Guides, lessons and gates are read from the content and the maps' entities as data.
 import { readFileSync, readdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { expect, test } from '@playwright/test';
@@ -22,7 +22,7 @@ const quests = readdirSync(questDir)
 const lessonWithGuide = (region: string, guide: string) => quests.find((q) => q.region === region && q.status === 'active' && q.steps?.some((s) => s.target === guide));
 const firstLesson = (region: string) => quests.find((q) => q.region === region && q.status === 'active');
 
-const THEME_MAPS = ['lang-ven-song', 'xom-mai-am', 'cho-phien', 'nong-trai', 'thu-vien', 'lau-dai'];
+const THEME_MAPS = ['lang-ven-song', 'xom-mai-am', 'cho-phien', 'nong-trai', 'thu-vien', 'lau-dai', 'trung-tam', 'nui-tuyet', 'dao-bi-an'];
 
 for (const id of THEME_MAPS) {
   test(`${id} opens beside its guide (or its first character) within the draw-call budget`, async ({ page, baseURL }) => {
@@ -42,18 +42,34 @@ for (const id of THEME_MAPS) {
   });
 }
 
-test('a gate of the school hub leads into the market, and the market gate leads back', async ({ page, baseURL }) => {
-  const hubLesson = firstLesson('truong-hoc');
-  const market = firstLesson('cho-phien');
-  if (!hubLesson || !market) throw new Error('no lesson in the hub or the market');
+test('a gate of the hub, Trung tâm, leads onto the mystery island, and the island gate leads back', async ({ page, baseURL }) => {
+  const hubLesson = firstLesson('trung-tam');
+  const island = firstLesson('dao-bi-an');
+  if (!hubLesson || !island) throw new Error('no quest in the hub or on the island');
   await freshChild(page, baseURL ?? '');
-  await page.goto(`/play?quality=low&region=truong-hoc&quest=${hubLesson.id}&spawnAt=cong-cho-phien`);
+  await page.goto(`/play?quality=low&region=trung-tam&quest=${hubLesson.id}&spawnAt=cong-dao-bi-an`);
+  await waitReady(page);
+  await page.keyboard.press('KeyE');
+  await expect(page).toHaveURL(new RegExp(`region=dao-bi-an&quest=${island.id}`));
+  await waitReady(page);
+  await page.goto(`/play?quality=low&region=dao-bi-an&quest=${island.id}&spawnAt=cong-trung-tam`);
+  await waitReady(page);
+  await page.keyboard.press('KeyE');
+  await expect(page).toHaveURL(/region=trung-tam/);
+});
+
+test("a portal of the school's square leads into the market, and the market gate leads to Trung tâm", async ({ page, baseURL }) => {
+  const schoolLesson = firstLesson('truong-hoc');
+  const market = firstLesson('cho-phien');
+  if (!schoolLesson || !market) throw new Error('no lesson in the school or the market');
+  await freshChild(page, baseURL ?? '');
+  await page.goto(`/play?quality=low&region=truong-hoc&quest=${schoolLesson.id}&spawnAt=cong-cho-phien`);
   await waitReady(page);
   await page.keyboard.press('KeyE');
   await expect(page).toHaveURL(new RegExp(`region=cho-phien&quest=${market.id}`));
   await waitReady(page);
-  await page.goto(`/play?quality=low&region=cho-phien&quest=${market.id}&spawnAt=cong-truong-hoc`);
+  await page.goto(`/play?quality=low&region=cho-phien&quest=${market.id}&spawnAt=cong-trung-tam`);
   await waitReady(page);
   await page.keyboard.press('KeyE');
-  await expect(page).toHaveURL(/region=truong-hoc/);
+  await expect(page).toHaveURL(/region=trung-tam/);
 });

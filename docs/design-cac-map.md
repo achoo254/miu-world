@@ -8,7 +8,7 @@ Chữ trong ảnh, biển hiệu và đồ vật là gợi ý tạo hình, khôn
 
 ## Cấu trúc theo mock
 
-Hai ảnh toàn cảnh vẽ một vùng 256 × 256: Trường học ở giữa, quanh là Làng, Rừng, Hồ/Sông, Chợ, Nông trại, Núi, Bến tàu. Trong game: map Trường học là map trung tâm dựng như ảnh đó, có cổng sang map riêng 256 × 256 của từng chủ điểm; mỗi map có cổng về trung tâm.
+Hai ảnh toàn cảnh vẽ một vùng 256 × 256: Trường học ở giữa, quanh là Làng, Rừng, Hồ/Sông, Chợ, Nông trại, Núi, Bến tàu. Trong game: map Trường học dựng như ảnh đó. Từ 02/10/2026 trung tâm là map riêng **Trung tâm** (`trung-tam`, `HUB_REGION` trong `tools/world/zone-map.ts`; người sở hữu: nơi các bạn gặp nhau khi chơi online, ở giữa màn chọn map), có cổng sang cả mười map; mỗi map có cổng về Trung tâm. Quảng trường cũ trong map Trường học giữ các cổng của nó.
 
 ## Thế giới (`designs/the-gioi/`)
 
@@ -32,7 +32,7 @@ Hai ảnh toàn cảnh vẽ một vùng 256 × 256: Trường học ở giữa, 
 | Chợ phiên | `designs/cho-phien/a-08-cho-can-canh.png`, `b-07-cho-toan-canh.png` | Sạp gỗ mái vải sọc đỏ trắng, xanh trắng, vàng; thùng rau quả đầy màu; quảng trường lát gạch; nhà quanh chợ; người mua bán đi lại. |
 | Nông trại | `designs/nong-trai/a-09-nong-trai-can-canh.png`, `b-05-nong-trai-toan-canh.png` | Ruộng rau quả chia ô có hàng rào gỗ, cối xay gió gỗ, nhà mái đỏ, chuồng đỏ mái xám, bò sữa, nông dân đội nón, cây hoa hồng nhạt. |
 | Khu rừng bí mật | `designs/khu-rung-bi-mat/a-10-rung-can-canh.png`, `b-08-rung-toan-canh.png` | Suối có cầu gỗ, vách đá có thác, cây xanh dày và cây hoa hồng nhạt, lối mòn. |
-| Núi tuyết (sau) | `designs/nui-tuyet/b-11-nui-toan-canh.png` | Núi đá nhiều tầng, thác, cầu treo gỗ: phông nền ở rìa map trung tâm. |
+| Núi tuyết | `designs/nui-tuyet/b-11-nui-toan-canh.png` | Núi đá nhiều tầng, thác, cầu treo gỗ (map riêng từ 02/10/2026, theo `nui-tuyet/d-*`). |
 
 Thư viện, Xóm Mái Ấm, Lâu đài chưa có khung riêng: dựng theo phong cách chung ở trên (mái nhiều màu, hoa, hàng rào, đèn), phòng đọc Thư viện theo `v2-a-12-thu-vien-trong-truong.png`.
 
@@ -43,12 +43,15 @@ Chín tấm mock chi tiết, mỗi tấm 8–19 khung (toàn cảnh, cận cản
 | Tấm | Khung | Map dùng |
 | --- | --- | --- |
 | Các khu quanh trường | `truong-hoc/c-*` (trường, sân, nhà đa năng, vườn khoa học, khu vui chơi, đường chính, lớp, thư viện, hành lang, cầu thang, phòng chức năng); `lang-ven-song/c-07, c-11, c-12`; `cho-phien/c-08`; `nong-trai/c-09`; `khu-rung-bi-mat/c-10`; `nui-tuyet/c-14` | Trường học và map của từng khu |
-| Trung tâm | `trung-tam/d-*` | Quảng trường giữa map Trường học: đài phun tượng mèo, cổng vòm có tên sang từng map, bảng nhiệm vụ "!", cửa hàng, chòi chờ |
+| Trung tâm | `trung-tam/d-*` | Map Trung tâm (02/10/2026; trước đó là quảng trường giữa map Trường học): đài phun tượng mèo, dãy cổng có tên sang mười map, bảng nhiệm vụ "!", cửa hàng, khu giao dịch, chòi chờ tổ đội, cầu trung tâm, khu sự kiện theo mùa, lâu đài phông nền |
 | Làng | `lang-ven-song/d-*` | Làng Ven Sông theo khung ngoài trời (cổng, đường làng, chợ nhỏ, cầu, cối xay, cây sinh hoạt chung, xưởng); Xóm Mái Ấm theo khung nhà (`d-03, 05, 07, 13, 14`) |
 | Chợ | `cho-phien/d-*` | Chợ phiên |
 | Nông trại | `nong-trai/d-*` | Nông trại |
 | Thư viện | `thu-vien/d-*` | Thư viện |
 | Lâu đài | `lau-dai/d-*` | Lâu đài |
-| Đảo bí ẩn, Núi tuyết | `dao-bi-an/d-*`, `nui-tuyet/d-*` | Chưa có map (tham chiếu cho map sau) |
+| Núi tuyết | `nui-tuyet/d-*` | Núi tuyết (02/10/2026), nền `grass-snow`, hồ `ice`, hang `crystal` |
+| Đảo bí ẩn | `dao-bi-an/d-*` | Đảo bí ẩn (02/10/2026), nền `grass-island` và cát, khu thử thách `lava`, hang và đền `crystal` |
 
 Mỗi map một nền riêng (khối cỏ theo map, đá lát, đường đất; `soil` trong generator, vùng đất ngoài map theo nó). Góc chụp đặt cạnh từng khung: `content/world/mock-views/<map>.json` (camera tính từ một landmark của map, `mood: dusk` cho khung đêm); `pnpm assets:preview <map>` chụp thành `assets/generated/review/<map>/mock__<thư mục>__<khung>.png`, trang review đặt cạnh khung mock. Đồ chi tiết pack không có dựng bằng hộp màu trong `content/world/box-props/<map>.json` (`glow` cho phần tự sáng).
+
+Map chưa có bài SGK mở kèm một quest chào mừng (Trung tâm, Núi tuyết, Đảo bí ẩn: `content/quests/trung-tam-ch1.json`, `nui-tuyet-ch1.json`, `kho-bau-dao-ch1.json` — tên tệp xếp sau `forest-ch1` để bé mới vẫn bắt đầu ở Khu rừng; Jev, `plans/dattqh/reports/jev-261002-1619-open-snow-island.md`); mục quest đặt quanh các landmark cùng tên ở khu chương 1 của map.

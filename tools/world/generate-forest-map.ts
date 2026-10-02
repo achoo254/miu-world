@@ -19,6 +19,7 @@ import { cellsIn } from './chapters/place-quest-targets';
 import { placeAncientTree } from './structures/tree';
 import { crowd, person, placeVillageLife, type Resident } from './village-life';
 import { outlandSpecOf } from './outland-spec';
+import { HUB_REGION } from './zone-map';
 
 export const MAP_ID = 'forest-ch1';
 export const SEED_TEXT = 'miu-forest-ch1';
@@ -556,8 +557,8 @@ export async function generateForest(): Promise<{ world: VoxelWorld; entities: W
 
   // The gate back to the hub, beside the spawn (every theme map has one: zone-map.ts HUB_REGION).
   interactables.push({
-    id: 'cong-truong-hoc', kind: 'gate', name: 'Cổng sang Trường học', label: 'Đi qua cổng',
-    position: place(spawn.x + 7, spawn.z - 4), yaw: 0, radius: 3, ...modelled(`${PACK.castle}/gate.glb`), travel: 'truong-hoc',
+    id: `cong-${HUB_REGION}`, kind: 'gate', name: 'Cổng sang Trung tâm', label: 'Đi qua cổng',
+    position: place(spawn.x + 7, spawn.z - 4), yaw: 0, radius: 3, ...modelled(`${PACK.castle}/gate.glb`), travel: HUB_REGION,
   });
 
   // Villagers and animals going about their day, clear of every chapter's quest targets.
@@ -597,10 +598,11 @@ export async function generateForest(): Promise<{ world: VoxelWorld; entities: W
   // The scene's folk: the ranger at his cabin, mushroom pickers, explorers, anglers, and spawn guides.
   const explorer = (name: string, letter: string, at: readonly [number, number]): Resident => ({ routine: 'pupil', name, model: person(letter), at, scale: 0.72, held: [magnifier] });
   const sceneFolk: Resident[] = [
-    // Welcome and arrival at spawn (x: 16, z: 16).
-    { routine: 'sentry', name: 'Bác kiểm lâm đón tiếp', model: person('d'), at: [spawn.x + 3, spawn.z + 1] as const, held: [axe] },
-    { routine: 'pupil', name: 'Bạn nhỏ hướng dẫn đường rừng', model: person('f'), at: [spawn.x + 1, spawn.z - 2] as const, held: [magnifier] },
-    { routine: 'reader', name: 'Khách tham quan bìa rừng', model: person('k'), at: [spawn.x - 2, spawn.z + 2] as const, held: [book] },
+    // Welcome and arrival round the spawn (x: 16, z: 16), a few steps off: a child arriving stands clear of
+    // anyone to talk to until it walks up to them.
+    { routine: 'sentry', name: 'Bác kiểm lâm đón tiếp', model: person('d'), at: [spawn.x + 6, spawn.z + 3] as const, held: [axe] },
+    { routine: 'pupil', name: 'Bạn nhỏ hướng dẫn đường rừng', model: person('f'), at: [spawn.x + 2, spawn.z - 7] as const, held: [magnifier] },
+    { routine: 'reader', name: 'Khách tham quan bìa rừng', model: person('k'), at: [spawn.x - 6, spawn.z + 4] as const, held: [book] },
 
     // Waterfall and cabin scene.
     { routine: 'sentry', name: 'Bác Kiểm lâm Sơn', model: person('d'), at: [cabin.door[0] - 3, cabin.door[1] + 3] },

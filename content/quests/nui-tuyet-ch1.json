@@ -1,0 +1,357 @@
+{
+  "id": "nui-tuyet-ch1",
+  "region": "nui-tuyet",
+  "chapter": 1,
+  "title": "Núi tuyết – Chương 1: Người tuyết chào khách",
+  "status": "active",
+  "summary": "Làng núi tuyết muốn nặn một người tuyết thật to để chào khách mới, nhưng cà rốt, khăn len và than làm mắt đã lẫn đâu mất. {name} cùng Gấu Băng Tuyết tìm đồ, đọc lời dặn ở trạm nhiệm vụ, chọn đồ ấm và hoàn thành người tuyết.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Gấu Băng Tuyết, bác Gấu Bán Đồ Ấm Sồi, chị Cáo Trượt Tuyết Vèo, bé Thỏ Bông Bông",
+    "where": "Núi tuyết, làng núi tuyết: cổng vào, quảng trường làng, trạm nhiệm vụ, trước cửa hàng đồ ấm, dốc trượt nhỏ, bãi người tuyết",
+    "goal": "Nặn xong người tuyết chào khách trước khi đèn làng thắp sáng",
+    "play": "Tìm đồ nặn người tuyết, đọc lời dặn, xếp đồ ấm và đồ ăn, so điểm trượt tuyết, giải câu đố người tuyết",
+    "learn": "Ôn đọc hiểu, từ chỉ sự vật, so sánh số có hai chữ số, phép cộng trong phạm vi 20",
+    "reward": "80 XP, 20 Xu, Skill XP",
+    "next": "Ga cáp treo mở cửa: {name} lên dốc trượt tuyết và hồ băng"
+  },
+  "phases": {
+    "hook": "gap-gau-bang-tuyet",
+    "explore": "tim-do-nan-nguoi-tuyet",
+    "learn": "doc-loi-dan",
+    "challenge": "chon-do-am",
+    "decision": "gap-be-tho",
+    "finale": "cau-do-nguoi-tuyet",
+    "reward": "nguoi-tuyet-chao-khach",
+    "next": "len-cap-treo"
+  },
+  "places": {
+    "gau-bang-tuyet": "Cổng vào núi tuyết",
+    "tim-do-nan-nguoi-tuyet": "Quảng trường làng tuyết",
+    "nt-tam-bang-loi-dan": "Trạm nhiệm vụ",
+    "nt-bac-gau-ban-do-am": "Trước cửa hàng đồ ấm",
+    "nt-chi-cao-truot-tuyet": "Dốc trượt nhỏ đầu làng",
+    "nt-be-tho-nan-tuyet": "Bãi người tuyết"
+  },
+  "steps": [
+    {
+      "id": "gap-gau-bang-tuyet",
+      "title": "Gặp Gấu Băng Tuyết",
+      "goTo": "Đi tới cổng vào núi tuyết có cờ bông tuyết",
+      "kind": "dialogue",
+      "target": "gau-bang-tuyet",
+      "lines": [
+        {
+          "speaker": "Gấu Băng Tuyết",
+          "text": "Hu hu lạnh ghê! Chào {name}, chào mừng cháu lên núi tuyết."
+        },
+        {
+          "speaker": "Gấu Băng Tuyết",
+          "text": "Làng định nặn một người tuyết thật to để chào khách, mà củ cà rốt, chiếc khăn len và cục than làm mắt lăn mất cả."
+        },
+        {
+          "speaker": "Gấu Băng Tuyết",
+          "text": "Cháu xuống quảng trường làng tìm giúp bác nhé, nhớ giữ ấm đôi tai!"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu đi tìm liền ạ!",
+          "reply": "Tốt quá, tuyết dày lắm, cháu bước chậm thôi."
+        },
+        {
+          "text": "Người tuyết to cỡ nào ạ?",
+          "reply": "Cao hơn cả bác cơ, đứng ngay bãi người tuyết đầu làng!"
+        }
+      ]
+    },
+    {
+      "id": "tim-do-nan-nguoi-tuyet",
+      "title": "Tìm 3 món nặn người tuyết",
+      "goTo": "Tìm quanh quảng trường làng tuyết: cà rốt, khăn len, cục than",
+      "kind": "search",
+      "targets": [
+        "nt-cu-ca-rot",
+        "nt-khan-len-do",
+        "nt-cuc-than"
+      ]
+    },
+    {
+      "id": "doc-loi-dan",
+      "title": "Đọc lời dặn ở trạm nhiệm vụ",
+      "goTo": "Ghé trạm nhiệm vụ có tấm bảng gỗ ghim bản đồ",
+      "kind": "read",
+      "target": "nt-tam-bang-loi-dan",
+      "skill": "doc-hieu",
+      "text": "LỜI DẶN NẶN NGƯỜI TUYẾT\nLăn hai quả cầu tuyết, quả to ở dưới, quả nhỏ ở trên.\nGắn cục than làm mắt, củ cà rốt làm mũi.\nQuàng khăn len thật chặt cho người tuyết khỏi lạnh.\nGấu Băng Tuyết",
+      "question": "Theo lời dặn, củ cà rốt dùng để làm gì?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Làm mắt"
+        },
+        {
+          "id": "b",
+          "text": "Làm mũi"
+        },
+        {
+          "id": "c",
+          "text": "Làm khăn quàng"
+        }
+      ],
+      "answer": {
+        "choice": "b"
+      },
+      "support": {
+        "guide": [
+          "Đọc từng dòng của lời dặn.",
+          "Tìm dòng có chữ \"cà rốt\".",
+          "Xem cà rốt được gắn vào chỗ nào."
+        ],
+        "hint": "Dòng thứ hai nói về mắt và mũi.",
+        "answer": {
+          "text": "Làm mũi",
+          "explanation": "Lời dặn viết: \"Gắn cục than làm mắt, củ cà rốt làm mũi.\""
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đúng rồi, mũi cà rốt cam rực trên nền tuyết trắng!",
+          "{name} đọc kĩ ghê, người tuyết sắp có mũi xinh rồi.",
+          "Chính xác! Cục than làm mắt, cà rốt làm mũi."
+        ],
+        "wrong": [
+          "Dò lại dòng có chữ \"cà rốt\" nha {name}.",
+          "Cục than mới làm mắt cơ, cà rốt thì sao nhỉ?",
+          "Đọc chậm dòng thứ hai của lời dặn thêm lần nữa."
+        ]
+      }
+    },
+    {
+      "id": "chon-do-am",
+      "title": "Xếp đồ ở cửa hàng đồ ấm",
+      "goTo": "Tới trước cửa hàng đồ ấm, bác Gấu Bán Đồ Ấm Sồi đang dọn hàng",
+      "kind": "challenge",
+      "mechanic": "classify",
+      "target": "nt-bac-gau-ban-do-am",
+      "skill": "tu-ngu",
+      "prompt": "Bác Sồi nhờ {name} xếp hàng lên kệ: đồ để mặc cho ấm một bên, đồ ăn uống cho ấm bụng một bên.",
+      "groups": [
+        {
+          "id": "do-mac",
+          "label": "Đồ mặc cho ấm"
+        },
+        {
+          "id": "do-an",
+          "label": "Đồ ăn uống"
+        }
+      ],
+      "items": [
+        {
+          "id": "ao-len",
+          "label": "áo len"
+        },
+        {
+          "id": "gang-tay",
+          "label": "găng tay"
+        },
+        {
+          "id": "mu-len",
+          "label": "mũ len"
+        },
+        {
+          "id": "sua-nong",
+          "label": "sữa nóng"
+        },
+        {
+          "id": "khoai-nuong",
+          "label": "khoai nướng"
+        },
+        {
+          "id": "chao-ga",
+          "label": "cháo gà"
+        }
+      ],
+      "answer": {
+        "assignment": {
+          "ao-len": "do-mac",
+          "gang-tay": "do-mac",
+          "mu-len": "do-mac",
+          "sua-nong": "do-an",
+          "khoai-nuong": "do-an",
+          "chao-ga": "do-an"
+        }
+      },
+      "support": {
+        "guide": [
+          "Đọc tên từng món.",
+          "Món nào mặc, đội, đeo lên người thì là đồ mặc.",
+          "Món nào ăn hoặc uống được thì là đồ ăn uống."
+        ],
+        "hint": "Găng tay đeo vào tay, còn khoai nướng thì ăn được.",
+        "answer": {
+          "text": "Đồ mặc: áo len, găng tay, mũ len. Đồ ăn uống: sữa nóng, khoai nướng, cháo gà.",
+          "explanation": "Áo len, găng tay, mũ len giữ ấm người; sữa nóng, khoai nướng, cháo gà làm ấm bụng."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Kệ hàng gọn gàng, bác Sồi cười híp cả mắt!",
+          "Áo mũ một bên, đồ ăn một bên, chuẩn không cần chỉnh!",
+          "{name} xếp hàng khéo như người bán lâu năm."
+        ],
+        "wrong": [
+          "Bác Sồi chỉ khẽ: món này mặc được hay ăn được nhỉ?",
+          "Có món đứng nhầm kệ rồi, {name} soát lại nha.",
+          "Đồ ăn thì ấm bụng, đồ mặc thì ấm người đó."
+        ]
+      }
+    },
+    {
+      "id": "so-diem-truot-tuyet",
+      "title": "So điểm trượt tuyết",
+      "goTo": "Ra dốc trượt nhỏ đầu làng, chị Cáo Trượt Tuyết Vèo đang chờ",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "target": "nt-chi-cao-truot-tuyet",
+      "skill": "so-sanh-so",
+      "prompt": "Sáng nay đội Đỏ trượt được 48 điểm, đội Xanh được 52 điểm. Điền dấu thích hợp.",
+      "template": "48 {{dau}} 52",
+      "blanks": [
+        {
+          "id": "dau",
+          "options": [
+            {
+              "id": "lon",
+              "text": ">"
+            },
+            {
+              "id": "be",
+              "text": "<"
+            },
+            {
+              "id": "bang",
+              "text": "="
+            }
+          ]
+        }
+      ],
+      "answer": {
+        "fills": {
+          "dau": "be"
+        }
+      },
+      "support": {
+        "guide": [
+          "So chữ số hàng chục trước.",
+          "48 có 4 chục, 52 có 5 chục.",
+          "Số có ít chục hơn thì bé hơn."
+        ],
+        "hint": "4 chục ít hơn 5 chục.",
+        "answer": {
+          "text": "48 < 52",
+          "explanation": "4 chục < 5 chục nên 48 < 52: đội Xanh nhiều điểm hơn."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bốn mươi tám bé hơn năm mươi hai, đội Xanh dẫn trước rồi!",
+          "Chị Vèo xoay ván trượt một vòng mừng {name}!",
+          "So hàng chục nhanh như trượt dốc vậy!"
+        ],
+        "wrong": [
+          "Chị Vèo nháy mắt: nhìn hàng chục của hai số xem.",
+          "Bốn chục với năm chục, bên nào nhiều hơn nhỉ?",
+          "Thử đọc lại hai số điểm rồi chọn dấu nhé."
+        ]
+      }
+    },
+    {
+      "id": "gap-be-tho",
+      "title": "Gặp bé Thỏ Bông Bông",
+      "goTo": "Mang đồ tới bãi người tuyết đầu làng",
+      "kind": "dialogue",
+      "target": "nt-be-tho-nan-tuyet",
+      "lines": [
+        {
+          "speaker": "Thỏ Bông Bông",
+          "text": "Tớ lăn xong hai quả cầu tuyết rồi nè! {name} mang đồ tới đúng lúc quá."
+        },
+        {
+          "speaker": "Thỏ Bông Bông",
+          "text": "Nhưng tớ còn muốn gắn thêm cúc áo bằng sỏi, mình đếm xem cần bao nhiêu thứ nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Mình cùng đếm!",
+          "reply": "Hai đứa mình đếm là nhanh nhất!"
+        },
+        {
+          "text": "Người tuyết có cúc áo ư?",
+          "reply": "Có chứ, người tuyết làng mình diện lắm!"
+        }
+      ]
+    },
+    {
+      "id": "cau-do-nguoi-tuyet",
+      "title": "Câu đố người tuyết",
+      "kind": "riddle",
+      "target": "nt-be-tho-nan-tuyet",
+      "skill": "phep-cong",
+      "question": "Người tuyết cần 2 mắt than, 1 mũi cà rốt và 5 cúc áo bằng sỏi. Cần tất cả bao nhiêu thứ? (2 + 1 + 5 = ?)",
+      "answer": {
+        "value": 8
+      },
+      "support": {
+        "guide": [
+          "Cộng mắt và mũi trước: 2 + 1.",
+          "Cộng tiếp 5 cúc áo.",
+          "Gộp cả ba phần lại là ra số thứ cần."
+        ],
+        "hint": "2 + 1 = 3, rồi 3 + 5.",
+        "answer": {
+          "text": "8",
+          "explanation": "2 + 1 + 5 = 8. Cần tất cả 8 thứ."
+        }
+      },
+      "feedback": {
+        "right": [
+          "Tám thứ đủ cả, người tuyết đã có mắt, mũi và cúc áo!",
+          "Hai cộng một cộng năm là tám, {name} cộng nhanh ghê!",
+          "Bé Thỏ nhảy cẫng lên: người tuyết xong rồi!"
+        ],
+        "wrong": [
+          "Bé Thỏ đếm trên ngón tay: cộng từng phần một nha.",
+          "Mắt, mũi rồi tới cúc áo, {name} gộp lại xem.",
+          "Thử cộng hai với một trước đã nào."
+        ]
+      }
+    },
+    {
+      "id": "nguoi-tuyet-chao-khach",
+      "title": "Người tuyết chào khách",
+      "kind": "reward",
+      "target": "gau-bang-tuyet",
+      "text": "Người tuyết quàng khăn đỏ đứng sừng sững ở bãi đầu làng, đèn làng thắp sáng ấm áp. Gấu Băng Tuyết ôm {name} một cái thật ấm!",
+      "goTo": "Về cổng vào núi tuyết báo tin cho Gấu Băng Tuyết"
+    },
+    {
+      "id": "len-cap-treo",
+      "title": "Ga cáp treo mở cửa",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Cabin đỏ của ga cáp treo đã sẵn sàng. {name} lên cáp treo ngắm dốc trượt tuyết, hồ băng và đỉnh núi nhé!"
+    }
+  ],
+  "reward": {
+    "xp": 80,
+    "coin": 20,
+    "skillXp": {
+      "doc-hieu": 1,
+      "tu-ngu": 1,
+      "so-sanh-so": 1,
+      "phep-cong": 1
+    }
+  }
+}

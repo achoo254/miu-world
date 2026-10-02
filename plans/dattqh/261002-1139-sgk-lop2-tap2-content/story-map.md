@@ -1,5 +1,7 @@
 # Bản đồ bài tập 2 (bản nháp, phase 2 chốt)
 
+> 02/10/2026: Núi tuyết đã mở (plan `261002-1619-nui-tuyet-dao-bi-an-maps`); phase 2 chia lại bảng dưới cho 10 map (E6 trong `plan.md`). Trung tâm là map gặp gỡ, không nhận bài.
+
 Chia theo chủ đề, cân số bài (Jev E1). Tập 1 hiện có: Trường học 12, Chợ phiên 12, Khu rừng 9, Lâu đài 9, Làng Ven Sông 8, Xóm Mái Ấm 8, Thư viện 7, Nông trại 6. Tập 2 thêm 71 bài (39 Toán, 32 Tiếng Việt), Đảo bí ẩn là map mới. Mục tiêu: mỗi map khoảng 16 bài.
 
 | Map | Toán tập 2 | Tiếng Việt tập 2 | Thêm | Tổng (tập 1 + tập 2) |

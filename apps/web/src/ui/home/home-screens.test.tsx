@@ -70,10 +70,10 @@ describe('Home', () => {
     expect(rows[0]?.getAttribute('data-id')).toBe('home-today-quest-forest-ch1');
     expect(rows[0]?.textContent).toContain('+100 XP');
 
-    // Region cards: the open forest with its subject; locked regions named with their state for screen readers.
+    // Region cards: the open maps with their subject; a locked region named with its state for screen readers.
     expect(screen.getByRole('button', { name: /Khu rừng bí mật/ }).textContent).toBe('Khu rừng bí mậtTiếng Việt');
+    expect(screen.getByRole('button', { name: /Đảo bí ẩn/ }).textContent).toBe('Đảo bí ẩnKhám phá');
     expect(screen.getByRole('button', { name: 'Nhà của Mochi: Sắp mở' })).toBeTruthy();
-    expect(screen.getByRole('button', { name: 'Đảo bí ẩn: Sắp mở' })).toBeTruthy();
     // The rail of the mock, without the MVP's missing pieces (events, diamonds, streak).
     for (const name of ['Nhiệm vụ', 'Bản đồ', 'Ba lô']) expect(screen.getByRole('link', { name })).toBeTruthy();
     expect(document.body.textContent).not.toMatch(/Kim cương|chuỗi ngày|Sự kiện|TIMO/i);
@@ -82,16 +82,14 @@ describe('Home', () => {
   it("shows a locked region's name in a bubble on tap, stays on Home, and hides the bubble again", async () => {
     stubServer();
     renderAt('/home');
-    const pin = await screen.findByRole('button', { name: 'Núi tuyết: Sắp mở' });
+    const pin = await screen.findByRole('button', { name: 'Nhà của Mochi: Sắp mở' });
     vi.useFakeTimers();
     try {
       const bubbles = () => [...document.querySelectorAll('[data-id^="home-region-bubble-"]')].map((b) => b.textContent);
       fireEvent.click(pin);
-      expect(bubbles()).toEqual(['Núi tuyếtSắp mở']);
+      expect(bubbles()).toEqual(['Nhà của MochiSắp mở']);
       expect(document.querySelector('[data-id="home"]')).toBeTruthy(); // no navigation to a locked region
-      // Another pin replaces the bubble; the bubble leaves on its own after a moment.
-      fireEvent.click(screen.getByRole('button', { name: 'Đảo bí ẩn: Sắp mở' }));
-      expect(bubbles()).toEqual(['Đảo bí ẩnSắp mở']);
+      // The bubble leaves on its own after a moment.
       act(() => vi.advanceTimersByTime(3000));
       expect(bubbles()).toEqual([]);
     } finally {
@@ -128,7 +126,7 @@ describe('Map and region', () => {
     stubServer();
     renderAt('/map');
     expect(await screen.findByRole('heading', { name: /Bản đồ thế giới/ })).toBeTruthy();
-    fireEvent.click(screen.getByRole('button', { name: 'Núi tuyết: Sắp mở' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Nhà của Mochi: Sắp mở' }));
     expect(screen.getByRole('heading', { name: /Bản đồ thế giới/ })).toBeTruthy();
     fireEvent.click(document.querySelector('[data-id="map-region-khu-rung-bi-mat"]') as HTMLElement);
     expect(await screen.findByRole('heading', { name: 'Chương 1' })).toBeTruthy();
@@ -170,7 +168,7 @@ describe('Map and region', () => {
 
   it('refuses a region that is not open', async () => {
     stubServer();
-    renderAt('/region/nui-tuyet');
+    renderAt('/region/nha-cua-be');
     expect(await screen.findByText('Khu vực này chưa mở.')).toBeTruthy();
   });
 });

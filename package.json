@@ -41,6 +41,9 @@
     "world:nong-trai": "tsx tools/world/generate-nong-trai-map.ts",
     "world:thu-vien": "tsx tools/world/generate-thu-vien-map.ts",
     "world:lau-dai": "tsx tools/world/generate-lau-dai-map.ts",
+    "world:trung-tam": "tsx tools/world/generate-trung-tam-map.ts",
+    "world:nui-tuyet": "tsx tools/world/generate-nui-tuyet-map.ts",
+    "world:dao-bi-an": "tsx tools/world/generate-dao-bi-an-map.ts",
     "world:overview": "tsx tools/world/generate-world-overview.ts"
   },
   "devDependencies": {

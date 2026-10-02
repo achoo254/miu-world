@@ -21,7 +21,7 @@ describe('forest generator', () => {
     const parsed = worldEntitiesSchema.parse(entities);
     // Chapter 1's own targets carry no chapter; every other target (the Tiếng Việt quests' places, placed
     // from content/world/targets.json) is tagged with the chapters or the quest it belongs to.
-    const ch1 = ['ancient-tree', 'animal-beaver', 'chest', 'clue-box', 'clue-letter', 'clue-mushroom', 'cong-truong-hoc', 'gate-ch2', 'parrot-guide', 'stream-stones'];
+    const ch1 = ['ancient-tree', 'animal-beaver', 'chest', 'clue-box', 'clue-letter', 'clue-mushroom', 'cong-trung-tam', 'gate-ch2', 'parrot-guide', 'stream-stones'];
     // The forest train's stops (rides to the glades and back) stand in every chapter too.
     const untagged = parsed.interactables.filter((t) => t.chapter === undefined && t.chapters === undefined && !t.ride);
     expect(untagged.map((t) => t.id).sort()).toEqual(ch1.sort());

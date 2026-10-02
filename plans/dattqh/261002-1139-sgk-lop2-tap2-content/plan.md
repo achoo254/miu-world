@@ -33,6 +33,7 @@ Giữ nguyên mọi quyết định của plan tập 1 (`plans/dattqh/260930-084
 | E3 | Cách ly | Worktree `../miu-world-sgk2`, branch `dattqh/feat/sgk-lop2-tap2`, merge vào `main` sau mỗi phase |
 | E4 | Mẫu trước | 4–6 quest mẫu với trò chơi mới, trang nghiệm thu, Jev duyệt, rồi mới viết hàng loạt |
 | E5 | Trò chơi mới | Chơi trong thế giới 3D và các phòng (bảng trò chơi bên dưới) |
+| E6 | Núi tuyết, Trung tâm (02/10/2026, plan `261002-1619-nui-tuyet-dao-bi-an-maps`) | Người sở hữu mở Núi tuyết và Đảo bí ẩn ngay, cùng map Trung tâm riêng (nơi gặp nhau online); Jev: phase 2 chia lại 71 bài cho **10 map** (thêm Núi tuyết, bài hợp tuyết, núi, mùa, đo lường); Trung tâm không nhận bài |
 
 ## Trò chơi mới (phase 3)
 
@@ -57,7 +58,7 @@ Mỗi trò chơi là một loại bước quest mới (schema `packages/quest`, 
 | 1 | [Kiểm kê SGK tập 2 thành dữ liệu](./phase-01-textbook-inventory.md) (`content/curriculum/toan2-t2`, `tv2-t2`): bài, mục, nguyên văn, đáp án, trang in | L | — | Chưa bắt đầu |
 | 2 | [Chốt bản đồ bài](./phase-02-story-map-lock.md): bài → map → khu (chương) → phòng; kịch bản chủ điểm và dàn nhân vật mỗi map ([`story-map.md`](story-map.md)) | M | 1 | Chưa bắt đầu |
 | 3 | [Schema + runtime + UI cho trò chơi mới](./phase-03-world-mini-games.md) (bảng trên), test và E2E mỗi cơ chế | XL | — (song song 1) | Chưa bắt đầu |
-| 4 | [Map Đảo bí ẩn theo `designs/dao-bi-an/`](./phase-04-dao-bi-an-map.md) (800 × 800, bộ dựng chung, góc chụp từng khung, đời sống, cổng về trung tâm, khu bài học) | L | 2 | Chưa bắt đầu |
+| 4 | [Map Đảo bí ẩn theo `designs/dao-bi-an/`](./phase-04-dao-bi-an-map.md) (800 × 800, bộ dựng chung, góc chụp từng khung, đời sống, cổng về trung tâm, khu bài học) | L | 2 | Map đã dựng ở plan `261002-1619-nui-tuyet-dao-bi-an-maps` (kèm quest chào mừng); còn: khu bài học tập 2 khi phase 2 chốt |
 | 5 | [Khu bài học mới trên 8 map có sẵn](./phase-05-zones-on-existing-maps.md): `ZONES` thêm chương cho tập 2, chỗ quest (landmark trùng tên) trong các phòng vừa dựng | L | 2; sau pha 4 của plan mock chi tiết | Chưa bắt đầu |
 | 6 | [4–6 quest mẫu đa dạng + trang nghiệm thu, Jev duyệt](./phase-06-sample-quests-acceptance.md) | M | 1, 3 | Chưa bắt đầu |
 | 7 | [Kịch bản Toán tập 2](./phase-07-toan-quests.md) (39 bài) | XL | 6 | Chưa bắt đầu |
@@ -84,3 +85,4 @@ Song song: 1 ‖ 3 ngay từ đầu; sau 2: 4 ‖ 5 ‖ 9; sau 6: 7 ‖ 8. Phiê
 ## Validation log
 
 - 02/10/2026: 5 câu qua Jev, đều auto (report trên).
+- 02/10/2026 16:3x: Núi tuyết vào bản đồ bài (E6), Jev auto 0,97 (`plans/dattqh/reports/jev-261002-1619-open-snow-island.md`).

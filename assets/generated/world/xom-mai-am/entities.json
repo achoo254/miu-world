@@ -7,7 +7,7 @@
   "spawn": {"position":[110.5,13,108.5],"yaw":0},
   "chapterSpawns": {"1":{"position":[210.5,13,181.5],"yaw":180},"2":{"position":[560.5,13,191.5],"yaw":180},"3":{"position":[215.5,13,613.5],"yaw":180},"4":{"position":[600.5,13,613.5],"yaw":180}},
   "interactables": [
-    {"id":"cong-truong-hoc","kind":"gate","name":"Cổng sang Trường học","label":"Đi qua cổng","position":[117.5,13,111.5],"yaw":0,"radius":3,"model":"packs/kenney-castle-kit/2.0/gate.glb","scale":5.4925,"travel":"truong-hoc"},
+    {"id":"cong-trung-tam","kind":"gate","name":"Cổng sang Trung tâm","label":"Đi qua cổng","position":[117.5,13,111.5],"yaw":0,"radius":3,"model":"packs/kenney-castle-kit/2.0/gate.glb","scale":5.4925,"travel":"trung-tam"},
     {"id":"ben-xe-1","kind":"object","name":"Xe buýt tới Vườn hoa và ngõ nhà Mẩy","label":"Lên xe","position":[106.5,13,102.5],"yaw":0,"radius":2.5,"model":"generated/props/automobile.glb","scale":0.1455,"ride":[212.5,13,183.5]},
     {"id":"ben-xe-2","kind":"object","name":"Xe buýt tới Hiên nhà đêm trăng và hang đá","label":"Lên xe","position":[102.5,12,102.5],"yaw":0,"radius":2.5,"model":"generated/props/automobile.glb","scale":0.1455,"ride":[562.5,13,193.5]},
     {"id":"ben-xe-3","kind":"object","name":"Xe buýt tới Chòi cũ bên bờ hồ và con dốc nhà ông","label":"Lên xe","position":[98.5,13,102.5],"yaw":0,"radius":2.5,"model":"generated/props/automobile.glb","scale":0.1455,"ride":[217.5,13,615.5]},

@@ -1,5 +1,6 @@
 // Generates the world overview (mock M1.1 / M1.4) from a fixed seed: one floating island per region of
-// content/world/regions.json, each with its landmark — the school with its flag in the middle (the hub), the
+// content/world/regions.json, each with its landmark — Trung tâm in the middle (the hub, where the children
+// meet: its square with the cat fountain and a ring of glowing portals), the school with its flag, the
 // forest and its ancient tree, the library, the castle, the snowy mountain, the child's house, the village, the
 // hamlet, the market, the farm and the far-off mystery island — joined by plank sky bridges. It is only
 // rendered into the Home / world-map image (`pnpm assets:home`), never played. Each region gets a landmark where its label goes; the label's place
@@ -20,7 +21,7 @@ import { catalogModels } from './model-catalog';
 import { modelScales } from './model-scales';
 import { createRng, hashSeed } from './noise';
 import { placeCastle, placeHouse, placeMountain, placeSkyBridge } from './structures/buildings';
-import { placeStall, placeWindmill } from './structures/countryside';
+import { placeCatStatue, placeFountain, placeStall, placeWindmill } from './structures/countryside';
 import { placeFloatingIsland } from './structures/floating-island';
 import { placeAncientTree, placeTree } from './structures/tree';
 
@@ -51,11 +52,12 @@ const OVERVIEW_SIZES: Record<string, number> = {
  * back (256) — because the camera looks from the −x/−z corner: x = (away − across) / 2, z = (away + across) / 2.
  */
 const ISLANDS = [
-  // The school is the hub in the middle (owner's overview mock, designs/the-gioi/); the theme maps round it.
+  // Trung tâm is the hub in the middle (owner, 02/10/2026: shown in the middle of the map screen, where the
+  // children meet online); the theme maps round it.
   // Their labels fall on a grid of three columns about a third of the island apart and rows a fifth of its
   // height apart, so no card covers another on a phone or an iPad; `lift` raises a label above its island
   // (over a roof, at the snowy peak) where the diamond-shaped world has no room further out.
-  { region: 'truong-hoc', across: 0, away: 146, radius: 16, top: 23, depth: 16, lift: 0 },
+  { region: 'trung-tam', across: 0, away: 146, radius: 16, top: 23, depth: 16, lift: 0 },
   { region: 'khu-rung-bi-mat', across: 68, away: 134, radius: 14, top: 24, depth: 16, lift: 2 },
   { region: 'cho-phien', across: 0, away: 102, radius: 9, top: 15, depth: 10, lift: 0 },
   { region: 'lau-dai', across: 5, away: 213, radius: 12, top: 27, depth: 14, lift: 0 },
@@ -63,9 +65,11 @@ const ISLANDS = [
   { region: 'xom-mai-am', across: -65, away: 119, radius: 9, top: 23, depth: 10, lift: 6 },
   { region: 'lang-ven-song', across: -59, away: 85, radius: 9, top: 18, depth: 10, lift: 4 },
   { region: 'nong-trai', across: 56, away: 76, radius: 9, top: 24, depth: 10, lift: 2 },
-  { region: 'nui-tuyet', across: 60, away: 168, radius: 8, top: 22, depth: 10, lift: 14 },
-  { region: 'nha-cua-be', across: 0, away: 38, radius: 8, top: 19, depth: 10, lift: 7 },
-  { region: 'dao-bi-an', across: 39, away: 53, radius: 6, top: 15, depth: 8, lift: 2 },
+  { region: 'nui-tuyet', across: 66, away: 160, radius: 8, top: 22, depth: 10, lift: 16 },
+  { region: 'nha-cua-be', across: 9, away: 38, radius: 8, top: 19, depth: 10, lift: 5 },
+  { region: 'dao-bi-an', across: 52, away: 66, radius: 6, top: 15, depth: 8, lift: -7 },
+  // The school mirrors the mystery island on the near left: the one place of the label grid left free.
+  { region: 'truong-hoc', across: -31, away: 55, radius: 7, top: 15, depth: 9, lift: 0 },
 ].map((island) => ({ ...island, x: Math.round((island.away - island.across) / 2), z: Math.round((island.away + island.across) / 2) }));
 
 /** Things on the overview the Home stage animates on top of the render: each waterfall's top and foot (world blocks). */
@@ -88,6 +92,7 @@ export async function generateWorldOverview(): Promise<{ world: VoxelWorld; enti
     grass: id('grass'), dirt: id('dirt'), stone: id('stone'), sand: id('sand'), log: id('log'), leaves: id('leaves'), planks: id('planks'),
     path: id('path'), water: id('water'), moss: id('rock-moss'), autumn: id('leaves-autumn'), birch: id('birch-log'),
     snow: id('snow'), brickRed: id('brick-red'), brickGrey: id('brick-grey'), woodRed: id('wood-red'),
+    cobble: id('cobble'), lantern: id('lantern'), crystal: id('crystal'), sandIsland: id('grass-island'), roofBlue: id('roof-blue'),
   };
   const { heights } = await catalogModels(OVERVIEW_SIZES);
   const scales = await modelScales(heights, {});
@@ -108,7 +113,7 @@ export async function generateWorldOverview(): Promise<{ world: VoxelWorld; enti
 
   const tops = new Map<string, (x: number, z: number) => boolean>();
   for (const spec of ISLANDS) {
-    const surface = spec.region === 'nui-tuyet' ? B.snow : spec.region === 'dao-bi-an' ? B.moss : B.grass;
+    const surface = spec.region === 'nui-tuyet' ? B.snow : spec.region === 'dao-bi-an' ? B.sandIsland : B.grass;
     tops.set(spec.region, placeFloatingIsland(world, { ...spec, seed: seed + spec.x * 31 + spec.z }, { surface, dirt: B.dirt, stone: B.stone }));
   }
   const onIsland = (x: number, z: number): boolean => [...tops.values()].some((inside) => inside(x, z));
@@ -144,12 +149,35 @@ export async function generateWorldOverview(): Promise<{ world: VoxelWorld; enti
   }
   addProp(`${PACK.survival}/tent.glb`, forest.x - 9, forest.top + 1, forest.z + 4, 40);
 
+  // Trung tâm: a round stone square, the fountain with the white cat in the middle, and a ring of portal
+  // arches glowing in their maps' colours round it.
+  const hub = island('trung-tam');
+  const insideHub = tops.get(hub.region) ?? (() => false);
+  for (let x = hub.x - 11; x <= hub.x + 11; x++) {
+    for (let z = hub.z - 11; z <= hub.z + 11; z++) if (Math.hypot(x - hub.x, z - hub.z) <= 11 && insideHub(x, z)) world.set(x, hub.top, z, B.cobble);
+  }
+  const { plinth } = placeFountain(world, hub.x, hub.z, hub.top + 1, { stone: B.cobble, water: B.water });
+  placeCatStatue(world, Math.floor(plinth[0]), plinth[1], Math.floor(plinth[2]), { stone: B.snow, eye: B.log });
+  const PORTAL_GLOW = [B.crystal, B.lantern, B.leaves, B.brickRed, B.roofBlue];
+  for (let i = 0; i < 10; i++) {
+    const a = (i / 10) * Math.PI * 2;
+    const [px, pz] = [Math.round(hub.x + Math.cos(a) * 9), Math.round(hub.z + Math.sin(a) * 9)];
+    // An arch across the ring's tangent: two stone posts, a lintel, its pane glowing between them.
+    const [tx, tz] = [Math.round(-Math.sin(a)), Math.round(Math.cos(a))];
+    for (let y = hub.top + 1; y <= hub.top + 4; y++) {
+      world.set(px - tx, y, pz - tz, B.brickGrey);
+      world.set(px + tx, y, pz + tz, B.brickGrey);
+      if (y <= hub.top + 3) world.set(px, y, pz, PORTAL_GLOW[i % PORTAL_GLOW.length] ?? B.crystal);
+    }
+    world.set(px, hub.top + 4, pz, B.brickGrey);
+  }
+
   // Trường học: the school house with a red roof, a stone yard and the flagpole.
   const school = island('truong-hoc');
-  placeHouse(world, school.x - 4, school.z - 1, 9, 6, 4, school.top + 1, { wall: B.planks, roof: B.brickRed, trim: B.log });
-  for (let x = school.x - 5; x <= school.x + 5; x++) for (let z = school.z - 6; z <= school.z - 2; z++) if (tops.get(school.region)?.(x, z)) world.set(x, school.top, z, B.path);
-  for (let y = school.top + 1; y <= school.top + 8; y++) world.set(school.x + 6, y, school.z - 4, B.birch);
-  addProp(`${PACK.castle}/flag.glb`, school.x + 6, school.top + 9, school.z - 4, 90);
+  placeHouse(world, school.x - 3, school.z - 1, 7, 5, 4, school.top + 1, { wall: B.planks, roof: B.brickRed, trim: B.log });
+  for (let x = school.x - 4; x <= school.x + 4; x++) for (let z = school.z - 5; z <= school.z - 2; z++) if (tops.get(school.region)?.(x, z)) world.set(x, school.top, z, B.path);
+  for (let y = school.top + 1; y <= school.top + 8; y++) world.set(school.x + 4, y, school.z - 4, B.birch);
+  addProp(`${PACK.castle}/flag.glb`, school.x + 4, school.top + 9, school.z - 4, 90);
 
   // Thư viện: grey stone walls, a wooden roof and white columns along the front.
   const library = island('thu-vien');
@@ -198,9 +226,7 @@ export async function generateWorldOverview(): Promise<{ world: VoxelWorld; enti
   placeWindmill(world, farm.x - 2, farm.z + 1, farm.top + 1, { planks: B.planks, log: B.log, roof: B.brickRed, sail: B.snow }, 5);
   for (let x = farm.x + 2; x <= farm.x + 6; x += 2) addProp(`${PACK.nature}/fence_simple.glb`, x, farm.top + 1, farm.z - 4);
 
-  // Sky bridges from the hub's rim (the school) to every theme map's island.
-  const hub = island('truong-hoc');
-  const insideHub = tops.get(hub.region) ?? (() => false);
+  // Sky bridges from the hub's rim (Trung tâm) to every theme map's island.
   const rim = (to: (typeof ISLANDS)[number]): [number, number, number] => {
     const dx = to.x - hub.x;
     const dz = to.z - hub.z;
@@ -218,7 +244,7 @@ export async function generateWorldOverview(): Promise<{ world: VoxelWorld; enti
     while (inside(Math.round(to.x + (dx / len) * (r + 1)), Math.round(to.z + (dz / len) * (r + 1)))) r++;
     return [to.x + (dx / len) * (r - 1), to.top, to.z + (dz / len) * (r - 1)];
   };
-  for (const region of ['lang-ven-song', 'khu-rung-bi-mat', 'cho-phien', 'nong-trai', 'xom-mai-am', 'thu-vien', 'lau-dai', 'nha-cua-be']) {
+  for (const region of ISLANDS.map((i) => i.region).filter((r) => r !== hub.region)) {
     const to = island(region);
     placeSkyBridge(world, rim(to), shore(to), { planks: B.planks, log: B.log }, onIsland);
   }

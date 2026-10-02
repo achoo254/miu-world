@@ -35,9 +35,9 @@ describe('school hub map generator', () => {
     expectLively(map.entities);
   });
 
-  it('has a gate into each of the seven theme maps', () => {
+  it("has a gate into each of the seven theme maps of its square, and one back to the hub, Trung tâm", () => {
     const gates = map.entities.interactables.filter((t) => t.kind === 'gate').map((t) => t.travel).sort();
-    expect(gates).toEqual(['cho-phien', 'khu-rung-bi-mat', 'lang-ven-song', 'lau-dai', 'nong-trai', 'thu-vien', 'xom-mai-am']);
+    expect(gates).toEqual(['cho-phien', 'khu-rung-bi-mat', 'lang-ven-song', 'lau-dai', 'nong-trai', 'thu-vien', 'trung-tam', 'xom-mai-am']);
   });
 
   it('can be walked from the school gate to every quest target and gate, into the classroom and up to the one upstairs', async () => {

@@ -7,7 +7,7 @@
   "spawn": {"position":[186.5,13,430.5],"yaw":0},
   "chapterSpawns": {"1":{"position":[230.5,13,581.5],"yaw":180},"2":{"position":[595.5,13,295.5],"yaw":180},"3":{"position":[595.5,13,647.5],"yaw":180}},
   "interactables": [
-    {"id":"cong-truong-hoc","kind":"gate","name":"Cổng sang Trường học","label":"Đi qua cổng","position":[193.5,13,433.5],"yaw":0,"radius":3,"model":"packs/kenney-castle-kit/2.0/gate.glb","scale":5.4925,"travel":"truong-hoc"},
+    {"id":"cong-trung-tam","kind":"gate","name":"Cổng sang Trung tâm","label":"Đi qua cổng","position":[193.5,13,433.5],"yaw":0,"radius":3,"model":"packs/kenney-castle-kit/2.0/gate.glb","scale":5.4925,"travel":"trung-tam"},
     {"id":"ben-xe-1","kind":"object","name":"Xe buýt tới Phòng đọc","label":"Lên xe","position":[182.5,13,424.5],"yaw":0,"radius":2.5,"model":"generated/props/automobile.glb","scale":0.1455,"ride":[232.5,13,583.5]},
     {"id":"ben-xe-2","kind":"object","name":"Xe buýt tới Sân lễ hội lá vàng","label":"Lên xe","position":[178.5,13,424.5],"yaw":0,"radius":2.5,"model":"generated/props/automobile.glb","scale":0.1455,"ride":[597.5,13,297.5]},
     {"id":"ben-xe-3","kind":"object","name":"Xe buýt tới Tháp đồng hồ và phòng lịch","label":"Lên xe","position":[174.5,13,424.5],"yaw":0,"radius":2.5,"model":"generated/props/automobile.glb","scale":0.1455,"ride":[597.5,13,649.5]},

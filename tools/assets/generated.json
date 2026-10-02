@@ -64,6 +64,24 @@
     "license": "CC0-1.0"
   },
   {
+    "glob": "generated/world/trung-tam/**",
+    "generator": "tools/world/generate-trung-tam-map.ts",
+    "derivedFrom": [],
+    "license": "CC0-1.0"
+  },
+  {
+    "glob": "generated/world/nui-tuyet/**",
+    "generator": "tools/world/generate-nui-tuyet-map.ts",
+    "derivedFrom": [],
+    "license": "CC0-1.0"
+  },
+  {
+    "glob": "generated/world/dao-bi-an/**",
+    "generator": "tools/world/generate-dao-bi-an-map.ts",
+    "derivedFrom": [],
+    "license": "CC0-1.0"
+  },
+  {
     "glob": "generated/world/the-gioi/**",
     "generator": "tools/world/generate-world-overview.ts",
     "derivedFrom": [],

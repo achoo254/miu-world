@@ -7,7 +7,7 @@
   "spawn": {"position":[60.5,13,70.5],"yaw":0},
   "chapterSpawns": {"1":{"position":[190.5,13,235.5],"yaw":180},"2":{"position":[520.5,13,275.5],"yaw":180},"3":{"position":[200.5,13,585.5],"yaw":180},"4":{"position":[520.5,13,627.5],"yaw":180}},
   "interactables": [
-    {"id":"cong-truong-hoc","kind":"gate","name":"Cổng sang Trường học","label":"Đi qua cổng","position":[67.5,13,73.5],"yaw":0,"radius":3,"model":"packs/kenney-castle-kit/2.0/gate.glb","scale":5.4925,"travel":"truong-hoc"},
+    {"id":"cong-trung-tam","kind":"gate","name":"Cổng sang Trung tâm","label":"Đi qua cổng","position":[67.5,13,73.5],"yaw":0,"radius":3,"model":"packs/kenney-castle-kit/2.0/gate.glb","scale":5.4925,"travel":"trung-tam"},
     {"id":"ben-xe-1","kind":"object","name":"Đò tới Đầu làng","label":"Lên đò","position":[56.5,13,64.5],"yaw":0,"radius":2.5,"model":"packs/kenney-nature-kit/2.1/canoe.glb","scale":3.2877,"ride":[192.5,13,237.5]},
     {"id":"ben-xe-2","kind":"object","name":"Đò tới Bãi cỏ ven sông","label":"Lên đò","position":[52.5,14,64.5],"yaw":0,"radius":2.5,"model":"packs/kenney-nature-kit/2.1/canoe.glb","scale":3.2877,"ride":[522.5,13,277.5]},
     {"id":"ben-xe-3","kind":"object","name":"Đò tới Bến sông","label":"Lên đò","position":[48.5,14,64.5],"yaw":0,"radius":2.5,"model":"packs/kenney-nature-kit/2.1/canoe.glb","scale":3.2877,"ride":[202.5,13,587.5]},

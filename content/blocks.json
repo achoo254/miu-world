@@ -50,7 +50,15 @@
     "wheat": { "file": "grass_top.png", "tint": "wheat", "strength": 0.9 },
     "wheat-side": { "file": "dirt_grass.png", "tint": "wheat", "strength": 0.6 },
     "lantern": { "file": "sand.png", "tint": "lantern", "strength": 0.85 },
-    "iron": { "file": "greystone.png", "tint": "iron", "strength": 0.75 }
+    "iron": { "file": "greystone.png", "tint": "iron", "strength": 0.75 },
+    "snow-side": { "file": "dirt_snow.png", "tint": "snow", "strength": 0.15 },
+    "ice": { "file": "ice.png", "tint": "ice", "strength": 0.45 },
+    "grass-island-top": { "file": "grass_top.png", "tint": "grass-island", "strength": 0.85 },
+    "grass-island-side": { "file": "dirt_grass.png", "tint": "grass-island", "strength": 0.5 },
+    "lava": { "file": "lava.png", "tint": "lava", "strength": 0.35 },
+    "crystal": { "file": "ice.png", "tint": "crystal", "strength": 0.75 },
+    "grass-hub-top": { "file": "grass_top.png", "tint": "grass-hub", "strength": 0.85 },
+    "grass-hub-side": { "file": "dirt_grass.png", "tint": "grass-hub", "strength": 0.5 }
   },
   "blocks": [
     { "id": 1, "name": "grass", "top": "grass-top", "side": "grass-side", "bottom": "dirt" },
@@ -91,6 +99,12 @@
     { "id": 36, "name": "farmland", "top": "farmland", "side": "farmland", "bottom": "farmland" },
     { "id": 37, "name": "wheat", "top": "wheat", "side": "wheat-side", "bottom": "dirt", "solid": false },
     { "id": 38, "name": "lantern", "top": "lantern", "side": "lantern", "bottom": "iron", "glow": true },
-    { "id": 39, "name": "iron", "top": "iron", "side": "iron", "bottom": "iron" }
+    { "id": 39, "name": "iron", "top": "iron", "side": "iron", "bottom": "iron" },
+    { "id": 40, "name": "grass-snow", "top": "snow", "side": "snow-side", "bottom": "dirt" },
+    { "id": 41, "name": "ice", "top": "ice", "side": "ice", "bottom": "ice" },
+    { "id": 42, "name": "grass-island", "top": "grass-island-top", "side": "grass-island-side", "bottom": "dirt" },
+    { "id": 43, "name": "lava", "top": "lava", "side": "lava", "bottom": "lava", "glow": true },
+    { "id": 44, "name": "crystal", "top": "crystal", "side": "crystal", "bottom": "crystal", "glow": true },
+    { "id": 45, "name": "grass-hub", "top": "grass-hub-top", "side": "grass-hub-side", "bottom": "dirt" }
   ]
 }

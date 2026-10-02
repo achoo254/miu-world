@@ -7,7 +7,7 @@
   "spawn": {"position":[402.5,13,328.5],"yaw":0},
   "chapterSpawns": {"1":{"position":[400.5,13,505.5],"yaw":180}},
   "interactables": [
-    {"id":"cong-truong-hoc","kind":"gate","name":"Cổng sang Trường học","label":"Đi qua cổng","position":[409.5,13,331.5],"yaw":0,"radius":3,"model":"packs/kenney-castle-kit/2.0/gate.glb","scale":5.4925,"travel":"truong-hoc"},
+    {"id":"cong-trung-tam","kind":"gate","name":"Cổng sang Trung tâm","label":"Đi qua cổng","position":[409.5,13,331.5],"yaw":0,"radius":3,"model":"packs/kenney-castle-kit/2.0/gate.glb","scale":5.4925,"travel":"trung-tam"},
     {"id":"ben-xe-1","kind":"object","name":"Xe buýt tới Nông trại","label":"Lên xe","position":[398.5,13,322.5],"yaw":0,"radius":2.5,"model":"generated/props/automobile.glb","scale":0.1455,"ride":[402.5,13,507.5]},
     {"id":"ben-xe-2","kind":"object","name":"Xe buýt về cổng","label":"Lên xe","position":[404.5,13,505.5],"yaw":0,"radius":2.5,"model":"generated/props/automobile.glb","scale":0.1455,"ride":[400.5,13,326.5]},
     {"id":"toan2-cd4-b19-bac-tho-son-tham","kind":"npc","name":"Bác thợ sơn Thắm","label":"Nói chuyện","position":[443.5,13,478.5],"yaw":-18,"radius":3,"model":"packs/kenney-blocky-characters/2.0/character-b.glb","scale":0.7037,"animation":"idle","chapter":1,"quest":"toan2-cd4-b19"},

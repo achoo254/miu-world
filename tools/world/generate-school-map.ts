@@ -28,7 +28,7 @@ import { placeTree, treeHeight } from './structures/tree';
 import { placeGazebo, placeGrandFountain, placePlayhouse, placePortal, placeShop, placeStage } from './structures/truong-hoc-plaza';
 import { facingWriter, FRAME, frameCell, turnCell, type Facing } from './structures/world-writer';
 import { animal, crowd, person } from './village-life';
-import { generateZoneMap, type Zone } from './zone-map';
+import { generateZoneMap, HUB_REGION, type Zone } from './zone-map';
 
 export const MAP_ID = 'truong-hoc';
 const SIZE = 800;
@@ -148,8 +148,14 @@ const TOWN_ROUTES: Point[][] = [
 ];
 const ROUTES: Point[][] = [...CAMPUS_ROUTES, MAIN_STREET, ...TOWN_ROUTES];
 
-/** Gates into the theme maps: the square's portals. */
-const GATES: ReadonlyArray<{ to: string; at: readonly [number, number] }> = PORTALS.map((p) => ({ to: p.to, at: portalAt(p) }));
+/**
+ * Gates: the square's portals into the theme maps, and one inside the school gate back to the hub, Trung tâm
+ * (owner, 02/10/2026: a map of its own where the children meet), like every other map's.
+ */
+const GATES: ReadonlyArray<{ to: string; at: readonly [number, number] }> = [
+  ...PORTALS.map((p) => ({ to: p.to, at: portalAt(p) })),
+  { to: HUB_REGION, at: [MID - 8, CAMPUS.z0 + 3] },
+];
 
 /** The bus's stops in the town's districts (by the roads), as it names them. */
 const DISTRICT_STOPS: ReadonlyArray<{ name: string; at: readonly [number, number] }> = [

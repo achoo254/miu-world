@@ -31,7 +31,21 @@
       "backdrop": { "eye": [191, 22, 250], "target": [191, 15, 211], "fov": 58 },
       "events": ["rain-rainbow", "fireflies", "animal-visit"]
     },
-    { "id": "nha-cua-be", "name": "Nhà của {name}", "tagline": "Trang trí ngôi nhà nhỏ", "subject": "Trang trí · Bộ sưu tập", "status": "soon", "hotspot": { "x": 50, "y": 86 } },
+    { "id": "nha-cua-be", "name": "Nhà của {name}", "tagline": "Trang trí ngôi nhà nhỏ", "subject": "Trang trí · Bộ sưu tập", "status": "soon", "hotspot": { "x": 56, "y": 88 } },
+    {
+      "id": "trung-tam",
+      "name": "Trung tâm",
+      "tagline": "Quảng trường gặp gỡ muôn nơi",
+      "subject": "Gặp bạn · Cửa hàng",
+      "description": "Mèo Đại Sứ đứng bên đài phun nước, các cổng dịch chuyển sáng rực chờ {name} đi khắp muôn nơi!",
+      "status": "open",
+      "map": "trung-tam",
+      "music": "school",
+      "guide": "meo-dai-su",
+      "hotspot": { "x": 50, "y": 44 },
+      "backdrop": { "eye": [400, 24, 472], "target": [400, 17, 426], "fov": 62 },
+      "events": ["rain-rainbow", "fireflies", "animal-visit"]
+    },
     {
       "id": "truong-hoc",
       "name": "Trường học",
@@ -43,7 +57,7 @@
       "music": "school",
       "guide": "su-tu-vang",
       "book": "Toán 2, tập một: bài 1–6 · Tiếng Việt 2, tập một: bài 9–14",
-      "hotspot": { "x": 50, "y": 44 },
+      "hotspot": { "x": 31, "y": 88 },
       "backdrop": { "eye": [400, 22, 328], "target": [400, 18, 372], "fov": 64 },
       "events": ["rain-rainbow", "fireflies"]
     },
@@ -122,7 +136,33 @@
       "backdrop": { "eye": [401, 22, 520], "target": [401, 15, 431], "fov": 58 },
       "events": ["rain-rainbow", "fireflies", "animal-visit"]
     },
-    { "id": "nui-tuyet", "name": "Núi tuyết", "tagline": "Hành trình lên đỉnh băng", "status": "soon", "hotspot": { "x": 76, "y": 23 } },
-    { "id": "dao-bi-an", "name": "Đảo bí ẩn", "tagline": "Hòn đảo lơ lửng xa xa", "status": "soon", "hotspot": { "x": 74, "y": 86 } }
+    {
+      "id": "nui-tuyet",
+      "name": "Núi tuyết",
+      "tagline": "Hành trình lên đỉnh băng",
+      "subject": "Khám phá",
+      "description": "Gấu Băng Tuyết đã treo đèn ở cổng làng, cáp treo và hồ băng đang chờ {name} lên núi khám phá!",
+      "status": "open",
+      "map": "nui-tuyet",
+      "music": "home",
+      "guide": "gau-bang-tuyet",
+      "hotspot": { "x": 80, "y": 23 },
+      "backdrop": { "eye": [400, 26, 676], "target": [400, 22, 620], "fov": 60 },
+      "events": ["fireflies", "animal-visit"]
+    },
+    {
+      "id": "dao-bi-an",
+      "name": "Đảo bí ẩn",
+      "tagline": "Hòn đảo kho báu giữa biển xanh",
+      "subject": "Khám phá",
+      "description": "Khỉ Thuyền Trưởng đã cập thuyền ở bến, tấm bản đồ kho báu đang chờ {name} cùng giải mã!",
+      "status": "open",
+      "map": "dao-bi-an",
+      "music": "quest",
+      "guide": "khi-thuyen-truong",
+      "hotspot": { "x": 80, "y": 88 },
+      "backdrop": { "eye": [400, 22, 666], "target": [395, 15, 600], "fov": 60 },
+      "events": ["rain-rainbow", "fireflies", "animal-visit"]
+    }
   ]
 }

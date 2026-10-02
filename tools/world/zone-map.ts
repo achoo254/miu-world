@@ -105,7 +105,8 @@ export interface ZoneMapSpec {
    */
   /**
    * Gates to other maps (going through one plays that region's next lesson). Default: one beside the spawn
-   * back to the hub, Trường học (Jev, 01/10/2026: the school is the hub, every theme map is reached from it).
+   * back to the hub, Trung tâm (owner, 02/10/2026: a map of its own in the middle of the world, where the
+   * children meet online; every theme map is reached from it).
    */
   gates?: ReadonlyArray<{ to: string; at: readonly [number, number] }>;
   /**
@@ -126,7 +127,7 @@ const SIGNPOST = `${PACK.survival}/signpost.glb`;
 const GATE = `${PACK.castle}/gate.glb`;
 const RIDE_MODEL = `${PACK.props}/automobile.glb`;
 /** The hub every theme map has a gate back to. */
-export const HUB_REGION = 'truong-hoc';
+export const HUB_REGION = 'trung-tam';
 
 export async function generateZoneMap(spec: ZoneMapSpec): Promise<{ world: VoxelWorld; entities: WorldEntities }> {
   const block = await loadBlocks();

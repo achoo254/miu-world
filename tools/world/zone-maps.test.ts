@@ -1,10 +1,13 @@
 import { beforeAll, describe, expect, it } from 'vitest';
 import { worldEntitiesSchema } from '../../packages/voxel/src/world-entities';
 import { generateChoPhien } from './generate-cho-phien-map';
+import { generateDaoBiAn } from './generate-dao-bi-an-map';
 import { generateLangVenSong } from './generate-lang-ven-song-map';
 import { generateLauDai } from './generate-lau-dai-map';
 import { generateNongTrai } from './generate-nong-trai-map';
+import { generateNuiTuyet } from './generate-nui-tuyet-map';
 import { generateThuVien } from './generate-thu-vien-map';
+import { generateTrungTam } from './generate-trung-tam-map';
 import { generateXomMaiAm } from './generate-xom-mai-am-map';
 import { expectCommittedOutput, expectLively, expectStandsOnGround, expectTargetsReachable } from './map-checks';
 
@@ -16,6 +19,9 @@ const MAPS = [
   ['nong-trai', generateNongTrai, 800],
   ['thu-vien', generateThuVien, 800],
   ['lau-dai', generateLauDai, 800],
+  ['trung-tam', generateTrungTam, 800],
+  ['dao-bi-an', generateDaoBiAn, 800],
+  ['nui-tuyet', generateNuiTuyet, 800],
 ] as const;
 
 // Each map is generated once for its checks: an 800-block map takes some 15 s to build, and the walk
