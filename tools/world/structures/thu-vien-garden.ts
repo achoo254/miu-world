@@ -43,7 +43,7 @@ export function placeArchedBridge(
 }
 
 /**
- * A square clock tower of side 7 on `baseY` at (cx, cz): cream walls with stone corners and bands, slit
+ * A square clock tower of side 7 on `baseY` at (cx, cz), solid (it has no door): cream walls with stone corners and bands, slit
  * windows lit at the top, a white clock face on its north and west sides near the top, a jutting cornice and
  * a pointed roof with an iron finial. Returns where the clock props go (north face, west face) and the top.
  */
@@ -59,7 +59,11 @@ export function placeClockTower(
   for (let y = baseY; y <= top; y++) {
     for (let dx = -3; dx <= 3; dx++) {
       for (let dz = -3; dz <= 3; dz++) {
-        if (Math.max(Math.abs(dx), Math.abs(dz)) !== 3) continue;
+        // A slender tower with no door: solid inside, never a sealed hollow.
+        if (Math.max(Math.abs(dx), Math.abs(dz)) < 3) {
+          put(world, cx + dx, y, cz + dz, b.wall);
+          continue;
+        }
         const corner = Math.abs(dx) === 3 && Math.abs(dz) === 3;
         const band = (y - baseY) % 6 === 0 || y === top;
         const u = Math.abs(dx) === 3 ? dz : dx;

@@ -49,10 +49,14 @@ const LIFE_HELD = {
   balloon: `${PACK.props}/balloon.glb`,
 };
 
+/** The festival yard and the clock tower's district (their ways are laid out from them below). */
+const FAIR = { x: 595, z: 250, hx: 66, hz: 48 };
+const TOWER_YARD = { x: 595, z: 600, hx: 62, hz: 50 };
+
 export const ZONES: readonly Zone[] = [
   { chapter: 1, id: 'phong-doc', name: 'Phòng đọc', x: 230, z: 530, hx: 70, hz: 54 },
-  { chapter: 2, id: 'san-le-hoi-la-vang', name: 'Sân lễ hội lá vàng', x: 595, z: 250, hx: 66, hz: 48 },
-  { chapter: 3, id: 'thap-dong-ho', name: 'Tháp đồng hồ và phòng lịch', x: 595, z: 600, hx: 62, hz: 50 },
+  { chapter: 2, id: 'san-le-hoi-la-vang', name: 'Sân lễ hội lá vàng', ...FAIR },
+  { chapter: 3, id: 'thap-dong-ho', name: 'Tháp đồng hồ và phòng lịch', ...TOWER_YARD },
 ];
 
 interface Rect {
@@ -92,6 +96,19 @@ const GROUNDS: readonly Rect[] = [
 const riverCenter = (z: number): number => 420 + 22 * Math.sin(z / 60) + 6 * Math.sin(z / 23 + 1.3);
 const streamCenter = (x: number): number => 568 + 3 * Math.sin(x / 11) + 2 * Math.sin(x / 29);
 const POOL = { x: 632, z: 268, r: 10 };
+/** The festival's stalls (two columns west of the golden-leaf road, each facing north), the golden tree, the
+ * stall by the pool; the clock tower at the end of its street and the telescope deck on its lawn. */
+const STALL_WEST = FAIR.x - 57;
+const STALL_COLUMNS = [STALL_WEST, FAIR.x - 33];
+const STALL_ROWS = [-24, -8, 8, 24].map((dz) => FAIR.z + dz);
+const GOLD_TREE = { x: FAIR.x + 50, z: FAIR.z - FAIR.hz + 24 };
+const WATER_STALL = { x: POOL.x + 14, z: POOL.z + 14 };
+const TOWER = { x: TOWER_YARD.x, z: TOWER_YARD.z + 12 };
+const TELESCOPE = { x: TOWER_YARD.x + 34, z: TOWER_YARD.z - 26 };
+/** The clock workshop east of the tower and the calendar room west of it (doors on -z, in the middle). */
+const WORKSHOP = { x0: TOWER.x + 12, z0: TOWER.z - 8, w: 17, d: 13 };
+const CALENDAR_ROOM = { x0: TOWER.x - 30, z0: TOWER.z - 10, w: 19, d: 13 };
+const doorOf = (r: { x0: number; z0: number; w: number }): Point => [r.x0 + Math.floor(r.w / 2), r.z0];
 const inLake = (x: number, z: number): boolean => LAKES.some((l) => ((x - l.x) / l.rx) ** 2 + ((z - l.z) / l.rz) ** 2 < 1);
 const inWater = (x: number, z: number): boolean =>
   (z > 24 && z < 776 && Math.abs(x - riverCenter(z)) < 8 + 1.5 * Math.sin(z / 37)) ||
@@ -99,8 +116,16 @@ const inWater = (x: number, z: number): boolean =>
   Math.hypot(x - POOL.x, z - POOL.z) < POOL.r ||
   inLake(x, z);
 
-// Ways: the avenue (three lanes wide), the ring road, the side streets, a spur into each district; in the
-// library's garden the walk up to the terrace, the walk across before it, the walks over the two bridges.
+const SPAWN = { x: 186, z: 430 };
+
+// Ways (one network from the spawn to every place): the avenue (three lanes wide), the ring road, the side
+// streets, a spur into each district; by the spawn a walk from the avenue past the bus stops down to the lake
+// and one to the gate; in the library's garden the walk up to the terrace, the walk across before it, the
+// walks over the two bridges, the walk from the back terrace past the bus stop to the street south, the
+// reading garden's walks to the myrtle, the flat stone and the stream, the beach; at the festival a walk
+// before every row of stalls, on to the pool, the golden tree and the stall by the pool; at the clock tower
+// the street up to its door, a walk across its front to the doors of the workshop and the calendar room, a
+// street from its lawn south, the walk to the telescope deck.
 const AVENUE_Z = 420;
 const AVENUE: Point[][] = [-3, 0, 3].map((dz): Point[] => [[30, AVENUE_Z + dz], [770, AVENUE_Z + dz]]);
 const STREETS: Point[][] = [
@@ -119,20 +144,38 @@ const STREETS: Point[][] = [
   [[480, 500], [740, 500]],
   [[480, 700], [740, 700]],
 ];
+const SPAWN_WALKS: Point[][] = [
+  [[SPAWN.x, AVENUE_Z + 3], [SPAWN.x, LAKE_Z - 16]],
+  [[SPAWN.x, SPAWN.z + 3], [SPAWN.x + 10, SPAWN.z + 3]],
+];
 const GARDEN_WALKS: Point[][] = [
   ...[-2, 0, 2].map((dx): Point[] => [[LIB.door + dx, AVENUE_Z + 3], [LIB.door + dx, TERRACE.z0 - 1]]),
   [[LIB.door - 26, 487], [LIB.door + 26, 487]],
   [[60, LAKE_Z], [SQUARE.x - SQUARE.r + 1, LAKE_Z]],
   [[SQUARE.x + SQUARE.r - 1, LAKE_Z], [330, LAKE_Z]],
   [[200, PERGOLA.z0 - 1], [LIB.door, PERGOLA.z0 - 1]],
-  [[LIB.door, BACK_TERRACE.z1 + 1], [LIB.door, PERGOLA.z0 - 1]],
+  [[LIB.door, BACK_TERRACE.z1 + 1], [LIB.door, 660]],
+  [[200, PERGOLA.z0 - 1], [172, PERGOLA.z0 - 1], [172, 536]],
+  [[192, PERGOLA.z0 - 1], [192, 562]],
+  [[LIB.door, 553], [256, 553], [256, 558]],
+  [[330, CLOCK_TOWER.z - 8], [CLOCK_TOWER.x - 6, CLOCK_TOWER.z - 8]],
+];
+const FAIR_WALKS: Point[][] = [
+  ...STALL_ROWS.map((z): Point[] => [[STALL_WEST - 4, z - 4], [FAIR.x, z - 4]]),
+  [[FAIR.x, POOL.z - 14], [POOL.x + 8, POOL.z - 14]],
+  [[FAIR.x + 18, GOLD_TREE.z + 14], [GOLD_TREE.x + 7, GOLD_TREE.z + 14], [GOLD_TREE.x + 7, WATER_STALL.z - 3], [WATER_STALL.x, WATER_STALL.z - 3]],
+];
+const TOWER_WALKS: Point[][] = [
+  [[TOWER.x, TOWER.z + 9], [TOWER.x, 700]],
+  [[TOWER.x + 2, TELESCOPE.z + 4], [TELESCOPE.x, TELESCOPE.z + 4]],
+  [doorOf(CALENDAR_ROOM), [doorOf(CALENDAR_ROOM)[0], TOWER.z - 11], [doorOf(WORKSHOP)[0], TOWER.z - 11], doorOf(WORKSHOP)],
 ];
 const SPURS: Point[][] = [
   [[200, PERGOLA.z0 - 1], [200, 660]],
   [[595, 420], [595, 250]],
-  [[595, 420], [595, 604]],
+  [[595, 420], [595, TOWER.z - 5]],
 ];
-const ROUTES: Point[][] = [...AVENUE, ...STREETS, ...GARDEN_WALKS, ...SPURS];
+const ROUTES: Point[][] = [...AVENUE, ...STREETS, ...SPAWN_WALKS, ...GARDEN_WALKS, ...FAIR_WALKS, ...TOWER_WALKS, ...SPURS];
 
 /** Quarters of the town (levelled ground), and the flower gardens north-west. */
 const TOWN: readonly Rect[] = [
@@ -144,7 +187,6 @@ const TOWN: readonly Rect[] = [
 ];
 const GARDENS: Rect = { x0: 158, z0: 68, x1: 384, z1: 232 };
 const FLAT: readonly Rect[] = [...TOWN, GARDENS];
-const SPAWN = { x: 186, z: 430 };
 /** Kept open round the spawn and the gate beside it. */
 const SPAWN_CLEAR: Rect = { x0: SPAWN.x - 10, z0: SPAWN.z - 4, x1: SPAWN.x + 16, z1: SPAWN.z + 12 };
 
@@ -236,7 +278,7 @@ export async function generateThuVien() {
       // 1. Chapter 1: Indoors each works round its own place: the desk and the counter, the stacks, the tables.
       ...visiting(crowd('librarian', ['Cô thủ thư'], [person('e')], landmark('ban-thu-thu'), 2, 1, [LIFE_HELD.book]), [[220, 510], [240, 510], [262, 512]]),
       ...visiting(crowd('librarian', ['Chú xếp sách'], [person('j')], landmark('loi-giua-cac-ke-sach'), 3, 1, [LIFE_HELD.book]), [[251, 512], [257, 516], [262, 518]]),
-      ...visiting(crowd('reader', ['Bạn đọc sách', 'Bác đọc báo', 'Chị đọc truyện'], [person('n'), person('a'), person('h'), person('p')], landmark('ban-doc'), 5, 4, [LIFE_HELD.book]), [[200, 512], [205, 516], [210, 508]]),
+      ...visiting(crowd('reader', ['Bạn đọc sách', 'Bác đọc báo', 'Chị đọc truyện'], [person('n'), person('a'), person('h'), person('p')], landmark('ban-doc'), 5, 4, [LIFE_HELD.book]), [[201, 513], [207, 514], [210, 508]]),
       ...visiting(crowd('pupil', ['Bạn nhỏ nghe kể chuyện', 'Em bé xem tranh'], [person('f'), person('o'), person('q')], landmark('goc-doc-co-goi'), 4, 3, [LIFE_HELD.book]), [[207, 525], [199, 534], [211, 535]]),
       ...visiting(crowd('pupil', ['Bạn tra cứu sách'], [person('r'), person('n')], landmark('khu-may-tinh'), 3, 2), [[248, 524], [252, 528], [256, 524]]),
       ...visiting(crowd('reader', ['Nhóm bạn học bài'], [person('q'), person('f')], landmark('phong-hoc-nhom'), 4, 2, [LIFE_HELD.book]), [[256, 535], [259, 537], [261, 535]]),
@@ -382,25 +424,45 @@ function buildTown(ctx: ZoneMapContext): void {
     }
   }
 
-  // Houses round the squares of the festival and the clock tower, along their edges.
+  // Houses round the squares of the festival and the clock tower, along their edges (cottages of the shared
+  // size, up to 17 x 12 with their yards), clear of the ways, the pool and its rim, what stands there.
   const buffer = new Set<string>();
   for (const r of ROUTES) for (const k of pathColumns(r, 5)) buffer.add(k);
+  const COTTAGE = { w: 17, d: 12 };
   const fits = (x0: number, z0: number, x1: number, z1: number): boolean => {
     for (let x = x0; x <= x1; x++) for (let z = z0; z <= z1; z++) {
       if (buffer.has(`${x},${z}`) || isSet(used, x, z) || isSet(propped, x, z) || inWater(x, z) || inWater(x, z + 1) || !ctx.inZone(x, z)) return false;
+      if (Math.hypot(x - POOL.x, z - POOL.z) < POOL.r + 4) return false;
     }
     return true;
   };
-  const edgeRow = (zn: Zone, z: number): void => {
-    let x = zn.x - zn.hx + 1;
-    while (x + 14 <= zn.x + zn.hx - 1) {
-      if (fits(x - 1, z - 7, x + 14, z + 8)) x = cottageRow(c, x, z, 1).x1 + 2;
-      else x += 3;
-    }
+  const pave = (x: number, z: number): void => {
+    if (inWater(x, z) || world.get(x, surface(x, z) + 1, z) !== 0) return;
+    world.set(x, surface(x, z), z, ctx.soil.path);
+    mark(used, x, z, x, z);
   };
-  edgeRow(festival, festival.z + festival.hz - 9);
-  edgeRow(tower, tower.z - tower.hz + 9);
-  edgeRow(tower, tower.z + tower.hz - 9);
+  // A row of cottages whose doors face into the district across their yards; from every door a walk through
+  // its yard's gate to a lane along the row's front, the lane running on to the district's street at `street`.
+  const edgeRow = (zn: Zone, z: number, street: number): void => {
+    const doors: number[] = [];
+    let x = zn.x - zn.hx + 1;
+    while (x + COTTAGE.w <= zn.x + zn.hx - 1) {
+      if (!fits(x - 1, z - 7, x + COTTAGE.w, z + COTTAGE.d)) {
+        x += 3;
+        continue;
+      }
+      const next = cottageRow(c, x, z, 1).x1;
+      doors.push(x + Math.floor((next - 3 - x) / 2));
+      x = next + 2;
+    }
+    if (doors.length === 0) return;
+    const lane = z - 9;
+    for (const door of doors) for (let pz = lane; pz < z; pz++) for (let dx = -1; dx <= 1; dx++) pave(door + dx, pz);
+    for (let px = Math.min(street, ...doors) - 1; px <= Math.max(street, ...doors) + 1; px++) for (const pz of [lane, lane + 1]) pave(px, pz);
+  };
+  edgeRow(festival, festival.z + festival.hz - 13, festival.x);
+  edgeRow(tower, tower.z - tower.hz + 9, tower.x);
+  edgeRow(tower, tower.z + tower.hz - 13, tower.x);
   // Trees all round the inside of the festival and the tower's lawn, golden round the festival.
   const leavesOf: Record<number, readonly string[]> = { 2: ['leaves-autumn', 'leaves-autumn', 'leaves-pink'], 3: ['leaves', 'leaves-pink', 'leaves-autumn'] };
   for (const zn of [festival, tower]) {
@@ -635,13 +697,18 @@ function buildGrounds(ctx: ZoneMapContext, c: ZoneMapContext, kit: Kit): void {
 
   // Behind the library: the back terrace and its steps (bậc thềm), the reading garden's pergola (d-13).
   for (let x = BACK_TERRACE.x0; x <= BACK_TERRACE.x1; x++) for (let z = BACK_TERRACE.z0; z <= BACK_TERRACE.z1; z++) put(x, BASE, z, x === BACK_TERRACE.x0 || x === BACK_TERRACE.x1 || z === BACK_TERRACE.z1 ? 'cobble' : 'paver');
-  for (const x of [BACK_TERRACE.x0 + 1, BACK_TERRACE.x1 - 1]) c.centred(M.plant, x, BACK_TERRACE.z1 - 1, 0);
+  // Planters at the terrace's two front corners, on the lawn beside its kerb (the paving kept for walking).
+  for (const x of [BACK_TERRACE.x0 - 1, BACK_TERRACE.x1 + 1]) c.centred(M.plant, x, BACK_TERRACE.z1, 0);
   ctx.landmark('bac-them-ra-vuon', 'Bậc thềm ra vườn', LIB.door, BACK_TERRACE.z1 + 2);
   const pg = PERGOLA;
   for (let x = pg.x0; x <= pg.x1; x++) for (let z = pg.z0; z <= pg.z1; z++) if (!ctx.onPath(x, z)) put(x, surface(x, z), z, (x + z) % 5 === 0 ? 'cobble' : 'paver');
   const posts: Array<[number, number]> = [];
   for (let x = pg.x0; x <= pg.x1; x += 7) for (const z of [pg.z0, pg.z1]) posts.push([x, z]);
-  for (const [x, z] of posts) box(x, BASE, z, x, BASE + 3, z, 'log');
+  // Timber posts on stone plinths (the pergola's feet stand clear of the paving and the wet).
+  for (const [x, z] of posts) {
+    put(x, BASE, z, 'stone');
+    box(x, BASE + 1, z, x, BASE + 3, z, 'log');
+  }
   for (let x = pg.x0; x <= pg.x1; x++) for (const z of [pg.z0, pg.z1]) put(x, BASE + 4, z, 'log');
   for (let x = pg.x0; x <= pg.x1; x += 2) for (let z = pg.z0; z <= pg.z1; z++) put(x, BASE + 4, z, 'planks');
   for (let x = pg.x0 - 1; x <= pg.x1 + 1; x++) {
@@ -701,7 +768,8 @@ function buildGrounds(ctx: ZoneMapContext, c: ZoneMapContext, kit: Kit): void {
   c.prop(M.bucket, 252, 562, 30);
   ctx.landmark('bai-cat-nho', 'Bãi cát nhỏ', 257, Math.floor(streamCenter(257)) - 5);
   ctx.landmark('suoi-nho', 'Suối nhỏ', 190, Math.round(streamCenter(190)) - 4);
-  benchRow(176, 548, 3, 5, 0, 180);
+  // Benches on the lawn north of the reading garden's walk, facing the flat stone and the stream.
+  benchRow(176, PERGOLA.z0 - 4, 3, 5, 0, 0);
   benchRow(170, 505, 3, 0, 8, 90);
   for (const [x0, z0] of [[164, 490], [176, 512], [256, 545], [282, 552]] as const) flowerBed(c, x0, z0, 10, 4);
   for (const [x, z] of [[166, 520], [180, 490], [244, 556], [276, 562], [292, 548], [168, 575], [236, 582], [286, 580], [150, 540], [300, 500]] as const) tree(x, z, (x + z) % 3 === 0 ? 'leaves-pink' : 'leaves');
@@ -726,17 +794,18 @@ function buildFestival(ctx: ZoneMapContext, c: ZoneMapContext, zn: Zone, kit: Ki
   const { put, box, bigTree, benchRow, stall } = kit;
   const top = zn.z - zn.hz;
 
-  // The golden-leaf road: a sand road up the middle, leaves strewn along it, golden trees either side.
+  // The golden-leaf road: a trodden road up the middle (the street into the yard runs on along it to the
+  // stage), leaves strewn along it, golden trees either side on the grass past the audience's square.
+  const S = { x0: zn.x - 18, z0: top + 5, x1: zn.x + 18, z1: top + 16 };
   for (let z = top + 20; z <= zn.z + zn.hz; z++) for (let dx = -3; dx <= 3; dx++) {
     const x = zn.x + dx;
-    if (!inWater(x, z)) put(x, surface(x, z), z, 'sand');
+    if (!inWater(x, z)) put(x, surface(x, z), z, 'path');
   }
   for (let z = top + 22; z <= zn.z + zn.hz; z += 3) for (const dx of [-4, 4]) c.prop(M.leaf, zn.x + dx, z, z * 37);
-  for (let z = top + 26; z <= zn.z + zn.hz - 2; z += 10) for (const dx of [-7, 7]) c.prop(M.autumnTree, zn.x + dx, z, z * 11);
+  for (let z = S.z1 + 30; z <= zn.z + zn.hz - 2; z += 10) for (const dx of [-7, 7]) if (!ctx.onPath(zn.x + dx, z)) c.prop(M.autumnTree, zn.x + dx, z, z * 11);
   ctx.landmark('duong-la-vang', 'Đường lá vàng', zn.x, zn.z + 30);
 
   // The leaf stage: a plank platform, a backdrop of golden leaves in a red frame, balloons.
-  const S = { x0: zn.x - 18, z0: top + 5, x1: zn.x + 18, z1: top + 16 };
   box(S.x0, BASE, S.z0, S.x1, BASE, S.z1, 'planks');
   box(S.x0, BASE + 1, S.z0 - 1, S.x1, BASE + 7, S.z0 - 1, 'leaves-autumn');
   for (let x = S.x0; x <= S.x1; x += 6) box(x, BASE + 1, S.z0 - 1, x, BASE + 8, S.z0 - 1, 'wood-red');
@@ -759,7 +828,7 @@ function buildFestival(ctx: ZoneMapContext, c: ZoneMapContext, zn: Zone, kit: Ki
   ctx.landmark('mep-be-nuoc-tron', 'Mép bể nước tròn', POOL.x - POOL.r - 3, POOL.z);
 
   // The golden tree with its stone table and stools; the tree hung with clouds.
-  const gold = { x: zn.x + 50, z: top + 24 };
+  const gold = GOLD_TREE;
   bigTree(gold.x, gold.z, 'leaves-autumn');
   box(gold.x + 3, BASE, gold.z + 9, gold.x + 5, BASE, gold.z + 10, 'stone');
   for (const [dx, dz] of [[2, 8], [6, 8], [2, 11], [6, 11]] as const) put(gold.x + dx, BASE, gold.z + dz, 'brick-grey');
@@ -790,21 +859,21 @@ function buildFestival(ctx: ZoneMapContext, c: ZoneMapContext, zn: Zone, kit: Ki
     ['tram-bo-dua', 'Trạm bó đũa', ['sand', 'roof-blue'], [M.chopsticks, M.chopsticks]],
   ];
   const slots: Array<[number, number]> = [];
-  for (const x0 of [zn.x - 57, zn.x - 33]) for (const dz of [-24, -8, 8, 24]) slots.push([x0, zn.z + dz]);
+  for (const x0 of STALL_COLUMNS) for (const z0 of STALL_ROWS) slots.push([x0, z0]);
   stations.forEach(([id, name, stripes, goods], i) => {
     const [x0, z0] = slots[i] ?? [0, 0];
     const [lx, lz] = stall(x0, z0, stripes, goods);
     ctx.landmark(id, name, lx, lz);
   });
-  const waterStall = stall(POOL.x + 14, POOL.z + 14, ['roof-blue', 'snow'], [M.balloon, M.leaf]);
+  const waterStall = stall(WATER_STALL.x, WATER_STALL.z, ['roof-blue', 'snow'], [M.balloon, M.leaf]);
   ctx.landmark('tram-be-nuoc', 'Trạm bể nước', waterStall[0], waterStall[1]);
 
-  // Golden trees round the yard, lamps at the corners of the audience.
-  for (let z = top + 30; z <= zn.z + 20; z += 12) c.prop(M.autumnTree, zn.x - zn.hx + 9, z, z * 13);
-  // The audience's square paved in front of the stage, flowers before every stall.
-  for (let x = S.x0; x <= S.x1; x++) for (let z = S.z1 + 1; z <= S.z1 + 26; z++) if (Math.abs(x - zn.x) > 3 && (x + z) % 9 !== 0) put(x, surface(x, z), z, 'path');
+  // Golden trees round the yard (off the walks), lamps at the corners of the audience.
+  for (let z = top + 30; z <= zn.z + 20; z += 12) if (!ctx.nearPath(zn.x - zn.hx + 9, z, 3)) c.prop(M.autumnTree, zn.x - zn.hx + 9, z, z * 13);
+  // The audience's square paved in front of the stage, flowers behind every stall.
+  for (let x = S.x0; x <= S.x1; x++) for (let z = S.z1 + 1; z <= S.z1 + 26; z++) if (Math.abs(x - zn.x) > 3) put(x, surface(x, z), z, 'path');
   for (const [x0, z0] of slots.slice(0, stations.length)) flowerBed(c, x0, z0 + 5, 6, 2);
-  for (const [x, z] of [[zn.x - 20, S.z1 + 4], [zn.x + 20, S.z1 + 4], [zn.x - 20, S.z1 + 24], [zn.x + 20, S.z1 + 24]] as const) c.prop(STREET_LANTERN, x, z, 0);
+  for (const [x, z] of [[S.x0 - 2, S.z1 + 1], [S.x1 + 2, S.z1 + 1], [S.x0 - 2, S.z1 + 26], [S.x1 + 2, S.z1 + 26]] as const) c.prop(STREET_LANTERN, x, z, 0);
 }
 
 /**
@@ -816,7 +885,7 @@ function buildFestival(ctx: ZoneMapContext, c: ZoneMapContext, zn: Zone, kit: Ki
 function buildClockTower(ctx: ZoneMapContext, c: ZoneMapContext, zn: Zone, kit: Kit & { indoor: (r: Rect) => void }): void {
   const { surface } = ctx;
   const { put, box, tree, benchRow, indoor } = kit;
-  const t = { x: zn.x, z: zn.z + 12 };
+  const t = TOWER;
   const at = (dx: number, y: number, dz: number, name: string): void => put(t.x + dx, y, t.z + dz, name);
   const WALL_TOP = BASE + 22;
   const LANDING = BASE + 15;
@@ -852,7 +921,7 @@ function buildClockTower(ctx: ZoneMapContext, c: ZoneMapContext, zn: Zone, kit: 
   }
   ctx.propAt(M.clock, [t.x + 0.5, BASE + 17.6, t.z - 6.3], 180);
 
-  // Spiral stairs round the inside: from the door up to the landing, then on up to the bell loft.
+  // Spiral stairs of planks round the inside: from the door up to the landing, then on up to the bell loft.
   const ring: Array<[number, number]> = [];
   for (let dx = -2; dx >= -4; dx--) ring.push([dx, -4]);
   for (let dz = -3; dz <= 4; dz++) ring.push([-4, dz]);
@@ -865,15 +934,17 @@ function buildClockTower(ctx: ZoneMapContext, c: ZoneMapContext, zn: Zone, kit: 
     if (k < 0 || k > 15) at(dx, LANDING, dz, 'planks');
   }
   ring.forEach(([dx, dz], k) => {
-    if (k <= 23) at(dx, BASE + k, dz, k === 15 || k === 23 ? 'planks' : 'birch-log');
+    if (k <= 23) at(dx, BASE + k, dz, 'planks');
   });
-  // The balcony round the clock faces, a door onto it from the landing, a rail along its edge.
+  // The balcony round the clock faces, a door onto it from the landing (a plank threshold over the stone
+  // band), a rail along its edge.
   for (let dx = -7; dx <= 7; dx++) for (let dz = -7; dz <= 7; dz++) {
     const d = Math.max(Math.abs(dx), Math.abs(dz));
     if (d >= 6) at(dx, LANDING, dz, 'planks');
     if (d === 7) at(dx, LANDING + 1, dz, 'birch-log');
   }
   box(t.x - 1, LANDING + 1, t.z - 5, t.x + 1, LANDING + 2, t.z - 5, 'air');
+  box(t.x - 1, LANDING, t.z - 5, t.x + 1, LANDING, t.z - 5, 'planks');
   ctx.landmark('chieu-nghi-cau-thang-xoan', 'Chiếu nghỉ cầu thang xoắn', t.x, t.z, LANDING + 1);
   ctx.landmark('ban-cong-mat-dong-ho', 'Ban công mặt đồng hồ', t.x, t.z - 6, LANDING + 1);
   ctx.landmark('chan-cau-thang-xoan', 'Chân cầu thang xoắn', t.x - 1, t.z - 3);
@@ -908,44 +979,48 @@ function buildClockTower(ctx: ZoneMapContext, c: ZoneMapContext, zn: Zone, kit: 
   c.keepOut(mail.x, mail.z, mail.x, mail.z);
   ctx.landmark('hop-thu', 'Hộp thư', mail.x, mail.z - 2);
 
-  // The clock workshop east of the tower: shelves of clocks, a workbench with wheels.
-  const W = { x0: t.x + 14, z0: t.z - 6, w: 13, d: 10 };
-  room(ctx, W.x0, W.z0, W.w, W.d, 4, { wall: 'brick-grey', roof: 'roof-blue', trim: 'log' });
+  // The clock workshop east of the tower, a public room many times the child's size (17 x 13, walls 7 high,
+  // a doorway 3 x 3 on its street side): shelves of clocks along the back wall, a workbench with wheels by
+  // each side wall, the floor between them open.
+  const W = WORKSHOP;
+  room(ctx, W.x0, W.z0, W.w, W.d, 7, { wall: 'brick-grey', roof: 'roof-blue', trim: 'log' });
   indoor({ x0: W.x0 + 1, z0: W.z0 + 1, x1: W.x0 + W.w - 2, z1: W.z0 + W.d - 2 });
   for (let x = W.x0 + 2; x <= W.x0 + W.w - 3; x += 2) {
     c.centred(M.bookcase, x, W.z0 + W.d - 2, 180);
     for (const y of [0.15, 0.95, 1.7]) ctx.propAt(M.alarm, [x + 0.5, BASE + y, W.z0 + W.d - 2.2], 180);
   }
-  c.prop(M.workbench, W.x0 + 3, W.z0 + 3, 90);
-  ctx.propAt(M.wheel, [W.x0 + 3.5, BASE + 0.9, W.z0 + 3.5], 0);
-  c.prop(M.workbench, W.x0 + W.w - 3, W.z0 + 3, 270);
-  ctx.propAt(M.alarm, [W.x0 + W.w - 2.5, BASE + 0.9, W.z0 + 3.5], 200);
-  ctx.landmark('phong-may-dong-ho', 'Phòng máy đồng hồ', W.x0 + 6, W.z0 - 2);
-  ctx.landmark('ke-dong-ho', 'Kệ đồng hồ', W.x0 + 6, W.z0 + 5);
+  for (const [x, yaw] of [[W.x0 + 2, 90], [W.x0 + W.w - 3, 270]] as const) {
+    c.prop(M.workbench, x, W.z0 + 5, yaw);
+    ctx.propAt(yaw === 90 ? M.wheel : M.alarm, [x + 0.5, BASE + 0.9, W.z0 + 5.5], yaw);
+  }
+  ctx.landmark('phong-may-dong-ho', 'Phòng máy đồng hồ', W.x0 + 4, W.z0 - 3);
+  ctx.landmark('ke-dong-ho', 'Kệ đồng hồ', W.x0 + 8, W.z0 + 8);
 
-  // The calendar room west of it: the mending table, the calendar rack, the photo corner, the east window.
-  const R = { x0: t.x - 29, z0: t.z - 10, w: 15, d: 11 };
+  // The calendar room west of it, as big (19 x 13, walls 7): the mending table, the calendar rack along the
+  // back wall, the photo corner, the east window.
+  const R = CALENDAR_ROOM;
   const rx1 = R.x0 + R.w - 1;
-  room(ctx, R.x0, R.z0, R.w, R.d, 5, { wall: 'birch-log', roof: 'wood-red', trim: 'log' });
-  box(rx1, BASE + 1, R.z0 + 2, rx1, BASE + 3, R.z0 + R.d - 3, 'glass');
+  room(ctx, R.x0, R.z0, R.w, R.d, 7, { wall: 'birch-log', roof: 'wood-red', trim: 'log' });
+  box(rx1, BASE + 1, R.z0 + 3, rx1, BASE + 4, R.z0 + R.d - 4, 'glass');
   indoor({ x0: R.x0 + 1, z0: R.z0 + 1, x1: rx1 - 1, z1: R.z0 + R.d - 2 });
-  for (const x of [R.x0 + 4, R.x0 + 5]) c.centred(M.table, x, R.z0 + 5, 0);
-  c.centred(M.chair, R.x0 + 4, R.z0 + 4, 0);
-  for (const [x, yaw] of [[R.x0 + 4.5, 10], [R.x0 + 5.6, 340]] as const) ctx.propAt(M.calendar, [x, BASE + 0.8, R.z0 + 5.5], yaw);
-  ctx.landmark('ban-va-lich', 'Bàn vá lịch', R.x0 + 5, R.z0 + 7);
+  for (const x of [R.x0 + 5, R.x0 + 6]) c.centred(M.table, x, R.z0 + 6, 0);
+  c.centred(M.chair, R.x0 + 5, R.z0 + 5, 0);
+  for (const [x, yaw] of [[R.x0 + 5.5, 10], [R.x0 + 6.6, 340]] as const) ctx.propAt(M.calendar, [x, BASE + 0.8, R.z0 + 6.5], yaw);
+  ctx.landmark('ban-va-lich', 'Bàn vá lịch', R.x0 + 6, R.z0 + 8);
   const rack = R.z0 + R.d - 2;
-  for (const x of [R.x0 + 3, rx1 - 3]) box(x, BASE, rack, x, BASE + 2, rack, 'log');
-  box(R.x0 + 3, BASE + 3, rack, rx1 - 3, BASE + 3, rack, 'planks');
-  for (let x = R.x0 + 4; x <= rx1 - 4; x += 2) ctx.propAt(M.calendar, [x + 0.5, BASE + 1.6, rack - 0.4], 180);
-  ctx.landmark('gia-treo-lich', 'Giá treo lịch', R.x0 + 7, rack - 2);
-  for (const z of [R.z0 + 3, R.z0 + 5, R.z0 + 7]) ctx.propAt(M.picture, [R.x0 + 1.3, BASE + 1.4, z + 0.5], 90);
-  ctx.landmark('goc-treo-album-anh', 'Góc treo album ảnh', R.x0 + 2, R.z0 + 5);
-  ctx.landmark('cua-so-huong-dong', 'Cửa sổ hướng đông', rx1 - 2, R.z0 + 5);
-  ctx.landmark('phong-lich', 'Phòng lịch', R.x0 + 7, R.z0 - 2);
+  for (const x of [R.x0 + 4, rx1 - 4]) box(x, BASE, rack, x, BASE + 2, rack, 'log');
+  box(R.x0 + 4, BASE + 3, rack, rx1 - 4, BASE + 3, rack, 'planks');
+  for (let x = R.x0 + 5; x <= rx1 - 5; x += 2) ctx.propAt(M.calendar, [x + 0.5, BASE + 1.6, rack - 0.4], 180);
+  ctx.landmark('gia-treo-lich', 'Giá treo lịch', R.x0 + 9, rack - 2);
+  for (const z of [R.z0 + 4, R.z0 + 6, R.z0 + 8]) ctx.propAt(M.picture, [R.x0 + 1.3, BASE + 1.4, z + 0.5], 90);
+  ctx.landmark('goc-treo-album-anh', 'Góc treo album ảnh', R.x0 + 2, R.z0 + 6);
+  ctx.landmark('cua-so-huong-dong', 'Cửa sổ hướng đông', rx1 - 2, R.z0 + 6);
+  ctx.landmark('phong-lich', 'Phòng lịch', R.x0 + 5, R.z0 - 3);
 
   // The telescope corner: a plank deck with a fence round it, a telescope on three legs.
-  const tel = { x: zn.x + 34, z: zn.z - 26 };
+  const tel = TELESCOPE;
   box(tel.x - 3, LEVEL, tel.z - 3, tel.x + 3, LEVEL, tel.z + 3, 'planks');
+  c.keepOut(tel.x - 4, tel.z - 4, tel.x + 4, tel.z + 4);
   for (let d = -3; d <= 3; d += 2) for (const [x, z, yaw] of [[tel.x + d, tel.z - 3, 0], [tel.x + d, tel.z + 3, 0], [tel.x - 3, tel.z + d, 90], [tel.x + 3, tel.z + d, 90]] as const) if (!(z === tel.z + 3 && Math.abs(d) <= 1)) c.prop(M.fence, x, z, yaw);
   for (const [dx, dz] of [[-1, 1], [1, 1], [0, -1]] as const) put(tel.x + dx, BASE, tel.z + dz, 'log');
   put(tel.x, BASE + 1, tel.z, 'brick-grey');
@@ -956,7 +1031,7 @@ function buildClockTower(ctx: ZoneMapContext, c: ZoneMapContext, zn: Zone, kit: 
   // The places as the lessons name them, on the ground round the tower and its rooms (place-quest-targets.ts).
   const named: Array<[string, string, number, number]> = [
     ['ban-cong-thap', 'Ban công tháp', t.x + 3, t.z - 10],
-    ['bai-co-quanh-thap', 'Bãi cỏ quanh tháp', t.x + 12, t.z + 4],
+    ['bai-co-quanh-thap', 'Bãi cỏ quanh tháp', t.x - 10, t.z + 14],
     ['cau-thang-xoan-cua-thap', 'Cầu thang xoắn của tháp', t.x + 1, t.z - 2],
     ['duoi-chan-thap-dong-ho', 'Dưới chân tháp đồng hồ', t.x - 8, t.z + 4],
     ['duoi-qua-chuong-lon', 'Dưới quả chuông lớn', t.x, t.z + 1],
@@ -970,7 +1045,7 @@ function buildClockTower(ctx: ZoneMapContext, c: ZoneMapContext, zn: Zone, kit: 
   for (const [id, name, x, z] of named) ctx.landmark(id, name, x, z);
 
   // The lawn round the tower: flower beds, benches facing it, pink and green trees.
-  for (const [x0, z0] of [[t.x - 20, t.z - 26], [t.x + 10, t.z - 26], [t.x - 22, t.z + 12], [t.x + 12, t.z + 12], [t.x - 8, t.z + 20]] as const) flowerBed(c, x0, z0, 10, 4);
+  for (const [x0, z0] of [[t.x - 20, t.z - 26], [t.x + 10, t.z - 26], [t.x - 22, t.z + 12], [t.x + 12, t.z + 12], [t.x - 18, t.z + 20]] as const) flowerBed(c, x0, z0, 10, 4);
   benchRow(t.x - 14, t.z - 18, 3, 4, 0, 0);
   benchRow(t.x + 6, t.z - 18, 3, 4, 0, 0);
   for (const [x, z] of [[zn.x - 50, zn.z - 22], [zn.x - 40, zn.z + 24], [zn.x + 50, zn.z + 24], [zn.x + 52, zn.z - 4], [zn.x - 52, zn.z + 6], [zn.x + 22, zn.z + 30], [zn.x - 20, zn.z + 30]] as const) tree(x, z, (x + z) % 2 === 0 ? 'leaves-pink' : 'leaves');

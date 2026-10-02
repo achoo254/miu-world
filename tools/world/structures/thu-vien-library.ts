@@ -178,7 +178,8 @@ export function buildLibraryHall(ctx: ZoneMapContext, lib: LibraryPlan): { indoo
   ring(lib.pavX0 - 1, lib.pavZ0 - 1, lib.pavX1 + 1, O.z1 + 1, PTOP + 1, 'cobble');
 
   // The arched front door (d-02): seven blocks wide, round at the top, a stone ring round it, the leaves
-  // folded back inside; a tall arched window over it. The back door onto the terrace.
+  // folded back against the wall inside either side of the opening (the whole width open to walk through);
+  // a tall arched window over it. The back door onto the terrace.
   const pz = lib.pavZ0;
   fill(mid - 3, S, pz, mid + 3, S + 4, pz, 'air');
   fill(mid - 2, S + 5, pz, mid + 2, S + 5, pz, 'air');
@@ -187,7 +188,7 @@ export function buildLibraryHall(ctx: ZoneMapContext, lib: LibraryPlan): { indoo
   for (const x of [mid - 3, mid + 3]) put(x, S + 5, pz, 'cobble');
   for (const x of [mid - 2, mid + 2]) put(x, S + 6, pz, 'cobble');
   fill(mid - 1, S + 7, pz, mid + 1, S + 7, pz, 'cobble');
-  for (const x of [mid - 3, mid - 2, mid + 2, mid + 3]) fill(x, S, pz + 1, x, S + 4, pz + 1, 'log');
+  for (const x of [mid - 6, mid - 5, mid + 5, mid + 6]) fill(x, S, pz + 1, x, S + 4, pz + 1, 'log');
   fill(mid - 3, S + 8, pz, mid + 3, S + 11, pz, 'glass');
   fill(mid - 2, S + 12, pz, mid + 2, S + 12, pz, 'glass');
   put(mid, S + 13, pz, 'lantern');
@@ -239,14 +240,15 @@ export function buildLibraryHall(ctx: ZoneMapContext, lib: LibraryPlan): { indoo
   for (const x of [mid - 8, mid + 8]) at(L.banner, x + 0.5, US + 0.6, lib.z1 - 0.1, FACE.north);
   for (const x of [mid - 8, mid + 8]) at(L.banner, x + 0.5, S + 6.5, pz + 1.1, FACE.south);
 
-  // The hall (d-03): the red carpet with its gold edge from the door to the globe, the round rug, the ring
-  // of low shelves round the globe, chandeliers, the librarian's desk and the return counter by the door.
+  // The hall (d-03): the red carpet with its gold edge from the door to the globe (narrower than the door, the
+  // boards either side of it), the round rug, the ring of low shelves round the globe, chandeliers, the
+  // librarian's desk and the return counter by the door.
   const globe = { x: mid, z: lib.z0 + 10 };
   for (let x = hall.x0; x <= hall.x1; x++) {
     for (let z = pz + 1; z < stair.z0; z++) {
       const d = Math.hypot(x - globe.x, z - globe.z);
-      const runner = z <= globe.z && Math.abs(x - mid) <= 3;
-      if (d <= 6.5 || runner) put(x, F, z, (runner && Math.abs(x - mid) === 3) || (d > 5.6 && d <= 6.5 && !runner) ? 'sand' : 'wood-red');
+      const runner = z <= globe.z && Math.abs(x - mid) <= 2;
+      if (d <= 6.5 || runner) put(x, F, z, (runner && Math.abs(x - mid) === 2) || (d > 5.6 && d <= 6.5 && !runner) ? 'sand' : 'wood-red');
     }
   }
   // The globe stands on a round dais, red inside a wooden rim (d-03).
@@ -288,10 +290,11 @@ export function buildLibraryHall(ctx: ZoneMapContext, lib: LibraryPlan): { indoo
   }
 
   // West wing, front: the reading room (d-04, and the school's library frame c-16): long tables with chairs,
-  // green lamps and open books, tall bookcases along the outer wall.
+  // green lamps and open books, tall bookcases along the outer wall. Three rows of three tables, aisles at
+  // least two blocks wide all round them (chairs counted), four between the columns.
   const W = { x0: lib.x0 + 1, x1: lib.pavX0 - 1 };
-  for (const tx of [W.x0 + 2, W.x0 + 7, W.x0 + 12, W.x0 + 17]) {
-    for (const tz of [lib.z0 + 3, lib.z0 + 7, lib.z0 + 11, lib.z0 + 15]) {
+  for (const tx of [W.x0 + 3, W.x0 + 9, W.x0 + 15]) {
+    for (const tz of [lib.z0 + 5, lib.z0 + 10, lib.z0 + 15]) {
       at(L.readingTable, tx + 1, S, tz + 0.5, 0);
       for (const dx of [0.5, 1.5]) {
         at(L.woodChair, tx + dx, S, tz - 0.25, FACE.south);
@@ -306,7 +309,7 @@ export function buildLibraryHall(ctx: ZoneMapContext, lib: LibraryPlan): { indoo
   for (const z of [lib.z0 + 6.5, lib.z0 + 12.5]) at(L.tallShelf, W.x0 + 0.32, S, z, FACE.east);
   for (const x of [lib.x0 + 6.5, lib.x0 + 15.5, lib.x0 + 18.5]) at(L.tallShelf, x, S, lib.z0 + 1.32, FACE.south);
   ctx.landmark('ban-doc', 'Bàn đọc sách', W.x0 + 10, lib.z0 + 8, S);
-  ctx.landmark('phong-doc-sach', 'Khu đọc sách', W.x0 + 10, lib.z0 + 14, S);
+  ctx.landmark('phong-doc-sach', 'Khu đọc sách', W.x0 + 10, lib.z0 + 13, S);
 
   // West wing, back: the children's corner (d-06): the tree up through the ceiling hung with lanterns, a mat
   // of bright squares, round tables, cushions and pillows, low bookcases.
@@ -379,7 +382,7 @@ export function buildLibraryHall(ctx: ZoneMapContext, lib: LibraryPlan): { indoo
   const G = { x0: E.x0 + 4, z0: lib.z1 - 8 };
   for (let x = G.x0; x <= E.x1; x++) for (let y = S; y < UP; y++) put(x, y, G.z0, (x - G.x0) % 4 === 0 || y === UP - 1 ? 'log' : 'glass');
   for (let z = G.z0; z < lib.z1; z++) for (let y = S; y < UP; y++) put(G.x0, y, z, (z - G.z0) % 4 === 0 || y === UP - 1 ? 'log' : 'glass');
-  fill(G.x0 + 4, S, G.z0, G.x0 + 5, S + 2, G.z0, 'air');
+  fill(G.x0 + 5, S, G.z0, G.x0 + 7, S + 2, G.z0, 'air');
   const board = Math.round((G.x0 + E.x1) / 2) + 1;
   at(L.whiteboard, board, S, lib.z1, FACE.north);
   for (const dx of [-1, 1]) at(L.readingTable, board + dx, S, lib.z1 - 4, 0);
@@ -399,7 +402,7 @@ export function buildLibraryHall(ctx: ZoneMapContext, lib: LibraryPlan): { indoo
     for (let x = W.x0; x <= lib.pavX0; x++) put(x, y, RB.z1, 'log');
     for (let z = lib.z0 + 1; z <= RB.z1; z++) put(lib.pavX0, y, z, (z - lib.z0) % 4 === 0 ? 'cobble' : 'log');
   }
-  fill(W.x0 + 9, US, RB.z1, W.x0 + 10, US + 2, RB.z1, 'air');
+  fill(W.x0 + 9, US, RB.z1, W.x0 + 11, US + 2, RB.z1, 'air');
   for (let x = W.x0 + 2; x <= W.x1 - 2; x++) for (let z = lib.z0 + 3; z <= RB.z1 - 3; z++) put(x, UP, z, Math.abs(x - (W.x0 + W.x1) / 2) > 7.5 || z === lib.z0 + 3 || z === RB.z1 - 3 ? 'sand' : 'wood-red');
   for (const [x, z] of [[W.x0 + 5, lib.z0 + 6], [W.x0 + 10, lib.z0 + 6], [W.x0 + 15, lib.z0 + 6], [W.x0 + 7, lib.z0 + 10], [W.x0 + 13, lib.z0 + 10]] as const) at(L.glassCase, x + 0.5, US, z + 0.5, 0);
   for (let z = lib.z0 + 2; z <= RB.z1 - 2; z += 3) at(L.tallShelf, W.x0 + 0.32, US, z + 1, FACE.east);
@@ -427,8 +430,8 @@ export function buildLibraryHall(ctx: ZoneMapContext, lib: LibraryPlan): { indoo
   for (let z = lib.z0 + 1; z <= lib.z1 - 8; z++) for (let y = US; y <= TOP; y++) put(ST.x0, y, z, (z - lib.z0) % 4 === 1 ? 'log' : 'planks');
   for (let x = ST.x0; x <= E.x1; x++) for (let y = US; y <= TOP; y++) put(x, y, lib.z1 - 8, (x - ST.x0) % 4 === 0 ? 'log' : 'planks');
   fill(ST.x0 + 1, TOP, lib.z0 + 1, E.x1, TOP, lib.z1 - 9, 'planks');
-  fill(ST.x0, US, lib.z1 - 12, ST.x0, US + 2, lib.z1 - 11, 'air');
-  for (let z = lib.z0 + 2; z <= lib.z1 - 13; z += 2) at(L.tallShelf, ST.x0 - 0.32, US, z + 1, FACE.west);
+  fill(ST.x0, US, lib.z1 - 12, ST.x0, US + 2, lib.z1 - 10, 'air');
+  for (let z = lib.z0 + 2; z <= lib.z1 - 15; z += 2) at(L.tallShelf, ST.x0 - 0.32, US, z + 1, FACE.west);
   const aisle = Math.round((ST.x0 + E.x1) / 2);
   for (let z = lib.z0 + 2; z <= lib.z1 - 11; z += 2) {
     at(L.storeShelf, aisle - 1.2, US, z + 1, FACE.east);
@@ -490,6 +493,16 @@ export function buildLibraryHall(ctx: ZoneMapContext, lib: LibraryPlan): { indoo
     }
   }
   for (let x = hall.x0; x <= hall.x1; x++) for (let z = pz + 1; z <= lib.z0; z++) if (world.get(x, roofY(x) - 1, z) === 0) put(x, roofY(x) - 1, z, 'sand');
+  // No ledges under the pavilion's roof: the hall's back wall rises to the vault, and the gables stand on the
+  // cornice in front and behind (no shelf of open stone between the cornice and the eaves).
+  const infill = (x: number, y0: number, z: number): void => {
+    for (let y = y0; y < roofY(x); y++) if (world.get(x, y, z) === 0) put(x, y, z, 'sand');
+  };
+  for (let x = hall.x0; x <= hall.x1; x++) {
+    infill(x, TOP + 1, lib.z1);
+    infill(x, PTOP + 2, pz - 1);
+    infill(x, PTOP + 2, O.z1 + 1);
+  }
   // The clock in the gable, on a white disc in a stone ring.
   for (let dx = -3; dx <= 3; dx++) {
     for (let dy = -3; dy <= 3; dy++) {
