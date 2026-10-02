@@ -69,5 +69,22 @@ Tệp đã sửa: `tools/world/generate-nong-trai-map.ts`, `tools/world/structur
 
 Không có.
 
-Status: DONE
-Summary: Mọi nhà và công trình của Nông trại đã đạt chuẩn (nhà ở ≥ 13 × 11, tường 7, cửa 3 × 3; không còn khối rỗng kín), cảnh vật đặt như ngoài đời, và cả map nối thành một mạng đường; ba audit đều xanh, tsc/eslint sạch, test của map đạt.
+## Bổ sung 03/10: cửa mọi nhà nằm trên mạng đường
+
+`scenery-audit` (b90db34) nay kiểm cửa của mọi không gian có mái từ 60 ô sàn: trên map đã sinh lại ở 214e82b có 6 cửa không cạnh đường và 2 cửa trên đoạn đường tách khỏi mạng.
+
+- 6 cửa không cạnh đường là lều bò ở sáu đồng cỏ. Mỗi lều có thêm đường đất từ cửa ra đường gần nhất (rào đồng cỏ tự mở chỗ đường đi qua): lều đồng cỏ trang trại A sang ngõ trang trại A; lều đồng cỏ phía tây ra đường tây; lều đồng cỏ phía bắc theo khe giữa vườn cam và đồng cỏ xuống đường đông bắc; lều đồng cỏ phía đông bắc lên đường đông bắc; lều đồng cỏ gần xóm lên đường làng; lều đồng cỏ bò sữa nối bằng cách kéo dài lối vào đồng cỏ tới cửa lều.
+- Nhà chính của nhà nông trại: ô ngay ngoài cửa (dưới mái hiên) gần bậu cửa sổ bằng ván hơn gần lối đá, nên mạng của nó là bậu cửa. Đã lát đá cuội nền dưới mái hiên, nối với lối đá ra đường.
+- Nhà ở trang trại C: đường sân dừng cách cột cửa hai ô; đã kéo dài tới hết cửa.
+
+Số đo sau (`pnpm world:nong-trai` trên HEAD f1413b9):
+
+- `scenery-audit`: 0 cây trên đường, 0 đồ chắn giữa lối, 0 nơi không cạnh đường, 0 nơi bị cắt khỏi mạng (trước: 0/0/6/2).
+- `reach-audit`: mọi mục tới được, chỗ bắt đầu trống.
+- `room-audit`: 96 không gian có mái, 2 thiếu chuẩn, nhưng không phải nhà: gầm cầu câu ván trên ao cá (3 × 8, tại 334, 9, 461) và gầm cầu tàu trên hồ (3 × 8, tại 698, 9, 526). Đây là ô đáy nước dưới mặt ván, y 9 dưới mặt nước 10, báo "cửa 2 rộng". Lỗi này chỉ xuất hiện với bản `tools/world/room-audit.ts` đang sửa dở, chưa commit, trong cây làm việc (mái phải phủ ít nhất hai ô bên cạnh, leo tối đa 2). Với bản đã commit, map này cho 0 thiếu chuẩn. Đề xuất cho audit: bỏ qua ô đứng dưới nước. Tôi không lấp gầm cầu để né audit.
+- `tsc`: 0 lỗi; `eslint --max-warnings=0` trên hai tệp của map: sạch; `pnpm vitest run tools/world/zone-maps.test.ts -t "nong-trai"`: 4 đạt, 32 bỏ qua, 0 trượt.
+- Không chụp lại ảnh: các đường mới nằm ngoài các khung mock; nền đá dưới mái hiên chỉ đổi rất ít khung d-12.
+
+Status: DONE_WITH_CONCERNS
+Summary: Mọi nhà và công trình của Nông trại đạt chuẩn và mọi cửa nhà nằm trên một mạng đường nối về chỗ xuất hiện. scenery-audit 0/0/0/0, reach-audit xanh, tsc/eslint sạch, test của map đạt.
+Concerns: room-audit theo bản đang sửa dở (chưa commit) báo 2 gầm cầu ván dưới nước là "cửa 2 rộng". Đây không phải nhà; bản audit đã commit cho 0.

@@ -101,8 +101,16 @@ const R = {
   yardA: [[247, 195], [284, 195]] as Point[],
   maize: [[342, 209], [342, 424]] as Point[],
   yardB: [[547, 161], [547, 189], [586, 189]] as Point[],
-  pastureE: [[566, 420], [566, 368]] as Point[],
-  yardC: [[700, 425], [700, 463], [668, 463]] as Point[],
+  pastureE: [[566, 420], [566, 326], [519, 326]] as Point[],
+  yardC: [[700, 425], [700, 463], [664, 463]] as Point[],
+  // From each pasture's cattle shed door to the nearest road (the shed of the pasture east of the farm is on
+  // the track above): west to farmstead A's lane and to the west road, between the orchard and the north
+  // pasture down to the north-east road, north to that road, north to the lane.
+  shedA: [[263, 116], [263, 114], [247, 114]] as Point[],
+  shedW: [[119, 116], [119, 114], [87, 114]] as Point[],
+  shedN: [[581, 24], [565, 24], [565, 159]] as Point[],
+  shedE: [[675, 188], [675, 173]] as Point[],
+  shedS: [[171, 452], [171, 438]] as Point[],
   lakeC: [[681, 463], [681, 514]] as Point[],
   lake: [[630, 528], [681, 514], [748, 514]] as Point[],
   meadow: [[240, 583], [300, 582], [360, 582], [400, 585], [470, 587], [525, 589]] as Point[],
@@ -733,7 +741,8 @@ function buildLessonsFarm(ctx: ZoneMapContext, B: Record<string, number>, t: Far
     const [x1, z1] = frameCell(part.origin, facing, FRAME + part.w, FRAME + part.d);
     keepRect(Math.min(x0, x1), Math.min(z0, z1), Math.max(x0, x1), Math.max(z0, z1));
   }
-  // A porch over the home's door: a tiled roof on two log posts, clear of the doorway.
+  // A porch over the home's door: a tiled roof on two log posts, clear of the doorway, cobbles under it.
+  t.pave(390, 403, 393, 409, b('cobble'));
   for (let x = 390; x <= 393; x++) for (let z = 403; z <= 409; z++) world.set(x, base + 3 + (x === 390 ? 1 : 0), z, b('brickRed'));
   for (const z of [403, 409]) for (let y = base; y < base + 3; y++) world.set(393, y, z, b('log'));
   // Inside the home: jar shelves on the back wall, the kitchen table; sacks and cans in the store wing.
