@@ -14,6 +14,7 @@ import { modelCatalogSchema, modelTraversal } from '../../packages/voxel/src/mod
 import { insertRegion } from '../../packages/voxel/src/region-format';
 import type { WorldEntities } from '../../packages/voxel/src/world-entities';
 import { ASSETS_DIR, REPO_ROOT } from '../assets/asset-lib';
+import { auditRooms } from './room-audit';
 
 /** Surfaces that are ways: what a tree must not grow out of (it stands beside them, or in earth or a bed). */
 export const WAY_BLOCKS = ['path', 'trail', 'cobble', 'cobble-grey', 'paver', 'asphalt'] as const;
@@ -22,6 +23,8 @@ const NETWORK_BLOCKS = [...WAY_BLOCKS, 'planks'];
 /** A place is on the ways when a way cell lies this close (blocks); a lesson district's centre, this close. */
 const ON_WAY = 4;
 const ZONE_ON_WAY = 14;
+/** A roofed space at least this big (floor cells) is a house whose door the ways reach; smaller ones are stalls, porches, sheds. */
+const HOUSE_AREA = 60;
 const TRUNK_BLOCKS = ['log', 'tree-log', 'birch-log', 'tree-birch-log'];
 const LEAF_BLOCKS = ['leaves', 'leaves-autumn', 'leaves-pink'];
 /** A way at most this many blocks across is a lane: its middle stays clear. */
@@ -118,18 +121,19 @@ export async function auditScenery(map: string): Promise<SceneryFinding[]> {
     const laneAlongX = acrossZ <= LANE_WIDTH && acrossX > LANE_WIDTH && north >= 1 && south >= 1;
     if (laneAlongZ || laneAlongX) findings.push({ kind: 'prop-in-way', at: [x, y, z], what: file });
   }
-  findings.push(...wayNetwork(world, e, idsOf(NETWORK_BLOCKS)));
+  const doors = (await auditRooms(map)).filter((r) => r.area >= HOUSE_AREA && r.doorAt).map((r) => ({ name: `door of the house at ${r.at.join(',')}`, at: r.doorAt ?? r.at, reach: ON_WAY }));
+  findings.push(...wayNetwork(world, e, idsOf(NETWORK_BLOCKS), doors));
   return findings;
 }
 
 /**
  * The map's ways as one network (owner, 02/10/2026: clear lanes joining every sensible pair of places; where
  * the child starts, a way leads to where she goes): every place the child starts from or heads for — the
- * spawn, each chapter's start, the gates, every ride's stop and arrival, the lesson districts and the named
- * places — lies by a way, and all of them are on one network of way cells (stepping up or down one block),
+ * spawn, each chapter's start, the gates, every ride's stop and arrival, the lesson districts, the named
+ * places and every house's door — lies by a way, and all of them are on one network of way cells (stepping up or down one block),
  * a ride joining its stop to its arrival (a boat across the sea, a cable car up the mountain).
  */
-function wayNetwork(world: VoxelWorld, e: WorldEntities, network: ReadonlySet<number>): SceneryFinding[] {
+function wayNetwork(world: VoxelWorld, e: WorldEntities, network: ReadonlySet<number>, doors: ReadonlyArray<{ name: string; at: readonly number[]; reach: number }>): SceneryFinding[] {
   const [SX, SY, SZ] = e.size;
   // Every way cell with room to stand on it, floor over floor (a ground floor under an upper one counts too):
   // column x + z * SX holds its cells' heights from `first[c]` to `first[c + 1]` in `ys`.
@@ -193,6 +197,7 @@ function wayNetwork(world: VoxelWorld, e: WorldEntities, network: ReadonlySet<nu
     ...e.interactables.filter((t) => t.ride).map((t) => ({ name: `stop ${t.id}`, at: t.position, reach: ON_WAY })),
     ...e.interactables.flatMap((t) => (t.ride ? [{ name: `arrival of ${t.id}`, at: t.ride, reach: ON_WAY }] : [])),
     ...(e.landmarks ?? []).map((l) => ({ name: `place ${l.id}`, at: l.position, reach: ZONE_ON_WAY })),
+    ...doors,
   ];
   const findings: SceneryFinding[] = [];
   const compOf = new Map<string, number>();

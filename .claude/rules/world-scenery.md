@@ -33,6 +33,6 @@ Mỗi vật có `traversal` trong danh mục (`content/world/models.json`, `cont
 
 ## Kiểm tra (chạy sau mỗi lần `pnpm world:<map>`)
 
-- `pnpm exec tsx tools/world/scenery-audit.ts <map>`: 0 cây trên đường/sân lát, 0 đồ chắn giữa lối hẹp, 0 nơi không cạnh đường, 0 nơi trên đường không nối về mạng của chỗ xuất hiện (tuyến xe/thuyền/cáp treo nối hai đầu).
+- `pnpm exec tsx tools/world/scenery-audit.ts <map>`: 0 cây trên đường/sân lát, 0 đồ chắn giữa lối hẹp, 0 nơi không cạnh đường, 0 nơi trên đường không nối về mạng của chỗ xuất hiện (tuyến xe/thuyền/cáp treo nối hai đầu); "nơi" gồm cả cửa từng ngôi nhà (không gian có mái từ 60 ô sàn).
 - `pnpm exec tsx tools/world/room-audit.ts <map>`: không nhà nào thiếu chuẩn (không gian có mái không phải nhà — gầm cầu, mái hiên, vách đá — ghi lý do).
 - `pnpm exec tsx tools/world/reach-audit.ts <map>`: mọi mục quest, cổng, bến xe tới được; chỗ xuất hiện, điểm xuống xe trống.

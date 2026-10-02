@@ -29,6 +29,8 @@ export interface RoomReport {
   area: number;
   /** Widest doorway (cells along the wall), and the lowest climb from outside onto the floor there. */
   door: number;
+  /** The spot the child stands on just outside that doorway, or none without a way in. */
+  doorAt?: [number, number, number];
   climb: number;
   freeShare: number;
   reachShare: number;
@@ -89,6 +91,7 @@ export async function auditRooms(map: string): Promise<RoomReport[]> {
     const inRoom = new Set(cells.map((c) => c.join(',')));
     // Doorway cells: room cells beside a floor spot outside the room at most three blocks lower or higher; the climb is how far up from outside.
     const doorClimb = new Map<string, number>();
+    const outsideOf = new Map<string, [number, number, number]>();
     for (const [x, y, z] of cells) {
       for (const [dx, dz] of SIDES) {
         for (let dy = -3; dy <= 3; dy++) {
@@ -98,12 +101,14 @@ export async function auditRooms(map: string): Promise<RoomReport[]> {
           if (dy < 0 && (B(nx, y, nz) || B(nx, y + 1, nz))) continue; // a wall, not a drop
           const k = `${x},${y},${z}`;
           doorClimb.set(k, Math.min(doorClimb.get(k) ?? Infinity, Math.max(0, -dy)));
+          if (!outsideOf.has(k)) outsideOf.set(k, [nx, ny, nz]);
         }
       }
     }
     // Doorways: connected doorway cells; width = their count, climb = the lowest among them.
     const doorSeen = new Set<string>();
     let door = 0;
+    let doorAt: [number, number, number] | undefined;
     let climb = Infinity;
     for (const d of doorClimb.keys()) {
       if (doorSeen.has(d)) continue;
@@ -129,6 +134,7 @@ export async function auditRooms(map: string): Promise<RoomReport[]> {
       if (width > door || (width === door && low < climb)) {
         door = width;
         climb = low;
+        doorAt = outsideOf.get(d);
       }
     }
     const freeCells = cells.filter(free);
@@ -164,6 +170,7 @@ export async function auditRooms(map: string): Promise<RoomReport[]> {
       box,
       area: cells.length,
       door,
+      ...(doorAt ? { doorAt } : {}),
       climb: Number.isFinite(climb) ? climb : -1,
       freeShare: +(freeCells.length / cells.length).toFixed(2),
       reachShare: +(reach.size / Math.max(1, freeCells.length)).toFixed(2),
