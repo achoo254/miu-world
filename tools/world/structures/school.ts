@@ -126,7 +126,13 @@ export interface MainBuilding {
   extraRooms: Array<{ x0: number; x1: number; z0: number; z1: number; standY: number }>;
 }
 
-const STOREY = 4;
+/**
+ * Floor to floor of the main building: the rooms stand five clear under their ceilings, three and a half
+ * times the child (owner, 03/10/2026: raise the classrooms' ceilings).
+ */
+const STOREY = 6;
+/** A wall's window rows on a storey: from the second row to the one under the band. */
+const windowRow = (level: number): boolean => level >= 1 && level <= STOREY - 2;
 /**
  * Wall-to-wall width a classroom aims at (owner, 02/10/2026: rooms many times the child's size, room to move
  * inside): a run of rooms is split into as many as come nearest this.
@@ -185,7 +191,7 @@ export function placeMainBuilding(world: WorldWriter, spec: MainBuildingSpec, b:
       for (let y = g; y <= ceiling; y++) {
         const level = y < slab ? y - g : y - u;
         const isSlab = y === slab || y === ceiling;
-        const window = !isSlab && (level === 1 || level === 2) && (edgeZ ? (x - x0) % 3 === 1 : (z - zWall) % 3 === 1) && !(edgeX && edgeZ);
+        const window = !isSlab && windowRow(level) && (edgeZ ? (x - x0) % 3 === 1 : (z - zWall) % 3 === 1) && !(edgeX && edgeZ);
         put(world, x, y, z, isSlab || (edgeX && edgeZ) ? b.trim : window ? b.glass : b.wall);
       }
     }
@@ -237,10 +243,10 @@ export function placeMainBuilding(world: WorldWriter, spec: MainBuildingSpec, b:
         const isSlab = y === slab || y === ceiling;
         const level = y < slab ? y - g : y - u;
         const pilaster = (x - x0) % 3 === 0 || x <= x0 - 1 || x >= x1 + 1;
-        const window = !isSlab && !pilaster && (level === 1 || level === 2);
+        const window = !isSlab && !pilaster && windowRow(level);
         const entrance = x >= hall.x0 && x <= hall.x1 && y < slab;
         put(world, x, y, zOut, entrance ? 0 : isSlab || pilaster ? b.trim : window ? b.glass : b.wall);
-        if (end) for (let z = zOut + 1; z <= zFront + 1; z++) put(world, x, y, z, isSlab ? b.trim : level === 1 || level === 2 ? b.glass : b.wall);
+        if (end) for (let z = zOut + 1; z <= zFront + 1; z++) put(world, x, y, z, isSlab ? b.trim : windowRow(level) ? b.glass : b.wall);
       }
       if (x <= x0 - 2 || x >= x1 + 2) continue;
       for (let z = zOut + 1; z <= zFront + 1; z++) {

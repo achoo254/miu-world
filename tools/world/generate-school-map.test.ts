@@ -48,8 +48,8 @@ describe('school hub map generator', () => {
     const lop = entities.landmarks.find((l) => l.id === 'lop-hoc');
     const [lx = 0, ly = 0, lz = 0] = lop?.position ?? [];
     expect(at(Math.floor(lx), Math.floor(lz), ly), 'the classroom downstairs').toBe(true);
-    // Upstairs: the same classroom one storey (four blocks) higher.
-    expect(at(Math.floor(lx), Math.floor(lz), ly + 4), 'the classroom upstairs').toBe(true);
+    // Upstairs: the same classroom one storey (six blocks) higher.
+    expect(at(Math.floor(lx), Math.floor(lz), ly + 6), 'the classroom upstairs').toBe(true);
     expect(MAIN_BUILDING.x1 - MAIN_BUILDING.x0).toBeGreaterThan(60);
     // Trees do not snag her: she walks through trunks (and canopies) as through air.
     const blocks = JSON.parse(await readFile(path.join(ASSETS_DIR, '../content/blocks.json'), 'utf8')) as { blocks: Array<{ id: number; name: string }> };
