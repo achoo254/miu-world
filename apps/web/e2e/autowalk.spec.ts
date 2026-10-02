@@ -1,6 +1,6 @@
 // Tapping the quest card walks the character to the quest's target along the ways (owner, 02/10/2026), on
 // the Trường học map with the first Toán lesson: from the schoolyard's edge to Sư Tử Vàng at the flagpole,
-// round the steps and corners on the way, until the flagpole offers the talk. Tapping the card again
+// round the steps and corners on the way, and there she talks to him at once. Tapping the card again
 // stops her where she is.
 import { expect, test } from '@playwright/test';
 import { freshChild } from './quest-api';
@@ -36,4 +36,6 @@ test('tapping the quest card walks to Sư Tử Vàng, and tapping it again stops
   await expect.poll(async () => (await readStats(page)).nearTarget, { timeout: 60_000 }).toBe('su-tu-vang');
   await expect.poll(async () => (await readStats(page)).autowalk).toBe('arrived');
   await expect(page.locator('.npc-label[data-target="su-tu-vang"]')).toContainText('Sư Tử Vàng');
+  // Arrived, she talks to him without another tap: the quest's dialogue opens.
+  await expect(page.locator('[data-id="dialogue"]')).toBeVisible();
 });

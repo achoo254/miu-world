@@ -502,6 +502,9 @@ export class Game {
       (state) => {
         store.emit({ type: 'autowalk', state });
         overlay.stats.autowalk = state;
+        // Arrived beside the quest's place: she greets the character or picks up the thing at once, as a tap
+        // on Interact would, so a tap on the quest card takes the child right into the step.
+        if (state === 'arrived') interactRequested = true;
       },
       (x, z) => data.regions.loadedAt(x, z),
     );
