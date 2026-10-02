@@ -13,6 +13,11 @@ import { seeThroughCopy, type SeeThroughUniforms } from '../world/block-material
 
 /** Each model's catalog entry: whether it fades in front of the child (content/world/models.json). */
 const CATALOG = modelCatalogSchema.parse(modelCatalogJson);
+/**
+ * Props shorter than this (blocks: flowers, grass, mushrooms, crates) cast no shadow: theirs is a smudge
+ * nobody sees, and a shadow draws every triangle a second time (Master Plan §12: about 150k a frame).
+ */
+const SHADOW_MIN_HEIGHT = 1.2;
 
 /** Side of a prop tile in blocks: a region's, so at most 3 x 3 tiles are in view (draw calls stay low). */
 export const PROP_TILE = 128;
@@ -61,7 +66,8 @@ export async function loadProps(loader: GuardedGltfLoader, entities: WorldEntiti
       const attributes = Object.keys(node.geometry.attributes).sort().join(',');
       // A model the catalog keeps solid batches apart from the fading ones of the same material.
       const fades = modelFades(CATALOG, model);
-      parts.push({ geometry: node.geometry, material, matrix: node.matrixWorld.clone(), key: `${materialKey(material, attributes)}|${fades ? 'fade' : 'solid'}` });
+      const shadow = (CATALOG.models[model]?.height ?? SHADOW_MIN_HEIGHT) >= SHADOW_MIN_HEIGHT;
+      parts.push({ geometry: node.geometry, material, matrix: node.matrixWorld.clone(), key: `${materialKey(material, attributes)}|${fades ? 'fade' : 'solid'}|${shadow ? 'shadow' : 'flat'}` });
     });
     models.set(model, parts);
   }
@@ -78,7 +84,7 @@ export async function loadProps(loader: GuardedGltfLoader, entities: WorldEntiti
   /** One fading copy per batch material, shared by every tile. */
   const faded = new Map<string, Material>();
   const fadingOf = (batchKey: string, material: Material): Material => {
-    if (!seeThrough || batchKey.endsWith('|solid')) return material;
+    if (!seeThrough || batchKey.includes('|solid|')) return material;
     let copy = faded.get(batchKey);
     if (!copy) faded.set(batchKey, (copy = seeThroughCopy(material, seeThrough)));
     return copy;
@@ -101,7 +107,7 @@ export async function loadProps(loader: GuardedGltfLoader, entities: WorldEntiti
       geometry.computeBoundingSphere();
       const mesh = new Mesh(geometry, fadingOf(batchKey, material));
       mesh.name = `props:${key}:${material.name || 'batch'}`;
-      mesh.castShadow = shadows;
+      mesh.castShadow = shadows && batchKey.endsWith('|shadow');
       mesh.receiveShadow = shadows;
       mesh.matrixAutoUpdate = false;
       group.add(mesh);

@@ -104,7 +104,6 @@ export interface BarnBlocks {
   aisle: number;
   lining: number;
   post: number;
-  lantern: number;
 }
 
 /**
@@ -112,7 +111,7 @@ export interface BarnBlocks {
  * a white-framed doorway five wide in the middle of its front with a white X door leaf either side, a loft
  * window with a white X in the gable, glazed windows down both sides, a gambrel roof whose ridge runs front to
  * back with a white trim along the gables' edge. Inside: planks lining the walls, a cobbled aisle down the
- * middle, plank-floored stalls either side, a post with a lantern on it at each stall's corner on the aisle,
+ * middle, plank-floored stalls either side, a post at each stall's corner on the aisle,
  * log beams across under the eaves. Returns the cell before its door, the room inside, the stalls' middles
  * (x, z, side) and where their partitions run (the map fences them), and the beams' rows.
  */
@@ -157,11 +156,10 @@ export function placeRedBarn(
     const lh = 5;
     for (let u = 0; u < lw; u++) {
       for (let v = 0; v < lh; v++) {
-        const border = u === 0 || u === lw - 1 || v === 0 || v === lh - 1;
         const t = v / (lh - 1);
         const s = u / (lw - 1);
         const cross = Math.abs(s - t) < 0.2 || Math.abs(s - (1 - t)) < 0.2;
-        put(world, lx0 + u, baseY + v, z0 - 1, border || cross ? b.trim : b.wall);
+        put(world, lx0 + u, baseY + v, z0 - 1, v === lh - 1 || cross ? b.trim : b.wall);
       }
     }
   };
@@ -182,16 +180,14 @@ export function placeRedBarn(
   for (const z of [z0, z1]) {
     for (let x = x0; x <= x1; x++) {
       const top = (roofAt.get(x) ?? baseY + H) - 1;
-      for (let y = baseY + H; y <= top; y++) put(world, x, y, z, y >= top - 1 && Math.abs(x - mid) > 0 ? b.trim : b.wall);
+      for (let y = baseY + H; y <= top; y++) put(world, x, y, z, y === top ? b.trim : b.wall);
     }
   }
   for (const z of [z0, z1]) {
-    for (let dx = -2; dx <= 2; dx++) {
-      for (let dy = 0; dy <= 4; dy++) {
-        const y = baseY + H - 1 + dy;
-        const border = Math.abs(dx) === 2 || dy === 0 || dy === 4;
-        const cross = Math.abs(dx) === Math.abs(dy - 2);
-        put(world, mid + dx, y, z, border || cross ? b.trim : b.glass);
+    for (let dx = -1; dx <= 1; dx++) {
+      for (let dy = 0; dy <= 2; dy++) {
+        const cross = Math.abs(dx) === Math.abs(dy - 1);
+        put(world, mid + dx, baseY + H + 1 + dy, z, cross ? b.trim : b.glass);
       }
     }
   }
@@ -209,8 +205,7 @@ export function placeRedBarn(
     const outer = side < 0 ? x0 + 2 : x1 - 2;
     const [sx0, sx1] = [Math.min(inner, outer), Math.max(inner, outer)];
     for (let z = z0 + 4; z <= z1 - 5; z += 4) {
-      for (let y = baseY; y <= baseY + 1; y++) put(world, inner, y, z, b.post);
-      put(world, inner, baseY + 2, z, b.lantern);
+      put(world, inner, baseY, z, b.post);
       partitions.push({ x0: side < 0 ? sx0 : sx0 + 1, x1: side < 0 ? sx1 - 1 : sx1, z });
       stalls.push({ x: (sx0 + sx1) / 2, z: z + 2, side });
     }
@@ -251,8 +246,8 @@ export function placeRoofedWell(
   for (const dx of [-2, 2]) for (let y = ground + 3; y <= ground + 5; y++) put(world, cx + dx, y, cz, b.post);
   for (let dx = -2; dx <= 2; dx++) put(world, cx + dx, ground + 5, cz, b.post);
   // The roof: a gable along x over the roller, eaves overhanging the kerb.
-  for (let dz = -3; dz <= 3; dz++) {
-    const y = ground + 6 + (3 - Math.abs(dz));
+  for (let dz = -2; dz <= 2; dz++) {
+    const y = ground + 6 + (2 - Math.abs(dz));
     for (let dx = -3; dx <= 3; dx++) {
       put(world, cx + dx, y, cz + dz, dz === 0 || Math.abs(dx) === 3 ? b.ridge : b.roof);
     }

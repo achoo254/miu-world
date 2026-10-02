@@ -54,7 +54,8 @@ test('the camp, the woods, the garden, the stream and the meadow are alive, with
     await page.waitForTimeout(settle(7_000, 1_500));
     const stats = await readStats(page);
     expect(stats.ambientVisible, place).toBeGreaterThan(0);
-    expect(stats.ambientVisible, place).toBeLessThanOrEqual(9);
+    // Mid quality draws up to sixteen at once (ambient-life.ts AMBIENT_LIMIT).
+    expect(stats.ambientVisible, place).toBeLessThanOrEqual(16);
     expect(stats.calls, place).toBeLessThanOrEqual(DRAW_CALL_BUDGET);
     await page.screenshot({ path: `${SHOTS}life-${place}.png` });
   }
@@ -81,13 +82,13 @@ test('villagers and animals add only a few draw calls each (one skinned mesh per
   expect(withLife.calls, `${without.calls} calls without life, ${withLife.visible} characters drawn`).toBeLessThanOrEqual(DRAW_CALL_BUDGET);
 });
 
-test('low quality draws at most six of them, within the draw-call budget', async ({ page, baseURL }) => {
+test('low quality draws at most eight of them, within the draw-call budget', async ({ page, baseURL }) => {
   await freshChild(page, baseURL ?? '');
   await page.goto(play(behind('bac-nau-an', 3), 'low'));
   await waitReady(page);
   await expect.poll(async () => (await readStats(page)).ambientVisible).toBeGreaterThan(0);
   const stats = await readStats(page);
-  expect(stats.ambientVisible).toBeLessThanOrEqual(6);
+  expect(stats.ambientVisible).toBeLessThanOrEqual(8);
   expect(stats.calls).toBeLessThanOrEqual(DRAW_CALL_BUDGET);
 });
 

@@ -158,7 +158,6 @@ const M = {
   table: `${PACK.furniture}/table.glb`,
   bowl: `${PACK.food}/bowl-soup.glb`,
   egg: `${PACK.food}/egg.glb`,
-  headCabbage: `${PACK.food}/cabbage.glb`,
   lotus: `${PACK.props}/lotus.glb`,
   loofah: `${PACK.props}/cucumber.glb`,
   door: `${PACK.props}/door.glb`,
@@ -172,7 +171,7 @@ const M = {
 /** The home frames' things built of boxes (content/world/box-props/xom-mai-am.json). */
 const X = Object.fromEntries(
   [
-    'picket', 'rail-fence', 'cow', 'dining-table', 'bench', 'bed', 'stove', 'rug', 'dresser', 'hanging-lantern', 'curtains', 'wall-shelf', 'sheep',
+    'picket', 'rail-fence', 'cow', 'cabbage', 'dining-table', 'bench', 'bed', 'stove', 'rug', 'dresser', 'hanging-lantern', 'curtains', 'wall-shelf', 'sheep',
     'hay-bale', 'hay-pile', 'trough', 'milk-can', 'hanging-bucket', 'pumpkin', 'flower-pot', 'gate-sign', 'coop',
   ].map((id) => [id, `${PACK.box}/xma-${id}.glb`]),
 ) as Record<string, string>;
@@ -543,7 +542,7 @@ export async function generateXomMaiAm() {
         ...crowd('chick', ['Gà mái', 'Gà con'], [animal('chick')], landmark('chuong-ga'), 5, 8),
         ...crowd('cow', ['Bò sữa', 'Bê con'], [animal('cow')], landmark('bai-bo'), 6, 4),
         ...crowd('pig', ['Lợn ỉ'], [animal('pig')], landmark('chuong-ga'), 7, 3),
-        ...crowd('waterer', ['Bác làm vườn', 'Cô hái bí'], [person('j'), person('h')], landmark('vuon-rau'), 8, 2, [LIFE_HELD.hoe, LIFE_HELD.cabbage]),
+        ...crowd('waterer', ['Bác làm vườn', 'Cô hái bí'], [person('j'), person('h')], [GARDEN.x0 + 33, GARDEN.z0 + 18], 3, 2, [LIFE_HELD.hoe, LIFE_HELD.cabbage]),
         ...crowd('ploughman', ['Chú gặt lúa mì'], [person('k'), person('b')], landmark('ruong-lua-mi'), 12, 2, [LIFE_HELD.hoe]),
         ...crowd('dog', ['Cún giữ trại'], [animal('dog')], landmark('chuong-bo'), 6, 1),
         ...crowd('dog', ['Cún nhà Mẩy', 'Chó Vàng', 'Cún Mực'], [animal('dog')], landmark('goc-sung'), 16, 4),
@@ -617,16 +616,22 @@ export async function generateXomMaiAm() {
       for (const z of [104, 120]) b.fenceRun(box('picket'), 389, z, 'x', 6);
       flowerBed(ctx, 388, 98, 24, 4);
       flowerBed(ctx, 386, 108, 3, 8);
+      // Flowers all round the paving, as the mock's well stands in a garden.
+      for (let i = 0; i < 40; i++) {
+        const t = (i / 40) * Math.PI * 2;
+        const [x, z] = [Math.round(WELL.x + Math.cos(t) * 7), Math.round(WELL.z + Math.sin(t) * 7)];
+        if (!ctx.onPath(x, z)) ctx.prop(FLOWERS[i % 3] ?? M.flowerRed, x, z, i * 37);
+      }
       b.claim(386, 98, 420, 128);
       ctx.landmark('gieng-xom', 'Giếng xóm', WELL.x, WELL.z - 6, wellGround + 1);
 
       // The farm (d-04, d-14, d-07): the red barn, its pens either side of the way to its door, the garden and the wheat.
       const barnBase = b.levelPlot(BARN.x0 - 3, BARN.z0 - 1, BARN.x0 + BARN.w + 2, BARN.z0 + BARN.d + 2);
       const barn = placeRedBarn(world, BARN.x0, BARN.z0, BARN.w, BARN.d, barnBase + 1, {
-        wall: B.red, trim: B.white, roof: B.log, glass: block('glass'), floor: B.planks, aisle: B.cobbleGrey, lining: B.planks, post: B.log, lantern: B.lantern,
+        wall: B.red, trim: block('birch-log'), roof: B.log, glass: block('glass'), floor: B.planks, aisle: B.cobbleGrey, lining: B.planks, post: B.log,
       });
       furnishBarn(ctx, barn, barnBase + 1);
-      for (const dx of [-3, 3]) put(world, barn.door[0] + dx, barnBase + 3, BARN.z0 - 1, B.lantern);
+      for (const dx of [-4, 4]) ctx.prop(STREET_LANTERN, barn.door[0] + dx, BARN.z0 - 3, 0);
       for (const [dx, dz, model, yaw] of [[-5, -2, box('milk-can'), 0], [-6, -2, box('milk-can'), 30], [5, -2, box('hay-bale'), 90], [6, -3, box('hay-bale'), 0], [5, -4, M.bucket, 0]] as const) {
         ctx.prop(model, barn.door[0] + dx, BARN.z0 + dz, yaw);
       }
@@ -643,20 +648,22 @@ export async function generateXomMaiAm() {
       ctx.prop(box('trough'), west.x0 + 6, west.z0 + 4, 0);
       ctx.prop(box('trough'), west.x0 + 12, west.z0 + 4, 0);
       for (const [dx, dz] of [[3, 20], [4, 22], [2, 23]] as const) ctx.prop(box('hay-bale'), west.x0 + dx, west.z0 + dz, dx * 30);
-      for (const [dx, dz, model, yaw] of [[14, 16, box('cow'), 200], [17, 21, box('cow'), 150], [9, 19, box('cow'), 240], [12, 23, box('sheep'), 190]] as const) ctx.prop(model, west.x0 + dx, west.z0 + dz, yaw);
+      for (const [dx, dz, model, yaw] of [[17, 20, box('cow'), 200], [19, 24, box('cow'), 150], [14, 23, box('cow'), 240], [12, 18, box('sheep'), 190]] as const) ctx.prop(model, west.x0 + dx, west.z0 + dz, yaw);
       ctx.landmark('bai-bo', 'Bãi thả bò', west.x0 + 11, west.z0 + 13);
       ctx.prop(box('coop'), east.x0 + 12, east.z0 + 6, 0);
       ctx.prop(box('trough'), east.x0 + 6, east.z0 + 18, 0);
       for (let i = 0; i < 4; i++) ctx.prop(box('hay-pile'), east.x0 + 4 + i * 4, east.z0 + 12 + (i % 2) * 3, i * 70);
       ctx.landmark('chuong-ga', 'Chuồng gà', east.x0 + 12, east.z0 + 12);
       // The vegetable garden (d-07): beds of tilled earth inside a rail fence, pumpkins, cabbages, carrots, maize.
-      const crops = [box('pumpkin'), M.headCabbage, M.carrot, box('pumpkin'), M.cabbage, M.cornYoung];
-      for (let z = GARDEN.z0 + 2, row = 0; z < GARDEN.z1 - 1; z += 3, row++) {
-        for (let x = GARDEN.x0 + 2; x < GARDEN.x1 - 1; x++) {
+      const crops = [box('pumpkin'), box('cabbage'), M.carrot, box('pumpkin'), box('cabbage'), M.cornYoung];
+      for (let z = GARDEN.z0 + 1; z < GARDEN.z1; z++) {
+        for (let x = GARDEN.x0 + 1; x < GARDEN.x1; x++) {
           if (ctx.onPath(x, z) || (x - GARDEN.x0) % 17 === 0) continue;
           b.paint(x, z, B.farmland);
-          const crop = crops[(row + Math.floor((x - GARDEN.x0) / 17)) % crops.length] ?? M.cabbage;
-          if (crop !== box('pumpkin') || x % 2 === 0) ctx.prop(crop, x, z, (x * 37 + z * 11) % 360);
+          const row = z - GARDEN.z0 - 1;
+          if (row % 2 === 1 || x === GARDEN.x0 + 1 || x === GARDEN.x1 - 1) continue;
+          const crop = crops[(Math.floor(row / 2) + Math.floor((x - GARDEN.x0) / 17)) % crops.length] ?? M.cabbage;
+          if (crop === M.carrot || (x + row / 2) % 2 === 0) ctx.prop(crop, x, z, (x * 37 + z * 11) % 360);
         }
       }
       for (const z of [GARDEN.z0, GARDEN.z1]) b.fenceRun(box('rail-fence'), GARDEN.x0, z, 'x', GARDEN.x1 - GARDEN.x0 + 1, [GARDEN.x0 + 16, GARDEN.x0 + 18]);
@@ -664,15 +671,14 @@ export async function generateXomMaiAm() {
       for (let x = GARDEN.x0 + 4; x < GARDEN.x1; x += 22) ctx.prop(M.barrel, x, GARDEN.z0 + 1, x);
       b.claim(GARDEN.x0, GARDEN.z0, GARDEN.x1, GARDEN.z1);
       ctx.landmark('vuon-rau', 'Vườn rau nhà bác', GARDEN.x0 + 17, GARDEN.z0 - 3);
-      // The wheat field running south to the windy mound: golden grain a block high, a furrow every fifth row.
+      // The wheat field running south to the windy mound: golden grain two blocks high (one here and there), a furrow every sixth row.
       for (let x = WHEAT.x0; x <= WHEAT.x1; x++) {
         for (let z = WHEAT.z0; z <= WHEAT.z1; z++) {
           if (ctx.onPath(x, z) || ctx.inWater(x, z)) continue;
           if ((z - WHEAT.z0) % 6 === 5 || (x - WHEAT.x0) % 30 === 0) world.set(x, surface(x, z), z, B.farmland);
-          else world.set(x, surface(x, z) + 1, z, B.wheat);
+          else for (let k = 1; k <= ((x * 7 + z * 3) % 5 === 0 ? 1 : 2); k++) world.set(x, surface(x, z) + k, z, B.wheat);
         }
       }
-      for (let x = WHEAT.x0; x <= WHEAT.x1; x += 2) if (!ctx.onPath(x, WHEAT.z0 - 1)) ctx.prop(box('rail-fence'), x, WHEAT.z0 - 1, 0);
       b.scarecrow(WHEAT.x0 + 40, WHEAT.z0 + 14);
       for (let i = 0; i < 4; i++) ctx.prop(box('hay-bale'), WHEAT.x0 + 9 + i * 27, WHEAT.z0 - 3, i * 50);
       b.claim(WHEAT.x0, WHEAT.z0 - 1, WHEAT.x1, WHEAT.z1);
@@ -695,7 +701,7 @@ export async function generateXomMaiAm() {
       ctx.landmark('gian-muop', 'Giàn mướp cuối vườn', 245, 125);
       for (let z = 136; z <= 140; z++) world.set(248, ground + 1, z, B.planks);
       for (let z = 136; z <= 140; z++) for (let y = ground + 2; y <= ground + 3; y++) world.set(248, y, z, z % 2 === 0 ? B.sand : B.planks);
-      for (let x = 242; x <= 246; x += 2) for (let z = 136; z <= 140; z += 2) ctx.prop(M.headCabbage, x, z, x * 7 + z);
+      for (let x = 242; x <= 246; x += 2) for (let z = 136; z <= 140; z += 2) ctx.prop(box('cabbage'), x, z, x * 7 + z);
       for (let x = garden.x0 + 1; x < garden.x1; x += 2) ctx.prop(M.flowerYellow, x, garden.z1 + 1, x * 31);
       ctx.landmark('vuon-hoa', 'Bụi hoa tỉ muội', 232, 131);
       ctx.landmark('luong-cai', 'Luống cải góc vườn', 244, 138);

@@ -26,6 +26,9 @@ export const AMBIENT_LIMIT: Readonly<Record<string, number>> = { low: 8, mid: 16
  * third of the limit always stays.
  */
 const CALL_CEILING = 144;
+/** The same for triangles (Master Plan §12: about 150k), and about what one character with what it holds adds. */
+const TRIANGLE_CEILING = 140_000;
+const CHARACTER_TRIANGLES = 2_000;
 /** Beyond this distance nobody is drawn, however few are near. */
 const DRAW_RADIUS = 36;
 /** Models of those further than this are let go (built again on return); those this near the start are built before the first frame. */
@@ -70,9 +73,9 @@ export interface AmbientLife {
   readonly group: Group;
   /**
    * `questPrompt`: a quest prompt is up, so ambient bubbles stay hidden (except while cheering a finished
-   * quest). `lastFrameCalls`: draw calls of the previous frame, which keeps the cast within the budget.
+   * quest). `lastFrame`: draw calls and triangles of the previous frame, which keep the cast within the budget.
    */
-  update(dt: number, player: { x: number; y: number; z: number }, questPrompt: boolean, lastFrameCalls: number): void;
+  update(dt: number, player: { x: number; y: number; z: number }, questPrompt: boolean, lastFrame: { calls: number; triangles: number }): void;
   /** The tappable ambient character within reach of the child, nearest first, or null. */
   nearest(player: { x: number; y: number; z: number }): AmbientTarget | null;
   /** The child tapped it: it chats or does a trick. */
@@ -286,14 +289,18 @@ export async function loadAmbientLife(loader: GuardedGltfLoader, ambients: reado
   return {
     group,
     stats,
-    update(dt, player, questPrompt, lastFrameCalls) {
+    update(dt, player, questPrompt, lastFrame) {
       cheering = Math.max(0, cheering - dt);
       const quiet = questPrompt && cheering <= 0;
       reselect -= dt;
       if (reselect <= 0) {
         reselect = RESELECT_SECONDS;
-        if (lastFrameCalls > CALL_CEILING) allowed = Math.max(alwaysDrawn, stats.visible - Math.ceil((lastFrameCalls - CALL_CEILING) / 2));
-        else if (lastFrameCalls < CALL_CEILING - 6) allowed = Math.min(limit, allowed + 1);
+        // Over either ceiling, the farthest leave (about two calls, or a character's triangles, each).
+        const overCalls = Math.ceil((lastFrame.calls - CALL_CEILING) / 2);
+        const overTriangles = Math.ceil((lastFrame.triangles - TRIANGLE_CEILING) / CHARACTER_TRIANGLES);
+        const over = Math.max(overCalls, overTriangles);
+        if (over > 0) allowed = Math.max(alwaysDrawn, stats.visible - over);
+        else if (lastFrame.calls < CALL_CEILING - 6 && lastFrame.triangles < TRIANGLE_CEILING - CHARACTER_TRIANGLES) allowed = Math.min(limit, allowed + 1);
         const near: Array<{ m: Member; d: number }> = [];
         for (const m of members) {
           const d = Math.hypot(player.x - m.actor.position[0], player.z - m.actor.position[2]);

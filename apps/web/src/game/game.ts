@@ -382,9 +382,16 @@ export class Game {
     if (spawnPoint.length === 3 && spawnPoint.every(Number.isFinite)) {
       controller.position.set(spawnPoint[0] ?? 0, spawnPoint[1] ?? 0, spawnPoint[2] ?? 0);
     } else if (spawnTarget) {
-      const [x, y, z] = spawnTarget.position;
+      // Beside the target, on the side where it is the nearest thing to tap (a lesson's place may hold a
+      // cluster of targets a couple of blocks apart).
+      const [x = 0, y = 0, z = 0] = spawnTarget.position;
       const offset = Math.min(1.5, spawnTarget.radius * 0.5);
-      controller.position.set(x - offset, y, z - offset);
+      const others = entities.interactables.filter((t) => t !== spawnTarget);
+      const nearestIsTarget = (px: number, pz: number): boolean =>
+        others.every((t) => Math.hypot((t.position[0] ?? 0) - px, (t.position[2] ?? 0) - pz) > Math.hypot(x - px, z - pz));
+      const sides = [[-1, -1], [1, -1], [-1, 1], [1, 1], [0, -1.4], [-1.4, 0], [1.4, 0], [0, 1.4]] as const;
+      const [dx, dz] = sides.find(([sx, sz]) => nearestIsTarget(x + sx * offset, z + sz * offset)) ?? sides[0];
+      controller.position.set(x + dx * offset, y, z + dz * offset);
     } else if (spawnAt === null && this.options.savedSpot) {
       // Back where the child left off; any `spawnAt` (even `spawn`) starts where the URL says instead.
       const at = usableSpot(this.options.savedSpot.position, solid, liquid, data.bounds, data.world.height);
@@ -593,7 +600,7 @@ export class Game {
       // Quest targets always win the prompt; ambient life goes quiet next to them.
       const nearAmbient = nearest ? null : life.nearest(controller.position);
       // A still review shot gathers the nearest people and animals round what it looks at, not round the child.
-      life.update(dt, reviewShot && !reviewShot.live ? reviewShot.target : controller.position, nearest !== null, renderer.info.render.calls);
+      life.update(dt, reviewShot && !reviewShot.live ? reviewShot.target : controller.position, nearest !== null, { calls: renderer.info.render.calls, triangles: renderer.info.render.triangles });
       if (nearest !== promptTarget || nearAmbient !== promptAmbient) {
         promptTarget = nearest;
         promptAmbient = nearAmbient;
