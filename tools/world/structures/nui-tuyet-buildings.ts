@@ -31,7 +31,7 @@ export interface ChaletBlocks {
 }
 
 export interface Chalet {
-  /** The cell before the door (outside), and the door's two cells. */
+  /** The cell before the door's middle (outside), and the door's three cells. */
   door: [number, number];
   doorCells: Array<[number, number]>;
   /** Cells by the door for a lantern each side (outside, against the wall). */
@@ -42,8 +42,8 @@ export interface Chalet {
 }
 
 /**
- * A chalet of `w` x `d` on `baseY` with walls `wall` high, its door (two wide, three high) in the middle of
- * the -z side: `stoneCourses` of stone at the foot, timber walls with posts every four blocks, a beam at
+ * A chalet of `w` x `d` on `baseY` with walls `wall` high, its door (three wide and three high, so the child
+ * walks in without a squeeze) in the middle of the -z side on a sill of stone: `stoneCourses` of stone at the foot, timber walls with posts every four blocks, a beam at
  * mid height on a tall house, lit windows in one row (two on a tall house), a gable roof whose ridge runs
  * along x, two layers (boards under snow) overhanging one block, a lit window in each gable, a chimney.
  * The inside is cleared and floored: every chalet can be walked into.
@@ -68,12 +68,12 @@ export function placeChalet(world: WorldWriter, x0: number, z0: number, w: numbe
         const edgeZ = z === z0 || z === z1;
         if (!edgeX && !edgeZ) continue;
         const [i, length] = edgeZ ? [x - x0, w] : [z - z0, d];
-        const door = z === z0 && (x === doorX || x === doorX - 1) && y < baseY + 3;
+        const door = z === z0 && Math.abs(x - doorX) <= 1 && y < baseY + 3;
         if (door) {
           put(world, x, y, z, 0);
           continue;
         }
-        const nearDoor = z === z0 && Math.abs(x - doorX + 0.5) < 2.6;
+        const nearDoor = z === z0 && Math.abs(x - doorX) <= 2;
         const corner = edgeX && edgeZ;
         const beam = y === top || (tall && y === baseY + 3);
         const window = !corner && !beam && !nearDoor && i % 4 === 2 && i < length - 1 && windowRows.includes(y);
@@ -85,8 +85,11 @@ export function placeChalet(world: WorldWriter, x0: number, z0: number, w: numbe
       }
     }
   }
-  // A lintel over the door.
-  for (const x of [doorX - 1, doorX]) put(world, x, baseY + 3, z0, b.post);
+  // A lintel over the door, the sill under it level with the floor.
+  for (let x = doorX - 1; x <= doorX + 1; x++) {
+    put(world, x, baseY + 3, z0, b.post);
+    put(world, x, baseY - 1, z0, b.stone);
+  }
   // The roof: each row one block higher toward the ridge, boards under the snow, eaves one block out.
   const half = Math.ceil((d + 2) / 2);
   let ridge = baseY + wall;
@@ -111,8 +114,8 @@ export function placeChalet(world: WorldWriter, x0: number, z0: number, w: numbe
   }
   return {
     door: [doorX, z0 - 1],
-    doorCells: [[doorX - 1, z0], [doorX, z0]],
-    lamps: [[doorX - 2, z0 - 1], [doorX + 1, z0 - 1]],
+    doorCells: [[doorX - 1, z0], [doorX, z0], [doorX + 1, z0]],
+    lamps: [[doorX - 2, z0 - 1], [doorX + 2, z0 - 1]],
     eaves: baseY + wall,
     ridge,
   };
@@ -144,9 +147,9 @@ export interface TowerBlocks {
 }
 
 /**
- * The village clock tower (d-02): a stone foot seven blocks square, a timber shaft five square with lit
- * windows, a clock stage seven square (the clock faces are props on its four sides), a dark pyramid roof
- * under snow. Its door faces -z. Returns the middle of each face of the clock stage (x, y, z, yaw) and the
+ * The village clock tower (d-02): a stone foot seven blocks square, a timber shaft as wide with lit windows
+ * (no ledge left round it where nobody can climb), a clock stage seven square banded by beams (the clock
+ * faces are props on its four sides), a dark pyramid roof under snow. Its door faces -z. Returns the middle of each face of the clock stage (x, y, z, yaw) and the
  * roof's tip.
  */
 export function placeClockTower(world: WorldWriter, cx: number, cz: number, baseY: number, b: TowerBlocks): { faces: Array<[number, number, number, number]>; tip: number } {
@@ -163,14 +166,16 @@ export function placeClockTower(world: WorldWriter, cx: number, cz: number, base
   for (let dx = -2; dx <= 2; dx++) for (let dz = -2; dz <= 2; dz++) put(world, cx + dx, baseY - 1, cz + dz, b.floor);
   ring(3, baseY, baseY + 5, (dx, dz, y) => (dz === -3 && Math.abs(dx) <= 1 && y < baseY + 3 ? 0 : y === baseY + 5 ? b.post : b.stone));
   for (let dx = -2; dx <= 2; dx++) for (let dz = -2; dz <= 2; dz++) for (let y = baseY; y <= baseY + 4; y++) if (Math.max(Math.abs(dx), Math.abs(dz)) < 3) put(world, cx + dx, y, cz + dz, 0);
-  ring(2, baseY + 6, baseY + 15, (dx, dz, y) => {
-    const corner = Math.abs(dx) === 2 && Math.abs(dz) === 2;
+  ring(3, baseY + 6, baseY + 15, (dx, dz, y) => {
+    const corner = Math.abs(dx) === 3 && Math.abs(dz) === 3;
     const win = !corner && (dx === 0 || dz === 0) && (y - baseY) % 4 === 0;
     return corner || y === baseY + 15 ? b.post : win ? b.window : b.timber;
   });
-  // The clock stage juts out a block all round, a beam above and below the faces.
+  // The clock stage, a beam above and below the faces.
   ring(3, baseY + 16, baseY + 20, (dx, dz, y) => (y === baseY + 16 || y === baseY + 20 || (Math.abs(dx) === 3 && Math.abs(dz) === 3) ? b.post : b.stone));
   for (let dx = -3; dx <= 3; dx++) for (let dz = -3; dz <= 3; dz++) put(world, cx + dx, baseY + 16, cz + dz, b.post);
+  // The stage is the clockwork's, no room: solid inside, so no sealed hollow hides behind the faces.
+  for (let dx = -2; dx <= 2; dx++) for (let dz = -2; dz <= 2; dz++) for (let y = baseY + 17; y <= baseY + 20; y++) put(world, cx + dx, y, cz + dz, b.stone);
   // The pyramid roof, snow along its eaves and on its tip.
   let tip = baseY + 21;
   for (let k = 0; k <= 4; k++) {

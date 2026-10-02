@@ -18,9 +18,11 @@
 // assets/generated/world/nui-tuyet/{regions/, horizon.bin, entities.json}
 import type { VoxelWorld } from '../../packages/voxel/src/chunk-format';
 import type { WorldEntities } from '../../packages/voxel/src/world-entities';
-import { PACK, runIfMain, smoothstep } from './map-kit';
+import { loadBlocks, PACK, runIfMain, smoothstep } from './map-kit';
 import { fbm, hashSeed } from './noise';
 import { STREET_LANTERN } from './scenery';
+import { doorSteps } from './structures/buildings';
+import { cottageSize } from './structures/countryside';
 import { placeTower } from './structures/landmarks';
 import { fillBox } from './structures/lau-dai-castle';
 import {
@@ -35,12 +37,13 @@ import {
   placeStationShelter,
   placeViaduct,
   placeVillageGate,
+  type Chalet,
   type ChaletBlocks,
   type Rect,
 } from './structures/nui-tuyet-buildings';
 import { carveIceHall, placeFall, placeFloe, placeSnowPine } from './structures/nui-tuyet-nature';
 import { distanceToPath, type Point } from './structures/path';
-import { facingOf, facingWriter, FRAME, frameCell, put, turnCell, type Facing } from './structures/world-writer';
+import { facingOf, facingWriter, FRAME, frameCell, put, turnCell, type Facing, type WorldWriter } from './structures/world-writer';
 import { animal, crowd, person, type Resident } from './village-life';
 import { generateZoneMap, type Zone, type ZoneMapContext } from './zone-map';
 
@@ -77,17 +80,21 @@ const CAVE_X = 690;
 const CABLE_X = 140;
 const CABLE_TOWERS = [410, 382, 354, 326, 300, 270, 250];
 
-/** The village's places (chapter 1): the gate, the square, the shop, the quest station, the clock tower. */
+/**
+ * The village's places (chapter 1): the gate, the square, the shop, the quest station, the clock tower. The
+ * houses are many times the child's size (owner, 02/10/2026): the shop and the station 17 square under walls
+ * nine high, the home 17 x 13 under walls seven high, each with a doorway three wide.
+ */
 const GATE_Z = 650;
 const SQUARE = { x: 400, z: 626, r: 12 };
-const SHOP: Rect = { x0: 417, z0: 616, x1: 431, z1: 632 };
-const STATION: Rect = { x0: 369, z0: 616, x1: 383, z1: 632 };
-const HOME: Rect = { x0: 352, z0: 572, x1: 364, z1: 582 };
+const SHOP: Rect = { x0: 416, z0: 616, x1: 432, z1: 632 };
+const STATION: Rect = { x0: 368, z0: 616, x1: 384, z1: 632 };
+const HOME: Rect = { x0: 350, z0: 570, x1: 366, z1: 582 };
 const CLOCK = { x: 412, z: 604 };
 const SLED_SLOPE: Rect = { x0: 354, z0: 634, x1: 371, z1: 648 };
 const SNOWMEN: Rect = { x0: 416, z0: 634, x1: 442, z1: 648 };
-/** The lodge by the ski area (its door on the west side), the summit's rock, the research huts. */
-const LODGE: Rect = { x0: 174, z0: 394, x1: 194, z1: 410 };
+/** The lodge by the ski area (25 x 21, its door on the west side), the summit's rock, the research huts. */
+const LODGE: Rect = { x0: 172, z0: 392, x1: 196, z1: 412 };
 const SUMMIT_ROCK: Rect = { x0: 164, z0: 136, x1: 196, z1: 162 };
 const OBSERVATORY = { x: 180, z: 147, r: 5 };
 const HUT: Rect = { x0: 636, z0: 494, x1: 658, z1: 508 };
@@ -106,18 +113,44 @@ const stationRect = (s: { x0: number; z: number }): Rect => ({ x0: s.x0, z0: s.z
 /** Ground made level (stations with the ground before them, the lodge with its forecourt). */
 const LEVEL_PADS: readonly Rect[] = [...STATIONS.map((s) => ({ ...stationRect(s), z1: s.z + 10 })), { x0: LODGE.x0 - 6, z0: LODGE.z0, x1: LODGE.x1, z1: LODGE.z1 }];
 
-// The ways: the main road from the spawn through the gate, the square and on to the lake; the lanes west to
-// the ski area and east over the river to the research station; the lake road over the viaduct; the trail
-// round the lake's west end over the gorge to the summit.
-const MAIN_ROAD: Point[] = [[SPAWN.x, SPAWN.z], [400, 396]];
-const WEST_LANE: Point[] = [[400, 588], [240, 588], [206, 522]];
-const EAST_LANE: Point[] = [[400, 588], [640, 588], [640, 566]];
-const SKI_ROAD: Point[] = [[222, 470], [340, 428]];
-const LAKE_ROAD: Point[] = [[460, 430], [600, 430], [620, 486]];
+// The ways, one network (owner, 02/10/2026: a way from wherever the child starts to wherever she goes): the
+// main road from the hub gate past the spawn through the village gate and the square to the lake shore; the
+// lanes west through the ski area to the lodge's door and east over the river into the research station;
+// the ski road joining them by the lake; the lake road over the viaduct; the shore walk; the trail round the
+// lake's west end over the gorge to the summit and on to the observatory's steps; the trail up the ski run
+// to the ridge; the stone stair up the range and the road along it to the castle; walks from each cable car
+// station, each walked-into house and the research huts to the nearest way; spurs to the gorge's rim, the
+// foot of the falls, the sunset ledge and into the pine wood.
+const MAIN_ROAD: Point[] = [[SPAWN.x + 8, SPAWN.z + 3], [SPAWN.x, SPAWN.z + 3], [400, 396]];
+const WEST_LANE: Point[] = [[400, 588], [240, 588], [206, 522], [170, 512], [166, 446], [166, 402], [171, 402]];
+const EAST_LANE: Point[] = [[400, 588], [640, 588], [650, 566], [650, 520]];
+const SKI_ROAD: Point[] = [[206, 522], [222, 470], [340, 428], [340, 402]];
+const SKI_TRAIL: Point[] = [[166, 424], [156, 400], [152, 340], [146, 298], [138, 291]];
+const LAKE_ROAD: Point[] = [[460, 402], [460, 430], [600, 430], [620, 486]];
 const SHORE_WALK: Point[] = [[340, 402], [460, 402]];
-const SUMMIT_TRAIL: Point[] = [[340, 414], [308, 398], [308, 252], [262, 230], [226, 214]];
-const CAVE_WALK: Point[] = [[620, 486], [652, 522], [CAVE_X, 500], [CAVE_X, 480]];
-const ROUTES: Point[][] = [MAIN_ROAD, WEST_LANE, EAST_LANE, SKI_ROAD, LAKE_ROAD, SHORE_WALK, SUMMIT_TRAIL, CAVE_WALK];
+const SUMMIT_TRAIL: Point[] = [[340, 402], [308, 398], [308, 252], [262, 230], [226, 214], [196, 212], [180, 200], [180, 168]];
+const LEDGE_TRAIL: Point[] = [[180, 170], [160, 166], [156, 153]];
+const RIM_WALK: Point[] = [[262, 230], [246, 250], [246, 258]];
+const RIM_LOOKOUT: Point[] = [[246, 252], [236, 254]];
+const FALLS_WALK: Point[] = [[308, 262], [316, 268], [334, 270]];
+/** The range road from the top of the stone stair (built in the map from x 310 on rows 243…245) to the castle. */
+const STAIR = { x0: 310, z: 244 };
+const STAIR_FOOT: Point[] = [[308, 252], [308, STAIR.z]];
+const RANGE_ROAD: Point[] = [[325, STAIR.z], [360, 214], [398, 186]];
+const CAVE_WALK: Point[] = [[620, 486], [624, 520], [684, 520], [CAVE_X, 506], [CAVE_X, 479]];
+const WOOD_WALK: Point[] = [[399, 706], [370, 706], [340, 704], [302, 700]];
+/** Walks from the stations' fronts, the home's door and the huts' doors to the ways. */
+const WALKS: Point[][] = [
+  [[370, 699], [370, 706]],
+  [[140, 439], [140, 446], [166, 446]],
+  [[482, 421], [482, 430]],
+  [[620, 579], [620, 588]],
+  [[140, 241], [140, 246], [180, 228]],
+  [[358, 583], [358, 588]],
+  [[647, 510], [647, 520]],
+  [[671, 510], [671, 520]],
+];
+const ROUTES: Point[][] = [MAIN_ROAD, WEST_LANE, EAST_LANE, SKI_ROAD, SKI_TRAIL, LAKE_ROAD, SHORE_WALK, SUMMIT_TRAIL, LEDGE_TRAIL, RIM_WALK, RIM_LOOKOUT, FALLS_WALK, STAIR_FOOT, RANGE_ROAD, CAVE_WALK, WOOD_WALK, ...WALKS];
 
 const N = PACK.nature;
 const BX = PACK.box;
@@ -309,7 +342,45 @@ export async function generateNuiTuyet(): Promise<{ world: VoxelWorld; entities:
   });
   // Inside the ice cave the light dims, so its crystals glow as in d-09.
   const moods = [{ mood: 'cave' as const, ...CAVE }];
-  return { world: map.world, entities: { ...map.entities, ...(ambients ? { ambients } : {}), moods } };
+  const props = await besideTheWays(map.world, map.entities.props);
+  return { world: map.world, entities: { ...map.entities, props, ...(ambients ? { ambients } : {}), moods } };
+}
+
+/** Ways (`WAY_BLOCKS` of the scenery audit) a young pine or a signpost must not stand on. */
+const WAY_NAMES = ['path', 'trail', 'cobble', 'cobble-grey', 'paver', 'asphalt', 'planks'];
+
+/**
+ * The young pines the zone dressing scatters and the signposts it stands at each district's corner land where
+ * they fall, sometimes on a way (the paved square, the main road through the gate). Each such one moves to the
+ * nearest cell beside the way on the same level, ground under it and nothing else there (owner, 02/10/2026:
+ * no tree grows out of a road, nothing stands in a lane's middle); one with nowhere to go is left out.
+ */
+async function besideTheWays(world: VoxelWorld, props: WorldEntities['props']): Promise<WorldEntities['props']> {
+  const block = await loadBlocks();
+  const ways = new Set(WAY_NAMES.map(block));
+  const movable = (model: string): boolean => model === M.youngPine || model.endsWith('/signpost.glb');
+  const taken = new Set(props.map((p) => `${Math.floor(p.position[0])},${Math.floor(p.position[2])}`));
+  const out: WorldEntities['props'] = [];
+  for (const p of props) {
+    const [px, py, pz] = p.position;
+    const [x, y, z] = [Math.floor(px), Math.round(py), Math.floor(pz)];
+    if (!movable(p.model) || !ways.has(world.get(x, y - 1, z))) {
+      out.push(p);
+      continue;
+    }
+    const fits = (cx: number, cz: number): boolean => {
+      const ground = world.get(cx, y - 1, cz);
+      return ground !== 0 && !ways.has(ground) && world.get(cx, y, cz) === 0 && world.get(cx, y + 1, cz) === 0 && !taken.has(`${cx},${cz}`);
+    };
+    let spot: [number, number] | undefined;
+    for (let r = 1; r <= 6 && !spot; r++) {
+      for (let dx = -r; dx <= r && !spot; dx++) for (let dz = -r; dz <= r && !spot; dz++) if (Math.max(Math.abs(dx), Math.abs(dz)) === r && fits(x + dx, z + dz)) spot = [x + dx, z + dz];
+    }
+    if (!spot) continue;
+    taken.add(`${spot[0]},${spot[1]}`);
+    out.push({ ...p, position: [px - x + spot[0], py, pz - z + spot[1]] });
+  }
+  return out;
 }
 
 function cast(landmark: (id: string) => readonly [number, number]): Resident[] {
@@ -330,7 +401,7 @@ function cast(landmark: (id: string) => readonly [number, number]): Resident[] {
     ...crowd('cat', ['Mèo sưởi nắng hiên nhà', 'Mèo nằm trên bậu cửa'], [animal('cat')], at('pho-lang'), 14, 3),
     ...crowd('dog', ['Cún chạy trong tuyết'], [animal('dog')], at('quang-truong-lang'), 16, 2),
     // The shop, the quest station and the home.
-    { routine: 'vendor', name: 'Cô bán đồ ấm', model: person('e'), at: at('trong-cua-hang', 5, 0), facing: at('trong-cua-hang', -2, 0), visits: [at('trong-cua-hang', 5, -3), at('trong-cua-hang', 5, 3)] },
+    { routine: 'vendor', name: 'Cô bán đồ ấm', model: person('e'), at: at('trong-cua-hang', 8, 0), facing: at('trong-cua-hang', -2, 0), visits: [at('trong-cua-hang', 8, -3), at('trong-cua-hang', 8, 3)] },
     ...crowd('shopper', ['Bạn thử áo khoác', 'Mẹ mua mũ len cho bé'], [person('o'), person('h')], at('trong-cua-hang', -1, 0), 2, 2, [HELD.basket]),
     { routine: 'reader', name: 'Bác kiểm lâm trạm nhiệm vụ', model: person('c'), held: [HELD.book], at: at('trong-tram-nhiem-vu', -3, 0), visits: [at('trong-tram-nhiem-vu', -3, -3), at('trong-tram-nhiem-vu', -3, 3)] },
     { routine: 'home-cook', name: 'Bà nấu súp nóng', model: person('h'), held: [HELD.spoon], at: at('trong-nha-dan', 2, 0), visits: [at('trong-nha-dan', 2, -2), at('trong-nha-dan', -2, 1)] },
@@ -349,7 +420,7 @@ function cast(landmark: (id: string) => readonly [number, number]): Resident[] {
     ...crowd('teacher', ['Thầy dạy trượt tuyết'], [person('a')], at('doc-truot-tuyet'), 4, 1, [HELD.poles]),
     ...crowd('pupil', ['Bạn tập trượt tuyết', 'Bạn trượt ván', 'Bạn đeo kính trượt tuyết'], [person('f'), person('n'), person('o'), person('p'), person('q'), person('r')], at('doc-truot-tuyet', 0, 10), 12, 6, [HELD.poles]),
     ...crowd('pupil', ['Bạn trượt ván trên dốc'], [person('r'), person('f')], at('dinh-doc', 0, 24), 10, 2, [HELD.poles]),
-    { routine: 'vendor', name: 'Cô lễ tân nhà nghỉ', model: person('l'), at: at('trong-nha-nghi', 10, 0), facing: at('trong-nha-nghi', 6, 0), visits: [at('trong-nha-nghi', 10, -4), at('trong-nha-nghi', 10, 4)] },
+    { routine: 'vendor', name: 'Cô lễ tân nhà nghỉ', model: person('l'), at: at('trong-nha-nghi', 14, 0), facing: at('trong-nha-nghi', 10, 0), visits: [at('trong-nha-nghi', 14, -4), at('trong-nha-nghi', 14, 4)] },
     ...crowd('shopper', ['Khách nghỉ chân sưởi ấm', 'Khách đặt phòng'], [person('k'), person('i')], at('trong-nha-nghi', -2, -2), 3, 2),
     ...crowd('porter', ['Chú cho thuê ván trượt', 'Anh mang ván trượt'], [person('j'), person('b')], at('truoc-nha-nghi'), 6, 2, [M.snowboard]),
     ...crowd('dog', ['Chó cứu hộ'], [animal('dog')], at('doc-truot-tuyet'), 14, 2),
@@ -419,10 +490,20 @@ function buildSnowMountain(ctx: ZoneMapContext): void {
     floor: B.planks,
     chimney: B.brick,
   });
+  /** Steps of stone up to a chalet's doorway where its floor stands over the ground before it, a block at a time. */
+  const chaletSteps = (writer: WorldWriter, origin: readonly [number, number], facing: Facing, c: Chalet, baseY: number): void => {
+    const [[u0, v0] = [0, 0]] = c.doorCells;
+    doorSteps(writer, u0, c.doorCells.length, v0, baseY, (u, v) => {
+      const [x, z] = frameCell(origin, facing, u, v);
+      return surface(x, z) + 1;
+    }, B.cobble);
+  };
   /** A chalet over the rectangle, its door toward `facing`; returns the world cells of its front. */
   const chalet = (r: Rect, facing: Facing, wall: number, b: ChaletBlocks, stoneCourses = 1) => {
     const { origin, w, d } = frameFor(r, facing);
-    const c = placeChalet(facingWriter(world, origin, facing), FRAME, FRAME, w, d, wall, TOP, b, stoneCourses);
+    const writer = facingWriter(world, origin, facing);
+    const c = placeChalet(writer, FRAME, FRAME, w, d, wall, TOP, b, stoneCourses);
+    chaletSteps(writer, origin, facing, c, TOP);
     const toWorld = ([u, v]: readonly [number, number]): [number, number] => frameCell(origin, facing, u, v);
     keep(r, 1);
     return { door: toWorld(c.door), doorCells: c.doorCells.map(toWorld), lamps: c.lamps.map(toWorld), eaves: c.eaves, ridge: c.ridge, origin, w, d };
@@ -512,6 +593,8 @@ function buildSnowMountain(ctx: ZoneMapContext): void {
   ctx.landmark('thap-dong-ho', 'Tháp đồng hồ', CLOCK.x, CLOCK.z + 6);
   // Pines hung with lights at the square's corners (d-02).
   for (const [x, z] of [[388, 640], [413, 640], [389, 613]] as const) {
+    // Each grows from a bed of earth left in the paving, not out of the stones.
+    for (let dx = -1; dx <= 1; dx++) for (let dz = -1; dz <= 1; dz++) put(world, x + dx, LEVEL, z + dz, B.grass);
     placeSnowPine(world, x, TOP, z, 7, { trunk: B.trunk, leaves: B.needles, snow: B.snow });
     for (const [dx, dy, dz] of [[1, 3, 0], [-1, 4, 1], [0, 5, -1], [2, 2, 1], [-2, 2, -1], [1, 6, 0], [-1, 3, -1]] as const) put(world, x + dx, TOP + dy, z + dz, B.lantern);
     ctx.keepOut(x - 2, z - 2, x + 2, z + 2);
@@ -523,33 +606,36 @@ function buildSnowMountain(ctx: ZoneMapContext): void {
   }
 
   // The warm-clothes shop (d-12), its door on the square: rails of winter jackets along the back, shelves of
-  // knitted hats and sweaters on the side walls, the counter with folded clothes, boots, lanterns.
-  chalet(SHOP, 'west', 6, chaletBlocks(0, B.lantern), 2);
+  // knitted hats and sweaters on the side walls, the counter with folded clothes, boots, lanterns. The
+  // counter stands six blocks from the back wall: four free behind it for the seller, three free at each end.
+  chalet(SHOP, 'west', 9, chaletBlocks(0, B.lantern), 2);
   wallLantern(SHOP.x0 - 0.45, TOP + 2.4, 621.5, 'x+');
   wallLantern(SHOP.x0 - 0.45, TOP + 2.4, 627.5, 'x+');
   ctx.propAt(M.banner, [SHOP.x0 - 0.2, TOP + 3.5, 624.5], 90);
-  for (const z of [619.5, 624.5, 629.5]) ctx.propAt(M.jackets, [SHOP.x1 - 1.4, TOP, z], 90);
-  for (const x of [428.5]) for (const z of [SHOP.z0 + 1.3, SHOP.z1 - 1.3]) ctx.propAt(M.knits, [x, TOP, z], z < 624 ? 180 : 0);
-  for (const [x, z] of [[421, 621], [421, 628]] as const) {
-    ctx.prop(M.crate, x, z, 0);
-    ctx.propAt(M.folded, [x + 0.5, TOP + 1.05, z + 0.5], 30);
-  }
-  for (const x of [420.5, 424.5]) {
+  // Rails and shelves stand against the walls, leaving no strip behind them.
+  for (const z of [619.5, 624.5, 629.5]) ctx.propAt(M.jackets, [SHOP.x1 - 0.6, TOP, z], 90);
+  for (const x of [SHOP.x0 + 4.5, SHOP.x0 + 8.5, SHOP.x1 - 3.5]) {
     ctx.propAt(M.knits, [x, TOP, SHOP.z0 + 1.3], 180);
-    ctx.propAt(M.knits, [x, TOP, SHOP.z1 - 1.3], 0);
+    ctx.propAt(M.knits, [x, TOP, SHOP.z1 - 0.7], 0);
   }
-  box(426, TOP, 620, 426, TOP, 628, B.planks);
-  box(426, TOP, 620, 426, TOP, 620, B.log);
-  for (const [z, m] of [[621, M.folded], [622.5, M.hat], [624, M.boots], [625.5, M.folded], [627, M.hat]] as const) ctx.propAt(m, [426.5, TOP + 1, z + 0.5], 90);
-  for (const [x, z] of [[419, 618], [419, 630], [422, 619]] as const) ctx.prop(M.boots, x, z, 20);
-  ctx.centred(M.plant, 419, 621, 0);
-  ctx.propAt(M.rug, [422.5, TOP, 624.5], 90);
+  for (const z of [620, 628]) {
+    ctx.prop(M.crate, SHOP.x0 + 5, z, 0);
+    ctx.propAt(M.folded, [SHOP.x0 + 5.5, TOP + 1.05, z + 0.5], 30);
+  }
+  const counterX = SHOP.x1 - 6;
+  box(counterX, TOP, 620, counterX, TOP, 628, B.planks);
+  box(counterX, TOP, 620, counterX, TOP, 620, B.log);
+  for (const [z, m] of [[621, M.folded], [622.5, M.hat], [624, M.boots], [625.5, M.folded], [627, M.hat]] as const) ctx.propAt(m, [counterX + 0.5, TOP + 1, z + 0.5], 90);
+  for (const [x, z] of [[SHOP.x0 + 2, 618], [SHOP.x0 + 2, 630], [SHOP.x0 + 7, 619]] as const) ctx.prop(M.boots, x, z, 20);
+  ctx.centred(M.plant, SHOP.x0 + 2, 621, 0);
+  ctx.propAt(M.rug, [SHOP.x0 + 6.5, TOP, 624.5], 90);
   for (const z of [618.5, 630.5]) wallLantern(SHOP.x1 - 0.55, TOP + 3.2, z, 'x+');
-  ctx.landmark('trong-cua-hang', 'Trong cửa hàng đồ ấm', 421, 624);
+  ctx.landmark('trong-cua-hang', 'Trong cửa hàng đồ ấm', SHOP.x0 + 5, 624);
 
   // The quest station (d-14), its door on the square: the board on the back wall with three maps under the
-  // blue snowflake shield, lanterns either side, the table of maps before it, crates and barrels with snow.
-  chalet(STATION, 'east', 6, chaletBlocks(1, B.lantern), 2);
+  // blue snowflake shield, lanterns either side, the table of maps before it (three free between them),
+  // crates and barrels with snow in the corners.
+  chalet(STATION, 'east', 9, chaletBlocks(1, B.lantern), 2);
   wallLantern(STATION.x1 + 1.45, TOP + 2.4, 620.5, 'x-');
   wallLantern(STATION.x1 + 1.45, TOP + 2.4, 627.5, 'x-');
   ctx.propAt(M.shield, [STATION.x1 + 1.2, TOP + 3.6, 624], 90);
@@ -559,13 +645,12 @@ function buildSnowMountain(ctx: ZoneMapContext): void {
   for (const z of [620.5, 624.5, 628.5]) ctx.propAt(M.mapPoster, [STATION.x0 + 2.15, TOP + 1.3, z], 90);
   ctx.propAt(M.shield, [STATION.x0 + 2.2, TOP + 3.3, 624.5], 90);
   for (const z of [618.5, 630.5]) wallLantern(STATION.x0 + 1.55, TOP + 2.6, z, 'x-');
-  box(STATION.x0 + 4, TOP, 621, STATION.x0 + 4, TOP, 628, B.planks);
-  for (const [z, m] of [[622, M.book], [624.5, M.mapTable], [627, M.books]] as const) ctx.propAt(m, [STATION.x0 + 4.5, TOP + 1, z + 0.5], 90);
-  for (const [x, z, m] of [[371, 618, M.crate], [372, 618, M.barrel], [371, 630, M.crate], [380, 618, M.barrel], [380, 630, M.crate], [381, 629, M.crate]] as const) ctx.prop(m, x, z, x * 17);
-  ctx.centred(M.plant, 381, 621, 0);
-  for (const z of [619, 629]) ctx.centred(M.plant, STATION.x0 + 3, z, 0);
-  for (const [x, z] of [[STATION.x0 + 4, 619], [STATION.x0 + 4, 629]] as const) ctx.prop(M.barrel, x, z, x * 5);
-  ctx.landmark('trong-tram-nhiem-vu', 'Trong trạm nhiệm vụ', 378, 624);
+  const tableX = STATION.x0 + 5;
+  box(tableX, TOP, 621, tableX, TOP, 627, B.planks);
+  for (const [z, m] of [[621.5, M.book], [623.5, M.mapTable], [626, M.books]] as const) ctx.propAt(m, [tableX + 0.5, TOP + 1, z + 0.5], 90);
+  for (const [x, z, m] of [[STATION.x0 + 1, 617, M.crate], [STATION.x0 + 2, 617, M.barrel], [STATION.x0 + 1, 631, M.crate], [STATION.x1 - 3, 617, M.barrel], [STATION.x1 - 3, 631, M.crate], [STATION.x1 - 2, 631, M.crate]] as const) ctx.prop(m, x, z, x * 17);
+  for (const z of [620, 628]) ctx.centred(M.plant, STATION.x1 - 1, z, 0);
+  ctx.landmark('trong-tram-nhiem-vu', 'Trong trạm nhiệm vụ', STATION.x0 + 10, 624);
 
   // The snowman field before the wall: snowmen of every size, snowballs, a sled.
   reserved.push(SNOWMEN);
@@ -584,29 +669,31 @@ function buildSnowMountain(ctx: ZoneMapContext): void {
   ctx.keepOut(SLED_SLOPE.x0, SLED_SLOPE.z0 + 1, SLED_SLOPE.x1 - 1, SLED_SLOPE.z1 - 1);
 
   // A home of the village walked into (d-11): the stone fireplace with its fire, the mantel, a table laid
-  // with soup and bread, armchairs, shelves of jars, the window on the mountains between red curtains.
-  chalet(HOME, 'south', 6, chaletBlocks(0, B.glass), 1);
+  // with soup and bread, armchairs, shelves of jars, the windows on the mountains between red curtains. The
+  // fireplace and the shelf keep to the walls, so the floor between them stays free.
+  chalet(HOME, 'south', 7, chaletBlocks(0, B.glass), 1);
   {
     const hz = HOME.z0 + 1;
-    box(356, TOP, hz, 360, TOP + 4, hz, B.cobble);
-    box(357, TOP, hz, 359, TOP + 1, hz, 0);
-    box(356, TOP + 2, hz + 1, 360, TOP + 2, hz + 1, B.planks);
-    box(357, TOP + 5, hz, 359, TOP + 7, hz, B.brick);
-    ctx.propAt(M.fire, [358.1, TOP, hz + 0.6], 0);
-    ctx.propAt(M.fire, [358.9, TOP, hz + 0.5], 60);
-    ctx.propAt(M.books, [356.6, TOP + 3, hz + 1.5], 0);
-    ctx.propAt(M.smallClock, [359.5, TOP + 3.05, hz + 1.5], 0);
-    for (const x of [354, 362]) for (let y = TOP; y <= TOP + 4; y++) put(world, x, y, HOME.z0, y >= TOP + 1 && y <= TOP + 3 ? B.glass : B.planks);
-    for (const x of [353, 355, 361, 363]) box(x, TOP + 1, HOME.z0 + 1, x, TOP + 4, HOME.z0 + 1, B.woodRed);
-    ctx.propAt(M.diningTable, [361.5, TOP, 577], 0);
-    for (const [dx, m] of [[-0.5, M.soup], [0.5, M.bread], [0, M.stew]] as const) ctx.propAt(m, [361.5 + dx, TOP + 1.09, 577], 0);
-    ctx.propAt(M.armchair, [356.5, TOP, 576.5], 180);
-    ctx.propAt(M.armchair, [354.5, TOP, 578.5], 225);
-    ctx.propAt(M.jarShelf, [HOME.x1 - 0.6, TOP, 575.5], 90);
-    ctx.propAt(M.rug, [357.5, TOP, 577.5], 0);
+    const cx = Math.floor((HOME.x0 + HOME.x1) / 2);
+    box(cx - 2, TOP, hz, cx + 2, TOP + 4, hz, B.cobble);
+    box(cx - 1, TOP, hz, cx + 1, TOP + 1, hz, 0);
+    box(cx - 2, TOP + 2, hz + 1, cx + 2, TOP + 2, hz + 1, B.planks);
+    box(cx - 1, TOP + 5, hz, cx + 1, TOP + 8, hz, B.brick);
+    ctx.propAt(M.fire, [cx + 0.1, TOP, hz + 0.6], 0);
+    ctx.propAt(M.fire, [cx + 0.9, TOP, hz + 0.5], 60);
+    ctx.propAt(M.books, [cx - 1.4, TOP + 3, hz + 1.5], 0);
+    ctx.propAt(M.smallClock, [cx + 1.5, TOP + 3.05, hz + 1.5], 0);
+    for (const x of [cx - 5, cx + 5]) for (let y = TOP; y <= TOP + 4; y++) put(world, x, y, HOME.z0, y >= TOP + 1 && y <= TOP + 3 ? B.glass : B.planks);
+    for (const x of [cx - 6, cx - 4, cx + 4, cx + 6]) box(x, TOP + 1, HOME.z0 + 1, x, TOP + 4, HOME.z0 + 1, B.woodRed);
+    ctx.propAt(M.diningTable, [cx + 4.5, TOP, 577], 0);
+    for (const [dx, m] of [[-0.5, M.soup], [0.5, M.bread], [0, M.stew]] as const) ctx.propAt(m, [cx + 4.5 + dx, TOP + 1.09, 577], 0);
+    ctx.propAt(M.armchair, [cx - 1.5, TOP, 575.5], 180);
+    ctx.propAt(M.armchair, [cx - 4.5, TOP, 577.5], 225);
+    ctx.propAt(M.jarShelf, [HOME.x1 - 0.6, TOP, 574.5], 90);
+    ctx.propAt(M.rug, [cx - 0.5, TOP, 576.5], 0);
     wallLantern(HOME.x1 - 0.55, TOP + 2.6, 579.5, 'x+');
     wallLantern(HOME.x0 + 1.45, TOP + 2.6, 579.5, 'x-');
-    ctx.landmark('trong-nha-dan', 'Trong nhà dân', 358, 579);
+    ctx.landmark('trong-nha-dan', 'Trong nhà dân', cx, 579);
   }
   ctx.landmark('pho-lang', 'Phố làng', 400, 588);
 
@@ -631,26 +718,28 @@ function buildSnowMountain(ctx: ZoneMapContext): void {
   ctx.landmark('vach-cap-treo', 'Vách núi dưới cáp treo', CABLE_X - 6, 288, surface(CABLE_X - 6, 288) + 1);
   ctx.landmark('chan-doc', 'Chân dốc cáp treo', CABLE_X + 10, 426, surface(CABLE_X + 10, 426) + 1);
   for (let z = 300; z <= 440; z += 2) for (const x of [96, 246]) if (!ctx.onPath(x, z)) ctx.prop(M.fence, x, z, 90);
-  const lodge = chalet(LODGE, 'west', 7, chaletBlocks(0, B.glass), 2);
+  const lodge = chalet(LODGE, 'west', 8, chaletBlocks(0, B.glass), 2);
   for (let z = 428; z > 300; z -= 9) {
     for (const [x0, flip] of [[158, 0], [214, 1]] as const) {
       const x = x0 + ((Math.floor(z / 9) + flip) % 2) * 8;
-      if (!ctx.keptOut(x, z, 1)) ctx.prop(M.slalom, x, z, 0);
+      if (!ctx.keptOut(x, z, 1) && !ctx.nearPath(x, z, 3)) ctx.prop(M.slalom, x, z, 0);
     }
   }
-  ctx.propAt(M.innSign, [LODGE.x0 - 0.3, TOP + 4.3, lodge.door[1] + 0.5], 90);
-  for (const z of [lodge.door[1] - 2, lodge.door[1] + 3]) wallLantern(LODGE.x0 - 0.45, TOP + 2.5, z + 0.5, 'x+');
-  for (const [dx, dz, m, yaw] of [[-3, 1, M.skiRack, 90], [-3, 14, M.skiRack, 90], [-5, 5, M.snowboard, 30], [-6, 11, M.snowboard, 160], [-2, 18, M.barrel, 0], [-2, -1, M.logs, 90]] as const) ctx.prop(m, LODGE.x0 + dx, LODGE.z0 + dz, yaw);
+  const mid = lodge.door[1];
+  ctx.propAt(M.innSign, [LODGE.x0 - 0.3, TOP + 4.3, mid + 0.5], 90);
+  for (const z of [mid - 2, mid + 2]) wallLantern(LODGE.x0 - 0.45, TOP + 2.5, z + 0.5, 'x+');
+  for (const [dx, dz, m, yaw] of [[-3, -7, M.skiRack, 90], [-3, 6, M.skiRack, 90], [-5, -3, M.snowboard, 30], [-4, 4, M.snowboard, 160], [-2, 9, M.barrel, 0], [-2, -9, M.logs, 90]] as const) ctx.prop(m, LODGE.x0 + dx, mid + dz, yaw);
   // Inside the lodge (d-13): a red carpet from the door to the reception, chandeliers, the fireplace with
   // armchairs before it, the blue banner with the bed over the counter, plants, barrels, curtained windows.
+  // The counter stands five from the back wall (four free behind it) and leaves three free at each end.
   {
-    const mid = lodge.door[1];
-    for (let x = LODGE.x0 + 1; x <= LODGE.x1 - 6; x++) for (let z = mid - 2; z <= mid + 3; z++) put(world, x, LEVEL, z, Math.abs(z - mid - 0.5) > 2 ? B.sand : B.woodRed);
-    box(LODGE.x1 - 4, TOP, mid - 6, LODGE.x1 - 4, TOP, mid + 6, B.planks);
-    box(LODGE.x1 - 4, TOP + 1, mid - 6, LODGE.x1 - 4, TOP + 1, mid + 6, B.log);
-    ctx.propAt(M.book, [LODGE.x1 - 3.5, TOP + 2, mid - 1.5], 90);
+    const counterX = LODGE.x1 - 5;
+    // The carpet starts a block in, so the boards by the door join the floor to the way outside.
+    for (let x = LODGE.x0 + 2; x < counterX - 1; x++) for (let z = mid - 2; z <= mid + 2; z++) put(world, x, LEVEL, z, Math.abs(z - mid) === 2 ? B.sand : B.woodRed);
+    box(counterX, TOP, mid - 6, counterX, TOP, mid + 6, B.log);
+    ctx.propAt(M.book, [counterX + 0.5, TOP + 1, mid - 1.5], 90);
     ctx.propAt(M.innSign, [LODGE.x1 - 1.4, TOP + 3, mid + 0.5], 90);
-    for (const z of [mid - 7, mid + 8]) wallLantern(LODGE.x1 - 0.55, TOP + 3, z + 0.5, 'x+');
+    for (const z of [mid - 7, mid + 7]) wallLantern(LODGE.x1 - 0.55, TOP + 3, z + 0.5, 'x+');
     const fz = LODGE.z0 + 1;
     const fx = LODGE.x0 + 12;
     box(fx - 3, TOP, fz, fx + 3, TOP + 5, fz, B.cobble);
@@ -658,10 +747,11 @@ function buildSnowMountain(ctx: ZoneMapContext): void {
     box(fx - 3, TOP + 2, fz + 1, fx + 3, TOP + 2, fz + 1, B.planks);
     ctx.propAt(M.fire, [fx + 0.5, TOP, fz + 0.6], 0);
     for (const [dx, dz, yaw] of [[-3, 4, 315], [0, 5, 0], [3, 4, 45]] as const) ctx.propAt(M.armchair, [fx + dx + 0.5, TOP, fz + dz + 0.5], yaw);
-    for (const x of [fx - 5, fx + 5]) for (const z of [LODGE.z1 - 1, LODGE.z0 + 1]) ctx.centred(M.plant, x, z, 0);
-    for (const [x, z] of [[LODGE.x1 - 2, LODGE.z0 + 1], [LODGE.x1 - 2, LODGE.z0 + 2], [LODGE.x1 - 3, LODGE.z0 + 1]] as const) ctx.prop(M.barrel, x, z, x * 13);
-    for (const x of [LODGE.x0 + 6, LODGE.x0 + 13]) ctx.propAt(M.chandelier, [x + 0.5, TOP + 7 - 3.4, mid + 0.5], 0);
-    for (let x = LODGE.x0 + 4; x < LODGE.x1 - 2; x += 8) {
+    for (const x of [fx - 7, fx + 6]) for (const z of [LODGE.z1 - 1, LODGE.z0 + 1]) ctx.centred(M.plant, x, z, 0);
+    for (const [x, z] of [[LODGE.x0 + 1, LODGE.z1 - 1], [LODGE.x0 + 2, LODGE.z1 - 1], [LODGE.x0 + 1, LODGE.z1 - 2]] as const) ctx.prop(M.barrel, x, z, x * 13);
+    for (const x of [LODGE.x0 + 7, LODGE.x0 + 15]) ctx.propAt(M.chandelier, [x + 0.5, TOP + 8 - 3.4, mid + 0.5], 0);
+    // Curtained windows on the south wall, none behind the counter where the curtains would narrow the way round it.
+    for (let x = LODGE.x0 + 4; x < counterX - 3; x += 8) {
       for (let y = TOP + 1; y <= TOP + 3; y++) for (const dx of [0, 1]) put(world, x + dx, y, LODGE.z1, B.glass);
       for (const dx of [-1, 2]) box(x + dx, TOP + 1, LODGE.z1 - 1, x + dx, TOP + 4, LODGE.z1 - 1, B.woodRed);
     }
@@ -771,13 +861,16 @@ function buildSnowMountain(ctx: ZoneMapContext): void {
   for (const [x, z, w, d] of [[350, 312, 4, 3], [452, 316, 3, 3], [330, 336, 3, 2], [470, 346, 4, 2], [372, 322, 3, 2], [430, 340, 3, 3]] as const) {
     for (let dx = 0; dx < w; dx++) for (let dz = 0; dz < d; dz++) if ((dx + dz) % 3 !== 2) put(world, x + dx, LEVEL, z + dz, B.snow);
   }
+  // A plank walk over the ice from the shore out to the middle, where the ice fishers sit.
+  for (let z = 338; z <= 395; z++) for (let x = 399; x <= 401; x++) if (inLake(x, z)) put(world, x, LEVEL, z, B.planks);
   for (const [x, z] of [[384, 360], [410, 368], [396, 376], [424, 352]] as const) {
     put(world, x, LEVEL - 1, z, B.water);
     ctx.prop(M.bucket, x + 1, z, x * 7);
   }
   for (let x = 344; x <= 456; x += 14) {
+    if (distanceToPath(MAIN_ROAD, x, 405) < 3) continue;
     lamp(x, 405);
-    if (x % 28 === 8) ctx.prop(M.bench, x + 4, 405, 0);
+    if (x % 28 === 8 && !ctx.nearPath(x + 4, 405, 2.5)) ctx.prop(M.bench, x + 4, 405, 0);
   }
   for (const x of [352, 448]) ctx.prop(M.bannerPole, x, 398, 90);
 
@@ -803,6 +896,19 @@ function buildSnowMountain(ctx: ZoneMapContext): void {
     for (const z of [z0 - 1, z1 + 1]) for (const dx of [-3, 3]) lamp(bx + dx, z);
   }
   ctx.landmark('vuc-thac-bang', 'Vực thác băng', 236, 256);
+  // Steps cut down the gorge's north wall from the rim walk to its floor of ice, a block at a time.
+  {
+    const rim = surface(246, 259);
+    const floor = gorgeFloor(246);
+    for (let k = 1; rim - k >= floor; k++) {
+      const [z, y] = [259 + k, rim - k];
+      for (let x = 245; x <= 247; x++) {
+        for (let yy = floor - 1; yy < y; yy++) put(world, x, yy, z, rock(x, yy, z));
+        put(world, x, y, z, B.path);
+        for (let yy = y + 1; yy <= Math.max(y + 4, surface(x, z)); yy++) put(world, x, yy, z, 0);
+      }
+    }
+  }
   ctx.landmark('day-vuc', 'Đáy vực băng', 246, 270, surface(246, 270) + 1);
 
   // ---------------------------------------------------------------------------------------------------
@@ -817,7 +923,7 @@ function buildSnowMountain(ctx: ZoneMapContext): void {
   // The research station (d-10): two timber huts under snow, the satellite dish on the big one's roof, the
   // red snowflake flag, crates and barrels with snow, a sled, tents, the map table outside.
   const hut = chalet(HUT, 'south', 7, chaletBlocks(4, B.lantern), 2);
-  chalet(HUT_B, 'south', 5, chaletBlocks(5, B.lantern), 1);
+  chalet(HUT_B, 'south', 7, chaletBlocks(5, B.lantern), 1);
   ctx.propAt(M.dish, [HUT.x1 - 4.5, hut.ridge + 1, (HUT.z0 + HUT.z1) / 2 + 0.5], 200);
   ctx.prop(M.explorerSign, hut.door[0] + 3, hut.door[1] + 1, 0);
   ctx.prop(M.redFlag, HUT.x0 - 4, HUT.z1 + 4, 0);
@@ -825,7 +931,7 @@ function buildSnowMountain(ctx: ZoneMapContext): void {
   for (const [x, z] of [[618, 500], [622, 512]] as const) ctx.prop(M.tent, x, z, x * 3);
   ctx.prop(M.sled, 642, 518, 40);
   ctx.prop(M.mapTable, 656, 516, 0);
-  ctx.prop(M.workbench, 668, 514, 180);
+  ctx.prop(M.workbench, 666, 514, 180);
   ctx.prop(M.campfire, 682, 528, 0);
   for (const [x, z, yaw] of [[679, 528, 90], [685, 528, 90], [682, 531, 0]] as const) ctx.prop(M.logBench, x, z, yaw);
   ctx.landmark('tram-tham-hiem', 'Trạm thám hiểm', 650, 522);
@@ -854,16 +960,22 @@ function buildSnowMountain(ctx: ZoneMapContext): void {
     for (const dx of [-5, 5]) put(world, CAVE_X + dx, TOP + 4, mouthZ, B.lantern);
     ctx.keepOut(CAVE_X - 6, mouthZ - 2, CAVE_X + 6, mouthZ + 1);
     ctx.landmark('cua-hang-bang', 'Cửa hang băng', CAVE_X, mouthZ + 3);
-    // The chasm across the hall, water deep in it, and the plank bridge over it.
+    // The stream across the hall, a block deep (a child who wades in steps out again), and the plank bridge
+    // over it: a deck five wide with log posts along its edges, no rail to climb on.
     const chasm = { z0: 414, z1: 424 };
     for (let x = CAVE.x0; x <= CAVE.x1; x++) {
       for (let z = chasm.z0; z <= chasm.z1; z++) {
         if (world.get(x, TOP, z) !== 0 || world.get(x, LEVEL, z) === 0) continue;
-        for (let y = LEVEL - 5; y <= LEVEL; y++) put(world, x, y, z, y <= LEVEL - 4 ? B.water : 0);
-        put(world, x, LEVEL - 6, z, B.stone);
+        put(world, x, LEVEL, z, B.water);
+        put(world, x, LEVEL - 1, z, B.stone);
       }
     }
-    placePlankBridge(world, CAVE_X, chasm.z0 - 2, chasm.z1 + 2, LEVEL, () => LEVEL - 6, { planks: B.planks, log: B.log }, 4);
+    for (let z = chasm.z0 - 2; z <= chasm.z1 + 2; z++) {
+      for (let dx = -2; dx <= 2; dx++) put(world, CAVE_X + dx, LEVEL, z, B.planks);
+      if ((z - chasm.z0) % 3 === 0) for (const dx of [-2, 2]) put(world, CAVE_X + dx, TOP, z, B.log);
+    }
+    // A walk of stone over the hall's floor from the tunnel to the bridge.
+    for (let z = chasm.z1 + 3; z < CAVE.z1 - 1; z++) for (let dx = -1; dx <= 1; dx++) if (world.get(CAVE_X + dx, TOP, z) === 0) put(world, CAVE_X + dx, LEVEL, z, B.path);
     const caveAt = (x: number, z: number): [number, number, number] => [x + 0.5, TOP, z + 0.5];
     for (const [x, z] of [[674, 410], [680, 404], [706, 406], [712, 412], [672, 436], [710, 440], [700, 402], [676, 446], [704, 448], [714, 428], [681, 431], [699, 438], [694, 444], [684, 426], [702, 428], [688, 408], [671, 426], [710, 432]] as const) {
       if (world.get(x, TOP, z) === 0 && world.get(x, LEVEL, z) !== 0) ctx.propAt(M.crystal, caveAt(x, z), x * 23);
@@ -914,6 +1026,20 @@ function buildSnowMountain(ctx: ZoneMapContext): void {
     }
     for (let z = 143; z <= 150; z++) for (let x = 152; x <= 160; x++) for (let y = surface(x, z) + 1; y <= LEVEL + 1; y++) put(world, x, y, z, y === LEVEL + 1 ? B.snow : B.stone);
     ctx.keepOut(136, 124, 166, 150);
+    // The trodden way out onto the ledge: stone over the snow, a block up where the rock steps up, then
+    // along its top to the tip.
+    const ledgeWalk: Array<[number, number]> = [];
+    for (let z = 136; z <= 151; z++) for (let x = 154; x <= 156; x++) ledgeWalk.push([x, z]);
+    for (let x = 144; x <= 156; x++) for (let z = 133; z <= 135; z++) ledgeWalk.push([x, z]);
+    for (const [x, z] of ledgeWalk) {
+      let y = LEVEL + 2;
+      while (y > 0 && world.get(x, y, z) === 0) y--;
+      const want = z <= 150 ? Math.max(y, LEVEL + 1) : y;
+      for (let yy = y; yy < want; yy++) put(world, x, yy, z, B.stone);
+      put(world, x, want, z, B.path);
+    }
+    // Stone over the rock's top from the head of the steps to the observatory's door.
+    for (let z = OBSERVATORY.z + OBSERVATORY.r - 1; z <= SUMMIT_ROCK.z1; z++) for (let x = 179; x <= 181; x++) if (world.get(x, rockTop, z) === B.snow && world.get(x, rockTop + 1, z) === 0) put(world, x, rockTop, z, B.path);
     ctx.landmark('mom-da', 'Mỏm đá ngắm hoàng hôn', 144, 132, LEVEL + 3);
     ctx.landmark('san-dinh-nui', 'Sân đỉnh núi', 186, 200);
   }
@@ -949,6 +1075,23 @@ function buildSnowMountain(ctx: ZoneMapContext): void {
     ctx.keepOut(walls.x0 - 3, walls.z0 - 3, walls.x1 + 3, walls.z1 + 3);
     ctx.landmark('lau-dai-tuyet', 'Lâu đài trên núi tuyết', cx, walls.z1 + 4, surface(cx, walls.z1 + 4) + 1);
   }
+  // The stone stair up the range's west edge from the summit trail, a block a step (cut into the rock where
+  // the range is steeper), to the road along its top to the castle.
+  {
+    const [roadX] = RANGE_ROAD[0] ?? [STAIR.x0];
+    let y = surface(STAIR.x0 - 2, STAIR.z);
+    for (let x = STAIR.x0; x <= roadX + 2; x++) {
+      const natural = surface(x, STAIR.z);
+      y = Math.max(y - 1, Math.min(y + 1, natural));
+      for (let z = STAIR.z - 1; z <= STAIR.z + 1; z++) {
+        for (let yy = surface(x, z) + 1; yy < y; yy++) put(world, x, yy, z, rock(x, yy, z));
+        put(world, x, y, z, B.path);
+        for (let yy = y + 1; yy <= Math.max(y + 4, surface(x, z)); yy++) put(world, x, yy, z, 0);
+      }
+    }
+    // Pines keep back far enough that no bough hangs over the steps.
+    ctx.keepOut(STAIR.x0, STAIR.z - 4, roadX + 2, STAIR.z + 4);
+  }
   // Peaks under snow round the valley, grey rock on their steep sides.
   const peak = (cx: number, cz: number, r: number, topY: number): void => {
     const base = surface(cx, cz);
@@ -969,7 +1112,9 @@ function buildSnowMountain(ctx: ZoneMapContext): void {
 
   // ---------------------------------------------------------------------------------------------------
   // The chalets of the village and the valley: rows along the roads, doors on the road, a cobbled walk to
-  // each door, a lantern by every other one, firewood, crates and young pines in the snow before them.
+  // each door, a lantern by every other one, firewood, crates and young pines in the snow before them. Each
+  // is a house many times the child's size (13 to 17 by 11 or 12, walls seven or eight high), its doorway
+  // three wide with steps up where it stands on a stone foot.
   let houses = 0;
   const chaletStreet = (route: readonly Point[], options: { setback?: number; sides?: ReadonlyArray<1 | -1>; zone?: number } = {}): void => {
     const setback = options.setback ?? 7;
@@ -985,8 +1130,7 @@ function buildSnowMountain(ctx: ZoneMapContext): void {
         let d = 8;
         while (d < len - 8) {
           const n = houses;
-          const w = 9 + (n % 3) * 2;
-          const depth = 8 + (n % 2) * 2;
+          const { w, d: depth } = cottageSize(n);
           const [px, pz] = [Math.round(ax + ux * d), Math.round(az + uz * d)];
           const [rx, rz] = turnCell([0, 0], facing, Math.floor(w / 2), -setback);
           const origin: [number, number] = [px - rx, pz - rz];
@@ -1009,13 +1153,15 @@ function buildSnowMountain(ctx: ZoneMapContext): void {
             for (let y = surface(x, z) + 1; y < baseY; y++) put(world, x, y, z, B.cobble);
           }
           const tall = n % 3 !== 1;
-          const c = placeChalet(facingWriter(world, origin, facing), FRAME, FRAME, w, depth, tall ? 8 : 5, baseY, chaletBlocks(n), tall ? 2 : 1);
+          const writer = facingWriter(world, origin, facing);
+          const c = placeChalet(writer, FRAME, FRAME, w, depth, tall ? 8 : 7, baseY, chaletBlocks(n), tall ? 2 : 1);
           const door = Math.floor(w / 2);
-          for (let v = -setback + 2; v <= -1; v++) for (const u of [door - 1, door]) {
+          for (let v = -setback + 2; v <= -1; v++) for (let u = door - 1; u <= door + 1; u++) {
             const [x, z] = cell(u, v);
             put(world, x, surface(x, z), z, B.path);
           }
-          for (const [u, v] of [[door - 2, -1], [door + 1, -1]] as const) {
+          chaletSteps(writer, origin, facing, c, baseY);
+          for (const [u, v] of [[door - 2, -1], [door + 2, -1]] as const) {
             const [x, z] = cell(u, v);
             put(world, x, baseY + 2, z, 0);
             const [wx, wz] = cell(u, 0);

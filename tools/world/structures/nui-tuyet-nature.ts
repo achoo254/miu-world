@@ -6,13 +6,14 @@ import { put, type WorldWriter } from './world-writer';
 
 /**
  * A pine of `height` on `baseY`: a trunk and a stepped cone of leaves, the top block of every column of the
- * cone snow, so each step of the cone reads white from above and green from the side (d-01, d-15).
+ * cone snow, so each step of the cone reads white from above and green from the side (d-01, d-15). Its
+ * lowest boughs hang at head height, as a spruce's do, down a slope too: no crawl space under its skirt.
  */
 export function placeSnowPine(world: WorldWriter, x: number, baseY: number, z: number, height: number, b: { trunk: number; leaves: number; snow: number }): void {
   for (let y = baseY; y < baseY + height; y++) put(world, x, y, z, b.trunk);
   const tipY = baseY + height + 1;
   const tops = new Map<string, number>();
-  for (let y = baseY + 2; y <= tipY; y++) {
+  for (let y = baseY + 1; y <= tipY; y++) {
     const r = Math.min(3, Math.round((tipY - y) / 2.2));
     for (let dx = -r; dx <= r; dx++) {
       for (let dz = -r; dz <= r; dz++) {
@@ -21,6 +22,15 @@ export function placeSnowPine(world: WorldWriter, x: number, baseY: number, z: n
         put(world, x + dx, y, z + dz, b.leaves, true);
         tops.set(`${dx},${dz}`, y);
       }
+    }
+  }
+  // Where the ground falls away under the skirt, its boughs reach down to head height over the lower ground.
+  for (let dx = -3; dx <= 3; dx++) {
+    for (let dz = -3; dz <= 3; dz++) {
+      if (world.get(x + dx, baseY + 1, z + dz) !== b.leaves) continue;
+      let g = baseY - 1;
+      while (g > baseY - 6 && world.get(x + dx, g, z + dz) === 0) g--;
+      if (g < baseY - 1 && g > baseY - 6) for (let y = g + 2; y <= baseY; y++) put(world, x + dx, y, z + dz, b.leaves, true);
     }
   }
   for (const [key, y] of tops) {
