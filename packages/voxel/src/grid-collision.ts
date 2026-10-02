@@ -1,5 +1,6 @@
 // Player physics against the block grid: axis-separated AABB sweeps with sub-stepping (no
-// tunnelling), 1-block step-up, and a DDA raycast for keeping the camera out of blocks.
+// tunnelling), 1-block step-up (never onto a blocking cell, traversal.ts), and a DDA raycast that keeps
+// the camera in front of walls and roofs.
 
 export type Vec3 = [number, number, number];
 export type SolidAt = (x: number, y: number, z: number) => boolean;
@@ -14,6 +15,11 @@ export interface MoveOptions {
   stepHeight: number;
   /** Whether the body stood on the ground before this move (step-up only works grounded). */
   onGround: boolean;
+  /**
+   * Solid cells that are never stepped onto (traversal.ts `blocking`: fences, railings, doors): a step-up may
+   * not put the body over one. Default: none.
+   */
+  blocking?: SolidAt;
 }
 
 export interface MoveResult {
@@ -79,12 +85,15 @@ function horizontalMove(start: Vec3, delta: Vec3, body: Body, solid: SolidAt): {
 export function moveAndCollide(start: Vec3, delta: Vec3, body: Body, solid: SolidAt, options: MoveOptions): MoveResult {
   let { pos, blockedX, blockedZ } = horizontalMove(start, delta, body, solid);
 
-  // Step-up: retry the horizontal move from one step higher and keep it if it got further.
+  // Step-up: retry the horizontal move from one step higher and keep it if it got further. Over a blocking
+  // cell (a fence, a railing) the raised body finds the cell above it solid too, so it is never stepped onto.
   if ((blockedX || blockedZ) && options.onGround && options.stepHeight > 0) {
+    const blocking = options.blocking;
+    const stepSolid: SolidAt = blocking ? (x, y, z) => solid(x, y, z) || blocking(x, y - 1, z) : solid;
     const raised: Vec3 = [...start];
     const ceiling = sweep(raised, 1, options.stepHeight, body, solid);
     if (!ceiling) {
-      const stepped = horizontalMove(raised, delta, body, solid);
+      const stepped = horizontalMove(raised, delta, body, stepSolid);
       const plain = Math.hypot(pos[0] - start[0], pos[2] - start[2]);
       const further = Math.hypot(stepped.pos[0] - start[0], stepped.pos[2] - start[2]);
       if (further > plain + EPS) {

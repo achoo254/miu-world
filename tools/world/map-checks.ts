@@ -7,7 +7,9 @@ import { expect } from 'vitest';
 import type { VoxelWorld } from '../../packages/voxel/src/chunk-format';
 import { worldEntitiesSchema, type WorldEntities } from '../../packages/voxel/src/world-entities';
 import { mapDir, mapFiles } from './map-kit';
-import { reachable, walkSolid } from './walkable';
+import { reachable, walkBlocking, walkSolid } from './walkable';
+import { cellKey } from '../../packages/voxel/src/prop-collision';
+import { propCells } from './prop-cells';
 
 type Generated = { world: VoxelWorld; entities: WorldEntities };
 
@@ -40,8 +42,22 @@ export function expectStandsOnGround(world: VoxelWorld, entities: WorldEntities)
 }
 
 /** Standing spots reachable on foot from the spawn, and whether one is within a block of a column (at a height, if given). */
+/** Stand for the cells solid props fill in the walk grid (no block has a negative id). */
+const PROP_STEP = -1;
+const PROP_BLOCKING = -2;
+
 export async function walkFromSpawn(world: VoxelWorld, entities: WorldEntities): Promise<{ spots: Set<string>; reaches: (x: number, z: number, y?: number) => boolean }> {
-  const spots = reachable(world, entities.spawn.position as [number, number, number], await walkSolid());
+  // The child walks round solid props (tables, crates, lamps) as round blocks; plants she walks through.
+  const cells = await propCells(entities.props);
+  const [blockSolid, blockBlocking] = [await walkSolid(), await walkBlocking()];
+  const grid = {
+    size: world.size,
+    get: (x: number, y: number, z: number): number => {
+      const prop = cells.get(cellKey(x, y, z));
+      return prop === 'blocking' ? PROP_BLOCKING : prop ? PROP_STEP : world.get(x, y, z);
+    },
+  };
+  const spots = reachable(grid, entities.spawn.position as [number, number, number], (id) => id < 0 || blockSolid(id), undefined, (id) => id === PROP_BLOCKING || blockBlocking(id));
   const columns = [...spots].map((key) => key.split(',').map(Number) as [number, number, number]);
   const reaches = (x: number, z: number, y?: number): boolean => columns.some(([kx, ky, kz]) => Math.abs(kx - x) <= 1 && Math.abs(kz - z) <= 1 && (y === undefined || ky === y));
   return { spots, reaches };

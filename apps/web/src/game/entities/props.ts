@@ -3,11 +3,13 @@
 // models) when the tile comes within the view distance, one tile per frame, and dropped again once well out
 // of view (owner, 01/10/2026: wide maps, far scenery lazy). Props never move, so baking the placement into
 // the vertices loses nothing. An infinite view distance (still shots) builds every tile.
-import { BufferGeometry, Euler, Group, Matrix4, Mesh, Quaternion, Vector3, type Material, type MeshStandardMaterial, type Object3D } from 'three';
+import { Box3, BufferGeometry, Euler, Group, Matrix4, Mesh, Quaternion, Vector3, type Material, type MeshStandardMaterial, type Object3D } from 'three';
 import { mergeGeometries } from 'three/examples/jsm/utils/BufferGeometryUtils.js';
 import type { WorldEntities } from '@miu/voxel/world-entities';
 import type { GuardedGltfLoader } from '../asset-loader';
-import { modelCatalogSchema, modelFades } from '@miu/voxel/model-catalog';
+import { modelCatalogSchema, modelFades, modelTraversal } from '@miu/voxel/model-catalog';
+import { propSolidCells, type ModelBounds } from '@miu/voxel/prop-collision';
+import type { Traversal } from '@miu/voxel/traversal';
 import modelCatalogJson from '../../../../../content/world/models.json';
 import { seeThroughCopy, type SeeThroughUniforms } from '../world/block-material';
 
@@ -39,6 +41,8 @@ export interface PropField {
   buildAround(x: number, z: number): void;
   /** Tiles built now. */
   tileCount(): number;
+  /** Grid cells the solid props fill (`cellKey`s, prop-collision.ts) with their traversal: she collides with them like blocks. */
+  blocked: ReadonlyMap<string, Traversal>;
   dispose(): void;
 }
 
@@ -56,9 +60,12 @@ export async function loadProps(loader: GuardedGltfLoader, entities: WorldEntiti
   group.name = 'props';
   // Every model the map places, loaded once; its meshes with their transforms inside the model.
   const models = new Map<string, Array<{ geometry: BufferGeometry; material: Material; matrix: Matrix4; key: string }>>();
+  const bounds = new Map<string, ModelBounds>();
   for (const model of new Set(entities.props.map((p) => p.model))) {
     const gltf = await loader.load(model);
     gltf.scene.updateMatrixWorld(true);
+    const box = new Box3().setFromObject(gltf.scene);
+    if (!box.isEmpty()) bounds.set(model, { min: [box.min.x, box.min.y, box.min.z], max: [box.max.x, box.max.y, box.max.z] });
     const parts: Array<{ geometry: BufferGeometry; material: Material; matrix: Matrix4; key: string }> = [];
     gltf.scene.traverse((node: Object3D) => {
       if (!(node instanceof Mesh) || Array.isArray(node.material)) return;
@@ -71,6 +78,8 @@ export async function loadProps(loader: GuardedGltfLoader, entities: WorldEntiti
     });
     models.set(model, parts);
   }
+
+  const blocked = propSolidCells(entities.props, (model) => bounds.get(model), (model) => modelTraversal(CATALOG, model));
 
   const tiles = new Map<string, Placement[]>();
   for (const p of entities.props) {
@@ -150,6 +159,7 @@ export async function loadProps(loader: GuardedGltfLoader, entities: WorldEntiti
       for (const key of tiles.keys()) if (!built.has(key) && reach(key, x, z) <= viewDistance) build(key);
     },
     tileCount: () => built.size,
+    blocked,
     dispose() {
       for (const key of [...built.keys()]) drop(key);
       for (const material of faded.values()) material.dispose();

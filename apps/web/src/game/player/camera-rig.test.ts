@@ -14,14 +14,15 @@ function settle(rig: CameraRig): void {
 }
 
 describe('camera rig', () => {
-  it('keeps its distance and tilt with a wall at Miu\'s back: the scenery never pushes it (the wall fades instead)', () => {
+  it('comes in front of a wall at Miu\'s back, keeping its tilt, instead of fading the wall', () => {
     const camera = new PerspectiveCamera();
     // yaw 0 puts the camera toward +z: straight through the wall.
     const rig = new CameraRig(camera, solid, 0);
     settle(rig);
-    expect(rig.viewDistance).toBeCloseTo(rig.distance, 5);
+    // The wall stands half a block behind her: the camera comes all the way in, to its nearest.
+    expect(rig.viewDistance).toBeCloseTo(1, 5);
     expect(rig.pitch).toBeCloseTo(DEFAULT_PITCH, 5);
-    expect(camera.position.z).toBeGreaterThan(WALL_Z);
+    expect(camera.position.z).toBeLessThan(WALL_Z + 1);
   });
 
   it('keeps its normal distance and tilt in the open', () => {

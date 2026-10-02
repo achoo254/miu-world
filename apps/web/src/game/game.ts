@@ -14,7 +14,8 @@ import {
   Vector3,
   WebGLRenderer,
 } from 'three';
-import { blockLookup } from '@miu/voxel/block-table';
+import { blockLookup, blockTraversal } from '@miu/voxel/block-table';
+import type { Traversal } from '@miu/voxel/traversal';
 import type { SolidAt } from '@miu/voxel/grid-collision';
 import { castHidden, entitiesForChapter } from '@miu/voxel/world-entities';
 import { PETS, UI_ICONS, assetUrl } from '../ui/kit/ui-art';
@@ -33,12 +34,13 @@ import { DEFAULT_SPECIES } from './content/characters';
 import { loadPlayerCharacter } from './entities/player-character';
 import { loadPetCompanion } from './entities/pet-companion';
 import { loadProps } from './entities/props';
+import { cellKey } from '@miu/voxel/prop-collision';
 import { Autopilot } from './player/autopilot';
 import { CameraRig } from './player/camera-rig';
 import { PlayerInput } from './player/input';
 import { PlayerController, WALK_SPEED, type MoveIntent } from './player/player-controller';
 import { RescueWatch } from './player/rescue';
-import { usableSpot } from './player/saved-spot';
+import { nearestUsableSpot } from './player/saved-spot';
 import { readQuality } from './quality';
 import { disposeSceneGraph } from './scene/dispose-scene';
 import { SKY_HORIZON, createSky, skyColours } from './scene/sky';
@@ -52,13 +54,6 @@ import './game.css';
 
 /** Boot steps reported as `loading-progress`: renderer, asset registry, map data, world mesh, models. */
 const LOADING_STEPS = 5;
-/** Middle of the child's body: the end of the line of sight that trees fade along. */
-const SEE_FOCUS_HEIGHT = 0.74;
-/** A solid block this many blocks over the child's feet (up to ROOF_REACH) means she is under a roof. */
-const ROOF_FROM = 3;
-const ROOF_REACH = 14;
-/** How fast the ceilings round her fade in and out as she goes under a roof or out again (per second). */
-const INDOOR_EASE = 4;
 /** After the child drags the view, the camera keeps her angle this long before settling behind her again. */
 const LOOK_HOLD_S = 1;
 /**
@@ -297,11 +292,19 @@ export class Game {
     }
 
     const blocks = blockLookup(data.atlas.blocks);
+    // Collision by traversal (traversal.ts): blocks by their kind, and the cells the solid props fill (tables,
+    // crates, fences, statues; plants and rugs fill none), set once the props are in.
+    let propCells: ReadonlyMap<string, Traversal> = new Map();
     const solid: SolidAt = (x, y, z) => {
       if (y < 0 || !data.world.contains(x, z)) return true; // invisible walls at the world's edge
       // A region still on its way is a wall too: the child never walks off into blocks not there yet.
       if (!data.regions.loadedAt(x, z)) return true;
-      return blocks(data.world.get(x, y, z))?.solid ?? false;
+      return (blocks(data.world.get(x, y, z))?.solid ?? false) || propCells.has(cellKey(x, y, z));
+    };
+    /** Solid cells never stepped or climbed onto by walking: fences, doors, railings, panes. */
+    const blocking: SolidAt = (x, y, z) => {
+      const block = blocks(data.world.get(x, y, z));
+      return (block !== undefined && blockTraversal(block) === 'blocking') || propCells.get(cellKey(x, y, z)) === 'blocking';
     };
 
     const entities = entitiesForChapter(data.entities, this.options.chapter ?? 1, this.options.quest);
@@ -334,7 +337,9 @@ export class Game {
     const [character, targets, props, life] = await Promise.all([
       loadPlayerCharacter(loader, this.options.species ?? DEFAULT_SPECIES, outfit),
       loadInteractables(loader, entities, quality.shadows),
-      loadProps(loader, entities, quality.shadows, world.seeThrough),
+      // Nothing fades for standing between the camera and the child (owner, 02/10/2026): the camera comes in
+      // front of walls and roofs instead (camera-rig.ts), plants simply show.
+      loadProps(loader, entities, quality.shadows),
       // `?life=0` (dev/perf switch): the map without its villagers and animals.
       loadAmbientLife(loader, params.get('life') === '0' ? [] : (entities.ambients ?? []), {
         quality: quality.level,
@@ -348,6 +353,7 @@ export class Game {
       }),
     ]);
     if (this.disposed) return;
+    propCells = props.blocked;
     stepLoaded();
     const confetti = createConfetti();
     const lookAhead = new Vector3();
@@ -383,7 +389,7 @@ export class Game {
     overlay.stats.outfit = character.outfit;
 
     const liquid = (x: number, y: number, z: number): boolean => blocks(data.world.get(x, y, z))?.liquid ?? false;
-    const controller = new PlayerController(solid, entities.spawn.position, entities.spawn.yaw, liquid);
+    const controller = new PlayerController(solid, entities.spawn.position, entities.spawn.yaw, liquid, blocking);
     const rescue = new RescueWatch();
     // Dev/E2E switch: start next to a target (`npc` = the first NPC), or at `x,y,z`, instead of the spawn point.
     const spawnAt = spawnAtParam;
@@ -404,7 +410,7 @@ export class Game {
       controller.position.set(x + dx * offset, y, z + dz * offset);
     } else if (spawnAt === null && this.options.savedSpot) {
       // Back where the child left off; any `spawnAt` (even `spawn`) starts where the URL says instead.
-      const at = usableSpot(this.options.savedSpot.position, solid, liquid, data.bounds, data.world.height);
+      const at = nearestUsableSpot(this.options.savedSpot.position, solid, liquid, data.bounds, data.world.height);
       if (at) {
         controller.teleport(at);
         controller.facing = this.options.savedSpot.facing;
@@ -522,13 +528,6 @@ export class Game {
     let sinceLook = Infinity;
     /** The view's yaw and the stick's angle when the child set her direction: she keeps walking that way while the view swings round behind her. */
     let heading: { yaw: number; stick: number } | null = null;
-    const seeFocus = new Vector3();
-    /** How far the child is under a roof (0–1), eased: the ceilings round her fade in and out without popping. */
-    let indoor = 0;
-    const underRoof = (p: Vector3): boolean => {
-      for (let dy = ROOF_FROM; dy <= ROOF_REACH; dy++) if (solid(Math.floor(p.x), Math.floor(p.y + dy), Math.floor(p.z))) return true;
-      return false;
-    };
 
     this.loop = () => {
       timer.update();
@@ -604,9 +603,8 @@ export class Game {
       sun.position.set(controller.position.x + 18, controller.position.y + 30, controller.position.z + 12);
       sun.target.position.copy(controller.position);
       world.water.uTime.value += dt;
-      // Trees between the camera and the child fade; review shots have no child to keep in view.
-      indoor += ((underRoof(controller.position) ? 1 : 0) - indoor) * Math.min(1, dt * INDOOR_EASE);
-      world.update(camera, reviewShot && !reviewShot.play ? undefined : { focus: seeFocus.copy(controller.position).setY(controller.position.y + SEE_FOCUS_HEIGHT), feet: controller.position.y, indoor });
+      // No occlusion fade: walls, roofs and trees always draw as they are.
+      world.update(camera);
       props.update(camera.position);
 
       for (const target of targets) target.update(dt, controller.position, camera.position);
@@ -643,7 +641,8 @@ export class Game {
       if (interact && promptTarget?.def.ride) {
         // A ride across the map: the child gets off at the next stop (its regions are fetched ahead).
         const [rx, ry, rz] = promptTarget.def.ride;
-        void world.settle(rx, rz).then(() => controller.teleport([rx, ry, rz]));
+        // Off beside whatever stands on the stop (a signpost, a crate), never inside it.
+        void world.settle(rx, rz).then(() => controller.teleport(nearestUsableSpot([rx, ry, rz], solid, liquid, data.bounds, data.world.height) ?? [rx, ry, rz]));
         overlay.stats.lastInteraction = promptTarget.def.id;
       } else if (interact && promptTarget?.def.travel) {
         store.emit({ type: 'travel', region: promptTarget.def.travel });

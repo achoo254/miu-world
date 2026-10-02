@@ -1,6 +1,7 @@
 // Third-person movement on the block grid: camera-relative walking/running, gravity, jump,
 // 1-block step-up, an automatic climb onto 2-block ledges, and swimming, all resolved by the shared grid
-// collision.
+// collision. What she meets is walked through, stepped or climbed onto, or stops her, by its traversal
+// (traversal.ts): `blocking` things (fences, doors, railings, walls) are never stepped or climbed over.
 import { Vector3 } from 'three';
 import { bodyFits, moveAndCollide, type Body, type SolidAt } from '@miu/voxel/grid-collision';
 
@@ -61,6 +62,8 @@ export class PlayerController {
     spawn: readonly [number, number, number],
     yawDeg: number,
     private readonly liquid: LiquidAt = () => false,
+    /** Solid cells she never steps or climbs onto by walking (traversal.ts `blocking`: fences, railings, doors). */
+    private readonly blocking: SolidAt = () => false,
   ) {
     this.position = new Vector3(...spawn);
     this.facing = (yawDeg * Math.PI) / 180;
@@ -108,7 +111,7 @@ export class PlayerController {
       [vx * dt, this.velocityY * dt, vz * dt],
       BODY,
       this.solid,
-      { stepHeight: 1, onGround: this.onGround },
+      { stepHeight: 1, onGround: this.onGround, blocking: this.blocking },
     );
     const [px, py, pz] = result.position;
     this.speed = Math.hypot(px - this.position.x, pz - this.position.z) / Math.max(dt, 1e-6);
@@ -139,7 +142,8 @@ export class PlayerController {
     const front = Math.floor((axis === 0 ? x : z) + sign * (BODY.halfWidth + 0.05));
     const cx = axis === 0 ? front : Math.floor(x);
     const cz = axis === 2 ? front : Math.floor(z);
-    for (let h = 0; h < CLIMB_HEIGHT; h++) if (!this.solid(cx, feet + h, cz)) return;
+    // A wall of exactly that height that is `blocking` (a fence, a door, a railing) is not climbed.
+    for (let h = 0; h < CLIMB_HEIGHT; h++) if (!this.solid(cx, feet + h, cz) || this.blocking(cx, feet + h, cz)) return;
     const top = feet + CLIMB_HEIGHT;
     const raised: [number, number, number] = [x, top + 1e-3, z];
     // The edge of the ledge, plus a little so Miu stands fully on it.

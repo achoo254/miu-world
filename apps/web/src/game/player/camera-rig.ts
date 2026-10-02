@@ -1,8 +1,9 @@
-// Follow camera orbiting the player at the distance and tilt the child chose. The scenery never pushes it
-// (owner, 02/10/2026): what stands between it and the child fades instead (block-material.ts), so in a room
-// or a narrow passage the view stays the same and she still sees inside.
+// Follow camera orbiting the player at the distance and tilt the child chose. Nothing fades for standing in
+// its way (owner, 02/10/2026: no occlusion fade, walls and trees draw as they are): when a wall, a roof or a
+// solid prop would come between it and the child, the camera comes in to just in front of it, and eases back
+// out once the way is clear. Plants (trees' leaves, bushes, crops) are not solid and never move it.
 import { MathUtils, Vector3, type PerspectiveCamera } from 'three';
-import type { SolidAt } from '@miu/voxel/grid-collision';
+import { raycastGrid, type SolidAt } from '@miu/voxel/grid-collision';
 
 const TARGET_HEIGHT = 1.55;
 /**
@@ -21,6 +22,11 @@ const TILT_SLOPE = 1;
 const RECENTER_EASE = 1.5;
 /** How fast the view swings round behind the way Miu walks (per second): the scripted autopilot's pace. */
 const FOLLOW_EASE = 2.5;
+/** The camera stops this far in front of a wall or roof between it and the child, and never comes closer than NEAREST. */
+const WALL_PAD = 0.35;
+const NEAREST = 1;
+/** Once the way is clear the camera eases back out to the chosen distance at this rate (per second); in, it snaps. */
+const OUT_EASE = 3;
 
 export class CameraRig {
   yaw: number;
@@ -29,7 +35,7 @@ export class CameraRig {
   private readonly target = new Vector3();
   private readonly smoothed = new Vector3();
   private initialised = false;
-  /** Camera-to-aim distance after the last update: under ~1 block the camera is inside Miu. */
+  /** Camera-to-aim distance after the last update (shorter than `distance` where a wall is in the way). */
   viewDistance = this.distance;
 
   constructor(private readonly camera: PerspectiveCamera, private readonly solid: SolidAt, yaw: number) {
@@ -72,8 +78,10 @@ export class CameraRig {
     }
     this.smoothed.lerp(this.target, Math.min(1, dt * 10));
     const dir = this.direction(this.pitch);
-    this.viewDistance = this.distance;
-    this.camera.position.copy(this.smoothed).addScaledVector(dir, this.distance);
+    const hit = raycastGrid([this.smoothed.x, this.smoothed.y, this.smoothed.z], [dir.x, dir.y, dir.z], this.distance, this.solid);
+    const clear = hit === null ? this.distance : Math.max(NEAREST, hit - WALL_PAD);
+    this.viewDistance = clear < this.viewDistance ? clear : this.viewDistance + (clear - this.viewDistance) * Math.min(1, dt * OUT_EASE);
+    this.camera.position.copy(this.smoothed).addScaledVector(dir, this.viewDistance);
     this.camera.lookAt(this.smoothed);
   }
 

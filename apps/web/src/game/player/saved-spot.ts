@@ -18,3 +18,26 @@ export function usableSpot(spot: Point, solid: SolidAt, liquid: LiquidAt, bounds
   const open = !solid(bx, feet, bz) && !solid(bx, feet + 1, bz) && !liquid(bx, feet, bz);
   return open && solid(bx, feet - 1, bz) ? [x, feet, z] : null;
 }
+
+/**
+ * `spot` when it can be stood on, else the nearest spot within `reach` blocks that can (the same height, a
+ * step up or a step down): a ride or a saved spot that a solid prop now covers (a signpost, a crate) puts
+ * the child beside it, not inside it. Null when there is none so close.
+ */
+export function nearestUsableSpot(spot: Point, solid: SolidAt, liquid: LiquidAt, bounds: WorldBounds, height: number, reach = 4): Point | null {
+  const exact = usableSpot(spot, solid, liquid, bounds, height);
+  if (exact) return exact;
+  const [x, y, z] = spot;
+  for (let r = 1; r <= reach; r++) {
+    for (let dx = -r; dx <= r; dx++) {
+      for (let dz = -r; dz <= r; dz++) {
+        if (Math.max(Math.abs(dx), Math.abs(dz)) !== r) continue;
+        for (const dy of [0, 1, -1]) {
+          const found = usableSpot([x + dx, y + dy, z + dz], solid, liquid, bounds, height);
+          if (found) return found;
+        }
+      }
+    }
+  }
+  return null;
+}

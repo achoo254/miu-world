@@ -3,6 +3,7 @@
 // reaches every map and the land round them. A map may still give a model a size of its own where it means
 // a different thing (a toy boat on a stall, a wall clock), named in that map's generator.
 import { z } from 'zod';
+import { TRAVERSALS, type Traversal } from './traversal';
 
 export const catalogModelSchema = z.strictObject({
   /** Height it stands at, in blocks. */
@@ -13,6 +14,11 @@ export const catalogModelSchema = z.strictObject({
   centred: z.literal(true).optional(),
   /** False: it stays solid even between the camera and the child (it fades by default, like the trees). */
   fade: z.literal(false).optional(),
+  /**
+   * How the child gets past it (traversal.ts; default `auto-step`): `walk-through` for plants, rugs and the
+   * villagers and animals standing as scenery, `blocking` for fences, doors, railings and big rocks.
+   */
+  traversal: z.enum(TRAVERSALS).optional(),
 });
 export type CatalogModel = z.infer<typeof catalogModelSchema>;
 
@@ -25,4 +31,9 @@ export type ModelCatalog = z.infer<typeof modelCatalogSchema>;
 /** Whether a placed model fades where it would hide the child (everything does unless the catalog says not). */
 export function modelFades(catalog: ModelCatalog, model: string): boolean {
   return catalog.models[model]?.fade !== false;
+}
+
+/** How the child gets past a placed model (traversal.ts): its catalog entry's, else `auto-step`. */
+export function modelTraversal(catalog: ModelCatalog, model: string): Traversal {
+  return catalog.models[model]?.traversal ?? 'auto-step';
 }

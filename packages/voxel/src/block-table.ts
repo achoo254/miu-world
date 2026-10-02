@@ -1,6 +1,7 @@
 // Block definitions (content/blocks.json) and the resolved atlas description (generated atlas.json)
 // shared by the atlas builder, the map generator and the runtime (meshing + collision).
 import { z } from 'zod';
+import { TRAVERSALS, type Traversal } from './traversal';
 
 export const AIR = 0;
 
@@ -12,6 +13,11 @@ const blockSchema = z.object({
   bottom: z.string(),
   /** Collides with the player (and the camera). Leaves and tree wood do not: Miu walks through trees. */
   solid: z.boolean().default(true),
+  /**
+   * How the child gets past it (traversal.ts): by default `auto-step` when solid, `walk-through` when not;
+   * `blocking` for what she must never step or climb over by walking (railings, panes).
+   */
+  traversal: z.enum(TRAVERSALS).optional(),
   /** Lets light/faces through: neighbours keep their faces. */
   transparent: z.boolean().default(false),
   /** Rendered by the water pass instead of the opaque chunk mesh. */
@@ -20,6 +26,11 @@ const blockSchema = z.object({
   glow: z.boolean().default(false),
 });
 export type BlockDef = z.infer<typeof blockSchema>;
+
+/** A block's traversal (traversal.ts): its own, else from whether it is solid. */
+export function blockTraversal(block: Pick<BlockDef, 'solid' | 'traversal'>): Traversal {
+  return block.traversal ?? (block.solid ? 'auto-step' : 'walk-through');
+}
 
 export const blockTableSchema = z
   .object({
@@ -34,6 +45,7 @@ export const blockTableSchema = z
     for (const block of table.blocks) {
       if (ids.has(block.id)) ctx.addIssue({ code: 'custom', message: `duplicate block id ${block.id}` });
       ids.add(block.id);
+      if ((block.traversal === 'walk-through') === block.solid && block.traversal !== undefined) ctx.addIssue({ code: 'custom', message: `block ${block.name}: traversal ${block.traversal} does not match solid ${block.solid}` });
       for (const face of [block.top, block.side, block.bottom]) {
         if (!(face in table.tiles)) ctx.addIssue({ code: 'custom', message: `block ${block.name} uses unknown tile ${face}` });
       }

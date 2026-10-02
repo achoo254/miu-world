@@ -1,10 +1,11 @@
 // Where a child can walk on a generated map: a search over standing spots (feet in an empty block with an
 // empty block above, on a solid block), moving to a neighbouring column one block up (the controller's
-// step-up), two up (its automatic climb), level, or down a drop of up to three. Map tests use it to prove
+// step-up), two up (its automatic climb) unless what she would go up is `blocking` (traversal.ts: fences,
+// railings, doors), level, or down a drop of up to three. Map tests use it to prove
 // every place is reachable, and that what should stay out of reach (a 3-block wall or bank) does.
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
-import { blockTableSchema } from '../../packages/voxel/src/block-table';
+import { blockTableSchema, blockTraversal } from '../../packages/voxel/src/block-table';
 import { REPO_ROOT } from '../assets/asset-lib';
 
 /** Which block ids the child collides with, from content/blocks.json (water and leaves let her through). */
@@ -12,6 +13,13 @@ export async function walkSolid(): Promise<(id: number) => boolean> {
   const table = blockTableSchema.parse(JSON.parse(await readFile(path.join(REPO_ROOT, 'content/blocks.json'), 'utf8')));
   const solid = new Set(table.blocks.filter((b) => b.solid).map((b) => b.id));
   return (id) => solid.has(id);
+}
+
+/** Which block ids she never steps or climbs onto by walking (traversal.ts `blocking`). */
+export async function walkBlocking(): Promise<(id: number) => boolean> {
+  const table = blockTableSchema.parse(JSON.parse(await readFile(path.join(REPO_ROOT, 'content/blocks.json'), 'utf8')));
+  const blocking = new Set(table.blocks.filter((b) => blockTraversal(b) === 'blocking').map((b) => b.id));
+  return (id) => blocking.has(id);
 }
 
 export interface WalkGrid {
@@ -24,7 +32,7 @@ const MAX_DROP = 3;
 const MAX_CLIMB = 2;
 
 /** Every standing spot reachable from `from` (feet position, block coordinates), as "x,y,z" keys. */
-export function reachable(world: WalkGrid, from: readonly [number, number, number], isSolid: (id: number) => boolean, maxClimb = MAX_CLIMB): Set<string> {
+export function reachable(world: WalkGrid, from: readonly [number, number, number], isSolid: (id: number) => boolean, maxClimb = MAX_CLIMB, isBlocking: (id: number) => boolean = () => false): Set<string> {
   const [sx, sy, sz] = world.size;
   const free = (x: number, y: number, z: number) => x >= 0 && z >= 0 && x < sx && z < sz && y >= 0 && y < sy - 1 && !isSolid(world.get(x, y, z)) && !isSolid(world.get(x, y + 1, z));
   const stands = (x: number, y: number, z: number) => free(x, y, z) && y > 0 && isSolid(world.get(x, y - 1, z));
@@ -42,6 +50,8 @@ export function reachable(world: WalkGrid, from: readonly [number, number, numbe
       const candidates = [...Array.from({ length: maxClimb }, (_, i) => y + maxClimb - i), y, ...Array.from({ length: MAX_DROP }, (_, i) => y - 1 - i)];
       for (const ny of candidates) {
         if (ny > y && (!stands(nx, ny, nz) || Array.from({ length: ny - y }, (_, i) => y + 2 + i).some((hy) => isSolid(world.get(x, hy, z))))) continue;
+        // Never up onto a fence, a railing or a door (only a jump would).
+        if (ny > y && Array.from({ length: ny - y }, (_, i) => y + i).some((oy) => isBlocking(world.get(nx, oy, nz)))) continue;
         if (!stands(nx, ny, nz)) continue;
         if (ny < y && !free(nx, y, nz)) break;
         const key = `${nx},${ny},${nz}`;
