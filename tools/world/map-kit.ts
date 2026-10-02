@@ -142,7 +142,8 @@ export async function mapModels(options: { standY: (x: number, z: number) => num
   const place = (x: number, z: number): Position => [x + 0.5, standY(x, z), z + 0.5];
   const props: WorldEntities['props'] = [];
   const addPropAt = (model: string, at: readonly [number, number, number], yaw = 0, chapter?: number): void => {
-    props.push({ model, position: [at[0], at[1], at[2]], yaw, scale: scaleOf(model), ...(chapter ? { chapter } : {}) });
+    // `+ 0` turns -0 into 0, so a prop turned by -0 writes the same JSON on every run.
+    props.push({ model, position: [at[0], at[1], at[2]], yaw: yaw + 0, scale: scaleOf(model), ...(chapter ? { chapter } : {}) });
   };
   return {
     props,

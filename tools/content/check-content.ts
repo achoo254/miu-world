@@ -37,13 +37,18 @@ const CATALOGUE_FILES = [
   'quests/',
 ];
 /** Content files the asset tools validate when they build characters, atlases and maps (any file in a folder). */
-const ASSET_TOOL_FILES = ['blocks.json', 'characters.json', 'palette.json', 'species.json', 'character-bases.json', 'outfit-rules.json', 'character-parts/', 'outfits/', 'faces/', 'animations/'];
+const ASSET_TOOL_FILES = [
+  'blocks.json', 'characters.json', 'palette.json', 'species.json', 'character-bases.json', 'outfit-rules.json', 'character-parts/', 'outfits/', 'faces/', 'animations/',
+  // Box props of one map (build-box-props.ts) and the views of the owner's detail mocks (render-preview.ts).
+  'world/box-props/', 'world/mock-views/',
+];
 /** Content only the web app reads; validated here. */
 const REGIONS_FILE = 'world/regions.json';
 const LOOKS_FILE = 'world/looks.json';
 const TARGETS_FILE = 'world/targets.json';
 const EMOJI_PROPS_FILE = 'world/emoji-props.json';
 const BOX_PROPS_FILE = 'world/box-props.json';
+const BOX_PROPS_FOLDER = 'world/box-props/';
 /** Every model the maps place: height, clip, placing, fading (the map generators and the game read it). */
 const MODELS_FILE = 'world/models.json';
 const PRIVACY_FILE = 'legal/privacy-vi.json';
@@ -369,8 +374,10 @@ export function checkContent(dir: string = CONTENT_DIR): ContentReport {
         const models = modelCatalogSchema.safeParse(read(MODELS_FILE));
         if (!models.success) issues.push(`content/${MODELS_FILE}: ${models.error.message}`);
       }
-      const boxProps = BoxPropCatalog.safeParse(read(BOX_PROPS_FILE));
-      if (!boxProps.success) issues.push(`content/${BOX_PROPS_FILE}: ${boxProps.error.message}`);
+      for (const rel of [BOX_PROPS_FILE, ...files.filter((f) => inFolder(f, BOX_PROPS_FOLDER) && f.endsWith('.json'))]) {
+        const boxProps = BoxPropCatalog.safeParse(read(rel));
+        if (!boxProps.success) issues.push(`content/${rel}: ${boxProps.error.message}`);
+      }
     } else issues.push(`content/${TARGETS_FILE} is missing: the map generators place quest targets from it`);
     const privacy: unknown = JSON.parse(readFileSync(path.join(dir, PRIVACY_FILE), 'utf8'));
     issues.push(...checkPrivacy(privacy, catalog.consent.version));

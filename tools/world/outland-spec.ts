@@ -8,9 +8,14 @@ import { catalogModels } from './model-catalog';
 import { modelScales } from './model-scales';
 
 /** What the core's edge stands on: never a tree, a roof or a fence, but water counts (its bed is the height). */
-const GROUND = ['grass', 'dirt', 'stone', 'sand', 'path', 'riverbed', 'rock-moss', 'snow', 'asphalt'] as const;
+const GROUND = [
+  'grass', 'dirt', 'stone', 'sand', 'path', 'riverbed', 'rock-moss', 'snow', 'asphalt',
+  'grass-forest', 'grass-village', 'grass-hamlet', 'grass-farm', 'grass-library', 'grass-castle', 'grass-market',
+  'cobble', 'cobble-grey', 'paver', 'trail', 'farmland', 'wheat',
+] as const;
 
-export async function outlandSpecOf(world: VoxelWorld, seed: number, theme: OutlandTheme, ground: number): Promise<OutlandSpec> {
+/** `soil`: the core's own grass and lane blocks, which the land round it wears too. */
+export async function outlandSpecOf(world: VoxelWorld, seed: number, theme: OutlandTheme, ground: number, soil?: OutlandSpec['soil']): Promise<OutlandSpec> {
   const block = await loadBlocks();
   const groundIds = new Set<number>(GROUND.map((name) => block(name)));
   const [sx, sy, sz] = world.size;
@@ -33,5 +38,6 @@ export async function outlandSpecOf(world: VoxelWorld, seed: number, theme: Outl
       east: along(sz, (z) => groundAt(sx - 1, z)),
     },
     models: Object.fromEntries(scales),
+    ...(soil ? { soil } : {}),
   };
 }

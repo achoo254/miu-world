@@ -4,7 +4,10 @@
 import { mkdir, readFile, readdir, rm } from 'node:fs/promises';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
+import { blockTableSchema } from '../../packages/voxel/src/block-table';
+import { decodeWorld, type VoxelWorld } from '../../packages/voxel/src/chunk-format';
 import { inCore } from '../../packages/voxel/src/outland';
+import { REGION_BLOCKS, regionFile, regionOf } from '../../packages/voxel/src/region-format';
 import { outlandEntities } from '../../packages/voxel/src/outland-life';
 import { planOutland } from '../../packages/voxel/src/outland-plan';
 import { worldEntitiesSchema } from '../../packages/voxel/src/world-entities';
@@ -14,6 +17,7 @@ import { ASSETS_DIR, REPO_ROOT } from './asset-lib';
 import { writeManifest } from './build-manifest';
 import { readCharacterSpecs, rigAnimationNames } from './kitbash-character';
 import { HUB_OFFSET } from '../world/generate-school-map';
+import { mockShotFile, readMockViews } from '../world/mock-views';
 import { buildAccessoryCatalog, type AccessoryItem } from '../../packages/voxel/src/accessory-schema';
 
 const APP_DIR = path.join(REPO_ROOT, 'apps/web');
@@ -154,6 +158,79 @@ export const ZONE_MAPS: Record<string, string> = {
 /** Close views per zone map on the review page. */
 const ZONE_SHOTS = 14;
 
+/** A map's own blocks (its region files; the land round it is generated while playing), region by region as asked. */
+function mapBlocks(map: string): (x: number, y: number, z: number) => Promise<number> {
+  const regions = new Map<string, Promise<VoxelWorld | null>>();
+  return async (x, y, z) => {
+    const [rx, rz] = regionOf(x, z);
+    const key = `${rx},${rz}`;
+    if (!regions.has(key)) {
+      const file = path.join(ASSETS_DIR, 'generated/world', map, regionFile(rx, rz));
+      regions.set(key, readFile(file).then((bytes) => decodeWorld(new Uint8Array(bytes)), () => null));
+    }
+    const world = await regions.get(key);
+    if (!world) return 0;
+    const [lx, lz] = [x - rx * REGION_BLOCKS, z - rz * REGION_BLOCKS];
+    return lx >= 0 && lz >= 0 && lx < world.size[0] && lz < world.size[2] && y >= 0 && y < world.size[1] ? world.get(lx, y, lz) : 0;
+  };
+}
+
+/** Ids of the blocks that are solid (content/blocks.json): walls and roofs, not leaves or water. */
+async function solidBlocks(): Promise<Set<number>> {
+  const table = blockTableSchema.parse(JSON.parse(await readFile(path.join(REPO_ROOT, 'content/blocks.json'), 'utf8')));
+  return new Set(table.blocks.filter((b) => b.solid && !b.liquid).map((b) => b.id));
+}
+
+/**
+ * Where to stand to see a landmark that is inside a building: on the open floor nearest it (a landmark keeps
+ * the ground's height, a room's floor may stand higher), under the same roof, a few blocks off at a child's
+ * eye height with nothing between. Returns the eye and what it looks at; null when the landmark is in the open.
+ */
+async function roomView(blockAt: (x: number, y: number, z: number) => Promise<number>, [x, y, z]: readonly number[]): Promise<{ eye: number[]; look: number[] } | null> {
+  const [lx, ly, lz] = [x ?? 0, y ?? 0, z ?? 0];
+  const solid = await solidBlocks();
+  // A roof is solid: leaves overhead (a tree) leave a landmark in the open.
+  const roofed = async (cx: number, floor: number, cz: number): Promise<boolean> => {
+    for (let dy = 2; dy <= 32; dy++) if (solid.has(await blockAt(cx, floor + dy, cz))) return true;
+    return false;
+  };
+  /** The first open floor of a column from `from` up: two free blocks over a solid one. */
+  const floorOf = async (cx: number, cz: number, from: number): Promise<number | null> => {
+    for (let fy = from; fy <= from + 8; fy++) {
+      if ((await blockAt(cx, fy, cz)) === 0 && (await blockAt(cx, fy + 1, cz)) === 0 && (await blockAt(cx, fy - 1, cz)) !== 0) return fy;
+    }
+    return null;
+  };
+  let spot: [number, number, number] | null = null;
+  for (let r = 0; r <= 3 && !spot; r++) {
+    for (let dx = -r; dx <= r && !spot; dx++) {
+      for (let dz = -r; dz <= r && !spot; dz++) {
+        if (Math.max(Math.abs(dx), Math.abs(dz)) !== r) continue;
+        const [cx, cz] = [Math.floor(lx) + dx, Math.floor(lz) + dz];
+        const floor = await floorOf(cx, cz, Math.floor(ly));
+        if (floor !== null) spot = [cx, floor, cz];
+      }
+    }
+  }
+  if (!spot || !(await roofed(spot[0], spot[1], spot[2]))) return null;
+  const [sx, sy, sz] = spot;
+  const look = [sx + 0.5, sy + 0.8, sz + 0.5];
+  for (const reach of [6, 5, 4, 8, 3]) {
+    for (const [dx, dz] of [[-1, -1], [1, -1], [-1, 1], [1, 1], [0, -1], [-1, 0], [1, 0], [0, 1]] as const) {
+      const eye = [sx + 0.5 + dx * reach, sy + 1.6, sz + 0.5 + dz * reach];
+      const [ex, ez] = [Math.floor(eye[0] ?? 0), Math.floor(eye[2] ?? 0)];
+      if ((await blockAt(ex, sy, ez)) !== 0 || (await blockAt(ex, sy + 1, ez)) !== 0 || !(await roofed(ex, sy, ez))) continue;
+      let clear = true;
+      for (let t = 0.1; t < 0.95 && clear; t += 0.05) {
+        const p = eye.map((e, i) => (e ?? 0) + ((look[i] ?? 0) - (e ?? 0)) * t);
+        if ((await blockAt(Math.floor(p[0] ?? 0), Math.floor(p[1] ?? 0), Math.floor(p[2] ?? 0))) !== 0) clear = false;
+      }
+      if (clear) return { eye, look };
+    }
+  }
+  return null;
+}
+
 /**
  * A zone map for the owner to judge: the whole map from the south and from above, then each zone (its
  * landmark is at the zone's centre) from its south-west, high enough to see the zone's places.
@@ -172,10 +249,21 @@ async function zoneMapShots(map: string, region: string): Promise<Shot[]> {
   ];
   // The zones come first among the landmarks: the first ones show every chapter's place, and the review
   // stays light (a wide map has dozens of landmarks, each picture about a megabyte).
+  const blockAt = mapBlocks(map);
   for (const landmark of entities.landmarks.slice(0, ZONE_SHOTS)) {
     const [x, y, z] = landmark.position;
     // A close view loads only the map round its landmark: meshing all of a wide map for each picture is slow.
-    shots.push({ file: `${map}-${landmark.id}.png`, query: { shot: view([x - 22, y + 20, z - 30], [x, y, z], 60), quality: 'high', region, view: 140 }, viewport: wide });
+    // A landmark under a roof (a room) is seen from inside it, at a child's eye height; others from above.
+    const inside = await roomView(blockAt, [x, y, z]);
+    const shot = inside ? view(inside.eye, inside.look, 74) : view([x - 22, y + 20, z - 30], [x, y, z], 60);
+    shots.push({ file: `${map}-${landmark.id}.png`, query: { shot, quality: 'high', region, view: 140 }, viewport: wide });
+  }
+  // The same view as each frame of the owner's detail mocks (content/world/mock-views/<map>.json).
+  for (const v of await readMockViews(map)) {
+    const landmark = entities.landmarks.find((l) => l.id === v.at);
+    if (!landmark) throw new Error(`${map}: mock view ${v.frame} stands at ${v.at}, which is not a landmark of the map`);
+    const at = (o: readonly number[]): number[] => landmark.position.map((p, i) => p + (o[i] ?? 0));
+    shots.push({ file: mockShotFile(v.frame), query: { shot: view(at(v.eye), at(v.look), v.fov), quality: 'high', region, view: v.reach, ...(v.mood === 'dusk' ? { mood: 'dusk' } : {}) }, viewport: wide });
   }
   return shots;
 }
@@ -247,9 +335,11 @@ export async function renderShots(batches: Array<{ outDir: string; label: string
     });
     await server.listen();
     browser = await chromium.launch({ args: ['--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist'] });
+    // PREVIEW_ONLY=<text>: only the pictures whose file name holds it, the others left as they are.
+    const only = process.env.PREVIEW_ONLY;
     for (const batch of batches) {
-      await rm(batch.outDir, { recursive: true, force: true });
-      const shots = await batch.shots();
+      if (!only) await rm(batch.outDir, { recursive: true, force: true });
+      const shots = (await batch.shots()).filter((s) => !only || s.file.includes(only));
       await capture(browser, shots, batch.outDir);
       console.log(`${batch.label}: ${shots.length} images`);
     }

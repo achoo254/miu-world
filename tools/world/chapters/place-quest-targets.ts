@@ -64,6 +64,11 @@ export interface PlacementMap {
   keepClear: readonly Cell[];
   /** Blocks from `keepClear` (default 3). */
   clearance?: number;
+  /**
+   * Where the map has a place of that name (a landmark: "Kệ sách phòng đọc"), when it has one: a quest's
+   * place of the same name stands round it, so the reading-room shelf is found in the reading room.
+   */
+  placeNamed?(name: string): Cell | undefined;
 }
 
 /**
@@ -87,6 +92,8 @@ const CLEAR_GAP = 3;
  */
 const CLUSTER_RADIUS = 3.6;
 const MEMBER_GAP = 2.5;
+/** A place the map names stands within this many blocks of it, if there is room. */
+const NAMED_PLACE_REACH = 10;
 
 export async function readTargetCatalogues(): Promise<{ looks: LookCatalog['looks']; targets: QuestTargetCatalog['targets'] }> {
   const read = async (rel: string): Promise<unknown> => JSON.parse(await readFile(path.join(REPO_ROOT, rel), 'utf8'));
@@ -186,6 +193,15 @@ export async function placeQuestTargets(options: {
     return undefined;
   };
   const firstFree = (...args: Parameters<typeof firstFreeAt>): Cell | undefined => firstFreeAt(...args)?.cell;
+  /** The same as `firstFreeAt`, but the free cell nearest `to` rather than a shuffled one. */
+  const nearestFreeAt = (cells: readonly Cell[], to: Cell, blocked: readonly Cell[], gaps: readonly number[], near: readonly Cell[] = [], nearGap = 0): { cell: Cell; gap: number } | undefined => {
+    for (const gap of gaps) {
+      const free = candidates(cells, blocked, gap).filter((c) => !nearAny(c, near, nearGap));
+      const cell = free.sort((a, b) => Math.hypot(a[0] - to[0], a[1] - to[1]) - Math.hypot(b[0] - to[0], b[1] - to[1]))[0];
+      if (cell) return { cell, gap };
+    }
+    return undefined;
+  };
   const nearAny = (a: Cell, list: readonly Cell[], gap: number): boolean => gap > 0 && near(a, list, gap);
 
   const residents = [...uses.entries()].filter(([id, list]) => list.length > 1 && !existingIds.has(id)).sort(([a], [b]) => a.localeCompare(b));
@@ -218,7 +234,15 @@ export async function placeQuestTargets(options: {
       const [first] = centres;
       const cells = map.chapterCells(chapter);
       const span = first ? cells.filter((c) => Math.hypot(c[0] - first[0], c[1] - first[1]) <= QUEST_SPAN) : cells;
-      const found = firstFreeAt(span, [...always, ...centres], CLUSTER_GAPS, residentAt, BESIDE_RESIDENT) ?? firstFreeAt(cells, [...always, ...centres], CLUSTER_GAPS, residentAt, BESIDE_RESIDENT);
+      // A place the map names: round its landmark first, nearest cells first.
+      const named = map.placeNamed?.(place);
+      const atNamed = named
+        ? nearestFreeAt(cells.filter((c) => Math.hypot(c[0] - named[0], c[1] - named[1]) <= NAMED_PLACE_REACH), named, [...always, ...centres], CLUSTER_GAPS, residentAt, BESIDE_RESIDENT)
+        : undefined;
+      const found =
+        atNamed ??
+        firstFreeAt(span, [...always, ...centres], CLUSTER_GAPS, residentAt, BESIDE_RESIDENT) ??
+        firstFreeAt(cells, [...always, ...centres], CLUSTER_GAPS, residentAt, BESIDE_RESIDENT);
       if (!found) throw new Error(`quest ${quest}: no room for the place "${place}" in chapter ${chapter}`);
       const centre = found.cell;
       if (centres.length > 0 && found.gap < WALK_GAP) narrow.push({ quest, place, gap: found.gap });

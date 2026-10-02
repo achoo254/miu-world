@@ -24,6 +24,10 @@ export interface SchoolPalette {
   grass: number;
   dirt: number;
   sand: number;
+  /** A glowing lantern block (gate pillars, corridor lights); the pillars' `light` when none. */
+  lantern?: number;
+  /** The campus wall above its first course as iron bars with panes between (c-02's railing); brick when none. */
+  railing?: { bar: number; pane: number };
 }
 
 /** Fills a box of one block (inclusive bounds). */
@@ -45,27 +49,32 @@ export function placeStreet(world: WorldWriter, x0: number, x1: number, z0: numb
 
 /**
  * The campus wall around x0..x1, z0..z1: a stone wall two high with taller pillars every four blocks, open at
- * `gate` (x from..to on the front side) between two broad gate pillars topped with lanterns.
+ * `gate` (x from..to on the front side) between two broad gate pillars (designs/truong-hoc/c-02: stone, a
+ * cap, a lantern on top), and at `backGate` on the back side when given.
  */
-export function placeCampusWall(world: WorldWriter, x0: number, x1: number, z0: number, z1: number, baseY: (x: number, z: number) => number, gate: readonly [number, number], b: SchoolPalette): void {
+export function placeCampusWall(world: WorldWriter, x0: number, x1: number, z0: number, z1: number, baseY: (x: number, z: number) => number, gate: readonly [number, number], b: SchoolPalette, backGate?: readonly [number, number]): void {
   const onWall = (x: number, z: number) => x === x0 || x === x1 || z === z0 || z === z1;
   for (let x = x0; x <= x1; x++) {
     for (let z = z0; z <= z1; z++) {
       if (!onWall(x, z)) continue;
       if (z === z0 && x >= gate[0] && x <= gate[1]) continue;
+      if (backGate && z === z1 && x >= backGate[0] && x <= backGate[1]) continue;
       const y = baseY(x, z);
-      // Three bricks high: the child climbs two blocks on her own, so the wall keeps her in the campus.
-      for (let h = 0; h < 3; h++) put(world, x, y + h, z, b.brick);
-      if ((x - x0) % 4 === 0 && (z - z0) % 4 === 0) {
+      // Three blocks high: the child climbs two blocks on her own, so the wall keeps her in the campus.
+      const pillar = (x - x0) % 4 === 0 && (z - z0) % 4 === 0;
+      for (let h = 0; h < 3; h++) put(world, x, y + h, z, pillar || h === 0 || !b.railing ? (pillar ? b.stone : b.brick) : (x + z) % 2 === 0 ? b.railing.bar : b.railing.pane);
+      if (pillar) {
         put(world, x, y + 3, z, b.stone);
         put(world, x, y + 4, z, b.trim);
       }
     }
   }
-  for (const px of [gate[0] - 2, gate[1] + 1]) {
-    fill(world, px, baseY(px, z0), z0, px + 1, baseY(px, z0) + 4, z0 + 1, b.stone);
-    put(world, px, baseY(px, z0) + 5, z0, b.light);
-    put(world, px + 1, baseY(px, z0) + 5, z0, b.light);
+  const pillars: Array<[number, number]> = [...[gate[0] - 2, gate[1] + 1].map((px): [number, number] => [px, z0]), ...(backGate ? [backGate[0] - 2, backGate[1] + 1].map((px): [number, number] => [px, z1 - 1]) : [])];
+  for (const [px, pz] of pillars) {
+    const y = baseY(px, pz);
+    fill(world, px, y, pz, px + 1, y + 3, pz, b.stone);
+    fill(world, px, y + 4, pz, px + 1, y + 4, pz, b.trim);
+    put(world, px + (px < gate[0] ? 0 : 1), y + 5, pz, b.lantern ?? b.light);
   }
 }
 
@@ -80,6 +89,13 @@ export interface MainBuildingSpec {
   zBack: number;
   /** Top of the plinth the building stands on (one above the ground). */
   floorY: number;
+  /**
+   * The front gallery closed into a corridor (designs/truong-hoc/c-02, c-17): a wall of windows one block
+   * out from its posts' row, the entrance open under the tower, lights in its ceilings.
+   */
+  corridor?: boolean;
+  /** More rooms open onto the gallery and returned to be furnished: east or west of the hall, nth from it, which floor. */
+  extraRooms?: ReadonlyArray<{ side: 'east' | 'west'; index: number; upper: boolean }>;
 }
 
 /** Where things of the main building are, for props, entities and tests. */
@@ -96,6 +112,10 @@ export interface MainBuilding {
   plant: [number, number, number];
   /** The top step of the staircase: standing here is the second floor. */
   stairTop: [number, number, number];
+  /** The staircase room (inner cells) and its floor. */
+  stairs: { x0: number; x1: number; z0: number; z1: number; standY: number };
+  /** The rooms `extraRooms` asked for, in its order (inner cells) and their floor. */
+  extraRooms: Array<{ x0: number; x1: number; z0: number; z1: number; standY: number }>;
 }
 
 const STOREY = 4;
@@ -160,12 +180,40 @@ export function placeMainBuilding(world: WorldWriter, spec: MainBuildingSpec, b:
   fill(world, hall.x0, g, zBack, hall.x1, slab - 1, zBack, 0);
 
   // Galleries in front and behind: posts every third block, the upper floor, a railing on the front one.
-  for (const [z0, z1, outer] of [[zFront, zFront + 1, zFront], [zBack + 1, zRear, zRear]] as const) {
+  // With `corridor` the front one is a hall of windows instead (below).
+  const galleries = spec.corridor ? ([[zBack + 1, zRear, zRear]] as const) : ([[zFront, zFront + 1, zFront], [zBack + 1, zRear, zRear]] as const);
+  for (const [z0, z1, outer] of galleries) {
     for (let x = x0 - 1; x <= x1 + 1; x++) {
       const post = (x - x0) % 3 === 0 || x === x0 - 1 || x === x1 + 1;
       if (post) fill(world, x, g, outer, x, ceiling - 1, outer, b.trim);
       for (let z = z0; z <= z1; z++) put(world, x, slab, z, b.floor);
       if (!post) put(world, x, u, outer, b.log);
+    }
+  }
+  if (spec.corridor) {
+    // The front corridor: its outer wall two blocks out from the old posts' row (the corridor three wide), white
+    // pilasters every third block and windows between on both floors, a band at the upper floor, the
+    // entrance open under the tower; its floor, its upper floor and ceiling with lights every fourth block.
+    const zOut = zFront - 2;
+    fill(world, x0 - 2, floorY, zOut - 1, x1 + 2, floorY, zFront + 1, b.stone);
+    for (let x = x0 - 2; x <= x1 + 2; x++) {
+      const end = x === x0 - 2 || x === x1 + 2;
+      for (let y = g; y <= ceiling; y++) {
+        const isSlab = y === slab || y === ceiling;
+        const level = y < slab ? y - g : y - u;
+        const pilaster = (x - x0) % 3 === 0 || x <= x0 - 1 || x >= x1 + 1;
+        const window = !isSlab && !pilaster && (level === 1 || level === 2);
+        const entrance = x >= hall.x0 && x <= hall.x1 && y < slab;
+        put(world, x, y, zOut, entrance ? 0 : isSlab || pilaster ? b.trim : window ? b.glass : b.wall);
+        if (end) for (let z = zOut + 1; z <= zFront + 1; z++) put(world, x, y, z, isSlab ? b.trim : level === 1 || level === 2 ? b.glass : b.wall);
+      }
+      if (x <= x0 - 2 || x >= x1 + 2) continue;
+      for (let z = zOut + 1; z <= zFront + 1; z++) {
+        put(world, x, floorY, z, b.floor);
+        const lamp = (x - x0) % 4 === 1 && z === zFront;
+        put(world, x, slab, z, lamp ? b.light : b.floor);
+        put(world, x, ceiling, z, lamp ? b.light : b.floor);
+      }
     }
   }
   // Doors: classrooms open onto the galleries; every other room is shut.
@@ -175,10 +223,16 @@ export function placeMainBuilding(world: WorldWriter, spec: MainBuildingSpec, b:
   // The furnished classroom is the west room next to the hall.
   const showcase = westRooms.at(-1) ?? { start: x0 + 1, end: hall.x0 - 2 };
   const stairRoom = eastRooms[0] ?? { start: hall.x1 + 2, end: hall.x1 + 6 };
+  const extras = (spec.extraRooms ?? []).map((r) => {
+    const list = r.side === 'east' ? eastRooms : [...westRooms].reverse();
+    const room = list[r.index];
+    if (!room) throw new Error(`main building: no ${r.side} room ${r.index}`);
+    return { room, floor: r.upper ? u : g };
+  });
   for (const floor of [g, u]) {
     for (const room of [...westRooms, ...eastRooms]) {
       const dx = Math.floor((room.start + room.end) / 2);
-      const open = room === showcase || (room === stairRoom && floor === u);
+      const open = room === showcase || (room === stairRoom && floor === u) || extras.some((e) => e.room === room && e.floor === floor);
       fill(world, dx, floor, zWall, dx + 1, floor + 1, zWall, open ? 0 : b.door);
     }
   }
@@ -196,7 +250,8 @@ export function placeMainBuilding(world: WorldWriter, spec: MainBuildingSpec, b:
     if (i < STOREY - 1) fill(world, sx0, slab, z, sx1, slab, z, 0);
     fill(world, sx0, floorY + 2 + i, z, sx1, floorY + 3 + i, z, 0);
   }
-  put(world, sx1 + 1, u + 2, zBack, b.glass);
+  // A tall window on the stair well's back wall, both floors (c-18).
+  for (let x = sx0; x <= sx1 + 1; x++) for (let y = g + 1; y <= u + 2; y++) put(world, x, y, zBack, y === slab ? b.trim : b.glass);
   const stairTop: [number, number, number] = [sx0 + 0.5, slab + 1, firstStep + STOREY - 1 + 0.5];
 
   // Furnished classrooms (mock lop-04, lop-05): the board on the west wall; the teacher's desk before it;
@@ -207,6 +262,8 @@ export function placeMainBuilding(world: WorldWriter, spec: MainBuildingSpec, b:
   for (const feet of [g, u]) {
     const room = { x0: showcase.start, x1: showcase.end, z0: zWall + 1, z1: zBack - 1, standY: feet };
     classrooms.push(room);
+    // The green board in a wooden frame (c-15).
+    fill(world, room.x0 - 1, feet, room.z0 + 1, room.x0 - 1, feet + 3, room.z1 - 1, b.trim);
     fill(world, room.x0 - 1, feet + 1, room.z0 + 2, room.x0 - 1, feet + 2, room.z1 - 2, b.board);
     const midZ = (room.z0 + room.z1 + 1) / 2;
     furniture.push({ kind: 'teacher-desk', at: [room.x0 + 1.6, feet, midZ], yaw: 90 });
@@ -243,10 +300,11 @@ export function placeMainBuilding(world: WorldWriter, spec: MainBuildingSpec, b:
     }
     for (let x = hall.x0 + k; x <= hall.x1 - k; x++) if (k < half) put(world, x, towerTop + 1 + k, tz0, b.wall);
   }
-  const clock: [number, number, number] = [mid + 0.5, roofBase + 1, tz0 - 0.4];
+  // Over a corridor the roof's eave reaches further out and rises in front of the tower: the clock sits higher.
+  const clock: [number, number, number] = [mid + 0.5, roofBase + (spec.corridor ? 2 : 1), tz0 - 0.4];
 
   // Main roof: a red gable along x over the body and both galleries.
-  const r0 = zFront - 1;
+  const r0 = spec.corridor ? zFront - 3 : zFront - 1;
   const r1 = zRear + 1;
   for (let z = r0; z <= r1; z++) {
     const step = Math.min(z - r0, r1 - z);
@@ -257,7 +315,9 @@ export function placeMainBuilding(world: WorldWriter, spec: MainBuildingSpec, b:
       if ((x === x0 || x === x1) && z >= zWall && z <= zBack) for (let fy = roofBase; fy < y; fy++) put(world, x, fy, z, b.wall);
     }
   }
-  return { hall, classrooms, clock, furniture, plant: [hall.x1 + 1.5, g, zBack - 0.5], stairTop };
+  const stairs = { x0: stairRoom.start, x1: stairRoom.end, z0: zWall + 1, z1: zBack - 1, standY: g };
+  const extraRooms = extras.map(({ room, floor }) => ({ x0: room.start, x1: room.end, z0: zWall + 1, z1: zBack - 1, standY: floor }));
+  return { hall, classrooms, clock, furniture, plant: [hall.x1 + 1.5, g, zBack - 0.5], stairTop, stairs, extraRooms };
 }
 
 /** The sports hall (mock khu-04): pale stone walls with windows, a wide door, a blue vaulted roof, a stage inside. */

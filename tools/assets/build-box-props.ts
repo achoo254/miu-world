@@ -1,7 +1,7 @@
 // Builds props too fine for whole blocks and missing from every pack (the swings, a basketball hoop, the
 // flag on its pole, a park bench) from boxes listed in content/world/box-props.json: one mesh with a
-// colour per vertex, one draw call. Output: assets/generated/box-props/<id>.glb. Same input, same bytes.
-import { mkdir, readFile, rm, writeFile } from 'node:fs/promises';
+// colour per vertex, one draw call. Each map may keep its own in content/world/box-props/<map>.json. Output: assets/generated/box-props/<id>.glb. Same input, same bytes.
+import { mkdir, readdir, readFile, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { Document, NodeIO, type TypedArray } from '@gltf-transform/core';
@@ -10,6 +10,21 @@ import { ASSETS_DIR, REPO_ROOT } from './asset-lib';
 
 export const BOX_PROPS_DIR = path.join(ASSETS_DIR, 'generated/box-props');
 const CATALOGUE = path.join(REPO_ROOT, 'content/world/box-props.json');
+/** More catalogues, one per map (content/world/box-props/<map>.json), so each map's props live with it. */
+const MORE_CATALOGUES = path.join(REPO_ROOT, 'content/world/box-props');
+
+/** Every box prop: content/world/box-props.json and each file under content/world/box-props/; an id twice is an error. */
+export async function readBoxProps(): Promise<Record<string, BoxProp>> {
+  const files = [CATALOGUE, ...(await readdir(MORE_CATALOGUES).catch(() => [] as string[])).filter((f) => f.endsWith('.json')).sort().map((f) => path.join(MORE_CATALOGUES, f))];
+  const props: Record<string, BoxProp> = {};
+  for (const file of files) {
+    for (const [id, prop] of Object.entries(BoxPropCatalog.parse(JSON.parse(await readFile(file, 'utf8'))).props)) {
+      if (id in props) throw new Error(`box prop ${id} is in two catalogues (${path.relative(REPO_ROOT, file)})`);
+      props[id] = prop;
+    }
+  }
+  return props;
+}
 
 const toLinear = (c: number): number => (c <= 0.04045 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4);
 
@@ -41,29 +56,41 @@ export function boxMesh(prop: BoxProp): { positions: number[]; normals: number[]
   return out;
 }
 
+/**
+ * One mesh: the plain boxes in one primitive coloured per vertex, and the glowing ones (`glow`) in one
+ * primitive per colour whose material emits that colour, so they stay lit in any light.
+ */
 export async function buildBoxProp(prop: BoxProp): Promise<Uint8Array> {
-  const mesh = boxMesh(prop);
   const doc = new Document();
   const buffer = doc.createBuffer();
   const accessor = (array: TypedArray, type: 'VEC3' | 'VEC4' | 'SCALAR') => doc.createAccessor().setArray(array).setType(type).setBuffer(buffer);
-  const material = doc.createMaterial('box-prop').setBaseColorFactor([1, 1, 1, 1]).setMetallicFactor(0).setRoughnessFactor(1);
-  const primitive = doc
-    .createPrimitive()
-    .setAttribute('POSITION', accessor(new Float32Array(mesh.positions), 'VEC3'))
-    .setAttribute('NORMAL', accessor(new Float32Array(mesh.normals), 'VEC3'))
-    .setAttribute('COLOR_0', accessor(new Uint8Array(mesh.colors), 'VEC4').setNormalized(true))
-    .setIndices(accessor(new Uint16Array(mesh.indices), 'SCALAR'))
-    .setMaterial(material);
-  doc.createScene('box-prop').addChild(doc.createNode('box-prop').setMesh(doc.createMesh('box-prop').addPrimitive(primitive)));
+  const primitiveOf = (boxes: BoxProp['boxes']) => {
+    const mesh = boxMesh({ boxes });
+    return doc
+      .createPrimitive()
+      .setAttribute('POSITION', accessor(new Float32Array(mesh.positions), 'VEC3'))
+      .setAttribute('NORMAL', accessor(new Float32Array(mesh.normals), 'VEC3'))
+      .setAttribute('COLOR_0', accessor(new Uint8Array(mesh.colors), 'VEC4').setNormalized(true))
+      .setIndices(accessor(new Uint16Array(mesh.indices), 'SCALAR'));
+  };
+  const mesh = doc.createMesh('box-prop');
+  const plain = prop.boxes.filter((b) => !b.glow);
+  if (plain.length > 0) mesh.addPrimitive(primitiveOf(plain).setMaterial(doc.createMaterial('box-prop').setBaseColorFactor([1, 1, 1, 1]).setMetallicFactor(0).setRoughnessFactor(1)));
+  for (const color of [...new Set(prop.boxes.filter((b) => b.glow).map((b) => b.color))].sort()) {
+    const linear = [1, 3, 5].map((i) => toLinear(parseInt(color.slice(i, i + 2), 16) / 255)) as [number, number, number];
+    const glow = doc.createMaterial(`glow-${color.slice(1)}`).setBaseColorFactor([1, 1, 1, 1]).setEmissiveFactor(linear).setMetallicFactor(0).setRoughnessFactor(1);
+    mesh.addPrimitive(primitiveOf(prop.boxes.filter((b) => b.glow && b.color === color)).setMaterial(glow));
+  }
+  doc.createScene('box-prop').addChild(doc.createNode('box-prop').setMesh(mesh));
   return new NodeIO().writeBinary(doc);
 }
 
 async function main(): Promise<void> {
-  const catalogue = BoxPropCatalog.parse(JSON.parse(await readFile(CATALOGUE, 'utf8')));
+  const props = await readBoxProps();
   await rm(BOX_PROPS_DIR, { recursive: true, force: true });
   await mkdir(BOX_PROPS_DIR, { recursive: true });
-  for (const [id, prop] of Object.entries(catalogue.props).sort(([a], [b]) => a.localeCompare(b))) await writeFile(path.join(BOX_PROPS_DIR, `${id}.glb`), await buildBoxProp(prop));
-  console.log(`box props: ${Object.keys(catalogue.props).length} models in assets/generated/box-props`);
+  for (const [id, prop] of Object.entries(props).sort(([a], [b]) => a.localeCompare(b))) await writeFile(path.join(BOX_PROPS_DIR, `${id}.glb`), await buildBoxProp(prop));
+  console.log(`box props: ${Object.keys(props).length} models in assets/generated/box-props`);
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) await main();

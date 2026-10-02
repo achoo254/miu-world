@@ -29,6 +29,20 @@
       "bytes": 156422865,
       "sha256": "5359f4b0bb03aa2d7f3b4a81ab37bbf6b631f524ae93174ab1de7b911d94f772",
       "why": "Scanned Tiếng Việt 2 tập 1 textbook; tools/sgk/split-pages.py splits it into pages for reading."
+    },
+    {
+      "from": "sgk/toan2-t2.pdf",
+      "to": ".data/sgk/src/toan2-t2.pdf",
+      "bytes": 35545169,
+      "sha256": "fd7b88b33599d891f77687f3a0c602771e55c8a34845b6696e459689ae3a0953",
+      "why": "Toán 2 tập 2 textbook (owner, 02/10/2026); tools/sgk/split-pages.py splits it into pages for reading."
+    },
+    {
+      "from": "sgk/tv2-t2.pdf",
+      "to": ".data/sgk/src/tv2-t2.pdf",
+      "bytes": 47218829,
+      "sha256": "51e1a9ccc9bd0ea7ed0be163d3c90789639113c29c3a42a8aa8c9d05c60acce4",
+      "why": "Tiếng Việt 2 tập 2 textbook (owner, 02/10/2026); tools/sgk/split-pages.py splits it into pages for reading."
     }
   ]
 }

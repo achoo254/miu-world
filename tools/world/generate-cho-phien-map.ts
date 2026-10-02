@@ -1,37 +1,45 @@
-// Generates "Chợ phiên" (Toán topics 2 and 3) from a fixed seed, 800 x 800 blocks after the owner's market
-// mocks (designs/cho-phien/): a country market town by a canal, rows of stalls under red, blue and yellow
-// striped awnings piled with produce, brick squares, two-storey shophouses with coloured roofs round them.
-// Two districts on the canal's north bank, one per chapter. West, the flower and vegetable market
-// (chapter 1): flower, seed, gourd, vegetable, fruit, bamboo and lantern rows, the seedling greenhouse, the
-// gourd trellis, the old apple tree, the pig pen, the dovecote, the ox-cart park, the duck pond, the
-// basket-throwing and tug-of-war grounds, the gate with its watch hut, and on the canal the sluice, the
-// gravel bank, the wooden shed and the dragon bridge. East, the weighing row (chapter 2): the scale stalls,
-// the drinks counter with its fish tank, the sweet-soup kitchen in the middle, the goods store, the rice
-// store and its sack racks, and the goods landing on a harbour basin of the canal. Between them the market
-// street lined with shophouses, hamlets of cottages, a fountain garden; beyond them, outskirts of vegetable
-// plots, hamlets along lamp-lit lanes and thin woods.
+// Generates "Chợ phiên" (Toán topics 2 and 3) from a fixed seed, 800 x 800 blocks after the owner's detail mock
+// of the market (designs/cho-phien/d-01…d-10, c-08, 02/10/2026): a market town by a canal, its ground the
+// market's own green and warm cobbles. The flower and vegetable market (chapter 1) is a round cobbled square
+// round a fountain with the white cat on it (d-01), striped stalls in a ring about it facing in, pennants
+// strung lamp to lamp; north of it the timber gate with its "Chợ" sign and lanterns (d-02) opens on a lane
+// of stalls between shophouses (d-09, d-10, c-08); south of it the market hall under its clock tower, a hall
+// to walk into with shelves of jars, bottles and sacks. West of the square the vegetable stalls face the food
+// stalls (d-03, d-04), east of it the grocery stalls face the clothes stalls (d-05, d-06); the flower stalls,
+// the pet yard with its pens by the duck pond (d-08), gardens and big trees round them. A market street of
+// shophouses with striped awnings leads east to the weighing row (chapter 2): fruit, rice, cake and drinks
+// stalls with their scales along two crossing streets, the great balance in the square where they meet. On
+// the harbour of the canal below it the fish stalls and the lighthouse (d-07). Round the town: the north
+// street of shophouses, hamlets of cottages, vegetable plots, woods.
 // Output: assets/generated/world/cho-phien/{regions/, horizon.bin, entities.json}
 import { PACK, runIfMain, smoothstep } from './map-kit';
-import { bambooHedge, flowerBed, hamlet, jetty, lampRow } from './scenery';
-import { placeHouse, type HouseBlocks } from './structures/buildings';
-import { placeFountain, placeStall } from './structures/countryside';
+import { bambooHedge, cottagePalette, flowerBed, hamlet, jetty, laneVerge } from './scenery';
+import { placeHouse } from './structures/buildings';
+import { bunting, marketStall, originFor, shophouse, STALL, streetLamp, type Awning, type Goods, type StallPlace } from './structures/cho-phien-market';
+import { placeCatStatue, placeFountain, placeLighthouse } from './structures/countryside';
+import { placePlaza } from './structures/landmarks';
 import type { Point } from './structures/path';
-import { placeAncientTree, placeTree } from './structures/tree';
-import type { WorldWriter } from './structures/world-writer';
-import { animal, crowd, person } from './village-life';
+import { placeTree } from './structures/tree';
+import { type Facing, facingOf } from './structures/world-writer';
+import { animal, crowd, person, type Resident } from './village-life';
 import { generateZoneMap, type Zone, type ZoneMapContext } from './zone-map';
 
 export const MAP_ID = 'cho-phien';
 const WATER_LEVEL = 10;
 
 /** What the market's people hold: produce, baskets, crates. */
-const LIFE_HELD = {
+const HELD = {
   basket: `${PACK.props}/basket.glb`,
   apple: `${PACK.food}/apple.glb`,
   cabbage: `${PACK.food}/cabbage.glb`,
+  carrot: `${PACK.food}/carrot.glb`,
+  bread: `${PACK.food}/bread.glb`,
+  fish: `${PACK.survival}/fish.glb`,
+  flower: `${PACK.nature}/flower_redA.glb`,
   crate: `${PACK.survival}/box.glb`,
   bucket: `${PACK.survival}/bucket.glb`,
   paddle: `${PACK.nature}/canoe_paddle.glb`,
+  bag: `${PACK.food}/bag.glb`,
 };
 
 export const ZONES: readonly Zone[] = [
@@ -39,12 +47,12 @@ export const ZONES: readonly Zone[] = [
   { chapter: 2, id: 'day-hang-can-dong', name: 'Dãy hàng cân đong', x: 590, z: 372, hx: 70, hz: 60, floor: 'path' },
 ];
 
-/** The canal's centre line, west to east, south of both districts. */
+/** The canal's centre line, west to east, south of both markets. */
 export function canalCentre(x: number): number {
   return 476 + 6 * Math.sin(x / 57) + 3 * Math.sin(x / 23 + 1);
 }
 const CANAL = { half: 6, x0: 26, x1: 774 };
-/** The harbour basin of the goods landing, the inlet to the sluice by the flower market, the duck pond. */
+/** The harbour basin below the weighing row, the inlet to the sluice, the duck pond by the pet yard. */
 const HARBOUR = { x: 625, z: 474, rx: 30, rz: 12 };
 const INLET = { x0: 176, x1: 179, z0: 452 };
 const DUCK_POND = { x: 290, z: 424, r: 7 };
@@ -55,20 +63,34 @@ const inWater = (x: number, z: number): boolean =>
   (x >= INLET.x0 && x <= INLET.x1 && z >= INLET.z0 && z <= canalCentre(x)) ||
   Math.hypot(x - DUCK_POND.x, z - DUCK_POND.z) < DUCK_POND.r;
 
-/** North-south roads (the west market's, the middle one, the east market's, two outer lanes) and east-west ones. */
-const ROAD_X = { west: 220, mid: 410, east: 590, outerW: 60, outerE: 740 };
-const ROAD_Z = { north: 140, street: 290, lane: 372, bank: 448, south: 620 };
+/** The flower and vegetable market's square, the gate on the lane north of it, the hall south of it. */
+const SQUARE = { x: 220, z: 372, r: 23 };
+const GATE = { x: 220, z: 306 };
+const HALL = { x0: 205, z0: 404, w: 31, d: 16 };
+/** The weighing row's square where its two streets cross. */
+const SCALES = { x: 590, z: 372, r: 9 };
+/** The lighthouse's islet in the harbour. */
+const ISLET = { x: 646, z: 475, r: 3.4 };
+
+/** East-west ways (the north lane, the north street, the market street, the canal bank, the south lane). */
+const ROAD_Z = { north: 140, street: 290, market: 372, bank: 448, south: 620 };
+/** North-south ways (the gate lane, the middle lane, the dragon bridge's road, the weighing row's road, two outer lanes). */
+const ROAD_X = { gate: 220, mid: 410, bridge: 320, east: 590, outerW: 60, outerE: 740 };
 const ROUTES: Point[][] = [
-  [[ROAD_X.west, 30], [ROAD_X.west, 770]],
+  [[ROAD_X.gate, 30], [ROAD_X.gate, SQUARE.z - SQUARE.r + 2]],
+  [[24, ROAD_Z.market], [SQUARE.x - SQUARE.r, ROAD_Z.market]],
+  [[SQUARE.x + SQUARE.r, ROAD_Z.market], [776, ROAD_Z.market]],
+  [[24, ROAD_Z.street], [776, ROAD_Z.street]],
+  [[24, ROAD_Z.bank], [776, ROAD_Z.bank]],
+  [[24, ROAD_Z.north], [776, ROAD_Z.north]],
+  [[24, ROAD_Z.south], [776, ROAD_Z.south]],
   [[ROAD_X.east, 30], [ROAD_X.east, 770]],
-  [[ROAD_X.mid, ROAD_Z.street], [ROAD_X.mid, 770]],
+  [[ROAD_X.mid, ROAD_Z.street], [ROAD_X.mid, ROAD_Z.bank]],
+  [[ROAD_X.bridge, ROAD_Z.market], [ROAD_X.bridge, 770]],
   [[ROAD_X.outerW, ROAD_Z.north], [ROAD_X.outerW, ROAD_Z.south]],
   [[ROAD_X.outerE, ROAD_Z.north], [ROAD_X.outerE, ROAD_Z.south]],
-  ...Object.values(ROAD_Z).map((z): Point[] => [[30, z], [770, z]]),
 ];
-/** Spans of x between the north-south roads (a few blocks clear of them), where rows of buildings and plots go. */
-const SEGMENTS: ReadonlyArray<readonly [number, number]> = [[26, 54], [67, 213], [227, 403], [417, 583], [597, 733], [747, 774]];
-const SPAWN = { x: ROAD_X.west, z: 262 };
+const SPAWN = { x: ROAD_X.gate, z: 262 };
 /** Kept clear round the spawn and the gate back to the school (the builder puts it at spawn + (7, 3)). */
 const SPAWN_YARD = { x0: 208, z0: 254, x1: 240, z1: 276 };
 
@@ -81,207 +103,128 @@ const FLAT = [
 ];
 const flatness = (x: number, z: number): number =>
   Math.max(...FLAT.map((r) => 1 - smoothstep(0, 8, Math.hypot(Math.max(0, r.x0 - x, x - r.x1), Math.max(0, r.z0 - z, z - r.z1)))));
-const F = PACK.food;
+
 const N = PACK.nature;
-const P = PACK.props;
+const BOX = PACK.box;
 const M = {
-  flowerRed: `${N}/flower_redA.glb`,
-  flowerYellow: `${N}/flower_yellowB.glb`,
-  flowerPurple: `${N}/flower_purpleA.glb`,
-  bamboo: `${N}/crops_bambooStageB.glb`,
+  bench: `${BOX}/park-bench.glb`,
+  planter: `${BOX}/cp-planter.glb`,
+  cart: `${BOX}/cp-handcart.glb`,
+  hay: `${BOX}/cp-hay-bale.glb`,
+  trough: `${BOX}/cp-feed-trough.glb`,
+  lantern: `${BOX}/cp-hang-lantern.glb`,
+  mast: `${BOX}/cp-pennant-mast.glb`,
+  sign: `${BOX}/cp-sign-cho.glb`,
+  clock: `${BOX}/cp-clock.glb`,
+  apples: `${BOX}/cp-chalkboard-apple.glb`,
+  paw: `${BOX}/cp-chalkboard-paw.glb`,
+  jars: `${BOX}/cp-shelf-jars.glb`,
+  bottles: `${BOX}/cp-shelf-bottles.glb`,
+  tins: `${BOX}/cp-shelf-tins.glb`,
+  rice: `${BOX}/cp-sack-rice.glb`,
+  beans: `${BOX}/cp-sack-beans.glb`,
+  corn: `${BOX}/cp-sack-corn.glb`,
+  crate: `${PACK.survival}/box-large.glb`,
+  barrel: `${PACK.survival}/barrel.glb`,
+  bucket: `${PACK.survival}/bucket.glb`,
+  scale: `${PACK.props}/balance-scale.glb`,
+  basket: `${PACK.props}/basket.glb`,
+  bag: `${PACK.food}/bag.glb`,
+  fence: `${N}/fence_simple.glb`,
   lily: `${N}/lily_large.glb`,
   canoe: `${N}/canoe.glb`,
   pumpkin: `${N}/crop_pumpkin.glb`,
-  fence: `${N}/fence_simple.glb`,
-  lamp: `${PACK.roads}/light-curved.glb`,
-  barrel: `${PACK.survival}/barrel.glb`,
-  crate: `${PACK.survival}/box-large.glb`,
-  bucket: `${PACK.survival}/bucket.glb`,
-  campfire: `${PACK.survival}/campfire-stand.glb`,
-  bench: `${PACK.box}/park-bench.glb`,
-  hoop: `${PACK.box}/basketball-hoop.glb`,
-  scale: `${P}/balance-scale.glb`,
-  basket: `${P}/basket.glb`,
-  star: `${P}/glowing-star.glb`,
-  picture: `${P}/framed-picture.glb`,
-  toyBoat: `${P}/sailboat.glb`,
-  seedling: `${P}/seedling.glb`,
-  fish: `${P}/tropical-fish.glb`,
-  cucumber: `${P}/cucumber.glb`,
-  cabbage: `${F}/cabbage.glb`,
-  carrot: `${F}/carrot.glb`,
-  apple: `${F}/apple.glb`,
-  banana: `${F}/banana.glb`,
-  pear: `${F}/pear.glb`,
-  soda: `${F}/soda-bottle.glb`,
-  pot: `${F}/pot-stew.glb`,
-  bag: `${F}/bag.glb`,
-  cake: `${F}/cake.glb`,
+  cabbage: `${PACK.food}/cabbage.glb`,
+  flowers: [`${N}/flower_redA.glb`, `${N}/flower_yellowB.glb`, `${N}/flower_purpleA.glb`],
+  pets: { cow: animal('cow'), pig: animal('pig'), chick: animal('chick'), cat: animal('cat'), dog: animal('dog'), bunny: `${PACK.pets}/animal-bunny.glb` },
 };
-/** What each kind of stall piles on its counter and in the crates before it. */
-const GOODS = {
-  sunflower: [M.flowerYellow],
-  chrysanthemum: [M.flowerYellow, M.flowerPurple],
-  hibiscus: [M.flowerRed],
-  flowers: [M.flowerRed, M.flowerYellow, M.flowerPurple],
-  seeds: [M.seedling, M.bag],
-  pictures: [M.picture],
-  gourds: [M.cucumber, M.pumpkin],
-  carrots: [M.carrot],
-  greens: [M.cabbage],
-  vegetables: [M.cabbage, M.carrot, M.cucumber],
-  fruit: [M.apple, M.banana, M.pear],
-  apples: [M.apple],
-  guava: [M.pear],
-  toys: [M.toyBoat],
-  bamboo: [M.basket],
-  lanterns: [M.basket],
-  stars: [M.star],
-  soup: [M.pot],
-  drinks: [M.soda],
-  cakes: [M.cake],
-  rice: [M.bag],
-} as const;
-type Kind = keyof typeof GOODS;
-const FLOWER_KINDS = new Set<Kind>(['sunflower', 'chrysanthemum', 'hibiscus', 'flowers']);
-const FLOWER_PROPS = [M.flowerRed, M.flowerYellow, M.flowerPurple];
 
-type Facing = 'n' | 's';
+/** What a shopper at a stall of each trade comes for (their name: "Bà mua cá"). */
+const WANTS: Readonly<Record<Goods, string>> = {
+  veg: 'mua rau', fruit: 'mua hoa quả', food: 'mua đồ ăn', grocery: 'mua mắm muối', clothes: 'mua áo', fish: 'mua cá',
+  flowers: 'mua hoa', rice: 'mua gạo', cakes: 'mua bánh', drinks: 'mua nước', pets: 'xem thú',
+};
+/** Who: kept apart from the named sellers, so a second stall of a trade gets a seller of its own name. */
+const FOLK = ['Cô', 'Bác', 'Chị', 'Bà', 'Chú', 'Anh', 'Dì', 'Ông'];
 
-/** A writer that mirrors front to back about z = m / 2: a builder whose door faces -z then faces +z. */
-function mirrored(world: WorldWriter, m: number): WorldWriter {
-  return { size: world.size, get: (x, y, z) => world.get(x, y, m - z), set: (x, y, z, id) => world.set(x, y, m - z, id) };
-}
+/** Who keeps each trade's stalls: their names (never the same twice), how they look, what they hold. */
+const SELLERS: Readonly<Record<Goods, { names: readonly string[]; models: readonly string[]; held: readonly string[] }>> = {
+  veg: { names: ['Cô bán rau', 'Bác bán củ quả', 'Chị bán cải xanh', 'Bà bán hành tỏi', 'Chú bán bí ngô'], models: [person('b'), person('e'), person('h'), person('i'), person('k')], held: [HELD.cabbage] },
+  fruit: { names: ['Chú bán hoa quả', 'Cô bán cam', 'Chị bán dưa hấu', 'Bác bán táo', 'Cô bán nho', 'Anh bán chuối'], models: [person('k'), person('l'), person('e'), person('a'), person('h'), person('j')], held: [HELD.apple] },
+  food: { names: ['Bác bán bánh mì', 'Cô bán xôi', 'Chú bán xiên nướng', 'Bà bán bánh bao', 'Chị bán bánh nướng'], models: [person('a'), person('i'), person('m'), person('c'), person('l')], held: [HELD.bread] },
+  grocery: { names: ['Chú bán tạp hóa', 'Cô bán mắm muối', 'Bà bán đồ khô', 'Anh bán chổi rơm', 'Chị bán hũ mứt'], models: [person('m'), person('e'), person('i'), person('j'), person('h')], held: [HELD.basket] },
+  clothes: { names: ['Chị bán quần áo', 'Cô bán mũ nón', 'Bác thợ may', 'Cô bán áo hoa', 'Chị bán khăn'], models: [person('l'), person('h'), person('a'), person('e'), person('c')], held: [HELD.basket] },
+  fish: { names: ['Bác bán cá', 'Cô bán tôm cua', 'Chú bán cá khô', 'Chị bán mực', 'Bà bán ốc'], models: [person('m'), person('e'), person('k'), person('h'), person('i')], held: [HELD.fish] },
+  flowers: { names: ['Cô bán hoa', 'Bà bán hoa cúc', 'Chị bán hoa hồng', 'Cô bán cây giống', 'Chị bán hoa hướng dương'], models: [person('e'), person('i'), person('h'), person('l'), person('c')], held: [HELD.flower] },
+  rice: { names: ['Chú bán gạo', 'Bác cân gạo', 'Cô bán đậu', 'Chị bán ngô', 'Bác bán nếp', 'Cô đong lạc'], models: [person('b'), person('a'), person('e'), person('h'), person('k'), person('l')], held: [HELD.bag] },
+  cakes: { names: ['Cô bán bánh ngọt', 'Chị bán bánh bông lan', 'Bà bán bánh dẻo', 'Cô bán bánh kem', 'Chú bán bánh quy'], models: [person('l'), person('h'), person('i'), person('e'), person('m')], held: [HELD.basket] },
+  drinks: { names: ['Chị bán nước', 'Cô bán nước mía', 'Chú bán nước chanh', 'Bà bán trà', 'Anh bán sữa đậu'], models: [person('h'), person('e'), person('k'), person('i'), person('j')], held: [HELD.bucket] },
+  pets: { names: ['Bà bán thú cưng', 'Chú bán gà vịt', 'Cô bán thỏ'], models: [person('i'), person('b'), person('l')], held: [HELD.basket] },
+};
 
-/** The market's builders on one map: stalls, tents, shophouses, plots, and the small works of the lessons. */
+type Kit = ReturnType<typeof marketKit>;
+
+const fail = (message: string): never => {
+  throw new Error(`cho-phien: ${message}`);
+};
+
+/** This map's builders on one map: blocks by name, stalls (their sellers listed for the cast), lamps and pennants. */
 function marketKit(ctx: ZoneMapContext) {
-  const { world, block, ground } = ctx;
-  const base = ground + 1;
+  const { world, block } = ctx;
+  const base = ctx.ground + 1;
   const B = {
-    log: block('log'), planks: block('planks'), birch: block('birch-log'), snow: block('snow'), sand: block('sand'), red: block('wood-red'),
-    brick: block('brick-red'), grey: block('brick-grey'), blue: block('roof-blue'), glass: block('glass'), board: block('board'),
-    water: block('water'), leaves: block('leaves'), autumn: block('leaves-autumn'), pink: block('leaves-pink'), dirt: block('dirt'),
-    stone: block('stone'), riverbed: block('riverbed'), path: block('path'), treeLog: block('tree-log'),
+    log: block('log'), planks: block('planks'), sand: block('sand'), snow: block('snow'), red: block('brick-red'), wood: block('wood-red'),
+    blue: block('roof-blue'), glass: block('glass'), stone: block('cobble-grey'), cobble: block('cobble'), grey: block('brick-grey'),
+    water: block('water'), leaves: block('leaves'), pink: block('leaves-pink'), autumn: block('leaves-autumn'), treeLog: block('tree-log'),
+    lantern: block('lantern'), iron: block('iron'), gold: block('wheat'), riverbed: block('riverbed'), dirt: block('dirt'), board: block('board'),
+    birch: block('birch-log'), rock: block('stone'),
   };
-  const awnings = [[B.red, B.snow], [B.blue, B.snow], [B.sand, B.snow], [B.red, B.sand], [B.brick, B.snow]];
-  const writerFor = (z0: number, d: number, facing: Facing): WorldWriter => (facing === 'n' ? world : mirrored(world, 2 * z0 + d - 1));
   const set = (x: number, y: number, z: number, id: number): void => world.set(x, y, z, id);
   const box = (x0: number, y0: number, z0: number, x1: number, y1: number, z1: number, id: number): void => {
-    for (let x = x0; x <= x1; x++) for (let y = y0; y <= y1; y++) for (let z = z0; z <= z1; z++) set(x, y, z, id);
+    for (let x = Math.min(x0, x1); x <= Math.max(x0, x1); x++) for (let y = y0; y <= y1; y++) for (let z = Math.min(z0, z1); z <= Math.max(z0, z1); z++) set(x, y, z, id);
   };
+  const sellers: Array<StallPlace & { n: number }> = [];
   let stalls = 0;
-
   /**
-   * A stall `w` x `d` from (x0, z0) whose counter faces `facing` (n: -z, s: +z), its goods on the counter and
-   * two crates (or pots of flowers) of them before it. Returns the counter's row and the side customers stand on.
+   * A stall of `goods` whose footprint's least corner is (x0, z0), facing `facing` (6 along its front, 4 deep).
+   * Its seller joins the cast unless `seller` is false.
    */
-  const stall = (x0: number, z0: number, kind: Kind, facing: Facing = 'n', w = 6, d = 4): { front: number; out: number } => {
+  const stall = (x0: number, z0: number, facing: Facing, goods: Goods, awning?: Awning, seller = true): StallPlace => {
     const n = stalls++;
-    placeStall(writerFor(z0, d, facing), x0, z0, w, d, base, { log: B.log, planks: B.planks, stripes: awnings[n % awnings.length] ?? [] });
-    const front = facing === 'n' ? z0 : z0 + d - 1;
-    const out = facing === 'n' ? -1 : 1;
-    ctx.keepOut(x0 - 1, front + 2 * out, x0 + w, front - out * d);
-    const goods: readonly string[] = GOODS[kind];
-    const yaw = facing === 'n' ? 180 : 0;
-    for (let i = 0; i < w - 2; i++) ctx.propAt(goods[(i + n) % goods.length] ?? M.basket, [x0 + 1.5 + i, base + 1, front + 0.5], yaw + i * 25);
-    for (const [k, dx] of [-1, w].entries()) {
-      const good = goods[(k + n) % goods.length] ?? M.basket;
-      if (FLOWER_KINDS.has(kind)) {
-        ctx.prop(good, x0 + dx, front, k * 70);
-        ctx.prop(good, x0 + dx, front + out, k * 70 + 40);
-      } else {
-        ctx.prop(M.crate, x0 + dx, front + out, n * 30 + k * 90);
-        ctx.propAt(good, [x0 + dx + 0.5, base + 0.9, front + out + 0.5], k * 60);
-      }
-    }
-    return { front, out };
+    const place = marketStall(ctx, originFor(x0, z0, STALL.width, STALL.depth, facing), facing, goods, n, awning);
+    if (seller) sellers.push({ ...place, n });
+    return place;
   };
-  /** A striped awning on four posts with no counter (a tent for hives, a kitchen). */
-  const tent = (x0: number, z0: number, w: number, d: number, facing: Facing = 'n'): void => {
-    placeStall(writerFor(z0, d, facing), x0, z0, w, d, base, { log: B.log, planks: B.planks, stripes: awnings[stalls++ % awnings.length] ?? [] });
-    const front = facing === 'n' ? z0 : z0 + d - 1;
-    for (let x = x0 + 1; x < x0 + w - 1; x++) set(x, base, front, 0);
-    ctx.keepOut(x0 - 1, z0 - 2, x0 + w, z0 + d + 1);
+  /** A stall centred on (cx, cz) looking toward (tx, tz) (the nearest of the four ways). */
+  const stallToward = (cx: number, cz: number, tx: number, tz: number, goods: Goods, awning?: Awning): StallPlace => {
+    const facing = facingOf(tx - cx, tz - cz);
+    const across = facing === 'north' || facing === 'south';
+    const [w, d] = across ? [STALL.width, STALL.depth] : [STALL.depth, STALL.width];
+    return stall(Math.round(cx - w / 2), Math.round(cz - d / 2), facing, goods, awning);
   };
-
   let houses = 0;
-  /** A house `w` x `d` whose door faces `facing` with its front wall on row `zFront`. Returns its rows. */
-  const house = (x0: number, zFront: number, w: number, d: number, wallHeight: number, facing: Facing, blocks: HouseBlocks): { z0: number; z1: number } => {
-    const z0 = facing === 'n' ? zFront : zFront - d + 1;
-    placeHouse(writerFor(z0, d, facing), x0, z0, w, d, wallHeight, base, blocks);
-    ctx.keepOut(x0 - 1, z0 - 1, x0 + w, z0 + d);
-    return { z0, z1: z0 + d - 1 };
+  const shop = (x0: number, z0: number, w: number, d: number, facing: Facing): [number, number] => shophouse(ctx, x0, z0, w, d, facing, houses++);
+  const tree = (x: number, z: number, leaves: number, height = 6): void => {
+    placeTree(world, x, base, z, height, { log: B.treeLog, leaves }, ctx.rng);
+    ctx.keepOut(x - 1, z - 1, x + 1, z + 1);
   };
-  const SHOP_WALLS = [B.snow, B.sand, B.birch, B.planks, B.snow, B.sand];
-  const SHOP_ROOFS = [B.brick, B.blue, B.red, B.brick, B.grey, B.blue, B.red];
-  /** A two-storey shophouse: glazed upper windows, a striped awning over the shop front, a pot or a crate by the door. */
-  const shophouse = (x0: number, zFront: number, w: number, facing: Facing): void => {
-    const n = houses++;
-    const d = 8 + (n % 2);
-    house(x0, zFront, w, d, 6, facing, { wall: SHOP_WALLS[n % SHOP_WALLS.length] ?? B.snow, roof: SHOP_ROOFS[(n * 3) % SHOP_ROOFS.length] ?? B.brick, trim: B.log });
-    for (let x = x0 + 1; x < x0 + w - 1; x++) if ((x - x0) % 3 === 1) set(x, base + 4, zFront, B.glass);
-    const out = facing === 'n' ? -1 : 1;
-    const stripes = awnings[n % awnings.length] ?? [];
-    for (let x = x0; x < x0 + w; x++) set(x, base + 2, zFront + out, stripes[(x - x0) % stripes.length] ?? B.red);
-    ctx.prop(n % 3 === 0 ? M.crate : n % 3 === 1 ? M.barrel : M.flowerRed, x0 + 1, zFront + out, n * 40);
-    if (n % 2 === 0) ctx.prop(FLOWER_PROPS[n % FLOWER_PROPS.length] ?? M.flowerRed, x0 + w - 2, zFront + out, n * 20);
-    ctx.keepOut(x0, zFront + out, x0 + w - 1, zFront + out);
+  /** A festival mast on a column; returns where pennants tie to it. */
+  const mast = (x: number, z: number): [number, number, number] => {
+    ctx.prop(M.mast, x, z, 0);
+    return [x + 0.5, ctx.surface(x, z) + 6.8, z + 0.5];
   };
-  /** Shophouses along a street from x0 to x1, skipping roads, zones, water and `reserved` ground. */
-  const shopRow = (x0: number, x1: number, zFront: number, facing: Facing, reserved: ReadonlyArray<{ x0: number; z0: number; x1: number; z1: number }> = []): void => {
-    let x = x0;
-    while (x <= x1) {
-      const w = 8 + (houses % 3);
-      if (x + w - 1 > x1) break;
-      const zs = facing === 'n' ? [zFront - 1, zFront + 9] : [zFront - 9, zFront + 1];
-      let clear = true;
-      for (let cx = x - 3; cx <= x + w + 2 && clear; cx++) {
-        for (let cz = Math.min(...zs); cz <= Math.max(...zs) && clear; cz++) {
-          if (ctx.onPath(cx, cz) || ctx.inWater(cx, cz) || ctx.inZone(cx, cz, 1) || reserved.some((r) => cx >= r.x0 && cx <= r.x1 && cz >= r.z0 && cz <= r.z1)) clear = false;
-        }
-      }
-      if (!clear) {
-        x += 2;
-        continue;
-      }
-      shophouse(x, zFront, w, facing);
-      x += w + 1 + (houses % 2);
-    }
-  };
-
-  let plots = 0;
-  /**
-   * A vegetable plot (inclusive) on the rolling ground: tilled earth, crop rows every other row (greens,
-   * carrots and pumpkins, cabbages, flowers), a fence along the side facing `fenceZ` (a road), kept clear.
-   */
-  const plot = (x0: number, z0: number, x1: number, z1: number, fenceZ?: number): void => {
-    const n = plots++;
-    const crop = n % 6;
-    for (let x = x0; x <= x1; x++) {
-      for (let z = z0; z <= z1; z++) {
-        if (ctx.onPath(x, z) || ctx.inWater(x, z)) continue;
-        const y = ctx.surface(x, z);
-        set(x, y, z, B.dirt);
-        if ((z - z0) % 2 !== 1 || x === x0 || x === x1 || z === z1) continue;
-        if (crop === 0 || crop === 3) set(x, y + 1, z, B.leaves);
-        else if (crop === 1) set(x, y + 1, z, B.autumn);
-        else if (crop === 5) set(x, y + 1, z, (x + z) % 4 === 0 ? B.pink : B.leaves);
-        else if (crop === 2 && (x - x0) % 3 === 1) ctx.prop(M.cabbage, x, z, (x * 37 + z * 11) % 360);
-        else if (crop === 4 && (x - x0) % 4 === 2) ctx.prop(M.pumpkin, x, z, (x * 37 + z * 11) % 360);
-      }
-    }
-    if (fenceZ !== undefined) for (let x = x0; x <= x1; x += 2) if (!ctx.onPath(x, fenceZ) && !ctx.inWater(x, fenceZ)) ctx.prop(M.fence, x, fenceZ, 0);
-    ctx.keepOut(x0, z0, x1, z1);
-  };
-
-  return { B, base, set, box, stall, tent, house, shophouse, shopRow, plot };
+  return { B, base, set, box, stall, stallToward, shop, tree, mast, sellers, lamp: (x: number, z: number) => streetLamp(ctx, x, z) };
 }
+
 export async function generateChoPhien() {
+  let cast: readonly Resident[] = [];
+  let kit: Kit | null = null;
   return generateZoneMap({
     mapId: MAP_ID,
     region: 'cho-phien',
     seedText: 'miu-cho-phien',
     outland: 'market',
+    soil: { grass: 'grass-market', path: 'cobble' },
     zones: ZONES,
     spawn: { x: SPAWN.x, z: SPAWN.z, yaw: 0 },
     shape: (x, z, h) => {
@@ -291,497 +234,607 @@ export async function generateChoPhien() {
     water: { level: WATER_LEVEL, covers: inWater },
     pathsFromSpawn: false,
     routes: ROUTES,
-    trees: { skip: 0.55, blocks: (roll, block) => ({ log: block('tree-log'), leaves: block(roll < 0.32 ? 'leaves-pink' : roll < 0.4 ? 'leaves-autumn' : 'leaves') }) },
-    dressing: { models: [M.basket, M.crate, M.barrel, M.bucket, M.flowerRed, M.flowerYellow, M.flowerPurple, M.pumpkin, M.cabbage], spacing: 6 },
-    // Toy boats and small frames on the stalls (content/world/models.json has the usual sizes).
-    sizes: { [M.toyBoat]: 0.6, [M.picture]: 0.6 },
-    // Market day: sellers calling at every row, shoppers answering, porters carrying loads, the canal's
-    // boatmen, the animals for sale, children at the games.
-    life: ({ landmark }) => [
-      ...crowd('vendor', ['Cô bán hoa', 'Bà bán hoa cúc'], [person('e'), person('i')], landmark('sap-hoa-huong-duong'), 8, 4, [LIFE_HELD.basket]),
-      ...crowd('vendor', ['Bác bán rau', 'Chị bán cà rốt'], [person('b'), person('h')], landmark('sap-rau-cai'), 8, 4, [LIFE_HELD.cabbage]),
-      ...crowd('vendor', ['Chú bán quả', 'Cô bán ổi'], [person('k'), person('l')], landmark('hang-qua'), 8, 3, [LIFE_HELD.apple]),
-      ...crowd('vendor', ['Bác bán đồ tre'], [person('a')], landmark('sap-do-tre'), 5, 2, [LIFE_HELD.basket]),
-      ...crowd('vendor', ['Cô bán đèn lồng'], [person('h')], landmark('sap-den-long'), 5, 2, [LIFE_HELD.basket]),
-      ...crowd('shopper', ['Cô đi chợ', 'Bác đi chợ', 'Mẹ đi chợ'], [person('c'), person('g'), person('l'), person('e')], landmark('day-sap-rau-hoa'), 22, 10, [LIFE_HELD.basket]),
-      ...crowd('porter', ['Chú gánh hàng', 'Bác khuân rau'], [person('j'), person('m')], landmark('cong-cho'), 12, 4, [LIFE_HELD.crate]),
-      ...crowd('pupil', ['Bạn kéo co', 'Bạn ném rổ'], [person('f'), person('n'), person('o'), person('q')], landmark('bai-keo-co'), 8, 6),
-      ...crowd('hen-keeper', ['Bà bán gà vịt'], [person('i')], landmark('ao-vit'), 8, 1, [LIFE_HELD.basket, LIFE_HELD.basket]),
-      ...crowd('chick', ['Gà con'], [animal('chick')], landmark('ao-vit'), 8, 8),
-      ...crowd('pig', ['Lợn giống'], [animal('pig')], landmark('chuong-lon-giong'), 6, 4),
-      ...crowd('cow', ['Bò kéo xe'], [animal('cow')], landmark('bai-buoc-xe-bo'), 8, 3),
-      ...crowd('vendor', ['Cô bán cân', 'Bác cân hàng'], [person('e'), person('b')], landmark('quay-can'), 8, 3, [LIFE_HELD.basket]),
-      ...crowd('vendor', ['Chị bán nước'], [person('h')], landmark('quay-nuoc'), 6, 2, [LIFE_HELD.bucket]),
-      ...crowd('home-cook', ['Bà nấu chè'], [person('i')], landmark('bep-che'), 4, 2, [LIFE_HELD.basket]),
-      ...crowd('shopper', ['Khách mua chè', 'Bác mua gạo'], [person('c'), person('k'), person('g')], landmark('bep-che'), 12, 5, [LIFE_HELD.basket]),
-      ...crowd('porter', ['Chú khuân bao gạo'], [person('j'), person('m')], landmark('kho-gao'), 8, 3, [LIFE_HELD.crate]),
-      ...crowd('ferryman', ['Bác chèo thuyền hàng'], [person('m'), person('a')], landmark('ben-hang-ben-kenh'), 10, 3, [LIFE_HELD.paddle]),
-      ...crowd('ploughman', ['Bác trồng rau'], [person('a'), person('e')], landmark('ruong-rau-ngoai-o'), 24, 4),
-      ...crowd('dog', ['Cún chợ'], [animal('dog')], landmark('pho-cho'), 20, 4),
-      ...crowd('cat', ['Mèo hàng cá'], [animal('cat')], landmark('vuon-hoa-giua-pho'), 12, 3),
-      ...crowd('chick', ['Gà ri'], [animal('chick')], landmark('cong-cho'), 10, 6),
-      ...crowd('dog', ['Chó giữ kho'], [animal('dog')], landmark('kho-gao'), 12, 3),
-      ...crowd('cat', ['Mèo nằm bếp'], [animal('cat')], landmark('bep-che'), 9, 3),
-    ],
+    trees: { skip: 0.55, blocks: (roll, block) => ({ log: block('tree-log'), leaves: block(roll < 0.25 ? 'leaves-pink' : roll < 0.35 ? 'leaves-autumn' : 'leaves') }) },
+    dressing: { models: [M.planter, M.crate, M.barrel, M.bucket, M.basket, ...M.flowers], spacing: 9 },
+    // The cast is drawn once the map is built (zone-map.ts calls `life` after `build`).
+    life: ({ landmark }) => shopperRounds(kit ?? fail('the market was not built before its cast'), [
+      ...cast,
+      // Shoppers and children round the squares and along the lanes, porters at the gate and the harbour.
+      ...crowd('shopper', ['Cô đi chợ', 'Bác đi chợ', 'Mẹ đi chợ', 'Bà đi chợ sớm', 'Chị xách làn'], [person('c'), person('g'), person('l'), person('e'), person('i')], landmark('quang-truong-cho'), 13, 10, [HELD.basket]),
+      ...crowd('shopper', ['Bé đi chợ cùng mẹ', 'Bạn nhỏ xách giỏ', 'Bé cầm hoa'], [person('f'), person('n'), person('o')], landmark('quang-truong-cho'), 9, 5, [HELD.flower]),
+      ...crowd('shopper', ['Khách mua rau', 'Ông đi chợ'], [person('g'), person('a')], landmark('loi-di-trong-cho'), 3, 4, [HELD.basket]),
+      ...crowd('shopper', ['Cô mua bánh', 'Bạn nhỏ mua kẹo'], [person('c'), person('p')], landmark('gian-do-an'), 4, 4, [HELD.bread]),
+      ...crowd('shopper', ['Chị thử mũ', 'Cô mua áo'], [person('l'), person('e')], landmark('gian-quan-ao'), 4, 4, [HELD.basket]),
+      ...crowd('shopper', ['Khách xem chó mèo', 'Bé ngắm thỏ'], [person('g'), person('q')], landmark('khu-ban-thu-nuoi'), 6, 4),
+      ...crowd('shopper', ['Bác cân gạo về', 'Cô mua chè', 'Chú mua nước'], [person('k'), person('c'), person('j')], landmark('can-lon'), 14, 9, [HELD.bag]),
+      ...crowd('shopper', ['Bạn nhỏ đi phố', 'Cô dạo phố'], [person('n'), person('l')], landmark('pho-cho'), 4, 5, [HELD.basket]),
+      ...crowd('shopper', ['Bà mua cá'], [person('i'), person('g')], landmark('gian-hai-san'), 5, 3, [HELD.basket]),
+      ...crowd('porter', ['Chú khuân rau', 'Bác gánh hàng', 'Anh đẩy xe'], [person('j'), person('m'), person('b')], landmark('cong-cho'), 6, 3, [HELD.crate]),
+      ...crowd('porter', ['Chú khuân cá', 'Bác vác thùng'], [person('m'), person('k')], landmark('ben-hang'), 7, 3, [HELD.crate]),
+      ...crowd('porter', ['Anh chở bao gạo'], [person('j')], landmark('can-lon'), 22, 2, [HELD.bag]),
+      ...crowd('sweeper', ['Cô quét chợ'], [person('h')], landmark('quang-truong-cho'), 20, 1),
+      ...crowd('ferryman', ['Bác chèo thuyền hàng', 'Chú lái đò'], [person('m'), person('a')], landmark('ben-hang'), 12, 2, [HELD.paddle]),
+      ...crowd('ploughman', ['Bác trồng rau', 'Cô xới đất'], [person('a'), person('e')], landmark('ruong-rau-ngoai-o'), 20, 3),
+      // Animals: the pet yard's for sale and the market's own cats, dogs and hens.
+      ...crowd('chick', ['Gà con'], [M.pets.chick], landmark('khu-ban-thu-nuoi'), 10, 8),
+      ...crowd('cow', ['Bê con'], [M.pets.cow], landmark('khu-ban-thu-nuoi'), 12, 2),
+      ...crowd('pig', ['Lợn giống'], [M.pets.pig], landmark('khu-ban-thu-nuoi'), 14, 3),
+      ...crowd('cat', ['Mèo mướp', 'Mèo tam thể'], [M.pets.cat], landmark('quang-truong-cho'), 16, 3),
+      ...crowd('dog', ['Cún chợ', 'Chó vàng'], [M.pets.dog], landmark('quang-truong-cho'), 18, 2),
+      ...crowd('cat', ['Mèo hàng cá'], [M.pets.cat], landmark('gian-hai-san'), 6, 2),
+      ...crowd('dog', ['Chó giữ kho'], [M.pets.dog], landmark('can-lon'), 18, 3),
+      ...crowd('chick', ['Gà ri'], [M.pets.chick], landmark('cong-cho'), 9, 6),
+      ...crowd('cat', ['Mèo nằm phố'], [M.pets.cat], landmark('pho-cho'), 8, 2),
+      ...crowd('dog', ['Cún phố chợ'], [M.pets.dog], landmark('pho-cho'), 10, 2),
+      ...crowd('chick', ['Gà mái mơ'], [M.pets.chick], landmark('thap-dong-ho'), 12, 4),
+      // Dogs and cats running round the lanes and the stalls, hens pecking under them.
+      ...crowd('dog', ['Cún đốm', 'Chó lông xù'], [M.pets.dog], landmark('loi-di-trong-cho'), 7, 3),
+      ...crowd('cat', ['Mèo vàng', 'Mèo mun'], [M.pets.cat], landmark('loi-di-trong-cho'), 6, 3),
+      ...crowd('cat', ['Mèo hàng bánh'], [M.pets.cat], landmark('gian-do-an'), 5, 2),
+      ...crowd('dog', ['Cún hàng áo'], [M.pets.dog], landmark('gian-quan-ao'), 6, 2),
+      ...crowd('chick', ['Gà tre'], [M.pets.chick], landmark('gian-do-an'), 7, 4),
+    ]),
     build: (ctx) => {
-      const kit = marketKit(ctx);
-      const { B, base, shopRow, plot } = kit;
-      const { world, rng } = ctx;
+      const built = marketKit(ctx);
+      kit = built;
       ctx.keepOut(SPAWN_YARD.x0, SPAWN_YARD.z0, SPAWN_YARD.x1, SPAWN_YARD.z1);
-      buildSquares(ctx, kit);
-      buildFlowerMarket(ctx, kit);
-      buildWeighingRow(ctx, kit);
-      buildCanal(ctx, kit);
-
-      // The market street and the middle lane: shophouses on both sides wherever no zone or road is.
-      shopRow(24, 776, ROAD_Z.street - 5, 's', [SPAWN_YARD]);
-      shopRow(24, 776, ROAD_Z.street + 5, 'n');
-      for (const [x0, x1] of [[24, 124], [316, 512], [668, 776]] as const) {
-        shopRow(x0, x1, ROAD_Z.lane - 5, 's');
-        shopRow(x0, x1, ROAD_Z.lane + 5, 'n');
-      }
-      ctx.landmark('pho-cho', 'Phố chợ', 330, ROAD_Z.street);
-
-      // Hamlets of cottages round shared yards: between the districts, west and east of them, along the outer lanes.
-      for (const [x0, x1] of SEGMENTS) {
-        hamlet(ctx, x0, ROAD_Z.north + 4, x1, 186);
-        hamlet(ctx, x0, 494, x1, 540);
-        hamlet(ctx, x0, ROAD_Z.south + 6, x1, 668);
-      }
-      for (const [x0, x1] of [[26, 54], [67, 124], [318, 402], [668, 733], [747, 776]] as const) {
-        hamlet(ctx, x0, 304, x1, 358);
-        hamlet(ctx, x0, 388, x1, 444);
-      }
-      hamlet(ctx, 418, 388, 512, 444);
-
-      // The fountain garden between the districts.
-      const garden = { x: 462, z: 330 };
-      placeFountain(world, garden.x, garden.z, base, { stone: B.grey, water: B.water });
-      ctx.keepOut(garden.x - 5, garden.z - 5, garden.x + 5, garden.z + 5);
-      for (const [dx, dz] of [[-24, -18], [12, -18], [-24, 12], [12, 12]] as const) flowerBed(ctx, garden.x + dx, garden.z + dz, 12, 6);
-      for (const [i, dx] of [-8, 0, 8].entries()) for (const dz of [-8, 8]) ctx.prop(M.bench, garden.x + dx, garden.z + dz, dz < 0 ? 0 : 180 + i);
-      for (const [dx, dz] of [[-30, -6], [30, -6], [-30, 8], [30, 8], [0, -22], [0, 22]] as const) {
-        placeTree(world, garden.x + dx, base, garden.z + dz, 6, { log: B.treeLog, leaves: B.pink }, rng);
-        ctx.keepOut(garden.x + dx - 1, garden.z + dz - 1, garden.x + dx + 1, garden.z + dz + 1);
-      }
-      ctx.keepOut(garden.x - 36, garden.z - 26, garden.x + 36, garden.z + 26);
-      ctx.landmark('vuon-hoa-giua-pho', 'Vườn hoa giữa phố', garden.x, garden.z - 6);
-
-      // Outskirts: vegetable plots north of the town and south of the canal, thin woods beyond.
-      for (const [x0, x1] of SEGMENTS) {
-        for (let x = x0; x + 20 <= x1; x += 44) {
-          const xe = Math.min(x + 39, x1);
-          plot(x, 192, xe, 222, 190);
-          plot(x, 228, xe, 252, 254);
-          plot(x, 548, xe, 578, 546);
-          plot(x, 584, xe, 612, 614);
-          if (((x - x0) / 44) % 2 === 0) plot(x, 682, xe, 714, 680);
-          if (((x - x0) / 44) % 2 === 1) plot(x, 46, xe, 80, 84);
-        }
-      }
-      ctx.landmark('ruong-rau-ngoai-o', 'Ruộng rau ngoại ô', 300, 220);
-
-      for (const [i, route] of ROUTES.entries()) lampRow(ctx, route, 20 + (i % 3) * 2);
-      bambooHedge(ctx, [[20, 20], [780, 20]]);
-      bambooHedge(ctx, [[20, 780], [780, 780]]);
-      bambooHedge(ctx, [[20, 20], [20, 780]]);
-      bambooHedge(ctx, [[780, 20], [780, 780]]);
+      paveZones(ctx, built);
+      buildSquare(ctx, built);
+      buildGateLane(ctx, built);
+      buildHall(ctx, built);
+      buildSideStreets(ctx, built);
+      buildPetYard(ctx, built);
+      buildMarketStreet(ctx, built);
+      buildWeighingRow(ctx, built);
+      buildHarbour(ctx, built);
+      buildCanal(ctx, built);
+      buildOutskirts(ctx, built);
+      cast = sellerCast(built);
     },
   });
 }
 
-type Kit = ReturnType<typeof marketKit>;
+/**
+ * A seller in every stall (owner, 02/10/2026: every stall is kept), the trade's own names first, then "Dì bán
+ * cá"-like names nobody else has; each works behind the counter only, facing the shoppers.
+ */
+function sellerCast(kit: Kit): Resident[] {
+  const used = new Map<Goods, number>();
+  const taken = new Set<string>();
+  const out: Resident[] = [];
+  for (const s of kit.sellers) {
+    const who = SELLERS[s.goods];
+    const i = used.get(s.goods) ?? 0;
+    used.set(s.goods, i + 1);
+    const trade = WANTS[s.goods].replace(/^(mua|xem)/, 'bán');
+    const name = who.names[i] ?? FOLK.map((f) => `${f} ${trade}`).find((n) => !taken.has(n)) ?? `${FOLK[i % FOLK.length] ?? 'Cô'} ${trade} ${i + 1}`;
+    taken.add(name);
+    out.push({ routine: 'vendor', name, model: who.models[i % who.models.length] ?? person('e'), held: who.held, at: s.seller, facing: s.looks, visits: [s.seller, s.seller, s.seller] });
+  }
+  return out;
+}
 
-/** Brick squares of both markets (a border and a grid of grey brick on the path floor) and lamps along their lanes. */
-function buildSquares(ctx: ZoneMapContext, kit: Kit): void {
+/**
+ * Shoppers going round the stalls: one for every other stall, standing first at its counter, then at the
+ * two stalls nearest it, asking the price (everyday-routines.ts); and every shopper of the crowds round the
+ * squares does the round of the three stalls nearest home.
+ */
+function shopperRounds(kit: Kit, cast: readonly Resident[]): Resident[] {
+  const nearestStalls = (x: number, z: number): Array<readonly [number, number]> =>
+    [...kit.sellers].sort((a, b) => Math.hypot(a.before[0] - x, a.before[1] - z) - Math.hypot(b.before[0] - x, b.before[1] - z)).slice(0, 3).map((s) => s.before);
+  const going = cast.map((r) => (r.routine === 'shopper' && !r.visits ? { ...r, visits: nearestStalls(r.at[0], r.at[1]) } : r));
+  const counts = new Map<Goods, number>();
+  const extra = kit.sellers.flatMap((s, i): Resident[] => {
+    if (i % 2 === 1) return [];
+    const k = counts.get(s.goods) ?? 0;
+    counts.set(s.goods, k + 1);
+    const visits = nearestStalls(s.before[0], s.before[1]);
+    return [{ routine: 'shopper', name: `${FOLK[(k + i) % FOLK.length] ?? 'Cô'} ${WANTS[s.goods]}`, model: person('abcghijklnop'[i % 12] ?? 'c'), held: [HELD.basket], at: s.before, visits }];
+  });
+  return [...going, ...extra];
+}
+
+/**
+ * The markets' cobbles: the squares, the lanes and streets with their stalls, the hall's forecourt, the
+ * flower rows and the pet yard, edged in grey where they meet the market's grass; the rest of each market
+ * is grass with its gardens and trees.
+ */
+function paveZones(ctx: ZoneMapContext, kit: Kit): void {
+  const paved = (x: number, z: number): boolean => {
+    const near = (px: number, pz: number, r: number): boolean => Math.hypot(x - px, z - pz) <= r;
+    return (
+      near(SQUARE.x, SQUARE.z, SQUARE.r + 3) ||
+      (Math.abs(z - ROAD_Z.market) <= 11 && x >= 132 && x <= 660) ||
+      (Math.abs(x - GATE.x) <= 14 && z >= 300 && z <= SQUARE.z) ||
+      (x >= HALL.x0 - 4 && x <= HALL.x0 + HALL.w + 3 && z >= HALL.z0 - 6 && z <= HALL.z0 + HALL.d + 1) ||
+      (x >= 244 && x <= 300 && z >= 314 && z <= 340) ||
+      (x >= 242 && x <= 280 && z >= 382 && z <= 410) ||
+      (Math.abs(x - ROAD_X.east) <= 11 && z >= 312 && z <= 432) ||
+      near(SCALES.x, SCALES.z, SCALES.r + 3)
+    );
+  };
   for (const zn of ZONES) {
     for (let x = zn.x - zn.hx; x <= zn.x + zn.hx; x++) {
       for (let z = zn.z - zn.hz; z <= zn.z + zn.hz; z++) {
-        if (ctx.onPath(x, z) || ctx.inWater(x, z)) continue;
-        const border = Math.abs(x - zn.x) >= zn.hx - 1 || Math.abs(z - zn.z) >= zn.hz - 1;
-        if (border || (x - zn.x) % 12 === 0 || (z - zn.z) % 12 === 0) kit.set(x, ctx.ground, z, kit.B.grey);
+        if (ctx.inWater(x, z)) continue;
+        const y = ctx.surface(x, z);
+        if (!paved(x, z)) {
+          kit.set(x, y, z, ctx.soil.grass);
+          continue;
+        }
+        const edge = [[1, 0], [-1, 0], [0, 1], [0, -1]].some(([dx = 0, dz = 0]) => !paved(x + dx, z + dz));
+        kit.set(x, y, z, edge ? kit.B.stone : kit.B.cobble);
       }
     }
-    for (let d = -zn.hx + 8; d <= zn.hx - 8; d += 14) for (const side of [-3, 3]) ctx.prop(M.lamp, zn.x + d, zn.z + side, side > 0 ? 90 : 270);
-    for (let d = -zn.hz + 8; d <= zn.hz - 8; d += 14) for (const side of [-3, 3]) if (Math.abs(d) > 4) ctx.prop(M.lamp, zn.x + side, zn.z + d, side > 0 ? 0 : 180);
   }
 }
 
-/** Chapter 1: the flower and vegetable market, quarter by quarter round its crossroads, its gates and its yards. */
-function buildFlowerMarket(ctx: ZoneMapContext, kit: Kit): void {
-  const { B, base, set, box, stall, tent } = kit;
-  const { world, rng } = ctx;
-  const zn = ctx.zone(1);
-  const [cx, cz] = [zn.x, zn.z];
-  const top = zn.z - zn.hz;
-
-  // The market gate on the road from the street: two brick pillars, a red beam, and the watch hut beside it.
-  for (const px of [cx - 6, cx + 4]) box(px, base, top - 1, px + 2, base + 5, top + 1, B.brick);
-  box(cx - 6, base + 6, top - 1, cx + 6, base + 6, top + 1, B.red);
-  for (let x = cx - 6; x <= cx + 6; x += 2) set(x, base + 7, top, B.sand);
-  ctx.keepOut(cx - 7, top - 2, cx + 7, top + 2);
-  ctx.landmark('cong-cho', 'Cổng chợ', cx, top - 3);
-  const hut = { x0: cx - 18, z0: top + 2 };
-  for (const [dx, dz] of [[0, 0], [4, 0], [0, 4], [4, 4]] as const) box(hut.x0 + dx, base, hut.z0 + dz, hut.x0 + dx, base + 4, hut.z0 + dz, B.log);
-  box(hut.x0, base + 5, hut.z0, hut.x0 + 4, base + 5, hut.z0 + 4, B.planks);
-  for (let i = 0; i <= 4; i++) for (const [x, z] of [[hut.x0 + i, hut.z0], [hut.x0 + i, hut.z0 + 4], [hut.x0, hut.z0 + i], [hut.x0 + 4, hut.z0 + i]] as const) set(x, base + 6, z, B.planks);
-  for (let k = 0; k <= 2; k++) box(hut.x0 - 1 + k, base + 8 + k, hut.z0 - 1 + k, hut.x0 + 5 - k, base + 8 + k, hut.z0 + 5 - k, B.blue);
-  for (const [dx, dz] of [[0, 0], [4, 0], [0, 4], [4, 4]] as const) box(hut.x0 + dx, base + 6, hut.z0 + dz, hut.x0 + dx, base + 7, hut.z0 + dz, B.log);
-  ctx.keepOut(hut.x0 - 1, hut.z0 - 1, hut.x0 + 5, hut.z0 + 5);
-  ctx.landmark('choi-canh-cong-cho', 'Chòi canh cổng chợ', hut.x0 + 2, hut.z0 + 2);
-  // The back gate where the lane leaves the market west.
-  const west = zn.x - zn.hx;
-  for (const pz of [cz - 7, cz + 5]) box(west - 1, base, pz, west + 1, base + 4, pz + 2, B.planks);
-  box(west - 1, base + 5, cz - 7, west + 1, base + 5, cz + 7, B.red);
-  ctx.keepOut(west - 2, cz - 8, west + 2, cz + 8);
-  ctx.landmark('cong-sau-cho', 'Cổng sau chợ', west + 3, cz);
-
-  // North-west: the flower rows, facing each other across the walk between them, the hives under a tent.
-  const x0 = zn.x - zn.hx + 6;
-  const rowA: Kind[] = ['sunflower', 'sunflower', 'chrysanthemum', 'chrysanthemum', 'hibiscus', 'hibiscus', 'seeds', 'seeds'];
-  const rowB: Kind[] = ['pictures', 'flowers', 'hibiscus', 'seeds', 'sunflower', 'chrysanthemum', 'pictures', 'flowers'];
-  rowA.forEach((kind, i) => stall(x0 + i * 10, top + 8, kind, 's'));
-  rowB.forEach((kind, i) => stall(x0 + i * 10, top + 21, kind, 'n'));
-  ctx.landmark('day-sap-rau-hoa', 'Lối đi giữa hai dãy sạp', x0 + 40, top + 16);
-  ctx.landmark('sap-hoa-huong-duong', 'Sạp hoa hướng dương', x0 + 8, top + 16);
-  ctx.landmark('sap-hoa-cuc', 'Sạp hoa cúc', x0 + 28, top + 16);
-  ctx.landmark('hang-hoa-dam-but', 'Hàng hoa dâm bụt', x0 + 48, top + 16);
-  ctx.landmark('hang-hat-giong', 'Hàng hạt giống', x0 + 68, top + 16);
-  ctx.landmark('sap-tranh-hoa-giay', 'Sạp tranh hoa giấy', x0 + 2, top + 18);
-  const hives = { x0: x0, z0: top + 36 };
-  tent(hives.x0, hives.z0, 9, 5, 's');
-  for (let i = 0; i < 3; i++) ctx.prop(M.crate, hives.x0 + 2 + i * 2, hives.z0 + 2, i * 15);
-  ctx.landmark('to-ong-duoi-mai-leu', 'Tổ ong dưới mái lều', hives.x0 + 4, hives.z0 + 7);
-  const rowC: Kind[] = ['flowers', 'seeds', 'hibiscus', 'pictures', 'chrysanthemum', 'flowers'];
-  rowC.forEach((kind, i) => stall(x0 + 14 + i * 10, top + 36, kind, 's'));
-  const rowD: Kind[] = ['seeds', 'sunflower', 'flowers', 'chrysanthemum', 'hibiscus', 'seeds', 'pictures', 'flowers'];
-  rowD.forEach((kind, i) => stall(x0 + i * 10, top + 49, kind, 'n'));
-  flowerBed(ctx, x0, top + 57, 40, 4);
-  ctx.keepOut(x0, top + 57, x0 + 39, top + 60);
-
-  // North-east: the gourd trellis, the gourd and vegetable rows, the pumpkin pile, bamboo beds of greens,
-  // the washing trough, the soup stall at the end of the row with its water jars behind.
-  const ne = cx + 8;
-  const trellis = { x0: ne, z0: top + 6, x1: ne + 14, z1: top + 18 };
-  for (let x = trellis.x0; x <= trellis.x1; x += 7) for (let z = trellis.z0; z <= trellis.z1; z += 6) box(x, base, z, x, base + 2, z, B.log);
-  box(trellis.x0, base + 3, trellis.z0, trellis.x1, base + 3, trellis.z1, B.leaves);
-  for (let x = trellis.x0 + 1; x < trellis.x1; x += 2) for (let z = trellis.z0 + 1; z < trellis.z1; z += 3) ctx.propAt(M.cucumber, [x + 0.5, base + 2.3, z + 0.5], (x * 31) % 360);
-  for (let x = trellis.x0 + 2; x < trellis.x1; x += 4) ctx.prop(M.pumpkin, x, trellis.z1 - 1, x * 20);
-  ctx.landmark('gian-bau-ban-giong', 'Giàn bầu bán giống', ne + 7, top + 12);
-  const rowE: Kind[] = ['gourds', 'gourds', 'toys', 'carrots', 'carrots', 'greens'];
-  const rowF: Kind[] = ['greens', 'greens', 'carrots', 'gourds', 'vegetables', 'greens'];
-  rowE.forEach((kind, i) => stall(ne + 20 + i * 10, top + 8, kind, 's'));
-  rowF.forEach((kind, i) => stall(ne + 20 + i * 10, top + 21, kind, 'n'));
-  ctx.landmark('sap-bi-muop', 'Sạp bí mướp', ne + 23, top + 16);
-  ctx.landmark('sap-tau-go-do-choi', 'Sạp tàu gỗ cạnh hàng bầu bí', ne + 43, top + 16);
-  ctx.landmark('sap-ca-rot', 'Sạp cà rốt', ne + 58, top + 16);
-  ctx.landmark('sap-rau-cai', 'Sạp rau cải', ne + 73, top + 18);
-  const pile = { x: ne + 6, z: top + 28 };
-  for (const [layer, n, y] of [[0, 4, 0], [1, 3, 0.55], [2, 2, 1.1], [3, 1, 1.6]] as const) {
-    for (let i = 0; i < n; i++) for (let j = 0; j < n; j++) ctx.propAt(M.pumpkin, [pile.x + 0.5 + (i - (n - 1) / 2) * 0.8, base + y, pile.z + 0.5 + (j - (n - 1) / 2) * 0.8], (i * 47 + j * 31 + layer * 13) % 360);
+/**
+ * The market square (d-01): a round of cobbles with a grey ring, the fountain with the white cat in the
+ * middle, planters and benches round it, eight stalls in a ring facing it (leaving the four ways in) and four
+ * more on its diagonals, street lanterns flanking the ways in, festival masts round its edge strung with
+ * pennants, big trees at its corners.
+ */
+function buildSquare(ctx: ZoneMapContext, kit: Kit): void {
+  const { world } = ctx;
+  const { B, base } = kit;
+  const { x: cx, z: cz, r } = SQUARE;
+  placePlaza(world, cx, cz, r, ctx.ground, { paver: B.cobble, border: B.stone });
+  const fountain = placeFountain(world, cx, cz, base, { stone: B.grey, water: B.water });
+  placeCatStatue(world, cx, fountain.plinth[1], cz, { stone: B.snow, eye: B.iron });
+  ctx.keepOut(cx - 5, cz - 5, cx + 5, cz + 5);
+  for (const [dx, dz] of [[-6, -6], [6, -6], [-6, 6], [6, 6]] as const) {
+    ctx.prop(M.planter, cx + dx, cz + dz, 0);
+    ctx.prop(M.bench, cx + Math.sign(dx) * 8, cz + dz / 2, dx < 0 ? 90 : 270);
   }
-  ctx.keepOut(pile.x - 2, pile.z - 2, pile.x + 2, pile.z + 2);
-  ctx.landmark('dong-bi-ngo', 'Đống bí ngô ở hàng bầu bí', pile.x, pile.z);
-  for (let i = 0; i < 3; i++) {
-    const bx = ne + 22 + i * 10;
-    box(bx, base, top + 31, bx + 3, base, top + 32, B.birch);
-    for (let k = 0; k < 4; k++) ctx.propAt(k % 2 ? M.cabbage : M.carrot, [bx + k + 0.5, base + 1, top + 31.5 + (k % 2)], k * 40);
-    ctx.keepOut(bx - 1, top + 30, bx + 4, top + 33);
+  for (const [dx, dz] of [[-3, -7], [3, -7], [-3, 7], [3, 7], [-7, 0], [7, 0]] as const) ctx.prop(M.flowers[(dx + dz + 9) % 3] ?? M.planter, cx + dx, cz + dz, dx * 20);
+  ctx.landmark('quang-truong-cho', 'Quảng trường chợ', cx, cz - 8);
+  ctx.landmark('dai-phun-nuoc-meo-trang', 'Đài phun nước tượng mèo', cx, cz + 6);
+  // The ring of stalls between the ways in, and four more on the diagonals, colours mixed as the mock's.
+  const ring: Array<[number, number, Goods, Awning]> = [
+    [30, 15, 'flowers', 'orange'], [60, 15, 'fruit', 'red'], [120, 15, 'veg', 'green'], [150, 15, 'flowers', 'blue'],
+    [210, 15, 'fruit', 'red'], [240, 15, 'flowers', 'blue'], [300, 15, 'veg', 'green'], [330, 15, 'fruit', 'orange'],
+    [45, 20, 'food', 'blue'], [135, 20, 'grocery', 'orange'], [225, 20, 'clothes', 'red'], [315, 20, 'veg', 'green'],
+  ];
+  for (const [deg, radius, goods, awning] of ring) {
+    const a = (deg * Math.PI) / 180;
+    kit.stallToward(cx + radius * Math.cos(a), cz + radius * Math.sin(a), cx, cz, goods, awning);
   }
-  ctx.landmark('chong-tre-ban-rau', 'Chõng tre bán rau', ne + 34, top + 28);
-  const trough = { x0: ne + 54, z0: top + 30 };
-  box(trough.x0, base, trough.z0, trough.x0 + 9, base, trough.z0 + 3, B.planks);
-  box(trough.x0 + 1, base, trough.z0 + 1, trough.x0 + 8, base, trough.z0 + 2, B.water);
-  for (let i = 0; i < 3; i++) ctx.prop(M.bucket, trough.x0 + 1 + i * 4, trough.z0 - 1, i * 50);
-  ctx.keepOut(trough.x0 - 1, trough.z0 - 1, trough.x0 + 10, trough.z0 + 4);
-  ctx.landmark('mang-nuoc-rua-rau', 'Máng nước rửa rau', trough.x0 + 4, trough.z0 - 2);
-  const rowG: Kind[] = ['gourds', 'greens', 'vegetables', 'gourds', 'carrots', 'fruit', 'greens'];
-  rowG.forEach((kind, i) => stall(ne + 2 + i * 10, top + 38, kind, 's'));
-  const rowH: Kind[] = ['vegetables', 'carrots', 'vegetables', 'fruit', 'greens', 'gourds', 'soup'];
-  rowH.forEach((kind, i) => stall(ne + 2 + i * 10, top + 50, kind, 'n'));
-  const soup = { x: ne + 62, z: top + 50 };
-  for (const dx of [-1, 4]) ctx.prop(M.bench, soup.x + dx, soup.z - 4, 0);
-  for (let i = 0; i < 3; i++) ctx.prop(M.barrel, soup.x + 1 + i * 2, soup.z + 6, i * 30);
-  ctx.keepOut(soup.x - 1, soup.z + 5, soup.x + 6, soup.z + 7);
-  ctx.landmark('quan-canh-cuoi-day', 'Quán canh cuối dãy', soup.x + 2, soup.z - 3);
-  ctx.landmark('chum-nuoc-sau-quan', 'Chum nước sau quán', soup.x + 3, soup.z + 8);
+  // Heaps of goods between the fountain and the diagonal stalls: a crate, a crate of fruit, a bucket of flowers.
+  for (const deg of [45, 135, 225, 315]) {
+    const a = (deg * Math.PI) / 180;
+    const [hx, hz] = [Math.round(cx + 10.5 * Math.cos(a)), Math.round(cz + 10.5 * Math.sin(a))];
+    ctx.prop(M.crate, hx, hz, deg);
+    ctx.prop(`${BOX}/cp-crate-${['apple', 'orange', 'cabbage', 'tomato'][(deg - 45) / 90] ?? 'apple'}.glb`, hx + Math.sign(Math.cos(a)), hz, deg + 20);
+    ctx.prop(`${BOX}/cp-flowers-${deg < 180 ? 'warm' : 'cool'}.glb`, hx, hz + Math.sign(Math.sin(a)), 0);
+  }
+  // Street lanterns either side of each way in; masts round the edge, pennants from each to the next.
+  for (const deg of [20, 70, 110, 160, 200, 250, 290, 340]) {
+    const a = (deg * Math.PI) / 180;
+    kit.lamp(Math.round(cx + 19.5 * Math.cos(a)), Math.round(cz + 19.5 * Math.sin(a)));
+  }
+  const masts: Array<[number, number, number]> = [];
+  for (let k = 0; k < 12; k++) {
+    const a = ((15 + k * 30) * Math.PI) / 180;
+    masts.push(kit.mast(Math.round(cx + 22 * Math.cos(a)), Math.round(cz + 22 * Math.sin(a))));
+  }
+  masts.forEach((p, i) => bunting(ctx, p, masts[(i + 1) % masts.length] ?? p, 0.9));
+  // Across the square from mast to mast over the fountain, as the mock's strings over the stalls.
+  for (const [i, j] of [[1, 7], [4, 10]] as const) {
+    const [a, b] = [masts[i], masts[j]];
+    if (a && b) bunting(ctx, a, b, 2.2);
+  }
+  // Big trees at the square's corners (d-01's left and right), planters under them.
+  for (const [dx, dz] of [[-28, -22], [28, -22], [-28, 21], [28, 21]] as const) {
+    kit.tree(cx + dx, cz + dz, dx < 0 ? B.leaves : B.pink, 8);
+    for (const px of [-2, 2]) ctx.prop(M.planter, cx + dx + px, cz + dz + 2, 0);
+  }
+}
 
-  // South-west: the bamboo goods, the bamboo-ware stalls and the post box beside them, the lantern and star
-  // lantern rows, the seedling greenhouse with its brick yard, the nursery beds.
-  const sw = { x: zn.x - zn.hx + 6, z: cz + 6 };
-  for (let i = 0; i < 16; i++) ctx.prop(M.bamboo, sw.x + (i % 8) * 2, sw.z + 2 + Math.floor(i / 8) * 3, i * 50);
-  for (let r = 0; r < 2; r++) box(sw.x, base, sw.z + 9 + r * 2, sw.x + 12, base + (r === 0 ? 1 : 0), sw.z + 9 + r * 2, B.birch);
-  ctx.keepOut(sw.x - 1, sw.z + 1, sw.x + 16, sw.z + 12);
-  ctx.landmark('hang-tre-nua', 'Hàng tre nứa', sw.x + 8, sw.z + 6);
-  stall(sw.x + 20, sw.z + 2, 'bamboo', 's');
-  stall(sw.x + 30, sw.z + 2, 'bamboo', 's');
-  (['bamboo', 'toys', 'pictures'] as const).forEach((kind, i) => stall(sw.x + 46 + i * 10, sw.z + 2, kind, 's'));
-  ctx.landmark('sap-do-tre', 'Sạp đồ tre', sw.x + 26, sw.z + 9);
-  const post = { x: sw.x + 40, z: sw.z + 5 };
-  set(post.x, base, post.z, B.log);
-  set(post.x, base + 1, post.z, B.red);
-  ctx.keepOut(post.x - 1, post.z - 1, post.x + 1, post.z + 1);
-  ctx.landmark('hom-thu-canh-hang-tre', 'Hòm thư cạnh hàng tre', post.x, post.z + 2);
-  const lanterns: Kind[] = ['lanterns', 'stars', 'lanterns', 'stars', 'lanterns', 'stars', 'lanterns'];
-  lanterns.forEach((kind, i) => {
-    const sx = sw.x + i * 10;
-    const { front, out } = stall(sx, sw.z + 20, kind, 's');
-    for (let x = sx; x < sx + 6; x++) {
-      if (kind === 'lanterns') set(x, base + 2, front + out, (x - sx) % 2 === 0 ? B.red : B.sand);
-      else if ((x - sx) % 2 === 1) ctx.propAt(M.star, [x + 0.5, base + 2.1, front + out + 0.5], x * 30);
-    }
-  });
-  ctx.landmark('sap-den-long', 'Sạp đèn lồng', sw.x + 3, sw.z + 27);
-  ctx.landmark('sap-den-ong-sao', 'Sạp đèn ông sao dưới mái lều', sw.x + 13, sw.z + 27);
-  const glass = { x0: sw.x + 4, z0: sw.z + 40, w: 18, d: 11 };
-  placeHouse(world, glass.x0, glass.z0, glass.w, glass.d, 4, base, { wall: B.glass, roof: B.glass, trim: B.birch });
-  const doorX = glass.x0 + Math.floor(glass.w / 2);
-  for (const [bx0, bx1] of [[glass.x0 + 2, doorX - 3], [doorX + 2, glass.x0 + glass.w - 3]] as const) {
-    box(bx0, base, glass.z0 + 2, bx1, base, glass.z0 + glass.d - 3, B.planks);
-    for (let x = bx0; x <= bx1; x += 2) for (let z = glass.z0 + 2; z <= glass.z0 + glass.d - 3; z += 2) ctx.propAt(M.seedling, [x + 0.5, base + 1, z + 0.5], (x * 13 + z * 7) % 360);
+/**
+ * The market gate (d-02): stone feet under timber posts, a beam across with braces, the "Chợ" sign hung from
+ * it, a lantern on a bracket either side and two under the beam, low stone walls and fences either side;
+ * then the lane to the square (d-09, d-10, c-08): stalls both sides facing it, shophouses behind them,
+ * street lanterns between the stalls, pennants zigzagging across from house to house over the awnings.
+ */
+function buildGateLane(ctx: ZoneMapContext, kit: Kit): void {
+  const { B, base, box } = kit;
+  const { x: cx, z: gz } = GATE;
+  // Feet, posts, the beam and its braces.
+  for (const sx of [-1, 1]) {
+    const [p0, p1] = sx < 0 ? [cx - 6, cx - 5] : [cx + 5, cx + 6];
+    box(p0, base, gz - 1, p1, base + 1, gz, B.stone);
+    box(p0, base + 2, gz - 1, p1, base + 5, gz, B.log);
+    kit.set(cx + sx * 4, base + 5, gz, B.log);
+    // The bracket arm outside the post that the outer lantern hangs from.
+    box(cx + sx * 7, base + 4, gz, cx + sx * 8, base + 4, gz, B.log);
+    ctx.propAt(M.lantern, [cx + sx * 8 + 0.5, base + 3.02, gz + 0.5], sx < 0 ? 90 : 270);
+    ctx.propAt(M.lantern, [cx + sx * 3 + 0.5, base + 5.02, gz + 0.5], 0);
   }
-  for (let x = glass.x0 - 2; x < glass.x0 + glass.w + 2; x++) for (let z = glass.z0 - 6; z < glass.z0; z++) set(x, ctx.ground, z, B.brick);
-  ctx.keepOut(glass.x0 - 1, glass.z0 - 1, glass.x0 + glass.w, glass.z0 + glass.d);
-  ctx.landmark('nha-kinh-cay-giong', 'Nhà kính bán cây giống', doorX, glass.z0 - 3);
-  ctx.landmark('san-gach-truoc-nha-kinh', 'Sân gạch trước nhà kính', doorX - 6, glass.z0 - 3);
-  (['seeds', 'flowers', 'seeds', 'pictures', 'flowers'] as const).forEach((kind, i) => stall(sw.x + 30 + i * 10, sw.z + 32, kind, 's'));
+  box(cx - 8, base + 6, gz - 1, cx + 8, base + 6, gz, B.log);
+  box(cx - 7, base + 7, gz, cx + 7, base + 7, gz, B.planks);
+  ctx.propAt(M.sign, [cx + 0.5, base + 6 - 1.62, gz - 1.15], 0);
+  // Low stone walls either side, fences on to the market's corners, planters and the apple board.
+  // A cobbled forecourt before it on the way from the spawn, flower beds along it.
+  for (let x = cx - 10; x <= cx + 10; x++) for (let z = gz - 12; z <= gz - 1; z++) kit.set(x, ctx.surface(x, z), z, Math.abs(x - cx) === 10 ? B.stone : B.cobble);
+  flowerBed(ctx, cx - 9, gz - 11, 4, 6);
+  flowerBed(ctx, cx + 6, gz - 11, 4, 6);
+  for (const sx of [-1, 1]) {
+    box(cx + sx * 7, base, gz - 1, cx + sx * 17, base + 1, gz - 1, B.stone);
+    for (let k = 18; k <= 86; k += 2) ctx.prop(M.fence, cx + sx * k, gz - 1, 0);
+    ctx.prop(M.planter, cx + sx * 9, gz - 3, 0);
+    ctx.prop(M.flowers[sx + 1] ?? M.planter, cx + sx * 11, gz - 3, 0);
+  }
+  ctx.prop(M.apples, cx + 9, gz - 5, 340);
+  ctx.keepOut(cx - 18, gz - 12, cx + 18, gz + 1);
+  ctx.landmark('cong-cho', 'Cổng chợ', cx, gz - 6);
+
+  // The lane: three stalls a side facing it, lanterns between them.
+  const lane = { z0: gz + 3, z1: SQUARE.z - SQUARE.r - 1 };
+  const goodsW: Goods[] = ['veg', 'fruit', 'flowers', 'clothes'];
+  const goodsE: Goods[] = ['fruit', 'veg', 'food', 'grocery'];
   for (let i = 0; i < 4; i++) {
-    const bedX = sw.x + 30 + (i % 2) * 24;
-    const bedZ = sw.z + 44 + Math.floor(i / 2) * 9;
-    for (let x = 0; x < 18; x += 2) for (let z = 0; z < 4; z += 2) ctx.prop(i % 2 ? M.seedling : FLOWER_PROPS[(x + z) % 3] ?? M.flowerRed, bedX + x, bedZ + z, x * 20);
-    ctx.keepOut(bedX, bedZ, bedX + 17, bedZ + 3);
+    const z0 = lane.z0 + i * 8;
+    kit.stall(cx - 7, z0, 'east', goodsW[i] ?? 'veg');
+    kit.stall(cx + 4, z0, 'west', goodsE[i] ?? 'fruit');
+    kit.lamp(cx - 4, z0 + 6);
+    kit.lamp(cx + 4, z0 + 6);
   }
-  ctx.landmark('vuon-uom-cay', 'Vườn ươm cây giống', sw.x + 50, sw.z + 46);
+  kit.lamp(cx - 4, lane.z0 - 1);
+  kit.lamp(cx + 4, lane.z0 - 1);
+  // The end of the lane before the square: planters, a handcart of crates.
+  for (const sx of [-1, 1]) ctx.prop(M.planter, cx + sx * 6, lane.z1 - 2, 0);
+  ctx.prop(M.cart, cx - 9, lane.z1 - 4, 90);
+  ctx.landmark('loi-di-trong-cho', 'Lối đi trong chợ', cx, lane.z0 + 4);
+  // Shophouses behind the stalls, their fronts to the lane; pennants from house to house over it.
+  for (const [i, z0] of [lane.z0 - 1, lane.z0 + 10, lane.z0 + 21].entries()) {
+    const w = 10 + (i % 2);
+    kit.shop(cx - 21, z0, w, 9, 'east');
+    kit.shop(cx + 13, z0, w, 9, 'west');
+  }
+  const y = base + 5.8;
+  const [west, east] = [cx - 12, cx + 13];
+  const ties: Array<[number, number, number]> = [];
+  for (let z = lane.z0; z <= lane.z0 + 28; z += 5) ties.push([(ties.length % 2 ? east : west) + 0.0, y, z + 0.5]);
+  ties.forEach((p, i) => {
+    const next = ties[i + 1];
+    if (next) bunting(ctx, p, next, 0.9);
+  });
+  // From the gate's beam to the first houses.
+  bunting(ctx, [cx - 7.5, base + 6.5, gz + 0.5], [east, y, lane.z0 + 2.5], 0.8);
+  bunting(ctx, [cx + 8.5, base + 6.5, gz + 0.5], [west, y, lane.z0 + 2.5], 0.8);
+}
 
-  // South-east: the fruit row with the guava price board, the old apple tree beside it, the pig pen, the
-  // dovecote, the ox carts and the straw stack, the basket-throwing and tug-of-war grounds, the duck pond.
-  const se = { x: cx + 8, z: cz + 6 };
-  const fruit: Kind[] = ['apples', 'guava', 'fruit', 'guava', 'apples'];
-  fruit.forEach((kind, i) => stall(se.x + i * 10, se.z, kind, 's'));
-  ctx.landmark('hang-qua', 'Hàng quả', se.x + 23, se.z + 8);
-  const board = { x: se.x + 11, z: se.z + 8 };
-  for (const dx of [0, 4]) box(board.x + dx, base, board.z, board.x + dx, base + 2, board.z, B.log);
-  box(board.x + 1, base + 1, board.z, board.x + 3, base + 2, board.z, B.board);
-  ctx.keepOut(board.x - 1, board.z - 1, board.x + 5, board.z + 1);
-  ctx.landmark('bang-gia-hang-oi', 'Bảng giá ở hàng ổi', board.x + 2, board.z - 2);
-  const apple = { x: se.x + 64, z: se.z + 6 };
-  placeAncientTree(world, apple.x, base, apple.z, { log: B.treeLog, leaves: B.leaves, core: B.log }, rng);
-  for (let dx = -8; dx <= 8; dx++) for (let dy = 9; dy <= 19; dy++) for (let dz = -8; dz <= 8; dz++) {
-    if (world.get(apple.x + dx, base + dy, apple.z + dz) === B.leaves && (dx * 7 + dy * 3 + dz * 5) % 11 === 0) set(apple.x + dx, base + dy, apple.z + dz, B.red);
+/**
+ * The market hall south of the square (d-01, d-09, d-10): two storeys of cream walls and timber under a red
+ * roof, a wide door to the square and a clock tower out of the middle of its roof with a clock each way.
+ * Inside, the market's grocery: shelves of jars, bottles and tins along the walls, sacks and baskets, two
+ * counters with their scales, lanterns on the walls.
+ */
+function buildHall(ctx: ZoneMapContext, kit: Kit): void {
+  const { world } = ctx;
+  const { B, base, set, box } = kit;
+  const { x0, z0, w, d } = HALL;
+  const [x1, z1] = [x0 + w - 1, z0 + d - 1];
+  const finish = cottagePalette(ctx).finish;
+  placeHouse(world, x0, z0, w, d, 8, base, { ...finish, wall: B.sand, roof: B.red, trim: B.log });
+  // The upper storey: a beam at its floor, windows over the windows below.
+  for (let x = x0; x <= x1; x++) {
+    for (const z of [z0, z1]) {
+      set(x, base + 4, z, B.log);
+      if ((x - x0) % 4 === 2 && x < x1) for (const y of [base + 5, base + 6]) set(x, y, z, B.glass);
+    }
   }
-  for (let i = 0; i < 8; i++) ctx.prop(M.apple, apple.x + Math.round(Math.cos(i) * 4), apple.z + Math.round(Math.sin(i) * 4), i * 45);
-  ctx.prop(M.basket, apple.x - 3, apple.z + 3, 30);
-  ctx.keepOut(apple.x - 3, apple.z - 3, apple.x + 3, apple.z + 3);
-  ctx.landmark('goc-tao-ben-hang-qua', 'Cây táo già bên hàng quả', apple.x, apple.z - 5);
-  const pen = { x0: se.x, z0: se.z + 14, x1: se.x + 10, z1: se.z + 22 };
-  for (let x = pen.x0; x <= pen.x1; x += 2) for (const z of [pen.z0, pen.z1]) ctx.prop(M.fence, x, z, 0);
-  for (let z = pen.z0 + 2; z < pen.z1; z += 2) for (const x of [pen.x0, pen.x1]) ctx.prop(M.fence, x, z, 90);
-  box(pen.x0 + 2, base, pen.z1 - 2, pen.x0 + 5, base, pen.z1 - 2, B.planks);
+  for (let z = z0 + 1; z < z1; z++) {
+    for (const x of [x0, x1]) {
+      set(x, base + 4, z, B.log);
+      if ((z - z0) % 4 === 2 && z < z1) for (const y of [base + 5, base + 6]) set(x, y, z, B.glass);
+    }
+  }
+  // A wide door under a lintel; the door lanterns moved out beside it.
+  const doorX = x0 + Math.floor(w / 2);
+  box(doorX - 2, base, z0, doorX + 2, base + 2, z0, 0);
+  box(doorX - 3, base + 3, z0, doorX + 3, base + 3, z0, B.log);
+  for (const x of [doorX - 2, doorX + 1]) set(x, base + 2, z0 - 1, 0);
+  for (const x of [doorX - 4, doorX + 4]) set(x, base + 2, z0 - 1, B.lantern);
+  // The clock tower, out of the roof's middle.
+  const T = { x0: doorX - 3, z0: z0 + 4, x1: doorX + 3, z1: z0 + 10, top: base + 22 };
+  for (let y = base + 8; y <= T.top; y++) {
+    for (let x = T.x0; x <= T.x1; x++) {
+      for (let z = T.z0; z <= T.z1; z++) {
+        const edgeX = x === T.x0 || x === T.x1;
+        const edgeZ = z === T.z0 || z === T.z1;
+        if (!edgeX && !edgeZ) continue;
+        const corner = edgeX && edgeZ;
+        const slit = !corner && (y - base) % 5 === 1 && (x === doorX || z === T.z0 + 3);
+        set(x, y, z, corner || y === T.top ? B.log : slit ? B.glass : B.sand);
+      }
+    }
+  }
+  box(T.x0 - 1, T.top + 1, T.z0 - 1, T.x1 + 1, T.top + 1, T.z1 + 1, B.stone);
+  for (let k = 0; T.x0 - 1 + k <= T.x1 + 1 - k; k++) box(T.x0 - 1 + k, T.top + 2 + k, T.z0 - 1 + k, T.x1 + 1 - k, T.top + 2 + k, T.z1 + 1 - k, B.red);
+  const spire = T.top + 7;
+  box(doorX, spire, T.z0 + 3, doorX, spire + 1, T.z0 + 3, B.log);
+  set(doorX, spire + 2, T.z0 + 3, B.gold);
+  ctx.propAt(M.clock, [doorX + 0.5, base + 15, T.z0 - 0.02], 0);
+  ctx.propAt(M.clock, [doorX + 0.5, base + 15, T.z1 + 1.02], 180);
+  // Inside: shelves along the back and the sides (a cupboard, a shelf over it), goods on both.
+  const goods = [M.jars, M.bottles, M.tins, M.jars, M.bottles];
+  const shelfAt = (x: number, z: number, i: number, yaw: number): void => {
+    set(x, base, z, B.planks);
+    set(x, base + 2, z, B.planks);
+    ctx.propAt(goods[i % goods.length] ?? M.jars, [x + 0.5, base + 1, z + 0.5], yaw);
+    ctx.propAt(goods[(i + 2) % goods.length] ?? M.jars, [x + 0.5, base + 3, z + 0.5], yaw);
+  };
+  for (let x = x0 + 2; x <= x1 - 2; x++) shelfAt(x, z1 - 1, x, 180);
+  for (let z = z0 + 3; z <= z1 - 3; z++) {
+    shelfAt(x0 + 1, z, z, 90);
+    shelfAt(x1 - 1, z, z + 1, 270);
+  }
+  // Two counters with their scales, sacks and baskets by them, the market's lanterns on the walls.
+  for (const sx of [-1, 1]) {
+    const cx0 = doorX + sx * 8 - 2;
+    box(cx0, base, z0 + 8, cx0 + 4, base, z0 + 8, B.planks);
+    ctx.propAt(M.scale, [cx0 + 1.5, base + 1, z0 + 8.5], 180);
+    ctx.propAt(M.basket, [cx0 + 3.5, base + 1, z0 + 8.5], 30);
+    for (const [k, sack] of [M.rice, M.beans, M.corn].entries()) ctx.prop(sack, cx0 + k * 2, z0 + 6, k * 20);
+  }
+  for (let x = x0 + 3; x <= x1 - 3; x += 6) set(x, base + 4, z1, B.lantern);
+  for (const x of [x0, x1]) for (let z = z0 + 3; z <= z1 - 3; z += 5) set(x, base + 4, z, B.lantern);
+  ctx.keepOut(x0 - 1, z0 - 2, x1 + 1, z1 + 1);
+  ctx.landmark('nha-long-cho', 'Nhà lồng chợ', doorX, z0 + 5);
+  ctx.landmark('thap-dong-ho', 'Tháp đồng hồ', doorX, z0 - 3);
+  // Planters and pennants along the hall's front.
+  for (const dx of [-12, -8, 8, 12]) ctx.prop(M.planter, doorX + dx, z0 - 2, 0);
+  const left = kit.lamp(doorX - 6, z0 - 3);
+  const right = kit.lamp(doorX + 6, z0 - 3);
+  bunting(ctx, left, [x0 + 0.5, base + 7.5, z0 - 0.5], 0.6);
+  bunting(ctx, right, [x1 + 0.5, base + 7.5, z0 - 0.5], 0.6);
+}
+
+/**
+ * The square's side streets: west, the vegetable stalls (d-03) facing the food stalls (d-04); east, the
+ * grocery stalls (d-05) facing the clothes stalls (d-06); lanterns between the stalls, festival masts behind
+ * them strung with pennants across the street; north-east the flower stalls in two rows; big trees and
+ * gardens in the corners.
+ */
+function buildSideStreets(ctx: ZoneMapContext, kit: Kit): void {
+  const { B } = kit;
+  const z = ROAD_Z.market;
+  const row = (xs: readonly number[], north: Goods, south: Goods): void => {
+    const mastsN: Array<[number, number, number]> = [];
+    const mastsS: Array<[number, number, number]> = [];
+    for (const x0 of xs) {
+      kit.stall(x0, z - 8, 'south', north);
+      kit.stall(x0, z + 4, 'north', south);
+      kit.lamp(x0 + 7, z - 4);
+      kit.lamp(x0 + 7, z + 4);
+      mastsN.push(kit.mast(x0 + 8, z - 7));
+      mastsS.push(kit.mast(x0 + 8, z + 7));
+    }
+    mastsN.forEach((p, i) => {
+      const s = mastsS[i];
+      const next = mastsS[i + 1];
+      if (s) bunting(ctx, p, s, 0.8);
+      if (next) bunting(ctx, p, next, 1.0);
+    });
+  };
+  row([140, 150, 160, 170, 180], 'veg', 'food');
+  ctx.landmark('gian-rau-cu', 'Gian hàng rau củ', 163, z - 1);
+  ctx.landmark('gian-do-an', 'Gian hàng đồ ăn', 163, z + 1);
+  row([254, 264, 274, 284, 294], 'grocery', 'clothes');
+  ctx.landmark('gian-tap-hoa', 'Gian hàng tạp hóa', 277, z - 1);
+  ctx.landmark('gian-quan-ao', 'Gian hàng quần áo', 277, z + 1);
+
+  // The flower stalls north-east of the square, two rows facing across a walk.
+  const flowers: Awning[] = ['red', 'orange', 'blue', 'green'];
+  for (let i = 0; i < 4; i++) {
+    kit.stall(250 + i * 12, 318, 'south', 'flowers', flowers[i]);
+    kit.stall(250 + i * 12, 332, 'north', i % 2 ? 'veg' : 'flowers', flowers[(i + 2) % 4]);
+  }
+  ctx.landmark('day-sap-hoa', 'Dãy sạp hoa', 272, 327);
+  flowerBed(ctx, 250, 344, 40, 3);
+  ctx.keepOut(250, 344, 289, 346);
+  // Gardens with big trees and benches in the corners of the market, clear ground round them for the lessons.
+  for (const [x, zz, leaves] of [[150, 322, B.pink], [184, 334, B.leaves], [150, 420, B.leaves], [186, 430, B.pink], [300, 314, B.leaves], [302, 356, B.pink], [300, 432, B.leaves]] as const) {
+    kit.tree(x, zz, leaves, 7);
+    ctx.prop(M.bench, x + 3, zz, 270);
+    ctx.prop(M.planter, x - 3, zz + 2, 0);
+  }
+  flowerBed(ctx, 140, 392, 30, 4);
+  ctx.keepOut(140, 392, 169, 395);
+}
+
+/**
+ * The pet yard (d-08) east of the hall by the duck pond: a fenced pen of hay, troughs, a rabbit hutch and
+ * the animals for sale, its two stalls behind it with their counters to the pen, lanterns at its corners.
+ */
+function buildPetYard(ctx: ZoneMapContext, kit: Kit): void {
+  const { B, base, box } = kit;
+  const pen = { x0: 248, z0: 388, x1: 274, z1: 400 };
+  kit.stall(251, 402, 'north', 'pets', 'red');
+  kit.stall(265, 402, 'north', 'pets', 'orange');
+  for (let x = pen.x0; x <= pen.x1; x += 2) {
+    if (Math.abs(x - 262) > 2) ctx.prop(M.fence, x, pen.z0, 0);
+  }
+  for (let z = pen.z0 + 2; z <= pen.z1; z += 2) for (const x of [pen.x0, pen.x1]) ctx.prop(M.fence, x, z, 90);
+  // A hutch for the rabbits: a plank box under a little roof.
+  box(pen.x0 + 2, base, pen.z0 + 7, pen.x0 + 5, base + 1, pen.z0 + 9, B.planks);
+  box(pen.x0 + 1, base + 2, pen.z0 + 6, pen.x0 + 6, base + 2, pen.z0 + 10, B.red);
+  for (const [x, z, yaw] of [[pen.x0 + 9, pen.z0 + 3, 0], [pen.x0 + 19, pen.z0 + 7, 90], [pen.x0 + 14, pen.z0 + 9, 30]] as const) ctx.prop(M.hay, x, z, yaw);
+  ctx.prop(M.trough, pen.x0 + 16, pen.z0 + 3, 0);
+  ctx.prop(M.trough, pen.x0 + 23, pen.z0 + 9, 90);
+  const shown: Array<[string, number, number, number]> = [
+    [M.pets.cow, 9, 3, 200], [M.pets.bunny, 13, 2, 170], [M.pets.bunny, 14, 3, 220], [M.pets.bunny, 4, 11, 180],
+    [M.pets.chick, 11, 2, 10], [M.pets.chick, 12, 4, 120], [M.pets.chick, 16, 2, 220], [M.pets.cat, 17, 3, 160],
+    [M.pets.dog, 6, 2, 200], [M.pets.pig, 18, 9, 120], [M.pets.chick, 24, 5, 45], [M.pets.cat, 10, 9, 250],
+  ];
+  for (const [model, dx, dz, yaw] of shown) ctx.prop(model, pen.x0 + dx, pen.z0 + dz, yaw);
+  for (const [x, z] of [[pen.x0 - 2, pen.z0 - 2], [pen.x1 + 2, pen.z0 - 2]] as const) kit.lamp(x, z);
+  ctx.prop(M.paw, pen.x0 + 3, pen.z0 - 3, 20);
   ctx.keepOut(pen.x0, pen.z0, pen.x1, pen.z1);
-  ctx.landmark('chuong-lon-giong', 'Chuồng lợn giống góc chợ', pen.x0 + 5, pen.z0 + 4);
-  const dove = { x: se.x + 18, z: se.z + 18 };
-  box(dove.x, base, dove.z, dove.x, base + 3, dove.z, B.log);
-  box(dove.x - 1, base + 4, dove.z - 1, dove.x + 1, base + 5, dove.z + 1, B.planks);
-  set(dove.x, base + 5, dove.z - 1, B.snow);
-  box(dove.x - 2, base + 6, dove.z - 2, dove.x + 2, base + 6, dove.z + 2, B.red);
-  set(dove.x, base + 7, dove.z, B.red);
-  ctx.keepOut(dove.x - 1, dove.z - 1, dove.x + 1, dove.z + 1);
-  ctx.landmark('long-bo-cau', 'Lồng bồ câu góc chợ', dove.x, dove.z - 3);
-  for (const [i, kx] of [se.x + 26, se.x + 34].entries()) {
-    const kz = se.z + 16;
-    box(kx, base, kz, kx + 2, base, kz + 4, B.planks);
-    box(kx, base + 1, kz + 1, kx + 2, base + 1, kz + 4, B.sand);
-    for (const wx of [kx - 1, kx + 3]) set(wx, base, kz + 2, B.log);
-    box(kx + 1, base, kz - 3, kx + 1, base, kz - 1, B.birch);
-    ctx.keepOut(kx - 1, kz - 3, kx + 3, kz + 5);
-    if (i === 0) ctx.landmark('bai-buoc-xe-bo', 'Bãi buộc xe bò', kx + 5, kz - 3);
-  }
-  const straw = { x: se.x + 48, z: se.z + 20 };
-  for (let dx = -3; dx <= 3; dx++) for (let dz = -3; dz <= 3; dz++) {
-    const h = 3 - Math.round(Math.hypot(dx, dz));
-    for (let y = 0; y < h; y++) set(straw.x + dx, base + y, straw.z + dz, B.sand);
-  }
-  ctx.keepOut(straw.x - 3, straw.z - 3, straw.x + 3, straw.z + 3);
-  ctx.landmark('dong-rom-sau-xe', 'Đống rơm sau xe', straw.x, straw.z - 5);
-  const court = { x0: se.x, z0: se.z + 30, x1: se.x + 16, z1: se.z + 56 };
-  for (let x = court.x0; x <= court.x1; x++) for (let z = court.z0; z <= court.z1; z++) {
-    if (x === court.x0 || x === court.x1 || z === court.z0 || z === court.z1 || z === (court.z0 + court.z1) / 2) set(x, ctx.ground, z, B.snow);
-  }
-  ctx.prop(M.hoop, (court.x0 + court.x1) / 2, court.z0 + 1, 0);
-  ctx.prop(M.hoop, (court.x0 + court.x1) / 2, court.z1 - 1, 180);
-  for (let i = 0; i < 4; i++) ctx.prop(M.basket, court.x1 + 2, court.z0 + 4 + i * 6, i * 70);
-  ctx.landmark('bai-nem-ro-tre', 'Bãi ném rổ tre', (court.x0 + court.x1) / 2, (court.z0 + court.z1) / 2 + 4);
-  const tug = { x0: se.x + 24, z0: se.z + 38, x1: se.x + 50, z1: se.z + 46 };
-  for (let x = tug.x0; x <= tug.x1; x++) for (let z = tug.z0; z <= tug.z1; z++) {
-    if (x === tug.x0 || x === tug.x1 || z === tug.z0 || z === tug.z1) set(x, ctx.ground, z, B.brick);
-    else if (x === (tug.x0 + tug.x1) / 2) set(x, ctx.ground, z, B.snow);
-    else if (z === (tug.z0 + tug.z1) / 2) set(x, ctx.ground, z, B.log);
-  }
-  ctx.landmark('bai-keo-co', 'Bãi kéo co', (tug.x0 + tug.x1) / 2, tug.z0 + 2);
-  (['fruit', 'apples', 'guava'] as const).forEach((kind, i) => stall(se.x + 22 + i * 10, se.z + 50, kind, 'n'));
+  ctx.landmark('khu-ban-thu-nuoi', 'Khu bán thú nuôi', 261, pen.z0 - 4);
+  // Lilies on the duck pond beside it.
   for (let i = 0; i < 9; i++) {
     const a = (i / 9) * Math.PI * 2;
     ctx.propAt(M.lily, [DUCK_POND.x + Math.cos(a) * 3.5 + 0.5, WATER_LEVEL + 1.02, DUCK_POND.z + Math.sin(a) * 3.5 + 0.5], i * 40);
   }
-  for (let i = 0; i < 6; i++) ctx.prop(M.bamboo, DUCK_POND.x - 9 + i, DUCK_POND.z + 8, i * 60);
   ctx.landmark('ao-vit', 'Ao vịt', DUCK_POND.x, DUCK_POND.z);
 }
 
-/** Chapter 2: the weighing row: scales, fruit and cakes, the drinks counter, the sweet-soup kitchen, the stores. */
-function buildWeighingRow(ctx: ZoneMapContext, kit: Kit): void {
-  const { B, base, set, box, stall, tent, house } = kit;
-  const zn = ctx.zone(2);
-  const [cx, cz] = [zn.x, zn.z];
-  const top = zn.z - zn.hz;
-  const left = zn.x - zn.hx + 5;
-  /** A dial scale on a counter: a white face in a red rim on a post. */
-  const dial = (x: number, y: number, z: number): void => {
-    set(x, y, z, B.log);
-    set(x, y + 1, z, B.snow);
-    set(x - 1, y + 1, z, B.red);
-    set(x + 1, y + 1, z, B.red);
+/**
+ * The market street from the square to the weighing row: shophouses both sides with their awnings, street
+ * lanterns before them, pennants zigzagging across from house front to house front over the awnings.
+ */
+function buildMarketStreet(ctx: ZoneMapContext, kit: Kit): void {
+  const z = ROAD_Z.market;
+  const y = kit.base + 5.8;
+  const clearOf = (x0: number, x1: number): boolean => {
+    for (let x = x0 - 3; x <= x1 + 3; x++) if (ctx.onPath(x, z - 12) || ctx.onPath(x, z + 12) || ctx.inZone(x, z, 2)) return false;
+    return true;
   };
-  /** A platform scale: a grey brick slab with a post and a dial, sacks on it. */
-  const platform = (x: number, z: number): void => {
-    box(x, base, z, x + 1, base, z + 1, B.grey);
-    dial(x + 2, base, z + 1);
-    ctx.propAt(M.bag, [x + 1, base + 1, z + 1], 30);
-    ctx.keepOut(x - 1, z - 1, x + 3, z + 2);
-  };
-
-  // North-west: two double rows, the scale stalls facing the fruit and cake stalls across their walks; the
-  // ledger table and the platform scales between them.
-  const rows: Array<[number, Facing, Kind[]]> = [
-    [top + 4, 's', ['fruit', 'fruit', 'rice', 'fruit', 'fruit', 'cakes']],
-    [top + 16, 'n', ['fruit', 'cakes', 'cakes', 'fruit', 'rice', 'fruit']],
-    [top + 32, 's', ['cakes', 'fruit', 'fruit', 'fruit', 'cakes', 'rice']],
-    [top + 45, 'n', ['fruit', 'cakes', 'fruit', 'rice', 'cakes', 'fruit']],
-  ];
-  for (const [r, [z0, facing, kinds]] of rows.entries()) {
-    kinds.forEach((kind, i) => {
-      const sx = left + 1 + i * 10;
-      const { front } = stall(sx, z0, kind, facing);
-      if ((r === 0 && i < 2) || (r === 2 && i === 2)) ctx.propAt(M.scale, [sx + 3, base + 1, front + 0.5], 0);
-      if (r === 0 && i === 3) dial(sx + 3, base + 1, front);
-    });
+  const ties: Array<[number, number, number]> = [];
+  let x = 312;
+  let n = 0;
+  while (x + 10 <= 516) {
+    const w = 10 + (n % 3);
+    if (!clearOf(x, x + w - 1)) {
+      x += 2;
+      continue;
+    }
+    kit.shop(x, z - 15, w, 9, 'south');
+    kit.shop(x, z + 7, w, 9, 'north');
+    kit.lamp(x + w, z - 4);
+    kit.lamp(x + w, z + 4);
+    ties.push([x + 3, y, z - 5.9], [x + w - 3, y, z + 7]);
+    x += w + 2;
+    n++;
   }
-  ctx.landmark('quay-can', 'Quầy cân', left + 25, top + 11);
-  ctx.landmark('sap-can-dia', 'Sạp cân đĩa', left + 4, top + 11);
-  ctx.landmark('sap-can-ban', 'Sạp cân bàn', left + 24, top + 11);
-  ctx.landmark('sap-can-dong-ho', 'Sạp cân đồng hồ', left + 34, top + 11);
-  ctx.landmark('sap-trai-cay', 'Sạp trái cây', left + 44, top + 11);
-  ctx.landmark('sap-banh-ngot', 'Sạp bánh ngọt', left + 54, top + 11);
-  const ledger = { x: left + 3, z: top + 25 };
-  box(ledger.x, base, ledger.z, ledger.x + 2, base, ledger.z, B.planks);
-  ctx.propAt(M.basket, [ledger.x + 1.5, base + 1, ledger.z + 0.5], 0);
-  ctx.prop(M.bench, ledger.x + 1, ledger.z + 2, 180);
-  ctx.keepOut(ledger.x - 1, ledger.z - 1, ledger.x + 3, ledger.z + 2);
-  ctx.landmark('ban-so-sach', 'Bàn sổ sách', ledger.x + 1, ledger.z - 2);
-  for (const [i, px] of [left + 16, left + 24, left + 32].entries()) platform(px, top + 24 + (i % 2));
-  for (let i = 0; i < 4; i++) ctx.prop(i % 2 ? M.crate : M.barrel, left + 44 + i * 3, top + 25, i * 35);
-
-  // North-east: the drinks counter and its fish tank, the shelf of cans and jars, the blackboard, the
-  // measuring table; a row of drinks stalls.
-  const ne = cx + 8;
-  const { front } = stall(ne, top + 8, 'drinks', 'n', 14, 5);
-  const tank = { x0: ne + 16, z0: top + 7 };
-  box(tank.x0, base, tank.z0, tank.x0 + 4, base + 1, tank.z0 + 2, B.glass);
-  box(tank.x0 + 1, base, tank.z0 + 1, tank.x0 + 3, base + 1, tank.z0 + 1, B.water);
-  for (let i = 0; i < 3; i++) ctx.propAt(M.fish, [tank.x0 + 1.5 + i, base + 0.6 + (i % 2) * 0.5, tank.z0 + 1.5], i * 120);
-  ctx.keepOut(tank.x0 - 1, tank.z0 - 1, tank.x0 + 5, tank.z0 + 3);
-  ctx.landmark('quay-nuoc', 'Quầy nước uống', ne + 7, front - 3);
-  ctx.landmark('be-ca-quay-nuoc', 'Bể cá ở quầy nước', tank.x0 + 2, tank.z0 - 2);
-  const shelf = { x0: ne, z0: top + 22 };
-  for (const x of [shelf.x0, shelf.x0 + 9]) box(x, base, shelf.z0, x, base + 3, shelf.z0, B.log);
-  for (const y of [base, base + 2]) box(shelf.x0 + 1, y, shelf.z0, shelf.x0 + 8, y, shelf.z0, B.planks);
-  for (let x = shelf.x0 + 1; x <= shelf.x0 + 8; x++) for (const y of [base + 1, base + 3]) ctx.propAt(M.soda, [x + 0.5, y, shelf.z0 + 0.5], x * 40 + y);
-  for (let i = 0; i < 4; i++) ctx.prop(M.barrel, shelf.x0 + 1 + i * 2, shelf.z0 - 1, i * 25);
-  ctx.keepOut(shelf.x0 - 1, shelf.z0 - 2, shelf.x0 + 10, shelf.z0 + 1);
-  ctx.landmark('ke-can-binh', 'Kệ can, bình', shelf.x0 + 4, shelf.z0 - 3);
-  const blackboard = { x0: ne + 14, z0: top + 22 };
-  for (const x of [blackboard.x0, blackboard.x0 + 5]) box(x, base, blackboard.z0, x, base + 2, blackboard.z0, B.log);
-  box(blackboard.x0 + 1, base + 1, blackboard.z0, blackboard.x0 + 4, base + 2, blackboard.z0, B.board);
-  ctx.keepOut(blackboard.x0 - 1, blackboard.z0 - 1, blackboard.x0 + 6, blackboard.z0 + 1);
-  ctx.landmark('bang-den-quay-nuoc', 'Bảng đen quầy nước', blackboard.x0 + 3, blackboard.z0 - 2);
-  const measure = { x0: ne + 26, z0: top + 21 };
-  box(measure.x0, base, measure.z0, measure.x0 + 2, base, measure.z0 + 1, B.planks);
-  ctx.propAt(M.bucket, [measure.x0 + 0.5, base + 1, measure.z0 + 0.5], 0);
-  ctx.propAt(M.soda, [measure.x0 + 1.5, base + 1, measure.z0 + 1.5], 0);
-  ctx.propAt(M.bucket, [measure.x0 + 2.5, base + 1, measure.z0 + 1.5], 60);
-  ctx.keepOut(measure.x0 - 1, measure.z0 - 1, measure.x0 + 3, measure.z0 + 2);
-  ctx.landmark('ban-dong-nuoc', 'Bàn đong nước', measure.x0 + 1, measure.z0 - 2);
-  (['drinks', 'cakes', 'fruit'] as const).forEach((kind, i) => stall(ne + 26 + i * 10, top + 8, kind, 'n'));
-  const rowD: Kind[] = ['drinks', 'drinks', 'cakes', 'fruit', 'drinks', 'cakes'];
-  const rowE: Kind[] = ['fruit', 'drinks', 'drinks', 'cakes', 'rice', 'drinks'];
-  rowD.forEach((kind, i) => stall(ne + i * 10, top + 32, kind, 's'));
-  rowE.forEach((kind, i) => stall(ne + i * 10, top + 45, kind, 'n'));
-
-  // South-west: the sweet-soup kitchen in the middle of the market, its tables and benches, the jars
-  // behind it; a row of stalls further south.
-  const che = { x0: cx - 22, z0: cz + 8 };
-  tent(che.x0, che.z0, 10, 7);
-  for (const dx of [3, 6]) {
-    ctx.prop(M.campfire, che.x0 + dx, che.z0 + 3, 0);
-    ctx.propAt(M.pot, [che.x0 + dx + 0.5, base + 0.75, che.z0 + 3.5], dx * 20);
-  }
-  for (let i = 0; i < 3; i++) {
-    const tx = che.x0 - 24 + i * 7;
-    box(tx, base, che.z0 + 2, tx + 2, base, che.z0 + 3, B.planks);
-    ctx.propAt(M.pot, [tx + 1.5, base + 1, che.z0 + 3], i * 50);
-    for (const dz of [0, 5]) ctx.prop(M.bench, tx + 1, che.z0 + dz, dz ? 180 : 0);
-    ctx.keepOut(tx - 1, che.z0 + 1, tx + 3, che.z0 + 4);
-  }
-  for (let i = 0; i < 6; i++) ctx.prop(M.barrel, che.x0 + i * 2, che.z0 + 10, i * 30);
-  ctx.keepOut(che.x0 - 1, che.z0 + 9, che.x0 + 11, che.z0 + 11);
-  ctx.landmark('bep-che', 'Bếp chè giữa chợ', che.x0 + 5, che.z0 - 3);
-  ctx.landmark('day-binh-nuoc-sau-bep-che', 'Dãy bình nước sau bếp chè', che.x0 + 5, che.z0 + 13);
-  const rowsSouth: Array<[number, Facing, Kind[]]> = [
-    [cz + 21, 's', ['soup', 'fruit', 'cakes', 'soup']],
-    [cz + 34, 'n', ['soup', 'fruit', 'cakes', 'soup', 'fruit']],
-    [cz + 42, 's', ['fruit', 'cakes', 'rice', 'fruit', 'drinks']],
-  ];
-  for (const [z0, facing, kinds] of rowsSouth) kinds.forEach((kind, i) => stall(left + 1 + i * 11, z0, kind, facing));
-
-  // South-east: the sack racks, the goods store with its door and the storekeeper's table, the rice store.
-  const racks = { x0: cx + 8, z0: cz + 8 };
-  for (let x = racks.x0; x <= racks.x0 + 24; x += 4) box(x, base, racks.z0, x, base + 3, racks.z0 + 1, B.log);
-  for (const y of [base, base + 2]) box(racks.x0, y, racks.z0, racks.x0 + 24, y, racks.z0 + 1, B.planks);
-  for (let x = racks.x0 + 1; x < racks.x0 + 24; x++) if ((x - racks.x0) % 4 !== 0) for (const y of [base + 1, base + 3]) ctx.propAt(M.bag, [x + 0.5, y, racks.z0 + 1], x * 30 + y);
-  for (let i = 0; i < 8; i++) ctx.prop(M.bag, racks.x0 + 1 + i * 3, racks.z0 + 4 + (i % 2), i * 45);
-  ctx.keepOut(racks.x0 - 1, racks.z0 - 1, racks.x0 + 25, racks.z0 + 2);
-  ctx.landmark('gia-xep-bao-gao', 'Giá xếp bao gạo', racks.x0 + 12, racks.z0 - 2);
-  ctx.landmark('giua-nhung-bao-gao', 'Giữa những bao gạo', racks.x0 + 12, racks.z0 + 7);
-  const store = { x0: cx + 8, zFront: cz + 26, w: 18, d: 10 };
-  house(store.x0, store.zFront, store.w, store.d, 5, 'n', { wall: B.planks, roof: B.grey, trim: B.log });
-  for (let i = 0; i < 3; i++) ctx.prop(i % 2 ? M.crate : M.barrel, store.x0 + 1 + i * 2, store.zFront - 2, i * 25);
-  for (let i = 0; i < 3; i++) ctx.prop(M.crate, store.x0 + 13 + i * 2, store.zFront - 2, i * 40);
-  ctx.keepOut(store.x0, store.zFront - 3, store.x0 + 5, store.zFront - 1);
-  ctx.keepOut(store.x0 + 12, store.zFront - 3, store.x0 + 17, store.zFront - 1);
-  ctx.landmark('kho-hang', 'Kho hàng', store.x0 + 9, store.zFront - 3);
-  ctx.landmark('cua-kho-hang', 'Cửa kho hàng', store.x0 + 8, store.zFront - 2);
-  const keeper = { x: store.x0 + 20, z: store.zFront - 2 };
-  box(keeper.x, base, keeper.z, keeper.x + 1, base, keeper.z, B.planks);
-  ctx.propAt(M.basket, [keeper.x + 1, base + 1, keeper.z + 0.5], 0);
-  ctx.keepOut(keeper.x - 1, keeper.z - 1, keeper.x + 2, keeper.z + 1);
-  ctx.landmark('ban-thu-kho', 'Bàn thủ kho', keeper.x, keeper.z - 2);
-  for (const [i, kx] of [cx + 42, cx + 52].entries()) {
-    const kz = cz + 9;
-    box(kx, base, kz, kx + 2, base, kz + 4, B.planks);
-    for (const wx of [kx - 1, kx + 3]) set(wx, base, kz + 2, B.log);
-    box(kx + 1, base, kz - 3, kx + 1, base, kz - 1, B.birch);
-    for (let k = 0; k < 3; k++) ctx.propAt(k === 1 ? M.barrel : M.crate, [kx + 1.5, base + 1, kz + 1 + k * 1.3], i * 40 + k * 20);
-    ctx.keepOut(kx - 1, kz - 3, kx + 3, kz + 5);
-  }
-  ctx.landmark('xe-cho-hang', 'Xe chở hàng', cx + 50, cz + 6);
-  (['rice', 'rice', 'fruit', 'cakes', 'drinks', 'fruit'] as const).forEach((kind, i) => stall(cx + 6 + i * 10, cz + 46, kind, 'n'));
-  const rice = { x0: cx + 42, zFront: cz + 28, w: 14, d: 9 };
-  house(rice.x0, rice.zFront, rice.w, rice.d, 4, 'n', { wall: B.birch, roof: B.brick, trim: B.log });
-  for (let i = 0; i < 5; i++) ctx.prop(M.bag, rice.x0 + 1 + i * 3, rice.zFront - 2, i * 50);
-  ctx.keepOut(rice.x0, rice.zFront - 3, rice.x0 + rice.w, rice.zFront - 1);
-  ctx.landmark('kho-gao', 'Kho gạo của chợ', rice.x0 + 7, rice.zFront - 4);
+  ties.forEach((p, i) => {
+    const next = ties[i + 1];
+    if (next && Math.abs(next[0] - p[0]) < 16) bunting(ctx, p, next, 0.9);
+  });
+  ctx.keepOut(309, z - 6, 519, z + 6);
+  ctx.landmark('pho-cho', 'Phố chợ', 360, z);
 }
 
-/** The canal: boats, the dragon bridge, the sluice and its inlet, the gravel bank, the shed, the goods landing. */
+/**
+ * Chapter 2, the weighing row: a small square where its two streets cross with the great balance in the
+ * middle (gold pans on chains from a beam) and scale tables round it, stalls along both streets facing them,
+ * lanterns and festival masts strung with pennants across the streets; trees, carts and sacks in the corners.
+ */
+function buildWeighingRow(ctx: ZoneMapContext, kit: Kit): void {
+  const { world } = ctx;
+  const { B, base, box, set } = kit;
+  const { x: cx, z: cz, r } = SCALES;
+  placePlaza(world, cx, cz, r, ctx.ground, { paver: B.cobble, border: B.stone });
+  box(cx - 1, base, cz - 1, cx + 1, base, cz + 1, B.stone);
+  box(cx, base + 1, cz, cx, base + 7, cz, B.log);
+  set(cx, base + 8, cz, B.gold);
+  box(cx - 4, base + 7, cz, cx + 4, base + 7, cz, B.log);
+  for (const sx of [-1, 1]) {
+    box(cx + sx * 4, base + 4, cz, cx + sx * 4, base + 6, cz, B.iron);
+    box(cx + sx * 4 - 1, base + 3, cz - 1, cx + sx * 4 + 1, base + 3, cz + 1, B.gold);
+  }
+  ctx.keepOut(cx - 1, cz - 1, cx + 1, cz + 1);
+  ctx.landmark('can-lon', 'Cân lớn giữa chợ', cx, cz - 5);
+  for (const [dx, dz] of [[-7, -7], [7, -7], [-7, 7], [7, 7]] as const) kit.lamp(cx + dx, cz + dz);
+  for (const [px, pz] of [[583, 367], [596, 367], [583, 377], [596, 377]] as const) {
+    box(px, base, pz, px + 1, base, pz, B.planks);
+    ctx.propAt(M.scale, [px + 1, base + 1, pz + 0.5], 0);
+    ctx.prop(M.rice, px + (px < cx ? -1 : 2), pz, 30);
+    ctx.keepOut(px - 1, pz, px + 2, pz);
+  }
+
+  // Along the east-west street: stalls both sides, lanterns and masts in the gaps, pennants across.
+  const z = ROAD_Z.market;
+  const across = (a: ReadonlyArray<[number, number, number]>, b: ReadonlyArray<[number, number, number]>): void => {
+    a.forEach((p, i) => {
+      const s = b[i];
+      const next = b[i + 1];
+      if (s) bunting(ctx, p, s, 0.8);
+      if (next) bunting(ctx, p, next, 1.0);
+    });
+  };
+  const arms: Array<[readonly number[], Goods, Goods]> = [
+    [[526, 536, 546, 556, 566], 'fruit', 'rice'],
+    [[604, 614, 624, 634, 644], 'cakes', 'drinks'],
+  ];
+  for (const [xs, north, south] of arms) {
+    const mastsN: Array<[number, number, number]> = [];
+    const mastsS: Array<[number, number, number]> = [];
+    xs.forEach((x0, i) => {
+      kit.stall(x0, z - 8, 'south', i === 2 ? 'grocery' : north);
+      kit.stall(x0, z + 4, 'north', i === 1 ? 'fruit' : south);
+      if (i === xs.length - 1) return;
+      kit.lamp(x0 + 7, z - 4);
+      kit.lamp(x0 + 7, z + 4);
+      mastsN.push(kit.mast(x0 + 8, z - 7));
+      mastsS.push(kit.mast(x0 + 8, z + 7));
+    });
+    across(mastsN, mastsS);
+  }
+  // Along the north-south road.
+  const x = ROAD_X.east;
+  const north: Goods[] = ['fruit', 'cakes', 'rice', 'drinks'];
+  const south: Goods[] = ['rice', 'grocery', 'fruit', 'cakes'];
+  for (const [zs, goods] of [[[318, 328, 338, 348], north], [[386, 396, 406, 416], south]] as const) {
+    const mastsW: Array<[number, number, number]> = [];
+    const mastsE: Array<[number, number, number]> = [];
+    zs.forEach((z0, i) => {
+      kit.stall(x - 8, z0, 'east', goods[i] ?? 'fruit');
+      kit.stall(x + 4, z0, 'west', goods[(i + 2) % 4] ?? 'cakes');
+      if (i === zs.length - 1) return;
+      kit.lamp(x - 4, z0 + 7);
+      kit.lamp(x + 4, z0 + 7);
+      mastsW.push(kit.mast(x - 7, z0 + 8));
+      mastsE.push(kit.mast(x + 7, z0 + 8));
+    });
+    across(mastsW, mastsE);
+  }
+  ctx.landmark('day-sap-can', 'Dãy sạp có cân', 546, z - 1);
+  // Sacks and carts in the corners, trees with benches.
+  for (const [px, pz] of [[548, 340], [636, 340], [548, 404], [636, 404]] as const) {
+    ctx.prop(M.cart, px, pz, 30);
+    ctx.prop(M.crate, px + 3, pz + 1, 10);
+    ctx.prop(M.bag, px + 3, pz - 1, 50);
+  }
+  for (const [px, pz, leaves] of [[530, 324, B.leaves], [652, 324, B.pink], [530, 424, B.pink], [652, 424, B.leaves]] as const) {
+    kit.tree(px, pz, leaves, 7);
+    ctx.prop(M.bench, px + 3, pz, 270);
+  }
+}
+
+/**
+ * The harbour below the weighing row (d-07): fish stalls open at the back along the bank, facing the road,
+ * a fence along the water's edge behind them, jetties with boats, and the lighthouse on its islet.
+ */
+function buildHarbour(ctx: ZoneMapContext, kit: Kit): void {
+  const { B, base } = kit;
+  const z = ROAD_Z.bank + 4;
+  const stalls = [598, 608, 618, 628, 638];
+  stalls.forEach((x0) => kit.stall(x0, z, 'north', 'fish'));
+  for (const x0 of stalls) kit.lamp(x0 + 7, z - 1);
+  for (let x = 594; x <= 648; x += 2) {
+    let edge = z + 5;
+    while (!inWater(x, edge + 1) && edge < z + 20) edge++;
+    if (!ctx.keptOut(x, edge)) ctx.prop(M.fence, x, edge, 0);
+  }
+  ctx.landmark('gian-hai-san', 'Gian hàng hải sản', 641, z - 3);
+  ctx.landmark('ben-hang', 'Bến hàng bên kênh', 600, ROAD_Z.bank + 2);
+  // The islet and its lighthouse.
+  for (let dx = -4; dx <= 4; dx++) {
+    for (let dz = -4; dz <= 4; dz++) {
+      if (Math.hypot(dx, dz) > ISLET.r) continue;
+      for (let y = WATER_LEVEL - 2; y <= ctx.ground; y++) kit.set(ISLET.x + dx, y, ISLET.z + dz, B.stone);
+    }
+  }
+  placeLighthouse(ctx.world, ISLET.x, ISLET.z, base, { red: B.wood, white: B.snow, glass: B.glass, cap: B.blue });
+  ctx.keepOut(ISLET.x - 4, ISLET.z - 4, ISLET.x + 4, ISLET.z + 4);
+  ctx.landmark('hai-dang', 'Hải đăng', ISLET.x, ISLET.z - 6);
+}
+
+/** The canal: the dragon bridge, the sluice and its inlet, the gravel bank, the shed, the basins, the jetties, boats. */
 function buildCanal(ctx: ZoneMapContext, kit: Kit): void {
   const { B, base, set, box } = kit;
   const { ground } = ctx;
@@ -794,32 +847,31 @@ function buildCanal(ctx: ZoneMapContext, kit: Kit): void {
   };
   const deckY = WATER_LEVEL + 1;
 
-  // The dragon bridge on the market road: a wider deck, red rails and a red body with a yellow back rising
-  // and falling along both sides, a head at the north bank and a tail at the south.
-  const bx = ROAD_X.west;
+  // The dragon bridge on the south road: red rails and a red body with a yellow back rising and falling
+  // along both sides, a head at the north bank and a tail at the south.
+  const bx = ROAD_X.bridge;
   const [s0, s1] = waterSpan(bx);
   for (let z = s0 - 1; z <= s1 + 1; z++) {
     for (const dx of [-2, 2]) set(bx + dx, deckY, z, B.planks);
     const t = (z - s0) / Math.max(1, s1 - s0);
     const hump = Math.round(1.5 + 1.5 * Math.sin(t * Math.PI * 3));
     for (const dx of [-3, 3]) {
-      for (let y = deckY + 1; y <= deckY + 1 + hump; y++) set(bx + dx, y, z, y === deckY + 1 + hump ? B.sand : B.red);
+      for (let y = deckY + 1; y <= deckY + 1 + hump; y++) set(bx + dx, y, z, y === deckY + 1 + hump ? B.gold : B.wood);
       set(bx + dx, deckY, z, B.planks);
     }
   }
   for (const dx of [-3, 3]) {
     const hx = bx + dx + Math.sign(dx);
     const head = ctx.surface(hx, s0 - 3) + 1;
-    box(hx - 1, head, s0 - 4, hx + 1, head + 2, s0 - 2, B.red);
-    set(hx, head + 3, s0 - 3, B.sand);
+    box(hx - 1, head, s0 - 4, hx + 1, head + 2, s0 - 2, B.wood);
+    set(hx, head + 3, s0 - 3, B.gold);
     set(hx, head + 1, s0 - 5, B.snow);
     const tail = ctx.surface(hx, s1 + 3) + 1;
-    box(hx, tail, s1 + 2, hx, tail + 1, s1 + 3, B.red);
-    set(hx, tail, s1 + 4, B.sand);
+    box(hx, tail, s1 + 2, hx, tail + 1, s1 + 3, B.wood);
+    set(hx, tail, s1 + 4, B.gold);
   }
   ctx.keepOut(bx - 5, s0 - 6, bx + 5, s1 + 5);
   ctx.landmark('cau-rong', 'Cầu hình rồng bắc qua kênh', bx, s0 - 1);
-  ctx.landmark('chan-cau-rong', 'Chân cầu rồng bắc qua kênh', bx + 6, s0 - 3);
 
   // The sluice: a grey dam across the inlet with a plank gate between log posts.
   const mouth = Math.floor(canalCentre(INLET.x0) - CANAL.half) - 1;
@@ -828,14 +880,13 @@ function buildCanal(ctx: ZoneMapContext, kit: Kit): void {
   for (const x of [INLET.x0 - 1, INLET.x1 + 1]) box(x, ground + 1, mouth, x, ground + 3, mouth, B.log);
   box(INLET.x0 - 1, ground + 4, mouth, INLET.x1 + 1, ground + 4, mouth, B.log);
   ctx.keepOut(INLET.x0 - 3, INLET.z0 - 2, INLET.x1 + 3, mouth + 1);
-  ctx.landmark('bo-kenh-canh-cho', 'Bờ kênh cạnh chợ', INLET.x0 + 12, ROAD_Z.bank + 3);
   ctx.landmark('cua-cong', 'Đập nhỏ và cửa cống', INLET.x0 + 2, INLET.z0 - 3);
 
-  // The gravel bank and the wooden shed along it east of the bridge.
+  // The gravel bank and the wooden shed along it.
   for (let x = 250; x <= 300; x++) {
     for (let z = ROAD_Z.bank + 3; z < waterSpan(x)[0]; z++) {
       if (ctx.onPath(x, z)) continue;
-      set(x, ctx.surface(x, z), z, (x * 7 + z * 13) % 5 === 0 ? B.stone : B.riverbed);
+      set(x, ctx.surface(x, z), z, (x * 7 + z * 13) % 5 === 0 ? B.rock : B.riverbed);
     }
   }
   ctx.keepOut(250, ROAD_Z.bank + 3, 300, ROAD_Z.bank + 20);
@@ -848,31 +899,99 @@ function buildCanal(ctx: ZoneMapContext, kit: Kit): void {
   ctx.keepOut(shed.x0 - 1, shed.z0 - 1, shed.x0 + 8, shed.z0 + 6);
   ctx.landmark('lan-go-ben-kenh', 'Lán gỗ bên kênh', shed.x0 + 4, shed.z0 - 2);
 
-  // The vegetable washing basins by the canal below the weighing row, and the goods landing on the harbour.
+  // The vegetable washing basins below the weighing row, jetties into the harbour.
   const basins = { x0: 552, z0: ROAD_Z.bank + 5 };
   box(basins.x0, base, basins.z0, basins.x0 + 8, base, basins.z0 + 2, B.grey);
   box(basins.x0 + 1, base, basins.z0 + 1, basins.x0 + 7, base, basins.z0 + 1, B.water);
   for (let i = 0; i < 4; i++) ctx.prop(M.bucket, basins.x0 + 1 + i * 2, basins.z0 - 1, i * 35);
   ctx.keepOut(basins.x0 - 1, basins.z0 - 1, basins.x0 + 9, basins.z0 + 3);
   ctx.landmark('chau-rua-rau-ben-kenh', 'Chậu rửa rau bên kênh', basins.x0 + 4, basins.z0 - 2);
-  for (const x of [605, 625, 645]) {
+  for (const x of [596, 612]) {
     const [z0] = waterSpan(x);
-    jetty(ctx, x, z0, 10, 1, WATER_LEVEL);
+    jetty(ctx, x, z0, 9, 1, WATER_LEVEL, x > 600);
   }
-  for (let i = 0; i < 10; i++) {
-    const x = 600 + i * 5;
-    const z = waterSpan(x)[0] - 3;
-    if (!ctx.onPath(x, z)) ctx.prop(i % 3 === 0 ? M.barrel : M.crate, x, z, i * 30);
-    if (i % 2 === 0 && !ctx.onPath(x + 2, z)) ctx.prop(M.bag, x + 2, z, i * 20);
-  }
-  ctx.landmark('ben-hang-ben-kenh', 'Bến hàng bên kênh', 625, waterSpan(625)[0] - 2);
-
   // Boats moored along the canal away from the bridges.
   for (let x = 40; x < 770; x += 34) {
     if (Object.values(ROAD_X).some((rx) => Math.abs(rx - x) < 10) || Math.abs(x - HARBOUR.x) < HARBOUR.rx) continue;
     ctx.propAt(M.canoe, [x + 0.5, WATER_LEVEL + 0.9, canalCentre(x) + 2.5], 90);
   }
   ctx.landmark('con-kenh', 'Con kênh', 480, Math.round(canalCentre(480)));
+}
+
+/**
+ * Round the town: the north street of shophouses, hamlets of cottages, vegetable plots in the outer bands, a
+ * bamboo hedge round the map, and the verges of every way outside the markets (lanterns, bushes, flowers).
+ */
+function buildOutskirts(ctx: ZoneMapContext, kit: Kit): void {
+  const { B } = kit;
+  const z = ROAD_Z.street;
+  let x = 26;
+  let n = 0;
+  while (x + 10 <= 774) {
+    const w = 10 + (n % 3);
+    let clear = x + w < SPAWN_YARD.x0 - 4 || x > SPAWN_YARD.x1 + 4;
+    for (let cx = x - 3; cx <= x + w + 2 && clear; cx++) if (ctx.onPath(cx, z - 12) || ctx.onPath(cx, z + 12)) clear = false;
+    if (!clear) {
+      x += 2;
+      continue;
+    }
+    kit.shop(x, z - 13, w, 9, 'south');
+    if (!ctx.inZone(x, z + 13, 3) && !ctx.inZone(x + w, z + 13, 3)) kit.shop(x, z + 5, w, 8, 'north');
+    x += w + 3;
+    n++;
+  }
+  ctx.landmark('pho-phia-bac', 'Phố phía bắc', 300, z);
+
+  const SEGMENTS: ReadonlyArray<readonly [number, number]> = [[26, 54], [67, 316], [327, 403], [417, 583], [597, 733], [747, 774]];
+  for (const [x0, x1] of SEGMENTS) {
+    hamlet(ctx, x0, ROAD_Z.north + 4, x1, 186);
+    hamlet(ctx, x0, 494, x1, 540);
+    hamlet(ctx, x0, ROAD_Z.south + 6, x1, 668);
+  }
+  for (const [x0, x1] of [[26, 54], [67, 126], [668, 733], [747, 776]] as const) {
+    hamlet(ctx, x0, 304, x1, 358);
+    hamlet(ctx, x0, 388, x1, 444);
+  }
+  for (const [x0, x1] of [[327, 403], [417, 512]] as const) {
+    hamlet(ctx, x0, 300, x1, 352);
+    hamlet(ctx, x0, 392, x1, 444);
+  }
+
+  // Vegetable plots in the outer bands, a fence along the road side of each.
+  let plots = 0;
+  const plot = (x0: number, z0: number, x1: number, z1: number, fenceZ: number): void => {
+    const crop = plots++ % 4;
+    for (let px = x0; px <= x1; px++) {
+      for (let pz = z0; pz <= z1; pz++) {
+        if (ctx.onPath(px, pz) || ctx.inWater(px, pz) || ctx.keptOut(px, pz)) continue;
+        const y = ctx.surface(px, pz);
+        kit.set(px, y, pz, B.dirt);
+        if ((pz - z0) % 2 !== 1 || px === x0 || px === x1 || pz === z1) continue;
+        if (crop === 0) kit.set(px, y + 1, pz, B.leaves);
+        else if (crop === 1) kit.set(px, y + 1, pz, B.autumn);
+        else if (crop === 2 && (px - x0) % 3 === 1) ctx.prop(M.cabbage, px, pz, (px * 37 + pz * 11) % 360);
+        else if (crop === 3 && (px - x0) % 4 === 2) ctx.prop(M.pumpkin, px, pz, (px * 37 + pz * 11) % 360);
+      }
+    }
+    for (let px = x0; px <= x1; px += 2) if (!ctx.onPath(px, fenceZ) && !ctx.inWater(px, fenceZ)) ctx.prop(M.fence, px, fenceZ, 0);
+    ctx.keepOut(x0, z0, x1, z1);
+  };
+  for (const [x0, x1] of SEGMENTS) {
+    for (let px = x0; px + 20 <= x1; px += 52) {
+      const xe = Math.min(px + 36, x1);
+      plot(px, 200, xe, 240, 198);
+      plot(px, 556, xe, 604, 554);
+      if (((px - x0) / 52) % 2 === 0) plot(px, 684, xe, 716, 682);
+      else plot(px, 46, xe, 80, 84);
+    }
+  }
+  ctx.landmark('ruong-rau-ngoai-o', 'Ruộng rau ngoại ô', 300, 220);
+
+  for (const route of ROUTES) laneVerge(ctx, route, { lampEvery: 16 });
+  bambooHedge(ctx, [[20, 20], [780, 20]]);
+  bambooHedge(ctx, [[20, 780], [780, 780]]);
+  bambooHedge(ctx, [[20, 20], [20, 780]]);
+  bambooHedge(ctx, [[780, 20], [780, 780]]);
 }
 
 await runIfMain(import.meta.url, generateChoPhien);

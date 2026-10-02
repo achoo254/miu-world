@@ -39,6 +39,8 @@ export interface ZoneMapContext {
   world: VoxelWorld;
   /** Block id by name (content/blocks.json). */
   block: (name: string) => number;
+  /** Ids of the map's own grass and lane blocks (`soil`). */
+  soil: { grass: number; path: number };
   rng: () => number;
   ground: number;
   surface: (x: number, z: number) => number;
@@ -57,6 +59,8 @@ export interface ZoneMapContext {
   centredAt: (model: string, at: readonly [number, number, number], yaw: number) => void;
   /** Keeps trees and quest targets out of a rectangle (inclusive): a building's footprint and its doorstep. */
   keepOut: (x0: number, z0: number, x1: number, z1: number) => void;
+  /** Whether a column lies in (or within `pad` of) a rectangle kept out so far. */
+  keptOut: (x: number, z: number, pad?: number) => boolean;
   landmark: (id: string, name: string, x: number, z: number, y?: number) => void;
 }
 
@@ -69,6 +73,11 @@ export interface ZoneMapSpec {
   /** Side of the map in blocks, a multiple of 16 (default 800: owner, 01/10/2026, ten times the area of 256). */
   size?: number;
   ground?: { ground: number; roll: number };
+  /**
+   * The map's own ground (block names, owner 02/10/2026: no two maps on the same green): its grass and its
+   * lanes; the land round the map wears them too. Default grass and path.
+   */
+  soil?: { grass: string; path: string };
   zones: readonly Zone[];
   spawn: { x: number; z: number; yaw: number };
   /** The map's own landforms (a hill, a slope), from the shaped height of a column (before the water sinks it). */
@@ -170,7 +179,8 @@ export async function generateZoneMap(spec: ZoneMapSpec): Promise<{ world: Voxel
   }, level);
 
   // 2. Soil, zone floors, paths, water.
-  const B = { stone: block('stone'), dirt: block('dirt'), grass: block('grass'), sand: block('sand'), path: block('path'), water: block('water'), bed: block('riverbed'), planks: block('planks'), log: block('log') };
+  const soil = spec.soil ?? { grass: 'grass', path: 'path' };
+  const B = { stone: block('stone'), dirt: block('dirt'), grass: block(soil.grass), sand: block('sand'), path: block(soil.path), water: block('water'), bed: block('riverbed'), planks: block('planks'), log: block('log') };
   for (let x = 0; x < sx; x++) {
     for (let z = 0; z < sz; z++) {
       const h = surface(x, z);
@@ -206,6 +216,7 @@ export async function generateZoneMap(spec: ZoneMapSpec): Promise<{ world: Voxel
   spec.build({
     world,
     block,
+    soil: { grass: B.grass, path: B.path },
     rng,
     ground: level,
     surface,
@@ -219,6 +230,7 @@ export async function generateZoneMap(spec: ZoneMapSpec): Promise<{ world: Voxel
     centred: (model, x, z, yaw) => queued.push({ kind: 'centred', model, x, z, yaw }),
     centredAt: (model, at, yaw) => queued.push({ kind: 'centred-at', model, at, yaw }),
     keepOut: (x0, z0, x1, z1) => kept.push([Math.min(x0, x1), Math.min(z0, z1), Math.max(x0, x1), Math.max(z0, z1)]),
+    keptOut,
     landmark: (id, name, x, z, y) => landmarks.push({ id, name, position: [x + 0.5, y ?? level + 1, z + 0.5] }),
   });
 
@@ -343,6 +355,11 @@ export async function generateZoneMap(spec: ZoneMapSpec): Promise<{ world: Voxel
       chapterCells: zoneCells,
       residentCells: zones.flatMap((zn) => zoneCells(zn.chapter)),
       keepClear: [[spec.spawn.x, spec.spawn.z], ...chapterStart.values()],
+      placeNamed: (name) => {
+        const key = name.trim().toLowerCase();
+        const lm = landmarks.find((l) => l.name.trim().toLowerCase() === key);
+        return lm ? [Math.floor(lm.position[0]), Math.floor(lm.position[2])] : undefined;
+      },
     },
     interactables: [...gates, ...rides],
     seed: seed + 11,
@@ -374,7 +391,7 @@ export async function generateZoneMap(spec: ZoneMapSpec): Promise<{ world: Voxel
     props: models.props,
     landmarks: [...zones.map((zn) => ({ id: zn.id, name: zn.name, position: [zn.x + 0.5, level + 1, zn.z + 0.5] as [number, number, number] })), ...landmarks],
     ...(ambients.length > 0 ? { ambients } : {}),
-    outland: await outlandSpecOf(world, seed, spec.outland, level),
+    outland: await outlandSpecOf(world, seed, spec.outland, level, spec.soil),
   };
   return { world, entities };
 }

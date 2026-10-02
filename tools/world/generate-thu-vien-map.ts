@@ -1,14 +1,15 @@
-// Generates "Thư viện" (Tiếng Việt weeks 8–9, Toán topic 6) from a fixed seed, 800 x 800 blocks: a small
-// town round a big library in a garden, in the shared style of the owner's mocks (designs/the-gioi/, the
-// lamp-lit main street of b-10-duong-chinh-toan-canh.png): coloured roofs, flower beds, fences, lamps.
-// A lamp-lit avenue runs west to east across the map and over the river on a plank bridge; a ring road and
-// side streets lined with cottages fill the four quarters; flower gardens north-west, woods by the river.
-// Three districts, one per chapter:
-// - Chapter 1, south-west, by the spawn: the library hall (after the mock's reading room,
-//   designs/truong-hoc/v2-a-12-thu-vien-trong-truong.png: tall wooden bookcases, reading tables, lamps,
-//   big windows) with its book loft and stairs, aisles between the bookcases, the librarian's desk, the
-//   return counter, the reading corner with pillows; behind it the terrace steps down to the reading garden:
-//   the flat stone, the purple myrtle, the little stream and its sandy beach.
+// Generates "Thư viện" (Tiếng Việt weeks 8–9, Toán topic 6) from a fixed seed, 800 x 800 blocks, after the
+// owner's detail mock of the library (02/10/2026, designs/thu-vien/d-01…d-14, and the school's library
+// frame designs/truong-hoc/c-16): a grand stone library under red roofs is the heart of a small town, a
+// formal garden before it (a paved square round a tiered fountain, flower parterres edged with hedges,
+// lantern-lit walks), a lake either side with a humped stone bridge over each, a reading garden behind it
+// with its vine-hung pergola, the stream and its sandy beach. A walk from the spawn leads up the garden to
+// the terrace and the arched door. Paved lanes lined with cottages fill the four quarters; flower gardens
+// north-west, woods by the river. Three districts, one per chapter:
+// - Chapter 1, south-west, by the spawn: the library (structures/thu-vien-library.ts: the hall with its
+//   globe, the reading room, the bookcases by subject and their aisles, the children's corner, the gallery
+//   up the grand staircase; computers, group room, rare books, the store room) and its gardens: the
+//   terrace steps down to the reading garden: the flat stone, the purple myrtle, the stream, the beach.
 // - Chapter 2, north-east: the golden-leaf festival yard: the leaf stage, the golden-leaf road, the round
 //   pool with floating rafts, the golden tree with its stone table, the tree hung with clouds, the leaf-sweet
 //   stall and the contest stations.
@@ -17,12 +18,15 @@
 //   east window, the mailbox and the telescope corner.
 // Output: assets/generated/world/thu-vien/{regions/, horizon.bin, entities.json}
 import { PACK, runIfMain, smoothstep } from './map-kit';
-import { cottageRow, flowerBed } from './scenery';
+import { cottageRow, flowerBed, laneVerge, STREET_LANTERN, streetHouses } from './scenery';
 import { placeHouse } from './structures/buildings';
 import { placeFountain, placeStall } from './structures/countryside';
+import { placePlaza } from './structures/landmarks';
+import { placeArchedBridge, placeClockTower } from './structures/thu-vien-garden';
 import { pathColumns, type Point } from './structures/path';
+import { buildLibraryHall, LIBRARY_MODELS, type LibraryPlan } from './structures/thu-vien-library';
 import { placeAncientTree, placeTree } from './structures/tree';
-import { animal, crowd, person } from './village-life';
+import { animal, crowd, person, type Resident } from './village-life';
 import { generateZoneMap, type Zone, type ZoneMapContext } from './zone-map';
 
 export const MAP_ID = 'thu-vien';
@@ -58,16 +62,45 @@ interface Rect {
   z1: number;
 }
 
-// Water: the river down the middle of the map, the stream behind the library, the festival's round pool.
+/** The library: its walls, the pavilion in front with the door, the floor a block over the ground. */
+const LIB: LibraryPlan = { x0: 194, x1: 266, z0: 506, z1: 540, pavX0: 216, pavX1: 244, pavZ0: 502, door: 230, floor: LEVEL + 1 };
+/** The terrace before the door and the one behind it, at the floor's height. */
+const TERRACE: Rect = { x0: 208, z0: 494, x1: 252, z1: 501 };
+const BACK_TERRACE: Rect = { x0: 222, z0: LIB.z1 + 2, x1: 238, z1: LIB.z1 + 6 };
+/** The library's stone shell stands a block outside its plan (the plan's edge is the rooms' lining). */
+const RAISED: readonly Rect[] = [{ x0: LIB.x0 - 1, z0: LIB.pavZ0, x1: LIB.x1 + 1, z1: LIB.z1 + 1 }, TERRACE, BACK_TERRACE];
+/** The clock tower standing apart behind the library, east of it (d-01). */
+const CLOCK_TOWER = { x: 318, z: 528 };
+/** The garden's paved square with its fountain, the lakes either side, the pergola of the reading garden. */
+const SQUARE = { x: LIB.door, z: 466, r: 15 };
+const LAKES = [
+  { x: 188, z: 458, rx: 16, rz: 15 },
+  { x: 272, z: 458, rx: 16, rz: 15 },
+];
+const LAKE_Z = 458;
+const PERGOLA: Rect = { x0: 204, z0: 549, x1: 218, z1: 559 };
+/** The library's grounds outside its district: no cottages or wild trees there. */
+const GROUNDS: readonly Rect[] = [
+  { x0: 120, z0: 436, x1: 340, z1: 473 },
+  { x0: 120, z0: 474, x1: 157, z1: 600 },
+  { x0: 303, z0: 474, x1: 340, z1: 600 },
+  { x0: 158, z0: 587, x1: 302, z1: 600 },
+];
+
+// Water: the river down the middle of the map, the stream behind the library, the lakes before it, the
+// festival's round pool.
 const riverCenter = (z: number): number => 420 + 22 * Math.sin(z / 60) + 6 * Math.sin(z / 23 + 1.3);
 const streamCenter = (x: number): number => 568 + 3 * Math.sin(x / 11) + 2 * Math.sin(x / 29);
 const POOL = { x: 632, z: 268, r: 10 };
+const inLake = (x: number, z: number): boolean => LAKES.some((l) => ((x - l.x) / l.rx) ** 2 + ((z - l.z) / l.rz) ** 2 < 1);
 const inWater = (x: number, z: number): boolean =>
   (z > 24 && z < 776 && Math.abs(x - riverCenter(z)) < 8 + 1.5 * Math.sin(z / 37)) ||
   (x > 120 && x < 318 && Math.abs(z - streamCenter(x)) < 2.2) ||
-  Math.hypot(x - POOL.x, z - POOL.z) < POOL.r;
+  Math.hypot(x - POOL.x, z - POOL.z) < POOL.r ||
+  inLake(x, z);
 
-// Ways: the avenue (three lanes wide), the ring road, the side streets, a spur into each district.
+// Ways: the avenue (three lanes wide), the ring road, the side streets, a spur into each district; in the
+// library's garden the walk up to the terrace, the walk across before it, the walks over the two bridges.
 const AVENUE_Z = 420;
 const AVENUE: Point[][] = [-3, 0, 3].map((dz): Point[] => [[30, AVENUE_Z + dz], [770, AVENUE_Z + dz]]);
 const STREETS: Point[][] = [
@@ -86,17 +119,22 @@ const STREETS: Point[][] = [
   [[480, 500], [740, 500]],
   [[480, 700], [740, 700]],
 ];
+const GARDEN_WALKS: Point[][] = [
+  ...[-2, 0, 2].map((dx): Point[] => [[LIB.door + dx, AVENUE_Z + 3], [LIB.door + dx, TERRACE.z0 - 1]]),
+  [[LIB.door - 26, 487], [LIB.door + 26, 487]],
+  [[60, LAKE_Z], [SQUARE.x - SQUARE.r + 1, LAKE_Z]],
+  [[SQUARE.x + SQUARE.r - 1, LAKE_Z], [330, LAKE_Z]],
+  [[200, PERGOLA.z0 - 1], [LIB.door, PERGOLA.z0 - 1]],
+  [[LIB.door, BACK_TERRACE.z1 + 1], [LIB.door, PERGOLA.z0 - 1]],
+];
 const SPURS: Point[][] = [
-  [[230, 420], [230, 530]],
-  [[200, 545], [200, 660]],
+  [[200, PERGOLA.z0 - 1], [200, 660]],
   [[595, 420], [595, 250]],
   [[595, 420], [595, 604]],
 ];
-const ROUTES: Point[][] = [...AVENUE, ...STREETS, ...SPURS];
-/** Avenue crossings (x) that get zebra stripes. */
-const CROSSINGS = [60, 150, 230, 330, 480, 595, 690, 740];
+const ROUTES: Point[][] = [...AVENUE, ...STREETS, ...GARDEN_WALKS, ...SPURS];
 
-/** Quarters lined with cottages (levelled ground), and the flower gardens north-west. */
+/** Quarters of the town (levelled ground), and the flower gardens north-west. */
 const TOWN: readonly Rect[] = [
   { x0: 66, z0: 66, x1: 144, z1: 414 },
   { x0: 156, z0: 246, x1: 390, z1: 414 },
@@ -106,33 +144,32 @@ const TOWN: readonly Rect[] = [
 ];
 const GARDENS: Rect = { x0: 158, z0: 68, x1: 384, z1: 232 };
 const FLAT: readonly Rect[] = [...TOWN, GARDENS];
-const SPAWN = { x: 205, z: 432 };
+const SPAWN = { x: 186, z: 430 };
+/** Kept open round the spawn and the gate beside it. */
+const SPAWN_CLEAR: Rect = { x0: SPAWN.x - 10, z0: SPAWN.z - 4, x1: SPAWN.x + 16, z1: SPAWN.z + 12 };
 
 const N = PACK.nature;
 const F = PACK.furniture;
 const P = PACK.props;
 const M = {
   bookcase: `${F}/bookcaseOpen.glb`,
-  bookcaseLow: `${F}/bookcaseOpenLow.glb`,
   table: `${F}/table.glb`,
   chair: `${F}/chair.glb`,
-  rug: `${F}/rugRectangle.glb`,
-  pillow: `${F}/pillow.glb`,
   plant: `${F}/pottedPlant.glb`,
-  floorLamp: `${F}/lampRoundFloor.glb`,
   books: `${P}/books.glb`,
   openBook: `${P}/open-book.glb`,
   rock: `${N}/rock_largeA.glb`,
   grass: `${N}/grass_large.glb`,
   bush: `${N}/plant_bushLarge.glb`,
   fence: `${N}/fence_simple.glb`,
+  lily: `${N}/lily_large.glb`,
+  lilySmall: `${N}/lily_small.glb`,
   flowerRed: `${N}/flower_redA.glb`,
   flowerYellow: `${N}/flower_yellowB.glb`,
   flowerPurple: `${N}/flower_purpleA.glb`,
   fruitTree: `${N}/tree_fat.glb`,
   autumnTree: `${N}/tree_oak_fall.glb`,
   bench: `${PACK.box}/park-bench.glb`,
-  lamp: `${PACK.roads}/light-curved.glb`,
   leaf: `${P}/fallen-leaf.glb`,
   balloon: `${P}/balloon.glb`,
   gift: `${P}/gift-red.glb`,
@@ -152,15 +189,20 @@ const FLOWERS = [M.flowerRed, M.flowerYellow, M.flowerPurple];
 const outsideRect = (r: Rect, x: number, z: number): number => Math.hypot(Math.max(0, r.x0 - x, x - r.x1), Math.max(0, r.z0 - z, z - r.z1));
 const inRect = (r: Rect, x: number, z: number, pad = 0): boolean => x >= r.x0 - pad && x <= r.x1 + pad && z >= r.z0 - pad && z <= r.z1 + pad;
 
+/** The same residents, their work spots planned (village-life.ts `visits`). */
+const visiting = (cast: readonly Resident[], visits: ReadonlyArray<readonly [number, number]>): Resident[] => cast.map((r) => ({ ...r, visits }));
+
 export async function generateThuVien() {
   return generateZoneMap({
     mapId: MAP_ID,
     region: 'thu-vien',
     seedText: 'miu-thu-vien',
     outland: 'library',
+    soil: { grass: 'grass-library', path: 'paver' },
     zones: ZONES,
     spawn: { x: SPAWN.x, z: SPAWN.z, yaw: 0 },
     shape: (x, z, h) => {
+      if (RAISED.some((r) => inRect(r, x, z))) return LEVEL + 1;
       const d = Math.min(...FLAT.map((r) => outsideRect(r, x, z)));
       const k = smoothstep(0, 8, d);
       return LEVEL * (1 - k) + h * k;
@@ -172,16 +214,25 @@ export async function generateThuVien() {
       skip: 0.45,
       blocks: (roll, block) => ({ log: block('tree-log'), leaves: block(roll < 0.3 ? 'leaves-autumn' : roll < 0.5 ? 'leaves-pink' : 'leaves') }),
     },
-    // The reading room's tall shelves and the tower's clock face (content/world/models.json has the usual sizes).
+    // The tower's clock face and the library's gable clock (content/world/models.json has the usual sizes).
     sizes: { [M.bookcase]: 2.4, [M.clock]: 3 },
     // The districts are dressed below (clear of the rooms indoors), not by the builder.
     dressing: { models: [], spacing: SIZE },
-    // The library town: readers and the librarian, the festival crowd, the tower's keepers, the streets.
+    // The library town: the librarians, readers young and old, the children's corner, parents and the
+    // gardeners outside; the festival crowd, the tower's keepers, the streets.
     life: ({ landmark }) => [
-      ...crowd('librarian', ['Cô thủ thư', 'Chú xếp sách'], [person('i'), person('j')], landmark('ban-thu-thu'), 6, 2, [LIFE_HELD.book]),
-      ...crowd('reader', ['Bạn đọc sách', 'Bác đọc báo', 'Chị đọc truyện'], [person('n'), person('a'), person('h'), person('p')], landmark('ban-doc'), 8, 6, [LIFE_HELD.book]),
-      ...crowd('reader', ['Bạn đọc dưới cây'], [person('f'), person('o')], landmark('vuon-doc-sach'), 10, 4, [LIFE_HELD.book]),
-      ...crowd('waterer', ['Bác làm vườn'], [person('m')], landmark('vuon-doc-sach'), 14, 2, [LIFE_HELD.bucket]),
+      // Indoors each works round its own place: the desk and the counter, the stacks, the tables.
+      ...visiting(crowd('librarian', ['Cô thủ thư'], [person('i')], landmark('ban-thu-thu'), 2, 1, [LIFE_HELD.book]), [[220, 510], [240, 510], [262, 512]]),
+      ...visiting(crowd('librarian', ['Chú xếp sách'], [person('j')], landmark('loi-giua-cac-ke-sach'), 3, 1, [LIFE_HELD.book]), [[251, 512], [257, 516], [262, 518]]),
+      ...visiting(crowd('reader', ['Bạn đọc sách', 'Bác đọc báo', 'Chị đọc truyện'], [person('n'), person('a'), person('h'), person('p')], landmark('ban-doc'), 5, 4, [LIFE_HELD.book]), [[200, 512], [205, 516], [210, 508]]),
+      ...visiting(crowd('pupil', ['Bạn nhỏ nghe kể chuyện', 'Em bé xem tranh'], [person('f'), person('o'), person('q')], landmark('goc-doc-co-goi'), 4, 3, [LIFE_HELD.book]), [[207, 525], [199, 534], [211, 535]]),
+      ...visiting(crowd('pupil', ['Bạn tra cứu sách'], [person('r'), person('n')], landmark('khu-may-tinh'), 3, 2), [[248, 524], [252, 528], [256, 524]]),
+      ...visiting(crowd('reader', ['Nhóm bạn học bài'], [person('q'), person('f')], landmark('phong-hoc-nhom'), 4, 2, [LIFE_HELD.book]), [[256, 535], [259, 537], [261, 535]]),
+      ...crowd('reader', ['Bạn đọc dưới giàn hoa'], [person('f'), person('o')], landmark('vuon-doc-sach'), 6, 3, [LIFE_HELD.book]),
+      ...crowd('waterer', ['Bác làm vườn', 'Cô tưới hoa'], [person('m'), person('e')], landmark('quang-truong-dai-phun'), 16, 3, [LIFE_HELD.bucket]),
+      ...crowd('sweeper', ['Chú quét lối đi'], [person('d')], landmark('thu-vien'), 10, 1),
+      ...crowd('shopper', ['Mẹ đưa con đến thư viện', 'Bố dắt con đi đọc sách', 'Bà dẫn cháu đi mượn sách'], [person('l'), person('k'), person('i')], landmark('quang-truong-dai-phun'), 11, 4, [LIFE_HELD.book]),
+      ...crowd('waterer', ['Bác làm vườn sau'], [person('b')], landmark('vuon-doc-sach'), 12, 1, [LIFE_HELD.bucket]),
       ...crowd('pupil', ['Bạn dự hội'], [person('f'), person('n'), person('o'), person('q'), person('r')], landmark('san-khau-la-vang'), 12, 8, [LIFE_HELD.balloon]),
       ...crowd('vendor', ['Cô bán kẹo lá', 'Bác bán bóng bay'], [person('e'), person('b')], landmark('quay-keo-la'), 5, 2, [LIFE_HELD.apple]),
       ...crowd('shopper', ['Mẹ đưa con đi hội', 'Bố dắt con'], [person('l'), person('k')], landmark('duong-la-vang'), 14, 4, [LIFE_HELD.basket]),
@@ -189,8 +240,8 @@ export async function generateThuVien() {
       ...crowd('school-guard', ['Bác giữ tháp'], [person('d')], landmark('chan-thap-dong-ho'), 4, 1),
       ...crowd('teacher', ['Ông thợ đồng hồ'], [person('a')], landmark('phong-may-dong-ho'), 4, 1, [LIFE_HELD.book]),
       ...crowd('sweeper', ['Cô quét lá vàng'], [person('e'), person('h')], landmark('cay-la-vang'), 12, 2, [LIFE_HELD.basket]),
-      ...crowd('dog', ['Cún phố sách'], [animal('dog')], landmark('thu-vien'), 30, 3),
-      ...crowd('cat', ['Mèo thư viện'], [animal('cat')], landmark('goc-doc-co-goi'), 14, 3),
+      ...crowd('dog', ['Cún phố sách'], [animal('dog')], landmark('quang-truong-dai-phun'), 20, 3),
+      ...crowd('cat', ['Mèo thư viện'], [animal('cat')], landmark('goc-doc-co-goi'), 5, 2),
       ...crowd('chick', ['Gà nhà bác làm vườn'], [animal('chick')], landmark('vuon-doc-sach'), 12, 8),
       ...crowd('chick', ['Gà mái mẹ'], [animal('chick')], landmark('tang-da-phang'), 10, 5),
       ...crowd('cat', ['Mèo nằm nắng'], [animal('cat')], landmark('bai-cat-nho'), 8, 4),
@@ -205,10 +256,10 @@ export async function generateThuVien() {
 
 function buildTown(ctx: ZoneMapContext): void {
   const { world, block, rng, surface, zone } = ctx;
-  const [reading, festival, tower] = [1, 2, 3].map(zone) as [Zone, Zone, Zone];
+  const [, festival, tower] = [1, 2, 3].map(zone) as [Zone, Zone, Zone];
 
   // Ground taken (buildings, yards, plots) and props placed, cell by cell, so the town and the dressing
-  // keep clear of them; rooms indoors get no dressing and no street lamps.
+  // keep clear of them; rooms indoors get no dressing.
   const used = new Uint8Array(SIZE * SIZE);
   const propped = new Uint8Array(SIZE * SIZE);
   const indoors: Rect[] = [];
@@ -245,7 +296,7 @@ function buildTown(ctx: ZoneMapContext): void {
     for (let x = x0; x <= x1; x++) for (let y = y0; y <= y1; y++) for (let z = z0; z <= z1; z++) put(x, y, z, name);
   };
   const tree = (x: number, z: number, leaves: string, height = 6): void => {
-    placeTree(world, x, BASE, z, height, { log: block('tree-log'), leaves: block(leaves) }, rng);
+    placeTree(world, x, surface(x, z) + 1, z, height, { log: block('tree-log'), leaves: block(leaves) }, rng);
     mark(used, x - 1, z - 1, x + 1, z + 1);
   };
   const bigTree = (x: number, z: number, leaves: string): void => {
@@ -263,19 +314,25 @@ function buildTown(ctx: ZoneMapContext): void {
     return [x0 + 2, z0 - 3];
   };
 
-  // The avenue: asphalt between pavements, zebra stripes at the crossings.
-  for (let x = 20; x < 780; x++) for (let dz = -2; dz <= 2; dz++) {
-    const z = AVENUE_Z + dz;
-    if (inWater(x, z) || !ctx.onPath(x, z)) continue;
-    const zebra = CROSSINGS.some((cx) => Math.abs(x - cx) >= 4 && Math.abs(x - cx) <= 6) && (z + x) % 2 === 0;
-    put(x, surface(x, z), z, zebra ? 'snow' : 'asphalt');
-  }
-  // The spawn and the gate beside it stay open.
-  c.keepOut(SPAWN.x - 10, SPAWN.z - 4, SPAWN.x + 16, SPAWN.z + 12);
+  // The spawn and the gate beside it stay open; the library's grounds outside its district keep their own
+  // trees and no cottages.
+  c.keepOut(SPAWN_CLEAR.x0, SPAWN_CLEAR.z0, SPAWN_CLEAR.x1, SPAWN_CLEAR.z1);
+  for (const r of GROUNDS) c.keepOut(r.x0, r.z0, r.x1, r.z1);
 
-  buildLibrary(ctx, c, { put, box, tree, benchRow, indoor });
-  buildFestival(ctx, c, festival, { put, box, tree, bigTree, benchRow, stall });
-  buildClockTower(ctx, c, tower, { put, box, tree, benchRow, indoor });
+  const free = (x: number, z: number, pad: number): boolean => {
+    if (ctx.nearPath(x, z, pad + 1) || inRect(SPAWN_CLEAR, x, z, 2)) return false;
+    for (let dx = -pad; dx <= pad; dx++) {
+      for (let dz = -pad; dz <= pad; dz++) {
+        const [px, pz] = [x + dx, z + dz];
+        if (inWater(px, pz) || isSet(used, px, pz) || isSet(propped, px, pz) || world.get(px, surface(px, pz) + 1, pz) !== 0) return false;
+      }
+    }
+    return true;
+  };
+  buildGrounds(ctx, c, { free, put, box, tree, benchRow });
+  for (const r of buildLibraryHall(ctx, LIB).indoors) indoor(r);
+  buildFestival(ctx, c, festival, { free, put, box, tree, bigTree, benchRow, stall });
+  buildClockTower(ctx, c, tower, { free, put, box, tree, benchRow, indoor });
 
   // Flower gardens north-west: fenced beds of one flower each, alleys between them.
   let plot = 0;
@@ -286,54 +343,28 @@ function buildTown(ctx: ZoneMapContext): void {
     }
   }
 
-  // Cottages along every street, with a little park now and then.
+  // Houses round the squares of the festival and the clock tower, along their edges.
   const buffer = new Set<string>();
-  for (const r of STREETS) for (const k of pathColumns(r, 5)) buffer.add(k);
-  for (const r of SPURS) for (const k of pathColumns(r, 5)) buffer.add(k);
-  for (const k of pathColumns([[30, AVENUE_Z], [770, AVENUE_Z]], 9)) buffer.add(k);
-  const fits = (x0: number, z0: number, x1: number, z1: number, inDistrict = false): boolean => {
+  for (const r of ROUTES) for (const k of pathColumns(r, 5)) buffer.add(k);
+  const fits = (x0: number, z0: number, x1: number, z1: number): boolean => {
     for (let x = x0; x <= x1; x++) for (let z = z0; z <= z1; z++) {
-      if (buffer.has(`${x},${z}`) || isSet(used, x, z) || isSet(propped, x, z) || inWater(x, z) || inWater(x, z + 1)) return false;
-      if (inDistrict ? !ctx.inZone(x, z) : ctx.inZone(x, z, 3)) return false;
+      if (buffer.has(`${x},${z}`) || isSet(used, x, z) || isSet(propped, x, z) || inWater(x, z) || inWater(x, z + 1) || !ctx.inZone(x, z)) return false;
     }
     return true;
   };
-  let slot = 0;
-  for (const r of TOWN) {
-    for (let z = r.z0 + 7; z + 8 <= r.z1; z += 22) {
-      let x = r.x0;
-      while (x + 14 <= r.x1) {
-        if (!fits(x - 1, z - 7, x + 14, z + 8)) {
-          x += 3;
-          continue;
-        }
-        if (slot++ % 8 === 5) {
-          flowerBed(c, x + 1, z - 4, 11, 4);
-          c.prop(M.bench, x + 6, z + 2, 0);
-          c.prop(M.fruitTree, x + 2, z + 5, slot * 31);
-          c.prop(M.fruitTree, x + 11, z + 5, slot * 17);
-          c.keepOut(x - 1, z - 7, x + 14, z + 8);
-          x += 17;
-          continue;
-        }
-        x = cottageRow(c, x, z, 1).x1 + 2;
-      }
-    }
-  }
-  // Houses round the squares of the festival and the clock tower, along their edges.
   const edgeRow = (zn: Zone, z: number): void => {
     let x = zn.x - zn.hx + 1;
     while (x + 14 <= zn.x + zn.hx - 1) {
-      if (fits(x - 1, z - 7, x + 14, z + 8, true)) x = cottageRow(c, x, z, 1).x1 + 2;
+      if (fits(x - 1, z - 7, x + 14, z + 8)) x = cottageRow(c, x, z, 1).x1 + 2;
       else x += 3;
     }
   };
   edgeRow(festival, festival.z + festival.hz - 9);
   edgeRow(tower, tower.z - tower.hz + 9);
   edgeRow(tower, tower.z + tower.hz - 9);
-  // Trees all round the inside of each district, golden round the festival.
-  const leavesOf: Record<number, readonly string[]> = { 1: ['leaves', 'leaves-pink', 'leaves'], 2: ['leaves-autumn', 'leaves-autumn', 'leaves-pink'], 3: ['leaves', 'leaves-pink', 'leaves-autumn'] };
-  for (const zn of [reading, festival, tower]) {
+  // Trees all round the inside of the festival and the tower's lawn, golden round the festival.
+  const leavesOf: Record<number, readonly string[]> = { 2: ['leaves-autumn', 'leaves-autumn', 'leaves-pink'], 3: ['leaves', 'leaves-pink', 'leaves-autumn'] };
+  for (const zn of [festival, tower]) {
     const ring: Array<[number, number]> = [];
     for (let x = zn.x - zn.hx + 3; x <= zn.x + zn.hx - 3; x += 7) ring.push([x, zn.z - zn.hz + 3], [x, zn.z + zn.hz - 3]);
     for (let z = zn.z - zn.hz + 10; z <= zn.z + zn.hz - 10; z += 7) ring.push([zn.x - zn.hx + 3, z], [zn.x + zn.hx - 3, z]);
@@ -344,29 +375,13 @@ function buildTown(ctx: ZoneMapContext): void {
     });
   }
 
-  // Street lamps on both sides of every way (the avenue's farther out), skipping water, rooms and walls.
-  const lamps = (route: readonly Point[], off: number, spacing: number): void => {
-    for (let i = 0; i + 1 < route.length; i++) {
-      const [ax = 0, az = 0] = route[i] ?? [];
-      const [bx = 0, bz = 0] = route[i + 1] ?? [];
-      const len = Math.hypot(bx - ax, bz - az);
-      const [nx, nz] = [-(bz - az) / len, (bx - ax) / len];
-      for (let d = spacing / 2; d < len; d += spacing) {
-        for (const side of [1, -1]) {
-          const x = Math.round(ax + ((bx - ax) * d) / len + side * off * nx);
-          const z = Math.round(az + ((bz - az) * d) / len + side * off * nz);
-          if (inWater(x, z) || ctx.onPath(x, z) || isIndoor(x, z) || isSet(propped, x, z) || world.get(x, surface(x, z) + 1, z) !== 0) continue;
-          // Facing the way, in [0, 360): a -0 would not survive the round trip through entities.json.
-          const yaw = (Math.round((Math.atan2(-side * nx, -side * nz) * 180) / Math.PI) + 360) % 360;
-          c.prop(M.lamp, x, z, yaw);
-        }
-      }
-    }
-  };
-  lamps([[30, AVENUE_Z], [770, AVENUE_Z]], 6, 16);
-  for (const r of [...STREETS, ...SPURS]) lamps(r, 3, 18);
+  // The town (designs/thu-vien/d-01, behind the library): cottages along both sides of every street and the
+  // avenue, their doors on it, front gardens with fences and lanterns; then the verges of every way.
+  for (const r of STREETS) streetHouses(c, r);
+  streetHouses(c, [[30, AVENUE_Z], [770, AVENUE_Z]], { setback: 9 });
+  for (const r of [...STREETS, ...SPURS, [[30, AVENUE_Z], [770, AVENUE_Z]] as Point[]]) laneVerge(c, r, { spacing: 4, lampEvery: 16 });
 
-  // Each district dressed with small things, clear of paths, water, rooms and what stands there.
+  // The festival and the tower dressed with small things, clear of paths, water, rooms and what stands there.
   const dress = (zn: Zone, models: readonly string[], spacing: number): void => {
     for (let gx = zn.x - zn.hx + 2; gx < zn.x + zn.hx - 1; gx += spacing) {
       for (let gz = zn.z - zn.hz + 2; gz < zn.z + zn.hz - 1; gz += spacing) {
@@ -379,12 +394,13 @@ function buildTown(ctx: ZoneMapContext): void {
       }
     }
   };
-  dress(reading, [...FLOWERS, M.bush, M.grass], 5);
   dress(festival, [M.leaf, M.leaf, M.flowerYellow, M.bush], 5);
   dress(tower, [...FLOWERS, M.bush, M.grass], 5);
 }
 
 interface Kit {
+  /** Open ground for a tree or a bed: off the ways and the water, clear of what stands there. */
+  free: (x: number, z: number, pad: number) => boolean;
   put: (x: number, y: number, z: number, name: string) => void;
   box: (x0: number, y0: number, z0: number, x1: number, y1: number, z1: number, name: string) => void;
   tree: (x: number, z: number, leaves: string, height?: number) => void;
@@ -399,97 +415,224 @@ function flowerField(c: ZoneMapContext, r: Rect, flower: string): void {
   c.keepOut(r.x0, r.z0, r.x1, r.z1);
 }
 
+/** Yaw that turns a bench (its seat facing +z) towards a point. */
+const benchFacing = (x: number, z: number, tx: number, tz: number): number => (Math.round((Math.atan2(tx - x, tz - z) * 180) / Math.PI) + 360) % 360;
+
 /**
- * Chapter 1: the library hall, door on the avenue's spur, after the mock's reading room: tall bookcases along
- * the walls and in rows with aisles between, reading tables with lamps, the librarian's desk and the return
- * counter by the door, the reading corner with its rug and pillows, a book loft along the west wall up a
- * flight of stairs, big windows all round. Behind it the terrace steps down into the reading garden.
+ * Chapter 1's grounds round the library (designs/thu-vien/d-01, d-02, d-13, d-14): the terrace before the
+ * door with its planters, lanterns and signboard; the formal garden down to the avenue: the paved square
+ * round the tiered fountain, side fountains, flower parterres edged with hedges, clipped bushes and blossom
+ * trees, lantern posts along the walks; a lake either side with stone rims, lilies and a humped stone bridge;
+ * behind the library the back terrace, the reading garden's pergola hung with vines over its table, the flat
+ * stone and the purple myrtle, the stream and its beach; a fountain garden east of the library.
  */
-function buildLibrary(ctx: ZoneMapContext, c: ZoneMapContext, kit: Kit & { indoor: (r: Rect) => void }): void {
+function buildGrounds(ctx: ZoneMapContext, c: ZoneMapContext, kit: Kit): void {
   const { world, block, surface } = ctx;
-  const { put, box, tree, benchRow, indoor } = kit;
-  const H = { x0: 207, z0: 500, w: 47, d: 34 };
-  const x1 = H.x0 + H.w - 1;
-  const z1 = H.z0 + H.d - 1;
-  const doorX = 230;
-  placeHouse(world, H.x0, H.z0, H.w, H.d, 8, BASE, { wall: block('sand'), roof: block('brick-red'), trim: block('birch-log') });
-  // Walls again with tall windows between birch pilasters, then the doors front and back.
-  for (let y = BASE; y < BASE + 8; y++) for (let x = H.x0; x <= x1; x++) for (let z = H.z0; z <= z1; z++) {
-    const edgeX = x === H.x0 || x === x1;
-    const edgeZ = z === H.z0 || z === z1;
-    if (!edgeX && !edgeZ) continue;
-    const i = edgeZ ? x - H.x0 : z - H.z0;
-    const trim = (edgeX && edgeZ) || i % 5 === 0 || y === BASE + 7;
-    put(x, y, z, trim ? 'birch-log' : y >= BASE + 1 && y <= BASE + 4 ? 'glass' : 'sand');
+  const { free, put, box, tree, benchRow } = kit;
+  const lit = (cells: ReadonlyArray<readonly [number, number]>): void => {
+    for (const [x, z] of cells) c.prop(STREET_LANTERN, x, z, 0);
+  };
+  /** A hedge of leaves a block high round a bed, gaps where a walk crosses it; flowers inside. */
+  const parterre = (r: Rect, flowers = true): void => {
+    for (let x = r.x0; x <= r.x1; x++) {
+      for (let z = r.z0; z <= r.z1; z++) {
+        if (ctx.onPath(x, z) || inRect(SPAWN_CLEAR, x, z)) continue;
+        const edge = x === r.x0 || x === r.x1 || z === r.z0 || z === r.z1;
+        const k = (x - r.x0 + z - r.z0) % 4;
+        if (edge) put(x, surface(x, z) + 1, z, 'leaves');
+        else if (!flowers) continue;
+        else if (k === 0) put(x, surface(x, z) + 1, z, (x + z) % 3 === 0 ? 'leaves-autumn' : 'leaves-pink');
+        else if (k === 2) put(x, surface(x, z) + 1, z, 'wheat');
+        else c.prop(FLOWERS[(x * 3 + z) % 3] ?? M.flowerRed, x, z, (x * 37 + z * 11) % 360);
+      }
+    }
+  };
+  /** A clipped bush: a stack of leaves, wider in the middle, now and then blossom-pink. */
+  const topiary = (x: number, z: number, pink = false): void => {
+    const y = surface(x, z) + 1;
+    const leaves = pink ? 'leaves-pink' : 'leaves';
+    for (let dy = 0; dy <= 2; dy++) put(x, y + dy, z, leaves);
+    for (const [dx, dz] of [[1, 0], [-1, 0], [0, 1], [0, -1]] as const) put(x + dx, y + 1, z + dz, leaves);
+  };
+
+  // Landmarks outside first: the review page shoots the first of them from above.
+  ctx.landmark('thu-vien', 'Thư viện', LIB.door, TERRACE.z0 + 2, BASE);
+  ctx.landmark('quang-truong-dai-phun', 'Quảng trường đài phun', SQUARE.x, SQUARE.z - 6);
+  ctx.landmark('cau-da-thu-vien', 'Cầu đá bên hồ', (LAKES[1]?.x ?? 300), LAKE_Z, WATER_LEVEL + 4);
+  ctx.landmark('vuon-doc-sach', 'Vườn đọc sách', (PERGOLA.x0 + PERGOLA.x1) >> 1, PERGOLA.z0 + 4);
+
+  // The terrace (d-02): paved, a stone kerb round it with planters of clipped bushes, the signboard, lamps.
+  for (let x = TERRACE.x0; x <= TERRACE.x1; x++) {
+    for (let z = TERRACE.z0; z <= TERRACE.z1; z++) {
+      const edge = x === TERRACE.x0 || x === TERRACE.x1 || z === TERRACE.z0;
+      put(x, BASE, z, edge ? 'cobble' : (x + z) % 7 === 0 ? 'cobble' : 'paver');
+      if (edge && Math.abs(x - LIB.door) > 8 && (x === TERRACE.x0 || x === TERRACE.x1 || (x - TERRACE.x0) % 4 !== 2)) put(x, BASE + 1, z, 'cobble');
+    }
   }
-  box(doorX - 2, BASE, H.z0, doorX + 2, BASE + 2, H.z0, 'air');
-  put(doorX - 3, BASE + 3, H.z0, 'birch-log');
-  box(doorX - 2, BASE + 1, z1, doorX + 2, BASE + 3, z1, 'air');
-  box(doorX - 2, BASE, z1, doorX + 2, BASE, z1, 'planks');
-  // Plank floor, and a canopy over the front door on two posts.
-  box(H.x0 + 1, LEVEL, H.z0, x1 - 1, LEVEL, z1 - 1, 'planks');
-  for (const x of [doorX - 4, doorX + 4]) box(x, BASE, H.z0 - 3, x, BASE + 3, H.z0 - 3, 'log');
-  box(doorX - 5, BASE + 4, H.z0 - 4, doorX + 5, BASE + 4, H.z0 - 1, 'roof-blue');
-  indoor({ x0: H.x0 + 1, z0: H.z0 + 1, x1: x1 - 1, z1: z1 - 1 });
-  ctx.landmark('thu-vien', 'Thư viện', doorX, H.z0 - 2);
-
-  // The book loft along the west wall, three blocks up, bookcases on it, a rail of fence posts, the stairs.
-  const loft = { x0: H.x0 + 1, z0: H.z0 + 2, x1: H.x0 + 7, z1: z1 - 2 };
-  box(loft.x0, BASE, loft.z0, loft.x1, BASE + 2, loft.z1, 'planks');
-  for (let z = loft.z0 + 1; z < loft.z1; z += 2) c.centred(M.bookcase, loft.x0, z, 90);
-  const stairZ = 516;
-  for (let z = loft.z0; z <= loft.z1; z += 2) if (Math.abs(z - stairZ) > 2) c.prop(M.fence, loft.x1, z, 90);
-  box(loft.x1 + 1, BASE, stairZ - 1, loft.x1 + 1, BASE + 1, stairZ + 1, 'planks');
-  box(loft.x1 + 2, BASE, stairZ - 1, loft.x1 + 2, BASE, stairZ + 1, 'planks');
-  ctx.landmark('gac-sach', 'Gác sách', loft.x0 + 3, stairZ, BASE + 3);
-  ctx.landmark('bac-cau-thang-gac-sach', 'Bậc cầu thang gác sách', loft.x1 + 3, stairZ);
-
-  // Rows of bookcases in the east half, aisles between them; bookcases along the east and back walls.
-  for (const [k, x] of [239, 243, 247].entries()) for (let z = 508; z <= 524; z += 2) c.centred(M.bookcase, x, z, k % 2 === 0 ? 90 : 270);
-  for (let z = H.z0 + 3; z <= z1 - 2; z += 2) c.centred(M.bookcase, x1 - 1, z, 270);
-  for (let x = 234; x <= 248; x += 2) c.centred(M.bookcase, x, z1 - 1, 180);
-  ctx.landmark('ke-sach-phong-doc', 'Kệ sách phòng đọc', x1 - 3, 516);
-  ctx.landmark('loi-giua-cac-ke-sach', 'Lối đi giữa các kệ sách', 241, 516);
-
-  // Reading tables with chairs, books and lamps west of the middle aisle.
-  for (const tx of [219, 225]) for (const tz of [509, 516, 523]) {
-    c.centred(M.table, tx, tz, 0);
-    for (const dz of [-1, 1]) c.centred(M.chair, tx, tz + dz, dz < 0 ? 0 : 180);
-    ctx.propAt(M.openBook, [tx + 0.5, BASE + 0.8, tz + 0.5], tx * 7 + tz);
+  for (const dx of [-7, 6]) {
+    const x = LIB.door + dx;
+    box(x, BASE + 1, TERRACE.z1 - 2, x + 1, BASE + 1, TERRACE.z1 - 1, 'cobble');
+    box(x, BASE + 2, TERRACE.z1 - 2, x + 1, BASE + 3, TERRACE.z1 - 1, 'leaves');
   }
-  for (const [x, z] of [[222, 512], [222, 520], [217, 526], [235, 512], [235, 522]] as const) c.centred(M.floorLamp, x, z, 0);
-  ctx.landmark('ban-doc', 'Bàn đọc sách', 222, 516);
+  for (const x of [TERRACE.x0 + 1, TERRACE.x1 - 1, LIB.door - 9, LIB.door + 9]) c.prop(STREET_LANTERN, x, TERRACE.z0 + 1, 0);
+  c.prop(LIBRARY_MODELS.sign, LIB.door - 12, TERRACE.z1 - 1, 0);
+  for (const [x, z] of [[LIB.door + 12, TERRACE.z1 - 1], [LIB.door - 15, TERRACE.z0 + 3], [LIB.door + 14, TERRACE.z0 + 3]] as const) {
+    c.centred(M.plant, x, z, 0);
+  }
+  for (let x = TERRACE.x0 + 2; x < TERRACE.x1 - 1; x += 3) if (Math.abs(x - LIB.door) > 9) c.prop(FLOWERS[x % 3] ?? M.flowerRed, x, TERRACE.z0 + 1, x * 7);
+  // Beds along the foot of the wings: a hedge against the wall, flowers before it, clipped bushes between.
+  for (const [x0, x1] of [[LIB.x0, TERRACE.x0 - 1], [TERRACE.x1 + 1, LIB.x1]] as const) {
+    for (let x = x0; x <= x1; x++) {
+      put(x, BASE + 1, LIB.z0 - 2, 'leaves');
+      if (x % 2 === 0) c.prop(FLOWERS[(x >> 1) % 3] ?? M.flowerRed, x, LIB.z0 - 3, x * 13);
+      if (x % 6 === 2) topiary(x, LIB.pavZ0 - 2, x % 12 === 2);
+    }
+  }
+  for (const [x, z] of [[LIB.x0 - 3, LIB.z0 - 6], [LIB.x1 + 3, LIB.z0 - 6], [LIB.x0 - 4, LIB.z1 - 4], [LIB.x1 + 4, LIB.z1 - 4]] as const) tree(x, z, 'leaves-pink', 6);
 
-  // The return counter west of the door, the librarian's desk east of it.
-  box(216, BASE, 504, 225, BASE, 504, 'birch-log');
-  box(216, BASE, 502, 216, BASE, 503, 'birch-log');
-  for (let x = 217; x <= 225; x += 2) ctx.propAt(M.books, [x + 0.5, BASE + 1, 504.5], x * 13);
-  ctx.landmark('quay-tra-sach', 'Quầy trả sách', 220, 506);
-  c.centred(M.table, 237, 505, 0);
-  c.centred(M.table, 238, 505, 0);
-  c.centred(M.chair, 237, 503, 0);
-  ctx.propAt(M.books, [237.5, BASE + 0.8, 505.5], 20);
-  c.centred(M.floorLamp, 240, 503, 0);
-  ctx.landmark('ban-thu-thu', 'Bàn thủ thư', 237, 507);
+  // The paved square round the tiered fountain (d-01), lamps round it, benches facing the water.
+  placePlaza(world, SQUARE.x, SQUARE.z, SQUARE.r, LEVEL, { paver: block('paver'), border: block('cobble') });
+  placeFountain(world, SQUARE.x, SQUARE.z, BASE, { stone: block('cobble'), water: block('water') });
+  for (let dx = -2; dx <= 2; dx++) {
+    for (let dz = -2; dz <= 2; dz++) {
+      const d = Math.hypot(dx, dz);
+      if (d <= 2.3) put(SQUARE.x + dx, BASE + 2, SQUARE.z + dz, d > 1.3 ? 'cobble' : 'water');
+    }
+  }
+  put(SQUARE.x, BASE + 3, SQUARE.z, 'cobble');
+  put(SQUARE.x, BASE + 4, SQUARE.z, 'water');
+  for (let i = 0; i < 8; i++) {
+    const a = ((i + 0.5) / 8) * Math.PI * 2;
+    lit([[Math.round(SQUARE.x + Math.cos(a) * (SQUARE.r - 1)), Math.round(SQUARE.z + Math.sin(a) * (SQUARE.r - 1))]]);
+    const [bx, bz] = [Math.round(SQUARE.x + Math.cos(a) * 9), Math.round(SQUARE.z + Math.sin(a) * 9)];
+    if (!ctx.onPath(bx, bz)) c.prop(M.bench, bx, bz, benchFacing(bx, bz, SQUARE.x, SQUARE.z));
+  }
 
-  // The reading corner by the back door: a rug, pillows on it, low bookcases, plants.
-  c.centred(M.rug, 221, 528, 0);
-  for (let i = 0; i < 6; i++) c.centred(M.pillow, 218 + (i % 3) * 3, 527 + Math.floor(i / 3) * 2, i * 30);
-  for (let x = 217; x <= 225; x += 2) c.centred(M.bookcaseLow, x, z1 - 1, 180);
-  for (const [x, z] of [[216, 526], [226, 526], [loft.x1 + 1, H.z0 + 1], [x1 - 2, H.z0 + 1], [226, 502]] as const) c.centred(M.plant, x, z, 0);
-  ctx.landmark('goc-doc-co-goi', 'Góc đọc có gối', 221, 528);
+  // Between the square and the terrace: a fountain either side of the cross walk, parterres, clipped bushes.
+  for (const dx of [-30, 30]) {
+    const fx = SQUARE.x + dx;
+    placePlaza(world, fx, 487, 6.5, LEVEL, { paver: block('paver'), border: block('cobble') });
+    placeFountain(world, fx, 487, BASE, { stone: block('cobble'), water: block('water') });
+    put(fx, BASE + 2, 487, 'water');
+  }
+  for (const r of [
+    { x0: SQUARE.x - 22, z0: 482, x1: SQUARE.x - 5, z1: 492 },
+    { x0: SQUARE.x + 5, z0: 482, x1: SQUARE.x + 22, z1: 492 },
+    { x0: SQUARE.x - 26, z0: 437, x1: SQUARE.x - 6, z1: 449 },
+    { x0: SQUARE.x + 6, z0: 437, x1: SQUARE.x + 26, z1: 449 },
+  ]) parterre(r);
+  for (const [x, z] of [[SQUARE.x - 5, 481], [SQUARE.x + 5, 481], [SQUARE.x - 6, 451], [SQUARE.x + 6, 451], [SQUARE.x - 22, 481], [SQUARE.x + 22, 481]] as const) topiary(x, z, (x + z) % 3 === 0);
+  // Lantern posts up both sides of the walk to the terrace.
+  for (let z = AVENUE_Z + 8; z < TERRACE.z0; z += 9) if (Math.abs(z - SQUARE.z) > SQUARE.r + 1) lit([[LIB.door - 4, z], [LIB.door + 4, z]]);
 
-  // The terrace behind the back door, two blocks up, a step all round down into the garden.
-  const T = { x0: doorX - 9, z0: z1 + 1, x1: doorX + 9, z1: z1 + 6 };
-  box(T.x0 - 1, BASE, T.z0, T.x1 + 1, BASE, T.z1 + 1, 'brick-grey');
-  box(T.x0, BASE + 1, T.z0, T.x1, BASE + 1, T.z1, 'brick-grey');
-  for (const x of [T.x0 + 1, T.x1 - 1]) ctx.propAt(M.plant, [x + 0.5, BASE + 2, T.z1 - 0.5], 0);
-  ctx.landmark('bac-them-ra-vuon', 'Bậc thềm ra vườn', doorX, T.z1 + 2);
+  // The lakes either side (d-01, d-14): a stone rim, lilies, rocks, a humped stone bridge over each.
+  for (const l of LAKES) {
+    for (let x = l.x - l.rx - 3; x <= l.x + l.rx + 3; x++) {
+      for (let z = l.z - l.rz - 3; z <= l.z + l.rz + 3; z++) {
+        if (inWater(x, z) || ctx.onPath(x, z)) continue;
+        if ([[1, 0], [-1, 0], [0, 1], [0, -1]].some(([dx = 0, dz = 0]) => inLake(x + dx, z + dz))) put(x, surface(x, z), z, 'cobble');
+      }
+    }
+    for (let i = 0; i < 16; i++) {
+      const a = (i / 16) * Math.PI * 2 + 0.3;
+      const k = 0.35 + 0.5 * (((i * 7) % 5) / 5);
+      const [x, z] = [l.x + Math.cos(a) * l.rx * k, l.z + Math.sin(a) * l.rz * k];
+      if (Math.abs(z - LAKE_Z) > 4) ctx.propAt(i % 3 === 0 ? M.lilySmall : M.lily, [x + 0.5, WATER_LEVEL + 1.02, z + 0.5], i * 50);
+    }
+    const bridge = placeArchedBridge(world, l.x - l.rx - 4, l.x + l.rx + 4, LAKE_Z, LEVEL, WATER_LEVEL, {
+      stone: block('cobble-grey'), ring: block('cobble'), parapet: block('cobble'), deck: block('paver'), water: block('water'),
+    });
+    lit(bridge.lamps);
+    for (const [dx, dz] of [[-l.rx - 2, -6], [l.rx + 2, 7]] as const) c.prop(M.rock, l.x + dx, l.z + dz, dx * 7);
+    // Trees round the lake's far side, the side away from the walk up to the library.
+    for (let i = 0; i < 12; i++) {
+      const a = (i / 12) * Math.PI * 2 + 0.2;
+      if (Math.cos(a) * Math.sign(l.x - LIB.door) < 0.2) continue;
+      const [x, z] = [Math.round(l.x + Math.cos(a) * (l.rx + 6)), Math.round(l.z + Math.sin(a) * (l.rz + 6))];
+      if (!ctx.onPath(x, z) && !ctx.nearPath(x, z, 3) && !inRect(SPAWN_CLEAR, x, z, 2)) tree(x, z, i % 3 === 0 ? 'leaves-pink' : 'leaves', 5 + (i % 2));
+    }
+  }
+  ctx.landmark('ho-thu-vien', 'Hồ trước thư viện', LAKES[0]?.x ?? 160, LAKE_Z - 18);
 
-  // Flowers along the front, benches by the door, trees round the forecourt.
-  for (const x0 of [H.x0 + 1, doorX + 6]) flowerBed(c, x0, H.z0 - 4, 16, 2);
-  benchRow(doorX - 8, H.z0 - 8, 2, 16, 0, 0);
-  for (const [x, z] of [[196, 486], [214, 482], [246, 482], [264, 486], [282, 480], [178, 482]] as const) tree(x, z, x === 214 || x === 264 ? 'leaves-pink' : 'leaves');
+  // Round the garden's edge: trees, now and then a blossom tree, flowers under them.
+  for (let x = 126; x <= 334; x += 9) for (const z of [440, 596]) if (!ctx.nearPath(x, z, 3) && !inWater(x, z) && !inRect(SPAWN_CLEAR, x, z, 2) && !(z === 440 && x > 150 && x < 312)) tree(x, z, x % 27 === 0 ? 'leaves-pink' : 'leaves', 6);
+  for (let z = 449; z <= 588; z += 9) for (const x of [126, 334]) if (!ctx.nearPath(x, z, 3) && !inWater(x, z)) tree(x, z, z % 27 === 0 ? 'leaves-pink' : 'leaves', 6);
+
+  // The clock tower standing apart behind the library (d-01), a flower bed round its foot.
+  const clock = placeClockTower(world, CLOCK_TOWER.x, CLOCK_TOWER.z, BASE, {
+    wall: block('sand'), trim: block('cobble'), glass: block('glass'), lantern: block('lantern'), dial: block('snow'), roof: block('brick-red'), finial: block('iron'),
+  });
+  for (const k of clock.clocks) ctx.propAt(M.clock, k.at, k.yaw);
+  c.keepOut(CLOCK_TOWER.x - 5, CLOCK_TOWER.z - 5, CLOCK_TOWER.x + 5, CLOCK_TOWER.z + 5);
+  flowerBed(c, CLOCK_TOWER.x - 5, CLOCK_TOWER.z - 6, 11, 2);
+  lit([[CLOCK_TOWER.x - 5, CLOCK_TOWER.z - 5], [CLOCK_TOWER.x + 5, CLOCK_TOWER.z - 5]]);
+  ctx.landmark('thap-dong-ho-vuon', 'Tháp đồng hồ bên vườn', CLOCK_TOWER.x, CLOCK_TOWER.z - 7);
+
+  // Groves framing the grounds (d-01: green and blossom trees all round): behind the reading garden, either
+  // side of the lakes and of the library, a few clipped bushes and flowers between them.
+  const grove = (r: Rect, every: number): void => {
+    for (let gx = r.x0; gx <= r.x1; gx += every) {
+      for (let gz = r.z0; gz <= r.z1; gz += every) {
+        const x = Math.round(gx + (ctx.rng() - 0.5) * every * 0.6);
+        const z = Math.round(gz + (ctx.rng() - 0.5) * every * 0.6);
+        if (!free(x, z, 2)) continue;
+        const roll = ctx.rng();
+        if (roll < 0.15) topiary(x, z, roll < 0.05);
+        else if (roll < 0.25) flowerBed(c, x - 1, z - 1, 3, 3);
+        else tree(x, z, roll < 0.45 ? 'leaves-pink' : 'leaves', 5 + Math.floor(roll * 10) % 3);
+      }
+    }
+  };
+  for (const r of [
+    { x0: 124, z0: 586, x1: 336, z1: 598 },
+    { x0: 124, z0: 476, x1: 156, z1: 584 },
+    { x0: 304, z0: 476, x1: 336, z1: 584 },
+    { x0: 124, z0: 438, x1: 158, z1: 474 },
+    { x0: 302, z0: 438, x1: 336, z1: 474 },
+    { x0: 160, z0: 478, x1: 190, z1: 500 },
+    { x0: 270, z0: 478, x1: 300, z1: 500 },
+    { x0: 160, z0: 574, x1: 300, z1: 584 },
+  ]) grove(r, 7);
+
+  // Behind the library: the back terrace and its steps (bậc thềm), the reading garden's pergola (d-13).
+  for (let x = BACK_TERRACE.x0; x <= BACK_TERRACE.x1; x++) for (let z = BACK_TERRACE.z0; z <= BACK_TERRACE.z1; z++) put(x, BASE, z, x === BACK_TERRACE.x0 || x === BACK_TERRACE.x1 || z === BACK_TERRACE.z1 ? 'cobble' : 'paver');
+  for (const x of [BACK_TERRACE.x0 + 1, BACK_TERRACE.x1 - 1]) c.centred(M.plant, x, BACK_TERRACE.z1 - 1, 0);
+  ctx.landmark('bac-them-ra-vuon', 'Bậc thềm ra vườn', LIB.door, BACK_TERRACE.z1 + 2);
+  const pg = PERGOLA;
+  for (let x = pg.x0; x <= pg.x1; x++) for (let z = pg.z0; z <= pg.z1; z++) if (!ctx.onPath(x, z)) put(x, surface(x, z), z, (x + z) % 5 === 0 ? 'cobble' : 'paver');
+  const posts: Array<[number, number]> = [];
+  for (let x = pg.x0; x <= pg.x1; x += 7) for (const z of [pg.z0, pg.z1]) posts.push([x, z]);
+  for (const [x, z] of posts) box(x, BASE, z, x, BASE + 3, z, 'log');
+  for (let x = pg.x0; x <= pg.x1; x++) for (const z of [pg.z0, pg.z1]) put(x, BASE + 4, z, 'log');
+  for (let x = pg.x0; x <= pg.x1; x += 2) for (let z = pg.z0; z <= pg.z1; z++) put(x, BASE + 4, z, 'planks');
+  for (let x = pg.x0 - 1; x <= pg.x1 + 1; x++) {
+    for (let z = pg.z0 - 1; z <= pg.z1 + 1; z++) {
+      const k = (x * 7 + z * 13) % 10;
+      if (k < 6) put(x, BASE + 5, z, k === 0 || k === 3 ? 'leaves-pink' : 'leaves');
+      const rim = x === pg.x0 - 1 || x === pg.x1 + 1 || z === pg.z0 - 1 || z === pg.z1 + 1;
+      if (rim && k < 3) put(x, BASE + 4, z, 'leaves');
+    }
+  }
+  for (const [x, z] of posts) for (const [dx, dz] of [[1, 0], [-1, 0]] as const) if (!ctx.onPath(x + dx, z + dz)) put(x + dx, BASE + 3, z + dz, 'leaves');
+  // Vines hanging from the slats, blossom among them.
+  for (let x = pg.x0 + 1; x < pg.x1; x++) {
+    for (let z = pg.z0; z <= pg.z1; z++) {
+      const k = (x * 5 + z * 11) % 9;
+      const edge = z === pg.z0 || z === pg.z1;
+      if ((edge && k < 5) || k === 0) put(x, BASE + 3, z, k === 2 ? 'leaves-pink' : 'leaves');
+      if (edge && k === 1) put(x, BASE + 2, z, 'leaves');
+    }
+  }
+  const tableX = (pg.x0 + pg.x1) >> 1;
+  const tableZ = (pg.z0 + pg.z1) >> 1;
+  for (const dx of [-0.5, 1.5]) ctx.propAt(LIBRARY_MODELS.readingTable, [tableX + dx, BASE, tableZ + 0.5], 0);
+  for (const [dz, yaw] of [[-2, 0], [2, 180]] as const) c.prop(M.bench, tableX, tableZ + dz, yaw);
+  ctx.propAt(M.openBook, [tableX - 0.5, BASE + 0.8, tableZ + 0.5], 30);
+  ctx.propAt(M.books, [tableX + 1.4, BASE + 0.8, tableZ + 0.6], 80);
+  ctx.propAt(LIBRARY_MODELS.readingLamp, [tableX + 0.6, BASE + 0.8, tableZ + 0.4], 0);
+  for (const [x, z] of [[pg.x0 + 2, pg.z0 + 2], [pg.x1 - 2, pg.z1 - 2], [pg.x0 + 2, pg.z1 - 2]] as const) c.centred(M.plant, x, z, 0);
+  for (const [x, z] of [[pg.x0 - 3, pg.z0 + 2], [pg.x1 + 3, pg.z1 - 1]] as const) c.prop(STREET_LANTERN, x, z, 0);
+  flowerBed(c, pg.x0, pg.z1 + 2, pg.x1 - pg.x0, 2);
 
   // The reading garden west and south of the hall: the flat stone with wild grass round it and the stream
   // behind it, the purple myrtle, benches, a sandy beach on the stream.
@@ -502,7 +645,9 @@ function buildLibrary(ctx: ZoneMapContext, c: ZoneMapContext, kit: Kit & { indoo
   }
   c.keepOut(stone.x - 2, stone.z - 1, stone.x + 2, stone.z + 1);
   ctx.landmark('tang-da-phang', 'Tảng đá phẳng', stone.x, stone.z - 3);
-  ctx.landmark('suoi-nho', 'Suối nhỏ', 190, Math.round(streamCenter(190)) - 4);
+  // Named as the lessons name them, so their places gather here (place-quest-targets.ts).
+  ctx.landmark('bai-co-dai-quanh-tang-da', 'Bãi cỏ dại quanh tảng đá', stone.x + 6, stone.z + 3);
+  ctx.landmark('suoi-nho-sau-tang-da', 'Suối nhỏ sau tảng đá', stone.x, Math.round(streamCenter(stone.x)) - 5);
   const myrtle = { x: 174, z: 532 };
   tree(myrtle.x, myrtle.z, 'leaves-pink', 5);
   for (let i = 0; i < 8; i++) {
@@ -516,20 +661,20 @@ function buildLibrary(ctx: ZoneMapContext, c: ZoneMapContext, kit: Kit & { indoo
   }
   c.prop(M.bucket, 252, 562, 30);
   ctx.landmark('bai-cat-nho', 'Bãi cát nhỏ', 257, Math.floor(streamCenter(257)) - 5);
+  ctx.landmark('suoi-nho', 'Suối nhỏ', 190, Math.round(streamCenter(190)) - 4);
   benchRow(176, 548, 3, 5, 0, 180);
-  benchRow(168, 505, 3, 0, 8, 90);
-  for (const [x0, z0] of [[166, 492], [186, 510], [256, 545], [282, 552]] as const) flowerBed(c, x0, z0, 10, 4);
-  for (const [x, z] of [[166, 520], [192, 498], [204, 548], [214, 560], [244, 552], [276, 560], [292, 548], [168, 575], [236, 580], [286, 580]] as const) tree(x, z, (x + z) % 3 === 0 ? 'leaves-pink' : 'leaves');
-  ctx.landmark('vuon-doc-sach', 'Vườn đọc sách', 190, 540);
+  benchRow(170, 505, 3, 0, 8, 90);
+  for (const [x0, z0] of [[164, 490], [176, 512], [256, 545], [282, 552]] as const) flowerBed(c, x0, z0, 10, 4);
+  for (const [x, z] of [[166, 520], [180, 490], [244, 556], [276, 562], [292, 548], [168, 575], [236, 582], [286, 580], [150, 540], [300, 500]] as const) tree(x, z, (x + z) % 3 === 0 ? 'leaves-pink' : 'leaves');
 
   // East of the hall: a fountain among flower beds, benches and trees.
-  const fx = 278;
-  const fz = 514;
-  placeFountain(world, fx, fz, LEVEL, { stone: block('brick-grey'), water: block('water') });
+  const fx = 287;
+  const fz = 522;
+  placeFountain(world, fx, fz, BASE, { stone: block('cobble'), water: block('water') });
   c.keepOut(fx - 5, fz - 5, fx + 5, fz + 5);
   for (const [dx, dz, yaw] of [[0, -7, 0], [0, 7, 180], [-7, 0, 90], [7, 0, 270]] as const) c.prop(M.bench, fx + dx, fz + dz, yaw);
-  for (const [x0, z0] of [[262, 496], [262, 528], [286, 496], [286, 528]] as const) flowerBed(c, x0, z0, 8, 4);
-  for (const [x, z] of [[264, 506], [292, 506], [264, 522], [292, 522], [270, 540], [296, 536]] as const) tree(x, z, x > 280 ? 'leaves-pink' : 'leaves');
+  for (const [x0, z0] of [[272, 506], [272, 532], [292, 506], [292, 532]] as const) flowerBed(c, x0, z0, 8, 4);
+  for (const [x, z] of [[274, 516], [298, 516], [274, 528], [298, 528]] as const) topiary(x, z, x > 280);
 }
 
 /**
@@ -620,7 +765,7 @@ function buildFestival(ctx: ZoneMapContext, c: ZoneMapContext, zn: Zone, kit: Ki
   // The audience's square paved in front of the stage, flowers before every stall.
   for (let x = S.x0; x <= S.x1; x++) for (let z = S.z1 + 1; z <= S.z1 + 26; z++) if (Math.abs(x - zn.x) > 3 && (x + z) % 9 !== 0) put(x, surface(x, z), z, 'path');
   for (const [x0, z0] of slots.slice(0, stations.length)) flowerBed(c, x0, z0 + 5, 6, 2);
-  for (const [x, z] of [[zn.x - 20, S.z1 + 4], [zn.x + 20, S.z1 + 4], [zn.x - 20, S.z1 + 24], [zn.x + 20, S.z1 + 24]] as const) c.prop(M.lamp, x, z, 0);
+  for (const [x, z] of [[zn.x - 20, S.z1 + 4], [zn.x + 20, S.z1 + 4], [zn.x - 20, S.z1 + 24], [zn.x + 20, S.z1 + 24]] as const) c.prop(STREET_LANTERN, x, z, 0);
 }
 
 /**
@@ -769,6 +914,21 @@ function buildClockTower(ctx: ZoneMapContext, c: ZoneMapContext, zn: Zone, kit: 
   put(tel.x, BASE + 2, tel.z - 2, 'glass');
   ctx.landmark('goc-kinh-vien-vong', 'Góc kính viễn vọng', tel.x, tel.z + 5);
   ctx.landmark('ban-cong-ngam-troi', 'Ban công ngắm trời', tel.x - 5, tel.z);
+  // The places as the lessons name them, on the ground round the tower and its rooms (place-quest-targets.ts).
+  const named: Array<[string, string, number, number]> = [
+    ['ban-cong-thap', 'Ban công tháp', t.x + 3, t.z - 10],
+    ['bai-co-quanh-thap', 'Bãi cỏ quanh tháp', t.x + 12, t.z + 4],
+    ['cau-thang-xoan-cua-thap', 'Cầu thang xoắn của tháp', t.x + 1, t.z - 2],
+    ['duoi-chan-thap-dong-ho', 'Dưới chân tháp đồng hồ', t.x - 8, t.z + 4],
+    ['duoi-qua-chuong-lon', 'Dưới quả chuông lớn', t.x, t.z + 1],
+    ['gac-chuong-tren-thap', 'Gác chuông trên tháp', t.x + 8, t.z + 6],
+    ['hop-thu-tren-thap', 'Hộp thư trên tháp', mail.x + 2, mail.z - 2],
+    ['ke-dong-ho-dien-tu', 'Kệ đồng hồ điện tử', W.x0 + 4, W.z0 + 4],
+    ['phong-lich-tren-thap', 'Phòng lịch trên tháp', R.x0 + 7, R.z0 + 3],
+    ['o-cua-so-tron-tren-thap', 'Ô cửa sổ tròn trên tháp', t.x - 8, t.z - 4],
+    ['dinh-thap-co-chuong', 'Đỉnh tháp có chuông', t.x + 8, t.z - 4],
+  ];
+  for (const [id, name, x, z] of named) ctx.landmark(id, name, x, z);
 
   // The lawn round the tower: flower beds, benches facing it, pink and green trees.
   for (const [x0, z0] of [[t.x - 20, t.z - 26], [t.x + 10, t.z - 26], [t.x - 22, t.z + 12], [t.x + 12, t.z + 12], [t.x - 8, t.z + 20]] as const) flowerBed(c, x0, z0, 10, 4);

@@ -2,7 +2,9 @@
 // campfire, a child carrying firewood, a woodcutter at a nearby tree), a gardener with a carrot
 // patch, a fisher on the stream bank, and animals where they belong (deer in the north-east meadow,
 // a fox by its den, a hog under mushrooms, chicks by the garden, a bunny in the west, a crab on the
-// sand, fish in the stream, bees at the flowers, parrots over the trees). Spots are the nearest open
+// sand, fish in the stream, bees at the flowers, parrots over the trees), and by the mocks' waterfall and
+// camp east of chapter 1 an old angler, the camp's cook and woodcutter, sika deer, a fox, a bunny and a
+// parrot (designs/khu-rung-bi-mat/, 02/10/2026). Spots are the nearest open
 // grass to hand-picked anchors, found on the finished terrain so the blocks never change; every
 // villager spot is a straight, clear walk from home, away from quest targets and off the quest path.
 import type { Ambient, AmbientRoutine } from '../../packages/voxel/src/world-entities';
@@ -44,6 +46,12 @@ export interface ForestLifeMap {
   riverHalfWidth(x: number): number;
   addProp(model: string, x: number, z: number, yaw?: number): void;
   scaleOf(model: string): number;
+  /**
+   * The mocks' scene east of chapter 1 (designs/khu-rung-bi-mat/): the waterfall's pool and the forest folk's
+   * camp round its fire. An old man fishes the pool, a cook and a woodcutter keep the camp, a sika deer and
+   * her fawn, a fox, a bunny and a parrot live round about.
+   */
+  scene?: { pool: { x: number; z: number; r: number }; camp: { x: number; z: number }; fire: { x: number; z: number } };
 }
 
 /** Quest targets stay this far from any ambient home or spot, so their prompts and the arrow stay clear. */
@@ -278,6 +286,52 @@ export function placeForestLife(map: ForestLifeMap): Ambient[] {
     add(`tho-${n}`, 'bunny', 'Thỏ', `${P.pets}/animal-bunny.glb`, bunny, (n * 120) % 360, { 'bush-b': at(bush) });
     parrot(`vet-rung-${n}`, m.x, m.z, [m.x + 12, m.z - 8]);
   });
+
+  if (map.scene) {
+    const { pool, camp, fire } = map.scene;
+    const anglerBank = spot(Math.round(pool.x - pool.r - 1), pool.z, { maxRing: 5 });
+    const anglerHome = spot(anglerBank.x - 3, anglerBank.z - 1, { from: anglerBank });
+    add('ong-cau-ca-thac', 'fisher', 'Ông Câu cá', `${P.people}/character-n.glb`, anglerHome, 90, {
+      bank: at(anglerBank),
+      water: [pool.x + 0.5, map.waterLevel + 1, pool.z + 0.5],
+    }, { held: ['built:fishing-rod', `${P.survival}/fish.glb`] });
+
+    const campCookHome = spot(fire.x - 2, fire.z + 2);
+    const campCookAt = spot(fire.x + 1, fire.z + 2, { from: campCookHome });
+    add('co-nau-bep-trai', 'cook', 'Cô Nấu bếp trại', `${P.people}/character-l.glb`, campCookHome, 0, {
+      fire: at(campCookAt),
+      pot: at(fire),
+      table: at(spot(camp.x - 8, camp.z - 3, { from: campCookAt })),
+      seat: at(spot(fire.x - 3, fire.z - 1, { from: campCookAt })),
+    }, { held: [`${P.food}/cooking-spoon.glb`] });
+
+    const [cx, cz] = nearestTree(camp.x - 6, camp.z + 18);
+    const cutterHome = spot(cx + 3, cz + 1);
+    const cutterChop = spot(cx + 2, cz, { from: cutterHome });
+    const cutterStump = spot(cutterHome.x + 2, cutterHome.z + 2, { from: cutterHome });
+    map.addProp(`${P.nature}/stump_round.glb`, cutterStump.x, cutterStump.z + 1, 30);
+    const cutterLogs = spot(cutterHome.x - 2, cutterHome.z + 2, { from: cutterChop });
+    map.addProp(`${P.nature}/log_stack.glb`, cutterLogs.x - 1, cutterLogs.z, 0);
+    add('chu-tieu-phu-lam', 'woodcutter', 'Chú Tiều phu Lâm', `${P.people}/character-g.glb`, cutterHome, 270, {
+      tree: at(cutterChop),
+      trunk: [cx + 0.5, surface(cx, cz) + 1.5, cz + 0.5],
+      logs: at(cutterLogs),
+      stump: at(cutterStump),
+    }, { held: [`${P.survival}/tool-axe.glb`, `${P.survival}/resource-wood.glb`] });
+
+    const doe = spot(pool.x - 34, pool.z, { maxRing: 6 });
+    const doeGraze = spot(doe.x + 3, doe.z + 3, { from: doe, maxRing: 6 });
+    add('huou-sao', 'deer', 'Hươu sao', `${P.pets}/animal-deer.glb`, doe, 120, { 'graze-b': at(doeGraze) });
+    const fawn = spot(doe.x + 2, doe.z - 2, { maxRing: 6 });
+    add('huou-con', 'deer', 'Hươu con', `${P.pets}/animal-deer.glb`, fawn, 150, { 'graze-b': at(spot(doeGraze.x + 1, doeGraze.z - 1, { from: fawn, maxRing: 6 })) }, { scale: 0.62 });
+    const den = spot(camp.x + 14, camp.z + 10, { maxRing: 6 });
+    add('cao-do', 'fox', 'Cáo đỏ', `${P.pets}/animal-fox.glb`, den, 200, { den: at(den), lookout: at(spot(den.x - 4, den.z + 2, { from: den, maxRing: 6 })) });
+    const bunny = spot(pool.x - 30, pool.z + 20, { maxRing: 6 });
+    const bunnyBush = spot(bunny.x + 3, bunny.z - 2, { from: bunny, maxRing: 6 });
+    map.addProp(`${P.nature}/plant_bush.glb`, bunnyBush.x + 1, bunnyBush.z, 60);
+    add('tho-xam', 'bunny', 'Thỏ xám', `${P.pets}/animal-bunny.glb`, bunny, 80, { 'bush-b': at(bunnyBush) });
+    parrot('vet-thac', pool.x - 6, pool.z + 8, [camp.x, camp.z]);
+  }
 
   return ambients;
 }

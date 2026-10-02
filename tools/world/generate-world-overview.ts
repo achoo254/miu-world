@@ -195,7 +195,7 @@ export async function generateWorldOverview(): Promise<{ world: VoxelWorld; enti
   const market = island('cho-phien');
   for (const [i, dx] of [-6, -1, 4].entries()) placeStall(world, market.x + dx, market.z - 2, 4, 3, market.top + 1, { log: B.log, planks: B.planks, stripes: [i === 1 ? B.woodRed : B.brickRed, B.snow] });
   const farm = island('nong-trai');
-  placeWindmill(world, farm.x - 2, farm.z + 1, farm.top + 1, { planks: B.planks, log: B.log, roof: B.brickRed, sail: B.snow });
+  placeWindmill(world, farm.x - 2, farm.z + 1, farm.top + 1, { planks: B.planks, log: B.log, roof: B.brickRed, sail: B.snow }, 5);
   for (let x = farm.x + 2; x <= farm.x + 6; x += 2) addProp(`${PACK.nature}/fence_simple.glb`, x, farm.top + 1, farm.z - 4);
 
   // Sky bridges from the hub's rim (the school) to every theme map's island.

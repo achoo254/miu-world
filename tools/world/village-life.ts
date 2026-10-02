@@ -31,6 +31,11 @@ export interface Resident {
   at: readonly [number, number];
   /** What they face at work (a counter, a cow); default: their first work place. */
   facing?: readonly [number, number];
+  /**
+   * Where their work places are, in order (a seller's cells behind the counter, the counters a shopper goes
+   * round): each is the nearest open cell to it that is a clear walk from home, else one picked round home.
+   */
+  visits?: ReadonlyArray<readonly [number, number]>;
   scale?: number;
 }
 
@@ -97,10 +102,12 @@ export function placeVillageLife(ground: LifeGround, cast: readonly Resident[], 
     const isAnimal = ANIMALS.has(resident.routine);
     const names = isAnimal ? ['graze-a', 'graze-b'] : ['work-a', 'work-b', 'work-c'];
     const spots: Record<string, [number, number, number]> = {};
-    for (const name of names) {
+    for (const [i, name] of names.entries()) {
       const a = rng() * Math.PI * 2;
       const r = (isAnimal ? 4 : 3) + rng() * 4;
-      const c = nearest(home.x + Math.cos(a) * r, home.z + Math.sin(a) * r, home, 4) ?? home;
+      const visit = resident.visits?.[i];
+      const planned = visit ? nearest(visit[0], visit[1], home, 3) : null;
+      const c = planned ?? nearest(home.x + Math.cos(a) * r, home.z + Math.sin(a) * r, home, 4) ?? home;
       spots[name] = at(c);
     }
     if (!isAnimal) {

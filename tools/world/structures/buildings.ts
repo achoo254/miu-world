@@ -8,13 +8,49 @@ export interface HouseBlocks {
   roof: number;
   /** Corner posts. */
   trim: number;
+  /**
+   * The finish of the owner's village frames (designs/lang-ven-song/d-03, d-10): any part given is built,
+   * any left out is not. `plinth`: a course of stone along the foot of the walls; `beam`: a timber beam round
+   * the top of the walls and a post every four blocks; `glass`: glazed windows (else open holes); `sill`: a
+   * sill jutting under each window, a flower box; `ridge`: the roof's ridge row; `gable`: the gable ends'
+   * infill (timber over a plain wall); `chimney`: a chimney stack through the back slope; `lantern`: a lantern
+ * on the wall either side of the door.
+   */
+  plinth?: number;
+  beam?: number;
+  glass?: number;
+  sill?: number;
+  ridge?: number;
+  gable?: number;
+  chimney?: number;
+  /** A lantern on the wall either side of the door (it glows at dusk). */
+  lantern?: number;
+  /** The floor inside, one block under `baseY` (planks, tiles): a room never stands on grass. */
+  floor?: number;
+}
+
+/** Where a house's dressing goes: the cell before its door, a lamp each side of it, the top of every flower box. */
+export interface HouseFront {
+  roofTop: number;
+  door: [number, number];
+  lamps: Array<[number, number]>;
+  boxes: Array<[number, number, number]>;
 }
 
 /** Box of `w` x `d` from (x0, z0) with walls `wallHeight` high on `baseY`, a door and windows on the -z side. */
-export function placeHouse(world: WorldWriter, x0: number, z0: number, w: number, d: number, wallHeight: number, baseY: number, blocks: HouseBlocks): { roofTop: number } {
+export function placeHouse(world: WorldWriter, x0: number, z0: number, w: number, d: number, wallHeight: number, baseY: number, blocks: HouseBlocks): HouseFront {
   const x1 = x0 + w - 1;
   const z1 = z0 + d - 1;
   const doorX = x0 + Math.floor(w / 2);
+  const detailed = blocks.beam !== undefined;
+  const topY = baseY + wallHeight - 1;
+  // Windows: one row in the middle of the wall (two rows on tall walls); a detailed house keeps its beam row
+  // and its plinth whole, and its posts stand every four blocks with the windows between them.
+  const windowRow = (y: number): boolean => (detailed ? y > baseY && y < topY && y <= baseY + 2 : y === baseY + 2);
+  const windowAt = (i: number, length: number): boolean => (detailed ? i % 4 === 2 && i < length - 1 : i % 3 === 1);
+  const postAt = (i: number, length: number): boolean => detailed && (i % 4 === 0 || i === length - 1);
+  const boxes: Array<[number, number, number]> = [];
+  if (blocks.floor !== undefined) for (let x = x0 + 1; x < x1; x++) for (let z = z0 + 1; z < z1; z++) put(world, x, baseY - 1, z, blocks.floor);
   for (let y = baseY; y < baseY + wallHeight; y++) {
     for (let x = x0; x <= x1; x++) {
       for (let z = z0; z <= z1; z++) {
@@ -22,13 +58,29 @@ export function placeHouse(world: WorldWriter, x0: number, z0: number, w: number
         const edgeZ = z === z0 || z === z1;
         if (!edgeX && !edgeZ) continue;
         const corner = edgeX && edgeZ;
+        const [i, length] = edgeZ ? [x - x0, w] : [z - z0, d];
+        const nearDoor = z === z0 && x >= doorX - 2 && x <= doorX + 1;
         const door = z === z0 && (x === doorX || x === doorX - 1) && y < baseY + 2;
-        const window = !corner && y === baseY + 2 && (edgeZ ? (x - x0) % 3 === 1 : (z - z0) % 3 === 1) && x !== doorX && x !== doorX - 1;
-        if (door || window) continue;
-        put(world, x, y, z, corner ? blocks.trim : blocks.wall);
+        if (door) continue;
+        const window = !corner && windowRow(y) && windowAt(i, length) && !nearDoor;
+        if (window) {
+          if (blocks.glass !== undefined) put(world, x, y, z, blocks.glass);
+          if (blocks.sill !== undefined && y === baseY + 1 + (detailed ? 0 : 1) && z === z0) {
+            put(world, x, y - 1, z - 1, blocks.sill);
+            boxes.push([x + 0.5, y, z - 0.5]);
+          }
+          continue;
+        }
+        let id = corner ? blocks.trim : blocks.wall;
+        if (detailed && (postAt(i, length) || y === topY)) id = blocks.beam ?? id;
+        if (y === baseY && blocks.plinth !== undefined) id = blocks.plinth;
+        put(world, x, y, z, id);
       }
     }
   }
+  if (blocks.lantern !== undefined && wallHeight > 3) for (const x of [doorX - 2, doorX + 1]) put(world, x, baseY + 2, z0 - 1, blocks.lantern);
+  // A lintel over the door on a detailed house.
+  if (detailed && wallHeight > 3) for (const x of [doorX - 1, doorX]) put(world, x, baseY + 2, z0, blocks.beam ?? blocks.trim);
   // Gable roof along x: each row one step higher towards the middle of the depth, eaves overhang by one.
   const half = Math.ceil((d + 2) / 2);
   let roofTop = baseY + wallHeight;
@@ -36,13 +88,20 @@ export function placeHouse(world: WorldWriter, x0: number, z0: number, w: number
     const step = Math.min(z - (z0 - 1), z1 + 1 - z);
     const y = baseY + wallHeight + step;
     roofTop = Math.max(roofTop, y);
+    const ridge = step === half - 1;
     for (let x = x0 - 1; x <= x1 + 1; x++) {
-      put(world, x, y, z, blocks.roof);
-      // Gable ends: fill the triangle under the roof with wall.
-      if ((x === x0 || x === x1) && step > 0 && step < half) for (let fy = baseY + wallHeight; fy < y; fy++) put(world, x, fy, z, blocks.wall);
+      put(world, x, y, z, ridge && blocks.ridge !== undefined ? blocks.ridge : blocks.roof);
+      // Gable ends: fill the triangle under the roof with wall (timber on a detailed house).
+      if ((x === x0 || x === x1) && step > 0 && step < half) for (let fy = baseY + wallHeight; fy < y; fy++) put(world, x, fy, z, blocks.gable ?? blocks.wall);
     }
   }
-  return { roofTop };
+  // A chimney through the back slope, near the east gable, two blocks over the roof.
+  if (blocks.chimney !== undefined && w >= 6) {
+    const [cx, cz] = [x1 - 2, z1 - 1];
+    const slope = baseY + wallHeight + Math.min(cz - (z0 - 1), z1 + 1 - cz);
+    for (let y = baseY + wallHeight; y <= Math.max(slope + 2, roofTop + 1); y++) put(world, cx, y, cz, blocks.chimney);
+  }
+  return { roofTop, door: [doorX, z0 - 1], lamps: [[doorX - 2, z0 - 1], [doorX + 1, z0 - 1]], boxes };
 }
 
 export interface CastleBlocks {
