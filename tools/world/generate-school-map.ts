@@ -18,17 +18,17 @@
 // the street lined with lanterns and houses. The school's four chapters are zones of the campus.
 // Output: assets/generated/world/truong-hoc/{regions/, horizon.bin, entities.json}
 import { PACK, runIfMain } from './map-kit';
-import { bambooHedge, cottageRow, fieldPlot, flowerBed, hamlet, jetty, laneVerge, STREET_LANTERN, streetHouses } from './scenery';
+import { bambooHedge, cottageRow, fieldPlot, flowerBed, jetty, laneVerge, STREET_LANTERN, streetHouses } from './scenery';
 import { placeHouse } from './structures/buildings';
 import { placeCatStatue, placeFountain, placeLighthouse, placeStall, placeWindmill } from './structures/countryside';
 import { placeArchBridge, placeBanner, placePlaza, placeTower } from './structures/landmarks';
 import type { Point } from './structures/path';
-import { placeBed, placeCampusWall, placeCourt, placeGreenhouse, placeMainBuilding, placeSportsHall, placeStreet, type FurnitureKind, type SchoolPalette } from './structures/school';
+import { fill, placeBed, placeCampusWall, placeCourt, placeGreenhouse, placeMainBuilding, placeSportsHall, placeStreet, type FurnitureKind, type SchoolPalette } from './structures/school';
 import { placeTree, treeHeight } from './structures/tree';
 import { placeGazebo, placeGrandFountain, placePlayhouse, placePortal, placeShop, placeStage } from './structures/truong-hoc-plaza';
 import { facingWriter, FRAME, frameCell, turnCell, type Facing } from './structures/world-writer';
 import { animal, crowd, person } from './village-life';
-import { generateZoneMap, HUB_REGION, type Zone } from './zone-map';
+import { generateZoneMap, HUB_REGION, type Zone, type ZoneMapContext } from './zone-map';
 
 export const MAP_ID = 'truong-hoc';
 const SIZE = 800;
@@ -62,7 +62,7 @@ const GATE: readonly [number, number] = [O.x + 91, O.x + 101];
 const BACK_GATE: readonly [number, number] = [O.x + 111, O.x + 115];
 const STREET = { z0: O.z + 3, z1: O.z + 12 };
 /** The main building: front gallery from zFront, body back wall at zBack (school.ts). */
-export const MAIN_BUILDING = { x0: O.x + 52, x1: O.x + 140, zFront: O.z + 66, zBack: O.z + 79, floorY: GROUND + 1 } as const;
+export const MAIN_BUILDING = { x0: O.x + 52, x1: O.x + 140, zFront: O.z + 66, zBack: O.z + 82, floorY: GROUND + 1 } as const;
 const MID = Math.floor((MAIN_BUILDING.x0 + MAIN_BUILDING.x1) / 2);
 
 /** The central square behind the school, on its axis, and the canal between them with its three bridges. */
@@ -93,6 +93,8 @@ const DISTRICT = {
 const CASTLE_HILL = { x: DISTRICT.castle.x, z: DISTRICT.castle.z + 20, r: 60, rise: 7 };
 const MOUNTAIN = { x: 40, z: 790, r: 170, rise: 22 };
 const CLIFF = { x: 720, z: 740, r: 70, rise: 14 };
+/** The paddies' bund the lane into them runs along (the paddy is cut in plots twelve wide from x 40). */
+const PADDY_BUND = 148;
 
 /**
  * The portals to the seven maps round the square (d-01, d-06): four on its west side facing east, three on
@@ -110,7 +112,7 @@ const PORTALS: ReadonlyArray<{ to: string; colour: string; dir: 1 | -1; dz: numb
 const portalAt = (p: (typeof PORTALS)[number]): [number, number] => [PLAZA.x - p.dir * Math.round(Math.sqrt(27 * 27 - p.dz * p.dz)), PLAZA.z + p.dz];
 
 /** The square's shop (d-02): its frame's corner and the way its front faces; the stalls of the traders (d-03). */
-const SHOP = { origin: [PLAZA.x - 24, PLAZA.z - 36] as const, facing: 'east' as Facing, width: 14 };
+const SHOP = { origin: [PLAZA.x - 24, PLAZA.z - 36] as const, facing: 'east' as Facing, width: 14, size: { depth: 9, wallHeight: 7, walkIn: true, ceiling: true } };
 const STALLS = [0, 1].map((i) => ({ x0: PLAZA.x - 20 + i * 7, z0: PLAZA.z + 21 }));
 
 /** The way from the school's back gate over the central bridge into the square. */
@@ -124,13 +126,33 @@ const TO_SQUARE: Point[] = [
 const CAMPUS_ROUTES: Point[][] = [
   // Inside the campus: gate to the building, through its hall to the courtyard, on to every area.
   [[MID, CAMPUS.z0], [MID, MAIN_BUILDING.zFront - 3]],
-  [[MID, MAIN_BUILDING.zBack + 3], [area('thap-dong-ho').x, area('thap-dong-ho').z]],
-  [[area('thap-dong-ho').x - 10, area('thap-dong-ho').z], [area('vuon-truong').x, area('vuon-truong').z - 18]],
+  // Out of the hall's back door and round the courtyard's signpost (zone-map.ts sets it on the axis).
+  [[MID, MAIN_BUILDING.zBack + 3], [MID + 6, MAIN_BUILDING.zBack + 5], [MID + 6, area('thap-dong-ho').z - 4], [area('thap-dong-ho').x, area('thap-dong-ho').z]],
+  // Into the garden between its beds, down the lane between the first two columns to the greenhouse door.
+  [[area('thap-dong-ho').x - 10, area('thap-dong-ho').z], [area('vuon-truong').x + 10, area('vuon-truong').z - 15], [area('vuon-truong').x - 7, area('vuon-truong').z - 15], [area('vuon-truong').x - 7, area('vuon-truong').z + 11]],
   [[area('thap-dong-ho').x + 10, area('thap-dong-ho').z], [area('hoi-truong').x, area('hoi-truong').z - 18]],
-  [[area('thap-dong-ho').x, area('thap-dong-ho').z], [area('phong-mi-thuat').x, area('phong-mi-thuat').z - 6]],
-  [[area('san-truong').x + 18, area('san-truong').z], [area('cang-tin').x, area('cang-tin').z]],
-  [[area('san-truong').x - 18, area('san-truong').z], [area('xuong-do-choi').x, area('xuong-do-choi').z]],
+  // On to the doors of the art room, the canteen and the toy workshop (their houses stand in generateSchool).
+  [[area('thap-dong-ho').x, area('thap-dong-ho').z], [area('phong-mi-thuat').x, area('phong-mi-thuat').z - 6], [area('phong-mi-thuat').x, area('phong-mi-thuat').z + 4]],
+  [[area('san-truong').x + 18, area('san-truong').z], [area('cang-tin').x, area('cang-tin').z], [area('cang-tin').x - 2, area('cang-tin').z + 4]],
+  [[area('san-truong').x - 18, area('san-truong').z], [area('xuong-do-choi').x, area('xuong-do-choi').z], [area('xuong-do-choi').x + 12, area('xuong-do-choi').z + 7]],
 ];
+/**
+ * The bus's stops in the town's districts, as it names them: where it lets the child off (`at`), and `from`, the
+ * point of the district's way that a short lane leads from, past the stop, to the stop back to school.
+ */
+const DISTRICT_STOPS: ReadonlyArray<{ name: string; at: readonly [number, number]; from: Point; back?: Point }> = [
+  { name: 'làng ven sông', at: [DISTRICT.village.x + 6, DISTRICT.village.z + 6], from: [DISTRICT.village.x, DISTRICT.village.z] },
+  { name: 'xóm mái ấm', at: [DISTRICT.hamlet.x + 6, DISTRICT.hamlet.z + 6], from: [DISTRICT.hamlet.x, DISTRICT.hamlet.z] },
+  { name: 'thư viện', at: [DISTRICT.library.x + 26, DISTRICT.library.z - 20], from: [PLAZA.x + 24, DISTRICT.library.z - 20] },
+  // The castle's stop back waits on the level ground at the hill's foot, by the way's end.
+  { name: 'lâu đài', at: [DISTRICT.castle.x + 6, DISTRICT.castle.z - 26], from: [DISTRICT.castle.x, DISTRICT.castle.z - 30], back: [DISTRICT.castle.x - 6, DISTRICT.castle.z - 30] },
+  { name: 'bìa rừng', at: [DISTRICT.forest.x + 6, DISTRICT.forest.z + 6], from: [DISTRICT.forest.x, DISTRICT.forest.z] },
+  { name: 'chợ', at: [DISTRICT.market.x + 6, DISTRICT.market.z + 10], from: [DISTRICT.market.x, DISTRICT.market.z + 6] },
+  { name: 'nông trại', at: [DISTRICT.farm.x + 6, DISTRICT.farm.z + 6], from: [DISTRICT.farm.x, DISTRICT.farm.z] },
+];
+/** Where the bus back to school waits in a district, a little off where it lets the child off. */
+const returnStop = (d: (typeof DISTRICT_STOPS)[number]): Point => d.back ?? [d.at[0] - 6, d.at[1] + 4];
+
 const MAIN_STREET: Point[] = [[14, STREET.z1 + 2], [786, STREET.z1 + 2]];
 const TOWN_ROUTES: Point[][] = [
   // The town: the avenues round the campus and along the square's front, the ways to every district.
@@ -145,6 +167,13 @@ const TOWN_ROUTES: Point[][] = [
   [[CAMPUS.x1 + 18, 560], [DISTRICT.forest.x, DISTRICT.forest.z]],
   [[CAMPUS.x1 + 18, 400], [DISTRICT.harbour.x, DISTRICT.harbour.z]],
   [[DISTRICT.market.x + 60, STREET.z0], [DISTRICT.farm.x, DISTRICT.farm.z]],
+  // Lanes to every bus stop and on to the stop back; to the library's door; along a bund into the paddies;
+  // up to the waterfall's foot; across the street to the lighthouse.
+  ...DISTRICT_STOPS.map((d): Point[] => [d.from, [d.at[0], d.at[1]], returnStop(d)]),
+  [[DISTRICT.library.x, DISTRICT.library.z - 8], [DISTRICT.library.x, DISTRICT.library.z - 16], [PLAZA.x + 24, DISTRICT.library.z - 16]],
+  [[DISTRICT.village.x, DISTRICT.village.z], [PADDY_BUND, DISTRICT.village.z + 60], [PADDY_BUND, DISTRICT.village.z + 150]],
+  [[DISTRICT.forest.x, DISTRICT.forest.z], [CLIFF.x - 26, CLIFF.z - 30]],
+  [[LAKE.x - 44, STREET.z1 + 2], [LAKE.x - 44, LAKE.z - LAKE.rz - 3]],
 ];
 const ROUTES: Point[][] = [...CAMPUS_ROUTES, MAIN_STREET, ...TOWN_ROUTES];
 
@@ -157,16 +186,6 @@ const GATES: ReadonlyArray<{ to: string; at: readonly [number, number] }> = [
   { to: HUB_REGION, at: [MID - 8, CAMPUS.z0 + 3] },
 ];
 
-/** The bus's stops in the town's districts (by the roads), as it names them. */
-const DISTRICT_STOPS: ReadonlyArray<{ name: string; at: readonly [number, number] }> = [
-  { name: 'làng ven sông', at: [DISTRICT.village.x + 6, DISTRICT.village.z + 6] },
-  { name: 'xóm mái ấm', at: [DISTRICT.hamlet.x + 6, DISTRICT.hamlet.z + 6] },
-  { name: 'thư viện', at: [DISTRICT.library.x + 26, DISTRICT.library.z - 20] },
-  { name: 'lâu đài', at: [DISTRICT.castle.x + 6, DISTRICT.castle.z - 26] },
-  { name: 'bìa rừng', at: [DISTRICT.forest.x + 6, DISTRICT.forest.z + 6] },
-  { name: 'chợ', at: [DISTRICT.market.x + 6, DISTRICT.market.z + 10] },
-  { name: 'nông trại', at: [DISTRICT.farm.x + 6, DISTRICT.farm.z + 6] },
-];
 
 const N = PACK.nature;
 const BOX = PACK.box;
@@ -281,6 +300,27 @@ function keepOutExcept(ctx: { keepOut: (x0: number, z0: number, x1: number, z1: 
   }
 }
 
+/** What the hills add to the land at (x, z): the castle's, the mountain's and the waterfall cliff's. */
+const rise = (x: number, z: number): number => hill(CASTLE_HILL, x, z) + hill(MOUNTAIN, x, z) + hill(CLIFF, x, z);
+
+/**
+ * Rows of cottages over a rectangle as `hamlet` (scenery.ts) lays them, each only where its house and yard
+ * stand clear of every way, the water, the zones, what is kept out and the hills' slopes (a house set on
+ * the level ground sinks into a slope, its door buried): the hamlet under the mountain's skirt.
+ */
+function levelHamlet(ctx: ZoneMapContext, x0: number, z0: number, x1: number, z1: number, rowEvery = 22): void {
+  const clear = (x: number, z: number): boolean => {
+    for (let cx = x - 1; cx <= x + 17; cx++) {
+      for (let cz = z - 7; cz <= z + 13; cz++) if (ctx.onPath(cx, cz) || ctx.inWater(cx, cz) || ctx.inZone(cx, cz, 2) || ctx.keptOut(cx, cz, 0) || rise(cx, cz) > 0) return false;
+    }
+    return true;
+  };
+  for (let z = z0 + 8; z + 9 <= z1; z += rowEvery) {
+    let x = x0;
+    while (x + 17 <= x1) x = clear(x, z) ? cottageRow(ctx, x, z, 1).x1 + 2 : x + 3;
+  }
+}
+
 export async function generateSchool() {
   return generateZoneMap({
     mapId: MAP_ID,
@@ -296,7 +336,7 @@ export async function generateSchool() {
     // The campus, the street and the square are level; the castle on its hill, the mountain and the waterfall cliff rise.
     shape: (x, z, h) => {
       if (inCampus(x, z) || inSquareGround(x, z) || (z >= STREET.z0 - 1 && z <= STREET.z1 + 4)) return GROUND;
-      return h + hill(CASTLE_HILL, x, z) + hill(MOUNTAIN, x, z) + hill(CLIFF, x, z);
+      return h + rise(x, z);
     },
     pathsFromSpawn: false,
     routes: ROUTES,
@@ -307,7 +347,7 @@ export async function generateSchool() {
         { name: 'Xe buýt tới quảng trường', at: [MID - 26, STREET.z1 + 2], to: [PLAZA.x - 10, AVENUE_Z] },
         { name: 'Xe buýt về cổng trường', at: [PLAZA.x - 14, AVENUE_Z + 2], to: [MID, CAMPUS.z0 - 4] },
         ...DISTRICT_STOPS.map((d, i) => ({ name: `Xe buýt tới ${d.name}`, at: [MID - 32 - (i % 4) * 5, STREET.z1 + 2 + Math.floor(i / 4) * 4] as const, to: d.at })),
-        ...DISTRICT_STOPS.map((d) => ({ name: 'Xe buýt về trường', at: [d.at[0] - 6, d.at[1] + 4] as const, to: [MID, CAMPUS.z0 - 4] as const })),
+        ...DISTRICT_STOPS.map((d) => ({ name: 'Xe buýt về trường', at: returnStop(d), to: [MID, CAMPUS.z0 - 4] as const })),
       ],
     },
     trees: { skip: 0.5, blocks: (roll, block) => ({ log: block('tree-log'), leaves: block(roll < 0.25 ? 'leaves-pink' : roll < 0.38 ? 'leaves-autumn' : 'leaves') }) },
@@ -393,7 +433,12 @@ export async function generateSchool() {
         stone: B.cobbleGrey, brick: block('brick-grey'), asphalt: block('asphalt'), line: block('snow'), court: block('wood-red'), roofBlue: block('roof-blue'),
         log: block('log'), door: block('wood-red'), grass: block('grass'), dirt: block('dirt'), sand: block('sand'), lantern: B.lantern,
         railing: { bar: block('iron'), pane: block('glass') },
+        loft: B.log,
+        ceiling: block('sand'),
+        dash: B.paver,
       };
+      // Raised beds rimmed in red boards; the plain boards stay the floors' (a rim is no way to walk along).
+      const beds = { ...palette, floor: B.woodRed };
       const yard = area('san-truong');
       const garden = area('vuon-truong');
       const canteen = area('cang-tin');
@@ -406,6 +451,16 @@ export async function generateSchool() {
         for (const [x, z] of cells) ctx.prop(STREET_LANTERN, x, z, 0);
       };
       const tree = (x: number, z: number, leaves: number): void => placeTree(world, x, ground + 1, z, treeHeight(rng), { log: B.treeLog, leaves }, rng);
+      /** A tree planted in paving stands in a pit of grass three across, flush with the stones round it. */
+      const pitTree = (x: number, z: number, leaves: number): void => {
+        for (let dx = -1; dx <= 1; dx++) for (let dz = -1; dz <= 1; dz++) world.set(x + dx, ground, z + dz, block('grass'));
+        tree(x, z, leaves);
+      };
+      /** Nothing built within a crown's reach of (x, z), from the ground up to a tree's top. */
+      const roomForTree = (x: number, z: number): boolean => {
+        for (let dx = -3; dx <= 3; dx++) for (let dz = -3; dz <= 3; dz++) for (let y = ground + 1; y <= ground + 9; y++) if (world.get(x + dx, y, z + dz) !== 0) return false;
+        return true;
+      };
 
       // The campus is built, not wild (owner 02/10/2026: paved, no lawn but the garden's): paving between its
       // areas, and no tree outside the zones but those planted below.
@@ -428,14 +483,11 @@ export async function generateSchool() {
         if (Math.abs(x - MID) < 9) continue;
         for (const z of [STREET.z1 + 3, STREET.z0 - 2]) if (!ctx.inWater(x, z)) ctx.prop(STREET_LANTERN, x, z, 0);
       }
-      // Trees along both pavements between the lanterns, clear of the houses' gardens.
-      for (let x = 27; x < SIZE - 27; x += 26) {
-        for (const z of [STREET.z0 - 3, STREET.z1 + 4]) {
-          if ((z > STREET.z1 && x >= CAMPUS.x0 - 3 && x <= CAMPUS.x1 + 3) || ctx.inWater(x, z) || ctx.onPath(x, z)) continue;
-          tree(x, z, Math.floor(x / 26) % 3 === 0 ? B.pink : B.leaves);
-          ctx.keepOut(x - 1, z - 1, x + 1, z + 1);
-        }
-      }
+      // The street and its pavements are no place for the wild trees (the street's own stand in pits, last).
+      ctx.keepOut(12, STREET.z0 - 4, SIZE - 13, STREET.z1 + 4);
+      // Nor along the outside of the campus wall: a crown there would hang over its pillars.
+      ctx.keepOut(CAMPUS.x0 - 4, CAMPUS.z0, CAMPUS.x0 - 1, CAMPUS.z1);
+      ctx.keepOut(CAMPUS.x1 + 1, CAMPUS.z0, CAMPUS.x1 + 4, CAMPUS.z1);
       placeCampusWall(world, CAMPUS.x0, CAMPUS.x1, CAMPUS.z0, CAMPUS.z1, () => ground + 1, GATE, palette, BACK_GATE);
       ctx.keepOut(CAMPUS.x0, CAMPUS.z0, CAMPUS.x1, CAMPUS.z0 + 1);
       ctx.keepOut(CAMPUS.x0, CAMPUS.z1 - 1, CAMPUS.x1, CAMPUS.z1);
@@ -445,7 +497,7 @@ export async function generateSchool() {
       ctx.landmark('duong-chinh', 'Đường chính', CAMPUS.x0 - 40, Math.round((STREET.z0 + STREET.z1) / 2));
       // Blossom trees and flower beds behind the wall either side of the gate (c-02).
       for (const side of [-1, 1]) {
-        tree(MID + side * 13, CAMPUS.z0 + 4, B.pink);
+        pitTree(MID + side * 13, CAMPUS.z0 + 4, B.pink);
         for (let k = 0; k < 9; k++) ctx.prop(FLOWERS[k % 3] ?? '', MID + side * (17 + k * 2), CAMPUS.z0 + 2, k * 40);
         ctx.prop(STREET_LANTERN, MID + side * 8, CAMPUS.z0 - 2, 0);
       }
@@ -494,18 +546,19 @@ export async function generateSchool() {
       }
       const [library, music] = main.extraRooms;
       if (library) {
-        // The school library (c-16): bookcases round the walls, reading tables with chairs, a globe, plants.
+        // The school library (c-16): bookcases round the walls (the front one free for the door), reading tables
+        // with chairs down the middle two blocks apart, a globe, plants.
         const { x0, x1, z0, z1, standY: y } = library;
         for (let x = x0 + 0.5; x <= x1 + 0.5; x += 1) ctx.propAt(TH.bookcase, [x, y, z1 + 0.75], 0);
         for (let z = z0 + 1.5; z <= z1 - 0.5; z += 1) ctx.propAt(TH.bookcase, [x1 + 0.75, y, z], 90);
         for (let z = z0 + 3.5; z <= z1 - 1.5; z += 1) ctx.propAt(TH.bookcase, [x0 + 0.25, y, z], 270);
         const midZ = (z0 + z1 + 1) / 2;
-        for (const tx of [x0 + 2.5, x0 + 5.5]) {
+        for (let tx = x0 + 4; tx <= x1 - 3; tx += 5) {
           ctx.propAt(TH.table, [tx, y, midZ], 90);
           for (const dz of [-0.9, 0.9]) for (const dx of [-0.4, 0.4]) ctx.propAt(TH.chair, [tx + dx, y, midZ + dz * 1.15], dz < 0 ? 180 : 0);
           ctx.propAt(HELD.book, [tx, y + 0.8, midZ], 30);
         }
-        ctx.propAt('generated/props/globe.glb', [x0 + 5, y + 0.8, midZ - 0.3], 0);
+        ctx.propAt('generated/props/globe.glb', [x0 + 4, y + 0.8, midZ - 0.3], 0);
         ctx.centredAt(FURNITURE.plant, [x0 + 0.5, y, z0 + 0.5], 0);
         ctx.centredAt(FURNITURE.plant, [x1 + 0.5, y, z0 + 0.5], 0);
         ctx.landmark('thu-vien-truong', 'Thư viện trường', (x0 + x1) / 2, (z0 + z1) / 2, y);
@@ -517,7 +570,7 @@ export async function generateSchool() {
         ctx.propAt(TH.piano, [x1 + 0.6, y, z1 - 2], 90);
         ctx.propAt(TH.pianoBench, [x1 - 0.4, y, z1 - 2], 90);
         ctx.propAt(TH.guitar, [x1 + 0.5, y, z0 + 2.5], 90);
-        for (const ez of [z0 + 4.5, z0 + 7]) ctx.propAt(TH.easel, [x0 + 1, y, ez], 270);
+        for (const ez of [z0 + 4.5, z0 + 7, z0 + 9.5]) ctx.propAt(TH.easel, [x0 + 1, y, ez], 270);
         ctx.propAt(TH.table, [x0 + 4, y, z0 + 3], 0);
         for (const dx of [-0.6, 0.6]) for (const dz of [-0.85, 0.85]) ctx.propAt(TH.chair, [x0 + 4 + dx, y, z0 + 3 + dz], dz < 0 ? 180 : 0);
         TH.posters.forEach((poster, i) => ctx.propAt(poster, [x0 + 0.07, y + 1.6, z0 + 1.5 + i * 2.6], 270));
@@ -550,11 +603,11 @@ export async function generateSchool() {
 
       // 3. The yard (c-03): beds of bushes and flowers along the walk, lamps, the flagpole, the pitch, the
       // fountain under the white cat, trees round it.
-      const beds: Array<[number, number]> = [];
+      const soil: Array<[number, number]> = [];
       for (const [x0, x1] of [[MID - 12, MID - 6], [MID + 6, MID + 12]] as const) {
-        for (const z0 of [yard.z - 16, yard.z - 4, yard.z + 8]) beds.push(...placeBed(world, x0, x1, z0, z0 + 4, ground + 1, palette));
+        for (const z0 of [yard.z - 16, yard.z - 4, yard.z + 8]) soil.push(...placeBed(world, x0, x1, z0, z0 + 4, ground + 1, beds));
       }
-      beds.forEach(([x, z], i) => {
+      soil.forEach(([x, z], i) => {
         if (i % 3 === 0) world.set(x, ground + 1, z, i % 2 === 0 ? B.leaves : B.pink);
         else ctx.prop(FLOWERS[i % 3] ?? '', x, z, i * 37);
       });
@@ -564,25 +617,42 @@ export async function generateSchool() {
       ctx.keepOut(flag.x - 1, flag.z - 1, flag.x + 1, flag.z + 1);
       ctx.landmark('cot-co', 'Cột cờ', flag.x, flag.z);
       const pitch = { x: yard.x - 19, z: yard.z - 6 };
-      for (let dx = -5; dx <= 5; dx++) for (let dz = -10; dz <= 10; dz++) if (Math.abs(dx) === 5 || Math.abs(dz) === 10 || dz === 0) world.set(pitch.x + dx, ground, pitch.z + dz, B.snow);
+      // A grass pitch with white lines, set in the paving.
+      for (let dx = -5; dx <= 5; dx++) for (let dz = -10; dz <= 10; dz++) world.set(pitch.x + dx, ground, pitch.z + dz, Math.abs(dx) === 5 || Math.abs(dz) === 10 || dz === 0 ? B.snow : block('grass'));
       ctx.landmark('san-bong', 'Sân bóng', pitch.x, pitch.z);
-      const fountain = placeFountain(world, yard.x + 16, yard.z + 12, ground + 1, { stone: B.cobbleGrey, water: B.water });
+      const fountain = placeFountain(world, yard.x + 16, yard.z + 12, ground + 1, { stone: block('stone'), water: B.water });
       placeCatStatue(world, yard.x + 16, fountain.plinth[1], yard.z + 12, { stone: B.snow, eye: block('iron') });
       ctx.keepOut(yard.x + 11, yard.z + 7, yard.x + 21, yard.z + 17);
       ctx.landmark('dai-phun-nuoc', 'Đài phun nước', yard.x + 16, yard.z + 12);
       ctx.landmark('ghe-da', 'Ghế đá sân trường', MID - 9, yard.z + 16);
       ctx.landmark('bot-bao-ve', 'Bốt bảo vệ', MID + 8, CAMPUS.z0 + 5);
       for (const [x, z] of [[yard.x + 9, yard.z + 6], [yard.x + 23, yard.z + 6], [yard.x + 9, yard.z + 18]] as const) ctx.prop(TH.planter, x, z, 0);
-      for (let z = yard.z - 16; z <= yard.z + 16; z += 11) for (const x of [yard.x - yard.hx - 4, yard.x + yard.hx + 4]) tree(x, z, z % 2 === 0 ? B.pink : B.leaves);
+      for (let z = yard.z - 16; z <= yard.z + 16; z += 11) for (const x of [yard.x - yard.hx - 4, yard.x + yard.hx + 4]) pitTree(x, z, z % 2 === 0 ? B.pink : B.leaves);
 
-      // 4. The other areas' buildings and equipment.
-      placeHouse(world, canteen.x - 16, canteen.z + 8, 14, 10, 4, ground + 1, { wall: B.planks, roof: B.woodRed, trim: B.log });
-      ctx.keepOut(canteen.x - 17, canteen.z + 5, canteen.x - 2, canteen.z + 18);
+      // 4. The other areas' buildings and equipment. Every house of the campus is many times the child's size
+      // (owner 02/10/2026): walls seven high, a doorway three wide and three high, room to move inside.
+      const finish = { glass: block('glass'), lantern: B.lantern, floor: B.planks };
+      // The canteen: a dining hall of tables with their benches, the street side its front.
+      const hall = { x0: canteen.x - 14, z0: canteen.z + 4, w: 25, d: 14 };
+      placeHouse(world, hall.x0, hall.z0, hall.w, hall.d, 7, ground + 1, { wall: B.planks, roof: B.woodRed, trim: B.log, ...finish });
+      ctx.keepOut(hall.x0 - 1, hall.z0 - 3, hall.x0 + hall.w, hall.z0 + hall.d);
+      for (const tx of [hall.x0 + 4.5, hall.x0 + 8.5, hall.x0 + 16.5, hall.x0 + 20.5]) {
+        for (const tz of [hall.z0 + 5.5, hall.z0 + 9.5]) {
+          ctx.propAt(TH.table, [tx, ground + 1, tz], 0);
+          for (const dz of [-0.95, 0.95]) for (const dx of [-0.5, 0.5]) ctx.propAt(TH.chair, [tx + dx, ground + 1, tz + dz], dz < 0 ? 0 : 180);
+        }
+      }
+      for (let i = 0; i < 3; i++) ctx.propAt(`${PACK.survival}/workbench.glb`, [hall.x0 + 6.5 + i * 6, ground + 1, hall.z0 + hall.d - 2.5], 180);
       for (let i = 0; i < 3; i++) ctx.prop(`${PACK.survival}/workbench.glb`, canteen.x - 10 + i * 6, canteen.z - 4, 0);
       // The playground (c-06): the toy workshop, the wooden playhouse with its slide, swings, a fence round it.
-      placeHouse(world, playground.x + 6, playground.z + 8, 13, 10, 4, ground + 1, { wall: B.sand, roof: B.roofBlue, trim: block('birch-log') });
-      ctx.keepOut(playground.x + 5, playground.z + 5, playground.x + 19, playground.z + 18);
-      const playhouse = placePlayhouse(world, playground.x - 12, playground.z + 3, ground + 1, { post: B.log, deck: B.planks, roof: B.woodRed, rail: B.log });
+      const workshop = { x0: playground.x + 6, z0: playground.z + 7, w: 13, d: 11 };
+      placeHouse(world, workshop.x0, workshop.z0, workshop.w, workshop.d, 7, ground + 1, { wall: B.sand, roof: B.roofBlue, trim: block('birch-log'), ...finish });
+      ctx.keepOut(workshop.x0 - 1, workshop.z0 - 3, workshop.x0 + workshop.w, workshop.z0 + workshop.d);
+      // Inside: the carpenter's bench on the back wall, crates of toys, a teddy bear waiting to be finished.
+      ctx.propAt(`${PACK.survival}/workbench.glb`, [workshop.x0 + 6.5, ground + 1, workshop.z0 + workshop.d - 2.5], 180);
+      for (const dx of [2.5, 10.5]) ctx.propAt(`${PACK.survival}/box.glb`, [workshop.x0 + dx, ground + 1, workshop.z0 + workshop.d - 2.5], dx * 20);
+      ctx.propAt(`${PACK.props}/teddy-bear.glb`, [workshop.x0 + 2.5, ground + 1, workshop.z0 + 3.5], 90);
+      const playhouse = placePlayhouse(world, playground.x - 12, playground.z + 3, ground + 1, { post: B.log, deck: block('birch-log'), roof: B.woodRed, rail: B.log });
       ctx.keepOut(playground.x - 13, playground.z + 1, playground.x - 7, playground.z + 10);
       ctx.propAt(`${PACK.props}/playground-slide.glb`, playhouse.slide, 180);
       ctx.landmark('quanh-cau-truot', 'Quanh cầu trượt', Math.floor(playhouse.slide[0]), Math.floor(playhouse.slide[2]) - 2);
@@ -598,12 +668,14 @@ export async function generateSchool() {
       for (let z = playground.z - playground.hz; z <= playground.z + playground.hz; z += 2) if (Math.abs(z - playground.z) > 3) ctx.prop(`${N}/fence_simple.glb`, playground.x + playground.hx + 1, z, 90);
       for (const [x, z] of [[playground.x - 6, playground.z - 16], [canteen.x - 4, canteen.z - 16], [courtyard.x - 16, courtyard.z + 6], [courtyard.x + 13, courtyard.z + 6], [MID - 9, yard.z + 17], [MID + 9, yard.z + 17]] as const) ctx.prop(`${BOX}/park-bench.glb`, x, z, 180);
       // The science garden (c-05): the greenhouse, raised beds in fenced rows.
-      placeGreenhouse(world, garden.x - 17, garden.x + 1, garden.z + 12, garden.z + 26, ground + 1, palette);
+      placeGreenhouse(world, garden.x - 17, garden.x + 1, garden.z + 12, garden.z + 26, ground + 1, palette).forEach(([x, z], k) => {
+        if (k % 3 === 0) ctx.prop(FLOWERS[k % FLOWERS.length] ?? '', x, z, k * 41);
+      });
       ctx.keepOut(garden.x - 18, garden.z + 11, garden.x + 2, garden.z + 27);
       for (let i = 0; i < 6; i++) {
         const x0 = garden.x - 18 + (i % 3) * 13;
         const z0 = garden.z - 22 + Math.floor(i / 3) * 12;
-        placeBed(world, x0, x0 + 9, z0, z0 + 4, ground + 1, palette).forEach(([x, z], k) => {
+        placeBed(world, x0, x0 + 9, z0, z0 + 4, ground + 1, beds).forEach(([x, z], k) => {
           if (k % 2 === 0) ctx.prop([`${N}/crop_carrot.glb`, `${N}/crop_pumpkin.glb`, `${N}/crops_cornStageD.glb`][i % 3] ?? '', x, z, k * 53);
         });
         for (let x = x0; x <= x0 + 9; x += 2) ctx.prop(`${N}/fence_simple.glb`, x, z0 - 1, 0);
@@ -619,10 +691,22 @@ export async function generateSchool() {
       for (const dx of [-8, 10]) ctx.prop(TH.planter, sports.x + dx, sports.z + 4, 0);
       ctx.keepOut(sports.x - 16, sports.z + 5, sports.x + 18, sports.z + 29);
       ctx.landmark('nha-da-nang', 'Nhà đa năng', sports.x, sports.z + 17);
-      placeHouse(world, art.x - 12, art.z + 6, 24, 10, 5, ground + 1, { wall: B.brickGrey, roof: B.woodRed, trim: block('birch-log') });
-      ctx.keepOut(art.x - 13, art.z + 3, art.x + 12, art.z + 16);
-      ctx.landmark('cua-so-phong-mi-thuat', 'Cửa sổ phòng mĩ thuật', art.x, art.z + 4);
-      ctx.landmark('vach-cang-tin', 'Vách căng tin', canteen.x - 9, canteen.z + 6);
+      // The art room: easels along its walls, worktables down the middle, the board of drawings at the back.
+      const studio = { x0: art.x - 13, z0: art.z + 5, w: 27, d: 13 };
+      placeHouse(world, studio.x0, studio.z0, studio.w, studio.d, 7, ground + 1, { wall: B.brickGrey, roof: B.woodRed, trim: block('birch-log'), ...finish });
+      ctx.keepOut(studio.x0 - 1, studio.z0 - 3, studio.x0 + studio.w, studio.z0 + studio.d);
+      ctx.propAt(TH.artBoard, [art.x + 0.5, ground + 1.9, studio.z0 + studio.d - 1.07], 0);
+      for (let k = 0; k < 4; k++) {
+        ctx.propAt(TH.easel, [studio.x0 + 1.5, ground + 1, studio.z0 + 3.5 + k * 2], 270);
+        ctx.propAt(TH.easel, [studio.x0 + studio.w - 1.5, ground + 1, studio.z0 + 3.5 + k * 2], 90);
+      }
+      for (const dx of [-7, 8]) {
+        ctx.propAt(TH.table, [art.x + dx, ground + 1, studio.z0 + 6.5], 0);
+        for (const dz of [-0.95, 0.95]) ctx.propAt(TH.chair, [art.x + dx, ground + 1, studio.z0 + 6.5 + dz], dz < 0 ? 0 : 180);
+        ctx.propAt(`${PACK.props}/artist-palette.glb`, [art.x + dx, ground + 1.8, studio.z0 + 6.5], dx * 10);
+      }
+      ctx.landmark('cua-so-phong-mi-thuat', 'Cửa sổ phòng mĩ thuật', art.x, studio.z0 - 1);
+      ctx.landmark('vach-cang-tin', 'Vách căng tin', hall.x0 + 5, hall.z0 - 2);
       for (let i = 0; i < 4; i++) {
         ctx.prop(`${N}/sign.glb`, art.x - 15 + i * 9, art.z - 8, 180);
         ctx.prop(`${PACK.props}/artist-palette.glb`, art.x - 13 + i * 9, art.z - 6, 180);
@@ -634,14 +718,14 @@ export async function generateSchool() {
       for (const [x, z] of [[MID - 16, CAMPUS.z0 + 4], [MID + 16, CAMPUS.z0 + 4], [MID - 22, yard.z + 18], [MID + 22, yard.z + 18]] as const) ctx.prop(`${N}/plant_bush.glb`, x, z, 0);
       for (let x = 40; x < SIZE - 40; x += 46) if (Math.abs(x - MID) > 40 && Math.abs(x - CAMPUS.x0 + 26) > 12) ctx.propAt(`${PACK.props}/automobile.glb`, [x + 0.5, ground + 1, STREET.z0 + 2.5], 90);
 
-      // Trees planted round the campus inside its wall, wherever nothing stands (c-01).
+      // Trees planted round the campus inside its wall, wherever nothing stands (c-01), in pits in the paving,
+      // their crowns clear of the wall.
       const plant = (x: number, z: number): void => {
-        if (ctx.inZone(x, z, 1) || ctx.nearPath(x, z, 3)) return;
-        for (let dx = -2; dx <= 2; dx++) for (let dz = -2; dz <= 2; dz++) for (let y = ground + 1; y <= ground + 9; y++) if (world.get(x + dx, y, z + dz) !== 0) return;
-        tree(x, z, (x + z) % 3 === 0 ? B.pink : B.leaves);
+        if (ctx.inZone(x, z, 1) || ctx.nearPath(x, z, 3) || !roomForTree(x, z)) return;
+        pitTree(x, z, (x + z) % 3 === 0 ? B.pink : B.leaves);
       };
-      for (let x = CAMPUS.x0 + 4; x <= CAMPUS.x1 - 4; x += 8) for (const z of [CAMPUS.z0 + 4, CAMPUS.z1 - 4]) plant(x, z);
-      for (let z = CAMPUS.z0 + 12; z <= CAMPUS.z1 - 12; z += 8) for (const x of [CAMPUS.x0 + 4, CAMPUS.x1 - 4]) plant(x, z);
+      for (let x = CAMPUS.x0 + 6; x <= CAMPUS.x1 - 6; x += 8) for (const z of [CAMPUS.z0 + 6, CAMPUS.z1 - 6]) plant(x, z);
+      for (let z = CAMPUS.z0 + 14; z <= CAMPUS.z1 - 14; z += 8) for (const x of [CAMPUS.x0 + 6, CAMPUS.x1 - 6]) plant(x, z);
 
       // 5. The central square (designs/trung-tam/d-*): all paved behind the campus, round the big fountain
       // under the white cat, the canal in front with its bridges, the portals on its sides, the shop, the
@@ -681,7 +765,7 @@ export async function generateSchool() {
       // The portals (d-06): stone arches with lanterns and moss, a glowing pane in each, its map's name over it.
       for (const p of PORTALS) {
         const [cx, cz] = portalAt(p);
-        const portal = placePortal(world, cx, cz, ground + 1, p.dir, { stone: B.cobbleGrey, trim: B.brickGrey, moss: B.leaves, lantern: B.lantern });
+        const portal = placePortal(world, cx, cz, ground + 1, p.dir, { stone: block('stone'), trim: B.brickGrey, moss: B.leaves, lantern: B.lantern });
         ctx.propAt(TH.portal(p.colour), portal.pane, portal.yaw);
         ctx.propAt(TH.sign(p.to), portal.sign, portal.yaw);
       }
@@ -689,7 +773,7 @@ export async function generateSchool() {
       // The shop (d-02) on the square's south-west, its front to the east.
       const shop = placeShop(facingWriter(world, SHOP.origin, SHOP.facing), FRAME, FRAME, SHOP.width, ground + 1, {
         wall: B.planks, post: B.log, roof: B.brickRed, floor: B.planks, counter: B.log, stripes: [[B.woodRed, B.snow], [B.roofBlue, B.snow]],
-      });
+      }, SHOP.size);
       const [sx, sz] = shopAt(shop.sign[0], shop.sign[2]);
       ctx.propAt(TH.shopSign, [sx, shop.sign[1], sz], 270);
       shop.counters.forEach(([u, y, v], i) => {
@@ -735,15 +819,15 @@ export async function generateSchool() {
       ctx.propAt(TH.bunting, [P.x + 0.5, ground + 6.4, P.z + 30.2], 0);
       for (const side of [-1, 1]) {
         ctx.propAt(TH.bunting, [P.x + side * 8.5, ground + 5.8, P.z + 26], side * 30);
-        tree(P.x + side * 13, P.z + 36, B.pink);
-        tree(P.x + side * 20, P.z + 32, B.pink);
+        pitTree(P.x + side * 13, P.z + 36, B.pink);
+        pitTree(P.x + side * 20, P.z + 32, B.pink);
         ctx.prop(STREET_LANTERN, P.x + side * 9, P.z + 27, 0);
         ctx.prop(TH.banner, P.x + side * 9, P.z + 37, 0);
       }
       ctx.landmark('san-khau', 'Sân khấu sự kiện', P.x, P.z + 22);
       ctx.propAt(TH.balloon, [P.x + 24.5, ground + 24, P.z + 38.5], 20);
       // Trees in the square's corners, outside the paving's ring.
-      for (const [dx, dz] of [[-36, -26], [36, -26], [-34, 30], [34, 30], [-44, 0], [44, 0]] as const) tree(P.x + dx, P.z + dz, (dx + dz) % 3 === 0 ? B.pink : B.leaves);
+      for (const [dx, dz] of [[-36, -26], [36, -26], [-34, 30], [34, 30], [-44, 0], [44, 0]] as const) if (roomForTree(P.x + dx, P.z + dz)) pitTree(P.x + dx, P.z + dz, (dx + dz) % 3 === 0 ? B.pink : B.leaves);
       // The central bridge (d-07) and the two beside it, lanterns and banners along, signposts at its foot.
       for (const br of BRIDGES) {
         const bridge = placeArchBridge(world, [br.x, CANAL.z0 - 2], [br.x, CANAL.z1 + 2], WATER_LEVEL + 1, WATER_LEVEL, { stone: B.brickGrey, rail: B.cobbleGrey }, br.width, 2);
@@ -752,16 +836,21 @@ export async function generateSchool() {
       for (const side of [-1, 1]) {
         ctx.prop(TH.banner, MID + side * 5, CANAL.z1 + 7, 0);
         ctx.prop(TH.banner, MID + side * 5, CANAL.z0 - 8, 0);
-        for (let x = CANAL.x0; x <= CANAL.x1; x += 7) if (BRIDGES.every((b) => Math.abs(x - b.x) > b.width)) ctx.prop(TH.planter, x, side < 0 ? CANAL.z0 - 3 : CANAL.z1 + 3, 0);
+        for (let x = CANAL.x0; x <= CANAL.x1; x += 7) if (BRIDGES.every((b) => Math.abs(x - b.x) > b.width)) ctx.prop(TH.planter, x, side < 0 ? CANAL.z0 - 3 : CANAL.z1 + 1, 0);
       }
       ctx.prop(TH.signpostWest, MID - 6, CANAL.z0 - 3, 0);
       ctx.prop(TH.signpostEast, MID + 6, CANAL.z0 - 3, 0);
       ctx.landmark('cau-trung-tam', 'Cầu trung tâm', MID, Math.round((CANAL.z0 + CANAL.z1) / 2), WATER_LEVEL + 3);
 
       // 6. The town: houses facing the main street on its far side, cottages along the west avenue.
-      for (let z = STREET.z1 + 24; z < 640; z += 20) cottageRow(ctx, CAMPUS.x0 - 50, z, 2);
+      // A row (its yard in front, the houses behind) is left out where a way to a district crosses it.
+      for (let z = STREET.z1 + 24; z < 640; z += 20) {
+        let crossed = false;
+        for (let x = CAMPUS.x0 - 55; x <= CAMPUS.x0 - 15 && !crossed; x++) for (let rz = z - 7; rz <= z + 13 && !crossed; rz++) crossed = ctx.onPath(x, rz);
+        if (!crossed) cottageRow(ctx, CAMPUS.x0 - 54, z, 2);
+      }
       // The village (west): hamlets and a paddy; the hamlet (north-west): cottages round yards.
-      hamlet(ctx, 30, DISTRICT.village.z - 70, 250, DISTRICT.village.z + 40);
+      levelHamlet(ctx, 30, DISTRICT.village.z - 70, 250, DISTRICT.village.z + 40);
       for (let x = 40; x <= 250; x++) {
         for (let z = DISTRICT.village.z + 70; z <= DISTRICT.village.z + 150; z++) {
           if ((x - 40) % 12 === 0 || (z - DISTRICT.village.z - 70) % 9 === 0 || ctx.onPath(x, z)) continue;
@@ -771,19 +860,29 @@ export async function generateSchool() {
       }
       ctx.keepOut(40, DISTRICT.village.z + 70, 250, DISTRICT.village.z + 150);
       ctx.landmark('ruong-lua', 'Ruộng lúa', 145, DISTRICT.village.z + 110);
-      hamlet(ctx, 30, DISTRICT.hamlet.z - 60, 250, DISTRICT.hamlet.z + 50);
-      bambooHedge(ctx, [[20, DISTRICT.village.z - 80], [20, DISTRICT.hamlet.z + 60]]);
+      levelHamlet(ctx, 30, DISTRICT.hamlet.z - 60, 250, DISTRICT.hamlet.z + 50);
+      bambooHedge(ctx, [[20, STREET.z1 + 6], [20, DISTRICT.hamlet.z + 60]]);
       // Neighbourhoods east of the school, by the lake, and along the road to the farm.
-      hamlet(ctx, CAMPUS.x1 + 26, STREET.z1 + 20, LAKE.x - LAKE.rx - 10, CAMPUS.z1 + 30);
-      hamlet(ctx, CAMPUS.x1 + 26, CAMPUS.z1 + 50, 560, 560);
-      hamlet(ctx, 480, 20, 560, 120);
-      hamlet(ctx, 60, 20, 300, 120);
+      levelHamlet(ctx, CAMPUS.x1 + 26, STREET.z1 + 20, LAKE.x - LAKE.rx - 10, CAMPUS.z1 + 30);
+      levelHamlet(ctx, CAMPUS.x1 + 26, CAMPUS.z1 + 50, 560, 560);
+      levelHamlet(ctx, 480, 20, 560, 120);
+      levelHamlet(ctx, 60, 20, 300, 120);
 
       // The library (north, behind the square): a reading hall; the castle on its hill beyond.
       const lib = DISTRICT.library;
-      placeHouse(world, lib.x - 16, lib.z - 6, 32, 16, 6, ground + 1, { wall: B.sand, roof: B.roofBlue, trim: block('birch-log') });
-      ctx.keepOut(lib.x - 17, lib.z - 9, lib.x + 16, lib.z + 10);
-      flowerBed(ctx, lib.x - 14, lib.z - 12, 28, 3);
+      const reading = { x0: lib.x - 17, z0: lib.z - 7, w: 34, d: 18 };
+      placeHouse(world, reading.x0, reading.z0, reading.w, reading.d, 8, ground + 1, { wall: B.sand, roof: B.roofBlue, trim: block('birch-log'), ...finish });
+      ctx.keepOut(reading.x0 - 1, reading.z0 - 3, reading.x0 + reading.w, reading.z0 + reading.d);
+      // The reading hall: bookcases along its back wall, reading tables with chairs in two rows.
+      for (let x = reading.x0 + 1.5; x <= reading.x0 + reading.w - 1.5; x += 1) ctx.propAt(TH.bookcase, [x, ground + 1, reading.z0 + reading.d - 1.25], 0);
+      for (let tx = reading.x0 + 5; tx <= reading.x0 + reading.w - 5; tx += 6) {
+        if (Math.abs(tx - lib.x) < 3) continue; // the way in from the door
+        for (const tz of [reading.z0 + 6, reading.z0 + 11]) {
+          ctx.propAt(TH.table, [tx, ground + 1, tz], 0);
+          for (const dz of [-0.95, 0.95]) ctx.propAt(TH.chair, [tx, ground + 1, tz + dz], dz < 0 ? 0 : 180);
+        }
+      }
+      for (const x0 of [lib.x - 14, lib.x + 3]) flowerBed(ctx, x0, lib.z - 12, 12, 3);
       ctx.landmark('thu-vien-pho', 'Thư viện', lib.x, lib.z - 8);
       // The castle (d-01's backdrop): a curtain wall, round towers under blue cones with flags, a keep, banners.
       const castle = DISTRICT.castle;
@@ -792,13 +891,18 @@ export async function generateSchool() {
         for (let z = castle.z - 18; z <= castle.z + 18; z++) {
           const edge = x === castle.x - 24 || x === castle.x + 24 || z === castle.z - 18 || z === castle.z + 18;
           if (!edge || (z === castle.z - 18 && Math.abs(x - castle.x) <= 3)) continue;
-          for (let y = castleY; y <= castleY + 6; y++) world.set(x, y, z, B.cobbleGrey);
-          if ((x + z) % 2 === 0) world.set(x, castleY + 7, z, B.cobbleGrey);
+          for (let y = castleY; y <= castleY + 6; y++) world.set(x, y, z, block('stone'));
+          if ((x + z) % 2 === 0) world.set(x, castleY + 7, z, block('stone'));
         }
       }
       const towerBlocks = { wall: B.cobbleGrey, trim: B.brickGrey, roof: B.roofBlue, glass: block('glass'), flag: B.woodRed, pole: B.log };
-      for (const [tx, tz] of [[castle.x - 24, castle.z - 18], [castle.x + 24, castle.z - 18], [castle.x - 24, castle.z + 18], [castle.x + 24, castle.z + 18]] as const) placeTower(world, tx, tz, castleY, 3, 12, towerBlocks, false);
+      // The corner towers have no door: solid inside (no shut hollow). The keep's door is three wide and high.
+      for (const [tx, tz] of [[castle.x - 24, castle.z - 18], [castle.x + 24, castle.z - 18], [castle.x - 24, castle.z + 18], [castle.x + 24, castle.z + 18]] as const) {
+        placeTower(world, tx, tz, castleY, 3, 12, towerBlocks, false);
+        for (let dx = -2; dx <= 2; dx++) for (let dz = -2; dz <= 2; dz++) if (Math.hypot(dx, dz) <= 2.1) fill(world, tx + dx, castleY, tz + dz, tx + dx, castleY + 11, tz + dz, B.cobbleGrey);
+      }
       placeTower(world, castle.x, castle.z + 4, castleY, 5, 18, towerBlocks);
+      fill(world, castle.x - 1, castleY, castle.z + 4 - 6, castle.x + 1, castleY + 2, castle.z + 4 - 4, 0);
       for (const dx of [-8, 6]) placeBanner(world, castle.x + dx, castleY + 6, castle.z - 19, 'x', { cloth: B.woodRed, emblem: block('wheat') });
       ctx.keepOut(castle.x - 27, castle.z - 21, castle.x + 27, castle.z + 21);
       ctx.landmark('lau-dai-pho', 'Lâu đài', castle.x, castle.z - 18, castleY);
@@ -818,9 +922,14 @@ export async function generateSchool() {
 
       // The lake (east): the harbour's piers with boats and sailboats, the lighthouse on its point.
       for (const [i, z] of [360, 400, 440].entries()) jetty(ctx, LAKE.x - LAKE.rx + 4 + i * 2, z, 16, 1, WATER_LEVEL, true);
+      // A landing stage from the end of the harbour's way out to the middle pier.
+      fill(world, DISTRICT.harbour.x + 1, WATER_LEVEL + 1, DISTRICT.harbour.z - 1, LAKE.x - LAKE.rx + 6, WATER_LEVEL + 1, DISTRICT.harbour.z + 1, B.planks);
       ctx.landmark('ben-tau', 'Bến tàu', LAKE.x - LAKE.rx + 6, 400);
       const point = { x: LAKE.x - 40, z: LAKE.z - LAKE.rz - 8 };
-      placeLighthouse(world, point.x, point.z, ctx.surface(point.x, point.z) + 1, { red: B.woodRed, white: B.snow, glass: block('glass'), cap: B.roofBlue });
+      const lightY = ctx.surface(point.x, point.z) + 1;
+      placeLighthouse(world, point.x, point.z, lightY, { red: B.woodRed, white: B.snow, glass: block('glass'), cap: B.roofBlue });
+      // Its shaft is too narrow to be a room: solid, the door shut (a landmark seen across the lake).
+      for (let dx = -2; dx <= 2; dx++) for (let dz = -2; dz <= 2; dz++) for (let y = lightY; y < lightY + 14; y++) if (Math.hypot(dx, dz) <= 2 && world.get(point.x + dx, y, point.z + dz) === 0) world.set(point.x + dx, y, point.z + dz, y < lightY + 3 ? B.woodRed : B.snow);
       ctx.keepOut(point.x - 4, point.z - 4, point.x + 4, point.z + 4);
       ctx.landmark('hai-dang', 'Hải đăng', point.x, point.z);
       for (let i = 0; i < 8; i++) ctx.propAt(`${N}/lily_large.glb`, [LAKE.x + 30 + Math.cos(i) * 20 + 0.5, WATER_LEVEL + 1.02, LAKE.z + Math.sin(i) * 30 + 0.5], i * 45);
@@ -843,10 +952,15 @@ export async function generateSchool() {
       fieldPlot(ctx, DISTRICT.farm.x - 80, DISTRICT.farm.z - 60, DISTRICT.farm.x - 40, DISTRICT.farm.z - 20, `${N}/crops_cornStageD.glb`);
       fieldPlot(ctx, DISTRICT.farm.x - 30, DISTRICT.farm.z - 60, DISTRICT.farm.x + 10, DISTRICT.farm.z - 20, `${N}/crop_pumpkin.glb`);
       fieldPlot(ctx, DISTRICT.farm.x + 20, DISTRICT.farm.z - 60, DISTRICT.farm.x + 70, DISTRICT.farm.z - 30, `${N}/crop_carrot.glb`);
-      placeWindmill(world, DISTRICT.farm.x + 40, DISTRICT.farm.z + 10, ctx.surface(DISTRICT.farm.x + 40, DISTRICT.farm.z + 10) + 1, { planks: B.planks, log: B.log, roof: B.brickRed, sail: B.snow });
+      const mill = { x: DISTRICT.farm.x + 40, z: DISTRICT.farm.z + 10 };
+      const millY = ctx.surface(mill.x, mill.z) + 1;
+      placeWindmill(world, mill.x, mill.z, millY, { planks: B.planks, log: B.log, roof: B.brickRed, sail: B.snow });
+      fill(world, mill.x - 1, millY, mill.z - 5, mill.x + 1, millY + 2, mill.z - 2, 0); // its door three wide
       ctx.keepOut(DISTRICT.farm.x + 35, DISTRICT.farm.z + 1, DISTRICT.farm.x + 45, DISTRICT.farm.z + 14);
-      placeHouse(world, DISTRICT.farm.x - 50, DISTRICT.farm.z + 10, 16, 10, 5, ground + 1, { wall: B.woodRed, roof: B.brickGrey, trim: B.snow });
-      ctx.keepOut(DISTRICT.farm.x - 51, DISTRICT.farm.z + 7, DISTRICT.farm.x - 34, DISTRICT.farm.z + 20);
+      const barn = { x0: DISTRICT.farm.x - 52, z0: DISTRICT.farm.z + 9, w: 19, d: 13 };
+      placeHouse(world, barn.x0, barn.z0, barn.w, barn.d, 7, ground + 1, { wall: B.woodRed, roof: B.brickGrey, trim: B.snow, floor: B.planks });
+      ctx.keepOut(barn.x0 - 1, barn.z0 - 3, barn.x0 + barn.w, barn.z0 + barn.d);
+      for (const dx of [2.5, 4, barn.w - 3.5]) ctx.propAt(`${PACK.survival}/barrel.glb`, [barn.x0 + dx, ground + 1, barn.z0 + barn.d - 2.5], dx * 30);
       ctx.landmark('nong-trai-pho', 'Nông trại', DISTRICT.farm.x, DISTRICT.farm.z);
 
       // Last, the main street's houses on both pavements outside the campus (c-13), then the verges of
@@ -855,6 +969,13 @@ export async function generateSchool() {
       streetHouses(ctx, [[24, STREET.z1 + 4], [CAMPUS.x0 - 16, STREET.z1 + 4]], { sides: [1], setback: 5 });
       streetHouses(ctx, [[CAMPUS.x1 + 24, STREET.z1 + 4], [SIZE - 24, STREET.z1 + 4]], { sides: [1], setback: 5 });
       for (const route of TOWN_ROUTES) laneVerge(ctx, route);
+      // Trees along both pavements between the lanterns, in pits, where no house or garden is within reach.
+      for (let x = 27; x < SIZE - 27; x += 26) {
+        for (const z of [STREET.z0 - 3, STREET.z1 + 4]) {
+          if ((z > STREET.z1 && x >= CAMPUS.x0 - 3 && x <= CAMPUS.x1 + 3) || ctx.inWater(x, z) || ctx.onPath(x, z) || !roomForTree(x, z)) continue;
+          pitTree(x, z, Math.floor(x / 26) % 3 === 0 ? B.pink : B.leaves);
+        }
+      }
     },
   });
 }

@@ -87,16 +87,28 @@ export interface ShopBlocks {
 }
 
 /**
- * The square's shop (d-02), built in its own frame with its open front toward -z: a timber hall `w` wide and
- * six deep on log posts, plank walls behind and at the sides, a tiled gable roof, two counters across the
- * front each under its own striped awning sloping out over it, a lantern at each post. (x0, z0) is its front
- * left corner. Returns where the name board hangs (over the awnings), the counters' tops, the shelves along
- * the back wall and where the shopkeepers stand.
+ * A shop's size: its depth, its walls' height, a walk-in three wide between its counters instead of the
+ * middle post, a ceiling of timbers over the hall at the top of its walls.
  */
-export function placeShop(world: WorldWriter, x0: number, z0: number, w: number, baseY: number, b: ShopBlocks): { sign: [number, number, number]; counters: Array<[number, number, number]>; shelves: Array<[number, number, number]>; keepers: Array<[number, number]> } {
-  const d = 6;
+export interface ShopSize {
+  depth?: number;
+  wallHeight?: number;
+  walkIn?: boolean;
+  ceiling?: boolean;
+}
+
+/**
+ * The square's shop (d-02), built in its own frame with its open front toward -z: a timber hall `w` wide and
+ * `size.depth` (six) deep on log posts, plank walls behind and at the sides, a tiled gable roof, two counters
+ * across the front each under its own striped awning sloping out over it, a lantern at each post; with
+ * `size.walkIn` the counters leave the middle of the front open, three wide, to walk in. (x0, z0) is its
+ * front left corner. Returns where the name board hangs (over the awnings), the counters' tops, the shelves
+ * along the back wall and where the shopkeepers stand.
+ */
+export function placeShop(world: WorldWriter, x0: number, z0: number, w: number, baseY: number, b: ShopBlocks, size: ShopSize = {}): { sign: [number, number, number]; counters: Array<[number, number, number]>; shelves: Array<[number, number, number]>; keepers: Array<[number, number]> } {
+  const d = size.depth ?? 6;
   const [x1, z1] = [x0 + w - 1, z0 + d - 1];
-  const wallTop = baseY + 4;
+  const wallTop = baseY + (size.wallHeight ?? 5) - 1;
   fill(world, x0, baseY - 1, z0, x1, baseY - 1, z1, b.floor);
   for (let x = x0; x <= x1; x++) {
     for (let z = z0; z <= z1; z++) {
@@ -107,9 +119,10 @@ export function placeShop(world: WorldWriter, x0: number, z0: number, w: number,
       for (let y = baseY; y <= wallTop; y++) put(world, x, y, z, post ? b.post : b.wall);
     }
   }
-  // Front posts between the two counters, a beam along the front.
+  if (size.ceiling) fill(world, x0 + 1, wallTop, z0 + 1, x1 - 1, wallTop, z1 - 1, b.post);
+  // Front posts between the two counters (none over a walk-in), a beam along the front.
   const midX = Math.floor((x0 + x1) / 2);
-  for (let y = baseY; y <= wallTop; y++) put(world, midX, y, z0, b.post);
+  if (!size.walkIn) for (let y = baseY; y <= wallTop; y++) put(world, midX, y, z0, b.post);
   for (let x = x0; x <= x1; x++) put(world, x, wallTop, z0, b.post);
   // Gable roof along x, overhanging a block.
   const half = Math.ceil(d / 2) + 1;
@@ -123,7 +136,8 @@ export function placeShop(world: WorldWriter, x0: number, z0: number, w: number,
   // Counters a block in from the front, each half of the front, with an awning sloping out over it.
   const counters: Array<[number, number, number]> = [];
   const keepers: Array<[number, number]> = [];
-  const halves: Array<[number, number]> = [[x0 + 1, midX - 1], [midX + 1, x1 - 1]];
+  const gap = size.walkIn ? 2 : 1;
+  const halves: Array<[number, number]> = [[x0 + 1, midX - gap], [midX + gap, x1 - 1]];
   halves.forEach(([a, c], i) => {
     for (let x = a; x <= c; x++) put(world, x, baseY, z0 + 1, b.counter);
     const stripes = b.stripes[i % b.stripes.length] ?? [b.roof];
