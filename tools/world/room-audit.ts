@@ -7,10 +7,11 @@
 import { readdir, readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
+import { blockTableSchema } from '../../packages/voxel/src/block-table';
 import { VoxelWorld } from '../../packages/voxel/src/chunk-format';
 import { cellKey } from '../../packages/voxel/src/prop-collision';
 import { insertRegion } from '../../packages/voxel/src/region-format';
-import { ASSETS_DIR } from '../assets/asset-lib';
+import { ASSETS_DIR, REPO_ROOT } from '../assets/asset-lib';
 import { propCells } from './prop-cells';
 import { walkSolid } from './walkable';
 
@@ -52,12 +53,18 @@ export async function auditRooms(map: string): Promise<RoomReport[]> {
   const isSolid = await walkSolid();
   const props = await propCells(e.props);
   const B = (x: number, y: number, z: number): boolean => x >= 0 && z >= 0 && x < SX && z < SZ && y >= 0 && y < SY && isSolid(world.get(x, y, z));
-  const spot = (x: number, y: number, z: number): boolean => !B(x, y, z) && !B(x, y + 1, z) && B(x, y - 1, z);
+  // Feet in water is no floor: the shallows under a pier or a bridge deck are not a room.
+  const table = blockTableSchema.parse(JSON.parse(await readFile(path.join(REPO_ROOT, 'content/blocks.json'), 'utf8')));
+  const water = new Set(table.blocks.filter((t) => t.name === 'water').map((t) => t.id));
+  const spot = (x: number, y: number, z: number): boolean => !B(x, y, z) && !B(x, y + 1, z) && B(x, y - 1, z) && !water.has(world.get(x, y, z));
   // Up to ROOF_REACH: a big house's ceiling stands seven to nine blocks over its floor, its roof higher still.
-  const roofed = (x: number, y: number, z: number): boolean => {
+  const roofOver = (x: number, y: number, z: number): boolean => {
     for (let d = 2; d <= ROOF_REACH; d++) if (B(x, y + d, z)) return true;
     return false;
   };
+  // A roof spreads: a spot is under one when at least two of its neighbours are too, so a lone beam or a
+  // ridge pole jutting past a tent's door does not make a roof of its own.
+  const roofed = (x: number, y: number, z: number): boolean => roofOver(x, y, z) && SIDES.filter(([dx, dz]) => roofOver(x + dx, y, z + dz)).length >= 2;
   // Under the eaves is outside: a roofed spot with open sky beside it at the child's head (no wall, no roof,
   // whatever the ground does there) is the ring under a roof's overhang or a doorway's sill, and counting it as
   // the room would join the whole ring to the doorway.
@@ -89,12 +96,13 @@ export async function auditRooms(map: string): Promise<RoomReport[]> {
     }
     if (cells.length < ROOM_RULES.minArea) continue;
     const inRoom = new Set(cells.map((c) => c.join(',')));
-    // Doorway cells: room cells beside a floor spot outside the room at most three blocks lower or higher; the climb is how far up from outside.
+    // Doorway cells: room cells beside a floor spot outside the room at most three blocks lower or two higher (the
+    // child climbs two at most: a wall's top three over the floor is no way in); the climb is how far up from outside.
     const doorClimb = new Map<string, number>();
     const outsideOf = new Map<string, [number, number, number]>();
     for (const [x, y, z] of cells) {
       for (const [dx, dz] of SIDES) {
-        for (let dy = -3; dy <= 3; dy++) {
+        for (let dy = -3; dy <= 2; dy++) {
           const [nx, ny, nz] = [x + dx, y + dy, z + dz];
           // Outside: any floor spot not in this room (under the eaves too), a step up or down from it.
           if (inRoom.has(`${nx},${ny},${nz}`) || !spot(nx, ny, nz)) continue;
