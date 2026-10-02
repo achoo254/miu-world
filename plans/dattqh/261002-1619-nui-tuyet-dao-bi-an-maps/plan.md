@@ -1,6 +1,6 @@
 # Mở map Trung tâm, Núi tuyết và Đảo bí ẩn theo mock chi tiết
 
-Trạng thái: đang làm · Tier tổng: XL · Nhánh: `main` · Ngày: 02/10/2026
+Trạng thái: xong, đã deploy production (02/10/2026 21:3x, commit `afcaadd`) · Tier tổng: XL · Nhánh: `main` · Ngày: 02/10/2026
 
 Người sở hữu (02/10/2026): "mock design map núi tuyết và đảo bí ẩn tôi đã cung cấp rồi, dựa vào plan liên quan rồi mở thêm 2 map đó nữa đi". Mock: `designs/nui-tuyet/d-01 … d-15`, `designs/dao-bi-an/d-01 … d-14` (cắt từ `mock-d-chi-tiet.png`).
 
@@ -44,13 +44,12 @@ Tự quyết (kỹ thuật): atlas khối lên 1024 px vì thêm 6 ô (tuyết, 
 - Mỗi khung mock có ảnh cùng góc trong game; báo cáo map ghi đạt/gần/chưa.
 - Gate: `pnpm assets:check` → `content:check` → `test` → `typecheck` → `lint`, `pnpm --filter @miu/web build`, `pnpm security:dist`, `pnpm --filter @miu/web e2e:ci`.
 
-## Tiến độ (02/10/2026 ~17:40, phiên dừng vì hết quota)
+## Tiến độ (02/10/2026)
 
-| Pha | Trạng thái |
-| --- | --- |
-| 1 Nền chung | Xong: khối mới, atlas 1024, ba vùng `open`, `HUB_REGION = trung-tam`, cổng về Trung tâm trên 8 map cũ (đã sinh lại cả 8, kể cả Lâu đài), `generated.json`, preview/review, ảnh chọn map (Trung tâm ở giữa; E2E `home` 12/12), bỏ góc `trung-tam/d-*` cũ khỏi map Trường học, dời 3 cư dân đón khách khỏi chỗ xuất hiện trong rừng |
-| 2 Dựng map | Trung tâm xong (báo cáo `reports/map-trung-tam-261002-new-map.md`), Núi tuyết xong (`reports/map-nui-tuyet-261002-new-map.md`, tiền tố prop `ntu-` vì `nt-` là Nông trại — giữ), Đảo bí ẩn xong (`reports/map-dao-bi-an-261002-new-map.md`; test map 4/4, 31 interactable) |
-| 3 Quest chào mừng | Xong: `trung-tam-ch1`, `nui-tuyet-ch1`, `kho-bau-dao-ch1` (đổi tên để `forest-ch1` vẫn là quest đầu của bé mới) |
-| 4 Nghiệm thu | Còn: `pnpm assets:regions` (thêm `backdrop` cho 3 vùng mới trong `regions.json`), đủ gate (`assets:check` → `content:check` → `test` → `typecheck` → `lint`, build web, `security:dist`, `e2e:ci` — hẹn cổng với phiên khác), báo cáo nghiệm thu, commit (chỉ `git add` tệp của plan này), rồi **deploy production** (người sở hữu đã cho phép lần này: "làm xong hết thì deploy lên prod nhé") theo `docs/deployment-guide.md` §7 — cây làm việc có thay đổi của phiên khác nên deploy từ bản export commit (`git archive`, `MIU_RELEASE_REV`) |
+Cả bốn pha xong. Báo cáo nghiệm thu: `plans/dattqh/reports/mock-new-maps-acceptance-261002.md`; báo cáo từng map: `reports/map-{trung-tam,nui-tuyet,dao-bi-an}-261002-new-map.md`.
 
-Hạn chế ghi nhận: ảnh d-03/d-08 Trung tâm thiếu người (runtime chưa dựng nhân vật xa lúc chụp); lâu đài Trung tâm thấp hơn mock (trần 48 khối); chim cánh cụt/gấu trắng Núi tuyết mượn routine `chick`/`fox` (lời thoại chưa đúng loài, cần routine riêng ở web); khỉ trên Đảo là prop tĩnh (chưa có routine khỉ); khung tối d-08, d-09, d-13 của Đảo sáng hơn mock (chưa có chế độ đêm).
+- Gate: `assets:check` OK (3235 tệp), `content:check` OK (301 tệp), `pnpm test` 998/998 (3 test cũ sửa theo trung tâm mới), `typecheck` và `lint` sạch, build web OK, `security:dist` OK, `e2e:ci` 79 đạt / 2 bỏ qua / 0 trượt trong 348 s.
+- Commit `afcaadd` (420 tệp, chỉ của plan này; 22 tệp chưa commit của hai phiên khác — autowalk, điều khiển cảm ứng, HUD — để nguyên), đã push.
+- Production (người sở hữu cho phép lần này): release từ bản export của `afcaadd` (`MIU_RELEASE_REV=afcaadd`), backup DB trước release, `/api/health` ok; ba map mới và ảnh chọn map mới phục vụ từ `https://miu.hoandat.com`.
+
+Hạn chế ghi nhận: ảnh d-03/d-08 Trung tâm thiếu người (runtime chưa dựng nhân vật xa lúc chụp); lâu đài Trung tâm thấp hơn mock (trần 48 khối); chim cánh cụt/gấu trắng Núi tuyết mượn routine `chick`/`fox`, khỉ Đảo là prop tĩnh (cần routine riêng ở web); khung tối d-08, d-09, d-13 của Đảo sáng hơn mock (chưa có chế độ đêm).
