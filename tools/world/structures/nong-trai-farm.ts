@@ -107,7 +107,7 @@ export interface GlasshouseBlocks {
 /**
  * A glasshouse `w` (x) by `d` (z) on `baseY` (d-05): a stone plinth, timber posts every three blocks and a beam
  * round the top, glass between, a glass gable roof with timber rafters and ridge running front to back, a door
- * two wide on -z, a paved floor, plank benches along both long walls and across the back. Returns the bench
+ * three wide and three high on -z, a paved floor (through the doorway too), plank benches along both long walls and across the back. Returns the bench
  * tops (for pots) and the cells under the ridge (for hanging lanterns).
  */
 export function placeGlasshouse(world: WorldWriter, x0: number, z0: number, w: number, d: number, baseY: number, b: GlasshouseBlocks, wallHeight = 4): { benches: Array<[number, number, number]>; ridge: Array<[number, number, number]>; door: [number, number] } {
@@ -122,7 +122,7 @@ export function placeGlasshouse(world: WorldWriter, x0: number, z0: number, w: n
       const edgeZ = z === z0 || z === z1;
       if (!edgeX && !edgeZ) continue;
       for (let y = baseY; y < top; y++) {
-        const door = z === z0 && (x === mid || x === mid + 1) && y < baseY + 3;
+        const door = z === z0 && Math.abs(x - mid) <= 1 && y < baseY + 3;
         if (door) continue;
         const post = (edgeZ && (x - x0) % 3 === 0) || (edgeX && (z - z0) % 3 === 0) || (edgeX && edgeZ);
         put(world, x, y, z, y === baseY ? b.plinth : post || y === top - 1 ? b.frame : b.glass);
@@ -172,8 +172,8 @@ export interface StorehouseBlocks {
 
 /**
  * The storehouse and its kitchen (d-08) `w` by `d` on `baseY`: a stone foot, plank walls framed in timber
- * posts and beam, windows, a red gable roof (ridge along x), a door two wide and three high on -z, a plank
- * floor; inside, plank shelves along the back wall, a brick oven with an arched mouth in the east corner,
+ * posts and beam, windows, a red gable roof (ridge along x), a door three wide and three high on -z, a plank
+ * floor (through the doorway too), a plank ceiling with the loft over it filled; inside, plank shelves along the back wall, a brick oven with an arched mouth in the east corner,
  * lanterns on the walls. Returns the shelf spots (for jar shelves), the oven mouth (for its fire), the open
  * floor (for tables and sacks) and the cell before the door.
  */
@@ -189,7 +189,7 @@ export function placeStorehouse(world: WorldWriter, x0: number, z0: number, w: n
       const edgeZ = z === z0 || z === z1;
       if (!edgeX && !edgeZ) continue;
       for (let y = baseY; y < top; y++) {
-        const door = z === z0 && (x === mid || x === mid + 1) && y < baseY + 3;
+        const door = z === z0 && Math.abs(x - mid) <= 1 && y < baseY + 3;
         if (door) continue;
         const i = edgeZ ? x - x0 : z - z0;
         const post = i % 4 === 0 || (edgeX && edgeZ);
@@ -198,7 +198,7 @@ export function placeStorehouse(world: WorldWriter, x0: number, z0: number, w: n
       }
     }
   }
-  for (const x of [mid - 1, mid + 2]) put(world, x, baseY + 2, z0 - 1, b.lantern);
+  for (const x of [mid - 2, mid + 2]) put(world, x, baseY + 2, z0 - 1, b.lantern);
   // Gable roof along x, eaves one block out, gable ends of wall.
   const halfD = Math.ceil((d + 2) / 2);
   for (let z = z0 - 1; z <= z1 + 1; z++) {
@@ -224,8 +224,10 @@ export function placeStorehouse(world: WorldWriter, x0: number, z0: number, w: n
   // The embers glow at the back of the mouth.
   for (let dx = 1; dx <= 3; dx++) for (let y = baseY + 1; y <= baseY + 2; y++) put(world, ox + dx, y, oz + 2, b.lantern);
   for (let y = baseY + 5; y <= top + halfD + 1; y++) for (const dx of [1, 2, 3]) put(world, ox + dx, y, oz + 2, b.brick);
-  // A plank ceiling with a timber beam across it every third block.
+  // A plank ceiling with a timber beam across it every third block, the loft over it filled up to the roof so
+  // no sealed hollow is left under it.
   for (let x = x0 + 1; x < x1; x++) for (let z = z0 + 1; z < z1; z++) if (world.get(x, top, z) === 0) put(world, x, top, z, (x - x0) % 3 === 2 ? b.beam : b.shelf);
+  for (let x = x0 + 1; x < x1; x++) for (let z = z0 + 1; z < z1; z++) for (let y = top + 1; world.get(x, y, z) === 0 && y <= top + halfD; y++) put(world, x, y, z, b.shelf);
   // Shelves along the back wall (a plank ledge at the foot of each), lanterns on the walls.
   const shelves: Array<[number, number, number]> = [];
   for (let x = x0 + 2; x <= ox - 2; x += 3) shelves.push([x + 0.5, baseY, z1 - 0.6]);
@@ -298,17 +300,26 @@ export function placeFarmGate(world: WorldWriter, cx: number, z: number, baseY: 
   };
 }
 
-/** A round silo of `wall` banded with `band`, under a dome of `roof`. */
+/** A round silo of `wall` banded with `band`, under a dome of `roof`: solid, no sealed hollow inside it. */
 export function placeSilo(world: WorldWriter, cx: number, cz: number, baseY: number, b: { wall: number; band: number; roof: number }, height = 12): void {
   for (let y = 0; y < height; y++) {
     for (let dx = -3; dx <= 3; dx++) {
       for (let dz = -3; dz <= 3; dz++) {
         const d = Math.hypot(dx, dz);
-        if (d <= 3.2 && d > 2.1) put(world, cx + dx, baseY + y, cz + dz, y % 4 === 3 ? b.band : b.wall);
+        if (d <= 3.2) put(world, cx + dx, baseY + y, cz + dz, y % 4 === 3 && d > 2.1 ? b.band : b.wall);
       }
     }
   }
   for (let k = 0; k < 3; k++) for (let dx = -3; dx <= 3; dx++) for (let dz = -3; dz <= 3; dz++) if (Math.hypot(dx, dz) <= 3.2 - k * 1.1) put(world, cx + dx, baseY + height + k, cz + dz, b.roof);
+}
+
+/**
+ * Opens a round tower's doorway (the windmill's, countryside.ts) to three wide and three high, so the child walks
+ * in without a squeeze: clears the columns either side of its -z axis from its centre out to `radius` + 1, the
+ * bottom three rows from `baseY`.
+ */
+export function widenRoundDoor(world: WorldWriter, cx: number, cz: number, baseY: number, radius: number): void {
+  for (let y = baseY; y < baseY + 3; y++) for (let dx = -1; dx <= 1; dx++) for (let dz = -radius - 1; dz < 0; dz++) put(world, cx + dx, y, cz + dz, 0);
 }
 
 /**

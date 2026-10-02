@@ -13,11 +13,11 @@
 // and sunflower fields, orchards, pastures, hamlets of cottages, the river and its lake.
 // Output: assets/generated/world/nong-trai/{regions/, horizon.bin, entities.json}
 import { PACK, runIfMain } from './map-kit';
-import { cottagePalette, hamlet, jetty, laneVerge, STREET_LANTERN, streetHouses } from './scenery';
-import { placeHouse } from './structures/buildings';
+import { cottagePalette, jetty, laneVerge, STREET_LANTERN, streetHouses } from './scenery';
+import { placeHouse, type HouseFront } from './structures/buildings';
 import { placeStall, placeWell, placeWindmill } from './structures/countryside';
 import { placeArchBridge, placePlaza } from './structures/landmarks';
-import { placeBreadOven, placeFarmGate, placeFruitTree, placeGlasshouse, placeRedBarn, placeShadeTree, placeSilo, placeStorehouse, placeTallFall } from './structures/nong-trai-farm';
+import { placeBreadOven, placeFarmGate, placeFruitTree, placeGlasshouse, placeRedBarn, placeShadeTree, placeSilo, placeStorehouse, placeTallFall, widenRoundDoor } from './structures/nong-trai-farm';
 import type { Point } from './structures/path';
 import { facingWriter, FRAME, frameCell, put, type Facing } from './structures/world-writer';
 import { animal, crowd, person } from './village-life';
@@ -93,7 +93,31 @@ const R = {
   riverEast: [[392, 536], [480, 538], [560, 540], [630, 528]] as Point[],
   falls: [[240, 536], [240, 560], [240, 592]] as Point[],
   barnA: [[247, 88], [247, 196]] as Point[],
-  store: [[486, 428], [486, 466]] as Point[],
+  // One network of farm tracks (owner, 02/10/2026: a clear way from wherever the child starts to wherever she
+  // goes): the spur to the gate home, the tracks between the fields to the farmsteads' yards, the pastures and
+  // the lake, the meadow south of the river to the falls, and the hamlet's lanes.
+  hubGate: [[402, 330], [410, 331]] as Point[],
+  fieldsA: [[247, 167], [306, 167], [306, 209], [401, 209]] as Point[],
+  yardA: [[247, 195], [284, 195]] as Point[],
+  maize: [[342, 209], [342, 424]] as Point[],
+  yardB: [[547, 161], [547, 189], [586, 189]] as Point[],
+  pastureE: [[566, 420], [566, 368]] as Point[],
+  yardC: [[700, 425], [700, 463], [668, 463]] as Point[],
+  lakeC: [[681, 463], [681, 514]] as Point[],
+  lake: [[630, 528], [681, 514], [748, 514]] as Point[],
+  meadow: [[240, 583], [300, 582], [360, 582], [400, 585], [470, 587], [525, 589]] as Point[],
+  hamletN: [[80, 423], [84, 452], [84, 538]] as Point[],
+  hamletW: [[22, 488], [148, 488]] as Point[],
+  // Inside the lessons' farm: the droveway between the paddocks, the track along the south of the barns to the
+  // storehouse with its spurs to the glasshouse and the rest under the great tree, the way down to the pond's
+  // jetty, the orchard's, and the track past the south stop.
+  droveway: [[441, 423], [441, 470]] as Point[],
+  farmSouth: [[371, 470], [488, 470]] as Point[],
+  glasshouse: [[427, 470], [427, 481]] as Point[],
+  rest: [[462, 470], [462, 487]] as Point[],
+  jetty: [[334, 425], [334, 455]] as Point[],
+  orchard: [[330, 507], [330, 484], [373, 484]] as Point[],
+  southStop: [[377, 504], [452, 504]] as Point[],
 };
 const ROUTES: Point[][] = Object.values(R);
 
@@ -134,16 +158,21 @@ const FIELDS: readonly Field[] = [
   { kind: 'veg', r: rect(568, 446, 634, 500) },
   { kind: 'wheat', r: rect(508, 506, 634, 526) },
 ];
-/** Farmsteads: a red barn facing north up its own way, the farmhouse beside it, a silo, a windmill. */
+/**
+ * Farmsteads: a red barn facing north onto its yard track (three blocks before its front), the farmhouse in line
+ * with the barn's front (`house` is its west wall), a silo, a windmill.
+ */
 const FARMSTEADS = [
-  { id: 'trang-trai-a', barn: { x: 237, z: 198, w: 21, d: 16 }, house: { x: 266, z: 200 }, silo: [229, 206], mill: [212, 208] },
-  { id: 'trang-trai-b', barn: { x: 538, z: 192, w: 19, d: 15 }, house: { x: 574, z: 194 }, silo: [566, 214], mill: [614, 204] },
-  { id: 'trang-trai-c', barn: { x: 690, z: 466, w: 19, d: 15 }, house: { x: 660, z: 468 }, silo: [718, 474], mill: [748, 478] },
+  { id: 'trang-trai-a', barn: { x: 237, z: 198, w: 21, d: 16 }, house: 266, silo: [229, 206], mill: [212, 208] },
+  { id: 'trang-trai-b', barn: { x: 538, z: 192, w: 19, d: 15 }, house: 574, silo: [566, 214], mill: [614, 204] },
+  { id: 'trang-trai-c', barn: { x: 690, z: 466, w: 19, d: 15 }, house: 660, silo: [718, 474], mill: [748, 478] },
 ] as const;
+/** A farmhouse: as big as the shared cottages (13 x 11, walls 7 high, a doorway three wide). */
+const FARMHOUSE = { w: 13, d: 11, wall: 7 };
 /** Flat ground: every field, every farmstead and the hamlet south-west of the farm. */
 const FLAT: readonly Rect[] = [
   ...FIELDS.map((f) => f.r),
-  ...FARMSTEADS.map((f) => rect(Math.min(f.house.x, f.mill[0]) - 8, f.barn.z - 6, Math.max(f.house.x + 14, f.mill[0] + 8), f.barn.z + f.barn.d + 6)),
+  ...FARMSTEADS.map((f) => rect(Math.min(f.house, f.mill[0]) - 8, f.barn.z - 6, Math.max(f.house + FARMHOUSE.w + 1, f.mill[0] + 8), f.barn.z + f.barn.d + 6)),
   rect(20, 446, 150, 528),
 ];
 
@@ -346,6 +375,19 @@ function buildFarm(ctx: ZoneMapContext): void {
     for (let i = 0; i < n; i++) ctx.prop(FLOWERS[(x + z + i) % FLOWERS.length] ?? '', x + (i % 3), z + Math.floor(i / 3), (x * 7 + i * 41) % 360);
   };
   const lamp = (x: number, z: number): void => ctx.prop(STREET_LANTERN, x, z, 0);
+  /** Lays `id` on the ground's top over a rectangle (inclusive), leaving the water. */
+  const pave = (x0: number, z0: number, x1: number, z1: number, id: number): void => {
+    for (let x = x0; x <= x1; x++) for (let z = z0; z <= z1; z++) if (!inWater(x, z)) world.set(x, ctx.surface(x, z), z, id);
+  };
+  /**
+   * A house facing -z (placeHouse) joined to the ways: the floor carried through its doorway level with the
+   * room, and a farm track from the doorstep out to the row `toZ` (where the yard track or lane runs).
+   */
+  const doorWalk = (front: HouseFront, z0: number, toZ: number): void => {
+    const x1 = front.doorway.x0 + front.doorway.width - 1;
+    for (let x = front.doorway.x0; x <= x1; x++) world.set(x, base - 1, z0, B.planks);
+    pave(front.doorway.x0, toZ, x1, z0 - 1, ctx.soil.path);
+  };
 
   // ── Fillers ──
   /**
@@ -418,10 +460,11 @@ function buildFarm(ctx: ZoneMapContext): void {
         break;
       }
       case 'pasture': {
-        // A red shed and its hay in one corner, a trough of water, shade trees, cows and sheep (d-04).
+        // A red cattle shed and its hay in one corner, big enough to walk round the herd in (a doorway three wide,
+        // an earth floor), a trough of water, shade trees, cows and sheep (d-04).
         fenceRing(r);
-        const shed = { x: r.x0 + 4, z: r.z0 + 4, w: 11, d: 7 };
-        placeHouse(world, shed.x, shed.z, shed.w, shed.d, 4, base, { wall: B.woodRed, roof: B.brickGrey, trim: B.snow });
+        const shed = { x: r.x0 + 4, z: r.z0 + 5, w: 15, d: 11 };
+        placeHouse(world, shed.x, shed.z, shed.w, shed.d, 5, base, { wall: B.woodRed, roof: B.brickGrey, trim: B.snow, floor: B.dirt });
         ctx.keepOut(shed.x - 1, shed.z - 3, shed.x + shed.w, shed.z + shed.d);
         for (let k = 0; k < 3; k++) ctx.prop(M.hay, shed.x + shed.w + 2, shed.z + 1 + k * 2, k * 40);
         const [tx, tz] = [r.x1 - 10, r.z0 + 6];
@@ -458,7 +501,7 @@ function buildFarm(ctx: ZoneMapContext): void {
   };
 
   // ── The lessons' farm (chapter 1) ──
-  buildLessonsFarm(ctx, B, { keep, fenceRing, flowers, lamp, wheatIn, rowsIn, herd, fruitTree });
+  buildLessonsFarm(ctx, B, { keep, fenceRing, flowers, lamp, wheatIn, rowsIn, herd, fruitTree, pave });
 
   // ── The mountains behind the river (d-01, d-06, d-14): stone cliffs, moss on their ledges, falls into brooks ──
   for (let x = 0; x < SIZE; x++) {
@@ -497,7 +540,16 @@ function buildFarm(ctx: ZoneMapContext): void {
   for (const [i, x] of [400, 240].entries()) {
     const c = riverCenter(x);
     const reach = RIVER_HALF + 4;
-    const bridge = placeArchBridge(world, [x, Math.floor(c - reach)], [x, Math.ceil(c + reach)], WATER_LEVEL + 1, WATER_LEVEL, { stone: B.brickGrey, rail: B.cobbleGrey });
+    const [lo, hi] = [Math.floor(c - reach), Math.ceil(c + reach)];
+    const bridge = placeArchBridge(world, [x, lo], [x, hi], WATER_LEVEL + 1, WATER_LEVEL, { stone: B.brickGrey, rail: B.cobbleGrey });
+    // The deck between the parapets paved like the rails, so the way runs on over the river.
+    for (let z = lo; z <= hi; z++) {
+      for (const dx of [-1, 0]) {
+        let y = WATER_LEVEL + 6;
+        while (y > WATER_LEVEL && world.get(x + dx, y, z) === 0) y--;
+        if (world.get(x + dx, y, z) === B.brickGrey) world.set(x + dx, y, z, B.cobbleGrey);
+      }
+    }
     for (const [lx, lz] of bridge.lamps.filter((_, k) => k % 2 === 0)) lamp(lx, lz);
     ctx.landmark(i === 0 ? 'cau-da' : 'cau-da-tay', i === 0 ? 'Cầu đá qua sông' : 'Cầu đá về thác', x, Math.round(c), WATER_LEVEL + 4);
     // Open meadow on both banks by the bridge, so the falls are seen from it (d-14).
@@ -527,17 +579,21 @@ function buildFarm(ctx: ZoneMapContext): void {
     const barn = placeRedBarn(world, x, z, w, d, base, barnBlocks, 5);
     ctx.keepOut(x - 4, z - 2, x + w + 3, z + d + 1);
     for (const [k, [sx, sz]] of barn.stalls.slice(0, 4).entries()) ctx.prop(k % 2 ? M.hay : M.milk, sx, sz, k * 40);
-    const house = placeHouse(world, f.house.x, f.house.z, 13, 8, 4, base, { ...palette.finish, wall: palette.walls[i % 3] ?? B.sand, roof: B.brickRed, trim: B.log });
+    // The barn's doorway onto the yard track: trodden earth between its folded-back doors.
+    pave(barn.door[0] - 2, z - 1, barn.door[0] + 2, z - 1, ctx.soil.path);
+    const house = placeHouse(world, f.house, z, FARMHOUSE.w, FARMHOUSE.d, FARMHOUSE.wall, base, { ...palette.finish, wall: palette.walls[i % 3] ?? B.sand, roof: B.brickRed, trim: B.log });
+    doorWalk(house, z, z - 1);
     for (const [bx, by, bz] of house.boxes) ctx.propAt(FLOWERS[(Math.floor(bx) + i) % 3] ?? '', [bx, by, bz], i * 20);
-    ctx.keepOut(f.house.x - 1, f.house.z - 3, f.house.x + 13, f.house.z + 8);
-    ctx.prop(M.mailbox, house.door[0] + 3, f.house.z - 3, 0);
+    ctx.keepOut(f.house - 1, z - 3, f.house + FARMHOUSE.w, z + FARMHOUSE.d);
+    ctx.prop(M.mailbox, house.doorway.x0 + house.doorway.width + 2, z - 1, 0);
     placeSilo(world, f.silo[0], f.silo[1], base, { wall: B.birch, band: B.woodRed, roof: B.brickGrey });
     ctx.keepOut(f.silo[0] - 4, f.silo[1] - 4, f.silo[0] + 4, f.silo[1] + 4);
     placeWindmill(world, f.mill[0], f.mill[1], base, { planks: B.planks, log: B.log, roof: B.brickRed, sail: B.snow, stone: B.cobbleGrey, glass: B.glass }, 9);
+    widenRoundDoor(world, f.mill[0], f.mill[1], base, 4);
     ctx.keepOut(f.mill[0] - 5, f.mill[1] - 4, f.mill[0] + 5, f.mill[1] + 5);
     for (let k = 0; k < 3; k++) ctx.prop(M.hay, x + w + 2, z + 3 + k * 2, k * 25);
     ctx.prop(M.cartRed, x - 3, z + 4, 90);
-    lamp(barn.door[0] - 4, z - 2);
+    lamp(x - 2, z - 1);
     ctx.landmark(f.id, 'Trang trại', barn.door[0], barn.door[1]);
   }
   ctx.landmark('ruong-lua-mi', 'Ruộng lúa mì', 270, 170);
@@ -551,12 +607,58 @@ function buildFarm(ctx: ZoneMapContext): void {
 
   // ── The fields, then the hamlets along the lanes where room is left, then the lanes' verges ──
   for (const [i, f] of FIELDS.entries()) fill(f, i);
-  placeWell(world, 84, 466, LEVEL, { stone: B.brickGrey, water: B.water });
-  ctx.keepOut(82, 464, 86, 468);
-  hamlet(ctx, 20, 446, 150, 528, 24);
-  for (const route of [R.westNorth, R.eastNorth, R.west, R.east]) streetHouses(ctx, route, { setback: 6, gap: 6 });
-  for (const route of [R.north, R.lane, R.south, R.riverWest, R.riverEast]) laneVerge(ctx, route, { spacing: 4, lampEvery: 18 });
-  for (const route of [R.westNorth, R.eastNorth, R.west, R.east, R.barnA, R.falls]) laneVerge(ctx, route, { spacing: 7, lampEvery: 28 });
+  // The hamlet south-west of the farm: cottages along its two lanes, a cobbled square where they cross with the
+  // well at its side.
+  pave(76, 460, 92, 472, B.cobble);
+  placeWell(world, 90, 466, LEVEL, { stone: B.brickGrey, water: B.water });
+  ctx.keepOut(76, 460, 92, 472);
+  const streets = [R.hamletN, R.hamletW, R.westNorth, R.eastNorth, R.west, R.east];
+  for (const route of streets) streetHouses(ctx, route, { setback: 6, gap: route === R.hamletN || route === R.hamletW ? 4 : 6 });
+  joinWalks(ctx, streets);
+  // The verges' fence lengths run along their lane; where a farm track joins it, none stands across the track.
+  const verge: ZoneMapContext = { ...ctx, prop: (model, x, z, a) => (ctx.onPath(x, z) ? undefined : ctx.prop(model, x, z, a)) };
+  for (const route of [R.north, R.lane, R.south, R.riverWest, R.riverEast]) laneVerge(verge, route, { spacing: 4, lampEvery: 18 });
+  for (const route of [R.westNorth, R.eastNorth, R.west, R.east, R.barnA, R.falls, R.hamletN, R.hamletW]) laneVerge(verge, route, { spacing: 7, lampEvery: 28 });
+}
+
+/**
+ * Joins each cottage's garden walk (streetHouses) to its lane across the verge between them, so every front
+ * door is on the ways: looking out from the lane on both sides, a run of open ground ending at a walk is laid
+ * with the lane's own earth.
+ */
+function joinWalks(ctx: ZoneMapContext, lanes: readonly Point[][]): void {
+  for (const lane of lanes) {
+    for (let i = 1; i < lane.length; i++) {
+      const [ax = 0, az = 0] = lane[i - 1] ?? [];
+      const [bx = 0, bz = 0] = lane[i] ?? [];
+      const len = Math.hypot(bx - ax, bz - az);
+      if (len === 0) continue;
+      const [ux, uz] = [(bx - ax) / len, (bz - az) / len];
+      for (let t = 0; t <= len; t += 0.5) {
+        for (const side of [-1, 1]) {
+          let gap: Array<[number, number]> = [];
+          for (let d = 1; d <= 6; d++) {
+            const x = Math.round(ax + ux * t - uz * side * d);
+            const z = Math.round(az + uz * t + ux * side * d);
+            if (ctx.onPath(x, z)) {
+              gap = [];
+              continue;
+            }
+            const y = ctx.surface(x, z);
+            if (ctx.world.get(x, y, z) === ctx.soil.path) {
+              for (const [gx, gz] of gap) {
+                ctx.world.set(gx, ctx.surface(gx, gz), gz, ctx.soil.path);
+                ctx.keepOut(gx, gz, gx, gz);
+              }
+              break;
+            }
+            if (ctx.world.get(x, y + 1, z) !== 0 || ctx.inWater(x, z)) break;
+            gap.push([x, z]);
+          }
+        }
+      }
+    }
+  }
 }
 
 interface FarmTools {
@@ -568,6 +670,7 @@ interface FarmTools {
   rowsIn: (r: Rect, crop: (x: number, z: number) => string, every: number, gap: number) => void;
   herd: (model: string, r: Rect, count: number) => void;
   fruitTree: (x: number, z: number, oranges: boolean, every?: number) => void;
+  pave: (x0: number, z0: number, x1: number, z1: number, id: number) => void;
 }
 
 /** A world point of a structure built turned (its frame's float point, FRAME-based). */
@@ -606,7 +709,7 @@ function buildLessonsFarm(ctx: ZoneMapContext, B: Record<string, number>, t: Far
   // ── The crop beds (d-03): wheat, pumpkins among their leaves, a scarecrow, sunflowers along the way ──
   const wheatA = rect(306, 356, 338, 372);
   const wheatB = rect(346, 356, 388, 376);
-  const pumpkins = rect(338, 380, 366, 396);
+  const pumpkins = rect(348, 380, 372, 396);
   for (const r of [wheatA, wheatB]) {
     t.wheatIn(r, true);
     t.fenceRing(r);
@@ -616,8 +719,8 @@ function buildLessonsFarm(ctx: ZoneMapContext, B: Record<string, number>, t: Far
   t.fenceRing(pumpkins);
   t.keep(pumpkins);
   ctx.prop(M.scarecrow, 357, 368, 0);
-  for (let z = 358; z <= 386; z += 2) ctx.prop(M.sunflower, 392, z, 0);
-  ctx.keepOut(391, 357, 393, 387);
+  for (let z = 358; z <= 384; z += 2) ctx.prop(M.sunflower, 392, z, 0);
+  ctx.keepOut(391, 357, 393, 385);
   ctx.landmark('khu-trong-trot', 'Khu trồng trọt', 376, 386);
   // East of the way: maize, more pumpkins, a sunflower field.
   const maize = rect(410, 356, 448, 398);
@@ -635,6 +738,7 @@ function buildLessonsFarm(ctx: ZoneMapContext, B: Record<string, number>, t: Far
   // ── The windmill and the bread oven (d-13): sacks of flour at the mill's door, tables of loaves ──
   const mill = { x: 322, z: 386 };
   placeWindmill(world, mill.x, mill.z, base, { planks: b('planks'), log: b('log'), roof: b('brickRed'), sail: b('snow'), stone: b('cobbleGrey'), glass: b('glass') }, 10);
+  widenRoundDoor(world, mill.x, mill.z, base, 4);
   ctx.keepOut(mill.x - 5, mill.z - 4, mill.x + 5, mill.z + 5);
   ctx.landmark('coi-xay-gio', 'Cối xay gió', mill.x, mill.z - 6);
   const oven = placeBreadOven(world, 330, 392, base, { brick: b('cobbleGrey'), roof: b('brickRed'), hearth: b('brickGrey') });
@@ -644,36 +748,49 @@ function buildLessonsFarm(ctx: ZoneMapContext, B: Record<string, number>, t: Far
   ctx.prop(M.breadTable, 326, 378, 90);
   ctx.prop(M.sacks, 318, 380, 20);
   ctx.prop(M.sacks, 336, 383, 70);
-  for (let x = 312; x <= 344; x++) for (let z = 377; z <= 384; z++) if (world.get(x, base, z) === 0 && (x + z) % 7 !== 0) world.set(x, ctx.surface(x, z), z, b('cobble'));
+  for (let x = 312; x <= 344; x++) for (let z = 377; z <= 384; z++) if (world.get(x, base, z) === 0) world.set(x, ctx.surface(x, z), z, (x + z) % 7 === 0 ? b('cobbleGrey') : b('cobble'));
   ctx.landmark('lo-banh', 'Lò bánh mì', 333, 387);
 
-  // ── The farmhouse (d-12), its front to the yard, the quest board beside it (d-10) ──
+  // ── The farmhouse (d-12), its front to the farm road, the quest board beside it (d-10) ──
+  // Two houses of the farm's size (walls seven high, doorways three wide): the home and, north of it, the
+  // birch-walled store wing; each doorway floored through and cobbled out to the road.
   const palette = cottagePalette(ctx);
   const { beam: _beam, ...plain } = palette.finish;
   const homeFinish = { ...plain, roof: b('brickRed'), trim: b('log') };
   const facing: Facing = 'east';
-  const main = { origin: [382, 400] as const, w: 15, d: 9 };
-  const wing = { origin: [386, 389] as const, w: 9, d: 7 };
+  const main = { origin: [389, 398] as const, w: 17, d: 13, wall: b('sand') };
+  const wing = { origin: [388, 382] as const, w: 13, d: 11, wall: b('birch') };
   for (const [k, part] of [main, wing].entries()) {
     const writer = facingWriter(world, part.origin, facing);
-    const front = placeHouse(writer, FRAME, FRAME, part.w, part.d, k === 0 ? 5 : 4, base, { ...homeFinish, wall: k === 0 ? b('sand') : b('birch') });
+    const front = placeHouse(writer, FRAME, FRAME, part.w, part.d, 7, base, { ...homeFinish, wall: part.wall });
     for (const box of front.boxes) ctx.propAt(FLOWERS[k % 3] ?? '', turned(part.origin, facing, box), k * 30);
+    for (let u = front.doorway.x0; u < front.doorway.x0 + front.doorway.width; u++) {
+      const [tx, tz] = frameCell(part.origin, facing, u, FRAME);
+      world.set(tx, base - 1, tz, b('planks'));
+      t.pave(tx + 1, tz, GATE.x - 2, tz, b('cobble'));
+    }
     const [x0, z0] = frameCell(part.origin, facing, FRAME - 1, FRAME - 3);
     const [x1, z1] = frameCell(part.origin, facing, FRAME + part.w, FRAME + part.d);
     keepRect(Math.min(x0, x1), Math.min(z0, z1), Math.max(x0, x1), Math.max(z0, z1));
   }
-  // A porch over the door: a plank roof on two log posts.
-  for (let x = 383; x <= 386; x++) for (let z = 404; z <= 410; z++) world.set(x, base + 3 + (x === 383 ? 1 : 0), z, b('brickRed'));
-  for (const z of [404, 410]) for (let y = base; y < base + 3; y++) world.set(386, y, z, b('log'));
-  ctx.prop(M.mailbox, 388, 402, 90);
-  ctx.prop(M.toolSign, 388, 413, 90);
-  ctx.prop(M.bench, 384, 412, 90);
-  t.flowers(383, 412, 3);
-  ctx.landmark('nha-nong-trai', 'Nhà nông trại', 387, 407);
-  ctx.prop(M.questBoard, 390, 398, 90);
-  ctx.prop(M.jars, 389, 402, 90);
-  t.flowers(388, 395, 3);
-  ctx.landmark('bang-nhiem-vu', 'Bảng nhiệm vụ', 391, 398);
+  // A porch over the home's door: a tiled roof on two log posts, clear of the doorway.
+  for (let x = 390; x <= 393; x++) for (let z = 403; z <= 409; z++) world.set(x, base + 3 + (x === 390 ? 1 : 0), z, b('brickRed'));
+  for (const z of [403, 409]) for (let y = base; y < base + 3; y++) world.set(393, y, z, b('log'));
+  // Inside the home: jar shelves on the back wall, the kitchen table; sacks and cans in the store wing.
+  for (const z of [400, 412]) ctx.propAt(M.jars, [378.45, base, z + 0.5], 90);
+  ctx.prop(M.breadTable, 381, 411, 90);
+  ctx.prop(M.sacks, 380, 384, 20);
+  ctx.prop(M.sacks, 380, 393, 160);
+  ctx.prop(M.milk, 382, 393, 0);
+  ctx.prop(M.mailbox, 394, 402, 90);
+  ctx.prop(M.toolSign, 393, 413, 90);
+  ctx.prop(M.bench, 391, 411, 90);
+  t.flowers(390, 413, 2);
+  ctx.landmark('nha-nong-trai', 'Nhà nông trại', 391, 406);
+  ctx.prop(M.questBoard, 395, 398, 90);
+  ctx.prop(M.jars, 391, 401, 90);
+  t.flowers(390, 395, 3);
+  ctx.landmark('bang-nhiem-vu', 'Bảng nhiệm vụ', 396, 398);
 
   // ── The yard where the lanes meet (d-01, d-09): paved, the market stalls on its north-east ──
   placePlaza(world, YARD.x, YARD.z, YARD.r, LEVEL, { paver: b('cobble'), border: b('cobbleGrey') });
@@ -682,6 +799,8 @@ function buildLessonsFarm(ctx: ZoneMapContext, B: Record<string, number>, t: Far
   ctx.prop(M.milk, YARD.x - 5, YARD.z + 1, 0);
   ctx.prop(M.milk, YARD.x - 4, YARD.z + 1, 0);
   ctx.landmark('san-nong-trai', 'Sân nông trại', YARD.x, YARD.z);
+  // The market's floor (d-09): cobbles from the yard to the stalls and down to the lane.
+  t.pave(YARD.x + 9, YARD.z - 9, 436, YARD.z + 4, b('cobble'));
   const awnings = [[b('woodRed'), b('snow')], [b('roofBlue'), b('sand')], [b('roofBlue'), b('snow')]];
   const produce = [[M.pumpkinBig, M.carrotFood, M.pumpkinBig], [M.apple, M.appleFruit, M.apple], [M.cabbage, M.carrotFood, M.cabbage]];
   /** Where each stall's seller stands, named last among the landmarks (the review pictures the first ones). */
@@ -710,6 +829,8 @@ function buildLessonsFarm(ctx: ZoneMapContext, B: Record<string, number>, t: Far
   for (const [k, [sx, sz]] of barn.stalls.entries()) ctx.prop(k % 3 === 0 ? M.hay : k % 3 === 1 ? M.milk : M.bucket, sx, sz, k * 30);
   for (let x = barn.inside.x0 + 4; x < barn.inside.x1 - 3; x += 3) ctx.prop(M.hay, x, barn.inside.z1, 0);
   for (const side of [-1, 1]) t.lamp(barn.door[0] + side * 7, barn.door[1]);
+  // The barn's apron: cobbles from the lane up to its floor.
+  t.pave(barn.door[0] - 4, YARD.z + 6, barn.door[0] + 4, 433, b('cobble'));
   const pen = rect(407, 424, 417, 431);
   t.fenceRing(pen, [[407, 428]]);
   for (const [x, z, a] of [[409, 426, 30], [411, 429, 200], [414, 426, 120], [415, 429, 300]] as const) ctx.prop(M.sheep, x, z, a);
@@ -719,31 +840,41 @@ function buildLessonsFarm(ctx: ZoneMapContext, B: Record<string, number>, t: Far
   ctx.landmark('chuong-bo', 'Chuồng bò đỏ', 399, 444);
   ctx.landmark('cua-chuong-bo', 'Cửa chuồng bò', barn.door[0], barn.door[1] - 6);
 
-  // ── The paddock beside the barn (d-04): cows, sheep, the trough; the hen house and the pigsty ──
-  const paddock = rect(420, 436, 462, 466);
-  t.fenceRing(paddock, [[441, 436]]);
+  // ── The paddocks beside the barn (d-04), either side of the droveway: sheep west, cows and the trough east;
+  // the hen house on the lane with its run, the pigsty on the south track ──
+  const sheepFold = rect(420, 436, 438, 466);
+  const cowField = rect(444, 436, 462, 466);
+  t.fenceRing(sheepFold, [[438, 451]]);
+  t.fenceRing(cowField, [[444, 451]]);
   for (let dx = 0; dx < 7; dx++) for (let dz = -1; dz <= 1; dz++) world.set(450 + dx, base, 460 + dz, dz === 0 && dx > 0 && dx < 6 ? b('water') : b('planks'));
   ctx.keepOut(450, 459, 456, 461);
   for (const [x, z, a] of [[423, 440, 30], [426, 442, 200], [424, 445, 120], [429, 439, 300], [433, 444, 80]] as const) ctx.prop(M.sheep, x, z, a);
-  ctx.prop(M.cow, 430, 447, 150);
-  t.herd(M.sheep, paddock, 6);
-  t.herd(M.cow, paddock, 3);
+  ctx.prop(M.cow, 452, 447, 150);
+  t.herd(M.sheep, sheepFold, 6);
+  t.herd(M.cow, cowField, 4);
   ctx.prop(M.milk, 423, 438, 0);
   ctx.prop(M.hay, 425, 439, 30);
-  t.keep(paddock);
+  t.keep(sheepFold);
+  t.keep(cowField);
   ctx.landmark('khu-chan-nuoi', 'Khu chăn nuôi', 441, 451);
-  placeHouse(world, 467, 436, 9, 6, 3, base, { wall: b('planks'), roof: b('woodRed'), trim: b('log') });
-  const run = rect(466, 444, 478, 452);
-  t.fenceRing(run, [[472, 444]]);
-  t.herd(M.chick, run, 5);
-  t.keep(rect(466, 433, 478, 452));
-  ctx.landmark('chuong-ga', 'Chuồng gà', 472, 448);
-  const sty = rect(466, 456, 480, 466);
+  // The hen house (13 x 11, a doorway three wide onto the lane, nests of hay inside), its run east of it.
+  const henHouse = { x: 467, z: 430 };
+  const hens = placeHouse(world, henHouse.x, henHouse.z, 13, 11, 5, base, { wall: b('planks'), roof: b('woodRed'), trim: b('log'), floor: b('planks') });
+  for (let x = hens.doorway.x0; x < hens.doorway.x0 + hens.doorway.width; x++) world.set(x, base - 1, henHouse.z, b('planks'));
+  t.pave(hens.doorway.x0, henHouse.z - 3, hens.doorway.x0 + hens.doorway.width - 1, henHouse.z - 1, ctx.soil.path);
+  for (const x of [469, 477]) ctx.propAt(M.hay, [x + 0.5, base, 438.5], x * 7);
+  ctx.keepOut(henHouse.x - 1, henHouse.z - 3, henHouse.x + 13, henHouse.z + 11);
+  const run = rect(482, 430, 498, 446);
+  t.fenceRing(run, [[490, 430]]);
+  t.herd(M.chick, run, 6);
+  t.keep(run);
+  ctx.landmark('chuong-ga', 'Chuồng gà', 490, 438);
+  const sty = rect(466, 452, 480, 465);
   for (let x = sty.x0 + 1; x < sty.x1; x++) for (let z = sty.z0 + 1; z < sty.z1; z++) world.set(x, LEVEL, z, b('dirt'));
-  t.fenceRing(sty, [[473, 456]]);
+  t.fenceRing(sty, [[473, 465]]);
   t.herd(M.pig, sty, 3);
   t.keep(sty);
-  ctx.landmark('chuong-lon', 'Chuồng lợn', 473, 461);
+  ctx.landmark('chuong-lon', 'Chuồng lợn', 473, 458);
 
   // ── The storehouse and its kitchen (d-08), walked into: jars on the shelves, the oven alight, tables of sacks ──
   const store = placeStorehouse(world, 474, 472, 23, 15, base, { wall: b('planks'), beam: b('log'), roof: b('brickRed'), plinth: b('cobbleGrey'), floor: b('planks'), shelf: b('planks'), brick: b('cobbleGrey'), lantern: b('lantern'), glass: b('glass') });
@@ -775,10 +906,16 @@ function buildLessonsFarm(ctx: ZoneMapContext, B: Record<string, number>, t: Far
   const tree = { x: 462, z: 497 };
   const shade = placeShadeTree(world, tree.x, tree.z, base, { core: b('log'), log: b('treeLog'), leaves: b('leaves') }, ctx.rng);
   ctx.keepOut(tree.x - 2, tree.z - 2, tree.x + 2, tree.z + 2);
-  for (let x = tree.x - 9; x <= tree.x + 9; x++) {
-    for (let z = tree.z - 9; z <= tree.z + 9; z++) {
-      const d = Math.hypot(x - tree.x, z - tree.z);
-      if (d < 9 && d > 2 && world.get(x, base, z) === 0) world.set(x, LEVEL, z, d > 8 ? b('cobbleGrey') : (x + z) % 5 === 0 ? b('paver') : b('cobble'));
+  // A square of cobbles round it, the tree standing in its bed of earth inside a grey kerb (the rules: a tree
+  // grows from earth, never out of the paving).
+  for (let x = tree.x - 10; x <= tree.x + 10; x++) {
+    for (let z = tree.z - 10; z <= tree.z + 10; z++) {
+      const ring = Math.max(Math.abs(x - tree.x), Math.abs(z - tree.z));
+      if (ring <= 2) {
+        if (world.get(x, LEVEL, z) === ctx.soil.grass) world.set(x, LEVEL, z, b('dirt'));
+        continue;
+      }
+      world.set(x, LEVEL, z, ring === 3 || ring === 10 ? b('cobbleGrey') : (x + z) % 5 === 0 ? b('paver') : b('cobble'));
     }
   }
   for (let k = 0; k < 10; k++) {
@@ -790,8 +927,8 @@ function buildLessonsFarm(ctx: ZoneMapContext, B: Record<string, number>, t: Far
     ctx.prop(M.picnic, tree.x + dx, tree.z + dz, dx * 10);
     if (parasol) ctx.prop(M.parasol, tree.x + dx + 2, tree.z + dz + 1, 0);
   }
-  t.flowers(tree.x - 12, tree.z - 2, 6);
-  t.flowers(tree.x + 10, tree.z - 9, 6);
+  t.flowers(tree.x - 13, tree.z - 2, 6);
+  t.flowers(tree.x + 11, tree.z - 9, 6);
   ctx.landmark('khu-nghi', 'Khu nghỉ dưới gốc cây', tree.x, tree.z - 6);
 
   // ── The fish pond (d-07): a stone edge, a fishing jetty, a plank landing on the far side, lilies ──
@@ -808,7 +945,7 @@ function buildLessonsFarm(ctx: ZoneMapContext, B: Record<string, number>, t: Far
     for (let dx = -1; dx <= 1; dx++) world.set(jettyX + dx, WATER_LEVEL + 1, bank + k, b('planks'));
     if (k % 3 === 0) for (const dx of [-2, 2]) for (let y = WATER_LEVEL - 1; y <= WATER_LEVEL + 2; y++) world.set(jettyX + dx, y, bank + k, b('log'));
   }
-  ctx.prop(M.bucket, jettyX + 2, bank, 0);
+  ctx.prop(M.bucket, jettyX + 3, bank - 3, 0);
   ctx.prop(M.logs, jettyX - 4, bank - 1, 90);
   const far = { x: POND.x + 14, z: POND.z + 6 };
   for (let dx = 0; dx < 6; dx++) for (let dz = 0; dz < 3; dz++) if (inWater(far.x + dx, far.z + dz)) world.set(far.x + dx, WATER_LEVEL + 1, far.z + dz, b('planks'));
@@ -818,9 +955,23 @@ function buildLessonsFarm(ctx: ZoneMapContext, B: Record<string, number>, t: Far
     const [x, z] = [POND.x + Math.cos(a) * POND.rx * r, POND.z + Math.sin(a) * POND.rz * r];
     if (Math.abs(x - jettyX) > 3) ctx.propAt(M.lily, [x + 0.5, WATER_LEVEL + 1.02, z + 0.5], k * 40);
   }
-  placeHouse(world, 359, 459, 7, 6, 3, base, { wall: b('planks'), roof: b('roofBlue'), trim: b('log'), glass: b('glass'), lantern: b('lantern') });
-  ctx.keepOut(358, 456, 366, 465);
-  ctx.prop(M.barrel, 360, 457, 0);
+  // The fisher's house across the water (d-07): a cottage of the farm's size on the east bank, its doorway three
+  // wide onto the farm's south way, nets' barrels and a crate inside.
+  {
+    const origin = [367, 452] as const;
+    const writer = facingWriter(world, origin, 'east');
+    const { beam: _b, ...finish } = cottagePalette(ctx).finish;
+    const front = placeHouse(writer, FRAME, FRAME, 13, 11, 7, base, { ...finish, wall: b('planks'), roof: b('roofBlue'), trim: b('log') });
+    for (const box of front.boxes) ctx.propAt(FLOWERS[2] ?? '', turned(origin, 'east', box), 0);
+    for (let u = front.doorway.x0; u < front.doorway.x0 + front.doorway.width; u++) {
+      const [tx, tz] = frameCell(origin, 'east', u, FRAME);
+      world.set(tx, base - 1, tz, b('planks'));
+      t.pave(tx + 1, tz, tx + 3, tz, ctx.soil.path);
+    }
+    ctx.keepOut(356, 451, 371, 465);
+    ctx.prop(M.barrel, 369, 454, 0);
+    for (const [x, z, model] of [[359, 454, M.barrel], [359, 462, M.crate], [361, 462, M.logs]] as const) ctx.propAt(model, [x + 0.5, base, z + 0.5], x * 11);
+  }
   ctx.landmark('ao-ca', 'Ao cá', jettyX, bank + 2);
 
   // ── The apple orchard (d-06): round trees heavy with fruit, a ladder, crates of apples ──
@@ -834,18 +985,17 @@ function buildLessonsFarm(ctx: ZoneMapContext, B: Record<string, number>, t: Far
       n++;
     }
   }
-  for (let z = 484; z <= 507; z++) for (let x = 329; x <= 331; x++) if (!inWater(x, z)) world.set(x, ctx.surface(x, z), z, ctx.soil.path);
   ctx.prop(M.ladder, 322, 489, 0);
-  ctx.prop(M.appleCrate, 328, 491, 20);
-  ctx.prop(M.appleCrate, 332, 495, 60);
-  ctx.prop(M.appleCrate, 329, 499, 0);
-  ctx.prop(M.workbench, 331, 503, 90);
+  ctx.prop(M.appleCrate, 327, 491, 20);
+  ctx.prop(M.appleCrate, 333, 495, 60);
+  ctx.prop(M.appleCrate, 327, 499, 0);
+  ctx.prop(M.workbench, 333, 503, 90);
   ctx.landmark('vuon-cay', 'Vườn cây ăn quả', 326, 492);
 
   for (const [i, [sx, sz]] of sellers.entries()) ctx.landmark(`sap-${i + 1}`, 'Sạp nông sản', sx, sz);
 
   // Lamps along the farm's inner ways.
-  for (const [x, z] of [[404, 370], [380, 450], [366, 486], [480, 440], [490, 456]] as const) t.lamp(x, z);
+  for (const [x, z] of [[404, 370], [380, 450], [366, 486], [481, 443], [490, 456], [444, 425], [386, 506]] as const) t.lamp(x, z);
 }
 
 await runIfMain(import.meta.url, generateNongTrai);
