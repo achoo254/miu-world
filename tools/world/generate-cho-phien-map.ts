@@ -3,14 +3,16 @@
 // market's own green and warm cobbles. The flower and vegetable market (chapter 1) is a round cobbled square
 // round a fountain with the white cat on it (d-01), striped stalls in a ring about it facing in, pennants
 // strung lamp to lamp; north of it the timber gate with its "Chợ" sign and lanterns (d-02) opens on a lane
-// of stalls between shophouses (d-09, d-10, c-08); south of it the market hall under its clock tower, a hall
-// to walk into with shelves of jars, bottles and sacks. West of the square the vegetable stalls face the food
+// of stalls between shophouses (d-09, d-10, c-08); south of it the market hall under its clock tower, a covered
+// market to walk into, rows of stalls along wide aisles and shelves of jars, bottles and sacks. Every house is
+// many times the child's size with a door three wide or more (owner, 02/10/2026). West of the square the vegetable stalls face the food
 // stalls (d-03, d-04), east of it the grocery stalls face the clothes stalls (d-05, d-06); the flower stalls,
 // the pet yard with its pens by the duck pond (d-08), gardens and big trees round them. A market street of
 // shophouses with striped awnings leads east to the weighing row (chapter 2): fruit, rice, cake and drinks
 // stalls with their scales along two crossing streets, the great balance in the square where they meet. On
-// the harbour of the canal below it the fish stalls and the lighthouse (d-07). Round the town: the north
-// street of shophouses, hamlets of cottages, vegetable plots, woods.
+// the harbour of the canal below it the fish stalls and the lighthouse on its islet, a boardwalk out to it
+// (d-07). Round the town: the north street of shophouses, hamlets of cottages, vegetable plots, woods, a
+// footbridge over the canal; every place on one network of ways from the bus station.
 // Output: assets/generated/world/cho-phien/{regions/, horizon.bin, entities.json}
 import { PACK, runIfMain, smoothstep } from './map-kit';
 import { bambooHedge, cottagePalette, flowerBed, hamlet, jetty, laneVerge } from './scenery';
@@ -66,7 +68,11 @@ const inWater = (x: number, z: number): boolean =>
 /** The flower and vegetable market's square, the gate on the lane north of it, the hall south of it. */
 const SQUARE = { x: 220, z: 372, r: 23 };
 const GATE = { x: 220, z: 306 };
-const HALL = { x0: 205, z0: 404, w: 31, d: 16 };
+/**
+ * The market hall: a public building many times the child's size (owner, 02/10/2026), 43 x 24 under walls
+ * eight high, its ridge 21 over the floor; its clock tower's spire stays under the map's 48-block ceiling.
+ */
+const HALL = { x0: 199, z0: 404, w: 43, d: 24, wall: 8 };
 /** The weighing row's square where its two streets cross. */
 const SCALES = { x: 590, z: 372, r: 9 };
 /** The lighthouse's islet in the harbour. */
@@ -74,8 +80,11 @@ const ISLET = { x: 646, z: 475, r: 3.4 };
 
 /** East-west ways (the north lane, the north street, the market street, the canal bank, the south lane). */
 const ROAD_Z = { north: 140, street: 290, market: 372, bank: 448, south: 620 };
-/** North-south ways (the gate lane, the middle lane, the dragon bridge's road, the weighing row's road, two outer lanes). */
-const ROAD_X = { gate: 220, mid: 410, bridge: 320, east: 590, outerW: 60, outerE: 740 };
+/**
+ * North-south ways (the gate lane, the middle lane, the dragon bridge's road, the footbridge's lane, the
+ * weighing row's road, the lighthouse's boardwalk, two outer lanes).
+ */
+const ROAD_X = { gate: 220, mid: 410, bridge: 320, foot: 480, east: 590, light: 647, outerW: 60, outerE: 740 };
 const ROUTES: Point[][] = [
   [[ROAD_X.gate, 30], [ROAD_X.gate, SQUARE.z - SQUARE.r + 2]],
   [[24, ROAD_Z.market], [SQUARE.x - SQUARE.r, ROAD_Z.market]],
@@ -89,6 +98,12 @@ const ROUTES: Point[][] = [
   [[ROAD_X.bridge, ROAD_Z.market], [ROAD_X.bridge, 770]],
   [[ROAD_X.outerW, ROAD_Z.north], [ROAD_X.outerW, ROAD_Z.south]],
   [[ROAD_X.outerE, ROAD_Z.north], [ROAD_X.outerE, ROAD_Z.south]],
+  // From the market hall's back door down to the canal bank (the first chapter's bus stop is on it).
+  [[ROAD_X.gate, HALL.z0 + HALL.d], [ROAD_X.gate, ROAD_Z.bank]],
+  // The footbridge over the canal from the bank road to the south lane (its plank deck over the water).
+  [[ROAD_X.foot, ROAD_Z.bank], [ROAD_X.foot, ROAD_Z.south]],
+  // From the bank road past the fish stalls onto the boardwalk out to the lighthouse's islet.
+  [[ROAD_X.light, ROAD_Z.bank], [ROAD_X.light, ISLET.z - 1]],
 ];
 const SPAWN = { x: ROAD_X.gate, z: 262 };
 /** Kept clear round the spawn and the gate back to the school (the builder puts it at spawn + (7, 3)). */
@@ -204,16 +219,40 @@ function marketKit(ctx: ZoneMapContext) {
   };
   let houses = 0;
   const shop = (x0: number, z0: number, w: number, d: number, facing: Facing): [number, number] => shophouse(ctx, x0, z0, w, d, facing, houses++);
+  const paving = new Set([B.cobble, B.stone]);
+  /**
+   * A big tree. On the cobbles it grows from a bed of earth (the market's grass, a grey kerb round it), never
+   * out of the paving (owner, 02/10/2026: no tree in the middle of a way).
+   */
   const tree = (x: number, z: number, leaves: number, height = 6): void => {
+    if (paving.has(world.get(x, ctx.surface(x, z), z))) {
+      for (let dx = -2; dx <= 2; dx++) {
+        for (let dz = -2; dz <= 2; dz++) set(x + dx, ctx.surface(x + dx, z + dz), z + dz, Math.max(Math.abs(dx), Math.abs(dz)) === 2 ? B.stone : ctx.soil.grass);
+      }
+    }
     placeTree(world, x, base, z, height, { log: B.treeLog, leaves }, ctx.rng);
     ctx.keepOut(x - 1, z - 1, x + 1, z + 1);
+  };
+  /**
+   * A way of cobbles over a rectangle (inclusive) at the ground's height, a grey kerb along its edge, kept
+   * clear of trees and dressing: the lanes joining a place to the town's ways.
+   */
+  const pave = (x0: number, z0: number, x1: number, z1: number): void => {
+    for (let x = x0; x <= x1; x++) {
+      for (let z = z0; z <= z1; z++) {
+        if (ctx.inWater(x, z)) continue;
+        const edge = x === x0 || x === x1 || z === z0 || z === z1;
+        set(x, ctx.surface(x, z), z, edge ? B.stone : B.cobble);
+      }
+    }
+    ctx.keepOut(x0, z0, x1, z1);
   };
   /** A festival mast on a column; returns where pennants tie to it. */
   const mast = (x: number, z: number): [number, number, number] => {
     ctx.prop(M.mast, x, z, 0);
     return [x + 0.5, ctx.surface(x, z) + 6.8, z + 0.5];
   };
-  return { B, base, set, box, stall, stallToward, shop, tree, mast, sellers, lamp: (x: number, z: number) => streetLamp(ctx, x, z) };
+  return { B, base, set, box, stall, stallToward, shop, tree, pave, mast, sellers, lamp: (x: number, z: number) => streetLamp(ctx, x, z) };
 }
 
 export async function generateChoPhien() {
@@ -286,6 +325,8 @@ export async function generateChoPhien() {
     build: (ctx) => {
       const built = marketKit(ctx);
       kit = built;
+      // The bus station's cobbled forecourt round the spawn: the gate back to the school and the stops on it.
+      built.pave(SPAWN_YARD.x0 - 3, SPAWN_YARD.z0 - 4, SPAWN_YARD.x1 - 2, SPAWN_YARD.z1);
       ctx.keepOut(SPAWN_YARD.x0, SPAWN_YARD.z0, SPAWN_YARD.x1, SPAWN_YARD.z1);
       paveZones(ctx, built);
       buildSquare(ctx, built);
@@ -355,13 +396,16 @@ function paveZones(ctx: ZoneMapContext, kit: Kit): void {
       near(SQUARE.x, SQUARE.z, SQUARE.r + 3) ||
       (Math.abs(z - ROAD_Z.market) <= 11 && x >= 132 && x <= 660) ||
       (Math.abs(x - GATE.x) <= 14 && z >= 300 && z <= SQUARE.z) ||
-      (x >= HALL.x0 - 4 && x <= HALL.x0 + HALL.w + 3 && z >= HALL.z0 - 6 && z <= HALL.z0 + HALL.d + 1) ||
+      (x >= HALL.x0 - 4 && x <= HALL.x0 + HALL.w + 3 && z >= HALL.z0 - 10 && z <= HALL.z0 + HALL.d + 1) ||
       (x >= 244 && x <= 300 && z >= 314 && z <= 340) ||
+      (x >= GATE.x + 14 && x <= 249 && z >= 340 && z <= 343) ||
       (x >= 242 && x <= 280 && z >= 382 && z <= 410) ||
       (Math.abs(x - ROAD_X.east) <= 11 && z >= 312 && z <= 432) ||
       near(SCALES.x, SCALES.z, SCALES.r + 3)
     );
   };
+  // The walk from the gate lane to the flower stalls past the shophouses' ends stays clear.
+  ctx.keepOut(GATE.x + 14, 340, 249, 343);
   for (const zn of ZONES) {
     for (let x = zn.x - zn.hx; x <= zn.x + zn.hx; x++) {
       for (let z = zn.z - zn.hz; z <= zn.z + zn.hz; z++) {
@@ -495,11 +539,11 @@ function buildGateLane(ctx: ZoneMapContext, kit: Kit): void {
   for (const sx of [-1, 1]) ctx.prop(M.planter, cx + sx * 6, lane.z1 - 2, 0);
   ctx.prop(M.cart, cx - 9, lane.z1 - 4, 90);
   ctx.landmark('loi-di-trong-cho', 'Lối đi trong chợ', cx, lane.z0 + 4);
-  // Shophouses behind the stalls, their fronts to the lane; pennants from house to house over it.
-  for (const [i, z0] of [lane.z0 - 1, lane.z0 + 10, lane.z0 + 21].entries()) {
-    const w = 10 + (i % 2);
-    kit.shop(cx - 21, z0, w, 9, 'east');
-    kit.shop(cx + 13, z0, w, 9, 'west');
+  // Two big shophouses a side behind the stalls (16 along the lane, 12 deep), their fronts to the lane, a
+  // passage between them; pennants from house to house over the lane.
+  for (const z0 of [lane.z0 - 1, lane.z0 + 16]) {
+    kit.shop(cx - 24, z0, 16, 12, 'east');
+    kit.shop(cx + 13, z0, 16, 12, 'west');
   }
   const y = base + 5.8;
   const [west, east] = [cx - 12, cx + 13];
@@ -516,17 +560,19 @@ function buildGateLane(ctx: ZoneMapContext, kit: Kit): void {
 
 /**
  * The market hall south of the square (d-01, d-09, d-10): two storeys of cream walls and timber under a red
- * roof, a wide door to the square and a clock tower out of the middle of its roof with a clock each way.
- * Inside, the market's grocery: shelves of jars, bottles and tins along the walls, sacks and baskets, two
- * counters with their scales, lanterns on the walls.
+ * roof, a door seven wide and four high to the square and one five wide at the back onto the lane to the
+ * canal, a clock tower out of the ridge with a clock each way. Inside, a covered market (owner, 02/10/2026:
+ * room for the child to move): two rows of stalls a side, facing the middle aisle and the side aisles, aisles
+ * three wide or more between their goods, shelf bays of jars, bottles and tins along the back wall, pennants
+ * strung across under the roof, lanterns on the walls.
  */
 function buildHall(ctx: ZoneMapContext, kit: Kit): void {
   const { world } = ctx;
   const { B, base, set, box } = kit;
-  const { x0, z0, w, d } = HALL;
+  const { x0, z0, w, d, wall } = HALL;
   const [x1, z1] = [x0 + w - 1, z0 + d - 1];
   const finish = cottagePalette(ctx).finish;
-  placeHouse(world, x0, z0, w, d, 8, base, { ...finish, wall: B.sand, roof: B.red, trim: B.log });
+  placeHouse(world, x0, z0, w, d, wall, base, { ...finish, wall: B.sand, roof: B.red, trim: B.log });
   // The upper storey: a beam at its floor, windows over the windows below.
   for (let x = x0; x <= x1; x++) {
     for (const z of [z0, z1]) {
@@ -540,20 +586,27 @@ function buildHall(ctx: ZoneMapContext, kit: Kit): void {
       if ((z - z0) % 4 === 2 && z < z1) for (const y of [base + 5, base + 6]) set(x, y, z, B.glass);
     }
   }
-  // A wide door under a lintel; the door lanterns moved out beside it.
+  // The doors under the beam: seven wide and four high to the square, five wide at the back; lanterns beside
+  // them (placeHouse's door lanterns cleared from the widened opening).
   const doorX = x0 + Math.floor(w / 2);
-  box(doorX - 2, base, z0, doorX + 2, base + 2, z0, 0);
-  box(doorX - 3, base + 3, z0, doorX + 3, base + 3, z0, B.log);
-  for (const x of [doorX - 2, doorX + 1]) set(x, base + 2, z0 - 1, 0);
+  box(doorX - 3, base, z0, doorX + 3, base + 3, z0, 0);
+  for (const x of [doorX - 2, doorX + 2]) set(x, base + 2, z0 - 1, 0);
   for (const x of [doorX - 4, doorX + 4]) set(x, base + 2, z0 - 1, B.lantern);
-  // The clock tower, out of the roof's middle.
-  const T = { x0: doorX - 3, z0: z0 + 4, x1: doorX + 3, z1: z0 + 10, top: base + 22 };
-  for (let y = base + 8; y <= T.top; y++) {
-    for (let x = T.x0; x <= T.x1; x++) {
-      for (let z = T.z0; z <= T.z1; z++) {
-        const edgeX = x === T.x0 || x === T.x1;
-        const edgeZ = z === T.z0 || z === T.z1;
-        if (!edgeX && !edgeZ) continue;
+  box(doorX - 2, base, z1, doorX + 2, base + 3, z1, 0);
+  for (const x of [doorX - 3, doorX + 3]) set(x, base + 2, z1 + 1, B.lantern);
+  // The clock tower straddling the ridge, built up from the roof's slope and solid within (nothing hollow
+  // to stand in); a clock on its front and back faces over the roof.
+  const roofY = (z: number): number => base + wall + Math.min(z - (z0 - 1), z1 + 1 - z);
+  const T = { x0: doorX - 3, z0: z0 + 9, x1: doorX + 3, z1: z0 + 15, top: base + 24 };
+  for (let x = T.x0; x <= T.x1; x++) {
+    for (let z = T.z0; z <= T.z1; z++) {
+      const edgeX = x === T.x0 || x === T.x1;
+      const edgeZ = z === T.z0 || z === T.z1;
+      for (let y = roofY(z); y <= T.top; y++) {
+        if (!edgeX && !edgeZ) {
+          set(x, y, z, B.sand);
+          continue;
+        }
         const corner = edgeX && edgeZ;
         const slit = !corner && (y - base) % 5 === 1 && (x === doorX || z === T.z0 + 3);
         set(x, y, z, corner || y === T.top ? B.log : slit ? B.glass : B.sand);
@@ -565,33 +618,39 @@ function buildHall(ctx: ZoneMapContext, kit: Kit): void {
   const spire = T.top + 7;
   box(doorX, spire, T.z0 + 3, doorX, spire + 1, T.z0 + 3, B.log);
   set(doorX, spire + 2, T.z0 + 3, B.gold);
-  ctx.propAt(M.clock, [doorX + 0.5, base + 15, T.z0 - 0.02], 0);
-  ctx.propAt(M.clock, [doorX + 0.5, base + 15, T.z1 + 1.02], 180);
-  // Inside: shelves along the back and the sides (a cupboard, a shelf over it), goods on both.
+  ctx.propAt(M.clock, [doorX + 0.5, base + 18, T.z0 - 0.02], 0);
+  ctx.propAt(M.clock, [doorX + 0.5, base + 18, T.z1 + 1.02], 180);
+  // Inside, the stalls (6 x 4 each, goods a row before the counter): two a side of the middle aisle facing
+  // it, two along each side wall facing in, a cross aisle between them and aisles front and back.
+  const rows = [z0 + 4, z0 + 13];
+  const inside: Array<[number, Facing, Goods, Goods]> = [
+    [x0 + 1, 'east', 'veg', 'fruit'],
+    [doorX - 8, 'east', 'rice', 'cakes'],
+    [doorX + 5, 'west', 'drinks', 'rice'],
+    [x1 - 4, 'west', 'flowers', 'fruit'],
+  ];
+  for (const [sx, facing, first, second] of inside) for (const [i, sz] of rows.entries()) kit.stall(sx, sz, facing, i === 0 ? first : second);
+  // Shelf bays along the back wall (a cupboard and a shelf over it, goods on both), a sack between bays.
   const goods = [M.jars, M.bottles, M.tins, M.jars, M.bottles];
-  const shelfAt = (x: number, z: number, i: number, yaw: number): void => {
-    set(x, base, z, B.planks);
-    set(x, base + 2, z, B.planks);
-    ctx.propAt(goods[i % goods.length] ?? M.jars, [x + 0.5, base + 1, z + 0.5], yaw);
-    ctx.propAt(goods[(i + 2) % goods.length] ?? M.jars, [x + 0.5, base + 3, z + 0.5], yaw);
-  };
-  for (let x = x0 + 2; x <= x1 - 2; x++) shelfAt(x, z1 - 1, x, 180);
-  for (let z = z0 + 3; z <= z1 - 3; z++) {
-    shelfAt(x0 + 1, z, z, 90);
-    shelfAt(x1 - 1, z, z + 1, 270);
+  const sacks = [M.rice, M.beans, M.corn];
+  for (let x = x0 + 1; x <= x1 - 1; x++) {
+    if (Math.abs(x - doorX) <= 3) continue;
+    if ((x - x0) % 6 === 0) {
+      ctx.prop(sacks[x % sacks.length] ?? M.rice, x, z1 - 1, x * 17);
+      continue;
+    }
+    set(x, base, z1 - 1, B.planks);
+    set(x, base + 2, z1 - 1, B.planks);
+    ctx.propAt(goods[x % goods.length] ?? M.jars, [x + 0.5, base + 1, z1 - 0.5], 180);
+    ctx.propAt(goods[(x + 2) % goods.length] ?? M.jars, [x + 0.5, base + 3, z1 - 0.5], 180);
   }
-  // Two counters with their scales, sacks and baskets by them, the market's lanterns on the walls.
-  for (const sx of [-1, 1]) {
-    const cx0 = doorX + sx * 8 - 2;
-    box(cx0, base, z0 + 8, cx0 + 4, base, z0 + 8, B.planks);
-    ctx.propAt(M.scale, [cx0 + 1.5, base + 1, z0 + 8.5], 180);
-    ctx.propAt(M.basket, [cx0 + 3.5, base + 1, z0 + 8.5], 30);
-    for (const [k, sack] of [M.rice, M.beans, M.corn].entries()) ctx.prop(sack, cx0 + k * 2, z0 + 6, k * 20);
-  }
+  // Pennants across under the roof over the aisles, lanterns on the walls.
+  for (const z of [z0 + 3, z0 + 11, z0 + 20]) bunting(ctx, [x0 + 1, base + 6.6, z + 0.5], [x1, base + 6.6, z + 0.5], 0.8);
   for (let x = x0 + 3; x <= x1 - 3; x += 6) set(x, base + 4, z1, B.lantern);
   for (const x of [x0, x1]) for (let z = z0 + 3; z <= z1 - 3; z += 5) set(x, base + 4, z, B.lantern);
-  ctx.keepOut(x0 - 1, z0 - 2, x1 + 1, z1 + 1);
-  ctx.landmark('nha-long-cho', 'Nhà lồng chợ', doorX, z0 + 5);
+  // The hall and the cobbled walks round it, kept clear of dressing.
+  ctx.keepOut(x0 - 4, z0 - 2, x1 + 4, z1 + 1);
+  ctx.landmark('nha-long-cho', 'Nhà lồng chợ', doorX, z0 + 2);
   ctx.landmark('thap-dong-ho', 'Tháp đồng hồ', doorX, z0 - 3);
   // Planters and pennants along the hall's front.
   for (const dx of [-12, -8, 8, 12]) ctx.prop(M.planter, doorX + dx, z0 - 2, 0);
@@ -699,20 +758,23 @@ function buildMarketStreet(ctx: ZoneMapContext, kit: Kit): void {
   const z = ROAD_Z.market;
   const y = kit.base + 5.8;
   const clearOf = (x0: number, x1: number): boolean => {
-    for (let x = x0 - 3; x <= x1 + 3; x++) if (ctx.onPath(x, z - 12) || ctx.onPath(x, z + 12) || ctx.inZone(x, z, 2)) return false;
+    for (let x = x0 - 3; x <= x1 + 3; x++) {
+      if ([-16, -12, 12, 16].some((dz) => ctx.onPath(x, z + dz)) || ctx.inZone(x, z, 2)) return false;
+    }
     return true;
   };
   const ties: Array<[number, number, number]> = [];
   let x = 312;
   let n = 0;
-  while (x + 10 <= 516) {
-    const w = 10 + (n % 3);
+  // Shophouses 13 to 15 along the street and 11 deep, their fronts seven off the street's middle.
+  while (x + 13 <= 516) {
+    const w = 13 + (n % 3);
     if (!clearOf(x, x + w - 1)) {
       x += 2;
       continue;
     }
-    kit.shop(x, z - 15, w, 9, 'south');
-    kit.shop(x, z + 7, w, 9, 'north');
+    kit.shop(x, z - 17, w, 11, 'south');
+    kit.shop(x, z + 7, w, 11, 'north');
     kit.lamp(x + w, z - 4);
     kit.lamp(x + w, z + 4);
     ties.push([x + 3, y, z - 5.9], [x + w - 3, y, z + 7]);
@@ -827,7 +889,7 @@ function buildHarbour(ctx: ZoneMapContext, kit: Kit): void {
   for (let x = 594; x <= 648; x += 2) {
     let edge = z + 5;
     while (!inWater(x, edge + 1) && edge < z + 20) edge++;
-    if (!ctx.keptOut(x, edge)) ctx.prop(M.fence, x, edge, 0);
+    if (!ctx.keptOut(x, edge) && !ctx.onPath(x, edge)) ctx.prop(M.fence, x, edge, 0);
   }
   ctx.landmark('gian-hai-san', 'Gian hàng hải sản', 641, z - 3);
   ctx.landmark('ben-hang', 'Bến hàng bên kênh', 600, ROAD_Z.bank + 2);
@@ -900,12 +962,15 @@ function buildCanal(ctx: ZoneMapContext, kit: Kit): void {
   }
   ctx.keepOut(250, ROAD_Z.bank + 3, 300, ROAD_Z.bank + 20);
   ctx.landmark('bai-soi-ven-kenh', 'Bãi sỏi ven kênh', 275, ROAD_Z.bank + 5);
-  const shed = { x0: 232, z0: ROAD_Z.bank + 4 };
-  for (const [dx, dz] of [[0, 0], [7, 0], [0, 5], [7, 5]] as const) box(shed.x0 + dx, base, shed.z0 + dz, shed.x0 + dx, base + 2, shed.z0 + dz, B.log);
-  box(shed.x0 - 1, base + 3, shed.z0 - 1, shed.x0 + 8, base + 3, shed.z0 + 6, B.planks);
-  box(shed.x0 + 1, base, shed.z0 + 5, shed.x0 + 6, base + 2, shed.z0 + 5, B.planks);
-  for (let i = 0; i < 3; i++) ctx.prop(i % 2 ? M.crate : M.barrel, shed.x0 + 2 + i * 2, shed.z0 + 3, i * 40);
-  ctx.keepOut(shed.x0 - 1, shed.z0 - 1, shed.x0 + 8, shed.z0 + 6);
+  // The shed: open on three sides under a plank roof four blocks up, 12 x 8, its back a plank wall with
+  // crates and barrels along it.
+  const shed = { x0: 232, z0: ROAD_Z.bank + 4, w: 12, d: 8 };
+  const [sx1, sz1] = [shed.x0 + shed.w - 1, shed.z0 + shed.d - 1];
+  box(shed.x0 + 1, base, sz1, sx1 - 1, base + 3, sz1, B.planks);
+  for (const x of [shed.x0, shed.x0 + 6, sx1]) for (const z of [shed.z0, sz1]) box(x, base, z, x, base + 3, z, B.log);
+  box(shed.x0 - 1, base + 4, shed.z0 - 1, sx1 + 1, base + 4, sz1 + 1, B.planks);
+  for (let i = 0; i < 5; i++) ctx.prop(i % 2 ? M.crate : M.barrel, shed.x0 + 2 + i * 2, sz1 - 1, i * 40);
+  ctx.keepOut(shed.x0 - 1, shed.z0 - 1, sx1 + 1, sz1 + 1);
   ctx.landmark('lan-go-ben-kenh', 'Lán gỗ bên kênh', shed.x0 + 4, shed.z0 - 2);
 
   // The vegetable washing basins below the weighing row, jetties into the harbour.
@@ -927,6 +992,13 @@ function buildCanal(ctx: ZoneMapContext, kit: Kit): void {
   ctx.landmark('con-kenh', 'Con kênh', 480, Math.round(canalCentre(480)));
 }
 
+/** The rectangle (inclusive) a straight way runs over. */
+function spanOf(route: readonly Point[]): [number, number, number, number] {
+  const xs = route.map((p) => p[0]);
+  const zs = route.map((p) => p[1]);
+  return [Math.min(...xs), Math.min(...zs), Math.max(...xs), Math.max(...zs)];
+}
+
 /**
  * Round the town: the north street of shophouses, hamlets of cottages, vegetable plots in the outer bands, a
  * bamboo hedge round the map, and the verges of every way outside the markets (lanterns, bushes, flowers).
@@ -936,33 +1008,37 @@ function buildOutskirts(ctx: ZoneMapContext, kit: Kit): void {
   const z = ROAD_Z.street;
   let x = 26;
   let n = 0;
-  while (x + 10 <= 774) {
-    const w = 10 + (n % 3);
+  // Shophouses 13 to 15 along the street and 11 deep both sides, their fronts five off the street's middle.
+  while (x + 13 <= 774) {
+    const w = 13 + (n % 3);
     let clear = x + w < SPAWN_YARD.x0 - 4 || x > SPAWN_YARD.x1 + 4;
-    for (let cx = x - 3; cx <= x + w + 2 && clear; cx++) if (ctx.onPath(cx, z - 12) || ctx.onPath(cx, z + 12)) clear = false;
+    for (let cx = x - 3; cx <= x + w + 2 && clear; cx++) if ([-14, -10, 10, 14].some((dz) => ctx.onPath(cx, z + dz))) clear = false;
     if (!clear) {
       x += 2;
       continue;
     }
-    kit.shop(x, z - 13, w, 9, 'south');
-    if (!ctx.inZone(x, z + 13, 3) && !ctx.inZone(x + w, z + 13, 3)) kit.shop(x, z + 5, w, 8, 'north');
+    kit.shop(x, z - 15, w, 11, 'south');
+    if (!ctx.inZone(x, z + 16, 3) && !ctx.inZone(x + w, z + 16, 3)) kit.shop(x, z + 5, w, 11, 'north');
     x += w + 3;
     n++;
   }
   ctx.landmark('pho-phia-bac', 'Phố phía bắc', 300, z);
 
-  const SEGMENTS: ReadonlyArray<readonly [number, number]> = [[26, 54], [67, 316], [327, 403], [417, 583], [597, 733], [747, 774]];
+  // The bands between the north-south ways, ending far enough short of each that a cottage, its eaves and
+  // its yard tree stay off the way.
+  const SEGMENTS: ReadonlyArray<readonly [number, number]> = [[26, 52], [67, 212], [228, 313], [327, 402], [417, 472], [488, 582], [597, 732], [747, 774]];
   for (const [x0, x1] of SEGMENTS) {
     hamlet(ctx, x0, ROAD_Z.north + 4, x1, 186);
     hamlet(ctx, x0, 494, x1, 540);
     hamlet(ctx, x0, ROAD_Z.south + 6, x1, 668);
   }
-  for (const [x0, x1] of [[26, 54], [67, 126], [668, 733], [747, 776]] as const) {
-    hamlet(ctx, x0, 304, x1, 358);
+  // Behind the shophouses of the north street and the market street (their yards clear of the shops' backs).
+  for (const [x0, x1] of [[26, 52], [67, 126], [668, 732], [747, 774]] as const) {
+    hamlet(ctx, x0, 308, x1, 358);
     hamlet(ctx, x0, 388, x1, 444);
   }
-  for (const [x0, x1] of [[327, 403], [417, 512]] as const) {
-    hamlet(ctx, x0, 300, x1, 352);
+  for (const [x0, x1] of [[327, 402], [417, 512]] as const) {
+    hamlet(ctx, x0, 308, x1, 352);
     hamlet(ctx, x0, 392, x1, 444);
   }
 
@@ -994,8 +1070,17 @@ function buildOutskirts(ctx: ZoneMapContext, kit: Kit): void {
       else plot(px, 46, xe, 80, 84);
     }
   }
-  ctx.landmark('ruong-rau-ngoai-o', 'Ruộng rau ngoại ô', 300, 220);
+  ctx.landmark('ruong-rau-ngoai-o', 'Ruộng rau ngoại ô', ROAD_X.gate + 12, 220);
 
+  // Clear corners where two ways cross outside the markets, so no verge fence runs across the other way.
+  for (const [i, a] of ROUTES.entries()) {
+    for (const b of ROUTES.slice(i + 1)) {
+      const [ax0, az0, ax1, az1] = spanOf(a);
+      const [bx0, bz0, bx1, bz1] = spanOf(b);
+      const [cx0, cz0, cx1, cz1] = [Math.max(ax0, bx0), Math.max(az0, bz0), Math.min(ax1, bx1), Math.min(az1, bz1)];
+      if (cx0 <= cx1 && cz0 <= cz1 && !ctx.inZone(cx0, cz0, 5)) ctx.keepOut(cx0 - 5, cz0 - 5, cx1 + 5, cz1 + 5);
+    }
+  }
   for (const route of ROUTES) laneVerge(ctx, route, { lampEvery: 16 });
   bambooHedge(ctx, [[20, 20], [780, 20]]);
   bambooHedge(ctx, [[20, 780], [780, 780]]);

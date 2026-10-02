@@ -249,8 +249,10 @@ const SHOP_AWNINGS: readonly Awning[] = ['red', 'blue', 'orange', 'green', 'blue
  * A two-storey shophouse `w` wide and `d` deep on a world rectangle (x0, z0 its least corner), its shop front
  * facing `facing`: the village houses' finish (stone foot, timber posts and beams, glazed windows over flower
  * boxes, ridge, gables, chimney, lanterns by the door) with a beam between the storeys and upper windows, a
- * striped awning over the shop front, a planter and a crate or a chalkboard either side of the door. Returns
- * the cell before its door.
+ * striped awning hung from the wall over the shop front, a plank threshold in the doorway, a planter and a
+ * crate or a chalkboard either side of the door, the two rows before the door kept clear. Owner (02/10/2026):
+ * a house many times the child's size with a really wide way in, so callers give at least 13 x 11 (the door
+ * is then three wide and three high, buildings.ts `doorwaySize`). Returns the cell before its door.
  */
 export function shophouse(ctx: ZoneMapContext, x0: number, z0: number, w: number, d: number, facing: Facing, n: number): [number, number] {
   const { world, block } = ctx;
@@ -276,9 +278,12 @@ export function shophouse(ctx: ZoneMapContext, x0: number, z0: number, w: number
     const [x, z] = framePoint(origin, facing, bx - FRAME, bz - FRAME);
     ctx.propAt(`${N}/${['flower_redA', 'flower_yellowB', 'flower_purpleA'][(n + Math.floor(bx)) % 3]}.glb`, [x, by, z], n * 23);
   }
+  // A plank threshold in the doorway, level with the floor inside.
+  for (let i = 0; i < front.doorway.width; i++) writer.set(front.doorway.x0 + i, base - 1, FRAME, palette.finish.floor);
   const yaw = FACING_YAW[facing];
   const door = Math.floor(w / 2);
-  const awningAt = framePoint(origin, facing, door, -0.2);
+  // The awning's back edge sits in the wall over the door: it hangs from the house, not over the street.
+  const awningAt = framePoint(origin, facing, door, 0.05);
   ctx.propAt(`${BOX}/cp-shop-awning-${SHOP_AWNINGS[n % SHOP_AWNINGS.length] ?? 'red'}.glb`, [awningAt[0], base + 2.35, awningAt[1]], yaw);
   const [px, pz] = framePoint(origin, facing, door - 3.5, -0.7);
   ctx.propAt(`${BOX}/cp-planter.glb`, [px, base, pz], yaw);
@@ -288,6 +293,10 @@ export function shophouse(ctx: ZoneMapContext, x0: number, z0: number, w: number
   const [ox, oz] = framePoint(origin, facing, door + 3.5, -0.7);
   ctx.propAt(other, [ox, base, oz], yaw + 10);
   ctx.keepOut(x0 - 1, z0 - 1, x0 + w, z0 + d);
+  // Nothing stands in the two rows before the doorway (lanterns, verges and dressing go round it).
+  const u0 = front.doorway.x0 - FRAME;
+  const [ax0, az0, ax1, az1] = frameRect(origin, facing, u0, -2, u0 + front.doorway.width - 1, -1);
+  ctx.keepOut(ax0, az0, ax1, az1);
   const step = framePoint(origin, facing, door, -1.5);
   return [Math.floor(step[0]), Math.floor(step[1])];
 }
