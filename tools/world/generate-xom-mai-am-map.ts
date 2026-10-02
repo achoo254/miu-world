@@ -17,8 +17,8 @@
 // Output: assets/generated/world/xom-mai-am/{regions/, horizon.bin, entities.json}
 import { PACK, runIfMain } from './map-kit';
 import { bambooHedge, cottagePalette, flowerBed, jetty, laneVerge, STREET_LANTERN } from './scenery';
-import { placeHouse } from './structures/buildings';
-import { placeWell, placeWindmill } from './structures/countryside';
+import { doorSteps, placeHouse } from './structures/buildings';
+import { cottageSize, placeWell, placeWindmill } from './structures/countryside';
 import type { Point } from './structures/path';
 import { placeAncientTree } from './structures/tree';
 import { put } from './structures/world-writer';
@@ -67,12 +67,12 @@ const GRANDPA_HILL: Hill = { x: 86, z: 590, r: 70, rise: 13 };
 const DEN_HILL: Hill = { x: 706, z: 156, r: 76, rise: 14 };
 const WIND_MOUND: Hill = { x: 716, z: 604, r: 34, rise: 6 };
 const DEN = { x: 628, z: 160 };
-/** Mẩy's family home (d-03, d-13), its door on -z toward her lane's yard. */
-const HOME = { x0: 214, z0: 158, w: 17, d: 13 };
+/** Mẩy's family home (d-03, d-13), its door on -z toward her lane's yard: 21 x 15, a room of 17 x 11 inside its lining. */
+const HOME = { x0: 214, z0: 158, w: 21, d: 15 };
 /** The village well (d-05) under the old tree in the north. */
 const WELL = { x: 400, z: 112 };
 /** The farm east of the middle fields: the barn, its pens before it, the vegetable garden and the wheat (d-04, d-07, d-14). */
-const BARN = { x0: 639, z0: 470, w: 17, d: 19 };
+const BARN = { x0: 635, z0: 470, w: 25, d: 27 };
 const PENS = [
   { x0: 622, z0: 436, x1: 643, z1: 463 },
   { x0: 651, z0: 436, x1: 674, z1: 463 },
@@ -87,30 +87,54 @@ const LANE_S: Point[] = [[24, 420], [215, 416], [400, 426], [600, 418], [776, 42
 const SHORE_S: Point[] = [[215, 616], [232, 706], [400, 714], [600, 706], [600, 616]];
 /** The farm's track: from the south lane down past the pens to the barn door, and along the garden's north edge. */
 const FARM_TRACK: Point[] = [[740, 421], [740, 467], [656, 467]];
-const ROUTES: Point[][] = [
-  // From the spawn to the lane and into chapter 1's zone.
-  [[SPAWN.x, SPAWN.z], [SPAWN.x, 236]],
-  [[SPAWN.x, 140], [210, 150]],
-  LANE_N,
-  LANE_S,
-  // Lanes between the two lanes, and up to the village well.
+/** Lanes between the two lanes, and up to the village well. */
+const CROSS_LANES: Point[][] = [
   [[60, 236], [60, 418]],
   [[300, 233], [300, 421]],
   [[500, 232], [500, 422]],
   [[740, 234], [740, 421]],
   [[400, 228], [400, 119]],
-  // Spurs into the zones: Mẩy's lane, the moonlit lane, down to the lake shores.
+];
+const ROUTES: Point[][] = [
+  // From the spawn to the lane and into chapter 1's zone; the way past the ride stops and the gate by the spawn.
+  [[SPAWN.x, 105], [SPAWN.x, 236]],
+  [[90, 105], [124, 105]],
+  [[117, 105], [117, 110]],
+  [[SPAWN.x, 140], [210, 150]],
+  LANE_N,
+  LANE_S,
+  ...CROSS_LANES,
+  // Spurs into the zones: Mẩy's lane (on to the flower garden's gate and through it, and to the duckweed
+  // pond), the moonlit lane, down to the lake shores.
   [[210, 237], [210, 150]],
+  [[210, 150], [210, 131], [222, 131], [226, 135], [239, 135]],
+  [[210, 146], [234, 146]],
+  [[210, 190], [186, 190]],
   [[560, 235], [560, 160]],
   [[215, 416], [215, 590]],
   [[600, 418], [600, 590]],
-  // Into the den, up the slope to grandpa's house and over its top, across the lake on a plank bridge.
+  // Into the den and up to its carved wall, up the slope to grandpa's house and over its top, across the lake
+  // on a plank bridge, down to the beach and the pebble strand, along the south shore to Mother Bống's grotto.
   [[560, 160], [DEN.x, DEN.z]],
+  // Across the moonlit yard to the bamboo bed, and on through the sapodilla garden's east fence to its tree.
+  [[560, 160], [560, 149], [548, 149], [548, 138], [536, 138]],
+  [[618, 160], [618, 144]],
   [[215, 580], [173, 575], [96, 590], [64, 572]],
   [[215, 590], [600, 590]],
+  [[262, 574], [262, 604]],
   SHORE_S,
+  [[512, 709], [510, 639]],
   [[400, 714], [400, 680]],
   [[600, 590], [WIND_MOUND.x, WIND_MOUND.z]],
+  // To the chestnut tree, from the mound down between the fields into the windy field, and through the rice
+  // on the dyke between the two lanes.
+  [[600, 560], [628, 560]],
+  [[714, 606], [714, 630], [723, 640], [723, 700]],
+  [[400, 226], [400, 428]],
+  // Into the drying yard from the lane to the well; down the farm's track past the garden to the wheat; into the maize.
+  [[392, 170], [400, 170]],
+  [[740, 467], [740, 500], [690, 500]],
+  [[676, 598], [676, 569]],
   // The farm: between the pens to the barn door, and its track.
   [[647, 421], [647, 468]],
   FARM_TRACK,
@@ -210,13 +234,78 @@ function builders(ctx: ZoneMapContext) {
   const WALLS = [B.sand, B.sand, block('birch-log'), B.sand, B.planks];
   const ROOFS = [B.tile, B.tile, block('roof-blue'), B.tile, B.red];
   const claimed: Rect[] = [];
+  const [SX, , SZ] = world.size;
+  const cellOf = (x: number, z: number): number => x + z * SX;
+  const inMap = (x: number, z: number): boolean => x >= 0 && z >= 0 && x < SX && z < SZ;
+  /** Columns a walk keeps off: what is claimed, and the fenced gardens the map leaves open for its quests. */
+  const noWalk = new Uint8Array(SX * SZ);
+  /** Columns of the walks laid from the doors to the lanes: with the lanes, the way network. */
+  const walked = new Uint8Array(SX * SZ);
+  const avoid = (x0: number, z0: number, x1: number, z1: number): void => {
+    for (let x = Math.max(0, x0); x <= Math.min(SX - 1, x1); x++) for (let z = Math.max(0, z0); z <= Math.min(SZ - 1, z1); z++) noWalk[cellOf(x, z)] = 1;
+  };
   const claim = (x0: number, z0: number, x1: number, z1: number): void => {
     claimed.push([x0, z0, x1, z1]);
     ctx.keepOut(x0, z0, x1, z1);
+    avoid(x0, z0, x1, z1);
   };
   const isClaimed = (x0: number, z0: number, x1: number, z1: number): boolean => claimed.some(([a, b, c, d]) => x0 <= c && x1 >= a && z0 <= d && z1 >= b);
   const paint = (x: number, z: number, id: number): void => {
     if (!ctx.onPath(x, z) && !ctx.inWater(x, z)) world.set(x, ctx.surface(x, z), z, id);
+  };
+  const onWay = (x: number, z: number): boolean => ctx.onPath(x, z) || walked[cellOf(x, z)] === 1;
+  /** The top block of a column as built so far (a levelled plot stands higher than the bare terrain). */
+  const topAt = (x: number, z: number): number => {
+    const s = ctx.surface(x, z);
+    for (let y = s + 10; y > s - 4; y--) if (world.get(x, y, z) !== 0) return y;
+    return s;
+  };
+  const soilTops = new Set([B.grass, B.dirt, B.sand]);
+
+  /**
+   * A walk two blocks wide from (x, z) to the nearest way (a lane, or a walk laid before), round what is
+   * claimed, the water and anything standing, a block up or down at a time (owner, 02/10/2026: from every door
+   * a way to wherever the child goes). Painted in the lanes' soil over grass, kept clear of trees and of the
+   * houses placed after it. Returns whether it reached a way.
+   */
+  const walkToWay = (x: number, z: number, reach = 110): boolean => {
+    if (!inMap(x, z)) return false;
+    const start = cellOf(x, z);
+    const from = new Map<number, number>([[start, -1]]);
+    const queue = [start];
+    let end = -1;
+    for (let i = 0; i < queue.length && end === -1; i++) {
+      const c = queue[i] ?? start;
+      const [cx, cz] = [c % SX, Math.floor(c / SX)];
+      if (onWay(cx, cz)) {
+        end = c;
+        break;
+      }
+      const top = topAt(cx, cz);
+      for (const [dx, dz] of [[1, 0], [-1, 0], [0, 1], [0, -1]] as const) {
+        const [nx, nz] = [cx + dx, cz + dz];
+        const n = cellOf(nx, nz);
+        if (!inMap(nx, nz) || from.has(n) || Math.max(Math.abs(nx - x), Math.abs(nz - z)) > reach) continue;
+        if (noWalk[n] === 1 || ctx.inWater(nx, nz) || Math.abs(topAt(nx, nz) - top) > 1) continue;
+        from.set(n, c);
+        queue.push(n);
+      }
+    }
+    if (end === -1) return false;
+    for (let c = from.get(end) ?? -1; c !== -1; c = from.get(c) ?? -1) {
+      const [cx, cz] = [c % SX, Math.floor(c / SX)];
+      for (const [dx, dz] of [[0, 0], [1, 0], [0, 1], [1, 1]] as const) {
+        const [px, pz] = [cx + dx, cz + dz];
+        const n = cellOf(px, pz);
+        if (!inMap(px, pz) || walked[n] === 1 || noWalk[n] === 1 || ctx.inWater(px, pz)) continue;
+        const top = topAt(px, pz);
+        if (!soilTops.has(world.get(px, top, pz))) continue;
+        world.set(px, top, pz, ctx.soil.path);
+        walked[n] = 1;
+        ctx.keepOut(px, pz, px, pz);
+      }
+    }
+    return true;
   };
 
   /** Raises every column of a rectangle to its highest one (dirt under grass); returns that height. */
@@ -258,16 +347,18 @@ function builders(ctx: ZoneMapContext) {
   };
 
   /**
-   * The front garden of d-03 before a house whose door is at `doorX` on row `z` (the walls run xa+1..xb-1): a
-   * cobbled walk from the door to the gate, beds of flowers either side, bushes at its corners, a white picket
-   * fence round it with the gate open; a lantern post by every other gate, the family's sign by every third.
+   * The front garden of d-03 before a house whose doorway (its first column and width) is on row `z` (the walls
+   * run xa+1..xb-1): a cobbled walk as wide as the doorway from the door to the gate, beds of flowers either
+   * side, bushes at its corners, a white picket fence round it with the gate open; a lantern post by every
+   * other gate, the family's sign by every third.
    */
-  const frontGarden = (xa: number, xb: number, z: number, base: number, doorX: number, n: number, depth = 7): void => {
-    for (let zz = z - depth; zz <= z - 1; zz++) for (const x of [doorX - 1, doorX]) world.set(x, base, zz, B.cobble);
-    fenceRun(box('picket'), xa, z - depth - 1, 'x', xb - xa + 1, [doorX - 1, doorX]);
+  const frontGarden = (xa: number, xb: number, z: number, base: number, doorway: { x0: number; width: number }, n: number, depth = 7): void => {
+    const [walk0, walk1] = [doorway.x0, doorway.x0 + doorway.width - 1];
+    for (let zz = z - depth - 1; zz <= z; zz++) for (let x = walk0; x <= walk1; x++) world.set(x, base, zz, B.cobble);
+    fenceRun(box('picket'), xa, z - depth - 1, 'x', xb - xa + 1, [walk0, walk1]);
     for (const x of [xa, xb]) fenceRun(box('picket'), x, z - depth, 'z', depth);
     for (let x = xa + 1; x < xb; x += 2) {
-      if (Math.abs(x - doorX + 0.5) < 2) continue;
+      if (x >= walk0 - 1 && x <= walk1 + 1) continue;
       const zz = z - depth + 1 + (x % 4 === 0 ? 0 : 2);
       ctx.prop(FLOWERS[(x + zz + n) % 3] ?? M.flowerRed, x, zz, (x * 17 + zz * 29) % 360);
     }
@@ -275,32 +366,36 @@ function builders(ctx: ZoneMapContext) {
       put(world, x, base + 1, z - 2, (x + n) % 2 === 0 ? B.leaves : B.pink);
       if (n % 3 === 0) put(world, x, base + 2, z - 2, B.leaves);
     }
-    if (n % 2 === 0) ctx.prop(STREET_LANTERN, doorX + 2, z - depth - 2, 0);
-    if (n % 3 === 1) ctx.prop(box('gate-sign'), doorX - 3, z - depth - 2, 180);
+    if (n % 2 === 0) ctx.prop(STREET_LANTERN, walk1 + 2, z - depth - 2, 0);
+    if (n % 3 === 1) ctx.prop(box('gate-sign'), walk0 - 2, z - depth - 2, 180);
   };
 
   let homes = 0;
   /**
-   * A cottage of d-03 whose door is at (x, z) side -z: the detailed house (stone foot, timber frame, glazed
-   * windows over flower boxes, lanterns by the door, chimney), its front garden, in the side yard a well or a
-   * haystack, a vegetable bed and a fruit tree, bamboo behind. Returns the house's width, its ground and its door column.
+   * A cottage of d-03 whose corner is at (x, z), its door on side -z: the detailed house of the shared cottage's
+   * size (13–17 x 11–12, walls seven high, a doorway three wide; stone foot, timber frame, glazed windows over
+   * flower boxes, lanterns by the door, chimney), its front garden, in the side yard a well or a haystack, a
+   * vegetable bed and a fruit tree, bamboo behind. Returns the house's width, its ground and its door column.
    */
   const homestead = (x: number, z: number, opts: { hammock?: boolean; chair?: boolean } = {}): { w: number; base: number; doorX: number } => {
     const n = homes++;
-    const w = 9 + (n % 3) * 2;
-    const d = 7 + (n % 2);
+    const { w, d, wallHeight } = cottageSize(n);
     const plot: Rect = [x - 2, z - 9, x + w + 7, z + d + 3];
     const base = levelPlot(...plot);
     const roof = ROOFS[(n * 2 + Math.floor(n / 5)) % ROOFS.length] ?? B.tile;
-    const front = placeHouse(world, x, z, w, d, 4, base + 1, { ...palette.finish, wall: WALLS[n % WALLS.length] ?? B.sand, roof, trim: palette.trim });
+    const front = placeHouse(world, x, z, w, d, wallHeight, base + 1, { ...palette.finish, wall: WALLS[n % WALLS.length] ?? B.sand, roof, trim: palette.trim });
     for (const [bx, by, bz] of front.boxes) ctx.propAt(FLOWERS[(Math.floor(bx) + n) % 3] ?? M.flowerRed, [bx, by, bz], n * 23);
     const doorX = x + Math.floor(w / 2);
     if (opts.hammock) {
-      porch(x, z, w, base, roof, base + 5);
+      porch(x, z, w, base, roof, base + 6);
       ctx.propAt(M.hammock, [x + 2.5, base + 1.6, z - 1.5], 90);
     }
-    frontGarden(x - 2, x + w + 1, z, base, doorX, n, opts.hammock ? 6 : 7);
-    if (opts.chair) ctx.centred(M.chair, x + w - 2, z - 2, 200);
+    frontGarden(x - 2, x + w + 1, z, base, front.doorway, n, opts.hammock ? 6 : 7);
+    if (opts.chair) {
+      // A cobbled terrace along the front from the walk to the rattan chair at its end.
+      for (let tx = front.doorway.x0 + front.doorway.width; tx < x + w; tx++) for (const tz of [z - 3, z - 2]) world.set(tx, base, tz, B.cobble);
+      ctx.centred(M.chair, x + w - 2, z - 2, 200);
+    }
     // The side yard: a well or a haystack, a vegetable bed, a fruit tree; firewood and bamboo behind.
     const yx = x + w + 2;
     if (n % 2 === 0) {
@@ -312,7 +407,22 @@ function builders(ctx: ZoneMapContext) {
     ctx.prop(M.logs, x + w - 2, z + d + 1, 0);
     for (let bx = x - 1; bx <= x + w + 6; bx += 9) ctx.prop(M.bamboo, bx, z + d + 2, (bx * 37) % 360);
     claim(...plot);
+    walkOut(front.doorway, plot[1], z - (opts.hammock ? 6 : 7) - 2, base);
     return { w, base, doorX };
+  };
+  /**
+   * From a garden gate out to the lanes: the cobbled walk carried on from the gate (row `gateOut`) to the
+   * plot's edge (row `edge`), steps down where the plot stands above the ground beyond, then a walk to the
+   * nearest way, as wide as the doorway where it leaves.
+   */
+  const unwalked: Array<[number, number]> = [];
+  const walkOut = (doorway: { x0: number; width: number }, edge: number, gateOut: number, base: number): void => {
+    const cols = Array.from({ length: doorway.width }, (_, i) => doorway.x0 + i);
+    for (let zz = edge; zz <= gateOut; zz++) for (const x of cols) world.set(x, base, zz, B.cobble);
+    doorSteps(world, doorway.x0, doorway.width, edge, base + 1, (sx, sz) => topAt(sx, sz) + 1, ctx.soil.path);
+    let reached = false;
+    for (const x of cols) reached = walkToWay(x, edge - 1) || reached;
+    if (!reached) unwalked.push([doorway.x0, edge]);
   };
 
   /**
@@ -320,12 +430,12 @@ function builders(ctx: ZoneMapContext) {
    * and now and then an orchard corner instead of a house; skips zones, water, paths, hills and what is claimed.
    */
   const village = (x0: number, z0: number, x1: number, z1: number): void => {
-    for (let row = 0, z = z0 + 9; z + 12 <= z1; z += 25, row++) {
+    for (let row = 0, z = z0 + 9; z + 15 <= z1; z += 30, row++) {
       let x = x0 + 2 + (row % 2) * 6;
-      while (x + 18 <= x1) {
-        const w = 9 + (homes % 3) * 2;
+      while (x + 22 <= x1) {
+        const { w, d } = cottageSize(homes);
         const zz = z + ((x * 7 + row * 3) % 3) - 1;
-        const plot: Rect = [x - 2, zz - 9, x + w + 7, zz + 11];
+        const plot: Rect = [x - 2, zz - 9, x + w + 7, zz + d + 3];
         if (!plotFree(plot)) {
           x += 4;
           continue;
@@ -344,13 +454,14 @@ function builders(ctx: ZoneMapContext) {
     claim(x - 2, z - 9, x + 16, z + 11);
   };
   const plotFree = ([x0, z0, x1, z1]: Rect): boolean => {
-    if (x0 < 14 || z0 < 14 || x1 > 785 || z1 > 785 || isClaimed(x0, z0, x1, z1)) return false;
+    // The plot and the strip before its gate, where its walk sets out.
+    if (x0 < 14 || z0 < 16 || x1 > 785 || z1 > 785 || isClaimed(x0, z0 - 2, x1, z1)) return false;
     if (Math.hypot((x0 + x1) / 2 - SPAWN.x - 4, (z0 + z1) / 2 - SPAWN.z) < 26) return false;
     let lo = Infinity;
     let hi = -Infinity;
     for (let x = x0 - 4; x <= x1 + 4; x++) {
       for (let z = z0 - 4; z <= z1 + 4; z++) {
-        if (ctx.onPath(x, z) || ctx.inWater(x, z) || ctx.inZone(x, z)) return false;
+        if (onWay(x, z) || ctx.inWater(x, z) || ctx.inZone(x, z)) return false;
         if (x >= x0 && x <= x1 && z >= z0 && z <= z1) {
           const h = ctx.surface(x, z);
           lo = Math.min(lo, h);
@@ -391,7 +502,7 @@ function builders(ctx: ZoneMapContext) {
   /** A scarecrow: a log post with plank arms, a straw head and a sun hat. */
   const scarecrow = (x: number, z: number, y = ctx.surface(x, z)): void => {
     for (let k = 1; k <= 3; k++) put(world, x, y + k, z, B.log);
-    for (const dx of [-1, 1]) put(world, x + dx, y + 2, z, B.planks);
+    for (const dx of [-1, 1]) put(world, x + dx, y + 2, z, B.log);
     put(world, x, y + 4, z, B.sand);
     ctx.propAt(M.hat, [x + 0.5, y + 5, z + 0.5], 0);
   };
@@ -411,31 +522,34 @@ function builders(ctx: ZoneMapContext) {
   };
 
   const isClaimedAt = (x: number, z: number): boolean => isClaimed(x, z, x, z);
-  return { B, palette, claim, isClaimed, isClaimedAt, paint, levelPlot, porch, haystack, fenceRun, frontGarden, homestead, village, paddy, field, scarecrow, cave };
+  return { B, palette, claim, avoid, isClaimed, isClaimedAt, onWay, walkToWay, walkOut, unwalkedDoors: (): ReadonlyArray<readonly [number, number]> => unwalked, paint, levelPlot, porch, haystack, fenceRun, frontGarden, homestead, village, paddy, field, scarecrow, cave };
 }
 
 /**
- * Mẩy's family home as d-13 (seen from the door, looking in): the supper table with its benches on the left, the
- * dresser behind it, the iron stove in the far right corner, the bed with its checked quilt along the right
+ * Mẩy's family home as d-13 (seen from the door, looking in): the supper table with its benches on the left,
+ * the dresser behind it, the iron stove in the far right corner, the bed with its checked quilt along the right
  * wall, the rug in the middle, curtains at every window, a shelf of jars, the family's pictures between the back
- * windows, lanterns hung from the beams and on the walls. Returns the middle of the room.
+ * windows, lanterns hung from the beams and on the walls. The furniture keeps to the walls with two blocks or
+ * more between each piece and the next, and the middle stays open from the door to the back wall (owner,
+ * 02/10/2026: room to move inside). Returns the middle of the room.
  */
-function furnishHome(ctx: ZoneMapContext, room: Room, beams: readonly number[], windows: { back: readonly number[]; front: readonly number[]; sides: readonly number[] }): [number, number] {
+function furnishHome(ctx: ZoneMapContext, room: Room, beams: readonly number[], wallHeight: number, windows: { back: readonly number[]; front: readonly number[]; sides: readonly number[] }): [number, number] {
   const { x0, z0, x1, z1, floorY: y } = room;
   const lantern = ctx.block('lantern');
-  // Left (+x): the table along z between two benches, the dresser against the back wall behind it.
-  const table: [number, number] = [x1 - 1.5, z0 + 3.5];
+  // Left (+x): the table along z between two benches, two blocks clear of the side wall and of the front; the
+  // dresser against the back wall behind it.
+  const table: [number, number] = [x1 - 2.5, z0 + 4.5];
   ctx.propAt(box('dining-table'), [table[0], y, table[1]], 90);
   for (const dx of [-1.35, 1.35]) ctx.propAt(box('bench'), [table[0] + dx, y, table[1]], 90);
-  ctx.propAt(box('dresser'), [x1 - 1.5, y, z1 + 0.68], 0);
-  ctx.propAt(box('wall-shelf'), [x1 + 0.98, y + 1.36, z0 + 1.5], 90);
-  // Right (-x): the stove in the far corner, the bed with its head on the right wall.
+  ctx.propAt(box('dresser'), [table[0], y, z1 + 0.68], 0);
+  ctx.propAt(box('wall-shelf'), [x1 + 0.98, y + 2.1, z0 + 1.5], 90);
+  // Right (-x): the stove in the far corner with its firewood beside it, the bed with its head on the right wall.
   ctx.propAt(box('stove'), [x0 + 1.2, y, z1 + 0.5], 0);
-  ctx.propAt(M.logs, [x0 + 0.6, y, z1 - 1.2], 0);
-  ctx.propAt(box('bed'), [x0 + 1.4, y, z0 + 4.6], 270);
+  ctx.propAt(M.logs, [x0 + 2.6, y, z1 + 0.5], 0);
+  ctx.propAt(box('bed'), [x0 + 1.4, y, z0 + 6.6], 270);
   ctx.propAt(M.plant, [x0 + 0.5, y, z0 + 0.5], 0);
   ctx.propAt(box('flower-pot'), [x1 + 0.5, y, z0 + 0.5], 0);
-  // The middle: the rug, a pot plant by the back wall, the family's pictures between the back windows.
+  // The middle: the rug, the family's pictures between the back windows.
   ctx.propAt(box('rug'), [(x0 + x1 + 1) / 2, y, (z0 + z1 + 1) / 2], 0);
   ctx.propAt(M.picture, [(x0 + x1 + 1) / 2 - 0.7, y + 1.6, z1 + 0.92], 180);
   ctx.propAt(M.pictureYellow, [(x0 + x1 + 1) / 2 + 0.7, y + 1.4, z1 + 0.92], 180);
@@ -446,7 +560,7 @@ function furnishHome(ctx: ZoneMapContext, room: Room, beams: readonly number[], 
     ctx.propAt(box('curtains'), [x0 + 0.04, y + 1.3, z + 0.5], 270);
     ctx.propAt(box('curtains'), [x1 + 0.96, y + 1.3, z + 0.5], 90);
   }
-  for (const z of beams) for (const x of [x0 + 3, x1 - 3]) ctx.propAt(box('hanging-lantern'), [x + 0.5, y + 5 - 1.4, z + 0.5], 0);
+  for (const z of beams) for (const x of [x0 + 4, x1 - 4]) ctx.propAt(box('hanging-lantern'), [x + 0.5, y + wallHeight - 1.4, z + 0.5], 0);
   for (const z of [z0 + 1, z1 - 1]) {
     put(ctx.world, x0 - 1, y + 2, z, lantern);
     put(ctx.world, x1 + 1, y + 2, z, lantern);
@@ -455,38 +569,37 @@ function furnishHome(ctx: ZoneMapContext, room: Room, beams: readonly number[], 
 }
 
 /**
- * The barn's inside as d-14: cows and sheep in the stalls behind rail fences, a trough of hay and straw in each,
- * hay bales stacked at the back and by the door, buckets and milk cans along the aisle, lanterns hung over it.
+ * The barn's inside as d-14: cows and sheep in the stalls behind a rail along the aisle, a trough of hay inside
+ * each stall's front and straw at its back, hay bales stacked in the front corners, buckets and milk cans along the aisle's edges with its middle left clear, lanterns hung over it.
  */
 function furnishBarn(ctx: ZoneMapContext, barn: ReturnType<typeof placeRedBarn>, baseY: number): void {
-  const { room, stalls, partitions, beams } = barn;
+  const { room, stalls, partitions, aisle, beams } = barn;
   const mid = (room.x0 + room.x1) / 2 + 0.5;
   const y = baseY;
-  // Rail fences between the stalls and along their fronts on the aisle's edge.
+  // Rail fences between the stalls.
   for (const p of partitions) for (let x = p.x0; x < p.x1; x += 2) ctx.propAt(box('rail-fence'), [x + 1, y, p.z + 0.5], 0);
   for (const [i, s] of stalls.entries()) {
-    // The trough just inside the front, straw on the floor, the beasts facing the aisle: cows, a sheep or two.
-    const front = mid + s.side * 1.5;
+    // The rail and the trough just inside the front, straw at the back by the wall, the beasts between facing the aisle.
+    const front = mid + s.side * (aisle + 0.5);
     ctx.propAt(box('rail-fence'), [front, y, s.z + 0.5], 90);
-    ctx.propAt(box('trough'), [front + s.side * 0.5, y, s.z + 0.5], 90);
-    ctx.propAt(box('hay-pile'), [s.x + 0.5 - s.side * 0.4, y, s.z + 0.5], i * 40);
+    ctx.propAt(box('trough'), [front + s.side * 0.5, y, s.z], 90);
+    ctx.propAt(box('hay-pile'), [s.x + 0.5 + s.side * 2.2, y, s.z + 0.5], 90 + i * 20);
     const facing = s.side < 0 ? 270 : 90;
     if ((i + (s.side < 0 ? 0 : 1)) % 3 === 2) {
-      ctx.propAt(box('sheep'), [s.x + 0.5 + s.side * 0.2, y, s.z - 0.1], facing + 10);
-      ctx.propAt(box('sheep'), [s.x + 0.5 - s.side * 0.6, y, s.z + 1.2], facing - 20);
+      ctx.propAt(box('sheep'), [s.x + 0.5 - s.side * 0.4, y, s.z - 0.6], facing + 10);
+      ctx.propAt(box('sheep'), [s.x + 0.5 + s.side * 0.4, y, s.z + 1.6], facing - 20);
     } else ctx.propAt(box('cow'), [s.x + 0.5, y, s.z + 0.5], facing);
   }
-  // Hay bales stacked in the front corners and at the back of the aisle.
-  for (const x of [room.x0 + 1.2, room.x1 - 0.2]) {
+  // Hay bales stacked in the front corners, off the aisle.
+  for (const x of [room.x0 + 0.6, room.x1 + 0.4]) {
     for (let k = 0; k < 2; k++) ctx.propAt(box('hay-bale'), [x, y, room.z0 + 0.5 + k * 0.85], 0);
     ctx.propAt(box('hay-bale'), [x, y + 0.86, room.z0 + 0.9], 0);
   }
-  for (const dx of [-0.65, 0.65]) ctx.propAt(box('hay-bale'), [mid + dx, y, room.z1 + 0.55], 0);
-  ctx.propAt(box('hay-bale'), [mid, y + 0.86, room.z1 + 0.55], 0);
-  for (const [dx, dz, model] of [[-1.1, 3.2, M.bucket], [1.1, 5.8, box('milk-can')], [-1.1, 8.6, box('milk-can')], [1.1, 11.5, M.bucket], [-1.1, 12.6, M.barrel]] as const) {
+  const edge = aisle - 0.3;
+  for (const [dx, dz, model] of [[-edge, 5.2, M.bucket], [edge, 9.8, box('milk-can')], [-edge, 14.6, box('milk-can')], [edge, 18.5, M.bucket], [-edge, 21.6, M.barrel]] as const) {
     ctx.propAt(model, [mid + dx, y, room.z0 + dz], dz * 30);
   }
-  for (const z of beams) ctx.propAt(box('hanging-lantern'), [mid, y + 6 - 1.4, z + 0.5], 0);
+  for (const z of beams) ctx.propAt(box('hanging-lantern'), [mid, y + 7 - 1.4, z + 0.5], 0);
 }
 
 export async function generateXomMaiAm() {
@@ -615,6 +728,12 @@ export async function generateXomMaiAm() {
       const { world, block, rng, ground, zone, surface } = ctx;
       const b = builders(ctx);
       const { B } = b;
+      /** A prop on the ground unless a way runs there (stones, flowers): ways stay clear to walk. */
+      const offWay = (model: string, x: number, z: number, yaw: number): void => {
+        if (!b.onWay(x, z)) ctx.prop(model, x, z, yaw);
+      };
+      /** The context for the shared hedges and verges, whose props keep off the walks to the doors as well as the lanes. */
+      const offWays: ZoneMapContext = { ...ctx, prop: (model, x, z, yaw = 0) => offWay(model, x, z, yaw) };
       const [lane, porches, shore, field] = [1, 2, 3, 4].map(zone) as [Zone, Zone, Zone, Zone];
 
       // Mẩy's family home (d-03 outside, d-13 inside), first so its pictures lead the review: cream stone under
@@ -636,26 +755,28 @@ export async function generateXomMaiAm() {
         return out;
       };
       const doorX = HOME.x0 + Math.floor(HOME.w / 2);
-      const homeBeams = [HOME.z0 + Math.round(HOME.d / 3), HOME.z0 + Math.round((2 * HOME.d) / 3)];
-      const middle = furnishHome(ctx, home.room, homeBeams, {
+      // The doorway's columns and the two beside them, kept clear of bushes and pots out to the gate.
+      const [door0, door1] = [home.doorway.x0 - 1, home.doorway.x0 + home.doorway.width];
+      const middle = furnishHome(ctx, home.room, home.beams, home.wallHeight, {
         back: windowsAlong(HOME.w, () => false).map((i) => HOME.x0 + i),
-        front: windowsAlong(HOME.w, (i) => HOME.x0 + i >= doorX - 2 && HOME.x0 + i <= doorX + 1).map((i) => HOME.x0 + i),
+        front: windowsAlong(HOME.w, (i) => HOME.x0 + i >= door0 - 1 && HOME.x0 + i <= door1 + 1).map((i) => HOME.x0 + i),
         sides: windowsAlong(HOME.d, () => false).map((i) => HOME.z0 + i),
       });
       for (const [bx, by, bz] of home.boxes) ctx.propAt(FLOWERS[Math.floor(bx) % 3] ?? M.flowerRed, [bx, by, bz], bx * 31);
-      b.frontGarden(HOME.x0 - 2, HOME.x0 + HOME.w + 1, HOME.z0, homeBase, doorX, 1, 8);
-      ctx.prop(STREET_LANTERN, doorX + 2, HOME.z0 - 10, 0);
+      b.frontGarden(HOME.x0 - 2, HOME.x0 + HOME.w + 1, HOME.z0, homeBase, home.doorway, 1, 8);
+      ctx.prop(STREET_LANTERN, door1 + 2, HOME.z0 - 10, 0);
       // Flowering bushes along the front wall and a second bed of flowers in pots, as the mock's cottage garden.
       for (let x = HOME.x0; x < HOME.x0 + HOME.w; x++) {
-        if (Math.abs(x - doorX + 0.5) < 2.5) continue;
+        if (x >= door0 && x <= door1) continue;
         put(world, x, homeBase + 1, HOME.z0 - 2, x % 3 === 0 ? B.leaves : B.pink);
         if (x % 2 === 0) ctx.prop(FLOWERS[x % 3] ?? M.flowerRed, x, HOME.z0 - 2, x * 23);
       }
-      for (let x = HOME.x0 - 1; x <= HOME.x0 + HOME.w; x += 3) if (Math.abs(x - doorX + 0.5) > 2.5) ctx.prop(box('flower-pot'), x, HOME.z0 - 5, x * 13);
-      for (const [dx, model] of [[-4, box('flower-pot')], [3, box('flower-pot')], [-5, M.barrel]] as const) ctx.prop(model, doorX + dx, HOME.z0 - 1, dx * 40);
+      for (let x = HOME.x0 - 1; x <= HOME.x0 + HOME.w; x += 3) if (x < door0 || x > door1) ctx.prop(box('flower-pot'), x, HOME.z0 - 5, x * 13);
+      for (const [x, model] of [[door0 - 2, box('flower-pot')], [door1 + 2, box('flower-pot')], [door0 - 3, M.barrel]] as const) ctx.prop(model, x, HOME.z0 - 1, x * 40);
       ctx.prop(M.fatTree, HOME.x0 + HOME.w + 3, HOME.z0 + 2, 70);
       ctx.propAt(M.hammock, [HOME.x0 + HOME.w + 3.5, homeBase + 1.2, HOME.z0 + 6.5], 0);
       b.claim(HOME.x0 - 3, HOME.z0 - 10, HOME.x0 + HOME.w + 4, HOME.z0 + HOME.d + 3);
+      b.walkOut(home.doorway, HOME.z0 - 10, HOME.z0 - 10, homeBase);
       const { room } = home;
       ctx.landmark('trong-nha-may', 'Trong nhà Mẩy', middle[0], middle[1], room.floorY);
       ctx.landmark('nha-may', 'Nhà Mẩy', doorX, HOME.z0 - 4, homeBase + 1);
@@ -667,7 +788,8 @@ export async function generateXomMaiAm() {
         kerb: B.cobbleGrey, cap: B.grey, water: B.water, post: B.log, roof: B.planks, ridge: B.log, paving: B.cobble, border: B.cobbleGrey,
       });
       ctx.propAt(box('hanging-bucket'), [well.rope[0], well.rope[1] - 1.8, well.rope[2] - 0.6], 0);
-      for (const [dx, dz, model, yaw] of [[-4, 2, M.barrel, 0], [-5, 0, M.barrel, 40], [-3, 3, M.bucket, 20], [3, 3, box('flower-pot'), 0], [4, -2, box('flower-pot'), 0], [-3, -3, box('flower-pot'), 0], [4, 1, M.crate, 15]] as const) {
+      // Barrels and the bucket stand off the paving's edge, so its ring stays clear to walk round.
+      for (const [dx, dz, model, yaw] of [[-6, 3, M.barrel, 0], [-7, 1, M.barrel, 40], [-5, 4, M.bucket, 20], [3, 3, box('flower-pot'), 0], [4, -2, box('flower-pot'), 0], [-3, -3, box('flower-pot'), 0], [4, 1, M.crate, 15]] as const) {
         ctx.prop(model, WELL.x + dx, WELL.z + dz, yaw);
       }
       placeAncientTree(world, 413, ground + 1, 121, { log: block('tree-log'), leaves: B.leaves, core: B.log }, rng);
@@ -690,11 +812,16 @@ export async function generateXomMaiAm() {
         wall: B.red, trim: block('birch-log'), roof: B.log, glass: block('glass'), floor: B.planks, aisle: B.cobbleGrey, lining: B.planks, post: B.log,
       });
       furnishBarn(ctx, barn, barnBase + 1);
-      for (const dx of [-4, 4]) ctx.prop(STREET_LANTERN, barn.door[0] + dx, BARN.z0 - 3, 0);
-      for (const [dx, dz, model, yaw] of [[-5, -2, box('milk-can'), 0], [-6, -2, box('milk-can'), 30], [5, -2, box('hay-bale'), 90], [6, -3, box('hay-bale'), 0], [5, -4, M.bucket, 0]] as const) {
+      // Outside the doorway (seven wide): lanterns either side, milk cans and hay bales before the folded door leaves.
+      for (const dx of [-6, 6]) ctx.prop(STREET_LANTERN, barn.door[0] + dx, BARN.z0 - 3, 0);
+      for (const [dx, dz, model, yaw] of [[-7, -2, box('milk-can'), 0], [-8, -2, box('milk-can'), 30], [7, -2, box('hay-bale'), 90], [8, -3, box('hay-bale'), 0], [7, -4, M.bucket, 0]] as const) {
         ctx.prop(model, barn.door[0] + dx, BARN.z0 + dz, yaw);
       }
       b.claim(BARN.x0 - 3, BARN.z0 - 1, BARN.x0 + BARN.w + 2, BARN.z0 + BARN.d + 2);
+      // The doorway's threshold and the apron before it cobbled as the aisle, out to the farm's track.
+      const barnDoor = { x0: barn.door[0] - barn.aisle, width: 2 * barn.aisle + 1 };
+      for (let x = barnDoor.x0; x < barnDoor.x0 + barnDoor.width; x++) world.set(x, barnBase, BARN.z0, B.cobbleGrey);
+      b.walkOut(barnDoor, BARN.z0 - 1, BARN.z0 - 1, barnBase);
       ctx.landmark('chuong-bo', 'Chuồng bò đỏ', barn.door[0], BARN.z0 - 6, barnBase + 1);
       ctx.landmark('trong-chuong', 'Trong chuồng bò', barn.door[0], BARN.z0 + Math.floor(BARN.d / 2), barnBase + 1);
       // The pens: rail fences with a gate on the way, a trough, hay bales, the hen coop in the east pen.
@@ -712,7 +839,7 @@ export async function generateXomMaiAm() {
       ctx.prop(box('coop'), east.x0 + 12, east.z0 + 6, 0);
       ctx.prop(box('trough'), east.x0 + 6, east.z0 + 18, 0);
       for (let i = 0; i < 4; i++) ctx.prop(box('hay-pile'), east.x0 + 4 + i * 4, east.z0 + 12 + (i % 2) * 3, i * 70);
-      ctx.landmark('chuong-ga', 'Chuồng gà', east.x0 + 12, east.z0 + 12);
+      ctx.landmark('chuong-ga', 'Chuồng gà', east.x0 + 10, east.z0 + 12);
       // The vegetable garden (d-07): beds of tilled earth inside a rail fence, pumpkins, cabbages, carrots, maize.
       const crops = [box('pumpkin'), box('cabbage'), M.carrot, box('pumpkin'), box('cabbage'), M.cornYoung];
       for (let z = GARDEN.z0 + 1; z < GARDEN.z1; z++) {
@@ -739,7 +866,7 @@ export async function generateXomMaiAm() {
         }
       }
       b.scarecrow(WHEAT.x0 + 40, WHEAT.z0 + 14);
-      for (let i = 0; i < 4; i++) ctx.prop(box('hay-bale'), WHEAT.x0 + 9 + i * 27, WHEAT.z0 - 3, i * 50);
+      for (let i = 0; i < 4; i++) ctx.prop(box('hay-bale'), WHEAT.x0 + 9 + i * 27, WHEAT.z0 - 1, i * 50);
       b.claim(WHEAT.x0, WHEAT.z0 - 1, WHEAT.x1, WHEAT.z1);
       ctx.landmark('ruong-lua-mi', 'Ruộng lúa mì', WHEAT.x0 + 30, WHEAT.z0 + 5, surface(WHEAT.x0 + 30, WHEAT.z0 + 5) + 1);
 
@@ -752,14 +879,15 @@ export async function generateXomMaiAm() {
       for (const z of [128, 134]) for (let y = ground + 1; y <= ground + 3; y++) world.set(garden.x0, y, z, B.log);
       for (let z = 128; z <= 134; z++) world.set(garden.x0, ground + 4, z, B.tile);
       ctx.landmark('cong-vuon-hoa', 'Cổng vườn hoa', garden.x0 - 2, 131);
-      for (let x = garden.x0 + 3; x < 240; x += 3) for (let z = garden.z0 + 3; z < garden.z1 - 1; z += 3) ctx.prop(FLOWERS[(x + z) % 3] ?? M.flowerRed, x, z, (x * 17 + z * 29) % 360);
+      for (let x = garden.x0 + 3; x < 240; x += 3) for (let z = garden.z0 + 3; z < garden.z1 - 1; z += 3) offWay(FLOWERS[(x + z) % 3] ?? M.flowerRed, x, z, (x * 17 + z * 29) % 360);
+      b.avoid(garden.x0, garden.z0, garden.x1, garden.z1);
       const trellis = { x0: 242, z0: 122, x1: 248, z1: 128 };
       for (const [x, z] of [[trellis.x0, trellis.z0], [trellis.x1, trellis.z0], [trellis.x0, trellis.z1], [trellis.x1, trellis.z1]] as const) for (let y = ground + 1; y <= ground + 3; y++) world.set(x, y, z, B.log);
       for (let x = trellis.x0; x <= trellis.x1; x++) for (let z = trellis.z0; z <= trellis.z1; z++) if ((x + z) % 3 !== 0) world.set(x, ground + 4, z, B.leaves);
       for (let i = 0; i < 6; i++) ctx.propAt(M.loofah, [trellis.x0 + 1.5 + (i % 3) * 2, ground + 3.2, trellis.z0 + 2.5 + Math.floor(i / 3) * 2], i * 60);
       ctx.landmark('gian-muop', 'Giàn mướp cuối vườn', 245, 125);
       for (let z = 136; z <= 140; z++) world.set(248, ground + 1, z, B.planks);
-      for (let z = 136; z <= 140; z++) for (let y = ground + 2; y <= ground + 3; y++) world.set(248, y, z, z % 2 === 0 ? B.sand : B.planks);
+      for (let z = 136; z <= 140; z++) for (let y = ground + 2; y <= ground + 3; y++) world.set(248, y, z, z % 2 === 0 ? B.sand : B.board);
       for (let x = 242; x <= 246; x += 2) for (let z = 136; z <= 140; z += 2) ctx.prop(box('cabbage'), x, z, x * 7 + z);
       for (let x = garden.x0 + 1; x < garden.x1; x += 2) ctx.prop(M.flowerYellow, x, garden.z1 + 1, x * 31);
       ctx.landmark('vuon-hoa', 'Bụi hoa tỉ muội', 232, 131);
@@ -805,14 +933,13 @@ export async function generateXomMaiAm() {
       ctx.landmark('ngo-anh-trang', 'Ngõ nhỏ ánh trăng', 560, 186);
       for (let x = 544; x <= 546; x++) for (let z = 148; z <= 149; z++) world.set(x, ground + 1, z, B.planks);
       ctx.landmark('chong-tre', 'Chõng tre ngoài sân', 545, 148);
-      ctx.centred(M.table, 549, 140, 0);
+      ctx.centred(M.table, 552, 141, 0);
       ctx.prop(M.oak, 567, 191, 40);
       ctx.landmark('goc-khe', 'Gốc khế đầu ngõ', 567, 191);
       for (let z = 166; z <= 194; z += 7) ctx.prop(STREET_LANTERN, z % 2 === 0 ? 557 : 563, z, 0);
       for (let z = 198; z <= 230; z += 8) ctx.prop(STREET_LANTERN, z % 16 === 6 ? 556 : 564, z, 0);
-      bambooHedge(ctx, [[555, 196], [555, 230]]);
-      bambooHedge(ctx, [[565, 196], [565, 230]]);
       const sapodilla = { x0: 520, z0: 130, x1: 540, z1: 146 };
+      b.avoid(sapodilla.x0, sapodilla.z0, sapodilla.x1, sapodilla.z1);
       for (const z of [sapodilla.z0, sapodilla.z1]) b.fenceRun(box('picket'), sapodilla.x0, z, 'x', sapodilla.x1 - sapodilla.x0 + 1);
       for (const x of [sapodilla.x0, sapodilla.x1]) b.fenceRun(box('picket'), x, sapodilla.z0 + 1, 'z', sapodilla.z1 - sapodilla.z0 - 1);
       ctx.prop(M.fatTree, 530, 138, 10);
@@ -829,8 +956,8 @@ export async function generateXomMaiAm() {
       for (let i = 0; i < 3; i++) ctx.propAt(M.bowl, [DEN.x + 4.6 + i * 0.5, surface(DEN.x + 5, DEN.z) + 1.8, DEN.z + 0.5], i * 30);
       b.claim(DEN.x - 3, DEN.z - 7, DEN.x + 11, DEN.z + 7);
       ctx.landmark('hang-da', 'Hang đá ấm', DEN.x + 4, DEN.z, surface(DEN.x + 4, DEN.z) + 1);
-      for (const [x, z] of [[608, 150], [612, 170], [616, 146], [606, 168], [619, 174]] as const) ctx.prop(M.rock, x, z, x * 7);
-      for (let i = 0; i < 24; i++) ctx.prop(M.pebble, 605 + ((i * 7) % 16), 148 + ((i * 11) % 26), i * 31);
+      for (const [x, z] of [[608, 150], [612, 170], [616, 146], [606, 168], [619, 174]] as const) offWay(M.rock, x, z, x * 7);
+      for (let i = 0; i < 24; i++) offWay(M.pebble, 605 + ((i * 7) % 16), 148 + ((i * 11) % 26), i * 31);
       for (let x = 610; x <= 618; x++) for (let k = 1; k <= 4; k++) world.set(x, surface(x, 141) + k, 141, k === 3 && x % 2 === 0 ? B.board : B.stone);
       ctx.landmark('vach-da', 'Vách đá khắc chữ', 614, 139);
       ctx.landmark('bai-da-truoc-hang', 'Bãi đá trước hang', 612, 160);
@@ -840,16 +967,22 @@ export async function generateXomMaiAm() {
 
       // Chapter 3: the old hut on the west shore with its wooden door off its hinges, the sand beach beside it,
       // the stone wall studded with shells, the pebble strand at the water's edge, a boat drawn up.
-      const hut = { x0: 238, z0: 560, w: 8, d: 6 };
-      placeHouse(world, hut.x0, hut.z0, hut.w, hut.d, 3, ground + 1, { wall: B.planks, roof: B.red, trim: B.log });
-      b.claim(hut.x0 - 1, hut.z0 - 2, hut.x0 + hut.w, hut.z0 + hut.d);
-      ctx.propAt(M.door, [hut.x0 + hut.w / 2 + 1.6, ground + 1, hut.z0 - 0.7], 20);
-      ctx.landmark('cua-go-choi', 'Cánh cửa gỗ của chòi', hut.x0 + hut.w / 2 + 2, hut.z0 - 2);
-      ctx.landmark('choi-cu', 'Căn chòi cũ bên bờ', hut.x0 + hut.w / 2, hut.z0 - 2);
+      // The hut is a house the child walks into: 13 x 11 under walls seven high, a doorway three wide, a plank floor.
+      const hut = { x0: 234, z0: 560, w: 13, d: 11 };
+      const hutBase = b.levelPlot(hut.x0 - 1, hut.z0 - 3, hut.x0 + hut.w, hut.z0 + hut.d);
+      const hutFront = placeHouse(world, hut.x0, hut.z0, hut.w, hut.d, 7, hutBase + 1, { wall: B.planks, roof: B.red, trim: B.log, floor: B.planks });
+      b.claim(hut.x0 - 1, hut.z0 - 1, hut.x0 + hut.w, hut.z0 + hut.d);
+      for (let x = hutFront.doorway.x0; x < hutFront.doorway.x0 + hutFront.doorway.width; x++) world.set(x, hutBase, hut.z0, B.planks);
+      b.walkOut(hutFront.doorway, hut.z0 - 1, hut.z0 - 1, hutBase);
+      // The door off its hinges leans on the wall east of the doorway, clear of the way in.
+      const hutDoorEnd = hutFront.doorway.x0 + hutFront.doorway.width;
+      ctx.propAt(M.door, [hutDoorEnd + 1.6, hutBase + 1, hut.z0 - 0.7], 20);
+      ctx.landmark('cua-go-choi', 'Cánh cửa gỗ của chòi', hutDoorEnd + 2, hut.z0 - 2);
+      ctx.landmark('choi-cu', 'Căn chòi cũ bên bờ', hutFront.door[0], hut.z0 - 3);
       for (let x = 248; x <= 290; x++) for (let z = 550; z <= 586; z++) if (!ctx.inZone(x, z) || x > 236) b.paint(x, z, B.sand);
       ctx.landmark('bai-cat', 'Bãi cát cạnh căn chòi', 262, 572);
       for (let x = 246; x <= 290; x++) for (let z = 596; z <= 618; z++) if ((x * 7 + z * 3) % 5 !== 0) b.paint(x, z, B.grey);
-      for (let i = 0; i < 30; i++) ctx.prop(M.pebble, 250 + ((i * 13) % 26), 598 + ((i * 7) % 18), i * 47);
+      for (let i = 0; i < 30; i++) offWay(M.pebble, 250 + ((i * 13) % 26), 598 + ((i * 7) % 18), i * 47);
       ctx.landmark('bai-soi', 'Bãi sỏi mép hồ', 266, 606);
       for (let x = 250; x <= 255; x++) for (let k = 1; k <= 3; k++) world.set(x, ground + k, 548, B.stone);
       for (let i = 0; i < 6; i++) ctx.propAt(M.shell, [250.5 + i, ground + 1.2 + (i % 3), 547.4], i * 60);
@@ -860,20 +993,22 @@ export async function generateXomMaiAm() {
       // up, grandpa's house on top with stone steps before its porch, the trail over the hilltop.
       b.homestead(183, 600, { chair: true });
       ctx.landmark('hien-nha-hang-xom', 'Hiên nhà hàng xóm', 188, 594);
-      bambooHedge(ctx, [[172, 571], [96, 585]]);
-      bambooHedge(ctx, [[172, 580], [100, 595]]);
       ctx.prop(M.rock, 132, 589, 40);
       ctx.landmark('tang-da', 'Tảng đá lưng dốc', 132, 589, surface(132, 589) + 1);
+      // Grandpa's house: 15 x 12 under walls seven high, a doorway three wide, its porch roofed across the front.
       const top = surface(GRANDPA_HILL.x, GRANDPA_HILL.z);
-      placeHouse(world, 80, 596, 11, 8, 4, top + 1, { ...b.palette.finish, wall: B.sand, roof: B.tile, trim: B.log });
-      b.porch(80, 596, 11, top, B.tile, top + 5);
-      for (let x = 82; x <= 88; x++) world.set(x, top + 1, 592, B.grey);
-      ctx.propAt(M.hammock, [82.5, top + 1.6, 594.5], 90);
-      ctx.prop(M.oak, 94, 604, 70);
-      ctx.prop(M.palm, 77, 590, 10);
-      b.claim(76, 590, 96, 606);
-      ctx.landmark('nha-ong', 'Thềm nhà ông', 85, 592, top + 1);
-      for (let i = 0; i < 10; i++) ctx.prop(M.pebble, 64 + ((i * 5) % 30), 566 + ((i * 3) % 10), i * 20);
+      const gp = { x0: 80, z0: 596, w: 15, d: 12 };
+      const gpFront = placeHouse(world, gp.x0, gp.z0, gp.w, gp.d, 7, top + 1, { ...b.palette.finish, wall: B.sand, roof: B.tile, trim: B.log });
+      b.porch(gp.x0, gp.z0, gp.w, top, B.tile, top + 6);
+      for (let x = gpFront.doorway.x0; x < gpFront.doorway.x0 + gpFront.doorway.width; x++) world.set(x, top, gp.z0, B.planks);
+      ctx.propAt(M.hammock, [gp.x0 + 2.5, top + 1.6, gp.z0 - 1.5], 90);
+      ctx.prop(M.oak, gp.x0 + gp.w + 3, gp.z0 + 8, 70);
+      ctx.prop(M.palm, 76, 590, 10);
+      b.claim(gp.x0 - 2, gp.z0 - 3, gp.x0 + gp.w + 5, gp.z0 + gp.d + 2);
+      // From the porch's edge a walk out to the trail over the hilltop.
+      b.walkOut(gpFront.doorway, gp.z0 - 4, gp.z0 - 4, top);
+      ctx.landmark('nha-ong', 'Thềm nhà ông', gpFront.door[0], gp.z0 - 4, top + 1);
+      for (let i = 0; i < 10; i++) offWay(M.pebble, 64 + ((i * 5) % 30), 566 + ((i * 3) % 10), i * 20);
       ctx.landmark('dinh-doc', 'Lối mòn đỉnh dốc', 66, 574, surface(66, 574) + 1);
       // Trees stay off the beach and the strand; a fisher's cottage in the zone's north-west, bamboo by the hut.
       ctx.keepOut(258, 548, 292, 588);
@@ -901,7 +1036,8 @@ export async function generateXomMaiAm() {
         const z = Math.round(LAKE.z + LAKE.rz * Math.sin(t));
         if (Math.abs(z - 590) > 3) ctx.propAt(M.lotus, [x + 0.5, WATER_LEVEL + 1.02, z + 0.5], i * 33);
       }
-      ctx.landmark('ho-sen', 'Hồ sen', LAKE.x, 560);
+      // The lake seen from the middle of its plank bridge.
+      ctx.landmark('ho-sen', 'Hồ sen', LAKE.x, 589, WATER_LEVEL + 2);
       ctx.landmark('mep-ho-sen', 'Mép hồ sen', 530, 575);
       jetty(ctx, LAKE.x, Math.ceil(lakeShoreZ(LAKE.x, 1) ?? LAKE.z + LAKE.rz) + 1, 10, -1, WATER_LEVEL);
       ctx.landmark('ben-do', 'Bến đò cuối hồ', LAKE.x, 680);
@@ -927,7 +1063,10 @@ export async function generateXomMaiAm() {
       b.field(652, 612, 700, 646, M.carrot);
       const mound = surface(WIND_MOUND.x, WIND_MOUND.z);
       placeWindmill(world, WIND_MOUND.x + 6, WIND_MOUND.z, mound + 1, { planks: B.planks, log: B.log, roof: B.tile, sail: B.white, stone: B.cobbleGrey, glass: block('glass') });
+      // The mill's foot opened to a doorway three wide and three high, and a walk from it to the mound's trail.
+      for (let dx = -1; dx <= 1; dx++) for (let dz = -5; dz <= -2; dz++) for (let y = 0; y <= 2; y++) put(world, WIND_MOUND.x + 6 + dx, mound + 1 + y, WIND_MOUND.z + dz, 0);
       b.claim(WIND_MOUND.x + 2, WIND_MOUND.z - 4, WIND_MOUND.x + 10, WIND_MOUND.z + 4);
+      b.walkOut({ x0: WIND_MOUND.x + 5, width: 3 }, WIND_MOUND.z - 5, WIND_MOUND.z - 5, mound);
       for (let i = 0; i < 4; i++) ctx.propAt(M.kite, [WIND_MOUND.x - 6 + i * 4, mound + 9 + (i % 2) * 3, WIND_MOUND.z - 8 + i * 3], i * 80);
       ctx.keepOut(WIND_MOUND.x - 18, WIND_MOUND.z - 18, WIND_MOUND.x + 18, WIND_MOUND.z + 18);
       for (let i = 0; i < 14; i++) ctx.prop(FLOWERS[i % 3] ?? M.flowerRed, WIND_MOUND.x - 14 + ((i * 11) % 28), WIND_MOUND.z - 12 + ((i * 7) % 24), i * 25);
@@ -997,10 +1136,14 @@ export async function generateXomMaiAm() {
       b.village(150, 486, 270, 545);
       b.village(100, 622, 300, 672);
       b.village(520, 620, 650, 700);
-      for (const route of [LANE_N, LANE_S, SHORE_S, FARM_TRACK, ...ROUTES.slice(4, 9)]) laneVerge(ctx, route, { spacing: 4, lampEvery: 18 });
+      // Bamboo down both sides of the moonlit lane and of the slope to grandpa's, set once every walk is laid.
+      for (const hedge of [[[555, 196], [555, 230]], [[565, 196], [565, 230]], [[172, 571], [96, 585]], [[172, 580], [100, 595]]] as Point[][]) bambooHedge(offWays, hedge);
+      for (const route of [LANE_N, LANE_S, SHORE_S, FARM_TRACK, ...CROSS_LANES]) laneVerge(offWays, route, { spacing: 4, lampEvery: 18 });
       for (let i = 14; i <= 786; i += 5) {
-        for (const [x, z] of [[i, 13], [i, 787], [13, i], [787, i]] as const) if (!ctx.onPath(x, z) && !b.isClaimedAt(x, z)) ctx.prop(M.bamboo, x, z, (x * 37 + z) % 360);
+        for (const [x, z] of [[i, 13], [i, 787], [13, i], [787, i]] as const) if (!b.onWay(x, z) && !b.isClaimedAt(x, z)) ctx.prop(M.bamboo, x, z, (x * 37 + z) % 360);
       }
+      const unwalked = b.unwalkedDoors();
+      if (unwalked.length > 0) console.warn(`${MAP_ID}: no walk found to a lane from the doors at ${unwalked.map(([x, z]) => `${x},${z}`).join(' ')}`);
     },
   });
 }
