@@ -4,7 +4,7 @@
 // zone map's context (zone-map.ts), keeps quest targets and trees out of what it builds, and returns nothing
 // the map has to place again. A map file decides where; these decide how it looks.
 import { PACK } from './map-kit';
-import { placeCottage } from './structures/countryside';
+import { cottageSize, placeCottage } from './structures/countryside';
 import { facingOf, facingWriter, FRAME, frameCell, turnCell } from './structures/world-writer';
 import type { Point } from './structures/path';
 import type { ZoneMapContext } from './zone-map';
@@ -222,8 +222,7 @@ export function streetHouses(ctx: ZoneMapContext, route: readonly Point[], optio
       let d = 8;
       while (d < len - 8) {
         const n = nextCottage(ctx);
-        const w = 9 + (n % 3) * 2;
-        const depth = 7 + (n % 2);
+        const { w, d: depth } = cottageSize(n);
         const [px, pz] = [Math.round(ax + ux * d), Math.round(az + uz * d)];
         const [rx, rz] = turnCell([0, 0], facing, Math.floor(w / 2), -setback);
         const origin: [number, number] = [px - rx, pz - rz];
@@ -244,10 +243,20 @@ export function streetHouses(ctx: ZoneMapContext, route: readonly Point[], optio
         const writer = facingWriter(ctx.world, origin, facing);
         const house = placeCottage(writer, FRAME, FRAME, n, baseY, palette);
         const door = Math.floor(w / 2);
-        // The garden: a cobbled walk from the gate to the door, bushes either side, a fence with its gate gap.
-        for (let v = -3; v <= -1; v++) for (const u of [door - 1, door]) {
+        const doorCols = Array.from({ length: house.doorway.width }, (_, i) => house.doorway.x0 - FRAME + i);
+        // The garden: a cobbled walk from the gate to the door, bushes either side, a fence with its gate gap;
+        // where the house stands on its stone foot, steps up to the door one block at a time.
+        for (let v = -3; v <= -1; v++) for (const u of doorCols) {
           const [x, z] = cell(u, v);
           ctx.world.set(x, ctx.surface(x, z), z, ctx.soil.path);
+        }
+        for (const u of doorCols) {
+          for (let k = 1; k <= 4; k++) {
+            const [x, z] = cell(u, -k);
+            const top = baseY - k;
+            if (top <= ctx.surface(x, z) + 1) break;
+            for (let y = ctx.surface(x, z) + 1; y < top; y++) ctx.world.set(x, y, z, foot);
+          }
         }
         for (const u of [0, 1, w - 2, w - 1]) {
           const [x, z] = cell(u, -2);
@@ -256,7 +265,7 @@ export function streetHouses(ctx: ZoneMapContext, route: readonly Point[], optio
         const [fx, fz] = turnCell([0, 0], facing, 1, 0);
         const fenceYaw = Math.abs(fx) > Math.abs(fz) ? 0 : 90;
         for (let u = -1; u <= w; u += 2) {
-          if (Math.abs(u - door + 0.5) < 2) continue;
+          if (Math.abs(u - door + 0.5) < 2.5) continue;
           const [x, z] = cell(u, -3);
           ctx.prop(`${N}/fence_simple.glb`, x, z, fenceYaw);
         }

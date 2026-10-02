@@ -133,6 +133,15 @@ export function placeWell(world: WorldWriter, cx: number, cz: number, ground: nu
 }
 
 /**
+ * A cottage's size by its number in a street (owner, 02/10/2026: a house many times the child's size): 13 to 17
+ * blocks wide, 11 or 12 deep, walls 7 high under a roof about as tall again — some nine times her height,
+ * with a three-wide door and room to move inside.
+ */
+export function cottageSize(n: number): { w: number; d: number; wallHeight: number } {
+  return { w: 13 + (n % 3) * 2, d: 11 + (n % 2), wallHeight: 7 };
+}
+
+/**
  * A cottage of the mocks: walls and roof colour picked by `n` so a row of them reads as a mixed street
  * (red, blue and orange roofs; cream, birch and plank walls), door on -z, finished as `b.finish` says
  * (buildings.ts `HouseBlocks`). Returns its footprint (inclusive) with the doorstep in front, the lamp cells
@@ -145,14 +154,13 @@ export function placeCottage(
   n: number,
   baseY: number,
   b: { walls: readonly number[]; roofs: readonly number[]; trim: number; finish?: Omit<HouseBlocks, 'wall' | 'roof' | 'trim'> },
-): { x0: number; z0: number; x1: number; z1: number; lamps: Array<[number, number]>; boxes: Array<[number, number, number]> } {
-  const w = 9 + (n % 3) * 2;
-  const d = 7 + (n % 2);
-  const front = placeHouse(world, x0, z0, w, d, 4, baseY, {
+): { x0: number; z0: number; x1: number; z1: number; doorway: { x0: number; width: number }; lamps: Array<[number, number]>; boxes: Array<[number, number, number]> } {
+  const { w, d, wallHeight } = cottageSize(n);
+  const front = placeHouse(world, x0, z0, w, d, wallHeight, baseY, {
     ...b.finish,
     wall: b.walls[n % b.walls.length] ?? b.trim,
     roof: b.roofs[(n * 7) % b.roofs.length] ?? b.trim,
     trim: b.trim,
   });
-  return { x0: x0 - 1, z0: z0 - 3, x1: x0 + w, z1: z0 + d, lamps: front.lamps, boxes: front.boxes };
+  return { x0: x0 - 1, z0: z0 - 3, x1: x0 + w, z1: z0 + d, doorway: front.doorway, lamps: front.lamps, boxes: front.boxes };
 }

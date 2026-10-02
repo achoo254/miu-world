@@ -33,8 +33,35 @@ export interface HouseBlocks {
 export interface HouseFront {
   roofTop: number;
   door: [number, number];
+  /** The doorway's first column and its width (on the z0 wall). */
+  doorway: { x0: number; width: number };
   lamps: Array<[number, number]>;
   boxes: Array<[number, number, number]>;
+}
+
+/**
+ * A doorway the child walks through without a squeeze (owner, 02/10/2026: "thật rộng lối vào"): three blocks
+ * wide and three high on a wall at least five high and seven long, else two by two as before.
+ */
+export function doorwaySize(w: number, wallHeight: number): { width: 2 | 3; height: 2 | 3 } {
+  return w >= 7 && wallHeight >= 5 ? { width: 3, height: 3 } : { width: 2, height: 2 };
+}
+
+/**
+ * Steps down from a doorway whose floor stands above the ground in front (a house on a stone foot): one step
+ * per block of height, `width` wide, going out along -z from the cell before the door (x0..x0+width-1 at
+ * zDoor-1), so the child walks up a block at a time instead of meeting a ledge. `ground` gives the standing
+ * height outside (the y her feet are at).
+ */
+export function doorSteps(world: WorldWriter, x0: number, width: number, zDoor: number, floorY: number, ground: (x: number, z: number) => number, block: number): void {
+  for (let x = x0; x < x0 + width; x++) {
+    for (let k = 1; k <= 4; k++) {
+      const z = zDoor - k;
+      const top = floorY - k; // the standing height on this step
+      if (top <= ground(x, z)) break;
+      for (let y = ground(x, z); y < top; y++) put(world, x, y, z, block);
+    }
+  }
 }
 
 /** Box of `w` x `d` from (x0, z0) with walls `wallHeight` high on `baseY`, a door and windows on the -z side. */
@@ -42,6 +69,10 @@ export function placeHouse(world: WorldWriter, x0: number, z0: number, w: number
   const x1 = x0 + w - 1;
   const z1 = z0 + d - 1;
   const doorX = x0 + Math.floor(w / 2);
+  const doorway = doorwaySize(w, wallHeight);
+  // The opening's columns: doorX - 1 and doorX for a two-wide door, one more to the east for three.
+  const doorFrom = doorX - 1;
+  const doorTo = doorX - 1 + doorway.width - 1;
   const detailed = blocks.beam !== undefined;
   const topY = baseY + wallHeight - 1;
   // Windows: one row in the middle of the wall (two rows on tall walls); a detailed house keeps its beam row
@@ -59,8 +90,8 @@ export function placeHouse(world: WorldWriter, x0: number, z0: number, w: number
         if (!edgeX && !edgeZ) continue;
         const corner = edgeX && edgeZ;
         const [i, length] = edgeZ ? [x - x0, w] : [z - z0, d];
-        const nearDoor = z === z0 && x >= doorX - 2 && x <= doorX + 1;
-        const door = z === z0 && (x === doorX || x === doorX - 1) && y < baseY + 2;
+        const nearDoor = z === z0 && x >= doorFrom - 1 && x <= doorTo + 1;
+        const door = z === z0 && x >= doorFrom && x <= doorTo && y < baseY + doorway.height;
         if (door) continue;
         const window = !corner && windowRow(y) && windowAt(i, length) && !nearDoor;
         if (window) {
@@ -78,9 +109,9 @@ export function placeHouse(world: WorldWriter, x0: number, z0: number, w: number
       }
     }
   }
-  if (blocks.lantern !== undefined && wallHeight > 3) for (const x of [doorX - 2, doorX + 1]) put(world, x, baseY + 2, z0 - 1, blocks.lantern);
+  if (blocks.lantern !== undefined && wallHeight > 3) for (const x of [doorFrom - 1, doorTo + 1]) put(world, x, baseY + 2, z0 - 1, blocks.lantern);
   // A lintel over the door on a detailed house.
-  if (detailed && wallHeight > 3) for (const x of [doorX - 1, doorX]) put(world, x, baseY + 2, z0, blocks.beam ?? blocks.trim);
+  if (detailed && wallHeight > doorway.height) for (let x = doorFrom; x <= doorTo; x++) put(world, x, baseY + doorway.height, z0, blocks.beam ?? blocks.trim);
   // Gable roof along x: each row one step higher towards the middle of the depth, eaves overhang by one.
   const half = Math.ceil((d + 2) / 2);
   let roofTop = baseY + wallHeight;
@@ -101,7 +132,7 @@ export function placeHouse(world: WorldWriter, x0: number, z0: number, w: number
     const slope = baseY + wallHeight + Math.min(cz - (z0 - 1), z1 + 1 - cz);
     for (let y = baseY + wallHeight; y <= Math.max(slope + 2, roofTop + 1); y++) put(world, cx, y, cz, blocks.chimney);
   }
-  return { roofTop, door: [doorX, z0 - 1], lamps: [[doorX - 2, z0 - 1], [doorX + 1, z0 - 1]], boxes };
+  return { roofTop, door: [doorX, z0 - 1], doorway: { x0: doorFrom, width: doorway.width }, lamps: [[doorFrom - 1, z0 - 1], [doorTo + 1, z0 - 1]], boxes };
 }
 
 export interface CastleBlocks {
