@@ -1,0 +1,113 @@
+{
+  "id": "glasses-space-cyan",
+  "name": "Kính vũ trụ xanh ngọc",
+  "slot": "glasses",
+  "unlock": {
+    "level": 7
+  },
+  "attachNode": "head",
+  "voxelSize": 0.0385,
+  "offset": [
+    0,
+    0,
+    0
+  ],
+  "rotation": [
+    0,
+    0,
+    0
+  ],
+  "palette": {
+    "frame": "#fff6f0",
+    "visor": "#3fe0e8",
+    "shine": "#e8ffff",
+    "light": "#ff8ad8"
+  },
+  "variants": {
+    "pink": {
+      "visor": "#ff7ad0",
+      "shine": "#fff0fa",
+      "light": "#5ff0ff"
+    },
+    "gold": {
+      "frame": "#fff1a8",
+      "visor": "#ffc81c",
+      "shine": "#ffffff",
+      "light": "#ff5a6a"
+    }
+  },
+  "boxes": [
+    {
+      "x": -12,
+      "y": 8,
+      "z": 11,
+      "w": 24,
+      "h": 7,
+      "d": 1,
+      "color": "frame"
+    },
+    {
+      "x": -11,
+      "y": 9,
+      "z": 12,
+      "w": 22,
+      "h": 5,
+      "d": 1,
+      "color": "visor"
+    },
+    {
+      "x": -9,
+      "y": 12,
+      "z": 13,
+      "w": 5,
+      "h": 1,
+      "d": 1,
+      "color": "shine"
+    },
+    {
+      "x": -8,
+      "y": 11,
+      "z": 13,
+      "w": 2,
+      "h": 1,
+      "d": 1,
+      "color": "shine"
+    },
+    {
+      "x": 12,
+      "y": 9,
+      "z": 2,
+      "w": 2,
+      "h": 5,
+      "d": 9,
+      "color": "frame"
+    },
+    {
+      "x": 14,
+      "y": 11,
+      "z": 6,
+      "w": 1,
+      "h": 2,
+      "d": 2,
+      "color": "light"
+    },
+    {
+      "x": -14,
+      "y": 9,
+      "z": 2,
+      "w": 2,
+      "h": 5,
+      "d": 9,
+      "color": "frame"
+    },
+    {
+      "x": -15,
+      "y": 11,
+      "z": 6,
+      "w": 1,
+      "h": 2,
+      "d": 2,
+      "color": "light"
+    }
+  ]
+}

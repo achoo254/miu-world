@@ -1,0 +1,171 @@
+{
+  "id": "shoes-football-orange",
+  "name": "Giày đá bóng cam",
+  "slot": "shoes",
+  "unlock": {
+    "level": 3
+  },
+  "attachNode": "leg-left",
+  "mirror": true,
+  "voxelSize": 0.05,
+  "offset": [
+    0,
+    0,
+    0
+  ],
+  "palette": {
+    "sole": "#3b3446",
+    "main": "#f28a3c",
+    "stripe": "#fff6f0",
+    "lace": "#fff6f0",
+    "stud": "#c4ccd6"
+  },
+  "variants": {
+    "blue": {
+      "main": "#3f82c4",
+      "stripe": "#ffd23f"
+    },
+    "green": {
+      "main": "#5fb84f",
+      "stripe": "#fff6f0",
+      "lace": "#ffd23f"
+    }
+  },
+  "boxes": [
+    {
+      "x": -4,
+      "y": -10,
+      "z": -4,
+      "w": 8,
+      "h": 1,
+      "d": 9,
+      "color": "sole"
+    },
+    {
+      "x": -4,
+      "y": -9,
+      "z": -4,
+      "w": 8,
+      "h": 3,
+      "d": 9,
+      "color": "main"
+    },
+    {
+      "x": -4,
+      "y": -6,
+      "z": -4,
+      "w": 8,
+      "h": 1,
+      "d": 3,
+      "color": "main"
+    },
+    {
+      "x": 3,
+      "y": -8,
+      "z": -3,
+      "w": 1,
+      "h": 1,
+      "d": 2,
+      "color": "stripe"
+    },
+    {
+      "x": 3,
+      "y": -7,
+      "z": -1,
+      "w": 1,
+      "h": 1,
+      "d": 2,
+      "color": "stripe"
+    },
+    {
+      "x": 3,
+      "y": -8,
+      "z": 1,
+      "w": 1,
+      "h": 1,
+      "d": 2,
+      "color": "stripe"
+    },
+    {
+      "x": -4,
+      "y": -8,
+      "z": -3,
+      "w": 1,
+      "h": 1,
+      "d": 2,
+      "color": "stripe"
+    },
+    {
+      "x": -4,
+      "y": -7,
+      "z": -1,
+      "w": 1,
+      "h": 1,
+      "d": 2,
+      "color": "stripe"
+    },
+    {
+      "x": -4,
+      "y": -8,
+      "z": 1,
+      "w": 1,
+      "h": 1,
+      "d": 2,
+      "color": "stripe"
+    },
+    {
+      "x": -2,
+      "y": -7,
+      "z": 0,
+      "w": 4,
+      "h": 1,
+      "d": 1,
+      "color": "lace"
+    },
+    {
+      "x": -2,
+      "y": -7,
+      "z": 2,
+      "w": 4,
+      "h": 1,
+      "d": 1,
+      "color": "lace"
+    },
+    {
+      "x": -3,
+      "y": -11,
+      "z": -3,
+      "w": 1,
+      "h": 1,
+      "d": 1,
+      "color": "stud"
+    },
+    {
+      "x": 2,
+      "y": -11,
+      "z": -3,
+      "w": 1,
+      "h": 1,
+      "d": 1,
+      "color": "stud"
+    },
+    {
+      "x": -3,
+      "y": -11,
+      "z": 2,
+      "w": 1,
+      "h": 1,
+      "d": 1,
+      "color": "stud"
+    },
+    {
+      "x": 2,
+      "y": -11,
+      "z": 2,
+      "w": 1,
+      "h": 1,
+      "d": 1,
+      "color": "stud"
+    }
+  ]
+}

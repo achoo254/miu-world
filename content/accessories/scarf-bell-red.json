@@ -1,0 +1,110 @@
+{
+  "id": "scarf-bell-red",
+  "name": "Vòng chuông leng keng đỏ",
+  "slot": "scarf",
+  "attachNode": "torso",
+  "voxelSize": 0.0625,
+  "offset": [
+    0,
+    -0.1875,
+    0
+  ],
+  "palette": {
+    "main": "#e05a4f",
+    "stud": "#ffd23f",
+    "bell": "#f0b62a",
+    "line": "#a8740e"
+  },
+  "variants": {
+    "blue": {
+      "main": "#3f82c4"
+    },
+    "pink": {
+      "main": "#f78fbf",
+      "stud": "#fff6f0"
+    }
+  },
+  "boxes": [
+    {
+      "x": -8,
+      "y": 17,
+      "z": -6,
+      "w": 16,
+      "h": 2,
+      "d": 12,
+      "color": "main"
+    },
+    {
+      "x": -6,
+      "y": 17,
+      "z": 6,
+      "w": 1,
+      "h": 1,
+      "d": 1,
+      "color": "stud"
+    },
+    {
+      "x": -4,
+      "y": 18,
+      "z": 6,
+      "w": 1,
+      "h": 1,
+      "d": 1,
+      "color": "stud"
+    },
+    {
+      "x": 3,
+      "y": 18,
+      "z": 6,
+      "w": 1,
+      "h": 1,
+      "d": 1,
+      "color": "stud"
+    },
+    {
+      "x": 5,
+      "y": 17,
+      "z": 6,
+      "w": 1,
+      "h": 1,
+      "d": 1,
+      "color": "stud"
+    },
+    {
+      "x": -1,
+      "y": 16,
+      "z": 6,
+      "w": 2,
+      "h": 1,
+      "d": 2,
+      "color": "line"
+    },
+    {
+      "x": -2,
+      "y": 13,
+      "z": 6,
+      "w": 4,
+      "h": 3,
+      "d": 2,
+      "color": "bell"
+    },
+    {
+      "x": -2,
+      "y": 14,
+      "z": 8,
+      "w": 4,
+      "h": 1,
+      "d": 1,
+      "color": "line"
+    },
+    {
+      "x": -1,
+      "y": 12,
+      "z": 6,
+      "w": 2,
+      "h": 1,
+      "d": 2,
+      "color": "line"
+    }
+  ]
+}

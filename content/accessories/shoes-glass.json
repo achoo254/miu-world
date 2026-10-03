@@ -1,0 +1,121 @@
+{
+  "id": "shoes-glass",
+  "name": "Giày pha lê",
+  "slot": "shoes",
+  "unlock": {
+    "level": 11
+  },
+  "attachNode": "leg-left",
+  "mirror": true,
+  "voxelSize": 0.05,
+  "offset": [
+    0,
+    0,
+    0
+  ],
+  "palette": {
+    "glass": "#bfe8ff",
+    "glass2": "#8fd0f5",
+    "shine": "#ffffff",
+    "gem": "#f07fb0"
+  },
+  "variants": {
+    "pink": {
+      "glass": "#ffd0e8",
+      "glass2": "#f7a5cd",
+      "gem": "#7fc8f0"
+    }
+  },
+  "boxes": [
+    {
+      "x": -4,
+      "y": -10,
+      "z": -4,
+      "w": 8,
+      "h": 1,
+      "d": 9,
+      "color": "glass2"
+    },
+    {
+      "x": -4,
+      "y": -9,
+      "z": -4,
+      "w": 8,
+      "h": 2,
+      "d": 9,
+      "color": "glass"
+    },
+    {
+      "x": -3,
+      "y": -7,
+      "z": -4,
+      "w": 6,
+      "h": 1,
+      "d": 2,
+      "color": "glass"
+    },
+    {
+      "x": -1,
+      "y": -10,
+      "z": -5,
+      "w": 2,
+      "h": 1,
+      "d": 1,
+      "color": "glass2"
+    },
+    {
+      "x": -1,
+      "y": -8,
+      "z": 4,
+      "w": 2,
+      "h": 1,
+      "d": 1,
+      "color": "gem"
+    },
+    {
+      "x": 3,
+      "y": -8,
+      "z": -2,
+      "w": 1,
+      "h": 1,
+      "d": 1,
+      "color": "shine"
+    },
+    {
+      "x": -4,
+      "y": -9,
+      "z": 1,
+      "w": 1,
+      "h": 1,
+      "d": 1,
+      "color": "shine"
+    },
+    {
+      "x": 2,
+      "y": -9,
+      "z": 4,
+      "w": 1,
+      "h": 1,
+      "d": 1,
+      "color": "shine"
+    },
+    {
+      "x": -4,
+      "y": -8,
+      "z": -3,
+      "w": 1,
+      "h": 1,
+      "d": 1,
+      "color": "shine"
+    },
+    {
+      "x": 3,
+      "y": -9,
+      "z": 2,
+      "w": 1,
+      "h": 1,
+      "d": 1,
+      "color": "shine"
+    }
+  ]
+}

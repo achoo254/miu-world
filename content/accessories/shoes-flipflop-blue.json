@@ -1,0 +1,134 @@
+{
+  "id": "shoes-flipflop-blue",
+  "name": "Dép xỏ ngón xanh dương",
+  "slot": "shoes",
+  "attachNode": "leg-left",
+  "mirror": true,
+  "voxelSize": 0.05,
+  "offset": [
+    0,
+    0,
+    0
+  ],
+  "palette": {
+    "sole": "#3f82c4",
+    "top": "#8fc4f0",
+    "strap": "#fff6f0",
+    "flower": "#ffd23f"
+  },
+  "variants": {
+    "yellow": {
+      "sole": "#e0a01e",
+      "top": "#ffd23f",
+      "strap": "#e05a4f",
+      "flower": "#fff6f0"
+    },
+    "red": {
+      "sole": "#b8382f",
+      "top": "#e05a4f",
+      "strap": "#fff6f0",
+      "flower": "#ffd23f"
+    }
+  },
+  "boxes": [
+    {
+      "x": -4,
+      "y": -10,
+      "z": -4,
+      "w": 8,
+      "h": 1,
+      "d": 10,
+      "color": "sole"
+    },
+    {
+      "x": -4,
+      "y": -10,
+      "z": -4,
+      "w": 8,
+      "h": 1,
+      "d": 1,
+      "color": "top"
+    },
+    {
+      "x": -4,
+      "y": -10,
+      "z": 5,
+      "w": 8,
+      "h": 1,
+      "d": 1,
+      "color": "top"
+    },
+    {
+      "x": -1,
+      "y": -9,
+      "z": 3,
+      "w": 2,
+      "h": 1,
+      "d": 1,
+      "color": "strap"
+    },
+    {
+      "x": -2,
+      "y": -8,
+      "z": 2,
+      "w": 1,
+      "h": 1,
+      "d": 1,
+      "color": "strap"
+    },
+    {
+      "x": -3,
+      "y": -8,
+      "z": 1,
+      "w": 1,
+      "h": 1,
+      "d": 1,
+      "color": "strap"
+    },
+    {
+      "x": -4,
+      "y": -9,
+      "z": 0,
+      "w": 1,
+      "h": 2,
+      "d": 1,
+      "color": "strap"
+    },
+    {
+      "x": 1,
+      "y": -8,
+      "z": 2,
+      "w": 1,
+      "h": 1,
+      "d": 1,
+      "color": "strap"
+    },
+    {
+      "x": 2,
+      "y": -8,
+      "z": 1,
+      "w": 1,
+      "h": 1,
+      "d": 1,
+      "color": "strap"
+    },
+    {
+      "x": 3,
+      "y": -9,
+      "z": 0,
+      "w": 1,
+      "h": 2,
+      "d": 1,
+      "color": "strap"
+    },
+    {
+      "x": -1,
+      "y": -8,
+      "z": 3,
+      "w": 2,
+      "h": 1,
+      "d": 1,
+      "color": "flower"
+    }
+  ]
+}

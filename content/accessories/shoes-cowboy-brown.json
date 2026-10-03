@@ -1,0 +1,148 @@
+{
+  "id": "shoes-cowboy-brown",
+  "name": "Bốt cao bồi nâu",
+  "slot": "shoes",
+  "unlock": {
+    "level": 4
+  },
+  "attachNode": "leg-left",
+  "mirror": true,
+  "voxelSize": 0.05,
+  "offset": [
+    0,
+    0,
+    0
+  ],
+  "palette": {
+    "sole": "#4a2c1a",
+    "main": "#b0763f",
+    "stitch": "#ffd23f",
+    "spur": "#c4ccd6"
+  },
+  "variants": {
+    "black": {
+      "main": "#3b3446",
+      "stitch": "#e05a4f",
+      "sole": "#24202c"
+    }
+  },
+  "boxes": [
+    {
+      "x": -4,
+      "y": -10,
+      "z": -4,
+      "w": 8,
+      "h": 1,
+      "d": 9,
+      "color": "sole"
+    },
+    {
+      "x": -3,
+      "y": -10,
+      "z": 5,
+      "w": 6,
+      "h": 2,
+      "d": 1,
+      "color": "main"
+    },
+    {
+      "x": -4,
+      "y": -9,
+      "z": -4,
+      "w": 8,
+      "h": 4,
+      "d": 9,
+      "color": "main"
+    },
+    {
+      "x": -4,
+      "y": -5,
+      "z": -4,
+      "w": 8,
+      "h": 2,
+      "d": 8,
+      "color": "main"
+    },
+    {
+      "x": -5,
+      "y": -3,
+      "z": -5,
+      "w": 10,
+      "h": 1,
+      "d": 10,
+      "color": "main"
+    },
+    {
+      "x": -1,
+      "y": -10,
+      "z": 5,
+      "w": 2,
+      "h": 1,
+      "d": 1,
+      "color": "sole"
+    },
+    {
+      "x": 3,
+      "y": -6,
+      "z": -1,
+      "w": 1,
+      "h": 1,
+      "d": 2,
+      "color": "stitch"
+    },
+    {
+      "x": 3,
+      "y": -5,
+      "z": -2,
+      "w": 1,
+      "h": 1,
+      "d": 1,
+      "color": "stitch"
+    },
+    {
+      "x": 3,
+      "y": -5,
+      "z": 1,
+      "w": 1,
+      "h": 1,
+      "d": 1,
+      "color": "stitch"
+    },
+    {
+      "x": -4,
+      "y": -6,
+      "z": -1,
+      "w": 1,
+      "h": 1,
+      "d": 2,
+      "color": "stitch"
+    },
+    {
+      "x": -4,
+      "y": -5,
+      "z": -2,
+      "w": 1,
+      "h": 1,
+      "d": 1,
+      "color": "stitch"
+    },
+    {
+      "x": -4,
+      "y": -5,
+      "z": 1,
+      "w": 1,
+      "h": 1,
+      "d": 1,
+      "color": "stitch"
+    },
+    {
+      "x": -1,
+      "y": -9,
+      "z": -6,
+      "w": 2,
+      "h": 1,
+      "d": 2,
+      "color": "spur"
+    }
+  ]
+}

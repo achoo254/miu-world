@@ -1,0 +1,135 @@
+{
+  "id": "hat-space-band-green",
+  "name": "Băng đô vũ trụ xanh lá",
+  "slot": "hat",
+  "unlock": {
+    "level": 3
+  },
+  "attachNode": "head",
+  "voxelSize": 0.0385,
+  "offset": [
+    0,
+    0,
+    0
+  ],
+  "rotation": [
+    0,
+    0,
+    0
+  ],
+  "palette": {
+    "band": "#7fd86a",
+    "stalk": "#5fb84f",
+    "ball": "#c8ff6a",
+    "star": "#ffffff"
+  },
+  "variants": {
+    "purple": {
+      "band": "#a77ad8",
+      "stalk": "#7d4bb3",
+      "ball": "#ff8ad8",
+      "star": "#fff1a8"
+    }
+  },
+  "boxes": [
+    {
+      "x": -14,
+      "y": 15,
+      "z": -1,
+      "w": 1,
+      "h": 7,
+      "d": 3,
+      "color": "band"
+    },
+    {
+      "x": 13,
+      "y": 15,
+      "z": -1,
+      "w": 1,
+      "h": 7,
+      "d": 3,
+      "color": "band"
+    },
+    {
+      "x": -14,
+      "y": 22,
+      "z": -1,
+      "w": 28,
+      "h": 1,
+      "d": 3,
+      "color": "band"
+    },
+    {
+      "x": 5,
+      "y": 23,
+      "z": 0,
+      "w": 1,
+      "h": 4,
+      "d": 1,
+      "color": "stalk"
+    },
+    {
+      "x": 6,
+      "y": 27,
+      "z": 0,
+      "w": 1,
+      "h": 1,
+      "d": 1,
+      "color": "stalk"
+    },
+    {
+      "x": 6,
+      "y": 28,
+      "z": -1,
+      "w": 3,
+      "h": 3,
+      "d": 3,
+      "color": "ball"
+    },
+    {
+      "x": 7,
+      "y": 29,
+      "z": 2,
+      "w": 1,
+      "h": 1,
+      "d": 1,
+      "color": "star"
+    },
+    {
+      "x": -6,
+      "y": 23,
+      "z": 0,
+      "w": 1,
+      "h": 4,
+      "d": 1,
+      "color": "stalk"
+    },
+    {
+      "x": -7,
+      "y": 27,
+      "z": 0,
+      "w": 1,
+      "h": 1,
+      "d": 1,
+      "color": "stalk"
+    },
+    {
+      "x": -9,
+      "y": 28,
+      "z": -1,
+      "w": 3,
+      "h": 3,
+      "d": 3,
+      "color": "ball"
+    },
+    {
+      "x": -8,
+      "y": 29,
+      "z": 2,
+      "w": 1,
+      "h": 1,
+      "d": 1,
+      "color": "star"
+    }
+  ]
+}

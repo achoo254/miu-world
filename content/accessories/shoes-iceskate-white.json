@@ -1,0 +1,119 @@
+{
+  "id": "shoes-iceskate-white",
+  "name": "Giày trượt băng trắng",
+  "slot": "shoes",
+  "unlock": {
+    "level": 5
+  },
+  "attachNode": "leg-left",
+  "mirror": true,
+  "voxelSize": 0.05,
+  "offset": [
+    0,
+    0,
+    0
+  ],
+  "palette": {
+    "main": "#fff6f0",
+    "holder": "#8a8396",
+    "blade": "#c4ccd6",
+    "lace": "#f07fb0",
+    "cuff": "#f07fb0"
+  },
+  "variants": {
+    "pink": {
+      "main": "#f9c4d8",
+      "lace": "#fff6f0",
+      "cuff": "#fff6f0"
+    },
+    "blue": {
+      "main": "#a8d8f0",
+      "lace": "#fff6f0",
+      "cuff": "#3f82c4",
+      "blade": "#e8f8ff"
+    }
+  },
+  "boxes": [
+    {
+      "x": -3,
+      "y": -10,
+      "z": -3,
+      "w": 6,
+      "h": 1,
+      "d": 7,
+      "color": "holder"
+    },
+    {
+      "x": -1,
+      "y": -11,
+      "z": -5,
+      "w": 2,
+      "h": 1,
+      "d": 11,
+      "color": "blade"
+    },
+    {
+      "x": -1,
+      "y": -10,
+      "z": 5,
+      "w": 2,
+      "h": 1,
+      "d": 1,
+      "color": "blade"
+    },
+    {
+      "x": -4,
+      "y": -9,
+      "z": -4,
+      "w": 8,
+      "h": 4,
+      "d": 9,
+      "color": "main"
+    },
+    {
+      "x": -4,
+      "y": -5,
+      "z": -4,
+      "w": 8,
+      "h": 3,
+      "d": 8,
+      "color": "main"
+    },
+    {
+      "x": -4,
+      "y": -2,
+      "z": -4,
+      "w": 8,
+      "h": 1,
+      "d": 8,
+      "color": "cuff"
+    },
+    {
+      "x": -2,
+      "y": -6,
+      "z": 1,
+      "w": 4,
+      "h": 1,
+      "d": 1,
+      "color": "lace"
+    },
+    {
+      "x": -2,
+      "y": -6,
+      "z": 3,
+      "w": 4,
+      "h": 1,
+      "d": 1,
+      "color": "lace"
+    },
+    {
+      "x": -2,
+      "y": -4,
+      "z": 3,
+      "w": 4,
+      "h": 1,
+      "d": 1,
+      "color": "lace"
+    }
+  ]
+}

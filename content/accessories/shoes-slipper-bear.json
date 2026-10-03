@@ -1,0 +1,132 @@
+{
+  "id": "shoes-slipper-bear",
+  "name": "Dép gấu nâu",
+  "slot": "shoes",
+  "attachNode": "leg-left",
+  "mirror": true,
+  "voxelSize": 0.05,
+  "offset": [
+    0,
+    0,
+    0
+  ],
+  "palette": {
+    "fur": "#9a6a3f",
+    "sole": "#5a3a22",
+    "ear": "#7a5030",
+    "muzzle": "#f2c49a",
+    "nose": "#2f2130",
+    "eye": "#2f2130",
+    "patch": "#9a6a3f"
+  },
+  "variants": {
+    "cat": {
+      "fur": "#f2a04a",
+      "sole": "#b8682a",
+      "ear": "#e08a2a",
+      "muzzle": "#fff6f0",
+      "nose": "#f07fb0",
+      "patch": "#f2a04a"
+    },
+    "panda": {
+      "fur": "#fff6f0",
+      "sole": "#3b3446",
+      "ear": "#24202c",
+      "muzzle": "#fff6f0",
+      "patch": "#24202c",
+      "eye": "#fff6f0"
+    }
+  },
+  "boxes": [
+    {
+      "x": -4,
+      "y": -10,
+      "z": -4,
+      "w": 8,
+      "h": 4,
+      "d": 10,
+      "color": "fur"
+    },
+    {
+      "x": -4,
+      "y": -10,
+      "z": -4,
+      "w": 8,
+      "h": 1,
+      "d": 10,
+      "color": "sole"
+    },
+    {
+      "x": -3,
+      "y": -6,
+      "z": 1,
+      "w": 2,
+      "h": 2,
+      "d": 1,
+      "color": "ear"
+    },
+    {
+      "x": 1,
+      "y": -6,
+      "z": 1,
+      "w": 2,
+      "h": 2,
+      "d": 1,
+      "color": "ear"
+    },
+    {
+      "x": -4,
+      "y": -8,
+      "z": 5,
+      "w": 2,
+      "h": 2,
+      "d": 1,
+      "color": "patch"
+    },
+    {
+      "x": 2,
+      "y": -8,
+      "z": 5,
+      "w": 2,
+      "h": 2,
+      "d": 1,
+      "color": "patch"
+    },
+    {
+      "x": -3,
+      "y": -7,
+      "z": 5,
+      "w": 1,
+      "h": 1,
+      "d": 1,
+      "color": "eye"
+    },
+    {
+      "x": 2,
+      "y": -7,
+      "z": 5,
+      "w": 1,
+      "h": 1,
+      "d": 1,
+      "color": "eye"
+    },
+    {
+      "x": -2,
+      "y": -9,
+      "z": 6,
+      "w": 4,
+      "h": 2,
+      "d": 1,
+      "color": "muzzle"
+    },
+    {
+      "x": -1,
+      "y": -8,
+      "z": 6,
+      "w": 2,
+      "h": 1,
+      "d": 1,
+      "color": "nose"
+    }
+  ]
+}

@@ -1,0 +1,177 @@
+{
+  "id": "hat-unicorn-white",
+  "name": "Mũ sừng kỳ lân",
+  "slot": "hat",
+  "unlock": {
+    "level": 9
+  },
+  "attachNode": "head",
+  "voxelSize": 0.0385,
+  "offset": [
+    0,
+    0,
+    0
+  ],
+  "rotation": [
+    0,
+    0,
+    0
+  ],
+  "palette": {
+    "band": "#fff6f0",
+    "horn": "#fff1a8",
+    "stripe": "#ffd23f",
+    "stripe2": "#ffd23f",
+    "flower1": "#f78fbf",
+    "flower2": "#a77ad8",
+    "ear": "#fff6f0"
+  },
+  "variants": {
+    "rainbow": {
+      "band": "#a77ad8",
+      "horn": "#ff8ad8",
+      "stripe": "#5fc4e8",
+      "stripe2": "#ffd23f",
+      "flower1": "#7fd86a",
+      "flower2": "#ff9a3c",
+      "ear": "#f7c8f0"
+    }
+  },
+  "boxes": [
+    {
+      "x": -14,
+      "y": 15,
+      "z": -1,
+      "w": 1,
+      "h": 7,
+      "d": 3,
+      "color": "band"
+    },
+    {
+      "x": 13,
+      "y": 15,
+      "z": -1,
+      "w": 1,
+      "h": 7,
+      "d": 3,
+      "color": "band"
+    },
+    {
+      "x": -14,
+      "y": 22,
+      "z": -1,
+      "w": 28,
+      "h": 1,
+      "d": 3,
+      "color": "band"
+    },
+    {
+      "x": -2,
+      "y": 23,
+      "z": -1,
+      "w": 4,
+      "h": 3,
+      "d": 4,
+      "color": "horn"
+    },
+    {
+      "x": -2,
+      "y": 24,
+      "z": -1,
+      "w": 4,
+      "h": 1,
+      "d": 4,
+      "color": "stripe"
+    },
+    {
+      "x": -2,
+      "y": 26,
+      "z": -1,
+      "w": 4,
+      "h": 3,
+      "d": 4,
+      "color": "horn"
+    },
+    {
+      "x": -2,
+      "y": 27,
+      "z": -1,
+      "w": 4,
+      "h": 1,
+      "d": 4,
+      "color": "stripe2"
+    },
+    {
+      "x": -1,
+      "y": 29,
+      "z": 0,
+      "w": 2,
+      "h": 3,
+      "d": 2,
+      "color": "horn"
+    },
+    {
+      "x": -1,
+      "y": 30,
+      "z": 0,
+      "w": 2,
+      "h": 1,
+      "d": 2,
+      "color": "stripe"
+    },
+    {
+      "x": -1,
+      "y": 32,
+      "z": 0,
+      "w": 2,
+      "h": 2,
+      "d": 2,
+      "color": "horn"
+    },
+    {
+      "x": -1,
+      "y": 34,
+      "z": 0,
+      "w": 1,
+      "h": 1,
+      "d": 1,
+      "color": "stripe2"
+    },
+    {
+      "x": 8,
+      "y": 23,
+      "z": -1,
+      "w": 3,
+      "h": 3,
+      "d": 2,
+      "color": "ear"
+    },
+    {
+      "x": -11,
+      "y": 23,
+      "z": -1,
+      "w": 3,
+      "h": 3,
+      "d": 2,
+      "color": "ear"
+    },
+    {
+      "x": -7,
+      "y": 23,
+      "z": 0,
+      "w": 3,
+      "h": 2,
+      "d": 2,
+      "color": "flower1"
+    },
+    {
+      "x": 4,
+      "y": 23,
+      "z": 0,
+      "w": 3,
+      "h": 2,
+      "d": 2,
+      "color": "flower2"
+    }
+  ]
+}

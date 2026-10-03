@@ -1,0 +1,141 @@
+{
+  "id": "shoes-rocket-red",
+  "name": "Giày tên lửa đỏ",
+  "slot": "shoes",
+  "unlock": {
+    "level": 9
+  },
+  "attachNode": "leg-left",
+  "mirror": true,
+  "voxelSize": 0.05,
+  "offset": [
+    0,
+    0,
+    0
+  ],
+  "palette": {
+    "sole": "#fff6f0",
+    "main": "#e05a4f",
+    "stripe": "#ffd23f",
+    "pod": "#c4ccd6",
+    "cone": "#e05a4f",
+    "nozzle": "#3b3446",
+    "flame": "#ffd23f",
+    "flame2": "#ff7a2f",
+    "window": "#5fc4e8"
+  },
+  "variants": {
+    "blue": {
+      "main": "#3f82c4",
+      "cone": "#3f82c4",
+      "stripe": "#fff6f0"
+    },
+    "gold": {
+      "main": "#f0b62a",
+      "pod": "#fff1a8",
+      "cone": "#e0304a",
+      "stripe": "#e0304a"
+    }
+  },
+  "boxes": [
+    {
+      "x": -4,
+      "y": -10,
+      "z": -4,
+      "w": 8,
+      "h": 1,
+      "d": 9,
+      "color": "sole"
+    },
+    {
+      "x": -4,
+      "y": -9,
+      "z": -4,
+      "w": 8,
+      "h": 4,
+      "d": 9,
+      "color": "main"
+    },
+    {
+      "x": 3,
+      "y": -8,
+      "z": -3,
+      "w": 1,
+      "h": 1,
+      "d": 6,
+      "color": "stripe"
+    },
+    {
+      "x": -4,
+      "y": -8,
+      "z": -3,
+      "w": 1,
+      "h": 1,
+      "d": 6,
+      "color": "stripe"
+    },
+    {
+      "x": -2,
+      "y": -6,
+      "z": 1,
+      "w": 4,
+      "h": 1,
+      "d": 1,
+      "color": "stripe"
+    },
+    {
+      "x": -2,
+      "y": -8,
+      "z": -7,
+      "w": 4,
+      "h": 5,
+      "d": 3,
+      "color": "pod"
+    },
+    {
+      "x": -1,
+      "y": -3,
+      "z": -6,
+      "w": 2,
+      "h": 1,
+      "d": 2,
+      "color": "cone"
+    },
+    {
+      "x": -1,
+      "y": -6,
+      "z": -8,
+      "w": 2,
+      "h": 1,
+      "d": 1,
+      "color": "window"
+    },
+    {
+      "x": -2,
+      "y": -9,
+      "z": -7,
+      "w": 4,
+      "h": 1,
+      "d": 3,
+      "color": "nozzle"
+    },
+    {
+      "x": -1,
+      "y": -10,
+      "z": -7,
+      "w": 2,
+      "h": 1,
+      "d": 2,
+      "color": "flame"
+    },
+    {
+      "x": -1,
+      "y": -11,
+      "z": -7,
+      "w": 2,
+      "h": 1,
+      "d": 1,
+      "color": "flame2"
+    }
+  ]
+}

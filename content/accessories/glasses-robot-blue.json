@@ -1,0 +1,106 @@
+{
+  "id": "glasses-robot-blue",
+  "name": "Kính rô-bốt xanh",
+  "slot": "glasses",
+  "unlock": {
+    "level": 5
+  },
+  "attachNode": "head",
+  "voxelSize": 0.0385,
+  "offset": [
+    0,
+    0,
+    0
+  ],
+  "rotation": [
+    0,
+    0,
+    0
+  ],
+  "palette": {
+    "metal": "#a7b4c4",
+    "screen": "#2f2a3a",
+    "led": "#5ff0ff",
+    "bolt": "#ffd23f"
+  },
+  "variants": {
+    "red": {
+      "led": "#ff5a6a",
+      "bolt": "#5fc4e8"
+    }
+  },
+  "boxes": [
+    {
+      "x": -12,
+      "y": 8,
+      "z": 11,
+      "w": 24,
+      "h": 8,
+      "d": 1,
+      "color": "metal"
+    },
+    {
+      "x": -11,
+      "y": 9,
+      "z": 12,
+      "w": 22,
+      "h": 6,
+      "d": 1,
+      "color": "screen"
+    },
+    {
+      "x": 3,
+      "y": 11,
+      "z": 13,
+      "w": 4,
+      "h": 2,
+      "d": 1,
+      "color": "led"
+    },
+    {
+      "x": 12,
+      "y": 9,
+      "z": 9,
+      "w": 2,
+      "h": 6,
+      "d": 3,
+      "color": "bolt"
+    },
+    {
+      "x": -7,
+      "y": 11,
+      "z": 13,
+      "w": 4,
+      "h": 2,
+      "d": 1,
+      "color": "led"
+    },
+    {
+      "x": -14,
+      "y": 9,
+      "z": 9,
+      "w": 2,
+      "h": 6,
+      "d": 3,
+      "color": "bolt"
+    },
+    {
+      "x": 13,
+      "y": 12,
+      "z": 0,
+      "w": 1,
+      "h": 1,
+      "d": 9,
+      "color": "metal"
+    },
+    {
+      "x": -14,
+      "y": 12,
+      "z": 0,
+      "w": 1,
+      "h": 1,
+      "d": 9,
+      "color": "metal"
+    }
+  ]
+}

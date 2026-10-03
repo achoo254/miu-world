@@ -1,0 +1,176 @@
+{
+  "id": "shoes-crocs-green",
+  "name": "Dép nhựa xanh lá",
+  "slot": "shoes",
+  "attachNode": "leg-left",
+  "mirror": true,
+  "voxelSize": 0.05,
+  "offset": [
+    0,
+    0,
+    0
+  ],
+  "palette": {
+    "sole": "#467a39",
+    "main": "#6fbf5a",
+    "hole": "#2f5a28",
+    "charm": "#ffd23f"
+  },
+  "variants": {
+    "pink": {
+      "main": "#f78fbf",
+      "sole": "#d9609a",
+      "hole": "#b04078",
+      "charm": "#fff6f0"
+    },
+    "yellow": {
+      "main": "#ffd23f",
+      "sole": "#e0a01e",
+      "hole": "#a87a0e",
+      "charm": "#e05a4f"
+    },
+    "purple": {
+      "main": "#a77ad8",
+      "sole": "#7d4bb3",
+      "hole": "#5a3090",
+      "charm": "#7fd8be"
+    }
+  },
+  "boxes": [
+    {
+      "x": -4,
+      "y": -10,
+      "z": -4,
+      "w": 8,
+      "h": 1,
+      "d": 10,
+      "color": "sole"
+    },
+    {
+      "x": -4,
+      "y": -9,
+      "z": -1,
+      "w": 8,
+      "h": 3,
+      "d": 6,
+      "color": "main"
+    },
+    {
+      "x": -3,
+      "y": -6,
+      "z": 0,
+      "w": 6,
+      "h": 1,
+      "d": 4,
+      "color": "main"
+    },
+    {
+      "x": -4,
+      "y": -9,
+      "z": -4,
+      "w": 1,
+      "h": 2,
+      "d": 3,
+      "color": "main"
+    },
+    {
+      "x": 3,
+      "y": -9,
+      "z": -4,
+      "w": 1,
+      "h": 2,
+      "d": 3,
+      "color": "main"
+    },
+    {
+      "x": -4,
+      "y": -8,
+      "z": -4,
+      "w": 8,
+      "h": 1,
+      "d": 1,
+      "color": "main"
+    },
+    {
+      "x": -2,
+      "y": -6,
+      "z": 1,
+      "w": 1,
+      "h": 1,
+      "d": 1,
+      "color": "hole"
+    },
+    {
+      "x": 1,
+      "y": -6,
+      "z": 1,
+      "w": 1,
+      "h": 1,
+      "d": 1,
+      "color": "hole"
+    },
+    {
+      "x": -1,
+      "y": -6,
+      "z": 3,
+      "w": 2,
+      "h": 1,
+      "d": 1,
+      "color": "hole"
+    },
+    {
+      "x": -2,
+      "y": -8,
+      "z": 4,
+      "w": 1,
+      "h": 1,
+      "d": 1,
+      "color": "hole"
+    },
+    {
+      "x": 1,
+      "y": -8,
+      "z": 4,
+      "w": 1,
+      "h": 1,
+      "d": 1,
+      "color": "hole"
+    },
+    {
+      "x": 3,
+      "y": -8,
+      "z": 1,
+      "w": 1,
+      "h": 1,
+      "d": 1,
+      "color": "hole"
+    },
+    {
+      "x": -4,
+      "y": -8,
+      "z": 1,
+      "w": 1,
+      "h": 1,
+      "d": 1,
+      "color": "hole"
+    },
+    {
+      "x": 3,
+      "y": -8,
+      "z": -3,
+      "w": 1,
+      "h": 1,
+      "d": 1,
+      "color": "charm"
+    },
+    {
+      "x": -4,
+      "y": -8,
+      "z": -3,
+      "w": 1,
+      "h": 1,
+      "d": 1,
+      "color": "charm"
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "id": "scarf-headphones-blue",
+  "name": "Tai nghe đeo cổ xanh",
+  "slot": "scarf",
+  "unlock": {
+    "level": 5
+  },
+  "attachNode": "torso",
+  "voxelSize": 0.0625,
+  "offset": [
+    0,
+    -0.1875,
+    0
+  ],
+  "palette": {
+    "band": "#3b3446",
+    "cup": "#3f82c4",
+    "light": "#7fd8be"
+  },
+  "variants": {
+    "pink": {
+      "cup": "#f78fbf",
+      "light": "#fff6f0",
+      "band": "#fff6f0"
+    },
+    "gold": {
+      "cup": "#f0b62a",
+      "band": "#7d4bb3",
+      "light": "#fff1a8"
+    }
+  },
+  "boxes": [
+    {
+      "x": -8,
+      "y": 17,
+      "z": -6,
+      "w": 16,
+      "h": 2,
+      "d": 12,
+      "color": "band"
+    },
+    {
+      "x": -7,
+      "y": 12,
+      "z": 6,
+      "w": 4,
+      "h": 5,
+      "d": 2,
+      "color": "cup"
+    },
+    {
+      "x": 3,
+      "y": 12,
+      "z": 6,
+      "w": 4,
+      "h": 5,
+      "d": 2,
+      "color": "cup"
+    },
+    {
+      "x": -6,
+      "y": 13,
+      "z": 8,
+      "w": 2,
+      "h": 3,
+      "d": 1,
+      "color": "light"
+    },
+    {
+      "x": 4,
+      "y": 13,
+      "z": 8,
+      "w": 2,
+      "h": 3,
+      "d": 1,
+      "color": "light"
+    }
+  ]
+}

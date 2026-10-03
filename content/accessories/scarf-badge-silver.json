@@ -1,0 +1,157 @@
+{
+  "id": "scarf-badge-silver",
+  "name": "Huân chương ngôi sao bạc",
+  "slot": "scarf",
+  "unlock": {
+    "level": 6
+  },
+  "attachNode": "torso",
+  "voxelSize": 0.0625,
+  "offset": [
+    0,
+    -0.1875,
+    0
+  ],
+  "palette": {
+    "ribbon": "#e05a4f",
+    "ribbon2": "#ffd23f",
+    "star": "#c4ccd6",
+    "shine": "#ffffff",
+    "gem": "#5fa8e8"
+  },
+  "variants": {
+    "gold": {
+      "star": "#f0b62a",
+      "shine": "#fff1a8",
+      "gem": "#e8466b"
+    }
+  },
+  "boxes": [
+    {
+      "x": -8,
+      "y": 18,
+      "z": -6,
+      "w": 16,
+      "h": 2,
+      "d": 12,
+      "color": "ribbon"
+    },
+    {
+      "x": -2,
+      "y": 14,
+      "z": 6,
+      "w": 5,
+      "h": 4,
+      "d": 2,
+      "color": "ribbon"
+    },
+    {
+      "x": 0,
+      "y": 14,
+      "z": 6,
+      "w": 1,
+      "h": 4,
+      "d": 2,
+      "color": "ribbon2"
+    },
+    {
+      "x": -2,
+      "y": 14,
+      "z": 6,
+      "w": 1,
+      "h": 4,
+      "d": 2,
+      "color": "ribbon2"
+    },
+    {
+      "x": 2,
+      "y": 14,
+      "z": 6,
+      "w": 1,
+      "h": 4,
+      "d": 2,
+      "color": "ribbon2"
+    },
+    {
+      "x": 0,
+      "y": 13,
+      "z": 6,
+      "w": 1,
+      "h": 1,
+      "d": 2,
+      "color": "star"
+    },
+    {
+      "x": -1,
+      "y": 12,
+      "z": 6,
+      "w": 3,
+      "h": 1,
+      "d": 2,
+      "color": "star"
+    },
+    {
+      "x": -4,
+      "y": 11,
+      "z": 6,
+      "w": 9,
+      "h": 1,
+      "d": 2,
+      "color": "star"
+    },
+    {
+      "x": -3,
+      "y": 10,
+      "z": 6,
+      "w": 7,
+      "h": 1,
+      "d": 2,
+      "color": "star"
+    },
+    {
+      "x": -2,
+      "y": 9,
+      "z": 6,
+      "w": 5,
+      "h": 1,
+      "d": 2,
+      "color": "star"
+    },
+    {
+      "x": -3,
+      "y": 8,
+      "z": 6,
+      "w": 2,
+      "h": 1,
+      "d": 2,
+      "color": "star"
+    },
+    {
+      "x": 2,
+      "y": 8,
+      "z": 6,
+      "w": 2,
+      "h": 1,
+      "d": 2,
+      "color": "star"
+    },
+    {
+      "x": -1,
+      "y": 10,
+      "z": 7,
+      "w": 3,
+      "h": 2,
+      "d": 1,
+      "color": "shine"
+    },
+    {
+      "x": 0,
+      "y": 10,
+      "z": 7,
+      "w": 1,
+      "h": 1,
+      "d": 1,
+      "color": "gem"
+    }
+  ]
+}

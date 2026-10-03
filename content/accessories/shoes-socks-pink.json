@@ -1,0 +1,102 @@
+{
+  "id": "shoes-socks-pink",
+  "name": "Tất sọc kẹo hồng",
+  "slot": "shoes",
+  "attachNode": "leg-left",
+  "mirror": true,
+  "voxelSize": 0.05,
+  "offset": [
+    0,
+    0,
+    0
+  ],
+  "palette": {
+    "sole": "#6a3fa8",
+    "shoe": "#a77ad8",
+    "a": "#fff6f0",
+    "s1": "#f78fbf",
+    "s2": "#f78fbf",
+    "s3": "#f78fbf"
+  },
+  "variants": {
+    "blue": {
+      "sole": "#2f5f99",
+      "shoe": "#3f82c4",
+      "s1": "#5fa8e8",
+      "s2": "#5fa8e8",
+      "s3": "#5fa8e8"
+    },
+    "rainbow": {
+      "sole": "#3b3446",
+      "shoe": "#5a5068",
+      "s1": "#e05a4f",
+      "s2": "#ffd23f",
+      "s3": "#4f8fd8"
+    }
+  },
+  "boxes": [
+    {
+      "x": -4,
+      "y": -10,
+      "z": -4,
+      "w": 8,
+      "h": 1,
+      "d": 9,
+      "color": "sole"
+    },
+    {
+      "x": -4,
+      "y": -9,
+      "z": -4,
+      "w": 8,
+      "h": 2,
+      "d": 9,
+      "color": "shoe"
+    },
+    {
+      "x": -4,
+      "y": -8,
+      "z": 0,
+      "w": 8,
+      "h": 1,
+      "d": 1,
+      "color": "shoe"
+    },
+    {
+      "x": -4,
+      "y": -7,
+      "z": -4,
+      "w": 8,
+      "h": 7,
+      "d": 8,
+      "color": "a"
+    },
+    {
+      "x": -4,
+      "y": -6,
+      "z": -4,
+      "w": 8,
+      "h": 1,
+      "d": 8,
+      "color": "s1"
+    },
+    {
+      "x": -4,
+      "y": -4,
+      "z": -4,
+      "w": 8,
+      "h": 1,
+      "d": 8,
+      "color": "s2"
+    },
+    {
+      "x": -4,
+      "y": -2,
+      "z": -4,
+      "w": 8,
+      "h": 1,
+      "d": 8,
+      "color": "s3"
+    }
+  ]
+}

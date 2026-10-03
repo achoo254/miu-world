@@ -1,0 +1,136 @@
+{
+  "id": "scarf-tie-red",
+  "name": "Cà vạt đỏ",
+  "slot": "scarf",
+  "attachNode": "torso",
+  "voxelSize": 0.0625,
+  "offset": [
+    0,
+    -0.1875,
+    0
+  ],
+  "palette": {
+    "collar": "#fff6f0",
+    "main": "#d9463d",
+    "stripe": "#b8382f",
+    "knot": "#b8382f"
+  },
+  "variants": {
+    "blue": {
+      "main": "#3f82c4",
+      "stripe": "#2a5f99",
+      "knot": "#2a5f99"
+    },
+    "green": {
+      "main": "#5fb84f",
+      "stripe": "#3f8a35",
+      "knot": "#3f8a35"
+    },
+    "stripe": {
+      "main": "#2f3f6e",
+      "stripe": "#ffd23f",
+      "knot": "#24305a"
+    }
+  },
+  "boxes": [
+    {
+      "x": -8,
+      "y": 18,
+      "z": -6,
+      "w": 16,
+      "h": 2,
+      "d": 12,
+      "color": "collar"
+    },
+    {
+      "x": -4,
+      "y": 17,
+      "z": 6,
+      "w": 3,
+      "h": 1,
+      "d": 1,
+      "color": "collar"
+    },
+    {
+      "x": 1,
+      "y": 17,
+      "z": 6,
+      "w": 3,
+      "h": 1,
+      "d": 1,
+      "color": "collar"
+    },
+    {
+      "x": -3,
+      "y": 16,
+      "z": 6,
+      "w": 2,
+      "h": 1,
+      "d": 1,
+      "color": "collar"
+    },
+    {
+      "x": 1,
+      "y": 16,
+      "z": 6,
+      "w": 2,
+      "h": 1,
+      "d": 1,
+      "color": "collar"
+    },
+    {
+      "x": -1,
+      "y": 16,
+      "z": 6,
+      "w": 2,
+      "h": 2,
+      "d": 2,
+      "color": "knot"
+    },
+    {
+      "x": -1,
+      "y": 15,
+      "z": 6,
+      "w": 2,
+      "h": 1,
+      "d": 2,
+      "color": "main"
+    },
+    {
+      "x": -2,
+      "y": 10,
+      "z": 6,
+      "w": 4,
+      "h": 5,
+      "d": 2,
+      "color": "main"
+    },
+    {
+      "x": -1,
+      "y": 9,
+      "z": 6,
+      "w": 2,
+      "h": 1,
+      "d": 2,
+      "color": "main"
+    },
+    {
+      "x": -2,
+      "y": 13,
+      "z": 6,
+      "w": 4,
+      "h": 1,
+      "d": 2,
+      "color": "stripe"
+    },
+    {
+      "x": -2,
+      "y": 11,
+      "z": 6,
+      "w": 4,
+      "h": 1,
+      "d": 2,
+      "color": "stripe"
+    }
+  ]
+}

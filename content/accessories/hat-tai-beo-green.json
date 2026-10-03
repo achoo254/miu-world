@@ -1,0 +1,108 @@
+{
+  "id": "hat-tai-beo-green",
+  "name": "Mũ tai bèo xanh lá",
+  "slot": "hat",
+  "attachNode": "head",
+  "voxelSize": 0.0385,
+  "offset": [
+    0,
+    0,
+    0
+  ],
+  "rotation": [
+    0,
+    0,
+    0
+  ],
+  "palette": {
+    "cloth": "#7fae5a",
+    "stitch": "#5f8e43",
+    "badge": "#ffd23f"
+  },
+  "variants": {
+    "pink": {
+      "cloth": "#f7a8c8",
+      "stitch": "#e07fa8",
+      "badge": "#fff6f0"
+    },
+    "yellow": {
+      "cloth": "#ffd96a",
+      "stitch": "#e8b83a",
+      "badge": "#e05a4f"
+    }
+  },
+  "boxes": [
+    {
+      "x": -17,
+      "y": 18,
+      "z": -15,
+      "w": 34,
+      "h": 1,
+      "d": 30,
+      "color": "cloth"
+    },
+    {
+      "x": -17,
+      "y": 18,
+      "z": -15,
+      "w": 34,
+      "h": 1,
+      "d": 1,
+      "color": "stitch"
+    },
+    {
+      "x": -17,
+      "y": 18,
+      "z": 14,
+      "w": 34,
+      "h": 1,
+      "d": 1,
+      "color": "stitch"
+    },
+    {
+      "x": -14,
+      "y": 19,
+      "z": -12,
+      "w": 28,
+      "h": 2,
+      "d": 24,
+      "color": "stitch"
+    },
+    {
+      "x": -14,
+      "y": 21,
+      "z": -12,
+      "w": 28,
+      "h": 4,
+      "d": 24,
+      "color": "cloth"
+    },
+    {
+      "x": -14,
+      "y": 23,
+      "z": -12,
+      "w": 28,
+      "h": 1,
+      "d": 24,
+      "color": "stitch"
+    },
+    {
+      "x": -12,
+      "y": 25,
+      "z": -10,
+      "w": 24,
+      "h": 2,
+      "d": 20,
+      "color": "cloth"
+    },
+    {
+      "x": -1,
+      "y": 20,
+      "z": 12,
+      "w": 2,
+      "h": 2,
+      "d": 1,
+      "color": "badge"
+    }
+  ]
+}

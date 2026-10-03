@@ -1,0 +1,88 @@
+{
+  "id": "hat-graduation-black",
+  "name": "Mũ tốt nghiệp đen",
+  "slot": "hat",
+  "unlock": {
+    "level": 5
+  },
+  "attachNode": "head",
+  "voxelSize": 0.0385,
+  "offset": [
+    0,
+    0,
+    0
+  ],
+  "rotation": [
+    0,
+    0,
+    0
+  ],
+  "palette": {
+    "cap": "#2f2a3a",
+    "button": "#ffd23f",
+    "tassel": "#ffd23f"
+  },
+  "variants": {
+    "blue": {
+      "cap": "#34407a",
+      "button": "#fff6f0",
+      "tassel": "#fff6f0"
+    }
+  },
+  "boxes": [
+    {
+      "x": -14,
+      "y": 18,
+      "z": -12,
+      "w": 28,
+      "h": 4,
+      "d": 24,
+      "color": "cap"
+    },
+    {
+      "x": -16,
+      "y": 22,
+      "z": -16,
+      "w": 32,
+      "h": 1,
+      "d": 32,
+      "color": "cap"
+    },
+    {
+      "x": -1,
+      "y": 23,
+      "z": -1,
+      "w": 2,
+      "h": 1,
+      "d": 2,
+      "color": "button"
+    },
+    {
+      "x": 1,
+      "y": 23,
+      "z": 0,
+      "w": 16,
+      "h": 1,
+      "d": 1,
+      "color": "tassel"
+    },
+    {
+      "x": 16,
+      "y": 17,
+      "z": 0,
+      "w": 1,
+      "h": 6,
+      "d": 1,
+      "color": "tassel"
+    },
+    {
+      "x": 15,
+      "y": 15,
+      "z": -1,
+      "w": 3,
+      "h": 2,
+      "d": 3,
+      "color": "tassel"
+    }
+  ]
+}

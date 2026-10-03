@@ -1,0 +1,83 @@
+{
+  "id": "shoes-clogs",
+  "name": "Guốc gỗ",
+  "slot": "shoes",
+  "attachNode": "leg-left",
+  "mirror": true,
+  "voxelSize": 0.05,
+  "offset": [
+    0,
+    0,
+    0
+  ],
+  "palette": {
+    "wood": "#c8945a",
+    "dark": "#8a5a35",
+    "strap": "#3b3446",
+    "flower": "#e05a4f"
+  },
+  "variants": {
+    "red": {
+      "wood": "#c0392b",
+      "dark": "#7a1e17",
+      "strap": "#ffd23f",
+      "flower": "#fff6f0"
+    }
+  },
+  "boxes": [
+    {
+      "x": -4,
+      "y": -10,
+      "z": -4,
+      "w": 8,
+      "h": 2,
+      "d": 10,
+      "color": "wood"
+    },
+    {
+      "x": -4,
+      "y": -10,
+      "z": -4,
+      "w": 8,
+      "h": 1,
+      "d": 10,
+      "color": "dark"
+    },
+    {
+      "x": -4,
+      "y": -8,
+      "z": 1,
+      "w": 8,
+      "h": 1,
+      "d": 3,
+      "color": "strap"
+    },
+    {
+      "x": -4,
+      "y": -9,
+      "z": 1,
+      "w": 1,
+      "h": 1,
+      "d": 3,
+      "color": "strap"
+    },
+    {
+      "x": 3,
+      "y": -9,
+      "z": 1,
+      "w": 1,
+      "h": 1,
+      "d": 3,
+      "color": "strap"
+    },
+    {
+      "x": -1,
+      "y": -8,
+      "z": 2,
+      "w": 2,
+      "h": 1,
+      "d": 1,
+      "color": "flower"
+    }
+  ]
+}

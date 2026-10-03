@@ -1,0 +1,110 @@
+{
+  "id": "scarf-camera",
+  "name": "Máy ảnh đeo cổ",
+  "slot": "scarf",
+  "unlock": {
+    "level": 4
+  },
+  "attachNode": "torso",
+  "voxelSize": 0.0625,
+  "offset": [
+    0,
+    -0.1875,
+    0
+  ],
+  "palette": {
+    "strap": "#e05a4f",
+    "body": "#3b3446",
+    "lens": "#8a8396",
+    "glass": "#5fc4e8",
+    "button": "#e05a4f"
+  },
+  "variants": {
+    "pink": {
+      "body": "#f78fbf",
+      "strap": "#a77ad8",
+      "button": "#ffd23f"
+    },
+    "gold": {
+      "body": "#f0b62a",
+      "lens": "#b07a12",
+      "strap": "#7d4bb3",
+      "glass": "#fff1a8",
+      "button": "#e0304a"
+    }
+  },
+  "boxes": [
+    {
+      "x": -8,
+      "y": 18,
+      "z": -6,
+      "w": 16,
+      "h": 1,
+      "d": 12,
+      "color": "strap"
+    },
+    {
+      "x": -4,
+      "y": 13,
+      "z": 6,
+      "w": 1,
+      "h": 5,
+      "d": 1,
+      "color": "strap"
+    },
+    {
+      "x": 3,
+      "y": 13,
+      "z": 6,
+      "w": 1,
+      "h": 5,
+      "d": 1,
+      "color": "strap"
+    },
+    {
+      "x": -4,
+      "y": 9,
+      "z": 6,
+      "w": 8,
+      "h": 4,
+      "d": 2,
+      "color": "body"
+    },
+    {
+      "x": 1,
+      "y": 13,
+      "z": 6,
+      "w": 2,
+      "h": 1,
+      "d": 1,
+      "color": "button"
+    },
+    {
+      "x": -2,
+      "y": 9,
+      "z": 8,
+      "w": 4,
+      "h": 3,
+      "d": 1,
+      "color": "lens"
+    },
+    {
+      "x": -1,
+      "y": 10,
+      "z": 8,
+      "w": 2,
+      "h": 1,
+      "d": 1,
+      "color": "glass"
+    },
+    {
+      "x": -4,
+      "y": 12,
+      "z": 8,
+      "w": 1,
+      "h": 1,
+      "d": 1,
+      "color": "glass"
+    }
+  ]
+}
