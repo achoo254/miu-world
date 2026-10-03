@@ -138,6 +138,24 @@ test.describe('a child of its own', () => {
     await waitReady(page);
     expect(from((await readStats(page)).player, spawn)).toBeLessThan(0.5);
   });
+
+  test('drives an equipped vehicle: on with "Lái xe", faster than running, off with "Xuống xe"', async ({ page, baseURL }) => {
+    await freshChild(page, baseURL ?? '');
+    const headers = { Origin: new URL(baseURL ?? '').origin };
+    const equip = await page.context().request.put('/api/character', { headers, data: { name: 'Mochi', equipped: ['vehicle-skateboard-red'] } });
+    expect(equip.status()).toBe(200);
+    await page.goto('/play?quality=low&spawnAt=spawn');
+    await waitReady(page);
+    await page.getByRole('button', { name: 'Lái xe' }).click();
+    await expect.poll(async () => (await readStats(page)).riding).toBe(true);
+    // Wait on speed, not wall time: software GL renders few frames.
+    await page.keyboard.down('KeyW');
+    await expect.poll(async () => (await readStats(page)).speed, { timeout: 20_000 }).toBeGreaterThan(7.5);
+    await page.keyboard.up('KeyW');
+    await page.getByRole('button', { name: 'Xuống xe' }).click();
+    await expect.poll(async () => (await readStats(page)).riding).toBe(false);
+    await expect(page.getByRole('button', { name: 'Lái xe' })).toBeVisible();
+  });
 });
 
 test('dragging on the scene orbits the camera (mouse and touch share the pointer path)', async ({ page }) => {

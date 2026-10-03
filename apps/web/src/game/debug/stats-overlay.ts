@@ -17,6 +17,10 @@ export interface MiuStats {
   ready: boolean;
   player: [number, number, number];
   onGround: boolean;
+  /** Horizontal speed of the last frame (blocks per second). */
+  speed: number;
+  /** On the equipped vehicle. */
+  riding: boolean;
   /** Patches of land drawn round the camera now. */
   patches: number;
   /** Portals whose sparks swirl on this map. */
@@ -66,7 +70,7 @@ export class StatsOverlay {
   readonly stats: MiuStats;
 
   constructor(private readonly el: HTMLElement, quality: string) {
-    this.stats = { quality, fpsAvg: 0, fpsP5: 0, calls: 0, triangles: 0, frames: 0, loadMs: 0, meshMs: 0, worker: true, firstAreaBytes: 0, ready: false, player: [0, 0, 0], onGround: false, patches: 0, portals: 0, nearTarget: null, lastInteraction: null, hintTarget: null, autowalk: 'idle', castHidden: [], cameraInsideBlock: false, cameraYaw: 0, outfit: [], ambientVisible: 0, ambientReactions: 0, ambientCelebrations: 0, confetti: false, worldEvent: null, worldEvents: 0, pet: null, petClip: null, ambientLine: null };
+    this.stats = { quality, fpsAvg: 0, fpsP5: 0, calls: 0, triangles: 0, frames: 0, loadMs: 0, meshMs: 0, worker: true, firstAreaBytes: 0, ready: false, player: [0, 0, 0], onGround: false, speed: 0, riding: false, patches: 0, portals: 0, nearTarget: null, lastInteraction: null, hintTarget: null, autowalk: 'idle', castHidden: [], cameraInsideBlock: false, cameraYaw: 0, outfit: [], ambientVisible: 0, ambientReactions: 0, ambientCelebrations: 0, confetti: false, worldEvent: null, worldEvents: 0, pet: null, petClip: null, ambientLine: null };
     window.__miuStats = this.stats;
   }
 

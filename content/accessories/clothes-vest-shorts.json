@@ -1,0 +1,91 @@
+{
+  "id": "clothes-vest-shorts",
+  "name": "Gi lê cam và quần soóc",
+  "slot": "clothes",
+  "attachNode": "torso",
+  "voxelSize": 0.05,
+  "offset": [
+    0,
+    0,
+    0
+  ],
+  "palette": {
+    "shirt": "#f2e2c4",
+    "vest": "#e0843a",
+    "tie": "#d9463f",
+    "shorts": "#5d7fb3"
+  },
+  "variants": {
+    "green": {
+      "vest": "#5fae5a",
+      "tie": "#ffcf3a"
+    },
+    "navy": {
+      "vest": "#3b4f8a",
+      "shorts": "#8a6a4a"
+    }
+  },
+  "parts": {
+    "torso": [
+      {
+        "x": -8,
+        "y": 4,
+        "z": -6,
+        "w": 16,
+        "h": 8,
+        "d": 12,
+        "color": "shorts"
+      },
+      {
+        "x": -7,
+        "y": 12,
+        "z": -5,
+        "w": 14,
+        "h": 8,
+        "d": 10,
+        "color": "shirt"
+      },
+      {
+        "x": 3,
+        "y": 12,
+        "z": 5,
+        "w": 4,
+        "h": 6,
+        "d": 1,
+        "color": "vest",
+        "sym": true
+      },
+      {
+        "x": -1,
+        "y": 13,
+        "z": 5,
+        "w": 2,
+        "h": 5,
+        "d": 1,
+        "color": "tie"
+      }
+    ],
+    "arm-left": [
+      {
+        "x": -1,
+        "y": -5,
+        "z": -3,
+        "w": 6,
+        "h": 6,
+        "d": 7,
+        "color": "shirt"
+      }
+    ],
+    "leg-left": [
+      {
+        "x": -3,
+        "y": -5,
+        "z": -3,
+        "w": 6,
+        "h": 5,
+        "d": 6,
+        "color": "shorts"
+      }
+    ]
+  }
+}

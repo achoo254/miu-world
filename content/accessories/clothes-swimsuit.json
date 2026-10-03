@@ -1,0 +1,133 @@
+{
+  "id": "clothes-swimsuit",
+  "name": "Đồ bơi sọc xanh",
+  "slot": "clothes",
+  "unlock": {
+    "level": 5
+  },
+  "attachNode": "torso",
+  "voxelSize": 0.05,
+  "offset": [
+    0,
+    0,
+    0
+  ],
+  "palette": {
+    "main": "#2f9fe0",
+    "stripe": "#ffffff",
+    "accent": "#ffd447"
+  },
+  "variants": {
+    "pink": {
+      "main": "#f27aae",
+      "accent": "#7fd8be"
+    }
+  },
+  "parts": {
+    "torso": [
+      {
+        "x": -8,
+        "y": 4,
+        "z": -6,
+        "w": 16,
+        "h": 8,
+        "d": 12,
+        "color": "main"
+      },
+      {
+        "x": -7,
+        "y": 12,
+        "z": -5,
+        "w": 14,
+        "h": 8,
+        "d": 10,
+        "color": "main"
+      },
+      {
+        "x": -7,
+        "y": 14,
+        "z": -5,
+        "w": 14,
+        "h": 1,
+        "d": 10,
+        "color": "stripe"
+      },
+      {
+        "x": -7,
+        "y": 17,
+        "z": -5,
+        "w": 14,
+        "h": 1,
+        "d": 10,
+        "color": "stripe"
+      },
+      {
+        "x": -8,
+        "y": 6,
+        "z": -6,
+        "w": 16,
+        "h": 1,
+        "d": 12,
+        "color": "stripe"
+      },
+      {
+        "x": -8,
+        "y": 9,
+        "z": -6,
+        "w": 16,
+        "h": 1,
+        "d": 12,
+        "color": "stripe"
+      },
+      {
+        "x": 2,
+        "y": 15,
+        "z": 4,
+        "w": 2,
+        "h": 2,
+        "d": 1,
+        "color": "accent"
+      }
+    ],
+    "arm-left": [
+      {
+        "x": -1,
+        "y": -5,
+        "z": -3,
+        "w": 6,
+        "h": 6,
+        "d": 7,
+        "color": "main"
+      },
+      {
+        "x": -1,
+        "y": -3,
+        "z": -3,
+        "w": 6,
+        "h": 1,
+        "d": 7,
+        "color": "stripe"
+      }
+    ],
+    "leg-left": [
+      {
+        "x": -3,
+        "y": -5,
+        "z": -3,
+        "w": 6,
+        "h": 5,
+        "d": 6,
+        "color": "main"
+      },
+      {
+        "x": -3,
+        "y": -4,
+        "z": -3,
+        "w": 6,
+        "h": 1,
+        "d": 6,
+        "color": "stripe"
+      }
+    ]
+  }
+}

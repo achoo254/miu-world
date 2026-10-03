@@ -70,6 +70,11 @@ export const characterSpecSchema = z
     face: nodeName.optional(),
     /** Runtime multiplier for accessory size/offset per attach node, so one accessory file fits every variant. */
     accessoryScale: z.record(z.string(), z.number().positive()).default({}),
+    /**
+     * Player built in the plain `underlayer` outfit: the clothes item (content/accessories/) the game dresses
+     * it in when the child has chosen none, so it keeps its species' look.
+     */
+    clothes: z.string().regex(/^clothes-[a-z0-9-]+$/).optional(),
   })
   .refine((spec) => spec.recipe !== undefined || (spec.headSource !== undefined && spec.headNodes !== undefined && spec.tailNode !== undefined), {
     message: 'a character needs either a recipe or a Cube Pets head (headSource, headNodes, tailNode)',

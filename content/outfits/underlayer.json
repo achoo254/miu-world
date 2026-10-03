@@ -1,0 +1,16 @@
+{
+  "name": "Lớp lông dưới quần áo",
+  "palette": {},
+  "parts": {
+    "torso": [
+      { "x": -7, "y": 5, "z": -5, "w": 14, "h": 7, "d": 10, "color": "fur" },
+      { "x": -6, "y": 12, "z": -4, "w": 12, "h": 7, "d": 8, "color": "chest" }
+    ],
+    "arm-left": [
+      { "x": 0, "y": -5, "z": -2, "w": 4, "h": 5, "d": 5, "color": "fur" }
+    ],
+    "leg-left": [
+      { "x": -2, "y": -5, "z": -2, "w": 4, "h": 5, "d": 4, "color": "fur" }
+    ]
+  }
+}

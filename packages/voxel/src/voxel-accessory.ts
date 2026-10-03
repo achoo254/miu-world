@@ -52,9 +52,22 @@ export function mirroredAccessory(def: AccessoryDef): AccessoryDef {
 
 type Paint = { x: number; y: number; z: number; color: string };
 
+/**
+ * The meshes an item is worn as, each pinned to its own rig node: the item itself, a mirrored pair
+ * (shoes), or clothes split by joint (torso, both arms, both legs; the right limbs mirror the left).
+ */
+export function accessoryPieces(def: AccessoryDef): AccessoryDef[] {
+  if (!def.parts) return def.mirror ? [def, mirroredAccessory(def)] : [def];
+  return Object.entries(def.parts).flatMap(([node, boxes]) => {
+    const piece: AccessoryDef = { ...def, attachNode: node, boxes, parts: undefined, mirror: false };
+    return node in MIRRORED_NODES ? [piece, mirroredAccessory(piece)] : [piece];
+  });
+}
+
 function paints(def: AccessoryDef): Paint[] {
   const out: Paint[] = [];
-  for (const b of def.boxes) {
+  const boxes = def.boxes.flatMap((b) => (b.sym ? [b, { ...b, x: -(b.x + b.w) }] : [b]));
+  for (const b of boxes) {
     for (let x = b.x; x < b.x + b.w; x++) {
       for (let y = b.y; y < b.y + b.h; y++) for (let z = b.z; z < b.z + b.d; z++) out.push({ x, y, z, color: b.color });
     }
@@ -75,6 +88,8 @@ function paints(def: AccessoryDef): Paint[] {
 
 export function rasterizeAccessory(def: AccessoryDef): VoxelVolume {
   const painted = paints(def);
+  // Clothes keep their boxes in `parts`: they are built piece by piece (`accessoryPieces`).
+  if (painted.length === 0) throw new Error(`${def.id}: no voxels on ${def.attachNode} (build clothes per piece)`);
   const min: [number, number, number] = [Infinity, Infinity, Infinity];
   const max: [number, number, number] = [-Infinity, -Infinity, -Infinity];
   for (const p of painted) {

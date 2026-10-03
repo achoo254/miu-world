@@ -2,7 +2,7 @@ import { readFileSync, readdirSync } from 'node:fs';
 import path from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { buildAccessoryCatalog, parseAccessory } from './accessory-schema';
-import { MAX_ACCESSORY_TRIANGLES, buildAccessoryMesh, mirroredAccessory } from './voxel-accessory';
+import { MAX_ACCESSORY_TRIANGLES, accessoryPieces, buildAccessoryMesh, mirroredAccessory, rasterizeAccessory } from './voxel-accessory';
 
 const CONTENT = path.resolve(import.meta.dirname, '../../../content/accessories');
 
@@ -47,6 +47,45 @@ describe('accessory schema', () => {
   });
 });
 
+describe('clothes', () => {
+  const sleeve = { x: -1, y: -5, z: -3, w: 6, h: 6, d: 7, color: 'a' };
+  const clothes = (overrides: Record<string, unknown> = {}): Record<string, unknown> =>
+    base({
+      id: 'clothes-test',
+      slot: 'clothes',
+      attachNode: 'torso',
+      voxelSize: 0.05,
+      boxes: [],
+      parts: { torso: [{ x: -7, y: 12, z: -5, w: 14, h: 8, d: 10, color: 'a' }], 'arm-left': [sleeve], 'leg-left': [{ x: -3, y: -5, z: -3, w: 6, h: 5, d: 6, color: 'b' }] },
+      ...overrides,
+    });
+
+  it('dresses the torso and both arms and legs, the right limbs mirroring the left', () => {
+    const pieces = accessoryPieces(parseAccessory(clothes()));
+    expect(pieces.map((p) => p.attachNode)).toEqual(['torso', 'arm-left', 'arm-right', 'leg-left', 'leg-right']);
+    const right = pieces.find((p) => p.attachNode === 'arm-right');
+    expect(right?.boxes).toEqual([{ ...sleeve, x: -5 }]);
+    for (const piece of pieces) expect(piece.parts).toBeUndefined();
+  });
+
+  it('needs a torso, parts only, on the body voxel grid at the torso pivot', () => {
+    expect(() => parseAccessory(clothes({ parts: { 'arm-left': [sleeve] } }))).toThrow(/torso/);
+    expect(() => parseAccessory(clothes({ boxes: [sleeve] }))).toThrow(/parts only/);
+    expect(() => parseAccessory(clothes({ voxelSize: 0.0625 }))).toThrow(/voxel size/);
+    expect(() => parseAccessory(clothes({ attachNode: 'head' }))).toThrow(/attach to the torso/);
+    expect(() => parseAccessory(clothes({ offset: [0, 0.1, 0] }))).toThrow(/offset/);
+    expect(() => parseAccessory(clothes({ parts: { torso: [sleeve], 'arm-right': [sleeve] } }))).toThrow();
+    expect(() => parseAccessory(clothes({ parts: { torso: [{ ...sleeve, color: 'nope' }] } }))).toThrow(/not in the palette/);
+    expect(() => parseAccessory(base({ parts: { torso: [sleeve] } }))).toThrow(/only clothes/);
+  });
+
+  it('paints a `sym` box on both sides of x = 0', () => {
+    const one = parseAccessory(base({ boxes: [{ x: 1, y: 0, z: 0, w: 2, h: 1, d: 1, color: 'a', sym: true }] }));
+    expect(rasterizeAccessory(one)).toMatchObject({ dims: [6, 1, 1], min: [-3, 0, 0] });
+    expect(buildAccessoryMesh(one).triangles).toBe(24);
+  });
+});
+
 describe('buildAccessoryMesh', () => {
   it('a 2x1x1 box exposes 10 faces and merges into 6 quads', () => {
     const mesh = buildAccessoryMesh(parseAccessory(base()));
@@ -80,9 +119,10 @@ describe('buildAccessoryMesh', () => {
 
   for (const item of catalog.values()) {
     it(`${item.id} builds within budget, and every colour of its shape too`, () => {
-      const mesh = buildAccessoryMesh(item.def, item.variant);
-      expect(mesh.triangles).toBeLessThanOrEqual(MAX_ACCESSORY_TRIANGLES);
-      for (const variant of Object.keys(item.def.variants)) expect(buildAccessoryMesh(item.def, variant).triangles).toBe(mesh.triangles);
+      const triangles = (variant?: string): number[] => accessoryPieces(item.def).map((piece) => buildAccessoryMesh(piece, variant).triangles);
+      const mesh = triangles(item.variant);
+      for (const count of mesh) expect(count).toBeLessThanOrEqual(MAX_ACCESSORY_TRIANGLES);
+      for (const variant of Object.keys(item.def.variants)) expect(triangles(variant)).toEqual(mesh);
     });
   }
 });

@@ -1,0 +1,188 @@
+{
+  "id": "vehicle-carpet-red",
+  "name": "Thảm bay đỏ",
+  "slot": "vehicle",
+  "unlock": {
+    "level": 8
+  },
+  "attachNode": "ground",
+  "voxelSize": 0.0625,
+  "offset": [
+    0,
+    0,
+    0
+  ],
+  "ride": {
+    "height": 0.3125,
+    "pose": "sit",
+    "float": true
+  },
+  "palette": {
+    "carpet": "#c0392b",
+    "border": "#ffd23f",
+    "pattern": "#3f7ac0",
+    "tassel": "#ffd23f"
+  },
+  "variants": {
+    "blue": {
+      "carpet": "#2d5fa8",
+      "pattern": "#ffd23f"
+    },
+    "purple": {
+      "carpet": "#6c3fa0",
+      "pattern": "#5fe0ff"
+    },
+    "gold": {
+      "carpet": "#e0a520",
+      "border": "#fff6c0",
+      "pattern": "#c0392b",
+      "tassel": "#fff6c0"
+    }
+  },
+  "boxes": [
+    {
+      "x": -12,
+      "y": 4,
+      "z": -18,
+      "w": 24,
+      "h": 1,
+      "d": 36,
+      "color": "carpet"
+    },
+    {
+      "x": -12,
+      "y": 4,
+      "z": -18,
+      "w": 24,
+      "h": 1,
+      "d": 2,
+      "color": "border"
+    },
+    {
+      "x": 10,
+      "y": 4,
+      "z": -18,
+      "w": 2,
+      "h": 1,
+      "d": 36,
+      "color": "border"
+    },
+    {
+      "x": -12,
+      "y": 4,
+      "z": -18,
+      "w": 2,
+      "h": 1,
+      "d": 36,
+      "color": "border"
+    },
+    {
+      "x": -12,
+      "y": 5,
+      "z": 18,
+      "w": 24,
+      "h": 1,
+      "d": 2,
+      "color": "border"
+    },
+    {
+      "x": -12,
+      "y": 6,
+      "z": 19,
+      "w": 24,
+      "h": 1,
+      "d": 1,
+      "color": "border"
+    },
+    {
+      "x": -2,
+      "y": 4,
+      "z": -9,
+      "w": 4,
+      "h": 1,
+      "d": 4,
+      "color": "pattern"
+    },
+    {
+      "x": 2,
+      "y": 4,
+      "z": -1,
+      "w": 4,
+      "h": 1,
+      "d": 4,
+      "color": "pattern"
+    },
+    {
+      "x": -6,
+      "y": 4,
+      "z": -1,
+      "w": 4,
+      "h": 1,
+      "d": 4,
+      "color": "pattern"
+    },
+    {
+      "x": -2,
+      "y": 4,
+      "z": 7,
+      "w": 4,
+      "h": 1,
+      "d": 4,
+      "color": "pattern"
+    },
+    {
+      "x": -11,
+      "y": 3,
+      "z": -19,
+      "w": 2,
+      "h": 1,
+      "d": 1,
+      "color": "tassel"
+    },
+    {
+      "x": -7,
+      "y": 3,
+      "z": -19,
+      "w": 2,
+      "h": 1,
+      "d": 1,
+      "color": "tassel"
+    },
+    {
+      "x": -3,
+      "y": 3,
+      "z": -19,
+      "w": 2,
+      "h": 1,
+      "d": 1,
+      "color": "tassel"
+    },
+    {
+      "x": 1,
+      "y": 3,
+      "z": -19,
+      "w": 2,
+      "h": 1,
+      "d": 1,
+      "color": "tassel"
+    },
+    {
+      "x": 5,
+      "y": 3,
+      "z": -19,
+      "w": 2,
+      "h": 1,
+      "d": 1,
+      "color": "tassel"
+    },
+    {
+      "x": 9,
+      "y": 3,
+      "z": -19,
+      "w": 2,
+      "h": 1,
+      "d": 1,
+      "color": "tassel"
+    }
+  ]
+}

@@ -3,6 +3,7 @@
 import { accessoryArtPath } from '@miu/schema/accessory-art';
 import { isAccessoryOpen, type AccessoryItem } from '@miu/voxel/accessory-schema';
 import { ACCESSORIES } from '../../game/content/accessories';
+import { characterForSpecies } from '../../game/content/characters';
 import { assetUrl } from '../kit/ui-art';
 
 /** Every accessory slot, in tab order (head to toe, then what the paw holds). */
@@ -14,11 +15,21 @@ export const OPEN_SLOTS = [
   { slot: 'wings', label: 'Cánh' },
   { slot: 'shoes', label: 'Giày' },
   { slot: 'hand', label: 'Cầm tay' },
+  { slot: 'clothes', label: 'Quần áo' },
+  { slot: 'vehicle', label: 'Xe' },
 ] as const satisfies ReadonlyArray<{ slot: AccessoryItem['slot']; label: string }>;
 export type OpenSlot = (typeof OPEN_SLOTS)[number]['slot'];
 
-/** Tabs shown locked as "Sắp có" (V1): no data behind them. Clothes are baked into the character model. */
-export const COMING_SLOTS = ['Áo'] as const;
+/** Clothes are always worn: their tab has no "none" tile (the other slots can be left empty). */
+export function slotHasNone(slot: OpenSlot): boolean {
+  return slot !== 'clothes';
+}
+
+/** The item shown as worn in `slot`: the chosen one, or, for clothes when none is chosen, the species' own. */
+export function wornInSlot(equipped: readonly string[], slot: OpenSlot, species: string): string | null {
+  const chosen = equipped.find((id) => ACCESSORIES.get(id)?.slot === slot);
+  return chosen ?? (slot === 'clothes' ? (characterForSpecies(species).clothes ?? null) : null);
+}
 
 /** Open items first, then by level, then quest-locked ones. */
 export function itemsForSlot(slot: OpenSlot): AccessoryItem[] {

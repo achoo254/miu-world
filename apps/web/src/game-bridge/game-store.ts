@@ -30,6 +30,12 @@ export type AutowalkState = 'idle' | 'finding' | 'walking' | 'arrived' | 'failed
 
 /** Server-backed state of region targets, pushed by React after each quest response. */
 export type TargetState = 'found' | 'open' | 'hidden';
+
+/** The vehicle the child has equipped on this map (the HUD offers "Lái xe" / "Xuống xe"), and whether she rides it. */
+export interface VehicleState {
+  name: string;
+  riding: boolean;
+}
 export type WorldState = Readonly<Record<string, TargetState>>;
 
 export type GameEvent =
@@ -47,7 +53,9 @@ export type GameEvent =
   | { type: 'stuck'; stuck: boolean }
   /** Whether the quest's target stands on this map, so the quest card can walk her there. */
   | { type: 'autowalk-available'; available: boolean }
-  | { type: 'autowalk'; state: AutowalkState };
+  | { type: 'autowalk'; state: AutowalkState }
+  /** The equipped vehicle and whether she is on it (null: no vehicle equipped). */
+  | { type: 'vehicle'; vehicle: VehicleState | null };
 
 export interface GameSnapshot {
   status: 'loading' | 'ready' | 'error';
@@ -63,6 +71,8 @@ export interface GameSnapshot {
   /** The quest card offers to walk her to the target while this is true. */
   autowalkAvailable: boolean;
   autowalk: AutowalkState;
+  /** The equipped vehicle, while the game is up. */
+  vehicle: VehicleState | null;
 }
 
 /** Commands from React to the game. The game ignores commands it does not handle yet. */
@@ -83,7 +93,9 @@ export type GameCommand =
   /** Walk Miu to the target the tracker points at, along the ways (tapping the quest card). */
   | { type: 'autowalk-start' }
   /** Stop that walk where she is (tapping the card again). */
-  | { type: 'autowalk-stop' };
+  | { type: 'autowalk-stop' }
+  /** Get on the equipped vehicle, or off it (the HUD's "Lái xe" / "Xuống xe"). */
+  | { type: 'ride'; on: boolean };
 
 export interface GameStore {
   subscribe(listener: () => void): () => void;
@@ -106,6 +118,7 @@ export const INITIAL_SNAPSHOT: GameSnapshot = {
   travel: null,
   autowalkAvailable: false,
   autowalk: 'idle',
+  vehicle: null,
 };
 
 function samePrompt(a: InteractionPrompt | null, b: InteractionPrompt | null): boolean {
@@ -120,7 +133,7 @@ export function reduce(state: GameSnapshot, event: GameEvent): GameSnapshot {
     case 'loading':
       // A new map loads: the loading screen shows again, and "ready" will be news to every listener (the quest
       // sends its target to the new game then, so the card can walk her there).
-      return { ...state, status: 'loading', error: null, loading: { done: 0, total: state.loading.total }, prompt: null, stuck: false, autowalkAvailable: false, autowalk: 'idle' };
+      return { ...state, status: 'loading', error: null, loading: { done: 0, total: state.loading.total }, prompt: null, stuck: false, autowalkAvailable: false, autowalk: 'idle', vehicle: null };
     case 'ready':
       return state.status === 'ready' ? state : { ...state, status: 'ready', error: null };
     case 'error':
@@ -145,6 +158,10 @@ export function reduce(state: GameSnapshot, event: GameEvent): GameSnapshot {
       return state.autowalkAvailable === event.available ? state : { ...state, autowalkAvailable: event.available };
     case 'autowalk':
       return state.autowalk === event.state ? state : { ...state, autowalk: event.state };
+    case 'vehicle': {
+      const same = state.vehicle?.name === event.vehicle?.name && state.vehicle?.riding === event.vehicle?.riding;
+      return same ? state : { ...state, vehicle: event.vehicle };
+    }
   }
 }
 

@@ -1,0 +1,164 @@
+{
+  "id": "clothes-princess",
+  "name": "Váy công chúa hồng",
+  "slot": "clothes",
+  "unlock": {
+    "level": 10
+  },
+  "attachNode": "torso",
+  "voxelSize": 0.05,
+  "offset": [
+    0,
+    0,
+    0
+  ],
+  "palette": {
+    "main": "#f59ac4",
+    "light": "#fcd3e6",
+    "gold": "#ffd23f",
+    "gem": "#8fd3ff",
+    "lace": "#ffffff"
+  },
+  "variants": {
+    "blue": {
+      "main": "#8fc9f0",
+      "light": "#d4ecfb",
+      "gold": "#c0c8d8",
+      "gem": "#ffffff"
+    },
+    "diamond": {
+      "main": "#efe9ff",
+      "light": "#ffffff",
+      "gold": "#b8a9ff",
+      "gem": "#8fd3ff",
+      "lace": "#e6dcff"
+    }
+  },
+  "parts": {
+    "torso": [
+      {
+        "x": -8,
+        "y": 4,
+        "z": -6,
+        "w": 16,
+        "h": 8,
+        "d": 12,
+        "color": "main"
+      },
+      {
+        "x": -9,
+        "y": 3,
+        "z": -7,
+        "w": 18,
+        "h": 3,
+        "d": 14,
+        "color": "light"
+      },
+      {
+        "x": -10,
+        "y": 2,
+        "z": -8,
+        "w": 20,
+        "h": 1,
+        "d": 16,
+        "color": "lace"
+      },
+      {
+        "x": 2,
+        "y": 4,
+        "z": 6,
+        "w": 1,
+        "h": 1,
+        "d": 1,
+        "color": "gold",
+        "sym": true
+      },
+      {
+        "x": 6,
+        "y": 4,
+        "z": 6,
+        "w": 1,
+        "h": 1,
+        "d": 1,
+        "color": "gold",
+        "sym": true
+      },
+      {
+        "x": -8,
+        "y": 11,
+        "z": -6,
+        "w": 16,
+        "h": 1,
+        "d": 12,
+        "color": "gold"
+      },
+      {
+        "x": -7,
+        "y": 12,
+        "z": -5,
+        "w": 14,
+        "h": 8,
+        "d": 10,
+        "color": "main"
+      },
+      {
+        "x": -4,
+        "y": 19,
+        "z": 4,
+        "w": 8,
+        "h": 1,
+        "d": 1,
+        "color": "gold"
+      },
+      {
+        "x": -1,
+        "y": 16,
+        "z": 5,
+        "w": 2,
+        "h": 2,
+        "d": 1,
+        "color": "gem"
+      }
+    ],
+    "arm-left": [
+      {
+        "x": -1,
+        "y": -5,
+        "z": -3,
+        "w": 6,
+        "h": 6,
+        "d": 7,
+        "color": "light"
+      },
+      {
+        "x": -1,
+        "y": -2,
+        "z": -4,
+        "w": 7,
+        "h": 3,
+        "d": 9,
+        "color": "light"
+      },
+      {
+        "x": -1,
+        "y": -5,
+        "z": -3,
+        "w": 6,
+        "h": 1,
+        "d": 7,
+        "color": "main"
+      }
+    ],
+    "leg-left": [
+      {
+        "x": -3,
+        "y": -5,
+        "z": -3,
+        "w": 6,
+        "h": 5,
+        "d": 6,
+        "color": "lace"
+      }
+    ]
+  }
+}

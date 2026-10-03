@@ -1,0 +1,139 @@
+{
+  "id": "clothes-tuxedo",
+  "name": "Bộ com lê đen nơ đỏ",
+  "slot": "clothes",
+  "unlock": {
+    "level": 8
+  },
+  "attachNode": "torso",
+  "voxelSize": 0.05,
+  "offset": [
+    0,
+    0,
+    0
+  ],
+  "palette": {
+    "main": "#2a2a35",
+    "shade": "#1c1c24",
+    "shirt": "#fbfbf8",
+    "bow": "#d9342b",
+    "knot": "#a8231d",
+    "button": "#c9a227"
+  },
+  "variants": {
+    "white": {
+      "main": "#f4f2ec",
+      "shade": "#d8d4c8",
+      "shirt": "#c8e2f5",
+      "bow": "#2a2a35",
+      "knot": "#1c1c24"
+    }
+  },
+  "parts": {
+    "torso": [
+      {
+        "x": -8,
+        "y": 4,
+        "z": -6,
+        "w": 16,
+        "h": 8,
+        "d": 12,
+        "color": "main"
+      },
+      {
+        "x": -7,
+        "y": 12,
+        "z": -5,
+        "w": 14,
+        "h": 8,
+        "d": 10,
+        "color": "main"
+      },
+      {
+        "x": -3,
+        "y": 16,
+        "z": 4,
+        "w": 6,
+        "h": 4,
+        "d": 1,
+        "color": "shirt"
+      },
+      {
+        "x": -2,
+        "y": 13,
+        "z": 4,
+        "w": 4,
+        "h": 3,
+        "d": 1,
+        "color": "shirt"
+      },
+      {
+        "x": -3,
+        "y": 18,
+        "z": 5,
+        "w": 6,
+        "h": 2,
+        "d": 1,
+        "color": "bow"
+      },
+      {
+        "x": -1,
+        "y": 18,
+        "z": 5,
+        "w": 2,
+        "h": 2,
+        "d": 1,
+        "color": "knot"
+      },
+      {
+        "x": -1,
+        "y": 10,
+        "z": 6,
+        "w": 2,
+        "h": 1,
+        "d": 1,
+        "color": "button"
+      },
+      {
+        "x": 4,
+        "y": 16,
+        "z": 4,
+        "w": 2,
+        "h": 1,
+        "d": 1,
+        "color": "bow"
+      }
+    ],
+    "arm-left": [
+      {
+        "x": -1,
+        "y": -5,
+        "z": -3,
+        "w": 6,
+        "h": 6,
+        "d": 7,
+        "color": "main"
+      },
+      {
+        "x": -1,
+        "y": -5,
+        "z": -3,
+        "w": 6,
+        "h": 1,
+        "d": 7,
+        "color": "shirt"
+      }
+    ],
+    "leg-left": [
+      {
+        "x": -3,
+        "y": -5,
+        "z": -3,
+        "w": 6,
+        "h": 5,
+        "d": 6,
+        "color": "main"
+      }
+    ]
+  }
+}

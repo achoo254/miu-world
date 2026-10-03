@@ -131,7 +131,7 @@ describe('Character Creator', () => {
     fireEvent.click(screen.getByRole('tab', { name: 'Balo' }));
     fireEvent.click(screen.getByRole('button', { name: /Balo xanh lá/ }));
     expect(previews.commands.at(-1)).toEqual({ type: 'set-outfit', equipped: ['hat-witch-pink', 'backpack-green'] });
-    expect(document.querySelector('[data-id="creator-slot-coming-Áo"]')?.getAttribute('aria-disabled')).toBe('true');
+    expect(document.querySelector('[data-id^="creator-slot-coming"]')).toBeNull(); // every tab works, clothes too
 
     fireEvent.click(screen.getByRole('button', { name: 'Vui mừng' }));
     expect(previews.emotes).toEqual(['cheer']);
@@ -172,6 +172,30 @@ describe('Character Creator', () => {
       type: 'set-outfit',
       equipped: ['hat-non-la-red', 'glasses-round-black', 'scarf-pioneer', 'back-school-blue', 'wings-butterfly-pink', 'shoes-sneaker-red', 'hand-lantern-red'],
     });
+  });
+
+  it('dresses the animal in its own clothes until the child picks others, and never leaves it without clothes', async () => {
+    stubApi();
+    renderCreator();
+    fireEvent.click(await screen.findByRole('button', { name: /Thỏ/ }));
+    fireEvent.click(screen.getByRole('tab', { name: 'Quần áo' }));
+    expect(document.querySelector('[data-id="creator-item-none-clothes"]')).toBeNull();
+    expect(screen.getByRole('button', { name: /Quần yếm xanh dương/ }).getAttribute('aria-pressed')).toBe('true');
+    const tiles = screen.getAllByRole('button').filter((b) => b.dataset.id?.startsWith('creator-item-clothes-'));
+    expect(tiles.filter((t) => !(t as HTMLButtonElement).disabled).length).toBeGreaterThanOrEqual(10);
+    expect(tiles.every((t) => t.querySelector('img.item-art')?.getAttribute('src')?.startsWith('/game-assets/generated/accessories/clothes-'))).toBe(true);
+    const aoDai = screen.getByRole('button', { name: /Áo dài cách tân đỏ/ });
+    expect((aoDai as HTMLButtonElement).disabled).toBe(true);
+    expect(aoDai.textContent).toContain('Cần Lv.5');
+
+    fireEvent.click(screen.getByRole('button', { name: /Đồng phục học sinh/ }));
+    expect(previews.commands.at(-1)).toEqual({ type: 'set-outfit', equipped: ['clothes-school-uniform'] });
+    expect(screen.getByRole('button', { name: /Đồng phục học sinh/ }).getAttribute('aria-pressed')).toBe('true');
+    expect(screen.getByRole('button', { name: /Quần yếm xanh dương/ }).getAttribute('aria-pressed')).toBe('false');
+    fireEvent.change(screen.getByLabelText('Tên nhân vật'), { target: { value: 'Bo' } });
+    fireEvent.click(screen.getByRole('button', { name: /Vào thế giới/ }));
+    expect(await screen.findByText('Trang chủ')).toBeTruthy();
+    expect(puts).toEqual([{ name: 'Bo', equipped: ['clothes-school-uniform'], species: 'rabbit', pet: null }]);
   });
 
   it('opens items once the level or quest is reached', async () => {

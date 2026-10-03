@@ -2,7 +2,9 @@
 // Map shots: ?shot=top|iso|bridge|tree|npc|view:…&quality=…&region=… runs the game with a fixed review camera.
 // Model shots: ?model=<manifest path>&anim=<clip>&t=<seconds>&yaw=<deg>&pitch=<deg>&size=<px>
 //        &acc=<id[:variant],id[:variant]>&accScale=<node:scale,...>&bg=<css colour | transparent>
-// Item shots: ?item=<accessory id>&yaw=…&pitch=…&size=…&bg=… renders one wearable item alone (a pair side by side).
+//        (a vehicle among `acc` stands under her, as she rides it)
+// Item shots: ?item=<accessory id>&yaw=…&pitch=…&size=…&bg=… renders one wearable item alone (a pair side by side;
+//        clothes as the default character wears them, without her body).
 // Sets document.body.dataset.ready = '1' once the frame is drawn (or data-error on failure).
 import {
   AnimationMixer,
@@ -13,6 +15,7 @@ import {
   HemisphereLight,
   PerspectiveCamera,
   Scene,
+  SkinnedMesh,
   SRGBColorSpace,
   Vector3,
   WebGLRenderer,
@@ -23,7 +26,9 @@ import { AssetRegistry, GuardedGltfLoader } from '../game/asset-loader';
 import { mirroredAccessory } from '@miu/voxel/voxel-accessory';
 import { createAccessoryMesh, dressCharacter } from '../game/character/character-accessories';
 import { resolveOutfitEntry } from '../game/content/accessories';
+import { characterForSpecies, DEFAULT_SPECIES } from '../game/content/characters';
 import { Game } from '../game/game';
+import { createVehicleMesh, equippedVehicle, rideLift } from '../game/player/vehicle-ride';
 import '../ui/styles.css';
 import { renderWorldOverview } from './world-overview-shot';
 
@@ -45,9 +50,16 @@ async function posedCharacter(loader: GuardedGltfLoader): Promise<Object3D> {
         return [node, Number(value)] as const;
       }),
   );
-  const worn = dressCharacter(model, (params.get('acc') ?? '').split(',').filter(Boolean), (node) => accScale.get(node) ?? 1, false);
+  const entries = (params.get('acc') ?? '').split(',').filter(Boolean);
+  const worn = dressCharacter(model, entries, (node) => accScale.get(node) ?? 1, false);
   const [failed] = worn.skipped;
   if (failed) throw failed.error instanceof Error ? failed.error : new Error(`accessory ${failed.entry}`);
+  // A vehicle stands under her, her feet on its deck, as when she drives it in the game.
+  const vehicle = equippedVehicle(entries);
+  if (vehicle) {
+    model.add(createVehicleMesh(vehicle, false));
+    model.position.y = rideLift(vehicle.ride);
+  }
 
   const clipName = params.get('anim');
   if (clipName) {
@@ -60,9 +72,27 @@ async function posedCharacter(loader: GuardedGltfLoader): Promise<Object3D> {
   return model;
 }
 
+/**
+ * Clothes on their own: worn by the default character, whose body is then taken away, so they keep the
+ * shape and the facing they have on her (front toward the camera at yaw 0).
+ */
+async function clothesModel(loader: GuardedGltfLoader, entry: string): Promise<Object3D> {
+  const model: Object3D = (await loader.load(characterForSpecies(DEFAULT_SPECIES).output)).scene;
+  const worn = dressCharacter(model, [entry], () => 1, false);
+  const [failed] = worn.skipped;
+  if (failed) throw failed.error instanceof Error ? failed.error : new Error(`clothes ${failed.entry}`);
+  const body: Object3D[] = [];
+  model.traverse((o) => {
+    if (o instanceof SkinnedMesh && !worn.meshes.includes(o)) body.push(o);
+  });
+  for (const o of body) o.removeFromParent();
+  return model;
+}
+
 /** One item on its own, in its attach-node space; a pair (shoes) shows both halves side by side. */
-function itemModel(entry: string): Object3D {
+async function itemModel(loader: GuardedGltfLoader, entry: string): Promise<Object3D> {
   const { def, variant } = resolveOutfitEntry(entry);
+  if (def.slot === 'clothes') return clothesModel(loader, entry);
   const group = new Group();
   const first = createAccessoryMesh(def, variant);
   group.add(first);
@@ -99,7 +129,7 @@ async function render(): Promise<void> {
   scene.add(sun);
 
   const itemId = params.get('item');
-  const model = itemId ? itemModel(itemId) : await posedCharacter(loader);
+  const model = itemId ? await itemModel(loader, itemId) : await posedCharacter(loader);
   scene.add(model);
   model.updateMatrixWorld(true);
 

@@ -1,5 +1,6 @@
 // M1.2 (chọn loài) + M1.3 (trang phục, tên, tính cách, xem trước): the Character Creator. Every
-// species in content/species.json is open; every accessory slot has a tab, Áo shows "Sắp có"; the "Thú cưng" tab picks
+// species in content/species.json is open; every accessory slot has a tab (clothes always worn: the species' own until
+// the child picks others); the "Thú cưng" tab picks
 // a pet (content/pets.json) that follows the character. The 3D preview is its own light renderer; outfit
 // and pet changes reach it as the bridge commands `set-outfit` and `set-pet`.
 import { useEffect, useRef, useState } from 'react';
@@ -10,7 +11,6 @@ import characterNames from '../../../../../content/names/character-names.json';
 import { createGameStore, type GameStore } from '../../game-bridge/game-store';
 import { GameStoreContext, useGameState } from '../../game-bridge/use-game-state';
 import { CharacterPreview, EMOTES, type Emote } from '../../game/preview/character-preview';
-import { ACCESSORIES } from '../../game/content/accessories';
 import { SPECIES } from '../../game/content/characters';
 import { api, errorMessage } from '../api-client';
 import { Icon, MiuArt } from '../kit/art';
@@ -18,7 +18,7 @@ import { assetUrl, PETS } from '../kit/ui-art';
 import { buttonClass } from '../kit/button';
 import { SkyScene } from '../kit/sky-scene';
 import { isFreshCharacter } from './fresh-character';
-import { COMING_SLOTS, OPEN_SLOTS, equip, isOpen, itemArtUrl, itemsForSlot, lockText, type OpenSlot } from './creator-outfit';
+import { OPEN_SLOTS, equip, isOpen, itemArtUrl, itemsForSlot, lockText, slotHasNone, wornInSlot, type OpenSlot } from './creator-outfit';
 import './creator.css';
 
 const NAMES: readonly string[] = (characterNames as { names: string[] }).names;
@@ -183,7 +183,7 @@ function OutfitStep({
     }
   }
 
-  const current = equipped.find((id) => ACCESSORIES.get(id)?.slot === slot) ?? null;
+  const current = slot === 'pet' ? null : wornInSlot(equipped, slot, species);
   return (
     <div className="creator-layout" data-id="creator-outfit">
       <section className="panel creator-wardrobe" aria-labelledby="creator-wardrobe-title">
@@ -212,11 +212,6 @@ function OutfitStep({
           >
             Thú cưng
           </button>
-          {COMING_SLOTS.map((label) => (
-            <span key={label} className="slot-tab slot-tab--locked" aria-disabled="true" data-id={`creator-slot-coming-${label}`}>
-              {label} <span className="badge">Sắp có</span>
-            </span>
-          ))}
         </div>
         {slot === 'pet' ? (
           <ul className="item-grid" role="tabpanel" aria-label="Thú cưng">
@@ -237,12 +232,14 @@ function OutfitStep({
           </ul>
         ) : (
         <ul className="item-grid" role="tabpanel" aria-label="Món đồ">
-          <li>
-            <button type="button" className="item-tile" aria-pressed={current === null} data-id={`creator-item-none-${slot}`} onClick={() => choose(null)}>
-              <span className="item-swatch item-swatch--none" aria-hidden="true" />
-              Không đeo
-            </button>
-          </li>
+          {slotHasNone(slot) ? (
+            <li>
+              <button type="button" className="item-tile" aria-pressed={current === null} data-id={`creator-item-none-${slot}`} onClick={() => choose(null)}>
+                <span className="item-swatch item-swatch--none" aria-hidden="true" />
+                Không đeo
+              </button>
+            </li>
+          ) : null}
           {itemsForSlot(slot).map((item) => {
             const open = isOpen(item, data.level, data.completed, worn);
             return (

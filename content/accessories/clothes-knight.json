@@ -1,0 +1,165 @@
+{
+  "id": "clothes-knight",
+  "name": "Áo giáp hiệp sĩ bạc",
+  "slot": "clothes",
+  "unlock": {
+    "level": 12
+  },
+  "attachNode": "torso",
+  "voxelSize": 0.05,
+  "offset": [
+    0,
+    0,
+    0
+  ],
+  "palette": {
+    "metal": "#c9ced6",
+    "shade": "#9aa1ad",
+    "trim": "#ffd23f",
+    "tabard": "#3f6fd0",
+    "chain": "#8a909a"
+  },
+  "variants": {
+    "gold": {
+      "metal": "#f2c94c",
+      "shade": "#c99a22",
+      "trim": "#ffffff",
+      "tabard": "#d9342b",
+      "chain": "#b8902e"
+    }
+  },
+  "parts": {
+    "torso": [
+      {
+        "x": -8,
+        "y": 4,
+        "z": -6,
+        "w": 16,
+        "h": 8,
+        "d": 12,
+        "color": "chain"
+      },
+      {
+        "x": -8,
+        "y": 11,
+        "z": -6,
+        "w": 16,
+        "h": 1,
+        "d": 12,
+        "color": "shade"
+      },
+      {
+        "x": -4,
+        "y": 4,
+        "z": 5,
+        "w": 8,
+        "h": 7,
+        "d": 1,
+        "color": "tabard"
+      },
+      {
+        "x": -7,
+        "y": 12,
+        "z": -5,
+        "w": 14,
+        "h": 8,
+        "d": 10,
+        "color": "metal"
+      },
+      {
+        "x": -4,
+        "y": 12,
+        "z": 4,
+        "w": 8,
+        "h": 7,
+        "d": 1,
+        "color": "tabard"
+      },
+      {
+        "x": -1,
+        "y": 17,
+        "z": 4,
+        "w": 2,
+        "h": 1,
+        "d": 1,
+        "color": "trim"
+      },
+      {
+        "x": -2,
+        "y": 15,
+        "z": 4,
+        "w": 4,
+        "h": 2,
+        "d": 1,
+        "color": "trim"
+      },
+      {
+        "x": -1,
+        "y": 14,
+        "z": 4,
+        "w": 2,
+        "h": 1,
+        "d": 1,
+        "color": "trim"
+      }
+    ],
+    "arm-left": [
+      {
+        "x": -1,
+        "y": -5,
+        "z": -3,
+        "w": 6,
+        "h": 6,
+        "d": 7,
+        "color": "metal"
+      },
+      {
+        "x": -1,
+        "y": -2,
+        "z": -4,
+        "w": 7,
+        "h": 3,
+        "d": 9,
+        "color": "metal"
+      },
+      {
+        "x": -1,
+        "y": -2,
+        "z": -4,
+        "w": 7,
+        "h": 1,
+        "d": 9,
+        "color": "trim"
+      },
+      {
+        "x": -1,
+        "y": -5,
+        "z": -3,
+        "w": 6,
+        "h": 1,
+        "d": 7,
+        "color": "shade"
+      }
+    ],
+    "leg-left": [
+      {
+        "x": -3,
+        "y": -5,
+        "z": -3,
+        "w": 6,
+        "h": 5,
+        "d": 6,
+        "color": "metal"
+      },
+      {
+        "x": -3,
+        "y": -4,
+        "z": 2,
+        "w": 6,
+        "h": 2,
+        "d": 1,
+        "color": "shade"
+      }
+    ]
+  }
+}

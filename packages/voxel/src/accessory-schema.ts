@@ -14,10 +14,25 @@ const unlockSchema = z
   .refine((u) => u.level !== undefined || u.quest !== undefined, { message: 'unlock needs a level or a quest' });
 export type AccessoryUnlock = z.infer<typeof unlockSchema>;
 
-export const ACCESSORY_SLOTS = ['hat', 'glasses', 'scarf', 'back', 'wings', 'shoes', 'hand'] as const;
+/**
+ * Where an item is worn. `clothes` dress the body (torso, arms, legs) over the fur; a `vehicle` is ridden
+ * (owner, 03/10/2026: clothes and vehicles to drive, each with items for every level).
+ */
+export const ACCESSORY_SLOTS = ['hat', 'glasses', 'scarf', 'back', 'wings', 'shoes', 'hand', 'clothes', 'vehicle'] as const;
+export type AccessorySlot = (typeof ACCESSORY_SLOTS)[number];
 
 /** Every slot offers at least this many items open from level 1 (checked by `pnpm content:check`). */
-export const MIN_OPEN_ITEMS_PER_SLOT = 20;
+export const MIN_OPEN_ITEMS: Readonly<Record<AccessorySlot, number>> = {
+  hat: 20,
+  glasses: 20,
+  scarf: 20,
+  back: 20,
+  wings: 20,
+  shoes: 20,
+  hand: 20,
+  clothes: 10,
+  vehicle: 10,
+};
 
 /** Limb nodes worn in pairs: a `mirror` accessory authored on one is also worn, mirrored, on the other. */
 export const MIRRORED_NODES: Readonly<Record<string, string>> = {
@@ -26,6 +41,24 @@ export const MIRRORED_NODES: Readonly<Record<string, string>> = {
   'arm-left': 'arm-right',
   'arm-right': 'arm-left',
 };
+
+/** A vehicle is not pinned to a rig node: it stands on the ground under the child (`vehicle-ride.ts`). */
+export const VEHICLE_NODE = 'ground';
+
+/**
+ * How the child rides a `vehicle` (owner, 03/10/2026: it faces where she faces and sits right under her;
+ * she sits or stands by the vehicle). A vehicle is authored front toward +z (the character's forward),
+ * centred on x = 0 and z = 0 under her, with voxel y = 0 on the ground. `pose`: she `stand`s on a board,
+ * `sit`s on a cloud or a carpet, or `drive`s seated with her hands on a wheel or a bar (cars, karts,
+ * trains). `height` (model units) is the top of the deck under her feet, or of the seat under her when
+ * seated. A `float`ing one (a cloud, a carpet) bobs gently in the air.
+ */
+const rideSchema = z.strictObject({
+  height: z.number().min(0).max(1),
+  pose: z.enum(['stand', 'sit', 'drive']),
+  float: z.boolean().optional(),
+});
+export type VehicleRideSpec = z.infer<typeof rideSchema>;
 
 const boxSchema = z.object({
   x: int,
@@ -36,7 +69,17 @@ const boxSchema = z.object({
   d: int.positive(),
   /** Palette key. Later boxes paint over earlier ones. */
   color: z.string().min(1),
+  /** Also paint the box mirrored across x = 0 (left/right symmetric details: buttons, pockets, collar tips). */
+  sym: z.boolean().optional(),
 });
+
+/**
+ * Rig joints clothes dress, on the character library's voxel grid (`content/outfits/`): the torso and the
+ * left arm and leg; the right limbs wear the left ones mirrored (`MIRRORED_NODES`), as the body itself does.
+ */
+export const CLOTHES_NODES = ['torso', 'arm-left', 'leg-left'] as const;
+/** Clothes sit on the character library's voxel grid: one voxel of the body is this many model units. */
+export const CLOTHES_VOXEL_SIZE = 0.05;
 
 /** Alternative to boxes: y-layers (bottom → top) of z-rows of characters mapped through `legend`. */
 const layersSchema = z.object({
@@ -66,12 +109,36 @@ export const accessorySchema = z
     variants: z.record(z.string(), z.record(z.string(), hexColor)).default({}),
     boxes: z.array(boxSchema).default([]),
     layers: layersSchema.optional(),
+    /**
+     * Clothes only: boxes per rig joint around its pivot, in the body's own voxels (`CLOTHES_VOXEL_SIZE`,
+     * front toward +z), skinned to the character's skeleton so every animation moves them with the body.
+     */
+    parts: z.partialRecord(z.enum(CLOTHES_NODES), z.array(boxSchema).min(1)).optional(),
+    /** Vehicles only: how she rides it. */
+    ride: rideSchema.optional(),
   })
   .superRefine((def, ctx) => {
-    if (def.boxes.length === 0 && !def.layers) ctx.addIssue({ code: 'custom', message: 'accessory needs boxes or layers' });
+    const clothes = def.slot === 'clothes';
+    if (clothes) {
+      if (!def.parts?.torso) ctx.addIssue({ code: 'custom', message: 'clothes need parts with a torso' });
+      if (def.boxes.length > 0 || def.layers || def.mirror) ctx.addIssue({ code: 'custom', message: 'clothes are authored in parts only (no boxes, layers or mirror)' });
+      if (def.attachNode !== 'torso' || def.voxelSize !== CLOTHES_VOXEL_SIZE || def.offset.some((v) => v !== 0) || def.rotation.some((v) => v !== 0)) {
+        ctx.addIssue({ code: 'custom', message: `clothes attach to the torso at voxel size ${CLOTHES_VOXEL_SIZE}, offset and rotation 0` });
+      }
+    } else {
+      if (def.parts) ctx.addIssue({ code: 'custom', message: 'only clothes have parts' });
+      if (def.boxes.length === 0 && !def.layers) ctx.addIssue({ code: 'custom', message: 'accessory needs boxes or layers' });
+    }
     if (def.mirror && !(def.attachNode in MIRRORED_NODES)) ctx.addIssue({ code: 'custom', message: `mirror needs a paired limb node, not "${def.attachNode}"` });
     if (def.mirror && def.layers) ctx.addIssue({ code: 'custom', message: 'mirror works on boxes only' });
-    const used = [...def.boxes.map((b) => b.color), ...Object.values(def.layers?.legend ?? {})];
+    const vehicle = def.slot === 'vehicle';
+    if (vehicle !== (def.ride !== undefined)) ctx.addIssue({ code: 'custom', message: vehicle ? 'a vehicle needs ride' : 'only a vehicle has ride' });
+    if (vehicle !== (def.attachNode === VEHICLE_NODE)) ctx.addIssue({ code: 'custom', message: `attachNode "${VEHICLE_NODE}" is for vehicles only, and every vehicle uses it` });
+    const used = [
+      ...def.boxes.map((b) => b.color),
+      ...Object.values(def.layers?.legend ?? {}),
+      ...Object.values(def.parts ?? {}).flatMap((boxes) => boxes.map((b) => b.color)),
+    ];
     for (const color of used) {
       if (!(color in def.palette)) ctx.addIssue({ code: 'custom', message: `color "${color}" is not in the palette` });
     }

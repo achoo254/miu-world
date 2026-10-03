@@ -3,8 +3,10 @@
     "output": "generated/characters/miu-cat.glb",
     "rig": "packs/kenney-blocky-characters/2.0/character-a.glb",
     "recipe": {
-      "species": "cat"
+      "species": "cat",
+      "outfit": "underlayer"
     },
+    "clothes": "clothes-dress",
     "torsoScale": 0.8333,
     "limbScale": 0.5,
     "accessoryScale": {
@@ -22,8 +24,10 @@
     "output": "generated/characters/rabbit.glb",
     "rig": "packs/kenney-blocky-characters/2.0/character-a.glb",
     "recipe": {
-      "species": "rabbit"
+      "species": "rabbit",
+      "outfit": "underlayer"
     },
+    "clothes": "clothes-overalls",
     "torsoScale": 0.8333,
     "limbScale": 0.5,
     "accessoryScale": {
@@ -41,8 +45,10 @@
     "output": "generated/characters/fox.glb",
     "rig": "packs/kenney-blocky-characters/2.0/character-a.glb",
     "recipe": {
-      "species": "fox"
+      "species": "fox",
+      "outfit": "underlayer"
     },
+    "clothes": "clothes-jacket",
     "torsoScale": 0.8333,
     "limbScale": 0.5,
     "accessoryScale": {
@@ -60,8 +66,10 @@
     "output": "generated/characters/bear.glb",
     "rig": "packs/kenney-blocky-characters/2.0/character-a.glb",
     "recipe": {
-      "species": "bear"
+      "species": "bear",
+      "outfit": "underlayer"
     },
+    "clothes": "clothes-vest-shorts",
     "torsoScale": 0.8333,
     "limbScale": 0.5,
     "accessoryScale": {

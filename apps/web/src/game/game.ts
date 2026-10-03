@@ -43,6 +43,7 @@ import { CameraRig } from './player/camera-rig';
 import { PlayerInput } from './player/input';
 import { PlayerController, WALK_SPEED, type MoveIntent } from './player/player-controller';
 import { RescueWatch } from './player/rescue';
+import { createRideControl } from './player/vehicle-ride';
 import { nearestUsableSpot } from './player/saved-spot';
 import { readQuality } from './quality';
 import { disposeSceneGraph } from './scene/dispose-scene';
@@ -400,6 +401,9 @@ export class Game {
     const liquid = (x: number, y: number, z: number): boolean => blocks(data.world.get(x, y, z))?.liquid ?? false;
     const controller = new PlayerController(solid, entities.spawn.position, entities.spawn.yaw, liquid, blocking);
     const rescue = new RescueWatch();
+    // The equipped vehicle: the HUD's "Lái xe" puts her on it.
+    const ride = createRideControl({ store, outfit, root: character.root, rider: controller, castShadow: quality.shadows, reduced: reducedMotion });
+    this.cleanups.push(() => ride.dispose());
     // Dev/E2E switch: start next to a target (`npc` = the first NPC), or at `x,y,z`, instead of the spawn point.
     const spawnAt = spawnAtParam;
     const spawnTarget = entities.interactables.find((t) => (spawnAt === 'npc' ? t.kind === 'npc' : t.id === spawnAt));
@@ -588,7 +592,8 @@ export class Game {
         const stick = Math.atan2(state.moveX, state.moveY);
         if (!moving) heading = null;
         else if (!heading || sinceLook === 0 || Math.abs(Math.atan2(Math.sin(stick - heading.stick), Math.cos(stick - heading.stick))) > STICK_TURN) heading = { yaw: rig.yaw, stick };
-        const isRunning = state.run && controller.speed > (WALK_SPEED + 0.4);
+        // On a vehicle the view follows behind her as when she runs.
+        const isRunning = (state.run || ride.riding) && controller.speed > (WALK_SPEED + 0.4);
         const followStrength = isRunning
           ? FOLLOW_STRENGTH_RUN
           : controller.speed > 0.8
@@ -618,6 +623,7 @@ export class Game {
         }
       }
       controller.update(dt, intent);
+      ride.update(dt);
       if (rescueRequested) {
         rescueRequested = false;
         walker.stop();
@@ -632,8 +638,10 @@ export class Game {
       });
       store.emit({ type: 'stuck', stuck });
       character.root.position.copy(controller.position);
+      character.root.position.y += ride.liftWorld;
       character.root.rotation.y = controller.facing;
-      character.update(dt, controller.speed, controller.onGround);
+      // On a vehicle she stands calm (idle) or holds her seated pose while it carries her.
+      character.update(dt, ride.riding ? 0 : controller.speed, controller.onGround, ride.pose);
       rig.update(dt, controller.position);
       // With the camera inside Miu (nowhere left to back off to), hide her rather than show her insides.
       if (!reviewShot?.backdrop) character.root.visible = rig.viewDistance > 0.9 && !reviewShot?.hidesPlayer;
@@ -727,6 +735,8 @@ export class Game {
       overlay.stats.ambientLine = life.stats.lastLine;
       overlay.stats.player = [controller.position.x, controller.position.y, controller.position.z];
       overlay.stats.onGround = controller.onGround;
+      overlay.stats.speed = controller.speed;
+      overlay.stats.riding = ride.riding;
       overlay.stats.patches = world.patchCount();
       overlay.stats.nearTarget = promptTarget?.def.id ?? null;
       overlay.stats.cameraYaw = rig.yaw;

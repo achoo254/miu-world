@@ -17,15 +17,18 @@ import {
   Vector3,
   WebGLRenderer,
   type AnimationAction,
+  type Mesh,
   type Object3D,
 } from 'three';
 import type { GameStore } from '../../game-bridge/game-store';
 import { AssetRegistry, GuardedGltfLoader } from '../asset-loader';
 import { dressCharacter, undressCharacter, type WornOutfit } from '../character/character-accessories';
+import { withOwnClothes } from '../character/character-clothes';
 import { characterForSpecies } from '../content/characters';
 import { loadPetCompanion, type PetCompanion } from '../entities/pet-companion';
 import { accessoryScaler, PLAYER_SCALE } from '../entities/player-character';
 import { PETS } from '../../ui/kit/ui-art';
+import { createVehicleMesh, equippedVehicle, rideLift, seatedPose } from '../player/vehicle-ride';
 import { disposeSceneGraph } from '../scene/dispose-scene';
 
 export const EMOTES = ['wave', 'jump', 'yawn', 'cheer'] as const;
@@ -168,6 +171,8 @@ export class CharacterPreview {
     const idleClip = clip('idle');
     if (!idleClip) throw new Error('character clip idle missing');
     const idle = mixer.clipAction(idleClip).play();
+    /** What she returns to after an emote: idle, or the seated pose of the vehicle she is on. */
+    let rest: AnimationAction = idle;
     const emotes = new Map<Emote, AnimationAction>();
     for (const name of EMOTES) {
       const emoteClip = clip(name);
@@ -193,7 +198,7 @@ export class CharacterPreview {
     };
     const onFinished = (): void => {
       this.stats.emote = null;
-      fadeTo(idle);
+      fadeTo(rest);
     };
     mixer.addEventListener('finished', onFinished);
     this.cleanups.push(() => mixer.removeEventListener('finished', onFinished));
@@ -204,6 +209,8 @@ export class CharacterPreview {
       if (o instanceof SkinnedMesh) skinned.push(o);
     });
     let worn: WornOutfit | null = null;
+    /** The equipped vehicle stands under her, as when she drives it in the game. */
+    let vehicleMesh: Mesh | null = null;
     const wear = (entries: readonly string[]): void => {
       const yaw = model.rotation.y;
       model.rotation.y = 0;
@@ -211,13 +218,27 @@ export class CharacterPreview {
       for (const mesh of skinned) mesh.skeleton.pose();
       model.updateMatrixWorld(true);
       if (worn) undressCharacter(worn);
-      worn = dressCharacter(model, entries, accessoryScaler(character), false);
+      worn = dressCharacter(model, withOwnClothes(entries, character.clothes), accessoryScaler(character), false);
       for (const { entry, error } of worn.skipped) console.warn(`skipping outfit entry "${entry}"`, error);
-      this.stats.outfit = [...worn.entries];
+      if (vehicleMesh) {
+        vehicleMesh.removeFromParent();
+        vehicleMesh.geometry.dispose(); // the material is shared with the accessories
+        vehicleMesh = null;
+      }
+      const vehicle = equippedVehicle(entries);
+      if (vehicle) {
+        vehicleMesh = createVehicleMesh(vehicle, false);
+        model.add(vehicleMesh);
+      }
+      model.position.y = (vehicle ? rideLift(vehicle.ride) : 0) * PLAYER_SCALE;
+      const pose = vehicle ? seatedPose(vehicle.ride) : null;
+      const poseClip = pose ? clip(pose) : undefined;
+      rest = poseClip ? mixer.clipAction(poseClip) : idle;
+      this.stats.outfit = [...worn.entries.filter((entry) => entries.includes(entry)), ...(vehicle ? [vehicle.entry] : [])];
       model.rotation.y = yaw;
-      playing = idle;
+      playing = rest;
       this.stats.emote = null;
-      idle.reset().play();
+      rest.reset().play();
     };
     wear(latestOutfit);
     wearNow = wear;

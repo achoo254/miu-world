@@ -1,0 +1,166 @@
+{
+  "id": "clothes-raincoat",
+  "name": "Áo mưa vàng",
+  "slot": "clothes",
+  "unlock": {
+    "level": 3
+  },
+  "attachNode": "torso",
+  "voxelSize": 0.05,
+  "offset": [
+    0,
+    0,
+    0
+  ],
+  "palette": {
+    "main": "#ffd23f",
+    "shade": "#e3b21f",
+    "toggle": "#3a6fd0",
+    "pants": "#4a5f8a"
+  },
+  "variants": {
+    "blue": {
+      "main": "#5fa8e8",
+      "shade": "#3f86c8",
+      "toggle": "#ffd23f"
+    }
+  },
+  "parts": {
+    "torso": [
+      {
+        "x": -8,
+        "y": 4,
+        "z": -6,
+        "w": 16,
+        "h": 8,
+        "d": 12,
+        "color": "main"
+      },
+      {
+        "x": -9,
+        "y": 2,
+        "z": -7,
+        "w": 18,
+        "h": 2,
+        "d": 14,
+        "color": "main"
+      },
+      {
+        "x": -9,
+        "y": 2,
+        "z": -7,
+        "w": 18,
+        "h": 1,
+        "d": 14,
+        "color": "shade"
+      },
+      {
+        "x": -7,
+        "y": 12,
+        "z": -5,
+        "w": 14,
+        "h": 8,
+        "d": 10,
+        "color": "main"
+      },
+      {
+        "x": -1,
+        "y": 4,
+        "z": 5,
+        "w": 2,
+        "h": 8,
+        "d": 1,
+        "color": "shade"
+      },
+      {
+        "x": -1,
+        "y": 12,
+        "z": 4,
+        "w": 2,
+        "h": 8,
+        "d": 1,
+        "color": "shade"
+      },
+      {
+        "x": 3,
+        "y": 6,
+        "z": 5,
+        "w": 3,
+        "h": 2,
+        "d": 1,
+        "color": "shade",
+        "sym": true
+      },
+      {
+        "x": 1,
+        "y": 9,
+        "z": 6,
+        "w": 2,
+        "h": 1,
+        "d": 1,
+        "color": "toggle",
+        "sym": true
+      },
+      {
+        "x": 1,
+        "y": 14,
+        "z": 5,
+        "w": 2,
+        "h": 1,
+        "d": 1,
+        "color": "toggle",
+        "sym": true
+      },
+      {
+        "x": 1,
+        "y": 17,
+        "z": 5,
+        "w": 2,
+        "h": 1,
+        "d": 1,
+        "color": "toggle",
+        "sym": true
+      },
+      {
+        "x": -4,
+        "y": 17,
+        "z": -5,
+        "w": 8,
+        "h": 3,
+        "d": 1,
+        "color": "shade"
+      }
+    ],
+    "arm-left": [
+      {
+        "x": -1,
+        "y": -5,
+        "z": -3,
+        "w": 6,
+        "h": 6,
+        "d": 7,
+        "color": "main"
+      },
+      {
+        "x": -1,
+        "y": -5,
+        "z": -3,
+        "w": 6,
+        "h": 1,
+        "d": 7,
+        "color": "shade"
+      }
+    ],
+    "leg-left": [
+      {
+        "x": -3,
+        "y": -5,
+        "z": -3,
+        "w": 6,
+        "h": 5,
+        "d": 6,
+        "color": "pants"
+      }
+    ]
+  }
+}

@@ -13,6 +13,8 @@ const FLUENT = 'packs/fluent-emoji/1ffb34c752ec/icons';
 /** Fluent Emoji 3D (MIT), the icon set chosen in docs/design-guidelines.md. */
 export const UI_ICONS = {
   antennaBars: `${FLUENT}/antenna-bars.png`,
+  /** The HUD's ride toggle: from the emoji props (the same Fluent set). */
+  automobile: 'packs/fluent-emoji/1ffb34c752ec/props/automobile.png',
   backpack: `${FLUENT}/backpack.png`,
   beaver: `${FLUENT}/beaver.png`,
   books: `${FLUENT}/books.png`,

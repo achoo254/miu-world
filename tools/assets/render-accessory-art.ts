@@ -9,7 +9,7 @@ import { ASSETS_DIR } from './asset-lib';
 import { readAccessoryCatalog, renderShots, type Shot } from './render-preview';
 
 /** Camera yaw per slot: worn behind (bags, wings) reads best from the back, the rest from the front. */
-const YAW: Record<AccessoryItem['slot'], number> = { hat: 30, glasses: 20, scarf: 30, back: 210, wings: 200, shoes: 35, hand: 35 };
+const YAW: Record<AccessoryItem['slot'], number> = { hat: 30, glasses: 20, scarf: 30, back: 210, wings: 200, shoes: 35, hand: 35, clothes: 25, vehicle: 35 };
 
 export async function accessoryArtShots(): Promise<Shot[]> {
   return [...(await readAccessoryCatalog()).values()].map((item) => ({

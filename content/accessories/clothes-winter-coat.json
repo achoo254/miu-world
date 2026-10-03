@@ -1,0 +1,144 @@
+{
+  "id": "clothes-winter-coat",
+  "name": "Áo phao đỏ",
+  "slot": "clothes",
+  "unlock": {
+    "level": 7
+  },
+  "attachNode": "torso",
+  "voxelSize": 0.05,
+  "offset": [
+    0,
+    0,
+    0
+  ],
+  "palette": {
+    "main": "#e2463e",
+    "shade": "#b9302a",
+    "fur": "#f7f1e6",
+    "zip": "#d8d8d8",
+    "pants": "#3a4a6a"
+  },
+  "variants": {
+    "purple": {
+      "main": "#8e5fd0",
+      "shade": "#6e43ad"
+    }
+  },
+  "parts": {
+    "torso": [
+      {
+        "x": -8,
+        "y": 4,
+        "z": -6,
+        "w": 16,
+        "h": 8,
+        "d": 12,
+        "color": "pants"
+      },
+      {
+        "x": -8,
+        "y": 8,
+        "z": -6,
+        "w": 16,
+        "h": 4,
+        "d": 12,
+        "color": "main"
+      },
+      {
+        "x": -8,
+        "y": 8,
+        "z": -6,
+        "w": 16,
+        "h": 1,
+        "d": 12,
+        "color": "shade"
+      },
+      {
+        "x": -7,
+        "y": 12,
+        "z": -5,
+        "w": 14,
+        "h": 8,
+        "d": 10,
+        "color": "main"
+      },
+      {
+        "x": -7,
+        "y": 15,
+        "z": -5,
+        "w": 14,
+        "h": 1,
+        "d": 10,
+        "color": "shade"
+      },
+      {
+        "x": -7,
+        "y": 19,
+        "z": -5,
+        "w": 14,
+        "h": 1,
+        "d": 10,
+        "color": "fur"
+      },
+      {
+        "x": -1,
+        "y": 8,
+        "z": 5,
+        "w": 2,
+        "h": 4,
+        "d": 1,
+        "color": "zip"
+      },
+      {
+        "x": -1,
+        "y": 12,
+        "z": 4,
+        "w": 2,
+        "h": 7,
+        "d": 1,
+        "color": "zip"
+      }
+    ],
+    "arm-left": [
+      {
+        "x": -1,
+        "y": -5,
+        "z": -3,
+        "w": 6,
+        "h": 6,
+        "d": 7,
+        "color": "main"
+      },
+      {
+        "x": -1,
+        "y": -2,
+        "z": -3,
+        "w": 6,
+        "h": 1,
+        "d": 7,
+        "color": "shade"
+      },
+      {
+        "x": -1,
+        "y": -5,
+        "z": -3,
+        "w": 6,
+        "h": 1,
+        "d": 7,
+        "color": "fur"
+      }
+    ],
+    "leg-left": [
+      {
+        "x": -3,
+        "y": -5,
+        "z": -3,
+        "w": 6,
+        "h": 5,
+        "d": 6,
+        "color": "pants"
+      }
+    ]
+  }
+}

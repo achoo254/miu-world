@@ -1,0 +1,168 @@
+{
+  "id": "vehicle-skateboard-red",
+  "name": "Ván trượt đỏ",
+  "slot": "vehicle",
+  "attachNode": "ground",
+  "voxelSize": 0.0625,
+  "offset": [
+    0,
+    0,
+    0
+  ],
+  "ride": {
+    "height": 0.3125,
+    "pose": "stand"
+  },
+  "palette": {
+    "deck": "#e05a4f",
+    "stripe": "#ffffff",
+    "stripe2": "#ffd23f",
+    "truck": "#c0c7d2",
+    "wheel": "#ffe9a8"
+  },
+  "variants": {
+    "blue": {
+      "deck": "#3f7ac0",
+      "stripe2": "#5fe0ff"
+    },
+    "green": {
+      "deck": "#4caf50",
+      "stripe": "#ffe9a8",
+      "stripe2": "#ffffff"
+    },
+    "rainbow": {
+      "deck": "#8a5ac8",
+      "stripe": "#ff7eb6",
+      "stripe2": "#ffd23f",
+      "wheel": "#5fe0ff"
+    }
+  },
+  "boxes": [
+    {
+      "x": 7,
+      "y": 0,
+      "z": -14,
+      "w": 3,
+      "h": 3,
+      "d": 3,
+      "color": "wheel"
+    },
+    {
+      "x": -10,
+      "y": 0,
+      "z": -14,
+      "w": 3,
+      "h": 3,
+      "d": 3,
+      "color": "wheel"
+    },
+    {
+      "x": 7,
+      "y": 0,
+      "z": 10,
+      "w": 3,
+      "h": 3,
+      "d": 3,
+      "color": "wheel"
+    },
+    {
+      "x": -10,
+      "y": 0,
+      "z": 10,
+      "w": 3,
+      "h": 3,
+      "d": 3,
+      "color": "wheel"
+    },
+    {
+      "x": -7,
+      "y": 2,
+      "z": -13,
+      "w": 14,
+      "h": 1,
+      "d": 2,
+      "color": "truck"
+    },
+    {
+      "x": -7,
+      "y": 2,
+      "z": 11,
+      "w": 14,
+      "h": 1,
+      "d": 2,
+      "color": "truck"
+    },
+    {
+      "x": -9,
+      "y": 3,
+      "z": -16,
+      "w": 18,
+      "h": 2,
+      "d": 32,
+      "color": "deck"
+    },
+    {
+      "x": 4,
+      "y": 4,
+      "z": -16,
+      "w": 2,
+      "h": 1,
+      "d": 32,
+      "color": "stripe"
+    },
+    {
+      "x": -6,
+      "y": 4,
+      "z": -16,
+      "w": 2,
+      "h": 1,
+      "d": 32,
+      "color": "stripe"
+    },
+    {
+      "x": -1,
+      "y": 4,
+      "z": -16,
+      "w": 2,
+      "h": 1,
+      "d": 32,
+      "color": "stripe2"
+    },
+    {
+      "x": -8,
+      "y": 4,
+      "z": 16,
+      "w": 16,
+      "h": 1,
+      "d": 2,
+      "color": "deck"
+    },
+    {
+      "x": -8,
+      "y": 5,
+      "z": 17,
+      "w": 16,
+      "h": 1,
+      "d": 2,
+      "color": "stripe2"
+    },
+    {
+      "x": -8,
+      "y": 4,
+      "z": -18,
+      "w": 16,
+      "h": 1,
+      "d": 2,
+      "color": "deck"
+    },
+    {
+      "x": -8,
+      "y": 5,
+      "z": -19,
+      "w": 16,
+      "h": 1,
+      "d": 2,
+      "color": "deck"
+    }
+  ]
+}

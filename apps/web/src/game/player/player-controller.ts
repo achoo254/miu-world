@@ -8,6 +8,12 @@ import { bodyFits, moveAndCollide, type Body, type SolidAt } from '@miu/voxel/gr
 
 export const WALK_SPEED = 3.4;
 export const RUN_SPEED = 6.2;
+/**
+ * On a vehicle (vehicle-ride.ts) she goes faster, and a little faster still with Run held (owner, 03/10/2026:
+ * vehicles to drive). Her collision body stays the same: steps, climbs and walls are as on foot.
+ */
+export const RIDE_SPEED = 8.5;
+export const RIDE_RUN_SPEED = 10;
 const GRAVITY = 26;
 const JUMP_SPEED = 8.8; // clears ~1.49 blocks: effortless leap onto 1-block steps and ledges
 /**
@@ -80,6 +86,8 @@ export class PlayerController {
   private jumpHeld = false;
   /** Leaps left in the air before landing again. */
   private airJumps = 0;
+  /** On a vehicle: the ride speeds instead of walking and running. */
+  riding = false;
 
   constructor(
     private readonly solid: SolidAt,
@@ -121,7 +129,8 @@ export class PlayerController {
       return;
     }
     const len = Math.min(1, Math.hypot(intent.dirX, intent.dirZ));
-    const speed = (intent.run ? RUN_SPEED : WALK_SPEED) * len;
+    const pace = this.riding ? (intent.run ? RIDE_RUN_SPEED : RIDE_SPEED) : intent.run ? RUN_SPEED : WALK_SPEED;
+    const speed = pace * len;
     const wantX = len > 0.01 ? (intent.dirX / Math.max(len, 1e-6)) * speed : 0;
     const wantZ = len > 0.01 ? (intent.dirZ / Math.max(len, 1e-6)) * speed : 0;
     const ease = 1 - Math.exp(-(len > 0.01 ? MOVE_EASE : STOP_EASE) * dt);

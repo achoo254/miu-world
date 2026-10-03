@@ -1,0 +1,164 @@
+{
+  "id": "clothes-superhero",
+  "name": "Đồ siêu nhân đỏ",
+  "slot": "clothes",
+  "unlock": {
+    "level": 9
+  },
+  "attachNode": "torso",
+  "voxelSize": 0.05,
+  "offset": [
+    0,
+    0,
+    0
+  ],
+  "palette": {
+    "main": "#d9342b",
+    "shade": "#a8231d",
+    "emblem": "#ffd23f",
+    "bolt": "#d9342b",
+    "belt": "#ffd23f"
+  },
+  "variants": {
+    "blue": {
+      "main": "#2f6fd6",
+      "shade": "#2152a8",
+      "bolt": "#2f6fd6",
+      "belt": "#f2f2f2"
+    }
+  },
+  "parts": {
+    "torso": [
+      {
+        "x": -8,
+        "y": 4,
+        "z": -6,
+        "w": 16,
+        "h": 8,
+        "d": 12,
+        "color": "main"
+      },
+      {
+        "x": -8,
+        "y": 11,
+        "z": -6,
+        "w": 16,
+        "h": 1,
+        "d": 12,
+        "color": "belt"
+      },
+      {
+        "x": -1,
+        "y": 11,
+        "z": 6,
+        "w": 2,
+        "h": 1,
+        "d": 1,
+        "color": "shade"
+      },
+      {
+        "x": -7,
+        "y": 12,
+        "z": -5,
+        "w": 14,
+        "h": 8,
+        "d": 10,
+        "color": "main"
+      },
+      {
+        "x": -3,
+        "y": 16,
+        "z": 4,
+        "w": 6,
+        "h": 3,
+        "d": 1,
+        "color": "emblem"
+      },
+      {
+        "x": -2,
+        "y": 15,
+        "z": 4,
+        "w": 4,
+        "h": 1,
+        "d": 1,
+        "color": "emblem"
+      },
+      {
+        "x": -1,
+        "y": 14,
+        "z": 4,
+        "w": 2,
+        "h": 1,
+        "d": 1,
+        "color": "emblem"
+      },
+      {
+        "x": 0,
+        "y": 17,
+        "z": 4,
+        "w": 1,
+        "h": 1,
+        "d": 1,
+        "color": "bolt"
+      },
+      {
+        "x": -1,
+        "y": 16,
+        "z": 4,
+        "w": 2,
+        "h": 1,
+        "d": 1,
+        "color": "bolt"
+      },
+      {
+        "x": -1,
+        "y": 15,
+        "z": 4,
+        "w": 1,
+        "h": 1,
+        "d": 1,
+        "color": "bolt"
+      }
+    ],
+    "arm-left": [
+      {
+        "x": -1,
+        "y": -5,
+        "z": -3,
+        "w": 6,
+        "h": 6,
+        "d": 7,
+        "color": "main"
+      },
+      {
+        "x": -1,
+        "y": -5,
+        "z": -3,
+        "w": 6,
+        "h": 1,
+        "d": 7,
+        "color": "emblem"
+      }
+    ],
+    "leg-left": [
+      {
+        "x": -3,
+        "y": -5,
+        "z": -3,
+        "w": 6,
+        "h": 5,
+        "d": 6,
+        "color": "main"
+      },
+      {
+        "x": -3,
+        "y": -5,
+        "z": -3,
+        "w": 6,
+        "h": 1,
+        "d": 6,
+        "color": "shade"
+      }
+    ]
+  }
+}

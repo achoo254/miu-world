@@ -12,6 +12,7 @@ import { PlayerBadge } from '../player/player-badge';
 import { nextStep, say, stepProgress, type PlayerData } from '../player/player-data';
 import { TextbookRef, textbookOf } from '../player/textbook-ref';
 import { searchCount } from '../quest/quest-flow';
+import { RideButton } from './ride-button';
 import './hud.css';
 import './autowalk.css';
 
@@ -153,6 +154,7 @@ export function Hud({
       </nav>
       {covered ? null : <InteractButton />}
       {covered ? null : <RescueButton />}
+      {covered ? null : <RideButton />}
     </>
   );
 }

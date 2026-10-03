@@ -1,0 +1,168 @@
+{
+  "id": "vehicle-rocket-board-red",
+  "name": "Ván tên lửa đỏ",
+  "slot": "vehicle",
+  "unlock": {
+    "level": 9
+  },
+  "attachNode": "ground",
+  "voxelSize": 0.0625,
+  "offset": [
+    0,
+    0,
+    0
+  ],
+  "ride": {
+    "height": 0.4375,
+    "pose": "stand",
+    "float": true
+  },
+  "palette": {
+    "body": "#e05a4f",
+    "white": "#ffffff",
+    "window": "#5fe0ff",
+    "metal": "#8a93a3",
+    "flame": "#f28a3c",
+    "flame2": "#ffd23f"
+  },
+  "variants": {
+    "silver": {
+      "body": "#8a93a3",
+      "white": "#e8ecf2",
+      "metal": "#5c6270"
+    },
+    "gold": {
+      "body": "#e0a520",
+      "white": "#fff6c0",
+      "metal": "#c99a1e"
+    }
+  },
+  "boxes": [
+    {
+      "x": -5,
+      "y": 3,
+      "z": -12,
+      "w": 10,
+      "h": 2,
+      "d": 24,
+      "color": "metal"
+    },
+    {
+      "x": -8,
+      "y": 5,
+      "z": -14,
+      "w": 16,
+      "h": 2,
+      "d": 30,
+      "color": "white"
+    },
+    {
+      "x": 7,
+      "y": 5,
+      "z": -14,
+      "w": 1,
+      "h": 2,
+      "d": 30,
+      "color": "body"
+    },
+    {
+      "x": -8,
+      "y": 5,
+      "z": -14,
+      "w": 1,
+      "h": 2,
+      "d": 30,
+      "color": "body"
+    },
+    {
+      "x": -6,
+      "y": 5,
+      "z": 16,
+      "w": 12,
+      "h": 2,
+      "d": 3,
+      "color": "body"
+    },
+    {
+      "x": -4,
+      "y": 5,
+      "z": 19,
+      "w": 8,
+      "h": 2,
+      "d": 2,
+      "color": "body"
+    },
+    {
+      "x": -2,
+      "y": 5,
+      "z": 21,
+      "w": 4,
+      "h": 2,
+      "d": 2,
+      "color": "body"
+    },
+    {
+      "x": -1,
+      "y": 7,
+      "z": 17,
+      "w": 2,
+      "h": 1,
+      "d": 2,
+      "color": "window"
+    },
+    {
+      "x": 8,
+      "y": 4,
+      "z": -14,
+      "w": 3,
+      "h": 1,
+      "d": 6,
+      "color": "body"
+    },
+    {
+      "x": -11,
+      "y": 4,
+      "z": -14,
+      "w": 3,
+      "h": 1,
+      "d": 6,
+      "color": "body"
+    },
+    {
+      "x": -1,
+      "y": 7,
+      "z": -14,
+      "w": 2,
+      "h": 4,
+      "d": 4,
+      "color": "body"
+    },
+    {
+      "x": -4,
+      "y": 4,
+      "z": -17,
+      "w": 8,
+      "h": 4,
+      "d": 3,
+      "color": "metal"
+    },
+    {
+      "x": -3,
+      "y": 5,
+      "z": -20,
+      "w": 6,
+      "h": 2,
+      "d": 3,
+      "color": "flame"
+    },
+    {
+      "x": -2,
+      "y": 5,
+      "z": -23,
+      "w": 4,
+      "h": 2,
+      "d": 3,
+      "color": "flame2"
+    }
+  ]
+}

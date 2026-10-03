@@ -19,6 +19,8 @@ export interface CharacterModel {
   readonly output: string;
   /** Accessory size per attach node for this body. */
   readonly accessoryScale: Readonly<Record<string, number>>;
+  /** Clothes item worn when the child has chosen none: the species' own look (the model has a plain fur layer). */
+  readonly clothes?: string;
 }
 
 const Characters = z.record(
@@ -28,6 +30,7 @@ const Characters = z.record(
     role: z.enum(['player', 'npc']).default('player'),
     recipe: z.object({ species: z.string() }).optional(),
     accessoryScale: z.record(z.string(), z.number()).default({}),
+    clothes: z.string().optional(),
   }),
 );
 
@@ -44,7 +47,9 @@ export const DEFAULT_SPECIES = 'cat';
 const bySpecies = new Map<string, CharacterModel>();
 for (const [id, spec] of Object.entries(Characters.parse(charactersJson))) {
   // Quest NPCs (`role: npc`) share the species' recipe but are never what a child plays as.
-  if (spec.recipe && spec.role === 'player') bySpecies.set(spec.recipe.species, { id, output: spec.output, accessoryScale: spec.accessoryScale });
+  if (spec.recipe && spec.role === 'player') {
+    bySpecies.set(spec.recipe.species, { id, output: spec.output, accessoryScale: spec.accessoryScale, clothes: spec.clothes });
+  }
 }
 for (const s of SPECIES) if (!bySpecies.has(s.id)) throw new Error(`content/characters.json has no character for species ${s.id}`);
 

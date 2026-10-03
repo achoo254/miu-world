@@ -50,6 +50,16 @@ describe('game store', () => {
     expect(reduce(state, { type: 'ready' }).status).toBe('ready');
   });
 
+  it('keeps the equipped vehicle and whether she rides it, and forgets it when the next map loads', () => {
+    const offered = reduce(INITIAL_SNAPSHOT, { type: 'vehicle', vehicle: { name: 'Ván trượt đỏ', riding: false } });
+    expect(offered.vehicle).toEqual({ name: 'Ván trượt đỏ', riding: false });
+    expect(reduce(offered, { type: 'vehicle', vehicle: { name: 'Ván trượt đỏ', riding: false } })).toBe(offered);
+    const riding = reduce(offered, { type: 'vehicle', vehicle: { name: 'Ván trượt đỏ', riding: true } });
+    expect(riding.vehicle?.riding).toBe(true);
+    expect(reduce(riding, { type: 'vehicle', vehicle: null }).vehicle).toBeNull();
+    expect(reduce(riding, { type: 'loading' }).vehicle).toBeNull();
+  });
+
   it('tracks loading progress, clamped to the total and unchanged on repeats', () => {
     const one = reduce(INITIAL_SNAPSHOT, { type: 'loading-progress', done: 1, total: 5 });
     expect(one.loading).toEqual({ done: 1, total: 5 });
@@ -81,6 +91,8 @@ describe('game store', () => {
       { type: 'set-world-state', state: { 'clue-1': 'found', 'chest-1': 'open', 'letter-1': 'hidden' } },
       { type: 'set-target-hint', targetId: 'parrot-guide' },
       { type: 'set-target-hint', targetId: null },
+      { type: 'ride', on: true },
+      { type: 'ride', on: false },
     ];
     for (const command of commands) store.send(command);
     expect(handler.mock.calls.map(([command]) => command)).toEqual(commands);

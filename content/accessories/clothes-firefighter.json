@@ -1,0 +1,128 @@
+{
+  "id": "clothes-firefighter",
+  "name": "Đồ lính cứu hỏa",
+  "slot": "clothes",
+  "unlock": {
+    "level": 8
+  },
+  "attachNode": "torso",
+  "voxelSize": 0.05,
+  "offset": [
+    0,
+    0,
+    0
+  ],
+  "palette": {
+    "main": "#d9483b",
+    "shade": "#a8352b",
+    "reflect": "#f2e24a",
+    "silver": "#cfd4da"
+  },
+  "parts": {
+    "torso": [
+      {
+        "x": -8,
+        "y": 4,
+        "z": -6,
+        "w": 16,
+        "h": 8,
+        "d": 12,
+        "color": "main"
+      },
+      {
+        "x": -8,
+        "y": 6,
+        "z": -6,
+        "w": 16,
+        "h": 1,
+        "d": 12,
+        "color": "reflect"
+      },
+      {
+        "x": -7,
+        "y": 12,
+        "z": -5,
+        "w": 14,
+        "h": 8,
+        "d": 10,
+        "color": "main"
+      },
+      {
+        "x": -7,
+        "y": 14,
+        "z": -5,
+        "w": 14,
+        "h": 1,
+        "d": 10,
+        "color": "reflect"
+      },
+      {
+        "x": -1,
+        "y": 4,
+        "z": 5,
+        "w": 2,
+        "h": 8,
+        "d": 1,
+        "color": "shade"
+      },
+      {
+        "x": -1,
+        "y": 12,
+        "z": 4,
+        "w": 2,
+        "h": 8,
+        "d": 1,
+        "color": "shade"
+      },
+      {
+        "x": 3,
+        "y": 16,
+        "z": 5,
+        "w": 2,
+        "h": 2,
+        "d": 1,
+        "color": "silver"
+      }
+    ],
+    "arm-left": [
+      {
+        "x": -1,
+        "y": -5,
+        "z": -3,
+        "w": 6,
+        "h": 6,
+        "d": 7,
+        "color": "main"
+      },
+      {
+        "x": -1,
+        "y": -3,
+        "z": -3,
+        "w": 6,
+        "h": 1,
+        "d": 7,
+        "color": "reflect"
+      }
+    ],
+    "leg-left": [
+      {
+        "x": -3,
+        "y": -5,
+        "z": -3,
+        "w": 6,
+        "h": 5,
+        "d": 6,
+        "color": "main"
+      },
+      {
+        "x": -3,
+        "y": -4,
+        "z": -3,
+        "w": 6,
+        "h": 1,
+        "d": 6,
+        "color": "reflect"
+      }
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+/* "Lái xe" / "Xuống xe": a big pill above the joystick (bottom left, game.css), clear of Run and Jump. */
+.hud-ride {
+  position: fixed;
+  left: calc(1.25rem + env(safe-area-inset-left, 0px));
+  bottom: calc(11rem + env(safe-area-inset-bottom, 0px));
+  z-index: var(--z-hud);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  min-height: 4rem;
+  padding: var(--space-sm) var(--space-lg);
+  border: 4px solid var(--color-surface);
+  border-radius: var(--radius-pill);
+  background: linear-gradient(180deg, var(--color-primary-top) 0%, var(--color-primary) 100%);
+  color: var(--color-on-primary);
+  font: 800 var(--text-lg) var(--font-display);
+  text-shadow: 0 1px 0 var(--color-primary-edge);
+  box-shadow: var(--shadow-primary);
+  cursor: pointer;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+.hud-ride[data-riding='true'] {
+  background: linear-gradient(180deg, var(--color-secondary-top) 0%, var(--color-secondary) 100%);
+  box-shadow: var(--shadow-secondary);
+  text-shadow: 0 1px 0 var(--color-secondary-edge);
+}
+.hud-ride:focus-visible { box-shadow: var(--focus-ring); outline: none; }
+
+/* Phones: the joystick is smaller (7rem), so the button sits lower and slimmer. */
+@media (max-width: 600px), (max-height: 500px) {
+  .hud-ride {
+    left: calc(0.75rem + env(safe-area-inset-left, 0px));
+    bottom: calc(8.5rem + env(safe-area-inset-bottom, 0px));
+    min-height: 3.25rem;
+    padding: var(--space-xs) var(--space-md);
+    font-size: var(--text-body);
+  }
+}

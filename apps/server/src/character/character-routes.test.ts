@@ -16,6 +16,7 @@ const content = {
       { id: 'hat-after-quest-a', name: 'Món thử', variantOf: 'hat-witch-pink', variant: 'mint', unlock: { quest: 'quest-a' } },
       { id: 'hat-at-level-2', name: 'Món thử', variantOf: 'hat-witch-pink', variant: 'night', unlock: { level: 2 } },
       { id: 'pack-at-level-9', name: 'Món thử', variantOf: 'backpack-brown', variant: 'red', unlock: { level: 9 } },
+      { id: 'clothes-at-level-2', name: 'Món thử', variantOf: 'clothes-tshirt', variant: 'red', unlock: { level: 2 } },
     ]),
   ]),
 };
@@ -84,6 +85,25 @@ describe('PUT /api/character equipment rules (server is the source of truth)', (
     await finishQuestB(agent); // 160 XP → Lv.2
     await wear(agent, ['hat-at-level-2']).expect(200);
     await wear(agent, ['pack-at-level-9']).expect(403, { error: 'equipment-locked' });
+  });
+
+  it('dresses the child in clothes like any slot: open ones at once, locked ones from their level, one set at a time', async () => {
+    const { agent } = await playingChild();
+    const res = await wear(agent, ['clothes-tshirt', 'hat-witch-pink']).expect(200);
+    expect(res.body.equipped).toEqual(['clothes-tshirt', 'hat-witch-pink']);
+    await wear(agent, ['clothes-at-level-2']).expect(403, { error: 'equipment-locked' });
+    await wear(agent, ['clothes-tshirt', 'clothes-dress']).expect(400, { error: 'invalid-equipment' });
+    await finishQuestA(agent);
+    await finishQuestB(agent); // 160 XP → Lv.2
+    await wear(agent, ['clothes-at-level-2', 'hat-witch-pink']).expect(200);
+  });
+
+  it('takes an open vehicle with the outfit, and refuses one that opens at a higher level', async () => {
+    const { agent } = await playingChild();
+    const res = await wear(agent, ['hat-witch-pink', 'vehicle-skateboard-red']).expect(200);
+    expect(res.body.equipped).toEqual(['hat-witch-pink', 'vehicle-skateboard-red']);
+    await wear(agent, ['vehicle-tractor-red']).expect(403, { error: 'equipment-locked' });
+    await wear(agent, ['vehicle-skateboard-red', 'vehicle-toy-car-red']).expect(400, { error: 'invalid-equipment' });
   });
 
   it('refuses unknown items and two items in one slot, even among open colours', async () => {

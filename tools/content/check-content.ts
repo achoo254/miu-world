@@ -14,7 +14,7 @@ import { BoxPropCatalog, EmojiPropCatalog, LookCatalog, QuestTargetCatalog } fro
 import { RegionCatalog, mapForRegion, regionGuides } from '../../packages/schema/src/region';
 import { UI_ICONS } from '../../apps/web/src/ui/kit/ui-art';
 import { MUSIC_MOODS } from '../../apps/web/src/ui/sound/music';
-import { ACCESSORY_SLOTS, MIN_OPEN_ITEMS_PER_SLOT, openItemsInSlot, type AccessoryItem } from '../../packages/voxel/src/accessory-schema';
+import { ACCESSORY_SLOTS, MIN_OPEN_ITEMS, openItemsInSlot, type AccessoryItem } from '../../packages/voxel/src/accessory-schema';
 import { modelCatalogSchema } from '../../packages/voxel/src/model-catalog';
 import { entitiesForChapter, worldEntitiesSchema } from '../../packages/voxel/src/world-entities';
 import { ASSETS_DIR } from '../assets/asset-lib';
@@ -249,7 +249,7 @@ export function checkAccessories(items: Iterable<AccessoryItem>, questIds: Reado
   }
   for (const slot of ACCESSORY_SLOTS) {
     const open = openItemsInSlot(list, slot).length;
-    if (open < MIN_OPEN_ITEMS_PER_SLOT) issues.push(`accessory slot ${slot} offers ${open} items from level 1, needs at least ${MIN_OPEN_ITEMS_PER_SLOT}`);
+    if (open < MIN_OPEN_ITEMS[slot]) issues.push(`accessory slot ${slot} offers ${open} items from level 1, needs at least ${MIN_OPEN_ITEMS[slot]}`);
   }
   return issues;
 }

@@ -13,8 +13,9 @@ import {
   type Object3D,
 } from 'three';
 import type { AccessoryDef } from '@miu/voxel/accessory-schema';
-import { buildAccessoryMesh, mirroredAccessory } from '@miu/voxel/voxel-accessory';
+import { accessoryPieces, buildAccessoryMesh } from '@miu/voxel/voxel-accessory';
 import { resolveOutfitEntry } from '../content/accessories';
+import { wearClothes } from './character-clothes';
 
 const DEG = Math.PI / 180;
 const sharedMaterial = new MeshLambertMaterial({ vertexColors: true });
@@ -77,14 +78,18 @@ export function dressCharacter(character: Object3D, entries: readonly string[], 
   for (const entry of entries) {
     try {
       const { def, variant } = resolveOutfitEntry(entry);
-      // A pair (shoes) is two meshes: the authored one and its mirror on the other limb.
-      const parts = def.mirror ? [def, mirroredAccessory(def)] : [def];
-      const meshes = parts.map((part) => {
-        const mesh = createAccessoryMesh(part, variant);
-        mesh.castShadow = castShadow;
-        attachAccessory(character, part, mesh, scaleFor(part.attachNode));
-        return mesh;
-      });
+      if (def.slot === 'vehicle') continue; // ridden, not worn: player/vehicle-ride.ts puts it under her
+      // A pair (shoes) is two meshes: the authored one and its mirror on the other limb. Clothes are one
+      // mesh skinned to the body (character-clothes.ts), sized to it as authored.
+      const parts = accessoryPieces(def);
+      const meshes = def.parts
+        ? [wearClothes(character, def.id, parts.map((part) => ({ node: part.attachNode, mesh: createAccessoryMesh(part, variant), offset: part.offset })))]
+        : parts.map((part) => {
+            const mesh = createAccessoryMesh(part, variant);
+            attachAccessory(character, part, mesh, scaleFor(part.attachNode));
+            return mesh;
+          });
+      for (const mesh of meshes) mesh.castShadow = castShadow;
       worn.entries.push(entry);
       worn.meshes.push(...meshes);
     } catch (error) {
