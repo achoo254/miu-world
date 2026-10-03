@@ -17,6 +17,7 @@
         "Về phụ huynh: email đã xác minh và mã định danh tài khoản Google (không có tên, ảnh hay danh bạ); mã PIN khu phụ huynh ở dạng đã mã hóa (chúng tôi không đọc được mã PIN); phiên bản chính sách bạn đã đồng ý và thời điểm đồng ý; các phiên đăng nhập (lúc tạo, lần dùng gần nhất, lúc hết hạn).",
         "Về mỗi hồ sơ của bé (tối đa 3 hồ sơ): tên hiển thị chọn từ danh sách có sẵn; tên và trang phục của nhân vật; nhiệm vụ đã xong cùng số sao, điểm kinh nghiệm và thời điểm hoàn thành; phần thưởng, đồ vật và điểm kỹ năng đã nhận; chỗ nhân vật đứng lần cuối trên mỗi bản đồ, để lần sau bé chơi tiếp từ đó.",
         "Thời khóa biểu và lịch mặc đồng phục (trong nhà của bé, nếu bạn hoặc bé nhập): các môn từng tiết, đồng phục từng ngày, và những dòng tiêu đề bạn muốn ghi như tên trường, lớp, năm học, giáo viên chủ nhiệm. Chỉ hồ sơ đó xem được; không chia sẻ cho ai; mặc định để trống.",
+        "Cách trang trí nhà của bé (kiểu giường, bàn ghế, rèm, đèn, màu mái, hàng rào… chọn từ danh sách có sẵn): chỉ là mã của kiểu đã chọn, không có chữ tự gõ.",
         "Trong lúc bé làm dở một nhiệm vụ, chúng tôi đếm số lần trả lời sai và số lần xem Đáp án ở từng bước, để tính sao. Chỉ là con số: không lưu bé đã trả lời gì, không ghi thời điểm từng lần. Các số đếm này bị xóa ngay khi nhiệm vụ xong."
       ]
     },
@@ -47,7 +48,7 @@
       "heading": "Quyền của bạn",
       "paragraphs": [
         "Xem và tải dữ liệu: trong khu phụ huynh, bấm \"Tải dữ liệu của tôi\" để nhận một tệp JSON chứa toàn bộ những gì chúng tôi lưu về tài khoản và các hồ sơ (trừ mã PIN đã mã hóa).",
-        "Sửa: đổi tên hiển thị của hồ sơ trong khu phụ huynh; đổi tên và trang phục nhân vật, sửa hoặc xóa thời khóa biểu và lịch mặc đồng phục trong trò chơi.",
+        "Sửa: đổi tên hiển thị của hồ sơ trong khu phụ huynh; đổi tên và trang phục nhân vật, sửa hoặc xóa thời khóa biểu, lịch mặc đồng phục và cách trang trí nhà trong trò chơi.",
         "Xóa: xóa từng hồ sơ, hoặc bấm \"Xóa tài khoản\" để xóa tất cả. Cả hai đều cần mã PIN phụ huynh.",
         "Rút lại đồng ý: xóa tài khoản là cách rút lại đồng ý; chúng tôi không giữ lại gì để tiếp tục dùng."
       ]
