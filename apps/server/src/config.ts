@@ -31,6 +31,11 @@ const Env = z.object({
   EXTRA_QUEST_DIR: z.string().min(1).optional(),
   /** Folder holding the primary-school model handwriting font (kept out of git; see the deployment guide). */
   HANDWRITING_FONT_DIR: z.string().min(1).optional(),
+  /**
+   * JSON timetable every child starts from until her family saves its own (the owner's class; kept out of git
+   * because it names a school and a teacher; see the deployment guide). Unset: the blank template.
+   */
+  TIMETABLE_DEFAULT_FILE: z.string().min(1).optional(),
   /** Test-only cap on password sign-ups per IP per hour (E2E creates a parent per spec); refused in production. */
   REGISTER_LIMIT_PER_HOUR: z.coerce.number().int().min(1).optional(),
 });
@@ -66,6 +71,7 @@ export interface ServerConfig {
   extraQuestDir: string | null;
   /** Override for where the handwriting font files live; null uses `.data/fonts` in the repo. */
   handwritingFontDir: string | null;
+  timetableDefaultFile: string | null;
 }
 
 /** Validates env once at startup; throws with the offending key so the process fails fast. */
@@ -127,5 +133,6 @@ export function loadConfig(env: Record<string, string | undefined> = process.env
     passwordLogin: !production && e.PASSWORD_LOGIN === '1',
     extraQuestDir: production ? null : (e.EXTRA_QUEST_DIR ?? null),
     handwritingFontDir: e.HANDWRITING_FONT_DIR ?? null,
+    timetableDefaultFile: e.TIMETABLE_DEFAULT_FILE ?? null,
   };
 }

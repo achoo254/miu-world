@@ -1,6 +1,10 @@
+import { mkdtempSync, writeFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import path from 'node:path';
 import { emptyPeriodRow, emptyTimetable, type Timetable } from '@miu/schema/timetable';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { createTestApp, parentWithChild, type Agent, type TestApp } from '../../test/test-app';
+import { loadDefaultTimetable } from './timetable-routes';
 
 let app: TestApp;
 beforeAll(async () => {
@@ -80,5 +84,35 @@ describe('timetable', () => {
     expect((await agent.put('/api/timetable').send(sample()).expect(401)).body).toEqual({ error: 'no-active-child' });
     const { agent: playing } = await playingChild();
     await playing.put('/api/timetable').set('Origin', 'https://evil.example').send(sample()).expect(403);
+  });
+});
+
+describe('default timetable', () => {
+  const dir = mkdtempSync(path.join(tmpdir(), 'miu-timetable-'));
+  const file = (name: string, text: string): string => {
+    const at = path.join(dir, name);
+    writeFileSync(at, text);
+    return at;
+  };
+
+  it('every child starts from the configured timetable until her family saves its own', async () => {
+    const withDefault = await createTestApp({ NODE_ENV: 'test', TIMETABLE_DEFAULT_FILE: file('default.json', JSON.stringify(sample())) });
+    try {
+      const { agent, childId } = await parentWithChild(withDefault);
+      await agent.post(`/api/children/${childId}/select`).expect(200);
+      expect((await agent.get('/api/timetable').expect(200)).body).toEqual(sample());
+      const own = { ...sample(), uniform: { ...sample().uniform, tue: 'Tự do' } };
+      await agent.put('/api/timetable').send(own).expect(200);
+      expect((await agent.get('/api/timetable').expect(200)).body).toEqual(own);
+    } finally {
+      await withDefault.handle.close();
+    }
+  });
+
+  it('falls back to the blank template when the file is missing or not a timetable', () => {
+    expect(loadDefaultTimetable(null)).toEqual(emptyTimetable());
+    expect(loadDefaultTimetable(path.join(dir, 'missing.json'))).toEqual(emptyTimetable());
+    expect(loadDefaultTimetable(file('broken.json', '{ not json'))).toEqual(emptyTimetable());
+    expect(loadDefaultTimetable(file('wrong.json', JSON.stringify({ morning: 'x' })))).toEqual(emptyTimetable());
   });
 });

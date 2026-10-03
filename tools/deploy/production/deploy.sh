@@ -3,6 +3,7 @@
 #   tools/deploy/production/deploy.sh setup     one-time/idempotent: Postgres 16, Node 22, unit, backup timer,
 #                                               journal namespace, nginx block, DB role, env file
 #   tools/deploy/production/deploy.sh fonts     upload the worksheet handwriting font (kept out of git)
+#   tools/deploy/production/deploy.sh timetable upload the default class timetable (kept out of git); restart to apply
 #   tools/deploy/production/deploy.sh release   build, back up the DB, upload, switch, health-check
 # Production holds real children's data and .65 is shared: ask the owner before EVERY run
 # (docs/deployment-guide.md §1). Credentials come from $ALL_IN_ONE_STAGING_DEV (the .65 entry
@@ -54,6 +55,7 @@ setup() {
     echo "GOOGLE_CLIENT_SECRET=$(secret "$google.client_secret")"
     echo "GOOGLE_REDIRECT_URI=https://$DOMAIN/api/auth/google/callback"
     echo "HANDWRITING_FONT_DIR=/opt/miu/fonts"
+    echo "TIMETABLE_DEFAULT_FILE=/opt/miu/config/timetable-default.json"
   } | prod 'install -m 640 -o root -g miu /dev/stdin /etc/miu/production.env'
   echo "setup done"
 }
@@ -65,6 +67,17 @@ fonts() {
   ls "$dir"/*.woff2 >/dev/null 2>&1 || { echo "no .woff2 in $dir: set MIU_FONT_DIR" >&2; exit 1; }
   tar --no-xattrs -C "$dir" -cf - $(cd "$dir" && ls *.woff2) \
     | prod 'tar --no-same-owner -xf - -C /opt/miu/fonts && chown root:miu /opt/miu/fonts/*.woff2 && chmod 640 /opt/miu/fonts/*.woff2 && ls /opt/miu/fonts | wc -l | xargs echo fonts on host:'
+}
+
+# The owner's class timetable every child starts from (names a school and a teacher: kept out of git). Uploads
+# $MIU_TIMETABLE_FILE (default .data/private/timetable-default.json, from `pnpm private:sync`) to /opt/miu/config
+# and points the env file at it; the next release (or a restart) picks it up.
+timetable() {
+  local file="${MIU_TIMETABLE_FILE:-.data/private/timetable-default.json}"
+  [ -f "$file" ] || { echo "no $file: run pnpm private:sync or set MIU_TIMETABLE_FILE" >&2; exit 1; }
+  prod 'mkdir -p /opt/miu/config && install -m 640 -o root -g miu /dev/stdin /opt/miu/config/timetable-default.json \
+    && (grep -q "^TIMETABLE_DEFAULT_FILE=" /etc/miu/production.env || echo "TIMETABLE_DEFAULT_FILE=/opt/miu/config/timetable-default.json" >> /etc/miu/production.env) \
+    && echo timetable default on host' < "$file"
 }
 
 release() {
@@ -115,6 +128,7 @@ release() {
 case "${1:-}" in
   setup) setup ;;
   fonts) fonts ;;
+  timetable) timetable ;;
   release) release ;;
-  *) echo "usage: $0 setup|fonts|release" >&2; exit 2 ;;
+  *) echo "usage: $0 setup|fonts|timetable|release" >&2; exit 2 ;;
 esac

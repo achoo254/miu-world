@@ -73,7 +73,10 @@ function stop(child: ChildProcess): void {
 }
 
 function main(): void {
-  const api = run('api', 'pnpm --filter @miu/server dev', { ...process.env, ...loadGoogleEnv() });
+  // The owner's class timetable (out of git, from `pnpm private:sync`) as every child's default, as in production.
+  const timetable = path.join(REPO_ROOT, '.data/private/timetable-default.json');
+  const timetableEnv = !process.env.TIMETABLE_DEFAULT_FILE && existsSync(timetable) ? { TIMETABLE_DEFAULT_FILE: timetable } : {};
+  const api = run('api', 'pnpm --filter @miu/server dev', { ...process.env, ...loadGoogleEnv(), ...timetableEnv });
   const web = run('web', 'pnpm --filter @miu/web dev', process.env);
   const children = [api, web];
   let stopping = false;

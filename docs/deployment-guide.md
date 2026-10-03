@@ -161,6 +161,7 @@ Chạy tại `https://miu.hoandat.com` trên .65 (dựng ngày 30/09/2026). Cấ
 ```sh
 tools/deploy/production/deploy.sh setup     # máy mới, đổi unit/nginx/secret. Chạy lại được an toàn.
 tools/deploy/production/deploy.sh fonts     # tải font chữ mẫu của phiếu viết (ngoài git) lên /opt/miu/fonts
+tools/deploy/production/deploy.sh timetable # tải thời khóa biểu mặc định (ngoài git) lên /opt/miu/config; release sau đó áp dụng
 tools/deploy/production/deploy.sh release   # build, security:dist, backup DB, upload, switch, health, tự rollback
 ```
 
@@ -171,6 +172,7 @@ tools/deploy/production/deploy.sh release   # build, security:dist, backup DB, u
 - Nghiệm thu: `curl -s https://miu.hoandat.com/api/health` trả `{"status":"ok"}`; revision đang chạy ở `/opt/miu/current/apps/server/dist/server/REVISION` trên .65.
 - Log: `journalctl --namespace=miu -u miu-server` (.65; không có `--namespace` thì không thấy); request ở `/var/log/nginx/miu.hoandat.com.{access,error}.log`.
 - Rollback: như staging (§5) nhưng trên .65; backup ở `/var/backups/miu/` (`before-<id>.dump`, `daily-<ngày>.dump`).
+- Thời khóa biểu mặc định (lớp của bé nhà người sở hữu: có tên trường, tên và điện thoại cô giáo) không nằm trong git. Mọi hồ sơ chưa tự lưu thời khóa biểu thấy bản này (`TIMETABLE_DEFAULT_FILE`); không đặt biến thì là mẫu trống. Nguồn ở iCloud (`timetable/timetable-default.json`, kê trong `tools/private/private-files.json`), `pnpm private:sync` chép vào `.data/private/`; `pnpm dev` tự dùng nếu có. Trên .65 tệp nằm ở `/opt/miu/config/timetable-default.json` (`root:miu`, 640); `deploy.sh timetable` tải lên qua ssh và thêm dòng biến vào `/etc/miu/production.env` nếu chưa có. Đổi lịch mặc định: sửa tệp trong iCloud, cập nhật sha256 trong `private-files.json`, chạy `timetable` rồi `release`.
 - Font chữ mẫu tiểu học HP001 của phiếu viết (`chu-mau-tieu-hoc.woff2`, `chu-mau-tieu-hoc-dam.woff2`) không có giấy phép mở nên không nằm trong git. Trên .65 font nằm ở `/opt/miu/fonts` (ngoài `/opt/miu/current`, thư mục đó thay mỗi lần release; `root:miu`, 750). `setup` tạo thư mục và ghi `HANDWRITING_FONT_DIR=/opt/miu/fonts` vào `/etc/miu/production.env`. `tools/deploy/production/deploy.sh fonts` tải hai tệp lên qua ssh, không qua git; nguồn là `$MIU_FONT_DIR`, mặc định `.data/fonts/` của checkout đang chạy lệnh. Thiếu font thì phiếu vẫn in nhưng không có chữ mẫu. Máy dev lấy hai tệp (cùng PDF SGK gốc) từ iCloud bằng `pnpm private:sync`, vào `.data/fonts/`.
 
 **Việc còn lại (của người):**

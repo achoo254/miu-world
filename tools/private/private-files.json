@@ -43,6 +43,13 @@
       "bytes": 47218829,
       "sha256": "51e1a9ccc9bd0ea7ed0be163d3c90789639113c29c3a42a8aa8c9d05c60acce4",
       "why": "Tiếng Việt 2 tập 2 textbook (owner, 02/10/2026); tools/sgk/split-pages.py splits it into pages for reading."
+    },
+    {
+      "from": "timetable/timetable-default.json",
+      "to": ".data/private/timetable-default.json",
+      "bytes": 1606,
+      "sha256": "e6b85a084aeb05c58ae3c22b5a5f253451e07608c812413e7118492c2a3e7836",
+      "why": "The owner's class timetable and uniform rules, the default every child starts from (TIMETABLE_DEFAULT_FILE); names a school and a teacher, so it stays out of the public repo."
     }
   ]
 }
