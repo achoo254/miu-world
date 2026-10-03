@@ -76,9 +76,10 @@ test('meet the parrot, follow the arrow, find the three clues, and the letter op
   expect(pageErrors).toEqual([]);
 });
 
-test('an NPC whose turn has not come says so, and never the same line twice in a row', async ({ page, baseURL }) => {
+test('a target whose turn has not come says so, and never the same line twice in a row', async ({ page, baseURL }) => {
   await freshChild(page, baseURL ?? '');
-  await page.goto(playAt('animal-beaver'));
+  // The beaver and the parrot offer a minigame instead of this line; the chest (kind `chest`) gives the same kind of line.
+  await page.goto(playAt('chest'));
   await waitReady(page);
   const said: string[] = [];
   const toast = page.locator('[data-id="toast"]');
@@ -87,7 +88,7 @@ test('an NPC whose turn has not come says so, and never the same line twice in a
     // Wait for the new line to replace the previous one before reading it.
     const previous = said.at(-1) ?? '';
     await expect.poll(async () => (await toast.textContent()) ?? '').not.toBe(previous);
-    await expect(toast).toContainText('Hải ly');
+    await expect(toast).toContainText('Rương');
     said.push((await toast.textContent()) ?? '');
   }
   for (let i = 1; i < said.length; i += 1) expect(said[i]).not.toBe(said[i - 1]);

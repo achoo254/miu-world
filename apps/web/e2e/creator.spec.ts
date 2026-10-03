@@ -36,7 +36,7 @@ test('a new profile creates its character first, sees outfit changes live, then 
   await expect(page.locator('[data-id="creator-species-cat"]')).toHaveAttribute('aria-pressed', 'true');
   await page.getByRole('button', { name: /Cáo/ }).click();
   await page.waitForFunction(() => window.__miuPreview?.ready === true, null, { timeout: 60_000 });
-  await expect(page.locator('canvas')).toHaveCount(1);
+  await expect(page.locator('canvas:not(.minimap-canvas):not(.minimap-sheet-canvas)')).toHaveCount(1);
   expect(await previewOutfit(page)).toEqual([]);
 
   // Swapping gear updates the same preview (no second canvas).
@@ -45,7 +45,7 @@ test('a new profile creates its character first, sees outfit changes live, then 
   await page.getByRole('tab', { name: 'Balo' }).click();
   await page.getByRole('button', { name: /Balo đỏ/ }).click();
   await expect.poll(() => previewOutfit(page)).toEqual(['hat-cap-yellow', 'backpack-red']);
-  await expect(page.locator('canvas')).toHaveCount(1);
+  await expect(page.locator('canvas:not(.minimap-canvas):not(.minimap-sheet-canvas)')).toHaveCount(1);
   await expect(page.locator('[data-id="creator-item-backpack-leaf"]')).toBeDisabled();
   // Shoes are a pair: one item, worn on both feet. Every tile shows the item's picture from the build.
   await page.getByRole('tab', { name: 'Giày' }).click();
@@ -62,7 +62,7 @@ test('a new profile creates its character first, sees outfit changes live, then 
   await page.locator('[data-id="creator-pet-meo-trang"]').click();
   await expect(page.locator('[data-id="creator-pet-meo-trang"]')).toHaveAttribute('aria-pressed', 'true');
   await expect.poll(() => page.evaluate(() => window.__miuPreview?.pet ?? null)).toBe('meo-trang');
-  await expect(page.locator('canvas')).toHaveCount(1);
+  await expect(page.locator('canvas:not(.minimap-canvas):not(.minimap-sheet-canvas)')).toHaveCount(1);
   await page.screenshot({ path: fileURLToPath(new URL('../../../.data/creator/pet-preview.png', import.meta.url)) });
 
   for (const [label, emote] of [['Vẫy tay', 'wave'], ['Nhảy', 'jump'], ['Ngáp', 'yawn'], ['Vui mừng', 'cheer']] as const) {
@@ -99,7 +99,7 @@ test('a new profile creates its character first, sees outfit changes live, then 
   await expect.poll(async () => (await readStats(page)).petClip, { timeout: 8_000 }).toBe('idle');
   await page.screenshot({ path: fileURLToPath(new URL('../../../.data/creator/pet-play.png', import.meta.url)) });
   // The preview was disposed on leaving /create: only the game's canvas remains.
-  await expect(page.locator('canvas')).toHaveCount(1);
+  await expect(page.locator('canvas:not(.minimap-canvas):not(.minimap-sheet-canvas)')).toHaveCount(1);
   expect(await page.evaluate(() => window.__miuPreview)).toBeUndefined();
 
   // Back on the picker, the profile shows its fox and now goes straight Home.

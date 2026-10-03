@@ -92,7 +92,7 @@ test('Google sign-in → set PIN → consent → create profile → pick profile
   await page.locator('[data-id="region-explore"]').click();
   await expect(page).toHaveURL(/\/play\?region=khu-rung-bi-mat&quest=forest-ch1$/);
   await waitReady(page);
-  await expect(page.locator('canvas')).toHaveCount(1);
+  await expect(page.locator('canvas:not(.minimap-canvas):not(.minimap-sheet-canvas)')).toHaveCount(1);
 
   // Same session, a couple of steps from the parrot and a step to its side (the spawn heading is 45°), so the
   // camera behind the child shows the parrot beside her rather than behind her: the React label appears.

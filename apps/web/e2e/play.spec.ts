@@ -31,7 +31,7 @@ test('loads /play cleanly within the desktop budget and only talks to its own or
   // Equipment comes from GET /api/character (set in the setup project).
   expect(stats.outfit).toEqual(['hat-witch-pink', 'backpack-brown']);
   // React StrictMode mounts the game twice in dev; production must end with exactly one canvas.
-  await expect(page.locator('canvas')).toHaveCount(1);
+  await expect(page.locator('canvas:not(.minimap-canvas):not(.minimap-sheet-canvas)')).toHaveCount(1);
 });
 
 test('walking sideways, the child keeps a straight way while the view swings round behind her', async ({ page }) => {
@@ -162,7 +162,7 @@ test('dragging on the scene orbits the camera (mouse and touch share the pointer
   await page.goto('/play?quality=low');
   await waitReady(page);
   const before = (await readStats(page)).cameraYaw;
-  const box = await page.locator('canvas').first().boundingBox();
+  const box = await page.locator('canvas:not(.minimap-canvas):not(.minimap-sheet-canvas)').first().boundingBox();
   if (!box) throw new Error('canvas not visible');
   const y = box.y + box.height * 0.4;
   await page.mouse.move(box.x + box.width * 0.5, y);
@@ -221,7 +221,7 @@ test('the camera never ends up inside a block, pressed against the ancient tree'
   await waitReady(page);
   // Walk into the trunk while orbiting the camera all the way round.
   await page.keyboard.down('KeyW');
-  const box = await page.locator('canvas').first().boundingBox();
+  const box = await page.locator('canvas:not(.minimap-canvas):not(.minimap-sheet-canvas)').first().boundingBox();
   if (!box) throw new Error('canvas not visible');
   for (let i = 0; i < 6; i++) {
     const y = box.y + box.height * 0.4;
@@ -240,7 +240,7 @@ test('leaving /play disposes the game: no canvas, no stats handle', async ({ pag
   await page.getByRole('button', { name: /Menu/ }).click();
   await page.getByRole('link', { name: /Về trang chủ/ }).click();
   await expect(page.locator('[data-id="home"]')).toBeVisible();
-  await expect(page.locator('canvas')).toHaveCount(0);
+  await expect(page.locator('canvas:not(.minimap-canvas):not(.minimap-sheet-canvas)')).toHaveCount(0);
   expect(await page.evaluate(() => window.__miuStats)).toBeUndefined();
 });
 
@@ -262,7 +262,7 @@ test('Pause stops rendering (no new frames) and Resume starts it again; Esc open
   await expect(page.getByRole('dialog', { name: 'Tạm dừng' })).toBeVisible();
   await page.keyboard.press('Escape');
   await expect(page.getByRole('dialog')).toHaveCount(0);
-  await expect(page.locator('canvas')).toHaveCount(1);
+  await expect(page.locator('canvas:not(.minimap-canvas):not(.minimap-sheet-canvas)')).toHaveCount(1);
 });
 
 test('a lost WebGL context stops the game and offers a reload instead of breaking', async ({ page }) => {
@@ -283,7 +283,7 @@ test('a lost WebGL context stops the game and offers a reload instead of breakin
 
   await page.locator('[data-id="play-context-lost-reload"]').click();
   await waitReady(page);
-  await expect(page.locator('canvas')).toHaveCount(1);
+  await expect(page.locator('canvas:not(.minimap-canvas):not(.minimap-sheet-canvas)')).toHaveCount(1);
   await expect(page.locator('[data-id="play-context-lost"]')).toHaveCount(0);
   expect(pageErrors).toEqual([]);
 });
