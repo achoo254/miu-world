@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import type { Interactable } from '@miu/voxel/world-entities';
-import { namedForPlayer, pickNearest } from './interactables';
+import { namedForPlayer, pickNearest, spinsInPlace } from './interactables';
 
 const target = (id: string, position: [number, number, number], radius: number, available = true) => ({
   available,
@@ -46,5 +46,13 @@ describe('namedForPlayer', () => {
     expect(same).toEqual(tree);
     const [plain] = namedForPlayer([{ ...board, board: undefined }], 'Mochi');
     expect(plain && 'board' in plain && plain.board !== undefined).toBe(false);
+  });
+});
+
+describe('spinsInPlace', () => {
+  it('spins the block-model props and nothing else', () => {
+    expect(spinsInPlace({ model: 'generated/props/automobile.glb' })).toBe(true);
+    expect(spinsInPlace({ model: 'packs/kenney-cube-pets/animal-cat.glb' })).toBe(false);
+    expect(spinsInPlace({})).toBe(false);
   });
 });

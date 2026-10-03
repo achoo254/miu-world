@@ -35,7 +35,7 @@ export interface InteractableObject {
   readonly root: Object3D;
   /** False while hidden: a hidden target never gets a prompt. */
   readonly available: boolean;
-  /** `player`: Miu's position, which animal NPCs watch; `viewer`: the camera, which emoji props turn to. */
+  /** `player`: Miu's position, which animal NPCs watch; `viewer`: the camera (no target turns to it: block-model props spin). */
   update(dt: number, player: { readonly x: number; readonly z: number }, viewer?: { readonly x: number; readonly z: number }): void;
   setState(state: TargetState | undefined): void;
   /** False while the same character stands at another place of the story (castHidden). */
@@ -47,6 +47,13 @@ export interface InteractableObject {
 /** Clues bob gently until found so a child notices them. */
 const BOB_HEIGHT = 0.12;
 const BOB_SPEED = 2.2;
+/** A clue built as a block model turns slowly in place (radians a second) until found, so it reads from every side. */
+const SPIN_SPEED = 0.6;
+
+/** Whether a target is a block-model prop (assets/generated/props) that spins in place until found. */
+export function spinsInPlace(def: Pick<Interactable, 'model'>): boolean {
+  return def.model?.startsWith('generated/props/') ?? false;
+}
 /** An open gate sinks into the ground over this many seconds. */
 const GATE_OPEN_SECONDS = 1.2;
 /** NPC clips blend into each other over this many seconds instead of snapping. */
@@ -235,8 +242,7 @@ export async function loadInteractables(
       const labelHeight = bounds.isEmpty() ? 1.5 : bounds.max.y - def.position[1] + 0.3;
 
       const bobs = def.kind === 'object' && (def.model !== undefined || def.shape !== undefined);
-      // A prop built from an emoji is a thick picture: it turns its face to the camera, so it reads from anywhere.
-      const facesViewer = def.model?.startsWith('generated/props/') ?? false;
+      const spins = spinsInPlace(def);
       let npc: { behavior: NpcBehavior; play(clip: NpcClip): void } | null = null;
       if (def.kind === 'npc' && mixer) {
         const random = seededRandom(def.id);
@@ -264,9 +270,9 @@ export async function loadInteractables(
         get available() {
           return present && state !== 'hidden';
         },
-        update(dt, player, viewer) {
+        update(dt, player) {
           time += dt;
-          if (facesViewer && viewer) holder.rotation.y = Math.atan2(viewer.x - holder.position.x, viewer.z - holder.position.z);
+          if (spins && state === undefined) holder.rotation.y += dt * SPIN_SPEED;
           if (npc && holder.visible) {
             const frame = npc.behavior.step(dt, { dx: player.x - holder.position.x, dz: player.z - holder.position.z });
             holder.rotation.y = frame.yaw;
