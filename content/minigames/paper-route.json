@@ -1,0 +1,14 @@
+{
+  "id": "paper-route",
+  "name": "Giao báo xe đạp",
+  "family": "deliver",
+  "howTo": [
+    "{name} đạp xe giao báo dọc phố. Hộp thư giơ cờ đỏ là nhà đang chờ báo.",
+    "Chạm vào hộp thư đó để ném báo, nhớ ném trước khi xe chạy qua!",
+    "Hộp thư cờ hạ thì không cần báo đâu."
+  ],
+  "controls": ["tap"],
+  "duration": 60,
+  "goal": 10,
+  "params": { "speed": 1 }
+}

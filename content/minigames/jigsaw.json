@@ -1,0 +1,14 @@
+{
+  "id": "jigsaw",
+  "name": "Ghép tranh",
+  "family": "jigsaw",
+  "howTo": [
+    "Kéo từng mảnh tranh vào khung, chỗ có hình mờ giống mảnh đó.",
+    "Mảnh đặt gần đúng chỗ sẽ tự khớp vào: mỗi mảnh một điểm.",
+    "Ghép xong tranh này, {name} ghép tiếp tranh to hơn nhé!"
+  ],
+  "controls": ["drag", "tap"],
+  "duration": 90,
+  "goal": 15,
+  "params": {}
+}

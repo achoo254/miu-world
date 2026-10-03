@@ -1,0 +1,14 @@
+{
+  "id": "boat-race",
+  "name": "Đua thuyền",
+  "family": "paddle-race",
+  "howTo": [
+    "{name} chạm bên trái rồi bên phải màn hình, lần lượt, để chèo hai mái chèo.",
+    "Chèo đều tay theo tiếng trống thì thuyền lao nhanh. Chạm loạn thì thuyền chậm lại.",
+    "Về nhất hoặc về nhì là thắng!"
+  ],
+  "controls": ["tap"],
+  "duration": 60,
+  "goal": 2,
+  "params": { "rivals": 1 }
+}

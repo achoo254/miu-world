@@ -1,0 +1,13 @@
+{
+  "id": "tennis-rally",
+  "name": "Đánh bóng bàn",
+  "family": "rally",
+  "howTo": [
+    "{name} tự chạy theo bóng. Chạm khi bóng bay vào vòng tròn quanh vợt để đánh trả.",
+    "Chạm phía nào của bàn thì bóng bay về phía đó: đánh xa bạn Khỉ để ghi điểm!"
+  ],
+  "controls": ["tap", "swipe"],
+  "duration": 60,
+  "goal": 5,
+  "params": { "speed": 1 }
+}

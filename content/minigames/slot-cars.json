@@ -1,0 +1,14 @@
+{
+  "id": "slot-cars",
+  "name": "Xe đua đường ray",
+  "family": "throttle-race",
+  "howTo": [
+    "{name} giữ ngón tay trên màn hình để xe chạy nhanh, nhả tay để xe chậm lại.",
+    "Vào khúc cua nhanh quá là xe văng ra! Nhả tay trước khúc cua nhé.",
+    "Chạy đủ ba vòng trước xe của Cáo là thắng."
+  ],
+  "controls": ["hold"],
+  "duration": 60,
+  "goal": 3,
+  "params": { "rival": 1 }
+}

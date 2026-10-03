@@ -1,0 +1,14 @@
+{
+  "id": "lane-runner",
+  "name": "Chạy ba làn",
+  "family": "lane-run",
+  "howTo": [
+    "{name} tự chạy trên đường ba làn. Vuốt trái, phải (hoặc chạm bên đó) để đổi làn.",
+    "Vuốt lên để nhảy qua khúc gỗ. Thùng và đá thì phải tránh sang làn khác.",
+    "Nhặt thật nhiều sao! Va ba lần là về đích sớm."
+  ],
+  "controls": ["swipe", "tap"],
+  "duration": 60,
+  "goal": 25,
+  "params": { "speed": 1 }
+}

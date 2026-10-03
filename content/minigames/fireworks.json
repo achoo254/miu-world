@@ -1,0 +1,14 @@
+{
+  "id": "fireworks",
+  "name": "Bắn pháo hoa Tết",
+  "family": "hold-burst",
+  "howTo": [
+    "Đặt ngón tay ở dưới, ngay bên dưới một vòng vàng: pháo bay lên khi {name} giữ tay.",
+    "Pháo tới giữa vòng thì thả tay cho pháo nổ. Mỗi vòng sáng lên được một điểm.",
+    "Có mười sáu quả pháo. Nổ trúng hai vòng một lúc là hai điểm!"
+  ],
+  "controls": ["hold"],
+  "duration": 60,
+  "goal": 10,
+  "params": {}
+}

@@ -1,0 +1,14 @@
+{
+  "id": "recipe-assembly",
+  "name": "Làm bánh mì theo đơn",
+  "family": "cooking-order",
+  "howTo": [
+    "Khách gọi món: nhìn hình trong bong bóng, từ trái sang phải.",
+    "{name} kéo từng món vào ổ bánh mì đúng thứ tự (hoặc chạm vào khay).",
+    "Khách chờ lâu quá sẽ bỏ đi: mất ba khách là hết lượt."
+  ],
+  "controls": ["drag", "tap"],
+  "duration": 90,
+  "goal": 8,
+  "params": { "patience": 1 }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "farmer-defense",
+  "name": "Giữ ruộng lúa",
+  "family": "lane-defense",
+  "howTo": [
+    "Chim bay dọc ba luống tới ăn lúa. {name} kéo bác nông dân từ chòi ra ruộng.",
+    "Mỗi bác vẫy nón đuổi chim trên luống của mình (tối đa bốn bác). Chạm chim để nó lùi lại.",
+    "Đuổi thật nhiều chim, đừng để chim tha hết mười bó lúa!"
+  ],
+  "controls": ["drag", "tap"],
+  "duration": 90,
+  "goal": 25,
+  "params": { "speed": 1 }
+}

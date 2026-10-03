@@ -1,0 +1,14 @@
+{
+  "id": "kart-race",
+  "name": "Đua xe mini",
+  "family": "kart",
+  "howTo": [
+    "Giữ ngón tay trên màn hình: xe của {name} chạy theo ngón tay.",
+    "Chạy hai vòng đường đua, đừng lạc ra bãi cỏ kẻo xe chậm lại.",
+    "Về trong ba hạng đầu là thắng, nhặt sao được thêm điểm!"
+  ],
+  "controls": ["hold", "drag"],
+  "duration": 45,
+  "goal": 4,
+  "params": { "rivals": 1 }
+}

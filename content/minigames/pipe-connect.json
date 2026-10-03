@@ -1,0 +1,14 @@
+{
+  "id": "pipe-connect",
+  "name": "Nối ống dẫn nước",
+  "family": "rotate-path",
+  "howTo": [
+    "Chạm vào một ô ống để xoay nó một góc.",
+    "Nối ống từ giếng bên trái sang ruộng bên phải. Ống có nước sẽ chuyển màu xanh.",
+    "Nước chảy tới ruộng là {name} xong một bàn: một điểm!"
+  ],
+  "controls": ["tap"],
+  "duration": 90,
+  "goal": 2,
+  "params": {}
+}

@@ -1,0 +1,13 @@
+{
+  "id": "dot-copy",
+  "name": "Vẽ theo mẫu lưới chấm",
+  "family": "dot-drawing",
+  "howTo": [
+    "{name} nhìn hình mẫu, rồi kéo ngón tay từ chấm này sang chấm kia để vẽ lại.",
+    "Có thể chạm một chấm rồi chạm chấm khác để nối. Vẽ đủ các nét là xong một hình!"
+  ],
+  "controls": ["drag", "tap"],
+  "duration": 90,
+  "goal": 4,
+  "params": {}
+}

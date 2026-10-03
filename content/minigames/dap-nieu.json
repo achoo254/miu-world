@@ -1,0 +1,14 @@
+{
+  "id": "dap-nieu",
+  "name": "Đập niêu",
+  "family": "blind-strike",
+  "howTo": [
+    "Nhìn kỹ chỗ treo niêu đất. Sau ba giây, {name} bị bịt mắt!",
+    "Kéo ngón tay để đi tới đúng chỗ niêu, rồi chạm màn hình để đập.",
+    "Mỗi niêu được đập hai lần. Vỡ bốn niêu là thắng!"
+  ],
+  "controls": ["drag", "tap"],
+  "duration": 80,
+  "goal": 4,
+  "params": { "lookSeconds": 3 }
+}

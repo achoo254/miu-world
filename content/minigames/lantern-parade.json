@@ -1,0 +1,14 @@
+{
+  "id": "lantern-parade",
+  "name": "Rước đèn Trung thu",
+  "family": "pace-walk",
+  "howTo": [
+    "Giữ ngón tay để {name} đi nhanh, thả ra để đi chậm lại, theo kịp các bạn.",
+    "Đi nhanh quá kim sang ô đỏ, nến chao rồi tắt. Giữ kim ở ô xanh nhé!",
+    "Nhặt bánh trung thu trên đường. Tụt lại xa là bánh bị người khác nhặt mất."
+  ],
+  "controls": ["hold"],
+  "duration": 60,
+  "goal": 10,
+  "params": { "pace": 1 }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "pick-sticks",
+  "name": "Rút que",
+  "family": "pick-up-sticks",
+  "howTo": [
+    "{name} chạm vào que nằm trên cùng, không bị que nào đè lên, để rút ra.",
+    "Rút nhầm que bị đè thì đống que rung lên và mất một tim. Mất ba tim là hết lượt."
+  ],
+  "controls": ["tap"],
+  "duration": 60,
+  "goal": 15,
+  "params": {}
+}

@@ -1,0 +1,14 @@
+{
+  "id": "bobber-fishing",
+  "name": "Câu cá phao",
+  "family": "fishing",
+  "howTo": [
+    "Chạm mặt nước để quăng phao, gần bóng cá thì cá cắn nhanh hơn.",
+    "Phao rung nhẹ là cá còn thử mồi. Phao chìm hẳn thì {name} chạm ngay để giật!",
+    "Giật sớm quá cá sẽ chạy mất. Cá màu được hai điểm."
+  ],
+  "controls": ["tap"],
+  "duration": 90,
+  "goal": 8,
+  "params": { "speed": 1 }
+}

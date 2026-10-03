@@ -1,0 +1,14 @@
+{
+  "id": "inflate-balloon",
+  "name": "Thổi bóng bay",
+  "family": "inflate",
+  "howTo": [
+    "Giữ ngón tay để bơm bóng, thả tay khi bóng to vừa vòng xanh.",
+    "Bơm quá vòng là bóng nổ: nổ ba quả là hết lượt.",
+    "{name} bán được thật nhiều bóng nhé!"
+  ],
+  "controls": ["hold"],
+  "duration": 60,
+  "goal": 8,
+  "params": { "speed": 1 }
+}

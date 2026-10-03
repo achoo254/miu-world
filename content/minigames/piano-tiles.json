@@ -1,0 +1,14 @@
+{
+  "id": "piano-tiles",
+  "name": "Phím đàn rơi",
+  "family": "music-keys",
+  "howTo": [
+    "Phím đàn màu rơi xuống theo bài hát. {name} chạm vào phím để đàn.",
+    "Chạm đúng lúc phím chạm vạch sáng được hai điểm.",
+    "Để rơi mất sáu phím thì bài hát dừng sớm đấy!"
+  ],
+  "controls": ["tap"],
+  "duration": 50,
+  "goal": 69,
+  "params": { "tempo": 1 }
+}

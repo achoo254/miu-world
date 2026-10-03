@@ -1,0 +1,13 @@
+{
+  "id": "goalkeeper",
+  "name": "Làm thủ môn",
+  "family": "keeper",
+  "howTo": [
+    "{name} làm thủ môn! Bạn Gấu trúc sút mười quả bóng.",
+    "Chạm vào chỗ bóng sắp bay tới (hoặc vuốt sang bên đó) để bay người cản phá."
+  ],
+  "controls": ["tap", "swipe"],
+  "duration": 45,
+  "goal": 6,
+  "params": { "speed": 1 }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "co-caro",
+  "name": "Cờ caro bốn ô",
+  "family": "board-game",
+  "howTo": [
+    "{name} và bạn Cún thay nhau chạm vào ô trống để đặt quân.",
+    "Ai có bốn quân thẳng hàng (ngang, dọc hay chéo) trước là thắng!",
+    "Nhớ chặn khi Cún sắp đủ bốn quân nhé."
+  ],
+  "controls": ["tap"],
+  "duration": 90,
+  "goal": 1,
+  "params": {}
+}

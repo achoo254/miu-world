@@ -1,0 +1,14 @@
+{
+  "id": "dart-wobble",
+  "name": "Phi tiêu tay run",
+  "family": "timing-aim",
+  "howTo": [
+    "Tâm ngắm lượn vòng trên bia, lúc xa lúc gần hồng tâm.",
+    "{name} chạm màn hình đúng lúc tâm ngắm vào giữa để phóng phi tiêu.",
+    "Hồng tâm được 50 điểm. Có sáu phi tiêu!"
+  ],
+  "controls": ["tap"],
+  "duration": 45,
+  "goal": 150,
+  "params": { "wobble": 1 }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "candle-cake-spin",
+  "name": "Cắm nến bánh xoay",
+  "family": "spin-aim",
+  "howTo": [
+    "Bánh sinh nhật đang xoay. {name} chạm để phóng nến cắm vào mép bánh.",
+    "Đừng để nến mới chạm cây nến cũ, không thì phải làm lại bánh đó!",
+    "Cắm đủ nến là xong bánh: mỗi cây nến một điểm, thêm ba điểm thưởng."
+  ],
+  "controls": ["tap"],
+  "duration": 60,
+  "goal": 20,
+  "params": { "speed": 1 }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "pac-maze",
+  "name": "Ăn hạt né ma",
+  "family": "maze-chase",
+  "howTo": [
+    "{name} vuốt lên, xuống, trái, phải để đi trong mê cung và ăn hạt.",
+    "Ma đi chậm thôi, đừng để ma chạm vào. Ăn sao thì ma sợ, chạy đi!",
+    "Mỗi hạt một điểm, ma chạm ba lần là hết lượt."
+  ],
+  "controls": ["swipe", "tap"],
+  "duration": 90,
+  "goal": 50,
+  "params": { "ghostSpeed": 1 }
+}

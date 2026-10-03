@@ -1,0 +1,13 @@
+{
+  "id": "maze-trace",
+  "name": "Mê cung về nhà",
+  "family": "maze",
+  "howTo": [
+    "Giữ và kéo ngón tay: {name} đi theo ngón tay qua các lối trong mê cung.",
+    "Nhặt sao ở các ngõ cụt rồi về nhà. Mỗi sao một điểm, về nhà hai điểm!"
+  ],
+  "controls": ["drag"],
+  "duration": 60,
+  "goal": 5,
+  "params": { "speed": 1 }
+}

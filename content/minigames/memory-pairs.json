@@ -1,0 +1,14 @@
+{
+  "id": "memory-pairs",
+  "name": "Lật hình tìm cặp",
+  "family": "memory",
+  "howTo": [
+    "Chạm một thẻ để lật, rồi lật thêm một thẻ nữa.",
+    "Hai hình giống nhau là một cặp. {name} nhớ chỗ từng hình nhé!",
+    "Tìm hết cặp thì có bàn mới."
+  ],
+  "controls": ["tap"],
+  "duration": 90,
+  "goal": 6,
+  "params": { "pairs": 6 }
+}

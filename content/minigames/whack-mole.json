@@ -1,0 +1,13 @@
+{
+  "id": "whack-mole",
+  "name": "Đập chuột chũi",
+  "family": "whack",
+  "howTo": [
+    "Chuột chũi ló lên khỏi hang: {name} chạm thật nhanh để đập!",
+    "Chuột đội vương miện được ba điểm. Đừng đập bạn thỏ nhé, mất hai điểm đấy!"
+  ],
+  "controls": ["tap"],
+  "duration": 60,
+  "goal": 25,
+  "params": { "speed": 1 }
+}

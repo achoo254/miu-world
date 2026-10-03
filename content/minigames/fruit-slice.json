@@ -1,0 +1,13 @@
+{
+  "id": "fruit-slice",
+  "name": "Chém trái cây",
+  "family": "slice",
+  "howTo": [
+    "Trái cây tung lên: {name} vuốt ngón tay qua quả để chém đôi.",
+    "Đừng chém cây xương rồng, chém trúng ba lần là hết lượt!"
+  ],
+  "controls": ["swipe"],
+  "duration": 60,
+  "goal": 40,
+  "params": { "speed": 1 }
+}

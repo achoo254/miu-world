@@ -1,0 +1,14 @@
+{
+  "id": "flow-connect",
+  "name": "Nối chấm cùng màu",
+  "family": "path-puzzle",
+  "howTo": [
+    "{name} kéo ngón tay từ một chấm tới chấm cùng màu, cùng hình để nối ống.",
+    "Các ống không được cắt nhau, và phải tô kín mọi ô trên bàn.",
+    "Xong ba bàn là thắng!"
+  ],
+  "controls": ["drag"],
+  "duration": 90,
+  "goal": 3,
+  "params": {}
+}

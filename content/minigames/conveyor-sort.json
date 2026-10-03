@@ -1,0 +1,14 @@
+{
+  "id": "conveyor-sort",
+  "name": "Băng chuyền phân loại",
+  "family": "sort",
+  "howTo": [
+    "Đồ vật chạy trên băng chuyền. Xem bảng trên hai cái giỏ: con vật dưới nước, quả, xe cộ…",
+    "{name} vuốt sang trái hoặc sang phải (hoặc chạm bên đó) để đưa đồ vào đúng giỏ.",
+    "Bảng sẽ đổi giữa chừng, nhìn kỹ nhé!"
+  ],
+  "controls": ["swipe", "tap"],
+  "duration": 60,
+  "goal": 30,
+  "params": { "speed": 1 }
+}

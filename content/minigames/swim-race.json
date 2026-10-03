@@ -1,0 +1,14 @@
+{
+  "id": "swim-race",
+  "name": "Bơi đua",
+  "family": "rhythm-race",
+  "howTo": [
+    "Vòng vàng thu nhỏ dần. {name} chạm đúng lúc nó chạm vòng trắng để quạt tay bơi.",
+    "Chạm loạn xạ là bị mệt, bơi chậm lại. Giữ nhịp đều nhé!",
+    "Về nhất hoặc nhì là thắng."
+  ],
+  "controls": ["tap"],
+  "duration": 50,
+  "goal": 3,
+  "params": { "tempo": 1 }
+}

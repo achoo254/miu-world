@@ -1,0 +1,14 @@
+{
+  "id": "chicken-feed",
+  "name": "Cho gà ăn đều",
+  "family": "feed",
+  "howTo": [
+    "{name} chạm vào sân để tung một nắm thóc xuống chỗ đó.",
+    "Gà mẹ to ăn nhanh lắm: tung thóc gần gà con, xa gà mẹ nhé!",
+    "Gà con ăn đủ năm hạt là no, đi ngủ."
+  ],
+  "controls": ["tap"],
+  "duration": 60,
+  "goal": 15,
+  "params": {}
+}

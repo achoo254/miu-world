@@ -1,0 +1,13 @@
+{
+  "id": "ice-slide",
+  "name": "Trượt băng mê cung",
+  "family": "ice-slide",
+  "howTo": [
+    "Vuốt lên, xuống, trái, phải: chim cánh cụt trượt mãi tới khi đụng đá.",
+    "{name} đưa bạn ấy vào nhà nhé! Kẹt thì chạm nút Làm lại."
+  ],
+  "controls": ["swipe", "tap"],
+  "duration": 90,
+  "goal": 3,
+  "params": { "rocks": 0.18 }
+}

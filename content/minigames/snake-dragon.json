@@ -1,0 +1,13 @@
+{
+  "id": "snake-dragon",
+  "name": "Rồng rắn lên mây",
+  "family": "snake",
+  "howTo": [
+    "Vuốt để {name} đổi hướng, đón các bạn nối vào đuôi đoàn.",
+    "Đừng đi vào chính đoàn mình, kẻo các bạn ở cuối buông tay chạy mất!"
+  ],
+  "controls": ["swipe"],
+  "duration": 90,
+  "goal": 15,
+  "params": { "speed": 1 }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "rock-climb",
+  "name": "Leo vách đá",
+  "family": "climb-pick",
+  "howTo": [
+    "Chạm mấu bám đang sáng để {name} leo lên. Mỗi bậc cao hơn là một mét.",
+    "Mấu nâu có vết nứt sẽ rơi sau hai giây: leo tiếp ngay nhé!",
+    "Thấy dấu ! là đá sắp lăn xuống cột đó: tránh sang bên."
+  ],
+  "controls": ["tap"],
+  "duration": 60,
+  "goal": 30,
+  "params": {}
+}

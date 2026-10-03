@@ -1,0 +1,14 @@
+{
+  "id": "whats-missing",
+  "name": "Cái gì biến mất?",
+  "family": "memory-missing",
+  "howTo": [
+    "Nhìn thật kỹ các đồ vật trên khay. Đèn sẽ tắt một chút!",
+    "Đèn sáng lại thì một món đã biến mất. {name} chạm vào món bị mất ở hàng dưới.",
+    "Có tám lượt, đoán đúng sáu lượt là thắng."
+  ],
+  "controls": ["tap"],
+  "duration": 100,
+  "goal": 6,
+  "params": { "lookSeconds": 5 }
+}

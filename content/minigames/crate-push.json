@@ -1,0 +1,14 @@
+{
+  "id": "crate-push",
+  "name": "Đẩy thùng vào kho",
+  "family": "push-puzzle",
+  "howTo": [
+    "{name} vuốt (hoặc chạm cạnh mình) để đi, đi vào thùng là đẩy thùng.",
+    "Đẩy mọi thùng vào ô có dấu sao. Thùng chỉ đẩy được, không kéo được!",
+    "Kẹt thì bấm nút làm lại. Xong ba kho là thắng."
+  ],
+  "controls": ["swipe", "tap"],
+  "duration": 90,
+  "goal": 3,
+  "params": {}
+}

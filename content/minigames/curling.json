@@ -1,0 +1,14 @@
+{
+  "id": "curling",
+  "name": "Bi đá trên băng",
+  "family": "curling",
+  "howTo": [
+    "Vuốt lên để đẩy viên đá trượt về phía vòng tròn.",
+    "Đá chạy chậm thì xoa qua xoa lại trên băng phía trước để nó đi xa thêm.",
+    "Đá dừng ở giữa được ba điểm. {name} có năm viên đá!"
+  ],
+  "controls": ["swipe", "drag"],
+  "duration": 60,
+  "goal": 6,
+  "params": { "ice": 1 }
+}

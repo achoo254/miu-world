@@ -1,0 +1,14 @@
+{
+  "id": "doodle-climb",
+  "name": "Ếch nhảy lên mây",
+  "family": "bounce-climb",
+  "howTo": [
+    "Ếch tự nảy trên lá và mây. {name} kéo ngón tay sang trái, sang phải để lái ếch.",
+    "Đáp lên tấm cao hơn để leo lên. Nấm đỏ nảy thật cao!",
+    "Lỡ rơi thì ếch quay về tấm gần nhất, không sao cả."
+  ],
+  "controls": ["drag"],
+  "duration": 60,
+  "goal": 80,
+  "params": { "gap": 1 }
+}

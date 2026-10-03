@@ -1,0 +1,14 @@
+{
+  "id": "block-fit",
+  "name": "Xếp hàng lên xe tải",
+  "family": "block-pack",
+  "howTo": [
+    "Kéo từng kiện hàng lên thùng xe tải, ô sáng là chỗ kiện hàng sẽ nằm.",
+    "Đầy một hàng ngang hay hàng dọc thì hàng đó được chở đi: một điểm.",
+    "Hết chỗ xếp thì xe chạy đi, xe mới tới. {name} xếp khéo nhé!"
+  ],
+  "controls": ["drag", "tap"],
+  "duration": 90,
+  "goal": 8,
+  "params": {}
+}

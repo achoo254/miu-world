@@ -1,0 +1,14 @@
+{
+  "id": "ball-sort-tubes",
+  "name": "Xếp bi vào ống",
+  "family": "sort-puzzle",
+  "howTo": [
+    "{name} chạm một ống để nhấc viên bi trên cùng, rồi chạm ống khác để thả vào.",
+    "Chỉ thả lên bi cùng màu hoặc vào ống trống. Mỗi ống đầy một màu được một điểm.",
+    "Lỡ tay thì bấm nút quay lại. Chờ lâu sẽ có gợi ý."
+  ],
+  "controls": ["tap"],
+  "duration": 90,
+  "goal": 6,
+  "params": { "colours": 3 }
+}

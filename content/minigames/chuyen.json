@@ -1,0 +1,14 @@
+{
+  "id": "chuyen",
+  "name": "Chơi chuyền",
+  "family": "toss-collect",
+  "howTo": [
+    "Chạm quả bóng để tung lên. Lúc bóng bay, {name} chạm nhặt que trên chiếu.",
+    "Bàn 1 nhặt một que, bàn 2 nhặt hai que… rồi chạm bóng khi nó rơi xuống để bắt.",
+    "Bóng rơi thì chơi lại bàn đó nhé!"
+  ],
+  "controls": ["tap"],
+  "duration": 90,
+  "goal": 5,
+  "params": { "speed": 1 }
+}

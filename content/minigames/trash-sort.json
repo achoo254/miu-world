@@ -1,0 +1,19 @@
+{
+  "id": "trash-sort",
+  "name": "Phân loại rác",
+  "family": "sort-bins",
+  "howTo": [
+    "Rác rơi xuống từ từ. {name} kéo từng món vào đúng thùng, hoặc chạm món rồi chạm thùng.",
+    "Thùng xanh lá: rau quả, lá. Thùng xanh dương: giấy, hộp, lon. Thùng xám: rác khác.",
+    "Bỏ đúng được một điểm, bỏ nhầm bị trừ một điểm."
+  ],
+  "controls": [
+    "drag",
+    "tap"
+  ],
+  "duration": 60,
+  "goal": 20,
+  "params": {
+    "speed": 1
+  }
+}

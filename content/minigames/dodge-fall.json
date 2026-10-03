@@ -1,0 +1,14 @@
+{
+  "id": "dodge-fall",
+  "name": "Né quả rơi",
+  "family": "dodge",
+  "howTo": [
+    "Quả thông, quả dừa rơi từ trên cây! Bóng tròn dưới đất cho biết chỗ quả sắp rơi.",
+    "{name} kéo ngón tay để chạy né, và nhặt sao rơi xuống đất.",
+    "Bị quả rơi trúng ba lần là hết lượt."
+  ],
+  "controls": ["drag"],
+  "duration": 45,
+  "goal": 10,
+  "params": { "speed": 1 }
+}

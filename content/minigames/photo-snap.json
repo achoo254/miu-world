@@ -1,0 +1,14 @@
+{
+  "id": "photo-snap",
+  "name": "Chụp ảnh thú",
+  "family": "photo",
+  "howTo": [
+    "{name} đi chụp ảnh trong rừng. Các bạn thú nấp sau bụi, đá, gốc cây rồi ló ra nhìn quanh.",
+    "Chạm để chụp khi bạn thú đã ló hẳn lên và nằm trong khung ngắm.",
+    "Cuộn phim chỉ có 12 kiểu, đừng chụp lung tung nhé!"
+  ],
+  "controls": ["tap"],
+  "duration": 60,
+  "goal": 6,
+  "params": { "speed": 1 }
+}

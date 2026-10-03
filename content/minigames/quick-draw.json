@@ -1,0 +1,14 @@
+{
+  "id": "quick-draw",
+  "name": "Ai nhanh tay hơn",
+  "family": "reaction",
+  "howTo": [
+    "Chờ đèn lồng sáng đỏ rồi chạm thật nhanh, nhanh hơn bạn Mèo!",
+    "Chạm khi đèn chưa sáng là phạm luật. {name} đừng để bóng đèn hay bướm lừa nhé!",
+    "Có 8 hiệp: thắng 4 hiệp là giỏi rồi."
+  ],
+  "controls": ["tap"],
+  "duration": 50,
+  "goal": 4,
+  "params": { "catSpeed": 1 }
+}

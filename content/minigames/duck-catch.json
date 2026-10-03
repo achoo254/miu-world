@@ -1,0 +1,13 @@
+{
+  "id": "duck-catch",
+  "name": "Bắt vịt dưới ao",
+  "family": "chase",
+  "howTo": [
+    "Giữ và kéo ngón tay để {name} lội theo đàn vịt.",
+    "Dồn vịt vào sát bờ rào rồi chạm để chồm tới chộp!"
+  ],
+  "controls": ["drag", "tap"],
+  "duration": 60,
+  "goal": 10,
+  "params": { "duckSpeed": 1 }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "claw-machine",
+  "name": "Gắp thú bông",
+  "family": "claw",
+  "howTo": [
+    "Giữ ngón tay: cần gắp chạy sang phải. Thả ra: cần gắp dừng.",
+    "Giữ lần nữa: cần gắp đi vào sâu. Thả ra: cần gắp hạ xuống gắp thú.",
+    "{name} có sáu lượt, gắp được ba thú bông là thắng!"
+  ],
+  "controls": ["hold"],
+  "duration": 75,
+  "goal": 3,
+  "params": {}
+}

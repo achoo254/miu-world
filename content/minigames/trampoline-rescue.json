@@ -1,0 +1,14 @@
+{
+  "id": "trampoline-rescue",
+  "name": "Bạt nhún cứu hộ",
+  "family": "bounce-relay",
+  "howTo": [
+    "Các bạn nhảy xuống từ tòa nhà. {name} kéo tấm bạt sang trái, sang phải để hứng.",
+    "Mỗi bạn nảy ba lần trên bạt rồi bay vào xe cứu hỏa.",
+    "Nhìn bóng dưới đất để biết bạn sắp rơi chỗ nào. Lỡ ba bạn là hết lượt."
+  ],
+  "controls": ["drag"],
+  "duration": 60,
+  "goal": 15,
+  "params": { "speed": 1 }
+}

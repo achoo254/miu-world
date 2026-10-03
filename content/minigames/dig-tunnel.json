@@ -1,0 +1,14 @@
+{
+  "id": "dig-tunnel",
+  "name": "Đào đất tìm ngọc",
+  "family": "dig",
+  "howTo": [
+    "{name} kéo ngón tay (hoặc chạm) vào chỗ muốn đào để đào đường hầm lấy ngọc.",
+    "Đào mất đất dưới tảng đá thì đá rung rồi rơi xuống: tránh xa ra nhé!",
+    "Bị đá rơi trúng ba lần là hết lượt."
+  ],
+  "controls": ["drag", "tap"],
+  "duration": 90,
+  "goal": 10,
+  "params": {}
+}

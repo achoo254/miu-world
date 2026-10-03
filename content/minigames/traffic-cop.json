@@ -1,0 +1,14 @@
+{
+  "id": "traffic-cop",
+  "name": "Điều khiển ngã tư",
+  "family": "traffic-control",
+  "howTo": [
+    "Làm cảnh sát giao thông nhé! Xe dừng ở vạch chờ, chạm xe để cho xe đi.",
+    "Xe đi dọc và xe đi ngang không được vào giữa ngã tư cùng lúc, kẻo đụng nhau.",
+    "Mỗi xe {name} cho qua được một điểm. Xe chờ lâu sẽ bíp rồi tự chạy ẩu đấy!"
+  ],
+  "controls": ["tap"],
+  "duration": 90,
+  "goal": 30,
+  "params": { "traffic": 1 }
+}

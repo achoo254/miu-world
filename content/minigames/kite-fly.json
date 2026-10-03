@@ -1,0 +1,13 @@
+{
+  "id": "kite-fly",
+  "name": "Thả diều",
+  "family": "kite",
+  "howTo": [
+    "Giữ và kéo ngón tay sang trái, sang phải để lái con diều.",
+    "Ở trong luồng gió thì diều bay vút lên. {name} né cành cây và chim nhé!"
+  ],
+  "controls": ["drag"],
+  "duration": 60,
+  "goal": 100,
+  "params": { "wind": 1 }
+}

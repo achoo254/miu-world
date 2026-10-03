@@ -1,0 +1,14 @@
+{
+  "id": "flappy-fly",
+  "name": "Chim bay qua khe tre",
+  "family": "flap",
+  "howTo": [
+    "Chú chim tự bay về phía trước và cứ rơi dần xuống.",
+    "{name} chạm màn hình để chim vỗ cánh bay lên, lách qua khe giữa hai cây tre.",
+    "Qua mỗi khe được một điểm. Đụng tre ba lần là hết lượt."
+  ],
+  "controls": ["tap"],
+  "duration": 60,
+  "goal": 10,
+  "params": { "speed": 1, "gap": 250 }
+}

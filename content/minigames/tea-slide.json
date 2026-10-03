@@ -1,0 +1,19 @@
+{
+  "id": "tea-slide",
+  "name": "Trà đá vỉa hè",
+  "family": "serve-lanes",
+  "howTo": [
+    "Khách đi dọc ba bàn tới quầy. {name} vuốt sang phải trên bàn để đẩy ly trà cho khách.",
+    "Khách uống xong đẩy ly không về: chạm vào ly để thu lại.",
+    "Khách nào tới tận quầy mà chưa có trà thì mất một tim."
+  ],
+  "controls": [
+    "swipe",
+    "tap"
+  ],
+  "duration": 90,
+  "goal": 20,
+  "params": {
+    "speed": 1
+  }
+}

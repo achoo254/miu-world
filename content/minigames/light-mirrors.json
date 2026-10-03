@@ -1,0 +1,14 @@
+{
+  "id": "light-mirrors",
+  "name": "Gương dẫn ánh nắng",
+  "family": "beam-puzzle",
+  "howTo": [
+    "Ông mặt trời chiếu một tia nắng. Tia nắng gặp gương thì rẽ hướng.",
+    "{name} chạm vào gương để xoay, dẫn tia nắng tới bông hoa.",
+    "Hoa nở là xong một bàn. Xong ba bàn là thắng!"
+  ],
+  "controls": ["tap"],
+  "duration": 90,
+  "goal": 3,
+  "params": {}
+}

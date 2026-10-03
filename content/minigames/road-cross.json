@@ -1,0 +1,14 @@
+{
+  "id": "road-cross",
+  "name": "Qua đường qua sông",
+  "family": "crossing",
+  "howTo": [
+    "Giúp ếch qua đường rồi qua sông. {name} chạm (hoặc vuốt lên) để ếch nhảy tới.",
+    "Vuốt trái, phải để bước ngang. Qua sông thì nhảy lên khúc gỗ hay lưng rùa nhé!",
+    "Tới bờ bên kia được một điểm."
+  ],
+  "controls": ["tap", "swipe"],
+  "duration": 90,
+  "goal": 3,
+  "params": { "speed": 1 }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "tangram",
+  "name": "Ghép hình bảy mảnh",
+  "family": "tangram",
+  "howTo": [
+    "Kéo từng mảnh vào bóng hình. Chạm một mảnh để xoay nó.",
+    "Đủ bảy mảnh là xong một hình. {name} ghép thật nhiều hình nhé!"
+  ],
+  "controls": ["drag", "tap"],
+  "duration": 90,
+  "goal": 2,
+  "params": {}
+}

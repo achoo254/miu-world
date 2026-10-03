@@ -1,0 +1,14 @@
+{
+  "id": "bubble-shooter",
+  "name": "Bắn bóng màu",
+  "family": "bubble-pop",
+  "howTo": [
+    "{name} kéo ngón tay để ngắm theo đường chấm, thả tay để bắn bóng.",
+    "Ba quả cùng màu (cùng hình) dính nhau thì nổ. Quả treo lơ lửng cũng rơi theo!",
+    "Đừng để chùm bóng chạm vạch đỏ nhé."
+  ],
+  "controls": ["drag"],
+  "duration": 90,
+  "goal": 30,
+  "params": {}
+}

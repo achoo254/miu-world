@@ -1,0 +1,13 @@
+{
+  "id": "sliding-tiles",
+  "name": "Trượt ghép tranh",
+  "family": "sliding-puzzle",
+  "howTo": [
+    "Bức tranh bị xáo trộn. {name} chạm một ô cạnh chỗ trống để trượt ô đó vào.",
+    "Xếp các ô theo số 1 đến 8 cho giống tranh mẫu là xong!"
+  ],
+  "controls": ["tap"],
+  "duration": 90,
+  "goal": 1,
+  "params": {}
+}

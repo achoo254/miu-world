@@ -1,0 +1,14 @@
+{
+  "id": "da-cau",
+  "name": "Đá cầu",
+  "family": "keep-up",
+  "howTo": [
+    "Quả cầu lông rơi xuống: {name} chạm vào cầu để tâng nó bay lên.",
+    "Mỗi lần tâng được một điểm. Cầu rơi đất thì bạn ném lại, tâng tiếp nhé!",
+    "Nửa sau có thêm quả cầu thứ hai!"
+  ],
+  "controls": ["tap"],
+  "duration": 60,
+  "goal": 30,
+  "params": { "speed": 1 }
+}

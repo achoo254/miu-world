@@ -1,0 +1,14 @@
+{
+  "id": "water-pour",
+  "name": "Rót trà đúng vạch",
+  "family": "pour-fill",
+  "howTo": [
+    "Giữ ngón tay để ấm nghiêng rót trà, thả tay để dừng.",
+    "Trà nằm giữa hai vạch xanh là {name} được một điểm. Rót thiếu thì rót thêm.",
+    "Ấm có ốc sên rót chậm, có thỏ rót nhanh. Tràn ba cốc là hết lượt!"
+  ],
+  "controls": ["hold"],
+  "duration": 60,
+  "goal": 8,
+  "params": { "speed": 1 }
+}

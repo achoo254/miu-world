@@ -1,0 +1,14 @@
+{
+  "id": "red-light",
+  "name": "Một hai ba, đứng im!",
+  "family": "statues",
+  "howTo": [
+    "Giữ ngón tay để {name} bước tới vạch đích, nhấc tay ra là đứng lại.",
+    "Gấu bông quay lại nhìn thì phải đứng im, đang đi là bị lùi ba bước!",
+    "Vòng tròn xanh là đi, vàng là sắp quay, đỏ là đứng im."
+  ],
+  "controls": ["hold"],
+  "duration": 45,
+  "goal": 25,
+  "params": { "turnSpeed": 1 }
+}

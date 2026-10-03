@@ -1,0 +1,14 @@
+{
+  "id": "pair-link",
+  "name": "Nối hình giống nhau",
+  "family": "path-pairs",
+  "howTo": [
+    "{name} chạm hai hình giống nhau để nối chúng lại.",
+    "Đường nối chỉ được gấp khúc hai lần và không đi qua hình khác.",
+    "Tìm mãi không thấy? Chờ một chút, hai hình sẽ sáng lên gợi ý."
+  ],
+  "controls": ["tap"],
+  "duration": 90,
+  "goal": 12,
+  "params": {}
+}

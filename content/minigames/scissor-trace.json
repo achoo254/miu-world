@@ -1,0 +1,14 @@
+{
+  "id": "scissor-trace",
+  "name": "Cắt giấy theo đường",
+  "family": "trace-path",
+  "howTo": [
+    "Đặt ngón tay vào cây kéo rồi đưa kéo đi theo đường chấm.",
+    "Đi lệch xa quá thì kéo dừng lại: {name} đặt ngón tay vào kéo để cắt tiếp.",
+    "Cắt hết một vòng là xong một hình: một điểm."
+  ],
+  "controls": ["drag"],
+  "duration": 60,
+  "goal": 5,
+  "params": {}
+}

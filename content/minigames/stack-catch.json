@@ -1,0 +1,14 @@
+{
+  "id": "stack-catch",
+  "name": "Hứng bánh xếp chồng",
+  "family": "stack-catch",
+  "howTo": [
+    "Kéo đĩa để hứng bánh rơi lên trên cùng chồng bánh.",
+    "Đi đều tay thôi: chạy giật hay hứng lệch là chồng bánh đổ!",
+    "{name} xếp chồng bánh cao nhất có thể nhé."
+  ],
+  "controls": ["drag"],
+  "duration": 60,
+  "goal": 12,
+  "params": { "speed": 1 }
+}

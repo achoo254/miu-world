@@ -1,0 +1,14 @@
+{
+  "id": "call-response",
+  "name": "Nhại nhịp vỗ tay",
+  "family": "rhythm-echo",
+  "howTo": [
+    "Vẹt vỗ một nhịp, các chấm to sáng lên theo tiếng vỗ.",
+    "Đến lượt {name}: chạm màn hình đúng lúc vào từng vòng tròn, không thừa không thiếu.",
+    "Nhại đúng bảy trên mười câu là thắng!"
+  ],
+  "controls": ["tap"],
+  "duration": 55,
+  "goal": 7,
+  "params": { "tempo": 1 }
+}

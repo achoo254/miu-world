@@ -1,0 +1,13 @@
+{
+  "id": "crane-drop",
+  "name": "Cần cẩu xây nhà",
+  "family": "crane-stack",
+  "howTo": [
+    "Tầng nhà đung đưa trên cần cẩu. {name} chạm để thả cho rơi đúng lên tháp.",
+    "Thả lệch thì tháp lắc mạnh hơn. Rơi ra ngoài ba tầng là hết lượt!"
+  ],
+  "controls": ["tap"],
+  "duration": 90,
+  "goal": 12,
+  "params": { "speed": 1 }
+}

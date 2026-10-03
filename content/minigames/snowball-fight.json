@@ -1,0 +1,14 @@
+{
+  "id": "snowball-fight",
+  "name": "Ném tuyết sau ụ",
+  "family": "peek-throw",
+  "howTo": [
+    "Các bạn nhô lên sau ụ tuyết. {name} chạm vào bạn để ném tuyết!",
+    "Thấy quả tuyết bay tới thì giữ ngón tay để núp, thả ra để nhô lên.",
+    "Trúng bạn được một điểm. Bị trúng năm lần là hết lượt."
+  ],
+  "controls": ["tap", "hold"],
+  "duration": 60,
+  "goal": 15,
+  "params": { "speed": 1 }
+}

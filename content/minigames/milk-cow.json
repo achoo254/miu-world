@@ -1,0 +1,14 @@
+{
+  "id": "milk-cow",
+  "name": "Vắt sữa bò",
+  "family": "milking",
+  "howTo": [
+    "{name} vuốt xuống trên một núm vú để vắt sữa vào xô.",
+    "Núm vú căng hồng là có sữa. Vắt bên trái, rồi bên phải, đều tay nhé!",
+    "Vắt vội lúc chưa có sữa thì bò khó chịu, bỏ đi một lúc."
+  ],
+  "controls": ["swipe"],
+  "duration": 60,
+  "goal": 40,
+  "params": { "refill": 1 }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "match-3",
+  "name": "Đổi chỗ ba quả",
+  "family": "match-three",
+  "howTo": [
+    "{name} vuốt một quả sang ô bên cạnh để đổi chỗ (hoặc chạm hai quả cạnh nhau).",
+    "Ba quả giống nhau thẳng hàng sẽ nổ: mỗi quả nổ được một điểm!"
+  ],
+  "controls": ["swipe", "tap"],
+  "duration": 60,
+  "goal": 40,
+  "params": {}
+}

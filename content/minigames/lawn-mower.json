@@ -1,0 +1,14 @@
+{
+  "id": "lawn-mower",
+  "name": "Cắt cỏ một nét",
+  "family": "one-stroke",
+  "howTo": [
+    "{name} kéo ngón tay (hoặc vuốt) để lái máy cắt qua từng ô cỏ.",
+    "Phải cắt hết mọi ô cỏ, không được đi lại ô đã cắt. Tránh luống hoa và đá.",
+    "Kẹt thì chạm nút Làm lại. Xong ba bãi cỏ là thắng!"
+  ],
+  "controls": ["drag", "swipe"],
+  "duration": 90,
+  "goal": 3,
+  "params": {}
+}

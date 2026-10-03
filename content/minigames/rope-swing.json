@@ -1,0 +1,14 @@
+{
+  "id": "rope-swing",
+  "name": "Khỉ đu dây",
+  "family": "swing",
+  "howTo": [
+    "Giữ ngón tay: khỉ móc dây vào móc gần nhất rồi đu. Thả ra: khỉ bay đi!",
+    "{name} thả tay lúc khỉ đang đu lên phía trước để bay thật xa.",
+    "Bay qua gốc cây có nải chuối là qua một chặng. Rơi xuống suối thì leo lại."
+  ],
+  "controls": ["hold"],
+  "duration": 90,
+  "goal": 6,
+  "params": { "reach": 1 }
+}

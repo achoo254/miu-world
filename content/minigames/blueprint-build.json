@@ -1,0 +1,14 @@
+{
+  "id": "blueprint-build",
+  "name": "Xây theo bản vẽ",
+  "family": "copy-pattern",
+  "howTo": [
+    "Nhìn bản vẽ nhỏ màu xanh: {name} xây cho giống hệt nhé!",
+    "Chạm một hũ màu, rồi chạm ô để đặt gạch màu đó. Chạm lại viên gạch để gỡ ra.",
+    "Xây giống bản vẽ là xong một công trình: một điểm."
+  ],
+  "controls": ["tap"],
+  "duration": 90,
+  "goal": 3,
+  "params": {}
+}

@@ -1,0 +1,13 @@
+{
+  "id": "star-connect",
+  "name": "Nối chòm sao",
+  "family": "connect-dots",
+  "howTo": [
+    "Chạm các ngôi sao theo số 1, 2, 3… tới 10, hoặc kéo ngón tay nối qua.",
+    "Nối xong, một bạn trên trời hiện ra. {name} nối thật nhiều chòm sao nhé!"
+  ],
+  "controls": ["tap", "drag"],
+  "duration": 60,
+  "goal": 3,
+  "params": { "stars": 10 }
+}

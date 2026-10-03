@@ -1,0 +1,14 @@
+{
+  "id": "balance-scale",
+  "name": "Cân thăng bằng",
+  "family": "balance-sum",
+  "howTo": [
+    "Đĩa trái có quả nặng. Mỗi quả ghi số cân của nó.",
+    "{name} kéo (hoặc chạm) quả trên kệ lên đĩa phải cho hai bên bằng nhau.",
+    "Chạm quả trên đĩa để lấy xuống. Cân thăng bằng là được một điểm!"
+  ],
+  "controls": ["drag", "tap"],
+  "duration": 90,
+  "goal": 5,
+  "params": {}
+}

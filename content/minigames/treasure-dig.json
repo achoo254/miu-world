@@ -1,0 +1,13 @@
+{
+  "id": "treasure-dig",
+  "name": "Đào kho báu nóng lạnh",
+  "family": "hot-cold",
+  "howTo": [
+    "Chạm một ô cát để đào. Ô hiện lửa là rất gần, tuyết là còn xa kho báu.",
+    "{name} có tám lần đào để tìm ra kho báu nhé!"
+  ],
+  "controls": ["tap"],
+  "duration": 90,
+  "goal": 3,
+  "params": { "digs": 8 }
+}

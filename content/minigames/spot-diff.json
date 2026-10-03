@@ -1,0 +1,14 @@
+{
+  "id": "spot-diff",
+  "name": "Tìm điểm khác nhau",
+  "family": "spot-difference",
+  "howTo": [
+    "Hai bức tranh gần giống nhau, nhưng khác nhau ở năm chỗ.",
+    "{name} chạm vào chỗ khác nhau ở tranh nào cũng được: mỗi chỗ một điểm.",
+    "Chạm sai năm lần thì một chỗ sẽ sáng lên để gợi ý."
+  ],
+  "controls": ["tap"],
+  "duration": 90,
+  "goal": 5,
+  "params": {}
+}

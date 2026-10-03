@@ -1,0 +1,14 @@
+{
+  "id": "garden-cycle",
+  "name": "Vườn rau của bé",
+  "family": "garden-care",
+  "howTo": [
+    "Chạm luống trống để gieo hạt. Cây héo thì chạm (hoặc kéo ngón tay qua) để tưới.",
+    "Rau chín thì chạm để hái. Chim tới mổ hạt thì chạm để đuổi chim!",
+    "{name} hái được thật nhiều rau nhé."
+  ],
+  "controls": ["tap", "drag"],
+  "duration": 90,
+  "goal": 20,
+  "params": { "growth": 1 }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "cotton-candy",
+  "name": "Quấn kẹo bông",
+  "family": "circle-draw",
+  "howTo": [
+    "{name} vẽ vòng tròn quanh que để quấn đường thành kẹo bông.",
+    "Kẹo to tròn là xong một cây. Quay nhanh quá kẹo sẽ văng mất: giữ kim ở vạch xanh nhé!"
+  ],
+  "controls": ["drag"],
+  "duration": 60,
+  "goal": 6,
+  "params": { "speed": 1 }
+}

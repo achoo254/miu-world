@@ -1,0 +1,14 @@
+{
+  "id": "musical-chairs",
+  "name": "Giành ghế",
+  "family": "react-claim",
+  "howTo": [
+    "{name} và các bạn đi vòng quanh ghế theo nhạc.",
+    "Nhạc dừng thì chạm ngay một ghế trống để ngồi!",
+    "Chạm khi nhạc còn chơi là bị vấp đấy. Ngồi được một ghế là một điểm."
+  ],
+  "controls": ["tap"],
+  "duration": 60,
+  "goal": 5,
+  "params": {}
+}

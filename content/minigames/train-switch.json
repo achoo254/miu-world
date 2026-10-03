@@ -1,0 +1,14 @@
+{
+  "id": "train-switch",
+  "name": "Bẻ ghi tàu",
+  "family": "track-switch",
+  "howTo": [
+    "Tàu màu nào phải về ga màu đó (nhìn cả hình trên toa nữa).",
+    "{name} chạm vào nút mũi tên ở chỗ rẽ để bẻ ghi cho tàu đi đúng đường.",
+    "Tàu về nhầm ga bị trừ một điểm."
+  ],
+  "controls": ["tap"],
+  "duration": 90,
+  "goal": 15,
+  "params": { "speed": 1 }
+}

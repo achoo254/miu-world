@@ -47,7 +47,7 @@ bot(state, { arena, time, goal }): BotMove // { touch?, tap?, swipe?: { from, dx
 - **Arena**: cạnh ngắn của màn hình luôn là 600 đơn vị, cạnh dài co giãn (iPad ngang 863 × 600, iPad dọc 600 × 863, điện thoại 600 × 1298). Bố cục theo `arena`, đừng cố định kích thước. Giữ thứ quan trọng dưới `HUD_SAFE_TOP` (110). Vật bé chạm có bán kính ≥ `TOUCH_RADIUS` (40, tức ≥ 48 px trên điện thoại).
 - **step** chạy cố định 60 Hz (`dt` = 1/60). Host dừng lượt khi hết `duration` hoặc khi `done`. `won` không do game quyết: host và server cùng tính `score >= goal`.
 - **input** (`GameInput`): `pointer` (ngón đang chạm, hoặc null), `pressed`, `released`, `holdTime`, `taps[]`, `swipes[]` (hướng, `from`, `dx`, `dy`, `speed`). Một ngón, ngưỡng tính theo pixel CSS nên vuốt trên điện thoại và iPad như nhau.
-- **lives**: có thì HUD hiện số tim; không có thì bỏ trống.
+- **lives**: có thì HUD hiện số tim; không có thì bỏ trống. Hết tim thì đặt `done` (đừng tự chơi tiếp): đồ hỗ trợ "Thêm một tim" của host dựa vào đúng tín hiệu `done` + `lives === 0` (xem dưới).
 - **Sự kiện** (`drainEvents`, dùng `eventQueue()`): `score` (lấp lánh, "+n", tiếng sao; có `points`), `hit` (rung màn hình, tiếng nhẹ), `miss` (bụi nhỏ, không tiếng), `action` (bụi, tiếng click). Game chỉ phát sự kiện; host làm hiệu ứng và âm thanh (`effects.ts`, âm thanh Kenney qua `sound/sfx.ts`), nên 100 trò có cùng cảm giác. Giảm chuyển động (`reducedMotion`): không rung, ít hạt; game tự bỏ nảy mạnh.
 - **Bot**: chơi tốt, ra quyết định 10 lần mỗi giây như một bé nhanh tay. Bot đọc thẳng `state`.
 - **Nốt nhạc** (đàn, trống, hô và đáp): thêm `note` (số MIDI, 60 = Đô giữa) và tùy chọn `voice` (`'piano'` mặc định, `'bell'`, `'drum'`, `'clap'`, `'whistle'`) vào bất kỳ sự kiện nào; host phát nốt đó bằng Web Audio (`playNote` trong `sound/sfx.ts`) thay cho tiếng thường của sự kiện, tắt theo nút Âm thanh. Không cần file âm thanh.
@@ -83,6 +83,14 @@ Cân mục tiêu: idle phải thua rõ, bot thắng dư. Trẻ 7–8 tuổi nên
 - Nhân vật giao phải luôn có mặt trên map trong chương của quest (không gắn `quest` của bài khác). Một nhân vật giao được nhiều trò: bé chọn trò trong danh sách.
 - Nhiệm vụ phụ không khóa và không bị khóa bởi bài học. `GET /quests` chỉ trả bài học; `GET /quests?category=side&region=<id>` trả nhiệm vụ phụ. Thanh nhiệm vụ trên HUD và mũi tên luôn theo bài học. Chạm nhân vật: bước hiện tại của bài học được ưu tiên, nếu bài học không cần nhân vật đó thì nhân vật mời chơi.
 - Luật "đi qua ≥ 4 nơi" và giới hạn 2 nhiệm vụ mỗi nhân vật không áp cho nhiệm vụ phụ; luật "một nhân vật sống trên một map" vẫn áp.
+
+## Đồ hỗ trợ từ cửa hàng (host, mọi trò)
+
+Bé mua đồ hỗ trợ ở Cửa hàng (`content/shop/tieu-hao.json`) và chọn một món trên thẻ hướng dẫn trước khi chơi. Host áp cho mọi trò, game không phải làm gì thêm (`round.ts`):
+
+- **Thêm 10 giây**: lượt dài thêm (`duration` lớn hơn), đồng hồ HUD hiện đủ.
+- **Thêm một tim** (chỉ trò có `lives`): HUD đếm thêm một tim từ đầu; khi game hết tim (`done` và `lives === 0`) mà còn giờ, host bắt đầu lại game với thời gian còn lại, giữ điểm đã có, chỉ hiện một tim, hết tim đó thì xong lượt. Game nào cần trạng thái liền mạch khi được cứu thì báo lại để mở rộng API, đừng tự đọc đồ hỗ trợ.
+- Server trừ một món (`POST /api/shop/use`, mã lượt dùng một lần) trước khi lượt bắt đầu; không trừ được thì lượt chưa bắt đầu, thẻ hướng dẫn báo lỗi, bé thử lại hoặc bỏ chọn để chơi không có đồ hỗ trợ. Trang `/minigame.html` chỉ hiện đồ hỗ trợ khi trình duyệt đang đăng nhập và đã chọn hồ sơ.
 
 ## Lượt chơi và phần thưởng (server)
 

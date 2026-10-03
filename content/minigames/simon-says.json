@@ -1,0 +1,14 @@
+{
+  "id": "simon-says",
+  "name": "Con vật hát theo thứ tự",
+  "family": "sequence-memory",
+  "howTo": [
+    "Các con vật lần lượt sáng lên và hát. {name} nghe và nhìn thật kỹ nhé.",
+    "Rồi chạm lại các con vật đúng thứ tự. Mỗi lượt bài hát dài thêm một nốt!",
+    "Sai hai lần là hết lượt."
+  ],
+  "controls": ["tap"],
+  "duration": 75,
+  "goal": 6,
+  "params": {}
+}

@@ -1,0 +1,14 @@
+{
+  "id": "weed-pull",
+  "name": "Nhổ cỏ dại",
+  "family": "garden-pull",
+  "howTo": [
+    "Giữ ngón tay trên cây cỏ dại rồi kéo lên để nhổ.",
+    "Cỏ ba lá dai lắm: lắc qua lắc lại rồi mới kéo, được hai điểm.",
+    "{name} nhớ đừng nhổ cà rốt và hoa nhé!"
+  ],
+  "controls": ["drag"],
+  "duration": 60,
+  "goal": 15,
+  "params": { "speed": 1 }
+}

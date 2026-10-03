@@ -1,0 +1,14 @@
+{
+  "id": "balloon-rule-pop",
+  "name": "Bóng theo lệnh",
+  "family": "go-no-go",
+  "howTo": [
+    "Bảng trên cùng cho {name} biết màu bóng cần nổ.",
+    "Chạm đúng bóng màu đó để nổ. Chạm nhầm màu khác bị trừ một điểm!",
+    "Cứ mười giây bảng lại đổi màu, nhìn kỹ nhé."
+  ],
+  "controls": ["tap"],
+  "duration": 60,
+  "goal": 30,
+  "params": { "speed": 1 }
+}

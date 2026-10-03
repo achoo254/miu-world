@@ -1,0 +1,14 @@
+{
+  "id": "cut-rope",
+  "name": "Cắt dây thả kẹo",
+  "family": "rope-physics",
+  "howTo": [
+    "Viên kẹo treo trên dây đung đưa. Ếch đang đói ngồi chờ bên dưới!",
+    "{name} vuốt ngang qua sợi dây để cắt, đúng lúc kẹo bay vào miệng ếch.",
+    "Kẹo rơi ra ngoài thì bày lại, cứ thử tiếp nhé."
+  ],
+  "controls": ["swipe"],
+  "duration": 90,
+  "goal": 3,
+  "params": {}
+}

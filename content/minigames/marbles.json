@@ -1,0 +1,14 @@
+{
+  "id": "marbles",
+  "name": "Bắn bi",
+  "family": "flick-billiard",
+  "howTo": [
+    "Kéo ngón tay ngược lại hướng muốn bắn rồi thả ra, như kéo ná cao su.",
+    "Bi cái của {name} lăn đi và cụng các viên bi khác. Kéo dài thì bắn mạnh.",
+    "Mỗi viên bị đẩy ra khỏi vòng phấn được một điểm. Có tám lượt bắn."
+  ],
+  "controls": ["drag", "swipe"],
+  "duration": 60,
+  "goal": 5,
+  "params": {}
+}

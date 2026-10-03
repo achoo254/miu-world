@@ -1,0 +1,14 @@
+{
+  "id": "shell-game",
+  "name": "Úp bát tìm ngọc",
+  "family": "track-memory",
+  "howTo": [
+    "Viên ngọc nằm dưới một cái bát. {name} nhìn kỹ nhé!",
+    "Ba cái bát đổi chỗ cho nhau, mắt dõi theo bát có ngọc.",
+    "Bát dừng thì chạm vào bát có ngọc: tìm đúng được một điểm."
+  ],
+  "controls": ["tap"],
+  "duration": 70,
+  "goal": 5,
+  "params": { "speed": 1 }
+}

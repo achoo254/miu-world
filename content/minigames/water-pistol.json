@@ -1,0 +1,14 @@
+{
+  "id": "water-pistol",
+  "name": "Súng nước hội chợ",
+  "family": "shooting-gallery",
+  "howTo": [
+    "Giữ ngón tay trên màn hình, tia nước bay theo ngón tay của {name}.",
+    "Phun vào vịt cho tới khi vịt ngã. Bia tròn được ba điểm!",
+    "Hết nước thì thả tay ra một chút để bơm đầy lại."
+  ],
+  "controls": ["hold", "drag"],
+  "duration": 60,
+  "goal": 25,
+  "params": { "speed": 1 }
+}

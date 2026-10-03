@@ -1,0 +1,14 @@
+{
+  "id": "wave-surf",
+  "name": "Lướt sóng",
+  "family": "wave-ride",
+  "howTo": [
+    "Giữ ngón tay khi {name} trượt xuống sóng để lao nhanh hơn.",
+    "Thả tay khi lên dốc để {name} bay qua đỉnh sóng.",
+    "Lướt qua thật nhiều hòn đảo nhé!"
+  ],
+  "controls": ["hold"],
+  "duration": 60,
+  "goal": 5,
+  "params": { "waves": 1 }
+}

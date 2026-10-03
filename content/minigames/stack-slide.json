@@ -1,0 +1,14 @@
+{
+  "id": "stack-slide",
+  "name": "Xếp tầng trượt",
+  "family": "slide-stack",
+  "howTo": [
+    "Tầng mới trượt qua lại. {name} chạm để thả nó xuống tầng dưới.",
+    "Phần thò ra ngoài bị cắt mất, nên thả thật thẳng nhé!",
+    "Thả trượt hẳn ra ngoài tháp là hết lượt."
+  ],
+  "controls": ["tap"],
+  "duration": 60,
+  "goal": 20,
+  "params": { "speed": 1 }
+}

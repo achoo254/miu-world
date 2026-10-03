@@ -1,0 +1,14 @@
+{
+  "id": "banh-xeo-flip",
+  "name": "Đổ bánh xèo",
+  "family": "cook-timing",
+  "howTo": [
+    "Chạm chảo trống để đổ bột. Vòng quanh chảo xanh lên là bánh đã vàng.",
+    "Bánh vàng thì chạm để lật, mặt kia vàng thì chạm để ra đĩa: một điểm.",
+    "Để lâu quá bánh sẽ cháy. Cháy ba cái là {name} phải nghỉ đấy!"
+  ],
+  "controls": ["tap"],
+  "duration": 90,
+  "goal": 10,
+  "params": { "speed": 1 }
+}

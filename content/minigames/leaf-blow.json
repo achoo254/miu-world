@@ -1,0 +1,13 @@
+{
+  "id": "leaf-blow",
+  "name": "Thổi lá vào đống",
+  "family": "blow-pile",
+  "howTo": [
+    "Giữ ngón tay trên sân: cái quạt thổi lá bay ra xa ngón tay.",
+    "{name} đặt quạt phía sau chiếc lá để thổi nó vào khung gom lá."
+  ],
+  "controls": ["hold", "drag"],
+  "duration": 60,
+  "goal": 20,
+  "params": { "power": 1 }
+}

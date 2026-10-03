@@ -1,0 +1,14 @@
+{
+  "id": "hanoi-tower",
+  "name": "Chuyển bánh tầng",
+  "family": "hanoi",
+  "howTo": [
+    "Chạm một đĩa để nhấc tầng bánh trên cùng, chạm đĩa khác để đặt xuống.",
+    "Bánh to không được đè lên bánh nhỏ.",
+    "{name} chuyển cả chồng bánh sang đĩa có ngôi sao nhé!"
+  ],
+  "controls": ["tap"],
+  "duration": 90,
+  "goal": 2,
+  "params": { "layers": 3 }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "monkey-bridge",
+  "name": "Đi cầu khỉ",
+  "family": "balance",
+  "howTo": [
+    "{name} tự bước qua cầu tre. Người nghiêng bên nào thì kéo ngón tay sang bên kia.",
+    "Giữ kim ở vùng xanh để không rơi xuống suối!"
+  ],
+  "controls": ["drag"],
+  "duration": 60,
+  "goal": 3,
+  "params": { "wind": 1 }
+}

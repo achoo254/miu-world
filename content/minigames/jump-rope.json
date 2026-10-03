@@ -1,0 +1,14 @@
+{
+  "id": "jump-rope",
+  "name": "Nhảy dây",
+  "family": "rhythm-jump",
+  "howTo": [
+    "Hai bạn quay dây, {name} đứng giữa. Dây vòng xuống tới chân thì chạm để nhảy!",
+    "Mỗi lần dây lướt qua dưới chân được một điểm, dây quay nhanh dần.",
+    "Vướng dây thì dây dừng một chút rồi quay chậm lại từ đầu."
+  ],
+  "controls": ["tap"],
+  "duration": 60,
+  "goal": 25,
+  "params": { "speed": 1 }
+}

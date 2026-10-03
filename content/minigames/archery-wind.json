@@ -1,0 +1,14 @@
+{
+  "id": "archery-wind",
+  "name": "Bắn cung có gió",
+  "family": "archery",
+  "howTo": [
+    "Đặt ngón tay xuống để kéo cung, trượt ngón tay để dời vòng ngắm, thả ra để bắn.",
+    "Gió thổi mũi tên lệch đi: {name} nhìn mũi tên gió và ngắm lệch ngược lại nhé!",
+    "Tám mũi tên, giữa bia được mười điểm."
+  ],
+  "controls": ["drag"],
+  "duration": 60,
+  "goal": 40,
+  "params": { "wind": 1 }
+}

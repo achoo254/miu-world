@@ -1,0 +1,14 @@
+{
+  "id": "hopscotch",
+  "name": "Nhảy lò cò",
+  "family": "hop-boxes",
+  "howTo": [
+    "Ô sáng chạy qua lại: {name} chạm đúng lúc nó ở ô viền vàng để ném sỏi vào.",
+    "Rồi chạm lần lượt các ô từ 1 đến 8 để nhảy, nhớ bỏ qua ô có sỏi.",
+    "Ném trượt hay nhảy sai ô thì làm lại lượt đó."
+  ],
+  "controls": ["tap"],
+  "duration": 90,
+  "goal": 8,
+  "params": { "speed": 1 }
+}

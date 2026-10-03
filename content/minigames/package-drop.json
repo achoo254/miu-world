@@ -1,0 +1,14 @@
+{
+  "id": "package-drop",
+  "name": "Thả quà từ máy bay",
+  "family": "drop-aim",
+  "howTo": [
+    "Máy bay của {name} bay ngang trời. Chạm để thả quà, dù sẽ bung ra.",
+    "Quà còn bay về phía trước một đoạn: thả sớm, trước khi tới vòng vàng.",
+    "Có 12 hộp quà, trúng nhà hay thuyền trong vòng được một điểm."
+  ],
+  "controls": ["tap"],
+  "duration": 60,
+  "goal": 8,
+  "params": { "speed": 1 }
+}

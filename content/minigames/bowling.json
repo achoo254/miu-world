@@ -1,0 +1,14 @@
+{
+  "id": "bowling",
+  "name": "Ném bowling",
+  "family": "bowling",
+  "howTo": [
+    "Kéo quả bóng sang trái, sang phải để chọn chỗ đứng.",
+    "Vuốt lên về phía ki: bóng lăn theo hướng {name} vuốt.",
+    "Mỗi ki đổ một điểm, đổ hết mười ki được thêm năm điểm!"
+  ],
+  "controls": ["drag", "swipe"],
+  "duration": 75,
+  "goal": 40,
+  "params": {}
+}
