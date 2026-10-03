@@ -84,6 +84,28 @@
 .scene-modal .challenge-area { padding: var(--space-md); border-radius: var(--radius-panel); background: var(--color-surface-glass); }
 /* No grey tap flash on iPad: pressed states come from the materials themselves. */
 .scene-modal, .scene-modal * { -webkit-tap-highlight-color: transparent; }
+
+/*
+ * A challenge taller than the screen (a long reading on the iPad, owner 03/10/2026): the banner, the character
+ * with the question and the bar with Kiểm tra stay on screen; only the play area between them scrolls, with a
+ * swipe anywhere on it, never dragging the game behind.
+ */
+.scene-modal--pinned { display: flex; flex-direction: column; overflow: hidden; }
+.scene-modal--pinned > * { flex: 0 0 auto; }
+.scene-modal--pinned > .challenge-area {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+}
+/* Short screens (an iPad on its side): a slimmer header leaves the play area room. */
+@media (max-height: 56rem) {
+  .scene-modal--pinned { gap: var(--space-sm); }
+  .scene-modal--pinned .ribbon { font-size: var(--text-lg); padding-block: 0; }
+  .scene-modal--pinned .challenge-prompt { font-size: var(--text-body); }
+}
 .scene-modal .challenge-prompt { font-size: var(--text-lg); font-weight: 800; }
 
 /* Bottom bar: help on the left, "Làm lại · Kiểm tra" on the right. */

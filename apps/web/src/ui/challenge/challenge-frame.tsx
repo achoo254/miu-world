@@ -71,7 +71,7 @@ export function ChallengeFrame({
   };
   const { index, total } = context.position;
   return (
-    <Modal title={context.title} onClose={context.onClose} dataId="challenge" size="wide" variant="scene">
+    <Modal title={context.title} onClose={context.onClose} dataId="challenge" size="wide" variant="scene" className="scene-modal--pinned">
       <div className="scene-chips">
         <div className="step-trail-wrap">
           <span className="visually-hidden" data-id="challenge-position">

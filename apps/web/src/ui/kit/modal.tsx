@@ -17,6 +17,7 @@ export function Modal({
   size = 'normal',
   variant = 'panel',
   titleClass,
+  className,
 }: {
   title: string;
   onClose?: () => void;
@@ -30,6 +31,8 @@ export function Modal({
   variant?: 'panel' | 'scene';
   /** Class of the title element (`ribbon` banner by default in the scene variant). */
   titleClass?: string;
+  /** Extra class of the dialog (a layout of its own, as the challenge scene's pinned header and bar). */
+  className?: string;
 }) {
   const dialog = useRef<HTMLDivElement>(null);
   const titleId = useId();
@@ -44,7 +47,8 @@ export function Modal({
     if (!el) return;
     const before = document.activeElement instanceof HTMLElement ? document.activeElement : null;
     const focusables = (): HTMLElement[] => [...el.querySelectorAll<HTMLElement>(FOCUSABLE)];
-    (focusables()[0] ?? el).focus();
+    // Without scrolling: a long screen opens at its top (a reading from its first line), not at its first button.
+    (focusables()[0] ?? el).focus({ preventScroll: true });
     const onKey = (e: KeyboardEvent): void => {
       if (e.key === 'Escape' && close.current) {
         e.preventDefault();
@@ -76,7 +80,7 @@ export function Modal({
     <div className={`modal-backdrop modal-backdrop--${placement}${variant === 'scene' ? ' modal-backdrop--scene' : ''}`} data-id={dataId ? `${dataId}-backdrop` : undefined}>
       <div
         ref={dialog}
-        className={variant === 'scene' ? `modal scene-modal modal--${size}` : `panel modal modal--${size}`}
+        className={`${variant === 'scene' ? `modal scene-modal modal--${size}` : `panel modal modal--${size}`}${className ? ` ${className}` : ''}`}
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
