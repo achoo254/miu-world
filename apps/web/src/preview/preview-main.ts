@@ -25,6 +25,7 @@ import { createGameStore } from '../game-bridge/game-store';
 import { AssetRegistry, GuardedGltfLoader } from '../game/asset-loader';
 import { mirroredAccessory } from '@miu/voxel/voxel-accessory';
 import { createAccessoryMesh, dressCharacter } from '../game/character/character-accessories';
+import { wornPose } from '../game/character/worn-pose';
 import { resolveOutfitEntry } from '../game/content/accessories';
 import { characterForSpecies, DEFAULT_SPECIES } from '../game/content/characters';
 import { Game } from '../game/game';
@@ -61,6 +62,9 @@ async function posedCharacter(loader: GuardedGltfLoader): Promise<Object3D> {
     model.position.y = rideLift(vehicle.ride);
   }
 
+  // As in the game: no tail through a bag, the holding arm still on idle, walk and sprint.
+  const pose = wornPose(model, gltf.animations);
+  pose.wear(entries);
   const clipName = params.get('anim');
   if (clipName) {
     const clip = gltf.animations.find((a) => a.name === clipName);
@@ -69,6 +73,7 @@ async function posedCharacter(loader: GuardedGltfLoader): Promise<Object3D> {
     mixer.clipAction(clip).play();
     mixer.setTime(Number(params.get('t') ?? 0));
   }
+  pose.apply(!vehicle && (!clipName || ['idle', 'walk', 'sprint'].includes(clipName)));
   return model;
 }
 

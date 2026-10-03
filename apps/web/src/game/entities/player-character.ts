@@ -2,6 +2,7 @@
 import { AnimationMixer, type AnimationAction, type Object3D } from 'three';
 import type { GuardedGltfLoader } from '../asset-loader';
 import { dressCharacter } from '../character/character-accessories';
+import { wornPose } from '../character/worn-pose';
 import { withOwnClothes } from '../character/character-clothes';
 import { characterForSpecies, type CharacterModel } from '../content/characters';
 import { RUN_SPEED, WALK_SPEED } from '../player/player-controller';
@@ -54,6 +55,8 @@ export async function loadPlayerCharacter(loader: GuardedGltfLoader, species: st
   }
   let current: Locomotion = 'idle';
   actions.get('idle')?.play();
+  const pose = wornPose(root, gltf.animations);
+  pose.wear(worn.entries);
 
   return {
     root,
@@ -71,6 +74,7 @@ export async function loadPlayerCharacter(loader: GuardedGltfLoader, species: st
       const action = actions.get(current);
       if (action && (current === 'walk' || current === 'sprint')) action.timeScale = Math.max(0.6, speed / (current === 'sprint' ? RUN_SPEED : WALK_SPEED));
       mixer.update(dt);
+      pose.apply(seated === null);
     },
   };
 }

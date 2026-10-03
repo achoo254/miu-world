@@ -360,15 +360,18 @@ async function capture(browser: Browser, shots: Shot[], outDir: string): Promise
   if (errors.length > 0) throw new Error(`page errors: ${errors.join('; ')}`);
 }
 
+/** Pictures taken on one dev server before a fresh one takes over. */
+const SERVER_SHOTS = 20;
+
 /**
  * Serves the web app's preview.html on the fixed port and screenshots each batch into its folder
  * (the folder is emptied first), then re-hashes the manifest. Shared with render-home-island.ts.
  */
 export async function renderShots(batches: Array<{ outDir: string; label: string; shots: () => Promise<Shot[]> }>): Promise<void> {
-  let server: ViteDevServer | undefined;
-  let browser: Browser | undefined;
-  try {
-    server = await createServer({
+  // A fresh dev server every SERVER_SHOTS pictures: past some thirty pages the server stops answering a
+  // page's module requests (connections left stuck by the ones each navigation aborts) and the run hangs.
+  const startServer = async (): Promise<ViteDevServer> => {
+    const server = await createServer({
       root: APP_DIR,
       configFile: path.join(APP_DIR, 'vite.config.ts'),
       // No file watching and no hot reload: content written meanwhile (other work, other agents) must not
@@ -377,18 +380,28 @@ export async function renderShots(batches: Array<{ outDir: string; label: string
       logLevel: 'warn',
     });
     await server.listen();
+    return server;
+  };
+  let browser: Browser | undefined;
+  try {
     browser = await chromium.launch({ args: ['--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist'] });
     // PREVIEW_ONLY=<text>: only the pictures whose file name holds it, the others left as they are.
     const only = process.env.PREVIEW_ONLY;
     for (const batch of batches) {
       if (!only) await rm(batch.outDir, { recursive: true, force: true });
       const shots = (await batch.shots()).filter((s) => !only || s.file.includes(only));
-      await capture(browser, shots, batch.outDir);
+      for (let i = 0; i < shots.length; i += SERVER_SHOTS) {
+        const server = await startServer();
+        try {
+          await capture(browser, shots.slice(i, i + SERVER_SHOTS), batch.outDir);
+        } finally {
+          await server.close();
+        }
+      }
       console.log(`${batch.label}: ${shots.length} images`);
     }
   } finally {
     await browser?.close();
-    await server?.close();
   }
   await writeManifest(); // new screenshots must be re-hashed or the license gate goes red
 }

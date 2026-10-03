@@ -23,6 +23,7 @@ import {
 import type { GameStore } from '../../game-bridge/game-store';
 import { AssetRegistry, GuardedGltfLoader } from '../asset-loader';
 import { dressCharacter, undressCharacter, type WornOutfit } from '../character/character-accessories';
+import { wornPose } from '../character/worn-pose';
 import { withOwnClothes } from '../character/character-clothes';
 import { characterForSpecies } from '../content/characters';
 import { loadPetCompanion, type PetCompanion } from '../entities/pet-companion';
@@ -167,6 +168,7 @@ export class CharacterPreview {
     camera.lookAt(center.x, center.y + height * 0.05, center.z);
 
     const mixer = new AnimationMixer(model);
+    const itemPose = wornPose(model, gltf.animations);
     const clip = (name: string) => gltf.animations.find((a) => a.name === name);
     const idleClip = clip('idle');
     if (!idleClip) throw new Error('character clip idle missing');
@@ -219,6 +221,7 @@ export class CharacterPreview {
       model.updateMatrixWorld(true);
       if (worn) undressCharacter(worn);
       worn = dressCharacter(model, withOwnClothes(entries, character.clothes), accessoryScaler(character), false);
+      itemPose.wear(entries);
       for (const { entry, error } of worn.skipped) console.warn(`skipping outfit entry "${entry}"`, error);
       if (vehicleMesh) {
         vehicleMesh.removeFromParent();
@@ -322,6 +325,7 @@ export class CharacterPreview {
       timer.update();
       const dt = Math.min(timer.getDelta(), 0.1);
       mixer.update(dt);
+      itemPose.apply(playing === idle);
       pet?.tick(dt);
       renderer.render(scene, camera);
       if (!this.stats.ready) {
