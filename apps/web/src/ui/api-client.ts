@@ -53,6 +53,7 @@ const MESSAGES: Record<string, string> = {
   'pin-already-set': 'Mã PIN đã được đặt trước đó.',
   'pin-not-set': 'Cần đặt mã PIN phụ huynh trước.',
   'equipment-locked': 'Món đồ này chưa mở khóa.',
+  'pet-locked': 'Bạn thú cưng này chưa mở khóa.',
   'invalid-equipment': 'Món đồ này không mặc được.',
   'invalid-character-name': 'Hãy chọn tên trong danh sách.',
   'invalid-species': 'Hãy chọn một nhân vật trong danh sách.',

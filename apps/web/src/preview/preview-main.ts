@@ -3,6 +3,7 @@
 // Model shots: ?model=<manifest path>&anim=<clip>&t=<seconds>&yaw=<deg>&pitch=<deg>&size=<px>
 //        &acc=<id[:variant],id[:variant]>&accScale=<node:scale,...>&bg=<css colour | transparent>
 //        (a vehicle among `acc` stands under her, as she rides it)
+//        &pet=<pet id> instead of `model`: that pet's model in its colour variant (content/pets.json)
 // Item shots: ?item=<accessory id>&yaw=…&pitch=…&size=…&bg=… renders one wearable item alone (a pair side by side;
 //        clothes as the default character wears them, without her body).
 // Sets document.body.dataset.ready = '1' once the frame is drawn (or data-error on failure).
@@ -28,20 +29,26 @@ import { createAccessoryMesh, dressCharacter } from '../game/character/character
 import { wornPose } from '../game/character/worn-pose';
 import { resolveOutfitEntry } from '../game/content/accessories';
 import { characterForSpecies, DEFAULT_SPECIES } from '../game/content/characters';
+import { recolorModel } from '../game/entities/pet-recolor';
 import { Game } from '../game/game';
 import { createVehicleMesh, equippedVehicle, rideLift } from '../game/player/vehicle-ride';
+import { PETS } from '../ui/kit/ui-art';
 import '../ui/styles.css';
 import { renderWorldOverview } from './world-overview-shot';
 
 const params = new URLSearchParams(window.location.search);
 const size = Number(params.get('size') ?? 512);
 
-/** The character of `?model=`, dressed in `?acc=` and posed at `?anim=`/`?t=`. */
+/** The character of `?model=` (or the pet of `?pet=`), dressed in `?acc=` and posed at `?anim=`/`?t=`. */
 async function posedCharacter(loader: GuardedGltfLoader): Promise<Object3D> {
-  const modelPath = params.get('model');
+  const petId = params.get('pet');
+  const pet = petId ? PETS.find((p) => p.id === petId) : undefined;
+  if (petId && !pet) throw new Error(`unknown pet ${petId}`);
+  const modelPath = pet?.model ?? params.get('model');
   if (!modelPath) throw new Error('missing ?model=');
   const gltf = await loader.load(modelPath);
   const model: Object3D = gltf.scene;
+  if (pet?.recolor) recolorModel(model, pet.recolor);
   const accScale = new Map(
     (params.get('accScale') ?? '')
       .split(',')

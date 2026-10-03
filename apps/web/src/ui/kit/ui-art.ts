@@ -4,6 +4,7 @@
 import characters from '../../../../../content/characters.json';
 import pets from '../../../../../content/pets.json';
 import regions from '../../../../../content/world/regions.json';
+import type { Pet } from '../../../../../packages/schema/src/pet';
 import { petArtPath } from '../../../../../packages/schema/src/pet-art';
 import { REGION_CHEST_ICON, regionBackdropPath } from '../../../../../packages/schema/src/region-art';
 import { UI_ASSET_VERSIONS, versioned } from '../../asset-versions';
@@ -82,10 +83,11 @@ export const REGION_BACKDROPS: Readonly<Record<string, string>> = Object.fromEnt
 );
 export const REGION_CHEST = REGION_CHEST_ICON;
 
-/** Pets (content/pets.json, validated by `pnpm content:check`): the model the game and the creator load, and its tile picture. */
-export const PETS: ReadonlyArray<{ id: string; name: string; model: string; scale: number; art: string }> = (
-  pets as { pets: Array<{ id: string; name: string; model: string; scale: number }> }
-).pets.map((p) => ({ ...p, art: petArtPath(p.id) }));
+/**
+ * Pets (content/pets.json, validated by `pnpm content:check`): the model the game and the creator load, its
+ * colour variant, the level that opens it, and its tile picture.
+ */
+export const PETS: ReadonlyArray<Pet & { art: string }> = (pets as { pets: Pet[] }).pets.map((p) => ({ ...p, art: petArtPath(p.id) }));
 
 export type UiIcon = keyof typeof UI_ICONS;
 

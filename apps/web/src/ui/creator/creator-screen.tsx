@@ -1,12 +1,13 @@
 // M1.2 (chọn loài) + M1.3 (trang phục, tên, tính cách, xem trước): the Character Creator. Every
 // species in content/species.json is open; every accessory slot has a tab (clothes always worn: the species' own until
 // the child picks others); the "Thú cưng" tab picks
-// a pet (content/pets.json) that follows the character. The 3D preview is its own light renderer; outfit
+// a pet (content/pets.json) that follows the character, locked until its level like the clothes. The 3D preview is its own light renderer; outfit
 // and pet changes reach it as the bridge commands `set-outfit` and `set-pet`.
 import { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { fillPlayerName } from '@miu/quest/player-name';
 import { CharacterDto, CharacterUpdate, ProgressResponse, QuestListResponse } from '@miu/schema/game';
+import { isPetOpen } from '@miu/schema/pet';
 import characterNames from '../../../../../content/names/character-names.json';
 import { createGameStore, type GameStore } from '../../game-bridge/game-store';
 import { GameStoreContext, useGameState } from '../../game-bridge/use-game-state';
@@ -221,14 +222,33 @@ function OutfitStep({
                 Không mang
               </button>
             </li>
-            {PETS.map((p) => (
-              <li key={p.id}>
-                <button type="button" className="item-tile" aria-pressed={pet === p.id} data-id={`creator-pet-${p.id}`} onClick={() => choosePet(p.id)}>
-                  <img className="pet-art" src={assetUrl(p.art)} alt="" width={64} height={64} />
-                  {p.name}
-                </button>
-              </li>
-            ))}
+            {PETS.map((p) => {
+              // The pet she already has stays hers, as the server keeps it.
+              const open = p.id === data.character.pet || isPetOpen(p, data.level);
+              return (
+                <li key={p.id}>
+                  <button
+                    type="button"
+                    className={`item-tile${open ? '' : ' item-tile--locked'}`}
+                    aria-pressed={pet === p.id}
+                    disabled={!open}
+                    data-id={`creator-pet-${p.id}`}
+                    onClick={() => choosePet(p.id)}
+                  >
+                    <span className="item-art-frame" aria-hidden="true">
+                      <img className="item-art" src={assetUrl(p.art)} alt="" width={64} height={64} loading="lazy" />
+                      {open ? null : (
+                        <span className="item-art-lock">
+                          <Icon name="locked" size={28} />
+                        </span>
+                      )}
+                    </span>
+                    {p.name}
+                    {open || !p.unlock ? null : <span className="item-lock">Cần Lv.{p.unlock.level}</span>}
+                  </button>
+                </li>
+              );
+            })}
           </ul>
         ) : (
         <ul className="item-grid" role="tabpanel" aria-label="Món đồ">

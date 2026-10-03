@@ -33,7 +33,7 @@ vi.mock('../../game/preview/character-preview', () => ({
 }));
 
 const puts: unknown[] = [];
-function stubApi({ level = 1, completed = [] as string[] } = {}) {
+function stubApi({ level = 1, completed = [] as string[], pet = null as string | null } = {}) {
   vi.stubGlobal(
     'fetch',
     vi.fn(async (url: string, init?: RequestInit) => {
@@ -43,7 +43,7 @@ function stubApi({ level = 1, completed = [] as string[] } = {}) {
         puts.push(body);
         return json({ species: 'cat', ...body });
       }
-      if (url === '/api/character') return json({ species: 'cat', name: 'Miu', equipped: [], pet: null });
+      if (url === '/api/character') return json({ species: 'cat', name: 'Miu', equipped: [], pet });
       if (url === '/api/progress') {
         return json({
           quests: completed.map((questId) => ({ questId, completedSteps: [], completed: true, found: {}, stars: 3 })),
@@ -54,6 +54,13 @@ function stubApi({ level = 1, completed = [] as string[] } = {}) {
       return json({ error: 'not-found' }, 404);
     }),
   );
+}
+
+/** One item's tile, by id: colour variants share the start of their name ("Vòng hoa", "Vòng hoa bạc hà"). */
+function itemTile(id: string): HTMLButtonElement {
+  const tile = document.querySelector<HTMLButtonElement>(`[data-id="creator-item-${id}"]`);
+  if (!tile) throw new Error(`no tile for ${id}`);
+  return tile;
 }
 
 function renderCreator() {
@@ -126,7 +133,7 @@ describe('Character Creator', () => {
     const night = screen.getByRole('button', { name: /Mũ phù thủy đêm sao/ });
     expect((night as HTMLButtonElement).disabled).toBe(true);
     expect(night.textContent).toContain('Cần Lv.2');
-    expect(screen.getByRole('button', { name: /Vòng hoa/ }).textContent).toContain('Xong “forest-ch1”');
+    expect(itemTile('hat-flower-crown').textContent).toContain('Xong “forest-ch1”');
 
     fireEvent.click(screen.getByRole('tab', { name: 'Balo' }));
     fireEvent.click(screen.getByRole('button', { name: /Balo xanh lá/ }));
@@ -203,6 +210,23 @@ describe('Character Creator', () => {
     renderCreator();
     fireEvent.click(await screen.findByRole('button', { name: /Mèo/ }));
     expect((screen.getByRole('button', { name: /Mũ phù thủy đêm sao/ }) as HTMLButtonElement).disabled).toBe(false);
-    expect((screen.getByRole('button', { name: /Vòng hoa/ }) as HTMLButtonElement).disabled).toBe(false);
+    expect(itemTile('hat-flower-crown').disabled).toBe(false);
+  });
+
+  it('offers fifty pets, locks the ones above the child\'s level, and keeps the one she already has', async () => {
+    stubApi({ level: 2, pet: 'ho-con' });
+    renderCreator();
+    fireEvent.click(await screen.findByRole('button', { name: /Mèo/ }));
+    fireEvent.click(screen.getByRole('tab', { name: 'Thú cưng' }));
+    expect(document.querySelectorAll('[data-id^="creator-pet-"]:not([data-id="creator-pet-none"])')).toHaveLength(50);
+    const tile = (name: string) => screen.getByRole('button', { name: new RegExp(`^${name}`) }) as HTMLButtonElement;
+    expect(tile('Mèo vàng').disabled).toBe(false); // Lv.2, reached
+    expect(tile('Thỏ xám').disabled).toBe(true);
+    expect(tile('Thỏ xám').textContent).toContain('Cần Lv.3');
+    expect(tile('Hổ con').disabled).toBe(false); // Lv.15, but already hers
+    expect(tile('Hổ con').getAttribute('aria-pressed')).toBe('true');
+    expect(tile('Hổ trắng').disabled).toBe(true);
+    fireEvent.click(tile('Mèo trắng'));
+    expect(previews.commands.at(-1)).toEqual({ type: 'set-pet', pet: 'meo-trang' });
   });
 });

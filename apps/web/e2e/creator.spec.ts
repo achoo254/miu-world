@@ -46,7 +46,7 @@ test('a new profile creates its character first, sees outfit changes live, then 
   await page.getByRole('button', { name: /Balo đỏ/ }).click();
   await expect.poll(() => previewOutfit(page)).toEqual(['hat-cap-yellow', 'backpack-red']);
   await expect(page.locator('canvas')).toHaveCount(1);
-  await expect(page.getByRole('button', { name: /Balo chiếc lá/ })).toBeDisabled();
+  await expect(page.locator('[data-id="creator-item-backpack-leaf"]')).toBeDisabled();
   // Shoes are a pair: one item, worn on both feet. Every tile shows the item's picture from the build.
   await page.getByRole('tab', { name: 'Giày' }).click();
   const shoe = page.locator('[data-id="creator-item-shoes-sneaker-blue"]');
@@ -55,11 +55,13 @@ test('a new profile creates its character first, sees outfit changes live, then 
   await expect.poll(() => previewOutfit(page)).toEqual(['hat-cap-yellow', 'backpack-red', 'shoes-sneaker-blue']);
 
   // A pet: it stands beside the character in the same preview (the last pick wins when tapped quickly).
+  // The white kitten is a colour variant of the grey one; the tiger opens at a higher level.
   await page.getByRole('tab', { name: 'Thú cưng' }).click();
+  await expect(page.locator('[data-id="creator-pet-ho-con"]')).toBeDisabled();
   await page.locator('[data-id="creator-pet-gau-truc"]').click();
-  await page.locator('[data-id="creator-pet-cun-con"]').click();
-  await expect(page.locator('[data-id="creator-pet-cun-con"]')).toHaveAttribute('aria-pressed', 'true');
-  await expect.poll(() => page.evaluate(() => window.__miuPreview?.pet ?? null)).toBe('cun-con');
+  await page.locator('[data-id="creator-pet-meo-trang"]').click();
+  await expect(page.locator('[data-id="creator-pet-meo-trang"]')).toHaveAttribute('aria-pressed', 'true');
+  await expect.poll(() => page.evaluate(() => window.__miuPreview?.pet ?? null)).toBe('meo-trang');
   await expect(page.locator('canvas')).toHaveCount(1);
   await page.screenshot({ path: fileURLToPath(new URL('../../../.data/creator/pet-preview.png', import.meta.url)) });
 
@@ -89,8 +91,8 @@ test('a new profile creates its character first, sees outfit changes live, then 
   await expect(page).toHaveURL(/\/play\?/);
   await waitReady(page);
   expect((await readStats(page)).outfit).toEqual(['hat-cap-yellow', 'backpack-red', 'shoes-sneaker-blue']);
-  // The puppy came along: it trots after the character when she walks.
-  expect((await readStats(page)).pet).toBe('cun-con');
+  // The kitten came along: it trots after the character when she walks.
+  expect((await readStats(page)).pet).toBe('meo-trang');
   await page.keyboard.down('KeyW');
   await expect.poll(async () => (await readStats(page)).petClip).toMatch(/walk|run/);
   await page.keyboard.up('KeyW');

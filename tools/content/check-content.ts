@@ -9,7 +9,7 @@ import { playerTextIssues } from '../../packages/quest/src/player-name';
 import { PrivacyDocument, stepTargets, type QuestDefinition } from '../../packages/schema/src/content';
 import { accessoryArtPath } from '../../packages/schema/src/accessory-art';
 import { Item } from '../../packages/schema/src/item';
-import { PetCatalog } from '../../packages/schema/src/pet';
+import { PetCatalog, petArtPath } from '../../packages/schema/src/pet';
 import { BoxPropCatalog, EmojiPropCatalog, LookCatalog, QuestTargetCatalog } from '../../packages/schema/src/world-target';
 import { RegionCatalog, mapForRegion, regionGuides } from '../../packages/schema/src/region';
 import { UI_ICONS } from '../../apps/web/src/ui/kit/ui-art';
@@ -22,6 +22,7 @@ import { CURRICULUM_FOLDERS, checkCurriculum } from './check-curriculum';
 import { percentCovered, sumGaps } from './content-gaps';
 import { varietyIssues } from './content-variety';
 import { checkCurriculumLinks } from './curriculum-links';
+import { modelSwatches } from './pet-swatches';
 import { questSpread } from './quest-spread';
 
 /** Content files the server catalogue reads (a trailing slash means the `.json` files directly in that folder). */
@@ -254,11 +255,28 @@ export function checkAccessories(items: Iterable<AccessoryItem>, questIds: Reado
   return issues;
 }
 
-/** Every pet's model is a licensed file in the asset manifest (the build ships it, the game loads it). */
-export function checkPets(raw: unknown, manifestPaths: ReadonlySet<string>): string[] {
+/**
+ * Every pet's model is a licensed file in the asset manifest (the build ships it, the game loads it), its
+ * picture is rendered (`pnpm assets:pets`), and a colour variant only recolours swatches its model draws with.
+ */
+export function checkPets(
+  raw: unknown,
+  manifestPaths: ReadonlySet<string>,
+  generatedPaths: ReadonlySet<string>,
+  swatchesOf: (model: string) => ReadonlySet<string>,
+): string[] {
   const parsed = PetCatalog.safeParse(raw);
   if (!parsed.success) return [`content/pets.json: ${parsed.error.message}`];
-  return parsed.data.pets.filter((p) => !manifestPaths.has(p.model)).map((p) => `pet ${p.id}: model ${p.model} is not in assets/manifest.json`);
+  return parsed.data.pets.flatMap((p) => {
+    if (!manifestPaths.has(p.model)) return [`pet ${p.id}: model ${p.model} is not in assets/manifest.json`];
+    const issues: string[] = [];
+    if (!generatedPaths.has(petArtPath(p.id))) issues.push(`pet ${p.id}: no picture ${petArtPath(p.id)} (run pnpm assets:pets)`);
+    const drawn = p.recolor ? swatchesOf(p.model) : new Set<string>();
+    for (const swatch of Object.keys(p.recolor ?? {})) {
+      if (!drawn.has(swatch)) issues.push(`pet ${p.id}: recolor names swatch ${swatch}, which ${p.model} never draws with`);
+    }
+    return issues;
+  });
 }
 
 /**
@@ -360,7 +378,14 @@ export function checkContent(dir: string = CONTENT_DIR): ContentReport {
     issues.push(...checkRegions(JSON.parse(readFileSync(path.join(dir, REGIONS_FILE), 'utf8')), catalog.quests.values(), undefined, targetIds));
     if (regions.success) issues.push(...checkRegionMentions(readQuestDefinitions(path.join(dir, 'quests')), regions.data));
     const manifest = JSON.parse(readFileSync(path.join(ASSETS_DIR, 'manifest.json'), 'utf8')) as { files: Array<{ path: string }>; generated: Array<{ path: string }> };
-    issues.push(...checkPets(JSON.parse(readFileSync(path.join(dir, 'pets.json'), 'utf8')), new Set(manifest.files.map((f) => f.path))));
+    const petSwatches = new Map<string, ReadonlySet<string>>();
+    const swatchesOf = (model: string): ReadonlySet<string> => {
+      const known = petSwatches.get(model) ?? modelSwatches(path.join(ASSETS_DIR, model));
+      petSwatches.set(model, known);
+      return known;
+    };
+    const pets: unknown = JSON.parse(readFileSync(path.join(dir, 'pets.json'), 'utf8'));
+    issues.push(...checkPets(pets, new Set(manifest.files.map((f) => f.path)), new Set(manifest.generated.map((f) => f.path)), swatchesOf));
     const read = (rel: string): unknown => JSON.parse(readFileSync(path.join(dir, rel), 'utf8'));
     if (existsSync(path.join(dir, TARGETS_FILE))) {
       issues.push(...checkTargetCatalogues(read(LOOKS_FILE), read(TARGETS_FILE), new Set([...manifest.files, ...manifest.generated].map((f) => f.path))));

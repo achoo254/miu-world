@@ -19,6 +19,12 @@ const content = {
       { id: 'clothes-at-level-2', name: 'Món thử', variantOf: 'clothes-tshirt', variant: 'red', unlock: { level: 2 } },
     ]),
   ]),
+  // Real pets plus two locked test pets (Lv.2 after both fixture quests; Lv.9 out of reach).
+  pets: new Map([
+    ...FIXTURE_CONTENT.pets,
+    ['pet-at-level-2', { id: 'pet-at-level-2', name: 'Bạn thử', model: 'packs/kenney-cube-pets/2.0/animal-cat.glb', scale: 0.5, unlock: { level: 2 } }],
+    ['pet-at-level-9', { id: 'pet-at-level-9', name: 'Bạn thử 9', model: 'packs/kenney-cube-pets/2.0/animal-dog.glb', scale: 0.5, recolor: { tan: 'white' }, unlock: { level: 9 } }],
+  ]),
 };
 
 let app: TestApp;
@@ -133,6 +139,26 @@ describe('PUT /api/character pet', () => {
     expect((await put(agent, {}).expect(200)).body.pet).toBe('cun-con');
     expect((await put(agent, { pet: null }).expect(200)).body.pet).toBeNull();
     expect((await put(agent, { pet: 'rong-lua' }).expect(400)).body.error).toBe('invalid-pet');
+  });
+
+  it('refuses a pet that opens at a higher level, and takes it once the child reaches that level', async () => {
+    const { agent } = await playingChild();
+    await put(agent, { pet: 'pet-at-level-2' }).expect(403, { error: 'pet-locked' });
+    expect((await agent.get('/api/character').expect(200)).body.pet).toBeNull();
+    await finishQuestA(agent);
+    await finishQuestB(agent);
+    expect((await agent.get('/api/progress').expect(200)).body.level).toBe(2);
+    expect((await put(agent, { pet: 'pet-at-level-2' }).expect(200)).body.pet).toBe('pet-at-level-2');
+    await put(agent, { pet: 'pet-at-level-9' }).expect(403, { error: 'pet-locked' });
+  });
+
+  it('keeps a pet the child already has after its rule tightens; once let go it stays locked', async () => {
+    const { agent, childId } = await playingChild();
+    await app.db.update(t.characters).set({ pet: 'pet-at-level-9' }).where(eq(t.characters.childId, childId));
+    expect((await put(agent, { pet: 'pet-at-level-9', equipped: ['hat-witch-pink'] }).expect(200)).body.pet).toBe('pet-at-level-9');
+    expect((await put(agent, {}).expect(200)).body.pet).toBe('pet-at-level-9');
+    await put(agent, { pet: 'cun-con' }).expect(200);
+    await put(agent, { pet: 'pet-at-level-9' }).expect(403, { error: 'pet-locked' });
   });
 });
 

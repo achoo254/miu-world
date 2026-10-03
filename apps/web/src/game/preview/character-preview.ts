@@ -264,7 +264,7 @@ export class CharacterPreview {
       const spec = PETS.find((p) => p.id === petId);
       if (!spec) return;
       // In the preview the pet stands knee-to-waist high next to the character, whatever the model's size.
-      void loadPetCompanion(loader, { model: spec.model, scale: 1 }, false).then((loaded) => {
+      void loadPetCompanion(loader, { model: spec.model, scale: 1, recolor: spec.recolor }, false).then((loaded) => {
         if (this.disposed || request !== petRequest) return disposeSceneGraph(loaded.root);
         const petHeight = new Box3().setFromObject(loaded.root).getSize(new Vector3()).y || 1;
         loaded.root.scale.setScalar((height * PET_HEIGHT) / petHeight);

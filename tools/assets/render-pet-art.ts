@@ -1,5 +1,6 @@
 // Renders each pet's picture for its Character Creator tile from its model (content/pets.json), on a
-// transparent background, in the same three-quarter view as the character portraits. Output:
+// transparent background, in the same three-quarter view as the character portraits; a colour variant is
+// drawn in its own colours (the preview page applies the pet's `recolor`). Output:
 // assets/generated/pets/<id>.png — re-run `pnpm assets:pets` after adding a pet.
 import path from 'node:path';
 import { readFile } from 'node:fs/promises';
@@ -12,7 +13,7 @@ export async function petShots(): Promise<Shot[]> {
   const { pets } = PetCatalog.parse(JSON.parse(await readFile(path.join(REPO_ROOT, 'content/pets.json'), 'utf8')));
   return pets.map((pet) => ({
     file: path.basename(petArtPath(pet.id)),
-    query: { model: pet.model, anim: 'idle', t: 0, yaw: 35, pitch: 14, size: 256, bg: 'transparent' },
+    query: { pet: pet.id, anim: 'idle', t: 0, yaw: 35, pitch: 14, size: 256, bg: 'transparent' },
     transparent: true,
   }));
 }

@@ -106,7 +106,8 @@ describe('content:check', () => {
     const catalog = loadContentCatalog();
     const art = new Set([...catalog.accessories.keys()].map((id) => `generated/accessories/${id}.png`));
     expect(checkAccessories(catalog.accessories.values(), new Set(catalog.quests.keys()), art)).toEqual([]);
-    const fewerShoes = [...catalog.accessories.values()].filter((item, i) => item.slot !== 'shoes' || i % 2 === 0 || item.unlock);
+    let openShoes = 0;
+    const fewerShoes = [...catalog.accessories.values()].filter((item) => item.slot !== 'shoes' || item.unlock || openShoes++ < 5);
     expect(checkAccessories(fewerShoes, new Set(catalog.quests.keys()), art)).toEqual([expect.stringMatching(/^accessory slot shoes offers \d+ items from level 1, needs at least 20$/)]);
   });
 

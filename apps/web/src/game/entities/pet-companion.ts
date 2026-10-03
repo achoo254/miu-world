@@ -1,15 +1,18 @@
 // The child's pet (Jev review decision "pets"): a little Kenney Cube Pet picked in the Character Creator
 // (content/pets.json) that trots after the character, a step behind and to the side, walking or running
 // to keep up, standing still when she does, and dancing when the world cheers a finished quest. Baked
-// into one skinned mesh (one draw call). Left far behind (a rescue, a jump down a cliff) it catches up at
-// once. The same companion stands beside the character in the creator preview.
+// into one skinned mesh (one draw call); a colour variant (`recolor`) only moves its texture coordinates.
+// Left far behind (a rescue, a jump down a cliff) it catches up at once. The same companion stands beside
+// the character in the creator preview.
 import { AnimationMixer, Group, Object3D, type AnimationAction } from 'three';
 import { mergeParts } from '../ambient/merge-parts';
 import type { GuardedGltfLoader } from '../asset-loader';
+import { recolorModel, type PetRecolor } from './pet-recolor';
 
 export interface PetSpec {
   model: string;
   scale: number;
+  recolor?: PetRecolor;
 }
 
 export interface PetCompanion {
@@ -37,7 +40,10 @@ const FADE = 0.2;
 
 export async function loadPetCompanion(loader: GuardedGltfLoader, spec: PetSpec, shadows: boolean): Promise<PetCompanion> {
   const gltf = await loader.load(spec.model);
-  const model = gltf.scene;
+  // Its own copy: the loader hands every pet of this model the same parsed scene (two variants, or the
+  // same pet picked again in the creator after the first was disposed).
+  const model = gltf.scene.clone(true);
+  if (spec.recolor) recolorModel(model, spec.recolor);
   model.scale.setScalar(spec.scale);
   const root = new Group();
   root.name = 'pet';
