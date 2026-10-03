@@ -14,7 +14,7 @@
 // (d-07). Round the town: the north street of shophouses, hamlets of cottages, vegetable plots, woods, a
 // footbridge over the canal; every place on one network of ways from the bus station.
 // Output: assets/generated/world/cho-phien/{regions/, horizon.bin, entities.json}
-import { PACK, runIfMain, smoothstep } from './map-kit';
+import { PACK, runIfMain } from './map-kit';
 import { bambooHedge, cottagePalette, cottageRow, flowerBed, jetty, laneVerge } from './scenery';
 import { placeHouse } from './structures/buildings';
 import { bunting, marketStall, originFor, shophouse, STALL, streetLamp, type Awning, type Goods, type StallPlace } from './structures/cho-phien-market';
@@ -110,16 +110,6 @@ const ROUTES: Point[][] = [
 const SPAWN = { x: ROAD_X.gate, z: 262 };
 /** Kept clear round the spawn and the gate back to the school (the builder puts it at spawn + (7, 3)). */
 const SPAWN_YARD = { x0: 208, z0: 254, x1: 240, z1: 276 };
-
-/** Level ground for the town and its hamlets (the outskirts roll). */
-const FLAT = [
-  { x0: 24, z0: 252, x1: 776, z1: 458 },
-  { x0: 24, z0: 144, x1: 776, z1: 186 },
-  { x0: 24, z0: 486, x1: 776, z1: 540 },
-  { x0: 24, z0: 624, x1: 776, z1: 668 },
-];
-const flatness = (x: number, z: number): number =>
-  Math.max(...FLAT.map((r) => 1 - smoothstep(0, 8, Math.hypot(Math.max(0, r.x0 - x, x - r.x1), Math.max(0, r.z0 - z, z - r.z1)))));
 
 const N = PACK.nature;
 const BOX = PACK.box;
@@ -268,10 +258,6 @@ export async function generateChoPhien() {
     soil: { grass: 'grass-market', path: 'cobble' },
     zones: ZONES,
     spawn: { x: SPAWN.x, z: SPAWN.z, yaw: 0 },
-    shape: (x, z, h) => {
-      const k = flatness(x, z);
-      return h * (1 - k) + 12 * k;
-    },
     water: { level: WATER_LEVEL, covers: inWater },
     pathsFromSpawn: false,
     routes: ROUTES,

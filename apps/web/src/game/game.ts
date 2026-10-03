@@ -31,6 +31,10 @@ import { createReviewShot, parseViewShot } from './debug/review-shots';
 import { StatsOverlay } from './debug/stats-overlay';
 import { loadInteractables, namedForPlayer, pickNearest, type InteractableObject } from './entities/interactables';
 import { createTargetArrow } from './entities/target-arrow';
+import { createMinimap } from './hud/minimap';
+import { minimapMarkers } from './hud/minimap-model';
+import { fillPlayerName } from '@miu/quest/player-name';
+import { HOME_REGION } from '../ui/region/regions';
 import { DEFAULT_SPECIES } from './content/characters';
 import { loadPlayerCharacter } from './entities/player-character';
 import { loadPetCompanion } from './entities/pet-companion';
@@ -71,7 +75,7 @@ const STICK_TURN = 0.45;
 
 export interface GameOptions {
   store: GameStore;
-  /** Query string with dev/review switches: quality, stats, autopilot, spawnAt (`npc`, a target id, `x,y,z`, or `spawn` for the map's spawn point), face (camera yaw in degrees), shot, outfit, life (`0`: no villagers or animals). */
+  /** Query string with dev/review switches: quality, stats, autopilot, spawnAt (`npc`, a target id, `x,y,z`, or `spawn` for the map's spawn point), face (camera yaw in degrees), shot, outfit, life (`0`: no villagers or animals), decor (`slot:option,…`: the home in other styles), minimap (`1`: kept in review shots). */
   search: string;
   /** Equipped accessory ids (`id` or `id:variant`), normally from `GET /api/character`. */
   outfit: string[];
@@ -89,6 +93,8 @@ export interface GameOptions {
   pet?: string | null;
   /** Where the child last stood on this map (`GET /api/player-positions`); the spawn point when absent or no longer open ground. */
   savedSpot?: Pick<PlayerPosition, 'position' | 'facing'> | null;
+  /** The child's picks for her home (`GET /api/home-decor`): the map's restyled pieces as she chose them. */
+  decor?: Readonly<Record<string, string>>;
 }
 
 /** Bytes downloaded so far (compressed transfer size, falling back to body size for cache hits). */
@@ -139,6 +145,17 @@ function buildDom(host: HTMLElement) {
 }
 
 const REGION_CATALOG = RegionCatalog.parse(regionsJson);
+
+/**
+ * Dev/review switch `decor=slot:option,…`: the child's home in other styles without a saved pick (the review
+ * page's shots of the decorating). Undefined when absent.
+ */
+export function decorFromSearch(params: URLSearchParams): Record<string, string> | undefined {
+  const raw = params.get('decor');
+  if (!raw) return undefined;
+  const picks = raw.split(',').map((pair) => pair.split(':'));
+  return Object.fromEntries(picks.filter((p): p is [string, string] => p.length === 2 && /^[a-z0-9-]+$/.test(p[0] ?? '') && /^[a-z0-9-]+$/.test(p[1] ?? '')));
+}
 
 /** The surprises a region plays (content/world/regions.json `events`); none for a region without any. */
 function regionEvents(region: string | undefined): readonly WorldEventKind[] {
@@ -277,7 +294,7 @@ export class Game {
     const mapId = mapForRegion(REGION_CATALOG, this.options.region ?? '');
     // A still picture of the whole core (a review shot without `view=`) needs no outer land round it.
     const wholeCoreShot = params.has('shot') && !(Number(params.get('view')) > 0);
-    const data = await loadWorldData(registry, mapId, { withOutland: !wholeCoreShot });
+    const data = await loadWorldData(registry, mapId, { withOutland: !wholeCoreShot, decor: this.options.decor ?? decorFromSearch(params) });
     this.cleanups.push(() => data.regions.dispose());
     if (this.disposed) return;
     stepLoaded();
@@ -397,6 +414,21 @@ export class Game {
     props.buildAround(start[0] ?? 0, start[2] ?? 0);
     this.cleanups.push(() => props.dispose());
     scene.add(character.root, props.group, life.group, confetti.mesh, ...targets.map((t) => t.root));
+    // The minimap (top right, under the menu): the map from above, its gates, the child's home on her map.
+    const playerName = this.options.playerName ?? 'bạn';
+    const regionName = (id: string): string | undefined => {
+      const name = REGION_CATALOG.regions.find((r) => r.id === id)?.name;
+      return name === undefined ? undefined : fillPlayerName(name, playerName);
+    };
+    const minimap = createMinimap(dom.root, {
+      atlas: data.atlas,
+      atlasImage: (data.atlasTexture.image as CanvasImageSource | null) ?? null,
+      horizon: data.horizon,
+      size: [data.entities.size[0], data.entities.size[2]],
+      markers: minimapMarkers(entities, { regionName, homeName: mapId === mapForRegion(REGION_CATALOG, HOME_REGION) ? regionName(HOME_REGION) : undefined }),
+      lite: quality.level === 'low',
+    });
+    this.cleanups.push(() => minimap.dispose());
     overlay.stats.outfit = character.outfit;
 
     const liquid = (x: number, y: number, z: number): boolean => blocks(data.world.get(x, y, z))?.liquid ?? false;
@@ -476,7 +508,8 @@ export class Game {
       // past it is cut away and the clear colour shows through).
       reviewShot.apply(camera);
       sky.scale.setScalar((camera.far * 0.95) / (quality.viewDistance + 20));
-      for (const el of [dom.stats, dom.joystick, dom.run.parentElement]) if (el) el.hidden = true;
+      // `minimap=1` (review switch): the minimap stays in the picture.
+      for (const el of [dom.stats, dom.joystick, dom.run.parentElement, ...(params.get('minimap') === '1' ? [] : [minimap.root])]) if (el) el.hidden = true;
       if (reviewShot.backdrop) {
         sky.visible = false;
         character.root.visible = false;
@@ -665,6 +698,8 @@ export class Game {
 
       for (const target of targets) target.update(dt, controller.position, camera.position);
       arrow.update(dt, controller.position, hint?.available ? hint.def : null);
+      const questPlace = hint?.available ? hint.def.position : null;
+      minimap.update(dt, { x: controller.position.x, z: controller.position.z, facing: controller.facing }, questPlace ? { x: questPlace[0], z: questPlace[2] } : null);
       store.emit({ type: 'autowalk-available', available: hint?.available === true });
       overlay.stats.hintTarget = arrow.showing ? (hint?.def.id ?? null) : null;
       const nearest = pickNearest(targets, controller.position);

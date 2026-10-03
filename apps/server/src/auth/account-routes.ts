@@ -7,6 +7,7 @@ import {
   characters,
   childProfiles,
   consents,
+  homeDecor,
   inventoryItems,
   playerPositions,
   parents,
@@ -39,7 +40,7 @@ async function buildExport(db: Db, parent: typeof parents.$inferSelect, now: Dat
   const profiles = await db.select().from(childProfiles).where(eq(childProfiles.parentId, parent.id)).orderBy(childProfiles.createdAt);
   const ids = profiles.map((p) => p.id);
   const ofChildren = <T extends { childId: string }>(rows: Promise<T[]>) => (ids.length ? rows : Promise.resolve([] as T[]));
-  const [consentRows, sessionRows, characterRows, questRows, counterRows, rewardRows, itemRows, skillRows, positionRows, timetableRows] = await Promise.all([
+  const [consentRows, sessionRows, characterRows, questRows, counterRows, rewardRows, itemRows, skillRows, positionRows, timetableRows, decorRows] = await Promise.all([
     db.select().from(consents).where(eq(consents.parentId, parent.id)).orderBy(consents.acceptedAt),
     db.select().from(sessions).where(eq(sessions.parentId, parent.id)).orderBy(sessions.createdAt),
     ofChildren(db.select().from(characters).where(inArray(characters.childId, ids))),
@@ -50,6 +51,7 @@ async function buildExport(db: Db, parent: typeof parents.$inferSelect, now: Dat
     ofChildren(db.select().from(skillProgress).where(inArray(skillProgress.childId, ids))),
     ofChildren(db.select().from(playerPositions).where(inArray(playerPositions.childId, ids))),
     ofChildren(db.select().from(timetables).where(inArray(timetables.childId, ids))),
+    ofChildren(db.select().from(homeDecor).where(inArray(homeDecor.childId, ids))),
   ]);
   const quests = byChild(questRows);
   const counters = byChild(counterRows);
@@ -82,6 +84,7 @@ async function buildExport(db: Db, parent: typeof parents.$inferSelect, now: Dat
         skills: (skills.get(p.id) ?? []).map(({ skillId, xp }) => ({ skillId, xp })),
         positions: (positions.get(p.id) ?? []).map((r) => ({ map: r.mapId, position: [r.x, r.y, r.z], facing: r.facing, updatedAt: iso(r.updatedAt) })),
         timetable: timetableRows.find((r) => r.childId === p.id)?.timetable ?? null,
+        homeDecor: decorRows.find((r) => r.childId === p.id)?.choices ?? null,
       };
     }),
   };

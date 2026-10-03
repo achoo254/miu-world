@@ -190,7 +190,7 @@ export async function generateDaoBiAn() {
     // theme, fishing villages and ferries; the sea at the map's edge carries on into its lakes and rivers.
     outland: 'river',
     soil: { grass: 'grass-island', path: 'trail' },
-    ground: { ground: LEVEL, roll: 3 },
+    ground: { ground: LEVEL },
     zones: ZONES,
     spawn: { x: SPAWN.x, z: SPAWN.z, yaw: 180 },
     shape: shapeIsland,

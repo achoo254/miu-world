@@ -471,7 +471,8 @@ export async function generateLangVenSong() {
       for (const dz of [5, 8, 11]) {
         for (const dx of [-7, -4, 4, 7]) {
           ctx.centredAt(SQ.desk, [doorX + dx + 0.5, classroom.floorY, school.z0 + dz + 0.5], 180);
-          ctx.centredAt(SQ.chair, [doorX + dx + 0.5, classroom.floorY, school.z0 + dz - 0.5], 180);
+          // The pupil's chair behind the desk, facing it and the board (the pack's chair faces its +z).
+          ctx.centredAt(SQ.chair, [doorX + dx + 0.5, classroom.floorY, school.z0 + dz - 0.5], 0);
         }
       }
       ctx.centredAt(SQ.desk, [doorX + 6.5, classroom.floorY, boardZ - 1.5], 0);

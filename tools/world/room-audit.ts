@@ -14,6 +14,8 @@ import { insertRegion } from '../../packages/voxel/src/region-format';
 import { ASSETS_DIR, REPO_ROOT } from '../assets/asset-lib';
 import { propCells } from './prop-cells';
 import { walkSolid } from './walkable';
+import { everyDecorProp } from '../../packages/voxel/src/home-decor';
+import type { WorldEntities } from '../../packages/voxel/src/world-entities';
 
 /**
  * What a house should give the child (blocks): a doorway this wide, a climb onto the floor this low, this share
@@ -43,7 +45,7 @@ const SIDES = [[1, 0], [-1, 0], [0, 1], [0, -1]] as const;
 
 export async function auditRooms(map: string): Promise<RoomReport[]> {
   const dir = path.join(ASSETS_DIR, 'generated/world', map);
-  const e = JSON.parse(await readFile(path.join(dir, 'entities.json'), 'utf8')) as { size: [number, number, number]; props: Array<{ model: string; position: [number, number, number]; yaw: number; scale: number }> };
+  const e = JSON.parse(await readFile(path.join(dir, 'entities.json'), 'utf8')) as WorldEntities;
   const [SX, SY, SZ] = e.size;
   const world = new VoxelWorld([SX / 16, SY / 16, SZ / 16]);
   for (const f of await readdir(path.join(dir, 'regions'))) {
@@ -51,7 +53,8 @@ export async function auditRooms(map: string): Promise<RoomReport[]> {
     if (m) insertRegion(world, Number(m[1]), Number(m[2]), new Uint8Array(await readFile(path.join(dir, 'regions', f))));
   }
   const isSolid = await walkSolid();
-  const props = await propCells(e.props);
+  // The child's home with every style she may pick standing at once: no pick may crowd a room or block a door.
+  const props = await propCells(everyDecorProp(e));
   const B = (x: number, y: number, z: number): boolean => x >= 0 && z >= 0 && x < SX && z < SZ && y >= 0 && y < SY && isSolid(world.get(x, y, z));
   // Feet in water is no floor: the shallows under a pier or a bridge deck are not a room.
   const table = blockTableSchema.parse(JSON.parse(await readFile(path.join(REPO_ROOT, 'content/blocks.json'), 'utf8')));

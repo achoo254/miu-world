@@ -308,7 +308,7 @@ export async function generateNuiTuyet(): Promise<{ world: VoxelWorld; entities:
     // The castle theme's land is the hilliest, rock showing high on it: the mountains carry on past the edge.
     outland: 'castle',
     soil: { grass: 'grass-snow', path: 'cobble-grey' },
-    ground: { ground: LEVEL, roll: 3 },
+    ground: { ground: LEVEL },
     zones: ZONES,
     spawn: { x: SPAWN.x, z: SPAWN.z, yaw: 180 },
     shape: shapeLand,
@@ -1076,13 +1076,13 @@ function buildSnowMountain(ctx: ZoneMapContext): void {
     ctx.landmark('lau-dai-tuyet', 'Lâu đài trên núi tuyết', cx, walls.z1 + 4, surface(cx, walls.z1 + 4) + 1);
   }
   // The stone stair up the range's west edge from the summit trail, a block a step (cut into the rock where
-  // the range is steeper), to the road along its top to the castle.
+  // the range is steeper), to the road along its top to the castle: it only climbs, a dip in the rock is filled.
   {
     const [roadX] = RANGE_ROAD[0] ?? [STAIR.x0];
     let y = surface(STAIR.x0 - 2, STAIR.z);
     for (let x = STAIR.x0; x <= roadX + 2; x++) {
       const natural = surface(x, STAIR.z);
-      y = Math.max(y - 1, Math.min(y + 1, natural));
+      y = Math.max(y, Math.min(y + 1, natural));
       for (let z = STAIR.z - 1; z <= STAIR.z + 1; z++) {
         for (let yy = surface(x, z) + 1; yy < y; yy++) put(world, x, yy, z, rock(x, yy, z));
         put(world, x, y, z, B.path);

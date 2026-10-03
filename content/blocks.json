@@ -60,7 +60,14 @@
     "grass-hub-top": { "file": "grass_top.png", "tint": "grass-hub", "strength": 0.85 },
     "grass-hub-side": { "file": "dirt_grass.png", "tint": "grass-hub", "strength": 0.5 },
     "grass-home-top": { "file": "grass_top.png", "tint": "grass-home", "strength": 0.85 },
-    "grass-home-side": { "file": "dirt_grass.png", "tint": "grass-home", "strength": 0.5 }
+    "grass-home-side": { "file": "dirt_grass.png", "tint": "grass-home", "strength": 0.5 },
+    "plaster": { "file": "snow.png", "tint": "plaster", "strength": 0.7 },
+    "plaster-yellow": { "file": "snow.png", "tint": "plaster-yellow", "strength": 0.6 },
+    "plaster-blue": { "file": "snow.png", "tint": "plaster-blue", "strength": 0.6 },
+    "wallpaper-pink": { "file": "cotton_tan.png", "tint": "wallpaper-pink", "strength": 0.7 },
+    "roof-green": { "file": "brick_red.png", "tint": "roof-green", "strength": 0.8 },
+    "roof-purple": { "file": "brick_red.png", "tint": "roof-purple", "strength": 0.8 },
+    "roof-brown": { "file": "brick_red.png", "tint": "roof-brown", "strength": 0.62 }
   },
   "blocks": [
     { "id": 1, "name": "grass", "top": "grass-top", "side": "grass-side", "bottom": "dirt" },
@@ -108,6 +115,13 @@
     { "id": 43, "name": "lava", "top": "lava", "side": "lava", "bottom": "lava", "glow": true },
     { "id": 44, "name": "crystal", "top": "crystal", "side": "crystal", "bottom": "crystal", "glow": true },
     { "id": 45, "name": "grass-hub", "top": "grass-hub-top", "side": "grass-hub-side", "bottom": "dirt" },
-    { "id": 46, "name": "grass-home", "top": "grass-home-top", "side": "grass-home-side", "bottom": "dirt" }
+    { "id": 46, "name": "grass-home", "top": "grass-home-top", "side": "grass-home-side", "bottom": "dirt" },
+    { "id": 47, "name": "plaster", "top": "plaster", "side": "plaster", "bottom": "plaster" },
+    { "id": 48, "name": "plaster-yellow", "top": "plaster-yellow", "side": "plaster-yellow", "bottom": "plaster-yellow" },
+    { "id": 49, "name": "plaster-blue", "top": "plaster-blue", "side": "plaster-blue", "bottom": "plaster-blue" },
+    { "id": 50, "name": "wallpaper-pink", "top": "wallpaper-pink", "side": "wallpaper-pink", "bottom": "wallpaper-pink" },
+    { "id": 51, "name": "roof-green", "top": "roof-green", "side": "roof-green", "bottom": "roof-green" },
+    { "id": 52, "name": "roof-purple", "top": "roof-purple", "side": "roof-purple", "bottom": "roof-purple" },
+    { "id": 53, "name": "roof-brown", "top": "roof-brown", "side": "roof-brown", "bottom": "roof-brown" }
   ]
 }

@@ -75,6 +75,8 @@ interface Mood {
   horizon: Color;
   hemisphere: number;
   sun: number;
+  /** The colour the lights take on (lamplight's gold); the day's white when absent. */
+  light?: Color;
 }
 
 const between = ([a, b]: readonly [number, number], random: () => number): number => a + (b - a) * random();
@@ -85,10 +87,16 @@ const envelope = (t: number, from: number, to: number, fade: number): number =>
 
 const RAIN_MOOD = { top: new Color('#8ea3b8'), horizon: new Color('#cfd6de'), hemisphere: 0.75, sun: 0.45 };
 const DUSK_MOOD = { top: new Color('#3f4386'), horizon: new Color('#ffad7a'), hemisphere: 0.45, sun: 0.3 };
-/** A moonlit night (the island's night forest, d-13) and the dim inside of a cave or a temple (d-08, d-09). */
+/**
+ * A moonlit night (the island's night forest, d-13), the dim inside of a cave or a temple (d-08, d-09), the
+ * child's home lit by its lamps (warm gold, a little dimmer than day so the lanterns glow) and the golden late
+ * afternoon round it (the mock's warm light, panel 1).
+ */
 const PLACE_MOOD: Readonly<Record<PlaceMood, Mood>> = {
   night: { top: new Color('#0d1440'), horizon: new Color('#28366e'), hemisphere: 0.32, sun: 0.1 },
   cave: { top: new Color('#1b2233'), horizon: new Color('#2b3346'), hemisphere: 0.3, sun: 0.12 },
+  warm: { top: new Color('#f3c58e'), horizon: new Color('#ffd9a6'), hemisphere: 0.82, sun: 0.6, light: new Color('#ffd9a8') },
+  golden: { top: new Color('#8fc2f5'), horizon: new Color('#ffe0b0'), hemisphere: 1, sun: 1, light: new Color('#fff0d6') },
 };
 /** How fast a place's light eases in and out as the child walks in or out (weight per second). */
 const PLACE_EASE = 1.2;
@@ -206,6 +214,7 @@ function createFireflies(): { points: Points; colours: BufferAttribute; position
 export function createWorldEvents(kinds: readonly WorldEventKind[], ctx: WorldEventContext, random: () => number = Math.random): WorldEvents {
   const day: Mood = { top: ctx.skyColours.top.clone(), horizon: ctx.skyColours.horizon.clone(), hemisphere: ctx.hemisphere.intensity, sun: ctx.sun.intensity };
   const dayFog = ctx.fog.color.clone();
+  const dayLight = { sky: ctx.hemisphere.color.clone(), sun: ctx.sun.color.clone() };
   const rain = createRain();
   const rainbow = createRainbow();
   const fireflies = createFireflies();
@@ -227,6 +236,12 @@ export function createWorldEvents(kinds: readonly WorldEventKind[], ctx: WorldEv
     ctx.fog.color.copy(dayFog).lerp(mood.horizon, w);
     ctx.hemisphere.intensity = day.hemisphere + (mood.hemisphere * day.hemisphere - day.hemisphere) * w;
     ctx.sun.intensity = day.sun + (mood.sun * day.sun - day.sun) * w;
+    ctx.hemisphere.color.copy(dayLight.sky);
+    ctx.sun.color.copy(dayLight.sun);
+    if (mood.light) {
+      ctx.hemisphere.color.lerp(mood.light, w);
+      ctx.sun.color.lerp(mood.light, w);
+    }
   };
   const finish = (): void => {
     tint(RAIN_MOOD, 0);

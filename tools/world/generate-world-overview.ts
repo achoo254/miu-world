@@ -66,10 +66,10 @@ const ISLANDS = [
   { region: 'lang-ven-song', across: -59, away: 85, radius: 9, top: 18, depth: 10, lift: 4 },
   { region: 'nong-trai', across: 56, away: 76, radius: 9, top: 24, depth: 10, lift: 2 },
   { region: 'nui-tuyet', across: 66, away: 160, radius: 8, top: 22, depth: 10, lift: 16 },
-  { region: 'nha-cua-be', across: 9, away: 38, radius: 8, top: 19, depth: 10, lift: 5 },
-  { region: 'dao-bi-an', across: 52, away: 66, radius: 6, top: 15, depth: 8, lift: -7 },
+  { region: 'nha-cua-be', across: 12, away: 38, radius: 8, top: 19, depth: 10, lift: 5 },
+  { region: 'dao-bi-an', across: 57, away: 66, radius: 6, top: 15, depth: 8, lift: -7 },
   // The school mirrors the mystery island on the near left: the one place of the label grid left free.
-  { region: 'truong-hoc', across: -31, away: 55, radius: 7, top: 15, depth: 9, lift: 0 },
+  { region: 'truong-hoc', across: -33, away: 55, radius: 7, top: 15, depth: 9, lift: 0 },
 ].map((island) => ({ ...island, x: Math.round((island.away - island.across) / 2), z: Math.round((island.away + island.across) / 2) }));
 
 /** Things on the overview the Home stage animates on top of the render: each waterfall's top and foot (world blocks). */

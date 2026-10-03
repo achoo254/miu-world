@@ -374,11 +374,12 @@ export async function generateTrungTam() {
     // The land round the hub: hills and lookouts toward the mountains behind the castle (d-01's backdrop).
     outland: 'castle',
     soil: { grass: 'grass-hub', path: 'cobble' },
-    ground: { ground: GROUND, roll: 3 },
+    ground: { ground: GROUND },
     zones: ZONES,
     spawn: { x: SPAWN.x, z: SPAWN.z, yaw: 0 },
     shape: shapeLand,
-    water: { level: WATER_LEVEL, covers: inWater },
+    // The canal is stone-edged through the paving: its banks stay level to the water; the harbour has its shore.
+    water: { level: WATER_LEVEL, covers: inWater, quay: (x, z) => canalDistance(x, z) < CANAL.width + 3 },
     routes: ROUTES,
     pathsFromSpawn: false,
     // Each gate is the trigger just behind its arch, with no model of its own: the glowing pane is what the child sees.

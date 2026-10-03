@@ -6,6 +6,7 @@
 // where it may not walk yet.
 import { NearestFilter, LinearMipmapLinearFilter, SRGBColorSpace, TextureLoader, type Texture } from 'three';
 import { atlasSchema, type Atlas } from '@miu/voxel/block-table';
+import { decorated, recolourArea, recolourHorizon, type DecorPicks } from '@miu/voxel/home-decor';
 import { VoxelWorld } from '@miu/voxel/chunk-format';
 import { OUTLAND_BOUNDS, type WorldBounds } from '@miu/voxel/outland';
 import { outlandEntities } from '@miu/voxel/outland-life';
@@ -114,9 +115,10 @@ function regionDistance(rx: number, rz: number, x: number, z: number): number {
 
 /**
  * `withOutland` false: only the core is loaded, even on a map with outer land (still pictures of the whole
- * core, which have no child walking away from it).
+ * core, which have no child walking away from it). `decor`: the child's picks for her home (home-decor.ts),
+ * whose props stand in place of the map's own and whose colours are painted on each region as it arrives.
  */
-export async function loadWorldData(registry: AssetRegistry, mapId: string, options: { withOutland?: boolean } = {}): Promise<WorldData> {
+export async function loadWorldData(registry: AssetRegistry, mapId: string, options: { withOutland?: boolean; decor?: DecorPicks } = {}): Promise<WorldData> {
   const base = `generated/world/${mapId}`;
   const [entitiesRes, horizonRes, atlasRes] = await Promise.all([
     fetchChecked(registry, `${base}/entities.json`),
@@ -127,7 +129,7 @@ export async function loadWorldData(registry: AssetRegistry, mapId: string, opti
   const horizonBytes = new Uint8Array(await horizonRes.arrayBuffer());
   const atlasText = await atlasRes.text();
   const atlas = atlasSchema.parse(JSON.parse(atlasText));
-  const parsed = worldEntitiesSchema.parse(JSON.parse(entitiesText));
+  const { entities: parsed, recolours } = decorated(worldEntitiesSchema.parse(JSON.parse(entitiesText)), options.decor ?? {});
   const loader = new TextureLoader(registry.createLoadingManager());
   const atlasTexture = await loader.loadAsync(registry.url('generated/atlas/atlas.png'));
   atlasTexture.colorSpace = SRGBColorSpace;
@@ -206,6 +208,7 @@ export async function loadWorldData(registry: AssetRegistry, mapId: string, opti
             .then((region) => {
               pending.delete(key);
               if (disposed) return resolve();
+              if (recolours.length > 0 && inCoreRegions(rx, rz)) recolourArea(region, [rx * REGION_BLOCKS, 0, rz * REGION_BLOCKS], region.size, recolours);
               world.setRegion(rx, rz, region);
               for (const listener of listeners) listener(rx, rz, region);
               resolve();
@@ -267,5 +270,7 @@ export async function loadWorldData(registry: AssetRegistry, mapId: string, opti
     for (let rx = 0; rx < coreRx; rx++) regionUrls[`${rx},${rz}`] = new URL(registry.url(`${base}/${regionFile(rx, rz)}`), location.href).href;
   }
   const route: RouteServiceInit = { builder: init, bounds, regionUrls, blocks: atlas.blocks };
-  return { world, core, bounds, entities, outland, atlas, atlasTexture, horizon: decodeHorizon(horizonBytes), regions, route, bytes: () => bytes };
+  const horizon = decodeHorizon(horizonBytes);
+  recolourHorizon(horizon, recolours);
+  return { world, core, bounds, entities, outland, atlas, atlasTexture, horizon, regions, route, bytes: () => bytes };
 }

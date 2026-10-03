@@ -26,14 +26,15 @@ function playApi(character: () => Response = () => json({ species: 'cat', name: 
 const json = (body: unknown, status = 200) => new Response(JSON.stringify(body), { status });
 
 // jsdom has no WebGL; the runtime itself is covered by Playwright. Here: lifecycle under StrictMode.
-const games = vi.hoisted(() => ({ live: 0, started: 0, stops: 0, resumes: 0, savedSpot: undefined as unknown, spot: null as unknown, store: null as GameStore | null }));
+const games = vi.hoisted(() => ({ live: 0, started: 0, stops: 0, resumes: 0, savedSpot: undefined as unknown, decor: undefined as unknown, spot: null as unknown, store: null as GameStore | null }));
 vi.mock('../../game/game', () => ({
   Game: class {
     private alive = true;
     private readonly options: { store: GameStore };
-    constructor(_host: HTMLElement, options: { store: GameStore; savedSpot?: unknown }) {
+    constructor(_host: HTMLElement, options: { store: GameStore; savedSpot?: unknown; decor?: unknown }) {
       this.options = options;
       games.savedSpot = options.savedSpot;
+      games.decor = options.decor;
       games.store = options.store;
     }
     currentSpot() {
@@ -148,6 +149,48 @@ describe('PlayScreen under React StrictMode', () => {
 
     touch('nha-lich-dong-phuc');
     expect(screen.getByRole('dialog', { name: 'Lịch mặc đồng phục' })).toBeTruthy();
+  });
+
+  it("builds the child's home in her picks, opens the decorating screen from the notebook and rebuilds where she stands", async () => {
+    const atHome = questList(1);
+    const first = atHome.quests[0];
+    if (!first) throw new Error('no fixture quest');
+    const home = { ...atHome, quests: [{ ...first, quest: { ...first.quest, id: 'nha-cua-be-ch1', region: 'nha-cua-be' } }] };
+    let picks: Record<string, string> = { bed: 'bed-pink', rug: 'rug-cat' };
+    const base = playApi();
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async (url: string, init?: RequestInit) => {
+        if (url === '/api/quests') return json(home);
+        if (url === '/api/home-decor' && init?.method === 'PUT') {
+          picks = { ...picks, ...(JSON.parse(String(init.body)) as { choices: Record<string, string> }).choices };
+          return json({ choices: picks });
+        }
+        if (url === '/api/home-decor') return json({ choices: picks });
+        return base(url, init);
+      }),
+    );
+    games.store = null;
+    render(
+      <MemoryRouter>
+        <AccountProvider>
+          <PlayScreen />
+        </AccountProvider>
+      </MemoryRouter>,
+    );
+    await vi.waitFor(() => expect(games.store).not.toBeNull());
+    expect(games.decor).toEqual({ bed: 'bed-pink', rug: 'rug-cat' });
+    const started = games.started;
+    games.spot = { map: 'nha-cua-be', position: [81, 13, 66], facing: 1 };
+    act(() => games.store?.emit({ type: 'interaction', targetId: 'nha-trang-tri' }));
+    expect(screen.getByRole('dialog', { name: 'Trang trí nhà' })).toBeTruthy();
+    fireEvent.click(await screen.findByRole('button', { name: /Xanh ngôi sao/ }));
+    fireEvent.click(screen.getByRole('button', { name: 'Lưu' }));
+    await vi.waitFor(() => expect(games.started).toBeGreaterThan(started));
+    expect(games.decor).toEqual({ bed: 'bed-blue', rug: 'rug-cat' });
+    expect(games.savedSpot).toEqual(games.spot);
+    expect(screen.queryByRole('dialog', { name: 'Trang trí nhà' })).toBeNull();
+    games.spot = null;
   });
 
   it('offers a retry when the network is down, and starts the game once it is back', async () => {

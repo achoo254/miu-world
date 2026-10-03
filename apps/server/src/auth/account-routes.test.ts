@@ -32,6 +32,7 @@ async function playedFamily() {
   await app.db.insert(t.skillProgress).values({ childId, skillId: 'doc-hieu', xp: 10 });
   await app.db.insert(t.playerPositions).values({ childId, mapId: 'forest-ch1', x: 40.5, y: 12, z: 88, facing: 1.5 });
   await app.db.insert(t.timetables).values({ childId, timetable: { ...emptyTimetable(), uniform: { ...emptyTimetable().uniform, mon: 'Bộ sơ mi trắng' } } });
+  await app.db.insert(t.homeDecor).values({ childId, choices: { bed: 'bed-blue', house: 'house-green' } });
   const me = (await family.agent.get('/api/auth/me').expect(200)).body as { parent: { id: string } };
   return { ...family, parentId: me.parent.id };
 }
@@ -76,6 +77,7 @@ describe('account export', () => {
       skills: [{ skillId: 'doc-hieu', xp: 10 }],
       positions: [{ map: 'forest-ch1', position: [40.5, 12, 88], facing: 1.5, updatedAt: expect.any(String) }],
       timetable: { uniform: { mon: 'Bộ sơ mi trắng' } },
+      homeDecor: { bed: 'bed-blue', house: 'house-green' },
     });
     expect(child?.quests.map((q) => q.questId).sort()).toEqual(['q-done', 'q-open']);
     expect(child?.rewards).toEqual([{ source: 'quest:q-done', xp: 40, coins: 5, skillXp: { 'doc-hieu': 10 }, items: { 'la-than': 1 }, createdAt: expect.any(String) }]);

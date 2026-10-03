@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { DecorChoices } from './home-decor';
 import { Timetable } from './timetable';
 
 export const Id = z.uuid();
@@ -96,6 +97,8 @@ export const AccountExport = z.object({
       positions: z.array(z.object({ map: z.string(), position: z.tuple([z.number(), z.number(), z.number()]), facing: z.number(), updatedAt: z.string() })),
       /** Class timetable and uniform rules the family typed in; null until first saved. */
       timetable: Timetable.nullable(),
+      /** The styles the child picked for her home (slot → option); null until her first pick. */
+      homeDecor: DecorChoices.nullable(),
     }),
   ),
 });

@@ -28,15 +28,46 @@ export function pathColumns(points: readonly Point[], radius: number): Set<strin
 
 /** Distance from (x, z) to the polyline. */
 export function distanceToPath(points: readonly Point[], x: number, z: number): number {
-  let best = Infinity;
+  return nearestOnPath(points, x, z).d;
+}
+
+/**
+ * The point of the polyline nearest (x, z): where it is, how far, and how far along the polyline from its first
+ * point (Infinity away for a polyline of fewer than two points).
+ */
+export function nearestOnPath(points: readonly Point[], x: number, z: number): { x: number; z: number; d: number; along: number } {
+  let best = { x, z, d: Infinity, along: 0 };
+  let run = 0;
   for (let i = 1; i < points.length; i++) {
     const a = points[i - 1];
     const b = points[i];
     if (!a || !b) continue;
     const vx = b[0] - a[0];
     const vz = b[1] - a[1];
+    const len = Math.hypot(vx, vz);
     const t = Math.max(0, Math.min(1, ((x - a[0]) * vx + (z - a[1]) * vz) / (vx * vx + vz * vz || 1)));
-    best = Math.min(best, Math.hypot(x - (a[0] + vx * t), z - (a[1] + vz * t)));
+    const [px, pz] = [a[0] + vx * t, a[1] + vz * t];
+    const d = Math.hypot(x - px, z - pz);
+    if (d < best.d) best = { x: px, z: pz, d, along: run + t * len };
+    run += len;
   }
   return best;
+}
+
+/** The columns under a polyline's middle line every block along it, from its first point to its last. */
+export function columnsAlong(points: readonly Point[]): Array<readonly [number, number]> {
+  const cells: Array<readonly [number, number]> = [];
+  let carry = 0;
+  for (let i = 1; i < points.length; i++) {
+    const a = points[i - 1];
+    const b = points[i];
+    if (!a || !b) continue;
+    const len = Math.hypot(b[0] - a[0], b[1] - a[1]);
+    for (; carry <= len; carry++) {
+      const t = len === 0 ? 0 : carry / len;
+      cells.push([Math.round(a[0] + (b[0] - a[0]) * t), Math.round(a[1] + (b[1] - a[1]) * t)]);
+    }
+    carry -= len;
+  }
+  return cells;
 }

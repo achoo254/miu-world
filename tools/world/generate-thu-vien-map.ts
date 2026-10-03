@@ -17,7 +17,7 @@
 //   windows, the bell loft with its railing and eaves), the clock workshop, the calendar room with its
 //   east window, the mailbox and the telescope corner.
 // Output: assets/generated/world/thu-vien/{regions/, horizon.bin, entities.json}
-import { PACK, runIfMain, smoothstep } from './map-kit';
+import { PACK, runIfMain } from './map-kit';
 import { cottageRow, flowerBed, laneVerge, STREET_LANTERN, streetHouses } from './scenery';
 import { placeHouse } from './structures/buildings';
 import { placeFountain, placeStall } from './structures/countryside';
@@ -177,16 +177,8 @@ const SPURS: Point[][] = [
 ];
 const ROUTES: Point[][] = [...AVENUE, ...STREETS, ...SPAWN_WALKS, ...GARDEN_WALKS, ...FAIR_WALKS, ...TOWER_WALKS, ...SPURS];
 
-/** Quarters of the town (levelled ground), and the flower gardens north-west. */
-const TOWN: readonly Rect[] = [
-  { x0: 66, z0: 66, x1: 144, z1: 414 },
-  { x0: 156, z0: 246, x1: 390, z1: 414 },
-  { x0: 66, z0: 426, x1: 326, z1: 736 },
-  { x0: 486, z0: 136, x1: 736, z1: 414 },
-  { x0: 486, z0: 426, x1: 736, z1: 736 },
-];
+/** The flower gardens north-west. */
 const GARDENS: Rect = { x0: 158, z0: 68, x1: 384, z1: 232 };
-const FLAT: readonly Rect[] = [...TOWN, GARDENS];
 /** Kept open round the spawn and the gate beside it. */
 const SPAWN_CLEAR: Rect = { x0: SPAWN.x - 10, z0: SPAWN.z - 4, x1: SPAWN.x + 16, z1: SPAWN.z + 12 };
 
@@ -228,7 +220,6 @@ const M = {
 };
 const FLOWERS = [M.flowerRed, M.flowerYellow, M.flowerPurple];
 
-const outsideRect = (r: Rect, x: number, z: number): number => Math.hypot(Math.max(0, r.x0 - x, x - r.x1), Math.max(0, r.z0 - z, z - r.z1));
 const inRect = (r: Rect, x: number, z: number, pad = 0): boolean => x >= r.x0 - pad && x <= r.x1 + pad && z >= r.z0 - pad && z <= r.z1 + pad;
 
 /** The same residents, their work spots planned (village-life.ts `visits`). */
@@ -243,12 +234,8 @@ export async function generateThuVien() {
     soil: { grass: 'grass-library', path: 'paver' },
     zones: ZONES,
     spawn: { x: SPAWN.x, z: SPAWN.z, yaw: 0 },
-    shape: (x, z, h) => {
-      if (RAISED.some((r) => inRect(r, x, z))) return LEVEL + 1;
-      const d = Math.min(...FLAT.map((r) => outsideRect(r, x, z)));
-      const k = smoothstep(0, 8, d);
-      return LEVEL * (1 - k) + h * k;
-    },
+    // Level ground (owner, 03/10/2026), the library's plinth and terraces a block up.
+    shape: (x, z) => (RAISED.some((r) => inRect(r, x, z)) ? LEVEL + 1 : LEVEL),
     water: { level: WATER_LEVEL, covers: inWater },
     pathsFromSpawn: false,
     routes: ROUTES,

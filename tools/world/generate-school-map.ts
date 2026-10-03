@@ -144,8 +144,8 @@ const DISTRICT_STOPS: ReadonlyArray<{ name: string; at: readonly [number, number
   { name: 'làng ven sông', at: [DISTRICT.village.x + 6, DISTRICT.village.z + 6], from: [DISTRICT.village.x, DISTRICT.village.z] },
   { name: 'xóm mái ấm', at: [DISTRICT.hamlet.x + 6, DISTRICT.hamlet.z + 6], from: [DISTRICT.hamlet.x, DISTRICT.hamlet.z] },
   { name: 'thư viện', at: [DISTRICT.library.x + 26, DISTRICT.library.z - 20], from: [PLAZA.x + 24, DISTRICT.library.z - 20] },
-  // The castle's stop back waits on the level ground at the hill's foot, by the way's end.
-  { name: 'lâu đài', at: [DISTRICT.castle.x + 6, DISTRICT.castle.z - 26], from: [DISTRICT.castle.x, DISTRICT.castle.z - 30], back: [DISTRICT.castle.x - 6, DISTRICT.castle.z - 30] },
+  // The castle's stops wait on the level ground at the hill's foot, by the way's end.
+  { name: 'lâu đài', at: [DISTRICT.castle.x + 6, DISTRICT.castle.z - 36], from: [DISTRICT.castle.x, DISTRICT.castle.z - 30], back: [DISTRICT.castle.x - 6, DISTRICT.castle.z - 30] },
   { name: 'bìa rừng', at: [DISTRICT.forest.x + 6, DISTRICT.forest.z + 6], from: [DISTRICT.forest.x, DISTRICT.forest.z] },
   { name: 'chợ', at: [DISTRICT.market.x + 6, DISTRICT.market.z + 10], from: [DISTRICT.market.x, DISTRICT.market.z + 6] },
   { name: 'nông trại', at: [DISTRICT.farm.x + 6, DISTRICT.farm.z + 6], from: [DISTRICT.farm.x, DISTRICT.farm.z] },
@@ -338,10 +338,11 @@ export async function generateSchool() {
     outland: 'school',
     soil: { grass: 'grass', path: 'cobble' },
     size: SIZE,
-    ground: { ground: GROUND, roll: 2.5 },
+    ground: { ground: GROUND },
     zones: ZONES,
     spawn: { x: MID, z: CAMPUS.z0 + 3, yaw: 0 },
-    water: { level: WATER_LEVEL, covers: inWater },
+    // The canal through the square and the lake along the street are stone-edged: the paving runs level to the water.
+    water: { level: WATER_LEVEL, covers: inWater, quay: (x, z) => inSquareGround(x, z) || (z >= STREET.z0 - 4 && z <= STREET.z1 + 4) },
     // The campus, the street and the square are level; the castle on its hill, the mountain and the waterfall cliff rise.
     shape: (x, z, h) => {
       if (inCampus(x, z) || inSquareGround(x, z) || (z >= STREET.z0 - 1 && z <= STREET.z1 + 4)) return GROUND;
@@ -648,7 +649,7 @@ export async function generateSchool() {
       for (const tx of [hall.x0 + 4.5, hall.x0 + 8.5, hall.x0 + 16.5, hall.x0 + 20.5]) {
         for (const tz of [hall.z0 + 5.5, hall.z0 + 9.5]) {
           ctx.propAt(TH.table, [tx, ground + 1, tz], 0);
-          for (const dz of [-0.95, 0.95]) for (const dx of [-0.5, 0.5]) ctx.propAt(TH.chair, [tx + dx, ground + 1, tz + dz], dz < 0 ? 0 : 180);
+          for (const dz of [-0.95, 0.95]) for (const dx of [-0.5, 0.5]) ctx.propAt(TH.chair, [tx + dx, ground + 1, tz + dz], dz < 0 ? 180 : 0);
         }
       }
       for (let i = 0; i < 3; i++) ctx.propAt(`${PACK.survival}/workbench.glb`, [hall.x0 + 6.5 + i * 6, ground + 1, hall.z0 + hall.d - 2.5], 180);
@@ -711,7 +712,7 @@ export async function generateSchool() {
       }
       for (const dx of [-7, 8]) {
         ctx.propAt(TH.table, [art.x + dx, ground + 1, studio.z0 + 6.5], 0);
-        for (const dz of [-0.95, 0.95]) ctx.propAt(TH.chair, [art.x + dx, ground + 1, studio.z0 + 6.5 + dz], dz < 0 ? 0 : 180);
+        for (const dz of [-0.95, 0.95]) ctx.propAt(TH.chair, [art.x + dx, ground + 1, studio.z0 + 6.5 + dz], dz < 0 ? 180 : 0);
         ctx.propAt(`${PACK.props}/artist-palette.glb`, [art.x + dx, ground + 1.8, studio.z0 + 6.5], dx * 10);
       }
       ctx.landmark('cua-so-phong-mi-thuat', 'Cửa sổ phòng mĩ thuật', art.x, studio.z0 - 1);
@@ -875,7 +876,7 @@ export async function generateSchool() {
         if (Math.abs(tx - lib.x) < 3) continue; // the way in from the door
         for (const tz of [reading.z0 + 6, reading.z0 + 11]) {
           ctx.propAt(TH.table, [tx, ground + 1, tz], 0);
-          for (const dz of [-0.95, 0.95]) ctx.propAt(TH.chair, [tx, ground + 1, tz + dz], dz < 0 ? 0 : 180);
+          for (const dz of [-0.95, 0.95]) ctx.propAt(TH.chair, [tx, ground + 1, tz + dz], dz < 0 ? 180 : 0);
         }
       }
       for (const x0 of [lib.x - 14, lib.x + 3]) flowerBed(ctx, x0, lib.z - 12, 12, 3);

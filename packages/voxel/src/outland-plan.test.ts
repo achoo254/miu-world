@@ -135,6 +135,37 @@ describe('outland plan', () => {
     }
   });
 
+  it('runs its roads level: no one-block bump or dip along them, climbing only over the hills', () => {
+    for (const theme of ['river', 'castle', 'farm'] as const) {
+      const p = plan(theme);
+      let columns = 0;
+      let wobbles = 0;
+      for (const road of p.roads) {
+        // The road's ground block by block along its middle line, outside the core.
+        const heights: number[] = [];
+        const pts = road.pts;
+        for (let i = 0; i + 3 < pts.length; i += 2) {
+          for (let t = 0; t < 1; t += 0.25) {
+            const x = Math.floor((pts[i] ?? 0) + ((pts[i + 2] ?? 0) - (pts[i] ?? 0)) * t);
+            const z = Math.floor((pts[i + 1] ?? 0) + ((pts[i + 3] ?? 0) - (pts[i + 1] ?? 0)) * t);
+            if (!inCore(p.size, x, z)) heights.push(outlandGround(p, x, z));
+          }
+        }
+        // A wobble: a run of at most a dozen columns one block off the same height on both sides.
+        for (let i = 1; i < heights.length; ) {
+          let j = i;
+          while (j + 1 < heights.length && heights[j + 1] === heights[i]) j++;
+          const [before, after, v] = [heights[i - 1], heights[j + 1], heights[i] ?? 0];
+          if (before !== undefined && before === after && Math.abs(v - before) === 1 && j - i + 1 <= 12) wobbles++;
+          i = j + 1;
+        }
+        columns += heights.length;
+      }
+      expect(columns).toBeGreaterThan(2000);
+      expect(wobbles / columns, theme).toBeLessThan(0.001);
+    }
+  });
+
   it('builds the villages on level land, their houses on the pad and off the roads', () => {
     const p = plan('market');
     const s = sample();

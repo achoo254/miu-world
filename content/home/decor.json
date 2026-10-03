@@ -1,0 +1,192 @@
+{
+  "version": 1,
+  "slots": [
+    {
+      "id": "bed", "side": "inside", "name": "Giường", "default": "bed-pink",
+      "options": [
+        {"id": "bed-pink", "name": "Hồng chấm bi", "swatch": ["#f4a3bf", "#fffdf8"], "models": ["generated/box-props/ncb-bed-pink.glb"]},
+        {"id": "bed-blue", "name": "Xanh ngôi sao", "swatch": ["#7fb6ea", "#ffe066"], "models": ["generated/box-props/ncb-bed-blue.glb"]},
+        {"id": "bed-mint", "name": "Bạc hà kẻ sọc", "swatch": ["#9fe0c4", "#fffdf8"], "models": ["generated/box-props/ncb-bed-mint.glb"]},
+        {"id": "bed-yellow", "name": "Vàng hoa cam", "swatch": ["#ffe08a", "#f08a5d"], "models": ["generated/box-props/ncb-bed-yellow.glb"]},
+        {"id": "bed-lilac", "name": "Tím trái tim", "swatch": ["#cdb4f0", "#e86f9c"], "models": ["generated/box-props/ncb-bed-lilac.glb"]},
+        {"id": "bed-red", "name": "Đỏ ca-rô", "swatch": ["#e2584f", "#fffdf8"], "models": ["generated/box-props/ncb-bed-red.glb"]},
+        {"id": "bed-rainbow", "name": "Cầu vồng", "swatch": ["#ef6f6c", "#f2d14c", "#5aa6e8"], "models": ["generated/box-props/ncb-bed-rainbow.glb"]}
+      ]
+    },
+    {
+      "id": "desk", "side": "inside", "name": "Bàn học", "default": "desk-oak",
+      "options": [
+        {"id": "desk-oak", "name": "Gỗ sồi", "swatch": ["#e3c193", "#c98f5a"], "models": ["generated/box-props/ncb-desk-oak.glb"]},
+        {"id": "desk-white", "name": "Trắng", "swatch": ["#fffdf8", "#e2b13c"], "models": ["generated/box-props/ncb-desk-white.glb"]},
+        {"id": "desk-pink", "name": "Hồng", "swatch": ["#fbd3e2", "#f4a3bf"], "models": ["generated/box-props/ncb-desk-pink.glb"]},
+        {"id": "desk-blue", "name": "Xanh trời", "swatch": ["#dcecfb", "#7fb6ea"], "models": ["generated/box-props/ncb-desk-blue.glb"]},
+        {"id": "desk-mint", "name": "Bạc hà", "swatch": ["#e2f6ec", "#8fd4b4"], "models": ["generated/box-props/ncb-desk-mint.glb"]},
+        {"id": "desk-yellow", "name": "Vàng nắng", "swatch": ["#fff3cf", "#f6c945"], "models": ["generated/box-props/ncb-desk-yellow.glb"]}
+      ]
+    },
+    {
+      "id": "chair", "side": "inside", "name": "Ghế", "default": "chair-wood",
+      "options": [
+        {"id": "chair-wood", "name": "Ghế gỗ", "swatch": ["#c98f5a"], "models": ["packs/kenney-furniture-kit/2.0/chair.glb"]},
+        {"id": "chair-cushion", "name": "Ghế nệm", "swatch": ["#c98f5a", "#e8e0d2"], "models": ["packs/kenney-furniture-kit/2.0/chairCushion.glb"]},
+        {"id": "chair-round", "name": "Ghế lưng tròn", "swatch": ["#b07a4a"], "models": ["packs/kenney-furniture-kit/2.0/chairRounded.glb"]},
+        {"id": "chair-modern", "name": "Ghế êm", "swatch": ["#8a8f99", "#e8e0d2"], "models": ["packs/kenney-furniture-kit/2.0/chairModernCushion.glb"]},
+        {"id": "chair-frame", "name": "Ghế khung sắt", "swatch": ["#3f4248", "#e8e0d2"], "models": ["packs/kenney-furniture-kit/2.0/chairModernFrameCushion.glb"]},
+        {"id": "chair-castle", "name": "Ghế lâu đài", "swatch": ["#7a4b33", "#d9342b"], "models": ["generated/box-props/ld-chair.glb"], "turn": 180},
+        {"id": "chair-library", "name": "Ghế thư viện", "swatch": ["#8a5a32", "#5aa6e8"], "models": ["generated/box-props/tv-chair.glb"], "turn": 180}
+      ]
+    },
+    {
+      "id": "wardrobe", "side": "inside", "name": "Tủ quần áo", "default": "wardrobe-wood",
+      "options": [
+        {"id": "wardrobe-wood", "name": "Gỗ nơ hồng", "swatch": ["#c98f5a", "#f4a3bf"], "models": ["generated/box-props/ncb-wardrobe.glb"]},
+        {"id": "wardrobe-white", "name": "Trắng sao xanh", "swatch": ["#fffdf8", "#5aa6e8"], "models": ["generated/box-props/ncb-wardrobe-white.glb"]},
+        {"id": "wardrobe-blue", "name": "Xanh trời", "swatch": ["#6fa8e0", "#ffe066"], "models": ["generated/box-props/ncb-wardrobe-blue.glb"]},
+        {"id": "wardrobe-mint", "name": "Bạc hà", "swatch": ["#7cc9a6", "#e86f9c"], "models": ["generated/box-props/ncb-wardrobe-mint.glb"]},
+        {"id": "wardrobe-lilac", "name": "Tím oải hương", "swatch": ["#b49ae0", "#e86f9c"], "models": ["generated/box-props/ncb-wardrobe-lilac.glb"]},
+        {"id": "wardrobe-yellow", "name": "Vàng chanh", "swatch": ["#f2c14e", "#ef6f6c"], "models": ["generated/box-props/ncb-wardrobe-yellow.glb"]}
+      ]
+    },
+    {
+      "id": "ornament", "side": "inside", "name": "Đồ trang trí", "default": "ornament-teddy",
+      "options": [
+        {"id": "ornament-teddy", "name": "Gấu bông", "swatch": ["#c98f5a"], "models": ["generated/props/teddy-bear.glb"]},
+        {"id": "ornament-dolls", "name": "Búp bê gỗ", "swatch": ["#e2584f", "#f2d14c"], "models": ["generated/props/nesting-dolls.glb"]},
+        {"id": "ornament-globe", "name": "Quả địa cầu", "swatch": ["#5aa6e8", "#6fc27a"], "models": ["generated/props/globe.glb"]},
+        {"id": "ornament-gift", "name": "Hộp quà", "swatch": ["#e2584f", "#ffe066"], "models": ["generated/props/gift-red.glb"]},
+        {"id": "ornament-puzzle", "name": "Xếp hình", "swatch": ["#e2584f"], "models": ["generated/props/puzzle-red.glb"]},
+        {"id": "ornament-clock", "name": "Đồng hồ báo thức", "swatch": ["#e2584f", "#fffdf8"], "models": ["generated/props/alarm-clock.glb"]},
+        {"id": "ornament-shell", "name": "Vỏ ốc biển", "swatch": ["#f6dcb4", "#e86f9c"], "models": ["generated/props/spiral-shell.glb"]}
+      ]
+    },
+    {
+      "id": "rug", "side": "inside", "name": "Thảm", "default": "rug-cat",
+      "options": [
+        {"id": "rug-cat", "name": "Mặt mèo", "swatch": ["#f6dcb4", "#f0a04b"], "models": ["generated/box-props/ncb-cat-rug.glb"]},
+        {"id": "rug-rainbow", "name": "Cầu vồng", "swatch": ["#ef6f6c", "#f2d14c", "#5aa6e8"], "models": ["generated/box-props/ncb-rug-rainbow.glb"]},
+        {"id": "rug-heart", "name": "Trái tim", "swatch": ["#fbd3e2", "#e86f9c"], "models": ["generated/box-props/ncb-rug-heart.glb"]},
+        {"id": "rug-star", "name": "Ngôi sao", "swatch": ["#3f5f9e", "#ffe066"], "models": ["generated/box-props/ncb-rug-star.glb"]},
+        {"id": "rug-flower", "name": "Bông hoa", "swatch": ["#e8f6d6", "#f08a5d"], "models": ["generated/box-props/ncb-rug-flower.glb"]},
+        {"id": "rug-leaf", "name": "Chiếc lá", "swatch": ["#fff3cf", "#5fae5a"], "models": ["generated/box-props/ncb-rug-leaf.glb"]},
+        {"id": "rug-checks", "name": "Ca-rô đỏ", "swatch": ["#ef7f78", "#fffdf8"], "models": ["generated/box-props/ncb-rug-checks.glb"]}
+      ]
+    },
+    {
+      "id": "curtain", "side": "inside", "name": "Rèm cửa sổ", "default": "curtain-pink",
+      "options": [
+        {"id": "curtain-pink", "name": "Hồng", "swatch": ["#f4a3bf", "#e86f9c"], "models": ["generated/box-props/ncb-curtains-pink.glb"]},
+        {"id": "curtain-blue", "name": "Xanh trời", "swatch": ["#8cc0ef", "#4f86d9"], "models": ["generated/box-props/ncb-curtains-blue.glb"]},
+        {"id": "curtain-yellow", "name": "Vàng", "swatch": ["#ffd86b", "#f5a742"], "models": ["generated/box-props/ncb-curtains-yellow.glb"]},
+        {"id": "curtain-mint", "name": "Bạc hà", "swatch": ["#9fe0c4", "#4caf8a"], "models": ["generated/box-props/ncb-curtains-mint.glb"]},
+        {"id": "curtain-lilac", "name": "Tím", "swatch": ["#cdb4f0", "#8a5fd0"], "models": ["generated/box-props/ncb-curtains-lilac.glb"]},
+        {"id": "curtain-lace", "name": "Ren trắng", "swatch": ["#fffdf8", "#d9cbb4"], "models": ["generated/box-props/ncb-curtains-lace.glb"]},
+        {"id": "curtain-red", "name": "Đỏ", "swatch": ["#e2584f", "#a8322b"], "models": ["generated/box-props/ncb-curtains-red.glb"]}
+      ]
+    },
+    {
+      "id": "lamp", "side": "inside", "name": "Đèn", "default": "lamp-round",
+      "options": [
+        {"id": "lamp-round", "name": "Đèn chao tròn", "swatch": ["#e8e0d2", "#c98f5a"], "models": ["packs/kenney-furniture-kit/2.0/lampRoundFloor.glb"]},
+        {"id": "lamp-square", "name": "Đèn chao vuông", "swatch": ["#e8e0d2", "#3f4248"], "models": ["packs/kenney-furniture-kit/2.0/lampSquareFloor.glb"]},
+        {"id": "lamp-mushroom", "name": "Nấm đỏ", "swatch": ["#e2584f", "#ffe9a8"], "models": ["generated/box-props/ncb-lamp-mushroom.glb"]},
+        {"id": "lamp-star", "name": "Ngôi sao", "swatch": ["#ffe066", "#6b4423"], "models": ["generated/box-props/ncb-lamp-star.glb"]},
+        {"id": "lamp-moon", "name": "Mặt trăng", "swatch": ["#fff1b8", "#4a4a52"], "models": ["generated/box-props/ncb-lamp-moon.glb"]},
+        {"id": "lamp-lantern", "name": "Đèn lồng", "swatch": ["#ffd36b", "#3f4248"], "models": ["generated/box-props/ncb-lamp-lantern.glb"]},
+        {"id": "lamp-flower", "name": "Hoa tulip", "swatch": ["#f4a3bf", "#4caf8a"], "models": ["generated/box-props/ncb-lamp-flower.glb"]}
+      ]
+    },
+    {
+      "id": "house", "side": "outside", "name": "Kiểu nhà", "default": "house-red",
+      "options": [
+        {"id": "house-red", "name": "Mái đỏ tường kem", "swatch": ["#e2583e", "#f6e2c0", "#b8bfc9"], "blocks": {"roof": "brick-red", "ridge": "wood-red", "upper": "plaster", "lower": "brick-grey"}},
+        {"id": "house-blue", "name": "Mái xanh dương", "swatch": ["#4f86d9", "#f6e2c0", "#b8bfc9"], "blocks": {"roof": "roof-blue", "ridge": "planks", "upper": "plaster", "lower": "brick-grey"}},
+        {"id": "house-green", "name": "Mái xanh lá", "swatch": ["#3f9a4c", "#f6d27e", "#b8bfc9"], "blocks": {"roof": "roof-green", "ridge": "log", "upper": "plaster-yellow", "lower": "stone"}},
+        {"id": "house-purple", "name": "Mái tím", "swatch": ["#8a5fd0", "#bcd8f2", "#b8bfc9"], "blocks": {"roof": "roof-purple", "ridge": "planks", "upper": "plaster-blue", "lower": "brick-grey"}},
+        {"id": "house-wood", "name": "Nhà gỗ nâu", "swatch": ["#7a4b33", "#c98f5a", "#b8bfc9"], "blocks": {"roof": "roof-brown", "ridge": "log", "upper": "planks", "lower": "stone"}},
+        {"id": "house-sunny", "name": "Nắng vàng", "swatch": ["#e2583e", "#f6d27e", "#e2583e"], "blocks": {"roof": "wood-red", "ridge": "brick-red", "upper": "plaster-yellow", "lower": "brick-red"}},
+        {"id": "house-slate", "name": "Mái đá xám", "swatch": ["#b8bfc9", "#bcd8f2", "#9c6b45"], "blocks": {"roof": "brick-grey", "ridge": "log", "upper": "plaster-blue", "lower": "stone"}}
+      ]
+    },
+    {
+      "id": "fence", "side": "outside", "name": "Hàng rào", "default": "fence-white",
+      "options": [
+        {"id": "fence-white", "name": "Trắng", "swatch": ["#fffdf8", "#e8e0d2"], "models": ["generated/box-props/ncb-picket-white.glb"]},
+        {"id": "fence-pink", "name": "Hồng", "swatch": ["#fbd3e2", "#f4a3bf"], "models": ["generated/box-props/ncb-picket-pink.glb"]},
+        {"id": "fence-blue", "name": "Xanh trời", "swatch": ["#cfe4fa", "#7fb6ea"], "models": ["generated/box-props/ncb-picket-blue.glb"]},
+        {"id": "fence-yellow", "name": "Vàng", "swatch": ["#fff0b8", "#f2c14e"], "models": ["generated/box-props/ncb-picket-yellow.glb"]},
+        {"id": "fence-wood", "name": "Gỗ mộc", "swatch": ["#c98f5a", "#8a5a32"], "models": ["generated/box-props/ncb-picket-wood.glb"]},
+        {"id": "fence-mint", "name": "Bạc hà", "swatch": ["#d8f3e6", "#8fd4b4"], "models": ["generated/box-props/ncb-picket-mint.glb"]},
+        {"id": "fence-hedge", "name": "Hàng rào cây", "swatch": ["#4f9d4a", "#f4a3bf"], "models": ["generated/box-props/ncb-hedge.glb"]}
+      ]
+    },
+    {
+      "id": "gate", "side": "outside", "name": "Cổng", "default": "gate-red",
+      "options": [
+        {"id": "gate-red", "name": "Mái đỏ", "swatch": ["#e2583e", "#9c6b45"], "blocks": {"roof": "brick-red", "ridge": "wood-red", "post": "log"}},
+        {"id": "gate-blue", "name": "Mái xanh dương", "swatch": ["#4f86d9", "#9c6b45"], "blocks": {"roof": "roof-blue", "ridge": "planks", "post": "log"}},
+        {"id": "gate-green", "name": "Mái xanh lá", "swatch": ["#3f9a4c", "#f4eee2"], "blocks": {"roof": "roof-green", "ridge": "planks", "post": "birch-log"}},
+        {"id": "gate-purple", "name": "Mái tím", "swatch": ["#8a5fd0", "#f4eee2"], "blocks": {"roof": "roof-purple", "ridge": "planks", "post": "birch-log"}},
+        {"id": "gate-wood", "name": "Gỗ nâu", "swatch": ["#7a4b33", "#9c6b45"], "blocks": {"roof": "roof-brown", "ridge": "log", "post": "log"}},
+        {"id": "gate-stone", "name": "Đá xám", "swatch": ["#b8bfc9", "#f4eee2"], "blocks": {"roof": "brick-grey", "ridge": "birch-log", "post": "birch-log"}}
+      ]
+    },
+    {
+      "id": "lights", "side": "outside", "name": "Đèn sân", "default": "lights-street",
+      "options": [
+        {"id": "lights-street", "name": "Đèn đường", "swatch": ["#3f4248", "#ffd36b"], "models": ["generated/box-props/street-lantern.glb"]},
+        {"id": "lights-pole", "name": "Đèn cột gỗ", "swatch": ["#8a5a32", "#ffd36b"], "models": ["generated/box-props/kr-lantern-pole.glb"]},
+        {"id": "lights-dock", "name": "Đèn bến cảng", "swatch": ["#6b4423", "#ffd36b"], "models": ["generated/box-props/dba-dock-lantern.glb"]},
+        {"id": "lights-mushroom", "name": "Nấm đỏ", "swatch": ["#e2584f", "#fffdf8"], "models": ["generated/box-props/ncb-garden-lamp-mushroom.glb"]},
+        {"id": "lights-star", "name": "Ngôi sao", "swatch": ["#ffe066", "#3f4248"], "models": ["generated/box-props/ncb-garden-lamp-star.glb"]},
+        {"id": "lights-flower", "name": "Bông hoa", "swatch": ["#f4a3bf", "#4caf8a"], "models": ["generated/box-props/ncb-garden-lamp-flower.glb"]},
+        {"id": "lights-globe", "name": "Quả cầu trắng", "swatch": ["#fff6dc", "#2f3136"], "models": ["generated/box-props/ncb-garden-lamp-globe.glb"]}
+      ]
+    },
+    {
+      "id": "garden", "side": "outside", "name": "Vườn hoa", "default": "garden-mixed",
+      "options": [
+        {"id": "garden-mixed", "name": "Hoa nhiều màu", "swatch": ["#e2584f", "#ffe066", "#a77de0"], "models": ["packs/kenney-nature-kit/2.1/flower_redA.glb", "packs/kenney-nature-kit/2.1/flower_yellowA.glb", "packs/kenney-nature-kit/2.1/flower_purpleB.glb"]},
+        {"id": "garden-red", "name": "Hoa đỏ", "swatch": ["#e2584f", "#ef7f78"], "models": ["packs/kenney-nature-kit/2.1/flower_redA.glb", "packs/kenney-nature-kit/2.1/flower_redB.glb", "packs/kenney-nature-kit/2.1/flower_redC.glb"]},
+        {"id": "garden-yellow", "name": "Hoa vàng", "swatch": ["#ffe066", "#f5a742"], "models": ["packs/kenney-nature-kit/2.1/flower_yellowA.glb", "packs/kenney-nature-kit/2.1/flower_yellowB.glb", "packs/kenney-nature-kit/2.1/flower_yellowC.glb"]},
+        {"id": "garden-purple", "name": "Hoa tím", "swatch": ["#a77de0", "#cdb4f0"], "models": ["packs/kenney-nature-kit/2.1/flower_purpleA.glb", "packs/kenney-nature-kit/2.1/flower_purpleB.glb", "packs/kenney-nature-kit/2.1/flower_purpleC.glb"]},
+        {"id": "garden-pastel", "name": "Hoa nhạt", "swatch": ["#cdb4f0", "#fbd3e2", "#fff3cf"], "models": ["packs/kenney-nature-kit/2.1/flower_purpleC.glb", "packs/kenney-nature-kit/2.1/flower_redC.glb", "packs/kenney-nature-kit/2.1/flower_yellowC.glb"]},
+        {"id": "garden-sunflower", "name": "Hướng dương", "swatch": ["#ffd23f", "#6b4423"], "models": ["generated/box-props/nt-sunflower.glb", "packs/kenney-nature-kit/2.1/flower_yellowB.glb", "packs/kenney-nature-kit/2.1/flower_yellowA.glb"]},
+        {"id": "garden-bush", "name": "Bụi cây xanh", "swatch": ["#4f9d4a", "#5fae5a"], "models": ["packs/kenney-nature-kit/2.1/plant_bushSmall.glb", "packs/kenney-nature-kit/2.1/plant_bushDetailed.glb", "packs/kenney-nature-kit/2.1/plant_bush.glb"]}
+      ]
+    },
+    {
+      "id": "path", "side": "outside", "name": "Lối đi", "default": "path-cobble",
+      "options": [
+        {"id": "path-cobble", "name": "Đá vàng", "swatch": ["#e0cca8"], "blocks": {"way": "cobble"}},
+        {"id": "path-grey", "name": "Đá xám", "swatch": ["#b4b8bf"], "blocks": {"way": "cobble-grey"}},
+        {"id": "path-paver", "name": "Gạch lát", "swatch": ["#d8c8ac"], "blocks": {"way": "paver"}},
+        {"id": "path-gravel", "name": "Sỏi", "swatch": ["#dccfb8"], "blocks": {"way": "path"}},
+        {"id": "path-earth", "name": "Đường đất", "swatch": ["#c09466"], "blocks": {"way": "trail"}},
+        {"id": "path-asphalt", "name": "Đường nhựa", "swatch": ["#7c8089"], "blocks": {"way": "asphalt"}}
+      ]
+    },
+    {
+      "id": "sign", "side": "outside", "name": "Biển tên", "default": "sign-cat",
+      "options": [
+        {"id": "sign-cat", "name": "Mèo cam", "swatch": ["#f0a04b"], "models": ["generated/box-props/ncb-sign-cat.glb"]},
+        {"id": "sign-dog", "name": "Cún nâu", "swatch": ["#c98f5a", "#8a5a32"], "models": ["generated/box-props/ncb-sign-dog.glb"]},
+        {"id": "sign-bunny", "name": "Thỏ trắng", "swatch": ["#fffdf8", "#f4a3bf"], "models": ["generated/box-props/ncb-sign-bunny.glb"]},
+        {"id": "sign-bear", "name": "Gấu nâu", "swatch": ["#a8743f", "#8a5a32"], "models": ["generated/box-props/ncb-sign-bear.glb"]},
+        {"id": "sign-panda", "name": "Gấu trúc", "swatch": ["#fffdf8", "#3b2a20"], "models": ["generated/box-props/ncb-sign-panda.glb"]},
+        {"id": "sign-fox", "name": "Cáo cam", "swatch": ["#f08a3c", "#fffdf8"], "models": ["generated/box-props/ncb-sign-fox.glb"]},
+        {"id": "sign-chick", "name": "Gà con", "swatch": ["#ffd23f", "#f5a742"], "models": ["generated/box-props/ncb-sign-chick.glb"]}
+      ]
+    },
+    {
+      "id": "flag", "side": "outside", "name": "Cờ trang trí", "default": "flag-cat",
+      "options": [
+        {"id": "flag-cat", "name": "Cờ mèo hồng", "swatch": ["#f4a3bf", "#fffdf8"], "models": ["generated/box-props/ncb-cat-flag.glb"]},
+        {"id": "flag-dog", "name": "Cờ chân cún", "swatch": ["#7fb6ea", "#fffdf8"], "models": ["generated/box-props/ncb-flag-dog.glb"]},
+        {"id": "flag-bunny", "name": "Cờ thỏ", "swatch": ["#cdb4f0", "#fffdf8"], "models": ["generated/box-props/ncb-flag-bunny.glb"]},
+        {"id": "flag-star", "name": "Cờ ngôi sao", "swatch": ["#3f5f9e", "#ffe066"], "models": ["generated/box-props/ncb-flag-star.glb"]},
+        {"id": "flag-heart", "name": "Cờ trái tim", "swatch": ["#fffdf8", "#e2584f"], "models": ["generated/box-props/ncb-flag-heart.glb"]},
+        {"id": "flag-flower", "name": "Cờ bông hoa", "swatch": ["#9fe0c4", "#f08a5d"], "models": ["generated/box-props/ncb-flag-flower.glb"]}
+      ]
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-// Generates chapter 1 "Khu rừng bí mật" from a fixed seed: rolling terrain, a stream,
+// Generates chapter 1 "Khu rừng bí mật" from a fixed seed: level forest floor, a stream,
 // a wooden bridge, stepping stones, a stone path, scattered trees, the ancient tree, plus the quest's
 // interactables (ids match the `target`s in content/quests/forest-ch1.json) and decorative props; the
 // places of the forest's Tiếng Việt lessons (chapters 2–5) are placed from the catalogues. Beyond chapter 1's
@@ -13,7 +13,7 @@
 import { VoxelWorld } from '../../packages/voxel/src/chunk-format';
 import type { WorldEntities } from '../../packages/voxel/src/world-entities';
 import { FOREST_CAST_SIZES, QUEST_CLEARANCE, placeForestLife } from './forest-life';
-import { columnsOf, fillColumn, heightField, loadBlocks, mapModels, PACK, placeRegionTargets, rollingHeight, runIfMain, scatterTrees, smoothstep, standHeight, WIDE_MAP_SIDE } from './map-kit';
+import { columnsOf, fillColumn, heightField, loadBlocks, mapModels, PACK, placeRegionTargets, runIfMain, scatterTrees, smoothstep, standHeight, WIDE_MAP_SIDE } from './map-kit';
 import { createRng, hashSeed } from './noise';
 import { placeBridge } from './structures/bridge';
 import { CLIFF_BASE, cellRoll, type Cliff, cliffColumn, cliffRise, fallsOf, placeBigTree, placeCabin, placeFalls, placeShelter, placeTent, TENT, trailVerge } from './structures/forest-scene';
@@ -28,6 +28,8 @@ import { HUB_REGION } from './zone-map';
 export const MAP_ID = 'forest-ch1';
 export const SEED_TEXT = 'miu-forest-ch1';
 const WATER_LEVEL = 9;
+/** Height of the level forest floor, which the cliffs stand on. */
+const GROUND = CLIFF_BASE;
 /** The forest's own ground (owner, 02/10/2026: each map its own colour): deep green grass and earth trails. */
 const SOIL = { grass: 'grass-forest', path: 'trail' };
 
@@ -258,20 +260,10 @@ export async function generateForest(): Promise<{ world: VoxelWorld; entities: W
     return rise > 0 && wetDistance(x, z) >= 0.5 && pathDistance(x, z) >= 3 ? rise : 0;
   };
 
-  // 1. Height field: rolling ground, levelled at the clearings, the cliffs' feet and along the path, sunk
-  // at the water; the cliffs' tiers stand on their levelled feet.
+  // 1. Height field: a level forest floor (owner, 03/10/2026: the ground and its trails flat, only the water
+  // sunk and the cliffs raised), banks easing down to the water; the cliffs' tiers stand on their levelled feet.
   const surface = heightField(world, (x, z) => {
-    let h = rollingHeight(seed, x, z, { ground: 12, roll: 3.5 });
-    for (const c of allClearings) {
-      const k = smoothstep(c.radius, c.radius + 5, Math.hypot(x - c.x, z - c.z));
-      h = 12 * (1 - k) + h * k;
-    }
-    for (const c of CLIFFS) {
-      const k = smoothstep(1, 1.25, Math.hypot(x - c.x, z - c.z) / c.r);
-      h = CLIFF_BASE * (1 - k) + h * k;
-    }
-    const pathDist = pathDistance(x, z);
-    h = h * smoothstep(1, 5, pathDist) + Math.min(h, 13) * (1 - smoothstep(1, 5, pathDist));
+    let h = GROUND;
     const wet = wetDistance(x, z);
     if (wet < 4) h = WATER_LEVEL + 1 + (h - WATER_LEVEL - 1) * smoothstep(1, 4, wet);
     for (const bx of [bridgeX, bridge2.x]) {
@@ -564,8 +556,9 @@ export async function generateForest(): Promise<{ world: VoxelWorld; entities: W
   addCentred(`${PACK.furniture}/pottedPlant.glb`, room(0, back), 0);
   inRoom(`${PACK.survival}/bedroll.glb`, 0, 4, 0);
   addCentred(`${PACK.furniture}/table.glb`, room(side - 2, 4), 90);
-  addCentred(`${PACK.furniture}/chair.glb`, room(side - 3, 4), 270);
-  addCentred(`${PACK.furniture}/chair.glb`, room(side - 1, 4), 90);
+  // The chairs face the table between them (the pack's chair faces its +z).
+  addCentred(`${PACK.furniture}/chair.glb`, room(side - 3, 4), 90);
+  addCentred(`${PACK.furniture}/chair.glb`, room(side - 1, 4), 270);
   inRoom(`${PACK.props}/open-book.glb`, side - 2, 4, 30, 0.8);
   for (const u of [side - 2, Math.floor(side / 2)]) inRoom(`${BOX}/kr-hanging-lantern.glb`, u, 4, 0, 4.25);
   inRoom(`${BOX}/kr-tool-rack.glb`, side, 1, 180);
@@ -842,7 +835,7 @@ export async function generateForest(): Promise<{ world: VoxelWorld; entities: W
       { id: 'thac-rung-sau', name: 'Thác rừng sâu', position: fallsFeet[1] ?? place(CLIFFS[1]?.x ?? 0, CLIFFS[1]?.z ?? 0) },
     ],
     ambients,
-    outland: await outlandSpecOf(world, seed, 'forest', 12, SOIL),
+    outland: await outlandSpecOf(world, seed, 'forest', GROUND, SOIL),
   };
   return { world, entities };
 }

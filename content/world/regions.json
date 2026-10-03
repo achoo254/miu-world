@@ -35,13 +35,13 @@
       "id": "nha-cua-be",
       "name": "Nhà của {name}",
       "tagline": "Tổ ấm có vườn rau và chuồng gà",
-      "subject": "Nhà · Thời khóa biểu",
+      "subject": "Nhà · Lịch học",
       "description": "Mèo Bánh Bao đang ngồi đợi ở cổng, cả nhà và khu vườn nhỏ chờ {name} về!",
       "status": "open",
       "map": "nha-cua-be",
       "music": "home",
       "guide": "meo-banh-bao",
-      "hotspot": { "x": 60, "y": 88 },
+      "hotspot": { "x": 58, "y": 89 },
       "backdrop": { "eye": [80, 21, 10], "target": [80, 18, 52], "fov": 58 },
       "events": ["rain-rainbow", "fireflies", "animal-visit"]
     },
@@ -70,7 +70,7 @@
       "music": "school",
       "guide": "su-tu-vang",
       "book": "Toán 2, tập một: bài 1–6 · Tiếng Việt 2, tập một: bài 9–14",
-      "hotspot": { "x": 31, "y": 88 },
+      "hotspot": { "x": 30, "y": 88 },
       "backdrop": { "eye": [400, 22, 328], "target": [400, 18, 372], "fov": 64 },
       "events": ["rain-rainbow", "fireflies"]
     },
@@ -173,7 +173,7 @@
       "map": "dao-bi-an",
       "music": "quest",
       "guide": "khi-thuyen-truong",
-      "hotspot": { "x": 88, "y": 88 },
+      "hotspot": { "x": 83, "y": 87 },
       "backdrop": { "eye": [400, 22, 666], "target": [395, 15, 600], "fov": 60 },
       "events": ["rain-rainbow", "fireflies", "animal-visit"]
     }

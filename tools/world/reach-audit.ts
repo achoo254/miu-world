@@ -12,6 +12,7 @@ import type { WorldEntities } from '../../packages/voxel/src/world-entities';
 import { ASSETS_DIR } from '../assets/asset-lib';
 import { propCells } from './prop-cells';
 import { reachable, walkBlocking, walkSolid } from './walkable';
+import { everyDecorProp } from '../../packages/voxel/src/home-decor';
 
 export async function auditReach(map: string): Promise<{ stranded: string[]; covered: string[] }> {
   const dir = path.join(ASSETS_DIR, 'generated/world', map);
@@ -21,7 +22,8 @@ export async function auditReach(map: string): Promise<{ stranded: string[]; cov
     const m = /^r(-?\d+)-(-?\d+)\.bin$/.exec(f);
     if (m) insertRegion(world, Number(m[1]), Number(m[2]), new Uint8Array(await readFile(path.join(dir, 'regions', f))));
   }
-  const cells = await propCells(e.props);
+  // The child's home with every style she may pick standing at once: no pick may wall a target off.
+  const cells = await propCells(everyDecorProp(e));
   const [solid, blocking] = [await walkSolid(), await walkBlocking()];
   const grid = {
     size: world.size,

@@ -160,6 +160,20 @@ export async function mapModels(options: { standY: (x: number, z: number) => num
       const [ox, oz] = [-cx * s, -cz * s];
       addPropAt(model, [at[0] + ox * Math.cos(t) + oz * Math.sin(t), at[1], at[2] - ox * Math.sin(t) + oz * Math.cos(t)], yaw);
     },
+    /** Where a model's pivot stands from the spot it is placed by (its middle, for a corner-pivot model), unturned. */
+    offsetOf: (model: string): [number, number] => {
+      const [cx, cz] = centres.get(model) ?? [0, 0];
+      const s = scaleOf(model);
+      return [-cx * s + 0, -cz * s + 0];
+    },
+    /** A piece of a restyled slot (home-decor.ts) at its spot: by its middle, tagged with its slot. */
+    addSlotted: (model: string, at: readonly [number, number, number], yaw: number, slot: string): void => {
+      const [cx, cz] = centres.get(model) ?? [0, 0];
+      const s = scaleOf(model);
+      const t = (yaw * Math.PI) / 180;
+      const [ox, oz] = [-cx * s, -cz * s];
+      props.push({ model, position: [at[0] + ox * Math.cos(t) + oz * Math.sin(t), at[1], at[2] - ox * Math.sin(t) + oz * Math.cos(t)], yaw: yaw + 0, scale: s, slot });
+    },
     modelled: (model: string) => ({ model, scale: scaleOf(model) }),
     animated: (model: string) => ({ model, scale: scaleOf(model), animation: clips[model] ?? 'idle' }),
   };

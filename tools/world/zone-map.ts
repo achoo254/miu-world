@@ -1,21 +1,23 @@
 // A region map laid out as one zone per chapter (map-kit.ts has the parts every map shares): level ground
-// in each zone, rolling hills between them (the land round the map carries on past its edge), a path from the spawn to every zone, optional
+// (only the map's own hills and water change it; the land round the map carries on past its edge), a path from the spawn to every zone, optional
 // water (river, pond, moat) with plank decks wherever a path crosses it, the map's own structures and props
 // (its `build`), trees round the rest, and the quest targets of each chapter placed in its zone. A map file
 // gives the zones, the water and what to build; this file does the rest the same way for every such map.
 import path from 'node:path';
+import type { HomeDecorCatalog } from '../../packages/schema/src/home-decor';
 import { RegionCatalog } from '../../packages/schema/src/region';
 import { VoxelWorld } from '../../packages/voxel/src/chunk-format';
 import type { Interactable, WorldEntities } from '../../packages/voxel/src/world-entities';
 import { REPO_ROOT, readJson } from '../assets/asset-lib';
 import { cellsIn } from './chapters/place-quest-targets';
 import type { OutlandTheme } from '../../packages/voxel/src/outland';
+import { levelProfile } from '../../packages/voxel/src/outland-levelling';
 import { outlandSpecOf } from './outland-spec';
 import { columnsOf, fillColumn, heightField, loadBlocks, mapModels, PACK, placeRegionTargets, rollingHeight, scatterTrees, smoothstep, standHeight, WIDE_MAP_SIDE } from './map-kit';
 import { WAY_BLOCKS } from './scenery-audit';
 import { placeVillageLife, type Resident } from './village-life';
 import { createRng, hashSeed } from './noise';
-import { distanceToPath, pathColumns, type Point } from './structures/path';
+import { columnsAlong, distanceToPath, nearestOnPath, pathColumns, type Point } from './structures/path';
 
 /** A chapter's zone: a rectangle (centre, half sizes) whose ground is level and floored with `floor`. */
 export interface Zone {
@@ -71,6 +73,13 @@ export interface ZoneMapContext {
    * drawn but its `board`, a sign the game paints at runtime; with a model it stands as one.
    */
   target: (t: MapTarget) => void;
+  /**
+   * A spot of a piece the child restyles (`decor` of the spec, content/home/decor.json): the slot's default
+   * style stands here, tagged with the slot, and every other style is written for the game to put in its place.
+   */
+  decorSpot: (slot: string, at: readonly [number, number, number], yaw: number) => void;
+  /** The boxes of each part a block slot paints (role → boxes, inclusive): every other style's colours go there. */
+  decorBlocks: (slot: string, roles: Readonly<Record<string, ReadonlyArray<readonly [number, number, number, number, number, number]>>>) => void;
 }
 
 export interface MapTarget {
@@ -92,7 +101,12 @@ export interface ZoneMapSpec {
   outland: OutlandTheme;
   /** Side of the map in blocks, a multiple of 16 (default 800: owner, 01/10/2026, ten times the area of 256). */
   size?: number;
-  ground?: { ground: number; roll: number };
+  /**
+   * The map's ground height, and how far it rolls (default 0: level ground, owner 03/10/2026 — "tất cả map phần
+   * đường đang hơi nhấp nhô, sửa lại hết thành mặt phẳng"). Relief a map means, a hill, a mountain, a dyke, is
+   * its `shape`; water sinks under `water`.
+   */
+  ground?: { ground: number; roll?: number };
   /**
    * The map's own ground (block names, owner 02/10/2026: no two maps on the same green): its grass and its
    * lanes; the land round the map wears them too. Default grass and path.
@@ -102,8 +116,12 @@ export interface ZoneMapSpec {
   spawn: { x: number; z: number; yaw: number };
   /** The map's own landforms (a hill, a slope), from the shaped height of a column (before the water sinks it). */
   shape?: (x: number, z: number, h: number) => number;
-  /** Water at `level` over the columns `covers` names (its bed two blocks lower, sand on the banks). */
-  water?: { level: number; covers: (x: number, z: number) => boolean };
+  /**
+   * Water at `level` over the columns `covers` names (its bed two blocks lower), its banks stepping down to sand
+   * a block over it; `quay` names the banks that are stone-edged instead (a canal through a paved square): their
+   * ground keeps its height to the water's edge.
+   */
+  water?: { level: number; covers: (x: number, z: number) => boolean; quay?: (x: number, z: number) => boolean };
   /** The map's ways (lanes, bridges, spurs into the zones). */
   routes?: readonly Point[][];
   /** Also a straight way from the spawn to every zone's centre (default); false when `routes` already reach them. */
@@ -140,6 +158,10 @@ export interface ZoneMapSpec {
    */
   rides?: false | { vehicle?: { name: string; label: string; model: string }; stops?: ReadonlyArray<{ name: string; at: readonly [number, number]; to: readonly [number, number] }> };
   life?: (map: { zone: (chapter: number) => Zone; landmark: (id: string) => readonly [number, number] }) => readonly Resident[];
+  /** The styles the child may pick for the map's pieces (the child's home): the map writes every one. */
+  decor?: HomeDecorCatalog;
+  /** Places with a light of their own (indoors, a cave). */
+  moods?: WorldEntities['moods'];
 }
 
 const DEFAULT_DRESSING = {
@@ -150,6 +172,11 @@ const DEFAULT_DRESSING = {
 const SIGNPOST = `${PACK.survival}/signpost.glb`;
 const GATE = `${PACK.castle}/gate.glb`;
 const RIDE_MODEL = `${PACK.props}/automobile.glb`;
+/**
+ * How a way's bumps are levelled along it (packages/voxel outland-levelling.ts): runs up to a dozen blocks long, a
+ * block at most off the ground under them.
+ */
+const WAY_LEVELLING = { maxRun: 12, maxShift: 1 } as const;
 /** The hub every theme map has a gate back to. */
 export const HUB_REGION = 'trung-tam';
 
@@ -160,7 +187,7 @@ export async function generateZoneMap(spec: ZoneMapSpec): Promise<{ world: Voxel
   const side = (spec.size ?? WIDE_MAP_SIDE) / 16;
   const world = new VoxelWorld([side, 3, side]);
   const [sx, sy, sz] = world.size;
-  const ground = spec.ground ?? { ground: 12, roll: 3 };
+  const ground = { ground: spec.ground?.ground ?? 12, roll: spec.ground?.roll ?? 0 };
   const level = ground.ground;
   const zones = spec.zones;
   const zone = (chapter: number): Zone => {
@@ -184,9 +211,11 @@ export async function generateZoneMap(spec: ZoneMapSpec): Promise<{ world: Voxel
   const onPath = (x: number, z: number): boolean => pathCells.has(`${x},${z}`);
   const nearPath = (x: number, z: number, gap: number): boolean => routes.some((r) => distanceToPath(r, x, z) < gap);
 
-  // 1. Ground: level in the zones and round the spawn, low along the paths, sunk under the water.
+  // 1. Ground: level (rolling only if the map asks, then level in the zones and round the spawn and low along the
+  // paths), raised or sunk by the map's `shape`, sunk under the water.
   const spawnZone: Zone = { chapter: 0, id: 'spawn', name: '', x: spec.spawn.x, z: spec.spawn.z, hx: 4, hz: 4 };
-  const surface = heightField(world, (x, z) => {
+  const quay = (x: number, z: number): boolean => spec.water?.quay?.(x, z) ?? false;
+  const natural = heightField(world, (x, z) => {
     let h = rollingHeight(seed, x, z, ground);
     for (const zn of [...zones, spawnZone]) {
       const k = smoothstep(0, 6, outside(zn, x, z));
@@ -198,9 +227,34 @@ export async function generateZoneMap(spec: ZoneMapSpec): Promise<{ world: Voxel
     if (spec.shape) h = spec.shape(x, z, h);
     if (spec.water) {
       if (inWater(x, z)) h = spec.water.level - 2;
-      else if (waterNear(x, z, 2)) h = Math.min(h, spec.water.level + 1);
+      else if (waterNear(x, z, 2) && !quay(x, z)) h = Math.min(h, spec.water.level + 1);
     }
     return Math.round(Math.min(h, sy - 16));
+  }, level);
+  // Every way lies level (owner, 03/10/2026: the ways flat, only real slopes climb): its ground block by block
+  // along its middle line has its one-block bumps and dips levelled (a real climb stays), and every column of it
+  // takes the height at its nearest point of that line, so a way along a slope or a bank is never tilted across.
+  const wayHeights = routes.map((r) => levelProfile(columnsAlong(r).map(([x, z]) => (inWater(x, z) ? Number.NaN : natural(x, z))), WAY_LEVELLING));
+  const wayHeight = (x: number, z: number): number => {
+    let best = { d: Infinity, along: 0, route: -1 };
+    for (const [route, r] of routes.entries()) {
+      const p = nearestOnPath(r, x, z);
+      if (p.d < best.d) best = { d: p.d, along: p.along, route };
+    }
+    const h = wayHeights[best.route]?.[Math.round(best.along)] ?? Number.NaN;
+    return Number.isNaN(h) ? natural(x, z) : h;
+  };
+  const laid = heightField(world, (x, z) => (onPath(x, z) && !inWater(x, z) ? wayHeight(x, z) : natural(x, z)), level);
+  // Where ways meet, a column a block off its neighbours on both sides along the way takes their height.
+  const surface = heightField(world, (x, z) => {
+    const h = laid(x, z);
+    if (!onPath(x, z) || inWater(x, z)) return h;
+    const wayAt = (wx: number, wz: number): number => (onPath(wx, wz) && !inWater(wx, wz) ? laid(wx, wz) : Number.NaN);
+    for (const [dx, dz] of [[1, 0], [0, 1]] as const) {
+      const [before, after] = [wayAt(x - dx, z - dz), wayAt(x + dx, z + dz)];
+      if (before === after && Math.abs(before - h) === 1) return before;
+    }
+    return h;
   }, level);
 
   // 2. Soil, zone floors, paths, water.
@@ -215,7 +269,7 @@ export async function generateZoneMap(spec: ZoneMapSpec): Promise<{ world: Voxel
         continue;
       }
       const zn = inZone(x, z);
-      const bank = spec.water !== undefined && waterNear(x, z, 1);
+      const bank = spec.water !== undefined && waterNear(x, z, 1) && !quay(x, z);
       const top = onPath(x, z) ? B.path : bank ? B.sand : zn?.floor ? block(zn.floor) : B.grass;
       fillColumn(world, x, z, h, { stone: B.stone, under: bank ? B.sand : B.dirt, top });
     }
@@ -238,6 +292,13 @@ export async function generateZoneMap(spec: ZoneMapSpec): Promise<{ world: Voxel
   const kept: Array<[number, number, number, number]> = [];
   const landmarks: Landmark[] = [];
   const ownTargets: MapTarget[] = [];
+  const decorSpots: Array<{ slot: string; at: readonly [number, number, number]; yaw: number }> = [];
+  const decorBlocks: NonNullable<WorldEntities['decorBlocks']> = [];
+  const decorSlot = (id: string): HomeDecorCatalog['slots'][number] => {
+    const slot = spec.decor?.slots.find((s) => s.id === id);
+    if (!slot) throw new Error(`${spec.mapId}: decor slot ${id} is not in the catalogue`);
+    return slot;
+  };
   const keptOut = (x: number, z: number, pad = 0): boolean => kept.some(([x0, z0, x1, z1]) => x >= x0 - pad && x <= x1 + pad && z >= z0 - pad && z <= z1 + pad);
   spec.build({
     world,
@@ -259,6 +320,23 @@ export async function generateZoneMap(spec: ZoneMapSpec): Promise<{ world: Voxel
     keptOut,
     landmark: (id, name, x, z, y) => landmarks.push({ id, name, position: [x + 0.5, y ?? level + 1, z + 0.5] }),
     target: (t) => ownTargets.push(t),
+    decorSpot: (slot, at, yaw) => {
+      if (!decorSlot(slot).options.every((o) => o.models)) throw new Error(`${spec.mapId}: decor slot ${slot} paints blocks, it has no spots`);
+      decorSpots.push({ slot, at, yaw });
+    },
+    decorBlocks: (slotId, roles) => {
+      const slot = decorSlot(slotId);
+      const base = slot.options.find((o) => o.id === slot.default)?.blocks;
+      if (!base) throw new Error(`${spec.mapId}: decor slot ${slotId} places models, it paints no blocks`);
+      for (const option of slot.options) {
+        if (option.id === slot.default) continue;
+        for (const [role, boxes] of Object.entries(roles)) {
+          const [from, to] = [base[role], option.blocks?.[role]];
+          if (!from || !to) throw new Error(`${spec.mapId}: decor ${slotId}/${option.id} has no block for ${role}`);
+          if (from !== to && boxes.length > 0) decorBlocks.push({ slot: slotId, option: option.id, from: block(from), to: block(to), boxes: boxes.map((b) => [...b] as [number, number, number, number, number, number]) });
+        }
+      }
+    },
   });
 
   // 3b. Dress every zone: small things on a jittered grid, clear of paths, water and buildings.
@@ -293,6 +371,23 @@ export async function generateZoneMap(spec: ZoneMapSpec): Promise<{ world: Voxel
     else if (q.kind === 'centred-at') models.addCentred(q.model, q.at, q.yaw);
     else if (q.kind === 'centred') models.addCentred(q.model, models.place(q.x, q.z), q.yaw);
     else models.addProp(q.model, q.x, q.z, q.yaw);
+  }
+  // The restyled pieces: each spot's default style placed (tagged), every other style written for the game.
+  const decorModels: NonNullable<WorldEntities['decorModels']> = [];
+  for (const [i, spot] of decorSpots.entries()) {
+    const slot = decorSlot(spot.slot);
+    const own = slot.options.find((o) => o.id === slot.default);
+    const styles = own?.models ?? [];
+    const model = styles[decorSpots.filter((d, k) => k < i && d.slot === spot.slot).length % styles.length];
+    if (!own || !model) throw new Error(`${spec.mapId}: decor slot ${spot.slot} has no default model`);
+    models.addSlotted(model, spot.at, spot.yaw + (own.turn ?? 0), spot.slot);
+  }
+  for (const slot of spec.decor?.slots ?? []) {
+    if (!decorSpots.some((d) => d.slot === slot.id)) continue;
+    for (const option of slot.options) {
+      if (option.id === slot.default) continue;
+      for (const model of option.models ?? []) decorModels.push({ slot: slot.id, option: option.id, model, scale: models.scaleOf(model), offset: models.offsetOf(model), turn: option.turn ?? 0 });
+    }
   }
   // A signpost at the corner of each zone nearest the spawn, naming it.
   for (const zn of zones) {
@@ -447,6 +542,9 @@ export async function generateZoneMap(spec: ZoneMapSpec): Promise<{ world: Voxel
     landmarks: [...zones.map((zn) => ({ id: zn.id, name: zn.name, position: [zn.x + 0.5, level + 1, zn.z + 0.5] as [number, number, number] })), ...landmarks],
     ...(ambients.length > 0 ? { ambients } : {}),
     outland: await outlandSpecOf(world, seed, spec.outland, level, spec.soil),
+    ...(spec.moods && spec.moods.length > 0 ? { moods: spec.moods } : {}),
+    ...(decorSpots.length > 0 ? { decorAnchors: decorSpots.map((d) => ({ slot: d.slot, position: [d.at[0], d.at[1], d.at[2]] as [number, number, number], yaw: d.yaw + 0 })), decorModels } : {}),
+    ...(decorBlocks.length > 0 ? { decorBlocks } : {}),
   };
   return { world, entities };
 }

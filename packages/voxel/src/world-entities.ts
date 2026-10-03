@@ -4,6 +4,7 @@ import { z } from 'zod';
 import { outlandSpecSchema } from './outland';
 
 const vec3 = z.tuple([z.number(), z.number(), z.number()]);
+const id = z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/);
 
 export const INTERACTABLE_KINDS = ['object', 'npc', 'riddle', 'chest', 'gate'] as const;
 export type InteractableKind = (typeof INTERACTABLE_KINDS)[number];
@@ -123,8 +124,11 @@ const ambientSchema = z.object({
 });
 export type Ambient = z.infer<typeof ambientSchema>;
 
-/** Light of a place that is not the day's (`moods` of a map). */
-export const PLACE_MOODS = ['night', 'cave'] as const;
+/**
+ * Light of a place that is not the day's (`moods` of a map): a moonlit night, a cave's dim, the warm gold of
+ * lamplight indoors, a golden late afternoon outdoors.
+ */
+export const PLACE_MOODS = ['night', 'cave', 'warm', 'golden'] as const;
 export type PlaceMood = (typeof PLACE_MOODS)[number];
 
 export const worldEntitiesSchema = z
@@ -142,7 +146,15 @@ export const worldEntitiesSchema = z
     chapterSpawns: z.record(z.string().regex(/^[0-9]+$/), z.object({ position: vec3, yaw: z.number() })).optional(),
     interactables: z.array(interactableSchema),
     props: z.array(
-      z.object({ model: z.string(), position: vec3, yaw: z.number(), scale: z.number().positive(), chapter: z.number().int().min(1).optional() }),
+      z.object({
+        model: z.string(),
+        position: vec3,
+        yaw: z.number(),
+        scale: z.number().positive(),
+        chapter: z.number().int().min(1).optional(),
+        /** A piece the child may restyle (content/home/decor.json): this is its default; another pick replaces it. */
+        slot: id.optional(),
+      }),
     ),
     landmarks: z.array(z.object({ id: z.string(), name: z.string(), position: vec3 })),
     /** Absent on maps without ambient life yet. */
@@ -154,6 +166,23 @@ export const worldEntitiesSchema = z
      * mocks): walking into one, the light eases to `night` (a moonlit sky) or `cave` (dim, lamps glowing).
      */
     moods: z.array(z.object({ mood: z.enum(PLACE_MOODS), x0: z.number(), z0: z.number(), x1: z.number(), z1: z.number() })).optional(),
+    /**
+     * The spots of the pieces the child restyles (home-decor.ts): each slot's spots in order, where a picked
+     * style's models stand (feet) and which way they face.
+     */
+    decorAnchors: z.array(z.object({ slot: id, position: vec3, yaw: z.number() })).optional(),
+    /**
+     * Every style but the default one of each slot, as the models it stands at that slot's spots (one after
+     * another round them): scale, the shift from the spot to the model's pivot (a corner-pivot model stands by
+     * its middle) and its turn past the spot's facing.
+     */
+    decorModels: z
+      .array(z.object({ slot: id, option: id, model: z.string(), scale: z.number().positive(), offset: z.tuple([z.number(), z.number()]), turn: z.number() }))
+      .optional(),
+    /** Every style but the default one of each block slot: block `from` becomes `to` inside each box (inclusive). */
+    decorBlocks: z
+      .array(z.object({ slot: id, option: id, from: z.number().int().min(1), to: z.number().int().min(1), boxes: z.array(z.tuple([z.number().int(), z.number().int(), z.number().int(), z.number().int(), z.number().int(), z.number().int()])).min(1) }))
+      .optional(),
   })
   .superRefine((entities, ctx) => {
     const seen = new Set<string>();

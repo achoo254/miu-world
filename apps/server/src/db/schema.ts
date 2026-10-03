@@ -1,5 +1,6 @@
 import { sql } from 'drizzle-orm';
 import { doublePrecision, index, integer, jsonb, pgTable, primaryKey, smallint, text, timestamp, unique, uuid } from 'drizzle-orm/pg-core';
+import type { DecorChoices } from '@miu/schema/home-decor';
 import type { Timetable } from '@miu/schema/timetable';
 
 // Ids are generated in the app (crypto.randomUUID) so the schema needs no Postgres extension and
@@ -181,5 +182,15 @@ export const playerPositions = pgTable(
 export const timetables = pgTable('timetables', {
   childId: childRef().primaryKey(),
   timetable: jsonb('timetable').$type<Timetable>().notNull(),
+  updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),
+});
+
+/**
+ * The styles the child picked for her home (content/home/decor.json: slot id → option id, checked against the
+ * catalogue by the routes). One row per child, none until her first pick; gone with the profile.
+ */
+export const homeDecor = pgTable('home_decor', {
+  childId: childRef().primaryKey(),
+  choices: jsonb('choices').$type<DecorChoices>().notNull(),
   updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),
 });

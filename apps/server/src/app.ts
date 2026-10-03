@@ -13,9 +13,12 @@ import { childProfileRoutes } from './child-profile/child-profile-routes';
 import type { ServerConfig } from './config';
 import { loadContentCatalog, type ContentCatalog } from './content/content-catalog';
 import type { Db } from './db/client';
+import { homeDecorRoutes, loadDecorCatalog } from './home/home-decor-routes';
 import { HttpError } from './http-error';
 import { playerPositionRoutes } from './player-position/player-position-routes';
 import { questRoutes } from './quest/quest-routes';
+import { loadShopCatalog } from './shop/shop-catalog';
+import { shopRoutes } from './shop/shop-routes';
 import { loadDefaultTimetable, timetableRoutes } from './timetable/timetable-routes';
 import { loadWorksheets } from './worksheet/worksheet-builder';
 import { worksheetRoutes } from './worksheet/worksheet-routes';
@@ -82,6 +85,10 @@ export function createApp({ config, db, content = loadContentCatalog(), workshee
   api.use(playerPositionRoutes({ db, content, clock }));
   api.use(questRoutes({ db, content, clock }));
   api.use(timetableRoutes({ db, content, clock, defaultTimetable: loadDefaultTimetable(config.timetableDefaultFile) }));
+  const decor = loadDecorCatalog();
+  const shop = loadShopCatalog(content.accessories, decor);
+  api.use(homeDecorRoutes({ db, content, clock, catalog: decor, shop }));
+  api.use(shopRoutes({ db, content, clock, shop }));
   api.use(worksheetRoutes({ worksheets, clock, fontDir: config.handwritingFontDir }));
   app.use('/api', api);
 

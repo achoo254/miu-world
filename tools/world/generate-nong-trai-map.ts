@@ -42,7 +42,6 @@ interface Rect {
   z1: number;
 }
 const rect = (x0: number, z0: number, x1: number, z1: number): Rect => ({ x0, z0, x1, z1 });
-const inRect = (r: Rect, x: number, z: number, pad = 0): boolean => x >= r.x0 - pad && x <= r.x1 + pad && z >= r.z0 - pad && z <= r.z1 + pad;
 
 // ── Water and mountains ──
 /** The river across the south of the map, west to east into the lake. */
@@ -177,12 +176,6 @@ const FARMSTEADS = [
 ] as const;
 /** A farmhouse: as big as the shared cottages (13 x 11, walls 7 high, a doorway three wide). */
 const FARMHOUSE = { w: 13, d: 11, wall: 7 };
-/** Flat ground: every field, every farmstead and the hamlet south-west of the farm. */
-const FLAT: readonly Rect[] = [
-  ...FIELDS.map((f) => f.r),
-  ...FARMSTEADS.map((f) => rect(Math.min(f.house, f.mill[0]) - 8, f.barn.z - 6, Math.max(f.house + FARMHOUSE.w + 1, f.mill[0] + 8), f.barn.z + f.barn.d + 6)),
-  rect(20, 446, 150, 528),
-];
 
 const N = PACK.nature;
 const S = PACK.survival;
@@ -265,13 +258,8 @@ export async function generateNongTrai() {
     zones: ZONES,
     // On the farm road facing the gate (d-02), the fields of the mock either side, the mountains beyond.
     spawn: { x: 402, z: 328, yaw: 0 },
-    // Flat fields and farmyards; gentle swells between them; the mountains rise south of the river.
-    shape: (x, z, h) => {
-      const m = mountain(x, z);
-      if (m > 0) return LEVEL + m;
-      if (FLAT.some((r) => inRect(r, x, z, 2))) return LEVEL;
-      return LEVEL + (h - LEVEL) * 0.45;
-    },
+    // Level fields, farmyards and tracks (owner, 03/10/2026); the mountains rise south of the river.
+    shape: (x, z) => LEVEL + mountain(x, z),
     water: { level: WATER_LEVEL, covers: inWater },
     pathsFromSpawn: false,
     routes: ROUTES,

@@ -15,6 +15,7 @@ import { insertRegion } from '../../packages/voxel/src/region-format';
 import type { WorldEntities } from '../../packages/voxel/src/world-entities';
 import { ASSETS_DIR, REPO_ROOT } from '../assets/asset-lib';
 import { auditRooms } from './room-audit';
+import { everyDecorProp } from '../../packages/voxel/src/home-decor';
 
 /** Surfaces that are ways: what a tree must not grow out of (it stands beside them, or in earth or a bed). */
 export const WAY_BLOCKS = ['path', 'trail', 'cobble', 'cobble-grey', 'paver', 'asphalt'] as const;
@@ -130,9 +131,10 @@ export async function auditScenery(map: string): Promise<SceneryFinding[]> {
     }
   }
 
-  // Props: tree models on a way, and solid props on a way's middle (way cells on both sides along x or z).
+  // Props: tree models on a way, and solid props on a way's middle (way cells on both sides along x or z); the
+  // child's home is checked with every style she may pick standing at once (home-decor.ts).
   const catalog = modelCatalogSchema.parse(JSON.parse(await readFile(path.join(REPO_ROOT, 'content/world/models.json'), 'utf8')));
-  for (const p of e.props) {
+  for (const p of everyDecorProp(e)) {
     const [x, z] = [Math.floor(p.position[0]), Math.floor(p.position[2])];
     const y = Math.floor(p.position[1]);
     if (!inside(x, z) || !pavedUnder(x, y - 1, z)) continue;

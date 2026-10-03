@@ -10,6 +10,7 @@
 // Water follows the core maps (zone-map.ts): a column whose ground is below `waterLevel` holds water from
 // ground + 1 up to and including `waterLevel`, so the water's top block is at y = waterLevel.
 import { createRng, fbm, hashSeed, valueNoise } from './noise';
+import { levelProfile } from './outland-levelling';
 import { OUTLAND_BOUNDS, type OutlandBlockName, type OutlandSpec, type OutlandTheme, type WorldBounds } from './outland';
 
 /** Highest ground of the outer land: room above it for a tree or a roof under the world's top. */
@@ -26,6 +27,8 @@ const ROAD_BLEND = 6;
 const ROAD_SLOPE = 0.5;
 /** Spacing of a road's points (and its height profile) along its length. */
 const ROAD_STEP = 4;
+/** A road's bumps levelled along it (outland-levelling.ts): runs of up to 48 blocks, a block off the land at most. */
+const ROAD_LEVELLING = { maxRun: 12, maxShift: 1 } as const;
 /** A village's pad is level out to its radius, then eases into the land over this many blocks. */
 const PAD_BLEND = 20;
 /** Rise of a valley side per block away from the water's edge. */
@@ -1223,7 +1226,8 @@ function roadLine(head: readonly number[], bx: number, bz: number, seed: number,
 /**
  * The height along a road: the land under it with valleys filled and hills cut, half each, to a slope of
  * at most ROAD_SLOPE per block (the mean of the largest such profile below the land and the smallest above
- * it, both exact), never under a bridge's deck one block over the water.
+ * it, both exact), in whole blocks with its small bumps levelled, never under a bridge's deck one block over
+ * the water.
  */
 function roadProfile(plan: OutlandPlan, pts: Float64Array): Float64Array {
   const n = pts.length / 2;
@@ -1245,9 +1249,11 @@ function roadProfile(plan: OutlandPlan, pts: Float64Array): Float64Array {
     cut[i] = Math.min(cut[i] ?? 0, (cut[i + 1] ?? 0) + gap(i));
     fill[i] = Math.max(fill[i] ?? 0, (fill[i + 1] ?? 0) - gap(i));
   }
-  const out = new Float64Array(n);
-  for (let i = 0; i < n; i++) out[i] = Math.max(((cut[i] ?? 0) + (fill[i] ?? 0)) / 2, wl + 1);
-  return out;
+  const out: number[] = [];
+  for (let i = 0; i < n; i++) out.push(Math.round(Math.max(((cut[i] ?? 0) + (fill[i] ?? 0)) / 2, wl + 1)));
+  // In whole blocks, the rolling land's one-block bumps and dips levelled: the road runs level and climbs only
+  // over the hills (owner, 03/10/2026: the ways flat).
+  return Float64Array.from(levelProfile(out, ROAD_LEVELLING), (h) => Math.max(h, wl + 1));
 }
 
 function layRoads(plan: OutlandPlan, rng: () => number, roads: Road[]): void {

@@ -289,7 +289,8 @@ function shapeLand(x: number, z: number, h: number): number {
     out += Math.floor(add / 3) * 3;
   }
   if (x > 596 && z < 450) {
-    const hill = Math.round(4 * smoothstep(600, 700, x) * (0.6 + 0.4 * fbm(SEED + 3, x / 30, z / 30)));
+    // The hills ease down to the high ground before its slope to the town (no ledge across the east road).
+    const hill = Math.round(4 * smoothstep(600, 700, x) * smoothstep(450, 426, z) * (0.6 + 0.4 * fbm(SEED + 3, x / 30, z / 30)));
     out += hill * (1 - rectWeight(x, z, CAMP.x0, CAMP.z0, CAMP.x1, CAMP.z1, 6));
   }
   const low = smoothstep(450, 500, z);
@@ -303,7 +304,7 @@ export async function generateLauDai() {
     seedText: 'miu-lau-dai',
     outland: 'castle',
     soil: { grass: 'grass-castle', path: 'cobble-grey' },
-    ground: { ground: LEVEL, roll: 3 },
+    ground: { ground: LEVEL },
     zones: ZONES,
     spawn: { x: SPAWN.x, z: SPAWN.z, yaw: 0 },
     shape: shapeLand,

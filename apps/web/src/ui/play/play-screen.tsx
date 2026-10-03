@@ -17,10 +17,13 @@ import { BackpackPanel } from '../backpack/backpack-panel';
 import { buttonClass } from '../kit/button';
 import { Modal } from '../kit/modal';
 import { QuestBoard } from '../region/region-detail';
-import { DEFAULT_REGION, findRegion, regionMap } from '../region/regions';
+import { DEFAULT_REGION, HOME_REGION, findRegion, regionMap } from '../region/regions';
 import { LoadingOverlay } from '../system/loading-overlay';
 import { OfflineBanner } from '../system/offline-banner';
 import { PauseScreen } from '../system/pause-screen';
+import { DECOR_TARGET } from '../home-decor/decor-catalog';
+import { loadHomeDecor } from '../home-decor/home-decor-api';
+import { HomeDecorPanel } from '../home-decor/home-decor-panel';
 import { TimetablePanel } from '../timetable/timetable-panel';
 import { TIMETABLE_TARGETS, type TimetableFocus } from '../timetable/timetable-targets';
 import { createPositionSaver, loadPlayerPositions } from './player-position';
@@ -91,6 +94,7 @@ function GameView({
   region,
   quest,
   savedSpot,
+  decor,
   paused,
   onSpotReader,
 }: {
@@ -106,6 +110,8 @@ function GameView({
   quest?: string;
   /** Where the child last stood on this region's map, if anywhere. */
   savedSpot: PlayerPosition | null;
+  /** The child's picks for her home (its map only): the house is built in them. */
+  decor?: Readonly<Record<string, string>>;
   paused: boolean;
   /** Hands over a reader of where the child stands in the running game (null once it is gone), so a quest switch on the same map keeps the spot. */
   onSpotReader: (read: (() => PlayerPosition | null) | null) => void;
@@ -113,9 +119,12 @@ function GameView({
   const host = useRef<HTMLDivElement>(null);
   const game = useRef<Game | null>(null);
   const outfitKey = outfit.join(',');
+  // New picks rebuild the house: the game is rebuilt where the child stands (the caller keeps her spot).
+  const decorKey = decor ? JSON.stringify(decor) : '';
   useEffect(() => {
     if (!host.current) return;
-    const instance = new Game(host.current, { store, search: window.location.search, playerName, species, pet, outfit: outfitKey ? outfitKey.split(',') : [], chapter, region, quest, savedSpot });
+    const picks = decorKey ? (JSON.parse(decorKey) as Record<string, string>) : undefined;
+    const instance = new Game(host.current, { store, search: window.location.search, playerName, species, pet, outfit: outfitKey ? outfitKey.split(',') : [], chapter, region, quest, savedSpot, decor: picks });
     game.current = instance;
     onSpotReader(() => instance.currentSpot());
     void instance.start();
@@ -138,7 +147,7 @@ function GameView({
       if (game.current === instance) game.current = null;
       onSpotReader(null);
     };
-  }, [store, playerName, species, pet, outfitKey, chapter, region, quest, savedSpot, onSpotReader]);
+  }, [store, playerName, species, pet, outfitKey, chapter, region, quest, savedSpot, decorKey, onSpotReader]);
   // Full-screen screens stop rendering (Master Plan §12); React only calls stop/resume.
   useEffect(() => {
     if (paused) game.current?.stop();
@@ -173,6 +182,10 @@ export function PlayScreen() {
   const [questsOpen, setQuestsOpen] = useState(false);
   /** The timetable board in the child's home, opened at the timetable or at the uniform calendar. */
   const [timetable, setTimetable] = useState<TimetableFocus | null>(null);
+  /** The decorating screen of the child's home. */
+  const [decorOpen, setDecorOpen] = useState(false);
+  /** The child's picks for her home, read before her home's map is built (null until known; others need none). */
+  const [decor, setDecor] = useState<Record<string, string> | null>(null);
   /** The map on screen loads after a gate: its loading screen is the trip through the portal. */
   const [viaPortal, setViaPortal] = useState(false);
   const spotOf = useRef<(() => PlayerPosition | null) | null>(null);
@@ -241,7 +254,27 @@ export function PlayScreen() {
   const region = quest?.quest.region ?? DEFAULT_REGION;
   // An element of `positions` (set once), so the same object on every render: the game is not rebuilt.
   const savedSpot = positions?.find((p) => p.map === regionMap(region)) ?? null;
-  const covered = paused || questOpen || backpackOpen || questsOpen || timetable !== null;
+  const covered = paused || questOpen || backpackOpen || questsOpen || timetable !== null || decorOpen;
+  const atHome = data !== null && regionMap(region) === regionMap(HOME_REGION);
+  // Her home is built in her picks: they are read first (a failed read builds the house as it comes).
+  useEffect(() => {
+    if (!atHome || decor !== null) return;
+    let live = true;
+    loadHomeDecor().then(
+      (d) => live && setDecor(d.choices),
+      () => live && setDecor({}),
+    );
+    return () => {
+      live = false;
+    };
+  }, [atHome, decor]);
+
+  /** New picks saved: the house is rebuilt in them, the child where she stood. */
+  function decorated(choices: Record<string, string>): void {
+    const spot = spotOf.current?.() ?? null;
+    if (spot) setPositions((list) => [...(list ?? []).filter((p) => p.map !== spot.map), spot]);
+    setDecor(choices);
+  }
 
   /**
    * Every quest of the map can be taken from the in-game board: the game is rebuilt with that quest's
@@ -285,6 +318,7 @@ export function PlayScreen() {
         interacted.current = last.count;
         const focus = TIMETABLE_TARGETS.get(last.targetId);
         if (focus) setTimetable(focus);
+        if (last.targetId === DECOR_TARGET) setDecorOpen(true);
       }),
     [store],
   );
@@ -295,8 +329,8 @@ export function PlayScreen() {
   return (
     <GameStoreContext.Provider value={store}>
       <main data-id="play">
-        {data && positions ? (
-          <GameView store={store} playerName={data.character.name} species={data.character.species} pet={data.character.pet} outfit={data.character.equipped} chapter={quest?.quest.chapter ?? 1} region={region} quest={quest?.quest.id} savedSpot={savedSpot} paused={covered} onSpotReader={onSpotReader} />
+        {data && positions && (!atHome || decor !== null) ? (
+          <GameView store={store} playerName={data.character.name} species={data.character.species} pet={data.character.pet} outfit={data.character.equipped} chapter={quest?.quest.chapter ?? 1} region={region} quest={quest?.quest.id} savedSpot={savedSpot} decor={atHome ? (decor ?? undefined) : undefined} paused={covered} onSpotReader={onSpotReader} />
         ) : null}
         {loadError ? (
           <div className="play-message" role="alert">
@@ -331,6 +365,7 @@ export function PlayScreen() {
           </Modal>
         ) : null}
         {timetable ? <TimetablePanel focus={timetable} onClose={() => setTimetable(null)} /> : null}
+        {decorOpen ? <HomeDecorPanel onClose={() => setDecorOpen(false)} onSaved={decorated} /> : null}
         {data ? <QuestLayer key={questId ?? 'none'} store={store} data={data} questId={quest?.quest.id ?? null} region={region} onResponse={onResponse} onOverlayChange={setQuestOpen} draftOwner={draftOwner} /> : null}
         {paused ? (
           <PauseScreen

@@ -134,8 +134,10 @@ export function fishingHouse(k: IslandKit, house: IslandHouse, n: number): Built
   furnish(k, h, M.barrel, side(w - 2), 1);
   furnish(k, h, M.crate, side(w - 2), 2, 15);
   furnish(k, h, `${FURNITURE}/table.glb`, side(w - 4), d - 3, 0, true);
-  furnish(k, h, `${FURNITURE}/chair.glb`, side(w - 5), d - 3, 90, true);
-  furnish(k, h, `${FURNITURE}/chair.glb`, side(w - 3), d - 3, 270, true);
+  // The chairs face the table (the pack's chair faces its +z: turned 90 it faces +u), on either side of it.
+  const towardTable = (u: number): number => (side(w - 4) > side(u) ? 90 : 270);
+  furnish(k, h, `${FURNITURE}/chair.glb`, side(w - 5), d - 3, towardTable(w - 5), true);
+  furnish(k, h, `${FURNITURE}/chair.glb`, side(w - 3), d - 3, towardTable(w - 3), true);
   furnish(k, h, `${FURNITURE}/lampRoundFloor.glb`, side(w - 2), d - 2, 0, true);
   furnish(k, h, `${FURNITURE}/rugRectangle.glb`, Math.floor(w / 2), Math.floor(d / 2), 0, true);
   return h;

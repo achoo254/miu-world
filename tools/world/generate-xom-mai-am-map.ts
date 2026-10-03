@@ -788,8 +788,8 @@ export async function generateXomMaiAm() {
         kerb: B.cobbleGrey, cap: B.grey, water: B.water, post: B.log, roof: B.planks, ridge: B.log, paving: B.cobble, border: B.cobbleGrey,
       });
       ctx.propAt(box('hanging-bucket'), [well.rope[0], well.rope[1] - 1.8, well.rope[2] - 0.6], 0);
-      // Barrels and the bucket stand off the paving's edge, so its ring stays clear to walk round.
-      for (const [dx, dz, model, yaw] of [[-6, 3, M.barrel, 0], [-7, 1, M.barrel, 40], [-5, 4, M.bucket, 20], [3, 3, box('flower-pot'), 0], [4, -2, box('flower-pot'), 0], [-3, -3, box('flower-pot'), 0], [4, 1, M.crate, 15]] as const) {
+      // Barrels, the bucket, the pots and the crate stand off the paving's edge, so its ring stays clear to walk round.
+      for (const [dx, dz, model, yaw] of [[-6, 3, M.barrel, 0], [-7, 1, M.barrel, 40], [-5, 4, M.bucket, 20], [6, 3, box('flower-pot'), 0], [6, -2, box('flower-pot'), 0], [-4, -5, box('flower-pot'), 0], [6, 1, M.crate, 15]] as const) {
         ctx.prop(model, WELL.x + dx, WELL.z + dz, yaw);
       }
       placeAncientTree(world, 413, ground + 1, 121, { log: block('tree-log'), leaves: B.leaves, core: B.log }, rng);

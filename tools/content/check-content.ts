@@ -8,6 +8,7 @@ import { CONTENT_DIR, loadContentCatalog, readQuestDefinitions } from '../../app
 import { playerTextIssues } from '../../packages/quest/src/player-name';
 import { PrivacyDocument, stepTargets, type QuestDefinition } from '../../packages/schema/src/content';
 import { accessoryArtPath } from '../../packages/schema/src/accessory-art';
+import { HomeDecorCatalog } from '../../packages/schema/src/home-decor';
 import { Item } from '../../packages/schema/src/item';
 import { PetCatalog, petArtPath } from '../../packages/schema/src/pet';
 import { BoxPropCatalog, EmojiPropCatalog, LookCatalog, QuestTargetCatalog } from '../../packages/schema/src/world-target';
@@ -38,6 +39,8 @@ const CATALOGUE_FILES = [
   'quests/',
   // One file per minigame (packages/schema/src/minigame.ts); quests' minigame steps are checked against them.
   'minigames/',
+  // The styles of the child's home (apps/server/src/home): the server reads it at boot.
+  'home/decor.json',
 ];
 /** Content files the asset tools validate when they build characters, atlases and maps (any file in a folder). */
 const ASSET_TOOL_FILES = [
@@ -346,6 +349,31 @@ export function checkRegionMentions(quests: Iterable<QuestDefinition>, regions: 
   return issues;
 }
 
+/**
+ * The home decor catalogue (content/home/decor.json) parses, and every style can be built: its models are
+ * licensed and in the model catalogue (their height and look), its blocks are solid blocks the walk rules
+ * treat as plain walls (painting a wall never opens or closes a way).
+ */
+export function checkHomeDecor(raw: unknown, manifestPaths: ReadonlySet<string>, catalogued: ReadonlySet<string>, blocks: ReadonlyMap<string, { solid?: boolean; liquid?: boolean; traversal?: string }>): string[] {
+  const parsed = HomeDecorCatalog.safeParse(raw);
+  if (!parsed.success) return [`content/home/decor.json: ${parsed.error.message}`];
+  const issues: string[] = [];
+  for (const slot of parsed.data.slots) {
+    for (const option of slot.options) {
+      for (const model of option.models ?? []) {
+        if (!manifestPaths.has(model)) issues.push(`decor ${slot.id}/${option.id}: model ${model} is not in assets/manifest.json`);
+        if (!catalogued.has(model)) issues.push(`decor ${slot.id}/${option.id}: model ${model} has no line in content/world/models.json`);
+      }
+      for (const [role, name] of Object.entries(option.blocks ?? {})) {
+        const block = blocks.get(name);
+        if (!block) issues.push(`decor ${slot.id}/${option.id}: ${role} block ${name} is not in content/blocks.json`);
+        else if (block.solid === false || block.liquid || block.traversal) issues.push(`decor ${slot.id}/${option.id}: ${role} block ${name} must be a plain solid block`);
+      }
+    }
+  }
+  return issues;
+}
+
 /** The public privacy page parses and describes the consent version parents are asked to accept. */
 export function checkPrivacy(raw: unknown, consentVersion: string): string[] {
   const parsed = PrivacyDocument.safeParse(raw);
@@ -406,6 +434,18 @@ export function checkContent(dir: string = CONTENT_DIR): ContentReport {
         if (!boxProps.success) issues.push(`content/${rel}: ${boxProps.error.message}`);
       }
     } else issues.push(`content/${TARGETS_FILE} is missing: the map generators place quest targets from it`);
+    if (existsSync(path.join(dir, 'home/decor.json'))) {
+      const models = modelCatalogSchema.safeParse(read(MODELS_FILE));
+      const blockTable = read('blocks.json') as { blocks: Array<{ name: string; solid?: boolean; liquid?: boolean; traversal?: string }> };
+      issues.push(
+        ...checkHomeDecor(
+          read('home/decor.json'),
+          new Set([...manifest.files, ...manifest.generated].map((f) => f.path)),
+          new Set(Object.keys(models.success ? models.data.models : {})),
+          new Map(blockTable.blocks.map((b) => [b.name, b])),
+        ),
+      );
+    }
     const privacy: unknown = JSON.parse(readFileSync(path.join(dir, PRIVACY_FILE), 'utf8'));
     issues.push(...checkPrivacy(privacy, catalog.consent.version));
     if (PrivacyDocument.safeParse(privacy).data?.contactEmail === null) warnings.push(`content/${PRIVACY_FILE} has no contact email yet`);
