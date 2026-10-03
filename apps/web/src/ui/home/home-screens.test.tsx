@@ -88,7 +88,7 @@ describe('Home', () => {
     // Region cards: the open maps with their subject, the child's own home under the child's name; none locked.
     expect(screen.getByRole('button', { name: /Khu rừng bí mật/ }).textContent).toBe('Khu rừng bí mậtTiếng Việt');
     expect(screen.getByRole('button', { name: /Đảo bí ẩn/ }).textContent).toBe('Đảo bí ẩnKhám phá');
-    expect(screen.getByRole('button', { name: /Nhà của Mochi/ }).textContent).toBe('Nhà của MochiNhà · Thời khóa biểu');
+    expect(screen.getByRole('button', { name: /Nhà của Mochi/ }).textContent).toBe('Nhà của MochiNhà · Lịch học');
     expect(document.querySelector('.world-marker--locked')).toBeNull();
     // The rail of the mock, without the MVP's missing pieces (events, diamonds, streak).
     for (const name of ['Về nhà', 'Nhiệm vụ', 'Bản đồ', 'Ba lô']) expect(screen.getByRole('link', { name })).toBeTruthy();

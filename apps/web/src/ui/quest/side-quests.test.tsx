@@ -103,6 +103,8 @@ describe('side quests on the map', () => {
       'fetch',
       vi.fn(async (url: string) => {
         if (url.includes('category=side')) return json({ quests: [{ quest: SIDE, state: 'open', progress: progress([], 1) }] });
+        // The how-to card looks up the child's boosters (the shop): a read, not a result sent.
+        if (url.includes('/shop')) return json({ items: [], coins: 0, level: 1, owned: {} });
         posts.push(url);
         return json({});
       }),
