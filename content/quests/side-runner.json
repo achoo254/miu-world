@@ -1,0 +1,67 @@
+{
+  "id": "side-runner",
+  "region": "khu-rung-bi-mat",
+  "chapter": 1,
+  "title": "Chạy nhặt sao cùng Vẹt",
+  "status": "active",
+  "category": "side",
+  "summary": "Chạy dọc đường mòn trong rừng, nhảy qua đá, cúi qua cành cây và nhặt sao rơi.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, bạn chạy nhanh nhất rừng",
+    "where": "Đường mòn cạnh gốc cây của Vẹt",
+    "goal": "Nhặt đủ sao trước khi hết giờ",
+    "play": "Chạy, nhảy, cúi người né chướng ngại",
+    "learn": "Phản xạ nhanh và nhìn trước đoán sau",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Chạy lại để phá kỷ lục, hoặc tìm bạn khác trong rừng"
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "run",
+    "decision": "run",
+    "finale": "run",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Vẹt rủ chạy",
+      "kind": "dialogue",
+      "target": "parrot-guide",
+      "lines": [
+        { "speaker": "Vẹt", "text": "{name} ơi, sao băng rơi đầy đường mòn kìa!" },
+        { "speaker": "Vẹt", "text": "Chạy nhặt sao với tớ nhé, nhớ nhảy qua đá và cúi qua cành cây." }
+      ],
+      "choices": [{ "text": "Chạy thôi!" }]
+    },
+    {
+      "id": "run",
+      "title": "Chạy nhặt sao",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Nhặt hai mươi lăm ngôi sao trên đường mòn nhé!",
+      "game": "runner",
+      "goal": 25
+    },
+    {
+      "id": "thanks",
+      "title": "Vẹt reo hò",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Vẹt vỗ cánh: {name} chạy nhanh như gió!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn chạy tiếp",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Lúc nào muốn chạy nữa, cứ tìm Vẹt ở gốc cây nhé."
+    }
+  ],
+  "reward": { "xp": 15, "coin": 5 }
+}

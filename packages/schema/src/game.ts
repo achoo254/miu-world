@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { ContentId, QuestStepPublic, RewardSpec, WEEKDAYS } from './content';
+import { ContentId, MAX_MINIGAME_SCORE, QuestStepPublic, RewardSpec, WEEKDAYS } from './content';
 
 // Game DTOs for the active child profile. Diamonds are intentionally absent (not used in the MVP).
 
@@ -37,8 +37,13 @@ export const QuestProgressDto = z.object({
   completed: z.boolean(),
   /** Targets found so far, per search step. */
   found: z.record(ContentId, z.array(ContentId)),
-  /** 1–3, fixed when the quest was finished; null before that. */
+  /** 1–3, the best of the quest's finished runs; null before the first. */
   stars: z.number().int().min(1).max(3).nullable(),
+  /**
+   * The run the completed steps belong to: 1 the first time. A finished quest can be played again and pays
+   * again (owner, 03/10/2026): its next run is `run + 1`, named in every step request of that run. Absent: 1.
+   */
+  run: z.number().int().min(1).optional(),
 });
 export type QuestProgressDto = z.infer<typeof QuestProgressDto>;
 
@@ -133,11 +138,17 @@ export const StepAnswer = z.union([
   z.strictObject({ day: z.number().int().min(1).max(31) }),
   z.strictObject({ weekday: z.enum(WEEKDAYS) }),
   z.strictObject({ edges: z.array(z.tuple([ContentId, ContentId])).max(50) }),
+  /** A minigame round's score. */
+  z.strictObject({ score: z.number().int().min(0).max(MAX_MINIGAME_SCORE) }),
 ]);
 export type StepAnswer = z.infer<typeof StepAnswer>;
 
-/** Body of a step completion: an answer for learning steps, the found target for search steps. */
-export const StepCompleteRequest = z.object({ answer: StepAnswer.optional(), target: ContentId.optional() });
+/**
+ * Body of a step completion: an answer for learning steps, the found target for search steps, and the run it
+ * belongs to (`QuestProgressDto.run`). A finished quest only moves with the number of its next run, so a
+ * request sent twice never pays twice.
+ */
+export const StepCompleteRequest = z.object({ answer: StepAnswer.optional(), target: ContentId.optional(), run: z.number().int().min(1).max(1_000_000).optional() });
 export type StepCompleteRequest = z.infer<typeof StepCompleteRequest>;
 
 /** Textbook lesson a quest plays, as printed: teachers set homework by page or by lesson title. */
@@ -165,6 +176,8 @@ export const QuestView = z.discriminatedUnion('status', [
     title: z.string(),
     status: z.literal('active'),
     summary: z.string(),
+    /** `side`: a minigame side quest, listed apart from the lessons (`GET /quests?category=side`). Absent: main. */
+    category: z.enum(['main', 'side']).optional(),
     /** Passages the read steps point at (`textRef`). */
     texts: z.record(
       ContentId,
@@ -191,6 +204,9 @@ export const QuestSummary = z.object({ quest: QuestView, state: QuestState, prog
 export type QuestSummary = z.infer<typeof QuestSummary>;
 
 export const QuestListResponse = z.object({ quests: z.array(QuestSummary) });
+/** `GET /quests` lists the lessons; `?category=side` the side quests instead. */
+export const QuestCategory = z.enum(['main', 'side']);
+export type QuestCategory = z.infer<typeof QuestCategory>;
 export type QuestListResponse = z.infer<typeof QuestListResponse>;
 
 export const SupportLayer = z.enum(['guide', 'hint', 'answer']);

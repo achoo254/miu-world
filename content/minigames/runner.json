@@ -1,0 +1,14 @@
+{
+  "id": "runner",
+  "name": "Chạy vượt chướng ngại",
+  "family": "runner",
+  "howTo": [
+    "{name} tự chạy về phía trước trên đường mòn.",
+    "Chạm để nhảy qua đá và khúc gỗ, vuốt xuống để cúi qua cành cây.",
+    "Nhặt thật nhiều sao, va ba lần là hết lượt!"
+  ],
+  "controls": ["tap", "swipe"],
+  "duration": 45,
+  "goal": 30,
+  "params": { "speed": 1 }
+}

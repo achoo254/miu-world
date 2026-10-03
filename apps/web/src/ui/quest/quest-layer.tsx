@@ -17,6 +17,7 @@ import { CompletionSequence } from '../rewards/completion-sequence';
 import { REGION_MUSIC } from '../region/regions';
 import { playMood, useMusicMood } from '../sound/music-player';
 import { NotebookCard } from './notebook-card';
+import { useSideQuests } from './side-quests';
 import { StepDraftScope } from './step-draft';
 import { useQuestController } from './use-quest-controller';
 
@@ -40,18 +41,19 @@ export function QuestLayer({
   /** The child whose step drafts are kept (a reload resumes the step on screen where it was); none: not kept. */
   draftOwner?: string | null;
 }) {
-  // The notebook card covers the game too: what the quest covers and the card are reported together.
+  // The notebook card and a side quest's screens cover the game too: all of them are reported together.
   const questCovers = useRef(false);
   const [copy, setCopy] = useState<NotebookLine | null>(null);
+  const side = useSideQuests({ region, data, onResponse });
   const reportCover = useCallback(
     (open: boolean) => {
       questCovers.current = open;
-      onOverlayChange(open || copy !== null);
+      onOverlayChange(open || copy !== null || side.open);
     },
-    [onOverlayChange, copy],
+    [onOverlayChange, copy, side.open],
   );
-  useEffect(() => onOverlayChange(questCovers.current || copy !== null), [copy, onOverlayChange]);
-  const quest = useQuestController({ store, data, questId, onResponse, onOverlayChange: reportCover, draftOwner });
+  useEffect(() => onOverlayChange(questCovers.current || copy !== null || side.open), [copy, side.open, onOverlayChange]);
+  const quest = useQuestController({ store, data, questId, onResponse, onOverlayChange: reportCover, draftOwner, onSideTarget: side.claim });
   const navigate = useNavigate();
   const summary = data.quests.find((q) => q.quest.id === questId);
   const step = quest.overlay?.step ?? null;
@@ -59,7 +61,7 @@ export function QuestLayer({
   const [burstShown, setBurstShown] = useState(0);
   const learning = step !== null && step.kind !== 'dialogue';
   const questStarted = summary?.state === 'in-progress' && summary.progress.completedSteps.length > 0;
-  useMusicMood(playMood({ region, questStarted, learning, finished: quest.finished !== null }, REGION_MUSIC));
+  useMusicMood(playMood({ region, questStarted, learning: learning || side.open, finished: quest.finished !== null }, REGION_MUSIC));
   const endBurst = useCallback(() => setBurstShown(quest.cheers), [quest.cheers]);
   // A right answer: its question and the book's answer to copy into the vở (owner, 03/10/2026), from the server.
   const onRight = useCallback((line: NotebookLine) => setCopy(line), []);
@@ -109,6 +111,7 @@ export function QuestLayer({
           {quest.error}
         </p>
       ) : null}
+      {side.screens}
       {quest.retry ? <OfflineBanner onRetry={quest.retry} /> : null}
       {quest.toast ? <Toast message={quest.toast} onDone={quest.clearToast} /> : null}
       {quest.cheers > burstShown ? <AnswerBurst key={quest.cheers} onDone={endBurst} /> : null}

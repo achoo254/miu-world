@@ -10,7 +10,7 @@ import { ApiError, api, errorMessage } from '../api-client';
 import { say, type PlayerData } from '../player/player-data';
 import { TIMETABLE_TARGETS } from '../timetable/timetable-targets';
 import { DONE_LINES, FOUND_LINES, NOT_NOW_LINES, fillLine } from './loop-lines';
-import { autoStep, currentStep, hintTarget, stepForTarget, worldState, type ActiveQuestView } from './quest-flow';
+import { autoStep, currentStep, hintTarget, runFor, stepForTarget, worldState, type ActiveQuestView } from './quest-flow';
 import { clearDraft, readDraft, updateDraft } from './step-draft';
 
 /** How long the world cheers a finished quest before the reward screens (shorter under reduced motion: no confetti, no hops). */
@@ -54,9 +54,14 @@ interface Options {
   onOverlayChange?: (open: boolean) => void;
   /** The child whose step drafts are kept (step-draft.tsx); none: a reload starts the step afresh. */
   draftOwner?: string | null;
+  /**
+   * A touched target the quest has no step for: a minigame side quest may take it (its character offers a
+   * game). Returns true when it did, so no "not now" line is said.
+   */
+  onSideTarget?: (targetId: string) => boolean;
 }
 
-export function useQuestController({ store, data, questId, onResponse, onOverlayChange, draftOwner = null }: Options): QuestController {
+export function useQuestController({ store, data, questId, onResponse, onOverlayChange, draftOwner = null, onSideTarget }: Options): QuestController {
   const [overlay, setOverlayState] = useState<QuestOverlay>(null);
   const [finished, setFinished] = useState<FinishedQuest | null>(null);
   const [busy, setBusy] = useState(false);
@@ -67,9 +72,9 @@ export function useQuestController({ store, data, questId, onResponse, onOverlay
   const [error, setError] = useState<string | null>(null);
 
   // Latest values for store callbacks, which outlive a render.
-  const latest = useRef({ data, questId, overlay, busy, onResponse, onOverlayChange, draftOwner });
+  const latest = useRef({ data, questId, overlay, busy, onResponse, onOverlayChange, draftOwner, onSideTarget });
   useEffect(() => {
-    latest.current = { data, questId, overlay, busy, onResponse, onOverlayChange, draftOwner };
+    latest.current = { data, questId, overlay, busy, onResponse, onOverlayChange, draftOwner, onSideTarget };
   });
   /** The pending switch from the world's cheer to the reward screens. */
   const celebration = useRef<number | null>(null);
@@ -134,7 +139,9 @@ export function useQuestController({ store, data, questId, onResponse, onOverlay
       setBusy(true);
       setError(null);
       try {
-        const response = await api('POST', `/quests/${active.quest.id}/steps/${step.id}/complete`, StepCompleteResponse, body);
+        // Named with its run: a finished quest played again pays again, a resent request never twice.
+        const sent: StepCompleteRequest = { ...body, run: runFor(active.quest, active.progress) };
+        const response = await api('POST', `/quests/${active.quest.id}/steps/${step.id}/complete`, StepCompleteResponse, sent);
         setRetry(null);
         cover('retry', false);
         latest.current.onResponse(response);
@@ -208,8 +215,10 @@ export function useQuestController({ store, data, questId, onResponse, onOverlay
       // One call at a time: a pending offline retry is the only thing sent until it goes through.
       if (open || waiting || covers.current.retry) return;
       const active = activeQuest();
+      const step = active ? stepForTarget(active.quest, active.progress, targetId) : null;
+      // The lesson comes first; a character with nothing for it may offer a minigame.
+      if (!step && latest.current.onSideTarget?.(targetId)) return;
       if (!active) return;
-      const step = stepForTarget(active.quest, active.progress, targetId);
       if (!step) {
         const finished = currentStep(active.quest, active.progress) === null;
         const line = finished ? lineFrom('done', DONE_LINES) : lineFrom(`not-now:${kind}`, NOT_NOW_LINES[kind]);

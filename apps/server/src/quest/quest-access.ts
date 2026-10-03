@@ -1,5 +1,5 @@
 import { and, eq, isNotNull } from 'drizzle-orm';
-import type { ActiveQuest } from '@miu/schema/content';
+import type { ActiveQuest, PlayableQuest } from '@miu/schema/content';
 import type { QuestProgressDto, QuestState } from '@miu/schema/game';
 import type { ContentCatalog } from '../content/content-catalog';
 import type { Db } from '../db/client';
@@ -9,13 +9,30 @@ import type { Tx } from '../reward/reward-ledger';
 
 type ProgressRow = typeof questProgress.$inferSelect;
 
-export function progressDto(questId: string, row: ProgressRow | undefined): QuestProgressDto {
+/** Whether the row holds every step of the quest: the last run is over and the next has not started. */
+export function runFinished(row: Pick<ProgressRow, 'completedSteps' | 'completedAt'> | undefined, quest: PlayableQuest | undefined): boolean {
+  if (!row?.completedAt) return false;
+  // A quest gone from the catalogue (or now a stub) has no steps left to play.
+  if (quest?.status !== 'active') return true;
+  return quest.steps.every((s) => row.completedSteps.includes(s.id));
+}
+
+/**
+ * The run the row's steps belong to (`QuestProgressDto.run`): the last paid one while the quest stands
+ * finished, else the one under way (1 before the first finish).
+ */
+export function currentRun(row: Pick<ProgressRow, 'completedSteps' | 'completedAt'> | undefined, paid: number, quest: PlayableQuest | undefined): number {
+  return runFinished(row, quest) ? Math.max(1, paid) : paid + 1;
+}
+
+export function progressDto(questId: string, row: ProgressRow | undefined, paid: number, quest: PlayableQuest | undefined): QuestProgressDto {
   return {
     questId,
     completedSteps: row?.completedSteps ?? [],
     completed: row?.completedAt != null,
     found: row?.found ?? {},
     stars: row?.stars ?? null,
+    run: currentRun(row, paid, quest),
   };
 }
 

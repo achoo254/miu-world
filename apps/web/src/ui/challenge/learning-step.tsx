@@ -1,4 +1,4 @@
-// Picks the screen for a learning step (read, riddle, every challenge mechanic) or a textbook task
+// Picks the screen for a learning step (read, riddle, every challenge mechanic, a minigame) or a textbook task
 // without grading (speak, worksheet) and sends the answer. A wrong answer keeps the screen open with a
 // kind line (the server's feedback, else a rotating pool) and a soft tone; a right one plays a cheerful
 // sound and closes it (the controller moves on and bursts stars over the world).
@@ -26,6 +26,7 @@ import { MultiSelectChallenge } from './mechanics/multi-select-challenge';
 import { SpeakStepScreen } from './mechanics/speak-step';
 import { WorksheetStepScreen } from './mechanics/worksheet-step';
 import { isCount, useDraftState } from '../quest/step-draft';
+import { MinigameOverlay } from '../minigame/minigame-overlay';
 
 export function hasLearningScreen(step: QuestStepPublic): boolean {
   return step.kind === 'read' || step.kind === 'riddle' || step.kind === 'challenge' || step.kind === 'speak' || step.kind === 'worksheet';
@@ -104,5 +105,20 @@ export function LearningStep({
       return <CalendarChallenge step={step} context={context} onAnswer={answer} />;
     case 'connect':
       return <ConnectChallenge step={step} context={context} onAnswer={answer} />;
+    case 'minigame':
+      // A lesson's minigame: the round's score is the answer, sent when the child closes a won round (the
+      // quest's reward comes with its last step, as for any other challenge).
+      return (
+        <MinigameOverlay
+          game={step.game}
+          goal={step.goal}
+          params={step.params}
+          region={quest.region}
+          playerName={data.character.name}
+          species={data.character.species}
+          prompt={step.prompt}
+          onDone={(result) => (result?.won ? void submit(step, { answer: { score: result.score } }) : onClose())}
+        />
+      );
   }
 }

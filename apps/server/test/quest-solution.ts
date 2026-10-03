@@ -28,6 +28,8 @@ function answerFor(step: QuestStep): object | null {
       return step.answer;
     case 'connect':
       return { edges: step.answer.edges };
+    case 'minigame':
+      return { score: step.goal };
   }
 }
 

@@ -1,4 +1,4 @@
-import { and, eq, inArray } from 'drizzle-orm';
+import { and, eq, inArray, sql } from 'drizzle-orm';
 import type { ActiveQuest, RewardSpec } from '@miu/schema/content';
 import type { QuestCompletion } from '@miu/schema/game';
 import { levelFromXp } from '@miu/quest/level';
@@ -25,10 +25,12 @@ async function skillXpOf(tx: Tx, childId: string, skillIds: string[]): Promise<M
 }
 
 /**
- * Scores and pays a quest whose last step was just recorded, in the caller's transaction. Stars and
- * awarded XP are stored with the progress row so later counter changes never rewrite them.
+ * Scores and pays a run of a quest whose last step was just recorded, in the caller's transaction. Every
+ * run pays the quest's reward (owner, 03/10/2026); `run` names it in the ledger, so a run pays once. The
+ * progress row keeps the best stars of all runs and the XP of the latest, so later counter changes never
+ * rewrite them.
  */
-export async function finishQuest(tx: Tx, content: ContentCatalog, childId: string, quest: ActiveQuest, now: Date): Promise<FinishedQuest> {
+export async function finishQuest(tx: Tx, content: ContentCatalog, childId: string, quest: ActiveQuest, now: Date, run = 1): Promise<FinishedQuest> {
   const score = questScore(quest.reward.xp, await questEffort(tx, childId, quest.id));
   await clearAttempts(tx, childId, quest.id);
   const reward: RewardSpec = { ...structuredClone(quest.reward), xp: score.xpAwarded };
@@ -36,10 +38,10 @@ export async function finishQuest(tx: Tx, content: ContentCatalog, childId: stri
   const xpBefore = await totalXp(tx, childId);
   const skillsBefore = await skillXpOf(tx, childId, skillIds);
 
-  const granted = await grantReward(tx, childId, questSource(quest.id), reward, now);
+  const granted = await grantReward(tx, childId, questSource(quest.id, run), reward, now);
   await tx
     .update(questProgress)
-    .set({ stars: score.stars, xpAwarded: score.xpAwarded })
+    .set({ stars: sql`greatest(coalesce(${questProgress.stars}, 0), ${score.stars})`, xpAwarded: score.xpAwarded })
     .where(and(eq(questProgress.childId, childId), eq(questProgress.questId, quest.id)));
 
   const paid = granted ? reward : null;

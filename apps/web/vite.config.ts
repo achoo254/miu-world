@@ -9,11 +9,14 @@ import { VERSION_CHARS, manifestVersions } from './src/asset-versions.ts';
 import { SOUND_PATHS } from './src/ui/sound/cues.ts';
 import { MUSIC_PATHS } from './src/ui/sound/music.ts';
 import { UI_ART_PATHS } from './src/ui/kit/ui-art.ts';
+import { MINIGAME_SPRITE_PATHS } from './src/ui/minigame/sprites.ts';
 import { repoAssets } from './vite-repo-assets.ts';
 
 const APP_DIR = path.dirname(fileURLToPath(import.meta.url));
 const ASSETS_DIR = path.resolve(APP_DIR, '../../assets');
 const API_TARGET = 'http://127.0.0.1:8787';
+/** Files the React UI shows: its icons and art, and the minigames' pictures. */
+const UI_PATHS = [...new Set([...UI_ART_PATHS, ...MINIGAME_SPRITE_PATHS])];
 
 /**
  * Same-origin only: no third-party hosts, no `unsafe-eval`. The API is proxied under /api so
@@ -46,7 +49,7 @@ function assetVersionDefines(): Record<string, string> {
   const versions = manifestVersions([...manifest.files, ...manifest.generated]);
   // Item pictures are looked up by item id at runtime, so the whole folder is versioned.
   const itemArt = [...versions.keys()].filter((p) => p.startsWith(ACCESSORY_ART_DIR));
-  const ui = Object.fromEntries([...UI_ART_PATHS, ...SOUND_PATHS, ...MUSIC_PATHS, ...itemArt].flatMap((p) => (versions.has(p) ? [[p, versions.get(p)]] : [])));
+  const ui = Object.fromEntries([...UI_PATHS, ...SOUND_PATHS, ...MUSIC_PATHS, ...itemArt].flatMap((p) => (versions.has(p) ? [[p, versions.get(p)]] : [])));
   return {
     __MIU_MANIFEST_VERSION__: JSON.stringify(createHash('sha256').update(text).digest('hex').slice(0, VERSION_CHARS)),
     __MIU_UI_ASSET_VERSIONS__: JSON.stringify(ui),
@@ -66,12 +69,13 @@ const publicHosts = (process.env.MIU_PUBLIC_HOSTS ?? '')
 
 /**
  * `vite build --mode release` (production): the game only. Every other build (E2E, local review,
- * staging) also carries the review page, the render tool page and the review material they show.
+ * staging) also carries the review page, the render tool page, the minigame dev page and the review
+ * material they show.
  */
 export default defineConfig(({ mode }) => {
   const review = mode !== 'release';
   return {
-    plugins: [react(), contentSecurityPolicy(), repoAssets(ASSETS_DIR, APP_DIR, UI_ART_PATHS, { review })],
+    plugins: [react(), contentSecurityPolicy(), repoAssets(ASSETS_DIR, APP_DIR, UI_PATHS, { review })],
     define: assetVersionDefines(),
     publicDir: false,
     server: { proxy: apiProxy, allowedHosts: publicHosts },
@@ -82,7 +86,10 @@ export default defineConfig(({ mode }) => {
       rollupOptions: {
         input: {
           index: path.join(APP_DIR, 'index.html'),
-          ...(review ? { preview: path.join(APP_DIR, 'preview.html'), review: path.join(APP_DIR, 'review.html') } : {}),
+          // The minigame dev page opens any game without signing in: review builds only, like the render tool.
+          ...(review
+            ? { preview: path.join(APP_DIR, 'preview.html'), review: path.join(APP_DIR, 'review.html'), minigame: path.join(APP_DIR, 'minigame.html') }
+            : {}),
         },
         output: {
           // Zod and its jitless setting share one chunk, so the setting is applied before any other chunk

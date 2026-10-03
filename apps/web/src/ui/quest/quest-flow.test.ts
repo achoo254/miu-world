@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { QuestStepPublic } from '@miu/schema/content';
 import type { QuestProgressDto } from '@miu/schema/game';
-import { autoStep, currentStep, hintTarget, searchCount, stepForTarget, worldState, type ActiveQuestView } from './quest-flow';
+import { autoStep, currentStep, hintTarget, runFor, searchCount, stepForTarget, worldState, type ActiveQuestView } from './quest-flow';
 
 const steps = [
   { id: 'meet-parrot', title: 'Gặp Vẹt', kind: 'dialogue', target: 'parrot-guide', lines: [{ speaker: 'Vẹt', text: 'Chào {name}!' }] },
@@ -72,5 +72,15 @@ describe('quest flow', () => {
     if (!search) throw new Error('missing step');
     expect(searchCount(search, progress(['meet-parrot'], { 'find-clues': ['clue-letter'] }))).toEqual({ found: 1, total: 2 });
     expect(currentStep(quest, progress(steps.map((s) => s.id)))).toBeNull();
+  });
+
+  it('plays a finished quest again from its first step, as the next run', () => {
+    const all = steps.map((s) => s.id);
+    expect(runFor(quest, progress([]))).toBe(1);
+    expect(runFor(quest, { ...progress(all), completed: true, run: 1 })).toBe(2);
+    expect(runFor(quest, { ...progress(['meet-parrot']), completed: true, run: 2 })).toBe(2);
+    expect(stepForTarget(quest, { ...progress(all), completed: true, run: 1 }, 'parrot-guide')?.id).toBe('meet-parrot');
+    expect(stepForTarget(quest, { ...progress(all), completed: true, run: 1 }, 'chest')).toBeNull();
+    expect(hintTarget(quest, progress(all))).toBeNull();
   });
 });

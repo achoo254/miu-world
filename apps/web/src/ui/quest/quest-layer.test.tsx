@@ -72,8 +72,9 @@ describe('quest controller', () => {
     };
   }
 
-  function setup(fetchImpl: (url: string, init?: RequestInit) => Promise<Response>) {
-    vi.stubGlobal('fetch', vi.fn(fetchImpl));
+  function setup(fetchImpl: (url: string, init?: RequestInit) => Promise<Response>, sideQuests: unknown[] = []) {
+    // The map's minigame side quests are listed on their own; the tests below watch the lesson's calls.
+    vi.stubGlobal('fetch', vi.fn(async (url: string, init?: RequestInit) => (url.includes('category=side') ? json({ quests: sideQuests }) : fetchImpl(url, init))));
     const store = createGameStore();
     const commands: GameCommand[] = [];
     store.onCommand((c) => commands.push(c));
@@ -117,12 +118,12 @@ describe('quest controller', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Tiếp tục' }));
     await vi.waitFor(() => expect(screen.queryByRole('dialog')).toBeNull());
     expect(overlay).toHaveBeenLastCalledWith(false);
-    expect(posts[0]).toEqual({ url: '/api/quests/forest-ch1/steps/meet-parrot/complete', body: {} });
+    expect(posts[0]).toEqual({ url: '/api/quests/forest-ch1/steps/meet-parrot/complete', body: { run: 1 } });
     expect(commands).toContainEqual({ type: 'set-target-hint', targetId: 'clue-box' });
 
     touch('clue-box', 'Chiếc hộp', 'object');
     await vi.waitFor(() => expect(posts).toHaveLength(2));
-    expect(posts[1]).toEqual({ url: '/api/quests/forest-ch1/steps/find-clues/complete', body: { target: 'clue-box' } });
+    expect(posts[1]).toEqual({ url: '/api/quests/forest-ch1/steps/find-clues/complete', body: { target: 'clue-box', run: 1 } });
     await vi.waitFor(() => expect(commands).toContainEqual({ type: 'set-world-state', state: { 'clue-box': 'found' } }));
     expect(screen.getByRole('status').textContent).toContain('Chiếc hộp');
   });

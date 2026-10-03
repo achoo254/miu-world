@@ -1,0 +1,13 @@
+{
+  "id": "egg-catch",
+  "name": "Hứng trứng",
+  "family": "catch",
+  "howTo": [
+    "Kéo giỏ sang trái, sang phải để hứng trứng rơi.",
+    "Trứng vàng được ba điểm. Né đá nhé, trúng đá ba lần là thua!"
+  ],
+  "controls": ["drag"],
+  "duration": 40,
+  "goal": 25,
+  "params": { "speed": 1 }
+}

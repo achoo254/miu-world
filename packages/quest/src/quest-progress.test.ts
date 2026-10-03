@@ -101,6 +101,38 @@ describe('completeStep', () => {
   });
 });
 
+describe('a minigame step', () => {
+  const game = activeQuest({
+    id: 'side-hung-trung',
+    region: 'khu-rung-bi-mat',
+    chapter: 1,
+    title: 'Hứng trứng',
+    status: 'active',
+    category: 'side',
+    summary: 'Hứng trứng',
+    review: 'teacher-pending',
+    sevenQuestions: { who: 'a', where: 'b', goal: 'c', play: 'd', learn: 'e', reward: 'f', next: 'g' },
+    phases: { hook: 'ask', explore: 'ask', learn: 'ask', challenge: 'play', decision: 'play', finale: 'play', reward: 'play', next: 'play' },
+    steps: [
+      { id: 'ask', title: 'Nhờ', kind: 'dialogue', target: 'parrot-guide', lines: [{ speaker: 'Vẹt', text: 'Chơi nhé!' }] },
+      { id: 'play', title: 'Chơi', kind: 'challenge', mechanic: 'minigame', trigger: 'auto', prompt: 'Hứng trứng', game: 'egg-catch', goal: 10 },
+    ],
+    reward: { xp: 20 },
+  });
+  const asked = { completedSteps: ['ask'], completed: false, found: {} };
+
+  it('completes once the score reaches the goal, and pays on the last step', () => {
+    expect(completeStep(game, asked, 'play', { answer: { score: 10 } })).toMatchObject({ ok: true, progress: { completed: true }, reward: { xp: 20 } });
+    expect(completeStep(game, asked, 'play', { answer: { score: 25 } })).toMatchObject({ ok: true });
+  });
+
+  it('is not won below the goal, and needs a score', () => {
+    expect(completeStep(game, asked, 'play', { answer: { score: 9 } })).toEqual({ ok: false, error: 'wrong-answer' });
+    expect(completeStep(game, asked, 'play', { answer: { value: 10 } })).toEqual({ ok: false, error: 'wrong-answer' });
+    expect(completeStep(game, asked, 'play')).toEqual({ ok: false, error: 'answer-required' });
+  });
+});
+
 describe('nextStep', () => {
   it('points at the first unfinished step, then null', () => {
     expect(nextStep(quest, emptyProgress())?.id).toBe('meet-vet');

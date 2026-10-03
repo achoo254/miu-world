@@ -5,7 +5,8 @@
 // - never hold the child at one place for more than MAX_STEPS_IN_A_ROW steps in a row;
 // and every character (an NPC look) plays in at most MAX_QUESTS_PER_CHARACTER quests, in any role, except
 // one guide per map, and lives on one map only (as a target or a speaker). Things (boards, boxes, trees)
-// are not characters and are not capped.
+// are not characters and are not capped. Minigame side quests are played on the spot where their character
+// stands: they follow the one-map rule but neither the moving rules nor the cap.
 // content:check reports the same issues; this script also prints where each quest stands.
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
@@ -79,7 +80,7 @@ export function questSpread(quests: Iterable<QuestDefinition>, targetsRaw: unkno
     report.issues.push(`character ${name} is met on ${list.length} maps (${list.join(', ')}): a character lives on one map, give the others a new character`);
   }
   for (const quest of all) {
-    if (!('steps' in quest) || quest.status !== 'active' || HAND_BUILT.has(quest.id)) continue;
+    if (!('steps' in quest) || quest.status !== 'active' || HAND_BUILT.has(quest.id) || quest.category === 'side') continue;
     const named = 'places' in quest ? (quest.places ?? {}) : {};
     const placeOf = (step: Step, id: string): string => named[id] ?? named[step.id] ?? characterOf(id);
     const visited = new Set<string>();

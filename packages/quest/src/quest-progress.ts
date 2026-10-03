@@ -1,6 +1,6 @@
 import type { ActiveQuest, AnswerableStep, QuestStep, RewardSpec } from '@miu/schema/content';
 import type { StepAnswer } from '@miu/schema/game';
-import { checkAnswer } from './check-answer';
+import { checkAnswer, checkMinigameScore } from './check-answer';
 
 /** Progress of one child on one quest. Steps are completed strictly in `def.steps` order. */
 export interface QuestProgress {
@@ -70,6 +70,9 @@ export function completeStep(def: ActiveQuest, progress: QuestProgress, stepId: 
   } else if (isAnswerable(step)) {
     if (input.answer === undefined) return { ok: false, error: 'answer-required' };
     if (!checkAnswer(step, input.answer)) return { ok: false, error: 'wrong-answer' };
+  } else if (step.kind === 'challenge' && step.mechanic === 'minigame') {
+    if (input.answer === undefined) return { ok: false, error: 'answer-required' };
+    if (!checkMinigameScore(step, input.answer)) return { ok: false, error: 'wrong-answer' };
   }
 
   const completedSteps = [...progress.completedSteps, stepId];

@@ -1,0 +1,3 @@
+/* Side quest picker (side-quests.tsx): one big card per game the character offers. Values from tokens.css. */
+.side-quest-games { display: grid; gap: var(--space-sm); }
+.side-quest-games .dialogue-choice { justify-content: space-between; }

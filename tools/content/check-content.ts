@@ -36,6 +36,8 @@ const CATALOGUE_FILES = [
   'pets.json',
   'accessories/',
   'quests/',
+  // One file per minigame (packages/schema/src/minigame.ts); quests' minigame steps are checked against them.
+  'minigames/',
 ];
 /** Content files the asset tools validate when they build characters, atlases and maps (any file in a folder). */
 const ASSET_TOOL_FILES = [

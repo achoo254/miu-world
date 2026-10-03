@@ -1,5 +1,5 @@
 import { randomUUID } from 'node:crypto';
-import { asc, eq, sql } from 'drizzle-orm';
+import { and, asc, eq, like, or, sql } from 'drizzle-orm';
 import type { RewardSpec } from '@miu/schema/content';
 import { ProgressResponse, type SubjectProgress } from '@miu/schema/game';
 import { levelFromXp } from '@miu/quest/level';
@@ -11,8 +11,41 @@ import { progressDto } from '../quest/quest-access';
 /** A transaction handle; same query surface as the db. */
 export type Tx = Parameters<Parameters<Db['transaction']>[0]>[0];
 
-/** One reward per quest (paid on its last step), whatever the step list becomes later. */
-export const questSource = (questId: string): string => `quest:${questId}`;
+/**
+ * One reward per run of a quest, paid on its last step: every run pays (owner, 03/10/2026), and the run
+ * number in the source keeps a resent request from paying the same run twice. The first run keeps the
+ * plain `quest:<id>` it always had; later runs are `quest:<id>#<run>`.
+ */
+export const questSource = (questId: string, run = 1): string => (run === 1 ? `quest:${questId}` : `quest:${questId}#${run}`);
+
+/** Quest id of a quest reward's ledger source; null for any other source. */
+export function questOfSource(source: string): string | null {
+  const match = /^quest:([a-z0-9-]+)(?:#\d+)?$/.exec(source);
+  return match?.[1] ?? null;
+}
+
+/** Runs of one quest paid so far (quest ids are kebab-case: no LIKE wildcard can occur in them). */
+export async function paidRuns(db: Db | Tx, childId: string, questId: string): Promise<number> {
+  const [row] = await db
+    .select({ runs: sql<number>`count(*)::int` })
+    .from(rewardLedger)
+    .where(and(eq(rewardLedger.childId, childId), or(eq(rewardLedger.source, questSource(questId)), like(rewardLedger.source, `${questSource(questId)}#%`))));
+  return row?.runs ?? 0;
+}
+
+/** Runs paid so far for every quest of a child, by quest id. */
+export async function paidRunsByQuest(db: Db | Tx, childId: string): Promise<Map<string, number>> {
+  const rows = await db
+    .select({ source: rewardLedger.source })
+    .from(rewardLedger)
+    .where(and(eq(rewardLedger.childId, childId), like(rewardLedger.source, 'quest:%')));
+  const runs = new Map<string, number>();
+  for (const { source } of rows) {
+    const quest = questOfSource(source);
+    if (quest) runs.set(quest, (runs.get(quest) ?? 0) + 1);
+  }
+  return runs;
+}
 
 /**
  * Appends a reward to the ledger and updates the inventory/skill aggregates in the caller's
@@ -87,12 +120,13 @@ export async function progressSummary(db: Db | Tx, childId: string, content: Con
     .from(rewardLedger)
     .where(eq(rewardLedger.childId, childId));
   const quests = await db.select().from(questProgress).where(eq(questProgress.childId, childId)).orderBy(asc(questProgress.questId));
+  const runs = await paidRunsByQuest(db, childId);
   const skills = await db.select().from(skillProgress).where(eq(skillProgress.childId, childId));
   const items = await db.select().from(inventoryItems).where(eq(inventoryItems.childId, childId));
   const xp = totals?.xp ?? 0;
   const skillXp = Object.fromEntries(skills.map((s) => [s.skillId, s.xp]));
   return ProgressResponse.parse({
-    quests: quests.map((q) => progressDto(q.questId, q)),
+    quests: quests.map((q) => progressDto(q.questId, q, runs.get(q.questId) ?? 0, content.quests.get(q.questId))),
     xp,
     ...levelFromXp(xp, content.levelCurve),
     coins: totals?.coins ?? 0,

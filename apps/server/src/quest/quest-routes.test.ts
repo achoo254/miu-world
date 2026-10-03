@@ -30,6 +30,7 @@ const step = (agent: Agent, quest: string, stepId: string, body: unknown = {}) =
 
 /** Correct play-through of each fixture quest: step id and what the child sends for it. */
 const PLAY: Record<string, Array<[string, object]>> = {
+  'side-egg': [['ask', {}], ['play', { answer: { score: 8 } }], ['thanks', {}], ['bye', {}]],
   'quest-a': [['meet-vet', {}], ['find-letter', { target: 'clue-letter' }], ['solve-tree', { answer: { value: 5 } }]],
   'quest-b': [['open-gate', { target: 'gate-ch2' }], ['count-apples', { answer: { placed: ['apple-1', 'apple-3'] } }], ['solve-tree', { answer: { value: 8 } }]],
   'quest-c': [['say-hello', {}], ['pick-flower', { target: 'mushroom' }], ['pick-flower', { target: 'flower' }], ['add-flowers', { answer: { value: 2 } }]],
@@ -63,6 +64,7 @@ describe('quest progress and rewards (server is the source of truth)', () => {
         completed: true,
         found: { 'find-letter': ['clue-letter'] },
         stars: 3,
+        run: 1,
       },
     ]);
     expect((await agent.get('/api/inventory').expect(200)).body).toEqual({ items: [{ itemId: 'la-than', qty: 1 }] });
@@ -185,7 +187,8 @@ describe('quest progress and rewards (server is the source of truth)', () => {
     expect(progress.items).toEqual(expectedItems);
     expect(progress.skillXp).toEqual(expectedSkills);
     expect(progress.xp).toBe(ledger.reduce((s, r) => s + r.xp, 0));
-    expect(ledger.length).toBeLessThanOrEqual(3);
+    // No move names a run, so no quest is played twice: at most one reward per quest.
+    expect(ledger.length).toBeLessThanOrEqual(Object.keys(PLAY).length);
   });
 
   it('never pays a finished quest twice, even when its content later gains a step', async () => {
@@ -445,6 +448,113 @@ describe('textbook mechanics over the API', () => {
     const res = await agent.get('/api/quests?region=truong-hoc').expect(200);
     const sgkView = (res.body as { quests: { quest: { id: string; textbook?: unknown } }[] }).quests.find((q) => q.quest.id === 'quest-sgk');
     expect(sgkView?.quest.textbook).toEqual({ book: 'Tiếng Việt 2, tập một', lesson: 'Bài 1. Tôi là học sinh lớp 2', pages: [10, 12] });
+  });
+});
+
+describe('playing a finished quest again (every run pays, owner 03/10/2026)', () => {
+  /** Plays a whole fixture quest as run `run`. */
+  const replay = (agent: Agent, quest: string, run: number) => finish(agent, quest, { run });
+  const ledgerOf = async (childId: string) =>
+    (await app.db.select().from(t.rewardLedger).where(eq(t.rewardLedger.childId, childId))).map((r) => r.source).sort();
+
+  it('pays a lesson again for a full second run, and says which run the steps belong to', async () => {
+    const { agent, childId } = await playingChild();
+    const first = await finish(agent, 'quest-a');
+    expect(first.body.quest).toMatchObject({ completed: true, run: 1 });
+    const second = await replay(agent, 'quest-a', 2);
+    expect(second.body).toMatchObject({ repeated: false, reward: { xp: 60, coin: 10 }, completion: { stars: 3 }, quest: { completed: true, run: 2 } });
+    expect(second.body.progress).toMatchObject({ xp: 120, coins: 20, items: { 'la-than': 2 }, skillXp: { 'doc-hieu': 2 } });
+    expect(await ledgerOf(childId)).toEqual(['quest:quest-a', 'quest:quest-a#2']);
+  });
+
+  it('starts the next run at its first step, keeps the quest finished meanwhile, and plays it in order', async () => {
+    const { agent } = await playingChild();
+    await finish(agent, 'quest-c');
+    await step(agent, 'quest-c', 'add-flowers', { run: 2, answer: { value: 2 } }).expect(409, { error: 'out-of-order' });
+    const started = await step(agent, 'quest-c', 'say-hello', { run: 2 }).expect(200);
+    expect(started.body).toMatchObject({ repeated: false, reward: null, quest: { completedSteps: ['say-hello'], found: {}, completed: true, run: 2 } });
+    const list = (await agent.get('/api/quests').expect(200)).body.quests as Array<{ quest: { id: string }; state: string }>;
+    expect(list.find((q) => q.quest.id === 'quest-c')?.state).toBe('completed');
+    await step(agent, 'quest-c', 'add-flowers', { run: 2, answer: { value: 2 } }).expect(409, { error: 'out-of-order' });
+  });
+
+  it('pays one run once: the final step sent twice, a stale run or no run at all grant nothing more', async () => {
+    const { agent, childId } = await playingChild();
+    await finish(agent, 'quest-c');
+    const paid = await replay(agent, 'quest-c', 2);
+    expect(paid.body).toMatchObject({ repeated: false, reward: { xp: 5 } });
+    const again = await step(agent, 'quest-c', 'add-flowers', { run: 2, answer: { value: 2 } }).expect(200);
+    expect(again.body).toMatchObject({ repeated: true, completion: null, reward: { xp: 5 }, quest: { run: 2 } });
+    await step(agent, 'quest-c', 'add-flowers', { run: 1, answer: { value: 2 } }).expect(200, /"repeated":true/);
+    await step(agent, 'quest-c', 'say-hello').expect(200, /"repeated":true/);
+    expect(await ledgerOf(childId)).toEqual(['quest:quest-c', 'quest:quest-c#2']);
+    expect((await agent.get('/api/progress').expect(200)).body.xp).toBe(10);
+  });
+
+  it('pays a run once when its last step is sent concurrently', async () => {
+    const { agent, childId } = await playingChild();
+    await finish(agent, 'quest-c');
+    for (const [stepId, body] of (PLAY['quest-c'] ?? []).slice(0, 3)) await step(agent, 'quest-c', stepId, { run: 2, ...body }).expect(200);
+    const results = await Promise.all(Array.from({ length: 5 }, () => step(agent, 'quest-c', 'add-flowers', { run: 2, answer: { value: 2 } })));
+    expect(results.every((r) => r.status === 200)).toBe(true);
+    expect(results.filter((r) => r.body.repeated === false)).toHaveLength(1);
+    expect(await ledgerOf(childId)).toEqual(['quest:quest-c', 'quest:quest-c#2']);
+  });
+
+  it('keeps the best stars of all runs', async () => {
+    const { agent } = await playingChild();
+    await finish(agent, 'quest-c');
+    for (const [stepId, body] of (PLAY['quest-c'] ?? []).slice(0, 3)) await step(agent, 'quest-c', stepId, { run: 2, ...body }).expect(200);
+    for (let i = 0; i < 5; i += 1) await step(agent, 'quest-c', 'add-flowers', { run: 2, answer: { value: 9 } }).expect(200);
+    const worse = await step(agent, 'quest-c', 'add-flowers', { run: 2, answer: { value: 2 } }).expect(200);
+    expect(worse.body).toMatchObject({ completion: { stars: 2 }, reward: { xp: 5 }, quest: { stars: 3, run: 2 } });
+  });
+
+  it('counts answer views on the run under way, not only on the first one', async () => {
+    const { agent } = await playingChild();
+    await finish(agent, 'quest-c');
+    for (const [stepId, body] of (PLAY['quest-c'] ?? []).slice(0, 3)) await step(agent, 'quest-c', stepId, { run: 2, ...body }).expect(200);
+    await agent.post('/api/quests/quest-c/steps/add-flowers/support').send({ layer: 'answer' }).expect(200);
+    const last = await step(agent, 'quest-c', 'add-flowers', { run: 2, answer: { value: 2 } }).expect(200);
+    expect(last.body.completion).toMatchObject({ stars: 2, xpAwarded: 4 });
+  });
+});
+
+describe('minigame side quests', () => {
+  it('lists side quests apart from the lessons', async () => {
+    const { agent } = await playingChild();
+    const lessons = (await agent.get('/api/quests').expect(200)).body.quests as Array<{ quest: { id: string } }>;
+    expect(lessons.map((q) => q.quest.id)).not.toContain('side-egg');
+    const side = (await agent.get('/api/quests?category=side&region=khu-rung-bi-mat').expect(200)).body.quests as Array<{ quest: { id: string; category: string; steps: unknown[] } }>;
+    expect(side.map((q) => q.quest.id)).toEqual(['side-egg']);
+    expect(side[0]?.quest).toMatchObject({ category: 'side', steps: expect.arrayContaining([expect.objectContaining({ mechanic: 'minigame', game: 'egg-catch', goal: 8 })]) });
+    expect((await agent.get('/api/quests?category=side&region=nui-tuyet').expect(200)).body.quests).toEqual([]);
+    await agent.get('/api/quests?category=bonus').expect(400, { error: 'invalid-category' });
+  });
+
+  it('grades the score against the goal: short of it, the round is simply not won', async () => {
+    const { agent } = await playingChild();
+    await step(agent, 'side-egg', 'ask').expect(200);
+    await step(agent, 'side-egg', 'play').expect(400, { error: 'answer-required' });
+    await step(agent, 'side-egg', 'play', { answer: { choice: 'egg' } }).expect(200, /"correct":false/);
+    const short = await step(agent, 'side-egg', 'play', { answer: { score: 7 } }).expect(200);
+    expect(short.body).toMatchObject({ correct: false, reward: null, quest: { completedSteps: ['ask'] } });
+    await step(agent, 'side-egg', 'play', { answer: { score: 99_999 } }).expect(400, { error: 'invalid-step-input' });
+    const won = await step(agent, 'side-egg', 'play', { answer: { score: 30 } }).expect(200);
+    expect(won.body).toMatchObject({ correct: true, copy: null, quest: { completedSteps: ['ask', 'play'] } });
+  });
+
+  it('pays the side quest reward on its last step, and again on every replay', async () => {
+    const { agent, childId } = await playingChild();
+    const first = await finish(agent, 'side-egg');
+    expect(first.body).toMatchObject({ reward: { xp: 12, coin: 3 }, completion: { stars: 3 }, quest: { completed: true, run: 1 } });
+    const second = await finish(agent, 'side-egg', { run: 2 });
+    expect(second.body).toMatchObject({ repeated: false, reward: { xp: 12, coin: 3 }, quest: { run: 2 } });
+    const resent = await step(agent, 'side-egg', 'bye', { run: 2 }).expect(200);
+    expect(resent.body).toMatchObject({ repeated: true, completion: null });
+    const sources = (await app.db.select().from(t.rewardLedger).where(eq(t.rewardLedger.childId, childId))).map((r) => r.source).sort();
+    expect(sources).toEqual(['quest:side-egg', 'quest:side-egg#2']);
+    expect((await agent.get('/api/progress').expect(200)).body).toMatchObject({ xp: 24, coins: 6 });
   });
 });
 

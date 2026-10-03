@@ -3,6 +3,7 @@ import path from 'node:path';
 import { PetCatalog, type Pet } from '@miu/schema/pet';
 import { RegionCatalog, playableMaps } from '@miu/schema/region';
 import { ConsentDocument, ContentId, LevelCurve, NameList, QuestDefinition, SkillCatalog, type PlayableQuest } from '@miu/schema/content';
+import { MinigameSpec } from '@miu/schema/minigame';
 import type { QuestTextbook } from '@miu/schema/game';
 import { questCatalogIssues } from '@miu/quest/quest-catalog';
 import { buildAccessoryCatalog, type AccessoryItem } from '@miu/voxel/accessory-schema';
@@ -32,6 +33,8 @@ export interface ContentCatalog {
   skillIds: ReadonlySet<string>;
   /** Active quests and coming-soon stubs; drafts are validated but never loaded. */
   quests: ReadonlyMap<string, PlayableQuest>;
+  /** Minigames quests may play (`content/minigames`), by id. */
+  minigames: ReadonlyMap<string, MinigameSpec>;
   /** Quest id → the textbook lesson it plays, with its printed pages (quests naming a `lesson`). */
   textbooks: ReadonlyMap<string, QuestTextbook>;
   /** Maps a child can play in: the open regions' maps (content/world/regions.json). */
@@ -66,9 +69,25 @@ export function readQuestDefinitions(questDir: string): QuestDefinition[] {
   return jsonFiles(questDir).map((file) => readContentJson(QuestDefinition, file));
 }
 
-export function loadQuests(questDir: string, skillIds: ReadonlySet<string>, extraQuestDir?: string): Map<string, PlayableQuest> {
+/** Every minigame file, keyed by id; a file must be named after its game's id. */
+export function readMinigames(dir: string): Map<string, MinigameSpec> {
+  return new Map(
+    jsonFiles(dir).map((file) => {
+      const spec = readContentJson(MinigameSpec, file);
+      if (path.basename(file) !== `${spec.id}.json`) throw new Error(`invalid content file ${path.basename(file)}: a minigame file is named after its id (${spec.id}.json)`);
+      return [spec.id, spec];
+    }),
+  );
+}
+
+export function loadQuests(
+  questDir: string,
+  skillIds: ReadonlySet<string>,
+  extraQuestDir?: string,
+  minigames: ReadonlyMap<string, MinigameSpec> = new Map(),
+): Map<string, PlayableQuest> {
   const list = [...readQuestDefinitions(questDir), ...(extraQuestDir ? readQuestDefinitions(extraQuestDir) : [])];
-  const issues = questCatalogIssues(list, skillIds);
+  const issues = questCatalogIssues(list, skillIds, minigames);
   if (issues.length > 0) throw new Error(`invalid quest catalogue: ${issues.join('; ')}`);
   const playable = list.filter((q): q is PlayableQuest => q.status !== 'draft');
   return new Map(playable.map((q) => [q.id, q]));
@@ -95,7 +114,8 @@ export function questTextbooks(quests: Iterable<PlayableQuest>, curriculumDir: s
 export function loadContentCatalog({ dir = CONTENT_DIR, questDir, extraQuestDir }: ContentOptions = {}): ContentCatalog {
   const catalog = readContentJson(SkillCatalog, path.join(dir, 'learning/skills.json'));
   const skillIds = new Set(catalog.subjects.flatMap((s) => s.skills.map((k) => k.id)));
-  const quests = loadQuests(questDir ?? path.join(dir, 'quests'), skillIds, extraQuestDir);
+  const minigames = readMinigames(path.join(dir, 'minigames'));
+  const quests = loadQuests(questDir ?? path.join(dir, 'quests'), skillIds, extraQuestDir, minigames);
   const accessories = buildAccessoryCatalog(jsonFiles(path.join(dir, 'accessories')).map((file) => JSON.parse(readFileSync(file, 'utf8')) as unknown));
   return {
     childDisplayNames: new Set(readContentJson(NameList, path.join(dir, 'names/child-display-names.json')).names),
@@ -109,6 +129,7 @@ export function loadContentCatalog({ dir = CONTENT_DIR, questDir, extraQuestDir 
     subjects: catalog.subjects,
     skillIds,
     quests,
+    minigames,
     textbooks: questTextbooks(quests.values(), path.join(dir, 'curriculum')),
     maps: new Set(playableMaps(readContentJson(RegionCatalog, path.join(dir, 'world/regions.json')))),
   };

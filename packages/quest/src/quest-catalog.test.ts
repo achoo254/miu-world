@@ -64,3 +64,24 @@ describe('questTargetIssues', () => {
     expect(questTargetIssues(stub('b'), new Set())).toEqual([]);
   });
 });
+
+describe('minigame steps in the catalogue', () => {
+  const spec = { id: 'egg-catch', name: 'Hứng trứng', family: 'catch', howTo: ['Kéo giỏ'], controls: ['drag' as const], duration: 40, goal: 12, params: { speed: 1 } };
+  const side = (game: string, goal: number) =>
+    quest('side-a', {
+      category: 'side',
+      phases: { hook: 'ask', explore: 'ask', learn: 'ask', challenge: 'play', decision: 'play', finale: 'play', reward: 'play', next: 'play' },
+      steps: [
+        { id: 'ask', title: 'Nhờ', kind: 'dialogue', target: 'parrot', lines: [{ speaker: 'Vẹt', text: 'Chơi nhé!' }] },
+        { id: 'play', title: 'Chơi', kind: 'challenge', mechanic: 'minigame', trigger: 'auto', prompt: 'Hứng trứng', game, goal },
+      ],
+      reward: {},
+    });
+
+  it('accepts a known game with a goal it is proven to reach, and names what is wrong otherwise', () => {
+    const games = new Map([['egg-catch', spec]]);
+    expect(questCatalogIssues([side('egg-catch', 10)], skills, games)).toEqual([]);
+    expect(questCatalogIssues([side('kite', 10)], skills, games)).toEqual(['quest side-a step play plays unknown minigame kite (no content/minigames/kite.json)']);
+    expect(questCatalogIssues([side('egg-catch', 30)], skills, games)).toEqual(['quest side-a step play asks for 30 points, more than the 12 the game egg-catch is proven to reach']);
+  });
+});

@@ -1,0 +1,67 @@
+{
+  "id": "side-egg-catch",
+  "region": "khu-rung-bi-mat",
+  "chapter": 1,
+  "title": "Hứng trứng giúp Hải ly",
+  "status": "active",
+  "category": "side",
+  "summary": "Tổ chim trên cây bị gió lay, trứng rơi lộp độp: kéo giỏ hứng trứng và né đá.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người bạn khéo tay của Hải ly",
+    "where": "Bờ suối nhà Hải ly",
+    "goal": "Hứng đủ trứng trước khi hết giờ",
+    "play": "Kéo giỏ hứng trứng, né đá rơi",
+    "learn": "Phản xạ và phối hợp tay mắt",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Hứng lại để được thêm trứng vàng"
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "catch",
+    "decision": "catch",
+    "finale": "catch",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Hải ly nhờ hứng trứng",
+      "kind": "dialogue",
+      "target": "animal-beaver",
+      "lines": [
+        { "speaker": "Hải ly", "text": "Gió to quá, trứng trong tổ chim rơi xuống rồi {name} ơi!" },
+        { "speaker": "Hải ly", "text": "Cầm giỏ hứng giúp tớ với, coi chừng đá rơi theo nhé." }
+      ],
+      "choices": [{ "text": "Đưa giỏ đây, tớ hứng cho!" }]
+    },
+    {
+      "id": "catch",
+      "title": "Hứng trứng",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Hứng được hai mươi điểm trứng là thắng!",
+      "game": "egg-catch",
+      "goal": 20
+    },
+    {
+      "id": "thanks",
+      "title": "Hải ly cảm ơn",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Hải ly ôm giỏ trứng: cảm ơn {name} nhiều lắm!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn gặp ở bờ suối",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Gió còn thổi, Hải ly vẫn chờ {name} ở bờ suối."
+    }
+  ],
+  "reward": { "xp": 15, "coin": 5 }
+}

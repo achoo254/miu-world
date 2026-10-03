@@ -1,4 +1,4 @@
-import { sameClockTime, type AnswerableStep } from '@miu/schema/content';
+import { sameClockTime, type AnswerableStep, type MinigameStep } from '@miu/schema/content';
 import type { StepAnswer } from '@miu/schema/game';
 
 type Mechanic<M extends string> = Extract<AnswerableStep, { mechanic: M }>;
@@ -68,4 +68,12 @@ export function checkAnswer(step: AnswerableStep, answer: StepAnswer): boolean {
     case 'connect':
       return 'edges' in answer && checkEdges(step, answer.edges);
   }
+}
+
+/**
+ * Grades a minigame round: won when the score reaches the step's goal. The score comes from the child's
+ * device (the game runs there); only reaching the goal matters, never how far past it.
+ */
+export function checkMinigameScore(step: MinigameStep, answer: StepAnswer): boolean {
+  return 'score' in answer && answer.score >= step.goal;
 }

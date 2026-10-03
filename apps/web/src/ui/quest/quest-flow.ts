@@ -16,12 +16,26 @@ export function currentStep(quest: ActiveQuestView, progress: QuestProgressDto):
 const stepTarget = (step: QuestStepPublic): string | undefined => ('target' in step ? step.target : undefined);
 const stepTrigger = (step: QuestStepPublic): string => ('trigger' in step ? step.trigger : 'interact');
 
-/** The current step when the touched target is what it waits for; otherwise null (not now). */
+/**
+ * The run a step request belongs to (`QuestProgressDto.run`): the one under way, or the next one when every
+ * step is done (the child plays a finished quest again; every run pays, owner 03/10/2026).
+ */
+export function runFor(quest: ActiveQuestView, progress: QuestProgressDto): number {
+  const run = progress.run ?? 1;
+  return currentStep(quest, progress) === null ? run + 1 : run;
+}
+
+/**
+ * The current step when the touched target is what it waits for; otherwise null (not now). Once every step
+ * is done, the quest's first step starts it again from its own place.
+ */
 export function stepForTarget(quest: ActiveQuestView, progress: QuestProgressDto, targetId: string): QuestStepPublic | null {
-  const step = currentStep(quest, progress);
+  const current = currentStep(quest, progress);
+  const step = current ?? quest.steps[0];
   if (!step) return null;
   if (step.kind === 'search') {
-    const found = progress.found[step.id] ?? [];
+    // A new run finds everything again.
+    const found = current ? (progress.found[step.id] ?? []) : [];
     return step.targets.includes(targetId) && !found.includes(targetId) ? step : null;
   }
   return stepTrigger(step) !== 'auto' && stepTarget(step) === targetId ? step : null;

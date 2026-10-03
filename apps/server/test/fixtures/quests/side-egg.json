@@ -1,0 +1,36 @@
+{
+  "id": "side-egg",
+  "region": "khu-rung-bi-mat",
+  "chapter": 1,
+  "title": "Hứng trứng thử",
+  "status": "active",
+  "category": "side",
+  "summary": "Nhiệm vụ phụ giả dùng trong test server.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "Bạn của Hải ly",
+    "where": "Khu rừng thử",
+    "goal": "Hứng trứng",
+    "play": "Hứng trứng",
+    "learn": "Phản xạ",
+    "reward": "XP, xu",
+    "next": "Chơi lại lúc nào cũng được"
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    { "id": "ask", "title": "Hải ly nhờ", "kind": "dialogue", "target": "animal-beaver", "lines": [{ "speaker": "Hải ly", "text": "Hứng trứng giúp tớ nhé!" }] },
+    { "id": "play", "title": "Hứng trứng", "kind": "challenge", "mechanic": "minigame", "trigger": "auto", "prompt": "Hứng tám quả trứng nhé!", "game": "egg-catch", "goal": 8 },
+    { "id": "thanks", "title": "Cảm ơn", "kind": "reward", "trigger": "auto", "text": "Cảm ơn bạn nhiều!" },
+    { "id": "bye", "title": "Hẹn gặp lại", "kind": "next", "trigger": "auto", "text": "Lúc nào rảnh lại chơi nhé." }
+  ],
+  "reward": { "xp": 12, "coin": 3 }
+}

@@ -158,6 +158,30 @@ const connectShape = {
   showLengths: z.boolean().optional(),
 };
 
+/** Highest score a minigame round can report; the server refuses anything above it. */
+export const MAX_MINIGAME_SCORE = 9999;
+/** Keys of a game's tuning values (`speed`, `lanes`…): camelCase, like the game's code reads them. */
+export const MinigameParamKey = z.string().regex(/^[a-z][a-zA-Z0-9]*$/);
+export const MinigameParamValue = z.union([z.number(), z.string().max(40), z.boolean()]);
+export const MinigameParams = z.record(MinigameParamKey, MinigameParamValue);
+export type MinigameParams = z.infer<typeof MinigameParams>;
+
+/**
+ * Play a minigame of content/minigames (runner, egg catching, penalty kicks…) and reach `goal` points. The
+ * client sends the round's score; the server grades `score >= goal` (the goal is not secret). `params` tune
+ * the game for this quest (speed, lanes…), from the keys the game's own file declares.
+ */
+const minigameShape = {
+  ...stepBase,
+  kind: z.literal('challenge'),
+  mechanic: z.literal('minigame'),
+  /** What the character asks, shown on the how-to card ("Hứng giúp bà mười quả trứng nhé!"). */
+  prompt: Text,
+  game: ContentId,
+  goal: z.number().int().min(1).max(MAX_MINIGAME_SCORE),
+  params: MinigameParams.default({}),
+};
+
 const rewardShape = { ...stepBase, kind: z.literal('reward'), text: Text };
 /** The story beat after the reward: where the adventure goes next. Nothing is locked: every map and quest is open. */
 const nextShape = { ...stepBase, kind: z.literal('next'), text: Text };
@@ -200,6 +224,7 @@ export const QuestStepPublic = z.discriminatedUnion('kind', [
     z.object(clockShape),
     z.object(calendarShape),
     z.object(connectShape),
+    z.object(minigameShape),
   ]),
   z.object(rewardShape),
   z.object(nextShape),
@@ -231,6 +256,8 @@ export const QuestStep = z.discriminatedUnion('kind', [
       ...curriculumRef,
       ...secret(z.strictObject({ edges: z.array(z.tuple([ContentId, ContentId])).min(1).max(50) })),
     }),
+    // Graded on the score alone: no answer, no support layers (the game's how-to card is its guide).
+    z.strictObject(minigameShape),
   ]),
   z.strictObject(rewardShape),
   z.strictObject(nextShape),
@@ -241,6 +268,7 @@ export type QuestStep = z.infer<typeof QuestStep>;
 /** Steps the child answers; each carries an answer and the three support layers. */
 export type AnswerableStep = Extract<QuestStep, { support: LearningSupport }>;
 export type ChallengeStep = Extract<QuestStep, { kind: 'challenge' }>;
+export type MinigameStep = Extract<QuestStep, { mechanic: 'minigame' }>;
 
 /** Entity ids a step needs on the map. */
 export function stepTargets(step: QuestStep | QuestStepPublic): string[] {
@@ -352,6 +380,9 @@ function challengeIssues(step: ChallengeStep): string[] {
       if (!uniqueIds(step.answer.edges.map(edgeKey))) issues.push('answer lists a segment twice');
       break;
     }
+    case 'minigame':
+      // The game id, its params and the goal are checked against content/minigames by the catalogue.
+      break;
   }
   return issues;
 }
@@ -390,12 +421,20 @@ export const QuestText = z.strictObject({
 });
 export type QuestText = z.infer<typeof QuestText>;
 
+/** Ids of side quests start with this, so their files sort together (`content/quests/side-*.json`). */
+export const SIDE_QUEST_PREFIX = 'side-';
+
 const questFields = {
   id: ContentId,
   region: ContentId,
   chapter: z.number().int().min(1),
   title: Text,
   summary: Text,
+  /**
+   * `side`: a minigame played for fun, offered by a character on the map whenever the child talks to it. It
+   * never stands for a lesson: the quest list, the HUD tracker and the arrow follow lessons (`main`) only.
+   */
+  category: z.enum(['main', 'side']).default('main'),
   /** Learning content is drafted by AI and must be approved by a teacher before it reaches children. */
   review: z.enum(['teacher-pending', 'teacher-approved']),
   /** The seven design questions every quest must answer (Master Plan §11). */
@@ -460,8 +499,29 @@ function wayfindingIssues(steps: readonly QuestStep[], places: Readonly<Record<s
   return issues;
 }
 
+/**
+ * A side quest is short and always the same shape: a dialogue at the character who offers it, its one
+ * minigame, then the reward and the closing line, which run by themselves.
+ */
+function sideQuestIssues(q: { id: string; lesson?: string | undefined; steps: QuestStep[] }): string[] {
+  const issues: string[] = [];
+  if (!q.id.startsWith(SIDE_QUEST_PREFIX)) issues.push(`a side quest id starts with "${SIDE_QUEST_PREFIX}"`);
+  if (isTextbookQuest(q.id) || q.lesson) issues.push('a side quest plays no textbook lesson');
+  const [first] = q.steps;
+  if (first?.kind !== 'dialogue' || first.trigger !== 'interact' || !first.target) issues.push('a side quest starts with a dialogue at the character who offers it');
+  const games = q.steps.filter((s) => s.kind === 'challenge' && s.mechanic === 'minigame');
+  if (games.length !== 1) issues.push('a side quest holds exactly one minigame step');
+  for (const step of q.steps.slice(1)) {
+    const allowed = step.kind === 'dialogue' || step.kind === 'reward' || step.kind === 'next' || (step.kind === 'challenge' && step.mechanic === 'minigame');
+    if (!allowed) issues.push(`step ${step.id}: a side quest has only dialogue, its minigame, reward and next steps`);
+    else if (step.trigger !== 'auto') issues.push(`step ${step.id}: after the first dialogue, side quest steps start by themselves (trigger "auto")`);
+  }
+  return issues;
+}
+
 function questIssues(q: {
   id: string;
+  category: 'main' | 'side';
   lesson?: string | undefined;
   phases: Record<(typeof QUEST_PHASES)[number], string>;
   steps: QuestStep[];
@@ -485,7 +545,12 @@ function questIssues(q: {
     if (seen.has(line)) issues.push(`feedback line "${line}" is used twice in the quest`);
     seen.add(line);
   }
-  if (isTextbookQuest(q.id)) {
+  if (q.category === 'side') {
+    // Played for fun: its own shape instead of the lesson rules (mechanics, wayfinding).
+    issues.push(...sideQuestIssues(q));
+  } else if (q.id.startsWith(SIDE_QUEST_PREFIX)) {
+    issues.push(`a quest whose id starts with "${SIDE_QUEST_PREFIX}" is a side quest ("category": "side")`);
+  } else if (isTextbookQuest(q.id)) {
     if (!q.lesson) issues.push('a textbook quest names its lesson ("lesson"), shown with its pages in the quest list');
     for (const step of q.steps) if ('support' in step && !step.feedback) issues.push(`step ${step.id}: a textbook quest step needs feedback lines`);
     issues.push(...wayfindingIssues(q.steps, q.places));

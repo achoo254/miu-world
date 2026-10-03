@@ -28,6 +28,14 @@ function quest(id: string, steps: Array<{ kind: string; target?: string; targets
 }
 
 describe('quest spread', () => {
+  it('lets a minigame side quest stay at its character, uncapped, but keeps the character on one map', () => {
+    const side = (id: string, region = 'truong-hoc') => ({ ...quest(id, [{ kind: 'dialogue', target: 'fox' }, { kind: 'challenge' }, { kind: 'reward' }], {}, region), category: 'side' }) as unknown as QuestDefinition;
+    const report = questSpread([side('side-a'), side('side-b'), side('side-c')], targets, looks);
+    expect(report.issues).toEqual([]);
+    expect(report.quests).toEqual([]);
+    expect(questSpread([side('side-a'), side('side-b', 'cho-phien')], targets, looks).issues.join('\n')).toMatch(/Cáo is met on 2 maps/);
+  });
+
   it('counts the places a quest visits and the longest stay at one place', () => {
     const report = questSpread([quest('q', [{ kind: 'dialogue', target: 'fox' }, { kind: 'challenge', target: 'fox' }, { kind: 'challenge', target: 'fox' }, { kind: 'reward' }])], targets, looks);
     expect(report.quests[0]).toMatchObject({ places: 1, longestRun: 3 });

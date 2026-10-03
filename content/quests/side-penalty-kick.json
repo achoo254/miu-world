@@ -1,0 +1,67 @@
+{
+  "id": "side-penalty-kick",
+  "region": "khu-rung-bi-mat",
+  "chapter": 1,
+  "title": "Sút phạt đền với Vẹt",
+  "status": "active",
+  "category": "side",
+  "summary": "Vẹt làm thủ môn bên khung thành bằng cành cây: sút bóng vào chỗ trống.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, cầu thủ của đội rừng xanh",
+    "where": "Bãi cỏ trước gốc cây của Vẹt",
+    "goal": "Sút vào đủ bàn trước khi hết giờ",
+    "play": "Vuốt để sút bóng qua thủ môn",
+    "learn": "Ngắm hướng và chọn thời điểm",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Sút lại để ghi nhiều bàn hơn"
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "kick",
+    "decision": "kick",
+    "finale": "kick",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Vẹt thách sút",
+      "kind": "dialogue",
+      "target": "parrot-guide",
+      "lines": [
+        { "speaker": "Vẹt", "text": "Tớ vừa dựng xong khung thành bằng cành cây đấy {name}!" },
+        { "speaker": "Vẹt", "text": "Tớ bắt bóng giỏi lắm, thử sút qua tớ xem nào." }
+      ],
+      "choices": [{ "text": "Coi chừng cú sút của tớ!" }]
+    },
+    {
+      "id": "kick",
+      "title": "Sút phạt đền",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Ghi tám bàn qua tay Vẹt nhé!",
+      "game": "penalty-kick",
+      "goal": 8
+    },
+    {
+      "id": "thanks",
+      "title": "Vẹt chịu thua",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Vẹt xòe cánh: {name} sút hay quá, tớ chịu thua!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn trận sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Vẹt sẽ tập bắt bóng thêm, hẹn {name} trận sau."
+    }
+  ],
+  "reward": { "xp": 15, "coin": 5 }
+}

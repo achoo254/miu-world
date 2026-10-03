@@ -3,6 +3,7 @@ import { Router, type Request } from 'express';
 import { ContentId, type LearningSupport, type QuestStep } from '@miu/schema/content';
 import {
   InventoryResponse,
+  QuestCategory,
   QuestListResponse,
   QuestSummary,
   QuestView,
@@ -20,8 +21,8 @@ import type { Db } from '../db/client';
 import { inventoryItems, questProgress } from '../db/schema';
 import { HttpError } from '../http-error';
 import { ipKey, limiter } from '../rate-limit';
-import { progressSummary, questSource, recordedReward } from '../reward/reward-ledger';
-import { playableQuest, progressDto, questState } from './quest-access';
+import { paidRuns, paidRunsByQuest, progressSummary, questSource, recordedReward } from '../reward/reward-ledger';
+import { playableQuest, progressDto, questState, runFinished } from './quest-access';
 import { finishQuest } from './quest-completion';
 import { countAttempt, wrongAnswers } from './step-attempts';
 
@@ -88,13 +89,14 @@ export function questRoutes({ db, content, clock }: QuestRouteDeps): Router {
   async function summaries(childId: string): Promise<Map<string, QuestSummary>> {
     const rows = await db.select().from(questProgress).where(eq(questProgress.childId, childId));
     const byQuest = new Map(rows.map((r) => [r.questId, r]));
+    const runs = await paidRunsByQuest(db, childId);
     return new Map(
       [...content.quests.values()].map((quest) => {
         const row = byQuest.get(quest.id);
         const summary = {
           quest: QuestView.parse({ ...quest, textbook: content.textbooks.get(quest.id) }),
           state: questState(row),
-          progress: progressDto(quest.id, row),
+          progress: progressDto(quest.id, row, runs.get(quest.id) ?? 0, quest),
         };
         return [quest.id, summary];
       }),
@@ -115,11 +117,17 @@ export function questRoutes({ db, content, clock }: QuestRouteDeps): Router {
     res.json(InventoryResponse.parse({ items: rows }));
   });
 
+  // The lessons by default; `?category=side` lists the minigame side quests instead, so a side quest never
+  // shows up where the lessons are counted, listed or picked as the one to play next.
   router.get('/quests', requireParent, async (req, res) => {
     const childId = await activeChildId(db, res, content.consent.version);
     const region = req.query.region === undefined ? undefined : ContentId.safeParse(req.query.region);
     if (region && !region.success) throw new HttpError(400, 'invalid-region');
-    const quests = [...(await summaries(childId)).values()].filter((s) => !region || s.quest.region === region.data);
+    const category = QuestCategory.safeParse(req.query.category ?? 'main');
+    if (!category.success) throw new HttpError(400, 'invalid-category');
+    const quests = [...(await summaries(childId)).values()].filter(
+      (s) => (!region || s.quest.region === region.data) && (s.quest.status === 'active' ? (s.quest.category ?? 'main') : 'main') === category.data,
+    );
     res.json(QuestListResponse.parse({ quests }));
   });
 
@@ -145,46 +153,55 @@ export function questRoutes({ db, content, clock }: QuestRouteDeps): Router {
       // Create-then-lock the progress row so concurrent calls for the same quest run one after another.
       await tx.insert(questProgress).values({ childId, questId }).onConflictDoNothing();
       const [row] = await tx.select().from(questProgress).where(thisProgressRow).for('update');
-      const current = { completedSteps: row?.completedSteps ?? [], completed: row?.completedAt != null, found: row?.found ?? {} };
+      const paid = await paidRuns(tx, childId, questId);
+      let current = { completedSteps: row?.completedSteps ?? [], completed: false, found: row?.found ?? {} };
       const repeated = async () => ({
         correct: true,
         feedback: null,
         row,
-        reward: await recordedReward(tx, childId, questSource(questId)),
+        paid,
+        reward: paid > 0 ? await recordedReward(tx, childId, questSource(questId, paid)) : null,
         repeated: true,
         completion: null,
       });
-      // A finished quest stays finished: steps added to its content later never pay a second reward.
-      if (current.completed) return repeated();
+      if (row?.completedAt) {
+        // Finished before: every run pays again (owner, 03/10/2026), but only a request naming the next run
+        // moves it. A request resent from a paid run (or one without a run) changes nothing.
+        if (input.data.run !== paid + 1) return repeated();
+        // The next run starts from the first step, with nothing found yet.
+        if (runFinished(row, quest)) current = { completedSteps: [], completed: false, found: {} };
+      }
+      const run = paid + 1;
       const result = completeStep(quest, current, stepId, input.data);
       if (!result.ok) {
         if (result.error === 'already-completed') return repeated();
         if (result.error === 'wrong-answer') {
           // Try again as often as needed; only the count is kept, never the answer.
           const wrong = await countAttempt(tx, { childId, questId, stepId }, 'wrongCount');
-          return { correct: false, feedback: feedbackLine(stepDef, 'wrong', wrong - 1), row, reward: null, repeated: false, completion: null };
+          return { correct: false, feedback: feedbackLine(stepDef, 'wrong', wrong - 1), row, paid, reward: null, repeated: false, completion: null };
         }
         const [status, code] = STEP_ERRORS[result.error];
         throw new HttpError(status, code);
       }
       const [updated] = await tx
         .update(questProgress)
-        .set({ completedSteps: result.progress.completedSteps, found: result.progress.found, completedAt: result.progress.completed ? now : null })
+        // The first finish is kept as the quest's finish date: a replay under way never unfinishes it.
+        .set({ completedSteps: result.progress.completedSteps, found: result.progress.found, completedAt: row?.completedAt ?? (result.progress.completed ? now : null) })
         .where(thisProgressRow)
         .returning();
       // Read before finishing: scoring the quest clears its counters.
       const feedback = feedbackLine(stepDef, 'right', await wrongAnswers(tx, { childId, questId, stepId }));
-      if (!result.reward) return { correct: true, feedback, row: updated, reward: null, repeated: false, completion: null };
-      const finished = await finishQuest(tx, content, childId, quest, now);
+      if (!result.reward) return { correct: true, feedback, row: updated, paid, reward: null, repeated: false, completion: null };
+      const finished = await finishQuest(tx, content, childId, quest, now, run);
       const [scored] = await tx.select().from(questProgress).where(thisProgressRow);
-      return { correct: true, feedback, row: scored, reward: finished.reward, repeated: false, completion: finished.completion };
+      return { correct: true, feedback, row: scored, paid: run, reward: finished.reward, repeated: false, completion: finished.completion };
     });
 
     res.json(
       StepCompleteResponse.parse({
         correct: outcome.correct,
         feedback: outcome.feedback,
-        quest: progressDto(questId, outcome.row),
+        quest: progressDto(questId, outcome.row, outcome.paid, quest),
         reward: outcome.reward,
         repeated: outcome.repeated,
         completion: outcome.completion,
@@ -215,11 +232,13 @@ export function questRoutes({ db, content, clock }: QuestRouteDeps): Router {
         .from(questProgress)
         .where(and(eq(questProgress.childId, childId), eq(questProgress.questId, questId)))
         .for('update');
+      const between = runFinished(row, quest);
       const current = row?.completedSteps.length ?? 0;
       // Help is for the step the child is on (or has done), not for steps further ahead.
       if (index > current) throw new HttpError(409, 'out-of-order');
-      // Only the answer layer on the unsolved step costs anything; reviewing a solved step is free.
-      if (layer === 'answer' && index === current && !row?.completedAt) {
+      // Only the answer layer on the unsolved step costs anything; reviewing a solved step is free. Between two
+      // runs of a finished quest, the unsolved step is the first one of the next run.
+      if (layer === 'answer' && index === (between ? 0 : current)) {
         await countAttempt(tx, { childId, questId, stepId }, 'answerViews');
       }
     });
