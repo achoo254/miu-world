@@ -1,6 +1,6 @@
 # Song ngữ, NPC có chuyện riêng, bạn máy (bot)
 
-Trạng thái: đề xuất, chờ người sở hữu duyệt thứ tự · Tier tổng: XL × 3 · Ngày: 03/10/2026
+Trạng thái: đã duyệt hướng (Jev cho bot), thi công theo pha · Tier tổng: XL × 3 · Ngày: 03/10/2026
 Thiết kế chi tiết: Master Plan §8b (cư dân và bot), §8c (song ngữ).
 
 Người sở hữu (03/10/2026): "thêm song ngữ hiển thị tiếng anh và tiếng việt. bao gồm cài đặt và audio, speak. các nội dung nói chuyện của npc … ít … cá nhân hóa theo tính cách npc, npc có câu chuyện riêng trong mỗi map … liên kết với nhau, biết nhau ở map khác. … khoảng 100 npc … bot auto … lập tổ đội, chat … chơi giống 90% người thật."
@@ -19,6 +19,11 @@ Người sở hữu (03/10/2026): "thêm song ngữ hiển thị tiếng anh và
 | B1 | XL | `bot-runner`: 100 người chơi ảo chạy qua cùng API, cây hành vi + tính cách + lịch sinh hoạt, đi lại và làm nhiệm vụ/minigame ở mọi map | B0, multiplayer bậc 1 |
 | B2 | L | Tổ đội 2–4, nhiệm vụ chung, chat câu có sẵn và emote, báo cáo/chặn, công tắc tắt khẩn cấp, nhãn "bạn máy" | B1 |
 | B3 | L | Tự training: tự chơi so điểm, tinh chỉnh tham số theo số đo; đạt ≥ 90% không tách được bot khỏi người ở bộ phân loại + đánh giá mù | B1 |
+
+## Quyết định (Jev, 03/10/2026, `plans/dattqh/reports/jev-261003-2345-bots.md`)
+- Bot luôn có nhãn "bạn máy", chơi giống người, phụ huynh tắt được.
+- Học bằng tự chơi và số liệu tổng hợp ẩn danh; quỹ đạo thô của trẻ chỉ khi chính sách riêng tư có mục đích đó và phụ huynh đồng ý riêng.
+- Luật sư cần xác nhận trước khi mở bot cho người dùng thật (NĐ 13/2023, Luật Trẻ em, NĐ 147/2024).
 
 ## Lưu ý quan trọng cho người sở hữu
 - **Bot phải gắn nhãn "bạn máy":** không giả làm người thật với trẻ em (an toàn, tín nhiệm, pháp lý); vẫn chơi giống người để bé thấy sinh động.
