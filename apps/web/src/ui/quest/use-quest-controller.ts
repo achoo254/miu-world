@@ -8,6 +8,7 @@ import { StepCompleteResponse, type QuestCompletion, type StepCompleteRequest } 
 import type { GameStore, InteractableKind } from '../../game-bridge/game-store';
 import { ApiError, api, errorMessage } from '../api-client';
 import { say, type PlayerData } from '../player/player-data';
+import { TIMETABLE_TARGETS } from '../timetable/timetable-targets';
 import { DONE_LINES, FOUND_LINES, NOT_NOW_LINES, fillLine } from './loop-lines';
 import { autoStep, currentStep, hintTarget, stepForTarget, worldState, type ActiveQuestView } from './quest-flow';
 import { clearDraft, readDraft, updateDraft } from './step-draft';
@@ -201,6 +202,8 @@ export function useQuestController({ store, data, questId, onResponse, onOverlay
 
   const onInteraction = useCallback(
     (targetId: string, who: string, kind: InteractableKind): void => {
+      // The timetable board in the child's home opens its own screen (play screen), never a quest line.
+      if (TIMETABLE_TARGETS.has(targetId)) return;
       const { overlay: open, busy: waiting, data: player } = latest.current;
       // One call at a time: a pending offline retry is the only thing sent until it goes through.
       if (open || waiting || covers.current.retry) return;

@@ -21,6 +21,8 @@ import { DEFAULT_REGION, findRegion, regionMap } from '../region/regions';
 import { LoadingOverlay } from '../system/loading-overlay';
 import { OfflineBanner } from '../system/offline-banner';
 import { PauseScreen } from '../system/pause-screen';
+import { TimetablePanel } from '../timetable/timetable-panel';
+import { TIMETABLE_TARGETS, type TimetableFocus } from '../timetable/timetable-targets';
 import { createPositionSaver, loadPlayerPositions } from './player-position';
 
 const HOME_PATH = '/home';
@@ -169,6 +171,8 @@ export function PlayScreen() {
   const [questOpen, setQuestOpen] = useState(false);
   const [backpackOpen, setBackpackOpen] = useState(false);
   const [questsOpen, setQuestsOpen] = useState(false);
+  /** The timetable board in the child's home, opened at the timetable or at the uniform calendar. */
+  const [timetable, setTimetable] = useState<TimetableFocus | null>(null);
   /** The map on screen loads after a gate: its loading screen is the trip through the portal. */
   const [viaPortal, setViaPortal] = useState(false);
   const spotOf = useRef<(() => PlayerPosition | null) | null>(null);
@@ -237,7 +241,7 @@ export function PlayScreen() {
   const region = quest?.quest.region ?? DEFAULT_REGION;
   // An element of `positions` (set once), so the same object on every render: the game is not rebuilt.
   const savedSpot = positions?.find((p) => p.map === regionMap(region)) ?? null;
-  const covered = paused || questOpen || backpackOpen || questsOpen;
+  const covered = paused || questOpen || backpackOpen || questsOpen || timetable !== null;
 
   /**
    * Every quest of the map can be taken from the in-game board: the game is rebuilt with that quest's
@@ -270,6 +274,19 @@ export function PlayScreen() {
         const next = questForRegion(data.quests, travel.region);
         if (next) switchQuest(next, true);
       }),
+  );
+  // Touching the timetable on the wall or the uniform calendar opens the board (the quest leaves them alone).
+  const interacted = useRef(store.getSnapshot().lastInteraction?.count ?? 0);
+  useEffect(
+    () =>
+      store.subscribe(() => {
+        const last = store.getSnapshot().lastInteraction;
+        if (!last || last.count === interacted.current) return;
+        interacted.current = last.count;
+        const focus = TIMETABLE_TARGETS.get(last.targetId);
+        if (focus) setTimetable(focus);
+      }),
+    [store],
   );
   const boardRegion = findRegion(region);
   const regionTitle = findRegion(quest?.quest.region ?? '')?.name ?? 'Khu rừng bí mật';
@@ -313,6 +330,7 @@ export function PlayScreen() {
             </button>
           </Modal>
         ) : null}
+        {timetable ? <TimetablePanel focus={timetable} onClose={() => setTimetable(null)} /> : null}
         {data ? <QuestLayer key={questId ?? 'none'} store={store} data={data} questId={quest?.quest.id ?? null} region={region} onResponse={onResponse} onOverlayChange={setQuestOpen} draftOwner={draftOwner} /> : null}
         {paused ? (
           <PauseScreen

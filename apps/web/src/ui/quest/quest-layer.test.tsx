@@ -137,6 +137,18 @@ describe('quest controller', () => {
     for (let i = 1; i < said.length; i += 1) expect(said[i]).not.toBe(said[i - 1]);
   });
 
+  it('leaves the timetable board and the uniform calendar at home to their own screen: no quest line, no call', () => {
+    const posts: string[] = [];
+    const { touch } = setup(async (url) => {
+      posts.push(url);
+      return json(response([]));
+    });
+    touch('nha-thoi-khoa-bieu', 'Thời khóa biểu', 'object');
+    touch('nha-lich-dong-phuc', 'Lịch đồng phục', 'object');
+    expect(screen.queryByRole('status')).toBeNull();
+    expect(posts).toEqual([]);
+  });
+
   it('shows the server\'s feedback line, and on a lost network blocks with a retry that re-sends the same call', async () => {
     let online = false;
     const posts: string[] = [];

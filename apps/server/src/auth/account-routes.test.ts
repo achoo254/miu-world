@@ -3,6 +3,7 @@ import { eq, sql } from 'drizzle-orm';
 import { getTableConfig, type PgTable } from 'drizzle-orm/pg-core';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { AccountExport } from '@miu/schema/account';
+import { emptyTimetable } from '@miu/schema/timetable';
 import { TEST_PIN, createTestApp, parentWithChild, type TestApp } from '../../test/test-app';
 import * as schema from '../db/schema';
 
@@ -30,6 +31,7 @@ async function playedFamily() {
   await app.db.insert(t.inventoryItems).values({ childId, itemId: 'la-than', qty: 1 });
   await app.db.insert(t.skillProgress).values({ childId, skillId: 'doc-hieu', xp: 10 });
   await app.db.insert(t.playerPositions).values({ childId, mapId: 'forest-ch1', x: 40.5, y: 12, z: 88, facing: 1.5 });
+  await app.db.insert(t.timetables).values({ childId, timetable: { ...emptyTimetable(), uniform: { ...emptyTimetable().uniform, mon: 'Bộ sơ mi trắng' } } });
   const me = (await family.agent.get('/api/auth/me').expect(200)).body as { parent: { id: string } };
   return { ...family, parentId: me.parent.id };
 }
@@ -73,6 +75,7 @@ describe('account export', () => {
       inventory: [{ itemId: 'la-than', qty: 1 }],
       skills: [{ skillId: 'doc-hieu', xp: 10 }],
       positions: [{ map: 'forest-ch1', position: [40.5, 12, 88], facing: 1.5, updatedAt: expect.any(String) }],
+      timetable: { uniform: { mon: 'Bộ sơ mi trắng' } },
     });
     expect(child?.quests.map((q) => q.questId).sort()).toEqual(['q-done', 'q-open']);
     expect(child?.rewards).toEqual([{ source: 'quest:q-done', xp: 40, coins: 5, skillXp: { 'doc-hieu': 10 }, items: { 'la-than': 1 }, createdAt: expect.any(String) }]);

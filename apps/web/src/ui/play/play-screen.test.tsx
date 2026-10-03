@@ -1,7 +1,9 @@
-import { StrictMode } from 'react';
+import { StrictMode, act } from 'react';
 import { cleanup, fireEvent, render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router';
 import { afterEach, describe, expect, it, vi } from 'vitest';
+import { emptyTimetable } from '@miu/schema/timetable';
+import type { GameStore } from '../../game-bridge/game-store';
 import { AccountProvider } from '../account/account-context';
 import { PROGRESS, questList } from '../player/test-fixtures';
 import { PlayScreen } from './play-screen';
@@ -17,20 +19,22 @@ function playApi(character: () => Response = () => json({ species: 'cat', name: 
     if (url === '/api/quests') return json(questList(1));
     if (url === '/api/player-positions' && init?.method === 'GET') return json({ positions: [SCHOOL_SPOT, FOREST_SPOT] });
     if (url === '/api/player-positions' && init?.method === 'PUT') return new Response(null, { status: 204 });
+    if (url === '/api/timetable') return json(emptyTimetable());
     return json({ error: 'unauthenticated' }, 401);
   });
 }
 const json = (body: unknown, status = 200) => new Response(JSON.stringify(body), { status });
 
 // jsdom has no WebGL; the runtime itself is covered by Playwright. Here: lifecycle under StrictMode.
-const games = vi.hoisted(() => ({ live: 0, started: 0, stops: 0, resumes: 0, savedSpot: undefined as unknown, spot: null as unknown }));
+const games = vi.hoisted(() => ({ live: 0, started: 0, stops: 0, resumes: 0, savedSpot: undefined as unknown, spot: null as unknown, store: null as GameStore | null }));
 vi.mock('../../game/game', () => ({
   Game: class {
     private alive = true;
-    private readonly options: { store: { emit(e: { type: 'ready' }): void } };
-    constructor(_host: HTMLElement, options: { store: { emit(e: { type: 'ready' }): void }; savedSpot?: unknown }) {
+    private readonly options: { store: GameStore };
+    constructor(_host: HTMLElement, options: { store: GameStore; savedSpot?: unknown }) {
       this.options = options;
       games.savedSpot = options.savedSpot;
+      games.store = options.store;
     }
     currentSpot() {
       return this.alive ? games.spot : null;
@@ -115,6 +119,35 @@ describe('PlayScreen under React StrictMode', () => {
     // Esc opens it again.
     fireEvent.keyDown(window, { key: 'Escape' });
     expect(screen.getByRole('dialog', { name: 'Tạm dừng' })).toBeTruthy();
+  });
+
+  it('opens the timetable board from the timetable on the wall and from the uniform calendar, and only from them', async () => {
+    vi.stubGlobal('fetch', playApi());
+    games.store = null;
+    render(
+      <MemoryRouter>
+        <AccountProvider>
+          <PlayScreen />
+        </AccountProvider>
+      </MemoryRouter>,
+    );
+    // The game starts once the player data and the saved spots are in; it hands over this screen's store.
+    await vi.waitFor(() => expect(games.store).not.toBeNull());
+    const touch = (targetId: string): void => act(() => games.store?.emit({ type: 'interaction', targetId }));
+
+    touch('clue-box');
+    expect(screen.queryByRole('dialog', { name: 'Thời khóa biểu' })).toBeNull();
+
+    const stops = games.stops;
+    touch('nha-thoi-khoa-bieu');
+    expect(screen.getByRole('dialog', { name: 'Thời khóa biểu' })).toBeTruthy();
+    expect(games.stops).toBeGreaterThan(stops); // the game pauses behind the board
+    expect(await screen.findByText(/Chưa có thời khóa biểu/)).toBeTruthy();
+    fireEvent.click(screen.getByRole('button', { name: 'Đóng' }));
+    expect(screen.queryByRole('dialog')).toBeNull();
+
+    touch('nha-lich-dong-phuc');
+    expect(screen.getByRole('dialog', { name: 'Lịch mặc đồng phục' })).toBeTruthy();
   });
 
   it('offers a retry when the network is down, and starts the game once it is back', async () => {

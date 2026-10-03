@@ -86,11 +86,11 @@ describe('content:check', () => {
 
   it('flags a privacy page that does not match the consent parents accept', () => {
     const consent = path.join(dir, 'legal/consent-vi.json');
-    writeFileSync(consent, readFileSync(consent, 'utf8').replace('"version": "v1"', '"version": "v2"'));
+    writeFileSync(consent, readFileSync(consent, 'utf8').replace('"version": "v2"', '"version": "v3"'));
     expect(checkContent(dir).issues).toEqual([
-      'content/legal/privacy-vi.json describes consent v1, but parents are asked to accept v2: update the page with the consent',
+      'content/legal/privacy-vi.json describes consent v2, but parents are asked to accept v3: update the page with the consent',
     ]);
-    writeFileSync(path.join(dir, 'legal/privacy-vi.json'), JSON.stringify({ title: 'x', updatedOn: 'hôm nay', consentVersion: 'v2', contactEmail: null, sections: [] }));
+    writeFileSync(path.join(dir, 'legal/privacy-vi.json'), JSON.stringify({ title: 'x', updatedOn: 'hôm nay', consentVersion: 'v3', contactEmail: null, sections: [] }));
     expect(checkContent(dir).issues.join('\n')).toMatch(/privacy-vi\.json: .*updatedOn/s);
   });
 

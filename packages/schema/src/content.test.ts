@@ -351,8 +351,9 @@ describe('shipped account content', () => {
   it('ships a final consent that states what is kept and how to delete it', () => {
     const doc = ConsentDocument.parse(load('legal/consent-vi.json'));
     expect(doc.requiresLegalReview).toBe(false);
-    expect(doc.version).toBe('v1');
+    expect(doc.version).toBe('v2');
     const text = doc.paragraphs.join(' ');
+    expect(text).toMatch(/thời khóa biểu/);
     expect(text).toMatch(/không lưu nội dung câu trả lời/);
     expect(text).toMatch(/xóa hẳn tài khoản/);
     expect(text).toMatch(/14 ngày/);

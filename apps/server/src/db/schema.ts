@@ -1,5 +1,6 @@
 import { sql } from 'drizzle-orm';
 import { doublePrecision, index, integer, jsonb, pgTable, primaryKey, smallint, text, timestamp, unique, uuid } from 'drizzle-orm/pg-core';
+import type { Timetable } from '@miu/schema/timetable';
 
 // Ids are generated in the app (crypto.randomUUID) so the schema needs no Postgres extension and
 // behaves the same on PGlite and Postgres.
@@ -172,3 +173,13 @@ export const playerPositions = pgTable(
   },
   (t) => [primaryKey({ columns: [t.childId, t.mapId] })],
 );
+
+/**
+ * The child's class timetable and uniform rules, typed in by the family (validated by `Timetable` in
+ * packages/schema). One row per child, none until the first save; gone with the profile.
+ */
+export const timetables = pgTable('timetables', {
+  childId: childRef().primaryKey(),
+  timetable: jsonb('timetable').$type<Timetable>().notNull(),
+  updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),
+});

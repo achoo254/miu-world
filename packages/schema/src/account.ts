@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { Timetable } from './timetable';
 
 export const Id = z.uuid();
 
@@ -93,6 +94,8 @@ export const AccountExport = z.object({
       skills: z.array(z.object({ skillId: z.string(), xp: z.number() })),
       /** Last spot on each map, so the next visit starts there. */
       positions: z.array(z.object({ map: z.string(), position: z.tuple([z.number(), z.number(), z.number()]), facing: z.number(), updatedAt: z.string() })),
+      /** Class timetable and uniform rules the family typed in; null until first saved. */
+      timetable: Timetable.nullable(),
     }),
   ),
 });

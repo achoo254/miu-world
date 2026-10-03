@@ -16,6 +16,7 @@ import type { Db } from './db/client';
 import { HttpError } from './http-error';
 import { playerPositionRoutes } from './player-position/player-position-routes';
 import { questRoutes } from './quest/quest-routes';
+import { timetableRoutes } from './timetable/timetable-routes';
 import { loadWorksheets } from './worksheet/worksheet-builder';
 import { worksheetRoutes } from './worksheet/worksheet-routes';
 
@@ -80,6 +81,7 @@ export function createApp({ config, db, content = loadContentCatalog(), workshee
   api.use(characterRoutes({ db, content }));
   api.use(playerPositionRoutes({ db, content, clock }));
   api.use(questRoutes({ db, content, clock }));
+  api.use(timetableRoutes({ db, content, clock }));
   api.use(worksheetRoutes({ worksheets, clock, fontDir: config.handwritingFontDir }));
   app.use('/api', api);
 
