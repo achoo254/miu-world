@@ -50,6 +50,7 @@ bot(state, { arena, time, goal }): BotMove // { touch?, tap?, swipe?: { from, dx
 - **lives**: có thì HUD hiện số tim; không có thì bỏ trống.
 - **Sự kiện** (`drainEvents`, dùng `eventQueue()`): `score` (lấp lánh, "+n", tiếng sao; có `points`), `hit` (rung màn hình, tiếng nhẹ), `miss` (bụi nhỏ, không tiếng), `action` (bụi, tiếng click). Game chỉ phát sự kiện; host làm hiệu ứng và âm thanh (`effects.ts`, âm thanh Kenney qua `sound/sfx.ts`), nên 100 trò có cùng cảm giác. Giảm chuyển động (`reducedMotion`): không rung, ít hạt; game tự bỏ nảy mạnh.
 - **Bot**: chơi tốt, ra quyết định 10 lần mỗi giây như một bé nhanh tay. Bot đọc thẳng `state`.
+- **Nốt nhạc** (đàn, trống, hô và đáp): thêm `note` (số MIDI, 60 = Đô giữa) và tùy chọn `voice` (`'piano'` mặc định, `'bell'`, `'drum'`, `'clap'`, `'whistle'`) vào bất kỳ sự kiện nào; host phát nốt đó bằng Web Audio (`playNote` trong `sound/sfx.ts`) thay cho tiếng thường của sự kiện, tắt theo nút Âm thanh. Không cần file âm thanh.
 
 ## Hình ảnh
 

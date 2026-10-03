@@ -2,7 +2,7 @@
 // requestAnimationFrame, one finger read from pointer events, the effects layer and the sounds. React only
 // creates it and calls start / pause / resume / dispose; the score, clock and hearts are written straight
 // into the HUD elements it is given (they change every frame, React never holds them).
-import { playCue } from '../sound/sfx';
+import { playCue, playNote } from '../sound/sfx';
 import { BOT_DECISION_STEPS, BotDriver } from './bot-driver';
 import type { MinigameModule } from './define-minigame';
 import { Effects, EVENT_SOUNDS } from './effects';
@@ -186,8 +186,12 @@ export class MinigameStage {
         this.stepCount += 1;
         for (const event of this.round.step(this.input.take(now))) {
           this.effects.add(event);
-          const cue = EVENT_SOUNDS[event.type];
-          if (cue) this.play(cue);
+          // A note sounds instead of the event's usual cue.
+          if (event.note !== undefined) playNote(event.note, event.voice);
+          else {
+            const cue = EVENT_SOUNDS[event.type];
+            if (cue) this.play(cue);
+          }
         }
       }
       const { freezeAt, onFreeze } = this.options;

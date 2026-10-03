@@ -1,7 +1,7 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { writeSoundOn } from '../system/sound-setting';
 import { SOUND_CUES, SOUND_PATHS, soundPath } from './cues';
-import { nextVariant, playCue } from './sfx';
+import { nextVariant, noteFrequency, playCue, playNote } from './sfx';
 
 afterEach(() => {
   vi.unstubAllGlobals();
@@ -42,5 +42,17 @@ describe('sound cues', () => {
     const count = Object.values(SOUND_CUES).reduce((n, list) => n + list.length, 0);
     expect(SOUND_PATHS).toHaveLength(count);
     expect(SOUND_PATHS).toContain(soundPath('complete', 0));
+  });
+});
+
+describe('notes', () => {
+  it('tunes MIDI notes to concert pitch', () => {
+    expect(noteFrequency(69)).toBeCloseTo(440, 5);
+    expect(noteFrequency(60)).toBeCloseTo(261.63, 1);
+    expect(noteFrequency(81)).toBeCloseTo(880, 5);
+  });
+
+  it('stays silent where there is no Web Audio', () => {
+    expect(() => playNote(60, 'drum')).not.toThrow();
   });
 });

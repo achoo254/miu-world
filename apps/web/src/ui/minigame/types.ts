@@ -6,6 +6,7 @@ import type { MinigameParams } from '@miu/schema/content';
 import type { Rng } from './rng';
 import type { SpriteRef, Sprites } from './sprites';
 import type { Theme } from './theme';
+import type { NoteVoice } from '../sound/sfx';
 
 /** Units across the shorter side of the play area, whatever the screen. */
 export const ARENA_SHORT_SIDE = 600;
@@ -73,7 +74,16 @@ export interface GameEvent {
   y: number;
   /** Points shown floating up on `score` (default 1). */
   points?: number;
+  /**
+   * A pitched note to sound with the event instead of its usual cue (piano tiles, a drum, a call to answer):
+   * a MIDI note number (60 = middle C), played by a short synthesised `voice` (default 'piano').
+   */
+  note?: number;
+  voice?: NoteVoice;
 }
+
+/** Synthesised voices for `GameEvent.note` (no sound files: made in the browser with Web Audio). */
+export type { NoteVoice };
 
 /** Everything a round starts from; the same setup and the same inputs always give the same round. */
 export interface GameSetup {

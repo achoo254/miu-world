@@ -30,3 +30,97 @@ export function playCue(cue: SoundCue): void {
     // No audio here (tests, a locked-down browser): stay silent.
   }
 }
+
+/** Synthesised note voices for minigames (piano tiles, drums, call and answer); no sound files. */
+export type NoteVoice = 'piano' | 'bell' | 'drum' | 'clap' | 'whistle';
+
+let noteContext: AudioContext | null = null;
+
+function notes(): AudioContext | null {
+  if (noteContext) return noteContext;
+  const Ctor = typeof window === 'undefined' ? undefined : window.AudioContext;
+  if (!Ctor) return null;
+  try {
+    noteContext = new Ctor();
+  } catch {
+    noteContext = null;
+  }
+  return noteContext;
+}
+
+/** Frequency of a MIDI note (69 = A4 = 440 Hz). */
+export function noteFrequency(midi: number): number {
+  return 440 * 2 ** ((midi - 69) / 12);
+}
+
+/** A short burst of noise, for the drum's skin and the clap. */
+function noiseBuffer(ctx: AudioContext, seconds: number): AudioBuffer {
+  const buffer = ctx.createBuffer(1, Math.ceil(ctx.sampleRate * seconds), ctx.sampleRate);
+  const data = buffer.getChannelData(0);
+  for (let i = 0; i < data.length; i++) data[i] = Math.random() * 2 - 1;
+  return buffer;
+}
+
+/**
+ * Plays one note: a gentle plucked piano (triangle, quick decay), a bell (sine with a fifth above), a drum
+ * (a falling sine thump with a little skin noise), a clap (filtered noise) or a whistle (pure sine). Silent
+ * while the sound setting is off or where the browser has no Web Audio.
+ */
+export function playNote(midi: number, voice: NoteVoice = 'piano'): void {
+  if (!readSoundOn()) return;
+  const ctx = notes();
+  if (!ctx) return;
+  try {
+    if (ctx.state === 'suspended') void ctx.resume();
+    const now = ctx.currentTime;
+    const out = ctx.createGain();
+    out.connect(ctx.destination);
+    const envelope = (peak: number, length: number): void => {
+      out.gain.setValueAtTime(0.0001, now);
+      out.gain.exponentialRampToValueAtTime(peak, now + 0.01);
+      out.gain.exponentialRampToValueAtTime(0.0001, now + length);
+    };
+    const tone = (type: OscillatorType, frequency: number, length: number, to: AudioNode = out): OscillatorNode => {
+      const osc = ctx.createOscillator();
+      osc.type = type;
+      osc.frequency.setValueAtTime(frequency, now);
+      osc.connect(to);
+      osc.start(now);
+      osc.stop(now + length);
+      return osc;
+    };
+    const frequency = noteFrequency(midi);
+    if (voice === 'piano') {
+      envelope(0.35, 0.6);
+      tone('triangle', frequency, 0.65);
+    } else if (voice === 'bell') {
+      envelope(0.3, 1.2);
+      tone('sine', frequency, 1.25);
+      tone('sine', frequency * 1.5, 0.6);
+    } else if (voice === 'whistle') {
+      envelope(0.25, 0.35);
+      tone('sine', frequency * 2, 0.4);
+    } else if (voice === 'drum') {
+      envelope(0.6, 0.35);
+      const thump = tone('sine', frequency, 0.4);
+      thump.frequency.exponentialRampToValueAtTime(Math.max(30, frequency / 3), now + 0.3);
+      const skin = ctx.createBufferSource();
+      skin.buffer = noiseBuffer(ctx, 0.08);
+      const skinGain = ctx.createGain();
+      skinGain.gain.value = 0.15;
+      skin.connect(skinGain).connect(out);
+      skin.start(now);
+    } else {
+      envelope(0.45, 0.15);
+      const clap = ctx.createBufferSource();
+      clap.buffer = noiseBuffer(ctx, 0.16);
+      const band = ctx.createBiquadFilter();
+      band.type = 'bandpass';
+      band.frequency.value = 1500;
+      clap.connect(band).connect(out);
+      clap.start(now);
+    }
+  } catch {
+    // A browser that refuses (no gesture yet, no audio device): stay silent.
+  }
+}
