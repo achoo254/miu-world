@@ -96,8 +96,8 @@ test('the riddle with the Answer layer still finishes the chapter, for 90 XP ins
   await page.goto(playAt('chest'));
   await waitReady(page);
   await tap(page, '[data-id="hud-interact"]');
-  // The riddle answered here is the one thing to copy at the end.
-  await notebookPage(page, 1);
+  // Every question of the chapter to copy, from the server: the four played through the API here too.
+  await notebookPage(page, 5);
   await expect(page.getByRole('dialog', { name: 'Hoàn thành nhiệm vụ!' })).toBeVisible();
   await expect(page.locator('[data-id="reward-xp"] .visually-hidden')).toHaveText('+90 XP');
   await expect(page.locator('[data-id="reward-stars"]')).toHaveAttribute('data-stars', '2');

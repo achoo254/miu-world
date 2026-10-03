@@ -4,7 +4,7 @@
 import { mkdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { expect, test, type Page } from '@playwright/test';
-import { copied, freshChild, playAt, playUntil } from './quest-api';
+import { copied, freshChild, notebookPage, playAt, playUntil } from './quest-api';
 import { readStats, waitReady } from './stats';
 
 /** The background music's mood and whether it really plays (music-player.ts). */
@@ -109,7 +109,9 @@ test('finishing chapter 1 without seeing an answer: 100 XP, Level Up to 2, the L
   mkdirSync(SHOTS, { recursive: true });
   await page.screenshot({ path: `${SHOTS}celebration.png` });
   await expect(reward).toHaveCount(0);
-  // The gate opens by itself after the chest; the server pays and the reward screens follow.
+  // The gate opens by itself after the chest; the server pays: first the chapter's five questions to copy
+  // into the vở (from the server, though they were played through the API), then the reward screens.
+  await notebookPage(page, 5);
   await expect(reward).toBeVisible();
   await expect(page.locator('[data-id="reward-stars"]')).toHaveAttribute('data-stars', '3');
   await expect(page.locator('[data-id="reward-xp"] .visually-hidden')).toHaveText('+100 XP');

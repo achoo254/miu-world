@@ -17,7 +17,7 @@ mkdirSync(SHOTS, { recursive: true });
 const shot = (page: Page, name: string) => page.screenshot({ path: `${SHOTS}${name}.png`, animations: 'disabled' });
 const dialog = (page: Page, name: string) => page.getByRole('dialog', { name });
 const check = (page: Page) => tap(page, '[data-id="challenge-check"]');
-/** After a right answer: the question and the answer to copy into the vở, then on with the quest. */
+/** After a right answer: the question and the book's answer (the step's author text) to copy into the vở, then on. */
 async function copied(page: Page, answer: string, name?: string): Promise<void> {
   await expect(dialog(page, 'Chép vào vở')).toBeVisible();
   await expect(page.locator('[data-id="notebook-lines"]')).toContainText(`Đáp án: ${answer}`);
@@ -51,7 +51,7 @@ test('plays classify, fill-blank, multi-select, clock, calendar, connect, pictur
   await tap(page, '[data-id="group-title-su-vat"]');
   await shot(page, 'classify');
   await check(page);
-  await copied(page, 'Chỉ sự vật: sách, bút; Chỉ hoạt động: đọc');
+  await copied(page, 'sách, bút: sự vật; đọc: hoạt động');
 
   // Fill-blank: a wrong sign first (the step's own line), then the right one.
   await expect(dialog(page, 'Điền dấu')).toBeVisible();
@@ -62,14 +62,14 @@ test('plays classify, fill-blank, multi-select, clock, calendar, connect, pictur
   await tap(page, '[data-id="option-b1-lon"]');
   await shot(page, 'fill-blank');
   await check(page);
-  await copied(page, '47 > 38');
+  await copied(page, '>');
 
   await expect(dialog(page, 'Chọn phép tính đúng')).toBeVisible();
   await tap(page, '[data-id="choice-p1"]');
   await tap(page, '[data-id="choice-p3"]');
   await shot(page, 'multi-select');
   await check(page);
-  await copied(page, '4 + 6, 8 + 2');
+  await copied(page, '4 + 6 và 8 + 2');
 
   // Clock: the face shows 3 o'clock; set 3:00 with the + button.
   await expect(dialog(page, 'Xem đồng hồ')).toBeVisible();
@@ -77,7 +77,7 @@ test('plays classify, fill-blank, multi-select, clock, calendar, connect, pictur
   for (let i = 0; i < 3; i += 1) await tap(page, '[data-id="clock-hour-up"]');
   await shot(page, 'clock');
   await check(page);
-  await copied(page, '3 giờ');
+  await copied(page, '15 giờ');
 
   await expect(dialog(page, 'Xem lịch')).toBeVisible();
   await tap(page, '[data-id="weekday-thu-sau"]');
@@ -98,7 +98,7 @@ test('plays classify, fill-blank, multi-select, clock, calendar, connect, pictur
   await touchDrag(page, '[data-id="stone-t2"]', '[data-id="slot-1"]');
   await shot(page, 'sort-pictures');
   await check(page);
-  await copied(page, 'Tranh 1 → Tranh 2');
+  await copied(page, 'Tranh 1, tranh 2');
 
   await expect(dialog(page, 'Kể chuyện')).toBeVisible();
   await expect(page.locator('[data-id="speak-hints"]')).toContainText('Em đi đâu?');

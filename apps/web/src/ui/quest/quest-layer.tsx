@@ -1,7 +1,7 @@
 // Everything the quest puts over the forest: NPC dialogue, learning-step screens, short toasts and the
 // offline retry for a pending step. Rendered by /play once the player data is loaded.
 import type { QuestStepPublic } from '@miu/schema/content';
-import type { StepAnswer, StepCompleteResponse } from '@miu/schema/game';
+import type { NotebookLine, StepCompleteResponse } from '@miu/schema/game';
 import type { GameStore } from '../../game-bridge/game-store';
 import { AnswerBurst } from '../challenge/answer-burst';
 import { LearningStep, hasLearningScreen } from '../challenge/learning-step';
@@ -16,7 +16,6 @@ import { useNavigate } from 'react-router';
 import { CompletionSequence } from '../rewards/completion-sequence';
 import { REGION_MUSIC } from '../region/regions';
 import { playMood, useMusicMood } from '../sound/music-player';
-import { keepInNotebook, notebookEntry, readNotebook, type NotebookEntry } from './notebook';
 import { NotebookCard } from './notebook-card';
 import { StepDraftScope } from './step-draft';
 import { useQuestController } from './use-quest-controller';
@@ -43,7 +42,7 @@ export function QuestLayer({
 }) {
   // The notebook card covers the game too: what the quest covers and the card are reported together.
   const questCovers = useRef(false);
-  const [copy, setCopy] = useState<NotebookEntry | null>(null);
+  const [copy, setCopy] = useState<NotebookLine | null>(null);
   const reportCover = useCallback(
     (open: boolean) => {
       questCovers.current = open;
@@ -62,17 +61,8 @@ export function QuestLayer({
   const questStarted = summary?.state === 'in-progress' && summary.progress.completedSteps.length > 0;
   useMusicMood(playMood({ region, questStarted, learning, finished: quest.finished !== null }, REGION_MUSIC));
   const endBurst = useCallback(() => setBurstShown(quest.cheers), [quest.cheers]);
-  // A right answer: its question and answer to copy into the vở (owner, 03/10/2026), kept for the quest's end.
-  const onRight = useCallback(
-    (shown: QuestStepPublic, answer: StepAnswer) => {
-      if (!questId) return;
-      const entry = notebookEntry(shown, answer, (text) => say(text, data.character));
-      if (!entry) return;
-      keepInNotebook(draftOwner, questId, entry);
-      setCopy(entry);
-    },
-    [questId, data.character, draftOwner],
-  );
+  // A right answer: its question and the book's answer to copy into the vở (owner, 03/10/2026), from the server.
+  const onRight = useCallback((line: NotebookLine) => setCopy(line), []);
   const stepScreen = (shown: QuestStepPublic): ReactNode =>
     shown.kind === 'dialogue' ? (
       <DialogueScreen
@@ -102,10 +92,10 @@ export function QuestLayer({
           {stepScreen(step)}
         </StepDraftScope>
       ) : null}
-      {copy ? <NotebookCard entry={copy} name={data.character.name} onDone={() => setCopy(null)} /> : null}
+      {copy ? <NotebookCard line={copy} character={data.character} onDone={() => setCopy(null)} /> : null}
       {quest.finished && !copy && summary?.quest.status === 'active' ? (
         <CompletionSequence
-          notebook={questId ? readNotebook(draftOwner, questId) : []}
+          notebook={quest.finished.completion.notebook ?? []}
           completion={quest.finished.completion}
           reward={quest.finished.reward}
           quest={summary.quest}

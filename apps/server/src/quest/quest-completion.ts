@@ -2,6 +2,7 @@ import { and, eq, inArray } from 'drizzle-orm';
 import type { ActiveQuest, RewardSpec } from '@miu/schema/content';
 import type { QuestCompletion } from '@miu/schema/game';
 import { levelFromXp } from '@miu/quest/level';
+import { notebookLines } from '@miu/quest/notebook';
 import { questScore } from '@miu/quest/quest-score';
 import type { ContentCatalog } from '../content/content-catalog';
 import { questProgress, skillProgress } from '../db/schema';
@@ -57,6 +58,8 @@ export async function finishQuest(tx: Tx, content: ContentCatalog, childId: stri
       levelBefore: level(xpBefore),
       levelAfter: level(xpBefore + (paid?.xp ?? 0)),
       skillLevels,
+      // Every question with its answer, to copy into the vở before the reward (owner, 03/10/2026).
+      notebook: notebookLines(quest.steps),
     },
   };
 }

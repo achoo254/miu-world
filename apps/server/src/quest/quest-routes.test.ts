@@ -244,9 +244,16 @@ describe('scoring a finished quest', () => {
   it('pays full XP with 3 stars, reports Level Up and Skill Up', async () => {
     const { agent } = await playingChild();
     const a = await finish(agent, 'quest-a');
-    expect(a.body.completion).toEqual({ stars: 3, xpAwarded: 60, levelBefore: 1, levelAfter: 1, skillLevels: [{ skillId: 'doc-hieu', levelBefore: 1, levelAfter: 1 }] });
+    expect(a.body.completion).toEqual({
+      stars: 3,
+      xpAwarded: 60,
+      levelBefore: 1,
+      levelAfter: 1,
+      skillLevels: [{ skillId: 'doc-hieu', levelBefore: 1, levelAfter: 1 }],
+      notebook: [{ step: 'solve-tree', question: '2 + 3 = ?', answer: '5' }],
+    });
     const b = await finish(agent, 'quest-b');
-    expect(b.body.completion).toEqual({
+    expect(b.body.completion).toMatchObject({
       stars: 3,
       xpAwarded: 100,
       levelBefore: 1,
@@ -324,18 +331,39 @@ describe('learning support', () => {
     await support(agent, 'quest-c', 'fly-away', { layer: 'hint' }).expect(404, { error: 'step-not-found' });
   });
 
-  it('never sends answers or support text anywhere except the support endpoint', async () => {
+  it('never sends answers or support text anywhere except the support endpoint and the vở lines of done steps', async () => {
     const { agent } = await playingChild();
+    const finished = (await finish(agent, 'quest-c')).body as { completion: { notebook?: unknown[] }; copy?: unknown };
+    // The quest's end lists its questions with the book's answers, to copy into the vở: every step is done by then.
+    const { notebook, ...completion } = finished.completion;
+    expect(notebook?.length).toBeGreaterThan(0);
     const bodies = [
       (await agent.get('/api/quests').expect(200)).text,
       (await agent.get('/api/quests/quest-b').expect(200)).text,
-      (await finish(agent, 'quest-c')).text,
+      JSON.stringify({ ...finished, completion, copy: null }),
       (await agent.get('/api/progress').expect(200)).text,
     ];
     for (const text of bodies) {
       expect(text).not.toMatch(/"(answer|support|guide|hint|explanation)"/);
       expect(text).not.toContain('Đếm chậm lại.');
     }
+  });
+
+  it('sends the vở line of a step only once it is answered right: its question and the book\'s answer', async () => {
+    const { agent } = await playingChild();
+    await playFirst(agent, 'quest-c', 3);
+    const wrong = await step(agent, 'quest-c', 'add-flowers', { answer: { value: 3 } }).expect(200);
+    expect(wrong.body.copy ?? null).toBeNull();
+    const quest = FIXTURE_CONTENT.quests.get('quest-c');
+    const def = quest?.status === 'active' ? quest.steps.find((s) => s.id === 'add-flowers') : undefined;
+    if (!def || !('support' in def)) throw new Error('add-flowers must be an answerable fixture step');
+    const right = await step(agent, 'quest-c', 'add-flowers', { answer: { value: 2 } }).expect(200);
+    expect(right.body.copy).toEqual({ step: 'add-flowers', question: 'question' in def ? def.question : def.prompt, answer: def.support.answer.text });
+    // The last step finished the quest: every answerable step's line, in order, before the reward.
+    expect(right.body.completion.notebook).toEqual([right.body.copy]);
+    // Done again: nothing new to copy.
+    const again = await step(agent, 'quest-c', 'add-flowers', { answer: { value: 2 } }).expect(200);
+    expect(again.body.copy ?? null).toBeNull();
   });
 });
 

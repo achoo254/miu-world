@@ -5,14 +5,13 @@
 // one by one, then XP and coins count up; rewards worth nothing are left out. Under reduced motion
 // everything shows at once.
 import { useEffect, useState, type CSSProperties } from 'react';
-import type { QuestCompletion, StepCompleteResponse } from '@miu/schema/game';
+import type { NotebookLine, QuestCompletion, StepCompleteResponse } from '@miu/schema/game';
 import { ITEMS, itemIcon } from '../backpack/items';
 import { lastSpeakerOf, NpcPortrait } from '../dialogue/npc-portrait';
 import { Icon, MiuPortrait } from '../kit/art';
 import { buttonClass } from '../kit/button';
 import { Modal } from '../kit/modal';
 import { say, type PlayerData } from '../player/player-data';
-import type { NotebookEntry } from '../quest/notebook';
 import { NotebookLines } from '../quest/notebook-card';
 import type { ActiveQuestView } from '../quest/quest-flow';
 import { playCue } from '../sound/sfx';
@@ -150,7 +149,7 @@ export function CompletionSequence({
   notebook = [],
 }: {
   /** The quest's questions and answers to copy into the vở, shown first. */
-  notebook?: readonly NotebookEntry[];
+  notebook?: readonly NotebookLine[];
   completion: QuestCompletion;
   reward: GrantedReward;
   quest: ActiveQuestView;
@@ -169,7 +168,7 @@ export function CompletionSequence({
       {screen === 'notebook' ? (
         <div className="reward-body" data-id="completion-notebook-page">
           <p className="notebook-ask">Chơi xong rồi! {data.character.name} chép các câu hỏi và đáp án này vào vở nhé.</p>
-          <NotebookLines entries={notebook} />
+          <NotebookLines lines={notebook} character={data.character} />
         </div>
       ) : screen === 'reward' ? (
         <RewardScreen completion={completion} reward={reward} quest={quest} data={data} />

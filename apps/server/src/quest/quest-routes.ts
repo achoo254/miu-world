@@ -12,6 +12,7 @@ import {
   SupportResponse,
   type SupportLayer,
 } from '@miu/schema/game';
+import { notebookLine } from '@miu/quest/notebook';
 import { completeStep, isAnswerable, type StepError } from '@miu/quest/quest-progress';
 import { activeChildId, optionalAuth, requireParent } from '../auth/auth-context';
 import type { ContentCatalog } from '../content/content-catalog';
@@ -187,6 +188,8 @@ export function questRoutes({ db, content, clock }: QuestRouteDeps): Router {
         reward: outcome.reward,
         repeated: outcome.repeated,
         completion: outcome.completion,
+        // A right answer: its question and answer to copy into the vở now.
+        copy: outcome.correct && !outcome.repeated && stepDef ? notebookLine(stepDef) : null,
         progress: await progressSummary(db, childId, content),
       }),
     );

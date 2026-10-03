@@ -74,6 +74,13 @@ export const GrantedReward = z.object({
 });
 
 /** What finishing a quest changed; the client shows it as is (stars, Level Up, Skill Up). */
+/**
+ * A line the child copies into her vở (owner, 03/10/2026): a step's question and its answer as the book
+ * writes it (the author's answer text). Sent only once the step is done, so it never gives an answer away.
+ */
+export const NotebookLine = z.object({ step: ContentId, question: z.string(), answer: z.string() });
+export type NotebookLine = z.infer<typeof NotebookLine>;
+
 export const QuestCompletion = z.object({
   stars: z.number().int().min(1).max(3),
   xpAwarded: z.number().int().min(0),
@@ -81,6 +88,8 @@ export const QuestCompletion = z.object({
   levelAfter: z.number().int().min(1),
   /** Skills this quest rewarded, with their level before and after. */
   skillLevels: z.array(z.object({ skillId: ContentId, levelBefore: z.number().int().min(1), levelAfter: z.number().int().min(1) })),
+  /** Every question of the quest with its answer, to copy into the vở before the reward. */
+  notebook: z.array(NotebookLine).optional(),
 });
 export type QuestCompletion = z.infer<typeof QuestCompletion>;
 
@@ -96,6 +105,8 @@ export const StepCompleteResponse = z.object({
   repeated: z.boolean(),
   /** Set only by the call that finished the quest. */
   completion: QuestCompletion.nullable(),
+  /** A right answer to a question: the question and its answer to copy into the vở now. */
+  copy: NotebookLine.nullish(),
   progress: ProgressResponse,
 });
 export type StepCompleteResponse = z.infer<typeof StepCompleteResponse>;
