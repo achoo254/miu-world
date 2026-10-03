@@ -369,7 +369,8 @@ function sellerCast(kit: Kit): Resident[] {
 /**
  * Shoppers going round the stalls: one for every other stall, standing first at its counter, then at the
  * two stalls nearest it, asking the price (everyday-routines.ts); and every shopper of the crowds round the
- * squares does the round of the three stalls nearest home.
+ * squares does the round of the three stalls nearest home. They are a crowd like the others: where the stalls
+ * pack a street, the shoppers past its share walk the town's other streets instead (village-life.ts).
  */
 function shopperRounds(kit: Kit, cast: readonly Resident[]): Resident[] {
   const nearestStalls = (x: number, z: number): Array<readonly [number, number]> =>
@@ -381,7 +382,7 @@ function shopperRounds(kit: Kit, cast: readonly Resident[]): Resident[] {
     const k = counts.get(s.goods) ?? 0;
     counts.set(s.goods, k + 1);
     const visits = nearestStalls(s.before[0], s.before[1]);
-    return [{ routine: 'shopper', name: `${FOLK[(k + i) % FOLK.length] ?? 'Cô'} ${WANTS[s.goods]}`, model: person('abcghijklnop'[i % 12] ?? 'c'), held: [HELD.basket], at: s.before, visits }];
+    return [{ routine: 'shopper', name: `${FOLK[(k + i) % FOLK.length] ?? 'Cô'} ${WANTS[s.goods]}`, model: person('abcghijklnop'[i % 12] ?? 'c'), held: [HELD.basket], at: s.before, visits, spread: true }];
   });
   return [...going, ...extra];
 }

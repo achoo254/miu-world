@@ -727,6 +727,8 @@ export async function generateForest(): Promise<{ world: VoxelWorld; entities: W
         inWater: (x, z) => surface(x, z) <= WATER_LEVEL || wetDistance(x, z) < 1,
         questSpots: interactables.map((t) => [t.position[0] ?? 0, t.position[2] ?? 0] as const),
         scaleOf,
+        isWay: (x, z) => pathCells.has(`${x},${z}`),
+        spawn: [spawn.x, spawn.z],
       },
       DISTRICTS.flatMap((d, i) => {
         const folk = FOLK[i % FOLK.length] ?? FOLK[0];

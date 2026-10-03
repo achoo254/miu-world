@@ -12,6 +12,7 @@ import { cellsIn } from './chapters/place-quest-targets';
 import type { OutlandTheme } from '../../packages/voxel/src/outland';
 import { outlandSpecOf } from './outland-spec';
 import { columnsOf, fillColumn, heightField, loadBlocks, mapModels, PACK, placeRegionTargets, rollingHeight, scatterTrees, smoothstep, standHeight, WIDE_MAP_SIDE } from './map-kit';
+import { WAY_BLOCKS } from './scenery-audit';
 import { placeVillageLife, type Resident } from './village-life';
 import { createRng, hashSeed } from './noise';
 import { distanceToPath, pathColumns, type Point } from './structures/path';
@@ -366,7 +367,14 @@ export async function generateZoneMap(spec: ZoneMapSpec): Promise<{ world: Voxel
     seed: seed + 11,
   });
 
-  // 7. Everyday life round the districts, clear of every quest target.
+  // 7. Everyday life round the districts, clear of every quest target and out of the water (the map's, and the
+  // pools and fountains it built), spread over the map's lived ground: its ways (on the ground, or paving laid one
+  // block up) and its buildings.
+  const wayIds = new Set(WAY_BLOCKS.map(block));
+  const isWay = (x: number, z: number): boolean => {
+    const y = surface(x, z);
+    return wayIds.has(world.get(x, y, z)) || (wayIds.has(world.get(x, y + 1, z)) && world.get(x, y + 2, z) === 0);
+  };
   const landmarkAt = (id: string): readonly [number, number] => {
     const lm = landmarks.find((l) => l.id === id);
     if (!lm) throw new Error(`${spec.mapId}: no landmark ${id} for the cast`);
@@ -374,7 +382,7 @@ export async function generateZoneMap(spec: ZoneMapSpec): Promise<{ world: Voxel
   };
   const ambients = spec.life
     ? placeVillageLife(
-        { world, surface, standY, onPath, inWater, questSpots: columnsOf(interactables), scaleOf: models.scaleOf },
+        { world, surface, standY, onPath, inWater: (x, z) => inWater(x, z) || world.get(x, surface(x, z), z) === B.water, questSpots: columnsOf(interactables), scaleOf: models.scaleOf, isWay, nearBuilding: (x, z, pad) => keptOut(x, z, pad), spawn: [spec.spawn.x, spec.spawn.z] },
         spec.life({ zone, landmark: landmarkAt }),
         seed + 23,
       )
