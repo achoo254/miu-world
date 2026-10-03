@@ -4,6 +4,11 @@ import { MIRRORED_NODES, type AccessoryDef } from './accessory-schema';
 import { countExposedFaces, greedyQuads, quadsToGeometry, type Dims, type QuadGeometry } from './greedy-mesher';
 
 export const MAX_ACCESSORY_TRIANGLES = 1500;
+/**
+ * A vehicle is life-size and detailed (tyres, rims, lights, seat, wheel) yet costs little: each child rides
+ * at most one in a scene, still one draw call.
+ */
+export const MAX_VEHICLE_TRIANGLES = 4000;
 
 export interface VoxelVolume {
   dims: Dims;

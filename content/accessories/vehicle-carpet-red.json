@@ -2,187 +2,103 @@
   "id": "vehicle-carpet-red",
   "name": "Thảm bay đỏ",
   "slot": "vehicle",
-  "unlock": {
-    "level": 8
-  },
+  "unlock": { "level": 8 },
   "attachNode": "ground",
   "voxelSize": 0.0625,
-  "offset": [
-    0,
-    0,
-    0
-  ],
-  "ride": {
-    "height": 0.3125,
-    "pose": "sit",
-    "float": true
-  },
+  "offset": [0, 0, 0],
+  "ride": { "height": 0.3125, "pose": "sit", "float": true },
   "palette": {
     "carpet": "#c0392b",
     "border": "#ffd23f",
     "pattern": "#3f7ac0",
-    "tassel": "#ffd23f"
+    "tassel": "#ffd23f",
+    "carpetDark": "#962c22",
+    "patternLight": "#82a9d6"
   },
-  "variants": {"mint": {"carpet": "#3ab185", "border": "#63dbaf", "pattern": "#4cb38d", "tassel": "#63dbaf"}, 
-    "blue": {
-      "carpet": "#2d5fa8",
-      "pattern": "#ffd23f"
-    },
-    "purple": {
-      "carpet": "#6c3fa0",
-      "pattern": "#5fe0ff"
-    },
-    "gold": {
-      "carpet": "#e0a520",
-      "border": "#fff6c0",
-      "pattern": "#c0392b",
-      "tassel": "#fff6c0"
-    }
+  "variants": {
+    "mint": { "carpet": "#3ab185", "border": "#63dbaf", "pattern": "#4cb38d", "tassel": "#63dbaf", "carpetDark": "#2d8a68", "patternLight": "#8bceb5" },
+    "blue": { "carpet": "#2d5fa8", "pattern": "#ffd23f", "carpetDark": "#234a83", "patternLight": "#ffe282" },
+    "purple": { "carpet": "#6c3fa0", "pattern": "#5fe0ff", "carpetDark": "#54317d", "patternLight": "#97ebff" },
+    "gold": { "carpet": "#e0a520", "border": "#fff6c0", "pattern": "#c0392b", "tassel": "#fff6c0", "carpetDark": "#af8119", "patternLight": "#d67e75" }
   },
   "boxes": [
-    {
-      "x": -12,
-      "y": 4,
-      "z": -18,
-      "w": 24,
-      "h": 1,
-      "d": 36,
-      "color": "carpet"
-    },
-    {
-      "x": -12,
-      "y": 4,
-      "z": -18,
-      "w": 24,
-      "h": 1,
-      "d": 2,
-      "color": "border"
-    },
-    {
-      "x": 10,
-      "y": 4,
-      "z": -18,
-      "w": 2,
-      "h": 1,
-      "d": 36,
-      "color": "border"
-    },
-    {
-      "x": -12,
-      "y": 4,
-      "z": -18,
-      "w": 2,
-      "h": 1,
-      "d": 36,
-      "color": "border"
-    },
-    {
-      "x": -12,
-      "y": 5,
-      "z": 18,
-      "w": 24,
-      "h": 1,
-      "d": 2,
-      "color": "border"
-    },
-    {
-      "x": -12,
-      "y": 6,
-      "z": 19,
-      "w": 24,
-      "h": 1,
-      "d": 1,
-      "color": "border"
-    },
-    {
-      "x": -2,
-      "y": 4,
-      "z": -9,
-      "w": 4,
-      "h": 1,
-      "d": 4,
-      "color": "pattern"
-    },
-    {
-      "x": 2,
-      "y": 4,
-      "z": -1,
-      "w": 4,
-      "h": 1,
-      "d": 4,
-      "color": "pattern"
-    },
-    {
-      "x": -6,
-      "y": 4,
-      "z": -1,
-      "w": 4,
-      "h": 1,
-      "d": 4,
-      "color": "pattern"
-    },
-    {
-      "x": -2,
-      "y": 4,
-      "z": 7,
-      "w": 4,
-      "h": 1,
-      "d": 4,
-      "color": "pattern"
-    },
-    {
-      "x": -11,
-      "y": 3,
-      "z": -19,
-      "w": 2,
-      "h": 1,
-      "d": 1,
-      "color": "tassel"
-    },
-    {
-      "x": -7,
-      "y": 3,
-      "z": -19,
-      "w": 2,
-      "h": 1,
-      "d": 1,
-      "color": "tassel"
-    },
-    {
-      "x": -3,
-      "y": 3,
-      "z": -19,
-      "w": 2,
-      "h": 1,
-      "d": 1,
-      "color": "tassel"
-    },
-    {
-      "x": 1,
-      "y": 3,
-      "z": -19,
-      "w": 2,
-      "h": 1,
-      "d": 1,
-      "color": "tassel"
-    },
-    {
-      "x": 5,
-      "y": 3,
-      "z": -19,
-      "w": 2,
-      "h": 1,
-      "d": 1,
-      "color": "tassel"
-    },
-    {
-      "x": 9,
-      "y": 3,
-      "z": -19,
-      "w": 2,
-      "h": 1,
-      "d": 1,
-      "color": "tassel"
-    }
+    { "x": 0, "y": 2, "z": -25, "w": 1, "h": 1, "d": 1, "color": "tassel", "sym": true },
+    { "x": 2, "y": 2, "z": -25, "w": 1, "h": 1, "d": 1, "color": "tassel", "sym": true },
+    { "x": 4, "y": 2, "z": -25, "w": 1, "h": 1, "d": 1, "color": "tassel", "sym": true },
+    { "x": 6, "y": 2, "z": -25, "w": 1, "h": 1, "d": 1, "color": "tassel", "sym": true },
+    { "x": 8, "y": 2, "z": -25, "w": 1, "h": 1, "d": 1, "color": "tassel", "sym": true },
+    { "x": 10, "y": 2, "z": -25, "w": 1, "h": 1, "d": 1, "color": "tassel", "sym": true },
+    { "x": 12, "y": 2, "z": -25, "w": 1, "h": 1, "d": 1, "color": "tassel", "sym": true },
+    { "x": 14, "y": 2, "z": -25, "w": 1, "h": 1, "d": 1, "color": "tassel", "sym": true },
+    { "x": 0, "y": 3, "z": -24, "w": 1, "h": 1, "d": 2, "color": "tassel", "sym": true },
+    { "x": 2, "y": 3, "z": -24, "w": 1, "h": 1, "d": 2, "color": "tassel", "sym": true },
+    { "x": 4, "y": 3, "z": -24, "w": 1, "h": 1, "d": 2, "color": "tassel", "sym": true },
+    { "x": 6, "y": 3, "z": -24, "w": 1, "h": 1, "d": 2, "color": "tassel", "sym": true },
+    { "x": 8, "y": 3, "z": -24, "w": 1, "h": 1, "d": 2, "color": "tassel", "sym": true },
+    { "x": 10, "y": 3, "z": -24, "w": 1, "h": 1, "d": 2, "color": "tassel", "sym": true },
+    { "x": 12, "y": 3, "z": -24, "w": 1, "h": 1, "d": 2, "color": "tassel", "sym": true },
+    { "x": 14, "y": 3, "z": -24, "w": 1, "h": 1, "d": 2, "color": "tassel", "sym": true },
+    { "x": 0, "y": 3, "z": -22, "w": 15, "h": 1, "d": 37, "color": "carpetDark", "sym": true },
+    { "x": 0, "y": 3, "z": 18, "w": 15, "h": 2, "d": 4, "color": "carpet", "sym": true },
+    { "x": 0, "y": 4, "z": -22, "w": 15, "h": 1, "d": 1, "color": "carpetDark", "sym": true },
+    { "x": 0, "y": 4, "z": -21, "w": 14, "h": 1, "d": 1, "color": "carpet", "sym": true },
+    { "x": 14, "y": 4, "z": -21, "w": 1, "h": 1, "d": 36, "color": "carpetDark", "sym": true },
+    { "x": 0, "y": 4, "z": -20, "w": 13, "h": 1, "d": 2, "color": "border", "sym": true },
+    { "x": 13, "y": 4, "z": -20, "w": 1, "h": 1, "d": 35, "color": "carpet", "sym": true },
+    { "x": 0, "y": 4, "z": -18, "w": 1, "h": 1, "d": 3, "color": "pattern", "sym": true },
+    { "x": 1, "y": 4, "z": -18, "w": 7, "h": 1, "d": 1, "color": "carpet", "sym": true },
+    { "x": 8, "y": 4, "z": -18, "w": 2, "h": 1, "d": 1, "color": "patternLight", "sym": true },
+    { "x": 10, "y": 4, "z": -18, "w": 1, "h": 1, "d": 1, "color": "carpet", "sym": true },
+    { "x": 11, "y": 4, "z": -18, "w": 2, "h": 1, "d": 33, "color": "border", "sym": true },
+    { "x": 1, "y": 4, "z": -17, "w": 9, "h": 1, "d": 1, "color": "pattern", "sym": true },
+    { "x": 10, "y": 4, "z": -17, "w": 1, "h": 1, "d": 1, "color": "patternLight", "sym": true },
+    { "x": 1, "y": 4, "z": -16, "w": 2, "h": 1, "d": 2, "color": "pattern", "sym": true },
+    { "x": 3, "y": 4, "z": -16, "w": 5, "h": 1, "d": 1, "color": "carpet", "sym": true },
+    { "x": 8, "y": 4, "z": -16, "w": 1, "h": 1, "d": 1, "color": "patternLight", "sym": true },
+    { "x": 9, "y": 4, "z": -16, "w": 1, "h": 1, "d": 30, "color": "pattern", "sym": true },
+    { "x": 10, "y": 4, "z": -16, "w": 1, "h": 1, "d": 31, "color": "carpet", "sym": true },
+    { "x": 0, "y": 4, "z": -15, "w": 1, "h": 1, "d": 3, "color": "border", "sym": true },
+    { "x": 3, "y": 4, "z": -15, "w": 1, "h": 1, "d": 3, "color": "pattern", "sym": true },
+    { "x": 4, "y": 4, "z": -15, "w": 5, "h": 1, "d": 1, "color": "carpet", "sym": true },
+    { "x": 1, "y": 4, "z": -14, "w": 1, "h": 1, "d": 1, "color": "border", "sym": true },
+    { "x": 2, "y": 4, "z": -14, "w": 1, "h": 1, "d": 3, "color": "pattern", "sym": true },
+    { "x": 4, "y": 4, "z": -14, "w": 1, "h": 1, "d": 1, "color": "pattern", "sym": true },
+    { "x": 5, "y": 4, "z": -14, "w": 4, "h": 1, "d": 27, "color": "carpet", "sym": true },
+    { "x": 1, "y": 4, "z": -13, "w": 1, "h": 1, "d": 3, "color": "pattern", "sym": true },
+    { "x": 4, "y": 4, "z": -13, "w": 1, "h": 1, "d": 25, "color": "carpet", "sym": true },
+    { "x": 0, "y": 4, "z": -12, "w": 1, "h": 6, "d": 3, "color": "pattern", "sym": true },
+    { "x": 3, "y": 4, "z": -12, "w": 1, "h": 1, "d": 23, "color": "carpet", "sym": true },
+    { "x": 2, "y": 4, "z": -11, "w": 1, "h": 1, "d": 21, "color": "carpet", "sym": true },
+    { "x": 1, "y": 4, "z": -10, "w": 1, "h": 1, "d": 19, "color": "carpet", "sym": true },
+    { "x": 0, "y": 4, "z": -9, "w": 1, "h": 1, "d": 17, "color": "carpet", "sym": true },
+    { "x": 0, "y": 4, "z": 8, "w": 1, "h": 1, "d": 3, "color": "pattern", "sym": true },
+    { "x": 1, "y": 4, "z": 9, "w": 1, "h": 1, "d": 3, "color": "pattern", "sym": true },
+    { "x": 2, "y": 4, "z": 10, "w": 1, "h": 1, "d": 5, "color": "pattern", "sym": true },
+    { "x": 0, "y": 4, "z": 11, "w": 1, "h": 1, "d": 2, "color": "border", "sym": true },
+    { "x": 3, "y": 4, "z": 11, "w": 1, "h": 1, "d": 3, "color": "pattern", "sym": true },
+    { "x": 1, "y": 4, "z": 12, "w": 1, "h": 1, "d": 1, "color": "border", "sym": true },
+    { "x": 4, "y": 4, "z": 12, "w": 1, "h": 1, "d": 2, "color": "pattern", "sym": true },
+    { "x": 0, "y": 4, "z": 13, "w": 2, "h": 1, "d": 2, "color": "pattern", "sym": true },
+    { "x": 5, "y": 4, "z": 13, "w": 4, "h": 1, "d": 1, "color": "pattern", "sym": true },
+    { "x": 3, "y": 4, "z": 14, "w": 5, "h": 1, "d": 1, "color": "carpet", "sym": true },
+    { "x": 8, "y": 4, "z": 14, "w": 2, "h": 1, "d": 1, "color": "patternLight", "sym": true },
+    { "x": 1, "y": 5, "z": -12, "w": 6, "h": 2, "d": 4, "color": "pattern", "sym": true },
+    { "x": 7, "y": 5, "z": -12, "w": 2, "h": 2, "d": 1, "color": "tassel", "sym": true },
+    { "x": 7, "y": 5, "z": -11, "w": 1, "h": 5, "d": 3, "color": "pattern", "sym": true },
+    { "x": 0, "y": 5, "z": -9, "w": 1, "h": 2, "d": 1, "color": "pattern", "sym": true },
+    { "x": 0, "y": 5, "z": 21, "w": 15, "h": 4, "d": 1, "color": "carpet", "sym": true },
+    { "x": 0, "y": 5, "z": 22, "w": 15, "h": 3, "d": 1, "color": "border", "sym": true },
+    { "x": 0, "y": 6, "z": 16, "w": 15, "h": 2, "d": 2, "color": "carpet", "sym": true },
+    { "x": 1, "y": 7, "z": -12, "w": 7, "h": 1, "d": 1, "color": "pattern", "sym": true },
+    { "x": 1, "y": 7, "z": -11, "w": 6, "h": 4, "d": 2, "color": "pattern", "sym": true },
+    { "x": 0, "y": 7, "z": -9, "w": 6, "h": 1, "d": 1, "color": "patternLight", "sym": true },
+    { "x": 6, "y": 7, "z": -9, "w": 1, "h": 3, "d": 1, "color": "pattern", "sym": true },
+    { "x": 1, "y": 8, "z": -12, "w": 6, "h": 2, "d": 1, "color": "pattern", "sym": true },
+    { "x": 7, "y": 8, "z": -12, "w": 2, "h": 2, "d": 1, "color": "tassel", "sym": true },
+    { "x": 0, "y": 8, "z": -9, "w": 6, "h": 2, "d": 1, "color": "pattern", "sym": true },
+    { "x": 0, "y": 8, "z": 17, "w": 15, "h": 1, "d": 4, "color": "carpet", "sym": true },
+    { "x": 15, "y": 8, "z": 22, "w": 1, "h": 2, "d": 2, "color": "tassel", "sym": true },
+    { "x": 0, "y": 9, "z": 18, "w": 15, "h": 1, "d": 3, "color": "border", "sym": true },
+    { "x": 0, "y": 10, "z": -11, "w": 1, "h": 1, "d": 2, "color": "pattern", "sym": true }
   ]
 }

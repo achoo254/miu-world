@@ -4,15 +4,8 @@
   "slot": "vehicle",
   "attachNode": "ground",
   "voxelSize": 0.0625,
-  "offset": [
-    0,
-    0,
-    0
-  ],
-  "ride": {
-    "height": 0.3125,
-    "pose": "stand"
-  },
+  "offset": [0, 0, 0],
+  "ride": { "height": 0.3125, "pose": "stand" },
   "palette": {
     "body": "#ff7eb6",
     "deck": "#3b3446",
@@ -20,197 +13,69 @@
     "grip": "#ffffff",
     "wheel": "#3b3446",
     "hub": "#ffd23f",
-    "light": "#fff6c0"
+    "light": "#fff6c0",
+    "rim": "#ffffff",
+    "bodyDark": "#cc6592"
   },
-  "variants": {"mint": {"body": "#97e6c9", "hub": "#63dbaf", "light": "#ccf3e5"}, 
-    "green": {
-      "body": "#4caf50",
-      "hub": "#ffffff"
-    },
-    "purple": {
-      "body": "#8a5ac8"
-    }
+  "variants": {
+    "mint": { "body": "#97e6c9", "hub": "#63dbaf", "light": "#ccf3e5", "bodyDark": "#79b8a1" },
+    "green": { "body": "#4caf50", "hub": "#ffffff", "bodyDark": "#3d8c40" },
+    "purple": { "body": "#8a5ac8", "bodyDark": "#6e48a0" }
   },
   "boxes": [
-    {
-      "x": -2,
-      "y": 0,
-      "z": -16,
-      "w": 4,
-      "h": 1,
-      "d": 4,
-      "color": "wheel"
-    },
-    {
-      "x": -2,
-      "y": 1,
-      "z": -17,
-      "w": 4,
-      "h": 4,
-      "d": 6,
-      "color": "wheel"
-    },
-    {
-      "x": -2,
-      "y": 5,
-      "z": -16,
-      "w": 4,
-      "h": 1,
-      "d": 4,
-      "color": "wheel"
-    },
-    {
-      "x": -2,
-      "y": 0,
-      "z": 15,
-      "w": 4,
-      "h": 1,
-      "d": 4,
-      "color": "wheel"
-    },
-    {
-      "x": -2,
-      "y": 1,
-      "z": 14,
-      "w": 4,
-      "h": 4,
-      "d": 6,
-      "color": "wheel"
-    },
-    {
-      "x": -2,
-      "y": 5,
-      "z": 15,
-      "w": 4,
-      "h": 1,
-      "d": 4,
-      "color": "wheel"
-    },
-    {
-      "x": -3,
-      "y": 3,
-      "z": -14,
-      "w": 1,
-      "h": 1,
-      "d": 1,
-      "color": "hub"
-    },
-    {
-      "x": 2,
-      "y": 3,
-      "z": -14,
-      "w": 1,
-      "h": 1,
-      "d": 1,
-      "color": "hub"
-    },
-    {
-      "x": -3,
-      "y": 3,
-      "z": 17,
-      "w": 1,
-      "h": 1,
-      "d": 1,
-      "color": "hub"
-    },
-    {
-      "x": 2,
-      "y": 3,
-      "z": 17,
-      "w": 1,
-      "h": 1,
-      "d": 1,
-      "color": "hub"
-    },
-    {
-      "x": -3,
-      "y": 6,
-      "z": -17,
-      "w": 6,
-      "h": 1,
-      "d": 6,
-      "color": "body"
-    },
-    {
-      "x": -7,
-      "y": 2,
-      "z": -12,
-      "w": 14,
-      "h": 3,
-      "d": 25,
-      "color": "body"
-    },
-    {
-      "x": -6,
-      "y": 4,
-      "z": -11,
-      "w": 12,
-      "h": 1,
-      "d": 22,
-      "color": "deck"
-    },
-    {
-      "x": -2,
-      "y": 6,
-      "z": 15,
-      "w": 4,
-      "h": 2,
-      "d": 5,
-      "color": "body"
-    },
-    {
-      "x": -1,
-      "y": 8,
-      "z": 15,
-      "w": 2,
-      "h": 11,
-      "d": 2,
-      "color": "metal"
-    },
-    {
-      "x": -2,
-      "y": 10,
-      "z": 14,
-      "w": 4,
-      "h": 6,
-      "d": 3,
-      "color": "body"
-    },
-    {
-      "x": -1,
-      "y": 12,
-      "z": 17,
-      "w": 2,
-      "h": 2,
-      "d": 1,
-      "color": "light"
-    },
-    {
-      "x": -9,
-      "y": 19,
-      "z": 15,
-      "w": 18,
-      "h": 2,
-      "d": 2,
-      "color": "metal"
-    },
-    {
-      "x": -12,
-      "y": 19,
-      "z": 15,
-      "w": 3,
-      "h": 2,
-      "d": 2,
-      "color": "grip"
-    },
-    {
-      "x": 9,
-      "y": 19,
-      "z": 15,
-      "w": 3,
-      "h": 2,
-      "d": 2,
-      "color": "grip"
-    }
+    { "x": 0, "y": 0, "z": -19, "w": 2, "h": 2, "d": 4, "color": "wheel", "sym": true },
+    { "x": 0, "y": 0, "z": 17, "w": 2, "h": 2, "d": 4, "color": "wheel", "sym": true },
+    { "x": 0, "y": 1, "z": -20, "w": 2, "h": 5, "d": 1, "color": "wheel", "sym": true },
+    { "x": 0, "y": 1, "z": -15, "w": 2, "h": 2, "d": 1, "color": "wheel", "sym": true },
+    { "x": 5, "y": 1, "z": -6, "w": 1, "h": 2, "d": 6, "color": "metal", "sym": true },
+    { "x": 0, "y": 1, "z": 16, "w": 2, "h": 5, "d": 1, "color": "wheel", "sym": true },
+    { "x": 0, "y": 1, "z": 21, "w": 2, "h": 5, "d": 1, "color": "wheel", "sym": true },
+    { "x": 0, "y": 2, "z": -19, "w": 1, "h": 3, "d": 1, "color": "rim", "sym": true },
+    { "x": 0, "y": 2, "z": -18, "w": 2, "h": 3, "d": 2, "color": "hub", "sym": true },
+    { "x": 0, "y": 2, "z": -16, "w": 1, "h": 3, "d": 1, "color": "rim", "sym": true },
+    { "x": 0, "y": 2, "z": -12, "w": 4, "h": 1, "d": 23, "color": "bodyDark", "sym": true },
+    { "x": 0, "y": 2, "z": 17, "w": 1, "h": 3, "d": 1, "color": "rim", "sym": true },
+    { "x": 0, "y": 2, "z": 18, "w": 2, "h": 3, "d": 2, "color": "hub", "sym": true },
+    { "x": 0, "y": 2, "z": 20, "w": 1, "h": 3, "d": 1, "color": "rim", "sym": true },
+    { "x": 0, "y": 3, "z": -21, "w": 2, "h": 1, "d": 1, "color": "wheel", "sym": true },
+    { "x": 0, "y": 3, "z": -15, "w": 4, "h": 2, "d": 2, "color": "bodyDark", "sym": true },
+    { "x": 4, "y": 3, "z": -14, "w": 1, "h": 2, "d": 27, "color": "body", "sym": true },
+    { "x": 0, "y": 3, "z": -13, "w": 4, "h": 1, "d": 26, "color": "body", "sym": true },
+    { "x": 0, "y": 3, "z": 15, "w": 2, "h": 1, "d": 1, "color": "wheel", "sym": true },
+    { "x": 2, "y": 3, "z": 18, "w": 1, "h": 7, "d": 2, "color": "body", "sym": true },
+    { "x": 0, "y": 3, "z": 22, "w": 2, "h": 1, "d": 1, "color": "wheel", "sym": true },
+    { "x": 0, "y": 4, "z": -13, "w": 4, "h": 1, "d": 1, "color": "body", "sym": true },
+    { "x": 0, "y": 4, "z": -12, "w": 4, "h": 1, "d": 2, "color": "deck", "sym": true },
+    { "x": 0, "y": 4, "z": -10, "w": 2, "h": 1, "d": 1, "color": "body", "sym": true },
+    { "x": 2, "y": 4, "z": -10, "w": 2, "h": 1, "d": 21, "color": "deck", "sym": true },
+    { "x": 0, "y": 4, "z": -9, "w": 2, "h": 1, "d": 17, "color": "deck", "sym": true },
+    { "x": 0, "y": 4, "z": 8, "w": 2, "h": 1, "d": 1, "color": "body", "sym": true },
+    { "x": 0, "y": 4, "z": 9, "w": 2, "h": 1, "d": 2, "color": "deck", "sym": true },
+    { "x": 0, "y": 4, "z": 11, "w": 4, "h": 1, "d": 2, "color": "body", "sym": true },
+    { "x": 0, "y": 5, "z": -19, "w": 2, "h": 1, "d": 5, "color": "wheel", "sym": true },
+    { "x": 0, "y": 5, "z": 11, "w": 3, "h": 2, "d": 4, "color": "body", "sym": true },
+    { "x": 0, "y": 5, "z": 17, "w": 2, "h": 2, "d": 4, "color": "wheel", "sym": true },
+    { "x": 0, "y": 6, "z": -22, "w": 2, "h": 1, "d": 2, "color": "body", "sym": true },
+    { "x": 0, "y": 6, "z": -19, "w": 2, "h": 1, "d": 4, "color": "wheel", "sym": true },
+    { "x": 0, "y": 7, "z": -21, "w": 3, "h": 1, "d": 7, "color": "body", "sym": true },
+    { "x": 0, "y": 7, "z": 13, "w": 2, "h": 2, "d": 3, "color": "body", "sym": true },
+    { "x": 0, "y": 8, "z": 17, "w": 3, "h": 2, "d": 1, "color": "body", "sym": true },
+    { "x": 0, "y": 8, "z": 18, "w": 2, "h": 2, "d": 3, "color": "body", "sym": true },
+    { "x": 2, "y": 8, "z": 20, "w": 1, "h": 2, "d": 1, "color": "body", "sym": true },
+    { "x": 0, "y": 10, "z": 18, "w": 1, "h": 5, "d": 2, "color": "metal", "sym": true },
+    { "x": 0, "y": 15, "z": 17, "w": 2, "h": 3, "d": 4, "color": "body", "sym": true },
+    { "x": 0, "y": 18, "z": 18, "w": 1, "h": 3, "d": 3, "color": "metal", "sym": true },
+    { "x": 1, "y": 18, "z": 20, "w": 1, "h": 3, "d": 1, "color": "metal", "sym": true },
+    { "x": 0, "y": 19, "z": 21, "w": 1, "h": 1, "d": 1, "color": "light", "sym": true },
+    { "x": 0, "y": 21, "z": 18, "w": 1, "h": 1, "d": 2, "color": "metal", "sym": true },
+    { "x": 7, "y": 22, "z": 17, "w": 5, "h": 1, "d": 3, "color": "grip", "sym": true },
+    { "x": 0, "y": 22, "z": 18, "w": 2, "h": 2, "d": 2, "color": "body", "sym": true },
+    { "x": 7, "y": 23, "z": 17, "w": 5, "h": 2, "d": 1, "color": "grip", "sym": true },
+    { "x": 2, "y": 23, "z": 18, "w": 5, "h": 1, "d": 2, "color": "metal", "sym": true },
+    { "x": 7, "y": 23, "z": 18, "w": 4, "h": 2, "d": 2, "color": "grip", "sym": true },
+    { "x": 11, "y": 23, "z": 18, "w": 1, "h": 1, "d": 1, "color": "body", "sym": true },
+    { "x": 11, "y": 23, "z": 19, "w": 1, "h": 2, "d": 1, "color": "grip", "sym": true },
+    { "x": 2, "y": 24, "z": 18, "w": 2, "h": 1, "d": 2, "color": "hub", "sym": true },
+    { "x": 11, "y": 24, "z": 18, "w": 1, "h": 1, "d": 1, "color": "grip", "sym": true }
   ]
 }

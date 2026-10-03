@@ -2,7 +2,7 @@ import { readFileSync, readdirSync } from 'node:fs';
 import path from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { buildAccessoryCatalog, parseAccessory } from './accessory-schema';
-import { MAX_ACCESSORY_TRIANGLES, accessoryPieces, buildAccessoryMesh, mirroredAccessory, rasterizeAccessory } from './voxel-accessory';
+import { MAX_ACCESSORY_TRIANGLES, MAX_VEHICLE_TRIANGLES, accessoryPieces, buildAccessoryMesh, mirroredAccessory, rasterizeAccessory } from './voxel-accessory';
 
 const CONTENT = path.resolve(import.meta.dirname, '../../../content/accessories');
 
@@ -121,7 +121,8 @@ describe('buildAccessoryMesh', () => {
     it(`${item.id} builds within budget, and every colour of its shape too`, () => {
       const triangles = (variant?: string): number[] => accessoryPieces(item.def).map((piece) => buildAccessoryMesh(piece, variant).triangles);
       const mesh = triangles(item.variant);
-      for (const count of mesh) expect(count).toBeLessThanOrEqual(MAX_ACCESSORY_TRIANGLES);
+      const budget = item.slot === 'vehicle' ? MAX_VEHICLE_TRIANGLES : MAX_ACCESSORY_TRIANGLES;
+      for (const count of mesh) expect(count).toBeLessThanOrEqual(budget);
       for (const variant of Object.keys(item.def.variants)) expect(triangles(variant)).toEqual(mesh);
     });
   }

@@ -160,7 +160,9 @@ describe('createRideControl', () => {
     expect(store.getSnapshot().vehicle?.riding).toBe(true);
     const mesh = root.getObjectByName('vehicle:vehicle-toy-car-red');
     expect(mesh?.visible).toBe(true);
-    expect(control.liftWorld).toBeCloseTo(0.5 * (6 / 16 - 0.1));
+    const carRide = equippedVehicle(['vehicle-toy-car-red'])?.ride;
+    if (!carRide) throw new Error('vehicle-toy-car-red is not a vehicle');
+    expect(control.liftWorld).toBeCloseTo(0.5 * rideLift(carRide));
     expect(rider.rideReach).toBeGreaterThan(0.24);
 
     rider.inWater = true;
