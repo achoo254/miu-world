@@ -1,0 +1,80 @@
+{
+  "id": "side-whack-mole",
+  "region": "nong-trai",
+  "chapter": 1,
+  "title": "Đuổi chuột chũi giúp Thỏ Giữ Vườn",
+  "status": "active",
+  "category": "side",
+  "summary": "Chuột chũi đào hang khắp ruộng ngô, bé chạm thật nhanh khi chúng ló đầu lên.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người giữ ruộng nhanh tay",
+    "where": "Bờ ruộng ngô",
+    "goal": "Đập được hai mươi lăm điểm chuột chũi nhé!",
+    "play": "Chuột chũi ló lên khỏi hang: {name} chạm thật nhanh để đập!",
+    "learn": "Phản xạ nhanh và nhìn kỹ trước khi chạm",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Chuột chũi hay quay lại lắm, cậu nhớ ghé bờ ruộng ngô canh cùng tớ."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "tho-giu-vuon",
+      "lines": [
+        {
+          "speaker": "Thỏ Giữ Vườn",
+          "text": "Ối {name}, chuột chũi đào ruộng ngô của tớ lỗ chỗ hết rồi!"
+        },
+        {
+          "speaker": "Thỏ Giữ Vườn",
+          "text": "Thấy chuột ló lên là cậu đập nhanh nha, nhưng đừng đập nhầm bạn thỏ đấy."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Chuột chũi đâu, ra đây!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Đập chuột chũi",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Đập được hai mươi lăm điểm chuột chũi nhé!",
+      "game": "whack-mole",
+      "goal": 25
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Thỏ Giữ Vườn nhảy cẫng lên: ruộng ngô yên rồi, cảm ơn {name}!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Chuột chũi hay quay lại lắm, cậu nhớ ghé bờ ruộng ngô canh cùng tớ."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

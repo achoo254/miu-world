@@ -1,0 +1,80 @@
+{
+  "id": "side-goldfish-scoop",
+  "region": "nha-cua-be",
+  "chapter": 1,
+  "title": "Vớt cá vàng bên cầu tàu với Chó Giữ Ao",
+  "status": "active",
+  "category": "side",
+  "summary": "Bé nhúng vợt giấy trước mũi cá rồi nhấc lên đúng lúc, giữ vợt khỏi rách.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người vớt cá khéo léo",
+    "where": "Cầu tàu bên ao",
+    "goal": "Vớt được sáu chú cá vàng nhé!",
+    "play": "{name} đặt ngón tay xuống để nhúng vợt giấy vào nước, nhấc tay lên để vớt cá.",
+    "learn": "Khéo tay và kiên nhẫn chờ đợi",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Cá vàng hay bơi đi chơi lắm, Chó Giữ Ao chờ {name} ở cầu tàu."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "cho-giu-ao",
+      "lines": [
+        {
+          "speaker": "Chó Giữ Ao",
+          "text": "Mấy chú cá vàng bơi lạc ra ao rồi {name}, vớt về chậu giúp tớ!"
+        },
+        {
+          "speaker": "Chó Giữ Ao",
+          "text": "Nhúng vợt trước mũi cá, chờ cá bơi qua rồi nhấc, ngâm lâu là vợt rách đấy."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ nhẹ tay lắm!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Vớt cá vàng",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Vớt được sáu chú cá vàng nhé!",
+      "game": "goldfish-scoop",
+      "goal": 6
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Chó Giữ Ao vẫy đuôi tít: cá vàng về chậu đủ cả nhờ {name}!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Cá vàng hay bơi đi chơi lắm, Chó Giữ Ao chờ {name} ở cầu tàu."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

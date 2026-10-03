@@ -154,6 +154,17 @@ describe('content:check', () => {
       );
     });
 
+    it("flags a side quest's giver the map shows only in some chapters", () => {
+      const worldDir = writeMap((e) => {
+        const parrot = (e.interactables as Array<{ id: string; chapters?: number[] }>).find((t) => t.id === 'parrot-guide');
+        if (parrot) parrot.chapters = [1, 2];
+      });
+      const issues = checkQuestTargets(quests().values(), worldDir).issues;
+      for (const quest of ['side-runner', 'side-penalty-kick']) {
+        expect(issues).toContain(`quest ${quest}: its giver parrot-guide is only on map forest-ch1 in some chapters or quests; a side quest's giver is always in the world`);
+      }
+    });
+
     it('notes, without failing, an active quest whose map is not generated yet; stubs are skipped', () => {
       const report = checkQuestTargets(quests().values(), path.join(dir, 'no-maps'));
       expect(report.issues).toEqual([]);

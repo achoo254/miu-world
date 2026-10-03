@@ -10,6 +10,8 @@
 // - A target one quest uses is placed with the other targets of the same place (`places` of the quest),
 //   tagged with the chapter and the quest, so it shows only while that quest is played. Quests of the same
 //   chapter may reuse the same ground: only one of them is in the world at a time.
+// - A character only side quests name (a minigame's giver) is always in the world, untagged, where the map's
+//   `sideSpot` puts it (beside the ways, at its place: tools/world/side-givers.ts), clear of everything else.
 // Deterministic for a given seed and input.
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
@@ -27,23 +29,27 @@ export interface TargetUse {
   chapter: number;
   /** Name of the place the quest sends the child to for this target (its own entry or its step's). */
   place: string | null;
+  /** A minigame side quest's: the target is its giver, always in the world. */
+  side: boolean;
 }
 
 /**
  * Every target the quests of `region` name, with each quest that uses it (any status: drafts get their
- * places too). Quests of `ownChapter` (the story the map was built for, its targets placed by hand and
- * always in the world) are left to the map.
+ * places too). Lessons of `ownChapter` (the story the map was built for, its targets placed by hand and
+ * always in the world) are left to the map; side quests never are.
  */
+const isSide = (quest: QuestDefinition): boolean => 'category' in quest && quest.category === 'side';
+
 export function targetUses(quests: readonly QuestDefinition[], region: string, ownChapter?: number): Map<string, TargetUse[]> {
   const uses = new Map<string, TargetUse[]>();
-  for (const quest of quests.filter((q) => q.region === region && q.chapter !== ownChapter)) {
+  for (const quest of quests.filter((q) => q.region === region && (isSide(q) || q.chapter !== ownChapter))) {
     const places = 'places' in quest ? (quest.places ?? {}) : {};
     const steps = 'steps' in quest ? quest.steps : [];
     for (const step of steps) {
       const ids = [...('target' in step && step.target ? [step.target] : []), ...('targets' in step ? step.targets : [])];
       for (const id of ids) {
         const list = uses.get(id) ?? [];
-        if (!list.some((u) => u.quest === quest.id)) list.push({ quest: quest.id, chapter: quest.chapter, place: places[id] ?? places[step.id] ?? null });
+        if (!list.some((u) => u.quest === quest.id)) list.push({ quest: quest.id, chapter: quest.chapter, place: places[id] ?? places[step.id] ?? null, side: isSide(quest) });
         uses.set(id, list);
       }
     }
@@ -69,6 +75,11 @@ export interface PlacementMap {
    * place of the same name stands round it, so the reading-room shelf is found in the reading room.
    */
   placeNamed?(name: string): Cell | undefined;
+  /**
+   * Where a side quest's giver stands (tools/world/side-givers.ts), clear of `taken` (everything placed so far).
+   * A map whose region has side quests must give it.
+   */
+  sideSpot?(id: string, taken: readonly Cell[]): Cell;
 }
 
 /**
@@ -175,9 +186,13 @@ export async function placeQuestTargets(options: {
   };
 
   const existingIds = new Set(existing.map((t) => t.id));
-  const retagged = existing.filter((t) => uses.has(t.id)).map((t) => {
+  /** Targets only side quests name: their givers, always in the world. */
+  const sideOnly = new Set([...uses].filter(([, list]) => list.every((u) => u.side)).map(([id]) => id));
+  const lessonUses = (id: string): TargetUse[] => (uses.get(id) ?? []).filter((u) => !u.side);
+  // A hand-placed giver keeps its place and stays untagged; a hand-placed lesson target takes its lessons' chapters.
+  const retagged = existing.filter((t) => lessonUses(t.id).length > 0).map((t) => {
     const { chapter: _c, chapters: _cs, quest: _q, ...rest } = t;
-    return { ...rest, ...chapterTags(uses.get(t.id) ?? []) };
+    return { ...rest, ...chapterTags(lessonUses(t.id)) };
   });
   const placed: Interactable[] = [];
   const narrow: Array<{ quest: string; place: string; gap: number }> = [];
@@ -204,7 +219,7 @@ export async function placeQuestTargets(options: {
   };
   const nearAny = (a: Cell, list: readonly Cell[], gap: number): boolean => gap > 0 && near(a, list, gap);
 
-  const residents = [...uses.entries()].filter(([id, list]) => list.length > 1 && !existingIds.has(id)).sort(([a], [b]) => a.localeCompare(b));
+  const residents = [...uses.entries()].filter(([id, list]) => list.length > 1 && !existingIds.has(id) && !sideOnly.has(id)).sort(([a], [b]) => a.localeCompare(b));
   const residentAt: Cell[] = [];
   for (const [id, list] of residents) {
     const cell = firstFree(map.residentCells, taken, RESIDENT_GAPS);
@@ -218,7 +233,7 @@ export async function placeQuestTargets(options: {
   const byQuest = new Map<string, Array<{ id: string; use: TargetUse }>>();
   for (const [id, list] of uses) {
     const use = list[0];
-    if (list.length !== 1 || !use || existingIds.has(id)) continue;
+    if (list.length !== 1 || !use || existingIds.has(id) || sideOnly.has(id)) continue;
     byQuest.set(use.quest, [...(byQuest.get(use.quest) ?? []), { id, use }]);
   }
   for (const [quest, members] of [...byQuest.entries()].sort(([a], [b]) => a.localeCompare(b))) {
@@ -258,7 +273,25 @@ export async function placeQuestTargets(options: {
       }
     }
   }
+
+  // Last, so the lessons keep their ground: the givers of the side quests, untagged (always in the world).
+  for (const id of [...sideOnly].filter((g) => !existingIds.has(g)).sort()) {
+    if (!map.sideSpot) throw new Error(`target ${id} offers side quests, but the map gives no spots for their givers (sideSpot)`);
+    const cell = map.sideSpot(id, [...taken, ...columnsOfPlaced(placed)]);
+    const { chapter: _c, chapters: _cs, quest: _q, ...always } = build(id, map.stand(cell[0], cell[1]), yawOf(id), []);
+    placed.push(always);
+  }
   return { placed, retagged, narrow };
+}
+
+/** Block columns of placed targets. */
+const columnsOfPlaced = (list: readonly Interactable[]): Cell[] => list.map((t) => [Math.floor(t.position[0] ?? 0), Math.floor(t.position[2] ?? 0)] as const);
+
+/** A steady facing from an id (no draw from the seeded stream, so placing a giver moves nothing else). */
+function yawOf(id: string): number {
+  let h = 0;
+  for (const ch of id) h = (h * 31 + ch.charCodeAt(0)) % 360;
+  return h;
 }
 
 /** Every column of a rectangle (inclusive), for `chapterCells` and `residentCells`. */

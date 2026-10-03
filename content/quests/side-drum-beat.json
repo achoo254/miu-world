@@ -1,0 +1,80 @@
+{
+  "id": "side-drum-beat",
+  "region": "truong-hoc",
+  "chapter": 1,
+  "title": "Gõ trống hội với Voi Trống Hội",
+  "status": "active",
+  "category": "side",
+  "summary": "Nốt nhạc chạy về vòng tròn: nốt đỏ gõ giữa mặt trống, nốt xanh gõ vào viền trống.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, tay trống của đội nhạc trường",
+    "where": "Bên sân khấu sự kiện",
+    "goal": "Gõ trống được ba mươi sáu điểm nhé!",
+    "play": "Nốt nhạc chạy tới vòng tròn bên trái. Nốt vào vòng thì {name} gõ trống!",
+    "learn": "Cảm nhịp và phân biệt hai loại nốt",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Sắp có buổi biểu diễn nữa, Voi Trống Hội chờ cậu ở sân khấu sự kiện."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "voi-trong-hoi",
+      "lines": [
+        {
+          "speaker": "Voi Trống Hội",
+          "text": "Tùng tùng! {name} tới đúng lúc lắm, đội trống đang thiếu một tay dùi."
+        },
+        {
+          "speaker": "Voi Trống Hội",
+          "text": "Nốt đỏ thì gõ giữa trống, nốt xanh gõ viền, nhớ gõ khi nốt vào vòng tròn nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Đưa dùi đây, tớ gõ cho!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Gõ trống hội",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Gõ trống được ba mươi sáu điểm nhé!",
+      "game": "drum-beat",
+      "goal": 36
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Voi Trống Hội vẫy vòi theo nhịp: tiếng trống của {name} rộn ràng cả sân!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Sắp có buổi biểu diễn nữa, Voi Trống Hội chờ cậu ở sân khấu sự kiện."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

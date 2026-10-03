@@ -1,0 +1,80 @@
+{
+  "id": "side-duck-catch",
+  "region": "lang-ven-song",
+  "chapter": 1,
+  "title": "Bắt vịt dưới ao cùng Mèo Đầm Sen",
+  "status": "active",
+  "category": "side",
+  "summary": "Lội xuống đầm, dồn đàn vịt vào sát bờ rào rồi chồm tới chộp lấy từng con.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, bạn lùa vịt nhanh nhẹn",
+    "where": "Bờ đầm sen",
+    "goal": "Bắt lại đủ mười con vịt nhé!",
+    "play": "Giữ và kéo ngón tay để {name} lội theo đàn vịt.",
+    "learn": "Đoán hướng chạy và dồn đúng góc",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Đàn vịt nghịch lắm, mai thế nào cũng xổng nữa, cậu ghé bờ đầm nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "meo-dam-sen",
+      "lines": [
+        {
+          "speaker": "Mèo Đầm Sen",
+          "text": "Chết rồi {name} ơi, đàn vịt xổng chuồng bơi tán loạn!"
+        },
+        {
+          "speaker": "Mèo Đầm Sen",
+          "text": "Cậu lội theo dồn chúng vào bờ rào, tớ ngại nước lắm."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Để tớ lội xuống bắt!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Bắt vịt dưới ao",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Bắt lại đủ mười con vịt nhé!",
+      "game": "duck-catch",
+      "goal": 10
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Meo, đàn vịt về đủ rồi, cảm ơn {name} nhiều!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Đàn vịt nghịch lắm, mai thế nào cũng xổng nữa, cậu ghé bờ đầm nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "id": "side-match-3",
+  "region": "cho-phien",
+  "chapter": 1,
+  "title": "Đổi chỗ ba quả cùng Mèo Gắp Thú",
+  "status": "active",
+  "category": "side",
+  "summary": "Đổi chỗ hai quả cạnh nhau để ba quả giống nhau xếp thẳng hàng rồi nổ tung.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người xếp quả nhanh trí",
+    "where": "Chân cầu hình rồng",
+    "goal": "Làm nổ bốn mươi quả nhé!",
+    "play": "{name} vuốt một quả sang ô bên cạnh để đổi chỗ (hoặc chạm hai quả cạnh nhau).",
+    "learn": "Nhận ra mẫu giống nhau và tính trước",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Rổ quả lúc nào cũng đầy, ghé chân cầu rồng chơi tiếp nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "meo-gap-thu",
+      "lines": [
+        {
+          "speaker": "Mèo Gắp Thú",
+          "text": "Rổ quả của tớ lộn xộn quá {name} ơi, giúp với!"
+        },
+        {
+          "speaker": "Mèo Gắp Thú",
+          "text": "Đổi chỗ cho ba quả giống nhau thẳng hàng là chúng nổ lốp bốp."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Để tớ xếp cho nổ!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Đổi chỗ ba quả",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Làm nổ bốn mươi quả nhé!",
+      "game": "match-3",
+      "goal": 40
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Lốp bốp lốp bốp, {name} xếp quả giỏi quá!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Rổ quả lúc nào cũng đầy, ghé chân cầu rồng chơi tiếp nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

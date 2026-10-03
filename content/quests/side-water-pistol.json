@@ -1,0 +1,80 @@
+{
+  "id": "side-water-pistol",
+  "region": "cho-phien",
+  "chapter": 1,
+  "title": "Bắn súng nước hội chợ cùng Chú hội chợ Tí",
+  "status": "active",
+  "category": "side",
+  "summary": "Gian trò chơi đầy vịt nhựa, giữ tay để phun nước cho vịt ngã và trúng bia tròn.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, xạ thủ súng nước nhí",
+    "where": "Góc trò chơi trên phố chợ",
+    "goal": "Ghi đủ hai mươi lăm điểm súng nước nhé!",
+    "play": "Giữ ngón tay trên màn hình, tia nước bay theo ngón tay của {name}.",
+    "learn": "Điều khiển tay và ngắm mục tiêu di động",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Gian trò chơi mở tới tối, cháu quay lại bắn tiếp nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "chu-hoi-cho-ti",
+      "lines": [
+        {
+          "speaker": "Chú hội chợ Tí",
+          "text": "Gian trò chơi của chú mở rồi, {name} bắn thử không?"
+        },
+        {
+          "speaker": "Chú hội chợ Tí",
+          "text": "Giữ ngón tay là nước phun theo, hết nước thì thả tay bơm lại nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu bắn trúng hết cho xem!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Súng nước hội chợ",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Ghi đủ hai mươi lăm điểm súng nước nhé!",
+      "game": "water-pistol",
+      "goal": 25
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Vịt ngã rạp hết rồi, {name} bắn chuẩn ghê!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Gian trò chơi mở tới tối, cháu quay lại bắn tiếp nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

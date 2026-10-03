@@ -1,0 +1,80 @@
+{
+  "id": "side-whats-missing",
+  "region": "thu-vien",
+  "chapter": 1,
+  "title": "Đoán món đồ biến mất cùng Nai Trí Nhớ",
+  "status": "active",
+  "category": "side",
+  "summary": "Trên khay bày nhiều đồ vật, đèn tắt một chút rồi sáng lại, bé tìm ra món đã biến mất.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, thám tử nhí tinh mắt",
+    "where": "Đầu cầu đá bên hồ",
+    "goal": "Đoán đúng sáu lượt món đồ biến mất nhé!",
+    "play": "Nhìn thật kỹ các đồ vật trên khay. Đèn sẽ tắt một chút!",
+    "learn": "Quan sát kỹ và ghi nhớ đồ vật",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Khay đồ của tớ đổi món mỗi ngày, cậu ghé đầu cầu đá chơi tiếp nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "nai-tri-nho",
+      "lines": [
+        {
+          "speaker": "Nai Trí Nhớ",
+          "text": "{name} đến chơi với tớ à? Tớ có một khay đồ vật biết trốn đấy!"
+        },
+        {
+          "speaker": "Nai Trí Nhớ",
+          "text": "Cậu nhìn kỹ khay đồ, lúc đèn sáng lại hãy chỉ ra món nào vừa biến mất nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ nhìn kỹ rồi, tắt đèn đi!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Cái gì biến mất?",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Đoán đúng sáu lượt món đồ biến mất nhé!",
+      "game": "whats-missing",
+      "goal": 6
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Nai Trí Nhớ dụi mũi vào tay {name}: cậu tinh mắt thật!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Khay đồ của tớ đổi món mỗi ngày, cậu ghé đầu cầu đá chơi tiếp nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

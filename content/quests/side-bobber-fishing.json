@@ -1,0 +1,80 @@
+{
+  "id": "side-bobber-fishing",
+  "region": "lang-ven-song",
+  "chapter": 1,
+  "title": "Câu cá phao với Bác câu cá Sơn",
+  "status": "active",
+  "category": "side",
+  "summary": "Ngồi trên bến sông, quăng phao gần bóng cá và giật cần đúng lúc phao chìm.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, cần thủ nhỏ của bến sông",
+    "where": "Bến sông đầu làng",
+    "goal": "Câu cho bác đủ tám điểm cá nhé!",
+    "play": "Chạm mặt nước để quăng phao, gần bóng cá thì cá cắn nhanh hơn.",
+    "learn": "Kiên nhẫn chờ và giật đúng thời điểm",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Chiều nào bác cũng ngồi ở bến sông, cháu cứ ra câu tiếp nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "bac-cau-ca-son",
+      "lines": [
+        {
+          "speaker": "Bác câu cá Sơn",
+          "text": "{name} ơi, lại đây ngồi câu với bác một lát nào!"
+        },
+        {
+          "speaker": "Bác câu cá Sơn",
+          "text": "Thấy phao chìm hẳn thì giật nhé, giật sớm là cá lủi mất đấy."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu cầm cần đây bác ơi!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Câu cá phao",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Câu cho bác đủ tám điểm cá nhé!",
+      "game": "bobber-fishing",
+      "goal": 8
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Giỏi quá {name}, giỏ cá của bác đầy ắp rồi!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Chiều nào bác cũng ngồi ở bến sông, cháu cứ ra câu tiếp nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

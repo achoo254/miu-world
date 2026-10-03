@@ -1,0 +1,80 @@
+{
+  "id": "side-piano-tiles",
+  "region": "thu-vien",
+  "chapter": 1,
+  "title": "Đánh đàn phím rơi cùng Gấu Trúc Đàn Phím",
+  "status": "active",
+  "category": "side",
+  "summary": "Phím đàn màu rơi theo bài hát trước sân khấu lá vàng, bé chạm đúng lúc để bài nhạc vang lên.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, nghệ sĩ đàn nhí",
+    "where": "Trước sân khấu lá vàng",
+    "goal": "Đàn được sáu mươi chín điểm phím nhạc nhé!",
+    "play": "Phím đàn màu rơi xuống theo bài hát. {name} chạm vào phím để đàn.",
+    "learn": "Giữ nhịp và chạm đúng thời điểm",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Chiều nào tớ cũng tập đàn trước sân khấu lá vàng, ghé nghe nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "gau-truc-dan-phim",
+      "lines": [
+        {
+          "speaker": "Gấu Trúc Đàn Phím",
+          "text": "{name} đến rồi! Tớ đang tập một bài thật vui cho hội lá vàng."
+        },
+        {
+          "speaker": "Gấu Trúc Đàn Phím",
+          "text": "Phím rơi tới vạch sáng thì cậu chạm, đừng để rơi mất nhiều phím nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Mình đàn chung nhé!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Phím đàn rơi",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Đàn được sáu mươi chín điểm phím nhạc nhé!",
+      "game": "piano-tiles",
+      "goal": 69
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Cả sân khấu vỗ tay, Gấu Trúc Đàn Phím cúi chào {name} cùng nhau!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Chiều nào tớ cũng tập đàn trước sân khấu lá vàng, ghé nghe nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

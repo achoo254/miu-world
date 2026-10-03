@@ -1,0 +1,80 @@
+{
+  "id": "side-crate-push",
+  "region": "lau-dai",
+  "chapter": 1,
+  "title": "Đẩy thùng vào kho cùng Voi Thủ Kho",
+  "status": "active",
+  "category": "side",
+  "summary": "Kho hàng chật kín thùng gỗ, bé đi vòng quanh để đẩy từng thùng vào ô có dấu sao.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người xếp kho thông minh",
+    "where": "Chợ nhỏ dưới chân thành",
+    "goal": "Xếp xong ba kho hàng nhé!",
+    "play": "{name} vuốt (hoặc chạm cạnh mình) để đi, đi vào thùng là đẩy thùng.",
+    "learn": "Suy nghĩ trước từng bước di chuyển",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Chợ dưới chân thành ngày nào cũng có hàng mới, cậu ghé giúp tớ nữa nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "voi-thu-kho",
+      "lines": [
+        {
+          "speaker": "Voi Thủ Kho",
+          "text": "Ồ {name}, tớ cần người đẩy thùng vào đúng chỗ trong kho!"
+        },
+        {
+          "speaker": "Voi Thủ Kho",
+          "text": "Thùng chỉ đẩy được chứ không kéo được, cậu tính đường trước rồi hãy đẩy nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ đẩy giỏi lắm, để tớ!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Đẩy thùng vào kho",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Xếp xong ba kho hàng nhé!",
+      "game": "crate-push",
+      "goal": 3
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Voi Thủ Kho tung vòi reo: kho nào cũng gọn nhờ {name}!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Chợ dưới chân thành ngày nào cũng có hàng mới, cậu ghé giúp tớ nữa nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "id": "side-pick-sticks",
+  "region": "xom-mai-am",
+  "chapter": 1,
+  "title": "Rút que cùng Khỉ Bắn Bi",
+  "status": "active",
+  "category": "side",
+  "summary": "Đống que nằm chồng chéo, rút từng que trên cùng mà không làm đống que rung.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, bạn rút que tinh mắt",
+    "where": "Bờ hồ sen",
+    "goal": "Rút được mười lăm que nhé!",
+    "play": "{name} chạm vào que nằm trên cùng, không bị que nào đè lên, để rút ra.",
+    "learn": "Quan sát lớp chồng và cẩn thận",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Đống que vẫn bày bên hồ sen, lúc nào cậu cũng rút được."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "khi-ban-bi",
+      "lines": [
+        {
+          "speaker": "Khỉ Bắn Bi",
+          "text": "{name} ơi, tớ vừa thả đống que xuống chiếu rồi đây!"
+        },
+        {
+          "speaker": "Khỉ Bắn Bi",
+          "text": "Chỉ rút que nằm trên cùng thôi, rút nhầm là đống que rung đấy."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ rút nhẹ tay lắm!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Rút que",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Rút được mười lăm que nhé!",
+      "game": "pick-sticks",
+      "goal": 15
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Không một que nào rung, {name} khéo tay hơn cả khỉ!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Đống que vẫn bày bên hồ sen, lúc nào cậu cũng rút được."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

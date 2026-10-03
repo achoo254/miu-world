@@ -1,0 +1,80 @@
+{
+  "id": "side-candle-cake-spin",
+  "region": "nha-cua-be",
+  "chapter": 1,
+  "title": "Cắm nến lên bánh sinh nhật xoay cùng Gấu Bánh Ngọt",
+  "status": "active",
+  "category": "side",
+  "summary": "Bánh sinh nhật đang xoay tròn, bé chạm phóng nến cắm vào mép bánh mà không chạm nến cũ.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, thợ trang trí bánh kem",
+    "where": "Sân trước nhà",
+    "goal": "Cắm nến được hai mươi điểm nhé!",
+    "play": "Bánh sinh nhật đang xoay. {name} chạm để phóng nến cắm vào mép bánh.",
+    "learn": "Chọn đúng lúc theo vật chuyển động",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Còn nhiều bạn sắp sinh nhật lắm, Gấu Bánh Ngọt lại nhờ {name} nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "gau-banh-ngot",
+      "lines": [
+        {
+          "speaker": "Gấu Bánh Ngọt",
+          "text": "Hôm nay sinh nhật bạn Mèo đấy {name}, cắm nến giúp tớ nhé!"
+        },
+        {
+          "speaker": "Gấu Bánh Ngọt",
+          "text": "Bánh cứ xoay hoài, chờ chỗ trống rồi mới phóng nến kẻo đụng cây cũ."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Để tớ cắm nến cho!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Cắm nến bánh xoay",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Cắm nến được hai mươi điểm nhé!",
+      "game": "candle-cake-spin",
+      "goal": 20
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Gấu Bánh Ngọt hát mừng sinh nhật: nến {name} cắm đều tăm tắp!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Còn nhiều bạn sắp sinh nhật lắm, Gấu Bánh Ngọt lại nhờ {name} nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

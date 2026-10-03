@@ -1,0 +1,80 @@
+{
+  "id": "side-fruit-slice",
+  "region": "dao-bi-an",
+  "chapter": 1,
+  "title": "Chém trái cây rừng cùng Khỉ Hái Dừa",
+  "status": "active",
+  "category": "side",
+  "summary": "Trái cây rừng tung lên trời, bé vuốt ngón tay chém đôi từng quả và tránh cây xương rồng.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, đầu bếp trái cây của rừng",
+    "where": "Lối vào rừng nhiệt đới",
+    "goal": "Chém được bốn mươi điểm trái cây nhé!",
+    "play": "Trái cây tung lên: {name} vuốt ngón tay qua quả để chém đôi.",
+    "learn": "Phản xạ nhanh và nhìn kỹ trước khi chém",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Mai cây lại trĩu quả, Khỉ Hái Dừa hẹn {name} ở lối vào rừng."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "khi-hai-dua",
+      "lines": [
+        {
+          "speaker": "Khỉ Hái Dừa",
+          "text": "Tớ vừa hái cả giỏ dừa, xoài, dứa đấy {name}, làm món trái cây nào!"
+        },
+        {
+          "speaker": "Khỉ Hái Dừa",
+          "text": "Tớ tung lên, cậu vuốt chém đôi nhé, nhưng đừng chém nhầm xương rồng."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tung lên đi, tớ chém liền!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Chém trái cây",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Chém được bốn mươi điểm trái cây nhé!",
+      "game": "fruit-slice",
+      "goal": 40
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Khỉ Hái Dừa nhảy tưng tưng: đĩa trái cây của {name} ngon tuyệt!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Mai cây lại trĩu quả, Khỉ Hái Dừa hẹn {name} ở lối vào rừng."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

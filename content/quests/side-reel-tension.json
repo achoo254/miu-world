@@ -1,0 +1,80 @@
+{
+  "id": "side-reel-tension",
+  "region": "dao-bi-an",
+  "chapter": 1,
+  "title": "Kéo cá lớn ngoài bờ đá cùng chú ngư dân Sóng",
+  "status": "active",
+  "category": "side",
+  "summary": "Cá lớn cắn câu, bé giữ và thả ngón tay để con cá luôn nằm trong hộp xanh cho tới khi kéo được.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người câu cá ngoài khơi",
+    "where": "Bờ đá hải tặc",
+    "goal": "Kéo được năm con cá lớn lên bờ nhé!",
+    "play": "Cá lớn cắn câu rồi! Giữ ngón tay thì hộp xanh nổi lên, thả tay thì hộp chìm xuống.",
+    "learn": "Giữ thăng bằng lực kéo thật đều",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Biển còn nhiều cá lớn lắm, chú Sóng đợi {name} trên bờ đá nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "chu-ngu-dan-song",
+      "lines": [
+        {
+          "speaker": "Chú ngư dân Sóng",
+          "text": "{name} ơi, cá to cắn câu rồi, cầm cần với chú một tay nào!"
+        },
+        {
+          "speaker": "Chú ngư dân Sóng",
+          "text": "Giữ tay hộp xanh nổi lên, thả tay nó chìm, cháu giữ cá trong hộp là được."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu giữ chặt cần đây ạ!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Kéo cá lớn",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Kéo được năm con cá lớn lên bờ nhé!",
+      "game": "reel-tension",
+      "goal": 5
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Chú ngư dân Sóng giơ con cá lên: cháu {name} kéo khỏe hơn cả chú!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Biển còn nhiều cá lớn lắm, chú Sóng đợi {name} trên bờ đá nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

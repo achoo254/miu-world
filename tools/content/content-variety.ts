@@ -8,8 +8,11 @@ import { normaliseWording, stepMechanic } from './curriculum-links';
 
 /** Shorter strings are labels (a choice "5", a title "Đọc bài"), not lines of content. */
 const MIN_LINE_LENGTH = 16;
-/** Keys whose values are ids, enums or machine data, not something a child reads or hears. */
-const NOT_TEXT = new Set(['id', 'kind', 'mechanic', 'trigger', 'target', 'targets', 'skill', 'status', 'region', 'review', 'textRef', 'lessonId', 'curriculumRef', 'phases', 'type', 'mode', 'display', 'sevenQuestions', 'category', 'game', 'params']);
+/**
+ * Keys whose values are ids, enums or machine data, not something a child reads or hears, and the speaker of a
+ * line (a character's name: a character who gives several games says its name in each).
+ */
+const NOT_TEXT = new Set(['speaker', 'id', 'kind', 'mechanic', 'trigger', 'target', 'targets', 'skill', 'status', 'region', 'review', 'textRef', 'lessonId', 'curriculumRef', 'phases', 'type', 'mode', 'display', 'sevenQuestions', 'category', 'game', 'params']);
 
 function playerLines(quest: QuestDefinition): Array<{ where: string; text: string }> {
   const lines: Array<{ where: string; text: string }> = [];

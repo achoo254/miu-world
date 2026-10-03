@@ -1,0 +1,80 @@
+{
+  "id": "side-lion-dance-arrows",
+  "region": "trung-tam",
+  "chapter": 1,
+  "title": "Múa lân theo trống cùng Lân Con Rộn Ràng",
+  "status": "active",
+  "category": "side",
+  "summary": "Trống hội dồn dập, mũi tên bay lên vòng tròn: vuốt đúng hướng đúng nhịp để con lân múa.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người dẫn lân trong ngày hội",
+    "where": "Khu sự kiện theo mùa",
+    "goal": "Múa lân được ba mươi sáu điểm nhé!",
+    "play": "Mũi tên bay lên vòng tròn: vuốt đúng hướng mũi tên khi nó vào vòng.",
+    "learn": "Nhận biết hướng và giữ nhịp theo tiếng trống",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Hội nào cũng có múa lân, cậu cứ tìm Lân Con Rộn Ràng ở khu sự kiện."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "lan-con-ron-rang",
+      "lines": [
+        {
+          "speaker": "Lân Con Rộn Ràng",
+          "text": "Tùng cắc tùng! {name} ơi, múa lân với tớ cho khu sự kiện thêm vui nhé!"
+        },
+        {
+          "speaker": "Lân Con Rộn Ràng",
+          "text": "Mũi tên vào vòng tròn thì cậu vuốt đúng hướng ấy, lân sẽ lắc đầu theo cậu."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Lân ơi, múa thôi!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Múa lân theo trống",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Múa lân được ba mươi sáu điểm nhé!",
+      "game": "lion-dance-arrows",
+      "goal": 36
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Lân Con Rộn Ràng lắc đầu chớp mắt: {name} múa đẹp nhất hội!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Hội nào cũng có múa lân, cậu cứ tìm Lân Con Rộn Ràng ở khu sự kiện."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

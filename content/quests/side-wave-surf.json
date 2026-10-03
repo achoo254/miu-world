@@ -1,0 +1,80 @@
+{
+  "id": "side-wave-surf",
+  "region": "dao-bi-an",
+  "chapter": 1,
+  "title": "Lướt sóng qua các hòn đảo với Cua Lướt Sóng",
+  "status": "active",
+  "category": "side",
+  "summary": "Trên tấm ván, bé giữ tay để lao xuống sóng lấy đà rồi thả tay để bay qua đỉnh sóng.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, tay lướt sóng của đảo",
+    "where": "Bãi biển cạnh bến tàu",
+    "goal": "Lướt qua năm hòn đảo trên sóng nhé!",
+    "play": "Giữ ngón tay khi {name} trượt xuống sóng để lao nhanh hơn.",
+    "learn": "Cảm nhận nhịp lên xuống của sóng",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Ngày nào biển cũng có sóng, Cua chờ {name} ở bãi biển cạnh bến tàu."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "cua-luot-song",
+      "lines": [
+        {
+          "speaker": "Cua Lướt Sóng",
+          "text": "Sóng hôm nay cao vừa đẹp, {name} ôm ván ra biển với tớ nào!"
+        },
+        {
+          "speaker": "Cua Lướt Sóng",
+          "text": "Xuống dốc sóng thì giữ tay cho nhanh, lên dốc thì thả ra để bay vèo qua."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ ôm ván ra ngay!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Lướt sóng",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Lướt qua năm hòn đảo trên sóng nhé!",
+      "game": "wave-surf",
+      "goal": 5
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Cua Lướt Sóng giơ hai càng reo hò: {name} lướt sóng như cá heo!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Ngày nào biển cũng có sóng, Cua chờ {name} ở bãi biển cạnh bến tàu."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

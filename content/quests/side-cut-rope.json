@@ -1,0 +1,80 @@
+{
+  "id": "side-cut-rope",
+  "region": "khu-rung-bi-mat",
+  "chapter": 1,
+  "title": "Cắt dây thả kẹo giúp Nai Đom Đóm",
+  "status": "active",
+  "category": "side",
+  "summary": "Viên kẹo đung đưa trên sợi dây, chú ếch đói ngồi chờ: vuốt cắt dây đúng lúc cho kẹo rơi trúng miệng ếch.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người bạn tốt bụng của ếch con",
+    "where": "Trảng cỏ đêm đom đóm",
+    "goal": "Thả ba viên kẹo vào miệng ếch nhé!",
+    "play": "Viên kẹo treo trên dây đung đưa. Ếch đang đói ngồi chờ bên dưới!",
+    "learn": "Hiểu chuyển động đung đưa và chọn thời điểm",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Ếch lại sắp đói rồi, nhớ quay lại trảng cỏ chơi cùng Nai Đom Đóm nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "nai-dom-dom",
+      "lines": [
+        {
+          "speaker": "Nai Đom Đóm",
+          "text": "{name} xem này, ếch con đói meo mà viên kẹo lại treo trên cao."
+        },
+        {
+          "speaker": "Nai Đom Đóm",
+          "text": "Cậu vuốt cắt sợi dây lúc kẹo đung đưa đúng chỗ, kẹo sẽ rơi trúng miệng ếch đấy."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Để tớ canh thật chuẩn rồi cắt!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Cắt dây thả kẹo",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Thả ba viên kẹo vào miệng ếch nhé!",
+      "game": "cut-rope",
+      "goal": 3
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Ếch con ăn kẹo no căng bụng, Nai Đom Đóm cảm ơn {name} rối rít!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Ếch lại sắp đói rồi, nhớ quay lại trảng cỏ chơi cùng Nai Đom Đóm nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

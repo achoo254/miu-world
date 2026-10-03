@@ -1,0 +1,80 @@
+{
+  "id": "side-pac-maze",
+  "region": "lau-dai",
+  "chapter": 1,
+  "title": "Ăn hạt né ma với Gấu Gác Hầm",
+  "status": "active",
+  "category": "side",
+  "summary": "Đường hầm ngục chằng chịt rải đầy hạt, bé đi ăn hạt và né những bóng ma chậm chạp.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người dũng cảm dưới hầm",
+    "where": "Lối xuống hầm ngục",
+    "goal": "Ăn được năm mươi hạt trong hầm nhé!",
+    "play": "{name} vuốt lên, xuống, trái, phải để đi trong mê cung và ăn hạt.",
+    "learn": "Quan sát xung quanh và chọn đường an toàn",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Hầm ngục còn nhiều lối, cậu cứ xuống chơi tiếp khi muốn nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "gau-gac-ham",
+      "lines": [
+        {
+          "speaker": "Gấu Gác Hầm",
+          "text": "Suỵt, {name}! Dưới hầm có mấy bóng ma vải đang lang thang đấy."
+        },
+        {
+          "speaker": "Gấu Gác Hầm",
+          "text": "Cậu vuốt để đi ăn hạt, gặp sao thì ăn ngay, ma sẽ sợ mà chạy mất."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ vào hầm đây!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Ăn hạt né ma",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Ăn được năm mươi hạt trong hầm nhé!",
+      "game": "pac-maze",
+      "goal": 50
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Gấu Gác Hầm giơ đèn cười: {name} né ma khéo quá!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Hầm ngục còn nhiều lối, cậu cứ xuống chơi tiếp khi muốn nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

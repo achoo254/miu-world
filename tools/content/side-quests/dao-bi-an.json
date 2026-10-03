@@ -1,0 +1,226 @@
+{
+  "region": "dao-bi-an",
+  "givers": [
+    {
+      "id": "cua-luot-song",
+      "name": "Cua Lướt Sóng",
+      "look": "animal-crab",
+      "where": "Bãi biển cạnh bến tàu",
+      "place": "Bãi biển",
+      "company": [
+        {
+          "routine": "pupil",
+          "name": "Bạn nhỏ xây lâu đài cát",
+          "model": "person-o"
+        }
+      ],
+      "games": [
+        {
+          "game": "wave-surf",
+          "title": "Lướt sóng qua các hòn đảo với Cua Lướt Sóng",
+          "summary": "Trên tấm ván, bé giữ tay để lao xuống sóng lấy đà rồi thả tay để bay qua đỉnh sóng.",
+          "lines": [
+            "Sóng hôm nay cao vừa đẹp, {name} ôm ván ra biển với tớ nào!",
+            "Xuống dốc sóng thì giữ tay cho nhanh, lên dốc thì thả ra để bay vèo qua."
+          ],
+          "choice": "Tớ ôm ván ra ngay!",
+          "prompt": "Lướt qua {goal} hòn đảo trên sóng nhé!",
+          "reward": "Cua Lướt Sóng giơ hai càng reo hò: {name} lướt sóng như cá heo!",
+          "next": "Ngày nào biển cũng có sóng, Cua chờ {name} ở bãi biển cạnh bến tàu.",
+          "who": "{name}, tay lướt sóng của đảo",
+          "learn": "Cảm nhận nhịp lên xuống của sóng"
+        },
+        {
+          "game": "swim-race",
+          "title": "Bơi đua dọc bờ biển với Cua Lướt Sóng",
+          "summary": "Bé chạm đúng lúc vòng vàng gặp vòng trắng để quạt tay bơi, giữ nhịp đều để về đích.",
+          "lines": [
+            "Ai bơi tới phao đỏ trước nào, {name} có dám đua với tớ không?",
+            "Đừng chạm loạn kẻo mệt, cứ đều tay theo vòng là bơi nhanh nhất."
+          ],
+          "choice": "Đua thì đua, tớ không sợ!",
+          "prompt": "Về nhất hoặc nhì trong {goal} lượt đua nhé!",
+          "reward": "Cua Lướt Sóng chịu thua: {name} bơi đều tay quá, tớ đuổi không kịp!",
+          "next": "Nước biển ấm lắm, lúc nào muốn đua tiếp cứ ra bãi biển tìm Cua.",
+          "who": "{name}, kình ngư nhỏ của đảo",
+          "learn": "Giữ nhịp đều và kiên nhẫn"
+        }
+      ]
+    },
+    {
+      "id": "khi-hai-dua",
+      "name": "Khỉ Hái Dừa",
+      "look": "animal-monkey",
+      "tint": "#e0c070",
+      "where": "Lối vào rừng nhiệt đới",
+      "place": "Rừng nhiệt đới và thác nước",
+      "company": [
+        {
+          "routine": "monkey",
+          "name": "Khỉ Con Tinh Nghịch",
+          "model": "animal-monkey"
+        }
+      ],
+      "games": [
+        {
+          "game": "fruit-slice",
+          "title": "Chém trái cây rừng cùng Khỉ Hái Dừa",
+          "summary": "Trái cây rừng tung lên trời, bé vuốt ngón tay chém đôi từng quả và tránh cây xương rồng.",
+          "lines": [
+            "Tớ vừa hái cả giỏ dừa, xoài, dứa đấy {name}, làm món trái cây nào!",
+            "Tớ tung lên, cậu vuốt chém đôi nhé, nhưng đừng chém nhầm xương rồng."
+          ],
+          "choice": "Tung lên đi, tớ chém liền!",
+          "prompt": "Chém được {goal} điểm trái cây nhé!",
+          "reward": "Khỉ Hái Dừa nhảy tưng tưng: đĩa trái cây của {name} ngon tuyệt!",
+          "next": "Mai cây lại trĩu quả, Khỉ Hái Dừa hẹn {name} ở lối vào rừng.",
+          "who": "{name}, đầu bếp trái cây của rừng",
+          "learn": "Phản xạ nhanh và nhìn kỹ trước khi chém"
+        },
+        {
+          "game": "photo-snap",
+          "title": "Chụp ảnh thú rừng nhiệt đới với Khỉ Hái Dừa",
+          "summary": "Các bạn thú nấp sau bụi và gốc cây, bé chờ bạn ấy ló hẳn ra trong khung ngắm rồi mới chụp.",
+          "lines": [
+            "Rừng này nhiều bạn thú nhút nhát lắm, {name} cầm máy ảnh đi với tớ nhé!",
+            "Cuộn phim chỉ có mười hai kiểu thôi, đợi bạn thú ló hẳn ra hãy chụp."
+          ],
+          "choice": "Máy ảnh sẵn sàng rồi!",
+          "prompt": "Chụp được {goal} tấm ảnh thú thật rõ nhé!",
+          "reward": "Khỉ Hái Dừa ngắm ảnh mãi: {name} chụp đẹp như nhiếp ảnh gia!",
+          "next": "Còn nhiều bạn thú chưa ai chụp, {name} quay lại rừng với Khỉ nhé.",
+          "who": "{name}, nhiếp ảnh gia thiên nhiên",
+          "learn": "Kiên nhẫn chờ đúng khoảnh khắc"
+        },
+        {
+          "game": "bubble-shooter",
+          "title": "Bắn bóng màu dưới tán dừa cùng Khỉ Hái Dừa",
+          "summary": "Bé kéo ngón tay ngắm theo đường chấm rồi bắn bóng, ba quả cùng màu chạm nhau là nổ.",
+          "lines": [
+            "Chùm bóng màu mắc trên tán dừa kia kìa, {name} bắn rụng giúp tớ!",
+            "Ngắm cho ba quả cùng màu dính nhau là chúng nổ bụp, đừng để chùm bóng chạm vạch đỏ."
+          ],
+          "choice": "Ngắm kỹ rồi bắn này!",
+          "prompt": "Bắn nổ bóng được {goal} điểm nhé!",
+          "reward": "Khỉ Hái Dừa đu cành reo lên: {name} bắn bóng trăm phát trăm trúng!",
+          "next": "Gió lại thổi bóng mắc lên cây, {name} ghé rừng chơi tiếp với Khỉ nhé.",
+          "who": "{name}, xạ thủ bóng màu",
+          "learn": "Nhóm theo màu và ngắm góc bật"
+        }
+      ]
+    },
+    {
+      "id": "chu-ngu-dan-song",
+      "name": "Chú ngư dân Sóng",
+      "look": "person-c",
+      "where": "Bờ đá hải tặc",
+      "place": "Bờ đá hải tặc",
+      "company": [
+        {
+          "routine": "porter",
+          "name": "Chú phơi lưới trên đá",
+          "model": "person-j"
+        }
+      ],
+      "games": [
+        {
+          "game": "reel-tension",
+          "title": "Kéo cá lớn ngoài bờ đá cùng chú ngư dân Sóng",
+          "summary": "Cá lớn cắn câu, bé giữ và thả ngón tay để con cá luôn nằm trong hộp xanh cho tới khi kéo được.",
+          "lines": [
+            "{name} ơi, cá to cắn câu rồi, cầm cần với chú một tay nào!",
+            "Giữ tay hộp xanh nổi lên, thả tay nó chìm, cháu giữ cá trong hộp là được."
+          ],
+          "choice": "Cháu giữ chặt cần đây ạ!",
+          "prompt": "Kéo được {goal} con cá lớn lên bờ nhé!",
+          "reward": "Chú ngư dân Sóng giơ con cá lên: cháu {name} kéo khỏe hơn cả chú!",
+          "next": "Biển còn nhiều cá lớn lắm, chú Sóng đợi {name} trên bờ đá nhé.",
+          "who": "{name}, người câu cá ngoài khơi",
+          "learn": "Giữ thăng bằng lực kéo thật đều"
+        },
+        {
+          "game": "package-drop",
+          "title": "Thả quà từ máy bay cùng chú ngư dân Sóng",
+          "summary": "Máy bay bay ngang trời, bé chạm thả quà sớm một chút để hộp quà rơi đúng vòng vàng.",
+          "lines": [
+            "Các nhà ven biển đang chờ quà đấy {name}, cháu lái máy bay giúp chú nhé!",
+            "Quà còn bay về phía trước một đoạn, nhớ thả trước khi tới vòng vàng."
+          ],
+          "choice": "Máy bay cất cánh nào!",
+          "prompt": "Thả trúng {goal} hộp quà vào vòng nhé!",
+          "reward": "Chú Sóng vẫy mũ: nhà nào cũng nhận quà nhờ {name} đấy!",
+          "next": "Chuyến quà sau chú vẫn cần phi công, nhớ ra bờ đá tìm chú Sóng.",
+          "who": "{name}, phi công chở quà",
+          "learn": "Đoán trước đường rơi của vật"
+        }
+      ]
+    },
+    {
+      "id": "gau-truc-tham-hiem",
+      "name": "Gấu Trúc Thám Hiểm",
+      "look": "animal-panda",
+      "tint": "#e0d0b0",
+      "where": "Trước cổng khu di tích cổ",
+      "place": "Khu di tích cổ và đền thờ",
+      "company": [
+        {
+          "routine": "reader",
+          "name": "Bác khảo cổ ghi chép",
+          "model": "person-k"
+        }
+      ],
+      "games": [
+        {
+          "game": "treasure-dig",
+          "title": "Đào kho báu nóng lạnh cùng Gấu Trúc Thám Hiểm",
+          "summary": "Bé chạm ô cát để đào, ô hiện lửa là gần, tuyết là xa, tìm kho báu trong tám lần đào.",
+          "lines": [
+            "Bản đồ cổ nói kho báu chôn quanh di tích này đấy {name}!",
+            "Đào chỗ nào hiện lửa là gần lắm rồi, hiện tuyết là còn xa, tám lần thôi nhé."
+          ],
+          "choice": "Đưa xẻng cho tớ nào!",
+          "prompt": "Tìm ra {goal} kho báu dưới cát nhé!",
+          "reward": "Gấu Trúc Thám Hiểm ôm rương vàng: {name} có cái mũi tìm kho báu thật!",
+          "next": "Bản đồ còn nhiều dấu chéo lắm, {name} quay lại khu di tích đào tiếp nhé.",
+          "who": "{name}, nhà thám hiểm tìm kho báu",
+          "learn": "Suy luận từ manh mối gần và xa"
+        },
+        {
+          "game": "dig-tunnel",
+          "title": "Đào hầm tìm ngọc với Gấu Trúc Thám Hiểm",
+          "summary": "Bé kéo ngón tay đào đường hầm lấy ngọc, đào khéo để tảng đá phía trên không rơi trúng.",
+          "lines": [
+            "Dưới nền đền cổ có ngọc lấp lánh, {name} đào hầm cùng tớ nhé!",
+            "Đào mất đất dưới tảng đá là đá rơi đấy, nhớ tránh xa ra."
+          ],
+          "choice": "Tớ đào nhẹ tay thôi!",
+          "prompt": "Lấy được {goal} viên ngọc dưới lòng đất nhé!",
+          "reward": "Gấu Trúc Thám Hiểm lau kính reo lên: {name} đào giỏi như chuột chũi!",
+          "next": "Dưới đất còn ngọc ngủ say, Gấu Trúc chờ {name} ở cổng khu di tích.",
+          "who": "{name}, thợ đào hầm tìm ngọc",
+          "learn": "Lên kế hoạch đường đi an toàn"
+        }
+      ]
+    }
+  ],
+  "residents": [
+    {
+      "routine": "pupil",
+      "name": "Bạn nhỏ trại thám hiểm",
+      "model": "person-q",
+      "place": "Trại thám hiểm"
+    },
+    {
+      "routine": "monkey",
+      "name": "Khỉ Đuôi Dài Hang Động",
+      "model": "animal-monkey",
+      "place": "Lối vào hang động"
+    },
+    {
+      "routine": "shopper",
+      "name": "Cô bán cá làng chài",
+      "model": "person-e",
+      "place": "Làng chài"
+    }
+  ]
+}

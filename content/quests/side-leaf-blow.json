@@ -1,0 +1,80 @@
+{
+  "id": "side-leaf-blow",
+  "region": "khu-rung-bi-mat",
+  "chapter": 1,
+  "title": "Thổi lá gom đống với Thỏ Quét Lá",
+  "status": "active",
+  "category": "side",
+  "summary": "Lá vàng rụng kín lối mòn: đặt quạt sau từng chiếc lá để thổi chúng bay vào khung gom.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người gom lá của rừng sâu",
+    "where": "Lối mòn lá vàng trong rừng sâu",
+    "goal": "Thổi hai mươi chiếc lá vào khung gom nhé!",
+    "play": "Giữ ngón tay trên sân: cái quạt thổi lá bay ra xa ngón tay.",
+    "learn": "Hiểu hướng gió đẩy và chọn chỗ đặt quạt",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Mùa thu lá còn rụng nữa, Thỏ Quét Lá vẫn ở lối mòn lá vàng chờ cậu."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "tho-quet-la",
+      "lines": [
+        {
+          "speaker": "Thỏ Quét Lá",
+          "text": "Lá rụng nhiều quá {name} ơi, tớ quét mãi không xuể!"
+        },
+        {
+          "speaker": "Thỏ Quét Lá",
+          "text": "Cậu cầm quạt đặt phía sau chiếc lá, gió sẽ đẩy lá vào khung gom cho tớ."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Quạt đây, gom lá thôi!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Thổi lá vào đống",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Thổi hai mươi chiếc lá vào khung gom nhé!",
+      "game": "leaf-blow",
+      "goal": 20
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Lối mòn sạch bong, Thỏ Quét Lá nhảy cẫng lên: {name} đúng là thợ gom lá!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Mùa thu lá còn rụng nữa, Thỏ Quét Lá vẫn ở lối mòn lá vàng chờ cậu."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

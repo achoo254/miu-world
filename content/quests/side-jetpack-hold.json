@@ -1,0 +1,80 @@
+{
+  "id": "side-jetpack-hold",
+  "region": "trung-tam",
+  "chapter": 1,
+  "title": "Bay ba lô phản lực cùng Cáo Phi Công",
+  "status": "active",
+  "category": "side",
+  "summary": "Đeo ba lô tên lửa bay ngang thành phố: giữ tay để lên, thả tay để xuống, nhặt xu, tránh mây sấm.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, phi công ba lô tên lửa",
+    "where": "Sân rộng của khu học tập",
+    "goal": "Nhặt bốn mươi đồng xu trên trời nhé!",
+    "play": "{name} đeo ba lô tên lửa bay qua thành phố.",
+    "learn": "Giữ độ cao bằng nhịp giữ và thả tay",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Ba lô còn đầy nhiên liệu, cậu ghé khu học tập bay với tớ tiếp nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "cao-phi-cong",
+      "lines": [
+        {
+          "speaker": "Cáo Phi Công",
+          "text": "{name} ơi, tớ vừa chế xong cái ba lô tên lửa, thử bay không?"
+        },
+        {
+          "speaker": "Cáo Phi Công",
+          "text": "Giữ tay là bay lên, thả ra là hạ xuống, gặp mây sấm thì lượn tránh nha."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Ba lô tên lửa, cất cánh!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Ba lô phản lực",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Nhặt bốn mươi đồng xu trên trời nhé!",
+      "game": "jetpack-hold",
+      "goal": 40
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Cáo Phi Công chào kiểu phi công: {name} bay vững như đại bàng!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Ba lô còn đầy nhiên liệu, cậu ghé khu học tập bay với tớ tiếp nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

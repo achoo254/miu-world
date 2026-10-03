@@ -8,6 +8,7 @@
 import { readdir, readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
+import { RegionCatalog } from '../../packages/schema/src/region';
 import { blockTableSchema } from '../../packages/voxel/src/block-table';
 import { VoxelWorld } from '../../packages/voxel/src/chunk-format';
 import { modelCatalogSchema, modelTraversal } from '../../packages/voxel/src/model-catalog';
@@ -149,15 +150,32 @@ export async function auditScenery(map: string): Promise<SceneryFinding[]> {
     if (inLane(x, y, z)) findings.push({ kind: 'prop-in-way', at: [x, y, z], what: file });
   }
   const doors = (await auditRooms(map)).filter((r) => r.area >= HOUSE_AREA && r.doorAt).map((r) => ({ name: `door of the house at ${r.at.join(',')}`, at: r.doorAt ?? r.at, reach: ON_WAY }));
-  findings.push(...wayNetwork(world, e, idsOf(NETWORK_BLOCKS), doors));
+  // The characters who offer minigames stand where the child passes: by a way of the spawn's network.
+  const givers = await sideGiverIds(map);
+  const giverPlaces = e.interactables.filter((t) => givers.has(t.id)).map((t) => ({ name: `side quest giver ${t.id}`, at: t.position, reach: ON_WAY }));
+  findings.push(...wayNetwork(world, e, idsOf(NETWORK_BLOCKS), [...doors, ...giverPlaces]));
   return findings;
+}
+
+/** Ids of the targets that offer the side quests of a map's region (the first step of each side quest). */
+async function sideGiverIds(map: string): Promise<Set<string>> {
+  const regions = RegionCatalog.parse(JSON.parse(await readFile(path.join(REPO_ROOT, 'content/world/regions.json'), 'utf8'))).regions;
+  const region = regions.find((r) => r.map === map)?.id;
+  const dir = path.join(REPO_ROOT, 'content/quests');
+  const ids = new Set<string>();
+  for (const f of (await readdir(dir)).filter((name) => name.startsWith('side-') && name.endsWith('.json'))) {
+    const quest = JSON.parse(await readFile(path.join(dir, f), 'utf8')) as { region?: string; steps?: Array<{ target?: string }> };
+    const target = quest.steps?.[0]?.target;
+    if (quest.region === region && target) ids.add(target);
+  }
+  return ids;
 }
 
 /**
  * The map's ways as one network (owner, 02/10/2026: clear lanes joining every sensible pair of places; where
  * the child starts, a way leads to where she goes): every place the child starts from or heads for — the
  * spawn, each chapter's start, the gates, every ride's stop and arrival, the lesson districts, the named
- * places and every house's door — lies by a way, and all of them are on one network of way cells (stepping up or down one block),
+ * places, every house's door and every side quest's giver — lies by a way, and all of them are on one network of way cells (stepping up or down one block),
  * a ride joining its stop to its arrival (a boat across the sea, a cable car up the mountain).
  */
 function wayNetwork(world: VoxelWorld, e: WorldEntities, network: ReadonlySet<number>, doors: ReadonlyArray<{ name: string; at: readonly number[]; reach: number }>): SceneryFinding[] {

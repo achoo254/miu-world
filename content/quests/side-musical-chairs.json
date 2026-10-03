@@ -1,0 +1,80 @@
+{
+  "id": "side-musical-chairs",
+  "region": "truong-hoc",
+  "chapter": 1,
+  "title": "Giành ghế theo nhạc với Voi Trống Hội",
+  "status": "active",
+  "category": "side",
+  "summary": "Các bạn đi vòng quanh hàng ghế khi nhạc chơi: nhạc vừa tắt là chạm ngay một ghế trống.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, bạn nhỏ nhanh tay nhất lớp",
+    "where": "Bên sân khấu sự kiện",
+    "goal": "Giành được năm cái ghế nhé!",
+    "play": "{name} và các bạn đi vòng quanh ghế theo nhạc.",
+    "learn": "Lắng nghe và phản xạ khi âm thanh dừng",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Giờ sinh hoạt nào cũng chơi giành ghế, cứ tới sân khấu sự kiện nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "voi-trong-hoi",
+      "lines": [
+        {
+          "speaker": "Voi Trống Hội",
+          "text": "Trò giành ghế sắp bắt đầu rồi {name}, vào vòng nhanh lên!"
+        },
+        {
+          "speaker": "Voi Trống Hội",
+          "text": "Tớ đánh trống, khi trống dừng thì cậu chạm ghế trống ngay, đừng chạm sớm kẻo vấp."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ sẵn sàng giành ghế!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Giành ghế",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Giành được năm cái ghế nhé!",
+      "game": "musical-chairs",
+      "goal": 5
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Voi Trống Hội cười khà khà: {name} nhanh như sóc, ghế nào cũng giành được!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Giờ sinh hoạt nào cũng chơi giành ghế, cứ tới sân khấu sự kiện nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

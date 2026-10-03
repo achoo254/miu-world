@@ -1,0 +1,80 @@
+{
+  "id": "side-hopscotch",
+  "region": "xom-mai-am",
+  "chapter": 1,
+  "title": "Nhảy lò cò cùng Chị Thỏ Nhảy Dây",
+  "status": "active",
+  "category": "side",
+  "summary": "Ném viên sỏi vào ô rồi nhảy lò cò từ ô một đến ô tám, nhớ bỏ qua ô có sỏi.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, bạn nhảy lò cò chăm chỉ",
+    "where": "Đầu ngõ nhỏ ánh trăng",
+    "goal": "Nhảy xong trọn tám lượt lò cò nhé!",
+    "play": "Ô sáng chạy qua lại: {name} chạm đúng lúc nó ở ô viền vàng để ném sỏi vào.",
+    "learn": "Đếm thứ tự và ghi nhớ ô cần bỏ qua",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Ô phấn vẫn còn trên ngõ, chị đợi em ra nhảy ván mới."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "chi-tho-nhay-day",
+      "lines": [
+        {
+          "speaker": "Chị Thỏ Nhảy Dây",
+          "text": "Chị vừa kẻ ô lò cò bằng phấn, {name} nhảy thử không?"
+        },
+        {
+          "speaker": "Chị Thỏ Nhảy Dây",
+          "text": "Ném sỏi trúng ô viền vàng, rồi nhảy lần lượt mà bỏ ô có sỏi ra."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Lò cò lò cò, em nhảy đây!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Nhảy lò cò",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Nhảy xong trọn tám lượt lò cò nhé!",
+      "game": "hopscotch",
+      "goal": 8
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Không sai một ô nào, {name} nhảy lò cò siêu thật!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Ô phấn vẫn còn trên ngõ, chị đợi em ra nhảy ván mới."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

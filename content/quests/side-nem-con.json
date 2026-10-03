@@ -1,0 +1,80 @@
+{
+  "id": "side-nem-con",
+  "region": "lang-ven-song",
+  "chapter": 1,
+  "title": "Ném còn qua vòng cùng Cô Hội Làng",
+  "status": "active",
+  "category": "side",
+  "summary": "Kéo lùi rồi thả tay để quả còn bay vút qua chiếc vòng trên ngọn cột tre.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, tay ném còn của làng",
+    "where": "Quảng trường làng",
+    "goal": "Ném lọt vòng năm lần nhé!",
+    "play": "{name} đặt ngón tay xuống, kéo lùi về phía sau rồi thả để ném quả còn.",
+    "learn": "Căn lực ném và ngắm đích cao",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Cột còn vẫn dựng giữa quảng trường, lúc nào cháu cũng ném được."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "co-hoi-lang",
+      "lines": [
+        {
+          "speaker": "Cô Hội Làng",
+          "text": "Quả còn đủ màu đây, {name} thử ném một quả xem!"
+        },
+        {
+          "speaker": "Cô Hội Làng",
+          "text": "Kéo dài thì ném xa, nhắm cho lọt vòng trên ngọn tre nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cô đưa cháu quả còn!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Ném còn",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Ném lọt vòng năm lần nhé!",
+      "game": "nem-con",
+      "goal": 5
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Còn bay qua vòng đẹp quá, cả hội vỗ tay cho {name}!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Cột còn vẫn dựng giữa quảng trường, lúc nào cháu cũng ném được."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

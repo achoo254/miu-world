@@ -1,0 +1,80 @@
+{
+  "id": "side-fruit-merge",
+  "region": "cho-phien",
+  "chapter": 1,
+  "title": "Gộp quả rơi cùng Cô bánh mì Hạnh",
+  "status": "active",
+  "category": "side",
+  "summary": "Thả quả vào thùng, hai quả giống nhau chạm nhau gộp thành quả to hơn.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người sắp quả thông minh",
+    "where": "Trước gian hàng đồ ăn",
+    "goal": "Gộp quả được một trăm năm mươi điểm nhé!",
+    "play": "{name} chạm vào chỗ muốn thả quả vào thùng.",
+    "learn": "Tính trước chỗ thả và gộp nhóm",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Thùng quả lúc nào cũng đầy ở gian đồ ăn, cháu ghé chơi tiếp nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "co-banh-mi-hanh",
+      "lines": [
+        {
+          "speaker": "Cô bánh mì Hạnh",
+          "text": "Thùng quả của cô lộn xộn quá {name} ơi!"
+        },
+        {
+          "speaker": "Cô bánh mì Hạnh",
+          "text": "Thả quả cho hai quả giống nhau chạm nhau, chúng sẽ gộp thành quả to."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Để cháu sắp lại cho!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Gộp quả rơi",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Gộp quả được một trăm năm mươi điểm nhé!",
+      "game": "fruit-merge",
+      "goal": 150
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Cả quả dưa hấu to tướng luôn, {name} khéo ghê!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Thùng quả lúc nào cũng đầy ở gian đồ ăn, cháu ghé chơi tiếp nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

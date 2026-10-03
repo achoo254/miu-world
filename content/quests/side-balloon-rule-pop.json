@@ -1,0 +1,80 @@
+{
+  "id": "side-balloon-rule-pop",
+  "region": "trung-tam",
+  "chapter": 1,
+  "title": "Nổ bóng theo lệnh cùng Lân Con Rộn Ràng",
+  "status": "active",
+  "category": "side",
+  "summary": "Bóng bay đủ màu bay lên, bảng trên cao báo màu cần nổ và cứ mười giây lại đổi.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người nổ bóng theo đúng luật",
+    "where": "Khu sự kiện theo mùa",
+    "goal": "Nổ đúng màu được ba mươi điểm nhé!",
+    "play": "Bảng trên cùng cho {name} biết màu bóng cần nổ.",
+    "learn": "Làm theo quy tắc thay đổi và tập trung chú ý",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Bóng bay mới vừa thổi xong, quay lại chơi với tớ lúc nào cũng được."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "lan-con-ron-rang",
+      "lines": [
+        {
+          "speaker": "Lân Con Rộn Ràng",
+          "text": "Nhìn kìa {name}, bóng bay đủ màu đang lên trời đấy!"
+        },
+        {
+          "speaker": "Lân Con Rộn Ràng",
+          "text": "Bảng trên cao nói màu nào thì chỉ chạm nổ bóng màu đó thôi, nhầm là bị trừ điểm."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ nhìn kỹ bảng rồi mới nổ!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Bóng theo lệnh",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Nổ đúng màu được ba mươi điểm nhé!",
+      "game": "balloon-rule-pop",
+      "goal": 30
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Lân Con Rộn Ràng tung kim tuyến: mắt {name} tinh quá, chẳng nổ nhầm quả nào!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Bóng bay mới vừa thổi xong, quay lại chơi với tớ lúc nào cũng được."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

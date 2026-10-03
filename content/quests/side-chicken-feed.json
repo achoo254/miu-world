@@ -1,0 +1,80 @@
+{
+  "id": "side-chicken-feed",
+  "region": "nong-trai",
+  "chapter": 1,
+  "title": "Rải thóc cho gà con cùng Chó Lùa Vịt",
+  "status": "active",
+  "category": "side",
+  "summary": "Gà mẹ háu ăn tranh hết thóc, bé rải thóc thật khéo để gà con nào cũng no.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người cho gà ăn chu đáo",
+    "where": "Bờ ao cá",
+    "goal": "Cho gà con ăn được mười lăm hạt thóc nhé!",
+    "play": "{name} chạm vào sân để tung một nắm thóc xuống chỗ đó.",
+    "learn": "Quan sát và chia đều cho mọi bạn",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Sáng mai gà lại đói, cậu nhớ ghé ao cá rải thóc với tớ nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "cho-lua-vit",
+      "lines": [
+        {
+          "speaker": "Chó Lùa Vịt",
+          "text": "{name} ơi, mấy bé gà con đói meo mà gà mẹ cứ giành ăn mất."
+        },
+        {
+          "speaker": "Chó Lùa Vịt",
+          "text": "Cậu tung thóc gần gà con, xa gà mẹ ra một chút nhé, tớ canh giúp cho."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Đưa nắm thóc đây cho tớ!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Cho gà ăn đều",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Cho gà con ăn được mười lăm hạt thóc nhé!",
+      "game": "chicken-feed",
+      "goal": 15
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Gà con no căng bụng, Chó Lùa Vịt khen {name} thương gà ghê!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Sáng mai gà lại đói, cậu nhớ ghé ao cá rải thóc với tớ nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

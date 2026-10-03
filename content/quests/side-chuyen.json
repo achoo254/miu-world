@@ -1,0 +1,80 @@
+{
+  "id": "side-chuyen",
+  "region": "xom-mai-am",
+  "chapter": 1,
+  "title": "Chơi chuyền cùng Chị Thỏ Nhảy Dây",
+  "status": "active",
+  "category": "side",
+  "summary": "Tung quả bóng lên, nhặt que trên chiếu thật nhanh rồi bắt bóng trước khi nó rơi.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, bạn chơi chuyền khéo tay",
+    "where": "Đầu ngõ nhỏ ánh trăng",
+    "goal": "Chuyền qua năm bàn nhé!",
+    "play": "Chạm quả bóng để tung lên. Lúc bóng bay, {name} chạm nhặt que trên chiếu.",
+    "learn": "Phối hợp tay mắt và đếm số que",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Bộ que chuyền chị cất ở đầu ngõ, lúc nào chơi tiếp cũng được."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "chi-tho-nhay-day",
+      "lines": [
+        {
+          "speaker": "Chị Thỏ Nhảy Dây",
+          "text": "{name} biết chơi chuyền không, chị dạy cho nhé!"
+        },
+        {
+          "speaker": "Chị Thỏ Nhảy Dây",
+          "text": "Bàn một nhặt một que, bàn hai nhặt hai que, nhặt xong là bắt bóng ngay."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Em muốn học chơi chuyền!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Chơi chuyền",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Chuyền qua năm bàn nhé!",
+      "game": "chuyen",
+      "goal": 5
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Tay em nhanh như cắt, chị phục {name} luôn đấy!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Bộ que chuyền chị cất ở đầu ngõ, lúc nào chơi tiếp cũng được."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

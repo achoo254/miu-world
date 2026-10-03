@@ -1,0 +1,236 @@
+{
+  "region": "nong-trai",
+  "givers": [
+    {
+      "id": "bo-chuong-dong",
+      "name": "Bò Chuông Đồng",
+      "look": "animal-cow",
+      "where": "Mép đồng cỏ bò sữa",
+      "place": "Đồng cỏ bò sữa",
+      "company": [
+        {
+          "routine": "kite-flyer",
+          "name": "Bạn thả diều trên đồng cỏ",
+          "model": "person-r"
+        },
+        {
+          "routine": "cow",
+          "name": "Bò Sữa Đốm Đen",
+          "model": "animal-cow"
+        }
+      ],
+      "games": [
+        {
+          "game": "milk-cow",
+          "title": "Vắt sữa giúp Bò Chuông Đồng",
+          "summary": "Bò Chuông Đồng đứng hiền bên xô gỗ, chờ bé vắt sữa thật đều tay.",
+          "lines": [
+            "Ò ò, chào {name}! Bầu sữa của tớ căng quá rồi nè.",
+            "Cậu vuốt nhẹ từng bên, chờ núm hồng lên hãy vắt nhé, tớ sợ nhột lắm!"
+          ],
+          "choice": "Để tớ cầm xô cho!",
+          "prompt": "Vắt được {goal} giọt sữa đầy xô nào!",
+          "reward": "Leng keng! Bò Chuông Đồng rung chuông cảm ơn {name} vắt khéo quá.",
+          "next": "Chiều nào cũng có sữa, ghé mép đồng cỏ tìm Bò Chuông Đồng nhé.",
+          "who": "{name}, người vắt sữa nhỏ của đồng cỏ",
+          "learn": "Nhịp tay đều và kiên nhẫn chờ đúng lúc"
+        },
+        {
+          "game": "blind-goat",
+          "title": "Bịt mắt bắt dê trên đồng cỏ",
+          "summary": "Khăn bịt mắt đã buộc xong, bạn dê con kêu be he khắp đồng cỏ của Bò Chuông Đồng.",
+          "lines": [
+            "{name} ơi, đàn dê nhà bên trốn ra đồng cỏ chơi rồi!",
+            "Cậu bịt mắt lại, lắng nghe tiếng be he rồi lần theo mà bắt nha."
+          ],
+          "choice": "Buộc khăn cho tớ đi!",
+          "prompt": "Bắt được {goal} bạn dê dù mắt bị bịt nhé!",
+          "reward": "Bò Chuông Đồng vỗ móng: tai {name} thính hơn cả tai thỏ!",
+          "next": "Lũ dê lại sắp trốn nữa đấy, quay lại đồng cỏ chơi tiếp với tớ nhé.",
+          "who": "{name}, người đi tìm dê bằng đôi tai",
+          "learn": "Lắng nghe và đoán hướng âm thanh"
+        },
+        {
+          "game": "kite-fly",
+          "title": "Thả diều lên mây cùng Bò Chuông Đồng",
+          "summary": "Gió đồng cỏ thổi lồng lộng, con diều giấy chờ bé lái thật cao.",
+          "lines": [
+            "Gió hôm nay mát rượi, {name} có muốn thả diều không?",
+            "Cậu lái diều vào luồng gió cho nó vút lên, nhớ tránh cành cây với lũ chim nhé."
+          ],
+          "choice": "Diều ơi, bay lên nào!",
+          "prompt": "Đưa con diều lên cao {goal} mét nhé!",
+          "reward": "Ò ò, diều của {name} chạm tận mây trắng rồi kìa!",
+          "next": "Hôm nào gió to, tớ lại chờ cậu ở mép đồng cỏ thả diều tiếp.",
+          "who": "{name}, người lái diều giỏi nhất đồng quê",
+          "learn": "Khéo léo điều khiển và né vật cản"
+        }
+      ]
+    },
+    {
+      "id": "heo-kho-hang",
+      "name": "Heo Kho Hàng",
+      "look": "animal-pig",
+      "where": "Cửa nhà kho chế biến",
+      "place": "Nhà kho chế biến",
+      "company": [
+        {
+          "routine": "porter",
+          "name": "Chú chuyển thùng vào kho",
+          "model": "person-b"
+        }
+      ],
+      "games": [
+        {
+          "game": "conveyor-sort",
+          "title": "Chia đồ trên băng chuyền với Heo Kho Hàng",
+          "summary": "Băng chuyền trong kho chạy rầm rập, bé đưa từng món vào đúng giỏ theo tấm bảng.",
+          "lines": [
+            "Ủn ỉn, {name} tới đúng lúc quá, băng chuyền đầy ắp đồ rồi!",
+            "Cậu nhìn bảng trên giỏ rồi gạt món nào vào giỏ nấy, bảng đổi thì nhìn lại nha."
+          ],
+          "choice": "Giao cho tớ, tớ chia nhanh lắm!",
+          "prompt": "Xếp đúng giỏ {goal} món đồ nhé!",
+          "reward": "Heo Kho Hàng ủn ỉn vui sướng: kho gọn gàng hết rồi nhờ {name}!",
+          "next": "Băng chuyền chạy suốt ngày, cứ ghé cửa kho nếu cậu muốn chia tiếp.",
+          "who": "{name}, người giữ kho tinh mắt",
+          "learn": "Phân loại đồ vật theo nhóm"
+        },
+        {
+          "game": "simon-says",
+          "title": "Nghe dàn đồng ca nông trại với Heo Kho Hàng",
+          "summary": "Các bạn thú nông trại hát lần lượt, bé nhớ thứ tự rồi chạm lại cho đúng bài.",
+          "lines": [
+            "{name} nè, tớ lập được dàn đồng ca của bò, gà, vịt đấy!",
+            "Mỗi bạn hát một nốt, cậu nhớ ai hát trước ai hát sau rồi chạm lại theo nhé."
+          ],
+          "choice": "Tớ nhớ giỏi lắm, hát đi!",
+          "prompt": "Nhớ đúng {goal} lượt bài hát của các bạn thú nhé!",
+          "reward": "Cả dàn đồng ca cúi chào, Heo Kho Hàng khen {name} nhớ như in!",
+          "next": "Dàn đồng ca còn tập bài mới, lúc khác cậu nghe tiếp ở cửa kho nhé.",
+          "who": "{name}, nhạc trưởng nhí của dàn thú",
+          "learn": "Ghi nhớ thứ tự âm thanh và hình ảnh"
+        }
+      ]
+    },
+    {
+      "id": "cho-lua-vit",
+      "name": "Chó Lùa Vịt",
+      "look": "animal-dog",
+      "tint": "#e0c8a0",
+      "where": "Bờ ao cá",
+      "place": "Ao cá",
+      "company": [
+        {
+          "routine": "chick",
+          "name": "Gà Con Lạc Mẹ",
+          "model": "animal-chick"
+        }
+      ],
+      "games": [
+        {
+          "game": "sheepdog-herd",
+          "title": "Lùa vịt về chuồng cùng Chó Lùa Vịt",
+          "summary": "Đàn vịt bơi lạc khỏi ao cá, bé dắt chú chó vòng ra sau để lùa vịt vào chuồng.",
+          "lines": [
+            "Gâu gâu! {name} ơi, đàn vịt chạy lung tung khắp bờ ao rồi.",
+            "Cậu dắt tớ đi vòng ra sau lưng chúng, vịt sợ sẽ chạy qua lỗ rào vào chuồng đấy."
+          ],
+          "choice": "Đi thôi, mình vòng ra sau nào!",
+          "prompt": "Lùa đủ {goal} chú vịt vào chuồng nhé!",
+          "reward": "Chó Lùa Vịt vẫy đuôi tít: {name} chăn vịt cừ quá!",
+          "next": "Chiều nào vịt cũng đi chơi, cậu ghé bờ ao giúp tớ lùa tiếp nhé.",
+          "who": "{name}, người chăn vịt khéo léo",
+          "learn": "Tính đường đi và đoán hướng chạy"
+        },
+        {
+          "game": "chicken-feed",
+          "title": "Rải thóc cho gà con cùng Chó Lùa Vịt",
+          "summary": "Gà mẹ háu ăn tranh hết thóc, bé rải thóc thật khéo để gà con nào cũng no.",
+          "lines": [
+            "{name} ơi, mấy bé gà con đói meo mà gà mẹ cứ giành ăn mất.",
+            "Cậu tung thóc gần gà con, xa gà mẹ ra một chút nhé, tớ canh giúp cho."
+          ],
+          "choice": "Đưa nắm thóc đây cho tớ!",
+          "prompt": "Cho gà con ăn được {goal} hạt thóc nhé!",
+          "reward": "Gà con no căng bụng, Chó Lùa Vịt khen {name} thương gà ghê!",
+          "next": "Sáng mai gà lại đói, cậu nhớ ghé ao cá rải thóc với tớ nhé.",
+          "who": "{name}, người cho gà ăn chu đáo",
+          "learn": "Quan sát và chia đều cho mọi bạn"
+        }
+      ]
+    },
+    {
+      "id": "tho-giu-vuon",
+      "name": "Thỏ Giữ Vườn",
+      "look": "animal-bunny",
+      "where": "Bờ ruộng ngô",
+      "place": "Ruộng ngô",
+      "company": [
+        {
+          "routine": "waterer",
+          "name": "Cô tưới ngô sáng sớm",
+          "model": "person-i"
+        }
+      ],
+      "games": [
+        {
+          "game": "whack-mole",
+          "title": "Đuổi chuột chũi giúp Thỏ Giữ Vườn",
+          "summary": "Chuột chũi đào hang khắp ruộng ngô, bé chạm thật nhanh khi chúng ló đầu lên.",
+          "lines": [
+            "Ối {name}, chuột chũi đào ruộng ngô của tớ lỗ chỗ hết rồi!",
+            "Thấy chuột ló lên là cậu đập nhanh nha, nhưng đừng đập nhầm bạn thỏ đấy."
+          ],
+          "choice": "Chuột chũi đâu, ra đây!",
+          "prompt": "Đập được {goal} điểm chuột chũi nhé!",
+          "reward": "Thỏ Giữ Vườn nhảy cẫng lên: ruộng ngô yên rồi, cảm ơn {name}!",
+          "next": "Chuột chũi hay quay lại lắm, cậu nhớ ghé bờ ruộng ngô canh cùng tớ.",
+          "who": "{name}, người giữ ruộng nhanh tay",
+          "learn": "Phản xạ nhanh và nhìn kỹ trước khi chạm"
+        },
+        {
+          "game": "farmer-defense",
+          "title": "Giữ ruộng lúa khỏi lũ chim với Thỏ Giữ Vườn",
+          "summary": "Chim sẻ bay từng đàn tới mổ lúa, bé đưa các bác nông dân ra luống vẫy nón đuổi chim.",
+          "lines": [
+            "{name} nhìn kìa, lũ chim sẻ kéo cả đàn tới ăn lúa rồi!",
+            "Cậu đưa các bác nông dân ra từng luống, chạm vào chim cho nó bay lùi nha."
+          ],
+          "choice": "Ra ruộng giữ lúa thôi!",
+          "prompt": "Đuổi được {goal} chú chim khỏi ruộng nhé!",
+          "reward": "Bó lúa vẫn còn nguyên, Thỏ Giữ Vườn reo: {name} giữ ruộng giỏi quá!",
+          "next": "Mùa gặt còn dài, cậu cứ tới bờ ruộng ngô cùng tớ canh lúa.",
+          "who": "{name}, người giữ lúa của bà con",
+          "learn": "Sắp xếp người giúp và chọn chỗ quan trọng"
+        }
+      ]
+    }
+  ],
+  "residents": [
+    {
+      "routine": "reader",
+      "name": "Ông nghỉ dưới gốc cây",
+      "model": "person-c",
+      "place": "Khu nghỉ dưới gốc cây"
+    },
+    {
+      "routine": "pig",
+      "name": "Lợn Ỉn Xóm Đồng",
+      "model": "animal-pig",
+      "place": "Xóm nông dân"
+    },
+    {
+      "routine": "kite-flyer",
+      "name": "Bạn thả diều bờ hồ",
+      "model": "person-f",
+      "place": "Hồ sau nông trại"
+    },
+    {
+      "routine": "porter",
+      "name": "Chú gặt lúa mì",
+      "model": "person-j",
+      "place": "Ruộng lúa mì"
+    }
+  ]
+}

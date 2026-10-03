@@ -1,0 +1,80 @@
+{
+  "id": "side-tug-of-war",
+  "region": "lang-ven-song",
+  "chapter": 1,
+  "title": "Kéo co cùng đội của Cô Hội Làng",
+  "status": "active",
+  "category": "side",
+  "summary": "Hai đội nắm chặt dây thừng, chạm thật nhanh theo tiếng hô để kéo dải đỏ về phía mình.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, thành viên đội kéo co",
+    "where": "Quảng trường làng",
+    "goal": "Thắng ba hiệp kéo co nhé!",
+    "play": "Đội của {name} kéo bên trái. Chạm thật nhanh để kéo dây!",
+    "learn": "Phối hợp theo nhịp và bền tay",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Đội bên kia hẹn kéo lại trận nữa, cô chờ cháu ở quảng trường."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "co-hoi-lang",
+      "lines": [
+        {
+          "speaker": "Cô Hội Làng",
+          "text": "Đội cô đang thiếu người, {name} vào kéo co nhé!"
+        },
+        {
+          "speaker": "Cô Hội Làng",
+          "text": "Cứ nghe trống hô dô ta là kéo mạnh gấp đôi đấy."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Dô ta! Cháu vào đây!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Kéo co",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Thắng ba hiệp kéo co nhé!",
+      "game": "tug-of-war",
+      "goal": 3
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Đội mình thắng rồi! {name} khỏe như voi con!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Đội bên kia hẹn kéo lại trận nữa, cô chờ cháu ở quảng trường."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

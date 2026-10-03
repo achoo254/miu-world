@@ -1,0 +1,80 @@
+{
+  "id": "side-memory-pairs",
+  "region": "thu-vien",
+  "chapter": 1,
+  "title": "Lật thẻ tìm cặp với Gấu Trúc Đàn Phím",
+  "status": "active",
+  "category": "side",
+  "summary": "Những tấm thẻ úp trên bàn đá, bé lật hai thẻ một lúc và nhớ chỗ từng hình để tìm cặp.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người có trí nhớ tốt",
+    "where": "Trước sân khấu lá vàng",
+    "goal": "Tìm đủ sáu cặp hình giống nhau nhé!",
+    "play": "Chạm một thẻ để lật, rồi lật thêm một thẻ nữa.",
+    "learn": "Ghi nhớ vị trí hình ảnh",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Bộ thẻ của tớ còn nhiều hình nữa, lúc nào rảnh lại lật cùng tớ nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "gau-truc-dan-phim",
+      "lines": [
+        {
+          "speaker": "Gấu Trúc Đàn Phím",
+          "text": "Này {name}, tớ có một bộ thẻ hình nhạc cụ úp sấp đây."
+        },
+        {
+          "speaker": "Gấu Trúc Đàn Phím",
+          "text": "Cậu lật hai thẻ, giống nhau là được một cặp, khác nhau thì nhớ chỗ để lần sau lật đúng."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ nhớ dai lắm đấy!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Lật hình tìm cặp",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Tìm đủ sáu cặp hình giống nhau nhé!",
+      "game": "memory-pairs",
+      "goal": 6
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Gấu Trúc Đàn Phím gõ một nốt thật vang: trí nhớ của {name} siêu quá!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Bộ thẻ của tớ còn nhiều hình nữa, lúc nào rảnh lại lật cùng tớ nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

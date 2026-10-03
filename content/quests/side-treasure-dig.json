@@ -1,0 +1,80 @@
+{
+  "id": "side-treasure-dig",
+  "region": "dao-bi-an",
+  "chapter": 1,
+  "title": "Đào kho báu nóng lạnh cùng Gấu Trúc Thám Hiểm",
+  "status": "active",
+  "category": "side",
+  "summary": "Bé chạm ô cát để đào, ô hiện lửa là gần, tuyết là xa, tìm kho báu trong tám lần đào.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, nhà thám hiểm tìm kho báu",
+    "where": "Trước cổng khu di tích cổ",
+    "goal": "Tìm ra ba kho báu dưới cát nhé!",
+    "play": "Chạm một ô cát để đào. Ô hiện lửa là rất gần, tuyết là còn xa kho báu.",
+    "learn": "Suy luận từ manh mối gần và xa",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Bản đồ còn nhiều dấu chéo lắm, {name} quay lại khu di tích đào tiếp nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "gau-truc-tham-hiem",
+      "lines": [
+        {
+          "speaker": "Gấu Trúc Thám Hiểm",
+          "text": "Bản đồ cổ nói kho báu chôn quanh di tích này đấy {name}!"
+        },
+        {
+          "speaker": "Gấu Trúc Thám Hiểm",
+          "text": "Đào chỗ nào hiện lửa là gần lắm rồi, hiện tuyết là còn xa, tám lần thôi nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Đưa xẻng cho tớ nào!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Đào kho báu nóng lạnh",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Tìm ra ba kho báu dưới cát nhé!",
+      "game": "treasure-dig",
+      "goal": 3
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Gấu Trúc Thám Hiểm ôm rương vàng: {name} có cái mũi tìm kho báu thật!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Bản đồ còn nhiều dấu chéo lắm, {name} quay lại khu di tích đào tiếp nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

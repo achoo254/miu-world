@@ -1,0 +1,80 @@
+{
+  "id": "side-doodle-climb",
+  "region": "khu-rung-bi-mat",
+  "chapter": 1,
+  "title": "Đưa ếch nảy lên mây với Khỉ Chuyền Cành",
+  "status": "active",
+  "category": "side",
+  "summary": "Một chú ếch con muốn lên tận đám mây: lái ếch nảy từ lá này lên lá kia thật cao.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người lái ếch lên trời",
+    "where": "Bìa trảng rừng có cây cao",
+    "goal": "Đưa ếch lên cao tám mươi mét nhé!",
+    "play": "Ếch tự nảy trên lá và mây. {name} kéo ngón tay sang trái, sang phải để lái ếch.",
+    "learn": "Lái khéo và nhìn trước tấm lá sắp đáp",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Mai ếch lại muốn lên mây, Khỉ Chuyền Cành sẽ đợi cậu dưới tán cây cao."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "khi-chuyen-canh",
+      "lines": [
+        {
+          "speaker": "Khỉ Chuyền Cành",
+          "text": "Này {name}, chú ếch con kia cứ đòi lên chơi với mây trắng."
+        },
+        {
+          "speaker": "Khỉ Chuyền Cành",
+          "text": "Cậu kéo tay sang trái, sang phải lái ếch nảy lên giúp tớ nhé, gặp nấm đỏ là bật cao vút!"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Ếch ơi, mình cùng lên mây nào!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Ếch nhảy lên mây",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Đưa ếch lên cao tám mươi mét nhé!",
+      "game": "doodle-climb",
+      "goal": 80
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Ếch con ngồi trên mây cười tít mắt, cảm ơn {name} đã lái giỏi thế!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Mai ếch lại muốn lên mây, Khỉ Chuyền Cành sẽ đợi cậu dưới tán cây cao."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

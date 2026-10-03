@@ -1,0 +1,80 @@
+{
+  "id": "side-star-connect",
+  "region": "thu-vien",
+  "chapter": 1,
+  "title": "Nối chòm sao cùng Thỏ Ngắm Sao",
+  "status": "active",
+  "category": "side",
+  "summary": "Trời tối dần quanh tháp đồng hồ, bé nối các ngôi sao theo số để một bạn trên trời hiện ra.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, nhà thiên văn nhí",
+    "where": "Bãi cỏ quanh tháp đồng hồ",
+    "goal": "Nối xong ba chòm sao nhé!",
+    "play": "Chạm các ngôi sao theo số 1, 2, 3… tới 10, hoặc kéo ngón tay nối qua.",
+    "learn": "Đếm theo thứ tự từ 1 đến 10",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Đêm nào trời trong, tớ cũng ngồi bãi cỏ quanh tháp chờ cậu ngắm sao."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "tho-ngam-sao",
+      "lines": [
+        {
+          "speaker": "Thỏ Ngắm Sao",
+          "text": "{name} ơi, nhìn lên trời đi, các ngôi sao đang đợi được nối lại kìa!"
+        },
+        {
+          "speaker": "Thỏ Ngắm Sao",
+          "text": "Cậu chạm sao theo số 1, 2, 3 cho tới 10, nối xong sẽ thấy một hình vui lắm."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Mình nối sao thôi!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Nối chòm sao",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Nối xong ba chòm sao nhé!",
+      "game": "star-connect",
+      "goal": 3
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Bầu trời sáng rực hình mới, Thỏ Ngắm Sao reo: {name} vẽ trời đẹp quá!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Đêm nào trời trong, tớ cũng ngồi bãi cỏ quanh tháp chờ cậu ngắm sao."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

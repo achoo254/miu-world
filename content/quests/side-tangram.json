@@ -1,0 +1,80 @@
+{
+  "id": "side-tangram",
+  "region": "thu-vien",
+  "chapter": 1,
+  "title": "Ghép hình bảy mảnh với Koala Ghép Tranh",
+  "status": "active",
+  "category": "side",
+  "summary": "Bảy mảnh gỗ màu nằm cạnh những bóng hình, bé xoay và kéo mảnh cho khít bóng.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, nhà ghép hình sáng tạo",
+    "where": "Lối vào vườn đọc sách",
+    "goal": "Ghép xong hai hình từ bảy mảnh nhé!",
+    "play": "Kéo từng mảnh vào bóng hình. Chạm một mảnh để xoay nó.",
+    "learn": "Nhận biết hình phẳng và xoay hình trong đầu",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Tớ sẽ nghĩ thêm hình mới, cậu quay lại vườn đọc sách thử tiếp nha."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "koala-ghep-tranh",
+      "lines": [
+        {
+          "speaker": "Koala Ghép Tranh",
+          "text": "{name} xem này, bảy mảnh gỗ của tớ có thể ghép thành con mèo đấy!"
+        },
+        {
+          "speaker": "Koala Ghép Tranh",
+          "text": "Cậu chạm mảnh để xoay, rồi kéo vào bóng hình cho vừa khít, đủ bảy mảnh là xong."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cho tớ thử ghép một hình!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Ghép hình bảy mảnh",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Ghép xong hai hình từ bảy mảnh nhé!",
+      "game": "tangram",
+      "goal": 2
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Ôi đẹp quá! Koala Ghép Tranh treo hình của {name} lên cành cây."
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Tớ sẽ nghĩ thêm hình mới, cậu quay lại vườn đọc sách thử tiếp nha."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

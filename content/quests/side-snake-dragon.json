@@ -1,0 +1,80 @@
+{
+  "id": "side-snake-dragon",
+  "region": "xom-mai-am",
+  "chapter": 1,
+  "title": "Rồng rắn lên mây cùng Heo Rồng Rắn",
+  "status": "active",
+  "category": "side",
+  "summary": "Dẫn đầu đoàn rồng rắn trên gò lộng gió, đón các bạn nối vào đuôi mà không tự cắn mình.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, đầu rồng của đoàn",
+    "where": "Gò đất lộng gió",
+    "goal": "Đón mười lăm bạn nối vào đoàn nhé!",
+    "play": "Vuốt để {name} đổi hướng, đón các bạn nối vào đuôi đoàn.",
+    "learn": "Định hướng và tính trước đường đi",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Gió trên gò vẫn lộng, tớ chờ cậu chơi rồng rắn ván sau."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "heo-rong-ran",
+      "lines": [
+        {
+          "speaker": "Heo Rồng Rắn",
+          "text": "Rồng rắn lên mây, {name} làm đầu rồng nhé!"
+        },
+        {
+          "speaker": "Heo Rồng Rắn",
+          "text": "Vuốt để đổi hướng đón thêm bạn, đừng vòng vào chính đoàn mình nha."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Rồng rắn lên mây nào!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Rồng rắn lên mây",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Đón mười lăm bạn nối vào đoàn nhé!",
+      "game": "snake-dragon",
+      "goal": 15
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Đoàn rồng dài ngoằng luôn, {name} dẫn đầu hay ghê!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Gió trên gò vẫn lộng, tớ chờ cậu chơi rồng rắn ván sau."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

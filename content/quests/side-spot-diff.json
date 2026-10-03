@@ -1,0 +1,80 @@
+{
+  "id": "side-spot-diff",
+  "region": "lau-dai",
+  "chapter": 1,
+  "title": "Tìm chỗ khác nhau cùng Gấu Gác Hầm",
+  "status": "active",
+  "category": "side",
+  "summary": "Hai bức tranh treo tường hầm gần giống hệt nhau, bé tìm năm chỗ khác biệt.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người soi tranh tinh tường",
+    "where": "Lối xuống hầm ngục",
+    "goal": "Tìm ra năm chỗ khác nhau nhé!",
+    "play": "Hai bức tranh gần giống nhau, nhưng khác nhau ở năm chỗ.",
+    "learn": "So sánh và tìm điểm khác biệt",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Tớ sẽ treo thêm tranh mới, cậu quay lại lối xuống hầm tìm tiếp nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "gau-gac-ham",
+      "lines": [
+        {
+          "speaker": "Gấu Gác Hầm",
+          "text": "{name} xem hai bức tranh trên tường hầm, chúng có giống nhau không?"
+        },
+        {
+          "speaker": "Gấu Gác Hầm",
+          "text": "Thật ra có năm chỗ khác đấy, cậu chạm vào chỗ khác ở tranh nào cũng được."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Để tớ soi thật kỹ!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Tìm điểm khác nhau",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Tìm ra năm chỗ khác nhau nhé!",
+      "game": "spot-diff",
+      "goal": 5
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Gấu Gác Hầm tròn mắt: {name} tìm ra hết rồi, giỏi thật!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Tớ sẽ treo thêm tranh mới, cậu quay lại lối xuống hầm tìm tiếp nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

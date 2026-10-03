@@ -1,0 +1,80 @@
+{
+  "id": "side-trash-sort",
+  "region": "xom-mai-am",
+  "chapter": 1,
+  "title": "Phân loại rác cùng Gấu Đưa Báo",
+  "status": "active",
+  "category": "side",
+  "summary": "Rác rơi xuống bên đường đồng, kéo từng món vào đúng thùng xanh lá, xanh dương hay xám.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, bạn nhỏ giữ xóm sạch",
+    "where": "Đường đất qua cánh đồng lúa",
+    "goal": "Bỏ đúng thùng hai mươi món rác nhé!",
+    "play": "Rác rơi xuống từ từ. {name} kéo từng món vào đúng thùng, hoặc chạm món rồi chạm thùng.",
+    "learn": "Phân loại đồ vật theo nhóm",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Mỗi sáng tớ đi nhặt rác, cậu nhập hội với tớ tiếp nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "gau-dua-bao",
+      "lines": [
+        {
+          "speaker": "Gấu Đưa Báo",
+          "text": "{name} ơi, đường làng mình phải sạch đẹp mới vui!"
+        },
+        {
+          "speaker": "Gấu Đưa Báo",
+          "text": "Vỏ quả bỏ thùng xanh lá, giấy và lon bỏ thùng xanh dương nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ phân loại được mà!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Phân loại rác",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Bỏ đúng thùng hai mươi món rác nhé!",
+      "game": "trash-sort",
+      "goal": 20
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Đường đồng sạch tinh tươm, {name} là bạn của môi trường!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Mỗi sáng tớ đi nhặt rác, cậu nhập hội với tớ tiếp nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "id": "side-call-response",
+  "region": "truong-hoc",
+  "chapter": 1,
+  "title": "Nhại nhịp vỗ tay cùng Voi Trống Hội",
+  "status": "active",
+  "category": "side",
+  "summary": "Vẹt vỗ một câu nhịp, các chấm sáng lên theo: đến lượt mình thì vỗ lại y hệt.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, bạn nhỏ có đôi tai thính",
+    "where": "Bên sân khấu sự kiện",
+    "goal": "Nhại đúng bảy câu nhịp nhé!",
+    "play": "Vẹt vỗ một nhịp, các chấm to sáng lên theo tiếng vỗ.",
+    "learn": "Ghi nhớ và lặp lại một chuỗi nhịp",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Lần sau bạn Vẹt sẽ vỗ nhịp khó hơn, cậu nhớ ghé thử sức nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "voi-trong-hoi",
+      "lines": [
+        {
+          "speaker": "Voi Trống Hội",
+          "text": "{name} ơi, bạn Vẹt vỗ tay nhịp gì là cả đội nhại theo nhịp đó."
+        },
+        {
+          "speaker": "Voi Trống Hội",
+          "text": "Nghe kỹ rồi chạm đúng lúc từng vòng tròn, không thừa cái nào nha."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tai tớ thính lắm, bắt đầu đi!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Nhại nhịp vỗ tay",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Nhại đúng bảy câu nhịp nhé!",
+      "game": "call-response",
+      "goal": 7
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Cả đội nhạc vỗ tay theo {name}, Voi Trống Hội khen: nhịp chuẩn từng li!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Lần sau bạn Vẹt sẽ vỗ nhịp khó hơn, cậu nhớ ghé thử sức nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

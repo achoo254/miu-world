@@ -1,0 +1,80 @@
+{
+  "id": "side-goalkeeper",
+  "region": "truong-hoc",
+  "chapter": 1,
+  "title": "Làm thủ môn cùng Hổ Còi Vàng",
+  "status": "active",
+  "category": "side",
+  "summary": "Bạn Gấu trúc sút mười quả bóng: bay người sang đúng phía bóng để cản phá.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, thủ môn nhí của đội trường",
+    "where": "Mép sân bóng của trường",
+    "goal": "Cản phá sáu quả bóng nhé!",
+    "play": "{name} làm thủ môn! Bạn Gấu trúc sút mười quả bóng.",
+    "learn": "Đoán hướng bóng và phản xạ nhanh",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Chiều nào sân bóng cũng có trận, cứ tìm Hổ Còi Vàng ở mép sân nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "ho-coi-vang",
+      "lines": [
+        {
+          "speaker": "Hổ Còi Vàng",
+          "text": "Tuýt tuýt! {name} ơi, đội trường mình đang thiếu thủ môn đấy!"
+        },
+        {
+          "speaker": "Hổ Còi Vàng",
+          "text": "Bóng bay về phía nào thì cậu chạm phía đó để bay người cản nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ giữ khung thành cho!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Làm thủ môn",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Cản phá sáu quả bóng nhé!",
+      "game": "goalkeeper",
+      "goal": 6
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Hổ Còi Vàng thổi một hồi còi dài: {name} là thủ môn xuất sắc nhất trận!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Chiều nào sân bóng cũng có trận, cứ tìm Hổ Còi Vàng ở mép sân nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

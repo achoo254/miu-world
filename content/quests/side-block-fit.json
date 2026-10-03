@@ -1,0 +1,80 @@
+{
+  "id": "side-block-fit",
+  "region": "cho-phien",
+  "chapter": 1,
+  "title": "Xếp hàng lên xe tải cùng Voi Bốc Hàng",
+  "status": "active",
+  "category": "side",
+  "summary": "Kéo từng kiện hàng lên thùng xe tải, xếp kín hàng ngang hay hàng dọc để xe chở đi.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, bạn xếp hàng lên xe",
+    "where": "Bến hàng bên kênh",
+    "goal": "Xếp kín tám hàng kiện nhé!",
+    "play": "Kéo từng kiện hàng lên thùng xe tải, ô sáng là chỗ kiện hàng sẽ nằm.",
+    "learn": "Sắp xếp hình khối vào chỗ trống",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Bến kênh xe ra vào liên tục, mai lại xếp hàng với tớ nha."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "voi-boc-hang",
+      "lines": [
+        {
+          "speaker": "Voi Bốc Hàng",
+          "text": "Xe tải tới bến rồi, {name} xếp hàng giúp tớ nhé!"
+        },
+        {
+          "speaker": "Voi Bốc Hàng",
+          "text": "Kéo kiện hàng vào chỗ trống, kín một hàng là xe chở đi được ngay."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ xếp gọn gàng nhất!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Xếp hàng lên xe tải",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Xếp kín tám hàng kiện nhé!",
+      "game": "block-fit",
+      "goal": 8
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Thùng xe gọn gàng tăm tắp, {name} xếp hàng siêu thật!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Bến kênh xe ra vào liên tục, mai lại xếp hàng với tớ nha."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

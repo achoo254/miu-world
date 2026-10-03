@@ -1,0 +1,80 @@
+{
+  "id": "side-boat-race",
+  "region": "lang-ven-song",
+  "chapter": 1,
+  "title": "Đua thuyền trên sông cùng Bác câu cá Sơn",
+  "status": "active",
+  "category": "side",
+  "summary": "Tiếng trống thùng thùng giục giã, chèo hai mái thật đều để thuyền lướt về đích.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, tay chèo nhỏ tuổi nhất hội đua",
+    "where": "Bến sông đầu làng",
+    "goal": "Về đích trong nhóm hai thuyền đầu tiên nhé!",
+    "play": "{name} chạm bên trái rồi bên phải màn hình, lần lượt, để chèo hai mái chèo.",
+    "learn": "Giữ nhịp đều theo tiếng trống",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Mùa hội còn dài, thuyền con vẫn buộc ở bến chờ cháu."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "bac-cau-ca-son",
+      "lines": [
+        {
+          "speaker": "Bác câu cá Sơn",
+          "text": "Hôm nay làng có hội đua thuyền đấy {name}!"
+        },
+        {
+          "speaker": "Bác câu cá Sơn",
+          "text": "Bác cho mượn chiếc thuyền con, cứ chèo trái phải đều tay theo trống."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Ra bến thôi, cháu chèo được!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Đua thuyền",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Về đích trong nhóm hai thuyền đầu tiên nhé!",
+      "game": "boat-race",
+      "goal": 2
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Thuyền của {name} lao vun vút, cả bến reo hò!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Mùa hội còn dài, thuyền con vẫn buộc ở bến chờ cháu."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

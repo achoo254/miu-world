@@ -36,6 +36,8 @@ Hai ảnh toàn cảnh vẽ một vùng 256 × 256: Trường học ở giữa, 
 
 Thư viện, Xóm Mái Ấm, Lâu đài chưa có khung riêng: dựng theo phong cách chung ở trên (mái nhiều màu, hoa, hàng rào, đèn), phòng đọc Thư viện theo `v2-a-12-thu-vien-trong-truong.png`.
 
+Nhân vật mời chơi minigame (nhiệm vụ phụ, 03/10/2026): mỗi map 3–5 nhân vật, mỗi nhân vật 2–4 trò, đứng cạnh mạng đường gần một địa danh trải khắp map, kèm vài người, vật quanh đó; bảng nguồn ở `tools/content/side-quests/<vùng>.json`, sinh quest bằng `pnpm exec tsx tools/content/build-side-quests.ts` rồi `pnpm world:<map>`.
+
 ## Mock chi tiết từng khu (02/10/2026)
 
 Chín tấm mock chi tiết, mỗi tấm 8–19 khung (toàn cảnh, cận cảnh, nội thất, cảnh đêm), cắt theo lề trắng thành `designs/<thư mục>/{c,d}-NN-<tên>.png`; ảnh gốc giữ cạnh khung (`mock-d-chi-tiet.png`, riêng tấm các khu quanh trường ở `the-gioi/mock-c-chi-tiet-cac-khu.png`). Quyết định dùng thế nào: `plans/dattqh/reports/jev-261002-0802-detail-mocks.md`.

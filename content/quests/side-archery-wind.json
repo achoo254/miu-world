@@ -1,0 +1,80 @@
+{
+  "id": "side-archery-wind",
+  "region": "lau-dai",
+  "chapter": 1,
+  "title": "Bắn cung trong gió cùng Cáo Cung Thủ",
+  "status": "active",
+  "category": "side",
+  "summary": "Bia gỗ dựng ở bãi tập bắn bên khu luyện tập, gió thổi mũi tên lệch, bé ngắm bù gió để trúng giữa bia.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, cung thủ nhí của rừng thông",
+    "where": "Bãi tập bắn bên khu luyện tập",
+    "goal": "Bắn được bốn mươi điểm trên bia nhé!",
+    "play": "Đặt ngón tay xuống để kéo cung, trượt ngón tay để dời vòng ngắm, thả ra để bắn.",
+    "learn": "Ngắm bắn và tính đến hướng gió",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Tớ luyện cung ở khu luyện tập mỗi sáng, cậu ghé bắn thêm nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "cao-cung-thu",
+      "lines": [
+        {
+          "speaker": "Cáo Cung Thủ",
+          "text": "Chào {name}! Gió rừng thông hôm nay thổi mạnh, bắn cung khó lắm đấy."
+        },
+        {
+          "speaker": "Cáo Cung Thủ",
+          "text": "Cậu nhìn mũi tên chỉ gió rồi ngắm lệch ngược lại, tám mũi tên, giữa bia mười điểm nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Đưa cây cung cho tớ!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Bắn cung có gió",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Bắn được bốn mươi điểm trên bia nhé!",
+      "game": "archery-wind",
+      "goal": 40
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Cáo Cung Thủ giơ cung chào: {name} bắn trúng hồng tâm như hiệp sĩ!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Tớ luyện cung ở khu luyện tập mỗi sáng, cậu ghé bắn thêm nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

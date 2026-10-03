@@ -1,0 +1,80 @@
+{
+  "id": "side-lane-runner",
+  "region": "khu-rung-bi-mat",
+  "chapter": 1,
+  "title": "Chạy ba làn cùng Thỏ Quét Lá",
+  "status": "active",
+  "category": "side",
+  "summary": "Lối mòn chia ba làn có khúc gỗ, thùng và đá: vuốt đổi làn, nhảy qua gỗ và nhặt sao.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, vận động viên chạy làn của rừng",
+    "where": "Lối mòn lá vàng trong rừng sâu",
+    "goal": "Nhặt hai mươi lăm ngôi sao trên đường ba làn nhé!",
+    "play": "{name} tự chạy trên đường ba làn. Vuốt trái, phải (hoặc chạm bên đó) để đổi làn.",
+    "learn": "Phản xạ đổi hướng và nhìn trước chướng ngại",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Còn nhiều sao rơi trên lối mòn lắm, chạy lại với Thỏ Quét Lá lúc nào cũng được."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "tho-quet-la",
+      "lines": [
+        {
+          "speaker": "Thỏ Quét Lá",
+          "text": "Này {name}, tớ vừa kẻ ba làn chạy trên lối mòn đấy, thử không?"
+        },
+        {
+          "speaker": "Thỏ Quét Lá",
+          "text": "Vuốt sang bên để đổi làn, vuốt lên để nhảy khúc gỗ, nhặt sao thật nhiều nha."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ chạy đây, đếm sao giúp tớ nhé!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Chạy ba làn",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Nhặt hai mươi lăm ngôi sao trên đường ba làn nhé!",
+      "game": "lane-runner",
+      "goal": 25
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Thỏ Quét Lá giơ chổi làm cờ: {name} về đích với cả túi sao!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Còn nhiều sao rơi trên lối mòn lắm, chạy lại với Thỏ Quét Lá lúc nào cũng được."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

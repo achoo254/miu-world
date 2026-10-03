@@ -1,0 +1,80 @@
+{
+  "id": "side-dodge-fall",
+  "region": "khu-rung-bi-mat",
+  "chapter": 1,
+  "title": "Né quả thông rơi với Vẹt Mỏ Cong",
+  "status": "active",
+  "category": "side",
+  "summary": "Gió lay cây, quả thông và quả dừa rụng lộp bộp: nhìn bóng dưới đất mà chạy né, nhặt sao.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người chạy né nhanh nhất lối mòn",
+    "where": "Lối mòn bên bãi rừng phía đông",
+    "goal": "Nhặt mười ngôi sao mà không bị quả rơi trúng ba lần nhé!",
+    "play": "Quả thông, quả dừa rơi từ trên cây! Bóng tròn dưới đất cho biết chỗ quả sắp rơi.",
+    "learn": "Quan sát bóng đổ để đoán chỗ vật rơi",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Hôm nào gió to, Vẹt Mỏ Cong lại rủ cậu ra lối mòn né quả nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "vet-mo-cong",
+      "lines": [
+        {
+          "speaker": "Vẹt Mỏ Cong",
+          "text": "Cẩn thận nhé {name}, gió đang lay cây làm quả thông rụng đầy kìa!"
+        },
+        {
+          "speaker": "Vẹt Mỏ Cong",
+          "text": "Thấy bóng tròn dưới đất là quả sắp rơi đấy, cậu chạy né và nhặt sao giúp tớ."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ né nhanh lắm, xem đây!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Né quả rơi",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Nhặt mười ngôi sao mà không bị quả rơi trúng ba lần nhé!",
+      "game": "dodge-fall",
+      "goal": 10
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Vẹt Mỏ Cong nghiêng đầu khen: mắt {name} tinh, chân {name} nhanh ghê!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Hôm nào gió to, Vẹt Mỏ Cong lại rủ cậu ra lối mòn né quả nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

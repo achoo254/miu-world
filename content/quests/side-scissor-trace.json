@@ -1,0 +1,80 @@
+{
+  "id": "side-scissor-trace",
+  "region": "truong-hoc",
+  "chapter": 1,
+  "title": "Cắt giấy theo nét cùng Gấu Trúc Bút Chì",
+  "status": "active",
+  "category": "side",
+  "summary": "Tờ giấy màu có đường chấm: đưa cây kéo đi theo đường để cắt ra từng hình.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người thợ cắt giấy khéo tay",
+    "where": "Lối đi trong vườn trường",
+    "goal": "Cắt xong năm hình nhé!",
+    "play": "Đặt ngón tay vào cây kéo rồi đưa kéo đi theo đường chấm.",
+    "learn": "Đưa tay chậm, đều và chính xác theo nét",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Còn nhiều giấy màu lắm, mai cậu lại ra vườn trường cắt tiếp nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "gau-truc-but-chi",
+      "lines": [
+        {
+          "speaker": "Gấu Trúc Bút Chì",
+          "text": "Mình đang làm thiệp, {name} cắt giấy giúp mình được không?"
+        },
+        {
+          "speaker": "Gấu Trúc Bút Chì",
+          "text": "Cậu đặt tay lên kéo rồi đưa đi theo đường chấm, lệch xa là kéo dừng đấy."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ cắt thật khéo cho!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Cắt giấy theo đường",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Cắt xong năm hình nhé!",
+      "game": "scissor-trace",
+      "goal": 5
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Tấm thiệp đẹp quá! Gấu Trúc Bút Chì tặng {name} một hình cắt đầu tiên."
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Còn nhiều giấy màu lắm, mai cậu lại ra vườn trường cắt tiếp nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

@@ -1,0 +1,307 @@
+{
+  "region": "trung-tam",
+  "givers": [
+    {
+      "id": "lan-con-ron-rang",
+      "name": "Lân Con Rộn Ràng",
+      "look": "animal-lion",
+      "where": "Khu sự kiện theo mùa",
+      "place": "Khu sự kiện theo mùa",
+      "company": [
+        {
+          "routine": "trumpeter",
+          "name": "Chú đánh trống lân",
+          "model": "person-d"
+        },
+        {
+          "routine": "pupil",
+          "name": "Bé cầm đèn ông sao",
+          "model": "person-o"
+        }
+      ],
+      "games": [
+        {
+          "game": "lion-dance-arrows",
+          "title": "Múa lân theo trống cùng Lân Con Rộn Ràng",
+          "summary": "Trống hội dồn dập, mũi tên bay lên vòng tròn: vuốt đúng hướng đúng nhịp để con lân múa.",
+          "lines": [
+            "Tùng cắc tùng! {name} ơi, múa lân với tớ cho khu sự kiện thêm vui nhé!",
+            "Mũi tên vào vòng tròn thì cậu vuốt đúng hướng ấy, lân sẽ lắc đầu theo cậu."
+          ],
+          "choice": "Lân ơi, múa thôi!",
+          "prompt": "Múa lân được {goal} điểm nhé!",
+          "reward": "Lân Con Rộn Ràng lắc đầu chớp mắt: {name} múa đẹp nhất hội!",
+          "next": "Hội nào cũng có múa lân, cậu cứ tìm Lân Con Rộn Ràng ở khu sự kiện.",
+          "who": "{name}, người dẫn lân trong ngày hội",
+          "learn": "Nhận biết hướng và giữ nhịp theo tiếng trống"
+        },
+        {
+          "game": "lantern-parade",
+          "title": "Rước đèn ông sao với Lân Con Rộn Ràng",
+          "summary": "Đoàn rước đèn đi quanh quảng trường: giữ nhịp bước cho nến khỏi tắt và nhặt bánh trung thu.",
+          "lines": [
+            "{name} cầm đèn ông sao đi rước cùng đoàn với tớ nhé!",
+            "Đi nhanh quá nến chao tắt mất, chậm quá thì bị bỏ xa, giữ kim ở ô xanh nha."
+          ],
+          "choice": "Đèn của tớ sáng rực rồi!",
+          "prompt": "Nhặt {goal} chiếc bánh trung thu trên đường rước nhé!",
+          "reward": "Đèn của {name} vẫn sáng tới cuối đoàn, Lân Con Rộn Ràng nhảy múa mừng!",
+          "next": "Đêm rước đèn sau tớ vẫn chờ cậu ở khu sự kiện theo mùa nhé.",
+          "who": "{name}, bạn nhỏ cầm đèn đi đầu đoàn rước",
+          "learn": "Điều chỉnh tốc độ đều đặn, kiên nhẫn"
+        },
+        {
+          "game": "balloon-rule-pop",
+          "title": "Nổ bóng theo lệnh cùng Lân Con Rộn Ràng",
+          "summary": "Bóng bay đủ màu bay lên, bảng trên cao báo màu cần nổ và cứ mười giây lại đổi.",
+          "lines": [
+            "Nhìn kìa {name}, bóng bay đủ màu đang lên trời đấy!",
+            "Bảng trên cao nói màu nào thì chỉ chạm nổ bóng màu đó thôi, nhầm là bị trừ điểm."
+          ],
+          "choice": "Tớ nhìn kỹ bảng rồi mới nổ!",
+          "prompt": "Nổ đúng màu được {goal} điểm nhé!",
+          "reward": "Lân Con Rộn Ràng tung kim tuyến: mắt {name} tinh quá, chẳng nổ nhầm quả nào!",
+          "next": "Bóng bay mới vừa thổi xong, quay lại chơi với tớ lúc nào cũng được.",
+          "who": "{name}, người nổ bóng theo đúng luật",
+          "learn": "Làm theo quy tắc thay đổi và tập trung chú ý"
+        }
+      ]
+    },
+    {
+      "id": "voi-keo-bong",
+      "name": "Voi Kẹo Bông",
+      "look": "animal-elephant",
+      "tint": "#f0c8e0",
+      "where": "Lối vào khu giao dịch và cửa hàng",
+      "place": "Khu giao dịch và cửa hàng",
+      "company": [
+        {
+          "routine": "shopper",
+          "name": "Cô dắt con đi chơi",
+          "model": "person-h"
+        }
+      ],
+      "games": [
+        {
+          "game": "cotton-candy",
+          "title": "Quấn kẹo bông cùng Voi Kẹo Bông",
+          "summary": "Máy kẹo bông quay vù vù: vẽ vòng tròn quanh que, đều tay để sợi đường quấn thành kẹo tròn.",
+          "lines": [
+            "Mùi đường thơm quá phải không {name}? Tớ đang làm kẹo bông đấy!",
+            "Cậu vẽ vòng tròn quanh que cho đều, quay nhanh quá thì kẹo văng mất nha."
+          ],
+          "choice": "Tớ quấn một cây thật to!",
+          "prompt": "Quấn xong {goal} cây kẹo bông nhé!",
+          "reward": "Voi Kẹo Bông giơ vòi khen: kẹo của {name} tròn như đám mây hồng!",
+          "next": "Máy kẹo bông chạy cả ngày, cứ tới khu giao dịch tìm Voi Kẹo Bông nhé.",
+          "who": "{name}, thợ làm kẹo bông nhí",
+          "learn": "Vẽ vòng tròn đều tay và giữ tốc độ vừa phải"
+        },
+        {
+          "game": "plinko",
+          "title": "Thả xu qua đinh với Voi Kẹo Bông",
+          "summary": "Bảng đinh dựng cao trước cửa hàng: chọn chỗ thả đồng xu cho nó nảy về ô giữa hoặc trúng hộp quà.",
+          "lines": [
+            "{name} ơi, tớ có tám đồng xu cho cậu thả vào bảng đinh này!",
+            "Chạm chỗ muốn thả, xu sẽ nảy lách cách qua đinh, ô giữa được nhiều điểm nhất."
+          ],
+          "choice": "Thả xu nào, lách cách lách cách!",
+          "prompt": "Gom được {goal} điểm từ tám đồng xu nhé!",
+          "reward": "Xu nào của {name} cũng rơi vào ô đẹp, Voi Kẹo Bông thổi kèn mừng!",
+          "next": "Bảng đinh vẫn đứng trước cửa hàng, cậu ghé thả xu tiếp nhé.",
+          "who": "{name}, người thả xu khéo léo",
+          "learn": "Quan sát, đoán đường nảy và chọn vị trí"
+        },
+        {
+          "game": "bowling",
+          "title": "Lăn bóng đổ ki với Voi Kẹo Bông",
+          "summary": "Đường lăn bóng bóng loáng, mười cái ki xếp tam giác: chọn chỗ đứng rồi vuốt bóng lăn đổ ki.",
+          "lines": [
+            "Mười cái ki đứng thẳng tắp chờ {name} đấy!",
+            "Kéo bóng sang chọn chỗ đứng, rồi vuốt lên về phía ki, đổ hết được thưởng thêm nha."
+          ],
+          "choice": "Ki ơi, coi chừng nhé!",
+          "prompt": "Làm đổ ki được {goal} điểm nhé!",
+          "reward": "Rầm rầm! Ki đổ rạp, Voi Kẹo Bông giậm chân khen {name} ném mạnh quá!",
+          "next": "Tớ xếp lại ki ngay đây, lúc nào muốn ném tiếp cứ quay lại nhé.",
+          "who": "{name}, người ném bóng đổ ki giỏi",
+          "learn": "Ngắm hướng và căn chỗ đứng"
+        }
+      ]
+    },
+    {
+      "id": "cho-canh-sat-coi",
+      "name": "Chó Cảnh Sát Còi",
+      "look": "animal-dog",
+      "tint": "#b8c8e8",
+      "where": "Ngã tư dưới tháp đồng hồ",
+      "place": "Tháp đồng hồ",
+      "company": [
+        {
+          "routine": "sweeper",
+          "name": "Bác lao công quảng trường",
+          "model": "person-b"
+        }
+      ],
+      "games": [
+        {
+          "game": "traffic-cop",
+          "title": "Điều khiển ngã tư cùng Chó Cảnh Sát Còi",
+          "summary": "Xe dừng chờ ở bốn vạch ngã tư: chạm cho từng xe đi, không để xe dọc và xe ngang vào giữa cùng lúc.",
+          "lines": [
+            "Tuýt! {name} làm cảnh sát giao thông với tớ một lúc nhé!",
+            "Chạm xe nào thì xe đó đi, nhớ đừng cho xe dọc và xe ngang chạy cùng lúc kẻo đụng."
+          ],
+          "choice": "Tớ cầm còi đây, xe ơi đi lần lượt!",
+          "prompt": "Cho {goal} chiếc xe qua ngã tư an toàn nhé!",
+          "reward": "Chó Cảnh Sát Còi giơ tay chào: nhờ {name} mà ngã tư thông suốt!",
+          "next": "Giờ tan tầm đông xe lắm, Chó Cảnh Sát Còi cần cậu ở ngã tư nữa.",
+          "who": "{name}, cảnh sát giao thông nhí",
+          "learn": "Hiểu luật nhường đường và quan sát nhiều hướng"
+        },
+        {
+          "game": "kart-race",
+          "title": "Đua xe mini với Chó Cảnh Sát Còi",
+          "summary": "Đường đua quanh tháp đồng hồ: giữ tay cho xe chạy theo, đừng lạc ra cỏ, về trong ba hạng đầu.",
+          "lines": [
+            "Đường đua mini mở rồi {name}, lên xe đi!",
+            "Xe chạy theo ngón tay cậu, đi hai vòng mà đừng lạc ra bãi cỏ nha."
+          ],
+          "choice": "Vèo vèo, tớ về nhất cho xem!",
+          "prompt": "Đua xong với {goal} điểm, về trong ba hạng đầu nhé!",
+          "reward": "Chó Cảnh Sát Còi phất cờ ca rô: {name} lái xe giỏi mà vẫn an toàn!",
+          "next": "Đường đua vẫn chờ cậu dưới tháp đồng hồ, chạy lại lúc nào cũng được.",
+          "who": "{name}, tay đua nhí cẩn thận",
+          "learn": "Điều khiển theo đường cong và giữ hướng"
+        },
+        {
+          "game": "slot-cars",
+          "title": "Chạy xe đường ray cùng Chó Cảnh Sát Còi",
+          "summary": "Đường ray uốn lượn có khúc cua gắt: giữ tay cho xe tăng tốc, nhả tay trước khi vào cua.",
+          "lines": [
+            "{name} ơi, xe của Cáo đang chờ đua với xe của cậu đấy!",
+            "Giữ tay là xe chạy nhanh, gần tới khúc cua thì nhả ra kẻo xe văng khỏi ray."
+          ],
+          "choice": "Xe tớ sẵn sàng rồi!",
+          "prompt": "Chạy đủ {goal} vòng trước xe của Cáo nhé!",
+          "reward": "Xe của {name} về trước một mũi, Chó Cảnh Sát Còi bấm còi mừng!",
+          "next": "Cáo đòi đua lại đấy, cậu ghé ngã tư tìm tớ khi rảnh nhé.",
+          "who": "{name}, tay đua đường ray",
+          "learn": "Biết lúc tăng tốc, lúc giảm tốc"
+        }
+      ]
+    },
+    {
+      "id": "gau-mu-bao-ho",
+      "name": "Gấu Mũ Bảo Hộ",
+      "look": "chibi-bear-nau-overalls-green",
+      "where": "Bãi hàng bên cảng biển",
+      "place": "Cảng biển",
+      "company": [
+        {
+          "routine": "porter",
+          "name": "Chú bốc hàng ở cảng",
+          "model": "person-j"
+        }
+      ],
+      "games": [
+        {
+          "game": "crane-drop",
+          "title": "Xây tháp bằng cần cẩu với Gấu Mũ Bảo Hộ",
+          "summary": "Cần cẩu ở bãi cảng đung đưa từng tầng nhà: chạm thả cho tầng rơi ngay ngắn lên tháp.",
+          "lines": [
+            "Chào {name}, tớ đang xây tòa tháp cao nhất bến cảng đây!",
+            "Tầng nhà đung đưa trên cần cẩu, cậu chạm thả lúc nó ngay phía trên tháp nhé."
+          ],
+          "choice": "Để tớ lái cần cẩu!",
+          "prompt": "Xếp {goal} tầng nhà lên tháp nhé!",
+          "reward": "Tháp cao vút tới mây, Gấu Mũ Bảo Hộ giơ ngón cái: {name} thả chuẩn từng tầng!",
+          "next": "Bãi cảng còn nhiều tầng nhà lắm, cậu quay lại xây tiếp với tớ nhé.",
+          "who": "{name}, người lái cần cẩu nhí",
+          "learn": "Chọn đúng thời điểm và giữ thăng bằng"
+        },
+        {
+          "game": "train-switch",
+          "title": "Bẻ ghi đưa tàu về ga cùng Gấu Mũ Bảo Hộ",
+          "summary": "Những đoàn tàu màu sắc chạy về bãi ga: bấm mũi tên ở chỗ rẽ cho tàu về đúng ga cùng màu.",
+          "lines": [
+            "{name} ơi, tàu chở hàng đang về cảng mà người bẻ ghi đi vắng rồi!",
+            "Tàu màu nào về ga màu đó, cậu chạm mũi tên ở chỗ rẽ để đổi đường cho tàu nhé."
+          ],
+          "choice": "Tớ bẻ ghi cho, tàu ơi về ga!",
+          "prompt": "Đưa {goal} đoàn tàu về đúng ga nhé!",
+          "reward": "Tàu nào cũng về đúng ga, Gấu Mũ Bảo Hộ kéo còi tu tu mừng {name}!",
+          "next": "Chuyến tàu chiều sắp tới, Gấu Mũ Bảo Hộ chờ cậu ở bãi hàng nhé.",
+          "who": "{name}, người bẻ ghi ở bến cảng",
+          "learn": "Ghép màu, hình và tính trước đường đi"
+        }
+      ]
+    },
+    {
+      "id": "cao-phi-cong",
+      "name": "Cáo Phi Công",
+      "look": "chibi-fox-do-jacket-green",
+      "where": "Sân rộng của khu học tập",
+      "place": "Khu học tập",
+      "company": [
+        {
+          "routine": "pupil",
+          "name": "Bạn mơ làm phi công",
+          "model": "person-q"
+        }
+      ],
+      "games": [
+        {
+          "game": "jetpack-hold",
+          "title": "Bay ba lô phản lực cùng Cáo Phi Công",
+          "summary": "Đeo ba lô tên lửa bay ngang thành phố: giữ tay để lên, thả tay để xuống, nhặt xu, tránh mây sấm.",
+          "lines": [
+            "{name} ơi, tớ vừa chế xong cái ba lô tên lửa, thử bay không?",
+            "Giữ tay là bay lên, thả ra là hạ xuống, gặp mây sấm thì lượn tránh nha."
+          ],
+          "choice": "Ba lô tên lửa, cất cánh!",
+          "prompt": "Nhặt {goal} đồng xu trên trời nhé!",
+          "reward": "Cáo Phi Công chào kiểu phi công: {name} bay vững như đại bàng!",
+          "next": "Ba lô còn đầy nhiên liệu, cậu ghé khu học tập bay với tớ tiếp nhé.",
+          "who": "{name}, phi công ba lô tên lửa",
+          "learn": "Giữ độ cao bằng nhịp giữ và thả tay"
+        },
+        {
+          "game": "trampoline-rescue",
+          "title": "Căng bạt cứu hộ cùng Cáo Phi Công",
+          "summary": "Các bạn nhảy xuống từ tòa nhà diễn tập: kéo bạt hứng cho bạn nảy sang xe cứu hỏa.",
+          "lines": [
+            "Diễn tập cứu hộ rồi {name}, cầm một góc bạt với tớ nào!",
+            "Nhìn bóng dưới đất để biết bạn sắp rơi chỗ nào, kéo bạt sang đó hứng nhé."
+          ],
+          "choice": "Bạt căng rồi, các bạn nhảy đi!",
+          "prompt": "Đưa {goal} bạn nảy sang xe cứu hỏa nhé!",
+          "reward": "Bạn nào cũng an toàn, Cáo Phi Công gắn huy hiệu cứu hộ cho {name}!",
+          "next": "Tuần sau lại diễn tập, Cáo Phi Công hẹn cậu ở khu học tập.",
+          "who": "{name}, đội viên cứu hộ dũng cảm",
+          "learn": "Đoán điểm rơi và di chuyển kịp thời"
+        }
+      ]
+    }
+  ],
+  "residents": [
+    {
+      "routine": "reader",
+      "name": "Bác đọc báo sáng",
+      "model": "person-k",
+      "place": "Sân trước lâu đài"
+    },
+    {
+      "routine": "kite-flyer",
+      "name": "Bạn thả diều quảng trường",
+      "model": "person-r",
+      "place": "Cầu trung tâm"
+    },
+    {
+      "routine": "dog",
+      "name": "Cún Đốm Quảng Trường",
+      "model": "animal-dog",
+      "place": "Chợ giao dịch"
+    }
+  ]
+}

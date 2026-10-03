@@ -1,0 +1,80 @@
+{
+  "id": "side-inflate-balloon",
+  "region": "cho-phien",
+  "chapter": 1,
+  "title": "Thổi bóng bay bán cùng Chú hội chợ Tí",
+  "status": "active",
+  "category": "side",
+  "summary": "Bơm từng quả bóng to vừa vòng xanh để bán cho các bạn nhỏ, bơm quá là nổ.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người bơm bóng khéo léo",
+    "where": "Góc trò chơi trên phố chợ",
+    "goal": "Bơm vừa vặn tám quả bóng nhé!",
+    "play": "Giữ ngón tay để bơm bóng, thả tay khi bóng to vừa vòng xanh.",
+    "learn": "Ước lượng độ lớn và dừng đúng lúc",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Ngày phiên nào chú cũng bán bóng bay, cháu tới phụ tiếp nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "chu-hoi-cho-ti",
+      "lines": [
+        {
+          "speaker": "Chú hội chợ Tí",
+          "text": "Các bạn nhỏ đòi bóng bay quá, {name} bơm giúp chú nhé!"
+        },
+        {
+          "speaker": "Chú hội chợ Tí",
+          "text": "Giữ tay để bơm, bóng vừa vòng xanh thì thả ra kẻo nổ đánh bụp."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu bơm vừa khéo luôn!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Thổi bóng bay",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Bơm vừa vặn tám quả bóng nhé!",
+      "game": "inflate-balloon",
+      "goal": 8
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Bóng bay đủ màu bay lượn, {name} bơm khéo quá!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Ngày phiên nào chú cũng bán bóng bay, cháu tới phụ tiếp nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

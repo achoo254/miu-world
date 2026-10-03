@@ -1,0 +1,80 @@
+{
+  "id": "side-swim-race",
+  "region": "dao-bi-an",
+  "chapter": 1,
+  "title": "Bơi đua dọc bờ biển với Cua Lướt Sóng",
+  "status": "active",
+  "category": "side",
+  "summary": "Bé chạm đúng lúc vòng vàng gặp vòng trắng để quạt tay bơi, giữ nhịp đều để về đích.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, kình ngư nhỏ của đảo",
+    "where": "Bãi biển cạnh bến tàu",
+    "goal": "Về nhất hoặc nhì trong ba lượt đua nhé!",
+    "play": "Vòng vàng thu nhỏ dần. {name} chạm đúng lúc nó chạm vòng trắng để quạt tay bơi.",
+    "learn": "Giữ nhịp đều và kiên nhẫn",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Nước biển ấm lắm, lúc nào muốn đua tiếp cứ ra bãi biển tìm Cua."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "cua-luot-song",
+      "lines": [
+        {
+          "speaker": "Cua Lướt Sóng",
+          "text": "Ai bơi tới phao đỏ trước nào, {name} có dám đua với tớ không?"
+        },
+        {
+          "speaker": "Cua Lướt Sóng",
+          "text": "Đừng chạm loạn kẻo mệt, cứ đều tay theo vòng là bơi nhanh nhất."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Đua thì đua, tớ không sợ!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Bơi đua",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Về nhất hoặc nhì trong ba lượt đua nhé!",
+      "game": "swim-race",
+      "goal": 3
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Cua Lướt Sóng chịu thua: {name} bơi đều tay quá, tớ đuổi không kịp!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Nước biển ấm lắm, lúc nào muốn đua tiếp cứ ra bãi biển tìm Cua."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

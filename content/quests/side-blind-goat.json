@@ -1,0 +1,80 @@
+{
+  "id": "side-blind-goat",
+  "region": "nong-trai",
+  "chapter": 1,
+  "title": "Bịt mắt bắt dê trên đồng cỏ",
+  "status": "active",
+  "category": "side",
+  "summary": "Khăn bịt mắt đã buộc xong, bạn dê con kêu be he khắp đồng cỏ của Bò Chuông Đồng.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người đi tìm dê bằng đôi tai",
+    "where": "Mép đồng cỏ bò sữa",
+    "goal": "Bắt được tám bạn dê dù mắt bị bịt nhé!",
+    "play": "{name} bị bịt mắt nên chỉ thấy quanh mình. Dê kêu \"be he\" thì có vòng sáng lan ra.",
+    "learn": "Lắng nghe và đoán hướng âm thanh",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Lũ dê lại sắp trốn nữa đấy, quay lại đồng cỏ chơi tiếp với tớ nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "bo-chuong-dong",
+      "lines": [
+        {
+          "speaker": "Bò Chuông Đồng",
+          "text": "{name} ơi, đàn dê nhà bên trốn ra đồng cỏ chơi rồi!"
+        },
+        {
+          "speaker": "Bò Chuông Đồng",
+          "text": "Cậu bịt mắt lại, lắng nghe tiếng be he rồi lần theo mà bắt nha."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Buộc khăn cho tớ đi!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Bịt mắt bắt dê",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Bắt được tám bạn dê dù mắt bị bịt nhé!",
+      "game": "blind-goat",
+      "goal": 8
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Bò Chuông Đồng vỗ móng: tai {name} thính hơn cả tai thỏ!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Lũ dê lại sắp trốn nữa đấy, quay lại đồng cỏ chơi tiếp với tớ nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

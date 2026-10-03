@@ -1,0 +1,80 @@
+{
+  "id": "side-marbles",
+  "region": "xom-mai-am",
+  "chapter": 1,
+  "title": "Bắn bi bên hồ sen cùng Khỉ Bắn Bi",
+  "status": "active",
+  "category": "side",
+  "summary": "Kéo ngón tay như kéo ná rồi thả cho bi cái lăn đi cụng bi ra khỏi vòng phấn.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, tay bắn bi của xóm",
+    "where": "Bờ hồ sen",
+    "goal": "Đẩy năm viên bi ra khỏi vòng nhé!",
+    "play": "Kéo ngón tay ngược lại hướng muốn bắn rồi thả ra, như kéo ná cao su.",
+    "learn": "Căn hướng và lực bắn",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Túi bi của tớ còn đầy, ra bờ hồ sen tỉ thí tiếp nha."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "khi-ban-bi",
+      "lines": [
+        {
+          "speaker": "Khỉ Bắn Bi",
+          "text": "Đố {name} bắn bi giỏi bằng tớ đấy!"
+        },
+        {
+          "speaker": "Khỉ Bắn Bi",
+          "text": "Kéo ngược hướng muốn bắn rồi thả ra, đẩy bi ra khỏi vòng phấn là ăn."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Thử thì biết ngay!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Bắn bi",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Đẩy năm viên bi ra khỏi vòng nhé!",
+      "game": "marbles",
+      "goal": 5
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Bi lăn đâu trúng đó, {name} bắn chuẩn quá trời!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Túi bi của tớ còn đầy, ra bờ hồ sen tỉ thí tiếp nha."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

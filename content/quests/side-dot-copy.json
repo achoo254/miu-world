@@ -1,0 +1,80 @@
+{
+  "id": "side-dot-copy",
+  "region": "truong-hoc",
+  "chapter": 1,
+  "title": "Vẽ theo lưới chấm cùng Gấu Trúc Bút Chì",
+  "status": "active",
+  "category": "side",
+  "summary": "Bảng có lưới chấm và hình mẫu bên cạnh: nối các chấm để vẽ lại đúng hình.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, họa sĩ nhí của vườn trường",
+    "where": "Lối đi trong vườn trường",
+    "goal": "Vẽ lại đúng bốn hình mẫu nhé!",
+    "play": "{name} nhìn hình mẫu, rồi kéo ngón tay từ chấm này sang chấm kia để vẽ lại.",
+    "learn": "Quan sát vị trí và chép lại hình trên lưới",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Tớ sẽ nghĩ thêm hình mới, nhớ ra vườn trường vẽ tiếp với tớ."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "gau-truc-but-chi",
+      "lines": [
+        {
+          "speaker": "Gấu Trúc Bút Chì",
+          "text": "{name} ơi, tớ có mấy hình mẫu xinh lắm mà chưa ai vẽ lại được."
+        },
+        {
+          "speaker": "Gấu Trúc Bút Chì",
+          "text": "Cậu nhìn hình mẫu, rồi kéo tay nối chấm này sang chấm kia cho đủ nét nha."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Đưa tớ bút chì nào!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Vẽ theo mẫu lưới chấm",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Vẽ lại đúng bốn hình mẫu nhé!",
+      "game": "dot-copy",
+      "goal": 4
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Gấu Trúc Bút Chì ôm tranh vào lòng: {name} vẽ giống hệt mẫu luôn!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Tớ sẽ nghĩ thêm hình mới, nhớ ra vườn trường vẽ tiếp với tớ."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "id": "side-milk-cow",
+  "region": "nong-trai",
+  "chapter": 1,
+  "title": "Vắt sữa giúp Bò Chuông Đồng",
+  "status": "active",
+  "category": "side",
+  "summary": "Bò Chuông Đồng đứng hiền bên xô gỗ, chờ bé vắt sữa thật đều tay.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người vắt sữa nhỏ của đồng cỏ",
+    "where": "Mép đồng cỏ bò sữa",
+    "goal": "Vắt được bốn mươi giọt sữa đầy xô nào!",
+    "play": "{name} vuốt xuống trên một núm vú để vắt sữa vào xô.",
+    "learn": "Nhịp tay đều và kiên nhẫn chờ đúng lúc",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Chiều nào cũng có sữa, ghé mép đồng cỏ tìm Bò Chuông Đồng nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "bo-chuong-dong",
+      "lines": [
+        {
+          "speaker": "Bò Chuông Đồng",
+          "text": "Ò ò, chào {name}! Bầu sữa của tớ căng quá rồi nè."
+        },
+        {
+          "speaker": "Bò Chuông Đồng",
+          "text": "Cậu vuốt nhẹ từng bên, chờ núm hồng lên hãy vắt nhé, tớ sợ nhột lắm!"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Để tớ cầm xô cho!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Vắt sữa bò",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Vắt được bốn mươi giọt sữa đầy xô nào!",
+      "game": "milk-cow",
+      "goal": 40
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Leng keng! Bò Chuông Đồng rung chuông cảm ơn {name} vắt khéo quá."
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Chiều nào cũng có sữa, ghé mép đồng cỏ tìm Bò Chuông Đồng nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

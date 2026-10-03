@@ -1,0 +1,80 @@
+{
+  "id": "side-pipe-connect",
+  "region": "lang-ven-song",
+  "chapter": 1,
+  "title": "Nối ống dẫn nước cùng Mèo Đầm Sen",
+  "status": "active",
+  "category": "side",
+  "summary": "Xoay từng đoạn ống cho nước từ giếng chảy một mạch ra tới ruộng.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, thợ sửa ống nước nhí",
+    "where": "Bờ đầm sen",
+    "goal": "Đưa nước ra ruộng hai lần nhé!",
+    "play": "Chạm vào một ô ống để xoay nó một góc.",
+    "learn": "Suy nghĩ đường đi và xoay hình",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Ruộng ven đầm còn khát nước lắm, hôm khác lại giúp tớ nha."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "meo-dam-sen",
+      "lines": [
+        {
+          "speaker": "Mèo Đầm Sen",
+          "text": "{name} xem này, ống nước ra ruộng bị xoay lung tung hết!"
+        },
+        {
+          "speaker": "Mèo Đầm Sen",
+          "text": "Chạm vào từng đoạn để xoay, nước chảy tới đâu ống xanh tới đó."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ xoay thử nhé!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Nối ống dẫn nước",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Đưa nước ra ruộng hai lần nhé!",
+      "game": "pipe-connect",
+      "goal": 2
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Nước mát chảy róc rách rồi, {name} giỏi ghê!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Ruộng ven đầm còn khát nước lắm, hôm khác lại giúp tớ nha."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

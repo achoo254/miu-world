@@ -1,0 +1,80 @@
+{
+  "id": "side-hanoi-tower",
+  "region": "thu-vien",
+  "chapter": 1,
+  "title": "Chuyển bánh tầng với Thỏ Ngắm Sao",
+  "status": "active",
+  "category": "side",
+  "summary": "Chồng bánh nhiều tầng đặt trên đĩa, bé chuyển từng tầng sang đĩa có ngôi sao mà không để bánh to đè bánh nhỏ.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người chuyển bánh khéo nhất",
+    "where": "Bãi cỏ quanh tháp đồng hồ",
+    "goal": "Chuyển trọn hai chồng bánh sang đĩa ngôi sao nhé!",
+    "play": "Chạm một đĩa để nhấc tầng bánh trên cùng, chạm đĩa khác để đặt xuống.",
+    "learn": "Lập kế hoạch nhiều bước và so sánh to nhỏ",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Lần sau tớ làm chồng bánh cao hơn, cậu lại tới thử tài nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "tho-ngam-sao",
+      "lines": [
+        {
+          "speaker": "Thỏ Ngắm Sao",
+          "text": "{name} giúp tớ với, tớ phải mang chồng bánh sang đĩa ngôi sao!"
+        },
+        {
+          "speaker": "Thỏ Ngắm Sao",
+          "text": "Mỗi lần cậu nhấc một tầng trên cùng thôi, và tầng to không được nằm trên tầng nhỏ đâu."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ chuyển cẩn thận lắm!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Chuyển bánh tầng",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Chuyển trọn hai chồng bánh sang đĩa ngôi sao nhé!",
+      "game": "hanoi-tower",
+      "goal": 2
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Bánh vẫn nguyên vẹn, Thỏ Ngắm Sao mời {name} ăn miếng đầu tiên!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Lần sau tớ làm chồng bánh cao hơn, cậu lại tới thử tài nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "id": "side-road-cross",
+  "region": "lang-ven-song",
+  "chapter": 1,
+  "title": "Giúp ếch qua đường qua sông với Khỉ Cầu Tre",
+  "status": "active",
+  "category": "side",
+  "summary": "Dẫn chú ếch nhảy qua con đường đông xe rồi nhảy lên khúc gỗ, lưng rùa để sang sông.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người dẫn đường cho ếch con",
+    "where": "Đầu cầu đá phía đông",
+    "goal": "Đưa ếch sang bờ bên kia ba lần nhé!",
+    "play": "Giúp ếch qua đường rồi qua sông. {name} chạm (hoặc vuốt lên) để ếch nhảy tới.",
+    "learn": "Quan sát và chọn lúc an toàn để đi",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Ếch còn nhiều anh em lắm, chúng đợi cậu ở đầu cầu đá đấy."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "khi-cau-tre",
+      "lines": [
+        {
+          "speaker": "Khỉ Cầu Tre",
+          "text": "Bạn ếch nhà tớ muốn về bờ bên kia, {name} giúp với!"
+        },
+        {
+          "speaker": "Khỉ Cầu Tre",
+          "text": "Nhìn kỹ xe chạy rồi hãy nhảy, qua sông thì đậu lên khúc gỗ nha."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Ếch ơi, theo tớ nào!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Qua đường qua sông",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Đưa ếch sang bờ bên kia ba lần nhé!",
+      "game": "road-cross",
+      "goal": 3
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Ếch con cảm ơn {name} rối rít, ộp ộp!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Ếch còn nhiều anh em lắm, chúng đợi cậu ở đầu cầu đá đấy."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

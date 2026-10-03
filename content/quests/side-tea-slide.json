@@ -1,0 +1,80 @@
+{
+  "id": "side-tea-slide",
+  "region": "xom-mai-am",
+  "chapter": 1,
+  "title": "Bán trà đá vỉa hè cùng Mèo Trà Đá",
+  "status": "active",
+  "category": "side",
+  "summary": "Khách ngồi kín ba bàn bên giếng, đẩy ly trà mát tới từng người và thu ly không về.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người phụ quán trà nhanh tay",
+    "where": "Bên giếng xóm",
+    "goal": "Phục vụ đủ hai mươi ly trà đá nhé!",
+    "play": "Khách đi dọc ba bàn tới quầy. {name} vuốt sang phải trên bàn để đẩy ly trà cho khách.",
+    "learn": "Phản xạ nhanh và để ý nhiều việc cùng lúc",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Quán trà đá bên giếng mở cả ngày, cậu ghé phụ tớ lúc nào cũng được."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "meo-tra-da",
+      "lines": [
+        {
+          "speaker": "Mèo Trà Đá",
+          "text": "Nắng quá {name} ơi, khách tới uống trà đá đông nghịt!"
+        },
+        {
+          "speaker": "Mèo Trà Đá",
+          "text": "Cậu đẩy ly trà dọc bàn cho khách, nhớ thu ly không về kẻo hết ly."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Để tớ phụ quán nhé!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Trà đá vỉa hè",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Phục vụ đủ hai mươi ly trà đá nhé!",
+      "game": "tea-slide",
+      "goal": 20
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Khách nào cũng mát ruột, quán mình đắt hàng nhờ {name}!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Quán trà đá bên giếng mở cả ngày, cậu ghé phụ tớ lúc nào cũng được."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

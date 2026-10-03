@@ -1,0 +1,80 @@
+{
+  "id": "side-package-drop",
+  "region": "dao-bi-an",
+  "chapter": 1,
+  "title": "Thả quà từ máy bay cùng chú ngư dân Sóng",
+  "status": "active",
+  "category": "side",
+  "summary": "Máy bay bay ngang trời, bé chạm thả quà sớm một chút để hộp quà rơi đúng vòng vàng.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, phi công chở quà",
+    "where": "Bờ đá hải tặc",
+    "goal": "Thả trúng tám hộp quà vào vòng nhé!",
+    "play": "Máy bay của {name} bay ngang trời. Chạm để thả quà, dù sẽ bung ra.",
+    "learn": "Đoán trước đường rơi của vật",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Chuyến quà sau chú vẫn cần phi công, nhớ ra bờ đá tìm chú Sóng."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "chu-ngu-dan-song",
+      "lines": [
+        {
+          "speaker": "Chú ngư dân Sóng",
+          "text": "Các nhà ven biển đang chờ quà đấy {name}, cháu lái máy bay giúp chú nhé!"
+        },
+        {
+          "speaker": "Chú ngư dân Sóng",
+          "text": "Quà còn bay về phía trước một đoạn, nhớ thả trước khi tới vòng vàng."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Máy bay cất cánh nào!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Thả quà từ máy bay",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Thả trúng tám hộp quà vào vòng nhé!",
+      "game": "package-drop",
+      "goal": 8
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Chú Sóng vẫy mũ: nhà nào cũng nhận quà nhờ {name} đấy!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Chuyến quà sau chú vẫn cần phi công, nhớ ra bờ đá tìm chú Sóng."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

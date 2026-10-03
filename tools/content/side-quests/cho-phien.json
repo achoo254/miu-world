@@ -1,0 +1,281 @@
+{
+  "region": "cho-phien",
+  "givers": [
+    {
+      "id": "co-banh-mi-hanh",
+      "name": "Cô bánh mì Hạnh",
+      "look": "person-e",
+      "where": "Trước gian hàng đồ ăn",
+      "place": "Gian hàng đồ ăn",
+      "company": [
+        {
+          "routine": "shopper",
+          "name": "Bác đứng chờ bánh",
+          "model": "person-k"
+        }
+      ],
+      "games": [
+        {
+          "game": "recipe-assembly",
+          "title": "Làm bánh mì theo đơn cùng Cô bánh mì Hạnh",
+          "summary": "Khách xếp hàng gọi món, kẹp nhân vào ổ bánh mì đúng thứ tự trong bong bóng.",
+          "lines": [
+            "{name} ơi, khách đông quá, phụ cô làm bánh mì nhé!",
+            "Nhìn bong bóng khách gọi, kẹp nhân từ trái sang phải cho đúng thứ tự."
+          ],
+          "choice": "Cháu đeo tạp dề rồi cô!",
+          "prompt": "Làm đủ {goal} ổ bánh mì đúng đơn nhé!",
+          "reward": "Khách nào cũng khen ngon, {name} làm bánh mì chuẩn vị!",
+          "next": "Sạp bánh mì mở từ sáng sớm, cháu ghé phụ cô nữa nhé.",
+          "who": "{name}, phụ bếp sạp bánh mì",
+          "learn": "Ghi nhớ thứ tự và làm theo yêu cầu"
+        },
+        {
+          "game": "stack-catch",
+          "title": "Hứng bánh xếp chồng cùng Cô bánh mì Hạnh",
+          "summary": "Bánh rơi từ trên xuống, kéo đĩa đều tay để chồng bánh cao mà không đổ.",
+          "lines": [
+            "Mẻ bánh bò vừa ra lò, {name} đỡ giúp cô với!",
+            "Đi đĩa từ từ thôi cháu, giật mạnh là chồng bánh đổ nghiêng đấy."
+          ],
+          "choice": "Cháu đỡ được hết!",
+          "prompt": "Xếp chồng bánh cao {goal} tầng nhé!",
+          "reward": "Chồng bánh cao chót vót, {name} giữ tay vững thật!",
+          "next": "Ngày nào cô cũng nướng bánh, mẻ sau lại nhờ cháu đỡ nhé.",
+          "who": "{name}, người đỡ bánh vững tay",
+          "learn": "Điều khiển tay đều và giữ thăng bằng"
+        },
+        {
+          "game": "fruit-merge",
+          "title": "Gộp quả rơi cùng Cô bánh mì Hạnh",
+          "summary": "Thả quả vào thùng, hai quả giống nhau chạm nhau gộp thành quả to hơn.",
+          "lines": [
+            "Thùng quả của cô lộn xộn quá {name} ơi!",
+            "Thả quả cho hai quả giống nhau chạm nhau, chúng sẽ gộp thành quả to."
+          ],
+          "choice": "Để cháu sắp lại cho!",
+          "prompt": "Gộp quả được {goal} điểm nhé!",
+          "reward": "Cả quả dưa hấu to tướng luôn, {name} khéo ghê!",
+          "next": "Thùng quả lúc nào cũng đầy ở gian đồ ăn, cháu ghé chơi tiếp nhé.",
+          "who": "{name}, người sắp quả thông minh",
+          "learn": "Tính trước chỗ thả và gộp nhóm"
+        }
+      ]
+    },
+    {
+      "id": "chu-hoi-cho-ti",
+      "name": "Chú hội chợ Tí",
+      "look": "person-j",
+      "where": "Góc trò chơi trên phố chợ",
+      "place": "Phố chợ",
+      "company": [
+        {
+          "routine": "pupil",
+          "name": "Bạn nhỏ chờ lượt chơi",
+          "model": "person-f"
+        },
+        {
+          "routine": "pupil",
+          "name": "Bé ôm gấu bông thắng giải",
+          "model": "person-o"
+        }
+      ],
+      "games": [
+        {
+          "game": "water-pistol",
+          "title": "Bắn súng nước hội chợ cùng Chú hội chợ Tí",
+          "summary": "Gian trò chơi đầy vịt nhựa, giữ tay để phun nước cho vịt ngã và trúng bia tròn.",
+          "lines": [
+            "Gian trò chơi của chú mở rồi, {name} bắn thử không?",
+            "Giữ ngón tay là nước phun theo, hết nước thì thả tay bơm lại nhé."
+          ],
+          "choice": "Cháu bắn trúng hết cho xem!",
+          "prompt": "Ghi đủ {goal} điểm súng nước nhé!",
+          "reward": "Vịt ngã rạp hết rồi, {name} bắn chuẩn ghê!",
+          "next": "Gian trò chơi mở tới tối, cháu quay lại bắn tiếp nhé.",
+          "who": "{name}, xạ thủ súng nước nhí",
+          "learn": "Điều khiển tay và ngắm mục tiêu di động"
+        },
+        {
+          "game": "dart-wobble",
+          "title": "Phóng phi tiêu cùng Chú hội chợ Tí",
+          "summary": "Tâm ngắm lượn vòng quanh tấm bia, chạm đúng lúc nó qua hồng tâm để phóng.",
+          "lines": [
+            "Bia phi tiêu đây, {name} thử tài ngắm đi nào!",
+            "Tâm ngắm cứ lượn vòng, đợi nó vào giữa bia rồi hãy phóng nhé."
+          ],
+          "choice": "Cháu canh kỹ rồi mới phóng!",
+          "prompt": "Ghi được {goal} điểm phi tiêu nhé!",
+          "reward": "Phập! Trúng hồng tâm, {name} giỏi hơn cả chú!",
+          "next": "Chú còn cả hộp phi tiêu, lúc nào cháu cũng tới phóng được.",
+          "who": "{name}, tay phi tiêu bình tĩnh",
+          "learn": "Kiên nhẫn chờ đúng thời điểm"
+        },
+        {
+          "game": "ring-toss-duck",
+          "title": "Ném vòng cổ vịt cùng Chú hội chợ Tí",
+          "summary": "Hàng vịt gỗ xếp xa gần, canh đúng khoảng cách và hướng để vòng lọt cổ vịt.",
+          "lines": [
+            "{name} ơi, ném vòng trúng cổ vịt là có quà đấy!",
+            "Chạm lần đầu chọn xa gần, chạm lần hai chọn hướng cho đúng vịt nhé."
+          ],
+          "choice": "Cháu muốn thắng quà!",
+          "prompt": "Ném lọt cổ vịt {goal} vòng nhé!",
+          "reward": "Vòng nào cũng vào, {name} ôm quà về nhé!",
+          "next": "Hàng vịt gỗ còn chờ cháu ở phố chợ đấy, ném tiếp nha.",
+          "who": "{name}, cao thủ ném vòng",
+          "learn": "Ước lượng khoảng cách và hướng"
+        },
+        {
+          "game": "inflate-balloon",
+          "title": "Thổi bóng bay bán cùng Chú hội chợ Tí",
+          "summary": "Bơm từng quả bóng to vừa vòng xanh để bán cho các bạn nhỏ, bơm quá là nổ.",
+          "lines": [
+            "Các bạn nhỏ đòi bóng bay quá, {name} bơm giúp chú nhé!",
+            "Giữ tay để bơm, bóng vừa vòng xanh thì thả ra kẻo nổ đánh bụp."
+          ],
+          "choice": "Cháu bơm vừa khéo luôn!",
+          "prompt": "Bơm vừa vặn {goal} quả bóng nhé!",
+          "reward": "Bóng bay đủ màu bay lượn, {name} bơm khéo quá!",
+          "next": "Ngày phiên nào chú cũng bán bóng bay, cháu tới phụ tiếp nhé.",
+          "who": "{name}, người bơm bóng khéo léo",
+          "learn": "Ước lượng độ lớn và dừng đúng lúc"
+        }
+      ]
+    },
+    {
+      "id": "voi-boc-hang",
+      "name": "Voi Bốc Hàng",
+      "look": "animal-elephant",
+      "tint": "#b8c0c8",
+      "where": "Bến hàng bên kênh",
+      "place": "Bến hàng bên kênh",
+      "company": [
+        {
+          "routine": "porter",
+          "name": "Chú khuân hàng lên bến",
+          "model": "person-b"
+        }
+      ],
+      "games": [
+        {
+          "game": "block-fit",
+          "title": "Xếp hàng lên xe tải cùng Voi Bốc Hàng",
+          "summary": "Kéo từng kiện hàng lên thùng xe tải, xếp kín hàng ngang hay hàng dọc để xe chở đi.",
+          "lines": [
+            "Xe tải tới bến rồi, {name} xếp hàng giúp tớ nhé!",
+            "Kéo kiện hàng vào chỗ trống, kín một hàng là xe chở đi được ngay."
+          ],
+          "choice": "Tớ xếp gọn gàng nhất!",
+          "prompt": "Xếp kín {goal} hàng kiện nhé!",
+          "reward": "Thùng xe gọn gàng tăm tắp, {name} xếp hàng siêu thật!",
+          "next": "Bến kênh xe ra vào liên tục, mai lại xếp hàng với tớ nha.",
+          "who": "{name}, bạn xếp hàng lên xe",
+          "learn": "Sắp xếp hình khối vào chỗ trống"
+        },
+        {
+          "game": "balance-scale",
+          "title": "Cân thăng bằng cùng Voi Bốc Hàng",
+          "summary": "Đĩa trái có quả nặng ghi số, chọn quả đặt lên đĩa phải sao cho hai bên bằng nhau.",
+          "lines": [
+            "{name} ơi, cân hàng của tớ cứ lệch về một bên!",
+            "Cộng số trên các quả cho bằng đĩa bên kia là cân thăng bằng ngay."
+          ],
+          "choice": "Để tớ tính nhé!",
+          "prompt": "Làm cân thăng bằng {goal} lần nhé!",
+          "reward": "Cân thẳng tắp rồi, {name} tính nhanh như chớp!",
+          "next": "Ngày phiên nào cũng có hàng cần cân, tớ chờ cậu ở bến hàng.",
+          "who": "{name}, người giữ cân của bến hàng",
+          "learn": "Cộng số và so sánh nặng nhẹ"
+        }
+      ]
+    },
+    {
+      "id": "meo-gap-thu",
+      "name": "Mèo Gắp Thú",
+      "look": "chibi-cat-cam-vest-shorts-navy",
+      "where": "Chân cầu hình rồng",
+      "place": "Cầu hình rồng bắc qua kênh",
+      "company": [
+        {
+          "routine": "pupil",
+          "name": "Bạn nhỏ reo hò",
+          "model": "person-q"
+        }
+      ],
+      "games": [
+        {
+          "game": "claw-machine",
+          "title": "Gắp thú bông cùng Mèo Gắp Thú",
+          "summary": "Điều khiển cần gắp đi sang phải, vào sâu rồi hạ xuống gắp con thú bông mình thích.",
+          "lines": [
+            "Máy gắp thú mới về, {name} gắp thử một con đi!",
+            "Giữ tay để cần chạy, thả ra để dừng, canh đúng trên đầu thú bông nhé."
+          ],
+          "choice": "Tớ muốn gắp con gấu!",
+          "prompt": "Gắp được {goal} con thú bông nhé!",
+          "reward": "Meo meo, {name} gắp toàn trúng, tài thế!",
+          "next": "Máy gắp vẫn đặt ở chân cầu rồng, cậu tới gắp nữa nha.",
+          "who": "{name}, cao thủ máy gắp",
+          "learn": "Căn vị trí theo hai chiều"
+        },
+        {
+          "game": "shell-game",
+          "title": "Úp bát tìm ngọc cùng Mèo Gắp Thú",
+          "summary": "Ba cái bát đổi chỗ thoăn thoắt, dõi mắt theo bát có viên ngọc rồi chỉ đúng.",
+          "lines": [
+            "{name} ơi, viên ngọc trốn dưới cái bát này nè!",
+            "Tớ đảo bát nhanh lắm, cậu dõi theo thật kỹ nha."
+          ],
+          "choice": "Mắt tớ tinh lắm đấy!",
+          "prompt": "Tìm đúng viên ngọc {goal} lần nhé!",
+          "reward": "Không qua được mắt {name}, tớ chịu thua rồi!",
+          "next": "Tớ sẽ tập đảo bát nhanh hơn, hẹn cậu ở chân cầu nhé.",
+          "who": "{name}, người dõi theo tinh mắt",
+          "learn": "Tập trung chú ý và ghi nhớ"
+        },
+        {
+          "game": "match-3",
+          "title": "Đổi chỗ ba quả cùng Mèo Gắp Thú",
+          "summary": "Đổi chỗ hai quả cạnh nhau để ba quả giống nhau xếp thẳng hàng rồi nổ tung.",
+          "lines": [
+            "Rổ quả của tớ lộn xộn quá {name} ơi, giúp với!",
+            "Đổi chỗ cho ba quả giống nhau thẳng hàng là chúng nổ lốp bốp."
+          ],
+          "choice": "Để tớ xếp cho nổ!",
+          "prompt": "Làm nổ {goal} quả nhé!",
+          "reward": "Lốp bốp lốp bốp, {name} xếp quả giỏi quá!",
+          "next": "Rổ quả lúc nào cũng đầy, ghé chân cầu rồng chơi tiếp nhé.",
+          "who": "{name}, người xếp quả nhanh trí",
+          "learn": "Nhận ra mẫu giống nhau và tính trước"
+        }
+      ]
+    }
+  ],
+  "residents": [
+    {
+      "routine": "shopper",
+      "name": "Cô mua hoa ngày phiên",
+      "model": "person-h",
+      "place": "Dãy sạp hoa"
+    },
+    {
+      "routine": "porter",
+      "name": "Chú chở rau từ ruộng",
+      "model": "person-j",
+      "place": "Ruộng rau ngoại ô"
+    },
+    {
+      "routine": "dog",
+      "name": "Chó Mực Đầu Đập",
+      "model": "animal-dog",
+      "place": "Đập nhỏ và cửa cống"
+    },
+    {
+      "routine": "reader",
+      "name": "Ông xem thuyền ra khơi",
+      "model": "person-c",
+      "place": "Hải đăng"
+    }
+  ]
+}

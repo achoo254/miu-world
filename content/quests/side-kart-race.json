@@ -1,0 +1,80 @@
+{
+  "id": "side-kart-race",
+  "region": "trung-tam",
+  "chapter": 1,
+  "title": "Đua xe mini với Chó Cảnh Sát Còi",
+  "status": "active",
+  "category": "side",
+  "summary": "Đường đua quanh tháp đồng hồ: giữ tay cho xe chạy theo, đừng lạc ra cỏ, về trong ba hạng đầu.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, tay đua nhí cẩn thận",
+    "where": "Ngã tư dưới tháp đồng hồ",
+    "goal": "Đua xong với bốn điểm, về trong ba hạng đầu nhé!",
+    "play": "Giữ ngón tay trên màn hình: xe của {name} chạy theo ngón tay.",
+    "learn": "Điều khiển theo đường cong và giữ hướng",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Đường đua vẫn chờ cậu dưới tháp đồng hồ, chạy lại lúc nào cũng được."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "cho-canh-sat-coi",
+      "lines": [
+        {
+          "speaker": "Chó Cảnh Sát Còi",
+          "text": "Đường đua mini mở rồi {name}, lên xe đi!"
+        },
+        {
+          "speaker": "Chó Cảnh Sát Còi",
+          "text": "Xe chạy theo ngón tay cậu, đi hai vòng mà đừng lạc ra bãi cỏ nha."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Vèo vèo, tớ về nhất cho xem!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Đua xe mini",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Đua xong với bốn điểm, về trong ba hạng đầu nhé!",
+      "game": "kart-race",
+      "goal": 4
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Chó Cảnh Sát Còi phất cờ ca rô: {name} lái xe giỏi mà vẫn an toàn!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Đường đua vẫn chờ cậu dưới tháp đồng hồ, chạy lại lúc nào cũng được."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

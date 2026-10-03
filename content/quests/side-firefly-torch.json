@@ -1,0 +1,80 @@
+{
+  "id": "side-firefly-torch",
+  "region": "khu-rung-bi-mat",
+  "chapter": 1,
+  "title": "Soi đèn bắt đom đóm cùng Nai Đom Đóm",
+  "status": "active",
+  "category": "side",
+  "summary": "Trảng cỏ tối om, đom đóm lập lòe: rọi đèn pin tới chỗ sáng rồi chạm để bắt vào lọ.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người soi đèn trong rừng đêm",
+    "where": "Trảng cỏ đêm đom đóm",
+    "goal": "Bắt hai mươi chú đom đóm vào lọ nhé!",
+    "play": "Rừng đêm tối om. {name} kéo ngón tay để soi đèn pin.",
+    "learn": "Tìm kiếm có trật tự và phản xạ khi thấy ánh sáng",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Đêm nào cũng có đom đóm, cậu cứ tới trảng cỏ tìm Nai Đom Đóm."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "nai-dom-dom",
+      "lines": [
+        {
+          "speaker": "Nai Đom Đóm",
+          "text": "Trời tối rồi {name} ạ, đom đóm sắp bay ra đầy trảng cỏ."
+        },
+        {
+          "speaker": "Nai Đom Đóm",
+          "text": "Tớ đưa cậu đèn pin và cái lọ, rọi tới đâu sáng thì chạm bắt ở đó nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Đưa tớ đèn pin, tớ soi ngay!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Bắt đom đóm đêm",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Bắt hai mươi chú đom đóm vào lọ nhé!",
+      "game": "firefly-torch",
+      "goal": 20
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Lọ đom đóm sáng lung linh như cái đèn lồng, Nai Đom Đóm reo: {name} giỏi quá!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Đêm nào cũng có đom đóm, cậu cứ tới trảng cỏ tìm Nai Đom Đóm."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "id": "side-farmer-defense",
+  "region": "nong-trai",
+  "chapter": 1,
+  "title": "Giữ ruộng lúa khỏi lũ chim với Thỏ Giữ Vườn",
+  "status": "active",
+  "category": "side",
+  "summary": "Chim sẻ bay từng đàn tới mổ lúa, bé đưa các bác nông dân ra luống vẫy nón đuổi chim.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người giữ lúa của bà con",
+    "where": "Bờ ruộng ngô",
+    "goal": "Đuổi được hai mươi lăm chú chim khỏi ruộng nhé!",
+    "play": "Chim bay dọc ba luống tới ăn lúa. {name} kéo bác nông dân từ chòi ra ruộng.",
+    "learn": "Sắp xếp người giúp và chọn chỗ quan trọng",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Mùa gặt còn dài, cậu cứ tới bờ ruộng ngô cùng tớ canh lúa."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "tho-giu-vuon",
+      "lines": [
+        {
+          "speaker": "Thỏ Giữ Vườn",
+          "text": "{name} nhìn kìa, lũ chim sẻ kéo cả đàn tới ăn lúa rồi!"
+        },
+        {
+          "speaker": "Thỏ Giữ Vườn",
+          "text": "Cậu đưa các bác nông dân ra từng luống, chạm vào chim cho nó bay lùi nha."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Ra ruộng giữ lúa thôi!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Giữ ruộng lúa",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Đuổi được hai mươi lăm chú chim khỏi ruộng nhé!",
+      "game": "farmer-defense",
+      "goal": 25
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Bó lúa vẫn còn nguyên, Thỏ Giữ Vườn reo: {name} giữ ruộng giỏi quá!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Mùa gặt còn dài, cậu cứ tới bờ ruộng ngô cùng tớ canh lúa."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "id": "side-ball-sort-tubes",
+  "region": "thu-vien",
+  "chapter": 1,
+  "title": "Xếp bi màu vào ống cùng Thỏ Ngắm Sao",
+  "status": "active",
+  "category": "side",
+  "summary": "Bi các màu trộn lẫn trong những ống thủy tinh, bé nhấc từng viên để mỗi ống chỉ còn một màu.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người phân màu kiên nhẫn",
+    "where": "Bãi cỏ quanh tháp đồng hồ",
+    "goal": "Xếp đầy sáu ống bi cùng màu nhé!",
+    "play": "{name} chạm một ống để nhấc viên bi trên cùng, rồi chạm ống khác để thả vào.",
+    "learn": "Phân loại theo màu và suy tính trước",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Hộp bi của tớ hay đổ lắm, cậu ghé tháp đồng hồ xếp giúp tớ nữa nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "tho-ngam-sao",
+      "lines": [
+        {
+          "speaker": "Thỏ Ngắm Sao",
+          "text": "{name} nè, tớ làm đổ hộp bi, giờ màu nào cũng lẫn vào nhau rồi."
+        },
+        {
+          "speaker": "Thỏ Ngắm Sao",
+          "text": "Cậu nhấc viên trên cùng thả sang ống khác, chỉ đặt lên bi cùng màu hoặc ống trống thôi nha."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Để tớ chia màu cho!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Xếp bi vào ống",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Xếp đầy sáu ống bi cùng màu nhé!",
+      "game": "ball-sort-tubes",
+      "goal": 6
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Ống nào cũng gọn một màu, Thỏ Ngắm Sao khen {name} kiên nhẫn ghê!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Hộp bi của tớ hay đổ lắm, cậu ghé tháp đồng hồ xếp giúp tớ nữa nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

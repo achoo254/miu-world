@@ -1,0 +1,80 @@
+{
+  "id": "side-cotton-candy",
+  "region": "trung-tam",
+  "chapter": 1,
+  "title": "Quấn kẹo bông cùng Voi Kẹo Bông",
+  "status": "active",
+  "category": "side",
+  "summary": "Máy kẹo bông quay vù vù: vẽ vòng tròn quanh que, đều tay để sợi đường quấn thành kẹo tròn.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, thợ làm kẹo bông nhí",
+    "where": "Lối vào khu giao dịch và cửa hàng",
+    "goal": "Quấn xong sáu cây kẹo bông nhé!",
+    "play": "{name} vẽ vòng tròn quanh que để quấn đường thành kẹo bông.",
+    "learn": "Vẽ vòng tròn đều tay và giữ tốc độ vừa phải",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Máy kẹo bông chạy cả ngày, cứ tới khu giao dịch tìm Voi Kẹo Bông nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "voi-keo-bong",
+      "lines": [
+        {
+          "speaker": "Voi Kẹo Bông",
+          "text": "Mùi đường thơm quá phải không {name}? Tớ đang làm kẹo bông đấy!"
+        },
+        {
+          "speaker": "Voi Kẹo Bông",
+          "text": "Cậu vẽ vòng tròn quanh que cho đều, quay nhanh quá thì kẹo văng mất nha."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ quấn một cây thật to!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Quấn kẹo bông",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Quấn xong sáu cây kẹo bông nhé!",
+      "game": "cotton-candy",
+      "goal": 6
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Voi Kẹo Bông giơ vòi khen: kẹo của {name} tròn như đám mây hồng!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Máy kẹo bông chạy cả ngày, cứ tới khu giao dịch tìm Voi Kẹo Bông nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

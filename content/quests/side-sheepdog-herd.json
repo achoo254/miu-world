@@ -1,0 +1,80 @@
+{
+  "id": "side-sheepdog-herd",
+  "region": "nong-trai",
+  "chapter": 1,
+  "title": "Lùa vịt về chuồng cùng Chó Lùa Vịt",
+  "status": "active",
+  "category": "side",
+  "summary": "Đàn vịt bơi lạc khỏi ao cá, bé dắt chú chó vòng ra sau để lùa vịt vào chuồng.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người chăn vịt khéo léo",
+    "where": "Bờ ao cá",
+    "goal": "Lùa đủ mười chú vịt vào chuồng nhé!",
+    "play": "Đàn vịt sợ chú chó nên chạy tránh xa. {name} kéo chú chó đi vòng ra sau đàn vịt.",
+    "learn": "Tính đường đi và đoán hướng chạy",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Chiều nào vịt cũng đi chơi, cậu ghé bờ ao giúp tớ lùa tiếp nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "cho-lua-vit",
+      "lines": [
+        {
+          "speaker": "Chó Lùa Vịt",
+          "text": "Gâu gâu! {name} ơi, đàn vịt chạy lung tung khắp bờ ao rồi."
+        },
+        {
+          "speaker": "Chó Lùa Vịt",
+          "text": "Cậu dắt tớ đi vòng ra sau lưng chúng, vịt sợ sẽ chạy qua lỗ rào vào chuồng đấy."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Đi thôi, mình vòng ra sau nào!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Lùa vịt về chuồng",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Lùa đủ mười chú vịt vào chuồng nhé!",
+      "game": "sheepdog-herd",
+      "goal": 10
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Chó Lùa Vịt vẫy đuôi tít: {name} chăn vịt cừ quá!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Chiều nào vịt cũng đi chơi, cậu ghé bờ ao giúp tớ lùa tiếp nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

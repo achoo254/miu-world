@@ -1,0 +1,325 @@
+{
+  "region": "truong-hoc",
+  "givers": [
+    {
+      "id": "ho-coi-vang",
+      "name": "Hổ Còi Vàng",
+      "look": "animal-tiger",
+      "where": "Mép sân bóng của trường",
+      "place": "Sân bóng",
+      "company": [
+        {
+          "routine": "pupil",
+          "name": "Bạn nhỏ cổ vũ đội bóng",
+          "model": "person-q"
+        }
+      ],
+      "games": [
+        {
+          "game": "goalkeeper",
+          "title": "Làm thủ môn cùng Hổ Còi Vàng",
+          "summary": "Bạn Gấu trúc sút mười quả bóng: bay người sang đúng phía bóng để cản phá.",
+          "lines": [
+            "Tuýt tuýt! {name} ơi, đội trường mình đang thiếu thủ môn đấy!",
+            "Bóng bay về phía nào thì cậu chạm phía đó để bay người cản nhé."
+          ],
+          "choice": "Tớ giữ khung thành cho!",
+          "prompt": "Cản phá {goal} quả bóng nhé!",
+          "reward": "Hổ Còi Vàng thổi một hồi còi dài: {name} là thủ môn xuất sắc nhất trận!",
+          "next": "Chiều nào sân bóng cũng có trận, cứ tìm Hổ Còi Vàng ở mép sân nhé.",
+          "who": "{name}, thủ môn nhí của đội trường",
+          "learn": "Đoán hướng bóng và phản xạ nhanh"
+        },
+        {
+          "game": "da-cau",
+          "title": "Tâng cầu với Hổ Còi Vàng",
+          "summary": "Quả cầu lông nhiều màu rơi xuống liên tục: chạm tâng cầu bay lên, nửa sau có thêm quả thứ hai.",
+          "lines": [
+            "{name} có biết đá cầu không? Tớ có quả cầu lông gà đẹp lắm!",
+            "Cầu rơi tới đâu cậu chạm tâng lên tới đó, coi chừng có thêm quả thứ hai đấy."
+          ],
+          "choice": "Tâng cầu là nghề của tớ!",
+          "prompt": "Tâng cầu được {goal} lần nhé!",
+          "reward": "Hổ Còi Vàng đếm không kịp: {name} tâng cầu dẻo quá trời!",
+          "next": "Giờ ra chơi nào tớ cũng mang cầu ra sân, rủ cậu tâng tiếp nhé.",
+          "who": "{name}, nhà vô địch tâng cầu giờ ra chơi",
+          "learn": "Phối hợp tay mắt và theo dõi hai vật cùng lúc"
+        }
+      ]
+    },
+    {
+      "id": "huou-bong-ro",
+      "name": "Hươu Bóng Rổ",
+      "look": "animal-giraffe",
+      "tint": "#f0b870",
+      "where": "Cạnh sân bóng rổ",
+      "place": "Sân bóng rổ",
+      "company": [
+        {
+          "routine": "pupil",
+          "name": "Bạn nhặt bóng giúp",
+          "model": "person-o"
+        }
+      ],
+      "games": [
+        {
+          "game": "basketball",
+          "title": "Ném bóng rổ với Hươu Bóng Rổ",
+          "summary": "Cái rổ treo trên cột cao: vuốt dài ném mạnh, vuốt ngắn ném nhẹ, rổ còn chạy qua lại nữa.",
+          "lines": [
+            "Chào {name}! Cổ tớ dài nên tớ treo rổ cao một chút nha.",
+            "Vuốt bóng lên phía rổ, vuốt dài thì bóng bay xa, ném trúng ba quả là rổ chạy đấy."
+          ],
+          "choice": "Xem tớ ném trúng rổ này!",
+          "prompt": "Ném vào rổ {goal} quả nhé!",
+          "reward": "Hươu Bóng Rổ cúi cổ đập tay với {name}: ném chuẩn quá!",
+          "next": "Sân bóng rổ lúc nào cũng mở, ghé chơi với Hươu Bóng Rổ nhé.",
+          "who": "{name}, cầu thủ bóng rổ tí hon",
+          "learn": "Ước lượng lực ném và đường bay của bóng"
+        },
+        {
+          "game": "tennis-rally",
+          "title": "Đánh bóng bàn cùng Hươu Bóng Rổ",
+          "summary": "Bàn bóng bàn kê cạnh sân: chạm khi bóng vào vòng quanh vợt để đánh trả thật xa bạn Khỉ.",
+          "lines": [
+            "{name} ơi, bạn Khỉ đang tìm người đánh bóng bàn kìa!",
+            "Bóng bay vào vòng tròn quanh vợt thì chạm, chạm phía nào bóng bay về phía đó."
+          ],
+          "choice": "Để tớ đánh với bạn Khỉ!",
+          "prompt": "Ghi {goal} điểm qua bạn Khỉ nhé!",
+          "reward": "Hươu Bóng Rổ reo lên: cú đánh của {name} làm bạn Khỉ chạy không kịp!",
+          "next": "Bạn Khỉ hẹn phục thù đấy, lúc nào rảnh cứ quay lại bàn bóng nhé.",
+          "who": "{name}, tay vợt nhỏ của trường",
+          "learn": "Canh thời điểm và chọn hướng đánh"
+        }
+      ]
+    },
+    {
+      "id": "voi-trong-hoi",
+      "name": "Voi Trống Hội",
+      "look": "animal-elephant",
+      "tint": "#e8b0b0",
+      "where": "Bên sân khấu sự kiện",
+      "place": "Sân khấu sự kiện",
+      "company": [
+        {
+          "routine": "trumpeter",
+          "name": "Anh thổi kèn đội nhạc",
+          "model": "person-m"
+        },
+        {
+          "routine": "pupil",
+          "name": "Bạn nhỏ hát theo",
+          "model": "person-f"
+        }
+      ],
+      "games": [
+        {
+          "game": "drum-beat",
+          "title": "Gõ trống hội với Voi Trống Hội",
+          "summary": "Nốt nhạc chạy về vòng tròn: nốt đỏ gõ giữa mặt trống, nốt xanh gõ vào viền trống.",
+          "lines": [
+            "Tùng tùng! {name} tới đúng lúc lắm, đội trống đang thiếu một tay dùi.",
+            "Nốt đỏ thì gõ giữa trống, nốt xanh gõ viền, nhớ gõ khi nốt vào vòng tròn nhé."
+          ],
+          "choice": "Đưa dùi đây, tớ gõ cho!",
+          "prompt": "Gõ trống được {goal} điểm nhé!",
+          "reward": "Voi Trống Hội vẫy vòi theo nhịp: tiếng trống của {name} rộn ràng cả sân!",
+          "next": "Sắp có buổi biểu diễn nữa, Voi Trống Hội chờ cậu ở sân khấu sự kiện.",
+          "who": "{name}, tay trống của đội nhạc trường",
+          "learn": "Cảm nhịp và phân biệt hai loại nốt"
+        },
+        {
+          "game": "call-response",
+          "title": "Nhại nhịp vỗ tay cùng Voi Trống Hội",
+          "summary": "Vẹt vỗ một câu nhịp, các chấm sáng lên theo: đến lượt mình thì vỗ lại y hệt.",
+          "lines": [
+            "{name} ơi, bạn Vẹt vỗ tay nhịp gì là cả đội nhại theo nhịp đó.",
+            "Nghe kỹ rồi chạm đúng lúc từng vòng tròn, không thừa cái nào nha."
+          ],
+          "choice": "Tai tớ thính lắm, bắt đầu đi!",
+          "prompt": "Nhại đúng {goal} câu nhịp nhé!",
+          "reward": "Cả đội nhạc vỗ tay theo {name}, Voi Trống Hội khen: nhịp chuẩn từng li!",
+          "next": "Lần sau bạn Vẹt sẽ vỗ nhịp khó hơn, cậu nhớ ghé thử sức nhé.",
+          "who": "{name}, bạn nhỏ có đôi tai thính",
+          "learn": "Ghi nhớ và lặp lại một chuỗi nhịp"
+        },
+        {
+          "game": "musical-chairs",
+          "title": "Giành ghế theo nhạc với Voi Trống Hội",
+          "summary": "Các bạn đi vòng quanh hàng ghế khi nhạc chơi: nhạc vừa tắt là chạm ngay một ghế trống.",
+          "lines": [
+            "Trò giành ghế sắp bắt đầu rồi {name}, vào vòng nhanh lên!",
+            "Tớ đánh trống, khi trống dừng thì cậu chạm ghế trống ngay, đừng chạm sớm kẻo vấp."
+          ],
+          "choice": "Tớ sẵn sàng giành ghế!",
+          "prompt": "Giành được {goal} cái ghế nhé!",
+          "reward": "Voi Trống Hội cười khà khà: {name} nhanh như sóc, ghế nào cũng giành được!",
+          "next": "Giờ sinh hoạt nào cũng chơi giành ghế, cứ tới sân khấu sự kiện nhé.",
+          "who": "{name}, bạn nhỏ nhanh tay nhất lớp",
+          "learn": "Lắng nghe và phản xạ khi âm thanh dừng"
+        }
+      ]
+    },
+    {
+      "id": "gau-truc-but-chi",
+      "name": "Gấu Trúc Bút Chì",
+      "look": "animal-panda",
+      "tint": "#f0e8d0",
+      "where": "Lối đi trong vườn trường",
+      "place": "Vườn trường",
+      "company": [
+        {
+          "routine": "reader",
+          "name": "Bạn ngồi vẽ ngoài vườn",
+          "model": "person-n"
+        }
+      ],
+      "games": [
+        {
+          "game": "dot-copy",
+          "title": "Vẽ theo lưới chấm cùng Gấu Trúc Bút Chì",
+          "summary": "Bảng có lưới chấm và hình mẫu bên cạnh: nối các chấm để vẽ lại đúng hình.",
+          "lines": [
+            "{name} ơi, tớ có mấy hình mẫu xinh lắm mà chưa ai vẽ lại được.",
+            "Cậu nhìn hình mẫu, rồi kéo tay nối chấm này sang chấm kia cho đủ nét nha."
+          ],
+          "choice": "Đưa tớ bút chì nào!",
+          "prompt": "Vẽ lại đúng {goal} hình mẫu nhé!",
+          "reward": "Gấu Trúc Bút Chì ôm tranh vào lòng: {name} vẽ giống hệt mẫu luôn!",
+          "next": "Tớ sẽ nghĩ thêm hình mới, nhớ ra vườn trường vẽ tiếp với tớ.",
+          "who": "{name}, họa sĩ nhí của vườn trường",
+          "learn": "Quan sát vị trí và chép lại hình trên lưới"
+        },
+        {
+          "game": "scissor-trace",
+          "title": "Cắt giấy theo nét cùng Gấu Trúc Bút Chì",
+          "summary": "Tờ giấy màu có đường chấm: đưa cây kéo đi theo đường để cắt ra từng hình.",
+          "lines": [
+            "Mình đang làm thiệp, {name} cắt giấy giúp mình được không?",
+            "Cậu đặt tay lên kéo rồi đưa đi theo đường chấm, lệch xa là kéo dừng đấy."
+          ],
+          "choice": "Tớ cắt thật khéo cho!",
+          "prompt": "Cắt xong {goal} hình nhé!",
+          "reward": "Tấm thiệp đẹp quá! Gấu Trúc Bút Chì tặng {name} một hình cắt đầu tiên.",
+          "next": "Còn nhiều giấy màu lắm, mai cậu lại ra vườn trường cắt tiếp nhé.",
+          "who": "{name}, người thợ cắt giấy khéo tay",
+          "learn": "Đưa tay chậm, đều và chính xác theo nét"
+        },
+        {
+          "game": "flow-connect",
+          "title": "Nối ống cùng màu với Gấu Trúc Bút Chì",
+          "summary": "Bàn ô vuông có các chấm màu: nối hai chấm giống nhau, ống không cắt nhau và phủ kín mọi ô.",
+          "lines": [
+            "{name} ơi, đố cậu nối hết các chấm cùng màu mà ống không chéo nhau đấy!",
+            "Nhớ tô kín mọi ô trên bàn nữa nha, nghĩ kỹ trước khi kéo tay."
+          ],
+          "choice": "Câu đố này khó mà vui, thử nào!",
+          "prompt": "Giải xong {goal} bàn nối ống nhé!",
+          "reward": "Gấu Trúc Bút Chì gật gù mãi: {name} nghĩ đường đi giỏi thật!",
+          "next": "Tớ còn cả tập câu đố nối ống, ghé vườn trường giải cùng tớ nhé.",
+          "who": "{name}, nhà giải đố của lớp",
+          "learn": "Lập kế hoạch đường đi và suy luận không gian"
+        }
+      ]
+    },
+    {
+      "id": "meo-lop-truong",
+      "name": "Mèo Lớp Trưởng",
+      "look": "chibi-cat-cam-overalls",
+      "where": "Bờ ruộng lúa sau trường",
+      "place": "Ruộng lúa",
+      "company": [
+        {
+          "routine": "pupil",
+          "name": "Bạn chơi đuổi bắt",
+          "model": "person-r"
+        },
+        {
+          "routine": "dog",
+          "name": "Chó Vàng Chạy Đồng",
+          "model": "animal-dog"
+        }
+      ],
+      "games": [
+        {
+          "game": "red-light",
+          "title": "Một hai ba đứng im với Mèo Lớp Trưởng",
+          "summary": "Trên bờ ruộng, gấu bông quay lưng đếm: giữ tay để bước tới vạch, gấu quay lại thì đứng im.",
+          "lines": [
+            "{name} ơi, lớp mình đang chơi một hai ba đứng im trên bờ ruộng này!",
+            "Giữ tay là bước, thả tay là đứng, vòng đỏ hiện lên mà còn đi là lùi ba bước đó."
+          ],
+          "choice": "Tớ đứng im như tượng luôn!",
+          "prompt": "Bước tới vạch đích với {goal} điểm nhé!",
+          "reward": "Mèo Lớp Trưởng ghi tên {name} lên bảng khen: bước khéo, dừng giỏi!",
+          "next": "Chiều nào lớp cũng chơi ở bờ ruộng, Mèo Lớp Trưởng chờ cậu đó.",
+          "who": "{name}, bạn nhỏ biết tự giữ bình tĩnh",
+          "learn": "Kiềm chế, dừng lại đúng lúc theo tín hiệu"
+        },
+        {
+          "game": "cuop-co",
+          "title": "Cướp cờ trên bãi ruộng với Mèo Lớp Trưởng",
+          "summary": "Hai đội chờ hai bên sân: thẻ giơ hình mình thì chạy lấy cờ, né bạn Chó rồi mang về vạch xanh.",
+          "lines": [
+            "Đội mình cần thêm người chạy cướp cờ đấy {name}!",
+            "Thẻ giơ hình cậu thì chạy ngay, cầm cờ rồi né bạn Chó đang canh giữa sân nhé."
+          ],
+          "choice": "Gọi tên tớ đi, tớ chạy liền!",
+          "prompt": "Mang cờ về vạch xanh {goal} lần nhé!",
+          "reward": "Mèo Lớp Trưởng phất cờ thật cao: đội mình thắng nhờ {name} đấy!",
+          "next": "Đội bạn hẹn đấu lại, cậu nhớ ra bờ ruộng sau trường nhé.",
+          "who": "{name}, chân chạy nhanh của đội",
+          "learn": "Chú ý tín hiệu và né tránh khéo léo"
+        },
+        {
+          "game": "co-caro",
+          "title": "Đấu cờ caro với Mèo Lớp Trưởng",
+          "summary": "Bàn cờ kẻ ô vẽ trên tấm ván: thay phiên đặt quân với bạn Cún, ai đủ bốn quân thẳng hàng trước thì thắng.",
+          "lines": [
+            "{name} chơi cờ caro bốn ô với bạn Cún nhé, Cún tự tin lắm đấy!",
+            "Nhớ xếp bốn quân thẳng hàng, và chặn ngay khi Cún sắp đủ bốn nha."
+          ],
+          "choice": "Cún ơi, đấu một ván nào!",
+          "prompt": "Thắng bạn Cún {goal} ván cờ caro nhé!",
+          "reward": "Bạn Cún cúi đầu chịu thua, Mèo Lớp Trưởng khen {name} đi cờ thông minh!",
+          "next": "Cún đang luyện thêm nước cờ mới, cậu quay lại đấu tiếp nhé.",
+          "who": "{name}, kì thủ nhí của lớp",
+          "learn": "Suy nghĩ trước một nước và biết phòng thủ"
+        }
+      ]
+    }
+  ],
+  "residents": [
+    {
+      "routine": "kite-flyer",
+      "name": "Bạn thả diều trên đồi gió",
+      "model": "person-f",
+      "place": "Hải đăng"
+    },
+    {
+      "routine": "shopper",
+      "name": "Cô đi chợ sớm",
+      "model": "person-e",
+      "place": "Chợ"
+    },
+    {
+      "routine": "porter",
+      "name": "Chú chở rau về trường",
+      "model": "person-b",
+      "place": "Nông trại"
+    },
+    {
+      "routine": "reader",
+      "name": "Bác ngồi nghe thác",
+      "model": "person-c",
+      "place": "Thác nước"
+    },
+    {
+      "routine": "cat",
+      "name": "Mèo Mướp Bến Tàu",
+      "model": "animal-cat",
+      "place": "Bến tàu"
+    }
+  ]
+}

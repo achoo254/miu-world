@@ -1,0 +1,80 @@
+{
+  "id": "side-jigsaw",
+  "region": "thu-vien",
+  "chapter": 1,
+  "title": "Ghép tranh trong vườn đọc sách với Koala Ghép Tranh",
+  "status": "active",
+  "category": "side",
+  "summary": "Những mảnh tranh vương trên bàn ngoài vườn, bé kéo từng mảnh vào đúng chỗ có hình mờ.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, thợ ghép tranh của vườn sách",
+    "where": "Lối vào vườn đọc sách",
+    "goal": "Ghép đúng mười lăm mảnh tranh nhé!",
+    "play": "Kéo từng mảnh tranh vào khung, chỗ có hình mờ giống mảnh đó.",
+    "learn": "Nhận ra hình dạng và chi tiết giống nhau",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Tớ còn cả chồng tranh nữa, rảnh thì ra vườn đọc sách ghép cùng tớ."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "koala-ghep-tranh",
+      "lines": [
+        {
+          "speaker": "Koala Ghép Tranh",
+          "text": "Chào {name}, gió thổi tung bức tranh của tớ ra từng mảnh rồi!"
+        },
+        {
+          "speaker": "Koala Ghép Tranh",
+          "text": "Cậu tìm chỗ hình mờ giống mảnh nào thì đặt mảnh đó vào, tớ ngồi xem cậu ghép nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Để tớ ghép lại cho!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Ghép tranh",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Ghép đúng mười lăm mảnh tranh nhé!",
+      "game": "jigsaw",
+      "goal": 15
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Koala Ghép Tranh ôm bức tranh lành lặn: {name} khéo tay thật đấy!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Tớ còn cả chồng tranh nữa, rảnh thì ra vườn đọc sách ghép cùng tớ."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

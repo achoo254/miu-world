@@ -1,0 +1,80 @@
+{
+  "id": "side-jump-rope",
+  "region": "xom-mai-am",
+  "chapter": 1,
+  "title": "Nhảy dây với Chị Thỏ Nhảy Dây",
+  "status": "active",
+  "category": "side",
+  "summary": "Hai bạn quay dây đều đều dưới ánh trăng, nhảy lên đúng lúc dây lướt tới chân.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, bạn nhảy dây dẻo chân",
+    "where": "Đầu ngõ nhỏ ánh trăng",
+    "goal": "Nhảy qua dây hai mươi lăm lần nhé!",
+    "play": "Hai bạn quay dây, {name} đứng giữa. Dây vòng xuống tới chân thì chạm để nhảy!",
+    "learn": "Cảm nhận nhịp và bật nhảy đúng lúc",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Tối nào chị cũng nhảy dây ở đầu ngõ, em ra chơi nữa nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "chi-tho-nhay-day",
+      "lines": [
+        {
+          "speaker": "Chị Thỏ Nhảy Dây",
+          "text": "Trăng sáng thế này nhảy dây là nhất, vào đây {name}!"
+        },
+        {
+          "speaker": "Chị Thỏ Nhảy Dây",
+          "text": "Chị với bạn quay dây, em canh dây tới chân thì bật lên nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Em vào giữa đây chị!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Nhảy dây",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Nhảy qua dây hai mươi lăm lần nhé!",
+      "game": "jump-rope",
+      "goal": 25
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Dây quay nhanh thế mà {name} vẫn nhảy tót qua, giỏi quá!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Tối nào chị cũng nhảy dây ở đầu ngõ, em ra chơi nữa nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

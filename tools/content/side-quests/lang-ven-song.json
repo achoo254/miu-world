@@ -1,0 +1,297 @@
+{
+  "region": "lang-ven-song",
+  "givers": [
+    {
+      "id": "bac-cau-ca-son",
+      "name": "Bác câu cá Sơn",
+      "look": "person-k",
+      "where": "Bến sông đầu làng",
+      "place": "Bến sông",
+      "company": [
+        {
+          "routine": "porter",
+          "name": "Chú chở cá về chợ",
+          "model": "person-j"
+        }
+      ],
+      "games": [
+        {
+          "game": "bobber-fishing",
+          "title": "Câu cá phao với Bác câu cá Sơn",
+          "summary": "Ngồi trên bến sông, quăng phao gần bóng cá và giật cần đúng lúc phao chìm.",
+          "lines": [
+            "{name} ơi, lại đây ngồi câu với bác một lát nào!",
+            "Thấy phao chìm hẳn thì giật nhé, giật sớm là cá lủi mất đấy."
+          ],
+          "choice": "Cháu cầm cần đây bác ơi!",
+          "prompt": "Câu cho bác đủ {goal} điểm cá nhé!",
+          "reward": "Giỏi quá {name}, giỏ cá của bác đầy ắp rồi!",
+          "next": "Chiều nào bác cũng ngồi ở bến sông, cháu cứ ra câu tiếp nhé.",
+          "who": "{name}, cần thủ nhỏ của bến sông",
+          "learn": "Kiên nhẫn chờ và giật đúng thời điểm"
+        },
+        {
+          "game": "boat-race",
+          "title": "Đua thuyền trên sông cùng Bác câu cá Sơn",
+          "summary": "Tiếng trống thùng thùng giục giã, chèo hai mái thật đều để thuyền lướt về đích.",
+          "lines": [
+            "Hôm nay làng có hội đua thuyền đấy {name}!",
+            "Bác cho mượn chiếc thuyền con, cứ chèo trái phải đều tay theo trống."
+          ],
+          "choice": "Ra bến thôi, cháu chèo được!",
+          "prompt": "Về đích trong nhóm {goal} thuyền đầu tiên nhé!",
+          "reward": "Thuyền của {name} lao vun vút, cả bến reo hò!",
+          "next": "Mùa hội còn dài, thuyền con vẫn buộc ở bến chờ cháu.",
+          "who": "{name}, tay chèo nhỏ tuổi nhất hội đua",
+          "learn": "Giữ nhịp đều theo tiếng trống"
+        }
+      ]
+    },
+    {
+      "id": "khi-cau-tre",
+      "name": "Khỉ Cầu Tre",
+      "look": "animal-monkey",
+      "tint": "#d9b98a",
+      "where": "Đầu cầu đá phía đông",
+      "place": "Cầu đá phía đông",
+      "company": [
+        {
+          "routine": "pupil",
+          "name": "Bạn nhỏ đứng xem qua cầu",
+          "model": "person-f"
+        }
+      ],
+      "games": [
+        {
+          "game": "monkey-bridge",
+          "title": "Đi cầu khỉ cùng Khỉ Cầu Tre",
+          "summary": "Bước chênh vênh trên cây cầu tre bắc qua suối, giữ thăng bằng để không rơi xuống nước.",
+          "lines": [
+            "Ê {name}, dám đi cầu khỉ với tớ không nào?",
+            "Người nghiêng bên nào thì kéo ngón tay sang bên kia là đứng vững ngay."
+          ],
+          "choice": "Tớ dám chứ, đi thôi!",
+          "prompt": "Đi qua trọn {goal} cây cầu khỉ nhé!",
+          "reward": "Chà, {name} đi cầu còn vững hơn cả khỉ tớ!",
+          "next": "Cầu tre còn nhiều nhịp lắm, mai mình lại đi tiếp nha.",
+          "who": "{name}, bạn đi cầu khỉ gan dạ",
+          "learn": "Giữ thăng bằng và bình tĩnh"
+        },
+        {
+          "game": "stick-bridge",
+          "title": "Bắc cầu tre qua suối cùng Khỉ Cầu Tre",
+          "summary": "Giữ tay cho cây tre dài ra vừa đủ, thả xuống thành cầu nối hai cột đá.",
+          "lines": [
+            "{name} ơi, suối này nhiều khe quá, tớ không qua được!",
+            "Cậu nuôi cây tre dài vừa tới cột đá bên kia giúp tớ nhé."
+          ],
+          "choice": "Để tớ ước lượng cho!",
+          "prompt": "Bắc cầu qua {goal} khe suối nhé!",
+          "reward": "Tuyệt cú mèo, cầu của {name} vừa khít luôn!",
+          "next": "Còn mấy con suối nữa ở đầu cầu đá, lúc nào rảnh ghé tớ nhé.",
+          "who": "{name}, người bắc cầu khéo tay",
+          "learn": "Ước lượng độ dài bằng mắt"
+        },
+        {
+          "game": "road-cross",
+          "title": "Giúp ếch qua đường qua sông với Khỉ Cầu Tre",
+          "summary": "Dẫn chú ếch nhảy qua con đường đông xe rồi nhảy lên khúc gỗ, lưng rùa để sang sông.",
+          "lines": [
+            "Bạn ếch nhà tớ muốn về bờ bên kia, {name} giúp với!",
+            "Nhìn kỹ xe chạy rồi hãy nhảy, qua sông thì đậu lên khúc gỗ nha."
+          ],
+          "choice": "Ếch ơi, theo tớ nào!",
+          "prompt": "Đưa ếch sang bờ bên kia {goal} lần nhé!",
+          "reward": "Ếch con cảm ơn {name} rối rít, ộp ộp!",
+          "next": "Ếch còn nhiều anh em lắm, chúng đợi cậu ở đầu cầu đá đấy.",
+          "who": "{name}, người dẫn đường cho ếch con",
+          "learn": "Quan sát và chọn lúc an toàn để đi"
+        }
+      ]
+    },
+    {
+      "id": "meo-dam-sen",
+      "name": "Mèo Đầm Sen",
+      "look": "chibi-cat-trang-dress",
+      "where": "Bờ đầm sen",
+      "place": "Đầm sen",
+      "company": [
+        {
+          "routine": "waterer",
+          "name": "Cô tưới rau ven đầm",
+          "model": "person-i"
+        }
+      ],
+      "games": [
+        {
+          "game": "duck-catch",
+          "title": "Bắt vịt dưới ao cùng Mèo Đầm Sen",
+          "summary": "Lội xuống đầm, dồn đàn vịt vào sát bờ rào rồi chồm tới chộp lấy từng con.",
+          "lines": [
+            "Chết rồi {name} ơi, đàn vịt xổng chuồng bơi tán loạn!",
+            "Cậu lội theo dồn chúng vào bờ rào, tớ ngại nước lắm."
+          ],
+          "choice": "Để tớ lội xuống bắt!",
+          "prompt": "Bắt lại đủ {goal} con vịt nhé!",
+          "reward": "Meo, đàn vịt về đủ rồi, cảm ơn {name} nhiều!",
+          "next": "Đàn vịt nghịch lắm, mai thế nào cũng xổng nữa, cậu ghé bờ đầm nhé.",
+          "who": "{name}, bạn lùa vịt nhanh nhẹn",
+          "learn": "Đoán hướng chạy và dồn đúng góc"
+        },
+        {
+          "game": "pipe-connect",
+          "title": "Nối ống dẫn nước cùng Mèo Đầm Sen",
+          "summary": "Xoay từng đoạn ống cho nước từ giếng chảy một mạch ra tới ruộng.",
+          "lines": [
+            "{name} xem này, ống nước ra ruộng bị xoay lung tung hết!",
+            "Chạm vào từng đoạn để xoay, nước chảy tới đâu ống xanh tới đó."
+          ],
+          "choice": "Tớ xoay thử nhé!",
+          "prompt": "Đưa nước ra ruộng {goal} lần nhé!",
+          "reward": "Nước mát chảy róc rách rồi, {name} giỏi ghê!",
+          "next": "Ruộng ven đầm còn khát nước lắm, hôm khác lại giúp tớ nha.",
+          "who": "{name}, thợ sửa ống nước nhí",
+          "learn": "Suy nghĩ đường đi và xoay hình"
+        }
+      ]
+    },
+    {
+      "id": "co-hoi-lang",
+      "name": "Cô Hội Làng",
+      "look": "person-h",
+      "where": "Quảng trường làng",
+      "place": "Quảng trường làng",
+      "company": [
+        {
+          "routine": "pupil",
+          "name": "Bạn nhỏ chờ vào hội",
+          "model": "person-o"
+        },
+        {
+          "routine": "trumpeter",
+          "name": "Chú đánh trống hội",
+          "model": "person-d"
+        }
+      ],
+      "games": [
+        {
+          "game": "dap-nieu",
+          "title": "Đập niêu ở hội làng cùng Cô Hội Làng",
+          "summary": "Nhìn kỹ chỗ treo niêu đất, rồi bịt mắt mò tới và đập cho vỡ.",
+          "lines": [
+            "Hội làng mở rồi, {name} vào chơi đập niêu với cô nhé!",
+            "Nhớ thật kỹ niêu treo ở đâu, vì lát nữa cháu bị bịt mắt đấy."
+          ],
+          "choice": "Cháu nhớ kỹ rồi cô ạ!",
+          "prompt": "Đập vỡ {goal} cái niêu nhé!",
+          "reward": "Bốp! Niêu vỡ tung kẹo, {name} tài quá!",
+          "next": "Năm nào hội làng cũng có đập niêu, cô vẫn đứng ở quảng trường chờ cháu.",
+          "who": "{name}, người chơi hội làng tinh mắt",
+          "learn": "Ghi nhớ vị trí và định hướng"
+        },
+        {
+          "game": "nem-con",
+          "title": "Ném còn qua vòng cùng Cô Hội Làng",
+          "summary": "Kéo lùi rồi thả tay để quả còn bay vút qua chiếc vòng trên ngọn cột tre.",
+          "lines": [
+            "Quả còn đủ màu đây, {name} thử ném một quả xem!",
+            "Kéo dài thì ném xa, nhắm cho lọt vòng trên ngọn tre nhé."
+          ],
+          "choice": "Cô đưa cháu quả còn!",
+          "prompt": "Ném lọt vòng {goal} lần nhé!",
+          "reward": "Còn bay qua vòng đẹp quá, cả hội vỗ tay cho {name}!",
+          "next": "Cột còn vẫn dựng giữa quảng trường, lúc nào cháu cũng ném được.",
+          "who": "{name}, tay ném còn của làng",
+          "learn": "Căn lực ném và ngắm đích cao"
+        },
+        {
+          "game": "tug-of-war",
+          "title": "Kéo co cùng đội của Cô Hội Làng",
+          "summary": "Hai đội nắm chặt dây thừng, chạm thật nhanh theo tiếng hô để kéo dải đỏ về phía mình.",
+          "lines": [
+            "Đội cô đang thiếu người, {name} vào kéo co nhé!",
+            "Cứ nghe trống hô dô ta là kéo mạnh gấp đôi đấy."
+          ],
+          "choice": "Dô ta! Cháu vào đây!",
+          "prompt": "Thắng {goal} hiệp kéo co nhé!",
+          "reward": "Đội mình thắng rồi! {name} khỏe như voi con!",
+          "next": "Đội bên kia hẹn kéo lại trận nữa, cô chờ cháu ở quảng trường.",
+          "who": "{name}, thành viên đội kéo co",
+          "learn": "Phối hợp theo nhịp và bền tay"
+        }
+      ]
+    },
+    {
+      "id": "tho-o-quan",
+      "name": "Thỏ Ô Quan",
+      "look": "chibi-rabbit-nau-jacket",
+      "where": "Bờ cánh đồng lúa",
+      "place": "Cánh đồng lúa",
+      "company": [
+        {
+          "routine": "kite-flyer",
+          "name": "Bạn thả diều trên đê",
+          "model": "person-r"
+        }
+      ],
+      "games": [
+        {
+          "game": "o-an-quan",
+          "title": "Chơi ô ăn quan với Thỏ Ô Quan",
+          "summary": "Ngồi bên bờ ruộng, rải sỏi từng ô, gặp ô trống thì ăn cả ô kế tiếp.",
+          "lines": [
+            "{name} ơi, tớ vừa kẻ xong bàn ô quan trên đất đây!",
+            "Cậu cầm hàng dưới, rải sỏi sang trái hay phải tùy cậu chọn."
+          ],
+          "choice": "Ván này tớ đi trước nhé!",
+          "prompt": "Ăn được {goal} điểm sỏi nhé!",
+          "reward": "Ối, {name} ăn được cả quan to, tớ thua tâm phục!",
+          "next": "Bàn ô quan vẫn còn kẻ bên bờ ruộng, ván sau tớ phục thù nhé.",
+          "who": "{name}, kỳ thủ ô quan nhỏ",
+          "learn": "Đếm, tính trước và lập kế hoạch"
+        },
+        {
+          "game": "fireworks",
+          "title": "Bắn pháo hoa Tết cùng Thỏ Ô Quan",
+          "summary": "Đêm giao thừa trên cánh đồng, giữ tay cho pháo bay lên rồi thả đúng giữa vòng vàng.",
+          "lines": [
+            "Sắp giao thừa rồi {name}, mình bắn pháo hoa đón Tết nha!",
+            "Giữ tay cho pháo bay, tới giữa vòng vàng thì thả ra là bùm!"
+          ],
+          "choice": "Tớ muốn bầu trời rực rỡ!",
+          "prompt": "Làm sáng {goal} vòng pháo hoa nhé!",
+          "reward": "Trời sáng rực cả cánh đồng, {name} bắn đẹp nhất làng!",
+          "next": "Năm sau tớ lại để dành pháo hoa chờ cậu bên bờ ruộng.",
+          "who": "{name}, người thắp sáng trời đêm",
+          "learn": "Canh thời điểm thả tay chính xác"
+        }
+      ]
+    }
+  ],
+  "residents": [
+    {
+      "routine": "reader",
+      "name": "Ông ngồi hóng gió bãi cỏ",
+      "model": "person-c",
+      "place": "Bãi cỏ ven sông"
+    },
+    {
+      "routine": "cow",
+      "name": "Bò Vàng Bến Đò",
+      "model": "animal-cow",
+      "place": "Bến đò"
+    },
+    {
+      "routine": "shopper",
+      "name": "Cô đi chợ làng",
+      "model": "person-e",
+      "place": "Chợ nhỏ trong làng"
+    },
+    {
+      "routine": "cat",
+      "name": "Mèo Hải Đăng",
+      "model": "animal-cat",
+      "place": "Hải đăng"
+    }
+  ]
+}

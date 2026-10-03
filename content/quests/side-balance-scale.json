@@ -1,0 +1,80 @@
+{
+  "id": "side-balance-scale",
+  "region": "cho-phien",
+  "chapter": 1,
+  "title": "Cân thăng bằng cùng Voi Bốc Hàng",
+  "status": "active",
+  "category": "side",
+  "summary": "Đĩa trái có quả nặng ghi số, chọn quả đặt lên đĩa phải sao cho hai bên bằng nhau.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người giữ cân của bến hàng",
+    "where": "Bến hàng bên kênh",
+    "goal": "Làm cân thăng bằng năm lần nhé!",
+    "play": "Đĩa trái có quả nặng. Mỗi quả ghi số cân của nó.",
+    "learn": "Cộng số và so sánh nặng nhẹ",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Ngày phiên nào cũng có hàng cần cân, tớ chờ cậu ở bến hàng."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "voi-boc-hang",
+      "lines": [
+        {
+          "speaker": "Voi Bốc Hàng",
+          "text": "{name} ơi, cân hàng của tớ cứ lệch về một bên!"
+        },
+        {
+          "speaker": "Voi Bốc Hàng",
+          "text": "Cộng số trên các quả cho bằng đĩa bên kia là cân thăng bằng ngay."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Để tớ tính nhé!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Cân thăng bằng",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Làm cân thăng bằng năm lần nhé!",
+      "game": "balance-scale",
+      "goal": 5
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Cân thẳng tắp rồi, {name} tính nhanh như chớp!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Ngày phiên nào cũng có hàng cần cân, tớ chờ cậu ở bến hàng."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

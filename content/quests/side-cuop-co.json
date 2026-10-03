@@ -1,0 +1,80 @@
+{
+  "id": "side-cuop-co",
+  "region": "truong-hoc",
+  "chapter": 1,
+  "title": "Cướp cờ trên bãi ruộng với Mèo Lớp Trưởng",
+  "status": "active",
+  "category": "side",
+  "summary": "Hai đội chờ hai bên sân: thẻ giơ hình mình thì chạy lấy cờ, né bạn Chó rồi mang về vạch xanh.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, chân chạy nhanh của đội",
+    "where": "Bờ ruộng lúa sau trường",
+    "goal": "Mang cờ về vạch xanh năm lần nhé!",
+    "play": "Thẻ góc trên giơ hình ai thì người đó chạy. Thấy hình {name} thì chạm ngay để chạy lấy cờ!",
+    "learn": "Chú ý tín hiệu và né tránh khéo léo",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Đội bạn hẹn đấu lại, cậu nhớ ra bờ ruộng sau trường nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "meo-lop-truong",
+      "lines": [
+        {
+          "speaker": "Mèo Lớp Trưởng",
+          "text": "Đội mình cần thêm người chạy cướp cờ đấy {name}!"
+        },
+        {
+          "speaker": "Mèo Lớp Trưởng",
+          "text": "Thẻ giơ hình cậu thì chạy ngay, cầm cờ rồi né bạn Chó đang canh giữa sân nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Gọi tên tớ đi, tớ chạy liền!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Cướp cờ",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Mang cờ về vạch xanh năm lần nhé!",
+      "game": "cuop-co",
+      "goal": 5
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Mèo Lớp Trưởng phất cờ thật cao: đội mình thắng nhờ {name} đấy!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Đội bạn hẹn đấu lại, cậu nhớ ra bờ ruộng sau trường nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

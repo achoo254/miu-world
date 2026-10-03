@@ -1,0 +1,80 @@
+{
+  "id": "side-da-cau",
+  "region": "truong-hoc",
+  "chapter": 1,
+  "title": "Tâng cầu với Hổ Còi Vàng",
+  "status": "active",
+  "category": "side",
+  "summary": "Quả cầu lông nhiều màu rơi xuống liên tục: chạm tâng cầu bay lên, nửa sau có thêm quả thứ hai.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, nhà vô địch tâng cầu giờ ra chơi",
+    "where": "Mép sân bóng của trường",
+    "goal": "Tâng cầu được ba mươi lần nhé!",
+    "play": "Quả cầu lông rơi xuống: {name} chạm vào cầu để tâng nó bay lên.",
+    "learn": "Phối hợp tay mắt và theo dõi hai vật cùng lúc",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Giờ ra chơi nào tớ cũng mang cầu ra sân, rủ cậu tâng tiếp nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "ho-coi-vang",
+      "lines": [
+        {
+          "speaker": "Hổ Còi Vàng",
+          "text": "{name} có biết đá cầu không? Tớ có quả cầu lông gà đẹp lắm!"
+        },
+        {
+          "speaker": "Hổ Còi Vàng",
+          "text": "Cầu rơi tới đâu cậu chạm tâng lên tới đó, coi chừng có thêm quả thứ hai đấy."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tâng cầu là nghề của tớ!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Đá cầu",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Tâng cầu được ba mươi lần nhé!",
+      "game": "da-cau",
+      "goal": 30
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Hổ Còi Vàng đếm không kịp: {name} tâng cầu dẻo quá trời!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Giờ ra chơi nào tớ cũng mang cầu ra sân, rủ cậu tâng tiếp nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

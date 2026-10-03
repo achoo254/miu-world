@@ -1,0 +1,80 @@
+{
+  "id": "side-stack-catch",
+  "region": "cho-phien",
+  "chapter": 1,
+  "title": "Hứng bánh xếp chồng cùng Cô bánh mì Hạnh",
+  "status": "active",
+  "category": "side",
+  "summary": "Bánh rơi từ trên xuống, kéo đĩa đều tay để chồng bánh cao mà không đổ.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người đỡ bánh vững tay",
+    "where": "Trước gian hàng đồ ăn",
+    "goal": "Xếp chồng bánh cao mười hai tầng nhé!",
+    "play": "Kéo đĩa để hứng bánh rơi lên trên cùng chồng bánh.",
+    "learn": "Điều khiển tay đều và giữ thăng bằng",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Ngày nào cô cũng nướng bánh, mẻ sau lại nhờ cháu đỡ nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "co-banh-mi-hanh",
+      "lines": [
+        {
+          "speaker": "Cô bánh mì Hạnh",
+          "text": "Mẻ bánh bò vừa ra lò, {name} đỡ giúp cô với!"
+        },
+        {
+          "speaker": "Cô bánh mì Hạnh",
+          "text": "Đi đĩa từ từ thôi cháu, giật mạnh là chồng bánh đổ nghiêng đấy."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu đỡ được hết!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Hứng bánh xếp chồng",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Xếp chồng bánh cao mười hai tầng nhé!",
+      "game": "stack-catch",
+      "goal": 12
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Chồng bánh cao chót vót, {name} giữ tay vững thật!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Ngày nào cô cũng nướng bánh, mẻ sau lại nhờ cháu đỡ nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

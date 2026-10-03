@@ -1,0 +1,80 @@
+{
+  "id": "side-water-pour",
+  "region": "xom-mai-am",
+  "chapter": 1,
+  "title": "Rót trà đúng vạch cùng Mèo Trà Đá",
+  "status": "active",
+  "category": "side",
+  "summary": "Nghiêng ấm rót trà vào cốc, dừng tay khi nước nằm gọn giữa hai vạch xanh.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người rót trà khéo léo",
+    "where": "Bên giếng xóm",
+    "goal": "Rót vừa vạch tám cốc trà nhé!",
+    "play": "Giữ ngón tay để ấm nghiêng rót trà, thả tay để dừng.",
+    "learn": "Ước lượng lượng nước và dừng đúng lúc",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Ấm trà vẫn ấm bên giếng xóm, mai cậu lại rót giúp tớ nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "meo-tra-da",
+      "lines": [
+        {
+          "speaker": "Mèo Trà Đá",
+          "text": "{name}, các bác trong xóm sắp sang uống trà đấy!"
+        },
+        {
+          "speaker": "Mèo Trà Đá",
+          "text": "Rót cho đúng vạch nhé, đầy tràn ra là ướt hết bàn."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ rót cẩn thận lắm!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Rót trà đúng vạch",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Rót vừa vạch tám cốc trà nhé!",
+      "game": "water-pour",
+      "goal": 8
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Cốc nào cũng vừa khéo, {name} rót trà như người lớn!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Ấm trà vẫn ấm bên giếng xóm, mai cậu lại rót giúp tớ nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "id": "side-slingshot-tower",
+  "region": "lau-dai",
+  "chapter": 1,
+  "title": "Bắn đổ tháp hộp với Cáo Cung Thủ",
+  "status": "active",
+  "category": "side",
+  "summary": "Những tháp hộp xếp chồng có gấu bông trên đỉnh, bé kéo ná bắn đá cho gấu bông rơi xuống.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, xạ thủ ná cao su",
+    "where": "Bãi tập bắn bên khu luyện tập",
+    "goal": "Bắn đổ ba tháp hộp nhé!",
+    "play": "Đặt ngón tay xuống, kéo ngược ra sau để căng ná, thả ra để bắn đá.",
+    "learn": "Ước lượng lực kéo và góc bắn",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Tớ sẽ xếp tháp cao hơn, lần sau cậu lại tới thử tài nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "cao-cung-thu",
+      "lines": [
+        {
+          "speaker": "Cáo Cung Thủ",
+          "text": "{name} thử cái ná tớ tự làm đi, bắn đổ tháp hộp kia xem nào!"
+        },
+        {
+          "speaker": "Cáo Cung Thủ",
+          "text": "Cậu kéo ngược ná ra sau rồi thả, chỉ có sáu viên đá thôi nên ngắm cho kỹ nha."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Căng ná, bắn thôi!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Ná bắn tháp hộp",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Bắn đổ ba tháp hộp nhé!",
+      "game": "slingshot-tower",
+      "goal": 3
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Gấu bông rơi lộp độp, Cáo Cung Thủ khen {name} bắn chuẩn quá!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Tớ sẽ xếp tháp cao hơn, lần sau cậu lại tới thử tài nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

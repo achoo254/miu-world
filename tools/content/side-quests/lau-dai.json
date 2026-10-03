@@ -1,0 +1,246 @@
+{
+  "region": "lau-dai",
+  "givers": [
+    {
+      "id": "cao-cung-thu",
+      "name": "Cáo Cung Thủ",
+      "look": "chibi-fox-cam-jacket-red",
+      "where": "Bãi tập bắn bên khu luyện tập",
+      "place": "Khu luyện tập",
+      "company": [
+        {
+          "routine": "sentry",
+          "name": "Anh lính gác rừng thông",
+          "model": "person-m"
+        }
+      ],
+      "games": [
+        {
+          "game": "archery-wind",
+          "title": "Bắn cung trong gió cùng Cáo Cung Thủ",
+          "summary": "Bia gỗ dựng ở bãi tập bắn bên khu luyện tập, gió thổi mũi tên lệch, bé ngắm bù gió để trúng giữa bia.",
+          "lines": [
+            "Chào {name}! Gió rừng thông hôm nay thổi mạnh, bắn cung khó lắm đấy.",
+            "Cậu nhìn mũi tên chỉ gió rồi ngắm lệch ngược lại, tám mũi tên, giữa bia mười điểm nhé."
+          ],
+          "choice": "Đưa cây cung cho tớ!",
+          "prompt": "Bắn được {goal} điểm trên bia nhé!",
+          "reward": "Cáo Cung Thủ giơ cung chào: {name} bắn trúng hồng tâm như hiệp sĩ!",
+          "next": "Tớ luyện cung ở khu luyện tập mỗi sáng, cậu ghé bắn thêm nhé.",
+          "who": "{name}, cung thủ nhí của rừng thông",
+          "learn": "Ngắm bắn và tính đến hướng gió"
+        },
+        {
+          "game": "slingshot-tower",
+          "title": "Bắn đổ tháp hộp với Cáo Cung Thủ",
+          "summary": "Những tháp hộp xếp chồng có gấu bông trên đỉnh, bé kéo ná bắn đá cho gấu bông rơi xuống.",
+          "lines": [
+            "{name} thử cái ná tớ tự làm đi, bắn đổ tháp hộp kia xem nào!",
+            "Cậu kéo ngược ná ra sau rồi thả, chỉ có sáu viên đá thôi nên ngắm cho kỹ nha."
+          ],
+          "choice": "Căng ná, bắn thôi!",
+          "prompt": "Bắn đổ {goal} tháp hộp nhé!",
+          "reward": "Gấu bông rơi lộp độp, Cáo Cung Thủ khen {name} bắn chuẩn quá!",
+          "next": "Tớ sẽ xếp tháp cao hơn, lần sau cậu lại tới thử tài nhé.",
+          "who": "{name}, xạ thủ ná cao su",
+          "learn": "Ước lượng lực kéo và góc bắn"
+        },
+        {
+          "game": "quick-draw",
+          "title": "Thi nhanh tay với Cáo Cung Thủ",
+          "summary": "Chiếc đèn lồng treo giữa hai người chơi, bé chờ đèn sáng đỏ mới chạm, nhanh hơn bạn Mèo.",
+          "lines": [
+            "{name} có nhanh tay không? Mình thi xem ai chạm trước khi đèn sáng đỏ nhé!",
+            "Đèn chưa đỏ mà chạm là phạm luật, đừng để bướm bay qua lừa cậu đấy."
+          ],
+          "choice": "Tớ sẵn sàng, tay tớ nhanh lắm!",
+          "prompt": "Thắng {goal} hiệp thi nhanh tay nhé!",
+          "reward": "Cáo Cung Thủ lắc đầu chịu thua: {name} nhanh hơn cả tia chớp!",
+          "next": "Tớ sẽ tập thêm cho nhanh, hẹn {name} thi lại ở khu luyện tập.",
+          "who": "{name}, người nhanh tay nhất vùng",
+          "learn": "Tập trung chờ tín hiệu và phản xạ nhanh"
+        }
+      ]
+    },
+    {
+      "id": "voi-thu-kho",
+      "name": "Voi Thủ Kho",
+      "look": "animal-elephant",
+      "tint": "#d8c8a0",
+      "where": "Chợ nhỏ dưới chân thành",
+      "place": "Chợ nhỏ dưới chân thành",
+      "company": [
+        {
+          "routine": "porter",
+          "name": "Chú khuân hòm vào kho",
+          "model": "person-j"
+        }
+      ],
+      "games": [
+        {
+          "game": "crate-push",
+          "title": "Đẩy thùng vào kho cùng Voi Thủ Kho",
+          "summary": "Kho hàng chật kín thùng gỗ, bé đi vòng quanh để đẩy từng thùng vào ô có dấu sao.",
+          "lines": [
+            "Ồ {name}, tớ cần người đẩy thùng vào đúng chỗ trong kho!",
+            "Thùng chỉ đẩy được chứ không kéo được, cậu tính đường trước rồi hãy đẩy nhé."
+          ],
+          "choice": "Tớ đẩy giỏi lắm, để tớ!",
+          "prompt": "Xếp xong {goal} kho hàng nhé!",
+          "reward": "Voi Thủ Kho tung vòi reo: kho nào cũng gọn nhờ {name}!",
+          "next": "Chợ dưới chân thành ngày nào cũng có hàng mới, cậu ghé giúp tớ nữa nhé.",
+          "who": "{name}, người xếp kho thông minh",
+          "learn": "Suy nghĩ trước từng bước di chuyển"
+        },
+        {
+          "game": "stack-slide",
+          "title": "Xếp tầng trượt với Voi Thủ Kho",
+          "summary": "Từng tầng gỗ trượt qua lại trên đỉnh tháp, bé chạm đúng lúc để thả thẳng hàng tầng dưới.",
+          "lines": [
+            "{name} ơi, tớ muốn xây tháp hàng thật cao mà cứ bị lệch.",
+            "Tầng nào trượt tới ngay trên tầng dưới thì cậu chạm thả, phần thò ra sẽ bị cắt đấy."
+          ],
+          "choice": "Mình xây tháp cao vút nhé!",
+          "prompt": "Xếp được {goal} tầng tháp nhé!",
+          "reward": "Tháp cao chót vót, Voi Thủ Kho ngẩng vòi khen {name} giỏi canh!",
+          "next": "Tớ còn nhiều gỗ ở chợ, lúc nào cậu muốn xây nữa thì ghé nhé.",
+          "who": "{name}, kiến trúc sư xây tháp",
+          "learn": "Canh đúng lúc và căn thẳng hàng"
+        }
+      ]
+    },
+    {
+      "id": "meo-guong-than",
+      "name": "Mèo Gương Thần",
+      "look": "chibi-cat-trang-jacket-red",
+      "where": "Lối hoa trong vườn hoàng gia",
+      "place": "Vườn hoàng gia",
+      "company": [
+        {
+          "routine": "waterer",
+          "name": "Cô tưới hoa vườn vua",
+          "model": "person-i"
+        }
+      ],
+      "games": [
+        {
+          "game": "light-mirrors",
+          "title": "Dẫn tia nắng bằng gương cùng Mèo Gương Thần",
+          "summary": "Tia nắng chiếu vào vườn hoàng gia, bé xoay những tấm gương để dẫn nắng tới bông hoa chưa nở.",
+          "lines": [
+            "Meo, {name} ơi, bông hoa trong góc vườn không có nắng nên chưa nở được.",
+            "Cậu chạm gương để xoay, tia nắng gặp gương sẽ rẽ hướng, dẫn nó tới bông hoa nhé."
+          ],
+          "choice": "Xoay gương, đón nắng nào!",
+          "prompt": "Làm nở hoa ở {goal} bàn gương nhé!",
+          "reward": "Hoa nở rực rỡ, Mèo Gương Thần cài một bông lên tai {name}!",
+          "next": "Vườn còn nhiều góc khuất, cậu quay lại lối hoa giúp tớ dẫn nắng nhé.",
+          "who": "{name}, người dẫn nắng cho vườn hoa",
+          "learn": "Suy luận hướng đi của tia sáng"
+        },
+        {
+          "game": "maze-trace",
+          "title": "Đi mê cung về nhà với Mèo Gương Thần",
+          "summary": "Mê cung hàng rào hoa trong vườn có sao ở các ngõ cụt, bé kéo ngón tay tìm đường nhặt sao rồi về nhà.",
+          "lines": [
+            "{name} có dám vào mê cung hoa của vườn vua không?",
+            "Cậu kéo ngón tay đi qua lối nhỏ, nhặt sao ở ngõ cụt rồi tìm đường về nhà nhé."
+          ],
+          "choice": "Tớ không sợ lạc đâu!",
+          "prompt": "Ghi đủ {goal} điểm trong mê cung nhé!",
+          "reward": "Mèo Gương Thần ra tận cửa đón: {name} tìm đường tài quá!",
+          "next": "Mê cung hoa mỗi mùa một kiểu, cậu nhớ ghé lối hoa đi thử nhé.",
+          "who": "{name}, nhà thám hiểm mê cung",
+          "learn": "Tìm đường và định hướng"
+        }
+      ]
+    },
+    {
+      "id": "gau-gac-ham",
+      "name": "Gấu Gác Hầm",
+      "look": "chibi-bear-mat-ong-jacket",
+      "where": "Lối xuống hầm ngục",
+      "place": "Hầm ngục",
+      "company": [
+        {
+          "routine": "sentry",
+          "name": "Chú lính cầm đèn",
+          "model": "person-d"
+        }
+      ],
+      "games": [
+        {
+          "game": "pac-maze",
+          "title": "Ăn hạt né ma với Gấu Gác Hầm",
+          "summary": "Đường hầm ngục chằng chịt rải đầy hạt, bé đi ăn hạt và né những bóng ma chậm chạp.",
+          "lines": [
+            "Suỵt, {name}! Dưới hầm có mấy bóng ma vải đang lang thang đấy.",
+            "Cậu vuốt để đi ăn hạt, gặp sao thì ăn ngay, ma sẽ sợ mà chạy mất."
+          ],
+          "choice": "Tớ vào hầm đây!",
+          "prompt": "Ăn được {goal} hạt trong hầm nhé!",
+          "reward": "Gấu Gác Hầm giơ đèn cười: {name} né ma khéo quá!",
+          "next": "Hầm ngục còn nhiều lối, cậu cứ xuống chơi tiếp khi muốn nhé.",
+          "who": "{name}, người dũng cảm dưới hầm",
+          "learn": "Quan sát xung quanh và chọn đường an toàn"
+        },
+        {
+          "game": "hidden-objects",
+          "title": "Tìm đồ ẩn trong hầm cùng Gấu Gác Hầm",
+          "summary": "Bức tranh hầm ngục chất đầy đồ cũ, bé tìm sáu món ở khay dưới cho bay vào khay.",
+          "lines": [
+            "{name} ơi, tớ đánh rơi đồ lung tung trong hầm, không tìm thấy nữa!",
+            "Khay dưới có sáu món tớ cần, cậu nhìn kỹ bức tranh rồi chạm đúng món nhé."
+          ],
+          "choice": "Tớ tìm ra hết cho cậu!",
+          "prompt": "Tìm được {goal} món đồ ẩn nhé!",
+          "reward": "Đồ về đủ cả, Gấu Gác Hầm vỗ vai {name}: mắt cậu sáng thật!",
+          "next": "Tớ hay để quên đồ lắm, lúc nào ghé hầm ngục tìm giúp tớ nhé.",
+          "who": "{name}, người tìm đồ tinh mắt",
+          "learn": "Quan sát chi tiết trong bức tranh"
+        },
+        {
+          "game": "spot-diff",
+          "title": "Tìm chỗ khác nhau cùng Gấu Gác Hầm",
+          "summary": "Hai bức tranh treo tường hầm gần giống hệt nhau, bé tìm năm chỗ khác biệt.",
+          "lines": [
+            "{name} xem hai bức tranh trên tường hầm, chúng có giống nhau không?",
+            "Thật ra có năm chỗ khác đấy, cậu chạm vào chỗ khác ở tranh nào cũng được."
+          ],
+          "choice": "Để tớ soi thật kỹ!",
+          "prompt": "Tìm ra {goal} chỗ khác nhau nhé!",
+          "reward": "Gấu Gác Hầm tròn mắt: {name} tìm ra hết rồi, giỏi thật!",
+          "next": "Tớ sẽ treo thêm tranh mới, cậu quay lại lối xuống hầm tìm tiếp nhé.",
+          "who": "{name}, người soi tranh tinh tường",
+          "learn": "So sánh và tìm điểm khác biệt"
+        }
+      ]
+    }
+  ],
+  "residents": [
+    {
+      "routine": "kite-flyer",
+      "name": "Bạn thả diều cánh đồng",
+      "model": "person-r",
+      "place": "Cánh đồng lúa mì"
+    },
+    {
+      "routine": "shopper",
+      "name": "Cô đi chợ thị trấn",
+      "model": "person-e",
+      "place": "Thị trấn dưới chân thành"
+    },
+    {
+      "routine": "reader",
+      "name": "Bác ngắm cối xay gió",
+      "model": "person-c",
+      "place": "Cối xay gió"
+    },
+    {
+      "routine": "dog",
+      "name": "Chó Săn Hoàng Gia",
+      "model": "animal-dog",
+      "place": "Bãi cỏ trước cổng thành"
+    }
+  ]
+}

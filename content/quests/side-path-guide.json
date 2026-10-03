@@ -1,0 +1,80 @@
+{
+  "id": "side-path-guide",
+  "region": "nha-cua-be",
+  "chapter": 1,
+  "title": "Vẽ đường cho vịt con về chuồng với Chó Giữ Ao",
+  "status": "active",
+  "category": "side",
+  "summary": "Các bạn vịt con đi lạc, bé kéo ngón tay vẽ đường cho từng bạn về chuồng cùng màu mà không đụng nhau.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người dẫn đường cho vịt con",
+    "where": "Cầu tàu bên ao",
+    "goal": "Đưa mười hai bạn vịt con về chuồng nhé!",
+    "play": "Vịt con đi lạc. {name} đặt ngón tay lên một bạn vịt rồi kéo vẽ đường về chuồng cùng màu.",
+    "learn": "Vẽ đường và tránh va chạm",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Vịt con mải chơi lắm, khi nào lạc Chó Giữ Ao lại gọi {name}."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "cho-giu-ao",
+      "lines": [
+        {
+          "speaker": "Chó Giữ Ao",
+          "text": "Đàn vịt con lạc mất đường về chuồng rồi {name} ơi!"
+        },
+        {
+          "speaker": "Chó Giữ Ao",
+          "text": "Vẽ đường cho từng bạn về chuồng cùng màu, đừng để hai bạn đụng nhau nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Để tớ vẽ đường cho!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Vẽ đường cho vịt con",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Đưa mười hai bạn vịt con về chuồng nhé!",
+      "game": "path-guide",
+      "goal": 12
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Chó Giữ Ao sủa vui: vịt con nào cũng về nhà nhờ {name} đấy!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Vịt con mải chơi lắm, khi nào lạc Chó Giữ Ao lại gọi {name}."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

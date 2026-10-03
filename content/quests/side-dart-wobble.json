@@ -1,0 +1,80 @@
+{
+  "id": "side-dart-wobble",
+  "region": "cho-phien",
+  "chapter": 1,
+  "title": "Phóng phi tiêu cùng Chú hội chợ Tí",
+  "status": "active",
+  "category": "side",
+  "summary": "Tâm ngắm lượn vòng quanh tấm bia, chạm đúng lúc nó qua hồng tâm để phóng.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, tay phi tiêu bình tĩnh",
+    "where": "Góc trò chơi trên phố chợ",
+    "goal": "Ghi được một trăm năm mươi điểm phi tiêu nhé!",
+    "play": "Tâm ngắm lượn vòng trên bia, lúc xa lúc gần hồng tâm.",
+    "learn": "Kiên nhẫn chờ đúng thời điểm",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Chú còn cả hộp phi tiêu, lúc nào cháu cũng tới phóng được."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "chu-hoi-cho-ti",
+      "lines": [
+        {
+          "speaker": "Chú hội chợ Tí",
+          "text": "Bia phi tiêu đây, {name} thử tài ngắm đi nào!"
+        },
+        {
+          "speaker": "Chú hội chợ Tí",
+          "text": "Tâm ngắm cứ lượn vòng, đợi nó vào giữa bia rồi hãy phóng nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu canh kỹ rồi mới phóng!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Phi tiêu tay run",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Ghi được một trăm năm mươi điểm phi tiêu nhé!",
+      "game": "dart-wobble",
+      "goal": 150
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Phập! Trúng hồng tâm, {name} giỏi hơn cả chú!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Chú còn cả hộp phi tiêu, lúc nào cháu cũng tới phóng được."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

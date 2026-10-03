@@ -1,0 +1,184 @@
+{
+  "region": "nha-cua-be",
+  "givers": [
+    {
+      "id": "gau-banh-ngot",
+      "name": "Gấu Bánh Ngọt",
+      "look": "chibi-bear-mat-ong-dress-blue",
+      "where": "Sân trước nhà",
+      "place": "Sân trước nhà",
+      "company": [
+        {
+          "routine": "cat",
+          "name": "Mèo Hàng Xóm Thích Bánh",
+          "model": "animal-cat"
+        }
+      ],
+      "games": [
+        {
+          "game": "banh-chung-wrap",
+          "title": "Gói bánh chưng ngày Tết với Gấu Bánh Ngọt",
+          "summary": "Ngoài sân, bé lót lá, xếp gạo, đậu, thịt theo hình mẫu rồi gập lá và buộc lạt thành bánh vuông.",
+          "lines": [
+            "Sắp Tết rồi {name} ơi, mình gói bánh chưng thật vuông nhé!",
+            "Xếp gạo, đậu, thịt theo hàng hình, rồi vuốt gập lá theo mũi tên là xong."
+          ],
+          "choice": "Tớ gói chiếc đầu tiên!",
+          "prompt": "Gói được {goal} chiếc bánh chưng vuông vức nhé!",
+          "reward": "Gấu Bánh Ngọt xếp bánh lên mâm: bánh {name} gói vuông như hộp quà!",
+          "next": "Tết nào cũng cần bánh, Gấu Bánh Ngọt hẹn {name} ở sân trước nhà.",
+          "who": "{name}, người gói bánh chưng",
+          "learn": "Làm đúng thứ tự từng bước"
+        },
+        {
+          "game": "banh-xeo-flip",
+          "title": "Đổ bánh xèo giòn rụm với Gấu Bánh Ngọt",
+          "summary": "Bé đổ bột vào chảo, chờ bánh vàng thì lật, mặt kia vàng thì cho ra đĩa trước khi bánh cháy.",
+          "lines": [
+            "Chảo nóng rồi đấy {name}, mình đổ bánh xèo xèo xèo nào!",
+            "Viền chảo xanh lên là bánh đã vàng, chạm lật ngay kẻo cháy nhé."
+          ],
+          "choice": "Đổ bột thôi, thơm quá!",
+          "prompt": "Đổ được {goal} cái bánh xèo vàng giòn nhé!",
+          "reward": "Gấu Bánh Ngọt hít hà: bánh xèo của {name} giòn tan luôn!",
+          "next": "Bữa sau lại có bánh xèo, {name} ra sân trước nhà phụ Gấu nhé.",
+          "who": "{name}, đầu bếp bánh xèo",
+          "learn": "Canh thời gian và làm nhiều việc cùng lúc"
+        },
+        {
+          "game": "candle-cake-spin",
+          "title": "Cắm nến lên bánh sinh nhật xoay cùng Gấu Bánh Ngọt",
+          "summary": "Bánh sinh nhật đang xoay tròn, bé chạm phóng nến cắm vào mép bánh mà không chạm nến cũ.",
+          "lines": [
+            "Hôm nay sinh nhật bạn Mèo đấy {name}, cắm nến giúp tớ nhé!",
+            "Bánh cứ xoay hoài, chờ chỗ trống rồi mới phóng nến kẻo đụng cây cũ."
+          ],
+          "choice": "Để tớ cắm nến cho!",
+          "prompt": "Cắm nến được {goal} điểm nhé!",
+          "reward": "Gấu Bánh Ngọt hát mừng sinh nhật: nến {name} cắm đều tăm tắp!",
+          "next": "Còn nhiều bạn sắp sinh nhật lắm, Gấu Bánh Ngọt lại nhờ {name} nhé.",
+          "who": "{name}, thợ trang trí bánh kem",
+          "learn": "Chọn đúng lúc theo vật chuyển động"
+        },
+        {
+          "game": "wipe-clean",
+          "title": "Lau sạch đồ chơi lấm bùn với Gấu Bánh Ngọt",
+          "summary": "Đồ vật lấm bùn sau cơn mưa, bé xoa xà phòng, xả nước rồi lau khô cho từng món sạch bóng.",
+          "lines": [
+            "Mưa làm đồ chơi ngoài sân lấm bùn hết rồi {name} ơi!",
+            "Xoa xà phòng trước, xả nước sau, cuối cùng lau khô bằng khăn nhé."
+          ],
+          "choice": "Đưa khăn đây, tớ lau cho!",
+          "prompt": "Lau sạch bóng {goal} món đồ nhé!",
+          "reward": "Gấu Bánh Ngọt soi bóng mình trong cái xô: {name} lau sạch như mới!",
+          "next": "Sân nhà lúc nào cũng có đồ cần lau, Gấu nhờ {name} lần sau nhé.",
+          "who": "{name}, người giữ nhà sạch sẽ",
+          "learn": "Làm theo đủ các bước và chăm chỉ"
+        }
+      ]
+    },
+    {
+      "id": "tho-lam-vuon",
+      "name": "Thỏ Làm Vườn",
+      "look": "chibi-rabbit-nau-dress-blue",
+      "where": "Lối đi cạnh vườn rau",
+      "place": "Vườn rau cạnh nhà",
+      "company": [
+        {
+          "routine": "chick",
+          "name": "Gà Con Bới Đất",
+          "model": "animal-chick"
+        }
+      ],
+      "games": [
+        {
+          "game": "garden-cycle",
+          "title": "Chăm vườn rau nhỏ cùng Thỏ Làm Vườn",
+          "summary": "Bé gieo hạt vào luống trống, tưới cây héo, đuổi chim và hái rau khi chín.",
+          "lines": [
+            "Vườn rau cạnh nhà còn mấy luống trống đấy {name}, gieo hạt nào!",
+            "Cây héo thì tưới nước, chim sà xuống thì xua đi, rau chín thì hái ngay."
+          ],
+          "choice": "Tớ mang bình tưới tới đây!",
+          "prompt": "Hái được {goal} bó rau xanh nhé!",
+          "reward": "Thỏ Làm Vườn ôm rổ rau đầy: {name} trồng rau giỏi quá!",
+          "next": "Hạt mới nảy mầm mỗi ngày, Thỏ chờ {name} ra vườn rau chăm tiếp.",
+          "who": "{name}, người trồng rau nhí",
+          "learn": "Chăm sóc cây theo từng giai đoạn"
+        },
+        {
+          "game": "weed-pull",
+          "title": "Nhổ cỏ dại trong luống cà rốt với Thỏ Làm Vườn",
+          "summary": "Bé giữ ngón tay trên cây cỏ dại rồi kéo lên, lắc cỏ ba lá cho lỏng và không nhổ nhầm cà rốt.",
+          "lines": [
+            "Cỏ dại mọc chen vào luống cà rốt của tớ rồi {name} ạ!",
+            "Cỏ ba lá dai lắm, lắc qua lắc lại rồi mới kéo, nhớ chừa cà rốt và hoa nhé."
+          ],
+          "choice": "Tớ nhổ sạch cho cậu!",
+          "prompt": "Nhổ cỏ dại được {goal} điểm nhé!",
+          "reward": "Thỏ Làm Vườn nhảy cẫng lên: luống cà rốt sạch cỏ rồi, cảm ơn {name}!",
+          "next": "Cỏ dại mọc lại nhanh lắm, {name} nhớ ghé vườn rau với Thỏ nhé.",
+          "who": "{name}, người giữ vườn sạch cỏ",
+          "learn": "Phân biệt cây trồng và cỏ dại"
+        },
+        {
+          "game": "lawn-mower",
+          "title": "Cắt cỏ một nét quanh vườn với Thỏ Làm Vườn",
+          "summary": "Bé lái máy cắt qua hết mọi ô cỏ mà không đi lại ô cũ, tránh luống hoa và đá.",
+          "lines": [
+            "Bãi cỏ quanh vườn mọc cao quá rồi, {name} lái máy cắt nhé!",
+            "Phải đi qua hết các ô cỏ mà không quay lại ô đã cắt, nghĩ đường trước nhé."
+          ],
+          "choice": "Tớ lái máy cắt cỏ đây!",
+          "prompt": "Cắt gọn gàng {goal} bãi cỏ nhé!",
+          "reward": "Thỏ Làm Vườn lăn tròn trên cỏ: bãi cỏ {name} cắt mượt như thảm!",
+          "next": "Tuần sau cỏ lại cao, Thỏ hẹn {name} ở lối đi cạnh vườn rau.",
+          "who": "{name}, người cắt cỏ khéo tay",
+          "learn": "Tìm đường đi qua mọi ô một lần"
+        }
+      ]
+    },
+    {
+      "id": "cho-giu-ao",
+      "name": "Chó Giữ Ao",
+      "look": "animal-dog",
+      "tint": "#c8a888",
+      "where": "Cầu tàu bên ao",
+      "place": "Cầu tàu bên ao",
+      "company": [],
+      "games": [
+        {
+          "game": "goldfish-scoop",
+          "title": "Vớt cá vàng bên cầu tàu với Chó Giữ Ao",
+          "summary": "Bé nhúng vợt giấy trước mũi cá rồi nhấc lên đúng lúc, giữ vợt khỏi rách.",
+          "lines": [
+            "Mấy chú cá vàng bơi lạc ra ao rồi {name}, vớt về chậu giúp tớ!",
+            "Nhúng vợt trước mũi cá, chờ cá bơi qua rồi nhấc, ngâm lâu là vợt rách đấy."
+          ],
+          "choice": "Tớ nhẹ tay lắm!",
+          "prompt": "Vớt được {goal} chú cá vàng nhé!",
+          "reward": "Chó Giữ Ao vẫy đuôi tít: cá vàng về chậu đủ cả nhờ {name}!",
+          "next": "Cá vàng hay bơi đi chơi lắm, Chó Giữ Ao chờ {name} ở cầu tàu.",
+          "who": "{name}, người vớt cá khéo léo",
+          "learn": "Khéo tay và kiên nhẫn chờ đợi"
+        },
+        {
+          "game": "path-guide",
+          "title": "Vẽ đường cho vịt con về chuồng với Chó Giữ Ao",
+          "summary": "Các bạn vịt con đi lạc, bé kéo ngón tay vẽ đường cho từng bạn về chuồng cùng màu mà không đụng nhau.",
+          "lines": [
+            "Đàn vịt con lạc mất đường về chuồng rồi {name} ơi!",
+            "Vẽ đường cho từng bạn về chuồng cùng màu, đừng để hai bạn đụng nhau nhé."
+          ],
+          "choice": "Để tớ vẽ đường cho!",
+          "prompt": "Đưa {goal} bạn vịt con về chuồng nhé!",
+          "reward": "Chó Giữ Ao sủa vui: vịt con nào cũng về nhà nhờ {name} đấy!",
+          "next": "Vịt con mải chơi lắm, khi nào lạc Chó Giữ Ao lại gọi {name}.",
+          "who": "{name}, người dẫn đường cho vịt con",
+          "learn": "Vẽ đường và tránh va chạm"
+        }
+      ]
+    }
+  ],
+  "residents": []
+}

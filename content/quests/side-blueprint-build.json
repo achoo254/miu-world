@@ -1,0 +1,80 @@
+{
+  "id": "side-blueprint-build",
+  "region": "xom-mai-am",
+  "chapter": 1,
+  "title": "Xây nhà theo bản vẽ cùng Gấu Đưa Báo",
+  "status": "active",
+  "category": "side",
+  "summary": "Nhìn bản vẽ nhỏ màu xanh rồi đặt từng viên gạch màu cho giống hệt.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, kiến trúc sư tí hon",
+    "where": "Đường đất qua cánh đồng lúa",
+    "goal": "Xây xong ba công trình theo bản vẽ nhé!",
+    "play": "Nhìn bản vẽ nhỏ màu xanh: {name} xây cho giống hệt nhé!",
+    "learn": "Quan sát kỹ và sao chép theo mẫu",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Tớ còn cả xấp bản vẽ nữa, rảnh thì ra đồng xây với tớ."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "gau-dua-bao",
+      "lines": [
+        {
+          "speaker": "Gấu Đưa Báo",
+          "text": "Tớ có bản vẽ ngôi nhà mơ ước nè {name}!"
+        },
+        {
+          "speaker": "Gấu Đưa Báo",
+          "text": "Cậu chọn hũ màu rồi đặt gạch vào ô, xây giống bản vẽ là xong."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Mình cùng xây nào!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Xây theo bản vẽ",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Xây xong ba công trình theo bản vẽ nhé!",
+      "game": "blueprint-build",
+      "goal": 3
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Giống y như bản vẽ, {name} đúng là kiến trúc sư!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Tớ còn cả xấp bản vẽ nữa, rảnh thì ra đồng xây với tớ."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

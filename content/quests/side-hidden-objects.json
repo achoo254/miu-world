@@ -1,0 +1,80 @@
+{
+  "id": "side-hidden-objects",
+  "region": "lau-dai",
+  "chapter": 1,
+  "title": "Tìm đồ ẩn trong hầm cùng Gấu Gác Hầm",
+  "status": "active",
+  "category": "side",
+  "summary": "Bức tranh hầm ngục chất đầy đồ cũ, bé tìm sáu món ở khay dưới cho bay vào khay.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người tìm đồ tinh mắt",
+    "where": "Lối xuống hầm ngục",
+    "goal": "Tìm được sáu món đồ ẩn nhé!",
+    "play": "Khay dưới cùng có sáu món đồ. {name} tìm chúng trong tranh nhé!",
+    "learn": "Quan sát chi tiết trong bức tranh",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Tớ hay để quên đồ lắm, lúc nào ghé hầm ngục tìm giúp tớ nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "gau-gac-ham",
+      "lines": [
+        {
+          "speaker": "Gấu Gác Hầm",
+          "text": "{name} ơi, tớ đánh rơi đồ lung tung trong hầm, không tìm thấy nữa!"
+        },
+        {
+          "speaker": "Gấu Gác Hầm",
+          "text": "Khay dưới có sáu món tớ cần, cậu nhìn kỹ bức tranh rồi chạm đúng món nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ tìm ra hết cho cậu!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Tìm đồ ẩn",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Tìm được sáu món đồ ẩn nhé!",
+      "game": "hidden-objects",
+      "goal": 6
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Đồ về đủ cả, Gấu Gác Hầm vỗ vai {name}: mắt cậu sáng thật!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Tớ hay để quên đồ lắm, lúc nào ghé hầm ngục tìm giúp tớ nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

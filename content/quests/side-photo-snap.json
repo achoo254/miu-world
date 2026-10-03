@@ -1,0 +1,80 @@
+{
+  "id": "side-photo-snap",
+  "region": "dao-bi-an",
+  "chapter": 1,
+  "title": "Chụp ảnh thú rừng nhiệt đới với Khỉ Hái Dừa",
+  "status": "active",
+  "category": "side",
+  "summary": "Các bạn thú nấp sau bụi và gốc cây, bé chờ bạn ấy ló hẳn ra trong khung ngắm rồi mới chụp.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, nhiếp ảnh gia thiên nhiên",
+    "where": "Lối vào rừng nhiệt đới",
+    "goal": "Chụp được sáu tấm ảnh thú thật rõ nhé!",
+    "play": "{name} đi chụp ảnh trong rừng. Các bạn thú nấp sau bụi, đá, gốc cây rồi ló ra nhìn quanh.",
+    "learn": "Kiên nhẫn chờ đúng khoảnh khắc",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Còn nhiều bạn thú chưa ai chụp, {name} quay lại rừng với Khỉ nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "khi-hai-dua",
+      "lines": [
+        {
+          "speaker": "Khỉ Hái Dừa",
+          "text": "Rừng này nhiều bạn thú nhút nhát lắm, {name} cầm máy ảnh đi với tớ nhé!"
+        },
+        {
+          "speaker": "Khỉ Hái Dừa",
+          "text": "Cuộn phim chỉ có mười hai kiểu thôi, đợi bạn thú ló hẳn ra hãy chụp."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Máy ảnh sẵn sàng rồi!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Chụp ảnh thú",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Chụp được sáu tấm ảnh thú thật rõ nhé!",
+      "game": "photo-snap",
+      "goal": 6
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Khỉ Hái Dừa ngắm ảnh mãi: {name} chụp đẹp như nhiếp ảnh gia!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Còn nhiều bạn thú chưa ai chụp, {name} quay lại rừng với Khỉ nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

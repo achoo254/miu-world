@@ -1,0 +1,80 @@
+{
+  "id": "side-maze-trace",
+  "region": "lau-dai",
+  "chapter": 1,
+  "title": "Đi mê cung về nhà với Mèo Gương Thần",
+  "status": "active",
+  "category": "side",
+  "summary": "Mê cung hàng rào hoa trong vườn có sao ở các ngõ cụt, bé kéo ngón tay tìm đường nhặt sao rồi về nhà.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, nhà thám hiểm mê cung",
+    "where": "Lối hoa trong vườn hoàng gia",
+    "goal": "Ghi đủ năm điểm trong mê cung nhé!",
+    "play": "Giữ và kéo ngón tay: {name} đi theo ngón tay qua các lối trong mê cung.",
+    "learn": "Tìm đường và định hướng",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Mê cung hoa mỗi mùa một kiểu, cậu nhớ ghé lối hoa đi thử nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "meo-guong-than",
+      "lines": [
+        {
+          "speaker": "Mèo Gương Thần",
+          "text": "{name} có dám vào mê cung hoa của vườn vua không?"
+        },
+        {
+          "speaker": "Mèo Gương Thần",
+          "text": "Cậu kéo ngón tay đi qua lối nhỏ, nhặt sao ở ngõ cụt rồi tìm đường về nhà nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ không sợ lạc đâu!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Mê cung về nhà",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Ghi đủ năm điểm trong mê cung nhé!",
+      "game": "maze-trace",
+      "goal": 5
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Mèo Gương Thần ra tận cửa đón: {name} tìm đường tài quá!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Mê cung hoa mỗi mùa một kiểu, cậu nhớ ghé lối hoa đi thử nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

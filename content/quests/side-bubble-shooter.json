@@ -1,0 +1,80 @@
+{
+  "id": "side-bubble-shooter",
+  "region": "dao-bi-an",
+  "chapter": 1,
+  "title": "Bắn bóng màu dưới tán dừa cùng Khỉ Hái Dừa",
+  "status": "active",
+  "category": "side",
+  "summary": "Bé kéo ngón tay ngắm theo đường chấm rồi bắn bóng, ba quả cùng màu chạm nhau là nổ.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, xạ thủ bóng màu",
+    "where": "Lối vào rừng nhiệt đới",
+    "goal": "Bắn nổ bóng được ba mươi điểm nhé!",
+    "play": "{name} kéo ngón tay để ngắm theo đường chấm, thả tay để bắn bóng.",
+    "learn": "Nhóm theo màu và ngắm góc bật",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Gió lại thổi bóng mắc lên cây, {name} ghé rừng chơi tiếp với Khỉ nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "khi-hai-dua",
+      "lines": [
+        {
+          "speaker": "Khỉ Hái Dừa",
+          "text": "Chùm bóng màu mắc trên tán dừa kia kìa, {name} bắn rụng giúp tớ!"
+        },
+        {
+          "speaker": "Khỉ Hái Dừa",
+          "text": "Ngắm cho ba quả cùng màu dính nhau là chúng nổ bụp, đừng để chùm bóng chạm vạch đỏ."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Ngắm kỹ rồi bắn này!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Bắn bóng màu",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Bắn nổ bóng được ba mươi điểm nhé!",
+      "game": "bubble-shooter",
+      "goal": 30
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Khỉ Hái Dừa đu cành reo lên: {name} bắn bóng trăm phát trăm trúng!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Gió lại thổi bóng mắc lên cây, {name} ghé rừng chơi tiếp với Khỉ nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

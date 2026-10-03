@@ -1,0 +1,80 @@
+{
+  "id": "side-tennis-rally",
+  "region": "truong-hoc",
+  "chapter": 1,
+  "title": "Đánh bóng bàn cùng Hươu Bóng Rổ",
+  "status": "active",
+  "category": "side",
+  "summary": "Bàn bóng bàn kê cạnh sân: chạm khi bóng vào vòng quanh vợt để đánh trả thật xa bạn Khỉ.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, tay vợt nhỏ của trường",
+    "where": "Cạnh sân bóng rổ",
+    "goal": "Ghi năm điểm qua bạn Khỉ nhé!",
+    "play": "{name} tự chạy theo bóng. Chạm khi bóng bay vào vòng tròn quanh vợt để đánh trả.",
+    "learn": "Canh thời điểm và chọn hướng đánh",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Bạn Khỉ hẹn phục thù đấy, lúc nào rảnh cứ quay lại bàn bóng nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "huou-bong-ro",
+      "lines": [
+        {
+          "speaker": "Hươu Bóng Rổ",
+          "text": "{name} ơi, bạn Khỉ đang tìm người đánh bóng bàn kìa!"
+        },
+        {
+          "speaker": "Hươu Bóng Rổ",
+          "text": "Bóng bay vào vòng tròn quanh vợt thì chạm, chạm phía nào bóng bay về phía đó."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Để tớ đánh với bạn Khỉ!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Đánh bóng bàn",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Ghi năm điểm qua bạn Khỉ nhé!",
+      "game": "tennis-rally",
+      "goal": 5
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Hươu Bóng Rổ reo lên: cú đánh của {name} làm bạn Khỉ chạy không kịp!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Bạn Khỉ hẹn phục thù đấy, lúc nào rảnh cứ quay lại bàn bóng nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

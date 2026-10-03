@@ -1,0 +1,80 @@
+{
+  "id": "side-paper-route",
+  "region": "xom-mai-am",
+  "chapter": 1,
+  "title": "Giao báo bằng xe đạp cùng Gấu Đưa Báo",
+  "status": "active",
+  "category": "side",
+  "summary": "Đạp xe dọc đường đất qua cánh đồng, ném báo vào hộp thư đang giơ cờ đỏ.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, bạn đưa báo của xóm",
+    "where": "Đường đất qua cánh đồng lúa",
+    "goal": "Giao báo tới mười hộp thư nhé!",
+    "play": "{name} đạp xe giao báo dọc phố. Hộp thư giơ cờ đỏ là nhà đang chờ báo.",
+    "learn": "Quan sát trước và ném đúng lúc",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Sáng mai báo lại về, tớ chờ cậu ở đầu đường đồng."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "gau-dua-bao",
+      "lines": [
+        {
+          "speaker": "Gấu Đưa Báo",
+          "text": "Sáng nay báo về nhiều quá, {name} đi giao giúp tớ nhé!"
+        },
+        {
+          "speaker": "Gấu Đưa Báo",
+          "text": "Hộp thư nào giơ cờ đỏ là nhà đang chờ, nhớ ném trước khi xe chạy qua."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Lên xe, mình giao báo nào!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Giao báo xe đạp",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Giao báo tới mười hộp thư nhé!",
+      "game": "paper-route",
+      "goal": 10
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Cả xóm có báo đọc rồi, cảm ơn {name} nhé!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Sáng mai báo lại về, tớ chờ cậu ở đầu đường đồng."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

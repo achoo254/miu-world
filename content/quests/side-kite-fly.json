@@ -1,0 +1,80 @@
+{
+  "id": "side-kite-fly",
+  "region": "nong-trai",
+  "chapter": 1,
+  "title": "Thả diều lên mây cùng Bò Chuông Đồng",
+  "status": "active",
+  "category": "side",
+  "summary": "Gió đồng cỏ thổi lồng lộng, con diều giấy chờ bé lái thật cao.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người lái diều giỏi nhất đồng quê",
+    "where": "Mép đồng cỏ bò sữa",
+    "goal": "Đưa con diều lên cao một trăm mét nhé!",
+    "play": "Giữ và kéo ngón tay sang trái, sang phải để lái con diều.",
+    "learn": "Khéo léo điều khiển và né vật cản",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Hôm nào gió to, tớ lại chờ cậu ở mép đồng cỏ thả diều tiếp."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "bo-chuong-dong",
+      "lines": [
+        {
+          "speaker": "Bò Chuông Đồng",
+          "text": "Gió hôm nay mát rượi, {name} có muốn thả diều không?"
+        },
+        {
+          "speaker": "Bò Chuông Đồng",
+          "text": "Cậu lái diều vào luồng gió cho nó vút lên, nhớ tránh cành cây với lũ chim nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Diều ơi, bay lên nào!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Thả diều",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Đưa con diều lên cao một trăm mét nhé!",
+      "game": "kite-fly",
+      "goal": 100
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Ò ò, diều của {name} chạm tận mây trắng rồi kìa!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Hôm nào gió to, tớ lại chờ cậu ở mép đồng cỏ thả diều tiếp."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

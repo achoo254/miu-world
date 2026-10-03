@@ -1,0 +1,80 @@
+{
+  "id": "side-sled-slalom",
+  "region": "nui-tuyet",
+  "chapter": 1,
+  "title": "Trượt xe tuyết qua cổng cờ cùng Cáo Tuyết",
+  "status": "active",
+  "category": "side",
+  "summary": "Ngồi xe trượt lao xuống dốc, bé kéo ngón tay lái qua giữa từng cặp cờ và né cây thông.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, tay lái xe trượt tuyết",
+    "where": "Chân khu trượt tuyết",
+    "goal": "Lái qua mười lăm cổng cờ trên dốc tuyết nhé!",
+    "play": "{name} ngồi xe trượt lao xuống dốc tuyết.",
+    "learn": "Lái khéo và nhìn trước đường đi",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Mai Cáo Tuyết cắm thêm cờ mới, {name} lại xuống dốc chơi nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "cao-tuyet-nhay-cau",
+      "lines": [
+        {
+          "speaker": "Cáo Tuyết Nhảy Cầu",
+          "text": "Tớ cắm cờ đỏ cờ xanh dọc dốc rồi, {name} lái xe trượt qua nhé!"
+        },
+        {
+          "speaker": "Cáo Tuyết Nhảy Cầu",
+          "text": "Kéo sang trái sang phải cho xe chui giữa hai lá cờ, coi chừng cây thông."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Ngồi vững, xuất phát!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Trượt tuyết qua cờ",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Lái qua mười lăm cổng cờ trên dốc tuyết nhé!",
+      "game": "sled-slalom",
+      "goal": 15
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Cáo Tuyết vẫy cờ rối rít: {name} lái xe trượt khéo ghê!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Mai Cáo Tuyết cắm thêm cờ mới, {name} lại xuống dốc chơi nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

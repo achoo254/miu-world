@@ -1,0 +1,80 @@
+{
+  "id": "side-banh-chung-wrap",
+  "region": "nha-cua-be",
+  "chapter": 1,
+  "title": "Gói bánh chưng ngày Tết với Gấu Bánh Ngọt",
+  "status": "active",
+  "category": "side",
+  "summary": "Ngoài sân, bé lót lá, xếp gạo, đậu, thịt theo hình mẫu rồi gập lá và buộc lạt thành bánh vuông.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người gói bánh chưng",
+    "where": "Sân trước nhà",
+    "goal": "Gói được ba chiếc bánh chưng vuông vức nhé!",
+    "play": "{name} lót lá, rồi cho gạo, đậu, thịt vào khuôn theo hàng hình ở trên (chạm hoặc kéo).",
+    "learn": "Làm đúng thứ tự từng bước",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Tết nào cũng cần bánh, Gấu Bánh Ngọt hẹn {name} ở sân trước nhà."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "gau-banh-ngot",
+      "lines": [
+        {
+          "speaker": "Gấu Bánh Ngọt",
+          "text": "Sắp Tết rồi {name} ơi, mình gói bánh chưng thật vuông nhé!"
+        },
+        {
+          "speaker": "Gấu Bánh Ngọt",
+          "text": "Xếp gạo, đậu, thịt theo hàng hình, rồi vuốt gập lá theo mũi tên là xong."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ gói chiếc đầu tiên!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Gói bánh chưng",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Gói được ba chiếc bánh chưng vuông vức nhé!",
+      "game": "banh-chung-wrap",
+      "goal": 3
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Gấu Bánh Ngọt xếp bánh lên mâm: bánh {name} gói vuông như hộp quà!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Tết nào cũng cần bánh, Gấu Bánh Ngọt hẹn {name} ở sân trước nhà."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

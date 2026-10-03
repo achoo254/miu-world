@@ -1,0 +1,80 @@
+{
+  "id": "side-banh-xeo-flip",
+  "region": "nha-cua-be",
+  "chapter": 1,
+  "title": "Đổ bánh xèo giòn rụm với Gấu Bánh Ngọt",
+  "status": "active",
+  "category": "side",
+  "summary": "Bé đổ bột vào chảo, chờ bánh vàng thì lật, mặt kia vàng thì cho ra đĩa trước khi bánh cháy.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, đầu bếp bánh xèo",
+    "where": "Sân trước nhà",
+    "goal": "Đổ được mười cái bánh xèo vàng giòn nhé!",
+    "play": "Chạm chảo trống để đổ bột. Vòng quanh chảo xanh lên là bánh đã vàng.",
+    "learn": "Canh thời gian và làm nhiều việc cùng lúc",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Bữa sau lại có bánh xèo, {name} ra sân trước nhà phụ Gấu nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "gau-banh-ngot",
+      "lines": [
+        {
+          "speaker": "Gấu Bánh Ngọt",
+          "text": "Chảo nóng rồi đấy {name}, mình đổ bánh xèo xèo xèo nào!"
+        },
+        {
+          "speaker": "Gấu Bánh Ngọt",
+          "text": "Viền chảo xanh lên là bánh đã vàng, chạm lật ngay kẻo cháy nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Đổ bột thôi, thơm quá!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Đổ bánh xèo",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Đổ được mười cái bánh xèo vàng giòn nhé!",
+      "game": "banh-xeo-flip",
+      "goal": 10
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Gấu Bánh Ngọt hít hà: bánh xèo của {name} giòn tan luôn!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Bữa sau lại có bánh xèo, {name} ra sân trước nhà phụ Gấu nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

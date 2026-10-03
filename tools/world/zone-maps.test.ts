@@ -1,3 +1,5 @@
+import { readFileSync } from 'node:fs';
+import path from 'node:path';
 import { beforeAll, describe, expect, it } from 'vitest';
 import { worldEntitiesSchema } from '../../packages/voxel/src/world-entities';
 import { generateChoPhien } from './generate-cho-phien-map';
@@ -11,6 +13,11 @@ import { generateThuVien } from './generate-thu-vien-map';
 import { generateTrungTam } from './generate-trung-tam-map';
 import { generateXomMaiAm } from './generate-xom-mai-am-map';
 import { expectCommittedOutput, expectLively, expectStandsOnGround, expectTargetsReachable } from './map-checks';
+import { RegionCatalog } from '../../packages/schema/src/region';
+import { REPO_ROOT } from '../assets/asset-lib';
+import { sideQuestTableOf } from '../content/side-quest-table';
+
+const regionOfMap = new Map(RegionCatalog.parse(JSON.parse(readFileSync(path.join(REPO_ROOT, 'content/world/regions.json'), 'utf8'))).regions.map((r) => [r.map, r.id]));
 
 /** What a wide theme map holds at least: interactables (lessons, gates, rides), people at work and animals. */
 const WIDE = { targets: 21, people: 8, animals: 30 } as const;
@@ -53,6 +60,19 @@ describe.each(MAPS)('%s map', (id, generate, side, least) => {
 
   it('is lively: people at their everyday work and animals about', () => {
     expectLively(map.entities, least);
+  });
+
+  it('places every character who offers minigames, in the world whichever lesson is played, with its company', () => {
+    const table = sideQuestTableOf(regionOfMap.get(id) ?? id);
+    expect(table.givers.length).toBeGreaterThanOrEqual(3);
+    const byId = new Map(map.entities.interactables.map((t) => [t.id, t]));
+    for (const giver of table.givers) {
+      const t = byId.get(giver.id);
+      expect(t, giver.id).toBeDefined();
+      expect([t?.chapter, t?.chapters, t?.quest], giver.id).toEqual([undefined, undefined, undefined]);
+    }
+    const folk = (map.entities.ambients ?? []).filter((a) => a.id.startsWith('folk-'));
+    expect(folk.length).toBe(table.givers.reduce((n, g) => n + g.company.length, 0) + table.residents.length);
   });
 
   it('can be walked from the spawn to every quest target', async () => {

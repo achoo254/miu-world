@@ -1,0 +1,80 @@
+{
+  "id": "side-pair-link",
+  "region": "thu-vien",
+  "chapter": 1,
+  "title": "Nối hình giống nhau với Nai Trí Nhớ",
+  "status": "active",
+  "category": "side",
+  "summary": "Bảng hình bày kín ô, bé tìm hai hình giống nhau và nối chúng bằng đường gấp khúc ít lần.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người nối hình nhanh nhẹn",
+    "where": "Đầu cầu đá bên hồ",
+    "goal": "Nối được mười hai cặp hình giống nhau nhé!",
+    "play": "{name} chạm hai hình giống nhau để nối chúng lại.",
+    "learn": "Nhìn tìm hình giống và tìm đường đi",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Cầu đá bên hồ luôn có tớ với bảng hình mới, nhớ quay lại nha."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "nai-tri-nho",
+      "lines": [
+        {
+          "speaker": "Nai Trí Nhớ",
+          "text": "Ơ kìa {name}, tấm bảng hình của tớ cần người tinh mắt nối giúp!"
+        },
+        {
+          "speaker": "Nai Trí Nhớ",
+          "text": "Cậu chạm hai hình giống nhau, đường nối chỉ được gấp khúc hai lần và không cắt qua hình khác."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ tìm ra cặp đầu rồi!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Nối hình giống nhau",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Nối được mười hai cặp hình giống nhau nhé!",
+      "game": "pair-link",
+      "goal": 12
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Bảng hình sạch trơn, Nai Trí Nhớ khen {name} nhìn nhanh như gió!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Cầu đá bên hồ luôn có tớ với bảng hình mới, nhớ quay lại nha."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

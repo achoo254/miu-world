@@ -1,0 +1,80 @@
+{
+  "id": "side-snowman-roll",
+  "region": "nui-tuyet",
+  "chapter": 1,
+  "title": "Lăn tuyết đắp người tuyết với Gấu Trắng Lăn Tuyết",
+  "status": "active",
+  "category": "side",
+  "summary": "Bé lăn quả tuyết khắp sân cho to dần rồi chồng ba quả to, vừa, nhỏ thành người tuyết.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, nghệ nhân đắp người tuyết",
+    "where": "Bãi người tuyết đầu làng",
+    "goal": "Chồng đúng sáu quả tuyết lên người tuyết nhé!",
+    "play": "Kéo quả tuyết lăn khắp sân: lăn càng xa, quả càng to.",
+    "learn": "So sánh to, vừa, nhỏ",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Bãi người tuyết lúc nào cũng còn chỗ, Gấu Trắng đợi {name} quay lại."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "gau-trang-lan-tuyet",
+      "lines": [
+        {
+          "speaker": "Gấu Trắng Lăn Tuyết",
+          "text": "Tuyết mới rơi dày quá, {name} đắp người tuyết với tớ không?"
+        },
+        {
+          "speaker": "Gấu Trắng Lăn Tuyết",
+          "text": "Lăn càng xa quả tuyết càng to, vừa vòng nét đứt thì thả vào nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Đắp cả một gia đình người tuyết luôn!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Lăn người tuyết",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Chồng đúng sáu quả tuyết lên người tuyết nhé!",
+      "game": "snowman-roll",
+      "goal": 6
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Gấu Trắng ôm bụng cười: người tuyết của {name} đẹp nhất bãi!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Bãi người tuyết lúc nào cũng còn chỗ, Gấu Trắng đợi {name} quay lại."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

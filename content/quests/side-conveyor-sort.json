@@ -1,0 +1,80 @@
+{
+  "id": "side-conveyor-sort",
+  "region": "nong-trai",
+  "chapter": 1,
+  "title": "Chia đồ trên băng chuyền với Heo Kho Hàng",
+  "status": "active",
+  "category": "side",
+  "summary": "Băng chuyền trong kho chạy rầm rập, bé đưa từng món vào đúng giỏ theo tấm bảng.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người giữ kho tinh mắt",
+    "where": "Cửa nhà kho chế biến",
+    "goal": "Xếp đúng giỏ ba mươi món đồ nhé!",
+    "play": "Đồ vật chạy trên băng chuyền. Xem bảng trên hai cái giỏ: con vật dưới nước, quả, xe cộ…",
+    "learn": "Phân loại đồ vật theo nhóm",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Băng chuyền chạy suốt ngày, cứ ghé cửa kho nếu cậu muốn chia tiếp."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "heo-kho-hang",
+      "lines": [
+        {
+          "speaker": "Heo Kho Hàng",
+          "text": "Ủn ỉn, {name} tới đúng lúc quá, băng chuyền đầy ắp đồ rồi!"
+        },
+        {
+          "speaker": "Heo Kho Hàng",
+          "text": "Cậu nhìn bảng trên giỏ rồi gạt món nào vào giỏ nấy, bảng đổi thì nhìn lại nha."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Giao cho tớ, tớ chia nhanh lắm!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Băng chuyền phân loại",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Xếp đúng giỏ ba mươi món đồ nhé!",
+      "game": "conveyor-sort",
+      "goal": 30
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Heo Kho Hàng ủn ỉn vui sướng: kho gọn gàng hết rồi nhờ {name}!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Băng chuyền chạy suốt ngày, cứ ghé cửa kho nếu cậu muốn chia tiếp."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

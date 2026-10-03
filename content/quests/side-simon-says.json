@@ -1,0 +1,80 @@
+{
+  "id": "side-simon-says",
+  "region": "nong-trai",
+  "chapter": 1,
+  "title": "Nghe dàn đồng ca nông trại với Heo Kho Hàng",
+  "status": "active",
+  "category": "side",
+  "summary": "Các bạn thú nông trại hát lần lượt, bé nhớ thứ tự rồi chạm lại cho đúng bài.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, nhạc trưởng nhí của dàn thú",
+    "where": "Cửa nhà kho chế biến",
+    "goal": "Nhớ đúng sáu lượt bài hát của các bạn thú nhé!",
+    "play": "Các con vật lần lượt sáng lên và hát. {name} nghe và nhìn thật kỹ nhé.",
+    "learn": "Ghi nhớ thứ tự âm thanh và hình ảnh",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Dàn đồng ca còn tập bài mới, lúc khác cậu nghe tiếp ở cửa kho nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "heo-kho-hang",
+      "lines": [
+        {
+          "speaker": "Heo Kho Hàng",
+          "text": "{name} nè, tớ lập được dàn đồng ca của bò, gà, vịt đấy!"
+        },
+        {
+          "speaker": "Heo Kho Hàng",
+          "text": "Mỗi bạn hát một nốt, cậu nhớ ai hát trước ai hát sau rồi chạm lại theo nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ nhớ giỏi lắm, hát đi!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Con vật hát theo thứ tự",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Nhớ đúng sáu lượt bài hát của các bạn thú nhé!",
+      "game": "simon-says",
+      "goal": 6
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Cả dàn đồng ca cúi chào, Heo Kho Hàng khen {name} nhớ như in!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Dàn đồng ca còn tập bài mới, lúc khác cậu nghe tiếp ở cửa kho nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

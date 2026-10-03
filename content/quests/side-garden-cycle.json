@@ -1,0 +1,80 @@
+{
+  "id": "side-garden-cycle",
+  "region": "nha-cua-be",
+  "chapter": 1,
+  "title": "Chăm vườn rau nhỏ cùng Thỏ Làm Vườn",
+  "status": "active",
+  "category": "side",
+  "summary": "Bé gieo hạt vào luống trống, tưới cây héo, đuổi chim và hái rau khi chín.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người trồng rau nhí",
+    "where": "Lối đi cạnh vườn rau",
+    "goal": "Hái được hai mươi bó rau xanh nhé!",
+    "play": "Chạm luống trống để gieo hạt. Cây héo thì chạm (hoặc kéo ngón tay qua) để tưới.",
+    "learn": "Chăm sóc cây theo từng giai đoạn",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Hạt mới nảy mầm mỗi ngày, Thỏ chờ {name} ra vườn rau chăm tiếp."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "tho-lam-vuon",
+      "lines": [
+        {
+          "speaker": "Thỏ Làm Vườn",
+          "text": "Vườn rau cạnh nhà còn mấy luống trống đấy {name}, gieo hạt nào!"
+        },
+        {
+          "speaker": "Thỏ Làm Vườn",
+          "text": "Cây héo thì tưới nước, chim sà xuống thì xua đi, rau chín thì hái ngay."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ mang bình tưới tới đây!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Vườn rau của bé",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Hái được hai mươi bó rau xanh nhé!",
+      "game": "garden-cycle",
+      "goal": 20
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Thỏ Làm Vườn ôm rổ rau đầy: {name} trồng rau giỏi quá!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Hạt mới nảy mầm mỗi ngày, Thỏ chờ {name} ra vườn rau chăm tiếp."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

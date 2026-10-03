@@ -1,0 +1,242 @@
+{
+  "region": "thu-vien",
+  "givers": [
+    {
+      "id": "koala-ghep-tranh",
+      "name": "Koala Ghép Tranh",
+      "look": "animal-koala",
+      "tint": "#c8d0e0",
+      "where": "Lối vào vườn đọc sách",
+      "place": "Vườn đọc sách",
+      "company": [
+        {
+          "routine": "reader",
+          "name": "Bạn ngồi đọc ngoài vườn",
+          "model": "person-n"
+        }
+      ],
+      "games": [
+        {
+          "game": "jigsaw",
+          "title": "Ghép tranh trong vườn đọc sách với Koala Ghép Tranh",
+          "summary": "Những mảnh tranh vương trên bàn ngoài vườn, bé kéo từng mảnh vào đúng chỗ có hình mờ.",
+          "lines": [
+            "Chào {name}, gió thổi tung bức tranh của tớ ra từng mảnh rồi!",
+            "Cậu tìm chỗ hình mờ giống mảnh nào thì đặt mảnh đó vào, tớ ngồi xem cậu ghép nhé."
+          ],
+          "choice": "Để tớ ghép lại cho!",
+          "prompt": "Ghép đúng {goal} mảnh tranh nhé!",
+          "reward": "Koala Ghép Tranh ôm bức tranh lành lặn: {name} khéo tay thật đấy!",
+          "next": "Tớ còn cả chồng tranh nữa, rảnh thì ra vườn đọc sách ghép cùng tớ.",
+          "who": "{name}, thợ ghép tranh của vườn sách",
+          "learn": "Nhận ra hình dạng và chi tiết giống nhau"
+        },
+        {
+          "game": "sliding-tiles",
+          "title": "Trượt ô ghép tranh cùng Koala Ghép Tranh",
+          "summary": "Bức tranh số bị xáo tung, bé trượt từng ô vào chỗ trống cho đúng thứ tự từ 1 tới 8.",
+          "lines": [
+            "{name} ơi, bạn chim nghịch xáo bức tranh trượt của tớ mất rồi.",
+            "Cậu chạm ô nằm cạnh chỗ trống để trượt nó sang, xếp lại từ 1 tới 8 là được."
+          ],
+          "choice": "Tớ trượt ngay đây!",
+          "prompt": "Xếp xong {goal} bức tranh trượt nhé!",
+          "reward": "Tranh về đúng chỗ rồi, Koala Ghép Tranh vỗ tay khen {name}!",
+          "next": "Mỗi ngày tớ lại có tranh trượt mới, nhớ ra vườn chơi tiếp nhé.",
+          "who": "{name}, người xếp ô tài giỏi",
+          "learn": "Suy nghĩ trước nhiều bước và đếm theo thứ tự"
+        },
+        {
+          "game": "tangram",
+          "title": "Ghép hình bảy mảnh với Koala Ghép Tranh",
+          "summary": "Bảy mảnh gỗ màu nằm cạnh những bóng hình, bé xoay và kéo mảnh cho khít bóng.",
+          "lines": [
+            "{name} xem này, bảy mảnh gỗ của tớ có thể ghép thành con mèo đấy!",
+            "Cậu chạm mảnh để xoay, rồi kéo vào bóng hình cho vừa khít, đủ bảy mảnh là xong."
+          ],
+          "choice": "Cho tớ thử ghép một hình!",
+          "prompt": "Ghép xong {goal} hình từ bảy mảnh nhé!",
+          "reward": "Ôi đẹp quá! Koala Ghép Tranh treo hình của {name} lên cành cây.",
+          "next": "Tớ sẽ nghĩ thêm hình mới, cậu quay lại vườn đọc sách thử tiếp nha.",
+          "who": "{name}, nhà ghép hình sáng tạo",
+          "learn": "Nhận biết hình phẳng và xoay hình trong đầu"
+        }
+      ]
+    },
+    {
+      "id": "gau-truc-dan-phim",
+      "name": "Gấu Trúc Đàn Phím",
+      "look": "animal-panda",
+      "tint": "#d8d8f0",
+      "where": "Trước sân khấu lá vàng",
+      "place": "Sân khấu lá vàng",
+      "company": [
+        {
+          "routine": "pupil",
+          "name": "Bạn nhỏ nghe đàn",
+          "model": "person-o"
+        }
+      ],
+      "games": [
+        {
+          "game": "piano-tiles",
+          "title": "Đánh đàn phím rơi cùng Gấu Trúc Đàn Phím",
+          "summary": "Phím đàn màu rơi theo bài hát trước sân khấu lá vàng, bé chạm đúng lúc để bài nhạc vang lên.",
+          "lines": [
+            "{name} đến rồi! Tớ đang tập một bài thật vui cho hội lá vàng.",
+            "Phím rơi tới vạch sáng thì cậu chạm, đừng để rơi mất nhiều phím nhé."
+          ],
+          "choice": "Mình đàn chung nhé!",
+          "prompt": "Đàn được {goal} điểm phím nhạc nhé!",
+          "reward": "Cả sân khấu vỗ tay, Gấu Trúc Đàn Phím cúi chào {name} cùng nhau!",
+          "next": "Chiều nào tớ cũng tập đàn trước sân khấu lá vàng, ghé nghe nhé.",
+          "who": "{name}, nghệ sĩ đàn nhí",
+          "learn": "Giữ nhịp và chạm đúng thời điểm"
+        },
+        {
+          "game": "memory-pairs",
+          "title": "Lật thẻ tìm cặp với Gấu Trúc Đàn Phím",
+          "summary": "Những tấm thẻ úp trên bàn đá, bé lật hai thẻ một lúc và nhớ chỗ từng hình để tìm cặp.",
+          "lines": [
+            "Này {name}, tớ có một bộ thẻ hình nhạc cụ úp sấp đây.",
+            "Cậu lật hai thẻ, giống nhau là được một cặp, khác nhau thì nhớ chỗ để lần sau lật đúng."
+          ],
+          "choice": "Tớ nhớ dai lắm đấy!",
+          "prompt": "Tìm đủ {goal} cặp hình giống nhau nhé!",
+          "reward": "Gấu Trúc Đàn Phím gõ một nốt thật vang: trí nhớ của {name} siêu quá!",
+          "next": "Bộ thẻ của tớ còn nhiều hình nữa, lúc nào rảnh lại lật cùng tớ nhé.",
+          "who": "{name}, người có trí nhớ tốt",
+          "learn": "Ghi nhớ vị trí hình ảnh"
+        }
+      ]
+    },
+    {
+      "id": "tho-ngam-sao",
+      "name": "Thỏ Ngắm Sao",
+      "look": "chibi-rabbit-xam-overalls-red",
+      "where": "Bãi cỏ quanh tháp đồng hồ",
+      "place": "Bãi cỏ quanh tháp",
+      "company": [
+        {
+          "routine": "reader",
+          "name": "Bác chỉnh đồng hồ tháp",
+          "model": "person-k"
+        }
+      ],
+      "games": [
+        {
+          "game": "star-connect",
+          "title": "Nối chòm sao cùng Thỏ Ngắm Sao",
+          "summary": "Trời tối dần quanh tháp đồng hồ, bé nối các ngôi sao theo số để một bạn trên trời hiện ra.",
+          "lines": [
+            "{name} ơi, nhìn lên trời đi, các ngôi sao đang đợi được nối lại kìa!",
+            "Cậu chạm sao theo số 1, 2, 3 cho tới 10, nối xong sẽ thấy một hình vui lắm."
+          ],
+          "choice": "Mình nối sao thôi!",
+          "prompt": "Nối xong {goal} chòm sao nhé!",
+          "reward": "Bầu trời sáng rực hình mới, Thỏ Ngắm Sao reo: {name} vẽ trời đẹp quá!",
+          "next": "Đêm nào trời trong, tớ cũng ngồi bãi cỏ quanh tháp chờ cậu ngắm sao.",
+          "who": "{name}, nhà thiên văn nhí",
+          "learn": "Đếm theo thứ tự từ 1 đến 10"
+        },
+        {
+          "game": "hanoi-tower",
+          "title": "Chuyển bánh tầng với Thỏ Ngắm Sao",
+          "summary": "Chồng bánh nhiều tầng đặt trên đĩa, bé chuyển từng tầng sang đĩa có ngôi sao mà không để bánh to đè bánh nhỏ.",
+          "lines": [
+            "{name} giúp tớ với, tớ phải mang chồng bánh sang đĩa ngôi sao!",
+            "Mỗi lần cậu nhấc một tầng trên cùng thôi, và tầng to không được nằm trên tầng nhỏ đâu."
+          ],
+          "choice": "Tớ chuyển cẩn thận lắm!",
+          "prompt": "Chuyển trọn {goal} chồng bánh sang đĩa ngôi sao nhé!",
+          "reward": "Bánh vẫn nguyên vẹn, Thỏ Ngắm Sao mời {name} ăn miếng đầu tiên!",
+          "next": "Lần sau tớ làm chồng bánh cao hơn, cậu lại tới thử tài nhé.",
+          "who": "{name}, người chuyển bánh khéo nhất",
+          "learn": "Lập kế hoạch nhiều bước và so sánh to nhỏ"
+        },
+        {
+          "game": "ball-sort-tubes",
+          "title": "Xếp bi màu vào ống cùng Thỏ Ngắm Sao",
+          "summary": "Bi các màu trộn lẫn trong những ống thủy tinh, bé nhấc từng viên để mỗi ống chỉ còn một màu.",
+          "lines": [
+            "{name} nè, tớ làm đổ hộp bi, giờ màu nào cũng lẫn vào nhau rồi.",
+            "Cậu nhấc viên trên cùng thả sang ống khác, chỉ đặt lên bi cùng màu hoặc ống trống thôi nha."
+          ],
+          "choice": "Để tớ chia màu cho!",
+          "prompt": "Xếp đầy {goal} ống bi cùng màu nhé!",
+          "reward": "Ống nào cũng gọn một màu, Thỏ Ngắm Sao khen {name} kiên nhẫn ghê!",
+          "next": "Hộp bi của tớ hay đổ lắm, cậu ghé tháp đồng hồ xếp giúp tớ nữa nhé.",
+          "who": "{name}, người phân màu kiên nhẫn",
+          "learn": "Phân loại theo màu và suy tính trước"
+        }
+      ]
+    },
+    {
+      "id": "nai-tri-nho",
+      "name": "Nai Trí Nhớ",
+      "look": "animal-deer",
+      "tint": "#d8b8a0",
+      "where": "Đầu cầu đá bên hồ",
+      "place": "Cầu đá bên hồ",
+      "company": [
+        {
+          "routine": "pupil",
+          "name": "Bạn nhỏ ôm sách qua cầu",
+          "model": "person-q"
+        }
+      ],
+      "games": [
+        {
+          "game": "whats-missing",
+          "title": "Đoán món đồ biến mất cùng Nai Trí Nhớ",
+          "summary": "Trên khay bày nhiều đồ vật, đèn tắt một chút rồi sáng lại, bé tìm ra món đã biến mất.",
+          "lines": [
+            "{name} đến chơi với tớ à? Tớ có một khay đồ vật biết trốn đấy!",
+            "Cậu nhìn kỹ khay đồ, lúc đèn sáng lại hãy chỉ ra món nào vừa biến mất nhé."
+          ],
+          "choice": "Tớ nhìn kỹ rồi, tắt đèn đi!",
+          "prompt": "Đoán đúng {goal} lượt món đồ biến mất nhé!",
+          "reward": "Nai Trí Nhớ dụi mũi vào tay {name}: cậu tinh mắt thật!",
+          "next": "Khay đồ của tớ đổi món mỗi ngày, cậu ghé đầu cầu đá chơi tiếp nhé.",
+          "who": "{name}, thám tử nhí tinh mắt",
+          "learn": "Quan sát kỹ và ghi nhớ đồ vật"
+        },
+        {
+          "game": "pair-link",
+          "title": "Nối hình giống nhau với Nai Trí Nhớ",
+          "summary": "Bảng hình bày kín ô, bé tìm hai hình giống nhau và nối chúng bằng đường gấp khúc ít lần.",
+          "lines": [
+            "Ơ kìa {name}, tấm bảng hình của tớ cần người tinh mắt nối giúp!",
+            "Cậu chạm hai hình giống nhau, đường nối chỉ được gấp khúc hai lần và không cắt qua hình khác."
+          ],
+          "choice": "Tớ tìm ra cặp đầu rồi!",
+          "prompt": "Nối được {goal} cặp hình giống nhau nhé!",
+          "reward": "Bảng hình sạch trơn, Nai Trí Nhớ khen {name} nhìn nhanh như gió!",
+          "next": "Cầu đá bên hồ luôn có tớ với bảng hình mới, nhớ quay lại nha.",
+          "who": "{name}, người nối hình nhanh nhẹn",
+          "learn": "Nhìn tìm hình giống và tìm đường đi"
+        }
+      ]
+    }
+  ],
+  "residents": [
+    {
+      "routine": "reader",
+      "name": "Cô đọc thơ dưới cây lá vàng",
+      "model": "person-h",
+      "place": "Cây lá vàng"
+    },
+    {
+      "routine": "cat",
+      "name": "Mèo Ngủ Trên Bậc Thềm",
+      "model": "animal-cat",
+      "place": "Quảng trường đài phun"
+    },
+    {
+      "routine": "sweeper",
+      "name": "Bác quét đường lá vàng",
+      "model": "person-b",
+      "place": "Đường lá vàng"
+    }
+  ]
+}

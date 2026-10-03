@@ -1,6 +1,7 @@
 import { beforeAll, describe, expect, it } from 'vitest';
 import { worldEntitiesSchema } from '../../packages/voxel/src/world-entities';
 import { ROUTINES, spotsUsed } from '../../apps/web/src/game/ambient/ambient-routines';
+import { sideQuestTableOf } from '../content/side-quest-table';
 import { QUEST_CLEARANCE } from './forest-life';
 import { generateForest } from './generate-forest-map';
 import { expectCommittedOutput, expectStandsOnGround, expectTargetsReachable } from './map-checks';
@@ -22,11 +23,14 @@ describe('forest generator', () => {
     // Chapter 1's own targets carry no chapter; every other target (the Tiếng Việt quests' places, placed
     // from content/world/targets.json) is tagged with the chapters or the quest it belongs to.
     const ch1 = ['ancient-tree', 'animal-beaver', 'chest', 'clue-box', 'clue-letter', 'clue-mushroom', 'cong-trung-tam', 'gate-ch2', 'parrot-guide', 'stream-stones'];
-    // The forest train's stops (rides to the glades and back) stand in every chapter too.
+    // The forest train's stops (rides to the glades and back) and the characters who offer minigames (side
+    // quests, always in the world) stand in every chapter too.
+    const givers = sideQuestTableOf('khu-rung-bi-mat').givers.map((g) => g.id);
+    expect(givers.length).toBeGreaterThanOrEqual(3);
     const untagged = parsed.interactables.filter((t) => t.chapter === undefined && t.chapters === undefined && !t.ride);
-    expect(untagged.map((t) => t.id).sort()).toEqual(ch1.sort());
+    expect(untagged.map((t) => t.id).sort()).toEqual([...ch1, ...givers].sort());
     expect(parsed.interactables.filter((t) => t.ride)).toHaveLength(8);
-    for (const t of parsed.interactables.filter((t) => !ch1.includes(t.id) && !t.ride)) expect(t.chapter ?? t.chapters?.[0], t.id).toBeGreaterThanOrEqual(2);
+    for (const t of parsed.interactables.filter((t) => !ch1.includes(t.id) && !givers.includes(t.id) && !t.ride)) expect(t.chapter ?? t.chapters?.[0], t.id).toBeGreaterThanOrEqual(2);
     expectStandsOnGround(world, entities);
   }, 60_000);
 

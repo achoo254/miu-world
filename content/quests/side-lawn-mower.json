@@ -1,0 +1,80 @@
+{
+  "id": "side-lawn-mower",
+  "region": "nha-cua-be",
+  "chapter": 1,
+  "title": "Cắt cỏ một nét quanh vườn với Thỏ Làm Vườn",
+  "status": "active",
+  "category": "side",
+  "summary": "Bé lái máy cắt qua hết mọi ô cỏ mà không đi lại ô cũ, tránh luống hoa và đá.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người cắt cỏ khéo tay",
+    "where": "Lối đi cạnh vườn rau",
+    "goal": "Cắt gọn gàng ba bãi cỏ nhé!",
+    "play": "{name} kéo ngón tay (hoặc vuốt) để lái máy cắt qua từng ô cỏ.",
+    "learn": "Tìm đường đi qua mọi ô một lần",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Tuần sau cỏ lại cao, Thỏ hẹn {name} ở lối đi cạnh vườn rau."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "tho-lam-vuon",
+      "lines": [
+        {
+          "speaker": "Thỏ Làm Vườn",
+          "text": "Bãi cỏ quanh vườn mọc cao quá rồi, {name} lái máy cắt nhé!"
+        },
+        {
+          "speaker": "Thỏ Làm Vườn",
+          "text": "Phải đi qua hết các ô cỏ mà không quay lại ô đã cắt, nghĩ đường trước nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ lái máy cắt cỏ đây!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Cắt cỏ một nét",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Cắt gọn gàng ba bãi cỏ nhé!",
+      "game": "lawn-mower",
+      "goal": 3
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Thỏ Làm Vườn lăn tròn trên cỏ: bãi cỏ {name} cắt mượt như thảm!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Tuần sau cỏ lại cao, Thỏ hẹn {name} ở lối đi cạnh vườn rau."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

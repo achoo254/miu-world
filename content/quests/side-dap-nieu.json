@@ -1,0 +1,80 @@
+{
+  "id": "side-dap-nieu",
+  "region": "lang-ven-song",
+  "chapter": 1,
+  "title": "Đập niêu ở hội làng cùng Cô Hội Làng",
+  "status": "active",
+  "category": "side",
+  "summary": "Nhìn kỹ chỗ treo niêu đất, rồi bịt mắt mò tới và đập cho vỡ.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người chơi hội làng tinh mắt",
+    "where": "Quảng trường làng",
+    "goal": "Đập vỡ bốn cái niêu nhé!",
+    "play": "Nhìn kỹ chỗ treo niêu đất. Sau ba giây, {name} bị bịt mắt!",
+    "learn": "Ghi nhớ vị trí và định hướng",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Năm nào hội làng cũng có đập niêu, cô vẫn đứng ở quảng trường chờ cháu."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "co-hoi-lang",
+      "lines": [
+        {
+          "speaker": "Cô Hội Làng",
+          "text": "Hội làng mở rồi, {name} vào chơi đập niêu với cô nhé!"
+        },
+        {
+          "speaker": "Cô Hội Làng",
+          "text": "Nhớ thật kỹ niêu treo ở đâu, vì lát nữa cháu bị bịt mắt đấy."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu nhớ kỹ rồi cô ạ!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Đập niêu",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Đập vỡ bốn cái niêu nhé!",
+      "game": "dap-nieu",
+      "goal": 4
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Bốp! Niêu vỡ tung kẹo, {name} tài quá!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Năm nào hội làng cũng có đập niêu, cô vẫn đứng ở quảng trường chờ cháu."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

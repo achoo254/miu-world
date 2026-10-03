@@ -1,0 +1,80 @@
+{
+  "id": "side-shell-game",
+  "region": "cho-phien",
+  "chapter": 1,
+  "title": "Úp bát tìm ngọc cùng Mèo Gắp Thú",
+  "status": "active",
+  "category": "side",
+  "summary": "Ba cái bát đổi chỗ thoăn thoắt, dõi mắt theo bát có viên ngọc rồi chỉ đúng.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người dõi theo tinh mắt",
+    "where": "Chân cầu hình rồng",
+    "goal": "Tìm đúng viên ngọc năm lần nhé!",
+    "play": "Viên ngọc nằm dưới một cái bát. {name} nhìn kỹ nhé!",
+    "learn": "Tập trung chú ý và ghi nhớ",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Tớ sẽ tập đảo bát nhanh hơn, hẹn cậu ở chân cầu nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "meo-gap-thu",
+      "lines": [
+        {
+          "speaker": "Mèo Gắp Thú",
+          "text": "{name} ơi, viên ngọc trốn dưới cái bát này nè!"
+        },
+        {
+          "speaker": "Mèo Gắp Thú",
+          "text": "Tớ đảo bát nhanh lắm, cậu dõi theo thật kỹ nha."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Mắt tớ tinh lắm đấy!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Úp bát tìm ngọc",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Tìm đúng viên ngọc năm lần nhé!",
+      "game": "shell-game",
+      "goal": 5
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Không qua được mắt {name}, tớ chịu thua rồi!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Tớ sẽ tập đảo bát nhanh hơn, hẹn cậu ở chân cầu nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

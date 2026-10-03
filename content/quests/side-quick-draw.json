@@ -1,0 +1,80 @@
+{
+  "id": "side-quick-draw",
+  "region": "lau-dai",
+  "chapter": 1,
+  "title": "Thi nhanh tay với Cáo Cung Thủ",
+  "status": "active",
+  "category": "side",
+  "summary": "Chiếc đèn lồng treo giữa hai người chơi, bé chờ đèn sáng đỏ mới chạm, nhanh hơn bạn Mèo.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người nhanh tay nhất vùng",
+    "where": "Bãi tập bắn bên khu luyện tập",
+    "goal": "Thắng bốn hiệp thi nhanh tay nhé!",
+    "play": "Chờ đèn lồng sáng đỏ rồi chạm thật nhanh, nhanh hơn bạn Mèo!",
+    "learn": "Tập trung chờ tín hiệu và phản xạ nhanh",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Tớ sẽ tập thêm cho nhanh, hẹn {name} thi lại ở khu luyện tập."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "cao-cung-thu",
+      "lines": [
+        {
+          "speaker": "Cáo Cung Thủ",
+          "text": "{name} có nhanh tay không? Mình thi xem ai chạm trước khi đèn sáng đỏ nhé!"
+        },
+        {
+          "speaker": "Cáo Cung Thủ",
+          "text": "Đèn chưa đỏ mà chạm là phạm luật, đừng để bướm bay qua lừa cậu đấy."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ sẵn sàng, tay tớ nhanh lắm!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Ai nhanh tay hơn",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Thắng bốn hiệp thi nhanh tay nhé!",
+      "game": "quick-draw",
+      "goal": 4
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Cáo Cung Thủ lắc đầu chịu thua: {name} nhanh hơn cả tia chớp!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Tớ sẽ tập thêm cho nhanh, hẹn {name} thi lại ở khu luyện tập."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

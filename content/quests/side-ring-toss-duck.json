@@ -1,0 +1,80 @@
+{
+  "id": "side-ring-toss-duck",
+  "region": "cho-phien",
+  "chapter": 1,
+  "title": "Ném vòng cổ vịt cùng Chú hội chợ Tí",
+  "status": "active",
+  "category": "side",
+  "summary": "Hàng vịt gỗ xếp xa gần, canh đúng khoảng cách và hướng để vòng lọt cổ vịt.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, cao thủ ném vòng",
+    "where": "Góc trò chơi trên phố chợ",
+    "goal": "Ném lọt cổ vịt năm vòng nhé!",
+    "play": "Chạm lần một khi vạch sáng tới chú vịt xa hay gần.",
+    "learn": "Ước lượng khoảng cách và hướng",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Hàng vịt gỗ còn chờ cháu ở phố chợ đấy, ném tiếp nha."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "chu-hoi-cho-ti",
+      "lines": [
+        {
+          "speaker": "Chú hội chợ Tí",
+          "text": "{name} ơi, ném vòng trúng cổ vịt là có quà đấy!"
+        },
+        {
+          "speaker": "Chú hội chợ Tí",
+          "text": "Chạm lần đầu chọn xa gần, chạm lần hai chọn hướng cho đúng vịt nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu muốn thắng quà!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Ném vòng cổ vịt",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Ném lọt cổ vịt năm vòng nhé!",
+      "game": "ring-toss-duck",
+      "goal": 5
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Vòng nào cũng vào, {name} ôm quà về nhé!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Hàng vịt gỗ còn chờ cháu ở phố chợ đấy, ném tiếp nha."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "id": "side-ice-slide",
+  "region": "nui-tuyet",
+  "chapter": 1,
+  "title": "Dẫn chim cánh cụt trượt về nhà qua mê cung băng",
+  "status": "active",
+  "category": "side",
+  "summary": "Chim cánh cụt trượt mãi tới khi đụng đá, bé vuốt đúng hướng để đưa bạn ấy về nhà.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người dẫn đường trên băng",
+    "where": "Bờ hồ băng",
+    "goal": "Đưa cánh cụt về nhà qua ba mê cung nhé!",
+    "play": "Vuốt lên, xuống, trái, phải: chim cánh cụt trượt mãi tới khi đụng đá.",
+    "learn": "Tính trước nhiều bước đi",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Lúc nào băng đóng dày, cứ ra bờ hồ tìm Cánh Cụt nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "canh-cut-truot-bang",
+      "lines": [
+        {
+          "speaker": "Cánh Cụt Trượt Băng",
+          "text": "Em họ tớ trượt lạc trong mê cung băng rồi, {name} giúp với!"
+        },
+        {
+          "speaker": "Cánh Cụt Trượt Băng",
+          "text": "Bạn ấy trượt một mạch đến khi đụng đá mới dừng, nghĩ kỹ rồi hãy vuốt nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ sẽ tìm đường về cho bạn!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Trượt băng mê cung",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Đưa cánh cụt về nhà qua ba mê cung nhé!",
+      "game": "ice-slide",
+      "goal": 3
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Cả nhà cánh cụt reo lên: cảm ơn {name} đã dẫn đường giỏi thế!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Lúc nào băng đóng dày, cứ ra bờ hồ tìm Cánh Cụt nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "id": "side-recipe-assembly",
+  "region": "cho-phien",
+  "chapter": 1,
+  "title": "Làm bánh mì theo đơn cùng Cô bánh mì Hạnh",
+  "status": "active",
+  "category": "side",
+  "summary": "Khách xếp hàng gọi món, kẹp nhân vào ổ bánh mì đúng thứ tự trong bong bóng.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, phụ bếp sạp bánh mì",
+    "where": "Trước gian hàng đồ ăn",
+    "goal": "Làm đủ tám ổ bánh mì đúng đơn nhé!",
+    "play": "Khách gọi món: nhìn hình trong bong bóng, từ trái sang phải.",
+    "learn": "Ghi nhớ thứ tự và làm theo yêu cầu",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Sạp bánh mì mở từ sáng sớm, cháu ghé phụ cô nữa nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "co-banh-mi-hanh",
+      "lines": [
+        {
+          "speaker": "Cô bánh mì Hạnh",
+          "text": "{name} ơi, khách đông quá, phụ cô làm bánh mì nhé!"
+        },
+        {
+          "speaker": "Cô bánh mì Hạnh",
+          "text": "Nhìn bong bóng khách gọi, kẹp nhân từ trái sang phải cho đúng thứ tự."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu đeo tạp dề rồi cô!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Làm bánh mì theo đơn",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Làm đủ tám ổ bánh mì đúng đơn nhé!",
+      "game": "recipe-assembly",
+      "goal": 8
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Khách nào cũng khen ngon, {name} làm bánh mì chuẩn vị!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Sạp bánh mì mở từ sáng sớm, cháu ghé phụ cô nữa nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

@@ -1,0 +1,241 @@
+{
+  "region": "khu-rung-bi-mat",
+  "givers": [
+    {
+      "id": "khi-chuyen-canh",
+      "name": "Khỉ Chuyền Cành",
+      "look": "animal-monkey",
+      "tint": "#c98f5a",
+      "where": "Bìa trảng rừng có cây cao",
+      "at": [
+        220,
+        240
+      ],
+      "company": [
+        {
+          "routine": "pupil",
+          "name": "Bạn nhỏ xem khỉ đu dây",
+          "model": "person-f"
+        }
+      ],
+      "games": [
+        {
+          "game": "rope-swing",
+          "title": "Đu dây qua rừng cùng Khỉ Chuyền Cành",
+          "summary": "Dây leo treo khắp tán cây cao: móc dây, đu thật bổng rồi bay sang gốc cây có nải chuối.",
+          "lines": [
+            "{name} ơi, tớ treo sẵn dây leo từ cây này sang cây kia rồi đấy!",
+            "Giữ tay để móc dây, đu lên thật cao rồi buông ra mà bay nhé."
+          ],
+          "choice": "Tớ đu giỏi như khỉ luôn!",
+          "prompt": "Bay qua {goal} chặng có nải chuối là thắng!",
+          "reward": "Khỉ Chuyền Cành treo ngược trên cành vỗ tay: {name} bay như chim rồi!",
+          "next": "Lúc nào muốn đu tiếp, cứ ra bìa trảng rừng gọi Khỉ Chuyền Cành nhé.",
+          "who": "{name}, bạn đu dây của bầy khỉ",
+          "learn": "Chọn đúng lúc buông tay và ước lượng đà bay"
+        },
+        {
+          "game": "doodle-climb",
+          "title": "Đưa ếch nảy lên mây với Khỉ Chuyền Cành",
+          "summary": "Một chú ếch con muốn lên tận đám mây: lái ếch nảy từ lá này lên lá kia thật cao.",
+          "lines": [
+            "Này {name}, chú ếch con kia cứ đòi lên chơi với mây trắng.",
+            "Cậu kéo tay sang trái, sang phải lái ếch nảy lên giúp tớ nhé, gặp nấm đỏ là bật cao vút!"
+          ],
+          "choice": "Ếch ơi, mình cùng lên mây nào!",
+          "prompt": "Đưa ếch lên cao {goal} mét nhé!",
+          "reward": "Ếch con ngồi trên mây cười tít mắt, cảm ơn {name} đã lái giỏi thế!",
+          "next": "Mai ếch lại muốn lên mây, Khỉ Chuyền Cành sẽ đợi cậu dưới tán cây cao.",
+          "who": "{name}, người lái ếch lên trời",
+          "learn": "Lái khéo và nhìn trước tấm lá sắp đáp"
+        }
+      ]
+    },
+    {
+      "id": "vet-mo-cong",
+      "name": "Vẹt Mỏ Cong",
+      "look": "animal-parrot",
+      "where": "Lối mòn bên bãi rừng phía đông",
+      "at": [
+        500,
+        260
+      ],
+      "company": [
+        {
+          "routine": "reader",
+          "name": "Bác ngắm chim mỏ cong",
+          "model": "person-a"
+        }
+      ],
+      "games": [
+        {
+          "game": "flappy-fly",
+          "title": "Bay qua khe tre cùng Vẹt Mỏ Cong",
+          "summary": "Rặng tre mọc san sát: chạm để chú chim vỗ cánh, lách qua từng khe hẹp giữa hai cây tre.",
+          "lines": [
+            "{name} ơi, chim non nhà tớ đang tập bay qua rặng tre đấy!",
+            "Cứ chạm một cái là chim vỗ cánh, đừng để chim đụng thân tre nha."
+          ],
+          "choice": "Chim ơi, vỗ cánh theo nhịp tớ nhé!",
+          "prompt": "Đưa chim bay qua {goal} khe tre nhé!",
+          "reward": "Vẹt Mỏ Cong hót vang cả lối mòn: {name} dạy chim non bay giỏi quá!",
+          "next": "Chim non còn muốn tập nữa, cứ ghé lối mòn phía đông tìm Vẹt Mỏ Cong.",
+          "who": "{name}, thầy dạy bay của chim non",
+          "learn": "Giữ nhịp chạm đều tay và canh độ cao"
+        },
+        {
+          "game": "dodge-fall",
+          "title": "Né quả thông rơi với Vẹt Mỏ Cong",
+          "summary": "Gió lay cây, quả thông và quả dừa rụng lộp bộp: nhìn bóng dưới đất mà chạy né, nhặt sao.",
+          "lines": [
+            "Cẩn thận nhé {name}, gió đang lay cây làm quả thông rụng đầy kìa!",
+            "Thấy bóng tròn dưới đất là quả sắp rơi đấy, cậu chạy né và nhặt sao giúp tớ."
+          ],
+          "choice": "Tớ né nhanh lắm, xem đây!",
+          "prompt": "Nhặt {goal} ngôi sao mà không bị quả rơi trúng ba lần nhé!",
+          "reward": "Vẹt Mỏ Cong nghiêng đầu khen: mắt {name} tinh, chân {name} nhanh ghê!",
+          "next": "Hôm nào gió to, Vẹt Mỏ Cong lại rủ cậu ra lối mòn né quả nhé.",
+          "who": "{name}, người chạy né nhanh nhất lối mòn",
+          "learn": "Quan sát bóng đổ để đoán chỗ vật rơi"
+        }
+      ]
+    },
+    {
+      "id": "nai-dom-dom",
+      "name": "Nai Đom Đóm",
+      "look": "animal-deer",
+      "tint": "#f0d890",
+      "where": "Trảng cỏ đêm đom đóm",
+      "at": [
+        240,
+        540
+      ],
+      "company": [
+        {
+          "routine": "pupil",
+          "name": "Bé đếm đom đóm",
+          "model": "person-o"
+        }
+      ],
+      "games": [
+        {
+          "game": "firefly-torch",
+          "title": "Soi đèn bắt đom đóm cùng Nai Đom Đóm",
+          "summary": "Trảng cỏ tối om, đom đóm lập lòe: rọi đèn pin tới chỗ sáng rồi chạm để bắt vào lọ.",
+          "lines": [
+            "Trời tối rồi {name} ạ, đom đóm sắp bay ra đầy trảng cỏ.",
+            "Tớ đưa cậu đèn pin và cái lọ, rọi tới đâu sáng thì chạm bắt ở đó nhé."
+          ],
+          "choice": "Đưa tớ đèn pin, tớ soi ngay!",
+          "prompt": "Bắt {goal} chú đom đóm vào lọ nhé!",
+          "reward": "Lọ đom đóm sáng lung linh như cái đèn lồng, Nai Đom Đóm reo: {name} giỏi quá!",
+          "next": "Đêm nào cũng có đom đóm, cậu cứ tới trảng cỏ tìm Nai Đom Đóm.",
+          "who": "{name}, người soi đèn trong rừng đêm",
+          "learn": "Tìm kiếm có trật tự và phản xạ khi thấy ánh sáng"
+        },
+        {
+          "game": "cut-rope",
+          "title": "Cắt dây thả kẹo giúp Nai Đom Đóm",
+          "summary": "Viên kẹo đung đưa trên sợi dây, chú ếch đói ngồi chờ: vuốt cắt dây đúng lúc cho kẹo rơi trúng miệng ếch.",
+          "lines": [
+            "{name} xem này, ếch con đói meo mà viên kẹo lại treo trên cao.",
+            "Cậu vuốt cắt sợi dây lúc kẹo đung đưa đúng chỗ, kẹo sẽ rơi trúng miệng ếch đấy."
+          ],
+          "choice": "Để tớ canh thật chuẩn rồi cắt!",
+          "prompt": "Thả {goal} viên kẹo vào miệng ếch nhé!",
+          "reward": "Ếch con ăn kẹo no căng bụng, Nai Đom Đóm cảm ơn {name} rối rít!",
+          "next": "Ếch lại sắp đói rồi, nhớ quay lại trảng cỏ chơi cùng Nai Đom Đóm nhé.",
+          "who": "{name}, người bạn tốt bụng của ếch con",
+          "learn": "Hiểu chuyển động đung đưa và chọn thời điểm"
+        }
+      ]
+    },
+    {
+      "id": "tho-quet-la",
+      "name": "Thỏ Quét Lá",
+      "look": "animal-bunny",
+      "where": "Lối mòn lá vàng trong rừng sâu",
+      "at": [
+        540,
+        560
+      ],
+      "company": [
+        {
+          "routine": "sweeper",
+          "name": "Cô quét lá rừng",
+          "model": "person-e"
+        }
+      ],
+      "games": [
+        {
+          "game": "leaf-blow",
+          "title": "Thổi lá gom đống với Thỏ Quét Lá",
+          "summary": "Lá vàng rụng kín lối mòn: đặt quạt sau từng chiếc lá để thổi chúng bay vào khung gom.",
+          "lines": [
+            "Lá rụng nhiều quá {name} ơi, tớ quét mãi không xuể!",
+            "Cậu cầm quạt đặt phía sau chiếc lá, gió sẽ đẩy lá vào khung gom cho tớ."
+          ],
+          "choice": "Quạt đây, gom lá thôi!",
+          "prompt": "Thổi {goal} chiếc lá vào khung gom nhé!",
+          "reward": "Lối mòn sạch bong, Thỏ Quét Lá nhảy cẫng lên: {name} đúng là thợ gom lá!",
+          "next": "Mùa thu lá còn rụng nữa, Thỏ Quét Lá vẫn ở lối mòn lá vàng chờ cậu.",
+          "who": "{name}, người gom lá của rừng sâu",
+          "learn": "Hiểu hướng gió đẩy và chọn chỗ đặt quạt"
+        },
+        {
+          "game": "lane-runner",
+          "title": "Chạy ba làn cùng Thỏ Quét Lá",
+          "summary": "Lối mòn chia ba làn có khúc gỗ, thùng và đá: vuốt đổi làn, nhảy qua gỗ và nhặt sao.",
+          "lines": [
+            "Này {name}, tớ vừa kẻ ba làn chạy trên lối mòn đấy, thử không?",
+            "Vuốt sang bên để đổi làn, vuốt lên để nhảy khúc gỗ, nhặt sao thật nhiều nha."
+          ],
+          "choice": "Tớ chạy đây, đếm sao giúp tớ nhé!",
+          "prompt": "Nhặt {goal} ngôi sao trên đường ba làn nhé!",
+          "reward": "Thỏ Quét Lá giơ chổi làm cờ: {name} về đích với cả túi sao!",
+          "next": "Còn nhiều sao rơi trên lối mòn lắm, chạy lại với Thỏ Quét Lá lúc nào cũng được.",
+          "who": "{name}, vận động viên chạy làn của rừng",
+          "learn": "Phản xạ đổi hướng và nhìn trước chướng ngại"
+        }
+      ]
+    }
+  ],
+  "residents": [
+    {
+      "routine": "kite-flyer",
+      "name": "Bạn thả diều ven rừng",
+      "model": "person-r",
+      "at": [
+        380,
+        140
+      ]
+    },
+    {
+      "routine": "reader",
+      "name": "Ông ngồi nghe chim hót",
+      "model": "person-c",
+      "at": [
+        370,
+        420
+      ]
+    },
+    {
+      "routine": "porter",
+      "name": "Chú gánh nấm về làng",
+      "model": "person-j",
+      "at": [
+        120,
+        400
+      ]
+    },
+    {
+      "routine": "dog",
+      "name": "Chó Săn Lông Xù",
+      "model": "animal-dog",
+      "at": [
+        420,
+        700
+      ]
+    }
+  ]
+}

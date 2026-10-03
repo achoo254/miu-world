@@ -14,8 +14,10 @@ import type { OutlandTheme } from '../../packages/voxel/src/outland';
 import { levelProfile } from '../../packages/voxel/src/outland-levelling';
 import { outlandSpecOf } from './outland-spec';
 import { columnsOf, fillColumn, heightField, loadBlocks, mapModels, PACK, placeRegionTargets, rollingHeight, scatterTrees, smoothstep, standHeight, WIDE_MAP_SIDE } from './map-kit';
-import { WAY_BLOCKS } from './scenery-audit';
+import { WAY_BLOCKS, wayChecks } from './scenery-audit';
 import { placeVillageLife, type Resident } from './village-life';
+import { sideQuestTableOf } from '../content/side-quest-table';
+import { NETWORK_BLOCK_NAMES, sideFolk, sideSpots } from './side-givers';
 import { createRng, hashSeed } from './noise';
 import { columnsAlong, distanceToPath, nearestOnPath, pathColumns, type Point } from './structures/path';
 
@@ -177,6 +179,12 @@ const RIDE_MODEL = `${PACK.props}/automobile.glb`;
  * block at most off the ground under them.
  */
 const WAY_LEVELLING = { maxRun: 12, maxShift: 1 } as const;
+/** Ground a side quest's giver stands on: grass of every map, sand, snow, earth. */
+const NATURAL_GROUND = ['grass', 'grass-forest', 'grass-village', 'grass-hamlet', 'grass-farm', 'grass-library', 'grass-castle', 'grass-market', 'grass-snow', 'grass-island', 'grass-hub', 'grass-home', 'sand', 'snow', 'dirt'];
+/** Free blocks over a giver's ground: under the open sky, not a roof, an arch or a tree. */
+const GIVER_HEADROOM = 6;
+/** A keep-out at most this big (blocks) is a building or a yard; bigger ones are a map's own regions. */
+const BUILDING_AREA = 1600;
 /** The hub every theme map has a gate back to. */
 export const HUB_REGION = 'trung-tam';
 
@@ -398,12 +406,19 @@ export async function generateZoneMap(spec: ZoneMapSpec): Promise<{ world: Voxel
 
   // 6. Quest targets: each chapter's in its zone, on level open ground off the paths, clear of props, trees and buildings.
   const propCells = columnsOf(models.props);
+  // Trees and props as column lookups (a wide map has some fifteen thousand props).
+  const trunkNear = new Set<string>();
+  for (const [tx, tz] of trunks) for (let dx = -2; dx <= 2; dx++) for (let dz = -2; dz <= 2; dz++) if (Math.hypot(dx, dz) < 2.2) trunkNear.add(`${tx + dx},${tz + dz}`);
+  const propNear = new Set<string>();
+  for (const [px, pz] of propCells) for (let dx = -1; dx <= 1; dx++) for (let dz = -1; dz <= 1; dz++) if (Math.hypot(dx, dz) < 1.5) propNear.add(`${px + dx},${pz + dz}`);
+  const nearTrunk = (x: number, z: number): boolean => trunkNear.has(`${x},${z}`);
+  const nearProp = (x: number, z: number): boolean => propNear.has(`${x},${z}`);
   const canStand = (x: number, z: number): boolean => {
     if (!inZone(x, z) || onPath(x, z) || inWater(x, z) || keptOut(x, z, 1)) return false;
     const y = surface(x, z);
     if (Math.abs(y - level) > 1 || world.get(x, y + 1, z) !== 0 || world.get(x, y + 2, z) !== 0) return false;
     if ([[1, 0], [-1, 0], [0, 1], [0, -1]].some(([dx = 0, dz = 0]) => Math.abs(surface(x + dx, z + dz) - y) > 1)) return false;
-    return !trunks.some(([tx, tz]) => Math.hypot(tx - x, tz - z) < 2.2) && !propCells.some(([px, pz]) => Math.hypot(px - x, pz - z) < 1.5);
+    return !nearTrunk(x, z) && !nearProp(x, z);
   };
   const zoneCells = (chapter: number): Array<readonly [number, number]> => {
     const zn = zone(chapter);
@@ -468,6 +483,46 @@ export async function generateZoneMap(spec: ZoneMapSpec): Promise<{ world: Voxel
       ride: models.place(tx, tz),
     };
   });
+  // The side quests' givers: anywhere on the map, beside the ways, near the place their table names (a landmark
+  // or a zone of that name).
+  const sideTable = sideQuestTableOf(spec.region);
+  const landmarkCell = (name: string): readonly [number, number] | undefined => {
+    const key = name.trim().toLowerCase();
+    const lm = landmarks.find((l) => l.name.trim().toLowerCase() === key);
+    if (lm) return [Math.floor(lm.position[0]), Math.floor(lm.position[2])];
+    const zn = zones.find((z) => z.name.trim().toLowerCase() === key);
+    return zn ? [zn.x, zn.z] : undefined;
+  };
+  const naturalGround = new Set(NATURAL_GROUND.map(block));
+  const pavingIds = new Set(WAY_BLOCKS.map(block));
+  const { inLane } = wayChecks(world, pavingIds);
+  const buildings = kept.filter(([x0, z0, x1, z1]) => (x1 - x0 + 1) * (z1 - z0 + 1) <= BUILDING_AREA);
+  const nearBuilding = (x: number, z: number): boolean => buildings.some(([x0, z0, x1, z1]) => x >= x0 - 2 && x <= x1 + 2 && z >= z0 - 2 && z <= z1 + 2);
+  const spots =
+    sideTable.givers.length + sideTable.residents.length > 0
+      ? sideSpots({
+          world,
+          wayIds: new Set(NETWORK_BLOCK_NAMES.map(block)),
+          spawn: [spec.spawn.x, spec.spawn.z],
+          // The ground as built (a map's builds may raise it over the height field).
+          groundY: (x, z) => standY(x, z) - 1,
+          rides: rides.flatMap((t) => (t.ride ? [{ stop: [Math.floor(t.position[0]), Math.floor(t.position[2])] as const, arrival: [Math.floor(t.ride[0]), Math.floor(t.ride[2])] as const }] : [])),
+          landmark: landmarkCell,
+          // Open ground: grass, sand, snow or earth underfoot, or the side of a paved square (never a lane's
+          // middle, a field or a floor), the sky over the head (not under a roof, an arch or a tree), clear of every
+          // building and its doorstep. A map's wide keep-outs (a forest kept for its pines, a lesson district) are
+          // not buildings: a giver may stand there.
+          canStand: (x, z) => {
+            if (onPath(x, z) || inWater(x, z) || nearBuilding(x, z) || nearTrunk(x, z) || nearProp(x, z)) return false;
+            const y = standY(x, z);
+            const under = world.get(x, y - 1, z);
+            if (!naturalGround.has(under) && !(pavingIds.has(under) && !inLane(x, y, z))) return false;
+            for (let up = 0; up < GIVER_HEADROOM; up++) if (world.get(x, y + up, z) !== 0) return false;
+            return [[1, 0], [-1, 0], [0, 1], [0, -1]].every(([dx = 0, dz = 0]) => Math.abs(standY(x + dx, z + dz) - y) <= 1);
+          },
+        })
+      : undefined;
+  const giverAnchor = new Map(sideTable.givers.map((g) => [g.id, g.at ? { at: g.at } : { place: g.place ?? '' }] as const));
   const placed: Interactable[] = await placeRegionTargets({
     mapId: spec.mapId,
     region: spec.region,
@@ -477,6 +532,15 @@ export async function generateZoneMap(spec: ZoneMapSpec): Promise<{ world: Voxel
       chapterCells: zoneCells,
       residentCells: zones.flatMap((zn) => zoneCells(zn.chapter)),
       keepClear: [[spec.spawn.x, spec.spawn.z], ...chapterStart.values()],
+      ...(spots
+        ? {
+            sideSpot: (id: string, taken: ReadonlyArray<readonly [number, number]>) => {
+              const anchor = giverAnchor.get(id);
+              if (!anchor) throw new Error(`${spec.mapId}: ${id} offers side quests but is not a giver in tools/content/side-quests/${spec.region}.json`);
+              return spots(anchor, [...taken, [spec.spawn.x, spec.spawn.z], ...chapterStart.values()]);
+            },
+          }
+        : {}),
       placeNamed: (name) => {
         const key = name.trim().toLowerCase();
         const lm = landmarks.find((l) => l.name.trim().toLowerCase() === key);
@@ -521,13 +585,14 @@ export async function generateZoneMap(spec: ZoneMapSpec): Promise<{ world: Voxel
     if (!lm) throw new Error(`${spec.mapId}: no landmark ${id} for the cast`);
     return [Math.floor(lm.position[0]), Math.floor(lm.position[2])];
   };
-  const ambients = spec.life
-    ? placeVillageLife(
-        { world, surface, standY, onPath, inWater: (x, z) => inWater(x, z) || world.get(x, surface(x, z), z) === B.water, questSpots: columnsOf(interactables), scaleOf: models.scaleOf, isWay, nearBuilding: (x, z, pad) => keptOut(x, z, pad), spawn: [spec.spawn.x, spec.spawn.z] },
-        spec.life({ zone, landmark: landmarkAt }),
-        seed + 23,
-      )
+  const lifeGround = { world, surface, standY, onPath, inWater: (x: number, z: number) => inWater(x, z) || world.get(x, surface(x, z), z) === B.water, questSpots: columnsOf(interactables), scaleOf: models.scaleOf, isWay, nearBuilding: (x: number, z: number, pad: number) => keptOut(x, z, pad), spawn: [spec.spawn.x, spec.spawn.z] as const };
+  const villagers = spec.life ? placeVillageLife(lifeGround, spec.life({ zone, landmark: landmarkAt }), seed + 23) : [];
+  // The side quests' company and the table's residents, clear of the villagers' homes too.
+  const givers = new Map(interactables.filter((t) => giverAnchor.has(t.id)).map((t) => [t.id, [Math.floor(t.position[0]), Math.floor(t.position[2])] as const]));
+  const folk = spots
+    ? sideFolk({ table: sideTable, givers, spots, life: { ...lifeGround, questSpots: [...lifeGround.questSpots, ...columnsOf(villagers)] }, seed: seed + 29 })
     : [];
+  const ambients = [...villagers, ...folk];
 
   const entities: WorldEntities = {
     version: 2,

@@ -1,0 +1,80 @@
+{
+  "id": "side-co-caro",
+  "region": "truong-hoc",
+  "chapter": 1,
+  "title": "Đấu cờ caro với Mèo Lớp Trưởng",
+  "status": "active",
+  "category": "side",
+  "summary": "Bàn cờ kẻ ô vẽ trên tấm ván: thay phiên đặt quân với bạn Cún, ai đủ bốn quân thẳng hàng trước thì thắng.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, kì thủ nhí của lớp",
+    "where": "Bờ ruộng lúa sau trường",
+    "goal": "Thắng bạn Cún một ván cờ caro nhé!",
+    "play": "{name} và bạn Cún thay nhau chạm vào ô trống để đặt quân.",
+    "learn": "Suy nghĩ trước một nước và biết phòng thủ",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Cún đang luyện thêm nước cờ mới, cậu quay lại đấu tiếp nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "meo-lop-truong",
+      "lines": [
+        {
+          "speaker": "Mèo Lớp Trưởng",
+          "text": "{name} chơi cờ caro bốn ô với bạn Cún nhé, Cún tự tin lắm đấy!"
+        },
+        {
+          "speaker": "Mèo Lớp Trưởng",
+          "text": "Nhớ xếp bốn quân thẳng hàng, và chặn ngay khi Cún sắp đủ bốn nha."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cún ơi, đấu một ván nào!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Cờ caro bốn ô",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Thắng bạn Cún một ván cờ caro nhé!",
+      "game": "co-caro",
+      "goal": 1
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Bạn Cún cúi đầu chịu thua, Mèo Lớp Trưởng khen {name} đi cờ thông minh!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Cún đang luyện thêm nước cờ mới, cậu quay lại đấu tiếp nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "id": "side-dig-tunnel",
+  "region": "dao-bi-an",
+  "chapter": 1,
+  "title": "Đào hầm tìm ngọc với Gấu Trúc Thám Hiểm",
+  "status": "active",
+  "category": "side",
+  "summary": "Bé kéo ngón tay đào đường hầm lấy ngọc, đào khéo để tảng đá phía trên không rơi trúng.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, thợ đào hầm tìm ngọc",
+    "where": "Trước cổng khu di tích cổ",
+    "goal": "Lấy được mười viên ngọc dưới lòng đất nhé!",
+    "play": "{name} kéo ngón tay (hoặc chạm) vào chỗ muốn đào để đào đường hầm lấy ngọc.",
+    "learn": "Lên kế hoạch đường đi an toàn",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Dưới đất còn ngọc ngủ say, Gấu Trúc chờ {name} ở cổng khu di tích."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "gau-truc-tham-hiem",
+      "lines": [
+        {
+          "speaker": "Gấu Trúc Thám Hiểm",
+          "text": "Dưới nền đền cổ có ngọc lấp lánh, {name} đào hầm cùng tớ nhé!"
+        },
+        {
+          "speaker": "Gấu Trúc Thám Hiểm",
+          "text": "Đào mất đất dưới tảng đá là đá rơi đấy, nhớ tránh xa ra."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ đào nhẹ tay thôi!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Đào đất tìm ngọc",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Lấy được mười viên ngọc dưới lòng đất nhé!",
+      "game": "dig-tunnel",
+      "goal": 10
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Gấu Trúc Thám Hiểm lau kính reo lên: {name} đào giỏi như chuột chũi!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Dưới đất còn ngọc ngủ say, Gấu Trúc chờ {name} ở cổng khu di tích."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "id": "side-rock-climb",
+  "region": "nui-tuyet",
+  "chapter": 1,
+  "title": "Leo vách đá băng cùng Nai Leo Vách",
+  "status": "active",
+  "category": "side",
+  "summary": "Bé chạm mấu bám đang sáng để leo lên vách, leo nhanh qua mấu nứt và tránh đá lăn.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, nhà leo núi nhí",
+    "where": "Trước trạm thám hiểm",
+    "goal": "Leo lên cao ba mươi mét trên vách đá nhé!",
+    "play": "Chạm mấu bám đang sáng để {name} leo lên. Mỗi bậc cao hơn là một mét.",
+    "learn": "Phản xạ nhanh và quan sát nguy hiểm",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Vách đá vẫn đứng đó, Nai Leo Vách hẹn {name} lần sau leo cao hơn."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "nai-leo-vach",
+      "lines": [
+        {
+          "speaker": "Nai Leo Vách",
+          "text": "Vách đá sau trạm thám hiểm cao lắm {name} ạ, mình thi leo nhé!"
+        },
+        {
+          "speaker": "Nai Leo Vách",
+          "text": "Mấu nứt sẽ rơi sau hai giây, thấy dấu chấm than thì né sang bên ngay."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ bám chắc rồi, leo thôi!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Leo vách đá",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Leo lên cao ba mươi mét trên vách đá nhé!",
+      "game": "rock-climb",
+      "goal": 30
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Nai Leo Vách gật gù: {name} leo nhanh như sóc núi vậy!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Vách đá vẫn đứng đó, Nai Leo Vách hẹn {name} lần sau leo cao hơn."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

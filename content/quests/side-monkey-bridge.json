@@ -1,0 +1,80 @@
+{
+  "id": "side-monkey-bridge",
+  "region": "lang-ven-song",
+  "chapter": 1,
+  "title": "Đi cầu khỉ cùng Khỉ Cầu Tre",
+  "status": "active",
+  "category": "side",
+  "summary": "Bước chênh vênh trên cây cầu tre bắc qua suối, giữ thăng bằng để không rơi xuống nước.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, bạn đi cầu khỉ gan dạ",
+    "where": "Đầu cầu đá phía đông",
+    "goal": "Đi qua trọn ba cây cầu khỉ nhé!",
+    "play": "{name} tự bước qua cầu tre. Người nghiêng bên nào thì kéo ngón tay sang bên kia.",
+    "learn": "Giữ thăng bằng và bình tĩnh",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Cầu tre còn nhiều nhịp lắm, mai mình lại đi tiếp nha."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "khi-cau-tre",
+      "lines": [
+        {
+          "speaker": "Khỉ Cầu Tre",
+          "text": "Ê {name}, dám đi cầu khỉ với tớ không nào?"
+        },
+        {
+          "speaker": "Khỉ Cầu Tre",
+          "text": "Người nghiêng bên nào thì kéo ngón tay sang bên kia là đứng vững ngay."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ dám chứ, đi thôi!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Đi cầu khỉ",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Đi qua trọn ba cây cầu khỉ nhé!",
+      "game": "monkey-bridge",
+      "goal": 3
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Chà, {name} đi cầu còn vững hơn cả khỉ tớ!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Cầu tre còn nhiều nhịp lắm, mai mình lại đi tiếp nha."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

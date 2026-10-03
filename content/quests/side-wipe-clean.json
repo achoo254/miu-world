@@ -1,0 +1,80 @@
+{
+  "id": "side-wipe-clean",
+  "region": "nha-cua-be",
+  "chapter": 1,
+  "title": "Lau sạch đồ chơi lấm bùn với Gấu Bánh Ngọt",
+  "status": "active",
+  "category": "side",
+  "summary": "Đồ vật lấm bùn sau cơn mưa, bé xoa xà phòng, xả nước rồi lau khô cho từng món sạch bóng.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người giữ nhà sạch sẽ",
+    "where": "Sân trước nhà",
+    "goal": "Lau sạch bóng sáu món đồ nhé!",
+    "play": "Đồ vật bị lấm bùn. {name} xoa ngón tay qua lại trên nó để làm sạch.",
+    "learn": "Làm theo đủ các bước và chăm chỉ",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Sân nhà lúc nào cũng có đồ cần lau, Gấu nhờ {name} lần sau nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "gau-banh-ngot",
+      "lines": [
+        {
+          "speaker": "Gấu Bánh Ngọt",
+          "text": "Mưa làm đồ chơi ngoài sân lấm bùn hết rồi {name} ơi!"
+        },
+        {
+          "speaker": "Gấu Bánh Ngọt",
+          "text": "Xoa xà phòng trước, xả nước sau, cuối cùng lau khô bằng khăn nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Đưa khăn đây, tớ lau cho!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Lau sạch bóng",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Lau sạch bóng sáu món đồ nhé!",
+      "game": "wipe-clean",
+      "goal": 6
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Gấu Bánh Ngọt soi bóng mình trong cái xô: {name} lau sạch như mới!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Sân nhà lúc nào cũng có đồ cần lau, Gấu nhờ {name} lần sau nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

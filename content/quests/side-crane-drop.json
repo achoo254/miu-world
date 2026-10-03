@@ -1,0 +1,80 @@
+{
+  "id": "side-crane-drop",
+  "region": "trung-tam",
+  "chapter": 1,
+  "title": "Xây tháp bằng cần cẩu với Gấu Mũ Bảo Hộ",
+  "status": "active",
+  "category": "side",
+  "summary": "Cần cẩu ở bãi cảng đung đưa từng tầng nhà: chạm thả cho tầng rơi ngay ngắn lên tháp.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người lái cần cẩu nhí",
+    "where": "Bãi hàng bên cảng biển",
+    "goal": "Xếp mười hai tầng nhà lên tháp nhé!",
+    "play": "Tầng nhà đung đưa trên cần cẩu. {name} chạm để thả cho rơi đúng lên tháp.",
+    "learn": "Chọn đúng thời điểm và giữ thăng bằng",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Bãi cảng còn nhiều tầng nhà lắm, cậu quay lại xây tiếp với tớ nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "gau-mu-bao-ho",
+      "lines": [
+        {
+          "speaker": "Gấu Mũ Bảo Hộ",
+          "text": "Chào {name}, tớ đang xây tòa tháp cao nhất bến cảng đây!"
+        },
+        {
+          "speaker": "Gấu Mũ Bảo Hộ",
+          "text": "Tầng nhà đung đưa trên cần cẩu, cậu chạm thả lúc nó ngay phía trên tháp nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Để tớ lái cần cẩu!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Cần cẩu xây nhà",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Xếp mười hai tầng nhà lên tháp nhé!",
+      "game": "crane-drop",
+      "goal": 12
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Tháp cao vút tới mây, Gấu Mũ Bảo Hộ giơ ngón cái: {name} thả chuẩn từng tầng!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Bãi cảng còn nhiều tầng nhà lắm, cậu quay lại xây tiếp với tớ nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

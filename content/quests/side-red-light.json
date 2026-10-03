@@ -1,0 +1,80 @@
+{
+  "id": "side-red-light",
+  "region": "truong-hoc",
+  "chapter": 1,
+  "title": "Một hai ba đứng im với Mèo Lớp Trưởng",
+  "status": "active",
+  "category": "side",
+  "summary": "Trên bờ ruộng, gấu bông quay lưng đếm: giữ tay để bước tới vạch, gấu quay lại thì đứng im.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, bạn nhỏ biết tự giữ bình tĩnh",
+    "where": "Bờ ruộng lúa sau trường",
+    "goal": "Bước tới vạch đích với hai mươi lăm điểm nhé!",
+    "play": "Giữ ngón tay để {name} bước tới vạch đích, nhấc tay ra là đứng lại.",
+    "learn": "Kiềm chế, dừng lại đúng lúc theo tín hiệu",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Chiều nào lớp cũng chơi ở bờ ruộng, Mèo Lớp Trưởng chờ cậu đó."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "meo-lop-truong",
+      "lines": [
+        {
+          "speaker": "Mèo Lớp Trưởng",
+          "text": "{name} ơi, lớp mình đang chơi một hai ba đứng im trên bờ ruộng này!"
+        },
+        {
+          "speaker": "Mèo Lớp Trưởng",
+          "text": "Giữ tay là bước, thả tay là đứng, vòng đỏ hiện lên mà còn đi là lùi ba bước đó."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ đứng im như tượng luôn!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Một hai ba, đứng im!",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Bước tới vạch đích với hai mươi lăm điểm nhé!",
+      "game": "red-light",
+      "goal": 25
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Mèo Lớp Trưởng ghi tên {name} lên bảng khen: bước khéo, dừng giỏi!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Chiều nào lớp cũng chơi ở bờ ruộng, Mèo Lớp Trưởng chờ cậu đó."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

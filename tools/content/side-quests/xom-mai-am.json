@@ -1,0 +1,297 @@
+{
+  "region": "xom-mai-am",
+  "givers": [
+    {
+      "id": "meo-tra-da",
+      "name": "Mèo Trà Đá",
+      "look": "chibi-cat-xam-jacket-green",
+      "where": "Bên giếng xóm",
+      "place": "Giếng xóm",
+      "company": [
+        {
+          "routine": "shopper",
+          "name": "Cô ghé uống trà đá",
+          "model": "person-e"
+        }
+      ],
+      "games": [
+        {
+          "game": "tea-slide",
+          "title": "Bán trà đá vỉa hè cùng Mèo Trà Đá",
+          "summary": "Khách ngồi kín ba bàn bên giếng, đẩy ly trà mát tới từng người và thu ly không về.",
+          "lines": [
+            "Nắng quá {name} ơi, khách tới uống trà đá đông nghịt!",
+            "Cậu đẩy ly trà dọc bàn cho khách, nhớ thu ly không về kẻo hết ly."
+          ],
+          "choice": "Để tớ phụ quán nhé!",
+          "prompt": "Phục vụ đủ {goal} ly trà đá nhé!",
+          "reward": "Khách nào cũng mát ruột, quán mình đắt hàng nhờ {name}!",
+          "next": "Quán trà đá bên giếng mở cả ngày, cậu ghé phụ tớ lúc nào cũng được.",
+          "who": "{name}, người phụ quán trà nhanh tay",
+          "learn": "Phản xạ nhanh và để ý nhiều việc cùng lúc"
+        },
+        {
+          "game": "water-pour",
+          "title": "Rót trà đúng vạch cùng Mèo Trà Đá",
+          "summary": "Nghiêng ấm rót trà vào cốc, dừng tay khi nước nằm gọn giữa hai vạch xanh.",
+          "lines": [
+            "{name}, các bác trong xóm sắp sang uống trà đấy!",
+            "Rót cho đúng vạch nhé, đầy tràn ra là ướt hết bàn."
+          ],
+          "choice": "Tớ rót cẩn thận lắm!",
+          "prompt": "Rót vừa vạch {goal} cốc trà nhé!",
+          "reward": "Cốc nào cũng vừa khéo, {name} rót trà như người lớn!",
+          "next": "Ấm trà vẫn ấm bên giếng xóm, mai cậu lại rót giúp tớ nhé.",
+          "who": "{name}, người rót trà khéo léo",
+          "learn": "Ước lượng lượng nước và dừng đúng lúc"
+        }
+      ]
+    },
+    {
+      "id": "chi-tho-nhay-day",
+      "name": "Chị Thỏ Nhảy Dây",
+      "look": "chibi-rabbit-xam-vest-shorts-green",
+      "where": "Đầu ngõ nhỏ ánh trăng",
+      "place": "Ngõ nhỏ ánh trăng",
+      "company": [
+        {
+          "routine": "pupil",
+          "name": "Bé đếm nhịp nhảy dây",
+          "model": "person-o"
+        }
+      ],
+      "games": [
+        {
+          "game": "jump-rope",
+          "title": "Nhảy dây với Chị Thỏ Nhảy Dây",
+          "summary": "Hai bạn quay dây đều đều dưới ánh trăng, nhảy lên đúng lúc dây lướt tới chân.",
+          "lines": [
+            "Trăng sáng thế này nhảy dây là nhất, vào đây {name}!",
+            "Chị với bạn quay dây, em canh dây tới chân thì bật lên nhé."
+          ],
+          "choice": "Em vào giữa đây chị!",
+          "prompt": "Nhảy qua dây {goal} lần nhé!",
+          "reward": "Dây quay nhanh thế mà {name} vẫn nhảy tót qua, giỏi quá!",
+          "next": "Tối nào chị cũng nhảy dây ở đầu ngõ, em ra chơi nữa nhé.",
+          "who": "{name}, bạn nhảy dây dẻo chân",
+          "learn": "Cảm nhận nhịp và bật nhảy đúng lúc"
+        },
+        {
+          "game": "hopscotch",
+          "title": "Nhảy lò cò cùng Chị Thỏ Nhảy Dây",
+          "summary": "Ném viên sỏi vào ô rồi nhảy lò cò từ ô một đến ô tám, nhớ bỏ qua ô có sỏi.",
+          "lines": [
+            "Chị vừa kẻ ô lò cò bằng phấn, {name} nhảy thử không?",
+            "Ném sỏi trúng ô viền vàng, rồi nhảy lần lượt mà bỏ ô có sỏi ra."
+          ],
+          "choice": "Lò cò lò cò, em nhảy đây!",
+          "prompt": "Nhảy xong trọn {goal} lượt lò cò nhé!",
+          "reward": "Không sai một ô nào, {name} nhảy lò cò siêu thật!",
+          "next": "Ô phấn vẫn còn trên ngõ, chị đợi em ra nhảy ván mới.",
+          "who": "{name}, bạn nhảy lò cò chăm chỉ",
+          "learn": "Đếm thứ tự và ghi nhớ ô cần bỏ qua"
+        },
+        {
+          "game": "chuyen",
+          "title": "Chơi chuyền cùng Chị Thỏ Nhảy Dây",
+          "summary": "Tung quả bóng lên, nhặt que trên chiếu thật nhanh rồi bắt bóng trước khi nó rơi.",
+          "lines": [
+            "{name} biết chơi chuyền không, chị dạy cho nhé!",
+            "Bàn một nhặt một que, bàn hai nhặt hai que, nhặt xong là bắt bóng ngay."
+          ],
+          "choice": "Em muốn học chơi chuyền!",
+          "prompt": "Chuyền qua {goal} bàn nhé!",
+          "reward": "Tay em nhanh như cắt, chị phục {name} luôn đấy!",
+          "next": "Bộ que chuyền chị cất ở đầu ngõ, lúc nào chơi tiếp cũng được.",
+          "who": "{name}, bạn chơi chuyền khéo tay",
+          "learn": "Phối hợp tay mắt và đếm số que"
+        }
+      ]
+    },
+    {
+      "id": "gau-dua-bao",
+      "name": "Gấu Đưa Báo",
+      "look": "chibi-bear-den-vest-shorts-green",
+      "where": "Đường đất qua cánh đồng lúa",
+      "place": "Cánh đồng lúa",
+      "company": [
+        {
+          "routine": "porter",
+          "name": "Chú chở báo buổi sáng",
+          "model": "person-b"
+        }
+      ],
+      "games": [
+        {
+          "game": "paper-route",
+          "title": "Giao báo bằng xe đạp cùng Gấu Đưa Báo",
+          "summary": "Đạp xe dọc đường đất qua cánh đồng, ném báo vào hộp thư đang giơ cờ đỏ.",
+          "lines": [
+            "Sáng nay báo về nhiều quá, {name} đi giao giúp tớ nhé!",
+            "Hộp thư nào giơ cờ đỏ là nhà đang chờ, nhớ ném trước khi xe chạy qua."
+          ],
+          "choice": "Lên xe, mình giao báo nào!",
+          "prompt": "Giao báo tới {goal} hộp thư nhé!",
+          "reward": "Cả xóm có báo đọc rồi, cảm ơn {name} nhé!",
+          "next": "Sáng mai báo lại về, tớ chờ cậu ở đầu đường đồng.",
+          "who": "{name}, bạn đưa báo của xóm",
+          "learn": "Quan sát trước và ném đúng lúc"
+        },
+        {
+          "game": "trash-sort",
+          "title": "Phân loại rác cùng Gấu Đưa Báo",
+          "summary": "Rác rơi xuống bên đường đồng, kéo từng món vào đúng thùng xanh lá, xanh dương hay xám.",
+          "lines": [
+            "{name} ơi, đường làng mình phải sạch đẹp mới vui!",
+            "Vỏ quả bỏ thùng xanh lá, giấy và lon bỏ thùng xanh dương nhé."
+          ],
+          "choice": "Tớ phân loại được mà!",
+          "prompt": "Bỏ đúng thùng {goal} món rác nhé!",
+          "reward": "Đường đồng sạch tinh tươm, {name} là bạn của môi trường!",
+          "next": "Mỗi sáng tớ đi nhặt rác, cậu nhập hội với tớ tiếp nhé.",
+          "who": "{name}, bạn nhỏ giữ xóm sạch",
+          "learn": "Phân loại đồ vật theo nhóm"
+        },
+        {
+          "game": "blueprint-build",
+          "title": "Xây nhà theo bản vẽ cùng Gấu Đưa Báo",
+          "summary": "Nhìn bản vẽ nhỏ màu xanh rồi đặt từng viên gạch màu cho giống hệt.",
+          "lines": [
+            "Tớ có bản vẽ ngôi nhà mơ ước nè {name}!",
+            "Cậu chọn hũ màu rồi đặt gạch vào ô, xây giống bản vẽ là xong."
+          ],
+          "choice": "Mình cùng xây nào!",
+          "prompt": "Xây xong {goal} công trình theo bản vẽ nhé!",
+          "reward": "Giống y như bản vẽ, {name} đúng là kiến trúc sư!",
+          "next": "Tớ còn cả xấp bản vẽ nữa, rảnh thì ra đồng xây với tớ.",
+          "who": "{name}, kiến trúc sư tí hon",
+          "learn": "Quan sát kỹ và sao chép theo mẫu"
+        }
+      ]
+    },
+    {
+      "id": "khi-ban-bi",
+      "name": "Khỉ Bắn Bi",
+      "look": "animal-monkey",
+      "tint": "#a8785a",
+      "where": "Bờ hồ sen",
+      "place": "Mép hồ sen",
+      "company": [
+        {
+          "routine": "pupil",
+          "name": "Bạn nhỏ ngồi xem bắn bi",
+          "model": "person-q"
+        }
+      ],
+      "games": [
+        {
+          "game": "marbles",
+          "title": "Bắn bi bên hồ sen cùng Khỉ Bắn Bi",
+          "summary": "Kéo ngón tay như kéo ná rồi thả cho bi cái lăn đi cụng bi ra khỏi vòng phấn.",
+          "lines": [
+            "Đố {name} bắn bi giỏi bằng tớ đấy!",
+            "Kéo ngược hướng muốn bắn rồi thả ra, đẩy bi ra khỏi vòng phấn là ăn."
+          ],
+          "choice": "Thử thì biết ngay!",
+          "prompt": "Đẩy {goal} viên bi ra khỏi vòng nhé!",
+          "reward": "Bi lăn đâu trúng đó, {name} bắn chuẩn quá trời!",
+          "next": "Túi bi của tớ còn đầy, ra bờ hồ sen tỉ thí tiếp nha.",
+          "who": "{name}, tay bắn bi của xóm",
+          "learn": "Căn hướng và lực bắn"
+        },
+        {
+          "game": "pick-sticks",
+          "title": "Rút que cùng Khỉ Bắn Bi",
+          "summary": "Đống que nằm chồng chéo, rút từng que trên cùng mà không làm đống que rung.",
+          "lines": [
+            "{name} ơi, tớ vừa thả đống que xuống chiếu rồi đây!",
+            "Chỉ rút que nằm trên cùng thôi, rút nhầm là đống que rung đấy."
+          ],
+          "choice": "Tớ rút nhẹ tay lắm!",
+          "prompt": "Rút được {goal} que nhé!",
+          "reward": "Không một que nào rung, {name} khéo tay hơn cả khỉ!",
+          "next": "Đống que vẫn bày bên hồ sen, lúc nào cậu cũng rút được.",
+          "who": "{name}, bạn rút que tinh mắt",
+          "learn": "Quan sát lớp chồng và cẩn thận"
+        }
+      ]
+    },
+    {
+      "id": "heo-rong-ran",
+      "name": "Heo Rồng Rắn",
+      "look": "animal-pig",
+      "where": "Gò đất lộng gió",
+      "place": "Gò đất lộng gió",
+      "company": [
+        {
+          "routine": "kite-flyer",
+          "name": "Bạn thả diều trên gò",
+          "model": "person-r"
+        },
+        {
+          "routine": "chick",
+          "name": "Gà Con Lon Ton",
+          "model": "animal-chick"
+        }
+      ],
+      "games": [
+        {
+          "game": "snake-dragon",
+          "title": "Rồng rắn lên mây cùng Heo Rồng Rắn",
+          "summary": "Dẫn đầu đoàn rồng rắn trên gò lộng gió, đón các bạn nối vào đuôi mà không tự cắn mình.",
+          "lines": [
+            "Rồng rắn lên mây, {name} làm đầu rồng nhé!",
+            "Vuốt để đổi hướng đón thêm bạn, đừng vòng vào chính đoàn mình nha."
+          ],
+          "choice": "Rồng rắn lên mây nào!",
+          "prompt": "Đón {goal} bạn nối vào đoàn nhé!",
+          "reward": "Đoàn rồng dài ngoằng luôn, {name} dẫn đầu hay ghê!",
+          "next": "Gió trên gò vẫn lộng, tớ chờ cậu chơi rồng rắn ván sau.",
+          "who": "{name}, đầu rồng của đoàn",
+          "learn": "Định hướng và tính trước đường đi"
+        },
+        {
+          "game": "hide-and-seek",
+          "title": "Chơi trốn tìm cùng Heo Rồng Rắn",
+          "summary": "Các bạn nấp sau cây, bụi và thùng, chạm đúng chỗ vừa thấy bạn ló đầu ra.",
+          "lines": [
+            "{name} làm người đi tìm nhé, tớ với các bạn trốn đây!",
+            "Bạn nào ló đầu thì chạm ngay chỗ đó, lá rung vì gió thì đừng bị lừa."
+          ],
+          "choice": "Một, hai, ba, tớ đi tìm đây!",
+          "prompt": "Tìm ra {goal} lần các bạn trốn nhé!",
+          "reward": "Ủn ỉn, trốn kỹ thế mà {name} vẫn tìm ra hết!",
+          "next": "Gò đất còn nhiều chỗ trốn lắm, ván sau tớ trốn kỹ hơn.",
+          "who": "{name}, người đi tìm tinh mắt",
+          "learn": "Tập trung quan sát và phản xạ"
+        }
+      ]
+    }
+  ],
+  "residents": [
+    {
+      "routine": "reader",
+      "name": "Bà ngồi đầu ngõ",
+      "model": "person-l",
+      "place": "Vườn hoa và ngõ nhà Mẩy"
+    },
+    {
+      "routine": "dog",
+      "name": "Chó Vện Ngõ Xóm",
+      "model": "animal-dog",
+      "place": "Sân phơi"
+    },
+    {
+      "routine": "porter",
+      "name": "Chú gánh củi qua chòi",
+      "model": "person-j",
+      "place": "Chòi cũ bên bờ hồ và con dốc nhà ông"
+    },
+    {
+      "routine": "cat",
+      "name": "Mèo Lười Hiên Nhà",
+      "model": "animal-cat",
+      "place": "Hiên nhà"
+    }
+  ]
+}

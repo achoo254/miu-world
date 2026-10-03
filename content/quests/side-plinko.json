@@ -1,0 +1,80 @@
+{
+  "id": "side-plinko",
+  "region": "trung-tam",
+  "chapter": 1,
+  "title": "Thả xu qua đinh với Voi Kẹo Bông",
+  "status": "active",
+  "category": "side",
+  "summary": "Bảng đinh dựng cao trước cửa hàng: chọn chỗ thả đồng xu cho nó nảy về ô giữa hoặc trúng hộp quà.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người thả xu khéo léo",
+    "where": "Lối vào khu giao dịch và cửa hàng",
+    "goal": "Gom được chín mươi điểm từ tám đồng xu nhé!",
+    "play": "Chạm vào chỗ {name} muốn thả đồng xu, xu nảy qua các cây đinh rơi xuống ô.",
+    "learn": "Quan sát, đoán đường nảy và chọn vị trí",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Bảng đinh vẫn đứng trước cửa hàng, cậu ghé thả xu tiếp nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "voi-keo-bong",
+      "lines": [
+        {
+          "speaker": "Voi Kẹo Bông",
+          "text": "{name} ơi, tớ có tám đồng xu cho cậu thả vào bảng đinh này!"
+        },
+        {
+          "speaker": "Voi Kẹo Bông",
+          "text": "Chạm chỗ muốn thả, xu sẽ nảy lách cách qua đinh, ô giữa được nhiều điểm nhất."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Thả xu nào, lách cách lách cách!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Thả bi qua đinh",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Gom được chín mươi điểm từ tám đồng xu nhé!",
+      "game": "plinko",
+      "goal": 90
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Xu nào của {name} cũng rơi vào ô đẹp, Voi Kẹo Bông thổi kèn mừng!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Bảng đinh vẫn đứng trước cửa hàng, cậu ghé thả xu tiếp nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

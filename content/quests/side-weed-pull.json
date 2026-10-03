@@ -1,0 +1,80 @@
+{
+  "id": "side-weed-pull",
+  "region": "nha-cua-be",
+  "chapter": 1,
+  "title": "Nhổ cỏ dại trong luống cà rốt với Thỏ Làm Vườn",
+  "status": "active",
+  "category": "side",
+  "summary": "Bé giữ ngón tay trên cây cỏ dại rồi kéo lên, lắc cỏ ba lá cho lỏng và không nhổ nhầm cà rốt.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người giữ vườn sạch cỏ",
+    "where": "Lối đi cạnh vườn rau",
+    "goal": "Nhổ cỏ dại được mười lăm điểm nhé!",
+    "play": "Giữ ngón tay trên cây cỏ dại rồi kéo lên để nhổ.",
+    "learn": "Phân biệt cây trồng và cỏ dại",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Cỏ dại mọc lại nhanh lắm, {name} nhớ ghé vườn rau với Thỏ nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "tho-lam-vuon",
+      "lines": [
+        {
+          "speaker": "Thỏ Làm Vườn",
+          "text": "Cỏ dại mọc chen vào luống cà rốt của tớ rồi {name} ạ!"
+        },
+        {
+          "speaker": "Thỏ Làm Vườn",
+          "text": "Cỏ ba lá dai lắm, lắc qua lắc lại rồi mới kéo, nhớ chừa cà rốt và hoa nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ nhổ sạch cho cậu!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Nhổ cỏ dại",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Nhổ cỏ dại được mười lăm điểm nhé!",
+      "game": "weed-pull",
+      "goal": 15
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Thỏ Làm Vườn nhảy cẫng lên: luống cà rốt sạch cỏ rồi, cảm ơn {name}!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Cỏ dại mọc lại nhanh lắm, {name} nhớ ghé vườn rau với Thỏ nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

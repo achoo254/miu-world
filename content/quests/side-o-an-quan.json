@@ -1,0 +1,80 @@
+{
+  "id": "side-o-an-quan",
+  "region": "lang-ven-song",
+  "chapter": 1,
+  "title": "Chơi ô ăn quan với Thỏ Ô Quan",
+  "status": "active",
+  "category": "side",
+  "summary": "Ngồi bên bờ ruộng, rải sỏi từng ô, gặp ô trống thì ăn cả ô kế tiếp.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, kỳ thủ ô quan nhỏ",
+    "where": "Bờ cánh đồng lúa",
+    "goal": "Ăn được bốn mươi lăm điểm sỏi nhé!",
+    "play": "Hàng dưới là của {name}. Chạm một ô, rồi chạm mũi tên để rải sỏi sang trái hay phải.",
+    "learn": "Đếm, tính trước và lập kế hoạch",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Bàn ô quan vẫn còn kẻ bên bờ ruộng, ván sau tớ phục thù nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "tho-o-quan",
+      "lines": [
+        {
+          "speaker": "Thỏ Ô Quan",
+          "text": "{name} ơi, tớ vừa kẻ xong bàn ô quan trên đất đây!"
+        },
+        {
+          "speaker": "Thỏ Ô Quan",
+          "text": "Cậu cầm hàng dưới, rải sỏi sang trái hay phải tùy cậu chọn."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Ván này tớ đi trước nhé!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Ô ăn quan",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Ăn được bốn mươi lăm điểm sỏi nhé!",
+      "game": "o-an-quan",
+      "goal": 45
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Ối, {name} ăn được cả quan to, tớ thua tâm phục!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Bàn ô quan vẫn còn kẻ bên bờ ruộng, ván sau tớ phục thù nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

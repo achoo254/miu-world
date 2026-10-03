@@ -1,0 +1,80 @@
+{
+  "id": "side-bowling",
+  "region": "trung-tam",
+  "chapter": 1,
+  "title": "Lăn bóng đổ ki với Voi Kẹo Bông",
+  "status": "active",
+  "category": "side",
+  "summary": "Đường lăn bóng bóng loáng, mười cái ki xếp tam giác: chọn chỗ đứng rồi vuốt bóng lăn đổ ki.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người ném bóng đổ ki giỏi",
+    "where": "Lối vào khu giao dịch và cửa hàng",
+    "goal": "Làm đổ ki được bốn mươi điểm nhé!",
+    "play": "Kéo quả bóng sang trái, sang phải để chọn chỗ đứng.",
+    "learn": "Ngắm hướng và căn chỗ đứng",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Tớ xếp lại ki ngay đây, lúc nào muốn ném tiếp cứ quay lại nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "voi-keo-bong",
+      "lines": [
+        {
+          "speaker": "Voi Kẹo Bông",
+          "text": "Mười cái ki đứng thẳng tắp chờ {name} đấy!"
+        },
+        {
+          "speaker": "Voi Kẹo Bông",
+          "text": "Kéo bóng sang chọn chỗ đứng, rồi vuốt lên về phía ki, đổ hết được thưởng thêm nha."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Ki ơi, coi chừng nhé!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Ném bowling",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Làm đổ ki được bốn mươi điểm nhé!",
+      "game": "bowling",
+      "goal": 40
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Rầm rầm! Ki đổ rạp, Voi Kẹo Bông giậm chân khen {name} ném mạnh quá!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Tớ xếp lại ki ngay đây, lúc nào muốn ném tiếp cứ quay lại nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

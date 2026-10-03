@@ -1,0 +1,80 @@
+{
+  "id": "side-stick-bridge",
+  "region": "lang-ven-song",
+  "chapter": 1,
+  "title": "Bắc cầu tre qua suối cùng Khỉ Cầu Tre",
+  "status": "active",
+  "category": "side",
+  "summary": "Giữ tay cho cây tre dài ra vừa đủ, thả xuống thành cầu nối hai cột đá.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người bắc cầu khéo tay",
+    "where": "Đầu cầu đá phía đông",
+    "goal": "Bắc cầu qua mười khe suối nhé!",
+    "play": "Giữ ngón tay để cây tre mọc dài ra, thả tay để tre đổ ngang qua suối.",
+    "learn": "Ước lượng độ dài bằng mắt",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Còn mấy con suối nữa ở đầu cầu đá, lúc nào rảnh ghé tớ nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "khi-cau-tre",
+      "lines": [
+        {
+          "speaker": "Khỉ Cầu Tre",
+          "text": "{name} ơi, suối này nhiều khe quá, tớ không qua được!"
+        },
+        {
+          "speaker": "Khỉ Cầu Tre",
+          "text": "Cậu nuôi cây tre dài vừa tới cột đá bên kia giúp tớ nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Để tớ ước lượng cho!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Bắc cầu tre",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Bắc cầu qua mười khe suối nhé!",
+      "game": "stick-bridge",
+      "goal": 10
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Tuyệt cú mèo, cầu của {name} vừa khít luôn!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Còn mấy con suối nữa ở đầu cầu đá, lúc nào rảnh ghé tớ nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

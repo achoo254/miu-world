@@ -1,0 +1,80 @@
+{
+  "id": "side-hide-and-seek",
+  "region": "xom-mai-am",
+  "chapter": 1,
+  "title": "Chơi trốn tìm cùng Heo Rồng Rắn",
+  "status": "active",
+  "category": "side",
+  "summary": "Các bạn nấp sau cây, bụi và thùng, chạm đúng chỗ vừa thấy bạn ló đầu ra.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người đi tìm tinh mắt",
+    "where": "Gò đất lộng gió",
+    "goal": "Tìm ra mười hai lần các bạn trốn nhé!",
+    "play": "Các bạn trốn sau cây, bụi, thùng. Thỉnh thoảng một bạn ló đầu ra rồi trốn lại.",
+    "learn": "Tập trung quan sát và phản xạ",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Gò đất còn nhiều chỗ trốn lắm, ván sau tớ trốn kỹ hơn."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "heo-rong-ran",
+      "lines": [
+        {
+          "speaker": "Heo Rồng Rắn",
+          "text": "{name} làm người đi tìm nhé, tớ với các bạn trốn đây!"
+        },
+        {
+          "speaker": "Heo Rồng Rắn",
+          "text": "Bạn nào ló đầu thì chạm ngay chỗ đó, lá rung vì gió thì đừng bị lừa."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Một, hai, ba, tớ đi tìm đây!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Trốn tìm",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Tìm ra mười hai lần các bạn trốn nhé!",
+      "game": "hide-and-seek",
+      "goal": 12
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Ủn ỉn, trốn kỹ thế mà {name} vẫn tìm ra hết!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Gò đất còn nhiều chỗ trốn lắm, ván sau tớ trốn kỹ hơn."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

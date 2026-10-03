@@ -1,0 +1,80 @@
+{
+  "id": "side-claw-machine",
+  "region": "cho-phien",
+  "chapter": 1,
+  "title": "Gắp thú bông cùng Mèo Gắp Thú",
+  "status": "active",
+  "category": "side",
+  "summary": "Điều khiển cần gắp đi sang phải, vào sâu rồi hạ xuống gắp con thú bông mình thích.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, cao thủ máy gắp",
+    "where": "Chân cầu hình rồng",
+    "goal": "Gắp được ba con thú bông nhé!",
+    "play": "Giữ ngón tay: cần gắp chạy sang phải. Thả ra: cần gắp dừng.",
+    "learn": "Căn vị trí theo hai chiều",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Máy gắp vẫn đặt ở chân cầu rồng, cậu tới gắp nữa nha."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "meo-gap-thu",
+      "lines": [
+        {
+          "speaker": "Mèo Gắp Thú",
+          "text": "Máy gắp thú mới về, {name} gắp thử một con đi!"
+        },
+        {
+          "speaker": "Mèo Gắp Thú",
+          "text": "Giữ tay để cần chạy, thả ra để dừng, canh đúng trên đầu thú bông nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ muốn gắp con gấu!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Gắp thú bông",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Gắp được ba con thú bông nhé!",
+      "game": "claw-machine",
+      "goal": 3
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Meo meo, {name} gắp toàn trúng, tài thế!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Máy gắp vẫn đặt ở chân cầu rồng, cậu tới gắp nữa nha."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

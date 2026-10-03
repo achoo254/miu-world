@@ -1,0 +1,80 @@
+{
+  "id": "side-rope-swing",
+  "region": "khu-rung-bi-mat",
+  "chapter": 1,
+  "title": "Đu dây qua rừng cùng Khỉ Chuyền Cành",
+  "status": "active",
+  "category": "side",
+  "summary": "Dây leo treo khắp tán cây cao: móc dây, đu thật bổng rồi bay sang gốc cây có nải chuối.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, bạn đu dây của bầy khỉ",
+    "where": "Bìa trảng rừng có cây cao",
+    "goal": "Bay qua sáu chặng có nải chuối là thắng!",
+    "play": "Giữ ngón tay: khỉ móc dây vào móc gần nhất rồi đu. Thả ra: khỉ bay đi!",
+    "learn": "Chọn đúng lúc buông tay và ước lượng đà bay",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Lúc nào muốn đu tiếp, cứ ra bìa trảng rừng gọi Khỉ Chuyền Cành nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "khi-chuyen-canh",
+      "lines": [
+        {
+          "speaker": "Khỉ Chuyền Cành",
+          "text": "{name} ơi, tớ treo sẵn dây leo từ cây này sang cây kia rồi đấy!"
+        },
+        {
+          "speaker": "Khỉ Chuyền Cành",
+          "text": "Giữ tay để móc dây, đu lên thật cao rồi buông ra mà bay nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ đu giỏi như khỉ luôn!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Khỉ đu dây",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Bay qua sáu chặng có nải chuối là thắng!",
+      "game": "rope-swing",
+      "goal": 6
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Khỉ Chuyền Cành treo ngược trên cành vỗ tay: {name} bay như chim rồi!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Lúc nào muốn đu tiếp, cứ ra bìa trảng rừng gọi Khỉ Chuyền Cành nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

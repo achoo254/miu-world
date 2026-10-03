@@ -1,0 +1,80 @@
+{
+  "id": "side-flow-connect",
+  "region": "truong-hoc",
+  "chapter": 1,
+  "title": "Nối ống cùng màu với Gấu Trúc Bút Chì",
+  "status": "active",
+  "category": "side",
+  "summary": "Bàn ô vuông có các chấm màu: nối hai chấm giống nhau, ống không cắt nhau và phủ kín mọi ô.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, nhà giải đố của lớp",
+    "where": "Lối đi trong vườn trường",
+    "goal": "Giải xong ba bàn nối ống nhé!",
+    "play": "{name} kéo ngón tay từ một chấm tới chấm cùng màu, cùng hình để nối ống.",
+    "learn": "Lập kế hoạch đường đi và suy luận không gian",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Tớ còn cả tập câu đố nối ống, ghé vườn trường giải cùng tớ nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "gau-truc-but-chi",
+      "lines": [
+        {
+          "speaker": "Gấu Trúc Bút Chì",
+          "text": "{name} ơi, đố cậu nối hết các chấm cùng màu mà ống không chéo nhau đấy!"
+        },
+        {
+          "speaker": "Gấu Trúc Bút Chì",
+          "text": "Nhớ tô kín mọi ô trên bàn nữa nha, nghĩ kỹ trước khi kéo tay."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Câu đố này khó mà vui, thử nào!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Nối chấm cùng màu",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Giải xong ba bàn nối ống nhé!",
+      "game": "flow-connect",
+      "goal": 3
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Gấu Trúc Bút Chì gật gù mãi: {name} nghĩ đường đi giỏi thật!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Tớ còn cả tập câu đố nối ống, ghé vườn trường giải cùng tớ nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "id": "side-sliding-tiles",
+  "region": "thu-vien",
+  "chapter": 1,
+  "title": "Trượt ô ghép tranh cùng Koala Ghép Tranh",
+  "status": "active",
+  "category": "side",
+  "summary": "Bức tranh số bị xáo tung, bé trượt từng ô vào chỗ trống cho đúng thứ tự từ 1 tới 8.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người xếp ô tài giỏi",
+    "where": "Lối vào vườn đọc sách",
+    "goal": "Xếp xong một bức tranh trượt nhé!",
+    "play": "Bức tranh bị xáo trộn. {name} chạm một ô cạnh chỗ trống để trượt ô đó vào.",
+    "learn": "Suy nghĩ trước nhiều bước và đếm theo thứ tự",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Mỗi ngày tớ lại có tranh trượt mới, nhớ ra vườn chơi tiếp nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "koala-ghep-tranh",
+      "lines": [
+        {
+          "speaker": "Koala Ghép Tranh",
+          "text": "{name} ơi, bạn chim nghịch xáo bức tranh trượt của tớ mất rồi."
+        },
+        {
+          "speaker": "Koala Ghép Tranh",
+          "text": "Cậu chạm ô nằm cạnh chỗ trống để trượt nó sang, xếp lại từ 1 tới 8 là được."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ trượt ngay đây!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Trượt ghép tranh",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Xếp xong một bức tranh trượt nhé!",
+      "game": "sliding-tiles",
+      "goal": 1
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Tranh về đúng chỗ rồi, Koala Ghép Tranh vỗ tay khen {name}!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Mỗi ngày tớ lại có tranh trượt mới, nhớ ra vườn chơi tiếp nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

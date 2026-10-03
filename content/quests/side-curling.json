@@ -1,0 +1,80 @@
+{
+  "id": "side-curling",
+  "region": "nui-tuyet",
+  "chapter": 1,
+  "title": "Đẩy bi đá trên hồ băng cùng Cánh Cụt Trượt Băng",
+  "status": "active",
+  "category": "side",
+  "summary": "Trên mặt hồ đóng băng, bé vuốt viên đá trượt về vòng tròn và xoa băng cho đá đi xa.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, tay đẩy bi đá trên hồ băng",
+    "where": "Bờ hồ băng",
+    "goal": "Ghi được sáu điểm trên hồ băng nào!",
+    "play": "Vuốt lên để đẩy viên đá trượt về phía vòng tròn.",
+    "learn": "Ước lượng lực đẩy và khoảng cách",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Hồ băng còn lạnh lâu, Cánh Cụt chờ {name} đẩy thêm ván nữa."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "canh-cut-truot-bang",
+      "lines": [
+        {
+          "speaker": "Cánh Cụt Trượt Băng",
+          "text": "{name} ơi, mặt hồ băng hôm nay phẳng lì như gương luôn!"
+        },
+        {
+          "speaker": "Cánh Cụt Trượt Băng",
+          "text": "Tớ có năm viên đá tròn, đẩy cho chúng dừng ngay giữa vòng nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Để tớ đẩy viên đầu tiên!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Bi đá trên băng",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Ghi được sáu điểm trên hồ băng nào!",
+      "game": "curling",
+      "goal": 6
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Cánh Cụt vỗ đôi cánh nhỏ: {name} đẩy đá khéo hơn cả tớ!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Hồ băng còn lạnh lâu, Cánh Cụt chờ {name} đẩy thêm ván nữa."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

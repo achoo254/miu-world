@@ -1,0 +1,80 @@
+{
+  "id": "side-trampoline-rescue",
+  "region": "trung-tam",
+  "chapter": 1,
+  "title": "Căng bạt cứu hộ cùng Cáo Phi Công",
+  "status": "active",
+  "category": "side",
+  "summary": "Các bạn nhảy xuống từ tòa nhà diễn tập: kéo bạt hứng cho bạn nảy sang xe cứu hỏa.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, đội viên cứu hộ dũng cảm",
+    "where": "Sân rộng của khu học tập",
+    "goal": "Đưa mười lăm bạn nảy sang xe cứu hỏa nhé!",
+    "play": "Các bạn nhảy xuống từ tòa nhà. {name} kéo tấm bạt sang trái, sang phải để hứng.",
+    "learn": "Đoán điểm rơi và di chuyển kịp thời",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Tuần sau lại diễn tập, Cáo Phi Công hẹn cậu ở khu học tập."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "cao-phi-cong",
+      "lines": [
+        {
+          "speaker": "Cáo Phi Công",
+          "text": "Diễn tập cứu hộ rồi {name}, cầm một góc bạt với tớ nào!"
+        },
+        {
+          "speaker": "Cáo Phi Công",
+          "text": "Nhìn bóng dưới đất để biết bạn sắp rơi chỗ nào, kéo bạt sang đó hứng nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Bạt căng rồi, các bạn nhảy đi!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Bạt nhún cứu hộ",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Đưa mười lăm bạn nảy sang xe cứu hỏa nhé!",
+      "game": "trampoline-rescue",
+      "goal": 15
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Bạn nào cũng an toàn, Cáo Phi Công gắn huy hiệu cứu hộ cho {name}!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Tuần sau lại diễn tập, Cáo Phi Công hẹn cậu ở khu học tập."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "id": "side-snowball-fight",
+  "region": "nui-tuyet",
+  "chapter": 1,
+  "title": "Ném tuyết sau ụ cùng Gấu Trắng Lăn Tuyết",
+  "status": "active",
+  "category": "side",
+  "summary": "Các bạn nhô lên sau ụ tuyết, bé chạm để ném và giữ tay để núp khi tuyết bay tới.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, chiến binh ném tuyết",
+    "where": "Bãi người tuyết đầu làng",
+    "goal": "Ném trúng các bạn mười lăm lần là thắng!",
+    "play": "Các bạn nhô lên sau ụ tuyết. {name} chạm vào bạn để ném tuyết!",
+    "learn": "Phản xạ: lúc nào núp, lúc nào ném",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Trận ném tuyết sau còn vui hơn, nhớ ghé bãi người tuyết tìm Gấu Trắng nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "gau-trang-lan-tuyet",
+      "lines": [
+        {
+          "speaker": "Gấu Trắng Lăn Tuyết",
+          "text": "Đội bên kia thách đấu ném tuyết đấy {name}, mình vào ụ thôi!"
+        },
+        {
+          "speaker": "Gấu Trắng Lăn Tuyết",
+          "text": "Thấy quả tuyết bay tới thì núp ngay, rồi nhô lên ném trả nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ núp kỹ, ném trúng!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Ném tuyết sau ụ",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Ném trúng các bạn mười lăm lần là thắng!",
+      "game": "snowball-fight",
+      "goal": 15
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Gấu Trắng giơ cao nắm tuyết: đội mình thắng nhờ {name} đấy!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Trận ném tuyết sau còn vui hơn, nhớ ghé bãi người tuyết tìm Gấu Trắng nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

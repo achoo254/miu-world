@@ -1,0 +1,80 @@
+{
+  "id": "side-basketball",
+  "region": "truong-hoc",
+  "chapter": 1,
+  "title": "Ném bóng rổ với Hươu Bóng Rổ",
+  "status": "active",
+  "category": "side",
+  "summary": "Cái rổ treo trên cột cao: vuốt dài ném mạnh, vuốt ngắn ném nhẹ, rổ còn chạy qua lại nữa.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, cầu thủ bóng rổ tí hon",
+    "where": "Cạnh sân bóng rổ",
+    "goal": "Ném vào rổ mười lăm quả nhé!",
+    "play": "Vuốt quả bóng lên phía rổ: vuốt dài thì ném mạnh, vuốt ngắn thì ném nhẹ.",
+    "learn": "Ước lượng lực ném và đường bay của bóng",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Sân bóng rổ lúc nào cũng mở, ghé chơi với Hươu Bóng Rổ nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "huou-bong-ro",
+      "lines": [
+        {
+          "speaker": "Hươu Bóng Rổ",
+          "text": "Chào {name}! Cổ tớ dài nên tớ treo rổ cao một chút nha."
+        },
+        {
+          "speaker": "Hươu Bóng Rổ",
+          "text": "Vuốt bóng lên phía rổ, vuốt dài thì bóng bay xa, ném trúng ba quả là rổ chạy đấy."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Xem tớ ném trúng rổ này!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Ném bóng rổ",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Ném vào rổ mười lăm quả nhé!",
+      "game": "basketball",
+      "goal": 15
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Hươu Bóng Rổ cúi cổ đập tay với {name}: ném chuẩn quá!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Sân bóng rổ lúc nào cũng mở, ghé chơi với Hươu Bóng Rổ nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

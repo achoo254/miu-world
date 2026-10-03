@@ -1,0 +1,80 @@
+{
+  "id": "side-scratch-reveal",
+  "region": "nui-tuyet",
+  "chapter": 1,
+  "title": "Cào tuyết đoán con vật với Nai Leo Vách",
+  "status": "active",
+  "category": "side",
+  "summary": "Bé xoa ngón tay cào lớp tuyết trên tấm thẻ, nhìn hình lộ dần rồi đoán con vật.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, thám tử đoán hình",
+    "where": "Trước trạm thám hiểm",
+    "goal": "Đoán đúng để được mười điểm nhé!",
+    "play": "Xoa ngón tay lên tấm thẻ để cào lớp tuyết hay lớp cát, lộ dần con vật.",
+    "learn": "Nhận ra cả hình từ một phần nhỏ",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Nai còn cả xấp thẻ phủ tuyết, khi nào rảnh {name} ghé trạm thám hiểm nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "nai-leo-vach",
+      "lines": [
+        {
+          "speaker": "Nai Leo Vách",
+          "text": "Tớ giấu tranh con vật dưới lớp tuyết trên thẻ, {name} đoán thử xem!"
+        },
+        {
+          "speaker": "Nai Leo Vách",
+          "text": "Cào một chút rồi đoán ngay thì được hai điểm, đoán giỏi lắm mới làm được."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cho tớ cào tấm đầu tiên!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Cào tuyết đoán hình",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Đoán đúng để được mười điểm nhé!",
+      "game": "scratch-reveal",
+      "goal": 10
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Nai Leo Vách tròn mắt: {name} chỉ nhìn một góc mà đã đoán ra!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Nai còn cả xấp thẻ phủ tuyết, khi nào rảnh {name} ghé trạm thám hiểm nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

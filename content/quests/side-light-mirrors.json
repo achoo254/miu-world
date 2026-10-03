@@ -1,0 +1,80 @@
+{
+  "id": "side-light-mirrors",
+  "region": "lau-dai",
+  "chapter": 1,
+  "title": "Dẫn tia nắng bằng gương cùng Mèo Gương Thần",
+  "status": "active",
+  "category": "side",
+  "summary": "Tia nắng chiếu vào vườn hoàng gia, bé xoay những tấm gương để dẫn nắng tới bông hoa chưa nở.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người dẫn nắng cho vườn hoa",
+    "where": "Lối hoa trong vườn hoàng gia",
+    "goal": "Làm nở hoa ở ba bàn gương nhé!",
+    "play": "Ông mặt trời chiếu một tia nắng. Tia nắng gặp gương thì rẽ hướng.",
+    "learn": "Suy luận hướng đi của tia sáng",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Vườn còn nhiều góc khuất, cậu quay lại lối hoa giúp tớ dẫn nắng nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "meo-guong-than",
+      "lines": [
+        {
+          "speaker": "Mèo Gương Thần",
+          "text": "Meo, {name} ơi, bông hoa trong góc vườn không có nắng nên chưa nở được."
+        },
+        {
+          "speaker": "Mèo Gương Thần",
+          "text": "Cậu chạm gương để xoay, tia nắng gặp gương sẽ rẽ hướng, dẫn nó tới bông hoa nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Xoay gương, đón nắng nào!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Gương dẫn ánh nắng",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Làm nở hoa ở ba bàn gương nhé!",
+      "game": "light-mirrors",
+      "goal": 3
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Hoa nở rực rỡ, Mèo Gương Thần cài một bông lên tai {name}!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Vườn còn nhiều góc khuất, cậu quay lại lối hoa giúp tớ dẫn nắng nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "id": "side-stack-slide",
+  "region": "lau-dai",
+  "chapter": 1,
+  "title": "Xếp tầng trượt với Voi Thủ Kho",
+  "status": "active",
+  "category": "side",
+  "summary": "Từng tầng gỗ trượt qua lại trên đỉnh tháp, bé chạm đúng lúc để thả thẳng hàng tầng dưới.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, kiến trúc sư xây tháp",
+    "where": "Chợ nhỏ dưới chân thành",
+    "goal": "Xếp được hai mươi tầng tháp nhé!",
+    "play": "Tầng mới trượt qua lại. {name} chạm để thả nó xuống tầng dưới.",
+    "learn": "Canh đúng lúc và căn thẳng hàng",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Tớ còn nhiều gỗ ở chợ, lúc nào cậu muốn xây nữa thì ghé nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "voi-thu-kho",
+      "lines": [
+        {
+          "speaker": "Voi Thủ Kho",
+          "text": "{name} ơi, tớ muốn xây tháp hàng thật cao mà cứ bị lệch."
+        },
+        {
+          "speaker": "Voi Thủ Kho",
+          "text": "Tầng nào trượt tới ngay trên tầng dưới thì cậu chạm thả, phần thò ra sẽ bị cắt đấy."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Mình xây tháp cao vút nhé!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Xếp tầng trượt",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Xếp được hai mươi tầng tháp nhé!",
+      "game": "stack-slide",
+      "goal": 20
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Tháp cao chót vót, Voi Thủ Kho ngẩng vòi khen {name} giỏi canh!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Tớ còn nhiều gỗ ở chợ, lúc nào cậu muốn xây nữa thì ghé nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

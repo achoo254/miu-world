@@ -1,0 +1,80 @@
+{
+  "id": "side-flappy-fly",
+  "region": "khu-rung-bi-mat",
+  "chapter": 1,
+  "title": "Bay qua khe tre cùng Vẹt Mỏ Cong",
+  "status": "active",
+  "category": "side",
+  "summary": "Rặng tre mọc san sát: chạm để chú chim vỗ cánh, lách qua từng khe hẹp giữa hai cây tre.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, thầy dạy bay của chim non",
+    "where": "Lối mòn bên bãi rừng phía đông",
+    "goal": "Đưa chim bay qua mười khe tre nhé!",
+    "play": "Chú chim tự bay về phía trước và cứ rơi dần xuống.",
+    "learn": "Giữ nhịp chạm đều tay và canh độ cao",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Chim non còn muốn tập nữa, cứ ghé lối mòn phía đông tìm Vẹt Mỏ Cong."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "vet-mo-cong",
+      "lines": [
+        {
+          "speaker": "Vẹt Mỏ Cong",
+          "text": "{name} ơi, chim non nhà tớ đang tập bay qua rặng tre đấy!"
+        },
+        {
+          "speaker": "Vẹt Mỏ Cong",
+          "text": "Cứ chạm một cái là chim vỗ cánh, đừng để chim đụng thân tre nha."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Chim ơi, vỗ cánh theo nhịp tớ nhé!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Chim bay qua khe tre",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Đưa chim bay qua mười khe tre nhé!",
+      "game": "flappy-fly",
+      "goal": 10
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Vẹt Mỏ Cong hót vang cả lối mòn: {name} dạy chim non bay giỏi quá!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Chim non còn muốn tập nữa, cứ ghé lối mòn phía đông tìm Vẹt Mỏ Cong."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

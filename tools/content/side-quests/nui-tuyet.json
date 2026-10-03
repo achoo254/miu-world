@@ -1,0 +1,210 @@
+{
+  "region": "nui-tuyet",
+  "givers": [
+    {
+      "id": "canh-cut-truot-bang",
+      "name": "Cánh Cụt Trượt Băng",
+      "look": "animal-penguin",
+      "where": "Bờ hồ băng",
+      "place": "Bờ hồ băng",
+      "company": [
+        {
+          "routine": "penguin",
+          "name": "Cánh Cụt Con Lạch Bạch",
+          "model": "animal-penguin"
+        }
+      ],
+      "games": [
+        {
+          "game": "curling",
+          "title": "Đẩy bi đá trên hồ băng cùng Cánh Cụt Trượt Băng",
+          "summary": "Trên mặt hồ đóng băng, bé vuốt viên đá trượt về vòng tròn và xoa băng cho đá đi xa.",
+          "lines": [
+            "{name} ơi, mặt hồ băng hôm nay phẳng lì như gương luôn!",
+            "Tớ có năm viên đá tròn, đẩy cho chúng dừng ngay giữa vòng nhé."
+          ],
+          "choice": "Để tớ đẩy viên đầu tiên!",
+          "prompt": "Ghi được {goal} điểm trên hồ băng nào!",
+          "reward": "Cánh Cụt vỗ đôi cánh nhỏ: {name} đẩy đá khéo hơn cả tớ!",
+          "next": "Hồ băng còn lạnh lâu, Cánh Cụt chờ {name} đẩy thêm ván nữa.",
+          "who": "{name}, tay đẩy bi đá trên hồ băng",
+          "learn": "Ước lượng lực đẩy và khoảng cách"
+        },
+        {
+          "game": "ice-slide",
+          "title": "Dẫn chim cánh cụt trượt về nhà qua mê cung băng",
+          "summary": "Chim cánh cụt trượt mãi tới khi đụng đá, bé vuốt đúng hướng để đưa bạn ấy về nhà.",
+          "lines": [
+            "Em họ tớ trượt lạc trong mê cung băng rồi, {name} giúp với!",
+            "Bạn ấy trượt một mạch đến khi đụng đá mới dừng, nghĩ kỹ rồi hãy vuốt nhé."
+          ],
+          "choice": "Tớ sẽ tìm đường về cho bạn!",
+          "prompt": "Đưa cánh cụt về nhà qua {goal} mê cung nhé!",
+          "reward": "Cả nhà cánh cụt reo lên: cảm ơn {name} đã dẫn đường giỏi thế!",
+          "next": "Lúc nào băng đóng dày, cứ ra bờ hồ tìm Cánh Cụt nhé.",
+          "who": "{name}, người dẫn đường trên băng",
+          "learn": "Tính trước nhiều bước đi"
+        }
+      ]
+    },
+    {
+      "id": "gau-trang-lan-tuyet",
+      "name": "Gấu Trắng Lăn Tuyết",
+      "look": "animal-polar",
+      "where": "Bãi người tuyết đầu làng",
+      "place": "Bãi người tuyết",
+      "company": [
+        {
+          "routine": "pupil",
+          "name": "Bạn nhỏ đắp người tuyết",
+          "model": "person-o"
+        }
+      ],
+      "games": [
+        {
+          "game": "snowman-roll",
+          "title": "Lăn tuyết đắp người tuyết với Gấu Trắng Lăn Tuyết",
+          "summary": "Bé lăn quả tuyết khắp sân cho to dần rồi chồng ba quả to, vừa, nhỏ thành người tuyết.",
+          "lines": [
+            "Tuyết mới rơi dày quá, {name} đắp người tuyết với tớ không?",
+            "Lăn càng xa quả tuyết càng to, vừa vòng nét đứt thì thả vào nhé."
+          ],
+          "choice": "Đắp cả một gia đình người tuyết luôn!",
+          "prompt": "Chồng đúng {goal} quả tuyết lên người tuyết nhé!",
+          "reward": "Gấu Trắng ôm bụng cười: người tuyết của {name} đẹp nhất bãi!",
+          "next": "Bãi người tuyết lúc nào cũng còn chỗ, Gấu Trắng đợi {name} quay lại.",
+          "who": "{name}, nghệ nhân đắp người tuyết",
+          "learn": "So sánh to, vừa, nhỏ"
+        },
+        {
+          "game": "snowball-fight",
+          "title": "Ném tuyết sau ụ cùng Gấu Trắng Lăn Tuyết",
+          "summary": "Các bạn nhô lên sau ụ tuyết, bé chạm để ném và giữ tay để núp khi tuyết bay tới.",
+          "lines": [
+            "Đội bên kia thách đấu ném tuyết đấy {name}, mình vào ụ thôi!",
+            "Thấy quả tuyết bay tới thì núp ngay, rồi nhô lên ném trả nhé."
+          ],
+          "choice": "Tớ núp kỹ, ném trúng!",
+          "prompt": "Ném trúng các bạn {goal} lần là thắng!",
+          "reward": "Gấu Trắng giơ cao nắm tuyết: đội mình thắng nhờ {name} đấy!",
+          "next": "Trận ném tuyết sau còn vui hơn, nhớ ghé bãi người tuyết tìm Gấu Trắng nhé.",
+          "who": "{name}, chiến binh ném tuyết",
+          "learn": "Phản xạ: lúc nào núp, lúc nào ném"
+        }
+      ]
+    },
+    {
+      "id": "cao-tuyet-nhay-cau",
+      "name": "Cáo Tuyết Nhảy Cầu",
+      "look": "chibi-fox-tuyet-vest-shorts-navy",
+      "where": "Chân khu trượt tuyết",
+      "place": "Khu trượt tuyết",
+      "company": [
+        {
+          "routine": "pupil",
+          "name": "Bạn đội mũ len cổ vũ",
+          "model": "person-f"
+        }
+      ],
+      "games": [
+        {
+          "game": "ski-jump",
+          "title": "Nhảy cầu trượt tuyết với Cáo Tuyết Nhảy Cầu",
+          "summary": "Bé cúi người lao xuống cầu, thả tay đúng vạch xanh để bật cao rồi chạm màn hình để đáp đẹp.",
+          "lines": [
+            "Cầu nhảy trên dốc vừa phủ tuyết mới, {name} thử bay với tớ nhé!",
+            "Giữ tay để lao thật nhanh, tới vạch xanh thì thả ra là bay vút lên đấy."
+          ],
+          "choice": "Tớ sẽ bay thật xa!",
+          "prompt": "Cộng ba lượt nhảy được {goal} mét nhé!",
+          "reward": "Cáo Tuyết xoay một vòng trên tuyết: {name} bay xa như chim đại bàng!",
+          "next": "Cầu nhảy luôn mở, Cáo Tuyết sẽ đứng ở chân dốc chờ {name}.",
+          "who": "{name}, vận động viên nhảy cầu",
+          "learn": "Chọn đúng thời điểm bật nhảy"
+        },
+        {
+          "game": "sled-slalom",
+          "title": "Trượt xe tuyết qua cổng cờ cùng Cáo Tuyết",
+          "summary": "Ngồi xe trượt lao xuống dốc, bé kéo ngón tay lái qua giữa từng cặp cờ và né cây thông.",
+          "lines": [
+            "Tớ cắm cờ đỏ cờ xanh dọc dốc rồi, {name} lái xe trượt qua nhé!",
+            "Kéo sang trái sang phải cho xe chui giữa hai lá cờ, coi chừng cây thông."
+          ],
+          "choice": "Ngồi vững, xuất phát!",
+          "prompt": "Lái qua {goal} cổng cờ trên dốc tuyết nhé!",
+          "reward": "Cáo Tuyết vẫy cờ rối rít: {name} lái xe trượt khéo ghê!",
+          "next": "Mai Cáo Tuyết cắm thêm cờ mới, {name} lại xuống dốc chơi nhé.",
+          "who": "{name}, tay lái xe trượt tuyết",
+          "learn": "Lái khéo và nhìn trước đường đi"
+        }
+      ]
+    },
+    {
+      "id": "nai-leo-vach",
+      "name": "Nai Leo Vách",
+      "look": "animal-deer",
+      "tint": "#c8d0e0",
+      "where": "Trước trạm thám hiểm",
+      "place": "Trạm thám hiểm",
+      "company": [
+        {
+          "routine": "sentry",
+          "name": "Chú cứu hộ trên núi",
+          "model": "person-d"
+        }
+      ],
+      "games": [
+        {
+          "game": "rock-climb",
+          "title": "Leo vách đá băng cùng Nai Leo Vách",
+          "summary": "Bé chạm mấu bám đang sáng để leo lên vách, leo nhanh qua mấu nứt và tránh đá lăn.",
+          "lines": [
+            "Vách đá sau trạm thám hiểm cao lắm {name} ạ, mình thi leo nhé!",
+            "Mấu nứt sẽ rơi sau hai giây, thấy dấu chấm than thì né sang bên ngay."
+          ],
+          "choice": "Tớ bám chắc rồi, leo thôi!",
+          "prompt": "Leo lên cao {goal} mét trên vách đá nhé!",
+          "reward": "Nai Leo Vách gật gù: {name} leo nhanh như sóc núi vậy!",
+          "next": "Vách đá vẫn đứng đó, Nai Leo Vách hẹn {name} lần sau leo cao hơn.",
+          "who": "{name}, nhà leo núi nhí",
+          "learn": "Phản xạ nhanh và quan sát nguy hiểm"
+        },
+        {
+          "game": "scratch-reveal",
+          "title": "Cào tuyết đoán con vật với Nai Leo Vách",
+          "summary": "Bé xoa ngón tay cào lớp tuyết trên tấm thẻ, nhìn hình lộ dần rồi đoán con vật.",
+          "lines": [
+            "Tớ giấu tranh con vật dưới lớp tuyết trên thẻ, {name} đoán thử xem!",
+            "Cào một chút rồi đoán ngay thì được hai điểm, đoán giỏi lắm mới làm được."
+          ],
+          "choice": "Cho tớ cào tấm đầu tiên!",
+          "prompt": "Đoán đúng để được {goal} điểm nhé!",
+          "reward": "Nai Leo Vách tròn mắt: {name} chỉ nhìn một góc mà đã đoán ra!",
+          "next": "Nai còn cả xấp thẻ phủ tuyết, khi nào rảnh {name} ghé trạm thám hiểm nhé.",
+          "who": "{name}, thám tử đoán hình",
+          "learn": "Nhận ra cả hình từ một phần nhỏ"
+        }
+      ]
+    }
+  ],
+  "residents": [
+    {
+      "routine": "reader",
+      "name": "Bác ngắm hoàng hôn trên đỉnh",
+      "model": "person-k",
+      "place": "Đài quan sát"
+    },
+    {
+      "routine": "polar-bear",
+      "name": "Gấu Trắng Con Ngái Ngủ",
+      "model": "animal-polar",
+      "place": "Rừng thông tuyết"
+    },
+    {
+      "routine": "penguin",
+      "name": "Cánh Cụt Đi Lạc",
+      "model": "animal-penguin",
+      "place": "Cầu đá vòm"
+    }
+  ]
+}

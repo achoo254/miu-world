@@ -1,0 +1,80 @@
+{
+  "id": "side-train-switch",
+  "region": "trung-tam",
+  "chapter": 1,
+  "title": "Bẻ ghi đưa tàu về ga cùng Gấu Mũ Bảo Hộ",
+  "status": "active",
+  "category": "side",
+  "summary": "Những đoàn tàu màu sắc chạy về bãi ga: bấm mũi tên ở chỗ rẽ cho tàu về đúng ga cùng màu.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người bẻ ghi ở bến cảng",
+    "where": "Bãi hàng bên cảng biển",
+    "goal": "Đưa mười lăm đoàn tàu về đúng ga nhé!",
+    "play": "Tàu màu nào phải về ga màu đó (nhìn cả hình trên toa nữa).",
+    "learn": "Ghép màu, hình và tính trước đường đi",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Chuyến tàu chiều sắp tới, Gấu Mũ Bảo Hộ chờ cậu ở bãi hàng nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "gau-mu-bao-ho",
+      "lines": [
+        {
+          "speaker": "Gấu Mũ Bảo Hộ",
+          "text": "{name} ơi, tàu chở hàng đang về cảng mà người bẻ ghi đi vắng rồi!"
+        },
+        {
+          "speaker": "Gấu Mũ Bảo Hộ",
+          "text": "Tàu màu nào về ga màu đó, cậu chạm mũi tên ở chỗ rẽ để đổi đường cho tàu nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ bẻ ghi cho, tàu ơi về ga!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Bẻ ghi tàu",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Đưa mười lăm đoàn tàu về đúng ga nhé!",
+      "game": "train-switch",
+      "goal": 15
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Tàu nào cũng về đúng ga, Gấu Mũ Bảo Hộ kéo còi tu tu mừng {name}!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Chuyến tàu chiều sắp tới, Gấu Mũ Bảo Hộ chờ cậu ở bãi hàng nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

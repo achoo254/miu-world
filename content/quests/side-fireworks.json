@@ -1,0 +1,80 @@
+{
+  "id": "side-fireworks",
+  "region": "lang-ven-song",
+  "chapter": 1,
+  "title": "Bắn pháo hoa Tết cùng Thỏ Ô Quan",
+  "status": "active",
+  "category": "side",
+  "summary": "Đêm giao thừa trên cánh đồng, giữ tay cho pháo bay lên rồi thả đúng giữa vòng vàng.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người thắp sáng trời đêm",
+    "where": "Bờ cánh đồng lúa",
+    "goal": "Làm sáng mười vòng pháo hoa nhé!",
+    "play": "Đặt ngón tay ở dưới, ngay bên dưới một vòng vàng: pháo bay lên khi {name} giữ tay.",
+    "learn": "Canh thời điểm thả tay chính xác",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Năm sau tớ lại để dành pháo hoa chờ cậu bên bờ ruộng."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "tho-o-quan",
+      "lines": [
+        {
+          "speaker": "Thỏ Ô Quan",
+          "text": "Sắp giao thừa rồi {name}, mình bắn pháo hoa đón Tết nha!"
+        },
+        {
+          "speaker": "Thỏ Ô Quan",
+          "text": "Giữ tay cho pháo bay, tới giữa vòng vàng thì thả ra là bùm!"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ muốn bầu trời rực rỡ!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Bắn pháo hoa Tết",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Làm sáng mười vòng pháo hoa nhé!",
+      "game": "fireworks",
+      "goal": 10
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Trời sáng rực cả cánh đồng, {name} bắn đẹp nhất làng!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Năm sau tớ lại để dành pháo hoa chờ cậu bên bờ ruộng."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

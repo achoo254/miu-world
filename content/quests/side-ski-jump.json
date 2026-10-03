@@ -1,0 +1,80 @@
+{
+  "id": "side-ski-jump",
+  "region": "nui-tuyet",
+  "chapter": 1,
+  "title": "Nhảy cầu trượt tuyết với Cáo Tuyết Nhảy Cầu",
+  "status": "active",
+  "category": "side",
+  "summary": "Bé cúi người lao xuống cầu, thả tay đúng vạch xanh để bật cao rồi chạm màn hình để đáp đẹp.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, vận động viên nhảy cầu",
+    "where": "Chân khu trượt tuyết",
+    "goal": "Cộng ba lượt nhảy được một trăm tám mươi mét nhé!",
+    "play": "Giữ ngón tay để {name} cúi người lao thật nhanh xuống cầu.",
+    "learn": "Chọn đúng thời điểm bật nhảy",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Cầu nhảy luôn mở, Cáo Tuyết sẽ đứng ở chân dốc chờ {name}."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "cao-tuyet-nhay-cau",
+      "lines": [
+        {
+          "speaker": "Cáo Tuyết Nhảy Cầu",
+          "text": "Cầu nhảy trên dốc vừa phủ tuyết mới, {name} thử bay với tớ nhé!"
+        },
+        {
+          "speaker": "Cáo Tuyết Nhảy Cầu",
+          "text": "Giữ tay để lao thật nhanh, tới vạch xanh thì thả ra là bay vút lên đấy."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ sẽ bay thật xa!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Nhảy cầu trượt tuyết",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Cộng ba lượt nhảy được một trăm tám mươi mét nhé!",
+      "game": "ski-jump",
+      "goal": 180
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Cáo Tuyết xoay một vòng trên tuyết: {name} bay xa như chim đại bàng!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Cầu nhảy luôn mở, Cáo Tuyết sẽ đứng ở chân dốc chờ {name}."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

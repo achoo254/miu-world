@@ -1,0 +1,80 @@
+{
+  "id": "side-slot-cars",
+  "region": "trung-tam",
+  "chapter": 1,
+  "title": "Chạy xe đường ray cùng Chó Cảnh Sát Còi",
+  "status": "active",
+  "category": "side",
+  "summary": "Đường ray uốn lượn có khúc cua gắt: giữ tay cho xe tăng tốc, nhả tay trước khi vào cua.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, tay đua đường ray",
+    "where": "Ngã tư dưới tháp đồng hồ",
+    "goal": "Chạy đủ ba vòng trước xe của Cáo nhé!",
+    "play": "{name} giữ ngón tay trên màn hình để xe chạy nhanh, nhả tay để xe chậm lại.",
+    "learn": "Biết lúc tăng tốc, lúc giảm tốc",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Cáo đòi đua lại đấy, cậu ghé ngã tư tìm tớ khi rảnh nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "cho-canh-sat-coi",
+      "lines": [
+        {
+          "speaker": "Chó Cảnh Sát Còi",
+          "text": "{name} ơi, xe của Cáo đang chờ đua với xe của cậu đấy!"
+        },
+        {
+          "speaker": "Chó Cảnh Sát Còi",
+          "text": "Giữ tay là xe chạy nhanh, gần tới khúc cua thì nhả ra kẻo xe văng khỏi ray."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Xe tớ sẵn sàng rồi!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Xe đua đường ray",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Chạy đủ ba vòng trước xe của Cáo nhé!",
+      "game": "slot-cars",
+      "goal": 3
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Xe của {name} về trước một mũi, Chó Cảnh Sát Còi bấm còi mừng!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Cáo đòi đua lại đấy, cậu ghé ngã tư tìm tớ khi rảnh nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "id": "side-traffic-cop",
+  "region": "trung-tam",
+  "chapter": 1,
+  "title": "Điều khiển ngã tư cùng Chó Cảnh Sát Còi",
+  "status": "active",
+  "category": "side",
+  "summary": "Xe dừng chờ ở bốn vạch ngã tư: chạm cho từng xe đi, không để xe dọc và xe ngang vào giữa cùng lúc.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, cảnh sát giao thông nhí",
+    "where": "Ngã tư dưới tháp đồng hồ",
+    "goal": "Cho ba mươi chiếc xe qua ngã tư an toàn nhé!",
+    "play": "Làm cảnh sát giao thông nhé! Xe dừng ở vạch chờ, chạm xe để cho xe đi.",
+    "learn": "Hiểu luật nhường đường và quan sát nhiều hướng",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Giờ tan tầm đông xe lắm, Chó Cảnh Sát Còi cần cậu ở ngã tư nữa."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "cho-canh-sat-coi",
+      "lines": [
+        {
+          "speaker": "Chó Cảnh Sát Còi",
+          "text": "Tuýt! {name} làm cảnh sát giao thông với tớ một lúc nhé!"
+        },
+        {
+          "speaker": "Chó Cảnh Sát Còi",
+          "text": "Chạm xe nào thì xe đó đi, nhớ đừng cho xe dọc và xe ngang chạy cùng lúc kẻo đụng."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ cầm còi đây, xe ơi đi lần lượt!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Điều khiển ngã tư",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Cho ba mươi chiếc xe qua ngã tư an toàn nhé!",
+      "game": "traffic-cop",
+      "goal": 30
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Chó Cảnh Sát Còi giơ tay chào: nhờ {name} mà ngã tư thông suốt!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Giờ tan tầm đông xe lắm, Chó Cảnh Sát Còi cần cậu ở ngã tư nữa."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}
