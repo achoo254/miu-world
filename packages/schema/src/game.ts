@@ -20,7 +20,8 @@ export const CharacterUpdate = z.object({
     .min(1)
     .max(40)
     .transform((s) => s.normalize('NFC')),
-  equipped: z.array(ContentId).max(8),
+  /** One item per slot (the server checks it); room for every slot, the clothes and the vehicle included. */
+  equipped: z.array(ContentId).max(16),
   /** Left out: the species stays as it is. */
   species: ContentId.optional(),
   /** Left out: the pet stays as it is; null: no pet. */

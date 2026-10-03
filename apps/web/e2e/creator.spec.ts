@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url';
 import { expect, test, type Page } from '@playwright/test';
 
 mkdirSync(fileURLToPath(new URL('../../../.data/creator/', import.meta.url)), { recursive: true });
+import { freshChild } from './quest-api';
 import { readStats, waitReady } from './stats';
 
 // Its own parent, so selecting a new profile never changes the shared session other projects use.
@@ -104,4 +105,18 @@ test('a new profile creates its character first, sees outfit changes live, then 
   await expect(page.getByRole('button', { name: 'Thỏ Bông' }).locator('.miu-art')).toHaveAttribute('src', /\/fox-anim-idle\.png(\?v=[0-9a-f]+)?$/);
   await page.getByRole('button', { name: 'Thỏ Bông' }).click();
   await expect(page).toHaveURL(/\/home$/);
+});
+
+// A new item in every slot, the clothes and a vehicle included (owner, 03/10/2026: "các phụ kiện mới được thêm
+// khi bé chọn xong thì vào màn không thấy hiển thị"): the server keeps all nine and the game wears them.
+test('one new item in each of the nine slots is kept and worn in the game', async ({ page, baseURL }) => {
+  await freshChild(page, baseURL ?? '');
+  // Items open from level 1 (a fresh child is level 1).
+  const outfit = ['hat-bunny-white', 'glasses-3d', 'scarf-bell-red', 'back-bunny-white', 'wings-cloud-white', 'shoes-ballet-pink', 'hand-banh-mi', 'clothes-dress', 'vehicle-duck-car-yellow'];
+  const saved = await page.request.put('/api/character', { headers: { Origin: new URL(baseURL ?? '').origin }, data: { name: 'Mochi', equipped: outfit } });
+  expect(saved.status(), await saved.text()).toBe(200);
+  await page.goto('/play?quality=low');
+  await waitReady(page);
+  // Worn on her: every item but the vehicle, which waits under the HUD's Lái xe.
+  expect([...(await readStats(page)).outfit].sort()).toEqual(outfit.filter((id) => !id.startsWith('vehicle-')).sort());
 });
