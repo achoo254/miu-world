@@ -19,6 +19,17 @@ Người sở hữu (03/10/2026): "phần chưa làm như mock yêu cầu làm l
 | P | XL | Đặt NPC giao nhiệm vụ phụ minigame khắp 12 map theo bối cảnh (≥ 100 nhiệm vụ phụ, mỗi game ít nhất một nơi), thêm NPC sinh hoạt cho map rộng, sinh lại map, audit | agent P (sau H và G) | `content/quests/side-*.json`, `content/world/targets.json`, generator các map |
 | D | M | Gom: gate đủ, E2E (chạy mẫu minigame), trang review, docs, deploy khi người sở hữu cho | phiên chính | |
 
+## Quyết định sau research (phiên chính, 03/10/2026)
+
+Research: `plans/dattqh/reports/minigame-research-261003.md`, có 128 dạng game chia 5 lô × 25, mỗi map ≥ 16 game.
+- Tiếng nốt nhạc, tiếng con vật: tạo bằng Web Audio trong code. Không cần thêm file âm thanh, không vướng license.
+- Vật lý: tự viết va chạm đơn giản, chưa thêm planck.js; nếu game ná bắn đổ tháp trông giả thì xét lại.
+- Con lân dùng hình rồng 🐉 của Fluent Emoji kèm hình khối (đầu lân, dải vải).
+- 106 emoji còn thiếu: thêm qua quy trình asset (có trong manifest), mỗi game tải hình của mình khi mở, không gộp vào bundle chính.
+- Lô G1–G5 theo đúng chia lô của report; game `runner` của pha F thay cho `jump-runner`.
+- Chơi lại vẫn được thưởng đủ, không giới hạn (người sở hữu, 03/10/2026).
+- Mặt đất mọi map phẳng, trừ ao hồ, sông suối, biển, thác, núi, dốc có chủ ý (người sở hữu, 03/10/2026): agent riêng làm 11 map, agent pha H làm map nhà.
+
 ## Tiêu chí xong
 
 - ≥ 100 dạng minigame khác cơ chế, mỗi dạng chơi được bằng chạm trên iPad và điện thoại; bot test thắng và thua cho từng game; E2E chơi mẫu vài game qua UI.
