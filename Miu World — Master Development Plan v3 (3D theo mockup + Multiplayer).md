@@ -284,6 +284,38 @@ Mock hiện chỉ có gameplay một người; toàn bộ màn hình multiplayer
 
 **Việc bắt buộc làm ngay từ MVP, dù chưa có multiplayer:** API của quest, thưởng, tiến bộ chạy ở server; client chỉ gửi hành động và nhận kết quả. Khi đó thêm multiplayer chỉ là thêm lớp realtime.
 
+## 8b. Cư dân sống (NPC có chuyện riêng) và bạn máy (bot như người chơi)
+
+Người sở hữu (03/10/2026): NPC phải có chiều sâu, tính cách, chuyện riêng trong từng map, quen biết nhau kể cả ở map khác; khoảng 100 bot tự hành động như người chơi thật (di chuyển, làm nhiệm vụ ở mọi map, lập tổ đội, chat), mục tiêu chơi giống người thật tới 90%. Kế hoạch thi công: `plans/dattqh/261003-2330-bilingual-npc-stories-bots/plan.md`.
+
+### Cư dân có chuyện riêng
+
+| Thành phần | Thiết kế |
+| --- | --- |
+| Hồ sơ nhân vật | Mỗi NPC một file `content/npcs/<id>.json`: tuổi, nghề, tính cách (3–5 nét), giọng nói (cách xưng hô, câu cửa miệng), nỗi sợ, ước mơ, bí mật, thói quen trong ngày, nơi hay đứng |
+| Chuyện riêng | Mỗi map ít nhất 6 "mạch chuyện" 3–5 chương dành cho các NPC chính; mở theo mức thân thiết với bé; có cảnh cụ thể (địa điểm, thời điểm, đồ vật) và kết thúc có thưởng nhỏ |
+| Quan hệ | Đồ thị quan hệ (bạn, họ hàng, thầy trò, đối thủ vui) trong map và giữa các map; lời thoại nhắc nhau ("Chú Vịt ở Làng Ven Sông gửi lời hỏi thăm"), thư và quà chuyển giữa các NPC |
+| Trí nhớ | Server chỉ lưu bộ đếm theo hồ sơ bé: mức thân thiết, chương chuyện đã xem, nhiệm vụ đã làm cho NPC đó; không lưu chữ bé gõ |
+| Viết nội dung | AI viết theo lô theo hồ sơ nhân vật, kiểm bằng `content:check` (không lặp câu, đúng giọng, `{name}`), người sở hữu duyệt mẫu |
+
+### Bạn máy (bot)
+
+- **Bản chất:** khoảng 100 cư dân ảo điều khiển ở server như một người chơi: đi lại trong 12 map, làm nhiệm vụ và minigame, thấy nhau, lập tổ đội 2–4 để làm việc chung, nói chuyện bằng câu có sẵn và emote (đúng giới hạn bậc 1 và 2 của mục 8).
+- **Quyết định đã chốt (đề xuất, báo người sở hữu):** bot luôn gắn nhãn "bạn máy" hiển thị rõ cho bé và phụ huynh, dù chơi giống người. Không giả làm người thật với trẻ em: rủi ro an toàn và tín nhiệm; phụ huynh bật hoặc tắt được. Bộ đo "giống người" vẫn dùng để cải thiện hành vi.
+- **Kiến trúc:** dịch vụ `bot-runner` (Node, cùng stack) chạy các "người chơi ảo" qua cùng API và phòng game như người thật (không đường tắt), mỗi bot có tính cách (hay khám phá, thích minigame, ngại giao tiếp), lịch sinh hoạt, mục tiêu theo ngày, bộ lập kế hoạch (chọn nhiệm vụ, đi theo đường đã có, thử minigame với kỹ năng điều chỉnh được), cây hành vi cộng tham số học được.
+- **Tự training:** học từ chính bot (tự chơi, so điểm số và nhịp hành vi) và từ dữ liệu tổng hợp ẩn danh đã có đồng ý của phụ huynh (chỉ số thống kê: thời gian đứng, quãng đường, nhịp bấm); không dùng quỹ đạo thô hay chat của trẻ nếu chưa có đồng ý và pháp lý duyệt.
+- **Chỉ tiêu "giống 90% người thật":** định nghĩa bằng số đo: bộ phân loại trên quỹ đạo, nhịp thao tác và chuỗi hành động không tách được bot khỏi người ở ≥ 90% mẫu so với người chơi thật và người thử nội bộ; cộng điểm đánh giá mù của người duyệt. Đo lại mỗi đợt.
+- **Điều kiện mở:** chạy sau multiplayer bậc 1 (thấy nhau) và hệ báo cáo/chặn; chat chỉ câu có sẵn; giới hạn tải server; công tắc tắt khẩn cấp.
+
+## 8c. Song ngữ Việt và Anh
+
+Người sở hữu (03/10/2026): hiển thị tiếng Anh và tiếng Việt, gồm cài đặt, âm thanh và bài nói.
+
+- **Ba chế độ trong Cài đặt:** Tiếng Việt, English, Song ngữ (câu Việt kèm dòng Anh nhỏ bên dưới). Lưu theo hồ sơ bé, mặc định tiếng Việt.
+- **Phạm vi:** giao diện (nút, menu, thông báo, cửa hàng, nhiệm vụ), lời NPC, tên vật phẩm; nội dung SGK giữ nguyên chữ Việt của sách (quyết định "verbatim"), phần Anh chỉ là dòng dịch kèm bên dưới.
+- **Âm thanh và nói:** đọc to bằng giọng của trình duyệt (vi-VN, en-US) theo ngôn ngữ đang chọn; bài nói có gợi ý song ngữ; bản ghi giọng vẫn chỉ nằm trong trình duyệt (như chính sách hiện nay).
+- **Kỹ thuật:** lớp `t()` với từ điển `locales/vi` và `locales/en`, khóa kiểm bằng `content:check`, thiếu bản dịch thì rơi về tiếng Việt.
+
 ## 9. An toàn trẻ em và Zero Trust
 
 Đây là mục bị thiếu hoàn toàn ở plan cũ; với sản phẩm cho trẻ em và có multiplayer, nó phải được thiết kế trước khi viết code liên quan.
