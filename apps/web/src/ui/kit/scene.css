@@ -90,7 +90,7 @@
  * with the question and the bar with Kiểm tra stay on screen; only the play area between them scrolls, with a
  * swipe anywhere on it, never dragging the game behind.
  */
-.scene-modal--pinned { display: flex; flex-direction: column; overflow: hidden; }
+.scene-modal--pinned { display: flex; flex-direction: column; overflow: hidden auto; }
 .scene-modal--pinned > * { flex: 0 0 auto; }
 .scene-modal--pinned > .challenge-area {
   flex: 1 1 auto;
@@ -102,6 +102,23 @@
 }
 /* The play area scrolls; what is in it keeps its height (shrunk, the cards spilled over the slots). */
 .scene-modal--pinned > .challenge-area > * { flex-shrink: 0; }
+/* The play area never folds to a sliver under a long question (owner, 03/10/2026, phone). */
+.scene-modal--pinned > .challenge-area { min-height: min(15rem, 38vh); }
+/* Phones: a smaller portrait and question; a long question scrolls in its bubble. */
+@media (max-width: 40rem) {
+  .scene-modal--pinned .npc-portrait { width: 3rem; height: 3rem; font-size: var(--text-lg); }
+  .scene-modal--pinned .challenge-prompt { font-size: var(--text-body); max-height: 22vh; overflow-y: auto; overscroll-behavior: contain; }
+  .scene-modal--pinned > .challenge-area { min-height: min(14rem, 32vh); }
+  .scene-modal--pinned .scene-chips { flex-wrap: nowrap; align-items: center; }
+  .scene-modal--pinned .scene-chip { flex-shrink: 0; font-size: var(--text-sm); min-height: 2rem; padding: 0 var(--space-sm); }
+  .scene-modal--pinned .scene-chip-more { display: none; }
+  .scene-modal--pinned .step-trail-wrap { min-width: 0; }
+  .scene-modal--pinned .step-trail { flex-wrap: nowrap; gap: 0.15rem; overflow: hidden; }
+  .scene-modal--pinned .step-trail li { flex-shrink: 0; width: 0.55rem; height: 0.55rem; border-width: 1.5px; }
+  .scene-modal--pinned .step-trail li.current { width: 0.85rem; height: 0.85rem; }
+  .scene-modal--pinned .scene-bar { padding: var(--space-xs) var(--space-sm); }
+  .scene-modal--pinned .scene-bar .tabs-tab { padding-inline: var(--space-sm); }
+}
 /* Short screens (an iPad on its side): a slimmer header leaves the play area room. */
 @media (max-height: 56rem) {
   .scene-modal--pinned { gap: var(--space-sm); }
@@ -111,8 +128,26 @@
 .scene-modal .challenge-prompt { font-size: var(--text-lg); font-weight: 800; }
 
 /* Bottom bar: help on the left, "Làm lại · Kiểm tra" on the right. */
-.scene-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-sm); padding: var(--space-sm) var(--space-md); }
+.scene-bar { position: relative; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-sm); padding: var(--space-sm) var(--space-md); }
 .scene-bar .challenge-actions { margin-left: auto; }
+/* Hướng dẫn · Gợi ý · Đáp án open as a card floating over the play area, not inside the bar, so the bar keeps
+   its height and the play area its room; its "Đóng" button (or the tab again) folds it away. */
+.scene-bar .tabs-panel {
+  position: absolute; z-index: 3;
+  left: var(--space-sm); right: var(--space-sm); bottom: calc(100% + var(--space-xs));
+  max-height: min(45vh, 24rem); overflow-y: auto; overscroll-behavior: contain;
+  padding: var(--space-sm) var(--space-md);
+  border: 3px solid var(--color-parchment-edge);
+  background: linear-gradient(180deg, var(--color-parchment), var(--color-parchment-deep));
+  box-shadow: var(--shadow-material);
+}
+.support-close {
+  float: right; margin: 0 0 var(--space-xs) var(--space-sm);
+  min-height: 3rem; padding: 0 var(--space-md);
+  border: 2px solid var(--color-parchment-edge); border-radius: var(--radius-pill);
+  background: var(--color-surface); color: var(--color-ink); font-weight: 800; font-size: var(--text-body); cursor: pointer;
+}
+.support-close:focus-visible { box-shadow: var(--focus-ring); outline: none; }
 .scene-close {
   position: absolute; top: var(--space-sm); right: var(--space-sm);
   width: 3rem; height: 3rem; border-radius: 50%;

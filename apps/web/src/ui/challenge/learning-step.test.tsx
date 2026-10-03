@@ -244,4 +244,17 @@ describe('support panel', () => {
     check();
     expect(sentAnswer(submit)).toEqual({ value: 13 });
   });
+
+  it('closes an open layer with its "Đóng" button or a second tap on its tab', async () => {
+    vi.stubGlobal('fetch', vi.fn(async () => new Response(JSON.stringify({ layer: 'guide', steps: ['Bắt đầu từ 8.'] }), { status: 200 })));
+    renderStep(steps.riddle);
+    fireEvent.click(screen.getByRole('tab', { name: 'Hướng dẫn' }));
+    expect(await screen.findByText('Bắt đầu từ 8.')).toBeTruthy();
+    fireEvent.click(screen.getByRole('button', { name: 'Đóng hỗ trợ' }));
+    expect(screen.queryByText('Bắt đầu từ 8.')).toBeNull();
+    fireEvent.click(screen.getByRole('tab', { name: 'Hướng dẫn' }));
+    expect(await screen.findByText('Bắt đầu từ 8.')).toBeTruthy();
+    fireEvent.click(screen.getByRole('tab', { name: 'Hướng dẫn' }));
+    expect(screen.queryByText('Bắt đầu từ 8.')).toBeNull();
+  });
 });

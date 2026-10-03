@@ -84,7 +84,7 @@ export function ChallengeFrame({
           </ol>
         </div>
         <span className="scene-chip" data-id="challenge-xp">
-          <Icon name="glowingStar" size={24} /> {context.xp} XP khi xong nhiệm vụ
+          <Icon name="glowingStar" size={24} /> {context.xp} XP<span className="scene-chip-more"> khi xong nhiệm vụ</span>
         </span>
       </div>
       <div className="npc-say">

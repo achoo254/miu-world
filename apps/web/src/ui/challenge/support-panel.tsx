@@ -2,7 +2,8 @@
 // comes from the server only when asked (POST …/support, counted there). The child tries first: the
 // guide is always there, the hint after one wrong try, the answer after two. Seeing the answer never
 // blocks the step: the child can still finish it, for a little less XP (validation decision
-// `support_answer_penalty`), said kindly.
+// `support_answer_penalty`), said kindly. The open layer floats over the play area and closes with its
+// "Đóng" button or a second tap on its tab (owner, 03/10/2026: once open it could not be closed).
 import { useEffect, useState } from 'react';
 import { SupportResponse, type SupportLayer } from '@miu/schema/game';
 import { api, errorMessage } from '../api-client';
@@ -25,6 +26,11 @@ export function SupportPanel({ questId, stepId, fill, wrongTries }: { questId: s
   const [error, setError] = useState<string | null>(null);
 
   function open(layer: SupportLayer) {
+    // Its own tab again folds it away.
+    if (active === layer) {
+      setActive(null);
+      return;
+    }
     setActive(layer);
     void fetchLayer(layer);
   }
@@ -49,6 +55,9 @@ export function SupportPanel({ questId, stepId, fill, wrongTries }: { questId: s
   const shown = active ? loaded[active] : undefined;
   return (
     <Tabs label="Hỗ trợ học" items={LAYERS.filter((l) => wrongTries >= OPENS_AFTER[l.key])} active={active} onChange={open} dataId="support">
+      <button type="button" className="support-close" data-id="support-close" aria-label="Đóng hỗ trợ" onClick={() => setActive(null)}>
+        ✕ Đóng
+      </button>
       {error ? <p role="alert" className="error">{error}</p> : null}
       {!shown ? (
         !error ? <p role="status">Đang mở…</p> : null
