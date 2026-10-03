@@ -15,6 +15,7 @@ import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { BoxPropCatalog, type BoxProp } from '../../../packages/schema/src/world-target';
 import { REPO_ROOT } from '../../assets/asset-lib';
+import { PORTAL_COLOURS } from '../../../packages/voxel/src/portal-colours';
 
 type Box = BoxProp['boxes'][number];
 type Vec = [number, number, number];
@@ -170,20 +171,7 @@ function nameBoard(text: string, p: number): Box[] {
 // ---------------------------------------------------------------------------------------------------------
 // The props
 
-/** The portals' colours (d-06), each a map's: the rim, the glow, the light inside and the core. */
-export const PORTAL_COLOURS = {
-  yellow: ['#f5b70f', '#ffd84d', '#fff0a8', '#fffbe8'],
-  green: ['#1fb455', '#5fe08f', '#b4f5cd', '#f0fff5'],
-  orange: ['#ff7a12', '#ffab52', '#ffd6a3', '#fff4e6'],
-  pink: ['#f2479a', '#ff8fc4', '#ffcde4', '#fff1f8'],
-  teal: ['#0fae9e', '#4fe3cf', '#aef3e8', '#edfffc'],
-  lime: ['#86bf1e', '#b8e35a', '#e1f6a8', '#fbfff0'],
-  blue: ['#2f6ff0', '#6fa8ff', '#bfdcff', '#eef6ff'],
-  red: ['#dc2f34', '#ff6f6f', '#ffbdbd', '#fff0f0'],
-  ice: ['#3cc3f5', '#94e1ff', '#d8f4ff', '#ffffff'],
-  violet: ['#8c3ff5', '#b98cff', '#e1d0ff', '#f8f2ff'],
-} as const;
-export type PortalColour = keyof typeof PORTAL_COLOURS;
+export { PORTAL_COLOURS, type PortalColour } from '../../../packages/voxel/src/portal-colours';
 
 /**
  * A portal's glowing vortex in its arch (placePortal's opening: five wide, four high, three at the top), a

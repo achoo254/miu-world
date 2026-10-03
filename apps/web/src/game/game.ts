@@ -22,6 +22,7 @@ import { PETS, UI_ICONS, assetUrl } from '../ui/kit/ui-art';
 import type { GameStore } from '../game-bridge/game-store';
 import { loadAmbientLife, type AmbientTarget } from './ambient/ambient-life';
 import { createConfetti } from './scene/confetti';
+import { createPortalSparks } from './scene/portal-sparks';
 import type { PlayerPosition } from '@miu/schema/player-position';
 import { RegionCatalog, WorldEventKind, mapForRegion } from '@miu/schema/region';
 import regionsJson from '../../../../content/world/regions.json';
@@ -359,6 +360,11 @@ export class Game {
     propCells = props.blocked;
     stepLoaded();
     const confetti = createConfetti();
+    // The portals' sparks swirl and drift out (fewer on the low quality, still for less motion).
+    const portalSparks = createPortalSparks(entities.props, { perPortal: quality.level === 'low' ? 12 : 28, still: reducedMotion });
+    scene.add(portalSparks.mesh);
+    this.cleanups.push(() => portalSparks.dispose());
+    overlay.stats.portals = portalSparks.portals;
     const lookAhead = new Vector3();
     const petSpec = PETS.find((p) => p.id === this.options.pet);
     const pet = petSpec ? await loadPetCompanion(loader, petSpec, quality.shadows) : null;
@@ -708,6 +714,7 @@ export class Game {
         if (!reducedMotion) confetti.burst(controller.position);
       }
       confetti.update(dt);
+      portalSparks.update(dt);
       // `?event=` (review/E2E switch): that surprise right away, once.
       if (surprise.success && events.played === 0 && !events.active) events.start(surprise.data, controller.position);
       events.update(dt, controller.position, nearest !== null);

@@ -49,6 +49,11 @@ test('a gate of the hub, Trung tâm, leads onto the mystery island, and the isla
   await freshChild(page, baseURL ?? '');
   await page.goto(`/play?quality=low&region=trung-tam&quest=${hubLesson.id}&spawnAt=cong-dao-bi-an`);
   await waitReady(page);
+  // Every portal of the hub swirls with sparks (one draw for all of them).
+  const hubPortals = read<{ props: Array<{ model: string }> }>('assets/generated/world/trung-tam/entities.json').props.filter((p) => /\/tt-portal-/.test(p.model)).length;
+  expect(hubPortals).toBeGreaterThan(0);
+  expect((await readStats(page)).portals).toBe(hubPortals);
+  await page.screenshot({ path: fileURLToPath(new URL('../../../.data/sgk/review-shots/portal-sparks.png', import.meta.url)) });
   await page.keyboard.press('KeyE');
   await expect(page).toHaveURL(new RegExp(`region=dao-bi-an&quest=${island.id}`));
   // The trip through the portal shows (owner, 03/10/2026), then she stands at the island's starting point for
