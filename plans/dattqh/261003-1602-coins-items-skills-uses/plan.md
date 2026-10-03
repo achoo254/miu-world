@@ -1,6 +1,6 @@
 # Xu, đồ thưởng và điểm kỹ năng có chỗ dùng
 
-Trạng thái: đề xuất, chờ người sở hữu duyệt · Tier tổng: XL · Nhánh: `main` · Ngày: 03/10/2026
+Trạng thái: đã duyệt (người sở hữu "ok", 03/10/2026), bắt đầu sau khung minigame · Tier tổng: XL · Nhánh: `main` · Ngày: 03/10/2026
 
 Người sở hữu (03/10/2026): "hiện tại xp dùng lên cấp để chọn thêm đồ mặc còn xu với đồ thưởng chưa có dụng j, lên plan để có thể sử dụng"; "điểm kỹ năng nữa".
 
@@ -53,4 +53,4 @@ Người sở hữu (03/10/2026): "hiện tại xp dùng lên cấp để chọn
 Phụ thuộc: chạy sau khung minigame (dùng chung luồng thưởng ở server) và tùy biến nhà (Nhà cửa trong cửa hàng). Mỗi pha có migration riêng, nối tiếp nhau.
 
 ## Câu hỏi cho người sở hữu
-- Duyệt thiết kế và thứ tự pha? Bắt đầu ngay song song với minigame hay chờ minigame xong?
+- Đã duyệt thiết kế và thứ tự pha; pha 1 (Cửa hàng) bắt đầu khi khung minigame xong.
