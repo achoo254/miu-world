@@ -39,3 +39,20 @@ test('tapping the quest card walks to Sư Tử Vàng, and tapping it again stops
   await expect(page.getByRole('dialog', { name: 'Sư Tử Vàng' })).toBeVisible();
   await expect(page.locator('[data-id="dialogue"]')).toBeVisible();
 });
+
+test('on a vehicle, tapping the quest card drives her to Sư Tử Vàng', async ({ page, baseURL }) => {
+  test.setTimeout(90_000);
+  await freshChild(page, baseURL ?? '');
+  const headers = { Origin: new URL(baseURL ?? '').origin };
+  const equip = await page.context().request.put('/api/character', { headers, data: { name: 'Mochi', equipped: ['vehicle-toy-car-red'] } });
+  expect(equip.status()).toBe(200);
+  await page.goto(QUEST);
+  await waitReady(page);
+  await page.getByRole('button', { name: 'Lái xe' }).click();
+  await expect.poll(async () => (await readStats(page)).riding).toBe(true);
+  await expect.poll(async () => (await readStats(page)).hintTarget).toBe('su-tu-vang');
+  await page.locator(card).click();
+  await expect.poll(async () => (await readStats(page)).nearTarget, { timeout: 60_000 }).toBe('su-tu-vang');
+  await expect.poll(async () => (await readStats(page)).autowalk).toBe('arrived');
+  expect((await readStats(page)).riding).toBe(true);
+});
