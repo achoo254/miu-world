@@ -1,0 +1,7 @@
+{
+  "category": "tieu-hao",
+  "items": [
+    {"kind": "booster", "id": "them-mot-tim", "name": "Thêm một tim", "description": "Dùng cho một lượt chơi trò có tim: hết tim rồi {name} vẫn được chơi tiếp với một tim nữa.", "icon": "heart", "effect": {"lives": 1}, "price": 50, "featured": true},
+    {"kind": "booster", "id": "them-10-giay", "name": "Thêm 10 giây", "description": "Dùng cho một lượt chơi: đồng hồ có thêm 10 giây để {name} ghi thêm điểm.", "icon": "stopwatch", "effect": {"seconds": 10}, "price": 50, "featured": true}
+  ]
+}

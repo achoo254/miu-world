@@ -15,6 +15,8 @@ import { BoxPropCatalog, EmojiPropCatalog, LookCatalog, QuestTargetCatalog } fro
 import { RegionCatalog, mapForRegion, regionGuides } from '../../packages/schema/src/region';
 import { UI_ICONS } from '../../apps/web/src/ui/kit/ui-art';
 import { MUSIC_MOODS } from '../../apps/web/src/ui/sound/music';
+import { SPRITE_PATHS } from '../../apps/web/src/ui/minigame/sprites';
+import { loadShopCatalog } from '../../apps/server/src/shop/shop-catalog';
 import { ACCESSORY_SLOTS, MIN_OPEN_ITEMS, openItemsInSlot, type AccessoryItem } from '../../packages/voxel/src/accessory-schema';
 import { modelCatalogSchema } from '../../packages/voxel/src/model-catalog';
 import { entitiesForChapter, worldEntitiesSchema } from '../../packages/voxel/src/world-entities';
@@ -41,6 +43,8 @@ const CATALOGUE_FILES = [
   'minigames/',
   // The styles of the child's home (apps/server/src/home): the server reads it at boot.
   'home/decor.json',
+  // What the shop sells and for how much (apps/server/src/shop), one file per category.
+  'shop/',
 ];
 /** Content files the asset tools validate when they build characters, atlases and maps (any file in a folder). */
 const ASSET_TOOL_FILES = [
@@ -446,6 +450,9 @@ export function checkContent(dir: string = CONTENT_DIR): ContentReport {
         ),
       );
     }
+    // The shop sells real wearables and home styles; its pictures are the web app's icons and minigame pictures.
+    const decor = HomeDecorCatalog.safeParse(read('home/decor.json'));
+    if (decor.success) loadShopCatalog(catalog.accessories, decor.data, dir, new Set([...Object.keys(UI_ICONS), ...Object.keys(SPRITE_PATHS)]));
     const privacy: unknown = JSON.parse(readFileSync(path.join(dir, PRIVACY_FILE), 'utf8'));
     issues.push(...checkPrivacy(privacy, catalog.consent.version));
     if (PrivacyDocument.safeParse(privacy).data?.contactEmail === null) warnings.push(`content/${PRIVACY_FILE} has no contact email yet`);

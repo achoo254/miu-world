@@ -1,13 +1,15 @@
 // M1.2 (chọn loài) + M1.3 (trang phục, tên, tính cách, xem trước): the Character Creator. Every
 // species in content/species.json is open; every accessory slot has a tab (clothes always worn: the species' own until
 // the child picks others); the "Thú cưng" tab picks
-// a pet (content/pets.json) that follows the character, locked until its level like the clothes. The 3D preview is its own light renderer; outfit
+// a pet (content/pets.json) that follows the character, locked until its level like the clothes. Items sold in the
+// shop (content/shop) show as owned once bought, "Mua ở cửa hàng" until then. The 3D preview is its own light renderer; outfit
 // and pet changes reach it as the bridge commands `set-outfit` and `set-pet`.
 import { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { fillPlayerName } from '@miu/quest/player-name';
 import { CharacterDto, CharacterUpdate, ProgressResponse, QuestListResponse } from '@miu/schema/game';
 import { isPetOpen } from '@miu/schema/pet';
+import { ShopResponse } from '@miu/schema/shop';
 import characterNames from '../../../../../content/names/character-names.json';
 import { createGameStore, type GameStore } from '../../game-bridge/game-store';
 import { GameStoreContext, useGameState } from '../../game-bridge/use-game-state';
@@ -34,19 +36,24 @@ interface CreatorData {
   level: number;
   completed: ReadonlySet<string>;
   questTitles: ReadonlyMap<string, string>;
+  /** Things bought in the shop. */
+  owned: ReadonlySet<string>;
 }
 
 async function loadCreator(): Promise<CreatorData> {
-  const [character, progress, quests] = await Promise.all([
+  const [character, progress, quests, shop] = await Promise.all([
     api('GET', '/character', CharacterDto),
     api('GET', '/progress', ProgressResponse),
     api('GET', '/quests', QuestListResponse),
+    // Without the shop the wardrobe still opens: its items then show as for sale.
+    api('GET', '/shop', ShopResponse).catch(() => null),
   ]);
   return {
     character,
     level: progress.level,
     completed: new Set(progress.quests.filter((q) => q.completed).map((q) => q.questId)),
     questTitles: new Map(quests.quests.map((q) => [q.quest.id, q.quest.title])),
+    owned: new Set(Object.keys(shop?.owned ?? {})),
   };
 }
 
@@ -81,8 +88,11 @@ function SpeciesStep({ current, switching, onPick }: { current: string; switchin
   );
 }
 
-/** The 3D stage: mounts one CharacterPreview for the screen's lifetime and exposes its emotes. */
-function PreviewStage({ store, species, initialOutfit, initialPet }: { store: GameStore; species: string; initialOutfit: readonly string[]; initialPet: string | null }) {
+/**
+ * The 3D stage: mounts one CharacterPreview for the screen's lifetime and exposes its emotes (the shop shows it
+ * without them). Needs a `GameStoreContext` provider for `store`.
+ */
+export function PreviewStage({ store, species, initialOutfit, initialPet, emotes = true }: { store: GameStore; species: string; initialOutfit: readonly string[]; initialPet: string | null; emotes?: boolean }) {
   const host = useRef<HTMLDivElement>(null);
   const preview = useRef<CharacterPreview | null>(null);
   const firstOutfit = useRef(initialOutfit);
@@ -107,20 +117,22 @@ function PreviewStage({ store, species, initialOutfit, initialPet }: { store: Ga
           Không tải được nhân vật xem trước.
         </p>
       ) : null}
-      <div className="emote-row" role="group" aria-label="Xem thử hoạt ảnh">
-        {EMOTES.map((emote) => (
-          <button
-            key={emote}
-            type="button"
-            className={buttonClass('secondary', { small: true })}
-            data-id={`creator-emote-${emote}`}
-            disabled={status !== 'ready'}
-            onClick={() => preview.current?.playEmote(emote)}
-          >
-            {EMOTE_LABELS[emote]}
-          </button>
-        ))}
-      </div>
+      {emotes ? (
+        <div className="emote-row" role="group" aria-label="Xem thử hoạt ảnh">
+          {EMOTES.map((emote) => (
+            <button
+              key={emote}
+              type="button"
+              className={buttonClass('secondary', { small: true })}
+              data-id={`creator-emote-${emote}`}
+              disabled={status !== 'ready'}
+              onClick={() => preview.current?.playEmote(emote)}
+            >
+              {EMOTE_LABELS[emote]}
+            </button>
+          ))}
+        </div>
+      ) : null}
     </div>
   );
 }
@@ -261,7 +273,7 @@ function OutfitStep({
             </li>
           ) : null}
           {itemsForSlot(slot).map((item) => {
-            const open = isOpen(item, data.level, data.completed, worn);
+            const open = isOpen(item, data.level, data.completed, worn, data.owned);
             return (
               <li key={item.id}>
                 <button

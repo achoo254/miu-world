@@ -1,5 +1,5 @@
 import { sql } from 'drizzle-orm';
-import { doublePrecision, index, integer, jsonb, pgTable, primaryKey, smallint, text, timestamp, unique, uuid } from 'drizzle-orm/pg-core';
+import { check, doublePrecision, index, integer, jsonb, pgTable, primaryKey, smallint, text, timestamp, unique, uuid } from 'drizzle-orm/pg-core';
 import type { DecorChoices } from '@miu/schema/home-decor';
 import type { Timetable } from '@miu/schema/timetable';
 
@@ -119,8 +119,10 @@ export const stepAttempts = pgTable(
 );
 
 /**
- * Append-only source of truth for rewards. `source` identifies what paid out
- * (`quest:<questId>`, one reward per quest); the unique key makes a repeated or concurrent claim a no-op.
+ * Append-only source of truth for rewards and coins. `source` identifies what paid out (`quest:<questId>`, one
+ * reward per run of a quest) or what was spent: `shop:<purchaseId>` (negative coins, the thing bought in
+ * `items`) and `use:<useId>` (a booster used up: −1 in `items`). The unique key makes a repeated or
+ * concurrent claim, purchase or use a no-op; the coin balance is the sum of `coins`.
  */
 export const rewardLedger = pgTable(
   'reward_ledger',
@@ -194,3 +196,18 @@ export const homeDecor = pgTable('home_decor', {
   choices: jsonb('choices').$type<DecorChoices>().notNull(),
   updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),
 });
+
+/**
+ * What the child bought in the shop (content/shop): a wearable or a home style once, a booster by how many she
+ * still has. Changed only together with the ledger row of the purchase or the use, in one transaction; gone
+ * with the profile.
+ */
+export const shopInventory = pgTable(
+  'shop_inventory',
+  {
+    childId: childRef(),
+    itemId: text('item_id').notNull(),
+    qty: integer('qty').notNull(),
+  },
+  (t) => [primaryKey({ columns: [t.childId, t.itemId] }), check('shop_inventory_qty_not_negative', sql`${t.qty} >= 0`)],
+);

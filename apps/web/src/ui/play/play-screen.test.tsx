@@ -151,6 +151,37 @@ describe('PlayScreen under React StrictMode', () => {
     expect(screen.getByRole('dialog', { name: 'Lịch mặc đồng phục' })).toBeTruthy();
   });
 
+  it('opens the shop from the shopkeeper in Trung tâm, pauses the game, and the HUD shows the coins left after buying', async () => {
+    const heart = { id: 'them-mot-tim', kind: 'booster', category: 'tieu-hao', name: 'Thêm một tim', description: 'Một tim nữa.', price: 50, level: null, featured: true, slot: null, swatch: null, icon: 'heart', effect: { lives: 1 }, contains: null };
+    const base = playApi();
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async (url: string, init?: RequestInit) => {
+        if (url === '/api/shop') return json({ coins: 120, level: 1, owned: {}, items: [heart] });
+        if (url === '/api/shop/buy') return json({ coins: 70, level: 1, owned: { [heart.id]: 1 }, bought: heart.id });
+        return base(url, init);
+      }),
+    );
+    games.store = null;
+    render(
+      <MemoryRouter>
+        <AccountProvider>
+          <PlayScreen />
+        </AccountProvider>
+      </MemoryRouter>,
+    );
+    await vi.waitFor(() => expect(games.store).not.toBeNull());
+    const stops = games.stops;
+    act(() => games.store?.emit({ type: 'interaction', targetId: 'tt-quay-cua-hang' }));
+    expect(screen.getByRole('dialog', { name: 'Cửa hàng' })).toBeTruthy();
+    expect(games.stops).toBeGreaterThan(stops);
+    fireEvent.click(await screen.findByText('Thêm một tim'));
+    fireEvent.click(screen.getByRole('button', { name: 'Mua ngay' }));
+    await vi.waitFor(() => expect(document.querySelector('[data-id="player-coins"]')?.textContent).toContain('70'));
+    fireEvent.click(screen.getByRole('button', { name: 'Đóng cửa hàng' }));
+    expect(screen.queryByRole('dialog', { name: 'Cửa hàng' })).toBeNull();
+  });
+
   it("builds the child's home in her picks, opens the decorating screen from the notebook and rebuilds where she stands", async () => {
     const atHome = questList(1);
     const first = atHome.quests[0];

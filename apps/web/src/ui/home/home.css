@@ -76,6 +76,8 @@
   box-shadow: var(--shadow-tile);
 }
 .home-rail-item:focus-visible { box-shadow: var(--focus-ring); outline: none; }
+/* "Cửa hàng" opens a screen over Home: a button dressed as the rail's links. */
+button.home-rail-item { border: 0; font-size: inherit; cursor: pointer; touch-action: manipulation; }
 
 .home-today { gap: var(--space-sm); padding: var(--space-lg); }
 .today-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-xs); }

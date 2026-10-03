@@ -588,6 +588,13 @@ function buildHub(ctx: ZoneMapContext): void {
       ctx.propAt(k % 2 === 0 ? TT.goods : TT.gifts[(i * 3 + k + 2) % TT.gifts.length] ?? TT.goods, [x, y, z], k * 40);
     }
   });
+  // Before the first counter, under its awning, the shopkeeper behind it serves the child: talking to her opens
+  // the shop screen (apps/web/src/ui/shop), whatever lesson is being played.
+  const [firstCounter] = shop.counters;
+  if (firstCounter) {
+    const [keeperX, keeperZ] = shopAt(firstCounter[0], FRAME - 0.5);
+    ctx.target({ id: 'tt-quay-cua-hang', name: 'Cô chủ cửa hàng', label: 'Mua sắm', at: [keeperX, y0, keeperZ], yaw: shopYaw(180), radius: 2.8 });
+  }
   for (const { at, yaw } of shop.shelves) {
     const [x, z] = shopAt(at[0], at[2]);
     ctx.propAt(TT.shelf, [x, at[1], z], shopYaw(yaw));

@@ -51,6 +51,21 @@ describe('Home', () => {
     expect(pages.closest('[data-id="home-today-textbook-tv2-t01-b01"]')?.textContent).toBe('Tiếng Việt 2, tập một · Bài 1. Tôi là học sinh lớp 2Trang 10–12');
   });
 
+  it('opens the shop from the rail over Home, with the coins of the server', async () => {
+    stubServer(1);
+    vi.mocked(fetch).mockImplementation(async (input) => {
+      const url = String(input);
+      const body =
+        url === '/api/shop' ? { coins: 12, level: 1, owned: {}, items: [] } : url === '/api/character' ? CHARACTER : url === '/api/progress' ? PROGRESS : url === '/api/quests' ? questList(1) : null;
+      return new Response(JSON.stringify(body ?? { error: 'not-found' }), { status: body ? 200 : 404 });
+    });
+    renderAt('/home');
+    fireEvent.click(await screen.findByRole('button', { name: 'Cửa hàng' }));
+    expect(await screen.findByRole('dialog', { name: 'Cửa hàng' })).toBeTruthy();
+    expect(await screen.findByText('Cửa hàng của Mochi')).toBeTruthy();
+    expect(document.querySelector('[data-id="shop-coins"]')?.textContent).toContain('12');
+  });
+
   it('shows the server numbers, today\'s quest in the child\'s name, and which regions are open', async () => {
     stubServer(1);
     renderAt('/home');

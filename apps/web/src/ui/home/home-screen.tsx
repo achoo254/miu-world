@@ -1,5 +1,6 @@
 // M1.1 (Trang chủ): the world stage with its regions, the child's character standing in it, a side rail
-// (Về nhà, Nhiệm vụ, Bản đồ, Ba lô), today's quests, and the child's level, XP and coins. Home is a React screen
+// (Về nhà, Nhiệm vụ, Bản đồ, Ba lô, Cửa hàng: the shop of mock panel 7 over Home), today's quests, and the
+// child's level, XP and coins. Home is a React screen
 // over a pre-rendered island image, not a second 3D scene (validation decision `home_scene`). Not in the
 // MVP, so not shown: diamonds (Master Plan §15 #6), the daily streak (`streak_in_mvp` = defer_v1), the
 // "Sự kiện" rail entry and the TIMO event card (Live World).
@@ -11,6 +12,7 @@ import { Modal } from '../kit/modal';
 import { SkyScene } from '../kit/sky-scene';
 import { PlayerBadge } from '../player/player-badge';
 import { currentQuest, playPath, questForRegion, usePlayer } from '../player/player-data';
+import { ShopPanel } from '../shop/shop-panel';
 import { HOME_REGION } from '../region/regions';
 import { SoundToggle } from '../system/sound-toggle';
 import { WorldStage } from '../world/world-stage';
@@ -40,6 +42,9 @@ function SettingsDialog({ onClose }: { onClose: () => void }) {
 export function HomeScreen() {
   const { data, error } = usePlayer();
   const [settings, setSettings] = useState(false);
+  const [shopOpen, setShopOpen] = useState(false);
+  /** Coins after a purchase here (the badge shows the server's balance). */
+  const [coins, setCoins] = useState<number | null>(null);
   const quest = data ? currentQuest(data.quests) : null;
   // "Về nhà": straight into the child's home, arriving at its front gate.
   const home = data ? questForRegion(data.quests, HOME_REGION) : null;
@@ -56,7 +61,7 @@ export function HomeScreen() {
           <>
             <header className="home-top">
               <Link to="/profile" className="home-profile-link" data-id="home-profile" aria-label={`Hồ sơ của ${data.character.name}`}>
-                <PlayerBadge character={data.character} progress={data.progress} />
+                <PlayerBadge character={data.character} progress={coins === null ? data.progress : { ...data.progress, coins }} />
               </Link>
               <button type="button" className="home-round-button" data-id="home-nav-settings" aria-label="Cài đặt" onClick={() => setSettings(true)}>
                 <Icon name="gear" size={36} />
@@ -86,10 +91,15 @@ export function HomeScreen() {
                   <Icon name="backpack" size={40} />
                   Ba lô
                 </Link>
+                <button type="button" className="home-rail-item" data-id="home-nav-shop" onClick={() => setShopOpen(true)}>
+                  <Icon name="coin" size={40} />
+                  Cửa hàng
+                </button>
               </nav>
               <TodayQuests data={data} />
             </div>
             {settings ? <SettingsDialog onClose={() => setSettings(false)} /> : null}
+            {shopOpen ? <ShopPanel onClose={() => setShopOpen(false)} onCoins={setCoins} /> : null}
           </>
         ) : null}
       </main>

@@ -13,7 +13,7 @@ const childTables = configs.filter((c) => c.columns.some((col) => col.name === '
 describe('child play data stays minimal', () => {
   it('finds the tables that hold child data', () => {
     expect(childTables.map((c) => c.name).sort()).toEqual(
-      expect.arrayContaining(['characters', 'inventory_items', 'quest_progress', 'reward_ledger', 'skill_progress', 'step_attempts', 'timetables', 'home_decor']),
+      expect.arrayContaining(['characters', 'inventory_items', 'quest_progress', 'reward_ledger', 'skill_progress', 'step_attempts', 'timetables', 'home_decor', 'shop_inventory']),
     );
   });
 

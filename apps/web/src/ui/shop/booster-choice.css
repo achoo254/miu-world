@@ -1,0 +1,22 @@
+/* Boosters on a minigame's how-to card: big chips (touch targets ≥ 48px), the picked one lit. Tokens only. */
+.booster-choice { display: grid; gap: var(--space-xs); margin-top: var(--space-md); font-weight: 700; }
+.booster-choice p { margin: 0; }
+.booster-choice-list { display: flex; flex-wrap: wrap; gap: var(--space-sm); }
+.booster-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  min-height: 3rem;
+  padding: var(--space-xs) var(--space-md);
+  border: 3px solid var(--color-parchment-edge);
+  border-radius: var(--radius-pill);
+  background: var(--color-surface);
+  color: var(--color-ink);
+  font: 800 var(--text-body) var(--font-display);
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.booster-chip small { font: 700 var(--text-sm) var(--font-body); color: var(--color-ink-soft); }
+.booster-chip[aria-pressed='true'] { border-color: var(--color-primary-edge); background: var(--color-primary); color: var(--color-on-primary); box-shadow: var(--shadow-primary); }
+.booster-chip[aria-pressed='true'] small { color: var(--color-on-primary); }
+.booster-chip:focus-visible { box-shadow: var(--focus-ring); outline: none; }

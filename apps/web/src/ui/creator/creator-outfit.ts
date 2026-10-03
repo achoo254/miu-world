@@ -31,9 +31,9 @@ export function wornInSlot(equipped: readonly string[], slot: OpenSlot, species:
   return chosen ?? (slot === 'clothes' ? (characterForSpecies(species).clothes ?? null) : null);
 }
 
-/** Open items first, then by level, then quest-locked ones. */
+/** Open items first, then by level, then the shop's, then quest-locked ones. */
 export function itemsForSlot(slot: OpenSlot): AccessoryItem[] {
-  const rank = (item: AccessoryItem): number => (!item.unlock ? 0 : item.unlock.quest ? 200 : (item.unlock.level ?? 0));
+  const rank = (item: AccessoryItem): number => (!item.unlock ? 0 : item.unlock.quest ? 200 : item.unlock.shop ? 150 : (item.unlock.level ?? 0));
   return [...ACCESSORIES.values()].filter((item) => item.slot === slot).sort((a, b) => rank(a) - rank(b));
 }
 
@@ -43,11 +43,13 @@ export function equip(equipped: readonly string[], slot: OpenSlot, itemId: strin
   return itemId ? [...kept, itemId] : kept;
 }
 
-export function isOpen(item: AccessoryItem, level: number, completed: ReadonlySet<string>, worn: readonly string[]): boolean {
-  return worn.includes(item.id) || isAccessoryOpen(item.unlock, level, completed);
+/** `owned`: what she bought in the shop (a shop item opens once bought). */
+export function isOpen(item: AccessoryItem, level: number, completed: ReadonlySet<string>, worn: readonly string[], owned: ReadonlySet<string> = new Set()): boolean {
+  return worn.includes(item.id) || isAccessoryOpen(item.unlock, level, completed, owned.has(item.id));
 }
 
 export function lockText(item: AccessoryItem, questTitle: (id: string) => string): string {
+  if (item.unlock?.shop) return 'Mua ở cửa hàng';
   const parts: string[] = [];
   if (item.unlock?.level) parts.push(`Cần Lv.${item.unlock.level}`);
   if (item.unlock?.quest) parts.push(`Xong “${questTitle(item.unlock.quest)}”`);

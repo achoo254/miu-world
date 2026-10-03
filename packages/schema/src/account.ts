@@ -92,6 +92,8 @@ export const AccountExport = z.object({
         }),
       ),
       inventory: z.array(z.object({ itemId: z.string(), qty: z.number() })),
+      /** What she bought in the shop and still has (each purchase and use is also a `rewards` row). */
+      shop: z.array(z.object({ itemId: z.string(), qty: z.number() })),
       skills: z.array(z.object({ skillId: z.string(), xp: z.number() })),
       /** Last spot on each map, so the next visit starts there. */
       positions: z.array(z.object({ map: z.string(), position: z.tuple([z.number(), z.number(), z.number()]), facing: z.number(), updatedAt: z.string() })),

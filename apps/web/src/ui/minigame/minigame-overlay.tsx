@@ -2,10 +2,13 @@
 // scenes' materials (mock "quest screens": wooden banner, parchment). How-to card with one big "Chơi" →
 // 3-2-1 → play (HUD: score/goal, clock, hearts, pause) → result card with stars, the reward the server paid
 // and "Chơi lại" / "Xong". The round itself runs in MinigameStage; this component only moves between screens.
+// A child who owns boosters from the shop ("Thêm một tim", "Thêm 10 giây") picks one on the how-to card: the
+// server uses it up first, then the round starts with it (the same for every game, round.ts).
 import { useCallback, useEffect, useRef, useState, type ReactElement } from 'react';
 import type { MinigameParams } from '@miu/schema/content';
 import type { StepCompleteResponse } from '@miu/schema/game';
 import type { MinigameSpec } from '@miu/schema/minigame';
+import type { BoosterEffect } from '@miu/schema/shop';
 import { freshPicker } from '@miu/quest/pick-fresh';
 import { fillPlayerName } from '@miu/quest/player-name';
 import { Icon } from '../kit/art';
@@ -13,6 +16,8 @@ import { buttonClass } from '../kit/button';
 import { Modal } from '../kit/modal';
 import { StarRating } from '../kit/star-rating';
 import { assetUrl } from '../kit/ui-art';
+import { BoosterChoice, boosterHelps, ownedBoosters, type OwnedBooster } from '../shop/booster-choice';
+import { loadShop, requestId, shopErrorMessage, spendBooster } from '../shop/shop-api';
 import { playCue } from '../sound/sfx';
 import type { MinigameModule } from './define-minigame';
 import { MinigameStage, type StageHud } from './minigame-stage';
@@ -90,6 +95,13 @@ export function MinigameOverlay({ game, goal, params = {}, region, playerName, s
   const [payout, setPayout] = useState<Payout>({ state: 'none' });
   const [lives, setLives] = useState<number | null>(null);
   const [frozen, setFrozen] = useState(false);
+  /** Boosters she owns (none on the dev page, or when the shop cannot be reached). */
+  const [boosters, setBoosters] = useState<OwnedBooster[]>([]);
+  const [chosen, setChosen] = useState<string | null>(null);
+  /** The booster used up for the round on screen. */
+  const [boost, setBoost] = useState<BoosterEffect | null>(null);
+  const [spending, setSpending] = useState(false);
+  const [boostError, setBoostError] = useState<string | null>(null);
   const loaded = useRef<{ module: MinigameModule; sprites: Sprites; theme: Theme } | null>(null);
   const host = useRef<HTMLDivElement>(null);
   const stage = useRef<MinigameStage | null>(null);
@@ -118,6 +130,19 @@ export function MinigameOverlay({ game, goal, params = {}, region, playerName, s
     };
   }, [game, region, bot]);
 
+  // The boosters she owns, for the how-to card (never on the dev page, where nobody is signed in).
+  useEffect(() => {
+    if (bot) return;
+    let live = true;
+    loadShop().then(
+      (shop) => live && setBoosters(ownedBoosters(shop.items, shop.owned)),
+      () => undefined,
+    );
+    return () => {
+      live = false;
+    };
+  }, [bot]);
+
   // One stage per round (a replay starts from a fresh one with a new seed).
   useEffect(() => {
     const parts = loaded.current;
@@ -127,7 +152,8 @@ export function MinigameOverlay({ game, goal, params = {}, region, playerName, s
       host: host.current,
       module: parts.module,
       goal,
-      duration: spec.duration,
+      duration: spec.duration + (boost && 'seconds' in boost ? boost.seconds : 0),
+      ...(boost && 'lives' in boost ? { extraLives: boost.lives } : {}),
       params: roundParams(spec, params),
       seed: round === 0 && seed !== undefined ? seed : randomSeed(),
       theme: parts.theme,
@@ -209,13 +235,44 @@ export function MinigameOverlay({ game, goal, params = {}, region, playerName, s
     setCount(0);
     setPhase('countdown');
   };
-  const again = (): void => {
+  /** A fresh stage for the next round (a replay, or the round with a booster just used). */
+  const rebuild = (): void => {
     stage.current?.dispose();
     stage.current = null;
+    setRound((n) => n + 1);
+  };
+  const usable = boosters.filter((b) => boosterHelps(b.item.effect, lives !== null));
+  const again = (): void => {
+    rebuild();
     setResult(null);
     setPayout({ state: 'none' });
-    setRound((n) => n + 1);
-    begin();
+    setBoost(null);
+    setChosen(null);
+    // With boosters to pick from she sees the how-to card again; otherwise straight to 3-2-1.
+    if (usable.length > 0) setPhase('intro');
+    else begin();
+  };
+  /** "Chơi": the chosen booster is used up on the server first; the round then starts with it. */
+  const play = async (): Promise<void> => {
+    const picked = usable.find((b) => b.item.id === chosen);
+    if (!picked) {
+      begin();
+      return;
+    }
+    setSpending(true);
+    setBoostError(null);
+    try {
+      const state = await spendBooster(picked.item.id, requestId());
+      setBoosters((list) => list.map((b) => ({ ...b, qty: state.owned[b.item.id] ?? 0 })).filter((b) => b.qty > 0));
+      setChosen(null);
+      setBoost(picked.item.effect);
+      rebuild();
+      begin();
+    } catch (err) {
+      setBoostError(shopErrorMessage(err));
+    } finally {
+      setSpending(false);
+    }
   };
   const leave = (): void => latest.current.onDone(latest.current.result ? { score: latest.current.result.score, won: latest.current.result.won } : null);
 
@@ -292,6 +349,7 @@ export function MinigameOverlay({ game, goal, params = {}, region, playerName, s
             <p className="minigame-goal">
               <Icon name="glowingStar" size={28} /> Mục tiêu: {goal} điểm trong {spec.duration} giây
             </p>
+            {usable.length > 0 ? <BoosterChoice boosters={usable} chosen={chosen} disabled={spending} error={boostError} onChoose={setChosen} /> : null}
             <p className="minigame-controls">
               {spec.controls.map((c) => (
                 <span key={c} className="scene-chip">
@@ -300,8 +358,8 @@ export function MinigameOverlay({ game, goal, params = {}, region, playerName, s
               ))}
             </p>
           </div>
-          <button type="button" className={`${buttonClass('primary', { block: true })} minigame-play`} data-id="minigame-start" onClick={begin}>
-            Chơi
+          <button type="button" className={`${buttonClass('primary', { block: true })} minigame-play`} data-id="minigame-start" disabled={spending} onClick={() => void play()}>
+            {spending ? 'Đang chuẩn bị…' : 'Chơi'}
           </button>
           <button type="button" className="scene-close" data-id="minigame-close" aria-label="Thoát trò chơi" onClick={leave}>
             ✕

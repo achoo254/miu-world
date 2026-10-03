@@ -2,35 +2,49 @@
 // child's home. Two tabs, inside and outside; a row of the pieces she may restyle (bed, desk, chairs,
 // wardrobe, ornaments, rug, curtains, lamps; the house's colours, fence, gate, garden lights, flowers, path,
 // name board, flag); each piece's styles as cards with their colours. "Lưu" keeps her picks on the server for
-// this child, and the house is shown in them. Opened from the decorating notebook in the living room.
+// this child, and the house is shown in them. The fancier styles are sold in the shop: until bought they show
+// locked with their price. Opened from the decorating notebook in the living room.
 import type { DecorSide, DecorSlot } from '@miu/schema/home-decor';
-import { useEffect, useState, type CSSProperties } from 'react';
+import { useEffect, useState } from 'react';
 import { errorMessage } from '../api-client';
 import { Icon } from '../kit/art';
 import { buttonClass } from '../kit/button';
 import { Modal } from '../kit/modal';
 import { Tabs } from '../kit/tabs';
-import { DECOR_CATALOG, SIDE_LABELS, changedPicks } from './decor-catalog';
+import { loadShop, shopErrorMessage } from '../shop/shop-api';
+import { DECOR_CATALOG, SIDE_LABELS, changedPicks, swatchStyle } from './decor-catalog';
 import { loadHomeDecor, saveHomeDecor } from './home-decor-api';
 import './home-decor.css';
 
-/** A style's colours as bands across its round chip. */
-function swatchStyle(colours: readonly string[]): CSSProperties {
-  if (colours.length === 1) return { background: colours[0] };
-  const step = 100 / colours.length;
-  return { background: `linear-gradient(135deg, ${colours.map((c, i) => `${c} ${i * step}% ${(i + 1) * step}%`).join(', ')})` };
-}
-
-function SlotPicker({ slot, picked, onPick }: { slot: DecorSlot; picked: string; onPick: (option: string) => void }) {
+/**
+ * `priceOf`: the shop's price of a style she cannot pick yet (sold and not bought), or null when she can. A locked
+ * style shows its price and a lock; tapping it says where to get it.
+ */
+function SlotPicker({ slot, picked, priceOf, onPick, onLocked }: { slot: DecorSlot; picked: string; priceOf: (option: string) => number | null; onPick: (option: string) => void; onLocked: (price: number) => void }) {
   return (
     <div className="decor-options" role="group" aria-label={`Kiểu ${slot.name.toLocaleLowerCase('vi')}`} data-id={`decor-options-${slot.id}`}>
       {slot.options.map((option) => {
         const on = option.id === picked;
+        const price = priceOf(option.id);
         return (
-          <button key={option.id} type="button" className="decor-card" aria-pressed={on} data-id={`decor-option-${option.id}`} onClick={() => onPick(option.id)}>
+          <button
+            key={option.id}
+            type="button"
+            className={`decor-card${price === null ? '' : ' decor-card--locked'}`}
+            aria-pressed={on}
+            data-id={`decor-option-${option.id}`}
+            onClick={() => (price === null ? onPick(option.id) : onLocked(price))}
+          >
             <span className="decor-swatch" style={swatchStyle(option.swatch)} aria-hidden="true" />
             <span className="decor-card-name">{option.name}</span>
             {option.id === slot.default ? <span className="decor-card-own">Kiểu có sẵn</span> : null}
+            {price === null ? null : (
+              <span className="decor-card-price" data-id={`decor-price-${option.id}`}>
+                <Icon name="locked" size={20} />
+                <Icon name="coin" size={20} />
+                {price}
+              </span>
+            )}
             {on ? (
               <span className="decor-card-tick">
                 <Icon name="checkMark" size={32} />
@@ -55,6 +69,21 @@ export function HomeDecorPanel({ onClose, onSaved }: { onClose: () => void; /** 
   }));
   const [saving, setSaving] = useState(false);
   const [saveError, setSaveError] = useState<string | null>(null);
+  /** The shop's styles: price of each, and those she owns (unknown until the shop answers: none locked). */
+  const [shop, setShop] = useState<{ prices: ReadonlyMap<string, number>; owned: ReadonlySet<string> } | null>(null);
+  const [lockNote, setLockNote] = useState<string | null>(null);
+
+  useEffect(() => {
+    let live = true;
+    loadShop().then(
+      (s) => live && setShop({ prices: new Map(s.items.filter((i) => i.kind === 'decor').map((i) => [i.id, i.price])), owned: new Set(Object.keys(s.owned)) }),
+      // Without the shop's answer nothing shows locked; the server still refuses a style she does not own.
+      () => undefined,
+    );
+    return () => {
+      live = false;
+    };
+  }, []);
 
   useEffect(() => {
     let live = true;
@@ -85,7 +114,7 @@ export function HomeDecorPanel({ onClose, onSaved }: { onClose: () => void; /** 
       onSaved(stored.choices);
       onClose();
     } catch (err) {
-      setSaveError(errorMessage(err));
+      setSaveError(shopErrorMessage(err));
     } finally {
       setSaving(false);
     }
@@ -94,6 +123,11 @@ export function HomeDecorPanel({ onClose, onSaved }: { onClose: () => void; /** 
   const slots = DECOR_CATALOG.slots.filter((s) => s.side === side);
   const slot = slots.find((s) => s.id === slotId[side]) ?? slots[0];
   const dirty = saved !== null && Object.keys(changedPicks(saved, draft)).length > 0;
+  /** A style is hers to pick unless the shop sells it and she has neither bought it nor already got it saved. */
+  const priceOf = (slotId: string, option: string): number | null => {
+    const price = shop?.prices.get(option);
+    return price === undefined || shop?.owned.has(option) || saved?.[slotId] === option ? null : price;
+  };
 
   return (
     <Modal title="Trang trí nhà" onClose={onClose} dataId="decor" variant="scene" size="wide" className="decor-modal">
@@ -134,9 +168,22 @@ export function HomeDecorPanel({ onClose, onSaved }: { onClose: () => void; /** 
                 );
               })}
             </div>
-            {slot ? <SlotPicker slot={slot} picked={draft[slot.id] ?? slot.default} onPick={(option) => setDraft((now) => ({ ...now, [slot.id]: option }))} /> : null}
+            {slot ? (
+              <SlotPicker
+                slot={slot}
+                picked={draft[slot.id] ?? slot.default}
+                priceOf={(option) => priceOf(slot.id, option)}
+                onPick={(option) => {
+                  setLockNote(null);
+                  setDraft((now) => ({ ...now, [slot.id]: option }));
+                }}
+                onLocked={(price) => setLockNote(`Kiểu này có ở Cửa hàng, giá ${price} xu. Bé ghé Cửa hàng ở Trung tâm hoặc trên Trang chủ để mua nhé!`)}
+              />
+            ) : null}
           </Tabs>
-          <p className="decor-hint">Chọn kiểu bé thích rồi bấm “Lưu” để xem nhà mới nhé!</p>
+          <p className="decor-hint" data-id="decor-hint" aria-live="polite">
+            {lockNote ?? 'Chọn kiểu bé thích rồi bấm “Lưu” để xem nhà mới nhé! Kiểu có ổ khóa thì mua ở Cửa hàng.'}
+          </p>
         </section>
       )}
       {saveError ? (

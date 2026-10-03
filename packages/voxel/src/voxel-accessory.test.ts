@@ -1,7 +1,7 @@
 import { readFileSync, readdirSync } from 'node:fs';
 import path from 'node:path';
 import { describe, expect, it } from 'vitest';
-import { buildAccessoryCatalog, parseAccessory } from './accessory-schema';
+import { buildAccessoryCatalog, isAccessoryOpen, parseAccessory } from './accessory-schema';
 import { MAX_ACCESSORY_TRIANGLES, MAX_VEHICLE_TRIANGLES, accessoryPieces, buildAccessoryMesh, mirroredAccessory, rasterizeAccessory } from './voxel-accessory';
 
 const CONTENT = path.resolve(import.meta.dirname, '../../../content/accessories');
@@ -145,8 +145,25 @@ describe('accessory catalogue', () => {
     ['a variant of an unknown accessory', [{ id: 'x', name: 'Màu thử', variantOf: 'ghost', variant: 'blue' }], /not a full accessory/],
     ['an unknown colour', [hat, { id: 'x', name: 'Màu thử', variantOf: 'hat-a', variant: 'green' }], /no variant "green"/],
     ['a variant of a variant', [hat, { id: 'x', name: 'Màu thử', variantOf: 'hat-a', variant: 'blue' }, { id: 'y', name: 'Màu thử', variantOf: 'x', variant: 'blue' }], /not a full accessory/],
-    ['an empty unlock', [base({ unlock: {} })], /level or a quest/],
+    ['an empty unlock', [base({ unlock: {} })], /a level, a quest or the shop/],
+    ['a shop item with a level too', [base({ unlock: { shop: true, level: 3 } })], /opened by buying it only/],
+    ['a variant with both a variant and a palette', [hat, { id: 'x', name: 'Màu thử', variantOf: 'hat-a', variant: 'blue', palette: { a: '#123456' } }], /not both/],
+    ['a palette of colours the base does not have', [hat, { id: 'x', name: 'Màu thử', variantOf: 'hat-a', palette: { z: '#123456' } }], /no colour z/],
   ])('refuses %s', (_, files, message) => {
     expect(() => buildAccessoryCatalog(files)).toThrow(message);
+  });
+
+  it('gives a variant with colours of its own the base shape in those colours, leaving the base as it is', () => {
+    const items = buildAccessoryCatalog([hat, { id: 'hat-a-night', name: 'Màu đêm', variantOf: 'hat-a', palette: { a: '#123456' }, unlock: { shop: true } }]);
+    const night = items.get('hat-a-night');
+    expect(night).toMatchObject({ slot: 'hat', variantOf: 'hat-a', variant: 'hat-a-night', unlock: { shop: true } });
+    expect(night?.def.variants['hat-a-night']).toEqual({ a: '#123456' });
+    expect(items.get('hat-a')?.def.variants).toEqual({ blue: { a: '#0000ff' } });
+  });
+
+  it('opens a shop item only once bought, whatever the level', () => {
+    expect(isAccessoryOpen({ shop: true }, 50, new Set())).toBe(false);
+    expect(isAccessoryOpen({ shop: true }, 1, new Set(), true)).toBe(true);
+    expect(isAccessoryOpen({ level: 3 }, 3, new Set(), false)).toBe(true);
   });
 });

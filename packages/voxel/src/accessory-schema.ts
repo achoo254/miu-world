@@ -8,10 +8,15 @@ const vec3 = z.tuple([z.number(), z.number(), z.number()]);
 const int = z.number().int();
 const itemId = z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/);
 
-/** What the child must reach before wearing the item (the server enforces it). Absent = open from the start. */
+/**
+ * What the child must reach before wearing the item (the server enforces it). Absent = open from the start.
+ * `shop`: sold in the shop (content/shop) and worn once bought; such an item has no other condition (its
+ * level, if any, is the shop's).
+ */
 const unlockSchema = z
-  .strictObject({ level: int.min(2).optional(), quest: itemId.optional() })
-  .refine((u) => u.level !== undefined || u.quest !== undefined, { message: 'unlock needs a level or a quest' });
+  .strictObject({ level: int.min(2).optional(), quest: itemId.optional(), shop: z.literal(true).optional() })
+  .refine((u) => u.level !== undefined || u.quest !== undefined || u.shop !== undefined, { message: 'unlock needs a level, a quest or the shop' })
+  .refine((u) => !u.shop || (u.level === undefined && u.quest === undefined), { message: 'a shop item is opened by buying it only' });
 export type AccessoryUnlock = z.infer<typeof unlockSchema>;
 
 /**
@@ -164,9 +169,13 @@ export function parseAccessory(json: unknown): AccessoryDef {
   return accessorySchema.parse(json);
 }
 
-/** An item opens once the child reaches its level and has finished its quest (server-enforced; the UI mirrors it). */
-export function isAccessoryOpen(unlock: AccessoryUnlock | undefined, level: number, completed: ReadonlySet<string>): boolean {
+/**
+ * An item opens once the child reaches its level and has finished its quest, or, for a shop item, once she
+ * has bought it (`owned`). Server-enforced; the UI mirrors it.
+ */
+export function isAccessoryOpen(unlock: AccessoryUnlock | undefined, level: number, completed: ReadonlySet<string>, owned = false): boolean {
   if (!unlock) return true;
+  if (unlock.shop) return owned;
   return (unlock.level === undefined || level >= unlock.level) && (unlock.quest === undefined || completed.has(unlock.quest));
 }
 
@@ -175,14 +184,21 @@ export function openItemsInSlot(items: Iterable<AccessoryItem>, slot: AccessoryD
   return [...items].filter((item) => item.slot === slot && !item.unlock);
 }
 
-/** A colour variant sold as its own item: the base accessory's shape with one of its palette variants. */
-export const accessoryVariantSchema = z.strictObject({
-  id: itemId,
-  name: z.string().min(1),
-  variantOf: itemId,
-  variant: z.string().min(1),
-  unlock: unlockSchema.optional(),
-});
+/**
+ * A colour variant sold as its own item: the base accessory's shape with one of its palette variants
+ * (`variant`), or with colours of its own (`palette`: overrides of the base's palette keys), so a new colour
+ * needs no change to the base file.
+ */
+export const accessoryVariantSchema = z
+  .strictObject({
+    id: itemId,
+    name: z.string().min(1),
+    variantOf: itemId,
+    variant: z.string().min(1).optional(),
+    palette: z.record(z.string(), hexColor).optional(),
+    unlock: unlockSchema.optional(),
+  })
+  .refine((v) => (v.variant === undefined) !== (v.palette === undefined), { message: 'a variant names a palette variant or has a palette, not both' });
 export type AccessoryVariantDef = z.infer<typeof accessoryVariantSchema>;
 
 /** One wearable item of the catalogue, as the character, the creator and the server see it. */
@@ -193,6 +209,8 @@ export interface AccessoryItem {
   /** Geometry and palette source (the base accessory for a colour variant). */
   def: AccessoryDef;
   variant?: string;
+  /** The full accessory a colour variant recolours (absent on a full accessory). */
+  variantOf?: string;
   unlock?: AccessoryUnlock;
 }
 
@@ -225,8 +243,17 @@ export function buildAccessoryCatalog(files: readonly unknown[]): Map<string, Ac
   for (const v of variants) {
     const def = bases.get(v.variantOf);
     if (!def) throw new Error(`${v.id}: variantOf ${v.variantOf} is not a full accessory`);
-    if (!(v.variant in def.variants)) throw new Error(`${v.id}: ${v.variantOf} has no variant "${v.variant}"`);
-    items.set(v.id, { id: v.id, name: v.name, slot: def.slot, def, variant: v.variant, unlock: v.unlock });
+    const item = { id: v.id, name: v.name, slot: def.slot, variantOf: def.id, unlock: v.unlock };
+    if (v.palette) {
+      const unknown = Object.keys(v.palette).filter((key) => !(key in def.palette));
+      if (unknown.length > 0) throw new Error(`${v.id}: ${v.variantOf} has no colour ${unknown.join(', ')}`);
+      // Its colours become a palette variant named after the item, on a copy of the base's definition.
+      items.set(v.id, { ...item, def: { ...def, variants: { ...def.variants, [v.id]: v.palette } }, variant: v.id });
+      continue;
+    }
+    const variant = v.variant ?? '';
+    if (!(variant in def.variants)) throw new Error(`${v.id}: ${v.variantOf} has no variant "${variant}"`);
+    items.set(v.id, { ...item, def, variant });
   }
   return items;
 }

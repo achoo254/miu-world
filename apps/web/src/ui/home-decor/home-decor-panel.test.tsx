@@ -8,12 +8,16 @@ const DEFAULTS = resolveDecor(DECOR_CATALOG);
 const json = (body: unknown, status = 200) => new Response(JSON.stringify(body), { status });
 
 /** Answers GET /api/home-decor with `stored` and every PUT as the server would (merged, every slot named). */
-function decorApi(stored: Record<string, string> | (() => Response)) {
+function decorApi(stored: Record<string, string> | (() => Response), shop?: { prices: Record<string, number>; owned: string[] }) {
   const puts: unknown[] = [];
   let now = typeof stored === 'function' ? DEFAULTS : stored;
   vi.stubGlobal(
     'fetch',
     vi.fn(async (url: string, init?: RequestInit) => {
+      if (url === '/api/shop' && shop) {
+        const items = Object.entries(shop.prices).map(([id, price]) => ({ id, kind: 'decor', category: 'nha-cua', name: id, description: null, price, level: null, featured: false, slot: null, swatch: null, icon: null, effect: null, contains: null }));
+        return json({ coins: 0, level: 1, owned: Object.fromEntries(shop.owned.map((id) => [id, 1])), items });
+      }
       if (url !== '/api/home-decor') return json({ error: 'not-found' }, 404);
       if (init?.method === 'PUT') {
         const body = JSON.parse(String(init.body)) as { choices: Record<string, string> };
@@ -101,6 +105,24 @@ describe('HomeDecorPanel', () => {
     expect(await screen.findByRole('alert')).toBeTruthy();
     expect(onSaved).not.toHaveBeenCalled();
     expect(byId(`decor-option-${firstOther('bed')}`).getAttribute('aria-pressed')).toBe('true');
+  });
+
+  it('shows the styles sold in the shop locked with their price until bought; a saved one stays hers', async () => {
+    const bed = DECOR_CATALOG.slots.find((s) => s.id === 'bed')?.options ?? [];
+    const [sold, bought, kept] = bed.slice(-3).map((o) => o.id);
+    if (!sold || !bought || !kept) throw new Error('the bed needs three styles');
+    const { puts } = decorApi({ ...DEFAULTS, bed: kept }, { prices: { [sold]: 120, [bought]: 100, [kept]: 80 }, owned: [bought] });
+    render(<HomeDecorPanel onClose={() => undefined} onSaved={() => undefined} />);
+    await screen.findByText('Giường');
+    await vi.waitFor(() => expect(byId(`decor-price-${sold}`).textContent).toContain('120'));
+    expect(document.querySelector(`[data-id="decor-price-${bought}"]`)).toBeNull();
+    expect(document.querySelector(`[data-id="decor-price-${kept}"]`)).toBeNull();
+    fireEvent.click(byId(`decor-option-${sold}`));
+    expect(byId(`decor-option-${sold}`).getAttribute('aria-pressed')).toBe('false');
+    expect(byId('decor-hint').textContent).toContain('Cửa hàng');
+    fireEvent.click(byId(`decor-option-${bought}`));
+    fireEvent.click(byId('decor-save'));
+    await vi.waitFor(() => expect(puts).toEqual([{ choices: { bed: bought } }]));
   });
 
   it('offers a retry when the picks cannot be read', async () => {

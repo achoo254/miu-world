@@ -31,6 +31,8 @@ export interface StageOptions {
   duration: number;
   params: RoundSetup['params'];
   seed: number;
+  /** Hearts bought in the shop for this round (round.ts). */
+  extraLives?: number;
   theme: Theme;
   sprites: Sprites;
   player: SpriteRef;
@@ -80,7 +82,7 @@ export class MinigameStage {
     this.arena = arena;
     this.input = new InputCollector(pxPerUnit);
     this.driver = options.bot ? new BotDriver(this.input) : null;
-    this.round = new MinigameRound(options.module, { arena, goal: options.goal, duration: options.duration, params: options.params, seed: options.seed });
+    this.round = new MinigameRound(options.module, { arena, goal: options.goal, duration: options.duration, params: options.params, seed: options.seed, extraLives: options.extraLives });
     this.effects = new Effects(options.theme, options.reducedMotion);
     this.resize();
     this.listen();

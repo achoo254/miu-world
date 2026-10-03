@@ -24,6 +24,7 @@ import { PauseScreen } from '../system/pause-screen';
 import { DECOR_TARGET } from '../home-decor/decor-catalog';
 import { loadHomeDecor } from '../home-decor/home-decor-api';
 import { HomeDecorPanel } from '../home-decor/home-decor-panel';
+import { SHOP_TARGET, ShopPanel } from '../shop/shop-panel';
 import { TimetablePanel } from '../timetable/timetable-panel';
 import { TIMETABLE_TARGETS, type TimetableFocus } from '../timetable/timetable-targets';
 import { createPositionSaver, loadPlayerPositions } from './player-position';
@@ -184,6 +185,8 @@ export function PlayScreen() {
   const [timetable, setTimetable] = useState<TimetableFocus | null>(null);
   /** The decorating screen of the child's home. */
   const [decorOpen, setDecorOpen] = useState(false);
+  /** The shop, opened by its shopkeeper in Trung tâm. */
+  const [shopOpen, setShopOpen] = useState(false);
   /** The child's picks for her home, read before her home's map is built (null until known; others need none). */
   const [decor, setDecor] = useState<Record<string, string> | null>(null);
   /** The map on screen loads after a gate: its loading screen is the trip through the portal. */
@@ -254,7 +257,7 @@ export function PlayScreen() {
   const region = quest?.quest.region ?? DEFAULT_REGION;
   // An element of `positions` (set once), so the same object on every render: the game is not rebuilt.
   const savedSpot = positions?.find((p) => p.map === regionMap(region)) ?? null;
-  const covered = paused || questOpen || backpackOpen || questsOpen || timetable !== null || decorOpen;
+  const covered = paused || questOpen || backpackOpen || questsOpen || timetable !== null || decorOpen || shopOpen;
   const atHome = data !== null && regionMap(region) === regionMap(HOME_REGION);
   // Her home is built in her picks: they are read first (a failed read builds the house as it comes).
   useEffect(() => {
@@ -319,6 +322,7 @@ export function PlayScreen() {
         const focus = TIMETABLE_TARGETS.get(last.targetId);
         if (focus) setTimetable(focus);
         if (last.targetId === DECOR_TARGET) setDecorOpen(true);
+        if (last.targetId === SHOP_TARGET) setShopOpen(true);
       }),
     [store],
   );
@@ -366,6 +370,14 @@ export function PlayScreen() {
         ) : null}
         {timetable ? <TimetablePanel focus={timetable} onClose={() => setTimetable(null)} /> : null}
         {decorOpen ? <HomeDecorPanel onClose={() => setDecorOpen(false)} onSaved={decorated} /> : null}
+        {shopOpen ? (
+          <ShopPanel
+            onClose={() => setShopOpen(false)}
+            onCoins={(coins) => setData((prev) => prev && { ...prev, progress: { ...prev.progress, coins } })}
+            // Worn at once in the game, without rebuilding the map (the next visit starts in it from the server).
+            onWear={(equipped) => store.send({ type: 'set-outfit', equipped })}
+          />
+        ) : null}
         {data ? <QuestLayer key={questId ?? 'none'} store={store} data={data} questId={quest?.quest.id ?? null} region={region} onResponse={onResponse} onOverlayChange={setQuestOpen} draftOwner={draftOwner} /> : null}
         {paused ? (
           <PauseScreen

@@ -33,7 +33,7 @@ vi.mock('../../game/preview/character-preview', () => ({
 }));
 
 const puts: unknown[] = [];
-function stubApi({ level = 1, completed = [] as string[], pet = null as string | null } = {}) {
+function stubApi({ level = 1, completed = [] as string[], pet = null as string | null, owned = {} as Record<string, number> } = {}) {
   vi.stubGlobal(
     'fetch',
     vi.fn(async (url: string, init?: RequestInit) => {
@@ -51,6 +51,7 @@ function stubApi({ level = 1, completed = [] as string[], pet = null as string |
         });
       }
       if (url === '/api/quests') return json({ quests: [] });
+      if (url === '/api/shop') return json({ coins: 0, level, owned, items: [] });
       return json({ error: 'not-found' }, 404);
     }),
   );
@@ -211,6 +212,21 @@ describe('Character Creator', () => {
     fireEvent.click(await screen.findByRole('button', { name: /Mèo/ }));
     expect((screen.getByRole('button', { name: /Mũ phù thủy đêm sao/ }) as HTMLButtonElement).disabled).toBe(false);
     expect(itemTile('hat-flower-crown').disabled).toBe(false);
+  });
+
+  it('shows a shop item as for sale until bought, then as hers to wear', async () => {
+    stubApi({ level: 30 });
+    renderCreator();
+    fireEvent.click(await screen.findByRole('button', { name: /Mèo/ }));
+    expect(itemTile('hat-witch-galaxy').disabled).toBe(true);
+    expect(itemTile('hat-witch-galaxy').textContent).toContain('Mua ở cửa hàng');
+    cleanup();
+    stubApi({ owned: { 'hat-witch-galaxy': 1 } });
+    renderCreator();
+    fireEvent.click(await screen.findByRole('button', { name: /Mèo/ }));
+    expect(itemTile('hat-witch-galaxy').disabled).toBe(false);
+    fireEvent.click(itemTile('hat-witch-galaxy'));
+    expect(itemTile('hat-witch-galaxy').getAttribute('aria-pressed')).toBe('true');
   });
 
   it('offers fifty pets, locks the ones above the child\'s level, and keeps the one she already has', async () => {

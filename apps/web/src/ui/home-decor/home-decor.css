@@ -79,6 +79,19 @@
   box-shadow: var(--shadow-primary);
 }
 .decor-card-name { overflow-wrap: anywhere; }
+/* Sold in the shop and not bought yet: dimmed colours, the lock and the price. */
+.decor-card--locked { background: var(--color-surface-faint); }
+.decor-card--locked .decor-swatch { opacity: 0.55; }
+.decor-card-price {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: 0 var(--space-sm);
+  border-radius: var(--radius-pill);
+  background: var(--color-warning-soft);
+  color: var(--color-warning-ink);
+  font: 800 var(--text-sm) var(--font-display);
+}
 /* The house's own style, marked so the child can always go back to it. */
 .decor-card-own { font-size: var(--text-sm); color: var(--color-ink-soft); }
 .decor-card-tick {
