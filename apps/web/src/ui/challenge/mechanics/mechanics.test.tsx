@@ -147,6 +147,16 @@ describe('textbook mechanic screens send the answer the server grades', () => {
     expect(byId('stone-t2').querySelector('[data-id="picture-card"]')?.textContent).toBe('Tranh 2');
   });
 
+  it('sort lays pictures out as cards put into a numbered list, the picture coming along into its place', () => {
+    renderStep('order-pictures');
+    expect(byId('stone-t2').classList).toContain('sort-stone--card');
+    expect(byId('slot-0').textContent).toBe('1');
+    tap('stone-t2');
+    tap('slot-0');
+    expect(byId('slot-0').querySelector('[data-id="picture-card"]')?.textContent).toBe('Tranh 2');
+    expect(byId('slot-0').querySelector('.sort-slot-n')?.textContent).toBe('1');
+  });
+
   it('read shows the passage glossary when the book prints one', () => {
     const withGlossary = { ...quest, texts: { 'bai-doc': { title: 'Bài', body: 'Níu tay mẹ.', glossary: [{ term: 'Níu', meaning: 'nắm lấy và kéo lại.' }] } } };
     const submit = vi.fn(async () => response(true));

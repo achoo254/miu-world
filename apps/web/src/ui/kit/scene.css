@@ -100,6 +100,8 @@
   -webkit-overflow-scrolling: touch;
   touch-action: pan-y;
 }
+/* The play area scrolls; what is in it keeps its height (shrunk, the cards spilled over the slots). */
+.scene-modal--pinned > .challenge-area > * { flex-shrink: 0; }
 /* Short screens (an iPad on its side): a slimmer header leaves the play area room. */
 @media (max-height: 56rem) {
   .scene-modal--pinned { gap: var(--space-sm); }
@@ -167,6 +169,47 @@
   border-style: solid; border-color: var(--color-stone-edge);
   background: radial-gradient(ellipse at 40% 30%, var(--color-stone-top), var(--color-stone) 70%);
   color: var(--color-stone-ink);
+}
+
+/* Lines of a poem, pictures of a story: parchment cards, put into a numbered list read top to bottom. */
+.scene-modal .sort-stones--cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr)); gap: var(--space-sm); }
+.scene-modal .sort-stone--card,
+.scene-modal .sort-slots--cards .sort-slot {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--space-xs);
+  min-width: 0; min-height: 3.5rem;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-tile);
+  font-family: var(--font-body); font-size: var(--text-lg); font-weight: 700; line-height: 1.35;
+  text-align: center; white-space: pre-line; overflow-wrap: anywhere;
+}
+.scene-modal .sort-stone--card {
+  border: 3px solid var(--color-parchment-edge);
+  background: linear-gradient(180deg, var(--color-parchment), var(--color-parchment-deep));
+  color: var(--color-parchment-ink);
+  box-shadow: var(--shadow-material);
+}
+.scene-modal .sort-stone--card.sort-stone--selected { border-color: var(--color-secondary); }
+/* The picture's description reads as a caption above the line. */
+.scene-modal :is(.sort-stone--card, .sort-slots--cards .sort-slot) .picture-card {
+  font-size: var(--text-body); font-weight: 600; font-style: italic; color: var(--color-ink-soft);
+}
+.scene-modal .sort-slots--cards { flex-direction: column; flex-wrap: nowrap; align-items: stretch; padding: var(--space-sm); }
+.scene-modal .sort-slots--cards li { align-items: stretch; }
+.scene-modal .sort-slots--cards li + li::before { content: none; }
+.scene-modal .sort-slots--cards .sort-slot { flex: 1; flex-direction: row; justify-content: flex-start; text-align: left; }
+.scene-modal .sort-card-body { display: flex; flex-direction: column; align-items: center; gap: var(--space-xs); min-width: 0; }
+.scene-modal .sort-slots--cards .sort-card-body { align-items: flex-start; }
+.scene-modal .sort-slots--cards .sort-slot .picture-card { justify-items: start; }
+.scene-modal .sort-slots--cards .sort-slot--filled {
+  border: 3px solid var(--color-parchment-edge);
+  background: linear-gradient(180deg, var(--color-parchment), var(--color-parchment-deep));
+  color: var(--color-parchment-ink);
+}
+.sort-slot-n {
+  flex: 0 0 auto; display: grid; place-items: center;
+  width: 2.25rem; height: 2.25rem; border-radius: 50%;
+  background: var(--color-secondary); color: var(--color-surface);
+  font-family: var(--font-display); font-weight: 800; font-size: var(--text-lg);
 }
 
 /* Word cards and wooden crates (classify, pictures to sort). */
