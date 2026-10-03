@@ -17,7 +17,9 @@ const questDir = fileURLToPath(new URL('../../../content/quests/', import.meta.u
 const quests = readdirSync(questDir)
   .filter((f) => f.endsWith('.json'))
   .sort()
-  .map((f) => JSON.parse(readFileSync(`${questDir}${f}`, 'utf8')) as { id: string; region: string; status: string; steps?: Array<{ target?: string }> });
+  .map((f) => JSON.parse(readFileSync(`${questDir}${f}`, 'utf8')) as { id: string; region: string; status: string; category?: string; steps?: Array<{ target?: string }> })
+  // Minigame side quests are offered by their characters, never the lesson a map opens beside.
+  .filter((q) => q.category !== 'side');
 /** A lesson of the region in which its guide plays (the guide stands in that lesson's chapter). */
 const lessonWithGuide = (region: string, guide: string) => quests.find((q) => q.region === region && q.status === 'active' && q.steps?.some((s) => s.target === guide));
 const firstLesson = (region: string) => quests.find((q) => q.region === region && q.status === 'active');
