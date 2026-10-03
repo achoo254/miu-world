@@ -2,7 +2,7 @@
 // the Quests / Map / Backpack / Menu buttons, and the Interact button next to Run and Jump. Nothing
 // here changes per frame: the prompt arrives as a discrete bridge event.
 import { Link } from 'react-router';
-import type { KeyboardEvent } from 'react';
+import { useEffect, useState, type KeyboardEvent } from 'react';
 import type { QuestSummary } from '@miu/schema/game';
 import type { AutowalkState } from '../../game-bridge/game-store';
 import { useGameState, useGameStore } from '../../game-bridge/use-game-state';
@@ -25,14 +25,31 @@ const AUTOWALK_LINE: Record<AutowalkState, string> = {
   failed: 'Chưa tìm được đường, bạn tự đi nhé',
 };
 
+/** The card folds itself away after this long without a touch (owner, 03/10/2026: "10–15 s"). */
+export const TRACKER_FOLD_MS = 12_000;
+
 /**
  * The quest card. While the step's target stands on this map, tapping the card walks the character there
- * along the ways (the game finds the route), and tapping it again stops her.
+ * along the ways (the game finds the route), and tapping it again stops her. It folds to a small "Nhiệm vụ"
+ * pill with its "Thu gọn" button or after TRACKER_FOLD_MS untouched, opens again on a tap of the pill, and
+ * opens by itself when the quest moves to another step.
  */
 export function QuestTracker({ quest, data }: { quest: QuestSummary | null; data: PlayerData }) {
   const store = useGameStore();
   const available = useGameState((s) => s.autowalkAvailable);
   const autowalk = useGameState((s) => s.autowalk);
+  const stepKey = quest ? `${quest.quest.id}:${nextStep(quest)?.id ?? 'done'}` : null;
+  /** The step the card was folded at: folded only while the quest is still on that step, so a new step shows it again. */
+  const [foldedAt, setFoldedAt] = useState<string | null>(null);
+  const folded = stepKey !== null && foldedAt === stepKey;
+  const setFolded = (value: boolean): void => setFoldedAt(value ? stepKey : null);
+  /** Bumped by every touch on the card: restarts the countdown to folding. */
+  const [touched, setTouched] = useState(0);
+  useEffect(() => {
+    if (folded || !stepKey) return;
+    const timer = window.setTimeout(() => setFoldedAt(stepKey), TRACKER_FOLD_MS);
+    return () => window.clearTimeout(timer);
+  }, [folded, stepKey, touched]);
   if (!quest) return null;
   const step = nextStep(quest);
   const { done, total } = stepProgress(quest);
@@ -41,6 +58,18 @@ export function QuestTracker({ quest, data }: { quest: QuestSummary | null; data
   const going = autowalk === 'finding' || autowalk === 'walking';
   const tappable = Boolean(step) && (available || going);
   const toggle = (): void => store.send({ type: going ? 'autowalk-stop' : 'autowalk-start' });
+  if (folded) {
+    return (
+      <button type="button" className="hud-tracker-pill" data-id="hud-tracker-pill" aria-label="Mở nhiệm vụ hiện tại" onClick={() => setFolded(false)}>
+        <Icon name="scroll" size={24} />
+        Nhiệm vụ
+        <span className="hud-tracker-pill-count">
+          {done}/{total}
+        </span>
+        {going ? <Icon name="runningShoe" size={20} /> : null}
+      </button>
+    );
+  }
   const onKey = (event: KeyboardEvent): void => {
     if (event.key !== 'Enter' && event.key !== ' ') return;
     event.preventDefault();
@@ -52,11 +81,26 @@ export function QuestTracker({ quest, data }: { quest: QuestSummary | null; data
       aria-label="Nhiệm vụ hiện tại"
       data-id="hud-tracker"
       data-autowalk={tappable ? autowalk : undefined}
+      onPointerDown={() => setTouched((n) => n + 1)}
       {...(tappable ? { role: 'button', tabIndex: 0, 'aria-pressed': going, onClick: toggle, onKeyDown: onKey } : {})}
     >
       <p className="hud-tracker-kicker">
         <Icon name="scroll" size={24} />
         Nhiệm vụ hiện tại
+        <button
+          type="button"
+          className="hud-tracker-fold"
+          data-id="hud-tracker-fold"
+          aria-label="Thu gọn nhiệm vụ"
+          onClick={(event) => {
+            // Folding is not a tap on the card (that starts or stops the walk).
+            event.stopPropagation();
+            setFolded(true);
+          }}
+          onKeyDown={(event) => event.stopPropagation()}
+        >
+          ▲
+        </button>
       </p>
       <p className="hud-tracker-quest" data-id="hud-tracker-quest">
         {say(quest.quest.title, data.character)}

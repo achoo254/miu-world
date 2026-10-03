@@ -20,6 +20,21 @@
 }
 .hud-tracker-kicker { display: flex; align-items: center; gap: var(--space-xs); font-size: var(--text-sm); font-weight: 700; color: var(--color-ink-soft); }
 .hud-tracker-quest { font-family: var(--font-display); font-weight: 800; }
+/* "Thu gọn" in the card's corner; folded, the card is a small pill that opens it again. */
+.hud-tracker-fold {
+  margin-left: auto; display: grid; place-items: center;
+  width: 2.75rem; height: 2.75rem; flex-shrink: 0;
+  border: 0; border-radius: 50%; background: var(--color-surface); color: var(--color-ink);
+  font-size: var(--text-body); font-weight: 800; cursor: pointer; box-shadow: var(--shadow-tile);
+}
+.hud-tracker-fold:focus-visible, .hud-tracker-pill:focus-visible { box-shadow: var(--focus-ring); outline: none; }
+.hud-tracker-pill {
+  display: inline-flex; align-items: center; gap: var(--space-xs);
+  min-height: 3rem; padding: 0 var(--space-md);
+  border: 0; border-radius: var(--radius-pill); background: var(--color-surface-glass); box-shadow: var(--shadow-tile);
+  font-family: var(--font-display); font-weight: 800; font-size: var(--text-body); color: var(--color-ink); cursor: pointer;
+}
+.hud-tracker-pill-count { font-family: var(--font-body); font-weight: 700; color: var(--color-ink-soft); }
 .hud-tracker-step { font-weight: 700; }
 .hud-top-right {
   position: fixed;
