@@ -381,13 +381,13 @@ export async function generateTrungTam() {
     water: { level: WATER_LEVEL, covers: inWater },
     routes: ROUTES,
     pathsFromSpawn: false,
-    // Each gate stands just behind its arch, hidden by the glowing pane, so the pane is what the child sees.
+    // Each gate is the trigger just behind its arch, with no model of its own: the glowing pane is what the child sees.
     gates: [
       ...PORTALS.map((p, i) => {
         const [x, z] = portalAt(i);
-        return { to: p.to, at: [x, z - 2] as const };
+        return { to: p.to, at: [x, z - 2] as const, inPortal: true };
       }),
-      { to: HOME_PORTAL.to, at: [HOME_PORTAL.x, HOME_PORTAL.z + 2] as const },
+      { to: HOME_PORTAL.to, at: [HOME_PORTAL.x, HOME_PORTAL.z + 2] as const, inPortal: true },
     ],
     // Balloons to ride (d-01's sky): from the station by the bridge to each district, and back.
     rides: {

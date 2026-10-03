@@ -128,7 +128,11 @@ export interface ZoneMapSpec {
    * back to the hub, Trung tâm (owner, 02/10/2026: a map of its own in the middle of the world, where the
    * children meet online; every theme map is reached from it).
    */
-  gates?: ReadonlyArray<{ to: string; at: readonly [number, number] }>;
+  /**
+   * `inPortal`: the gate is the trigger of a portal arch whose glowing pane is what the child sees, so it draws
+   * no gate model (a wooden gate behind or in the arch showed through it from the side).
+   */
+  gates?: ReadonlyArray<{ to: string; at: readonly [number, number]; inPortal?: boolean }>;
   /**
    * The map's rides (a wide map is long to walk): by default a row of stops by the spawn, one to each zone,
    * and a stop at each zone back to the spawn. `vehicle` names them ("Xe buýt", "Đò") and gives their look;
@@ -323,7 +327,7 @@ export async function generateZoneMap(spec: ZoneMapSpec): Promise<{ world: Voxel
       position: models.place(g.at[0], g.at[1]),
       yaw: 0,
       radius: 3,
-      ...models.modelled(GATE),
+      ...(g.inPortal ? {} : models.modelled(GATE)),
       travel: g.to,
     };
   });

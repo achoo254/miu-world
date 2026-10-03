@@ -207,8 +207,8 @@ const ROUTES: Point[][] = [...CAMPUS_ROUTES, MAIN_STREET, ...TOWN_ROUTES, ...TOW
  * Gates: the square's portals into the theme maps, and one inside the school gate back to the hub, Trung tâm
  * (owner, 02/10/2026: a map of its own where the children meet), like every other map's.
  */
-const GATES: ReadonlyArray<{ to: string; at: readonly [number, number] }> = [
-  ...PORTALS.map((p) => ({ to: p.to, at: portalAt(p) })),
+const GATES: ReadonlyArray<{ to: string; at: readonly [number, number]; inPortal?: boolean }> = [
+  ...PORTALS.map((p) => ({ to: p.to, at: portalAt(p), inPortal: true })),
   { to: HUB_REGION, at: [MID - 8, CAMPUS.z0 + 3] },
 ];
 
