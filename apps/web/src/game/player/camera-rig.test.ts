@@ -34,6 +34,17 @@ describe('camera rig', () => {
   });
 });
 
+describe('camera jump', () => {
+  it('jumps with the child when she is carried far in one frame, without gliding over the gap', () => {
+    const camera = new PerspectiveCamera();
+    const rig = new CameraRig(camera, (_x, y) => y < 1, 0);
+    settle(rig);
+    const far = new Vector3(600.5, 1, 580.5);
+    rig.update(1 / 60, far);
+    expect(Math.hypot(camera.position.x - far.x, camera.position.z - far.z)).toBeLessThan(rig.distance + 1);
+  });
+});
+
 describe('camera drag', () => {
   it('keeps the tilt in a comfortable band however far the child drags', () => {
     const rig = new CameraRig(new PerspectiveCamera(), () => false, 0);

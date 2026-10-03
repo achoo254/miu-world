@@ -27,6 +27,8 @@ const WALL_PAD = 0.35;
 const NEAREST = 1;
 /** Once the way is clear the camera eases back out to the chosen distance at this rate (per second); in, it snaps. */
 const OUT_EASE = 3;
+/** The child moved this far in one frame (a ride, a rescue, a saved spot): the camera jumps with her instead of gliding over the gap. */
+const JUMP = 8;
 
 export class CameraRig {
   yaw: number;
@@ -72,7 +74,7 @@ export class CameraRig {
     let aimHeight = TARGET_HEIGHT;
     while (aimHeight > 0.9 && this.solid(Math.floor(player.x), Math.floor(player.y + aimHeight), Math.floor(player.z))) aimHeight -= 0.25;
     this.target.set(player.x, player.y + aimHeight, player.z);
-    if (!this.initialised) {
+    if (!this.initialised || this.smoothed.distanceTo(this.target) > JUMP) {
       this.smoothed.copy(this.target);
       this.initialised = true;
     }

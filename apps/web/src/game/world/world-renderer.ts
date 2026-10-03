@@ -197,6 +197,15 @@ export async function createWorldRenderer(data: WorldData, options: { sky: Color
   };
   const distanceTo = (px: number, pz: number, x: number, z: number): number => Math.hypot((px + 0.5) * PATCH_BLOCKS - x, (pz + 0.5) * PATCH_BLOCKS - z);
 
+  // Places whose land stays drawn and held besides the one `step` is asked about: the camera's, and each ride's
+  // stop being fetched while the child still stands at the other end (dropping either would leave her, or
+  // her landing, over nothing, and the two would undo each other's work every frame).
+  const camPos = new Vector3();
+  let cameraAt: [number, number] | null = null;
+  const holds: Array<[number, number]> = [];
+  const kept = (cx: number, cz: number, x: number, z: number): boolean =>
+    [[x, z], ...(cameraAt ? [cameraAt] : []), ...holds].some(([kx = 0, kz = 0]) => Math.hypot(cx - kx, cz - kz) <= viewDistance + DROP_MARGIN);
+
   /** Asks for the nearest wanted patches and drops the far ones; returns whether everything round (x, z) is in. */
   const step = (x: number, z: number): boolean => {
     const reach = viewDistance + KEEP_MARGIN;
@@ -229,7 +238,7 @@ export async function createWorldRenderer(data: WorldData, options: { sky: Color
     }
     source.pump();
     for (const [key, patch] of patches) {
-      if (Math.hypot(patch.center[0] - x, patch.center[1] - z) <= viewDistance + DROP_MARGIN) continue;
+      if (kept(patch.center[0], patch.center[1], x, z)) continue;
       for (const mesh of patch.meshes) {
         group.remove(mesh);
         mesh.geometry.dispose();
@@ -240,14 +249,14 @@ export async function createWorldRenderer(data: WorldData, options: { sky: Color
     return complete;
   };
 
-  const camPos = new Vector3();
   let lastFetch: [number, number] | null = null;
   const fetchAround = (x: number, z: number): void => {
     if (lastFetch && Math.hypot(lastFetch[0] - x, lastFetch[1] - z) < PATCH_BLOCKS) return;
     lastFetch = [x, z];
     void data.regions.loadAround(x, z, Number.isFinite(viewDistance) ? viewDistance + PREFETCH : Infinity);
-    // Regions well behind are dropped (their patches went already): the blocks held stay a few dozen MB.
-    if (Number.isFinite(viewDistance)) data.regions.dropBeyond(x, z, viewDistance + PREFETCH + REGION_BLOCKS);
+    // Regions well behind are dropped (their patches went already): the blocks held stay a few dozen MB. Not
+    // while a ride's stop is being fetched: its regions are far from the camera by design.
+    if (Number.isFinite(viewDistance) && holds.length === 0) data.regions.dropBeyond(x, z, viewDistance + PREFETCH + REGION_BLOCKS);
   };
 
   return {
@@ -266,6 +275,7 @@ export async function createWorldRenderer(data: WorldData, options: { sky: Color
     },
     update(camera, see) {
       camera.getWorldPosition(camPos);
+      cameraAt = [camPos.x, camPos.z];
       seeThrough.uSeeOn.value = see ? 1 : 0;
       if (see) {
         seeThrough.uSeeFrom.value.copy(camPos);
@@ -278,15 +288,22 @@ export async function createWorldRenderer(data: WorldData, options: { sky: Color
       horizon?.update(camPos);
     },
     async settle(x, z) {
-      await data.regions.loadAround(x, z, Number.isFinite(viewDistance) ? viewDistance + PREFETCH : Infinity);
-      // Meshing runs a few patches at a time: pump until everything in view is drawn.
-      await new Promise<void>((resolve) => {
-        const tick = (): void => {
-          if (step(x, z)) resolve();
-          else setTimeout(tick, 16);
-        };
-        tick();
-      });
+      const hold: [number, number] = [x, z];
+      holds.push(hold);
+      try {
+        await data.regions.loadAround(x, z, Number.isFinite(viewDistance) ? viewDistance + PREFETCH : Infinity);
+        // Meshing runs a few patches at a time: pump until everything in view is drawn.
+        await new Promise<void>((resolve) => {
+          const tick = (): void => {
+            if (step(x, z)) resolve();
+            else setTimeout(tick, 16);
+          };
+          tick();
+        });
+      } finally {
+        holds.splice(holds.indexOf(hold), 1);
+        lastFetch = null; // the next frame fetches (and drops) round wherever the camera is now
+      }
     },
     dispose() {
       source.dispose();

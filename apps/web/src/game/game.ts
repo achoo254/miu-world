@@ -710,6 +710,7 @@ export class Game {
       overlay.stats.ambientLine = life.stats.lastLine;
       overlay.stats.player = [controller.position.x, controller.position.y, controller.position.z];
       overlay.stats.onGround = controller.onGround;
+      overlay.stats.patches = world.patchCount();
       overlay.stats.nearTarget = promptTarget?.def.id ?? null;
       overlay.stats.cameraYaw = rig.yaw;
       overlay.stats.cameraInsideBlock = solid(Math.floor(camera.position.x), Math.floor(camera.position.y), Math.floor(camera.position.z));
