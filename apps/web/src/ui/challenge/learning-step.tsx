@@ -38,6 +38,7 @@ export function LearningStep({
   busy,
   submit,
   onClose,
+  onRight,
 }: {
   step: QuestStepPublic;
   quest: ActiveQuestView;
@@ -45,6 +46,8 @@ export function LearningStep({
   busy: boolean;
   submit: (step: QuestStepPublic, body: StepCompleteRequest) => Promise<StepCompleteResponse | null>;
   onClose: () => void;
+  /** A graded answer the server accepted (the notebook card shows it to copy). */
+  onRight?: (step: QuestStepPublic, answer: StepAnswer) => void;
 }): ReactElement | null {
   const [tryAgain, setTryAgain] = useState<string | null>(null);
   /** Wrong answers on this screen: the hint opens after the first, the answer after the second. */
@@ -56,6 +59,7 @@ export function LearningStep({
     const response = await submit(step, { answer });
     if (!response) return;
     playCue(response.correct ? 'right' : 'wrong');
+    if (response.correct) onRight?.(step, answer);
     if (!response.correct) {
       setTryAgain(fill(response.feedback ?? fallback.current.next()));
       setWrongTries((n) => n + 1);

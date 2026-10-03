@@ -2,7 +2,7 @@
 // (CDP touch events, since page.touchscreen only taps), tap-to-select, wrong-then-right with the kind
 // line from the server, and the answer layer that still lets the child finish (XP 100 → 90).
 import { expect, test } from '@playwright/test';
-import { freshChild, playAt, playUntil } from './quest-api';
+import { copied, freshChild, notebookPage, playAt, playUntil } from './quest-api';
 import { waitReady } from './stats';
 import { tap, touchDrag } from './touch';
 
@@ -41,6 +41,7 @@ test('drag ten apples by touch, a wrong candy answer then the right one, and the
   await expect(page.locator('[data-id="drag-count"]')).toHaveText('10');
   await tap(page, '[data-id="challenge-check"]');
   await expect(page.getByRole('dialog', { name: 'Hái 10 quả táo' })).toHaveCount(0);
+  await copied(page);
 
   // Quiz: wrong first (a kind line, never harsh), then right.
   await tap(page, '[data-id="hud-interact"]');
@@ -52,6 +53,7 @@ test('drag ten apples by touch, a wrong candy answer then the right one, and the
   await tap(page, '[data-id="choice-b"]');
   await tap(page, '[data-id="challenge-check"]');
   await expect(page.getByRole('dialog', { name: 'Chia kẹo với Hải ly' })).toHaveCount(0);
+  await copied(page);
 
   // Stones: tap a stone, then its slot.
   await page.goto(playAt('stream-stones'));
@@ -64,6 +66,7 @@ test('drag ten apples by touch, a wrong candy answer then the right one, and the
   }
   await tap(page, '[data-id="challenge-check"]');
   await expect(page.getByRole('dialog', { name: 'Qua suối' })).toHaveCount(0);
+  await copied(page);
   await expect(page.locator('[data-id="hud-tracker-step"]')).toContainText('cây cổ thụ');
 });
 
@@ -87,11 +90,14 @@ test('the riddle with the Answer layer still finishes the chapter, for 90 XP ins
   for (const digit of ['1', '3']) await page.getByRole('button', { name: digit, exact: true }).tap();
   await tap(page, '[data-id="challenge-check"]');
   await expect(page.getByRole('dialog', { name: 'Giải câu đố của cây' })).toHaveCount(0);
+  await copied(page);
 
   // Open the chest: the gate opens by itself and the server pays the chapter, 10% less for the answer.
   await page.goto(playAt('chest'));
   await waitReady(page);
   await tap(page, '[data-id="hud-interact"]');
+  // The riddle answered here is the one thing to copy at the end.
+  await notebookPage(page, 1);
   await expect(page.getByRole('dialog', { name: 'Hoàn thành nhiệm vụ!' })).toBeVisible();
   await expect(page.locator('[data-id="reward-xp"] .visually-hidden')).toHaveText('+90 XP');
   await expect(page.locator('[data-id="reward-stars"]')).toHaveAttribute('data-stars', '2');

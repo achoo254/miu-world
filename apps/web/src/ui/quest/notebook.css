@@ -1,0 +1,30 @@
+/*
+ * The notebook page: the question and its answer written on a strip of vở ô li, as in the child's own
+ * exercise book (2 mm lines, 8 mm squares, the margin line), so copying it feels like copying from the board.
+ * Values from tokens.css only.
+ */
+.notebook-ask { display: flex; align-items: center; gap: var(--space-sm); margin: 0; font-size: var(--text-lg); font-weight: 800; }
+.notebook-page {
+  list-style: none;
+  margin: 0;
+  padding: var(--space-md) var(--space-md) var(--space-md) calc(var(--space-md) + 2rem);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  border-radius: var(--radius-field);
+  background-color: var(--color-surface);
+  background-image:
+    linear-gradient(to right, transparent 1.6rem, var(--color-oli-margin) 1.6rem, var(--color-oli-margin) calc(1.6rem + 2px), transparent calc(1.6rem + 2px)),
+    linear-gradient(to bottom, var(--color-oli-square) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-oli-line) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 2rem, 100% 0.5rem;
+  line-height: 2rem;
+  color: var(--color-ink);
+  text-align: left; /* written from the margin, as in the vở */
+}
+.notebook-entry { display: flex; flex-direction: column; }
+.notebook-question { margin: 0; white-space: pre-line; font-size: var(--text-lg); font-weight: 700; }
+.notebook-number { font-weight: 800; }
+.notebook-answer { margin: 0; white-space: pre-line; font-size: var(--text-lg); font-weight: 800; color: var(--color-secondary); }
+.notebook-answer-label { color: var(--color-ink-soft); font-weight: 700; }
+.notebook-bar { justify-content: flex-end; }

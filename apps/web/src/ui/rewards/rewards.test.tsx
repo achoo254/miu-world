@@ -43,6 +43,8 @@ describe('completion screens', () => {
   it('shows Level Up only when the level went up; nothing is ever unlocked', () => {
     expect(completionScreens(completion())).toEqual(['reward', 'level']);
     expect(completionScreens(completion({ levelAfter: 1 }))).toEqual(['reward']);
+    // Answers to copy come first: once she has played, she writes them into her vở.
+    expect(completionScreens(completion({ levelAfter: 1 }), 3)).toEqual(['notebook', 'reward']);
   });
 
   it('shows the server\'s numbers, then Level Up, each skippable with one tap', () => {

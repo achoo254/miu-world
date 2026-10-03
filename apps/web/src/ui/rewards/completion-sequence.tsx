@@ -12,6 +12,8 @@ import { Icon, MiuPortrait } from '../kit/art';
 import { buttonClass } from '../kit/button';
 import { Modal } from '../kit/modal';
 import { say, type PlayerData } from '../player/player-data';
+import type { NotebookEntry } from '../quest/notebook';
+import { NotebookLines } from '../quest/notebook-card';
 import type { ActiveQuestView } from '../quest/quest-flow';
 import { playCue } from '../sound/sfx';
 import './rewards.css';
@@ -20,12 +22,16 @@ import './rewards.css';
 const STAR_GAP_MS = 400;
 const COUNT_MS = 900;
 
-type Screen = 'reward' | 'level';
+type Screen = 'notebook' | 'reward' | 'level';
 /** What the finishing step paid (server). */
 export type GrantedReward = NonNullable<StepCompleteResponse['reward']>;
 
-export function completionScreens(completion: QuestCompletion): Screen[] {
-  return ['reward', ...(completion.levelAfter > completion.levelBefore ? (['level'] as const) : [])];
+/**
+ * The screens after a quest, in order: first what to copy into the vở when the quest had answers (owner,
+ * 03/10/2026: once she has played, she writes it down), then the reward, then the level-up if any.
+ */
+export function completionScreens(completion: QuestCompletion, notebook = 0): Screen[] {
+  return [...(notebook > 0 ? (['notebook'] as const) : []), 'reward', ...(completion.levelAfter > completion.levelBefore ? (['level'] as const) : [])];
 }
 
 /** The counter's value `elapsedMs` into a count-up of `durationMs`: from 0, easing out, ending exactly on `target`. */
@@ -141,7 +147,10 @@ export function CompletionSequence({
   data,
   onMap,
   onExplore,
+  notebook = [],
 }: {
+  /** The quest's questions and answers to copy into the vở, shown first. */
+  notebook?: readonly NotebookEntry[];
   completion: QuestCompletion;
   reward: GrantedReward;
   quest: ActiveQuestView;
@@ -149,15 +158,20 @@ export function CompletionSequence({
   onMap: () => void;
   onExplore: () => void;
 }) {
-  const screens = completionScreens(completion);
+  const screens = completionScreens(completion, notebook.length);
   const [index, setIndex] = useState(0);
   const screen = screens[index] ?? 'reward';
   const last = index === screens.length - 1;
-  const title = screen === 'reward' ? 'Hoàn thành nhiệm vụ!' : 'Lên cấp!';
+  const title = screen === 'notebook' ? 'Chép vào vở nhé!' : screen === 'reward' ? 'Hoàn thành nhiệm vụ!' : 'Lên cấp!';
 
   return (
     <Modal title={title} onClose={last ? onExplore : () => setIndex(index + 1)} dataId={`completion-${screen}`} variant="scene">
-      {screen === 'reward' ? (
+      {screen === 'notebook' ? (
+        <div className="reward-body" data-id="completion-notebook-page">
+          <p className="notebook-ask">Chơi xong rồi! {data.character.name} chép các câu hỏi và đáp án này vào vở nhé.</p>
+          <NotebookLines entries={notebook} />
+        </div>
+      ) : screen === 'reward' ? (
         <RewardScreen completion={completion} reward={reward} quest={quest} data={data} />
       ) : (
         <div className="reward-body" data-id="level-up">
@@ -181,7 +195,7 @@ export function CompletionSequence({
           </>
         ) : (
           <button type="button" className={buttonClass('primary', { block: true })} data-id="completion-next" onClick={() => setIndex(index + 1)}>
-            Tiếp
+            {screen === 'notebook' ? 'Con chép xong rồi' : 'Tiếp'}
           </button>
         )}
       </div>

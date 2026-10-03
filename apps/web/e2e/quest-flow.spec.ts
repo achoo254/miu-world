@@ -4,7 +4,7 @@
 import { mkdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { expect, test, type Page } from '@playwright/test';
-import { freshChild, playAt, playUntil } from './quest-api';
+import { copied, freshChild, playAt, playUntil } from './quest-api';
 import { readStats, waitReady } from './stats';
 
 /** The background music's mood and whether it really plays (music-player.ts). */
@@ -70,6 +70,7 @@ test('meet the parrot, follow the arrow, find the three clues, and the letter op
   await page.locator('[data-id="choice-b"]').click();
   await page.locator('[data-id="challenge-check"]').click();
   await expect(letter).toHaveCount(0);
+  await copied(page);
   await expect(page.locator('[data-id="hud-tracker-step"]')).toContainText('Hải ly');
   await expect.poll(async () => (await readStats(page)).hintTarget).toBe('animal-beaver');
   expect(pageErrors).toEqual([]);

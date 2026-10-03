@@ -9,7 +9,7 @@ import { mkdirSync, readdirSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { expect, test, type Page } from '@playwright/test';
-import { playAt } from './quest-api';
+import { copied, notebookPage, playAt } from './quest-api';
 import { readStats, waitReady } from './stats';
 import { tap, touchDrag } from './touch';
 
@@ -151,6 +151,7 @@ test('one child plays the whole MVP loop by touch, from Google sign-in to the L√
   await tap(page, '[data-id="choice-b"]');
   await tap(page, '[data-id="challenge-check"]');
   await expect(page.locator('[data-id="challenge"]')).toHaveCount(0);
+  await copied(page);
 
   // The beaver: talk, ten apples by touch drag, the candy question.
   await goTo(page, 'animal-beaver');
@@ -162,11 +163,13 @@ test('one child plays the whole MVP loop by touch, from Google sign-in to the L√
   await shot(page, '06-drag-drop');
   await tap(page, '[data-id="challenge-check"]');
   await expect(page.locator('[data-id="challenge"]')).toHaveCount(0);
+  await copied(page);
   await tap(page, '[data-id="hud-interact"]');
   await tap(page, '[data-id="choice-b"]');
   await shot(page, '07-quiz');
   await tap(page, '[data-id="challenge-check"]');
   await expect(page.locator('[data-id="challenge"]')).toHaveCount(0);
+  await copied(page);
 
   // The stepping stones, small to large.
   await goTo(page, 'stream-stones');
@@ -178,6 +181,7 @@ test('one child plays the whole MVP loop by touch, from Google sign-in to the L√
   await shot(page, '08-sort');
   await tap(page, '[data-id="challenge-check"]');
   await expect(page.locator('[data-id="challenge"]')).toHaveCount(0);
+  await copied(page);
 
   // The ancient tree: talk, then its riddle (8 + 5) on the number pad; no support layer opened.
   await goTo(page, 'ancient-tree');
@@ -188,10 +192,15 @@ test('one child plays the whole MVP loop by touch, from Google sign-in to the L√
   await shot(page, '09-riddle');
   await tap(page, '[data-id="challenge-check"]');
   await expect(page.locator('[data-id="challenge"]')).toHaveCount(0);
+  await copied(page);
 
   // The chest: the gate opens by itself and the server pays the chapter.
   await goTo(page, 'chest');
   await tap(page, '[data-id="hud-interact"]');
+  // First what to copy into the v·ªü: the five questions she answered and their answers.
+  await expect(page.getByRole('dialog', { name: 'Ch√©p v√†o v·ªü nh√©!' })).toBeVisible({ timeout: 15_000 });
+  await shot(page, '10-notebook');
+  await notebookPage(page, 5);
   await expect(page.locator('[data-id="reward-stars"]')).toHaveAttribute('data-stars', '3');
   await expect(page.locator('[data-id="reward-xp"] .visually-hidden')).toHaveText('+100 XP');
   // The counters count up (script, not CSS, so `animations: 'disabled'` does not settle them).

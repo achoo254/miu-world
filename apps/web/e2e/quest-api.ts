@@ -43,3 +43,17 @@ export async function playUntil(page: Page, baseURL: string, stopAt: string): Pr
 }
 
 export const playAt = (target: string, quality = 'low') => `/play?quality=${quality}&region=khu-rung-bi-mat&quest=forest-ch1&spawnAt=${target}`;
+
+/** After a right answer: the card with the question and the answer to copy into the vở; she has copied it. */
+export async function copied(page: Page): Promise<void> {
+  await expect(page.getByRole('dialog', { name: 'Chép vào vở' })).toBeVisible();
+  await page.locator('[data-id="notebook-done"]').click();
+  await expect(page.getByRole('dialog', { name: 'Chép vào vở' })).toHaveCount(0);
+}
+
+/** The quest's end opens on every question and answer to copy (`count` of them); she has copied them. */
+export async function notebookPage(page: Page, count: number): Promise<void> {
+  await expect(page.getByRole('dialog', { name: 'Chép vào vở nhé!' })).toBeVisible({ timeout: 15_000 });
+  await expect(page.locator('[data-id="notebook-lines"] li')).toHaveCount(count);
+  await page.locator('[data-id="completion-next"]').click();
+}
