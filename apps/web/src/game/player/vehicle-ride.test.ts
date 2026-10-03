@@ -6,7 +6,7 @@ import { rasterizeAccessory } from '@miu/voxel/voxel-accessory';
 import { createGameStore } from '../../game-bridge/game-store';
 import { ACCESSORIES } from '../content/accessories';
 import { PlayerController, RIDE_RUN_SPEED, RIDE_SPEED, RUN_SPEED, WALK_SPEED } from './player-controller';
-import { VehicleRide, createRideControl, createVehicleMesh, equippedVehicle, rideLift, seatedPose } from './vehicle-ride';
+import { VehicleRide, createRideControl, createVehicleMesh, equippedVehicle, noseReach, rideLift, seatedPose } from './vehicle-ride';
 
 const board: VehicleRideSpec = { height: 0.3125, pose: 'stand' };
 const cloud: VehicleRideSpec = { height: 0.5, pose: 'sit', float: true };
@@ -31,6 +31,47 @@ describe('riding speed', () => {
     const walker = new PlayerController(flat, [0.5, 1, 0.5], 90);
     expect(cruise(walker, false)).toBeCloseTo(WALK_SPEED, 1);
     expect(cruise(walker, true)).toBeCloseTo(RUN_SPEED, 1);
+  });
+});
+
+describe('the nose of the vehicle', () => {
+  /** Flat ground, and a wall from x = 6 on: `tall` blocks high, `blocking` (a fence) or not. */
+  const walled =
+    (tall: number, fence = false): { solid: SolidAt; blocking: SolidAt } => ({
+      solid: (x, y) => y < 1 || (x >= 6 && y < 1 + tall),
+      blocking: (x, y) => fence && x >= 6 && y >= 1 && y < 1 + tall,
+    });
+  const drive = (wall: { solid: SolidAt; blocking: SolidAt }, reach: number): PlayerController => {
+    const player = new PlayerController(wall.solid, [0.5, 1, 0.5], 90, () => false, wall.blocking);
+    player.riding = true;
+    player.rideReach = reach;
+    for (let i = 0; i < 180; i++) player.update(1 / 60, { dirX: 1, dirZ: 0, run: false, jump: false });
+    return player;
+  };
+
+  it('stops her before a wall with the nose outside it; on foot her body reaches the wall', () => {
+    const rider = drive(walled(3), 1.1);
+    expect(rider.position.x + 1.1).toBeLessThanOrEqual(6.05);
+    expect(rider.position.x).toBeGreaterThan(4);
+    const walker = new PlayerController(walled(3).solid, [0.5, 1, 0.5], 90);
+    for (let i = 0; i < 180; i++) walker.update(1 / 60, { dirX: 1, dirZ: 0, run: false, jump: false });
+    expect(walker.position.x).toBeCloseTo(6 - 0.24, 1);
+  });
+
+  it('stops at a fence, but still steps up a block and climbs a 2-block ledge', () => {
+    expect(drive(walled(1, true), 1.1).position.x).toBeLessThan(5);
+    expect(drive(walled(1), 1.1).position.y).toBeCloseTo(2, 1);
+    expect(drive(walled(2), 1.1).position.y).toBeCloseTo(3, 1);
+  });
+
+  it('every vehicle reaches ahead of her body, and no further than a few blocks', () => {
+    for (const item of VEHICLES) {
+      const vehicle = equippedVehicle([item.id]);
+      if (!vehicle) continue;
+      const reach = noseReach(createVehicleMesh(vehicle, false), 0.5);
+      expect(reach, item.id).toBeGreaterThan(0);
+      expect(reach, item.id).toBeLessThan(3);
+    }
   });
 });
 
@@ -108,7 +149,7 @@ describe('createRideControl', () => {
     const store = createGameStore();
     const root = new Group();
     root.scale.setScalar(0.5);
-    const rider = { riding: false, inWater: false };
+    const rider = { riding: false, rideReach: 0, inWater: false };
     const control = createRideControl({ store, outfit: ['vehicle-toy-car-red'], root, rider, castShadow: false, reduced: true });
     expect(store.getSnapshot().vehicle).toEqual({ name: 'Ô tô tí hon đỏ', riding: false });
     store.send({ type: 'ride', on: true });
@@ -120,6 +161,7 @@ describe('createRideControl', () => {
     const mesh = root.getObjectByName('vehicle:vehicle-toy-car-red');
     expect(mesh?.visible).toBe(true);
     expect(control.liftWorld).toBeCloseTo(0.5 * (6 / 16 - 0.1));
+    expect(rider.rideReach).toBeGreaterThan(0.24);
 
     rider.inWater = true;
     control.update(1 / 60);
@@ -127,6 +169,7 @@ describe('createRideControl', () => {
     expect(rider.riding).toBe(false);
     expect(mesh?.visible).toBe(false);
     expect(control.liftWorld).toBe(0);
+    expect(rider.rideReach).toBe(0);
     expect(store.getSnapshot().vehicle).toEqual({ name: 'Ô tô tí hon đỏ', riding: false });
 
     control.dispose();
@@ -136,7 +179,7 @@ describe('createRideControl', () => {
 
   it('offers nothing and ignores the command without a vehicle', () => {
     const store = createGameStore();
-    const rider = { riding: false, inWater: false };
+    const rider = { riding: false, rideReach: 0, inWater: false };
     const control = createRideControl({ store, outfit: ['hat-witch-pink'], root: new Group(), rider, castShadow: false, reduced: false });
     store.send({ type: 'ride', on: true });
     control.update(1 / 60);

@@ -62,6 +62,13 @@ export function createVehicleMesh(vehicle: EquippedVehicle, castShadow: boolean)
   return mesh;
 }
 
+/** How far the vehicle's front reaches ahead of her centre, in world units (`scale`: the character root's). */
+export function noseReach(mesh: Mesh, scale: number): number {
+  mesh.geometry.computeBoundingBox();
+  const front = mesh.geometry.boundingBox?.max.z ?? 0;
+  return Math.max(0, (front + mesh.position.z) * scale);
+}
+
 /** Riding state, apart from three.js: on and off, off in water, and how high her feet stand. */
 export class VehicleRide {
   riding = false;
@@ -125,7 +132,7 @@ export function createRideControl(options: {
   store: GameStore;
   outfit: readonly string[];
   root: Object3D;
-  rider: { riding: boolean; readonly inWater: boolean };
+  rider: { riding: boolean; rideReach: number; readonly inWater: boolean };
   castShadow: boolean;
   reduced: boolean;
 }): RideControl {
@@ -142,6 +149,7 @@ export function createRideControl(options: {
       root.add(mesh);
     }
     if (mesh) mesh.visible = ride.riding;
+    rider.rideReach = ride.riding && mesh ? noseReach(mesh, root.scale.z) : 0;
     report();
   };
   const unsubscribe = store.onCommand((command) => {
@@ -170,6 +178,7 @@ export function createRideControl(options: {
     dispose() {
       unsubscribe();
       rider.riding = false;
+      rider.rideReach = 0;
       if (mesh) {
         mesh.removeFromParent();
         mesh.geometry.dispose();

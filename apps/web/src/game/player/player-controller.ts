@@ -88,6 +88,11 @@ export class PlayerController {
   private airJumps = 0;
   /** On a vehicle: the ride speeds instead of walking and running. */
   riding = false;
+  /**
+   * While riding, how far the vehicle's nose reaches ahead of her centre (world units). She stops when a
+   * wall is within that reach, so the nose never runs into it; her collision body stays the same.
+   */
+  rideReach = 0;
 
   constructor(
     private readonly solid: SolidAt,
@@ -136,6 +141,10 @@ export class PlayerController {
     const ease = 1 - Math.exp(-(len > 0.01 ? MOVE_EASE : STOP_EASE) * dt);
     this.velocityX += (wantX - this.velocityX) * ease;
     this.velocityZ += (wantZ - this.velocityZ) * ease;
+    if (this.riding && this.rideReach > BODY.halfWidth) {
+      if (this.wallAhead(0, this.velocityX * dt)) this.velocityX = 0;
+      if (this.wallAhead(2, this.velocityZ * dt)) this.velocityZ = 0;
+    }
     const vx = this.velocityX;
     const vz = this.velocityZ;
 
@@ -177,6 +186,31 @@ export class PlayerController {
       const step = diff * (1 - Math.exp(-TURN_EASE * dt));
       this.facing += Math.sign(step) * Math.min(Math.abs(step), TURN_RATE * dt);
     }
+  }
+
+  /**
+   * A wall between her body and the vehicle's nose along one axis: a `blocking` cell at her feet or knees,
+   * or a face at least 3 blocks high, within this frame's `step`. A 1-block step and a 2-block ledge (she
+   * climbs it) are not walls.
+   */
+  private wallAhead(axis: 0 | 2, step: number): boolean {
+    const sign = Math.sign(step);
+    if (sign === 0) return false;
+    const { x, y, z } = this.position;
+    const feet = Math.floor(y + 1e-3);
+    const along = axis === 0 ? x : z;
+    const across = axis === 0 ? z : x;
+    const first = Math.floor(along + sign * (BODY.halfWidth + 0.05));
+    const last = Math.floor(along + sign * this.rideReach + step);
+    const sides = [Math.floor(across - BODY.halfWidth), Math.floor(across + BODY.halfWidth)];
+    for (let cell = first; sign > 0 ? cell <= last : cell >= last; cell += sign) {
+      for (const side of sides) {
+        const [cx, cz] = axis === 0 ? [cell, side] : [side, cell];
+        if (this.blocking(cx, feet, cz) || this.blocking(cx, feet + 1, cz)) return true;
+        if (this.solid(cx, feet + 1, cz) && this.solid(cx, feet + 2, cz)) return true;
+      }
+    }
+    return false;
   }
 
   /**
