@@ -1,5 +1,5 @@
-// Player intent from keyboard, a minimal touch joystick + Run/Jump buttons, and mouse/touch drag
-// to orbit the camera. Movement is camera-relative: x = strafe right, y = forward, both in [-1, 1].
+// Player intent from keyboard, a minimal touch joystick + Run/Jump buttons, mouse/touch drag to orbit the
+// camera, and zoom (mouse wheel, two-finger pinch, + / − keys). Movement is camera-relative: x = strafe right, y = forward, both in [-1, 1].
 export interface InputState {
   moveX: number;
   moveY: number;
@@ -20,6 +20,11 @@ const KEYS_FORWARD = ['KeyW', 'ArrowUp'];
 const KEYS_BACK = ['KeyS', 'ArrowDown'];
 const KEYS_LEFT = ['KeyA', 'ArrowLeft'];
 const KEYS_RIGHT = ['KeyD', 'ArrowRight'];
+const KEYS_ZOOM_IN = ['Equal', 'NumpadAdd'];
+const KEYS_ZOOM_OUT = ['Minus', 'NumpadSubtract'];
+/** Zoom per wheel pixel, and per + / − press (log scale of the camera distance). */
+const ZOOM_PER_WHEEL_PX = 0.0015;
+const ZOOM_PER_KEY = 0.15;
 
 export class PlayerInput implements InputSource {
   private readonly keys = new Set<string>();
@@ -28,6 +33,8 @@ export class PlayerInput implements InputSource {
   private jumpQueued = false;
   private look = { x: 0, y: 0 };
   private interactQueued = false;
+  /** Zoom gathered since the last `readZoom` (log scale: + farther). */
+  private zoomed = 0;
   /** Window listeners outlive the game DOM, so they are removed explicitly on dispose. */
   private readonly listeners = new AbortController();
 
@@ -39,6 +46,8 @@ export class PlayerInput implements InputSource {
         this.keys.add(e.code);
         if (e.code === 'Space') this.jumpQueued = true;
         if (e.code === 'KeyE') this.interactQueued = true;
+        if (KEYS_ZOOM_IN.includes(e.code)) this.zoomed -= ZOOM_PER_KEY;
+        if (KEYS_ZOOM_OUT.includes(e.code)) this.zoomed += ZOOM_PER_KEY;
       },
       { signal },
     );
@@ -65,6 +74,14 @@ export class PlayerInput implements InputSource {
     this.jumpQueued = false;
     this.interactQueued = false;
     this.look = { x: 0, y: 0 };
+    this.zoomed = 0;
+  }
+
+  /** Zoom asked for since the last call (log scale of the camera distance: + farther, − closer). */
+  readZoom(): number {
+    const zoom = this.zoomed;
+    this.zoomed = 0;
+    return zoom;
   }
 
   private bindHold(el: HTMLElement, onChange: (held: boolean) => void): void {
@@ -113,25 +130,49 @@ export class PlayerInput implements InputSource {
     el.addEventListener('pointercancel', reset);
   }
 
+  /** One finger or the mouse drags the view round; two fingers pinch it in and out; the wheel zooms. */
   private bindLook(root: HTMLElement): void {
-    let last: { x: number; y: number; id: number } | null = null;
+    const signal = this.listeners.signal;
+    const pointers = new Map<number, { x: number; y: number }>();
+    const spread = (): number => {
+      const [a, b] = [...pointers.values()];
+      return a && b ? Math.hypot(a.x - b.x, a.y - b.y) : 0;
+    };
     root.addEventListener('pointerdown', (e) => {
       // The canvas fills #app, so accept it; joystick and buttons handle their own pointers.
       if (e.target instanceof Element && e.target.closest('#joystick, #actions')) return;
-      last = { x: e.clientX, y: e.clientY, id: e.pointerId };
+      pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
       root.setPointerCapture(e.pointerId);
     });
     root.addEventListener('pointermove', (e) => {
-      if (!last || e.pointerId !== last.id) return;
+      const last = pointers.get(e.pointerId);
+      if (!last) return;
+      if (pointers.size >= 2) {
+        // A pinch: fingers apart brings the camera closer, together takes it farther.
+        const before = spread();
+        pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+        const after = spread();
+        if (before > 0 && after > 0) this.zoomed += Math.log(before / after);
+        return;
+      }
       this.look.x += e.clientX - last.x;
       this.look.y += e.clientY - last.y;
-      last = { x: e.clientX, y: e.clientY, id: e.pointerId };
+      pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
     });
-    const end = (): void => {
-      last = null;
+    const end = (e: PointerEvent): void => {
+      pointers.delete(e.pointerId);
     };
     root.addEventListener('pointerup', end);
     root.addEventListener('pointercancel', end);
+    root.addEventListener(
+      'wheel',
+      (e) => {
+        e.preventDefault();
+        // Lines (Firefox) are about 16 px each.
+        this.zoomed += e.deltaY * (e.deltaMode === 1 ? 16 : 1) * ZOOM_PER_WHEEL_PX;
+      },
+      { passive: false, signal },
+    );
   }
 
   read(): InputState {

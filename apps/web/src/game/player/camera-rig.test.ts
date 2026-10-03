@@ -1,7 +1,7 @@
 import { PerspectiveCamera, Vector3 } from 'three';
 import { describe, expect, it } from 'vitest';
 import type { SolidAt } from '@miu/voxel/grid-collision';
-import { CameraRig, DEFAULT_PITCH } from './camera-rig';
+import { CameraRig, DEFAULT_DISTANCE, DEFAULT_PITCH, MAX_DISTANCE, MIN_DISTANCE } from './camera-rig';
 
 // Flat ground (y < 1) with a 3-block wall right behind Miu (z = 6), the way a stream bank or a trunk
 // stands at her back.
@@ -81,5 +81,22 @@ describe('camera follow', () => {
     expect(turned(0.5, 10)).toBeGreaterThan(0);
     expect(turned(0.5, 10)).toBeLessThan(turned(1, 10)); // no snap: a short walk turns a little
     expect(turned(0.5, 600)).toBeCloseTo(Math.PI / 2, 2); // a longer walk ends right behind her
+  });
+
+  it('zooms in and out within its bounds, and a new view (after a gate) keeps the chosen distance', () => {
+    const open: SolidAt = (_x, y) => y < 1;
+    const rig = new CameraRig(new PerspectiveCamera(), open, 0);
+    expect(rig.distance).toBe(DEFAULT_DISTANCE);
+    rig.zoom(Math.log(2));
+    expect(rig.distance).toBeCloseTo(DEFAULT_DISTANCE * 2, 5);
+    for (let i = 0; i < 120; i++) rig.update(1 / 60, miu);
+    expect(rig.viewDistance).toBeCloseTo(rig.distance, 1);
+    rig.zoom(10);
+    expect(rig.distance).toBe(MAX_DISTANCE);
+    rig.zoom(-10);
+    expect(rig.distance).toBe(MIN_DISTANCE);
+    expect(new CameraRig(new PerspectiveCamera(), open, 0).distance).toBe(MIN_DISTANCE);
+    rig.zoom(Math.log(DEFAULT_DISTANCE / MIN_DISTANCE));
+    expect(rig.distance).toBeCloseTo(DEFAULT_DISTANCE, 5);
   });
 });

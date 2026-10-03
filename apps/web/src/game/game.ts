@@ -571,6 +571,8 @@ export class Game {
       // Review screenshots step a fixed 1/60 s, then freeze once ready: the capture lands a variable number of
       // frames later, and water / NPC animation must not move in between.
       const dt = reviewShot && !reviewShot.live ? (reviewShot.settled ? 0 : 1 / 60) : Math.min(timer.getDelta(), 0.1);
+      // Zoom works on the autopilot too.
+      rig.zoom(input.readZoom());
       let intent: MoveIntent;
       let interact = interactRequested;
       interactRequested = false;

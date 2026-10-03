@@ -28,13 +28,21 @@ const WALL_PAD = 0.35;
 const NEAREST = 1;
 /** Once the way is clear the camera eases back out to the chosen distance at this rate (per second); in, it snaps. */
 const OUT_EASE = 3;
+/**
+ * The child zooms the view in and out (owner, 03/10/2026) between these distances, from close behind her
+ * shoulder to a wide look over the land. The chosen distance stays while the page is open (through gates).
+ */
+export const MIN_DISTANCE = 3;
+export const MAX_DISTANCE = 16;
+export const DEFAULT_DISTANCE = 7;
+let chosenDistance = DEFAULT_DISTANCE;
 /** The child moved this far in one frame (a ride, a rescue, a saved spot): the camera jumps with her instead of gliding over the gap. */
 const JUMP = 8;
 
 export class CameraRig {
   yaw: number;
   pitch = DEFAULT_PITCH;
-  distance = 7;
+  distance = chosenDistance;
   private readonly target = new Vector3();
   private readonly smoothed = new Vector3();
   private initialised = false;
@@ -53,6 +61,13 @@ export class CameraRig {
   orbit(dx: number, dy: number): void {
     this.yaw -= dx * YAW_PER_PX;
     if (Math.abs(dy) >= Math.abs(dx) * TILT_SLOPE) this.pitch = MathUtils.clamp(this.pitch + dy * PITCH_PER_PX, MIN_PITCH, MAX_PITCH);
+  }
+
+  /** Zooms by `amount` (log scale: + farther, − closer), within MIN_DISTANCE…MAX_DISTANCE. */
+  zoom(amount: number): void {
+    if (amount === 0) return;
+    this.distance = MathUtils.clamp(this.distance * Math.exp(amount), MIN_DISTANCE, MAX_DISTANCE);
+    chosenDistance = this.distance;
   }
 
   /** Eases the tilt back to the resting view (called while Miu walks without a drag). */

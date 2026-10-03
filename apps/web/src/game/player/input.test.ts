@@ -45,4 +45,35 @@ describe('PlayerInput', () => {
     joystick.dispatchEvent(touch);
     expect(touch.defaultPrevented).toBe(true);
   });
+
+  it('zooms with the wheel and the + / − keys, and forgets zoom asked while paused', () => {
+    const root = el();
+    const input = create(root);
+    root.dispatchEvent(new WheelEvent('wheel', { deltaY: 100, cancelable: true }));
+    expect(input.readZoom()).toBeGreaterThan(0);
+    expect(input.readZoom()).toBe(0);
+    window.dispatchEvent(new KeyboardEvent('keydown', { code: 'Equal' }));
+    expect(input.readZoom()).toBeLessThan(0);
+    window.dispatchEvent(new KeyboardEvent('keydown', { code: 'Minus' }));
+    input.clear();
+    expect(input.readZoom()).toBe(0);
+  });
+
+  it('pinches: fingers apart zoom in without turning the view, one finger still turns it', () => {
+    const root = el();
+    root.setPointerCapture = () => undefined;
+    const input = create(root);
+    const pointer = (type: string, id: number, x: number): void => {
+      root.dispatchEvent(new PointerEvent(type, { pointerId: id, clientX: x, clientY: 100, bubbles: true }));
+    };
+    pointer('pointerdown', 1, 100);
+    pointer('pointerdown', 2, 200);
+    pointer('pointermove', 2, 300);
+    const state = input.read();
+    expect(input.readZoom()).toBeCloseTo(Math.log(100 / 200), 5);
+    expect(state.lookX).toBe(0);
+    pointer('pointerup', 2, 300);
+    pointer('pointermove', 1, 130);
+    expect(input.read().lookX).toBe(30);
+  });
 });
