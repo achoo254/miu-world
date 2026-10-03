@@ -83,6 +83,48 @@ describe('player controller at ledges', () => {
   });
 });
 
+describe('player controller jumping', () => {
+  const flat: SolidAt = (_x, y) => y < 1;
+  /** Highest the feet get: Jump held for `first` frames, let go, then pressed again at frame `again` (or never). */
+  function peak(again: number | null, frames = 120): number {
+    const player = new PlayerController(flat, [2.5, 1, 2.5], 0);
+    let top = 0;
+    for (let i = 0; i < frames; i++) {
+      const jump = i < 2 || (again !== null && i >= again && i < again + 2);
+      player.update(1 / 60, { dirX: 0, dirZ: 0, run: false, jump });
+      top = Math.max(top, player.position.y - 1);
+    }
+    return top;
+  }
+
+  it('leaps about a block and a half, and a second press in the air leaps again, higher, but under three', () => {
+    const single = peak(null);
+    expect(single).toBeGreaterThan(1.4);
+    expect(single).toBeLessThan(1.6);
+    const double = peak(20); // near the top of the first leap
+    expect(double).toBeGreaterThan(2.6);
+    expect(double).toBeLessThan(3);
+  });
+
+  it('leaps twice at most before landing, and not again by holding Jump', () => {
+    const player = new PlayerController(flat, [2.5, 1, 2.5], 0);
+    const presses = [0, 1, 20, 21, 30, 31];
+    let top = 0;
+    for (let i = 0; i < 120; i++) {
+      player.update(1 / 60, { dirX: 0, dirZ: 0, run: false, jump: presses.includes(i) });
+      top = Math.max(top, player.position.y - 1);
+    }
+    expect(top).toBeLessThan(3);
+  });
+
+  it('keeps a three-block wall a wall even with the second leap', () => {
+    const wall: SolidAt = (x, y) => (x >= 4 ? y < 4 : y < 1);
+    const player = new PlayerController(wall, [2.5, 1, 2.5], 90);
+    for (let i = 0; i < 180; i++) player.update(1 / 60, { dirX: 1, dirZ: 0, run: false, jump: i < 2 || (i >= 20 && i < 22) });
+    expect(player.position.x).toBeLessThan(4);
+  });
+});
+
 describe('player controller steering', () => {
   const flat: SolidAt = (_x, y) => y < 1;
   const step = (player: PlayerController, dirX: number, dirZ: number): void => player.update(1 / 60, { dirX, dirZ, run: false, jump: false });

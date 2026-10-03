@@ -1,4 +1,5 @@
-// Third-person movement on the block grid: camera-relative walking/running, gravity, jump,
+// Third-person movement on the block grid: camera-relative walking/running, gravity, jump (and a second
+// jump in the air),
 // 1-block step-up, an automatic climb onto 2-block ledges, and swimming, all resolved by the shared grid
 // collision. What she meets is walked through, stepped or climbed onto, or stops her, by its traversal
 // (traversal.ts): `blocking` things (fences, doors, railings, walls) are never stepped or climbed over.
@@ -9,6 +10,12 @@ export const WALK_SPEED = 3.4;
 export const RUN_SPEED = 6.2;
 const GRAVITY = 26;
 const JUMP_SPEED = 8.8; // clears ~1.49 blocks: effortless leap onto 1-block steps and ledges
+/**
+ * A second press of Jump in the air leaps again, once until she lands (owner, 03/10/2026: press twice to
+ * jump higher): timed at the top of the first it lifts her feet about 2.9 blocks, still under a 3-block
+ * face, which stays a wall (a stream's high bank, a curtain wall).
+ */
+const AIR_JUMP_SPEED = 8.8;
 /**
  * Turning eases out toward the move direction (share of the remaining angle closed per second, as an
  * exponential rate), capped at TURN_RATE: a diagonal push swings her round smoothly instead of snapping.
@@ -69,6 +76,10 @@ export class PlayerController {
   private velocityX = 0;
   private velocityZ = 0;
   private climb: Climb | null = null;
+  /** Jump held on the last update: a new press is its rising edge. */
+  private jumpHeld = false;
+  /** Leaps left in the air before landing again. */
+  private airJumps = 0;
 
   constructor(
     private readonly solid: SolidAt,
@@ -119,10 +130,18 @@ export class PlayerController {
     const vx = this.velocityX;
     const vz = this.velocityZ;
 
+    const pressed = intent.jump && !this.jumpHeld;
+    this.jumpHeld = intent.jump;
     if (this.inWater) {
       this.velocityY = intent.jump ? SWIM_UP_SPEED : Math.max(this.velocityY - WATER_GRAVITY * dt, -SINK_SPEED);
     } else {
-      if (intent.jump && this.onGround) this.velocityY = JUMP_SPEED;
+      if (intent.jump && this.onGround) {
+        this.velocityY = JUMP_SPEED;
+        this.airJumps = 1;
+      } else if (pressed && !this.onGround && this.airJumps > 0) {
+        this.velocityY = AIR_JUMP_SPEED;
+        this.airJumps--;
+      }
       this.velocityY -= GRAVITY * dt;
     }
 
@@ -137,6 +156,7 @@ export class PlayerController {
     this.speed = Math.hypot(px - this.position.x, pz - this.position.z) / Math.max(dt, 1e-6);
     this.position.set(px, py, pz);
     this.onGround = result.onGround;
+    if (result.onGround) this.airJumps = 0;
     if (result.onGround && this.velocityY < 0) this.velocityY = 0;
     if (result.hitCeiling && this.velocityY > 0) this.velocityY = 0;
     if (result.onGround && len >= CLIMB_MIN_INPUT && (result.blocked[0] || result.blocked[2])) this.startClimb(vx, vz, result.blocked[0]);

@@ -5,7 +5,8 @@
 import { MathUtils, Vector3, type PerspectiveCamera } from 'three';
 import { raycastGrid, type SolidAt } from '@miu/voxel/grid-collision';
 
-const TARGET_HEIGHT = 1.55;
+/** The camera looks at the child's head (PLAYER_SCALE): about 1.3 blocks over her feet. */
+const TARGET_HEIGHT = 1.3;
 /**
  * The child's drag tilts only within a comfortable band: never below the head looking up at the sky,
  * never so steep that the screen is all ground. The view rests at DEFAULT_PITCH.

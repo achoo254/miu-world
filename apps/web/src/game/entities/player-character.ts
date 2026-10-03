@@ -13,8 +13,12 @@ export const accessoryScaler =
 const LOCOMOTION = ['idle', 'walk', 'sprint'] as const;
 type Locomotion = (typeof LOCOMOTION)[number];
 
-/** Scale of the child's character model so she reads as a child relative to adult NPCs. */
-export const PLAYER_SCALE = 0.82;
+/**
+ * Scale of the child's character model: just a little taller than the quest characters (owner, 03/10/2026),
+ * about 1.75–2 blocks with the ears against their 1.7, under the villagers' 1.75–1.9. Only the picture: she
+ * walks, steps, climbs and jumps by her collision body (player-controller.ts), whatever this is.
+ */
+export const PLAYER_SCALE = 0.68;
 
 export interface PlayerCharacter {
   root: Object3D;

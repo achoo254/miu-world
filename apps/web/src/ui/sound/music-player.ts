@@ -8,8 +8,8 @@ import { assetUrl } from '../kit/ui-art';
 import { onSoundSettingChange, readSoundOn } from '../system/sound-setting';
 import { MUSIC_MOODS, musicPath, type MusicMood } from './music';
 
-/** Under the UI cues and the read-aloud voice. */
-const MUSIC_VOLUME = 0.32;
+/** Under the UI cues and the read-aloud voice, yet clearly heard (owner, 03/10/2026: the music was too quiet). */
+const MUSIC_VOLUME = 0.6;
 /** Share of the volume left while a line is read aloud. */
 const DUCKED = 0.3;
 const FADE_S = 1.2;
