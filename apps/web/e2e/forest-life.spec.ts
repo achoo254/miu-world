@@ -173,32 +173,3 @@ for (const [kind, near, quality] of [
     }
   });
 }
-
-// A boat from the spawn's pier to the far glade (owner, 03/10/2026: pressing Lên tàu left the child over
-// bare sky): the land under her stays drawn while the far stop loads, and she gets off on solid ground there.
-test('the forest boat carries the child to the far glade with the land drawn at both ends', async ({ page, baseURL }) => {
-  await freshChild(page, baseURL ?? '');
-  const stop = entities.interactables.find((t) => t.id === 'ben-tau-rung-4');
-  const [rx = 0, , rz = 0] = stop?.ride ?? [];
-  if (!stop?.ride) throw new Error('ben-tau-rung-4 has no ride');
-  await page.goto(play('ben-tau-rung-4', 'low'));
-  await waitReady(page);
-  await expect.poll(async () => (await readStats(page)).nearTarget).toBe('ben-tau-rung-4');
-  const before = (await readStats(page)).patches;
-  expect(before).toBeGreaterThan(0);
-  await page.keyboard.press('KeyE');
-  // While the far stop loads, the land round the pier stays (it used to be dropped every frame).
-  for (let i = 0; i < 5; i++) {
-    const s = await readStats(page);
-    if (Math.hypot(s.player[0] - rx, s.player[2] - rz) < 8) break;
-    expect(s.patches).toBeGreaterThan(0);
-    await page.waitForTimeout(200);
-  }
-  await expect.poll(async () => {
-    const s = await readStats(page);
-    return Math.hypot(s.player[0] - rx, s.player[2] - rz);
-  }, { timeout: 15_000 }).toBeLessThan(8);
-  await expect.poll(async () => (await readStats(page)).onGround).toBe(true);
-  // Land drawn the moment she arrives (the camera jumps with her instead of gliding over the gap).
-  expect((await readStats(page)).patches).toBeGreaterThan(0);
-});

@@ -73,3 +73,43 @@ test("a portal of the school's square leads into the market, and the market gate
   await page.keyboard.press('KeyE');
   await expect(page).toHaveURL(/region=trung-tam/);
 });
+
+// Every map's longest ride (owner, 03/10/2026: pressing Lên tàu left the child over bare sky; "xem thêm các map
+// khác"): the land under her stays drawn while the far stop loads, and she gets off on solid ground there with
+// the land round her drawn from the first moment. Rides are read from each map's entities.
+type Ride = { id: string; position: [number, number, number]; ride?: [number, number, number] };
+const longestRide = (map: string): Ride | undefined =>
+  read<{ interactables: Ride[] }>(`assets/generated/world/${map}/entities.json`)
+    .interactables.filter((t) => t.ride)
+    .sort((a, b) => Math.hypot((b.ride?.[0] ?? 0) - b.position[0], (b.ride?.[2] ?? 0) - b.position[2]) - Math.hypot((a.ride?.[0] ?? 0) - a.position[0], (a.ride?.[2] ?? 0) - a.position[2]))[0];
+const withMaps = read<{ regions: Array<{ id: string; map?: string }> }>('content/world/regions.json').regions.filter((r) => r.map);
+
+for (const region of withMaps) {
+  const map = region.map ?? '';
+  const stop = longestRide(map);
+  if (!stop?.ride) continue;
+  const [rx, , rz] = stop.ride;
+  test(`${region.id}: the longest ride (${stop.id}) keeps the land drawn at both ends`, async ({ page, baseURL }) => {
+    await freshChild(page, baseURL ?? '');
+    const lesson = firstLesson(region.id);
+    await page.goto(`/play?quality=low&region=${region.id}${lesson ? `&quest=${lesson.id}` : ''}&spawnAt=${stop.id}`);
+    await waitReady(page);
+    await expect.poll(async () => (await readStats(page)).nearTarget).toBe(stop.id);
+    expect((await readStats(page)).patches).toBeGreaterThan(0);
+    await page.keyboard.press('KeyE');
+    // While the far stop loads, the land round the stop stays.
+    for (let i = 0; i < 5; i++) {
+      const s = await readStats(page);
+      if (Math.hypot(s.player[0] - rx, s.player[2] - rz) < 8) break;
+      expect(s.patches).toBeGreaterThan(0);
+      await page.waitForTimeout(200);
+    }
+    await expect.poll(async () => {
+      const s = await readStats(page);
+      return Math.hypot(s.player[0] - rx, s.player[2] - rz);
+    }, { timeout: 15_000 }).toBeLessThan(8);
+    // Land drawn the moment she arrives (the camera jumps with her instead of gliding over the gap).
+    expect((await readStats(page)).patches).toBeGreaterThan(0);
+    await expect.poll(async () => (await readStats(page)).onGround).toBe(true);
+  });
+}

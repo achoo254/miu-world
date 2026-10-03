@@ -480,6 +480,8 @@ export class Game {
     let interactRequested = false;
     let rescueRequested = false;
     let celebrateRequested = false;
+    /** A ride's far stop is loading: the child is set down there once it is drawn. */
+    let riding = false;
     const byId = new Map(targets.map((t) => [t.def.id, t]));
     const arrow = createTargetArrow();
     scene.add(arrow.root);
@@ -676,10 +678,17 @@ export class Game {
         }
       }
       if (interact && promptTarget?.def.ride) {
-        // A ride across the map: the child gets off at the next stop (its regions are fetched ahead).
+        // A ride across the map: the child gets off at the next stop (its regions are fetched ahead). One ride at
+        // a time: a second press while the far stop loads would set her down twice, maybe at another stop.
         const [rx, ry, rz] = promptTarget.def.ride;
-        // Off beside whatever stands on the stop (a signpost, a crate), never inside it.
-        void world.settle(rx, rz).then(() => controller.teleport(nearestUsableSpot([rx, ry, rz], solid, liquid, data.bounds, data.world.height) ?? [rx, ry, rz]));
+        if (!riding) {
+          riding = true;
+          // Off beside whatever stands on the stop (a signpost, a crate), never inside it.
+          void world
+            .settle(rx, rz)
+            .then(() => controller.teleport(nearestUsableSpot([rx, ry, rz], solid, liquid, data.bounds, data.world.height) ?? [rx, ry, rz]))
+            .finally(() => (riding = false));
+        }
         overlay.stats.lastInteraction = promptTarget.def.id;
       } else if (interact && promptTarget?.def.travel) {
         store.emit({ type: 'travel', region: promptTarget.def.travel });
