@@ -7,10 +7,7 @@ import type { CSSProperties } from 'react';
 import type { CharacterDto } from '@miu/schema/game';
 import decor from '../../../../../assets/generated/world/the-gioi/stage-decor.json';
 import { MiuPortrait } from '../kit/art';
-import { REGIONS } from '../region/regions';
-
-/** The region whose island is the child's own house: the character waves from above it. */
-const HOME_REGION = 'nha-cua-be';
+import { HOME_REGION, REGIONS } from '../region/regions';
 /** How far above the house's label the character stands (percent of the image height). */
 const ABOVE_HOUSE = 15;
 

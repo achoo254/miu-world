@@ -21,6 +21,7 @@ import {
   type Object3D,
 } from 'three';
 import { clone as cloneModel } from 'three/examples/jsm/utils/SkeletonUtils.js';
+import { fillPlayerName } from '@miu/quest/player-name';
 import type { Interactable, WorldEntities } from '@miu/voxel/world-entities';
 import type { TargetState } from '../../game-bridge/game-store';
 import type { GuardedGltfLoader } from '../asset-loader';
@@ -200,6 +201,19 @@ function tint(root: Object3D, color: Color): void {
     };
     o.material = Array.isArray(o.material) ? o.material.map(recolor) : recolor(o.material);
   });
+}
+
+/**
+ * Targets as the child meets them: `{name}` in a name, a prompt's action or a painted board (the board before
+ * the child's home, "Nhà của {name}") reads as the child's character name.
+ */
+export function namedForPlayer(targets: readonly Interactable[], playerName: string): Interactable[] {
+  return targets.map((t) => ({
+    ...t,
+    name: fillPlayerName(t.name, playerName),
+    label: fillPlayerName(t.label, playerName),
+    ...(t.board ? { board: fillPlayerName(t.board, playerName) } : {}),
+  }));
 }
 
 export async function loadInteractables(

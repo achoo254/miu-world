@@ -18756,8 +18756,8 @@
       "derivedFrom": [
         "kenney-voxel-pack"
       ],
-      "sha256": "972b2f28e4494d7436f9221c33bc6aa763f6c1dc2eaffe8a91b50e86b1db40c2",
-      "bytes": 20418
+      "sha256": "6bb71c0c7a1b5df154f85010f51fd9904f33b9b1362705c98375775a9e94bf41",
+      "bytes": 20925
     },
     {
       "path": "generated/atlas/atlas.png",
@@ -18766,8 +18766,8 @@
       "derivedFrom": [
         "kenney-voxel-pack"
       ],
-      "sha256": "f82bd0389ad1f1359882008b077e3f6a73d947f02dd7cc43b15ccf59cdbc7a16",
-      "bytes": 131847
+      "sha256": "8776ee1a4e635ee2dfe09473ea4175b03f983372515cf1db882dc851e7e42f84",
+      "bytes": 136830
     },
     {
       "path": "generated/box-props/basketball-hoop.glb",
@@ -19698,6 +19698,134 @@
       "bytes": 11460
     },
     {
+      "path": "generated/box-props/ncb-bed-pink.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "3157eaad7a0e4c4054b52ef1f42b7ade9d18eaa6854c5f1cdb12bcb637d1ab5f",
+      "bytes": 25596
+    },
+    {
+      "path": "generated/box-props/ncb-cat-flag.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "29f36178564f1c42d1754288d3fa846755568221d287b6a7fe9895246eeb154f",
+      "bytes": 20392
+    },
+    {
+      "path": "generated/box-props/ncb-cat-mailbox.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "9f66a5f9c31d9e4693874dfdde75734cea973de950af73c535dabb1f1cf2cc90",
+      "bytes": 22624
+    },
+    {
+      "path": "generated/box-props/ncb-cat-rug.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "9f15781fc70a6e30f5bd5d350bf01c072a16636a358be3d5cba0a6aa19569583",
+      "bytes": 18152
+    },
+    {
+      "path": "generated/box-props/ncb-curtains-pink.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "ea47a8112d16d0ae3cab3becacdb5d86dcbe297475467832d1c4dd788e05b80d",
+      "bytes": 9940
+    },
+    {
+      "path": "generated/box-props/ncb-door-leaf.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "28dd7c5dbb9f4481c75625fe0b88ac75f440eed9a1331a48cf7236b0c2f96fc5",
+      "bytes": 7736
+    },
+    {
+      "path": "generated/box-props/ncb-drawings.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "660d3351f8413afd400bbfd6458a9f111096b6d8cf9cb7c30b82d6817867a81c",
+      "bytes": 11460
+    },
+    {
+      "path": "generated/box-props/ncb-fridge.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "92ba5433b30e8b4642ba38d8a45ee9f752ff20e80cccbce62a13a4635d8e07c6",
+      "bytes": 9196
+    },
+    {
+      "path": "generated/box-props/ncb-railing.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "7e294096e5a41f8da9f92694e850dbb1d116b61b4b1de3bd82bda0b095931111",
+      "bytes": 7736
+    },
+    {
+      "path": "generated/box-props/ncb-sign-cat.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "79796d14341469059fcb64d6ec92e795a4a1be8d415e449b6c2435b5a51ecc43",
+      "bytes": 18160
+    },
+    {
+      "path": "generated/box-props/ncb-sofa.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "7acef8fcf30d8b3c6b4abff19bcd9cfd7a3e8dd4084a8e915812bdda82d9f2b3",
+      "bytes": 9952
+    },
+    {
+      "path": "generated/box-props/ncb-timetable-board.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "9e789d431b4ed2c40a26663ee322d5f613e1104bdb47acf3dcbc54a4d7e3c1a0",
+      "bytes": 120096
+    },
+    {
+      "path": "generated/box-props/ncb-uniform-calendar.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "4ffea9642cc6922d4a7c873a92260b9a96b625fdf414e243d41dce835cf56364",
+      "bytes": 94052
+    },
+    {
+      "path": "generated/box-props/ncb-vanity.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "f908b3a7177b7e12cc72cb62bbb794c99d25c86d5256443b970857310df76706",
+      "bytes": 8480
+    },
+    {
+      "path": "generated/box-props/ncb-wardrobe.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "4ab2282f3e323d7da742a541bf0908646d3886ca1cb782f3a60cd5e981527049",
+      "bytes": 9224
+    },
+    {
+      "path": "generated/box-props/ncb-watering-can.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "6c8b31a6d561d86e04b81033d1ce1cde979ea5c20eb6c8ee3cc22058332966d7",
+      "bytes": 5508
+    },
+    {
       "path": "generated/box-props/nt-apple-crate.glb",
       "license": "CC0-1.0",
       "generator": "tools/assets/build-box-props.ts",
@@ -20530,6 +20658,14 @@
       "bytes": 48772
     },
     {
+      "path": "generated/box-props/tt-portal-coral.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "282a810d525f5e868fb518d7f8b1a9b28fb7523f4f9cd5fa3bb4431b41c9afe1",
+      "bytes": 48772
+    },
+    {
       "path": "generated/box-props/tt-portal-green.glb",
       "license": "CC0-1.0",
       "generator": "tools/assets/build-box-props.ts",
@@ -20648,6 +20784,14 @@
       "derivedFrom": [],
       "sha256": "6b9d2745daeaccd317d0c5cd569751245e60675300ec30625e86588a2f5d303a",
       "bytes": 39740
+    },
+    {
+      "path": "generated/box-props/tt-sign-nha-cua-be.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "6bce90327653ac9e3e660e438bfdcae86eec1c95cb7fcd1df2a954f2620b79b6",
+      "bytes": 53872
     },
     {
       "path": "generated/box-props/tt-sign-nong-trai.glb",
@@ -23904,6 +24048,22 @@
       ],
       "sha256": "f17666b1aff0b296ec866f0c3822992b7ad3b1b2c7bfe3f8c02566a113eef6d8",
       "bytes": 684475
+    },
+    {
+      "path": "generated/regions/nha-cua-be.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-region-art.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "0f086f32331a0f20f9f5192bcd177e4fd94023df6d7ceede26406ae627ecbf67",
+      "bytes": 751373
     },
     {
       "path": "generated/regions/nong-trai.png",
@@ -32994,6 +33154,262 @@
       "bytes": 94809
     },
     {
+      "path": "generated/review/nha-cua-be/nha-cua-be-bep-an.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "d7d1b7e96b5cba19a8b5cb3659cf6253a006ffa31df1226187f821b8e872ee7a",
+      "bytes": 344480
+    },
+    {
+      "path": "generated/review/nha-cua-be/nha-cua-be-cau-tau.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "d7b89791d2c31549929680c2b3a001c63efce1e0b740a0f8093e6b79221dfd8a",
+      "bytes": 1046408
+    },
+    {
+      "path": "generated/review/nha-cua-be/nha-cua-be-chuong-ga.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "7671c7c5bd082f4bcac8c30de79a43efc992a8110bf959ac15d961f68c9ac823",
+      "bytes": 813021
+    },
+    {
+      "path": "generated/review/nha-cua-be/nha-cua-be-coi-xay-gio.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "d771ca404bbdd5b6236d6c36fa6f6cf702b6802e123fce1b3f3d471865523c94",
+      "bytes": 924770
+    },
+    {
+      "path": "generated/review/nha-cua-be/nha-cua-be-cong-truoc.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "185e310d5354e10fff30fce67d96de47ff7deb2ff14fd72d961711eff9ee33c7",
+      "bytes": 1054134
+    },
+    {
+      "path": "generated/review/nha-cua-be/nha-cua-be-goc-do-choi.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "fdc09c1ea083da147128752359ce46d6d30e1617372f2a4f35879122bb092658",
+      "bytes": 281799
+    },
+    {
+      "path": "generated/review/nha-cua-be/nha-cua-be-goc-hoc-tap.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "0774b570bda883b45fb517a8861dae0e49a7b8fceedf6886cca1ce13edffb0ce",
+      "bytes": 462312
+    },
+    {
+      "path": "generated/review/nha-cua-be/nha-cua-be-kho-vuon.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "42d24081f30a55e9c5561ab21cbc3b81b239c8d5b7660533daaf2284b16fd343",
+      "bytes": 977511
+    },
+    {
+      "path": "generated/review/nha-cua-be/nha-cua-be-nha-kho.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "20349818d4b96b3e1f52a89f30008eeec9914de6bd86a7319c5cb1a46eca389f",
+      "bytes": 217876
+    },
+    {
+      "path": "generated/review/nha-cua-be/nha-cua-be-nha-va-vuon.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "7e16de68406b3c30132283bd2be18274a21fde782d1f604b56a6bcfed98431e2",
+      "bytes": 1051186
+    },
+    {
+      "path": "generated/review/nha-cua-be/nha-cua-be-phong-khach.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "b6ae85e12a5f5d62a391a1c4f87671ecda7c9eeb136055db3157a86038a0ecef",
+      "bytes": 444765
+    },
+    {
+      "path": "generated/review/nha-cua-be/nha-cua-be-phong-ngu.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "c3f874b24ed3fd6272e4d7772bf2a4ff9e6e6a519d5f3a88de370da592382bc7",
+      "bytes": 304778
+    },
+    {
+      "path": "generated/review/nha-cua-be/nha-cua-be-san-truoc.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "3c4fdc94e02992f87458069f0ea9256cb27f1611e7fd271575e4f75d5dc3e7b5",
+      "bytes": 1036034
+    },
+    {
+      "path": "generated/review/nha-cua-be/nha-cua-be-toan-canh.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "5c9cb56ae8464f79dfdaab62d86859bb6eacfb40b2835017aa3c35d2350e00ca",
+      "bytes": 534078
+    },
+    {
+      "path": "generated/review/nha-cua-be/nha-cua-be-tren-cao.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "f1d84094b935d75ff6032f20ce864d72388794b325abfe98f49d03b4fda1915e",
+      "bytes": 598761
+    },
+    {
+      "path": "generated/review/nha-cua-be/nha-cua-be-vuon-rau.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "b86e1fe07503bb1308f5d37ce95ba580d64b2cd6e7df76af23fda1ceccdc10c2",
+      "bytes": 1018915
+    },
+    {
       "path": "generated/review/nong-trai/mock__nong-trai__c-09-nong-trai.png",
       "license": "CC0-1.0",
       "generator": "tools/assets/render-preview.ts",
@@ -38638,6 +39054,54 @@
       "bytes": 3134
     },
     {
+      "path": "generated/world/nha-cua-be/entities.json",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-nha-cua-be-map.ts",
+      "derivedFrom": [],
+      "sha256": "4d8a0ff628f446e64a3043510cb3ac92e49e76cc2c14e8473528ed6368874cb8",
+      "bytes": 96833
+    },
+    {
+      "path": "generated/world/nha-cua-be/horizon.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-nha-cua-be-map.ts",
+      "derivedFrom": [],
+      "sha256": "ccf3d6402d58a50d18c9c0416461f701edaed7d3a9a99749dd30864020bf828b",
+      "bytes": 1591
+    },
+    {
+      "path": "generated/world/nha-cua-be/regions/r0-0.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-nha-cua-be-map.ts",
+      "derivedFrom": [],
+      "sha256": "e854e900bf36d226a6071fde9f2855b8dd0808643e911525d4a4a6b834ae56c3",
+      "bytes": 21959
+    },
+    {
+      "path": "generated/world/nha-cua-be/regions/r0-1.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-nha-cua-be-map.ts",
+      "derivedFrom": [],
+      "sha256": "c524f71440712328f1bd2342fc954577a7fcf4b6df81f99665a96f93ba991834",
+      "bytes": 4008
+    },
+    {
+      "path": "generated/world/nha-cua-be/regions/r1-0.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-nha-cua-be-map.ts",
+      "derivedFrom": [],
+      "sha256": "27031ae0db2ebe754ea3fd87b48b58033f979912327dfed0dd9222e22fe0ba53",
+      "bytes": 4940
+    },
+    {
+      "path": "generated/world/nha-cua-be/regions/r1-1.bin",
+      "license": "CC0-1.0",
+      "generator": "tools/world/generate-nha-cua-be-map.ts",
+      "derivedFrom": [],
+      "sha256": "924e516555bb4e5d4549fccb5f3f5bf5661503a495931000bbb06bb86f8e4ddb",
+      "bytes": 1314
+    },
+    {
       "path": "generated/world/nong-trai/entities.json",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-nong-trai-map.ts",
@@ -39898,16 +40362,16 @@
       "license": "CC0-1.0",
       "generator": "tools/world/generate-trung-tam-map.ts",
       "derivedFrom": [],
-      "sha256": "a039d9c8f728b13bf6802524c41c7fcd2be06f51324f6cfaf4289b2f09bd57e2",
-      "bytes": 501538
+      "sha256": "896e34fbcbd8976b5bbfe460392ccb5b18abf1389dda94ffe79d1fc04f045549",
+      "bytes": 502265
     },
     {
       "path": "generated/world/trung-tam/horizon.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-trung-tam-map.ts",
       "derivedFrom": [],
-      "sha256": "b6cf21c66be2349e53da3799cc61d81a2eca6cdb0352b75b27685368ab9bbda2",
-      "bytes": 63070
+      "sha256": "a635e66ea5955da387f5e2daf8ec3453a949efc3e7034df45503b27b7b93a606",
+      "bytes": 63086
     },
     {
       "path": "generated/world/trung-tam/regions/r0-0.bin",
@@ -40050,8 +40514,8 @@
       "license": "CC0-1.0",
       "generator": "tools/world/generate-trung-tam-map.ts",
       "derivedFrom": [],
-      "sha256": "9791b6471da87de41ae0ba0e2e12a40dd4f557fcf16edca5bd8feb531612295f",
-      "bytes": 24186
+      "sha256": "a70cfd8387ca30d1338306df9a5a52107cc3b313c862f7d9b1a8f0379aa90534",
+      "bytes": 24389
     },
     {
       "path": "generated/world/trung-tam/regions/r2-4.bin",

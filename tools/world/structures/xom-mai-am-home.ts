@@ -72,7 +72,7 @@ export function placeFamilyHome(
  * with a post at the corners, every four blocks and along the top, glass where the wall has a window and nothing
  * where it has a doorway, so a room reads as timber inside whatever its walls are outside.
  */
-function lineInside(world: WorldWriter, x0: number, z0: number, x1: number, z1: number, baseY: number, height: number, b: { lining: number; post: number; glass: number }): void {
+export function lineInside(world: WorldWriter, x0: number, z0: number, x1: number, z1: number, baseY: number, height: number, b: { lining: number; post: number; glass: number }): void {
   for (let y = baseY; y < baseY + height; y++) {
     for (let x = x0 + 1; x <= x1 - 1; x++) {
       for (let z = z0 + 1; z <= z1 - 1; z++) {

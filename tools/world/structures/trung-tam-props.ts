@@ -21,7 +21,7 @@ type Box = BoxProp['boxes'][number];
 type Vec = [number, number, number];
 
 const round = (v: number): number => Math.round(v * 1000) / 1000 + 0;
-const box = (from: Vec, to: Vec, color: string, glow = false): Box => ({ from: from.map(round) as Vec, to: to.map(round) as Vec, color, ...(glow ? { glow: true } : {}) });
+export const box = (from: Vec, to: Vec, color: string, glow = false): Box => ({ from: from.map(round) as Vec, to: to.map(round) as Vec, color, ...(glow ? { glow: true } : {}) });
 
 // ---------------------------------------------------------------------------------------------------------
 // Pixel lettering
@@ -120,7 +120,7 @@ export function letter(text: string): { pixels: Array<[number, number]>; width: 
  * Boxes of a line of text on a board's front (-z): pixels `p` wide, the line centred on `cx`, its capitals'
  * top at `top`, merged into runs along each row. The front is read from -z, so the line runs toward -x.
  */
-function textBoxes(text: string, p: number, cx: number, top: number, z: [number, number], color: string, glow = false): Box[] {
+export function textBoxes(text: string, p: number, cx: number, top: number, z: [number, number], color: string, glow = false): Box[] {
   const { pixels, width } = letter(text);
   const rows = new Map<number, number[]>();
   for (const [c, r] of pixels) rows.set(r, [...(rows.get(r) ?? []), c]);
@@ -504,14 +504,15 @@ export function trungTamProps(regionNames: Readonly<Record<string, string>>): Re
 export const propHeight = (prop: BoxProp): number => round(Math.max(...prop.boxes.flatMap((b) => [b.from[1], b.to[1]])));
 
 /** One box per line, so the file stays readable and diffable. */
-function catalogJson(props: Record<string, BoxProp>): string {
+export function catalogJson(props: Record<string, BoxProp>): string {
   const entries = Object.entries(props).map(([id, prop]) => `    ${JSON.stringify(id)}: {\n      "boxes": [\n${prop.boxes.map((b) => `        ${JSON.stringify(b)}`).join(',\n')}\n      ]\n    }`);
   return `{\n  "version": 1,\n  "props": {\n${entries.join(',\n')}\n  }\n}\n`;
 }
 
 async function main(): Promise<void> {
   const regions = JSON.parse(await readFile(path.join(REPO_ROOT, 'content/world/regions.json'), 'utf8')) as { regions: Array<{ id: string; name: string; map?: string }> };
-  const names = Object.fromEntries(regions.regions.filter((r) => r.map && r.id !== 'trung-tam').map((r) => [r.id, r.name]));
+  // A board is lettered once for every child: "Nhà của {name}" reads "Nhà của bé" over its portal.
+  const names = Object.fromEntries(regions.regions.filter((r) => r.map && r.id !== 'trung-tam').map((r) => [r.id, r.name.replace('{name}', 'bé')]));
   const props = trungTamProps(names);
   BoxPropCatalog.parse({ version: 1, props });
   await writeFile(path.join(REPO_ROOT, 'content/world/box-props/trung-tam.json'), catalogJson(props));

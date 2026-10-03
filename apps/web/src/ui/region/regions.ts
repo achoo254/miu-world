@@ -6,6 +6,9 @@ import type { MusicMood } from '../sound/music';
 const CATALOG = RegionCatalog.parse(regionsJson);
 export const REGIONS: readonly Region[] = CATALOG.regions;
 
+/** The child's own home (Nhà của bé): the "Về nhà" button on Home, the island the character waves from. */
+export const HOME_REGION = 'nha-cua-be';
+
 /** Region play starts in when no quest names one. */
 export const DEFAULT_REGION = defaultRegion(CATALOG).id;
 

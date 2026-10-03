@@ -113,19 +113,23 @@ export function placeBigCat(world: WorldWriter, cx: number, y: number, cz: numbe
 }
 
 /**
- * A portal (placePortal's arch, d-06) turned to face +z: its opening five wide along x round (cx, cz), its
- * back a block north. Returns where its pane and its name board go (both facing +z, yaw 180) and the
- * ground cells either side of its step for pots or lamps.
+ * A portal (placePortal's arch, d-06) turned to face +z (`south`) or -z (`north`): its opening five wide along x
+ * round (cx, cz), its back a block behind. Returns where its pane and its name board go (both facing the way
+ * it faces: yaw 180 toward +z, 0 toward -z) and the ground cells either side of its step for pots or lamps.
  */
-export function placePortalFacingSouth(world: WorldWriter, cx: number, cz: number, baseY: number, b: PortalBlocks): { pane: [number, number, number]; sign: [number, number, number]; feet: Array<[number, number]> } {
-  // placePortal's front is -x in its frame; a frame turned west fronts +z in the world.
-  placePortal(facingWriter(world, [cx, cz], 'west'), FRAME, FRAME, baseY, -1, b);
+export function placePortalFacing(world: WorldWriter, cx: number, cz: number, baseY: number, b: PortalBlocks, toward: 'south' | 'north'): { pane: [number, number, number]; sign: [number, number, number]; feet: Array<[number, number]> } {
+  // placePortal's front is -x in its frame; a frame turned west fronts +z in the world, one turned east -z.
+  placePortal(facingWriter(world, [cx, cz], toward === 'south' ? 'west' : 'east'), FRAME, FRAME, baseY, -1, b);
+  const s = toward === 'south' ? 1 : -1;
   return {
-    pane: [cx + 0.5, baseY, cz + 1.12],
-    sign: [cx + 0.5, baseY + 5.1, cz + 1.14],
-    feet: [[cx - 5, cz + 1], [cx + 5, cz + 1]],
+    pane: [cx + 0.5, baseY, cz + 0.5 + s * 0.62],
+    sign: [cx + 0.5, baseY + 5.1, cz + 0.5 + s * 0.64],
+    feet: [[cx - 5, cz + s], [cx + 5, cz + s]],
   };
 }
+
+/** The portals of the square's north side, facing the fountain (+z). */
+export const placePortalFacingSouth = (world: WorldWriter, cx: number, cz: number, baseY: number, b: PortalBlocks): ReturnType<typeof placePortalFacing> => placePortalFacing(world, cx, cz, baseY, b, 'south');
 
 export interface ClockTowerBlocks {
   wall: number;

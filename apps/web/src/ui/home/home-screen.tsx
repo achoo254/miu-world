@@ -1,5 +1,5 @@
 // M1.1 (Trang chủ): the world stage with its regions, the child's character standing in it, a side rail
-// (Nhiệm vụ, Bản đồ, Ba lô), today's quests, and the child's level, XP and coins. Home is a React screen
+// (Về nhà, Nhiệm vụ, Bản đồ, Ba lô), today's quests, and the child's level, XP and coins. Home is a React screen
 // over a pre-rendered island image, not a second 3D scene (validation decision `home_scene`). Not in the
 // MVP, so not shown: diamonds (Master Plan §15 #6), the daily streak (`streak_in_mvp` = defer_v1), the
 // "Sự kiện" rail entry and the TIMO event card (Live World).
@@ -10,7 +10,8 @@ import { buttonClass } from '../kit/button';
 import { Modal } from '../kit/modal';
 import { SkyScene } from '../kit/sky-scene';
 import { PlayerBadge } from '../player/player-badge';
-import { currentQuest, usePlayer } from '../player/player-data';
+import { currentQuest, playPath, questForRegion, usePlayer } from '../player/player-data';
+import { HOME_REGION } from '../region/regions';
 import { SoundToggle } from '../system/sound-toggle';
 import { WorldStage } from '../world/world-stage';
 import { TodayQuests } from './today-quests';
@@ -40,6 +41,8 @@ export function HomeScreen() {
   const { data, error } = usePlayer();
   const [settings, setSettings] = useState(false);
   const quest = data ? currentQuest(data.quests) : null;
+  // "Về nhà": straight into the child's home, arriving at its front gate.
+  const home = data ? questForRegion(data.quests, HOME_REGION) : null;
   return (
     <SkyScene>
       <main className="home" data-id="home">
@@ -67,6 +70,10 @@ export function HomeScreen() {
                 </div>
               </WorldStage>
               <nav className="home-rail" aria-label="Điều hướng">
+                <Link to={home ? playPath(home) : `/region/${HOME_REGION}`} className="home-rail-item" data-id="home-nav-home">
+                  <Icon name="house" size={40} />
+                  Về nhà
+                </Link>
                 <Link to={quest ? `/region/${quest.quest.region}` : '/map'} className="home-rail-item" data-id="home-nav-quests">
                   <Icon name="scroll" size={40} />
                   Nhiệm vụ

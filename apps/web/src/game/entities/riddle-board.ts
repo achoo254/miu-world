@@ -1,13 +1,17 @@
-// Wooden board on a post with runtime-painted text (the ancient tree's "8 + 5 = ?"). Text is drawn
-// onto a canvas at load (Master Plan §10: no baked text in textures). Post and board share one
-// geometry and one material, so the whole board is a single draw call.
+// Wooden board on a post with runtime-painted text (the ancient tree's "8 + 5 = ?", the name board of the
+// child's home). Text is drawn onto a canvas at load (Master Plan §10: no baked text in textures). Post and
+// board share one geometry and one material, so the whole board is a single draw call.
 import { BoxGeometry, CanvasTexture, Mesh, MeshLambertMaterial, PlaneGeometry, SRGBColorSpace } from 'three';
 import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
 
 const BOARD_WIDTH = 1.6;
 const BOARD_HEIGHT = 0.9;
 const POST_HEIGHT = 1.4;
-const FONT = '700 120px "Baloo 2", system-ui, sans-serif';
+const FONT_PX = 120;
+/** A longer line (a name board: "Nhà của …") shrinks to fit the board, down to this size. */
+const MIN_FONT_PX = 44;
+const font = (px: number): string => `700 ${px}px "Baloo 2", system-ui, sans-serif`;
+const FONT = font(FONT_PX);
 /** Canvas UV inside the dark frame: the post samples this single texel, so it reads as plain wood. */
 const FRAME_UV = 0.01;
 
@@ -23,7 +27,12 @@ function paintText(text: string): CanvasTexture {
     ctx.lineWidth = 16;
     ctx.strokeRect(8, 8, canvas.width - 16, canvas.height - 16);
     ctx.fillStyle = '#3b2412';
-    ctx.font = FONT;
+    let px = FONT_PX;
+    ctx.font = font(px);
+    while (px > MIN_FONT_PX && ctx.measureText(text).width > canvas.width - 56) {
+      px -= 4;
+      ctx.font = font(px);
+    }
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     ctx.fillText(text, canvas.width / 2, canvas.height / 2 + 6);

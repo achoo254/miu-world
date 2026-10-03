@@ -28,6 +28,8 @@ export interface Zone {
   hz: number;
   /** Block name of the zone's ground (grass if none). */
   floor?: string;
+  /** Where its chapter begins (default: by the middle of its south edge), as the child arrives on the map. */
+  start?: readonly [number, number];
 }
 
 export interface Landmark {
@@ -63,6 +65,23 @@ export interface ZoneMapContext {
   /** Whether a column lies in (or within `pad` of) a rectangle kept out so far. */
   keptOut: (x: number, z: number, pad?: number) => boolean;
   landmark: (id: string, name: string, x: number, z: number, y?: number) => void;
+  /**
+   * A thing of the map's own the child interacts with (not a quest's: a name board, the timetable on a wall):
+   * an object standing at `at` (feet), its prompt reaching `radius` (default 2.5). Without a model nothing is
+   * drawn but its `board`, a sign the game paints at runtime; with a model it stands as one.
+   */
+  target: (t: MapTarget) => void;
+}
+
+export interface MapTarget {
+  id: string;
+  name: string;
+  label: string;
+  at: readonly [number, number, number];
+  yaw: number;
+  radius?: number;
+  model?: string;
+  board?: string;
 }
 
 export interface ZoneMapSpec {
@@ -214,6 +233,7 @@ export async function generateZoneMap(spec: ZoneMapSpec): Promise<{ world: Voxel
   const queued: Array<(OnGround & { kind: 'ground' }) | (OnGround & { kind: 'centred' }) | (AtPoint & { kind: 'at' }) | (AtPoint & { kind: 'centred-at' })> = [];
   const kept: Array<[number, number, number, number]> = [];
   const landmarks: Landmark[] = [];
+  const ownTargets: MapTarget[] = [];
   const keptOut = (x: number, z: number, pad = 0): boolean => kept.some(([x0, z0, x1, z1]) => x >= x0 - pad && x <= x1 + pad && z >= z0 - pad && z <= z1 + pad);
   spec.build({
     world,
@@ -234,6 +254,7 @@ export async function generateZoneMap(spec: ZoneMapSpec): Promise<{ world: Voxel
     keepOut: (x0, z0, x1, z1) => kept.push([Math.min(x0, x1), Math.min(z0, z1), Math.max(x0, x1), Math.max(z0, z1)]),
     keptOut,
     landmark: (id, name, x, z, y) => landmarks.push({ id, name, position: [x + 0.5, y ?? level + 1, z + 0.5] }),
+    target: (t) => ownTargets.push(t),
   });
 
   // 3b. Dress every zone: small things on a jittered grid, clear of paths, water and buildings.
@@ -321,7 +342,7 @@ export async function generateZoneMap(spec: ZoneMapSpec): Promise<{ world: Voxel
     }
     return [Math.round(x), Math.round(z)];
   };
-  const chapterStart = new Map(zones.map((zn) => [zn.chapter, openNear(zn.x, zn.z + zn.hz - 3)] as const));
+  const chapterStart = new Map(zones.map((zn) => [zn.chapter, zn.start ? openNear(zn.start[0], zn.start[1]) : openNear(zn.x, zn.z + zn.hz - 3)] as const));
   const vehicle = (spec.rides !== false && spec.rides?.vehicle) || { name: 'Xe buýt', label: 'Lên xe', model: RIDE_MODEL };
   const rideStops =
     spec.rides === false
@@ -348,7 +369,7 @@ export async function generateZoneMap(spec: ZoneMapSpec): Promise<{ world: Voxel
       ride: models.place(tx, tz),
     };
   });
-  const interactables: Interactable[] = await placeRegionTargets({
+  const placed: Interactable[] = await placeRegionTargets({
     mapId: spec.mapId,
     region: spec.region,
     map: {
@@ -363,8 +384,29 @@ export async function generateZoneMap(spec: ZoneMapSpec): Promise<{ world: Voxel
         return lm ? [Math.floor(lm.position[0]), Math.floor(lm.position[2])] : undefined;
       },
     },
-    interactables: [...gates, ...rides],
+    interactables: [
+      ...gates,
+      ...rides,
+      ...ownTargets.map((t): Interactable => ({
+        id: t.id,
+        kind: 'object',
+        name: t.name,
+        label: t.label,
+        position: [t.at[0], t.at[1], t.at[2]],
+        yaw: t.yaw,
+        radius: t.radius ?? 2.5,
+        ...(t.model ? models.modelled(t.model) : {}),
+        ...(t.board ? { board: t.board } : {}),
+      })),
+    ],
     seed: seed + 11,
+  });
+  // The map's own things stay in the world whichever lesson is played, even one a quest's step points at.
+  const ownIds = new Set(ownTargets.map((t) => t.id));
+  const interactables = placed.map((t): Interactable => {
+    if (!ownIds.has(t.id)) return t;
+    const { chapter: _chapter, chapters: _chapters, quest: _quest, ...always } = t;
+    return always;
   });
 
   // 7. Everyday life round the districts, clear of every quest target and out of the water (the map's, and the

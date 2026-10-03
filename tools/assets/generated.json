@@ -82,6 +82,12 @@
     "license": "CC0-1.0"
   },
   {
+    "glob": "generated/world/nha-cua-be/**",
+    "generator": "tools/world/generate-nha-cua-be-map.ts",
+    "derivedFrom": [],
+    "license": "CC0-1.0"
+  },
+  {
     "glob": "generated/world/the-gioi/**",
     "generator": "tools/world/generate-world-overview.ts",
     "derivedFrom": [],

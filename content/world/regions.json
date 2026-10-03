@@ -31,7 +31,20 @@
       "backdrop": { "eye": [191, 22, 250], "target": [191, 15, 211], "fov": 58 },
       "events": ["rain-rainbow", "fireflies", "animal-visit"]
     },
-    { "id": "nha-cua-be", "name": "Nhà của {name}", "tagline": "Trang trí ngôi nhà nhỏ", "subject": "Trang trí · Bộ sưu tập", "status": "soon", "hotspot": { "x": 56, "y": 88 } },
+    {
+      "id": "nha-cua-be",
+      "name": "Nhà của {name}",
+      "tagline": "Tổ ấm có vườn rau và chuồng gà",
+      "subject": "Nhà · Thời khóa biểu",
+      "description": "Mèo Bánh Bao đang ngồi đợi ở cổng, cả nhà và khu vườn nhỏ chờ {name} về!",
+      "status": "open",
+      "map": "nha-cua-be",
+      "music": "home",
+      "guide": "meo-banh-bao",
+      "hotspot": { "x": 60, "y": 88 },
+      "backdrop": { "eye": [80, 21, 10], "target": [80, 18, 52], "fov": 58 },
+      "events": ["rain-rainbow", "fireflies", "animal-visit"]
+    },
     {
       "id": "trung-tam",
       "name": "Trung tâm",
@@ -160,7 +173,7 @@
       "map": "dao-bi-an",
       "music": "quest",
       "guide": "khi-thuyen-truong",
-      "hotspot": { "x": 80, "y": 88 },
+      "hotspot": { "x": 88, "y": 88 },
       "backdrop": { "eye": [400, 22, 666], "target": [395, 15, 600], "fov": 60 },
       "events": ["rain-rainbow", "fireflies", "animal-visit"]
     }

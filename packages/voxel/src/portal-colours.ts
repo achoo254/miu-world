@@ -12,6 +12,7 @@ export const PORTAL_COLOURS = {
   red: ['#dc2f34', '#ff6f6f', '#ffbdbd', '#fff0f0'],
   ice: ['#3cc3f5', '#94e1ff', '#d8f4ff', '#ffffff'],
   violet: ['#8c3ff5', '#b98cff', '#e1d0ff', '#f8f2ff'],
+  coral: ['#f45d4c', '#ff9688', '#ffd2cb', '#fff4f2'],
 } as const;
 export type PortalColour = keyof typeof PORTAL_COLOURS;
 

@@ -58,7 +58,9 @@
     "lava": { "file": "lava.png", "tint": "lava", "strength": 0.35 },
     "crystal": { "file": "ice.png", "tint": "crystal", "strength": 0.75 },
     "grass-hub-top": { "file": "grass_top.png", "tint": "grass-hub", "strength": 0.85 },
-    "grass-hub-side": { "file": "dirt_grass.png", "tint": "grass-hub", "strength": 0.5 }
+    "grass-hub-side": { "file": "dirt_grass.png", "tint": "grass-hub", "strength": 0.5 },
+    "grass-home-top": { "file": "grass_top.png", "tint": "grass-home", "strength": 0.85 },
+    "grass-home-side": { "file": "dirt_grass.png", "tint": "grass-home", "strength": 0.5 }
   },
   "blocks": [
     { "id": 1, "name": "grass", "top": "grass-top", "side": "grass-side", "bottom": "dirt" },
@@ -105,6 +107,7 @@
     { "id": 42, "name": "grass-island", "top": "grass-island-top", "side": "grass-island-side", "bottom": "dirt" },
     { "id": 43, "name": "lava", "top": "lava", "side": "lava", "bottom": "lava", "glow": true },
     { "id": 44, "name": "crystal", "top": "crystal", "side": "crystal", "bottom": "crystal", "glow": true },
-    { "id": 45, "name": "grass-hub", "top": "grass-hub-top", "side": "grass-hub-side", "bottom": "dirt" }
+    { "id": 45, "name": "grass-hub", "top": "grass-hub-top", "side": "grass-hub-side", "bottom": "dirt" },
+    { "id": 46, "name": "grass-home", "top": "grass-home-top", "side": "grass-home-side", "bottom": "dirt" }
   ]
 }

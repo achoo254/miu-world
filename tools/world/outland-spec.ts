@@ -10,7 +10,7 @@ import { modelScales } from './model-scales';
 /** What the core's edge stands on: never a tree, a roof or a fence, but water counts (its bed is the height). */
 const GROUND = [
   'grass', 'dirt', 'stone', 'sand', 'path', 'riverbed', 'rock-moss', 'snow', 'asphalt',
-  'grass-forest', 'grass-village', 'grass-hamlet', 'grass-farm', 'grass-library', 'grass-castle', 'grass-market',
+  'grass-forest', 'grass-village', 'grass-hamlet', 'grass-farm', 'grass-library', 'grass-castle', 'grass-market', 'grass-home',
   'cobble', 'cobble-grey', 'paver', 'trail', 'farmland', 'wheat',
 ] as const;
 

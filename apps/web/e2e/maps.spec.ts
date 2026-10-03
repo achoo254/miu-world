@@ -22,7 +22,7 @@ const quests = readdirSync(questDir)
 const lessonWithGuide = (region: string, guide: string) => quests.find((q) => q.region === region && q.status === 'active' && q.steps?.some((s) => s.target === guide));
 const firstLesson = (region: string) => quests.find((q) => q.region === region && q.status === 'active');
 
-const THEME_MAPS = ['lang-ven-song', 'xom-mai-am', 'cho-phien', 'nong-trai', 'thu-vien', 'lau-dai', 'trung-tam', 'nui-tuyet', 'dao-bi-an'];
+const THEME_MAPS = ['lang-ven-song', 'xom-mai-am', 'cho-phien', 'nong-trai', 'thu-vien', 'lau-dai', 'trung-tam', 'nui-tuyet', 'dao-bi-an', 'nha-cua-be'];
 
 for (const id of THEME_MAPS) {
   test(`${id} opens beside its guide (or its first character) within the draw-call budget`, async ({ page, baseURL }) => {
@@ -68,6 +68,27 @@ test('a gate of the hub, Trung tâm, leads onto the mystery island, and the isla
   expect(Math.hypot(px - sx, pz - sz)).toBeLessThan(3);
   await expect(page.locator('[data-id="hud-autowalk"]')).toHaveText('Chạm để tự đi tới');
   await page.goto(`/play?quality=low&region=dao-bi-an&quest=${island.id}&spawnAt=cong-trung-tam`);
+  await waitReady(page);
+  await page.keyboard.press('KeyE');
+  await expect(page).toHaveURL(/region=trung-tam/);
+});
+
+test("the hub's coral portal leads home to the front gate, and the home's gate leads back", async ({ page, baseURL }) => {
+  const hubLesson = firstLesson('trung-tam');
+  const home = firstLesson('nha-cua-be');
+  if (!hubLesson || !home) throw new Error('no quest in the hub or at home');
+  await freshChild(page, baseURL ?? '');
+  await page.goto(`/play?quality=low&region=trung-tam&quest=${hubLesson.id}&spawnAt=cong-nha-cua-be`);
+  await waitReady(page);
+  await page.keyboard.press('KeyE');
+  await expect(page).toHaveURL(new RegExp(`region=nha-cua-be&quest=${home.id}`));
+  await waitReady(page);
+  // She arrives on the lane before the front gate (the map's start), the name board beside it.
+  const homeMap = read<{ spawn: { position: number[] }; chapterSpawns?: Record<string, { position: number[] }> }>('assets/generated/world/nha-cua-be/entities.json');
+  const [sx = 0, , sz = 0] = (homeMap.chapterSpawns?.['1'] ?? homeMap.spawn).position;
+  const [px = 0, , pz = 0] = (await readStats(page)).player;
+  expect(Math.hypot(px - sx, pz - sz)).toBeLessThan(3);
+  await page.goto(`/play?quality=low&region=nha-cua-be&quest=${home.id}&spawnAt=cong-trung-tam`);
   await waitReady(page);
   await page.keyboard.press('KeyE');
   await expect(page).toHaveURL(/region=trung-tam/);

@@ -29,7 +29,7 @@ import regionsJson from '../../../../content/world/regions.json';
 import { AssetRegistry, GuardedGltfLoader } from './asset-loader';
 import { createReviewShot, parseViewShot } from './debug/review-shots';
 import { StatsOverlay } from './debug/stats-overlay';
-import { loadInteractables, pickNearest, type InteractableObject } from './entities/interactables';
+import { loadInteractables, namedForPlayer, pickNearest, type InteractableObject } from './entities/interactables';
 import { createTargetArrow } from './entities/target-arrow';
 import { DEFAULT_SPECIES } from './content/characters';
 import { loadPlayerCharacter } from './entities/player-character';
@@ -312,7 +312,8 @@ export class Game {
       return (block !== undefined && blockTraversal(block) === 'blocking') || propCells.get(cellKey(x, y, z)) === 'blocking';
     };
 
-    const entities = entitiesForChapter(data.entities, this.options.chapter ?? 1, this.options.quest);
+    const chapterEntities = entitiesForChapter(data.entities, this.options.chapter ?? 1, this.options.quest);
+    const entities = { ...chapterEntities, interactables: namedForPlayer(chapterEntities.interactables, this.options.playerName ?? 'bạn') };
     // Where the child starts (a URL spot, next to a target, where she left off, else the spawn): its
     // regions and the patches in view are loaded and drawn before the first frame.
     const spawnAtParam = params.get('spawnAt');

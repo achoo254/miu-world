@@ -15,10 +15,9 @@ test('Home shows the child and the island, the forest lists its chapters, and ch
   await expect(page.locator('.world-island-image')).toBeVisible();
   // The island image is shipped with the build and actually loads.
   expect(await page.locator('.world-island-image').evaluate((img: HTMLImageElement) => img.naturalWidth)).toBeGreaterThan(0);
-  // A region whose map is not built yet only names itself (its card on a wide island); it does not open.
-  await expect(page.locator('[data-id="home-region-nha-cua-be"]')).toHaveText(/Nhà của .+\s*Sắp mở/);
-  await page.locator('[data-id="home-region-nha-cua-be"]').click();
-  await expect(page).toHaveURL(/\/home$/);
+  // The child's own home is open under the child's name, and "Về nhà" goes straight in, to its front gate.
+  await expect(page.locator('[data-id="home-region-nha-cua-be"]')).toContainText(/Nhà của .+/);
+  await expect(page.locator('[data-id="home-nav-home"]')).toHaveAttribute('href', '/play?region=nha-cua-be&quest=nha-cua-be-ch1');
   await expect(page.locator('[data-id="home-today"]')).toContainText('Hoàn thành');
 
   await page.locator('[data-id="home-region-khu-rung-bi-mat"]').click();
@@ -67,23 +66,18 @@ test('Home shows the child and the island, the forest lists its chapters, and ch
 test.describe('on a phone', () => {
   test.use({ viewport: { width: 390, height: 844 }, hasTouch: true });
 
-  test('every locked region pin on the Home island can be tapped (nothing covers it) and names its region', async ({ page }) => {
+  test('every region pin on the Home island can be tapped (nothing covers it) and opens its region', async ({ page }) => {
     await page.goto('/home');
     await expect(page.locator('.world-island-image')).toBeVisible();
-    const pins = page.locator('.world-marker--locked');
-    // Twelve regions, eleven of them open (the hub, Trung tâm, and the ten theme maps).
-    await expect(pins).toHaveCount(1);
-    for (const id of await pins.evaluateAll((els) => els.map((el) => el.getAttribute('data-id')?.replace('home-region-', '') ?? ''))) {
-      // tap() refuses when another element sits on top of the pin's centre.
+    // Twelve regions, all open now that the child's home is built: no locked pin is left.
+    await expect(page.locator('.world-marker--locked')).toHaveCount(0);
+    // tap() refuses when another element sits on top of the pin's centre.
+    for (const id of ['nha-cua-be', 'truong-hoc', 'dao-bi-an', 'khu-rung-bi-mat']) {
       await page.locator(`[data-id="home-region-${id}"]`).tap();
-      const bubble = page.locator(`[data-id="home-region-bubble-${id}"]`);
-      await expect(bubble).toBeVisible();
-      // The bubble stays inside the screen, even for pins at the island's edges.
-      const box = await bubble.boundingBox();
-      expect(box && box.x >= 0 && box.x + box.width <= 390 && box.y >= 0).toBe(true);
+      await expect(page).toHaveURL(new RegExp(`/region/${id}$`));
+      await page.goBack();
+      await expect(page.locator('.world-island-image')).toBeVisible();
     }
-    await page.locator('[data-id="home-region-khu-rung-bi-mat"]').tap();
-    await expect(page).toHaveURL(/\/region\/khu-rung-bi-mat$/);
   });
 
   for (const [path, prefix] of [
@@ -121,8 +115,9 @@ for (const viewport of [
         const markers = page.locator(`[data-id^="${prefix}-"].world-marker`);
         await expect(markers).toHaveCount(12);
         const boxes = (await markers.evaluateAll((els) => els.map((el) => ({ ...el.getBoundingClientRect().toJSON(), id: el.getAttribute('data-id') ?? '' })))) as Array<Box & { id: string }>;
-        // Cards, not pins: a locked region shows its name next to the lock.
+        // Cards with their names (the child's home under the child's name).
         await expect(page.locator(`[data-id="${prefix}-nui-tuyet"]`)).toContainText('Núi tuyết');
+        await expect(page.locator(`[data-id="${prefix}-nha-cua-be"]`)).toContainText('Nhà của');
         // Home only: the child's portrait in the stage corner.
         const heroLocator = page.locator('.home-hero .miu-portrait');
         const hero = (await heroLocator.count()) > 0 ? await heroLocator.boundingBox() : null;

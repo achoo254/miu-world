@@ -1,6 +1,6 @@
 # Nhà của bé, thời khóa biểu và lịch đồng phục, xe cỡ thật
 
-Trạng thái: đang làm · Tier tổng: XL · Nhánh: `main` · Ngày: 03/10/2026 · Quyết định: `plans/dattqh/reports/jev-261003-1310-home-vehicles.md`
+Trạng thái: xong phần tự động, chờ deploy (gate đủ, E2E 98 đạt / 2 bỏ qua, 398 s) · Tier tổng: XL · Nhánh: `main` · Ngày: 03/10/2026 · Quyết định: `plans/dattqh/reports/jev-261003-1310-home-vehicles.md`
 
 Người sở hữu (03/10/2026): "thêm màn nhà của bé nữa. trong nhà phải thiết kế như mock. phải có bảng thời khóa biểu và lịch mặc đồng phục có nội dung này [ảnh]. vì mỗi bé khác sau này có lịch khác nhau nên cho phép sửa nhé"; "kích thước của xe trong game cũng đang quá nhỏ và ko chi tiết".
 

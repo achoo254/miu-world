@@ -70,31 +70,32 @@ describe('Home', () => {
     expect(rows[0]?.getAttribute('data-id')).toBe('home-today-quest-forest-ch1');
     expect(rows[0]?.textContent).toContain('+100 XP');
 
-    // Region cards: the open maps with their subject; a locked region named with its state for screen readers.
+    // Region cards: the open maps with their subject, the child's own home under the child's name; none locked.
     expect(screen.getByRole('button', { name: /Khu rừng bí mật/ }).textContent).toBe('Khu rừng bí mậtTiếng Việt');
     expect(screen.getByRole('button', { name: /Đảo bí ẩn/ }).textContent).toBe('Đảo bí ẩnKhám phá');
-    expect(screen.getByRole('button', { name: 'Nhà của Mochi: Sắp mở' })).toBeTruthy();
+    expect(screen.getByRole('button', { name: /Nhà của Mochi/ }).textContent).toBe('Nhà của MochiNhà · Thời khóa biểu');
+    expect(document.querySelector('.world-marker--locked')).toBeNull();
     // The rail of the mock, without the MVP's missing pieces (events, diamonds, streak).
-    for (const name of ['Nhiệm vụ', 'Bản đồ', 'Ba lô']) expect(screen.getByRole('link', { name })).toBeTruthy();
+    for (const name of ['Về nhà', 'Nhiệm vụ', 'Bản đồ', 'Ba lô']) expect(screen.getByRole('link', { name })).toBeTruthy();
     expect(document.body.textContent).not.toMatch(/Kim cương|chuỗi ngày|Sự kiện|TIMO/i);
   });
 
-  it("shows a locked region's name in a bubble on tap, stays on Home, and hides the bubble again", async () => {
+  it('"Về nhà" goes straight into the home\'s lesson, else to the home region\'s screen', async () => {
+    const home = (done = 0) => {
+      const list = questList(done);
+      const [first] = list.quests;
+      if (!first || first.quest.status !== 'active') throw new Error('fixture has no active quest');
+      const welcome = { ...first, quest: { ...first.quest, id: 'nha-cua-be-ch1', region: 'nha-cua-be' } };
+      return { quests: [...list.quests, welcome] };
+    };
+    stubServer(0, home);
+    renderAt('/home');
+    expect((await screen.findByRole('link', { name: 'Về nhà' })).getAttribute('href')).toBe('/play?region=nha-cua-be&quest=nha-cua-be-ch1');
+    cleanup();
+    vi.unstubAllGlobals();
     stubServer();
     renderAt('/home');
-    const pin = await screen.findByRole('button', { name: 'Nhà của Mochi: Sắp mở' });
-    vi.useFakeTimers();
-    try {
-      const bubbles = () => [...document.querySelectorAll('[data-id^="home-region-bubble-"]')].map((b) => b.textContent);
-      fireEvent.click(pin);
-      expect(bubbles()).toEqual(['Nhà của MochiSắp mở']);
-      expect(document.querySelector('[data-id="home"]')).toBeTruthy(); // no navigation to a locked region
-      // The bubble leaves on its own after a moment.
-      act(() => vi.advanceTimersByTime(3000));
-      expect(bubbles()).toEqual([]);
-    } finally {
-      vi.useRealTimers();
-    }
+    expect((await screen.findByRole('link', { name: 'Về nhà' })).getAttribute('href')).toBe('/region/nha-cua-be');
   });
 
   it('opens settings with sound and a way back to the Character Creator', async () => {
@@ -122,12 +123,11 @@ describe("today's quests", () => {
 });
 
 describe('Map and region', () => {
-  it('shows every region on the world map: the open one leads to its chapters, a locked one stays on the map', async () => {
+  it('shows every region on the world map, the home under the child\'s name, and an open one leads to its chapters', async () => {
     stubServer();
     renderAt('/map');
     expect(await screen.findByRole('heading', { name: /Bản đồ thế giới/ })).toBeTruthy();
-    fireEvent.click(screen.getByRole('button', { name: 'Nhà của Mochi: Sắp mở' }));
-    expect(screen.getByRole('heading', { name: /Bản đồ thế giới/ })).toBeTruthy();
+    expect(document.querySelector('[data-id="map-region-nha-cua-be"]')?.textContent).toContain('Nhà của Mochi');
     fireEvent.click(document.querySelector('[data-id="map-region-khu-rung-bi-mat"]') as HTMLElement);
     expect(await screen.findByRole('heading', { name: 'Chương 1' })).toBeTruthy();
   });
@@ -181,7 +181,7 @@ describe('Map and region', () => {
 
   it('refuses a region that is not open', async () => {
     stubServer();
-    renderAt('/region/nha-cua-be');
+    renderAt('/region/khong-co-khu-nay');
     expect(await screen.findByText('Khu vực này chưa mở.')).toBeTruthy();
   });
 });

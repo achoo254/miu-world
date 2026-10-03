@@ -3,7 +3,8 @@
 // online, in the middle of the world; every map is reached from here"). In the middle, the round paved
 // square: the tiered fountain under the great white cat holding its book, ringed with flower beds,
 // benches, lanterns and red cat banners; the row of stone portals along its north side, each glowing in its
-// map's colour under its map's name, to all ten maps (d-06); the timber shop with its striped awnings, its
+// map's colour under its map's name, to all ten maps (d-06), and in the square's south-west the coral portal
+// home to the child's house, facing the fountain (03/10/2026); the timber shop with its striped awnings, its
 // big sign, counters and red carpet (d-02); the quest board with its gold "!" against a stone wall (d-04);
 // the blue-roofed team gazebo with its "TEAM" boards (d-05). A canal runs round the square under stone
 // arch bridges, the central one with lanterns, banners and the wooden signposts to the districts (d-07);
@@ -31,7 +32,7 @@ import { distanceToPath, type Point } from './structures/path';
 import { placeTree, treeHeight } from './structures/tree';
 import { placeStage } from './structures/truong-hoc-plaza';
 import { placeHubShop, placeTeamGazebo } from './structures/trung-tam-buildings';
-import { framePoint, placeBigCat, placeClockTower, placeHubCastle, placePortalFacingSouth, placeTieredFountain } from './structures/trung-tam-square';
+import { framePoint, placeBigCat, placeClockTower, placeHubCastle, placePortalFacing, placePortalFacingSouth, placeTieredFountain } from './structures/trung-tam-square';
 import type { PortalColour } from './structures/trung-tam-props';
 import { facingWriter, FRAME, type Facing } from './structures/world-writer';
 import { animal, crowd, person, type Resident } from './village-life';
@@ -84,6 +85,11 @@ const PORTALS: ReadonlyArray<{ to: string; colour: PortalColour }> = [
   { to: 'dao-bi-an', colour: 'violet' },
   { to: 'lau-dai', colour: 'red' },
 ];
+/**
+ * The portal home, Nhà của bé (owner, 03/10/2026), on its own in the square's south-west, facing the fountain
+ * across the flower beds: the way back the child knows from every map.
+ */
+const HOME_PORTAL = { to: 'nha-cua-be', colour: 'coral' as PortalColour, x: 378, z: 476 } as const;
 /** A portal's opening: the first five step out west from the way, the last five east, curving south as they go. */
 const portalAt = (i: number): [number, number] => {
   const k = i % 5;
@@ -376,10 +382,13 @@ export async function generateTrungTam() {
     routes: ROUTES,
     pathsFromSpawn: false,
     // Each gate stands just behind its arch, hidden by the glowing pane, so the pane is what the child sees.
-    gates: PORTALS.map((p, i) => {
-      const [x, z] = portalAt(i);
-      return { to: p.to, at: [x, z - 2] as const };
-    }),
+    gates: [
+      ...PORTALS.map((p, i) => {
+        const [x, z] = portalAt(i);
+        return { to: p.to, at: [x, z - 2] as const };
+      }),
+      { to: HOME_PORTAL.to, at: [HOME_PORTAL.x, HOME_PORTAL.z + 2] as const },
+    ],
     // Balloons to ride (d-01's sky): from the station by the bridge to each district, and back.
     rides: {
       vehicle: { name: 'Khinh khí cầu', label: 'Lên khinh khí cầu', model: TT.balloonRainbow },
@@ -539,6 +548,20 @@ function buildHub(ctx: ZoneMapContext): void {
     ctx.keepOut(cx - 5, cz - 2, cx + 5, cz + 1);
   });
   ctx.landmark('cong-dich-chuyen', 'Dãy cổng dịch chuyển', LANDMARKS.portals[0], LANDMARKS.portals[1]);
+  // The portal home faces the other way, north to the fountain, its gate behind it to the south.
+  {
+    const { x: cx, z: cz } = HOME_PORTAL;
+    const portal = placePortalFacing(world, cx, cz, y0, { stone: B.cobbleGrey, trim: B.brickGrey, moss: B.leaves, lantern: B.lantern }, 'north');
+    ctx.propAt(TT.portal(HOME_PORTAL.colour), portal.pane, 0);
+    ctx.propAt(TT.sign(HOME_PORTAL.to), portal.sign, 0);
+    for (const side of [-4, 4]) {
+      for (let y = y0 + 3; y <= y0 + 6; y++) if ((y + side) % 3 !== 0) set(cx + side, y, cz - 1, B.leaves);
+      set(cx + side, y0, cz - 1, B.pink);
+    }
+    for (const [fx, fz] of portal.feet) ctx.prop(TT.planter, fx, fz - 1, 0);
+    ctx.keepOut(cx - 5, cz - 1, cx + 5, cz + 2);
+    ctx.landmark('cong-ve-nha', 'Cổng về nhà', cx, cz - 3);
+  }
   for (const s of [-1, 1]) {
     ctx.prop(TT.banner, F.x + s * 7, 417, 0);
     ctx.prop(STREET_LANTERN, F.x + s * 5, 423, 0);

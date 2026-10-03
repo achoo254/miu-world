@@ -8,7 +8,7 @@ Chữ trong ảnh, biển hiệu và đồ vật là gợi ý tạo hình, khôn
 
 ## Cấu trúc theo mock
 
-Hai ảnh toàn cảnh vẽ một vùng 256 × 256: Trường học ở giữa, quanh là Làng, Rừng, Hồ/Sông, Chợ, Nông trại, Núi, Bến tàu. Trong game: map Trường học dựng như ảnh đó. Từ 02/10/2026 trung tâm là map riêng **Trung tâm** (`trung-tam`, `HUB_REGION` trong `tools/world/zone-map.ts`; người sở hữu: nơi các bạn gặp nhau khi chơi online, ở giữa màn chọn map), có cổng sang cả mười map; mỗi map có cổng về Trung tâm. Quảng trường cũ trong map Trường học giữ các cổng của nó.
+Hai ảnh toàn cảnh vẽ một vùng 256 × 256: Trường học ở giữa, quanh là Làng, Rừng, Hồ/Sông, Chợ, Nông trại, Núi, Bến tàu. Trong game: map Trường học dựng như ảnh đó. Từ 02/10/2026 trung tâm là map riêng **Trung tâm** (`trung-tam`, `HUB_REGION` trong `tools/world/zone-map.ts`; người sở hữu: nơi các bạn gặp nhau khi chơi online, ở giữa màn chọn map), có cổng sang cả mười map (từ 03/10/2026 thêm cổng về Nhà của bé); mỗi map có cổng về Trung tâm. Quảng trường cũ trong map Trường học giữ các cổng của nó.
 
 ## Thế giới (`designs/the-gioi/`)
 
@@ -55,3 +55,14 @@ Chín tấm mock chi tiết, mỗi tấm 8–19 khung (toàn cảnh, cận cản
 Mỗi map một nền riêng (khối cỏ theo map, đá lát, đường đất; `soil` trong generator, vùng đất ngoài map theo nó). Góc chụp đặt cạnh từng khung: `content/world/mock-views/<map>.json` (camera tính từ một landmark của map, `mood: dusk` cho khung đêm); `pnpm assets:preview <map>` chụp thành `assets/generated/review/<map>/mock__<thư mục>__<khung>.png`, trang review đặt cạnh khung mock. Đồ chi tiết pack không có dựng bằng hộp màu trong `content/world/box-props/<map>.json` (`glow` cho phần tự sáng).
 
 Map chưa có bài SGK mở kèm một quest chào mừng (Trung tâm, Núi tuyết, Đảo bí ẩn: `content/quests/trung-tam-ch1.json`, `nui-tuyet-ch1.json`, `kho-bau-dao-ch1.json` — tên tệp xếp sau `forest-ch1` để bé mới vẫn bắt đầu ở Khu rừng; Jev, `plans/dattqh/reports/jev-261002-1619-open-snow-island.md`); mục quest đặt quanh các landmark cùng tên ở khu chương 1 của map.
+
+## Nhà của bé (03/10/2026)
+
+Mock của người sở hữu (14 ô, ảnh gửi trong phiên, không có trên đĩa; mô tả từng ô trong plan `plans/dattqh/261003-1320-home-timetable-vehicles/plan.md`). Làm ô 1–10 và 13; tùy biến nội/ngoại thất (11, 12) và bản đồ nhỏ (14) để đợt sau (Jev, `plans/dattqh/reports/jev-261003-1310-home-vehicles.md`).
+
+- Map `nha-cua-be` (`pnpm world:nha-cua-be`, `tools/world/generate-nha-cua-be-map.ts`): lõi 160 × 160 khối, nền `grass-home`, vùng ngoài theo `farm`. Bé tới ở đường làng trước cổng (điểm bắt đầu của chương là cổng, khai bằng `start` của zone); vào từ cổng mặt cam ở góc tây nam quảng trường Trung tâm (`cong-nha-cua-be`) hoặc nút "Về nhà" ở Home.
+- Nhà hai tầng (`structures/nha-cua-be-house.ts`): tường đá dưới, gỗ trên, mái ngói đỏ có ống khói và hai cửa sổ mái, cửa vòm 3 ô có đèn hai bên, hoa leo, trần gỗ. Tầng 1: phòng khách thông lên mái với cầu thang gỗ (bậc 1 khối) lên sàn gác có lan can, bếp, phòng ăn, nhà kho có cửa sau ra chuồng. Tầng 2: góc học tập trên sàn gác, phòng ngủ, góc đồ chơi.
+- Ngoài nhà: sân trước có lối đá giữa hai luống hoa, cổng gỗ có mái, ghế, bù nhìn, cờ mèo; biển tên "Nhà của {name}" có đầu mèo (game vẽ chữ lúc chạy, điền tên nhân vật) và hộp thư mèo ngoài cổng; vườn rau cạnh nhà (cà rốt, bắp cải, bí, hướng dương, nhà kho nhỏ, bình tưới); chuồng sau nhà (chuồng gà, gà, bò, máng, rơm); ao có suối và cầu tàu; cối xay gió.
+- Hai mục tiêu riêng của map, luôn có mặt: `nha-thoi-khoa-bieu` (bảng trên tường, trên bàn học) và `nha-lich-dong-phuc` (cạnh tủ quần áo); chạm vào phát sự kiện `interaction`, màn chơi mở bảng thời khóa biểu / lịch đồng phục.
+- Đồ dựng bằng hộp riêng của map: `content/world/box-props/nha-cua-be.json`, sinh bằng `pnpm exec tsx tools/world/structures/nha-cua-be-props.ts`.
+
