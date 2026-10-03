@@ -1,6 +1,6 @@
 # Thêm phụ kiện theo cấp, rải NPC sinh hoạt hợp lý trên map
 
-Trạng thái: đang làm · Tier tổng: L · Nhánh: `main` · Ngày: 03/10/2026
+Trạng thái: xong, đã lên production (03/10/2026, commit aaaa131) · Tier tổng: L · Nhánh: `main` · Ngày: 03/10/2026
 
 Người sở hữu (03/10/2026): "bổ sung thêm nhiều phụ kiện vật phẩm hơn cho bé. yêu cầu phải đủ level theo bạn thấy hợp lý nhé. mỗi loại thêm khoảng 50 cái"; "mỗi map hiện tại rất lớn nhưng lượng npc sinh hoạt đang tập trung vào 1 chỗ nhiều quá… npc hiển thị ngẫu nhiên trên khu vực với bối cảnh hợp lý như ngoài đời thật". Deploy sau khi xong (người sở hữu đã cho deploy).
 
