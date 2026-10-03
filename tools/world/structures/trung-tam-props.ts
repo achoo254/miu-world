@@ -185,24 +185,58 @@ export const PORTAL_COLOURS = {
 } as const;
 export type PortalColour = keyof typeof PORTAL_COLOURS;
 
-/** A portal's glowing pane filling its arch (placePortal's opening: five wide, four high, three at the top), both faces. */
+/**
+ * A portal's glowing vortex in its arch (placePortal's opening: five wide, four high, three at the top), a
+ * tunnel of light with depth seen from either face (owner, 03/10/2026: the pane was flat, "2D"): the glow
+ * fills the opening at its middle; rings of light stand out toward each face, wide and deep-coloured at the
+ * face, smaller and paler as they go in, so the eye looks down a tunnel to the bright core; sparks hang at
+ * every depth, some drifting out in front of the arch.
+ */
 function portalPane([rim, glow, light, core]: readonly string[]): Box[] {
-  const out: Box[] = [box([-2.45, 0, -0.05], [2.45, 4.0, 0.05], rim ?? '#ffffff', true), box([-1.45, 4.0, -0.05], [1.45, 4.95, 0.05], rim ?? '#ffffff', true)];
+  const [cRim, cGlow, cLight, cCore] = [rim ?? '#ffffff', glow ?? '#ffffff', light ?? '#ffffff', core ?? '#ffffff'];
+  // The glow filling the opening, its middle (seen through every ring).
+  const out: Box[] = [box([-2.45, 0, -0.05], [2.45, 4.0, 0.05], cGlow, true), box([-1.45, 4.0, -0.05], [1.45, 4.95, 0.05], cGlow, true)];
+  /** A ring of light: the outline of a rectangle `hw` half wide from `y0` to `y1`, `t` thick, between depths z0..z1. */
+  const ring = (hw: number, y0: number, y1: number, t: number, z0: number, z1: number, color: string): void => {
+    out.push(box([-hw, y0, z0], [-hw + t, y1, z1], color, true));
+    out.push(box([hw - t, y0, z0], [hw, y1, z1], color, true));
+    out.push(box([-hw, y1 - t, z0], [hw, y1, z1], color, true));
+    out.push(box([-hw, y0, z0], [hw, y0 + t, z1], color, true));
+  };
   for (const s of [-1, 1]) {
-    const z = (a: number, b: number): [number, number] => (s < 0 ? [-b, -a] : [a, b]);
-    const layer = (hw: number, y0: number, y1: number, topHw: number, topY: number, depth: [number, number], color: string): void => {
-      const [za, zb] = z(...depth);
-      out.push(box([-hw, y0, za], [hw, y1, zb], color, true));
-      if (topHw > 0) out.push(box([-topHw, y1, za], [topHw, topY, zb], color, true));
-    };
-    // The glow fills the arch, a lighter flame rises in it, a thin bright core at its heart.
-    layer(2.1, 0.1, 3.9, 1.1, 4.65, [0.05, 0.08], glow ?? '#ffffff');
-    layer(1.15, 0.25, 3.3, 0.55, 3.85, [0.08, 0.11], light ?? '#ffffff');
-    layer(0.4, 0.5, 2.6, 0, 0, [0.11, 0.13], core ?? '#ffffff');
-    // Streaks of light rising and sparks round them.
-    const [sa, sb] = z(0.13, 0.15);
-    for (const [x, y0, y1] of [[-1.6, 0.6, 2.4], [1.55, 1.2, 3.1], [-0.9, 3.1, 3.9], [0.85, 0.3, 1.6]] as const) out.push(box([x, y0, sa], [x + 0.1, y1, sb], light ?? '#ffffff', true));
-    for (const [x, y] of [[-1.7, 3.3], [1.6, 2.5], [-1.4, 1.0], [1.75, 0.5], [0.3, 4.2], [-0.5, 0.3], [0.9, 3.7]] as const) out.push(box([x, y, sa], [x + 0.14, y + 0.14, sb], '#ffffff', true));
+    const at = (a: number, b: number): [number, number] => (s < 0 ? [-b, -a] : [a, b]);
+    // From the face inward: the rim's colour at the face, paler rings deeper in, the core at the heart.
+    const rings: Array<[number, number, number, number, [number, number], string]> = [
+      [2.45, 0, 4.0, 0.32, at(0.55, 0.7), cRim],
+      [1.95, 0.35, 3.75, 0.28, at(0.38, 0.55), cGlow],
+      [1.45, 0.7, 3.45, 0.26, at(0.22, 0.38), cLight],
+      [0.95, 1.05, 3.1, 0.24, at(0.1, 0.22), cCore],
+    ];
+    for (const [hw, y0, y1, t, [z0, z1], color] of rings) ring(hw, y0, y1, t, z0, z1, color);
+    // The arch's top step (three wide) carries the outer ring up into it.
+    const [za, zb] = at(0.55, 0.7);
+    out.push(box([-1.45, 4.0, za], [1.45, 4.95, zb], cRim, true));
+    out.push(box([-1.1, 4.0, za], [1.1, 4.65, zb], cGlow, true));
+    // The bright core at the tunnel's end.
+    const [ca, cb] = at(0.05, 0.1);
+    out.push(box([-0.55, 1.4, ca], [0.55, 2.75, cb], cCore, true));
+    // Sparks at every depth: inside the tunnel, at its mouth and drifting out in front of the arch.
+    const sparks: Array<[number, number, number, number]> = [
+      [-1.7, 3.3, 0.3, 0.14],
+      [1.6, 2.5, 0.45, 0.14],
+      [-1.2, 0.9, 0.62, 0.16],
+      [1.3, 0.6, 0.8, 0.12],
+      [0.3, 3.9, 0.9, 0.16],
+      [-0.5, 0.4, 1.05, 0.12],
+      [0.9, 3.4, 1.2, 0.14],
+      [-1.9, 2.0, 1.35, 0.1],
+      [2.0, 3.6, 1.5, 0.12],
+      [-0.2, 4.5, 1.25, 0.1],
+    ];
+    for (const [x, y, z, size] of sparks) {
+      const [z0, z1] = at(z, z + size);
+      out.push(box([x, y, z0], [x + size, y + size, z1], z > 0.7 ? '#ffffff' : cLight, true));
+    }
   }
   return out;
 }

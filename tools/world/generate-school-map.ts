@@ -229,7 +229,8 @@ const FURNITURE: Record<FurnitureKind, string> = {
 };
 /** The hub's own props (content/world/box-props/truong-hoc.json). */
 const TH = {
-  portal: (colour: string) => `${BOX}/th-portal-${colour}.glb`,
+  // The hub's glowing vortex, shared with Trung tâm (structures/trung-tam-props.ts).
+  portal: (colour: string) => `${BOX}/tt-portal-${colour}.glb`,
   sign: (map: string) => `${BOX}/th-sign-${map}.glb`,
   shopSign: `${BOX}/th-sign-shop.glb`,
   questBoard: `${BOX}/th-quest-board.glb`,
