@@ -35,7 +35,7 @@ test('tapping the quest card walks to Sư Tử Vàng, and tapping it again stops
   await page.locator(card).click();
   await expect.poll(async () => (await readStats(page)).nearTarget, { timeout: 60_000 }).toBe('su-tu-vang');
   await expect.poll(async () => (await readStats(page)).autowalk).toBe('arrived');
-  await expect(page.locator('.npc-label[data-target="su-tu-vang"]')).toContainText('Sư Tử Vàng');
-  // Arrived, she talks to him without another tap: the quest's dialogue opens.
+  // Arrived, she talks to him without another tap: his dialogue opens (the name labels give way to it).
+  await expect(page.getByRole('dialog', { name: 'Sư Tử Vàng' })).toBeVisible();
   await expect(page.locator('[data-id="dialogue"]')).toBeVisible();
 });
