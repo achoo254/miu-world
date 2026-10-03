@@ -1,0 +1,14 @@
+{
+  "id": "paint-splat",
+  "name": "Ném màu tô tranh",
+  "family": "colour-timing",
+  "howTo": [
+    "Quả bóng màu dưới cùng cứ đổi màu. Mỗi phần của tranh có một chấm màu cần tô.",
+    "Bóng đúng màu của phần nào thì {name} chạm phần đó để ném màu vào.",
+    "Tô đúng được một điểm. Ném nhầm màu thì phần đó bị lem, ném lại nhé."
+  ],
+  "controls": ["tap"],
+  "duration": 90,
+  "goal": 20,
+  "params": {}
+}

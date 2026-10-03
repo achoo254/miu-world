@@ -1,0 +1,14 @@
+{
+  "id": "ant-lemmings",
+  "name": "Đàn kiến về tổ",
+  "family": "guide-walkers",
+  "howTo": [
+    "Kiến cứ đi thẳng, gặp vật cản thì quay lại. {name} giúp kiến về tổ nhé!",
+    "Chạm một bạn kiến để bạn ấy đứng chặn đường; chạm bạn ở mép khe để bạn ấy nằm làm cầu.",
+    "Kiến rơi xuống khe hay xuống ao thì lạc mất."
+  ],
+  "controls": ["tap"],
+  "duration": 90,
+  "goal": 20,
+  "params": { "ants": 6 }
+}

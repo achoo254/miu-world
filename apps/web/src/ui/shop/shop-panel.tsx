@@ -15,6 +15,8 @@ import { ApiError, api, errorMessage } from '../api-client';
 import { OPEN_SLOTS, equip, type OpenSlot } from '../creator/creator-outfit';
 import { PreviewStage } from '../creator/creator-screen';
 import { DECOR_CATALOG } from '../home-decor/decor-catalog';
+import { mapBoth, pairOf, same, type Bilingual, type Params, type TextKey } from '../i18n/i18n';
+import { Bi, T, useT } from '../i18n/use-t';
 import { Icon, MiuPortrait } from '../kit/art';
 import { buttonClass } from '../kit/button';
 import { Modal } from '../kit/modal';
@@ -30,13 +32,13 @@ export const SHOP_TARGET = 'tt-quay-cua-hang';
 
 type Tab = 'noi-bat' | ShopCategory;
 
-const TAB_LABELS: Readonly<Record<Tab, string>> = {
-  'noi-bat': 'Nổi bật',
-  'trang-phuc': 'Trang phục',
-  'phu-kien': 'Phụ kiện',
-  'nha-cua': 'Nhà cửa',
-  'tieu-hao': 'Tiêu hao',
-  'goi-dac-biet': 'Gói đặc biệt',
+const TAB_LABELS: Readonly<Record<Tab, TextKey>> = {
+  'noi-bat': 'shop.tab.featured',
+  'trang-phuc': 'shop.tab.clothes',
+  'phu-kien': 'shop.tab.accessories',
+  'nha-cua': 'shop.tab.home',
+  'tieu-hao': 'shop.tab.consumables',
+  'goi-dac-biet': 'shop.tab.bundles',
 };
 /** Each tab's picture: an icon, or (Trang phục) a shirt from the wardrobe's own pictures. */
 const TAB_ICONS: Readonly<Record<Tab, UiIcon | { art: string }>> = {
@@ -48,9 +50,10 @@ const TAB_ICONS: Readonly<Record<Tab, UiIcon | { art: string }>> = {
   'goi-dac-biet': 'gift',
 };
 const TABS: readonly Tab[] = ['noi-bat', ...SHOP_CATEGORIES];
-const SLOT_LABELS: ReadonlyMap<string, string> = new Map<string, string>([
-  ...OPEN_SLOTS.map((s) => [s.slot, s.label] as const),
-  ...DECOR_CATALOG.slots.map((s) => [s.id, s.name] as const),
+/** A slot's name: the wardrobe's (translated), or a home style's from the catalogue (its own words). */
+const SLOT_LABELS: ReadonlyMap<string, Bilingual> = new Map<string, Bilingual>([
+  ...OPEN_SLOTS.map((s) => [s.slot, pairOf(s.label)] as const),
+  ...DECOR_CATALOG.slots.map((s) => [s.id, { vi: s.name, en: s.name }] as const),
 ]);
 /** About what one quest pays, for the "how to earn more" line. */
 const COINS_PER_QUEST = 20;
@@ -70,14 +73,24 @@ function CardStatus({ item, state }: { item: ShopItemDto; state: ShopState }) {
   if (keptForever(item.kind) && have > 0) {
     return (
       <span className="shop-owned" data-id={`shop-owned-${item.id}`}>
-        <Icon name="checkMark" size={22} /> Đã có
+        <Icon name="checkMark" size={22} /> <T k="shop.owned" />
       </span>
     );
   }
   return (
     <>
-      {have > 0 ? <span className="shop-count">Có {have}</span> : null}
-      {item.level !== null && state.level < item.level ? <span className="shop-lock">Cần Lv.{item.level}</span> : <Price value={item.price} short={state.coins < item.price} />}
+      {have > 0 ? (
+        <span className="shop-count">
+          <T k="shop.have" params={{ count: have }} />
+        </span>
+      ) : null}
+      {item.level !== null && state.level < item.level ? (
+        <span className="shop-lock">
+          <T k="creator.needLevel" params={{ level: item.level }} />
+        </span>
+      ) : (
+        <Price value={item.price} short={state.coins < item.price} />
+      )}
     </>
   );
 }
@@ -96,7 +109,7 @@ function ItemCard({ item, state, onOpen }: { item: ShopItemDto; state: ShopState
   );
 }
 
-type Notice = { kind: 'ok' | 'short' | 'error'; text: string } | null;
+type Notice = { kind: 'ok' | 'short' | 'error'; text: Bilingual } | null;
 
 interface DetailProps {
   item: ShopItemDto;
@@ -115,6 +128,7 @@ interface DetailProps {
 /** The close-up of one thing (mock panel 9). */
 function ItemDetail({ item, items, state, character, busy, notice, fill, onBuy, onWear, onPick, onBack }: DetailProps) {
   const [store] = useState(createGameStore);
+  const { t } = useT();
   const owned = keptForever(item.kind) && (state.owned[item.id] ?? 0) > 0;
   const levelLocked = item.level !== null && state.level < item.level;
   const slot = item.slot as OpenSlot | null;
@@ -142,12 +156,22 @@ function ItemDetail({ item, items, state, character, busy, notice, fill, onBuy, 
         <h3 id="shop-detail-name">{item.name}</h3>
         {item.description ? <p>{fill(item.description)}</p> : null}
         <p className="shop-tags">
-          <span className="scene-chip">{TAB_LABELS[item.category]}</span>
-          {slot && SLOT_LABELS.has(slot) ? <span className="scene-chip">{SLOT_LABELS.get(slot)}</span> : null}
-          {item.effect ? <span className="scene-chip">Dùng một lượt chơi</span> : null}
+          <span className="scene-chip">
+            <T k={TAB_LABELS[item.category]} />
+          </span>
+          {slot && SLOT_LABELS.has(slot) ? (
+            <span className="scene-chip">
+              <Bi {...(SLOT_LABELS.get(slot) ?? { vi: slot, en: slot })} />
+            </span>
+          ) : null}
+          {item.effect ? (
+            <span className="scene-chip">
+              <T k="shop.oneRound" />
+            </span>
+          ) : null}
         </p>
         {contains.length > 0 ? (
-          <ul className="shop-contains" aria-label="Trong gói có">
+          <ul className="shop-contains" aria-label={t('shop.contains')}>
             {contains.map(({ part, qty }) =>
               part ? (
                 <li key={part.id}>
@@ -161,33 +185,37 @@ function ItemDetail({ item, items, state, character, busy, notice, fill, onBuy, 
         ) : null}
         <p className="shop-detail-price">
           <Price value={item.price} short={state.coins < item.price} />
-          {(state.owned[item.id] ?? 0) > 0 && !owned ? <span className="shop-count">Bé có {state.owned[item.id]}</span> : null}
+          {(state.owned[item.id] ?? 0) > 0 && !owned ? (
+            <span className="shop-count">
+              <T k="shop.youHave" params={{ count: state.owned[item.id] ?? 0 }} />
+            </span>
+          ) : null}
         </p>
         {owned ? (
           <p className="shop-owned shop-owned--big" data-id="shop-detail-owned">
-            <Icon name="checkMark" size={28} /> Bé đã có món này
+            <Icon name="checkMark" size={28} /> <T k="shop.ownedBig" />
           </p>
         ) : (
           <button type="button" className={buttonClass('primary', { block: true })} data-id="shop-buy" disabled={busy || levelLocked} onClick={onBuy}>
-            {busy ? 'Đang mua…' : levelLocked ? `Cần Lv.${item.level}` : 'Mua ngay'}
+            {busy ? <T k="shop.buying" /> : levelLocked ? <T k="creator.needLevel" params={{ level: item.level ?? 0 }} /> : <T k="shop.buy" />}
           </button>
         )}
         {onWear ? (
           <button type="button" className={buttonClass('secondary', { block: true })} data-id="shop-wear" disabled={busy} onClick={onWear}>
-            Mặc ngay
+            <T k="shop.wear" />
           </button>
         ) : null}
         {notice ? (
           <p className={`shop-notice shop-notice--${notice.kind}`} role={notice.kind === 'error' ? 'alert' : 'status'} data-id="shop-notice">
-            {notice.text}
+            <Bi {...notice.text} />
           </p>
         ) : null}
         <button type="button" className={buttonClass('ghost', { small: true })} data-id="shop-back" onClick={onBack}>
-          ← Xem món khác
+          <T k="shop.back" />
         </button>
       </section>
       {same.length > 0 ? (
-        <ul className="shop-same" aria-label="Món cùng loại">
+        <ul className="shop-same" aria-label={t('shop.same')}>
           {same.slice(0, 8).map((other) => (
             <li key={other.id}>
               <button type="button" className="shop-same-tile" aria-label={other.name} data-id={`shop-same-${other.id}`} onClick={() => onPick(other.id)}>
@@ -240,6 +268,8 @@ export function ShopPanel({ onClose, onCoins, onWear }: ShopPanelProps) {
 
   const name = character?.name ?? '';
   const fill = (text: string): string => fillPlayerName(text, name);
+  const say = (key: TextKey, params?: Params): Bilingual => mapBoth(pairOf(key, params), fill);
+  const { t } = useT();
   const item = shop?.items.find((i) => i.id === picked) ?? null;
 
   function open(id: string): void {
@@ -252,7 +282,7 @@ export function ShopPanel({ onClose, onCoins, onWear }: ShopPanelProps) {
     if (!shop || !item) return;
     if (shop.coins < item.price) {
       const missing = item.price - shop.coins;
-      setNotice({ kind: 'short', text: fill(`Chưa đủ xu rồi {name} ơi, còn thiếu ${missing} xu. Mỗi nhiệm vụ được khoảng ${COINS_PER_QUEST} xu, thắng trò chơi cũng có xu: làm thêm ${Math.ceil(missing / COINS_PER_QUEST)} nhiệm vụ nữa là mua được!`) });
+      setNotice({ kind: 'short', text: say('shop.short', { missing, perQuest: COINS_PER_QUEST, quests: Math.ceil(missing / COINS_PER_QUEST) }) });
       return;
     }
     if (pending.current?.itemId !== item.id) pending.current = { itemId: item.id, id: requestId() };
@@ -264,12 +294,12 @@ export function ShopPanel({ onClose, onCoins, onWear }: ShopPanelProps) {
       setShop((now) => (now ? { ...now, coins: state.coins, level: state.level, owned: state.owned } : now));
       onCoins?.(state.coins);
       playCue('complete');
-      setNotice({ kind: 'ok', text: item.kind === 'booster' || item.kind === 'bundle' ? 'Mua được rồi! Chọn đồ hỗ trợ ở bảng hướng dẫn trước khi chơi nhé.' : item.kind === 'decor' ? fill('Mua được rồi! Mở Sổ trang trí trong nhà của {name} để dùng kiểu mới nhé.') : 'Mua được rồi!' });
+      setNotice({ kind: 'ok', text: say(item.kind === 'booster' || item.kind === 'bundle' ? 'shop.boughtBooster' : item.kind === 'decor' ? 'shop.boughtDecor' : 'shop.bought') });
       if (item.kind === 'wearable') setJustBought(item.id);
     } catch (err) {
       // A refusal is final (a new tap is a new purchase); a lost answer keeps the id so a retry buys once.
       if (!(err instanceof ApiError && err.status === 0)) pending.current = null;
-      setNotice({ kind: err instanceof ApiError && err.code === 'not-enough-coins' ? 'short' : 'error', text: shopErrorMessage(err) });
+      setNotice({ kind: err instanceof ApiError && err.code === 'not-enough-coins' ? 'short' : 'error', text: same(shopErrorMessage(err)) });
     } finally {
       setBusy(false);
     }
@@ -284,9 +314,9 @@ export function ShopPanel({ onClose, onCoins, onWear }: ShopPanelProps) {
       setCharacter(saved);
       onWear?.(saved.equipped);
       setJustBought(null);
-      setNotice({ kind: 'ok', text: fill('Đẹp quá! {name} đang mặc món mới rồi.') });
+      setNotice({ kind: 'ok', text: say('shop.wearing') });
     } catch (err) {
-      setNotice({ kind: 'error', text: errorMessage(err) });
+      setNotice({ kind: 'error', text: same(errorMessage(err)) });
     } finally {
       setBusy(false);
     }
@@ -308,12 +338,12 @@ export function ShopPanel({ onClose, onCoins, onWear }: ShopPanelProps) {
             setLoads((n) => n + 1);
           }}
         >
-          Thử lại
+          <T k="common.retry" />
         </button>
       </div>
     ) : (
       <p className="scene-panel shop-message" data-id="shop-loading">
-        Đang mở cửa hàng…
+        <T k="shop.opening" />
       </p>
     );
   } else if (item) {
@@ -336,7 +366,7 @@ export function ShopPanel({ onClose, onCoins, onWear }: ShopPanelProps) {
     const shown = tab === 'noi-bat' ? shop.items.filter((i) => i.featured) : shop.items.filter((i) => i.category === tab);
     body = (
       <Tabs
-        label="Danh mục"
+        label={t('shop.categories')}
         items={TABS.map((key) => {
           const icon = TAB_ICONS[key];
           return {
@@ -344,7 +374,7 @@ export function ShopPanel({ onClose, onCoins, onWear }: ShopPanelProps) {
             label: (
               <span className="shop-tab">
                 {typeof icon === 'string' ? <Icon name={icon} size={30} /> : <img src={assetUrl(icon.art)} alt="" width={30} height={30} draggable={false} />}
-                {TAB_LABELS[key]}
+                <T k={TAB_LABELS[key]} />
               </span>
             ),
           };
@@ -364,22 +394,24 @@ export function ShopPanel({ onClose, onCoins, onWear }: ShopPanelProps) {
 
   const backdrop = REGION_BACKDROPS['trung-tam'];
   return (
-    <Modal title="Cửa hàng" onClose={onClose} dataId="shop" variant="scene" size="wide" className="shop-modal">
+    <Modal title={<T k="common.shop" />} onClose={onClose} dataId="shop" variant="scene" size="wide" className="shop-modal">
       <header className="shop-hero" style={backdrop ? { backgroundImage: `url(${assetUrl(backdrop)})` } : undefined}>
         <span className="shop-hero-portrait">
           <MiuPortrait pose="wave" size="4.5rem" species={character?.species} />
         </span>
         <span className="shop-hero-text">
-          <strong>{character ? fill('Cửa hàng của {name}') : 'Cửa hàng'}</strong>
-          <span>Mua trang phục, đồ trang trí nhà và đồ hỗ trợ trò chơi bằng xu!</span>
+          <strong>{character ? <T k="shop.titleOf" params={{ name }} /> : <T k="common.shop" />}</strong>
+          <span>
+            <T k="shop.tagline" />
+          </span>
         </span>
-        <span className="shop-coins" data-id="shop-coins" aria-label="Xu của bé">
+        <span className="shop-coins" data-id="shop-coins" aria-label={t('shop.coinsLabel')}>
           <Icon name="coin" size={32} />
           {shop?.coins ?? '…'}
         </span>
       </header>
       <section className="shop-board parchment">{body}</section>
-      <button type="button" className="scene-close" data-id="shop-close" aria-label="Đóng cửa hàng" onClick={onClose}>
+      <button type="button" className="scene-close" data-id="shop-close" aria-label={t('shop.close')} onClick={onClose}>
         ✕
       </button>
     </Modal>

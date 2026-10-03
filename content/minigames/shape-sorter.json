@@ -1,0 +1,14 @@
+{
+  "id": "shape-sorter",
+  "name": "Hộp thả hình",
+  "family": "rotate-match",
+  "howTo": [
+    "Khối hình trượt xuống hộp. Chỉ lỗ ở trên cùng của nắp nằm dưới khối.",
+    "{name} chạm bên phải hộp để xoay nắp theo chiều kim đồng hồ, bên trái để xoay ngược lại.",
+    "Lỗ cùng hình nằm trên cùng thì khối lọt vào hộp, được một điểm."
+  ],
+  "controls": ["tap"],
+  "duration": 60,
+  "goal": 25,
+  "params": {}
+}

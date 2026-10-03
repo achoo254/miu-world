@@ -7,6 +7,7 @@ import type { QuestStepPublic } from '@miu/schema/content';
 import { StepCompleteResponse, type QuestCompletion, type StepCompleteRequest } from '@miu/schema/game';
 import type { GameStore, InteractableKind } from '../../game-bridge/game-store';
 import { ApiError, api, errorMessage } from '../api-client';
+import { same, type Bilingual } from '../i18n/i18n';
 import { say, type PlayerData } from '../player/player-data';
 import { TIMETABLE_TARGETS } from '../timetable/timetable-targets';
 import { DONE_LINES, FOUND_LINES, NOT_NOW_LINES, fillLine } from './loop-lines';
@@ -32,7 +33,8 @@ export interface QuestController {
   finished: FinishedQuest | null;
   closeFinished: () => void;
   busy: boolean;
-  toast: string | null;
+  /** A short line over the game: the content's own words (Vietnamese) or a UI line in both languages. */
+  toast: Bilingual | null;
   clearToast: () => void;
   /** Right answers to learning steps so far; each new one shows a burst of stars over the world. */
   cheers: number;
@@ -65,7 +67,7 @@ export function useQuestController({ store, data, questId, onResponse, onOverlay
   const [overlay, setOverlayState] = useState<QuestOverlay>(null);
   const [finished, setFinished] = useState<FinishedQuest | null>(null);
   const [busy, setBusy] = useState(false);
-  const [toast, setToast] = useState<string | null>(null);
+  const [toast, setToast] = useState<Bilingual | null>(null);
   /** Right answers to learning steps so far; each new one shows a burst of stars. */
   const [cheers, setCheers] = useState(0);
   const [retry, setRetry] = useState<(() => Promise<void>) | null>(null);
@@ -103,11 +105,11 @@ export function useQuestController({ store, data, questId, onResponse, onOverlay
     },
     [cover],
   );
-  const pickers = useRef(new Map<string, FreshPicker<string>>());
+  const pickers = useRef(new Map<string, FreshPicker<Bilingual>>());
   // `submit` starts the next auto step, and `startStep` submits: the ref breaks the cycle.
   const startRef = useRef<(step: QuestStepPublic) => void>(() => undefined);
   const submitRef = useRef<(step: QuestStepPublic, body?: StepCompleteRequest) => Promise<unknown>>(async () => null);
-  const lineFrom = useCallback((key: string, pool: readonly string[]): string => {
+  const lineFrom = useCallback((key: string, pool: readonly Bilingual[]): Bilingual => {
     let picker = pickers.current.get(key);
     if (!picker) {
       picker = freshPicker(pool);
@@ -159,7 +161,7 @@ export function useQuestController({ store, data, questId, onResponse, onOverlay
           }, celebrationMs());
         }
         // A wrong answer's line shows inside the step screen; only a right one becomes a toast.
-        if (response.feedback && response.correct) setToast(say(response.feedback, latest.current.data.character));
+        if (response.feedback && response.correct) setToast(same(say(response.feedback, latest.current.data.character)));
         // A right answer to a learning step gets a burst of stars over the world as its screen closes.
         if (response.correct && (step.kind === 'read' || step.kind === 'riddle' || step.kind === 'challenge')) setCheers((n) => n + 1);
         if (response.correct) {
@@ -193,7 +195,7 @@ export function useQuestController({ store, data, questId, onResponse, onOverlay
     (step: QuestStepPublic): void => {
       const player = latest.current.data;
       if (step.kind === 'reward' || step.kind === 'next') {
-        setToast(say(step.text, player.character));
+        setToast(same(say(step.text, player.character)));
         void submit(step);
         return;
       }

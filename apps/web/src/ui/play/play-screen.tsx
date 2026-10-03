@@ -10,6 +10,7 @@ import { Game } from '../../game/game';
 import { ApiError, errorMessage } from '../api-client';
 import { useAccount } from '../account/account-context';
 import { Hud } from '../hud/hud';
+import { T, useT } from '../i18n/use-t';
 import type { QuestSummary, StepCompleteResponse } from '@miu/schema/game';
 import { currentQuest, loadPlayer, questForRegion, say, type PlayerData } from '../player/player-data';
 import { QuestLayer } from '../quest/quest-layer';
@@ -68,10 +69,12 @@ function GameStatus() {
   if (error.code === 'context-lost') {
     return (
       <div className="play-message" role="alert" data-id="play-context-lost">
-        <p>Mất kết nối đồ họa.</p>
+        <p>
+          <T k="play.contextLost" />
+        </p>
         {/* A full page load rebuilds the WebGL context; progress already saved on the server is kept. */}
         <button type="button" data-id="play-context-lost-reload" onClick={() => window.location.reload()}>
-          Tải lại
+          <T k="play.reload" />
         </button>
       </div>
     );
@@ -79,7 +82,10 @@ function GameStatus() {
   return (
     <div className="play-message" role="alert" data-id="play-error">
       <p>
-        Không tải được Khu rừng bí mật. <Link to="/home">Quay lại</Link>
+        <T k="play.loadFailed" />{' '}
+        <Link to="/home">
+          <T k="common.back" />
+        </Link>
       </p>
     </div>
   );
@@ -196,6 +202,7 @@ export function PlayScreen() {
     spotOf.current = read;
   }, []);
   const status = useSyncStatus(store);
+  const { t } = useT();
 
   const onLoadError = useCallback(
     (err: unknown): void => {
@@ -327,7 +334,7 @@ export function PlayScreen() {
     [store],
   );
   const boardRegion = findRegion(region);
-  const regionTitle = findRegion(quest?.quest.region ?? '')?.name ?? 'Khu rừng bí mật';
+  const regionTitle = findRegion(quest?.quest.region ?? '')?.name ?? t('play.defaultRegion');
   const regionName = data ? say(regionTitle, data.character) : regionTitle;
 
   return (
@@ -339,7 +346,10 @@ export function PlayScreen() {
         {loadError ? (
           <div className="play-message" role="alert">
             <p>
-              {loadError} <Link to="/home">Quay lại</Link>
+              {loadError}{' '}
+              <Link to="/home">
+                <T k="common.back" />
+              </Link>
             </p>
           </div>
         ) : null}
@@ -350,20 +360,20 @@ export function PlayScreen() {
         <GameStatus />
         {data && status !== 'error' ? <Hud data={data} quest={quest} covered={covered} onMenu={() => setPaused(true)} onQuests={() => setQuestsOpen(true)} onBackpack={() => setBackpackOpen(true)} /> : null}
         {data && backpackOpen ? (
-          <Modal title="Ba lô" onClose={() => setBackpackOpen(false)} dataId="play-backpack" size="wide">
+          <Modal title={<T k="common.backpack" />} onClose={() => setBackpackOpen(false)} dataId="play-backpack" size="wide">
             <BackpackPanel data={data} />
             <button type="button" className={buttonClass('primary', { block: true })} data-id="play-backpack-done" onClick={() => setBackpackOpen(false)}>
-              Đóng
+              <T k="common.close" />
             </button>
-            <button type="button" className="scene-close" data-id="play-backpack-close" aria-label="Đóng ba lô" onClick={() => setBackpackOpen(false)}>
+            <button type="button" className="scene-close" data-id="play-backpack-close" aria-label={t('play.closeBackpack')} onClick={() => setBackpackOpen(false)}>
               ✕
             </button>
           </Modal>
         ) : null}
         {data && boardRegion && questsOpen ? (
-          <Modal title="Nhiệm vụ" onClose={() => setQuestsOpen(false)} dataId="play-quests" size="wide">
+          <Modal title={<T k="common.quests" />} onClose={() => setQuestsOpen(false)} dataId="play-quests" size="wide">
             <QuestBoard region={boardRegion} quests={data.quests} data={data} pick={{ current: questId, onPick: switchQuest }} />
-            <button type="button" className="scene-close" data-id="play-quests-close" aria-label="Đóng bảng nhiệm vụ" onClick={() => setQuestsOpen(false)}>
+            <button type="button" className="scene-close" data-id="play-quests-close" aria-label={t('play.closeBoard')} onClick={() => setQuestsOpen(false)}>
               ✕
             </button>
           </Modal>

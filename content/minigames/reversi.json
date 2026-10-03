@@ -1,0 +1,14 @@
+{
+  "id": "reversi",
+  "name": "Cờ lật",
+  "family": "flip-board",
+  "howTo": [
+    "{name} chạm ô có chấm để đặt quân, kẹp hàng quân của Cú giữa hai quân của mình.",
+    "Quân bị kẹp (ngang, dọc, chéo) lật sang màu của {name}. Góc bàn là chỗ rất tốt!",
+    "Hết bàn mà nhiều quân hơn Cú là thắng."
+  ],
+  "controls": ["tap"],
+  "duration": 90,
+  "goal": 1,
+  "params": {}
+}

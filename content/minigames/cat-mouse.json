@@ -1,0 +1,14 @@
+{
+  "id": "cat-mouse",
+  "name": "Mèo đuổi chuột",
+  "family": "lure-chase",
+  "howTo": [
+    "Các bạn nắm tay thành vòng, lúc giơ tay (khe xanh) lúc hạ tay (vạch đỏ).",
+    "{name} kéo chú chuột chui qua khe sắp hạ tay, để mèo đuổi theo bị chặn lại.",
+    "Mỗi lần mèo bị chặn được một điểm. Mèo bắt được chuột thì chuột về giữa vòng."
+  ],
+  "controls": ["drag"],
+  "duration": 75,
+  "goal": 5,
+  "params": {}
+}

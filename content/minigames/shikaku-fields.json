@@ -1,0 +1,13 @@
+{
+  "id": "shikaku-fields",
+  "name": "Chia ruộng",
+  "family": "area-split",
+  "howTo": [
+    "Kéo từ ô này sang ô kia để khoanh một thửa ruộng hình chữ nhật.",
+    "Mỗi thửa có đúng một số, và số ô bằng số đó. {name} chia kín cả cánh đồng nhé!"
+  ],
+  "controls": ["drag", "tap"],
+  "duration": 90,
+  "goal": 3,
+  "params": {}
+}

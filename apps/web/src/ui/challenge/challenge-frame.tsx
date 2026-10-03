@@ -5,7 +5,10 @@
 // answer (never red and harsh), and a parchment bar with the support layers and "Làm lại · Kiểm tra".
 // The game stops meanwhile.
 import { useEffect, useRef, type MouseEvent, type ReactNode } from 'react';
+import { ListenButton } from '../dialogue/listen-button';
 import { NpcPortrait } from '../dialogue/npc-portrait';
+import type { Bilingual } from '../i18n/i18n';
+import { Bi, T, useT } from '../i18n/use-t';
 import { Icon } from '../kit/art';
 import { buttonClass } from '../kit/button';
 import { Modal } from '../kit/modal';
@@ -27,8 +30,8 @@ export interface ChallengeContext {
   /** Fills `{name}` in content text. */
   fill: (text: string) => string;
   busy: boolean;
-  /** Line after the last wrong answer, if any. */
-  tryAgain: string | null;
+  /** Line after the last wrong answer, if any (the content's own feedback, or a kind line in both languages). */
+  tryAgain: Bilingual | null;
   /** Wrong answers on this screen so far (support opens step by step; each one replays the shake). */
   wrongTries: number;
   /** The character who asks, shown with the instruction. */
@@ -52,6 +55,7 @@ export function ChallengeFrame({
   onReset?: () => void;
 }) {
   const presenter = context.presenter;
+  const { t } = useT();
   // A wrong answer shakes the play area once (the child's placements stay where they are): the class is
   // set on the element itself so a new try replays the animation without a re-render.
   const area = useRef<HTMLDivElement>(null);
@@ -75,7 +79,7 @@ export function ChallengeFrame({
       <div className="scene-chips">
         <div className="step-trail-wrap">
           <span className="visually-hidden" data-id="challenge-position">
-            Bước {index}/{total}
+            {t('challenge.step', { index, total })}
           </span>
           <ol className="step-trail" aria-hidden="true" data-id="challenge-trail">
             {Array.from({ length: total }, (_, i) => (
@@ -84,7 +88,7 @@ export function ChallengeFrame({
           </ol>
         </div>
         <span className="scene-chip" data-id="challenge-xp">
-          <Icon name="glowingStar" size={24} /> {context.xp} XP<span className="scene-chip-more"> khi xong nhiệm vụ</span>
+          <Icon name="glowingStar" size={24} /> {context.xp} XP<span className="scene-chip-more">{t('challenge.xpWhenDone')}</span>
         </span>
       </div>
       <div className="npc-say">
@@ -99,6 +103,8 @@ export function ChallengeFrame({
         <p className="parchment npc-bubble challenge-prompt" data-id="challenge-prompt">
           {presenter ? <span className="npc-name">{context.fill(presenter.name)}</span> : null}
           {prompt}
+          {/* The lesson's question is the book's Vietnamese: read in Vietnamese in every mode. */}
+          <ListenButton text={{ vi: prompt }} dataId="challenge-listen" />
         </p>
       </div>
       <div ref={area} className="challenge-area" onClickCapture={tapSound}>
@@ -106,7 +112,7 @@ export function ChallengeFrame({
       </div>
       {context.tryAgain ? (
         <p className="challenge-try-again" role="status" data-id="challenge-try-again">
-          {context.tryAgain}
+          <Bi vi={context.tryAgain.vi} en={context.tryAgain.en} />
         </p>
       ) : null}
       <div className="parchment scene-bar">
@@ -114,16 +120,16 @@ export function ChallengeFrame({
         <div className="challenge-actions">
           {onReset ? (
             <button type="button" className={buttonClass('ghost')} data-id="challenge-reset" onClick={onReset}>
-              Làm lại
+              <T k="challenge.reset" />
             </button>
           ) : null}
           <button type="button" className={buttonClass('primary')} data-id="challenge-check" disabled={!canCheck || context.busy} onClick={onCheck}>
             <Icon name="checkMark" size={28} />
-            Kiểm tra
+            <T k="challenge.check" />
           </button>
         </div>
       </div>
-      <button type="button" className="scene-close" data-id="challenge-close" aria-label="Quay lại khu rừng" onClick={context.onClose}>
+      <button type="button" className="scene-close" data-id="challenge-close" aria-label={t('challenge.close')} onClick={context.onClose}>
         ✕
       </button>
     </Modal>

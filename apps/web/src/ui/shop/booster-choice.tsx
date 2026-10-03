@@ -1,6 +1,7 @@
 // The boosters a child owns, offered on a minigame's how-to card (NEW SCREEN part, mock "Cửa hàng" Tiêu hao):
 // one big chip per booster with how many are left; tapping picks it for the round, tapping again lets it go.
 import type { BoosterEffect, ShopItemDto } from '@miu/schema/shop';
+import { T, useT } from '../i18n/use-t';
 import { ShopPicture } from './shop-picture';
 import './booster-choice.css';
 
@@ -19,9 +20,12 @@ export function ownedBoosters(items: readonly ShopItemDto[], owned: Readonly<Rec
 export const boosterHelps = (effect: BoosterEffect, hasLives: boolean): boolean => !('lives' in effect) || hasLives;
 
 export function BoosterChoice({ boosters, chosen, disabled, error, onChoose }: { boosters: readonly OwnedBooster[]; chosen: string | null; disabled: boolean; error: string | null; onChoose: (id: string | null) => void }) {
+  const { t } = useT();
   return (
-    <div className="booster-choice" role="group" aria-label="Đồ hỗ trợ" data-id="minigame-boosters">
-      <p>Dùng đồ hỗ trợ cho lượt này? Chọn một món:</p>
+    <div className="booster-choice" role="group" aria-label={t('booster.label')} data-id="minigame-boosters">
+      <p>
+        <T k="booster.ask" />
+      </p>
       <div className="booster-choice-list">
         {boosters.map(({ item, qty }) => (
           <button
@@ -35,7 +39,9 @@ export function BoosterChoice({ boosters, chosen, disabled, error, onChoose }: {
           >
             <ShopPicture item={item} size={36} />
             {item.name}
-            <small>còn {qty}</small>
+            <small>
+              <T k="booster.left" params={{ qty }} />
+            </small>
           </button>
         ))}
       </div>

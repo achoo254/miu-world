@@ -12,6 +12,11 @@
 }
 @keyframes reward-star-pop { from { transform: scale(0.2) rotate(-30deg); opacity: 0; } 70% { transform: scale(1.2) rotate(6deg); opacity: 1; } to { transform: none; } }
 @keyframes reward-reveal { from { transform: translateY(0.75rem); opacity: 0; } to { transform: none; opacity: 1; } }
+/* After a lesson: the region's chest and how far it is. */
+.reward-region { display: flex; align-items: center; gap: var(--space-sm); width: 100%; box-sizing: border-box; padding: var(--space-xs) var(--space-sm); border-radius: var(--radius-field); background: var(--color-surface-glass); text-align: left; }
+.reward-region-chest { width: 3.5rem; height: 3.5rem; flex-shrink: 0; filter: drop-shadow(0 4px 4px var(--color-island-shadow)); }
+.reward-region-text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: var(--space-xs); }
+.reward-region-text strong { color: var(--color-primary); }
 .reward-level { font-family: var(--font-display); font-weight: 800; font-size: var(--text-hero); }
 
 .item-grid-backpack { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(6.5rem, 1fr)); gap: var(--space-sm); }

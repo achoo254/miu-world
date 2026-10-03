@@ -1,7 +1,10 @@
 // "Bản đồ thế giới" (M1.4: the Home island full width with every region, no second 3D scene) and the
 // region detail (M2.1: the region's map behind a wooden sign and a board of its quests). Chapter
 // state and progress come from the server; the region's look comes from content/world/regions.json.
+import { useState } from 'react';
 import { Link, useParams } from 'react-router';
+import type { ProgressResponse } from '@miu/schema/game';
+import { T } from '../i18n/use-t';
 import { Icon } from '../kit/art';
 import { buttonClass } from '../kit/button';
 import { SkyScene } from '../kit/sky-scene';
@@ -11,6 +14,8 @@ import { usePlayer, type PlayerData } from '../player/player-data';
 import { WorldStage } from '../world/world-stage';
 import { RegionBooks } from './region-books';
 import { QuestBoard, RegionBackdrop, RegionIntro } from './region-detail';
+import { RegionRewardBadges } from './region-reward-badges';
+import { useRegionRewardList } from './region-rewards';
 import { findRegion } from './regions';
 import './region.css';
 
@@ -32,17 +37,22 @@ function Frame({
     <main className={`region-page${wide ? ' region-page--wide' : ''}${regionId ? ' region-page--detail' : ''}`} data-id="region-page">
       {error ? (
         <p role="alert" className="error">
-          {error} <Link to="/home">Về trang chủ</Link>
+          {error}{' '}
+          <Link to="/home">
+            <T k="common.backHome" />
+          </Link>
         </p>
       ) : null}
-      {!data && !error ? <p role="status">Đang tải…</p> : null}
+      {!data && !error ? <p role="status">
+          <T k="common.loading" />
+        </p> : null}
       {data ? (
         <>
           <header className="region-top">
             <PlayerBadge character={data.character} progress={data.progress} />
             <Link to="/home" className={buttonClass('ghost', { small: true })} data-id="region-home">
               <Icon name="house" size={28} />
-              Trang chủ
+              <T k="common.home" />
             </Link>
           </header>
           {children(data)}
@@ -56,16 +66,21 @@ function Frame({
 /** M1.4 "Bản đồ thế giới – Chọn khu vực": the same island as Home, full width, with every region on it. */
 export function RegionMapScreen() {
   const { data, error } = usePlayer();
+  const rewards = useRegionRewardList();
   return (
     <Frame data={data} error={error} wide>
       {(player) => (
         <section className="world-map" aria-labelledby="map-title" data-id="map">
           <h1 id="map-title" className="world-map-title">
             <Icon name="map" size={44} />
-            Bản đồ thế giới
+            <T k="region.worldMap" />
           </h1>
-          <p className="hint world-map-hint">Chạm vào khu vực để vào chơi. Khu có ổ khóa sẽ mở sau.</p>
-          <WorldStage character={player.character} idPrefix="map-region" />
+          <p className="hint world-map-hint">
+            <T k="region.mapHint" />
+          </p>
+          <WorldStage character={player.character} idPrefix="map-region">
+            <RegionRewardBadges idPrefix="map-region" list={rewards} name={player.character.name} />
+          </WorldStage>
           <RegionBooks quests={player.quests} character={player.character} />
         </section>
       )}
@@ -75,7 +90,10 @@ export function RegionMapScreen() {
 
 export function RegionScreen() {
   const { regionId = '' } = useParams();
-  const { data, error } = usePlayer();
+  const { data: loaded, error } = usePlayer();
+  /** Her totals after a chest claimed here, for the badge (the loaded ones until then). */
+  const [progress, setProgress] = useState<ProgressResponse | null>(null);
+  const data = loaded && progress ? { ...loaded, progress } : loaded;
   const region = findRegion(regionId);
   const open = region?.status === 'open' ? region : undefined;
   return (
@@ -83,18 +101,20 @@ export function RegionScreen() {
       {(player) =>
         !open ? (
           <section className="panel" data-id="region-missing">
-            <p>Khu vực này chưa mở.</p>
+            <p>
+              <T k="region.notOpen" />
+            </p>
             <Link to="/map" className={buttonClass('secondary')}>
-              Xem bản đồ
+              <T k="region.seeMap" />
             </Link>
           </section>
         ) : (
           <section className="region-detail" aria-labelledby="region-title" data-id={`region-${open.id}`}>
-            <RegionIntro region={open} quests={player.quests.filter((q) => q.quest.region === open.id)} data={player} />
+            <RegionIntro region={open} quests={player.quests.filter((q) => q.quest.region === open.id)} data={player} onProgress={setProgress} />
             <QuestBoard region={open} quests={player.quests} data={player} />
             <Link to="/map" className={buttonClass('ghost', { small: true })} data-id="region-map">
               <Icon name="map" size={28} />
-              Bản đồ
+              <T k="common.map" />
             </Link>
           </section>
         )

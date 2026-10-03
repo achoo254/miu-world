@@ -1,8 +1,11 @@
 // Khung ứng dụng và điều hướng theo trạng thái tài khoản (NEW SCREEN, Master Plan §6 Tài khoản).
-import { Suspense, lazy, type ReactNode } from 'react';
-import { Navigate, Route, Routes } from 'react-router';
+import { Suspense, lazy, useEffect, type ReactNode } from 'react';
+import { Navigate, Route, Routes, useLocation } from 'react-router';
 import { AccountProvider, useAccount } from './account/account-context';
 import { ConsentScreen } from './account/consent-screen';
+import { stopSpeaking } from './dialogue/speech';
+import { bindLangProfile } from './i18n/i18n';
+import { T } from './i18n/use-t';
 import { ParentAreaScreen } from './account/parent-area-screen';
 import { ProfilePickerScreen } from './account/profile-screens';
 import { LoginScreen, RegisterScreen, SetPinScreen } from './account/sign-in-screens';
@@ -48,7 +51,7 @@ function Loading() {
       <main className="scene-content" data-id="shell-loading">
         <MiuOnIsland pose="idle" size="10rem" />
         <p role="status" className="tagline">
-          Đang tải…
+          <T k="common.loading" />
         </p>
       </main>
     </SkyScene>
@@ -62,7 +65,7 @@ function ServerDown() {
         <h1 className="visually-hidden">Miu World</h1>
         <Logo />
         <p role="alert" className="error">
-          Không kết nối được máy chủ. Thử tải lại trang nhé.
+          <T k="shell.serverDown" />
         </p>
       </main>
     </SkyScene>
@@ -98,28 +101,44 @@ function RequireActiveChild({ children }: { children: ReactNode }) {
   return children;
 }
 
+/**
+ * The selected child's display language applies (kept per profile on this device), and a reading aloud stops
+ * when the screen changes.
+ */
+function LanguageAndSpeech() {
+  const { state } = useAccount();
+  const childId = state.status === 'signed-in' ? state.me.activeChildId : null;
+  const { pathname } = useLocation();
+  useEffect(() => bindLangProfile(childId), [childId]);
+  useEffect(() => stopSpeaking, [pathname]);
+  return null;
+}
+
 export function AppRoutes() {
   return (
-    <Routes>
-      <Route path="/" element={<RequireParent>{<Navigate to="/profiles" replace />}</RequireParent>} />
-      <Route path="/login" element={<WithMusic mood="home"><SignedOutOnly><LoginScreen /></SignedOutOnly></WithMusic>} />
-      <Route path="/register" element={<WithMusic mood="home"><SignedOutOnly><RegisterScreen /></SignedOutOnly></WithMusic>} />
-      <Route path="/privacy" element={<PrivacyScreen />} />
-      <Route path="/set-pin" element={<RequireParent needsPin={false} needsConsent={false}><SetPinScreen /></RequireParent>} />
-      <Route path="/consent" element={<RequireParent needsConsent={false}><ConsentScreen /></RequireParent>} />
-      <Route path="/profiles" element={<WithMusic mood="home"><RequireParent><ProfilePickerScreen /></RequireParent></WithMusic>} />
-      <Route path="/parent" element={<RequireParent><ParentAreaScreen /></RequireParent>} />
-      <Route path="/parent/worksheets" element={<RequireParent><Suspense fallback={<Loading />}><WorksheetListScreen /></Suspense></RequireParent>} />
-      <Route path="/parent/worksheets/:lessonId" element={<RequireParent><Suspense fallback={<Loading />}><WorksheetSheetScreen /></Suspense></RequireParent>} />
-      <Route path="/create" element={<ChildScreen music="home"><CreatorScreen /></ChildScreen>} />
-      <Route path="/home" element={<ChildScreen music="home"><HomeScreen /></ChildScreen>} />
-      <Route path="/map" element={<ChildScreen music="home"><RegionMapScreen /></ChildScreen>} />
-      <Route path="/region/:regionId" element={<ChildScreen music="home"><RegionScreen /></ChildScreen>} />
-      <Route path="/backpack" element={<ChildScreen music="home"><BackpackScreen /></ChildScreen>} />
-      <Route path="/profile" element={<ChildScreen music="home"><ProfileScreen /></ChildScreen>} />
-      <Route path="/play" element={<ChildScreen><PlayScreen /></ChildScreen>} />
-      <Route path="*" element={<Navigate to="/" replace />} />
-    </Routes>
+    <>
+      <LanguageAndSpeech />
+      <Routes>
+        <Route path="/" element={<RequireParent>{<Navigate to="/profiles" replace />}</RequireParent>} />
+        <Route path="/login" element={<WithMusic mood="home"><SignedOutOnly><LoginScreen /></SignedOutOnly></WithMusic>} />
+        <Route path="/register" element={<WithMusic mood="home"><SignedOutOnly><RegisterScreen /></SignedOutOnly></WithMusic>} />
+        <Route path="/privacy" element={<PrivacyScreen />} />
+        <Route path="/set-pin" element={<RequireParent needsPin={false} needsConsent={false}><SetPinScreen /></RequireParent>} />
+        <Route path="/consent" element={<RequireParent needsConsent={false}><ConsentScreen /></RequireParent>} />
+        <Route path="/profiles" element={<WithMusic mood="home"><RequireParent><ProfilePickerScreen /></RequireParent></WithMusic>} />
+        <Route path="/parent" element={<RequireParent><ParentAreaScreen /></RequireParent>} />
+        <Route path="/parent/worksheets" element={<RequireParent><Suspense fallback={<Loading />}><WorksheetListScreen /></Suspense></RequireParent>} />
+        <Route path="/parent/worksheets/:lessonId" element={<RequireParent><Suspense fallback={<Loading />}><WorksheetSheetScreen /></Suspense></RequireParent>} />
+        <Route path="/create" element={<ChildScreen music="home"><CreatorScreen /></ChildScreen>} />
+        <Route path="/home" element={<ChildScreen music="home"><HomeScreen /></ChildScreen>} />
+        <Route path="/map" element={<ChildScreen music="home"><RegionMapScreen /></ChildScreen>} />
+        <Route path="/region/:regionId" element={<ChildScreen music="home"><RegionScreen /></ChildScreen>} />
+        <Route path="/backpack" element={<ChildScreen music="home"><BackpackScreen /></ChildScreen>} />
+        <Route path="/profile" element={<ChildScreen music="home"><ProfileScreen /></ChildScreen>} />
+        <Route path="/play" element={<ChildScreen><PlayScreen /></ChildScreen>} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </>
   );
 }
 

@@ -1,0 +1,14 @@
+{
+  "id": "balloon-guard",
+  "name": "Hộ tống bóng bay",
+  "family": "escort-shield",
+  "howTo": [
+    "Bạn của {name} bay lên trời với quả bóng. Lá, hạt dẻ, sỏi đang rơi xuống!",
+    "{name} kéo chiếc ô (ô ở ngay trên ngón tay) để gạt chúng ra xa quả bóng.",
+    "Mỗi mét bay lên là một điểm. Bóng bị trúng ba lần là xuống đất."
+  ],
+  "controls": ["drag"],
+  "duration": 60,
+  "goal": 100,
+  "params": {}
+}

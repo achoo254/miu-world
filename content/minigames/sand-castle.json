@@ -1,0 +1,14 @@
+{
+  "id": "sand-castle",
+  "name": "Xây lâu đài cát",
+  "family": "fill-place",
+  "howTo": [
+    "Giữ ngón tay để xúc cát vào xô, thả ra khi cát tới vạch xanh.",
+    "Chạm chỗ trống trên lâu đài để úp xô thành tháp. Ít cát thì tháp vỡ, nhiều quá thì sụt.",
+    "{name} xây mỗi lâu đài bốn tháp nhé!"
+  ],
+  "controls": ["hold", "tap"],
+  "duration": 90,
+  "goal": 12,
+  "params": { "band": 0.18 }
+}

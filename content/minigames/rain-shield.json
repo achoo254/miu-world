@@ -1,0 +1,14 @@
+{
+  "id": "rain-shield",
+  "name": "Che mưa cho cún",
+  "family": "draw-shield",
+  "howTo": [
+    "Sắp mưa rồi! {name} kéo ngón tay vẽ một nét làm mái che cho cún.",
+    "Nước mưa chảy xuống theo mái, gió thổi mưa xiên. Hết cơn mưa mà cún không ướt là qua màn.",
+    "Cún bị ướt thì vẽ lại màn đó nhé."
+  ],
+  "controls": ["drag"],
+  "duration": 90,
+  "goal": 5,
+  "params": { "ink": 300 }
+}

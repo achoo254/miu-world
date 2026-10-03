@@ -1,0 +1,14 @@
+/* Song ngữ: the Vietnamese line, with the English one smaller and softer under it (Master Plan §8c). */
+.bi {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: inherit;
+  line-height: 1.15;
+  vertical-align: middle;
+}
+
+.bi-en {
+  font-size: 0.78em;
+  font-weight: 600;
+  opacity: 0.82;
+}

@@ -1,0 +1,13 @@
+{
+  "id": "rice-pound",
+  "name": "Giã gạo",
+  "family": "alternate-beat",
+  "howTo": [
+    "Bác nông dân giã một nhịp, {name} giã nhịp tiếp theo, cứ thế luân phiên.",
+    "Chạm khi vòng sáng khép vào cối. Chạm lúc bạn đang giã thì hai chày va nhau!"
+  ],
+  "controls": ["tap"],
+  "duration": 60,
+  "goal": 35,
+  "params": { "speed": 1 }
+}

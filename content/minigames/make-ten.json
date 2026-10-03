@@ -1,0 +1,14 @@
+{
+  "id": "make-ten",
+  "name": "Ghép đôi tròn chục",
+  "family": "sum-pairs",
+  "howTo": [
+    "Chạm hai ô số cộng lại bằng 10 để hai ô biến mất.",
+    "Ô số dâng dần từ dưới lên. {name} đừng để ô chạm vạch trên nhé!",
+    "Ghép giỏi thì các số nhân 10: giờ hai số phải cộng bằng 100."
+  ],
+  "controls": ["tap"],
+  "duration": 90,
+  "goal": 20,
+  "params": { "speed": 1 }
+}

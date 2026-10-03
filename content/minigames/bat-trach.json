@@ -1,0 +1,14 @@
+{
+  "id": "bat-trach",
+  "name": "Bắt trạch trong chum",
+  "family": "track-hold-catch",
+  "howTo": [
+    "Con trạch trơn tuột bơi vòng trong chum nước.",
+    "{name} đặt ngón tay lên đầu trạch và bám theo nó đến khi vòng sáng đầy là bắt được.",
+    "Để tuột tay thì trạch lặn xuống rồi nổi lên chỗ khác."
+  ],
+  "controls": ["drag"],
+  "duration": 60,
+  "goal": 6,
+  "params": { "speed": 1 }
+}

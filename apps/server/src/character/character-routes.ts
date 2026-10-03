@@ -33,8 +33,8 @@ export function characterRoutes({ db, content }: CharacterRouteDeps): Router {
 
   /**
    * Name from the pick list; equipment only from the accessory catalogue, one item per slot, and only
-   * items the child has unlocked or bought in the shop (an item already worn stays wearable if its rule
-   * later tightens).
+   * items the child has unlocked, bought in the shop or claimed from a region chest (an item already worn
+   * stays wearable if its rule later tightens).
    * Species from `content/species.json`, pet from `content/pets.json` (null: none) and only one the child has
    * unlocked (the pet she already has stays hers); left out, each stays as it was.
    */
@@ -59,7 +59,8 @@ export function characterRoutes({ db, content }: CharacterRouteDeps): Router {
       if (lockedItems) {
         const worn = new Set(current.equipped);
         const completed = await completedQuestIds(db, childId);
-        const owned = items.some((item) => item?.unlock?.shop) ? await ownedItems(db, childId) : new Map<string, number>();
+        // Shop items once bought, region chest items once claimed: both sit in her cupboard.
+        const owned = items.some((item) => item?.unlock?.shop || item?.unlock?.region) ? await ownedItems(db, childId) : new Map<string, number>();
         for (const item of items) {
           if (item && !worn.has(item.id) && !isAccessoryOpen(item.unlock, level, completed, owned.has(item.id))) throw new HttpError(403, 'equipment-locked');
         }

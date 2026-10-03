@@ -1,0 +1,14 @@
+{
+  "id": "pull-pin",
+  "name": "Rút chốt",
+  "family": "pin-order",
+  "howTo": [
+    "Bi màu và bùn bị các chốt chặn lại. Vuốt (hoặc chạm) một chốt để rút nó ra.",
+    "{name} rút chốt đúng thứ tự cho bi rơi vào cốc. Bùn phải vào thùng rác, không lẫn bi.",
+    "Bùn vào cốc hay lẫn với bi thì bàn đó làm lại."
+  ],
+  "controls": ["swipe", "tap"],
+  "duration": 90,
+  "goal": 4,
+  "params": {}
+}

@@ -1,0 +1,14 @@
+{
+  "id": "cap-cua",
+  "name": "Cắp cua bỏ giỏ",
+  "family": "grab-lid",
+  "howTo": [
+    "Kéo từng chú cua đang bò ngang thả vào giỏ.",
+    "Bỏ cua vào xong, {name} nhớ chạm nắp giỏ để đậy lại nhé!",
+    "Để nắp mở lâu, cua sẽ bò ra ngoài đấy."
+  ],
+  "controls": ["drag", "tap"],
+  "duration": 60,
+  "goal": 12,
+  "params": {}
+}

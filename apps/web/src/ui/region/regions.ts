@@ -1,6 +1,7 @@
 // The region catalogue (content/world/regions.json, checked by `pnpm content:check`).
 import { RegionCatalog, defaultRegion, mapForRegion, type Region } from '@miu/schema/region';
 import regionsJson from '../../../../../content/world/regions.json';
+import { t } from '../i18n/i18n';
 import type { MusicMood } from '../sound/music';
 
 const CATALOG = RegionCatalog.parse(regionsJson);
@@ -25,5 +26,5 @@ export function findRegion(id: string): Region | undefined {
 /** Badge text for a region whose map is not built yet; a built map is always open (nothing is locked). */
 export function regionLockText(region: Region): string | null {
   if (region.status === 'open') return null;
-  return region.status === 'v1' ? 'Sắp có' : 'Sắp mở';
+  return region.status === 'v1' ? t('region.soon') : t('region.soonOpen');
 }

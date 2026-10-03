@@ -11,6 +11,8 @@ import type { MinigameSpec } from '@miu/schema/minigame';
 import type { BoosterEffect } from '@miu/schema/shop';
 import { freshPicker } from '@miu/quest/pick-fresh';
 import { fillPlayerName } from '@miu/quest/player-name';
+import { linesOf, mapBoth, type Bilingual, type TextKey } from '../i18n/i18n';
+import { Bi, T, useT } from '../i18n/use-t';
 import { Icon } from '../kit/art';
 import { buttonClass } from '../kit/button';
 import { Modal } from '../kit/modal';
@@ -38,12 +40,18 @@ export interface WinOutcome {
 
 /** The child's character as a picture, by species (content/species.json). */
 const PLAYER_SPRITES: Readonly<Record<string, SpriteName>> = { cat: 'cat', rabbit: 'rabbit', fox: 'fox', bear: 'bear' };
-const CONTROL_WORDS: Readonly<Record<MinigameSpec['controls'][number], string>> = { tap: 'Chạm', drag: 'Kéo', swipe: 'Vuốt', hold: 'Giữ' };
-const COUNTDOWN = ['3', '2', '1', 'Chơi!'] as const;
+const CONTROL_WORDS: Readonly<Record<MinigameSpec['controls'][number], TextKey>> = {
+  tap: 'minigame.control.tap',
+  drag: 'minigame.control.drag',
+  swipe: 'minigame.control.swipe',
+  hold: 'minigame.control.hold',
+};
+/** 3, 2, 1, then "Chơi!" (the last beat is a word, said in the display mode). */
+const COUNTDOWN = ['3', '2', '1', null] as const;
 const COUNT_MS = 700;
 
-const WIN_LINES = ['Giỏi quá {name} ơi!', 'Tuyệt vời, {name} thắng rồi!', 'Hoan hô {name}!', '{name} làm được rồi nè!', 'Quá đỉnh luôn {name}!'];
-const LOSE_LINES = ['Suýt nữa thôi {name}, thử lại nhé!', 'Gần tới đích rồi, chơi lại nào!', 'Không sao đâu {name}, lần sau sẽ được!', '{name} cố gắng lắm rồi, thêm một lần nhé!', 'Mình làm lại cho vui nào {name}!'];
+const WIN_LINES = linesOf('minigame.win');
+const LOSE_LINES = linesOf('minigame.lose');
 
 const reducedMotion = (): boolean => window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
 
@@ -52,7 +60,7 @@ type Phase = 'loading' | 'intro' | 'countdown' | 'playing' | 'paused' | 'result'
 interface Result {
   score: number;
   won: boolean;
-  line: string;
+  line: Bilingual;
 }
 
 type Payout = { state: 'none' } | { state: 'sending' } | { state: 'paid'; outcome: WinOutcome } | { state: 'failed' };
@@ -112,6 +120,7 @@ export function MinigameOverlay({ game, goal, params = {}, region, playerName, s
     latest.current = { onWin, onDone, result };
   });
   const fill = useCallback((text: string) => fillPlayerName(text, playerName), [playerName]);
+  const { t } = useT();
 
   // Load the game's code and pictures once.
   useEffect(() => {
@@ -165,7 +174,7 @@ export function MinigameOverlay({ game, goal, params = {}, region, playerName, s
       ...(round === 0 && freezeAt !== undefined ? { freezeAt, onFreeze: () => setFrozen(true) } : {}),
       onFinish: ({ score, won }) => {
         playCue(won ? 'complete' : 'wrong');
-        setResult({ score, won, line: fill((won ? pickers.current.win : pickers.current.lose).next()) });
+        setResult({ score, won, line: mapBoth((won ? pickers.current.win : pickers.current.lose).next(), fill) });
         setPhase('result');
       },
     });
@@ -276,7 +285,7 @@ export function MinigameOverlay({ game, goal, params = {}, region, playerName, s
   };
   const leave = (): void => latest.current.onDone(latest.current.result ? { score: latest.current.result.score, won: latest.current.result.won } : null);
 
-  const title = spec?.name ?? 'Trò chơi';
+  const title = spec?.name ?? t('minigame.title');
   const covered = phase === 'intro' || phase === 'paused' || phase === 'result';
   return (
     <div className="minigame" data-id="minigame" data-game={game} data-phase={phase} data-frozen={frozen || undefined}>
@@ -302,7 +311,7 @@ export function MinigameOverlay({ game, goal, params = {}, region, playerName, s
             />
           </span>
           {lives !== null ? (
-            <span className="minigame-chip" data-id="minigame-lives" aria-label="Lượt còn lại">
+            <span className="minigame-chip" data-id="minigame-lives" aria-label={t('minigame.livesLeft')}>
               <Icon name="heart" size={28} />
               <b
                 ref={(el) => {
@@ -313,27 +322,31 @@ export function MinigameOverlay({ game, goal, params = {}, region, playerName, s
               </b>
             </span>
           ) : null}
-          <button type="button" className="minigame-pause" data-id="minigame-pause" aria-label="Tạm dừng" onClick={pause} disabled={phase !== 'playing'}>
+          <button type="button" className="minigame-pause" data-id="minigame-pause" aria-label={t('minigame.pause')} onClick={pause} disabled={phase !== 'playing'}>
             <Icon name="pause" size={34} />
           </button>
         </div>
       ) : null}
       {phase === 'countdown' && count < COUNTDOWN.length ? (
         <div className="minigame-countdown" key={count} aria-live="assertive" data-id="minigame-countdown">
-          {COUNTDOWN[count]}
+          {COUNTDOWN[count] ?? <T k="minigame.go" />}
         </div>
       ) : null}
       {phase === 'loading' ? (
         <div className="minigame-loading" role="status" data-id="minigame-loading">
           {failed ? (
             <>
-              <p>Chưa mở được trò chơi.</p>
+              <p>
+                <T k="minigame.failed" />
+              </p>
               <button type="button" className={buttonClass('primary')} onClick={leave}>
-                Quay lại
+                <T k="common.back" />
               </button>
             </>
           ) : (
-            <p>Đang chuẩn bị trò chơi…</p>
+            <p>
+              <T k="minigame.preparing" />
+            </p>
           )}
         </div>
       ) : null}
@@ -347,28 +360,28 @@ export function MinigameOverlay({ game, goal, params = {}, region, playerName, s
               ))}
             </ul>
             <p className="minigame-goal">
-              <Icon name="glowingStar" size={28} /> Mục tiêu: {goal} điểm trong {spec.duration} giây
+              <Icon name="glowingStar" size={28} /> <T k="minigame.goal" params={{ goal, seconds: spec.duration }} />
             </p>
             {usable.length > 0 ? <BoosterChoice boosters={usable} chosen={chosen} disabled={spending} error={boostError} onChoose={setChosen} /> : null}
             <p className="minigame-controls">
               {spec.controls.map((c) => (
                 <span key={c} className="scene-chip">
-                  {CONTROL_WORDS[c]}
+                  <T k={CONTROL_WORDS[c]} />
                 </span>
               ))}
             </p>
           </div>
           <button type="button" className={`${buttonClass('primary', { block: true })} minigame-play`} data-id="minigame-start" disabled={spending} onClick={() => void play()}>
-            {spending ? 'Đang chuẩn bị…' : 'Chơi'}
+            <T k={spending ? 'minigame.preparingShort' : 'minigame.play'} />
           </button>
-          <button type="button" className="scene-close" data-id="minigame-close" aria-label="Thoát trò chơi" onClick={leave}>
+          <button type="button" className="scene-close" data-id="minigame-close" aria-label={t('minigame.quitLabel')} onClick={leave}>
             ✕
           </button>
         </Modal>
       ) : null}
       {phase === 'paused' ? (
         <Modal
-          title="Tạm dừng"
+          title={<T k="pause.title" />}
           onClose={() => {
             stage.current?.resume();
             setPhase('playing');
@@ -386,31 +399,35 @@ export function MinigameOverlay({ game, goal, params = {}, region, playerName, s
                 setPhase('playing');
               }}
             >
-              Chơi tiếp
+              <T k="minigame.resume" />
             </button>
             <button type="button" className={buttonClass('ghost', { block: true })} data-id="minigame-quit" onClick={leave}>
-              Thoát
+              <T k="minigame.quit" />
             </button>
           </div>
         </Modal>
       ) : null}
       {phase === 'result' && result ? (
-        <Modal title={result.won ? 'Thắng rồi!' : 'Hết giờ!'} onClose={leave} dataId="minigame-result" variant="scene">
+        <Modal title={<T k={result.won ? 'minigame.won' : 'minigame.timeUp'} />} onClose={leave} dataId="minigame-result" variant="scene">
           <div className="parchment minigame-result" data-won={result.won}>
             <StarRating stars={starsFor(result.score, goal)} size={56} dataId="minigame-stars" />
             <p className="minigame-score" data-id="minigame-final-score">
               {result.score}
-              <small> điểm · mục tiêu {goal}</small>
+              <small>
+                <T k="minigame.scoreOf" params={{ goal }} />
+              </small>
             </p>
-            <p className="minigame-line">{result.line}</p>
+            <p className="minigame-line">
+              <Bi vi={result.line.vi} en={result.line.en} />
+            </p>
             {result.won ? <Payout payout={payout} onRetry={() => void send(result.score)} /> : null}
           </div>
           <div className="minigame-actions minigame-actions--row">
             <button type="button" className={buttonClass('secondary', { block: true })} data-id="minigame-again" onClick={again} disabled={payout.state === 'sending'}>
-              Chơi lại
+              <T k="common.playAgain" />
             </button>
             <button type="button" className={buttonClass('primary', { block: true })} data-id="minigame-done" onClick={leave} disabled={payout.state === 'sending'}>
-              Xong
+              <T k="common.done" />
             </button>
           </div>
         </Modal>
@@ -422,13 +439,19 @@ export function MinigameOverlay({ game, goal, params = {}, region, playerName, s
 /** The server's reward for a won round: every win pays (owner, 03/10/2026). */
 function Payout({ payout, onRetry }: { payout: Payout; onRetry: () => void }) {
   if (payout.state === 'none') return null;
-  if (payout.state === 'sending') return <p className="minigame-payout" role="status">Đang nhận thưởng…</p>;
+  if (payout.state === 'sending') {
+    return (
+      <p className="minigame-payout" role="status">
+        <T k="minigame.paying" />
+      </p>
+    );
+  }
   if (payout.state === 'failed') {
     return (
       <p className="minigame-payout" role="alert">
-        Chưa gửi được điểm.{' '}
+        <T k="minigame.sendFailed" />{' '}
         <button type="button" className={buttonClass('ghost', { small: true })} data-id="minigame-retry" onClick={onRetry}>
-          Gửi lại
+          <T k="minigame.resend" />
         </button>
       </p>
     );
@@ -444,12 +467,12 @@ function Payout({ payout, onRetry }: { payout: Payout; onRetry: () => void }) {
       ) : null}
       {reward.coin > 0 ? (
         <span className="scene-chip">
-          <Icon name="coin" size={24} /> +{reward.coin} xu
+          <Icon name="coin" size={24} /> <T k="minigame.coinsUp" params={{ coin: reward.coin }} />
         </span>
       ) : null}
       {levelUp ? (
         <span className="scene-chip minigame-level" data-id="minigame-level-up">
-          <SpriteIcon name="trophy" size={24} /> Lên cấp {levelUp}!
+          <SpriteIcon name="trophy" size={24} /> <T k="common.levelUpTo" params={{ level: levelUp }} />
         </span>
       ) : null}
     </p>

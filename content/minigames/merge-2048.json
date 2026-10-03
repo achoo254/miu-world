@@ -1,0 +1,14 @@
+{
+  "id": "merge-2048",
+  "name": "Gộp số đôi",
+  "family": "slide-merge",
+  "howTo": [
+    "Vuốt lên, xuống, sang trái, sang phải: mọi ô số trượt theo.",
+    "Hai ô cùng số chạm nhau thì gộp lại: 2 + 2 = 4, 4 + 4 = 8… {name} tạo được ô 64 nhé!",
+    "Bàn đầy thì chỉ giữ lại ô lớn nhất, chơi tiếp."
+  ],
+  "controls": ["swipe"],
+  "duration": 90,
+  "goal": 64,
+  "params": { "size": 4 }
+}

@@ -199,8 +199,9 @@ export const homeDecor = pgTable('home_decor', {
 
 /**
  * What the child bought in the shop (content/shop): a wearable or a home style once, a booster by how many she
- * still has. Changed only together with the ledger row of the purchase or the use, in one transaction; gone
- * with the profile.
+ * still has; also the exclusive wearables she claimed from region chests (content/region-rewards.json), never
+ * sold. Changed only together with the ledger row of the purchase, the use or the claim, in one transaction;
+ * gone with the profile.
  */
 export const shopInventory = pgTable(
   'shop_inventory',

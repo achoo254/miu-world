@@ -28,6 +28,12 @@ export type GameErrorCode = 'load-failed' | 'context-lost';
  */
 export type AutowalkState = 'idle' | 'finding' | 'walking' | 'arrived' | 'failed';
 
+/**
+ * A place to walk to, picked on the full map: a target of this map by id (a gate, a ride stop, a character, the
+ * quest's place), or a spot on the ground (a named place).
+ */
+export type WalkGoal = { targetId: string } | { position: readonly [number, number, number] };
+
 /** Server-backed state of region targets, pushed by React after each quest response. */
 export type TargetState = 'found' | 'open' | 'hidden';
 
@@ -94,6 +100,8 @@ export type GameCommand =
   | { type: 'autowalk-start' }
   /** Stop that walk where she is (tapping the card again). */
   | { type: 'autowalk-stop' }
+  /** Walk Miu to a place picked on the full map, along the ways (the same walk, its line on the quest card). */
+  | { type: 'autowalk-to'; to: WalkGoal }
   /** Get on the equipped vehicle, or off it (the HUD's "Lái xe" / "Xuống xe"). */
   | { type: 'ride'; on: boolean };
 

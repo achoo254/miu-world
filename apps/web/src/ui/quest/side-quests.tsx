@@ -15,6 +15,8 @@ import { StarRating } from '../kit/star-rating';
 import { Toast } from '../kit/toast';
 import { MinigameOverlay, type WinOutcome } from '../minigame/minigame-overlay';
 import { MINIGAME_SPECS } from '../minigame/registry';
+import { mapBoth, pairOf, same, type Bilingual } from '../i18n/i18n';
+import { Bi, useT } from '../i18n/use-t';
 import { say, type PlayerData } from '../player/player-data';
 import { currentStep, runFor, type ActiveQuestView } from './quest-flow';
 import './side-quests.css';
@@ -76,7 +78,8 @@ export interface SideQuests {
 export function useSideQuests({ region, data, onResponse }: { region: string; data: PlayerData; onResponse: (response: StepCompleteResponse) => void }): SideQuests {
   const [quests, setQuests] = useState<SideQuest[]>([]);
   const [screen, setScreen] = useState<Screen | null>(null);
-  const [toast, setToast] = useState<string | null>(null);
+  const [toast, setToast] = useState<Bilingual | null>(null);
+  const { t } = useT();
   const won = useRef(false);
 
   useEffect(() => {
@@ -118,7 +121,7 @@ export function useSideQuests({ region, data, onResponse }: { region: string; da
     const shown = screen && screen.kind !== 'pick' ? quests.find((s) => s.quest.id === screen.id) : undefined;
     // A won game ends with its reward line from the character.
     const reward = shown?.quest.steps.find((s) => s.kind === 'reward');
-    if (won.current && reward && reward.kind === 'reward') setToast(say(reward.text, data.character));
+    if (won.current && reward && reward.kind === 'reward') setToast(same(say(reward.text, data.character)));
     setScreen(null);
   };
 
@@ -130,7 +133,9 @@ export function useSideQuests({ region, data, onResponse }: { region: string; da
       <Modal title={speaker} onClose={close} dataId="side-quest-pick" variant="scene">
         <div className="npc-say">
           <NpcPortrait name={speaker} target={screen.giver} size={96} reaction="speak" reactionKey="pick" />
-          <p className="parchment npc-bubble">{say('Chơi trò gì với tớ nào {name}?', data.character)}</p>
+          <p className="parchment npc-bubble">
+            <Bi {...mapBoth(pairOf('side.pick'), (line) => say(line, data.character))} />
+          </p>
         </div>
         <div className="side-quest-games">
           {screen.quests.map((s) => {
@@ -144,7 +149,7 @@ export function useSideQuests({ region, data, onResponse }: { region: string; da
             );
           })}
         </div>
-        <button type="button" className="scene-close" aria-label="Đóng" onClick={close}>
+        <button type="button" className="scene-close" aria-label={t('common.close')} onClick={close}>
           ✕
         </button>
       </Modal>

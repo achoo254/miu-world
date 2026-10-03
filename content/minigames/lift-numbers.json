@@ -1,0 +1,14 @@
+{
+  "id": "lift-numbers",
+  "name": "Thang máy số",
+  "family": "tens-ones",
+  "howTo": [
+    "Khách cầm thẻ như \"4 chục 7\", tức là muốn lên tầng số 47.",
+    "{name} chạm một tầng để đưa thang máy tới đó, chạm Sảnh để đón thêm khách.",
+    "Mỗi khách xuống đúng tầng được một điểm. Thang chở được 4 khách."
+  ],
+  "controls": ["tap"],
+  "duration": 90,
+  "goal": 15,
+  "params": {}
+}

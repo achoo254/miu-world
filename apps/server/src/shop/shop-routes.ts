@@ -42,10 +42,10 @@ async function shopState(db: Db | Tx, childId: string, content: ContentCatalog):
 }
 
 /**
- * Purchases and uses of one child run one at a time: her profile row is locked for the transaction, so two
- * taps on two things cannot both spend the same coins.
+ * Purchases, uses and chest claims of one child run one at a time: her profile row is locked for the
+ * transaction, so two taps on two things cannot both spend the same coins.
  */
-async function lockChild(tx: Tx, childId: string): Promise<void> {
+export async function lockChild(tx: Tx, childId: string): Promise<void> {
   await tx.select({ id: childProfiles.id }).from(childProfiles).where(eq(childProfiles.id, childId)).for('update');
 }
 

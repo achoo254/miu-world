@@ -1,0 +1,13 @@
+{
+  "id": "folk-riddle",
+  "name": "Câu đố dân gian",
+  "family": "riddle",
+  "howTo": [
+    "Câu đố hiện từng dòng. {name} đọc rồi chạm hình đúng với câu đố.",
+    "Mỗi câu chọn một lần, sai ba lần là hết lượt. Đoán càng nhanh, giải càng nhiều câu!"
+  ],
+  "controls": ["tap"],
+  "duration": 90,
+  "goal": 7,
+  "params": {}
+}

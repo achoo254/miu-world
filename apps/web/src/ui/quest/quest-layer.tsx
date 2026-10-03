@@ -9,6 +9,7 @@ import { DialogueScreen } from '../dialogue/dialogue-screen';
 import { buttonClass } from '../kit/button';
 import { Modal } from '../kit/modal';
 import { Toast } from '../kit/toast';
+import { T } from '../i18n/use-t';
 import { say, type PlayerData } from '../player/player-data';
 import { OfflineBanner } from '../system/offline-banner';
 import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react';
@@ -80,9 +81,11 @@ export function QuestLayer({
     ) : (
       // Mechanics that have no screen yet (textbook ones arrive with their own plan).
       <Modal title={say(shown.title, data.character)} onClose={quest.close} dataId="quest-step">
-        <p>Thử thách này sắp có.</p>
+        <p>
+          <T k="challenge.soon" />
+        </p>
         <button type="button" className={buttonClass('primary', { block: true })} onClick={quest.close}>
-          Đóng
+          <T k="common.close" />
         </button>
       </Modal>
     );

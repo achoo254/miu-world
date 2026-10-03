@@ -2,6 +2,7 @@
 // minigame booster. Prices, balance and ownership are always the server's answer.
 import { ShopBuyResponse, ShopResponse, ShopState } from '@miu/schema/shop';
 import { ApiError, api, errorMessage } from '../api-client';
+import { t, type TextKey } from '../i18n/i18n';
 
 export function loadShop(): Promise<ShopResponse> {
   return api('GET', '/shop', ShopResponse);
@@ -30,15 +31,16 @@ export function requestId(): string {
 }
 
 /** What the shop's refusals say to a child (everything else: the app's usual messages). */
-const SHOP_MESSAGES: Readonly<Record<string, string>> = {
-  'not-enough-coins': 'Chưa đủ xu rồi. Làm nhiệm vụ hoặc thắng trò chơi để có thêm xu nhé!',
-  'already-owned': 'Bé đã có món này rồi.',
-  'shop-level-locked': 'Món này cần cấp cao hơn. Làm thêm nhiệm vụ để lên cấp nhé!',
-  'too-many': 'Bé đã có rất nhiều món này rồi, dùng bớt rồi mua tiếp nhé.',
-  'not-owned': 'Bé chưa có món hỗ trợ này.',
-  'decor-locked': 'Kiểu này mua ở cửa hàng trước đã nhé.',
+const SHOP_MESSAGES: Readonly<Record<string, TextKey>> = {
+  'not-enough-coins': 'shop.err.notEnough',
+  'already-owned': 'shop.err.owned',
+  'shop-level-locked': 'shop.err.level',
+  'too-many': 'shop.err.tooMany',
+  'not-owned': 'shop.err.notOwned',
+  'decor-locked': 'shop.err.decor',
 };
 
 export function shopErrorMessage(err: unknown): string {
-  return (err instanceof ApiError ? SHOP_MESSAGES[err.code] : undefined) ?? errorMessage(err);
+  const key = err instanceof ApiError ? SHOP_MESSAGES[err.code] : undefined;
+  return key ? t(key) : errorMessage(err);
 }

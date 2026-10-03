@@ -1,0 +1,14 @@
+{
+  "id": "pop-lock",
+  "name": "Mở khóa rương",
+  "family": "ring-timing",
+  "howTo": [
+    "Kim đỏ chạy vòng quanh ổ khóa. {name} chạm màn hình đúng lúc kim chạm đồng xu vàng.",
+    "Đúng thì kim quay đầu. Đủ sáu đồng xu là mở được một khóa.",
+    "Chạm trượt hay để kim chạy qua thì khóa đó làm lại."
+  ],
+  "controls": ["tap"],
+  "duration": 60,
+  "goal": 4,
+  "params": { "speed": 1 }
+}

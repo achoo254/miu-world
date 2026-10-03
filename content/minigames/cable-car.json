@@ -1,0 +1,14 @@
+{
+  "id": "cable-car",
+  "name": "Đưa khách lên cáp treo",
+  "family": "fit-groups",
+  "howTo": [
+    "Mỗi cabin có 4 chỗ. Số trên cabin là số chỗ còn trống.",
+    "Cabin vào cổng sáng thì {name} chạm một nhóm khách vừa đủ chỗ để mời lên.",
+    "Mỗi khách lên cabin được một điểm. Nhóm đông quá thì chờ cabin sau."
+  ],
+  "controls": ["tap"],
+  "duration": 90,
+  "goal": 50,
+  "params": {}
+}

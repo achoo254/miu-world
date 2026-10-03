@@ -1,0 +1,14 @@
+{
+  "id": "cube-hop",
+  "name": "Nhảy đổi màu kim tự tháp",
+  "family": "paint-hop",
+  "howTo": [
+    "Chạm một khối ngay cạnh để {name} nhảy sang. Khối nào nhảy lên cũng đổi màu.",
+    "Né những quả bóng nảy từ đỉnh xuống, và đừng nhảy ra ngoài tháp.",
+    "Đổi màu hết tháp thì có tháp mới!"
+  ],
+  "controls": ["tap"],
+  "duration": 90,
+  "goal": 35,
+  "params": {}
+}

@@ -1,0 +1,14 @@
+{
+  "id": "roof-tiles",
+  "name": "Lợp ngói trước mưa",
+  "family": "layer-build",
+  "howTo": [
+    "Kéo ngói từ chồng ngói lên mái nhà.",
+    "Lợp từ dưới lên: hàng trên phải đè lên hàng dưới đã lợp.",
+    "{name} lợp kín mái để trời mưa không bị dột nhé!"
+  ],
+  "controls": ["drag"],
+  "duration": 90,
+  "goal": 27,
+  "params": {}
+}

@@ -16,6 +16,7 @@ import { RegionCatalog, mapForRegion, regionGuides } from '../../packages/schema
 import { UI_ICONS } from '../../apps/web/src/ui/kit/ui-art';
 import { MUSIC_MOODS } from '../../apps/web/src/ui/sound/music';
 import { SPRITE_PATHS } from '../../apps/web/src/ui/minigame/sprites';
+import { loadRegionRewards, questsByRegion } from '../../apps/server/src/region-reward/region-reward-catalog';
 import { loadShopCatalog } from '../../apps/server/src/shop/shop-catalog';
 import { ACCESSORY_SLOTS, MIN_OPEN_ITEMS, openItemsInSlot, type AccessoryItem } from '../../packages/voxel/src/accessory-schema';
 import { modelCatalogSchema } from '../../packages/voxel/src/model-catalog';
@@ -25,6 +26,7 @@ import { CURRICULUM_FOLDERS, checkCurriculum } from './check-curriculum';
 import { percentCovered, sumGaps } from './content-gaps';
 import { varietyIssues } from './content-variety';
 import { checkCurriculumLinks } from './curriculum-links';
+import { checkLocales } from './check-locales';
 import { modelSwatches } from './pet-swatches';
 import { questSpread } from './quest-spread';
 
@@ -45,6 +47,8 @@ const CATALOGUE_FILES = [
   'home/decor.json',
   // What the shop sells and for how much (apps/server/src/shop), one file per category.
   'shop/',
+  // Each region's chest: tiers, coins, XP, exclusive wearables and titles (apps/server/src/region-reward).
+  'region-rewards.json',
 ];
 /** Content files the asset tools validate when they build characters, atlases and maps (any file in a folder). */
 const ASSET_TOOL_FILES = [
@@ -458,6 +462,9 @@ export function checkContent(dir: string = CONTENT_DIR): ContentReport {
     // The shop sells real wearables and home styles; its pictures are the web app's icons and minigame pictures.
     const decor = HomeDecorCatalog.safeParse(read('home/decor.json'));
     if (decor.success) loadShopCatalog(catalog.accessories, decor.data, dir, new Set([...Object.keys(UI_ICONS), ...Object.keys(SPRITE_PATHS)]));
+    // Every open region has a chest of its own wearables, and lessons to earn it with.
+    const lessons = new Map([...questsByRegion(catalog.quests.values(), 'main')].map(([region, ids]) => [region, ids.length]));
+    loadRegionRewards(catalog.accessories, dir, lessons);
     const privacy: unknown = JSON.parse(readFileSync(path.join(dir, PRIVACY_FILE), 'utf8'));
     issues.push(...checkPrivacy(privacy, catalog.consent.version));
     if (PrivacyDocument.safeParse(privacy).data?.contactEmail === null) warnings.push(`content/${PRIVACY_FILE} has no contact email yet`);
@@ -492,6 +499,8 @@ export function checkContent(dir: string = CONTENT_DIR): ContentReport {
 
 function main(): void {
   const report = checkContent();
+  // The web app's bilingual dictionaries: every Vietnamese line has its English twin.
+  report.issues.push(...checkLocales());
   for (const note of report.notes) console.log(`note: ${note}`);
   for (const warning of report.warnings) console.log(`warning: ${warning}`);
   if (report.issues.length > 0) {

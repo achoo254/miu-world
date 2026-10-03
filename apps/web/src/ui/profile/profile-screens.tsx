@@ -4,6 +4,7 @@
 import { Link } from 'react-router';
 import { BackpackPanel } from '../backpack/backpack-panel';
 import { ITEMS, itemIcon } from '../backpack/items';
+import { T, useT } from '../i18n/use-t';
 import { Icon } from '../kit/art';
 import { buttonClass } from '../kit/button';
 import { SkyScene } from '../kit/sky-scene';
@@ -18,17 +19,24 @@ function Page({ children, data, error }: { children: (data: PlayerData) => React
       <main className="region-page" data-id="profile-page">
         {error ? (
           <p role="alert" className="error">
-            {error} <Link to="/home">Về trang chủ</Link>
+            {error}{' '}
+            <Link to="/home">
+              <T k="common.backHome" />
+            </Link>
           </p>
         ) : null}
-        {!data && !error ? <p role="status">Đang tải…</p> : null}
+        {!data && !error ? (
+          <p role="status">
+            <T k="common.loading" />
+          </p>
+        ) : null}
         {data ? (
           <>
             <header className="region-top">
               <PlayerBadge character={data.character} progress={data.progress} />
               <Link to="/home" className={buttonClass('ghost', { small: true })} data-id="profile-home">
                 <Icon name="house" size={28} />
-                Trang chủ
+                <T k="common.home" />
               </Link>
             </header>
             {children(data)}
@@ -47,7 +55,7 @@ export function BackpackScreen() {
         <section className="panel" aria-labelledby="backpack-title" data-id="backpack">
           <h1 id="backpack-title" className="panel-title">
             <Icon name="backpack" size={44} />
-            Ba lô
+            <T k="common.backpack" />
           </h1>
           <BackpackPanel data={player} />
         </section>
@@ -58,6 +66,7 @@ export function BackpackScreen() {
 
 export function ProfileScreen() {
   const { data, error } = usePlayer();
+  const { t } = useT();
   return (
     <Page data={data} error={error}>
       {(player) => {
@@ -67,7 +76,7 @@ export function ProfileScreen() {
             <section className="panel" aria-labelledby="skills-title" data-id="profile-skills">
               <h1 id="skills-title" className="panel-title">
                 <Icon name="books" size={44} />
-                Kỹ năng của {player.character.name}
+                <T k="profile.skillsOf" params={{ name: player.character.name }} />
               </h1>
               {player.progress.subjects.map((subject) => (
                 <section key={subject.subjectId} aria-label={subject.name}>
@@ -90,7 +99,7 @@ export function ProfileScreen() {
             <section className="panel" aria-labelledby="collection-title" data-id="profile-collection">
               <h2 id="collection-title" className="panel-title">
                 <Icon name="glowingStar" size={36} />
-                Bộ sưu tập
+                <T k="profile.collection" />
               </h2>
               <ul className="item-grid-backpack">
                 {[...ITEMS.values()].map((item) => {
@@ -98,7 +107,7 @@ export function ProfileScreen() {
                   return (
                     <li key={item.id}>
                       <div className={`bag-tile${has ? '' : ' bag-tile--locked'}`} data-id={`collection-${item.id}`} data-owned={has}>
-                        <Icon name={has ? itemIcon(item) : 'locked'} size={44} label={has ? undefined : 'Chưa có'} />
+                        <Icon name={has ? itemIcon(item) : 'locked'} size={44} label={has ? undefined : t('common.notYet')} />
                         {has ? say(item.name, player.character) : '???'}
                       </div>
                     </li>
@@ -109,10 +118,17 @@ export function ProfileScreen() {
             <section className="panel" data-id="profile-more">
               <Link to="/backpack" className={buttonClass('secondary')} data-id="profile-backpack">
                 <Icon name="backpack" size={28} />
-                Ba lô
+                <T k="common.backpack" />
               </Link>
               <p>
-                Hành trình <span className="badge">Sắp có</span> · Thành tích <span className="badge">Sắp có</span>
+                <T k="profile.journey" />{' '}
+                <span className="badge">
+                  <T k="common.comingSoon" />
+                </span>{' '}
+                · <T k="profile.achievements" />{' '}
+                <span className="badge">
+                  <T k="common.comingSoon" />
+                </span>
               </p>
             </section>
           </>

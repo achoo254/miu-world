@@ -1,0 +1,14 @@
+{
+  "id": "book-shelf-order",
+  "name": "Xếp sách theo số",
+  "family": "insert-order",
+  "howTo": [
+    "Sách trên kệ xếp theo số từ bé đến lớn, từ trái sang phải.",
+    "{name} kéo cuốn sách mới lên kệ (hoặc chạm vào khe) cho đúng chỗ.",
+    "Đặt sai thì sách đổ, phải chờ sách về xe rồi đặt lại."
+  ],
+  "controls": ["drag", "tap"],
+  "duration": 90,
+  "goal": 22,
+  "params": {}
+}

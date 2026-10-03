@@ -1,0 +1,14 @@
+{
+  "id": "mastermind",
+  "name": "Đoán mã ngọc",
+  "family": "code-break",
+  "howTo": [
+    "Rương khóa bằng ba viên ngọc khác nhau. {name} chạm ngọc ở khay để đoán.",
+    "Mỗi ngôi sao là một viên đúng chỗ. Mỗi vòng tròn là đúng màu nhưng sai chỗ.",
+    "Đoán đúng trong tám lần thì rương mở, được một điểm."
+  ],
+  "controls": ["tap"],
+  "duration": 90,
+  "goal": 2,
+  "params": {}
+}

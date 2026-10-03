@@ -1,0 +1,14 @@
+{
+  "id": "robot-path",
+  "name": "Rô-bốt hút bụi",
+  "family": "program-run",
+  "howTo": [
+    "{name} chạm các nút để xếp lệnh: đi một ô, rẽ trái, rẽ phải. Nút đỏ xóa lệnh cuối.",
+    "Xếp xong thì chạm nút chạy. Rô-bốt phải hút hết bụi mà không đụng đồ.",
+    "Đụng đồ thì rô-bốt về góc, sửa lệnh rồi chạy lại."
+  ],
+  "controls": ["tap"],
+  "duration": 90,
+  "goal": 4,
+  "params": {}
+}

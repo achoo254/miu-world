@@ -4,6 +4,7 @@
 // without textbook lessons says what it is for instead. Tapping a card opens the region.
 import { Link } from 'react-router';
 import type { CharacterDto, QuestSummary } from '@miu/schema/game';
+import { Bi, T } from '../i18n/use-t';
 import { Icon } from '../kit/art';
 import { say } from '../player/player-data';
 import { pageText } from '../player/textbook-ref';
@@ -16,7 +17,7 @@ export function RegionBooks({ quests, character }: { quests: readonly QuestSumma
     <section className="region-books" aria-labelledby="region-books-title" data-id="map-books">
       <h2 id="region-books-title" className="region-books-title">
         <Icon name="books" size={32} />
-        Sách trong từng khu
+        <T k="region.booksTitle" />
       </h2>
       <ul className="region-books-list">
         {open.map((region) => {
@@ -29,8 +30,12 @@ export function RegionBooks({ quests, character }: { quests: readonly QuestSumma
                   books.map((b, i) => (
                     <span key={b.book} className="region-books-row" data-id={`map-books-${region.id}-${i}`}>
                       <span className="region-books-book">{b.book}</span>
-                      <strong className="textbook-ref-pages">{pageText(b.pages)}</strong>
-                      <span className="region-books-count">{b.lessons} bài</span>
+                      <strong className="textbook-ref-pages">
+                        <Bi {...pageText(b.pages)} />
+                      </strong>
+                      <span className="region-books-count">
+                        <T k="region.lessonCount" params={{ count: b.lessons }} />
+                      </span>
                     </span>
                   ))
                 ) : (

@@ -1,0 +1,13 @@
+{
+  "id": "fruit-skewer",
+  "name": "Xiên que theo mẫu",
+  "family": "pattern-next",
+  "howTo": [
+    "Đầu que đã có mẫu, ví dụ dâu, chuối, dâu, chuối.",
+    "{name} chạm quả đúng tiếp theo trên băng chuyền. Chọn sai thì que phải xiên lại."
+  ],
+  "controls": ["tap"],
+  "duration": 60,
+  "goal": 8,
+  "params": { "speed": 1 }
+}

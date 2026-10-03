@@ -1,0 +1,241 @@
+/* The full map (map-sheet.ts): fills the screen over the game and its HUD, the map on a canvas under a title
+   bar (name, ✕) and the bottom tools (Về chỗ bạn, − +), the picked place's card, the list and the legend's
+   chips. Tokens come from ui/tokens.css. */
+.map-sheet {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-overlay, 6);
+  overflow: hidden;
+  background: var(--color-parchment);
+  color: var(--color-parchment-ink);
+  font-family: var(--font-body);
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+.map-sheet:focus { outline: none; }
+.map-sheet [hidden] { display: none !important; }
+/* Over the old sheet's look for the same canvas class (game.css): the map fills the whole screen. */
+.map-sheet .minimap-sheet-canvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  cursor: grab;
+  touch-action: none;
+}
+.map-sheet .minimap-sheet-canvas:active { cursor: grabbing; }
+
+.map-sheet-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: calc(var(--space-sm) + env(safe-area-inset-top, 0px)) calc(var(--space-md) + env(safe-area-inset-right, 0px)) var(--space-sm) calc(var(--space-md) + env(safe-area-inset-left, 0px));
+  pointer-events: none;
+}
+.map-sheet-title {
+  min-width: 0;
+  margin: 0;
+  padding: var(--space-xs) var(--space-md);
+  overflow: hidden;
+  border: 3px solid var(--color-wood-edge);
+  border-radius: var(--radius-pill);
+  background: var(--color-wood);
+  color: var(--color-wood-ink);
+  font: 800 var(--text-lg) / 1.2 var(--font-display);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  box-shadow: var(--shadow-tile);
+}
+.map-sheet-close {
+  flex: none;
+  width: 3.25rem;
+  height: 3.25rem;
+  margin-left: auto;
+  padding: 0;
+  border: 4px solid var(--color-surface);
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  font: 800 var(--text-lg) / 1 var(--font-display);
+  box-shadow: var(--shadow-primary);
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.map-sheet-bottom {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--space-sm);
+  padding: 0 calc(var(--space-md) + env(safe-area-inset-right, 0px)) calc(var(--space-sm) + env(safe-area-inset-bottom, 0px)) calc(var(--space-md) + env(safe-area-inset-left, 0px));
+  pointer-events: none;
+}
+.map-sheet-bottom > :not(.map-sheet-tools), .map-sheet-tools > * { pointer-events: auto; }
+.map-sheet-tools { display: flex; align-items: flex-end; justify-content: space-between; gap: var(--space-sm); }
+.map-sheet-zoom-group { display: flex; gap: var(--space-sm); }
+.map-sheet-zoom, .map-sheet-recenter {
+  min-width: 3.25rem;
+  height: 3.25rem;
+  border: 3px solid var(--color-wood-edge);
+  border-radius: var(--radius-pill);
+  background: var(--color-surface);
+  color: var(--color-ink);
+  box-shadow: var(--shadow-tile);
+  cursor: pointer;
+}
+.map-sheet-zoom { padding: 0; font: 800 1.75rem / 1 var(--font-display); }
+.map-sheet-recenter {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 0 var(--space-md) 0 var(--space-sm);
+  font: 800 var(--text-body) / 1 var(--font-display);
+}
+/* The child's arrow, as on the map. */
+.map-sheet-you {
+  width: 1.75rem;
+  height: 1.75rem;
+  border: 3px solid var(--color-surface);
+  border-radius: 50%;
+  background: var(--color-secondary);
+  box-shadow: var(--shadow-label);
+  position: relative;
+}
+.map-sheet-you::after {
+  content: '';
+  position: absolute;
+  inset: 22% 18% 22% 26%;
+  background: var(--color-surface);
+  clip-path: polygon(0 0, 100% 50%, 0 100%, 25% 50%);
+}
+
+.map-sheet-card {
+  align-self: center;
+  box-sizing: border-box;
+  width: min(100%, 26rem);
+  padding: var(--space-sm) var(--space-md) var(--space-md);
+  border: 4px solid var(--color-parchment-edge);
+  border-radius: var(--radius-tile);
+  background: var(--color-parchment);
+  box-shadow: var(--shadow-material);
+}
+.map-sheet-card-head { display: flex; align-items: center; gap: var(--space-sm); }
+.map-sheet-card-title { flex: 1; min-width: 0; margin: 0; font: 800 var(--text-lg) / 1.2 var(--font-display); }
+.map-sheet-card-detail { margin: var(--space-xs) 0 var(--space-sm); font-weight: 700; color: var(--color-ink-soft); }
+.map-sheet-card-close {
+  flex: none;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--color-parchment-deep);
+  color: var(--color-parchment-ink);
+  font: 800 var(--text-body) / 1 var(--font-display);
+  cursor: pointer;
+}
+.map-sheet-go { margin-top: var(--space-xs); }
+.map-sheet-go-icon { width: 1.75rem; height: 1.75rem; pointer-events: none; }
+
+/* A marker's look in the DOM: a round chip in its colour; home a house, the quest a star, a station a square. */
+.map-sheet-swatch {
+  flex: none;
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 3px solid var(--color-surface);
+  border-radius: 50%;
+  background: var(--swatch, var(--color-wood));
+  box-shadow: var(--shadow-label);
+}
+.map-sheet-swatch--stop { border-radius: 0.35rem; }
+.map-sheet-swatch--place { width: 0.85rem; height: 0.85rem; margin: 0.2rem; border-width: 2px; }
+.map-sheet-swatch--quest, .map-sheet-swatch--home { border: 0; border-radius: 0; box-shadow: none; }
+.map-sheet-swatch--quest { clip-path: polygon(50% 0, 63% 35%, 100% 38%, 71% 61%, 81% 100%, 50% 78%, 19% 100%, 29% 61%, 0 38%, 37% 35%); }
+.map-sheet-swatch--home { clip-path: polygon(50% 0, 100% 45%, 86% 45%, 86% 100%, 14% 100%, 14% 45%, 0 45%); }
+.map-sheet-swatch--gate { background: radial-gradient(circle, var(--color-surface) 0 32%, var(--swatch) 34%); }
+
+.map-sheet-list {
+  align-self: center;
+  box-sizing: border-box;
+  display: grid;
+  gap: var(--space-xs);
+  width: min(100%, 30rem);
+  max-height: min(42vh, 22rem);
+  padding: var(--space-sm);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border: 4px solid var(--color-parchment-edge);
+  border-radius: var(--radius-tile);
+  background: var(--color-parchment);
+  box-shadow: var(--shadow-material);
+  touch-action: pan-y;
+}
+.map-sheet-list-head { margin: var(--space-xs) var(--space-sm) 0; font: 800 var(--text-sm) / 1.2 var(--font-display); color: var(--color-ink-soft); }
+.map-sheet-list-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  min-height: 2.75rem;
+  padding: var(--space-xs) var(--space-sm);
+  border: 0;
+  border-radius: var(--radius-field);
+  background: var(--color-surface-faint);
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.map-sheet-list-text { display: grid; min-width: 0; }
+.map-sheet-list-name { font-weight: 800; }
+.map-sheet-list-detail { overflow: hidden; color: var(--color-ink-soft); font-size: var(--text-sm); white-space: nowrap; text-overflow: ellipsis; }
+
+/* The legend: "Danh sách", then one row of chips scrolled sideways when it does not fit. */
+.map-sheet-legend { display: flex; align-items: center; gap: var(--space-sm); }
+.map-sheet-chips {
+  flex: 1;
+  display: flex;
+  gap: var(--space-sm);
+  min-width: 0;
+  padding: var(--space-xs) 0 var(--space-sm);
+  overflow-x: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: none;
+  touch-action: pan-x;
+}
+.map-sheet-chips::-webkit-scrollbar { display: none; }
+.map-sheet-chip {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  min-height: 2.75rem;
+  padding: 0 var(--space-md) 0 var(--space-sm);
+  border: 3px solid var(--color-parchment-edge);
+  border-radius: var(--radius-pill);
+  background: var(--color-surface);
+  color: var(--color-parchment-ink);
+  font: 800 var(--text-sm) / 1 var(--font-display);
+  box-shadow: var(--shadow-tile);
+  cursor: pointer;
+}
+.map-sheet-chip[aria-pressed='false'] { background: var(--color-parchment-deep); color: var(--color-ink-soft); }
+.map-sheet-chip[aria-pressed='false'] .map-sheet-swatch { opacity: 0.35; }
+.map-sheet-chip-count { color: var(--color-ink-soft); font-family: var(--font-body); }
+.map-sheet-chip--list { padding: 0 var(--space-md); background: var(--color-wood); border-color: var(--color-wood-edge); color: var(--color-wood-ink); }
+.map-sheet-chip--list[aria-expanded='true'] { background: var(--color-wood-edge); }
+.map-sheet button:focus-visible { outline: none; box-shadow: var(--focus-ring); }

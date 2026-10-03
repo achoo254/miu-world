@@ -1,0 +1,14 @@
+{
+  "id": "hole-grow",
+  "name": "Hố hút dọn sân",
+  "family": "grow-swallow",
+  "howTo": [
+    "{name} kéo cái hố đi khắp sân. Đồ nào nhỏ hơn miệng hố sẽ rơi vào.",
+    "Hố hút càng nhiều càng to ra, rồi hút được cả đồ to. Mỗi món là một điểm.",
+    "Sân sạch thì có sân mới, hố lại nhỏ như lúc đầu."
+  ],
+  "controls": ["drag"],
+  "duration": 60,
+  "goal": 32,
+  "params": {}
+}

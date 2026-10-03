@@ -1,0 +1,14 @@
+{
+  "id": "danh-khang",
+  "name": "Đánh khăng",
+  "family": "flick-strike",
+  "howTo": [
+    "Chạm lần thứ nhất để hất que khăng ngắn lên.",
+    "Chạm lần thứ hai đúng lúc que lên cao nhất để đánh thật xa. {name} có sáu lượt!",
+    "Đánh hụt thì lượt đó không được mét nào."
+  ],
+  "controls": ["tap"],
+  "duration": 60,
+  "goal": 100,
+  "params": { "turns": 6 }
+}

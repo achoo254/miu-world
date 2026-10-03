@@ -1,0 +1,14 @@
+{
+  "id": "bus-lines",
+  "name": "Vẽ tuyến xe buýt",
+  "family": "route-network",
+  "howTo": [
+    "Kéo từ trạm này sang trạm khác để vẽ tuyến xe buýt, kéo từ đầu tuyến để nối dài.",
+    "Khách muốn tới trạm có hình giống hình của khách.",
+    "{name} nối sao cho ai cũng về được nhé!"
+  ],
+  "controls": ["drag"],
+  "duration": 90,
+  "goal": 40,
+  "params": {}
+}

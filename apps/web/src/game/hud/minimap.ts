@@ -1,15 +1,21 @@
 // The minimap on /play (owner's mock, panel 14): a round map in the top right corner under the menu, north up,
-// the child's arrow in its middle, the gates in their portal colours, her home, the quest's place. A tap
-// opens the whole map with its legend; a tap on it (or its ✕) closes it again. Drawn on a 2D canvas a few
-// times a second (half as often on the low quality), never per frame; the game writes it, React never does.
+// the child's arrow in its middle, the gates in their portal colours, her home, the characters who offer a
+// minigame, the quest's place. A tap opens the whole map (map-sheet.ts), where a tap on a place walks her
+// there. The disc is drawn on a 2D canvas a few times a second (half as often on the low quality), never per
+// frame; the game writes it, React never does.
 import type { Atlas } from '@miu/voxel/block-table';
 import type { Horizon } from '@miu/voxel/region-format';
-import { MARKER_COLOURS, commonHeight, headingAngle, minimapLegend, minimapPixels, onDisc, toMinimap, type MinimapMarker, type MinimapView } from './minimap-model';
+import type { WalkGoal } from '../../game-bridge/game-store';
+import { drawMarker, drawPlayer } from './map-draw';
+import { createMapSheet, el } from './map-sheet';
+import { MAP_MARGIN, MARKER_COLOURS, commonHeight, minimapPixels, onDisc, questMarker, toMinimap, type MinimapMarker, type MinimapView, type PlaceKind } from './minimap-model';
 
 /** Blocks from the child to the disc's edge. */
 const DISC_REACH = 36;
 /** Seconds between two drawings of the disc (low quality: twice as long). */
 const REDRAW_S = 0.25;
+/** What the small disc shows: the places worth heading for, not every stop and named place. */
+const ON_DISC: ReadonlySet<PlaceKind> = new Set(['gate', 'home', 'side', 'quest']);
 
 export interface MinimapInput {
   atlas: Atlas;
@@ -17,14 +23,31 @@ export interface MinimapInput {
   horizon: Horizon;
   /** The core's size in blocks (x, z). */
   size: readonly [number, number];
+  /** The map's fixed markers (minimap-model.ts `minimapMarkers`). */
   markers: readonly MinimapMarker[];
+  /** The map's name, over the full map. */
+  title: string;
   lite: boolean;
+  /** "Đi tới đây" on the full map: walk her to that place. */
+  onGo(goal: WalkGoal): void;
+}
+
+/** The quest's place now: the target the quest card points at. */
+export interface MinimapQuest {
+  id: string;
+  label: string;
+  x: number;
+  z: number;
 }
 
 export interface Minimap {
   root: HTMLElement;
+  /** The full map covers the screen: nothing of the 3D view shows. */
+  readonly covering: boolean;
   /** Where the child is, which way she faces, and the quest's place (null when none on this map). */
-  update(dt: number, at: { x: number; z: number; facing: number }, quest: { x: number; z: number } | null): void;
+  update(dt: number, at: { x: number; z: number; facing: number }, quest: MinimapQuest | null): void;
+  /** The characters who offer a minigame on this map (read after the map is up). */
+  setSideMarkers(markers: readonly MinimapMarker[]): void;
   dispose(): void;
 }
 
@@ -44,13 +67,6 @@ function blockColours(atlas: Atlas, image: CanvasImageSource | null): Map<number
     out.set(block.id, [r, g, b]);
   }
   return out;
-}
-
-function el<K extends keyof HTMLElementTagNameMap>(tag: K, className: string, dataId?: string): HTMLElementTagNameMap[K] {
-  const node = document.createElement(tag);
-  node.className = className;
-  if (dataId) node.dataset.id = dataId;
-  return node;
 }
 
 export function createMinimap(host: HTMLElement, input: MinimapInput): Minimap {
@@ -73,19 +89,7 @@ export function createMinimap(host: HTMLElement, input: MinimapInput): Minimap {
   north.textContent = 'B';
   north.setAttribute('aria-hidden', 'true');
   disc.append(discCanvas, north);
-
-  const sheet = el('div', 'minimap-sheet', 'game-minimap-sheet');
-  sheet.hidden = true;
-  sheet.setAttribute('role', 'dialog');
-  sheet.setAttribute('aria-label', 'Bản đồ');
-  const sheetCanvas = el('canvas', 'minimap-sheet-canvas');
-  const legend = el('ul', 'minimap-legend', 'game-minimap-legend');
-  const close = el('button', 'minimap-close', 'game-minimap-close');
-  close.type = 'button';
-  close.setAttribute('aria-label', 'Đóng bản đồ');
-  close.textContent = '✕';
-  sheet.append(sheetCanvas, legend, close);
-  root.append(disc, sheet);
+  root.append(disc);
   host.append(root);
 
   const ratio = Math.min(window.devicePixelRatio || 1, 2);
@@ -93,147 +97,103 @@ export function createMinimap(host: HTMLElement, input: MinimapInput): Minimap {
   const token = (name: string, fallback: string): string => getComputedStyle(root).getPropertyValue(name).trim() || fallback;
   const meadow = token('--color-grass', '#9fd38a');
   const outline = token('--color-surface', '#ffffff');
-  const fit = (canvas: HTMLCanvasElement): number => {
-    const side = Math.max(1, Math.round((canvas.getBoundingClientRect().width || 128) * ratio));
-    if (canvas.width !== side) {
-      canvas.width = side;
-      canvas.height = side;
-    }
-    return side;
-  };
+  const ink = token('--color-ink', '#2b2140');
 
   let at = { x: input.size[0] / 2, z: input.size[1] / 2, facing: 0 };
-  let quest: { x: number; z: number } | null = null;
+  let side: readonly MinimapMarker[] = [];
+  let quest: MinimapMarker | null = null;
+  let questKey = '';
+  /** Every marker of the full map, rebuilt only when the quest's place or the side markers change. */
+  let markers: readonly MinimapMarker[] = input.markers;
   let wait = 0;
-  let legendFor = '';
+  const rebuild = (): void => {
+    markers = [...input.markers, ...side, ...(quest ? [quest] : [])];
+  };
 
-  const drawMap = (ctx: CanvasRenderingContext2D, view: MinimapView, round: boolean): void => {
-    const { size } = view;
+  const sheet = createMapSheet({
+    base,
+    extent: [cw * cell, ch * cell],
+    rect: { x0: -MAP_MARGIN, z0: -MAP_MARGIN, x1: input.size[0] + MAP_MARGIN, z1: input.size[1] + MAP_MARGIN },
+    title: input.title,
+    colours: { meadow, outline, ink },
+    onGo: (goal) => input.onGo(goal),
+    onClosed: () => {
+      delete root.dataset.open;
+      drawDisc();
+      disc.focus({ preventScroll: true });
+    },
+  });
+
+  const drawDisc = (): void => {
+    const size = Math.max(1, Math.round((discCanvas.getBoundingClientRect().width || 128) * ratio));
+    if (discCanvas.width !== size) {
+      discCanvas.width = size;
+      discCanvas.height = size;
+    }
+    const ctx = discCanvas.getContext('2d');
+    if (!ctx) return;
+    const view: MinimapView = { x: at.x, z: at.z, half: DISC_REACH, size };
     ctx.save();
     ctx.clearRect(0, 0, size, size);
-    if (round) {
-      ctx.beginPath();
-      ctx.arc(size / 2, size / 2, size / 2, 0, Math.PI * 2);
-      ctx.clip();
-    }
-    // The land round the core is not in the horizon: a soft meadow under it.
+    ctx.beginPath();
+    ctx.arc(size / 2, size / 2, size / 2, 0, Math.PI * 2);
+    ctx.clip();
     ctx.fillStyle = meadow;
     ctx.fillRect(0, 0, size, size);
     ctx.imageSmoothingEnabled = false;
     const [x0, z0] = toMinimap(view, 0, 0);
     const [x1, z1] = toMinimap(view, cw * cell, ch * cell);
     ctx.drawImage(base, x0, z0, x1 - x0, z1 - z0);
-    const dot = Math.max(5, size * (round ? 0.035 : 0.018));
-    const mark = (m: { x: number; z: number; colour: string }, shape: 'ring' | 'house' | 'star'): void => {
-      if (round && !onDisc(view, m.x, m.z, dot)) return;
+    const dot = Math.max(5, size * 0.035);
+    for (const m of markers) {
+      if (!ON_DISC.has(m.kind) || !onDisc(view, m.x, m.z, dot)) continue;
       const [px, py] = toMinimap(view, m.x, m.z);
-      ctx.fillStyle = m.colour;
-      ctx.strokeStyle = outline;
-      ctx.lineWidth = Math.max(1.5, dot * 0.3);
-      ctx.beginPath();
-      if (shape === 'house') {
-        ctx.moveTo(px, py - dot * 1.3);
-        ctx.lineTo(px + dot * 1.2, py - dot * 0.1);
-        ctx.lineTo(px + dot * 0.85, py - dot * 0.1);
-        ctx.lineTo(px + dot * 0.85, py + dot);
-        ctx.lineTo(px - dot * 0.85, py + dot);
-        ctx.lineTo(px - dot * 0.85, py - dot * 0.1);
-        ctx.lineTo(px - dot * 1.2, py - dot * 0.1);
-        ctx.closePath();
-      } else if (shape === 'star') {
-        for (let k = 0; k < 10; k++) {
-          const r = k % 2 === 0 ? dot * 1.3 : dot * 0.55;
-          const a = -Math.PI / 2 + (k * Math.PI) / 5;
-          if (k === 0) ctx.moveTo(px + r * Math.cos(a), py + r * Math.sin(a));
-          else ctx.lineTo(px + r * Math.cos(a), py + r * Math.sin(a));
-        }
-        ctx.closePath();
-      } else ctx.arc(px, py, dot, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.stroke();
-    };
-    for (const m of input.markers) mark(m, m.kind === 'home' ? 'house' : 'ring');
-    if (quest) mark({ ...quest, colour: MARKER_COLOURS.quest }, 'star');
-    // The child: an arrow the way she faces, ringed in white.
+      drawMarker(ctx, m.kind, px, py, dot, m.colour, outline);
+    }
     const [px, py] = toMinimap(view, at.x, at.z);
-    const a = headingAngle(at.facing);
-    const r = Math.max(7, size * 0.05);
-    ctx.translate(px, py);
-    ctx.rotate(a);
-    ctx.beginPath();
-    ctx.moveTo(r, 0);
-    ctx.lineTo(-r * 0.7, r * 0.75);
-    ctx.lineTo(-r * 0.35, 0);
-    ctx.lineTo(-r * 0.7, -r * 0.75);
-    ctx.closePath();
-    ctx.fillStyle = MARKER_COLOURS.player;
-    ctx.strokeStyle = outline;
-    ctx.lineWidth = Math.max(2, r * 0.25);
-    ctx.fill();
-    ctx.stroke();
+    drawPlayer(ctx, px, py, Math.max(7, size * 0.05), at.facing, MARKER_COLOURS.player, outline);
     ctx.restore();
   };
 
-  const drawDisc = (): void => {
-    const size = fit(discCanvas);
-    const ctx = discCanvas.getContext('2d');
-    if (ctx) drawMap(ctx, { x: at.x, z: at.z, half: DISC_REACH, size }, true);
-  };
-  const drawSheet = (): void => {
-    const size = fit(sheetCanvas);
-    const ctx = sheetCanvas.getContext('2d');
-    const half = Math.max(input.size[0], input.size[1]) / 2;
-    if (ctx) drawMap(ctx, { x: input.size[0] / 2, z: input.size[1] / 2, half, size }, false);
-    const entries = minimapLegend(input.markers, quest !== null);
-    const key = entries.map((e) => e.label).join('|');
-    if (key === legendFor) return;
-    legendFor = key;
-    legend.replaceChildren(
-      ...entries.map((entry) => {
-        const item = el('li', `minimap-legend-item minimap-legend-item--${entry.kind}`);
-        const chip = el('span', 'minimap-legend-chip');
-        chip.style.background = entry.colour;
-        item.append(chip, document.createTextNode(entry.label));
-        return item;
-      }),
-    );
-  };
-
   const open = (): void => {
-    sheet.hidden = false;
     root.dataset.open = 'true';
-    drawSheet();
-    close.focus({ preventScroll: true });
-  };
-  const shut = (): void => {
-    sheet.hidden = true;
-    delete root.dataset.open;
-    disc.focus({ preventScroll: true });
+    sheet.show({ markers, player: at });
   };
   disc.addEventListener('click', open);
-  close.addEventListener('click', shut);
-  sheet.addEventListener('click', (e) => {
-    if (e.target === sheet || e.target === sheetCanvas) shut();
-  });
-  // Touches on the minimap never reach the game's camera drag under it, nor its guard against text selection
+  // Touches on the disc never reach the game's camera drag under it, nor its guard against text selection
   // (which cancels a touch's click).
-  for (const node of [disc, sheet]) {
-    node.addEventListener('pointerdown', (e) => e.stopPropagation());
-    node.addEventListener('touchstart', (e) => e.stopPropagation(), { passive: true });
-  }
+  disc.addEventListener('pointerdown', (e) => e.stopPropagation());
+  disc.addEventListener('touchstart', (e) => e.stopPropagation(), { passive: true });
 
   return {
     root,
+    get covering() {
+      return sheet.isOpen;
+    },
     update(dt, now, place) {
       at = now;
-      quest = place;
+      const key = place ? `${place.id}:${place.x}:${place.z}` : '';
+      if (key !== questKey) {
+        questKey = key;
+        quest = place ? questMarker(place) : null;
+        rebuild();
+      }
+      if (sheet.isOpen) {
+        sheet.update({ markers, player: at });
+        return;
+      }
       wait -= dt;
       if (wait > 0) return;
       wait = REDRAW_S * (input.lite ? 2 : 1);
-      if (sheet.hidden) drawDisc();
-      else drawSheet();
+      drawDisc();
+    },
+    setSideMarkers(next) {
+      side = next;
+      rebuild();
+      wait = 0;
     },
     dispose() {
+      sheet.dispose();
       root.remove();
     },
   };

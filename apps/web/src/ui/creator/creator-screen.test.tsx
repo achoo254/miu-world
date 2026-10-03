@@ -229,6 +229,19 @@ describe('Character Creator', () => {
     expect(itemTile('hat-witch-galaxy').getAttribute('aria-pressed')).toBe('true');
   });
 
+  it("shows a region chest's item as its chest's gift until claimed, then as hers to wear", async () => {
+    stubApi({ level: 30 });
+    renderCreator();
+    fireEvent.click(await screen.findByRole('button', { name: /Mèo/ }));
+    expect(itemTile('hat-ruong-nui-tuyet').disabled).toBe(true);
+    expect(itemTile('hat-ruong-nui-tuyet').textContent).toContain('Quà rương Núi tuyết');
+    cleanup();
+    stubApi({ owned: { 'hat-ruong-nui-tuyet': 1 } });
+    renderCreator();
+    fireEvent.click(await screen.findByRole('button', { name: /Mèo/ }));
+    expect(itemTile('hat-ruong-nui-tuyet').disabled).toBe(false);
+  });
+
   it('offers fifty pets, locks the ones above the child\'s level, and keeps the one she already has', async () => {
     stubApi({ level: 2, pet: 'ho-con' });
     renderCreator();

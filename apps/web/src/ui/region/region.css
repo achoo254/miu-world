@@ -89,7 +89,103 @@
   background: var(--color-surface-glass);
   font-weight: 700;
 }
-.region-chest { width: 4.5rem; height: 4.5rem; margin-block: calc(-1 * var(--space-sm)); filter: drop-shadow(0 6px 6px var(--color-island-shadow)); }
+.region-chest { width: var(--chest-size, 4.5rem); height: var(--chest-size, 4.5rem); margin-block: calc(-1 * var(--space-sm)); filter: drop-shadow(0 6px 6px var(--color-island-shadow)); }
+
+/*
+ * The region's chest and its tiers. The lesson bar carries a gift where the half tier sits; the chest wiggles
+ * while it waits to be opened and stands open (lid tipped back, rays behind) once claimed.
+ */
+.region-track { position: relative; }
+.region-track-mark {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: grid;
+  place-items: center;
+  width: 1.9rem;
+  height: 1.9rem;
+  border-radius: 50%;
+  background: var(--color-surface);
+  box-shadow: var(--shadow-label);
+  filter: grayscale(1);
+}
+.region-track-mark--reached { filter: none; }
+.region-goal { font-weight: 800; color: var(--color-primary); }
+.region-title-earned { display: inline-flex; align-items: center; gap: var(--space-xs); align-self: flex-start; padding: 0 var(--space-sm); border-radius: var(--radius-pill); background: var(--color-badge); color: var(--color-badge-ink); font-family: var(--font-display); font-weight: 700; font-size: var(--text-sm); }
+.region-chest-slot { display: grid; place-items: center; flex-shrink: 0; }
+.region-chest-button {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+  min-width: 3rem;
+  min-height: 3rem;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  border-radius: var(--radius-field);
+}
+.region-chest-button:focus-visible { box-shadow: var(--focus-ring); outline: none; }
+.region-chest-badge { align-self: center; white-space: nowrap; background: var(--color-primary); color: var(--color-on-primary); }
+
+.chest-open { position: relative; display: block; width: var(--chest-size, 4.5rem); height: var(--chest-size, 4.5rem); }
+.chest-open .chest-half { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; }
+/* One picture cut in two at the lid's seam: the lid half tips back on its hinge. */
+.chest-body { clip-path: inset(42% 0 0 0); }
+.chest-lid { clip-path: inset(0 0 58% 0); transform-origin: 50% 42%; transform: perspective(20rem) rotateX(62deg) translateY(-18%); filter: drop-shadow(0 6px 6px var(--color-island-shadow)); }
+.chest-rays {
+  position: absolute;
+  inset: -35%;
+  border-radius: 50%;
+  background: repeating-conic-gradient(var(--color-star) 0 10deg, transparent 10deg 30deg);
+  mask: radial-gradient(circle, black 20%, transparent 68%);
+  opacity: 0.75;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .region-chest-button .region-chest { animation: chest-wiggle 1.6s ease-in-out infinite; }
+  .chest-lid { animation: chest-lid-open 700ms var(--ease-pop) 250ms backwards; }
+  .chest-rays { animation: chest-rays-in 600ms ease-out 450ms backwards, chest-rays-spin 9s linear 450ms infinite; }
+}
+@keyframes chest-wiggle { 0%, 60%, 100% { transform: none; } 70% { transform: rotate(-8deg) scale(1.06); } 80% { transform: rotate(7deg) scale(1.06); } 90% { transform: rotate(-4deg); } }
+@keyframes chest-lid-open { from { transform: none; } }
+@keyframes chest-rays-in { from { opacity: 0; transform: scale(0.3); } }
+@keyframes chest-rays-spin { to { rotate: 1turn; } }
+
+.region-tiers { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-xs); }
+.region-tier {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-field);
+  background: var(--color-surface-glass);
+  box-shadow: var(--shadow-material);
+  color: var(--color-ink);
+}
+.region-tier--ready { background: var(--color-badge); box-shadow: var(--shadow-material), 0 0 0 3px var(--color-primary); }
+.region-tier--locked > img, .region-tier--locked > .icon { filter: grayscale(1); opacity: 0.6; }
+.region-tier-chest { width: 2.5rem; height: 2.5rem; }
+.region-tier-text { flex: 1; min-width: 0; display: flex; flex-direction: column; line-height: 1.2; }
+.region-tier-ask { font-size: var(--text-sm); color: var(--color-ink-soft); font-weight: 700; }
+.region-tier-gives { display: flex; align-items: center; flex-wrap: wrap; gap: 0 var(--space-xs); font-size: var(--text-sm); font-weight: 800; }
+.region-tier-item { width: 1.75rem; height: 1.75rem; border-radius: var(--radius-key); background: var(--color-surface); }
+.region-tier-done { display: inline-flex; align-items: center; gap: var(--space-xs); font-weight: 800; font-size: var(--text-sm); color: var(--color-ink-soft); white-space: nowrap; }
+
+/* "Chúc mừng!" (on the scene parchment of `.reward-body`): the chest opens, then what it gave slides in one by one. */
+.region-claim { display: flex; flex-direction: column; align-items: center; gap: var(--space-sm); text-align: center; }
+.region-claim .chest-open { margin-block: var(--space-md) var(--space-sm); }
+.region-claim-lead { margin: 0; font-family: var(--font-display); font-weight: 800; font-size: var(--text-lg); }
+.region-claim-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-xs); align-items: stretch; font-weight: 800; font-size: var(--text-lg); }
+.region-claim-list li { display: flex; align-items: center; gap: var(--space-sm); }
+.region-claim-item, .region-claim-title { padding: var(--space-xs) var(--space-sm); border-radius: var(--radius-field); background: var(--color-surface-glass); text-align: left; }
+.region-claim-item img { width: 5rem; height: 5rem; border-radius: var(--radius-tile); background: var(--color-surface); box-shadow: var(--shadow-tile); }
+.region-claim-item > span, .region-claim-title > span { display: flex; flex-direction: column; gap: var(--space-xs); }
+@media (prefers-reduced-motion: no-preference) {
+  .region-claim-reveal { animation: region-claim-in 420ms var(--ease-pop) backwards; animation-delay: calc(900ms + var(--reveal, 0) * 260ms); }
+}
+@keyframes region-claim-in { from { opacity: 0; transform: translateY(0.75rem) scale(0.8); } }
 
 /* The quest board: parchment in a wooden frame, one row per quest, grouped by chapter. */
 .quest-board {

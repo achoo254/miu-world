@@ -1,0 +1,13 @@
+{
+  "id": "pay-exact",
+  "name": "Trả tiền vừa đủ",
+  "family": "exact-pay",
+  "howTo": [
+    "Món hàng có ghi giá. {name} chạm tờ tiền 1, 2, 5, 10 nghìn để đưa vào khay.",
+    "Đưa vừa đủ thì mua được hàng. Đưa thừa thì cô bán hàng trả lại cả khay."
+  ],
+  "controls": ["tap"],
+  "duration": 90,
+  "goal": 10,
+  "params": {}
+}

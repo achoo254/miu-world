@@ -1,0 +1,13 @@
+{
+  "id": "boomerang-throw",
+  "name": "Ném boomerang",
+  "family": "boomerang",
+  "howTo": [
+    "{name} vuốt để ném boomerang qua chùm quả. Vuốt dài thì bay xa.",
+    "Boomerang bay vòng rồi quay về: chạm để bắt khi vòng ở tay sáng lên."
+  ],
+  "controls": ["swipe", "tap"],
+  "duration": 60,
+  "goal": 20,
+  "params": {}
+}

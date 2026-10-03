@@ -1,0 +1,14 @@
+{
+  "id": "tidy-room",
+  "name": "Đồ về đúng chỗ",
+  "family": "room-recall",
+  "howTo": [
+    "Nhìn kĩ căn phòng gọn gàng trong vài giây.",
+    "Bạn gà con chạy qua làm đồ chơi rơi hết ra giữa phòng.",
+    "{name} kéo từng món về đúng chỗ cũ của nó nhé!"
+  ],
+  "controls": ["drag"],
+  "duration": 90,
+  "goal": 15,
+  "params": {}
+}

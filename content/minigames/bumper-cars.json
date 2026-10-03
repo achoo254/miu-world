@@ -1,0 +1,13 @@
+{
+  "id": "bumper-cars",
+  "name": "Xe điện đụng",
+  "family": "bump-out",
+  "howTo": [
+    "Xe của {name} chạy theo ngón tay trên sàn tròn.",
+    "Húc xe khác văng ra khỏi sàn để ghi điểm. Bị húc ra thì hai giây sau vào lại."
+  ],
+  "controls": ["drag"],
+  "duration": 60,
+  "goal": 6,
+  "params": {}
+}

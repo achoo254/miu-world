@@ -1,0 +1,14 @@
+{
+  "id": "hand-span",
+  "name": "Đo bằng gang tay",
+  "family": "measure-units",
+  "howTo": [
+    "{name} chạm dọc đồ vật để đặt gang tay, gang sau nối liền gang trước, từ đầu bên trái.",
+    "Đặt hở hay chồng lên nhau thì gang tay hiện màu đỏ, đo sẽ lệch.",
+    "Đặt kín rồi chạm số gang tay đúng để được một điểm."
+  ],
+  "controls": ["tap"],
+  "duration": 90,
+  "goal": 8,
+  "params": {}
+}

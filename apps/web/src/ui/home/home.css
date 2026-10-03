@@ -13,7 +13,11 @@
   gap: var(--space-md);
 }
 .home-top { display: flex; justify-content: space-between; align-items: center; gap: var(--space-sm); }
+.home-profile { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-xs); min-width: 0; }
 .home-profile-link { color: inherit; text-decoration: none; border-radius: var(--radius-pill); }
+/* The title of her latest region chest, under her badge. */
+.home-title { display: inline-flex; align-items: center; gap: var(--space-xs); margin: 0; padding: 0 var(--space-sm); border-radius: var(--radius-pill); background: var(--color-badge); color: var(--color-badge-ink); font-family: var(--font-display); font-weight: 700; font-size: var(--text-sm); max-width: 100%; }
+.home-title-more { opacity: 0.75; }
 .home-profile-link:focus-visible { box-shadow: var(--focus-ring); outline: none; }
 .home-round-button {
   flex-shrink: 0;

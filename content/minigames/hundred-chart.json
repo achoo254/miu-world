@@ -1,0 +1,18 @@
+{
+  "id": "hundred-chart",
+  "name": "Bảng trăm ô",
+  "family": "number-grid",
+  "howTo": [
+    "Bảng số từ 1 đến 100 bị mất vài ô. {name} kéo mảnh số vào đúng chỗ trống.",
+    "Sang phải thêm 1, xuống dưới thêm 10. Chạm mảnh rồi chạm ô trống."
+  ],
+  "controls": [
+    "drag",
+    "tap"
+  ],
+  "duration": 90,
+  "goal": 8,
+  "params": {
+    "holes": 4
+  }
+}

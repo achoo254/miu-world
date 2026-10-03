@@ -11,12 +11,14 @@ const itemId = z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/);
 /**
  * What the child must reach before wearing the item (the server enforces it). Absent = open from the start.
  * `shop`: sold in the shop (content/shop) and worn once bought; such an item has no other condition (its
- * level, if any, is the shop's).
+ * level, if any, is the shop's). `region`: given only by that region's chest (content/region-rewards.json),
+ * never sold, and worn once claimed; no other condition either.
  */
 const unlockSchema = z
-  .strictObject({ level: int.min(2).optional(), quest: itemId.optional(), shop: z.literal(true).optional() })
-  .refine((u) => u.level !== undefined || u.quest !== undefined || u.shop !== undefined, { message: 'unlock needs a level, a quest or the shop' })
-  .refine((u) => !u.shop || (u.level === undefined && u.quest === undefined), { message: 'a shop item is opened by buying it only' });
+  .strictObject({ level: int.min(2).optional(), quest: itemId.optional(), shop: z.literal(true).optional(), region: itemId.optional() })
+  .refine((u) => u.level !== undefined || u.quest !== undefined || u.shop !== undefined || u.region !== undefined, { message: 'unlock needs a level, a quest, the shop or a region' })
+  .refine((u) => !u.shop || (u.level === undefined && u.quest === undefined && u.region === undefined), { message: 'a shop item is opened by buying it only' })
+  .refine((u) => u.region === undefined || (u.level === undefined && u.quest === undefined), { message: "a region's item is opened by its chest only" });
 export type AccessoryUnlock = z.infer<typeof unlockSchema>;
 
 /**
@@ -170,12 +172,12 @@ export function parseAccessory(json: unknown): AccessoryDef {
 }
 
 /**
- * An item opens once the child reaches its level and has finished its quest, or, for a shop item, once she
- * has bought it (`owned`). Server-enforced; the UI mirrors it.
+ * An item opens once the child reaches its level and has finished its quest, or, for a shop item or a
+ * region's chest item, once she has bought or claimed it (`owned`). Server-enforced; the UI mirrors it.
  */
 export function isAccessoryOpen(unlock: AccessoryUnlock | undefined, level: number, completed: ReadonlySet<string>, owned = false): boolean {
   if (!unlock) return true;
-  if (unlock.shop) return owned;
+  if (unlock.shop || unlock.region !== undefined) return owned;
   return (unlock.level === undefined || level >= unlock.level) && (unlock.quest === undefined || completed.has(unlock.quest));
 }
 

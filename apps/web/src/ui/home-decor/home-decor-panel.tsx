@@ -7,6 +7,8 @@
 import type { DecorSide, DecorSlot } from '@miu/schema/home-decor';
 import { useEffect, useState } from 'react';
 import { errorMessage } from '../api-client';
+import { mapBoth, pairOf, type Bilingual } from '../i18n/i18n';
+import { Bi, T, useT } from '../i18n/use-t';
 import { Icon } from '../kit/art';
 import { buttonClass } from '../kit/button';
 import { Modal } from '../kit/modal';
@@ -21,8 +23,9 @@ import './home-decor.css';
  * style shows its price and a lock; tapping it says where to get it.
  */
 function SlotPicker({ slot, picked, priceOf, onPick, onLocked }: { slot: DecorSlot; picked: string; priceOf: (option: string) => number | null; onPick: (option: string) => void; onLocked: (price: number) => void }) {
+  const { t } = useT();
   return (
-    <div className="decor-options" role="group" aria-label={`Kiểu ${slot.name.toLocaleLowerCase('vi')}`} data-id={`decor-options-${slot.id}`}>
+    <div className="decor-options" role="group" aria-label={t('decor.styleOf', { slot: slot.name.toLocaleLowerCase('vi') })} data-id={`decor-options-${slot.id}`}>
       {slot.options.map((option) => {
         const on = option.id === picked;
         const price = priceOf(option.id);
@@ -37,7 +40,11 @@ function SlotPicker({ slot, picked, priceOf, onPick, onLocked }: { slot: DecorSl
           >
             <span className="decor-swatch" style={swatchStyle(option.swatch)} aria-hidden="true" />
             <span className="decor-card-name">{option.name}</span>
-            {option.id === slot.default ? <span className="decor-card-own">Kiểu có sẵn</span> : null}
+            {option.id === slot.default ? (
+              <span className="decor-card-own">
+                <T k="decor.default" />
+              </span>
+            ) : null}
             {price === null ? null : (
               <span className="decor-card-price" data-id={`decor-price-${option.id}`}>
                 <Icon name="locked" size={20} />
@@ -71,7 +78,8 @@ export function HomeDecorPanel({ onClose, onSaved }: { onClose: () => void; /** 
   const [saveError, setSaveError] = useState<string | null>(null);
   /** The shop's styles: price of each, and those she owns (unknown until the shop answers: none locked). */
   const [shop, setShop] = useState<{ prices: ReadonlyMap<string, number>; owned: ReadonlySet<string> } | null>(null);
-  const [lockNote, setLockNote] = useState<string | null>(null);
+  const [lockNote, setLockNote] = useState<Bilingual | null>(null);
+  const { t } = useT();
 
   useEffect(() => {
     let live = true;
@@ -130,7 +138,7 @@ export function HomeDecorPanel({ onClose, onSaved }: { onClose: () => void; /** 
   };
 
   return (
-    <Modal title="Trang trí nhà" onClose={onClose} dataId="decor" variant="scene" size="wide" className="decor-modal">
+    <Modal title={<T k="decor.title" />} onClose={onClose} dataId="decor" variant="scene" size="wide" className="decor-modal">
       {saved === null ? (
         loadError ? (
           <div className="scene-panel decor-message">
@@ -146,18 +154,18 @@ export function HomeDecorPanel({ onClose, onSaved }: { onClose: () => void; /** 
                 setLoads((n) => n + 1);
               }}
             >
-              Thử lại
+              <T k="common.retry" />
             </button>
           </div>
         ) : (
           <p className="scene-panel decor-message" data-id="decor-loading">
-            Đang mở…
+            <T k="common.opening" />
           </p>
         )
       ) : (
         <section className="decor-board parchment" data-id="decor-board">
-          <Tabs label="Trang trí" items={(['inside', 'outside'] as const).map((key) => ({ key, label: SIDE_LABELS[key] }))} active={side} onChange={setSide} dataId="decor-side">
-            <div className="decor-slots" role="group" aria-label={`Đồ ${SIDE_LABELS[side].toLocaleLowerCase('vi')}`}>
+          <Tabs label={t('decor.tabs')} items={(['inside', 'outside'] as const).map((key) => ({ key, label: <T k={SIDE_LABELS[key]} /> }))} active={side} onChange={setSide} dataId="decor-side">
+            <div className="decor-slots" role="group" aria-label={t('decor.piecesOf', { side: mapBoth(pairOf(SIDE_LABELS[side]), (s) => s.toLocaleLowerCase('vi')) })}>
               {slots.map((s) => {
                 const picked = s.options.find((o) => o.id === draft[s.id]) ?? s.options[0];
                 return (
@@ -177,12 +185,12 @@ export function HomeDecorPanel({ onClose, onSaved }: { onClose: () => void; /** 
                   setLockNote(null);
                   setDraft((now) => ({ ...now, [slot.id]: option }));
                 }}
-                onLocked={(price) => setLockNote(`Kiểu này có ở Cửa hàng, giá ${price} xu. Bé ghé Cửa hàng ở Trung tâm hoặc trên Trang chủ để mua nhé!`)}
+                onLocked={(price) => setLockNote(pairOf('decor.locked', { price }))}
               />
             ) : null}
           </Tabs>
           <p className="decor-hint" data-id="decor-hint" aria-live="polite">
-            {lockNote ?? 'Chọn kiểu bé thích rồi bấm “Lưu” để xem nhà mới nhé! Kiểu có ổ khóa thì mua ở Cửa hàng.'}
+            <Bi {...(lockNote ?? pairOf('decor.hint'))} />
           </p>
         </section>
       )}
@@ -193,13 +201,13 @@ export function HomeDecorPanel({ onClose, onSaved }: { onClose: () => void; /** 
       ) : null}
       <div className="scene-bar">
         <button type="button" className={buttonClass('ghost')} data-id="decor-cancel" disabled={saving} onClick={onClose}>
-          Hủy
+          <T k="common.cancel" />
         </button>
         <button type="button" className={buttonClass('primary')} data-id="decor-save" disabled={saving || saved === null} onClick={() => void save()}>
-          {saving ? 'Đang lưu…' : dirty ? 'Lưu' : 'Xong'}
+          <T k={saving ? 'common.saving' : dirty ? 'common.save' : 'common.done'} />
         </button>
       </div>
-      <button type="button" className="scene-close" data-id="decor-close" aria-label="Đóng trang trí nhà" onClick={onClose}>
+      <button type="button" className="scene-close" data-id="decor-close" aria-label={t('decor.close')} onClick={onClose}>
         ✕
       </button>
     </Modal>

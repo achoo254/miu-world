@@ -1,0 +1,14 @@
+{
+  "id": "story-order",
+  "name": "Xếp tranh kể chuyện",
+  "family": "story-sequence",
+  "howTo": [
+    "Bốn bức tranh của một câu chuyện bị xáo trộn.",
+    "{name} kéo tranh vào ô 1, 2, 3, 4 cho đúng thứ tự (hoặc chạm tranh xảy ra trước).",
+    "Đặt sai thì tranh rung rồi quay về, chọn lại nhé."
+  ],
+  "controls": ["drag", "tap"],
+  "duration": 90,
+  "goal": 6,
+  "params": {}
+}

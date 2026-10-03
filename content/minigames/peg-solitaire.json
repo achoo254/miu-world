@@ -1,0 +1,14 @@
+{
+  "id": "peg-solitaire",
+  "name": "Nhảy quân còn một",
+  "family": "peg-jump",
+  "howTo": [
+    "Chạm một viên ngọc rồi chạm lỗ trống bên kia viên kề nó: ngọc nhảy qua, viên giữa bị nhặt.",
+    "{name} nhặt được càng nhiều viên càng tốt. Còn hai viên trở xuống là giỏi lắm!",
+    "Kẹt rồi thì chạm nút Lùi để đi lại."
+  ],
+  "controls": ["tap"],
+  "duration": 90,
+  "goal": 12,
+  "params": {}
+}

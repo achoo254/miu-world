@@ -1,0 +1,14 @@
+{
+  "id": "dong-ho-print",
+  "name": "In tranh Đông Hồ",
+  "family": "print-timing",
+  "howTo": [
+    "Giấy dó chạy dưới ba khuôn in. Khuôn đang sáng là màu cần in tiếp theo.",
+    "{name} chạm khi vạch đỏ trên giấy nằm ngay dưới khuôn sáng: in khít thì tranh đẹp.",
+    "In lệch thì tranh bị lem. Chạm khi không có giấy thì khuôn bị kẹt một lúc."
+  ],
+  "controls": ["tap"],
+  "duration": 90,
+  "goal": 30,
+  "params": { "speed": 1 }
+}

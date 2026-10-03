@@ -2,24 +2,27 @@
 // the timetable like the class's paper sheet and the uniform calendar ("Hôm nay mặc: …"); "Sửa" lets the
 // child or a parent fill in every line, cell, period count and uniform, then "Lưu" stores it on the
 // server for this child. Opened from the timetable on the wall or the calendar by the wardrobe.
-import { MAX_HEADER_LENGTH, MAX_PERIODS, WEEKDAY_LABELS, weekdayOf, type Timetable, type TimetableHeader, type Weekday } from '@miu/schema/timetable';
+import { MAX_HEADER_LENGTH, MAX_PERIODS, weekdayOf, type Timetable, type TimetableHeader, type Weekday } from '@miu/schema/timetable';
 import { useEffect, useState, type ReactNode } from 'react';
 import { errorMessage } from '../api-client';
+import { mapBoth, pairOf, type TextKey } from '../i18n/i18n';
+import { Bi, T, useT } from '../i18n/use-t';
 import { buttonClass } from '../kit/button';
 import { Modal } from '../kit/modal';
 import { loadTimetable, saveTimetable } from './timetable-api';
-import { SESSION_LABELS, isBlank, titleLine, withCell, withHeader, withPeriodCount, type Session } from './timetable-model';
+import { dayLabel, isBlank, sessionLabel, sessionLower, titleLine, withCell, withHeader, withPeriodCount, type Session } from './timetable-model';
 import { CellEditor, TimetableTable, type CellRef } from './timetable-table';
 import type { TimetableFocus } from './timetable-targets';
 import { UniformCalendar } from './uniform-calendar';
 import './timetable.css';
 
-const HEADER_FIELDS: ReadonlyArray<{ field: keyof TimetableHeader; label: string; placeholder: string }> = [
-  { field: 'school', label: 'Tên trường', placeholder: 'Trường Tiểu học …' },
-  { field: 'className', label: 'Lớp', placeholder: '2A' },
-  { field: 'schoolYear', label: 'Năm học', placeholder: '2030 - 2031' },
-  { field: 'appliesFrom', label: 'Áp dụng từ ngày', placeholder: '01/09/2030' },
-  { field: 'teacher', label: 'GVCN và điện thoại', placeholder: 'Cô … – ĐT: …' },
+/** The sheet's lines; the placeholders show how the class's paper writes them (Vietnamese). */
+const HEADER_FIELDS: ReadonlyArray<{ field: keyof TimetableHeader; label: TextKey; placeholder: string }> = [
+  { field: 'school', label: 'timetable.field.school', placeholder: 'Trường Tiểu học …' },
+  { field: 'className', label: 'timetable.field.class', placeholder: '2A' },
+  { field: 'schoolYear', label: 'timetable.field.year', placeholder: '2030 - 2031' },
+  { field: 'appliesFrom', label: 'timetable.field.from', placeholder: '01/09/2030' },
+  { field: 'teacher', label: 'timetable.field.teacher', placeholder: 'Cô … – ĐT: …' },
 ];
 
 function SheetHeader({ header }: { header: TimetableHeader }) {
@@ -27,26 +30,39 @@ function SheetHeader({ header }: { header: TimetableHeader }) {
     <header className="timetable-header" data-id="timetable-header">
       {header.school ? <p className="timetable-school">{header.school}</p> : null}
       <p className="timetable-title" data-id="timetable-title">
-        {titleLine(header)}
+        <Bi {...titleLine(header)} />
       </p>
-      {header.appliesFrom ? <p>(Áp dụng từ ngày {header.appliesFrom})</p> : null}
-      {header.teacher ? <p>GVCN: {header.teacher}</p> : null}
+      {header.appliesFrom ? (
+        <p>
+          <T k="timetable.appliesFrom" params={{ date: header.appliesFrom }} />
+        </p>
+      ) : null}
+      {header.teacher ? (
+        <p>
+          <T k="timetable.teacher" params={{ teacher: header.teacher }} />
+        </p>
+      ) : null}
     </header>
   );
 }
 
 function PeriodStepper({ session, count, onCount }: { session: Session; count: number; onCount: (n: number) => void }) {
-  const name = `Buổi ${SESSION_LABELS[session].toLocaleLowerCase('vi')}`;
+  const { t } = useT();
+  // "Buổi sáng" / "Morning".
+  const name = pairOf('timetable.session', { session: { vi: sessionLower(session).vi, en: sessionLabel(session).en } });
+  const lower = mapBoth(name, (s) => s.toLocaleLowerCase('vi'));
   return (
-    <div className="timetable-stepper" role="group" aria-label={`Số tiết ${name.toLocaleLowerCase('vi')}`}>
-      <span className="timetable-stepper-name">{name}</span>
-      <button type="button" className="timetable-chip" data-id={`timetable-periods-${session}-less`} aria-label={`Bớt một tiết ${name.toLocaleLowerCase('vi')}`} disabled={count === 0} onClick={() => onCount(count - 1)}>
+    <div className="timetable-stepper" role="group" aria-label={t('timetable.periodsOf', { session: lower })}>
+      <span className="timetable-stepper-name">
+        <Bi {...name} />
+      </span>
+      <button type="button" className="timetable-chip" data-id={`timetable-periods-${session}-less`} aria-label={t('timetable.lessPeriod', { session: lower })} disabled={count === 0} onClick={() => onCount(count - 1)}>
         −
       </button>
       <span className="timetable-stepper-count" data-id={`timetable-periods-${session}`}>
-        {count} tiết
+        <T k="timetable.periods" params={{ count }} />
       </span>
-      <button type="button" className="timetable-chip" data-id={`timetable-periods-${session}-more`} aria-label={`Thêm một tiết ${name.toLocaleLowerCase('vi')}`} disabled={count === MAX_PERIODS} onClick={() => onCount(count + 1)}>
+      <button type="button" className="timetable-chip" data-id={`timetable-periods-${session}-more`} aria-label={t('timetable.morePeriod', { session: lower })} disabled={count === MAX_PERIODS} onClick={() => onCount(count + 1)}>
         +
       </button>
     </div>
@@ -63,6 +79,7 @@ export function TimetablePanel({ focus, onClose, now }: { focus: TimetableFocus;
   const [cell, setCell] = useState<CellRef | null>(null);
   const [saving, setSaving] = useState(false);
   const [saveError, setSaveError] = useState<string | null>(null);
+  const { t } = useT();
 
   useEffect(() => {
     let live = true;
@@ -113,7 +130,7 @@ export function TimetablePanel({ focus, onClose, now }: { focus: TimetableFocus;
   const shown = draft ?? saved;
   const editing = draft !== null;
   const selectedRow = draft && cell ? draft[cell.session][cell.period] : undefined;
-  const title = focus === 'uniform' ? 'Lịch mặc đồng phục' : 'Thời khóa biểu';
+  const title: TextKey = focus === 'uniform' ? 'timetable.uniformTitle' : 'timetable.title';
 
   let body: ReactNode;
   if (!shown) {
@@ -123,22 +140,22 @@ export function TimetablePanel({ focus, onClose, now }: { focus: TimetableFocus;
           {loadError}
         </p>
         <button type="button" className={buttonClass('secondary')} data-id="timetable-retry" onClick={retryLoad}>
-          Thử lại
+          <T k="common.retry" />
         </button>
       </div>
     ) : (
       <p className="scene-panel timetable-message" data-id="timetable-loading">
-        Đang mở…
+        <T k="common.opening" />
       </p>
     );
   } else {
     const sheet = (
-      <section key="timetable" className="timetable-sheet parchment" data-id="timetable-sheet" aria-label="Thời khóa biểu">
+      <section key="timetable" className="timetable-sheet parchment" data-id="timetable-sheet" aria-label={t('timetable.title')}>
         {editing ? (
           <div className="timetable-header-edit">
             {HEADER_FIELDS.map(({ field, label, placeholder }) => (
               <label key={field} className="field-label">
-                {label}
+                <T k={label} />
                 <input data-id={`timetable-header-${field}`} type="text" maxLength={MAX_HEADER_LENGTH} placeholder={placeholder} value={shown.header[field]} onChange={(e) => setDraft(withHeader(shown, field, e.target.value))} />
               </label>
             ))}
@@ -152,7 +169,7 @@ export function TimetablePanel({ focus, onClose, now }: { focus: TimetableFocus;
             <PeriodStepper session="afternoon" count={shown.afternoon.length} onCount={(n) => reshape(withPeriodCount(shown, 'afternoon', n))} />
             <label className="timetable-toggle">
               <input type="checkbox" data-id="timetable-saturday" checked={shown.saturday} onChange={(e) => reshape({ ...shown, saturday: e.target.checked })} />
-              Học cả {WEEKDAY_LABELS.sat}
+              <T k="timetable.saturday" params={{ day: dayLabel('sat') }} />
             </label>
           </div>
         ) : null}
@@ -163,8 +180,10 @@ export function TimetablePanel({ focus, onClose, now }: { focus: TimetableFocus;
       </section>
     );
     const uniforms = (
-      <section key="uniform" className="timetable-uniforms parchment" data-id="timetable-uniforms" aria-label="Lịch mặc đồng phục">
-        <h3 className="ribbon ribbon--small">Đồng phục</h3>
+      <section key="uniform" className="timetable-uniforms parchment" data-id="timetable-uniforms" aria-label={t('timetable.uniformTitle')}>
+        <h3 className="ribbon ribbon--small">
+          <T k="timetable.uniforms" />
+        </h3>
         <UniformCalendar timetable={shown} today={today} editing={editing} onChange={setDraft} />
       </section>
     );
@@ -172,7 +191,7 @@ export function TimetablePanel({ focus, onClose, now }: { focus: TimetableFocus;
       <>
         {!editing && isBlank(shown) ? (
           <p className="timetable-empty" data-id="timetable-empty">
-            Chưa có thời khóa biểu. Bấm “Sửa” để chép từ thời khóa biểu của lớp nhé!
+            <T k="timetable.empty" />
           </p>
         ) : null}
         {focus === 'uniform' ? [uniforms, sheet] : [sheet, uniforms]}
@@ -185,19 +204,19 @@ export function TimetablePanel({ focus, onClose, now }: { focus: TimetableFocus;
           {editing ? (
             <>
               <button type="button" className={buttonClass('ghost')} data-id="timetable-cancel" disabled={saving} onClick={stopEditing}>
-                Hủy
+                <T k="common.cancel" />
               </button>
               <button type="button" className={buttonClass('primary')} data-id="timetable-save" disabled={saving} onClick={() => void save(shown)}>
-                {saving ? 'Đang lưu…' : 'Lưu'}
+                <T k={saving ? 'common.saving' : 'common.save'} />
               </button>
             </>
           ) : (
             <>
               <button type="button" className={buttonClass('secondary')} data-id="timetable-edit" onClick={() => startEditing(shown)}>
-                Sửa
+                <T k="common.edit" />
               </button>
               <button type="button" className={buttonClass('primary')} data-id="timetable-done" onClick={onClose}>
-                Đóng
+                <T k="common.close" />
               </button>
             </>
           )}
@@ -207,9 +226,9 @@ export function TimetablePanel({ focus, onClose, now }: { focus: TimetableFocus;
   }
 
   return (
-    <Modal title={title} onClose={onClose} dataId="timetable" variant="scene" size="wide" className="timetable-modal">
+    <Modal title={<T k={title} />} onClose={onClose} dataId="timetable" variant="scene" size="wide" className="timetable-modal">
       {body}
-      <button type="button" className="scene-close" data-id="timetable-close" aria-label={`Đóng ${title.toLocaleLowerCase('vi')}`} onClick={onClose}>
+      <button type="button" className="scene-close" data-id="timetable-close" aria-label={t('timetable.closeOf', { title: mapBoth(pairOf(title), (s) => s.toLocaleLowerCase('vi')) })} onClick={onClose}>
         ✕
       </button>
     </Modal>

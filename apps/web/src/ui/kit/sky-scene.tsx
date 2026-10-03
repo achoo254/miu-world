@@ -1,6 +1,7 @@
 // Backdrop for the screens before the game (direction A): sky, clouds and a floating voxel island.
 // Motion (drifting clouds, bobbing island, floating treasures, a parrot crossing) lives in sky-scene.css
 // and stops under prefers-reduced-motion.
+import { T } from '../i18n/use-t';
 import type { CSSProperties, ReactNode } from 'react';
 import { Icon, MiuPortrait } from './art';
 import type { MiuPose, UiIcon } from './ui-art';
@@ -129,7 +130,9 @@ function Brand() {
   return (
     <div className="brand">
       <Logo />
-      <p className="tagline">Phiêu lưu trong thế giới khối, kiến thức là chìa khóa mở đường.</p>
+      <p className="tagline">
+        <T k="brand.tagline" />
+      </p>
       <MiuOnIsland pose="wave" altPose="cheer" />
     </div>
   );

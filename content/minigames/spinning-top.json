@@ -1,0 +1,13 @@
+{
+  "id": "spinning-top",
+  "name": "Đánh quay",
+  "family": "spin-keep",
+  "howTo": [
+    "Vuốt lên để ném con quay vào vòng phấn.",
+    "Khi con quay lắc lư, {name} chạm để quất dây cho nó quay tiếp. Chạm sớm quá là quay đổ!"
+  ],
+  "controls": ["swipe", "tap"],
+  "duration": 60,
+  "goal": 40,
+  "params": {}
+}

@@ -7,13 +7,15 @@
 import { useEffect, useState } from 'react';
 import { SupportResponse, type SupportLayer } from '@miu/schema/game';
 import { api, errorMessage } from '../api-client';
+import { mapBoth, pairOf, type TextKey } from '../i18n/i18n';
+import { Bi, T, useT } from '../i18n/use-t';
 import { Tabs } from '../kit/tabs';
 import { useDraftState } from '../quest/step-draft';
 
-const LAYERS: ReadonlyArray<{ key: SupportLayer; label: string }> = [
-  { key: 'guide', label: 'Hướng dẫn' },
-  { key: 'hint', label: 'Gợi ý' },
-  { key: 'answer', label: 'Đáp án' },
+const LAYERS: ReadonlyArray<{ key: SupportLayer; label: TextKey }> = [
+  { key: 'guide', label: 'support.guide' },
+  { key: 'hint', label: 'support.hint' },
+  { key: 'answer', label: 'support.answer' },
 ];
 
 /** Wrong tries before each layer is offered. */
@@ -24,6 +26,7 @@ export function SupportPanel({ questId, stepId, fill, wrongTries }: { questId: s
   const [active, setActive] = useDraftState<SupportLayer | null>('support', null, (v): v is SupportLayer | null => v === null || LAYERS.some((l) => l.key === v));
   const [loaded, setLoaded] = useState<Partial<Record<SupportLayer, SupportResponse>>>({});
   const [error, setError] = useState<string | null>(null);
+  const { t } = useT();
 
   function open(layer: SupportLayer) {
     // Its own tab again folds it away.
@@ -54,13 +57,23 @@ export function SupportPanel({ questId, stepId, fill, wrongTries }: { questId: s
 
   const shown = active ? loaded[active] : undefined;
   return (
-    <Tabs label="Hỗ trợ học" items={LAYERS.filter((l) => wrongTries >= OPENS_AFTER[l.key])} active={active} onChange={open} dataId="support">
-      <button type="button" className="support-close" data-id="support-close" aria-label="Đóng hỗ trợ" onClick={() => setActive(null)}>
-        ✕ Đóng
+    <Tabs
+      label={t('support.label')}
+      items={LAYERS.filter((l) => wrongTries >= OPENS_AFTER[l.key]).map((l) => ({ key: l.key, label: <T k={l.label} /> }))}
+      active={active}
+      onChange={open}
+      dataId="support"
+    >
+      <button type="button" className="support-close" data-id="support-close" aria-label={t('support.closeLabel')} onClick={() => setActive(null)}>
+        <T k="support.close" />
       </button>
       {error ? <p role="alert" className="error">{error}</p> : null}
       {!shown ? (
-        !error ? <p role="status">Đang mở…</p> : null
+        !error ? (
+          <p role="status">
+            <T k="common.opening" />
+          </p>
+        ) : null
       ) : shown.layer === 'guide' ? (
         <ol className="support-guide" data-id="support-guide-steps">
           {shown.steps.map((s) => (
@@ -75,7 +88,9 @@ export function SupportPanel({ questId, stepId, fill, wrongTries }: { questId: s
             <strong>{fill(shown.text)}</strong>
           </p>
           <p>{fill(shown.explanation)}</p>
-          <p className="hint">{fill('Hiểu cách làm rồi thì {name} làm lại nhé, vẫn hoàn thành được bước này.')}</p>
+          <p className="hint">
+            <Bi {...mapBoth(pairOf('support.answerNote'), fill)} />
+          </p>
         </div>
       )}
     </Tabs>

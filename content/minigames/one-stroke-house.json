@@ -1,0 +1,14 @@
+{
+  "id": "one-stroke-house",
+  "name": "Vẽ nhà một nét",
+  "family": "edge-trace",
+  "howTo": [
+    "{name} đặt ngón tay lên một chấm rồi kéo theo các đường, từ chấm này sang chấm kia.",
+    "Phải đi qua mọi đường, mỗi đường đúng một lần, không nhấc tay.",
+    "Nhấc tay sớm thì nét mờ đi, vẽ lại. Chấm sáng là chỗ nên bắt đầu."
+  ],
+  "controls": ["drag"],
+  "duration": 90,
+  "goal": 6,
+  "params": {}
+}

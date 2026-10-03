@@ -1,0 +1,14 @@
+{
+  "id": "bat-echo",
+  "name": "Dơi con tìm đường",
+  "family": "echo-maze",
+  "howTo": [
+    "Hang tối om! {name} chạm nhanh để dơi kêu: vách hang quanh dơi sáng lên một lúc.",
+    "Kéo ngón tay để dơi bay theo, tìm đường ra cửa hang có ánh trăng.",
+    "Đâm vào vách thì dơi choáng một giây."
+  ],
+  "controls": ["drag", "tap"],
+  "duration": 90,
+  "goal": 4,
+  "params": {}
+}

@@ -1,0 +1,14 @@
+{
+  "id": "jar-estimate",
+  "name": "Đoán hũ kẹo",
+  "family": "estimate",
+  "howTo": [
+    "Hũ kẹo chỉ hiện ba giây, {name} nhìn thật nhanh nhé.",
+    "Kéo kim trên thước tới số kẹo con đoán, rồi chạm Xong.",
+    "Kẹo đổ ra xếp từng chục để đếm lại. Đoán gần đúng là được!"
+  ],
+  "controls": ["drag", "tap"],
+  "duration": 100,
+  "goal": 6,
+  "params": {}
+}

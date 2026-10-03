@@ -1,0 +1,14 @@
+{
+  "id": "dig-channel",
+  "name": "Đào mương dẫn nước",
+  "family": "water-dig",
+  "howTo": [
+    "{name} kéo ngón tay qua lớp đất để đào mương. Nước chảy xuống và sang ngang.",
+    "Dẫn nước tới chậu tắm của bạn vịt. Đá thì không đào được.",
+    "Nước chảy vào hố bùn là màn đó làm lại. Mỗi màn xong là một điểm."
+  ],
+  "controls": ["drag"],
+  "duration": 90,
+  "goal": 4,
+  "params": {}
+}

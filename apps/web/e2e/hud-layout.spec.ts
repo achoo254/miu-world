@@ -43,6 +43,46 @@ async function checkLayout(page: Page, name: string): Promise<void> {
   // Touch targets stay large enough for small fingers.
   for (const b of [...menu, ...controls]) expect(Math.min(b.width, b.height), `${name}: touch target`).toBeGreaterThanOrEqual(44);
   await page.screenshot({ path: `${SHOTS}hud-${name}.png`, animations: 'disabled' });
+  await checkMapSheet(page, name, screen);
+}
+
+/**
+ * The full map from the minimap: it covers the whole screen, the HUD and the ride button included; its own
+ * buttons and legend stay on screen, apart and large enough to tap. A shot of the map and of a picked place.
+ */
+async function checkMapSheet(page: Page, name: string, screen: Box): Promise<void> {
+  await page.locator('[data-id="game-minimap-open"]').click();
+  const sheet = page.locator('[data-id="game-minimap-sheet"]');
+  await expect(sheet).toBeVisible();
+  expect(await box(sheet), `${name}: the map fills the screen`).toEqual(screen);
+  const ids = ['game-minimap-close', 'game-map-recenter', 'game-map-zoom-out', 'game-map-zoom-in', 'game-map-legend'];
+  const controls = await Promise.all(ids.map((id) => box(page.locator(`[data-id="${id}"]`))));
+  for (const b of controls) {
+    expect(b.x >= 0 && b.y >= 0 && b.x + b.width <= screen.width && b.y + b.height <= screen.height, `${name}: map control ${JSON.stringify(b)} on screen`).toBe(true);
+    expect(Math.min(b.width, b.height), `${name}: map touch target`).toBeGreaterThanOrEqual(44);
+  }
+  controls.forEach((a, i) => controls.slice(i + 1).forEach((b) => expect(overlap(a, b), `${name}: map controls overlap`).toBe(false)));
+  // Nothing of the HUD shows over the map: what lies under each control and under the HUD's buttons is the map's.
+  const hud = await Promise.all(['hud-menu', 'hud-tracker', 'player-badge'].map((id) => box(page.locator(`[data-id="${id}"]`))));
+  const points = [...controls, ...hud].map((b) => [b.x + b.width / 2, b.y + b.height / 2] as const);
+  const onSheet = await page.evaluate((list) => list.map(([x, y]) => document.querySelector('[data-id="game-minimap-sheet"]')?.contains(document.elementFromPoint(x, y)) ?? false), points);
+  expect(onSheet, `${name}: the map covers the HUD`).toEqual(points.map(() => true));
+  await page.screenshot({ path: `${SHOTS}map-${name}.png`, animations: 'disabled' });
+
+  // A ride station picked from the list: its card offers the walk there.
+  await page.locator('[data-id="game-map-list-toggle"]').click();
+  await page.locator('.map-sheet-list-item:has(.map-sheet-swatch--stop)').first().click();
+  const card = page.locator('[data-id="game-map-card"]');
+  await expect(card).toBeVisible();
+  await expect(page.locator('[data-id="game-map-go"]')).toBeVisible();
+  const cardBox = await box(card);
+  expect(cardBox.y + cardBox.height <= screen.height && cardBox.x >= 0 && cardBox.x + cardBox.width <= screen.width, `${name}: the card on screen`).toBe(true);
+  await page.waitForTimeout(400); // the view glides to the place
+  await page.screenshot({ path: `${SHOTS}map-card-${name}.png`, animations: 'disabled' });
+  // "Đi tới đây": the map closes and she sets off along the ways.
+  await page.locator('[data-id="game-map-go"]').click();
+  await expect(sheet).toBeHidden();
+  await expect.poll(async () => (await readStats(page)).autowalk, { timeout: 30_000 }).toMatch(/walking|arrived/);
 }
 
 test.describe('iPad landscape', () => {

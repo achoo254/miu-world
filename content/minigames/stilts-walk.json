@@ -1,0 +1,14 @@
+{
+  "id": "stilts-walk",
+  "name": "Đi cà kheo",
+  "family": "balance-step",
+  "howTo": [
+    "{name} đứng trên cà kheo, người cứ nghiêng dần sang một bên.",
+    "Nghiêng bên nào thì chạm bên đó để bước chân ấy lên và đứng thẳng lại.",
+    "Chạm nhầm bên thì nghiêng thêm, nghiêng quá thì ngã. Mỗi mét đi được một điểm."
+  ],
+  "controls": ["tap"],
+  "duration": 60,
+  "goal": 100,
+  "params": {}
+}

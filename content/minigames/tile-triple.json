@@ -1,0 +1,14 @@
+{
+  "id": "tile-triple",
+  "name": "Xếp ba ô giống",
+  "family": "tray-triple",
+  "howTo": [
+    "{name} chạm ô không bị ô khác đè lên để đưa xuống khay (ô bị đè thì tối màu).",
+    "Ba ô giống nhau trong khay sẽ biến mất, được một điểm.",
+    "Khay chỉ có bảy chỗ: đầy khay thì bàn xếp lại, điểm vẫn giữ."
+  ],
+  "controls": ["tap"],
+  "duration": 90,
+  "goal": 16,
+  "params": {}
+}

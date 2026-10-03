@@ -6,6 +6,8 @@ import { useEffect, useState, type KeyboardEvent } from 'react';
 import type { QuestSummary } from '@miu/schema/game';
 import type { AutowalkState } from '../../game-bridge/game-store';
 import { useGameState, useGameStore } from '../../game-bridge/use-game-state';
+import type { TextKey } from '../i18n/i18n';
+import { T, useT } from '../i18n/use-t';
 import { Icon } from '../kit/art';
 import { buttonClass } from '../kit/button';
 import { PlayerBadge } from '../player/player-badge';
@@ -17,12 +19,12 @@ import './hud.css';
 import './autowalk.css';
 
 /** What the quest card's walk line says in each state of the walk. */
-const AUTOWALK_LINE: Record<AutowalkState, string> = {
-  idle: 'Chạm để tự đi tới',
-  finding: 'Đang tìm đường…',
-  walking: 'Đang đi tới · chạm để dừng',
-  arrived: 'Đến nơi rồi!',
-  failed: 'Chưa tìm được đường, bạn tự đi nhé',
+const AUTOWALK_LINE: Record<AutowalkState, TextKey> = {
+  idle: 'hud.autowalk.idle',
+  finding: 'hud.autowalk.finding',
+  walking: 'hud.autowalk.walking',
+  arrived: 'hud.autowalk.arrived',
+  failed: 'hud.autowalk.failed',
 };
 
 /** The card folds itself away after this long without a touch (owner, 03/10/2026: "10–15 s"). */
@@ -36,6 +38,7 @@ export const TRACKER_FOLD_MS = 12_000;
  */
 export function QuestTracker({ quest, data }: { quest: QuestSummary | null; data: PlayerData }) {
   const store = useGameStore();
+  const { t } = useT();
   const available = useGameState((s) => s.autowalkAvailable);
   const autowalk = useGameState((s) => s.autowalk);
   const stepKey = quest ? `${quest.quest.id}:${nextStep(quest)?.id ?? 'done'}` : null;
@@ -60,9 +63,9 @@ export function QuestTracker({ quest, data }: { quest: QuestSummary | null; data
   const toggle = (): void => store.send({ type: going ? 'autowalk-stop' : 'autowalk-start' });
   if (folded) {
     return (
-      <button type="button" className="hud-tracker-pill" data-id="hud-tracker-pill" aria-label="Mở nhiệm vụ hiện tại" onClick={() => setFolded(false)}>
+      <button type="button" className="hud-tracker-pill" data-id="hud-tracker-pill" aria-label={t('hud.openCurrent')} onClick={() => setFolded(false)}>
         <Icon name="scroll" size={24} />
-        Nhiệm vụ
+        <T k="common.quests" />
         <span className="hud-tracker-pill-count">
           {done}/{total}
         </span>
@@ -78,7 +81,7 @@ export function QuestTracker({ quest, data }: { quest: QuestSummary | null; data
   return (
     <section
       className="hud-tracker"
-      aria-label="Nhiệm vụ hiện tại"
+      aria-label={t('hud.current')}
       data-id="hud-tracker"
       data-autowalk={tappable ? autowalk : undefined}
       onPointerDown={() => setTouched((n) => n + 1)}
@@ -86,12 +89,12 @@ export function QuestTracker({ quest, data }: { quest: QuestSummary | null; data
     >
       <p className="hud-tracker-kicker">
         <Icon name="scroll" size={24} />
-        Nhiệm vụ hiện tại
+        <T k="hud.current" />
         <button
           type="button"
           className="hud-tracker-fold"
           data-id="hud-tracker-fold"
-          aria-label="Thu gọn nhiệm vụ"
+          aria-label={t('hud.fold')}
           onClick={(event) => {
             // Folding is not a tap on the card (that starts or stops the walk).
             event.stopPropagation();
@@ -108,7 +111,7 @@ export function QuestTracker({ quest, data }: { quest: QuestSummary | null; data
       {textbook ? <TextbookRef textbook={textbook} dataId="hud-tracker-textbook" compact /> : null}
       <p className="hud-tracker-step" data-id="hud-tracker-step">
         {/* Where to walk while the step waits somewhere else; its title heads the scene once there. */}
-        {step ? say(step.goTo ?? step.title, data.character) : 'Đã hoàn thành'}
+        {step ? say(step.goTo ?? step.title, data.character) : <T k="hud.done" />}
         {clues ? (
           <span className="hud-tracker-count" data-id="hud-tracker-count">
             {' '}
@@ -122,7 +125,7 @@ export function QuestTracker({ quest, data }: { quest: QuestSummary | null; data
       {tappable || autowalk === 'arrived' || autowalk === 'failed' ? (
         <p className="hud-autowalk" data-id="hud-autowalk" data-state={autowalk} aria-live="polite">
           <Icon name={autowalk === 'arrived' ? 'glowingStar' : autowalk === 'failed' ? 'map' : 'runningShoe'} size={20} />
-          {AUTOWALK_LINE[autowalk]}
+          <T k={AUTOWALK_LINE[autowalk]} />
         </p>
       ) : null}
     </section>
@@ -137,7 +140,7 @@ function InteractButton() {
   return (
     <button type="button" className="hud-interact" data-id="hud-interact" onClick={() => store.send({ type: 'interact' })}>
       <Icon name="sparkles" size={32} />
-      Tương tác
+      <T k="hud.interact" />
     </button>
   );
 }
@@ -150,7 +153,7 @@ function RescueButton() {
   return (
     <button type="button" className="hud-rescue" data-id="hud-rescue" onClick={() => store.send({ type: 'rescue' })}>
       <Icon name="ringBuoy" size={36} />
-      Quay lại
+      <T k="hud.rescue" />
     </button>
   );
 }
@@ -172,28 +175,37 @@ export function Hud({
   onQuests: () => void;
   onBackpack: () => void;
 }) {
+  const { t } = useT();
   return (
     <>
       <div className="hud-top-left">
         <PlayerBadge character={data.character} progress={data.progress} />
         <QuestTracker quest={quest} data={data} />
       </div>
-      <nav className="hud-top-right" aria-label="Menu trò chơi">
+      <nav className="hud-top-right" aria-label={t('hud.menuLabel')}>
         <button type="button" className={buttonClass('secondary', { small: true })} data-id="hud-quests" onClick={onQuests}>
           <Icon name="scroll" size={28} />
-          <span className="hud-btn-label">Nhiệm vụ</span>
+          <span className="hud-btn-label">
+            <T k="common.quests" />
+          </span>
         </button>
         <Link to="/map" className={buttonClass('secondary', { small: true })} data-id="hud-map">
           <Icon name="map" size={28} />
-          <span className="hud-btn-label">Bản đồ</span>
+          <span className="hud-btn-label">
+            <T k="common.map" />
+          </span>
         </Link>
         <button type="button" className={buttonClass('secondary', { small: true })} data-id="hud-backpack" onClick={onBackpack}>
           <Icon name="backpack" size={28} />
-          <span className="hud-btn-label">Ba lô</span>
+          <span className="hud-btn-label">
+            <T k="common.backpack" />
+          </span>
         </button>
         <button type="button" className={buttonClass('primary', { small: true })} data-id="hud-menu" onClick={onMenu}>
           <Icon name="pause" size={28} />
-          <span className="hud-btn-label">Menu</span>
+          <span className="hud-btn-label">
+            <T k="common.menu" />
+          </span>
         </button>
       </nav>
       {covered ? null : <InteractButton />}

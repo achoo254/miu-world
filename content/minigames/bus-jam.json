@@ -1,0 +1,14 @@
+{
+  "id": "bus-jam",
+  "name": "Khách lên xe buýt",
+  "family": "board-queue",
+  "howTo": [
+    "Xe buýt màu nào thì chở đúng các bạn cùng màu, mỗi xe ba bạn.",
+    "{name} chạm bạn có lối đi lên trên: bạn ấy lên xe, hoặc ra ghế chờ nếu chưa đúng xe.",
+    "Ghế chờ chỉ có năm chỗ. Đầy ghế thì xếp lại bến từ đầu."
+  ],
+  "controls": ["tap"],
+  "duration": 90,
+  "goal": 8,
+  "params": { "bench": 5 }
+}

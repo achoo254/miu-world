@@ -1,0 +1,13 @@
+{
+  "id": "clock-catch",
+  "name": "Đồng hồ báo thức",
+  "family": "clock-stop",
+  "howTo": [
+    "Kim đồng hồ chạy thật nhanh. Gà trống hỏi giờ, ví dụ 8 giờ rưỡi.",
+    "{name} chạm để dừng kim đúng giờ đó. Dừng sai thì kim quay lùi một chút."
+  ],
+  "controls": ["tap"],
+  "duration": 60,
+  "goal": 8,
+  "params": { "speed": 1 }
+}

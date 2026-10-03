@@ -1,0 +1,14 @@
+{
+  "id": "seat-logic",
+  "name": "Xếp chỗ tiệc vua",
+  "family": "seat-puzzle",
+  "howTo": [
+    "Thẻ trái tim: hai bạn ngồi cạnh nhau. Dấu chéo: không cạnh nhau. Vương miện: ghế đầu.",
+    "{name} kéo các bạn vào ghế (hoặc chạm bạn rồi chạm ghế) cho đúng mọi thẻ.",
+    "Đủ ghế mà đúng hết thì được một điểm. Thẻ nhấp nháy đỏ là chưa đúng."
+  ],
+  "controls": ["drag", "tap"],
+  "duration": 90,
+  "goal": 4,
+  "params": {}
+}

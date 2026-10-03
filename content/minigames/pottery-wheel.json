@@ -1,0 +1,14 @@
+{
+  "id": "pottery-wheel",
+  "name": "Nặn gốm Bát Tràng",
+  "family": "pottery-shape",
+  "howTo": [
+    "Bàn xoay đang quay. {name} kéo ngón tay dọc theo thành bình để vuốt đất sét.",
+    "Đất sét chạy theo ngón tay: vuốt cho trùng đường viền vàng của mẫu.",
+    "Giống mẫu đủ 80% là xong một bình."
+  ],
+  "controls": ["drag"],
+  "duration": 90,
+  "goal": 4,
+  "params": {}
+}

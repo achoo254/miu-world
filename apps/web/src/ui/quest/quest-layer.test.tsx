@@ -6,7 +6,7 @@ import { QuestStepPublic } from '@miu/schema/content';
 import type { CharacterDto, StepCompleteResponse } from '@miu/schema/game';
 import { createGameStore, type GameCommand } from '../../game-bridge/game-store';
 import { DialogueScreen } from '../dialogue/dialogue-screen';
-import { localVietnameseVoice } from '../dialogue/speech';
+import { bestVoice, linesToRead } from '../dialogue/speech';
 import type { PlayerData } from '../player/player-data';
 import { PROGRESS, questList } from '../player/test-fixtures';
 import { QuestLayer } from './quest-layer';
@@ -19,12 +19,34 @@ afterEach(() => {
 });
 
 describe('speech', () => {
-  it('reads only with an on-device Vietnamese voice, never a remote one', () => {
+  it('reads only with an on-device voice of the language, never a remote one', () => {
     const remote = { lang: 'vi-VN', localService: false, name: 'Google Tiếng Việt' };
     const english = { lang: 'en-US', localService: true, name: 'Samantha' };
     const local = { lang: 'vi-VN', localService: true, name: 'Linh' };
-    expect(localVietnameseVoice([remote, english])).toBeNull();
-    expect(localVietnameseVoice([remote, english, local])).toBe(local);
+    expect(bestVoice([remote, english], 'vi')).toBeNull();
+    expect(bestVoice([remote, english, local], 'vi')).toBe(local);
+    expect(bestVoice([remote, english, local], 'en')).toBe(english);
+  });
+
+  it('picks the exact locale, then a richer voice, then the default', () => {
+    const british = { lang: 'en-GB', localService: true, name: 'Daniel', default: true };
+    const basic = { lang: 'en-US', localService: true, name: 'Fred' };
+    const rich = { lang: 'en_US', localService: true, name: 'Ava (Premium)' };
+    expect(bestVoice([british, basic], 'en')).toBe(basic);
+    expect(bestVoice([british, basic, rich], 'en')).toBe(rich);
+    expect(bestVoice([british], 'en')).toBe(british);
+  });
+
+  it('reads the line shown: Vietnamese, English, or both in turn; untranslated text in Vietnamese', () => {
+    const line = { vi: 'Xin chào', en: 'Hello' };
+    expect(linesToRead(line, 'vi')).toEqual([{ text: 'Xin chào', lang: 'vi' }]);
+    expect(linesToRead(line, 'en')).toEqual([{ text: 'Hello', lang: 'en' }]);
+    expect(linesToRead(line, 'both')).toEqual([
+      { text: 'Xin chào', lang: 'vi' },
+      { text: 'Hello', lang: 'en' },
+    ]);
+    expect(linesToRead({ vi: 'Bài đọc' }, 'en')).toEqual([{ text: 'Bài đọc', lang: 'vi' }]);
+    expect(linesToRead({ vi: 'Bài đọc', en: 'Bài đọc' }, 'both')).toEqual([{ text: 'Bài đọc', lang: 'vi' }]);
   });
 });
 

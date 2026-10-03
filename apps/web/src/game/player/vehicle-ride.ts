@@ -121,6 +121,8 @@ export interface RideControl {
   readonly liftWorld: number;
   /** Applies the HUD's toggle, gets her off in water, shows the vehicle and sets the controller's pace. */
   update(dt: number): void;
+  /** Gets her off at the next update (she boards one of the map's rides). */
+  dismount(): void;
   dispose(): void;
 }
 
@@ -174,6 +176,9 @@ export function createRideControl(options: {
       }
       if (ride.update(dt, rider.inWater)) changed = true;
       if (changed) show();
+    },
+    dismount() {
+      if (ride.riding) wanted = false;
     },
     dispose() {
       unsubscribe();

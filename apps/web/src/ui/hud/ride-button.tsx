@@ -2,6 +2,7 @@
 // equipped in the Character Creator. Shown only while one is equipped; the game puts her on it or off it
 // (bridge command `ride`) and reports back (event `vehicle`), also when water puts her off on its own.
 import { useGameState, useGameStore } from '../../game-bridge/use-game-state';
+import { T } from '../i18n/use-t';
 import { Icon } from '../kit/art';
 import './ride-button.css';
 
@@ -9,7 +10,6 @@ export function RideButton() {
   const store = useGameStore();
   const vehicle = useGameState((s) => s.vehicle);
   if (!vehicle) return null;
-  const label = vehicle.riding ? 'Xuống xe' : 'Lái xe';
   return (
     <button
       type="button"
@@ -21,7 +21,7 @@ export function RideButton() {
       onClick={() => store.send({ type: 'ride', on: !vehicle.riding })}
     >
       <Icon name="automobile" size={36} />
-      {label}
+      <T k={vehicle.riding ? 'hud.rideOff' : 'hud.rideOn'} />
     </button>
   );
 }

@@ -1,0 +1,14 @@
+{
+  "id": "domino-match",
+  "name": "Domino chấm",
+  "family": "domino",
+  "howTo": [
+    "{name} và bạn gấu trúc thay nhau đặt quân domino vào hai đầu hàng.",
+    "Quân đặt vào phải có số chấm giống đầu đó. Chạm quân, rồi chạm đầu nếu hợp cả hai.",
+    "Không có quân hợp thì chạm Bốc. Ai đặt hết quân trước thì thắng!"
+  ],
+  "controls": ["tap"],
+  "duration": 90,
+  "goal": 1,
+  "params": {}
+}

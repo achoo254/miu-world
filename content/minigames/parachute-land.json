@@ -1,0 +1,14 @@
+{
+  "id": "parachute-land",
+  "name": "Nhảy dù xuống đảo",
+  "family": "steer-land",
+  "howTo": [
+    "Gió đẩy dù của {name} sang một bên, xem mũi tên gió nhé.",
+    "Giữ ngón tay ở bên nào thì dù bay về bên đó.",
+    "Đáp đúng chữ X được hai điểm, gần chữ X được một điểm."
+  ],
+  "controls": ["drag"],
+  "duration": 60,
+  "goal": 10,
+  "params": {}
+}

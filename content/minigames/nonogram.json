@@ -1,0 +1,14 @@
+{
+  "id": "nonogram",
+  "name": "Tranh ô số",
+  "family": "number-grid-picture",
+  "howTo": [
+    "Số bên cạnh mỗi hàng, trên mỗi cột cho biết có mấy ô liền nhau được tô.",
+    "{name} chạm ô để tô. Tô nhầm ô thì bút nghỉ một chút.",
+    "Tô đủ các ô là hiện ra một bức tranh!"
+  ],
+  "controls": ["tap"],
+  "duration": 90,
+  "goal": 2,
+  "params": {}
+}

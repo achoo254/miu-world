@@ -1,0 +1,13 @@
+{
+  "id": "chain-pop",
+  "name": "Sứa sáng dây chuyền",
+  "family": "chain-reaction",
+  "howTo": [
+    "Mỗi màn {name} chỉ chạm một lần: một vòng sáng nở ra. Chạm vào giữa đàn sứa nhé!",
+    "Sứa chạm vòng sáng cũng sáng và nở vòng mới. Thiếu sứa sáng thì mất một ngọc trai."
+  ],
+  "controls": ["tap"],
+  "duration": 90,
+  "goal": 6,
+  "params": {}
+}

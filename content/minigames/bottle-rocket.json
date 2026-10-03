@@ -1,0 +1,14 @@
+{
+  "id": "bottle-rocket",
+  "name": "Tên lửa nước",
+  "family": "pump-launch",
+  "howTo": [
+    "Vuốt lên xuống để bơm hơi cho tên lửa tới vạch xanh. Bơm quá thì nước phụt ra.",
+    "Bệ phóng nghiêng qua lại. Chạm để phóng khi kim nằm trong phần xanh.",
+    "{name} cho tên lửa bung dù đáp trúng bãi nhé!"
+  ],
+  "controls": ["swipe", "tap"],
+  "duration": 60,
+  "goal": 5,
+  "params": {}
+}

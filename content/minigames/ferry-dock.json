@@ -1,0 +1,14 @@
+{
+  "id": "ferry-dock",
+  "name": "Cập bến phà",
+  "family": "drift-dock",
+  "howTo": [
+    "{name} đặt ngón tay trên mặt nước: phà chạy về phía ngón tay, càng xa càng mạnh.",
+    "Nước chảy đẩy phà trôi. Cập vào bến sáng màu thật chậm (vòng quanh phà màu xanh).",
+    "Cập mạnh quá thì phà bật ra. Mỗi lần cập bến là một điểm."
+  ],
+  "controls": ["drag"],
+  "duration": 90,
+  "goal": 6,
+  "params": {}
+}

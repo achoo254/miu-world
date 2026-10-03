@@ -1,0 +1,14 @@
+{
+  "id": "sentence-train",
+  "name": "Đoàn tàu câu",
+  "family": "word-order",
+  "howTo": [
+    "Mỗi toa chở một từ. {name} xem tranh rồi chạm các toa theo đúng thứ tự của câu.",
+    "Từ đầu câu viết hoa, từ cuối câu có dấu chấm.",
+    "Chạm sai thì tàu lùi một toa. Đủ câu là tàu chạy, được một điểm."
+  ],
+  "controls": ["tap"],
+  "duration": 90,
+  "goal": 8,
+  "params": {}
+}

@@ -1,0 +1,14 @@
+{
+  "id": "reef-sweeper",
+  "name": "Dò đá ngầm",
+  "family": "mine-sweep",
+  "howTo": [
+    "Chạm ô cát để dò. Số trên ô cho biết có mấy hòn đá ngầm ở các ô sát bên.",
+    "Biết chắc ô nào có đá thì {name} giữ lâu để cắm cờ.",
+    "Dò trúng đá thì mất một tim. Dò hết ô an toàn là xong một bãi."
+  ],
+  "controls": ["tap", "hold"],
+  "duration": 90,
+  "goal": 3,
+  "params": {}
+}

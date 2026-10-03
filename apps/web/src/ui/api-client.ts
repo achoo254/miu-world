@@ -1,4 +1,5 @@
 import type { z } from 'zod';
+import { t, type TextKey } from './i18n/i18n';
 
 /** Server error with its stable code (`invalid-credentials`, `parent-gate-closed`…). */
 export class ApiError extends Error {
@@ -37,29 +38,31 @@ export async function api<S extends z.ZodType>(method: string, path: string, sch
   return schema.parse(data);
 }
 
-const MESSAGES: Record<string, string> = {
-  network: 'Không kết nối được máy chủ. Kiểm tra mạng rồi thử lại nhé.',
-  'invalid-input': 'Thông tin chưa hợp lệ, kiểm tra lại giúp nhé.',
-  'invalid-credentials': 'Email hoặc mật khẩu chưa đúng.',
-  'email-taken': 'Email này đã có tài khoản. Hãy đăng nhập.',
-  'rate-limited': 'Thử quá nhiều lần. Đợi một lúc rồi thử lại nhé.',
-  'invalid-pin': 'Mã PIN chưa đúng.',
-  'pin-locked': 'Mã PIN bị khóa do nhập sai nhiều lần. Đăng nhập lại bằng Google để mở.',
-  'parent-gate-closed': 'Cần nhập mã PIN phụ huynh.',
-  'consent-required': 'Phụ huynh cần đồng ý trước khi tạo hồ sơ.',
-  'profile-limit': 'Mỗi tài khoản có tối đa 3 hồ sơ.',
-  'invalid-display-name': 'Hãy chọn tên trong danh sách.',
-  'not-found': 'Không tìm thấy hồ sơ.',
-  'pin-already-set': 'Mã PIN đã được đặt trước đó.',
-  'pin-not-set': 'Cần đặt mã PIN phụ huynh trước.',
-  'equipment-locked': 'Món đồ này chưa mở khóa.',
-  'pet-locked': 'Bạn thú cưng này chưa mở khóa.',
-  'invalid-equipment': 'Món đồ này không mặc được.',
-  'invalid-character-name': 'Hãy chọn tên trong danh sách.',
-  'invalid-species': 'Hãy chọn một nhân vật trong danh sách.',
+/** Server error code → its message (locales `errors.*`). */
+const MESSAGES: Readonly<Record<string, TextKey>> = {
+  network: 'errors.network',
+  'invalid-input': 'errors.invalidInput',
+  'invalid-credentials': 'errors.invalidCredentials',
+  'email-taken': 'errors.emailTaken',
+  'rate-limited': 'errors.rateLimited',
+  'invalid-pin': 'errors.invalidPin',
+  'pin-locked': 'errors.pinLocked',
+  'parent-gate-closed': 'errors.parentGateClosed',
+  'consent-required': 'errors.consentRequired',
+  'profile-limit': 'errors.profileLimit',
+  'invalid-display-name': 'errors.invalidDisplayName',
+  'not-found': 'errors.notFound',
+  'pin-already-set': 'errors.pinAlreadySet',
+  'pin-not-set': 'errors.pinNotSet',
+  'equipment-locked': 'errors.equipmentLocked',
+  'pet-locked': 'errors.petLocked',
+  'invalid-equipment': 'errors.invalidEquipment',
+  'invalid-character-name': 'errors.invalidCharacterName',
+  'invalid-species': 'errors.invalidSpecies',
 };
 
+/** The message for a failed call, in the display mode chosen when it failed. */
 export function errorMessage(err: unknown): string {
   const code = err instanceof ApiError ? err.code : 'unknown';
-  return MESSAGES[code] ?? 'Có lỗi xảy ra, thử lại sau nhé.';
+  return t(MESSAGES[code] ?? 'errors.unknown');
 }

@@ -2,9 +2,8 @@
 // with an on-device voice, then the comprehension question as big choices.
 import type { QuestStepPublic } from '@miu/schema/content';
 import type { StepAnswer } from '@miu/schema/game';
-import { speak, useLocalVoice } from '../dialogue/speech';
-import { Icon } from '../kit/art';
-import { buttonClass } from '../kit/button';
+import { ListenButton } from '../dialogue/listen-button';
+import { useT } from '../i18n/use-t';
 import { ChallengeFrame, type ChallengeContext } from './challenge-frame';
 import { ChoiceList } from './choice-list';
 import './mechanics/mechanics.css';
@@ -25,7 +24,7 @@ export function ReadStepScreen({
   onAnswer: (answer: StepAnswer) => void;
 }) {
   const [choice, setChoice] = useDraftState<string | null>('choice', null, isStringOrNull);
-  const voice = useLocalVoice();
+  const { t } = useT();
   const ref = step.textRef ? texts[step.textRef] : undefined;
   const passage = context.fill(step.text ?? ref?.body ?? '');
   return (
@@ -37,7 +36,7 @@ export function ReadStepScreen({
         ))}
         {ref?.author ? <p className="hint">{ref.author}</p> : null}
         {ref?.glossary?.length ? (
-          <dl className="read-glossary" data-id="read-glossary" aria-label="Từ ngữ">
+          <dl className="read-glossary" data-id="read-glossary" aria-label={t('challenge.words')}>
             {ref.glossary.map((g) => (
               <div key={g.term}>
                 <dt>{g.term}</dt>
@@ -46,14 +45,9 @@ export function ReadStepScreen({
             ))}
           </dl>
         ) : null}
-        {voice ? (
-          <button type="button" className={buttonClass('ghost', { small: true })} data-id="read-listen" onClick={() => speak(passage, voice)}>
-            <Icon name="speaker" size={24} />
-            Nghe lại
-          </button>
-        ) : null}
+        <ListenButton text={{ vi: passage }} dataId="read-listen" label="speech.listenAgain" />
       </article>
-      <ChoiceList choices={step.choices} selected={choice} onSelect={setChoice} fill={context.fill} label="Chọn câu trả lời" />
+      <ChoiceList choices={step.choices} selected={choice} onSelect={setChoice} fill={context.fill} label={t('challenge.pickAnswer')} />
     </ChallengeFrame>
   );
 }

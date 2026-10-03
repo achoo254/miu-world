@@ -1,6 +1,7 @@
 // Phiếu viết: handwriting and paragraph writing happen on paper. The step tells the child to ask a
 // parent to print the lesson's worksheet (parent area); nothing written comes back to the game.
 import type { QuestStepPublic } from '@miu/schema/content';
+import { T } from '../../i18n/use-t';
 import { Icon } from '../../kit/art';
 import { buttonClass } from '../../kit/button';
 import { Modal } from '../../kit/modal';
@@ -28,9 +29,11 @@ export function WorksheetStepScreen({
           <Icon name="scroll" size={56} />
           {fill(step.text)}
         </p>
-        <p className="hint">Phiếu nằm ở khu phụ huynh, mục Phiếu viết.</p>
+        <p className="hint">
+          <T k="worksheet.where" />
+        </p>
         <button type="button" className={buttonClass('primary', { block: true })} data-id="worksheet-done" disabled={busy} onClick={onDone}>
-          Đã hiểu
+          <T k="worksheet.ok" />
         </button>
       </div>
     </Modal>

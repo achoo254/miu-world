@@ -18,6 +18,7 @@ import { blockLookup, blockTraversal } from '@miu/voxel/block-table';
 import type { Traversal } from '@miu/voxel/traversal';
 import type { SolidAt } from '@miu/voxel/grid-collision';
 import { castHidden, entitiesForChapter } from '@miu/voxel/world-entities';
+import { onLangModeChange, t as translate, writeText, type TextKey } from '../ui/i18n/i18n';
 import { PETS, UI_ICONS, assetUrl } from '../ui/kit/ui-art';
 import type { GameStore } from '../game-bridge/game-store';
 import { loadAmbientLife, type AmbientTarget } from './ambient/ambient-life';
@@ -32,7 +33,8 @@ import { StatsOverlay } from './debug/stats-overlay';
 import { loadInteractables, namedForPlayer, pickNearest, type InteractableObject } from './entities/interactables';
 import { createTargetArrow } from './entities/target-arrow';
 import { createMinimap } from './hud/minimap';
-import { minimapMarkers } from './hud/minimap-model';
+import { minimapMarkers, sideGiverMarkers } from './hud/minimap-model';
+import { fetchSideGivers } from './hud/side-givers';
 import { fillPlayerName } from '@miu/quest/player-name';
 import { HOME_REGION } from '../ui/region/regions';
 import { DEFAULT_SPECIES } from './content/characters';
@@ -42,12 +44,14 @@ import { loadProps } from './entities/props';
 import { cellKey } from '@miu/voxel/prop-collision';
 import { createRouteFinder, type RouteFinder } from './nav/route-finder';
 import { RouteWalker } from './nav/route-walker';
+import { planWalk, type PlannedWalk } from './nav/walk-goal';
 import { Autopilot } from './player/autopilot';
 import { CameraRig } from './player/camera-rig';
 import { PlayerInput } from './player/input';
 import { PlayerController, WALK_SPEED, type MoveIntent } from './player/player-controller';
 import { RescueWatch } from './player/rescue';
 import { createRideControl } from './player/vehicle-ride';
+import { createRideJourney } from './ride/ride-journey';
 import { nearestUsableSpot } from './player/saved-spot';
 import { readQuality } from './quality';
 import { disposeSceneGraph } from './scene/dispose-scene';
@@ -118,30 +122,36 @@ function buildDom(host: HTMLElement) {
   root.dataset.id = 'game';
   const stats = div('stats', 'stats');
   const joystick = div('joystick', 'joystick');
-  joystick.setAttribute('aria-label', 'Joystick di chuyển');
   joystick.append(div('knob'));
   const actions = div('actions', 'actions');
-  const button = (id: string, text: string, icon: string): HTMLButtonElement => {
+  // Labels follow the display language (Tiếng Việt / English / Song ngữ), also when it changes in Pause.
+  const labels: Array<() => void> = [() => joystick.setAttribute('aria-label', translate('game.joystick'))];
+  const button = (id: string, text: TextKey, icon: string): HTMLButtonElement => {
     const b = document.createElement('button');
     b.type = 'button';
     b.id = id;
     b.dataset.id = `game-${id}`;
-    b.setAttribute('aria-label', text);
     const img = document.createElement('img');
     img.src = assetUrl(icon);
     img.alt = '';
     img.draggable = false;
     const label = document.createElement('span');
-    label.textContent = text;
+    labels.push(() => {
+      b.setAttribute('aria-label', translate(text));
+      writeText(label, text);
+    });
     b.append(img, label);
     return b;
   };
-  const run = button('btn-run', 'Chạy', UI_ICONS.runningShoe);
-  const jump = button('btn-jump', 'Nhảy', UI_ICONS.kangaroo);
+  const run = button('btn-run', 'game.run', UI_ICONS.runningShoe);
+  const jump = button('btn-jump', 'game.jump', UI_ICONS.kangaroo);
   actions.append(run, jump);
   root.append(stats, joystick, actions);
   host.append(root);
-  return { root, stats, joystick, run, jump };
+  const relabel = (): void => labels.forEach((write) => write());
+  relabel();
+  const stopLabels = onLangModeChange(relabel);
+  return { root, stats, joystick, run, jump, stopLabels };
 }
 
 const REGION_CATALOG = RegionCatalog.parse(regionsJson);
@@ -244,7 +254,10 @@ export class Game {
     const params = new URLSearchParams(search);
     const quality = readQuality(search);
     const dom = buildDom(this.host);
-    this.cleanups.push(() => dom.root.remove());
+    this.cleanups.push(() => {
+      dom.stopLabels();
+      dom.root.remove();
+    });
     const overlay = new StatsOverlay(dom.stats, quality.level);
     // The FPS / draw-call panel is for developers; children see the HUD in its place.
     dom.stats.hidden = !params.has('stats');
@@ -420,13 +433,17 @@ export class Game {
       const name = REGION_CATALOG.regions.find((r) => r.id === id)?.name;
       return name === undefined ? undefined : fillPlayerName(name, playerName);
     };
+    const fillName = (text: string): string => fillPlayerName(text, playerName);
     const minimap = createMinimap(dom.root, {
       atlas: data.atlas,
       atlasImage: (data.atlasTexture.image as CanvasImageSource | null) ?? null,
       horizon: data.horizon,
       size: [data.entities.size[0], data.entities.size[2]],
-      markers: minimapMarkers(entities, { regionName, homeName: mapId === mapForRegion(REGION_CATALOG, HOME_REGION) ? regionName(HOME_REGION) : undefined }),
+      markers: minimapMarkers(entities, { regionName, homeName: mapId === mapForRegion(REGION_CATALOG, HOME_REGION) ? regionName(HOME_REGION) : undefined, homeRegion: HOME_REGION, fill: fillName, size: [data.entities.size[0], data.entities.size[2]] }),
+      title: regionName(this.options.region ?? '') ?? '',
       lite: quality.level === 'low',
+      // "Đi tới đây" on the full map: the quest card's walk, to that place.
+      onGo: (goal) => store.send({ type: 'autowalk-to', to: goal }),
     });
     this.cleanups.push(() => minimap.dispose());
     overlay.stats.outfit = character.outfit;
@@ -437,6 +454,23 @@ export class Game {
     // The equipped vehicle: the HUD's "Lái xe" puts her on it.
     const ride = createRideControl({ store, outfit, root: character.root, rider: controller, castShadow: quality.shadows, reduced: reducedMotion });
     this.cleanups.push(() => ride.dispose());
+    // The map's rides (bus, train, boat, cable car, balloon): a journey she sees from the stop to the far stop.
+    const journey = createRideJourney({
+      scene,
+      camera,
+      host: dom.root,
+      world,
+      horizon: data.horizon,
+      blocks: data.atlas.blocks,
+      groundAt: (x, z, nearY) => (data.regions.loadedAt(x, z) ? ground(x, z, nearY) : null),
+      standAt: (spot) => nearestUsableSpot(spot, solid, liquid, data.bounds, data.world.height),
+      // The riding camera stops in front of any loaded block (a tree top too); land still on its way is no wall to it.
+      solid: (x, y, z) => data.regions.loadedAt(x, z) && (data.world.get(x, y, z) !== 0 ? !liquid(x, y, z) : propCells.has(cellKey(x, y, z))),
+      followView: () => ({ pitch: rig.pitch, distance: rig.distance }),
+      reduced: reducedMotion,
+      castShadow: quality.shadows,
+    });
+    this.cleanups.push(() => journey.dispose());
     // Dev/E2E switch: start next to a target (`npc` = the first NPC), or at `x,y,z`, instead of the spawn point.
     const spawnAt = spawnAtParam;
     const spawnTarget = entities.interactables.find((t) => (spawnAt === 'npc' ? t.kind === 'npc' : t.id === spawnAt));
@@ -474,7 +508,8 @@ export class Game {
     if (!autopilot && !params.has('shot') && spawnAt === null) {
       this.spotNow = () => {
         const p = controller.position;
-        const here = controller.onGround && !controller.inWater ? ([p.x, p.y, p.z] as const) : rescue.spot();
+        // On a ride she is kept at the last spot she stood on (the stop) until she gets off.
+        const here = !journey.active && controller.onGround && !controller.inWater ? ([p.x, p.y, p.z] as const) : rescue.spot();
         // The heading winds up past ±π as the child turns; saved folded back into one turn.
         const facing = Math.atan2(Math.sin(controller.facing), Math.cos(controller.facing));
         return here ? { map: mapId, position: [here[0], here[1], here[2]], facing } : null;
@@ -525,8 +560,6 @@ export class Game {
     let interactRequested = false;
     let rescueRequested = false;
     let celebrateRequested = false;
-    /** A ride's far stop is loading: the child is set down there once it is drawn. */
-    let riding = false;
     const byId = new Map(targets.map((t) => [t.def.id, t]));
     const arrow = createTargetArrow();
     scene.add(arrow.root);
@@ -539,9 +572,18 @@ export class Game {
       overlay.stats.castHidden = [...hidden].sort();
     };
     placeCast();
-    // Tapping the quest card walks Miu to the hinted target along the ways. The route worker starts on the
-    // first walk: most visits never ask for one.
+    // The characters who offer a minigame here, on the minimap and the full map (none in review shots).
+    if (this.options.region && !params.has('shot')) {
+      void fetchSideGivers(this.options.region, fillName).then((givers) => {
+        if (this.disposed) return;
+        minimap.setSideMarkers(sideGiverMarkers(entities.interactables.filter((t) => byId.get(t.id)?.available), givers));
+      });
+    }
+    // Tapping the quest card walks Miu to the hinted target along the ways, "Đi tới đây" on the full map to any
+    // place marked there. The route worker starts on the first walk: most visits never ask for one.
     let routes: RouteFinder | null = null;
+    /** Whether the walk under way ends in a tap on Interact (planWalk). */
+    let walkInteracts = false;
     this.cleanups.push(() => routes?.dispose());
     const walker = new RouteWalker(
       // Round the solid props (crates, stalls, fences) as well as the blocks.
@@ -549,12 +591,17 @@ export class Game {
       (state) => {
         store.emit({ type: 'autowalk', state });
         overlay.stats.autowalk = state;
-        // Arrived beside the quest's place: she greets the character or picks up the thing at once, as a tap
-        // on Interact would, so a tap on the quest card takes the child right into the step.
-        if (state === 'arrived') interactRequested = true;
+        // Arrived beside the quest's place (or a character picked on the map): she greets the character or picks
+        // up the thing at once, as a tap on Interact would, so a tap on the quest card takes the child right into
+        // the step. Never through a gate or onto a ride on her own (planWalk).
+        if (state === 'arrived' && walkInteracts) interactRequested = true;
       },
       (x, z) => data.regions.loadedAt(x, z),
     );
+    const walkTo = (plan: PlannedWalk): void => {
+      walkInteracts = plan.interactOnArrival;
+      walker.go(controller.position, plan.target);
+    };
     this.cleanups.push(() => store.emit({ type: 'autowalk', state: 'idle' }));
     this.cleanups.push(() => store.emit({ type: 'autowalk-available', available: false }));
     this.cleanups.push(
@@ -562,7 +609,11 @@ export class Game {
         if (command.type === 'interact') interactRequested = true;
         if (command.type === 'rescue') rescueRequested = true;
         if (command.type === 'celebrate') celebrateRequested = true;
-        if (command.type === 'autowalk-start' && hint?.available) walker.go(controller.position, hint.def);
+        if (command.type === 'autowalk-start' && hint?.available) walkTo({ target: hint.def, interactOnArrival: true });
+        if (command.type === 'autowalk-to') {
+          const plan = planWalk(command.to, (id) => byId.get(id));
+          if (plan) walkTo(plan);
+        }
         if (command.type === 'autowalk-stop') walker.stop();
         if (command.type === 'set-target-hint') {
           // A new step points somewhere else: a walk to the old place ends where she is.
@@ -610,7 +661,11 @@ export class Game {
       let intent: MoveIntent;
       let interact = interactRequested;
       interactRequested = false;
-      if (autopilot) {
+      if (journey.active) {
+        // The ride drives her: the stick and the buttons wait (read, so nothing is left over for after).
+        input.read();
+        intent = { dirX: 0, dirZ: 0, run: false, jump: false };
+      } else if (autopilot) {
         intent = autopilot.intent(dt, controller.position);
         rig.follow(controller.facing, dt);
       } else {
@@ -658,33 +713,54 @@ export class Game {
           }
         }
       }
-      controller.update(dt, intent);
-      ride.update(dt);
-      if (rescueRequested) {
-        rescueRequested = false;
-        walker.stop();
-        controller.teleport(rescue.spot() ?? rescueFallback());
+      // On a ride the journey carries her (the camera rides along); she is set down at the far stop at its end.
+      const journeyFrame = journey.update(dt);
+      const carried = journeyFrame && !('done' in journeyFrame) ? journeyFrame : null;
+      if (journeyFrame && 'done' in journeyFrame) {
+        controller.teleport(journeyFrame.done);
+        controller.facing = journeyFrame.facing;
+        rig.yaw = journeyFrame.cameraYaw;
         rescue.reset();
       }
-      const stuck = rescue.update(dt, {
+      if (carried) controller.position.copy(carried.feet);
+      else {
+        controller.update(dt, intent);
+        ride.update(dt);
+      }
+      if (rescueRequested) {
+        rescueRequested = false;
+        if (!carried) {
+          walker.stop();
+          controller.teleport(rescue.spot() ?? rescueFallback());
+          rescue.reset();
+        }
+      }
+      const stuck = !carried && rescue.update(dt, {
         position: [controller.position.x, controller.position.y, controller.position.z],
         safe: controller.onGround && !controller.inWater,
         inWater: controller.inWater,
         pushing: Math.hypot(intent.dirX, intent.dirZ) > 0.5,
       });
       store.emit({ type: 'stuck', stuck });
-      character.root.position.copy(controller.position);
-      character.root.position.y += ride.liftWorld;
-      character.root.rotation.y = controller.facing;
-      // On a vehicle she stands calm (idle) or holds her seated pose while it carries her.
-      character.update(dt, ride.riding ? 0 : controller.speed, controller.onGround, ride.pose);
-      rig.update(dt, controller.position);
+      if (carried) {
+        character.root.position.copy(carried.feet);
+        character.root.rotation.y = carried.facing;
+        character.update(dt, carried.speed, true, carried.pose);
+      } else {
+        character.root.position.copy(controller.position);
+        character.root.position.y += ride.liftWorld;
+        character.root.rotation.y = controller.facing;
+        // On a vehicle she stands calm (idle) or holds her seated pose while it carries her.
+        character.update(dt, ride.riding ? 0 : controller.speed, controller.onGround, ride.pose);
+        rig.update(dt, controller.position);
+      }
       // With the camera inside Miu (nowhere left to back off to), hide her rather than show her insides.
-      if (!reviewShot?.backdrop) character.root.visible = rig.viewDistance > 0.9 && !reviewShot?.hidesPlayer;
+      if (!reviewShot?.backdrop) character.root.visible = (carried !== null || rig.viewDistance > 0.9) && !reviewShot?.hidesPlayer;
       if (pet) {
         const p = controller.position;
         pet.update(dt, { x: p.x, y: p.y, z: p.z, facing: controller.facing }, ground);
-        pet.root.visible = !reviewShot?.backdrop && !reviewShot?.hidesPlayer;
+        // The pet waits out a ride and catches up with her at the far stop.
+        pet.root.visible = !carried && !reviewShot?.backdrop && !reviewShot?.hidesPlayer;
         overlay.stats.petClip = pet.clip;
       }
       reviewShot?.apply(camera);
@@ -698,11 +774,11 @@ export class Game {
 
       for (const target of targets) target.update(dt, controller.position, camera.position);
       arrow.update(dt, controller.position, hint?.available ? hint.def : null);
-      const questPlace = hint?.available ? hint.def.position : null;
-      minimap.update(dt, { x: controller.position.x, z: controller.position.z, facing: controller.facing }, questPlace ? { x: questPlace[0], z: questPlace[2] } : null);
+      const questPlace = hint?.available ? hint.def : null;
+      minimap.update(dt, { x: controller.position.x, z: controller.position.z, facing: controller.facing }, questPlace ? { id: questPlace.id, label: questPlace.name, x: questPlace.position[0], z: questPlace.position[2] } : null);
       store.emit({ type: 'autowalk-available', available: hint?.available === true });
       overlay.stats.hintTarget = arrow.showing ? (hint?.def.id ?? null) : null;
-      const nearest = pickNearest(targets, controller.position);
+      const nearest = carried ? null : pickNearest(targets, controller.position);
       // Quest targets always win the prompt; ambient life goes quiet next to them.
       const nearAmbient = nearest ? null : life.nearest(controller.position);
       // A still review shot gathers the nearest people and animals round what it looks at, not round the child.
@@ -731,16 +807,12 @@ export class Game {
         }
       }
       if (interact && promptTarget?.def.ride) {
-        // A ride across the map: the child gets off at the next stop (its regions are fetched ahead). One ride at
-        // a time: a second press while the far stop loads would set her down twice, maybe at another stop.
-        const [rx, ry, rz] = promptTarget.def.ride;
-        if (!riding) {
-          riding = true;
-          // Off beside whatever stands on the stop (a signpost, a crate), never inside it.
-          void world
-            .settle(rx, rz)
-            .then(() => controller.teleport(nearestUsableSpot([rx, ry, rz], solid, liquid, data.bounds, data.world.height) ?? [rx, ry, rz]))
-            .finally(() => (riding = false));
+        // A ride across the map: the journey to the far stop (ride/ride-journey.ts), one at a time. A walk to the
+        // quest's place ends here, and she gets off her own vehicle to board.
+        if (journey.start(promptTarget, controller.position, controller.facing)) {
+          walker.stop();
+          ride.dismount();
+          ride.update(0);
         }
         overlay.stats.lastInteraction = promptTarget.def.id;
       } else if (interact && promptTarget?.def.travel) {
@@ -775,12 +847,14 @@ export class Game {
       overlay.stats.onGround = controller.onGround;
       overlay.stats.speed = controller.speed;
       overlay.stats.riding = ride.riding;
+      overlay.stats.journey = journey.state;
       overlay.stats.patches = world.patchCount();
       overlay.stats.nearTarget = promptTarget?.def.id ?? null;
       overlay.stats.cameraYaw = rig.yaw;
       overlay.stats.cameraInsideBlock = solid(Math.floor(camera.position.x), Math.floor(camera.position.y), Math.floor(camera.position.z));
 
-      renderer.render(scene, camera);
+      // While the full map covers the screen nothing of the 3D view shows: no GPU time spent on it.
+      if (!minimap.covering) renderer.render(scene, camera);
       overlay.frame(dt, renderer);
       reviewShot?.frameDone();
       if (firstFrame) {

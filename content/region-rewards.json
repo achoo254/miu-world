@@ -1,0 +1,270 @@
+{
+  "version": 1,
+  "minigameGoal": 10,
+  "regions": [
+    {
+      "region": "khu-rung-bi-mat",
+      "title": "Nhà thám hiểm rừng xanh",
+      "half": {
+        "coin": 65,
+        "xp": 75
+      },
+      "full": {
+        "coin": 170,
+        "xp": 235,
+        "item": "hat-ruong-khu-rung-bi-mat"
+      },
+      "stars": {
+        "coin": 132,
+        "xp": 170,
+        "item": "wings-ruong-sao-khu-rung-bi-mat"
+      },
+      "minigames": {
+        "coin": 60,
+        "xp": 40
+      }
+    },
+    {
+      "region": "lang-ven-song",
+      "title": "Bạn thân của dòng sông",
+      "half": {
+        "coin": 60,
+        "xp": 70
+      },
+      "full": {
+        "coin": 160,
+        "xp": 220,
+        "item": "hat-ruong-lang-ven-song"
+      },
+      "stars": {
+        "coin": 124,
+        "xp": 160,
+        "item": "wings-ruong-sao-lang-ven-song"
+      },
+      "minigames": {
+        "coin": 60,
+        "xp": 40
+      }
+    },
+    {
+      "region": "nha-cua-be",
+      "title": "Chủ nhà chăm chỉ",
+      "half": {
+        "coin": 25,
+        "xp": 35
+      },
+      "full": {
+        "coin": 90,
+        "xp": 115,
+        "item": "hat-ruong-nha-cua-be"
+      },
+      "stars": {
+        "coin": 68,
+        "xp": 90,
+        "item": "scarf-ruong-sao-nha-cua-be"
+      },
+      "minigames": {
+        "coin": 60,
+        "xp": 40
+      }
+    },
+    {
+      "region": "trung-tam",
+      "title": "Ngôi sao Trung tâm",
+      "half": {
+        "coin": 25,
+        "xp": 35
+      },
+      "full": {
+        "coin": 90,
+        "xp": 115,
+        "item": "hat-ruong-trung-tam"
+      },
+      "stars": {
+        "coin": 68,
+        "xp": 90,
+        "item": "scarf-ruong-sao-trung-tam"
+      },
+      "minigames": {
+        "coin": 60,
+        "xp": 40
+      }
+    },
+    {
+      "region": "truong-hoc",
+      "title": "Học trò chăm ngoan",
+      "half": {
+        "coin": 80,
+        "xp": 90
+      },
+      "full": {
+        "coin": 200,
+        "xp": 280,
+        "item": "hat-ruong-truong-hoc"
+      },
+      "stars": {
+        "coin": 156,
+        "xp": 200,
+        "item": "back-ruong-sao-truong-hoc"
+      },
+      "minigames": {
+        "coin": 60,
+        "xp": 40
+      }
+    },
+    {
+      "region": "thu-vien",
+      "title": "Mọt sách nhí",
+      "half": {
+        "coin": 55,
+        "xp": 65
+      },
+      "full": {
+        "coin": 150,
+        "xp": 205,
+        "item": "hat-ruong-thu-vien"
+      },
+      "stars": {
+        "coin": 116,
+        "xp": 150,
+        "item": "hand-ruong-sao-thu-vien"
+      },
+      "minigames": {
+        "coin": 60,
+        "xp": 40
+      }
+    },
+    {
+      "region": "lau-dai",
+      "title": "Hiệp sĩ lâu đài",
+      "half": {
+        "coin": 65,
+        "xp": 75
+      },
+      "full": {
+        "coin": 170,
+        "xp": 235,
+        "item": "hat-ruong-lau-dai"
+      },
+      "stars": {
+        "coin": 132,
+        "xp": 170,
+        "item": "scarf-ruong-sao-lau-dai"
+      },
+      "minigames": {
+        "coin": 60,
+        "xp": 40
+      }
+    },
+    {
+      "region": "xom-mai-am",
+      "title": "Hàng xóm tốt bụng",
+      "half": {
+        "coin": 60,
+        "xp": 70
+      },
+      "full": {
+        "coin": 160,
+        "xp": 220,
+        "item": "hat-ruong-xom-mai-am"
+      },
+      "stars": {
+        "coin": 124,
+        "xp": 160,
+        "item": "back-ruong-sao-xom-mai-am"
+      },
+      "minigames": {
+        "coin": 60,
+        "xp": 40
+      }
+    },
+    {
+      "region": "cho-phien",
+      "title": "Nhà buôn nhí chợ phiên",
+      "half": {
+        "coin": 80,
+        "xp": 90
+      },
+      "full": {
+        "coin": 200,
+        "xp": 280,
+        "item": "hat-ruong-cho-phien"
+      },
+      "stars": {
+        "coin": 156,
+        "xp": 200,
+        "item": "hand-ruong-sao-cho-phien"
+      },
+      "minigames": {
+        "coin": 60,
+        "xp": 40
+      }
+    },
+    {
+      "region": "nong-trai",
+      "title": "Nông dân nhí",
+      "half": {
+        "coin": 50,
+        "xp": 60
+      },
+      "full": {
+        "coin": 140,
+        "xp": 190,
+        "item": "hat-ruong-nong-trai"
+      },
+      "stars": {
+        "coin": 108,
+        "xp": 140,
+        "item": "back-ruong-sao-nong-trai"
+      },
+      "minigames": {
+        "coin": 60,
+        "xp": 40
+      }
+    },
+    {
+      "region": "nui-tuyet",
+      "title": "Nhà leo núi tuyết",
+      "half": {
+        "coin": 25,
+        "xp": 35
+      },
+      "full": {
+        "coin": 90,
+        "xp": 115,
+        "item": "hat-ruong-nui-tuyet"
+      },
+      "stars": {
+        "coin": 68,
+        "xp": 90,
+        "item": "wings-ruong-sao-nui-tuyet"
+      },
+      "minigames": {
+        "coin": 60,
+        "xp": 40
+      }
+    },
+    {
+      "region": "dao-bi-an",
+      "title": "Thuyền trưởng đảo bí ẩn",
+      "half": {
+        "coin": 25,
+        "xp": 35
+      },
+      "full": {
+        "coin": 90,
+        "xp": 115,
+        "item": "hat-ruong-dao-bi-an"
+      },
+      "stars": {
+        "coin": 68,
+        "xp": 90,
+        "item": "back-ruong-sao-dao-bi-an"
+      },
+      "minigames": {
+        "coin": 60,
+        "xp": 40
+      }
+    }
+  ]
+}

@@ -3,13 +3,14 @@
 import type { CSSProperties } from 'react';
 import { HomeDecorCatalog, type DecorSide } from '@miu/schema/home-decor';
 import decorJson from '../../../../../content/home/decor.json';
+import type { TextKey } from '../i18n/i18n';
 
 export const DECOR_CATALOG = HomeDecorCatalog.parse(decorJson);
 
 /** The decorating notebook on the living room's sideboard (map `nha-cua-be`). */
 export const DECOR_TARGET = 'nha-trang-tri';
 
-export const SIDE_LABELS: Readonly<Record<DecorSide, string>> = { inside: 'Trong nhà', outside: 'Ngoài nhà' };
+export const SIDE_LABELS: Readonly<Record<DecorSide, TextKey>> = { inside: 'decor.inside', outside: 'decor.outside' };
 
 /** Picks that differ from what is saved: what "Lưu" sends. */
 export function changedPicks(saved: Readonly<Record<string, string>>, draft: Readonly<Record<string, string>>): Record<string, string> {

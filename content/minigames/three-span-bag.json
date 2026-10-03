@@ -1,0 +1,14 @@
+{
+  "id": "three-span-bag",
+  "name": "Túi ba gang",
+  "family": "exact-sum",
+  "howTo": [
+    "Chim thần mang túi ba gang tới. Túi chỉ đựng vừa đúng số ghi trên túi.",
+    "{name} chạm viên ngọc để bỏ vào túi, chạm túi để lấy viên vừa bỏ ra.",
+    "Vừa khít số trên túi thì chim bay đi, được một điểm. Quá túi thì ngọc rơi ra."
+  ],
+  "controls": ["tap"],
+  "duration": 90,
+  "goal": 6,
+  "params": {}
+}

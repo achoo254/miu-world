@@ -1,18 +1,19 @@
 // M3.3 (Hội thoại NPC), as a quest scene (mock "quest screens"): the NPC's portrait and its line in a
 // speech bubble under its name tag, one line at a time; the story choices of the step as big cards
 // (three or more read as a decision, mock "Lựa chọn hành động"), each may get a reply; "Xem nhiệm vụ";
-// "Nghe lại" with an on-device voice. Every text goes through the player's character name; the step
+// "Nghe lại" with an on-device voice (listen-button.tsx). Every text goes through the player's character name; the step
 // completes on the server when it ends.
 import { useState } from 'react';
 import type { QuestStepPublic } from '@miu/schema/content';
 import type { CharacterDto } from '@miu/schema/game';
+import { T } from '../i18n/use-t';
 import { Icon } from '../kit/art';
 import { buttonClass } from '../kit/button';
 import { Modal } from '../kit/modal';
 import type { UiIcon } from '../kit/ui-art';
 import { say } from '../player/player-data';
 import { NpcPortrait } from './npc-portrait';
-import { speak, useLocalVoice } from './speech';
+import { ListenButton } from './listen-button';
 import './dialogue.css';
 import { isCount, useDraftState } from '../quest/step-draft';
 
@@ -42,7 +43,6 @@ export function DialogueScreen({
   onDone: () => void;
   onClose: () => void;
 }) {
-  const voice = useLocalVoice();
   const lines: Line[] = step.lines.map((l) => ({ speaker: say(l.speaker, character), text: say(l.text, character) }));
   const [index, setIndex] = useDraftState('line', 0, (v): v is number => isCount(v) && v < Math.max(1, step.lines.length));
   const [reply, setReply] = useState<Line | null>(null);
@@ -85,24 +85,19 @@ export function DialogueScreen({
             ))}
             <button type="button" className="dialogue-choice" data-id="dialogue-quest-button" aria-pressed={showQuest} onClick={() => setShowQuest(!showQuest)}>
               <Icon name="scroll" size={decision ? 48 : 32} />
-              Xem nhiệm vụ
+              <T k="dialogue.seeQuest" />
             </button>
           </div>
         ) : null}
         <div className="dialogue-actions">
-          {voice ? (
-            <button type="button" className={buttonClass('ghost', { small: true })} data-id="dialogue-listen" onClick={() => speak(shown.text, voice)}>
-              <Icon name="speaker" size={24} />
-              Nghe lại
-            </button>
-          ) : null}
+          <ListenButton text={{ vi: shown.text }} dataId="dialogue-listen" label="speech.listenAgain" />
           {!lastLine ? (
             <button type="button" className={buttonClass('primary')} data-id="dialogue-next" onClick={() => setIndex(index + 1)}>
-              Tiếp
+              <T k="common.next" />
             </button>
           ) : atChoices ? null : (
             <button type="button" className={buttonClass('primary')} data-id="dialogue-done" disabled={busy} onClick={onDone}>
-              Tiếp tục
+              <T k="common.continue" />
             </button>
           )}
         </div>

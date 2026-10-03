@@ -1,0 +1,14 @@
+{
+  "id": "cake-decorate",
+  "name": "Trang trí bánh theo đơn",
+  "family": "count-order",
+  "howTo": [
+    "Khách đặt bánh: mỗi thứ bao nhiêu cái. {name} chạm hộp (hoặc kéo) để thêm lên bánh.",
+    "Thừa thì chạm vào món trên bánh để bỏ bớt.",
+    "Đủ đúng số là giao bánh, được một điểm."
+  ],
+  "controls": ["tap", "drag"],
+  "duration": 90,
+  "goal": 8,
+  "params": {}
+}

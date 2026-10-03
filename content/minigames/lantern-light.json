@@ -1,0 +1,14 @@
+{
+  "id": "lantern-light",
+  "name": "Thắp đèn phố Hội",
+  "family": "keep-lit",
+  "howTo": [
+    "Đèn lồng phố Hội mờ dần. {name} chạm đèn để thắp sáng lại.",
+    "Phố sáng ít nhất 8 đèn thì đoàn khách mới đi dạo. Phố tối thì khách đứng chờ.",
+    "Mỗi đoàn khách đi hết phố được một điểm."
+  ],
+  "controls": ["tap"],
+  "duration": 60,
+  "goal": 10,
+  "params": {}
+}

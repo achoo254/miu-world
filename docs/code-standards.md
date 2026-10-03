@@ -39,6 +39,7 @@ Lệnh cụ thể và danh sách cấm cho agent: `CLAUDE.md`. File này giải 
 - React không giữ state thay đổi theo khung hình (vị trí, camera, FPS): game tự ghi vào DOM qua ref; React chỉ nhận event rời rạc qua `game-bridge`.
 - Màn hình ghi rõ bám mock nào (`M?.?`) hoặc là NEW SCREEN; dùng biến CSS token, không hardcode màu mới.
 - Gọi API cùng origin bằng `fetch`; không script hay analytics bên thứ ba.
+- Chữ giao diện đi qua lớp song ngữ (`apps/web/src/ui/i18n`, cách dùng ở [`i18n.md`](i18n.md)): không viết chuỗi tiếng Việt thẳng trong component mới; chữ SGK giữ nguyên tiếng Việt.
 
 ## Định nghĩa "xong"
 

@@ -1,0 +1,14 @@
+{
+  "id": "lunchbox-pack",
+  "name": "Hộp cơm đủ chất",
+  "family": "group-pack",
+  "howTo": [
+    "Hộp cơm cần đủ bốn nhóm: cơm bánh, rau, thịt cá trứng và quả.",
+    "{name} chạm món ăn trên băng chuyền (hoặc kéo lên) để bỏ vào hộp.",
+    "Bốn món khác nhóm là hộp đủ chất. Trùng nhóm thì hộp đổ, làm hộp mới."
+  ],
+  "controls": ["tap", "drag"],
+  "duration": 90,
+  "goal": 8,
+  "params": { "speed": 1 }
+}

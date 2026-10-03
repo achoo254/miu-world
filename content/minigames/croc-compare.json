@@ -1,0 +1,14 @@
+{
+  "id": "croc-compare",
+  "name": "Cá sấu tham ăn",
+  "family": "compare-swipe",
+  "howTo": [
+    "Cá sấu luôn ăn đĩa nhiều hơn. {name} vuốt cá sấu về phía đĩa đó.",
+    "Hai đĩa bằng nhau thì vuốt xuống, hoặc chạm nút bằng.",
+    "Đoán bừa thì cá sấu ngáp ngủ, phải chờ lâu hơn đó!"
+  ],
+  "controls": ["swipe", "tap"],
+  "duration": 60,
+  "goal": 20,
+  "params": {}
+}

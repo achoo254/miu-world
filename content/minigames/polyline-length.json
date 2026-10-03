@@ -1,0 +1,13 @@
+{
+  "id": "polyline-length",
+  "name": "Đường gấp khúc",
+  "family": "path-length",
+  "howTo": [
+    "Kéo từ ốc sên qua các hòn đá tới cây rau. Mỗi đoạn có ghi độ dài.",
+    "Cộng các đoạn: {name} tìm đường gấp khúc dài đúng số xăng-ti-mét trên biển nhé!"
+  ],
+  "controls": ["drag"],
+  "duration": 90,
+  "goal": 6,
+  "params": {}
+}

@@ -2,6 +2,7 @@
 // ô 5), hướng A. No offline play: rewards are computed on the server, so the child retries
 // (validation decision `offline_behavior` = block_with_retry). Progress already saved stays safe.
 import { useState } from 'react';
+import { T } from '../i18n/use-t';
 import { Icon } from '../kit/art';
 import { buttonClass } from '../kit/button';
 import { Modal } from '../kit/modal';
@@ -17,13 +18,13 @@ export function OfflineBanner({ onRetry }: { onRetry: () => Promise<unknown> }) 
     }
   }
   return (
-    <Modal title="Mất kết nối mạng" dataId="offline">
+    <Modal title={<T k="offline.title" />} dataId="offline">
       <p className="offline-body">
         <Icon name="antennaBars" size={56} />
-        Miu World cần mạng để lưu tiến độ. Những gì đã làm được vẫn được giữ an toàn.
+        <T k="offline.body" />
       </p>
       <button type="button" className={buttonClass('primary', { block: true })} data-id="offline-retry" disabled={retrying} onClick={() => void retry()}>
-        {retrying ? 'Đang kết nối lại…' : 'Thử kết nối lại'}
+        <T k={retrying ? 'offline.retrying' : 'offline.retry'} />
       </button>
     </Modal>
   );

@@ -1,0 +1,13 @@
+{
+  "id": "treasure-map-steps",
+  "name": "Đi theo bản đồ kho báu",
+  "family": "follow-steps",
+  "howTo": [
+    "Bản đồ ghi số bước và mũi tên, ví dụ 3 bước lên.",
+    "{name} đếm rồi chạm ô sẽ tới. Đi hết bản đồ là đào được quà!"
+  ],
+  "controls": ["tap"],
+  "duration": 90,
+  "goal": 6,
+  "params": {}
+}

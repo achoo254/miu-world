@@ -35,6 +35,13 @@ export interface WorldRenderer {
   update(camera: Camera, see?: SeeLine): void;
   /** Resolves once every region and patch within the view distance of (x, z) is in (the whole map when infinite). */
   settle(x: number, z: number): Promise<void>;
+  /**
+   * Keeps the land round (x, z) drawn and every region held until the returned release is called: a ride's far
+   * end stays ready while the camera travels with the child (settle draws it, this keeps it).
+   */
+  hold(x: number, z: number): () => void;
+  /** Whether the patch under (x, z) is drawn. */
+  drawnAt(x: number, z: number): boolean;
   dispose(): void;
 }
 
@@ -304,6 +311,18 @@ export async function createWorldRenderer(data: WorldData, options: { sky: Color
         holds.splice(holds.indexOf(hold), 1);
         lastFetch = null; // the next frame fetches (and drops) round wherever the camera is now
       }
+    },
+    hold(x, z) {
+      const held: [number, number] = [x, z];
+      holds.push(held);
+      return () => {
+        const at = holds.indexOf(held);
+        if (at >= 0) holds.splice(at, 1);
+        lastFetch = null;
+      };
+    },
+    drawnAt(x, z) {
+      return patches.get(`${Math.floor(x / PATCH_BLOCKS)},${Math.floor(z / PATCH_BLOCKS)}`)?.state === 'ready';
     },
     dispose() {
       source.dispose();

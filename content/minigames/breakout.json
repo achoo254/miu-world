@@ -1,0 +1,14 @@
+{
+  "id": "breakout",
+  "name": "Phá gạch",
+  "family": "brick-break",
+  "howTo": [
+    "Chạm để bắn bóng, rồi kéo thanh đỡ sang trái, sang phải để bóng nảy lên phá gạch.",
+    "Gạch có sao được ba điểm. Hứng quả táo rơi thì thanh đỡ dài ra.",
+    "Bóng rơi mất là mất một tim. {name} phá thật nhiều gạch nhé!"
+  ],
+  "controls": ["drag", "tap"],
+  "duration": 90,
+  "goal": 30,
+  "params": { "speed": 1 }
+}

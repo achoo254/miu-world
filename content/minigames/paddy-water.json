@@ -1,0 +1,14 @@
+{
+  "id": "paddy-water",
+  "name": "Mở cống ruộng bậc thang",
+  "family": "fill-gates",
+  "howTo": [
+    "{name} chạm cống bên suối để mở cho nước vào ruộng, chạm lần nữa để đóng.",
+    "Đóng cống khi nước tới vạch vàng thì lúa lớn, được một điểm.",
+    "Nước quá vạch thì phải xả bớt rồi mở lại; tràn bờ thì nước chảy xuống ruộng dưới."
+  ],
+  "controls": ["tap"],
+  "duration": 90,
+  "goal": 12,
+  "params": {}
+}

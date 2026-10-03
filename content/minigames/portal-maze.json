@@ -1,0 +1,14 @@
+{
+  "id": "portal-maze",
+  "name": "Mê cung cổng phép",
+  "family": "portal-maze",
+  "howTo": [
+    "{name} kéo ngón tay ngay trước nhân vật để đi theo đường trong mê cung.",
+    "Bước vào cửa phép thì ra ở cửa cùng màu. Tìm cửa nào dẫn tới rương báu nhé.",
+    "Tới rương báu được một điểm và sang mê cung mới."
+  ],
+  "controls": ["drag"],
+  "duration": 90,
+  "goal": 4,
+  "params": {}
+}

@@ -1,0 +1,35 @@
+/* A ride's fade and its "Bỏ qua" button (ride-overlay.ts); tokens come from ui/styles.css. */
+.ride-fade {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  background: var(--color-ink, #241a3a);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.ride-skip {
+  position: absolute;
+  left: 50%;
+  bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px));
+  z-index: 3;
+  transform: translateX(-50%);
+  min-width: 9rem;
+  min-height: 3.5rem;
+  padding: 0 var(--space-lg, 1.5rem);
+  border: 4px solid var(--color-surface, #fff);
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--color-secondary-top, #7fd0ff) 0%, var(--color-secondary, #3d8fe0) 100%);
+  box-shadow: var(--shadow-secondary, 0 4px 0 rgba(0, 0, 0, 0.25));
+  color: var(--color-on-primary, #fff);
+  font: 800 var(--text-lg, 1.25rem) / 1 var(--font-display, 'Baloo 2', system-ui, sans-serif);
+  text-shadow: 0 1px 0 var(--color-secondary-edge, rgba(0, 0, 0, 0.3));
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.ride-skip:active { transform: translateX(-50%) translateY(3px) scale(0.97); box-shadow: none; }
+.ride-skip:focus-visible { outline: none; box-shadow: var(--focus-ring, 0 0 0 4px #ffd23f); }
+
+/* While she rides, the stick and the run / jump buttons have nothing to do. */
+.miu-game.is-riding #joystick,
+.miu-game.is-riding #actions { visibility: hidden; }

@@ -1,0 +1,14 @@
+{
+  "id": "magic-letters",
+  "name": "Nét chữ phép màu",
+  "family": "write-letter",
+  "howTo": [
+    "Bóng bay mang chữ cái bay xuống, kèm hình một tiếng bắt đầu bằng chữ đó.",
+    "{name} viết chữ ấy bằng một nét ngón tay, ở đâu cũng được, để bóng nổ.",
+    "Mỗi bóng nổ được một điểm. Bóng chạm đất thì mất một tim."
+  ],
+  "controls": ["drag"],
+  "duration": 90,
+  "goal": 20,
+  "params": {}
+}

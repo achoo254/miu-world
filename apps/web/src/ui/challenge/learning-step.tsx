@@ -6,6 +6,7 @@ import { useRef, useState, type ReactElement } from 'react';
 import { freshPicker } from '@miu/quest/pick-fresh';
 import type { QuestStepPublic } from '@miu/schema/content';
 import type { NotebookLine, StepAnswer, StepCompleteRequest, StepCompleteResponse } from '@miu/schema/game';
+import { mapBoth, same, type Bilingual } from '../i18n/i18n';
 import { say, type PlayerData } from '../player/player-data';
 import { TRY_AGAIN_LINES } from '../quest/loop-lines';
 import { playCue } from '../sound/sfx';
@@ -50,7 +51,7 @@ export function LearningStep({
   /** A right answer: the server's line (the question and the book's answer) to copy into the vở. */
   onRight?: (copy: NotebookLine) => void;
 }): ReactElement | null {
-  const [tryAgain, setTryAgain] = useState<string | null>(null);
+  const [tryAgain, setTryAgain] = useState<Bilingual | null>(null);
   /** Wrong answers on this screen: the hint opens after the first, the answer after the second. */
   const [wrongTries, setWrongTries] = useDraftState('wrong-tries', 0, isCount);
   const fallback = useRef(freshPicker(TRY_AGAIN_LINES));
@@ -62,7 +63,7 @@ export function LearningStep({
     playCue(response.correct ? 'right' : 'wrong');
     if (response.correct && response.copy) onRight?.(response.copy);
     if (!response.correct) {
-      setTryAgain(fill(response.feedback ?? fallback.current.next()));
+      setTryAgain(response.feedback ? same(fill(response.feedback)) : mapBoth(fallback.current.next(), fill));
       setWrongTries((n) => n + 1);
     }
   }

@@ -1,0 +1,13 @@
+{
+  "id": "who-swapped",
+  "name": "Ai đổi chỗ?",
+  "family": "swap-spot",
+  "howTo": [
+    "Nhìn thật kỹ sạp hàng. Rèm kéo xuống rồi kéo lên, hai món đã đổi chỗ cho nhau.",
+    "{name} chạm vào đúng hai món đã đổi chỗ nhé."
+  ],
+  "controls": ["tap"],
+  "duration": 90,
+  "goal": 8,
+  "params": { "look": 3 }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "lights-out",
+  "name": "Bật đèn cửa sổ",
+  "family": "toggle-grid",
+  "howTo": [
+    "Chạm một cửa sổ: cửa đó và các cửa ngay trên, dưới, trái, phải đổi sáng tối.",
+    "{name} thắp sáng hết cửa sổ của lâu đài nhé!",
+    "Rối quá thì chạm Làm lại. Chờ một lúc sẽ có ngôi sao gợi ý."
+  ],
+  "controls": ["tap"],
+  "duration": 90,
+  "goal": 3,
+  "params": {}
+}

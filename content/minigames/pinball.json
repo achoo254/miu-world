@@ -1,0 +1,13 @@
+{
+  "id": "pinball",
+  "name": "Bắn bi pinball",
+  "family": "pinball",
+  "howTo": [
+    "Chạm nửa trái màn hình để bật cần gạt trái, nửa phải để bật cần gạt phải.",
+    "{name} giữ bi trên bàn, bắn trúng chuông và ngôi sao. Có ba viên bi."
+  ],
+  "controls": ["tap", "hold"],
+  "duration": 90,
+  "goal": 300,
+  "params": {}
+}

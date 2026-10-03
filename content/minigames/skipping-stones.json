@@ -1,0 +1,13 @@
+{
+  "id": "skipping-stones",
+  "name": "Ném thia lia",
+  "family": "skip-throw",
+  "howTo": [
+    "Vuốt ngang mặt hồ sang phải để ném đá. Vuốt thật nhanh và thật thẳng thì đá nảy nhiều lần.",
+    "Đá nảy trúng ngôi sao trên mặt nước được thêm hai điểm. {name} có sáu viên đá!"
+  ],
+  "controls": ["swipe"],
+  "duration": 60,
+  "goal": 30,
+  "params": { "stones": 6 }
+}

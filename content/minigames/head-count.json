@@ -1,0 +1,14 @@
+{
+  "id": "head-count",
+  "name": "Đếm bạn trong nhà",
+  "family": "count-flow",
+  "howTo": [
+    "Các bạn chạy vào nhà, có bạn chạy ra, có bạn trèo qua cửa sổ.",
+    "Khi cửa đóng, {name} chạm số bạn còn ở trong nhà.",
+    "Đếm nhầm thì mình xem lại thật chậm nhé!"
+  ],
+  "controls": ["tap"],
+  "duration": 100,
+  "goal": 6,
+  "params": {}
+}

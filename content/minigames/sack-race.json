@@ -1,0 +1,13 @@
+{
+  "id": "sack-race",
+  "name": "Nhảy bao bố",
+  "family": "hop-rhythm",
+  "howTo": [
+    "Chạm để nhảy. Chạm lại ngay lúc bao vừa chạm đất thì nhảy tiếp nhanh hơn.",
+    "Chạm khi còn đang bay là ngã đấy! {name} về nhất hoặc về nhì là thắng."
+  ],
+  "controls": ["tap"],
+  "duration": 45,
+  "goal": 3,
+  "params": { "length": 100 }
+}

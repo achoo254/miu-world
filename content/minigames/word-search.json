@@ -1,0 +1,14 @@
+{
+  "id": "word-search",
+  "name": "Tìm từ ẩn",
+  "family": "word-grid",
+  "howTo": [
+    "Sáu từ có hình ở bên cạnh trốn trong bảng chữ, nằm ngang hoặc dọc.",
+    "{name} kéo ngón tay dọc theo từ (hoặc chạm chữ đầu rồi chạm chữ cuối).",
+    "Mỗi từ tìm được là một điểm. Tìm hết thì có bảng mới."
+  ],
+  "controls": ["drag", "tap"],
+  "duration": 90,
+  "goal": 6,
+  "params": {}
+}

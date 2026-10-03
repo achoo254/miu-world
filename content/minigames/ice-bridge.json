@@ -1,0 +1,14 @@
+{
+  "id": "ice-bridge",
+  "name": "Đóng băng làm cầu",
+  "family": "bridge-path",
+  "howTo": [
+    "{name} chạm ô nước để đóng băng, mỗi ô tốn một bông tuyết.",
+    "Nối băng từ bờ trái sang bờ phải để cánh cụt đi qua. Dùng ô băng sẵn có cho đỡ tốn!",
+    "Hết bông tuyết mà chưa có cầu thì băng tan, làm lại hồ đó."
+  ],
+  "controls": ["tap"],
+  "duration": 90,
+  "goal": 4,
+  "params": {}
+}

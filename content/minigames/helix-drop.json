@@ -1,0 +1,14 @@
+{
+  "id": "helix-drop",
+  "name": "Bóng xuống tháp xoắn",
+  "family": "tower-spin",
+  "howTo": [
+    "Bóng nảy trên các tầng của tháp. {name} kéo ngang để xoay tháp.",
+    "Xoay chỗ hở tới dưới quả bóng để bóng rơi xuống tầng dưới. Mỗi tầng là một điểm.",
+    "Đừng để bóng rơi trúng mảng đỏ: mất một tim."
+  ],
+  "controls": ["drag"],
+  "duration": 60,
+  "goal": 20,
+  "params": {}
+}

@@ -1,10 +1,12 @@
 // Nói và nghe: the book's speaking task with its "G:" prompts and pictures. The child records itself
 // and listens back on this device (on by default; only the browser's microphone permission can stop
 // it, and the sound never leaves the screen). Without a microphone the child tells a parent instead.
-// Nothing is graded: "Mình nói xong rồi" finishes the step.
+// Nothing is graded: "Mình nói xong rồi" finishes the step. The book's prompt and hints stay its Vietnamese
+// (read aloud in Vietnamese); the screen's own words follow the display mode.
 import { useRef } from 'react';
 import type { QuestStepPublic } from '@miu/schema/content';
-import { speak, useLocalVoice } from '../../dialogue/speech';
+import { ListenButton } from '../../dialogue/listen-button';
+import { T, useT } from '../../i18n/use-t';
 import { Icon } from '../../kit/art';
 import { buttonClass } from '../../kit/button';
 import { Modal } from '../../kit/modal';
@@ -27,7 +29,7 @@ export function SpeakStepScreen({
   onDone: () => void;
   onClose: () => void;
 }) {
-  const voice = useLocalVoice();
+  const { t } = useT();
   const recorder = useVoiceRecorder();
   const audio = useRef<HTMLAudioElement>(null);
   const prompt = fill(step.prompt);
@@ -46,7 +48,7 @@ export function SpeakStepScreen({
           </div>
         ) : null}
         {step.hints.length > 0 ? (
-          <ul className="speak-hints" data-id="speak-hints" aria-label="Gợi ý">
+          <ul className="speak-hints" data-id="speak-hints" aria-label={t('speak.hints')}>
             {step.hints.map((hint, i) => (
               <li key={i}>{fill(hint)}</li>
             ))}
@@ -56,39 +58,36 @@ export function SpeakStepScreen({
           <div className="speak-recorder" data-id="speak-recorder">
             {recorder.state === 'recording' ? (
               <button type="button" className={buttonClass('secondary')} data-id="speak-stop" onClick={recorder.stop}>
-                Dừng · còn {recorder.secondsLeft} giây
+                <T k="speak.stop" params={{ seconds: recorder.secondsLeft }} />
               </button>
             ) : (
               <button type="button" className={buttonClass('secondary')} data-id="speak-record" onClick={() => void recorder.start()}>
                 <Icon name="speaker" size={24} />
-                {recorder.state === 'recorded' ? 'Ghi lại' : 'Ghi âm giọng con'}
+                <T k={recorder.state === 'recorded' ? 'speak.recordAgain' : 'speak.record'} />
               </button>
             )}
             {recorder.url ? (
               <>
                 <button type="button" className={buttonClass('ghost')} data-id="speak-playback" onClick={() => void audio.current?.play()}>
-                  Nghe lại giọng con
+                  <T k="speak.playback" />
                 </button>
                 <audio ref={audio} src={recorder.url} data-id="speak-audio" preload="auto" />
               </>
             ) : null}
-            <p className="hint">Tiếng chỉ ở trên máy này, không gửi đi đâu.</p>
+            <p className="hint">
+              <T k="speak.private" />
+            </p>
           </div>
         ) : (
           <p className="hint" data-id="speak-no-mic">
-            Con hãy kể cho bố mẹ nghe nhé.
+            <T k="speak.noMic" />
           </p>
         )}
         <div className="challenge-actions">
-          {voice ? (
-            <button type="button" className={buttonClass('ghost')} data-id="speak-listen" onClick={() => speak(prompt, voice)}>
-              <Icon name="speaker" size={24} />
-              Nghe câu hỏi
-            </button>
-          ) : null}
+          <ListenButton text={{ vi: [prompt, ...step.hints.map(fill)].join('\n') }} dataId="speak-listen" label="speech.listenQuestion" small={false} />
           <button type="button" className={buttonClass('primary')} data-id="speak-done" disabled={busy || recorder.state === 'recording'} onClick={onDone}>
             <Icon name="checkMark" size={28} />
-            Mình nói xong rồi
+            <T k="speak.done" />
           </button>
         </div>
       </div>

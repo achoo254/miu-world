@@ -1,0 +1,14 @@
+{
+  "id": "river-crossing",
+  "name": "Qua sông chở đồ",
+  "family": "ferry-logic",
+  "howTo": [
+    "Thuyền chở {name} và một thứ. Chạm một thứ để đưa lên thuyền, chạm Chèo để sang sông.",
+    "Bảng gỗ chỉ hai đôi không được ở lại một mình (như chó với gà, gà với thóc).",
+    "Chở hết sang bờ bên kia là được một điểm."
+  ],
+  "controls": ["tap"],
+  "duration": 90,
+  "goal": 2,
+  "params": {}
+}

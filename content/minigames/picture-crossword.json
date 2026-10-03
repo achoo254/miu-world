@@ -1,0 +1,14 @@
+{
+  "id": "picture-crossword",
+  "name": "Ô chữ hình",
+  "family": "crossword",
+  "howTo": [
+    "Mỗi hình là một từ: từ đi ngang bắt đầu bên phải hình, từ đi dọc bắt đầu dưới hình.",
+    "{name} kéo chữ vào ô trống, hoặc chạm chữ rồi chạm ô. Hai từ gặp nhau thì chung một chữ.",
+    "Chữ sai sẽ bật ra, nghỉ một chút rồi thử lại."
+  ],
+  "controls": ["drag", "tap"],
+  "duration": 90,
+  "goal": 3,
+  "params": {}
+}

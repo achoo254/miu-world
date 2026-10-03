@@ -1,0 +1,14 @@
+{
+  "id": "customer-memory",
+  "name": "Nhớ món khách gọi",
+  "family": "order-memory",
+  "howTo": [
+    "Khách ngồi xuống gọi món trong bong bóng, rồi bong bóng biến mất. {name} nhớ kỹ nhé!",
+    "Chạm khách rồi chạm đúng món trên quầy (hoặc chạm món rồi chạm khách).",
+    "Khách nhận đủ món được một điểm. Đưa nhầm thì khách nhắc lại một lần."
+  ],
+  "controls": ["tap"],
+  "duration": 90,
+  "goal": 15,
+  "params": {}
+}

@@ -1,6 +1,7 @@
 // Sound on/off button, shared by Pause and the Home settings; the choice stays on this device.
 import { useState } from 'react';
 import { Icon } from '../kit/art';
+import { T } from '../i18n/use-t';
 import { buttonClass } from '../kit/button';
 import { readSoundOn, writeSoundOn } from './sound-setting';
 
@@ -18,7 +19,7 @@ export function SoundToggle({ dataId }: { dataId: string }) {
       }}
     >
       <Icon name={soundOn ? 'speaker' : 'speakerMuted'} size={32} />
-      Âm thanh: {soundOn ? 'Bật' : 'Tắt'}
+      <T k={soundOn ? 'sound.on' : 'sound.off'} />
     </button>
   );
 }

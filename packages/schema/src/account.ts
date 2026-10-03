@@ -92,7 +92,7 @@ export const AccountExport = z.object({
         }),
       ),
       inventory: z.array(z.object({ itemId: z.string(), qty: z.number() })),
-      /** What she bought in the shop and still has (each purchase and use is also a `rewards` row). */
+      /** What she bought in the shop or claimed from a region chest and still has (each purchase, use and claim is also a `rewards` row). */
       shop: z.array(z.object({ itemId: z.string(), qty: z.number() })),
       skills: z.array(z.object({ skillId: z.string(), xp: z.number() })),
       /** Last spot on each map, so the next visit starts there. */

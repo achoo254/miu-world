@@ -1,0 +1,13 @@
+{
+  "id": "tile-flood",
+  "name": "Lan màu",
+  "family": "flood-fill",
+  "howTo": [
+    "Vùng màu của {name} ở góc trên. Chạm một màu để cả vùng đổi sang màu đó.",
+    "Ô cùng màu nằm sát bên sẽ nhập vào vùng. Phủ kín cả bàn một màu trước khi hết bước!"
+  ],
+  "controls": ["tap"],
+  "duration": 90,
+  "goal": 3,
+  "params": {}
+}

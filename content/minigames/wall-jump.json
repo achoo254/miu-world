@@ -1,0 +1,14 @@
+{
+  "id": "wall-jump",
+  "name": "Nhảy vách hẻm núi",
+  "family": "wall-leap",
+  "howTo": [
+    "{name} tự leo lên vách hẻm núi. Chạm để nhảy sang vách bên kia.",
+    "Né những mũi băng nhọn: leo trúng mũi băng thì tụt 5 m. Nhặt sao để lên nhanh hơn.",
+    "Mỗi mét leo được là một điểm."
+  ],
+  "controls": ["tap"],
+  "duration": 60,
+  "goal": 60,
+  "params": {}
+}

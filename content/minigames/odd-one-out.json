@@ -1,0 +1,13 @@
+{
+  "id": "odd-one-out",
+  "name": "Con nào khác?",
+  "family": "odd-one",
+  "howTo": [
+    "Năm hình đang nhảy múa, có một hình không cùng nhóm với các bạn.",
+    "{name} chạm vào hình khác nhóm nhé. Chạm sai thì đợi một chút rồi chọn lại."
+  ],
+  "controls": ["tap"],
+  "duration": 60,
+  "goal": 15,
+  "params": { "items": 5 }
+}

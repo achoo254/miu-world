@@ -1,0 +1,13 @@
+{
+  "id": "domino-chain",
+  "name": "Domino đổ dây chuyền",
+  "family": "domino-topple",
+  "howTo": [
+    "Kéo tay theo đường chấm, domino tự dựng cách đều. Tránh chồng sách nhé!",
+    "Dựng tới chiếc chuông rồi {name} chạm quân đầu tiên để đẩy. Chuông kêu là được điểm."
+  ],
+  "controls": ["drag", "tap"],
+  "duration": 90,
+  "goal": 3,
+  "params": {}
+}

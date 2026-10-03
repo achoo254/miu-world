@@ -1,0 +1,14 @@
+{
+  "id": "cup-stacking",
+  "name": "Xếp cốc thi đấu",
+  "family": "cup-stack",
+  "howTo": [
+    "Dựng tháp cốc từ trái sang phải: chạm hai chỗ dưới trước, rồi chỗ trên cùng.",
+    "Gỡ xuống thì chạm cốc trên cùng trước. Sai thứ tự là tháp đổ!",
+    "{name} dựng rồi gỡ thật nhanh nhé, mỗi tháp là một điểm."
+  ],
+  "controls": ["tap"],
+  "duration": 60,
+  "goal": 24,
+  "params": {}
+}

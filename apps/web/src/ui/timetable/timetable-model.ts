@@ -1,10 +1,26 @@
 // Pure helpers behind the timetable board: what to show (title, days, today's uniform) and the edits the
 // board makes to a draft. Every edit returns a new timetable; the draft is never changed in place.
 import { MAX_PERIODS, WEEKDAYS, emptyPeriodRow, type PeriodRow, type Timetable, type TimetableHeader, type Weekday } from '@miu/schema/timetable';
+import { joinBoth, mapBoth, pairOf, type Bilingual, type TextKey } from '../i18n/i18n';
 
 export type Session = 'morning' | 'afternoon';
 
-export const SESSION_LABELS: Readonly<Record<Session, string>> = { morning: 'Sáng', afternoon: 'Chiều' };
+const SESSION_KEYS: Readonly<Record<Session, TextKey>> = { morning: 'timetable.morning', afternoon: 'timetable.afternoon' };
+const DAY_KEYS: Readonly<Record<Weekday, TextKey>> = {
+  mon: 'timetable.day.mon',
+  tue: 'timetable.day.tue',
+  wed: 'timetable.day.wed',
+  thu: 'timetable.day.thu',
+  fri: 'timetable.day.fri',
+  sat: 'timetable.day.sat',
+};
+
+/** "Sáng" / "Chiều" in both languages. */
+export const sessionLabel = (session: Session): Bilingual => pairOf(SESSION_KEYS[session]);
+/** The session in lower case, inside a sentence ("tiết sáng"). */
+export const sessionLower = (session: Session): Bilingual => mapBoth(sessionLabel(session), (s) => s.toLocaleLowerCase('vi'));
+/** "Thứ Hai"… in both languages. */
+export const dayLabel = (day: Weekday): Bilingual => pairOf(DAY_KEYS[day]);
 
 /** Subjects of grade 2, offered as one-tap picks when filling a period. */
 export const SUBJECT_CHOICES = [
@@ -38,11 +54,11 @@ export function schoolDayToday(t: Timetable, today: Weekday | null): Weekday | n
 }
 
 /** The title line of the photo layout: "THỜI KHÓA BIỂU - LỚP 2A – NĂM HỌC 2030 - 2031". */
-export function titleLine(header: TimetableHeader): string {
-  let title = 'THỜI KHÓA BIỂU';
-  if (header.className) title += ` - LỚP ${header.className.toLocaleUpperCase('vi')}`;
-  if (header.schoolYear) title += ` – NĂM HỌC ${header.schoolYear}`;
-  return title;
+export function titleLine(header: TimetableHeader): Bilingual {
+  const parts = [pairOf('timetable.titleMain')];
+  if (header.className) parts.push(pairOf('timetable.titleClass', { class: header.className.toLocaleUpperCase('vi') }));
+  if (header.schoolYear) parts.push(pairOf('timetable.titleYear', { year: header.schoolYear }));
+  return joinBoth(parts);
 }
 
 /** Nothing typed in yet (the template as it ships). */
@@ -57,11 +73,11 @@ export function isBlank(t: Timetable): boolean {
 }
 
 /** What today's line under the uniform calendar says. */
-export function uniformToday(t: Timetable, today: Weekday | null): string {
+export function uniformToday(t: Timetable, today: Weekday | null): Bilingual {
   const day = schoolDayToday(t, today);
-  if (!day) return 'Hôm nay được nghỉ học, mặc gì cũng được!';
+  if (!day) return pairOf('timetable.dayOff');
   const uniform = t.uniform[day];
-  return uniform ? `Hôm nay mặc: ${uniform}` : 'Hôm nay chưa ghi đồng phục.';
+  return uniform ? pairOf('timetable.wearToday', { uniform }) : pairOf('timetable.noUniform');
 }
 
 export function withCell(t: Timetable, session: Session, period: number, day: Weekday, text: string): Timetable {

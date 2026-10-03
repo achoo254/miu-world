@@ -1,0 +1,14 @@
+{
+  "id": "unblock-ferry",
+  "name": "Thoát kẹt bến thuyền",
+  "family": "slide-block",
+  "howTo": [
+    "Mỗi chiếc thuyền chỉ trượt được theo chiều dài của nó.",
+    "Kéo các thuyền tránh đường để thuyền vàng chở {name} ra cửa sông bên phải.",
+    "Bí quá thì chạm Lùi để trả lại bước vừa đi."
+  ],
+  "controls": ["drag", "tap"],
+  "duration": 90,
+  "goal": 3,
+  "params": {}
+}

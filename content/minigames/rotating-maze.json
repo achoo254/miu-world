@@ -1,0 +1,13 @@
+{
+  "id": "rotating-maze",
+  "name": "Mê cung xoay",
+  "family": "tilt-maze",
+  "howTo": [
+    "Kéo vòng quanh để xoay cả mê cung. Viên bi luôn lăn xuống phía dưới màn hình.",
+    "{name} xoay khéo cho bi lăn qua các lối, ra khỏi khe tới ngôi sao nhé!"
+  ],
+  "controls": ["drag"],
+  "duration": 90,
+  "goal": 4,
+  "params": {}
+}

@@ -2,7 +2,8 @@
 // species in content/species.json is open; every accessory slot has a tab (clothes always worn: the species' own until
 // the child picks others); the "Thú cưng" tab picks
 // a pet (content/pets.json) that follows the character, locked until its level like the clothes. Items sold in the
-// shop (content/shop) show as owned once bought, "Mua ở cửa hàng" until then. The 3D preview is its own light renderer; outfit
+// shop (content/shop) show as owned once bought, "Mua ở cửa hàng" until then; a region chest's exclusive items
+// (content/region-rewards.json) once claimed, "Quà rương <khu>" until then. The 3D preview is its own light renderer; outfit
 // and pet changes reach it as the bridge commands `set-outfit` and `set-pet`.
 import { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router';
@@ -16,27 +17,30 @@ import { GameStoreContext, useGameState } from '../../game-bridge/use-game-state
 import { CharacterPreview, EMOTES, type Emote } from '../../game/preview/character-preview';
 import { SPECIES } from '../../game/content/characters';
 import { api, errorMessage } from '../api-client';
+import type { TextKey } from '../i18n/i18n';
+import { Bi, T, useT } from '../i18n/use-t';
 import { Icon, MiuArt } from '../kit/art';
 import { assetUrl, PETS } from '../kit/ui-art';
 import { buttonClass } from '../kit/button';
 import { SkyScene } from '../kit/sky-scene';
+import { findRegion } from '../region/regions';
 import { isFreshCharacter } from './fresh-character';
 import { OPEN_SLOTS, equip, isOpen, itemArtUrl, itemsForSlot, lockText, slotHasNone, wornInSlot, type OpenSlot } from './creator-outfit';
 import './creator.css';
 
 const NAMES: readonly string[] = (characterNames as { names: string[] }).names;
 
-const EMOTE_LABELS: Record<Emote, string> = { wave: 'Vẫy tay', jump: 'Nhảy', yawn: 'Ngáp', cheer: 'Vui mừng' };
+const EMOTE_LABELS: Record<Emote, TextKey> = { wave: 'creator.emote.wave', jump: 'creator.emote.jump', yawn: 'creator.emote.yawn', cheer: 'creator.emote.cheer' };
 
 /** MVP personality: a fixed label, never stored (validation decision `character_personality_field`). */
-const PERSONALITY = 'Nhà thám hiểm';
+const PERSONALITY: TextKey = 'creator.explorer';
 
 interface CreatorData {
   character: CharacterDto;
   level: number;
   completed: ReadonlySet<string>;
   questTitles: ReadonlyMap<string, string>;
-  /** Things bought in the shop. */
+  /** Things bought in the shop or claimed from a region chest (the server keeps both in the shop cupboard). */
   owned: ReadonlySet<string>;
 }
 
@@ -65,10 +69,12 @@ async function loadCreator(): Promise<CreatorData> {
 function SpeciesStep({ current, switching, onPick }: { current: string; switching: boolean; onPick: (species: string) => void }) {
   return (
     <section className="panel creator-species" data-id="creator-species" aria-labelledby="creator-species-title">
-      <h1 id="creator-species-title">Chọn nhân vật của bé</h1>
+      <h1 id="creator-species-title">
+        <T k="creator.pickSpecies" />
+      </h1>
       {switching ? (
         <p className="hint" data-id="creator-keeps-progress">
-          Đổi bạn khác thoải mái nhé: cấp, sao, xu, đồ trong ba lô và nhiệm vụ của bé vẫn giữ nguyên.
+          <T k="creator.keepsProgress" />
         </p>
       ) : null}
       <ul className="species-grid">
@@ -98,6 +104,7 @@ export function PreviewStage({ store, species, initialOutfit, initialPet, emotes
   const firstOutfit = useRef(initialOutfit);
   const firstPet = useRef(initialPet);
   const status = useGameState((s) => s.status);
+  const { t } = useT();
   useEffect(() => {
     if (!host.current) return;
     const instance = new CharacterPreview(host.current, { store, species, outfit: firstOutfit.current, pet: firstPet.current });
@@ -111,14 +118,14 @@ export function PreviewStage({ store, species, initialOutfit, initialPet, emotes
   }, [store, species]);
   return (
     <div className="creator-stage">
-      <div className="creator-stage-view" ref={host} data-id="creator-preview" aria-label="Nhân vật xem trước, kéo để xoay" />
+      <div className="creator-stage-view" ref={host} data-id="creator-preview" aria-label={t('creator.previewLabel')} />
       {status === 'error' ? (
         <p role="alert" className="error">
-          Không tải được nhân vật xem trước.
+          <T k="creator.previewFailed" />
         </p>
       ) : null}
       {emotes ? (
-        <div className="emote-row" role="group" aria-label="Xem thử hoạt ảnh">
+        <div className="emote-row" role="group" aria-label={t('creator.emotes')}>
           {EMOTES.map((emote) => (
             <button
               key={emote}
@@ -128,7 +135,7 @@ export function PreviewStage({ store, species, initialOutfit, initialPet, emotes
               disabled={status !== 'ready'}
               onClick={() => preview.current?.playEmote(emote)}
             >
-              {EMOTE_LABELS[emote]}
+              <T k={EMOTE_LABELS[emote]} />
             </button>
           ))}
         </div>
@@ -170,7 +177,9 @@ function OutfitStep({
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const worn = data.character.equipped;
+  const { t } = useT();
   const questTitle = (id: string): string => fillPlayerName(data.questTitles.get(id) ?? id, name);
+  const regionName = (id: string): string => fillPlayerName(findRegion(id)?.name ?? id, name);
 
   function choose(itemId: string | null) {
     if (slot === 'pet') return;
@@ -200,8 +209,10 @@ function OutfitStep({
   return (
     <div className="creator-layout" data-id="creator-outfit">
       <section className="panel creator-wardrobe" aria-labelledby="creator-wardrobe-title">
-        <h2 id="creator-wardrobe-title">Trang phục</h2>
-        <div className="slot-tabs" role="tablist" aria-label="Loại trang phục">
+        <h2 id="creator-wardrobe-title">
+          <T k="creator.wardrobe" />
+        </h2>
+        <div className="slot-tabs" role="tablist" aria-label={t('creator.slots')}>
           {OPEN_SLOTS.map((s) => (
             <button
               key={s.slot}
@@ -212,7 +223,7 @@ function OutfitStep({
               data-id={`creator-slot-${s.slot}`}
               onClick={() => setSlot(s.slot)}
             >
-              {s.label}
+              <T k={s.label} />
             </button>
           ))}
           <button
@@ -223,15 +234,15 @@ function OutfitStep({
             data-id="creator-slot-pet"
             onClick={() => setSlot('pet')}
           >
-            Thú cưng
+            <T k="creator.pet" />
           </button>
         </div>
         {slot === 'pet' ? (
-          <ul className="item-grid" role="tabpanel" aria-label="Thú cưng">
+          <ul className="item-grid" role="tabpanel" aria-label={t('creator.pet')}>
             <li>
               <button type="button" className="item-tile" aria-pressed={pet === null} data-id="creator-pet-none" onClick={() => choosePet(null)}>
                 <span className="item-swatch item-swatch--none" aria-hidden="true" />
-                Không mang
+                <T k="creator.noPet" />
               </button>
             </li>
             {PETS.map((p) => {
@@ -256,19 +267,23 @@ function OutfitStep({
                       )}
                     </span>
                     {p.name}
-                    {open || !p.unlock ? null : <span className="item-lock">Cần Lv.{p.unlock.level}</span>}
+                    {open || !p.unlock ? null : (
+                      <span className="item-lock">
+                        <T k="creator.needLevel" params={{ level: p.unlock.level }} />
+                      </span>
+                    )}
                   </button>
                 </li>
               );
             })}
           </ul>
         ) : (
-        <ul className="item-grid" role="tabpanel" aria-label="Món đồ">
+        <ul className="item-grid" role="tabpanel" aria-label={t('creator.items')}>
           {slotHasNone(slot) ? (
             <li>
               <button type="button" className="item-tile" aria-pressed={current === null} data-id={`creator-item-none-${slot}`} onClick={() => choose(null)}>
                 <span className="item-swatch item-swatch--none" aria-hidden="true" />
-                Không đeo
+                <T k="creator.none" />
               </button>
             </li>
           ) : null}
@@ -293,7 +308,11 @@ function OutfitStep({
                     )}
                   </span>
                   {item.name}
-                  {open ? null : <span className="item-lock">{lockText(item, questTitle)}</span>}
+                  {open ? null : (
+                    <span className="item-lock">
+                      <Bi {...lockText(item, questTitle, regionName)} />
+                    </span>
+                  )}
                 </button>
               </li>
             );
@@ -305,15 +324,17 @@ function OutfitStep({
       <PreviewStage store={store} species={species} initialOutfit={equipped} initialPet={pet} />
 
       <section className="panel creator-info" aria-labelledby="creator-info-title">
-        <h2 id="creator-info-title">Thông tin</h2>
+        <h2 id="creator-info-title">
+          <T k="creator.info" />
+        </h2>
         <button type="button" className={`${buttonClass('ghost', { small: true })} creator-species-back`} data-id="creator-change-species" onClick={onChangeSpecies}>
-          Đổi nhân vật
+          <T k="creator.change" />
         </button>
         <label className="field-label">
-          Tên nhân vật
+          <T k="creator.name" />
           <select data-id="creator-name" value={name} onChange={(e) => setName(e.target.value)}>
             <option value="" disabled>
-              Chọn tên…
+              {t('creator.pickName')}
             </option>
             {NAMES.map((n) => (
               <option key={n} value={n}>
@@ -323,9 +344,9 @@ function OutfitStep({
           </select>
         </label>
         <p className="field-label">
-          Tính cách
+          <T k="creator.personality" />
           <span className="badge" data-id="creator-personality">
-            {PERSONALITY}
+            <T k={PERSONALITY} />
           </span>
         </p>
         {error ? (
@@ -335,7 +356,7 @@ function OutfitStep({
         ) : null}
         <button type="button" className={buttonClass('primary', { block: true })} data-id="creator-save" disabled={saving || !name} onClick={() => void save()}>
           <Icon name="sparkles" size={32} />
-          Vào thế giới
+          <T k="creator.enter" />
         </button>
       </section>
     </div>
@@ -372,10 +393,17 @@ export function CreatorScreen() {
         <main className="scene-content creator" data-id="creator">
           {loadError ? (
             <p role="alert" className="error">
-              {loadError} <Link to="/profiles">Quay lại</Link>
+              {loadError}{' '}
+              <Link to="/profiles">
+                <T k="common.back" />
+              </Link>
             </p>
           ) : null}
-          {!data && !loadError ? <p role="status">Đang tải…</p> : null}
+          {!data && !loadError ? (
+            <p role="status">
+              <T k="common.loading" />
+            </p>
+          ) : null}
           {data && species === null ? <SpeciesStep current={data.character.species} switching={!isFreshCharacter(data.character)} onPick={setSpecies} /> : null}
           {data && draft && species !== null ? (
             <OutfitStep data={data} store={store} species={species} draft={draft} onDraft={setDraft} onChangeSpecies={() => setSpecies(null)} />

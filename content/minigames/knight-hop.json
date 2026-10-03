@@ -1,0 +1,14 @@
+{
+  "id": "knight-hop",
+  "name": "Mã đi tìm sao",
+  "family": "knight-path",
+  "howTo": [
+    "Chú ngựa đi hình chữ L: hai ô một hướng rồi một ô sang bên.",
+    "Các ô sáng xanh là chỗ ngựa nhảy tới được. Chạm vào để nhảy.",
+    "{name} giúp ngựa nhặt hết sao trên sàn lâu đài nhé!"
+  ],
+  "controls": ["tap"],
+  "duration": 90,
+  "goal": 17,
+  "params": {}
+}

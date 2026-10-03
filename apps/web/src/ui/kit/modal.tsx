@@ -19,7 +19,8 @@ export function Modal({
   titleClass,
   className,
 }: {
-  title: string;
+  /** Text, or `<T>` / `<Bi>` for the bilingual display. */
+  title: ReactNode;
   onClose?: () => void;
   children: ReactNode;
   dataId?: string;

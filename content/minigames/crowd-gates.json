@@ -1,0 +1,14 @@
+{
+  "id": "crowd-gates",
+  "name": "Đoàn bạn đông vui",
+  "family": "math-gates",
+  "howTo": [
+    "Đoàn bạn của {name} chạy qua các cặp cổng có ghi phép tính.",
+    "Vuốt hoặc chạm sang bên có cổng làm đoàn đông hơn.",
+    "Cuối đường cần ít nhất 30 bạn để đẩy chiếc xe ra!"
+  ],
+  "controls": ["swipe", "tap"],
+  "duration": 55,
+  "goal": 30,
+  "params": {}
+}

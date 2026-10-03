@@ -1,0 +1,37 @@
+/* Region chest badges on the world stage (Home, world map): values from tokens.css only. */
+/* "Nhận thưởng" over a region on the island (Home, world map), above its marker. */
+.region-reward-badges { position: absolute; inset: 0; z-index: 5; pointer-events: none; }
+.region-reward-badge {
+  position: absolute;
+  transform: translate(-50%, calc(-100% - 1.6rem));
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  min-height: 2.75rem;
+  box-sizing: border-box;
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-pill);
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--text-sm);
+  white-space: nowrap;
+  text-decoration: none;
+  box-shadow: var(--shadow-label);
+  pointer-events: auto;
+}
+.region-reward-badge:focus-visible { box-shadow: var(--focus-ring); outline: none; }
+@media (prefers-reduced-motion: no-preference) {
+  .region-reward-badge { animation: region-badge-bob 1.8s ease-in-out infinite; }
+}
+@keyframes region-badge-bob { 50% { translate: 0 -0.3rem; } }
+
+.region-reward-badge-region { display: none; }
+/* Phones: the island's names sit close together, so the badges line up under it, each naming its region. */
+@media (max-width: 40rem) {
+  .region-reward-badges { position: static; display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-xs); margin-top: var(--space-sm); pointer-events: auto; }
+  .region-reward-badge { position: static; transform: none; }
+  .region-reward-badge-region { display: inline; font-family: var(--font-body); }
+  .region-reward-badge-region::before { content: '· '; }
+}

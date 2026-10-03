@@ -1,0 +1,13 @@
+{
+  "id": "seal-balance",
+  "name": "Hải cẩu đội bóng",
+  "family": "balance-pole",
+  "howTo": [
+    "Bóng nằm trên mũi hải cẩu. Kéo hải cẩu sang trái, sang phải để giữ bóng không rơi.",
+    "Bóng nghiêng bên nào, {name} kéo hải cẩu về bên đó. Giữ bóng càng lâu, điểm càng cao."
+  ],
+  "controls": ["drag"],
+  "duration": 60,
+  "goal": 35,
+  "params": { "wind": 1 }
+}

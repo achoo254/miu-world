@@ -1,0 +1,14 @@
+{
+  "id": "seesaw-logic",
+  "name": "Ai nặng nhất?",
+  "family": "compare-chain",
+  "howTo": [
+    "Mỗi bập bênh cho biết bạn nào nặng hơn: đầu nặng hơn thì chúi xuống.",
+    "Nhìn các bập bênh rồi {name} chạm bạn nặng nhất (hòn đá) hoặc nhẹ nhất (lông chim).",
+    "Đúng ngay lần đầu mới được điểm. Chọn nhầm thì có thêm bập bênh gợi ý."
+  ],
+  "controls": ["tap"],
+  "duration": 75,
+  "goal": 10,
+  "params": {}
+}

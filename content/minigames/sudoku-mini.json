@@ -1,0 +1,14 @@
+{
+  "id": "sudoku-mini",
+  "name": "Sudoku quả 4 × 4",
+  "family": "latin-square",
+  "howTo": [
+    "Mỗi hàng, mỗi cột và mỗi ô vuông 2 × 2 phải có đủ 4 loại quả, không trùng.",
+    "{name} kéo quả từ giỏ vào ô trống (hoặc chạm quả rồi chạm ô).",
+    "Đặt sai thì quả rung rồi về giỏ, không sao cả."
+  ],
+  "controls": ["drag", "tap"],
+  "duration": 90,
+  "goal": 3,
+  "params": {}
+}

@@ -145,8 +145,10 @@ describe('accessory catalogue', () => {
     ['a variant of an unknown accessory', [{ id: 'x', name: 'Màu thử', variantOf: 'ghost', variant: 'blue' }], /not a full accessory/],
     ['an unknown colour', [hat, { id: 'x', name: 'Màu thử', variantOf: 'hat-a', variant: 'green' }], /no variant "green"/],
     ['a variant of a variant', [hat, { id: 'x', name: 'Màu thử', variantOf: 'hat-a', variant: 'blue' }, { id: 'y', name: 'Màu thử', variantOf: 'x', variant: 'blue' }], /not a full accessory/],
-    ['an empty unlock', [base({ unlock: {} })], /a level, a quest or the shop/],
+    ['an empty unlock', [base({ unlock: {} })], /a level, a quest, the shop or a region/],
     ['a shop item with a level too', [base({ unlock: { shop: true, level: 3 } })], /opened by buying it only/],
+    ['a region item sold in the shop too', [base({ unlock: { shop: true, region: 'nui-tuyet' } })], /opened by buying it only/],
+    ['a region item with a level too', [base({ unlock: { region: 'nui-tuyet', level: 3 } })], /opened by its chest only/],
     ['a variant with both a variant and a palette', [hat, { id: 'x', name: 'Màu thử', variantOf: 'hat-a', variant: 'blue', palette: { a: '#123456' } }], /not both/],
     ['a palette of colours the base does not have', [hat, { id: 'x', name: 'Màu thử', variantOf: 'hat-a', palette: { z: '#123456' } }], /no colour z/],
   ])('refuses %s', (_, files, message) => {
@@ -165,5 +167,10 @@ describe('accessory catalogue', () => {
     expect(isAccessoryOpen({ shop: true }, 50, new Set())).toBe(false);
     expect(isAccessoryOpen({ shop: true }, 1, new Set(), true)).toBe(true);
     expect(isAccessoryOpen({ level: 3 }, 3, new Set(), false)).toBe(true);
+  });
+
+  it("opens a region's chest item only once claimed, whatever the level", () => {
+    expect(isAccessoryOpen({ region: 'nui-tuyet' }, 50, new Set())).toBe(false);
+    expect(isAccessoryOpen({ region: 'nui-tuyet' }, 1, new Set(), true)).toBe(true);
   });
 });

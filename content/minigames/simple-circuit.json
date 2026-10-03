@@ -1,0 +1,14 @@
+{
+  "id": "simple-circuit",
+  "name": "Nối mạch thắp đèn",
+  "family": "wire-loop",
+  "howTo": [
+    "{name} kéo dây từ chấm kim loại này sang chấm khác để nối pin, công tắc và bóng đèn.",
+    "Mạch phải khép kín từ cực + qua các bóng đèn về cực −. Chạm công tắc để đóng.",
+    "Lá cây không dẫn điện. Đèn sáng hết là được một điểm."
+  ],
+  "controls": ["drag", "tap"],
+  "duration": 90,
+  "goal": 4,
+  "params": {}
+}

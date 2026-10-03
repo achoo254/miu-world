@@ -1,0 +1,14 @@
+{
+  "id": "knot-untangle",
+  "name": "Gỡ rối dây bóng",
+  "family": "untangle",
+  "howTo": [
+    "Các quả bóng bay buộc dây vào nhau, rối tung. Dây đỏ là dây đang bắt chéo.",
+    "{name} kéo bóng sang chỗ khác (hoặc chạm bóng rồi chạm chỗ trống) cho hết dây chéo.",
+    "Gỡ xong một chùm được một điểm."
+  ],
+  "controls": ["drag", "tap"],
+  "duration": 90,
+  "goal": 3,
+  "params": {}
+}

@@ -1,0 +1,14 @@
+{
+  "id": "water-jugs",
+  "name": "Đong nước đủ lít",
+  "family": "pour-puzzle",
+  "howTo": [
+    "Bò cần uống đúng số lít ghi trên máng. {name} chạm một can rồi chạm can khác để rót.",
+    "Nước rót tới khi can kia đầy hoặc can này cạn. Có can nào đúng số lít là xong!",
+    "Rối quá thì chạm nút Làm lại."
+  ],
+  "controls": ["tap"],
+  "duration": 90,
+  "goal": 3,
+  "params": { "hard": false }
+}

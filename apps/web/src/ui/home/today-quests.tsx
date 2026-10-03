@@ -2,6 +2,7 @@
 // server, and one big button into the current one.
 import { Link } from 'react-router';
 import type { QuestSummary } from '@miu/schema/game';
+import { T } from '../i18n/use-t';
 import { Icon } from '../kit/art';
 import { buttonClass } from '../kit/button';
 import { playPath, say, stepProgress, type PlayerData } from '../player/player-data';
@@ -31,7 +32,9 @@ function QuestRow({ summary, first, data }: { summary: QuestSummary; first: bool
           </span>
           {first && quest.status === 'active' ? <span className="today-row-summary">{say(quest.summary, data.character)}</span> : null}
           <span className="today-row-meta">
-            {first ? <span data-id="home-today-progress">Hoàn thành {done}/{total}</span> : null}
+            {first ? <span data-id="home-today-progress">
+                <T k="common.progress" params={{ done, total }} />
+              </span> : null}
             {quest.status === 'active' ? <span className="today-xp">+{quest.reward.xp} XP</span> : null}
           </span>
         </span>
@@ -50,7 +53,7 @@ export function TodayQuests({ data }: { data: PlayerData }) {
     <section className="panel home-today" data-id="home-today" aria-labelledby="home-today-title">
       <h2 id="home-today-title" className="panel-title">
         <Icon name="scroll" size={36} />
-        Nhiệm vụ hôm nay
+        <T k="home.today" />
       </h2>
       {current ? (
         <>
@@ -60,11 +63,13 @@ export function TodayQuests({ data }: { data: PlayerData }) {
             ))}
           </ol>
           <Link to={playPath(current)} className={buttonClass('primary', { block: true })} data-id="home-today-play">
-            {current.state === 'in-progress' ? 'Chơi tiếp' : 'Bắt đầu'}
+            <T k={current.state === 'in-progress' ? 'home.continue' : 'home.start'} />
           </Link>
         </>
       ) : (
-        <p className="hint">{data.character.name} đã xong mọi nhiệm vụ đang có. Nhiệm vụ mới sắp tới!</p>
+        <p className="hint">
+          <T k="home.allDone" params={{ name: data.character.name }} />
+        </p>
       )}
     </section>
   );

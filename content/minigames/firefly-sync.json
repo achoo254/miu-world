@@ -1,0 +1,14 @@
+{
+  "id": "firefly-sync",
+  "name": "Đom đóm nháy cùng nhịp",
+  "family": "sync-beat",
+  "howTo": [
+    "Đàn đom đóm nháy sáng cùng một nhịp, vòng sáng thu nhỏ báo lúc sắp nháy.",
+    "{name} chạm để đèn lồng nháy đúng lúc đàn nháy: một bạn đom đóm sẽ bay theo.",
+    "Nháy lệch nhịp thì đom đóm giật mình, lần nháy sau không bạn nào bay theo."
+  ],
+  "controls": ["tap"],
+  "duration": 60,
+  "goal": 20,
+  "params": { "window": 0.16 }
+}

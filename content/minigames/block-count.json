@@ -1,0 +1,14 @@
+{
+  "id": "block-count",
+  "name": "Đếm khối hộp",
+  "family": "cube-count",
+  "howTo": [
+    "Đếm xem chồng có bao nhiêu khối hộp, rồi chạm số đúng.",
+    "Có khối nấp sau và nằm dưới khối khác đấy. {name} nhìn kĩ nhé!",
+    "Chọn sai thì chồng khối xoay một vòng cho {name} xem mặt sau."
+  ],
+  "controls": ["tap"],
+  "duration": 90,
+  "goal": 10,
+  "params": {}
+}

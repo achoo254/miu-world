@@ -1,0 +1,14 @@
+{
+  "id": "co-ganh",
+  "name": "Cờ gánh",
+  "family": "board-capture",
+  "howTo": [
+    "Chạm quân đỏ rồi chạm chấm xanh để đi một bước theo đường kẻ.",
+    "Đứng vào giữa hai quân xanh là gánh: hai quân đó thành của {name}.",
+    "Quân xanh bị vây hết đường cũng thành đỏ. Hết giờ mà đỏ nhiều hơn là thắng!"
+  ],
+  "controls": ["tap"],
+  "duration": 90,
+  "goal": 9,
+  "params": {}
+}

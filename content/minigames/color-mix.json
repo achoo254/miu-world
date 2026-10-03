@@ -1,0 +1,13 @@
+{
+  "id": "color-mix",
+  "name": "Pha màu",
+  "family": "color-mix",
+  "howTo": [
+    "Bạn nhỏ cần một màu. {name} chạm hai lọ màu để pha vào chậu.",
+    "Đỏ với vàng ra cam, vàng với xanh ra xanh lá… Pha sai thì đổ đi, pha lại."
+  ],
+  "controls": ["tap"],
+  "duration": 60,
+  "goal": 10,
+  "params": { "white": true }
+}

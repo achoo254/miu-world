@@ -1,0 +1,14 @@
+{
+  "id": "zigzag-path",
+  "name": "Đường zíc zắc",
+  "family": "zigzag-turn",
+  "howTo": [
+    "Quả bóng tự lăn chéo trên con đường gấp khúc.",
+    "{name} chạm màn hình để bóng rẽ ở mỗi khúc quanh, đừng để bóng rơi khỏi đường!",
+    "Mỗi khúc rẽ qua được và mỗi viên ngọc là một điểm."
+  ],
+  "controls": ["tap"],
+  "duration": 60,
+  "goal": 40,
+  "params": { "speed": 1 }
+}

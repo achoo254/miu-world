@@ -1,0 +1,13 @@
+{
+  "id": "rice-plant",
+  "name": "Cấy lúa thẳng hàng",
+  "family": "even-spacing",
+  "howTo": [
+    "{name} lùi dần trên ruộng. Khi dấu mờ trong bùn vào vòng tròn ở tay, chạm để cắm mạ.",
+    "Cắm đúng dấu thì cây mạ đứng thẳng. Bó mạ có hạn, đừng cắm vội nhé!"
+  ],
+  "controls": ["tap"],
+  "duration": 60,
+  "goal": 40,
+  "params": { "speed": 1 }
+}

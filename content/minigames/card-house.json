@@ -1,0 +1,14 @@
+{
+  "id": "card-house",
+  "name": "Dựng nhà bài",
+  "family": "steady-build",
+  "howTo": [
+    "{name} kéo lá bài trên cỗ bài tới chỗ có viền chấm để dựng nhà bài.",
+    "Kéo thật chậm! Kéo nhanh thì tay run, nhà lắc (thanh bên trái lên đỏ) rồi đổ tầng đó.",
+    "Xong mỗi tầng là một điểm. Nhà có ba tầng."
+  ],
+  "controls": ["drag"],
+  "duration": 90,
+  "goal": 3,
+  "params": {}
+}

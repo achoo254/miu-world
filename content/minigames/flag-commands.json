@@ -1,0 +1,14 @@
+{
+  "id": "flag-commands",
+  "name": "Giơ cờ theo lệnh",
+  "family": "command-follow",
+  "howTo": [
+    "{name} cầm cờ đỏ bên trái, cờ xanh bên phải. Đọc lệnh trên bảng nhé.",
+    "Vuốt lên hay vuốt xuống ở nửa màn hình của lá cờ đó.",
+    "Lệnh có chữ \"đừng\" thì đứng yên, không vuốt!"
+  ],
+  "controls": ["swipe"],
+  "duration": 60,
+  "goal": 20,
+  "params": {}
+}

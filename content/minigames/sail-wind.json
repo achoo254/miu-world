@@ -1,0 +1,13 @@
+{
+  "id": "sail-wind",
+  "name": "Thuyền buồm theo gió",
+  "family": "sail-trim",
+  "howTo": [
+    "Thuyền tự lái tới phao. {name} kéo để xoay cánh buồm về phía ngón tay.",
+    "Xem mũi tên gió: buồm căng gió thì thuyền chạy, buồm sai góc thì thuyền đứng yên."
+  ],
+  "controls": ["drag"],
+  "duration": 90,
+  "goal": 6,
+  "params": {}
+}

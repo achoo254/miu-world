@@ -1,0 +1,14 @@
+{
+  "id": "nesting-dolls",
+  "name": "Búp bê lồng nhau",
+  "family": "nest-order",
+  "howTo": [
+    "Các búp bê gần bằng nhau. {name} kéo một búp bê vào búp bê lớn hơn nó đúng một cỡ.",
+    "Cũng có thể chạm búp bê này rồi chạm búp bê kia. Sai cỡ thì búp bê bật ra.",
+    "Lồng hết vào một búp bê là xong một bộ, được một điểm."
+  ],
+  "controls": ["drag", "tap"],
+  "duration": 90,
+  "goal": 3,
+  "params": {}
+}

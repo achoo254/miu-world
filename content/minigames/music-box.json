@@ -1,0 +1,14 @@
+{
+  "id": "music-box",
+  "name": "Hộp nhạc",
+  "family": "tune-pins",
+  "howTo": [
+    "Nghe hộp nhạc hát một câu nhạc, chốt sáng lên theo từng nốt.",
+    "Chạm ô trên trống để cắm chốt, mỗi cột một chốt. Nốt cao ở trên.",
+    "Chạm Quay để nghe thử, sửa cột sai tới khi giống. Quên thì chạm Nghe."
+  ],
+  "controls": ["tap"],
+  "duration": 90,
+  "goal": 4,
+  "params": {}
+}

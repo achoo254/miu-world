@@ -1,0 +1,14 @@
+{
+  "id": "word-maze",
+  "name": "Mê cung đồng dao",
+  "family": "word-path",
+  "howTo": [
+    "Câu đồng dao ở trên cùng. Các tiếng của câu nằm trong lưới ô, ô nọ kề ô kia.",
+    "{name} kéo ngón tay từ ô sáng, đi qua từng tiếng cho đúng câu (hoặc chạm từng ô).",
+    "Chọn sai thì ô rung, nghỉ một chút rồi chọn lại."
+  ],
+  "controls": ["drag", "tap"],
+  "duration": 90,
+  "goal": 4,
+  "params": {}
+}

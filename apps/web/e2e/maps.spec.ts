@@ -113,21 +113,30 @@ test("a portal of the school's square leads into the market, and the market gate
 });
 
 // Every map's longest ride (owner, 03/10/2026: pressing Lên tàu left the child over bare sky; "xem thêm các map
-// khác"): the land under her stays drawn while the far stop loads, and she gets off on solid ground there with
-// the land round her drawn from the first moment. Rides are read from each map's entities.
+// khác"): the land under her stays drawn on the way, and she gets off on solid ground at the far stop with the land
+// round her drawn from the first moment. She really travels there (owner, 03/10/2026: "hoạt cảnh bé di chuyển
+// thật"): on the vehicle and not yet there a second after the tap, at the far stop within about eight seconds.
+// The first map of each kind of vehicle rides the whole way; the others skip with "Bỏ qua" once on the way.
+// Rides are read from each map's entities.
 type Ride = { id: string; position: [number, number, number]; ride?: [number, number, number] };
 const longestRide = (map: string): Ride | undefined =>
   read<{ interactables: Ride[] }>(`assets/generated/world/${map}/entities.json`)
     .interactables.filter((t) => t.ride)
     .sort((a, b) => Math.hypot((b.ride?.[0] ?? 0) - b.position[0], (b.ride?.[2] ?? 0) - b.position[2]) - Math.hypot((a.ride?.[0] ?? 0) - a.position[0], (a.ride?.[2] ?? 0) - a.position[2]))[0];
 const withMaps = read<{ regions: Array<{ id: string; map?: string }> }>('content/world/regions.json').regions.filter((r) => r.map);
+/** The vehicle of each map's rides (ride-kind.ts); the wide maps' default is the bus. */
+const RIDE_KIND: Readonly<Record<string, string>> = { 'trung-tam': 'balloon', 'nui-tuyet': 'cable-car', 'dao-bi-an': 'boat', 'lang-ven-song': 'boat', 'forest-ch1': 'train' };
+const rideWhole = new Set<string>();
 
 for (const region of withMaps) {
   const map = region.map ?? '';
   const stop = longestRide(map);
   if (!stop?.ride) continue;
   const [rx, , rz] = stop.ride;
-  test(`${region.id}: the longest ride (${stop.id}) keeps the land drawn at both ends`, async ({ page, baseURL }) => {
+  const kind = RIDE_KIND[map] ?? 'bus';
+  const whole = !rideWhole.has(kind);
+  rideWhole.add(kind);
+  test(`${region.id}: the longest ride (${stop.id}) carries the child by ${kind} with the land drawn at both ends`, async ({ page, baseURL }) => {
     await freshChild(page, baseURL ?? '');
     const lesson = firstLesson(region.id);
     await page.goto(`/play?quality=low&region=${region.id}${lesson ? `&quest=${lesson.id}` : ''}&spawnAt=${stop.id}`);
@@ -135,22 +144,44 @@ for (const region of withMaps) {
     await expect.poll(async () => (await readStats(page)).nearTarget).toBe(stop.id);
     expect((await readStats(page)).patches).toBeGreaterThan(0);
     await page.keyboard.press('KeyE');
-    // While the far stop loads, the land round the stop stays.
-    for (let i = 0; i < 5; i++) {
-      const s = await readStats(page);
-      if (Math.hypot(s.player[0] - rx, s.player[2] - rz) < 8) break;
-      expect(s.patches).toBeGreaterThan(0);
-      await page.waitForTimeout(200);
-    }
-    await expect.poll(async () => {
-      const s = await readStats(page);
-      return Math.hypot(s.player[0] - rx, s.player[2] - rz);
-    }, { timeout: 15_000 }).toBeLessThan(8);
+    const pressed = Date.now();
+    const distance = (s: { player: number[] }): number => Math.hypot((s.player[0] ?? 0) - rx, (s.player[2] ?? 0) - rz);
+    await expect.poll(async () => (await readStats(page)).journey?.kind).toBe(kind);
+    // A second after the tap she is on her way, not at the far stop yet, over drawn land.
+    await page.waitForTimeout(Math.max(0, 1000 - (Date.now() - pressed)));
+    const early = await readStats(page);
+    expect(early.journey).not.toBeNull();
+    expect(distance(early)).toBeGreaterThan(8);
+    expect(early.patches).toBeGreaterThan(0);
+    if (!whole) await page.locator('[data-id="game-ride-skip"]').click();
+    // At the far stop within about eight seconds of the tap (a little slack for a slow machine).
+    await expect.poll(async () => distance(await readStats(page)), { timeout: Math.max(1000, 10_000 - (Date.now() - pressed)) }).toBeLessThan(8);
+    await expect.poll(async () => (await readStats(page)).journey).toBeNull();
     // Land drawn the moment she arrives (the camera jumps with her instead of gliding over the gap).
     expect((await readStats(page)).patches).toBeGreaterThan(0);
     await expect.poll(async () => (await readStats(page)).onGround).toBe(true);
+    await expect(page.locator('[data-id="game-ride-skip"]')).toBeHidden();
   });
 }
+
+// Asking for less motion (the system setting): the ride is a short fade to the far stop, no journey on screen.
+test('with reduced motion a ride is a short fade to the far stop', async ({ page, baseURL }) => {
+  const stop = longestRide('trung-tam');
+  if (!stop?.ride) throw new Error('the hub has no ride');
+  const [rx, , rz] = stop.ride;
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await freshChild(page, baseURL ?? '');
+  const lesson = firstLesson('trung-tam');
+  await page.goto(`/play?quality=low&region=trung-tam${lesson ? `&quest=${lesson.id}` : ''}&spawnAt=${stop.id}`);
+  await waitReady(page);
+  await expect.poll(async () => (await readStats(page)).nearTarget).toBe(stop.id);
+  await page.keyboard.press('KeyE');
+  await expect.poll(async () => (await readStats(page)).journey?.phase).toBe('fade');
+  await expect.poll(async () => {
+    const s = await readStats(page);
+    return Math.hypot(s.player[0] - rx, s.player[2] - rz);
+  }, { timeout: 5_000 }).toBeLessThan(8);
+});
 
 // The world map's quick facts (owner, 03/10/2026): under the island, a card per open region names each book
 // its lessons come from and the pages they span, read here from the server's own quest list.

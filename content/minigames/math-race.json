@@ -1,0 +1,13 @@
+{
+  "id": "math-race",
+  "name": "Đua xe tính nhẩm",
+  "family": "answer-race",
+  "howTo": [
+    "Biển báo có một phép tính. {name} chạm đúng kết quả để xe tăng tốc!",
+    "Chạm sai thì xe chậm lại một chút. Về nhất hoặc về nhì là thắng."
+  ],
+  "controls": ["tap"],
+  "duration": 60,
+  "goal": 3,
+  "params": { "level": 1 }
+}

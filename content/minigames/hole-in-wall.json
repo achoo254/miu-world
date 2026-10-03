@@ -1,0 +1,14 @@
+{
+  "id": "hole-in-wall",
+  "name": "Chui qua lỗ tường",
+  "family": "pose-match",
+  "howTo": [
+    "Bức tường xốp có lỗ hình người đang tiến lại gần.",
+    "{name} chạm nút tư thế giống hình cái lỗ để chui qua: đứng, ngồi, giơ tay, dang tay chân…",
+    "Sai tư thế thì tường xốp đẩy ngã nhẹ, mất một tim."
+  ],
+  "controls": ["tap"],
+  "duration": 60,
+  "goal": 12,
+  "params": { "speed": 1 }
+}

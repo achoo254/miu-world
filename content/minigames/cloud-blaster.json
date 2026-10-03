@@ -1,0 +1,13 @@
+{
+  "id": "cloud-blaster",
+  "name": "Tưới mây khô",
+  "family": "spray-rows",
+  "howTo": [
+    "Giữ tay trên màn hình, vòi nước chạy theo tay {name} và tự phun lên.",
+    "Mây ướt đủ ba giọt thì thành mây mưa. Đừng để mây khô chạm ruộng lúa!"
+  ],
+  "controls": ["drag"],
+  "duration": 60,
+  "goal": 30,
+  "params": { "speed": 1 }
+}

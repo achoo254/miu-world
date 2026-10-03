@@ -1,6 +1,7 @@
 // M2.9 / M3.11 reward moment, then Level Up and Unlock (NEW SCREEN, MVP): at most three screens, each
 // skippable with one tap. Every number is the server's (the last step's response): stars, the XP
-// actually given (90 instead of 100 after seeing an answer, said kindly), coins, items, skill XP.
+// actually given (90 instead of 100 after seeing an answer, said kindly), coins, items, skill XP, and after a
+// lesson how far the region's chest is (`GET /regions/:id/rewards`).
 // The reward screen unfolds in order: the quest's character and the child's cheer, the stars light
 // one by one, then XP and coins count up; rewards worth nothing are left out. Under reduced motion
 // everything shows at once.
@@ -8,12 +9,18 @@ import { useEffect, useState, type CSSProperties } from 'react';
 import type { NotebookLine, QuestCompletion, StepCompleteResponse } from '@miu/schema/game';
 import { ITEMS, itemIcon } from '../backpack/items';
 import { lastSpeakerOf, NpcPortrait } from '../dialogue/npc-portrait';
+import { pairOf, type TextKey } from '../i18n/i18n';
+import { Bi, T, useT } from '../i18n/use-t';
 import { Icon, MiuPortrait } from '../kit/art';
 import { buttonClass } from '../kit/button';
 import { Modal } from '../kit/modal';
+import { ProgressBar } from '../kit/progress-bar';
+import { assetUrl, REGION_CHEST } from '../kit/ui-art';
 import { say, type PlayerData } from '../player/player-data';
 import { NotebookLines } from '../quest/notebook-card';
 import type { ActiveQuestView } from '../quest/quest-flow';
+import { regionGoalLine, useRegionRewards } from '../region/region-rewards';
+import { findRegion } from '../region/regions';
 import { playCue } from '../sound/sfx';
 import './rewards.css';
 
@@ -89,8 +96,34 @@ function CountedReward({ value, delayMs, unit, icon, dataId }: { value: number; 
   );
 }
 
+/**
+ * After a lesson, how far the region's chest is (owner, 03/10/2026: finishing should feel special): the lessons
+ * done on a bar ending in the chest, and what comes next ("Còn 2 nhiệm vụ nữa tới rương!"). The server's count,
+ * read once the quest is paid; nothing shows if it cannot be read.
+ */
+function RegionChestProgress({ quest, data, reveal }: { quest: ActiveQuestView; data: PlayerData; reveal: CSSProperties }) {
+  const dto = useRegionRewards(quest.category === 'side' ? null : quest.region);
+  const { t } = useT();
+  if (!dto || dto.lessons === 0) return null;
+  const line = regionGoalLine(dto) ?? pairOf('completion.areaDone');
+  const region = findRegion(quest.region);
+  return (
+    <div className="reward-region reward-reveal" style={reveal} data-id="reward-region-goal">
+      <img className="reward-region-chest" src={assetUrl(REGION_CHEST)} alt="" width={56} height={56} />
+      <div className="reward-region-text">
+        <span className="hint">{region ? say(region.name, data.character) : null}</span>
+        <ProgressBar done={dto.lessonsDone} total={dto.lessons} label={t('completion.areaLabel', { done: dto.lessonsDone, total: dto.lessons })} />
+        <strong data-id="reward-region-line">
+          <Bi {...line} />
+        </strong>
+      </div>
+    </div>
+  );
+}
+
 function RewardScreen({ completion, reward, quest, data }: { completion: QuestCompletion; reward: GrantedReward; quest: ActiveQuestView; data: PlayerData }) {
   useRewardSounds(completion.stars);
+  const { t } = useT();
   const fill = (text: string) => say(text, data.character);
   const skillName = (id: string) => data.progress.subjects.flatMap((s) => s.skills).find((k) => k.skillId === id)?.name ?? id;
   const cheerer = lastSpeakerOf(quest.steps);
@@ -108,7 +141,7 @@ function RewardScreen({ completion, reward, quest, data }: { completion: QuestCo
         <MiuPortrait pose="cheer" size="6rem" species={data.character.species} />
       </div>
       <p className="hint">{fill(quest.title)}</p>
-      <p className="reward-stars" aria-label={`${completion.stars} trên 3 sao`} data-id="reward-stars" data-stars={completion.stars}>
+      <p className="reward-stars" aria-label={t('completion.stars', { stars: completion.stars })} data-id="reward-stars" data-stars={completion.stars}>
         {[1, 2, 3].map((n) => (
           <span key={n} className={n <= completion.stars ? 'reward-star' : 'reward-star reward-star--off'} style={{ '--star': n } as CSSProperties}>
             <Icon name="glowingStar" size={56} />
@@ -117,7 +150,7 @@ function RewardScreen({ completion, reward, quest, data }: { completion: QuestCo
       </p>
       <ul className="reward-list">
         {completion.xpAwarded > 0 ? <CountedReward value={completion.xpAwarded} delayMs={countFrom} unit="XP" icon="sparkles" dataId="reward-xp" /> : null}
-        {reward.coin > 0 ? <CountedReward value={reward.coin} delayMs={countFrom} unit="Xu" icon="coin" dataId="reward-coin" /> : null}
+        {reward.coin > 0 ? <CountedReward value={reward.coin} delayMs={countFrom} unit={t('common.coins')} icon="coin" dataId="reward-coin" /> : null}
         {items.map(([id, qty], i) => (
           <li key={id} data-id={`reward-item-${id}`} className="reward-reveal" style={reveal(i)}>
             <Icon name={itemIcon(ITEMS.get(id))} size={32} /> {fill(ITEMS.get(id)?.name ?? id)} ×{qty}
@@ -126,13 +159,18 @@ function RewardScreen({ completion, reward, quest, data }: { completion: QuestCo
         {skills.map((s, i) => (
           <li key={s.skillId} data-id={`reward-skill-${s.skillId}`} className="reward-reveal" style={reveal(items.length + i)}>
             <Icon name="books" size={32} /> {skillName(s.skillId)} +{reward.skillXp[s.skillId] ?? 0}
-            {s.levelAfter > s.levelBefore ? <span className="badge">Kỹ năng lên cấp {s.levelAfter}!</span> : null}
+            {s.levelAfter > s.levelBefore ? (
+              <span className="badge">
+                <T k="completion.skillUp" params={{ level: s.levelAfter }} />
+              </span>
+            ) : null}
           </li>
         ))}
       </ul>
+      <RegionChestProgress quest={quest} data={data} reveal={reveal(items.length + skills.length)} />
       {completion.xpAwarded < quest.reward.xp ? (
         <p className="hint" data-id="reward-encourage">
-          Giỏi lắm! Lần sau {data.character.name} tự giải hết để nhận trọn {quest.reward.xp} XP nhé.
+          <T k="completion.encourage" params={{ name: data.character.name, xp: quest.reward.xp }} />
         </p>
       ) : null}
     </div>
@@ -161,13 +199,15 @@ export function CompletionSequence({
   const [index, setIndex] = useState(0);
   const screen = screens[index] ?? 'reward';
   const last = index === screens.length - 1;
-  const title = screen === 'notebook' ? 'Chép vào vở nhé!' : screen === 'reward' ? 'Hoàn thành nhiệm vụ!' : 'Lên cấp!';
+  const title: TextKey = screen === 'notebook' ? 'completion.notebookTitle' : screen === 'reward' ? 'completion.rewardTitle' : 'completion.levelTitle';
 
   return (
-    <Modal title={title} onClose={last ? onExplore : () => setIndex(index + 1)} dataId={`completion-${screen}`} variant="scene">
+    <Modal title={<T k={title} />} onClose={last ? onExplore : () => setIndex(index + 1)} dataId={`completion-${screen}`} variant="scene">
       {screen === 'notebook' ? (
         <div className="reward-body" data-id="completion-notebook-page">
-          <p className="notebook-ask">Chơi xong rồi! {data.character.name} chép các câu hỏi và đáp án này vào vở nhé.</p>
+          <p className="notebook-ask">
+            <T k="completion.notebookAsk" params={{ name: data.character.name }} />
+          </p>
           <NotebookLines lines={notebook} character={data.character} />
         </div>
       ) : screen === 'reward' ? (
@@ -178,7 +218,9 @@ export function CompletionSequence({
           <p className="reward-level">
             Lv.{completion.levelBefore} → Lv.{completion.levelAfter}
           </p>
-          <p>{data.character.name} mạnh hơn rồi! Đồ mới có thể đã mở trong tủ đồ.</p>
+          <p>
+            <T k="completion.levelBody" params={{ name: data.character.name }} />
+          </p>
         </div>
       )}
       <div className="modal-actions">
@@ -186,15 +228,15 @@ export function CompletionSequence({
           <>
             <button type="button" className={buttonClass('primary', { block: true })} data-id="completion-map" onClick={onMap}>
               <Icon name="map" size={28} />
-              Về bản đồ
+              <T k="completion.toMap" />
             </button>
             <button type="button" className={buttonClass('secondary', { block: true })} data-id="completion-explore" onClick={onExplore}>
-              Tiếp tục khám phá →
+              <T k="completion.explore" />
             </button>
           </>
         ) : (
           <button type="button" className={buttonClass('primary', { block: true })} data-id="completion-next" onClick={() => setIndex(index + 1)}>
-            {screen === 'notebook' ? 'Con chép xong rồi' : 'Tiếp'}
+            <T k={screen === 'notebook' ? 'notebook.done' : 'common.next'} />
           </button>
         )}
       </div>

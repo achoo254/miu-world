@@ -1,0 +1,13 @@
+{
+  "id": "photo-finish",
+  "name": "Ảnh về đích",
+  "family": "rank-order",
+  "howTo": [
+    "Các bạn thú chạy đua, máy ảnh chụp lại lúc bạn đầu tiên về đích.",
+    "Nhìn ảnh: bạn càng gần vạch đích thì về càng sớm. {name} chạm đúng bạn về thứ mấy nhé!"
+  ],
+  "controls": ["tap"],
+  "duration": 75,
+  "goal": 10,
+  "params": { "runners": 5 }
+}

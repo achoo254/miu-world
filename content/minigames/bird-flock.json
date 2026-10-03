@@ -1,0 +1,14 @@
+{
+  "id": "bird-flock",
+  "name": "Đàn chim bay chữ V",
+  "family": "flock-lead",
+  "howTo": [
+    "{name} kéo ngón tay lên xuống để dẫn chim đầu đàn, cả đàn bay theo sau.",
+    "Bay qua vòng mây khi đàn còn ít nhất năm con thì được điểm.",
+    "Tránh mây giông: chim chạm mây bị lạc, ba giây sau mới bay về đàn."
+  ],
+  "controls": ["drag"],
+  "duration": 60,
+  "goal": 15,
+  "params": { "speed": 1 }
+}
