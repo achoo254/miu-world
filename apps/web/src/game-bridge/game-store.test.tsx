@@ -41,6 +41,15 @@ describe('game store', () => {
     expect(store.getSnapshot().lastInteraction).toEqual({ targetId: 'chest-1', count: 3 });
   });
 
+  it('starts over when the next map loads after a gate: loading again, so its ready is news to every listener', () => {
+    let state = reduce(INITIAL_SNAPSHOT, { type: 'ready' });
+    state = reduce(state, { type: 'autowalk-available', available: true });
+    state = reduce(state, { type: 'interaction-prompt', prompt: { targetId: 'a', kind: 'npc', name: 'A', label: 'Nói chuyện' } });
+    state = reduce(state, { type: 'loading' });
+    expect(state).toMatchObject({ status: 'loading', prompt: null, autowalkAvailable: false, autowalk: 'idle' });
+    expect(reduce(state, { type: 'ready' }).status).toBe('ready');
+  });
+
   it('tracks loading progress, clamped to the total and unchanged on repeats', () => {
     const one = reduce(INITIAL_SNAPSHOT, { type: 'loading-progress', done: 1, total: 5 });
     expect(one.loading).toEqual({ done: 1, total: 5 });

@@ -33,6 +33,8 @@ export type TargetState = 'found' | 'open' | 'hidden';
 export type WorldState = Readonly<Record<string, TargetState>>;
 
 export type GameEvent =
+  /** A game starts loading (the first, or the next map's after a gate): everything about the last one is gone. */
+  | { type: 'loading' }
   | { type: 'ready' }
   | { type: 'error'; code: GameErrorCode; message: string }
   /** Boot progress: `done` of `total` loading steps finished. */
@@ -115,6 +117,10 @@ function samePrompt(a: InteractionPrompt | null, b: InteractionPrompt | null): b
 
 export function reduce(state: GameSnapshot, event: GameEvent): GameSnapshot {
   switch (event.type) {
+    case 'loading':
+      // A new map loads: the loading screen shows again, and "ready" will be news to every listener (the quest
+      // sends its target to the new game then, so the card can walk her there).
+      return { ...state, status: 'loading', error: null, loading: { done: 0, total: state.loading.total }, prompt: null, stuck: false, autowalkAvailable: false, autowalk: 'idle' };
     case 'ready':
       return state.status === 'ready' ? state : { ...state, status: 'ready', error: null };
     case 'error':

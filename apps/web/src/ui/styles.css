@@ -421,6 +421,21 @@ input:focus-visible, select:focus-visible { border-color: var(--color-secondary)
   background: linear-gradient(180deg, var(--color-sky-top) 0%, var(--color-sky-mid) 48%, var(--color-sky-bottom) 100%);
 }
 .loading-stage { width: 100%; max-width: 36rem; display: flex; flex-direction: column; align-items: center; gap: var(--space-sm); text-align: center; }
+.loading-portal { position: relative; display: grid; place-items: center; }
+/* The vortex of the gate behind the character: rings of the maps' colours turning slowly. */
+.loading-portal::before {
+  content: '';
+  position: absolute;
+  inset: -12%;
+  border-radius: 50%;
+  background: conic-gradient(var(--color-primary), var(--color-secondary), var(--color-badge), var(--color-primary));
+  mask: radial-gradient(circle, transparent 38%, #000 40%, #000 52%, transparent 54%, transparent 60%, #000 62%, #000 70%, transparent 72%);
+  -webkit-mask: radial-gradient(circle, transparent 38%, #000 40%, #000 52%, transparent 54%, transparent 60%, #000 62%, #000 70%, transparent 72%);
+  animation: loading-portal-spin 2.4s linear infinite;
+  z-index: 0;
+}
+.loading-portal > * { position: relative; z-index: 1; }
+@keyframes loading-portal-spin { to { transform: rotate(1turn); } }
 .loading-kicker { font-family: var(--font-display); font-weight: 700; font-size: var(--text-lg); color: var(--color-ink-soft); margin-top: var(--space-lg); }
 .loading-region { font-family: var(--font-display); font-weight: 800; font-size: var(--text-hero); line-height: 1; color: var(--color-primary); text-shadow: 0 5px 0 var(--color-surface), 0 10px 0 var(--color-logo-shade); }
 .loading-progress { width: 100%; display: flex; align-items: center; gap: var(--space-md); margin-top: var(--space-md); }
@@ -479,5 +494,6 @@ input:focus-visible, select:focus-visible { border-color: var(--color-secondary)
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .loading-portal::before { animation: none; }
   .btn, .pin-key, .profile-tile, .progress-fill { transition: none; }
 }

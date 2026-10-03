@@ -220,6 +220,7 @@ export class Game {
     const { store, search } = this.options;
     let loadingDone = 0;
     const stepLoaded = (): void => store.emit({ type: 'loading-progress', done: ++loadingDone, total: LOADING_STEPS });
+    store.emit({ type: 'loading' });
     store.emit({ type: 'loading-progress', done: 0, total: LOADING_STEPS });
     const params = new URLSearchParams(search);
     const quality = readQuality(search);

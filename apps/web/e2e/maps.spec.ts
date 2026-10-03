@@ -51,7 +51,17 @@ test('a gate of the hub, Trung tâm, leads onto the mystery island, and the isla
   await waitReady(page);
   await page.keyboard.press('KeyE');
   await expect(page).toHaveURL(new RegExp(`region=dao-bi-an&quest=${island.id}`));
+  // The trip through the portal shows (owner, 03/10/2026), then she stands at the island's starting point for
+  // the lesson's chapter, and the quest card walks her to the lesson (the new map gets the step's target).
+  await expect(page.locator('[data-id="play-loading"][data-via="portal"]')).toBeVisible();
+  await page.screenshot({ path: fileURLToPath(new URL('../../../.data/sgk/review-shots/portal-trip.png', import.meta.url)) });
   await waitReady(page);
+  const islandMap = read<{ spawn: { position: number[] }; chapterSpawns?: Record<string, { position: number[] }> }>('assets/generated/world/dao-bi-an/entities.json');
+  const chapter = (read<{ chapter?: number }>(`content/quests/${island.id}.json`).chapter ?? 1).toString();
+  const [sx = 0, , sz = 0] = (islandMap.chapterSpawns?.[chapter] ?? islandMap.spawn).position;
+  const [px = 0, , pz = 0] = (await readStats(page)).player;
+  expect(Math.hypot(px - sx, pz - sz)).toBeLessThan(3);
+  await expect(page.locator('[data-id="hud-autowalk"]')).toHaveText('Chạm để tự đi tới');
   await page.goto(`/play?quality=low&region=dao-bi-an&quest=${island.id}&spawnAt=cong-trung-tam`);
   await waitReady(page);
   await page.keyboard.press('KeyE');

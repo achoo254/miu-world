@@ -169,6 +169,8 @@ export function PlayScreen() {
   const [questOpen, setQuestOpen] = useState(false);
   const [backpackOpen, setBackpackOpen] = useState(false);
   const [questsOpen, setQuestsOpen] = useState(false);
+  /** The map on screen loads after a gate: its loading screen is the trip through the portal. */
+  const [viaPortal, setViaPortal] = useState(false);
   const spotOf = useRef<(() => PlayerPosition | null) | null>(null);
   const onSpotReader = useCallback((read: (() => PlayerPosition | null) | null): void => {
     spotOf.current = read;
@@ -242,11 +244,15 @@ export function PlayScreen() {
    * characters where the child stands now. The URL follows (a reload resumes the same quest) without a
    * router navigation, which would reload the player data.
    */
-  function switchQuest(next: QuestSummary): void {
+  function switchQuest(next: QuestSummary, throughGate = false): void {
     setQuestsOpen(false);
     if (next.quest.id === questId) return;
     const spot = spotOf.current?.() ?? null;
     if (spot) setPositions((list) => [...(list ?? []).filter((p) => p.map !== spot.map), spot]);
+    // Through a gate she arrives at the map's starting point, never where she last left it (owner, 03/10/2026).
+    const arriving = regionMap(next.quest.region);
+    if (throughGate) setPositions((list) => (list ?? []).filter((p) => p.map !== arriving));
+    setViaPortal(throughGate);
     setQuestId(next.quest.id);
     const url = new URL(window.location.href);
     url.searchParams.set('region', next.quest.region);
@@ -262,7 +268,7 @@ export function PlayScreen() {
         if (!travel || travel.count === travelled.current || !data) return;
         travelled.current = travel.count;
         const next = questForRegion(data.quests, travel.region);
-        if (next) switchQuest(next);
+        if (next) switchQuest(next, true);
       }),
   );
   const boardRegion = findRegion(region);
@@ -282,7 +288,7 @@ export function PlayScreen() {
             </p>
           </div>
         ) : null}
-        {loadError || offline ? null : <LoadingOverlay region={regionName} />}
+        {loadError || offline ? null : <LoadingOverlay region={regionName} viaPortal={viaPortal} />}
         {offline ? <OfflineBanner onRetry={retryOffline} /> : null}
         {/* The in-world label and Interact would show through a screen's backdrop: only while playing. */}
         {covered ? null : <InteractionLabel />}
