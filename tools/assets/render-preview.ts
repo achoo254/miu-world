@@ -352,6 +352,9 @@ async function capture(browser: Browser, shots: Shot[], outDir: string): Promise
     const target = path.join(outDir, shot.file);
     await mkdir(path.dirname(target), { recursive: true });
     await page.locator('canvas').first().screenshot({ path: target, omitBackground: shot.transparent ?? false });
+    // Let the page's last module requests finish before moving on: hundreds aborted by the next navigation
+    // leave the dev server's connections stuck, and after some thirty pages a page is never answered.
+    await page.waitForLoadState('networkidle');
   }
   await page.close();
   if (errors.length > 0) throw new Error(`page errors: ${errors.join('; ')}`);
