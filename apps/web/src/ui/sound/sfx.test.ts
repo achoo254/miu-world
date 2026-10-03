@@ -1,7 +1,7 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { writeSoundOn } from '../system/sound-setting';
 import { SOUND_CUES, SOUND_PATHS, soundPath } from './cues';
-import { nextVariant, noteFrequency, playCue, playNote } from './sfx';
+import { bendNote, nextVariant, noteFrequency, playCue, playNote, startNote, stopAllNotes, stopNote } from './sfx';
 
 afterEach(() => {
   vi.unstubAllGlobals();
@@ -54,5 +54,16 @@ describe('notes', () => {
 
   it('stays silent where there is no Web Audio', () => {
     expect(() => playNote(60, 'drum')).not.toThrow();
+  });
+});
+
+describe('held notes', () => {
+  it('stay silent without Web Audio and never throw', () => {
+    expect(() => {
+      startNote('a', 60);
+      bendNote('a', 62.5);
+      stopNote('a');
+      stopAllNotes();
+    }).not.toThrow();
   });
 });

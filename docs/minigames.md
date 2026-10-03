@@ -50,7 +50,7 @@ bot(state, { arena, time, goal }): BotMove // { touch?, tap?, swipe?: { from, dx
 - **lives**: có thì HUD hiện số tim; không có thì bỏ trống. Hết tim thì đặt `done` (đừng tự chơi tiếp): đồ hỗ trợ "Thêm một tim" của host dựa vào đúng tín hiệu `done` + `lives === 0` (xem dưới).
 - **Sự kiện** (`drainEvents`, dùng `eventQueue()`): `score` (lấp lánh, "+n", tiếng sao; có `points`), `hit` (rung màn hình, tiếng nhẹ), `miss` (bụi nhỏ, không tiếng), `action` (bụi, tiếng click). Game chỉ phát sự kiện; host làm hiệu ứng và âm thanh (`effects.ts`, âm thanh Kenney qua `sound/sfx.ts`), nên 100 trò có cùng cảm giác. Giảm chuyển động (`reducedMotion`): không rung, ít hạt; game tự bỏ nảy mạnh.
 - **Bot**: chơi tốt, ra quyết định 10 lần mỗi giây như một bé nhanh tay. Bot đọc thẳng `state`.
-- **Nốt nhạc** (đàn, trống, hô và đáp): thêm `note` (số MIDI, 60 = Đô giữa) và tùy chọn `voice` (`'piano'` mặc định, `'bell'`, `'drum'`, `'clap'`, `'whistle'`) vào bất kỳ sự kiện nào; host phát nốt đó bằng Web Audio (`playNote` trong `sound/sfx.ts`) thay cho tiếng thường của sự kiện, tắt theo nút Âm thanh. Không cần file âm thanh.
+- **Nốt nhạc** (đàn, trống, hô và đáp): thêm `note` (số MIDI, 60 = Đô giữa) và tùy chọn `voice` (`'piano'` mặc định, `'bell'`, `'drum'`, `'clap'`, `'whistle'`) vào bất kỳ sự kiện nào; host phát nốt đó bằng Web Audio (`playNote` trong `sound/sfx.ts`) thay cho tiếng thường của sự kiện, tắt theo nút Âm thanh. Không cần file âm thanh. Nốt giữ và trượt cao độ (đàn bầu, hộp nhạc): sự kiện có `note` cùng `hold: 'start'` + `holdId` bắt đầu nốt kéo dài, `hold: 'bend'` trượt tới `note` (số MIDI lẻ được), `hold: 'release'` thả; hết lượt chơi mọi nốt giữ tự tắt.
 
 ## Hình ảnh
 

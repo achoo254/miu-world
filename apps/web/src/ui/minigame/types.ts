@@ -80,6 +80,12 @@ export interface GameEvent {
    */
   note?: number;
   voice?: NoteVoice;
+  /**
+   * With `note`: `hold` starts a sustained note under `holdId` until a later event with `release` and the same
+   * `holdId`; `bend` glides a held note to `note` (fractional MIDI allowed). Held notes also stop when the round ends.
+   */
+  hold?: 'start' | 'bend' | 'release';
+  holdId?: string;
 }
 
 /** Synthesised voices for `GameEvent.note` (no sound files: made in the browser with Web Audio). */

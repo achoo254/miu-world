@@ -2,7 +2,7 @@
 // requestAnimationFrame, one finger read from pointer events, the effects layer and the sounds. React only
 // creates it and calls start / pause / resume / dispose; the score, clock and hearts are written straight
 // into the HUD elements it is given (they change every frame, React never holds them).
-import { playCue, playNote } from '../sound/sfx';
+import { bendNote, playCue, playNote, startNote, stopAllNotes, stopNote } from '../sound/sfx';
 import { BOT_DECISION_STEPS, BotDriver } from './bot-driver';
 import type { MinigameModule } from './define-minigame';
 import { Effects, EVENT_SOUNDS } from './effects';
@@ -113,6 +113,7 @@ export class MinigameStage {
   }
 
   dispose(): void {
+    stopAllNotes();
     this.disposed = true;
     cancelAnimationFrame(this.frame);
     for (const cleanup of this.cleanups) cleanup();
@@ -189,7 +190,11 @@ export class MinigameStage {
         for (const event of this.round.step(this.input.take(now))) {
           this.effects.add(event);
           // A note sounds instead of the event's usual cue.
-          if (event.note !== undefined) playNote(event.note, event.voice);
+          if (event.hold && event.holdId) {
+            if (event.hold === 'start' && event.note !== undefined) startNote(event.holdId, event.note, event.voice === 'piano' || event.voice === 'bell' ? event.voice : 'whistle');
+            else if (event.hold === 'bend' && event.note !== undefined) bendNote(event.holdId, event.note);
+            else stopNote(event.holdId);
+          } else if (event.note !== undefined) playNote(event.note, event.voice);
           else {
             const cue = EVENT_SOUNDS[event.type];
             if (cue) this.play(cue);
