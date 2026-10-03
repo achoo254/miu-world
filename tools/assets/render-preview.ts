@@ -52,16 +52,18 @@ async function characterShots(): Promise<Shot[]> {
   const shots: Shot[] = [];
   for (const [id, spec] of Object.entries(await readCharacterSpecs())) {
     if (spec.role === 'npc') continue; // quest characters need no portraits or turnarounds
+    // A player model has a plain fur layer where clothes go: it is shown in its species' own clothes, as in the game.
+    const model = { model: spec.output, ...(spec.clothes ? { acc: spec.clothes } : {}) };
     for (const yaw of [0, 90, 180, 315]) {
-      shots.push({ file: `${id}-turn-${yaw}.png`, query: { model: spec.output, anim: 'idle', t: 0, yaw } });
+      shots.push({ file: `${id}-turn-${yaw}.png`, query: { ...model, anim: 'idle', t: 0, yaw } });
     }
     // Third-person gameplay angle: checks the head does not hide the character from the camera.
-    shots.push({ file: `${id}-gameplay-camera.png`, query: { model: spec.output, anim: 'walk', t: 0.17, yaw: 180, pitch: 28 } });
+    shots.push({ file: `${id}-gameplay-camera.png`, query: { ...model, anim: 'walk', t: 0.17, yaw: 180, pitch: 28 } });
     const clips = id === REVIEW_CHARACTER ? [...(await rigAnimationNames(spec)), ...spec.extraAnimations] : UI_CLIPS;
     for (const anim of clips) {
       shots.push({
         file: `${id}-anim-${anim}.png`,
-        query: { model: spec.output, anim, t: SHOW_TIME[anim] ?? 0.3, yaw: 25, size: 256 },
+        query: { ...model, anim, t: SHOW_TIME[anim] ?? 0.3, yaw: 25, size: 256 },
       });
     }
   }
@@ -80,7 +82,9 @@ async function accessoryShots(): Promise<Shot[]> {
   if (!miu) throw new Error('miu-cat spec missing');
   // Accessories are sized by the character's accessoryScale, exactly as the game attaches them.
   const base = { model: miu.output, accScale: accessoryScaleParam(miu.accessoryScale) };
-  const outfit = 'hat-witch-pink,backpack-brown';
+  /** Miu in her own clothes (the model has a plain fur layer where clothes go) plus `acc`. */
+  const dressed = (acc: string): string => (miu.clothes ? `${miu.clothes},${acc}` : acc);
+  const outfit = dressed('hat-witch-pink,backpack-brown');
   const shots: Shot[] = [0, 150, 210, 300].map((yaw) => ({
     file: `miu-outfit-turn-${yaw}.png`,
     query: { ...base, anim: 'idle', t: 0, yaw, acc: outfit },
@@ -92,12 +96,22 @@ async function accessoryShots(): Promise<Shot[]> {
   for (const item of (await readAccessoryCatalog()).values()) {
     if (item.variant) continue;
     const yaw = item.slot === 'back' || item.slot === 'wings' ? 200 : 35;
-    shots.push({ file: `item-${item.id}.png`, query: { ...base, anim: 'idle', t: 0, yaw, acc: item.id, size: 256 } });
+    const acc = item.slot === 'clothes' ? item.id : dressed(item.id);
+    // On a vehicle she holds its pose (seated ones: the rig's `sit` / `drive`).
+    const anim = item.def.ride && item.def.ride.pose !== 'stand' ? item.def.ride.pose : 'idle';
+    shots.push({ file: `item-${item.id}.png`, query: { ...base, anim, t: 0, yaw, acc, size: 256 } });
+    // Clothes are checked from the back and in mid-sprint from the side, where arms and legs swing furthest.
+    if (item.slot === 'clothes') {
+      shots.push({ file: `item-${item.id}-back.png`, query: { ...base, anim: 'idle', t: 0, yaw: 200, acc, size: 256 } });
+      shots.push({ file: `item-${item.id}-sprint.png`, query: { ...base, anim: 'sprint', t: 0.2, yaw: 90, acc, size: 256 } });
+    }
+    // A vehicle is checked from the side too: front where she faces, wheels on the ground, her on its deck or seat.
+    if (item.slot === 'vehicle') shots.push({ file: `item-${item.id}-side.png`, query: { ...base, anim, t: 0, yaw: 90, pitch: 4, acc, size: 256 } });
   }
   for (const [hat, pack] of [['night', 'red'], ['mint', 'green']] as const) {
     shots.push({
       file: `miu-variant-${hat}-${pack}.png`,
-      query: { ...base, anim: 'idle', t: 0, yaw: 35, acc: `hat-witch-pink:${hat},backpack-brown:${pack}`, size: 256 },
+      query: { ...base, anim: 'idle', t: 0, yaw: 35, acc: dressed(`hat-witch-pink:${hat},backpack-brown:${pack}`), size: 256 },
     });
   }
   return shots;
@@ -354,7 +368,9 @@ export async function renderShots(batches: Array<{ outDir: string; label: string
     server = await createServer({
       root: APP_DIR,
       configFile: path.join(APP_DIR, 'vite.config.ts'),
-      server: { port: PORT, strictPort: true, host: '127.0.0.1' },
+      // No file watching and no hot reload: content written meanwhile (other work, other agents) must not
+      // reload the page under a shot and hang the capture; each run starts its own server on fresh files.
+      server: { port: PORT, strictPort: true, host: '127.0.0.1', watch: null, hmr: false },
       logLevel: 'warn',
     });
     await server.listen();
