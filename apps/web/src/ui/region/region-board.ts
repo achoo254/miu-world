@@ -24,3 +24,28 @@ export function recommendedQuest(quests: readonly QuestSummary[]): QuestSummary 
     null
   );
 }
+
+/** A book a region's lessons come from: its name ("Toán 2, tập một"), the pages they span, how many lessons. */
+export interface RegionBook {
+  book: string;
+  pages: [number, number];
+  lessons: number;
+}
+
+/**
+ * The textbooks behind a region's lessons, for the world map's quick facts (owner, 03/10/2026: which book and
+ * which pages each map covers): one entry per book, in the order its first lesson comes, spanning the lowest
+ * to the highest page of its active lessons.
+ */
+export function regionBooks(quests: readonly QuestSummary[], region: string): RegionBook[] {
+  const books = new Map<string, RegionBook>();
+  for (const summary of quests) {
+    const textbook = summary.quest.status === 'active' && summary.quest.region === region ? summary.quest.textbook : undefined;
+    if (!textbook) continue;
+    const [from, to] = textbook.pages;
+    const known = books.get(textbook.book);
+    if (known) books.set(textbook.book, { book: textbook.book, pages: [Math.min(known.pages[0], from), Math.max(known.pages[1], to)], lessons: known.lessons + 1 });
+    else books.set(textbook.book, { book: textbook.book, pages: [from, to], lessons: 1 });
+  }
+  return [...books.values()];
+}

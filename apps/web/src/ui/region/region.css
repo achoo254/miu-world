@@ -140,3 +140,14 @@
 }
 .board-row-go:focus-visible { box-shadow: var(--focus-ring); outline: none; }
 .board-row-go:active { transform: translateY(3px); box-shadow: none; }
+
+/* Quick facts under the world map: a card per open region with its books and pages; one column on a phone. */
+.region-books { display: flex; flex-direction: column; gap: var(--space-sm); }
+.region-books-title { display: flex; align-items: center; gap: var(--space-sm); margin: 0; font-size: var(--text-lg); }
+.region-books-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 17rem), 1fr)); gap: var(--space-sm); }
+.region-books-card { display: flex; flex-direction: column; gap: var(--space-xs); height: 100%; box-sizing: border-box; padding: var(--space-md); background: var(--color-surface); border-radius: var(--radius-panel); box-shadow: var(--shadow-panel); color: var(--color-ink); text-decoration: none; }
+.region-books-name { font-weight: 800; font-size: var(--text-body); }
+.region-books-row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-xs); font-size: var(--text-sm); font-weight: 700; color: var(--color-ink-soft); }
+.region-books-book { min-width: 0; }
+.region-books-count { white-space: nowrap; }
+.region-books-row--none { font-weight: 600; }

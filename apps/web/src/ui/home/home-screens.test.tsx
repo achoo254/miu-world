@@ -132,6 +132,19 @@ describe('Map and region', () => {
     expect(await screen.findByRole('heading', { name: 'Chương 1' })).toBeTruthy();
   });
 
+  it('shows under the map which book and pages each open region\'s lessons come from, and opens the region', async () => {
+    stubServer(0, questListWithLesson);
+    renderAt('/map');
+    expect(await screen.findByRole('heading', { name: 'Sách trong từng khu' })).toBeTruthy();
+    expect(document.querySelector('[data-id="map-books-khu-rung-bi-mat-0"]')?.textContent).toBe('Tiếng Việt 2, tập mộtTrang 10–121 bài');
+    // A region without textbook lessons says what it is for instead.
+    const hub = document.querySelector('[data-id="map-books-trung-tam"]');
+    expect(hub?.textContent).toContain('Trung tâm');
+    expect(hub?.querySelector('.textbook-ref-pages')).toBeNull();
+    fireEvent.click(document.querySelector('[data-id="map-books-khu-rung-bi-mat"]') as HTMLElement);
+    expect(await screen.findByRole('heading', { name: 'Chương 1' })).toBeTruthy();
+  });
+
   it('shows the region as in the mock: its sign, words, progress with the chest, and the quest under way', async () => {
     stubServer(1);
     renderAt('/region/khu-rung-bi-mat');

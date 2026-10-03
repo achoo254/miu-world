@@ -113,3 +113,30 @@ for (const region of withMaps) {
     await expect.poll(async () => (await readStats(page)).onGround).toBe(true);
   });
 }
+
+// The world map's quick facts (owner, 03/10/2026): under the island, a card per open region names each book
+// its lessons come from and the pages they span, read here from the server's own quest list.
+test('the world map names, for each region, the books and pages of its lessons', async ({ page, baseURL }) => {
+  await freshChild(page, baseURL ?? '');
+  const shots = fileURLToPath(new URL('../../../.data/sgk/review-shots/', import.meta.url));
+  type Listed = { quest: { region: string; status: string; textbook?: { book: string; pages: [number, number] } } };
+  const listed = ((await (await page.request.get('/api/quests')).json()) as { quests: Listed[] }).quests;
+  for (const viewport of [{ width: 1180, height: 820 }, { width: 390, height: 844 }]) {
+    await page.setViewportSize(viewport);
+    await page.goto('/map');
+    await expect(page.getByRole('heading', { name: 'Sách trong từng khu' })).toBeVisible();
+    for (const region of withMaps) {
+      const books = new Map<string, [number, number]>();
+      for (const { quest } of listed.filter((x) => x.quest.region === region.id && x.quest.status === 'active')) {
+        const t = quest.textbook;
+        if (!t) continue;
+        const known = books.get(t.book);
+        books.set(t.book, known ? [Math.min(known[0], t.pages[0]), Math.max(known[1], t.pages[1])] : t.pages);
+      }
+      const card = page.locator(`[data-id="map-books-${region.id}"]`);
+      for (const [book, [from, to]] of books) await expect(card).toContainText(`${book}Trang ${from === to ? from : `${from}–${to}`}`);
+    }
+    await page.locator('[data-id="map-books"]').scrollIntoViewIfNeeded();
+    await page.screenshot({ path: `${shots}map-books-${viewport.width}.png`, fullPage: true });
+  }
+});

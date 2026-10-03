@@ -9,6 +9,7 @@ import '../kit/scene.css';
 import { PlayerBadge } from '../player/player-badge';
 import { usePlayer, type PlayerData } from '../player/player-data';
 import { WorldStage } from '../world/world-stage';
+import { RegionBooks } from './region-books';
 import { QuestBoard, RegionBackdrop, RegionIntro } from './region-detail';
 import { findRegion } from './regions';
 import './region.css';
@@ -65,6 +66,7 @@ export function RegionMapScreen() {
           </h1>
           <p className="hint world-map-hint">Chạm vào khu vực để vào chơi. Khu có ổ khóa sẽ mở sau.</p>
           <WorldStage character={player.character} idPrefix="map-region" />
+          <RegionBooks quests={player.quests} character={player.character} />
         </section>
       )}
     </Frame>
