@@ -10,6 +10,7 @@ import { questCatalogIssues } from '@miu/quest/quest-catalog';
 import { buildAccessoryCatalog, type AccessoryItem } from '@miu/voxel/accessory-schema';
 import { speciesSchema } from '@miu/voxel/character-recipe';
 import { RecipeCatalog, type Recipe } from '@miu/schema/cooking';
+import { QuestTargetCatalog, type QuestTarget } from '@miu/schema/world-target';
 import { z } from 'zod';
 import { readCurriculum } from '../worksheet/curriculum-books';
 import { CONTENT_DIR } from './content-dir';
@@ -45,6 +46,8 @@ export interface ContentCatalog {
   collectibles: ReadonlyMap<string, CollectibleSet>;
   /** Cooking recipes (content/recipes.json). */
   recipes: ReadonlyMap<string, Recipe>;
+  /** Interactive targets in the world (content/world/targets.json), by id. */
+  targets: ReadonlyMap<string, QuestTarget>;
 }
 
 /** The collectible sets, checked against the regions; a catalogue that does not fit fails the boot. */
@@ -132,6 +135,10 @@ export function loadContentCatalog({ dir = CONTENT_DIR, questDir, extraQuestDir 
   const quests = loadQuests(questDir ?? path.join(dir, 'quests'), skillIds, extraQuestDir, minigames);
   const regions = readContentJson(RegionCatalog, path.join(dir, 'world/regions.json'));
   const accessories = buildAccessoryCatalog(jsonFiles(path.join(dir, 'accessories')).map((file) => JSON.parse(readFileSync(file, 'utf8')) as unknown));
+  const targetsFile = path.join(dir, 'world/targets.json');
+  const targets = existsSync(targetsFile)
+    ? new Map(Object.entries(readContentJson(QuestTargetCatalog, targetsFile).targets))
+    : new Map<string, QuestTarget>();
   return {
     childDisplayNames: new Set(readContentJson(NameList, path.join(dir, 'names/child-display-names.json')).names),
     characterNames: new Set(readContentJson(NameList, path.join(dir, 'names/character-names.json')).names),
@@ -149,5 +156,6 @@ export function loadContentCatalog({ dir = CONTENT_DIR, questDir, extraQuestDir 
     maps: new Set(playableMaps(regions)),
     collectibles: loadCollectibles(dir, regions),
     recipes: new Map(readContentJson(RecipeCatalog, path.join(dir, 'recipes.json')).recipes.map((r) => [r.id, r])),
+    targets,
   };
 }

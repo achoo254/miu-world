@@ -1,0 +1,44 @@
+/* Skill Check Modal: tokens from tokens.css only, touch targets >= 48px */
+.skill-check-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  text-align: center;
+  padding: var(--space-sm) 0;
+}
+
+.skill-check-badge {
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.skill-check-desc {
+  font-size: var(--text-md);
+  color: var(--color-ink);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.skill-check-level-info {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--color-field);
+  border-radius: var(--radius-field);
+  font-size: var(--text-sm);
+  color: var(--color-ink-soft);
+}
+
+.skill-check-level-info strong {
+  color: var(--color-ink);
+}
+
+.skill-check-actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  width: 100%;
+  margin-top: var(--space-xs);
+}

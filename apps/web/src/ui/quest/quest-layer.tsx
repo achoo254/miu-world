@@ -19,6 +19,7 @@ import { REGION_MUSIC } from '../region/regions';
 import { playMood, useMusicMood } from '../sound/music-player';
 import { NotebookCard } from './notebook-card';
 import { useSideQuests } from './side-quests';
+import { SkillCheckModal } from './skill-check-modal';
 import { StepDraftScope } from './step-draft';
 import { useQuestController } from './use-quest-controller';
 
@@ -115,6 +116,13 @@ export function QuestLayer({
         </p>
       ) : null}
       {side.screens}
+      {quest.skillCheck ? (
+        <SkillCheckModal
+          check={quest.skillCheck}
+          onPractice={(hintQuestId) => navigate(`/play?quest=${hintQuestId}`)}
+          onClose={quest.closeSkillCheck}
+        />
+      ) : null}
       {quest.retry ? <OfflineBanner onRetry={quest.retry} /> : null}
       {quest.toast ? <Toast message={quest.toast} onDone={quest.clearToast} /> : null}
       {quest.cheers > burstShown ? <AnswerBurst key={quest.cheers} onDone={endBurst} /> : null}

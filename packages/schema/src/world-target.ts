@@ -33,6 +33,16 @@ export type TargetLook = z.infer<typeof TargetLook>;
 export const LookCatalog = z.strictObject({ version: z.literal(1), looks: z.record(ContentId, TargetLook) });
 export type LookCatalog = z.infer<typeof LookCatalog>;
 
+export const SkillCheckSpec = z.strictObject({
+  /** Skill id from content/learning/skills.json required to interact/unlock. */
+  skill: ContentId,
+  /** Minimum skill level required (starting at 1). */
+  level: z.number().int().min(1),
+  /** Optional quest id to guide the child to practice this skill if level is insufficient. */
+  hintQuest: ContentId.optional(),
+});
+export type SkillCheckSpec = z.infer<typeof SkillCheckSpec>;
+
 export const QuestTarget = z.strictObject({
   /** Name on the prompt (Vietnamese, as the child reads it), e.g. "Thỏ Tí", "Hũ sành". */
   name: z.string().min(1),
@@ -44,6 +54,8 @@ export const QuestTarget = z.strictObject({
    * of a character's entries at a time, where the story is (see `castHidden` in packages/voxel).
    */
   character: ContentId.optional(),
+  /** Skill check condition to open or interact (Master Plan §5, §6). */
+  skillCheck: SkillCheckSpec.optional(),
 });
 export type QuestTarget = z.infer<typeof QuestTarget>;
 

@@ -5,6 +5,7 @@ import { eq, sql } from 'drizzle-orm';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import request from 'supertest';
 import { QuestStep } from '@miu/schema/content';
+import type { QuestTarget } from '@miu/schema/world-target';
 import { createApp } from '../app';
 import { loadContentCatalog } from '../content/content-catalog';
 import { solution } from '../../test/quest-solution';
@@ -63,6 +64,7 @@ describe('quest progress and rewards (server is the source of truth)', () => {
         completedSteps: ['meet-vet', 'find-letter', 'solve-tree'],
         completed: true,
         found: { 'find-letter': ['clue-letter'] },
+        bossState: {},
         stars: 3,
         run: 1,
       },
@@ -721,4 +723,59 @@ describe('IDOR and session rules for game routes', () => {
     // Her quest's reward and the collectible it dropped.
     expect(aLedger?.n).toBe(2);
   });
+
+  describe('skill check route', () => {
+    it('returns 404 for unknown targets', async () => {
+      const { agent } = await playingChild();
+      await agent.get('/api/skill-check/nonexistent-target').expect(404, { error: 'target-not-found' });
+    });
+
+    it('passes targets without skill checks', async () => {
+      const { agent } = await playingChild();
+      const res = await agent.get('/api/skill-check/anh-lai-xe-dung').expect(200);
+      expect(res.body).toEqual({
+        targetId: 'anh-lai-xe-dung',
+        targetName: 'Anh Lái Xe Đụng',
+        hasSkillCheck: false,
+        passed: true,
+      });
+    });
+
+    it('evaluates skill level against target requirement and suggests hint quest', async () => {
+      const { agent, childId } = await playingChild();
+      const targetsMap = app.content.targets as Map<string, QuestTarget>;
+      targetsMap.set('test-locked-chest', {
+        name: 'Rương Thử Thách',
+        look: 'chest',
+        skillCheck: {
+          skill: 'doc-hieu',
+          level: 2,
+          hintQuest: 'quest-a',
+        },
+      });
+
+      const check1 = await agent.get('/api/skill-check/test-locked-chest').expect(200);
+      expect(check1.body).toMatchObject({
+        targetId: 'test-locked-chest',
+        targetName: 'Rương Thử Thách',
+        hasSkillCheck: true,
+        passed: false,
+        skill: 'doc-hieu',
+        currentLevel: 1,
+        requiredLevel: 2,
+        hintQuestId: 'quest-a',
+      });
+
+      // Level up skill by inserting skillProgress (threshold for level 2 is 2 xp)
+      await app.db.insert(t.skillProgress).values({ childId, skillId: 'doc-hieu', xp: 3 });
+      const check2 = await agent.get('/api/skill-check/test-locked-chest').expect(200);
+      expect(check2.body).toMatchObject({
+        targetId: 'test-locked-chest',
+        hasSkillCheck: true,
+        passed: true,
+        currentLevel: 2,
+      });
+    });
+  });
 });
+

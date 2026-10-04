@@ -231,3 +231,17 @@ export const SupportResponse = z.discriminatedUnion('layer', [
   z.object({ layer: z.literal('answer'), text: z.string(), explanation: z.string() }),
 ]);
 export type SupportResponse = z.infer<typeof SupportResponse>;
+
+export const SkillCheckResult = z.object({
+  targetId: ContentId,
+  targetName: z.string(),
+  hasSkillCheck: z.boolean(),
+  passed: z.boolean(),
+  skill: ContentId.optional(),
+  skillName: z.string().optional(),
+  currentLevel: z.number().int().min(1).optional(),
+  requiredLevel: z.number().int().min(1).optional(),
+  hintQuestId: ContentId.optional(),
+});
+export type SkillCheckResult = z.infer<typeof SkillCheckResult>;
+

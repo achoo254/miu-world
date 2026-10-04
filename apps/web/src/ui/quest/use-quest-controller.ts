@@ -4,7 +4,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { freshPicker, type FreshPicker } from '@miu/quest/pick-fresh';
 import type { QuestStepPublic } from '@miu/schema/content';
-import { StepCompleteResponse, type QuestCompletion, type StepCompleteRequest } from '@miu/schema/game';
+import { SkillCheckResult, StepCompleteResponse, type QuestCompletion, type StepCompleteRequest } from '@miu/schema/game';
 import type { GameStore, InteractableKind } from '../../game-bridge/game-store';
 import { ApiError, api, errorMessage } from '../api-client';
 import { same, type Bilingual } from '../i18n/i18n';
@@ -44,6 +44,9 @@ export interface QuestController {
   /** Finishes the step on screen (dialogue end, learning step answer) on the server. */
   submit: (step: QuestStepPublic, body?: StepCompleteRequest) => Promise<StepCompleteResponse | null>;
   close: () => void;
+  /** Active skill check blocking target interaction until requirements are met. */
+  skillCheck: SkillCheckResult | null;
+  closeSkillCheck: () => void;
 }
 
 interface Options {
@@ -72,6 +75,7 @@ export function useQuestController({ store, data, questId, onResponse, onOverlay
   const [cheers, setCheers] = useState(0);
   const [retry, setRetry] = useState<(() => Promise<void>) | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [skillCheck, setSkillCheck] = useState<SkillCheckResult | null>(null);
 
   // Latest values for store callbacks, which outlive a render.
   const latest = useRef({ data, questId, overlay, busy, onResponse, onOverlayChange, draftOwner, onSideTarget });
@@ -86,13 +90,17 @@ export function useQuestController({ store, data, questId, onResponse, onOverlay
     },
     [],
   );
-  // What covers the game (it stops rendering meanwhile): a step screen, the offline retry, the rewards.
-  const covers = useRef({ overlay: false, retry: false, finished: false });
-  const cover = useCallback((part: 'overlay' | 'retry' | 'finished', on: boolean): void => {
+  // What covers the game (it stops rendering meanwhile): a step screen, the offline retry, the rewards, skill check.
+  const covers = useRef({ overlay: false, retry: false, finished: false, skillCheck: false });
+  const cover = useCallback((part: 'overlay' | 'retry' | 'finished' | 'skillCheck', on: boolean): void => {
     covers.current[part] = on;
     const c = covers.current;
-    latest.current.onOverlayChange?.(c.overlay || c.retry || c.finished);
+    latest.current.onOverlayChange?.(c.overlay || c.retry || c.finished || c.skillCheck);
   }, []);
+  const closeSkillCheck = useCallback(() => {
+    setSkillCheck(null);
+    cover('skillCheck', false);
+  }, [cover]);
   const setOverlay = useCallback(
     (next: QuestOverlay): void => {
       // The draft remembers whether the step's screen is open, so a reload opens it again.
@@ -215,27 +223,43 @@ export function useQuestController({ store, data, questId, onResponse, onOverlay
       if (TIMETABLE_TARGETS.has(targetId)) return;
       const { overlay: open, busy: waiting, data: player } = latest.current;
       // One call at a time: a pending offline retry is the only thing sent until it goes through.
-      if (open || waiting || covers.current.retry) return;
-      const active = activeQuest();
-      const step = active ? stepForTarget(active.quest, active.progress, targetId) : null;
-      // The lesson comes first; a character with nothing for it may offer a minigame.
-      if (!step && latest.current.onSideTarget?.(targetId)) return;
-      if (!active) return;
-      if (!step) {
-        const finished = currentStep(active.quest, active.progress) === null;
-        const line = finished ? lineFrom('done', DONE_LINES) : lineFrom(`not-now:${kind}`, NOT_NOW_LINES[kind]);
-        setToast(fillLine(line, who, player.character.name));
-        return;
-      }
-      if (step.kind === 'search' || step.kind === 'find-object') {
-        void submit(step, { target: targetId }).then((response) => {
-          if (response && !response.feedback) setToast(fillLine(lineFrom('found', FOUND_LINES), who, player.character.name));
+      if (open || waiting || covers.current.retry || covers.current.skillCheck) return;
+
+      const proceed = (): void => {
+        const active = activeQuest();
+        const step = active ? stepForTarget(active.quest, active.progress, targetId) : null;
+        // The lesson comes first; a character with nothing for it may offer a minigame.
+        if (!step && latest.current.onSideTarget?.(targetId)) return;
+        if (!active) return;
+        if (!step) {
+          const finished = currentStep(active.quest, active.progress) === null;
+          const line = finished ? lineFrom('done', DONE_LINES) : lineFrom(`not-now:${kind}`, NOT_NOW_LINES[kind]);
+          setToast(fillLine(line, who, player.character.name));
+          return;
+        }
+        if (step.kind === 'search' || step.kind === 'find-object') {
+          void submit(step, { target: targetId }).then((response) => {
+            if (response && !response.feedback) setToast(fillLine(lineFrom('found', FOUND_LINES), who, player.character.name));
+          });
+          return;
+        }
+        startStep(step);
+      };
+
+      void api('GET', `/skill-check/${targetId}`, SkillCheckResult)
+        .then((check) => {
+          if (check.hasSkillCheck && !check.passed) {
+            setSkillCheck(check);
+            cover('skillCheck', true);
+            return;
+          }
+          proceed();
+        })
+        .catch(() => {
+          proceed();
         });
-        return;
-      }
-      startStep(step);
     },
-    [activeQuest, lineFrom, startStep, submit],
+    [activeQuest, lineFrom, startStep, submit, cover],
   );
 
   // Interactions and the moment the forest is ready arrive through the store (discrete events).
@@ -287,5 +311,7 @@ export function useQuestController({ store, data, questId, onResponse, onOverlay
     error,
     submit,
     close: useCallback(() => setOverlay(null), [setOverlay]),
+    skillCheck,
+    closeSkillCheck,
   };
 }

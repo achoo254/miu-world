@@ -7,6 +7,7 @@ import {
   QuestListResponse,
   QuestSummary,
   QuestView,
+  SkillCheckResult,
   StepCompleteRequest,
   StepCompleteResponse,
   SupportRequest,
@@ -144,6 +145,44 @@ export function questRoutes({ db, content, clock }: QuestRouteDeps): Router {
     const summary = (await summaries(childId)).get(contentId(req.params.questId, 'quest-not-found'));
     if (!summary) throw new HttpError(404, 'quest-not-found');
     res.json(QuestSummary.parse(summary));
+  });
+
+  router.get('/skill-check/:targetId', requireParent, async (req, res) => {
+    const childId = await activeChildId(db, res, content.consent.version);
+    const targetId = contentId(req.params.targetId, 'target-not-found');
+    const target = content.targets?.get(targetId);
+    if (!target) throw new HttpError(404, 'target-not-found');
+
+    if (!target.skillCheck) {
+      res.json(
+        SkillCheckResult.parse({
+          targetId,
+          targetName: target.name,
+          hasSkillCheck: false,
+          passed: true,
+        }),
+      );
+      return;
+    }
+
+    const summary = await progressSummary(db, childId, content);
+    const skillInfo = summary.subjects.flatMap((s) => s.skills).find((k) => k.skillId === target.skillCheck?.skill);
+    const currentLevel = skillInfo?.level ?? 1;
+    const passed = currentLevel >= target.skillCheck.level;
+
+    res.json(
+      SkillCheckResult.parse({
+        targetId,
+        targetName: target.name,
+        hasSkillCheck: true,
+        passed,
+        skill: target.skillCheck.skill,
+        skillName: skillInfo?.name ?? target.skillCheck.skill,
+        currentLevel,
+        requiredLevel: target.skillCheck.level,
+        hintQuestId: target.skillCheck.hintQuest,
+      }),
+    );
   });
 
   router.post('/quests/:questId/steps/:stepId/complete', requireParent, completeLimit, async (req, res) => {

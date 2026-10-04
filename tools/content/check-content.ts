@@ -218,7 +218,13 @@ export const LOOK_CAP = 6;
  * model is licensed; a `character` names another entry of the same name drawn as a character; no look draws
  * more than LOOK_CAP different things, so lesson after lesson the child meets new things.
  */
-export function checkTargetCatalogues(looksRaw: unknown, targetsRaw: unknown, manifestPaths: ReadonlySet<string>): string[] {
+export function checkTargetCatalogues(
+  looksRaw: unknown,
+  targetsRaw: unknown,
+  manifestPaths: ReadonlySet<string>,
+  knownSkills?: ReadonlySet<string>,
+  knownQuests?: ReadonlySet<string>,
+): string[] {
   const looks = LookCatalog.safeParse(looksRaw);
   if (!looks.success) return [`content/${LOOKS_FILE}: ${looks.error.message}`];
   const targets = QuestTargetCatalog.safeParse(targetsRaw);
@@ -237,6 +243,14 @@ export function checkTargetCatalogues(looksRaw: unknown, targetsRaw: unknown, ma
       const own = all[target.character];
       if (!own || own.character !== undefined || own.name !== target.name || looks.data.looks[own.look]?.kind !== 'npc') {
         issues.push(`target ${id}: character ${target.character} must be another entry named "${target.name}", drawn as a character, with no character of its own`);
+      }
+    }
+    if (target.skillCheck) {
+      if (knownSkills && !knownSkills.has(target.skillCheck.skill)) {
+        issues.push(`target ${id}: skillCheck references unknown skill "${target.skillCheck.skill}"`);
+      }
+      if (target.skillCheck.hintQuest && knownQuests && !knownQuests.has(target.skillCheck.hintQuest)) {
+        issues.push(`target ${id}: skillCheck hintQuest "${target.skillCheck.hintQuest}" is not in the quest catalogue`);
       }
     }
     const thing = look.kind === 'npc' ? `npc:${target.character ?? id}` : `object:${target.name}`;
@@ -456,8 +470,25 @@ export function checkContent(dir: string = CONTENT_DIR): ContentReport {
     const pets: unknown = JSON.parse(readFileSync(path.join(dir, 'pets.json'), 'utf8'));
     issues.push(...checkPets(pets, new Set(manifest.files.map((f) => f.path)), new Set(manifest.generated.map((f) => f.path)), swatchesOf));
     const read = (rel: string): unknown => JSON.parse(readFileSync(path.join(dir, rel), 'utf8'));
+    const skillsFile = path.join(dir, 'learning/skills.json');
+    const knownSkills = new Set<string>();
+    if (existsSync(skillsFile)) {
+      const skillsData = JSON.parse(readFileSync(skillsFile, 'utf8')) as { subjects?: Array<{ skills?: Array<{ id: string }> }> };
+      for (const subj of skillsData.subjects ?? []) {
+        for (const sk of subj.skills ?? []) knownSkills.add(sk.id);
+      }
+    }
+    const knownQuests = new Set(catalog.quests.keys());
     if (existsSync(path.join(dir, TARGETS_FILE))) {
-      issues.push(...checkTargetCatalogues(read(LOOKS_FILE), read(TARGETS_FILE), new Set([...manifest.files, ...manifest.generated].map((f) => f.path))));
+      issues.push(
+        ...checkTargetCatalogues(
+          read(LOOKS_FILE),
+          read(TARGETS_FILE),
+          new Set([...manifest.files, ...manifest.generated].map((f) => f.path)),
+          knownSkills,
+          knownQuests,
+        ),
+      );
       issues.push(...checkLessonLooks(readQuestDefinitions(path.join(dir, 'quests')), read(LOOKS_FILE), read(TARGETS_FILE)));
       // The child keeps moving and meets new characters: places per quest, stays per place, quests per character.
       const guides = regions.success ? regionGuides(regions.data) : {};
