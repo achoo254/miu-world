@@ -72,6 +72,8 @@ export interface ActiveInteraction {
   elapsed: number;
   readonly duration: number;
   readonly bubbleText: string;
+  /** Where the child stood before sitting or lying on the object: she is put back there on getting up (the object itself is solid). */
+  readonly standAt: readonly [number, number, number] | null;
 }
 
 export interface CandidateObject {

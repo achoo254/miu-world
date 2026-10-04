@@ -181,6 +181,9 @@ describe('Object Interaction System', () => {
           },
         },
         facing: 0,
+        teleport(at: readonly [number, number, number]) {
+          mockController.position.set(...at);
+        },
       } as unknown as PlayerController;
 
       const mockCharacter = {} as unknown as PlayerCharacter;
@@ -195,9 +198,28 @@ describe('Object Interaction System', () => {
       const updateResult = manager.update(0.1, mockController, false);
       expect(updateResult.poseOverride).toBe('sit');
 
-      // Player starts walking: interaction cancels
+      // On the bed (its own spot), then she pushes the stick: up, back where she stood, free to walk on
+      expect(mockController.position.x).toBe(12);
       manager.update(0.5, mockController, true);
       expect(manager.isInteracting).toBe(false);
+      expect([mockController.position.x, mockController.position.z]).toEqual([12.2, 15.1]);
+    });
+
+    it('gets her up on a second press of the same action, back where she stood', () => {
+      const entities = { props: [{ model: 'generated/box-props/ncb-bed-pink.glb', slot: 'bed', position: [12, 0, 15], yaw: 180 }] } as unknown as WorldEntities;
+      const manager = new ObjectInteractionManager(entities, mockBubble);
+      const bed = manager.nearest({ x: 12.2, y: 0, z: 15.1 });
+      if (!bed) throw new Error('no bed');
+      const controller = {
+        position: { x: 12.2, y: 0, z: 15.1, set(x: number, y: number, z: number) { this.x = x; this.y = y; this.z = z; } },
+        facing: 0,
+        teleport(at: readonly [number, number, number]) { controller.position.set(...at); },
+      } as unknown as PlayerController;
+      manager.interact(bed, controller, {} as unknown as PlayerCharacter);
+      expect(manager.isInteracting).toBe(true);
+      manager.interact(bed, controller, {} as unknown as PlayerCharacter);
+      expect(manager.isInteracting).toBe(false);
+      expect([controller.position.x, controller.position.z]).toEqual([12.2, 15.1]);
     });
   });
 });

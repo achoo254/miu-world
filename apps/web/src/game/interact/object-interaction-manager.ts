@@ -148,12 +148,20 @@ export class ObjectInteractionManager {
     _character: PlayerCharacter,
     multiplayer?: MultiplayerClient,
   ): void {
+    // A second press while she sits is "get up".
+    if (this.active?.standAt) {
+      this.finish(controller);
+      return;
+    }
     const { def } = obj;
     const lines = def.dialoguesVi;
     const line = lines[Math.floor(Math.random() * lines.length)] ?? lines[0] ?? '';
 
-    // Align player position & orientation with object if sitting or laying
+    // Align player position & orientation with object if sitting or laying; remember where she stood, since the
+    // object's own cell is solid and she could not walk off from inside it.
+    let standAt: readonly [number, number, number] | null = null;
     if (def.pose === 'sit' || def.pose === 'lay') {
+      standAt = [controller.position.x, controller.position.y, controller.position.z];
       const [ox, oy, oz] = obj.position;
       controller.position.set(ox, oy, oz);
       controller.facing = (obj.yaw * Math.PI) / 180;
@@ -174,6 +182,7 @@ export class ObjectInteractionManager {
       elapsed: 0,
       duration: def.duration ?? 0,
       bubbleText: line,
+      standAt,
     };
   }
 
@@ -201,13 +210,13 @@ export class ObjectInteractionManager {
 
     // If child pushes movement after a brief grace period, cancel interaction gracefully
     if (isMoving && this.active.elapsed > 0.25) {
-      this.cancel();
+      this.finish(controller);
       return { poseOverride: null, bubblePos };
     }
 
     // Time-limited interaction completed
     if (this.active.duration > 0 && this.active.elapsed >= this.active.duration) {
-      this.cancel();
+      this.finish(controller);
       return { poseOverride: null, bubblePos };
     }
 
@@ -219,11 +228,19 @@ export class ObjectInteractionManager {
     return { poseOverride, bubblePos };
   }
 
-  /**
-   * Cancel active interaction and return to normal locomotion.
-   */
-  cancel(): void {
+  /** Ends the interaction; with a controller, a child who was seated is put back where she stood. */
+  private finish(controller: PlayerController): void {
+    const stand = this.active?.standAt;
     this.active = null;
+    if (stand) controller.teleport(stand);
+  }
+
+  /**
+   * Cancel active interaction and return to normal locomotion (pass the controller to stand a seated child up).
+   */
+  cancel(controller?: PlayerController): void {
+    if (controller) this.finish(controller);
+    else this.active = null;
   }
 
   get isInteracting(): boolean {

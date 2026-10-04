@@ -1,5 +1,5 @@
 // M1.1 (Trang chủ): the world stage with its regions, the child's character standing in it, a side rail
-// (Về nhà, Nhiệm vụ, Bản đồ, Ba lô, Cửa hàng: the shop of mock panel 7 over Home; Sổ sưu tập), today's quests, and the
+// (Về nhà, Nhiệm vụ, Bản đồ, Ba lô, Cửa hàng: the shop of mock panel 7 over Home), today's quests, and the
 // child's level, XP and coins, with the title of her latest region chest and a "Nhận thưởng" badge over each
 // region with a chest tier to open. Home is a React screen
 // over a pre-rendered island image, not a second 3D scene (validation decision `home_scene`). Not in the
@@ -13,7 +13,6 @@ import { Modal } from '../kit/modal';
 import { SkyScene } from '../kit/sky-scene';
 import { PlayerBadge } from '../player/player-badge';
 import { currentQuest, playPath, questForRegion, usePlayer } from '../player/player-data';
-import { CollectionBook } from '../collection/collection-book';
 import { ShopPanel } from '../shop/shop-panel';
 import { RegionRewardBadges } from '../region/region-reward-badges';
 import { useRegionRewardList } from '../region/region-rewards';
@@ -55,7 +54,6 @@ export function HomeScreen() {
   const { t } = useT();
   const [settings, setSettings] = useState(false);
   const [shopOpen, setShopOpen] = useState(false);
-  const [bookOpen, setBookOpen] = useState(false);
   /** Coins after a purchase here (the badge shows the server's balance). */
   const [coins, setCoins] = useState<number | null>(null);
   const quest = data ? currentQuest(data.quests) : null;
@@ -124,16 +122,12 @@ export function HomeScreen() {
                   <Icon name="coin" size={40} />
                   <T k="common.shop" />
                 </button>
-                <button type="button" className="home-rail-item" data-id="home-nav-collection" onClick={() => setBookOpen(true)}>
-                  <Icon name="books" size={40} />
-                  <T k="collection.title" />
-                </button>
+                
               </nav>
               <TodayQuests data={data} />
             </div>
             {settings ? <SettingsDialog onClose={() => setSettings(false)} /> : null}
             {shopOpen ? <ShopPanel onClose={() => setShopOpen(false)} onCoins={setCoins} /> : null}
-            {bookOpen ? <CollectionBook character={data.character} onClose={() => setBookOpen(false)} onCoins={setCoins} /> : null}
           </>
         ) : null}
       </main>
