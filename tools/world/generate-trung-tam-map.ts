@@ -287,8 +287,8 @@ function hubLife(map: { zone: (chapter: number) => Zone; landmark: (id: string) 
       return { routine: kind, name: names[pet++ % names.length] ?? 'Mèo', model: animal(kind), at: [Math.round(at[0] + Math.cos(a) * radius), Math.round(at[1] + Math.sin(a) * radius)] as const };
     });
   const [z1, z2, z3, z4] = [map.zone(1), map.zone(2), map.zone(3), map.zone(4)];
-  // Behind the shop's two counters, either side of its door (placeHubShop's keepers).
-  const shopKeepers = [FRAME + 4, FRAME + SHOP.width - 5].map((u) => framePoint(SHOP.origin, SHOP.facing, u + 0.5, FRAME + 3.5));
+  // Behind the shop's second counter (the first counter is kept by Cô chủ cửa hàng target).
+  const toyKeeper = framePoint(SHOP.origin, SHOP.facing, FRAME + SHOP.width - 4.5, FRAME + 3.5);
   return [
     // The square: groups round the fountain, before the portals, at the board and the gazebo, by the shop.
     ...kids([F.x - 14, F.z + 18], 3, 4, 'pupil', [HELD.balloon]),
@@ -302,7 +302,7 @@ function hubLife(map: { zone: (chapter: number) => Zone; landmark: (id: string) 
     ...kids([F.x - 22, F.z + 26], 3, 3, 'shopper', [HELD.gift]),
     ...kids([F.x + 34, F.z + 38], 3, 3, 'kite-flyer', [HELD.kite]),
     ...kids([z1.x, z1.z + z1.hz - 6], 4, 4, 'pupil', [HELD.balloonYellow]),
-    ...shopKeepers.map(([x, z], i) => ({ routine: 'vendor' as const, name: i === 0 ? 'Cô chủ cửa hàng' : 'Chú bán đồ chơi', model: person(i === 0 ? 'e' : 'h'), held: [HELD.basket], at: [Math.floor(x), Math.floor(z)] as const, visits: [[Math.floor(x), Math.floor(z) - 2], [Math.floor(x), Math.floor(z) + 2]] as const, facing: [Math.floor(x) + 3, Math.floor(z)] as const })),
+    { routine: 'vendor' as const, name: 'Chú bán đồ chơi', model: person('h'), held: [HELD.basket], at: [Math.floor(toyKeeper[0]), Math.floor(toyKeeper[1])] as const, visits: [[Math.floor(toyKeeper[0]), Math.floor(toyKeeper[1]) - 2], [Math.floor(toyKeeper[0]), Math.floor(toyKeeper[1]) + 2]] as const, facing: [Math.floor(toyKeeper[0]) + 3, Math.floor(toyKeeper[1])] as const },
     ...kids([SHOP.origin[0] + 8, SHOP.origin[1] + 7], 2, 3, 'shopper', [HELD.basket]),
     { routine: 'sweeper', name: 'Chú quét quảng trường', model: person('l'), at: [F.x + 22, F.z + 14] as const },
     { routine: 'gardener', name: 'Cô chăm bồn hoa', model: person('a'), held: [HELD.flower], at: [F.x - 14, F.z - 10] as const },
@@ -592,8 +592,8 @@ function buildHub(ctx: ZoneMapContext): void {
   // the shop screen (apps/web/src/ui/shop), whatever lesson is being played.
   const [firstCounter] = shop.counters;
   if (firstCounter) {
-    const [keeperX, keeperZ] = shopAt(firstCounter[0], FRAME - 0.5);
-    ctx.target({ id: 'tt-quay-cua-hang', name: 'Cô chủ cửa hàng', label: 'Mua sắm', at: [keeperX, y0, keeperZ], yaw: shopYaw(180), radius: 2.8 });
+    const [keeperX, keeperZ] = shopAt(firstCounter[0], FRAME + 2.5);
+    ctx.target({ id: 'tt-quay-cua-hang', name: 'Cô chủ cửa hàng', label: 'Mua sắm', at: [keeperX, y0, keeperZ], yaw: shopYaw(0), radius: 3.5, model: person('e') });
   }
   for (const { at, yaw } of shop.shelves) {
     const [x, z] = shopAt(at[0], at[2]);

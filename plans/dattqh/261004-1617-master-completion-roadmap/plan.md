@@ -28,7 +28,7 @@ Mọi hạng mục của Master Plan v3 (§5, §6, §8, §8b, §8c, §9, §13, �
 | **§6, §9 Khu vực phụ huynh: tiến bộ, bạn bè bằng mã, phê duyệt, bật/tắt online** | `261004-1617-parent-area-friends` | **Mới** |
 | **§9 (MP) Kiểm duyệt, token ngắn hạn, tắt khẩn cấp, đo tải (không chống cheat)** | `261004-1617-moderation-safety` | **Mới** |
 | **§8 Bậc 2: co-op quest 2–4 bạn** | `261004-1617-coop-quests` | **Mới** |
-| **§8 Bậc 3, §6 Live: sự kiện có thời hạn, bảng xếp hạng nhóm** | `261004-1617-live-world-events` | **Mới** |
+| **§8 Bậc 3, §6 Live: sự kiện có thời hạn (Cổng TIMO), bảng xếp hạng nhóm** | `261004-1617-live-world-events` | **Mới** |
 | **§6 Hộp thư, Skill Up, chuỗi ngày** | `261004-1617-system-screens-v1` | **Mới** |
 | **§12, §13, §16 Nghiệm thu MVP, hiệu năng, đồng bộ tài liệu** | `261004-1617-mvp-gate-launch-readiness` | **Mới** |
 
@@ -74,5 +74,5 @@ DEVICE-01 (iPad Gen 10), giáo viên duyệt nội dung SGK, designer duyệt UI
 1. Duyệt thứ tự ở bảng "Lượt" ở trên, hay muốn đưa English hoặc sự kiện lên trước?
 2. Sách tiếng Anh lớp 2 dùng bộ nào (chi tiết ở `english-subject-content`)?
 3. Ai xử lý báo cáo vi phạm khi bật bạn bè/co-op: người sở hữu, hay ngừng ở bậc 1 như khuyến nghị Master Plan §8 (chi tiết ở `moderation-safety`)?
-4. "TIMO" ở Master Plan §6 là đối tác/chương trình nào, có tài liệu sự kiện không (chi tiết ở `live-world-events`)?
+4. TIMO đã làm rõ (kỳ thi Olympic Toán quốc tế, tài liệu `bai-tap-lop-2/content/TIMOK2.pdf`; chi tiết ở `live-world-events`). Còn hỏi: dùng tên "TIMO" trong game công khai hay đặt tên chung (đề xuất tên chung, tránh nhầm là liên kết chính thức), và ngày sự kiện đầu tiên.
 5. Có làm "chuỗi ngày" (streak) không, vì áp lực lên trẻ nhỏ (chi tiết ở `system-screens-v1`)?

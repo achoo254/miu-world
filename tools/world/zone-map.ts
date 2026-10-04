@@ -91,7 +91,9 @@ export interface MapTarget {
   at: readonly [number, number, number];
   yaw: number;
   radius?: number;
+  kind?: 'object' | 'npc';
   model?: string;
+  animation?: string;
   board?: string;
 }
 
@@ -550,17 +552,21 @@ export async function generateZoneMap(spec: ZoneMapSpec): Promise<{ world: Voxel
     interactables: [
       ...gates,
       ...rides,
-      ...ownTargets.map((t): Interactable => ({
-        id: t.id,
-        kind: 'object',
-        name: t.name,
-        label: t.label,
-        position: [t.at[0], t.at[1], t.at[2]],
-        yaw: t.yaw,
-        radius: t.radius ?? 2.5,
-        ...(t.model ? models.modelled(t.model) : {}),
-        ...(t.board ? { board: t.board } : {}),
-      })),
+      ...ownTargets.map((t): Interactable => {
+        const isNpc = t.kind === 'npc' || (t.model !== undefined && (t.model.includes('character') || t.model.includes('animal') || t.model.includes('npc')));
+        return {
+          id: t.id,
+          kind: (isNpc ? 'npc' : (t.kind ?? 'object')) as Interactable['kind'],
+          name: t.name,
+          label: t.label,
+          position: [t.at[0], t.at[1], t.at[2]],
+          yaw: t.yaw,
+          radius: t.radius ?? 2.5,
+          ...(t.model ? models.modelled(t.model) : {}),
+          ...(isNpc ? { animation: t.animation ?? 'idle' } : {}),
+          ...(t.board ? { board: t.board } : {}),
+        };
+      }),
     ],
     seed: seed + 11,
   });
