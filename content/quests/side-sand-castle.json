@@ -1,0 +1,80 @@
+{
+  "id": "side-sand-castle",
+  "region": "dao-bi-an",
+  "chapter": 1,
+  "title": "Xây lâu đài cát chắn sóng cùng Cua Càng Cắp Cua",
+  "status": "active",
+  "category": "side",
+  "summary": "Bé xúc cát ướt đong vừa vạch khuôn rồi úp thành những ngọn tháp cát kiên cố bên bờ.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, kiến trúc sư lâu đài cát",
+    "where": "Mép vũng nước triều rút",
+    "goal": "Xây hoàn chỉnh mười hai lâu đài cát tráng lệ với các ngọn tháp cao nhé!",
+    "play": "Giữ ngón tay để xúc cát vào xô, thả ra khi cát tới vạch xanh.",
+    "learn": "Đong lượng vừa đủ và ước lượng thể tích",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Bờ cát mịn màng vẫn còn nhiều chỗ trống, Cua Càng đợi {name} xây thêm thành lũy."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "cua-cang-cap-cua",
+      "lines": [
+        {
+          "speaker": "Cua Càng Cắp Cua",
+          "text": "Sóng sắp vỗ vào bờ rồi đấy {name}, tụi mình cùng đắp lâu đài cát thật vững nhé!"
+        },
+        {
+          "speaker": "Cua Càng Cắp Cua",
+          "text": "Đong cát vào xô vừa chạm vạch xanh rồi úp xuống làm tháp canh cho lâu đài."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ xây thành trì thật kiên cố!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Xây lâu đài cát",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Xây hoàn chỉnh mười hai lâu đài cát tráng lệ với các ngọn tháp cao nhé!",
+      "game": "sand-castle",
+      "goal": 12
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Cua Càng giơ càng vẫy mừng: lâu đài của {name} xây đẹp và vững trước ngọn sóng!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Bờ cát mịn màng vẫn còn nhiều chỗ trống, Cua Càng đợi {name} xây thêm thành lũy."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

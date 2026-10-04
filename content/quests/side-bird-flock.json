@@ -1,0 +1,80 @@
+{
+  "id": "side-bird-flock",
+  "region": "khu-rung-bi-mat",
+  "chapter": 1,
+  "title": "Dẫn đàn chim bay chữ V với Gấu Trèo Cây",
+  "status": "active",
+  "category": "side",
+  "summary": "Đàn chim non tập bay theo hình chữ V: lượn ngón tay dẫn đường qua các cổng mây bồng bềnh.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, chim đầu đàn dẫn lối",
+    "where": "Gốc đại thụ tán lá râm",
+    "goal": "Dẫn đàn chim lượn qua mười lăm vòng mây trắng nhé!",
+    "play": "{name} kéo ngón tay lên xuống để dẫn chim đầu đàn, cả đàn bay theo sau.",
+    "learn": "Điều hướng đường bay mềm mại và né mây giông",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Đàn chim di cư vẫn tập luyện mỗi ngày, {name} rảnh lại đến gốc đại thụ ngắm chim nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "gau-bap-cay",
+      "lines": [
+        {
+          "speaker": "Gấu Trèo Cây",
+          "text": "{name} nhìn lên trời xem, đàn chim non đang cần người dẫn đường bay chữ V kìa."
+        },
+        {
+          "speaker": "Gấu Trèo Cây",
+          "text": "Cậu rê ngón tay lên xuống dẫn lối chú chim đầu đàn chui qua từng vòng mây trắng nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cả đàn bám sát tớ, cùng bay lượn nào!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Đàn chim bay chữ V",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Dẫn đàn chim lượn qua mười lăm vòng mây trắng nhé!",
+      "game": "bird-flock",
+      "goal": 15
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Gấu Trèo Cây vẫy hai tay mừng rỡ: {name} dẫn đường khéo ghê, đàn chim bay đều tăm tắp!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Đàn chim di cư vẫn tập luyện mỗi ngày, {name} rảnh lại đến gốc đại thụ ngắm chim nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "id": "side-mirror-twins",
+  "region": "lau-dai",
+  "chapter": 1,
+  "title": "Hình phản chiếu qua gương cùng Hiệp Sĩ Gương Soi",
+  "status": "active",
+  "category": "side",
+  "summary": "Hai hiệp sĩ bước đi trên sàn đá hoa cương, bé dẫn đường sao cho cả hai cùng tới đích đối xứng.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, hiệp sĩ thấu hiểu gương thần",
+    "where": "Trước sân hình khối hoàng cung",
+    "goal": "Dẫn hai bạn qua gương tới đích thành công bốn lần nhé!",
+    "play": "Vuốt để {name} đi một ô. Bạn trong gương đi cùng lúc nhưng ngược trái phải.",
+    "learn": "Quy luật đối xứng trục và điều khiển hai vật thể",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Sân hình khối hoàng cung luôn rộng mở, hiệp sĩ chờ cháu quay lại luyện tập phép gương."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "hiep-si-guong-soi",
+      "lines": [
+        {
+          "speaker": "Hiệp Sĩ Gương Soi",
+          "text": "Hiệp sĩ xin chào {name}, tấm gương ma thuật trong hoàng cung đang thử thách chúng ta đấy."
+        },
+        {
+          "speaker": "Hiệp Sĩ Gương Soi",
+          "text": "Khi cháu bước một ô, chiếc bóng trong gương cũng bước ngược hướng, hãy đưa cả hai về ngôi sao."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu bước đi cùng chiếc bóng!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Hai bạn soi gương",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Dẫn hai bạn qua gương tới đích thành công bốn lần nhé!",
+      "game": "mirror-twins",
+      "goal": 4
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Hiệp Sĩ Gương Soi nâng kiếm chào: {name} am hiểu phép đối xứng gương tài tình vô song!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Sân hình khối hoàng cung luôn rộng mở, hiệp sĩ chờ cháu quay lại luyện tập phép gương."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

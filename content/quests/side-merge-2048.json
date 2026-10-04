@@ -1,0 +1,80 @@
+{
+  "id": "side-merge-2048",
+  "region": "thu-vien",
+  "chapter": 1,
+  "title": "Gộp số đôi kỳ thú cùng Chú Thợ Điện Nhí",
+  "status": "active",
+  "category": "side",
+  "summary": "Các khối số trượt qua trượt lại trong khung vuông, bé gộp các số giống nhau để nhân đôi sức mạnh.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, nhà vô địch gộp số đôi",
+    "where": "Quảng trường đài phun trước thư viện",
+    "goal": "Gộp số khéo léo tạo ra ô số sáu mươi tư rực rỡ nhé!",
+    "play": "Vuốt lên, xuống, sang trái, sang phải: mọi ô số trượt theo.",
+    "learn": "Phép nhân đôi lũy thừa hai và sắp xếp ô số",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Những con số đôi lúc nào cũng cuốn hút, rảnh tay cậu cứ ra quảng trường chơi tiếp."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "chu-tho-dien-nhi",
+      "lines": [
+        {
+          "speaker": "Chú Thợ Điện Nhí",
+          "text": "Lại đây chơi trò gộp số với tớ nào {name}, càng gộp số càng to vui mắt lắm!"
+        },
+        {
+          "speaker": "Chú Thợ Điện Nhí",
+          "text": "Cậu vuốt màn hình để các ô cùng số chạm nhau: hai cộng hai thành bốn, bốn gộp bốn thành tám."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ gộp số lớn lên nào!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Gộp số đôi",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Gộp số khéo léo tạo ra ô số sáu mươi tư rực rỡ nhé!",
+      "game": "merge-2048",
+      "goal": 64
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Chú Thợ Điện Nhí reo hò phấn khích khi {name} tạo ra con số mục tiêu ngoạn mục!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Những con số đôi lúc nào cũng cuốn hút, rảnh tay cậu cứ ra quảng trường chơi tiếp."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

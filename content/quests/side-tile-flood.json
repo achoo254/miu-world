@@ -1,0 +1,80 @@
+{
+  "id": "side-tile-flood",
+  "region": "trung-tam",
+  "chapter": 1,
+  "title": "Tràn màu gạch lát với Mèo Xếp Khối",
+  "status": "active",
+  "category": "side",
+  "summary": "Sân gạch men nhiều màu bên đài nước: chạm màu hòa tan để lan tỏa đồng nhất khắp toàn bộ mặt sàn.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, bậc thầy lan tỏa sắc màu",
+    "where": "Bờ đài phun nước tượng mèo",
+    "goal": "Nhuộm cùng một màu toàn bộ bàn gạch trong ba lượt nhé!",
+    "play": "Vùng màu của {name} ở góc trên. Chạm một màu để cả vùng đổi sang màu đó.",
+    "learn": "Tư duy quy hoạch vùng và tối ưu số bước đi",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Mặt sàn mới với nhiều ô màu đang chờ, {name} ghé đài phun nước tượng mèo giải đố tiếp nha."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "meo-xep-khoi",
+      "lines": [
+        {
+          "speaker": "Mèo Xếp Khối",
+          "text": "{name} ơi, đố cậu nhuộm màu toàn bộ sân gạch men này chỉ với vài lượt đổi màu đấy!"
+        },
+        {
+          "speaker": "Mèo Xếp Khối",
+          "text": "Cậu chạm màu mới để vùng gạch của mình lan rộng sang các ô kề bên trước khi hết lượt nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Lan tỏa sắc màu, phủ kín mặt sân!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Lan màu",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Nhuộm cùng một màu toàn bộ bàn gạch trong ba lượt nhé!",
+      "game": "tile-flood",
+      "goal": 3
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Mèo Xếp Khối tròn xoe mắt thán phục: cả sân gạch đã rực một màu nhờ tài tính toán của {name}!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Mặt sàn mới với nhiều ô màu đang chờ, {name} ghé đài phun nước tượng mèo giải đố tiếp nha."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

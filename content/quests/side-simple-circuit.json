@@ -1,0 +1,80 @@
+{
+  "id": "side-simple-circuit",
+  "region": "thu-vien",
+  "chapter": 1,
+  "title": "Nối mạch điện thắp sáng cùng Chú Thợ Điện Nhí",
+  "status": "active",
+  "category": "side",
+  "summary": "Những sợi dây đồng dẫn điện bị đứt, bé kéo dây khép kín từ pin qua công tắc đến bóng đèn rực rỡ.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, kỹ sư điện nhí tài năng",
+    "where": "Quảng trường đài phun trước thư viện",
+    "goal": "Nối kín mạch điện thắp sáng bốn bóng đèn lung linh nhé!",
+    "play": "{name} kéo dây từ chấm kim loại này sang chấm khác để nối pin, công tắc và bóng đèn.",
+    "learn": "Khái niệm mạch điện khép kín và cực nguồn điện",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Đèn quảng trường đã sáng trưng, khi nào thích khám phá khoa học cậu cứ lại tìm tớ."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "chu-tho-dien-nhi",
+      "lines": [
+        {
+          "speaker": "Chú Thợ Điện Nhí",
+          "text": "Chào {name}, đài phun nước chuẩn bị lên đèn mà mạch điện dây nối vẫn đang hở kìa."
+        },
+        {
+          "speaker": "Chú Thợ Điện Nhí",
+          "text": "Cậu kéo dây dẫn từ cực dương của pin qua bóng đèn về cực âm rồi bấm bật công tắc lên nha."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ nối dây cho đèn sáng!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Nối mạch thắp đèn",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Nối kín mạch điện thắp sáng bốn bóng đèn lung linh nhé!",
+      "game": "simple-circuit",
+      "goal": 4
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Chú Thợ Điện Nhí giơ ngón tay cái khen ngợi {name} lắp mạch điện an toàn và sáng rực!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Đèn quảng trường đã sáng trưng, khi nào thích khám phá khoa học cậu cứ lại tìm tớ."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

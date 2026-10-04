@@ -1,0 +1,80 @@
+{
+  "id": "side-hand-span",
+  "region": "truong-hoc",
+  "chapter": 1,
+  "title": "Đo đồ vật bằng gang tay cùng Gấu Bó Đũa",
+  "status": "active",
+  "category": "side",
+  "summary": "Bàn học, bảng đen và hộp bút dài ngắn khác nhau: áp từng gang tay nối đuôi để đo độ dài đồ vật.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, thước đo gang tay chuẩn xác",
+    "where": "Ghế đá sân sau dãy lớp",
+    "goal": "Đo đúng độ dài của tám món đồ dùng học tập nhé!",
+    "play": "{name} chạm dọc đồ vật để đặt gang tay, gang sau nối liền gang trước, từ đầu bên trái.",
+    "learn": "Kỹ năng đo độ dài bằng đơn vị tự quy ước",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Sân sau còn bao nhiêu thứ để đo, {name} cứ ra ghế đá dãy lớp tìm Gấu Bó Đũa nha."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "gau-bo-dua",
+      "lines": [
+        {
+          "speaker": "Gấu Bó Đũa",
+          "text": "Hôm nay lớp mình học bài ước lượng độ dài bằng gang tay đấy {name} ạ."
+        },
+        {
+          "speaker": "Gấu Bó Đũa",
+          "text": "Cậu đặt từng gang tay nối liền nhau từ mép trái, không để hở hay đè lên nhau rồi đếm nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Gang tay nối tiếp, đo chuẩn từng li!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Đo bằng gang tay",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Đo đúng độ dài của tám món đồ dùng học tập nhé!",
+      "game": "hand-span",
+      "goal": 8
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Gấu Bó Đũa gật gù khen ngợi: {name} đo đạc khéo ghê, số gang tay khớp từng centimet!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Sân sau còn bao nhiêu thứ để đo, {name} cứ ra ghế đá dãy lớp tìm Gấu Bó Đũa nha."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "id": "side-wall-jump",
+  "region": "nui-tuyet",
+  "chapter": 1,
+  "title": "Nhảy bật qua vách hẻm núi cùng Nai Nhỏ Vách Đá",
+  "status": "active",
+  "category": "side",
+  "summary": "Hẻm núi dựng đứng hai bên, bé chạm màn hình để nhảy bật qua lại giữa hai vách đá nhọn.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, nhà leo vách đá cừ khôi",
+    "where": "Lối vào ga cáp treo làng",
+    "goal": "Chinh phục độ cao sáu mươi mét trên hẻm núi đá tuyết nhé!",
+    "play": "{name} tự leo lên vách hẻm núi. Chạm để nhảy sang vách bên kia.",
+    "learn": "Canh thời gian bật nhảy nhịp nhàng",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Hẻm núi tuyết vẫn còn gió thổi vi vu, Nai Nhỏ đợi {name} cùng leo vách đá."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "nai-nho-vach-da",
+      "lines": [
+        {
+          "speaker": "Nai Nhỏ Vách Đá",
+          "text": "Vách đá cạnh ga cáp treo dốc đứng lắm, {name} thử tài nhảy cao với tớ nào!"
+        },
+        {
+          "speaker": "Nai Nhỏ Vách Đá",
+          "text": "Chạm thật nhanh để bật sang bờ bên kia, tránh xa những mũi băng sắc nhọn nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ nhún chân bật nhảy liền!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Nhảy vách hẻm núi",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Chinh phục độ cao sáu mươi mét trên hẻm núi đá tuyết nhé!",
+      "game": "wall-jump",
+      "goal": 60
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Nai Nhỏ nhấc cao chân khen ngợi: {name} nhảy thoăn thoắt hệt như sơn dương núi!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Hẻm núi tuyết vẫn còn gió thổi vi vu, Nai Nhỏ đợi {name} cùng leo vách đá."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

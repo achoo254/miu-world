@@ -1,0 +1,80 @@
+{
+  "id": "side-breakout",
+  "region": "lau-dai",
+  "chapter": 1,
+  "title": "Bắn bóng phá gạch hoàng gia với Hiệp Sĩ Gương Soi",
+  "status": "active",
+  "category": "side",
+  "summary": "Bức tường thành gạch cổ kính cần dọn dẹp, bé đỡ thanh trượt hất bóng nảy vỡ từng hàng gạch.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, tay phá gạch cừ khôi",
+    "where": "Trước sân hình khối hoàng cung",
+    "goal": "Phá tan được ba mươi viên gạch hoàng gia kiên cố nhé!",
+    "play": "Chạm để bắn bóng, rồi kéo thanh đỡ sang trái, sang phải để bóng nảy lên phá gạch.",
+    "learn": "Ước lượng góc phản xạ và di chuyển đón đầu",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Bức tường hoàng cung đã sạch đẹp, hôm nào cháu lại ghé trước sân hình khối tập luyện."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "hiep-si-guong-soi",
+      "lines": [
+        {
+          "speaker": "Hiệp Sĩ Gương Soi",
+          "text": "{name} ơi, bức tường gạch cũ trước sân cung điện cần sự nhanh nhẹn của cháu giúp sức kìa."
+        },
+        {
+          "speaker": "Hiệp Sĩ Gương Soi",
+          "text": "Cháu di chuyển thanh đỡ nhịp nhàng bên dưới, giữ bóng nảy lên cao phá tan những khối gạch rêu phong."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu đỡ bóng phá sạch gạch!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Phá gạch",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Phá tan được ba mươi viên gạch hoàng gia kiên cố nhé!",
+      "game": "breakout",
+      "goal": 30
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Hiệp Sĩ Gương Soi vỗ tay trầm trồ: đường bóng của {name} chính xác như đường kiếm hiệp sĩ!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Bức tường hoàng cung đã sạch đẹp, hôm nào cháu lại ghé trước sân hình khối tập luyện."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

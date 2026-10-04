@@ -1,0 +1,80 @@
+{
+  "id": "side-roof-tiles",
+  "region": "xom-mai-am",
+  "chapter": 1,
+  "title": "Lợp ngói mái nhà cùng Anh Thợ Sửa Mái",
+  "status": "active",
+  "category": "side",
+  "summary": "Kéo từng viên ngói đỏ lợp từ dưới lên trên thẳng hàng để mái nhà kín mít che mưa nắng.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, thợ xây nhí khéo tay của xóm",
+    "where": "Đầu đường cạnh ruộng lúa mì",
+    "goal": "Xếp ngay ngắn khít khao hai mươi bảy viên ngói đỏ tươi lên mái nhà nhé!",
+    "play": "Kéo ngói từ chồng ngói lên mái nhà.",
+    "learn": "Xếp lớp theo thứ tự từ dưới lên trên",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Anh thợ sửa mái vẫn ở đầu đường ruộng lúa mì chờ em ghé phụ."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "anh-tho-sua-mai",
+      "lines": [
+        {
+          "speaker": "Anh Thợ Sửa Mái",
+          "text": "Mái nhà sắp xong rồi, {name} phụ anh một tay lợp ngói nhé!"
+        },
+        {
+          "speaker": "Anh Thợ Sửa Mái",
+          "text": "Em xếp từng viên ngói đè mép lên nhau từ hàng dưới lên hàng trên nha."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Em chuyền ngói lợp mái ngay!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Lợp ngói trước mưa",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Xếp ngay ngắn khít khao hai mươi bảy viên ngói đỏ tươi lên mái nhà nhé!",
+      "game": "roof-tiles",
+      "goal": 27
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Mái ngói đỏ au phẳng lỳ che mưa gió, {name} làm thợ giỏi quá!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Anh thợ sửa mái vẫn ở đầu đường ruộng lúa mì chờ em ghé phụ."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

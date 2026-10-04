@@ -1,0 +1,80 @@
+{
+  "id": "side-zigzag-path",
+  "region": "khu-rung-bi-mat",
+  "chapter": 1,
+  "title": "Lăn bóng đường zíc zắc với Hươu Đốm Rừng Rậm",
+  "status": "active",
+  "category": "side",
+  "summary": "Con đường gỗ quanh co uốn khúc giữa rừng: chạm màn hình chuyển hướng cho quả bóng gỗ lăn nhặt ngọc.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, tay lái bóng cừ khôi",
+    "where": "Trảng cỏ giữa rừng thông",
+    "goal": "Dẫn bóng vượt qua bốn mươi khúc quanh zíc zắc nhé!",
+    "play": "Quả bóng tự lăn chéo trên con đường gấp khúc.",
+    "learn": "Phản xạ nhanh tại các điểm chuyển hướng",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Đường cua zíc zắc thử thách lòng can đảm, {name} ghé trảng cỏ rừng thông so tài tiếp nha."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "huou-bong-ram",
+      "lines": [
+        {
+          "speaker": "Hươu Đốm Rừng Rậm",
+          "text": "{name} ơi, quả bóng gỗ tròn xoe đang lăn vun vút trên đường mòn gấp khúc này!"
+        },
+        {
+          "speaker": "Hươu Đốm Rừng Rậm",
+          "text": "Cứ đến mỗi khúc cua ngoằn ngoèo, cậu chạm tay thật lẹ để bóng đổi hướng kẻo rơi nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Khúc quanh đây rồi, đổi hướng liền tay!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Đường zíc zắc",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Dẫn bóng vượt qua bốn mươi khúc quanh zíc zắc nhé!",
+      "game": "zigzag-path",
+      "goal": 40
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Hươu Đốm Rừng Rậm nhảy chân sáo: phản xạ của {name} thật đáng nể, bóng lăn mượt mà ghê!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Đường cua zíc zắc thử thách lòng can đảm, {name} ghé trảng cỏ rừng thông so tài tiếp nha."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "id": "side-firefly-sync",
+  "region": "khu-rung-bi-mat",
+  "chapter": 1,
+  "title": "Hòa nhịp đom đóm sáng cùng Họa Mi Rừng Xanh",
+  "status": "active",
+  "category": "side",
+  "summary": "Đêm xuống, ngàn chú đom đóm lập lòe theo nhịp điệu: chạm đèn lồng bắt đúng khoảnh khắc đom đóm bừng sáng.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người thắp sáng đêm rừng",
+    "where": "Vòm lá xanh rì rào tiếng hót",
+    "goal": "Chạm đèn nháy đồng nhịp hai mươi lần cùng đom đóm nhé!",
+    "play": "Đàn đom đóm nháy sáng cùng một nhịp, vòng sáng thu nhỏ báo lúc sắp nháy.",
+    "learn": "Cảm nhận nhịp điệu thị giác và phản xạ đúng lúc",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Đêm nào đom đóm cũng mở hội hoa đăng, {name} hãy đến vòm lá xanh hòa nhịp cùng rừng nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "hoa-mi-rung",
+      "lines": [
+        {
+          "speaker": "Họa Mi Rừng Xanh",
+          "text": "Vòm lá lung linh ánh sáng đom đóm đêm kìa {name}, trông như ngàn vì sao lấp lánh!"
+        },
+        {
+          "speaker": "Họa Mi Rừng Xanh",
+          "text": "Cậu nhìn vòng sáng thu nhỏ rồi chạm cho đèn lồng nháy cùng nhịp với bầy đom đóm nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Nháy sáng lung linh, đom đóm bay theo nào!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Đom đóm nháy cùng nhịp",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Chạm đèn nháy đồng nhịp hai mươi lần cùng đom đóm nhé!",
+      "game": "firefly-sync",
+      "goal": 20
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Họa Mi Rừng Xanh xòe cánh reo vui: {name} bắt nhịp chuẩn xác, đàn đom đóm vây quanh sáng rực!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Đêm nào đom đóm cũng mở hội hoa đăng, {name} hãy đến vòm lá xanh hòa nhịp cùng rừng nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

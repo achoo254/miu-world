@@ -205,6 +205,316 @@
           "learn": "Sắp xếp người giúp và chọn chỗ quan trọng"
         }
       ]
+    },
+    {
+      "id": "bac-nong-dan-thanh",
+      "name": "Bác Nông Dân Thành",
+      "look": "person-b",
+      "tint": "#887848",
+      "where": "Bờ ruộng khu trồng trọt",
+      "place": "Khu trồng trọt",
+      "company": [
+        {
+          "routine": "waterer",
+          "name": "Cô nông dân tưới rau",
+          "model": "person-a"
+        }
+      ],
+      "games": [
+        {
+          "game": "rice-plant",
+          "title": "Cấy lúa thẳng hàng cùng Bác Nông Dân Thành",
+          "summary": "Bác Nông Dân Thành đón bé ra ruộng bùn, cùng cấy những cây mạ non xanh tươi thẳng lối.",
+          "lines": [
+            "Bác chào {name}, thửa ruộng đã bừa phẳng phiu đang đợi tay bé cấy mạ đấy.",
+            "Cháu bước lùi thật đều và cắm từng dảnh mạ non thẳng tắp theo đường dây nhé."
+          ],
+          "choice": "Cháu xuống ruộng cấy mạ ngay!",
+          "prompt": "Cấy thẳng hàng được {goal} khóm mạ xanh tươi nhé!",
+          "reward": "Bác Nông Dân Thành khen {name} cấy lúa khéo tay chẳng kém gì người lớn!",
+          "next": "Khi nào lúa trổ bông vàng ruộm, cháu nhớ ghé thăm bờ ruộng khu trồng trọt nhé.",
+          "who": "{name}, bạn nhỏ cấy mạ chăm chỉ",
+          "learn": "Căn khoảng cách đều đặn và bước lùi khéo léo"
+        },
+        {
+          "game": "rice-pound",
+          "title": "Giã gạo chày đôi với Bác Nông Dân Thành",
+          "summary": "Bên cối đá rộn ràng, Bác Nông Dân Thành cùng bé nhịp nhàng giã từng mẻ thóc trắng ngần.",
+          "lines": [
+            "Lại đây nào {name}, cối thóc đầy ắp đang chờ hai bác cháu mình giã chung đấy.",
+            "Bác giã một nhịp thì cháu đón nhịp tiếp theo, chớ để hai chiếc chày va vào nhau."
+          ],
+          "choice": "Cháu cầm chắc chày gỗ rồi!",
+          "prompt": "Nhịp nhàng giã xong {goal} cối thóc trắng tinh nhé!",
+          "reward": "Bác Nông Dân Thành vỗ vai {name}, tấm tắc khen nhịp chày đôi đều tăm tắp!",
+          "next": "Gạo mới thơm phức rồi, lúc nào muốn nghe tiếng chày giã thì ghé bác chơi.",
+          "who": "{name}, bé giã gạo nhịp nhàng",
+          "learn": "Lắng nghe nhịp điệu và phối hợp ăn ý"
+        },
+        {
+          "game": "rice-winnow",
+          "title": "Sảy thóc hạt mẩy cùng Bác Nông Dân Thành",
+          "summary": "Gió đồng thổi mát rượi, Bác Nông Dân Thành hướng dẫn bé hất nia sảy sạch vỏ trấu.",
+          "lines": [
+            "{name} ơi, mẻ thóc vừa giã xong còn lẫn nhiều vỏ trấu bay lơ lửng quá.",
+            "Cháu nâng chiếc nia hất nhẹ lên cao đón gió để vỏ bay đi còn hạt mẩy rơi lại nia."
+          ],
+          "choice": "Cháu nâng nia thóc lên ngay!",
+          "prompt": "Sảy sạch trấu cho {goal} nia thóc vàng óng nhé!",
+          "reward": "Bác Nông Dân Thành ngắm nia thóc mẩy, khen {name} sảy thóc vô cùng điệu nghệ!",
+          "next": "Thóc đã sạch bóng rồi, hẹn gặp lại cháu ở bờ ruộng khu trồng trọt thân thương.",
+          "who": "{name}, tay sảy thóc thoăn thoắt",
+          "learn": "Căn lực nâng tay và tận dụng sức gió tự nhiên"
+        }
+      ]
+    },
+    {
+      "id": "chu-dao-kenh-nuoc",
+      "name": "Chú Đào Kênh Dẫn Nước",
+      "look": "person-h",
+      "tint": "#3888b8",
+      "where": "Dưới chân cối xay gió",
+      "place": "Cối xay gió",
+      "company": [
+        {
+          "routine": "porter",
+          "name": "Chú vác cuốc làm cỏ",
+          "model": "person-e"
+        }
+      ],
+      "games": [
+        {
+          "game": "dig-channel",
+          "title": "Đào mương dẫn nước cùng Chú Đào Kênh",
+          "summary": "Mương đất khô cằn dưới chân cối xay gió, bé vạch đường dẫn dòng nước mát về ruộng sâu.",
+          "lines": [
+            "Chào {name}, những luống rau đang khát khô vì chưa có dòng nước mát chảy tới kìa.",
+            "Cháu hãy gạt từng vệt đất thông đường mương, tránh tảng đá to để dòng suối chảy qua."
+          ],
+          "choice": "Cháu vạch đường mương ngay!",
+          "prompt": "Đào xong {goal} mương dẫn dòng nước mát nhé!",
+          "reward": "Chú Đào Kênh Dẫn Nước reo vui khi thấy {name} khơi thông dòng chảy tài tình!",
+          "next": "Dưới chân cối xay gió luôn cần thợ giỏi, rảnh rỗi cháu lại ghé giúp chú đào kênh.",
+          "who": "{name}, thợ khơi mương thông minh",
+          "learn": "Quan sát địa hình và tìm lối đi thích hợp"
+        },
+        {
+          "game": "paddy-water",
+          "title": "Điều tiết nước ruộng bậc thang với Chú Đào Kênh",
+          "summary": "Ruộng bậc thang uốn lượn đón nước, bé canh mở cống cho từng bậc đủ nước xanh tươi.",
+          "lines": [
+            "Nhìn những bậc ruộng kìa {name}, nước suối chảy về mà cống chưa mở đều tay.",
+            "Cháu chạm mở nắp cống cho nước ngập vừa mí bờ lúa non rồi nhanh tay đóng nắp lại."
+          ],
+          "choice": "Cháu canh mực nước cho!",
+          "prompt": "Điều tiết đủ nước cho {goal} thửa ruộng bậc thang nhé!",
+          "reward": "Chú Đào Kênh Dẫn Nước khen {name} giữ mực nước cho cánh đồng chuẩn xác phi thường!",
+          "next": "Ruộng lúa no nước xanh rờn, hôm nào nước về chú lại đợi cháu dưới cối xay gió.",
+          "who": "{name}, người giữ nước ruộng bậc thang",
+          "learn": "Canh mức vừa đủ và đóng mở kịp thời"
+        },
+        {
+          "game": "pull-pin",
+          "title": "Rút chốt cứu thóc cùng Chú Đào Kênh",
+          "summary": "Thóc vàng kẹt trên máng cao, bé suy nghĩ rút từng thanh chốt để hạt rơi an toàn vào bồ.",
+          "lines": [
+            "{name} ơi, đống thóc vàng óng đang mắc kẹt sau những chiếc chốt gỗ trên máng rồi.",
+            "Cháu hãy tính toán rút then nào trước để thóc rơi thẳng vào bồ chứ đừng trôi bùn."
+          ],
+          "choice": "Cháu rút chiếc chốt gỗ ngay!",
+          "prompt": "Rút chốt khéo léo cứu được {goal} bồ thóc đầy nhé!",
+          "reward": "Chú Đào Kênh Dẫn Nước vỗ tay giòn giã vì {name} gỡ chốt thông minh không sót hạt thóc!",
+          "next": "Máng dẫn thóc đã thông thoáng, lần sau ghé cối xay gió chơi tiếp với chú nhé.",
+          "who": "{name}, bạn nhỏ rút chốt tinh tường",
+          "learn": "Tư duy thứ tự trước sau và ngăn ngừa nguy hiểm"
+        }
+      ]
+    },
+    {
+      "id": "be-chan-ga-con",
+      "name": "Bé Chăn Gà Con",
+      "look": "person-f",
+      "tint": "#e8b838",
+      "where": "Mép rào chuồng gà nông trại",
+      "place": "Chuồng gà",
+      "company": [
+        {
+          "routine": "chick",
+          "name": "Gà con lon ton",
+          "model": "animal-chick"
+        }
+      ],
+      "games": [
+        {
+          "game": "circle-chick",
+          "title": "Khoanh rào quây gà con cùng Bé Chăn Gà",
+          "summary": "Đàn gà lông vàng nhảy nhót khắp lối, bé đặt rào cản ngăn chúng không chạy lạc.",
+          "lines": [
+            "Cứu tớ với {name}, mấy chú gà con tinh nghịch đang đòi chạy tót ra ngoài bãi cỏ!",
+            "Cậu cắm từng thanh rào vây quanh mỗi khi gà bước để quây tròn chúng lại an toàn nhé."
+          ],
+          "choice": "Tớ cắm cọc rào giữ gà lại!",
+          "prompt": "Khoanh rào quây giữ an toàn {goal} chú gà con nhé!",
+          "reward": "Bé Chăn Gà Con ôm chú gà nhỏ vào lòng, cảm ơn {name} đã cắm rào thật nhanh tay!",
+          "next": "Gà con ngoan ngoãn rồi, lúc nào rảnh cậu ghé mép rào chuồng gà nông trại chơi nhé.",
+          "who": "{name}, người bảo vệ đàn gà con",
+          "learn": "Đoán hướng di chuyển và bao vây khéo léo"
+        },
+        {
+          "game": "cloud-blaster",
+          "title": "Thổi mây đuổi bão với Bé Chăn Gà Con",
+          "summary": "Mây xám kéo đến che khuất chuồng gà, bé phun nước làm tan biến mây mù u ám.",
+          "lines": [
+            "Kìa {name}, đám mây khô xám xịt đang bay lơ lửng muốn làm chuồng gà sũng nước mưa!",
+            "Cậu điều khiển vòi phun nước tưới trúng đám mây để xua tan bầu trời u ám đi nhé."
+          ],
+          "choice": "Tớ cầm vòi xua tan mây!",
+          "prompt": "Tưới nước xua tan được {goal} đám mây xám xịt nhé!",
+          "reward": "Bé Chăn Gà Con nhảy chân sáo: trời lại hửng nắng vàng nhờ có {name} dũng cảm rồi!",
+          "next": "Trời quang mây tạnh rồi, hôm nào có giông bão cậu lại tới chuồng gà giúp tớ nha.",
+          "who": "{name}, dũng sĩ thổi bay mây đen",
+          "learn": "Lướt ngón tay đón đầu và ngắm chuẩn mục tiêu"
+        },
+        {
+          "game": "barrel-climb",
+          "title": "Trèo thùng gỗ tránh ngập cùng Bé Chăn Gà",
+          "summary": "Nước dâng quanh sân gạch chuồng gà, bé leo lên những thùng gỗ cao để giữ ấm chân.",
+          "lines": [
+            "{name} ơi, nước mưa tràn vào sân rồi, mình phải trèo lên những chiếc thùng gỗ thôi!",
+            "Cậu thoan thoắt leo từng nấc thang và nhớ nhảy tránh những bao đồ lăn xuống nhé."
+          ],
+          "choice": "Tớ trèo thùng gỗ ngay đây!",
+          "prompt": "Trèo thùng gỗ vượt qua {goal} chướng ngại vật nhé!",
+          "reward": "Bé Chăn Gà Con thở phào nhẹ nhõm, khen {name} leo trèo nhanh nhẹn như chú sóc nhỏ!",
+          "next": "Nước rút khỏi sân chuồng gà rồi, cậu nhớ ghé thăm đàn gà lông vàng đáng yêu nhé.",
+          "who": "{name}, vận động viên leo thùng tài ba",
+          "learn": "Phản xạ nhảy né vật cản và leo thang nhịp nhàng"
+        }
+      ]
+    },
+    {
+      "id": "chu-chuot-tui-nhay",
+      "name": "Chú Chuột Túi Nhảy",
+      "look": "animal-pig",
+      "tint": "#b87858",
+      "where": "Sân cỏ khu chăn nuôi",
+      "place": "Khu chăn nuôi",
+      "company": [
+        {
+          "routine": "cow",
+          "name": "Bò gặm cỏ hiền lành",
+          "model": "animal-cow"
+        }
+      ],
+      "games": [
+        {
+          "game": "kangaroo-hop",
+          "title": "Chuột túi nhảy xa cùng Chú Chuột Túi",
+          "summary": "Trên trục số cỏ xanh, bé tính bước nhảy cho chú chuột túi đáp trúng củ cà rốt ngon lành.",
+          "lines": [
+            "Xin chào {name}, tớ có đôi chân lò xo thích bật nhảy qua từng vạch số đấy.",
+            "Cậu nhìn khoảng cách ghi trên biển rồi đặt miếng cà rốt đúng điểm tớ sẽ rơi xuống nha."
+          ],
+          "choice": "Để tớ chọn chỗ đáp cho cậu!",
+          "prompt": "Đón đúng {goal} bước nhảy của chú chuột túi nhé!",
+          "reward": "Chú Chuột Túi Nhảy bật tưng tưng khoái chí, tấm tắc khen {name} tính nhẩm siêu đẳng!",
+          "next": "Cỏ non trên sân khu chăn nuôi còn tốt lắm, mai cậu lại ra nhảy thi cùng tớ nha.",
+          "who": "{name}, bạn chỉ đường cho chuột túi",
+          "learn": "Cộng dồn khoảng cách đều trên trục số"
+        },
+        {
+          "game": "sack-race",
+          "title": "Nhảy bao bố nông trang với Chú Chuột Túi",
+          "summary": "Bao tải gai rộn rã trên đường đua sân cỏ, bé nhún nhảy thật nhịp để về đích đầu tiên.",
+          "lines": [
+            "{name} ơi, hội thi nhảy bao bố của khu chăn nuôi chuẩn bị xuất phát rồi đấy!",
+            "Cậu chui vào bao gai, chạm màn hình khi chân chạm đất để lấy đà bật xa về đích nhé."
+          ],
+          "choice": "Tớ nhảy bao bố siêu nhanh!",
+          "prompt": "Nhảy bao bố về đích trong {goal} lượt đua hào hứng nhé!",
+          "reward": "Chú Chuột Túi Nhảy trao vòng nguyệt quế rực rỡ, reo vang chúc mừng {name} vô địch!",
+          "next": "Đường đua nông trang vui ơi là vui, có dịp cậu lại ghé sân cỏ nhảy bao bố tiếp.",
+          "who": "{name}, tay đua nhảy bao bố cừ khôi",
+          "learn": "Bắt đúng nhịp tiếp đất để tạo lực đẩy bật xa"
+        },
+        {
+          "game": "paper-io",
+          "title": "Khoanh đất mở rộng chuồng cùng Chú Chuột Túi",
+          "summary": "Bé lái xe cày kéo những đường viền rộng lớn trên bãi cỏ để mở rộng chuồng cho bầy thú.",
+          "lines": [
+            "Khu chuồng nuôi hơi chật rồi {name}, chúng mình cùng khoanh thêm đất cỏ mới nào!",
+            "Cậu lái máy cày chạy một vòng khép kín về nhà, cẩn thận đừng để đàn trâu cắt đứt vệt."
+          ],
+          "choice": "Tớ mở rộng bãi cỏ ngay!",
+          "prompt": "Khoanh thêm được {goal} phần trăm cánh đồng cỏ xanh nhé!",
+          "reward": "Chú Chuột Túi Nhảy reo vang, vui mừng vì {name} đã mở được bãi cỏ mênh mông tuyệt đẹp!",
+          "next": "Bầy thú tha hồ tung tăng gặm cỏ, rảnh rỗi cậu cứ qua khu chăn nuôi dạo chơi nhé.",
+          "who": "{name}, người kiến tạo bãi cỏ xanh",
+          "learn": "Bao quát không gian và bảo vệ vệt đường di chuyển"
+        }
+      ]
+    },
+    {
+      "id": "ong-lao-phao-dat",
+      "name": "Ông Lão Pháo Đất",
+      "look": "person-g",
+      "tint": "#785838",
+      "where": "Sân gạch nông trại",
+      "place": "Sân nông trại",
+      "company": [
+        {
+          "routine": "pupil",
+          "name": "Bé nặn đất sét",
+          "model": "person-c"
+        }
+      ],
+      "games": [
+        {
+          "game": "phao-dat",
+          "title": "Đánh pháo đất nổ giòn cùng Ông Lão Pháo Đất",
+          "summary": "Cục đất sét dẻo quánh trên tay ông lão, bé nặn lòng pháo thật khéo rồi úp mạnh xuống sân.",
+          "lines": [
+            "Chào {name}, trò chơi pháo đất dân gian này xưa nay vui và rộn ràng lắm cháu ơi.",
+            "Cháu vuốt mỏng lòng quả pháo đất rồi quăng mạnh xuống sân gạch cho tiếng nổ vang lừng."
+          ],
+          "choice": "Cháu nặn quả pháo đất thật đẹp!",
+          "prompt": "Làm nổ giòn giã {goal} quả pháo đất đất sét nhé!",
+          "reward": "Ông Lão Pháo Đất cười hiền hậu, vỗ đùi khen {name} đánh pháo đất vừa to vừa giòn!",
+          "next": "Đất sét mùa này dẻo lắm, chiều nào ông cũng ngồi ở sân gạch nông trại đợi cháu.",
+          "who": "{name}, nghệ nhân pháo đất nhí",
+          "learn": "Căn độ dày mỏng và dùng lực dứt khoát"
+        },
+        {
+          "game": "danh-khang",
+          "title": "Đánh khang ngoài đồng với Ông Lão Pháo Đất",
+          "summary": "Hai thanh tre ngắn dài giữa sân rộng, bé đón nhịp hất thanh khang bay vút thật xa.",
+          "lines": [
+            "Ra khoảng sân trống này nào {name}, ông cháu mình cùng chơi trò đánh khang truyền thống.",
+            "Cháu hất que ngắn lên không trung rồi vung gậy vụt thật chuẩn xác cho nó bay xa nhé."
+          ],
+          "choice": "Cháu vụt thanh khang bay xa tít!",
+          "prompt": "Đánh thanh khang bay xa đạt {goal} mét ngoài đồng nhé!",
+          "reward": "Ông Lão Pháo Đất vuốt chòm râu bạc, khen {name} tinh mắt đánh trúng thanh khang tít tắp!",
+          "next": "Trò chơi dân gian bổ ích lắm, khi nào rảnh rỗi cháu lại tới sân nông trại chơi khang.",
+          "who": "{name}, tay chơi đánh khang thiện nghệ",
+          "learn": "Ước lượng thời điểm rơi và vung tay chính xác"
+        },
+        {
+          "game": "shikaku-fields",
+          "title": "Chia ô ruộng chữ nhật cùng Ông Lão Pháo Đất",
+          "summary": "Mặt sân kẻ ô như bàn cờ, bé kéo các hình chữ nhật bao quanh từng con số mẫu mực.",
+          "lines": [
+            "{name} nhìn mảnh sân kẻ ô này xem, từng khoảnh đất đang cần chia thành ô chữ nhật.",
+            "Mỗi khoảnh cháu khoanh chỉ chứa một con số và có diện tích bằng đúng số đó thôi nha."
+          ],
+          "choice": "Cháu khoanh từng ô ruộng vuông vắn!",
+          "prompt": "Chia ô vuông vắn cho {goal} mảnh ruộng mẫu mực nhé!",
+          "reward": "Ông Lão Pháo Đất tấm tắc ngợi khen {name} chia ruộng ngay ngắn và hợp lý vô cùng!",
+          "next": "Những ô ruộng đã chia thật thẳng thớm, ông cháu mình lại gặp nhau ở sân gạch nhé.",
+          "who": "{name}, nhà quy hoạch ruộng đất tài hoa",
+          "learn": "Phân chia diện tích và suy luận hình học"
+        }
+      ]
     }
   ],
   "residents": [

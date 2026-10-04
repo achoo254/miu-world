@@ -1,0 +1,80 @@
+{
+  "id": "side-rain-barrel",
+  "region": "lang-ven-song",
+  "chapter": 1,
+  "title": "Hứng mưa vào chum cùng Cô Đèn Lồng Sen",
+  "status": "active",
+  "category": "side",
+  "summary": "Nghiêng tàu lá chuối xanh hứng dòng nước mưa trong vắt đổ đầy vào những chiếc chum sành.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, bạn nhỏ chắt chiu từng giọt mưa lành",
+    "where": "Dưới bóng đa đầu làng",
+    "goal": "Hứng dòng nước mát làm đầy tràn sáu chiếc chum sành nhé!",
+    "play": "Mưa rơi trên tàu lá chuối. {name} kéo sang trái, sang phải để nghiêng lá.",
+    "learn": "Khéo léo điều chỉnh độ nghiêng tàu lá",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Bóng cây đa đầu làng luôn mát rượi đón cháu đến hứng nước mưa."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "co-den-long-sen",
+      "lines": [
+        {
+          "speaker": "Cô Đèn Lồng Sen",
+          "text": "Mưa rào mùa hạ đang đổ nước ngọt lành xuống vườn đấy {name}!"
+        },
+        {
+          "speaker": "Cô Đèn Lồng Sen",
+          "text": "Cháu nghiêng tàu lá chuối dẫn dòng nước chảy vào miệng chum nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu nghiêng tàu lá hứng nước!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Hứng mưa vào chum",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Hứng dòng nước mát làm đầy tràn sáu chiếc chum sành nhé!",
+      "game": "rain-barrel",
+      "goal": 6
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Những chum nước mưa đã đầy ắp nước ngọt mát lành rồi {name} ơi!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Bóng cây đa đầu làng luôn mát rượi đón cháu đến hứng nước mưa."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

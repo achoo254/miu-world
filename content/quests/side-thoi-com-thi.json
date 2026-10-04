@@ -1,0 +1,80 @@
+{
+  "id": "side-thoi-com-thi",
+  "region": "lang-ven-song",
+  "chapter": 1,
+  "title": "Thổi cơm thi hội làng cùng Bác Thổi Cơm Thi",
+  "status": "active",
+  "category": "side",
+  "summary": "Chăm thêm que củi giữ ngọn lửa bập bùng trong vùng an toàn để nồi cơm dẻo thơm chín tới.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, đầu bếp nhí thổi cơm thi hội làng",
+    "where": "Góc sân bóng cạnh đầm sen",
+    "goal": "Canh chừng ngọn lửa nấu chín sáu nồi cơm thơm lừng nhé!",
+    "play": "Lửa tự nhỏ dần, gió thổi còn làm lửa yếu đi. {name} chạm để thêm củi.",
+    "learn": "Giữ ngọn lửa cháy đều và kiên nhẫn",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Bếp lửa hội làng bên đầm sen luôn đỏ than đợi cháu trổ tài."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "bac-thoi-com-thi",
+      "lines": [
+        {
+          "speaker": "Bác Thổi Cơm Thi",
+          "text": "Hội làng đang rộn rã thi nấu cơm niêu đất đấy {name} ơi!"
+        },
+        {
+          "speaker": "Bác Thổi Cơm Thi",
+          "text": "Cháu chụm củi vừa đủ giữ ngọn lửa liu riu cho cơm chín nục nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu canh nồi cơm thơm dẻo!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Thổi cơm thi",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Canh chừng ngọn lửa nấu chín sáu nồi cơm thơm lừng nhé!",
+      "game": "thoi-com-thi",
+      "goal": 6
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Nồi cơm trắng dẻo thơm phức mùi gạo mới, {name} nấu khéo quá!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Bếp lửa hội làng bên đầm sen luôn đỏ than đợi cháu trổ tài."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

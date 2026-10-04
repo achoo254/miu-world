@@ -1,0 +1,80 @@
+{
+  "id": "side-volleyball-beach",
+  "region": "dao-bi-an",
+  "chapter": 1,
+  "title": "Đánh bóng chuyền trên cát cùng Hải Cẩu Bóng Chuyền",
+  "status": "active",
+  "category": "side",
+  "summary": "Bóng bổng bay qua lưới, bé chạy nhanh đón điểm rơi rồi nhảy đập bóng sang sân đối thủ.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, vận động viên bóng chuyền bãi biển",
+    "where": "Bãi cát vàng ven biển",
+    "goal": "Ghi được năm điểm trong trận bóng chuyền bãi cát nhé!",
+    "play": "Vòng trên cát cho biết bóng sắp rơi ở đâu. {name} kéo để chạy tới đó, tự đỡ bóng qua lưới.",
+    "learn": "Đoán vị trí bóng rơi và căn lực đập",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Nắng vàng trên biển còn rực rỡ, Hải Cẩu chờ {name} quay lại giao lưu bóng chuyền."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "hai-cau-bong-chuyen",
+      "lines": [
+        {
+          "speaker": "Hải Cẩu Bóng Chuyền",
+          "text": "Sóng vỗ rì rào mát rượi quá {name} ơi, chạy ra sân cát đánh bóng với tớ nào!"
+        },
+        {
+          "speaker": "Hải Cẩu Bóng Chuyền",
+          "text": "Nhìn vòng tròn đón bóng rồi chạm đúng lúc bóng rơi trên đầu để đập qua lưới."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ đỡ bóng dũng mãnh lắm!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Bóng chuyền bãi biển",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Ghi được năm điểm trong trận bóng chuyền bãi cát nhé!",
+      "game": "volleyball-beach",
+      "goal": 5
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Hải Cẩu đập hai vây bồm bộp: những pha đập bóng của {name} hiểm hóc quá chừng!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Nắng vàng trên biển còn rực rỡ, Hải Cẩu chờ {name} quay lại giao lưu bóng chuyền."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

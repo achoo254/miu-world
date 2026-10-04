@@ -1,0 +1,80 @@
+{
+  "id": "side-head-count",
+  "region": "xom-mai-am",
+  "chapter": 1,
+  "title": "Đếm đầu đoán con cùng Bà Năm Kể Chuyện",
+  "status": "active",
+  "category": "side",
+  "summary": "Quan sát các bạn chạy nhảy ra vào nhà rồi chọn đúng số bạn còn ở lại khi cánh cửa khép.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, bạn nhỏ đếm số tinh tường chăm chú",
+    "where": "Trước ngõ nhà Mẩy",
+    "goal": "Đoán chuẩn số bạn trong nhà sau sáu lần cửa khép lại nhé!",
+    "play": "Các bạn chạy vào nhà, có bạn chạy ra, có bạn trèo qua cửa sổ.",
+    "learn": "Theo dõi dòng chuyển động và cộng trừ nhẩm",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Căn nhà nhỏ ngõ Mẩy rộn rã tiếng cười luôn mở cửa đón cháu."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "ba-nam-ke-chuyen",
+      "lines": [
+        {
+          "speaker": "Bà Năm Kể Chuyện",
+          "text": "Mấy bạn nhỏ đang chơi trốn tìm trong nhà kìa {name}!"
+        },
+        {
+          "speaker": "Bà Năm Kể Chuyện",
+          "text": "Cháu nhìn kỹ bạn nào vào bạn nào ra để đoán đúng số người bên trong nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu đếm đúng số bạn ngay!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Đếm bạn trong nhà",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Đoán chuẩn số bạn trong nhà sau sáu lần cửa khép lại nhé!",
+      "game": "head-count",
+      "goal": 6
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Mắt cháu tinh tường như chim sẻ, {name} đếm đâu chuẩn đấy!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Căn nhà nhỏ ngõ Mẩy rộn rã tiếng cười luôn mở cửa đón cháu."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "id": "side-shadow-shade",
+  "region": "khu-rung-bi-mat",
+  "chapter": 1,
+  "title": "Che bóng râm cho mèo cùng Hươu Đốm Rừng Rậm",
+  "status": "active",
+  "category": "side",
+  "summary": "Chú mèo con nằm phơi nắng trên thảm cỏ: xoay chuyển vầng mặt trời để bóng cây phủ mát giấc ngủ.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người bạn ân cần của muông thú",
+    "where": "Trảng cỏ giữa rừng thông",
+    "goal": "Che bóng mát cho mèo con đủ mười lần nhé!",
+    "play": "Mèo ngủ ngoài nắng nóng quá! {name} kéo ông mặt trời đi trên bầu trời.",
+    "learn": "Quan sát hướng nắng và điều chỉnh bóng đổ",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Trảng cỏ vẫn rợp bóng thông xanh, {name} cứ ghé chơi cùng Hươu Đốm Rừng Rậm lúc ban trưa nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "huou-bong-ram",
+      "lines": [
+        {
+          "speaker": "Hươu Đốm Rừng Rậm",
+          "text": "Trưa nắng gắt làm chú mèo con ngủ không yên giấc kìa {name} ơi."
+        },
+        {
+          "speaker": "Hươu Đốm Rừng Rậm",
+          "text": "Cậu kéo ông mặt trời di chuyển để bóng mát của cây thông che trọn chỗ mèo nằm nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Mát rượi rồi, mèo con ngủ ngoan nha!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Bóng râm cho mèo",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Che bóng mát cho mèo con đủ mười lần nhé!",
+      "game": "shadow-shade",
+      "goal": 10
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Hươu Đốm Rừng Rậm gật đầu êm ái: {name} chu đáo quá, chú mèo con ngủ say sưa rồi kìa!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Trảng cỏ vẫn rợp bóng thông xanh, {name} cứ ghé chơi cùng Hươu Đốm Rừng Rậm lúc ban trưa nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

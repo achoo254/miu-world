@@ -1,0 +1,80 @@
+{
+  "id": "side-reef-sweeper",
+  "region": "dao-bi-an",
+  "chapter": 1,
+  "title": "Dò đá ngầm san hô cùng Thuyền Trưởng Vẹt Biển",
+  "status": "active",
+  "category": "side",
+  "summary": "Vùng nước cạn đầy đá ngầm nhọn hoắt, bé dựa vào số gợi ý để cắm cờ cảnh báo an toàn.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, hoa tiêu dò đường biển tài ba",
+    "where": "Trước lều thuyền trưởng hải tặc",
+    "goal": "Dò sạch đá ngầm an toàn qua ba bãi san hô ven bờ nhé!",
+    "play": "Chạm ô cát để dò. Số trên ô cho biết có mấy hòn đá ngầm ở các ô sát bên.",
+    "learn": "Suy luận logic và đánh dấu mối nguy",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Thủy triều xuống để lộ bãi đá mới, thuyền trưởng chờ {name} ra rạn san hô rà soát."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "thuyen-truong-vet-bien",
+      "lines": [
+        {
+          "speaker": "Thuyền Trưởng Vẹt Biển",
+          "text": "Rạn san hô quanh lều có nhiều đá ngầm nguy hiểm lắm, {name} kiểm tra luồng nước giúp ta!"
+        },
+        {
+          "speaker": "Thuyền Trưởng Vẹt Biển",
+          "text": "Chạm ô cát để xem số lượng đá quanh đó, chỗ nào chắc chắn có đá thì cắm cờ."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu cắm cờ cẩn thận từng hòn đá!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Dò đá ngầm",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Dò sạch đá ngầm an toàn qua ba bãi san hô ven bờ nhé!",
+      "game": "reef-sweeper",
+      "goal": 3
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Thuyền Trưởng Vẹt Biển vỗ vai khen: nhờ {name} mà thuyền của ta cập bờ êm ru!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Thủy triều xuống để lộ bãi đá mới, thuyền trưởng chờ {name} ra rạn san hô rà soát."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

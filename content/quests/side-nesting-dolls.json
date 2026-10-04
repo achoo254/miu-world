@@ -1,0 +1,80 @@
+{
+  "id": "side-nesting-dolls",
+  "region": "nha-cua-be",
+  "chapter": 1,
+  "title": "Lồng búp bê từ nhỏ đến lớn cùng Chú Rô Bốt Đồng Hồ",
+  "status": "active",
+  "category": "side",
+  "summary": "Những cô búp bê gỗ nhiều kích cỡ, bé so sánh độ to nhỏ để lồng bạn bé vào trong bạn lớn hơn.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, chuyên gia so sánh kích thước đồ vật",
+    "where": "Bên cạnh giá sách góc học tập",
+    "goal": "Lồng hoàn chỉnh từ bé đến lớn ba bộ búp bê gỗ đáng yêu nhé!",
+    "play": "Các búp bê gần bằng nhau. {name} kéo một búp bê vào búp bê lớn hơn nó đúng một cỡ.",
+    "learn": "So sánh thứ tự kích cỡ từ bé đến lớn",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Góc học tập luôn rộn ràng kiến thức mới, Rô Bốt đón {name} ghé thăm mỗi ngày."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "chu-ro-bot-dong-ho",
+      "lines": [
+        {
+          "speaker": "Chú Rô Bốt Đồng Hồ",
+          "text": "Bộ búp bê gỗ nhiều lớp trên bàn xinh xắn lắm, {name} lồng chúng vào nhau giúp tớ!"
+        },
+        {
+          "speaker": "Chú Rô Bốt Đồng Hồ",
+          "text": "So cỡ từng bạn rồi kéo bạn nhỏ đặt gọn vào bụng bạn lớn hơn vừa vặn một bậc."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ so cỡ từng bạn thật chuẩn!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Búp bê lồng nhau",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Lồng hoàn chỉnh từ bé đến lớn ba bộ búp bê gỗ đáng yêu nhé!",
+      "game": "nesting-dolls",
+      "goal": 3
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Chú Rô Bốt gật đầu tích tắc: {name} lồng búp bê vừa in, thành một khối tròn trịa!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Góc học tập luôn rộn ràng kiến thức mới, Rô Bốt đón {name} ghé thăm mỗi ngày."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

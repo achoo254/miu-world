@@ -1,0 +1,80 @@
+{
+  "id": "side-paper-io",
+  "region": "nong-trai",
+  "chapter": 1,
+  "title": "Khoanh đất mở rộng chuồng cùng Chú Chuột Túi",
+  "status": "active",
+  "category": "side",
+  "summary": "Bé lái xe cày kéo những đường viền rộng lớn trên bãi cỏ để mở rộng chuồng cho bầy thú.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người kiến tạo bãi cỏ xanh",
+    "where": "Sân cỏ khu chăn nuôi",
+    "goal": "Khoanh thêm được năm mươi phần trăm cánh đồng cỏ xanh nhé!",
+    "play": "Giữ ngón tay để máy cày của {name} chạy theo. Ra khỏi ruộng nhà, máy cày để lại vệt.",
+    "learn": "Bao quát không gian và bảo vệ vệt đường di chuyển",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Bầy thú tha hồ tung tăng gặm cỏ, rảnh rỗi cậu cứ qua khu chăn nuôi dạo chơi nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "chu-chuot-tui-nhay",
+      "lines": [
+        {
+          "speaker": "Chú Chuột Túi Nhảy",
+          "text": "Khu chuồng nuôi hơi chật rồi {name}, chúng mình cùng khoanh thêm đất cỏ mới nào!"
+        },
+        {
+          "speaker": "Chú Chuột Túi Nhảy",
+          "text": "Cậu lái máy cày chạy một vòng khép kín về nhà, cẩn thận đừng để đàn trâu cắt đứt vệt."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ mở rộng bãi cỏ ngay!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Cày ruộng khoanh vùng",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Khoanh thêm được năm mươi phần trăm cánh đồng cỏ xanh nhé!",
+      "game": "paper-io",
+      "goal": 50
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Chú Chuột Túi Nhảy reo vang, vui mừng vì {name} đã mở được bãi cỏ mênh mông tuyệt đẹp!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Bầy thú tha hồ tung tăng gặm cỏ, rảnh rỗi cậu cứ qua khu chăn nuôi dạo chơi nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

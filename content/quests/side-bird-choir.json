@@ -1,0 +1,80 @@
+{
+  "id": "side-bird-choir",
+  "region": "khu-rung-bi-mat",
+  "chapter": 1,
+  "title": "Lắng nghe dàn đồng ca chim với Họa Mi Rừng Xanh",
+  "status": "active",
+  "category": "side",
+  "summary": "Dàn hợp xướng chim rừng ngân vang khúc ca sớm: lắng tai phát hiện chú chim hót lệch nhịp.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, nhạc trưởng của dàn chim rừng",
+    "where": "Vòm lá xanh rì rào tiếng hót",
+    "goal": "Tìm đúng mười hai bạn chim hót lệch giọng nhé!",
+    "play": "Năm chú chim hót cùng nhau theo nhịp. Có một chú hót chậm hơn hoặc lệch giọng.",
+    "learn": "Lắng nghe phân biệt cao độ và nhịp điệu",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Dàn hợp xướng tập hát mỗi sớm mai, {name} nhớ lại ghé vòm lá xanh nghe chim ca nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "hoa-mi-rung",
+      "lines": [
+        {
+          "speaker": "Họa Mi Rừng Xanh",
+          "text": "{name} ơi, cả bầy chim đang tập dượt tiết mục hợp xướng đón chào bình minh rừng xanh."
+        },
+        {
+          "speaker": "Họa Mi Rừng Xanh",
+          "text": "Cậu lắng nghe thật kỹ giai điệu và quan sát nốt nhạc để tìm ra bạn chim hót nhầm nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tai tớ lắng nghe từng nốt nhạc đây!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Dàn đồng ca chim",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Tìm đúng mười hai bạn chim hót lệch giọng nhé!",
+      "game": "bird-choir",
+      "goal": 12
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Họa Mi Rừng Xanh cất tiếng hót véo von: đôi tai {name} thính tuyệt vời, bài ca đã thật hoàn hảo!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Dàn hợp xướng tập hát mỗi sớm mai, {name} nhớ lại ghé vòm lá xanh nghe chim ca nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "id": "side-seesaw-launch",
+  "region": "trung-tam",
+  "chapter": 1,
+  "title": "Bập bênh phóng bóng cùng Bé Xiếc Vui Vẻ",
+  "status": "active",
+  "category": "side",
+  "summary": "Chiếc bập bênh đòn bẩy kỳ diệu: thả bao cát từ trên cao giáng xuống phóng quả bóng bay vào rổ.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, nhà thiện xạ bập bênh",
+    "where": "Trước sân khấu sự kiện",
+    "goal": "Phóng bóng trúng rổ ghi được sáu điểm nhé!",
+    "play": "{name} chạm một độ cao trên cột: bao cát rơi xuống đầu bập bênh, quả bóng bay đi.",
+    "learn": "Hiểu nguyên lý đòn bẩy và thế năng rơi",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Vẫn còn nhiều bao cát và bóng màu, {name} lại sân khấu sự kiện chơi bập bênh tiếp nha."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "be-xiec-vui-ve",
+      "lines": [
+        {
+          "speaker": "Bé Xiếc Vui Vẻ",
+          "text": "{name} nhìn chiếc bập bênh phóng bóng màu sắc của gánh xiếc chúng mình kìa!"
+        },
+        {
+          "speaker": "Bé Xiếc Vui Vẻ",
+          "text": "Cậu chạm chọn độ cao thả bao cát rơi xuống, canh lực bật cho bóng bay trúng vào miệng rổ nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Bao cát rơi xuống, bóng bay vào rổ!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Bập bênh bắn bóng",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Phóng bóng trúng rổ ghi được sáu điểm nhé!",
+      "game": "seesaw-launch",
+      "goal": 6
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Bé Xiếc Vui Vẻ vỗ tay reo hò: bóng của {name} bay vút vào rổ rinh trọn tràng pháo tay!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Vẫn còn nhiều bao cát và bóng màu, {name} lại sân khấu sự kiện chơi bập bênh tiếp nha."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

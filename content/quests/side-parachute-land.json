@@ -1,0 +1,80 @@
+{
+  "id": "side-parachute-land",
+  "region": "dao-bi-an",
+  "chapter": 1,
+  "title": "Nhảy dù tiếp đất đảo hoang cùng Khỉ Nhảy Dù Đảo Cổ",
+  "status": "active",
+  "category": "side",
+  "summary": "Dù bung lượn giữa trời lộng gió, bé lượn cánh dù né gió xoáy để đáp đúng tâm hồng tâm.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, phi công nhảy dù đảo hoang",
+    "where": "Dưới bóng cây dừa nghiêng",
+    "goal": "Điều khiển dù tiếp đất chuẩn xác mười lần trên bãi cát nhé!",
+    "play": "Gió đẩy dù của {name} sang một bên, xem mũi tên gió nhé.",
+    "learn": "Đoán hướng gió và điều chỉnh tay lái",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Gió đại dương vẫn nâng cánh dù lượn, Khỉ con chờ {name} bay thêm vòng nữa."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "khi-nhay-du-dao",
+      "lines": [
+        {
+          "speaker": "Khỉ Nhảy Dù Đảo Cổ",
+          "text": "Từ ngọn cây dừa bay vút lên bầu trời thích lắm, {name} khoác dù bay cùng tớ nào!"
+        },
+        {
+          "speaker": "Khỉ Nhảy Dù Đảo Cổ",
+          "text": "Xem chiều gió thổi rồi kéo dù sang bên đó để đáp ngay ngắn vào giữa vòng tròn nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ bay lượn trên trời đây!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Nhảy dù xuống đảo",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Điều khiển dù tiếp đất chuẩn xác mười lần trên bãi cát nhé!",
+      "game": "parachute-land",
+      "goal": 10
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Khỉ con vỗ tay nhảy tưng tưng: {name} lượn cánh dù êm ái trúng phóc hồng tâm luôn!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Gió đại dương vẫn nâng cánh dù lượn, Khỉ con chờ {name} bay thêm vòng nữa."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "id": "side-dong-ho-print",
+  "region": "cho-phien",
+  "chapter": 1,
+  "title": "In tranh Đông Hồ cùng Cô Nặn Tò He",
+  "status": "active",
+  "category": "side",
+  "summary": "Dập bản khắc gỗ lên trang giấy điệp óng ánh đúng thời điểm để bức tranh dân gian hiện rõ.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, thợ in tranh dân gian khéo léo",
+    "where": "Đầu dãy sạp hoa rực rỡ",
+    "goal": "In chuẩn xác từng lớp màu hoàn thành ba mươi bức tranh Đông Hồ nhé!",
+    "play": "Giấy dó chạy dưới ba khuôn in. Khuôn đang sáng là màu cần in tiếp theo.",
+    "learn": "Canh đúng thời điểm giấy lướt qua khuôn in",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Xấp giấy điệp trắng ngần đầu dãy sạp hoa vẫn chờ cháu đến in tranh."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "co-nan-to-he",
+      "lines": [
+        {
+          "speaker": "Cô Nặn Tò He",
+          "text": "{name} có muốn tự tay in bức tranh đàn lợn âm dương rực rỡ không?"
+        },
+        {
+          "speaker": "Cô Nặn Tò He",
+          "text": "Cháu canh giấy dó chạy tới dưới khuôn sáng màu thì chạm dập in nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu dập khuôn in tranh Đông Hồ!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "In tranh Đông Hồ",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "In chuẩn xác từng lớp màu hoàn thành ba mươi bức tranh Đông Hồ nhé!",
+      "game": "dong-ho-print",
+      "goal": 30
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Màu sắc tranh Đông Hồ tươi rói óng ánh, {name} in tranh đẹp tuyệt vời!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Xấp giấy điệp trắng ngần đầu dãy sạp hoa vẫn chờ cháu đến in tranh."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

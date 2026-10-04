@@ -1,0 +1,80 @@
+{
+  "id": "side-one-stroke-house",
+  "region": "thu-vien",
+  "chapter": 1,
+  "title": "Vẽ ngôi nhà một nét với Chú Thợ Điện Nhí",
+  "status": "active",
+  "category": "side",
+  "summary": "Sơ đồ ngôi nhà hiện trên giấy kẻ, bé lướt một nét liền mạch đi qua mọi cạnh không nhấc tay.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, họa sĩ một nét diệu kỳ",
+    "where": "Quảng trường đài phun trước thư viện",
+    "goal": "Vẽ hoàn thành sáu ngôi nhà chỉ bằng một nét liền nhé!",
+    "play": "{name} đặt ngón tay lên một chấm rồi kéo theo các đường, từ chấm này sang chấm kia.",
+    "learn": "Quy luật đồ thị Euler và lập lộ trình không lặp",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Còn nhiều hình vẽ một nét hóc búa lắm, hẹn gặp lại cậu ở quảng trường đài phun."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "chu-tho-dien-nhi",
+      "lines": [
+        {
+          "speaker": "Chú Thợ Điện Nhí",
+          "text": "{name} ơi, tớ có bản thiết kế ngôi nhà bằng một đường dây điện duy nhất đấy!"
+        },
+        {
+          "speaker": "Chú Thợ Điện Nhí",
+          "text": "Cậu kéo ngón tay đi qua tất cả các cạnh của ngôi nhà mà không được nhấc tay hay đi lặp lại."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ vẽ một nét liền xong ngay!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Vẽ nhà một nét",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Vẽ hoàn thành sáu ngôi nhà chỉ bằng một nét liền nhé!",
+      "game": "one-stroke-house",
+      "goal": 6
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Chú Thợ Điện Nhí vỗ tay tán thưởng: nét vẽ của {name} khéo léo và chuẩn xác lạ thường!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Còn nhiều hình vẽ một nét hóc búa lắm, hẹn gặp lại cậu ở quảng trường đài phun."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

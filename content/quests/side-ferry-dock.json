@@ -1,0 +1,80 @@
+{
+  "id": "side-ferry-dock",
+  "region": "dao-bi-an",
+  "chapter": 1,
+  "title": "Lái phà cập cầu tàu cùng Bác Quăng Lưới Biển",
+  "status": "active",
+  "category": "side",
+  "summary": "Chiếc phà chở khách bồng bềnh trên sóng, bé điều khiển chân vịt giảm tốc cập nhẹ vào bờ.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, thuyền trưởng phà biển khéo léo",
+    "where": "Cầu tàu đón thuyền cập bến",
+    "goal": "Lái phà cập bến an toàn trọn vẹn sáu chuyến hải trình nhé!",
+    "play": "{name} đặt ngón tay trên mặt nước: phà chạy về phía ngón tay, càng xa càng mạnh.",
+    "learn": "Kiểm soát tốc độ và căn khoảng cách cập bến",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Bến tàu luôn tấp nập thuyền bè qua lại, bác hẹn {name} hội ngộ chuyến phà sau."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "bac-quang-luoi-bien",
+      "lines": [
+        {
+          "speaker": "Bác Quăng Lưới Biển",
+          "text": "Chuyến phà đón khách cập bến hôm nay đông lắm, {name} cầm bánh lái giúp bác một tay!"
+        },
+        {
+          "speaker": "Bác Quăng Lưới Biển",
+          "text": "Kéo ngón tay lái phà vào sát mép gỗ thật chậm rãi, đừng để va mạnh vào thành cầu."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu ghìm ga cập bến êm ái!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Cập bến phà",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Lái phà cập bến an toàn trọn vẹn sáu chuyến hải trình nhé!",
+      "game": "ferry-dock",
+      "goal": 6
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Bác ngư dân gióng lên tiếng chuông bến: tài lái phà của {name} thật điềm tĩnh và an toàn!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Bến tàu luôn tấp nập thuyền bè qua lại, bác hẹn {name} hội ngộ chuyến phà sau."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

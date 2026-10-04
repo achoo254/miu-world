@@ -1,0 +1,80 @@
+{
+  "id": "side-five-fruit-tray",
+  "region": "nha-cua-be",
+  "chapter": 1,
+  "title": "Bày mâm ngũ quả đón Tết cùng Ông Cụ Trông Vườn",
+  "status": "active",
+  "category": "side",
+  "summary": "Mâm bồng năm cánh hoa rực rỡ, bé xếp đủ năm thứ quả tươi ngon mà không để quả cùng loại cạnh nhau.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, cháu ngoan bày mâm ngũ quả",
+    "where": "Lối vào vườn rau sau nhà",
+    "goal": "Bày biện hoàn chỉnh bốn mâm ngũ quả ngày Tết đủ đầy sum vầy nhé!",
+    "play": "Kéo quả từ giỏ đặt lên từng chỗ trên mâm hình hoa.",
+    "learn": "Phân biệt màu sắc và giải đố xếp vị trí kề nhau",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Mùa xuân hoa trái đua nở trong vườn, ông cụ đợi {name} tới ngắm hoa bưởi nở."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "ong-cu-trong-vuon",
+      "lines": [
+        {
+          "speaker": "Ông Cụ Trông Vườn",
+          "text": "Tết sắp về trong ngõ nhỏ rồi cháu {name} ơi, phụ ông bày mâm ngũ quả dâng tổ tiên nào!"
+        },
+        {
+          "speaker": "Ông Cụ Trông Vườn",
+          "text": "Đặt đủ năm loại quả ngon vào mâm, nhớ hai ô liền kề không được chung một thứ quả."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu bày mâm quả thật trang nghiêm!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Bày mâm ngũ quả",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Bày biện hoàn chỉnh bốn mâm ngũ quả ngày Tết đủ đầy sum vầy nhé!",
+      "game": "five-fruit-tray",
+      "goal": 4
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Ông cụ gật đầu khen ngợi: mâm quả cháu {name} bày trông hài hòa, rực rỡ sắc xuân!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Mùa xuân hoa trái đua nở trong vườn, ông cụ đợi {name} tới ngắm hoa bưởi nở."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

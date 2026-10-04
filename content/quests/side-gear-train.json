@@ -1,0 +1,80 @@
+{
+  "id": "side-gear-train",
+  "region": "lau-dai",
+  "chapter": 1,
+  "title": "Ăn khớp bánh răng chuyển động cùng Bác Thợ Khóa Thành",
+  "status": "active",
+  "category": "side",
+  "summary": "Những chiếc bánh răng đồng to nhỏ nằm rời rạc, bé lắp vào chốt sao cho tay quay truyền lực tới cối.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, thợ cơ khí bánh răng nhí",
+    "where": "Bờ hào nước cạnh cầu đá",
+    "goal": "Nối ăn khớp bánh răng vận hành ba cỗ máy chuyển động nhé!",
+    "play": "Kéo bánh răng to, nhỏ vào các chốt vàng.",
+    "learn": "Nguyên lý truyền động cơ học và khớp răng cưa",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Cầu đá qua hào đã hoạt động êm ái, cháu rảnh cứ qua bờ hào nước ngắm nghía đồ cơ khí."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "bac-tho-khoa-thanh",
+      "lines": [
+        {
+          "speaker": "Bác Thợ Khóa Thành",
+          "text": "Bác chào {name}, cỗ máy nâng cầu đá đang thiếu bánh răng truyền lực nên chưa kéo lên được."
+        },
+        {
+          "speaker": "Bác Thợ Khóa Thành",
+          "text": "Cháu gài các bánh răng to nhỏ vào chốt sao cho chúng ăn khớp với nhau truyền chuyển động quay nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu lắp bánh răng truyền động!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Bánh răng quay",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Nối ăn khớp bánh răng vận hành ba cỗ máy chuyển động nhé!",
+      "game": "gear-train",
+      "goal": 3
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Bác Thợ Khóa Thành cười khà khà: bánh răng quay tít đều tăm tắp, {name} khéo tay quá đi thôi!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Cầu đá qua hào đã hoạt động êm ái, cháu rảnh cứ qua bờ hào nước ngắm nghía đồ cơ khí."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

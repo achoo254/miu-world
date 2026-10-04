@@ -1,0 +1,80 @@
+{
+  "id": "side-seesaw-logic",
+  "region": "cho-phien",
+  "chapter": 1,
+  "title": "Cân thăng bằng đoán nặng nhẹ cùng Anh Lái Xe Đụng",
+  "status": "active",
+  "category": "side",
+  "summary": "Quan sát độ nghiêng của các bập bênh để tìm ra bạn thú nặng nhất hoặc nhẹ nhất trong nhóm.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, nhà logic học tí hon của hội chợ",
+    "where": "Góc quảng trường chợ vui nhộn",
+    "goal": "Suy luận chuẩn xác tìm bạn nặng nhất hoặc nhẹ nhất mười lần nhé!",
+    "play": "Mỗi bập bênh cho biết bạn nào nặng hơn: đầu nặng hơn thì chúi xuống.",
+    "learn": "Tư duy bắc cầu so sánh nặng nhẹ logic",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Cặp bập bênh góc chợ phiên vẫn đung đưa đợi em ra so tài suy luận."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "anh-lai-xe-dung",
+      "lines": [
+        {
+          "speaker": "Anh Lái Xe Đụng",
+          "text": "Mấy bạn gấu và thỏ đang chơi bập bênh so độ nặng nhẹ kìa {name}!"
+        },
+        {
+          "speaker": "Anh Lái Xe Đụng",
+          "text": "Em nhìn đầu bập bênh nào chúi xuống là nặng hơn rồi đoán bạn nặng nhất nha."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Em đoán ra bạn nặng nhất ngay!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Ai nặng nhất?",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Suy luận chuẩn xác tìm bạn nặng nhất hoặc nhẹ nhất mười lần nhé!",
+      "game": "seesaw-logic",
+      "goal": 10
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Suy luận logic đỉnh cao, {name} tìm ra bạn nặng nhất chuẩn không cần chỉnh!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Cặp bập bênh góc chợ phiên vẫn đung đưa đợi em ra so tài suy luận."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

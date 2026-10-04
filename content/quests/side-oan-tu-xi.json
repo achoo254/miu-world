@@ -1,0 +1,80 @@
+{
+  "id": "side-oan-tu-xi",
+  "region": "truong-hoc",
+  "chapter": 1,
+  "title": "Oẳn tù tì nhanh trí với Thỏ Măng Non",
+  "status": "active",
+  "category": "side",
+  "summary": "Bàn tay thoăn thoắt ra kéo búa bao: đọc nhanh chữ thắng thua để tung ra thế tay chuẩn xác.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, nhà vô địch oẳn tù tì nhanh trí",
+    "where": "Hành lang trước hội trường",
+    "goal": "Ra tay chính xác liên tiếp mười hai lượt oẳn tù tì nhé!",
+    "play": "Bạn ra tay trước. Chữ THẮNG: {name} chọn tay thắng bạn. Chữ THUA: chọn tay thua bạn.",
+    "learn": "Đổi ngược tư duy quy tắc linh hoạt",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Trò oẳn tù tì rèn trí óc siêu vui, {name} quay lại hành lang trước hội trường đấu tiếp nha."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "tho-mang-non",
+      "lines": [
+        {
+          "speaker": "Thỏ Măng Non",
+          "text": "Oẳn tù tì xem ai nhanh trí hơn nào {name}, tớ có luật chơi cực kỳ đặc biệt đấy!"
+        },
+        {
+          "speaker": "Thỏ Măng Non",
+          "text": "Bảng hiện chữ Thắng thì chọn tay thắng tớ, thấy chữ Thua thì phải chọn tay chịu thua nha."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Kéo búa bao sẵn sàng, tớ phản xạ ngay!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Oẳn tù tì nhanh trí",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Ra tay chính xác liên tiếp mười hai lượt oẳn tù tì nhé!",
+      "game": "oan-tu-xi",
+      "goal": 12
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Thỏ Măng Non lắc tai trầm trồ: đầu óc {name} nhảy số nhanh ghê, chẳng nhầm chữ nào!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Trò oẳn tù tì rèn trí óc siêu vui, {name} quay lại hành lang trước hội trường đấu tiếp nha."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

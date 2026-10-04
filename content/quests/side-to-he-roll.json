@@ -1,0 +1,80 @@
+{
+  "id": "side-to-he-roll",
+  "region": "cho-phien",
+  "chapter": 1,
+  "title": "Nặn tò he sắc màu cùng Cô Nặn Tò He",
+  "status": "active",
+  "category": "side",
+  "summary": "Lăn thỏi bột nếp dẻo đủ màu dài đúng kích thước trên thước đo rồi cắt tạo hình tò he.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, nghệ nhân tò he nhí tài hoa",
+    "where": "Đầu dãy sạp hoa rực rỡ",
+    "goal": "Nặn bột đúng kích thước hoàn thành tám chú tò he xinh xắn nhé!",
+    "play": "Xoa qua lại trên bàn để lăn bột dài ra theo thước kẻ.",
+    "learn": "Ước lượng độ dài chính xác theo thước đo",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Góc sạp hoa rực rỡ lúc nào cũng thơm lừng mùi bột nếp đợi cháu."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "co-nan-to-he",
+      "lines": [
+        {
+          "speaker": "Cô Nặn Tò He",
+          "text": "Bột nếp sắc màu thơm mùi hoa bưởi lắm nè {name} ơi!"
+        },
+        {
+          "speaker": "Cô Nặn Tò He",
+          "text": "Cháu xoa tay lăn bột dài đúng vạch xăng-ti-mét của khách rồi cắt nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu lăn bột nặn tò he ngay!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Nặn tò he",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Nặn bột đúng kích thước hoàn thành tám chú tò he xinh xắn nhé!",
+      "game": "to-he-roll",
+      "goal": 8
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Con tò he rồng bay phượng múa lung linh, {name} nặn khéo tay quá!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Góc sạp hoa rực rỡ lúc nào cũng thơm lừng mùi bột nếp đợi cháu."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

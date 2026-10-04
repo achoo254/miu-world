@@ -1,0 +1,80 @@
+{
+  "id": "side-rotating-maze",
+  "region": "lau-dai",
+  "chapter": 1,
+  "title": "Xoay mê cung tìm chìa khóa cùng Bác Thợ Khóa Thành",
+  "status": "active",
+  "category": "side",
+  "summary": "Mê cung tròn cầm trên tay, bé xoay nghiêng khung viền để viên bi chìa khóa lăn về đích sao.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, bậc thầy xoay đĩa mê cung",
+    "where": "Bờ hào nước cạnh cầu đá",
+    "goal": "Xoay mê cung dẫn chìa khóa thoát ra bốn lần nhé!",
+    "play": "Kéo vòng quanh để xoay cả mê cung. Viên bi luôn lăn xuống phía dưới màn hình.",
+    "learn": "Điều khiển góc nghiêng và tận dụng trọng lực lăn",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Bờ hào nước cạnh cầu đá luôn có nhiều ổ khóa kỳ lạ chờ cháu tới khám phá tiếp đấy."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "bac-tho-khoa-thanh",
+      "lines": [
+        {
+          "speaker": "Bác Thợ Khóa Thành",
+          "text": "Bác vừa chế tạo ra một ổ khóa mê cung dạng đĩa xoay rất tinh xảo này {name}."
+        },
+        {
+          "speaker": "Bác Thợ Khóa Thành",
+          "text": "Cháu dùng tay xoay tròn cả mê cung để viên bi chìa khóa lăn dần theo rãnh thoát ra ngoài nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu xoay đĩa cho bi lăn ra!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Mê cung xoay",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Xoay mê cung dẫn chìa khóa thoát ra bốn lần nhé!",
+      "game": "rotating-maze",
+      "goal": 4
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Bác Thợ Khóa Thành vỗ đùi tấm tắc: bi lăn trơn tru ra ngoài rồi, {name} xoay khéo léo ghê!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Bờ hào nước cạnh cầu đá luôn có nhiều ổ khóa kỳ lạ chờ cháu tới khám phá tiếp đấy."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

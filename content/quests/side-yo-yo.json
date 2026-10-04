@@ -1,0 +1,80 @@
+{
+  "id": "side-yo-yo",
+  "region": "nha-cua-be",
+  "chapter": 1,
+  "title": "Tung hứng con quay yo-yo cùng Bé Gấp Giấy Vui",
+  "status": "active",
+  "category": "side",
+  "summary": "Sợi dây dài buông con quay xoay tít, bé chạm bắt nhịp đúng lúc yo-yo chạm đáy để kéo vút lên.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, nghệ sĩ biểu diễn yo-yo điêu luyện",
+    "where": "Chiếc chiếu góc đồ chơi",
+    "goal": "Biểu diễn xuất sắc được hai mươi cú tung nhả yo-yo điệu nghệ nhé!",
+    "play": "Vuốt xuống để {name} thả yo-yo.",
+    "learn": "Bắt đúng thời điểm nhịp chuyển động rơi và giật",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Sợi dây yo-yo vẫn sẵn sàng trên chiếu, tớ đợi {name} trổ tài biểu diễn tiếp."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "be-gap-giay-vui",
+      "lines": [
+        {
+          "speaker": "Bé Gấp Giấy Vui",
+          "text": "Quả yo-yo màu lấp lánh của tớ quay tít mù này, {name} thử tài kéo nhả không?"
+        },
+        {
+          "speaker": "Bé Gấp Giấy Vui",
+          "text": "Vuốt thả dây xuống rồi chạm đúng lúc vòng sáng chạm đáy để cuộn ngược lên tay."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ bắt nhịp yo-yo siêu chuẩn!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Chơi yo-yo",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Biểu diễn xuất sắc được hai mươi cú tung nhả yo-yo điệu nghệ nhé!",
+      "game": "yo-yo",
+      "goal": 20
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Bé Gấp Giấy nhảy cẫng lên mừng rỡ: {name} làm xiếc với yo-yo trông ngầu quá đi thôi!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Sợi dây yo-yo vẫn sẵn sàng trên chiếu, tớ đợi {name} trổ tài biểu diễn tiếp."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

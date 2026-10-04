@@ -1,0 +1,80 @@
+{
+  "id": "side-high-dive",
+  "region": "dao-bi-an",
+  "chapter": 1,
+  "title": "Nhảy cầu vách đá lao xuống sóng cùng Hải Cẩu",
+  "status": "active",
+  "category": "side",
+  "summary": "Đứng trên mỏm đá cao chót vót, bé bật nhảy lộn vòng rồi duỗi thẳng người cắm mình xuống nước.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, kình ngư nhảy cầu dũng cảm",
+    "where": "Bãi cát vàng ven biển",
+    "goal": "Thực hiện thành công năm cú tiếp nước hoàn hảo từ vách đá nhé!",
+    "play": "{name} chạm để nhảy khỏi cầu, rồi cuộn tròn lộn vòng trên không.",
+    "learn": "Chọn đúng thời điểm chuyển tư thế trên không",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Mỏm đá nhìn ra đại dương bao la, Hải Cẩu đứng đón {name} ghé nhảy sóng tiếp."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "hai-cau-bong-chuyen",
+      "lines": [
+        {
+          "speaker": "Hải Cẩu Bóng Chuyền",
+          "text": "Vách đá nhô ra mép biển cao tuyệt đẹp kìa, {name} thử tài lặn xuống làn nước xanh nào!"
+        },
+        {
+          "speaker": "Hải Cẩu Bóng Chuyền",
+          "text": "Chạm để bay lên cuộn vòng, rồi chạm lần nữa duỗi thẳng người tiếp nước thật êm."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ nhảy cú thật ngoạn mục!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Nhảy cầu",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Thực hiện thành công năm cú tiếp nước hoàn hảo từ vách đá nhé!",
+      "game": "high-dive",
+      "goal": 5
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Hải Cẩu tung bọt nước vỗ tay: cú nhảy lặn của {name} đẹp như một chú cá heo lượn!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Mỏm đá nhìn ra đại dương bao la, Hải Cẩu đứng đón {name} ghé nhảy sóng tiếp."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

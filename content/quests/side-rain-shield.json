@@ -1,0 +1,80 @@
+{
+  "id": "side-rain-shield",
+  "region": "nha-cua-be",
+  "chapter": 1,
+  "title": "Vẽ mái che mưa cho cún cùng Ông Cụ Trông Vườn",
+  "status": "active",
+  "category": "side",
+  "summary": "Cơn mưa rào bất chợt đổ xuống vườn, bé vẽ đường cong che chở cho chú cún con không bị ướt.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người bạn bảo vệ động vật",
+    "where": "Lối vào vườn rau sau nhà",
+    "goal": "Vẽ mái che chắn an toàn qua năm đợt mưa rào cho cún nhỏ nhé!",
+    "play": "Sắp mưa rồi! {name} kéo ngón tay vẽ một nét làm mái che cho cún.",
+    "learn": "Vẽ đường dẫn hướng dòng chảy của giọt nước",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Vườn rau sau nhà xanh mát lắm, ông cụ đợi {name} ghé chơi và thăm luống cải."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "ong-cu-trong-vuon",
+      "lines": [
+        {
+          "speaker": "Ông Cụ Trông Vườn",
+          "text": "Mây đen kéo tới sắp mưa rào rồi đấy, {name} vẽ mái che giúp chú cún con với!"
+        },
+        {
+          "speaker": "Ông Cụ Trông Vườn",
+          "text": "Kéo một nét cong vững chãi trên đầu để hạt mưa lăn theo mái dốc rơi xuống đất."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu vẽ mái che mưa liền ạ!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Che mưa cho cún",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Vẽ mái che chắn an toàn qua năm đợt mưa rào cho cún nhỏ nhé!",
+      "game": "rain-shield",
+      "goal": 5
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Ông cụ vuốt chòm râu cười hiền từ: nhờ chiếc mái của {name} mà cún khô ráo ấm áp!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Vườn rau sau nhà xanh mát lắm, ông cụ đợi {name} ghé chơi và thăm luống cải."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

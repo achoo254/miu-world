@@ -1,0 +1,80 @@
+{
+  "id": "side-make-ten",
+  "region": "truong-hoc",
+  "chapter": 1,
+  "title": "Gộp đôi thành mười cùng Gấu Bó Đũa",
+  "status": "active",
+  "category": "side",
+  "summary": "Những khối số dâng lên từ từ: chạm ghép hai số có tổng tròn chục để làm tan biến dãy số.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, siêu sao tính nhẩm tròn chục",
+    "where": "Ghế đá sân sau dãy lớp",
+    "goal": "Ghép đúng hai mươi cặp số có tổng bằng mười nhé!",
+    "play": "Chạm hai ô số cộng lại bằng 10 để hai ô biến mất.",
+    "learn": "Ghi nhớ các cặp số cộng lại bằng 10",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Mỗi giờ học toán xong, {name} lại ra ghế đá sân sau cùng Gấu Bó Đũa giải đố nha."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "gau-bo-dua",
+      "lines": [
+        {
+          "speaker": "Gấu Bó Đũa",
+          "text": "Các khối số đang trồi lên nhanh quá kìa {name}, giúp tớ giải cứu hàng số với!"
+        },
+        {
+          "speaker": "Gấu Bó Đũa",
+          "text": "Cậu chạm hai ô số cộng lại vừa tròn mười để biến mất, đừng để số chạm vạch trên cùng nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cộng lại thành mười, giải phóng hàng số!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Ghép đôi tròn chục",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Ghép đúng hai mươi cặp số có tổng bằng mười nhé!",
+      "game": "make-ten",
+      "goal": 20
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Gấu Bó Đũa vỗ bụng cười vang: {name} tính nhẩm siêu tốc, hàng số đã sạch bong rồi!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Mỗi giờ học toán xong, {name} lại ra ghế đá sân sau cùng Gấu Bó Đũa giải đố nha."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

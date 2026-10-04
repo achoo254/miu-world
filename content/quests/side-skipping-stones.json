@@ -1,0 +1,80 @@
+{
+  "id": "side-skipping-stones",
+  "region": "lang-ven-song",
+  "chapter": 1,
+  "title": "Ném đá lia thia cùng Bé Ném Lia Thia",
+  "status": "active",
+  "category": "side",
+  "summary": "Vuốt nhanh viên đá cuội dẹt lướt là là mặt nước để đá nảy lên từng vòng sóng biếc.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, tay ném lia thia siêu đẳng trên kênh",
+    "where": "Bờ kênh chợ nhỏ trong làng",
+    "goal": "Lia viên đá nảy trúng đích gom đủ ba mươi điểm sao trên nước nhé!",
+    "play": "Vuốt ngang mặt hồ sang phải để ném đá. Vuốt thật nhanh và thật thẳng thì đá nảy nhiều lần.",
+    "learn": "Căn lực vuốt thẳng và lướt nhanh ngang mặt nước",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Bờ kênh chợ làng còn nhiều đá cuội dẹt, mai cậu lại ra lia thia nha."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "be-nem-lia-thia",
+      "lines": [
+        {
+          "speaker": "Bé Ném Lia Thia",
+          "text": "{name} ơi, viên đá cuội bờ kênh phẳng lì này ném lia thia thích lắm!"
+        },
+        {
+          "speaker": "Bé Ném Lia Thia",
+          "text": "Cậu vuốt thật nhanh và thẳng tay ngang mặt nước để đá nảy xa nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ ném đá lướt sóng đây!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Ném thia lia",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Lia viên đá nảy trúng đích gom đủ ba mươi điểm sao trên nước nhé!",
+      "game": "skipping-stones",
+      "goal": 30
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Đá nảy tung bọt trắng xóa liên hồi, {name} ném cừ khôi thật đấy!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Bờ kênh chợ làng còn nhiều đá cuội dẹt, mai cậu lại ra lia thia nha."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

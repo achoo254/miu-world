@@ -1,0 +1,80 @@
+{
+  "id": "side-rising-water",
+  "region": "lang-ven-song",
+  "chapter": 1,
+  "title": "Nước dâng nhặt báu vật cùng Bé Ném Lia Thia",
+  "status": "active",
+  "category": "side",
+  "summary": "Giữ tay đắp cho quả đồi dâng cao hơn mặt nước lũ cuồn cuộn để giữ mái nhà luôn khô ráo.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, dũng sĩ dâng đồi che chở làng quê",
+    "where": "Bờ kênh chợ nhỏ trong làng",
+    "goal": "Nâng cao đất đồi vượt qua hai mươi đợt nước lũ dâng nhé!",
+    "play": "Thủy Tinh dâng nước vào từng quả đồi. Vạch đứt cho biết nước sắp dâng cao tới đâu.",
+    "learn": "Quan sát mực nước dâng để kịp thời nâng đồi",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Góc kênh chợ nhỏ lúc nào cũng đón cậu ghé chơi đắp đồi ngăn lũ."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "be-nem-lia-thia",
+      "lines": [
+        {
+          "speaker": "Bé Ném Lia Thia",
+          "text": "Nước triều dâng cao mấp mé bờ kênh rồi {name} ơi!"
+        },
+        {
+          "speaker": "Bé Ném Lia Thia",
+          "text": "Cậu chạm giữ ngón tay trên đồi để nâng đất lên cao hơn ngọn nước nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ đắp đồi cao giữ nhà khô!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Sơn Tinh dâng núi",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Nâng cao đất đồi vượt qua hai mươi đợt nước lũ dâng nhé!",
+      "game": "rising-water",
+      "goal": 20
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Mái nhà đứng vững vàng trên đỉnh đồi khô ráo, {name} cừ ghê!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Góc kênh chợ nhỏ lúc nào cũng đón cậu ghé chơi đắp đồi ngăn lũ."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

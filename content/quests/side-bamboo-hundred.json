@@ -1,0 +1,80 @@
+{
+  "id": "side-bamboo-hundred",
+  "region": "khu-rung-bi-mat",
+  "chapter": 1,
+  "title": "Ghép cây tre trăm đốt cùng Gấu Trèo Cây",
+  "status": "active",
+  "category": "side",
+  "summary": "Đốt tre nằm rải rác quanh bụi tre ngà: đếm nhảy cách theo dãy số rồi ghép từng đốt thành thân tre.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, thợ ghép tre tài ba",
+    "where": "Gốc đại thụ tán lá râm",
+    "goal": "Nối đúng hai mươi mốt đốt tre theo dãy số nhé!",
+    "play": "Đốt đầu đã mọc, bên cạnh là bước đếm: thêm 1, 2, 5 hay 10.",
+    "learn": "Đếm nhảy cách các dãy số đều đặn",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Lúc nào muốn trổ tài tính nhẩm, {name} cứ ghé gốc đại thụ tìm Gấu Trèo Cây nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "gau-bap-cay",
+      "lines": [
+        {
+          "speaker": "Gấu Trèo Cây",
+          "text": "{name} ơi, tớ đang tìm các đốt tre thần theo dãy số để ghép cây tre trăm đốt."
+        },
+        {
+          "speaker": "Gấu Trèo Cây",
+          "text": "Cậu nhìn bước đếm trên bảng rồi chạm từng đốt tre theo đúng thứ tự đếm nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Khắc nhập khắc nhập, tre dài ra mau!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Cây tre trăm đốt",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Nối đúng hai mươi mốt đốt tre theo dãy số nhé!",
+      "game": "bamboo-hundred",
+      "goal": 21
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Gấu Trèo Cây tròn xoe mắt: {name} đếm nhẩm chuẩn xác, cây tre cao vút tới mây!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Lúc nào muốn trổ tài tính nhẩm, {name} cứ ghé gốc đại thụ tìm Gấu Trèo Cây nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

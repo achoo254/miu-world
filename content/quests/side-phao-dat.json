@@ -1,0 +1,80 @@
+{
+  "id": "side-phao-dat",
+  "region": "nong-trai",
+  "chapter": 1,
+  "title": "Đánh pháo đất nổ giòn cùng Ông Lão Pháo Đất",
+  "status": "active",
+  "category": "side",
+  "summary": "Cục đất sét dẻo quánh trên tay ông lão, bé nặn lòng pháo thật khéo rồi úp mạnh xuống sân.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, nghệ nhân pháo đất nhí",
+    "where": "Sân gạch nông trại",
+    "goal": "Làm nổ giòn giã sáu quả pháo đất đất sét nhé!",
+    "play": "Vẽ vòng tròn quanh cục đất để nặn bát mỏng dần. Xem thước bên phải nhé.",
+    "learn": "Căn độ dày mỏng và dùng lực dứt khoát",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Đất sét mùa này dẻo lắm, chiều nào ông cũng ngồi ở sân gạch nông trại đợi cháu."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "ong-lao-phao-dat",
+      "lines": [
+        {
+          "speaker": "Ông Lão Pháo Đất",
+          "text": "Chào {name}, trò chơi pháo đất dân gian này xưa nay vui và rộn ràng lắm cháu ơi."
+        },
+        {
+          "speaker": "Ông Lão Pháo Đất",
+          "text": "Cháu vuốt mỏng lòng quả pháo đất rồi quăng mạnh xuống sân gạch cho tiếng nổ vang lừng."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu nặn quả pháo đất thật đẹp!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Pháo đất",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Làm nổ giòn giã sáu quả pháo đất đất sét nhé!",
+      "game": "phao-dat",
+      "goal": 6
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Ông Lão Pháo Đất cười hiền hậu, vỗ đùi khen {name} đánh pháo đất vừa to vừa giòn!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Đất sét mùa này dẻo lắm, chiều nào ông cũng ngồi ở sân gạch nông trại đợi cháu."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

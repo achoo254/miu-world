@@ -1,0 +1,80 @@
+{
+  "id": "side-bat-trach",
+  "region": "lang-ven-song",
+  "chapter": 1,
+  "title": "Bắt chạch trong chum cùng Bác Thổi Cơm Thi",
+  "status": "active",
+  "category": "side",
+  "summary": "Lùa tay theo chú chạch đồng trơn tuột đang uốn lượn trong làn nước mát của chum sành.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, tay bắt chạch nhanh nhẹn hội thi",
+    "where": "Góc sân bóng cạnh đầm sen",
+    "goal": "Khéo léo tóm gọn sáu chú chạch đồng trơn lủi trong chum nhé!",
+    "play": "Con trạch trơn tuột bơi vòng trong chum nước.",
+    "learn": "Bám đuổi mục tiêu di chuyển nhanh và êm",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Trò bắt chạch hội làng vui vẻ vẫn mở bên góc sân đầm sen."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "bac-thoi-com-thi",
+      "lines": [
+        {
+          "speaker": "Bác Thổi Cơm Thi",
+          "text": "{name} ơi, chú chạch da trơn đang bơi thoăn thoắt trong chum kìa!"
+        },
+        {
+          "speaker": "Bác Thổi Cơm Thi",
+          "text": "Cháu rê ngón tay bám theo đầu chạch thật khéo kẻo nó lặn mất."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu tóm được chú chạch ngay!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Bắt trạch trong chum",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Khéo léo tóm gọn sáu chú chạch đồng trơn lủi trong chum nhé!",
+      "game": "bat-trach",
+      "goal": 6
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Bắt được chạch trơn tuột không hề dễ mà {name} làm được, giỏi lắm!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Trò bắt chạch hội làng vui vẻ vẫn mở bên góc sân đầm sen."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

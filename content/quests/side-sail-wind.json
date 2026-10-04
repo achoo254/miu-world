@@ -1,0 +1,80 @@
+{
+  "id": "side-sail-wind",
+  "region": "lang-ven-song",
+  "chapter": 1,
+  "title": "Căng buồm đón gió cùng Chú Lái Đò Ba",
+  "status": "active",
+  "category": "side",
+  "summary": "Xoay cánh buồm trắng hứng trọn ngọn gió nam để thuyền lướt băng băng qua các phao tiêu.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, thuyền trưởng nhí lướt sóng gió",
+    "where": "Bãi cỏ ven bờ sông",
+    "goal": "Đón gió đưa thuyền lướt qua sáu chiếc phao hoa trên sông nhé!",
+    "play": "Thuyền tự lái tới phao. {name} kéo để xoay cánh buồm về phía ngón tay.",
+    "learn": "Căn chỉnh hướng buồm theo chiều gió",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Khi nào gió chiều nổi lên, chú cháu mình lại giương buồm ra xa."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "chu-lai-do-ba",
+      "lines": [
+        {
+          "speaker": "Chú Lái Đò Ba",
+          "text": "Gió sông đang thổi lồng lộng đấy {name} ơi!"
+        },
+        {
+          "speaker": "Chú Lái Đò Ba",
+          "text": "Cháu kéo buồm đón gió thổi vào lòng thuyền là đò lướt êm ru."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu căng buồm đón gió đây!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Thuyền buồm theo gió",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Đón gió đưa thuyền lướt qua sáu chiếc phao hoa trên sông nhé!",
+      "game": "sail-wind",
+      "goal": 6
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Thuyền chạy nhanh tựa chim bay, {name} cầm lái buồm cừ lắm!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Khi nào gió chiều nổi lên, chú cháu mình lại giương buồm ra xa."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

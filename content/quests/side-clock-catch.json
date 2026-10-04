@@ -1,0 +1,80 @@
+{
+  "id": "side-clock-catch",
+  "region": "nha-cua-be",
+  "chapter": 1,
+  "title": "Chặn kim đúng giờ đón xe cùng Chú Rô Bốt Đồng Hồ",
+  "status": "active",
+  "category": "side",
+  "summary": "Mặt đồng hồ quay kim liên tục, bé chú ý nghe giờ bác tài dặn rồi chạm dừng kim đúng vị trí.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, hành khách chuẩn giờ đi học",
+    "where": "Bên cạnh giá sách góc học tập",
+    "goal": "Dừng kim chuẩn xác đúng giờ trong tám chuyến xe buýt tới đón nhé!",
+    "play": "Kim đồng hồ chạy thật nhanh. Gà trống hỏi giờ, ví dụ 8 giờ rưỡi.",
+    "learn": "Đọc giờ đúng và giờ rưỡi trên mặt đồng hồ",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Đồng hồ trên bàn vẫn tích tắc gõ nhịp, Rô Bốt chờ {name} so tài xem giờ tiếp."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "chu-ro-bot-dong-ho",
+      "lines": [
+        {
+          "speaker": "Chú Rô Bốt Đồng Hồ",
+          "text": "Xe buýt sắp tới đón chúng mình đi học rồi, {name} canh giờ cùng rô bốt nhé!"
+        },
+        {
+          "speaker": "Chú Rô Bốt Đồng Hồ",
+          "text": "Kim đồng hồ quay tít, nghe bác tài báo giờ nào thì chạm giữ kim đứng đúng giờ đó."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ nhìn kim đồng hồ chuẩn lắm!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Đồng hồ báo thức",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Dừng kim chuẩn xác đúng giờ trong tám chuyến xe buýt tới đón nhé!",
+      "game": "clock-catch",
+      "goal": 8
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Chú Rô Bốt tích tắc vui nhộn: {name} xem giờ chuẩn boong, kịp giờ xe khởi hành rồi!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Đồng hồ trên bàn vẫn tích tắc gõ nhịp, Rô Bốt chờ {name} so tài xem giờ tiếp."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "id": "side-cake-decorate",
+  "region": "cho-phien",
+  "chapter": 1,
+  "title": "Trang trí bánh sinh nhật cùng Chú Bán Bánh Kem",
+  "status": "active",
+  "category": "side",
+  "summary": "Gắn nến quả dâu và kẹo ngọt lên cốt bánh xốp mềm đúng số lượng khách nhí đặt mua.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, chuyên gia trang trí bánh sinh nhật nhí",
+    "where": "Trước sạp chợ rau hoa",
+    "goal": "Trang trí chuẩn vị ngọt ngào tám chiếc bánh kem thơm lừng nhé!",
+    "play": "Khách đặt bánh: mỗi thứ bao nhiêu cái. {name} chạm hộp (hoặc kéo) để thêm lên bánh.",
+    "learn": "Đếm đúng số lượng trang trí theo đơn hàng",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Cửa tiệm bánh kem trước sạp rau hoa luôn thơm lừng đón cháu ghé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "chu-ban-banh-kem",
+      "lines": [
+        {
+          "speaker": "Chú Bán Bánh Kem",
+          "text": "Khách đang đặt bánh mừng sinh nhật đông quá {name} ơi!"
+        },
+        {
+          "speaker": "Chú Bán Bánh Kem",
+          "text": "Cháu nhìn đơn rồi xếp đúng số lượng dâu tây và nến lên mặt bánh nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu trang trí bánh kem ngay!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Trang trí bánh theo đơn",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Trang trí chuẩn vị ngọt ngào tám chiếc bánh kem thơm lừng nhé!",
+      "game": "cake-decorate",
+      "goal": 8
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Chiếc bánh kem rực rỡ ngọt ngào làm khách hàng của {name} mê tít!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Cửa tiệm bánh kem trước sạp rau hoa luôn thơm lừng đón cháu ghé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "id": "side-ice-fishing",
+  "region": "nui-tuyet",
+  "chapter": 1,
+  "title": "Câu cá qua lỗ băng cùng Gấu Bắc Cực Câu Cá",
+  "status": "active",
+  "category": "side",
+  "summary": "Mặt hồ phủ lớp băng dày, bé quan sát bóng cá lượn lờ để thả dây câu trúng lỗ.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, tay câu kiên nhẫn bên hố băng",
+    "where": "Bên ngoài hang băng",
+    "goal": "Kéo dây câu bắt được mười con cá tươi ngon dưới băng nhé!",
+    "play": "Bóng cá bơi dưới lớp băng. Chạm một lỗ băng để thả câu ở đó.",
+    "learn": "Đoán trước hướng bơi của đàn cá",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Dưới lòng hồ còn cá ngon, bác Gấu đợi {name} ghé trạm thám hiểm câu tiếp."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "gau-bac-cuc-cau-ca",
+      "lines": [
+        {
+          "speaker": "Gấu Bắc Cực Câu Cá",
+          "text": "Gió lạnh ngoài cửa hang thổi bay tuyết rồi, {name} ngồi câu cá với bác nhé!"
+        },
+        {
+          "speaker": "Gấu Bắc Cực Câu Cá",
+          "text": "Nhìn bóng cá bơi dưới băng rồi chạm thả mồi trước một nhịp cho cá đớp."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu cầm cần câu sẵn sàng rồi!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Câu cá lỗ băng",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Kéo dây câu bắt được mười con cá tươi ngon dưới băng nhé!",
+      "game": "ice-fishing",
+      "goal": 10
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Gấu Bắc Cực cười xòa: xô cá đầy ắp nhờ đôi mắt tinh tường của cháu {name}!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Dưới lòng hồ còn cá ngon, bác Gấu đợi {name} ghé trạm thám hiểm câu tiếp."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

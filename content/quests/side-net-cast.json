@@ -1,0 +1,80 @@
+{
+  "id": "side-net-cast",
+  "region": "dao-bi-an",
+  "chapter": 1,
+  "title": "Quăng lưới đánh cá ngoài khơi cùng Bác Quăng Lưới Biển",
+  "status": "active",
+  "category": "side",
+  "summary": "Đứng ở mũi thuyền, bé vuốt tay tung dải chài tròn xòe rộng đón đầu đàn cá đang bơi.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, ngư dân nhí quăng chài thiện nghệ",
+    "where": "Cầu tàu đón thuyền cập bến",
+    "goal": "Quăng lưới khéo léo bắt được bốn mươi con cá tươi roi rói nhé!",
+    "play": "{name} vuốt từ thuyền về phía đàn cá để quăng chài. Vuốt dài thì chài bay xa.",
+    "learn": "Ước lượng khoảng cách và đón đầu vật chuyển động",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Khoang thuyền còn rộng rãi lắm, bác ngư dân mong {name} ghé cầu tàu ra khơi tiếp."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "bac-quang-luoi-bien",
+      "lines": [
+        {
+          "speaker": "Bác Quăng Lưới Biển",
+          "text": "Đàn cá mòi đang bơi ngang qua mạn thuyền kìa, {name} giúp bác quăng mẻ lưới nào!"
+        },
+        {
+          "speaker": "Bác Quăng Lưới Biển",
+          "text": "Vuốt dài ngón tay về phía trước để chài mở rộng, đón đầu luồng cá đang bơi tới."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu tung chài đón đầu đàn cá!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Quăng chài",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Quăng lưới khéo léo bắt được bốn mươi con cá tươi roi rói nhé!",
+      "game": "net-cast",
+      "goal": 40
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Bác Quăng Lưới cười hào sảng: mẻ chài của {name} bung tròn trịa gom trọn đàn cá!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Khoang thuyền còn rộng rãi lắm, bác ngư dân mong {name} ghé cầu tàu ra khơi tiếp."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

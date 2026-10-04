@@ -1,0 +1,80 @@
+{
+  "id": "side-circle-chick",
+  "region": "nong-trai",
+  "chapter": 1,
+  "title": "Khoanh rào quây gà con cùng Bé Chăn Gà",
+  "status": "active",
+  "category": "side",
+  "summary": "Đàn gà lông vàng nhảy nhót khắp lối, bé đặt rào cản ngăn chúng không chạy lạc.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người bảo vệ đàn gà con",
+    "where": "Mép rào chuồng gà nông trại",
+    "goal": "Khoanh rào quây giữ an toàn bốn chú gà con nhé!",
+    "play": "{name} chạm một ô để dựng rào. Mỗi lần dựng, gà con chạy một bước ra phía mép.",
+    "learn": "Đoán hướng di chuyển và bao vây khéo léo",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Gà con ngoan ngoãn rồi, lúc nào rảnh cậu ghé mép rào chuồng gà nông trại chơi nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "be-chan-ga-con",
+      "lines": [
+        {
+          "speaker": "Bé Chăn Gà Con",
+          "text": "Cứu tớ với {name}, mấy chú gà con tinh nghịch đang đòi chạy tót ra ngoài bãi cỏ!"
+        },
+        {
+          "speaker": "Bé Chăn Gà Con",
+          "text": "Cậu cắm từng thanh rào vây quanh mỗi khi gà bước để quây tròn chúng lại an toàn nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ cắm cọc rào giữ gà lại!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Rào bắt gà con",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Khoanh rào quây giữ an toàn bốn chú gà con nhé!",
+      "game": "circle-chick",
+      "goal": 4
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Bé Chăn Gà Con ôm chú gà nhỏ vào lòng, cảm ơn {name} đã cắm rào thật nhanh tay!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Gà con ngoan ngoãn rồi, lúc nào rảnh cậu ghé mép rào chuồng gà nông trại chơi nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

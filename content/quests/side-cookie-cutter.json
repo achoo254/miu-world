@@ -1,0 +1,80 @@
+{
+  "id": "side-cookie-cutter",
+  "region": "nha-cua-be",
+  "chapter": 1,
+  "title": "Dập khuôn bánh quy nướng cùng Mèo Bếp Trưởng",
+  "status": "active",
+  "category": "side",
+  "summary": "Mẻ bột thơm mùi bơ sữa đã cán phẳng, bé chạm ấn khuôn sao cho vừa vặn được nhiều chiếc bánh.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, thợ làm bánh quy tí hon",
+    "where": "Bàn ăn gian bếp gia đình",
+    "goal": "Dập khuôn được đủ mười hai chiếc bánh quy hình dáng đẹp mắt nhé!",
+    "play": "{name} chạm lên tấm bột để dập bánh: tròn, sao, tim lần lượt.",
+    "learn": "Sắp xếp hình gọn gàng tận dụng tối đa diện tích",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Lò nướng vẫn còn ấm áp, Mèo Bếp Trưởng đợi {name} ghé dập thêm mẻ bánh mới."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "meo-bep-truong",
+      "lines": [
+        {
+          "speaker": "Mèo Bếp Trưởng",
+          "text": "Tấm bột bánh thơm phức vừa cán xong này, {name} dập khuôn bánh quy với tớ nhé!"
+        },
+        {
+          "speaker": "Mèo Bếp Trưởng",
+          "text": "Chạm ấn từng hình ngôi sao, trái tim thật sát mép để không lãng phí bột bánh."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu dập nhiều bánh xinh xắn!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Dập khuôn bánh quy",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Dập khuôn được đủ mười hai chiếc bánh quy hình dáng đẹp mắt nhé!",
+      "game": "cookie-cutter",
+      "goal": 12
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Mèo Bếp Trưởng liếm mép reo vang: mẻ bánh của {name} nướng lên thơm nức cả gian bếp!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Lò nướng vẫn còn ấm áp, Mèo Bếp Trưởng đợi {name} ghé dập thêm mẻ bánh mới."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

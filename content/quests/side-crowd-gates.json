@@ -1,0 +1,80 @@
+{
+  "id": "side-crowd-gates",
+  "region": "nui-tuyet",
+  "chapter": 1,
+  "title": "Chọn cổng làm đông bạn cùng Người Tuyết Đếm Bậc",
+  "status": "active",
+  "category": "side",
+  "summary": "Đoàn bạn chạy trên sườn núi, bé lượn qua các cổng cộng nhân để tăng quân số đẩy xe trượt.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, đội trưởng dẫn đường đoàn người tuyết",
+    "where": "Đài quan sát đỉnh núi tuyết",
+    "goal": "Dẫn dắt đoàn bạn đạt tới ba mươi thành viên để đẩy cỗ xe tuyết nhé!",
+    "play": "Đoàn bạn của {name} chạy qua các cặp cổng có ghi phép tính.",
+    "learn": "So sánh kết quả phép tính nhanh chóng",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Đỉnh núi vẫn phủ tuyết trắng xóa, Người Tuyết Đếm Bậc đứng chờ {name} quay lại chơi."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "nguoi-tuyet-dem-bac",
+      "lines": [
+        {
+          "speaker": "Người Tuyết Đếm Bậc",
+          "text": "Đoàn người tuyết tí hon chuẩn bị lăn xuống dốc rồi đấy, {name} dẫn đường nào!"
+        },
+        {
+          "speaker": "Người Tuyết Đếm Bậc",
+          "text": "Lướt sang cổng có phép cộng hoặc nhân lớn hơn để gọi thêm thật nhiều bạn đồng hành."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cổng nào đông bạn tớ chọn liền!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Đoàn bạn đông vui",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Dẫn dắt đoàn bạn đạt tới ba mươi thành viên để đẩy cỗ xe tuyết nhé!",
+      "game": "crowd-gates",
+      "goal": 30
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Người Tuyết vẫy đôi tay gỗ: đoàn bạn đông đúc của {name} đã đẩy xe về đích rồi!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Đỉnh núi vẫn phủ tuyết trắng xóa, Người Tuyết Đếm Bậc đứng chờ {name} quay lại chơi."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

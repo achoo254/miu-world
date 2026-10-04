@@ -1,0 +1,80 @@
+{
+  "id": "side-paper-fold-cut",
+  "region": "nha-cua-be",
+  "chapter": 1,
+  "title": "Gấp giấy cắt hoa văn cùng Bé Gấp Giấy Vui",
+  "status": "active",
+  "category": "side",
+  "summary": "Mảnh giấy màu gập đôi xinh xắn, bé quan sát mẫu hoa rồi vuốt kéo nhát cắt mở ra cánh hoa đẹp.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, nghệ nhân cắt giấy thủ công",
+    "where": "Chiếc chiếu góc đồ chơi",
+    "goal": "Cắt mở thành công năm bông hoa giấy rực rỡ sắc màu nhé!",
+    "play": "Giấy đã gấp lại. Thẻ Mẫu cho biết giấy mở ra trông thế nào.",
+    "learn": "Tư duy đối xứng trục khi gập và mở hình",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Góc đồ chơi còn nhiều giấy màu đẹp, bạn nhớ ghé chơi trò cắt dán với tớ nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "be-gap-giay-vui",
+      "lines": [
+        {
+          "speaker": "Bé Gấp Giấy Vui",
+          "text": "Tớ có mấy tờ giấy màu rực rỡ nè, {name} cùng tớ cắt dán bông hoa trang trí nhé!"
+        },
+        {
+          "speaker": "Bé Gấp Giấy Vui",
+          "text": "Nhìn hình bông hoa mẫu rồi vuốt đường cắt đúng mép để mở ra cánh hoa trọn vẹn."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ cắt theo đường nét liền!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Gấp giấy cắt hoa",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Cắt mở thành công năm bông hoa giấy rực rỡ sắc màu nhé!",
+      "game": "paper-fold-cut",
+      "goal": 5
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Bé Gấp Giấy vỗ tay reo hò: hoa của {name} cắt mở ra nở đều cánh như thật!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Góc đồ chơi còn nhiều giấy màu đẹp, bạn nhớ ghé chơi trò cắt dán với tớ nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

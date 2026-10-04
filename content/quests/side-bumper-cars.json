@@ -1,0 +1,80 @@
+{
+  "id": "side-bumper-cars",
+  "region": "cho-phien",
+  "chapter": 1,
+  "title": "Xe đụng hội chợ cùng Anh Lái Xe Đụng",
+  "status": "active",
+  "category": "side",
+  "summary": "Lái chiếc xe điện tròn xoe húc văng các xe đối thủ ra khỏi sàn đấu trong tiếng nhạc rộn rã.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, tay đua xe đụng dũng mãnh quả cảm",
+    "where": "Góc quảng trường chợ vui nhộn",
+    "goal": "Lái xe va chạm húc văng sáu chiếc xe khác ra ngoài sàn nhé!",
+    "play": "Xe của {name} chạy theo ngón tay trên sàn tròn.",
+    "learn": "Định hướng di chuyển và phán đoán đường chạy",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Sàn xe điện góc quảng trường chợ lúc nào cũng rộn ràng tiếng cười."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "anh-lai-xe-dung",
+      "lines": [
+        {
+          "speaker": "Anh Lái Xe Đụng",
+          "text": "Vào sàn xe đụng cảm giác mạnh hội chợ vui lắm em {name} ơi!"
+        },
+        {
+          "speaker": "Anh Lái Xe Đụng",
+          "text": "Em rê ngón tay lái xe cua gắt húc các xe khác văng ra mép sàn nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Em lái xe đụng húc tung sàn!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Xe điện đụng",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Lái xe va chạm húc văng sáu chiếc xe khác ra ngoài sàn nhé!",
+      "game": "bumper-cars",
+      "goal": 6
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Những cú va chạm nảy lửa giòn giã, tay lái {name} cừ khôi thật!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Sàn xe điện góc quảng trường chợ lúc nào cũng rộn ràng tiếng cười."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

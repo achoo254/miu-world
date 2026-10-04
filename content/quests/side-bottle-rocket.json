@@ -1,0 +1,80 @@
+{
+  "id": "side-bottle-rocket",
+  "region": "truong-hoc",
+  "chapter": 1,
+  "title": "Bắn tên lửa nước cùng Chó Đội Trưởng",
+  "status": "active",
+  "category": "side",
+  "summary": "Tên lửa chế từ chai nước ngọt: vuốt bơm hơi căng rồi bấm nút phóng vút lên nền trời xanh.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, nhà du hành vũ trụ nhí",
+    "where": "Mép sân bóng rổ trường",
+    "goal": "Phóng thành công năm quả tên lửa nước nhé!",
+    "play": "Vuốt lên xuống để bơm hơi cho tên lửa tới vạch xanh. Bơm quá thì nước phụt ra.",
+    "learn": "Căn chỉnh áp suất và chọn góc phóng thích hợp",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Sân trường luôn có chỗ cho nhà khoa học nhí, {name} rảnh lại ra bắn tên lửa tiếp nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "cho-doi-truong",
+      "lines": [
+        {
+          "speaker": "Chó Đội Trưởng",
+          "text": "{name} ơi, câu lạc bộ khoa học trường mình vừa chế xong giàn phóng tên lửa nước này!"
+        },
+        {
+          "speaker": "Chó Đội Trưởng",
+          "text": "Cậu vuốt bơm hơi vừa vặn tới vạch xanh, canh góc bệ phóng thẳng rồi nhấn nút bay lên nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Bơm căng khí nén, tên lửa bay cao nào!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Tên lửa nước",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Phóng thành công năm quả tên lửa nước nhé!",
+      "game": "bottle-rocket",
+      "goal": 5
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Chó Đội Trưởng nhảy cẫng lên mừng: tên lửa của {name} bung dù hạ cánh đẹp tuyệt vời!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Sân trường luôn có chỗ cho nhà khoa học nhí, {name} rảnh lại ra bắn tên lửa tiếp nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

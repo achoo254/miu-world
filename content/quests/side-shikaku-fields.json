@@ -1,0 +1,80 @@
+{
+  "id": "side-shikaku-fields",
+  "region": "nong-trai",
+  "chapter": 1,
+  "title": "Chia ô ruộng chữ nhật cùng Ông Lão Pháo Đất",
+  "status": "active",
+  "category": "side",
+  "summary": "Mặt sân kẻ ô như bàn cờ, bé kéo các hình chữ nhật bao quanh từng con số mẫu mực.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, nhà quy hoạch ruộng đất tài hoa",
+    "where": "Sân gạch nông trại",
+    "goal": "Chia ô vuông vắn cho ba mảnh ruộng mẫu mực nhé!",
+    "play": "Kéo từ ô này sang ô kia để khoanh một thửa ruộng hình chữ nhật.",
+    "learn": "Phân chia diện tích và suy luận hình học",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Những ô ruộng đã chia thật thẳng thớm, ông cháu mình lại gặp nhau ở sân gạch nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "ong-lao-phao-dat",
+      "lines": [
+        {
+          "speaker": "Ông Lão Pháo Đất",
+          "text": "{name} nhìn mảnh sân kẻ ô này xem, từng khoảnh đất đang cần chia thành ô chữ nhật."
+        },
+        {
+          "speaker": "Ông Lão Pháo Đất",
+          "text": "Mỗi khoảnh cháu khoanh chỉ chứa một con số và có diện tích bằng đúng số đó thôi nha."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu khoanh từng ô ruộng vuông vắn!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Chia ruộng",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Chia ô vuông vắn cho ba mảnh ruộng mẫu mực nhé!",
+      "game": "shikaku-fields",
+      "goal": 3
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Ông Lão Pháo Đất tấm tắc ngợi khen {name} chia ruộng ngay ngắn và hợp lý vô cùng!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Những ô ruộng đã chia thật thẳng thớm, ông cháu mình lại gặp nhau ở sân gạch nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

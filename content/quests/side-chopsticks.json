@@ -1,0 +1,80 @@
+{
+  "id": "side-chopsticks",
+  "region": "nha-cua-be",
+  "chapter": 1,
+  "title": "Tập gắp hạt đậu bằng đũa cùng Mèo Bếp Trưởng",
+  "status": "active",
+  "category": "side",
+  "summary": "Chiếc đũa tre nhỏ nhắn kẹp hạt đậu tròn, bé giữ tay nhẹ nhàng di chuyển hạt từ đĩa sang bát.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, phụ bếp gắp đũa khéo tay",
+    "where": "Bàn ăn gian bếp gia đình",
+    "goal": "Dùng đũa gắp thành công hai mươi hạt đậu vàng óng vào bát nhé!",
+    "play": "Đặt ngón tay lên hạt đậu để đũa kẹp lấy, giữ ngón tay trên màn hình.",
+    "learn": "Điều khiển lực ngón tay bền bỉ và cẩn thận",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Gian bếp lúc nào cũng thơm lừng món ngon, Mèo Bếp Trưởng chờ {name} phụ giúp."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "meo-bep-truong",
+      "lines": [
+        {
+          "speaker": "Mèo Bếp Trưởng",
+          "text": "Bữa cơm gia đình sắp dọn lên rồi, {name} cùng tớ trổ tài cầm đũa khéo tay nào!"
+        },
+        {
+          "speaker": "Mèo Bếp Trưởng",
+          "text": "Giữ tay kẹp chặt hạt đậu rồi kéo từ từ sang bát, chớ đi nhanh kẻo hạt tuột rơi."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu gắp chắc tay không rơi!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Thi gắp đậu bằng đũa",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Dùng đũa gắp thành công hai mươi hạt đậu vàng óng vào bát nhé!",
+      "game": "chopsticks",
+      "goal": 20
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Mèo Bếp Trưởng rung râu mỉm cười: đôi tay {name} cầm đũa khéo léo và vững vàng lắm!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Gian bếp lúc nào cũng thơm lừng món ngon, Mèo Bếp Trưởng chờ {name} phụ giúp."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

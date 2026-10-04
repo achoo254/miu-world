@@ -1,0 +1,80 @@
+{
+  "id": "side-kangaroo-hop",
+  "region": "nong-trai",
+  "chapter": 1,
+  "title": "Chuột túi nhảy xa cùng Chú Chuột Túi",
+  "status": "active",
+  "category": "side",
+  "summary": "Trên trục số cỏ xanh, bé tính bước nhảy cho chú chuột túi đáp trúng củ cà rốt ngon lành.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, bạn chỉ đường cho chuột túi",
+    "where": "Sân cỏ khu chăn nuôi",
+    "goal": "Đón đúng mười hai bước nhảy của chú chuột túi nhé!",
+    "play": "Chuột túi nhảy đều, mỗi lần đúng bằng số trên tấm biển.",
+    "learn": "Cộng dồn khoảng cách đều trên trục số",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Cỏ non trên sân khu chăn nuôi còn tốt lắm, mai cậu lại ra nhảy thi cùng tớ nha."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "chu-chuot-tui-nhay",
+      "lines": [
+        {
+          "speaker": "Chú Chuột Túi Nhảy",
+          "text": "Xin chào {name}, tớ có đôi chân lò xo thích bật nhảy qua từng vạch số đấy."
+        },
+        {
+          "speaker": "Chú Chuột Túi Nhảy",
+          "text": "Cậu nhìn khoảng cách ghi trên biển rồi đặt miếng cà rốt đúng điểm tớ sẽ rơi xuống nha."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Để tớ chọn chỗ đáp cho cậu!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Chuột túi nhảy trục số",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Đón đúng mười hai bước nhảy của chú chuột túi nhé!",
+      "game": "kangaroo-hop",
+      "goal": 12
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Chú Chuột Túi Nhảy bật tưng tưng khoái chí, tấm tắc khen {name} tính nhẩm siêu đẳng!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Cỏ non trên sân khu chăn nuôi còn tốt lắm, mai cậu lại ra nhảy thi cùng tớ nha."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

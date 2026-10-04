@@ -1,0 +1,80 @@
+{
+  "id": "side-rice-pound",
+  "region": "nong-trai",
+  "chapter": 1,
+  "title": "Giã gạo chày đôi với Bác Nông Dân Thành",
+  "status": "active",
+  "category": "side",
+  "summary": "Bên cối đá rộn ràng, Bác Nông Dân Thành cùng bé nhịp nhàng giã từng mẻ thóc trắng ngần.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, bé giã gạo nhịp nhàng",
+    "where": "Bờ ruộng khu trồng trọt",
+    "goal": "Nhịp nhàng giã xong ba mươi lăm cối thóc trắng tinh nhé!",
+    "play": "Bác nông dân giã một nhịp, {name} giã nhịp tiếp theo, cứ thế luân phiên.",
+    "learn": "Lắng nghe nhịp điệu và phối hợp ăn ý",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Gạo mới thơm phức rồi, lúc nào muốn nghe tiếng chày giã thì ghé bác chơi."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "bac-nong-dan-thanh",
+      "lines": [
+        {
+          "speaker": "Bác Nông Dân Thành",
+          "text": "Lại đây nào {name}, cối thóc đầy ắp đang chờ hai bác cháu mình giã chung đấy."
+        },
+        {
+          "speaker": "Bác Nông Dân Thành",
+          "text": "Bác giã một nhịp thì cháu đón nhịp tiếp theo, chớ để hai chiếc chày va vào nhau."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu cầm chắc chày gỗ rồi!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Giã gạo",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Nhịp nhàng giã xong ba mươi lăm cối thóc trắng tinh nhé!",
+      "game": "rice-pound",
+      "goal": 35
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Bác Nông Dân Thành vỗ vai {name}, tấm tắc khen nhịp chày đôi đều tăm tắp!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Gạo mới thơm phức rồi, lúc nào muốn nghe tiếng chày giã thì ghé bác chơi."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

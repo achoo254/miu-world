@@ -1,0 +1,80 @@
+{
+  "id": "side-mini-golf",
+  "region": "dao-bi-an",
+  "chapter": 1,
+  "title": "Đánh gôn mini trên bãi cát cùng Khỉ Nhảy Dù Đảo Cổ",
+  "status": "active",
+  "category": "side",
+  "summary": "Sân cát mấp mô uốn lượn, bé kéo gậy căn lực đánh bóng men theo vách lọt gọn vào hố cờ.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, tay gôn cừ khôi bờ biển",
+    "where": "Dưới bóng cây dừa nghiêng",
+    "goal": "Đánh bóng lăn trúng hố cờ đạt sáu điểm thật xuất sắc nhé!",
+    "play": "{name} chạm rồi kéo ngược lại, thả tay để đánh bóng. Kéo càng dài bóng càng mạnh.",
+    "learn": "Ước lượng lực kéo và hướng bóng dội lại",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Sân cát bờ biển còn nhiều chướng ngại mới, Khỉ con đợi {name} so tài đường gậy."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "khi-nhay-du-dao",
+      "lines": [
+        {
+          "speaker": "Khỉ Nhảy Dù Đảo Cổ",
+          "text": "Tớ vừa tạo một sân gôn mini quanh gốc dừa nè, {name} thi đánh bóng với tớ đi!"
+        },
+        {
+          "speaker": "Khỉ Nhảy Dù Đảo Cổ",
+          "text": "Kéo ngược lại để lấy đà rồi thả tay, nhớ đừng đánh quá mạnh kẻo bóng nhảy qua hố."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ ngắm đường lăn vào lỗ!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Golf mini",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Đánh bóng lăn trúng hố cờ đạt sáu điểm thật xuất sắc nhé!",
+      "game": "mini-golf",
+      "goal": 6
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Khỉ con gãi đầu cười toe: bóng của {name} lăn lượn một đường rồi tụt tọt vào lỗ!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Sân cát bờ biển còn nhiều chướng ngại mới, Khỉ con đợi {name} so tài đường gậy."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

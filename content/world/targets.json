@@ -1,13 +1,49 @@
 {
   "version": 1,
   "targets": {
+    "anh-lai-xe-dung": {
+      "name": "Anh Lái Xe Đụng",
+      "look": "person-r-anh-lai-xe-dung"
+    },
+    "anh-tho-sua-mai": {
+      "name": "Anh Thợ Sửa Mái",
+      "look": "person-i-anh-tho-sua-mai"
+    },
     "ba-gau-nau": {
       "name": "Bà Gấu Nâu",
       "look": "chibi-bear-mat-ong-dress-blue"
     },
+    "ba-nam-ke-chuyen": {
+      "name": "Bà Năm Kể Chuyện",
+      "look": "person-a-ba-nam-ke-chuyen"
+    },
     "bac-cau-ca-son": {
       "name": "Bác câu cá Sơn",
       "look": "person-k"
+    },
+    "bac-lai-xe-hai": {
+      "name": "Bác Lái Xe Hải",
+      "look": "person-b-bac-lai-xe-hai"
+    },
+    "bac-nong-dan-thanh": {
+      "name": "Bác Nông Dân Thành",
+      "look": "person-b-bac-nong-dan-thanh"
+    },
+    "bac-quang-luoi-bien": {
+      "name": "Bác Quăng Lưới Biển",
+      "look": "person-h-bac-quang-luoi-bien"
+    },
+    "bac-tho-khoa-thanh": {
+      "name": "Bác Thợ Khóa Thành",
+      "look": "person-h-bac-tho-khoa-thanh"
+    },
+    "bac-thoi-com-thi": {
+      "name": "Bác Thổi Cơm Thi",
+      "look": "person-j-bac-thoi-com-thi"
+    },
+    "bac-thu-ngan-vui-ve": {
+      "name": "Bác Thu Ngân Vui Vẻ",
+      "look": "person-q-bac-thu-ngan-vui-ve"
     },
     "ban-doc-sach": {
       "name": "Bản danh sách",
@@ -31,6 +67,34 @@
       "name": "Bê Bông",
       "look": "calf"
     },
+    "be-chan-ga-con": {
+      "name": "Bé Chăn Gà Con",
+      "look": "person-f-be-chan-ga-con"
+    },
+    "be-chi-huy": {
+      "name": "Bé Đội Viên",
+      "look": "person-c-be-chi-huy"
+    },
+    "be-danh-cu-son": {
+      "name": "Bé Đánh Cù Sơn",
+      "look": "person-n-be-danh-cu-son"
+    },
+    "be-gap-giay-vui": {
+      "name": "Bé Gấp Giấy Vui",
+      "look": "person-f-be-gap-giay-vui"
+    },
+    "be-me-bang-so": {
+      "name": "Bé Mê Bảng Số",
+      "look": "person-k-be-me-bang-so"
+    },
+    "be-nem-lia-thia": {
+      "name": "Bé Ném Lia Thia",
+      "look": "person-k-be-nem-lia-thia"
+    },
+    "be-xiec-vui-ve": {
+      "name": "Bé Xiếc Vui Vẻ",
+      "look": "person-f-be-xiec-vui-ve"
+    },
     "bo-chuong-dong": {
       "name": "Bò Chuông Đồng",
       "look": "animal-cow"
@@ -53,6 +117,10 @@
       "name": "Cá Bống",
       "look": "animal-fish"
     },
+    "canh-cut-khuc-con-cau": {
+      "name": "Cánh Cụt Khúc Côn Cầu",
+      "look": "animal-penguin-canh-cut-khuc-con-cau"
+    },
     "canh-cut-pin": {
       "name": "Cánh Cụt Pin",
       "look": "animal-penguin",
@@ -74,13 +142,25 @@
       "name": "Cáo Phi Công",
       "look": "chibi-fox-do-jacket-green"
     },
+    "cao-tuyet-dieu-khac": {
+      "name": "Cáo Tuyết Điêu Khắc",
+      "look": "animal-fox-cao-tuyet-dieu-khac"
+    },
     "cao-tuyet-nhay-cau": {
       "name": "Cáo Tuyết Nhảy Cầu",
       "look": "chibi-fox-tuyet-vest-shorts-navy"
     },
+    "chi-bong-chuyen-que": {
+      "name": "Chị Bống Chuyền Que",
+      "look": "person-l-chi-bong-chuyen-que"
+    },
     "chi-tho-nhay-day": {
       "name": "Chị Thỏ Nhảy Dây",
       "look": "chibi-rabbit-xam-vest-shorts-green"
+    },
+    "chi-tiem-tap-hoa": {
+      "name": "Chị Tiệm Tạp Hóa",
+      "look": "person-c-chi-tiem-tap-hoa"
     },
     "chim-canh-cut-pin": {
       "name": "Cánh Cụt Pin",
@@ -89,6 +169,10 @@
     "cho-canh-sat-coi": {
       "name": "Chó Cảnh Sát Còi",
       "look": "animal-dog-cho-canh-sat-coi"
+    },
+    "cho-doi-truong": {
+      "name": "Chó Đội Trưởng",
+      "look": "animal-dog-cho-doi-truong"
     },
     "cho-giu-ao": {
       "name": "Chó Giữ Ao",
@@ -102,21 +186,65 @@
       "name": "Chó Mực",
       "look": "animal-dog"
     },
+    "chu-ban-banh-kem": {
+      "name": "Chú Bán Bánh Kem",
+      "look": "person-p-chu-ban-banh-kem"
+    },
+    "chu-chuot-tui-nhay": {
+      "name": "Chú Chuột Túi Nhảy",
+      "look": "animal-pig-chu-chuot-tui-nhay"
+    },
+    "chu-dao-kenh-nuoc": {
+      "name": "Chú Đào Kênh Dẫn Nước",
+      "look": "person-h-chu-dao-kenh-nuoc"
+    },
+    "chu-do-chu-quang": {
+      "name": "Chú Đố Chữ Quang",
+      "look": "person-m-chu-do-chu-quang"
+    },
     "chu-hoi-cho-ti": {
       "name": "Chú hội chợ Tí",
       "look": "person-j"
+    },
+    "chu-lai-do-ba": {
+      "name": "Chú Lái Đò Ba",
+      "look": "person-h-chu-lai-do-ba"
     },
     "chu-ngu-dan-song": {
       "name": "Chú ngư dân Sóng",
       "look": "person-c"
     },
+    "chu-ro-bot-dong-ho": {
+      "name": "Chú Rô Bốt Đồng Hồ",
+      "look": "person-b-chu-ro-bot-dong-ho"
+    },
+    "chu-tho-dien-nhi": {
+      "name": "Chú Thợ Điện Nhí",
+      "look": "person-i-chu-tho-dien-nhi"
+    },
     "co-banh-mi-hanh": {
       "name": "Cô bánh mì Hạnh",
       "look": "person-e"
     },
+    "co-den-long-sen": {
+      "name": "Cô Đèn Lồng Sen",
+      "look": "person-e-co-den-long-sen"
+    },
     "co-hoi-lang": {
       "name": "Cô Hội Làng",
       "look": "person-h"
+    },
+    "co-nan-to-he": {
+      "name": "Cô Nặn Tò He",
+      "look": "person-o-co-nan-to-he"
+    },
+    "co-thu-thu-mai": {
+      "name": "Cô Thủ Thư Mai",
+      "look": "person-e-co-thu-thu-mai"
+    },
+    "cua-cang-cap-cua": {
+      "name": "Cua Càng Cắp Cua",
+      "look": "animal-crab-cua-cang-cap-cua"
     },
     "cua-kenh": {
       "name": "Cua Kềnh",
@@ -125,6 +253,10 @@
     "cua-luot-song": {
       "name": "Cua Lướt Sóng",
       "look": "animal-crab"
+    },
+    "cun-dom-don-nha": {
+      "name": "Cún Đốm Dọn Nhà",
+      "look": "animal-dog-cun-dom-don-nha"
     },
     "cun-lua": {
       "name": "Cún Lúa",
@@ -163,6 +295,10 @@
       "look": "open-book",
       "label": "Đọc nhật kí"
     },
+    "doi-hang-sau": {
+      "name": "Dơi Đêm Tai To",
+      "look": "animal-beaver-doi-hang-sau"
+    },
     "dom": {
       "name": "Lợn Rừng Đốm",
       "look": "animal-hog",
@@ -182,6 +318,10 @@
       "name": "Gà Con Chíp",
       "look": "animal-chick"
     },
+    "gau-bac-cuc-cau-ca": {
+      "name": "Gấu Bắc Cực Câu Cá",
+      "look": "animal-polar-gau-bac-cuc-cau-ca"
+    },
     "gau-bang-tuyet": {
       "name": "Gấu Băng Tuyết",
       "look": "animal-polar"
@@ -189,6 +329,14 @@
     "gau-banh-ngot": {
       "name": "Gấu Bánh Ngọt",
       "look": "chibi-bear-mat-ong-dress-blue"
+    },
+    "gau-bap-cay": {
+      "name": "Gấu Trèo Cây",
+      "look": "animal-panda-gau-bap-cay"
+    },
+    "gau-bo-dua": {
+      "name": "Gấu Bó Đũa",
+      "look": "animal-panda-gau-bo-dua"
     },
     "gau-dua-bao": {
       "name": "Gấu Đưa Báo",
@@ -258,6 +406,10 @@
       "look": "stump-old",
       "label": "Xem tờ lịch"
     },
+    "hai-cau-bong-chuyen": {
+      "name": "Hải Cẩu Bóng Chuyền",
+      "look": "animal-dog-hai-cau-bong-chuyen"
+    },
     "hai-ly-bai-co": {
       "name": "Hải Ly Cần",
       "look": "animal-beaver",
@@ -294,6 +446,10 @@
       "look": "animal-pig",
       "character": "heo-un"
     },
+    "hiep-si-guong-soi": {
+      "name": "Hiệp Sĩ Gương Soi",
+      "look": "person-j-hiep-si-guong-soi"
+    },
     "ho-coi-vang": {
       "name": "Hổ Còi Vàng",
       "look": "animal-tiger"
@@ -301,6 +457,14 @@
     "ho-van": {
       "name": "Hổ Vằn",
       "look": "animal-tiger"
+    },
+    "hoa-mi-rung": {
+      "name": "Họa Mi Rừng Xanh",
+      "look": "animal-parrot-hoa-mi-rung"
+    },
+    "huou-bong-ram": {
+      "name": "Hươu Đốm Rừng Rậm",
+      "look": "animal-deer-huou-bong-ram"
     },
     "huou-bong-ro": {
       "name": "Hươu Bóng Rổ",
@@ -335,9 +499,17 @@
       "name": "Khỉ Lanh",
       "look": "animal-monkey"
     },
+    "khi-nhay-du-dao": {
+      "name": "Khỉ Nhảy Dù Đảo Cổ",
+      "look": "animal-monkey-khi-nhay-du-dao"
+    },
     "khi-thuyen-truong": {
       "name": "Khỉ Thuyền Trưởng",
       "look": "animal-monkey-oi"
+    },
+    "khi-tinh-nhanh": {
+      "name": "Khỉ Tính Nhanh",
+      "look": "animal-monkey-khi-tinh-nhanh"
     },
     "koala-ghep-tranh": {
       "name": "Koala Ghép Tranh",
@@ -363,6 +535,10 @@
       "name": "Mèo Bánh Bao",
       "look": "animal-cat"
     },
+    "meo-bep-truong": {
+      "name": "Mèo Bếp Trưởng",
+      "look": "animal-cat-meo-bep-truong"
+    },
     "meo-dai-su": {
       "name": "Mèo Đại Sứ",
       "look": "animal-cat"
@@ -379,6 +555,14 @@
       "name": "Mèo Gương Thần",
       "look": "chibi-cat-trang-jacket-red"
     },
+    "meo-hoa-si": {
+      "name": "Mèo Vẽ Màu",
+      "look": "animal-cat-meo-hoa-si"
+    },
+    "meo-hop-nhac": {
+      "name": "Mèo Hộp Nhạc",
+      "look": "animal-cat-meo-hop-nhac"
+    },
     "meo-lop-truong": {
       "name": "Mèo Lớp Trưởng",
       "look": "chibi-cat-cam-overalls"
@@ -390,6 +574,10 @@
     "meo-tra-da": {
       "name": "Mèo Trà Đá",
       "look": "chibi-cat-xam-jacket-green"
+    },
+    "meo-xep-khoi": {
+      "name": "Mèo Xếp Khối",
+      "look": "animal-cat-meo-xep-khoi"
     },
     "nai-dom-dom": {
       "name": "Nai Đom Đóm",
@@ -403,9 +591,25 @@
       "name": "Nai Mơ",
       "look": "animal-deer"
     },
+    "nai-nho-vach-da": {
+      "name": "Nai Nhỏ Vách Đá",
+      "look": "animal-deer-nai-nho-vach-da"
+    },
     "nai-tri-nho": {
       "name": "Nai Trí Nhớ",
       "look": "animal-deer-nai-tri-nho"
+    },
+    "nghe-nhan-mua-roi": {
+      "name": "Nghệ Nhân Múa Rối",
+      "look": "person-d-nghe-nhan-mua-roi"
+    },
+    "ngu-lam-quan-thap": {
+      "name": "Ngự Lâm Quân Tháp Cao",
+      "look": "person-q-ngu-lam-quan-thap"
+    },
+    "nguoi-tuyet-dem-bac": {
+      "name": "Người Tuyết Đếm Bậc",
+      "look": "animal-beaver-nguoi-tuyet-dem-bac"
     },
     "nha-bo": {
       "name": "Bố",
@@ -467,9 +671,21 @@
       "look": "memo",
       "label": "Đọc lời dặn"
     },
+    "ong-bay-co-ganh": {
+      "name": "Ông Bảy Cờ Gánh",
+      "look": "person-g-ong-bay-co-ganh"
+    },
+    "ong-cu-trong-vuon": {
+      "name": "Ông Cụ Trông Vườn",
+      "look": "person-d-ong-cu-trong-vuon"
+    },
     "ong-hong": {
       "name": "Ong Hồng",
       "look": "animal-bee"
+    },
+    "ong-lao-phao-dat": {
+      "name": "Ông Lão Pháo Đất",
+      "look": "person-g-ong-lao-phao-dat"
     },
     "ong-nu": {
       "name": "Ong Nụ",
@@ -488,13 +704,29 @@
       "name": "Ông Vện",
       "look": "animal-dog"
     },
+    "quan-ma-hoang-gia": {
+      "name": "Quản Mã Hoàng Gia",
+      "look": "person-m-quan-ma-hoang-gia"
+    },
     "sau-xanh": {
       "name": "Sâu Xanh",
       "look": "animal-caterpillar"
     },
+    "soc-bong-bay": {
+      "name": "Sóc Đu Đuôi",
+      "look": "animal-fox-soc-bong-bay"
+    },
     "su-tu-vang": {
       "name": "Sư Tử Vàng",
       "look": "animal-lion"
+    },
+    "te-tuong-co-the": {
+      "name": "Tể Tướng Cờ Vua",
+      "look": "person-d-te-tuong-co-the"
+    },
+    "thay-do-chu-han": {
+      "name": "Thầy Đố Chữ Hán",
+      "look": "person-d-thay-do-chu-han"
     },
     "tho-giu-vuon": {
       "name": "Thỏ Giữ Vườn",
@@ -503,6 +735,10 @@
     "tho-lam-vuon": {
       "name": "Thỏ Làm Vườn",
       "look": "chibi-rabbit-nau-dress-blue"
+    },
+    "tho-mang-non": {
+      "name": "Thỏ Măng Non",
+      "look": "animal-bunny-tho-mang-non"
     },
     "tho-ngam-sao": {
       "name": "Thỏ Ngắm Sao",
@@ -523,6 +759,10 @@
     "tho-ti": {
       "name": "Thỏ Tí",
       "look": "animal-bunny"
+    },
+    "thuyen-truong-vet-bien": {
+      "name": "Thuyền Trưởng Vẹt Biển",
+      "look": "animal-parrot-thuyen-truong-vet-bien"
     },
     "toan2-cd1-b01-co-ngan": {
       "name": "Cô Nguyệt",

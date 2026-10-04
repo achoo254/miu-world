@@ -1,0 +1,80 @@
+{
+  "id": "side-bus-jam",
+  "region": "trung-tam",
+  "chapter": 1,
+  "title": "Gỡ kẹt xe buýt cùng Bác Lái Xe Hải",
+  "status": "active",
+  "category": "side",
+  "summary": "Bến xe đông đúc giờ tan tầm: chọn hành khách bước lên xe buýt cùng màu sắc để giải tỏa ùn tắc.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, điều phối viên bến xe buýt",
+    "where": "Bến xe bên quảng trường",
+    "goal": "Đưa khách lên xe buýt giải tỏa tám chuyến xe nhé!",
+    "play": "Xe buýt màu nào thì chở đúng các bạn cùng màu, mỗi xe ba bạn.",
+    "learn": "Xếp hàng theo màu sắc và quản lý chỗ chờ",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Chuyến xe buýt sau sắp về bến, {name} rảnh lại ra bến xe quảng trường phụ bác nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "bac-lai-xe-hai",
+      "lines": [
+        {
+          "speaker": "Bác Lái Xe Hải",
+          "text": "Bác chào {name}, hành khách đang xếp hàng đông nghịt ở bến xe quảng trường này!"
+        },
+        {
+          "speaker": "Bác Lái Xe Hải",
+          "text": "Cháu chạm bạn có lối đi thoáng để lên xe đúng màu, nhớ ghế chờ chỉ có năm chỗ thôi nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Đúng màu lên xe, bến bãi thông thoáng!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Khách lên xe buýt",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Đưa khách lên xe buýt giải tỏa tám chuyến xe nhé!",
+      "game": "bus-jam",
+      "goal": 8
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Bác Lái Xe Hải bấm còi pim pim: cháu {name} điều phối tài tình, bến xe trật tự trở lại rồi!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Chuyến xe buýt sau sắp về bến, {name} rảnh lại ra bến xe quảng trường phụ bác nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

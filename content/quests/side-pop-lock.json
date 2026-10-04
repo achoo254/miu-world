@@ -1,0 +1,80 @@
+{
+  "id": "side-pop-lock",
+  "region": "lau-dai",
+  "chapter": 1,
+  "title": "Mở khóa cơ quan xoay cùng Ngự Lâm Quân Tháp Cao",
+  "status": "active",
+  "category": "side",
+  "summary": "Vòng xoay ổ khóa kho báu quay vòng tít, bé chạm đúng lúc kim chạm điểm vàng để mở lẫy.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, chuyên gia mở khóa xoay tài ba",
+    "where": "Chân tháp góc thành lâu đài",
+    "goal": "Chạm đúng lúc mở tung bốn ổ khóa cơ quan xoay nhé!",
+    "play": "Kim đỏ chạy vòng quanh ổ khóa. {name} chạm màn hình đúng lúc kim chạm đồng xu vàng.",
+    "learn": "Căn nhịp thời gian xoay tròn và bấm nút dứt khoát",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Kho báu đã an toàn trong tháp, khi nào rảnh cháu cứ ghé tháp góc thành lâu đài chơi."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "ngu-lam-quan-thap",
+      "lines": [
+        {
+          "speaker": "Ngự Lâm Quân Tháp Cao",
+          "text": "Rương bảo vật trên tháp góc bị kẹt ổ khóa cơ quan xoay rồi, {name} vào mở giúp với!"
+        },
+        {
+          "speaker": "Ngự Lâm Quân Tháp Cao",
+          "text": "Khi kim đỏ xoay vòng chạm trúng đồng xu vàng, cháu chạm màn hình thật chuẩn để mở từng chốt nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu bấm mở khóa đúng lúc!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Mở khóa rương",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Chạm đúng lúc mở tung bốn ổ khóa cơ quan xoay nhé!",
+      "game": "pop-lock",
+      "goal": 4
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Cạch một tiếng ổ khóa bật mở, Ngự Lâm Quân Tháp Cao khen {name} có phản xạ tuyệt đỉnh!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Kho báu đã an toàn trong tháp, khi nào rảnh cháu cứ ghé tháp góc thành lâu đài chơi."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

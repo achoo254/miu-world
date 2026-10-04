@@ -1,0 +1,80 @@
+{
+  "id": "side-pottery-wheel",
+  "region": "cho-phien",
+  "chapter": 1,
+  "title": "Bàn xoay gốm sứ cùng Cô Nặn Tò He",
+  "status": "active",
+  "category": "side",
+  "summary": "Vuốt nhẹ bàn tay ôm lấy khối đất sét đang quay tròn để uốn thành chiếc bình hoa mềm mại.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, thợ gốm nhỏ tuổi tài năng của phiên chợ",
+    "where": "Đầu dãy sạp hoa rực rỡ",
+    "goal": "Tạo hình khéo léo hoàn thành bốn chiếc bình gốm tráng men nhé!",
+    "play": "Bàn xoay đang quay. {name} kéo ngón tay dọc theo thành bình để vuốt đất sét.",
+    "learn": "Khéo léo điều khiển ngón tay theo đường viền mẫu",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Bàn xoay gốm bên sạp hoa luôn rộn ràng đón cháu đến trổ tài nhào nặn."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "co-nan-to-he",
+      "lines": [
+        {
+          "speaker": "Cô Nặn Tò He",
+          "text": "Bàn xoay gốm làng nghề đang quay tít kìa {name} ơi!"
+        },
+        {
+          "speaker": "Cô Nặn Tò He",
+          "text": "Cháu lướt ngón tay vuốt nhẹ đất sét cho khít với đường viền vàng nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu vuốt gốm tạo dáng bình hoa!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Nặn gốm Bát Tràng",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Tạo hình khéo léo hoàn thành bốn chiếc bình gốm tráng men nhé!",
+      "game": "pottery-wheel",
+      "goal": 4
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Chiếc bình gốm tròn xoe duyên dáng, {name} vuốt đất sét điêu luyện ghê!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Bàn xoay gốm bên sạp hoa luôn rộn ràng đón cháu đến trổ tài nhào nặn."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

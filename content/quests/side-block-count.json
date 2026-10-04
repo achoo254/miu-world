@@ -1,0 +1,80 @@
+{
+  "id": "side-block-count",
+  "region": "nui-tuyet",
+  "chapter": 1,
+  "title": "Đếm khối hộp tuyết cùng Người Tuyết Đếm Bậc",
+  "status": "active",
+  "category": "side",
+  "summary": "Những khối hộp tuyết xếp chồng so le, bé đếm cả những khối bị khuất phía sau để tìm số lượng.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, chuyên gia đếm khối hình không gian",
+    "where": "Đài quan sát đỉnh núi tuyết",
+    "goal": "Đếm chính xác số khối hộp trong mười chồng tuyết xếp tầng nhé!",
+    "play": "Đếm xem chồng có bao nhiêu khối hộp, rồi chạm số đúng.",
+    "learn": "Tưởng tượng và đếm khối lập phương bị khuất",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Tháp tuyết trên đỉnh còn nhiều hình mới, Người Tuyết mong {name} ghé đếm cùng."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "nguoi-tuyet-dem-bac",
+      "lines": [
+        {
+          "speaker": "Người Tuyết Đếm Bậc",
+          "text": "Tớ vừa xếp những khối hộp tuyết vuông vức thành tháp này, {name} đoán xem có mấy khối?"
+        },
+        {
+          "speaker": "Người Tuyết Đếm Bậc",
+          "text": "Đừng quên đếm cả những khối hộp nằm đỡ ở hàng dưới bị che khuất nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ đếm kỹ từng tầng một!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Đếm khối hộp",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Đếm chính xác số khối hộp trong mười chồng tuyết xếp tầng nhé!",
+      "game": "block-count",
+      "goal": 10
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Người Tuyết gật gù thán phục: mắt {name} sáng như sao, khối ẩn nào cũng thấy!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Tháp tuyết trên đỉnh còn nhiều hình mới, Người Tuyết mong {name} ghé đếm cùng."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

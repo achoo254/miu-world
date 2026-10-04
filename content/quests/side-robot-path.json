@@ -1,0 +1,80 @@
+{
+  "id": "side-robot-path",
+  "region": "nha-cua-be",
+  "chapter": 1,
+  "title": "Lập trình đường đi rô bốt hút bụi cùng Cún Đốm",
+  "status": "active",
+  "category": "side",
+  "summary": "Bé xếp các mũi tên lệnh tiến, rẽ trái, rẽ phải để chú rô bốt hút sạch bụi mà không va bàn ghế.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, kỹ sư lập trình rô bốt nhí",
+    "where": "Góc thảm phòng khách ấm cúng",
+    "goal": "Lập trình lộ trình hoàn hảo vượt qua bốn căn phòng sạch bụi nhé!",
+    "play": "{name} chạm các nút để xếp lệnh: đi một ô, rẽ trái, rẽ phải. Nút đỏ xóa lệnh cuối.",
+    "learn": "Tư duy bước tiến logic và định hướng không gian",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Phòng khách còn nhiều ngóc ngách cần lau, Cún Đốm đợi {name} điều khiển rô bốt tiếp."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "cun-dom-don-nha",
+      "lines": [
+        {
+          "speaker": "Cún Đốm Dọn Nhà",
+          "text": "Chú rô bốt hút bụi đang nằm chờ lệnh chạy kìa, {name} xếp đường đi giúp tớ nhé!"
+        },
+        {
+          "speaker": "Cún Đốm Dọn Nhà",
+          "text": "Bấm các nút tiến bước và rẽ góc để rô bốt đi qua hết bụi mà không đụng chân bàn."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Để tớ lập trình đường chạy!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Rô-bốt hút bụi",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Lập trình lộ trình hoàn hảo vượt qua bốn căn phòng sạch bụi nhé!",
+      "game": "robot-path",
+      "goal": 4
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Cún Đốm sủa vang thích thú: sàn nhà sáng bóng nhờ đường đi thông minh của {name}!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Phòng khách còn nhiều ngóc ngách cần lau, Cún Đốm đợi {name} điều khiển rô bốt tiếp."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

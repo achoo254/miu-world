@@ -1,0 +1,80 @@
+{
+  "id": "side-bat-echo",
+  "region": "khu-rung-bi-mat",
+  "chapter": 1,
+  "title": "Dơi con tìm đường trong hang với Dơi Đêm Tai To",
+  "status": "active",
+  "category": "side",
+  "summary": "Lòng hang đá tối tăm mịt mù: chạm phát sóng âm soi rõ vách đá rồi dắt dơi con bay ra ngoài.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, hoa tiêu thám hiểm hang sâu",
+    "where": "Cửa hang đá ẩm ướt",
+    "goal": "Đưa dơi con vượt qua bốn khúc hang tối nhé!",
+    "play": "Hang tối om! {name} chạm nhanh để dơi kêu: vách hang quanh dơi sáng lên một lúc.",
+    "learn": "Định vị bằng tiếng vang và ghi nhớ ngã rẽ",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Khi nào muốn thám hiểm hang đá kỳ bí, {name} cứ tìm Dơi Đêm Tai To ở cửa hang nha."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "doi-hang-sau",
+      "lines": [
+        {
+          "speaker": "Dơi Đêm Tai To",
+          "text": "Hang đá sâu thăm thẳm tối om, {name} giúp chú dơi nhỏ tìm lối ra cửa hang với!"
+        },
+        {
+          "speaker": "Dơi Đêm Tai To",
+          "text": "Cậu chạm để dơi phát tiếng kêu lóe sáng vách đá, rồi kéo ngón tay dẫn dơi bay theo nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Sóng âm dẫn lối, bay ra ánh trăng nào!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Dơi con tìm đường",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Đưa dơi con vượt qua bốn khúc hang tối nhé!",
+      "game": "bat-echo",
+      "goal": 4
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Dơi Đêm Tai To vỗ cánh tí tách: {name} nhớ đường siêu thật, đã thấy ánh trăng rọi rồi!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Khi nào muốn thám hiểm hang đá kỳ bí, {name} cứ tìm Dơi Đêm Tai To ở cửa hang nha."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "id": "side-jar-estimate",
+  "region": "cho-phien",
+  "chapter": 1,
+  "title": "Ước lượng kẹo trong lọ cùng Bác Thu Ngân Vui Vẻ",
+  "status": "active",
+  "category": "side",
+  "summary": "Liếc mắt ước lượng số kẹo ngọt trong lọ thủy tinh rồi kéo kim đồng hồ chỉ số gần đúng nhất.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, bạn nhỏ ước lượng số lượng tinh tế",
+    "where": "Dãy hàng cân đong trong chợ",
+    "goal": "Ước lượng gần đúng số kẹo ngọt trong sáu lọ thủy tinh nhé!",
+    "play": "Hũ kẹo chỉ hiện ba giây, {name} nhìn thật nhanh nhé.",
+    "learn": "Ước lượng nhanh số lượng vật thể bằng mắt",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Những lọ kẹo đủ màu trên kệ cân đong luôn đợi cháu ghé ước lượng."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "bac-thu-ngan-vui-ve",
+      "lines": [
+        {
+          "speaker": "Bác Thu Ngân Vui Vẻ",
+          "text": "{name} thử tài đoán xem trong lọ thủy tinh có bao nhiêu viên kẹo nhé!"
+        },
+        {
+          "speaker": "Bác Thu Ngân Vui Vẻ",
+          "text": "Cháu nhìn nhanh trong ba giây rồi kéo kim đến con số con nhắm chừng."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu ước lượng số kẹo ngay!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Đoán hũ kẹo",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Ước lượng gần đúng số kẹo ngọt trong sáu lọ thủy tinh nhé!",
+      "game": "jar-estimate",
+      "goal": 6
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Đoán sát sạt số kẹo luôn, đôi mắt của {name} ước lượng chuẩn ghê!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Những lọ kẹo đủ màu trên kệ cân đong luôn đợi cháu ghé ước lượng."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

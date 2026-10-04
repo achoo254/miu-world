@@ -1,0 +1,80 @@
+{
+  "id": "side-sack-race",
+  "region": "nong-trai",
+  "chapter": 1,
+  "title": "Nhảy bao bố nông trang với Chú Chuột Túi",
+  "status": "active",
+  "category": "side",
+  "summary": "Bao tải gai rộn rã trên đường đua sân cỏ, bé nhún nhảy thật nhịp để về đích đầu tiên.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, tay đua nhảy bao bố cừ khôi",
+    "where": "Sân cỏ khu chăn nuôi",
+    "goal": "Nhảy bao bố về đích trong ba lượt đua hào hứng nhé!",
+    "play": "Chạm để nhảy. Chạm lại ngay lúc bao vừa chạm đất thì nhảy tiếp nhanh hơn.",
+    "learn": "Bắt đúng nhịp tiếp đất để tạo lực đẩy bật xa",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Đường đua nông trang vui ơi là vui, có dịp cậu lại ghé sân cỏ nhảy bao bố tiếp."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "chu-chuot-tui-nhay",
+      "lines": [
+        {
+          "speaker": "Chú Chuột Túi Nhảy",
+          "text": "{name} ơi, hội thi nhảy bao bố của khu chăn nuôi chuẩn bị xuất phát rồi đấy!"
+        },
+        {
+          "speaker": "Chú Chuột Túi Nhảy",
+          "text": "Cậu chui vào bao gai, chạm màn hình khi chân chạm đất để lấy đà bật xa về đích nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ nhảy bao bố siêu nhanh!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Nhảy bao bố",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Nhảy bao bố về đích trong ba lượt đua hào hứng nhé!",
+      "game": "sack-race",
+      "goal": 3
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Chú Chuột Túi Nhảy trao vòng nguyệt quế rực rỡ, reo vang chúc mừng {name} vô địch!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Đường đua nông trang vui ơi là vui, có dịp cậu lại ghé sân cỏ nhảy bao bố tiếp."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

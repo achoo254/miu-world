@@ -1,0 +1,80 @@
+{
+  "id": "side-hole-grow",
+  "region": "trung-tam",
+  "chapter": 1,
+  "title": "Hố hút dọn sạch cùng Mèo Xếp Khối",
+  "status": "active",
+  "category": "side",
+  "summary": "Quảng trường vương rác và lá khô: điều khiển chiếc hố thần kỳ hút sạch mọi đồ vật từ nhỏ đến lớn.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người giữ sạch quảng trường",
+    "where": "Bờ đài phun nước tượng mèo",
+    "goal": "Hút sạch sẽ ba mươi hai món đồ vương trên quảng trường nhé!",
+    "play": "{name} kéo cái hố đi khắp sân. Đồ nào nhỏ hơn miệng hố sẽ rơi vào.",
+    "learn": "So sánh kích thước và lộ trình thu gom hợp lý",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Mỗi buổi chiều gió thổi lá rụng, {name} lại ra tượng mèo giúp hố thần kỳ dọn sân nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "meo-xep-khoi",
+      "lines": [
+        {
+          "speaker": "Mèo Xếp Khối",
+          "text": "Quanh tượng mèo vương nhiều đồ chơi và mảnh vụn quá, {name} dọn cùng tớ nhé!"
+        },
+        {
+          "speaker": "Mèo Xếp Khối",
+          "text": "Cậu kéo miệng hố hút đồ vật nhỏ trước để hố lớn dần lên, rồi nuốt trọn những đồ vật to hơn nha."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Hút sạch đồ vương, sân bãi tinh tươm!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Hố hút dọn sân",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Hút sạch sẽ ba mươi hai món đồ vương trên quảng trường nhé!",
+      "game": "hole-grow",
+      "goal": 32
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Mèo Xếp Khối cọ đầu mừng rỡ: bờ đài phun nước sạch bong không còn hạt bụi nhờ có {name}!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Mỗi buổi chiều gió thổi lá rụng, {name} lại ra tượng mèo giúp hố thần kỳ dọn sân nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "id": "side-rice-plant",
+  "region": "nong-trai",
+  "chapter": 1,
+  "title": "Cấy lúa thẳng hàng cùng Bác Nông Dân Thành",
+  "status": "active",
+  "category": "side",
+  "summary": "Bác Nông Dân Thành đón bé ra ruộng bùn, cùng cấy những cây mạ non xanh tươi thẳng lối.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, bạn nhỏ cấy mạ chăm chỉ",
+    "where": "Bờ ruộng khu trồng trọt",
+    "goal": "Cấy thẳng hàng được bốn mươi khóm mạ xanh tươi nhé!",
+    "play": "{name} lùi dần trên ruộng. Khi dấu mờ trong bùn vào vòng tròn ở tay, chạm để cắm mạ.",
+    "learn": "Căn khoảng cách đều đặn và bước lùi khéo léo",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Khi nào lúa trổ bông vàng ruộm, cháu nhớ ghé thăm bờ ruộng khu trồng trọt nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "bac-nong-dan-thanh",
+      "lines": [
+        {
+          "speaker": "Bác Nông Dân Thành",
+          "text": "Bác chào {name}, thửa ruộng đã bừa phẳng phiu đang đợi tay bé cấy mạ đấy."
+        },
+        {
+          "speaker": "Bác Nông Dân Thành",
+          "text": "Cháu bước lùi thật đều và cắm từng dảnh mạ non thẳng tắp theo đường dây nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu xuống ruộng cấy mạ ngay!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Cấy lúa thẳng hàng",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Cấy thẳng hàng được bốn mươi khóm mạ xanh tươi nhé!",
+      "game": "rice-plant",
+      "goal": 40
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Bác Nông Dân Thành khen {name} cấy lúa khéo tay chẳng kém gì người lớn!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Khi nào lúa trổ bông vàng ruộm, cháu nhớ ghé thăm bờ ruộng khu trồng trọt nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

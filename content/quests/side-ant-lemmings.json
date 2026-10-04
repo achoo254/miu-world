@@ -1,0 +1,80 @@
+{
+  "id": "side-ant-lemmings",
+  "region": "khu-rung-bi-mat",
+  "chapter": 1,
+  "title": "Dẫn đàn kiến về tổ cùng Sóc Đu Đuôi",
+  "status": "active",
+  "category": "side",
+  "summary": "Đàn kiến mải kiếm mồi bị lạc đường: chạm biến kiến thành chốt chặn hoặc bắc cầu qua khe đá.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người dẫn lối cho đàn kiến",
+    "where": "Bìa rừng gần bãi cỏ hoang",
+    "goal": "Dẫn đủ hai mươi bạn kiến về tổ an toàn nhé!",
+    "play": "Kiến cứ đi thẳng, gặp vật cản thì quay lại. {name} giúp kiến về tổ nhé!",
+    "learn": "Phán đoán đường đi và phối hợp bắc cầu",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Tổ kiến còn cần gom hạt nữa, rảnh rỗi {name} lại ghé bìa rừng chỉ đường tiếp nha."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "soc-bong-bay",
+      "lines": [
+        {
+          "speaker": "Sóc Đu Đuôi",
+          "text": "Đàn kiến con đang loay hoay tìm đường về tổ kìa {name} ơi."
+        },
+        {
+          "speaker": "Sóc Đu Đuôi",
+          "text": "Cậu chạm bạn kiến để làm trụ chặn, hoặc nằm bắc cầu giúp cả đàn bước qua khe nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Kiến ơi đi theo tớ, tớ mở đường cho!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Đàn kiến về tổ",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Dẫn đủ hai mươi bạn kiến về tổ an toàn nhé!",
+      "game": "ant-lemmings",
+      "goal": 20
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Sóc Đu Đuôi chia hạt dẻ khen: {name} chỉ đường thông minh, đàn kiến về đủ rồi!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Tổ kiến còn cần gom hạt nữa, rảnh rỗi {name} lại ghé bìa rừng chỉ đường tiếp nha."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

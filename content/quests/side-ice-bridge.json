@@ -1,0 +1,80 @@
+{
+  "id": "side-ice-bridge",
+  "region": "nui-tuyet",
+  "chapter": 1,
+  "title": "Bắc cầu băng qua hồ cùng Cánh Cụt Khúc Côn Cầu",
+  "status": "active",
+  "category": "side",
+  "summary": "Mặt hồ có nhiều hố sâu, bé dùng bông tuyết hóa phép đông đá để mở lối đi an toàn.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người xây cầu băng khéo léo",
+    "where": "Sân băng tự nhiên trên hồ",
+    "goal": "Hóa phép nối liền bốn cây cầu băng vượt qua hồ nước nhé!",
+    "play": "{name} chạm ô nước để đóng băng, mỗi ô tốn một bông tuyết.",
+    "learn": "Tiết kiệm lượt đi và nối đường thẳng hàng",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Mùa đông còn lạnh giá, Cánh Cụt đợi {name} ghé chơi và bắc thêm cầu băng."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "canh-cut-khuc-con-cau",
+      "lines": [
+        {
+          "speaker": "Cánh Cụt Khúc Côn Cầu",
+          "text": "Hồ băng nứt ra nhiều chỗ hiểm trở quá, {name} giúp tớ bắc cầu sang bờ kia nhé!"
+        },
+        {
+          "speaker": "Cánh Cụt Khúc Côn Cầu",
+          "text": "Chạm vào ô nước để đóng thành tảng đá băng vững chãi bước qua."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Để tớ ghép cầu băng thật chắc!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Đóng băng làm cầu",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Hóa phép nối liền bốn cây cầu băng vượt qua hồ nước nhé!",
+      "game": "ice-bridge",
+      "goal": 4
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Cánh Cụt chạy ào sang bờ: nhờ chiếc cầu của {name} mà đàn chim về tổ an toàn!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Mùa đông còn lạnh giá, Cánh Cụt đợi {name} ghé chơi và bắc thêm cầu băng."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "id": "side-peg-solitaire",
+  "region": "lau-dai",
+  "chapter": 1,
+  "title": "Cờ nhảy búng bi gỗ với Tể Tướng Cờ Vua",
+  "status": "active",
+  "category": "side",
+  "summary": "Bàn cờ chữ thập bằng gỗ quý, bé cho từng viên ngọc nhảy qua bạn kề bên để thu dọn bàn cờ.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, kỳ thủ cờ nhảy thông tuệ",
+    "where": "Đại sảnh ôn tập nguy nga",
+    "goal": "Nhảy cờ tài tình thu dọn được mười hai viên ngọc trên bàn cờ nhé!",
+    "play": "Chạm một viên ngọc rồi chạm lỗ trống bên kia viên kề nó: ngọc nhảy qua, viên giữa bị nhặt.",
+    "learn": "Tính toán bước đi trước sau và thu hẹp bàn cờ",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Nghệ thuật cờ nhảy cần sự suy xét cẩn trọng, rảnh rỗi cháu cứ tới đại sảnh đàm đạo cùng ta."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "te-tuong-co-the",
+      "lines": [
+        {
+          "speaker": "Tể Tướng Cờ Vua",
+          "text": "Mời {name} bước vào ván cờ nhảy cung đình truyền thống đầy tao nhã và thách thức này."
+        },
+        {
+          "speaker": "Tể Tướng Cờ Vua",
+          "text": "Cháu chọn viên ngọc nhảy qua ô bên cạnh để nhặt bỏ viên ở giữa, sao cho còn lại ít quân nhất nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu nhảy cờ thu dọn bàn cờ!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Nhảy quân còn một",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Nhảy cờ tài tình thu dọn được mười hai viên ngọc trên bàn cờ nhé!",
+      "game": "peg-solitaire",
+      "goal": 12
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Tể Tướng Cờ Vua đứng dậy chúc mừng {name} đã hoàn thành ván cờ với chiến thuật tuyệt luân!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Nghệ thuật cờ nhảy cần sự suy xét cẩn trọng, rảnh rỗi cháu cứ tới đại sảnh đàm đạo cùng ta."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

@@ -266,6 +266,316 @@
           "learn": "Tập trung quan sát và phản xạ"
         }
       ]
+    },
+    {
+      "id": "ba-nam-ke-chuyen",
+      "name": "Bà Năm Kể Chuyện",
+      "look": "person-a",
+      "tint": "#786898",
+      "where": "Trước ngõ nhà Mẩy",
+      "place": "Vườn hoa và ngõ nhà Mẩy",
+      "company": [
+        {
+          "routine": "reader",
+          "name": "Bé ngồi nghe kể chuyện",
+          "model": "person-b"
+        }
+      ],
+      "games": [
+        {
+          "game": "folk-riddle",
+          "title": "Câu đố dân gian cùng Bà Năm Kể Chuyện",
+          "summary": "Lắng nghe từng câu ca dao đố vui của bà rồi chạm chọn đúng hình ảnh giải đố.",
+          "lines": [
+            "{name} ngoan lại đây bà đọc cho nghe mấy câu đố dân gian xưa nào!",
+            "Cháu nghe kỹ lời thơ gợi mở rồi chạm vào hình đáp án đúng nhé."
+          ],
+          "choice": "Cháu giải đố cùng bà ngay!",
+          "prompt": "Giải mã đúng {goal} câu đố vui dân gian của bà nhé!",
+          "reward": "Cháu của bà thông minh sắc sảo quá, câu đố nào {name} cũng giải ra!",
+          "next": "Mảnh sân trước ngõ nhà Mẩy chiều nào bà cũng ngồi quạt mát đợi cháu.",
+          "who": "{name}, bạn nhỏ thông thái giải đố dân gian",
+          "learn": "Tư duy ngôn ngữ và suy luận hình tượng"
+        },
+        {
+          "game": "word-chain",
+          "title": "Nối từ tiếng Việt cùng Bà Năm Kể Chuyện",
+          "summary": "Tìm tiếng tiếp theo bắt đầu bằng tiếng cuối của từ trước để xếp thành dải rồng chữ dài.",
+          "lines": [
+            "Trò chơi nối từ tiếng mẹ đẻ vui lắm đó {name} ơi!",
+            "Cháu chọn thẻ chữ có tiếng đầu trùng với tiếng cuối của từ trước nhé."
+          ],
+          "choice": "Cháu nối tiếp từ ngữ ngay!",
+          "prompt": "Nối liền mạch tạo thành chuỗi {goal} từ ngữ tiếng Việt nhé!",
+          "reward": "Vốn từ phong phú tuyệt vời, {name} nối thành dải chữ dài thướt tha!",
+          "next": "Bà còn cả kho tàng từ ngữ hay muốn dạy cho cháu trước ngõ vườn hoa.",
+          "who": "{name}, người nối từ khéo léo của xóm nhỏ",
+          "learn": "Mở rộng vốn từ vựng tiếng Việt phong phú"
+        },
+        {
+          "game": "head-count",
+          "title": "Đếm đầu đoán con cùng Bà Năm Kể Chuyện",
+          "summary": "Quan sát các bạn chạy nhảy ra vào nhà rồi chọn đúng số bạn còn ở lại khi cánh cửa khép.",
+          "lines": [
+            "Mấy bạn nhỏ đang chơi trốn tìm trong nhà kìa {name}!",
+            "Cháu nhìn kỹ bạn nào vào bạn nào ra để đoán đúng số người bên trong nhé."
+          ],
+          "choice": "Cháu đếm đúng số bạn ngay!",
+          "prompt": "Đoán chuẩn số bạn trong nhà sau {goal} lần cửa khép lại nhé!",
+          "reward": "Mắt cháu tinh tường như chim sẻ, {name} đếm đâu chuẩn đấy!",
+          "next": "Căn nhà nhỏ ngõ Mẩy rộn rã tiếng cười luôn mở cửa đón cháu.",
+          "who": "{name}, bạn nhỏ đếm số tinh tường chăm chú",
+          "learn": "Theo dõi dòng chuyển động và cộng trừ nhẩm"
+        }
+      ]
+    },
+    {
+      "id": "anh-tho-sua-mai",
+      "name": "Anh Thợ Sửa Mái",
+      "look": "person-i",
+      "tint": "#e86838",
+      "where": "Đầu đường cạnh ruộng lúa mì",
+      "place": "Ruộng lúa mì",
+      "company": [
+        {
+          "routine": "porter",
+          "name": "Chú bê thùng vôi",
+          "model": "person-d"
+        }
+      ],
+      "games": [
+        {
+          "game": "roof-tiles",
+          "title": "Lợp ngói mái nhà cùng Anh Thợ Sửa Mái",
+          "summary": "Kéo từng viên ngói đỏ lợp từ dưới lên trên thẳng hàng để mái nhà kín mít che mưa nắng.",
+          "lines": [
+            "Mái nhà sắp xong rồi, {name} phụ anh một tay lợp ngói nhé!",
+            "Em xếp từng viên ngói đè mép lên nhau từ hàng dưới lên hàng trên nha."
+          ],
+          "choice": "Em chuyền ngói lợp mái ngay!",
+          "prompt": "Xếp ngay ngắn khít khao {goal} viên ngói đỏ tươi lên mái nhà nhé!",
+          "reward": "Mái ngói đỏ au phẳng lỳ che mưa gió, {name} làm thợ giỏi quá!",
+          "next": "Anh thợ sửa mái vẫn ở đầu đường ruộng lúa mì chờ em ghé phụ.",
+          "who": "{name}, thợ xây nhí khéo tay của xóm",
+          "learn": "Xếp lớp theo thứ tự từ dưới lên trên"
+        },
+        {
+          "game": "fire-hose",
+          "title": "Vòi rồng cứu hỏa cùng Anh Thợ Sửa Mái",
+          "summary": "Điều khiển vòi rồng phun tia nước vòng cung dập tắt các đốm lửa bùng lên bên khung cửa sổ.",
+          "lines": [
+            "Có đốm lửa bén vào đống rơm khô đầu đường rồi {name} ơi!",
+            "Em giữ ngón tay ngắm tia nước bay vòng cung dập tắt lửa nhanh nhé."
+          ],
+          "choice": "Em giữ vòi rồng dập lửa ngay!",
+          "prompt": "Phun nước dập tắt hoàn toàn {goal} đám lửa bùng lên nhé!",
+          "reward": "Khói tan lửa tắt sạch bong, {name} dũng cảm cứu nguy xóm làng!",
+          "next": "Bên ruộng lúa mì luôn có anh em thợ túc trực bảo vệ xóm nhỏ.",
+          "who": "{name}, lính cứu hỏa nhí dũng cảm nhanh nhẹn",
+          "learn": "Căn quỹ đạo cong của tia nước để trúng đích"
+        },
+        {
+          "game": "water-jugs",
+          "title": "Đong nước vào bình cùng Anh Thợ Sửa Mái",
+          "summary": "Rót qua lại giữa các can nước để đong đúng số lít theo yêu cầu đổ vào máng cho đàn bò uống.",
+          "lines": [
+            "{name} ơi, đàn bò khát nước cần đong đúng số lít nước mát này!",
+            "Em chạm chuyển nước giữa hai can cho tới khi được lượng vừa in nhé."
+          ],
+          "choice": "Em đong nước giúp đàn bò ngay!",
+          "prompt": "Đong chuẩn xác dung tích {goal} lần cho đàn bò uống thỏa thích nhé!",
+          "reward": "Đàn bò uống no nê nước mát, cảm ơn {name} tính toán tuyệt vời!",
+          "next": "Bình nước mát bên đầu ruộng lúa mì lúc nào cũng đợi em ghé đong.",
+          "who": "{name}, người đong nước tài tình thông minh",
+          "learn": "Tính toán dung tích chất lỏng bằng tư duy logic"
+        }
+      ]
+    },
+    {
+      "id": "chi-bong-chuyen-que",
+      "name": "Chị Bống Chuyền Que",
+      "look": "person-l",
+      "tint": "#c85888",
+      "where": "Hiên nhà ngắm trăng",
+      "place": "Hiên nhà đêm trăng và hang đá",
+      "company": [
+        {
+          "routine": "pupil",
+          "name": "Bạn nhỏ chơi chuyền",
+          "model": "person-f"
+        }
+      ],
+      "games": [
+        {
+          "game": "chi-chi",
+          "title": "Chi chi chành chành cùng Chị Bống Chuyền Que",
+          "summary": "Đặt ngón tay vào lòng bàn tay rồi rụt lại thật nhanh khi nghe thấy tiếng ập cuối bài đồng dao.",
+          "lines": [
+            "Chị xòe bàn tay đọc đồng dao, {name} vào chơi chi chi cùng chị nào!",
+            "Em đặt ngón tay vào, nghe đúng tiếng ập là phải rút tay ra ngay nhé."
+          ],
+          "choice": "Em đặt ngón tay vào đây chị!",
+          "prompt": "Rút tay kịp lúc tránh tiếng ập trọn {goal} lượt đồng dao nhé!",
+          "reward": "Ngón tay em thoăn thoắt như thoi đưa, chị không kịp bắt {name} đâu!",
+          "next": "Hiên nhà ngắm trăng lộng gió mát rượi luôn chờ em ra chơi chi chi.",
+          "who": "{name}, bạn nhỏ phản xạ nhanh như chớp",
+          "learn": "Lắng nghe cẩn thận và phản xạ rút tay chớp nhoáng"
+        },
+        {
+          "game": "keo-cua",
+          "title": "Kéo cưa lừa xẻ cùng Chị Bống Chuyền Que",
+          "summary": "Cùng nắm tay kéo cưa qua lại nhịp nhàng theo bóng cưa để xẻ ngọt từng khúc gỗ tròn.",
+          "lines": [
+            "Kéo cưa lừa xẻ ông thợ nào khỏe, {name} kéo cưa cùng chị nhé!",
+            "Em kéo ngón tay theo bóng cưa mờ chuyển động thật đều hai bên nha."
+          ],
+          "choice": "Em kéo cưa cùng chị nào!",
+          "prompt": "Giữ nhịp kéo cưa xẻ đứt ngọt ngào {goal} lóng gỗ thơm nhé!",
+          "reward": "Khúc gỗ xẻ xong tròn xoe mịn màng, {name} dẻo dai khỏe khoắn ghê!",
+          "next": "Tiếng kéo cưa cành cạch vui tai bên hiên đêm trăng đợi em quay lại.",
+          "who": "{name}, bạn nhỏ đồng điệu trong từng nhịp kéo",
+          "learn": "Phối hợp nhịp nhàng theo chuyển động đối xứng"
+        },
+        {
+          "game": "nu-na-nu-nong",
+          "title": "Nu na nu nống cùng Chị Bống Chuyền Que",
+          "summary": "Đếm từng bước nhịp theo bài ca đồng dao quen thuộc để chạm đúng chiếc chân sắp co lại.",
+          "lines": [
+            "{name} ơi, duỗi chân ra chiếu chị em mình chơi nu na nu nống nào!",
+            "Em nhẩm theo từng tiếng đồng dao rồi chạm chiếc chân sẽ co vào nhé."
+          ],
+          "choice": "Em duỗi chân chơi cùng chị!",
+          "prompt": "Đoán đúng chiếc chân co lại trong {goal} ván đồng dao nhé!",
+          "reward": "Nhịp đồng dao nào em cũng nhẩm đúng boong, {name} tài ghê cơ!",
+          "next": "Chiếc chiếu hoa dưới hiên trăng lúc nào cũng trải sẵn chờ em.",
+          "who": "{name}, người giữ nhịp đồng dao dí dỏm",
+          "learn": "Đếm nhịp tuần hoàn và dự đoán bước kết thúc"
+        }
+      ]
+    },
+    {
+      "id": "be-danh-cu-son",
+      "name": "Bé Đánh Cù Sơn",
+      "look": "person-n",
+      "tint": "#58a848",
+      "where": "Bãi đất thả bò đầu dốc",
+      "place": "Bãi thả bò",
+      "company": [
+        {
+          "routine": "pupil",
+          "name": "Bé xem con quay gỗ",
+          "model": "person-k"
+        }
+      ],
+      "games": [
+        {
+          "game": "spinning-top",
+          "title": "Quay cù gỗ tít mù cùng Bé Đánh Cù Sơn",
+          "summary": "Quăng mạnh con cù gỗ xuống bãi đất phẳng rồi quất dây tiếp sức cho cù quay tít thò lò.",
+          "lines": [
+            "Con cù gỗ xoan của tớ đẽo bóng loáng nè {name} ơi!",
+            "Cậu vuốt ném cù vào vòng rồi canh lúc cù lắc lư thì quất dây nhé."
+          ],
+          "choice": "Tớ quất cù quay tít ngay!",
+          "prompt": "Giữ cho con cù quay tròn tít mù đạt {goal} điểm thật đỉnh nhé!",
+          "reward": "Con cù quay tít reo vù vù giữa vòng tròn, {name} đánh cù siêu thật!",
+          "next": "Bãi thả bò đầu dốc đất phẳng lỳ đón cậu ra thi cù mỗi chiều.",
+          "who": "{name}, cao thủ đánh cù gỗ của xóm đồi",
+          "learn": "Cảm nhận thời điểm tiếp lực cho con quay"
+        },
+        {
+          "game": "swing-push",
+          "title": "Đẩy xích đu bay bổng cùng Bé Đánh Cù Sơn",
+          "summary": "Chạm đúng lúc xích đu lên tới điểm cao nhất để lấy đà vút bay chạm tới dải lộc đỏ thắm.",
+          "lines": [
+            "Gió lộng trên đồi mát quá, {name} lên xích đu bay cùng tớ đi!",
+            "Cậu chạm màn hình đúng lúc đu lên cao nhất phía sau để lấy đà nhé."
+          ],
+          "choice": "Tớ nhún đà bay bổng lên trời!",
+          "prompt": "Lấy đà nhún xích đu bay vút chạm {goal} lần dải lộc đỏ thắm nhé!",
+          "reward": "Xích đu vút cao chạm tới trời xanh lộng gió, {name} nhún cừ quá!",
+          "next": "Cây đu gỗ đầu dốc bãi bò vẫn đung đưa đợi cậu đến nhún bay.",
+          "who": "{name}, cánh chim nhỏ bay lượn trên xích đu",
+          "learn": "Nắm bắt chu kỳ con lắc và tiếp sức đúng nhịp"
+        },
+        {
+          "game": "skate-tricks",
+          "title": "Trượt ván làm trò cùng Bé Đánh Cù Sơn",
+          "summary": "Lướt ván gỗ qua dốc dốc rồi vuốt xoay làm những động tác xiếc ngoạn mục giữa không trung.",
+          "lines": [
+            "{name} có thích cảm giác lướt ván bay bổng trên bãi cỏ không?",
+            "Cậu nhảy qua gờ dốc rồi vuốt xoay ván đẹp mắt trước khi chạm đất nhé."
+          ],
+          "choice": "Tớ trượt ván biểu diễn ngay!",
+          "prompt": "Thực hiện thành công {goal} động tác lướt ván điệu nghệ nhé!",
+          "reward": "Cú xoay ván trên không đẹp như vũ điệu, {name} thật tài ba!",
+          "next": "Con dốc bãi thả bò lúc nào cũng sẵn sàng cho cậu thỏa sức lướt ván.",
+          "who": "{name}, tay lướt ván cừ khôi đầy tự tin",
+          "learn": "Phối hợp vuốt hướng nhanh nhạy giữa không trung"
+        }
+      ]
+    },
+    {
+      "id": "ong-bay-co-ganh",
+      "name": "Ông Bảy Cờ Gánh",
+      "look": "person-g",
+      "tint": "#687888",
+      "where": "Dưới giàn mướp xanh mát",
+      "place": "Giàn mướp cuối vườn",
+      "company": [
+        {
+          "routine": "reader",
+          "name": "Cụ ông xem cờ",
+          "model": "person-e"
+        }
+      ],
+      "games": [
+        {
+          "game": "co-ganh",
+          "title": "Cờ gánh dân gian cùng Ông Bảy Cờ Gánh",
+          "summary": "Di chuyển quân cờ khéo léo vào giữa hai quân đối phương để gánh trọn về phe của mình.",
+          "lines": [
+            "{name} lại đây dưới giàn mướp đọ ván cờ gánh với ông nào!",
+            "Cháu đi quân đỏ vào giữa hai quân xanh là gánh được cả đôi đấy."
+          ],
+          "choice": "Cháu đi nước cờ gánh đây ông!",
+          "prompt": "Gánh trọn vẹn đổi màu {goal} quân cờ trên bàn cờ gỗ nhé!",
+          "reward": "Nước cờ gánh bất ngờ và hiểm hóc quá, {name} làm ông thán phục rồi!",
+          "next": "Bàn cờ gánh mộc mạc dưới giàn mướp hoa vàng luôn đợi cháu ghé chơi.",
+          "who": "{name}, kỳ thủ nhí mưu lược trên bàn cờ gánh",
+          "learn": "Tư duy chiến thuật và chớp thời cơ thế cờ"
+        },
+        {
+          "game": "domino-match",
+          "title": "Nối quân domino cùng Ông Bảy Cờ Gánh",
+          "summary": "Tìm quân domino có số chấm tương ứng để ghép nối vào hai đầu chuỗi quân trên chiếu cờ.",
+          "lines": [
+            "Mấy quân domino chấm tròn này chơi rèn trí nhớ tốt lắm {name} à!",
+            "Cháu nhìn số chấm ở hai đầu hàng rồi đặt quân có chấm giống hệt nhé."
+          ],
+          "choice": "Cháu tìm quân domino ghép nối ngay!",
+          "prompt": "Ghép khớp đúng số chấm {goal} quân domino vào chuỗi dài nhé!",
+          "reward": "Quân cờ đặt xuống khớp từng nét chấm, {name} quan sát tinh ý lắm!",
+          "next": "Hộp cờ domino bằng gỗ ông cất bên chõng tre đợi cháu đến nối tiếp.",
+          "who": "{name}, người ghép domino tinh mắt tỉ mỉ",
+          "learn": "Đếm nhanh số chấm và so khớp hai đầu tương ứng"
+        },
+        {
+          "game": "petanque",
+          "title": "Bi sắt ném đích cùng Ông Bảy Cờ Gánh",
+          "summary": "Căn lực kéo tay ném viên bi sắt lăn tới thật gần viên bi đích màu vàng trên mặt đất.",
+          "lines": [
+            "Sân đất vườn nhà ông ném bi sắt là chuẩn nhất trần đời đó {name}!",
+            "Cháu kéo tay ngắm hướng rồi thả ra cho bi sắt lăn sát đích vàng nhé."
+          ],
+          "choice": "Cháu ném bi sắt sát đích vàng!",
+          "prompt": "Ném bi sắt áp sát đích vàng gom đủ {goal} điểm thắng lợi nhé!",
+          "reward": "Bi sắt của {name} dừng ngay sát sạt bi vàng, cú ném xuất thần!",
+          "next": "Khoảng sân râm mát cuối vườn giàn mướp luôn đón cháu đến ném bi sắt.",
+          "who": "{name}, tay ném bi sắt cự phách của xóm nhỏ",
+          "learn": "Căn lực tay và ước lượng khoảng cách tới đích"
+        }
+      ]
     }
   ],
   "residents": [

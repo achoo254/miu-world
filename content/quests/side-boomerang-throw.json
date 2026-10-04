@@ -1,0 +1,80 @@
+{
+  "id": "side-boomerang-throw",
+  "region": "khu-rung-bi-mat",
+  "chapter": 1,
+  "title": "Ném boomerang hái quả cùng Gấu Trèo Cây",
+  "status": "active",
+  "category": "side",
+  "summary": "Những chùm quả chín lủng lẳng tít ngọn cao: vuốt ném boomerang lượn vòng hái quả rồi đón lấy.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, tay ném boomerang cừ khôi",
+    "where": "Gốc đại thụ tán lá râm",
+    "goal": "Ném boomerang trúng hai mươi chùm quả chín nhé!",
+    "play": "{name} vuốt để ném boomerang qua chùm quả. Vuốt dài thì bay xa.",
+    "learn": "Ước lượng quỹ đạo bay vòng và bắt đúng nhịp",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Mùa quả chín vẫn còn nhiều, {name} nhớ ghé gốc cây cổ thụ chơi boomerang tiếp nha."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "gau-bap-cay",
+      "lines": [
+        {
+          "speaker": "Gấu Trèo Cây",
+          "text": "Quả rừng trên ngọn cao thơm nức mũi, {name} cùng ném boomerang thu hoạch với tớ đi!"
+        },
+        {
+          "speaker": "Gấu Trèo Cây",
+          "text": "Vuốt một đường cong thật chuẩn để ném, chờ boomerang quay về sáng vòng thì chụp lại nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Boomerang bay đi, đón thật êm tay!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Ném boomerang",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Ném boomerang trúng hai mươi chùm quả chín nhé!",
+      "game": "boomerang-throw",
+      "goal": 20
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Gấu Trèo Cây ôm đống quả tươi cười tít mắt: {name} ném vừa chuẩn vừa bắt dính tay!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Mùa quả chín vẫn còn nhiều, {name} nhớ ghé gốc cây cổ thụ chơi boomerang tiếp nha."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

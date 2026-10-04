@@ -1,0 +1,80 @@
+{
+  "id": "side-carp-waterfall",
+  "region": "lang-ven-song",
+  "chapter": 1,
+  "title": "Cá chép vượt Vũ Môn cùng Chú Lái Đò Ba",
+  "status": "active",
+  "category": "side",
+  "summary": "Chạm nhẹ tay để chú cá chép nhảy qua từng tầng thác nước róc rách lên bờ đá cao.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, bạn nhỏ đồng hành cùng cá chép",
+    "where": "Bãi cỏ ven bờ sông",
+    "goal": "Giúp đàn cá chép nhảy vượt qua mười hai bậc thác nước nhé!",
+    "play": "Chạm để cá chép nhảy lên mỏm đá trên. Nhảy lúc nước êm thôi nhé!",
+    "learn": "Canh đúng thời điểm nước êm để hành động",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Chú lái đò vẫn neo ở bãi cỏ ven sông đón cháu ghé chơi tiếp."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "chu-lai-do-ba",
+      "lines": [
+        {
+          "speaker": "Chú Lái Đò Ba",
+          "text": "{name} ơi, đàn cá chép đang rủ nhau vượt thác Vũ Môn kìa!"
+        },
+        {
+          "speaker": "Chú Lái Đò Ba",
+          "text": "Cháu canh lúc nước êm rồi hãy chạm để cá phóng lên nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu giúp cá chép nhảy ngay!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Cá chép vượt Vũ Môn",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Giúp đàn cá chép nhảy vượt qua mười hai bậc thác nước nhé!",
+      "game": "carp-waterfall",
+      "goal": 12
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Hay lắm {name}, đàn cá chép đã hóa rồng bay vút lên trời rồi!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Chú lái đò vẫn neo ở bãi cỏ ven sông đón cháu ghé chơi tiếp."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

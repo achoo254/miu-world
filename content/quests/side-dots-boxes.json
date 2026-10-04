@@ -1,0 +1,80 @@
+{
+  "id": "side-dots-boxes",
+  "region": "truong-hoc",
+  "chapter": 1,
+  "title": "Nối chấm khép ô cùng Mèo Vẽ Màu",
+  "status": "active",
+  "category": "side",
+  "summary": "Lưới chấm vuông vắn trên trang giấy vẽ: thay phiên kẻ từng đoạn thẳng để chiếm lấy ô vuông.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, kiện tướng cờ ô vuông",
+    "where": "Cửa phòng mĩ thuật",
+    "goal": "Chiến thắng bạn Cú một ván cờ nối ô vuông nhé!",
+    "play": "{name} và bạn Cú thay nhau chạm để nối một đoạn giữa hai chấm.",
+    "learn": "Tư duy chiến thuật và tính toán từng bước đi",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Bạn Cú hẹn ngày mai tái đấu, {name} nhớ ghé phòng mĩ thuật so tài cờ ô vuông tiếp nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "meo-hoa-si",
+      "lines": [
+        {
+          "speaker": "Mèo Vẽ Màu",
+          "text": "Tớ với bạn Cú đang so tài cờ chấm nối ô, {name} vào đấu thay một ván đi!"
+        },
+        {
+          "speaker": "Mèo Vẽ Màu",
+          "text": "Cậu nối nét giữa hai chấm kề nhau, ai khép kín được ô vuông thứ tư là ăn điểm ô đó nha."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Khép góc chiếm ô, tớ tính trước rồi!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Ô vuông nối chấm",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Chiến thắng bạn Cú một ván cờ nối ô vuông nhé!",
+      "game": "dots-boxes",
+      "goal": 1
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Mèo Vẽ Màu vỗ tay nồng nhiệt: {name} giăng bẫy quá khéo, chiếm trọn cả góc bàn cờ rồi!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Bạn Cú hẹn ngày mai tái đấu, {name} nhớ ghé phòng mĩ thuật so tài cờ ô vuông tiếp nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

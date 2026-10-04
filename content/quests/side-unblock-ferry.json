@@ -1,0 +1,80 @@
+{
+  "id": "side-unblock-ferry",
+  "region": "dao-bi-an",
+  "chapter": 1,
+  "title": "Mở đường cho thuyền thoát kẹt cùng Thuyền Trưởng Vẹt Biển",
+  "status": "active",
+  "category": "side",
+  "summary": "Cửa vịnh bị các mảng bè chặn lối, bé trượt các khối thuyền qua lại để đưa tàu vàng ra biển.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, thuyền trưởng tháo gỡ tắc nghẽn",
+    "where": "Trước lều thuyền trưởng hải tặc",
+    "goal": "Khéo léo giải cứu thuyền qua ba khúc kênh kẹt đá nhé!",
+    "play": "Mỗi chiếc thuyền chỉ trượt được theo chiều dài của nó.",
+    "learn": "Tư duy di chuyển từng bước có trật tự",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Biển cả còn nhiều chuyến hải trình, thuyền trưởng hẹn {name} hội ngộ trên bờ cát."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "thuyen-truong-vet-bien",
+      "lines": [
+        {
+          "speaker": "Thuyền Trưởng Vẹt Biển",
+          "text": "Chiếc thuyền buồm vàng của ta kẹt cứng giữa các bè gỗ rồi, {name} cứu nguy với!"
+        },
+        {
+          "speaker": "Thuyền Trưởng Vẹt Biển",
+          "text": "Kéo trượt từng con thuyền dọc theo mạn của nó để dọn trống đường ra cửa sông."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Để cháu mở đường cho thuyền ra khơi!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Thoát kẹt bến thuyền",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Khéo léo giải cứu thuyền qua ba khúc kênh kẹt đá nhé!",
+      "game": "unblock-ferry",
+      "goal": 3
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Vẹt Biển kêu to vui sướng: thuyền buồm của ta giương cánh lướt sóng nhờ {name} rồi!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Biển cả còn nhiều chuyến hải trình, thuyền trưởng hẹn {name} hội ngộ trên bờ cát."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

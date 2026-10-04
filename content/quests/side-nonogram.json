@@ -1,0 +1,80 @@
+{
+  "id": "side-nonogram",
+  "region": "nui-tuyet",
+  "chapter": 1,
+  "title": "Vẽ tranh ô tuyết cùng Cáo Tuyết Điêu Khắc",
+  "status": "active",
+  "category": "side",
+  "summary": "Bảng ô vuông có những con số gợi ý, bé tô màu từng ô để bức tranh ẩn giấu dần xuất hiện.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, họa sĩ tranh ô tuyết",
+    "where": "Giữa quảng trường làng tuyết",
+    "goal": "Tô đúng các ô số để hoàn thành hai bức tranh tuyết bí ẩn nhé!",
+    "play": "Số bên cạnh mỗi hàng, trên mỗi cột cho biết có mấy ô liền nhau được tô.",
+    "learn": "Tư duy logic theo hàng ngang và hàng dọc",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Bảng vẽ giữa làng còn nhiều trang mới, Cáo Tuyết chờ {name} ghé tô tiếp."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "cao-tuyet-dieu-khac",
+      "lines": [
+        {
+          "speaker": "Cáo Tuyết Điêu Khắc",
+          "text": "Tớ vừa vẽ xong câu đố tranh bí ẩn bằng những con số trên tuyết nè {name}!"
+        },
+        {
+          "speaker": "Cáo Tuyết Điêu Khắc",
+          "text": "Đếm số ô ở đầu mỗi hàng rồi chạm tô đúng vị trí để bức vẽ hiện ra."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Để tớ giải từng ô số nhé!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Tranh ô số",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Tô đúng các ô số để hoàn thành hai bức tranh tuyết bí ẩn nhé!",
+      "game": "nonogram",
+      "goal": 2
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Cáo Tuyết reo mừng: tranh {name} tô hiện lên rõ nét và sinh động quá!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Bảng vẽ giữa làng còn nhiều trang mới, Cáo Tuyết chờ {name} ghé tô tiếp."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

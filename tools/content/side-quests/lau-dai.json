@@ -215,6 +215,316 @@
           "learn": "So sánh và tìm điểm khác biệt"
         }
       ]
+    },
+    {
+      "id": "hiep-si-guong-soi",
+      "name": "Hiệp Sĩ Gương Soi",
+      "look": "person-j",
+      "tint": "#6878b8",
+      "where": "Trước sân hình khối hoàng cung",
+      "place": "Sân hình khối",
+      "company": [
+        {
+          "routine": "sentry",
+          "name": "Lính gác cổng thành",
+          "model": "person-q"
+        }
+      ],
+      "games": [
+        {
+          "game": "mirror-twins",
+          "title": "Hình phản chiếu qua gương cùng Hiệp Sĩ Gương Soi",
+          "summary": "Hai hiệp sĩ bước đi trên sàn đá hoa cương, bé dẫn đường sao cho cả hai cùng tới đích đối xứng.",
+          "lines": [
+            "Hiệp sĩ xin chào {name}, tấm gương ma thuật trong hoàng cung đang thử thách chúng ta đấy.",
+            "Khi cháu bước một ô, chiếc bóng trong gương cũng bước ngược hướng, hãy đưa cả hai về ngôi sao."
+          ],
+          "choice": "Cháu bước đi cùng chiếc bóng!",
+          "prompt": "Dẫn hai bạn qua gương tới đích thành công {goal} lần nhé!",
+          "reward": "Hiệp Sĩ Gương Soi nâng kiếm chào: {name} am hiểu phép đối xứng gương tài tình vô song!",
+          "next": "Sân hình khối hoàng cung luôn rộng mở, hiệp sĩ chờ cháu quay lại luyện tập phép gương.",
+          "who": "{name}, hiệp sĩ thấu hiểu gương thần",
+          "learn": "Quy luật đối xứng trục và điều khiển hai vật thể"
+        },
+        {
+          "game": "breakout",
+          "title": "Bắn bóng phá gạch hoàng gia với Hiệp Sĩ Gương Soi",
+          "summary": "Bức tường thành gạch cổ kính cần dọn dẹp, bé đỡ thanh trượt hất bóng nảy vỡ từng hàng gạch.",
+          "lines": [
+            "{name} ơi, bức tường gạch cũ trước sân cung điện cần sự nhanh nhẹn của cháu giúp sức kìa.",
+            "Cháu di chuyển thanh đỡ nhịp nhàng bên dưới, giữ bóng nảy lên cao phá tan những khối gạch rêu phong."
+          ],
+          "choice": "Cháu đỡ bóng phá sạch gạch!",
+          "prompt": "Phá tan được {goal} viên gạch hoàng gia kiên cố nhé!",
+          "reward": "Hiệp Sĩ Gương Soi vỗ tay trầm trồ: đường bóng của {name} chính xác như đường kiếm hiệp sĩ!",
+          "next": "Bức tường hoàng cung đã sạch đẹp, hôm nào cháu lại ghé trước sân hình khối tập luyện.",
+          "who": "{name}, tay phá gạch cừ khôi",
+          "learn": "Ước lượng góc phản xạ và di chuyển đón đầu"
+        },
+        {
+          "game": "magic-letters",
+          "title": "Vẽ chữ cái ma thuật cùng Hiệp Sĩ Gương Soi",
+          "summary": "Bong bóng ma thuật mang chữ cái rơi từ tháp cao, bé vung ngón tay vẽ nét thần kỳ phá bóng.",
+          "lines": [
+            "Nhìn lên trời cao kìa {name}, những quả bóng ma thuật chứa chữ cái đang chao liệng rơi xuống!",
+            "Cháu dùng ngón tay vẽ nhanh chữ cái ghi trên bóng trước khi nó chạm đất để giải trừ ma thuật."
+          ],
+          "choice": "Cháu vẽ nét chữ thần kỳ ngay!",
+          "prompt": "Vẽ chuẩn xác giải trừ {goal} quả bóng chữ ma thuật nhé!",
+          "reward": "Hiệp Sĩ Gương Soi khom mình thán phục nét vẽ thần tốc và chữ viết tuyệt đẹp của {name}!",
+          "next": "Bầu trời hoàng cung lại bình yên rồi, cháu nhớ ghé thăm sân hình khối trò chuyện nhé.",
+          "who": "{name}, phù thủy nét chữ thần kỳ",
+          "learn": "Viết nhanh chữ cái và kết nối âm đầu hình ảnh"
+        }
+      ]
+    },
+    {
+      "id": "quan-ma-hoang-gia",
+      "name": "Quản Mã Hoàng Gia",
+      "look": "person-m",
+      "tint": "#886848",
+      "where": "Đầu cầu treo trước cổng thành",
+      "place": "Cầu treo trước cổng thành",
+      "company": [
+        {
+          "routine": "porter",
+          "name": "Thị vệ dắt ngựa",
+          "model": "person-c"
+        }
+      ],
+      "games": [
+        {
+          "game": "knight-hop",
+          "title": "Quân mã nhảy bàn cờ cùng Quản Mã Hoàng Gia",
+          "summary": "Sàn cờ đá chữ L đầy sao lấp lánh, bé dắt chú ngựa thần nhảy từng bước nhặt sạch ngôi sao.",
+          "lines": [
+            "Bác chào {name}, chú tuấn mã hoàng gia rất thích nhảy theo đường chữ L trên ô cờ đấy.",
+            "Cháu hãy dắt ngựa đi hai ô thẳng rồi một ô ngang để nhặt hết những ngôi sao trên nền đá."
+          ],
+          "choice": "Cháu dắt tuấn mã nhảy bước chữ L!",
+          "prompt": "Dắt chú ngựa nhảy nhặt đủ {goal} ngôi sao lấp lánh nhé!",
+          "reward": "Quản Mã Hoàng Gia vuốt bờm ngựa cười vang, khen {name} nắm chắc nước cờ mã độc đáo!",
+          "next": "Ngựa hoàng gia đã no cỏ và sao vàng, hẹn gặp lại cháu ở đầu cầu treo trước cổng thành.",
+          "who": "{name}, người kỵ mã bàn cờ tài hoa",
+          "learn": "Quy tắc di chuyển hình chữ L trong cờ vua"
+        },
+        {
+          "game": "card-house",
+          "title": "Dựng lâu đài bài tây với Quản Mã Hoàng Gia",
+          "summary": "Những lá bài mỏng manh cần sự điềm tĩnh tuyệt đối, bé nhẹ nhàng xếp thành từng tầng tháp cao.",
+          "lines": [
+            "{name} ơi, trong lúc trông ngựa nghỉ ngơi, bác cháu mình thử dựng lâu đài bằng bài tây nhé.",
+            "Cháu kéo lá bài thật chậm rãi đặt vào vị trí, nếu vội vàng tay run là tháp bài sụp đổ đấy."
+          ],
+          "choice": "Cháu đặt từng lá bài thật êm!",
+          "prompt": "Dựng đứng vững vàng {goal} tầng lâu đài bài tây nhé!",
+          "reward": "Quản Mã Hoàng Gia nín thở rồi reo to: lâu đài bài của {name} cao vút và vững như bàn thạch!",
+          "next": "Những quân bài mỏng manh dạy ta lòng kiên nhẫn, rảnh rỗi cháu lại ghé cầu treo chơi tiếp.",
+          "who": "{name}, nghệ nhân dựng tháp bài",
+          "learn": "Giữ tay bình tĩnh và điều tiết tốc độ thao tác"
+        },
+        {
+          "game": "cube-hop",
+          "title": "Nhảy khối hộp thần tốc cùng Quản Mã Hoàng Gia",
+          "summary": "Kim tự tháp xếp bằng các khối hộp rực rỡ, bé nhảy đổi màu từng ô mà không rơi xuống vực.",
+          "lines": [
+            "Chú ngựa nhỏ đang tập leo kim tự tháp khối hộp kìa {name}, cháu vào trợ giúp một tay nào!",
+            "Cháu chạm ô kề bên để nhảy sang đổi màu khối đá, nhớ né tránh những quả cầu đang lăn xuống nha."
+          ],
+          "choice": "Cháu nhảy đổi màu khối hộp ngay!",
+          "prompt": "Nhảy đổi màu thành công {goal} khối hộp kim tự tháp nhé!",
+          "reward": "Quản Mã Hoàng Gia vỗ tay khen ngợi: {name} bật nhảy nhanh nhẹn và thông minh tuyệt vời!",
+          "next": "Kim tự tháp đã khoác áo mới lộng lẫy, lúc nào thích nhảy cháu cứ ra đầu cầu treo nhé.",
+          "who": "{name}, tay nhảy khối hộp thoăn thoắt",
+          "learn": "Định vị phương hướng trên lưới chéo và né chướng ngại"
+        }
+      ]
+    },
+    {
+      "id": "ngu-lam-quan-thap",
+      "name": "Ngự Lâm Quân Tháp Cao",
+      "look": "person-q",
+      "tint": "#a83838",
+      "where": "Chân tháp góc thành lâu đài",
+      "place": "Tháp góc thành",
+      "company": [
+        {
+          "routine": "sentry",
+          "name": "Lính gác cầm giáo",
+          "model": "person-j"
+        }
+      ],
+      "games": [
+        {
+          "game": "helix-drop",
+          "title": "Bóng xuống tháp xoắn cùng Ngự Lâm Quân Tháp Cao",
+          "summary": "Tháp canh xoắn ốc nhiều tầng hiểm trở, bé xoay khe hở để quả bóng rơi dần xuống đáy tháp an toàn.",
+          "lines": [
+            "Chào {name}, ngự lâm quân đang kiểm tra đường dẫn tín hiệu từ đỉnh tháp xoắn xuống đất.",
+            "Cháu gạt ngang xoay tháp cho khe hở thẳng quả bóng, tránh để bóng chạm vào các dải màu đỏ."
+          ],
+          "choice": "Cháu xoay tháp dẫn bóng rơi!",
+          "prompt": "Dẫn bóng rơi an toàn qua {goal} tầng tháp xoắn ốc nhé!",
+          "reward": "Ngự Lâm Quân Tháp Cao giơ giáo chào: {name} xoay tháp vô cùng điệu nghệ và chuẩn xác!",
+          "next": "Tín hiệu tháp canh đã thông suốt, cháu cứ thoải mái ghé chân tháp góc thành lâu đài dạo chơi.",
+          "who": "{name}, hoa tiêu tháp xoắn thiện chiến",
+          "learn": "Xoay không gian tròn và né vùng cấm nguy hiểm"
+        },
+        {
+          "game": "lights-out",
+          "title": "Tắt đuốc tháp canh với Ngự Lâm Quân Tháp Cao",
+          "summary": "Những ô cửa sổ tháp canh lúc sáng lúc tối, bé tính toán chạm đổi trạng thái để thắp sáng toàn bộ.",
+          "lines": [
+            "{name} ơi, tín hiệu đèn cửa sổ trên tháp lâu đài đang bị lộn xộn giữa sáng và tối kìa.",
+            "Chạm một ô cửa thì các ô chung quanh sẽ đổi trạng thái, cháu hãy làm cho toàn bộ cửa cùng sáng rực."
+          ],
+          "choice": "Cháu thắp sáng các ô cửa sổ!",
+          "prompt": "Thắp sáng toàn bộ cửa sổ cho {goal} tầng tháp canh nhé!",
+          "reward": "Ngự Lâm Quân Tháp Cao reo mừng: các ngọn đèn đã đồng loạt bừng sáng nhờ tài trí của {name}!",
+          "next": "Ánh sáng lâu đài rực rỡ trong đêm, hôm nào rảnh cháu lại ghé tháp góc thành thử sức.",
+          "who": "{name}, người thắp sáng tháp canh",
+          "learn": "Tư duy ma trận đảo trạng thái và giải câu đố logic"
+        },
+        {
+          "game": "pop-lock",
+          "title": "Mở khóa cơ quan xoay cùng Ngự Lâm Quân Tháp Cao",
+          "summary": "Vòng xoay ổ khóa kho báu quay vòng tít, bé chạm đúng lúc kim chạm điểm vàng để mở lẫy.",
+          "lines": [
+            "Rương bảo vật trên tháp góc bị kẹt ổ khóa cơ quan xoay rồi, {name} vào mở giúp với!",
+            "Khi kim đỏ xoay vòng chạm trúng đồng xu vàng, cháu chạm màn hình thật chuẩn để mở từng chốt nhé."
+          ],
+          "choice": "Cháu bấm mở khóa đúng lúc!",
+          "prompt": "Chạm đúng lúc mở tung {goal} ổ khóa cơ quan xoay nhé!",
+          "reward": "Cạch một tiếng ổ khóa bật mở, Ngự Lâm Quân Tháp Cao khen {name} có phản xạ tuyệt đỉnh!",
+          "next": "Kho báu đã an toàn trong tháp, khi nào rảnh cháu cứ ghé tháp góc thành lâu đài chơi.",
+          "who": "{name}, chuyên gia mở khóa xoay tài ba",
+          "learn": "Căn nhịp thời gian xoay tròn và bấm nút dứt khoát"
+        }
+      ]
+    },
+    {
+      "id": "bac-tho-khoa-thanh",
+      "name": "Bác Thợ Khóa Thành",
+      "look": "person-h",
+      "tint": "#488868",
+      "where": "Bờ hào nước cạnh cầu đá",
+      "place": "Cầu đá qua hào",
+      "company": [
+        {
+          "routine": "porter",
+          "name": "Bác thợ rèn hoàng cung",
+          "model": "person-e"
+        }
+      ],
+      "games": [
+        {
+          "game": "gear-train",
+          "title": "Ăn khớp bánh răng chuyển động cùng Bác Thợ Khóa Thành",
+          "summary": "Những chiếc bánh răng đồng to nhỏ nằm rời rạc, bé lắp vào chốt sao cho tay quay truyền lực tới cối.",
+          "lines": [
+            "Bác chào {name}, cỗ máy nâng cầu đá đang thiếu bánh răng truyền lực nên chưa kéo lên được.",
+            "Cháu gài các bánh răng to nhỏ vào chốt sao cho chúng ăn khớp với nhau truyền chuyển động quay nhé."
+          ],
+          "choice": "Cháu lắp bánh răng truyền động!",
+          "prompt": "Nối ăn khớp bánh răng vận hành {goal} cỗ máy chuyển động nhé!",
+          "reward": "Bác Thợ Khóa Thành cười khà khà: bánh răng quay tít đều tăm tắp, {name} khéo tay quá đi thôi!",
+          "next": "Cầu đá qua hào đã hoạt động êm ái, cháu rảnh cứ qua bờ hào nước ngắm nghía đồ cơ khí.",
+          "who": "{name}, thợ cơ khí bánh răng nhí",
+          "learn": "Nguyên lý truyền động cơ học và khớp răng cưa"
+        },
+        {
+          "game": "portal-maze",
+          "title": "Mê cung cổng dịch chuyển với Bác Thợ Khóa Thành",
+          "summary": "Đường hầm dưới hào nước có những cánh cổng phép màu, bé chọn đúng cổng màu để tới rương báu.",
+          "lines": [
+            "{name} có dám thử thách bước vào mê cung cổng phép dưới chân hào nước cùng bác không?",
+            "Bước qua cánh cửa phép nào cháu sẽ xuất hiện ở cửa cùng màu, hãy tính đường đến chiếc rương vàng."
+          ],
+          "choice": "Cháu khám phá cổng phép thuật!",
+          "prompt": "Tìm đường qua cổng phép mở được {goal} rương báu bí mật nhé!",
+          "reward": "Bác Thợ Khóa Thành tấm tắc ngợi khen {name} định hướng không gian cổng phép kỳ tài!",
+          "next": "Mê cung dưới hào còn nhiều ngóc ngách bí ẩn, lúc nào thích cháu lại ghé cầu đá qua hào.",
+          "who": "{name}, nhà thám hiểm mê cung cổng phép",
+          "learn": "Tư duy không gian dịch chuyển và liên kết màu sắc"
+        },
+        {
+          "game": "rotating-maze",
+          "title": "Xoay mê cung tìm chìa khóa cùng Bác Thợ Khóa Thành",
+          "summary": "Mê cung tròn cầm trên tay, bé xoay nghiêng khung viền để viên bi chìa khóa lăn về đích sao.",
+          "lines": [
+            "Bác vừa chế tạo ra một ổ khóa mê cung dạng đĩa xoay rất tinh xảo này {name}.",
+            "Cháu dùng tay xoay tròn cả mê cung để viên bi chìa khóa lăn dần theo rãnh thoát ra ngoài nhé."
+          ],
+          "choice": "Cháu xoay đĩa cho bi lăn ra!",
+          "prompt": "Xoay mê cung dẫn chìa khóa thoát ra {goal} lần nhé!",
+          "reward": "Bác Thợ Khóa Thành vỗ đùi tấm tắc: bi lăn trơn tru ra ngoài rồi, {name} xoay khéo léo ghê!",
+          "next": "Bờ hào nước cạnh cầu đá luôn có nhiều ổ khóa kỳ lạ chờ cháu tới khám phá tiếp đấy.",
+          "who": "{name}, bậc thầy xoay đĩa mê cung",
+          "learn": "Điều khiển góc nghiêng và tận dụng trọng lực lăn"
+        }
+      ]
+    },
+    {
+      "id": "te-tuong-co-the",
+      "name": "Tể Tướng Cờ Vua",
+      "look": "person-d",
+      "tint": "#485888",
+      "where": "Đại sảnh ôn tập nguy nga",
+      "place": "Đại sảnh ôn tập",
+      "company": [
+        {
+          "routine": "reader",
+          "name": "Học sĩ hoàng gia",
+          "model": "person-p"
+        }
+      ],
+      "games": [
+        {
+          "game": "mastermind",
+          "title": "Đoán mật mã màu sắc cùng Tể Tướng Cờ Vua",
+          "summary": "Khóa mật mã hoàng gia ẩn giấu dưới hàng ngọc quý, bé suy đoán từ gợi ý sao và vòng tròn.",
+          "lines": [
+            "Ta chào {name}, mật mã hòm thư hoàng gia cần người có đầu óc phán đoán sắc sảo giải mã.",
+            "Mỗi lần cháu đặt ngọc, sao vàng báo đúng chỗ, vòng tròn báo đúng màu, hãy tìm ra mật mã đúng nhé."
+          ],
+          "choice": "Cháu giải mã các viên ngọc quý!",
+          "prompt": "Đoán trúng hoàn toàn mật mã của {goal} hòm thư hoàng gia nhé!",
+          "reward": "Tể Tướng Cờ Vua vuốt râu khen ngợi: trí tuệ suy đoán của {name} thật đáng khâm phục!",
+          "next": "Đại sảnh ôn tập nguy nga luôn rộng cửa đón những tài năng sáng suốt như cháu ghé chơi.",
+          "who": "{name}, thám tử giải mã mật thư",
+          "learn": "Suy luận logic phản chứng và giải mã ký hiệu"
+        },
+        {
+          "game": "peg-solitaire",
+          "title": "Cờ nhảy búng bi gỗ với Tể Tướng Cờ Vua",
+          "summary": "Bàn cờ chữ thập bằng gỗ quý, bé cho từng viên ngọc nhảy qua bạn kề bên để thu dọn bàn cờ.",
+          "lines": [
+            "Mời {name} bước vào ván cờ nhảy cung đình truyền thống đầy tao nhã và thách thức này.",
+            "Cháu chọn viên ngọc nhảy qua ô bên cạnh để nhặt bỏ viên ở giữa, sao cho còn lại ít quân nhất nhé."
+          ],
+          "choice": "Cháu nhảy cờ thu dọn bàn cờ!",
+          "prompt": "Nhảy cờ tài tình thu dọn được {goal} viên ngọc trên bàn cờ nhé!",
+          "reward": "Tể Tướng Cờ Vua đứng dậy chúc mừng {name} đã hoàn thành ván cờ với chiến thuật tuyệt luân!",
+          "next": "Nghệ thuật cờ nhảy cần sự suy xét cẩn trọng, rảnh rỗi cháu cứ tới đại sảnh đàm đạo cùng ta.",
+          "who": "{name}, kỳ thủ cờ nhảy thông tuệ",
+          "learn": "Tính toán bước đi trước sau và thu hẹp bàn cờ"
+        },
+        {
+          "game": "seat-logic",
+          "title": "Sắp chỗ ngồi dự tiệc hoàng gia cùng Tể Tướng Cờ Vua",
+          "summary": "Bàn tiệc yến tiệc cung đình long trọng, bé dựa vào sở thích từng vị khách để xếp chỗ hài hòa.",
+          "lines": [
+            "Yến tiệc sắp bắt đầu rồi {name}, các vị khách quý cần được sắp xếp chỗ ngồi thật chu đáo.",
+            "Cháu đọc thẻ yêu cầu bên cạnh để biết ai muốn ngồi gần ai, ai ngồi đầu bàn rồi xếp cho đúng nhé."
+          ],
+          "choice": "Cháu xếp chỗ ngồi chu đáo ngay!",
+          "prompt": "Sắp xếp chỗ ngồi hoàn hảo cho {goal} bàn tiệc yến hoàng gia nhé!",
+          "reward": "Tể Tướng Cờ Vua mỉm cười nâng ly trà, khen ngợi {name} chu toàn và khéo léo sắp đặt yến tiệc!",
+          "next": "Mỗi mùa lễ hội ta lại có câu đố tiệc mới, đại sảnh ôn tập luôn mong ngóng cháu ghé thăm.",
+          "who": "{name}, người điều phối yến tiệc hoàng gia",
+          "learn": "Xử lý đồng thời nhiều điều kiện ràng buộc logic"
+        }
+      ]
     }
   ],
   "residents": [

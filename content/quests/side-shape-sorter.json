@@ -1,0 +1,80 @@
+{
+  "id": "side-shape-sorter",
+  "region": "nha-cua-be",
+  "chapter": 1,
+  "title": "Xoay nắp thả khối hình cùng Ông Cụ Trông Vườn",
+  "status": "active",
+  "category": "side",
+  "summary": "Các khối gỗ hình học trượt xuống nắp hộp, bé xoay nắp sao cho lỗ khoét khớp đúng hình rơi xuống.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, bé tinh mắt ghép khối hình học",
+    "where": "Lối vào vườn rau sau nhà",
+    "goal": "Xoay khớp lỗ thả lọt thành công hai mươi lăm khối hình vào hộp nhé!",
+    "play": "Khối hình trượt xuống hộp. Chỉ lỗ ở trên cùng của nắp nằm dưới khối.",
+    "learn": "Nhận biết hình vuông, tròn, tam giác khi chuyển động",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Góc kho vườn còn nhiều đồ chơi gỗ mộc, ông đón {name} ghé chơi bất cứ lúc nào."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "ong-cu-trong-vuon",
+      "lines": [
+        {
+          "speaker": "Ông Cụ Trông Vườn",
+          "text": "Ông vừa đẽo xong chiếc hộp thả khối gỗ xinh xắn nè, {name} thử ghép hình với ông nhé!"
+        },
+        {
+          "speaker": "Ông Cụ Trông Vườn",
+          "text": "Khối hình trượt xuống thì chạm xoay nắp để lỗ khoét cùng hình nằm ngay phía dưới."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu xoay khớp đúng lỗ hình ngay!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Hộp thả hình",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Xoay khớp lỗ thả lọt thành công hai mươi lăm khối hình vào hộp nhé!",
+      "game": "shape-sorter",
+      "goal": 25
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Ông cụ cười vui vẻ: mắt cháu {name} nhận hình nhanh nhạy, khối nào cũng lọt tọt!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Góc kho vườn còn nhiều đồ chơi gỗ mộc, ông đón {name} ghé chơi bất cứ lúc nào."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

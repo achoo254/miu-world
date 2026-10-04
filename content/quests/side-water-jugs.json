@@ -1,0 +1,80 @@
+{
+  "id": "side-water-jugs",
+  "region": "xom-mai-am",
+  "chapter": 1,
+  "title": "Đong nước vào bình cùng Anh Thợ Sửa Mái",
+  "status": "active",
+  "category": "side",
+  "summary": "Rót qua lại giữa các can nước để đong đúng số lít theo yêu cầu đổ vào máng cho đàn bò uống.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người đong nước tài tình thông minh",
+    "where": "Đầu đường cạnh ruộng lúa mì",
+    "goal": "Đong chuẩn xác dung tích ba lần cho đàn bò uống thỏa thích nhé!",
+    "play": "Bò cần uống đúng số lít ghi trên máng. {name} chạm một can rồi chạm can khác để rót.",
+    "learn": "Tính toán dung tích chất lỏng bằng tư duy logic",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Bình nước mát bên đầu ruộng lúa mì lúc nào cũng đợi em ghé đong."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "anh-tho-sua-mai",
+      "lines": [
+        {
+          "speaker": "Anh Thợ Sửa Mái",
+          "text": "{name} ơi, đàn bò khát nước cần đong đúng số lít nước mát này!"
+        },
+        {
+          "speaker": "Anh Thợ Sửa Mái",
+          "text": "Em chạm chuyển nước giữa hai can cho tới khi được lượng vừa in nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Em đong nước giúp đàn bò ngay!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Đong nước đủ lít",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Đong chuẩn xác dung tích ba lần cho đàn bò uống thỏa thích nhé!",
+      "game": "water-jugs",
+      "goal": 3
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Đàn bò uống no nê nước mát, cảm ơn {name} tính toán tuyệt vời!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Bình nước mát bên đầu ruộng lúa mì lúc nào cũng đợi em ghé đong."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

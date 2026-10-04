@@ -1,0 +1,80 @@
+{
+  "id": "side-hundred-chart",
+  "region": "thu-vien",
+  "chapter": 1,
+  "title": "Bảng một trăm số cùng Bé Mê Bảng Số",
+  "status": "active",
+  "category": "side",
+  "summary": "Tấm bảng trăm ô bị gió bay mất vài miếng, bé tìm đúng quy luật hàng cột để gắn số về chỗ.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, chuyên gia bảng số trăm ô",
+    "where": "Chân tháp đồng hồ thư viện",
+    "goal": "Gắn đúng vị trí tám mảnh số vào bảng trăm ô nhé!",
+    "play": "Bảng số từ 1 đến 100 bị mất vài ô. {name} kéo mảnh số vào đúng chỗ trống.",
+    "learn": "Quy luật cấu tạo số hàng chục và hàng đơn vị",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Bảng số đã tròn vẹn một trăm rồi, cậu rảnh cứ qua chân tháp đồng hồ tính toán nha."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "be-me-bang-so",
+      "lines": [
+        {
+          "speaker": "Bé Mê Bảng Số",
+          "text": "Chào {name}, bảng số từ một đến một trăm của tớ bị khuyết mất mấy ô trống rồi."
+        },
+        {
+          "speaker": "Bé Mê Bảng Số",
+          "text": "Cậu nhớ quy luật sang phải thêm một đơn vị, xuống dưới thêm một chục để điền vào nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Để tớ tìm số lấp đầy bảng!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Bảng trăm ô",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Gắn đúng vị trí tám mảnh số vào bảng trăm ô nhé!",
+      "game": "hundred-chart",
+      "goal": 8
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Bé Mê Bảng Số vỗ tay reo hò: {name} nắm chắc các hàng số tự nhiên siêu thật đấy!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Bảng số đã tròn vẹn một trăm rồi, cậu rảnh cứ qua chân tháp đồng hồ tính toán nha."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

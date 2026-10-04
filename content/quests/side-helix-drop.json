@@ -1,0 +1,80 @@
+{
+  "id": "side-helix-drop",
+  "region": "lau-dai",
+  "chapter": 1,
+  "title": "Bóng xuống tháp xoắn cùng Ngự Lâm Quân Tháp Cao",
+  "status": "active",
+  "category": "side",
+  "summary": "Tháp canh xoắn ốc nhiều tầng hiểm trở, bé xoay khe hở để quả bóng rơi dần xuống đáy tháp an toàn.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, hoa tiêu tháp xoắn thiện chiến",
+    "where": "Chân tháp góc thành lâu đài",
+    "goal": "Dẫn bóng rơi an toàn qua hai mươi tầng tháp xoắn ốc nhé!",
+    "play": "Bóng nảy trên các tầng của tháp. {name} kéo ngang để xoay tháp.",
+    "learn": "Xoay không gian tròn và né vùng cấm nguy hiểm",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Tín hiệu tháp canh đã thông suốt, cháu cứ thoải mái ghé chân tháp góc thành lâu đài dạo chơi."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "ngu-lam-quan-thap",
+      "lines": [
+        {
+          "speaker": "Ngự Lâm Quân Tháp Cao",
+          "text": "Chào {name}, ngự lâm quân đang kiểm tra đường dẫn tín hiệu từ đỉnh tháp xoắn xuống đất."
+        },
+        {
+          "speaker": "Ngự Lâm Quân Tháp Cao",
+          "text": "Cháu gạt ngang xoay tháp cho khe hở thẳng quả bóng, tránh để bóng chạm vào các dải màu đỏ."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu xoay tháp dẫn bóng rơi!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Bóng xuống tháp xoắn",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Dẫn bóng rơi an toàn qua hai mươi tầng tháp xoắn ốc nhé!",
+      "game": "helix-drop",
+      "goal": 20
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Ngự Lâm Quân Tháp Cao giơ giáo chào: {name} xoay tháp vô cùng điệu nghệ và chuẩn xác!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Tín hiệu tháp canh đã thông suốt, cháu cứ thoải mái ghé chân tháp góc thành lâu đài dạo chơi."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

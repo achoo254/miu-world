@@ -1,0 +1,80 @@
+{
+  "id": "side-card-house",
+  "region": "lau-dai",
+  "chapter": 1,
+  "title": "Dựng lâu đài bài tây với Quản Mã Hoàng Gia",
+  "status": "active",
+  "category": "side",
+  "summary": "Những lá bài mỏng manh cần sự điềm tĩnh tuyệt đối, bé nhẹ nhàng xếp thành từng tầng tháp cao.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, nghệ nhân dựng tháp bài",
+    "where": "Đầu cầu treo trước cổng thành",
+    "goal": "Dựng đứng vững vàng ba tầng lâu đài bài tây nhé!",
+    "play": "{name} kéo lá bài trên cỗ bài tới chỗ có viền chấm để dựng nhà bài.",
+    "learn": "Giữ tay bình tĩnh và điều tiết tốc độ thao tác",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Những quân bài mỏng manh dạy ta lòng kiên nhẫn, rảnh rỗi cháu lại ghé cầu treo chơi tiếp."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "quan-ma-hoang-gia",
+      "lines": [
+        {
+          "speaker": "Quản Mã Hoàng Gia",
+          "text": "{name} ơi, trong lúc trông ngựa nghỉ ngơi, bác cháu mình thử dựng lâu đài bằng bài tây nhé."
+        },
+        {
+          "speaker": "Quản Mã Hoàng Gia",
+          "text": "Cháu kéo lá bài thật chậm rãi đặt vào vị trí, nếu vội vàng tay run là tháp bài sụp đổ đấy."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu đặt từng lá bài thật êm!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Dựng nhà bài",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Dựng đứng vững vàng ba tầng lâu đài bài tây nhé!",
+      "game": "card-house",
+      "goal": 3
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Quản Mã Hoàng Gia nín thở rồi reo to: lâu đài bài của {name} cao vút và vững như bàn thạch!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Những quân bài mỏng manh dạy ta lòng kiên nhẫn, rảnh rỗi cháu lại ghé cầu treo chơi tiếp."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

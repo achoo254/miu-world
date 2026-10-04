@@ -1,0 +1,80 @@
+{
+  "id": "side-cable-car",
+  "region": "nui-tuyet",
+  "chapter": 1,
+  "title": "Xếp khách lên cabin cáp treo cùng Nai Nhỏ Vách Đá",
+  "status": "active",
+  "category": "side",
+  "summary": "Cabin cáp treo lần lượt lướt tới ga, bé mời các nhóm khách vừa vặn số chỗ trống bước vào.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người điều phối cáp treo chu đáo",
+    "where": "Lối vào ga cáp treo làng",
+    "goal": "Sắp xếp cho năm mươi lượt hành khách lên cabin cáp treo an toàn nhé!",
+    "play": "Mỗi cabin có 4 chỗ. Số trên cabin là số chỗ còn trống.",
+    "learn": "Phép cộng gộp vừa đủ số lượng cho trước",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Tuyến cáp treo vẫn rộn rã chuông reo, Nai Nhỏ hẹn gặp {name} ở cửa ga làng."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "nai-nho-vach-da",
+      "lines": [
+        {
+          "speaker": "Nai Nhỏ Vách Đá",
+          "text": "Khách đang xếp hàng đợi lên đỉnh ngắm tuyết đông lắm rồi, {name} soát vé giúp tớ!"
+        },
+        {
+          "speaker": "Nai Nhỏ Vách Đá",
+          "text": "Mỗi cabin chỉ vừa bốn chỗ thôi, chọn nhóm khách có số người đúng chỗ trống nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu mời đúng số khách lên xe!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Đưa khách lên cáp treo",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Sắp xếp cho năm mươi lượt hành khách lên cabin cáp treo an toàn nhé!",
+      "game": "cable-car",
+      "goal": 50
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Nai Nhỏ rung cặp gạc xinh xắn: cabin nào cháu {name} xếp cũng vừa khít chỗ!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Tuyến cáp treo vẫn rộn rã chuông reo, Nai Nhỏ hẹn gặp {name} ở cửa ga làng."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

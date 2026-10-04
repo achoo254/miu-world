@@ -1,0 +1,80 @@
+{
+  "id": "side-skate-tricks",
+  "region": "xom-mai-am",
+  "chapter": 1,
+  "title": "Trượt ván làm trò cùng Bé Đánh Cù Sơn",
+  "status": "active",
+  "category": "side",
+  "summary": "Lướt ván gỗ qua dốc dốc rồi vuốt xoay làm những động tác xiếc ngoạn mục giữa không trung.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, tay lướt ván cừ khôi đầy tự tin",
+    "where": "Bãi đất thả bò đầu dốc",
+    "goal": "Thực hiện thành công mười lăm động tác lướt ván điệu nghệ nhé!",
+    "play": "Vuốt lên để nhảy. Lăn qua dốc gỗ thì bay thật cao.",
+    "learn": "Phối hợp vuốt hướng nhanh nhạy giữa không trung",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Con dốc bãi thả bò lúc nào cũng sẵn sàng cho cậu thỏa sức lướt ván."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "be-danh-cu-son",
+      "lines": [
+        {
+          "speaker": "Bé Đánh Cù Sơn",
+          "text": "{name} có thích cảm giác lướt ván bay bổng trên bãi cỏ không?"
+        },
+        {
+          "speaker": "Bé Đánh Cù Sơn",
+          "text": "Cậu nhảy qua gờ dốc rồi vuốt xoay ván đẹp mắt trước khi chạm đất nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ trượt ván biểu diễn ngay!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Trượt ván làm trò",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Thực hiện thành công mười lăm động tác lướt ván điệu nghệ nhé!",
+      "game": "skate-tricks",
+      "goal": 15
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Cú xoay ván trên không đẹp như vũ điệu, {name} thật tài ba!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Con dốc bãi thả bò lúc nào cũng sẵn sàng cho cậu thỏa sức lướt ván."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

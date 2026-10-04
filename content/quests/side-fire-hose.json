@@ -1,0 +1,80 @@
+{
+  "id": "side-fire-hose",
+  "region": "xom-mai-am",
+  "chapter": 1,
+  "title": "Vòi rồng cứu hỏa cùng Anh Thợ Sửa Mái",
+  "status": "active",
+  "category": "side",
+  "summary": "Điều khiển vòi rồng phun tia nước vòng cung dập tắt các đốm lửa bùng lên bên khung cửa sổ.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, lính cứu hỏa nhí dũng cảm nhanh nhẹn",
+    "where": "Đầu đường cạnh ruộng lúa mì",
+    "goal": "Phun nước dập tắt hoàn toàn mười lăm đám lửa bùng lên nhé!",
+    "play": "Lửa bùng lên ở các ô cửa và to dần.",
+    "learn": "Căn quỹ đạo cong của tia nước để trúng đích",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Bên ruộng lúa mì luôn có anh em thợ túc trực bảo vệ xóm nhỏ."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "anh-tho-sua-mai",
+      "lines": [
+        {
+          "speaker": "Anh Thợ Sửa Mái",
+          "text": "Có đốm lửa bén vào đống rơm khô đầu đường rồi {name} ơi!"
+        },
+        {
+          "speaker": "Anh Thợ Sửa Mái",
+          "text": "Em giữ ngón tay ngắm tia nước bay vòng cung dập tắt lửa nhanh nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Em giữ vòi rồng dập lửa ngay!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Bé làm lính cứu hỏa",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Phun nước dập tắt hoàn toàn mười lăm đám lửa bùng lên nhé!",
+      "game": "fire-hose",
+      "goal": 15
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Khói tan lửa tắt sạch bong, {name} dũng cảm cứu nguy xóm làng!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Bên ruộng lúa mì luôn có anh em thợ túc trực bảo vệ xóm nhỏ."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

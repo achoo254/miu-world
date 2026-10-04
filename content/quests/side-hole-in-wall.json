@@ -1,0 +1,80 @@
+{
+  "id": "side-hole-in-wall",
+  "region": "trung-tam",
+  "chapter": 1,
+  "title": "Chui qua lỗ tường cùng Chú Đố Chữ Quang",
+  "status": "active",
+  "category": "side",
+  "summary": "Bức tường xốp khoét hình ngộ nghĩnh tiến tới: chọn đúng tư thế cử chỉ để luồn qua lỗ hổng an toàn.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, cao thủ luồn tường linh hoạt",
+    "where": "Góc chợ giao dịch sầm uất",
+    "goal": "Tạo đúng dáng vượt qua mười hai bức tường xốp nhé!",
+    "play": "Bức tường xốp có lỗ hình người đang tiến lại gần.",
+    "learn": "Nhận biết hình thể không gian và phản xạ tạo dáng",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Bức tường tiếp theo sắp tiến vào, {name} rảnh lại ghé góc chợ giao dịch so tài uốn dáng nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "chu-do-chu-quang",
+      "lines": [
+        {
+          "speaker": "Chú Đố Chữ Quang",
+          "text": "Trò chơi vượt tường xốp đang thu hút đông đảo bạn nhỏ ở góc chợ kìa {name} ơi!"
+        },
+        {
+          "speaker": "Chú Đố Chữ Quang",
+          "text": "Cháu nhìn hình dáng lỗ khoét trên tường rồi chọn nút tư thế tương ứng để chui lọt qua nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tư thế chuẩn khít, lọt qua dễ dàng!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Chui qua lỗ tường",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Tạo đúng dáng vượt qua mười hai bức tường xốp nhé!",
+      "game": "hole-in-wall",
+      "goal": 12
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Chú Đố Chữ Quang vỗ tay tán thưởng: cháu {name} uốn mình nhanh nhẹn, dáng nào cũng chuẩn!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Bức tường tiếp theo sắp tiến vào, {name} rảnh lại ghé góc chợ giao dịch so tài uốn dáng nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

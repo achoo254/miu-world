@@ -1,0 +1,80 @@
+{
+  "id": "side-folk-riddle",
+  "region": "xom-mai-am",
+  "chapter": 1,
+  "title": "Câu đố dân gian cùng Bà Năm Kể Chuyện",
+  "status": "active",
+  "category": "side",
+  "summary": "Lắng nghe từng câu ca dao đố vui của bà rồi chạm chọn đúng hình ảnh giải đố.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, bạn nhỏ thông thái giải đố dân gian",
+    "where": "Trước ngõ nhà Mẩy",
+    "goal": "Giải mã đúng bảy câu đố vui dân gian của bà nhé!",
+    "play": "Câu đố hiện từng dòng. {name} đọc rồi chạm hình đúng với câu đố.",
+    "learn": "Tư duy ngôn ngữ và suy luận hình tượng",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Mảnh sân trước ngõ nhà Mẩy chiều nào bà cũng ngồi quạt mát đợi cháu."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "ba-nam-ke-chuyen",
+      "lines": [
+        {
+          "speaker": "Bà Năm Kể Chuyện",
+          "text": "{name} ngoan lại đây bà đọc cho nghe mấy câu đố dân gian xưa nào!"
+        },
+        {
+          "speaker": "Bà Năm Kể Chuyện",
+          "text": "Cháu nghe kỹ lời thơ gợi mở rồi chạm vào hình đáp án đúng nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu giải đố cùng bà ngay!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Câu đố dân gian",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Giải mã đúng bảy câu đố vui dân gian của bà nhé!",
+      "game": "folk-riddle",
+      "goal": 7
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Cháu của bà thông minh sắc sảo quá, câu đố nào {name} cũng giải ra!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Mảnh sân trước ngõ nhà Mẩy chiều nào bà cũng ngồi quạt mát đợi cháu."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

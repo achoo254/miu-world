@@ -1,0 +1,80 @@
+{
+  "id": "side-nu-na-nu-nong",
+  "region": "xom-mai-am",
+  "chapter": 1,
+  "title": "Nu na nu nống cùng Chị Bống Chuyền Que",
+  "status": "active",
+  "category": "side",
+  "summary": "Đếm từng bước nhịp theo bài ca đồng dao quen thuộc để chạm đúng chiếc chân sắp co lại.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người giữ nhịp đồng dao dí dỏm",
+    "where": "Hiên nhà ngắm trăng",
+    "goal": "Đoán đúng chiếc chân co lại trong bảy ván đồng dao nhé!",
+    "play": "Bài đồng dao đếm lần lượt từng chân, mỗi tiếng một chân.",
+    "learn": "Đếm nhịp tuần hoàn và dự đoán bước kết thúc",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Chiếc chiếu hoa dưới hiên trăng lúc nào cũng trải sẵn chờ em."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "chi-bong-chuyen-que",
+      "lines": [
+        {
+          "speaker": "Chị Bống Chuyền Que",
+          "text": "{name} ơi, duỗi chân ra chiếu chị em mình chơi nu na nu nống nào!"
+        },
+        {
+          "speaker": "Chị Bống Chuyền Que",
+          "text": "Em nhẩm theo từng tiếng đồng dao rồi chạm chiếc chân sẽ co vào nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Em duỗi chân chơi cùng chị!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Nu na nu nống",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Đoán đúng chiếc chân co lại trong bảy ván đồng dao nhé!",
+      "game": "nu-na-nu-nong",
+      "goal": 7
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Nhịp đồng dao nào em cũng nhẩm đúng boong, {name} tài ghê cơ!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Chiếc chiếu hoa dưới hiên trăng lúc nào cũng trải sẵn chờ em."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "id": "side-who-swapped",
+  "region": "cho-phien",
+  "chapter": 1,
+  "title": "Ai đổi chỗ rồi? cùng Anh Lái Xe Đụng",
+  "status": "active",
+  "category": "side",
+  "summary": "Nhìn nhanh vị trí các món hàng rồi chỉ ra hai món vừa tráo đổi chỗ khi tấm rèm kéo lên.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, thám tử quan sát tinh anh nhạy bén",
+    "where": "Góc quảng trường chợ vui nhộn",
+    "goal": "Phát hiện chính xác tám lần các món đồ hoán đổi vị trí nhé!",
+    "play": "Nhìn thật kỹ sạp hàng. Rèm kéo xuống rồi kéo lên, hai món đã đổi chỗ cho nhau.",
+    "learn": "Ghi nhớ không gian vị trí và phát hiện thay đổi",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Trò chơi đổi chỗ vui nhộn ở góc quảng trường chợ đợi em đến phá án."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "anh-lai-xe-dung",
+      "lines": [
+        {
+          "speaker": "Anh Lái Xe Đụng",
+          "text": "{name} nhìn kỹ các món đồ trên quầy trước khi rèm buông nhé!"
+        },
+        {
+          "speaker": "Anh Lái Xe Đụng",
+          "text": "Rèm mở ra có hai món vừa đổi chỗ, em chạm tìm đúng hai món đó nha."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Em tìm ra món đổi chỗ ngay!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Ai đổi chỗ?",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Phát hiện chính xác tám lần các món đồ hoán đổi vị trí nhé!",
+      "game": "who-swapped",
+      "goal": 8
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Mắt em tinh như mắt cú mèo, không món nào lọt qua mắt {name}!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Trò chơi đổi chỗ vui nhộn ở góc quảng trường chợ đợi em đến phá án."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

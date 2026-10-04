@@ -1,0 +1,80 @@
+{
+  "id": "side-ice-sculpt",
+  "region": "nui-tuyet",
+  "chapter": 1,
+  "title": "Gọt khối băng thành tượng với Cáo Tuyết Điêu Khắc",
+  "status": "active",
+  "category": "side",
+  "summary": "Khối băng trong suốt giấu bức tượng bên trong, bé gõ nhẹ tách bỏ lớp băng thừa bao quanh.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, nghệ nhân điêu khắc băng tuyết",
+    "where": "Giữa quảng trường làng tuyết",
+    "goal": "Khéo léo gọt đẽo thành công ba bức tượng băng tuyệt đẹp nhé!",
+    "play": "Khối băng có hình bức tượng màu xanh đậm bên trong.",
+    "learn": "Phân biệt đường nét hình vẽ và rèn sự khéo tay",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Còn nhiều khối băng mới đưa về làng, Cáo Tuyết hẹn {name} gọt tượng tiếp."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "cao-tuyet-dieu-khac",
+      "lines": [
+        {
+          "speaker": "Cáo Tuyết Điêu Khắc",
+          "text": "Giữa quảng trường có mấy khối băng trong vắt kìa, {name} cùng tớ tạc tượng nhé!"
+        },
+        {
+          "speaker": "Cáo Tuyết Điêu Khắc",
+          "text": "Vuốt nhẹ để gõ bỏ phần viền nhạt bên ngoài, giữ nguyên dáng tượng xanh bên trong."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ khéo tay gọt đẽo lắm!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Tạc tượng băng",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Khéo léo gọt đẽo thành công ba bức tượng băng tuyệt đẹp nhé!",
+      "game": "ice-sculpt",
+      "goal": 3
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Cáo Tuyết phe phẩy chiếc đuôi trắng: tượng của {name} tạc lấp lánh như pha lê!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Còn nhiều khối băng mới đưa về làng, Cáo Tuyết hẹn {name} gọt tượng tiếp."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

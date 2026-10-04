@@ -1,0 +1,80 @@
+{
+  "id": "side-stilts-walk",
+  "region": "trung-tam",
+  "chapter": 1,
+  "title": "Đi cà kheo tre cùng Bé Xiếc Vui Vẻ",
+  "status": "active",
+  "category": "side",
+  "summary": "Đôi cà kheo tre cao lêu nghêu: chạm chân nghiêng để giữ thăng bằng và bước từng bước chắc nịch.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, diễn viên xiếc cà kheo dũng cảm",
+    "where": "Trước sân khấu sự kiện",
+    "goal": "Bước cà kheo đi xa được một trăm mét nhé!",
+    "play": "{name} đứng trên cà kheo, người cứ nghiêng dần sang một bên.",
+    "learn": "Phản xạ giữ thăng bằng đối xứng hai bên",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Gánh xiếc còn diễn hết mùa lễ hội, {name} ghé sân khấu sự kiện bước cà kheo cùng tớ nha."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "be-xiec-vui-ve",
+      "lines": [
+        {
+          "speaker": "Bé Xiếc Vui Vẻ",
+          "text": "{name} ơi, thử bước lên đôi cà kheo tre bồng bềnh biểu diễn xiếc với tớ không?"
+        },
+        {
+          "speaker": "Bé Xiếc Vui Vẻ",
+          "text": "Người nghiêng về bên nào thì cậu chạm bên đó để bước chân lên giữ thăng bằng kẻo ngã nha."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cà kheo bước vững, giữ thẳng người nào!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Đi cà kheo",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Bước cà kheo đi xa được một trăm mét nhé!",
+      "game": "stilts-walk",
+      "goal": 100
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Bé Xiếc Vui Vẻ nhào lộn khen ngợi: {name} giữ thăng bằng cừ thật, bước đi tự tin như nghệ sĩ!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Gánh xiếc còn diễn hết mùa lễ hội, {name} ghé sân khấu sự kiện bước cà kheo cùng tớ nha."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

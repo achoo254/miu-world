@@ -1,0 +1,80 @@
+{
+  "id": "side-photo-finish",
+  "region": "trung-tam",
+  "chapter": 1,
+  "title": "Chụp ảnh về đích cùng Bác Lái Xe Hải",
+  "status": "active",
+  "category": "side",
+  "summary": "Cuộc đua tốc độ gay cấn: quan sát bức ảnh chụp vạch đích để phân định thứ hạng từng tay đua.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, trọng tài phân định đích đến",
+    "where": "Bến xe bên quảng trường",
+    "goal": "Xác định đúng thứ hạng về đích qua mười chặng đua nhé!",
+    "play": "Các bạn thú chạy đua, máy ảnh chụp lại lúc bạn đầu tiên về đích.",
+    "learn": "So sánh khoảng cách và xác định thứ tự trước sau",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Giải đua chặng tiếp theo sắp khởi tranh, {name} ghé quảng trường xem ảnh về đích cùng bác nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "bac-lai-xe-hai",
+      "lines": [
+        {
+          "speaker": "Bác Lái Xe Hải",
+          "text": "Cuộc đua thể thao quảng trường vừa cán đích nghẹt thở kìa {name} ơi!"
+        },
+        {
+          "speaker": "Bác Lái Xe Hải",
+          "text": "Cháu nhìn bức ảnh chụp vạch đích xem bạn nào gần vạch hơn rồi chọn đúng thứ tự về đích nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Mắt soi vạch đích, thứ hạng rõ ràng!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Ảnh về đích",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Xác định đúng thứ hạng về đích qua mười chặng đua nhé!",
+      "game": "photo-finish",
+      "goal": 10
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Bác Lái Xe Hải giơ ngón tay cái: {name} tinh mắt phân xử công minh, không ai cãi được!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Giải đua chặng tiếp theo sắp khởi tranh, {name} ghé quảng trường xem ảnh về đích cùng bác nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

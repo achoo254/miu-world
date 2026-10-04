@@ -1,0 +1,80 @@
+{
+  "id": "side-danh-khang",
+  "region": "nong-trai",
+  "chapter": 1,
+  "title": "Đánh khang ngoài đồng với Ông Lão Pháo Đất",
+  "status": "active",
+  "category": "side",
+  "summary": "Hai thanh tre ngắn dài giữa sân rộng, bé đón nhịp hất thanh khang bay vút thật xa.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, tay chơi đánh khang thiện nghệ",
+    "where": "Sân gạch nông trại",
+    "goal": "Đánh thanh khang bay xa đạt một trăm mét ngoài đồng nhé!",
+    "play": "Chạm lần thứ nhất để hất que khăng ngắn lên.",
+    "learn": "Ước lượng thời điểm rơi và vung tay chính xác",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Trò chơi dân gian bổ ích lắm, khi nào rảnh rỗi cháu lại tới sân nông trại chơi khang."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "ong-lao-phao-dat",
+      "lines": [
+        {
+          "speaker": "Ông Lão Pháo Đất",
+          "text": "Ra khoảng sân trống này nào {name}, ông cháu mình cùng chơi trò đánh khang truyền thống."
+        },
+        {
+          "speaker": "Ông Lão Pháo Đất",
+          "text": "Cháu hất que ngắn lên không trung rồi vung gậy vụt thật chuẩn xác cho nó bay xa nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu vụt thanh khang bay xa tít!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Đánh khăng",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Đánh thanh khang bay xa đạt một trăm mét ngoài đồng nhé!",
+      "game": "danh-khang",
+      "goal": 100
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Ông Lão Pháo Đất vuốt chòm râu bạc, khen {name} tinh mắt đánh trúng thanh khang tít tắp!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Trò chơi dân gian bổ ích lắm, khi nào rảnh rỗi cháu lại tới sân nông trại chơi khang."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

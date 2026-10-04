@@ -1,0 +1,80 @@
+{
+  "id": "side-snap-match",
+  "region": "thu-vien",
+  "chapter": 1,
+  "title": "Chạm nhanh khi hình trùng nhau cùng Mèo Hộp Nhạc",
+  "status": "active",
+  "category": "side",
+  "summary": "Bộ bài hình vẽ lật mở liên tục, bé tập trung cao độ chạm tay ngay khi hai lá giống hệt nhau.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, tay bắt bài nhanh như chớp",
+    "where": "Bục gỗ sân lễ hội lá vàng",
+    "goal": "Bắt đúng mười lần hình ảnh trùng nhau liên tiếp nhé!",
+    "play": "Từng lá bài được lật lên. Lá mới giống hệt lá ngay trước thì chạm thật nhanh!",
+    "learn": "Tập trung chú ý thị giác và tốc độ phản xạ",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Hội lá vàng lúc nào cũng rộn ràng, có dịp cậu lại ghé bục gỗ so tài với tớ nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "meo-hop-nhac",
+      "lines": [
+        {
+          "speaker": "Mèo Hộp Nhạc",
+          "text": "Cùng thi tài nhanh mắt nhanh tay với tớ nào {name}, xem ai phản xạ tốt hơn nhé!"
+        },
+        {
+          "speaker": "Mèo Hộp Nhạc",
+          "text": "Mỗi lá bài lật ra, nếu thấy giống hệt lá vừa lật trước đó thì cậu chạm thật nhanh vào nha."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tay tớ nhanh như chớp!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Ai nhanh mắt",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Bắt đúng mười lần hình ảnh trùng nhau liên tiếp nhé!",
+      "game": "snap-match",
+      "goal": 10
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Mèo Hộp Nhạc chịu thua tâm phục khẩu phục: mắt {name} sáng và tay nhanh hơn cả mèo!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Hội lá vàng lúc nào cũng rộn ràng, có dịp cậu lại ghé bục gỗ so tài với tớ nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

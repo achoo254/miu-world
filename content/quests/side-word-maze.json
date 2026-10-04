@@ -1,0 +1,80 @@
+{
+  "id": "side-word-maze",
+  "region": "thu-vien",
+  "chapter": 1,
+  "title": "Mê cung chữ cái tìm lối cùng Thầy Đố Chữ Hán",
+  "status": "active",
+  "category": "side",
+  "summary": "Những câu đồng dao dẫn đường trong mê cung, bé nối từng tiếng liên tiếp để bước ra cửa.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, học trò giỏi chữ nghĩa",
+    "where": "Bàn gỗ lớn phòng đọc",
+    "goal": "Vượt qua thành công bốn mê cung chữ đồng dao nhé!",
+    "play": "Câu đồng dao ở trên cùng. Các tiếng của câu nằm trong lưới ô, ô nọ kề ô kia.",
+    "learn": "Đọc thành câu mạch lạc và định hướng ô chữ",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Kho tàng ca dao đồng dao còn sâu rộng lắm, trò hãy thường xuyên tới phòng đọc dùi mài."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "thay-do-chu-han",
+      "lines": [
+        {
+          "speaker": "Thầy Đố Chữ Hán",
+          "text": "Thầy chào {name}, muốn qua được chiếc bàn đá này trò phải tìm đúng lối đi đấy."
+        },
+        {
+          "speaker": "Thầy Đố Chữ Hán",
+          "text": "Hãy đọc câu đồng dao mẫu rồi kéo ngón tay qua từng tiếng kề nhau để thoát khỏi mê cung."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Con lần theo từng chữ ạ!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Mê cung đồng dao",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Vượt qua thành công bốn mê cung chữ đồng dao nhé!",
+      "game": "word-maze",
+      "goal": 4
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Thầy Đố Chữ Hán vuốt chòm râu mỉm cười: {name} thông minh sáng dạ, tìm đường chuẩn lắm!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Kho tàng ca dao đồng dao còn sâu rộng lắm, trò hãy thường xuyên tới phòng đọc dùi mài."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

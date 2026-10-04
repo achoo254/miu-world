@@ -1,0 +1,80 @@
+{
+  "id": "side-swing-push",
+  "region": "xom-mai-am",
+  "chapter": 1,
+  "title": "Đẩy xích đu bay bổng cùng Bé Đánh Cù Sơn",
+  "status": "active",
+  "category": "side",
+  "summary": "Chạm đúng lúc xích đu lên tới điểm cao nhất để lấy đà vút bay chạm tới dải lộc đỏ thắm.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, cánh chim nhỏ bay lượn trên xích đu",
+    "where": "Bãi đất thả bò đầu dốc",
+    "goal": "Lấy đà nhún xích đu bay vút chạm năm lần dải lộc đỏ thắm nhé!",
+    "play": "Đu tự đung đưa. Chạm khi đu lên cao nhất ở phía sau (vòng sáng) để {name} nhún thêm đà.",
+    "learn": "Nắm bắt chu kỳ con lắc và tiếp sức đúng nhịp",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Cây đu gỗ đầu dốc bãi bò vẫn đung đưa đợi cậu đến nhún bay."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "be-danh-cu-son",
+      "lines": [
+        {
+          "speaker": "Bé Đánh Cù Sơn",
+          "text": "Gió lộng trên đồi mát quá, {name} lên xích đu bay cùng tớ đi!"
+        },
+        {
+          "speaker": "Bé Đánh Cù Sơn",
+          "text": "Cậu chạm màn hình đúng lúc đu lên cao nhất phía sau để lấy đà nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ nhún đà bay bổng lên trời!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Đánh đu",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Lấy đà nhún xích đu bay vút chạm năm lần dải lộc đỏ thắm nhé!",
+      "game": "swing-push",
+      "goal": 5
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Xích đu vút cao chạm tới trời xanh lộng gió, {name} nhún cừ quá!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Cây đu gỗ đầu dốc bãi bò vẫn đung đưa đợi cậu đến nhún bay."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

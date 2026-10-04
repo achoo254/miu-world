@@ -288,6 +288,316 @@
           "learn": "Suy nghĩ trước một nước và biết phòng thủ"
         }
       ]
+    },
+    {
+      "id": "cho-doi-truong",
+      "name": "Chó Đội Trưởng",
+      "look": "animal-dog",
+      "tint": "#e89848",
+      "where": "Mép sân bóng rổ trường",
+      "place": "Sân trường",
+      "company": [
+        {
+          "routine": "pupil",
+          "name": "Bạn nhỏ ôm cặp sách",
+          "model": "person-a"
+        }
+      ],
+      "games": [
+        {
+          "game": "bank-shot",
+          "title": "Ném bóng bật tường cùng Chó Đội Trưởng",
+          "summary": "Bạn Gấu núp sau chồng thùng gỗ: kéo đường ngắm cho bóng bật tường dội thẳng vào tay bạn.",
+          "lines": [
+            "Gâu gâu! {name} ơi, bạn Gấu đứng tít sau góc khuất ném thẳng không tới được.",
+            "Cậu kéo đường chấm căn góc để bóng nảy qua tường dội trúng tay bạn Gấu giúp tớ nha."
+          ],
+          "choice": "Bật tường dội góc, bóng tới tay ngay!",
+          "prompt": "Ném bóng dội tường trúng đích {goal} lần nhé!",
+          "reward": "Chó Đội Trưởng quẫy đuôi rối rít: {name} tính góc nảy chuẩn quá, bạn Gấu bắt gọn bóng rồi!",
+          "next": "Giờ ra chơi nào đội bóng cũng tập ném, {name} cứ ra mép sân trường tìm Chó Đội Trưởng nhé.",
+          "who": "{name}, chuyên gia ném bóng bật tường",
+          "learn": "Dự đoán góc phản xạ khi bóng đập tường"
+        },
+        {
+          "game": "lunchbox-pack",
+          "title": "Xếp hộp cơm đủ chất cùng Chó Đội Trưởng",
+          "summary": "Băng chuyền thức ăn chạy qua: chọn đủ bốn nhóm dinh dưỡng xếp vào hộp cơm trưa ngon lành.",
+          "lines": [
+            "Sắp đến giờ ăn trưa bán trú rồi, {name} cùng tớ chuẩn bị hộp cơm dinh dưỡng nào!",
+            "Cậu chọn đủ bốn món thuộc bốn nhóm chất khác nhau xếp vào hộp, chớ lấy trùng món nhé."
+          ],
+          "choice": "Cơm canh đủ món, dinh dưỡng dồi dào!",
+          "prompt": "Xếp hoàn thành {goal} hộp cơm đủ chất nhé!",
+          "reward": "Chó Đội Trưởng vỗ hai chân trước reo vang: hộp cơm của {name} trông vừa đẹp vừa ngon miệng!",
+          "next": "Bếp ăn trưa mai lại đỏ lửa, {name} ghé mép sân trường xếp cơm cùng Chó Đội Trưởng nha.",
+          "who": "{name}, đầu bếp dinh dưỡng của trường",
+          "learn": "Phân loại bốn nhóm thực phẩm thiết yếu"
+        },
+        {
+          "game": "bottle-rocket",
+          "title": "Bắn tên lửa nước cùng Chó Đội Trưởng",
+          "summary": "Tên lửa chế từ chai nước ngọt: vuốt bơm hơi căng rồi bấm nút phóng vút lên nền trời xanh.",
+          "lines": [
+            "{name} ơi, câu lạc bộ khoa học trường mình vừa chế xong giàn phóng tên lửa nước này!",
+            "Cậu vuốt bơm hơi vừa vặn tới vạch xanh, canh góc bệ phóng thẳng rồi nhấn nút bay lên nhé."
+          ],
+          "choice": "Bơm căng khí nén, tên lửa bay cao nào!",
+          "prompt": "Phóng thành công {goal} quả tên lửa nước nhé!",
+          "reward": "Chó Đội Trưởng nhảy cẫng lên mừng: tên lửa của {name} bung dù hạ cánh đẹp tuyệt vời!",
+          "next": "Sân trường luôn có chỗ cho nhà khoa học nhí, {name} rảnh lại ra bắn tên lửa tiếp nhé.",
+          "who": "{name}, nhà du hành vũ trụ nhí",
+          "learn": "Căn chỉnh áp suất và chọn góc phóng thích hợp"
+        }
+      ]
+    },
+    {
+      "id": "meo-hoa-si",
+      "name": "Mèo Vẽ Màu",
+      "look": "animal-cat",
+      "tint": "#8868c8",
+      "where": "Cửa phòng mĩ thuật",
+      "place": "Phòng mĩ thuật",
+      "company": [
+        {
+          "routine": "pupil",
+          "name": "Bạn nhỏ cầm cọ vẽ",
+          "model": "person-d"
+        }
+      ],
+      "games": [
+        {
+          "game": "color-mix",
+          "title": "Pha màu vẽ tranh cùng Mèo Vẽ Màu",
+          "summary": "Chiếc bảng pha màu rực rỡ sắc thắm: chạm hai hũ màu cơ bản để hòa trộn tạo sắc màu mới.",
+          "lines": [
+            "Meo meo! Bức tranh vườn hoa đang thiếu nhiều màu tươi sáng quá {name} ơi.",
+            "Cậu chạm hai lọ màu hòa vào nhau để tạo ra đúng sắc màu tranh yêu cầu giúp tớ nhé."
+          ],
+          "choice": "Trộn màu phép thuật, biến hóa tranh hoa!",
+          "prompt": "Pha đúng công thức {goal} màu sắc mới nhé!",
+          "reward": "Mèo Vẽ Màu giơ bảng pha màu khen: {name} am hiểu màu sắc ghê, tranh vẽ rực rỡ hẳn lên!",
+          "next": "Phòng mĩ thuật luôn mở rộng cửa đón chào, {name} ghé thăm Mèo Vẽ Màu bất cứ lúc nào nha.",
+          "who": "{name}, phù thủy pha trộn sắc màu",
+          "learn": "Nguyên lý phối màu từ các màu cơ bản"
+        },
+        {
+          "game": "paint-splat",
+          "title": "Ném màu tô tranh với Mèo Vẽ Màu",
+          "summary": "Quả bóng màu liên tục đổi sắc: canh đúng lúc bóng trùng màu bức tranh để ném văng màu tô kín.",
+          "lines": [
+            "{name} xem này, trò ném màu nước tô tranh khổ lớn vui nhộn nhất trường đấy!",
+            "Bóng dưới đáy đổi sang màu nào thì cậu chạm thật nhanh vào mảng tranh mang màu đó nhé."
+          ],
+          "choice": "Canh màu chuẩn xác, ném trúng mảng tranh!",
+          "prompt": "Tô kín bức tranh với {goal} lần ném màu chuẩn nhé!",
+          "reward": "Mèo Vẽ Màu vẫy đuôi thích thú: mảng màu nào của {name} cũng sắc nét, tranh đẹp lung linh!",
+          "next": "Còn bao nhiêu bức tranh tường chờ tô, {name} lại ra cửa phòng mĩ thuật ném màu tiếp nhé.",
+          "who": "{name}, nghệ sĩ ném màu vui nhộn",
+          "learn": "Phân biệt màu nhanh và phản xạ canh nhịp"
+        },
+        {
+          "game": "dots-boxes",
+          "title": "Nối chấm khép ô cùng Mèo Vẽ Màu",
+          "summary": "Lưới chấm vuông vắn trên trang giấy vẽ: thay phiên kẻ từng đoạn thẳng để chiếm lấy ô vuông.",
+          "lines": [
+            "Tớ với bạn Cú đang so tài cờ chấm nối ô, {name} vào đấu thay một ván đi!",
+            "Cậu nối nét giữa hai chấm kề nhau, ai khép kín được ô vuông thứ tư là ăn điểm ô đó nha."
+          ],
+          "choice": "Khép góc chiếm ô, tớ tính trước rồi!",
+          "prompt": "Chiến thắng bạn Cú {goal} ván cờ nối ô vuông nhé!",
+          "reward": "Mèo Vẽ Màu vỗ tay nồng nhiệt: {name} giăng bẫy quá khéo, chiếm trọn cả góc bàn cờ rồi!",
+          "next": "Bạn Cú hẹn ngày mai tái đấu, {name} nhớ ghé phòng mĩ thuật so tài cờ ô vuông tiếp nhé.",
+          "who": "{name}, kiện tướng cờ ô vuông",
+          "learn": "Tư duy chiến thuật và tính toán từng bước đi"
+        }
+      ]
+    },
+    {
+      "id": "be-chi-huy",
+      "name": "Bé Đội Viên",
+      "look": "person-c",
+      "tint": "#d84848",
+      "where": "Sân chơi dưới bóng bàng",
+      "place": "Sân chơi",
+      "company": [
+        {
+          "routine": "pupil",
+          "name": "Bạn nhỏ nhảy dây",
+          "model": "person-g"
+        }
+      ],
+      "games": [
+        {
+          "game": "flag-commands",
+          "title": "Phất cờ theo lệnh cùng Bé Đội Viên",
+          "summary": "Hai lá cờ đỏ xanh tung bay trước gió: đọc kỹ hiệu lệnh trên bảng để giơ hoặc hạ cờ chuẩn xác.",
+          "lines": [
+            "{name} ơi, đội nghi thức trường mình đang tập luyện phất cờ đón lễ khai giảng.",
+            "Cậu cầm cờ đỏ bên trái, cờ xanh bên phải, thấy chữ đừng thì tuyệt đối đứng yên nha."
+          ],
+          "choice": "Mệnh lệnh rõ ràng, cờ bay phấp phới!",
+          "prompt": "Thực hiện chuẩn xác {goal} khẩu lệnh cờ hiệu nhé!",
+          "reward": "Bé Đội Viên nghiêm trang chào kiểu đội viên: {name} tập trung cao độ, động tác dứt khoát!",
+          "next": "Buổi sinh hoạt đội tuần tới, {name} nhớ ra sân chơi dưới bóng bàng tập cờ hiệu tiếp nha.",
+          "who": "{name}, đội viên gương mẫu cờ hiệu",
+          "learn": "Đọc hiểu nhanh mệnh lệnh và kiềm chế hành động"
+        },
+        {
+          "game": "bo-khan",
+          "title": "Chơi trò bỏ khăn cùng Bé Đội Viên",
+          "summary": "Vòng tròn bạn bè vỗ tay rộn rã: lén thả chiếc khăn sau lưng bạn không để ý rồi chạy đua về chỗ.",
+          "lines": [
+            "Cả lớp đang quây quần chơi bỏ khăn trên bãi cỏ kìa, {name} vào vòng tròn chạy cùng nhé!",
+            "Cậu rảo bước vòng quanh, thả khăn sau lưng bạn không nhìn rồi phi thật nhanh về thảm nha."
+          ],
+          "choice": "Thả khăn kín đáo, chạy nhanh về đích!",
+          "prompt": "Thả khăn và chạy về chỗ an toàn {goal} lần nhé!",
+          "reward": "Bé Đội Viên cười giòn tan: chân {name} thoăn thoắt, bạn đuổi theo mà không kịp chạm vai!",
+          "next": "Giờ ra chơi nào vòng tròn cũng rộn tiếng cười, {name} cứ lại bóng cây bàng chơi cùng lớp nhé.",
+          "who": "{name}, chân chạy thoăn thoắt trò bỏ khăn",
+          "learn": "Quan sát cơ hội bất ngờ và bứt tốc khéo léo"
+        },
+        {
+          "game": "cat-mouse",
+          "title": "Mèo đuổi chuột rộn ràng với Bé Đội Viên",
+          "summary": "Các bạn nắm tay giơ cao hạ thấp làm cửa: dắt chú chuột lanh lẹ luồn lách để nhốt bạn mèo bên ngoài.",
+          "lines": [
+            "{name} vào vai chú chuột nhắt lém lỉnh chơi trò mèo đuổi chuột với lớp mình đi!",
+            "Cậu kéo chuột chui qua khe lúc các bạn sắp hạ tay để bạn mèo đuổi sau bị chặn lại nhé."
+          ],
+          "choice": "Chuột luồn lách nhanh, mèo đừng hòng bắt!",
+          "prompt": "Khéo léo lừa bạn mèo kẹt lại {goal} lần nhé!",
+          "reward": "Bé Đội Viên reo vang: chú chuột {name} quá nhanh trí, bạn mèo đành chịu thua rồi!",
+          "next": "Trò chơi dân gian vui bất tận, {name} ghé sân chơi dưới bóng bàng đuổi bắt tiếp nha.",
+          "who": "{name}, chú chuột lém lỉnh nhanh như cắt",
+          "learn": "Nhận biết thời điểm mở đóng của lối đi"
+        }
+      ]
+    },
+    {
+      "id": "tho-mang-non",
+      "name": "Thỏ Măng Non",
+      "look": "animal-bunny",
+      "tint": "#58c898",
+      "where": "Hành lang trước hội trường",
+      "place": "Hội trường",
+      "company": [
+        {
+          "routine": "pupil",
+          "name": "Bạn nhỏ gõ phách tre",
+          "model": "person-h"
+        }
+      ],
+      "games": [
+        {
+          "game": "nhay-sap",
+          "title": "Nhảy sạp rộn ràng cùng Thỏ Măng Non",
+          "summary": "Tiếng sào tre gõ nhịp chan chát: canh lúc sào mở rộng để thoăn thoắt bước chân vào rồi nhảy ra.",
+          "lines": [
+            "Cạch cạch tùng cạch! {name} có nghe thấy tiếng sào tre nhảy sạp rộn rã không?",
+            "Sào tre vừa mở ra hai nhịp là cậu nhảy vào ngay, rồi nhịp sau nhảy ra trước khi sào khép nhé."
+          ],
+          "choice": "Chân nhịp nhàng bước, sào khép chẳng lo!",
+          "prompt": "Nhảy sạp khéo léo vượt qua {goal} nhịp sào nhé!",
+          "reward": "Thỏ Măng Non vỗ tay theo nhịp gõ sào: {name} uyển chuyển như vũ công múa sạp vùng cao!",
+          "next": "Hội diễn văn nghệ sắp tới rồi, {name} nhớ ghé hành lang hội trường múa sạp cùng thỏ nha.",
+          "who": "{name}, bước chân nhịp nhàng nhảy sạp",
+          "learn": "Bắt đúng nhịp phách và phản xạ chân tay"
+        },
+        {
+          "game": "oan-tu-xi",
+          "title": "Oẳn tù tì nhanh trí với Thỏ Măng Non",
+          "summary": "Bàn tay thoăn thoắt ra kéo búa bao: đọc nhanh chữ thắng thua để tung ra thế tay chuẩn xác.",
+          "lines": [
+            "Oẳn tù tì xem ai nhanh trí hơn nào {name}, tớ có luật chơi cực kỳ đặc biệt đấy!",
+            "Bảng hiện chữ Thắng thì chọn tay thắng tớ, thấy chữ Thua thì phải chọn tay chịu thua nha."
+          ],
+          "choice": "Kéo búa bao sẵn sàng, tớ phản xạ ngay!",
+          "prompt": "Ra tay chính xác liên tiếp {goal} lượt oẳn tù tì nhé!",
+          "reward": "Thỏ Măng Non lắc tai trầm trồ: đầu óc {name} nhảy số nhanh ghê, chẳng nhầm chữ nào!",
+          "next": "Trò oẳn tù tì rèn trí óc siêu vui, {name} quay lại hành lang trước hội trường đấu tiếp nha.",
+          "who": "{name}, nhà vô địch oẳn tù tì nhanh trí",
+          "learn": "Đổi ngược tư duy quy tắc linh hoạt"
+        },
+        {
+          "game": "reversi",
+          "title": "Đấu cờ lật màu cùng Thỏ Măng Non",
+          "summary": "Bàn cờ vuông với những quân cờ hai mặt đen trắng: kẹp quân đối phương để đồng loạt lật sang màu mình.",
+          "lines": [
+            "{name} ơi, bạn Cú thông thái đang chờ người so tài cờ lật đen trắng này.",
+            "Cậu đặt quân kẹp hàng cờ của Cú giữa hai quân của mình để lật đổi màu, nhớ chiếm bốn góc nhé."
+          ],
+          "choice": "Chiếm lấy góc bàn, lật màu toàn bộ!",
+          "prompt": "Thắng bạn Cú {goal} ván cờ lật thông minh nhé!",
+          "reward": "Thỏ Măng Non reo hò phấn khích: bàn cờ trắng tinh màu của {name}, bạn Cú chịu thua rồi!",
+          "next": "Bạn Cú đang nghiên cứu nước cờ mới, {name} nhớ quay lại hội trường so tài tiếp nha.",
+          "who": "{name}, kỳ thủ cờ lật tài hoa",
+          "learn": "Nhìn bao quát bàn cờ và chiếm cứ điểm góc"
+        }
+      ]
+    },
+    {
+      "id": "gau-bo-dua",
+      "name": "Gấu Bó Đũa",
+      "look": "animal-panda",
+      "tint": "#4868a8",
+      "where": "Ghế đá sân sau dãy lớp",
+      "place": "Sân sau dãy lớp",
+      "company": [
+        {
+          "routine": "pupil",
+          "name": "Bạn nhỏ tập đếm số",
+          "model": "person-j"
+        }
+      ],
+      "games": [
+        {
+          "game": "make-ten",
+          "title": "Gộp đôi thành mười cùng Gấu Bó Đũa",
+          "summary": "Những khối số dâng lên từ từ: chạm ghép hai số có tổng tròn chục để làm tan biến dãy số.",
+          "lines": [
+            "Các khối số đang trồi lên nhanh quá kìa {name}, giúp tớ giải cứu hàng số với!",
+            "Cậu chạm hai ô số cộng lại vừa tròn mười để biến mất, đừng để số chạm vạch trên cùng nhé."
+          ],
+          "choice": "Cộng lại thành mười, giải phóng hàng số!",
+          "prompt": "Ghép đúng {goal} cặp số có tổng bằng mười nhé!",
+          "reward": "Gấu Bó Đũa vỗ bụng cười vang: {name} tính nhẩm siêu tốc, hàng số đã sạch bong rồi!",
+          "next": "Mỗi giờ học toán xong, {name} lại ra ghế đá sân sau cùng Gấu Bó Đũa giải đố nha.",
+          "who": "{name}, siêu sao tính nhẩm tròn chục",
+          "learn": "Ghi nhớ các cặp số cộng lại bằng 10"
+        },
+        {
+          "game": "tens-bundles",
+          "title": "Bó chục que tính cùng Gấu Bó Đũa",
+          "summary": "Que tính rải rác trên bàn học: khoanh tròn đủ mười que để buộc thành một bó chục vuông vắn.",
+          "lines": [
+            "{name} ơi, tớ có cả rổ que tính nhiều màu cần phân loại thành từng bó chục.",
+            "Cậu vẽ vòng quanh đúng mười que để buộc lại, rồi đếm xem có mấy chục và mấy đơn vị nha."
+          ],
+          "choice": "Mười que thành bó, đếm chục thật nhanh!",
+          "prompt": "Khoanh buộc thành công {goal} bó que tính chục nhé!",
+          "reward": "Gấu Bó Đũa giơ từng bó que gọn gàng: {name} đếm chục que chuẩn xác, bài toán dễ ợt rồi!",
+          "next": "Sắp tới bài đếm trăm, {name} nhớ ghé ghế đá sân sau bó que tính cùng Gấu Bó Đũa nhé.",
+          "who": "{name}, thợ bó que tính cẩn thận",
+          "learn": "Hiểu bản chất hàng chục và hàng đơn vị"
+        },
+        {
+          "game": "hand-span",
+          "title": "Đo đồ vật bằng gang tay cùng Gấu Bó Đũa",
+          "summary": "Bàn học, bảng đen và hộp bút dài ngắn khác nhau: áp từng gang tay nối đuôi để đo độ dài đồ vật.",
+          "lines": [
+            "Hôm nay lớp mình học bài ước lượng độ dài bằng gang tay đấy {name} ạ.",
+            "Cậu đặt từng gang tay nối liền nhau từ mép trái, không để hở hay đè lên nhau rồi đếm nhé."
+          ],
+          "choice": "Gang tay nối tiếp, đo chuẩn từng li!",
+          "prompt": "Đo đúng độ dài của {goal} món đồ dùng học tập nhé!",
+          "reward": "Gấu Bó Đũa gật gù khen ngợi: {name} đo đạc khéo ghê, số gang tay khớp từng centimet!",
+          "next": "Sân sau còn bao nhiêu thứ để đo, {name} cứ ra ghế đá dãy lớp tìm Gấu Bó Đũa nha.",
+          "who": "{name}, thước đo gang tay chuẩn xác",
+          "learn": "Kỹ năng đo độ dài bằng đơn vị tự quy ước"
+        }
+      ]
     }
   ],
   "residents": [

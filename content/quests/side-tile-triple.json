@@ -1,0 +1,80 @@
+{
+  "id": "side-tile-triple",
+  "region": "cho-phien",
+  "chapter": 1,
+  "title": "Gắp ba ô giống nhau cùng Chị Tiệm Tạp Hóa",
+  "status": "active",
+  "category": "side",
+  "summary": "Gắp các ô hình không bị đè xuống khay sao cho ba ô cùng loại gặp nhau sẽ biến mất.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, chuyên gia xếp đồ ngăn nắp của tiệm",
+    "where": "Trước gian hàng tạp hóa",
+    "goal": "Thu dọn biến mất mười sáu bộ ba ô hình giống nhau trên kệ nhé!",
+    "play": "{name} chạm ô không bị ô khác đè lên để đưa xuống khay (ô bị đè thì tối màu).",
+    "learn": "Phân loại theo bộ ba và quản lý ô trống khay",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Các kiện đồ chơi mới về trước gian tạp hóa luôn đợi em ra xếp."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "chi-tiem-tap-hoa",
+      "lines": [
+        {
+          "speaker": "Chị Tiệm Tạp Hóa",
+          "text": "Kệ đồ chơi xếp chồng lên nhau lộn xộn quá em {name} ơi!"
+        },
+        {
+          "speaker": "Chị Tiệm Tạp Hóa",
+          "text": "Em chạm các ô sáng màu đưa xuống khay gom bộ ba giống nhau cho gọn nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Em xếp gọn các ô ba ngay!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Xếp ba ô giống",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Thu dọn biến mất mười sáu bộ ba ô hình giống nhau trên kệ nhé!",
+      "game": "tile-triple",
+      "goal": 16
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Kệ hàng gọn gàng ngăn nắp nhờ tài sắp xếp khéo léo của {name}!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Các kiện đồ chơi mới về trước gian tạp hóa luôn đợi em ra xếp."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

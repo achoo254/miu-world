@@ -1,0 +1,80 @@
+{
+  "id": "side-lift-numbers",
+  "region": "trung-tam",
+  "chapter": 1,
+  "title": "Vận hành thang máy số cùng Khỉ Tính Nhanh",
+  "status": "active",
+  "category": "side",
+  "summary": "Tòa tháp lâu đài nguy nga: đọc thẻ số hàng chục và hàng đơn vị của khách để đưa thang máy tới đúng tầng.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người lái thang máy lâu đài",
+    "where": "Bậc thềm sân trước lâu đài",
+    "goal": "Chở đúng mười lăm lượt khách lên đúng tầng lâu đài nhé!",
+    "play": "Khách cầm thẻ như \"4 chục 7\", tức là muốn lên tầng số 47.",
+    "learn": "Đọc viết số có hai chữ số theo cấu tạo thập phân",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Khách tham quan lâu đài tấp nập suốt ngày, {name} nhớ ghé bậc thềm lái thang máy tiếp nha."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "khi-tinh-nhanh",
+      "lines": [
+        {
+          "speaker": "Khỉ Tính Nhanh",
+          "text": "{name} ơi, khách vào lâu đài cầm thẻ ghi số chục và số que lẻ cần lên tầng kìa!"
+        },
+        {
+          "speaker": "Khỉ Tính Nhanh",
+          "text": "Cậu ghép số chục với số đơn vị thành số tầng đúng rồi chạm đưa thang máy chở khách nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Ghép chục ghép đơn vị, thang máy lên tầng!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Thang máy số",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Chở đúng mười lăm lượt khách lên đúng tầng lâu đài nhé!",
+      "game": "lift-numbers",
+      "goal": 15
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Khỉ Tính Nhanh cúi chào kiểu hoàng gia: {name} hiểu rõ hàng chục hàng đơn vị, phục vụ chu đáo quá!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Khách tham quan lâu đài tấp nập suốt ngày, {name} nhớ ghé bậc thềm lái thang máy tiếp nha."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

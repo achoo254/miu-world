@@ -1,0 +1,80 @@
+{
+  "id": "side-color-mix",
+  "region": "truong-hoc",
+  "chapter": 1,
+  "title": "Pha màu vẽ tranh cùng Mèo Vẽ Màu",
+  "status": "active",
+  "category": "side",
+  "summary": "Chiếc bảng pha màu rực rỡ sắc thắm: chạm hai hũ màu cơ bản để hòa trộn tạo sắc màu mới.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, phù thủy pha trộn sắc màu",
+    "where": "Cửa phòng mĩ thuật",
+    "goal": "Pha đúng công thức mười màu sắc mới nhé!",
+    "play": "Bạn nhỏ cần một màu. {name} chạm hai lọ màu để pha vào chậu.",
+    "learn": "Nguyên lý phối màu từ các màu cơ bản",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Phòng mĩ thuật luôn mở rộng cửa đón chào, {name} ghé thăm Mèo Vẽ Màu bất cứ lúc nào nha."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "meo-hoa-si",
+      "lines": [
+        {
+          "speaker": "Mèo Vẽ Màu",
+          "text": "Meo meo! Bức tranh vườn hoa đang thiếu nhiều màu tươi sáng quá {name} ơi."
+        },
+        {
+          "speaker": "Mèo Vẽ Màu",
+          "text": "Cậu chạm hai lọ màu hòa vào nhau để tạo ra đúng sắc màu tranh yêu cầu giúp tớ nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Trộn màu phép thuật, biến hóa tranh hoa!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Pha màu",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Pha đúng công thức mười màu sắc mới nhé!",
+      "game": "color-mix",
+      "goal": 10
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Mèo Vẽ Màu giơ bảng pha màu khen: {name} am hiểu màu sắc ghê, tranh vẽ rực rỡ hẳn lên!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Phòng mĩ thuật luôn mở rộng cửa đón chào, {name} ghé thăm Mèo Vẽ Màu bất cứ lúc nào nha."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

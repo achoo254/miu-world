@@ -1,0 +1,80 @@
+{
+  "id": "side-drift-corner",
+  "region": "nui-tuyet",
+  "chapter": 1,
+  "title": "Lái xe ôm cua trên đường băng cùng Cánh Cụt",
+  "status": "active",
+  "category": "side",
+  "summary": "Xe lao trên tuyết trơn, bé giữ tay cho xe bám cột ôm cua rồi thả tay chạy thẳng.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, tay đua cừ khôi trên tuyết",
+    "where": "Sân băng tự nhiên trên hồ",
+    "goal": "Lái xe khéo léo vượt qua hai mươi khúc cua trượt băng nhé!",
+    "play": "Xe tự chạy. Tới khúc cua, {name} giữ ngón tay để xe ôm vòng quanh cột đỏ.",
+    "learn": "Canh đúng lúc giữ và thả tay lái",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Đường đua hồ băng còn dài, Cánh Cụt chờ {name} tiếp tục so tài tốc độ."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "canh-cut-khuc-con-cau",
+      "lines": [
+        {
+          "speaker": "Cánh Cụt Khúc Côn Cầu",
+          "text": "Đường đua quanh hồ băng trơn trượt lắm, {name} cầm lái thử sức nào!"
+        },
+        {
+          "speaker": "Cánh Cụt Khúc Côn Cầu",
+          "text": "Tới góc cua thì giữ chặt tay quanh cột cờ, xong cua mới thả ra nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ giữ chắc tay lái rồi!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Ôm cua",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Lái xe khéo léo vượt qua hai mươi khúc cua trượt băng nhé!",
+      "game": "drift-corner",
+      "goal": 20
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Cánh Cụt nhảy múa cổ vũ: {name} ôm cua ngọt ngào chẳng trượt ra ngoài!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Đường đua hồ băng còn dài, Cánh Cụt chờ {name} tiếp tục so tài tốc độ."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

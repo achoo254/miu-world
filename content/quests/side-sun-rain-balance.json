@@ -1,0 +1,80 @@
+{
+  "id": "side-sun-rain-balance",
+  "region": "khu-rung-bi-mat",
+  "chapter": 1,
+  "title": "Cân bằng nắng mưa cùng Hươu Đốm Rừng Rậm",
+  "status": "active",
+  "category": "side",
+  "summary": "Mầm cây thông non đang vươn mình lớn lên: kéo mây điều hòa ánh nắng và hạt mưa tưới tắm vừa vặn.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người làm vườn thông thái",
+    "where": "Trảng cỏ giữa rừng thông",
+    "goal": "Chăm cây lớn trĩu quả qua năm đợt phát triển nhé!",
+    "play": "Cây táo cần cả nắng lẫn nước. Kéo đám mây che mặt trời thì trời mưa.",
+    "learn": "Cân bằng hai yếu tố và quan sát chỉ số",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Rừng thông còn nhiều mầm non cần tưới, {name} nhớ quay lại trảng cỏ chăm cây cùng hươu nha."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "huou-bong-ram",
+      "lines": [
+        {
+          "speaker": "Hươu Đốm Rừng Rậm",
+          "text": "Cây non trong rừng thông cần cả giọt mưa mát lành lẫn ánh nắng ấm áp đó {name}."
+        },
+        {
+          "speaker": "Hươu Đốm Rừng Rậm",
+          "text": "Cậu kéo đám mây che nắng hay nhường chỗ cho mưa để hai vạch đo luôn ở vùng xanh nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Nắng mưa hòa thuận, cây lớn nhanh nào!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Nắng mưa cho cây",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Chăm cây lớn trĩu quả qua năm đợt phát triển nhé!",
+      "game": "sun-rain-balance",
+      "goal": 5
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Hươu Đốm Rừng Rậm reo mừng: cây non trĩu cành xanh tốt nhờ bàn tay chăm chút của {name}!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Rừng thông còn nhiều mầm non cần tưới, {name} nhớ quay lại trảng cỏ chăm cây cùng hươu nha."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

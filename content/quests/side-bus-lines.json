@@ -1,0 +1,80 @@
+{
+  "id": "side-bus-lines",
+  "region": "trung-tam",
+  "chapter": 1,
+  "title": "Vẽ tuyến xe buýt cùng Bác Lái Xe Hải",
+  "status": "active",
+  "category": "side",
+  "summary": "Bản đồ thành phố với các trạm xe hình khối: kéo ngón tay nối các trạm thành tuyến xe buýt liên hoàn.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, kỹ sư quy hoạch tuyến xe buýt",
+    "where": "Bến xe bên quảng trường",
+    "goal": "Chở đủ bốn mươi hành khách về đúng trạm dừng nhé!",
+    "play": "Kéo từ trạm này sang trạm khác để vẽ tuyến xe buýt, kéo từ đầu tuyến để nối dài.",
+    "learn": "Thiết kế mạng lưới giao thông và tối ưu lộ trình",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Thành phố còn tiếp tục mở rộng, bác Hải hẹn {name} ở quảng trường vẽ tiếp các tuyến xe nha."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "bac-lai-xe-hai",
+      "lines": [
+        {
+          "speaker": "Bác Lái Xe Hải",
+          "text": "{name} ơi, thành phố vừa mở thêm nhiều trạm dừng xe buýt mới toanh đón bà con."
+        },
+        {
+          "speaker": "Bác Lái Xe Hải",
+          "text": "Cháu kéo tay nối các trạm lại với nhau sao cho hành khách hình nào cũng về đúng trạm đó nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Vẽ đường kết nối, xe chạy khắp nơi!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Vẽ tuyến xe buýt",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Chở đủ bốn mươi hành khách về đúng trạm dừng nhé!",
+      "game": "bus-lines",
+      "goal": 40
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Bác Lái Xe Hải cười sảng khoái: lộ trình {name} vẽ thông minh ghê, ai cũng về nhà an toàn!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Thành phố còn tiếp tục mở rộng, bác Hải hẹn {name} ở quảng trường vẽ tiếp các tuyến xe nha."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

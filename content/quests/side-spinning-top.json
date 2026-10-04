@@ -1,0 +1,80 @@
+{
+  "id": "side-spinning-top",
+  "region": "xom-mai-am",
+  "chapter": 1,
+  "title": "Quay cù gỗ tít mù cùng Bé Đánh Cù Sơn",
+  "status": "active",
+  "category": "side",
+  "summary": "Quăng mạnh con cù gỗ xuống bãi đất phẳng rồi quất dây tiếp sức cho cù quay tít thò lò.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, cao thủ đánh cù gỗ của xóm đồi",
+    "where": "Bãi đất thả bò đầu dốc",
+    "goal": "Giữ cho con cù quay tròn tít mù đạt bốn mươi điểm thật đỉnh nhé!",
+    "play": "Vuốt lên để ném con quay vào vòng phấn.",
+    "learn": "Cảm nhận thời điểm tiếp lực cho con quay",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Bãi thả bò đầu dốc đất phẳng lỳ đón cậu ra thi cù mỗi chiều."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "be-danh-cu-son",
+      "lines": [
+        {
+          "speaker": "Bé Đánh Cù Sơn",
+          "text": "Con cù gỗ xoan của tớ đẽo bóng loáng nè {name} ơi!"
+        },
+        {
+          "speaker": "Bé Đánh Cù Sơn",
+          "text": "Cậu vuốt ném cù vào vòng rồi canh lúc cù lắc lư thì quất dây nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ quất cù quay tít ngay!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Đánh quay",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Giữ cho con cù quay tròn tít mù đạt bốn mươi điểm thật đỉnh nhé!",
+      "game": "spinning-top",
+      "goal": 40
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Con cù quay tít reo vù vù giữa vòng tròn, {name} đánh cù siêu thật!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Bãi thả bò đầu dốc đất phẳng lỳ đón cậu ra thi cù mỗi chiều."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

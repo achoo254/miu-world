@@ -266,6 +266,316 @@
           "learn": "Canh thời điểm thả tay chính xác"
         }
       ]
+    },
+    {
+      "id": "chu-lai-do-ba",
+      "name": "Chú Lái Đò Ba",
+      "look": "person-h",
+      "tint": "#4878a8",
+      "where": "Bãi cỏ ven bờ sông",
+      "place": "Bãi cỏ ven sông",
+      "company": [
+        {
+          "routine": "porter",
+          "name": "Bác gánh quang dầu",
+          "model": "person-a"
+        }
+      ],
+      "games": [
+        {
+          "game": "carp-waterfall",
+          "title": "Cá chép vượt Vũ Môn cùng Chú Lái Đò Ba",
+          "summary": "Chạm nhẹ tay để chú cá chép nhảy qua từng tầng thác nước róc rách lên bờ đá cao.",
+          "lines": [
+            "{name} ơi, đàn cá chép đang rủ nhau vượt thác Vũ Môn kìa!",
+            "Cháu canh lúc nước êm rồi hãy chạm để cá phóng lên nhé."
+          ],
+          "choice": "Cháu giúp cá chép nhảy ngay!",
+          "prompt": "Giúp đàn cá chép nhảy vượt qua {goal} bậc thác nước nhé!",
+          "reward": "Hay lắm {name}, đàn cá chép đã hóa rồng bay vút lên trời rồi!",
+          "next": "Chú lái đò vẫn neo ở bãi cỏ ven sông đón cháu ghé chơi tiếp.",
+          "who": "{name}, bạn nhỏ đồng hành cùng cá chép",
+          "learn": "Canh đúng thời điểm nước êm để hành động"
+        },
+        {
+          "game": "river-crossing",
+          "title": "Qua sông an toàn cùng Chú Lái Đò Ba",
+          "summary": "Xếp đồ và bạn nhỏ lên chiếc đò con rồi chèo sang bờ bên kia thật an toàn.",
+          "lines": [
+            "{name} xem chú chèo đò chở đồ sang sông này!",
+            "Cháu nhớ tính toán sao cho các đôi không làm phiền nhau trên bờ nhé."
+          ],
+          "choice": "Cháu xếp đồ lên đò ngay!",
+          "prompt": "Chèo đò chở trọn vẹn {goal} chuyến hàng sang sông giúp chú nhé!",
+          "reward": "Chuyến đò nào cũng sang bờ an toàn nhờ tài tính toán của {name}!",
+          "next": "Bến sông quê mình ngày nào cũng nhộn nhịp tiếng đò rẽ sóng.",
+          "who": "{name}, hoa tiêu nhí thông minh của bến đò",
+          "learn": "Suy nghĩ logic và xếp thứ tự hợp lý"
+        },
+        {
+          "game": "sail-wind",
+          "title": "Căng buồm đón gió cùng Chú Lái Đò Ba",
+          "summary": "Xoay cánh buồm trắng hứng trọn ngọn gió nam để thuyền lướt băng băng qua các phao tiêu.",
+          "lines": [
+            "Gió sông đang thổi lồng lộng đấy {name} ơi!",
+            "Cháu kéo buồm đón gió thổi vào lòng thuyền là đò lướt êm ru."
+          ],
+          "choice": "Cháu căng buồm đón gió đây!",
+          "prompt": "Đón gió đưa thuyền lướt qua {goal} chiếc phao hoa trên sông nhé!",
+          "reward": "Thuyền chạy nhanh tựa chim bay, {name} cầm lái buồm cừ lắm!",
+          "next": "Khi nào gió chiều nổi lên, chú cháu mình lại giương buồm ra xa.",
+          "who": "{name}, thuyền trưởng nhí lướt sóng gió",
+          "learn": "Căn chỉnh hướng buồm theo chiều gió"
+        }
+      ]
+    },
+    {
+      "id": "nghe-nhan-mua-roi",
+      "name": "Nghệ Nhân Múa Rối",
+      "look": "person-d",
+      "tint": "#c84858",
+      "where": "Hiên xưởng thủ công làng",
+      "place": "Xưởng thủ công",
+      "company": [
+        {
+          "routine": "pupil",
+          "name": "Bé xem múa rối nước",
+          "model": "person-c"
+        }
+      ],
+      "games": [
+        {
+          "game": "water-puppet",
+          "title": "Múa rối nước làng quê cùng Nghệ Nhân Múa Rối",
+          "summary": "Điều khiển chú rối Chú Tễu uốn lượn nhịp nhàng theo vệt bóng mờ trên mặt nước.",
+          "lines": [
+            "Sân khấu thủy đình sáng đèn rồi kìa {name} ơi!",
+            "Cháu kéo con rối Chú Tễu múa theo bóng tròn trên nước thật khéo nhé."
+          ],
+          "choice": "Cháu múa rối Chú Tễu ngay!",
+          "prompt": "Dẫn chú rối múa khớp với bóng {goal} nhịp điệu rộn ràng nhé!",
+          "reward": "Khán giả vỗ tay reo hò râm ran vì điệu múa tuyệt vời của {name}!",
+          "next": "Hiên xưởng thủ công lúc nào cũng mở cửa đón cháu vào luyện múa rối.",
+          "who": "{name}, nghệ sĩ tí hon của phường rối nước",
+          "learn": "Uốn lượn ngón tay uyển chuyển theo nhịp"
+        },
+        {
+          "game": "dan-bau",
+          "title": "Đàn bầu thánh thót cùng Nghệ Nhân Múa Rối",
+          "summary": "Lướt ngón tay dọc cần đàn bầu để ngân lên những thanh âm thánh thót ngọt ngào.",
+          "lines": [
+            "Tiếng đàn bầu quê ta tha thiết lắm {name} à!",
+            "Cháu giữ ngón tay trên dải nốt lượn sóng để tiếng đàn ngân vang nhé."
+          ],
+          "choice": "Cháu gảy cung đàn ngân vang!",
+          "prompt": "Ngân vang đúng điệu {goal} khúc nhạc đàn bầu êm dịu nhé!",
+          "reward": "Tiếng đàn của {name} vang lên trong vắt làm xao xuyến cả làng quê!",
+          "next": "Cây đàn bầu mộc mạc vẫn treo bên hiên xưởng đợi tiếng gảy của cháu.",
+          "who": "{name}, nhạc công nhỏ gảy đàn thánh thót",
+          "learn": "Lắng nghe cao độ và giữ tay nhịp nhàng"
+        },
+        {
+          "game": "hold-notes",
+          "title": "Ngân dài nốt nhạc cùng Nghệ Nhân Múa Rối",
+          "summary": "Chạm và giữ đúng độ dài từng nốt sáo du dương bay vút trên nền trời xanh thẳm.",
+          "lines": [
+            "{name} có nghe tiếng sáo diều vi vu trên đồng không?",
+            "Cháu giữ tay cho nốt nhạc ngân dài rồi nhấc lên đúng vạch đỏ nhé."
+          ],
+          "choice": "Cháu giữ nốt sáo vi vu!",
+          "prompt": "Ngân dài đúng nhịp {goal} nốt sáo lượn trên bầu trời nhé!",
+          "reward": "Nốt sáo của {name} bay vút lên chín tầng mây thật du dương!",
+          "next": "Gió đồng vẫn vi vu thổi sáo quanh hiên xưởng thủ công mỗi chiều.",
+          "who": "{name}, người thổi sáo diều ngân vang",
+          "learn": "Cảm nhận thời gian ngân dài của âm thanh"
+        }
+      ]
+    },
+    {
+      "id": "co-den-long-sen",
+      "name": "Cô Đèn Lồng Sen",
+      "look": "person-e",
+      "tint": "#d89858",
+      "where": "Dưới bóng đa đầu làng",
+      "place": "Đầu làng",
+      "company": [
+        {
+          "routine": "shopper",
+          "name": "Bé xách lồng đèn",
+          "model": "person-f"
+        }
+      ],
+      "games": [
+        {
+          "game": "hoa-dang",
+          "title": "Thả hoa đăng trên sông cùng Cô Đèn Lồng Sen",
+          "summary": "Chạm nhẹ tay thả từng chiếc thuyền hoa đăng lấp lánh trôi êm đềm theo dòng nước mát.",
+          "lines": [
+            "Đêm hội sông làng mình thả hoa đăng rực rỡ lắm {name} ơi!",
+            "Cháu chạm thả đèn tránh các đám bèo tây để hoa trôi thật xa nhé."
+          ],
+          "choice": "Cháu thả hoa đăng xuống nước!",
+          "prompt": "Thả trôi êm ả {goal} đóa hoa đăng lung linh trên mặt nước nhé!",
+          "reward": "Dòng sông lấp lánh như dát vàng nhờ bàn tay khéo léo của {name}!",
+          "next": "Mỗi tối trăng rằm, cô lại ngồi dưới gốc đa thả hoa đăng cầu an.",
+          "who": "{name}, người thắp sáng dòng sông trăng",
+          "learn": "Canh khe hở giữa dòng nước chảy xuôi"
+        },
+        {
+          "game": "lantern-light",
+          "title": "Thắp sáng đèn lồng cùng Cô Đèn Lồng Sen",
+          "summary": "Thắp lại những chiếc đèn lồng hoa sen đang chập chờn để cả con đường làng rực rỡ sắc màu.",
+          "lines": [
+            "Gió thoảng làm những ngọn nến trong đèn chao nghiêng kìa {name}!",
+            "Cháu chạm nhanh tay vào lồng đèn để thắp sáng cho đoàn người qua lại."
+          ],
+          "choice": "Cháu thắp đèn lồng ngay!",
+          "prompt": "Giữ ánh sáng cho {goal} lượt đoàn khách dạo hội hoa đăng nhé!",
+          "reward": "Cả xóm làng bừng sáng ấm áp muôn màu dưới bàn tay của {name}!",
+          "next": "Hàng đèn lồng sen đầu làng vẫn treo lung linh chờ cháu ghé thắp.",
+          "who": "{name}, người giữ lửa đèn lồng rực rỡ",
+          "learn": "Phản xạ nhanh tay thắp đều các ngọn đèn"
+        },
+        {
+          "game": "rain-barrel",
+          "title": "Hứng mưa vào chum cùng Cô Đèn Lồng Sen",
+          "summary": "Nghiêng tàu lá chuối xanh hứng dòng nước mưa trong vắt đổ đầy vào những chiếc chum sành.",
+          "lines": [
+            "Mưa rào mùa hạ đang đổ nước ngọt lành xuống vườn đấy {name}!",
+            "Cháu nghiêng tàu lá chuối dẫn dòng nước chảy vào miệng chum nhé."
+          ],
+          "choice": "Cháu nghiêng tàu lá hứng nước!",
+          "prompt": "Hứng dòng nước mát làm đầy tràn {goal} chiếc chum sành nhé!",
+          "reward": "Những chum nước mưa đã đầy ắp nước ngọt mát lành rồi {name} ơi!",
+          "next": "Bóng cây đa đầu làng luôn mát rượi đón cháu đến hứng nước mưa.",
+          "who": "{name}, bạn nhỏ chắt chiu từng giọt mưa lành",
+          "learn": "Khéo léo điều chỉnh độ nghiêng tàu lá"
+        }
+      ]
+    },
+    {
+      "id": "bac-thoi-com-thi",
+      "name": "Bác Thổi Cơm Thi",
+      "look": "person-j",
+      "tint": "#b87838",
+      "where": "Góc sân bóng cạnh đầm sen",
+      "place": "Đầm sen và sân bóng",
+      "company": [
+        {
+          "routine": "sweeper",
+          "name": "Chị quét sân đình",
+          "model": "person-i"
+        }
+      ],
+      "games": [
+        {
+          "game": "thoi-com-thi",
+          "title": "Thổi cơm thi hội làng cùng Bác Thổi Cơm Thi",
+          "summary": "Chăm thêm que củi giữ ngọn lửa bập bùng trong vùng an toàn để nồi cơm dẻo thơm chín tới.",
+          "lines": [
+            "Hội làng đang rộn rã thi nấu cơm niêu đất đấy {name} ơi!",
+            "Cháu chụm củi vừa đủ giữ ngọn lửa liu riu cho cơm chín nục nhé."
+          ],
+          "choice": "Cháu canh nồi cơm thơm dẻo!",
+          "prompt": "Canh chừng ngọn lửa nấu chín {goal} nồi cơm thơm lừng nhé!",
+          "reward": "Nồi cơm trắng dẻo thơm phức mùi gạo mới, {name} nấu khéo quá!",
+          "next": "Bếp lửa hội làng bên đầm sen luôn đỏ than đợi cháu trổ tài.",
+          "who": "{name}, đầu bếp nhí thổi cơm thi hội làng",
+          "learn": "Giữ ngọn lửa cháy đều và kiên nhẫn"
+        },
+        {
+          "game": "bat-trach",
+          "title": "Bắt chạch trong chum cùng Bác Thổi Cơm Thi",
+          "summary": "Lùa tay theo chú chạch đồng trơn tuột đang uốn lượn trong làn nước mát của chum sành.",
+          "lines": [
+            "{name} ơi, chú chạch da trơn đang bơi thoăn thoắt trong chum kìa!",
+            "Cháu rê ngón tay bám theo đầu chạch thật khéo kẻo nó lặn mất."
+          ],
+          "choice": "Cháu tóm được chú chạch ngay!",
+          "prompt": "Khéo léo tóm gọn {goal} chú chạch đồng trơn lủi trong chum nhé!",
+          "reward": "Bắt được chạch trơn tuột không hề dễ mà {name} làm được, giỏi lắm!",
+          "next": "Trò bắt chạch hội làng vui vẻ vẫn mở bên góc sân đầm sen.",
+          "who": "{name}, tay bắt chạch nhanh nhẹn hội thi",
+          "learn": "Bám đuổi mục tiêu di chuyển nhanh và êm"
+        },
+        {
+          "game": "croc-compare",
+          "title": "Cá sấu ngoạm số lớn cùng Bác Thổi Cơm Thi",
+          "summary": "So sánh hai đĩa thức ăn rồi vuốt mở miệng chú cá sấu ngoạm về bên có nhiều món hơn.",
+          "lines": [
+            "Chú cá sấu háu ăn này chỉ thích đĩa có số lớn thôi {name} ạ!",
+            "Cháu so sánh thật chuẩn rồi vuốt cá sấu quay đầu sang đĩa nhiều nhé."
+          ],
+          "choice": "Cháu chỉ đĩa nhiều hơn cho cá sấu!",
+          "prompt": "Chỉ đúng đĩa nhiều hơn {goal} lần cho cá sấu no bụng nhé!",
+          "reward": "Cá sấu vỗ bụng cười khà khà vì được {name} cho ăn no căng!",
+          "next": "Bác vẫn để bàn tính bên sân bóng đầm sen đón cháu ra so tài số học.",
+          "who": "{name}, bạn nhỏ so sánh số nhanh chuẩn xác",
+          "learn": "So sánh độ lớn và chọn số lớn hơn"
+        }
+      ]
+    },
+    {
+      "id": "be-nem-lia-thia",
+      "name": "Bé Ném Lia Thia",
+      "look": "person-k",
+      "tint": "#389888",
+      "where": "Bờ kênh chợ nhỏ trong làng",
+      "place": "Chợ nhỏ trong làng",
+      "company": [
+        {
+          "routine": "kite-flyer",
+          "name": "Bạn nhỏ nhặt đá cuội",
+          "model": "person-o"
+        }
+      ],
+      "games": [
+        {
+          "game": "skipping-stones",
+          "title": "Ném đá lia thia cùng Bé Ném Lia Thia",
+          "summary": "Vuốt nhanh viên đá cuội dẹt lướt là là mặt nước để đá nảy lên từng vòng sóng biếc.",
+          "lines": [
+            "{name} ơi, viên đá cuội bờ kênh phẳng lì này ném lia thia thích lắm!",
+            "Cậu vuốt thật nhanh và thẳng tay ngang mặt nước để đá nảy xa nhé."
+          ],
+          "choice": "Tớ ném đá lướt sóng đây!",
+          "prompt": "Lia viên đá nảy trúng đích gom đủ {goal} điểm sao trên nước nhé!",
+          "reward": "Đá nảy tung bọt trắng xóa liên hồi, {name} ném cừ khôi thật đấy!",
+          "next": "Bờ kênh chợ làng còn nhiều đá cuội dẹt, mai cậu lại ra lia thia nha.",
+          "who": "{name}, tay ném lia thia siêu đẳng trên kênh",
+          "learn": "Căn lực vuốt thẳng và lướt nhanh ngang mặt nước"
+        },
+        {
+          "game": "sink-float",
+          "title": "Vật chìm vật nổi cùng Bé Ném Lia Thia",
+          "summary": "Quan sát từng món đồ rơi xuống nước rồi đoán xem vật sẽ chìm nghỉm hay nổi bồng bềnh.",
+          "lines": [
+            "Nhiều món đồ thú vị sắp thả xuống chậu nước kìa {name}!",
+            "Cậu đoán xem món nào nổi thì vuốt lên, món nào chìm thì vuốt xuống nhé."
+          ],
+          "choice": "Tớ đoán chìm nổi chuẩn lắm!",
+          "prompt": "Đoán trúng trạng thái chìm hay nổi của {goal} đồ vật nhé!",
+          "reward": "Cậu đoán món nào trúng phóc món đó, {name} tinh ý quá chừng!",
+          "next": "Chậu nước thí nghiệm vẫn để bên bờ kênh chợ, rảnh thì ghé tớ chơi tiếp.",
+          "who": "{name}, nhà khoa học nhí khám phá tự nhiên",
+          "learn": "Nhận biết đặc tính nặng nhẹ của vật thể"
+        },
+        {
+          "game": "rising-water",
+          "title": "Nước dâng nhặt báu vật cùng Bé Ném Lia Thia",
+          "summary": "Giữ tay đắp cho quả đồi dâng cao hơn mặt nước lũ cuồn cuộn để giữ mái nhà luôn khô ráo.",
+          "lines": [
+            "Nước triều dâng cao mấp mé bờ kênh rồi {name} ơi!",
+            "Cậu chạm giữ ngón tay trên đồi để nâng đất lên cao hơn ngọn nước nhé."
+          ],
+          "choice": "Tớ đắp đồi cao giữ nhà khô!",
+          "prompt": "Nâng cao đất đồi vượt qua {goal} đợt nước lũ dâng nhé!",
+          "reward": "Mái nhà đứng vững vàng trên đỉnh đồi khô ráo, {name} cừ ghê!",
+          "next": "Góc kênh chợ nhỏ lúc nào cũng đón cậu ghé chơi đắp đồi ngăn lũ.",
+          "who": "{name}, dũng sĩ dâng đồi che chở làng quê",
+          "learn": "Quan sát mực nước dâng để kịp thời nâng đồi"
+        }
+      ]
     }
   ],
   "residents": [

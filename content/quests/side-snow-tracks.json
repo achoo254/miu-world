@@ -1,0 +1,80 @@
+{
+  "id": "side-snow-tracks",
+  "region": "nui-tuyet",
+  "chapter": 1,
+  "title": "Đoán dấu chân trên tuyết cùng Cáo Tuyết Điêu Khắc",
+  "status": "active",
+  "category": "side",
+  "summary": "Mặt tuyết in hằn những vết chân lạ, bé quan sát vết bước để tìm ra bạn thú rừng tương ứng.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, thám tử dò dấu vết rừng tuyết",
+    "where": "Giữa quảng trường làng tuyết",
+    "goal": "Đoán đúng danh tính của mười bạn thú qua vết chân trên tuyết nhé!",
+    "play": "Dấu chân hiện dần trên tuyết. {name} chạm vào bạn đã để lại dấu chân đó.",
+    "learn": "Nhận biết hình dạng bước chân động vật",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Tuyết mới lại rơi phủ lối, Cáo Tuyết chờ {name} ra quảng trường soi dấu chân."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "cao-tuyet-dieu-khac",
+      "lines": [
+        {
+          "speaker": "Cáo Tuyết Điêu Khắc",
+          "text": "Đêm qua có bao nhiêu bạn thú đi dạo quanh làng tuyết đấy {name} ơi!"
+        },
+        {
+          "speaker": "Cáo Tuyết Điêu Khắc",
+          "text": "Cậu nhìn hình vết chân in trên nền tuyết trắng rồi chỉ đúng tên bạn ấy nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ nhận ra dấu chân ngay!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Ai đi qua đây?",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Đoán đúng danh tính của mười bạn thú qua vết chân trên tuyết nhé!",
+      "game": "snow-tracks",
+      "goal": 10
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Cáo Tuyết nghiêng đầu thán phục: tài thám tử của {name} chẳng thua ai ở xứ tuyết!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Tuyết mới lại rơi phủ lối, Cáo Tuyết chờ {name} ra quảng trường soi dấu chân."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

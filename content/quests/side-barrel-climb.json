@@ -1,0 +1,80 @@
+{
+  "id": "side-barrel-climb",
+  "region": "nong-trai",
+  "chapter": 1,
+  "title": "Trèo thùng gỗ tránh ngập cùng Bé Chăn Gà",
+  "status": "active",
+  "category": "side",
+  "summary": "Nước dâng quanh sân gạch chuồng gà, bé leo lên những thùng gỗ cao để giữ ấm chân.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, vận động viên leo thùng tài ba",
+    "where": "Mép rào chuồng gà nông trại",
+    "goal": "Trèo thùng gỗ vượt qua mười hai chướng ngại vật nhé!",
+    "play": "{name} tự chạy trên sàn kho. Tới chân thang thì vuốt lên để leo.",
+    "learn": "Phản xạ nhảy né vật cản và leo thang nhịp nhàng",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Nước rút khỏi sân chuồng gà rồi, cậu nhớ ghé thăm đàn gà lông vàng đáng yêu nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "be-chan-ga-con",
+      "lines": [
+        {
+          "speaker": "Bé Chăn Gà Con",
+          "text": "{name} ơi, nước mưa tràn vào sân rồi, mình phải trèo lên những chiếc thùng gỗ thôi!"
+        },
+        {
+          "speaker": "Bé Chăn Gà Con",
+          "text": "Cậu thoan thoắt leo từng nấc thang và nhớ nhảy tránh những bao đồ lăn xuống nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ trèo thùng gỗ ngay đây!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Leo kho thóc",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Trèo thùng gỗ vượt qua mười hai chướng ngại vật nhé!",
+      "game": "barrel-climb",
+      "goal": 12
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Bé Chăn Gà Con thở phào nhẹ nhõm, khen {name} leo trèo nhanh nhẹn như chú sóc nhỏ!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Nước rút khỏi sân chuồng gà rồi, cậu nhớ ghé thăm đàn gà lông vàng đáng yêu nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

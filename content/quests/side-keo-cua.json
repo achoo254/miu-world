@@ -1,0 +1,80 @@
+{
+  "id": "side-keo-cua",
+  "region": "xom-mai-am",
+  "chapter": 1,
+  "title": "Kéo cưa lừa xẻ cùng Chị Bống Chuyền Que",
+  "status": "active",
+  "category": "side",
+  "summary": "Cùng nắm tay kéo cưa qua lại nhịp nhàng theo bóng cưa để xẻ ngọt từng khúc gỗ tròn.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, bạn nhỏ đồng điệu trong từng nhịp kéo",
+    "where": "Hiên nhà ngắm trăng",
+    "goal": "Giữ nhịp kéo cưa xẻ đứt ngọt ngào sáu lóng gỗ thơm nhé!",
+    "play": "{name} và bạn gấu cùng kéo cưa. Hình cưa mờ cho biết bạn gấu đang kéo tới đâu.",
+    "learn": "Phối hợp nhịp nhàng theo chuyển động đối xứng",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Tiếng kéo cưa cành cạch vui tai bên hiên đêm trăng đợi em quay lại."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "chi-bong-chuyen-que",
+      "lines": [
+        {
+          "speaker": "Chị Bống Chuyền Que",
+          "text": "Kéo cưa lừa xẻ ông thợ nào khỏe, {name} kéo cưa cùng chị nhé!"
+        },
+        {
+          "speaker": "Chị Bống Chuyền Que",
+          "text": "Em kéo ngón tay theo bóng cưa mờ chuyển động thật đều hai bên nha."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Em kéo cưa cùng chị nào!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Kéo cưa lừa xẻ",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Giữ nhịp kéo cưa xẻ đứt ngọt ngào sáu lóng gỗ thơm nhé!",
+      "game": "keo-cua",
+      "goal": 6
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Khúc gỗ xẻ xong tròn xoe mịn màng, {name} dẻo dai khỏe khoắn ghê!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Tiếng kéo cưa cành cạch vui tai bên hiên đêm trăng đợi em quay lại."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

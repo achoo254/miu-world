@@ -1,0 +1,80 @@
+{
+  "id": "side-three-span-bag",
+  "region": "dao-bi-an",
+  "chapter": 1,
+  "title": "Chọn ngọc vừa túi ba gang cùng Cua Càng Cắp Cua",
+  "status": "active",
+  "category": "side",
+  "summary": "Chiếc túi kỳ diệu chỉ chứa đúng số lượng quy định, bé chọn những viên ngọc sao cho vừa vặn.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, nhà toán học nhí bờ biển",
+    "where": "Mép vũng nước triều rút",
+    "goal": "Xếp ngọc vừa khít cho sáu chiếc túi ba gang thần kỳ nhé!",
+    "play": "Chim thần mang túi ba gang tới. Túi chỉ đựng vừa đúng số ghi trên túi.",
+    "learn": "Tính nhẩm tổng các số vừa khít số đích",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Chim thần sẽ còn chở thêm nhiều túi ngọc, Cua Càng hẹn gặp {name} bờ biển."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "cua-cang-cap-cua",
+      "lines": [
+        {
+          "speaker": "Cua Càng Cắp Cua",
+          "text": "Chim thần vừa mang túi ba gang ghé qua bãi đá đấy, {name} chọn ngọc với tớ nào!"
+        },
+        {
+          "speaker": "Cua Càng Cắp Cua",
+          "text": "Chạm từng viên ngọc sao cho tổng các số vừa đúng con số in trên miệng túi."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ tính toán chuẩn xác từng số!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Túi ba gang",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Xếp ngọc vừa khít cho sáu chiếc túi ba gang thần kỳ nhé!",
+      "game": "three-span-bag",
+      "goal": 6
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Cua Càng vung càng nhảy múa: phép cộng của {name} vừa in, túi bay về trời rồi!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Chim thần sẽ còn chở thêm nhiều túi ngọc, Cua Càng hẹn gặp {name} bờ biển."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

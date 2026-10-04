@@ -1,0 +1,80 @@
+{
+  "id": "side-flag-commands",
+  "region": "truong-hoc",
+  "chapter": 1,
+  "title": "Phất cờ theo lệnh cùng Bé Đội Viên",
+  "status": "active",
+  "category": "side",
+  "summary": "Hai lá cờ đỏ xanh tung bay trước gió: đọc kỹ hiệu lệnh trên bảng để giơ hoặc hạ cờ chuẩn xác.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, đội viên gương mẫu cờ hiệu",
+    "where": "Sân chơi dưới bóng bàng",
+    "goal": "Thực hiện chuẩn xác hai mươi khẩu lệnh cờ hiệu nhé!",
+    "play": "{name} cầm cờ đỏ bên trái, cờ xanh bên phải. Đọc lệnh trên bảng nhé.",
+    "learn": "Đọc hiểu nhanh mệnh lệnh và kiềm chế hành động",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Buổi sinh hoạt đội tuần tới, {name} nhớ ra sân chơi dưới bóng bàng tập cờ hiệu tiếp nha."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "be-chi-huy",
+      "lines": [
+        {
+          "speaker": "Bé Đội Viên",
+          "text": "{name} ơi, đội nghi thức trường mình đang tập luyện phất cờ đón lễ khai giảng."
+        },
+        {
+          "speaker": "Bé Đội Viên",
+          "text": "Cậu cầm cờ đỏ bên trái, cờ xanh bên phải, thấy chữ đừng thì tuyệt đối đứng yên nha."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Mệnh lệnh rõ ràng, cờ bay phấp phới!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Giơ cờ theo lệnh",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Thực hiện chuẩn xác hai mươi khẩu lệnh cờ hiệu nhé!",
+      "game": "flag-commands",
+      "goal": 20
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Bé Đội Viên nghiêm trang chào kiểu đội viên: {name} tập trung cao độ, động tác dứt khoát!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Buổi sinh hoạt đội tuần tới, {name} nhớ ra sân chơi dưới bóng bàng tập cờ hiệu tiếp nha."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "id": "side-story-order",
+  "region": "thu-vien",
+  "chapter": 1,
+  "title": "Sắp thứ tự tranh truyện với Cô Thủ Thư Mai",
+  "status": "active",
+  "category": "side",
+  "summary": "Bốn bức tranh truyện cổ tích nằm lộn xộn, bé nhìn tình tiết để xếp đúng diễn biến câu chuyện.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người kể chuyện tài tình",
+    "where": "Bàn hướng dẫn cửa thư viện",
+    "goal": "Sắp xếp đúng thứ tự cho sáu bộ tranh truyện nhé!",
+    "play": "Bốn bức tranh của một câu chuyện bị xáo trộn.",
+    "learn": "Hiểu diễn biến thời gian và liên kết tình tiết",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Còn nhiều truyện cổ tích kỳ thú lắm, cháu nhớ ghé thư viện đọc sách cùng cô nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "co-thu-thu-mai",
+      "lines": [
+        {
+          "speaker": "Cô Thủ Thư Mai",
+          "text": "{name} ơi, tập truyện tranh dân gian này bị gió thổi rơi lung tung trên bàn đọc."
+        },
+        {
+          "speaker": "Cô Thủ Thư Mai",
+          "text": "Cháu đọc kỹ tranh rồi xếp vào các ô một hai ba bốn theo đúng đầu đuôi câu chuyện nha."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu kể lại chuyện qua tranh!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Xếp tranh kể chuyện",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Sắp xếp đúng thứ tự cho sáu bộ tranh truyện nhé!",
+      "game": "story-order",
+      "goal": 6
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Cô Thủ Thư Mai gật đầu hài lòng, khen {name} nắm bắt nội dung câu chuyện rất sâu sắc!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Còn nhiều truyện cổ tích kỳ thú lắm, cháu nhớ ghé thư viện đọc sách cùng cô nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

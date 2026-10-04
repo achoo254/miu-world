@@ -1,0 +1,80 @@
+{
+  "id": "side-frisbee-dog",
+  "region": "nha-cua-be",
+  "chapter": 1,
+  "title": "Ném đĩa bay ngoài sân cùng Cún Đốm Dọn Nhà",
+  "status": "active",
+  "category": "side",
+  "summary": "Cún tung tăng chạy trên thảm cỏ, bé vuốt tay phóng đĩa đón đầu đường chạy của chú cún cưng.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người bạn thân thiết của cún con",
+    "where": "Góc thảm phòng khách ấm cúng",
+    "goal": "Ném đĩa bay chuẩn xác cho Cún Đốm đớp trúng tám lần nhé!",
+    "play": "Cún chạy qua lại trên sân. {name} vuốt lên để ném đĩa: vuốt dài thì đĩa bay xa.",
+    "learn": "Ước lượng thời gian bay và đón đầu chuyển động",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Sân cỏ trước hiên nhà rộng thênh thang, Cún Đốm chờ {name} ra chơi trò ném đĩa."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "cun-dom-don-nha",
+      "lines": [
+        {
+          "speaker": "Cún Đốm Dọn Nhà",
+          "text": "Trời chiều râm mát ngoài sân thích lắm, {name} ném đĩa bay cho tớ chụp nào!"
+        },
+        {
+          "speaker": "Cún Đốm Dọn Nhà",
+          "text": "Vuốt dài ngón tay về phía trước đón chỗ tớ sắp chạy tới để đĩa lượn vừa tầm nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Đĩa bay chuẩn tầm đón đây!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Ném đĩa cho cún",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Ném đĩa bay chuẩn xác cho Cún Đốm đớp trúng tám lần nhé!",
+      "game": "frisbee-dog",
+      "goal": 8
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Cún Đốm ngậm đĩa nhảy tưng tưng: {name} ném đĩa vừa tầm, tớ chộp không trượt phát nào!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Sân cỏ trước hiên nhà rộng thênh thang, Cún Đốm chờ {name} ra chơi trò ném đĩa."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

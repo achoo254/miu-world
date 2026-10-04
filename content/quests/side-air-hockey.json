@@ -1,0 +1,80 @@
+{
+  "id": "side-air-hockey",
+  "region": "nui-tuyet",
+  "chapter": 1,
+  "title": "Chơi khúc côn cầu trên băng cùng Cánh Cụt Khúc Côn Cầu",
+  "status": "active",
+  "category": "side",
+  "summary": "Bé điều khiển tay gạt trượt trên mặt băng phẳng để đẩy đĩa tròn vào lưới đối thủ.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, tuyển thủ khúc côn cầu trên băng",
+    "where": "Sân băng tự nhiên trên hồ",
+    "goal": "Đẩy đĩa trúng khung thành đối phương được năm điểm nhé!",
+    "play": "{name} kéo cái vợt ở nửa bàn của mình để đánh đĩa vào khung thành của bạn cánh cụt.",
+    "learn": "Phản xạ nhanh và chọn góc gạt đĩa",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Sân băng luôn sẵn sàng, Cánh Cụt đón {name} thi thêm trận nữa nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "canh-cut-khuc-con-cau",
+      "lines": [
+        {
+          "speaker": "Cánh Cụt Khúc Côn Cầu",
+          "text": "{name} ơi, sân băng tự nhiên hôm nay trơn và phẳng thích lắm!"
+        },
+        {
+          "speaker": "Cánh Cụt Khúc Côn Cầu",
+          "text": "Cậu cầm tay gạt bên này rồi cùng tớ thi tài đẩy đĩa tròn nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ vào vị trí bắt đĩa ngay!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Khúc côn cầu bàn hơi",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Đẩy đĩa trúng khung thành đối phương được năm điểm nhé!",
+      "game": "air-hockey",
+      "goal": 5
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Cánh Cụt vỗ cánh ríu rít: những đường gạt đĩa của {name} hiểm hóc quá!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Sân băng luôn sẵn sàng, Cánh Cụt đón {name} thi thêm trận nữa nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

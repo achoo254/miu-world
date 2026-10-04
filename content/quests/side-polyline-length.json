@@ -1,0 +1,80 @@
+{
+  "id": "side-polyline-length",
+  "region": "khu-rung-bi-mat",
+  "chapter": 1,
+  "title": "Tính đường gấp khúc cùng Dơi Đêm Tai To",
+  "status": "active",
+  "category": "side",
+  "summary": "Chú ốc sên bò qua các mỏm đá tìm thức ăn: tính tổng độ dài từng đoạn để nối đúng đường gấp khúc.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, chuyên gia đo đường gấp khúc",
+    "where": "Cửa hang đá ẩm ướt",
+    "goal": "Vẽ đúng sáu đường gấp khúc cho ốc sên nhé!",
+    "play": "Kéo từ ốc sên qua các hòn đá tới cây rau. Mỗi đoạn có ghi độ dài.",
+    "learn": "Cộng độ dài các đoạn thẳng và tư duy hình học",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Ốc sên còn nhiều chặng đường mới, {name} ghé cửa hang đá dẫn đường tiếp nha."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "doi-hang-sau",
+      "lines": [
+        {
+          "speaker": "Dơi Đêm Tai To",
+          "text": "Bạn ốc sên muốn tìm đường đến cây bắp cải non thơm ngọt kìa {name}."
+        },
+        {
+          "speaker": "Dơi Đêm Tai To",
+          "text": "Cậu cộng độ dài các mỏm đá sao cho vừa đúng số ghi trên biển rồi kéo đường đi nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Để tớ tính nhẩm rồi dẫn đường cho ốc sên!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Đường gấp khúc",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Vẽ đúng sáu đường gấp khúc cho ốc sên nhé!",
+      "game": "polyline-length",
+      "goal": 6
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Dơi Đêm Tai To gật gù khen ngợi: {name} tính tổng các đoạn thẳng chuẩn không cần chỉnh!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Ốc sên còn nhiều chặng đường mới, {name} ghé cửa hang đá dẫn đường tiếp nha."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

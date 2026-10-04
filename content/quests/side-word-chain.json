@@ -1,0 +1,80 @@
+{
+  "id": "side-word-chain",
+  "region": "xom-mai-am",
+  "chapter": 1,
+  "title": "Nối từ tiếng Việt cùng Bà Năm Kể Chuyện",
+  "status": "active",
+  "category": "side",
+  "summary": "Tìm tiếng tiếp theo bắt đầu bằng tiếng cuối của từ trước để xếp thành dải rồng chữ dài.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người nối từ khéo léo của xóm nhỏ",
+    "where": "Trước ngõ nhà Mẩy",
+    "goal": "Nối liền mạch tạo thành chuỗi mười hai từ ngữ tiếng Việt nhé!",
+    "play": "Tiếng cuối của từ trước là tiếng đầu của từ sau: gấu bông → bông hoa.",
+    "learn": "Mở rộng vốn từ vựng tiếng Việt phong phú",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Bà còn cả kho tàng từ ngữ hay muốn dạy cho cháu trước ngõ vườn hoa."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "ba-nam-ke-chuyen",
+      "lines": [
+        {
+          "speaker": "Bà Năm Kể Chuyện",
+          "text": "Trò chơi nối từ tiếng mẹ đẻ vui lắm đó {name} ơi!"
+        },
+        {
+          "speaker": "Bà Năm Kể Chuyện",
+          "text": "Cháu chọn thẻ chữ có tiếng đầu trùng với tiếng cuối của từ trước nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu nối tiếp từ ngữ ngay!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Nối từ",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Nối liền mạch tạo thành chuỗi mười hai từ ngữ tiếng Việt nhé!",
+      "game": "word-chain",
+      "goal": 12
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Vốn từ phong phú tuyệt vời, {name} nối thành dải chữ dài thướt tha!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Bà còn cả kho tàng từ ngữ hay muốn dạy cho cháu trước ngõ vườn hoa."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "id": "side-stone-path-memory",
+  "region": "khu-rung-bi-mat",
+  "chapter": 1,
+  "title": "Ghi nhớ lối đá qua suối với Họa Mi Rừng Xanh",
+  "status": "active",
+  "category": "side",
+  "summary": "Dòng suối trong veo chảy róc rách: ghi nhớ thứ tự các hòn đá phát sáng để bước chân qua bờ bên kia.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, lữ khách vượt suối thông thái",
+    "where": "Vòm lá xanh rì rào tiếng hót",
+    "goal": "Bước qua suối thành công sáu lần nhé!",
+    "play": "Các viên đá sáng lên lần lượt thành một con đường qua suối.",
+    "learn": "Ghi nhớ chuỗi vị trí trong không gian",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Dòng suối vẫn róc rách chờ đón, {name} rảnh lại ra vòm lá xanh dạo bước qua suối nha."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "hoa-mi-rung",
+      "lines": [
+        {
+          "speaker": "Họa Mi Rừng Xanh",
+          "text": "{name} nhìn những viên đá cuội lấp lánh trên mặt suối rừng mát rượi kìa."
+        },
+        {
+          "speaker": "Họa Mi Rừng Xanh",
+          "text": "Mỗi viên đá sẽ phát sáng theo thứ tự, cậu nhớ kỹ đường đi rồi chạm bước qua suối nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ nhớ từng viên đá rồi, nhảy qua thôi!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Nhớ đường đá qua suối",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Bước qua suối thành công sáu lần nhé!",
+      "game": "stone-path-memory",
+      "goal": 6
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Họa Mi Rừng Xanh lượn vòng khen ngợi: {name} có trí nhớ tuyệt đỉnh, bước chân vững như bàn thạch!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Dòng suối vẫn róc rách chờ đón, {name} rảnh lại ra vòm lá xanh dạo bước qua suối nha."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

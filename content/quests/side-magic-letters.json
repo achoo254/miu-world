@@ -1,0 +1,80 @@
+{
+  "id": "side-magic-letters",
+  "region": "lau-dai",
+  "chapter": 1,
+  "title": "Vẽ chữ cái ma thuật cùng Hiệp Sĩ Gương Soi",
+  "status": "active",
+  "category": "side",
+  "summary": "Bong bóng ma thuật mang chữ cái rơi từ tháp cao, bé vung ngón tay vẽ nét thần kỳ phá bóng.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, phù thủy nét chữ thần kỳ",
+    "where": "Trước sân hình khối hoàng cung",
+    "goal": "Vẽ chuẩn xác giải trừ hai mươi quả bóng chữ ma thuật nhé!",
+    "play": "Bóng bay mang chữ cái bay xuống, kèm hình một tiếng bắt đầu bằng chữ đó.",
+    "learn": "Viết nhanh chữ cái và kết nối âm đầu hình ảnh",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Bầu trời hoàng cung lại bình yên rồi, cháu nhớ ghé thăm sân hình khối trò chuyện nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "hiep-si-guong-soi",
+      "lines": [
+        {
+          "speaker": "Hiệp Sĩ Gương Soi",
+          "text": "Nhìn lên trời cao kìa {name}, những quả bóng ma thuật chứa chữ cái đang chao liệng rơi xuống!"
+        },
+        {
+          "speaker": "Hiệp Sĩ Gương Soi",
+          "text": "Cháu dùng ngón tay vẽ nhanh chữ cái ghi trên bóng trước khi nó chạm đất để giải trừ ma thuật."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu vẽ nét chữ thần kỳ ngay!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Nét chữ phép màu",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Vẽ chuẩn xác giải trừ hai mươi quả bóng chữ ma thuật nhé!",
+      "game": "magic-letters",
+      "goal": 20
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Hiệp Sĩ Gương Soi khom mình thán phục nét vẽ thần tốc và chữ viết tuyệt đẹp của {name}!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Bầu trời hoàng cung lại bình yên rồi, cháu nhớ ghé thăm sân hình khối trò chuyện nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

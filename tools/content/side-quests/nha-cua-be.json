@@ -178,6 +178,316 @@
           "learn": "Vẽ đường và tránh va chạm"
         }
       ]
+    },
+    {
+      "id": "cun-dom-don-nha",
+      "name": "Cún Đốm Dọn Nhà",
+      "look": "animal-dog",
+      "tint": "#d89868",
+      "where": "Góc thảm phòng khách ấm cúng",
+      "place": "Phòng khách",
+      "company": [
+        {
+          "routine": "cat",
+          "name": "Mèo nằm sưởi nắng",
+          "model": "animal-cat"
+        }
+      ],
+      "games": [
+        {
+          "game": "tidy-room",
+          "title": "Xếp đồ chơi về chỗ cũ cùng Cún Đốm Dọn Nhà",
+          "summary": "Sau giờ chơi đồ đạc lộn xộn, bé nhớ lại hình ảnh ban đầu rồi kéo từng món về đúng vị trí.",
+          "lines": [
+            "Đồ chơi trong phòng bừa bộn khắp thảm rồi, {name} dọn phòng giúp tớ với nhé!",
+            "Nhớ kỹ vị trí ban đầu rồi kéo gấu bông, xe ô tô và sách về đúng kệ của chúng."
+          ],
+          "choice": "Tớ sắp xếp ngăn nắp ngay!",
+          "prompt": "Dọn dẹp và cất đúng vị trí {goal} món đồ chơi trong phòng nhé!",
+          "reward": "Cún Đốm vẫy đuôi mừng rỡ: căn phòng của tụi mình ngăn nắp, tinh tươm nhờ {name}!",
+          "next": "Góc phòng khách luôn ấm cúng, Cún Đốm chờ {name} cùng chơi đồ chơi lần sau.",
+          "who": "{name}, bé ngoan dọn phòng ngăn nắp",
+          "learn": "Ghi nhớ hình ảnh không gian và rèn tính gọn gàng"
+        },
+        {
+          "game": "frisbee-dog",
+          "title": "Ném đĩa bay ngoài sân cùng Cún Đốm Dọn Nhà",
+          "summary": "Cún tung tăng chạy trên thảm cỏ, bé vuốt tay phóng đĩa đón đầu đường chạy của chú cún cưng.",
+          "lines": [
+            "Trời chiều râm mát ngoài sân thích lắm, {name} ném đĩa bay cho tớ chụp nào!",
+            "Vuốt dài ngón tay về phía trước đón chỗ tớ sắp chạy tới để đĩa lượn vừa tầm nhé."
+          ],
+          "choice": "Đĩa bay chuẩn tầm đón đây!",
+          "prompt": "Ném đĩa bay chuẩn xác cho Cún Đốm đớp trúng {goal} lần nhé!",
+          "reward": "Cún Đốm ngậm đĩa nhảy tưng tưng: {name} ném đĩa vừa tầm, tớ chộp không trượt phát nào!",
+          "next": "Sân cỏ trước hiên nhà rộng thênh thang, Cún Đốm chờ {name} ra chơi trò ném đĩa.",
+          "who": "{name}, người bạn thân thiết của cún con",
+          "learn": "Ước lượng thời gian bay và đón đầu chuyển động"
+        },
+        {
+          "game": "robot-path",
+          "title": "Lập trình đường đi rô bốt hút bụi cùng Cún Đốm",
+          "summary": "Bé xếp các mũi tên lệnh tiến, rẽ trái, rẽ phải để chú rô bốt hút sạch bụi mà không va bàn ghế.",
+          "lines": [
+            "Chú rô bốt hút bụi đang nằm chờ lệnh chạy kìa, {name} xếp đường đi giúp tớ nhé!",
+            "Bấm các nút tiến bước và rẽ góc để rô bốt đi qua hết bụi mà không đụng chân bàn."
+          ],
+          "choice": "Để tớ lập trình đường chạy!",
+          "prompt": "Lập trình lộ trình hoàn hảo vượt qua {goal} căn phòng sạch bụi nhé!",
+          "reward": "Cún Đốm sủa vang thích thú: sàn nhà sáng bóng nhờ đường đi thông minh của {name}!",
+          "next": "Phòng khách còn nhiều ngóc ngách cần lau, Cún Đốm đợi {name} điều khiển rô bốt tiếp.",
+          "who": "{name}, kỹ sư lập trình rô bốt nhí",
+          "learn": "Tư duy bước tiến logic và định hướng không gian"
+        }
+      ]
+    },
+    {
+      "id": "meo-bep-truong",
+      "name": "Mèo Bếp Trưởng",
+      "look": "animal-cat",
+      "tint": "#e88868",
+      "where": "Bàn ăn gian bếp gia đình",
+      "place": "Bếp và bàn ăn",
+      "company": [
+        {
+          "routine": "pupil",
+          "name": "Bé phụ mẹ dọn bát",
+          "model": "person-f"
+        }
+      ],
+      "games": [
+        {
+          "game": "chopsticks",
+          "title": "Tập gắp hạt đậu bằng đũa cùng Mèo Bếp Trưởng",
+          "summary": "Chiếc đũa tre nhỏ nhắn kẹp hạt đậu tròn, bé giữ tay nhẹ nhàng di chuyển hạt từ đĩa sang bát.",
+          "lines": [
+            "Bữa cơm gia đình sắp dọn lên rồi, {name} cùng tớ trổ tài cầm đũa khéo tay nào!",
+            "Giữ tay kẹp chặt hạt đậu rồi kéo từ từ sang bát, chớ đi nhanh kẻo hạt tuột rơi."
+          ],
+          "choice": "Cháu gắp chắc tay không rơi!",
+          "prompt": "Dùng đũa gắp thành công {goal} hạt đậu vàng óng vào bát nhé!",
+          "reward": "Mèo Bếp Trưởng rung râu mỉm cười: đôi tay {name} cầm đũa khéo léo và vững vàng lắm!",
+          "next": "Gian bếp lúc nào cũng thơm lừng món ngon, Mèo Bếp Trưởng chờ {name} phụ giúp.",
+          "who": "{name}, phụ bếp gắp đũa khéo tay",
+          "learn": "Điều khiển lực ngón tay bền bỉ và cẩn thận"
+        },
+        {
+          "game": "cookie-cutter",
+          "title": "Dập khuôn bánh quy nướng cùng Mèo Bếp Trưởng",
+          "summary": "Mẻ bột thơm mùi bơ sữa đã cán phẳng, bé chạm ấn khuôn sao cho vừa vặn được nhiều chiếc bánh.",
+          "lines": [
+            "Tấm bột bánh thơm phức vừa cán xong này, {name} dập khuôn bánh quy với tớ nhé!",
+            "Chạm ấn từng hình ngôi sao, trái tim thật sát mép để không lãng phí bột bánh."
+          ],
+          "choice": "Cháu dập nhiều bánh xinh xắn!",
+          "prompt": "Dập khuôn được đủ {goal} chiếc bánh quy hình dáng đẹp mắt nhé!",
+          "reward": "Mèo Bếp Trưởng liếm mép reo vang: mẻ bánh của {name} nướng lên thơm nức cả gian bếp!",
+          "next": "Lò nướng vẫn còn ấm áp, Mèo Bếp Trưởng đợi {name} ghé dập thêm mẻ bánh mới.",
+          "who": "{name}, thợ làm bánh quy tí hon",
+          "learn": "Sắp xếp hình gọn gàng tận dụng tối đa diện tích"
+        },
+        {
+          "game": "fair-share",
+          "title": "Cắt chia bánh ngọt đều nhau cùng Mèo Bếp Trưởng",
+          "summary": "Chiếc bánh ngọt tròn xoe trên bàn, bé vuốt dao cắt bánh thành các phần bằng nhau cho mọi người.",
+          "lines": [
+            "Cả nhà đang chờ thưởng thức bánh ngọt tráng miệng kìa, {name} chia bánh giúp tớ nha!",
+            "Vuốt từng nhát dao dứt khoát sao cho mỗi phần bánh có kích cỡ bằng chằn chặn."
+          ],
+          "choice": "Cháu cắt từng miếng đều tăm tắp!",
+          "prompt": "Cắt chia đều các phần bánh cho {goal} chiếc bánh thơm ngon nhé!",
+          "reward": "Mèo Bếp Trưởng nghiêng đầu tán thưởng: miếng bánh nào {name} chia cũng công bằng tuyệt đối!",
+          "next": "Mâm cỗ ngọt vẫn còn nhiều món ngon, Mèo Bếp Trưởng hẹn gặp lại {name} bên bàn ăn.",
+          "who": "{name}, đầu bếp chia phần chu đáo",
+          "learn": "Ước lượng tỷ lệ phân chia đều các phần"
+        }
+      ]
+    },
+    {
+      "id": "be-gap-giay-vui",
+      "name": "Bé Gấp Giấy Vui",
+      "look": "person-f",
+      "tint": "#d85898",
+      "where": "Chiếc chiếu góc đồ chơi",
+      "place": "Góc đồ chơi",
+      "company": [
+        {
+          "routine": "pupil",
+          "name": "Bạn nhỏ gấp thuyền giấy",
+          "model": "person-a"
+        }
+      ],
+      "games": [
+        {
+          "game": "paper-fold-cut",
+          "title": "Gấp giấy cắt hoa văn cùng Bé Gấp Giấy Vui",
+          "summary": "Mảnh giấy màu gập đôi xinh xắn, bé quan sát mẫu hoa rồi vuốt kéo nhát cắt mở ra cánh hoa đẹp.",
+          "lines": [
+            "Tớ có mấy tờ giấy màu rực rỡ nè, {name} cùng tớ cắt dán bông hoa trang trí nhé!",
+            "Nhìn hình bông hoa mẫu rồi vuốt đường cắt đúng mép để mở ra cánh hoa trọn vẹn."
+          ],
+          "choice": "Tớ cắt theo đường nét liền!",
+          "prompt": "Cắt mở thành công {goal} bông hoa giấy rực rỡ sắc màu nhé!",
+          "reward": "Bé Gấp Giấy vỗ tay reo hò: hoa của {name} cắt mở ra nở đều cánh như thật!",
+          "next": "Góc đồ chơi còn nhiều giấy màu đẹp, bạn nhớ ghé chơi trò cắt dán với tớ nhé.",
+          "who": "{name}, nghệ nhân cắt giấy thủ công",
+          "learn": "Tư duy đối xứng trục khi gập và mở hình"
+        },
+        {
+          "game": "cup-stacking",
+          "title": "Thi đấu xếp tháp cốc cùng Bé Gấp Giấy Vui",
+          "summary": "Những chiếc cốc sắc màu nằm gọn gàng, bé chạm nhanh dựng tháp rồi thu gọn lại không làm đổ.",
+          "lines": [
+            "Trò xếp cốc thi đấu này hồi hộp lắm, {name} đua tốc độ bàn tay với tớ nào!",
+            "Dựng hai cốc dưới trước rồi đặt cốc trên cùng, xong tháp thì thu lại thật nhanh."
+          ],
+          "choice": "Tay tớ nhanh thoăn thoắt này!",
+          "prompt": "Dựng rồi thu gọn nhanh nhẹn {goal} lượt tháp cốc liên tiếp nhé!",
+          "reward": "Bé Gấp Giấy tròn xoe mắt: những ngón tay của {name} lướt trên cốc nhanh như bay!",
+          "next": "Bộ cốc nhiều màu vẫn bày trên chiếu, bạn rảnh thì ghé đua xếp cốc với tớ nha.",
+          "who": "{name}, tuyển thủ xếp cốc tốc độ",
+          "learn": "Trình tự thao tác chuẩn và phối hợp hai tay"
+        },
+        {
+          "game": "yo-yo",
+          "title": "Tung hứng con quay yo-yo cùng Bé Gấp Giấy Vui",
+          "summary": "Sợi dây dài buông con quay xoay tít, bé chạm bắt nhịp đúng lúc yo-yo chạm đáy để kéo vút lên.",
+          "lines": [
+            "Quả yo-yo màu lấp lánh của tớ quay tít mù này, {name} thử tài kéo nhả không?",
+            "Vuốt thả dây xuống rồi chạm đúng lúc vòng sáng chạm đáy để cuộn ngược lên tay."
+          ],
+          "choice": "Tớ bắt nhịp yo-yo siêu chuẩn!",
+          "prompt": "Biểu diễn xuất sắc được {goal} cú tung nhả yo-yo điệu nghệ nhé!",
+          "reward": "Bé Gấp Giấy nhảy cẫng lên mừng rỡ: {name} làm xiếc với yo-yo trông ngầu quá đi thôi!",
+          "next": "Sợi dây yo-yo vẫn sẵn sàng trên chiếu, tớ đợi {name} trổ tài biểu diễn tiếp.",
+          "who": "{name}, nghệ sĩ biểu diễn yo-yo điêu luyện",
+          "learn": "Bắt đúng thời điểm nhịp chuyển động rơi và giật"
+        }
+      ]
+    },
+    {
+      "id": "ong-cu-trong-vuon",
+      "name": "Ông Cụ Trông Vườn",
+      "look": "person-d",
+      "tint": "#688848",
+      "where": "Lối vào vườn rau sau nhà",
+      "place": "Nhà kho nhỏ trong vườn",
+      "company": [
+        {
+          "routine": "waterer",
+          "name": "Cháu gái tưới luống hoa",
+          "model": "person-b"
+        }
+      ],
+      "games": [
+        {
+          "game": "rain-shield",
+          "title": "Vẽ mái che mưa cho cún cùng Ông Cụ Trông Vườn",
+          "summary": "Cơn mưa rào bất chợt đổ xuống vườn, bé vẽ đường cong che chở cho chú cún con không bị ướt.",
+          "lines": [
+            "Mây đen kéo tới sắp mưa rào rồi đấy, {name} vẽ mái che giúp chú cún con với!",
+            "Kéo một nét cong vững chãi trên đầu để hạt mưa lăn theo mái dốc rơi xuống đất."
+          ],
+          "choice": "Cháu vẽ mái che mưa liền ạ!",
+          "prompt": "Vẽ mái che chắn an toàn qua {goal} đợt mưa rào cho cún nhỏ nhé!",
+          "reward": "Ông cụ vuốt chòm râu cười hiền từ: nhờ chiếc mái của {name} mà cún khô ráo ấm áp!",
+          "next": "Vườn rau sau nhà xanh mát lắm, ông cụ đợi {name} ghé chơi và thăm luống cải.",
+          "who": "{name}, người bạn bảo vệ động vật",
+          "learn": "Vẽ đường dẫn hướng dòng chảy của giọt nước"
+        },
+        {
+          "game": "five-fruit-tray",
+          "title": "Bày mâm ngũ quả đón Tết cùng Ông Cụ Trông Vườn",
+          "summary": "Mâm bồng năm cánh hoa rực rỡ, bé xếp đủ năm thứ quả tươi ngon mà không để quả cùng loại cạnh nhau.",
+          "lines": [
+            "Tết sắp về trong ngõ nhỏ rồi cháu {name} ơi, phụ ông bày mâm ngũ quả dâng tổ tiên nào!",
+            "Đặt đủ năm loại quả ngon vào mâm, nhớ hai ô liền kề không được chung một thứ quả."
+          ],
+          "choice": "Cháu bày mâm quả thật trang nghiêm!",
+          "prompt": "Bày biện hoàn chỉnh {goal} mâm ngũ quả ngày Tết đủ đầy sum vầy nhé!",
+          "reward": "Ông cụ gật đầu khen ngợi: mâm quả cháu {name} bày trông hài hòa, rực rỡ sắc xuân!",
+          "next": "Mùa xuân hoa trái đua nở trong vườn, ông cụ đợi {name} tới ngắm hoa bưởi nở.",
+          "who": "{name}, cháu ngoan bày mâm ngũ quả",
+          "learn": "Phân biệt màu sắc và giải đố xếp vị trí kề nhau"
+        },
+        {
+          "game": "shape-sorter",
+          "title": "Xoay nắp thả khối hình cùng Ông Cụ Trông Vườn",
+          "summary": "Các khối gỗ hình học trượt xuống nắp hộp, bé xoay nắp sao cho lỗ khoét khớp đúng hình rơi xuống.",
+          "lines": [
+            "Ông vừa đẽo xong chiếc hộp thả khối gỗ xinh xắn nè, {name} thử ghép hình với ông nhé!",
+            "Khối hình trượt xuống thì chạm xoay nắp để lỗ khoét cùng hình nằm ngay phía dưới."
+          ],
+          "choice": "Cháu xoay khớp đúng lỗ hình ngay!",
+          "prompt": "Xoay khớp lỗ thả lọt thành công {goal} khối hình vào hộp nhé!",
+          "reward": "Ông cụ cười vui vẻ: mắt cháu {name} nhận hình nhanh nhạy, khối nào cũng lọt tọt!",
+          "next": "Góc kho vườn còn nhiều đồ chơi gỗ mộc, ông đón {name} ghé chơi bất cứ lúc nào.",
+          "who": "{name}, bé tinh mắt ghép khối hình học",
+          "learn": "Nhận biết hình vuông, tròn, tam giác khi chuyển động"
+        }
+      ]
+    },
+    {
+      "id": "chu-ro-bot-dong-ho",
+      "name": "Chú Rô Bốt Đồng Hồ",
+      "look": "person-b",
+      "tint": "#4878c8",
+      "where": "Bên cạnh giá sách góc học tập",
+      "place": "Góc học tập",
+      "company": [
+        {
+          "routine": "reader",
+          "name": "Bé ngồi đọc sách bài học",
+          "model": "person-c"
+        }
+      ],
+      "games": [
+        {
+          "game": "clock-catch",
+          "title": "Chặn kim đúng giờ đón xe cùng Chú Rô Bốt Đồng Hồ",
+          "summary": "Mặt đồng hồ quay kim liên tục, bé chú ý nghe giờ bác tài dặn rồi chạm dừng kim đúng vị trí.",
+          "lines": [
+            "Xe buýt sắp tới đón chúng mình đi học rồi, {name} canh giờ cùng rô bốt nhé!",
+            "Kim đồng hồ quay tít, nghe bác tài báo giờ nào thì chạm giữ kim đứng đúng giờ đó."
+          ],
+          "choice": "Tớ nhìn kim đồng hồ chuẩn lắm!",
+          "prompt": "Dừng kim chuẩn xác đúng giờ trong {goal} chuyến xe buýt tới đón nhé!",
+          "reward": "Chú Rô Bốt tích tắc vui nhộn: {name} xem giờ chuẩn boong, kịp giờ xe khởi hành rồi!",
+          "next": "Đồng hồ trên bàn vẫn tích tắc gõ nhịp, Rô Bốt chờ {name} so tài xem giờ tiếp.",
+          "who": "{name}, hành khách chuẩn giờ đi học",
+          "learn": "Đọc giờ đúng và giờ rưỡi trên mặt đồng hồ"
+        },
+        {
+          "game": "magnet-sweep",
+          "title": "Dùng nam châm dọn bàn học cùng Chú Rô Bốt Đồng Hồ",
+          "summary": "Mặt bàn học rải rác đinh ốc kẹp giấy, bé rê thanh nam châm hút sạch đồ kim loại bỏ vào khay.",
+          "lines": [
+            "Góc học tập rơi nhiều kẹp giấy và ghim sắt quá, {name} cầm nam châm quét với tớ nào!",
+            "Kéo nam châm hút sạch đồ sắt rồi mang về khay thả xuống, giấy vụn thì để nguyên nhé."
+          ],
+          "choice": "Thanh nam châm hút sạch đồ sắt đây!",
+          "prompt": "Hút sạch sẽ gọn gàng {goal} chiếc kẹp kim loại bỏ vào hộp nhé!",
+          "reward": "Rô Bốt nhấp nháy đèn xanh: bàn học sạch bong đồ kim loại nhờ tay {name} quét dọn!",
+          "next": "Bàn học ngăn nắp giúp học bài mau nhớ, Rô Bốt hẹn gặp {name} cạnh giá sách.",
+          "who": "{name}, nhà khoa học nhí gom kim loại",
+          "learn": "Phân biệt vật bằng sắt hút được bằng nam châm"
+        },
+        {
+          "game": "nesting-dolls",
+          "title": "Lồng búp bê từ nhỏ đến lớn cùng Chú Rô Bốt Đồng Hồ",
+          "summary": "Những cô búp bê gỗ nhiều kích cỡ, bé so sánh độ to nhỏ để lồng bạn bé vào trong bạn lớn hơn.",
+          "lines": [
+            "Bộ búp bê gỗ nhiều lớp trên bàn xinh xắn lắm, {name} lồng chúng vào nhau giúp tớ!",
+            "So cỡ từng bạn rồi kéo bạn nhỏ đặt gọn vào bụng bạn lớn hơn vừa vặn một bậc."
+          ],
+          "choice": "Tớ so cỡ từng bạn thật chuẩn!",
+          "prompt": "Lồng hoàn chỉnh từ bé đến lớn {goal} bộ búp bê gỗ đáng yêu nhé!",
+          "reward": "Chú Rô Bốt gật đầu tích tắc: {name} lồng búp bê vừa in, thành một khối tròn trịa!",
+          "next": "Góc học tập luôn rộn ràng kiến thức mới, Rô Bốt đón {name} ghé thăm mỗi ngày.",
+          "who": "{name}, chuyên gia so sánh kích thước đồ vật",
+          "learn": "So sánh thứ tự kích cỡ từ bé đến lớn"
+        }
+      ]
     }
   ],
   "residents": []

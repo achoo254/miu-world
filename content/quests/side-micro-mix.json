@@ -1,0 +1,80 @@
+{
+  "id": "side-micro-mix",
+  "region": "trung-tam",
+  "chapter": 1,
+  "title": "Thử thách chớp nhoáng cùng Khỉ Tính Nhanh",
+  "status": "active",
+  "category": "side",
+  "summary": "Hàng loạt nhiệm vụ tí hon xuất hiện dồn dập: phản xạ chạm vuốt tức thì trước khi đồng hồ điểm hết giờ.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, quán quân thử thách chớp nhoáng",
+    "where": "Bậc thềm sân trước lâu đài",
+    "goal": "Vượt qua thành công mười hai thử thách tí hon liên tiếp nhé!",
+    "play": "Các trò tí hon nối nhau, mỗi trò vài giây: hái táo, đóng cửa, tắt đèn, đuổi ong…",
+    "learn": "Tập trung chú ý cao độ và phản xạ tức thời",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Kho thử thách còn hàng trăm trò vui lạ lùng, {name} ghé bậc thềm sân lâu đài quẩy tiếp nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "khi-tinh-nhanh",
+      "lines": [
+        {
+          "speaker": "Khỉ Tính Nhanh",
+          "text": "Thử thách chớp nhoáng siêu cấp bắt đầu rồi {name}, sẵn sàng ngón tay chưa nào?"
+        },
+        {
+          "speaker": "Khỉ Tính Nhanh",
+          "text": "Màn hình hiện trò gì là cậu chạm hoặc vuốt tức thì trong ba giây kẻo đồng hồ reo hết giờ nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Mắt thấy tay làm, phản xạ chớp nhoáng!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Thử thách chớp nhoáng",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Vượt qua thành công mười hai thử thách tí hon liên tiếp nhé!",
+      "game": "micro-mix",
+      "goal": 12
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Khỉ Tính Nhanh vỗ tay rầm rộ: {name} phản xạ nhanh như chớp giật, trò nào cũng qua mượt mà!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Kho thử thách còn hàng trăm trò vui lạ lùng, {name} ghé bậc thềm sân lâu đài quẩy tiếp nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

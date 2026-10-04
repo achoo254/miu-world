@@ -1,0 +1,80 @@
+{
+  "id": "side-portal-maze",
+  "region": "lau-dai",
+  "chapter": 1,
+  "title": "Mê cung cổng dịch chuyển với Bác Thợ Khóa Thành",
+  "status": "active",
+  "category": "side",
+  "summary": "Đường hầm dưới hào nước có những cánh cổng phép màu, bé chọn đúng cổng màu để tới rương báu.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, nhà thám hiểm mê cung cổng phép",
+    "where": "Bờ hào nước cạnh cầu đá",
+    "goal": "Tìm đường qua cổng phép mở được bốn rương báu bí mật nhé!",
+    "play": "{name} kéo ngón tay ngay trước nhân vật để đi theo đường trong mê cung.",
+    "learn": "Tư duy không gian dịch chuyển và liên kết màu sắc",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Mê cung dưới hào còn nhiều ngóc ngách bí ẩn, lúc nào thích cháu lại ghé cầu đá qua hào."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "bac-tho-khoa-thanh",
+      "lines": [
+        {
+          "speaker": "Bác Thợ Khóa Thành",
+          "text": "{name} có dám thử thách bước vào mê cung cổng phép dưới chân hào nước cùng bác không?"
+        },
+        {
+          "speaker": "Bác Thợ Khóa Thành",
+          "text": "Bước qua cánh cửa phép nào cháu sẽ xuất hiện ở cửa cùng màu, hãy tính đường đến chiếc rương vàng."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu khám phá cổng phép thuật!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Mê cung cổng phép",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Tìm đường qua cổng phép mở được bốn rương báu bí mật nhé!",
+      "game": "portal-maze",
+      "goal": 4
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Bác Thợ Khóa Thành tấm tắc ngợi khen {name} định hướng không gian cổng phép kỳ tài!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Mê cung dưới hào còn nhiều ngóc ngách bí ẩn, lúc nào thích cháu lại ghé cầu đá qua hào."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

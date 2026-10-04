@@ -1,0 +1,80 @@
+{
+  "id": "side-sink-float",
+  "region": "lang-ven-song",
+  "chapter": 1,
+  "title": "Vật chìm vật nổi cùng Bé Ném Lia Thia",
+  "status": "active",
+  "category": "side",
+  "summary": "Quan sát từng món đồ rơi xuống nước rồi đoán xem vật sẽ chìm nghỉm hay nổi bồng bềnh.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, nhà khoa học nhí khám phá tự nhiên",
+    "where": "Bờ kênh chợ nhỏ trong làng",
+    "goal": "Đoán trúng trạng thái chìm hay nổi của mười lăm đồ vật nhé!",
+    "play": "Đồ vật chạy trên băng chuyền rồi rơi vào chậu nước.",
+    "learn": "Nhận biết đặc tính nặng nhẹ của vật thể",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Chậu nước thí nghiệm vẫn để bên bờ kênh chợ, rảnh thì ghé tớ chơi tiếp."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "be-nem-lia-thia",
+      "lines": [
+        {
+          "speaker": "Bé Ném Lia Thia",
+          "text": "Nhiều món đồ thú vị sắp thả xuống chậu nước kìa {name}!"
+        },
+        {
+          "speaker": "Bé Ném Lia Thia",
+          "text": "Cậu đoán xem món nào nổi thì vuốt lên, món nào chìm thì vuốt xuống nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ đoán chìm nổi chuẩn lắm!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Chìm hay nổi",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Đoán trúng trạng thái chìm hay nổi của mười lăm đồ vật nhé!",
+      "game": "sink-float",
+      "goal": 15
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Cậu đoán món nào trúng phóc món đó, {name} tinh ý quá chừng!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Chậu nước thí nghiệm vẫn để bên bờ kênh chợ, rảnh thì ghé tớ chơi tiếp."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

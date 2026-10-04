@@ -1,0 +1,80 @@
+{
+  "id": "side-ong-do-calligraphy",
+  "region": "trung-tam",
+  "chapter": 1,
+  "title": "Xin chữ ông đồ cùng Chú Đố Chữ Quang",
+  "status": "active",
+  "category": "side",
+  "summary": "Giấy đỏ nghiên mực thơm nức chợ xuân: đưa cọ nắn nót tô theo từng nét chữ thư pháp uyển chuyển.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, học trò nhỏ của ông đồ",
+    "where": "Góc chợ giao dịch sầm uất",
+    "goal": "Viết nắn nót hoàn thành bốn chữ thư pháp nhé!",
+    "play": "Ông đồ viết mờ một chữ ngày Tết. {name} tô lại từng nét, bắt đầu ở chấm trắng.",
+    "learn": "Đưa cọ nắn nót kiên nhẫn theo đường nét",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Mùa xuân chợ phiên còn bày câu đối, {name} rảnh lại ghé góc chợ đàm đạo chữ nghĩa nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "chu-do-chu-quang",
+      "lines": [
+        {
+          "speaker": "Chú Đố Chữ Quang",
+          "text": "Chào cháu {name}, ghé góc chợ xem chữ thư pháp ngày Tết cùng chú Quang nào!"
+        },
+        {
+          "speaker": "Chú Đố Chữ Quang",
+          "text": "Cháu đặt cọ từ chấm trắng rồi đưa tay chậm rãi tô theo nét mờ cho mực đượm màu thắm nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Nét bút mềm mại, câu đối đỏ tươi!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Xin chữ ông đồ",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Viết nắn nót hoàn thành bốn chữ thư pháp nhé!",
+      "game": "ong-do-calligraphy",
+      "goal": 4
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Chú Đố Chữ Quang mỉm cười vuốt râu: nét bút của {name} ngay ngắn, đậm đà phong vị ngày Tết!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Mùa xuân chợ phiên còn bày câu đối, {name} rảnh lại ghé góc chợ đàm đạo chữ nghĩa nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

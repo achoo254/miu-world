@@ -1,0 +1,80 @@
+{
+  "id": "side-seal-balance",
+  "region": "dao-bi-an",
+  "chapter": 1,
+  "title": "Giữ bóng trên chóp mũi cùng Hải Cẩu Bóng Chuyền",
+  "status": "active",
+  "category": "side",
+  "summary": "Gió biển thổi lay lắt, bé khéo léo nghiêng người sang trái phải để giữ quả bóng thăng bằng.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, nghệ sĩ xiếc giữ thăng bằng",
+    "where": "Bãi cát vàng ven biển",
+    "goal": "Giữ quả bóng thăng bằng trên đầu đạt ba mươi lăm giây nhé!",
+    "play": "Bóng nằm trên mũi hải cẩu. Kéo hải cẩu sang trái, sang phải để giữ bóng không rơi.",
+    "learn": "Điều chỉnh tay nhẹ nhàng theo hướng nghiêng",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Bãi biển lúc nào cũng rộn rã sóng vỗ, Hải Cẩu mong {name} ghé giữ bóng tiếp."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "hai-cau-bong-chuyen",
+      "lines": [
+        {
+          "speaker": "Hải Cẩu Bóng Chuyền",
+          "text": "Gió biển hôm nay thổi từng cơn đùa nghịch đấy, {name} giữ bóng thăng bằng với tớ nhé!"
+        },
+        {
+          "speaker": "Hải Cẩu Bóng Chuyền",
+          "text": "Bóng nghiêng về bên nào thì di chuyển đón sang bên đó, đừng để bóng lăn rớt."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ giữ thăng bằng rất dẻo dai!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Hải cẩu đội bóng",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Giữ quả bóng thăng bằng trên đầu đạt ba mươi lăm giây nhé!",
+      "game": "seal-balance",
+      "goal": 35
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Hải Cẩu reo hò phấn khích: {name} khéo léo giữ bóng vững vàng chẳng chao đảo!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Bãi biển lúc nào cũng rộn rã sóng vỗ, Hải Cẩu mong {name} ghé giữ bóng tiếp."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "id": "side-river-crossing",
+  "region": "lang-ven-song",
+  "chapter": 1,
+  "title": "Qua sông an toàn cùng Chú Lái Đò Ba",
+  "status": "active",
+  "category": "side",
+  "summary": "Xếp đồ và bạn nhỏ lên chiếc đò con rồi chèo sang bờ bên kia thật an toàn.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, hoa tiêu nhí thông minh của bến đò",
+    "where": "Bãi cỏ ven bờ sông",
+    "goal": "Chèo đò chở trọn vẹn hai chuyến hàng sang sông giúp chú nhé!",
+    "play": "Thuyền chở {name} và một thứ. Chạm một thứ để đưa lên thuyền, chạm Chèo để sang sông.",
+    "learn": "Suy nghĩ logic và xếp thứ tự hợp lý",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Bến sông quê mình ngày nào cũng nhộn nhịp tiếng đò rẽ sóng."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "chu-lai-do-ba",
+      "lines": [
+        {
+          "speaker": "Chú Lái Đò Ba",
+          "text": "{name} xem chú chèo đò chở đồ sang sông này!"
+        },
+        {
+          "speaker": "Chú Lái Đò Ba",
+          "text": "Cháu nhớ tính toán sao cho các đôi không làm phiền nhau trên bờ nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu xếp đồ lên đò ngay!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Qua sông chở đồ",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Chèo đò chở trọn vẹn hai chuyến hàng sang sông giúp chú nhé!",
+      "game": "river-crossing",
+      "goal": 2
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Chuyến đò nào cũng sang bờ an toàn nhờ tài tính toán của {name}!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Bến sông quê mình ngày nào cũng nhộn nhịp tiếng đò rẽ sóng."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "id": "side-pay-exact",
+  "region": "cho-phien",
+  "chapter": 1,
+  "title": "Trả tiền vừa đúng cùng Bác Thu Ngân Vui Vẻ",
+  "status": "active",
+  "category": "side",
+  "summary": "Chọn các tờ tiền giấy mệnh giá khác nhau xếp vào khay sao cho vừa khít với giá món đồ.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, thu ngân nhí tính toán chuẩn xác",
+    "where": "Dãy hàng cân đong trong chợ",
+    "goal": "Đếm tiền chuẩn xác thanh toán trọn vẹn mười món hàng chợ nhé!",
+    "play": "Món hàng có ghi giá. {name} chạm tờ tiền 1, 2, 5, 10 nghìn để đưa vào khay.",
+    "learn": "Cộng nhẩm các mệnh giá tiền Việt Nam",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Quầy thu ngân dãy hàng cân đong lúc nào cũng chào đón cháu tới giúp."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "bac-thu-ngan-vui-ve",
+      "lines": [
+        {
+          "speaker": "Bác Thu Ngân Vui Vẻ",
+          "text": "Khách đi chợ phiên mua đồ tấp nập quá {name} ơi!"
+        },
+        {
+          "speaker": "Bác Thu Ngân Vui Vẻ",
+          "text": "Cháu nhìn giá tiền rồi chọn đúng các tờ tiền vừa in vào khay nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu đếm tiền trả vừa đủ ngay!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Trả tiền vừa đủ",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Đếm tiền chuẩn xác thanh toán trọn vẹn mười món hàng chợ nhé!",
+      "game": "pay-exact",
+      "goal": 10
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Khay tiền vừa khít không thừa một xu, {name} tính tiền giỏi như người lớn!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Quầy thu ngân dãy hàng cân đong lúc nào cũng chào đón cháu tới giúp."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

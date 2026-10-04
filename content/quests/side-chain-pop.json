@@ -1,0 +1,80 @@
+{
+  "id": "side-chain-pop",
+  "region": "dao-bi-an",
+  "chapter": 1,
+  "title": "Kích hoạt chuỗi ánh sáng ngọc trai cùng Khỉ Nhảy Dù",
+  "status": "active",
+  "category": "side",
+  "summary": "Đàn sứa biển lập lòe dưới làn nước, bé chạm một điểm khởi đầu để tạo phản ứng nổ liên hoàn.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, nhà thám hiểm ánh sáng biển sâu",
+    "where": "Dưới bóng cây dừa nghiêng",
+    "goal": "Tạo phản ứng dây chuyền làm sáng bừng sáu đàn ngọc trai biển nhé!",
+    "play": "Mỗi màn {name} chỉ chạm một lần: một vòng sáng nở ra. Chạm vào giữa đàn sứa nhé!",
+    "learn": "Tìm vị trí trung tâm để tạo phản ứng liên hoàn",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Đáy biển đêm nay vẫn lung linh huyền ảo, Khỉ con chờ {name} quay lại chơi tiếp."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "khi-nhay-du-dao",
+      "lines": [
+        {
+          "speaker": "Khỉ Nhảy Dù Đảo Cổ",
+          "text": "Dưới rạn san hô có đàn sứa phát sáng rực rỡ kìa, {name} ngắm cùng tớ nhé!"
+        },
+        {
+          "speaker": "Khỉ Nhảy Dù Đảo Cổ",
+          "text": "Chạm một nhát vào chỗ đông nhất để vòng sáng nở bung, làm sáng bừng cả chuỗi sứa."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ kích nổ chuỗi sáng liền!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Sứa sáng dây chuyền",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Tạo phản ứng dây chuyền làm sáng bừng sáu đàn ngọc trai biển nhé!",
+      "game": "chain-pop",
+      "goal": 6
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Khỉ con đu cành reo to: cả mặt biển sáng bừng lấp lánh như sao nhờ {name} rồi!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Đáy biển đêm nay vẫn lung linh huyền ảo, Khỉ con chờ {name} quay lại chơi tiếp."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

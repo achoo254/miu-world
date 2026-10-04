@@ -1,0 +1,80 @@
+{
+  "id": "side-domino-chain",
+  "region": "trung-tam",
+  "chapter": 1,
+  "title": "Xếp chuỗi domino cùng Mèo Xếp Khối",
+  "status": "active",
+  "category": "side",
+  "summary": "Bờ đài phun nước rải đầy quân domino: kéo tay dựng chuỗi quân cờ rồi chạm gạt cho ngã trúng chuông.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, kiến trúc sư chuỗi domino",
+    "where": "Bờ đài phun nước tượng mèo",
+    "goal": "Dựng và đẩy đổ chuỗi domino rung chuông ba lần nhé!",
+    "play": "Kéo tay theo đường chấm, domino tự dựng cách đều. Tránh chồng sách nhé!",
+    "learn": "Tính toán khoảng cách và chuỗi phản ứng dây chuyền",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Còn bao nhiêu cách xếp hình domino kỳ thú, {name} lại ra đài phun nước chơi cùng mèo nha."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "meo-xep-khoi",
+      "lines": [
+        {
+          "speaker": "Mèo Xếp Khối",
+          "text": "Meo! {name} cùng tớ bày trận địa domino quanh bờ đài phun nước mát mẻ này đi!"
+        },
+        {
+          "speaker": "Mèo Xếp Khối",
+          "text": "Cậu kéo tay theo đường chấm dựng domino né chướng ngại vật, rồi chạm quân đầu rung chuông nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Đổ rạp liên hoàn, chuông reo leng keng!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Domino đổ dây chuyền",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Dựng và đẩy đổ chuỗi domino rung chuông ba lần nhé!",
+      "game": "domino-chain",
+      "goal": 3
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Mèo Xếp Khối vẫy đuôi reo hò: chuỗi domino của {name} đổ đều tăm tắp, tiếng chuông vang lừng!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Còn bao nhiêu cách xếp hình domino kỳ thú, {name} lại ra đài phun nước chơi cùng mèo nha."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

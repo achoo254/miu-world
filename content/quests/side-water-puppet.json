@@ -1,0 +1,80 @@
+{
+  "id": "side-water-puppet",
+  "region": "lang-ven-song",
+  "chapter": 1,
+  "title": "Múa rối nước làng quê cùng Nghệ Nhân Múa Rối",
+  "status": "active",
+  "category": "side",
+  "summary": "Điều khiển chú rối Chú Tễu uốn lượn nhịp nhàng theo vệt bóng mờ trên mặt nước.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, nghệ sĩ tí hon của phường rối nước",
+    "where": "Hiên xưởng thủ công làng",
+    "goal": "Dẫn chú rối múa khớp với bóng sáu mươi hai nhịp điệu rộn ràng nhé!",
+    "play": "Bóng mờ trên mặt ao là điệu múa. {name} kéo con rối đi theo, luôn trùng với bóng.",
+    "learn": "Uốn lượn ngón tay uyển chuyển theo nhịp",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Hiên xưởng thủ công lúc nào cũng mở cửa đón cháu vào luyện múa rối."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "nghe-nhan-mua-roi",
+      "lines": [
+        {
+          "speaker": "Nghệ Nhân Múa Rối",
+          "text": "Sân khấu thủy đình sáng đèn rồi kìa {name} ơi!"
+        },
+        {
+          "speaker": "Nghệ Nhân Múa Rối",
+          "text": "Cháu kéo con rối Chú Tễu múa theo bóng tròn trên nước thật khéo nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu múa rối Chú Tễu ngay!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Múa rối nước",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Dẫn chú rối múa khớp với bóng sáu mươi hai nhịp điệu rộn ràng nhé!",
+      "game": "water-puppet",
+      "goal": 62
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Khán giả vỗ tay reo hò râm ran vì điệu múa tuyệt vời của {name}!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Hiên xưởng thủ công lúc nào cũng mở cửa đón cháu vào luyện múa rối."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

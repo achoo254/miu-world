@@ -1,0 +1,80 @@
+{
+  "id": "side-croc-compare",
+  "region": "lang-ven-song",
+  "chapter": 1,
+  "title": "Cá sấu ngoạm số lớn cùng Bác Thổi Cơm Thi",
+  "status": "active",
+  "category": "side",
+  "summary": "So sánh hai đĩa thức ăn rồi vuốt mở miệng chú cá sấu ngoạm về bên có nhiều món hơn.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, bạn nhỏ so sánh số nhanh chuẩn xác",
+    "where": "Góc sân bóng cạnh đầm sen",
+    "goal": "Chỉ đúng đĩa nhiều hơn hai mươi lần cho cá sấu no bụng nhé!",
+    "play": "Cá sấu luôn ăn đĩa nhiều hơn. {name} vuốt cá sấu về phía đĩa đó.",
+    "learn": "So sánh độ lớn và chọn số lớn hơn",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Bác vẫn để bàn tính bên sân bóng đầm sen đón cháu ra so tài số học."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "bac-thoi-com-thi",
+      "lines": [
+        {
+          "speaker": "Bác Thổi Cơm Thi",
+          "text": "Chú cá sấu háu ăn này chỉ thích đĩa có số lớn thôi {name} ạ!"
+        },
+        {
+          "speaker": "Bác Thổi Cơm Thi",
+          "text": "Cháu so sánh thật chuẩn rồi vuốt cá sấu quay đầu sang đĩa nhiều nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu chỉ đĩa nhiều hơn cho cá sấu!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Cá sấu tham ăn",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Chỉ đúng đĩa nhiều hơn hai mươi lần cho cá sấu no bụng nhé!",
+      "game": "croc-compare",
+      "goal": 20
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Cá sấu vỗ bụng cười khà khà vì được {name} cho ăn no căng!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Bác vẫn để bàn tính bên sân bóng đầm sen đón cháu ra so tài số học."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

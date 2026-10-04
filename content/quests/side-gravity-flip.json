@@ -1,0 +1,80 @@
+{
+  "id": "side-gravity-flip",
+  "region": "nui-tuyet",
+  "chapter": 1,
+  "title": "Lật đảo trọng lực cùng Nai Nhỏ Vách Đá",
+  "status": "active",
+  "category": "side",
+  "summary": "Hang đá kỳ ảo có phép lạ, bé chạm đổi chiều rơi lên trần hoặc xuống sàn để tránh chướng ngại.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, tay lướt trọng lực tài ba",
+    "where": "Lối vào ga cáp treo làng",
+    "goal": "Lướt đi thật an toàn quãng đường bốn trăm hai mươi mét trong hang băng nhé!",
+    "play": "{name} tự chạy trong hang băng, trên sàn hoặc lộn ngược trên trần.",
+    "learn": "Phản xạ chuyển đổi vị trí tức thì",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Hang băng luôn sáng ánh pha lê, Nai Nhỏ ngóng {name} quay lại chạy tiếp ván mới."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "nai-nho-vach-da",
+      "lines": [
+        {
+          "speaker": "Nai Nhỏ Vách Đá",
+          "text": "Đường hầm dẫn lên ga cáp treo có luồng gió thần kỳ đấy {name} ơi!"
+        },
+        {
+          "speaker": "Nai Nhỏ Vách Đá",
+          "text": "Cứ chạm nhẹ là cậu sẽ chạy ngược trên trần hang để né tảng đá phía dưới."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Chạy trên trần hang vui quá!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Lật trọng lực",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Lướt đi thật an toàn quãng đường bốn trăm hai mươi mét trong hang băng nhé!",
+      "game": "gravity-flip",
+      "goal": 420
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Nai Nhỏ tròn xoe đôi mắt: {name} đảo trần sàn khéo léo chẳng vấp viên đá nào!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Hang băng luôn sáng ánh pha lê, Nai Nhỏ ngóng {name} quay lại chạy tiếp ván mới."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

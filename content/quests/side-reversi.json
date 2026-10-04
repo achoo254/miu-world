@@ -1,0 +1,80 @@
+{
+  "id": "side-reversi",
+  "region": "truong-hoc",
+  "chapter": 1,
+  "title": "Đấu cờ lật màu cùng Thỏ Măng Non",
+  "status": "active",
+  "category": "side",
+  "summary": "Bàn cờ vuông với những quân cờ hai mặt đen trắng: kẹp quân đối phương để đồng loạt lật sang màu mình.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, kỳ thủ cờ lật tài hoa",
+    "where": "Hành lang trước hội trường",
+    "goal": "Thắng bạn Cú một ván cờ lật thông minh nhé!",
+    "play": "{name} chạm ô có chấm để đặt quân, kẹp hàng quân của Cú giữa hai quân của mình.",
+    "learn": "Nhìn bao quát bàn cờ và chiếm cứ điểm góc",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Bạn Cú đang nghiên cứu nước cờ mới, {name} nhớ quay lại hội trường so tài tiếp nha."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "tho-mang-non",
+      "lines": [
+        {
+          "speaker": "Thỏ Măng Non",
+          "text": "{name} ơi, bạn Cú thông thái đang chờ người so tài cờ lật đen trắng này."
+        },
+        {
+          "speaker": "Thỏ Măng Non",
+          "text": "Cậu đặt quân kẹp hàng cờ của Cú giữa hai quân của mình để lật đổi màu, nhớ chiếm bốn góc nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Chiếm lấy góc bàn, lật màu toàn bộ!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Cờ lật",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Thắng bạn Cú một ván cờ lật thông minh nhé!",
+      "game": "reversi",
+      "goal": 1
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Thỏ Măng Non reo hò phấn khích: bàn cờ trắng tinh màu của {name}, bạn Cú chịu thua rồi!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Bạn Cú đang nghiên cứu nước cờ mới, {name} nhớ quay lại hội trường so tài tiếp nha."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

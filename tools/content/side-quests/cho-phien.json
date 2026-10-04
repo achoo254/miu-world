@@ -250,6 +250,316 @@
           "learn": "Nhận ra mẫu giống nhau và tính trước"
         }
       ]
+    },
+    {
+      "id": "co-nan-to-he",
+      "name": "Cô Nặn Tò He",
+      "look": "person-o",
+      "tint": "#d84878",
+      "where": "Đầu dãy sạp hoa rực rỡ",
+      "place": "Dãy sạp hoa",
+      "company": [
+        {
+          "routine": "shopper",
+          "name": "Bé cầm con tò he rồng",
+          "model": "person-a"
+        }
+      ],
+      "games": [
+        {
+          "game": "to-he-roll",
+          "title": "Nặn tò he sắc màu cùng Cô Nặn Tò He",
+          "summary": "Lăn thỏi bột nếp dẻo đủ màu dài đúng kích thước trên thước đo rồi cắt tạo hình tò he.",
+          "lines": [
+            "Bột nếp sắc màu thơm mùi hoa bưởi lắm nè {name} ơi!",
+            "Cháu xoa tay lăn bột dài đúng vạch xăng-ti-mét của khách rồi cắt nhé."
+          ],
+          "choice": "Cháu lăn bột nặn tò he ngay!",
+          "prompt": "Nặn bột đúng kích thước hoàn thành {goal} chú tò he xinh xắn nhé!",
+          "reward": "Con tò he rồng bay phượng múa lung linh, {name} nặn khéo tay quá!",
+          "next": "Góc sạp hoa rực rỡ lúc nào cũng thơm lừng mùi bột nếp đợi cháu.",
+          "who": "{name}, nghệ nhân tò he nhí tài hoa",
+          "learn": "Ước lượng độ dài chính xác theo thước đo"
+        },
+        {
+          "game": "pottery-wheel",
+          "title": "Bàn xoay gốm sứ cùng Cô Nặn Tò He",
+          "summary": "Vuốt nhẹ bàn tay ôm lấy khối đất sét đang quay tròn để uốn thành chiếc bình hoa mềm mại.",
+          "lines": [
+            "Bàn xoay gốm làng nghề đang quay tít kìa {name} ơi!",
+            "Cháu lướt ngón tay vuốt nhẹ đất sét cho khít với đường viền vàng nhé."
+          ],
+          "choice": "Cháu vuốt gốm tạo dáng bình hoa!",
+          "prompt": "Tạo hình khéo léo hoàn thành {goal} chiếc bình gốm tráng men nhé!",
+          "reward": "Chiếc bình gốm tròn xoe duyên dáng, {name} vuốt đất sét điêu luyện ghê!",
+          "next": "Bàn xoay gốm bên sạp hoa luôn rộn ràng đón cháu đến trổ tài nhào nặn.",
+          "who": "{name}, thợ gốm nhỏ tuổi tài năng của phiên chợ",
+          "learn": "Khéo léo điều khiển ngón tay theo đường viền mẫu"
+        },
+        {
+          "game": "dong-ho-print",
+          "title": "In tranh Đông Hồ cùng Cô Nặn Tò He",
+          "summary": "Dập bản khắc gỗ lên trang giấy điệp óng ánh đúng thời điểm để bức tranh dân gian hiện rõ.",
+          "lines": [
+            "{name} có muốn tự tay in bức tranh đàn lợn âm dương rực rỡ không?",
+            "Cháu canh giấy dó chạy tới dưới khuôn sáng màu thì chạm dập in nhé."
+          ],
+          "choice": "Cháu dập khuôn in tranh Đông Hồ!",
+          "prompt": "In chuẩn xác từng lớp màu hoàn thành {goal} bức tranh Đông Hồ nhé!",
+          "reward": "Màu sắc tranh Đông Hồ tươi rói óng ánh, {name} in tranh đẹp tuyệt vời!",
+          "next": "Xấp giấy điệp trắng ngần đầu dãy sạp hoa vẫn chờ cháu đến in tranh.",
+          "who": "{name}, thợ in tranh dân gian khéo léo",
+          "learn": "Canh đúng thời điểm giấy lướt qua khuôn in"
+        }
+      ]
+    },
+    {
+      "id": "chu-ban-banh-kem",
+      "name": "Chú Bán Bánh Kem",
+      "look": "person-p",
+      "tint": "#48a8c8",
+      "where": "Trước sạp chợ rau hoa",
+      "place": "Chợ rau hoa",
+      "company": [
+        {
+          "routine": "shopper",
+          "name": "Bé chọn bánh kem",
+          "model": "person-f"
+        }
+      ],
+      "games": [
+        {
+          "game": "cake-decorate",
+          "title": "Trang trí bánh sinh nhật cùng Chú Bán Bánh Kem",
+          "summary": "Gắn nến quả dâu và kẹo ngọt lên cốt bánh xốp mềm đúng số lượng khách nhí đặt mua.",
+          "lines": [
+            "Khách đang đặt bánh mừng sinh nhật đông quá {name} ơi!",
+            "Cháu nhìn đơn rồi xếp đúng số lượng dâu tây và nến lên mặt bánh nhé."
+          ],
+          "choice": "Cháu trang trí bánh kem ngay!",
+          "prompt": "Trang trí chuẩn vị ngọt ngào {goal} chiếc bánh kem thơm lừng nhé!",
+          "reward": "Chiếc bánh kem rực rỡ ngọt ngào làm khách hàng của {name} mê tít!",
+          "next": "Cửa tiệm bánh kem trước sạp rau hoa luôn thơm lừng đón cháu ghé.",
+          "who": "{name}, chuyên gia trang trí bánh sinh nhật nhí",
+          "learn": "Đếm đúng số lượng trang trí theo đơn hàng"
+        },
+        {
+          "game": "fruit-skewer",
+          "title": "Xâu xiên hoa quả cùng Chú Bán Bánh Kem",
+          "summary": "Chọn đúng quả tươi trên băng chuyền để xiên vào que theo đúng quy luật màu sắc lặp lại.",
+          "lines": [
+            "Những xiên hoa quả cầu vồng này trông ngon mắt chưa kìa {name}!",
+            "Cháu nhìn quy luật các loại quả đi trước rồi chọn quả kế tiếp nhé."
+          ],
+          "choice": "Cháu xiên hoa quả đúng quy luật!",
+          "prompt": "Xâu nối tiếp đúng quy luật hoàn thành {goal} xiên hoa quả ngọt nhé!",
+          "reward": "Xiên hoa quả đủ màu đẹp như tranh, {name} nhận biết mẫu giỏi ghê!",
+          "next": "Khay hoa quả tươi rói của chú lúc nào cũng sẵn sàng đón cháu phụ.",
+          "who": "{name}, phụ bếp nhanh trí xâu xiên hoa quả",
+          "learn": "Nhận biết quy luật chuỗi hình ảnh lặp lại"
+        },
+        {
+          "game": "pinball",
+          "title": "Bắn bóng pinball hội chợ cùng Chú Bán Bánh Kem",
+          "summary": "Bật hai cần gạt trái phải đón bóng sắt nảy tưng bừng chạm vào chuông vàng và ngôi sao điểm.",
+          "lines": [
+            "Máy bắn bi pinball đèn nhấp nháy vui nhộn lắm {name} ơi!",
+            "Cháu chạm hai bên màn hình bật cần gạt không để bi rơi xuống lỗ nhé."
+          ],
+          "choice": "Cháu bật cần gạt bắn bi lên!",
+          "prompt": "Điều khiển cần gạt giữ bi nảy đạt {goal} điểm vang dội nhé!",
+          "reward": "Chuông reo leng keng rực rỡ, {name} giữ bi điệu nghệ tuyệt vời!",
+          "next": "Chiếc máy pinball đèn hoa rực rỡ ở chợ luôn mở nút chờ cháu chơi.",
+          "who": "{name}, tay bấm bi pinball cừ khôi phiên chợ",
+          "learn": "Phản xạ nhanh hai tay giữ bóng nảy liên tục"
+        }
+      ]
+    },
+    {
+      "id": "bac-thu-ngan-vui-ve",
+      "name": "Bác Thu Ngân Vui Vẻ",
+      "look": "person-q",
+      "tint": "#488848",
+      "where": "Dãy hàng cân đong trong chợ",
+      "place": "Dãy hàng cân đong",
+      "company": [
+        {
+          "routine": "shopper",
+          "name": "Cô đi chợ sớm",
+          "model": "person-e"
+        }
+      ],
+      "games": [
+        {
+          "game": "pay-exact",
+          "title": "Trả tiền vừa đúng cùng Bác Thu Ngân Vui Vẻ",
+          "summary": "Chọn các tờ tiền giấy mệnh giá khác nhau xếp vào khay sao cho vừa khít với giá món đồ.",
+          "lines": [
+            "Khách đi chợ phiên mua đồ tấp nập quá {name} ơi!",
+            "Cháu nhìn giá tiền rồi chọn đúng các tờ tiền vừa in vào khay nhé."
+          ],
+          "choice": "Cháu đếm tiền trả vừa đủ ngay!",
+          "prompt": "Đếm tiền chuẩn xác thanh toán trọn vẹn {goal} món hàng chợ nhé!",
+          "reward": "Khay tiền vừa khít không thừa một xu, {name} tính tiền giỏi như người lớn!",
+          "next": "Quầy thu ngân dãy hàng cân đong lúc nào cũng chào đón cháu tới giúp.",
+          "who": "{name}, thu ngân nhí tính toán chuẩn xác",
+          "learn": "Cộng nhẩm các mệnh giá tiền Việt Nam"
+        },
+        {
+          "game": "jar-estimate",
+          "title": "Ước lượng kẹo trong lọ cùng Bác Thu Ngân Vui Vẻ",
+          "summary": "Liếc mắt ước lượng số kẹo ngọt trong lọ thủy tinh rồi kéo kim đồng hồ chỉ số gần đúng nhất.",
+          "lines": [
+            "{name} thử tài đoán xem trong lọ thủy tinh có bao nhiêu viên kẹo nhé!",
+            "Cháu nhìn nhanh trong ba giây rồi kéo kim đến con số con nhắm chừng."
+          ],
+          "choice": "Cháu ước lượng số kẹo ngay!",
+          "prompt": "Ước lượng gần đúng số kẹo ngọt trong {goal} lọ thủy tinh nhé!",
+          "reward": "Đoán sát sạt số kẹo luôn, đôi mắt của {name} ước lượng chuẩn ghê!",
+          "next": "Những lọ kẹo đủ màu trên kệ cân đong luôn đợi cháu ghé ước lượng.",
+          "who": "{name}, bạn nhỏ ước lượng số lượng tinh tế",
+          "learn": "Ước lượng nhanh số lượng vật thể bằng mắt"
+        },
+        {
+          "game": "customer-memory",
+          "title": "Nhớ đơn khách mua cùng Bác Thu Ngân Vui Vẻ",
+          "summary": "Ghi nhớ món đồ khách vừa gọi trong chốc lát rồi chọn đúng món trao tận tay từng người.",
+          "lines": [
+            "Bác bận rộn quá, {name} nhớ giúp bác xem khách gọi món gì nhé!",
+            "Bong bóng biến mất rồi, cháu chạm khách rồi lấy đúng đồ giao nha."
+          ],
+          "choice": "Cháu nhớ rõ từng đơn hàng!",
+          "prompt": "Nhớ đúng yêu cầu phục vụ trọn vẹn {goal} lượt khách ghé mua nhé!",
+          "reward": "Khách nào cũng hài lòng tươi cười cảm ơn {name} phục vụ chu đáo!",
+          "next": "Cửa hàng cân đong tấp nập ngày phiên luôn cần người nhớ dai như cháu.",
+          "who": "{name}, người phục vụ có trí nhớ tuyệt hảo",
+          "learn": "Ghi nhớ hình ảnh tức thời và xử lý nhanh"
+        }
+      ]
+    },
+    {
+      "id": "anh-lai-xe-dung",
+      "name": "Anh Lái Xe Đụng",
+      "look": "person-r",
+      "tint": "#e85848",
+      "where": "Góc quảng trường chợ vui nhộn",
+      "place": "Quảng trường chợ",
+      "company": [
+        {
+          "routine": "pupil",
+          "name": "Bạn nhỏ đợi lái xe",
+          "model": "person-b"
+        }
+      ],
+      "games": [
+        {
+          "game": "bumper-cars",
+          "title": "Xe đụng hội chợ cùng Anh Lái Xe Đụng",
+          "summary": "Lái chiếc xe điện tròn xoe húc văng các xe đối thủ ra khỏi sàn đấu trong tiếng nhạc rộn rã.",
+          "lines": [
+            "Vào sàn xe đụng cảm giác mạnh hội chợ vui lắm em {name} ơi!",
+            "Em rê ngón tay lái xe cua gắt húc các xe khác văng ra mép sàn nhé."
+          ],
+          "choice": "Em lái xe đụng húc tung sàn!",
+          "prompt": "Lái xe va chạm húc văng {goal} chiếc xe khác ra ngoài sàn nhé!",
+          "reward": "Những cú va chạm nảy lửa giòn giã, tay lái {name} cừ khôi thật!",
+          "next": "Sàn xe điện góc quảng trường chợ lúc nào cũng rộn ràng tiếng cười.",
+          "who": "{name}, tay đua xe đụng dũng mãnh quả cảm",
+          "learn": "Định hướng di chuyển và phán đoán đường chạy"
+        },
+        {
+          "game": "who-swapped",
+          "title": "Ai đổi chỗ rồi? cùng Anh Lái Xe Đụng",
+          "summary": "Nhìn nhanh vị trí các món hàng rồi chỉ ra hai món vừa tráo đổi chỗ khi tấm rèm kéo lên.",
+          "lines": [
+            "{name} nhìn kỹ các món đồ trên quầy trước khi rèm buông nhé!",
+            "Rèm mở ra có hai món vừa đổi chỗ, em chạm tìm đúng hai món đó nha."
+          ],
+          "choice": "Em tìm ra món đổi chỗ ngay!",
+          "prompt": "Phát hiện chính xác {goal} lần các món đồ hoán đổi vị trí nhé!",
+          "reward": "Mắt em tinh như mắt cú mèo, không món nào lọt qua mắt {name}!",
+          "next": "Trò chơi đổi chỗ vui nhộn ở góc quảng trường chợ đợi em đến phá án.",
+          "who": "{name}, thám tử quan sát tinh anh nhạy bén",
+          "learn": "Ghi nhớ không gian vị trí và phát hiện thay đổi"
+        },
+        {
+          "game": "seesaw-logic",
+          "title": "Cân thăng bằng đoán nặng nhẹ cùng Anh Lái Xe Đụng",
+          "summary": "Quan sát độ nghiêng của các bập bênh để tìm ra bạn thú nặng nhất hoặc nhẹ nhất trong nhóm.",
+          "lines": [
+            "Mấy bạn gấu và thỏ đang chơi bập bênh so độ nặng nhẹ kìa {name}!",
+            "Em nhìn đầu bập bênh nào chúi xuống là nặng hơn rồi đoán bạn nặng nhất nha."
+          ],
+          "choice": "Em đoán ra bạn nặng nhất ngay!",
+          "prompt": "Suy luận chuẩn xác tìm bạn nặng nhất hoặc nhẹ nhất {goal} lần nhé!",
+          "reward": "Suy luận logic đỉnh cao, {name} tìm ra bạn nặng nhất chuẩn không cần chỉnh!",
+          "next": "Cặp bập bênh góc chợ phiên vẫn đung đưa đợi em ra so tài suy luận.",
+          "who": "{name}, nhà logic học tí hon của hội chợ",
+          "learn": "Tư duy bắc cầu so sánh nặng nhẹ logic"
+        }
+      ]
+    },
+    {
+      "id": "chi-tiem-tap-hoa",
+      "name": "Chị Tiệm Tạp Hóa",
+      "look": "person-c",
+      "tint": "#a87858",
+      "where": "Trước gian hàng tạp hóa",
+      "place": "Gian hàng tạp hóa",
+      "company": [
+        {
+          "routine": "shopper",
+          "name": "Bé xách giỏ mua đồ",
+          "model": "person-d"
+        }
+      ],
+      "games": [
+        {
+          "game": "shopping-memory",
+          "title": "Ghi nhớ đồ cần mua cùng Chị Tiệm Tạp Hóa",
+          "summary": "Nhớ danh sách những món đồ mẹ dặn rồi đi dọc các kệ hàng nhặt đúng vào giỏ đi chợ.",
+          "lines": [
+            "Mẹ gửi danh sách mua đồ tạp hóa cho em kìa {name} ơi!",
+            "Em nhìn kỹ từng món rồi đi quanh gian hàng chọn đúng vào giỏ nhé."
+          ],
+          "choice": "Em nhặt đúng đồ mẹ dặn ngay!",
+          "prompt": "Nhặt chuẩn xác không sai món nào trọn {goal} chuyến đi chợ nhé!",
+          "reward": "Giỏ hàng đầy ắp đúng y lời mẹ dặn, {name} đi chợ đảm đang quá!",
+          "next": "Gian hàng tạp hóa ngày phiên lúc nào cũng mở cửa đón em ghé mua.",
+          "who": "{name}, bạn nhỏ đi chợ tháo vát đảm đang",
+          "learn": "Ghi nhớ danh sách đồ vật bằng trí nhớ ngắn hạn"
+        },
+        {
+          "game": "tile-triple",
+          "title": "Gắp ba ô giống nhau cùng Chị Tiệm Tạp Hóa",
+          "summary": "Gắp các ô hình không bị đè xuống khay sao cho ba ô cùng loại gặp nhau sẽ biến mất.",
+          "lines": [
+            "Kệ đồ chơi xếp chồng lên nhau lộn xộn quá em {name} ơi!",
+            "Em chạm các ô sáng màu đưa xuống khay gom bộ ba giống nhau cho gọn nhé."
+          ],
+          "choice": "Em xếp gọn các ô ba ngay!",
+          "prompt": "Thu dọn biến mất {goal} bộ ba ô hình giống nhau trên kệ nhé!",
+          "reward": "Kệ hàng gọn gàng ngăn nắp nhờ tài sắp xếp khéo léo của {name}!",
+          "next": "Các kiện đồ chơi mới về trước gian tạp hóa luôn đợi em ra xếp.",
+          "who": "{name}, chuyên gia xếp đồ ngăn nắp của tiệm",
+          "learn": "Phân loại theo bộ ba và quản lý ô trống khay"
+        },
+        {
+          "game": "knot-untangle",
+          "title": "Gỡ rối dây thừng cùng Chị Tiệm Tạp Hóa",
+          "summary": "Di chuyển những quả bóng bay buộc dây chằng chịt sao cho không còn sợi dây nào bắt chéo nhau.",
+          "lines": [
+            "Chùm bóng bay của tiệm bị gió thổi quấn dây chéo nhau rồi {name}!",
+            "Em kéo các quả bóng ra chỗ thoáng sao cho hết sạch các đường dây đỏ nhé."
+          ],
+          "choice": "Em gỡ xong chùm bóng ngay!",
+          "prompt": "Kéo tách các quả bóng gỡ rối thành công {goal} chùm dây chéo nhé!",
+          "reward": "Chùm bóng bay thẳng thớm rực rỡ sắc màu, {name} gỡ rối tài tình ghê!",
+          "next": "Gian hàng tạp hóa luôn sẵn lòng chào đón em ghé chơi gỡ dây bóng.",
+          "who": "{name}, bạn nhỏ gỡ rối dây thừng kiên nhẫn",
+          "learn": "Tư duy hình học phẳng và sắp xếp không gian"
+        }
+      ]
     }
   ],
   "residents": [

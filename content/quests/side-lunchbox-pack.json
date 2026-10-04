@@ -1,0 +1,80 @@
+{
+  "id": "side-lunchbox-pack",
+  "region": "truong-hoc",
+  "chapter": 1,
+  "title": "Xếp hộp cơm đủ chất cùng Chó Đội Trưởng",
+  "status": "active",
+  "category": "side",
+  "summary": "Băng chuyền thức ăn chạy qua: chọn đủ bốn nhóm dinh dưỡng xếp vào hộp cơm trưa ngon lành.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, đầu bếp dinh dưỡng của trường",
+    "where": "Mép sân bóng rổ trường",
+    "goal": "Xếp hoàn thành tám hộp cơm đủ chất nhé!",
+    "play": "Hộp cơm cần đủ bốn nhóm: cơm bánh, rau, thịt cá trứng và quả.",
+    "learn": "Phân loại bốn nhóm thực phẩm thiết yếu",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Bếp ăn trưa mai lại đỏ lửa, {name} ghé mép sân trường xếp cơm cùng Chó Đội Trưởng nha."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "cho-doi-truong",
+      "lines": [
+        {
+          "speaker": "Chó Đội Trưởng",
+          "text": "Sắp đến giờ ăn trưa bán trú rồi, {name} cùng tớ chuẩn bị hộp cơm dinh dưỡng nào!"
+        },
+        {
+          "speaker": "Chó Đội Trưởng",
+          "text": "Cậu chọn đủ bốn món thuộc bốn nhóm chất khác nhau xếp vào hộp, chớ lấy trùng món nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cơm canh đủ món, dinh dưỡng dồi dào!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Hộp cơm đủ chất",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Xếp hoàn thành tám hộp cơm đủ chất nhé!",
+      "game": "lunchbox-pack",
+      "goal": 8
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Chó Đội Trưởng vỗ hai chân trước reo vang: hộp cơm của {name} trông vừa đẹp vừa ngon miệng!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Bếp ăn trưa mai lại đỏ lửa, {name} ghé mép sân trường xếp cơm cùng Chó Đội Trưởng nha."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

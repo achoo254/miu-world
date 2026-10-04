@@ -1,0 +1,80 @@
+{
+  "id": "side-dig-channel",
+  "region": "nong-trai",
+  "chapter": 1,
+  "title": "Đào mương dẫn nước cùng Chú Đào Kênh",
+  "status": "active",
+  "category": "side",
+  "summary": "Mương đất khô cằn dưới chân cối xay gió, bé vạch đường dẫn dòng nước mát về ruộng sâu.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, thợ khơi mương thông minh",
+    "where": "Dưới chân cối xay gió",
+    "goal": "Đào xong bốn mương dẫn dòng nước mát nhé!",
+    "play": "{name} kéo ngón tay qua lớp đất để đào mương. Nước chảy xuống và sang ngang.",
+    "learn": "Quan sát địa hình và tìm lối đi thích hợp",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Dưới chân cối xay gió luôn cần thợ giỏi, rảnh rỗi cháu lại ghé giúp chú đào kênh."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "chu-dao-kenh-nuoc",
+      "lines": [
+        {
+          "speaker": "Chú Đào Kênh Dẫn Nước",
+          "text": "Chào {name}, những luống rau đang khát khô vì chưa có dòng nước mát chảy tới kìa."
+        },
+        {
+          "speaker": "Chú Đào Kênh Dẫn Nước",
+          "text": "Cháu hãy gạt từng vệt đất thông đường mương, tránh tảng đá to để dòng suối chảy qua."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu vạch đường mương ngay!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Đào mương dẫn nước",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Đào xong bốn mương dẫn dòng nước mát nhé!",
+      "game": "dig-channel",
+      "goal": 4
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Chú Đào Kênh Dẫn Nước reo vui khi thấy {name} khơi thông dòng chảy tài tình!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Dưới chân cối xay gió luôn cần thợ giỏi, rảnh rỗi cháu lại ghé giúp chú đào kênh."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

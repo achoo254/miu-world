@@ -1,0 +1,80 @@
+{
+  "id": "side-paddy-water",
+  "region": "nong-trai",
+  "chapter": 1,
+  "title": "Điều tiết nước ruộng bậc thang với Chú Đào Kênh",
+  "status": "active",
+  "category": "side",
+  "summary": "Ruộng bậc thang uốn lượn đón nước, bé canh mở cống cho từng bậc đủ nước xanh tươi.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người giữ nước ruộng bậc thang",
+    "where": "Dưới chân cối xay gió",
+    "goal": "Điều tiết đủ nước cho mười hai thửa ruộng bậc thang nhé!",
+    "play": "{name} chạm cống bên suối để mở cho nước vào ruộng, chạm lần nữa để đóng.",
+    "learn": "Canh mức vừa đủ và đóng mở kịp thời",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Ruộng lúa no nước xanh rờn, hôm nào nước về chú lại đợi cháu dưới cối xay gió."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "chu-dao-kenh-nuoc",
+      "lines": [
+        {
+          "speaker": "Chú Đào Kênh Dẫn Nước",
+          "text": "Nhìn những bậc ruộng kìa {name}, nước suối chảy về mà cống chưa mở đều tay."
+        },
+        {
+          "speaker": "Chú Đào Kênh Dẫn Nước",
+          "text": "Cháu chạm mở nắp cống cho nước ngập vừa mí bờ lúa non rồi nhanh tay đóng nắp lại."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu canh mực nước cho!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Mở cống ruộng bậc thang",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Điều tiết đủ nước cho mười hai thửa ruộng bậc thang nhé!",
+      "game": "paddy-water",
+      "goal": 12
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Chú Đào Kênh Dẫn Nước khen {name} giữ mực nước cho cánh đồng chuẩn xác phi thường!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Ruộng lúa no nước xanh rờn, hôm nào nước về chú lại đợi cháu dưới cối xay gió."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

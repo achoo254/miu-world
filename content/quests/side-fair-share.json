@@ -1,0 +1,80 @@
+{
+  "id": "side-fair-share",
+  "region": "nha-cua-be",
+  "chapter": 1,
+  "title": "Cắt chia bánh ngọt đều nhau cùng Mèo Bếp Trưởng",
+  "status": "active",
+  "category": "side",
+  "summary": "Chiếc bánh ngọt tròn xoe trên bàn, bé vuốt dao cắt bánh thành các phần bằng nhau cho mọi người.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, đầu bếp chia phần chu đáo",
+    "where": "Bàn ăn gian bếp gia đình",
+    "goal": "Cắt chia đều các phần bánh cho tám chiếc bánh thơm ngon nhé!",
+    "play": "Vuốt từ trên xuống qua bánh để cắt, mỗi lần vuốt là một nhát.",
+    "learn": "Ước lượng tỷ lệ phân chia đều các phần",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Mâm cỗ ngọt vẫn còn nhiều món ngon, Mèo Bếp Trưởng hẹn gặp lại {name} bên bàn ăn."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "meo-bep-truong",
+      "lines": [
+        {
+          "speaker": "Mèo Bếp Trưởng",
+          "text": "Cả nhà đang chờ thưởng thức bánh ngọt tráng miệng kìa, {name} chia bánh giúp tớ nha!"
+        },
+        {
+          "speaker": "Mèo Bếp Trưởng",
+          "text": "Vuốt từng nhát dao dứt khoát sao cho mỗi phần bánh có kích cỡ bằng chằn chặn."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu cắt từng miếng đều tăm tắp!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Chia bánh đều",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Cắt chia đều các phần bánh cho tám chiếc bánh thơm ngon nhé!",
+      "game": "fair-share",
+      "goal": 8
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Mèo Bếp Trưởng nghiêng đầu tán thưởng: miếng bánh nào {name} chia cũng công bằng tuyệt đối!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Mâm cỗ ngọt vẫn còn nhiều món ngon, Mèo Bếp Trưởng hẹn gặp lại {name} bên bàn ăn."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

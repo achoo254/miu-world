@@ -1,0 +1,80 @@
+{
+  "id": "side-music-box",
+  "region": "thu-vien",
+  "chapter": 1,
+  "title": "Hộp nhạc cổ tích quay tít cùng Mèo Hộp Nhạc",
+  "status": "active",
+  "category": "side",
+  "summary": "Chiếc hộp gỗ phát ra giai điệu thánh thót, bé cắm từng chiếc chốt vào đúng phím nốt reo ca.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, nhạc sĩ hộp nhạc tài ba",
+    "where": "Bục gỗ sân lễ hội lá vàng",
+    "goal": "Cắm đúng nốt hoàn thành bốn giai điệu hộp nhạc du dương nhé!",
+    "play": "Nghe hộp nhạc hát một câu nhạc, chốt sáng lên theo từng nốt.",
+    "learn": "Cảm thụ cao độ nốt nhạc và tái tạo chuỗi âm thanh",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Giai điệu mùa thu ngân vang khắp nơi, cậu ghé bục gỗ sân lễ hội lá vàng nghe đàn nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "meo-hop-nhac",
+      "lines": [
+        {
+          "speaker": "Mèo Hộp Nhạc",
+          "text": "Meo meo, chào {name}! Hộp nhạc của tớ bị rơi mất vài chốt nốt thanh âm êm dịu rồi."
+        },
+        {
+          "speaker": "Mèo Hộp Nhạc",
+          "text": "Cậu lắng nghe giai điệu mẫu rồi chạm cắm chốt lên trống xoay cho đúng cao độ nốt nhạc nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Để tớ chỉnh nốt cho hộp nhạc!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Hộp nhạc",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Cắm đúng nốt hoàn thành bốn giai điệu hộp nhạc du dương nhé!",
+      "game": "music-box",
+      "goal": 4
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Mèo Hộp Nhạc vẫy đuôi kêu meo meo, khen {name} có đôi tai cảm thụ âm nhạc tuyệt vời!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Giai điệu mùa thu ngân vang khắp nơi, cậu ghé bục gỗ sân lễ hội lá vàng nghe đàn nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

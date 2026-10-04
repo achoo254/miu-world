@@ -1,0 +1,80 @@
+{
+  "id": "side-knot-untangle",
+  "region": "cho-phien",
+  "chapter": 1,
+  "title": "Gỡ rối dây thừng cùng Chị Tiệm Tạp Hóa",
+  "status": "active",
+  "category": "side",
+  "summary": "Di chuyển những quả bóng bay buộc dây chằng chịt sao cho không còn sợi dây nào bắt chéo nhau.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, bạn nhỏ gỡ rối dây thừng kiên nhẫn",
+    "where": "Trước gian hàng tạp hóa",
+    "goal": "Kéo tách các quả bóng gỡ rối thành công ba chùm dây chéo nhé!",
+    "play": "Các quả bóng bay buộc dây vào nhau, rối tung. Dây đỏ là dây đang bắt chéo.",
+    "learn": "Tư duy hình học phẳng và sắp xếp không gian",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Gian hàng tạp hóa luôn sẵn lòng chào đón em ghé chơi gỡ dây bóng."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "chi-tiem-tap-hoa",
+      "lines": [
+        {
+          "speaker": "Chị Tiệm Tạp Hóa",
+          "text": "Chùm bóng bay của tiệm bị gió thổi quấn dây chéo nhau rồi {name}!"
+        },
+        {
+          "speaker": "Chị Tiệm Tạp Hóa",
+          "text": "Em kéo các quả bóng ra chỗ thoáng sao cho hết sạch các đường dây đỏ nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Em gỡ xong chùm bóng ngay!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Gỡ rối dây bóng",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Kéo tách các quả bóng gỡ rối thành công ba chùm dây chéo nhé!",
+      "game": "knot-untangle",
+      "goal": 3
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Chùm bóng bay thẳng thớm rực rỡ sắc màu, {name} gỡ rối tài tình ghê!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Gian hàng tạp hóa luôn sẵn lòng chào đón em ghé chơi gỡ dây bóng."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

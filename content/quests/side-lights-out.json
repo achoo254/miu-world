@@ -1,0 +1,80 @@
+{
+  "id": "side-lights-out",
+  "region": "lau-dai",
+  "chapter": 1,
+  "title": "Tắt đuốc tháp canh với Ngự Lâm Quân Tháp Cao",
+  "status": "active",
+  "category": "side",
+  "summary": "Những ô cửa sổ tháp canh lúc sáng lúc tối, bé tính toán chạm đổi trạng thái để thắp sáng toàn bộ.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người thắp sáng tháp canh",
+    "where": "Chân tháp góc thành lâu đài",
+    "goal": "Thắp sáng toàn bộ cửa sổ cho ba tầng tháp canh nhé!",
+    "play": "Chạm một cửa sổ: cửa đó và các cửa ngay trên, dưới, trái, phải đổi sáng tối.",
+    "learn": "Tư duy ma trận đảo trạng thái và giải câu đố logic",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Ánh sáng lâu đài rực rỡ trong đêm, hôm nào rảnh cháu lại ghé tháp góc thành thử sức."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "ngu-lam-quan-thap",
+      "lines": [
+        {
+          "speaker": "Ngự Lâm Quân Tháp Cao",
+          "text": "{name} ơi, tín hiệu đèn cửa sổ trên tháp lâu đài đang bị lộn xộn giữa sáng và tối kìa."
+        },
+        {
+          "speaker": "Ngự Lâm Quân Tháp Cao",
+          "text": "Chạm một ô cửa thì các ô chung quanh sẽ đổi trạng thái, cháu hãy làm cho toàn bộ cửa cùng sáng rực."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu thắp sáng các ô cửa sổ!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Bật đèn cửa sổ",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Thắp sáng toàn bộ cửa sổ cho ba tầng tháp canh nhé!",
+      "game": "lights-out",
+      "goal": 3
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Ngự Lâm Quân Tháp Cao reo mừng: các ngọn đèn đã đồng loạt bừng sáng nhờ tài trí của {name}!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Ánh sáng lâu đài rực rỡ trong đêm, hôm nào rảnh cháu lại ghé tháp góc thành thử sức."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

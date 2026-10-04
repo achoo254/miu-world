@@ -1,0 +1,80 @@
+{
+  "id": "side-cat-mouse",
+  "region": "truong-hoc",
+  "chapter": 1,
+  "title": "Mèo đuổi chuột rộn ràng với Bé Đội Viên",
+  "status": "active",
+  "category": "side",
+  "summary": "Các bạn nắm tay giơ cao hạ thấp làm cửa: dắt chú chuột lanh lẹ luồn lách để nhốt bạn mèo bên ngoài.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, chú chuột lém lỉnh nhanh như cắt",
+    "where": "Sân chơi dưới bóng bàng",
+    "goal": "Khéo léo lừa bạn mèo kẹt lại năm lần nhé!",
+    "play": "Các bạn nắm tay thành vòng, lúc giơ tay (khe xanh) lúc hạ tay (vạch đỏ).",
+    "learn": "Nhận biết thời điểm mở đóng của lối đi",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Trò chơi dân gian vui bất tận, {name} ghé sân chơi dưới bóng bàng đuổi bắt tiếp nha."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "be-chi-huy",
+      "lines": [
+        {
+          "speaker": "Bé Đội Viên",
+          "text": "{name} vào vai chú chuột nhắt lém lỉnh chơi trò mèo đuổi chuột với lớp mình đi!"
+        },
+        {
+          "speaker": "Bé Đội Viên",
+          "text": "Cậu kéo chuột chui qua khe lúc các bạn sắp hạ tay để bạn mèo đuổi sau bị chặn lại nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Chuột luồn lách nhanh, mèo đừng hòng bắt!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Mèo đuổi chuột",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Khéo léo lừa bạn mèo kẹt lại năm lần nhé!",
+      "game": "cat-mouse",
+      "goal": 5
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Bé Đội Viên reo vang: chú chuột {name} quá nhanh trí, bạn mèo đành chịu thua rồi!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Trò chơi dân gian vui bất tận, {name} ghé sân chơi dưới bóng bàng đuổi bắt tiếp nha."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

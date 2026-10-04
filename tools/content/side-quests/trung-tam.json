@@ -282,6 +282,316 @@
           "learn": "Đoán điểm rơi và di chuyển kịp thời"
         }
       ]
+    },
+    {
+      "id": "bac-lai-xe-hai",
+      "name": "Bác Lái Xe Hải",
+      "look": "person-b",
+      "tint": "#3878b8",
+      "where": "Bến xe bên quảng trường",
+      "place": "Quảng trường trung tâm",
+      "company": [
+        {
+          "routine": "shopper",
+          "name": "Hành khách xách túi",
+          "model": "person-e"
+        }
+      ],
+      "games": [
+        {
+          "game": "bus-jam",
+          "title": "Gỡ kẹt xe buýt cùng Bác Lái Xe Hải",
+          "summary": "Bến xe đông đúc giờ tan tầm: chọn hành khách bước lên xe buýt cùng màu sắc để giải tỏa ùn tắc.",
+          "lines": [
+            "Bác chào {name}, hành khách đang xếp hàng đông nghịt ở bến xe quảng trường này!",
+            "Cháu chạm bạn có lối đi thoáng để lên xe đúng màu, nhớ ghế chờ chỉ có năm chỗ thôi nhé."
+          ],
+          "choice": "Đúng màu lên xe, bến bãi thông thoáng!",
+          "prompt": "Đưa khách lên xe buýt giải tỏa {goal} chuyến xe nhé!",
+          "reward": "Bác Lái Xe Hải bấm còi pim pim: cháu {name} điều phối tài tình, bến xe trật tự trở lại rồi!",
+          "next": "Chuyến xe buýt sau sắp về bến, {name} rảnh lại ra bến xe quảng trường phụ bác nhé.",
+          "who": "{name}, điều phối viên bến xe buýt",
+          "learn": "Xếp hàng theo màu sắc và quản lý chỗ chờ"
+        },
+        {
+          "game": "bus-lines",
+          "title": "Vẽ tuyến xe buýt cùng Bác Lái Xe Hải",
+          "summary": "Bản đồ thành phố với các trạm xe hình khối: kéo ngón tay nối các trạm thành tuyến xe buýt liên hoàn.",
+          "lines": [
+            "{name} ơi, thành phố vừa mở thêm nhiều trạm dừng xe buýt mới toanh đón bà con.",
+            "Cháu kéo tay nối các trạm lại với nhau sao cho hành khách hình nào cũng về đúng trạm đó nhé."
+          ],
+          "choice": "Vẽ đường kết nối, xe chạy khắp nơi!",
+          "prompt": "Chở đủ {goal} hành khách về đúng trạm dừng nhé!",
+          "reward": "Bác Lái Xe Hải cười sảng khoái: lộ trình {name} vẽ thông minh ghê, ai cũng về nhà an toàn!",
+          "next": "Thành phố còn tiếp tục mở rộng, bác Hải hẹn {name} ở quảng trường vẽ tiếp các tuyến xe nha.",
+          "who": "{name}, kỹ sư quy hoạch tuyến xe buýt",
+          "learn": "Thiết kế mạng lưới giao thông và tối ưu lộ trình"
+        },
+        {
+          "game": "photo-finish",
+          "title": "Chụp ảnh về đích cùng Bác Lái Xe Hải",
+          "summary": "Cuộc đua tốc độ gay cấn: quan sát bức ảnh chụp vạch đích để phân định thứ hạng từng tay đua.",
+          "lines": [
+            "Cuộc đua thể thao quảng trường vừa cán đích nghẹt thở kìa {name} ơi!",
+            "Cháu nhìn bức ảnh chụp vạch đích xem bạn nào gần vạch hơn rồi chọn đúng thứ tự về đích nhé."
+          ],
+          "choice": "Mắt soi vạch đích, thứ hạng rõ ràng!",
+          "prompt": "Xác định đúng thứ hạng về đích qua {goal} chặng đua nhé!",
+          "reward": "Bác Lái Xe Hải giơ ngón tay cái: {name} tinh mắt phân xử công minh, không ai cãi được!",
+          "next": "Giải đua chặng tiếp theo sắp khởi tranh, {name} ghé quảng trường xem ảnh về đích cùng bác nhé.",
+          "who": "{name}, trọng tài phân định đích đến",
+          "learn": "So sánh khoảng cách và xác định thứ tự trước sau"
+        }
+      ]
+    },
+    {
+      "id": "be-xiec-vui-ve",
+      "name": "Bé Xiếc Vui Vẻ",
+      "look": "person-f",
+      "tint": "#d87898",
+      "where": "Trước sân khấu sự kiện",
+      "place": "Sân khấu sự kiện",
+      "company": [
+        {
+          "routine": "kite-flyer",
+          "name": "Bé cầm chùm bóng bay",
+          "model": "person-k"
+        }
+      ],
+      "games": [
+        {
+          "game": "bottle-flip",
+          "title": "Tung chai thăng bằng cùng Bé Xiếc Vui Vẻ",
+          "summary": "Chai nước ngọt trên bàn diễn xiếc: vuốt ngón tay tung chai lộn một vòng rồi đáp đứng thẳng tắp.",
+          "lines": [
+            "Chào {name}! Tiết mục tung chai đứng thẳng của gánh xiếc đang thiếu người biểu diễn này.",
+            "Cậu vuốt ngón tay lên để hất chai lộn nhào, vuốt vừa lực cho chai đáp thăng bằng trên bục nhé."
+          ],
+          "choice": "Lộn nhào một vòng, đứng thẳng trên bục!",
+          "prompt": "Tung chai tiếp đất đứng vững {goal} lần nhé!",
+          "reward": "Bé Xiếc Vui Vẻ tung mũ chào: {name} canh lực siêu khéo, chai nào đáp xuống cũng vững vàng!",
+          "next": "Khán giả đang vỗ tay đòi diễn tiếp, {name} cứ lại trước sân khấu sự kiện tung chai nhé.",
+          "who": "{name}, nghệ sĩ tung chai điêu luyện",
+          "learn": "Cảm nhận lực vuốt và thời điểm lộn vòng"
+        },
+        {
+          "game": "stilts-walk",
+          "title": "Đi cà kheo tre cùng Bé Xiếc Vui Vẻ",
+          "summary": "Đôi cà kheo tre cao lêu nghêu: chạm chân nghiêng để giữ thăng bằng và bước từng bước chắc nịch.",
+          "lines": [
+            "{name} ơi, thử bước lên đôi cà kheo tre bồng bềnh biểu diễn xiếc với tớ không?",
+            "Người nghiêng về bên nào thì cậu chạm bên đó để bước chân lên giữ thăng bằng kẻo ngã nha."
+          ],
+          "choice": "Cà kheo bước vững, giữ thẳng người nào!",
+          "prompt": "Bước cà kheo đi xa được {goal} mét nhé!",
+          "reward": "Bé Xiếc Vui Vẻ nhào lộn khen ngợi: {name} giữ thăng bằng cừ thật, bước đi tự tin như nghệ sĩ!",
+          "next": "Gánh xiếc còn diễn hết mùa lễ hội, {name} ghé sân khấu sự kiện bước cà kheo cùng tớ nha.",
+          "who": "{name}, diễn viên xiếc cà kheo dũng cảm",
+          "learn": "Phản xạ giữ thăng bằng đối xứng hai bên"
+        },
+        {
+          "game": "seesaw-launch",
+          "title": "Bập bênh phóng bóng cùng Bé Xiếc Vui Vẻ",
+          "summary": "Chiếc bập bênh đòn bẩy kỳ diệu: thả bao cát từ trên cao giáng xuống phóng quả bóng bay vào rổ.",
+          "lines": [
+            "{name} nhìn chiếc bập bênh phóng bóng màu sắc của gánh xiếc chúng mình kìa!",
+            "Cậu chạm chọn độ cao thả bao cát rơi xuống, canh lực bật cho bóng bay trúng vào miệng rổ nhé."
+          ],
+          "choice": "Bao cát rơi xuống, bóng bay vào rổ!",
+          "prompt": "Phóng bóng trúng rổ ghi được {goal} điểm nhé!",
+          "reward": "Bé Xiếc Vui Vẻ vỗ tay reo hò: bóng của {name} bay vút vào rổ rinh trọn tràng pháo tay!",
+          "next": "Vẫn còn nhiều bao cát và bóng màu, {name} lại sân khấu sự kiện chơi bập bênh tiếp nha.",
+          "who": "{name}, nhà thiện xạ bập bênh",
+          "learn": "Hiểu nguyên lý đòn bẩy và thế năng rơi"
+        }
+      ]
+    },
+    {
+      "id": "chu-do-chu-quang",
+      "name": "Chú Đố Chữ Quang",
+      "look": "person-m",
+      "tint": "#488858",
+      "where": "Góc chợ giao dịch sầm uất",
+      "place": "Chợ giao dịch",
+      "company": [
+        {
+          "routine": "reader",
+          "name": "Bạn nhỏ xem câu đối",
+          "model": "person-n"
+        }
+      ],
+      "games": [
+        {
+          "game": "ong-do-calligraphy",
+          "title": "Xin chữ ông đồ cùng Chú Đố Chữ Quang",
+          "summary": "Giấy đỏ nghiên mực thơm nức chợ xuân: đưa cọ nắn nót tô theo từng nét chữ thư pháp uyển chuyển.",
+          "lines": [
+            "Chào cháu {name}, ghé góc chợ xem chữ thư pháp ngày Tết cùng chú Quang nào!",
+            "Cháu đặt cọ từ chấm trắng rồi đưa tay chậm rãi tô theo nét mờ cho mực đượm màu thắm nhé."
+          ],
+          "choice": "Nét bút mềm mại, câu đối đỏ tươi!",
+          "prompt": "Viết nắn nót hoàn thành {goal} chữ thư pháp nhé!",
+          "reward": "Chú Đố Chữ Quang mỉm cười vuốt râu: nét bút của {name} ngay ngắn, đậm đà phong vị ngày Tết!",
+          "next": "Mùa xuân chợ phiên còn bày câu đối, {name} rảnh lại ghé góc chợ đàm đạo chữ nghĩa nhé.",
+          "who": "{name}, học trò nhỏ của ông đồ",
+          "learn": "Đưa cọ nắn nót kiên nhẫn theo đường nét"
+        },
+        {
+          "game": "sentence-train",
+          "title": "Ghép đoàn tàu câu với Chú Đố Chữ Quang",
+          "summary": "Đoàn tàu chở những toa chữ rời: quan sát tranh minh họa rồi xếp các từ thành câu văn hoàn chỉnh.",
+          "lines": [
+            "{name} ơi, đoàn tàu chở từ ngữ đang chuẩn bị khởi hành từ chợ giao dịch này.",
+            "Cháu nhìn bức tranh rồi chạm các toa chữ theo đúng thứ tự câu văn để đoàn tàu lăn bánh nhé."
+          ],
+          "choice": "Toa tàu nối đuôi, câu văn trọn vẹn!",
+          "prompt": "Ghép đúng thứ tự cho {goal} đoàn tàu câu nhé!",
+          "reward": "Chú Đố Chữ Quang tấm tắc khen ngợi: {name} ghép câu rành mạch, đoàn tàu tu tu hú còi chạy rồi!",
+          "next": "Còn nhiều câu văn hay trong kho sách, cháu {name} nhớ ghé chợ giao dịch ghép tàu tiếp nha.",
+          "who": "{name}, kỹ sư nối câu tài ba",
+          "learn": "Ngữ pháp tiếng Việt và trật tự từ trong câu"
+        },
+        {
+          "game": "hole-in-wall",
+          "title": "Chui qua lỗ tường cùng Chú Đố Chữ Quang",
+          "summary": "Bức tường xốp khoét hình ngộ nghĩnh tiến tới: chọn đúng tư thế cử chỉ để luồn qua lỗ hổng an toàn.",
+          "lines": [
+            "Trò chơi vượt tường xốp đang thu hút đông đảo bạn nhỏ ở góc chợ kìa {name} ơi!",
+            "Cháu nhìn hình dáng lỗ khoét trên tường rồi chọn nút tư thế tương ứng để chui lọt qua nhé."
+          ],
+          "choice": "Tư thế chuẩn khít, lọt qua dễ dàng!",
+          "prompt": "Tạo đúng dáng vượt qua {goal} bức tường xốp nhé!",
+          "reward": "Chú Đố Chữ Quang vỗ tay tán thưởng: cháu {name} uốn mình nhanh nhẹn, dáng nào cũng chuẩn!",
+          "next": "Bức tường tiếp theo sắp tiến vào, {name} rảnh lại ghé góc chợ giao dịch so tài uốn dáng nhé.",
+          "who": "{name}, cao thủ luồn tường linh hoạt",
+          "learn": "Nhận biết hình thể không gian và phản xạ tạo dáng"
+        }
+      ]
+    },
+    {
+      "id": "meo-xep-khoi",
+      "name": "Mèo Xếp Khối",
+      "look": "animal-cat",
+      "tint": "#e8a838",
+      "where": "Bờ đài phun nước tượng mèo",
+      "place": "Đài phun nước tượng mèo",
+      "company": [
+        {
+          "routine": "sweeper",
+          "name": "Chú bảo vệ quảng trường",
+          "model": "person-p"
+        }
+      ],
+      "games": [
+        {
+          "game": "domino-chain",
+          "title": "Xếp chuỗi domino cùng Mèo Xếp Khối",
+          "summary": "Bờ đài phun nước rải đầy quân domino: kéo tay dựng chuỗi quân cờ rồi chạm gạt cho ngã trúng chuông.",
+          "lines": [
+            "Meo! {name} cùng tớ bày trận địa domino quanh bờ đài phun nước mát mẻ này đi!",
+            "Cậu kéo tay theo đường chấm dựng domino né chướng ngại vật, rồi chạm quân đầu rung chuông nhé."
+          ],
+          "choice": "Đổ rạp liên hoàn, chuông reo leng keng!",
+          "prompt": "Dựng và đẩy đổ chuỗi domino rung chuông {goal} lần nhé!",
+          "reward": "Mèo Xếp Khối vẫy đuôi reo hò: chuỗi domino của {name} đổ đều tăm tắp, tiếng chuông vang lừng!",
+          "next": "Còn bao nhiêu cách xếp hình domino kỳ thú, {name} lại ra đài phun nước chơi cùng mèo nha.",
+          "who": "{name}, kiến trúc sư chuỗi domino",
+          "learn": "Tính toán khoảng cách và chuỗi phản ứng dây chuyền"
+        },
+        {
+          "game": "tile-flood",
+          "title": "Tràn màu gạch lát với Mèo Xếp Khối",
+          "summary": "Sân gạch men nhiều màu bên đài nước: chạm màu hòa tan để lan tỏa đồng nhất khắp toàn bộ mặt sàn.",
+          "lines": [
+            "{name} ơi, đố cậu nhuộm màu toàn bộ sân gạch men này chỉ với vài lượt đổi màu đấy!",
+            "Cậu chạm màu mới để vùng gạch của mình lan rộng sang các ô kề bên trước khi hết lượt nhé."
+          ],
+          "choice": "Lan tỏa sắc màu, phủ kín mặt sân!",
+          "prompt": "Nhuộm cùng một màu toàn bộ bàn gạch trong {goal} lượt nhé!",
+          "reward": "Mèo Xếp Khối tròn xoe mắt thán phục: cả sân gạch đã rực một màu nhờ tài tính toán của {name}!",
+          "next": "Mặt sàn mới với nhiều ô màu đang chờ, {name} ghé đài phun nước tượng mèo giải đố tiếp nha.",
+          "who": "{name}, bậc thầy lan tỏa sắc màu",
+          "learn": "Tư duy quy hoạch vùng và tối ưu số bước đi"
+        },
+        {
+          "game": "hole-grow",
+          "title": "Hố hút dọn sạch cùng Mèo Xếp Khối",
+          "summary": "Quảng trường vương rác và lá khô: điều khiển chiếc hố thần kỳ hút sạch mọi đồ vật từ nhỏ đến lớn.",
+          "lines": [
+            "Quanh tượng mèo vương nhiều đồ chơi và mảnh vụn quá, {name} dọn cùng tớ nhé!",
+            "Cậu kéo miệng hố hút đồ vật nhỏ trước để hố lớn dần lên, rồi nuốt trọn những đồ vật to hơn nha."
+          ],
+          "choice": "Hút sạch đồ vương, sân bãi tinh tươm!",
+          "prompt": "Hút sạch sẽ {goal} món đồ vương trên quảng trường nhé!",
+          "reward": "Mèo Xếp Khối cọ đầu mừng rỡ: bờ đài phun nước sạch bong không còn hạt bụi nhờ có {name}!",
+          "next": "Mỗi buổi chiều gió thổi lá rụng, {name} lại ra tượng mèo giúp hố thần kỳ dọn sân nhé.",
+          "who": "{name}, người giữ sạch quảng trường",
+          "learn": "So sánh kích thước và lộ trình thu gom hợp lý"
+        }
+      ]
+    },
+    {
+      "id": "khi-tinh-nhanh",
+      "name": "Khỉ Tính Nhanh",
+      "look": "animal-monkey",
+      "tint": "#a85878",
+      "where": "Bậc thềm sân trước lâu đài",
+      "place": "Sân trước lâu đài",
+      "company": [
+        {
+          "routine": "shopper",
+          "name": "Bạn nhỏ xem tính nhẩm",
+          "model": "person-r"
+        }
+      ],
+      "games": [
+        {
+          "game": "math-race",
+          "title": "Đua xe tính nhanh cùng Khỉ Tính Nhanh",
+          "summary": "Chiếc xe đua công thức mini trên bậc thềm: tính nhẩm kết quả phép tính trên biển để tăng tốc về đích.",
+          "lines": [
+            "Khẹc khẹc! {name} lên chiếc xe đua số học với tớ, so tài tốc độ tính nhẩm nào!",
+            "Biển báo hiện phép tính gì thì cậu chạm ngay kết quả đúng để xe vút lên dẫn đầu đoàn đua nhé."
+          ],
+          "choice": "Tính nhẩm thần tốc, xe về nhất chặng!",
+          "prompt": "Về đích thắng lợi trong {goal} chặng đua tính nhanh nhé!",
+          "reward": "Khỉ Tính Nhanh nhào lộn trên bậc thềm: cúp vô địch thuộc về {name}, tính nhanh như chớp!",
+          "next": "Đường đua lâu đài luôn đón chờ tay lái cừ khôi, {name} lại đến bậc thềm so tài nhé.",
+          "who": "{name}, tay đua số học siêu tốc",
+          "learn": "Tính nhẩm phép cộng trừ trong phạm vi nhanh chóng"
+        },
+        {
+          "game": "lift-numbers",
+          "title": "Vận hành thang máy số cùng Khỉ Tính Nhanh",
+          "summary": "Tòa tháp lâu đài nguy nga: đọc thẻ số hàng chục và hàng đơn vị của khách để đưa thang máy tới đúng tầng.",
+          "lines": [
+            "{name} ơi, khách vào lâu đài cầm thẻ ghi số chục và số que lẻ cần lên tầng kìa!",
+            "Cậu ghép số chục với số đơn vị thành số tầng đúng rồi chạm đưa thang máy chở khách nhé."
+          ],
+          "choice": "Ghép chục ghép đơn vị, thang máy lên tầng!",
+          "prompt": "Chở đúng {goal} lượt khách lên đúng tầng lâu đài nhé!",
+          "reward": "Khỉ Tính Nhanh cúi chào kiểu hoàng gia: {name} hiểu rõ hàng chục hàng đơn vị, phục vụ chu đáo quá!",
+          "next": "Khách tham quan lâu đài tấp nập suốt ngày, {name} nhớ ghé bậc thềm lái thang máy tiếp nha.",
+          "who": "{name}, người lái thang máy lâu đài",
+          "learn": "Đọc viết số có hai chữ số theo cấu tạo thập phân"
+        },
+        {
+          "game": "micro-mix",
+          "title": "Thử thách chớp nhoáng cùng Khỉ Tính Nhanh",
+          "summary": "Hàng loạt nhiệm vụ tí hon xuất hiện dồn dập: phản xạ chạm vuốt tức thì trước khi đồng hồ điểm hết giờ.",
+          "lines": [
+            "Thử thách chớp nhoáng siêu cấp bắt đầu rồi {name}, sẵn sàng ngón tay chưa nào?",
+            "Màn hình hiện trò gì là cậu chạm hoặc vuốt tức thì trong ba giây kẻo đồng hồ reo hết giờ nhé."
+          ],
+          "choice": "Mắt thấy tay làm, phản xạ chớp nhoáng!",
+          "prompt": "Vượt qua thành công {goal} thử thách tí hon liên tiếp nhé!",
+          "reward": "Khỉ Tính Nhanh vỗ tay rầm rộ: {name} phản xạ nhanh như chớp giật, trò nào cũng qua mượt mà!",
+          "next": "Kho thử thách còn hàng trăm trò vui lạ lùng, {name} ghé bậc thềm sân lâu đài quẩy tiếp nhé.",
+          "who": "{name}, quán quân thử thách chớp nhoáng",
+          "learn": "Tập trung chú ý cao độ và phản xạ tức thời"
+        }
+      ]
     }
   ],
   "residents": [

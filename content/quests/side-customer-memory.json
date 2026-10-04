@@ -1,0 +1,80 @@
+{
+  "id": "side-customer-memory",
+  "region": "cho-phien",
+  "chapter": 1,
+  "title": "Nhớ đơn khách mua cùng Bác Thu Ngân Vui Vẻ",
+  "status": "active",
+  "category": "side",
+  "summary": "Ghi nhớ món đồ khách vừa gọi trong chốc lát rồi chọn đúng món trao tận tay từng người.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người phục vụ có trí nhớ tuyệt hảo",
+    "where": "Dãy hàng cân đong trong chợ",
+    "goal": "Nhớ đúng yêu cầu phục vụ trọn vẹn mười lăm lượt khách ghé mua nhé!",
+    "play": "Khách ngồi xuống gọi món trong bong bóng, rồi bong bóng biến mất. {name} nhớ kỹ nhé!",
+    "learn": "Ghi nhớ hình ảnh tức thời và xử lý nhanh",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Cửa hàng cân đong tấp nập ngày phiên luôn cần người nhớ dai như cháu."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "bac-thu-ngan-vui-ve",
+      "lines": [
+        {
+          "speaker": "Bác Thu Ngân Vui Vẻ",
+          "text": "Bác bận rộn quá, {name} nhớ giúp bác xem khách gọi món gì nhé!"
+        },
+        {
+          "speaker": "Bác Thu Ngân Vui Vẻ",
+          "text": "Bong bóng biến mất rồi, cháu chạm khách rồi lấy đúng đồ giao nha."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu nhớ rõ từng đơn hàng!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Nhớ món khách gọi",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Nhớ đúng yêu cầu phục vụ trọn vẹn mười lăm lượt khách ghé mua nhé!",
+      "game": "customer-memory",
+      "goal": 15
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Khách nào cũng hài lòng tươi cười cảm ơn {name} phục vụ chu đáo!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Cửa hàng cân đong tấp nập ngày phiên luôn cần người nhớ dai như cháu."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

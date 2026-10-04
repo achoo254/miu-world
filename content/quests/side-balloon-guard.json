@@ -1,0 +1,80 @@
+{
+  "id": "side-balloon-guard",
+  "region": "khu-rung-bi-mat",
+  "chapter": 1,
+  "title": "Hộ tống bóng bay cùng Sóc Đu Đuôi",
+  "status": "active",
+  "category": "side",
+  "summary": "Bạn nhỏ bay lên cùng chùm bóng: kéo chiếc ô che chở bóng khỏi lá và sỏi rơi rụng.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, vệ sĩ bảo vệ bóng bay",
+    "where": "Bìa rừng gần bãi cỏ hoang",
+    "goal": "Hộ tống bóng bay lên cao một trăm mét nhé!",
+    "play": "Bạn của {name} bay lên trời với quả bóng. Lá, hạt dẻ, sỏi đang rơi xuống!",
+    "learn": "Kéo ô nhanh nhẹn và bảo vệ bạn từ xa",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Khi nào muốn ngắm bóng bay, {name} cứ ghé bãi cỏ hoang tìm Sóc Đu Đuôi nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "soc-bong-bay",
+      "lines": [
+        {
+          "speaker": "Sóc Đu Đuôi",
+          "text": "{name} ơi, bạn nhỏ đang bay lên trời mà sỏi rừng rơi nhiều quá!"
+        },
+        {
+          "speaker": "Sóc Đu Đuôi",
+          "text": "Cậu kéo chiếc ô che trên đầu bóng để gạt hết chướng ngại vật rơi xuống nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Ô đây rồi, tớ che cho bạn liền!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Hộ tống bóng bay",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Hộ tống bóng bay lên cao một trăm mét nhé!",
+      "game": "balloon-guard",
+      "goal": 100
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Sóc Đu Đuôi ngoe nguẩy cái đuôi xù: {name} che ô khéo quá, bóng an toàn rồi!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Khi nào muốn ngắm bóng bay, {name} cứ ghé bãi cỏ hoang tìm Sóc Đu Đuôi nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

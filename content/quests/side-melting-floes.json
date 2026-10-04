@@ -1,0 +1,80 @@
+{
+  "id": "side-melting-floes",
+  "region": "nui-tuyet",
+  "chapter": 1,
+  "title": "Nhảy qua tảng băng trôi cùng Gấu Bắc Cực Câu Cá",
+  "status": "active",
+  "category": "side",
+  "summary": "Những tảng băng bập bềnh sắp chìm, bé dẫn bạn nhỏ nhảy nhanh sang tảng vững để nhặt cá.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, nhà thám hiểm băng trôi dũng cảm",
+    "where": "Bên ngoài hang băng",
+    "goal": "Nhặt được mười con cá tươi trên những tảng băng trôi nhé!",
+    "play": "Tảng băng nứt rồi chìm dần. {name} chạm tảng băng ngay cạnh để chú cánh cụt nhảy sang.",
+    "learn": "Quyết định dứt khoát trước tình huống vội",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Dòng nước lạnh vẫn còn trôi dạt, bác Gấu chờ {name} ở cửa hang băng."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "gau-bac-cuc-cau-ca",
+      "lines": [
+        {
+          "speaker": "Gấu Bắc Cực Câu Cá",
+          "text": "Nước hồ đang cuốn băng trôi nhanh quá, {name} cùng bác vượt qua dòng nước nào!"
+        },
+        {
+          "speaker": "Gấu Bắc Cực Câu Cá",
+          "text": "Tảng nào nứt thì nhảy sang ngay tảng bên cạnh kẻo trượt chân ướt áo đấy."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu bước nhẹ chân nhảy sang ngay!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Băng trôi tan dần",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Nhặt được mười con cá tươi trên những tảng băng trôi nhé!",
+      "game": "melting-floes",
+      "goal": 10
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Gấu Bắc Cực vỗ vai khen: chân cháu {name} nhanh thoăn thoắt, nhảy chuẩn từng bước!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Dòng nước lạnh vẫn còn trôi dạt, bác Gấu chờ {name} ở cửa hang băng."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

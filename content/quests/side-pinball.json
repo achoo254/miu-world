@@ -1,0 +1,80 @@
+{
+  "id": "side-pinball",
+  "region": "cho-phien",
+  "chapter": 1,
+  "title": "Bắn bóng pinball hội chợ cùng Chú Bán Bánh Kem",
+  "status": "active",
+  "category": "side",
+  "summary": "Bật hai cần gạt trái phải đón bóng sắt nảy tưng bừng chạm vào chuông vàng và ngôi sao điểm.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, tay bấm bi pinball cừ khôi phiên chợ",
+    "where": "Trước sạp chợ rau hoa",
+    "goal": "Điều khiển cần gạt giữ bi nảy đạt ba trăm điểm vang dội nhé!",
+    "play": "Chạm nửa trái màn hình để bật cần gạt trái, nửa phải để bật cần gạt phải.",
+    "learn": "Phản xạ nhanh hai tay giữ bóng nảy liên tục",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Chiếc máy pinball đèn hoa rực rỡ ở chợ luôn mở nút chờ cháu chơi."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "chu-ban-banh-kem",
+      "lines": [
+        {
+          "speaker": "Chú Bán Bánh Kem",
+          "text": "Máy bắn bi pinball đèn nhấp nháy vui nhộn lắm {name} ơi!"
+        },
+        {
+          "speaker": "Chú Bán Bánh Kem",
+          "text": "Cháu chạm hai bên màn hình bật cần gạt không để bi rơi xuống lỗ nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu bật cần gạt bắn bi lên!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Bắn bi pinball",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Điều khiển cần gạt giữ bi nảy đạt ba trăm điểm vang dội nhé!",
+      "game": "pinball",
+      "goal": 300
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Chuông reo leng keng rực rỡ, {name} giữ bi điệu nghệ tuyệt vời!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Chiếc máy pinball đèn hoa rực rỡ ở chợ luôn mở nút chờ cháu chơi."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

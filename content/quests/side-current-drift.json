@@ -1,0 +1,80 @@
+{
+  "id": "side-current-drift",
+  "region": "dao-bi-an",
+  "chapter": 1,
+  "title": "Thả đá dẫn dòng nước đưa thư cùng Bác Quăng Lưới Biển",
+  "status": "active",
+  "category": "side",
+  "summary": "Mặt nước chảy xiết qua rạn đá, bé thả những viên sỏi để uốn dòng đưa chai thư đến đích.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người dẫn đường dòng hải lưu",
+    "where": "Cầu tàu đón thuyền cập bến",
+    "goal": "Dẫn dòng hải lưu đưa trót lọt bốn chai thư cập bến đảo hoang nhé!",
+    "play": "Chạm mặt nước để thả đá (nhiều nhất ba hòn). Nước chảy tới đá sẽ dạt sang bên.",
+    "learn": "Hiểu quy luật đổi dòng của nước khi gặp vật cản",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Biển cả bao la còn nhiều lời nhắn nhủ, bác chờ {name} ở bến tàu đón thuyền."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "bac-quang-luoi-bien",
+      "lines": [
+        {
+          "speaker": "Bác Quăng Lưới Biển",
+          "text": "Chai thư của các thủy thủ cần gửi về đảo xa, {name} lái dòng nước giúp bác nhé!"
+        },
+        {
+          "speaker": "Bác Quăng Lưới Biển",
+          "text": "Thả những hòn sỏi xuống luồng nước để nắn dòng chảy đẩy chai thư vào bờ an toàn."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu nắn dòng đưa thư cập bến!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Dòng nước đưa thư",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Dẫn dòng hải lưu đưa trót lọt bốn chai thư cập bến đảo hoang nhé!",
+      "game": "current-drift",
+      "goal": 4
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Bác Quăng Lưới siết chặt tay cháu: thư đã gửi tới nơi trọn vẹn nhờ công {name}!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Biển cả bao la còn nhiều lời nhắn nhủ, bác chờ {name} ở bến tàu đón thuyền."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

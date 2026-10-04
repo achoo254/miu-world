@@ -1,0 +1,80 @@
+{
+  "id": "side-dan-bau",
+  "region": "lang-ven-song",
+  "chapter": 1,
+  "title": "Đàn bầu thánh thót cùng Nghệ Nhân Múa Rối",
+  "status": "active",
+  "category": "side",
+  "summary": "Lướt ngón tay dọc cần đàn bầu để ngân lên những thanh âm thánh thót ngọt ngào.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, nhạc công nhỏ gảy đàn thánh thót",
+    "where": "Hiên xưởng thủ công làng",
+    "goal": "Ngân vang đúng điệu ba mươi khúc nhạc đàn bầu êm dịu nhé!",
+    "play": "Dải cao độ uốn lượn chạy tới. Giữ ngón tay trên màn hình và đưa lên, xuống.",
+    "learn": "Lắng nghe cao độ và giữ tay nhịp nhàng",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Cây đàn bầu mộc mạc vẫn treo bên hiên xưởng đợi tiếng gảy của cháu."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "nghe-nhan-mua-roi",
+      "lines": [
+        {
+          "speaker": "Nghệ Nhân Múa Rối",
+          "text": "Tiếng đàn bầu quê ta tha thiết lắm {name} à!"
+        },
+        {
+          "speaker": "Nghệ Nhân Múa Rối",
+          "text": "Cháu giữ ngón tay trên dải nốt lượn sóng để tiếng đàn ngân vang nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu gảy cung đàn ngân vang!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Đàn bầu",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Ngân vang đúng điệu ba mươi khúc nhạc đàn bầu êm dịu nhé!",
+      "game": "dan-bau",
+      "goal": 30
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Tiếng đàn của {name} vang lên trong vắt làm xao xuyến cả làng quê!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Cây đàn bầu mộc mạc vẫn treo bên hiên xưởng đợi tiếng gảy của cháu."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

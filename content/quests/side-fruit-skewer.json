@@ -1,0 +1,80 @@
+{
+  "id": "side-fruit-skewer",
+  "region": "cho-phien",
+  "chapter": 1,
+  "title": "Xâu xiên hoa quả cùng Chú Bán Bánh Kem",
+  "status": "active",
+  "category": "side",
+  "summary": "Chọn đúng quả tươi trên băng chuyền để xiên vào que theo đúng quy luật màu sắc lặp lại.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, phụ bếp nhanh trí xâu xiên hoa quả",
+    "where": "Trước sạp chợ rau hoa",
+    "goal": "Xâu nối tiếp đúng quy luật hoàn thành tám xiên hoa quả ngọt nhé!",
+    "play": "Đầu que đã có mẫu, ví dụ dâu, chuối, dâu, chuối.",
+    "learn": "Nhận biết quy luật chuỗi hình ảnh lặp lại",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Khay hoa quả tươi rói của chú lúc nào cũng sẵn sàng đón cháu phụ."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "chu-ban-banh-kem",
+      "lines": [
+        {
+          "speaker": "Chú Bán Bánh Kem",
+          "text": "Những xiên hoa quả cầu vồng này trông ngon mắt chưa kìa {name}!"
+        },
+        {
+          "speaker": "Chú Bán Bánh Kem",
+          "text": "Cháu nhìn quy luật các loại quả đi trước rồi chọn quả kế tiếp nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu xiên hoa quả đúng quy luật!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Xiên que theo mẫu",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Xâu nối tiếp đúng quy luật hoàn thành tám xiên hoa quả ngọt nhé!",
+      "game": "fruit-skewer",
+      "goal": 8
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Xiên hoa quả đủ màu đẹp như tranh, {name} nhận biết mẫu giỏi ghê!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Khay hoa quả tươi rói của chú lúc nào cũng sẵn sàng đón cháu phụ."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

@@ -217,6 +217,316 @@
           "learn": "Nhìn tìm hình giống và tìm đường đi"
         }
       ]
+    },
+    {
+      "id": "co-thu-thu-mai",
+      "name": "Cô Thủ Thư Mai",
+      "look": "person-e",
+      "tint": "#6858a8",
+      "where": "Bàn hướng dẫn cửa thư viện",
+      "place": "Thư viện",
+      "company": [
+        {
+          "routine": "reader",
+          "name": "Bạn đọc chăm chú",
+          "model": "person-b"
+        }
+      ],
+      "games": [
+        {
+          "game": "book-shelf-order",
+          "title": "Xếp sách theo vần bảng chữ cái cùng Cô Thủ Thư Mai",
+          "summary": "Những cuốn sách gáy hoa nằm ngổn ngang, bé xếp từng gáy sách theo đúng thứ tự chữ số.",
+          "lines": [
+            "Cô chào {name}, các bạn đọc mượn sách nhiều làm giá sách xáo trộn mất rồi.",
+            "Cháu xem số hiệu trên gáy sách rồi chèn vào giữa các cuốn khác từ nhỏ đến lớn nhé."
+          ],
+          "choice": "Cháu xếp sách lên giá ngay!",
+          "prompt": "Xếp ngăn nắp {goal} cuốn sách lên giá gỗ nhé!",
+          "reward": "Cô Thủ Thư Mai mỉm cười dịu dàng, cảm ơn {name} đã làm giá sách ngăn nắp như mới!",
+          "next": "Giá sách thẳng tắp rồi, khi nào tìm sách hay cháu cứ tới bàn hướng dẫn gặp cô.",
+          "who": "{name}, phụ tá thư viện tỉ mỉ",
+          "learn": "So sánh thứ tự chữ số và chèn đúng vị trí"
+        },
+        {
+          "game": "story-order",
+          "title": "Sắp thứ tự tranh truyện với Cô Thủ Thư Mai",
+          "summary": "Bốn bức tranh truyện cổ tích nằm lộn xộn, bé nhìn tình tiết để xếp đúng diễn biến câu chuyện.",
+          "lines": [
+            "{name} ơi, tập truyện tranh dân gian này bị gió thổi rơi lung tung trên bàn đọc.",
+            "Cháu đọc kỹ tranh rồi xếp vào các ô một hai ba bốn theo đúng đầu đuôi câu chuyện nha."
+          ],
+          "choice": "Cháu kể lại chuyện qua tranh!",
+          "prompt": "Sắp xếp đúng thứ tự cho {goal} bộ tranh truyện nhé!",
+          "reward": "Cô Thủ Thư Mai gật đầu hài lòng, khen {name} nắm bắt nội dung câu chuyện rất sâu sắc!",
+          "next": "Còn nhiều truyện cổ tích kỳ thú lắm, cháu nhớ ghé thư viện đọc sách cùng cô nhé.",
+          "who": "{name}, người kể chuyện tài tình",
+          "learn": "Hiểu diễn biến thời gian và liên kết tình tiết"
+        },
+        {
+          "game": "word-search",
+          "title": "Ô chữ tìm từ tiếng Việt cùng Cô Thủ Thư Mai",
+          "summary": "Bảng chữ cái vuông vức giấu kín những từ ngữ thân thương, bé tinh mắt gạch nối từng từ.",
+          "lines": [
+            "Cô có một trò chơi đố chữ rất bổ ích dành cho {name} yêu quý đây.",
+            "Cháu nhìn các hình minh họa bên cạnh rồi tìm kéo những chữ cái ghép thành từ đó nhé."
+          ],
+          "choice": "Cháu tìm ra các từ ẩn ngay!",
+          "prompt": "Tìm đủ {goal} từ tiếng Việt ẩn trong bảng chữ nhé!",
+          "reward": "Cô Thủ Thư Mai xoa đầu khen ngợi {name} có vốn từ vựng phong phú và đôi mắt tinh tường!",
+          "next": "Mỗi tuần cô lại có bảng ô chữ mới, cháu nhớ ghé bàn hướng dẫn cửa thư viện chơi.",
+          "who": "{name}, thám tử ngôn ngữ nhí",
+          "learn": "Mở rộng vốn từ vựng và nhận diện mặt chữ"
+        }
+      ]
+    },
+    {
+      "id": "thay-do-chu-han",
+      "name": "Thầy Đố Chữ Hán",
+      "look": "person-d",
+      "tint": "#884848",
+      "where": "Bàn gỗ lớn phòng đọc",
+      "place": "Phòng đọc",
+      "company": [
+        {
+          "routine": "pupil",
+          "name": "Bạn nhỏ mài mực",
+          "model": "person-f"
+        }
+      ],
+      "games": [
+        {
+          "game": "word-maze",
+          "title": "Mê cung chữ cái tìm lối cùng Thầy Đố Chữ Hán",
+          "summary": "Những câu đồng dao dẫn đường trong mê cung, bé nối từng tiếng liên tiếp để bước ra cửa.",
+          "lines": [
+            "Thầy chào {name}, muốn qua được chiếc bàn đá này trò phải tìm đúng lối đi đấy.",
+            "Hãy đọc câu đồng dao mẫu rồi kéo ngón tay qua từng tiếng kề nhau để thoát khỏi mê cung."
+          ],
+          "choice": "Con lần theo từng chữ ạ!",
+          "prompt": "Vượt qua thành công {goal} mê cung chữ đồng dao nhé!",
+          "reward": "Thầy Đố Chữ Hán vuốt chòm râu mỉm cười: {name} thông minh sáng dạ, tìm đường chuẩn lắm!",
+          "next": "Kho tàng ca dao đồng dao còn sâu rộng lắm, trò hãy thường xuyên tới phòng đọc dùi mài.",
+          "who": "{name}, học trò giỏi chữ nghĩa",
+          "learn": "Đọc thành câu mạch lạc và định hướng ô chữ"
+        },
+        {
+          "game": "tone-mark",
+          "title": "Đặt dấu thanh đúng chỗ với Thầy Đố Chữ Hán",
+          "summary": "Những chiếc mũ dấu thanh rơi khỏi con chữ, bé nâng từng dấu đặt ngay ngắn trên nguyên âm.",
+          "lines": [
+            "Chữ viết của trò nhỏ vừa chép đang thiếu mất dấu thanh sắc huyền hỏi ngã kìa {name}.",
+            "Con đọc to từ ngữ đó lên rồi kéo dấu thanh đặt đúng trên đầu con chữ cho tròn nghĩa nha."
+          ],
+          "choice": "Con đặt dấu thanh ngay ngắn ạ!",
+          "prompt": "Đặt chuẩn xác {goal} dấu thanh lên các con chữ nhé!",
+          "reward": "Thầy Đố Chữ Hán khen {name} đặt dấu thanh đúng chỗ, câu từ chuẩn xác và nắn nót!",
+          "next": "Chữ nghĩa ngay ngắn là nết người đẹp đẽ, lần sau con lại ghé bàn gỗ lớn đàm đạo.",
+          "who": "{name}, người giữ gìn vẻ đẹp con chữ",
+          "learn": "Quy tắc chính tả dấu thanh tiếng Việt"
+        },
+        {
+          "game": "picture-crossword",
+          "title": "Giải đố chữ bằng hình ảnh cùng Thầy Đố Chữ Hán",
+          "summary": "Bảng ô chữ đan xen gợi mở qua những nét vẽ mộc mạc, bé điền chữ cái hoàn thành ô chữ.",
+          "lines": [
+            "Thầy có một bảng câu đố bằng tranh vẽ dân gian rất độc đáo chờ {name} đấy.",
+            "Mỗi bức tranh gợi ra một tên gọi, con điền từng chữ cái vào ô ngang dọc cho giao nhau."
+          ],
+          "choice": "Con giải hết các ô chữ ạ!",
+          "prompt": "Điền đúng tất cả các ô của {goal} bảng đố chữ hình ảnh nhé!",
+          "reward": "Thầy Đố Chữ Hán tấm tắc khen {name} học sâu hiểu rộng, suy đoán như thần đồng!",
+          "next": "Học chữ qua tranh thật thú vị phải không, rảnh rỗi trò lại ghé phòng đọc đối ẩm.",
+          "who": "{name}, trạng nguyên giải đố nhí",
+          "learn": "Liên tưởng hình ảnh sang từ ngữ và đánh vần"
+        }
+      ]
+    },
+    {
+      "id": "be-me-bang-so",
+      "name": "Bé Mê Bảng Số",
+      "look": "person-k",
+      "tint": "#389868",
+      "where": "Chân tháp đồng hồ thư viện",
+      "place": "Tháp đồng hồ và phòng lịch",
+      "company": [
+        {
+          "routine": "pupil",
+          "name": "Bạn nhỏ bấm máy tính",
+          "model": "person-a"
+        }
+      ],
+      "games": [
+        {
+          "game": "hundred-chart",
+          "title": "Bảng một trăm số cùng Bé Mê Bảng Số",
+          "summary": "Tấm bảng trăm ô bị gió bay mất vài miếng, bé tìm đúng quy luật hàng cột để gắn số về chỗ.",
+          "lines": [
+            "Chào {name}, bảng số từ một đến một trăm của tớ bị khuyết mất mấy ô trống rồi.",
+            "Cậu nhớ quy luật sang phải thêm một đơn vị, xuống dưới thêm một chục để điền vào nhé."
+          ],
+          "choice": "Để tớ tìm số lấp đầy bảng!",
+          "prompt": "Gắn đúng vị trí {goal} mảnh số vào bảng trăm ô nhé!",
+          "reward": "Bé Mê Bảng Số vỗ tay reo hò: {name} nắm chắc các hàng số tự nhiên siêu thật đấy!",
+          "next": "Bảng số đã tròn vẹn một trăm rồi, cậu rảnh cứ qua chân tháp đồng hồ tính toán nha.",
+          "who": "{name}, chuyên gia bảng số trăm ô",
+          "learn": "Quy luật cấu tạo số hàng chục và hàng đơn vị"
+        },
+        {
+          "game": "low-to-high",
+          "title": "Sắp số từ bé đến lớn với Bé Mê Bảng Số",
+          "summary": "Những tấm thẻ số úp mặt sau khi ló rạng, bé nhớ trí nhớ chạm lần lượt từ nhỏ nhất đến lớn nhất.",
+          "lines": [
+            "{name} có đôi mắt tinh tường và trí nhớ siêu đẳng không, mình cùng thử tài nhé!",
+            "Các tấm thẻ số sẽ úp lại, cậu chạm lần lượt từng tấm từ số bé nhất đến số lớn nhất."
+          ],
+          "choice": "Tớ nhớ hết các số rồi!",
+          "prompt": "Chạm đúng thứ tự bé đến lớn {goal} dãy số úp mặt nhé!",
+          "reward": "Bé Mê Bảng Số ngả mũ thán phục: trí nhớ và khả năng so sánh của {name} đỉnh thật!",
+          "next": "Dãy số ngày càng thách thức hơn, hôm nào cậu lại ghé tháp đồng hồ đọ tài nhé.",
+          "who": "{name}, cao thủ ghi nhớ dãy số",
+          "learn": "Ghi nhớ không gian và so sánh độ lớn các số"
+        },
+        {
+          "game": "sudoku-mini",
+          "title": "Sudoku mini bốn ô cùng Bé Mê Bảng Số",
+          "summary": "Khung lưới bốn nhân bốn xinh xắn, bé xếp bốn loại quả sao cho không trùng hàng hay cột.",
+          "lines": [
+            "Tớ vừa làm xong một bàn cờ số sudoku mini hình quả rất ngộ nghĩnh này {name}.",
+            "Mỗi hàng, mỗi cột và mỗi ô vuông nhỏ phải có đủ bốn loại quả khác nhau, không được lặp lại."
+          ],
+          "choice": "Tớ xếp quả vào ô ngay!",
+          "prompt": "Giải xong trọn vẹn {goal} bảng sudoku mini bốn ô nhé!",
+          "reward": "Bé Mê Bảng Số cười tít mắt, khen {name} suy luận logic chẳng thua gì nhà toán học!",
+          "next": "Những con số kỳ diệu luôn chờ cậu dưới chân tháp đồng hồ, nhớ quay lại chơi nha.",
+          "who": "{name}, kiện tướng suy luận sudoku",
+          "learn": "Tư duy loại trừ logic trên lưới hai chiều"
+        }
+      ]
+    },
+    {
+      "id": "chu-tho-dien-nhi",
+      "name": "Chú Thợ Điện Nhí",
+      "look": "person-i",
+      "tint": "#d88828",
+      "where": "Quảng trường đài phun trước thư viện",
+      "place": "Quảng trường đài phun",
+      "company": [
+        {
+          "routine": "reader",
+          "name": "Bé đọc sách khoa học",
+          "model": "person-h"
+        }
+      ],
+      "games": [
+        {
+          "game": "simple-circuit",
+          "title": "Nối mạch điện thắp sáng cùng Chú Thợ Điện Nhí",
+          "summary": "Những sợi dây đồng dẫn điện bị đứt, bé kéo dây khép kín từ pin qua công tắc đến bóng đèn rực rỡ.",
+          "lines": [
+            "Chào {name}, đài phun nước chuẩn bị lên đèn mà mạch điện dây nối vẫn đang hở kìa.",
+            "Cậu kéo dây dẫn từ cực dương của pin qua bóng đèn về cực âm rồi bấm bật công tắc lên nha."
+          ],
+          "choice": "Tớ nối dây cho đèn sáng!",
+          "prompt": "Nối kín mạch điện thắp sáng {goal} bóng đèn lung linh nhé!",
+          "reward": "Chú Thợ Điện Nhí giơ ngón tay cái khen ngợi {name} lắp mạch điện an toàn và sáng rực!",
+          "next": "Đèn quảng trường đã sáng trưng, khi nào thích khám phá khoa học cậu cứ lại tìm tớ.",
+          "who": "{name}, kỹ sư điện nhí tài năng",
+          "learn": "Khái niệm mạch điện khép kín và cực nguồn điện"
+        },
+        {
+          "game": "one-stroke-house",
+          "title": "Vẽ ngôi nhà một nét với Chú Thợ Điện Nhí",
+          "summary": "Sơ đồ ngôi nhà hiện trên giấy kẻ, bé lướt một nét liền mạch đi qua mọi cạnh không nhấc tay.",
+          "lines": [
+            "{name} ơi, tớ có bản thiết kế ngôi nhà bằng một đường dây điện duy nhất đấy!",
+            "Cậu kéo ngón tay đi qua tất cả các cạnh của ngôi nhà mà không được nhấc tay hay đi lặp lại."
+          ],
+          "choice": "Tớ vẽ một nét liền xong ngay!",
+          "prompt": "Vẽ hoàn thành {goal} ngôi nhà chỉ bằng một nét liền nhé!",
+          "reward": "Chú Thợ Điện Nhí vỗ tay tán thưởng: nét vẽ của {name} khéo léo và chuẩn xác lạ thường!",
+          "next": "Còn nhiều hình vẽ một nét hóc búa lắm, hẹn gặp lại cậu ở quảng trường đài phun.",
+          "who": "{name}, họa sĩ một nét diệu kỳ",
+          "learn": "Quy luật đồ thị Euler và lập lộ trình không lặp"
+        },
+        {
+          "game": "merge-2048",
+          "title": "Gộp số đôi kỳ thú cùng Chú Thợ Điện Nhí",
+          "summary": "Các khối số trượt qua trượt lại trong khung vuông, bé gộp các số giống nhau để nhân đôi sức mạnh.",
+          "lines": [
+            "Lại đây chơi trò gộp số với tớ nào {name}, càng gộp số càng to vui mắt lắm!",
+            "Cậu vuốt màn hình để các ô cùng số chạm nhau: hai cộng hai thành bốn, bốn gộp bốn thành tám."
+          ],
+          "choice": "Tớ gộp số lớn lên nào!",
+          "prompt": "Gộp số khéo léo tạo ra ô số {goal} rực rỡ nhé!",
+          "reward": "Chú Thợ Điện Nhí reo hò phấn khích khi {name} tạo ra con số mục tiêu ngoạn mục!",
+          "next": "Những con số đôi lúc nào cũng cuốn hút, rảnh tay cậu cứ ra quảng trường chơi tiếp.",
+          "who": "{name}, nhà vô địch gộp số đôi",
+          "learn": "Phép nhân đôi lũy thừa hai và sắp xếp ô số"
+        }
+      ]
+    },
+    {
+      "id": "meo-hop-nhac",
+      "name": "Mèo Hộp Nhạc",
+      "look": "animal-cat",
+      "tint": "#e878a8",
+      "where": "Bục gỗ sân lễ hội lá vàng",
+      "place": "Sân lễ hội lá vàng",
+      "company": [
+        {
+          "routine": "pupil",
+          "name": "Em bé vỗ tay theo nhạc",
+          "model": "person-r"
+        }
+      ],
+      "games": [
+        {
+          "game": "music-box",
+          "title": "Hộp nhạc cổ tích quay tít cùng Mèo Hộp Nhạc",
+          "summary": "Chiếc hộp gỗ phát ra giai điệu thánh thót, bé cắm từng chiếc chốt vào đúng phím nốt reo ca.",
+          "lines": [
+            "Meo meo, chào {name}! Hộp nhạc của tớ bị rơi mất vài chốt nốt thanh âm êm dịu rồi.",
+            "Cậu lắng nghe giai điệu mẫu rồi chạm cắm chốt lên trống xoay cho đúng cao độ nốt nhạc nhé."
+          ],
+          "choice": "Để tớ chỉnh nốt cho hộp nhạc!",
+          "prompt": "Cắm đúng nốt hoàn thành {goal} giai điệu hộp nhạc du dương nhé!",
+          "reward": "Mèo Hộp Nhạc vẫy đuôi kêu meo meo, khen {name} có đôi tai cảm thụ âm nhạc tuyệt vời!",
+          "next": "Giai điệu mùa thu ngân vang khắp nơi, cậu ghé bục gỗ sân lễ hội lá vàng nghe đàn nhé.",
+          "who": "{name}, nhạc sĩ hộp nhạc tài ba",
+          "learn": "Cảm thụ cao độ nốt nhạc và tái tạo chuỗi âm thanh"
+        },
+        {
+          "game": "marble-run",
+          "title": "Đường ray bi lăn gỗ với Mèo Hộp Nhạc",
+          "summary": "Viên bi tròn lăn trên các thanh máng gỗ, bé xoay chiều dốc để bi lăn đúng vào cốc màu.",
+          "lines": [
+            "{name} nhìn viên bi tròn xoe đang lăn này, nó sắp rơi ra ngoài máng gỗ mất rồi kìa!",
+            "Cậu chạm vào từng đoạn máng để đổi hướng dốc, dẫn viên bi lăn êm ái vào đúng chiếc cốc nha."
+          ],
+          "choice": "Tớ gạt máng dẫn đường bi lăn!",
+          "prompt": "Dẫn đường an toàn cho {goal} viên bi lăn vào đúng cốc nhé!",
+          "reward": "Mèo Hộp Nhạc nhảy lò cò thích thú, khen {name} canh góc nghiêng chuẩn xác phi thường!",
+          "next": "Tiếng bi lăn lách cách nghe vui tai lắm, khi nào rảnh cậu lại tới chơi cùng tớ.",
+          "who": "{name}, người dẫn đường bi tài tình",
+          "learn": "Trọng lực hướng dốc và chuyển đổi đường ray"
+        },
+        {
+          "game": "snap-match",
+          "title": "Chạm nhanh khi hình trùng nhau cùng Mèo Hộp Nhạc",
+          "summary": "Bộ bài hình vẽ lật mở liên tục, bé tập trung cao độ chạm tay ngay khi hai lá giống hệt nhau.",
+          "lines": [
+            "Cùng thi tài nhanh mắt nhanh tay với tớ nào {name}, xem ai phản xạ tốt hơn nhé!",
+            "Mỗi lá bài lật ra, nếu thấy giống hệt lá vừa lật trước đó thì cậu chạm thật nhanh vào nha."
+          ],
+          "choice": "Tay tớ nhanh như chớp!",
+          "prompt": "Bắt đúng {goal} lần hình ảnh trùng nhau liên tiếp nhé!",
+          "reward": "Mèo Hộp Nhạc chịu thua tâm phục khẩu phục: mắt {name} sáng và tay nhanh hơn cả mèo!",
+          "next": "Hội lá vàng lúc nào cũng rộn ràng, có dịp cậu lại ghé bục gỗ so tài với tớ nhé.",
+          "who": "{name}, tay bắt bài nhanh như chớp",
+          "learn": "Tập trung chú ý thị giác và tốc độ phản xạ"
+        }
+      ]
     }
   ],
   "residents": [

@@ -1,0 +1,80 @@
+{
+  "id": "side-low-to-high",
+  "region": "thu-vien",
+  "chapter": 1,
+  "title": "Sắp số từ bé đến lớn với Bé Mê Bảng Số",
+  "status": "active",
+  "category": "side",
+  "summary": "Những tấm thẻ số úp mặt sau khi ló rạng, bé nhớ trí nhớ chạm lần lượt từ nhỏ nhất đến lớn nhất.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, cao thủ ghi nhớ dãy số",
+    "where": "Chân tháp đồng hồ thư viện",
+    "goal": "Chạm đúng thứ tự bé đến lớn sáu dãy số úp mặt nhé!",
+    "play": "Nhìn thật kỹ các số, rồi các thẻ sẽ úp xuống.",
+    "learn": "Ghi nhớ không gian và so sánh độ lớn các số",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Dãy số ngày càng thách thức hơn, hôm nào cậu lại ghé tháp đồng hồ đọ tài nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "be-me-bang-so",
+      "lines": [
+        {
+          "speaker": "Bé Mê Bảng Số",
+          "text": "{name} có đôi mắt tinh tường và trí nhớ siêu đẳng không, mình cùng thử tài nhé!"
+        },
+        {
+          "speaker": "Bé Mê Bảng Số",
+          "text": "Các tấm thẻ số sẽ úp lại, cậu chạm lần lượt từng tấm từ số bé nhất đến số lớn nhất."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ nhớ hết các số rồi!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Số bé lên số lớn",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Chạm đúng thứ tự bé đến lớn sáu dãy số úp mặt nhé!",
+      "game": "low-to-high",
+      "goal": 6
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Bé Mê Bảng Số ngả mũ thán phục: trí nhớ và khả năng so sánh của {name} đỉnh thật!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Dãy số ngày càng thách thức hơn, hôm nào cậu lại ghé tháp đồng hồ đọ tài nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

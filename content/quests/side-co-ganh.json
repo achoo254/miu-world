@@ -1,0 +1,80 @@
+{
+  "id": "side-co-ganh",
+  "region": "xom-mai-am",
+  "chapter": 1,
+  "title": "Cờ gánh dân gian cùng Ông Bảy Cờ Gánh",
+  "status": "active",
+  "category": "side",
+  "summary": "Di chuyển quân cờ khéo léo vào giữa hai quân đối phương để gánh trọn về phe của mình.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, kỳ thủ nhí mưu lược trên bàn cờ gánh",
+    "where": "Dưới giàn mướp xanh mát",
+    "goal": "Gánh trọn vẹn đổi màu chín quân cờ trên bàn cờ gỗ nhé!",
+    "play": "Chạm quân đỏ rồi chạm chấm xanh để đi một bước theo đường kẻ.",
+    "learn": "Tư duy chiến thuật và chớp thời cơ thế cờ",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Bàn cờ gánh mộc mạc dưới giàn mướp hoa vàng luôn đợi cháu ghé chơi."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "ong-bay-co-ganh",
+      "lines": [
+        {
+          "speaker": "Ông Bảy Cờ Gánh",
+          "text": "{name} lại đây dưới giàn mướp đọ ván cờ gánh với ông nào!"
+        },
+        {
+          "speaker": "Ông Bảy Cờ Gánh",
+          "text": "Cháu đi quân đỏ vào giữa hai quân xanh là gánh được cả đôi đấy."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu đi nước cờ gánh đây ông!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Cờ gánh",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Gánh trọn vẹn đổi màu chín quân cờ trên bàn cờ gỗ nhé!",
+      "game": "co-ganh",
+      "goal": 9
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Nước cờ gánh bất ngờ và hiểm hóc quá, {name} làm ông thán phục rồi!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Bàn cờ gánh mộc mạc dưới giàn mướp hoa vàng luôn đợi cháu ghé chơi."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

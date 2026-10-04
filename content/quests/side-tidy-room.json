@@ -1,0 +1,80 @@
+{
+  "id": "side-tidy-room",
+  "region": "nha-cua-be",
+  "chapter": 1,
+  "title": "Xếp đồ chơi về chỗ cũ cùng Cún Đốm Dọn Nhà",
+  "status": "active",
+  "category": "side",
+  "summary": "Sau giờ chơi đồ đạc lộn xộn, bé nhớ lại hình ảnh ban đầu rồi kéo từng món về đúng vị trí.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, bé ngoan dọn phòng ngăn nắp",
+    "where": "Góc thảm phòng khách ấm cúng",
+    "goal": "Dọn dẹp và cất đúng vị trí mười lăm món đồ chơi trong phòng nhé!",
+    "play": "Nhìn kĩ căn phòng gọn gàng trong vài giây.",
+    "learn": "Ghi nhớ hình ảnh không gian và rèn tính gọn gàng",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Góc phòng khách luôn ấm cúng, Cún Đốm chờ {name} cùng chơi đồ chơi lần sau."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "cun-dom-don-nha",
+      "lines": [
+        {
+          "speaker": "Cún Đốm Dọn Nhà",
+          "text": "Đồ chơi trong phòng bừa bộn khắp thảm rồi, {name} dọn phòng giúp tớ với nhé!"
+        },
+        {
+          "speaker": "Cún Đốm Dọn Nhà",
+          "text": "Nhớ kỹ vị trí ban đầu rồi kéo gấu bông, xe ô tô và sách về đúng kệ của chúng."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ sắp xếp ngăn nắp ngay!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Đồ về đúng chỗ",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Dọn dẹp và cất đúng vị trí mười lăm món đồ chơi trong phòng nhé!",
+      "game": "tidy-room",
+      "goal": 15
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Cún Đốm vẫy đuôi mừng rỡ: căn phòng của tụi mình ngăn nắp, tinh tươm nhờ {name}!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Góc phòng khách luôn ấm cúng, Cún Đốm chờ {name} cùng chơi đồ chơi lần sau."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

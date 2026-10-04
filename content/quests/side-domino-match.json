@@ -1,0 +1,80 @@
+{
+  "id": "side-domino-match",
+  "region": "xom-mai-am",
+  "chapter": 1,
+  "title": "Nối quân domino cùng Ông Bảy Cờ Gánh",
+  "status": "active",
+  "category": "side",
+  "summary": "Tìm quân domino có số chấm tương ứng để ghép nối vào hai đầu chuỗi quân trên chiếu cờ.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người ghép domino tinh mắt tỉ mỉ",
+    "where": "Dưới giàn mướp xanh mát",
+    "goal": "Ghép khớp đúng số chấm một quân domino vào chuỗi dài nhé!",
+    "play": "{name} và bạn gấu trúc thay nhau đặt quân domino vào hai đầu hàng.",
+    "learn": "Đếm nhanh số chấm và so khớp hai đầu tương ứng",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Hộp cờ domino bằng gỗ ông cất bên chõng tre đợi cháu đến nối tiếp."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "ong-bay-co-ganh",
+      "lines": [
+        {
+          "speaker": "Ông Bảy Cờ Gánh",
+          "text": "Mấy quân domino chấm tròn này chơi rèn trí nhớ tốt lắm {name} à!"
+        },
+        {
+          "speaker": "Ông Bảy Cờ Gánh",
+          "text": "Cháu nhìn số chấm ở hai đầu hàng rồi đặt quân có chấm giống hệt nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu tìm quân domino ghép nối ngay!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Domino chấm",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Ghép khớp đúng số chấm một quân domino vào chuỗi dài nhé!",
+      "game": "domino-match",
+      "goal": 1
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Quân cờ đặt xuống khớp từng nét chấm, {name} quan sát tinh ý lắm!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Hộp cờ domino bằng gỗ ông cất bên chõng tre đợi cháu đến nối tiếp."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

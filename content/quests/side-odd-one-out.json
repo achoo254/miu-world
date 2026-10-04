@@ -1,0 +1,80 @@
+{
+  "id": "side-odd-one-out",
+  "region": "khu-rung-bi-mat",
+  "chapter": 1,
+  "title": "Tìm sinh vật khác nhóm cùng Dơi Đêm Tai To",
+  "status": "active",
+  "category": "side",
+  "summary": "Năm người bạn rừng rậm cùng khiêu vũ dưới trăng: tinh mắt nhận ra bạn nào mang đặc điểm khác biệt.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, thám tử tinh mắt của hang đá",
+    "where": "Cửa hang đá ẩm ướt",
+    "goal": "Phát hiện đúng mười lăm bạn khác biệt trong nhóm nhé!",
+    "play": "Năm hình đang nhảy múa, có một hình không cùng nhóm với các bạn.",
+    "learn": "Quan sát phân loại đặc điểm và loại trừ",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Còn nhiều câu đố tinh mắt hấp dẫn lắm, {name} nhớ ghé cửa hang đá thử tài tiếp nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "doi-hang-sau",
+      "lines": [
+        {
+          "speaker": "Dơi Đêm Tai To",
+          "text": "{name} ơi, các bạn động vật trong hang đang tụ họp chơi trò đố vui tìm điểm khác lạ."
+        },
+        {
+          "speaker": "Dơi Đêm Tai To",
+          "text": "Cậu quan sát thật nhanh năm bạn nhảy múa rồi chỉ ra bạn nào khác nhóm với mọi người nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Mắt tớ tinh lắm, nhìn ra bạn khác rồi!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Con nào khác?",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Phát hiện đúng mười lăm bạn khác biệt trong nhóm nhé!",
+      "game": "odd-one-out",
+      "goal": 15
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Dơi Đêm Tai To rung rung đôi tai to: mắt {name} sáng như sao, chọn câu nào chuẩn câu đó!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Còn nhiều câu đố tinh mắt hấp dẫn lắm, {name} nhớ ghé cửa hang đá thử tài tiếp nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

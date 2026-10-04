@@ -1,0 +1,80 @@
+{
+  "id": "side-shopping-memory",
+  "region": "cho-phien",
+  "chapter": 1,
+  "title": "Ghi nhớ đồ cần mua cùng Chị Tiệm Tạp Hóa",
+  "status": "active",
+  "category": "side",
+  "summary": "Nhớ danh sách những món đồ mẹ dặn rồi đi dọc các kệ hàng nhặt đúng vào giỏ đi chợ.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, bạn nhỏ đi chợ tháo vát đảm đang",
+    "where": "Trước gian hàng tạp hóa",
+    "goal": "Nhặt chuẩn xác không sai món nào trọn bốn chuyến đi chợ nhé!",
+    "play": "Mẹ đưa danh sách bằng hình. {name} nhớ thật kỹ nhé!",
+    "learn": "Ghi nhớ danh sách đồ vật bằng trí nhớ ngắn hạn",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Gian hàng tạp hóa ngày phiên lúc nào cũng mở cửa đón em ghé mua."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "chi-tiem-tap-hoa",
+      "lines": [
+        {
+          "speaker": "Chị Tiệm Tạp Hóa",
+          "text": "Mẹ gửi danh sách mua đồ tạp hóa cho em kìa {name} ơi!"
+        },
+        {
+          "speaker": "Chị Tiệm Tạp Hóa",
+          "text": "Em nhìn kỹ từng món rồi đi quanh gian hàng chọn đúng vào giỏ nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Em nhặt đúng đồ mẹ dặn ngay!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Nhớ đồ đi chợ",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Nhặt chuẩn xác không sai món nào trọn bốn chuyến đi chợ nhé!",
+      "game": "shopping-memory",
+      "goal": 4
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Giỏ hàng đầy ắp đúng y lời mẹ dặn, {name} đi chợ đảm đang quá!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Gian hàng tạp hóa ngày phiên lúc nào cũng mở cửa đón em ghé mua."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

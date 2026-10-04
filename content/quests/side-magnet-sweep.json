@@ -1,0 +1,80 @@
+{
+  "id": "side-magnet-sweep",
+  "region": "nha-cua-be",
+  "chapter": 1,
+  "title": "Dùng nam châm dọn bàn học cùng Chú Rô Bốt Đồng Hồ",
+  "status": "active",
+  "category": "side",
+  "summary": "Mặt bàn học rải rác đinh ốc kẹp giấy, bé rê thanh nam châm hút sạch đồ kim loại bỏ vào khay.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, nhà khoa học nhí gom kim loại",
+    "where": "Bên cạnh giá sách góc học tập",
+    "goal": "Hút sạch sẽ gọn gàng ba mươi chiếc kẹp kim loại bỏ vào hộp nhé!",
+    "play": "Kéo nam châm qua sân: chìa khóa, kẹp giấy, ốc vít bằng sắt bám vào; gỗ, lá thì không.",
+    "learn": "Phân biệt vật bằng sắt hút được bằng nam châm",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Bàn học ngăn nắp giúp học bài mau nhớ, Rô Bốt hẹn gặp {name} cạnh giá sách."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "chu-ro-bot-dong-ho",
+      "lines": [
+        {
+          "speaker": "Chú Rô Bốt Đồng Hồ",
+          "text": "Góc học tập rơi nhiều kẹp giấy và ghim sắt quá, {name} cầm nam châm quét với tớ nào!"
+        },
+        {
+          "speaker": "Chú Rô Bốt Đồng Hồ",
+          "text": "Kéo nam châm hút sạch đồ sắt rồi mang về khay thả xuống, giấy vụn thì để nguyên nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Thanh nam châm hút sạch đồ sắt đây!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Nam châm dọn sân",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Hút sạch sẽ gọn gàng ba mươi chiếc kẹp kim loại bỏ vào hộp nhé!",
+      "game": "magnet-sweep",
+      "goal": 30
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Rô Bốt nhấp nháy đèn xanh: bàn học sạch bong đồ kim loại nhờ tay {name} quét dọn!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Bàn học ngăn nắp giúp học bài mau nhớ, Rô Bốt hẹn gặp {name} cạnh giá sách."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "id": "side-pull-pin",
+  "region": "nong-trai",
+  "chapter": 1,
+  "title": "Rút chốt cứu thóc cùng Chú Đào Kênh",
+  "status": "active",
+  "category": "side",
+  "summary": "Thóc vàng kẹt trên máng cao, bé suy nghĩ rút từng thanh chốt để hạt rơi an toàn vào bồ.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, bạn nhỏ rút chốt tinh tường",
+    "where": "Dưới chân cối xay gió",
+    "goal": "Rút chốt khéo léo cứu được bốn bồ thóc đầy nhé!",
+    "play": "Bi màu và bùn bị các chốt chặn lại. Vuốt (hoặc chạm) một chốt để rút nó ra.",
+    "learn": "Tư duy thứ tự trước sau và ngăn ngừa nguy hiểm",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Máng dẫn thóc đã thông thoáng, lần sau ghé cối xay gió chơi tiếp với chú nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "chu-dao-kenh-nuoc",
+      "lines": [
+        {
+          "speaker": "Chú Đào Kênh Dẫn Nước",
+          "text": "{name} ơi, đống thóc vàng óng đang mắc kẹt sau những chiếc chốt gỗ trên máng rồi."
+        },
+        {
+          "speaker": "Chú Đào Kênh Dẫn Nước",
+          "text": "Cháu hãy tính toán rút then nào trước để thóc rơi thẳng vào bồ chứ đừng trôi bùn."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu rút chiếc chốt gỗ ngay!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Rút chốt",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Rút chốt khéo léo cứu được bốn bồ thóc đầy nhé!",
+      "game": "pull-pin",
+      "goal": 4
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Chú Đào Kênh Dẫn Nước vỗ tay giòn giã vì {name} gỡ chốt thông minh không sót hạt thóc!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Máng dẫn thóc đã thông thoáng, lần sau ghé cối xay gió chơi tiếp với chú nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "id": "side-hold-notes",
+  "region": "lang-ven-song",
+  "chapter": 1,
+  "title": "Ngân dài nốt nhạc cùng Nghệ Nhân Múa Rối",
+  "status": "active",
+  "category": "side",
+  "summary": "Chạm và giữ đúng độ dài từng nốt sáo du dương bay vút trên nền trời xanh thẳm.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người thổi sáo diều ngân vang",
+    "where": "Hiên xưởng thủ công làng",
+    "goal": "Ngân dài đúng nhịp mười bảy nốt sáo lượn trên bầu trời nhé!",
+    "play": "Nốt sáo bay tới vạch. Nốt tới vạch thì {name} đặt ngón tay xuống và giữ.",
+    "learn": "Cảm nhận thời gian ngân dài của âm thanh",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Gió đồng vẫn vi vu thổi sáo quanh hiên xưởng thủ công mỗi chiều."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "nghe-nhan-mua-roi",
+      "lines": [
+        {
+          "speaker": "Nghệ Nhân Múa Rối",
+          "text": "{name} có nghe tiếng sáo diều vi vu trên đồng không?"
+        },
+        {
+          "speaker": "Nghệ Nhân Múa Rối",
+          "text": "Cháu giữ tay cho nốt nhạc ngân dài rồi nhấc lên đúng vạch đỏ nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu giữ nốt sáo vi vu!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Tiếng sáo diều",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Ngân dài đúng nhịp mười bảy nốt sáo lượn trên bầu trời nhé!",
+      "game": "hold-notes",
+      "goal": 17
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Nốt sáo của {name} bay vút lên chín tầng mây thật du dương!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Gió đồng vẫn vi vu thổi sáo quanh hiên xưởng thủ công mỗi chiều."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

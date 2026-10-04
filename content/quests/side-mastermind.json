@@ -1,0 +1,80 @@
+{
+  "id": "side-mastermind",
+  "region": "lau-dai",
+  "chapter": 1,
+  "title": "Đoán mật mã màu sắc cùng Tể Tướng Cờ Vua",
+  "status": "active",
+  "category": "side",
+  "summary": "Khóa mật mã hoàng gia ẩn giấu dưới hàng ngọc quý, bé suy đoán từ gợi ý sao và vòng tròn.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, thám tử giải mã mật thư",
+    "where": "Đại sảnh ôn tập nguy nga",
+    "goal": "Đoán trúng hoàn toàn mật mã của hai hòm thư hoàng gia nhé!",
+    "play": "Rương khóa bằng ba viên ngọc khác nhau. {name} chạm ngọc ở khay để đoán.",
+    "learn": "Suy luận logic phản chứng và giải mã ký hiệu",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Đại sảnh ôn tập nguy nga luôn rộng cửa đón những tài năng sáng suốt như cháu ghé chơi."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "te-tuong-co-the",
+      "lines": [
+        {
+          "speaker": "Tể Tướng Cờ Vua",
+          "text": "Ta chào {name}, mật mã hòm thư hoàng gia cần người có đầu óc phán đoán sắc sảo giải mã."
+        },
+        {
+          "speaker": "Tể Tướng Cờ Vua",
+          "text": "Mỗi lần cháu đặt ngọc, sao vàng báo đúng chỗ, vòng tròn báo đúng màu, hãy tìm ra mật mã đúng nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu giải mã các viên ngọc quý!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Đoán mã ngọc",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Đoán trúng hoàn toàn mật mã của hai hòm thư hoàng gia nhé!",
+      "game": "mastermind",
+      "goal": 2
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Tể Tướng Cờ Vua vuốt râu khen ngợi: trí tuệ suy đoán của {name} thật đáng khâm phục!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Đại sảnh ôn tập nguy nga luôn rộng cửa đón những tài năng sáng suốt như cháu ghé chơi."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

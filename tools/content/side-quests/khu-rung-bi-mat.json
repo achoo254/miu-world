@@ -198,6 +198,331 @@
           "learn": "Phản xạ đổi hướng và nhìn trước chướng ngại"
         }
       ]
+    },
+    {
+      "id": "soc-bong-bay",
+      "name": "Sóc Đu Đuôi",
+      "look": "animal-fox",
+      "tint": "#d87830",
+      "where": "Bìa rừng gần bãi cỏ hoang",
+      "at": [
+        250,
+        260
+      ],
+      "company": [
+        {
+          "routine": "pupil",
+          "name": "Bé hái quả thông",
+          "model": "person-b"
+        }
+      ],
+      "games": [
+        {
+          "game": "balloon-guard",
+          "title": "Hộ tống bóng bay cùng Sóc Đu Đuôi",
+          "summary": "Bạn nhỏ bay lên cùng chùm bóng: kéo chiếc ô che chở bóng khỏi lá và sỏi rơi rụng.",
+          "lines": [
+            "{name} ơi, bạn nhỏ đang bay lên trời mà sỏi rừng rơi nhiều quá!",
+            "Cậu kéo chiếc ô che trên đầu bóng để gạt hết chướng ngại vật rơi xuống nhé."
+          ],
+          "choice": "Ô đây rồi, tớ che cho bạn liền!",
+          "prompt": "Hộ tống bóng bay lên cao {goal} mét nhé!",
+          "reward": "Sóc Đu Đuôi ngoe nguẩy cái đuôi xù: {name} che ô khéo quá, bóng an toàn rồi!",
+          "next": "Khi nào muốn ngắm bóng bay, {name} cứ ghé bãi cỏ hoang tìm Sóc Đu Đuôi nhé.",
+          "who": "{name}, vệ sĩ bảo vệ bóng bay",
+          "learn": "Kéo ô nhanh nhẹn và bảo vệ bạn từ xa"
+        },
+        {
+          "game": "ant-lemmings",
+          "title": "Dẫn đàn kiến về tổ cùng Sóc Đu Đuôi",
+          "summary": "Đàn kiến mải kiếm mồi bị lạc đường: chạm biến kiến thành chốt chặn hoặc bắc cầu qua khe đá.",
+          "lines": [
+            "Đàn kiến con đang loay hoay tìm đường về tổ kìa {name} ơi.",
+            "Cậu chạm bạn kiến để làm trụ chặn, hoặc nằm bắc cầu giúp cả đàn bước qua khe nhé."
+          ],
+          "choice": "Kiến ơi đi theo tớ, tớ mở đường cho!",
+          "prompt": "Dẫn đủ {goal} bạn kiến về tổ an toàn nhé!",
+          "reward": "Sóc Đu Đuôi chia hạt dẻ khen: {name} chỉ đường thông minh, đàn kiến về đủ rồi!",
+          "next": "Tổ kiến còn cần gom hạt nữa, rảnh rỗi {name} lại ghé bìa rừng chỉ đường tiếp nha.",
+          "who": "{name}, người dẫn lối cho đàn kiến",
+          "learn": "Phán đoán đường đi và phối hợp bắc cầu"
+        },
+        {
+          "game": "butterfly-net",
+          "title": "Rón rén bắt bướm cùng Sóc Đu Đuôi",
+          "summary": "Những cánh bướm rực rỡ lượn quanh vạt hoa: nhẹ tay rê vợt tới gần rồi nhấc tay chụp khẽ.",
+          "lines": [
+            "{name} nhìn kìa, đàn bướm ngũ sắc đang đậu nghỉ trên khóm hoa dại rực rỡ.",
+            "Cậu kéo chiếc vợt lại thật nhẹ nhàng, canh đúng chỗ bướm đậu rồi nhấc tay chụp nhé."
+          ],
+          "choice": "Tớ nhón chân nhẹ lắm, chụp ngay đây!",
+          "prompt": "Chụp nhẹ nhàng được {goal} chú bướm hoa nhé!",
+          "reward": "Sóc Đu Đuôi vỗ hai tay tấm tắc: {name} rón rén thật tài, đàn bướm chẳng hề giật mình!",
+          "next": "Mỗi sớm hoa nở bướm lại bay về, {name} nhớ quay lại bìa rừng ngắm bướm cùng sóc nhé.",
+          "who": "{name}, tay bắt bướm khéo léo",
+          "learn": "Kiên nhẫn di chuyển chậm và canh thời điểm"
+        }
+      ]
+    },
+    {
+      "id": "gau-bap-cay",
+      "name": "Gấu Trèo Cây",
+      "look": "animal-panda",
+      "tint": "#304838",
+      "where": "Gốc đại thụ tán lá râm",
+      "at": [
+        480,
+        280
+      ],
+      "company": [
+        {
+          "routine": "pupil",
+          "name": "Bạn nhỏ xem leo cây",
+          "model": "person-f"
+        }
+      ],
+      "games": [
+        {
+          "game": "bamboo-hundred",
+          "title": "Ghép cây tre trăm đốt cùng Gấu Trèo Cây",
+          "summary": "Đốt tre nằm rải rác quanh bụi tre ngà: đếm nhảy cách theo dãy số rồi ghép từng đốt thành thân tre.",
+          "lines": [
+            "{name} ơi, tớ đang tìm các đốt tre thần theo dãy số để ghép cây tre trăm đốt.",
+            "Cậu nhìn bước đếm trên bảng rồi chạm từng đốt tre theo đúng thứ tự đếm nhé."
+          ],
+          "choice": "Khắc nhập khắc nhập, tre dài ra mau!",
+          "prompt": "Nối đúng {goal} đốt tre theo dãy số nhé!",
+          "reward": "Gấu Trèo Cây tròn xoe mắt: {name} đếm nhẩm chuẩn xác, cây tre cao vút tới mây!",
+          "next": "Lúc nào muốn trổ tài tính nhẩm, {name} cứ ghé gốc đại thụ tìm Gấu Trèo Cây nhé.",
+          "who": "{name}, thợ ghép tre tài ba",
+          "learn": "Đếm nhảy cách các dãy số đều đặn"
+        },
+        {
+          "game": "boomerang-throw",
+          "title": "Ném boomerang hái quả cùng Gấu Trèo Cây",
+          "summary": "Những chùm quả chín lủng lẳng tít ngọn cao: vuốt ném boomerang lượn vòng hái quả rồi đón lấy.",
+          "lines": [
+            "Quả rừng trên ngọn cao thơm nức mũi, {name} cùng ném boomerang thu hoạch với tớ đi!",
+            "Vuốt một đường cong thật chuẩn để ném, chờ boomerang quay về sáng vòng thì chụp lại nhé."
+          ],
+          "choice": "Boomerang bay đi, đón thật êm tay!",
+          "prompt": "Ném boomerang trúng {goal} chùm quả chín nhé!",
+          "reward": "Gấu Trèo Cây ôm đống quả tươi cười tít mắt: {name} ném vừa chuẩn vừa bắt dính tay!",
+          "next": "Mùa quả chín vẫn còn nhiều, {name} nhớ ghé gốc cây cổ thụ chơi boomerang tiếp nha.",
+          "who": "{name}, tay ném boomerang cừ khôi",
+          "learn": "Ước lượng quỹ đạo bay vòng và bắt đúng nhịp"
+        },
+        {
+          "game": "bird-flock",
+          "title": "Dẫn đàn chim bay chữ V với Gấu Trèo Cây",
+          "summary": "Đàn chim non tập bay theo hình chữ V: lượn ngón tay dẫn đường qua các cổng mây bồng bềnh.",
+          "lines": [
+            "{name} nhìn lên trời xem, đàn chim non đang cần người dẫn đường bay chữ V kìa.",
+            "Cậu rê ngón tay lên xuống dẫn lối chú chim đầu đàn chui qua từng vòng mây trắng nhé."
+          ],
+          "choice": "Cả đàn bám sát tớ, cùng bay lượn nào!",
+          "prompt": "Dẫn đàn chim lượn qua {goal} vòng mây trắng nhé!",
+          "reward": "Gấu Trèo Cây vẫy hai tay mừng rỡ: {name} dẫn đường khéo ghê, đàn chim bay đều tăm tắp!",
+          "next": "Đàn chim di cư vẫn tập luyện mỗi ngày, {name} rảnh lại đến gốc đại thụ ngắm chim nhé.",
+          "who": "{name}, chim đầu đàn dẫn lối",
+          "learn": "Điều hướng đường bay mềm mại và né mây giông"
+        }
+      ]
+    },
+    {
+      "id": "doi-hang-sau",
+      "name": "Dơi Đêm Tai To",
+      "look": "animal-beaver",
+      "tint": "#483858",
+      "where": "Cửa hang đá ẩm ướt",
+      "at": [
+        250,
+        520
+      ],
+      "company": [
+        {
+          "routine": "reader",
+          "name": "Bạn nhỏ soi đèn pin",
+          "model": "person-k"
+        }
+      ],
+      "games": [
+        {
+          "game": "bat-echo",
+          "title": "Dơi con tìm đường trong hang với Dơi Đêm Tai To",
+          "summary": "Lòng hang đá tối tăm mịt mù: chạm phát sóng âm soi rõ vách đá rồi dắt dơi con bay ra ngoài.",
+          "lines": [
+            "Hang đá sâu thăm thẳm tối om, {name} giúp chú dơi nhỏ tìm lối ra cửa hang với!",
+            "Cậu chạm để dơi phát tiếng kêu lóe sáng vách đá, rồi kéo ngón tay dẫn dơi bay theo nhé."
+          ],
+          "choice": "Sóng âm dẫn lối, bay ra ánh trăng nào!",
+          "prompt": "Đưa dơi con vượt qua {goal} khúc hang tối nhé!",
+          "reward": "Dơi Đêm Tai To vỗ cánh tí tách: {name} nhớ đường siêu thật, đã thấy ánh trăng rọi rồi!",
+          "next": "Khi nào muốn thám hiểm hang đá kỳ bí, {name} cứ tìm Dơi Đêm Tai To ở cửa hang nha.",
+          "who": "{name}, hoa tiêu thám hiểm hang sâu",
+          "learn": "Định vị bằng tiếng vang và ghi nhớ ngã rẽ"
+        },
+        {
+          "game": "odd-one-out",
+          "title": "Tìm sinh vật khác nhóm cùng Dơi Đêm Tai To",
+          "summary": "Năm người bạn rừng rậm cùng khiêu vũ dưới trăng: tinh mắt nhận ra bạn nào mang đặc điểm khác biệt.",
+          "lines": [
+            "{name} ơi, các bạn động vật trong hang đang tụ họp chơi trò đố vui tìm điểm khác lạ.",
+            "Cậu quan sát thật nhanh năm bạn nhảy múa rồi chỉ ra bạn nào khác nhóm với mọi người nhé."
+          ],
+          "choice": "Mắt tớ tinh lắm, nhìn ra bạn khác rồi!",
+          "prompt": "Phát hiện đúng {goal} bạn khác biệt trong nhóm nhé!",
+          "reward": "Dơi Đêm Tai To rung rung đôi tai to: mắt {name} sáng như sao, chọn câu nào chuẩn câu đó!",
+          "next": "Còn nhiều câu đố tinh mắt hấp dẫn lắm, {name} nhớ ghé cửa hang đá thử tài tiếp nhé.",
+          "who": "{name}, thám tử tinh mắt của hang đá",
+          "learn": "Quan sát phân loại đặc điểm và loại trừ"
+        },
+        {
+          "game": "polyline-length",
+          "title": "Tính đường gấp khúc cùng Dơi Đêm Tai To",
+          "summary": "Chú ốc sên bò qua các mỏm đá tìm thức ăn: tính tổng độ dài từng đoạn để nối đúng đường gấp khúc.",
+          "lines": [
+            "Bạn ốc sên muốn tìm đường đến cây bắp cải non thơm ngọt kìa {name}.",
+            "Cậu cộng độ dài các mỏm đá sao cho vừa đúng số ghi trên biển rồi kéo đường đi nhé."
+          ],
+          "choice": "Để tớ tính nhẩm rồi dẫn đường cho ốc sên!",
+          "prompt": "Vẽ đúng {goal} đường gấp khúc cho ốc sên nhé!",
+          "reward": "Dơi Đêm Tai To gật gù khen ngợi: {name} tính tổng các đoạn thẳng chuẩn không cần chỉnh!",
+          "next": "Ốc sên còn nhiều chặng đường mới, {name} ghé cửa hang đá dẫn đường tiếp nha.",
+          "who": "{name}, chuyên gia đo đường gấp khúc",
+          "learn": "Cộng độ dài các đoạn thẳng và tư duy hình học"
+        }
+      ]
+    },
+    {
+      "id": "hoa-mi-rung",
+      "name": "Họa Mi Rừng Xanh",
+      "look": "animal-parrot",
+      "tint": "#50a868",
+      "where": "Vòm lá xanh rì rào tiếng hót",
+      "at": [
+        510,
+        550
+      ],
+      "company": [
+        {
+          "routine": "pupil",
+          "name": "Em bé lắng nghe hót",
+          "model": "person-p"
+        }
+      ],
+      "games": [
+        {
+          "game": "bird-choir",
+          "title": "Lắng nghe dàn đồng ca chim với Họa Mi Rừng Xanh",
+          "summary": "Dàn hợp xướng chim rừng ngân vang khúc ca sớm: lắng tai phát hiện chú chim hót lệch nhịp.",
+          "lines": [
+            "{name} ơi, cả bầy chim đang tập dượt tiết mục hợp xướng đón chào bình minh rừng xanh.",
+            "Cậu lắng nghe thật kỹ giai điệu và quan sát nốt nhạc để tìm ra bạn chim hót nhầm nhé."
+          ],
+          "choice": "Tai tớ lắng nghe từng nốt nhạc đây!",
+          "prompt": "Tìm đúng {goal} bạn chim hót lệch giọng nhé!",
+          "reward": "Họa Mi Rừng Xanh cất tiếng hót véo von: đôi tai {name} thính tuyệt vời, bài ca đã thật hoàn hảo!",
+          "next": "Dàn hợp xướng tập hát mỗi sớm mai, {name} nhớ lại ghé vòm lá xanh nghe chim ca nhé.",
+          "who": "{name}, nhạc trưởng của dàn chim rừng",
+          "learn": "Lắng nghe phân biệt cao độ và nhịp điệu"
+        },
+        {
+          "game": "firefly-sync",
+          "title": "Hòa nhịp đom đóm sáng cùng Họa Mi Rừng Xanh",
+          "summary": "Đêm xuống, ngàn chú đom đóm lập lòe theo nhịp điệu: chạm đèn lồng bắt đúng khoảnh khắc đom đóm bừng sáng.",
+          "lines": [
+            "Vòm lá lung linh ánh sáng đom đóm đêm kìa {name}, trông như ngàn vì sao lấp lánh!",
+            "Cậu nhìn vòng sáng thu nhỏ rồi chạm cho đèn lồng nháy cùng nhịp với bầy đom đóm nhé."
+          ],
+          "choice": "Nháy sáng lung linh, đom đóm bay theo nào!",
+          "prompt": "Chạm đèn nháy đồng nhịp {goal} lần cùng đom đóm nhé!",
+          "reward": "Họa Mi Rừng Xanh xòe cánh reo vui: {name} bắt nhịp chuẩn xác, đàn đom đóm vây quanh sáng rực!",
+          "next": "Đêm nào đom đóm cũng mở hội hoa đăng, {name} hãy đến vòm lá xanh hòa nhịp cùng rừng nhé.",
+          "who": "{name}, người thắp sáng đêm rừng",
+          "learn": "Cảm nhận nhịp điệu thị giác và phản xạ đúng lúc"
+        },
+        {
+          "game": "stone-path-memory",
+          "title": "Ghi nhớ lối đá qua suối với Họa Mi Rừng Xanh",
+          "summary": "Dòng suối trong veo chảy róc rách: ghi nhớ thứ tự các hòn đá phát sáng để bước chân qua bờ bên kia.",
+          "lines": [
+            "{name} nhìn những viên đá cuội lấp lánh trên mặt suối rừng mát rượi kìa.",
+            "Mỗi viên đá sẽ phát sáng theo thứ tự, cậu nhớ kỹ đường đi rồi chạm bước qua suối nhé."
+          ],
+          "choice": "Tớ nhớ từng viên đá rồi, nhảy qua thôi!",
+          "prompt": "Bước qua suối thành công {goal} lần nhé!",
+          "reward": "Họa Mi Rừng Xanh lượn vòng khen ngợi: {name} có trí nhớ tuyệt đỉnh, bước chân vững như bàn thạch!",
+          "next": "Dòng suối vẫn róc rách chờ đón, {name} rảnh lại ra vòm lá xanh dạo bước qua suối nha.",
+          "who": "{name}, lữ khách vượt suối thông thái",
+          "learn": "Ghi nhớ chuỗi vị trí trong không gian"
+        }
+      ]
+    },
+    {
+      "id": "huou-bong-ram",
+      "name": "Hươu Đốm Rừng Rậm",
+      "look": "animal-deer",
+      "tint": "#a86838",
+      "where": "Trảng cỏ giữa rừng thông",
+      "at": [
+        380,
+        400
+      ],
+      "company": [
+        {
+          "routine": "pupil",
+          "name": "Bé nhặt nấm thông",
+          "model": "person-q"
+        }
+      ],
+      "games": [
+        {
+          "game": "shadow-shade",
+          "title": "Che bóng râm cho mèo cùng Hươu Đốm Rừng Rậm",
+          "summary": "Chú mèo con nằm phơi nắng trên thảm cỏ: xoay chuyển vầng mặt trời để bóng cây phủ mát giấc ngủ.",
+          "lines": [
+            "Trưa nắng gắt làm chú mèo con ngủ không yên giấc kìa {name} ơi.",
+            "Cậu kéo ông mặt trời di chuyển để bóng mát của cây thông che trọn chỗ mèo nằm nhé."
+          ],
+          "choice": "Mát rượi rồi, mèo con ngủ ngoan nha!",
+          "prompt": "Che bóng mát cho mèo con đủ {goal} lần nhé!",
+          "reward": "Hươu Đốm Rừng Rậm gật đầu êm ái: {name} chu đáo quá, chú mèo con ngủ say sưa rồi kìa!",
+          "next": "Trảng cỏ vẫn rợp bóng thông xanh, {name} cứ ghé chơi cùng Hươu Đốm Rừng Rậm lúc ban trưa nhé.",
+          "who": "{name}, người bạn ân cần của muông thú",
+          "learn": "Quan sát hướng nắng và điều chỉnh bóng đổ"
+        },
+        {
+          "game": "sun-rain-balance",
+          "title": "Cân bằng nắng mưa cùng Hươu Đốm Rừng Rậm",
+          "summary": "Mầm cây thông non đang vươn mình lớn lên: kéo mây điều hòa ánh nắng và hạt mưa tưới tắm vừa vặn.",
+          "lines": [
+            "Cây non trong rừng thông cần cả giọt mưa mát lành lẫn ánh nắng ấm áp đó {name}.",
+            "Cậu kéo đám mây che nắng hay nhường chỗ cho mưa để hai vạch đo luôn ở vùng xanh nhé."
+          ],
+          "choice": "Nắng mưa hòa thuận, cây lớn nhanh nào!",
+          "prompt": "Chăm cây lớn trĩu quả qua {goal} đợt phát triển nhé!",
+          "reward": "Hươu Đốm Rừng Rậm reo mừng: cây non trĩu cành xanh tốt nhờ bàn tay chăm chút của {name}!",
+          "next": "Rừng thông còn nhiều mầm non cần tưới, {name} nhớ quay lại trảng cỏ chăm cây cùng hươu nha.",
+          "who": "{name}, người làm vườn thông thái",
+          "learn": "Cân bằng hai yếu tố và quan sát chỉ số"
+        },
+        {
+          "game": "zigzag-path",
+          "title": "Lăn bóng đường zíc zắc với Hươu Đốm Rừng Rậm",
+          "summary": "Con đường gỗ quanh co uốn khúc giữa rừng: chạm màn hình chuyển hướng cho quả bóng gỗ lăn nhặt ngọc.",
+          "lines": [
+            "{name} ơi, quả bóng gỗ tròn xoe đang lăn vun vút trên đường mòn gấp khúc này!",
+            "Cứ đến mỗi khúc cua ngoằn ngoèo, cậu chạm tay thật lẹ để bóng đổi hướng kẻo rơi nhé."
+          ],
+          "choice": "Khúc quanh đây rồi, đổi hướng liền tay!",
+          "prompt": "Dẫn bóng vượt qua {goal} khúc quanh zíc zắc nhé!",
+          "reward": "Hươu Đốm Rừng Rậm nhảy chân sáo: phản xạ của {name} thật đáng nể, bóng lăn mượt mà ghê!",
+          "next": "Đường cua zíc zắc thử thách lòng can đảm, {name} ghé trảng cỏ rừng thông so tài tiếp nha.",
+          "who": "{name}, tay lái bóng cừ khôi",
+          "learn": "Phản xạ nhanh tại các điểm chuyển hướng"
+        }
+      ]
     }
   ],
   "residents": [

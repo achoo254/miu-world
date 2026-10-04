@@ -1,0 +1,80 @@
+{
+  "id": "side-chi-chi",
+  "region": "xom-mai-am",
+  "chapter": 1,
+  "title": "Chi chi chành chành cùng Chị Bống Chuyền Que",
+  "status": "active",
+  "category": "side",
+  "summary": "Đặt ngón tay vào lòng bàn tay rồi rụt lại thật nhanh khi nghe thấy tiếng ập cuối bài đồng dao.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, bạn nhỏ phản xạ nhanh như chớp",
+    "where": "Hiên nhà ngắm trăng",
+    "goal": "Rút tay kịp lúc tránh tiếng ập trọn bảy lượt đồng dao nhé!",
+    "play": "Đặt ngón tay vào lòng bàn tay bạn và giữ yên trong lúc bạn đọc đồng dao.",
+    "learn": "Lắng nghe cẩn thận và phản xạ rút tay chớp nhoáng",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Hiên nhà ngắm trăng lộng gió mát rượi luôn chờ em ra chơi chi chi."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "chi-bong-chuyen-que",
+      "lines": [
+        {
+          "speaker": "Chị Bống Chuyền Que",
+          "text": "Chị xòe bàn tay đọc đồng dao, {name} vào chơi chi chi cùng chị nào!"
+        },
+        {
+          "speaker": "Chị Bống Chuyền Que",
+          "text": "Em đặt ngón tay vào, nghe đúng tiếng ập là phải rút tay ra ngay nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Em đặt ngón tay vào đây chị!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Chi chi chành chành",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Rút tay kịp lúc tránh tiếng ập trọn bảy lượt đồng dao nhé!",
+      "game": "chi-chi",
+      "goal": 7
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Ngón tay em thoăn thoắt như thoi đưa, chị không kịp bắt {name} đâu!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Hiên nhà ngắm trăng lộng gió mát rượi luôn chờ em ra chơi chi chi."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

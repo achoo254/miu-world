@@ -1,0 +1,80 @@
+{
+  "id": "side-bo-khan",
+  "region": "truong-hoc",
+  "chapter": 1,
+  "title": "Chơi trò bỏ khăn cùng Bé Đội Viên",
+  "status": "active",
+  "category": "side",
+  "summary": "Vòng tròn bạn bè vỗ tay rộn rã: lén thả chiếc khăn sau lưng bạn không để ý rồi chạy đua về chỗ.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, chân chạy thoăn thoắt trò bỏ khăn",
+    "where": "Sân chơi dưới bóng bàng",
+    "goal": "Thả khăn và chạy về chỗ an toàn sáu lần nhé!",
+    "play": "{name} giữ ngón tay để chạy vòng quanh các bạn, nhấc tay để đứng lại.",
+    "learn": "Quan sát cơ hội bất ngờ và bứt tốc khéo léo",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Giờ ra chơi nào vòng tròn cũng rộn tiếng cười, {name} cứ lại bóng cây bàng chơi cùng lớp nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "be-chi-huy",
+      "lines": [
+        {
+          "speaker": "Bé Đội Viên",
+          "text": "Cả lớp đang quây quần chơi bỏ khăn trên bãi cỏ kìa, {name} vào vòng tròn chạy cùng nhé!"
+        },
+        {
+          "speaker": "Bé Đội Viên",
+          "text": "Cậu rảo bước vòng quanh, thả khăn sau lưng bạn không nhìn rồi phi thật nhanh về thảm nha."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Thả khăn kín đáo, chạy nhanh về đích!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Bỏ khăn",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Thả khăn và chạy về chỗ an toàn sáu lần nhé!",
+      "game": "bo-khan",
+      "goal": 6
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Bé Đội Viên cười giòn tan: chân {name} thoăn thoắt, bạn đuổi theo mà không kịp chạm vai!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Giờ ra chơi nào vòng tròn cũng rộn tiếng cười, {name} cứ lại bóng cây bàng chơi cùng lớp nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

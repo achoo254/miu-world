@@ -1,0 +1,80 @@
+{
+  "id": "side-sentence-train",
+  "region": "trung-tam",
+  "chapter": 1,
+  "title": "Ghép đoàn tàu câu với Chú Đố Chữ Quang",
+  "status": "active",
+  "category": "side",
+  "summary": "Đoàn tàu chở những toa chữ rời: quan sát tranh minh họa rồi xếp các từ thành câu văn hoàn chỉnh.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, kỹ sư nối câu tài ba",
+    "where": "Góc chợ giao dịch sầm uất",
+    "goal": "Ghép đúng thứ tự cho tám đoàn tàu câu nhé!",
+    "play": "Mỗi toa chở một từ. {name} xem tranh rồi chạm các toa theo đúng thứ tự của câu.",
+    "learn": "Ngữ pháp tiếng Việt và trật tự từ trong câu",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Còn nhiều câu văn hay trong kho sách, cháu {name} nhớ ghé chợ giao dịch ghép tàu tiếp nha."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "chu-do-chu-quang",
+      "lines": [
+        {
+          "speaker": "Chú Đố Chữ Quang",
+          "text": "{name} ơi, đoàn tàu chở từ ngữ đang chuẩn bị khởi hành từ chợ giao dịch này."
+        },
+        {
+          "speaker": "Chú Đố Chữ Quang",
+          "text": "Cháu nhìn bức tranh rồi chạm các toa chữ theo đúng thứ tự câu văn để đoàn tàu lăn bánh nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Toa tàu nối đuôi, câu văn trọn vẹn!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Đoàn tàu câu",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Ghép đúng thứ tự cho tám đoàn tàu câu nhé!",
+      "game": "sentence-train",
+      "goal": 8
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Chú Đố Chữ Quang tấm tắc khen ngợi: {name} ghép câu rành mạch, đoàn tàu tu tu hú còi chạy rồi!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Còn nhiều câu văn hay trong kho sách, cháu {name} nhớ ghé chợ giao dịch ghép tàu tiếp nha."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

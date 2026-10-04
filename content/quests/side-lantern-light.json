@@ -1,0 +1,80 @@
+{
+  "id": "side-lantern-light",
+  "region": "lang-ven-song",
+  "chapter": 1,
+  "title": "Thắp sáng đèn lồng cùng Cô Đèn Lồng Sen",
+  "status": "active",
+  "category": "side",
+  "summary": "Thắp lại những chiếc đèn lồng hoa sen đang chập chờn để cả con đường làng rực rỡ sắc màu.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người giữ lửa đèn lồng rực rỡ",
+    "where": "Dưới bóng đa đầu làng",
+    "goal": "Giữ ánh sáng cho mười lượt đoàn khách dạo hội hoa đăng nhé!",
+    "play": "Đèn lồng phố Hội mờ dần. {name} chạm đèn để thắp sáng lại.",
+    "learn": "Phản xạ nhanh tay thắp đều các ngọn đèn",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Hàng đèn lồng sen đầu làng vẫn treo lung linh chờ cháu ghé thắp."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "co-den-long-sen",
+      "lines": [
+        {
+          "speaker": "Cô Đèn Lồng Sen",
+          "text": "Gió thoảng làm những ngọn nến trong đèn chao nghiêng kìa {name}!"
+        },
+        {
+          "speaker": "Cô Đèn Lồng Sen",
+          "text": "Cháu chạm nhanh tay vào lồng đèn để thắp sáng cho đoàn người qua lại."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu thắp đèn lồng ngay!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Thắp đèn phố Hội",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Giữ ánh sáng cho mười lượt đoàn khách dạo hội hoa đăng nhé!",
+      "game": "lantern-light",
+      "goal": 10
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Cả xóm làng bừng sáng ấm áp muôn màu dưới bàn tay của {name}!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Hàng đèn lồng sen đầu làng vẫn treo lung linh chờ cháu ghé thắp."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

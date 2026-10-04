@@ -1,0 +1,80 @@
+{
+  "id": "side-paint-splat",
+  "region": "truong-hoc",
+  "chapter": 1,
+  "title": "Ném màu tô tranh với Mèo Vẽ Màu",
+  "status": "active",
+  "category": "side",
+  "summary": "Quả bóng màu liên tục đổi sắc: canh đúng lúc bóng trùng màu bức tranh để ném văng màu tô kín.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, nghệ sĩ ném màu vui nhộn",
+    "where": "Cửa phòng mĩ thuật",
+    "goal": "Tô kín bức tranh với hai mươi lần ném màu chuẩn nhé!",
+    "play": "Quả bóng màu dưới cùng cứ đổi màu. Mỗi phần của tranh có một chấm màu cần tô.",
+    "learn": "Phân biệt màu nhanh và phản xạ canh nhịp",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Còn bao nhiêu bức tranh tường chờ tô, {name} lại ra cửa phòng mĩ thuật ném màu tiếp nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "meo-hoa-si",
+      "lines": [
+        {
+          "speaker": "Mèo Vẽ Màu",
+          "text": "{name} xem này, trò ném màu nước tô tranh khổ lớn vui nhộn nhất trường đấy!"
+        },
+        {
+          "speaker": "Mèo Vẽ Màu",
+          "text": "Bóng dưới đáy đổi sang màu nào thì cậu chạm thật nhanh vào mảng tranh mang màu đó nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Canh màu chuẩn xác, ném trúng mảng tranh!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Ném màu tô tranh",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Tô kín bức tranh với hai mươi lần ném màu chuẩn nhé!",
+      "game": "paint-splat",
+      "goal": 20
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Mèo Vẽ Màu vẫy đuôi thích thú: mảng màu nào của {name} cũng sắc nét, tranh đẹp lung linh!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Còn bao nhiêu bức tranh tường chờ tô, {name} lại ra cửa phòng mĩ thuật ném màu tiếp nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

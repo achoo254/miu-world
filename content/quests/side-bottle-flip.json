@@ -1,0 +1,80 @@
+{
+  "id": "side-bottle-flip",
+  "region": "trung-tam",
+  "chapter": 1,
+  "title": "Tung chai thăng bằng cùng Bé Xiếc Vui Vẻ",
+  "status": "active",
+  "category": "side",
+  "summary": "Chai nước ngọt trên bàn diễn xiếc: vuốt ngón tay tung chai lộn một vòng rồi đáp đứng thẳng tắp.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, nghệ sĩ tung chai điêu luyện",
+    "where": "Trước sân khấu sự kiện",
+    "goal": "Tung chai tiếp đất đứng vững tám lần nhé!",
+    "play": "{name} vuốt lên để tung chai. Vuốt càng dài chai bay càng cao.",
+    "learn": "Cảm nhận lực vuốt và thời điểm lộn vòng",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Khán giả đang vỗ tay đòi diễn tiếp, {name} cứ lại trước sân khấu sự kiện tung chai nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "be-xiec-vui-ve",
+      "lines": [
+        {
+          "speaker": "Bé Xiếc Vui Vẻ",
+          "text": "Chào {name}! Tiết mục tung chai đứng thẳng của gánh xiếc đang thiếu người biểu diễn này."
+        },
+        {
+          "speaker": "Bé Xiếc Vui Vẻ",
+          "text": "Cậu vuốt ngón tay lên để hất chai lộn nhào, vuốt vừa lực cho chai đáp thăng bằng trên bục nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Lộn nhào một vòng, đứng thẳng trên bục!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Lật chai",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Tung chai tiếp đất đứng vững tám lần nhé!",
+      "game": "bottle-flip",
+      "goal": 8
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Bé Xiếc Vui Vẻ tung mũ chào: {name} canh lực siêu khéo, chai nào đáp xuống cũng vững vàng!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Khán giả đang vỗ tay đòi diễn tiếp, {name} cứ lại trước sân khấu sự kiện tung chai nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

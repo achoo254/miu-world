@@ -1,0 +1,80 @@
+{
+  "id": "side-word-search",
+  "region": "thu-vien",
+  "chapter": 1,
+  "title": "Ô chữ tìm từ tiếng Việt cùng Cô Thủ Thư Mai",
+  "status": "active",
+  "category": "side",
+  "summary": "Bảng chữ cái vuông vức giấu kín những từ ngữ thân thương, bé tinh mắt gạch nối từng từ.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, thám tử ngôn ngữ nhí",
+    "where": "Bàn hướng dẫn cửa thư viện",
+    "goal": "Tìm đủ sáu từ tiếng Việt ẩn trong bảng chữ nhé!",
+    "play": "Sáu từ có hình ở bên cạnh trốn trong bảng chữ, nằm ngang hoặc dọc.",
+    "learn": "Mở rộng vốn từ vựng và nhận diện mặt chữ",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Mỗi tuần cô lại có bảng ô chữ mới, cháu nhớ ghé bàn hướng dẫn cửa thư viện chơi."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "co-thu-thu-mai",
+      "lines": [
+        {
+          "speaker": "Cô Thủ Thư Mai",
+          "text": "Cô có một trò chơi đố chữ rất bổ ích dành cho {name} yêu quý đây."
+        },
+        {
+          "speaker": "Cô Thủ Thư Mai",
+          "text": "Cháu nhìn các hình minh họa bên cạnh rồi tìm kéo những chữ cái ghép thành từ đó nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu tìm ra các từ ẩn ngay!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Tìm từ ẩn",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Tìm đủ sáu từ tiếng Việt ẩn trong bảng chữ nhé!",
+      "game": "word-search",
+      "goal": 6
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Cô Thủ Thư Mai xoa đầu khen ngợi {name} có vốn từ vựng phong phú và đôi mắt tinh tường!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Mỗi tuần cô lại có bảng ô chữ mới, cháu nhớ ghé bàn hướng dẫn cửa thư viện chơi."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

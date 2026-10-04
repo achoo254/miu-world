@@ -1,0 +1,80 @@
+{
+  "id": "side-cube-hop",
+  "region": "lau-dai",
+  "chapter": 1,
+  "title": "Nhảy khối hộp thần tốc cùng Quản Mã Hoàng Gia",
+  "status": "active",
+  "category": "side",
+  "summary": "Kim tự tháp xếp bằng các khối hộp rực rỡ, bé nhảy đổi màu từng ô mà không rơi xuống vực.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, tay nhảy khối hộp thoăn thoắt",
+    "where": "Đầu cầu treo trước cổng thành",
+    "goal": "Nhảy đổi màu thành công ba mươi lăm khối hộp kim tự tháp nhé!",
+    "play": "Chạm một khối ngay cạnh để {name} nhảy sang. Khối nào nhảy lên cũng đổi màu.",
+    "learn": "Định vị phương hướng trên lưới chéo và né chướng ngại",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Kim tự tháp đã khoác áo mới lộng lẫy, lúc nào thích nhảy cháu cứ ra đầu cầu treo nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "quan-ma-hoang-gia",
+      "lines": [
+        {
+          "speaker": "Quản Mã Hoàng Gia",
+          "text": "Chú ngựa nhỏ đang tập leo kim tự tháp khối hộp kìa {name}, cháu vào trợ giúp một tay nào!"
+        },
+        {
+          "speaker": "Quản Mã Hoàng Gia",
+          "text": "Cháu chạm ô kề bên để nhảy sang đổi màu khối đá, nhớ né tránh những quả cầu đang lăn xuống nha."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu nhảy đổi màu khối hộp ngay!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Nhảy đổi màu kim tự tháp",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Nhảy đổi màu thành công ba mươi lăm khối hộp kim tự tháp nhé!",
+      "game": "cube-hop",
+      "goal": 35
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Quản Mã Hoàng Gia vỗ tay khen ngợi: {name} bật nhảy nhanh nhẹn và thông minh tuyệt vời!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Kim tự tháp đã khoác áo mới lộng lẫy, lúc nào thích nhảy cháu cứ ra đầu cầu treo nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

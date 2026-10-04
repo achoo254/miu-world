@@ -1,0 +1,80 @@
+{
+  "id": "side-marble-run",
+  "region": "thu-vien",
+  "chapter": 1,
+  "title": "Đường ray bi lăn gỗ với Mèo Hộp Nhạc",
+  "status": "active",
+  "category": "side",
+  "summary": "Viên bi tròn lăn trên các thanh máng gỗ, bé xoay chiều dốc để bi lăn đúng vào cốc màu.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người dẫn đường bi tài tình",
+    "where": "Bục gỗ sân lễ hội lá vàng",
+    "goal": "Dẫn đường an toàn cho hai mươi viên bi lăn vào đúng cốc nhé!",
+    "play": "Bi rơi xuống máng gỗ rồi lăn về phía máng thấp.",
+    "learn": "Trọng lực hướng dốc và chuyển đổi đường ray",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Tiếng bi lăn lách cách nghe vui tai lắm, khi nào rảnh cậu lại tới chơi cùng tớ."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "meo-hop-nhac",
+      "lines": [
+        {
+          "speaker": "Mèo Hộp Nhạc",
+          "text": "{name} nhìn viên bi tròn xoe đang lăn này, nó sắp rơi ra ngoài máng gỗ mất rồi kìa!"
+        },
+        {
+          "speaker": "Mèo Hộp Nhạc",
+          "text": "Cậu chạm vào từng đoạn máng để đổi hướng dốc, dẫn viên bi lăn êm ái vào đúng chiếc cốc nha."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ gạt máng dẫn đường bi lăn!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Đường bi lăn",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Dẫn đường an toàn cho hai mươi viên bi lăn vào đúng cốc nhé!",
+      "game": "marble-run",
+      "goal": 20
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Mèo Hộp Nhạc nhảy lò cò thích thú, khen {name} canh góc nghiêng chuẩn xác phi thường!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Tiếng bi lăn lách cách nghe vui tai lắm, khi nào rảnh cậu lại tới chơi cùng tớ."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

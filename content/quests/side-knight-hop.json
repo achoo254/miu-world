@@ -1,0 +1,80 @@
+{
+  "id": "side-knight-hop",
+  "region": "lau-dai",
+  "chapter": 1,
+  "title": "Quân mã nhảy bàn cờ cùng Quản Mã Hoàng Gia",
+  "status": "active",
+  "category": "side",
+  "summary": "Sàn cờ đá chữ L đầy sao lấp lánh, bé dắt chú ngựa thần nhảy từng bước nhặt sạch ngôi sao.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người kỵ mã bàn cờ tài hoa",
+    "where": "Đầu cầu treo trước cổng thành",
+    "goal": "Dắt chú ngựa nhảy nhặt đủ mười bảy ngôi sao lấp lánh nhé!",
+    "play": "Chú ngựa đi hình chữ L: hai ô một hướng rồi một ô sang bên.",
+    "learn": "Quy tắc di chuyển hình chữ L trong cờ vua",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Ngựa hoàng gia đã no cỏ và sao vàng, hẹn gặp lại cháu ở đầu cầu treo trước cổng thành."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "quan-ma-hoang-gia",
+      "lines": [
+        {
+          "speaker": "Quản Mã Hoàng Gia",
+          "text": "Bác chào {name}, chú tuấn mã hoàng gia rất thích nhảy theo đường chữ L trên ô cờ đấy."
+        },
+        {
+          "speaker": "Quản Mã Hoàng Gia",
+          "text": "Cháu hãy dắt ngựa đi hai ô thẳng rồi một ô ngang để nhặt hết những ngôi sao trên nền đá."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu dắt tuấn mã nhảy bước chữ L!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Mã đi tìm sao",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Dắt chú ngựa nhảy nhặt đủ mười bảy ngôi sao lấp lánh nhé!",
+      "game": "knight-hop",
+      "goal": 17
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Quản Mã Hoàng Gia vuốt bờm ngựa cười vang, khen {name} nắm chắc nước cờ mã độc đáo!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Ngựa hoàng gia đã no cỏ và sao vàng, hẹn gặp lại cháu ở đầu cầu treo trước cổng thành."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "id": "side-penguin-share",
+  "region": "nui-tuyet",
+  "chapter": 1,
+  "title": "Chia đều cá cho chim cánh cụt cùng Gấu Bắc Cực",
+  "status": "active",
+  "category": "side",
+  "summary": "Đàn cánh cụt bụng đói đứng đợi, bé chia từng con cá sao cho các bạn nhận phần bằng nhau.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người chia cá công bằng",
+    "where": "Bên ngoài hang băng",
+    "goal": "Chia phần cá thật đều cho tám nhóm cánh cụt tí hon nhé!",
+    "play": "{name} chạm vào một bạn cánh cụt để cho bạn ấy một con cá trong xô.",
+    "learn": "Phép chia đều và kiểm tra số lượng",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Đàn cánh cụt lại sắp tới giờ ăn trưa, bác Gấu đợi {name} quay lại trổ tài."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "gau-bac-cuc-cau-ca",
+      "lines": [
+        {
+          "speaker": "Gấu Bắc Cực Câu Cá",
+          "text": "Mấy chú cánh cụt con đi kiếm mồi cả buổi mệt lả rồi, {name} chia cá giúp bác!"
+        },
+        {
+          "speaker": "Gấu Bắc Cực Câu Cá",
+          "text": "Chạm vào từng bạn để chia, nhớ nhẩm cho bạn nào cũng nhận số cá như nhau."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu chia thật công bằng cho từng bạn!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Chia cá cho cánh cụt",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Chia phần cá thật đều cho tám nhóm cánh cụt tí hon nhé!",
+      "game": "penguin-share",
+      "goal": 8
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Bác Gấu xoa đầu khen ngợi: cháu {name} chia phần chu đáo, bạn nào cũng no bụng!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Đàn cánh cụt lại sắp tới giờ ăn trưa, bác Gấu đợi {name} quay lại trổ tài."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

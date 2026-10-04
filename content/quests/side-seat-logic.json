@@ -1,0 +1,80 @@
+{
+  "id": "side-seat-logic",
+  "region": "lau-dai",
+  "chapter": 1,
+  "title": "Sắp chỗ ngồi dự tiệc hoàng gia cùng Tể Tướng Cờ Vua",
+  "status": "active",
+  "category": "side",
+  "summary": "Bàn tiệc yến tiệc cung đình long trọng, bé dựa vào sở thích từng vị khách để xếp chỗ hài hòa.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người điều phối yến tiệc hoàng gia",
+    "where": "Đại sảnh ôn tập nguy nga",
+    "goal": "Sắp xếp chỗ ngồi hoàn hảo cho bốn bàn tiệc yến hoàng gia nhé!",
+    "play": "Thẻ trái tim: hai bạn ngồi cạnh nhau. Dấu chéo: không cạnh nhau. Vương miện: ghế đầu.",
+    "learn": "Xử lý đồng thời nhiều điều kiện ràng buộc logic",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Mỗi mùa lễ hội ta lại có câu đố tiệc mới, đại sảnh ôn tập luôn mong ngóng cháu ghé thăm."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "te-tuong-co-the",
+      "lines": [
+        {
+          "speaker": "Tể Tướng Cờ Vua",
+          "text": "Yến tiệc sắp bắt đầu rồi {name}, các vị khách quý cần được sắp xếp chỗ ngồi thật chu đáo."
+        },
+        {
+          "speaker": "Tể Tướng Cờ Vua",
+          "text": "Cháu đọc thẻ yêu cầu bên cạnh để biết ai muốn ngồi gần ai, ai ngồi đầu bàn rồi xếp cho đúng nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu xếp chỗ ngồi chu đáo ngay!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Xếp chỗ tiệc vua",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Sắp xếp chỗ ngồi hoàn hảo cho bốn bàn tiệc yến hoàng gia nhé!",
+      "game": "seat-logic",
+      "goal": 4
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Tể Tướng Cờ Vua mỉm cười nâng ly trà, khen ngợi {name} chu toàn và khéo léo sắp đặt yến tiệc!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Mỗi mùa lễ hội ta lại có câu đố tiệc mới, đại sảnh ôn tập luôn mong ngóng cháu ghé thăm."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

@@ -201,6 +201,316 @@
           "learn": "Lên kế hoạch đường đi an toàn"
         }
       ]
+    },
+    {
+      "id": "thuyen-truong-vet-bien",
+      "name": "Thuyền Trưởng Vẹt Biển",
+      "look": "animal-parrot",
+      "tint": "#e84848",
+      "where": "Trước lều thuyền trưởng hải tặc",
+      "place": "Lều thuyền trưởng",
+      "company": [
+        {
+          "routine": "monkey",
+          "name": "Khỉ con leo cột buồm",
+          "model": "animal-monkey"
+        }
+      ],
+      "games": [
+        {
+          "game": "treasure-map-steps",
+          "title": "Dò bước theo bản đồ cổ cùng Thuyền Trưởng Vẹt Biển",
+          "summary": "Tấm da dê vẽ hướng đi bí ẩn, bé đếm số bước chân theo mũi tên để đào rương vàng dưới cát.",
+          "lines": [
+            "Tấm hải đồ kho báu cổ xưa của ta đây rồi, {name} mau đếm bước cùng thuyền trưởng!",
+            "Cứ nhìn kỹ số bước và mũi tên dẫn lối rồi chạm đúng vào ô đất chôn quà."
+          ],
+          "choice": "Cháu cầm xẻng đào kho báu ngay!",
+          "prompt": "Lần theo bản đồ tìm ra {goal} rương báu quý giá trên đảo nhé!",
+          "reward": "Vẹt Biển vỗ cánh phần phật: mắt cháu {name} tinh anh như chim ưng biển vậy!",
+          "next": "Kho báu trên đảo hoang còn nhiều vô kể, thuyền trưởng đợi {name} trước lều nhé.",
+          "who": "{name}, nhà thám hiểm săn kho báu biển",
+          "learn": "Đọc hướng đi theo mũi tên và đếm bước"
+        },
+        {
+          "game": "reef-sweeper",
+          "title": "Dò đá ngầm san hô cùng Thuyền Trưởng Vẹt Biển",
+          "summary": "Vùng nước cạn đầy đá ngầm nhọn hoắt, bé dựa vào số gợi ý để cắm cờ cảnh báo an toàn.",
+          "lines": [
+            "Rạn san hô quanh lều có nhiều đá ngầm nguy hiểm lắm, {name} kiểm tra luồng nước giúp ta!",
+            "Chạm ô cát để xem số lượng đá quanh đó, chỗ nào chắc chắn có đá thì cắm cờ."
+          ],
+          "choice": "Cháu cắm cờ cẩn thận từng hòn đá!",
+          "prompt": "Dò sạch đá ngầm an toàn qua {goal} bãi san hô ven bờ nhé!",
+          "reward": "Thuyền Trưởng Vẹt Biển vỗ vai khen: nhờ {name} mà thuyền của ta cập bờ êm ru!",
+          "next": "Thủy triều xuống để lộ bãi đá mới, thuyền trưởng chờ {name} ra rạn san hô rà soát.",
+          "who": "{name}, hoa tiêu dò đường biển tài ba",
+          "learn": "Suy luận logic và đánh dấu mối nguy"
+        },
+        {
+          "game": "unblock-ferry",
+          "title": "Mở đường cho thuyền thoát kẹt cùng Thuyền Trưởng Vẹt Biển",
+          "summary": "Cửa vịnh bị các mảng bè chặn lối, bé trượt các khối thuyền qua lại để đưa tàu vàng ra biển.",
+          "lines": [
+            "Chiếc thuyền buồm vàng của ta kẹt cứng giữa các bè gỗ rồi, {name} cứu nguy với!",
+            "Kéo trượt từng con thuyền dọc theo mạn của nó để dọn trống đường ra cửa sông."
+          ],
+          "choice": "Để cháu mở đường cho thuyền ra khơi!",
+          "prompt": "Khéo léo giải cứu thuyền qua {goal} khúc kênh kẹt đá nhé!",
+          "reward": "Vẹt Biển kêu to vui sướng: thuyền buồm của ta giương cánh lướt sóng nhờ {name} rồi!",
+          "next": "Biển cả còn nhiều chuyến hải trình, thuyền trưởng hẹn {name} hội ngộ trên bờ cát.",
+          "who": "{name}, thuyền trưởng tháo gỡ tắc nghẽn",
+          "learn": "Tư duy di chuyển từng bước có trật tự"
+        }
+      ]
+    },
+    {
+      "id": "hai-cau-bong-chuyen",
+      "name": "Hải Cẩu Bóng Chuyền",
+      "look": "animal-dog",
+      "tint": "#4898c8",
+      "where": "Bãi cát vàng ven biển",
+      "place": "Bãi biển",
+      "company": [
+        {
+          "routine": "pupil",
+          "name": "Bạn nhỏ tắm biển",
+          "model": "person-k"
+        }
+      ],
+      "games": [
+        {
+          "game": "volleyball-beach",
+          "title": "Đánh bóng chuyền trên cát cùng Hải Cẩu Bóng Chuyền",
+          "summary": "Bóng bổng bay qua lưới, bé chạy nhanh đón điểm rơi rồi nhảy đập bóng sang sân đối thủ.",
+          "lines": [
+            "Sóng vỗ rì rào mát rượi quá {name} ơi, chạy ra sân cát đánh bóng với tớ nào!",
+            "Nhìn vòng tròn đón bóng rồi chạm đúng lúc bóng rơi trên đầu để đập qua lưới."
+          ],
+          "choice": "Tớ đỡ bóng dũng mãnh lắm!",
+          "prompt": "Ghi được {goal} điểm trong trận bóng chuyền bãi cát nhé!",
+          "reward": "Hải Cẩu đập hai vây bồm bộp: những pha đập bóng của {name} hiểm hóc quá chừng!",
+          "next": "Nắng vàng trên biển còn rực rỡ, Hải Cẩu chờ {name} quay lại giao lưu bóng chuyền.",
+          "who": "{name}, vận động viên bóng chuyền bãi biển",
+          "learn": "Đoán vị trí bóng rơi và căn lực đập"
+        },
+        {
+          "game": "seal-balance",
+          "title": "Giữ bóng trên chóp mũi cùng Hải Cẩu Bóng Chuyền",
+          "summary": "Gió biển thổi lay lắt, bé khéo léo nghiêng người sang trái phải để giữ quả bóng thăng bằng.",
+          "lines": [
+            "Gió biển hôm nay thổi từng cơn đùa nghịch đấy, {name} giữ bóng thăng bằng với tớ nhé!",
+            "Bóng nghiêng về bên nào thì di chuyển đón sang bên đó, đừng để bóng lăn rớt."
+          ],
+          "choice": "Tớ giữ thăng bằng rất dẻo dai!",
+          "prompt": "Giữ quả bóng thăng bằng trên đầu đạt {goal} giây nhé!",
+          "reward": "Hải Cẩu reo hò phấn khích: {name} khéo léo giữ bóng vững vàng chẳng chao đảo!",
+          "next": "Bãi biển lúc nào cũng rộn rã sóng vỗ, Hải Cẩu mong {name} ghé giữ bóng tiếp.",
+          "who": "{name}, nghệ sĩ xiếc giữ thăng bằng",
+          "learn": "Điều chỉnh tay nhẹ nhàng theo hướng nghiêng"
+        },
+        {
+          "game": "high-dive",
+          "title": "Nhảy cầu vách đá lao xuống sóng cùng Hải Cẩu",
+          "summary": "Đứng trên mỏm đá cao chót vót, bé bật nhảy lộn vòng rồi duỗi thẳng người cắm mình xuống nước.",
+          "lines": [
+            "Vách đá nhô ra mép biển cao tuyệt đẹp kìa, {name} thử tài lặn xuống làn nước xanh nào!",
+            "Chạm để bay lên cuộn vòng, rồi chạm lần nữa duỗi thẳng người tiếp nước thật êm."
+          ],
+          "choice": "Tớ nhảy cú thật ngoạn mục!",
+          "prompt": "Thực hiện thành công {goal} cú tiếp nước hoàn hảo từ vách đá nhé!",
+          "reward": "Hải Cẩu tung bọt nước vỗ tay: cú nhảy lặn của {name} đẹp như một chú cá heo lượn!",
+          "next": "Mỏm đá nhìn ra đại dương bao la, Hải Cẩu đứng đón {name} ghé nhảy sóng tiếp.",
+          "who": "{name}, kình ngư nhảy cầu dũng cảm",
+          "learn": "Chọn đúng thời điểm chuyển tư thế trên không"
+        }
+      ]
+    },
+    {
+      "id": "cua-cang-cap-cua",
+      "name": "Cua Càng Cắp Cua",
+      "look": "animal-crab",
+      "tint": "#e86828",
+      "where": "Mép vũng nước triều rút",
+      "place": "Vũng nước triều",
+      "company": [
+        {
+          "routine": "pupil",
+          "name": "Bé tìm vỏ ốc",
+          "model": "person-d"
+        }
+      ],
+      "games": [
+        {
+          "game": "cap-cua",
+          "title": "Cắp cua bỏ giỏ trong vũng triều cùng Cua Càng Cắp Cua",
+          "summary": "Đàn cua con bò lổm ngổm trên cát, bé nhặt nhanh từng chú bỏ vào giỏ rồi đậy nắp lại.",
+          "lines": [
+            "Nước triều rút để lại bao nhiêu chú cua tí hon kìa, {name} nhặt giúp tớ một tay!",
+            "Bỏ từng bạn cua vào giỏ tre rồi nhớ chạm đậy nắp ngay kẻo chúng bò ra mất."
+          ],
+          "choice": "Tớ tay nhanh như chớp!",
+          "prompt": "Bỏ giỏ gọn gàng được {goal} chú cua nhỏ trước khi nắp mở nhé!",
+          "reward": "Cua Càng gõ hai càng lách cách: {name} cắp cua thoăn thoắt, giỏ đầy ắp rồi!",
+          "next": "Thủy triều lại sắp lên xuống theo nhịp, Cua Càng đợi {name} bên mép vũng nước.",
+          "who": "{name}, tay bắt cua khéo léo bờ biển",
+          "learn": "Nhanh tay gắp thả và nhớ đậy nắp đồ vật"
+        },
+        {
+          "game": "sand-castle",
+          "title": "Xây lâu đài cát chắn sóng cùng Cua Càng Cắp Cua",
+          "summary": "Bé xúc cát ướt đong vừa vạch khuôn rồi úp thành những ngọn tháp cát kiên cố bên bờ.",
+          "lines": [
+            "Sóng sắp vỗ vào bờ rồi đấy {name}, tụi mình cùng đắp lâu đài cát thật vững nhé!",
+            "Đong cát vào xô vừa chạm vạch xanh rồi úp xuống làm tháp canh cho lâu đài."
+          ],
+          "choice": "Tớ xây thành trì thật kiên cố!",
+          "prompt": "Xây hoàn chỉnh {goal} lâu đài cát tráng lệ với các ngọn tháp cao nhé!",
+          "reward": "Cua Càng giơ càng vẫy mừng: lâu đài của {name} xây đẹp và vững trước ngọn sóng!",
+          "next": "Bờ cát mịn màng vẫn còn nhiều chỗ trống, Cua Càng đợi {name} xây thêm thành lũy.",
+          "who": "{name}, kiến trúc sư lâu đài cát",
+          "learn": "Đong lượng vừa đủ và ước lượng thể tích"
+        },
+        {
+          "game": "three-span-bag",
+          "title": "Chọn ngọc vừa túi ba gang cùng Cua Càng Cắp Cua",
+          "summary": "Chiếc túi kỳ diệu chỉ chứa đúng số lượng quy định, bé chọn những viên ngọc sao cho vừa vặn.",
+          "lines": [
+            "Chim thần vừa mang túi ba gang ghé qua bãi đá đấy, {name} chọn ngọc với tớ nào!",
+            "Chạm từng viên ngọc sao cho tổng các số vừa đúng con số in trên miệng túi."
+          ],
+          "choice": "Tớ tính toán chuẩn xác từng số!",
+          "prompt": "Xếp ngọc vừa khít cho {goal} chiếc túi ba gang thần kỳ nhé!",
+          "reward": "Cua Càng vung càng nhảy múa: phép cộng của {name} vừa in, túi bay về trời rồi!",
+          "next": "Chim thần sẽ còn chở thêm nhiều túi ngọc, Cua Càng hẹn gặp {name} bờ biển.",
+          "who": "{name}, nhà toán học nhí bờ biển",
+          "learn": "Tính nhẩm tổng các số vừa khít số đích"
+        }
+      ]
+    },
+    {
+      "id": "bac-quang-luoi-bien",
+      "name": "Bác Quăng Lưới Biển",
+      "look": "person-h",
+      "tint": "#387878",
+      "where": "Cầu tàu đón thuyền cập bến",
+      "place": "Bến tàu",
+      "company": [
+        {
+          "routine": "porter",
+          "name": "Thủy thủ vác hòm đồ",
+          "model": "person-r"
+        }
+      ],
+      "games": [
+        {
+          "game": "net-cast",
+          "title": "Quăng lưới đánh cá ngoài khơi cùng Bác Quăng Lưới Biển",
+          "summary": "Đứng ở mũi thuyền, bé vuốt tay tung dải chài tròn xòe rộng đón đầu đàn cá đang bơi.",
+          "lines": [
+            "Đàn cá mòi đang bơi ngang qua mạn thuyền kìa, {name} giúp bác quăng mẻ lưới nào!",
+            "Vuốt dài ngón tay về phía trước để chài mở rộng, đón đầu luồng cá đang bơi tới."
+          ],
+          "choice": "Cháu tung chài đón đầu đàn cá!",
+          "prompt": "Quăng lưới khéo léo bắt được {goal} con cá tươi roi rói nhé!",
+          "reward": "Bác Quăng Lưới cười hào sảng: mẻ chài của {name} bung tròn trịa gom trọn đàn cá!",
+          "next": "Khoang thuyền còn rộng rãi lắm, bác ngư dân mong {name} ghé cầu tàu ra khơi tiếp.",
+          "who": "{name}, ngư dân nhí quăng chài thiện nghệ",
+          "learn": "Ước lượng khoảng cách và đón đầu vật chuyển động"
+        },
+        {
+          "game": "current-drift",
+          "title": "Thả đá dẫn dòng nước đưa thư cùng Bác Quăng Lưới Biển",
+          "summary": "Mặt nước chảy xiết qua rạn đá, bé thả những viên sỏi để uốn dòng đưa chai thư đến đích.",
+          "lines": [
+            "Chai thư của các thủy thủ cần gửi về đảo xa, {name} lái dòng nước giúp bác nhé!",
+            "Thả những hòn sỏi xuống luồng nước để nắn dòng chảy đẩy chai thư vào bờ an toàn."
+          ],
+          "choice": "Cháu nắn dòng đưa thư cập bến!",
+          "prompt": "Dẫn dòng hải lưu đưa trót lọt {goal} chai thư cập bến đảo hoang nhé!",
+          "reward": "Bác Quăng Lưới siết chặt tay cháu: thư đã gửi tới nơi trọn vẹn nhờ công {name}!",
+          "next": "Biển cả bao la còn nhiều lời nhắn nhủ, bác chờ {name} ở bến tàu đón thuyền.",
+          "who": "{name}, người dẫn đường dòng hải lưu",
+          "learn": "Hiểu quy luật đổi dòng của nước khi gặp vật cản"
+        },
+        {
+          "game": "ferry-dock",
+          "title": "Lái phà cập cầu tàu cùng Bác Quăng Lưới Biển",
+          "summary": "Chiếc phà chở khách bồng bềnh trên sóng, bé điều khiển chân vịt giảm tốc cập nhẹ vào bờ.",
+          "lines": [
+            "Chuyến phà đón khách cập bến hôm nay đông lắm, {name} cầm bánh lái giúp bác một tay!",
+            "Kéo ngón tay lái phà vào sát mép gỗ thật chậm rãi, đừng để va mạnh vào thành cầu."
+          ],
+          "choice": "Cháu ghìm ga cập bến êm ái!",
+          "prompt": "Lái phà cập bến an toàn trọn vẹn {goal} chuyến hải trình nhé!",
+          "reward": "Bác ngư dân gióng lên tiếng chuông bến: tài lái phà của {name} thật điềm tĩnh và an toàn!",
+          "next": "Bến tàu luôn tấp nập thuyền bè qua lại, bác hẹn {name} hội ngộ chuyến phà sau.",
+          "who": "{name}, thuyền trưởng phà biển khéo léo",
+          "learn": "Kiểm soát tốc độ và căn khoảng cách cập bến"
+        }
+      ]
+    },
+    {
+      "id": "khi-nhay-du-dao",
+      "name": "Khỉ Nhảy Dù Đảo Cổ",
+      "look": "animal-monkey",
+      "tint": "#b88838",
+      "where": "Dưới bóng cây dừa nghiêng",
+      "place": "Cây dừa nghiêng",
+      "company": [
+        {
+          "routine": "pupil",
+          "name": "Bạn nhỏ nhặt dừa rụng",
+          "model": "person-g"
+        }
+      ],
+      "games": [
+        {
+          "game": "parachute-land",
+          "title": "Nhảy dù tiếp đất đảo hoang cùng Khỉ Nhảy Dù Đảo Cổ",
+          "summary": "Dù bung lượn giữa trời lộng gió, bé lượn cánh dù né gió xoáy để đáp đúng tâm hồng tâm.",
+          "lines": [
+            "Từ ngọn cây dừa bay vút lên bầu trời thích lắm, {name} khoác dù bay cùng tớ nào!",
+            "Xem chiều gió thổi rồi kéo dù sang bên đó để đáp ngay ngắn vào giữa vòng tròn nhé."
+          ],
+          "choice": "Tớ bay lượn trên trời đây!",
+          "prompt": "Điều khiển dù tiếp đất chuẩn xác {goal} lần trên bãi cát nhé!",
+          "reward": "Khỉ con vỗ tay nhảy tưng tưng: {name} lượn cánh dù êm ái trúng phóc hồng tâm luôn!",
+          "next": "Gió đại dương vẫn nâng cánh dù lượn, Khỉ con chờ {name} bay thêm vòng nữa.",
+          "who": "{name}, phi công nhảy dù đảo hoang",
+          "learn": "Đoán hướng gió và điều chỉnh tay lái"
+        },
+        {
+          "game": "chain-pop",
+          "title": "Kích hoạt chuỗi ánh sáng ngọc trai cùng Khỉ Nhảy Dù",
+          "summary": "Đàn sứa biển lập lòe dưới làn nước, bé chạm một điểm khởi đầu để tạo phản ứng nổ liên hoàn.",
+          "lines": [
+            "Dưới rạn san hô có đàn sứa phát sáng rực rỡ kìa, {name} ngắm cùng tớ nhé!",
+            "Chạm một nhát vào chỗ đông nhất để vòng sáng nở bung, làm sáng bừng cả chuỗi sứa."
+          ],
+          "choice": "Tớ kích nổ chuỗi sáng liền!",
+          "prompt": "Tạo phản ứng dây chuyền làm sáng bừng {goal} đàn ngọc trai biển nhé!",
+          "reward": "Khỉ con đu cành reo to: cả mặt biển sáng bừng lấp lánh như sao nhờ {name} rồi!",
+          "next": "Đáy biển đêm nay vẫn lung linh huyền ảo, Khỉ con chờ {name} quay lại chơi tiếp.",
+          "who": "{name}, nhà thám hiểm ánh sáng biển sâu",
+          "learn": "Tìm vị trí trung tâm để tạo phản ứng liên hoàn"
+        },
+        {
+          "game": "mini-golf",
+          "title": "Đánh gôn mini trên bãi cát cùng Khỉ Nhảy Dù Đảo Cổ",
+          "summary": "Sân cát mấp mô uốn lượn, bé kéo gậy căn lực đánh bóng men theo vách lọt gọn vào hố cờ.",
+          "lines": [
+            "Tớ vừa tạo một sân gôn mini quanh gốc dừa nè, {name} thi đánh bóng với tớ đi!",
+            "Kéo ngược lại để lấy đà rồi thả tay, nhớ đừng đánh quá mạnh kẻo bóng nhảy qua hố."
+          ],
+          "choice": "Tớ ngắm đường lăn vào lỗ!",
+          "prompt": "Đánh bóng lăn trúng hố cờ đạt {goal} điểm thật xuất sắc nhé!",
+          "reward": "Khỉ con gãi đầu cười toe: bóng của {name} lăn lượn một đường rồi tụt tọt vào lỗ!",
+          "next": "Sân cát bờ biển còn nhiều chướng ngại mới, Khỉ con đợi {name} so tài đường gậy.",
+          "who": "{name}, tay gôn cừ khôi bờ biển",
+          "learn": "Ước lượng lực kéo và hướng bóng dội lại"
+        }
+      ]
     }
   ],
   "residents": [

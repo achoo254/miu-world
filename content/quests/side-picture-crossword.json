@@ -1,0 +1,80 @@
+{
+  "id": "side-picture-crossword",
+  "region": "thu-vien",
+  "chapter": 1,
+  "title": "Giải đố chữ bằng hình ảnh cùng Thầy Đố Chữ Hán",
+  "status": "active",
+  "category": "side",
+  "summary": "Bảng ô chữ đan xen gợi mở qua những nét vẽ mộc mạc, bé điền chữ cái hoàn thành ô chữ.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, trạng nguyên giải đố nhí",
+    "where": "Bàn gỗ lớn phòng đọc",
+    "goal": "Điền đúng tất cả các ô của ba bảng đố chữ hình ảnh nhé!",
+    "play": "Mỗi hình là một từ: từ đi ngang bắt đầu bên phải hình, từ đi dọc bắt đầu dưới hình.",
+    "learn": "Liên tưởng hình ảnh sang từ ngữ và đánh vần",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Học chữ qua tranh thật thú vị phải không, rảnh rỗi trò lại ghé phòng đọc đối ẩm."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "thay-do-chu-han",
+      "lines": [
+        {
+          "speaker": "Thầy Đố Chữ Hán",
+          "text": "Thầy có một bảng câu đố bằng tranh vẽ dân gian rất độc đáo chờ {name} đấy."
+        },
+        {
+          "speaker": "Thầy Đố Chữ Hán",
+          "text": "Mỗi bức tranh gợi ra một tên gọi, con điền từng chữ cái vào ô ngang dọc cho giao nhau."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Con giải hết các ô chữ ạ!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Ô chữ hình",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Điền đúng tất cả các ô của ba bảng đố chữ hình ảnh nhé!",
+      "game": "picture-crossword",
+      "goal": 3
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Thầy Đố Chữ Hán tấm tắc khen {name} học sâu hiểu rộng, suy đoán như thần đồng!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Học chữ qua tranh thật thú vị phải không, rảnh rỗi trò lại ghé phòng đọc đối ẩm."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

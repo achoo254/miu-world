@@ -1,0 +1,80 @@
+{
+  "id": "side-sudoku-mini",
+  "region": "thu-vien",
+  "chapter": 1,
+  "title": "Sudoku mini bốn ô cùng Bé Mê Bảng Số",
+  "status": "active",
+  "category": "side",
+  "summary": "Khung lưới bốn nhân bốn xinh xắn, bé xếp bốn loại quả sao cho không trùng hàng hay cột.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, kiện tướng suy luận sudoku",
+    "where": "Chân tháp đồng hồ thư viện",
+    "goal": "Giải xong trọn vẹn ba bảng sudoku mini bốn ô nhé!",
+    "play": "Mỗi hàng, mỗi cột và mỗi ô vuông 2 × 2 phải có đủ 4 loại quả, không trùng.",
+    "learn": "Tư duy loại trừ logic trên lưới hai chiều",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Những con số kỳ diệu luôn chờ cậu dưới chân tháp đồng hồ, nhớ quay lại chơi nha."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "be-me-bang-so",
+      "lines": [
+        {
+          "speaker": "Bé Mê Bảng Số",
+          "text": "Tớ vừa làm xong một bàn cờ số sudoku mini hình quả rất ngộ nghĩnh này {name}."
+        },
+        {
+          "speaker": "Bé Mê Bảng Số",
+          "text": "Mỗi hàng, mỗi cột và mỗi ô vuông nhỏ phải có đủ bốn loại quả khác nhau, không được lặp lại."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ xếp quả vào ô ngay!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Sudoku quả 4 × 4",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Giải xong trọn vẹn ba bảng sudoku mini bốn ô nhé!",
+      "game": "sudoku-mini",
+      "goal": 3
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Bé Mê Bảng Số cười tít mắt, khen {name} suy luận logic chẳng thua gì nhà toán học!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Những con số kỳ diệu luôn chờ cậu dưới chân tháp đồng hồ, nhớ quay lại chơi nha."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "id": "side-bank-shot",
+  "region": "truong-hoc",
+  "chapter": 1,
+  "title": "Ném bóng bật tường cùng Chó Đội Trưởng",
+  "status": "active",
+  "category": "side",
+  "summary": "Bạn Gấu núp sau chồng thùng gỗ: kéo đường ngắm cho bóng bật tường dội thẳng vào tay bạn.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, chuyên gia ném bóng bật tường",
+    "where": "Mép sân bóng rổ trường",
+    "goal": "Ném bóng dội tường trúng đích tám lần nhé!",
+    "play": "Bạn gấu đứng sau chồng thùng, ném thẳng không tới được.",
+    "learn": "Dự đoán góc phản xạ khi bóng đập tường",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Giờ ra chơi nào đội bóng cũng tập ném, {name} cứ ra mép sân trường tìm Chó Đội Trưởng nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "cho-doi-truong",
+      "lines": [
+        {
+          "speaker": "Chó Đội Trưởng",
+          "text": "Gâu gâu! {name} ơi, bạn Gấu đứng tít sau góc khuất ném thẳng không tới được."
+        },
+        {
+          "speaker": "Chó Đội Trưởng",
+          "text": "Cậu kéo đường chấm căn góc để bóng nảy qua tường dội trúng tay bạn Gấu giúp tớ nha."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Bật tường dội góc, bóng tới tay ngay!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Bóng bật tường",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Ném bóng dội tường trúng đích tám lần nhé!",
+      "game": "bank-shot",
+      "goal": 8
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Chó Đội Trưởng quẫy đuôi rối rít: {name} tính góc nảy chuẩn quá, bạn Gấu bắt gọn bóng rồi!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Giờ ra chơi nào đội bóng cũng tập ném, {name} cứ ra mép sân trường tìm Chó Đội Trưởng nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

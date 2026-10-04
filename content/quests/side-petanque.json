@@ -1,0 +1,80 @@
+{
+  "id": "side-petanque",
+  "region": "xom-mai-am",
+  "chapter": 1,
+  "title": "Bi sắt ném đích cùng Ông Bảy Cờ Gánh",
+  "status": "active",
+  "category": "side",
+  "summary": "Căn lực kéo tay ném viên bi sắt lăn tới thật gần viên bi đích màu vàng trên mặt đất.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, tay ném bi sắt cự phách của xóm nhỏ",
+    "where": "Dưới giàn mướp xanh mát",
+    "goal": "Ném bi sắt áp sát đích vàng gom đủ ba điểm thắng lợi nhé!",
+    "play": "Đặt ngón tay rồi kéo lên: kéo dài thì bi bay xa, kéo lệch thì bi lệch. Thả tay để ném.",
+    "learn": "Căn lực tay và ước lượng khoảng cách tới đích",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Khoảng sân râm mát cuối vườn giàn mướp luôn đón cháu đến ném bi sắt."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "ong-bay-co-ganh",
+      "lines": [
+        {
+          "speaker": "Ông Bảy Cờ Gánh",
+          "text": "Sân đất vườn nhà ông ném bi sắt là chuẩn nhất trần đời đó {name}!"
+        },
+        {
+          "speaker": "Ông Bảy Cờ Gánh",
+          "text": "Cháu kéo tay ngắm hướng rồi thả ra cho bi sắt lăn sát đích vàng nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu ném bi sắt sát đích vàng!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Ném bi sắt",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Ném bi sắt áp sát đích vàng gom đủ ba điểm thắng lợi nhé!",
+      "game": "petanque",
+      "goal": 3
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Bi sắt của {name} dừng ngay sát sạt bi vàng, cú ném xuất thần!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Khoảng sân râm mát cuối vườn giàn mướp luôn đón cháu đến ném bi sắt."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

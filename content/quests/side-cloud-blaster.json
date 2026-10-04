@@ -1,0 +1,80 @@
+{
+  "id": "side-cloud-blaster",
+  "region": "nong-trai",
+  "chapter": 1,
+  "title": "Thổi mây đuổi bão với Bé Chăn Gà Con",
+  "status": "active",
+  "category": "side",
+  "summary": "Mây xám kéo đến che khuất chuồng gà, bé phun nước làm tan biến mây mù u ám.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, dũng sĩ thổi bay mây đen",
+    "where": "Mép rào chuồng gà nông trại",
+    "goal": "Tưới nước xua tan được ba mươi đám mây xám xịt nhé!",
+    "play": "Giữ tay trên màn hình, vòi nước chạy theo tay {name} và tự phun lên.",
+    "learn": "Lướt ngón tay đón đầu và ngắm chuẩn mục tiêu",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Trời quang mây tạnh rồi, hôm nào có giông bão cậu lại tới chuồng gà giúp tớ nha."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "be-chan-ga-con",
+      "lines": [
+        {
+          "speaker": "Bé Chăn Gà Con",
+          "text": "Kìa {name}, đám mây khô xám xịt đang bay lơ lửng muốn làm chuồng gà sũng nước mưa!"
+        },
+        {
+          "speaker": "Bé Chăn Gà Con",
+          "text": "Cậu điều khiển vòi phun nước tưới trúng đám mây để xua tan bầu trời u ám đi nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ cầm vòi xua tan mây!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Tưới mây khô",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Tưới nước xua tan được ba mươi đám mây xám xịt nhé!",
+      "game": "cloud-blaster",
+      "goal": 30
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Bé Chăn Gà Con nhảy chân sáo: trời lại hửng nắng vàng nhờ có {name} dũng cảm rồi!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Trời quang mây tạnh rồi, hôm nào có giông bão cậu lại tới chuồng gà giúp tớ nha."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

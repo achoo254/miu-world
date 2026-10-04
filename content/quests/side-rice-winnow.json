@@ -1,0 +1,80 @@
+{
+  "id": "side-rice-winnow",
+  "region": "nong-trai",
+  "chapter": 1,
+  "title": "Sảy thóc hạt mẩy cùng Bác Nông Dân Thành",
+  "status": "active",
+  "category": "side",
+  "summary": "Gió đồng thổi mát rượi, Bác Nông Dân Thành hướng dẫn bé hất nia sảy sạch vỏ trấu.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, tay sảy thóc thoăn thoắt",
+    "where": "Bờ ruộng khu trồng trọt",
+    "goal": "Sảy sạch trấu cho năm nia thóc vàng óng nhé!",
+    "play": "Vuốt lên để hất gạo khỏi nia. Gió thổi trấu bay đi, gạo rơi lại nia.",
+    "learn": "Căn lực nâng tay và tận dụng sức gió tự nhiên",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Thóc đã sạch bóng rồi, hẹn gặp lại cháu ở bờ ruộng khu trồng trọt thân thương."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "bac-nong-dan-thanh",
+      "lines": [
+        {
+          "speaker": "Bác Nông Dân Thành",
+          "text": "{name} ơi, mẻ thóc vừa giã xong còn lẫn nhiều vỏ trấu bay lơ lửng quá."
+        },
+        {
+          "speaker": "Bác Nông Dân Thành",
+          "text": "Cháu nâng chiếc nia hất nhẹ lên cao đón gió để vỏ bay đi còn hạt mẩy rơi lại nia."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu nâng nia thóc lên ngay!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Sảy gạo giúp Tấm",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Sảy sạch trấu cho năm nia thóc vàng óng nhé!",
+      "game": "rice-winnow",
+      "goal": 5
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Bác Nông Dân Thành ngắm nia thóc mẩy, khen {name} sảy thóc vô cùng điệu nghệ!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Thóc đã sạch bóng rồi, hẹn gặp lại cháu ở bờ ruộng khu trồng trọt thân thương."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "id": "side-tens-bundles",
+  "region": "truong-hoc",
+  "chapter": 1,
+  "title": "Bó chục que tính cùng Gấu Bó Đũa",
+  "status": "active",
+  "category": "side",
+  "summary": "Que tính rải rác trên bàn học: khoanh tròn đủ mười que để buộc thành một bó chục vuông vắn.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, thợ bó que tính cẩn thận",
+    "where": "Ghế đá sân sau dãy lớp",
+    "goal": "Khoanh buộc thành công năm bó que tính chục nhé!",
+    "play": "Vẽ một vòng quanh đúng 10 que tính để buộc thành một bó.",
+    "learn": "Hiểu bản chất hàng chục và hàng đơn vị",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Sắp tới bài đếm trăm, {name} nhớ ghé ghế đá sân sau bó que tính cùng Gấu Bó Đũa nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "gau-bo-dua",
+      "lines": [
+        {
+          "speaker": "Gấu Bó Đũa",
+          "text": "{name} ơi, tớ có cả rổ que tính nhiều màu cần phân loại thành từng bó chục."
+        },
+        {
+          "speaker": "Gấu Bó Đũa",
+          "text": "Cậu vẽ vòng quanh đúng mười que để buộc lại, rồi đếm xem có mấy chục và mấy đơn vị nha."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Mười que thành bó, đếm chục thật nhanh!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Bó que tính",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Khoanh buộc thành công năm bó que tính chục nhé!",
+      "game": "tens-bundles",
+      "goal": 5
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Gấu Bó Đũa giơ từng bó que gọn gàng: {name} đếm chục que chuẩn xác, bài toán dễ ợt rồi!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Sắp tới bài đếm trăm, {name} nhớ ghé ghế đá sân sau bó que tính cùng Gấu Bó Đũa nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

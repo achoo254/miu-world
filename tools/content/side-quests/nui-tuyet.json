@@ -185,6 +185,316 @@
           "learn": "Nhận ra cả hình từ một phần nhỏ"
         }
       ]
+    },
+    {
+      "id": "canh-cut-khuc-con-cau",
+      "name": "Cánh Cụt Khúc Côn Cầu",
+      "look": "animal-penguin",
+      "tint": "#2888c8",
+      "where": "Sân băng tự nhiên trên hồ",
+      "place": "Hồ băng",
+      "company": [
+        {
+          "routine": "penguin",
+          "name": "Chim cánh cụt con",
+          "model": "animal-penguin"
+        }
+      ],
+      "games": [
+        {
+          "game": "air-hockey",
+          "title": "Chơi khúc côn cầu trên băng cùng Cánh Cụt Khúc Côn Cầu",
+          "summary": "Bé điều khiển tay gạt trượt trên mặt băng phẳng để đẩy đĩa tròn vào lưới đối thủ.",
+          "lines": [
+            "{name} ơi, sân băng tự nhiên hôm nay trơn và phẳng thích lắm!",
+            "Cậu cầm tay gạt bên này rồi cùng tớ thi tài đẩy đĩa tròn nhé."
+          ],
+          "choice": "Tớ vào vị trí bắt đĩa ngay!",
+          "prompt": "Đẩy đĩa trúng khung thành đối phương được {goal} điểm nhé!",
+          "reward": "Cánh Cụt vỗ cánh ríu rít: những đường gạt đĩa của {name} hiểm hóc quá!",
+          "next": "Sân băng luôn sẵn sàng, Cánh Cụt đón {name} thi thêm trận nữa nhé.",
+          "who": "{name}, tuyển thủ khúc côn cầu trên băng",
+          "learn": "Phản xạ nhanh và chọn góc gạt đĩa"
+        },
+        {
+          "game": "drift-corner",
+          "title": "Lái xe ôm cua trên đường băng cùng Cánh Cụt",
+          "summary": "Xe lao trên tuyết trơn, bé giữ tay cho xe bám cột ôm cua rồi thả tay chạy thẳng.",
+          "lines": [
+            "Đường đua quanh hồ băng trơn trượt lắm, {name} cầm lái thử sức nào!",
+            "Tới góc cua thì giữ chặt tay quanh cột cờ, xong cua mới thả ra nhé."
+          ],
+          "choice": "Tớ giữ chắc tay lái rồi!",
+          "prompt": "Lái xe khéo léo vượt qua {goal} khúc cua trượt băng nhé!",
+          "reward": "Cánh Cụt nhảy múa cổ vũ: {name} ôm cua ngọt ngào chẳng trượt ra ngoài!",
+          "next": "Đường đua hồ băng còn dài, Cánh Cụt chờ {name} tiếp tục so tài tốc độ.",
+          "who": "{name}, tay đua cừ khôi trên tuyết",
+          "learn": "Canh đúng lúc giữ và thả tay lái"
+        },
+        {
+          "game": "ice-bridge",
+          "title": "Bắc cầu băng qua hồ cùng Cánh Cụt Khúc Côn Cầu",
+          "summary": "Mặt hồ có nhiều hố sâu, bé dùng bông tuyết hóa phép đông đá để mở lối đi an toàn.",
+          "lines": [
+            "Hồ băng nứt ra nhiều chỗ hiểm trở quá, {name} giúp tớ bắc cầu sang bờ kia nhé!",
+            "Chạm vào ô nước để đóng thành tảng đá băng vững chãi bước qua."
+          ],
+          "choice": "Để tớ ghép cầu băng thật chắc!",
+          "prompt": "Hóa phép nối liền {goal} cây cầu băng vượt qua hồ nước nhé!",
+          "reward": "Cánh Cụt chạy ào sang bờ: nhờ chiếc cầu của {name} mà đàn chim về tổ an toàn!",
+          "next": "Mùa đông còn lạnh giá, Cánh Cụt đợi {name} ghé chơi và bắc thêm cầu băng.",
+          "who": "{name}, người xây cầu băng khéo léo",
+          "learn": "Tiết kiệm lượt đi và nối đường thẳng hàng"
+        }
+      ]
+    },
+    {
+      "id": "gau-bac-cuc-cau-ca",
+      "name": "Gấu Bắc Cực Câu Cá",
+      "look": "animal-polar",
+      "tint": "#a8c8e8",
+      "where": "Bên ngoài hang băng",
+      "place": "Hang băng và trạm thám hiểm",
+      "company": [
+        {
+          "routine": "polar-bear",
+          "name": "Gấu tuyết con ngồi chơi",
+          "model": "animal-polar"
+        }
+      ],
+      "games": [
+        {
+          "game": "ice-fishing",
+          "title": "Câu cá qua lỗ băng cùng Gấu Bắc Cực Câu Cá",
+          "summary": "Mặt hồ phủ lớp băng dày, bé quan sát bóng cá lượn lờ để thả dây câu trúng lỗ.",
+          "lines": [
+            "Gió lạnh ngoài cửa hang thổi bay tuyết rồi, {name} ngồi câu cá với bác nhé!",
+            "Nhìn bóng cá bơi dưới băng rồi chạm thả mồi trước một nhịp cho cá đớp."
+          ],
+          "choice": "Cháu cầm cần câu sẵn sàng rồi!",
+          "prompt": "Kéo dây câu bắt được {goal} con cá tươi ngon dưới băng nhé!",
+          "reward": "Gấu Bắc Cực cười xòa: xô cá đầy ắp nhờ đôi mắt tinh tường của cháu {name}!",
+          "next": "Dưới lòng hồ còn cá ngon, bác Gấu đợi {name} ghé trạm thám hiểm câu tiếp.",
+          "who": "{name}, tay câu kiên nhẫn bên hố băng",
+          "learn": "Đoán trước hướng bơi của đàn cá"
+        },
+        {
+          "game": "penguin-share",
+          "title": "Chia đều cá cho chim cánh cụt cùng Gấu Bắc Cực",
+          "summary": "Đàn cánh cụt bụng đói đứng đợi, bé chia từng con cá sao cho các bạn nhận phần bằng nhau.",
+          "lines": [
+            "Mấy chú cánh cụt con đi kiếm mồi cả buổi mệt lả rồi, {name} chia cá giúp bác!",
+            "Chạm vào từng bạn để chia, nhớ nhẩm cho bạn nào cũng nhận số cá như nhau."
+          ],
+          "choice": "Cháu chia thật công bằng cho từng bạn!",
+          "prompt": "Chia phần cá thật đều cho {goal} nhóm cánh cụt tí hon nhé!",
+          "reward": "Bác Gấu xoa đầu khen ngợi: cháu {name} chia phần chu đáo, bạn nào cũng no bụng!",
+          "next": "Đàn cánh cụt lại sắp tới giờ ăn trưa, bác Gấu đợi {name} quay lại trổ tài.",
+          "who": "{name}, người chia cá công bằng",
+          "learn": "Phép chia đều và kiểm tra số lượng"
+        },
+        {
+          "game": "melting-floes",
+          "title": "Nhảy qua tảng băng trôi cùng Gấu Bắc Cực Câu Cá",
+          "summary": "Những tảng băng bập bềnh sắp chìm, bé dẫn bạn nhỏ nhảy nhanh sang tảng vững để nhặt cá.",
+          "lines": [
+            "Nước hồ đang cuốn băng trôi nhanh quá, {name} cùng bác vượt qua dòng nước nào!",
+            "Tảng nào nứt thì nhảy sang ngay tảng bên cạnh kẻo trượt chân ướt áo đấy."
+          ],
+          "choice": "Cháu bước nhẹ chân nhảy sang ngay!",
+          "prompt": "Nhặt được {goal} con cá tươi trên những tảng băng trôi nhé!",
+          "reward": "Gấu Bắc Cực vỗ vai khen: chân cháu {name} nhanh thoăn thoắt, nhảy chuẩn từng bước!",
+          "next": "Dòng nước lạnh vẫn còn trôi dạt, bác Gấu chờ {name} ở cửa hang băng.",
+          "who": "{name}, nhà thám hiểm băng trôi dũng cảm",
+          "learn": "Quyết định dứt khoát trước tình huống vội"
+        }
+      ]
+    },
+    {
+      "id": "cao-tuyet-dieu-khac",
+      "name": "Cáo Tuyết Điêu Khắc",
+      "look": "animal-fox",
+      "tint": "#e8e8f8",
+      "where": "Giữa quảng trường làng tuyết",
+      "place": "Quảng trường làng tuyết",
+      "company": [
+        {
+          "routine": "pupil",
+          "name": "Bé đắp tượng tuyết",
+          "model": "person-f"
+        }
+      ],
+      "games": [
+        {
+          "game": "ice-sculpt",
+          "title": "Gọt khối băng thành tượng với Cáo Tuyết Điêu Khắc",
+          "summary": "Khối băng trong suốt giấu bức tượng bên trong, bé gõ nhẹ tách bỏ lớp băng thừa bao quanh.",
+          "lines": [
+            "Giữa quảng trường có mấy khối băng trong vắt kìa, {name} cùng tớ tạc tượng nhé!",
+            "Vuốt nhẹ để gõ bỏ phần viền nhạt bên ngoài, giữ nguyên dáng tượng xanh bên trong."
+          ],
+          "choice": "Tớ khéo tay gọt đẽo lắm!",
+          "prompt": "Khéo léo gọt đẽo thành công {goal} bức tượng băng tuyệt đẹp nhé!",
+          "reward": "Cáo Tuyết phe phẩy chiếc đuôi trắng: tượng của {name} tạc lấp lánh như pha lê!",
+          "next": "Còn nhiều khối băng mới đưa về làng, Cáo Tuyết hẹn {name} gọt tượng tiếp.",
+          "who": "{name}, nghệ nhân điêu khắc băng tuyết",
+          "learn": "Phân biệt đường nét hình vẽ và rèn sự khéo tay"
+        },
+        {
+          "game": "snow-tracks",
+          "title": "Đoán dấu chân trên tuyết cùng Cáo Tuyết Điêu Khắc",
+          "summary": "Mặt tuyết in hằn những vết chân lạ, bé quan sát vết bước để tìm ra bạn thú rừng tương ứng.",
+          "lines": [
+            "Đêm qua có bao nhiêu bạn thú đi dạo quanh làng tuyết đấy {name} ơi!",
+            "Cậu nhìn hình vết chân in trên nền tuyết trắng rồi chỉ đúng tên bạn ấy nhé."
+          ],
+          "choice": "Tớ nhận ra dấu chân ngay!",
+          "prompt": "Đoán đúng danh tính của {goal} bạn thú qua vết chân trên tuyết nhé!",
+          "reward": "Cáo Tuyết nghiêng đầu thán phục: tài thám tử của {name} chẳng thua ai ở xứ tuyết!",
+          "next": "Tuyết mới lại rơi phủ lối, Cáo Tuyết chờ {name} ra quảng trường soi dấu chân.",
+          "who": "{name}, thám tử dò dấu vết rừng tuyết",
+          "learn": "Nhận biết hình dạng bước chân động vật"
+        },
+        {
+          "game": "nonogram",
+          "title": "Vẽ tranh ô tuyết cùng Cáo Tuyết Điêu Khắc",
+          "summary": "Bảng ô vuông có những con số gợi ý, bé tô màu từng ô để bức tranh ẩn giấu dần xuất hiện.",
+          "lines": [
+            "Tớ vừa vẽ xong câu đố tranh bí ẩn bằng những con số trên tuyết nè {name}!",
+            "Đếm số ô ở đầu mỗi hàng rồi chạm tô đúng vị trí để bức vẽ hiện ra."
+          ],
+          "choice": "Để tớ giải từng ô số nhé!",
+          "prompt": "Tô đúng các ô số để hoàn thành {goal} bức tranh tuyết bí ẩn nhé!",
+          "reward": "Cáo Tuyết reo mừng: tranh {name} tô hiện lên rõ nét và sinh động quá!",
+          "next": "Bảng vẽ giữa làng còn nhiều trang mới, Cáo Tuyết chờ {name} ghé tô tiếp.",
+          "who": "{name}, họa sĩ tranh ô tuyết",
+          "learn": "Tư duy logic theo hàng ngang và hàng dọc"
+        }
+      ]
+    },
+    {
+      "id": "nai-nho-vach-da",
+      "name": "Nai Nhỏ Vách Đá",
+      "look": "animal-deer",
+      "tint": "#c89878",
+      "where": "Lối vào ga cáp treo làng",
+      "place": "Ga cáp treo làng",
+      "company": [
+        {
+          "routine": "pupil",
+          "name": "Bé đợi đi cáp treo",
+          "model": "person-b"
+        }
+      ],
+      "games": [
+        {
+          "game": "wall-jump",
+          "title": "Nhảy bật qua vách hẻm núi cùng Nai Nhỏ Vách Đá",
+          "summary": "Hẻm núi dựng đứng hai bên, bé chạm màn hình để nhảy bật qua lại giữa hai vách đá nhọn.",
+          "lines": [
+            "Vách đá cạnh ga cáp treo dốc đứng lắm, {name} thử tài nhảy cao với tớ nào!",
+            "Chạm thật nhanh để bật sang bờ bên kia, tránh xa những mũi băng sắc nhọn nhé."
+          ],
+          "choice": "Tớ nhún chân bật nhảy liền!",
+          "prompt": "Chinh phục độ cao {goal} mét trên hẻm núi đá tuyết nhé!",
+          "reward": "Nai Nhỏ nhấc cao chân khen ngợi: {name} nhảy thoăn thoắt hệt như sơn dương núi!",
+          "next": "Hẻm núi tuyết vẫn còn gió thổi vi vu, Nai Nhỏ đợi {name} cùng leo vách đá.",
+          "who": "{name}, nhà leo vách đá cừ khôi",
+          "learn": "Canh thời gian bật nhảy nhịp nhàng"
+        },
+        {
+          "game": "gravity-flip",
+          "title": "Lật đảo trọng lực cùng Nai Nhỏ Vách Đá",
+          "summary": "Hang đá kỳ ảo có phép lạ, bé chạm đổi chiều rơi lên trần hoặc xuống sàn để tránh chướng ngại.",
+          "lines": [
+            "Đường hầm dẫn lên ga cáp treo có luồng gió thần kỳ đấy {name} ơi!",
+            "Cứ chạm nhẹ là cậu sẽ chạy ngược trên trần hang để né tảng đá phía dưới."
+          ],
+          "choice": "Chạy trên trần hang vui quá!",
+          "prompt": "Lướt đi thật an toàn quãng đường {goal} mét trong hang băng nhé!",
+          "reward": "Nai Nhỏ tròn xoe đôi mắt: {name} đảo trần sàn khéo léo chẳng vấp viên đá nào!",
+          "next": "Hang băng luôn sáng ánh pha lê, Nai Nhỏ ngóng {name} quay lại chạy tiếp ván mới.",
+          "who": "{name}, tay lướt trọng lực tài ba",
+          "learn": "Phản xạ chuyển đổi vị trí tức thì"
+        },
+        {
+          "game": "cable-car",
+          "title": "Xếp khách lên cabin cáp treo cùng Nai Nhỏ Vách Đá",
+          "summary": "Cabin cáp treo lần lượt lướt tới ga, bé mời các nhóm khách vừa vặn số chỗ trống bước vào.",
+          "lines": [
+            "Khách đang xếp hàng đợi lên đỉnh ngắm tuyết đông lắm rồi, {name} soát vé giúp tớ!",
+            "Mỗi cabin chỉ vừa bốn chỗ thôi, chọn nhóm khách có số người đúng chỗ trống nhé."
+          ],
+          "choice": "Cháu mời đúng số khách lên xe!",
+          "prompt": "Sắp xếp cho {goal} lượt hành khách lên cabin cáp treo an toàn nhé!",
+          "reward": "Nai Nhỏ rung cặp gạc xinh xắn: cabin nào cháu {name} xếp cũng vừa khít chỗ!",
+          "next": "Tuyến cáp treo vẫn rộn rã chuông reo, Nai Nhỏ hẹn gặp {name} ở cửa ga làng.",
+          "who": "{name}, người điều phối cáp treo chu đáo",
+          "learn": "Phép cộng gộp vừa đủ số lượng cho trước"
+        }
+      ]
+    },
+    {
+      "id": "nguoi-tuyet-dem-bac",
+      "name": "Người Tuyết Đếm Bậc",
+      "look": "animal-beaver",
+      "tint": "#88a8d8",
+      "where": "Đài quan sát đỉnh núi tuyết",
+      "place": "Đỉnh núi và đài quan sát",
+      "company": [
+        {
+          "routine": "pupil",
+          "name": "Bạn nhỏ ngắm kính thiên văn",
+          "model": "person-o"
+        }
+      ],
+      "games": [
+        {
+          "game": "pitch-stairs",
+          "title": "Lắng nghe bậc thang âm thanh cùng Người Tuyết Đếm Bậc",
+          "summary": "Từng giọt băng rơi tạo nốt nhạc ngân nga, bé lắng tai nghe xem nốt sau cao hay thấp hơn.",
+          "lines": [
+            "Gió trên đỉnh núi thổi qua chuông băng reo vang kìa, {name} nghe cùng tớ nhé!",
+            "Tiếng sau cao hơn thì chọn mũi tên lên, thấp hơn thì bấm mũi tên xuống."
+          ],
+          "choice": "Đôi tai tớ nghe rõ lắm!",
+          "prompt": "Lắng nghe chuẩn xác để bước lên {goal} bậc thang nốt nhạc nhé!",
+          "reward": "Người Tuyết Đếm Bậc xoay tròn vui sướng: {name} có đôi tai cảm âm thật tuyệt vời!",
+          "next": "Gió núi vẫn gảy từng bản nhạc trong trẻo, Người Tuyết đón {name} lên đài nghe tiếp.",
+          "who": "{name}, nhà thẩm âm trên đỉnh núi",
+          "learn": "So sánh cao độ âm thanh trầm bổng"
+        },
+        {
+          "game": "block-count",
+          "title": "Đếm khối hộp tuyết cùng Người Tuyết Đếm Bậc",
+          "summary": "Những khối hộp tuyết xếp chồng so le, bé đếm cả những khối bị khuất phía sau để tìm số lượng.",
+          "lines": [
+            "Tớ vừa xếp những khối hộp tuyết vuông vức thành tháp này, {name} đoán xem có mấy khối?",
+            "Đừng quên đếm cả những khối hộp nằm đỡ ở hàng dưới bị che khuất nhé."
+          ],
+          "choice": "Tớ đếm kỹ từng tầng một!",
+          "prompt": "Đếm chính xác số khối hộp trong {goal} chồng tuyết xếp tầng nhé!",
+          "reward": "Người Tuyết gật gù thán phục: mắt {name} sáng như sao, khối ẩn nào cũng thấy!",
+          "next": "Tháp tuyết trên đỉnh còn nhiều hình mới, Người Tuyết mong {name} ghé đếm cùng.",
+          "who": "{name}, chuyên gia đếm khối hình không gian",
+          "learn": "Tưởng tượng và đếm khối lập phương bị khuất"
+        },
+        {
+          "game": "crowd-gates",
+          "title": "Chọn cổng làm đông bạn cùng Người Tuyết Đếm Bậc",
+          "summary": "Đoàn bạn chạy trên sườn núi, bé lượn qua các cổng cộng nhân để tăng quân số đẩy xe trượt.",
+          "lines": [
+            "Đoàn người tuyết tí hon chuẩn bị lăn xuống dốc rồi đấy, {name} dẫn đường nào!",
+            "Lướt sang cổng có phép cộng hoặc nhân lớn hơn để gọi thêm thật nhiều bạn đồng hành."
+          ],
+          "choice": "Cổng nào đông bạn tớ chọn liền!",
+          "prompt": "Dẫn dắt đoàn bạn đạt tới {goal} thành viên để đẩy cỗ xe tuyết nhé!",
+          "reward": "Người Tuyết vẫy đôi tay gỗ: đoàn bạn đông đúc của {name} đã đẩy xe về đích rồi!",
+          "next": "Đỉnh núi vẫn phủ tuyết trắng xóa, Người Tuyết Đếm Bậc đứng chờ {name} quay lại chơi.",
+          "who": "{name}, đội trưởng dẫn đường đoàn người tuyết",
+          "learn": "So sánh kết quả phép tính nhanh chóng"
+        }
+      ]
     }
   ],
   "residents": [

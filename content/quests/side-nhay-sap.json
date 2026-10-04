@@ -1,0 +1,80 @@
+{
+  "id": "side-nhay-sap",
+  "region": "truong-hoc",
+  "chapter": 1,
+  "title": "Nhảy sạp rộn ràng cùng Thỏ Măng Non",
+  "status": "active",
+  "category": "side",
+  "summary": "Tiếng sào tre gõ nhịp chan chát: canh lúc sào mở rộng để thoăn thoắt bước chân vào rồi nhảy ra.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, bước chân nhịp nhàng nhảy sạp",
+    "where": "Hành lang trước hội trường",
+    "goal": "Nhảy sạp khéo léo vượt qua ba mươi nhịp sào nhé!",
+    "play": "Sào tre gõ \"cạch cạch\" hai nhịp, rồi mở ra hai nhịp.",
+    "learn": "Bắt đúng nhịp phách và phản xạ chân tay",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Hội diễn văn nghệ sắp tới rồi, {name} nhớ ghé hành lang hội trường múa sạp cùng thỏ nha."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "tho-mang-non",
+      "lines": [
+        {
+          "speaker": "Thỏ Măng Non",
+          "text": "Cạch cạch tùng cạch! {name} có nghe thấy tiếng sào tre nhảy sạp rộn rã không?"
+        },
+        {
+          "speaker": "Thỏ Măng Non",
+          "text": "Sào tre vừa mở ra hai nhịp là cậu nhảy vào ngay, rồi nhịp sau nhảy ra trước khi sào khép nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Chân nhịp nhàng bước, sào khép chẳng lo!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Nhảy sạp",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Nhảy sạp khéo léo vượt qua ba mươi nhịp sào nhé!",
+      "game": "nhay-sap",
+      "goal": 30
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Thỏ Măng Non vỗ tay theo nhịp gõ sào: {name} uyển chuyển như vũ công múa sạp vùng cao!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Hội diễn văn nghệ sắp tới rồi, {name} nhớ ghé hành lang hội trường múa sạp cùng thỏ nha."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

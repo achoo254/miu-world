@@ -1,0 +1,80 @@
+{
+  "id": "side-pitch-stairs",
+  "region": "nui-tuyet",
+  "chapter": 1,
+  "title": "Lắng nghe bậc thang âm thanh cùng Người Tuyết Đếm Bậc",
+  "status": "active",
+  "category": "side",
+  "summary": "Từng giọt băng rơi tạo nốt nhạc ngân nga, bé lắng tai nghe xem nốt sau cao hay thấp hơn.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, nhà thẩm âm trên đỉnh núi",
+    "where": "Đài quan sát đỉnh núi tuyết",
+    "goal": "Lắng nghe chuẩn xác để bước lên mười lăm bậc thang nốt nhạc nhé!",
+    "play": "Hai nhũ băng lần lượt kêu và sáng lên. Nhũ băng bên phải kêu cao hơn.",
+    "learn": "So sánh cao độ âm thanh trầm bổng",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Gió núi vẫn gảy từng bản nhạc trong trẻo, Người Tuyết đón {name} lên đài nghe tiếp."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "nguoi-tuyet-dem-bac",
+      "lines": [
+        {
+          "speaker": "Người Tuyết Đếm Bậc",
+          "text": "Gió trên đỉnh núi thổi qua chuông băng reo vang kìa, {name} nghe cùng tớ nhé!"
+        },
+        {
+          "speaker": "Người Tuyết Đếm Bậc",
+          "text": "Tiếng sau cao hơn thì chọn mũi tên lên, thấp hơn thì bấm mũi tên xuống."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Đôi tai tớ nghe rõ lắm!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Cầu thang nốt nhạc",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Lắng nghe chuẩn xác để bước lên mười lăm bậc thang nốt nhạc nhé!",
+      "game": "pitch-stairs",
+      "goal": 15
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Người Tuyết Đếm Bậc xoay tròn vui sướng: {name} có đôi tai cảm âm thật tuyệt vời!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Gió núi vẫn gảy từng bản nhạc trong trẻo, Người Tuyết đón {name} lên đài nghe tiếp."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

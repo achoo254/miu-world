@@ -1,0 +1,80 @@
+{
+  "id": "side-hoa-dang",
+  "region": "lang-ven-song",
+  "chapter": 1,
+  "title": "Thả hoa đăng trên sông cùng Cô Đèn Lồng Sen",
+  "status": "active",
+  "category": "side",
+  "summary": "Chạm nhẹ tay thả từng chiếc thuyền hoa đăng lấp lánh trôi êm đềm theo dòng nước mát.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người thắp sáng dòng sông trăng",
+    "where": "Dưới bóng đa đầu làng",
+    "goal": "Thả trôi êm ả mười hai đóa hoa đăng lung linh trên mặt nước nhé!",
+    "play": "{name} chạm dọc bờ sông để thả đèn hoa đăng. Dòng nước đưa đèn thẳng lên khúc quanh.",
+    "learn": "Canh khe hở giữa dòng nước chảy xuôi",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Mỗi tối trăng rằm, cô lại ngồi dưới gốc đa thả hoa đăng cầu an."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "co-den-long-sen",
+      "lines": [
+        {
+          "speaker": "Cô Đèn Lồng Sen",
+          "text": "Đêm hội sông làng mình thả hoa đăng rực rỡ lắm {name} ơi!"
+        },
+        {
+          "speaker": "Cô Đèn Lồng Sen",
+          "text": "Cháu chạm thả đèn tránh các đám bèo tây để hoa trôi thật xa nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu thả hoa đăng xuống nước!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Thả đèn hoa đăng",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Thả trôi êm ả mười hai đóa hoa đăng lung linh trên mặt nước nhé!",
+      "game": "hoa-dang",
+      "goal": 12
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Dòng sông lấp lánh như dát vàng nhờ bàn tay khéo léo của {name}!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Mỗi tối trăng rằm, cô lại ngồi dưới gốc đa thả hoa đăng cầu an."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

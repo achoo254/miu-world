@@ -1,0 +1,80 @@
+{
+  "id": "side-tone-mark",
+  "region": "thu-vien",
+  "chapter": 1,
+  "title": "Đặt dấu thanh đúng chỗ với Thầy Đố Chữ Hán",
+  "status": "active",
+  "category": "side",
+  "summary": "Những chiếc mũ dấu thanh rơi khỏi con chữ, bé nâng từng dấu đặt ngay ngắn trên nguyên âm.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người giữ gìn vẻ đẹp con chữ",
+    "where": "Bàn gỗ lớn phòng đọc",
+    "goal": "Đặt chuẩn xác mười lăm dấu thanh lên các con chữ nhé!",
+    "play": "Chữ dưới hình còn thiếu dấu thanh. {name} đọc thử xem đó là con gì, vật gì.",
+    "learn": "Quy tắc chính tả dấu thanh tiếng Việt",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Chữ nghĩa ngay ngắn là nết người đẹp đẽ, lần sau con lại ghé bàn gỗ lớn đàm đạo."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "thay-do-chu-han",
+      "lines": [
+        {
+          "speaker": "Thầy Đố Chữ Hán",
+          "text": "Chữ viết của trò nhỏ vừa chép đang thiếu mất dấu thanh sắc huyền hỏi ngã kìa {name}."
+        },
+        {
+          "speaker": "Thầy Đố Chữ Hán",
+          "text": "Con đọc to từ ngữ đó lên rồi kéo dấu thanh đặt đúng trên đầu con chữ cho tròn nghĩa nha."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Con đặt dấu thanh ngay ngắn ạ!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Mũ phép dấu thanh",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Đặt chuẩn xác mười lăm dấu thanh lên các con chữ nhé!",
+      "game": "tone-mark",
+      "goal": 15
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Thầy Đố Chữ Hán khen {name} đặt dấu thanh đúng chỗ, câu từ chuẩn xác và nắn nót!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Chữ nghĩa ngay ngắn là nết người đẹp đẽ, lần sau con lại ghé bàn gỗ lớn đàm đạo."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

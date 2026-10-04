@@ -1,0 +1,80 @@
+{
+  "id": "side-cap-cua",
+  "region": "dao-bi-an",
+  "chapter": 1,
+  "title": "Cắp cua bỏ giỏ trong vũng triều cùng Cua Càng Cắp Cua",
+  "status": "active",
+  "category": "side",
+  "summary": "Đàn cua con bò lổm ngổm trên cát, bé nhặt nhanh từng chú bỏ vào giỏ rồi đậy nắp lại.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, tay bắt cua khéo léo bờ biển",
+    "where": "Mép vũng nước triều rút",
+    "goal": "Bỏ giỏ gọn gàng được mười hai chú cua nhỏ trước khi nắp mở nhé!",
+    "play": "Kéo từng chú cua đang bò ngang thả vào giỏ.",
+    "learn": "Nhanh tay gắp thả và nhớ đậy nắp đồ vật",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Thủy triều lại sắp lên xuống theo nhịp, Cua Càng đợi {name} bên mép vũng nước."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "cua-cang-cap-cua",
+      "lines": [
+        {
+          "speaker": "Cua Càng Cắp Cua",
+          "text": "Nước triều rút để lại bao nhiêu chú cua tí hon kìa, {name} nhặt giúp tớ một tay!"
+        },
+        {
+          "speaker": "Cua Càng Cắp Cua",
+          "text": "Bỏ từng bạn cua vào giỏ tre rồi nhớ chạm đậy nắp ngay kẻo chúng bò ra mất."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ tay nhanh như chớp!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Cắp cua bỏ giỏ",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Bỏ giỏ gọn gàng được mười hai chú cua nhỏ trước khi nắp mở nhé!",
+      "game": "cap-cua",
+      "goal": 12
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Cua Càng gõ hai càng lách cách: {name} cắp cua thoăn thoắt, giỏ đầy ắp rồi!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Thủy triều lại sắp lên xuống theo nhịp, Cua Càng đợi {name} bên mép vũng nước."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

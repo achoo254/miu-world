@@ -1,0 +1,80 @@
+{
+  "id": "side-treasure-map-steps",
+  "region": "dao-bi-an",
+  "chapter": 1,
+  "title": "Dò bước theo bản đồ cổ cùng Thuyền Trưởng Vẹt Biển",
+  "status": "active",
+  "category": "side",
+  "summary": "Tấm da dê vẽ hướng đi bí ẩn, bé đếm số bước chân theo mũi tên để đào rương vàng dưới cát.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, nhà thám hiểm săn kho báu biển",
+    "where": "Trước lều thuyền trưởng hải tặc",
+    "goal": "Lần theo bản đồ tìm ra sáu rương báu quý giá trên đảo nhé!",
+    "play": "Bản đồ ghi số bước và mũi tên, ví dụ 3 bước lên.",
+    "learn": "Đọc hướng đi theo mũi tên và đếm bước",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Kho báu trên đảo hoang còn nhiều vô kể, thuyền trưởng đợi {name} trước lều nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "thuyen-truong-vet-bien",
+      "lines": [
+        {
+          "speaker": "Thuyền Trưởng Vẹt Biển",
+          "text": "Tấm hải đồ kho báu cổ xưa của ta đây rồi, {name} mau đếm bước cùng thuyền trưởng!"
+        },
+        {
+          "speaker": "Thuyền Trưởng Vẹt Biển",
+          "text": "Cứ nhìn kỹ số bước và mũi tên dẫn lối rồi chạm đúng vào ô đất chôn quà."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu cầm xẻng đào kho báu ngay!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Đi theo bản đồ kho báu",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Lần theo bản đồ tìm ra sáu rương báu quý giá trên đảo nhé!",
+      "game": "treasure-map-steps",
+      "goal": 6
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Vẹt Biển vỗ cánh phần phật: mắt cháu {name} tinh anh như chim ưng biển vậy!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Kho báu trên đảo hoang còn nhiều vô kể, thuyền trưởng đợi {name} trước lều nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

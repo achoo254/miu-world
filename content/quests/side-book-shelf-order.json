@@ -1,0 +1,80 @@
+{
+  "id": "side-book-shelf-order",
+  "region": "thu-vien",
+  "chapter": 1,
+  "title": "Xếp sách theo vần bảng chữ cái cùng Cô Thủ Thư Mai",
+  "status": "active",
+  "category": "side",
+  "summary": "Những cuốn sách gáy hoa nằm ngổn ngang, bé xếp từng gáy sách theo đúng thứ tự chữ số.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, phụ tá thư viện tỉ mỉ",
+    "where": "Bàn hướng dẫn cửa thư viện",
+    "goal": "Xếp ngăn nắp hai mươi hai cuốn sách lên giá gỗ nhé!",
+    "play": "Sách trên kệ xếp theo số từ bé đến lớn, từ trái sang phải.",
+    "learn": "So sánh thứ tự chữ số và chèn đúng vị trí",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Giá sách thẳng tắp rồi, khi nào tìm sách hay cháu cứ tới bàn hướng dẫn gặp cô."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "co-thu-thu-mai",
+      "lines": [
+        {
+          "speaker": "Cô Thủ Thư Mai",
+          "text": "Cô chào {name}, các bạn đọc mượn sách nhiều làm giá sách xáo trộn mất rồi."
+        },
+        {
+          "speaker": "Cô Thủ Thư Mai",
+          "text": "Cháu xem số hiệu trên gáy sách rồi chèn vào giữa các cuốn khác từ nhỏ đến lớn nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu xếp sách lên giá ngay!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Xếp sách theo số",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Xếp ngăn nắp hai mươi hai cuốn sách lên giá gỗ nhé!",
+      "game": "book-shelf-order",
+      "goal": 22
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Cô Thủ Thư Mai mỉm cười dịu dàng, cảm ơn {name} đã làm giá sách ngăn nắp như mới!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Giá sách thẳng tắp rồi, khi nào tìm sách hay cháu cứ tới bàn hướng dẫn gặp cô."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}

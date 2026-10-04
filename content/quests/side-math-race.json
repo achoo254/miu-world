@@ -1,0 +1,80 @@
+{
+  "id": "side-math-race",
+  "region": "trung-tam",
+  "chapter": 1,
+  "title": "Đua xe tính nhanh cùng Khỉ Tính Nhanh",
+  "status": "active",
+  "category": "side",
+  "summary": "Chiếc xe đua công thức mini trên bậc thềm: tính nhẩm kết quả phép tính trên biển để tăng tốc về đích.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, tay đua số học siêu tốc",
+    "where": "Bậc thềm sân trước lâu đài",
+    "goal": "Về đích thắng lợi trong ba chặng đua tính nhanh nhé!",
+    "play": "Biển báo có một phép tính. {name} chạm đúng kết quả để xe tăng tốc!",
+    "learn": "Tính nhẩm phép cộng trừ trong phạm vi nhanh chóng",
+    "reward": "XP và xu mỗi lần thắng",
+    "next": "Đường đua lâu đài luôn đón chờ tay lái cừ khôi, {name} lại đến bậc thềm so tài nhé."
+  },
+  "phases": {
+    "hook": "ask",
+    "explore": "ask",
+    "learn": "ask",
+    "challenge": "play",
+    "decision": "play",
+    "finale": "play",
+    "reward": "thanks",
+    "next": "bye"
+  },
+  "steps": [
+    {
+      "id": "ask",
+      "title": "Lời mời",
+      "kind": "dialogue",
+      "target": "khi-tinh-nhanh",
+      "lines": [
+        {
+          "speaker": "Khỉ Tính Nhanh",
+          "text": "Khẹc khẹc! {name} lên chiếc xe đua số học với tớ, so tài tốc độ tính nhẩm nào!"
+        },
+        {
+          "speaker": "Khỉ Tính Nhanh",
+          "text": "Biển báo hiện phép tính gì thì cậu chạm ngay kết quả đúng để xe vút lên dẫn đầu đoàn đua nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tính nhẩm thần tốc, xe về nhất chặng!"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "title": "Đua xe tính nhẩm",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Về đích thắng lợi trong ba chặng đua tính nhanh nhé!",
+      "game": "math-race",
+      "goal": 3
+    },
+    {
+      "id": "thanks",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Khỉ Tính Nhanh nhào lộn trên bậc thềm: cúp vô địch thuộc về {name}, tính nhanh như chớp!"
+    },
+    {
+      "id": "bye",
+      "title": "Hẹn lần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Đường đua lâu đài luôn đón chờ tay lái cừ khôi, {name} lại đến bậc thềm so tài nhé."
+    }
+  ],
+  "reward": {
+    "xp": 15,
+    "coin": 5
+  }
+}
