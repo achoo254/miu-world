@@ -31,12 +31,17 @@ export type CharacterUpdate = z.infer<typeof CharacterUpdate>;
 
 const Counts = z.record(ContentId, z.number().int().min(0));
 
+export const BossState = z.object({ hp: z.number().int(), answered: z.array(ContentId) });
+export type BossState = z.infer<typeof BossState>;
+
 export const QuestProgressDto = z.object({
   questId: ContentId,
   completedSteps: z.array(ContentId),
   completed: z.boolean(),
   /** Targets found so far, per search step. */
   found: z.record(ContentId, z.array(ContentId)),
+  /** Boss battle states: current HP and answered turn ids per boss step. */
+  bossState: z.record(ContentId, BossState).optional(),
   /** 1–3, the best of the quest's finished runs; null before the first. */
   stars: z.number().int().min(1).max(3).nullable(),
   /**
@@ -133,6 +138,7 @@ const IdMap = z.record(ContentId, ContentId).refine((m) => Object.keys(m).length
 /** What the child submits for a learning step; the shape depends on the step kind. */
 export const StepAnswer = z.union([
   z.strictObject({ choice: ContentId }),
+  z.strictObject({ turnId: ContentId, choice: ContentId }),
   z.strictObject({ value: z.number().int() }),
   z.strictObject({ placed: z.array(ContentId).max(100) }),
   z.strictObject({ order: z.array(ContentId).max(100) }),

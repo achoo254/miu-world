@@ -44,6 +44,7 @@ export function solution(quest: ActiveQuest | DraftQuest): SolutionMove[] {
     if (step.kind === 'search') return step.targets.map((target) => [step.id, { target }]);
     if (step.kind === 'find-object') return step.items.map((item) => [step.id, { target: item.target }]);
     if (step.kind === 'decision') return [[step.id, { answer: { choice: step.choices[0]?.id ?? '' } }]];
+    if (step.kind === 'boss') return step.turns.map((turn) => [step.id, { answer: { turnId: turn.id, choice: turn.answer.choice } }]);
     const answer = answerFor(step);
     return [[step.id, answer ? { answer } : {}]];
   });

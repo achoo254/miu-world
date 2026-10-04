@@ -1,4 +1,4 @@
-import type { ActiveQuest, AnswerableStep, QuestStep, RewardSpec } from '@miu/schema/content';
+import type { ActiveQuest, AnswerableStep, QuestStep, QuestStepPublic, RewardSpec } from '@miu/schema/content';
 import type { StepAnswer } from '@miu/schema/game';
 import { checkAnswer, checkMinigameScore } from './check-answer';
 
@@ -35,6 +35,19 @@ export function emptyProgress(): QuestProgress {
 
 export function isAnswerable(step: QuestStep): step is AnswerableStep {
   return 'support' in step;
+}
+
+/** Calculate current HP and answered turns for a boss battle step. */
+export function bossStateOf(
+  step: Extract<QuestStep, { kind: 'boss' }> | Extract<QuestStepPublic, { kind: 'boss' }>,
+  found: Record<string, string[]>,
+): { hp: number; answered: string[] } {
+  const answered = found[step.id] ?? [];
+  const totalDamage = answered.reduce((sum, tid) => {
+    const t = step.turns.find((item) => item.id === tid);
+    return sum + (t?.damage ?? step.damagePerTurn);
+  }, 0);
+  return { hp: Math.max(0, step.maxHp - totalDamage), answered };
 }
 
 /** The step the child should do next, or null once every step is done. Works on `QuestView` too. */
@@ -83,6 +96,27 @@ export function completeStep(def: ActiveQuest, progress: QuestProgress, stepId: 
     const chosen = step.choices.find((c) => c.id === choice);
     if (!chosen) return { ok: false, error: 'wrong-answer' };
     nextBranchId = chosen.nextStepId;
+  } else if (step.kind === 'boss') {
+    const answer = input.answer;
+    if (!answer || !('turnId' in answer) || !('choice' in answer)) {
+      return { ok: false, error: 'answer-required' };
+    }
+    const turn = step.turns.find((t) => t.id === answer.turnId);
+    if (!turn) return { ok: false, error: 'unknown-target' };
+    if (turn.answer.choice !== answer.choice) return { ok: false, error: 'wrong-answer' };
+    const soFar = found[stepId] ?? [];
+    if (!soFar.includes(turn.id)) {
+      found[stepId] = [...soFar, turn.id];
+    }
+    const answeredTurns = found[stepId] ?? [];
+    const totalDamage = answeredTurns.reduce((sum, tid) => {
+      const t = step.turns.find((item) => item.id === tid);
+      return sum + (t?.damage ?? step.damagePerTurn);
+    }, 0);
+    const remainingHp = Math.max(0, step.maxHp - totalDamage);
+    if (remainingHp > 0) {
+      return { ok: true, progress: { completedSteps: [...progress.completedSteps], completed: false, found }, reward: null };
+    }
   } else if (isAnswerable(step)) {
     if (input.answer === undefined) return { ok: false, error: 'answer-required' };
     if (!checkAnswer(step, input.answer)) return { ok: false, error: 'wrong-answer' };

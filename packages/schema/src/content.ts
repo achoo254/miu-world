@@ -232,6 +232,42 @@ const minigameShape = {
   params: MinigameParams.default({}),
 };
 
+/** A single turn/question within a boss battle. */
+export const BossTurn = z.strictObject({
+  id: ContentId,
+  prompt: Text,
+  skill: ContentId,
+  choices: z.array(Choice).min(2),
+  damage: z.number().int().positive().default(80),
+  illustration: IllustrationRef.optional(),
+});
+export type BossTurn = z.infer<typeof BossTurn>;
+
+export const BossTurnWithSecret = z.strictObject({
+  id: ContentId,
+  prompt: Text,
+  skill: ContentId,
+  choices: z.array(Choice).min(2),
+  damage: z.number().int().positive().default(80),
+  illustration: IllustrationRef.optional(),
+  answer: ChoiceAnswer,
+});
+export type BossTurnWithSecret = z.infer<typeof BossTurnWithSecret>;
+
+/** Friendly boss battle (Master Plan §5, §6): multi-turn cheerful quiz challenge, reducing HP per right turn. */
+const bossShape = {
+  ...stepBase,
+  kind: z.literal('boss'),
+  bossId: ContentId,
+  bossName: Text,
+  avatar: IllustrationRef.optional(),
+  introDialogue: Text,
+  winDialogue: Text,
+  maxHp: z.number().int().positive().default(500),
+  damagePerTurn: z.number().int().positive().default(80),
+  turns: z.array(BossTurn).min(2),
+};
+
 const rewardShape = { ...stepBase, kind: z.literal('reward'), text: Text };
 /** The story beat after the reward: where the adventure goes next. Nothing is locked: every map and quest is open. */
 const nextShape = { ...stepBase, kind: z.literal('next'), text: Text };
@@ -283,6 +319,7 @@ export const QuestStepPublic = z.discriminatedUnion('kind', [
   z.object(nextShape),
   z.object(speakShape),
   z.object(worksheetShape),
+  z.object(bossShape),
 ]);
 export type QuestStepPublic = z.infer<typeof QuestStepPublic>;
 
@@ -323,6 +360,11 @@ export const QuestStep = z.discriminatedUnion('kind', [
   z.strictObject(nextShape),
   z.strictObject({ ...speakShape, ...curriculumRef }),
   z.strictObject({ ...worksheetShape, ...curriculumRef }),
+  z.strictObject({
+    ...bossShape,
+    ...curriculumRef,
+    turns: z.array(BossTurnWithSecret).min(2),
+  }),
 ]);
 export type QuestStep = z.infer<typeof QuestStep>;
 /** Steps the child answers; each carries an answer and the three support layers. */
@@ -345,7 +387,7 @@ const INTERACTIVE_MECHANICS = new Set(['drag-drop', 'sort', 'classify', 'fill-bl
 
 /** Gameplay mechanics other than multiple choice (Master Plan §16: at least two per quest). */
 function mechanicOf(step: QuestStep): string | null {
-  if (step.kind === 'search' || step.kind === 'riddle' || step.kind === 'find-object' || step.kind === 'decision') return step.kind;
+  if (step.kind === 'search' || step.kind === 'riddle' || step.kind === 'find-object' || step.kind === 'decision' || step.kind === 'boss') return step.kind;
   if (step.kind === 'challenge' && step.mechanic !== 'quiz') return step.mechanic;
   return null;
 }
@@ -475,6 +517,15 @@ function stepIssues(step: QuestStep, texts: Readonly<Record<string, unknown>>, a
     if (step.textRef !== undefined && !(step.textRef in texts)) issues.push(`textRef ${step.textRef} is not in the quest texts`);
     if (!uniqueIds(step.choices.map((c) => c.id))) issues.push('duplicate choice id');
     if (!step.choices.some((c) => c.id === step.answer.choice)) issues.push('answer is not one of the choices');
+  }
+  if (step.kind === 'boss') {
+    if (!uniqueIds(step.turns.map((t) => t.id))) issues.push('duplicate turn id');
+    for (const turn of step.turns) {
+      if (!uniqueIds(turn.choices.map((c) => c.id))) issues.push(`turn ${turn.id}: duplicate choice id`);
+      if ('answer' in turn && !turn.choices.some((c) => c.id === turn.answer.choice)) {
+        issues.push(`turn ${turn.id}: answer choice is not one of the choices`);
+      }
+    }
   }
   if (step.kind === 'challenge') issues.push(...challengeIssues(step));
   return issues;

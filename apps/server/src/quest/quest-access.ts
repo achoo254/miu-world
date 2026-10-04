@@ -1,6 +1,7 @@
 import { and, eq, isNotNull } from 'drizzle-orm';
 import type { ActiveQuest, PlayableQuest } from '@miu/schema/content';
 import type { QuestProgressDto, QuestState } from '@miu/schema/game';
+import { bossStateOf } from '@miu/quest/quest-progress';
 import type { ContentCatalog } from '../content/content-catalog';
 import type { Db } from '../db/client';
 import { questProgress } from '../db/schema';
@@ -26,11 +27,20 @@ export function currentRun(row: Pick<ProgressRow, 'completedSteps' | 'completedA
 }
 
 export function progressDto(questId: string, row: ProgressRow | undefined, paid: number, quest: PlayableQuest | undefined): QuestProgressDto {
+  const bossState: Record<string, { hp: number; answered: string[] }> = {};
+  if (quest?.status === 'active') {
+    for (const step of quest.steps) {
+      if (step.kind === 'boss') {
+        bossState[step.id] = bossStateOf(step, row?.found ?? {});
+      }
+    }
+  }
   return {
     questId,
     completedSteps: row?.completedSteps ?? [],
     completed: row?.completedAt != null,
     found: row?.found ?? {},
+    bossState,
     stars: row?.stars ?? null,
     run: currentRun(row, paid, quest),
   };

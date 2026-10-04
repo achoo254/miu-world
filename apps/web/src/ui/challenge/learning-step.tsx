@@ -28,6 +28,7 @@ import { MultiSelectChallenge } from './mechanics/multi-select-challenge';
 import { SpeakStepScreen } from './mechanics/speak-step';
 import { WorksheetStepScreen } from './mechanics/worksheet-step';
 import { DecisionScreen } from './decision-screen';
+import { BossScreen } from './boss/boss-screen';
 import { isCount, useDraftState } from '../quest/step-draft';
 import { MinigameOverlay } from '../minigame/minigame-overlay';
 
@@ -38,7 +39,8 @@ export function hasLearningScreen(step: QuestStepPublic): boolean {
     step.kind === 'challenge' ||
     step.kind === 'speak' ||
     step.kind === 'worksheet' ||
-    step.kind === 'decision'
+    step.kind === 'decision' ||
+    step.kind === 'boss'
   );
 }
 
@@ -94,6 +96,11 @@ export function LearningStep({
   if (step.kind === 'worksheet') return <WorksheetStepScreen step={step} fill={fill} busy={busy} onDone={() => void submit(step, {})} onClose={onClose} />;
   const answer = (a: StepAnswer) => void onAnswer(a);
   if (step.kind === 'decision') return <DecisionScreen step={step} data={data} busy={busy} onAnswer={answer} onClose={onClose} />;
+  if (step.kind === 'boss') {
+    const questProgress = data.progress.quests.find((q) => q.questId === quest.id);
+    const bossState = questProgress?.bossState?.[step.id];
+    return <BossScreen step={step} context={context} bossState={bossState} onAnswer={answer} onClose={onClose} />;
+  }
   if (step.kind === 'read') return <ReadStepScreen step={step} context={context} texts={quest.texts} onAnswer={answer} />;
   if (step.kind === 'riddle') return <RiddleStepScreen step={step} context={context} onAnswer={answer} />;
   if (step.kind !== 'challenge') return null;

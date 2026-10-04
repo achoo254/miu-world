@@ -229,3 +229,82 @@ describe('find-object and decision steps', () => {
     expect(nextStep(branchingQuest, shortcut.progress)?.id).toBe('finale');
   });
 });
+
+describe('a boss battle step', () => {
+  const bossQuest = activeQuest({
+    id: 'boss-forest',
+    region: 'khu-rung-bi-mat',
+    chapter: 1,
+    title: 'Trùm Vui Rừng Xanh',
+    status: 'active',
+    category: 'main',
+    summary: 'Đối đầu Trùm Vui',
+    review: 'teacher-pending',
+    sevenQuestions: { who: 'a', where: 'b', goal: 'c', play: 'd', learn: 'e', reward: 'f', next: 'g' },
+    phases: { hook: 'boss-1', explore: 'boss-1', learn: 'boss-1', challenge: 'boss-1', decision: 'boss-1', finale: 'boss-1', reward: 'boss-1', next: 'boss-1' },
+    steps: [
+      {
+        id: 'boss-1',
+        title: 'Thử thách Trùm',
+        kind: 'boss',
+        trigger: 'auto',
+        bossId: 'golem-wood',
+        bossName: 'Người Gỗ Vui Vẻ',
+        introDialogue: 'Hãy trả lời câu hỏi của ta!',
+        winDialogue: 'Bé thông minh quá, ta chịu thua!',
+        maxHp: 160,
+        damagePerTurn: 80,
+        turns: [
+          {
+            id: 'turn-1',
+            prompt: '1 + 1 = ?',
+            skill: 'toan',
+            choices: [
+              { id: 'c1', text: '2' },
+              { id: 'c2', text: '3' },
+            ],
+            damage: 80,
+            answer: { choice: 'c1' },
+          },
+          {
+            id: 'turn-2',
+            prompt: '2 + 2 = ?',
+            skill: 'toan',
+            choices: [
+              { id: 'c3', text: '4' },
+              { id: 'c4', text: '5' },
+            ],
+            damage: 80,
+            answer: { choice: 'c3' },
+          },
+        ],
+      },
+    ],
+    reward: { xp: 100 },
+  });
+
+  it('reduces HP on right turn answers and completes when HP hits 0', () => {
+    const p = emptyProgress();
+    expect(completeStep(bossQuest, p, 'boss-1')).toEqual({ ok: false, error: 'answer-required' });
+    expect(completeStep(bossQuest, p, 'boss-1', { answer: { turnId: 'turn-1', choice: 'c2' } })).toEqual({
+      ok: false,
+      error: 'wrong-answer',
+    });
+
+    // Turn 1 right: 80 damage dealt, 80 HP left -> not finished yet
+    const turn1 = completeStep(bossQuest, p, 'boss-1', { answer: { turnId: 'turn-1', choice: 'c1' } });
+    expect(turn1.ok).toBe(true);
+    if (!turn1.ok) throw new Error();
+    expect(turn1.progress.completedSteps).toEqual([]);
+    expect(turn1.progress.found['boss-1']).toEqual(['turn-1']);
+    expect(turn1.reward).toBeNull();
+
+    // Turn 2 right: 80 damage dealt, remaining HP = 0 -> boss defeated, quest finishes!
+    const turn2 = completeStep(bossQuest, turn1.progress, 'boss-1', { answer: { turnId: 'turn-2', choice: 'c3' } });
+    expect(turn2.ok).toBe(true);
+    if (!turn2.ok) throw new Error();
+    expect(turn2.progress.completedSteps).toEqual(['boss-1']);
+    expect(turn2.progress.completed).toBe(true);
+    expect(turn2.reward).toEqual({ xp: 100 });
+  });
+});

@@ -67,6 +67,10 @@ function feedbackLine(step: QuestStep | undefined, kind: 'right' | 'wrong', atte
     const found = step.choices.find((c) => c.id === choice);
     if (found) return found.consequence;
   }
+  if (step?.kind === 'boss') {
+    if (kind === 'right') return step.winDialogue;
+    return 'Suýt đúng rồi! Bé thử suy nghĩ lại một chút nhé!';
+  }
   const lines = step && isAnswerable(step) ? step.feedback?.[kind] : undefined;
   return lines?.[attempt % lines.length] ?? null;
 }
