@@ -75,6 +75,44 @@ const dialogueShape = {
 /** Find every target, in any order. */
 const searchShape = { id: ContentId, title: Text, goTo: GoTo, kind: z.literal('search'), targets: z.array(ContentId).min(1) };
 
+const DecisionChoice = z.strictObject({
+  id: ContentId,
+  text: Text,
+  /** Consequence of picking this choice in the story. */
+  consequence: Text,
+  /** Optional next step id to branch to (must be an existing step in the quest). */
+  nextStepId: ContentId.optional(),
+  image: IllustrationRef.optional(),
+});
+
+/** Action choice beat (Master Plan §5, §6): multiple choices with story consequences and optional branching. */
+const decisionShape = {
+  ...stepBase,
+  kind: z.literal('decision'),
+  prompt: Text,
+  speaker: Text.optional(),
+  choices: z.array(DecisionChoice).min(2),
+};
+
+const FindObjectItem = z.strictObject({
+  id: ContentId,
+  name: Text,
+  /** Reading comprehension clue / riddle to locate the hidden object in 3D. */
+  clue: Text,
+  /** Interactable target entity id on the map. */
+  target: ContentId,
+  image: IllustrationRef.optional(),
+});
+
+/** Find hidden objects in the 3D scene from text clues (Master Plan §5, §6). */
+const findObjectShape = {
+  ...stepBase,
+  kind: z.literal('find-object'),
+  prompt: Text,
+  items: z.array(FindObjectItem).min(1),
+  skill: ContentId.optional(),
+};
+
 const readShape = {
   ...stepBase,
   kind: z.literal('read'),
@@ -212,6 +250,8 @@ const secret = <A extends z.ZodType>(answer: A) => ({ answer, support: LearningS
 export const QuestStepPublic = z.discriminatedUnion('kind', [
   z.object(dialogueShape),
   z.object(searchShape),
+  z.object(decisionShape),
+  z.object(findObjectShape),
   z.object(readShape),
   z.object(riddleShape),
   z.discriminatedUnion('mechanic', [
@@ -236,6 +276,8 @@ export type QuestStepPublic = z.infer<typeof QuestStepPublic>;
 export const QuestStep = z.discriminatedUnion('kind', [
   z.strictObject(dialogueShape),
   z.strictObject(searchShape),
+  z.strictObject(decisionShape),
+  z.strictObject(findObjectShape),
   z.strictObject({ ...readShape, ...curriculumRef, ...secret(ChoiceAnswer) }),
   z.strictObject({ ...riddleShape, ...curriculumRef, ...secret(z.strictObject({ value: z.number().int() })) }),
   z.discriminatedUnion('mechanic', [
@@ -273,6 +315,7 @@ export type MinigameStep = Extract<QuestStep, { mechanic: 'minigame' }>;
 /** Entity ids a step needs on the map. */
 export function stepTargets(step: QuestStep | QuestStepPublic): string[] {
   if (step.kind === 'search') return [...step.targets];
+  if (step.kind === 'find-object') return step.items.map((i) => i.target);
   return step.target ? [step.target] : [];
 }
 
@@ -284,7 +327,7 @@ const INTERACTIVE_MECHANICS = new Set(['drag-drop', 'sort', 'classify', 'fill-bl
 
 /** Gameplay mechanics other than multiple choice (Master Plan §16: at least two per quest). */
 function mechanicOf(step: QuestStep): string | null {
-  if (step.kind === 'search' || step.kind === 'riddle') return step.kind;
+  if (step.kind === 'search' || step.kind === 'riddle' || step.kind === 'find-object' || step.kind === 'decision') return step.kind;
   if (step.kind === 'challenge' && step.mechanic !== 'quiz') return step.mechanic;
   return null;
 }
@@ -387,10 +430,22 @@ function challengeIssues(step: ChallengeStep): string[] {
   return issues;
 }
 
-function stepIssues(step: QuestStep, texts: Readonly<Record<string, unknown>>): string[] {
+function stepIssues(step: QuestStep, texts: Readonly<Record<string, unknown>>, allStepIds?: readonly string[]): string[] {
   const issues: string[] = [];
-  if (step.kind !== 'search' && step.trigger !== 'auto' && !step.target) issues.push('needs a target unless its trigger is auto');
+  if (step.kind !== 'search' && step.kind !== 'find-object' && step.trigger !== 'auto' && !step.target) issues.push('needs a target unless its trigger is auto');
   if (step.kind === 'search' && !uniqueIds(step.targets)) issues.push('duplicate search target');
+  if (step.kind === 'find-object') {
+    if (!uniqueIds(step.items.map((i) => i.id))) issues.push('duplicate item id');
+    if (!uniqueIds(step.items.map((i) => i.target))) issues.push('duplicate item target');
+  }
+  if (step.kind === 'decision') {
+    if (!uniqueIds(step.choices.map((c) => c.id))) issues.push('duplicate choice id');
+    for (const choice of step.choices) {
+      if (choice.nextStepId && allStepIds && !allStepIds.includes(choice.nextStepId)) {
+        issues.push(`choice ${choice.id} has nextStepId "${choice.nextStepId}", which is not a step in this quest`);
+      }
+    }
+  }
   if (step.kind === 'read') {
     if ((step.text === undefined) === (step.textRef === undefined)) issues.push('needs exactly one of text and textRef');
     if (step.textRef !== undefined && !(step.textRef in texts)) issues.push(`textRef ${step.textRef} is not in the quest texts`);
@@ -479,13 +534,13 @@ const questFields = {
  */
 function wayfindingIssues(steps: readonly QuestStep[], places: Readonly<Record<string, string>>): string[] {
   const issues: string[] = [];
-  const known = new Set(steps.flatMap((s) => [...stepTargets(s), ...(s.kind === 'search' ? [s.id] : [])]));
+  const known = new Set(steps.flatMap((s) => [...stepTargets(s), ...(s.kind === 'search' || s.kind === 'find-object' ? [s.id] : [])]));
   for (const key of Object.keys(places)) if (!known.has(key)) issues.push(`places names ${key}, which is neither a target nor a search step`);
   let last: string | null = null;
   for (const step of steps) {
-    const walked = step.kind === 'search' || (step.trigger !== 'auto' && step.target !== undefined);
+    const walked = step.kind === 'search' || step.kind === 'find-object' || (step.trigger !== 'auto' && step.target !== undefined);
     if (!walked) continue;
-    const key = step.kind === 'search' ? step.id : (step.target ?? '');
+    const key = step.kind === 'search' || step.kind === 'find-object' ? step.id : (step.target ?? '');
     const place = places[key];
     if (!place) {
       issues.push(`step ${step.id}: ${key} has no place in "places"`);
@@ -538,7 +593,7 @@ function questIssues(q: {
     else if (index < previous) issues.push(`phase ${phase} starts before the phase that precedes it`);
     else previous = index;
   }
-  for (const step of q.steps) for (const message of stepIssues(step, q.texts)) issues.push(`step ${step.id}: ${message}`);
+  for (const step of q.steps) for (const message of stepIssues(step, q.texts, ids)) issues.push(`step ${step.id}: ${message}`);
   const feedbackLines = q.steps.flatMap((s) => ('feedback' in s && s.feedback ? [...s.feedback.right, ...s.feedback.wrong] : []));
   const seen = new Set<string>();
   for (const line of feedbackLines) {

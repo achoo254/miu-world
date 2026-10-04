@@ -141,3 +141,91 @@ describe('nextStep', () => {
     expect(nextStep(quest, { completedSteps: ['meet-vet', 'find-clues', 'solve-tree'] })).toBeNull();
   });
 });
+
+describe('find-object and decision steps', () => {
+  const branchingQuest = activeQuest({
+    id: 'branch-quest',
+    region: 'khu-rung-bi-mat',
+    chapter: 1,
+    title: 'Thử thách quyết định',
+    status: 'active',
+    summary: 'Tìm đồ và chọn đường',
+    review: 'teacher-pending',
+    sevenQuestions: { who: 'a', where: 'b', goal: 'c', play: 'd', learn: 'e', reward: 'f', next: 'g' },
+    phases: { hook: 'find-hidden', explore: 'find-hidden', learn: 'find-hidden', challenge: 'decide-way', decision: 'decide-way', finale: 'finale', reward: 'finale', next: 'finale' },
+    steps: [
+      {
+        id: 'find-hidden',
+        title: 'Tìm đồ ẩn',
+        kind: 'find-object',
+        prompt: 'Tìm các món đồ ẩn',
+        items: [
+          { id: 'item-apple', name: 'Quả táo', clue: 'Quả tròn màu đỏ', target: 'apple-tree' },
+          { id: 'item-key', name: 'Chìa khóa', clue: 'Vật bằng vàng', target: 'golden-box' },
+        ],
+      },
+      {
+        id: 'decide-way',
+        title: 'Chọn đường',
+        kind: 'decision',
+        trigger: 'auto',
+        prompt: 'Bạn chọn đi đường nào?',
+        choices: [
+          { id: 'bridge', text: 'Đi qua cầu', consequence: 'Cầu gỗ kêu cọt kẹt nhưng bạn qua an toàn.' },
+          { id: 'shortcut', text: 'Đi đường tắt', consequence: 'Đường tắt giúp bạn tới thẳng đích!', nextStepId: 'finale' },
+        ],
+      },
+      {
+        id: 'bridge-event',
+        title: 'Qua cầu',
+        kind: 'dialogue',
+        target: 'bridge-npc',
+        lines: [{ speaker: 'Vẹt', text: 'Bạn đã qua cầu an toàn!' }],
+      },
+      {
+        id: 'finale',
+        title: 'Đích đến',
+        kind: 'dialogue',
+        target: 'ancient-tree',
+        lines: [{ speaker: 'Cây', text: 'Chúc mừng bạn!' }],
+      },
+    ],
+    reward: { xp: 50 },
+  });
+
+  it('completes find-object only when all items are found', () => {
+    const p = emptyProgress();
+    expect(completeStep(branchingQuest, p, 'find-hidden')).toEqual({ ok: false, error: 'target-required' });
+    expect(completeStep(branchingQuest, p, 'find-hidden', { target: 'wrong' })).toEqual({ ok: false, error: 'unknown-target' });
+    const step1 = completeStep(branchingQuest, p, 'find-hidden', { target: 'apple-tree' });
+    expect(step1.ok).toBe(true);
+    if (!step1.ok) throw new Error();
+    expect(step1.progress.completedSteps).toEqual([]);
+    expect(step1.progress.found['find-hidden']).toEqual(['apple-tree']);
+
+    const step2 = completeStep(branchingQuest, step1.progress, 'find-hidden', { target: 'golden-box' });
+    expect(step2.ok).toBe(true);
+    if (!step2.ok) throw new Error();
+    expect(step2.progress.completedSteps).toEqual(['find-hidden']);
+  });
+
+  it('completes decision step and skips intervening steps if nextStepId is provided', () => {
+    const afterFind: QuestProgress = { completedSteps: ['find-hidden'], completed: false, found: { 'find-hidden': ['apple-tree', 'golden-box'] } };
+    expect(completeStep(branchingQuest, afterFind, 'decide-way')).toEqual({ ok: false, error: 'answer-required' });
+    expect(completeStep(branchingQuest, afterFind, 'decide-way', { answer: { choice: 'unknown' } })).toEqual({ ok: false, error: 'wrong-answer' });
+
+    // Normal sequential choice
+    const normal = completeStep(branchingQuest, afterFind, 'decide-way', { answer: { choice: 'bridge' } });
+    expect(normal.ok).toBe(true);
+    if (!normal.ok) throw new Error();
+    expect(normal.progress.completedSteps).toEqual(['find-hidden', 'decide-way']);
+    expect(nextStep(branchingQuest, normal.progress)?.id).toBe('bridge-event');
+
+    // Branching choice with nextStepId: skips bridge-event
+    const shortcut = completeStep(branchingQuest, afterFind, 'decide-way', { answer: { choice: 'shortcut' } });
+    expect(shortcut.ok).toBe(true);
+    if (!shortcut.ok) throw new Error();
+    expect(shortcut.progress.completedSteps).toEqual(['find-hidden', 'decide-way', 'bridge-event']);
+    expect(nextStep(branchingQuest, shortcut.progress)?.id).toBe('finale');
+  });
+});

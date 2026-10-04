@@ -62,7 +62,11 @@ function supportPayload(support: LearningSupport, layer: SupportLayer): SupportR
  * The step's line for this attempt: the n-th wrong answer hears the n-th wrong line, a right answer after
  * n mistakes hears the n-th right line, cycling, so two tries in a row never get the same line.
  */
-function feedbackLine(step: QuestStep | undefined, kind: 'right' | 'wrong', attempt: number): string | null {
+function feedbackLine(step: QuestStep | undefined, kind: 'right' | 'wrong', attempt: number, choice?: string): string | null {
+  if (step?.kind === 'decision' && choice) {
+    const found = step.choices.find((c) => c.id === choice);
+    if (found) return found.consequence;
+  }
   const lines = step && isAnswerable(step) ? step.feedback?.[kind] : undefined;
   return lines?.[attempt % lines.length] ?? null;
 }
@@ -190,7 +194,8 @@ export function questRoutes({ db, content, clock }: QuestRouteDeps): Router {
         .where(thisProgressRow)
         .returning();
       // Read before finishing: scoring the quest clears its counters.
-      const feedback = feedbackLine(stepDef, 'right', await wrongAnswers(tx, { childId, questId, stepId }));
+      const choice = input.data.answer && 'choice' in input.data.answer ? input.data.answer.choice : undefined;
+      const feedback = feedbackLine(stepDef, 'right', await wrongAnswers(tx, { childId, questId, stepId }), choice);
       if (!result.reward) return { correct: true, feedback, row: updated, paid, reward: null, repeated: false, completion: null };
       const finished = await finishQuest(tx, content, childId, quest, now, run);
       const [scored] = await tx.select().from(questProgress).where(thisProgressRow);

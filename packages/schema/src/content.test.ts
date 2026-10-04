@@ -338,6 +338,96 @@ describe('textbook wayfinding', () => {
     quest.places = { find: 'bãi cỏ', tree: 'gốc cây' };
     expect(issues(quest).filter(noMechanicRule)).toEqual([]);
   });
+
+  it('validates decision steps and catches duplicate choice ids or dead end branches', () => {
+    const quest = validQuest();
+    quest.steps.push({
+      id: 'decide',
+      title: 'Quyết định',
+      kind: 'decision',
+      trigger: 'auto',
+      prompt: 'Bạn làm gì?',
+      choices: [
+        { id: 'c1', text: 'Chọn 1', consequence: 'Hệ quả 1', nextStepId: 'riddle' },
+        { id: 'c2', text: 'Chọn 2', consequence: 'Hệ quả 2' },
+      ],
+    });
+    // Valid quest with decision step
+    expect(issues(quest)).toEqual([]);
+
+    // Dead end branch: nextStepId points at non-existent step
+    const deadEnd = validQuest();
+    deadEnd.steps.push({
+      id: 'decide',
+      title: 'Quyết định',
+      kind: 'decision',
+      trigger: 'auto',
+      prompt: 'Bạn làm gì?',
+      choices: [
+        { id: 'c1', text: 'Chọn 1', consequence: 'Hệ quả 1', nextStepId: 'non-existent-step' },
+        { id: 'c2', text: 'Chọn 2', consequence: 'Hệ quả 2' },
+      ],
+    });
+    expect(issues(deadEnd)).toContain('step decide: choice c1 has nextStepId "non-existent-step", which is not a step in this quest');
+
+    // Duplicate choice id
+    const dupChoice = validQuest();
+    dupChoice.steps.push({
+      id: 'decide',
+      title: 'Quyết định',
+      kind: 'decision',
+      trigger: 'auto',
+      prompt: 'Bạn làm gì?',
+      choices: [
+        { id: 'c1', text: 'Chọn 1', consequence: 'Hệ quả 1' },
+        { id: 'c1', text: 'Chọn trùng', consequence: 'Hệ quả 2' },
+      ],
+    });
+    expect(issues(dupChoice)).toContain('step decide: duplicate choice id');
+  });
+
+  it('validates find-object steps and catches duplicate item id or duplicate targets', () => {
+    const quest = validQuest();
+    quest.steps.push({
+      id: 'find-obj',
+      title: 'Tìm đồ',
+      kind: 'find-object',
+      prompt: 'Tìm các đồ vật',
+      items: [
+        { id: 'i1', name: 'Đồ 1', clue: 'Gợi ý 1', target: 'target-1' },
+        { id: 'i2', name: 'Đồ 2', clue: 'Gợi ý 2', target: 'target-2' },
+      ],
+    });
+    expect(issues(quest)).toEqual([]);
+
+    // Duplicate item id
+    const dupItem = validQuest();
+    dupItem.steps.push({
+      id: 'find-obj',
+      title: 'Tìm đồ',
+      kind: 'find-object',
+      prompt: 'Tìm các đồ vật',
+      items: [
+        { id: 'i1', name: 'Đồ 1', clue: 'Gợi ý 1', target: 'target-1' },
+        { id: 'i1', name: 'Đồ trùng', clue: 'Gợi ý 2', target: 'target-2' },
+      ],
+    });
+    expect(issues(dupItem)).toContain('step find-obj: duplicate item id');
+
+    // Duplicate target
+    const dupTarget = validQuest();
+    dupTarget.steps.push({
+      id: 'find-obj',
+      title: 'Tìm đồ',
+      kind: 'find-object',
+      prompt: 'Tìm các đồ vật',
+      items: [
+        { id: 'i1', name: 'Đồ 1', clue: 'Gợi ý 1', target: 'target-1' },
+        { id: 'i2', name: 'Đồ 2', clue: 'Gợi ý 2', target: 'target-1' },
+      ],
+    });
+    expect(issues(dupTarget)).toContain('step find-obj: duplicate item target');
+  });
 });
 
 describe('shipped account content', () => {

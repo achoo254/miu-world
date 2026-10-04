@@ -59,6 +59,7 @@ export function completeStep(def: ActiveQuest, progress: QuestProgress, stepId: 
   if (!inOrder) return { ok: false, error: 'out-of-order' };
 
   const found = structuredClone(progress.found);
+  let nextBranchId: string | undefined;
   if (step.kind === 'search') {
     if (input.target === undefined) return { ok: false, error: 'target-required' };
     if (!step.targets.includes(input.target)) return { ok: false, error: 'unknown-target' };
@@ -67,6 +68,21 @@ export function completeStep(def: ActiveQuest, progress: QuestProgress, stepId: 
     if (!step.targets.every((t) => found[stepId]?.includes(t))) {
       return { ok: true, progress: { completedSteps: [...progress.completedSteps], completed: false, found }, reward: null };
     }
+  } else if (step.kind === 'find-object') {
+    if (input.target === undefined) return { ok: false, error: 'target-required' };
+    const validTargets = step.items.map((i) => i.target);
+    if (!validTargets.includes(input.target)) return { ok: false, error: 'unknown-target' };
+    const soFar = found[stepId] ?? [];
+    found[stepId] = soFar.includes(input.target) ? soFar : [...soFar, input.target];
+    if (!validTargets.every((t) => found[stepId]?.includes(t))) {
+      return { ok: true, progress: { completedSteps: [...progress.completedSteps], completed: false, found }, reward: null };
+    }
+  } else if (step.kind === 'decision') {
+    const choice = input.answer && 'choice' in input.answer ? input.answer.choice : undefined;
+    if (!choice) return { ok: false, error: 'answer-required' };
+    const chosen = step.choices.find((c) => c.id === choice);
+    if (!chosen) return { ok: false, error: 'wrong-answer' };
+    nextBranchId = chosen.nextStepId;
   } else if (isAnswerable(step)) {
     if (input.answer === undefined) return { ok: false, error: 'answer-required' };
     if (!checkAnswer(step, input.answer)) return { ok: false, error: 'wrong-answer' };
@@ -76,6 +92,17 @@ export function completeStep(def: ActiveQuest, progress: QuestProgress, stepId: 
   }
 
   const completedSteps = [...progress.completedSteps, stepId];
+  if (nextBranchId) {
+    const targetIdx = def.steps.findIndex((s) => s.id === nextBranchId);
+    if (targetIdx > index + 1) {
+      for (let i = index + 1; i < targetIdx; i++) {
+        const skipped = def.steps[i]?.id;
+        if (skipped && !completedSteps.includes(skipped)) {
+          completedSteps.push(skipped);
+        }
+      }
+    }
+  }
   const completed = completedSteps.length === def.steps.length;
   return {
     ok: true,

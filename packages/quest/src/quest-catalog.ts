@@ -21,7 +21,7 @@ export function questCatalogIssues(
       if (!skillIds.has(skill)) issues.push(`quest ${quest.id} rewards unknown skill ${skill}`);
     }
     for (const step of quest.steps) {
-      if ('skill' in step && !skillIds.has(step.skill)) issues.push(`quest ${quest.id} step ${step.id} teaches unknown skill ${step.skill}`);
+      if ('skill' in step && step.skill && !skillIds.has(step.skill)) issues.push(`quest ${quest.id} step ${step.id} teaches unknown skill ${step.skill}`);
       if (step.kind === 'challenge' && step.mechanic === 'minigame') {
         for (const issue of minigameStepIssues(minigames.get(step.game), step.game, step.goal, step.params)) issues.push(`quest ${quest.id} step ${step.id} ${issue}`);
       }
