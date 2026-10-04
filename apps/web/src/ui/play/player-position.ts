@@ -4,12 +4,42 @@ import { z } from 'zod';
 import { PlayerPositionList, type PlayerPosition } from '@miu/schema/player-position';
 import { api } from '../api-client';
 
+const SESSION_KEY = 'miu.spots';
+
+/**
+ * The spots of this browser session, newest per map. A child who leaves the game for the map or a lesson list and
+ * picks a quest comes straight back, before the save made on leaving has reached the server: the server's spot
+ * would be an older one (or none, so the chapter's first character), so the session's own wins (owner, 04/10/2026).
+ */
+function sessionSpots(): Record<string, PlayerPosition> {
+  try {
+    return JSON.parse(window.sessionStorage.getItem(SESSION_KEY) ?? '{}') as Record<string, PlayerPosition>;
+  } catch {
+    return {};
+  }
+}
+
+export function rememberSpot(spot: PlayerPosition): void {
+  try {
+    window.sessionStorage.setItem(SESSION_KEY, JSON.stringify({ ...sessionSpots(), [spot.map]: spot }));
+  } catch {
+    // No storage: the server's spot is used.
+  }
+}
+
+/** The server's spots with this session's own laid over them (they are the newer). */
+export function withSessionSpots(server: readonly PlayerPosition[]): PlayerPosition[] {
+  const own = sessionSpots();
+  const checked = Object.values(own).filter((p) => PlayerPositionList.safeParse({ positions: [p] }).success);
+  return [...server.filter((p) => !checked.some((c) => c.map === p.map)), ...checked];
+}
+
 /** Saved spots, or none when they cannot be read: losing the spot must never keep a child from playing. */
 export async function loadPlayerPositions(): Promise<PlayerPosition[]> {
   try {
-    return (await api('GET', '/player-positions', PlayerPositionList)).positions;
+    return withSessionSpots((await api('GET', '/player-positions', PlayerPositionList)).positions);
   } catch {
-    return [];
+    return withSessionSpots([]);
   }
 }
 
@@ -28,6 +58,7 @@ export function createPositionSaver(initial: PlayerPosition | null): (spot: Play
   let saved = initial;
   return (spot, options = {}) => {
     if (!spot || (saved && sameSpot(saved, spot))) return;
+    rememberSpot(spot);
     const previous = saved;
     saved = spot;
     api('PUT', '/player-positions', z.undefined(), spot, options).catch(() => {
