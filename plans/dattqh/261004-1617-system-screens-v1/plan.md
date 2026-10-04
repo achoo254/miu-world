@@ -25,13 +25,13 @@
 
 ## Pha
 
-| Pha | Tier | Nội dung | File sở hữu |
-| --- | --- | --- | --- |
-| 1 | S | **Cài đặt gom**: một màn nhóm theo mục (Âm thanh, Giọng đọc, Ngôn ngữ, Bạn máy, Hiển thị), dùng lại các công tắc có sẵn; thêm "giảm chuyển động" và cỡ chữ; lưu theo hồ sơ khi cần đồng bộ thiết bị | `apps/web/src/ui/system/**` |
-| 2 | M | **Hộp thư**: bảng `mail` (theo hồ sơ: id nội dung, loại, đã đọc, đã nhận quà), thư là **dữ liệu** `content/mail/*.json` (mẫu thư NPC, thông báo, quà), server tạo thư theo sự kiện (xong quest, lên cấp, mở NPC thân thiết…), API đọc/nhận quà một lần (idempotent), huy hiệu số thư chưa đọc ở HUD | `apps/server/src/mail/**` (mới), `content/mail/**`, `apps/web/src/ui/mail/**` (mới) |
-| 3 | S | **Skill Up**: server báo cấp kỹ năng mới trong kết quả thưởng; màn riêng theo mock cảnh, nối vào chuỗi hoàn thành quest sau Level Up | `apps/web/src/ui/rewards/**`, `apps/server/src/reward` |
-| 4 | S | **Chuỗi ngày** (chỉ làm khi được duyệt): ngày chơi tính theo giờ server, đếm liên tiếp, có "ngày nghỉ miễn phí" mỗi tuần; hiển thị nhỏ ở Hồ sơ và trên phần thưởng; không có màn nhắc | `apps/server/src/reward`, `apps/web/src/ui/profile/**` |
-| 5 | S | Tài liệu và trang review | `docs/`, `apps/web/review.html` |
+| Pha | Tier | Nội dung | File sở hữu | Trạng thái |
+| --- | --- | --- | --- | --- |
+| 1 | S | **Cài đặt gom**: một màn nhóm theo mục (Âm thanh, Giọng đọc, Ngôn ngữ, Bạn máy, Hiển thị), dùng lại các công tắc có sẵn; thêm "giảm chuyển động" và cỡ chữ; lưu theo hồ sơ khi cần đồng bộ thiết bị | `apps/web/src/ui/system/**` | Hoàn thành |
+| 2 | M | **Hộp thư**: bảng `mail` (theo hồ sơ: id nội dung, loại, đã đọc, đã nhận quà), thư là **dữ liệu** `content/mail/*.json` (mẫu thư NPC, thông báo, quà), server tạo thư theo sự kiện (xong quest, lên cấp, mở NPC thân thiết…), API đọc/nhận quà một lần (idempotent), huy hiệu số thư chưa đọc ở HUD | `apps/server/src/mail/**` (mới), `content/mail/**`, `apps/web/src/ui/mail/**` (mới) | Hoàn thành |
+| 3 | S | **Skill Up**: server báo cấp kỹ năng mới trong kết quả thưởng; màn riêng theo mock cảnh, nối vào chuỗi hoàn thành quest sau Level Up | `apps/web/src/ui/rewards/**`, `apps/server/src/reward` | Hoàn thành |
+| 4 | S | **Chuỗi ngày** (chỉ làm khi được duyệt): ngày chơi tính theo giờ server, đếm liên tiếp, có "ngày nghỉ miễn phí" mỗi tuần; hiển thị nhỏ ở Hồ sơ và trên phần thưởng; không có màn nhắc | `apps/server/src/reward`, `apps/web/src/ui/profile/**` | Bỏ theo quyết định Jev |
+| 5 | S | Tài liệu và trang review | `docs/`, `apps/web/review.html` | Hoàn thành |
 
 ## Phụ thuộc và file dùng chung
 
