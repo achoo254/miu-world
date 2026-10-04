@@ -1,6 +1,7 @@
 # Minigame nhiệm vụ phụ, nhà của bé đẹp như mock, thêm NPC và nhiệm vụ
 
-Trạng thái: đang làm · Tier tổng: XL · Nhánh: `main` · Ngày: 03/10/2026
+Trạng thái: Đã hoàn thành · Tier tổng: XL · Nhánh: `main` · Ngày hoàn thành: 04/10/2026
+Hoàn tất: 308 minigame playable với bot test, 60 NPC giver đặt khắp 12 map, nhà của bé đẹp đúng chuẩn mock thiết kế kèm hệ thống tùy biến nội/ngoại thất và HUD bản đồ nhỏ.
 
 Người sở hữu (03/10/2026): "phần chưa làm như mock yêu cầu làm luôn. phải đẹp như mock, cầu thang lên tầng2 quá xấu. lịch khóa biểu và lịch mặc đồng phục thêm sẵn lịch như trong ảnh … làm mặc định cho tất cả tài khoản. map khá rộng nhưng rất ít npc và nhiệm vụ. … bổ sung các nhiệm vụ phụ đúng chất minigame thay vì học bài cho bé đỡ chán. các dạng mini game bao gồm rất nhiều loại khác nhau phủ hết các map. các minigame yêu cầu phải được chơi được. ít nhất có 100 dạng khác nhau. ví dụ runner, hứng trứng, bóng đá, vv... tốt nhất hãy research lấy nội dung trên mạng trước".
 

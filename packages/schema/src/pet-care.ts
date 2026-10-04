@@ -25,3 +25,14 @@ export const PetCareResponse = z.strictObject({
   title: z.string().min(1),
 });
 export type PetCareResponse = z.infer<typeof PetCareResponse>;
+
+export const PetCareStatusResponse = z.strictObject({
+  hasPet: z.boolean(),
+  petId: z.string().nullable(),
+  petName: z.string().optional(),
+  stats: PetCareStats.optional(),
+  friendshipTier: z.number().int().min(1).max(3).optional(),
+  title: z.string().optional(),
+});
+export type PetCareStatusResponse = z.infer<typeof PetCareStatusResponse>;
+

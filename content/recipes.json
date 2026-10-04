@@ -1,0 +1,176 @@
+{
+  "version": 1,
+  "recipes": [
+    {
+      "id": "banh-mi-trung-op-la",
+      "name": "Bánh mì trứng ốp la",
+      "description": "Bánh mì vàng giòn kẹp trứng thơm béo, bữa sáng tràn đầy năng lượng cho bé và thú cưng.",
+      "icon": "sandwich",
+      "ingredients": [
+        { "itemId": "bong-lua-vang", "name": "Bông lúa vàng", "qty": 2 },
+        { "itemId": "trung-ga-ta", "name": "Trứng gà ta", "qty": 1 }
+      ],
+      "resultItemId": "banh-mi-trung-op-la",
+      "resultQty": 1,
+      "hungerRestore": 40,
+      "happinessBonus": 20
+    },
+    {
+      "id": "sup-ngo-ngot-sua",
+      "name": "Súp ngô sữa non",
+      "description": "Bát súp ngô vàng óng sánh mịn quyện cùng sữa tươi ấm áp thơm ngọt.",
+      "icon": "bowl-with-spoon",
+      "ingredients": [
+        { "itemId": "bap-ngo-vang", "name": "Bắp ngô vàng", "qty": 2 },
+        { "itemId": "binh-sua-bo", "name": "Bình sữa bò", "qty": 1 }
+      ],
+      "resultItemId": "sup-ngo-ngot-sua",
+      "resultQty": 1,
+      "hungerRestore": 35,
+      "happinessBonus": 25
+    },
+    {
+      "id": "banh-quy-bo-mat-ong",
+      "name": "Bánh quy bơ mật ong",
+      "description": "Bánh quy nướng thơm lừng mùi bơ sữa và ngọt ngào vị mật ong hoa rừng.",
+      "icon": "cookie",
+      "ingredients": [
+        { "itemId": "bong-lua-vang", "name": "Bông lúa vàng", "qty": 1 },
+        { "itemId": "binh-sua-bo", "name": "Bình sữa bò", "qty": 1 },
+        { "itemId": "to-ong-mat", "name": "Tổ ong mật", "qty": 1 }
+      ],
+      "resultItemId": "banh-quy-bo-mat-ong",
+      "resultQty": 2,
+      "hungerRestore": 30,
+      "happinessBonus": 35
+    },
+    {
+      "id": "nuoc-ep-ca-rot-mat-ong",
+      "name": "Nước ép cà rốt mật ong",
+      "description": "Ly nước ép cam tươi rói bổ dưỡng, giúp mắt sáng và tinh thần sảng khoái.",
+      "icon": "tropical-drink",
+      "ingredients": [
+        { "itemId": "cu-ca-rot-ngot", "name": "Củ cà rốt ngọt", "qty": 2 },
+        { "itemId": "to-ong-mat", "name": "Tổ ong mật", "qty": 1 }
+      ],
+      "resultItemId": "nuoc-ep-ca-rot-mat-ong",
+      "resultQty": 1,
+      "hungerRestore": 25,
+      "happinessBonus": 30
+    },
+    {
+      "id": "che-sen-ngot-mat",
+      "name": "Chè sen ngọt mát",
+      "description": "Món chè thanh tao nức tiếng làng quê, thanh nhiệt và êm dịu tâm hồn.",
+      "icon": "teacup-without-handle",
+      "ingredients": [
+        { "itemId": "canh-sen-hong", "name": "Cánh sen hồng", "qty": 2 },
+        { "itemId": "to-ong-mat", "name": "Tổ ong mật", "qty": 1 }
+      ],
+      "resultItemId": "che-sen-ngot-mat",
+      "resultQty": 1,
+      "hungerRestore": 30,
+      "happinessBonus": 40
+    },
+    {
+      "id": "banh-ran-mat-ngot",
+      "name": "Bánh rán mật ngọt",
+      "description": "Chiếc bánh rán tròn xoe phúng phính mềm thơm, món khoái khẩu của các bạn nhỏ.",
+      "icon": "pancakes",
+      "ingredients": [
+        { "itemId": "bong-lua-vang", "name": "Bông lúa vàng", "qty": 2 },
+        { "itemId": "trung-ga-ta", "name": "Trứng gà ta", "qty": 1 },
+        { "itemId": "to-ong-mat", "name": "Tổ ong mật", "qty": 1 }
+      ],
+      "resultItemId": "banh-ran-mat-ngot",
+      "resultQty": 1,
+      "hungerRestore": 45,
+      "happinessBonus": 35
+    },
+    {
+      "id": "sua-chua-dau-tay",
+      "name": "Sữa chua dâu tây mát lạnh",
+      "description": "Sữa chua sánh dẻo thơm mát phủ những lát dâu tây đỏ mọng chua ngọt.",
+      "icon": "ice-cream",
+      "ingredients": [
+        { "itemId": "binh-sua-bo", "name": "Bình sữa bò", "qty": 1 },
+        { "itemId": "dau-tay-chin", "name": "Dâu tây chín", "qty": 2 }
+      ],
+      "resultItemId": "sua-chua-dau-tay",
+      "resultQty": 1,
+      "hungerRestore": 30,
+      "happinessBonus": 45
+    },
+    {
+      "id": "canh-nam-hat-de",
+      "name": "Canh nấm rừng hạt dẻ",
+      "description": "Món canh hầm ấm cúng cho ngày mưa se lạnh, vị ngọt lành từ rừng sâu mát lành.",
+      "icon": "pot-of-food",
+      "ingredients": [
+        { "itemId": "hat-de-rung", "name": "Hạt dẻ rừng", "qty": 2 },
+        { "itemId": "nam-chuong-do", "name": "Nấm chuông đỏ", "qty": 1 }
+      ],
+      "resultItemId": "canh-nam-hat-de",
+      "resultQty": 1,
+      "hungerRestore": 50,
+      "happinessBonus": 30
+    },
+    {
+      "id": "kem-dua-non",
+      "name": "Kem dừa non ngọt lịm",
+      "description": "Kem dừa tươi bùi ngậy trong trái dừa xiêm mát rượi giải nhiệt ngày hè.",
+      "icon": "shaved-ice",
+      "ingredients": [
+        { "itemId": "qua-dua-xiem", "name": "Quả dừa xiêm", "qty": 1 },
+        { "itemId": "binh-sua-bo", "name": "Bình sữa bò", "qty": 1 }
+      ],
+      "resultItemId": "kem-dua-non",
+      "resultQty": 1,
+      "hungerRestore": 35,
+      "happinessBonus": 50
+    },
+    {
+      "id": "banh-trung-ca-rot",
+      "name": "Bánh kếp cà rốt vàng ruộm",
+      "description": "Bánh kếp mềm xốp màu cam đẹp mắt, thú cưng và bé cưng đều mê tít.",
+      "icon": "pie",
+      "ingredients": [
+        { "itemId": "cu-ca-rot-ngot", "name": "Củ cà rốt ngọt", "qty": 1 },
+        { "itemId": "trung-ga-ta", "name": "Trứng gà ta", "qty": 1 },
+        { "itemId": "bong-lua-vang", "name": "Bông lúa vàng", "qty": 1 }
+      ],
+      "resultItemId": "banh-trung-ca-rot",
+      "resultQty": 1,
+      "hungerRestore": 45,
+      "happinessBonus": 35
+    },
+    {
+      "id": "com-nam-nong-trai",
+      "name": "Cơm nắm hạt ngọc nông trang",
+      "description": "Cơm nắm dẻo thơm gói ghém tình yêu thương và sự cần cù của bác nông dân.",
+      "icon": "rice-ball",
+      "ingredients": [
+        { "itemId": "bong-lua-vang", "name": "Bông lúa vàng", "qty": 2 },
+        { "itemId": "trung-ga-ta", "name": "Trứng gà ta", "qty": 1 }
+      ],
+      "resultItemId": "com-nam-nong-trai",
+      "resultQty": 1,
+      "hungerRestore": 50,
+      "happinessBonus": 30
+    },
+    {
+      "id": "sinh-to-nho-mat-ong",
+      "name": "Sinh tố nho ngọt mát",
+      "description": "Thức uống tím biếc sóng sánh hương hoa quả tươi và mật ong ngọt thanh.",
+      "icon": "cup-with-straw",
+      "ingredients": [
+        { "itemId": "chum-nho-ngot", "name": "Chùm nho ngọt", "qty": 2 },
+        { "itemId": "to-ong-mat", "name": "Tổ ong mật", "qty": 1 }
+      ],
+      "resultItemId": "sinh-to-nho-mat-ong",
+      "resultQty": 1,
+      "hungerRestore": 30,
+      "happinessBonus": 40
+    }
+  ]
+}

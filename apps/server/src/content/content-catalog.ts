@@ -9,6 +9,7 @@ import type { QuestTextbook } from '@miu/schema/game';
 import { questCatalogIssues } from '@miu/quest/quest-catalog';
 import { buildAccessoryCatalog, type AccessoryItem } from '@miu/voxel/accessory-schema';
 import { speciesSchema } from '@miu/voxel/character-recipe';
+import { RecipeCatalog, type Recipe } from '@miu/schema/cooking';
 import { z } from 'zod';
 import { readCurriculum } from '../worksheet/curriculum-books';
 import { CONTENT_DIR } from './content-dir';
@@ -42,6 +43,8 @@ export interface ContentCatalog {
   maps: ReadonlySet<string>;
   /** Collectible sets (content/collectibles.json), by region id, in catalogue order. */
   collectibles: ReadonlyMap<string, CollectibleSet>;
+  /** Cooking recipes (content/recipes.json). */
+  recipes: ReadonlyMap<string, Recipe>;
 }
 
 /** The collectible sets, checked against the regions; a catalogue that does not fit fails the boot. */
@@ -145,5 +148,6 @@ export function loadContentCatalog({ dir = CONTENT_DIR, questDir, extraQuestDir 
     textbooks: questTextbooks(quests.values(), path.join(dir, 'curriculum')),
     maps: new Set(playableMaps(regions)),
     collectibles: loadCollectibles(dir, regions),
+    recipes: new Map(readContentJson(RecipeCatalog, path.join(dir, 'recipes.json')).recipes.map((r) => [r.id, r])),
   };
 }

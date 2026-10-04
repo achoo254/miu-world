@@ -964,8 +964,12 @@ export class Game {
         const lines = PET_LINES;
         playerBubble.show(lines[Math.floor(Math.random() * lines.length)] ?? lines[0] ?? '');
         if (multiplayer) multiplayer.sendEmote('cheer');
+        store.emit({ type: 'interaction', targetId: 'pet-care' });
       } else if (interact && promptObject) {
         objectInteractions.interact(promptObject, controller, character, multiplayer);
+        if (promptObject.def.id.includes('stove') || promptObject.def.id.includes('kitchen') || promptObject.def.id.includes('bep')) {
+          store.emit({ type: 'interaction', targetId: 'cooking' });
+        }
       }
       // A finished quest: everyone around cheers; confetti unless the child asked for less motion.
       if (celebrateRequested) {

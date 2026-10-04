@@ -52,6 +52,8 @@ const CATALOGUE_FILES = [
   'collectibles.json',
   // Each region's chest: tiers, coins, XP, exclusive wearables and titles (apps/server/src/region-reward).
   'region-rewards.json',
+  // Recipes for home cooking at nha-cua-be.
+  'recipes.json',
 ];
 /** Content files the asset tools validate when they build characters, atlases and maps (any file in a folder). */
 const ASSET_TOOL_FILES = [

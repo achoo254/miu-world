@@ -27,6 +27,8 @@ import { DECOR_TARGET } from '../home-decor/decor-catalog';
 import { loadHomeDecor } from '../home-decor/home-decor-api';
 import { HomeDecorPanel } from '../home-decor/home-decor-panel';
 import { SHOP_TARGET, ShopPanel } from '../shop/shop-panel';
+import { PetCarePanel } from '../pet-care/pet-care-panel';
+import { CookingPanel } from '../cooking/cooking-panel';
 import { TimetablePanel } from '../timetable/timetable-panel';
 import { TIMETABLE_TARGETS, type TimetableFocus } from '../timetable/timetable-targets';
 import { createPositionSaver, loadPlayerPositions } from './player-position';
@@ -197,6 +199,10 @@ export function PlayScreen() {
   const [decorOpen, setDecorOpen] = useState(false);
   /** The shop, opened by its shopkeeper in Trung tâm. */
   const [shopOpen, setShopOpen] = useState(false);
+  /** The pet care screen. */
+  const [petCareOpen, setPetCareOpen] = useState(false);
+  /** The home cooking screen. */
+  const [cookingOpen, setCookingOpen] = useState(false);
   /** The child's picks for her home, read before her home's map is built (null until known; others need none). */
   const [decor, setDecor] = useState<Record<string, string> | null>(null);
   /** The map on screen loads after a gate: its loading screen is the trip through the portal. */
@@ -268,7 +274,7 @@ export function PlayScreen() {
   const region = quest?.quest.region ?? DEFAULT_REGION;
   // An element of `positions` (set once), so the same object on every render: the game is not rebuilt.
   const savedSpot = positions?.find((p) => p.map === regionMap(region)) ?? null;
-  const covered = paused || questOpen || backpackOpen || questsOpen || timetable !== null || decorOpen || shopOpen;
+  const covered = paused || questOpen || backpackOpen || questsOpen || timetable !== null || decorOpen || shopOpen || petCareOpen || cookingOpen;
   const atHome = data !== null && regionMap(region) === regionMap(HOME_REGION);
   // Her home is built in her picks: they are read first (a failed read builds the house as it comes).
   useEffect(() => {
@@ -334,6 +340,8 @@ export function PlayScreen() {
         if (focus) setTimetable(focus);
         if (last.targetId === DECOR_TARGET) setDecorOpen(true);
         if (last.targetId === SHOP_TARGET) setShopOpen(true);
+        if (last.targetId === 'pet-care' || last.targetId === 'pet-companion') setPetCareOpen(true);
+        if (last.targetId === 'cooking' || last.targetId.includes('kitchen') || last.targetId.includes('stove') || last.targetId.includes('bep')) setCookingOpen(true);
       }),
     [store],
   );
@@ -391,6 +399,27 @@ export function PlayScreen() {
             // Worn at once in the game, without rebuilding the map (the next visit starts in it from the server).
             onWear={(equipped) => store.send({ type: 'set-outfit', equipped })}
           />
+        ) : null}
+        {petCareOpen ? (
+          <Modal title="Chăm sóc Thú cưng 🐾" onClose={() => setPetCareOpen(false)} dataId="play-pet-care" size="normal">
+            <PetCarePanel
+              onClose={() => setPetCareOpen(false)}
+              onActionFeedback={(_action, _msg, emote) => {
+                if (emote === 'dance') store.send({ type: 'celebrate' });
+              }}
+            />
+            <button type="button" className="scene-close" data-id="play-pet-care-close" aria-label="Đóng" onClick={() => setPetCareOpen(false)}>
+              ✕
+            </button>
+          </Modal>
+        ) : null}
+        {cookingOpen ? (
+          <Modal title="Bếp Nhà Nấu Ăn 🍳" onClose={() => setCookingOpen(false)} dataId="play-cooking" size="wide">
+            <CookingPanel onClose={() => setCookingOpen(false)} />
+            <button type="button" className="scene-close" data-id="play-cooking-close" aria-label="Đóng" onClick={() => setCookingOpen(false)}>
+              ✕
+            </button>
+          </Modal>
         ) : null}
         {data ? <QuestLayer key={questId ?? 'none'} store={store} data={data} questId={quest?.quest.id ?? null} region={region} onResponse={onResponse} onOverlayChange={setQuestOpen} draftOwner={draftOwner} /> : null}
         {paused ? (
