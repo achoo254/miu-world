@@ -40,11 +40,55 @@ afterEach(() => {
 });
 
 describe('completion screens', () => {
-  it('shows Level Up only when the level went up; nothing is ever unlocked', () => {
+  it('shows Level Up and Skill Up when levels increase', () => {
     expect(completionScreens(completion())).toEqual(['reward', 'level']);
     expect(completionScreens(completion({ levelAfter: 1 }))).toEqual(['reward']);
+    // Skill up only
+    expect(
+      completionScreens(
+        completion({
+          levelAfter: 1,
+          skillLevels: [{ skillId: 'phep-cong', levelBefore: 1, levelAfter: 2 }],
+        }),
+      ),
+    ).toEqual(['reward', 'skill']);
+    // Both level up and skill up
+    expect(
+      completionScreens(
+        completion({
+          levelAfter: 2,
+          skillLevels: [{ skillId: 'phep-cong', levelBefore: 1, levelAfter: 2 }],
+        }),
+      ),
+    ).toEqual(['reward', 'level', 'skill']);
     // Answers to copy come first: once she has played, she writes them into her vở.
     expect(completionScreens(completion({ levelAfter: 1 }), 3)).toEqual(['notebook', 'reward']);
+  });
+
+  it('shows Skill Up screen with skill name and level transition', () => {
+    const onMap = vi.fn();
+    render(
+      <CompletionSequence
+        completion={completion({
+          levelAfter: 1, // no character level up
+          skillLevels: [{ skillId: 'phep-cong', levelBefore: 1, levelAfter: 2 }],
+        })}
+        reward={REWARD}
+        quest={QUEST}
+        data={DATA}
+        onMap={onMap}
+        onExplore={() => undefined}
+      />,
+    );
+    // On reward screen
+    fireEvent.click(screen.getByRole('button', { name: 'Tiếp' }));
+    // On skill up screen
+    expect(document.querySelector('[data-id="skill-up"]')).toBeTruthy();
+    expect(document.querySelector('[data-id="skill-up-phep-cong"]')).toBeTruthy();
+    expect(screen.getByText('Phép cộng')).toBeTruthy();
+    expect(screen.getByText('Lv.1 → Lv.2')).toBeTruthy();
+    fireEvent.click(screen.getByRole('button', { name: /Về bản đồ/ }));
+    expect(onMap).toHaveBeenCalledTimes(1);
   });
 
   it('shows the server\'s numbers, then Level Up, each skippable with one tap', () => {

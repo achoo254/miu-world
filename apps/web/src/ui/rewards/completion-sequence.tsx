@@ -29,16 +29,27 @@ import './rewards.css';
 const STAR_GAP_MS = 400;
 const COUNT_MS = 900;
 
-type Screen = 'notebook' | 'reward' | 'level';
+type Screen = 'notebook' | 'reward' | 'level' | 'skill';
 /** What the finishing step paid (server). */
 export type GrantedReward = NonNullable<StepCompleteResponse['reward']>;
 
+function skillNameOf(data: PlayerData, id: string): string {
+  return data.progress.subjects.flatMap((s) => s.skills).find((k) => k.skillId === id)?.name ?? id;
+}
+
 /**
  * The screens after a quest, in order: first what to copy into the vở when the quest had answers (owner,
- * 03/10/2026: once she has played, she writes it down), then the reward, then the level-up if any.
+ * 03/10/2026: once she has played, she writes it down), then the reward, then the level-up and skill-up if any.
  */
 export function completionScreens(completion: QuestCompletion, notebook = 0): Screen[] {
-  return [...(notebook > 0 ? (['notebook'] as const) : []), 'reward', ...(completion.levelAfter > completion.levelBefore ? (['level'] as const) : [])];
+  const hasLevelUp = completion.levelAfter > completion.levelBefore;
+  const hasSkillUp = completion.skillLevels.some((s) => s.levelAfter > s.levelBefore);
+  return [
+    ...(notebook > 0 ? (['notebook'] as const) : []),
+    'reward',
+    ...(hasLevelUp ? (['level'] as const) : []),
+    ...(hasSkillUp ? (['skill'] as const) : []),
+  ];
 }
 
 /** The counter's value `elapsedMs` into a count-up of `durationMs`: from 0, easing out, ending exactly on `target`. */
@@ -201,7 +212,14 @@ export function CompletionSequence({
   const [index, setIndex] = useState(0);
   const screen = screens[index] ?? 'reward';
   const last = index === screens.length - 1;
-  const title: TextKey = screen === 'notebook' ? 'completion.notebookTitle' : screen === 'reward' ? 'completion.rewardTitle' : 'completion.levelTitle';
+  const title: TextKey =
+    screen === 'notebook'
+      ? 'completion.notebookTitle'
+      : screen === 'reward'
+        ? 'completion.rewardTitle'
+        : screen === 'level'
+          ? 'completion.levelTitle'
+          : 'completion.skillTitle';
 
   return (
     <Modal title={<T k={title} />} onClose={last ? onExplore : () => setIndex(index + 1)} dataId={`completion-${screen}`} variant="scene">
@@ -214,7 +232,7 @@ export function CompletionSequence({
         </div>
       ) : screen === 'reward' ? (
         <RewardScreen completion={completion} reward={reward} quest={quest} data={data} />
-      ) : (
+      ) : screen === 'level' ? (
         <div className="reward-body" data-id="level-up">
           <MiuPortrait pose="cheer" size="9rem" species={data.character.species} />
           <p className="reward-level">
@@ -222,6 +240,26 @@ export function CompletionSequence({
           </p>
           <p>
             <T k="completion.levelBody" params={{ name: data.character.name }} />
+          </p>
+        </div>
+      ) : (
+        <div className="reward-body" data-id="skill-up">
+          <MiuPortrait pose="cheer" size="9rem" species={data.character.species} />
+          {completion.skillLevels
+            .filter((s) => s.levelAfter > s.levelBefore)
+            .map((s) => (
+              <div key={s.skillId} className="reward-skill-up-item" data-id={`skill-up-${s.skillId}`}>
+                <div className="reward-skill-name">
+                  <Icon name="books" size={32} />
+                  <span>{skillNameOf(data, s.skillId)}</span>
+                </div>
+                <p className="reward-level">
+                  Lv.{s.levelBefore} → Lv.{s.levelAfter}
+                </p>
+              </div>
+            ))}
+          <p>
+            <T k="completion.skillBody" params={{ name: data.character.name }} />
           </p>
         </div>
       )}
