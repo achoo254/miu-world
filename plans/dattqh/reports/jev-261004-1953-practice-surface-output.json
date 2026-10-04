@@ -1,0 +1,19 @@
+{
+  "model": "jev-1.13.0",
+  "usage": {
+    "input_tokens": 707,
+    "output_tokens": 46
+  },
+  "results": {
+    "practice_entrance": {
+      "stakes": "medium",
+      "choice": "home_screen_first_gate_later",
+      "confidence": 1.0,
+      "probabilities": {
+        "forest_gate_now": 0.0,
+        "home_screen_first_gate_later": 1.0
+      },
+      "decision": "auto"
+    }
+  }
+}

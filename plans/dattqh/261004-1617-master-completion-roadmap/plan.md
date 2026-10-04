@@ -58,6 +58,8 @@ Quy tắc xếp thứ tự: (1) việc không phụ thuộc và rủi ro thấp 
 | 4 | `live-world-events` | XL |
 | Xuyên suốt | `mvp-gate-launch-readiness` | L |
 
+Bàn giao cho phiên Antigravity cook: `handoff-antigravity.md` (cùng thư mục).
+
 ## Luật chung cho mọi plan này
 
 - File dùng chung với phiên khác (`game.ts`, `object-interaction-*.ts`, `player-character.ts`, `game.css`): chỉ thêm module riêng rồi nối một dòng, sau khi phiên kia commit.

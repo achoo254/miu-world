@@ -22,6 +22,8 @@ import { LanguageSetting, VoiceSpeedSetting } from '../system/language-setting';
 import { SoundToggle } from '../system/sound-toggle';
 import { WorldStage } from '../world/world-stage';
 import { TodayQuests } from './today-quests';
+import { OlympiadBanner } from '../event/olympiad-banner';
+import { OlympiadPanel } from '../event/olympiad-panel';
 import './home.css';
 
 function SettingsDialog({ onClose }: { onClose: () => void }) {
@@ -54,6 +56,7 @@ export function HomeScreen() {
   const { t } = useT();
   const [settings, setSettings] = useState(false);
   const [shopOpen, setShopOpen] = useState(false);
+  const [olympiadOpen, setOlympiadOpen] = useState(false);
   /** Coins after a purchase here (the badge shows the server's balance). */
   const [coins, setCoins] = useState<number | null>(null);
   const quest = data ? currentQuest(data.quests) : null;
@@ -122,12 +125,19 @@ export function HomeScreen() {
                   <Icon name="coin" size={40} />
                   <T k="common.shop" />
                 </button>
-                
+                <button type="button" className="home-rail-item" data-id="home-nav-olympiad" onClick={() => setOlympiadOpen(true)}>
+                  <Icon name="trophy" size={40} />
+                  <T k="olympiad.rail" />
+                </button>
               </nav>
-              <TodayQuests data={data} />
+              <div style={{ gridArea: 'today', display: 'flex', flexDirection: 'column', gap: 'var(--space-md)' }}>
+                <OlympiadBanner onOpen={() => setOlympiadOpen(true)} />
+                <TodayQuests data={data} />
+              </div>
             </div>
             {settings ? <SettingsDialog onClose={() => setSettings(false)} /> : null}
             {shopOpen ? <ShopPanel onClose={() => setShopOpen(false)} onCoins={setCoins} /> : null}
+            {olympiadOpen ? <OlympiadPanel onClose={() => setOlympiadOpen(false)} onCoinsUpdated={setCoins} /> : null}
           </>
         ) : null}
       </main>

@@ -1,0 +1,23 @@
+{
+  "state": {
+    "project": "Miu World: a voxel learning game for Vietnamese grade-2 children (web, iPad), built 100% by AI. Only the owner and one child play.",
+    "today": "2026-10-04",
+    "facts": [
+      "The child takes a real math olympiad preliminary round on 2026-10-10, six days away. A one-player practice mode is approved: five topic sets of original grade-2 puzzles and a mock test (25 multiple-choice questions, 4 points each, optional 60-minute clock, medals at 20/40/60/80 points).",
+      "The owner's mock shows a magic portal in the forest as the entrance. Building that 3D gate means changing a map generator and regenerating the forest map plus three scenery audits.",
+      "Another coding session currently has uncommitted edits in map generator files (zone-map.ts, generate-trung-tam-map.ts) and in game.ts, so touching map generators now risks conflicts and a wait.",
+      "A Home-screen entry (a banner and button on the existing Home screen opening a themed practice screen over the paused scene) needs no map change and can be built quickly; the 3D gate can be added later as a second entrance to the same screen without redoing the practice screen.",
+      "The practice screen and its content are data-driven and identical in both options."
+    ]
+  },
+  "questions": {
+    "practice_entrance": {
+      "stakes": "medium",
+      "instructions": "Where should the first version of the olympic practice mode be entered from?",
+      "criteria": {
+        "home_screen_first_gate_later": "Build the Home-screen banner and button now (no map change), and add the 3D forest gate later as a second entrance to the same screen.",
+        "forest_gate_now": "Build the 3D portal gate in the forest now, regenerate the map and run the scenery audits, even if it must wait for the other session's uncommitted map edits."
+      }
+    }
+  }
+}

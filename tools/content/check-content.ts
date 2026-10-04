@@ -14,6 +14,7 @@ import { collectibleIssues, type CollectibleSet } from '../../packages/schema/sr
 import { PetCatalog, petArtPath } from '../../packages/schema/src/pet';
 import { BoxPropCatalog, EmojiPropCatalog, LookCatalog, QuestTargetCatalog } from '../../packages/schema/src/world-target';
 import { RegionCatalog, mapForRegion, regionGuides } from '../../packages/schema/src/region';
+import { OlympiadCatalog } from '../../packages/schema/src/olympiad';
 import { UI_ICONS } from '../../apps/web/src/ui/kit/ui-art';
 import { MUSIC_MOODS } from '../../apps/web/src/ui/sound/music';
 import { SPRITE_PATHS } from '../../apps/web/src/ui/minigame/sprites';
@@ -54,6 +55,8 @@ const CATALOGUE_FILES = [
   'region-rewards.json',
   // Recipes for home cooking at nha-cua-be.
   'recipes.json',
+  // Olympic Math Challenge (Phase 0).
+  'olympiad/',
 ];
 /** Content files the asset tools validate when they build characters, atlases and maps (any file in a folder). */
 const ASSET_TOOL_FILES = [
@@ -489,6 +492,10 @@ export function checkContent(dir: string = CONTENT_DIR): ContentReport {
     issues.push(...checkPrivacy(privacy, catalog.consent.version));
     if (PrivacyDocument.safeParse(privacy).data?.contactEmail === null) warnings.push(`content/${PRIVACY_FILE} has no contact email yet`);
     issues.push(...checkAccessories(catalog.accessories.values(), new Set(catalog.quests.keys()), new Set(manifest.generated.map((f) => f.path))));
+    if (existsSync(path.join(dir, 'olympiad/olympic-math.json'))) {
+      const parsedOlympiad = OlympiadCatalog.safeParse(read('olympiad/olympic-math.json'));
+      if (!parsedOlympiad.success) issues.push(`content/olympiad/olympic-math.json: ${parsedOlympiad.error.message}`);
+    }
     notes.push(...targets.notes);
   } catch (error) {
     issues.push(error instanceof Error ? error.message : String(error));

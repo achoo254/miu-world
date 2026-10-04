@@ -27,6 +27,7 @@ import { loadWorksheets } from './worksheet/worksheet-builder';
 import { worksheetRoutes } from './worksheet/worksheet-routes';
 import { petCareRoutes } from './pet-care/pet-care-routes';
 import { cookingRoutes } from './cooking/cooking-routes';
+import { olympiadRoutes } from './olympiad/olympiad-routes';
 
 export interface AppDeps {
   config: ServerConfig;
@@ -98,6 +99,7 @@ export function createApp({ config, db, content = loadContentCatalog(), workshee
   api.use(collectionRoutes({ db, content, clock }));
   api.use(petCareRoutes({ db, content, clock }));
   api.use(cookingRoutes({ db, content, clock }));
+  api.use(olympiadRoutes({ db, content, clock }));
   api.use(worksheetRoutes({ worksheets, clock, fontDir: config.handwritingFontDir }));
   app.use('/api', api);
 

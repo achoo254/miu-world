@@ -1,0 +1,1313 @@
+{
+  "version": 1,
+  "id": "olympic-math",
+  "title": "Thử thách Olympic Toán",
+  "subtitle": "Luyện thi Olympic Toán học Khối 2 · Vòng loại 10/10/2026",
+  "examDate": "2026-10-10",
+  "topics": [
+    {
+      "id": "logic",
+      "name": "Tư duy logic",
+      "nameEn": "Logical Thinking",
+      "icon": "🧠",
+      "subtopics": "Cái cân · Dãy quy luật · Tuổi và ngày tháng",
+      "description": "Rèn luyện khả năng suy luận logic, giải bài toán cái cân thăng bằng và tìm quy luật số hình."
+    },
+    {
+      "id": "arithmetic",
+      "name": "Số học",
+      "nameEn": "Arithmetic",
+      "icon": "➕",
+      "subtopics": "Cộng trừ 2–3 chữ số · Cân bằng phép tính · Cỗ máy số",
+      "description": "Tính toán nhanh, khéo léo biến đổi phép tính và tìm số bí ẩn qua các cỗ máy số học."
+    },
+    {
+      "id": "number-theory",
+      "name": "Lý thuyết số",
+      "nameEn": "Number Theory",
+      "icon": "🔢",
+      "subtopics": "Số chẵn lẻ · Ghép phép tính · Chia đều",
+      "description": "Khám phá quy luật số chẵn, số lẻ, phép chia đều và cấu tạo số tự nhiên."
+    },
+    {
+      "id": "geometry",
+      "name": "Hình học",
+      "nameEn": "Geometry",
+      "icon": "🔷",
+      "subtopics": "Đếm hình 2D · Khối 3D · Quan sát góc nhìn",
+      "description": "Tập đếm đoạn thẳng, hình tam giác, hình chữ nhật và tưởng tượng các khối lập phương trong không gian."
+    },
+    {
+      "id": "combinatorics",
+      "name": "Tổ hợp",
+      "nameEn": "Combinatorics",
+      "icon": "🧮",
+      "subtopics": "Chia nhóm · Đếm trường hợp · Thành lập số",
+      "description": "Đếm số cách phối đồ, xếp hàng, chia nhóm đồ vật và lập các số thỏa mãn yêu cầu."
+    }
+  ],
+  "practiceQuestions": [
+    {
+      "id": "olympic-prac-logic-01",
+      "topicId": "logic",
+      "title": "Cái cân quả táo và quả cam",
+      "prompt": "Biết 1 quả táo thăng bằng với 2 quả cam. Hỏi 3 quả táo thăng bằng với bao nhiêu quả cam?",
+      "visualType": "scale",
+      "visualData": { "left": "1 quả táo", "right": "2 quả cam" },
+      "choices": [
+        { "id": "A", "text": "4 quả cam" },
+        { "id": "B", "text": "5 quả cam" },
+        { "id": "C", "text": "6 quả cam" },
+        { "id": "D", "text": "7 quả cam" }
+      ],
+      "correctAnswer": "C",
+      "guide": "Mỗi quả táo nặng bằng 2 quả cam. Để tìm số quả cam bằng 3 quả táo, ta lấy 2 nhân với 3.",
+      "hint": "Cứ 1 quả táo thì đổi được 2 quả cam. Có 3 quả táo như thế.",
+      "explanation": "Vì 1 quả táo = 2 quả cam, nên 3 quả táo = 2 + 2 + 2 = 6 quả cam (hoặc 2 × 3 = 6 quả cam)."
+    },
+    {
+      "id": "olympic-prac-logic-02",
+      "topicId": "logic",
+      "title": "Dãy số có quy luật",
+      "prompt": "Quan sát dãy số sau: 3, 7, 11, 15, ... Số tiếp theo của dãy số là số nào?",
+      "visualType": "pattern",
+      "visualData": { "sequence": [3, 7, 11, 15, "?"] },
+      "choices": [
+        { "id": "A", "text": "17" },
+        { "id": "B", "text": "18" },
+        { "id": "C", "text": "19" },
+        { "id": "D", "text": "20" }
+      ],
+      "correctAnswer": "C",
+      "guide": "Quan sát khoảng cách giữa hai số liền nhau trong dãy: 7 - 3 = 4, 11 - 7 = 4, 15 - 11 = 4. Dãy số tăng đều 4 đơn vị.",
+      "hint": "Mỗi số đứng sau đều bằng số đứng trước cộng thêm 4.",
+      "explanation": "Quy luật: Mỗi số sau bằng số trước cộng thêm 4. Số tiếp theo là 15 + 4 = 19."
+    },
+    {
+      "id": "olympic-prac-logic-03",
+      "topicId": "logic",
+      "title": "Hộp quà bí ẩn trên đĩa cân",
+      "prompt": "Đĩa cân bên trái có một hộp quà và một quả cân 3kg. Đĩa cân bên phải có một quả cân 8kg. Cân đang thăng bằng. Hỏi hộp quà nặng bao nhiêu ki-lô-gam?",
+      "visualType": "scale",
+      "visualData": { "left": "Hộp quà + 3kg", "right": "8kg" },
+      "choices": [
+        { "id": "A", "text": "4kg" },
+        { "id": "B", "text": "5kg" },
+        { "id": "C", "text": "6kg" },
+        { "id": "D", "text": "11kg" }
+      ],
+      "correctAnswer": "B",
+      "guide": "Khi cân thăng bằng, khối lượng hai bên đĩa cân bằng nhau: Hộp quà + 3kg = 8kg.",
+      "hint": "Muốn tìm hộp quà, hãy lấy tổng khối lượng bên phải trừ đi quả cân 3kg bên trái.",
+      "explanation": "Khối lượng hộp quà là: 8 - 3 = 5 (kg)."
+    },
+    {
+      "id": "olympic-prac-logic-04",
+      "topicId": "logic",
+      "title": "Quy luật vòng tròn màu sắc",
+      "prompt": "Các hình tròn được xếp theo quy luật lặp lại: Đỏ, Xanh, Vàng, Đỏ, Xanh, Vàng, Đỏ... Hỏi hình tròn thứ 10 có màu gì?",
+      "visualType": "pattern",
+      "visualData": { "pattern": ["Đỏ", "Xanh", "Vàng"] },
+      "choices": [
+        { "id": "A", "text": "Màu đỏ" },
+        { "id": "B", "text": "Màu xanh" },
+        { "id": "C", "text": "Màu vàng" },
+        { "id": "D", "text": "Màu tím" }
+      ],
+      "correctAnswer": "A",
+      "guide": "Nhóm màu lặp lại gồm 3 hình: 1-Đỏ, 2-Xanh, 3-Vàng. Chia 10 cho 3 để tìm số dư.",
+      "hint": "10 chia cho 3 được 3 nhóm và dư 1. Hình dư 1 chính là hình đầu tiên của nhóm tiếp theo.",
+      "explanation": "Chu kỳ lặp gồm 3 màu (Đỏ, Xanh, Vàng). Ta có 10 = 3 × 3 + 1, dư 1 nên hình thứ 10 là màu đầu tiên của chu kỳ: Màu đỏ."
+    },
+    {
+      "id": "olympic-prac-logic-05",
+      "topicId": "logic",
+      "title": "Bài toán tuổi của hai bạn",
+      "prompt": "Hiện nay bé Miu 8 tuổi và Thỏ Bông 5 tuổi. Hỏi khi bé Miu 12 tuổi thì Thỏ Bông bao nhiêu tuổi?",
+      "visualType": "none",
+      "choices": [
+        { "id": "A", "text": "8 tuổi" },
+        { "id": "B", "text": "9 tuổi" },
+        { "id": "C", "text": "10 tuổi" },
+        { "id": "D", "text": "11 tuổi" }
+      ],
+      "correctAnswer": "B",
+      "guide": "Hiệu số tuổi của hai người không bao giờ thay đổi theo thời gian.",
+      "hint": "Miu luôn nhiều hơn Thỏ Bông: 8 - 5 = 3 tuổi.",
+      "explanation": "Miu hơn Thỏ Bông số tuổi là: 8 - 5 = 3 (tuổi). Khi Miu 12 tuổi, tuổi của Thỏ Bông là: 12 - 3 = 9 (tuổi)."
+    },
+    {
+      "id": "olympic-prac-logic-06",
+      "topicId": "logic",
+      "title": "Thứ trong tuần",
+      "prompt": "Hôm nay là thứ Tư ngày 7 tháng 10. Hỏi thứ Tư tuần sau là ngày mấy tháng 10?",
+      "visualType": "calendar",
+      "visualData": { "today": "Thứ Tư ngày 7" },
+      "choices": [
+        { "id": "A", "text": "Ngày 12" },
+        { "id": "B", "text": "Ngày 13" },
+        { "id": "C", "text": "Ngày 14" },
+        { "id": "D", "text": "Ngày 15" }
+      ],
+      "correctAnswer": "C",
+      "guide": "Một tuần có đúng 7 ngày. Muốn tìm cùng thứ đó vào tuần sau, ta cộng thêm 7 ngày.",
+      "hint": "Cộng 7 vào ngày hiện tại.",
+      "explanation": "Vì một tuần có 7 ngày nên thứ Tư tuần sau sẽ là ngày: 7 + 7 = 14 (tháng 10)."
+    },
+    {
+      "id": "olympic-prac-logic-07",
+      "topicId": "logic",
+      "title": "Cái cân hai bước",
+      "prompt": "Biết 1 quả dưa hấu nặng bằng 2 quả dứa, và 1 quả dứa nặng bằng 3 quả cam. Hỏi 1 quả dưa hấu nặng bằng bao nhiêu quả cam?",
+      "visualType": "scale",
+      "visualData": { "step1": "1 dưa hấu = 2 dứa", "step2": "1 dứa = 3 cam" },
+      "choices": [
+        { "id": "A", "text": "4 quả cam" },
+        { "id": "B", "text": "5 quả cam" },
+        { "id": "C", "text": "6 quả cam" },
+        { "id": "D", "text": "8 quả cam" }
+      ],
+      "correctAnswer": "C",
+      "guide": "Thay mỗi quả dứa bằng 3 quả cam: 1 quả dưa hấu = 2 quả dứa = 2 lần của 3 quả cam.",
+      "hint": "1 quả dứa đổi được 3 cam, vậy 2 quả dứa đổi được mấy quả cam?",
+      "explanation": "Vì 1 quả dưa hấu = 2 quả dứa và mỗi quả dứa = 3 quả cam, nên 1 quả dưa hấu = 2 × 3 = 6 quả cam."
+    },
+    {
+      "id": "olympic-prac-logic-08",
+      "topicId": "logic",
+      "title": "Dãy số nhân đôi",
+      "prompt": "Tìm số tiếp theo trong dãy số: 2, 4, 8, 16, ...",
+      "visualType": "pattern",
+      "visualData": { "sequence": [2, 4, 8, 16, "?"] },
+      "choices": [
+        { "id": "A", "text": "24" },
+        { "id": "B", "text": "28" },
+        { "id": "C", "text": "30" },
+        { "id": "D", "text": "32" }
+      ],
+      "correctAnswer": "D",
+      "guide": "Nhận xét: 2 × 2 = 4; 4 × 2 = 8; 8 × 2 = 16. Mỗi số sau gấp 2 lần số đứng ngay trước nó.",
+      "hint": "Lấy số 16 nhân đôi lên.",
+      "explanation": "Quy luật: Số sau gấp đôi số trước. Số tiếp theo là: 16 × 2 = 32 (hoặc 16 + 16 = 32)."
+    },
+    {
+      "id": "olympic-prac-logic-09",
+      "topicId": "logic",
+      "title": "Bé xếp hàng tập thể dục",
+      "prompt": "Trong một hàng dọc, đếm từ trước ra sau bé Miu đứng thứ 4. Đếm từ sau lên trước bé Miu đứng thứ 5. Hỏi hàng đó có tất cả bao nhiêu bạn?",
+      "visualType": "none",
+      "choices": [
+        { "id": "A", "text": "7 bạn" },
+        { "id": "B", "text": "8 bạn" },
+        { "id": "C", "text": "9 bạn" },
+        { "id": "D", "text": "10 bạn" }
+      ],
+      "correctAnswer": "B",
+      "guide": "Khi đếm cả hai đầu, bạn Miu đã được đếm 2 lần. Ta cộng hai vị trí lại rồi trừ đi 1.",
+      "hint": "Lấy 4 + 5 rồi bớt đi 1 lần bạn Miu bị đếm trùng.",
+      "explanation": "Tổng số bạn trong hàng là: 4 + 5 - 1 = 8 (bạn)."
+    },
+    {
+      "id": "olympic-prac-logic-10",
+      "topicId": "logic",
+      "title": "Hôm qua và ngày mai",
+      "prompt": "Nếu ngày mai là thứ Sáu, thì hôm qua là thứ mấy?",
+      "visualType": "none",
+      "choices": [
+        { "id": "A", "text": "Thứ Ba" },
+        { "id": "B", "text": "Thứ Tư" },
+        { "id": "C", "text": "Thứ Năm" },
+        { "id": "D", "text": "Thứ Bảy" }
+      ],
+      "correctAnswer": "B",
+      "guide": "Từ 'ngày mai' lùi lại 1 ngày để biết 'hôm nay', rồi lùi tiếp 1 ngày nữa để biết 'hôm qua'.",
+      "hint": "Nếu ngày mai thứ Sáu thì hôm nay là thứ Năm. Vậy hôm qua là thứ mấy?",
+      "explanation": "Ngày mai là thứ Sáu nên hôm nay là thứ Năm. Vậy hôm qua là thứ Tư."
+    },
+
+    {
+      "id": "olympic-prac-arith-01",
+      "topicId": "arithmetic",
+      "title": "Cộng tròn chục nhanh",
+      "prompt": "Tính nhẩm kết quả của phép tính: 46 + 24 = ?",
+      "visualType": "none",
+      "choices": [
+        { "id": "A", "text": "60" },
+        { "id": "B", "text": "68" },
+        { "id": "C", "text": "70" },
+        { "id": "D", "text": "80" }
+      ],
+      "correctAnswer": "C",
+      "guide": "Cộng hàng đơn vị trước: 6 + 4 = 10. Cộng hàng chục: 40 + 20 = 60. Rồi lấy 60 + 10 = 70.",
+      "hint": "6 cộng 4 thành 1 chục tròn.",
+      "explanation": "46 + 24 = (40 + 20) + (6 + 4) = 60 + 10 = 70."
+    },
+    {
+      "id": "olympic-prac-arith-02",
+      "topicId": "arithmetic",
+      "title": "Phép trừ có nhớ",
+      "prompt": "Kết quả của phép tính 82 - 37 là bao nhiêu?",
+      "visualType": "none",
+      "choices": [
+        { "id": "A", "text": "43" },
+        { "id": "B", "text": "45" },
+        { "id": "C", "text": "53" },
+        { "id": "D", "text": "55" }
+      ],
+      "correctAnswer": "B",
+      "guide": "2 không trừ được 7, mượn 1 chục: 12 - 7 = 5. 8 bớt 1 còn 7, 7 - 3 = 4. Kết quả là 45.",
+      "hint": "12 trừ 7 bằng 5, hàng đơn vị là 5.",
+      "explanation": "Đặt tính rồi tính: 82 - 37 = 45."
+    },
+    {
+      "id": "olympic-prac-arith-03",
+      "topicId": "arithmetic",
+      "title": "Cân bằng phép tính",
+      "prompt": "Tìm số thích hợp điền vào dấu hỏi chấm: 28 + 15 = ? + 10",
+      "visualType": "equation",
+      "visualData": { "equation": "28 + 15 = ? + 10" },
+      "choices": [
+        { "id": "A", "text": "31" },
+        { "id": "B", "text": "32" },
+        { "id": "C", "text": "33" },
+        { "id": "D", "text": "43" }
+      ],
+      "correctAnswer": "C",
+      "guide": "Tính vế trái trước: 28 + 15 = 43. Sau đó tìm số cộng với 10 để được 43: lấy 43 - 10 = 33.",
+      "hint": "Vế trái bằng 43. Vậy mấy cộng 10 bằng 43?",
+      "explanation": "Ta có: 28 + 15 = 43. Số cần tìm là: 43 - 10 = 33."
+    },
+    {
+      "id": "olympic-prac-arith-04",
+      "topicId": "arithmetic",
+      "title": "Cỗ máy số tiến",
+      "prompt": "Số 12 đi qua cỗ máy: đầu tiên nhân với 2, sau đó cộng thêm 5. Hỏi kết quả ra khỏi cỗ máy là bao nhiêu?",
+      "visualType": "none",
+      "choices": [
+        { "id": "A", "text": "27" },
+        { "id": "B", "text": "28" },
+        { "id": "C", "text": "29" },
+        { "id": "D", "text": "34" }
+      ],
+      "correctAnswer": "C",
+      "guide": "Thực hiện lần lượt theo thứ tự: bước 1 lấy 12 nhân 2, bước 2 lấy kết quả đó cộng 5.",
+      "hint": "12 × 2 = 24, sau đó lấy 24 + 5.",
+      "explanation": "Bước 1: 12 × 2 = 24. Bước 2: 24 + 5 = 29."
+    },
+    {
+      "id": "olympic-prac-arith-05",
+      "topicId": "arithmetic",
+      "title": "Cỗ máy số ngược",
+      "prompt": "Một số bí ẩn sau khi trừ đi 14 rồi cộng thêm 8 thì được kết quả là 30. Số bí ẩn lúc đầu là bao nhiêu?",
+      "visualType": "none",
+      "choices": [
+        { "id": "A", "text": "32" },
+        { "id": "B", "text": "34" },
+        { "id": "C", "text": "36" },
+        { "id": "D", "text": "38" }
+      ],
+      "correctAnswer": "C",
+      "guide": "Phương pháp suy luận ngược từ cuối: kết quả cuối là 30, đảo ngược phép cộng 8 thành trừ 8, đảo ngược phép trừ 14 thành cộng 14.",
+      "hint": "Lấy 30 trừ 8 được 22, sau đó lấy 22 cộng 14.",
+      "explanation": "Làm ngược lại: Trước khi cộng 8 là: 30 - 8 = 22. Số bí ẩn ban đầu là: 22 + 14 = 36."
+    },
+    {
+      "id": "olympic-prac-arith-06",
+      "topicId": "arithmetic",
+      "title": "Tính nhanh tổng bốn số",
+      "prompt": "Tính giá trị của biểu thức: 15 + 27 + 35 + 13 = ?",
+      "visualType": "none",
+      "choices": [
+        { "id": "A", "text": "80" },
+        { "id": "B", "text": "85" },
+        { "id": "C", "text": "90" },
+        { "id": "D", "text": "95" }
+      ],
+      "correctAnswer": "C",
+      "guide": "Ghép các cặp số có chữ số tận cùng cộng lại tròn chục: (15 + 35) và (27 + 13).",
+      "hint": "15 + 35 = 50, và 27 + 13 = 40.",
+      "explanation": "Ta ghép: (15 + 35) + (27 + 13) = 50 + 40 = 90."
+    },
+    {
+      "id": "olympic-prac-arith-07",
+      "topicId": "arithmetic",
+      "title": "Tìm số bị trừ",
+      "prompt": "Tìm số thích hợp điền vào dấu hỏi chấm: ? - 45 = 38",
+      "visualType": "none",
+      "choices": [
+        { "id": "A", "text": "73" },
+        { "id": "B", "text": "83" },
+        { "id": "C", "text": "85" },
+        { "id": "D", "text": "93" }
+      ],
+      "correctAnswer": "B",
+      "guide": "Muốn tìm số bị trừ, ta lấy hiệu cộng với số trừ.",
+      "hint": "Lấy 38 cộng với 45.",
+      "explanation": "Số bị trừ là: 38 + 45 = 83."
+    },
+    {
+      "id": "olympic-prac-arith-08",
+      "topicId": "arithmetic",
+      "title": "Phép trừ chuỗi liên tiếp",
+      "prompt": "Tính giá trị của biểu thức: 100 - 25 - 35 = ?",
+      "visualType": "none",
+      "choices": [
+        { "id": "A", "text": "30" },
+        { "id": "B", "text": "35" },
+        { "id": "C", "text": "40" },
+        { "id": "D", "text": "45" }
+      ],
+      "correctAnswer": "C",
+      "guide": "Trừ liên tiếp hai số cũng bằng lấy số ban đầu trừ đi tổng của hai số đó: 100 - (25 + 35).",
+      "hint": "25 + 35 = 60, lấy 100 - 60.",
+      "explanation": "100 - 25 - 35 = 100 - (25 + 35) = 100 - 60 = 40."
+    },
+    {
+      "id": "olympic-prac-arith-09",
+      "topicId": "arithmetic",
+      "title": "Tìm chữ số bí ẩn trong phép tính",
+      "prompt": "Tìm chữ số A biết: 4A + 27 = 72 (trong đó 4A là số có hai chữ số).",
+      "visualType": "none",
+      "choices": [
+        { "id": "A", "text": "3" },
+        { "id": "B", "text": "4" },
+        { "id": "C", "text": "5" },
+        { "id": "D", "text": "6" }
+      ],
+      "correctAnswer": "C",
+      "guide": "Tìm số 4A trước: 4A = 72 - 27 = 45. Vậy chữ số A là 5.",
+      "hint": "72 - 27 bằng bao nhiêu?",
+      "explanation": "Số 4A = 72 - 27 = 45. Vì vậy chữ số A là 5."
+    },
+    {
+      "id": "olympic-prac-arith-10",
+      "topicId": "arithmetic",
+      "title": "Phép nhân số quả táo",
+      "prompt": "Có 5 giỏ táo, mỗi giỏ đựng đúng 4 quả táo. Hỏi có tất cả bao nhiêu quả táo?",
+      "visualType": "groups",
+      "visualData": { "baskets": 5, "perBasket": 4 },
+      "choices": [
+        { "id": "A", "text": "16 quả" },
+        { "id": "B", "text": "18 quả" },
+        { "id": "C", "text": "20 quả" },
+        { "id": "D", "text": "24 quả" }
+      ],
+      "correctAnswer": "C",
+      "guide": "Có 5 nhóm, mỗi nhóm có 4 quả táo. Ta làm phép nhân: 4 × 5 hoặc 5 × 4.",
+      "hint": "Đếm cách 4: 4, 8, 12, 16, 20.",
+      "explanation": "Tổng số quả táo là: 4 × 5 = 20 (quả táo)."
+    },
+
+    {
+      "id": "olympic-prac-num-01",
+      "topicId": "number-theory",
+      "title": "Tìm số chẵn",
+      "prompt": "Trong các số sau: 23, 45, 68, 71, số nào là số chẵn?",
+      "visualType": "none",
+      "choices": [
+        { "id": "A", "text": "23" },
+        { "id": "B", "text": "45" },
+        { "id": "C", "text": "68" },
+        { "id": "D", "text": "71" }
+      ],
+      "correctAnswer": "C",
+      "guide": "Số chẵn là số có chữ số tận cùng là 0, 2, 4, 6, hoặc 8.",
+      "hint": "Nhìn vào chữ số hàng đơn vị của mỗi số.",
+      "explanation": "Số 68 có chữ số tận cùng là 8 nên 68 là số chẵn. Các số còn lại tận cùng là 3, 5, 1 nên là số lẻ."
+    },
+    {
+      "id": "olympic-prac-num-02",
+      "topicId": "number-theory",
+      "title": "Tổng của hai số chẵn",
+      "prompt": "Tổng của hai số chẵn bất kỳ luôn là số chẵn hay số lẻ?",
+      "visualType": "none",
+      "choices": [
+        { "id": "A", "text": "Luôn là số chẵn" },
+        { "id": "B", "text": "Luôn là số lẻ" },
+        { "id": "C", "text": "Có thể chẵn hoặc lẻ" },
+        { "id": "D", "text": "Luôn là số tròn chục" }
+      ],
+      "correctAnswer": "A",
+      "guide": "Lấy ví dụ thử: 2 + 4 = 6 (chẵn), 6 + 8 = 14 (chẵn). Chẵn + Chẵn luôn bằng Chẵn.",
+      "hint": "Cộng hai số chẵn bất kỳ xem kết quả có chia hết cho 2 không.",
+      "explanation": "Quy tắc: Số chẵn + Số chẵn = Số chẵn."
+    },
+    {
+      "id": "olympic-prac-num-03",
+      "topicId": "number-theory",
+      "title": "Tổng của hai số lẻ",
+      "prompt": "Ví dụ: 3 + 5 = 8 (số chẵn), 7 + 9 = 16 (số chẵn). Tổng của hai số lẻ bất kỳ luôn là:",
+      "visualType": "none",
+      "choices": [
+        { "id": "A", "text": "Số chẵn" },
+        { "id": "B", "text": "Số lẻ" },
+        { "id": "C", "text": "Số nhỏ hơn 10" },
+        { "id": "D", "text": "Số có chữ số tận cùng là 0" }
+      ],
+      "correctAnswer": "A",
+      "guide": "Mỗi số lẻ thừa ra 1 đơn vị khi ghép đôi. Hai phần thừa ghép lại thành 1 đôi chẵn.",
+      "hint": "Lẻ + Lẻ = Chẵn.",
+      "explanation": "Tổng của hai số lẻ bất kỳ luôn luôn là một số chẵn."
+    },
+    {
+      "id": "olympic-prac-num-04",
+      "topicId": "number-theory",
+      "title": "Chia đều kẹo cho các bạn",
+      "prompt": "Có 18 chiếc kẹo chia đều cho 3 bạn Miu, Cáo và Thỏ. Hỏi mỗi bạn nhận được bao nhiêu chiếc kẹo?",
+      "visualType": "groups",
+      "visualData": { "total": 18, "groups": 3 },
+      "choices": [
+        { "id": "A", "text": "5 chiếc" },
+        { "id": "B", "text": "6 chiếc" },
+        { "id": "C", "text": "7 chiếc" },
+        { "id": "D", "text": "8 chiếc" }
+      ],
+      "correctAnswer": "B",
+      "guide": "Chia đều 18 vào 3 phần bằng nhau: lấy 18 chia 3.",
+      "hint": "Mấy nhân 3 bằng 18?",
+      "explanation": "Số kẹo mỗi bạn nhận được là: 18 : 3 = 6 (chiếc kẹo)."
+    },
+    {
+      "id": "olympic-prac-num-05",
+      "topicId": "number-theory",
+      "title": "Cặp số có tổng bằng 50",
+      "prompt": "Trong các số: 16, 24, 34, 38, cặp hai số nào có tổng đúng bằng 50?",
+      "visualType": "none",
+      "choices": [
+        { "id": "A", "text": "16 và 24" },
+        { "id": "B", "text": "16 và 34" },
+        { "id": "C", "text": "24 và 38" },
+        { "id": "D", "text": "16 và 38" }
+      ],
+      "correctAnswer": "B",
+      "guide": "Xét hàng đơn vị: 6 + 4 = 10 (tận cùng là 0). Thử 16 + 34 = 50.",
+      "hint": "Chọn hai số có chữ số hàng đơn vị cộng lại bằng 10.",
+      "explanation": "Ta có: 16 + 34 = 50. Vậy cặp số cần tìm là 16 và 34."
+    },
+    {
+      "id": "olympic-prac-num-06",
+      "topicId": "number-theory",
+      "title": "Đếm số chẵn trong khoảng",
+      "prompt": "Có bao nhiêu số chẵn lớn hơn 10 và nhỏ hơn 20?",
+      "visualType": "none",
+      "choices": [
+        { "id": "A", "text": "3 số" },
+        { "id": "B", "text": "4 số" },
+        { "id": "C", "text": "5 số" },
+        { "id": "D", "text": "6 số" }
+      ],
+      "correctAnswer": "B",
+      "guide": "Liệt kê các số chẵn nằm giữa 10 và 20: 12, 14, 16, 18. Chú ý không tính 10 và 20.",
+      "hint": "Các số chẵn lớn hơn 10 và bé hơn 20 bắt đầu từ 12 đến 18.",
+      "explanation": "Các số chẵn thỏa mãn là: 12, 14, 16, 18. Có tất cả 4 số."
+    },
+    {
+      "id": "olympic-prac-num-07",
+      "topicId": "number-theory",
+      "title": "Chia cam còn thừa",
+      "prompt": "Có 15 quả cam chia đều vào 4 giỏ sao cho mỗi giỏ được nhiều quả nhất. Hỏi còn thừa mấy quả cam không thể chia đều?",
+      "visualType": "none",
+      "choices": [
+        { "id": "A", "text": "1 quả" },
+        { "id": "B", "text": "2 quả" },
+        { "id": "C", "text": "3 quả" },
+        { "id": "D", "text": "4 quả" }
+      ],
+      "correctAnswer": "C",
+      "guide": "Ta tìm số gần 15 nhất chia hết cho 4: 4 × 3 = 12. Lấy 15 - 12 = 3.",
+      "hint": "Mỗi giỏ được 3 quả (hết 12 quả). Còn lại mấy quả?",
+      "explanation": "Mỗi giỏ chia được 3 quả cam: 4 × 3 = 12 quả. Số quả cam còn thừa là: 15 - 12 = 3 (quả)."
+    },
+    {
+      "id": "olympic-prac-num-08",
+      "topicId": "number-theory",
+      "title": "Tích của số chẵn và số lẻ",
+      "prompt": "Khi nhân một số chẵn với một số lẻ (ví dụ: 4 × 3 = 12, 6 × 5 = 30), kết quả nhận được luôn là:",
+      "visualType": "none",
+      "choices": [
+        { "id": "A", "text": "Số chẵn" },
+        { "id": "B", "text": "Số lẻ" },
+        { "id": "C", "text": "Số bé hơn 20" },
+        { "id": "D", "text": "Số tận cùng là 5" }
+      ],
+      "correctAnswer": "A",
+      "guide": "Một số chẵn nhân với bất kỳ số nào cũng luôn cho ra kết quả là số chẵn.",
+      "hint": "Số chẵn nhân số lẻ luôn chia hết cho 2.",
+      "explanation": "Quy tắc: Chẵn × Lẻ = Chẵn (vì số chẵn có thừa số 2)."
+    },
+    {
+      "id": "olympic-prac-num-09",
+      "topicId": "number-theory",
+      "title": "Số nhỏ nhất có tổng chữ số bằng 9",
+      "prompt": "Số tự nhiên nhỏ nhất có hai chữ số khác nhau mà tổng các chữ số bằng 9 là số nào?",
+      "visualType": "none",
+      "choices": [
+        { "id": "A", "text": "18" },
+        { "id": "B", "text": "27" },
+        { "id": "C", "text": "36" },
+        { "id": "D", "text": "90" }
+      ],
+      "correctAnswer": "A",
+      "guide": "Muốn số nhỏ nhất, chữ số hàng chục phải nhỏ nhất có thể (chữ số 1). Khi đó chữ số hàng đơn vị là 9 - 1 = 8.",
+      "hint": "Hàng chục chọn số 1 nhỏ nhất.",
+      "explanation": "Để số nhỏ nhất, chữ số hàng chục nhỏ nhất là 1. Chữ số hàng đơn vị là 9 - 1 = 8. Hai chữ số 1 và 8 khác nhau, số đó là 18."
+    },
+    {
+      "id": "olympic-prac-num-10",
+      "topicId": "number-theory",
+      "title": "Chia hoa theo bó",
+      "prompt": "Cô giáo có 20 bông hoa, cô chia đều vào các lọ, mỗi lọ cắm đúng 5 bông hoa. Hỏi cô cắm được bao nhiêu lọ hoa?",
+      "visualType": "groups",
+      "visualData": { "total": 20, "perGroup": 5 },
+      "choices": [
+        { "id": "A", "text": "3 lọ" },
+        { "id": "B", "text": "4 lọ" },
+        { "id": "C", "text": "5 lọ" },
+        { "id": "D", "text": "6 lọ" }
+      ],
+      "correctAnswer": "B",
+      "guide": "Muốn tìm số lọ hoa, lấy tổng số bông hoa chia cho số bông hoa trong mỗi lọ.",
+      "hint": "20 chia cho 5 bằng mấy?",
+      "explanation": "Số lọ hoa cô cắm được là: 20 : 5 = 4 (lọ hoa)."
+    },
+
+    {
+      "id": "olympic-prac-geom-01",
+      "topicId": "geometry",
+      "title": "Đếm đoạn thẳng trên một đường",
+      "prompt": "Trên một đoạn thẳng có 4 điểm A, B, C, D xếp liên tiếp: A---B---C---D. Hỏi có tất cả bao nhiêu đoạn thẳng?",
+      "visualType": "shapes",
+      "visualData": { "points": ["A", "B", "C", "D"] },
+      "choices": [
+        { "id": "A", "text": "4 đoạn" },
+        { "id": "B", "text": "5 đoạn" },
+        { "id": "C", "text": "6 đoạn" },
+        { "id": "D", "text": "7 đoạn" }
+      ],
+      "correctAnswer": "C",
+      "guide": "Đếm các đoạn đơn: AB, BC, CD (3 đoạn). Đếm đoạn đôi: AC, BD (2 đoạn). Đếm đoạn ba: AD (1 đoạn).",
+      "hint": "Tổng số đoạn thẳng là: 3 + 2 + 1.",
+      "explanation": "Các đoạn thẳng gồm: AB, BC, CD, AC, BD, AD. Có tất cả: 3 + 2 + 1 = 6 (đoạn thẳng)."
+    },
+    {
+      "id": "olympic-prac-geom-02",
+      "topicId": "geometry",
+      "title": "Đếm hình tam giác",
+      "prompt": "Một hình tam giác lớn có một đường kẻ thẳng từ đỉnh trên xuống cạnh đáy chia thành 2 phần. Hỏi hình có tất cả bao nhiêu hình tam giác?",
+      "visualType": "shapes",
+      "visualData": { "type": "triangle-split" },
+      "choices": [
+        { "id": "A", "text": "2 hình" },
+        { "id": "B", "text": "3 hình" },
+        { "id": "C", "text": "4 hình" },
+        { "id": "D", "text": "5 hình" }
+      ],
+      "correctAnswer": "B",
+      "guide": "Đếm 2 hình tam giác nhỏ bên trái và bên phải, cộng thêm 1 hình tam giác to bao ngoài.",
+      "hint": "Đừng quên hình tam giác to nhất bao trọn bên ngoài.",
+      "explanation": "Có 2 hình tam giác nhỏ và 1 hình tam giác lớn bao quanh. Tổng cộng có: 2 + 1 = 3 hình tam giác."
+    },
+    {
+      "id": "olympic-prac-geom-03",
+      "topicId": "geometry",
+      "title": "Đếm khối lập phương bậc thang",
+      "prompt": "Một hình bậc thang được xếp bằng các khối lập phương: tầng dưới có 3 khối xếp liền nhau, tầng trên có 1 khối đặt ở giữa. Hỏi có tất cả bao nhiêu khối lập phương?",
+      "visualType": "cubes",
+      "visualData": { "layer1": 3, "layer2": 1 },
+      "choices": [
+        { "id": "A", "text": "3 khối" },
+        { "id": "B", "text": "4 khối" },
+        { "id": "C", "text": "5 khối" },
+        { "id": "D", "text": "6 khối" }
+      ],
+      "correctAnswer": "B",
+      "guide": "Cộng số khối lập phương ở từng tầng lại với nhau: tầng 1 có 3 khối, tầng 2 có 1 khối.",
+      "hint": "Lấy 3 cộng 1.",
+      "explanation": "Tổng số khối lập phương là: 3 + 1 = 4 (khối)."
+    },
+    {
+      "id": "olympic-prac-geom-04",
+      "topicId": "geometry",
+      "title": "Khối hộp lập phương lớn",
+      "prompt": "Một khối lập phương lớn được ghép từ các khối lập phương nhỏ cạnh 1cm, mỗi chiều dài, rộng, cao đều gồm 2 khối nhỏ. Hỏi cần tất cả bao nhiêu khối nhỏ?",
+      "visualType": "cubes",
+      "visualData": { "dim": [2, 2, 2] },
+      "choices": [
+        { "id": "A", "text": "4 khối" },
+        { "id": "B", "text": "6 khối" },
+        { "id": "C", "text": "8 khối" },
+        { "id": "D", "text": "10 khối" }
+      ],
+      "correctAnswer": "C",
+      "guide": "Khối hộp có 2 tầng, mỗi tầng gồm 2 hàng, mỗi hàng có 2 khối: 2 × 2 = 4 khối mỗi tầng. Hai tầng có 4 × 2 = 8 khối.",
+      "hint": "Tầng dưới 4 khối, tầng trên 4 khối.",
+      "explanation": "Số khối lập phương nhỏ cần dùng là: 2 × 2 × 2 = 8 (khối)."
+    },
+    {
+      "id": "olympic-prac-geom-05",
+      "topicId": "geometry",
+      "title": "Đếm hình chữ nhật",
+      "prompt": "Một hình chữ nhật được chia đôi bởi một đường thẳng đứng ở giữa thành hai ô nhỏ. Hỏi trong hình có tất cả bao nhiêu hình chữ nhật?",
+      "visualType": "shapes",
+      "visualData": { "type": "rect-split-2" },
+      "choices": [
+        { "id": "A", "text": "2 hình" },
+        { "id": "B", "text": "3 hình" },
+        { "id": "C", "text": "4 hình" },
+        { "id": "D", "text": "5 hình" }
+      ],
+      "correctAnswer": "B",
+      "guide": "Có 2 hình chữ nhật đơn lẻ (nửa trái và nửa phải) và 1 hình chữ nhật lớn ghép từ cả hai nửa.",
+      "hint": "2 hình đơn + 1 hình kép.",
+      "explanation": "Gồm 2 hình chữ nhật nhỏ và 1 hình chữ nhật lớn ghép lại, tổng cộng có 3 hình chữ nhật."
+    },
+    {
+      "id": "olympic-prac-geom-06",
+      "topicId": "geometry",
+      "title": "Số mặt của khối lập phương",
+      "prompt": "Một viên xúc xắc có dạng khối lập phương. Hỏi viên xúc xắc đó có tất cả bao nhiêu mặt?",
+      "visualType": "cubes",
+      "choices": [
+        { "id": "A", "text": "4 mặt" },
+        { "id": "B", "text": "5 mặt" },
+        { "id": "C", "text": "6 mặt" },
+        { "id": "D", "text": "8 mặt" }
+      ],
+      "correctAnswer": "C",
+      "guide": "Khối lập phương gồm mặt trên, mặt dưới và 4 mặt xung quanh.",
+      "hint": "Xúc xắc có các chấm từ 1 đến 6 chấm.",
+      "explanation": "Khối lập phương có đúng 6 mặt phẳng bằng nhau."
+    },
+    {
+      "id": "olympic-prac-geom-07",
+      "topicId": "geometry",
+      "title": "Số đỉnh của khối lập phương",
+      "prompt": "Khối lập phương có tất cả bao nhiêu đỉnh (góc nhọn)?",
+      "visualType": "cubes",
+      "choices": [
+        { "id": "A", "text": "6 đỉnh" },
+        { "id": "B", "text": "8 đỉnh" },
+        { "id": "C", "text": "10 đỉnh" },
+        { "id": "D", "text": "12 đỉnh" }
+      ],
+      "correctAnswer": "B",
+      "guide": "Mặt trên có 4 đỉnh, mặt dưới có 4 đỉnh.",
+      "hint": "4 đỉnh ở trên cộng 4 đỉnh ở dưới.",
+      "explanation": "Khối lập phương có: 4 + 4 = 8 đỉnh."
+    },
+    {
+      "id": "olympic-prac-geom-08",
+      "topicId": "geometry",
+      "title": "Ghép hai hình tam giác vuông cân",
+      "prompt": "Ghép hai hình tam giác vuông cân có cùng kích thước lại với nhau dọc theo cạnh huyền, ta sẽ được hình gì?",
+      "visualType": "shapes",
+      "choices": [
+        { "id": "A", "text": "Hình tròn" },
+        { "id": "B", "text": "Hình vuông" },
+        { "id": "C", "text": "Hình ngũ giác" },
+        { "id": "D", "text": "Hình thang vuông" }
+      ],
+      "correctAnswer": "B",
+      "guide": "Hai tam giác vuông cân ghép lại úp vào nhau sẽ tạo thành một hình có 4 cạnh bằng nhau và 4 góc vuông.",
+      "hint": "Hình có 4 góc vuông và 4 cạnh đều bằng nhau.",
+      "explanation": "Khi ghép 2 tam giác vuông cân bằng nhau theo cạnh huyền, ta được một hình vuông."
+    },
+    {
+      "id": "olympic-prac-geom-09",
+      "topicId": "geometry",
+      "title": "Đếm góc vuông hình chữ nhật",
+      "prompt": "Một hình chữ nhật có tất cả bao nhiêu góc vuông?",
+      "visualType": "shapes",
+      "choices": [
+        { "id": "A", "text": "2 góc vuông" },
+        { "id": "B", "text": "3 góc vuông" },
+        { "id": "C", "text": "4 góc vuông" },
+        { "id": "D", "text": "6 góc vuông" }
+      ],
+      "correctAnswer": "C",
+      "guide": "Mỗi góc tại mỗi đỉnh của hình chữ nhật đều là góc vuông.",
+      "hint": "Hình chữ nhật có 4 đỉnh, mỗi đỉnh là 1 góc vuông.",
+      "explanation": "Hình chữ nhật có đúng 4 góc vuông."
+    },
+    {
+      "id": "olympic-prac-geom-10",
+      "topicId": "geometry",
+      "title": "Tòa tháp ba tầng",
+      "prompt": "Bạn Gấu xếp một tòa tháp 3 tầng từ các khối lập phương: tầng 1 có 4 khối, tầng 2 có 2 khối, tầng 3 có 1 khối. Hỏi tòa tháp có tất cả bao nhiêu khối lập phương?",
+      "visualType": "cubes",
+      "visualData": { "layer1": 4, "layer2": 2, "layer3": 1 },
+      "choices": [
+        { "id": "A", "text": "6 khối" },
+        { "id": "B", "text": "7 khối" },
+        { "id": "C", "text": "8 khối" },
+        { "id": "D", "text": "9 khối" }
+      ],
+      "correctAnswer": "B",
+      "guide": "Cộng số khối lập phương của cả 3 tầng: 4 + 2 + 1.",
+      "hint": "4 cộng 2 bằng 6, cộng tiếp 1.",
+      "explanation": "Tổng số khối lập phương là: 4 + 2 + 1 = 7 (khối)."
+    },
+
+    {
+      "id": "olympic-prac-comb-01",
+      "topicId": "combinatorics",
+      "title": "Lập số từ hai chữ số",
+      "prompt": "Từ hai chữ số 3 và 7, ta có thể lập được bao nhiêu số có hai chữ số khác nhau?",
+      "visualType": "none",
+      "choices": [
+        { "id": "A", "text": "1 số" },
+        { "id": "B", "text": "2 số" },
+        { "id": "C", "text": "3 số" },
+        { "id": "D", "text": "4 số" }
+      ],
+      "correctAnswer": "B",
+      "guide": "Liệt kê các số có thể viết được: số 37 và số 73. Hai chữ số khác nhau.",
+      "hint": "Đổi vị trí hàng chục và hàng đơn vị của 3 và 7.",
+      "explanation": "Có thể viết được 2 số là: 37 và 73."
+    },
+    {
+      "id": "olympic-prac-comb-02",
+      "topicId": "combinatorics",
+      "title": "Lập số chẵn từ ba chữ số",
+      "prompt": "Từ ba chữ số 2, 5, 8, ta có thể lập được bao nhiêu số có hai chữ số khác nhau và là số chẵn?",
+      "visualType": "none",
+      "choices": [
+        { "id": "A", "text": "2 số" },
+        { "id": "B", "text": "3 số" },
+        { "id": "C", "text": "4 số" },
+        { "id": "D", "text": "5 số" }
+      ],
+      "correctAnswer": "C",
+      "guide": "Số chẵn thì chữ số hàng đơn vị phải là 2 hoặc 8. Nếu hàng đơn vị là 2: lập được 52, 82. Nếu hàng đơn vị là 8: lập được 28, 58.",
+      "hint": "Tận cùng là 2 có 2 số (52, 82), tận cùng là 8 có 2 số (28, 58).",
+      "explanation": "Các số chẵn lập được là: 52, 82, 28, 58. Có tất cả 4 số."
+    },
+    {
+      "id": "olympic-prac-comb-03",
+      "topicId": "combinatorics",
+      "title": "Chọn áo và váy phối đồ",
+      "prompt": "Bé Miu có 2 chiếc áo (đỏ, xanh) và 3 chiếc váy (vàng, hồng, trắng). Hỏi Miu có bao nhiêu cách chọn 1 chiếc áo và 1 chiếc váy để mặc?",
+      "visualType": "none",
+      "choices": [
+        { "id": "A", "text": "4 cách" },
+        { "id": "B", "text": "5 cách" },
+        { "id": "C", "text": "6 cách" },
+        { "id": "D", "text": "8 cách" }
+      ],
+      "correctAnswer": "C",
+      "guide": "Mỗi chiếc áo có thể kết hợp với 3 chiếc váy khác nhau. Có 2 chiếc áo nên số cách chọn là 2 × 3.",
+      "hint": "Áo đỏ phối với 3 váy (3 cách), áo xanh phối với 3 váy (3 cách).",
+      "explanation": "Số cách phối đồ là: 2 × 3 = 6 (cách)."
+    },
+    {
+      "id": "olympic-prac-comb-04",
+      "topicId": "combinatorics",
+      "title": "Bắt tay chào nhau",
+      "prompt": "Ba bạn Miu, Thỏ và Cáo gặp nhau. Mỗi bạn đều bắt tay với bạn khác đúng một lần. Hỏi có tất cả bao nhiêu cái bắt tay?",
+      "visualType": "none",
+      "choices": [
+        { "id": "A", "text": "2 cái" },
+        { "id": "B", "text": "3 cái" },
+        { "id": "C", "text": "4 cái" },
+        { "id": "D", "text": "6 cái" }
+      ],
+      "correctAnswer": "B",
+      "guide": "Liệt kê các cặp bắt tay: Miu bắt tay Thỏ, Miu bắt tay Cáo, Thỏ bắt tay Cáo.",
+      "hint": "Có 3 cặp bạn bè đôi một.",
+      "explanation": "Các cặp bắt tay: (Miu - Thỏ), (Miu - Cáo), (Thỏ - Cáo). Có tất cả 3 cái bắt tay."
+    },
+    {
+      "id": "olympic-prac-comb-05",
+      "topicId": "combinatorics",
+      "title": "Chia bóng vào ba hộp",
+      "prompt": "Có 12 quả bóng chia đều vào 3 hộp màu đỏ, xanh và vàng. Hỏi mỗi hộp có bao nhiêu quả bóng?",
+      "visualType": "groups",
+      "visualData": { "total": 12, "boxes": 3 },
+      "choices": [
+        { "id": "A", "text": "3 quả" },
+        { "id": "B", "text": "4 quả" },
+        { "id": "C", "text": "5 quả" },
+        { "id": "D", "text": "6 quả" }
+      ],
+      "correctAnswer": "B",
+      "guide": "Chia đều 12 quả bóng vào 3 hộp: làm phép tính chia 12 : 3.",
+      "hint": "12 chia 3 bằng mấy?",
+      "explanation": "Số quả bóng trong mỗi hộp là: 12 : 3 = 4 (quả bóng)."
+    },
+    {
+      "id": "olympic-prac-comb-06",
+      "topicId": "combinatorics",
+      "title": "Chọn đường đi qua công viên",
+      "prompt": "Từ nhà đến công viên có 2 con đường. Từ công viên đến trường học có 3 con đường. Hỏi có bao nhiêu cách đi từ nhà qua công viên rồi đến trường?",
+      "visualType": "none",
+      "choices": [
+        { "id": "A", "text": "5 cách" },
+        { "id": "B", "text": "6 cách" },
+        { "id": "C", "text": "7 cách" },
+        { "id": "D", "text": "8 cách" }
+      ],
+      "correctAnswer": "B",
+      "guide": "Với mỗi con đường từ nhà đến công viên, ta có 3 lựa chọn tiếp theo để đến trường: 2 × 3 = 6 cách.",
+      "hint": "Lấy số đường chặng 1 nhân số đường chặng 2.",
+      "explanation": "Tổng số cách đi là: 2 × 3 = 6 (cách đi)."
+    },
+    {
+      "id": "olympic-prac-comb-07",
+      "topicId": "combinatorics",
+      "title": "Đổi tiền xu",
+      "prompt": "Bé có 1 đồng 10 xu và muốn đổi thành các đồng xu 2 xu và 5 xu. Cách đổi nào sau đây đúng và đủ 10 xu?",
+      "visualType": "none",
+      "choices": [
+        { "id": "A", "text": "3 đồng 2 xu và 1 đồng 5 xu" },
+        { "id": "B", "text": "2 đồng 5 xu" },
+        { "id": "C", "text": "4 đồng 2 xu" },
+        { "id": "D", "text": "1 đồng 2 xu và 2 đồng 5 xu" }
+      ],
+      "correctAnswer": "B",
+      "guide": "Tính tổng tiền của từng phương án: 2 đồng 5 xu có giá trị là 5 + 5 = 10 xu.",
+      "hint": "Tìm phương án có tổng đúng bằng 10.",
+      "explanation": "2 đồng 5 xu có tổng: 5 + 5 = 10 xu, vừa vặn bằng 10 xu."
+    },
+    {
+      "id": "olympic-prac-comb-08",
+      "topicId": "combinatorics",
+      "title": "Chọn hai bạn trực nhật",
+      "prompt": "Trong một nhóm gồm 4 bạn: An, Bình, Chi, Dũng. Cần chọn ra 2 bạn đi tưới cây. Hỏi có bao nhiêu cặp 2 bạn khác nhau có thể được chọn?",
+      "visualType": "none",
+      "choices": [
+        { "id": "A", "text": "4 cách" },
+        { "id": "B", "text": "5 cách" },
+        { "id": "C", "text": "6 cách" },
+        { "id": "D", "text": "8 cách" }
+      ],
+      "correctAnswer": "C",
+      "guide": "Liệt kê các cặp: (An, Bình), (An, Chi), (An, Dũng), (Bình, Chi), (Bình, Dũng), (Chi, Dũng).",
+      "hint": "An ghép với 3 bạn (3 cặp), Bình ghép với 2 bạn còn lại (2 cặp), Chi ghép với Dũng (1 cặp).",
+      "explanation": "Có 3 + 2 + 1 = 6 cặp bạn khác nhau có thể được chọn."
+    },
+    {
+      "id": "olympic-prac-comb-09",
+      "topicId": "combinatorics",
+      "title": "Xếp hàng chụp ảnh",
+      "prompt": "Có 3 bạn An, Bình, Chi đứng thành một hàng ngang để chụp ảnh. Hỏi có bao nhiêu cách xếp thứ tự hàng ngang khác nhau?",
+      "visualType": "none",
+      "choices": [
+        { "id": "A", "text": "3 cách" },
+        { "id": "B", "text": "4 cách" },
+        { "id": "C", "text": "6 cách" },
+        { "id": "D", "text": "9 cách" }
+      ],
+      "correctAnswer": "C",
+      "guide": "Vị trí đầu tiên có 3 bạn để chọn. Vị trí thứ hai còn 2 bạn. Vị trí cuối còn 1 bạn: 3 × 2 × 1 = 6.",
+      "hint": "Nếu An đứng đầu có 2 cách (Bình-Chi hoặc Chi-Bình). Tương tự khi Bình đứng đầu, Chi đứng đầu.",
+      "explanation": "Số cách xếp là: 3 × 2 × 1 = 6 (cách xếp)."
+    },
+    {
+      "id": "olympic-prac-comb-10",
+      "topicId": "combinatorics",
+      "title": "Chia bi vào hai túi",
+      "prompt": "Có 5 viên bi chia vào túi đỏ và túi xanh sao cho túi nào cũng có ít nhất 1 viên bi. Hỏi có bao nhiêu cách chia?",
+      "visualType": "none",
+      "choices": [
+        { "id": "A", "text": "2 cách" },
+        { "id": "B", "text": "3 cách" },
+        { "id": "C", "text": "4 cách" },
+        { "id": "D", "text": "5 cách" }
+      ],
+      "correctAnswer": "C",
+      "guide": "Số bi túi đỏ có thể nhận là: 1, 2, 3, hoặc 4 viên bi (khi đó túi xanh nhận tương ứng 4, 3, 2, 1 viên).",
+      "hint": "Túi đỏ có thể có 1, 2, 3 hoặc 4 viên.",
+      "explanation": "Các cách chia (túi đỏ, túi xanh) là: (1, 4), (2, 3), (3, 2), (4, 1). Có tất cả 4 cách chia."
+    }
+  ],
+  "examQuestions": [
+    {
+      "id": "olympic-exam-01",
+      "number": 1,
+      "topicId": "logic",
+      "prompt": "Biết 2 quả xoài thăng bằng với 4 quả cam trên đĩa cân. Hỏi 1 quả xoài thăng bằng với bao nhiêu quả cam?",
+      "visualType": "scale",
+      "visualData": { "left": "2 quả xoài", "right": "4 quả cam" },
+      "choices": [
+        { "id": "A", "text": "1 quả cam" },
+        { "id": "B", "text": "2 quả cam" },
+        { "id": "C", "text": "3 quả cam" },
+        { "id": "D", "text": "4 quả cam" }
+      ],
+      "correctAnswer": "B",
+      "explanation": "2 quả xoài = 4 quả cam, nên 1 quả xoài = 4 : 2 = 2 quả cam."
+    },
+    {
+      "id": "olympic-exam-02",
+      "number": 2,
+      "topicId": "logic",
+      "prompt": "Tìm số tiếp theo trong dãy số: 5, 10, 15, 20, ...",
+      "visualType": "pattern",
+      "visualData": { "sequence": [5, 10, 15, 20, "?"] },
+      "choices": [
+        { "id": "A", "text": "21" },
+        { "id": "B", "text": "22" },
+        { "id": "C", "text": "24" },
+        { "id": "D", "text": "25" }
+      ],
+      "correctAnswer": "D",
+      "explanation": "Quy luật: Mỗi số sau bằng số trước cộng 5. Số tiếp theo là 20 + 5 = 25."
+    },
+    {
+      "id": "olympic-exam-03",
+      "number": 3,
+      "topicId": "logic",
+      "prompt": "Hiện nay Mẹ 32 tuổi và con 7 tuổi. Hỏi 3 năm nữa Mẹ nhiều hơn con bao nhiêu tuổi?",
+      "visualType": "none",
+      "choices": [
+        { "id": "A", "text": "22 tuổi" },
+        { "id": "B", "text": "25 tuổi" },
+        { "id": "C", "text": "28 tuổi" },
+        { "id": "D", "text": "35 tuổi" }
+      ],
+      "correctAnswer": "B",
+      "explanation": "Hiệu số tuổi không đổi theo thời gian. Mẹ luôn hơn con: 32 - 7 = 25 tuổi."
+    },
+    {
+      "id": "olympic-exam-04",
+      "number": 4,
+      "topicId": "logic",
+      "prompt": "Hôm nay là thứ Hai. Hỏi đúng 9 ngày nữa sẽ là thứ mấy trong tuần?",
+      "visualType": "none",
+      "choices": [
+        { "id": "A", "text": "Thứ Ba" },
+        { "id": "B", "text": "Thứ Tư" },
+        { "id": "C", "text": "Thứ Năm" },
+        { "id": "D", "text": "Thứ Sáu" }
+      ],
+      "correctAnswer": "B",
+      "explanation": "Sau 7 ngày lại là thứ Hai. Thêm 2 ngày nữa (9 = 7 + 2) sẽ là thứ Tư."
+    },
+    {
+      "id": "olympic-exam-05",
+      "number": 5,
+      "topicId": "logic",
+      "prompt": "Biết 1 chú thỏ nặng bằng 2 chú gà, và 1 chú gà nặng bằng 3 chú chim sẻ. Hỏi 1 chú thỏ nặng bằng bao nhiêu chú chim sẻ?",
+      "visualType": "scale",
+      "visualData": { "step1": "1 thỏ = 2 gà", "step2": "1 gà = 3 chim sẻ" },
+      "choices": [
+        { "id": "A", "text": "5 chú" },
+        { "id": "B", "text": "6 chú" },
+        { "id": "C", "text": "7 chú" },
+        { "id": "D", "text": "8 chú" }
+      ],
+      "correctAnswer": "B",
+      "explanation": "1 chú thỏ = 2 chú gà = 2 × 3 chú chim sẻ = 6 chú chim sẻ."
+    },
+
+    {
+      "id": "olympic-exam-06",
+      "number": 6,
+      "topicId": "arithmetic",
+      "prompt": "Tính giá trị của phép tính: 54 + 28 - 14 = ?",
+      "visualType": "none",
+      "choices": [
+        { "id": "A", "text": "66" },
+        { "id": "B", "text": "68" },
+        { "id": "C", "text": "70" },
+        { "id": "D", "text": "72" }
+      ],
+      "correctAnswer": "B",
+      "explanation": "Ta có: 54 - 14 = 40; 40 + 28 = 68."
+    },
+    {
+      "id": "olympic-exam-07",
+      "number": 7,
+      "topicId": "arithmetic",
+      "prompt": "Tìm số thích hợp điền vào dấu hỏi chấm: 65 - ? = 29",
+      "visualType": "none",
+      "choices": [
+        { "id": "A", "text": "34" },
+        { "id": "B", "text": "35" },
+        { "id": "C", "text": "36" },
+        { "id": "D", "text": "46" }
+      ],
+      "correctAnswer": "C",
+      "explanation": "Số trừ = Số bị trừ - Hiệu: 65 - 29 = 36."
+    },
+    {
+      "id": "olympic-exam-08",
+      "number": 8,
+      "topicId": "arithmetic",
+      "prompt": "Cân bằng phép tính: 37 + 19 = ? + 26. Số điền vào dấu hỏi chấm là:",
+      "visualType": "equation",
+      "visualData": { "equation": "37 + 19 = ? + 26" },
+      "choices": [
+        { "id": "A", "text": "28" },
+        { "id": "B", "text": "30" },
+        { "id": "C", "text": "32" },
+        { "id": "D", "text": "34" }
+      ],
+      "correctAnswer": "B",
+      "explanation": "Vế trái: 37 + 19 = 56. Số cần tìm là: 56 - 26 = 30."
+    },
+    {
+      "id": "olympic-exam-09",
+      "number": 9,
+      "topicId": "arithmetic",
+      "prompt": "Một số bí ẩn đem nhân với 3 rồi cộng với 7 thì được kết quả là 22. Số bí ẩn lúc đầu là:",
+      "visualType": "none",
+      "choices": [
+        { "id": "A", "text": "4" },
+        { "id": "B", "text": "5" },
+        { "id": "C", "text": "6" },
+        { "id": "D", "text": "7" }
+      ],
+      "correctAnswer": "B",
+      "explanation": "Tính ngược: (22 - 7) : 3 = 15 : 3 = 5."
+    },
+    {
+      "id": "olympic-exam-10",
+      "number": 10,
+      "topicId": "arithmetic",
+      "prompt": "Tính nhanh giá trị của biểu thức: 18 + 25 + 12 + 35 = ?",
+      "visualType": "none",
+      "choices": [
+        { "id": "A", "text": "80" },
+        { "id": "B", "text": "85" },
+        { "id": "C", "text": "90" },
+        { "id": "D", "text": "95" }
+      ],
+      "correctAnswer": "C",
+      "explanation": "Ghép cặp tròn chục: (18 + 12) + (25 + 35) = 30 + 60 = 90."
+    },
+
+    {
+      "id": "olympic-exam-11",
+      "number": 11,
+      "topicId": "number-theory",
+      "prompt": "Trong bốn số sau: 31, 42, 57, 69, số chẵn duy nhất là:",
+      "visualType": "none",
+      "choices": [
+        { "id": "A", "text": "31" },
+        { "id": "B", "text": "42" },
+        { "id": "C", "text": "57" },
+        { "id": "D", "text": "69" }
+      ],
+      "correctAnswer": "B",
+      "explanation": "Số 42 có chữ số tận cùng là 2 nên là số chẵn."
+    },
+    {
+      "id": "olympic-exam-12",
+      "number": 12,
+      "topicId": "number-theory",
+      "prompt": "Tổng của ba số lẻ bất kỳ (ví dụ: 1 + 3 + 5 = 9) luôn là số chẵn hay số lẻ?",
+      "visualType": "none",
+      "choices": [
+        { "id": "A", "text": "Số chẵn" },
+        { "id": "B", "text": "Số lẻ" },
+        { "id": "C", "text": "Luôn chia hết cho 3" },
+        { "id": "D", "text": "Tùy thuộc vào các số" }
+      ],
+      "correctAnswer": "B",
+      "explanation": "Lẻ + Lẻ = Chẵn; Chẵn + Lẻ = Lẻ. Vậy tổng của ba số lẻ luôn là số lẻ."
+    },
+    {
+      "id": "olympic-exam-13",
+      "number": 13,
+      "topicId": "number-theory",
+      "prompt": "Có 24 quả dâu tây chia đều cho 4 bạn nhỏ. Hỏi mỗi bạn nhận được bao nhiêu quả dâu tây?",
+      "visualType": "groups",
+      "visualData": { "total": 24, "groups": 4 },
+      "choices": [
+        { "id": "A", "text": "5 quả" },
+        { "id": "B", "text": "6 quả" },
+        { "id": "C", "text": "7 quả" },
+        { "id": "D", "text": "8 quả" }
+      ],
+      "correctAnswer": "B",
+      "explanation": "Số dâu tây mỗi bạn nhận được là: 24 : 4 = 6 (quả dâu tây)."
+    },
+    {
+      "id": "olympic-exam-14",
+      "number": 14,
+      "topicId": "number-theory",
+      "prompt": "Có bao nhiêu số lẻ nằm giữa số 20 và số 30?",
+      "visualType": "none",
+      "choices": [
+        { "id": "A", "text": "4 số" },
+        { "id": "B", "text": "5 số" },
+        { "id": "C", "text": "6 số" },
+        { "id": "D", "text": "7 số" }
+      ],
+      "correctAnswer": "B",
+      "explanation": "Các số lẻ giữa 20 và 30 là: 21, 23, 25, 27, 29. Có đúng 5 số."
+    },
+    {
+      "id": "olympic-exam-15",
+      "number": 15,
+      "topicId": "number-theory",
+      "prompt": "Tìm số nhỏ nhất có hai chữ số mà chữ số hàng chục gấp 3 lần chữ số hàng đơn vị:",
+      "visualType": "none",
+      "choices": [
+        { "id": "A", "text": "13" },
+        { "id": "B", "text": "31" },
+        { "id": "C", "text": "62" },
+        { "id": "D", "text": "93" }
+      ],
+      "correctAnswer": "B",
+      "explanation": "Chữ số hàng đơn vị nhỏ nhất là 1, hàng chục gấp 3 lần là 3. Số đó là 31."
+    },
+
+    {
+      "id": "olympic-exam-16",
+      "number": 16,
+      "topicId": "geometry",
+      "prompt": "Trên đoạn thẳng MN lấy thêm một điểm P nằm ở giữa. Hỏi hình vẽ có tất cả bao nhiêu đoạn thẳng?",
+      "visualType": "shapes",
+      "visualData": { "points": ["M", "P", "N"] },
+      "choices": [
+        { "id": "A", "text": "2 đoạn" },
+        { "id": "B", "text": "3 đoạn" },
+        { "id": "C", "text": "4 đoạn" },
+        { "id": "D", "text": "5 đoạn" }
+      ],
+      "correctAnswer": "B",
+      "explanation": "Các đoạn thẳng là: MP, PN và MN. Có tất cả 3 đoạn thẳng."
+    },
+    {
+      "id": "olympic-exam-17",
+      "number": 17,
+      "topicId": "geometry",
+      "prompt": "Một hình chữ nhật dài được chia thành 3 ô vuông nhỏ nằm kề nhau. Hỏi trong hình có tất cả bao nhiêu hình chữ nhật (kể cả ô vuông)?",
+      "visualType": "shapes",
+      "visualData": { "type": "rect-split-3" },
+      "choices": [
+        { "id": "A", "text": "3 hình" },
+        { "id": "B", "text": "4 hình" },
+        { "id": "C", "text": "5 hình" },
+        { "id": "D", "text": "6 hình" }
+      ],
+      "correctAnswer": "D",
+      "explanation": "Có 3 hình đơn lẻ + 2 hình ghép đôi + 1 hình ghép ba = 6 hình chữ nhật."
+    },
+    {
+      "id": "olympic-exam-18",
+      "number": 18,
+      "topicId": "geometry",
+      "prompt": "Một khối lập phương có tất cả bao nhiêu cạnh?",
+      "visualType": "cubes",
+      "choices": [
+        { "id": "A", "text": "8 cạnh" },
+        { "id": "B", "text": "10 cạnh" },
+        { "id": "C", "text": "12 cạnh" },
+        { "id": "D", "text": "14 cạnh" }
+      ],
+      "correctAnswer": "C",
+      "explanation": "Khối lập phương gồm 4 cạnh đáy trên, 4 cạnh đáy dưới và 4 cạnh bên: 4 + 4 + 4 = 12 cạnh."
+    },
+    {
+      "id": "olympic-exam-19",
+      "number": 19,
+      "topicId": "geometry",
+      "prompt": "Xếp một tháp gồm 2 tầng: tầng dưới gồm 4 khối lập phương xếp thành hình vuông 2x2, tầng trên đặt 1 khối ở giữa. Hỏi có tất cả bao nhiêu khối lập phương?",
+      "visualType": "cubes",
+      "visualData": { "layer1": 4, "layer2": 1 },
+      "choices": [
+        { "id": "A", "text": "4 khối" },
+        { "id": "B", "text": "5 khối" },
+        { "id": "C", "text": "6 khối" },
+        { "id": "D", "text": "8 khối" }
+      ],
+      "correctAnswer": "B",
+      "explanation": "Tổng số khối lập phương là: 4 + 1 = 5 khối."
+    },
+    {
+      "id": "olympic-exam-20",
+      "number": 20,
+      "topicId": "geometry",
+      "prompt": "Cần ít nhất bao nhiêu que tính bằng nhau để xếp thành 2 hình tam giác riêng biệt?",
+      "visualType": "shapes",
+      "choices": [
+        { "id": "A", "text": "4 que" },
+        { "id": "B", "text": "5 que" },
+        { "id": "C", "text": "6 que" },
+        { "id": "D", "text": "7 que" }
+      ],
+      "correctAnswer": "C",
+      "explanation": "Mỗi hình tam giác cần 3 que tính. Hai hình tam giác riêng biệt cần ít nhất: 3 × 2 = 6 que tính."
+    },
+
+    {
+      "id": "olympic-exam-21",
+      "number": 21,
+      "topicId": "combinatorics",
+      "prompt": "Dùng hai chữ số 4 và 9, ta có thể viết được bao nhiêu số có hai chữ số khác nhau?",
+      "visualType": "none",
+      "choices": [
+        { "id": "A", "text": "1 số" },
+        { "id": "B", "text": "2 số" },
+        { "id": "C", "text": "3 số" },
+        { "id": "D", "text": "4 số" }
+      ],
+      "correctAnswer": "B",
+      "explanation": "Hai số viết được là 49 và 94 (2 số)."
+    },
+    {
+      "id": "olympic-exam-22",
+      "number": 22,
+      "topicId": "combinatorics",
+      "prompt": "Bạn An có 3 chiếc mũ khác màu và 2 chiếc khăn quàng khác màu. Hỏi An có bao nhiêu cách chọn 1 chiếc mũ và 1 chiếc khăn để đeo?",
+      "visualType": "none",
+      "choices": [
+        { "id": "A", "text": "5 cách" },
+        { "id": "B", "text": "6 cách" },
+        { "id": "C", "text": "7 cách" },
+        { "id": "D", "text": "8 cách" }
+      ],
+      "correctAnswer": "B",
+      "explanation": "Số cách chọn bộ phụ kiện là: 3 × 2 = 6 (cách)."
+    },
+    {
+      "id": "olympic-exam-23",
+      "number": 23,
+      "topicId": "combinatorics",
+      "prompt": "Bốn bạn An, Bình, Cường, Dũng thi đấu cờ vua vòng tròn, mỗi bạn thi đấu với mỗi bạn khác đúng 1 ván. Hỏi có tất cả bao nhiêu ván cờ?",
+      "visualType": "none",
+      "choices": [
+        { "id": "A", "text": "4 ván" },
+        { "id": "B", "text": "5 ván" },
+        { "id": "C", "text": "6 ván" },
+        { "id": "D", "text": "8 ván" }
+      ],
+      "correctAnswer": "C",
+      "explanation": "Các cặp đấu: (An-Bình), (An-Cường), (An-Dũng), (Bình-Cường), (Bình-Dũng), (Cường-Dũng). Có tất cả 6 ván."
+    },
+    {
+      "id": "olympic-exam-24",
+      "number": 24,
+      "topicId": "combinatorics",
+      "prompt": "Có tất cả bao nhiêu số có hai chữ số mà tổng hai chữ số của nó đúng bằng 5?",
+      "visualType": "none",
+      "choices": [
+        { "id": "A", "text": "4 số" },
+        { "id": "B", "text": "5 số" },
+        { "id": "C", "text": "6 số" },
+        { "id": "D", "text": "7 số" }
+      ],
+      "correctAnswer": "B",
+      "explanation": "Các số thỏa mãn là: 14, 23, 32, 41, 50. Có tất cả 5 số."
+    },
+    {
+      "id": "olympic-exam-25",
+      "number": 25,
+      "topicId": "combinatorics",
+      "prompt": "Có 15 quyển vở phát đều cho 3 tổ học tập. Hỏi mỗi tổ nhận được bao nhiêu quyển vở?",
+      "visualType": "groups",
+      "visualData": { "total": 15, "groups": 3 },
+      "choices": [
+        { "id": "A", "text": "4 quyển" },
+        { "id": "B", "text": "5 quyển" },
+        { "id": "C", "text": "6 quyển" },
+        { "id": "D", "text": "7 quyển" }
+      ],
+      "correctAnswer": "B",
+      "explanation": "Số quyển vở mỗi tổ nhận được là: 15 : 3 = 5 (quyển vở)."
+    }
+  ]
+}
