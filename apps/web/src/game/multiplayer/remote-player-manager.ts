@@ -26,6 +26,12 @@ export function setBotsEnabled(enabled: boolean): void {
   }
 }
 
+/** Her feet this far over the ground count as a jump (a step or a slope stays on the ground). */
+const AIRBORNE_ABOVE = 0.3;
+export function isAirborne(y: number, ground: number): boolean {
+  return y - ground > AIRBORNE_ABOVE;
+}
+
 interface RemoteEntity {
   presence: PlayerPresence;
   character: PlayerCharacter;
@@ -33,6 +39,8 @@ interface RemoteEntity {
   targetPos: Vector3;
   targetYaw: number;
   currentSpeed: number;
+  /** Feet clear of the ground at the last update (a jump): she is drawn in the air, not snapped down. */
+  airborne: boolean;
 }
 
 export class RemotePlayerManager {
@@ -85,6 +93,7 @@ export class RemotePlayerManager {
         targetPos: new Vector3(presence.x, y, presence.z),
         targetYaw: presence.yaw,
         currentSpeed: presence.speed,
+        airborne: false,
       });
 
       if (presence.bubble) {
@@ -100,8 +109,10 @@ export class RemotePlayerManager {
     const entity = this.entities.get(update.id);
     if (!entity) return;
 
-    const y = this.ground(update.x, update.z, update.y);
-    entity.targetPos.set(update.x, y, update.z);
+    const ground = this.ground(update.x, update.z, update.y);
+    // A jump: the sender's height above the ground here (the updates come ten times a second).
+    entity.airborne = isAirborne(update.y, ground);
+    entity.targetPos.set(update.x, entity.airborne ? update.y : ground, update.z);
     entity.targetYaw = update.yaw;
     entity.currentSpeed = update.speed;
   }
@@ -139,10 +150,10 @@ export class RemotePlayerManager {
       const root = entity.character.root;
 
       // Smooth interpolation (lerp)
-      root.position.lerp(entity.targetPos, Math.min(1, dt * 10));
+      root.position.lerp(entity.targetPos, Math.min(1, dt * (entity.airborne ? 18 : 10)));
       root.rotation.y = MathUtils.lerp(root.rotation.y, entity.targetYaw, Math.min(1, dt * 10));
 
-      entity.character.update(dt, entity.currentSpeed, true);
+      entity.character.update(dt, entity.currentSpeed, !entity.airborne);
       entity.bubble.update(dt);
     }
   }

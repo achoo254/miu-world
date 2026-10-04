@@ -42,3 +42,24 @@ describe('rescue watch', () => {
     expect(spot?.[1]).toBe(10);
   });
 });
+
+describe('rescued again soon', () => {
+  it('goes further back each time the last spot did not help', () => {
+    const watch = new RescueWatch();
+    for (let i = 0; i < 12; i++) watch.update(0.5, { position: [i, 1, 0], safe: true, inWater: false, pushing: false });
+    const first = watch.spot();
+    const second = watch.spot();
+    const third = watch.spot();
+    expect(first?.[0]).toBe(9);
+    expect(second?.[0]).toBe(6);
+    expect(third?.[0]).toBe(3);
+  });
+
+  it('starts from the near spot again after a quiet while', () => {
+    const watch = new RescueWatch();
+    for (let i = 0; i < 12; i++) watch.update(0.5, { position: [i, 1, 0], safe: true, inWater: false, pushing: false });
+    watch.spot();
+    watch.update(30, { position: [11, 1, 0], safe: true, inWater: false, pushing: false });
+    expect(watch.spot()?.[0]).toBe(9);
+  });
+});

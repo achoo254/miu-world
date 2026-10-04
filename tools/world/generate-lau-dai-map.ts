@@ -543,6 +543,37 @@ export async function generateLauDai() {
         }
       }
 
+      // Stone steps up out of the moat (owner, 04/10/2026: a child in the water had no way up its five-block faces):
+      // every twenty blocks along each bank, three wide, one block a step, rising from the water to the bank.
+      const stepsUp = (lx: number, lz: number, dx: number, dz: number): void => {
+        const px = dz !== 0 ? 1 : 0; // across the stairs
+        const pz = dx !== 0 ? 1 : 0;
+        for (let k = 1; k <= 5; k++) for (let w = -1; w <= 1; w++) if (!inWater(lx + dx * k + px * w, lz + dz * k + pz * w)) return;
+        for (let w = -1; w <= 1; w++) if (inWater(lx + px * w, lz + pz * w) || ctx.surface(lx + px * w, lz + pz * w) < LEVEL - 6) return;
+        for (let k = 1; k <= 5; k++) {
+          for (let w = -1; w <= 1; w++) {
+            const sx = lx + dx * k + px * w;
+            const sz = lz + dz * k + pz * w;
+            for (let yy = WATER_LEVEL - 6; yy <= LEVEL - k; yy++) put(world, sx, yy, sz, B.grey);
+          }
+        }
+      };
+      for (let x = WALLS.x0 - 13; x <= WALLS.x1 + 13; x++) {
+        for (let z = WALLS.z0 - 13; z <= MOAT_S.z1 + 3; z++) {
+          if (inWater(x, z)) continue;
+          // Not by the bridge and its landing: the stone bridge has its own way down.
+          if (Math.abs(x - GATE_X) < 14 && z >= MOAT_S.z0 - 2) continue;
+          if (x % 20 === 7) {
+            stepsUp(x, z, 0, 1);
+            stepsUp(x, z, 0, -1);
+          }
+          if (z % 20 === 7) {
+            stepsUp(x, z, 1, 0);
+            stepsUp(x, z, -1, 0);
+          }
+        }
+      }
+
       // ---------------------------------------------------------------------------------------------------
       // The castle: curtain walls eleven high, a plinth course along their foot, battlements, banners and
       // lamps on their faces; round towers under pointed red roofs with flags at the corners and between.

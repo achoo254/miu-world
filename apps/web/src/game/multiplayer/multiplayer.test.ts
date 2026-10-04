@@ -24,3 +24,12 @@ describe('multiplayer client and nametags', () => {
     expect(playerNametag.renderOrder).toBe(12);
   });
 });
+
+import { isAirborne } from './remote-player-manager';
+describe('remote players jumping', () => {
+  it('draws a player in the air when her feet are clear of the ground, and on it on a step or a slope', () => {
+    expect(isAirborne(14.4, 13)).toBe(true);
+    expect(isAirborne(13.2, 13)).toBe(false);
+    expect(isAirborne(13, 13)).toBe(false);
+  });
+});
