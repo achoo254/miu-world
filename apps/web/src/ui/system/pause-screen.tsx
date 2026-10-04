@@ -7,34 +7,33 @@ import { Icon } from '../kit/art';
 import { buttonClass } from '../kit/button';
 import { Modal } from '../kit/modal';
 import { T } from '../i18n/use-t';
-import { CompanionBotSetting } from './bot-setting';
-import { LanguageSetting, VoiceSpeedSetting } from './language-setting';
-import { SoundToggle } from './sound-toggle';
+import { FullSettingsGroups } from './full-settings';
 
 export function PauseScreen({ onResume, onRescue, homePath }: { onResume: () => void; onRescue: () => void; homePath: string }) {
   return (
     <Modal title={<T k="pause.title" />} onClose={onResume} dataId="pause">
-      <div className="modal-actions">
+      <div className="modal-actions" style={{ gap: 'var(--space-md)' }}>
         <button type="button" className={buttonClass('primary', { block: true })} data-id="pause-resume" onClick={onResume}>
           <Icon name="glowingStar" size={32} />
           <T k="pause.resume" />
         </button>
-        <SoundToggle dataId="pause-sound" />
-        <LanguageSetting dataId="pause-language" />
-        <VoiceSpeedSetting dataId="pause-voice" />
-        <CompanionBotSetting dataId="pause-bots" />
-        <button type="button" className={buttonClass('secondary', { block: true })} data-id="pause-rescue" onClick={onRescue}>
-          <Icon name="ringBuoy" size={32} />
-          <T k="pause.rescue" />
-        </button>
-        <Link to="/create" className={buttonClass('secondary', { block: true })} data-id="pause-character">
-          <Icon name="catFace" size={32} />
-          <T k="settings.changeCharacter" />
-        </Link>
-        <Link to={homePath} className={buttonClass('ghost', { block: true })} data-id="pause-home">
-          <Icon name="house" size={32} />
-          <T k="common.backHome" />
-        </Link>
+
+        <FullSettingsGroups prefix="pause" />
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-xs)' }}>
+          <button type="button" className={buttonClass('secondary', { block: true })} data-id="pause-rescue" onClick={onRescue}>
+            <Icon name="ringBuoy" size={32} />
+            <T k="pause.rescue" />
+          </button>
+          <Link to="/create" className={buttonClass('secondary', { block: true })} data-id="pause-character">
+            <Icon name="catFace" size={32} />
+            <T k="settings.changeCharacter" />
+          </Link>
+          <Link to={homePath} className={buttonClass('ghost', { block: true })} data-id="pause-home">
+            <Icon name="house" size={32} />
+            <T k="common.backHome" />
+          </Link>
+        </div>
       </div>
     </Modal>
   );

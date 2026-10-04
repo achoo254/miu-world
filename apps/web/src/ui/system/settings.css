@@ -42,3 +42,37 @@
   outline: 3px solid var(--color-primary);
   outline-offset: 2px;
 }
+
+/* Grouped settings container (Master Plan §6, system-screens-v1) */
+.settings-sections {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  max-height: 65vh;
+  overflow-y: auto;
+  padding-right: var(--space-xs);
+}
+
+.settings-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  background: var(--color-surface);
+  border: 2px solid var(--color-field-edge);
+  border-radius: var(--radius-field);
+}
+
+.settings-section-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: 800;
+  color: var(--color-ink-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+

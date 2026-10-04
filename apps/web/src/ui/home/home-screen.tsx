@@ -8,8 +8,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router';
 import { Icon, MiuPortrait } from '../kit/art';
-import { buttonClass } from '../kit/button';
-import { Modal } from '../kit/modal';
 import { SkyScene } from '../kit/sky-scene';
 import { PlayerBadge } from '../player/player-badge';
 import { currentQuest, playPath, questForRegion, usePlayer } from '../player/player-data';
@@ -18,35 +16,12 @@ import { RegionRewardBadges } from '../region/region-reward-badges';
 import { useRegionRewardList } from '../region/region-rewards';
 import { HOME_REGION } from '../region/regions';
 import { T, useT } from '../i18n/use-t';
-import { LanguageSetting, VoiceSpeedSetting } from '../system/language-setting';
-import { SoundToggle } from '../system/sound-toggle';
+import { SettingsDialog } from '../system/settings-dialog';
 import { WorldStage } from '../world/world-stage';
 import { TodayQuests } from './today-quests';
 import { OlympiadBanner } from '../event/olympiad-banner';
 import { OlympiadPanel } from '../event/olympiad-panel';
 import './home.css';
-
-function SettingsDialog({ onClose }: { onClose: () => void }) {
-  return (
-    <Modal title={<T k="settings.title" />} onClose={onClose} dataId="home-settings">
-      <div className="modal-actions">
-        <SoundToggle dataId="home-settings-sound" />
-        <LanguageSetting dataId="home-settings-language" />
-        <VoiceSpeedSetting dataId="home-settings-voice" />
-        <Link to="/create" className={buttonClass('secondary', { block: true })} data-id="home-settings-character">
-          <Icon name="catFace" size={32} />
-          <T k="settings.changeCharacter" />
-        </Link>
-        <Link to="/profiles" className={buttonClass('ghost', { block: true })} data-id="home-settings-profiles">
-          <T k="settings.changeProfile" />
-        </Link>
-        <button type="button" className={buttonClass('primary', { block: true })} onClick={onClose}>
-          <T k="common.done" />
-        </button>
-      </div>
-    </Modal>
-  );
-}
 
 export function HomeScreen() {
   const { data, error } = usePlayer();

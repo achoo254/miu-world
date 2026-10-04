@@ -5,7 +5,7 @@
 // before a tap waits for the first tap; one with no Web Audio at all (tests) stays silent.
 import { useEffect } from 'react';
 import { assetUrl } from '../kit/ui-art';
-import { onSoundSettingChange, readSoundOn } from '../system/sound-setting';
+import { onSoundSettingChange, readMusicOn, readSoundOn } from '../system/sound-setting';
 import { MUSIC_MOODS, musicPath, type MusicMood } from './music';
 
 /** Under the UI cues and the read-aloud voice, yet clearly heard (owner, 03/10/2026: the music was too quiet). */
@@ -111,7 +111,7 @@ function audioContext(): AudioContext | null {
 
 /** Whether music should be heard now (a hidden tab only pauses it, see `sync`). */
 function audible(): boolean {
-  return wanted !== null && held === 0 && readSoundOn();
+  return wanted !== null && held === 0 && readSoundOn() && readMusicOn();
 }
 
 function fadeTo(gain: GainNode, value: number, ctx: AudioContext): void {

@@ -4,12 +4,16 @@ import { afterEach, describe, expect, it, vi } from 'vitest';
 import { Modal } from '../kit/modal';
 import { OfflineBanner } from './offline-banner';
 import { PauseScreen } from './pause-screen';
-import { readSoundOn } from './sound-setting';
+import { SettingsDialog } from './settings-dialog';
+import { readMusicOn, readSoundOn } from './sound-setting';
+import { readFontSize, readReduceMotion } from './display-setting';
 
 afterEach(() => {
   cleanup();
   vi.restoreAllMocks();
   window.localStorage.clear();
+  document.documentElement.removeAttribute('data-reduced-motion');
+  document.documentElement.removeAttribute('data-font-size');
 });
 
 describe('Modal', () => {
@@ -84,7 +88,50 @@ describe('PauseScreen', () => {
     fireEvent.click(screen.getByRole('button', { name: /Âm thanh: Bật/ }));
     expect(screen.getByRole('button', { name: /Âm thanh: Tắt/ })).toBeTruthy();
   });
+
+  it('toggles background music on and off', () => {
+    expect(readMusicOn()).toBe(true);
+    renderPause();
+    const musicBtn = screen.getByRole('button', { name: /Nhạc nền: Bật/ });
+    fireEvent.click(musicBtn);
+    expect(readMusicOn()).toBe(false);
+    expect(screen.getByRole('button', { name: /Nhạc nền: Tắt/ })).toBeTruthy();
+  });
+
+  it('adjusts motion reduction and font size', () => {
+    renderPause();
+    const reduceBtn = screen.getByRole('radio', { name: /Giảm bớt/ });
+    fireEvent.click(reduceBtn);
+    expect(readReduceMotion()).toBe(true);
+    expect(document.documentElement.dataset.reducedMotion).toBe('true');
+
+    const largeFontBtn = screen.getByRole('radio', { name: /Lớn/ });
+    fireEvent.click(largeFontBtn);
+    expect(readFontSize()).toBe('large');
+    expect(document.documentElement.dataset.fontSize).toBe('large');
+  });
 });
+
+describe('SettingsDialog', () => {
+  it('renders all grouped settings and links', () => {
+    const onClose = vi.fn();
+    render(
+      <MemoryRouter>
+        <SettingsDialog onClose={onClose} />
+      </MemoryRouter>,
+    );
+
+    expect(screen.getByRole('dialog', { name: 'Cài đặt' })).toBeTruthy();
+    expect(screen.getByRole('button', { name: /Âm thanh: Bật/ })).toBeTruthy();
+    expect(screen.getByRole('button', { name: /Nhạc nền: Bật/ })).toBeTruthy();
+    expect(screen.getByRole('link', { name: /Đổi nhân vật/ }).getAttribute('href')).toBe('/create');
+    expect(screen.getByRole('link', { name: /Đổi hồ sơ/ }).getAttribute('href')).toBe('/profiles');
+
+    fireEvent.click(screen.getByRole('button', { name: /Xong/ }));
+    expect(onClose).toHaveBeenCalledTimes(1);
+  });
+});
+
 
 describe('OfflineBanner', () => {
   it('retries once per press and shows that it is reconnecting', async () => {
