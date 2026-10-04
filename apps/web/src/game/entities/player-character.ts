@@ -1,5 +1,6 @@
 // The child's character (the model of its species) + accessories, blending idle/walk/sprint by speed.
 import { AnimationMixer, type AnimationAction, type Object3D } from 'three';
+import { clone as cloneModel } from 'three/examples/jsm/utils/SkeletonUtils.js';
 import type { GuardedGltfLoader } from '../asset-loader';
 import { dressCharacter } from '../character/character-accessories';
 import { wornPose } from '../character/worn-pose';
@@ -36,7 +37,9 @@ export interface PlayerCharacter {
 export async function loadPlayerCharacter(loader: GuardedGltfLoader, species: string, outfit: string[]): Promise<PlayerCharacter> {
   const model = characterForSpecies(species);
   const gltf = await loader.load(model.output);
-  const root = gltf.scene;
+  // The loader hands every caller the same scene: each character is its own copy (skeleton included), or two of
+  // one species (another player, a companion bot) would share bones and be dressed on top of each other.
+  const root = cloneModel(gltf.scene);
   root.traverse((o) => {
     o.castShadow = true;
     o.frustumCulled = false; // skinned bounds lag the animated pose
