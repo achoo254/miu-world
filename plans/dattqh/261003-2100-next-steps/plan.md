@@ -45,7 +45,18 @@ Việc làm tiếp (quota tuần hết đến 07/10):
      - `apps/server/src/multiplayer`: `MultiplayerHub` quản lý room theo `mapId` và `BotRunner` điều phối bot cho 5 map chính (`trung-tam`, `truong-hoc`, `lang-ven-song`, `cho-phien`, `khu-rung-bi-mat`).
      - `apps/web/src/game/multiplayer`: `RemotePlayerManager` (tải model 3D, lerp vị trí mượt mà, bóng chat/emote), `MultiplayerClient` (kết nối WS qua Vite proxy `/api/ws`), và `MultiplayerNametag` (canvas sprite).
    - Kiểm thử & chất lượng: 100% typecheck, ESLint, unit tests server/schema/web pass (455 test files, 5931 tests).
-4. **Việc nhỏ hoàn thiện**:
+4. **[XONG] Hệ thống Tương tác 50+ đồ vật & nội thất (Object Interaction System)**:
+   - Kiến trúc Data-driven Extensible Registry ([`object-interaction-types.ts`](file:///Users/hoandat/inet-gitlab/miu-world/apps/web/src/game/interact/object-interaction-types.ts), [`object-interaction-registry.ts`](file:///Users/hoandat/inet-gitlab/miu-world/apps/web/src/game/interact/object-interaction-registry.ts)):
+     - Cung cấp sẵn **54 hành động tương tác** gần gũi và hấp dẫn cho trẻ lớp 2: nằm giường ngủ, nhún lò xo, ngồi ghế/sofa, học bài bàn học, mở tủ quần áo, đi vệ sinh bồn cầu & xả nước, rửa tay bồn rửa mặt, ngâm bồn tắm bọt xà phòng, tắm vòi sen, mở tủ lạnh lấy hoa quả/nước mát, nấu ăn bếp, nướng bánh mì lát, lò vi sóng, rửa chén bát, xem tivi hoạt hình, bật quạt trần, bật đài radio/loa nhảy múa, ôm gấu bông, chơi búp bê Nga, tưới chậu cây, ngửi hoa thơm, kiểm tra hòm thư, bấm chuông cửa, sưởi ấm lửa trại, cho thú cưng ăn, múc nước giếng, v.v.
+     - Thiết kế mở rộng vô hạn: hỗ trợ `registerInteraction()` cho phép bổ sung thêm 100 hay 1000 hành động tương tác mới bất kỳ lúc nào chỉ bằng khai báo config, không cần sửa đổi engine cốt lõi.
+   - Tích hợp 3D Scene Three.js ([`object-interaction-manager.ts`](file:///Users/hoandat/inet-gitlab/miu-world/apps/web/src/game/interact/object-interaction-manager.ts)):
+     - Tự động nhận diện props, decor nội thất trong bán kính tương tác gần bé.
+     - Hiển thị nhãn prompt ngữ cảnh trên HUD (ví dụ: `Bồn cầu · Đi vệ sinh`, `Giường ngủ · Nằm ngủ`, `Bồn rửa tay · Rửa tay`).
+     - Tự động đồng bộ tư thế ngồi/nằm trên đồ vật, hiện bong bóng thoại (`SpeechBubble`) kèm emoji dễ thương và câu thoại vui tươi.
+     - Tự động kết thúc mượt mà khi bé di chuyển hoặc hết thời gian.
+     - Phát sóng biểu cảm đồng bộ qua hệ thống Multiplayer.
+   - Kiểm thử & Triển khai: Đã pass 100% tests, typecheck, lint, build release và deploy thành công lên Production (`https://miu.hoandat.com`).
+5. **Việc nhỏ hoàn thiện**:
    - [XONG] Dọn CSS bản đồ cũ trong `game.css` (loại bỏ các class `.minimap-sheet`, `.minimap-legend`, v.v. đã được thay bằng `map-sheet.css`).
    - [XONG] Ảnh nhân vật mới trong hộp thoại: bổ sung 19 icon Fluent Emoji 3D (gấu, chó, mèo, thỏ, cáo, khỉ, chim, dơi, người tuyết, rô bốt, nông dân, hải cẩu, cánh cụt, cua, bò, lợn, gà, v.v.) và mở rộng logic `NpcPortrait` theo target prefix & regex tên.
    - [XONG] Danh hiệu ở màn Hồ sơ: hiển thị panel "Danh hiệu" (`profile-titles`) cùng các huy hiệu danh hiệu đạt được từ rương khu vực.
