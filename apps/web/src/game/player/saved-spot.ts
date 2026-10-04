@@ -1,12 +1,13 @@
 // The spot a child last stood on, read back on the next visit. The map may have been regenerated since
 // (a wall built there, water dug), so the spot is used only while it still is dry, open ground.
-import type { SolidAt } from '@miu/voxel/grid-collision';
+import { bodyFits, type SolidAt } from '@miu/voxel/grid-collision';
 import type { WorldBounds } from '@miu/voxel/outland';
+import { BODY } from './player-controller';
 
 type Point = readonly [number, number, number];
 export type LiquidAt = (x: number, y: number, z: number) => boolean;
 
-/** Feet on a solid block, feet and head cells open, no water: the spot to stand on, else null. */
+/** Feet on a solid block, her whole body clear of solid cells (a chair squeezed between two desks is not), no water: the spot to stand on, else null. */
 export function usableSpot(spot: Point, solid: SolidAt, liquid: LiquidAt, bounds: WorldBounds, height: number): Point | null {
   const [x, y, z] = spot;
   if (![x, y, z].every(Number.isFinite) || x < bounds.x0 || z < bounds.z0 || x >= bounds.x1 || z >= bounds.z1) return null;
@@ -15,7 +16,7 @@ export function usableSpot(spot: Point, solid: SolidAt, liquid: LiquidAt, bounds
   if (feet < 1 || feet + 1 >= height) return null;
   const bx = Math.floor(x);
   const bz = Math.floor(z);
-  const open = !solid(bx, feet, bz) && !solid(bx, feet + 1, bz) && !liquid(bx, feet, bz);
+  const open = bodyFits([x, feet, z], BODY, solid) && !liquid(bx, feet, bz);
   return open && solid(bx, feet - 1, bz) ? [x, feet, z] : null;
 }
 
@@ -45,11 +46,12 @@ export function nearestUsableSpot(spot: Point, solid: SolidAt, liquid: LiquidAt,
 /** Seconds inside a solid block before the child is lifted out (a moment of overlap while stepping is normal). */
 export const EMBEDDED_LIFT_S = 0.4;
 
-/** Her feet or head cell is a solid block: she stands inside something and cannot walk off. */
+/**
+ * Any part of her body overlaps a solid block: she stands inside something and cannot walk off (the collision
+ * refuses every step that still overlaps, so a body edge in the next cell wedges her as hard as a centre in
+ * one: a seat between two desks).
+ */
 export function isEmbedded(position: Point, solid: SolidAt): boolean {
   const [x, y, z] = position;
-  const bx = Math.floor(x);
-  const bz = Math.floor(z);
-  const feet = Math.floor(y + 0.01);
-  return solid(bx, feet, bz) || solid(bx, feet + 1, bz);
+  return !bodyFits([x, Math.floor(y + 0.01), z], BODY, solid);
 }

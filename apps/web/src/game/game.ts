@@ -808,7 +808,8 @@ export class Game {
       }
       const stuck = !carried && rescue.update(dt, {
         position: [controller.position.x, controller.position.y, controller.position.z],
-        safe: controller.onGround && !controller.inWater,
+        // A spot her body overlaps (a seat between two desks) is no place to put her back on.
+        safe: controller.onGround && !controller.inWater && !isEmbedded([controller.position.x, controller.position.y, controller.position.z], solid),
         inWater: controller.inWater,
         pushing: Math.hypot(intent.dirX, intent.dirZ) > 0.5,
       });
@@ -816,7 +817,7 @@ export class Game {
       // Inside a solid block (a stool she sat on, a prop that landed on her) she cannot walk off: lift her out to
       // the nearest open spot, else the last safe one. Sitting is the one time she is meant to be in a cell.
       const p = controller.position;
-      const embedded = !carried && !objectInteractions.isInteracting && isEmbedded([p.x, p.y, p.z], solid);
+      const embedded = !carried && !controller.climbing && !objectInteractions.isInteracting && isEmbedded([p.x, p.y, p.z], solid);
       embeddedFor = embedded ? embeddedFor + dt : 0;
       if (embeddedFor > EMBEDDED_LIFT_S) {
         embeddedFor = 0;

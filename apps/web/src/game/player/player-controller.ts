@@ -34,7 +34,8 @@ const TURN_RATE = 12; // rad/s
  */
 const MOVE_EASE = 12;
 const STOP_EASE = 20;
-const BODY: Body = { halfWidth: 0.24, height: 1.45 };
+/** Her collision body: spots she may be put on, or must be lifted from, are judged with the same box. */
+export const BODY: Body = { halfWidth: 0.24, height: 1.45 };
 /**
  * In water Miu sinks slowly, and holding Jump lifts her at jump speed: enough to leave the water with
  * a leap that clears a 2-block bank (a plain jump clears about 1.4), so a stream is never a trap.
