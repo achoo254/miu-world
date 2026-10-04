@@ -2,7 +2,8 @@
 // owns the HUD (badge, quest tracker, menu buttons, Interact), the interaction label (content and
 // visibility from game-bridge), Pause (the game stops rendering while it is open) and the offline retry.
 import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from 'react';
-import { Link, useSearchParams } from 'react-router';
+import { Link, useLocation, useSearchParams } from 'react-router';
+import { rememberPlay } from '../system/back-to-game';
 import type { PlayerPosition } from '@miu/schema/player-position';
 import { createGameStore, type GameSnapshot, type GameStore } from '../../game-bridge/game-store';
 import { GameStoreContext, useGameState, useGameStore } from '../../game-bridge/use-game-state';
@@ -168,6 +169,9 @@ export function PlayScreen() {
   const draftOwner = account.status === 'signed-in' ? account.me.activeChildId : null;
   const [store] = useState(createGameStore);
   const [params] = useSearchParams();
+  const here = useLocation();
+  // The way back to this game from Home, the map and the other screens.
+  useEffect(() => rememberPlay(`${here.pathname}${here.search}`), [here.pathname, here.search]);
   const [data, setData] = useState<PlayerData | null>(null);
   // Read once per visit: later saves must not rebuild the game.
   const [positions, setPositions] = useState<PlayerPosition[] | null>(null);

@@ -4,6 +4,7 @@ import { Navigate, Route, Routes, useLocation } from 'react-router';
 import { AccountProvider, useAccount } from './account/account-context';
 import { ConsentScreen } from './account/consent-screen';
 import { stopSpeaking } from './dialogue/speech';
+import { BackToGame } from './system/back-to-game';
 import { bindLangProfile } from './i18n/i18n';
 import { T } from './i18n/use-t';
 import { ParentAreaScreen } from './account/parent-area-screen';
@@ -40,6 +41,7 @@ function ChildScreen({ children, music }: { children: ReactNode; music?: MusicMo
     <RequireParent>
       <RequireActiveChild>
         <Suspense fallback={<Loading />}>{children}</Suspense>
+        <BackToGame />
       </RequireActiveChild>
     </RequireParent>
   );

@@ -1,0 +1,20 @@
+.back-to-game {
+  position: fixed;
+  right: calc(var(--space-sm) + env(safe-area-inset-right, 0px));
+  bottom: calc(var(--space-sm) + env(safe-area-inset-bottom, 0px));
+  z-index: var(--z-hud);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  min-height: 3.25rem;
+  padding: 0 var(--space-md);
+  border-radius: var(--radius-pill);
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--text-body);
+  text-decoration: none;
+  box-shadow: var(--shadow-tile);
+}
+.back-to-game:focus-visible { box-shadow: var(--focus-ring); outline: none; }
