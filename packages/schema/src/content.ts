@@ -196,6 +196,18 @@ const connectShape = {
   showLengths: z.boolean().optional(),
 };
 
+/** Logic challenge (Master Plan §5, §6): patterns, mazes, or puzzle solving. */
+const logicShape = {
+  ...challengeBase,
+  mechanic: z.literal('logic'),
+  logicType: z.enum(['pattern', 'maze', 'puzzle']).default('pattern'),
+  elements: z
+    .array(z.strictObject({ id: ContentId, label: Text, image: IllustrationRef.optional() }))
+    .default([]),
+  choices: z.array(Choice).min(2),
+  grid: z.array(z.array(z.string())).optional(),
+};
+
 /** Highest score a minigame round can report; the server refuses anything above it. */
 export const MAX_MINIGAME_SCORE = 9999;
 /** Keys of a game's tuning values (`speed`, `lanes`…): camelCase, like the game's code reads them. */
@@ -264,6 +276,7 @@ export const QuestStepPublic = z.discriminatedUnion('kind', [
     z.object(clockShape),
     z.object(calendarShape),
     z.object(connectShape),
+    z.object(logicShape),
     z.object(minigameShape),
   ]),
   z.object(rewardShape),
@@ -298,6 +311,11 @@ export const QuestStep = z.discriminatedUnion('kind', [
       ...curriculumRef,
       ...secret(z.strictObject({ edges: z.array(z.tuple([ContentId, ContentId])).min(1).max(50) })),
     }),
+    z.strictObject({
+      ...logicShape,
+      ...curriculumRef,
+      ...secret(ChoiceAnswer),
+    }),
     // Graded on the score alone: no answer, no support layers (the game's how-to card is its guide).
     z.strictObject(minigameShape),
   ]),
@@ -323,7 +341,7 @@ export function stepTargets(step: QuestStep | QuestStepPublic): string[] {
 export const isTextbookQuest = (id: string) => id.startsWith('toan2-') || id.startsWith('tv2-');
 
 /** Challenges where the child manipulates something (Master Plan §16), as opposed to picking one answer. */
-const INTERACTIVE_MECHANICS = new Set(['drag-drop', 'sort', 'classify', 'fill-blank', 'multi-select', 'clock', 'calendar', 'connect']);
+const INTERACTIVE_MECHANICS = new Set(['drag-drop', 'sort', 'classify', 'fill-blank', 'multi-select', 'clock', 'calendar', 'connect', 'logic']);
 
 /** Gameplay mechanics other than multiple choice (Master Plan §16: at least two per quest). */
 function mechanicOf(step: QuestStep): string | null {
@@ -421,6 +439,12 @@ function challengeIssues(step: ChallengeStep): string[] {
       if (!uniqueIds(points)) issues.push('duplicate point id');
       if (!step.answer.edges.every(([a, b]) => a !== b && points.includes(a) && points.includes(b))) issues.push('answer joins unknown points or a point to itself');
       if (!uniqueIds(step.answer.edges.map(edgeKey))) issues.push('answer lists a segment twice');
+      break;
+    }
+    case 'logic': {
+      if (!uniqueIds(step.choices.map((c) => c.id))) issues.push('duplicate choice id');
+      if (!step.choices.some((c) => c.id === step.answer.choice)) issues.push('answer choice is not one of the choices');
+      if (step.elements && !uniqueIds(step.elements.map((e) => e.id))) issues.push('duplicate element id');
       break;
     }
     case 'minigame':

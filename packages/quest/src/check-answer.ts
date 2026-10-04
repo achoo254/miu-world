@@ -67,6 +67,8 @@ export function checkAnswer(step: AnswerableStep, answer: StepAnswer): boolean {
       return checkCalendar(step, answer);
     case 'connect':
       return 'edges' in answer && checkEdges(step, answer.edges);
+    case 'logic':
+      return 'choice' in answer && answer.choice === step.answer.choice;
   }
 }
 

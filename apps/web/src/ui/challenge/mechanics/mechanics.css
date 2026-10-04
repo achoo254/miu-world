@@ -74,3 +74,15 @@ button.calendar-cell, .calendar-weekday { cursor: pointer; }
 
 .speak-recorder { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-sm); }
 .speak-recorder .hint { flex-basis: 100%; margin: 0; }
+
+.logic-wrap { display: flex; flex-direction: column; gap: var(--space-md); width: 100%; }
+.logic-pattern-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: var(--space-sm); padding: var(--space-sm); background: var(--color-surface-faint); border-radius: var(--radius-field); min-height: 5rem; }
+.logic-pattern-item { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--space-2xs); min-width: 4rem; min-height: 4.5rem; padding: var(--space-xs); border-radius: var(--radius-key); background: var(--color-surface); box-shadow: var(--shadow-tile); font-weight: 800; font-size: var(--text-md); color: var(--color-ink); }
+.logic-pattern-order { position: absolute; top: 2px; left: 4px; font-size: var(--text-xs); color: var(--color-ink-soft); }
+.logic-pattern-placeholder { display: flex; align-items: center; justify-content: center; min-width: 4rem; min-height: 4.5rem; border: 3px dashed var(--color-primary); border-radius: var(--radius-key); background: var(--color-badge); }
+.logic-pattern-question { font-family: var(--font-display); font-size: var(--text-xl); font-weight: 800; color: var(--color-primary-edge); }
+.logic-maze-grid { display: grid; gap: 4px; max-width: 24rem; margin-inline: auto; padding: var(--space-sm); background: var(--color-surface-faint); border-radius: var(--radius-field); }
+.logic-maze-cell { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; border-radius: var(--radius-sm); background: var(--color-surface); font-size: var(--text-lg); }
+.logic-maze-cell--wall { background: var(--color-field-edge); }
+.logic-maze-cell--start { background: var(--color-tile-1); }
+.logic-maze-cell--goal { background: var(--color-tile-3); }

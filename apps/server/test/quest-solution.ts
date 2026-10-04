@@ -28,6 +28,8 @@ function answerFor(step: QuestStep): object | null {
       return step.answer;
     case 'connect':
       return { edges: step.answer.edges };
+    case 'logic':
+      return { choice: step.answer.choice };
     case 'minigame':
       return { score: step.goal };
   }
@@ -40,6 +42,8 @@ function answerFor(step: QuestStep): object | null {
 export function solution(quest: ActiveQuest | DraftQuest): SolutionMove[] {
   return quest.steps.flatMap((step): SolutionMove[] => {
     if (step.kind === 'search') return step.targets.map((target) => [step.id, { target }]);
+    if (step.kind === 'find-object') return step.items.map((item) => [step.id, { target: item.target }]);
+    if (step.kind === 'decision') return [[step.id, { answer: { choice: step.choices[0]?.id ?? '' } }]];
     const answer = answerFor(step);
     return [[step.id, answer ? { answer } : {}]];
   });

@@ -23,14 +23,23 @@ import { ClassifyChallenge } from './mechanics/classify-challenge';
 import { ClockChallenge } from './mechanics/clock-challenge';
 import { ConnectChallenge } from './mechanics/connect-challenge';
 import { FillBlankChallenge } from './mechanics/fill-blank-challenge';
+import { LogicChallenge } from './mechanics/logic-challenge';
 import { MultiSelectChallenge } from './mechanics/multi-select-challenge';
 import { SpeakStepScreen } from './mechanics/speak-step';
 import { WorksheetStepScreen } from './mechanics/worksheet-step';
+import { DecisionScreen } from './decision-screen';
 import { isCount, useDraftState } from '../quest/step-draft';
 import { MinigameOverlay } from '../minigame/minigame-overlay';
 
 export function hasLearningScreen(step: QuestStepPublic): boolean {
-  return step.kind === 'read' || step.kind === 'riddle' || step.kind === 'challenge' || step.kind === 'speak' || step.kind === 'worksheet';
+  return (
+    step.kind === 'read' ||
+    step.kind === 'riddle' ||
+    step.kind === 'challenge' ||
+    step.kind === 'speak' ||
+    step.kind === 'worksheet' ||
+    step.kind === 'decision'
+  );
 }
 
 export function LearningStep({
@@ -84,6 +93,7 @@ export function LearningStep({
   if (step.kind === 'speak') return <SpeakStepScreen step={step} fill={fill} busy={busy} onDone={() => void submit(step, {})} onClose={onClose} />;
   if (step.kind === 'worksheet') return <WorksheetStepScreen step={step} fill={fill} busy={busy} onDone={() => void submit(step, {})} onClose={onClose} />;
   const answer = (a: StepAnswer) => void onAnswer(a);
+  if (step.kind === 'decision') return <DecisionScreen step={step} data={data} busy={busy} onAnswer={answer} onClose={onClose} />;
   if (step.kind === 'read') return <ReadStepScreen step={step} context={context} texts={quest.texts} onAnswer={answer} />;
   if (step.kind === 'riddle') return <RiddleStepScreen step={step} context={context} onAnswer={answer} />;
   if (step.kind !== 'challenge') return null;
@@ -106,6 +116,8 @@ export function LearningStep({
       return <CalendarChallenge step={step} context={context} onAnswer={answer} />;
     case 'connect':
       return <ConnectChallenge step={step} context={context} onAnswer={answer} />;
+    case 'logic':
+      return <LogicChallenge step={step} context={context} onAnswer={answer} />;
     case 'minigame':
       // A lesson's minigame: the round's score is the answer, sent when the child closes a won round (the
       // quest's reward comes with its last step, as for any other challenge).

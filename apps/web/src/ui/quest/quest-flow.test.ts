@@ -71,6 +71,19 @@ describe('quest flow', () => {
     const search = steps[1];
     if (!search) throw new Error('missing step');
     expect(searchCount(search, progress(['meet-parrot'], { 'find-clues': ['clue-letter'] }))).toEqual({ found: 1, total: 2 });
+    const findObjStep: QuestStepPublic = {
+      id: 'find-gems',
+      title: 'Tìm đá quý',
+      goTo: 'Tìm đá',
+      trigger: 'auto',
+      prompt: 'Tìm các viên đá',
+      kind: 'find-object',
+      items: [
+        { id: 'gem-1', name: 'Đá đỏ', target: 'target-gem-1', clue: 'Gần bờ suối' },
+        { id: 'gem-2', name: 'Đá xanh', target: 'target-gem-2', clue: 'Dưới gốc cây' },
+      ],
+    };
+    expect(searchCount(findObjStep, progress([], { 'find-gems': ['target-gem-1'] }))).toEqual({ found: 1, total: 2 });
     expect(currentStep(quest, progress(steps.map((s) => s.id)))).toBeNull();
   });
 

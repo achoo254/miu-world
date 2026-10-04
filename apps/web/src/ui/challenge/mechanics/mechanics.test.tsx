@@ -174,6 +174,55 @@ describe('textbook mechanic screens send the answer the server grades', () => {
     tap('worksheet-done');
     expect(body(write)).toEqual({});
   });
+
+  it('logic challenge lets the child pick a rule answer and sends it', () => {
+    const logicStep: QuestStepPublic = {
+      id: 'pattern-1',
+      title: 'Quy luật hoa quả',
+      goTo: 'Xem quy luật',
+      trigger: 'auto',
+      skill: 'logic',
+      prompt: 'Hình tiếp theo là gì?',
+      kind: 'challenge',
+      mechanic: 'logic',
+      logicType: 'pattern',
+      elements: [
+        { id: 'apple', label: 'Táo' },
+        { id: 'banana', label: 'Chuối' },
+      ],
+      choices: [
+        { id: 'apple', text: 'Táo' },
+        { id: 'orange', text: 'Cam' },
+      ],
+    };
+    const submit = vi.fn(async () => response(true));
+    render(<LearningStep step={logicStep} quest={quest} data={DATA} busy={false} submit={submit} onClose={() => undefined} />);
+    expect(byId('logic-challenge')).not.toBeNull();
+    fireEvent.click(screen.getByRole('radio', { name: 'Táo' }));
+    check();
+    expect(body(submit)).toEqual({ answer: { choice: 'apple' } });
+  });
+
+  it('decision screen allows picking an action and proceeds', () => {
+    const decisionStep: QuestStepPublic = {
+      id: 'decision-1',
+      title: 'Ngã rẽ',
+      goTo: 'Chọn đường',
+      trigger: 'auto',
+      prompt: 'Bạn muốn đi đường nào?',
+      kind: 'decision',
+      choices: [
+        { id: 'left', text: 'Đường hoa', consequence: 'Bạn đi theo đường hoa.' },
+        { id: 'right', text: 'Đường suối', consequence: 'Bạn đi theo đường suối.' },
+      ],
+    };
+    const submit = vi.fn(async () => response(true));
+    render(<LearningStep step={decisionStep} quest={quest} data={DATA} busy={false} submit={submit} onClose={() => undefined} />);
+    expect(screen.getByText('Đường hoa')).not.toBeNull();
+    fireEvent.click(screen.getByText('Đường hoa'));
+    fireEvent.click(byId('decision-continue'));
+    expect(body(submit)).toEqual({ answer: { choice: 'left' } });
+  });
 });
 
 describe('mechanic helpers', () => {

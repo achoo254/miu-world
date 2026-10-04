@@ -227,7 +227,7 @@ export function useQuestController({ store, data, questId, onResponse, onOverlay
         setToast(fillLine(line, who, player.character.name));
         return;
       }
-      if (step.kind === 'search') {
+      if (step.kind === 'search' || step.kind === 'find-object') {
         void submit(step, { target: targetId }).then((response) => {
           if (response && !response.feedback) setToast(fillLine(lineFrom('found', FOUND_LINES), who, player.character.name));
         });
