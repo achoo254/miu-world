@@ -1,6 +1,6 @@
 # Co-op: 2–4 bạn cùng giải một thử thách hoặc đánh một trùm
 
-**Trạng thái:** đã duyệt (04/10/2026), chỉ thi công sau khi kiểm duyệt xong · **Tier:** L · **Nhánh:** `main` · **Ngày:** 04/10/2026
+**Trạng thái:** đã duyệt (04/10/2026); kiểm duyệt đã hoãn vì chưa có người chơi ngoài gia đình, nên chỉ mở co-op cho người ngoài sau khi mở lại `moderation-safety` · **Tier:** L · **Nhánh:** `main` · **Ngày:** 04/10/2026
 **Nguồn:** Master Plan §8 (Bậc 2: "Co-op quest: 2 đến 4 bạn cùng giải một puzzle hoặc đánh một boss, dùng lại cơ chế M3.10"; điều kiện mở: có kiểm duyệt và quy trình xử lý báo cáo), §8b (bot lập tổ đội), §6 ("phòng chờ co-op").
 
 ## Kết quả mong muốn
@@ -12,7 +12,7 @@ Một đội 2–4 (người hoặc bạn máy) cùng vào một thử thách ch
 - Không chat tự do; chỉ câu có sẵn và emote (Master Plan §9).
 - Không xếp hạng đối đầu giữa bé trong co-op; chỉ hợp tác.
 - Không bắt buộc co-op để hoàn thành bài học: mọi quest học vẫn chơi được một mình (không khóa quest, Master Plan §15 #33).
-- Không mở cho người thật khi `moderation-safety` chưa xong.
+- Không mở cho người ngoài gia đình khi `moderation-safety` (đang hoãn) chưa được mở lại và làm xong; chỉ người sở hữu và bé chơi thì không bị chặn.
 
 ## Hiện trạng đo được (04/10/2026)
 
@@ -45,4 +45,4 @@ Một đội 2–4 (người hoặc bạn máy) cùng vào một thử thách ch
 
 ## Câu hỏi mở
 
-1. Tự ghép bạn máy khi chỉ có một bé: bật mặc định hay chỉ khi phụ huynh bật? Đề xuất: **chỉ khi phụ huynh bật**, nhất quán với công tắc bạn máy hiện có.
+1. ~~Tự ghép bạn máy khi chỉ có một bé~~ **Đã chốt (Jev 04/10/2026 (`reports/jev-261004-1648-open-questions.md`)): chỉ khi phụ huynh bật.** Cân nhắc ban đầu: bật mặc định hay chỉ khi phụ huynh bật? Đề xuất: **chỉ khi phụ huynh bật**, nhất quán với công tắc bạn máy hiện có.

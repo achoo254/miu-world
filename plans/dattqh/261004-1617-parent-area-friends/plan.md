@@ -14,7 +14,7 @@
 
 - Không chat tự do, không tên thật/email/trường của trẻ hiển thị cho trẻ khác (Master Plan §9).
 - Không lưu quỹ đạo thô hay nội dung bé gõ để làm báo cáo.
-- Không mở bạn bè công khai khi chưa xong `moderation-safety`: công tắc mặc định **tắt** ở môi trường thật (câu hỏi mở của plan `261004-1540`: tắt mặc định, bật sẵn ở dev/review).
+- Không mở bạn bè công khai cho người ngoài gia đình khi `moderation-safety` (đang hoãn) chưa được mở lại và làm xong: công tắc mặc định **tắt** ở môi trường thật (câu hỏi mở của plan `261004-1540`: tắt mặc định, bật sẵn ở dev/review).
 - Không nhắn tin giữa phụ huynh với nhau trong game.
 
 ## Hiện trạng đo được (04/10/2026)
@@ -49,4 +49,4 @@
 
 ## Câu hỏi mở
 
-1. Giờ chơi: chỉ **xem** thời gian chơi, hay cho phụ huynh **đặt giới hạn giờ** (khóa bé sau X phút)? Giới hạn giờ là thay đổi hành vi nhìn thấy với bé, nên cần người sở hữu quyết; đề xuất chỉ xem ở đợt này.
+1. ~~Giờ chơi~~ **Đã chốt (người sở hữu, 04/10/2026): không làm giới hạn giờ chơi; chỉ xem thời gian chơi.** Cân nhắc ban đầu: chỉ **xem** thời gian chơi, hay cho phụ huynh **đặt giới hạn giờ** (khóa bé sau X phút)? Giới hạn giờ là thay đổi hành vi nhìn thấy với bé, nên cần người sở hữu quyết; đề xuất chỉ xem ở đợt này.

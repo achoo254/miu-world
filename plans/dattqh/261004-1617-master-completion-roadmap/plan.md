@@ -10,7 +10,7 @@ Mọi hạng mục của Master Plan v3 (§5, §6, §8, §8b, §8c, §9, §13, �
 
 - Không viết lại plan đã có; chỉ lập plan cho phần chưa có chủ.
 - Không đổi quyết định đã chốt ở Master Plan §15 (không đặt/phá block ở thế giới chính, không Kim cương, không mở khóa, bot luôn gắn nhãn).
-- Không bắt đầu thi công plan nào ở đây trước khi người sở hữu duyệt (mục Câu hỏi mở).
+- Thứ tự đã được duyệt (04/10/2026); thi công theo bảng "Lượt".
 
 ## Đối chiếu Master Plan với plan hiện có (quét ngày 04/10/2026)
 
@@ -51,8 +51,9 @@ Quy tắc xếp thứ tự: (1) việc không phụ thuộc và rủi ro thấp 
 
 | Lượt | Plan | Tier |
 | --- | --- | --- |
+| 0 | `live-world-events` Pha 0: luyện thi vòng loại TIMO khối 2, hạn 10/10/2026 (nếu người sở hữu chọn làm) | M |
 | 1 | `system-screens-v1`, `boss-skill-check-new-mechanics`, `parent-area-friends` | M, L, L |
-| 2 | `moderation-safety`, `english-subject-content` | M, XL |
+| 2 | `english-subject-content` (`moderation-safety` hoãn đến khi có người ngoài gia đình chơi) | XL |
 | 3 | `coop-quests` | L |
 | 4 | `live-world-events` | XL |
 | Xuyên suốt | `mvp-gate-launch-readiness` | L |
@@ -69,10 +70,13 @@ Quy tắc xếp thứ tự: (1) việc không phụ thuộc và rủi ro thấp 
 
 DEVICE-01 (iPad Gen 10), giáo viên duyệt nội dung SGK, designer duyệt UI/mock, pháp chế duyệt văn bản đồng ý draft-3, xác minh ứng dụng Google OAuth, chơi thử với bé (task #24), chọn sách tiếng Anh và đội kiểm duyệt (xem từng plan).
 
-## Câu hỏi mở (cần người sở hữu)
+## Câu hỏi mở: đã chốt hết (04/10/2026)
 
-1. Duyệt thứ tự ở bảng "Lượt" ở trên, hay muốn đưa English hoặc sự kiện lên trước?
-2. Sách tiếng Anh lớp 2 dùng bộ nào (chi tiết ở `english-subject-content`)?
-3. Ai xử lý báo cáo vi phạm khi bật bạn bè/co-op: người sở hữu, hay ngừng ở bậc 1 như khuyến nghị Master Plan §8 (chi tiết ở `moderation-safety`)?
-4. TIMO đã làm rõ (kỳ thi Olympic Toán quốc tế, tài liệu `bai-tap-lop-2/content/TIMOK2.pdf`; chi tiết ở `live-world-events`). Còn hỏi: dùng tên "TIMO" trong game công khai hay đặt tên chung (đề xuất tên chung, tránh nhầm là liên kết chính thức), và ngày sự kiện đầu tiên.
-5. Có làm "chuỗi ngày" (streak) không, vì áp lực lên trẻ nhỏ (chi tiết ở `system-screens-v1`)?
+Thêm: phụ huynh **không** có giới hạn giờ chơi (người sở hữu); trùm không đồng hồ, bạn máy co-op chỉ khi phụ huynh bật, đồ giới hạn có bản kỷ niệm, giọng đọc dùng trình duyệt, giữ server tính thưởng (Jev). Chi tiết: `reports/jev-261004-1648-open-questions.md`.
+
+
+1. ~~Duyệt thứ tự~~ **Đã duyệt (người sở hữu, 04/10/2026)**, riêng Pha 0 của `live-world-events` (luyện thi trước 10/10) được Jev chọn làm ngay và xếp đầu bảng.
+2. ~~Sách tiếng Anh~~ **Đã chốt (Jev): tự viết theo khung chương trình.**
+3. ~~Ai xử lý báo cáo vi phạm~~: **đã chốt 04/10/2026, bỏ qua** vì game chỉ có người sở hữu và bé; `moderation-safety` hoãn, mở lại trước khi có người ngoài gia đình chơi.
+4. ~~TIMO là gì~~ **Đã làm rõ và chốt (Jev): kỳ thi Olympic Toán quốc tế; game dùng tên chung "Thử thách Olympic Toán", không dùng nhãn TIMO.** Ngày thi khối 2: 10/10/2026 (vòng loại, 60 phút, 25 câu trắc nghiệm).
+5. ~~Chuỗi ngày~~ **Đã chốt (Jev): không làm.** (cũ: có làm "chuỗi ngày" (streak) không, vì áp lực lên trẻ nhỏ (chi tiết ở `system-screens-v1`)?

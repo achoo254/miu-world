@@ -48,4 +48,4 @@
 
 ## Câu hỏi mở
 
-1. Trận trùm có giới hạn thời gian không? Đề xuất: **không**, vì trẻ lớp 2 cần đọc kỹ; chỉ có hiệu ứng nhịp nhẹ.
+1. ~~Trận trùm có giới hạn thời gian không?~~ **Đã chốt (Jev 04/10/2026 (`reports/jev-261004-1648-open-questions.md`)): không.** Cân nhắc ban đầu: Đề xuất: **không**, vì trẻ lớp 2 cần đọc kỹ; chỉ có hiệu ứng nhịp nhẹ.

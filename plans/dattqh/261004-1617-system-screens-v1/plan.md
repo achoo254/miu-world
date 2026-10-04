@@ -50,4 +50,4 @@
 
 ## Câu hỏi mở (cần người sở hữu)
 
-1. **Có làm chuỗi ngày không?** Master Plan §1 có nhắc nhưng chưa có quyết định ở §15, và có rủi ro tạo áp lực với trẻ nhỏ. Đề xuất: **làm phiên bản nhẹ** (ngày nghỉ miễn phí, không phạt, thưởng nhỏ) hoặc **bỏ hẳn** nếu muốn giữ tinh thần "không ép chơi". Không có quyết định thì bỏ pha 4.
+1. ~~Có làm chuỗi ngày không?~~ **Đã chốt (Jev 04/10/2026 (`reports/jev-261004-1648-open-questions.md`)): không làm; bỏ pha 4 và mục 4 của Kết quả mong muốn.** Cân nhắc ban đầu: Master Plan §1 có nhắc nhưng chưa có quyết định ở §15, và có rủi ro tạo áp lực với trẻ nhỏ. Đề xuất: **làm phiên bản nhẹ** (ngày nghỉ miễn phí, không phạt, thưởng nhỏ) hoặc **bỏ hẳn** nếu muốn giữ tinh thần "không ép chơi". Không có quyết định thì bỏ pha 4.

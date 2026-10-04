@@ -45,5 +45,5 @@ Bé chọn một quest tiếng Anh như chọn quest Toán hay Tiếng Việt: h
 
 ## Câu hỏi mở (cần người sở hữu)
 
-1. **Nguồn nội dung**: dùng sách nào? Tùy chọn: (a) bộ SGK tiếng Anh lớp 2 đang dùng ở trường của bé (sát chương trình nhưng có bản quyền, chỉ dùng kiểm kê chủ đề và tự viết lời mới, không chép nguyên văn); (b) tự soạn theo khung chương trình Bộ GD&ĐT, không phụ thuộc sách (an toàn bản quyền, cần giáo viên duyệt). **Đề xuất (b)**, đối chiếu chủ đề với sách (a) để bé học khớp bài ở lớp.
-2. Có cần phát âm giọng người thật (thu âm) thay giọng trình duyệt không? Tốn công người và chi phí; đề xuất giữ giọng trình duyệt ở đợt này.
+1. ~~Nguồn nội dung~~ **Đã chốt (Jev 04/10/2026 (`reports/jev-261004-1648-open-questions.md`)): tự viết theo khung chương trình, đối chiếu chủ đề với sách ở trường, không chép chữ.** Cân nhắc ban đầu: dùng sách nào? Tùy chọn: (a) bộ SGK tiếng Anh lớp 2 đang dùng ở trường của bé (sát chương trình nhưng có bản quyền, chỉ dùng kiểm kê chủ đề và tự viết lời mới, không chép nguyên văn); (b) tự soạn theo khung chương trình Bộ GD&ĐT, không phụ thuộc sách (an toàn bản quyền, cần giáo viên duyệt). **Đề xuất (b)**, đối chiếu chủ đề với sách (a) để bé học khớp bài ở lớp.
+2. ~~Giọng người thật~~ **Đã chốt (Jev 04/10/2026 (`reports/jev-261004-1648-open-questions.md`)): giữ giọng trình duyệt.** Cân nhắc ban đầu: có cần phát âm giọng người thật (thu âm) thay giọng trình duyệt không? Tốn công người và chi phí; đề xuất giữ giọng trình duyệt ở đợt này.

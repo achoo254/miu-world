@@ -1,0 +1,99 @@
+{
+  "model": "jev-1.13.0",
+  "usage": {
+    "input_tokens": 1797,
+    "output_tokens": 344
+  },
+  "results": {
+    "timo_practice_before_exam": {
+      "stakes": "medium",
+      "choice": "build_now",
+      "confidence": 0.91,
+      "probabilities": {
+        "build_now": 0.95,
+        "defer": 0.05
+      },
+      "decision": "auto"
+    },
+    "timo_name": {
+      "stakes": "high",
+      "choice": "generic_name",
+      "confidence": 1.0,
+      "probabilities": {
+        "generic_name": 1.0,
+        "timo_name": 0.0
+      },
+      "decision": "escalate"
+    },
+    "english_source": {
+      "stakes": "medium",
+      "choice": "self_written_by_framework",
+      "confidence": 1.0,
+      "probabilities": {
+        "self_written_by_framework": 1.0,
+        "follow_textbook_text": 0.0
+      },
+      "decision": "auto"
+    },
+    "streak": {
+      "stakes": "low",
+      "choice": "no_streak",
+      "confidence": 0.71,
+      "probabilities": {
+        "no_streak": 0.85,
+        "gentle_streak": 0.15
+      },
+      "decision": "auto"
+    },
+    "commemorative_items": {
+      "stakes": "low",
+      "choice": "reopen_commemorative",
+      "confidence": 1.0,
+      "probabilities": {
+        "reopen_commemorative": 1.0,
+        "gone_forever": 0.0
+      },
+      "decision": "auto"
+    },
+    "voice_recording": {
+      "stakes": "low",
+      "choice": "browser_voices",
+      "confidence": 0.48,
+      "probabilities": {
+        "browser_voices": 0.74,
+        "recorded_voices": 0.26
+      },
+      "decision": "escalate"
+    },
+    "boss_timer": {
+      "stakes": "low",
+      "choice": "no_time_limit",
+      "confidence": 0.98,
+      "probabilities": {
+        "time_limit": 0.01,
+        "no_time_limit": 0.99
+      },
+      "decision": "auto"
+    },
+    "auto_bot_partner": {
+      "stakes": "low",
+      "choice": "only_if_parent_enabled",
+      "confidence": 0.04,
+      "probabilities": {
+        "only_if_parent_enabled": 0.52,
+        "always_pair": 0.48
+      },
+      "decision": "escalate"
+    },
+    "reward_cheats": {
+      "stakes": "medium",
+      "choice": "separate_fun_cheats",
+      "confidence": 0.01,
+      "probabilities": {
+        "separate_fun_cheats": 0.5,
+        "keep_server_authority": 0.5
+      },
+      "decision": "escalate"
+    }
+  }
+}

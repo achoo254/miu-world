@@ -1,9 +1,13 @@
 # Kiểm duyệt, an toàn kết nối và tắt khẩn cấp cho chơi online (không chống cheat)
 
-**Trạng thái:** đã duyệt (04/10/2026) với một thay đổi: bỏ hẳn chống cheat; còn cần người sở hữu chốt ai xử lý báo cáo · **Tier:** M · **Nhánh:** `main` · **Ngày:** 04/10/2026
+**Trạng thái:** **hoãn, không làm đợt này** (người sở hữu 04/10/2026: bỏ qua vấn đề báo cáo vi phạm vì game chỉ có người sở hữu và bé chơi; chống cheat cũng đã bỏ). Mở lại trước khi có người chơi ngoài gia đình · **Tier:** M · **Nhánh:** `main` · **Ngày:** 04/10/2026
 **Nguồn:** Master Plan §8 (điều kiện mở bậc 2: "có kiểm duyệt và quy trình xử lý báo cáo"; "Khuyến nghị: chưa có đội kiểm duyệt thì dừng ở bậc 1"), §9 (dòng Multiplayer: bắt nạt, kết nối giả mạo), §8b ("công tắc tắt khẩn cấp, giới hạn tải server").
 
 ## Quyết định của người sở hữu (04/10/2026)
+
+**Báo cáo vi phạm và kiểm duyệt: bỏ qua.** "Game hiện tại chưa có ai chơi ngoài tôi và bé." Plan này giữ nguyên làm hồ sơ, không thi công. **Điều kiện mở lại:** trước ngày đầu tiên có người ngoài gia đình chơi (kể cả bạn của bé) hoặc trước khi bật bạn bè/co-op cho họ; khi đó duyệt lại câu hỏi mở 1 và làm theo thứ tự các pha dưới đây (Master Plan §8, §9). Công tắc online ở `parent-area-friends` đủ để tắt tương tác trong thời gian này.
+
+**Chống cheat: bỏ hẳn** (lý do ngay dưới).
 
 "Game này không đặt nặng chống cheat, thậm chí cho cheat." Vì vậy plan này **không** có phần kiểm tốc độ, va chạm, cooldown hay kéo vị trí về lúc hợp lệ; bé có thể "bay", chạy nhanh hay đi xuyên tường trong game mà không bị can thiệp.
 
