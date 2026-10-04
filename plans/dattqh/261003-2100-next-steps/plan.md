@@ -21,3 +21,13 @@ Pha 2 đồ sưu tầm theo map (~150 món), pha 3 chăm thú cưng, pha 4 bếp
 
 ## Việc người sở hữu cần xem
 Mục tiêu minigame chưa thử với trẻ thật; hình con lân dùng emoji rồng; cổng/NPC nội dung nhà là bản nháp; xe không tự lái khi bấm tự đi: chưa tái hiện được (cần biết map và hiện tượng).
+
+
+## Cập nhật 04/10/2026 (sau deploy `2e27f26c`)
+Đã lên production: 308 minigame (128 có nhân vật mời; 180 game mới nằm trong `tools/content/pending-side-quest-games.json`, chưa có nhân vật nên bé chưa chơi tới), song ngữ Việt/Anh + đọc to (S1, S3), rương thưởng khu vực 4 bậc, hoạt cảnh đi phương tiện, bản đồ tự do chạm để đi, thẻ nhiệm vụ thu gọn.
+
+Việc làm tiếp (quota tuần hết đến 07/10):
+1. **Đặt nhân vật mời cho 180 game mới** (agent như lần trước: bảng `tools/content/side-quests/<vùng>.json` + `build-side-quests.ts`, rồi xóa id khỏi pending-games, dựng lại 12 map, ba audit). Đây là việc lớn nhất để bé thấy 300 game.
+2. Song ngữ: S2 (dịch lời NPC, tên nhiệm vụ/vật phẩm/minigame), màn phụ huynh, lưu ngôn ngữ theo hồ sơ (cần migration).
+3. NPC có chuyện riêng (N1–N3), bot (B0–B3, cần multiplayer bậc 1), pha 2–6 của kế hoạch xu/đồ sưu tầm/kỹ năng.
+4. Nhỏ: ảnh nhân vật mới trong hộp thoại, danh hiệu ở màn Hồ sơ, tiến độ "Quà trò chơi" ở thẻ kết thúc minigame, bến xe cỡ thật và dời bến đò ra sông (dựng lại map), đo hiệu năng iPad (draw call 164 khi xe buýt qua phố trường), dọn CSS bản đồ cũ trong `game.css`.
