@@ -1,1 +1,9 @@
-{"id": "back-basket-mint", "name": "Gùi tre bạc hà", "variantOf": "back-basket", "variant": "mint", "unlock": {"level": 3}}
+{
+  "id": "back-basket-mint",
+  "name": "Gùi tre bạc hà",
+  "variantOf": "back-basket",
+  "variant": "mint",
+  "unlock": {
+    "shop": true
+  }
+}

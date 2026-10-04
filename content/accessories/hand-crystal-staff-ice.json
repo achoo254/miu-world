@@ -1,1 +1,9 @@
-{"id": "hand-crystal-staff-ice", "name": "Gậy pha lê băng", "variantOf": "hand-crystal-staff", "variant": "ice", "unlock": {"level": 10}}
+{
+  "id": "hand-crystal-staff-ice",
+  "name": "Gậy pha lê băng",
+  "variantOf": "hand-crystal-staff",
+  "variant": "ice",
+  "unlock": {
+    "shop": true
+  }
+}

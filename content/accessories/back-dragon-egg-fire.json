@@ -1,1 +1,9 @@
-{"id": "back-dragon-egg-fire", "name": "Trứng rồng lửa", "variantOf": "back-dragon-egg", "variant": "fire", "unlock": {"level": 12}}
+{
+  "id": "back-dragon-egg-fire",
+  "name": "Trứng rồng lửa",
+  "variantOf": "back-dragon-egg",
+  "variant": "fire",
+  "unlock": {
+    "shop": true
+  }
+}

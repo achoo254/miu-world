@@ -1,1 +1,9 @@
-{"id": "hat-viking-gold", "name": "Mũ chiến binh sừng vàng", "variantOf": "hat-viking-silver", "variant": "gold", "unlock": {"level": 10}}
+{
+  "id": "hat-viking-gold",
+  "name": "Mũ chiến binh sừng vàng",
+  "variantOf": "hat-viking-silver",
+  "variant": "gold",
+  "unlock": {
+    "shop": true
+  }
+}

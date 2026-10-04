@@ -3,7 +3,7 @@
   "name": "Kính một mắt vàng",
   "slot": "glasses",
   "unlock": {
-    "level": 9
+    "shop": true
   },
   "attachNode": "head",
   "voxelSize": 0.0385,
@@ -22,7 +22,11 @@
     "chain": "#e8b83a",
     "shine": "#ffffff"
   },
-  "variants": {"mint": {"rim": "#63dbaf", "chain": "#4dd5a3"}, 
+  "variants": {
+    "mint": {
+      "rim": "#63dbaf",
+      "chain": "#4dd5a3"
+    },
     "silver": {
       "rim": "#dfe6ee",
       "chain": "#a7b4c4"

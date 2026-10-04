@@ -1,1 +1,9 @@
-{"id": "shoes-astronaut-mars", "name": "Giày thám hiểm sao Hỏa", "variantOf": "shoes-astronaut", "variant": "mars", "unlock": {"level": 9}}
+{
+  "id": "shoes-astronaut-mars",
+  "name": "Giày thám hiểm sao Hỏa",
+  "variantOf": "shoes-astronaut",
+  "variant": "mars",
+  "unlock": {
+    "shop": true
+  }
+}

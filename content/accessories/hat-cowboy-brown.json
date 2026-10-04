@@ -3,7 +3,7 @@
   "name": "Mũ cao bồi nâu",
   "slot": "hat",
   "unlock": {
-    "level": 3
+    "shop": true
   },
   "attachNode": "head",
   "voxelSize": 0.0385,
@@ -22,7 +22,12 @@
     "band": "#5a3a20",
     "badge": "#ffd23f"
   },
-  "variants": {"mint": {"hat": "#459a85", "band": "#337161", "badge": "#63dbaf"}, 
+  "variants": {
+    "mint": {
+      "hat": "#459a85",
+      "band": "#337161",
+      "badge": "#63dbaf"
+    },
     "pink": {
       "hat": "#f7a8c8",
       "band": "#f07fb0",

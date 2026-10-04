@@ -1,1 +1,9 @@
-{"id": "shoes-clogs-red", "name": "Guốc sơn đỏ", "variantOf": "shoes-clogs", "variant": "red", "unlock": {"level": 3}}
+{
+  "id": "shoes-clogs-red",
+  "name": "Guốc sơn đỏ",
+  "variantOf": "shoes-clogs",
+  "variant": "red",
+  "unlock": {
+    "shop": true
+  }
+}

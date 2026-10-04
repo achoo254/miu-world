@@ -1,1 +1,9 @@
-{"id": "glasses-owl-white", "name": "Kính cú tuyết", "variantOf": "glasses-owl-brown", "variant": "white", "unlock": {"level": 4}}
+{
+  "id": "glasses-owl-white",
+  "name": "Kính cú tuyết",
+  "variantOf": "glasses-owl-brown",
+  "variant": "white",
+  "unlock": {
+    "shop": true
+  }
+}

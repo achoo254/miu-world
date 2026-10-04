@@ -1,1 +1,9 @@
-{"id": "shoes-slipper-panda", "name": "Dép gấu trúc", "variantOf": "shoes-slipper-bear", "variant": "panda", "unlock": {"level": 3}}
+{
+  "id": "shoes-slipper-panda",
+  "name": "Dép gấu trúc",
+  "variantOf": "shoes-slipper-bear",
+  "variant": "panda",
+  "unlock": {
+    "shop": true
+  }
+}

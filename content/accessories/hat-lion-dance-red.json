@@ -3,7 +3,7 @@
   "name": "Đầu lân đỏ",
   "slot": "hat",
   "unlock": {
-    "level": 11
+    "shop": true
   },
   "attachNode": "head",
   "voxelSize": 0.0385,
@@ -26,7 +26,14 @@
     "mirror": "#dfe6ee",
     "mouth": "#b8324f"
   },
-  "variants": {"mint": {"body": "#4bcf9f", "gold": "#63dbaf", "pupil": "#337161", "mirror": "#d5ece4", "mouth": "#3fab83"}, 
+  "variants": {
+    "mint": {
+      "body": "#4bcf9f",
+      "gold": "#63dbaf",
+      "pupil": "#337161",
+      "mirror": "#d5ece4",
+      "mouth": "#3fab83"
+    },
     "yellow": {
       "body": "#ffc83a",
       "gold": "#e0403a",

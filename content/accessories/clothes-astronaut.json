@@ -3,7 +3,7 @@
   "name": "Đồ phi hành gia",
   "slot": "clothes",
   "unlock": {
-    "level": 11
+    "shop": true
   },
   "attachNode": "torso",
   "voxelSize": 0.05,
@@ -19,7 +19,12 @@
     "light": "#7fd8be",
     "patch": "#e05a4f"
   },
-  "variants": {"mint": {"panel": "#4cb790", "light": "#88cfb5", "patch": "#5ed2a7"}, 
+  "variants": {
+    "mint": {
+      "panel": "#4cb790",
+      "light": "#88cfb5",
+      "patch": "#5ed2a7"
+    },
     "orange": {
       "main": "#f28a3c",
       "shade": "#c96a24",

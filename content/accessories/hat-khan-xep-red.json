@@ -3,7 +3,7 @@
   "name": "Khăn xếp đỏ",
   "slot": "hat",
   "unlock": {
-    "level": 5
+    "shop": true
   },
   "attachNode": "head",
   "voxelSize": 0.0385,
@@ -22,7 +22,12 @@
     "fold": "#a8332d",
     "trim": "#ffd23f"
   },
-  "variants": {"mint": {"cloth": "#4bbb92", "fold": "#399c83", "trim": "#63dbaf"}, 
+  "variants": {
+    "mint": {
+      "cloth": "#4bbb92",
+      "fold": "#399c83",
+      "trim": "#63dbaf"
+    },
     "blue": {
       "cloth": "#3f5fa8",
       "fold": "#2f4a8a",

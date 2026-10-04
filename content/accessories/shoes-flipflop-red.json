@@ -1,1 +1,9 @@
-{"id": "shoes-flipflop-red", "name": "Dép xỏ ngón đỏ", "variantOf": "shoes-flipflop-blue", "variant": "red", "unlock": {"level": 2}}
+{
+  "id": "shoes-flipflop-red",
+  "name": "Dép xỏ ngón đỏ",
+  "variantOf": "shoes-flipflop-blue",
+  "variant": "red",
+  "unlock": {
+    "shop": true
+  }
+}

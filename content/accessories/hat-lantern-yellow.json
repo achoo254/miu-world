@@ -1,1 +1,9 @@
-{"id": "hat-lantern-yellow", "name": "Mũ đèn lồng vàng", "variantOf": "hat-lantern-red", "variant": "yellow", "unlock": {"level": 8}}
+{
+  "id": "hat-lantern-yellow",
+  "name": "Mũ đèn lồng vàng",
+  "variantOf": "hat-lantern-red",
+  "variant": "yellow",
+  "unlock": {
+    "shop": true
+  }
+}

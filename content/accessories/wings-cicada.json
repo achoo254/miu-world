@@ -3,7 +3,7 @@
   "name": "Cánh ve sầu",
   "slot": "wings",
   "unlock": {
-    "level": 2
+    "shop": true
   },
   "attachNode": "torso",
   "voxelSize": 0.08,
@@ -17,7 +17,12 @@
     "v": "#3f4a3a",
     "harness": "#5c6b4a"
   },
-  "variants": {"mint": {"w": "#d5ece4", "harness": "#387d6c"}},
+  "variants": {
+    "mint": {
+      "w": "#d5ece4",
+      "harness": "#387d6c"
+    }
+  },
   "boxes": [
     {
       "x": -1,

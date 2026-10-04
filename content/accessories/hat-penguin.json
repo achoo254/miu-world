@@ -3,7 +3,7 @@
   "name": "Mũ chim cánh cụt",
   "slot": "hat",
   "unlock": {
-    "level": 4
+    "shop": true
   },
   "attachNode": "head",
   "voxelSize": 0.0385,
@@ -24,7 +24,13 @@
     "beak": "#f2a03c",
     "cheek": "#f7a8c4"
   },
-  "variants": {"mint": {"eye": "#337161", "beak": "#57d7a8", "cheek": "#b2edd7"}},
+  "variants": {
+    "mint": {
+      "eye": "#337161",
+      "beak": "#57d7a8",
+      "cheek": "#b2edd7"
+    }
+  },
   "boxes": [
     {
       "x": -14,

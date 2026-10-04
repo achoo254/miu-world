@@ -3,7 +3,7 @@
   "name": "Giày đá bóng cam",
   "slot": "shoes",
   "unlock": {
-    "level": 3
+    "shop": true
   },
   "attachNode": "leg-left",
   "mirror": true,
@@ -20,7 +20,11 @@
     "lace": "#fff6f0",
     "stud": "#c4ccd6"
   },
-  "variants": {"mint": {"main": "#57d7a8", "stud": "#bae0d2"}, 
+  "variants": {
+    "mint": {
+      "main": "#57d7a8",
+      "stud": "#bae0d2"
+    },
     "blue": {
       "main": "#3f82c4",
       "stripe": "#ffd23f"

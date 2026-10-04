@@ -3,7 +3,7 @@
   "name": "Lễ phục hoàng gia tím",
   "slot": "clothes",
   "unlock": {
-    "level": 13
+    "shop": true
   },
   "attachNode": "torso",
   "voxelSize": 0.05,
@@ -20,7 +20,13 @@
     "gold": "#ffd23f",
     "gem": "#e2463e"
   },
-  "variants": {"mint": {"main": "#4ba987", "shade": "#35826f", "gold": "#63dbaf", "gem": "#4ed2a1"}, 
+  "variants": {
+    "mint": {
+      "main": "#4ba987",
+      "shade": "#35826f",
+      "gold": "#63dbaf",
+      "gem": "#4ed2a1"
+    },
     "gold": {
       "main": "#e8b923",
       "shade": "#c4961a",

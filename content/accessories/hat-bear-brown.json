@@ -3,7 +3,7 @@
   "name": "Mũ gấu nâu",
   "slot": "hat",
   "unlock": {
-    "level": 3
+    "shop": true
   },
   "attachNode": "head",
   "voxelSize": 0.0385,
@@ -25,7 +25,15 @@
     "eye": "#2f2130",
     "nose": "#5a3a20"
   },
-  "variants": {"mint": {"fur": "#459a85", "ear": "#459a85", "inner": "#93dfc3", "patch": "#459a85", "eye": "#337161", "nose": "#337161"}, 
+  "variants": {
+    "mint": {
+      "fur": "#459a85",
+      "ear": "#459a85",
+      "inner": "#93dfc3",
+      "patch": "#459a85",
+      "eye": "#337161",
+      "nose": "#337161"
+    },
     "white": {
       "fur": "#f4f1ec",
       "ear": "#f4f1ec",

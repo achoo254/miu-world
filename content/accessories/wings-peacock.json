@@ -3,7 +3,7 @@
   "name": "Cánh chim công",
   "slot": "wings",
   "unlock": {
-    "level": 9
+    "shop": true
   },
   "attachNode": "torso",
   "voxelSize": 0.08,
@@ -19,7 +19,14 @@
     "c": "#1f6fb8",
     "harness": "#1f4fb0"
   },
-  "variants": {"mint": {"g": "#3a937d", "o": "#52d6a6", "e": "#2ea285", "c": "#2ea98b", "harness": "#2ea285"}, 
+  "variants": {
+    "mint": {
+      "g": "#3a937d",
+      "o": "#52d6a6",
+      "e": "#2ea285",
+      "c": "#2ea98b",
+      "harness": "#2ea285"
+    },
     "white": {
       "g": "#f4f6fa",
       "o": "#dfe6f0",

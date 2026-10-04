@@ -3,7 +3,7 @@
   "name": "Mũ sừng kỳ lân",
   "slot": "hat",
   "unlock": {
-    "level": 9
+    "shop": true
   },
   "attachNode": "head",
   "voxelSize": 0.0385,
@@ -26,7 +26,14 @@
     "flower2": "#a77ad8",
     "ear": "#fff6f0"
   },
-  "variants": {"mint": {"horn": "#b9eedb", "stripe": "#63dbaf", "stripe2": "#63dbaf", "flower1": "#9ee8cd", "flower2": "#83cfb3"}, 
+  "variants": {
+    "mint": {
+      "horn": "#b9eedb",
+      "stripe": "#63dbaf",
+      "stripe2": "#63dbaf",
+      "flower1": "#9ee8cd",
+      "flower2": "#83cfb3"
+    },
     "rainbow": {
       "band": "#a77ad8",
       "horn": "#ff8ad8",

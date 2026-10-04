@@ -1,1 +1,9 @@
-{"id": "scarf-badge-gold", "name": "Huân chương ngôi sao vàng", "variantOf": "scarf-badge-silver", "variant": "gold", "unlock": {"level": 10}}
+{
+  "id": "scarf-badge-gold",
+  "name": "Huân chương ngôi sao vàng",
+  "variantOf": "scarf-badge-silver",
+  "variant": "gold",
+  "unlock": {
+    "shop": true
+  }
+}

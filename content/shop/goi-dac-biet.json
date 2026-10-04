@@ -3,6 +3,9 @@
   "items": [
     {"kind": "bundle", "id": "goi-vui-choi", "name": "Gói vui chơi", "description": "Ba tim và ba lần thêm 10 giây cho các trò chơi, rẻ hơn mua lẻ.", "icon": "gift", "contains": {"them-mot-tim": 3, "them-10-giay": 3}, "price": 240, "featured": true},
     {"kind": "bundle", "id": "goi-ngan-ha", "name": "Gói ngân hà", "description": "Mũ phù thủy, cánh bướm và giày pha lê màu ngân hà cho {name}.", "icon": "glowingStar", "contains": {"hat-witch-galaxy": 1, "wings-butterfly-galaxy": 1, "shoes-glass-galaxy": 1}, "price": 480},
-    {"kind": "bundle", "id": "goi-phong-ngu-mo-mong", "name": "Gói phòng ngủ mơ mộng", "description": "Giường cầu vồng, đèn mặt trăng và rèm ren trắng cho phòng của {name}.", "icon": "house", "contains": {"bed-rainbow": 1, "lamp-moon": 1, "curtain-lace": 1}, "price": 240}
+    {"kind": "bundle", "id": "goi-phong-ngu-mo-mong", "name": "Gói phòng ngủ mơ mộng", "description": "Giường cầu vồng, đèn mặt trăng và rèm ren trắng cho phòng của {name}.", "icon": "house", "contains": {"bed-rainbow": 1, "lamp-moon": 1, "curtain-lace": 1}, "price": 240},
+    {"kind": "bundle", "id": "goi-sieu-tang-luc", "name": "Gói siêu trợ thủ", "description": "Bộ đôi trợ thủ đắc lực gồm tim bền bỉ và thời gian kéo dài cho bé.", "icon": "sparkles", "contains": {"them-hai-tim": 2, "them-20-giay": 2}, "price": 280, "featured": true},
+    {"kind": "bundle", "id": "goi-thoi-trang-hoang-gia", "name": "Gói hoàng gia lục bảo", "description": "Vương miện lấp lánh và hài hoàng gia sang trọng dành riêng cho {name}.", "icon": "crown", "contains": {"hat-crown-emerald": 1, "shoes-royal-emerald": 1}, "price": 270},
+    {"kind": "bundle", "id": "goi-phieu-luu-bien-ca", "name": "Gói phiêu lưu biển cả", "description": "Bộ phụ kiện đại dương xanh mát sẵn sàng cho chuyến thám hiểm tuyệt vời!", "icon": "gemStone", "contains": {"hand-umbrella-ocean": 1, "scarf-boa-ocean": 1}, "price": 160}
   ]
 }

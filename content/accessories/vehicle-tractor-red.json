@@ -2,7 +2,7 @@
   "id": "vehicle-tractor-red",
   "name": "Máy cày đỏ",
   "slot": "vehicle",
-  "unlock": { "level": 4 },
+  "unlock": { "shop": true },
   "attachNode": "ground",
   "voxelSize": 0.0625,
   "offset": [0, 0, 0],

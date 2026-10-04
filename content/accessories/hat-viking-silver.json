@@ -3,7 +3,7 @@
   "name": "Mũ chiến binh sừng bạc",
   "slot": "hat",
   "unlock": {
-    "level": 9
+    "shop": true
   },
   "attachNode": "head",
   "voxelSize": 0.0385,
@@ -24,7 +24,13 @@
     "tip": "#c9a86a",
     "rivet": "#ffd23f"
   },
-  "variants": {"mint": {"metal": "#c0e2d6", "band": "#3b8472", "horn": "#beecdb", "rivet": "#63dbaf"}, 
+  "variants": {
+    "mint": {
+      "metal": "#c0e2d6",
+      "band": "#3b8472",
+      "horn": "#beecdb",
+      "rivet": "#63dbaf"
+    },
     "gold": {
       "metal": "#ffd23f",
       "band": "#c98a1a",

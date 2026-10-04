@@ -3,7 +3,7 @@
   "name": "Vương miện kim cương",
   "slot": "hat",
   "unlock": {
-    "level": 13
+    "shop": true
   },
   "attachNode": "head",
   "voxelSize": 0.0385,
@@ -25,7 +25,13 @@
     "gem3": "#a8d8ff",
     "velvet": "#5f7fd8"
   },
-  "variants": {"mint": {"gold": "#ccece0", "gem": "#7de1bc", "gem3": "#b9eedb", "velvet": "#6bcca8"}, 
+  "variants": {
+    "mint": {
+      "gold": "#ccece0",
+      "gem": "#7de1bc",
+      "gem3": "#b9eedb",
+      "velvet": "#6bcca8"
+    },
     "ruby": {
       "gold": "#ffd23f",
       "tip": "#fff1a8",

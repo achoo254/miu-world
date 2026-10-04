@@ -3,7 +3,7 @@
   "name": "Giày trượt băng trắng",
   "slot": "shoes",
   "unlock": {
-    "level": 5
+    "shop": true
   },
   "attachNode": "leg-left",
   "mirror": true,
@@ -20,7 +20,12 @@
     "lace": "#f07fb0",
     "cuff": "#f07fb0"
   },
-  "variants": {"mint": {"blade": "#bae0d2", "lace": "#8be4c3", "cuff": "#8be4c3"}, 
+  "variants": {
+    "mint": {
+      "blade": "#bae0d2",
+      "lace": "#8be4c3",
+      "cuff": "#8be4c3"
+    },
     "pink": {
       "main": "#f9c4d8",
       "lace": "#fff6f0",

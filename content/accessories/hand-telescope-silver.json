@@ -1,1 +1,9 @@
-{"id": "hand-telescope-silver", "name": "Kính viễn vọng bạc", "variantOf": "hand-telescope", "variant": "silver", "unlock": {"level": 9}}
+{
+  "id": "hand-telescope-silver",
+  "name": "Kính viễn vọng bạc",
+  "variantOf": "hand-telescope",
+  "variant": "silver",
+  "unlock": {
+    "shop": true
+  }
+}

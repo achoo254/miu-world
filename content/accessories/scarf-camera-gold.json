@@ -1,1 +1,9 @@
-{"id": "scarf-camera-gold", "name": "Máy ảnh mạ vàng", "variantOf": "scarf-camera", "variant": "gold", "unlock": {"level": 12}}
+{
+  "id": "scarf-camera-gold",
+  "name": "Máy ảnh mạ vàng",
+  "variantOf": "scarf-camera",
+  "variant": "gold",
+  "unlock": {
+    "shop": true
+  }
+}

@@ -1,1 +1,9 @@
-{"id": "back-frog-yellow", "name": "Balo ếch vàng", "variantOf": "back-frog-green", "variant": "yellow", "unlock": {"level": 3}}
+{
+  "id": "back-frog-yellow",
+  "name": "Balo ếch vàng",
+  "variantOf": "back-frog-green",
+  "variant": "yellow",
+  "unlock": {
+    "shop": true
+  }
+}

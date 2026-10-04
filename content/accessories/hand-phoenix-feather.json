@@ -3,14 +3,14 @@
   "name": "Lông vũ phượng hoàng",
   "slot": "hand",
   "unlock": {
-    "level": 13
+    "shop": true
   },
   "attachNode": "arm-right",
   "voxelSize": 0.075,
   "offset": [
     -0.15,
     -0.425,
-    0.0
+    0
   ],
   "rotation": [
     20,
@@ -25,7 +25,15 @@
     "eye": "#ffe680",
     "eye2": "#c4302a"
   },
-  "variants": {"mint": {"quill": "#cdf3e5", "a": "#63dbaf", "b": "#61daae", "c": "#4fd6a4", "eye": "#98e7ca", "eye2": "#39b587"}, 
+  "variants": {
+    "mint": {
+      "quill": "#cdf3e5",
+      "a": "#63dbaf",
+      "b": "#61daae",
+      "c": "#4fd6a4",
+      "eye": "#98e7ca",
+      "eye2": "#39b587"
+    },
     "rainbow": {
       "a": "#5fa8e8",
       "b": "#7cc96a",

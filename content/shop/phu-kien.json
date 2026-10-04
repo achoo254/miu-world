@@ -1,30 +1,588 @@
 {
   "category": "phu-kien",
   "items": [
-    {"kind": "wearable", "id": "glasses-butterfly-sunset", "price": 100},
-    {"kind": "wearable", "id": "glasses-crown-ruby", "price": 100},
-    {"kind": "wearable", "id": "glasses-heart-galaxy", "price": 90},
-    {"kind": "wearable", "id": "glasses-star-ocean", "price": 80},
-    {"kind": "wearable", "id": "scarf-boa-ocean", "price": 100},
-    {"kind": "wearable", "id": "scarf-cape-galaxy", "price": 120},
-    {"kind": "wearable", "id": "scarf-gems-ice", "price": 120},
-    {"kind": "wearable", "id": "scarf-royal-cape-emerald", "price": 120},
-    {"kind": "wearable", "id": "back-dragon-egg-ice", "price": 150},
-    {"kind": "wearable", "id": "back-rocket-galaxy", "price": 150},
-    {"kind": "wearable", "id": "back-teddy-cotton-candy", "price": 150},
-    {"kind": "wearable", "id": "back-unicorn-galaxy", "price": 150},
-    {"kind": "wearable", "id": "wings-angel-cotton-candy", "price": 300},
-    {"kind": "wearable", "id": "wings-butterfly-galaxy", "price": 300, "featured": true, "description": "Đôi cánh bướm màu ngân hà, {name} bay đi đâu cũng lấp lánh."},
-    {"kind": "wearable", "id": "wings-dragon-sunset", "price": 360, "level": 7},
-    {"kind": "wearable", "id": "wings-fairy-ocean", "price": 300},
-    {"kind": "wearable", "id": "wings-peacock-ruby", "price": 300},
-    {"kind": "wearable", "id": "wings-phoenix-emerald", "price": 360, "level": 6},
-    {"kind": "wearable", "id": "hand-crystal-staff-sunset", "price": 130},
-    {"kind": "wearable", "id": "hand-lotus-lantern-ice", "price": 130},
-    {"kind": "wearable", "id": "hand-umbrella-ocean", "price": 100},
-    {"kind": "wearable", "id": "hand-wand-galaxy", "price": 130},
-    {"kind": "wearable", "id": "vehicle-carpet-galaxy", "price": 400},
-    {"kind": "wearable", "id": "vehicle-cloud-cotton-candy", "price": 400, "featured": true, "description": "Đám mây hồng mềm như kẹo bông, chở {name} dạo khắp nơi."},
-    {"kind": "wearable", "id": "vehicle-dragon-ice", "price": 500, "level": 8, "description": "Xe rồng băng tuyết dành cho nhà thám hiểm dũng cảm."}
+    {
+      "kind": "wearable",
+      "id": "glasses-butterfly-sunset",
+      "price": 100
+    },
+    {
+      "kind": "wearable",
+      "id": "glasses-crown-ruby",
+      "price": 100
+    },
+    {
+      "kind": "wearable",
+      "id": "glasses-heart-galaxy",
+      "price": 90
+    },
+    {
+      "kind": "wearable",
+      "id": "glasses-star-ocean",
+      "price": 80
+    },
+    {
+      "kind": "wearable",
+      "id": "scarf-boa-ocean",
+      "price": 100
+    },
+    {
+      "kind": "wearable",
+      "id": "scarf-cape-galaxy",
+      "price": 120
+    },
+    {
+      "kind": "wearable",
+      "id": "scarf-gems-ice",
+      "price": 120
+    },
+    {
+      "kind": "wearable",
+      "id": "scarf-royal-cape-emerald",
+      "price": 120
+    },
+    {
+      "kind": "wearable",
+      "id": "back-dragon-egg-ice",
+      "price": 150
+    },
+    {
+      "kind": "wearable",
+      "id": "back-rocket-galaxy",
+      "price": 150
+    },
+    {
+      "kind": "wearable",
+      "id": "back-teddy-cotton-candy",
+      "price": 150
+    },
+    {
+      "kind": "wearable",
+      "id": "back-unicorn-galaxy",
+      "price": 150
+    },
+    {
+      "kind": "wearable",
+      "id": "wings-angel-cotton-candy",
+      "price": 300
+    },
+    {
+      "kind": "wearable",
+      "id": "wings-butterfly-galaxy",
+      "price": 300,
+      "featured": true,
+      "description": "Đôi cánh bướm màu ngân hà, {name} bay đi đâu cũng lấp lánh."
+    },
+    {
+      "kind": "wearable",
+      "id": "wings-dragon-sunset",
+      "price": 360,
+      "level": 7
+    },
+    {
+      "kind": "wearable",
+      "id": "wings-fairy-ocean",
+      "price": 300
+    },
+    {
+      "kind": "wearable",
+      "id": "wings-peacock-ruby",
+      "price": 300
+    },
+    {
+      "kind": "wearable",
+      "id": "wings-phoenix-emerald",
+      "price": 360,
+      "level": 6
+    },
+    {
+      "kind": "wearable",
+      "id": "hand-crystal-staff-sunset",
+      "price": 130
+    },
+    {
+      "kind": "wearable",
+      "id": "hand-lotus-lantern-ice",
+      "price": 130
+    },
+    {
+      "kind": "wearable",
+      "id": "hand-umbrella-ocean",
+      "price": 100
+    },
+    {
+      "kind": "wearable",
+      "id": "hand-wand-galaxy",
+      "price": 130
+    },
+    {
+      "kind": "wearable",
+      "id": "vehicle-carpet-galaxy",
+      "price": 400
+    },
+    {
+      "kind": "wearable",
+      "id": "vehicle-cloud-cotton-candy",
+      "price": 400,
+      "featured": true,
+      "description": "Đám mây hồng mềm như kẹo bông, chở {name} dạo khắp nơi."
+    },
+    {
+      "kind": "wearable",
+      "id": "vehicle-dragon-ice",
+      "price": 500,
+      "level": 8,
+      "description": "Xe rồng băng tuyết dành cho nhà thám hiểm dũng cảm."
+    },
+    {
+      "kind": "wearable",
+      "id": "glasses-bee-mint",
+      "price": 110,
+      "level": 8
+    },
+    {
+      "kind": "wearable",
+      "id": "glasses-butterfly-mint",
+      "price": 100,
+      "level": 5
+    },
+    {
+      "kind": "wearable",
+      "id": "glasses-crown-gold",
+      "price": 110,
+      "level": 8
+    },
+    {
+      "kind": "wearable",
+      "id": "glasses-diamond-mint",
+      "price": 110,
+      "level": 5
+    },
+    {
+      "kind": "wearable",
+      "id": "glasses-galaxy-pink",
+      "price": 100,
+      "level": 8
+    },
+    {
+      "kind": "wearable",
+      "id": "glasses-monocle-gold",
+      "price": 110,
+      "level": 9
+    },
+    {
+      "kind": "wearable",
+      "id": "glasses-moon-silver",
+      "price": 120,
+      "level": 6
+    },
+    {
+      "kind": "wearable",
+      "id": "glasses-owl-white",
+      "price": 80,
+      "level": 4
+    },
+    {
+      "kind": "wearable",
+      "id": "glasses-phoenix-mask-blue",
+      "price": 100,
+      "level": 6
+    },
+    {
+      "kind": "wearable",
+      "id": "glasses-pilot-brown",
+      "price": 90,
+      "level": 5
+    },
+    {
+      "kind": "wearable",
+      "id": "glasses-pixel-mint",
+      "price": 100,
+      "level": 3
+    },
+    {
+      "kind": "wearable",
+      "id": "glasses-rainbow",
+      "price": 80,
+      "level": 9
+    },
+    {
+      "kind": "wearable",
+      "id": "glasses-snorkel-mint",
+      "price": 100,
+      "level": 3
+    },
+    {
+      "kind": "wearable",
+      "id": "glasses-snowflake-purple",
+      "price": 80,
+      "level": 8
+    },
+    {
+      "kind": "wearable",
+      "id": "glasses-space-mint",
+      "price": 100,
+      "level": 7
+    },
+    {
+      "kind": "wearable",
+      "id": "scarf-badge-gold",
+      "price": 90,
+      "level": 10
+    },
+    {
+      "kind": "wearable",
+      "id": "scarf-bell-pink",
+      "price": 100,
+      "level": 4
+    },
+    {
+      "kind": "wearable",
+      "id": "scarf-camera-gold",
+      "price": 130,
+      "level": 6
+    },
+    {
+      "kind": "wearable",
+      "id": "scarf-gems-diamond",
+      "price": 90,
+      "level": 7
+    },
+    {
+      "kind": "wearable",
+      "id": "scarf-gems-sapphire",
+      "price": 130,
+      "level": 10
+    },
+    {
+      "kind": "wearable",
+      "id": "scarf-glow-pink",
+      "price": 120,
+      "level": 8
+    },
+    {
+      "kind": "wearable",
+      "id": "scarf-headphones-mint",
+      "price": 90,
+      "level": 5
+    },
+    {
+      "kind": "wearable",
+      "id": "scarf-rainbow-neon",
+      "price": 110,
+      "level": 8
+    },
+    {
+      "kind": "wearable",
+      "id": "scarf-royal-cape",
+      "price": 110,
+      "level": 8
+    },
+    {
+      "kind": "wearable",
+      "id": "scarf-sailor-red",
+      "price": 100,
+      "level": 2
+    },
+    {
+      "kind": "wearable",
+      "id": "scarf-sash-red",
+      "price": 120,
+      "level": 6
+    },
+    {
+      "kind": "wearable",
+      "id": "scarf-star-gold",
+      "price": 110,
+      "level": 5
+    },
+    {
+      "kind": "wearable",
+      "id": "back-basket-mint",
+      "price": 160,
+      "level": 3
+    },
+    {
+      "kind": "wearable",
+      "id": "back-bunny-brown",
+      "price": 150,
+      "level": 2
+    },
+    {
+      "kind": "wearable",
+      "id": "back-chest-wood-mint",
+      "price": 130,
+      "level": 10
+    },
+    {
+      "kind": "wearable",
+      "id": "back-dragon-egg-fire",
+      "price": 160,
+      "level": 6
+    },
+    {
+      "kind": "wearable",
+      "id": "back-drum-gold",
+      "price": 150,
+      "level": 9
+    },
+    {
+      "kind": "wearable",
+      "id": "back-frog-yellow",
+      "price": 170,
+      "level": 3
+    },
+    {
+      "kind": "wearable",
+      "id": "back-gem-ruby",
+      "price": 150,
+      "level": 7
+    },
+    {
+      "kind": "wearable",
+      "id": "back-hedgehog-mint",
+      "price": 170,
+      "level": 7
+    },
+    {
+      "kind": "wearable",
+      "id": "back-jetpack-red",
+      "price": 130,
+      "level": 9
+    },
+    {
+      "kind": "wearable",
+      "id": "back-kite-rainbow",
+      "price": 160,
+      "level": 4
+    },
+    {
+      "kind": "wearable",
+      "id": "back-octopus-blue",
+      "price": 130,
+      "level": 4
+    },
+    {
+      "kind": "wearable",
+      "id": "back-octopus-purple",
+      "price": 120,
+      "level": 8
+    },
+    {
+      "kind": "wearable",
+      "id": "back-pineapple-mint",
+      "price": 150,
+      "level": 4
+    },
+    {
+      "kind": "wearable",
+      "id": "back-scuba-blue",
+      "price": 120,
+      "level": 9
+    },
+    {
+      "kind": "wearable",
+      "id": "back-shell-teal",
+      "price": 170,
+      "level": 3
+    },
+    {
+      "kind": "wearable",
+      "id": "wings-amethyst",
+      "price": 320,
+      "level": 8
+    },
+    {
+      "kind": "wearable",
+      "id": "wings-cicada",
+      "price": 330,
+      "level": 2
+    },
+    {
+      "kind": "wearable",
+      "id": "wings-crystal-ice-mint",
+      "price": 320,
+      "level": 6
+    },
+    {
+      "kind": "wearable",
+      "id": "wings-dragon-platinum",
+      "price": 280,
+      "level": 8
+    },
+    {
+      "kind": "wearable",
+      "id": "wings-dragonfly-red",
+      "price": 320,
+      "level": 2
+    },
+    {
+      "kind": "wearable",
+      "id": "wings-eagle-white",
+      "price": 330,
+      "level": 8
+    },
+    {
+      "kind": "wearable",
+      "id": "wings-lotus-gold",
+      "price": 290,
+      "level": 10
+    },
+    {
+      "kind": "wearable",
+      "id": "wings-moon",
+      "price": 280,
+      "level": 8
+    },
+    {
+      "kind": "wearable",
+      "id": "wings-parrot-red",
+      "price": 330,
+      "level": 4
+    },
+    {
+      "kind": "wearable",
+      "id": "wings-peacock",
+      "price": 300,
+      "level": 9
+    },
+    {
+      "kind": "wearable",
+      "id": "wings-plane-red",
+      "price": 320,
+      "level": 3
+    },
+    {
+      "kind": "wearable",
+      "id": "wings-snowflake",
+      "price": 310,
+      "level": 5
+    },
+    {
+      "kind": "wearable",
+      "id": "hand-book-gold",
+      "price": 120,
+      "level": 10
+    },
+    {
+      "kind": "wearable",
+      "id": "hand-butterfly-net-mint",
+      "price": 130,
+      "level": 3
+    },
+    {
+      "kind": "wearable",
+      "id": "hand-crystal-staff-ice",
+      "price": 110,
+      "level": 10
+    },
+    {
+      "kind": "wearable",
+      "id": "hand-dragon-kite",
+      "price": 150,
+      "level": 10
+    },
+    {
+      "kind": "wearable",
+      "id": "hand-gem-scepter-mint",
+      "price": 140,
+      "level": 8
+    },
+    {
+      "kind": "wearable",
+      "id": "hand-heart-balloon",
+      "price": 140,
+      "level": 5
+    },
+    {
+      "kind": "wearable",
+      "id": "hand-lotus-lantern-mint",
+      "price": 130,
+      "level": 6
+    },
+    {
+      "kind": "wearable",
+      "id": "hand-moon-wand-silver",
+      "price": 100,
+      "level": 9
+    },
+    {
+      "kind": "wearable",
+      "id": "hand-phoenix-feather",
+      "price": 140,
+      "level": 7
+    },
+    {
+      "kind": "wearable",
+      "id": "hand-telescope-silver",
+      "price": 150,
+      "level": 9
+    },
+    {
+      "kind": "wearable",
+      "id": "hand-watering-can-mint",
+      "price": 110,
+      "level": 2
+    },
+    {
+      "kind": "wearable",
+      "id": "vehicle-bus-blue",
+      "price": 400,
+      "level": 4
+    },
+    {
+      "kind": "wearable",
+      "id": "vehicle-carpet-gold",
+      "price": 380,
+      "level": 7
+    },
+    {
+      "kind": "wearable",
+      "id": "vehicle-cloud-pink",
+      "price": 440,
+      "level": 8
+    },
+    {
+      "kind": "wearable",
+      "id": "vehicle-dragon-mint",
+      "price": 440,
+      "level": 8
+    },
+    {
+      "kind": "wearable",
+      "id": "vehicle-hoverboard-blue",
+      "price": 460,
+      "level": 6
+    },
+    {
+      "kind": "wearable",
+      "id": "vehicle-ladybug-mint",
+      "price": 430,
+      "level": 10
+    },
+    {
+      "kind": "wearable",
+      "id": "vehicle-rocket-board-gold",
+      "price": 420,
+      "level": 5
+    },
+    {
+      "kind": "wearable",
+      "id": "vehicle-skateboard-green",
+      "price": 460,
+      "level": 2
+    },
+    {
+      "kind": "wearable",
+      "id": "vehicle-swan-white",
+      "price": 450,
+      "level": 7
+    },
+    {
+      "kind": "wearable",
+      "id": "vehicle-tractor-red",
+      "price": 440,
+      "level": 4
+    }
   ]
 }

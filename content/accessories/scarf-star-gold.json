@@ -3,7 +3,7 @@
   "name": "Dây chuyền ngôi sao vàng",
   "slot": "scarf",
   "unlock": {
-    "level": 5
+    "shop": true
   },
   "attachNode": "torso",
   "voxelSize": 0.0625,
@@ -17,7 +17,12 @@
     "star": "#ffd23f",
     "gem": "#e8466b"
   },
-  "variants": {"mint": {"chain": "#46d4a0", "star": "#63dbaf", "gem": "#57d7a8"}, 
+  "variants": {
+    "mint": {
+      "chain": "#46d4a0",
+      "star": "#63dbaf",
+      "gem": "#57d7a8"
+    },
     "purple": {
       "chain": "#c4ccd6",
       "star": "#a77ad8",

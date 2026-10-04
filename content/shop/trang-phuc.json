@@ -1,20 +1,597 @@
 {
   "category": "trang-phuc",
   "items": [
-    {"kind": "wearable", "id": "hat-astronaut-galaxy", "price": 140},
-    {"kind": "wearable", "id": "hat-crown-emerald", "price": 200, "level": 4, "description": "Vương miện gắn đá xanh lục bảo, sáng rực dưới nắng."},
-    {"kind": "wearable", "id": "hat-dragon-ice", "price": 160},
-    {"kind": "wearable", "id": "hat-bow-sunset", "price": 160},
-    {"kind": "wearable", "id": "hat-unicorn-cotton-candy", "price": 160},
-    {"kind": "wearable", "id": "hat-witch-galaxy", "price": 160, "featured": true, "description": "Chiếc mũ phù thủy lấp lánh như bầu trời đêm, hợp với {name} lắm!"},
-    {"kind": "wearable", "id": "clothes-ao-dai-galaxy", "price": 250},
-    {"kind": "wearable", "id": "clothes-knight-emerald", "price": 250, "level": 5},
-    {"kind": "wearable", "id": "clothes-princess-galaxy", "price": 280, "featured": true, "description": "Váy công chúa tím biếc, chỉ có ở cửa hàng thôi nhé."},
-    {"kind": "wearable", "id": "clothes-royal-ocean", "price": 250},
-    {"kind": "wearable", "id": "clothes-superhero-sunset", "price": 250},
-    {"kind": "wearable", "id": "shoes-glass-galaxy", "price": 130},
-    {"kind": "wearable", "id": "shoes-royal-emerald", "price": 130},
-    {"kind": "wearable", "id": "shoes-sneaker-cotton-candy", "price": 100},
-    {"kind": "wearable", "id": "shoes-winged-sunset", "price": 130}
+    {
+      "kind": "wearable",
+      "id": "hat-astronaut-galaxy",
+      "price": 140
+    },
+    {
+      "kind": "wearable",
+      "id": "hat-crown-emerald",
+      "price": 200,
+      "level": 4,
+      "description": "Vương miện gắn đá xanh lục bảo, sáng rực dưới nắng."
+    },
+    {
+      "kind": "wearable",
+      "id": "hat-dragon-ice",
+      "price": 160
+    },
+    {
+      "kind": "wearable",
+      "id": "hat-bow-sunset",
+      "price": 160
+    },
+    {
+      "kind": "wearable",
+      "id": "hat-unicorn-cotton-candy",
+      "price": 160
+    },
+    {
+      "kind": "wearable",
+      "id": "hat-witch-galaxy",
+      "price": 160,
+      "featured": true,
+      "description": "Chiếc mũ phù thủy lấp lánh như bầu trời đêm, hợp với {name} lắm!"
+    },
+    {
+      "kind": "wearable",
+      "id": "clothes-ao-dai-galaxy",
+      "price": 250
+    },
+    {
+      "kind": "wearable",
+      "id": "clothes-knight-emerald",
+      "price": 250,
+      "level": 5
+    },
+    {
+      "kind": "wearable",
+      "id": "clothes-princess-galaxy",
+      "price": 280,
+      "featured": true,
+      "description": "Váy công chúa tím biếc, chỉ có ở cửa hàng thôi nhé."
+    },
+    {
+      "kind": "wearable",
+      "id": "clothes-royal-ocean",
+      "price": 250
+    },
+    {
+      "kind": "wearable",
+      "id": "clothes-superhero-sunset",
+      "price": 250
+    },
+    {
+      "kind": "wearable",
+      "id": "shoes-glass-galaxy",
+      "price": 130
+    },
+    {
+      "kind": "wearable",
+      "id": "shoes-royal-emerald",
+      "price": 130
+    },
+    {
+      "kind": "wearable",
+      "id": "shoes-sneaker-cotton-candy",
+      "price": 100
+    },
+    {
+      "kind": "wearable",
+      "id": "shoes-winged-sunset",
+      "price": 130
+    },
+    {
+      "kind": "wearable",
+      "id": "hat-astronaut-mint",
+      "price": 160,
+      "level": 9
+    },
+    {
+      "kind": "wearable",
+      "id": "hat-astronaut-orange",
+      "price": 120,
+      "level": 10
+    },
+    {
+      "kind": "wearable",
+      "id": "hat-bear-brown",
+      "price": 160,
+      "level": 3
+    },
+    {
+      "kind": "wearable",
+      "id": "hat-bear-white",
+      "price": 180,
+      "level": 4
+    },
+    {
+      "kind": "wearable",
+      "id": "hat-bunny-pink",
+      "price": 130,
+      "level": 2
+    },
+    {
+      "kind": "wearable",
+      "id": "hat-cowboy-brown",
+      "price": 120,
+      "level": 3
+    },
+    {
+      "kind": "wearable",
+      "id": "hat-cowboy-pink",
+      "price": 120,
+      "level": 4
+    },
+    {
+      "kind": "wearable",
+      "id": "hat-crown-diamond",
+      "price": 120,
+      "level": 7
+    },
+    {
+      "kind": "wearable",
+      "id": "hat-crown-rainbow",
+      "price": 130,
+      "level": 8
+    },
+    {
+      "kind": "wearable",
+      "id": "hat-dragon-gold",
+      "price": 130,
+      "level": 7
+    },
+    {
+      "kind": "wearable",
+      "id": "hat-dragon-mint",
+      "price": 170,
+      "level": 5
+    },
+    {
+      "kind": "wearable",
+      "id": "hat-dragon-red",
+      "price": 160,
+      "level": 6
+    },
+    {
+      "kind": "wearable",
+      "id": "hat-graduation-blue",
+      "price": 160,
+      "level": 6
+    },
+    {
+      "kind": "wearable",
+      "id": "hat-khan-xep-blue",
+      "price": 140,
+      "level": 6
+    },
+    {
+      "kind": "wearable",
+      "id": "hat-khan-xep-red",
+      "price": 140,
+      "level": 5
+    },
+    {
+      "kind": "wearable",
+      "id": "hat-lantern-mint",
+      "price": 130,
+      "level": 7
+    },
+    {
+      "kind": "wearable",
+      "id": "hat-lantern-yellow",
+      "price": 170,
+      "level": 8
+    },
+    {
+      "kind": "wearable",
+      "id": "hat-lion-dance-red",
+      "price": 160,
+      "level": 5
+    },
+    {
+      "kind": "wearable",
+      "id": "hat-lion-dance-yellow",
+      "price": 140,
+      "level": 6
+    },
+    {
+      "kind": "wearable",
+      "id": "hat-octopus-mint",
+      "price": 150,
+      "level": 5
+    },
+    {
+      "kind": "wearable",
+      "id": "hat-octopus-purple",
+      "price": 150,
+      "level": 6
+    },
+    {
+      "kind": "wearable",
+      "id": "hat-penguin-mint",
+      "price": 140,
+      "level": 4
+    },
+    {
+      "kind": "wearable",
+      "id": "hat-penguin",
+      "price": 160,
+      "level": 4
+    },
+    {
+      "kind": "wearable",
+      "id": "hat-phoenix-mint",
+      "price": 130,
+      "level": 8
+    },
+    {
+      "kind": "wearable",
+      "id": "hat-pirate-black",
+      "price": 150,
+      "level": 7
+    },
+    {
+      "kind": "wearable",
+      "id": "hat-pirate-mint",
+      "price": 130,
+      "level": 7
+    },
+    {
+      "kind": "wearable",
+      "id": "hat-sailor-navy",
+      "price": 120,
+      "level": 2
+    },
+    {
+      "kind": "wearable",
+      "id": "hat-shark-grey",
+      "price": 150,
+      "level": 8
+    },
+    {
+      "kind": "wearable",
+      "id": "hat-space-band-green",
+      "price": 130,
+      "level": 3
+    },
+    {
+      "kind": "wearable",
+      "id": "hat-space-band-mint",
+      "price": 170,
+      "level": 3
+    },
+    {
+      "kind": "wearable",
+      "id": "hat-unicorn-mint",
+      "price": 170,
+      "level": 9
+    },
+    {
+      "kind": "wearable",
+      "id": "hat-unicorn-white",
+      "price": 140,
+      "level": 9
+    },
+    {
+      "kind": "wearable",
+      "id": "hat-viking-gold",
+      "price": 140,
+      "level": 10
+    },
+    {
+      "kind": "wearable",
+      "id": "hat-viking-silver",
+      "price": 160,
+      "level": 9
+    },
+    {
+      "kind": "wearable",
+      "id": "hat-watermelon",
+      "price": 160,
+      "level": 3
+    },
+    {
+      "kind": "wearable",
+      "id": "clothes-ao-dai-blue",
+      "price": 220,
+      "level": 9
+    },
+    {
+      "kind": "wearable",
+      "id": "clothes-ao-dai-yellow",
+      "price": 230,
+      "level": 7
+    },
+    {
+      "kind": "wearable",
+      "id": "clothes-astronaut-mint",
+      "price": 230,
+      "level": 5
+    },
+    {
+      "kind": "wearable",
+      "id": "clothes-astronaut",
+      "price": 270,
+      "level": 5
+    },
+    {
+      "kind": "wearable",
+      "id": "clothes-doctor",
+      "price": 270,
+      "level": 7
+    },
+    {
+      "kind": "wearable",
+      "id": "clothes-farmer-mint",
+      "price": 280,
+      "level": 4
+    },
+    {
+      "kind": "wearable",
+      "id": "clothes-firefighter",
+      "price": 220,
+      "level": 8
+    },
+    {
+      "kind": "wearable",
+      "id": "clothes-galaxy-pink",
+      "price": 220,
+      "level": 8
+    },
+    {
+      "kind": "wearable",
+      "id": "clothes-jacket-green",
+      "price": 260,
+      "level": 3
+    },
+    {
+      "kind": "wearable",
+      "id": "clothes-knight-mint",
+      "price": 250,
+      "level": 6
+    },
+    {
+      "kind": "wearable",
+      "id": "clothes-overalls-green",
+      "price": 250,
+      "level": 2
+    },
+    {
+      "kind": "wearable",
+      "id": "clothes-pajamas-pink",
+      "price": 240,
+      "level": 3
+    },
+    {
+      "kind": "wearable",
+      "id": "clothes-princess-blue",
+      "price": 250,
+      "level": 5
+    },
+    {
+      "kind": "wearable",
+      "id": "clothes-princess-mint",
+      "price": 280,
+      "level": 10
+    },
+    {
+      "kind": "wearable",
+      "id": "clothes-raincoat-blue",
+      "price": 260,
+      "level": 4
+    },
+    {
+      "kind": "wearable",
+      "id": "clothes-royal-gold",
+      "price": 270,
+      "level": 8
+    },
+    {
+      "kind": "wearable",
+      "id": "clothes-royal",
+      "price": 280,
+      "level": 7
+    },
+    {
+      "kind": "wearable",
+      "id": "clothes-sports-blue",
+      "price": 270,
+      "level": 5
+    },
+    {
+      "kind": "wearable",
+      "id": "clothes-sports",
+      "price": 270,
+      "level": 4
+    },
+    {
+      "kind": "wearable",
+      "id": "clothes-superhero-mint",
+      "price": 270,
+      "level": 9
+    },
+    {
+      "kind": "wearable",
+      "id": "clothes-swimsuit-pink",
+      "price": 260,
+      "level": 6
+    },
+    {
+      "kind": "wearable",
+      "id": "clothes-tshirt-red",
+      "price": 250,
+      "level": 2
+    },
+    {
+      "kind": "wearable",
+      "id": "clothes-tuxedo-white",
+      "price": 240,
+      "level": 10
+    },
+    {
+      "kind": "wearable",
+      "id": "clothes-vest-shorts-green",
+      "price": 270,
+      "level": 3
+    },
+    {
+      "kind": "wearable",
+      "id": "clothes-winter-coat-mint",
+      "price": 260,
+      "level": 7
+    },
+    {
+      "kind": "wearable",
+      "id": "shoes-astronaut-mars",
+      "price": 90,
+      "level": 9
+    },
+    {
+      "kind": "wearable",
+      "id": "shoes-astronaut",
+      "price": 110,
+      "level": 7
+    },
+    {
+      "kind": "wearable",
+      "id": "shoes-clogs-red",
+      "price": 120,
+      "level": 3
+    },
+    {
+      "kind": "wearable",
+      "id": "shoes-clown-mint",
+      "price": 130,
+      "level": 5
+    },
+    {
+      "kind": "wearable",
+      "id": "shoes-cowboy-black",
+      "price": 120,
+      "level": 7
+    },
+    {
+      "kind": "wearable",
+      "id": "shoes-cowboy-mint",
+      "price": 130,
+      "level": 4
+    },
+    {
+      "kind": "wearable",
+      "id": "shoes-crocs-yellow",
+      "price": 100,
+      "level": 2
+    },
+    {
+      "kind": "wearable",
+      "id": "shoes-dino-green",
+      "price": 130,
+      "level": 4
+    },
+    {
+      "kind": "wearable",
+      "id": "shoes-dino-purple",
+      "price": 140,
+      "level": 6
+    },
+    {
+      "kind": "wearable",
+      "id": "shoes-flipflop-red",
+      "price": 90,
+      "level": 2
+    },
+    {
+      "kind": "wearable",
+      "id": "shoes-football-green",
+      "price": 140,
+      "level": 5
+    },
+    {
+      "kind": "wearable",
+      "id": "shoes-football-orange",
+      "price": 110,
+      "level": 3
+    },
+    {
+      "kind": "wearable",
+      "id": "shoes-glass-pink",
+      "price": 140,
+      "level": 6
+    },
+    {
+      "kind": "wearable",
+      "id": "shoes-hightop-galaxy",
+      "price": 110,
+      "level": 10
+    },
+    {
+      "kind": "wearable",
+      "id": "shoes-iceskate-mint",
+      "price": 130,
+      "level": 5
+    },
+    {
+      "kind": "wearable",
+      "id": "shoes-iceskate-white",
+      "price": 110,
+      "level": 5
+    },
+    {
+      "kind": "wearable",
+      "id": "shoes-neon-mint",
+      "price": 90,
+      "level": 9
+    },
+    {
+      "kind": "wearable",
+      "id": "shoes-neon-rainbow",
+      "price": 100,
+      "level": 8
+    },
+    {
+      "kind": "wearable",
+      "id": "shoes-rocket-gold",
+      "price": 140,
+      "level": 7
+    },
+    {
+      "kind": "wearable",
+      "id": "shoes-rocket-red",
+      "price": 90,
+      "level": 9
+    },
+    {
+      "kind": "wearable",
+      "id": "shoes-royal-gold",
+      "price": 130,
+      "level": 8
+    },
+    {
+      "kind": "wearable",
+      "id": "shoes-royal-red",
+      "price": 140,
+      "level": 5
+    },
+    {
+      "kind": "wearable",
+      "id": "shoes-slipper-panda",
+      "price": 110,
+      "level": 3
+    },
+    {
+      "kind": "wearable",
+      "id": "shoes-socks-rainbow",
+      "price": 120,
+      "level": 6
+    },
+    {
+      "kind": "wearable",
+      "id": "shoes-winged-mint",
+      "price": 140,
+      "level": 8
+    }
   ]
 }

@@ -3,7 +3,7 @@
   "name": "Mũ dưa hấu",
   "slot": "hat",
   "unlock": {
-    "level": 3
+    "shop": true
   },
   "attachNode": "head",
   "voxelSize": 0.0385,
@@ -24,7 +24,15 @@
     "stripe": "#2f7f3a",
     "seed": "#2f2130"
   },
-  "variants": {"mint": {"flesh": "#6adcb2", "white": "#d0f1e5", "rind": "#55b290", "stripe": "#367868", "seed": "#337161"}},
+  "variants": {
+    "mint": {
+      "flesh": "#6adcb2",
+      "white": "#d0f1e5",
+      "rind": "#55b290",
+      "stripe": "#367868",
+      "seed": "#337161"
+    }
+  },
   "boxes": [
     {
       "x": -15,
