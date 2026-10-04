@@ -23,6 +23,9 @@ import { PETS, UI_ICONS, assetUrl } from '../ui/kit/ui-art';
 import type { GameStore } from '../game-bridge/game-store';
 import { loadAmbientLife, type AmbientTarget } from './ambient/ambient-life';
 import { createConfetti } from './scene/confetti';
+import { createSpeechBubble } from './ambient/speech-bubble';
+import { ObjectInteractionManager } from './interact/object-interaction-manager';
+import type { CandidateObject } from './interact/object-interaction-types';
 import { createPortalSparks } from './scene/portal-sparks';
 import type { PlayerPosition } from '@miu/schema/player-position';
 import { RegionCatalog, WorldEventKind, mapForRegion } from '@miu/schema/region';
@@ -433,6 +436,14 @@ export class Game {
     scene.add(remotePlayers.group);
     this.cleanups.push(() => remotePlayers.dispose());
 
+    const playerBubble = createSpeechBubble();
+    scene.add(playerBubble.sprite);
+    this.cleanups.push(() => {
+      scene.remove(playerBubble.sprite);
+      playerBubble.sprite.material.dispose();
+    });
+    const objectInteractions = new ObjectInteractionManager(entities, playerBubble);
+
     const multiplayer = new MultiplayerClient(
       mapId,
       {
@@ -591,6 +602,8 @@ export class Game {
     let promptTarget: InteractableObject | null = null;
     /** A villager or animal in reach when no quest target is: the child may chat with it or pet it. */
     let promptAmbient: AmbientTarget | null = null;
+    /** An interactive furniture or prop object in reach (bed, chair, toilet, sink, stove, etc.). */
+    let promptObject: CandidateObject | null = null;
     let interactRequested = false;
     let rescueRequested = false;
     let celebrateRequested = false;
@@ -776,6 +789,11 @@ export class Game {
         pushing: Math.hypot(intent.dirX, intent.dirZ) > 0.5,
       });
       store.emit({ type: 'stuck', stuck });
+      const isPlayerMoving = controller.speed > 0.1 || Math.hypot(intent.dirX, intent.dirZ) > 0.1;
+      const objectState = objectInteractions.update(dt, controller, isPlayerMoving);
+      playerBubble.update(dt);
+      playerBubble.sprite.position.set(objectState.bubblePos.x, objectState.bubblePos.y, objectState.bubblePos.z);
+
       if (carried) {
         character.root.position.copy(carried.feet);
         character.root.rotation.y = carried.facing;
@@ -785,7 +803,8 @@ export class Game {
         character.root.position.y += ride.liftWorld;
         character.root.rotation.y = controller.facing;
         // On a vehicle she stands calm (idle) or holds her seated pose while it carries her.
-        character.update(dt, ride.riding ? 0 : controller.speed, controller.onGround, ride.pose);
+        const currentPose = ride.pose ?? objectState.poseOverride;
+        character.update(dt, ride.riding || objectState.poseOverride ? 0 : controller.speed, controller.onGround, currentPose);
         rig.update(dt, controller.position);
       }
       // With the camera inside Miu (nowhere left to back off to), hide her rather than show her insides.
@@ -815,33 +834,41 @@ export class Game {
       const nearest = carried ? null : pickNearest(targets, controller.position);
       // Quest targets always win the prompt; ambient life goes quiet next to them.
       const nearAmbient = nearest ? null : life.nearest(controller.position);
+      // Object interactions (furniture/props) activate when no quest target or ambient life is near
+      const nearObject = nearest || nearAmbient ? null : objectInteractions.nearest(controller.position);
       // A still review shot gathers the nearest people and animals round what it looks at, not round the child.
       life.update(dt, reviewShot && !reviewShot.live ? reviewShot.target : controller.position, nearest !== null, { calls: renderer.info.render.calls, triangles: renderer.info.render.triangles });
       remotePlayers.update(dt);
+      const currentAction = ride.riding || objectState.poseOverride ? 'sit' : controller.speed > 0.1 ? 'walk' : 'idle';
       multiplayer.sendUpdate(
         controller.position.x,
         controller.position.y,
         controller.position.z,
         controller.facing,
-        ride.riding ? 0 : controller.speed,
-        ride.riding ? 'sit' : controller.speed > 0.1 ? 'walk' : 'idle',
+        ride.riding || objectState.poseOverride ? 0 : controller.speed,
+        currentAction,
       );
-      if (nearest !== promptTarget || nearAmbient !== promptAmbient) {
+      if (nearest !== promptTarget || nearAmbient !== promptAmbient || nearObject !== promptObject) {
         promptTarget = nearest;
         promptAmbient = nearAmbient;
+        promptObject = nearObject;
         const def = nearest?.def;
         const prompt = def
           ? { targetId: def.id, kind: def.kind, name: def.name, label: def.label }
           : nearAmbient
             ? { targetId: nearAmbient.id, kind: 'ambient' as const, name: nearAmbient.name, label: nearAmbient.label }
-            : null;
+            : nearObject
+              ? objectInteractions.toPrompt(nearObject)
+              : null;
         store.emit({ type: 'interaction-prompt', prompt });
       }
       const anchorAt = promptTarget
         ? promptTarget.screenAnchor(camera, { width: window.innerWidth, height: window.innerHeight })
         : promptAmbient
           ? life.screenAnchor(promptAmbient, camera, { width: window.innerWidth, height: window.innerHeight })
-          : null;
+          : promptObject
+            ? objectInteractions.screenAnchor(promptObject, camera, { width: window.innerWidth, height: window.innerHeight })
+            : null;
       if (anchorAt) {
         const anchor = store.getPromptAnchor();
         if (anchor) {
@@ -866,6 +893,8 @@ export class Game {
         overlay.stats.lastInteraction = promptTarget.def.id;
       } else if (interact && promptAmbient) {
         life.react(promptAmbient.id);
+      } else if (interact && promptObject) {
+        objectInteractions.interact(promptObject, controller, character, multiplayer);
       }
       // A finished quest: everyone around cheers; confetti unless the child asked for less motion.
       if (celebrateRequested) {
