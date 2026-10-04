@@ -23,13 +23,13 @@ export interface BotProfile {
 }
 
 /** Pre-configured bot routes across core maps (using genuine roads & landmarks). */
-const BOT_MAP_CONFIGS: Record<string, BotProfile[]> = {
+export const BOT_MAP_CONFIGS: Record<string, BotProfile[]> = {
   'trung-tam': [
     {
       id: 'bot-tt-1',
       displayName: 'Bé Bông',
       species: 'rabbit',
-      outfit: ['clothes-dress-pink', 'hat-bow-pink'],
+      outfit: ['clothes-dress', 'hat-bow-pink'],
       waypoints: [
         { x: 395, y: 15, z: 420 },
         { x: 400, y: 15, z: 405 },
@@ -105,7 +105,7 @@ const BOT_MAP_CONFIGS: Record<string, BotProfile[]> = {
       id: 'bot-lvs-2',
       displayName: 'Họa Mi',
       species: 'rabbit',
-      outfit: ['clothes-overalls', 'hat-straw'],
+      outfit: ['clothes-overalls', 'hat-straw-pink'],
       waypoints: [
         { x: 120, y: 12, z: 230 },
         { x: 140, y: 12, z: 240 },
@@ -170,6 +170,7 @@ class CompanionBotInstance {
       yaw: 0,
       speed: 0,
       action: 'idle',
+      riding: false,
       bubble: null,
     };
   }

@@ -1,5 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
-import { BotRunner } from './bot-runner';
+import { loadContentCatalog } from '../content/content-catalog';
+import { BOT_MAP_CONFIGS, BotRunner } from './bot-runner';
 import { MultiplayerHub } from './multiplayer-hub';
 
 describe('MultiplayerHub and BotRunner', () => {
@@ -44,5 +45,14 @@ describe('MultiplayerHub and BotRunner', () => {
     // The bot should have progressed or be in a valid coordinate
     expect(Number.isFinite(firstBot.presence.x)).toBe(true);
     expect(Number.isFinite(firstBot.presence.z)).toBe(true);
+  });
+
+  it('dresses every companion bot only in items of the accessory catalogue (an unknown id would leave it bare)', () => {
+    const { accessories } = loadContentCatalog();
+    for (const [map, profiles] of Object.entries(BOT_MAP_CONFIGS)) {
+      for (const profile of profiles) {
+        for (const entry of profile.outfit) expect(accessories.has(entry.split(':')[0] ?? ''), `${map}/${profile.id}: ${entry}`).toBe(true);
+      }
+    }
   });
 });

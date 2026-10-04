@@ -11,7 +11,9 @@ export type InteractionCategory =
   | 'entertainment'
   | 'outdoor'
   | 'chores'
-  | 'pet';
+  | 'pet'
+  | 'fishing'
+  | 'dining';
 
 export type InteractionPose =
   | 'sit'
@@ -23,6 +25,12 @@ export type InteractionPose =
   | 'wave'
   | 'cheer'
   | 'stretch'
+  | 'eat'
+  | 'drink'
+  | 'fish'
+  | 'pet'
+  | 'water'
+  | 'sweep'
   | 'none';
 
 export interface ObjectInteractionMatcher {

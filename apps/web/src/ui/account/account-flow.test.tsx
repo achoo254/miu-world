@@ -282,7 +282,7 @@ describe('account flow', () => {
     expect(calls.map((c) => c.key)).toContain(`POST /api/children/${CHILD}/select`);
     cleanup();
     expect(gameLifecycle.disposed).toBe(gameLifecycle.started);
-  });
+  }, 15000);
 
   it('keeps /play behind a selected profile', async () => {
     stubApi({

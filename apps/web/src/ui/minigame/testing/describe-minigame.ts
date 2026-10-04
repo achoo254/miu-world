@@ -12,6 +12,8 @@ const SEEDS = [1, 2, 3, 4, 5];
 export interface MinigameTestOptions {
   /** A player that must lose, when doing nothing at all would win this game (default: idle). */
   loser?: (context: BotContext) => BotMove;
+  /** Milliseconds for the "good play wins" test, when the bot solves each round (a search) and a full run under load passes the 5 s default. */
+  winTimeout?: number;
 }
 
 export function describeMinigame(id: string, options: MinigameTestOptions = {}): void {
@@ -30,7 +32,7 @@ export function describeMinigame(id: string, options: MinigameTestOptions = {}):
         const game = await loadMinigame(id);
         const scores = SEEDS.map((seed) => playRound(game, spec, { arena, seed, player: 'bot' }));
         expect(scores.map((r) => r.won), `bot scores ${scores.map((r) => r.score).join(', ')} for goal ${spec.goal}`).toEqual(SEEDS.map(() => true));
-      });
+      }, options.winTimeout);
 
       it(`is lost by ${options.loser ? 'a poor player' : 'nobody playing'} on ${screen.name}`, async () => {
         if (!spec) throw new Error(`no content/minigames/${id}.json`);

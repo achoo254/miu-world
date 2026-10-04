@@ -6,10 +6,16 @@ import { Vector3, type Camera } from 'three';
 import type { WorldEntities } from '@miu/voxel/world-entities';
 import type { InteractionPrompt } from '../../game-bridge/game-store';
 import type { SpeechBubble } from '../ambient/speech-bubble';
-import type { PlayerCharacter, SeatedPose } from '../entities/player-character';
+import type { ExtraPlayerAction, PlayerCharacter, SeatedPose } from '../entities/player-character';
 import type { MultiplayerClient } from '../multiplayer/multiplayer-client';
 import type { PlayerController } from '../player/player-controller';
 import { matchInteraction } from './object-interaction-registry';
+
+export interface InteractionVisualState {
+  poseOverride: SeatedPose | null;
+  bubblePos: { x: number; y: number; z: number };
+  action: ExtraPlayerAction;
+}
 import type {
   ActiveInteraction,
   CandidateObject,
@@ -194,16 +200,18 @@ export class ObjectInteractionManager {
     dt: number,
     controller: PlayerController,
     isMoving: boolean,
-  ): { poseOverride: SeatedPose | null; bubblePos: { x: number; y: number; z: number } } {
-    // Position the speech bubble just above the player's head
+  ): InteractionVisualState {
+    const isLying = this.active?.def.pose === 'lay';
+    const bubbleY = isLying ? 1.2 : 1.9;
+    // Position the speech bubble just above the player's head (lower when lying)
     const bubblePos = {
       x: controller.position.x,
-      y: controller.position.y + 1.9,
+      y: controller.position.y + bubbleY,
       z: controller.position.z,
     };
 
     if (!this.active) {
-      return { poseOverride: null, bubblePos };
+      return { poseOverride: null, bubblePos, action: null };
     }
 
     this.active.elapsed += dt;
@@ -211,21 +219,44 @@ export class ObjectInteractionManager {
     // If child pushes movement after a brief grace period, cancel interaction gracefully
     if (isMoving && this.active.elapsed > 0.25) {
       this.finish(controller);
-      return { poseOverride: null, bubblePos };
+      return { poseOverride: null, bubblePos, action: null };
     }
 
     // Time-limited interaction completed
     if (this.active.duration > 0 && this.active.elapsed >= this.active.duration) {
       this.finish(controller);
-      return { poseOverride: null, bubblePos };
+      return { poseOverride: null, bubblePos, action: null };
     }
 
     let poseOverride: SeatedPose | null = null;
+    let action: ExtraPlayerAction = null;
+
     if (this.active.def.pose === 'sit' || this.active.def.pose === 'lay') {
       poseOverride = 'sit';
     }
 
-    return { poseOverride, bubblePos };
+    const pose = this.active.def.pose;
+    if (pose === 'lay') {
+      action = 'lay';
+    } else if (pose === 'eat') {
+      action = 'eat';
+    } else if (pose === 'drink') {
+      action = 'drink';
+    } else if (pose === 'fish') {
+      action = 'fish';
+    } else if (pose === 'pet') {
+      action = 'pet';
+    } else if (pose === 'wave') {
+      action = 'wave';
+    } else if (pose === 'water') {
+      action = 'water';
+    } else if (pose === 'sweep') {
+      action = 'sweep';
+    } else if (pose === 'cheer') {
+      action = 'cheer';
+    }
+
+    return { poseOverride, bubblePos, action };
   }
 
   /** Ends the interaction; with a controller, a child who was seated is put back where she stood. */
@@ -241,6 +272,11 @@ export class ObjectInteractionManager {
   cancel(controller?: PlayerController): void {
     if (controller) this.finish(controller);
     else this.active = null;
+  }
+
+  /** Where a seated child stood before she sat (the seat's own cell is solid), else null: what to save as her place. */
+  get standSpot(): readonly [number, number, number] | null {
+    return this.active?.standAt ?? null;
   }
 
   get isInteracting(): boolean {

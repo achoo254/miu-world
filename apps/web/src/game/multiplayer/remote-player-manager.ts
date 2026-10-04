@@ -1,9 +1,12 @@
 // Manages remote players and companion bots rendered in the 3D scene.
 // Clearly labels bots with [Bạn máy] (Jev 03/10/2026).
-import { Group, MathUtils, Vector3 } from 'three';
+import { Group, MathUtils, Vector3, type Mesh } from 'three';
 import type { PlayerPresence, SafeEmote } from '@miu/schema/multiplayer';
 import type { GuardedGltfLoader } from '../asset-loader';
+import { PETS } from '../../ui/kit/ui-art';
+import { loadPetCompanion, type PetCompanion } from '../entities/pet-companion';
 import { loadPlayerCharacter, type PlayerCharacter } from '../entities/player-character';
+import { createVehicleMesh, equippedVehicle, rideLift, seatedPose, type EquippedVehicle } from '../player/vehicle-ride';
 import { createSpeechBubble, type SpeechBubble } from '../ambient/speech-bubble';
 import { createNametag } from './multiplayer-nametag';
 
@@ -41,6 +44,14 @@ interface RemoteEntity {
   currentSpeed: number;
   /** Feet clear of the ground at the last update (a jump): she is drawn in the air, not snapped down. */
   airborne: boolean;
+  /** Her pet trots after her, as it does after the child herself (null: none, or it did not load). */
+  pet: PetCompanion | null;
+  /** The vehicle among her outfit, drawn under her while she rides it. */
+  vehicle: EquippedVehicle | null;
+  vehicleMesh: Mesh | null;
+  riding: boolean;
+  /** How far the vehicle lifts her feet above the ground, world units (0 on foot). */
+  lift: number;
 }
 
 export class RemotePlayerManager {
@@ -50,13 +61,42 @@ export class RemotePlayerManager {
   private readonly entities = new Map<string, RemoteEntity>();
   private readonly pendingSpawns = new Set<string>();
 
+  private readonly shadows: boolean;
+
   constructor(
     loader: GuardedGltfLoader,
     ground: (x: number, z: number, nearY: number) => number,
+    shadows = true,
   ) {
     this.group.name = 'remote-players';
     this.loader = loader;
     this.ground = ground;
+    this.shadows = shadows;
+  }
+
+  /** Her pet, from the pet she chose; a pet that cannot load leaves her without one, never without herself. */
+  private async loadPet(id: string | null): Promise<PetCompanion | null> {
+    const spec = PETS.find((p) => p.id === id);
+    if (!spec) return null;
+    try {
+      return await loadPetCompanion(this.loader, spec, this.shadows);
+    } catch (err) {
+      console.warn(`failed to load pet ${id} of a remote player`, err);
+      return null;
+    }
+  }
+
+  /** Puts her on or off her vehicle: the mesh under her (built once, when she first gets on) and her height. */
+  private setRiding(entity: RemoteEntity, on: boolean): void {
+    const { vehicle, character } = entity;
+    const riding = on && vehicle !== null;
+    entity.riding = riding;
+    if (riding && !entity.vehicleMesh && vehicle) {
+      entity.vehicleMesh = createVehicleMesh(vehicle, this.shadows);
+      character.root.add(entity.vehicleMesh);
+    }
+    if (entity.vehicleMesh) entity.vehicleMesh.visible = riding;
+    entity.lift = riding && vehicle ? rideLift(vehicle.ride) * character.root.scale.y : 0;
   }
 
   async spawn(presence: PlayerPresence): Promise<void> {
@@ -67,6 +107,7 @@ export class RemotePlayerManager {
 
     try {
       const character = await loadPlayerCharacter(this.loader, presence.species, presence.outfit);
+      const pet = await this.loadPet(presence.pet);
       this.pendingSpawns.delete(presence.id);
 
       const root = character.root;
@@ -85,8 +126,9 @@ export class RemotePlayerManager {
       root.add(bubble.sprite);
 
       this.group.add(root);
+      if (pet) this.group.add(pet.root);
 
-      this.entities.set(presence.id, {
+      const entity: RemoteEntity = {
         presence,
         character,
         bubble,
@@ -94,7 +136,17 @@ export class RemotePlayerManager {
         targetYaw: presence.yaw,
         currentSpeed: presence.speed,
         airborne: false,
-      });
+        pet,
+        vehicle: equippedVehicle(presence.outfit),
+        vehicleMesh: null,
+        riding: false,
+        lift: 0,
+      };
+      this.setRiding(entity, presence.riding);
+      root.position.y = y + entity.lift;
+      entity.targetPos.y = y + entity.lift;
+      pet?.place(presence.x, y, presence.z, presence.yaw);
+      this.entities.set(presence.id, entity);
 
       if (presence.bubble) {
         bubble.show(presence.bubble.text);
@@ -105,14 +157,15 @@ export class RemotePlayerManager {
     }
   }
 
-  updateMove(update: { id: string; x: number; y: number; z: number; yaw: number; speed: number; action?: string }): void {
+  updateMove(update: { id: string; x: number; y: number; z: number; yaw: number; speed: number; action?: string; riding?: boolean }): void {
     const entity = this.entities.get(update.id);
     if (!entity) return;
+    if (update.riding !== undefined && update.riding !== entity.riding) this.setRiding(entity, update.riding);
 
     const ground = this.ground(update.x, update.z, update.y);
     // A jump: the sender's height above the ground here (the updates come ten times a second).
     entity.airborne = isAirborne(update.y, ground);
-    entity.targetPos.set(update.x, entity.airborne ? update.y : ground, update.z);
+    entity.targetPos.set(update.x, (entity.airborne ? update.y : ground) + entity.lift, update.z);
     entity.targetYaw = update.yaw;
     entity.currentSpeed = update.speed;
   }
@@ -140,9 +193,18 @@ export class RemotePlayerManager {
   despawn(id: string): void {
     const entity = this.entities.get(id);
     if (!entity) return;
-    this.group.remove(entity.character.root);
-    entity.bubble.hide();
+    this.release(entity);
     this.entities.delete(id);
+  }
+
+  private release(entity: RemoteEntity): void {
+    this.group.remove(entity.character.root);
+    if (entity.pet) this.group.remove(entity.pet.root);
+    if (entity.vehicleMesh) {
+      entity.vehicleMesh.removeFromParent();
+      entity.vehicleMesh.geometry.dispose();
+    }
+    entity.bubble.hide();
   }
 
   update(dt: number): void {
@@ -153,16 +215,15 @@ export class RemotePlayerManager {
       root.position.lerp(entity.targetPos, Math.min(1, dt * (entity.airborne ? 18 : 10)));
       root.rotation.y = MathUtils.lerp(root.rotation.y, entity.targetYaw, Math.min(1, dt * 10));
 
-      entity.character.update(dt, entity.currentSpeed, !entity.airborne);
+      // On her vehicle she holds its seated pose (a board: her idle), as the child herself does.
+      entity.character.update(dt, entity.currentSpeed, !entity.airborne, entity.riding && entity.vehicle ? seatedPose(entity.vehicle.ride) : null);
+      entity.pet?.update(dt, { x: root.position.x, y: root.position.y - entity.lift, z: root.position.z, facing: root.rotation.y }, this.ground);
       entity.bubble.update(dt);
     }
   }
 
   dispose(): void {
-    for (const entity of this.entities.values()) {
-      this.group.remove(entity.character.root);
-      entity.bubble.hide();
-    }
+    for (const entity of this.entities.values()) this.release(entity);
     this.entities.clear();
     this.pendingSpawns.clear();
   }

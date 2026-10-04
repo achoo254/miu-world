@@ -789,7 +789,7 @@ export const BUILTIN_OBJECT_INTERACTIONS: readonly ObjectInteractionDef[] = [
       modelRegex: /blackboard|board/i,
       keywords: ['board', 'bang-den'],
     },
-    pose: 'wash',
+    pose: 'sweep',
     duration: 2.5,
     emoji: '🏫',
     dialoguesVi: [
@@ -1031,7 +1031,7 @@ export const BUILTIN_OBJECT_INTERACTIONS: readonly ObjectInteractionDef[] = [
       modelRegex: /pottedplant|plantsmall[123]|seedling/i,
       keywords: ['plant', 'chau-cay'],
     },
-    pose: 'wash',
+    pose: 'water',
     duration: 2.8,
     emoji: '🪴',
     dialoguesVi: [
@@ -1103,7 +1103,7 @@ export const BUILTIN_OBJECT_INTERACTIONS: readonly ObjectInteractionDef[] = [
       modelRegex: /doorwayfront|doorwayopen|door/i,
       keywords: ['door', 'cua'],
     },
-    pose: 'wash',
+    pose: 'wave',
     duration: 2.0,
     emoji: '🔔',
     dialoguesVi: [
@@ -1262,7 +1262,7 @@ export const BUILTIN_OBJECT_INTERACTIONS: readonly ObjectInteractionDef[] = [
       modelRegex: /bowl(soup|broth|cereal)?/i,
       keywords: ['pet-bowl', 'bat-an'],
     },
-    pose: 'cook',
+    pose: 'pet',
     duration: 2.5,
     emoji: '🐾',
     dialoguesVi: [
@@ -1285,7 +1285,7 @@ export const BUILTIN_OBJECT_INTERACTIONS: readonly ObjectInteractionDef[] = [
       modelRegex: /paintbrush/i,
       keywords: ['brush', 'luoc'],
     },
-    pose: 'wash',
+    pose: 'pet',
     duration: 2.5,
     emoji: '🐱',
     dialoguesVi: [
@@ -1293,6 +1293,280 @@ export const BUILTIN_OBJECT_INTERACTIONS: readonly ObjectInteractionDef[] = [
     ],
     dialoguesEn: [
       'Gently brushing soft fur, kitty purrs happily! 🐱✨',
+    ],
+  },
+
+  // ==========================================
+  // 8. ĂN UỐNG & MÓN NGON (Eating & Dining)
+  // ==========================================
+  {
+    id: 'cake-eat',
+    category: 'dining',
+    nameVi: 'Bánh ngọt sinh nhật',
+    nameEn: 'Sweet Cake',
+    verbVi: 'Thưởng thức bánh',
+    verbEn: 'Eat cake',
+    match: {
+      modelRegex: /cake|cupcake|pie/i,
+      keywords: ['cake', 'cupcake', 'pie', 'banh-ngot'],
+    },
+    pose: 'eat',
+    duration: 3.0,
+    emoji: '🍰',
+    dialoguesVi: [
+      'Chom chom... Bánh kem xốp mềm ngọt ngào tan trong miệng! 🍰✨',
+      'Miếng bánh thơm lừng mùi vani và dâu tây! 🍓',
+      'Ăn bánh thật ngon miệng, cùng chia sẻ với các bạn nào! 😋',
+    ],
+    dialoguesEn: [
+      'Yum yum... Fluffy sweet cake melts in my mouth! 🍰✨',
+      'Delicious cake smelling of fresh vanilla and strawberries! 🍓',
+      'So tasty! Sharing sweet treats with friends! 😋',
+    ],
+    sound: 'ding',
+  },
+  {
+    id: 'bread-eat',
+    category: 'dining',
+    nameVi: 'Bánh mì nướng giòn',
+    nameEn: 'Crispy Bread',
+    verbVi: 'Ăn bánh mì',
+    verbEn: 'Eat bread',
+    match: {
+      modelRegex: /bread|croissant/i,
+      keywords: ['bread', 'croissant', 'banh-mi'],
+    },
+    pose: 'eat',
+    duration: 2.8,
+    emoji: '🥐',
+    dialoguesVi: [
+      'Rộp rộp... Bánh sừng bò bơ thơm giòn rụm! 🥐',
+      'Bánh mì nóng hổi tiếp thêm nhiều năng lượng cho ngày mới! 🍞⚡',
+    ],
+    dialoguesEn: [
+      'Crunch crunch... Buttery croissant is so flaky and crisp! 🥐',
+      'Fresh warm bread gives plenty of energy for playtime! 🍞⚡',
+    ],
+  },
+  {
+    id: 'soup-eat',
+    category: 'dining',
+    nameVi: 'Bát súp rau củ',
+    nameEn: 'Warm Soup',
+    verbVi: 'Húp súp ngon',
+    verbEn: 'Eat soup',
+    match: {
+      modelRegex: /bowl-soup|pot-stew/i,
+      keywords: ['soup', 'pot-stew', 'bat-sup'],
+    },
+    pose: 'eat',
+    duration: 3.2,
+    emoji: '🍲',
+    dialoguesVi: [
+      'Xì xụp... Bát súp hầm rau củ ngọt thanh ấm bụng! 🍲😋',
+      'Thổi phù phù cho nguội bớt rồi thưởng thức từng muỗng súp! 🥄',
+    ],
+    dialoguesEn: [
+      'Slurp... Warm vegetable stew is so comforting and healthy! 🍲😋',
+      'Blowing gently to cool down each delicious spoonful! 🥄',
+    ],
+  },
+  {
+    id: 'fruit-slice-eat',
+    category: 'dining',
+    nameVi: 'Dưa hấu mát lành',
+    nameEn: 'Fresh Watermelon',
+    verbVi: 'Ăn hoa quả',
+    verbEn: 'Eat fruit',
+    match: {
+      modelRegex: /watermelon|pineapple|grapes|pear/i,
+      keywords: ['watermelon', 'dua-hau', 'fruit-plate'],
+    },
+    pose: 'eat',
+    duration: 2.8,
+    emoji: '🍉',
+    dialoguesVi: [
+      'Cắn một miếng dưa hấu đỏ au ngọt mát lịm! 🍉💦',
+      'Hoa quả tươi ngon vừa giải nhiệt vừa bổ dưỡng! 🍍',
+    ],
+    dialoguesEn: [
+      'Taking a sweet juicy bite of crisp red watermelon! 🍉💦',
+      'Fresh fruits are refreshing and packed with vitamins! 🍍',
+    ],
+  },
+  {
+    id: 'soda-drink',
+    category: 'dining',
+    nameVi: 'Chai nước giải khát',
+    nameEn: 'Cool Soda',
+    verbVi: 'Uống nước mát',
+    verbEn: 'Drink soda',
+    match: {
+      modelRegex: /soda-bottle/i,
+      keywords: ['soda', 'nuoc-ngot', 'chai-nuoc'],
+    },
+    pose: 'drink',
+    duration: 2.6,
+    emoji: '🥤',
+    dialoguesVi: [
+      'Ực ực... Nước mát sủi bọt lăn tăn sảng khoái tuyệt vời! 🥤✨',
+      'Uống nước đầy đủ giúp cơ thể luôn khỏe khoắn vui tươi! 💧',
+    ],
+    dialoguesEn: [
+      'Gulp gulp... Cool fizzy drink is so refreshing! 🥤✨',
+      'Staying hydrated keeps us healthy, strong and energetic! 💧',
+    ],
+  },
+
+  // ==========================================
+  // 9. CÂU CÁ & BẾN NƯỚC (Fishing & Waterfront)
+  // ==========================================
+  {
+    id: 'dock-fish',
+    category: 'fishing',
+    nameVi: 'Cầu tàu câu cá',
+    nameEn: 'Fishing Pier',
+    verbVi: 'Thả cần câu',
+    verbEn: 'Go fishing',
+    match: {
+      modelRegex: /dba-dock-lantern|dock|pier/i,
+      keywords: ['dock', 'pier', 'cau-tau', 'ben-thuyen'],
+    },
+    pose: 'fish',
+    duration: 4.5,
+    emoji: '🎣',
+    dialoguesVi: [
+      'Vút... Buông cần câu xuống mặt nước trong veo, kiên nhẫn đợi cá cắn câu! 🎣🐟',
+      'Gợn sóng lăn tăn... Ô kìa, phao câu nhấp nhô rồi! Giật cần thôi! ✨🐠',
+      'Bé câu được chú cá bạc xinh xắn rồi nhẹ nhàng thả cá về sông nhé! 🌊',
+    ],
+    dialoguesEn: [
+      'Whoosh... Casting the line into crystal water, waiting patiently! 🎣🐟',
+      'Ripples in the water... The bobber is dancing! Reel it in! ✨🐠',
+      'Caught a pretty little fish, then gently releasing it back home! 🌊',
+    ],
+    sound: 'water',
+  },
+  {
+    id: 'boat-fish',
+    category: 'fishing',
+    nameVi: 'Thuyền nan ven bờ',
+    nameEn: 'Fishing Boat',
+    verbVi: 'Lên thuyền câu cá',
+    verbEn: 'Fish from boat',
+    match: {
+      modelRegex: /dba-rowboat|rowboat|sailboat/i,
+      keywords: ['rowboat', 'boat', 'thuyen-cau', 'thuyen-nan'],
+    },
+    pose: 'fish',
+    duration: 4.5,
+    emoji: '🛶',
+    dialoguesVi: [
+      'Thuyền bồng bềnh dập dềnh trên sóng nước, cùng thả câu nào! 🛶🎣',
+      'Gió sông mát rượi thổi qua, ngắm đàn cá tung tăng bơi lội! 🐟✨',
+    ],
+    dialoguesEn: [
+      'Gently rocking on the peaceful water, let us fish together! 🛶🎣',
+      'Cool river breeze blowing as colorful fish swim by! 🐟✨',
+    ],
+    sound: 'water',
+  },
+  {
+    id: 'ice-hole-fish',
+    category: 'fishing',
+    nameVi: 'Hố câu trên băng tuyết',
+    nameEn: 'Ice Fishing Hole',
+    verbVi: 'Câu cá trên băng',
+    verbEn: 'Ice fishing',
+    match: {
+      modelRegex: /cp-fish-ice|cp-fish-line/i,
+      keywords: ['ice-fishing', 'cau-ca-bang', 'fish-line'],
+    },
+    pose: 'fish',
+    duration: 4.0,
+    emoji: '❄️',
+    dialoguesVi: [
+      'Thả dây câu qua lỗ băng tuyết... Chú cá tuyết lấp lánh đang đến gần! ❄️🐟',
+      'Kéo lên nào! Một chú cá béo tròn nhảy tanh tách trên mặt băng! 🌟',
+    ],
+    dialoguesEn: [
+      'Dropping the line through the crystal ice hole... Shimmering fish ahead! ❄️🐟',
+      'Pull up! A happy fish splashing on the ice floe! 🌟',
+    ],
+    sound: 'water',
+  },
+
+  // ==========================================
+  // 10. NGHỈ NGƠI & DÃ NGOẠI (Outdoor Rest & Lying)
+  // ==========================================
+  {
+    id: 'bedroll-camp',
+    category: 'rest',
+    nameVi: 'Túi ngủ cắm trại',
+    nameEn: 'Camping Bedroll',
+    verbVi: 'Nằm túi ngủ',
+    verbEn: 'Rest in bedroll',
+    match: {
+      modelRegex: /bedroll/i,
+      keywords: ['bedroll', 'tui-ngu'],
+    },
+    pose: 'lay',
+    duration: 0,
+    emoji: '⛺',
+    dialoguesVi: [
+      'Chui vào túi ngủ ấm áp ngắm bầu trời đêm đầy sao lấp lánh! ⛺✨',
+      'Nằm nghỉ ngơi nghe tiếng thông reo rì rào thật êm ái! 🌲💤',
+    ],
+    dialoguesEn: [
+      'Snuggling into the cozy bedroll gazing at starry skies! ⛺✨',
+      'Resting peacefully listening to the gentle rustling pine trees! 🌲💤',
+    ],
+    sound: 'snore',
+  },
+  {
+    id: 'swing-play',
+    category: 'entertainment',
+    nameVi: 'Xích đu sân chơi',
+    nameEn: 'Playground Swing',
+    verbVi: 'Đu xích đu',
+    verbEn: 'Swing',
+    match: {
+      modelRegex: /swing-set|swing/i,
+      keywords: ['swing-set', 'swing', 'xich-du'],
+    },
+    pose: 'sit',
+    duration: 0,
+    emoji: '🪁',
+    dialoguesVi: [
+      'Đung đưa bay lên cao... gió thổi mát rượi tóc bay bay! 🪁🍃',
+      'Cười giòn tan trên chiếc xích đu tuổi thơ yêu thương! 😊✨',
+    ],
+    dialoguesEn: [
+      'Swinging high up into the fresh sky... wind in my hair! 🪁🍃',
+      'Pure joy and laughter on the lovely playground swing! 😊✨',
+    ],
+  },
+  {
+    id: 'picnic-table-relax',
+    category: 'rest',
+    nameVi: 'Bàn dã ngoại công viên',
+    nameEn: 'Picnic Table',
+    verbVi: 'Nghỉ dã ngoại',
+    verbEn: 'Picnic rest',
+    match: {
+      modelRegex: /nt-picnic-table|picnic/i,
+      keywords: ['picnic-table', 'ban-da-ngoai', 'picnic'],
+    },
+    pose: 'sit',
+    duration: 0,
+    emoji: '🧺',
+    dialoguesVi: [
+      'Cùng quây quần bên bàn dã ngoại chia sẻ bánh ngon hoa quả! 🧺🍉',
+      'Tận hưởng buổi dã ngoại ấm áp dưới bóng cây xanh mát! 🌳☀️',
+    ],
+    dialoguesEn: [
+      'Gathering round the picnic table sharing snacks and fruit! 🧺🍉',
+      'Enjoying a sunny picnic afternoon under the green trees! 🌳☀️',
     ],
   },
 ];

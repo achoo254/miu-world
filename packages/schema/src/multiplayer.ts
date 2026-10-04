@@ -34,6 +34,8 @@ export const PlayerPresence = z.strictObject({
   yaw: z.number().default(0),
   speed: z.number().default(0),
   action: z.string().default('idle'),
+  /** On the vehicle among her outfit entries (she gets on and off from the HUD); drawn riding it. */
+  riding: z.boolean().default(false),
   bubble: z.strictObject({ text: z.string(), at: z.number() }).nullable().default(null),
 });
 export type PlayerPresence = z.infer<typeof PlayerPresence>;
@@ -53,6 +55,7 @@ export const ClientWsMessage = z.discriminatedUnion('type', [
     yaw: z.number(),
     speed: z.number(),
     action: z.string().optional(),
+    riding: z.boolean().optional(),
   }),
   z.strictObject({
     type: z.literal('emote'),
@@ -88,6 +91,7 @@ export const ServerWsMessage = z.discriminatedUnion('type', [
     yaw: z.number(),
     speed: z.number(),
     action: z.string().optional(),
+    riding: z.boolean().optional(),
   }),
   z.strictObject({
     type: z.literal('emote'),

@@ -165,3 +165,52 @@
 
 [hidden] { display: none !important; }
 
+/* ── Swimming / underwater overlay ──────────────────────────────────────────
+   Activated by JS toggling .swimming on .miu-game while controller.inWater.
+   Two layers:
+   1. ::before  — a blue-teal tint that fades over the whole canvas.
+   2. ::after   — a column of animated "bubble" circles that rise from the
+                  bottom edge, using radial gradients and CSS animations.
+   Both use pointer-events: none so they never block the joystick or buttons.
+   ────────────────────────────────────────────────────────────────────────── */
+.miu-game::before,
+.miu-game::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1; /* above the canvas, below the HUD (z-index 2 and up) */
+  opacity: 0;
+  transition: opacity 0.55s ease;
+}
+
+/* Blue-teal underwater tint */
+.miu-game::before {
+  background: radial-gradient(ellipse at 50% 30%, rgba(40, 120, 200, 0.18) 0%, rgba(20, 80, 160, 0.38) 100%);
+}
+
+/* Bubble column — 8 circular blobs at staggered positions, animated to rise */
+.miu-game::after {
+  background:
+    radial-gradient(circle, rgba(160, 220, 255, 0.55) 0%, transparent 60%) 12% 100% / 14px 14px no-repeat,
+    radial-gradient(circle, rgba(160, 220, 255, 0.45) 0%, transparent 60%) 28% 100% / 10px 10px no-repeat,
+    radial-gradient(circle, rgba(160, 220, 255, 0.50) 0%, transparent 60%) 44% 100% / 16px 16px no-repeat,
+    radial-gradient(circle, rgba(160, 220, 255, 0.40) 0%, transparent 60%) 58% 100% / 8px  8px  no-repeat,
+    radial-gradient(circle, rgba(160, 220, 255, 0.55) 0%, transparent 60%) 70% 100% / 12px 12px no-repeat,
+    radial-gradient(circle, rgba(160, 220, 255, 0.45) 0%, transparent 60%) 82% 100% / 18px 18px no-repeat,
+    radial-gradient(circle, rgba(160, 220, 255, 0.40) 0%, transparent 60%) 35% 100% / 10px 10px no-repeat,
+    radial-gradient(circle, rgba(160, 220, 255, 0.50) 0%, transparent 60%) 62% 100% / 14px 14px no-repeat;
+  animation: miu-bubbles 2.4s linear infinite paused;
+}
+
+/* Active underwater state: fade both layers in and start the bubble animation. */
+.miu-game.swimming::before,
+.miu-game.swimming::after { opacity: 1; }
+.miu-game.swimming::after { animation-play-state: running; }
+
+/* Bubbles float from the bottom to a little above centre, then vanish. */
+@keyframes miu-bubbles {
+  0%   { background-position: 12% 100%, 28% 100%, 44% 100%, 58% 100%, 70% 100%, 82% 100%, 35% 100%, 62% 100%; opacity: 1; }
+  80%  { opacity: 1; }
+  100% { background-position: 12% 20%,  28% 30%,  44% 10%,  58% 25%,  70% 15%,  82% 22%,  35% 28%,  62% 18%;  opacity: 0; }
+}

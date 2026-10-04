@@ -48,7 +48,7 @@ export class MultiplayerRoom {
 
   updatePresence(
     id: string,
-    update: { x: number; y: number; z: number; yaw: number; speed: number; action?: string },
+    update: { x: number; y: number; z: number; yaw: number; speed: number; action?: string; riding?: boolean },
   ): void {
     const member = this.members.get(id);
     if (!member) return;
@@ -59,6 +59,7 @@ export class MultiplayerRoom {
     member.presence.yaw = update.yaw;
     member.presence.speed = update.speed;
     if (update.action !== undefined) member.presence.action = update.action;
+    if (update.riding !== undefined) member.presence.riding = update.riding;
 
     this.broadcast(
       {
@@ -70,6 +71,7 @@ export class MultiplayerRoom {
         yaw: update.yaw,
         speed: update.speed,
         action: update.action,
+        riding: update.riding,
       },
       id,
     );

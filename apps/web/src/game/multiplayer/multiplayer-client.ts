@@ -11,7 +11,7 @@ import {
 export interface MultiplayerClientHandlers {
   onWelcome(players: PlayerPresence[]): void;
   onSpawn(player: PlayerPresence): void;
-  onMove(update: { id: string; x: number; y: number; z: number; yaw: number; speed: number; action?: string }): void;
+  onMove(update: { id: string; x: number; y: number; z: number; yaw: number; speed: number; action?: string; riding?: boolean }): void;
   onEmote(id: string, emote: SafeEmote): void;
   onChat(id: string, text: string): void;
   onDespawn(id: string): void;
@@ -102,7 +102,7 @@ export class MultiplayerClient {
     }
   }
 
-  sendUpdate(x: number, y: number, z: number, yaw: number, speed: number, action = 'walk'): void {
+  sendUpdate(x: number, y: number, z: number, yaw: number, speed: number, action = 'walk', riding = false): void {
     if (this.disposed || !this.ws || this.ws.readyState !== WebSocket.OPEN) return;
 
     const now = Date.now();
@@ -118,6 +118,7 @@ export class MultiplayerClient {
         yaw,
         speed,
         action,
+        riding,
       });
       this.ws.send(JSON.stringify(updateMsg));
     } catch {

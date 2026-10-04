@@ -41,3 +41,15 @@ export function nearestUsableSpot(spot: Point, solid: SolidAt, liquid: LiquidAt,
   }
   return null;
 }
+
+/** Seconds inside a solid block before the child is lifted out (a moment of overlap while stepping is normal). */
+export const EMBEDDED_LIFT_S = 0.4;
+
+/** Her feet or head cell is a solid block: she stands inside something and cannot walk off. */
+export function isEmbedded(position: Point, solid: SolidAt): boolean {
+  const [x, y, z] = position;
+  const bx = Math.floor(x);
+  const bz = Math.floor(z);
+  const feet = Math.floor(y + 0.01);
+  return solid(bx, feet, bz) || solid(bx, feet + 1, bz);
+}

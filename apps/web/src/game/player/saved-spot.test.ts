@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { usableSpot } from './saved-spot';
+import { isEmbedded, usableSpot } from './saved-spot';
 
 // A 16 × 16 × 16 world: ground up to y = 4 (blocks 0..4 solid), a pillar at (8, 5..6, 8), water at (3, 5, 3).
 const solid = (x: number, y: number, z: number): boolean => y <= 4 || (x === 8 && z === 8 && y <= 6);
@@ -23,5 +23,14 @@ describe('usableSpot', () => {
     for (const spot of [[-1, 5, 5], [5, 5, 16], [5, 15, 5], [Number.NaN, 5, 5]] as const) {
       expect(usableSpot(spot, solid, liquid, bounds, height)).toBeNull();
     }
+  });
+});
+
+describe('isEmbedded', () => {
+  it('is true inside a block, at the feet or at the head, and false on open ground', () => {
+    expect(isEmbedded([8.5, 5, 8.5], solid)).toBe(true);
+    expect(isEmbedded([8.5, 4.5, 8.5], solid)).toBe(true);
+    expect(isEmbedded([5.5, 5, 6.25], solid)).toBe(false);
+    expect(isEmbedded([5.5, 4.9999, 6.25], solid)).toBe(false);
   });
 });

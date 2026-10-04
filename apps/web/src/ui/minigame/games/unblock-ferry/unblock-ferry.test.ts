@@ -4,7 +4,8 @@ import { NO_INPUT } from '../../types';
 import { describeMinigame } from '../../testing/describe-minigame';
 import { createUnblockFerry, slideRange, solve, type Boat } from './logic';
 
-describeMinigame('unblock-ferry');
+// The bot solves every landing by search, five seeds a screen: 5-8 s when the whole suite runs at once.
+describeMinigame('unblock-ferry', { winTimeout: 30_000 });
 
 describe('unblock ferry rules', () => {
   it('slides a boat only along its length, up to the next boat', () => {

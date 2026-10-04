@@ -41,8 +41,27 @@ import { fetchSideGivers } from './hud/side-givers';
 import { fillPlayerName } from '@miu/quest/player-name';
 import { HOME_REGION } from '../ui/region/regions';
 import { DEFAULT_SPECIES } from './content/characters';
-import { loadPlayerCharacter } from './entities/player-character';
+import { loadPlayerCharacter, type ExtraPlayerAction } from './entities/player-character';
 import { loadPetCompanion } from './entities/pet-companion';
+
+const PET_LINES = [
+  '❤️ Bé vuốt ve bạn cưng thật dịu dàng! 🐾✨',
+  'Ngoan ngoãn nhé, chúng mình cùng nhau khám phá thế giới nào! 🐶💖',
+  'Thú cưng thích thú dụi đầu vào tay bé, vui sướng kêu meo meo! 🥰',
+  'Bé thương bạn cưng nhất trên đời! 🌟🐾',
+];
+
+const ANIMAL_PET_LINES = [
+  '❤️ Ngoan nào, bé thương bé vuốt ve nhé! 🐾',
+  'Bạn nhỏ đáng yêu quá, bộ lông mềm mại làm sao! 🐰✨',
+  'Đừng sợ nhé, chúng mình là bạn tốt của nhau mà! 🌸🐥',
+];
+
+const GREET_LINES = [
+  '👋 Chào bạn nhé! Chúc bạn một ngày thật vui vẻ! ✨',
+  'Bé vẫy tay chào người bạn mới quen! 😊🌟',
+  'Rất vui được gặp bạn ở ngôi làng xinh đẹp này! 🏡',
+];
 import { loadProps } from './entities/props';
 import { cellKey } from '@miu/voxel/prop-collision';
 import { createRouteFinder, type RouteFinder } from './nav/route-finder';
@@ -55,7 +74,7 @@ import { PlayerController, WALK_SPEED, type MoveIntent } from './player/player-c
 import { RescueWatch } from './player/rescue';
 import { createRideControl } from './player/vehicle-ride';
 import { createRideJourney } from './ride/ride-journey';
-import { nearestUsableSpot } from './player/saved-spot';
+import { EMBEDDED_LIFT_S, isEmbedded, nearestUsableSpot } from './player/saved-spot';
 import { readQuality } from './quality';
 import { disposeSceneGraph } from './scene/dispose-scene';
 import { SKY_HORIZON, createSky, skyColours } from './scene/sky';
@@ -432,7 +451,7 @@ export class Game {
     props.buildAround(start[0] ?? 0, start[2] ?? 0);
     scene.add(character.root, props.group, life.group, confetti.mesh, ...targets.map((t) => t.root));
 
-    const remotePlayers = new RemotePlayerManager(loader, ground);
+    const remotePlayers = new RemotePlayerManager(loader, ground, quality.shadows);
     scene.add(remotePlayers.group);
     this.cleanups.push(() => remotePlayers.dispose());
 
@@ -458,6 +477,7 @@ export class Game {
         yaw: entities.spawn.yaw,
         speed: 0,
         action: 'idle',
+        riding: false,
         bubble: null,
       },
       {
@@ -553,8 +573,8 @@ export class Game {
     if (!autopilot && !params.has('shot') && spawnAt === null) {
       this.spotNow = () => {
         const p = controller.position;
-        // On a ride she is kept at the last spot she stood on (the stop) until she gets off.
-        const here = !journey.active && controller.onGround && !controller.inWater ? ([p.x, p.y, p.z] as const) : rescue.spot();
+        // On a ride she is kept at the last spot she stood on (the stop) until she gets off; seated, where she stood before.
+        const here = objectInteractions.standSpot ?? (!journey.active && controller.onGround && !controller.inWater ? ([p.x, p.y, p.z] as const) : rescue.spot());
         // The heading winds up past ±π as the child turns; saved folded back into one turn.
         const facing = Math.atan2(Math.sin(controller.facing), Math.cos(controller.facing));
         return here ? { map: mapId, position: [here[0], here[1], here[2]], facing } : null;
@@ -604,6 +624,9 @@ export class Game {
     let promptAmbient: AmbientTarget | null = null;
     /** An interactive furniture or prop object in reach (bed, chair, toilet, sink, stove, etc.). */
     let promptObject: CandidateObject | null = null;
+    let promptPet = false;
+    let ambientActionTimer = 0;
+    let currentAmbientAction: ExtraPlayerAction = null;
     let interactRequested = false;
     let rescueRequested = false;
     let celebrateRequested = false;
@@ -678,6 +701,7 @@ export class Game {
     this.cleanups.push(() => store.emit({ type: 'interaction-prompt', prompt: null }));
     this.cleanups.push(() => store.emit({ type: 'stuck', stuck: false }));
     /** No dry spot yet: next to the target the arrow points at, else the spawn point. */
+    let embeddedFor = 0;
     const rescueFallback = (): [number, number, number] => {
       const at = hint?.def;
       if (!at) return [...entities.spawn.position];
@@ -789,6 +813,17 @@ export class Game {
         pushing: Math.hypot(intent.dirX, intent.dirZ) > 0.5,
       });
       store.emit({ type: 'stuck', stuck });
+      // Inside a solid block (a stool she sat on, a prop that landed on her) she cannot walk off: lift her out to
+      // the nearest open spot, else the last safe one. Sitting is the one time she is meant to be in a cell.
+      const p = controller.position;
+      const embedded = !carried && !objectInteractions.isInteracting && isEmbedded([p.x, p.y, p.z], solid);
+      embeddedFor = embedded ? embeddedFor + dt : 0;
+      if (embeddedFor > EMBEDDED_LIFT_S) {
+        embeddedFor = 0;
+        walker.stop();
+        controller.teleport(nearestUsableSpot([p.x, p.y, p.z], solid, liquid, data.bounds, data.world.height, 6) ?? rescue.spot() ?? rescueFallback());
+        rescue.reset();
+      }
       const isPlayerMoving = controller.speed > 0.1 || Math.hypot(intent.dirX, intent.dirZ) > 0.1;
       const objectState = objectInteractions.update(dt, controller, isPlayerMoving);
       playerBubble.update(dt);
@@ -799,14 +834,25 @@ export class Game {
         character.root.rotation.y = carried.facing;
         character.update(dt, carried.speed, true, carried.pose);
       } else {
+        if (ambientActionTimer > 0) {
+          ambientActionTimer -= dt;
+          if (ambientActionTimer <= 0) currentAmbientAction = null;
+        }
+        const effectiveAction = objectState.action ?? currentAmbientAction;
         character.root.position.copy(controller.position);
         character.root.position.y += ride.liftWorld;
+        if (effectiveAction === 'lay') {
+          character.root.position.y -= 0.32;
+        }
         character.root.rotation.y = controller.facing;
         // On a vehicle she stands calm (idle) or holds her seated pose while it carries her.
         const currentPose = ride.pose ?? objectState.poseOverride;
-        character.update(dt, ride.riding || objectState.poseOverride ? 0 : controller.speed, controller.onGround, currentPose);
+        const isBusy = ride.riding || objectState.poseOverride !== null || effectiveAction !== null;
+        character.update(dt, isBusy ? 0 : controller.speed, controller.onGround, currentPose, controller.inWater, effectiveAction);
         rig.update(dt, controller.position);
       }
+      // Underwater overlay: toggle CSS class for the blue tint + bubble effect.
+      dom.root.classList.toggle('swimming', controller.inWater && !carried);
       // With the camera inside Miu (nowhere left to back off to), hide her rather than show her insides.
       if (!reviewShot?.backdrop) character.root.visible = (carried !== null || rig.viewDistance > 0.9) && !reviewShot?.hidesPlayer;
       if (pet) {
@@ -836,22 +882,27 @@ export class Game {
       const nearAmbient = nearest ? null : life.nearest(controller.position);
       // Object interactions (furniture/props) activate when no quest target or ambient life is near
       const nearObject = nearest || nearAmbient ? null : objectInteractions.nearest(controller.position);
+      // Check pet companion proximity when child is near her faithful companion
+      const petDist = pet && !carried ? Math.hypot(controller.position.x - pet.root.position.x, controller.position.z - pet.root.position.z) : Infinity;
+      const nearPet = !nearest && !nearAmbient && !nearObject && petDist < 2.2;
       // A still review shot gathers the nearest people and animals round what it looks at, not round the child.
       life.update(dt, reviewShot && !reviewShot.live ? reviewShot.target : controller.position, nearest !== null, { calls: renderer.info.render.calls, triangles: renderer.info.render.triangles });
       remotePlayers.update(dt);
-      const currentAction = ride.riding || objectState.poseOverride ? 'sit' : controller.speed > 0.1 ? 'walk' : 'idle';
+      const currentAction = ride.riding || objectState.poseOverride || currentAmbientAction ? 'sit' : controller.speed > 0.1 ? 'walk' : 'idle';
       multiplayer.sendUpdate(
         controller.position.x,
         controller.position.y,
         controller.position.z,
         controller.facing,
-        ride.riding || objectState.poseOverride ? 0 : controller.speed,
+        ride.riding || objectState.poseOverride || currentAmbientAction ? 0 : controller.speed,
         currentAction,
+        ride.riding,
       );
-      if (nearest !== promptTarget || nearAmbient !== promptAmbient || nearObject !== promptObject) {
+      if (nearest !== promptTarget || nearAmbient !== promptAmbient || nearObject !== promptObject || nearPet !== promptPet) {
         promptTarget = nearest;
         promptAmbient = nearAmbient;
         promptObject = nearObject;
+        promptPet = nearPet;
         const def = nearest?.def;
         const prompt = def
           ? { targetId: def.id, kind: def.kind, name: def.name, label: def.label }
@@ -859,7 +910,9 @@ export class Game {
             ? { targetId: nearAmbient.id, kind: 'ambient' as const, name: nearAmbient.name, label: nearAmbient.label }
             : nearObject
               ? objectInteractions.toPrompt(nearObject)
-              : null;
+              : nearPet
+                ? { targetId: 'pet-companion', kind: 'ambient' as const, name: petSpec?.name ?? 'Bé cưng', label: 'Vuốt ve' }
+                : null;
         store.emit({ type: 'interaction-prompt', prompt });
       }
       const anchorAt = promptTarget
@@ -868,7 +921,12 @@ export class Game {
           ? life.screenAnchor(promptAmbient, camera, { width: window.innerWidth, height: window.innerHeight })
           : promptObject
             ? objectInteractions.screenAnchor(promptObject, camera, { width: window.innerWidth, height: window.innerHeight })
-            : null;
+            : promptPet && pet
+              ? {
+                  x: ((new Vector3(pet.root.position.x, pet.root.position.y + 0.8, pet.root.position.z).project(camera).x + 1) / 2) * window.innerWidth,
+                  y: ((1 - new Vector3(pet.root.position.x, pet.root.position.y + 0.8, pet.root.position.z).project(camera).y) / 2) * window.innerHeight,
+                }
+              : null;
       if (anchorAt) {
         const anchor = store.getPromptAnchor();
         if (anchor) {
@@ -893,6 +951,19 @@ export class Game {
         overlay.stats.lastInteraction = promptTarget.def.id;
       } else if (interact && promptAmbient) {
         life.react(promptAmbient.id);
+        const isAnimal = promptAmbient.label === 'Vuốt ve';
+        ambientActionTimer = 2.2;
+        currentAmbientAction = isAnimal ? 'pet' : 'wave';
+        const lines = isAnimal ? ANIMAL_PET_LINES : GREET_LINES;
+        playerBubble.show(lines[Math.floor(Math.random() * lines.length)] ?? lines[0] ?? '');
+        if (multiplayer) multiplayer.sendEmote('cheer');
+      } else if (interact && promptPet && pet) {
+        pet.celebrate();
+        ambientActionTimer = 2.4;
+        currentAmbientAction = 'pet';
+        const lines = PET_LINES;
+        playerBubble.show(lines[Math.floor(Math.random() * lines.length)] ?? lines[0] ?? '');
+        if (multiplayer) multiplayer.sendEmote('cheer');
       } else if (interact && promptObject) {
         objectInteractions.interact(promptObject, controller, character, multiplayer);
       }
