@@ -10,6 +10,7 @@ import { PrivacyDocument, stepTargets, type QuestDefinition } from '../../packag
 import { accessoryArtPath } from '../../packages/schema/src/accessory-art';
 import { HomeDecorCatalog } from '../../packages/schema/src/home-decor';
 import { Item } from '../../packages/schema/src/item';
+import { collectibleIssues, type CollectibleSet } from '../../packages/schema/src/collectible';
 import { PetCatalog, petArtPath } from '../../packages/schema/src/pet';
 import { BoxPropCatalog, EmojiPropCatalog, LookCatalog, QuestTargetCatalog } from '../../packages/schema/src/world-target';
 import { RegionCatalog, mapForRegion, regionGuides } from '../../packages/schema/src/region';
@@ -47,6 +48,8 @@ const CATALOGUE_FILES = [
   'home/decor.json',
   // What the shop sells and for how much (apps/server/src/shop), one file per category.
   'shop/',
+  // The collectible sets each region's runs drop (apps/server/src/quest/quest-completion.ts).
+  'collectibles.json',
   // Each region's chest: tiers, coins, XP, exclusive wearables and titles (apps/server/src/region-reward).
   'region-rewards.json',
 ];
@@ -67,6 +70,7 @@ const BOX_PROPS_FOLDER = 'world/box-props/';
 const MODELS_FILE = 'world/models.json';
 const PRIVACY_FILE = 'legal/privacy-vi.json';
 const ITEMS_FOLDER = 'items/';
+const COLLECTIBLES_FILE = 'collectibles.json';
 
 /**
  * Every map target a quest names must be an interactable on its region's map, and shown while that quest's
@@ -162,10 +166,20 @@ const readByAssetTools = (rel: string) => ASSET_TOOL_FILES.some((o) => (o.endsWi
 const readByCurriculum = (rel: string) => CURRICULUM_FOLDERS.some((o) => inFolder(rel, o) && rel.endsWith('.json'));
 const readByWeb = (rel: string) => rel === REGIONS_FILE || rel === MODELS_FILE || rel === LOOKS_FILE || rel === EMOJI_PROPS_FILE || rel === BOX_PROPS_FILE || rel === TARGETS_FILE || rel === PRIVACY_FILE || (inFolder(rel, ITEMS_FOLDER) && rel.endsWith('.json'));
 
-/** Items parse, use a shipped UI icon, file name = id, and every item a quest rewards exists. */
-export function checkItems(dir: string, files: readonly string[], quests: Iterable<QuestDefinition>): string[] {
+/**
+ * Items parse, use a shipped UI icon, file name = id, and every item a quest rewards exists. The collectible
+ * sets (`content/collectibles.json`, loaded by the server catalogue) list items of kind `collectible` only, and
+ * every such item belongs to a set.
+ */
+export function checkItems(
+  dir: string,
+  files: readonly string[],
+  quests: Iterable<QuestDefinition>,
+  collectibles: { sets: ReadonlyMap<string, CollectibleSet>; regions: ReadonlySet<string> },
+): string[] {
   const issues: string[] = [];
   const ids = new Set<string>();
+  const kinds = new Map<string, { kind: string }>();
   for (const rel of files.filter((f) => inFolder(f, ITEMS_FOLDER) && f.endsWith('.json'))) {
     const parsed = Item.safeParse(JSON.parse(readFileSync(path.join(dir, rel), 'utf8')));
     if (!parsed.success) {
@@ -177,7 +191,10 @@ export function checkItems(dir: string, files: readonly string[], quests: Iterab
     if (!(item.icon in UI_ICONS)) issues.push(`item ${item.id} uses icon "${item.icon}", which the UI does not ship`);
     for (const text of [item.name, item.description, item.usedIn]) for (const issue of playerTextIssues(text)) issues.push(`item ${item.id} ${issue}`);
     ids.add(item.id);
+    kinds.set(item.id, { kind: item.kind });
   }
+  const catalog = { version: 1 as const, sets: [...collectibles.sets.values()] };
+  issues.push(...collectibleIssues(catalog, { regions: collectibles.regions, items: kinds }).map((issue) => `content/${COLLECTIBLES_FILE}: ${issue}`));
   for (const quest of quests) {
     if (quest.status !== 'active') continue;
     for (const id of Object.keys(quest.reward.items)) if (!ids.has(id)) issues.push(`quest ${quest.id} rewards item ${id}, which content/items does not describe`);
@@ -414,7 +431,8 @@ export function checkContent(dir: string = CONTENT_DIR): ContentReport {
     issues.push(...targets.issues);
     // Drafts become game text too, so the player's name rule covers every quest file.
     issues.push(...checkPlayerText(readQuestDefinitions(path.join(dir, 'quests'))));
-    issues.push(...checkItems(dir, files, catalog.quests.values()));
+    const regionIds = new Set(regions.success ? regions.data.regions.map((r) => r.id) : []);
+    issues.push(...checkItems(dir, files, catalog.quests.values(), { sets: catalog.collectibles, regions: regionIds }));
     // A broken targets file is reported by checkTargetCatalogues below; the guide check then waits for it.
     const targetCatalog = existsSync(path.join(dir, TARGETS_FILE)) ? QuestTargetCatalog.safeParse(JSON.parse(readFileSync(path.join(dir, TARGETS_FILE), 'utf8'))).data : undefined;
     const targetIds = targetCatalog ? new Set(Object.keys(targetCatalog.targets)) : null;

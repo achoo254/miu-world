@@ -1,0 +1,40 @@
+/* Sổ sưu tập and the "Mới!" note: values from tokens.css only. */
+.collection-book .tabs-list { flex-wrap: nowrap; overflow-x: auto; padding-bottom: var(--space-xs); scrollbar-width: thin; }
+.collection-book .tabs-tab { flex: none; }
+.book-tab { display: inline-flex; align-items: center; gap: var(--space-xs); white-space: nowrap; }
+.book-tab-count { padding: 0 var(--space-xs); border-radius: var(--radius-pill); background: var(--color-surface-glass); color: var(--color-ink); font-size: var(--text-sm); }
+.book-tab-count--full { background: var(--color-badge); color: var(--color-badge-ink); }
+.book-page { display: flex; flex-direction: column; gap: var(--space-sm); }
+.book-head { display: flex; flex-direction: column; gap: var(--space-xs); }
+.book-head .hint { margin: 0; }
+.book-set-name { font-family: var(--font-display); font-size: var(--text-lg); }
+.book-progress { display: flex; align-items: center; gap: var(--space-sm); font-weight: 800; }
+.book-progress .progress { flex: 1; }
+.book-page .book-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+@media (max-width: 40rem) {
+  .book-page .book-grid { grid-template-columns: repeat(auto-fill, minmax(5.5rem, 1fr)); }
+}
+.book-slot { position: relative; text-align: center; }
+.book-slot-art { display: inline-flex; }
+.book-slot--uncommon { border-color: var(--color-secondary); }
+.book-slot--rare { border-color: var(--color-star); box-shadow: var(--shadow-tile), 0 0 0 2px var(--color-star); }
+/* A thing not found yet: its outline only. */
+.book-slot--missing { color: var(--color-ink-soft); background: var(--color-surface-faint); }
+.book-slot--missing .book-slot-art img { filter: brightness(0); opacity: 0.22; }
+.book-detail { flex-direction: row; align-items: flex-start; gap: var(--space-md); padding: var(--space-sm); border-radius: var(--radius-field); background: var(--color-surface-glass); }
+.book-detail p { margin: 0; }
+.book-detail-text { display: flex; flex-direction: column; gap: var(--space-xs); }
+.book-lore { font-style: italic; }
+.book-rarity--rare { background: var(--color-star); color: var(--color-ink); }
+.book-reward { display: flex; align-items: center; gap: var(--space-sm); padding: var(--space-sm); border-radius: var(--radius-field); background: var(--color-surface-glass); }
+.book-reward--ready { box-shadow: 0 0 0 3px var(--color-star); }
+.book-reward-text { flex: 1; display: flex; flex-direction: column; gap: var(--space-xs); }
+
+.collect-drop { display: flex; align-items: center; justify-content: center; gap: var(--space-sm); margin: 0; padding: var(--space-xs) var(--space-md); border-radius: var(--radius-pill); background: var(--color-surface); box-shadow: var(--shadow-tile); font-weight: 800; }
+.collect-drop-badge { align-self: center; background: var(--color-star); color: var(--color-ink); }
+@media (prefers-reduced-motion: no-preference) {
+  .collect-drop { animation: collect-drop-in 480ms var(--ease-pop) backwards; animation-delay: var(--duration-enter); }
+  .collect-drop[data-new='true'] .collect-drop-badge { animation: collect-drop-pulse 1.2s ease-in-out 3; }
+}
+@keyframes collect-drop-in { from { opacity: 0; transform: translateY(0.75rem) scale(0.9); } }
+@keyframes collect-drop-pulse { 50% { transform: scale(1.15); } }

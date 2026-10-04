@@ -17,6 +17,7 @@ import { homeDecorRoutes, loadDecorCatalog } from './home/home-decor-routes';
 import { HttpError } from './http-error';
 import { playerPositionRoutes } from './player-position/player-position-routes';
 import { questRoutes } from './quest/quest-routes';
+import { collectionRoutes } from './collection/collection-routes';
 import { loadRegionRewards } from './region-reward/region-reward-catalog';
 import { regionRewardRoutes } from './region-reward/region-reward-routes';
 import { loadShopCatalog } from './shop/shop-catalog';
@@ -92,6 +93,7 @@ export function createApp({ config, db, content = loadContentCatalog(), workshee
   api.use(homeDecorRoutes({ db, content, clock, catalog: decor, shop }));
   api.use(shopRoutes({ db, content, clock, shop }));
   api.use(regionRewardRoutes({ db, content, clock, rewards: loadRegionRewards(content.accessories) }));
+  api.use(collectionRoutes({ db, content, clock }));
   api.use(worksheetRoutes({ worksheets, clock, fontDir: config.handwritingFontDir }));
   app.use('/api', api);
 

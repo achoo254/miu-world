@@ -361,7 +361,7 @@ export function PlayScreen() {
         {data && status !== 'error' ? <Hud data={data} quest={quest} covered={covered} onMenu={() => setPaused(true)} onQuests={() => setQuestsOpen(true)} onBackpack={() => setBackpackOpen(true)} /> : null}
         {data && backpackOpen ? (
           <Modal title={<T k="common.backpack" />} onClose={() => setBackpackOpen(false)} dataId="play-backpack" size="wide">
-            <BackpackPanel data={data} />
+            <BackpackPanel data={data} region={region} />
             <button type="button" className={buttonClass('primary', { block: true })} data-id="play-backpack-done" onClick={() => setBackpackOpen(false)}>
               <T k="common.close" />
             </button>

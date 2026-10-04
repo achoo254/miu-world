@@ -1,11 +1,13 @@
 import { and, eq, inArray, sql } from 'drizzle-orm';
 import type { ActiveQuest, RewardSpec } from '@miu/schema/content';
-import type { QuestCompletion } from '@miu/schema/game';
+import { collectibleDropSource } from '@miu/schema/collectible';
+import type { CollectibleDrop, QuestCompletion } from '@miu/schema/game';
+import { pickCollectible } from '@miu/quest/collectible-drop';
 import { levelFromXp } from '@miu/quest/level';
 import { notebookLines } from '@miu/quest/notebook';
 import { questScore } from '@miu/quest/quest-score';
 import type { ContentCatalog } from '../content/content-catalog';
-import { questProgress, skillProgress } from '../db/schema';
+import { inventoryItems, questProgress, skillProgress } from '../db/schema';
 import { grantReward, questSource, totalXp, type Tx } from '../reward/reward-ledger';
 import { clearAttempts, questEffort } from './step-attempts';
 
@@ -25,6 +27,27 @@ async function skillXpOf(tx: Tx, childId: string, skillIds: string[]): Promise<M
 }
 
 /**
+ * Drops one thing of the region's collectible set for a run just paid (`runSource`), in the same transaction:
+ * its own ledger row `drop:<run source>` and the item into her inventory (a double adds to the count). The
+ * thing is picked from the child and the run (and what she owned before it), so a run drops once and always
+ * the same thing; a new run may drop again. Null for a region without a set.
+ */
+async function dropCollectible(tx: Tx, content: ContentCatalog, childId: string, region: string, runSource: string, now: Date): Promise<CollectibleDrop | null> {
+  const set = content.collectibles.get(region);
+  if (!set) return null;
+  const ids = set.items.map((e) => e.id);
+  const rows = await tx
+    .select({ itemId: inventoryItems.itemId, qty: inventoryItems.qty })
+    .from(inventoryItems)
+    .where(and(eq(inventoryItems.childId, childId), inArray(inventoryItems.itemId, ids)));
+  const owned = new Map(rows.map((r) => [r.itemId, r.qty]));
+  const itemId = pickCollectible(set.items, owned, `${childId}|${runSource}`);
+  if (!itemId) return null;
+  const granted = await grantReward(tx, childId, collectibleDropSource(runSource), { xp: 0, coin: 0, skillXp: {}, items: { [itemId]: 1 } }, now);
+  return granted ? { itemId, mapId: set.mapId, owned: (owned.get(itemId) ?? 0) + 1 } : null;
+}
+
+/**
  * Scores and pays a run of a quest whose last step was just recorded, in the caller's transaction. Every
  * run pays the quest's reward (owner, 03/10/2026); `run` names it in the ledger, so a run pays once. The
  * progress row keeps the best stars of all runs and the XP of the latest, so later counter changes never
@@ -38,7 +61,9 @@ export async function finishQuest(tx: Tx, content: ContentCatalog, childId: stri
   const xpBefore = await totalXp(tx, childId);
   const skillsBefore = await skillXpOf(tx, childId, skillIds);
 
-  const granted = await grantReward(tx, childId, questSource(quest.id, run), reward, now);
+  const source = questSource(quest.id, run);
+  const granted = await grantReward(tx, childId, source, reward, now);
+  const collectible = granted ? await dropCollectible(tx, content, childId, quest.region, source, now) : null;
   await tx
     .update(questProgress)
     .set({ stars: sql`greatest(coalesce(${questProgress.stars}, 0), ${score.stars})`, xpAwarded: score.xpAwarded })
@@ -62,6 +87,7 @@ export async function finishQuest(tx: Tx, content: ContentCatalog, childId: stri
       skillLevels,
       // Every question with its answer, to copy into the vở before the reward (owner, 03/10/2026).
       notebook: notebookLines(quest.steps),
+      collectible,
     },
   };
 }

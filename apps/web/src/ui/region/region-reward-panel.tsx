@@ -20,7 +20,7 @@ import './region.css';
 const TIER_ICON: Readonly<Record<Exclude<RegionRewardTier, 'full'>, UiIcon>> = { half: 'gift', stars: 'glowingStar', minigames: 'sparkles' };
 
 /** The chest picture, closed or standing open (two halves of the same picture, the lid tipped back). */
-function Chest({ open, size }: { open: boolean; size: string }) {
+export function Chest({ open, size }: { open: boolean; size: string }) {
   const style = { '--chest-size': size } as CSSProperties;
   if (!open) return <img className="region-chest" src={assetUrl(REGION_CHEST)} alt="" width={96} height={96} style={style} />;
   return (

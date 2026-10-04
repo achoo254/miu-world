@@ -6,7 +6,8 @@
 // server uses it up first, then the round starts with it (the same for every game, round.ts).
 import { useCallback, useEffect, useRef, useState, type ReactElement } from 'react';
 import type { MinigameParams } from '@miu/schema/content';
-import type { StepCompleteResponse } from '@miu/schema/game';
+import type { CollectibleDrop, StepCompleteResponse } from '@miu/schema/game';
+import { CollectibleDropNote } from '../collection/collectible-drop';
 import type { MinigameSpec } from '@miu/schema/minigame';
 import type { BoosterEffect } from '@miu/schema/shop';
 import { freshPicker } from '@miu/quest/pick-fresh';
@@ -37,6 +38,8 @@ export interface WinOutcome {
   reward: StepCompleteResponse['reward'];
   /** The new level when this win levelled the child up. */
   levelUp: number | null;
+  /** The collectible this round dropped (none for an older server or a region without a set). */
+  collectible?: CollectibleDrop | null;
 }
 
 /** The child's character as a picture, by species (content/species.json). */
@@ -421,7 +424,7 @@ export function MinigameOverlay({ game, goal, params = {}, region, playerName, s
             <p className="minigame-line">
               <Bi vi={result.line.vi} en={result.line.en} />
             </p>
-            {result.won ? <Payout payout={payout} onRetry={() => void send(result.score)} /> : null}
+            {result.won ? <Payout payout={payout} fill={fill} onRetry={() => void send(result.score)} /> : null}
             {region ? <RegionMinigameProgress region={region} /> : null}
           </div>
           <div className="minigame-actions minigame-actions--row">
@@ -453,7 +456,7 @@ function RegionMinigameProgress({ region }: { region: string }) {
 }
 
 /** The server's reward for a won round: every win pays (owner, 03/10/2026). */
-function Payout({ payout, onRetry }: { payout: Payout; onRetry: () => void }) {
+function Payout({ payout, fill, onRetry }: { payout: Payout; fill: (text: string) => string; onRetry: () => void }) {
   if (payout.state === 'none') return null;
   if (payout.state === 'sending') {
     return (
@@ -472,25 +475,28 @@ function Payout({ payout, onRetry }: { payout: Payout; onRetry: () => void }) {
       </p>
     );
   }
-  const { reward, levelUp } = payout.outcome;
+  const { reward, levelUp, collectible } = payout.outcome;
   if (!reward) return null;
   return (
-    <p className="minigame-payout" data-id="minigame-reward">
-      {reward.xp > 0 ? (
-        <span className="scene-chip">
-          <Icon name="sparkles" size={24} /> +{reward.xp} XP
-        </span>
-      ) : null}
-      {reward.coin > 0 ? (
-        <span className="scene-chip">
-          <Icon name="coin" size={24} /> <T k="minigame.coinsUp" params={{ coin: reward.coin }} />
-        </span>
-      ) : null}
-      {levelUp ? (
-        <span className="scene-chip minigame-level" data-id="minigame-level-up">
-          <SpriteIcon name="trophy" size={24} /> <T k="common.levelUpTo" params={{ level: levelUp }} />
-        </span>
-      ) : null}
-    </p>
+    <>
+      <p className="minigame-payout" data-id="minigame-reward">
+        {reward.xp > 0 ? (
+          <span className="scene-chip">
+            <Icon name="sparkles" size={24} /> +{reward.xp} XP
+          </span>
+        ) : null}
+        {reward.coin > 0 ? (
+          <span className="scene-chip">
+            <Icon name="coin" size={24} /> <T k="minigame.coinsUp" params={{ coin: reward.coin }} />
+          </span>
+        ) : null}
+        {levelUp ? (
+          <span className="scene-chip minigame-level" data-id="minigame-level-up">
+            <SpriteIcon name="trophy" size={24} /> <T k="common.levelUpTo" params={{ level: levelUp }} />
+          </span>
+        ) : null}
+      </p>
+      <CollectibleDropNote drop={collectible} fill={fill} />
+    </>
   );
 }

@@ -67,7 +67,11 @@ describe('quest progress and rewards (server is the source of truth)', () => {
         run: 1,
       },
     ]);
-    expect((await agent.get('/api/inventory').expect(200)).body).toEqual({ items: [{ itemId: 'la-than', qty: 1 }] });
+    // The quest's Lá thần, and the forest collectible the run dropped.
+    const bag = (await agent.get('/api/inventory').expect(200)).body as { items: Array<{ itemId: string; qty: number }> };
+    expect(bag.items).toHaveLength(2);
+    expect(bag.items).toEqual(expect.arrayContaining([{ itemId: 'la-than', qty: 1 }]));
+    expect(FIXTURE_CONTENT.collectibles.get('khu-rung-bi-mat')?.items.map((e) => e.id)).toContain(bag.items.find((i) => i.itemId !== 'la-than')?.itemId);
   });
 
   it('ignores reward values sent by the client', async () => {
@@ -122,7 +126,7 @@ describe('quest progress and rewards (server is the source of truth)', () => {
     const again = await step(agent, 'quest-c', 'add-flowers', { answer: { value: 2 } }).expect(200);
     expect(again.body).toMatchObject({ repeated: true, reward: { xp: 5 }, progress: { xp: 5 } });
     const rows = await app.db.select().from(t.rewardLedger).where(eq(t.rewardLedger.childId, childId));
-    expect(rows).toHaveLength(1);
+    expect(rows.map((r) => r.source).sort()).toEqual(['drop:quest:quest-c', 'quest:quest-c']);
   });
 
   it('rejects skipping steps with 409', async () => {
@@ -155,7 +159,7 @@ describe('quest progress and rewards (server is the source of truth)', () => {
     expect(results.every((r) => r.status === 200)).toBe(true);
     expect(results.filter((r) => r.body.repeated === false)).toHaveLength(1);
     const rows = await app.db.select().from(t.rewardLedger).where(eq(t.rewardLedger.childId, childId));
-    expect(rows).toHaveLength(1);
+    expect(rows.map((r) => r.source).sort()).toEqual(['drop:quest:quest-c', 'quest:quest-c']);
     expect((await agent.get('/api/progress').expect(200)).body.xp).toBe(5);
   });
 
@@ -188,7 +192,7 @@ describe('quest progress and rewards (server is the source of truth)', () => {
     expect(progress.skillXp).toEqual(expectedSkills);
     expect(progress.xp).toBe(ledger.reduce((s, r) => s + r.xp, 0));
     // No move names a run, so no quest is played twice: at most one reward per quest.
-    expect(ledger.length).toBeLessThanOrEqual(Object.keys(PLAY).length);
+    expect(ledger.filter((r) => r.source.startsWith('quest:')).length).toBeLessThanOrEqual(Object.keys(PLAY).length);
   });
 
   it('never pays a finished quest twice, even when its content later gains a step', async () => {
@@ -207,7 +211,7 @@ describe('quest progress and rewards (server is the source of truth)', () => {
     const res = await step(v2, 'quest-c', 'wave-back').expect(200);
     expect(res.body.repeated).toBe(true);
     const rows = await app.db.select().from(t.rewardLedger).where(eq(t.rewardLedger.childId, childId));
-    expect(rows.map((r) => r.source)).toEqual(['quest:quest-c']);
+    expect(rows.map((r) => r.source).sort()).toEqual(['drop:quest:quest-c', 'quest:quest-c']);
   });
 
   it('plays a quest that was added only as a JSON file', async () => {
@@ -254,6 +258,7 @@ describe('scoring a finished quest', () => {
       levelAfter: 1,
       skillLevels: [{ skillId: 'doc-hieu', levelBefore: 1, levelAfter: 1 }],
       notebook: [{ step: 'solve-tree', question: '2 + 3 = ?', answer: '5' }],
+      collectible: expect.objectContaining({ mapId: 'khu-rung-bi-mat', owned: 1 }) as unknown,
     });
     const b = await finish(agent, 'quest-b');
     expect(b.body.completion).toMatchObject({
@@ -454,8 +459,9 @@ describe('textbook mechanics over the API', () => {
 describe('playing a finished quest again (every run pays, owner 03/10/2026)', () => {
   /** Plays a whole fixture quest as run `run`. */
   const replay = (agent: Agent, quest: string, run: number) => finish(agent, quest, { run });
+  /** Quest reward rows of the ledger (each paid run also has its collectible's `drop:` row). */
   const ledgerOf = async (childId: string) =>
-    (await app.db.select().from(t.rewardLedger).where(eq(t.rewardLedger.childId, childId))).map((r) => r.source).sort();
+    (await app.db.select().from(t.rewardLedger).where(eq(t.rewardLedger.childId, childId))).map((r) => r.source).filter((s) => s.startsWith('quest:')).sort();
 
   it('pays a lesson again for a full second run, and says which run the steps belong to', async () => {
     const { agent, childId } = await playingChild();
@@ -553,7 +559,7 @@ describe('minigame side quests', () => {
     const resent = await step(agent, 'side-egg', 'bye', { run: 2 }).expect(200);
     expect(resent.body).toMatchObject({ repeated: true, completion: null });
     const sources = (await app.db.select().from(t.rewardLedger).where(eq(t.rewardLedger.childId, childId))).map((r) => r.source).sort();
-    expect(sources).toEqual(['quest:side-egg', 'quest:side-egg#2']);
+    expect(sources).toEqual(['drop:quest:side-egg', 'drop:quest:side-egg#2', 'quest:side-egg', 'quest:side-egg#2']);
     expect((await agent.get('/api/progress').expect(200)).body).toMatchObject({ xp: 24, coins: 6 });
   });
 });
@@ -712,6 +718,7 @@ describe('IDOR and session rules for game routes', () => {
       .select({ n: sql<number>`count(*)::int` })
       .from(t.rewardLedger)
       .where(eq(t.rewardLedger.childId, a.childId));
-    expect(aLedger?.n).toBe(1);
+    // Her quest's reward and the collectible it dropped.
+    expect(aLedger?.n).toBe(2);
   });
 });

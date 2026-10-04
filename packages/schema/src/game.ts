@@ -87,6 +87,9 @@ export const GrantedReward = z.object({
 export const NotebookLine = z.object({ step: ContentId, question: z.string(), answer: z.string() });
 export type NotebookLine = z.infer<typeof NotebookLine>;
 
+export const CollectibleDrop = z.object({ itemId: ContentId, mapId: ContentId, owned: z.number().int().positive() });
+export type CollectibleDrop = z.infer<typeof CollectibleDrop>;
+
 export const QuestCompletion = z.object({
   stars: z.number().int().min(1).max(3),
   xpAwarded: z.number().int().min(0),
@@ -96,6 +99,8 @@ export const QuestCompletion = z.object({
   skillLevels: z.array(z.object({ skillId: ContentId, levelBefore: z.number().int().min(1), levelAfter: z.number().int().min(1) })),
   /** Every question of the quest with its answer, to copy into the vở before the reward. */
   notebook: z.array(NotebookLine).optional(),
+  /** The collectible this run dropped (content/collectibles.json), with how many she owns now (1: a new one). */
+  collectible: CollectibleDrop.nullish(),
 });
 export type QuestCompletion = z.infer<typeof QuestCompletion>;
 

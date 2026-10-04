@@ -1,5 +1,6 @@
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import path from 'node:path';
+import { CollectibleCatalog, collectibleIssues, type CollectibleSet } from '@miu/schema/collectible';
 import { PetCatalog, type Pet } from '@miu/schema/pet';
 import { RegionCatalog, playableMaps } from '@miu/schema/region';
 import { ConsentDocument, ContentId, LevelCurve, NameList, QuestDefinition, SkillCatalog, type PlayableQuest } from '@miu/schema/content';
@@ -39,6 +40,16 @@ export interface ContentCatalog {
   textbooks: ReadonlyMap<string, QuestTextbook>;
   /** Maps a child can play in: the open regions' maps (content/world/regions.json). */
   maps: ReadonlySet<string>;
+  /** Collectible sets (content/collectibles.json), by region id, in catalogue order. */
+  collectibles: ReadonlyMap<string, CollectibleSet>;
+}
+
+/** The collectible sets, checked against the regions; a catalogue that does not fit fails the boot. */
+export function loadCollectibles(dir: string, regions: RegionCatalog): Map<string, CollectibleSet> {
+  const catalog = readContentJson(CollectibleCatalog, path.join(dir, 'collectibles.json'));
+  const issues = collectibleIssues(catalog, { regions: new Set(regions.regions.map((r) => r.id)) });
+  if (issues.length > 0) throw new Error(`invalid collectibles: ${issues.join('; ')}`);
+  return new Map(catalog.sets.map((set) => [set.mapId, set]));
 }
 
 export interface ContentOptions {
@@ -116,6 +127,7 @@ export function loadContentCatalog({ dir = CONTENT_DIR, questDir, extraQuestDir 
   const skillIds = new Set(catalog.subjects.flatMap((s) => s.skills.map((k) => k.id)));
   const minigames = readMinigames(path.join(dir, 'minigames'));
   const quests = loadQuests(questDir ?? path.join(dir, 'quests'), skillIds, extraQuestDir, minigames);
+  const regions = readContentJson(RegionCatalog, path.join(dir, 'world/regions.json'));
   const accessories = buildAccessoryCatalog(jsonFiles(path.join(dir, 'accessories')).map((file) => JSON.parse(readFileSync(file, 'utf8')) as unknown));
   return {
     childDisplayNames: new Set(readContentJson(NameList, path.join(dir, 'names/child-display-names.json')).names),
@@ -131,6 +143,7 @@ export function loadContentCatalog({ dir = CONTENT_DIR, questDir, extraQuestDir 
     quests,
     minigames,
     textbooks: questTextbooks(quests.values(), path.join(dir, 'curriculum')),
-    maps: new Set(playableMaps(readContentJson(RegionCatalog, path.join(dir, 'world/regions.json')))),
+    maps: new Set(playableMaps(regions)),
+    collectibles: loadCollectibles(dir, regions),
   };
 }

@@ -64,7 +64,7 @@ export async function sendWonRun(side: SideQuest, score: number, onResponse: (re
   }
   const completion = last?.completion;
   const levelUp = completion && completion.levelAfter > completion.levelBefore ? completion.levelAfter : null;
-  return { outcome: { reward: last?.reward ?? null, levelUp }, progress };
+  return { outcome: { reward: last?.reward ?? null, levelUp, collectible: completion?.collectible ?? null }, progress };
 }
 
 export interface SideQuests {

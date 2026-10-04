@@ -121,7 +121,7 @@ export function ProfileScreen() {
                 <T k="profile.collection" />
               </h2>
               <ul className="item-grid-backpack">
-                {[...ITEMS.values()].map((item) => {
+                {[...ITEMS.values()].filter((item) => item.kind !== 'collectible').map((item) => {
                   const has = (owned[item.id] ?? 0) > 0;
                   return (
                     <li key={item.id}>

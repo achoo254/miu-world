@@ -8,6 +8,7 @@
 import { useEffect, useState, type CSSProperties } from 'react';
 import type { NotebookLine, QuestCompletion, StepCompleteResponse } from '@miu/schema/game';
 import { ITEMS, itemIcon } from '../backpack/items';
+import { CollectibleDropNote } from '../collection/collectible-drop';
 import { lastSpeakerOf, NpcPortrait } from '../dialogue/npc-portrait';
 import { pairOf, type TextKey } from '../i18n/i18n';
 import { Bi, T, useT } from '../i18n/use-t';
@@ -167,6 +168,7 @@ function RewardScreen({ completion, reward, quest, data }: { completion: QuestCo
           </li>
         ))}
       </ul>
+      <CollectibleDropNote drop={completion.collectible} fill={fill} />
       <RegionChestProgress quest={quest} data={data} reveal={reveal(items.length + skills.length)} />
       {completion.xpAwarded < quest.reward.xp ? (
         <p className="hint" data-id="reward-encourage">

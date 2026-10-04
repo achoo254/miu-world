@@ -1,0 +1,785 @@
+{
+  "version": 1,
+  "sets": [
+    {
+      "mapId": "khu-rung-bi-mat",
+      "name": "Báu vật Rừng xanh",
+      "description": "Những món quà thiên nhiên kỳ diệu ẩn giấu dưới tán lá đại thụ râm mát.",
+      "en": {
+        "name": "Green Forest Treasures",
+        "title": "Green Forest Explorer"
+      },
+      "reward": {
+        "coins": 150,
+        "title": "Nhà Thám Hiểm Rừng Xanh"
+      },
+      "items": [
+        {
+          "id": "hat-de-rung",
+          "rarity": "common",
+          "lore": "Một hạt dẻ bùi ngọt được sóc rừng chăm chút cất giữ."
+        },
+        {
+          "id": "la-phong-do",
+          "rarity": "common",
+          "lore": "Lá phong đỏ như ngọn lửa nhỏ sưởi ấm mùa thu."
+        },
+        {
+          "id": "to-ong-mat",
+          "rarity": "uncommon",
+          "lore": "Mật ngọt từ hàng ngàn bông hoa rừng nguyên sơ."
+        },
+        {
+          "id": "nam-chuong-do",
+          "rarity": "common",
+          "lore": "Cây nấm nhỏ xinh như chiếc ô che mưa cho chú kiến."
+        },
+        {
+          "id": "canh-thong-thom",
+          "rarity": "common",
+          "lore": "Mùi hương rừng già mang lại cảm giác bình yên."
+        },
+        {
+          "id": "long-vu-chim-rung",
+          "rarity": "common",
+          "lore": "Mỗi chiếc lông kể chuyện một chuyến bay qua tán lá."
+        },
+        {
+          "id": "buom-lam-rung",
+          "rarity": "uncommon",
+          "lore": "Nàng bướm hiền hòa mang theo sắc biếc của dòng suối rừng."
+        },
+        {
+          "id": "hoa-chuong-tim",
+          "rarity": "uncommon",
+          "lore": "Mỗi sớm mai, hoa chuông đọng từng giọt sương mai lấp lánh."
+        },
+        {
+          "id": "go-tram-thom",
+          "rarity": "rare",
+          "lore": "Mẩu gỗ quý ấp ủ hương thơm qua trăm năm rừng xanh."
+        },
+        {
+          "id": "reu-xanh-co-thu",
+          "rarity": "common",
+          "lore": "Chiếc áo ấm êm giữ ẩm cho toàn bộ khu rừng."
+        }
+      ]
+    },
+    {
+      "mapId": "lang-ven-song",
+      "name": "Hương sắc Làng Sen",
+      "description": "Vẻ đẹp thanh bình êm ả của bến nước, dòng sông và đầm sen bát ngát.",
+      "en": {
+        "name": "Lotus Village Charms",
+        "title": "River Messenger"
+      },
+      "reward": {
+        "coins": 150,
+        "title": "Sứ Giả Sông Nước"
+      },
+      "items": [
+        {
+          "id": "canh-sen-hong",
+          "rarity": "common",
+          "lore": "Hương sen dịu ngọt lan tỏa khắp sớm mai làng quê."
+        },
+        {
+          "id": "vay-ca-bac",
+          "rarity": "common",
+          "lore": "Vảy cá chép hiền hòa bơi lội dưới chân cầu tre."
+        },
+        {
+          "id": "oc-da-song",
+          "rarity": "common",
+          "lore": "Chú ốc chăm chỉ cặm cụi dọn sạch dòng kênh nhỏ."
+        },
+        {
+          "id": "ech-xanh-bo-ao",
+          "rarity": "uncommon",
+          "lore": "Ếch kêu uôm uôm, ao chuôm đầy nước."
+        },
+        {
+          "id": "hoa-dang-sen",
+          "rarity": "rare",
+          "lore": "Mang theo ngàn điều ước bình an cho cả làng xóm."
+        },
+        {
+          "id": "da-cuoi-song",
+          "rarity": "common",
+          "lore": "Viên sỏi đá phẳng lì rất thích hợp chơi trò lia thia mặt nước."
+        },
+        {
+          "id": "canh-beo-tay",
+          "rarity": "common",
+          "lore": "Cánh bèo bồng bềnh dập dềnh theo từng con sóng vỗ."
+        },
+        {
+          "id": "thuyen-nan-giay",
+          "rarity": "common",
+          "lore": "Chiếc thuyền chở theo những ước mơ bay xa tới biển lớn."
+        },
+        {
+          "id": "chuong-gio-truc",
+          "rarity": "uncommon",
+          "lore": "Âm thanh trong trẻo ru êm buổi trưa hè tĩnh lặng."
+        },
+        {
+          "id": "tuong-nghe-dat",
+          "rarity": "rare",
+          "lore": "Món đồ chơi quê mộc mạc các bạn nhỏ trong làng nặn tặng nhau."
+        }
+      ]
+    },
+    {
+      "mapId": "truong-hoc",
+      "name": "Kỷ niệm Mái trường",
+      "description": "Những đồ dùng học tập thân thương gắn bó suốt những năm tháng tuổi thơ.",
+      "en": {
+        "name": "School Memories",
+        "title": "Good Little Pupil"
+      },
+      "reward": {
+        "coins": 150,
+        "title": "Bé Chăm Ngoan"
+      },
+      "items": [
+        {
+          "id": "thuoc-ke-go",
+          "rarity": "common",
+          "lore": "Giúp bé kẻ từng đường thẳng tắp và đo đạc chính xác trong vở."
+        },
+        {
+          "id": "but-muc-tim",
+          "rarity": "common",
+          "lore": "Nét chữ nết người, cây bút thân quen của các bạn nhỏ."
+        },
+        {
+          "id": "hop-sap-mau",
+          "rarity": "common",
+          "lore": "Những que màu lung linh tô điểm cho ước mơ tuổi học trò."
+        },
+        {
+          "id": "tem-be-ngoan",
+          "rarity": "uncommon",
+          "lore": "Phần thưởng xứng đáng cho bé siêng năng học tốt."
+        },
+        {
+          "id": "ban-tinh-hat-go",
+          "rarity": "common",
+          "lore": "Gảy một hạt, đếm một số, phép cộng hóa thành trò chơi."
+        },
+        {
+          "id": "tau-bay-giay",
+          "rarity": "common",
+          "lore": "Chở theo tiếng cười giòn giã trong giờ ra chơi rộn ràng."
+        },
+        {
+          "id": "qua-bong-ro-mini",
+          "rarity": "uncommon",
+          "lore": "Được các bạn chuyền tay nhau thi tài ném bóng vào rổ."
+        },
+        {
+          "id": "chuong-truong-dong",
+          "rarity": "rare",
+          "lore": "Tiếng chuông thân thương gắn liền với bước chân đến trường mỗi sớm."
+        },
+        {
+          "id": "khan-quang-do",
+          "rarity": "uncommon",
+          "lore": "Niềm tự hào rực rỡ của người đội viên chăm ngoan gương mẫu."
+        },
+        {
+          "id": "trong-truong-nho",
+          "rarity": "rare",
+          "lore": "Nhịp trống vang rền giục bé hăng say học tập từng ngày."
+        }
+      ]
+    },
+    {
+      "mapId": "thu-vien",
+      "name": "Kho báu Tri thức",
+      "description": "Những bảo vật quý giá và cổ xưa được lưu giữ trong các giá sách tháp cao.",
+      "en": {
+        "name": "Treasures of Knowledge",
+        "title": "Wise Scholar"
+      },
+      "reward": {
+        "coins": 150,
+        "title": "Học Giả Uyên Bác"
+      },
+      "items": [
+        {
+          "id": "tem-sach-co",
+          "rarity": "common",
+          "lore": "Minh chứng cho những kho tàng tri thức qua nhiều thế hệ."
+        },
+        {
+          "id": "kinh-lup-bac",
+          "rarity": "common",
+          "lore": "Dụng cụ đắc lực của các nhà thám hiểm mê khám phá sự thật."
+        },
+        {
+          "id": "lo-muc-tau",
+          "rarity": "common",
+          "lore": "Nét mực tàu lưu giữ nét chữ thanh thoát và uyên bác."
+        },
+        {
+          "id": "the-muon-sach-vang",
+          "rarity": "uncommon",
+          "lore": "Phần thưởng dành tặng độc giả chăm chỉ nhất thư viện."
+        },
+        {
+          "id": "cuon-giay-coi",
+          "rarity": "uncommon",
+          "lore": "Ẩn chứa những bí ẩn thú vị đang chờ bé khám phá giải mã."
+        },
+        {
+          "id": "kep-sach-ruy-bang",
+          "rarity": "common",
+          "lore": "Giúp bạn nhỏ dễ dàng mở lại đúng trang sách phiêu lưu kỳ thú."
+        },
+        {
+          "id": "but-long-thu-phap",
+          "rarity": "uncommon",
+          "lore": "Vẽ nên những chữ cái rồng bay phượng múa uy nghi."
+        },
+        {
+          "id": "ban-do-sao-dem",
+          "rarity": "rare",
+          "lore": "Dẫn đường cho các thủy thủ vượt ngàn trùng dương bao la."
+        },
+        {
+          "id": "kinh-doc-sach",
+          "rarity": "rare",
+          "lore": "Đeo vào là chữ nhỏ cũng hiện ra rõ ràng."
+        },
+        {
+          "id": "den-doc-sach",
+          "rarity": "common",
+          "lore": "Ánh đèn ấm cúng xua tan bóng tối quanh chiếc bàn gỗ thông."
+        }
+      ]
+    },
+    {
+      "mapId": "cho-phien",
+      "name": "Sắc màu Chợ phiên",
+      "description": "Không khí nhộn nhịp, vui tươi và những món đồ thủ công độc đáo tại chợ phiên.",
+      "en": {
+        "name": "Market Day Colours",
+        "title": "Little Merchant"
+      },
+      "reward": {
+        "coins": 150,
+        "title": "Thương Gia Tí Hon"
+      },
+      "items": [
+        {
+          "id": "to-he-rong",
+          "rarity": "common",
+          "lore": "Bàn tay tài hoa của nghệ nhân nhào nặn nên món đồ chơi dân gian."
+        },
+        {
+          "id": "keo-mach-nha",
+          "rarity": "common",
+          "lore": "Vị ngọt thanh dịu từ mầm lúa mạch thơm lừng ký ức tuổi thơ."
+        },
+        {
+          "id": "quat-nan-tre",
+          "rarity": "common",
+          "lore": "Mang theo từng làn gió mát rượi phe phẩy bờ vai."
+        },
+        {
+          "id": "tui-tho-cam",
+          "rarity": "uncommon",
+          "lore": "Được dệt bằng đôi bàn tay khéo léo của các cô gái bản làng."
+        },
+        {
+          "id": "do-gom-mini",
+          "rarity": "common",
+          "lore": "Sản phẩm gốm nung tinh xảo từ lò gốm lâu đời bên sông."
+        },
+        {
+          "id": "dong-tien-co",
+          "rarity": "rare",
+          "lore": "Đồng tiền may mắn đem lại tài lộc và niềm vui cho người giữ."
+        },
+        {
+          "id": "banh-com-xanh",
+          "rarity": "common",
+          "lore": "Hương vị mùa thu nồng nàn gói trọn trong chiếc bánh vuông vắn."
+        },
+        {
+          "id": "vong-chuoi-hat",
+          "rarity": "uncommon",
+          "lore": "Vòng hạt may mắn các bạn nhỏ thường đeo khi đi hội chợ xuân."
+        },
+        {
+          "id": "chiec-coi-dat",
+          "rarity": "common",
+          "lore": "Tiếng còi reo vui rộn rã góc chợ phiên ngày mùa."
+        },
+        {
+          "id": "canh-dieu-giay",
+          "rarity": "rare",
+          "lore": "Bay cao vút lên bầu trời xanh mang theo nụ cười rạng rỡ."
+        }
+      ]
+    },
+    {
+      "mapId": "xom-mai-am",
+      "name": "Kỷ vật Mái ấm",
+      "description": "Tình yêu thương gia đình đầm ấm gửi gắm trong từng góc nhỏ của xóm làng.",
+      "en": {
+        "name": "Cosy Home Keepsakes",
+        "title": "Kind Heart"
+      },
+      "reward": {
+        "coins": 150,
+        "title": "Trái Tim Nhân Ái"
+      },
+      "items": [
+        {
+          "id": "banh-quy-me-nuong",
+          "rarity": "common",
+          "lore": "Từng chiếc bánh chứa chan tình yêu thương ngọt ngào của mẹ."
+        },
+        {
+          "id": "cuon-len-hong",
+          "rarity": "common",
+          "lore": "Mỗi vòng đan len là một lời chúc ấm áp của bà dành cho cháu."
+        },
+        {
+          "id": "dong-ho-qua-lac",
+          "rarity": "common",
+          "lore": "Tiếng tích tắc quen thuộc của những buổi chiều ấm áp."
+        },
+        {
+          "id": "den-dau-co",
+          "rarity": "uncommon",
+          "lore": "Ngọn lửa nhỏ thắp lên sự sum vầy quanh mâm cơm gia đình."
+        },
+        {
+          "id": "khan-len-dan",
+          "rarity": "common",
+          "lore": "Giữ ấm cổ họng cho bé luôn khỏe mạnh tung tăng đến trường."
+        },
+        {
+          "id": "bup-be-vai",
+          "rarity": "uncommon",
+          "lore": "Người bạn nhỏ trung thành luôn lắng nghe mọi tâm sự của bé."
+        },
+        {
+          "id": "khung-tranh-go",
+          "rarity": "rare",
+          "lore": "Lưu giữ khoảnh khắc hạnh phúc nhất của mái ấm thân thương."
+        },
+        {
+          "id": "guong-tron-cua-ba",
+          "rarity": "common",
+          "lore": "Gương nhỏ soi thấy nụ cười hiền của bà."
+        },
+        {
+          "id": "chiec-sao-truc",
+          "rarity": "uncommon",
+          "lore": "Tiếng sáo vi vu ngân nga theo từng ngọn gió chiều êm đềm."
+        },
+        {
+          "id": "banh-mi-sua",
+          "rarity": "rare",
+          "lore": "Bữa sáng tràn đầy năng lượng để bé bắt đầu ngày mới vui vẻ."
+        }
+      ]
+    },
+    {
+      "mapId": "nong-trai",
+      "name": "Mùa vàng Nông trang",
+      "description": "Hoa thơm trái ngọt và nông sản bội thu trên đồng ruộng phì nhiêu.",
+      "en": {
+        "name": "Golden Harvest",
+        "title": "Hard-working Farmer"
+      },
+      "reward": {
+        "coins": 150,
+        "title": "Nông Dân Cần Cù"
+      },
+      "items": [
+        {
+          "id": "bong-lua-vang",
+          "rarity": "common",
+          "lore": "Hạt ngọc trời ban kết tinh từ giọt mồ hôi của bác nông dân."
+        },
+        {
+          "id": "trung-ga-ta",
+          "rarity": "common",
+          "lore": "Nguồn dinh dưỡng thơm ngon quý giá cho các món bánh."
+        },
+        {
+          "id": "binh-sua-bo",
+          "rarity": "common",
+          "lore": "Ly sữa trắng ngần giúp bé khỏe khoắn và cao lớn mỗi ngày."
+        },
+        {
+          "id": "cu-ca-rot-ngot",
+          "rarity": "common",
+          "lore": "Giàu vitamin A giúp đôi mắt bé thêm sáng tinh anh."
+        },
+        {
+          "id": "bap-ngo-vang",
+          "rarity": "common",
+          "lore": "Vị ngọt bùi thơm nức góc bếp nhỏ những ngày thu."
+        },
+        {
+          "id": "dau-tay-chin",
+          "rarity": "uncommon",
+          "lore": "Món tráng miệng chua ngọt thanh mát bạn nào cũng thích mê."
+        },
+        {
+          "id": "hat-huong-duong",
+          "rarity": "common",
+          "lore": "Biểu tượng của niềm lạc quan và hướng tới ánh sáng rạng ngời."
+        },
+        {
+          "id": "qua-dua-hau",
+          "rarity": "uncommon",
+          "lore": "Sự tích quả dưa hấu của chàng Mai An Tiêm cần cù thông minh."
+        },
+        {
+          "id": "chuoi-chin-cay",
+          "rarity": "common",
+          "lore": "Trái cây ngọt ngào bồi bổ năng lượng dồi dào."
+        },
+        {
+          "id": "chum-nho-ngot",
+          "rarity": "rare",
+          "lore": "Từng quả nho căng tròn óng ả như những viên ngọc tím."
+        }
+      ]
+    },
+    {
+      "mapId": "lau-dai",
+      "name": "Ánh sao Hoàng gia",
+      "description": "Những biểu tượng danh giá của lòng dũng cảm và tinh thần hiệp sĩ quả cảm.",
+      "en": {
+        "name": "Royal Starlight",
+        "title": "Royal Knight"
+      },
+      "reward": {
+        "coins": 150,
+        "title": "Hiệp Sĩ Hoàng Gia"
+      },
+      "items": [
+        {
+          "id": "huy-hieu-hiep-si",
+          "rarity": "common",
+          "lore": "Phẩm chất quả cảm và lòng nhân ái của người hiệp sĩ tí hon."
+        },
+        {
+          "id": "ky-lan-bong",
+          "rarity": "uncommon",
+          "lore": "Người ta kể kỳ lân chỉ hiện ra với những bạn nhỏ tốt bụng."
+        },
+        {
+          "id": "chia-khoa-thanh-co",
+          "rarity": "rare",
+          "lore": "Mở ra những căn phòng bí ẩn cất giữ lịch sử lâu đời."
+        },
+        {
+          "id": "vuong-mien-hoa",
+          "rarity": "uncommon",
+          "lore": "Tỏa sáng lấp lánh dưới ánh đèn nến cung điện huy hoàng."
+        },
+        {
+          "id": "ly-pha-le",
+          "rarity": "common",
+          "lore": "Chiếc ly quý giá dùng trong các bữa tiệc hoàng gia trang trọng."
+        },
+        {
+          "id": "rong-con-su",
+          "rarity": "common",
+          "lore": "Rồng con không phun lửa, chỉ thích phun bong bóng."
+        },
+        {
+          "id": "cup-vinh-quang",
+          "rarity": "rare",
+          "lore": "Dũng cảm là biết giúp đỡ bạn bè."
+        },
+        {
+          "id": "thu-niem-phong",
+          "rarity": "uncommon",
+          "lore": "Chứa đựng những thông điệp hòa bình gửi tới muôn nơi."
+        },
+        {
+          "id": "ruy-bang-nhung",
+          "rarity": "common",
+          "lore": "Tô điểm cho cung điện thêm phần lộng lẫy và rạng rỡ."
+        },
+        {
+          "id": "chuong-bac-thap-canh",
+          "rarity": "rare",
+          "lore": "Tiếng chuông báo tin vui khắp vương quốc."
+        }
+      ]
+    },
+    {
+      "mapId": "trung-tam",
+      "name": "Nhịp sống Đô thị",
+      "description": "Sự nhộn nhịp, rộn rã và những kỷ niệm vui tươi tại quảng trường trung tâm.",
+      "en": {
+        "name": "City Life",
+        "title": "Town Resident"
+      },
+      "reward": {
+        "coins": 150,
+        "title": "Cư Dân Phố Thị"
+      },
+      "items": [
+        {
+          "id": "ve-xe-buyt-sao",
+          "rarity": "common",
+          "lore": "Khởi đầu cho những chuyến phiêu lưu đầy thú vị."
+        },
+        {
+          "id": "bong-bong-bay-mau",
+          "rarity": "common",
+          "lore": "Mang theo niềm vui bay bổng tới mọi ngóc ngách thành phố."
+        },
+        {
+          "id": "kem-oc-que",
+          "rarity": "common",
+          "lore": "Món quà ngọt ngào xua tan mệt mỏi sau chuyến đi dạo dài."
+        },
+        {
+          "id": "chuong-xe-dap",
+          "rarity": "common",
+          "lore": "Âm thanh rộn ràng quen thuộc trên những cung đường rợp bóng cây."
+        },
+        {
+          "id": "tem-buu-dien",
+          "rarity": "uncommon",
+          "lore": "Kết nối những người bạn ở phương xa xích lại gần nhau hơn."
+        },
+        {
+          "id": "banh-donut-ngot",
+          "rarity": "common",
+          "lore": "Món bánh ăn vặt hấp dẫn của tiệm bánh ngọt quảng trường."
+        },
+        {
+          "id": "ve-xem-xiec",
+          "rarity": "uncommon",
+          "lore": "Đưa bé vào không gian ngập tràn bất ngờ và tiếng cười giòn tan."
+        },
+        {
+          "id": "dong-xu-uoc-nguyen",
+          "rarity": "rare",
+          "lore": "Ước cho mọi bạn nhỏ khắp nơi luôn được vui vẻ và bình an."
+        },
+        {
+          "id": "bang-pha-mau",
+          "rarity": "uncommon",
+          "lore": "Tô vẽ nên bức tranh thành phố lung linh đa sắc diện."
+        },
+        {
+          "id": "hop-qua-trung-tam",
+          "rarity": "rare",
+          "lore": "Món quà tri ân tấm lòng tốt bụng của cư dân đô thị."
+        }
+      ]
+    },
+    {
+      "mapId": "nui-tuyet",
+      "name": "Băng tuyết Kỳ diệu",
+      "description": "Vẻ đẹp lấp lánh tinh khôi của đỉnh núi tuyết phủ trắng xóa quanh năm.",
+      "en": {
+        "name": "Snowy Wonders",
+        "title": "Ice Explorer"
+      },
+      "reward": {
+        "coins": 150,
+        "title": "Nhà Thám Hiểm Băng Giá"
+      },
+      "items": [
+        {
+          "id": "bong-tuyet-pha-le",
+          "rarity": "common",
+          "lore": "Tác phẩm điêu khắc vi diệu của thiên nhiên mùa đông."
+        },
+        {
+          "id": "chuong-tuyet-bac",
+          "rarity": "common",
+          "lore": "Ngân vang khúc nhạc băng giá rộn rã khắp sườn núi."
+        },
+        {
+          "id": "khoi-bang-xanh",
+          "rarity": "uncommon",
+          "lore": "Lưu giữ sự mát lành vĩnh cửu của miền hàn đới."
+        },
+        {
+          "id": "hat-de-tuyet",
+          "rarity": "common",
+          "lore": "Hương vị bùi béo xua tan cái giá lạnh của mùa đông."
+        },
+        {
+          "id": "mu-len-tai-gau",
+          "rarity": "uncommon",
+          "lore": "Bảo vệ bé luôn ấm áp khi trượt tuyết trên đỉnh dốc."
+        },
+        {
+          "id": "gang-tay-tuyet",
+          "rarity": "common",
+          "lore": "Giữ cho đôi bàn tay luôn mềm mại và ấm nồng."
+        },
+        {
+          "id": "dau-chan-tuyet",
+          "rarity": "common",
+          "lore": "Dấu vết đáng yêu của người bạn bốn chân nhanh nhẹn."
+        },
+        {
+          "id": "xe-truot-tuyet",
+          "rarity": "uncommon",
+          "lore": "Mỗi lần trượt là một tràng cười giòn tan."
+        },
+        {
+          "id": "nguoi-tuyet-mini",
+          "rarity": "rare",
+          "lore": "Nụ cười tươi tắn mang lại niềm vui sưởi ấm trời đông."
+        },
+        {
+          "id": "canh-thong-tuyet",
+          "rarity": "rare",
+          "lore": "Cây thông kiên cường đứng vững giữa bão tuyết vùng cao."
+        }
+      ]
+    },
+    {
+      "mapId": "dao-bi-an",
+      "name": "Kỳ quan Đảo hoang",
+      "description": "Những kho báu huyền bí và sinh vật kỳ diệu giữa biển khơi mênh mông.",
+      "en": {
+        "name": "Island Wonders",
+        "title": "Treasure Island Chief"
+      },
+      "reward": {
+        "coins": 150,
+        "title": "Chúa Đảo Kho Báu"
+      },
+      "items": [
+        {
+          "id": "vo-oc-xa-cu",
+          "rarity": "common",
+          "lore": "Lời thì thầm ngàn năm của đại dương gửi gắm vào bờ cát."
+        },
+        {
+          "id": "sao-bien-vang",
+          "rarity": "common",
+          "lore": "Ngôi sao rực rỡ rơi từ bầu trời đêm xuống đáy biển sâu."
+        },
+        {
+          "id": "ngoc-trai-bien",
+          "rarity": "rare",
+          "lore": "Báu vật biển khơi quý giá kết tinh qua năm tháng sóng gió."
+        },
+        {
+          "id": "rua-bien-con",
+          "rarity": "uncommon",
+          "lore": "Rùa con lớn lên sẽ bơi khắp đại dương rồi trở về đảo."
+        },
+        {
+          "id": "manh-ban-do-kho-bau",
+          "rarity": "rare",
+          "lore": "Bí mật hàng trăm năm của các vị thuyền trưởng biển cả."
+        },
+        {
+          "id": "sua-bien-phat-sang",
+          "rarity": "common",
+          "lore": "Đèn lồng nhỏ của biển cả."
+        },
+        {
+          "id": "qua-dua-xiem",
+          "rarity": "common",
+          "lore": "Dòng nước ngọt lành xua tan cơn khát giữa trưa nắng đảo xa."
+        },
+        {
+          "id": "xo-xuc-cat",
+          "rarity": "common",
+          "lore": "Lâu đài cát cao nhất đảo bắt đầu từ chiếc xô này."
+        },
+        {
+          "id": "da-bot-nui-lua",
+          "rarity": "uncommon",
+          "lore": "Dấu tích từ ngọn núi lửa cổ xưa tạo nên hòn đảo hoang sơ."
+        },
+        {
+          "id": "chiec-phao-cuu-sinh",
+          "rarity": "rare",
+          "lore": "Người bạn an toàn luôn đồng hành cùng bé trong mỗi chuyến bơi lội."
+        }
+      ]
+    },
+    {
+      "mapId": "nha-cua-be",
+      "name": "Ngôi nhà Ấm áp",
+      "description": "Không gian thân thương gắn bó nhất với những kỷ niệm gia đình quý giá.",
+      "en": {
+        "name": "Warm Little Home",
+        "title": "Owner of the Little House"
+      },
+      "reward": {
+        "coins": 150,
+        "title": "Chủ Nhân Ngôi Nhà Nhỏ"
+      },
+      "items": [
+        {
+          "id": "buc-ve-gia-dinh",
+          "rarity": "rare",
+          "lore": "Gia đình là điểm tựa ấm áp và thân thương nhất của bé."
+        },
+        {
+          "id": "chiec-no-cai-ao",
+          "rarity": "common",
+          "lore": "Tô điểm thêm nét duyên dáng cho bộ đồng phục đến trường."
+        },
+        {
+          "id": "chau-sen-da",
+          "rarity": "common",
+          "lore": "Cây sen đá mọng nước tràn đầy sức sống kiên cường."
+        },
+        {
+          "id": "chia-khoa-nha",
+          "rarity": "common",
+          "lore": "Nơi ngập tràn tình yêu thương và tiếng cười chào đón bé về."
+        },
+        {
+          "id": "gau-bong-om",
+          "rarity": "uncommon",
+          "lore": "Người bạn dịu dàng xua tan nỗi sợ bóng đêm cho bé giấc ngủ say."
+        },
+        {
+          "id": "bup-be-nga",
+          "rarity": "uncommon",
+          "lore": "Mỗi lớp búp bê mở ra một điều bất ngờ thú vị cho bé."
+        },
+        {
+          "id": "dia-banh-ran",
+          "rarity": "common",
+          "lore": "Món ăn vặt thơm nức mũi nạp đầy năng lượng sau ngày dài học tập."
+        },
+        {
+          "id": "cay-but-than",
+          "rarity": "common",
+          "lore": "Cùng bé viết nên những trang bài học đầu đời rạng rỡ."
+        },
+        {
+          "id": "bat-sup-nong",
+          "rarity": "uncommon",
+          "lore": "Món súp bổ dưỡng chăm sóc sức khỏe cho cả gia đình."
+        },
+        {
+          "id": "chuong-gio-ban-cong",
+          "rarity": "rare",
+          "lore": "Khúc nhạc bình yên ru êm mái ấm gia đình hạnh phúc."
+        }
+      ]
+    }
+  ]
+}

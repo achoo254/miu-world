@@ -77,7 +77,7 @@ describe('sending a won minigame run', () => {
       { step: 'bye', body: { run: 1 } },
     ]);
     expect(seen).toHaveLength(4);
-    expect(sent?.outcome).toEqual({ reward: SIDE.reward, levelUp: 2 });
+    expect(sent?.outcome).toEqual({ reward: SIDE.reward, levelUp: 2, collectible: null });
   });
 
   it('plays a finished side quest again as its next run, which pays again', async () => {
