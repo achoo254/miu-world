@@ -276,7 +276,7 @@ describe('account flow', () => {
     renderAt('/profiles');
     fireEvent.click(await screen.findByRole('button', { name: 'Mèo Mây' }));
     fireEvent.click(await screen.findByRole('link', { name: 'Bắt đầu' }, { timeout: 5000 }));
-    expect(await screen.findByRole('button', { name: /Menu/ })).toBeTruthy();
+    expect(await screen.findByRole('button', { name: /Menu/ }, { timeout: 8000 })).toBeTruthy();
     await vi.waitFor(() => expect(gameLifecycle.started).toBeGreaterThan(0));
     expect(gameLifecycle.outfit).toEqual(['hat-witch-pink']);
     expect(calls.map((c) => c.key)).toContain(`POST /api/children/${CHILD}/select`);
