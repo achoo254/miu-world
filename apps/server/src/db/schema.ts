@@ -216,3 +216,26 @@ export const shopInventory = pgTable(
   },
   (t) => [primaryKey({ columns: [t.childId, t.itemId] }), check('shop_inventory_qty_not_negative', sql`${t.qty} >= 0`)],
 );
+
+/**
+ * In-game mail received by the child (system updates, NPC messages, gifts).
+ * Claiming attached rewards is idempotent via reward_ledger.
+ */
+export const mail = pgTable(
+  'mail',
+  {
+    id: uuid('id').primaryKey(),
+    childId: childRef(),
+    templateId: text('template_id').notNull(),
+    category: text('category').notNull(),
+    read: integer('read').notNull().default(0),
+    claimed: integer('claimed').notNull().default(0),
+    claimedAt: timestamp('claimed_at', { withTimezone: true }),
+    createdAt: createdAt(),
+  },
+  (t) => [
+    index('mail_child_idx').on(t.childId),
+    unique('mail_child_template').on(t.childId, t.templateId),
+  ],
+);
+

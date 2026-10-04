@@ -1,0 +1,291 @@
+.mail-panel-modal {
+  max-width: 48rem;
+  width: 95vw;
+}
+
+.mail-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  max-height: 75vh;
+}
+
+.mail-header-tabs {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  border-bottom: 2px solid var(--color-field-edge);
+  padding-bottom: var(--space-xs);
+}
+
+.mail-tabs {
+  display: flex;
+  gap: var(--space-xs);
+}
+
+.mail-tab-btn {
+  padding: var(--space-xs) var(--space-md);
+  border: 2px solid transparent;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--color-ink-soft);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--text-sm);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.mail-tab-btn[aria-selected='true'] {
+  background: var(--color-field);
+  border-color: var(--color-field-edge);
+  color: var(--color-primary);
+}
+
+.mail-count-badge {
+  background: var(--color-primary);
+  color: #fff;
+  border-radius: var(--radius-pill);
+  padding: 0.1rem 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
+.mail-rail-badge {
+  position: absolute;
+  top: 4px;
+  right: 8px;
+  background: var(--color-primary);
+  color: #fff;
+  border-radius: var(--radius-pill);
+  min-width: 1.25rem;
+  height: 1.25rem;
+  padding: 0 0.3rem;
+  font-size: 0.75rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+  border: 2px solid #fff;
+}
+
+.mail-content-layout {
+  display: grid;
+  grid-template-columns: minmax(200px, 1fr) minmax(280px, 1.3fr);
+  gap: var(--space-md);
+  min-height: 22rem;
+  max-height: 58vh;
+  overflow: hidden;
+}
+
+@media (max-width: 640px) {
+  .mail-content-layout {
+    grid-template-columns: 1fr;
+  }
+  .mail-content-layout.has-selected .mail-list-pane {
+    display: none;
+  }
+  .mail-content-layout:not(.has-selected) .mail-detail-pane {
+    display: none;
+  }
+}
+
+.mail-list-pane {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  overflow-y: auto;
+  padding-right: var(--space-xs);
+}
+
+.mail-card {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  border: 2px solid var(--color-field-edge);
+  border-radius: var(--radius-field);
+  background: var(--color-surface);
+  cursor: pointer;
+  text-align: left;
+  position: relative;
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+
+.mail-card:hover {
+  border-color: var(--color-secondary);
+  transform: translateY(-1px);
+}
+
+.mail-card--active {
+  border-color: var(--color-primary);
+  background: var(--color-badge);
+}
+
+.mail-card--unread {
+  border-left: 6px solid var(--color-primary);
+  font-weight: 800;
+}
+
+.mail-card-icon {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.mail-card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  flex: 1;
+}
+
+.mail-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-xs);
+}
+
+.mail-card-sender {
+  font-size: var(--text-sm);
+  font-weight: 800;
+  color: var(--color-ink-soft);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mail-card-title {
+  font-size: var(--text-body);
+  font-weight: 800;
+  color: var(--color-ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mail-detail-pane {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-parchment);
+  border: 2px solid var(--color-parchment-edge);
+  border-radius: var(--radius-field);
+  padding: var(--space-md);
+  box-shadow: inset 0 0 20px rgba(74, 50, 24, 0.05);
+  overflow-y: auto;
+  position: relative;
+}
+
+.mail-back-mobile {
+  display: none;
+  align-self: flex-start;
+  margin-bottom: var(--space-xs);
+}
+
+@media (max-width: 640px) {
+  .mail-back-mobile {
+    display: inline-flex;
+  }
+}
+
+.mail-detail-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px dashed var(--color-parchment-edge);
+  padding-bottom: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
+
+.mail-detail-sender {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.mail-detail-sender-name {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--text-lg);
+  color: var(--color-parchment-ink);
+}
+
+.mail-detail-date {
+  font-size: var(--text-sm);
+  color: var(--color-wood-edge);
+  font-weight: 700;
+}
+
+.mail-detail-title {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 800;
+  color: var(--color-parchment-ink);
+  margin: 0 0 var(--space-sm) 0;
+}
+
+.mail-detail-body {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: 1.6;
+  color: var(--color-parchment-ink);
+  margin-bottom: var(--space-lg);
+  white-space: pre-wrap;
+}
+
+.mail-reward-box {
+  background: #ffffff;
+  border: 2px solid var(--color-primary-edge);
+  border-radius: var(--radius-field);
+  padding: var(--space-md);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  margin-top: auto;
+  box-shadow: var(--shadow-key);
+}
+
+.mail-reward-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.mail-reward-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--text-sm);
+  color: var(--color-primary);
+  text-transform: uppercase;
+}
+
+.mail-reward-items {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.mail-reward-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-weight: 800;
+  font-size: var(--text-lg);
+  color: var(--color-ink);
+}
+
+.mail-empty-state {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  color: var(--color-ink-soft);
+  text-align: center;
+  padding: var(--space-xl);
+  font-weight: 700;
+}

@@ -377,6 +377,23 @@
 .scene-modal .classify-pool { min-height: 3.5rem; }
 /* Every card placed: the tray folds away instead of leaving an empty band. */
 .scene-modal .classify-pool:empty { min-height: 0; padding: 0; background: none; }
+/*
+ * Phones (owner, 04/10/2026: a drag task was hard on a small screen): the question takes less room, the
+ * cards are smaller and the groups stand side by side, so the cards and every group are on screen at once
+ * and a card never has to be dragged to a group that is off the page.
+ */
+@media (max-width: 40rem) {
+  .scene-modal--pinned .challenge-prompt { font-size: var(--text-sm); line-height: 1.3; max-height: min(24vh, 7.25rem); padding: var(--space-xs) var(--space-sm); }
+  .scene-modal--pinned .challenge-prompt .npc-name { display: inline; margin-right: var(--space-xs); }
+  .scene-modal--pinned .challenge-prompt .btn { min-height: 2.5rem; padding-inline: var(--space-sm); font-size: var(--text-sm); }
+  .scene-modal--pinned .challenge-area { gap: var(--space-sm); }
+  .scene-modal--pinned .classify-pool { display: grid; grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr)); gap: var(--space-xs); padding: 0; min-height: 2.75rem; }
+  .scene-modal--pinned .classify-card { justify-content: center; text-align: center; min-height: 2.75rem; padding: var(--space-xs) var(--space-sm); font-size: var(--text-sm); box-shadow: 0 3px 0 var(--color-parchment-edge); }
+  .scene-modal--pinned .classify-groups { grid-template-columns: repeat(auto-fit, minmax(7.5rem, 1fr)); gap: var(--space-xs); }
+  .scene-modal--pinned .classify-group { min-height: 4.5rem; padding: var(--space-xs); border-width: 3px; }
+  .scene-modal--pinned .classify-group-title { font-size: var(--text-body); min-height: 2.25rem; padding: 0 var(--space-xs); }
+  .scene-modal--pinned .classify-group-cards { min-height: 2.5rem; }
+}
 
 /* Quest progress: one leaf per step, filled once done, the current one glowing. */
 .step-trail { display: flex; flex-wrap: wrap; align-items: center; gap: 0.3rem; margin: 0; padding: var(--space-xs) var(--space-sm); list-style: none; border-radius: var(--radius-pill); background: var(--color-surface-glass); }

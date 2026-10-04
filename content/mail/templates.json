@@ -1,0 +1,99 @@
+{
+  "templates": [
+    {
+      "id": "welcome-gift",
+      "sender": "Hội đồng Đảo Mây",
+      "title": {
+        "vi": "Chào mừng {name} đến Đảo Mây!",
+        "en": "Welcome {name} to Cloud Island!"
+      },
+      "body": {
+        "vi": "Chúc bé {name} có những giờ phút học tập và phiêu lưu thật vui vẻ trong thế giới Miu World! Hội đồng gửi tặng bé món quà khởi đầu.",
+        "en": "Wishing {name} joyful adventures and learning in Miu World! The Council sends you this welcome gift."
+      },
+      "category": "system",
+      "reward": {
+        "coins": 50,
+        "xp": 50,
+        "items": {}
+      },
+      "icon": "gift"
+    },
+    {
+      "id": "npc-tho-trang-gift",
+      "sender": "Thỏ Trắng",
+      "title": {
+        "vi": "Táo ngọt từ vườn thỏ",
+        "en": "Sweet apples from bunny orchard"
+      },
+      "body": {
+        "vi": "Chào {name}! Mình vừa thu hoạch được giỏ táo thơm ngon ở Khu rừng bí mật. Gửi tặng bạn một ít để bạn thêm vui nhé!",
+        "en": "Hi {name}! I just picked fresh apples in the Secret Forest. Sending you some for extra energy!"
+      },
+      "category": "npc",
+      "reward": {
+        "coins": 25,
+        "xp": 30,
+        "items": {}
+      },
+      "icon": "redApple"
+    },
+    {
+      "id": "npc-meo-cam-greeting",
+      "sender": "Mèo Cam",
+      "title": {
+        "vi": "Lời chào từ tiệm sách",
+        "en": "Greetings from the bookstore"
+      },
+      "body": {
+        "vi": "{name} ơi! Cảm ơn bạn đã luôn chăm chỉ giải các bài tập toán và khám phá thế giới. Khi nào rảnh hãy ghé tiệm sách chơi với mình nhé!",
+        "en": "Hey {name}! Thank you for working hard on math puzzles and world exploration. Visit the bookstore whenever you have time!"
+      },
+      "category": "npc",
+      "reward": {
+        "coins": 20,
+        "xp": 40,
+        "items": {}
+      },
+      "icon": "books"
+    },
+    {
+      "id": "system-explore-gift",
+      "sender": "Đội Thám Hiểm",
+      "title": {
+        "vi": "Huy hiệu nhà thám hiểm nhí",
+        "en": "Little Explorer Star"
+      },
+      "body": {
+        "vi": "Gửi tặng {name} phần thưởng thám hiểm vì tinh thần tò mò học hỏi. Hãy tiếp tục mở rộng bản đồ và làm quen thêm bạn mới nhé!",
+        "en": "Sending {name} an exploration gift for your curious spirit. Keep discovering new regions and meeting new friends!"
+      },
+      "category": "gift",
+      "reward": {
+        "coins": 30,
+        "xp": 50,
+        "items": {}
+      },
+      "icon": "glowingStar"
+    },
+    {
+      "id": "npc-bac-cu-wisdom",
+      "sender": "Bác Cú Thông Thái",
+      "title": {
+        "vi": "Bí quyết giải đố",
+        "en": "Puzzle Solving Wisdom"
+      },
+      "body": {
+        "vi": "Bác Cú rất vui khi thấy {name} chăm chỉ học hỏi mỗi ngày. Hãy luôn suy nghĩ cẩn thận và tự tin trước mỗi thử thách nhé!",
+        "en": "Wise Owl is delighted by {name}'s daily learning. Always think clearly and stay confident in every challenge!"
+      },
+      "category": "npc",
+      "reward": {
+        "coins": 15,
+        "xp": 60,
+        "items": {}
+      },
+      "icon": "scroll"
+    }
+  ]
+}

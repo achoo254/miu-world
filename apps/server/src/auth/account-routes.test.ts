@@ -34,6 +34,7 @@ async function playedFamily() {
   await app.db.insert(t.timetables).values({ childId, timetable: { ...emptyTimetable(), uniform: { ...emptyTimetable().uniform, mon: 'Bộ sơ mi trắng' } } });
   await app.db.insert(t.homeDecor).values({ childId, choices: { bed: 'bed-blue', house: 'house-green' } });
   await app.db.insert(t.shopInventory).values({ childId, itemId: 'them-mot-tim', qty: 2 });
+  await app.db.insert(t.mail).values({ id: randomUUID(), childId, templateId: 'welcome-gift', category: 'system' });
   const me = (await family.agent.get('/api/auth/me').expect(200)).body as { parent: { id: string } };
   return { ...family, parentId: me.parent.id };
 }

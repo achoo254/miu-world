@@ -15,6 +15,7 @@ import { PetCatalog, petArtPath } from '../../packages/schema/src/pet';
 import { BoxPropCatalog, EmojiPropCatalog, LookCatalog, QuestTargetCatalog } from '../../packages/schema/src/world-target';
 import { RegionCatalog, mapForRegion, regionGuides } from '../../packages/schema/src/region';
 import { OlympiadCatalog } from '../../packages/schema/src/olympiad';
+import { MailCatalog } from '../../packages/schema/src/mail';
 import { UI_ICONS } from '../../apps/web/src/ui/kit/ui-art';
 import { MUSIC_MOODS } from '../../apps/web/src/ui/sound/music';
 import { SPRITE_PATHS } from '../../apps/web/src/ui/minigame/sprites';
@@ -57,6 +58,8 @@ const CATALOGUE_FILES = [
   'recipes.json',
   // Olympic Math Challenge (Phase 0).
   'olympiad/',
+  // Mail templates (apps/server/src/mail).
+  'mail/',
 ];
 /** Content files the asset tools validate when they build characters, atlases and maps (any file in a folder). */
 const ASSET_TOOL_FILES = [
@@ -495,6 +498,10 @@ export function checkContent(dir: string = CONTENT_DIR): ContentReport {
     if (existsSync(path.join(dir, 'olympiad/olympic-math.json'))) {
       const parsedOlympiad = OlympiadCatalog.safeParse(read('olympiad/olympic-math.json'));
       if (!parsedOlympiad.success) issues.push(`content/olympiad/olympic-math.json: ${parsedOlympiad.error.message}`);
+    }
+    if (existsSync(path.join(dir, 'mail/templates.json'))) {
+      const parsedMail = MailCatalog.safeParse(read('mail/templates.json'));
+      if (!parsedMail.success) issues.push(`content/mail/templates.json: ${parsedMail.error.message}`);
     }
     notes.push(...targets.notes);
   } catch (error) {

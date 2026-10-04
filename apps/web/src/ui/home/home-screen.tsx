@@ -5,7 +5,7 @@
 // over a pre-rendered island image, not a second 3D scene (validation decision `home_scene`). Not in the
 // MVP, so not shown: diamonds (Master Plan §15 #6), the daily streak (`streak_in_mvp` = defer_v1), the
 // "Sự kiện" rail entry and the TIMO event card (Live World).
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router';
 import { Icon, MiuPortrait } from '../kit/art';
 import { SkyScene } from '../kit/sky-scene';
@@ -21,6 +21,8 @@ import { WorldStage } from '../world/world-stage';
 import { TodayQuests } from './today-quests';
 import { OlympiadBanner } from '../event/olympiad-banner';
 import { OlympiadPanel } from '../event/olympiad-panel';
+import { fetchMailList } from '../mail/mail-api';
+import { MailPanel } from '../mail/mail-panel';
 import './home.css';
 
 export function HomeScreen() {
@@ -32,6 +34,21 @@ export function HomeScreen() {
   const [settings, setSettings] = useState(false);
   const [shopOpen, setShopOpen] = useState(false);
   const [olympiadOpen, setOlympiadOpen] = useState(false);
+  const [mailOpen, setMailOpen] = useState(false);
+  const [unreadMail, setUnreadMail] = useState(0);
+
+  useEffect(() => {
+    let alive = true;
+    void fetchMailList()
+      .then((res) => {
+        if (alive) setUnreadMail(res.unreadCount);
+      })
+      .catch(() => undefined);
+    return () => {
+      alive = false;
+    };
+  }, [mailOpen]);
+
   /** Coins after a purchase here (the badge shows the server's balance). */
   const [coins, setCoins] = useState<number | null>(null);
   const quest = data ? currentQuest(data.quests) : null;
@@ -104,6 +121,11 @@ export function HomeScreen() {
                   <Icon name="trophy" size={40} />
                   <T k="olympiad.rail" />
                 </button>
+                <button type="button" className="home-rail-item" data-id="home-nav-mail" style={{ position: 'relative' }} onClick={() => setMailOpen(true)}>
+                  <Icon name="package" size={40} />
+                  {unreadMail > 0 ? <span className="mail-rail-badge">{unreadMail}</span> : null}
+                  <T k="mail.rail" />
+                </button>
               </nav>
               <div style={{ gridArea: 'today', display: 'flex', flexDirection: 'column', gap: 'var(--space-md)' }}>
                 <OlympiadBanner onOpen={() => setOlympiadOpen(true)} />
@@ -113,6 +135,7 @@ export function HomeScreen() {
             {settings ? <SettingsDialog onClose={() => setSettings(false)} /> : null}
             {shopOpen ? <ShopPanel onClose={() => setShopOpen(false)} onCoins={setCoins} /> : null}
             {olympiadOpen ? <OlympiadPanel onClose={() => setOlympiadOpen(false)} onCoinsUpdated={setCoins} /> : null}
+            {mailOpen ? <MailPanel onClose={() => setMailOpen(false)} onCoinsUpdated={setCoins} /> : null}
           </>
         ) : null}
       </main>
